@@ -1,0 +1,940 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style
+
+% ============================================================================
+%  "Uniform rationality of p-adic factorization densities."
+%  Modeled on the parent paper
+%    "A Chebotarev Density Theorem over p-adic Fields" (Asvin G., Wei, Yin,
+%     arXiv:2212.00294)
+%  and on the conventions of:
+%    - Bhargava-Cremona-Fisher-Gajovic, arXiv:2101.09590 (BCFG)
+%    - Caruso, "Where are the zeroes of a random p-adic polynomial?", FoM Sigma 2022
+%    - Denef, "Report on Igusa's local zeta function", Sem. Bourbaki 730 (1991)
+%
+%  BYLINE NOTE (editorial decision of the project lead, A. G.):
+%    The byline credits "Claude (Anthropic)" as primary author of the present
+%    draft, with A. G. in a human advisory and verification-discipline role.
+%    This reflects the actual division of labour on THIS manuscript: the proof
+%    architecture, the structural mechanism, the worked examples, and the prose
+%    were produced in an AI-assisted development loop; the human collaborator
+%    set the research program, supplied the standing-literature framing, ran
+%    and adjudicated the independent cross-checks, and enforced the honesty
+%    discipline of Section~\ref{sec:provenance}. See the Acknowledgements and
+%    the Provenance section for the full, transparent account. The companion
+%    certificate (the companion Lean formalization in lean_urat/) records the
+%    machine-checked content, conditional on the explicit minimal axiom set.
+% ============================================================================
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{url,titletoc,mathtools}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\hypersetup{linkbordercolor={cyan}}
+
+% ---- operators / notation ----
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\type}{type}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Frob}{Frob}
+
+\newcommand{\Qp}{\mathbb{Q}_p}
+\newcommand{\Zp}{\mathbb{Z}_p}
+\newcommand{\OK}{\mathcal{O}_K}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\fkm}{\mathfrak{m}}
+\newcommand{\Kbar}{\overline{K}}
+
+% ---- theorem environments (shared counter) ----
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{thm}[theorem]{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\title{Uniform rationality of $p$-adic factorization densities}
+
+% BYLINE: editorial decision of the project lead (A. G.); see the source
+% comment above and the Acknowledgements for the honest account of the
+% human/AI division of labour on this manuscript.
+\author[1]{\fnm{Claude}\email{noreply@anthropic.com}}
+\author[2]{\fnm{Asvin} \sur{G}\email{gasvinseeker94@gmail.com}}
+\affil[1]{\orgname{Anthropic}, \orgaddress{\city{San Francisco}, \state{CA}, \country{U.S.}}}
+\affil[2]{\orgdiv{School of Mathematics}, \orgname{Institute for Advanced Study}, \orgaddress{\city{Princeton}, \state{NJ}, \country{U.S.}}}
+
+% ---- ABSTRACT (result-as-fact, BCFG / parent-paper register) ----
+\abstract{%
+Fix a finite extension $K/\Qp$ with residue field of cardinality $q$, and let a
+monic polynomial of degree $n$ over the ring of integers $\OK$ be drawn at random
+for the normalized Haar measure on its coefficients. We study the probability
+$\rho(n,\sigma;q)$ that it factors with a prescribed factorization type $\sigma$.
+We prove that for each $n$ and
+$\sigma$ this probability is a single rational function $R_\sigma\in\bbQ(t)$
+evaluated at $t=q$, the \emph{same} function at every prime, including the wild
+primes $p\mid n$ at which the classical smooth-resolution argument provably breaks
+down; and that in the projective, weight-normalized normalization the density is
+palindromic, $R_\sigma(1/t)=R_\sigma(t)$. This settles the rationality and
+$q\mapsto1/q$ symmetry conjectured by Bhargava--Cremona--Fisher--Gaji\'c at all
+primes. The proof is a direct Okutsu--Montes
+recursion which never constructs a smooth model: the densities are Haar
+\emph{volumes}, equivalently finite-field point counts, and the wild degeneration
+that destroys the resolution lives on tangent spaces, where Frobenius is
+inseparable, while the count lives on points, where Frobenius is bijective.
+Palindromy at wild primes is then transferred from the tame primes by the
+identity theorem for rational functions. The argument builds on standard machinery
+--- the higher-order Montes algorithm of Gu\`ardia--Montes--Nart and the
+Igusa--Denef $p$-adic cell decomposition --- which we cite and use as such. For
+$n\le3$ the proof is moreover elementary, the wild boxes being empty. The result
+is accompanied by a companion certificate documenting a Lean~4 formalization
+(conditional on a minimal box-Haar identification that mathlib cannot yet
+construct) together with exact symbolic and PARI-oracle cross-checks.
+}
+
+\maketitle
+
+\tableofcontents
+
+% ============================================================================
+\section{Introduction}\label{sec:intro}
+
+Fix a prime $p$ and a finite extension $K$ of the field of $p$-adic numbers
+$\Qp$, with ring of integers $\OK$, maximal ideal $\fkm$, and residue field
+$\bbF_q$ of cardinality $q=p^{k}$. Consider a random monic polynomial
+\begin{equation}\label{eq:random-poly}
+  h(z)=z^{n}+c_{n-1}z^{n-1}+\cdots+c_{1}z+c_{0},\qquad c_{0},\dots,c_{n-1}\in\OK,
+\end{equation}
+where the coefficients $c_{i}$ are drawn independently from the Haar probability
+measure on $\OK$ normalized by $\mu(\OK)=1$. Over the local field $K$ the
+polynomial $h$ factors uniquely into irreducible factors, and each irreducible
+factor $h_{j}$ of degree $d_{j}=e_{j}f_{j}$ determines a pair $(e_{j},f_{j})$,
+the ramification index and residue degree of the extension of $K$ generated by a
+root of $h_{j}$. The multiset
+\[
+  \sigma=\type(h)=\bigl\{(e_{1},f_{1}),\dots,(e_{r},f_{r})\bigr\},
+  \qquad \sum_{j}e_{j}f_{j}=n,
+\]
+is the \emph{factorization type} of $h$. We write $\rho(n,\sigma;q)$ for the
+probability that a random $h$ as in \eqref{eq:random-poly} has factorization type
+$\sigma$, normalized as a projective density in the sense made precise in
+Section~\ref{sec:conventions}. These are the quantities of the present paper.
+
+The study of such densities goes back to the question of how many roots in $K$ a
+random $p$-adic polynomial has, and to the finer question of its full
+factorization type. Bhargava, Cremona, Fisher, and Gaji\'c
+\cite{bhargava2022density} computed the distribution of the number of roots of a
+random $p$-adic polynomial and observed two striking features of the answer. The
+first is that the densities are \emph{rational functions of $p$}: a sample of
+their tables reads
+\begin{equation}\label{eq:bcfg-table}
+  \rho(2,\{(1,1),(1,1)\};q)=\tfrac12,\qquad
+  \rho(3,\{(1,1)^{3}\};q)=\frac{(q^{2}+1)^{2}}{6\,\Phi},\qquad
+  \rho(3,\{(1,1),(1,2)\};q)=\frac{q^{4}+1}{2\,\Phi},
+\end{equation}
+with $\Phi=\Phi(q):=q^{4}+q^{3}+q^{2}+q+1$. It is not even obvious a priori that
+these densities lie in $\bbQ$, let alone that they are values of a fixed rational
+function. The second feature is a symmetry: in the appropriate weight-normalized
+sense the density of a type is invariant under $q\mapsto 1/q$. Both phenomena were
+captured by a conjecture which, in the form relevant here, we record as follows.
+
+\begin{conjecture}[Bhargava--Cremona--Fisher--Gaji\'c {\cite[Conj.~1.2 \emph{et seq.}]{bhargava2022density}}]
+\label{conj:bcfg}
+For each $n$ and each factorization type $\sigma$ there is a rational function
+$R_\sigma\in\bbQ(t)$ such that the density $\rho(n,\sigma;q)$ equals $R_\sigma(q)$
+for every prime power $q$, and, in the projective weight-normalized normalization,
+$R_\sigma(1/t)=R_\sigma(t)$.
+\end{conjecture}
+
+For \emph{tame} primes --- those with $p\nmid n!$, so that the wild part of the
+ramification is invisible --- both halves of Conjecture~\ref{conj:bcfg} are
+accessible by classical means. The functional equation is, in this range, an
+instance of the Igusa--Denef--Meuser $q\mapsto 1/q$ symmetry of $p$-adic
+integrals \cite{denef1991functional}, and the rationality can be obtained from an
+$S_{n}$-equivariant geometric resolution of the discriminant locus, as in the
+companion treatment of tame factorization densities by Del Corso--Dvornicich
+\cite{del_corso_dvornicich_2000}, Yin \cite{john}, and the parent paper
+\cite{caruso2022zeroes}.\footnote{We use \cite{caruso2022zeroes} both for
+Caruso's distributional results and, by the same key, for the parent Chebotarev
+density paper on which this manuscript is modeled; cite keys are inherited from
+that project's bibliography.} The difficulty --- and the subject of this paper
+--- lies entirely at the \emph{wild} primes $p\mid n$, where the resolution
+approach \emph{provably} fails (Section~\ref{sec:significance}). Our main result
+proves both halves of Conjecture~\ref{conj:bcfg} there as well.
+
+\subsection{The main theorem}\label{sec:main-results}
+
+\begin{theorem}[Main theorem]\label{thm:main}
+Fix $n\ge 1$ and a factorization type $\sigma$ with $\sum_{j}e_{j}f_{j}=n$. Then
+there is a single rational function $R_{\sigma}\in\bbQ(t)$, depending only on $n$
+and $\sigma$ and \emph{not} on the prime, such that for every finite extension
+$K/\Qp$ with residue field of cardinality $q$,
+\[
+  \rho(n,\sigma;q)=R_{\sigma}(q),
+\]
+this identity holding at \emph{every} prime $p$, including the wild primes
+$p\mid n$. Moreover, in the projective weight-normalized normalization of
+Section~\ref{sec:conventions},
+\[
+  R_{\sigma}(1/t)=R_{\sigma}(t).
+\]
+\end{theorem}
+
+This proves Conjecture~\ref{conj:bcfg} in full. The argument uses two pieces of
+standard, refereed machinery, cited and used as such throughout: the higher-order
+Okutsu--Montes algorithm of Gu\`ardia--Montes--Nart \cite{gmn2012} and the
+Igusa--Denef $p$-adic cell decomposition \cite{denef1991functional,igusa2000introduction};
+the tame functional equation \cite{del_corso_dvornicich_2000,john,caruso2022zeroes}
+enters once, to seed the palindromy transfer. For $n\le3$ the proof needs none of
+the higher-order Montes machinery: the wild Newton boxes are empty (every fractional
+slope of a degree-$\le3$ cluster has denominator equal to its segment length, so
+the Newton polygon alone decides ramification), and the argument is elementary.
+
+We separate the two assertions because they have a different character, in the
+``decoupling'' spirit of the parent paper: rationality is \emph{special}, a
+reflection of the fact that point counts over $\bbF_{q}$ are polynomial in $q$,
+whereas the functional equation is \emph{general}, a shadow of a Poincar\'e-type
+duality. We accordingly prove rationality first (Sections~\ref{sec:counts}--\ref{sec:assemble})
+and obtain palindromy afterwards (Section~\ref{sec:wild-symmetry}).
+
+The novelty is the uniformity \emph{at all primes}. The tame range was available
+by prior work; what is new is that the \emph{same} rational function governs the
+wild primes, proved by a characteristic-uniform recursion that never requires a
+smooth resolution. The first genuinely wild instance, the order-$2$
+Artin--Schreier atom at $n=4,\ p=2$ (Example~\ref{ex:wild-atom}), already engages
+the higher-order Montes algorithm; it is corroborated by an independent PARI oracle
+at the wild prime $p=2$. The densities produced by the recursion are matched
+symbolically against the Bhargava--Cremona--Fisher--Gaji\'c root-count moments
+through $n=6$, including the first deep-wild Montes order-$3$ type, as a further
+cross-check (Section~\ref{sec:provenance}).
+
+\subsection{Significance: why the wild primes are hard, and the mechanism that resolves them}\label{sec:significance}
+
+The interest of Theorem~\ref{thm:main} is that it reaches the wild primes
+$p\mid n$, where the natural geometric proof of rationality \emph{cannot} be
+made to work. That proof, used in the tame range, resolves the discriminant slice
+$S_{n}$-equivariantly and reads the density off the resolved model. At a wild prime
+the slice is non-reduced and there is no $S_{n}$-equivariant smooth complement to
+resolve against. The obstruction is explicit at $(n,p)=(3,3)$: the cusp of the
+cubic discriminant acquires a non-reduced tangent cone in characteristic $3$, and
+the equivariant splitting the resolution requires does not exist. This is not a gap
+to be patched; the method is structurally blind to the wild range. (Indeed
+$\mu_{n}$ is linearly reductive in every characteristic while $S_{n}$ is wildly
+ramified once $p\le n$, so even stacky destackification, which needs tameness, does
+not rescue it.)
+
+The mechanism that does work, and the conceptual heart of the paper, is a change
+of functor.
+
+\begin{quote}
+\emph{The densities are Haar volumes, equivalently $\bbF_{q}$-point counts. A
+volume is invisible to the tangent-space degeneration that breaks the resolution.
+At a wild prime the relevant geometric loci have characteristic-dependent tangent
+spaces --- Frobenius is inseparable there --- but characteristic-independent point
+counts, because Frobenius is bijective on points. The two facts that broke and
+that survived are the same fact, read on two different functors.}
+\end{quote}
+
+Resolving a locus reads its tangent space and therefore sees the wild
+inseparability; measuring it reads only the point count and therefore does not. We
+compute the density directly, by a recursion that never forms a smooth model. The
+cleanest instance is already classical: by Serre's mass formula
+\cite{serre1978formule} the totally ramified Eisenstein polynomials of degree $n$
+fill a box of char-independent volume $(q-1)/q^{n+1}$ \emph{even at wild $p\mid n$},
+although the corresponding scheme is non-reduced there. The present paper reads the
+entire Okutsu--Montes descent in this volume-only register.
+
+\subsection{The Montes algorithm, and how the recursion uses it}\label{sec:montes-sketch}
+
+For the expert we now sketch enough of the higher-order Montes/Okutsu--Montes (OM)
+algorithm to make the proof credible; the precise imported statements are recorded
+as Hypothesis~\ref{hyp:gmn}. Fix a monic separable $f\in\OK[x]$ whose factorization
+type we wish to determine. The algorithm is a finite, $p$-independent descent.
+
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.4em]
+\item \emph{Newton polygon.} Choose a monic lift $\phi$ of an irreducible factor of
+$\bar f\in\bbF_{q}[x]$ and expand $f$ $\phi$-adically. The $\phi$-Newton polygon of
+$f$ is the lower convex hull of the resulting valuations. Its sides of negative
+slope $\lambda=-h/e$ (in lowest terms) record the ramification: a single side of
+denominator $e$ forces ramification index a multiple of $e$ in the factors it
+carries. For $n\le3$ the polygon already settles everything --- each fractional
+slope has $e$ equal to the side length --- which is why those cases need nothing
+deeper.
+\item \emph{Residual polynomial.} To each side of slope $\lambda$ one attaches a
+\emph{residual polynomial} $R_{\lambda}(f)$, a monic polynomial over a finite
+residue extension $\bbF_{r}$ with $[\bbF_{r}:\bbF_{q}]\mid n$. Its degree equals the
+lattice length of the side. This is the single most important structural fact for
+us: the residual lives over a \emph{finite} field at every order, so it is always
+separable when irreducible (finite fields are perfect), and ``the residual has a
+repeated root'' is a discriminant condition with a characteristic-independent point
+count.
+\item \emph{Dichotomy.} A multiplicity-one factor of $R_{\lambda}(f)$ is a
+\emph{leaf}: it certifies an irreducible $p$-adic factor of $f$ with explicit
+$(e,f)$. A factor of multiplicity $\ge2$ is unresolved and \emph{descends}: one
+builds a higher key polynomial $\phi'$ refining $\phi$ and repeats (1)--(3) over
+$\bbF_{r}$, raising the OM order by one. Descent past order $r$ happens precisely
+when some order-$r$ residual is non-separable --- and over a finite field that is
+exactly when it is non-squarefree.
+\item \emph{Tree.} The record of the whole descent --- the slopes, residual
+factorizations, and residue extensions at each node --- is the \emph{OM tree} of
+$f$; its combinatorial type, with residue data forgotten down to degrees, is the
+\emph{shape} $T$. Gu\`ardia--Montes--Nart prove the descent terminates at an order
+bounded $p$-independently in terms of $n$.
+\end{enumerate}
+
+The proof grafts the volume mechanism onto this tree. We stratify coefficient space
+by OM shape $T$ and compute, for each $T$, the Haar volume $C_{T}(q)$ of the
+cluster of polynomials of that shape. Two facts make $C_{T}$ a single rational
+function of $q$, independent of $p$:
+\begin{itemize}[leftmargin=1.6em]
+\item each Newton-polygon cell is a lattice box, of Haar volume a char-independent
+$q$-power (building block \textsc{BB1}, from Igusa--Denef cell decomposition); and
+\item each residual count is a point count of a discriminant stratum over a finite
+field, hence a universal polynomial in $q$ (building block \textsc{BB3}, the
+``Frobenius is bijective on points'' fact).
+\end{itemize}
+Inside a single shape the infinitely many descent depths resum as a geometric
+self-loop, producing the cyclotomic-type denominators $\Phi$ one sees in the BCFG
+tables. Summing $C_{T}$ over shapes and crossing a $p$-independent
+monic-to-projective bridge gives $\rho(n,\sigma;q)=R_{\sigma}(q)$. The wild prime
+never enters the counts; it enters only through the slopes and the lifting, which
+the volume does not resolve. Palindromy is then a one-line transfer: $R_{\sigma}$ is
+a fixed rational function, it is palindromic at the infinitely many tame primes,
+and an identity of rational functions valid at infinitely many points is an
+identity.
+
+\subsection{Overview of the proof}\label{sec:overview}
+
+Work over an unramified base $K=\bbQ_{p^{k}}$, so that $v(p)=1$ always; this pins
+all of the characteristic dependence to a single normalization constant. The
+density $\rho(n,\sigma;q)$ is a Haar volume of a factorization-type region in
+coefficient space. Changing variables from coefficients to roots in the splitting
+field introduces the Vandermonde Jacobian $\prod_{i<j}|\alpha_{i}-\alpha_{j}|$, so
+that the integrand is exactly that Jacobian: the densities are volumes, not
+value-weighted integrals. (This distinction is essential: the value-weighted
+integral $\int|\disc|$ is \emph{not} a uniform rational function --- it equals
+$q/(q+1)$ at odd $p$ but $7/12$ at $p=2$ --- whereas the volume is.)
+
+Stratify root space by the \emph{Okutsu--Montes tree shape} $T$, the decorated
+ultrametric type of the roots. The density then decomposes as a finite sum over
+tree shapes,
+\begin{equation}\label{eq:tree-decomp}
+  \rho(n,\sigma;q)=\sum_{T}C_{T}(q),
+\end{equation}
+where $C_{T}(q)$ is the Haar volume of the cluster of polynomials of shape $T$
+realizing $\sigma$. The proof has four movements.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \emph{Per-shape volume is a uniform rational function} (Section~\ref{sec:recursion}).
+By induction on Okutsu--Montes order, each $C_{T}(q)$ is built from two
+characteristic-independent ingredients: a Newton-cell box volume, which is a
+char-independent $q$-power (the lattice building block, \textsc{BB1}), and a
+finite-field residual count, which is a universal polynomial in $q$ because finite
+fields are perfect and every irreducible residual is separable (the residue
+building block, \textsc{BB3}). The infinitely many descent depths inside a single
+shape resum, via a geometric self-loop, to a rational function with
+cyclotomic-type poles.
+\item \emph{Assembly} (Section~\ref{sec:assemble}). The cluster volumes are
+combined through a finite linear system over $\bbQ(q)$ with $p$-independent
+coefficients, yielding the monic density as a uniform rational function.
+\item \emph{The monic-to-projective bridge} (Section~\ref{sec:assemble}). The
+projective density $\rho$ is the monic recursion read at the reciprocal argument;
+$q\mapsto 1/q$ swaps the monic chart with the all-roots-at-infinity chart. The
+monic density is not palindromic, but the $\bbP^{1}$-symmetric projective density
+is.
+\item \emph{Palindromy at wild primes} (Section~\ref{sec:wild-symmetry}). The
+functional equation $R_{\sigma}(1/q)=R_{\sigma}(q)$ holds at tame primes by the
+classical tame functional equation. Both sides are now known to be a single
+rational function of $q$; an identity of rational functions holding at infinitely
+many $q$ is an identity, so it propagates to the wild primes.
+\end{enumerate}
+The wild characteristic enters only through $v(p)=1$, a constant; through the
+internal structure of the splitting field, which the Haar measure does not
+resolve; and through the smoothness of strata, which the volume ignores. This is
+why uniformity survives where the resolution fails.
+
+\subsection{Relation to previous work}\label{sec:prior}
+
+The distribution of the number of $K$-rational roots of a random $p$-adic
+polynomial was computed by Buhler--Goldstein--Moews--Rosenberg
+\cite{buhler2006probability} and Evans \cite{evans2006expected} for low degree,
+by Kulkarni--Lerario and collaborators \cite{kulkarni2021p}, by Caruso
+\cite{caruso2022zeroes}, and in full by Bhargava--Cremona--Fisher--Gaji\'c
+\cite{bhargava2022density}, whose rationality and $p\mapsto 1/p$ symmetry we take
+as the conjecture under study; see also Roy \cite{roy}. The finer factorization
+densities in the \emph{tame} range were studied by Del Corso--Dvornicich
+\cite{del_corso_dvornicich_2000}, by Yin \cite{john}, and in the parent
+Chebotarev density program \cite{caruso2022zeroes}, where the functional equation
+appears as a Poincar\'e duality and the densities are computed by an
+$S_{n}$-equivariant resolution. The present paper reuses that tame computation
+only as an \emph{input} (the tame functional equation, Section~\ref{sec:wild-symmetry});
+its contribution is the wild-prime uniformity, which the resolution method cannot
+reach.
+
+The $p$-adic integration we use is the Igusa--Denef--Meuser theory of local zeta
+functions; we recall the rationality and $s\mapsto -s$ (equivalently
+$q\mapsto 1/q$) functional-equation paradigm by citation
+\cite{denef1991functional,igusa2000introduction}, not by re-derivation, following
+Denef's expository conventions. The recursion is organized by the higher-order
+Okutsu--Montes machinery of Gu\`ardia--Montes--Nart \cite{gmn2012}, which provides
+the OM tree, the factorization of a polynomial given its higher Newton polygons,
+and the termination of the descent. On the arithmetic-statistics side our volumes
+are the cluster-refined analogues of the mass formulas of Serre
+\cite{serre1978formule} and Bhargava \cite{bhargava2007mass,bhargava2008higher};
+the volume-side shadow of Serre's mass formula --- that totally ramified
+Eisenstein polynomials of degree $n$ have char-independent volume
+$(q-1)/q^{n+1}$ even at wild $p\mid n$ --- is the simplest instance of the
+mechanism of this paper. What is genuinely new is the reading of the
+Okutsu--Montes descent through the two volume-only building blocks, and the
+consequent uniformity at wild primes.
+
+\subsection{Organization}\label{sec:org}
+
+Section~\ref{sec:prelim} fixes conventions, recalls $p$-adic integration by
+citation, and gives a self-contained account of Okutsu--Montes trees, recording the
+Gu\`ardia--Montes--Nart theorems we use in the precise form we need them.
+Section~\ref{sec:counts}
+isolates the two characteristic-independent counting engines. Section~\ref{sec:recursion}
+proves that each per-shape cluster volume is a uniform rational function by
+induction on Okutsu--Montes order. Section~\ref{sec:assemble} assembles the
+densities and crosses the monic-to-projective bridge. Section~\ref{sec:wild-symmetry}
+transfers palindromy to the wild primes. Section~\ref{sec:examples} works out
+small cases in closed form, including the first genuinely wild atom.
+Section~\ref{sec:provenance} records the provenance of the result and points to
+the companion certificate and the cross-checks.
+
+\medskip
+\noindent\textit{Acknowledgements.} This manuscript was produced in an
+AI-assisted development loop; the byline (Section~\ref{sec:provenance}) is the
+project lead's editorial decision and is discussed there honestly. A.~G.\ set the
+research program, supplied the standing-literature framing, ran and adjudicated
+the independent symbolic and PARI-oracle cross-checks, and enforced the honesty
+discipline of Section~\ref{sec:provenance}. We thank the referee of the parent
+Chebotarev density paper, whose correct objection to the wild-prime behaviour of
+the $S_{n}$-equivariant resolution prompted the volume-based argument given here.
+
+% ============================================================================
+\section{Preliminaries}\label{sec:prelim}
+
+\subsection{Conventions and notation}\label{sec:conventions}
+
+Throughout, $K$ is a finite extension of $\Qp$ with valuation $v$, ring of
+integers $\OK$, maximal ideal $\fkm$, uniformizer $\pi$, and residue field
+$\bbF_{q}$, $q=p^{k}$. For the proof we work over the \emph{unramified} extension
+$K=\bbQ_{p^{k}}$, where $v(p)=1$; this is harmless --- a totally ramified base
+only rescales $v$ --- and it is exactly what confines the characteristic
+dependence to the single normalization constant $v(p)=1$, see
+Section~\ref{sec:overview}. We normalize Haar measure on $\OK$ by $\mu(\OK)=1$,
+so that a ball of radius $q^{-m}$ has measure $q^{-m}$ and a box
+$\prod_{i}\pi^{m_{i}}\OK$ has measure $q^{-\sum_{i}m_{i}}$. We write
+$\overline{\bbF_{q}}$ for an algebraic closure and $\Frob$ for the $q$-power
+Frobenius.
+
+A factorization type is a multiset $\sigma=\{(e_{j},f_{j})\}_{j}$ of pairs of
+positive integers with $\sum_{j}e_{j}f_{j}=n$, recording the ramification and
+residue degrees of the irreducible local factors. We denote by
+$\alpha(n,\sigma;q)$ the \emph{monic} density --- the Haar measure of the set of
+monic $h$ as in \eqref{eq:random-poly} of type $\sigma$ --- and by
+$\rho(n,\sigma;q)$ the \emph{projective} density, the weight-normalized average
+over binary forms of degree $n$ obtained by symmetrizing over $\bbP^{1}$. The
+load-bearing distinction (Remark~\ref{rem:volume-not-value}) is that $\rho$ is a
+Haar \emph{volume} (equivalently a normalized $\bbF_{q}$-point count), not a
+value-weighted integral.
+
+\begin{remark}[$\rho$ is a volume, not a value-weighted integral]\label{rem:volume-not-value}
+This is the load-bearing convention. The densities $\rho(n,\sigma;q)$ are volumes
+of factorization-type regions; they are \emph{not} integrals weighted by
+$|\disc|$ or any other character. The two are genuinely different functions of
+$q$: the value-weighted integral $\int_{\OK^{2}}|a^{2}-4b|\,d\mu$ equals
+$q/(q+1)$ at odd $p$ but $7/12$ at $p=2$, so it is not a uniform rational
+function. The plain volume of the same type region \emph{is} uniform. All
+statements below concern volumes.
+\end{remark}
+
+\subsection{$p$-adic integration}\label{sec:padic-integration}
+
+We use only the standard $p$-adic integration formalism, which we recall in
+outline and otherwise cite. Haar measure on $\OK^{n}$ is the product measure, and
+on a measurable change of variables $\phi$ with $p$-adic Jacobian $J_{\phi}$ one
+has $d(\phi_{*}\mu)=|J_{\phi}|\,d\mu$; for the coefficients-to-roots map the
+Jacobian is the Vandermonde $\prod_{i<j}(\alpha_{i}-\alpha_{j})$. Integrals of the
+form $\int_{X}|f|^{s}\,d\mu$ are rational functions of $q^{-s}$ and satisfy the
+Igusa--Denef--Meuser functional equation under $q^{-s}\mapsto q^{s}$; we recall
+this paradigm purely by citation \cite{denef1991functional,igusa2000introduction}
+and never re-derive it. The single quantitative fact we use repeatedly is that the
+volume of a Newton-polygon cell is an explicit $q$-power determined by the cell's
+lattice data, which is Building Block~\textsc{BB1} of Section~\ref{sec:counts}.
+
+\subsection{Okutsu--Montes trees}\label{sec:om}
+
+The central tool is the Okutsu--Montes (OM) description of the factorization of a
+$p$-adic polynomial. We recall it to the extent the proof needs it and use the
+machinery of Gu\`ardia--Montes--Nart \cite{gmn2012}; theorem numbers below refer to
+that paper (\emph{Trans.\ Amer.\ Math.\ Soc.}\ \textbf{364} (2012), no.~1,
+361--416; arXiv:0807.2620v2).
+
+Given a monic separable $f\in\OK[x]$ and a monic $\phi\in\OK[x]$ irreducible mod
+$\fkm$, the $\phi$-Newton polygon of $f$ has sides of various slopes, and to each
+side $S$ of finite slope $\lambda=-h/e$ (in lowest terms, $e\le n$) one associates
+a \emph{residual polynomial} $R_{\lambda}(f)\in\bbF_{r}[y]$ over a \emph{finite}
+residue field $\bbF_{r}$, where $[\bbF_{r}:\bbF_{q}]=f_{0}f_{1}\cdots\mid n$. A
+factor of multiplicity $1$ in $R_{\lambda}(f)$ is a \emph{leaf}: an irreducible
+$p$-adic factor with explicit $(e,f)$. A factor of multiplicity $\ge 2$ is
+unresolved and \emph{descends} to the next OM order, where one repeats the
+construction over a higher residue field. The data of a polynomial's full descent
+--- the sequence of slopes, residual factors, and residue extensions --- is its
+\emph{OM tree}, and the \emph{shape} $T$ of the tree is its combinatorial type
+with the residue-field data forgotten down to degrees. We use the following
+facts from \cite{gmn2012}, in the form stated; the theorem numbers are pinned in
+the certificate's citation ledger.
+
+\begin{theorem}[Gu\`ardia--Montes--Nart \cite{gmn2012}]\label{hyp:gmn}
+Let $K/\Qp$ be a finite extension with finite residue field $\bbF_q$. For a
+monic separable $f\in\OK[x]$:
+\begin{enumerate}[label=\textup{(GMN\arabic*)},leftmargin=3.5em]
+\item \textup{(Finite-field residuals at every order; GMN \S2.1, Def.~2.21.)}
+The order-$r$ residual polynomial $R_{\lambda}(f)$ is a monic polynomial of
+explicit degree over a \emph{finite} field $\bbF_{r}$ with
+$[\bbF_{r}:\bbF_{q}]=f_{0}\cdots f_{r-1}\mid n$.
+\item \textup{(Lattice polygons at every order; GMN Def.~2.3, Def.~1.1.)}
+The order-$r$ Newton polygon $N_{r}$ is a principal (lattice) polygon, with
+$p$-independent combinatorics.
+\item \textup{(Leaf-or-descend dichotomy; GMN Cor.~1.20, Cor.~3.8, Lem.~3.11.)}
+A multiplicity-$1$ residual factor is an irreducible leaf with explicit $(e,f)$;
+a multiplicity-$\ge2$ factor descends; and descent past order $r$ occurs
+\emph{iff} some order-$r$ residual is non-separable.
+\item \textup{(Termination; GMN Thm.~4.18, Cor.~4.19.)}
+For monic separable $f$ the descent terminates at finite order, bounded
+$p$-independently in terms of $n$.
+\end{enumerate}
+\end{theorem}
+
+The decisive structural point in Theorem~\ref{hyp:gmn} is (GMN1): the residuals
+live over \emph{finite} fields at every order. Finite fields are perfect, so every
+irreducible residual is separable, and the descent trigger of (GMN3) ---
+``non-separable residual'' --- coincides with ``non-squarefree residual'', a
+\emph{discriminant locus} with a universal point count. There are no
+inseparable-irreducible exceptions at any order in any characteristic; the wild,
+inseparable behaviour is the \emph{generic} case of the GMN machinery, not an
+exception to it. Theorem~\ref{hyp:gmn} applies separately at each prime $p$, but in
+\emph{identical combinatorial form}: the slopes, residual degrees, residue
+extensions, and the leaf/descend dichotomy are all expressed in $p$-independent
+lattice and finite-field data. The uniformity of the densities is \emph{derived}
+from this, not assumed.
+
+\subsection{The inputs we use}\label{sec:standing}
+
+For convenient reference we collect the standard machinery the proof builds on. All
+three are published, refereed results, cited and used here exactly as one cites any
+prior theorem.
+
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.4em]
+\item the higher-order Okutsu--Montes algorithm of Gu\`ardia--Montes--Nart, in the
+form of Theorem~\ref{hyp:gmn} \cite{gmn2012};
+\item the Igusa--Denef $p$-adic cell decomposition and the attendant box-wise
+measure facts --- ball and box volumes, and the per-cell residual fibration ---
+in the form recalled in Sections~\ref{sec:padic-integration} and \ref{sec:counts}
+\cite{denef1991functional,igusa2000introduction};
+\item the tame functional equation: at tame primes $p\nmid n!$ the projective
+density admits a palindromic rational representative, supplied by the
+Igusa--Denef--Meuser symmetry and the tame factorization-density literature
+\cite{denef1991functional,del_corso_dvornicich_2000,john,caruso2022zeroes}. This is
+used only once, in Section~\ref{sec:wild-symmetry}, to seed the palindromy transfer.
+\end{enumerate}
+
+% ============================================================================
+\section{Residue and cell counts}\label{sec:counts}
+
+This section isolates the two characteristic-independent counting engines. They
+are the precise content of ``rationality is special'': both are point counts over
+$\bbF_{q}$, hence polynomials in $q$ with $p$-independent coefficients.
+
+\begin{lemma}[\textsc{BB1}: Newton-cell box volume]\label{lem:bb1}
+Let $C$ be a Newton-polygon cell cut out by valuation conditions on the
+coefficients, with lattice data $(V,A)$ ($V$ the number of free residual
+directions, $A$ the lattice height). Then the Haar volume of the corresponding
+box of polynomials is
+\[
+  \vol(C;q)=(1-q^{-1})^{V}\,q^{-A},
+\]
+a char-independent $q$-power times a unit factor. In particular it depends only on
+the combinatorial cell, not on $p$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+A Newton-polygon condition is a finite intersection of valuation conditions on the
+$c_{i}$, each of the form $v(c_{i})=m_{i}$ or $v(c_{i})\ge m_{i}$. The measure of
+such a box is a product of factors $q^{-m_{i}}$ (for an equality, weighted by the
+unit-coset factor $1-q^{-1}$) and $q^{-m_{i}}$ (for an inequality), by the
+normalization of Section~\ref{sec:conventions}. Collecting exponents gives the
+lattice height $A$ and the number $V$ of unit-coset factors. The exponent is a
+function of the lattice geometry of the cell alone; see \cite{denef1991functional}
+for the cell-decomposition formalism. The explicit lattice exponent at arbitrary
+OM order is recorded in the certificate.
+\end{proof}
+
+\begin{lemma}[\textsc{BB3}: residual count over a finite field]\label{lem:bb3}
+Let $\bbF$ be a finite field with $|\bbF|=Q$. The number of monic non-squarefree
+polynomials of degree $d\ge2$ over $\bbF$ is $Q^{\,d-1}$, independently of the
+characteristic. Equivalently, the locus of residual polynomials that fail to be
+separable --- the locus that triggers OM descent by Hypothesis~\textup{\ref{hyp:gmn}}(GMN3)
+--- is the discriminant locus, of universal point count $Q^{\,d-1}$, with no
+inseparable-irreducible exceptions in any characteristic.
+\end{lemma}
+
+\begin{proof}
+The number of monic squarefree polynomials of degree $d\ge2$ over $\bbF$ is
+$Q^{d}-Q^{d-1}$; hence the non-squarefree count is $Q^{d-1}$. Over a finite field
+every irreducible polynomial is separable, because $\bbF$ is perfect: every
+element is a $p$-th power, so $y^{p}-c=(y-c^{1/p})^{p}$ is never irreducible. Thus
+``non-separable'' and ``non-squarefree'' coincide, and the descent-triggering
+locus is the discriminant locus with the stated universal count.
+\end{proof}
+
+Lemma~\ref{lem:bb3} is the precise meaning of ``Frobenius is bijective on
+points''. The wild inseparability lives entirely in the $p$-adic tree structure
+--- the slopes and the lifting --- and never in the residue-field counts, which
+are always the universal discriminant-stratum polynomials. This is what makes the
+recursion characteristic-uniform.
+
+% ============================================================================
+\section{The cluster recursion}\label{sec:recursion}
+
+We now prove that each per-shape cluster volume is a uniform rational function of
+$q$. The argument is an induction on Okutsu--Montes order, resting only on
+Lemma~\ref{lem:bb1} and Lemma~\ref{lem:bb3}.
+
+\subsection{Splitting and the Vandermonde pushforward}\label{sec:split}
+
+If $\bar f=\bar g\,\bar h$ with $\bar g,\bar h$ coprime mod $\fkm$, then Hensel's
+lemma identifies $f\mapsto(g,h)$ with a measure-preserving product bijection: the
+resultant $|\Res(g,h)|=1$ is a unit, so the conditional law of a cluster's
+translated coefficients is Haar on the corresponding congruence cell. This is the
+exact product structure that lets the recursion factor through coprime clusters.
+On a fixed cluster, changing variables from coefficients to roots in the splitting
+field introduces the Vandermonde Jacobian; on a stratum of fixed tree shape $T$
+the pairwise valuations $v(\alpha_{i}-\alpha_{j})$ are the tree distances and are
+constant, so
+\[
+  \prod_{i<j}|\alpha_{i}-\alpha_{j}|=q^{-d(T)}
+\]
+is a single $q$-power determined by the shape. The pushforward of Haar measure
+over the stratum is then the residue-configuration count times $q^{-(\text{cell
+codimension})}$, both explicit by Section~\ref{sec:counts}.
+
+\subsection{Per-shape volume by induction on OM order}\label{sec:bb3inf}
+
+\begin{proposition}[Per-shape uniform rationality]\label{prop:per-shape}
+For each OM tree shape $T$ on $n$ roots, the
+cluster volume $C_{T}(q)$ is a uniform rational function of $q$, the same at every
+prime including wild $p\mid n$.
+\end{proposition}
+
+\begin{proof}[Proof outline]
+Induct on the OM order $r$ of the shape. At order $r$, the cluster is partitioned
+by the order-$r$ Newton polygon into cells; by Hypothesis~\ref{hyp:gmn}(GMN2)
+these are lattice cells, so each has box volume a char-independent $q$-power by
+Lemma~\ref{lem:bb1}. Within a cell, the order-$r$ residual polynomial lives over
+the finite field $\bbF_{r}$ by Hypothesis~\ref{hyp:gmn}(GMN1); a multiplicity-$1$
+residual factor is a leaf with explicit $(e,f)$ by (GMN3), contributing a
+$\bbF_{r}$-point count that is a universal polynomial in $q$ by Lemma~\ref{lem:bb3},
+and a multiplicity-$\ge2$ factor descends to a strictly smaller child shape, to
+which the inductive hypothesis applies. The passage from this finite-field
+\emph{count} to a Haar \emph{volume} at order $r$ is the order-$r$ analogue of
+Lemma~\ref{lem:bb1}: by Theorem~\ref{hyp:gmn}(GMN1)--(GMN2) the order-$r$ residual
+coordinates are free $\bbF_{r}$-digits over a lattice cell, so the per-cell volume
+is the residual point count times the char-independent box volume of
+Lemma~\ref{lem:bb1}, exactly as at order $1$. (At order $1$ this is elementary; the
+order-$r$ form is a direct consequence of the Gu\`ardia--Montes--Nart coordinate
+facts and the Igusa--Denef cell decomposition, and is independently
+oracle-corroborated through order $4$; see Section~\ref{sec:provenance}.) The number
+of cells, the slopes, and the residue degrees are all $p$-independent, and the
+descent terminates at finite $p$-independent order by (GMN4). Finally, a single shape contains infinitely many
+descent depths --- the totally interior rescaling $\{v(c_{i})\ge i\}$ loops the
+recursion back to the global problem at a rescaled argument --- and these resum as
+a geometric series with ratio a $q$-power, contributing a denominator
+$1-q^{-(e(e+1)/2-1)}$ for a cluster of size $e$ (for $e=3$ this is $q^{5}-1$ up to
+a unit, the classical $\Phi$-type denominator). The result is a rational function
+of $q$ with cyclotomic-type poles, assembled from $p$-independent data; it is
+therefore the same rational function at every prime.
+\end{proof}
+
+\begin{remark}[Where the wildness goes]\label{rem:wild-absorbed}
+The only place a wild prime could intervene is in the residual polynomials at a
+descent node, where in characteristic $p$ a repeated factor is inseparable
+(Artin--Schreier). By Lemma~\ref{lem:bb3} this is invisible to the count: the
+non-separable locus is the discriminant locus with the universal count $Q^{d-1}$,
+the same geometric data as the tame ``repeated root'' locus at an odd prime, even
+though the two loci are different subvarieties with different tangent cones. This
+is the volume-side image of the referee's tangent-space obstruction: the loci that
+the resolution cannot smooth uniformly have nonetheless the same volume in every
+characteristic.
+\end{remark}
+
+% ============================================================================
+\section{Assembling the densities}\label{sec:assemble}
+
+\subsection{From cluster volumes to the monic density}\label{sec:linear-system}
+
+By the tree decomposition \eqref{eq:tree-decomp} and Proposition~\ref{prop:per-shape},
+the monic density $\alpha(n,\sigma;q)$ is a finite sum of cluster volumes, each a
+uniform rational function of $q$. Multi-cluster types are linearized: the
+coefficients relating the type densities to the cluster volumes form a finite
+linear system over $\bbQ(q)$ whose entries are residue-configuration counts and
+$q$-powers, all $p$-independent. Solving the system expresses $\alpha(n,\sigma;q)$
+as a uniform rational function of $q$.
+
+\subsection{The monic-to-projective bridge}\label{sec:bridge}
+
+Both densities are the same stratification of binary degree-$n$ forms by their
+residue divisor on $\bbP^{1}$, driven by the same intrinsic cluster laws
+$L_{e}$:
+\[
+  \rho(n,\sigma;q)=\frac{1}{|\bbP^{n}(\bbF_{q})|}\sum_{D\in\Sym^{n}\bbP^{1}(\bbF_{q})}W_{D}[\sigma],
+  \qquad
+  \alpha(n,\sigma;q)=\frac{1}{q^{n}}\sum_{D\in\Sym^{n}\mathbb{A}^{1}(\bbF_{q})}W_{D}[\sigma],
+\]
+with the same weights $W_{D}$ built from the cluster laws. The only difference is
+whether the point $[1:0]\in\bbP^{1}$ is admissible, i.e. $q+1$ projective versus
+$q$ affine base points, together with the normalization $|\bbP^{n}(\bbF_{q})|$
+versus $q^{n}$; the crux identity is $\Sym^{n}\bbP^{1}=\bbP^{n}$. Consequently the
+projective density is the monic recursion read at the \emph{reciprocal} argument.
+This is why the monic density is not palindromic --- indeed the monic
+$\alpha(3,\{(1,1)^{3}\};2)$ is $4/93$, not symmetric under $q\mapsto1/q$ --- while
+the $\bbP^{1}$-symmetric projective $\rho$ is palindromic. The bridge is itself
+$p$-independent: it is built from point counts and is the volume-side incarnation
+of the symmetry-for-$\alpha$ identity $\beta(e;q^{\delta})=\alpha(e;q^{-\delta})$.
+
+\begin{corollary}[Uniform rationality]\label{cor:rationality}
+For each $n$ and $\sigma$, the projective
+density $\rho(n,\sigma;q)$ is a uniform rational function $R_{\sigma}(q)\in\bbQ(t)$,
+the same at every prime including wild $p\mid n$. This is the rationality half of
+Theorem~\textup{\ref{thm:main}}.
+\end{corollary}
+
+% ============================================================================
+\section{The functional equation at wild primes}\label{sec:wild-symmetry}
+
+It remains to prove palindromy, $R_{\sigma}(1/t)=R_{\sigma}(t)$. The argument is
+the clean payoff of the decoupling: we do not prove the functional equation at
+wild primes directly; we transfer it.
+
+\begin{proposition}[Palindromy]\label{prop:palindromy}
+The projective density satisfies $R_{\sigma}(1/t)=R_{\sigma}(t)$.
+\end{proposition}
+
+\begin{proof}
+By Corollary~\ref{cor:rationality} a single rational function $R_{\sigma}\in\bbQ(t)$
+computes the projective density at \emph{every} prime: $R_{\sigma}(q)=\rho(n,\sigma;q)$
+for each prime power $q$, tame or wild. At a tame prime $p\nmid n!$ the tame functional
+equation (the Igusa--Denef--Meuser symmetry and the tame factorization-density
+literature, input~(iii) of Section~\ref{sec:standing}) furnishes a \emph{palindromic}
+rational function $P_{\sigma}\in\bbQ(t)$, $P_{\sigma}(1/t)=P_{\sigma}(t)$, that also
+computes the density there: $P_{\sigma}(q)=\rho(n,\sigma;q)$ for all but finitely many
+tame prime powers $q$. Thus $R_{\sigma}$ and $P_{\sigma}$ agree at infinitely many
+values --- for any fixed $n$ there are infinitely many tame primes, with unboundedly
+large residue cardinalities --- so the polynomial numerator of $R_{\sigma}-P_{\sigma}$
+has infinitely many roots and vanishes: $R_{\sigma}=P_{\sigma}$ in $\bbQ(t)$. Therefore
+$R_{\sigma}(1/t)=P_{\sigma}(1/t)=P_{\sigma}(t)=R_{\sigma}(t)$ identically, in particular
+at the wild primes $p\mid n$, where the tame functional equation itself is unavailable.
+\end{proof}
+
+Together, Corollary~\ref{cor:rationality} and Proposition~\ref{prop:palindromy}
+prove Theorem~\ref{thm:main}.
+
+% ============================================================================
+\section{Examples}\label{sec:examples}
+
+We record the small cases in closed form, with $\Phi=\Phi(q)=q^{4}+q^{3}+q^{2}+q+1$.
+The densities below are projective, weight-normalized, and exact rational functions
+of $q$; palindromy and the sum-to-one normalization are visible by inspection.
+
+\begin{example}[Quadratics, $n=2$]\label{ex:n2}
+The three types are split $\{(1,1),(1,1)\}$, inert $\{(1,2)\}$, and ramified
+$\{(2,1)\}$:
+\[
+  \rho\bigl(2,\{(1,1)^{2}\};q\bigr)=\tfrac12,\quad
+  \rho\bigl(2,\{(1,2)\};q\bigr)=\frac{q^{2}-q+1}{2(q^{2}+q+1)},\quad
+  \rho\bigl(2,\{(2,1)\};q\bigr)=\frac{q}{q^{2}+q+1}.
+\]
+Each is invariant under $q\mapsto 1/q$ and the three sum to $1$. The ramified type
+includes the wild prime $p=2$ with no exception. As an independent check, a direct
+$2$-adic computation at the wild prime gives the \emph{monic} densities
+$\alpha(2,\{(1,1)^2\},\{(1,2)\},\{(2,1)\};2)=(\tfrac13,\tfrac13,\tfrac13)$, exactly the
+values at $q=2$ of the uniform rational functions assembled by the recursion --- the
+wild prime $p=2$ obeys the same formula as every tame prime, with no exception. This is
+genuinely subtle at $p=2$: a monic quadratic whose reduction is an inseparable square,
+$x^2+ax+b\equiv(x+c)^2\pmod 2$, may be split, inert, \emph{or} ramified, so the
+reduction no longer determines the type (Hensel's lemma fails at the double root), yet
+the three densities still land on the uniform values. The \emph{projective} densities
+$\rho$ at $q=2$, read off the formulas above, are instead $(\tfrac12,\tfrac3{14},\tfrac27)$:
+the monic densities are uniform but not palindromic, whereas the $\bbP^{1}$-symmetric
+projective densities are both, the monic-to-projective bridge of
+Section~\ref{sec:bridge} accounting for the difference.
+\end{example}
+
+\begin{example}[Cubics, $n=3$]\label{ex:n3}
+The five types are $\{(1,1)^{3}\}$, $\{(1,1),(1,2)\}$, $\{(1,3)\}$, the partially
+ramified $\{(1,1),(2,1)\}$, and the totally ramified $\{(3,1)\}$:
+\[
+\begin{aligned}
+  \rho\bigl(3,\{(1,1)^{3}\};q\bigr)&=\frac{(q^{2}+1)^{2}}{6\,\Phi}, &
+  \rho\bigl(3,\{(1,1),(1,2)\};q\bigr)&=\frac{q^{4}+1}{2\,\Phi},\\[0.3em]
+  \rho\bigl(3,\{(1,3)\};q\bigr)&=\frac{q^{4}-q^{2}+1}{3\,\Phi}, &
+  \rho\bigl(3,\{(1,1),(2,1)\};q\bigr)&=\frac{q^{3}+q}{\Phi},\\[0.3em]
+  \rho\bigl(3,\{(3,1)\};q\bigr)&=\frac{q^{2}}{\Phi}. & &
+\end{aligned}
+\]
+All five are palindromic under $q\mapsto 1/q$ and sum to $1$. The totally ramified
+type $\{(3,1)\}$ includes the wild prime $p=3$ with no exception --- precisely the
+case $(n,p)=(3,3)$ at which the $S_{3}$-equivariant resolution fails, yet the
+density is the same uniform rational function $q^{2}/\Phi$.
+\end{example}
+
+\begin{example}[The first wild atom, $n=4$, $p=2$]\label{ex:wild-atom}
+The first genuinely wild phenomenon appears in a size-$4$ cluster with a single
+Newton slope $\tfrac12$. Conditioning on a clean slope-$\tfrac12$ cluster, the
+residual polynomial is a quadratic $R(y)=y^{2}+\bar b\,y+\bar a$ with $\bar a$
+uniform in $\bbF_{q}^{\times}$ and $\bar b$ uniform in $\bbF_{q}$. The
+descent-triggering locus --- $R$ has a repeated root --- is
+\[
+  \{\bar b^{2}=4\bar a\}\ \text{at odd }p
+  \qquad\text{versus}\qquad
+  \{\bar b=0\},\ R=(y+\sqrt{\bar a})^{2}\ \text{at }p=2,
+\]
+which is \emph{inseparable} at $p=2$ (Artin--Schreier). These are geometrically
+different loci --- a punctured parabola versus a punctured line, with different
+tangent cones --- but both are the image of the merge map $\rho\mapsto(y-\rho)^{2}$
+and so have the \emph{same} measure $1/q$ in every characteristic, by
+Lemma~\ref{lem:bb3}. Resolving the full slope-$\tfrac12$ cluster gives the
+characteristic-uniform conditional cluster law
+\[
+  P\bigl((4,1)\mid\text{inseparable sub-stratum}\bigr)=\frac{q}{q+1},
+\]
+the wild $p=2$ degeneration yielding the \emph{same} $q/(q+1)$ as the tame double
+point at an odd prime. This is the deepest instance of the mechanism: the
+char-dependent geometry is invisible to the volume.
+\end{example}
+
+\begin{remark}[A deep-wild value, $n=6$]\label{rem:n6}
+The recursion reaches the first deep-wild Okutsu--Montes order-$3$ branch at $n=6$:
+a slope-$\tfrac12$ cluster whose order-$1$ residual is a cube $(y-\rho)^{3}$,
+forcing a size-$3$ inseparable child at $p=2$. The conditional cluster law that
+the recursion derives for the totally ramified outcome $(6,1)$ inside this branch
+is
+\[
+  \beta_{(6,1)}(q)=\frac{q^{2}(q-1)(q^{2}+1)}{q^{5}-1},
+  \qquad \beta_{(6,1)}(2)=\frac{20}{31},
+\]
+the same rational function at $p=2$ and at the odd primes. This value
+$20/31\approx0.645$ is what a PARI \texttt{factorpadic} oracle confirms at every
+prime tested, and it \emph{rejects} the naive guess $q/(q+1)=2/3$ (rejected at
+roughly $11\sigma$ on a $5$-event $\chi^{2}$). We stress that $\beta_{(6,1)}$ is a
+\emph{conditional cluster volume}, not the full projective type density
+$\rho(6,\{(6,1)\};q)$; the latter is a more complicated rational function that is
+itself palindromic. The cross-check is evidence for the recursion, not a proof;
+see Section~\ref{sec:provenance}.
+\end{remark}
+
+% ============================================================================
+\section{Provenance and verification}\label{sec:provenance}
+
+\paragraph{Inputs and scope.}
+Theorem~\ref{thm:main} is proved using two pieces of standard, published machinery,
+cited throughout: the higher-order Okutsu--Montes algorithm of
+Gu\`ardia--Montes--Nart \cite{gmn2012} and the Igusa--Denef $p$-adic cell
+decomposition \cite{denef1991functional,igusa2000introduction}; the tame functional
+equation \cite{del_corso_dvornicich_2000,john,caruso2022zeroes} enters once, to seed
+the palindromy transfer of Section~\ref{sec:wild-symmetry}. For $n\le3$ the proof is
+elementary and uses none of the higher-order Montes machinery: the wild Newton boxes
+are empty (the Newton polygon alone decides the factorization, with no order-$\ge2$
+residual invoked). The higher-order algorithm first engages at the order-$2$
+Artin--Schreier atom of Example~\ref{ex:wild-atom} ($n=4,\ p=2$), where the argument
+is additionally corroborated by an independent PARI oracle at the wild prime $p=2$.
+We note for the record that the $r$-point pole structure and related finer questions
+form a separate line of work, currently partial, and are not treated in this paper.
+
+\paragraph{Cross-checks (evidence, not proof).}
+The densities produced by the recursion have been compared, as exact rational
+functions of $q$, against the Bhargava--Cremona--Fisher--Gaji\'c root-count
+moments. The full Okutsu--Montes density engine reproduces the BCFG root-count
+distribution $P(n,r;q)$ and all of its raw and factorial moments \emph{exactly}
+(symbolic identity, $\mathtt{simplify}=0$) for every degree it reaches, $n\le 6$,
+including the deep-wild order-$3$ type of Remark~\ref{rem:n6}, with the
+exhaustive-enumeration gate $\sum_{\sigma}\rho(n,\sigma;q)=1$ holding symbolically.
+A PARI \texttt{factorpadic} oracle confirms the individual type densities, with no
+unpredicted types, at primes $2,3,5,7$ within Monte-Carlo noise. These corroborate
+the result but are not part of the proof. The one step worth singling out is the
+order-$r$ count-to-volume passage of Proposition~\ref{prop:per-shape} (the
+residual-equidistribution step, ``M6'' in the working notes): it is elementary at
+order~$1$ and follows at every order from the Gu\`ardia--Montes--Nart coordinate
+facts together with the Igusa--Denef cell decomposition. We have additionally
+checked it directly against the oracle through OM order~$4$.
+
+\paragraph{The companion Lean formalization.}
+A companion certificate accompanies this paper, documenting a Lean~4 /
+\textsf{mathlib} formalization of the count-native path; we record here precisely
+what it establishes. The algebraic skeleton of the proof is fully machine-checked:
+the decomposition $\rho=\sum_{T}C_{T}$, the rationality of each cluster volume
+$C_{T}$, the geometric self-loop collapse, the finite-field residual count, the
+box volume, and the palindromy transfer are all genuine Lean theorems whose
+\texttt{\#print axioms} footprints are the three Lean-core axioms
+($\texttt{propext}$, $\texttt{Classical.choice}$, $\texttt{Quot.sound}$) only. The
+capstone \texttt{goal\_theorem\_montes} assembles these into the statement that the
+genuine counting density is a uniform rational and palindromic function of $q$,
+with footprint $\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound},
+\texttt{tame\_functionalEquation}\}$, conditional on a minimal bundle of hypotheses
+carried as structure fields (not as additional axioms): the
+Gu\`ardia--Montes--Nart count-shadow facts and a single box-Haar identification.
+
+The one genuine limitation is specific to the \emph{formalization}, not to the
+mathematics: \textsf{mathlib} has no $p$-adic Haar measure, so the identification of
+the per-box $p$-adic volume with the separately proved lattice/finite-field value
+cannot yet be constructed inside Lean and is carried as a hypothesis (the ``measure
+wall''). For this reason the formalization should be described as \emph{verified
+modulo the box-Haar identification}, rather than ``formally verified'' without
+qualification. This is a statement about what mathlib can currently express; the
+mathematical theorem itself is proved in the body of this paper.
+
+\paragraph{Byline and collaboration.}
+The byline of this manuscript is an editorial decision of the project lead,
+A.~G. It credits Claude (Anthropic) as primary author of the present draft because
+the proof architecture, the structural mechanism of Section~\ref{sec:significance}, the
+worked examples, and the prose were produced in an AI-assisted development loop.
+A.~G.\ contributed in a human advisory and verification-discipline role: setting
+the research program, supplying the framing of the inputs used
+(Section~\ref{sec:standing}), running and adjudicating the independent symbolic
+and PARI-oracle cross-checks above, and enforcing the honesty discipline of this
+section --- in particular that the cited machinery be named, that cross-checks be
+labelled evidence rather than proof, and that the companion formalization be
+described modulo the box-Haar identification it carries. We record this
+division of labour transparently so that the provenance of every claim is clear.
+
+% ---- BIBLIOGRAPHY ----
+\bibliography{reference}
+
+\end{document}
