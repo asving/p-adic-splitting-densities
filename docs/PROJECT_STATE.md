@@ -46,6 +46,23 @@ the whole point.** A standing semantic audit (2026-07-19) established the follow
   only**, is **monic** (not projective), carries **no palindromy**, and feeds no `Goal` capstone.
 - The Okutsu–Montes classifier subsystem is formalized (higher-order Newton polygons, residual
   polynomials, the OM tree/type, φ-adic development) — the ~95-module `LeanUrat/OM/`.
+- **The rebased V2 capstone chain (2026-07-19, M9-rebase waves W1–W3;
+  `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`).** `OM/RealInstanceV2.montes_unconditional_v2`: for
+  every degree-`n` type σ, the σ-KEYED corrected engine density `∑_{T ∈ omMenu n σ} omCount T q'`
+  is uniform-rational (unconditional), the real decided counting density at `realP` equals its
+  value (unconditional — the counting legs are the PROVED `h_node0` limits), and it is palindromic
+  GIVEN the explicit hypothesis `htameFE` (no axiom: footprint is Lean-core ONLY). Fires
+  `goal_theorem_montes_v2` through the first non-trivial real `DensityFoundation` instance
+  (`realF2`). **Non-vacuous and σ-dependent, machine-checked**: value 1/4 at n=2 inert
+  (`gate_v2_countingDensity_inert2`, through the real instance), split 1/9 ≠ inert 1/3 at the tame
+  prime q'=3 (σ-separation, O1 reversed), ramified menu honestly empty, `htameFE` certified a
+  non-trivial constraint at a tame prime (`gate_v2_htameFE_nontrivial`), zero-coefficient mutation
+  refuses to compile (V1 reversed at the instance). The `_exhaustive` companion adds the
+  bracket-uniqueness full-density clause behind the honest `hExhaust` (undecided mass → 0 — open,
+  Phase B drainage). Scope honesty: the certified density is the order-0-decided stratum density;
+  wild self-loop legs re-enter as hypotheses only when the Phase-B menu grows. Gates: 10 Lean gate
+  theorems (`OM/RealInstanceV2Gates.lean`), 21/21 exact Python brute-force cross-check, 2026-07-19
+  fresh-context semantic audit clean (no critical error, single gap closed same day).
 
 ### `sorry`-free but NOT (yet) a non-vacuous proof of the full theorem
 
@@ -176,12 +193,16 @@ order ≥ 2 → tower reader) makes the "classify = Montes tree" coincidence hon
 Three distinct gaps separate the current Lean from a machine-checked proof of the full theorem; they
 should not be conflated (this is the mistake an earlier draft of this document made):
 
-1. **Non-vacuity / the density instance (the nearest and most important gap).** The palindromic
-   capstones are `∀ F` conditionals; their only real instance is trivial (degree-0) and the intended
-   all-orders instance is vacuous (density ≡ 0, σ-independent, false hypothesis — see §2).
-   *Closing it:* repair the `decode` so classifier cells carry real payloads (non-empty ⟹ non-zero
-   coefficients), and σ-resolve the menu so the certified function is the genuine per-type `ρ(n,σ;q)`.
-   This is combinatorial/constructive, not analytic — the honest next milestone.
+1. **Non-vacuity / the density instance — SUBSTANTIALLY CLOSED at order 0 (2026-07-19).** The
+   V2 rebase (§2, `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`) delivers a non-vacuous, σ-keyed,
+   Goal-firing real instance and capstone (`montes_unconditional_v2`, Lean-core-only footprint),
+   with V1 (density ≡ 0) and O1 (σ-independence) both reversed by machine-checked gates. The OLD
+   vacuous `M9.montes_unconditional` + its `clusterCount` bridge still exist pending the
+   signed-off W4 swap (rename v2 → `montes_unconditional`, quarantine the old chain, RETIRE the
+   axiom `realDensity_tame_functionalEquation` — a trusted-base reduction). Remaining density
+   content beyond order 0 is Phase B: menu growth (deeper decided shapes), the wild self-loop
+   `h_node` legs, exhaustiveness/drainage (`hExhaust`), and the faithful tame-FE discharge
+   (needs exhaustiveness + the M1 projective bridge).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
    in progress (§4).
 3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.

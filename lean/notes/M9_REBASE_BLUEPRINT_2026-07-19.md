@@ -2,7 +2,12 @@
 
 **Date: 2026-07-19. Status: SIGNED OFF (Asvin, 2026-07-19) — D1 = (i) additive-then-swap;
 D3 = (a) include the full-density clause behind `hExhaust`; D4 = retire the axiom (tame FE as
-hypothesis; v2 capstone footprint Lean-core only). D2/D5 as specified. W1 in flight.**
+hypothesis; v2 capstone footprint Lean-core only). D2/D5 as specified.
+W1–W3 COMPLETE (2026-07-19): `MontesV2.lean` + `OM/RealInstanceV2Prep.lean` + `OM/RealInstanceV2.lean`
++ `OM/RealInstanceV2Gates.lean` all green, capstones + 10 gates core-only, census zero-regression
+(585 entries), Python gate 21/21 exact, fresh-context semantic audit 9/10 PASS with the one
+justification gap (tame-prime htameFE non-triviality) closed by `gate_v2_htameFE_nontrivial`.
+W4 (the swap + axiom retirement) AWAITING SIGN-OFF.**
 
 Successor to `VACUITY_SIGMA_BLUEPRINT.md` (whose Phase A is **complete** in the repo:
 `montes_order0_unconditional`, `h_node0_proved`, `montes_order0_density_general_prime` + positivity

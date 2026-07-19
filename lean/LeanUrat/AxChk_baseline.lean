@@ -55,6 +55,10 @@ import LeanUrat.OM.SelfLoopFixpoint
 import LeanUrat.OM.SelfLoopFixpointGeneralMu
 import LeanUrat.OM.ConditionalDensity
 import LeanUrat.OM.TameRealDensity
+import LeanUrat.MontesV2
+import LeanUrat.OM.RealInstanceV2Prep
+import LeanUrat.OM.RealInstanceV2
+import LeanUrat.OM.RealInstanceV2Gates
 open LeanUrat
 
 -- Capstones
@@ -682,3 +686,30 @@ open LeanUrat
 --   Non-vacuous: montes_tame_realDensity_certified_value_pos > 0 (dominated by the order-1 gate). Core-only.
 #print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_of_exhaustive
 #print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_certified_value_pos
+-- ★★★ M9 REBASE V2 (W2-W3) — the corrected σ-keyed capstone chain (notes/M9_REBASE_BLUEPRINT_2026-07-19.md).
+-- W1: goal_theorem_montes_v2 / goal_theorem_via_montes_v2 = the Goal-layer siblings over the
+-- abstract-coefficient MontesDataV2 (D2). W2: montes_unconditional_v2(_exhaustive) = the rebased
+-- capstones over the REAL instance (realM2/realD2/realF2, C := omCount over the σ-keyed omMenu):
+-- (R) uniform rationality + (V) decided-density tie UNCONDITIONAL; palindromy via the HYPOTHESIS
+-- htameFE (D4 — the old axiom realDensity_tame_functionalEquation is NOT consumed), so the
+-- footprints MUST be Lean core ONLY (an axiom appearing here is a stop-the-line event). W3 gates
+-- (RealInstanceV2Gates): G1 non-vacuity at the capstone's own density (inert n=2 menu sum = 1/4 > 0
+-- at realP, + the realM2 countingDensity pin), G2 σ-separation (split 1/9 ≠ inert 1/3 at q'=3;
+-- ramified menu ∅, sum 0 ≠ 1/4) — the V1/O1 reversals, machine-checked. MUST all be core-only:
+#print axioms LeanUrat.MontesV2.goal_theorem_montes_v2
+#print axioms LeanUrat.MontesV2.goal_theorem_via_montes_v2
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_v2
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_v2_exhaustive
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_value_inert2
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_nonvacuous
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_countingDensity_inert2
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_split_q3
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_inert_q3
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_sigma_separation
+#print axioms LeanUrat.OM.RealInstanceV2Gates.omMenu_ramified_empty
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_ramified_zero
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_ramified_vs_inert
+-- G1-tame (semantic-audit item 2, 2026-07-19): htameFE's value clause quantifies over TAME primes
+-- q > n; this pins realF2.density > 0 at the tame prime 3 (inert n=2, value 1/3), so the capstone's
+-- palindromy hypothesis constrains a genuinely NONZERO rational function (num = 0 witness excluded):
+#print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_htameFE_nontrivial
