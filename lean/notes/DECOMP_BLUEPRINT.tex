@@ -1,0 +1,1114 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}{Axiom}
+\renewcommand{\theaxiom}{M\arabic{axiom}}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\OK}{\mathcal{O}_K}
+\newcommand{\Odelta}{\mathcal{O}_\delta}
+\newcommand{\Fq}{\mathbb{F}_q}
+\newcommand{\Fr}{\mathbb{F}_r}
+\newcommand{\Zp}{\mathbb{Z}_p}
+\newcommand{\Qp}{\mathbb{Q}_p}
+\newcommand{\Monic}{\mathrm{Monic}}
+\newcommand{\type}{\mathrm{type}}
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\NP}{\mathrm{NP}}
+\newcommand{\rhocount}{\rho}
+\newcommand{\vp}{v}
+\DeclareMathOperator{\dvg}{\mathbf{v}}
+
+\title{A counting-model blueprint for the $p$-adic density decomposition:\\
+density as a sum over the OM tree, with the geometric collapse \\
+\large (derived from one Montes axiom $+$ elementary counting)}
+\author{Blueprint for hand-verification before formalization}
+\date{2026-06-19}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a precise, self-contained derivation that the $p$-adic factorization-type
+density $\rhocount(n,\sigma;q)$ is a \emph{finite sum over the combinatorial
+Okutsu--Montes (OM) tree-shapes} of rational coefficients $C_T(q)$, \emph{and}
+that each $C_T(q)$ is obtained from an \emph{infinite} literal OM tree by a
+\emph{self-loop collapse}. The collapse is a single geometric series
+$V=a+rV\Rightarrow V=a/(1-r)$ \emph{only} at a size-$2$ self-loop; at a size-$s\ge3$
+self-loop it is a \emph{well-founded nested system} of geometric series (a
+size-$s$ self-loop pivot $1/(1-q^{-w(s)})$ applied to a finite sum over
+$\ge2$-block partitions whose blocks carry \emph{strictly smaller} child volumes),
+and the slowest mode of the depth-graded tail is $q^{-2}$, \emph{not} $q^{-w(s)}$.
+Each $C_T(q)$ is nonetheless rational with denominator a product of cyclotomic
+factors $(q^{w(s)}-1)$. The single imported assumption is a
+\emph{count-multiplicativity} axiom (axiom~\ref{ax:montes}, ``what Montes says
+about factorization given the Newton polygon''); everything else --- finiteness
+of shapes, the partition, counting-additivity, the nested collapse, and
+rationality --- is \emph{proved} from that axiom plus elementary counting.
+The whole argument is run in a \textbf{counting model} (\S\ref{sec:counting}) in
+which the abstract $p$-adic Haar ``measure wall'' never appears: additivity is
+counting-additivity, ball/box volumes are residue-class counts, and the
+collapse is a finite geometric sum (resp.\ a finite nested system) followed by an
+honest $N\to\infty$ limit. Every closed-form claim below is confirmed by an
+\emph{exact} (rational-arithmetic, never Monte-Carlo) enumerator over $\Zp/p^N$;
+see \S\ref{sec:formalization}, \texttt{notes/decomp\_blueprint\_verify.py} and
+\texttt{notes/r1\_verify.py}.
+\end{abstract}
+
+\paragraph{Changelog (2026-06-19, after adversarial exact-enumeration review).}
+The crux was restated to fix a structural error and several normalization slips
+surfaced by independent exact (rational-arithmetic) enumeration over $(\Zp/p^N)^s$
+at $p\in\{2,3,5,7\}$:
+\begin{enumerate}[label=\textup{[F\arabic*]},nosep,leftmargin=*]
+\item\textbf{The size-$s$ self-loop is NOT a single geometric series for $s\ge3$.}
+The previous draft wrote $V=a+rV$ with a \emph{constant} $a$ and a \emph{single}
+ratio $r=q^{-w(s)}$ at every $s$. Exact enumeration shows this is true only for
+$s=2$. For $s=3$ the lumped $a_N$ \emph{strictly increases} with precision $N$
+(e.g.\ $p{=}2$: $L_N=0,\tfrac3{16},\tfrac{123}{512},\dots$, not constant) and the
+depth-increment ratio $D_N/D_{N-1}\to q^{-2}=\tfrac14$ (the nested size-$2$
+sub-cluster), \emph{not} $q^{-w(3)}=q^{-5}=\tfrac1{32}$. The crux is now stated as
+the \emph{nested multi-block recursion} (Theorem~\ref{thm:nested}); the single
+geometric series is its $s=2$ special case (Lemma~\ref{lem:s2}).
+\item\textbf{The verifier's $s=3$ block now matches.} The old script ran a
+single-geometric extrapolator on $s=3$ and \emph{failed}; the new
+\texttt{decomp\_blueprint\_verify.py} (i)~confirms $s=2$ exactly, (ii)~exhibits
+the $s\ge3$ failure of the single-geometric model as a deliberate demonstration,
+and (iii)~checks the nested recursion against the closed forms and against a
+rigorous exact bracket $[L_N,L_N+U_N]$: $I_3=8/31\in[0.25800,0.28131]$ at $p{=}2$,
+$189/484\in[0.39026,0.42699]$ at $p{=}3$.
+\item\textbf{Corrected the boxed $s=2$ coefficient:} $a=(q-1)/q$ exactly
+(verified $a=\tfrac12,\tfrac23,\tfrac45$ at $p=2,3,5$), and $a/(1-q^{-2})=q/(q+1)$.
+The garbled product on the old line~417 is removed.
+\item\textbf{Normalization caveat on $\rhocount$:} the assembly
+$(q^2+1)^2/(6\Phi_5)$ is the \emph{projective / $3$-distinct-points} density, not
+the monic counting density of Definition~\ref{def:count}; it is now labeled as
+such (it uses the symmetry factor $3!$ and division by $|\mathbb P^3|$). The monic
+type densities are different rationals (e.g.\ inert quadratic
+$=(q-1)/(2q)$, exactly verified).
+\item\textbf{Squarefree/a.e.\ caveat} added to Definition~\ref{def:count}: the
+type is defined off the measure-zero discriminant locus.
+\end{enumerate}
+
+\paragraph{Changelog (2026-06-21, box-wise refactor of the Montes input).}
+The single Lean field that previously bundled the entire per-node count recursion
+(\texttt{MontesData.nodeMultiplicativity}) has been \emph{decomposed} into box-wise
+measure-theoretic primitives, three of which are now \emph{genuinely proved} in Lean
+(core-only \texttt{\#print axioms}), leaving \emph{one} minimal irreducible
+box-Haar/equidistribution assumption. \S\ref{sec:ledger} (new) records the resulting
+\textbf{exact assumed-vs-proven ledger} item by item, matching the
+\texttt{\#print axioms} reality of the current Lean development. In short: the
+per-node factorization \eqref{eq:nodefactor} is now a \emph{Lean theorem}
+(\texttt{nodeMultiplicativity}, core-only) derived from a proved box-volume
+($T\_BB1$), a proved residual-config count ($T\_BB3$), proved box-additivity, and the
+single minimal axiom; the abstract $p$-adic Haar identification is the only
+irreducible residue, isolated to the per-box fields
+\texttt{boxHaarEquidist}\,/\,\texttt{nodeMeasure\_boxSum}. The headline theorem
+\texttt{goal\_theorem\_montes} carries exactly
+$\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound},\
+\texttt{tame\_functionalEquation}\}$; the rationality/decomposition constants carry
+only the three Lean-core axioms. \S\ref{sec:ledger} also records the resolved
+non-vacuity witness (the full coupled bundle is now sorry-free inhabited).
+
+\tableofcontents
+
+\section{Setup and the counting model}\label{sec:counting}
+
+\subsection{Conventions}
+
+Let $K/\Qp$ be a finite \emph{unramified} extension with residue field $\Fq$
+($q=p^k$), ring of integers $\OK$, uniformizer $\pi$ (we may take $\pi=p$),
+normalized valuation $\vp$ with $\vp(p)=1$, and Haar measure $\mu$ normalized by
+$\mu(\OK)=1$. Unramifiedness is essential and is used throughout: $\vp(p)=1$ is
+the one normalization constant that carries all the characteristic dependence, and
+it is preserved under unramified base change. For the unramified extension
+$K_\delta/K$ of degree $\delta$ we write $\Odelta$, residue field $\mathbb F_{q^\delta}$,
+$Q:=q^\delta$, and use the index identity
+\begin{equation}\label{eq:index}
+  [\Odelta : p^m\Odelta] = Q^m \qquad\text{for every prime, the same $Q$.}
+\end{equation}
+
+A \emph{factorization type} $\sigma$ of degree $n$ is the multiset of pairs
+$(e_i,f_i)$ ($\sum_i e_if_i=n$) of ramification/residue indices of the irreducible
+$p$-adic factors of a monic degree-$n$ polynomial. The object of interest is the
+\emph{density} of monic polynomials of type $\sigma$.
+
+\subsection{The counting-model definition of density}
+
+The classical definition would use Haar measure on the coefficient space
+$\OK^n\cong\{f=x^n+a_{n-1}x^{n-1}+\dots+a_0\}$. mathlib has no $p$-adic Haar
+measure (and constructing it is the ``measure wall''), and even informally the
+additivity/ball-volume bookkeeping is where the abstract argument gets heavy. We
+sidestep this by \emph{defining} the density as a limit of finite normalized counts.
+
+\begin{definition}[Counting-model density]\label{def:count}
+Fix $n$ and a type $\sigma$. For a precision $N\ge 1$, identify a monic
+$f\in(\OK/p^N)[x]$ of degree $n$ with its coefficient tuple
+$(a_0,\dots,a_{n-1})\in(\OK/p^N)^n$, so there are exactly $q^{nN}$ of them. Say
+$f$ \emph{has type $\sigma$ resolved at precision $N$} if every lift of $f$ to a
+monic polynomial over $\OK$ has factorization type $\sigma$ --- i.e.\ the type is
+\emph{decided} by the digits below $p^N$. Define
+\begin{equation}\label{eq:rhodef}
+  \rhocount(n,\sigma;q)\;:=\;\lim_{N\to\infty}\,
+  q^{-nN}\cdot\#\bigl\{\,\text{monic }f\in(\OK/p^N)[x]\text{ of degree }n
+  : \type(f)=\sigma\text{ resolved at }N\,\bigr\}.
+\end{equation}
+The factorization type is only well-defined on the \emph{separable} (squarefree)
+locus $\{\disc f\ne0\}$; on the complementary $\{\disc f=0\}$ locus (repeated
+irreducible factors) the type as a multiset of $(e_i,f_i)$ is not determined by
+finitely many digits. That locus is measure-zero (it is cut out by the nonzero
+polynomial $\disc f$), so it is irrelevant to the limit \eqref{eq:rhodef}; the
+``resolved at $N$'' clause automatically excludes it (a polynomial with a repeated
+factor is never decided), and it contributes to $U_N\to0$ rather than to any
+$L_N$. We always work on the squarefree locus.
+\end{definition}
+
+\begin{lemma}[The counting model computes the Haar density]\label{lem:countHaar}
+The limit \eqref{eq:rhodef} exists and equals the Haar volume
+$\mu\{f\in\OK^n:\type(f)=\sigma\}$, whenever the latter is defined (i.e.\ off a
+measure-zero locus).
+\end{lemma}
+
+\begin{proof}
+Write $L_N := q^{-nN}\cdot\#\{f:\type=\sigma\text{ decided at }N\}$ and
+$U_N := q^{-nN}\cdot\#\{f:\text{undecided at }N\}$. A coset
+$f+p^N(\OK/\cdots)$ of measure $q^{-nN}$ that is \emph{decided} (its type is
+determined by digits $<p^N$) has \emph{all} of its lifts of type $\sigma$ or all
+not; the cylinder $\{g\in\OK^n: g\equiv f\ (p^N)\}$ has Haar measure exactly
+$q^{-nN}$ by \eqref{eq:index} (a product of $n$ one-coordinate balls). Hence $L_N$
+is a lower bound and $L_N+U_N$ an upper bound for the Haar volume:
+\[
+  L_N \;\le\; \mu\{\type=\sigma\}\;\le\; L_N+U_N .
+\]
+$L_N$ is nondecreasing (refining a decided coset keeps it decided), so
+$\lim_N L_N$ exists. The undecided locus at precision $N$ is contained in the
+\emph{boundary} where $f$ has a repeated factor not yet separated, i.e.\ a subset
+of the discriminant-vanishing locus $\{\,\vp(\disc f)\ge N-c\,\}$ for a constant
+$c=c(n)$; this has Haar measure $\to 0$ (the discriminant is a nonzero polynomial,
+so $\{\vp(\disc f)\ge M\}$ has measure $O(q^{-\lfloor M/2\rfloor})\to0$). Thus
+$U_N\to0$ and $L_N\to\mu\{\type=\sigma\}$.
+\end{proof}
+
+\begin{remark}[Why this sidesteps the measure wall]\label{rem:wall}
+In the counting model every measure-theoretic primitive used below is an
+\emph{elementary finite count}:
+\begin{itemize}[nosep]
+\item \textbf{Additivity} is counting-additivity over a finite partition of
+$(\OK/p^N)^n$ --- trivial, no $\sigma$-algebra needed.
+\item \textbf{Ball / box volume} is a residue-class count divided by $q^{nN}$:
+$\mu\{\,\vp(c)\ge h\,\}=q^{-h}$ because the condition $c\equiv0\ (p^h)$ singles
+out $q^{N-h}$ of the $q^N$ residues mod $p^N$ in that coordinate, and
+$q^{N-h}/q^N=q^{-h}$; similarly $\mu\{\vp(c)=h\}=(1-q^{-1})q^{-h}$. These are
+\eqref{eq:index} restated as counting.
+\item \textbf{The geometric collapse} (\S\ref{sec:collapse}) is a \emph{finite}
+geometric sum of such counts at each precision $N$, followed by the honest
+$N\to\infty$ limit of Definition~\ref{def:count}.
+\end{itemize}
+We never invoke an abstract Haar measure; Lemma~\ref{lem:countHaar} is the only
+bridge to the classical statement, and it is itself elementary.
+\end{remark}
+
+\section{The Montes axiom (the one imported assumption)}\label{sec:axiom}
+
+We import \emph{exactly one} fact, the count-shadow of Montes' factorization
+theorem ``given the Newton polygon''. We state it as an axiom and mark it (A).
+Everything in \S\S\ref{sec:decomp}--\ref{sec:rational} is then (B), proved from
+(A) plus elementary counting.
+
+\subsection{The OM tree of strata}
+
+\begin{definition}[OM tree and shapes]\label{def:omtree}
+Following Gu\`ardia--Montes--Nart (GMN, \emph{Newton polygons of higher order in
+algebraic number theory}, Trans.\ Amer.\ Math.\ Soc.\ \textbf{364} (2012)
+361--416; arXiv:0807.2620), a monic $f\in\OK[x]$ carries OM/Montes data organized
+as a rooted tree. Each \emph{node} of order $r$ records:
+\begin{enumerate}[label=(\roman*),nosep]
+\item an order-$r$ \emph{key polynomial} $\phi_r$ (a monic lift of the previous
+residual factor);
+\item a \emph{side} of the order-$r$ $\phi_r$-Newton polygon $N_r$, of slope
+$-h/e$ in lowest terms (a lattice polygon in $\mathbb Z\times\frac1{D_r}\mathbb Z$,
+$D_r=e_1\cdots e_{r-1}$ a $p$-independent integer);
+\item a \emph{residual polynomial} $R_r\in\Fr[y]$ over the finite order-$r$
+residue field $\Fr=\mathbb F_{q^{\delta f_1\cdots f_{r-1}}}$, together with its
+\emph{factorization pattern} (degrees and multiplicities of factors).
+\end{enumerate}
+\emph{Children} of a node are the descents on its \emph{repeated} residual
+factors (multiplicity $\ge2$); a \emph{leaf} is a multiplicity-$1$ residual
+factor, an irreducible $p$-adic factor with explicit data $(e^\ast,f^\ast)$.
+The \emph{combinatorial shape} $T$ records only this decorated tree --- orders,
+slopes $(h,e)$, residual factorization \emph{patterns} (degrees/multiplicities,
+not the residual polynomials themselves), and residue degrees $f_i$ --- not the
+specific coefficients. We write $\type(T)$ for the type $\sigma$ assembled from
+the leaf data $(e^\ast_j,f^\ast_j)$.
+\end{definition}
+
+For a fixed shape $T$ let $S_T^{(N)}\subseteq(\OK/p^N)^n$ be the set of monic $f$
+whose OM tree (resolved at precision $N$) realizes $T$; the \emph{stratum} of $T$.
+
+\subsection{The axiom}
+
+\begin{axiom}[Montes count-multiplicativity over the OM tree]\label{ax:montes}
+The OM data determines the factorization, and the count of monic polynomials lying
+in a tree-stratum \emph{factors over the tree}. Precisely:
+\begin{enumerate}[label=\textup{(\arabic*)},nosep]
+\item\label{ax:partition} \textbf{(Unique tree / partition.)} Every monic $f$ has a
+unique OM tree, so for each $N$ the strata $\{S_T^{(N)}\}_T$ (over combinatorial
+shapes $T$, together with the residual-pattern decorations resolved at $N$)
+\emph{partition} the monic polynomials of degree $n$ in $(\OK/p^N)[x]$.
+\item\label{ax:multiplicativity} \textbf{(Count-multiplicativity per node.)} Fix a
+node of the tree with order-$r$ residue field $\Fr$ ($|\Fr|=Q_r$), a chosen
+$\phi_r$-Newton-polygon side, and a residual-pattern decoration. As the on-side
+$\phi_r$-adic coefficients of $f$ range over their residue cells, the order-$r$
+residual coefficient map is a \emph{submersion} onto $\mathbb A^{d_r}(\Fr)$ (the
+residual $R_r$ is equidistributed over monic degree-$d_r$ polynomials over $\Fr$),
+and the count of monic $f$ realizing this node (at precision $N$) \emph{factors} as
+\begin{equation}\label{eq:nodefactor}
+   \#\{\text{node realized}\}
+   \;=\;
+   \underbrace{N_{\mathrm{res}}(Q_r)}_{\substack{\text{residual-pattern}\\\text{count over }\Fr}}
+   \cdot
+   \underbrace{(\text{Newton-box count})}_{\text{a }q\text{-power}}
+   \cdot
+   \prod_{\text{children}}\#\{\text{child node realized}\}.
+\end{equation}
+\item\label{ax:dichotomy} \textbf{(Leaf/descend dichotomy and strict descent.)} A
+multiplicity-$1$ residual factor is a leaf (no children); a multiplicity-$\mu\ge2$
+residual factor of residue degree $f$ descends to a child node which is a cluster
+of size $\mu$ over $K_{\delta f}$, with $\mu\le d_r$ \emph{strictly less} than the
+parent size off the unique non-progressing self-loop cell (slope denominator
+$e=1$, residual $(y-c)^{\,\text{size}}$). The descent terminates: every monic
+separable $f$ has a finite OM tree with at most $n$ leaves.
+\end{enumerate}
+\end{axiom}
+
+\begin{remark}[GMN provenance; what is and is not imported]
+Axiom~\ref{ax:montes} is the count/measure shadow of the GMN ``Theorem of the
+Polygon'' (Thm.\ 3.1) and ``Theorem of the Residual Polynomial'' (Thm.\ 3.7),
+the leaf dichotomy (Cor.\ 3.8), the descent trigger (Lemma 3.11(3)), and finite
+termination (Thm.\ 4.18 / Cor.\ 4.19). We import the \emph{combinatorial/counting}
+content only: the tree exists and partitions, and the node count factors as
+\eqref{eq:nodefactor}. We do \emph{not} import any rationality, uniformity, or
+$p$-independence statement --- those are \emph{derived} below. The axiom is
+$p$-independent: GMN holds over an arbitrary complete discretely valued field, and
+the wild/inseparable case is the \emph{generic} case of the machinery, not an
+exception. The single genuine analytic content folded into \ref{ax:multiplicativity}
+is the equidistribution/submersion claim (``residual coefficients are independent
+leading $\Fr$-digits''); this is GMN's order-$r$ coordinate description and is the
+order-$r$ analogue of the order-$1$ statement, which is elementary (see
+Remark~\ref{rem:wall}).
+\end{remark}
+
+\section{The decomposition theorem (proved)}\label{sec:decomp}
+
+\begin{theorem}[Decomposition into a finite sum over shapes]\label{thm:decomp}
+Fix $n$ and a type $\sigma$. The combinatorial OM tree-shapes $T$ with
+$\type(T)=\sigma$ form a \emph{finite} set $\mathcal T_{n,\sigma}$, and
+\begin{equation}\label{eq:decomp}
+  \rhocount(n,\sigma;q)\;=\;\sum_{T\in\mathcal T_{n,\sigma}} C_T(q),
+  \qquad
+  C_T(q):=\lim_{N\to\infty} q^{-nN}\,\#\,S_T^{(N)} = \mu(\text{stratum of }T).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\emph{Finiteness of shapes.} By Axiom~\ref{ax:montes}\ref{ax:dichotomy} every
+separable $f$ has $\le n$ leaves and finite depth. All combinatorial data of a
+shape are bounded by $n$: the residue degrees satisfy $\prod_i f_i\mid n$; each
+side has slope $h/e$ with $e\le n$; each residual has degree $d_r\le n$ so its
+factorization pattern is a partition of an integer $\le n$; the number of branch
+levels is $\le n-1$ and the number of leaves is $\le n$. A bounded-depth tree with
+bounded branching and bounded per-node decorations has finitely many shapes; the
+menu $\mathcal T_{n,\sigma}$ is finite (and, as a combinatorial set, the same for
+every $p$). [This is the finite, $p$-independent shape menu of L5fix.]
+
+\emph{Partition.} By Axiom~\ref{ax:montes}\ref{ax:partition}, for each $N$ the
+strata $\{S_T^{(N)}\}_{T}$ partition the monic degree-$n$ polynomials in
+$(\OK/p^N)[x]$, and the type-$\sigma$ locus is the disjoint union of those
+$S_T^{(N)}$ with $\type(T)=\sigma$.
+
+\emph{Counting-additivity and the limit.} For each $N$, summing the partition,
+\[
+  q^{-nN}\#\{\type=\sigma\text{ decided at }N\}
+  = \sum_{T:\ \type(T)=\sigma} q^{-nN}\,\#\,S_T^{(N)}
+\]
+(a \emph{finite} sum, by finiteness of $\mathcal T_{n,\sigma}$; the undecided
+remainder $U_N$ is the not-yet-resolved part, $\to0$ by Lemma~\ref{lem:countHaar}).
+Each summand $q^{-nN}\#S_T^{(N)}$ converges as $N\to\infty$ by the same bracketing
+as in Lemma~\ref{lem:countHaar} applied to the single shape $T$ (the stratum is
+decided off a sub-discriminant boundary of measure $\to0$). A finite sum of
+convergent sequences converges to the sum of the limits, giving
+\eqref{eq:decomp}.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:decomp} is the statement that is \emph{assumed} in the current
+Lean as the \texttt{DensityFoundation.decomposition} field. Here it is a theorem
+from Axiom~\ref{ax:montes} (partition $+$ finite menu) and elementary
+counting-additivity. \textbf{What is not yet fully internal:} the \emph{partition}
+clause \ref{ax:partition} is part of the imported axiom; in the Lean
+\texttt{PadicMeasure} layer the analogous content is the \texttt{omCells}
+\emph{exhaustiveness} (that the cell strata reconstruct the residual), which is
+also still axiomatic. So Theorem~\ref{thm:decomp} reduces the decomposition to the
+single partition statement of Axiom~\ref{ax:montes}; it does not eliminate it.
+\end{remark}
+
+\section{The geometric collapse (the crux, proved)}\label{sec:collapse}
+
+We now prove that a fixed \emph{combinatorial} shape $T$, whose \emph{literal} OM
+tree is \emph{infinite} (one node has unbounded refinement depth --- the self-loop),
+nonetheless has rational stratum-measure $C_T(q)$, via a geometric series.
+
+\subsection{The self-loop and the rescale exponent}
+
+Within a fixed combinatorial shape $T$, the only source of infinite depth is the
+\emph{self-loop}: a node whose order-$r$ Newton polygon has slope denominator
+$e=1$ and residual $R_r=(y-c)^{\,s}$ (all $s$ roots one notch deeper), so the
+``shape'' does not progress --- the deeper refinement re-presents a cluster of the
+\emph{same size} $s$. The point of this section is that, although the literal tree
+is infinite, the conditional cluster volume $V_s$ is rational; \textbf{but the
+collapse is a single geometric series only for $s=2$.} For $s\ge3$ the
+``go-one-level-deeper'' region is not a fresh copy of the same node: it splits into
+\emph{several} smaller clusters of sizes $b_1,\dots,b_r$ with $\sum b_i=s$,
+$r\ge2$, each of which is itself an infinite self-loop of a \emph{strictly smaller}
+size. The collapse is therefore a well-founded \emph{nested system} of geometric
+series (Theorem~\ref{thm:nested}), with the single-block geometric series as its
+$s=2$ instance (Lemma~\ref{lem:s2}).
+
+\begin{lemma}[Per-level self-similar rescale exponent]\label{lem:rescale}
+Consider the completely-split size-$s$ cluster, conditioned to total mass $1$, with
+volume $V_s$ equal to the self-similar Vandermonde integral
+\begin{equation}\label{eq:Idef}
+  V_s \;=\; I_s\;:=\;\int_{\Odelta^s}\;\prod_{i<j}\bigl|s_i-s_j\bigr|\;
+  \prod_i d\mu(s_i)\qquad(\text{normalized }\mu(\Odelta)=1).
+\end{equation}
+Translating to the cluster ($s_i\equiv c$) and rescaling $s_i=c+\pi t_i$ once
+multiplies the integrand $\prod_{i<j}|s_i-s_j|$ by $Q^{-\binom s2}$, the box
+$\{s_i\equiv c\}$ by $Q^{-s}$, and offers $Q$ choices of $c$; the \emph{single-block}
+(all-roots-stay-together) part of one refinement level therefore rescales the
+conditional measure by
+\begin{equation}\label{eq:rfactor}
+  r(s)\;=\;Q\cdot Q^{-s}\cdot Q^{-\binom s2}\;=\;Q^{-w(s)},\qquad
+  w(s)\;=\;s+\binom s2-1\;=\;\frac{s(s+1)}{2}-1
+  \;\;(=2,5,9,14,\dots),
+\end{equation}
+where $Q=q^\delta$ is the residue cardinality at the node.
+\end{lemma}
+
+\begin{proof}
+On the level of roots the substitution $s_i=c+\pi t_i$ ($\pi=p$, $\vp(\pi)=1$) is a
+measure-preserving bijection of $\Odelta^s$ scaled by $\pi$, so
+$d\mu(s_i)=Q^{-1}d\mu(t_i)$ on the box (the box has measure $Q^{-s}$ once the common
+residue $c$ is fixed), and $|s_i-s_j|=Q^{-1}|t_i-t_j|$ for each of the $\binom s2$
+pairs, i.e.\ $\prod_{i<j}|s_i-s_j|=Q^{-\binom s2}\prod_{i<j}|t_i-t_j|$. Summing over
+the $Q$ choices of $c$ gives the displayed product $Q^{1-s-\binom s2}=Q^{-w(s)}$.
+The Vieta/Jacobian identity $|\det d\Phi|=|\mathrm{Vandermonde}|$ (so the integrand
+$|\disc|^{1/2}=|\mathrm{Vandermonde}|$ pushes forward correctly to coefficient
+space) holds in \emph{every} characteristic, because $\det d\Phi$ is an
+identically-nonzero $\mathbb Z$-polynomial; this is checked exactly for $n\le5$ in
+\texttt{r1\_verify.py}. The exponent $w(s)=s(s+1)/2-1=2,5,9,14,20$ is verified
+exactly in \texttt{decomp\_blueprint\_verify.py}.
+\end{proof}
+
+\begin{remark}[Scope of $r(s)$]
+Equation~\eqref{eq:rfactor} is the rescale of the \emph{single-block} part of one
+refinement level only. It is \emph{not} the per-level increment ratio of $V_s$:
+that ratio is governed by the \emph{slowest} mode of the nested system below, which
+is $Q^{-w(2)}=Q^{-2}$ for every $s\ge2$ (a nested size-$2$ sub-cluster). The two
+coincide only at $s=2$, where the single block is the whole loop. This distinction
+is the substance of fix~[F1]; see Remark~\ref{rem:slowmode}.
+\end{remark}
+
+\subsection{The size-$2$ self-loop: a single geometric series}
+
+\begin{lemma}[$s=2$ collapse, exactly verified]\label{lem:s2}
+The size-$2$ completely-split cluster volume satisfies the \emph{single}
+self-referential identity
+\begin{equation}\label{eq:s2self}
+  I_2 \;=\; a + r\,I_2,\qquad a=\frac{q-1}{q},\quad r=q^{-w(2)}=q^{-2},
+\end{equation}
+whose finite truncations $V_N=a(1-r^{m(N)+1})/(1-r)$ converge (Lemma~\ref{lem:countHaar})
+to
+\begin{equation}\label{eq:s2limit}
+  \boxed{\,I_2=\frac{a}{1-r}=\frac{(q-1)/q}{1-q^{-2}}=\frac{q}{q+1}\,.}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Stratify $\Odelta^2$ by the mod-$p$ residue pattern of $(s_1,s_2)$.
+\emph{Distinct residues} ($s_1\not\equiv s_2$): the difference is a unit,
+$|s_1-s_2|=1$; this contributes the fixed mass $a=\mu\{s_1\not\equiv s_2\}\cdot1
+=1-q^{-1}=(q-1)/q$ (a leaf: the cluster has resolved into two distinct roots). This
+$a$ is \emph{precision-independent}: it is decided already at $N=1$ and is exactly
+$\tfrac12,\tfrac23,\tfrac45$ at $p=2,3,5$ (verified). \emph{Equal residues}
+($s_1\equiv s_2\equiv c$): the unique single block; by Lemma~\ref{lem:rescale}
+($s=2$) this reproduces $I_2$ scaled by $r=q^{-w(2)}=q^{-2}$. Because for $s=2$
+``stay together'' is the \emph{only} non-leaf option, \eqref{eq:s2self} is a genuine
+single geometric series, and Lemma~\ref{lem:collapse} below applies verbatim with a
+\emph{constant} $a$. Evaluating the limit gives \eqref{eq:s2limit}.
+\end{proof}
+
+\begin{lemma}[Single-geometric collapse (the $s=2$ engine)]\label{lem:collapse}
+Suppose a node-measure $V$ satisfies $V=a+rV$ with $a$ \emph{constant in $N$} and
+$0<r<1$. Let $V_N$ be the contribution of self-loop chains of length $\le m(N)$
+(with $m(N)\to\infty$ as $N\to\infty$) together with the resolve-here cells. Then
+$V_N=a(1-r^{m(N)+1})/(1-r)$ is a finite geometric sum, and
+\begin{equation}\label{eq:limit}
+  V \;=\; \lim_{N\to\infty} V_N \;=\; \frac{a}{1-r},
+\end{equation}
+a rational function of $q$ with denominator $1-r$.
+\end{lemma}
+
+\begin{proof}
+Unwinding $V=a+rV$ exactly $m+1$ times gives
+$V=a(1+r+\dots+r^{m})+r^{m+1}V$. At precision $N$ the deepest self-loop chain the
+digits below $p^N$ certify has length $m(N)$ (one self-loop level consumes a bounded
+number of $p$-adic digits, so $m(N)\to\infty$), and the tail $r^{m+1}V$ is the
+undecided remainder $U_N$ of the bracket in Lemma~\ref{lem:countHaar} restricted to
+this node. Thus $V_N=a\sum_{j=0}^{m(N)}r^j=a(1-r^{m(N)+1})/(1-r)$, and as $0<r<1$
+the bracket $V_N\le V\le V_N+r^{m(N)+1}V$ forces $V=a/(1-r)$.
+\end{proof}
+
+\begin{remark}[Why $s\ge3$ is not this lemma]\label{rem:slowmode}
+For $s\ge3$ the hypothesis ``$a$ constant in $N$'' \emph{fails}: the lumped
+resolve-here mass acquires contributions from nested sub-clusters that are
+themselves only resolved at greater depth, so $a_N$ strictly increases with $N$.
+Exact enumeration over $(\mathbb Z/p^N)^3$ makes this unambiguous: at $p=2$ the
+graded lower bounds are
+$L_N=0,\tfrac3{16},\tfrac{123}{512},\tfrac{4155}{16384},\dots$ (strictly
+increasing), and the depth-increment ratio
+$D_N/D_{N-1}=\tfrac9{32},\tfrac{73}{288},\tfrac{585}{2336},\tfrac{4681}{18720},
+\tfrac{37449}{149792}\to\tfrac14=q^{-2}$, \emph{not} $q^{-w(3)}=q^{-5}=\tfrac1{32}$
+(and at $p=3$, $\to\tfrac19=q^{-2}$, not $q^{-5}$). The slowest geometric mode is
+the nested size-$2$ self-loop. So the correct object for $s\ge3$ is the
+\emph{nested} recursion of \S\ref{sec:nested}, of which $I_2$ is the base case.
+\end{remark}
+
+\subsection{The nested multi-block recursion (the crux for general $s$)}\label{sec:nested}
+
+\begin{theorem}[Self-loop collapse as a well-founded nested system]\label{thm:nested}
+Let $I_s$ be the conditional size-$s$ completely-split cluster volume
+\eqref{eq:Idef} with $Q=q$ ($\delta=1$; the general node replaces $q$ by $Q$). Then,
+writing $w(s)=s(s+1)/2-1$ and $\binom{0}{2}=\binom12=0$,
+\begin{equation}\label{eq:nested}
+  I_s\,\bigl(1-q^{-w(s)}\bigr)
+  \;=\;
+  \sum_{\substack{P\,\vdash\,\{1,\dots,s\}\\ \#P=r\,\ge\,2}}
+    \Bigl[\prod_{j=0}^{r-1}(q-j)\Bigr]
+    \;\prod_{B\in P} q^{-\bigl(|B|+\binom{|B|}2\bigr)}\,I_{|B|},
+  \qquad I_0=I_1=1,
+\end{equation}
+the sum running over set-partitions $P$ of $\{1,\dots,s\}$ into $r\ge2$ nonempty
+blocks. Equivalently, the single-block ($r=1$, ``all stay together'') term has been
+moved to the left, producing the self-loop pivot $1-q^{-w(s)}$; every block on the
+right has size $|B|<s$, so \eqref{eq:nested} is a \emph{well-founded} recursion
+(strict descent), terminating in the base $I_0=I_1=1$.
+\end{theorem}
+
+\begin{proof}
+Stratify $\Odelta^s$ by the mod-$p$ residue \emph{partition} of $(s_1,\dots,s_s)$:
+which roots share a residue. A partition into $r$ residue-classes of sizes
+$|B_1|,\dots,|B_r|$ contributes as follows.
+\emph{(Choice of residues.)} The $r$ distinct residues $c_1,\dots,c_r\in\Fq$ can be
+chosen (as an ordered-then-deduplicated assignment to the labelled blocks) in
+$\prod_{j=0}^{r-1}(q-j)=q(q-1)\cdots(q-r+1)$ ways; this is the falling factorial
+$N_{\mathrm{res}}$.
+\emph{(Cross-block Vandermonde.)} For $i,j$ in different residue classes
+$|s_i-s_j|=1$ (unit difference), so cross-block factors contribute $1$.
+\emph{(Within-block self-similarity.)} For each block $B$ of size $b=|B|$, the
+within-block roots all share residue $c$; rescale $s_i=c+\pi t_i$. By
+Lemma~\ref{lem:rescale}'s computation \emph{without} the $Q$ residue-choice (already
+counted above), each block contributes the box measure $q^{-b}$ times the
+within-block Vandermonde rescale $q^{-\binom b2}$ times a \emph{fresh} size-$b$
+cluster volume $I_b$, i.e.\ a factor $q^{-(b+\binom b2)}I_b$. The blocks are
+independent (cross-block differences are units), so the within-stratum measure is
+the product over blocks.
+\emph{(Single block vs.\ $\ge2$ blocks.)} The $r=1$ term is exactly the
+all-stay-together single block: its factor is
+$q\cdot q^{-(s+\binom s2)}I_s=q^{-w(s)}I_s$, the self-loop. Moving it to the left
+yields the pivot $1-q^{-w(s)}$ on $I_s$. The remaining strata ($r\ge2$) are the
+right side of \eqref{eq:nested}. Each such block has $|B|<s$ (since $r\ge2$), so the
+$I_{|B|}$ are strictly smaller; the recursion is well-founded with base
+$I_0=I_1=1$ ($I_1$: a single root, volume $1$; $I_0$: empty product). Convergence of
+the finite-precision truncations to the displayed rational solution follows from
+Lemma~\ref{lem:countHaar} applied to each stratum (each is decided off a
+sub-discriminant boundary of measure $\to0$), and the system has finitely many
+strata at each level. $\square$
+\end{proof}
+
+\begin{corollary}[Closed forms, exactly verified]\label{cor:closed}
+Solving \eqref{eq:nested} bottom-up gives
+\[
+  I_2=\frac{q}{q+1},\qquad
+  I_3=\frac{q^3(q^2-q+1)}{(q+1)\,\Phi_5},\qquad
+  I_4=\frac{q^6\,(q^8-2q^7+q^6+2q^5-q^4+2q^3+q^2-2q+1)}
+          {(q+1)^2(q^2+q+1)(q^6+q^3+1)\,\Phi_5},
+\]
+$\Phi_5=q^4+q^3+q^2+q+1$. Each is rational with denominator a product of cyclotomic
+factors $q^{w(s')}-1$, $s'\le s$ (e.g.\ $I_3$ carries the $w(2)$-pole $q+1$ and the
+$w(3)$-pole $\Phi_5\mid q^5-1$).
+\end{corollary}
+
+\paragraph{Exact verification (no floats).}
+The script \texttt{notes/decomp\_blueprint\_verify.py} runs three exact
+(rational-arithmetic) blocks at $p\in\{2,3,5,7\}$ (wild $p=2$ included):
+\begin{itemize}[nosep]
+\item \textbf{(A) $s=2$ single geometric series} (Lemma~\ref{lem:s2}): the
+depth-graded enumeration over $(\mathbb Z/p^N)^2$ has constant $a=(q-1)/q$, per-level
+ratio \emph{exactly} $r=q^{-2}=p^{-w(2)}$ ($\tfrac14,\tfrac19,\tfrac1{25}$), and tail
+$a/(1-q^{-2})=q/(q+1)$ ($\tfrac23,\tfrac34,\tfrac56$), inside the rigorous bracket
+$[L_N,L_N+U_N]$.
+\item \textbf{(B) $s=3$ single-geometric model fails} (Remark~\ref{rem:slowmode}):
+$a_N$ strictly increases and $D_N/D_{N-1}\to q^{-2}$ (not $q^{-w(3)}$). This is shown
+deliberately, to motivate the nested recursion.
+\item \textbf{(C) nested recursion} (Theorem~\ref{thm:nested}): the bottom-up
+solution reproduces $I_2,I_3,I_4$ of Corollary~\ref{cor:closed} symbolically, and
+the closed $I_3$ lies inside the \emph{rigorous} exact bracket from direct
+$(\mathbb Z/p^N)^3$ enumeration: $I_3=8/31\in[0.25800,0.28131]$ at $p=2$, and
+$189/484\in[0.39026,0.42699]$ at $p=3$.
+\end{itemize}
+The symbolic backbone of (C) is \texttt{notes/r1\_verify.py} (the \texttt{I\_recursion},
+which is bottom-up and non-circular --- base $I_0=I_1=1$, no closed-form reference).
+
+\begin{remark}[Relation to the Lean lemma]
+The \emph{algebraic} fact $\sum_{j\ge0}r^j=1/(1-r)$ for $|r|<1$ and the positivity of
+the pivot $1-q^{-w}$ for $q\ge2$, $w\ge1$ is exactly
+\texttt{L5fix.selfLoop\_geometric} (proved, sorry-free); it is the engine of
+Lemma~\ref{lem:collapse} and the pivot in Theorem~\ref{thm:nested}. The blueprint's
+new content is twofold: (i)~the \emph{measure/counting} upgrade --- the partial sums
+$V_N$ are honest finite counts and the limit uses the bracket of
+Lemma~\ref{lem:countHaar}, not merely the algebraic identity --- and (ii)~the correct
+\emph{nesting}: the single pivot is applied to a finite $\ge2$-block sum of
+strictly-smaller child volumes, matching the well-founded
+\texttt{OMInduction.clusterVol\_isRational} (not a single self-referential equation
+for $s\ge3$).
+\end{remark}
+
+\section{Rationality of each $C_T$ and of $\rho$ (proved)}\label{sec:rational}
+
+\begin{proposition}[The node ingredients are rational]\label{prop:ingredients}
+At any node, the three factors of \eqref{eq:nodefactor} are uniform rational
+functions of $q$ with $p$-independent data:
+\begin{enumerate}[label=\textup{(\alph*)},nosep]
+\item the \textbf{Newton-box count} is a $q$-power $q^{-A}$, $A$ pure lattice data
+of the side, independent of $p$ (a wild slope $h/e$ with $p\mid e$ gives the same
+lattice polygon, hence the same exponent, as a tame slope of the same reduced
+$(h,e)$);
+\item the \textbf{residual-pattern count} $N_{\mathrm{res}}(Q_r)$ is a single
+polynomial in $Q_r=q^{\delta f_1\cdots f_{r-1}}$ with $p$-independent integer
+coefficients (over the finite field $\Fr$: the count of monic degree-$d$
+polynomials of any fixed factor-multiplicity pattern is a Gauss/M\"obius polynomial
+in $Q_r$; the non-squarefree/descent locus has count $Q_r^{d-1}$). Finite fields
+are perfect, so there are \emph{no inseparable-irreducible exceptions in any
+characteristic}: ``needs descent $=$ not squarefree $=$ $\{\disc R_r=0\}$'';
+\item the \textbf{self-loop pivot} $1/(1-Q^{-w(s)})$ is rational with denominator
+$Q^{w(s)}-1$, pole-free at every prime power $q\ge2$ (Lemma~\ref{lem:collapse},
+Theorem~\ref{thm:nested}); for $s\ge3$ it multiplies a finite sum over $\ge2$-block
+partitions of strictly-smaller child volumes, not a single self-loop.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) The Newton-box count is the number of residue classes (mod $p^N$) of on-side
+$\phi_r$-adic coefficients satisfying the valuation conditions $\vp(\cdot)\ge
+\lceil\text{height}\rceil$ (a ball) or $\vp(\cdot)=\text{height}$ (a shell);
+by \eqref{eq:index} restated as counting (Remark~\ref{rem:wall}) this is
+$(1-q^{-1})^V q^{-A}$ with $V,A$ the lattice point-counts of the polygon side --
+pure integer lattice data depending only on the reduced $(h,e)$, hence
+$p$-independent. (b) The squarefree generating function over $\mathbb F_{Q_r}$ is
+$\zeta(s)/\zeta(2s)=(1-Q_rt^2)/(1-Q_rt)$ in $t=Q_r^{-s}$, giving $Q_r^d-Q_r^{d-1}$
+squarefree and $Q_r^{d-1}$ non-squarefree monic of degree $d\ge2$; fine patterns
+are products of binomials in the M\"obius irreducible-count
+$I_d(Q_r)=\frac1d\sum_{e\mid d}\mu(e)Q_r^{d/e}$ --- all polynomials in $Q_r$ with
+$p$-independent integer coefficients; perfectness of $\Fr$ removes the only
+possible characteristic-dependent exception. (c) Is Lemma~\ref{lem:collapse}.
+\end{proof}
+
+\begin{theorem}[Rationality]\label{thm:rational}
+For every shape $T$ the stratum-measure $C_T(q)$ is a uniform rational function of
+$q$ (one element of $\mathbb Q(t)$, valid at every prime power $q$ and every
+residue characteristic $p$, wild $p\le n$ included), and hence
+$\rhocount(n,\sigma;q)=\sum_{T}C_T(q)$ is a uniform rational function of $q$.
+\end{theorem}
+
+\begin{proof}
+By induction on the node size $s$ (well-founded by
+Axiom~\ref{ax:montes}\ref{ax:dichotomy} and Theorem~\ref{thm:nested}: off the
+self-loop every block is strictly smaller, and the single self-loop block is
+resummed via the pivot $1-Q^{-w(s)}$, not recursed). \emph{Base:} a leaf is a
+multiplicity-$1$ residual factor; its contribution is a Newton-box $q$-power times
+a separable-residual count, both rational by Proposition~\ref{prop:ingredients}(a,b),
+no recursion. \emph{Step:} by the node factorization \eqref{eq:nodefactor} together
+with the self-loop pivot of Theorem~\ref{thm:nested},
+\[
+  C_T(q)
+  = \frac{1}{1-Q^{-w(s)}}
+    \sum_{\substack{\text{resolve-here cells}\\(\ge2\text{ blocks / branch / descend})}}
+    \Bigl[(1-q^{-1})^{V}q^{-A}\,N_{\mathrm{res}}(Q_r)
+      \prod_{\text{children (size}<s)} C_{T_{\text{child}}}(q)\Bigr],
+\]
+a \emph{finite} (Theorem~\ref{thm:decomp}) $\mathbb Q(t)$-combination of:
+$q$-powers (Prop.~\ref{prop:ingredients}(a)), residual-pattern polynomials in $Q_r$
+(Prop.~\ref{prop:ingredients}(b)), strictly-smaller child measures (rational by the
+inductive hypothesis), and the pole-free self-loop pivot
+(Prop.~\ref{prop:ingredients}(c)). The displayed recursion is exactly
+\eqref{eq:nested} in the completely-split model and its node-level generalization
+otherwise. $\mathbb Q(t)$ is closed under finite sums,
+products, and division by a factor that is pole-free at every prime power; hence
+$C_T\in\mathbb Q(t)$. Summing the finite menu (Theorem~\ref{thm:decomp}) keeps
+$\rhocount(n,\sigma;\cdot)\in\mathbb Q(t)$.
+\end{proof}
+
+\begin{remark}[The wild-prime crux, in one line]
+The only place a characteristic could intrude is the residual-pattern count
+$N_{\mathrm{res}}$. There the descent-trigger locus
+$\{R_r\ \text{not squarefree}\}$ may be a \emph{geometrically different
+subvariety} at a wild prime (e.g.\ at $p=2$ the double-root locus is the line
+$\{\bar b=0\}$, at odd $p$ the parabola $\{\bar b^2=4\bar a\}$ --- the very data
+that broke the referee's Prop.\ 5.3, a tangent-space statement) --- \emph{but it
+has the same $\Fr$-point count} because the merge map (Frobenius and its powers)
+is bijective on $\Fr$-points even when its differential vanishes. Counts/volumes
+live on points; smoothness lives on tangent spaces. This is why the collapse and
+the decomposition are characteristic-uniform.
+\end{remark}
+
+\section{What still needs more than Montes $+$ counting (honest)}\label{sec:honest}
+
+We separate (A) the imported axiom, (B) what is proved from it, and (C) what
+genuinely needs an extra hypothesis or is verified only in restricted scope.
+
+\paragraph{(A) Imported (axiom).} Axiom~\ref{ax:montes}: the tree exists and
+\emph{partitions} the polynomial space \ref{ax:partition}; the node count
+\emph{factors} as \eqref{eq:nodefactor}, including the \emph{submersion /
+equidistribution} of residual coefficients onto $\mathbb A^{d_r}(\Fr)$
+\ref{ax:multiplicativity}; the leaf/descend dichotomy with strict descent and
+finite termination \ref{ax:dichotomy}. This is GMN ($p$-independent).
+
+\paragraph{(B) Proved from (A) $+$ elementary counting.}
+\begin{itemize}[nosep]
+\item Finiteness of the shape menu $\mathcal T_{n,\sigma}$ (Thm.~\ref{thm:decomp});
+\item the decomposition $\rho=\sum_T C_T$ via counting-additivity over the
+partition and the $N\to\infty$ limit (Thm.~\ref{thm:decomp},
+Lem.~\ref{lem:countHaar});
+\item the per-level rescale exponent $w(s)=s(s+1)/2-1$ (Lem.~\ref{lem:rescale});
+the $s=2$ single-geometric collapse
+$V_N=a(1-r^{m+1})/(1-r)\to a/(1-r)=q/(q+1)$ with constant $a=(q-1)/q$,
+$r=q^{-2}$ (Lem.~\ref{lem:s2},~\ref{lem:collapse}); and \textbf{for $s\ge3$ the
+well-founded nested multi-block recursion} \eqref{eq:nested}
+$I_s(1-q^{-w(s)})=\sum_{\ge2\text{ blocks}}\prod_j(q-j)\prod_B q^{-(|B|+\binom{|B|}2)}I_{|B|}$,
+giving $I_3,I_4$ of Cor.~\ref{cor:closed} (Thm.~\ref{thm:nested});
+\item rationality of each $C_T$ and of $\rho$ (Prop.~\ref{prop:ingredients},
+Thm.~\ref{thm:rational}).
+\end{itemize}
+
+\paragraph{(C) Where Montes $+$ counting alone may not suffice --- flagged honestly.}
+\begin{enumerate}[label=(C\arabic*),nosep]
+\item\textbf{The self-loop rescale exponent $w(s)=s(s+1)/2-1$ and factor $r$
+(Lemma~\ref{lem:rescale}) is \emph{not} part of Axiom~\ref{ax:montes}.} It is the
+R1 self-similar Vandermonde/Jacobian computation (a change-of-variables on the
+completely-split root locus). Axiom~\ref{ax:montes} gives only the
+\emph{existence} of the self-loop cell and that it does not progress; the precise
+ratio $Q^{-w(s)}$ is an \emph{additional} elementary computation (the $p$-adic
+change of variables $|\!\det d\Phi|=|\mathrm{Vandermonde}|$, valid in every
+characteristic since $\det d\Phi$ is an identically-nonzero $\mathbb Z$-polynomial).
+We have verified $w(s)$ exactly for $s=2$ by direct enumeration ($p=2,3,5$) and
+for $s=2,3,4$ symbolically; it should be treated as a \emph{separate} proved
+input, not folded into the Montes axiom. For an \emph{irreducible/ramified}
+(non-completely-split) cluster the literal $\OK^s$ Vandermonde pushforward is a
+measure-zero conjugate locus and does \emph{not} compute the volume directly; its
+measure is delivered by the Newton-box count (a) plus the recursion, with R1
+contributing only the lattice quantity. This scoping is load-bearing.
+\item\textbf{The equidistribution/submersion clause inside
+Axiom~\ref{ax:montes}\ref{ax:multiplicativity}} (residual coefficients are
+independent uniform $\Fr$-digits) is the one genuinely analytic ingredient bundled
+into the axiom. At order $1$ it is elementary (it is the box-count of (a)). At
+higher order it is GMN's order-$r$ coordinate description; if one wished to
+\emph{avoid} importing it, one would re-derive the higher key-polynomial
+coordinates from MacLane--Okutsu--Montes valuation theory --- standard but
+lengthy, and $p$-independent. As stated it is imported, not proved.
+\item\textbf{The collapse is a single geometric series only for $s=2$
+(structural, fix~[F1]).} For $s\ge3$ the size-$s$ self-loop is \emph{not} a single
+self-referential $V=a+rV$ with constant $a$ and a single ratio $r=q^{-w(s)}$: that
+model is \emph{false}, as exact enumeration shows (the lumped $a_N$ strictly
+increases with precision; the depth-increment ratio converges to the slowest mode
+$q^{-2}$, not $q^{-w(s)}$ --- Remark~\ref{rem:slowmode}). The correct object is the
+nested recursion \eqref{eq:nested}, a finite system of interleaved geometric series
+with pivots $q^{-w(b)}$, $b\le s$. \emph{Direct} exact enumeration over
+$(\mathbb Z/p^N)^s$ confirms the $s=2$ single-geometric collapse exactly and gives
+a \emph{rigorous bracket} $[L_N,L_N+U_N]$ containing the recursion's $I_3$
+($8/31\in[0.25800,0.28131]$ at $p=2$; $189/484\in[0.39026,0.42699]$ at $p=3$); but
+brute force does not reach the asymptotic regime to \emph{pin} $I_3,I_4$ as
+rationals, so those rest on the \emph{symbolic} nested recursion (R1), not on direct
+enumeration. The empirical OM-tree oracle reaches order $4$ ($n=8$). Genuinely
+arbitrary depth rests on the induction (Thm.~\ref{thm:rational}) $+$
+Axiom~\ref{ax:montes}, not on enumeration.
+\item\textbf{The displayed $\rhocount(3,1^3;q)=(q^2+1)^2/(6\Phi_5)$ is a
+\emph{projective} density, not the monic counting density of
+Definition~\ref{def:count}.} It uses the symmetry factor $3!=6$ and division by
+$|\mathbb P^3|=(q+1)(q^2+1)$ (the $r$-point / distinct-roots normalization), and
+lies \emph{outside} the exact monic brackets ($0.1344$ vs.\ monic
+$\in[0.169,0.180]$ at $p=2$). The monic type densities of Definition~\ref{def:count}
+are different rationals --- e.g.\ the inert quadratic density is exactly $(q-1)/(2q)$
+($\tfrac14,\tfrac13,\tfrac25,\tfrac37$ at $p=2,3,5,7$), the ramified quadratic
+$1/(q+1)$, the split quadratic $(q^2+1)/(2q(q+1))$ (all exactly enumeration-verified).
+The blueprint's theorems (decomposition, collapse, rationality) hold for either
+normalization; only the \emph{worked numeric assembly} must be labeled projective.
+This blueprint exhibits its Definition~\ref{def:count} monic $\rhocount$ concretely
+only at $n=2$ (the verified inert/ram/split forms above); the $n=3$ projective
+number is illustrative, not a verified instance of Definition~\ref{def:count}.
+\item\textbf{The partition clause \ref{ax:partition} is imported, not derived.}
+Theorem~\ref{thm:decomp} reduces the decomposition to this single statement (the
+strata cover and are disjoint); in the counting model disjointness is automatic
+(unique tree), but \emph{exhaustiveness} (the strata reconstruct the full residual
+factorization at every order) is the GMN cell-decomposition content and remains
+axiomatic. This matches the Lean status: \texttt{omCells} exhaustiveness is still a
+structural axiom.
+\end{enumerate}
+
+\section{Formalization map}\label{sec:formalization}
+
+We record what each piece corresponds to in the current Lean development
+(\texttt{forum-sigma/lean\_urat/LeanUrat/}) and what this blueprint would let us
+\emph{derive} versus keep as axiom.
+
+\paragraph{Already in Lean (proved, sorry-free).}
+\begin{itemize}[nosep]
+\item \texttt{RatFn.IsRationalFn} and its closure lemmas
+(\texttt{isRationalFn\_const/qpow/add/mul/listSum/listProd/div}) --- the
+$\mathbb Q(t)$-closure used in Theorem~\ref{thm:rational}; in particular
+\texttt{isRationalFn\_qpow} represents a residual count $q^{\delta(d-1)}$ by the
+\emph{non-constant} numerator $X^{\delta(d-1)}$.
+\item \texttt{L4.bb1Value}/\texttt{L4.cellVolume\_eq} (= ``T\_BB1''): the
+Newton-box volume $(1-q^{-1})^Vq^{-A}$ is a rational function of $q$
+(Prop.~\ref{prop:ingredients}(a)), \emph{derived} from the column-measure axiom.
+\item \texttt{PadicMeasure.T\_BB3} / \texttt{L3Squarefree} (= ``T\_BB3''): the
+non-squarefree count over a finite field is $|F|^{d-1}$
+(Prop.~\ref{prop:ingredients}(b)) --- a real finite-field theorem, not an axiom.
+\item \texttt{L5fix.selfLoop\_geometric}: the pivot $1-q^{-w(s)}>0$ for $q\ge2$,
+$s\ge2$ (positivity used in Lemma~\ref{lem:collapse}); the \emph{algebraic}
+geometric-series fact.
+\item \texttt{OMInduction.clusterVol\_isRational}: the abstract well-founded
+OM-order induction --- given a recursion of the shape \eqref{eq:nodefactor}$/$pivot
+with strictly-smaller children, rational coefficients, and a pole-free pivot, the
+solution is a uniform rational function of $q$. This \emph{is}
+Theorem~\ref{thm:rational}'s induction, already formalized.
+\end{itemize}
+
+\paragraph{Now PROVED in Lean by the box-wise refactor (was ``would derive'').}
+The previous draft listed these as \emph{assumed} in Lean; the counting-model and
+box-wise refactor have since \emph{discharged} them. \S\ref{sec:ledger} gives the
+exact ledger; in summary:
+\begin{itemize}[nosep]
+\item \texttt{DensityFoundation.decomposition}\,/\,the decomposition
+$\rho=\sum_T C_T$ is now the \emph{proved} theorem
+\texttt{MontesData.countingDensity\_eq\_sum\_coeff} (core-only \texttt{\#print
+axioms}), a genuine $N\to\infty$ limit-uniqueness theorem (Thm.~\ref{thm:decomp}),
+not a carried field.
+\item The cell/measure recursion \eqref{eq:nodefactor}$/$pivot is now the
+\emph{proved} theorem \texttt{MontesData.nodeMultiplicativity} (core-only), derived
+from the box-wise primitives below. The opaque \texttt{PadicMeasure.AX\_cellRecursion}
+/ \texttt{clusterMeasure} axioms are \emph{off the path entirely} --- they live in
+the dead \texttt{PadicMeasure} module and do \emph{not} appear in the
+\texttt{\#print axioms} footprint of any rationality/decomposition constant.
+\end{itemize}
+
+\paragraph{New pieces the formalization would need.}
+\begin{itemize}[nosep]
+\item \textbf{The counting model.} Definition~\ref{def:count} and
+Lemma~\ref{lem:countHaar} (normalized counts over $\OK/p^N$ converge; the
+bracket $L_N\le\mu\le L_N+U_N$ with $U_N\to0$). This is elementary but new ---
+it is what removes the abstract $p$-adic Haar wall (mathlib has no $p$-adic Haar
+measure).
+\item \textbf{The self-loop collapse as a measure/counting limit.} For $s=2$:
+$V_N=a(1-r^{m+1})/(1-r)\to a/(1-r)$ on the \emph{finite-count} truncations
+(Lemma~\ref{lem:collapse}), upgrading the algebraic \texttt{selfLoop\_geometric} to
+the actual limit of stratum counts. For $s\ge3$: the \textbf{well-founded nested
+recursion} \eqref{eq:nested} (Theorem~\ref{thm:nested}), in which the single pivot
+$1/(1-q^{-w(s)})$ multiplies a finite $\ge2$-block sum of \emph{strictly-smaller}
+child volumes $I_{|B|}$ --- this is exactly the input shape of
+\texttt{OMInduction.clusterVol\_isRational}, so the existing Lean induction consumes
+it directly.
+\item \textbf{The per-level rescale exponent} $w(s)=s(s+1)/2-1$ and the single-block
+factor $r(s)=q^{-\delta w(s)}$ (Lemma~\ref{lem:rescale}), the R1 Vandermonde/Jacobian
+input --- a separately proved elementary computation, \emph{not} part of the Montes
+axiom (flag C1).
+\end{itemize}
+
+\paragraph{What stays axiom vs.\ becomes theorem.}
+\emph{Stays axiom (A):} Montes count-multiplicativity over the OM tree
+(Axiom~\ref{ax:montes}) --- partition, node-count factorization with residual
+equidistribution, leaf/descend dichotomy, finite termination (GMN,
+$p$-independent). \emph{Becomes theorem (B):} the decomposition
+$\rho=\sum_T C_T$; the self-loop collapse --- a single geometric series $C_T=a/(1-r)$
+for $s=2$ (Lem.~\ref{lem:s2}) and the well-founded nested recursion
+\eqref{eq:nested} for $s\ge3$ (Thm.~\ref{thm:nested}); and rationality of every
+$C_T$ and of $\rho$ --- all from (A) $+$ elementary counting. The ``sum over the
+tree, including the self-loop collapse'' is thereby a \textbf{theorem, not an
+assumption}.
+
+\section{What the Lean formalization ASSUMES vs.\ PROVES (exact ledger)}\label{sec:ledger}
+
+This section is the \textbf{authoritative, item-by-item} statement of what the
+current Lean development in \texttt{forum-sigma/lean\_urat/LeanUrat/} \emph{assumes}
+versus \emph{proves}, written to match the \texttt{\#print axioms} reality exactly
+(re-verified 2026-06-21 by \texttt{lake env lean} on each qualified constant). The
+distinction is enforced mechanically: ``proved'' means a \texttt{theorem} whose
+\texttt{\#print axioms} contains \emph{only} the three Lean-core axioms
+$\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}\}$ and
+\emph{no} \texttt{sorryAx}; ``assumed'' means a declared \texttt{axiom} or a
+\emph{hypothesis} (structure field / theorem argument) that the conclusion is stated
+modulo. ``Sorry-free modulo axioms'' is \emph{not} the same as ``proved'': we mark
+which axioms each headline depends on.
+
+\subsection{The assumed ledger (exhaustive)}\label{sec:assumed}
+
+Beyond the three Lean-core axioms, the \emph{only} things assumed are:
+
+\begin{enumerate}[label=\textup{(A\arabic*)},leftmargin=*]
+\item\textbf{The minimal box-Haar / equidistribution axiom} --- the single
+irreducible measure residue, carried as \emph{two structure fields} of
+\texttt{MontesAxiom.MontesData} (\emph{not} a global \texttt{axiom}; it is
+hypothesis-discharged, so it does not surface in \texttt{\#print axioms}):
+\begin{itemize}[nosep]
+\item \texttt{boxMeasure : CountCell $\to\ \mathbb N\to\mathbb Q$} --- the abstract
+per-box ($p$-adic Haar) volume of one cell;
+\item \texttt{boxHaarEquidist} : $\forall c\ q'>1,\
+\texttt{boxMeasure}\ c\ q' = \texttt{countCellCoeff}\ c\ q'$, i.e.\ the per-box Haar
+volume \emph{equals} the proved box-volume $\times$ residual-count value
+$\texttt{countCellCoeff}\ c\ q = (q^{\delta})^{d_S-1}\cdot\texttt{bb1Value}\ c.\texttt{polygon}\ q$;
+\item \texttt{nodeMeasure\_boxSum} : the normalized stratum limit
+$\lim_N \texttt{stratumCount}\ T\ N / q^{nN}$ \emph{exists} and equals the
+box-additive sum $\bigl(\sum_{\text{cells }c}\texttt{boxMeasure}\ c\ q\cdot
+\prod_{\text{children}}\texttt{clusterCount}\dots\bigr)/\texttt{countPivot}$.
+\end{itemize}
+\textbf{What is assumed} is exactly: that the abstract per-box Haar volume \emph{is}
+the proved closed value (box-Haar normalization $T\_BB1$ $+$ C2 residual
+equidistribution $T\_BB3$), and that the node measure \emph{exists} and is the
+box-additive assembly. The right-hand sides ($\texttt{bb1Value}$ box volume, the
+$(q^{\delta})^{d_S-1}$ residual count, and the box-additivity \emph{arithmetic}) are
+all \emph{proved} (see \S\ref{sec:proved}); only the \emph{identification} of the
+abstract Haar volume with that proved value is assumed. This is the genuine
+\emph{measure wall}: mathlib v4.31.0 has no $p$-adic Haar measure, so the existence
+and normalization of \texttt{boxMeasure} cannot be constructed inside Lean. It is
+\emph{not} a renamed conclusion and \emph{not} a definitional-unfold cheat: the
+asserted equality is to a separately-proved lattice/finite-field value, and the
+fields assert \emph{no} rationality, uniformity, or palindromy.
+
+\item\textbf{The remaining \texttt{MontesData}/\texttt{CountingModel} structure
+fields}, all carried as \emph{hypotheses} (the GMN count shadow), each the
+count-native shadow of a GMN statement, none of them a rationality/conclusion claim:
+\begin{itemize}[nosep]
+\item \texttt{shapesOf}, \texttt{partition} ($\delta$-A:partition, the unique-tree
+disjoint partition $\texttt{decidedCount}\ \sigma\ N = \sum_T \texttt{stratumCount}\ T\ N$);
+\item \texttt{treeSize}, \texttt{cells}, \texttt{cells\_descend} (strict descent
+--- the count shadow of \texttt{omCells}/\texttt{descend\_size\_lt}, supplying
+well-foundedness; carried as fields, \emph{not} the \texttt{PadicMeasure} axioms);
+\item \texttt{finiteTermination} (GMN Thm 4.18, $\le n$ leaves);
+\item the elementary tail-bound fields \texttt{undecided\_le\_split} ($\le$),
+\texttt{sepTail\_tendsto} (separable pool $\to0$), \texttt{discriminantTail\_envelope}
+(the $q^{-N}$ root-count envelope) --- elementary counting bounds, \emph{not} the
+conclusion $U_N\to0$ (which is \emph{derived}, see (P4)).
+\end{itemize}
+None of these carries rationality, uniformity, or palindromy. There is no
+``\texttt{undecided}$\to0$'' field and no ``$C_T$ is rational'' field: those are
+theorems (\S\ref{sec:proved}).
+
+\item\textbf{\texttt{tame\_functionalEquation}} (\texttt{Interface.lean}, a declared
+\texttt{axiom}) --- the genuine \S5 H-tame input: an abstract
+\texttt{DensityFoundation}'s density admits a palindromic rational representative at
+tame primes. It is the \emph{only} non-core declared axiom in the headline footprint,
+and it appears \emph{only} on \texttt{goal\_theorem\_montes} (and the witness
+instance), \emph{not} on any pure-rationality constant. It asserts nothing about the
+count-native $\sum_T C_T$ directly; the link is made through the explicit honest
+hypothesis \texttt{hbridge} (below).
+
+\item\textbf{\texttt{hbridge}} (a hypothesis argument of
+\texttt{goal\_theorem\_montes}, \emph{not} an axiom): $\forall q'>1,\
+F.\texttt{density}\ n\ \sigma\ q' = \sum_{T}\texttt{coeff}\ T\ q'$. The honest
+measure-wall identification ``the abstract foundation density coincides with the
+count-native OM tree-sum''. The right-hand side is an arbitrary function here; the
+equality asserts \emph{nothing} about rationality, palindromy, or any closed form. It
+introduces no axiom.
+\end{enumerate}
+
+\noindent\textbf{What is NOT assumed (verified absent from every audited footprint).}
+The \texttt{PadicMeasure} measure-route axioms ---
+\texttt{clusterMeasure}, \texttt{AX\_cellRecursion}, \texttt{AX\_columnMeasure},
+\texttt{omCells}, \texttt{descend\_size\_lt} --- are genuine \texttt{axiom}
+declarations in the (dead) \texttt{PadicMeasure} module, and are \emph{absent} from
+the \texttt{\#print axioms} of \texttt{goal\_theorem\_montes} and of every
+rationality/decomposition constant. No \texttt{sorryAx} appears in any audited
+footprint (the two flagged \texttt{sorry}s at \texttt{L3.lean:145,168} are off-path
+--- the path uses the sorry-free \texttt{L3Squarefree.card\_squarefreeMonicDegree}
+and the sorry-free \texttt{L3.card\_monicDegree}; confirmed by the clean footprints).
+
+\subsection{The proved ledger (theorems, core-only \texttt{\#print axioms})}\label{sec:proved}
+
+Each item below is a Lean \texttt{theorem} whose \texttt{\#print axioms} is exactly
+$\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}\}$ (no
+\texttt{sorryAx}, no measure axiom, no \texttt{tame\_functionalEquation}), verified
+2026-06-21.
+
+\begin{enumerate}[label=\textup{(P\arabic*)},leftmargin=*]
+\item\textbf{Box-volume $T\_BB1$.} \texttt{MontesAxiom.boxVolume\_eq} (re-exposing
+\texttt{L4.cellVolume\_eq}): the Newton-box counting/Haar volume of one cell equals
+the closed lattice value $\texttt{bb1Value}\ pg\ Q = (1-Q^{-1})^{V(pg)}\,Q^{-A(pg)}$,
+given the per-coordinate box/shell factorization (the one lattice-count input of BB1).
+A genuine \texttt{Finset.prod} collapse, \emph{not} re-axiomatized.
+
+\item\textbf{Residual-config count $T\_BB3$.} \texttt{MontesAxiom.residualBoxCount}:
+over a finite field $F$ with $|F|=Q$, the count of non-squarefree monic degree-$d_S$
+polynomials is $Q^{d_S-1}$, proved \emph{inline} from the honest finite-field counts
+\texttt{L3.card\_monicDegree} ($\#\text{monic}=Q^{d_S}$, sorry-free) and
+\texttt{L3Squarefree.card\_squarefreeMonicDegree}
+($\#\text{squarefree}=Q^{d_S}-Q^{d_S-1}$, sorry-free re-proof). The tie
+\texttt{residualBoxCount\_eq\_factor} identifies it with the $(q^{\delta})^{d_S-1}$
+factor of \texttt{countCellCoeff} when $|F|=q^{\delta}$. A genuine finite-field count,
+\emph{not} a free monomial and \emph{not} re-axiomatized.
+
+\item\textbf{Box-additivity.} \texttt{MontesAxiom.clusterCount\_boxSum} (with
+\texttt{clusterCount\_rec}): if a per-box measure agrees on each cell with
+$\texttt{countCellCoeff}\cdot\prod_{\text{children}}$, then \texttt{clusterCount} is
+the finite \texttt{List.sum} of those per-box measures over the cell partition,
+divided by the self-loop pivot. Pure \texttt{List.sum} arithmetic
+(\texttt{List.map\_congr\_left}); \emph{not} a measure assumption.
+
+\item\textbf{The per-node factorization \eqref{eq:nodefactor} (now a THEOREM).}
+\texttt{MontesAxiom.MontesData.nodeMultiplicativity}: $\lim_N\texttt{stratumCount}\ T\ N/q^{nN}
+= \texttt{clusterCount}\dots T\ q$. \emph{Derived} from (P1)$\times$(P2)$\times$(P3)
+$+$ the minimal axiom (A1): \texttt{nodeMeasure\_boxSum} gives the box-additive limit;
+\texttt{boxHaarEquidist} rewrites each per-box Haar measure to the proved
+$\texttt{countCellCoeff}$ value; \texttt{clusterCount\_boxSum} recombines into
+\texttt{clusterCount}. This was previously one opaque carried field; it is now a
+core-only theorem.
+
+\item\textbf{The geometric collapse / OM induction.}
+\texttt{OMInduction.clusterVol\_isRational}: the abstract well-founded
+strong-induction over \texttt{treeSize} --- given the divided sum-of-products
+recursion with strictly-smaller children, rational coefficients, and a pole-free
+pivot, the solution is a uniform rational function of $q$ (Thm.~\ref{thm:rational}'s
+induction, fully proved). The count-native ingredients
+\texttt{countCellCoeff\_isRational} (residual count $X^{\delta(d_S-1)}$ $\times$
+\texttt{bb1Value\_isRational}) and \texttt{countPivot\_isRational} /
+\texttt{countPivot\_ne} feed it.
+
+\item\textbf{$U_N\to0$ (undecided vanishes).}
+\texttt{MontesAxiom.MontesData.undecidedVanishes}: \emph{derived} by a squeeze
+(\texttt{tendsto\_of\_tendsto\_of\_tendsto\_of\_le\_of\_le'}) from
+\texttt{undecided\_le\_split} ($\le$), \texttt{sepTail\_tendsto} ($\to0$), and the
+$q^{-N}$ \texttt{discriminantTail\_envelope} ($\to0$ via
+\texttt{tendsto\_pow\_atTop\_nhds\_zero\_of\_lt\_one}). \emph{Not} assumed.
+
+\item\textbf{The decomposition $\rho=\sum_T C_T$.}
+\texttt{MontesAxiom.MontesData.countingDensity\_eq\_sum\_coeff} (Thm.~\ref{thm:decomp}):
+$M.\texttt{countingDensity}\ \sigma = \sum_{T\in\texttt{shapesOf}\ \sigma}\texttt{coeff}\ T\ q$,
+proved by \texttt{tendsto\_nhds\_unique} between the decided limit
+(\texttt{density\_isLimit}, the genuine $N\to\infty$ decided density, \emph{not} the
+box count) and the finite-sum limit from \texttt{partition} $+$
+\texttt{nodeMultiplicativity}. A genuine limit-interchange theorem, \emph{not} a
+\texttt{rfl} tautology; \texttt{countingDensity} is the carried decided limit
+(\texttt{densityVal}, pinned by \texttt{decided\_tendsto}), \emph{not} defined as
+$\sum_T C_T$.
+
+\item\textbf{Rationality of every $C_T$ and of $\rho$.}
+\texttt{MontesAxiom.MontesData.coeff\_isRational} (via the generic engine (P5)) and
+\texttt{countingDensity\_isRational} (finite-sum closure). The faithful
+\texttt{RatFn.IsRationalFn} (numerators genuinely $q$-vary: residual count
+$X^{\delta(d_S-1)}$, box value $(X-1)^V/X^{V+A}$).
+
+\item\textbf{Palindromy transfer.} \texttt{L7.tame\_to\_all\_primes} and
+\texttt{L7.isPalindromic\_of\_agree} (the $\mathbb Q(t)$ identity theorem,
+\texttt{Polynomial.eq\_zero\_of\_infinite\_isRoot}, degree-robust
+\texttt{Interface.IsPalindromic} $R(1/x)=R(x)$) transfer the tame functional equation
+onto the \emph{same} count-native $\texttt{num}/\texttt{den}$. Both lemmas core-only.
+\end{enumerate}
+
+\subsection{The headline footprints (verbatim \texttt{\#print axioms})}\label{sec:footprints}
+
+\begin{itemize}[nosep]
+\item \texttt{Goal.goal\_theorem\_montes} $\to$
+$\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{tame\_functionalEquation},\
+\texttt{Quot.sound}\}$ --- Lean core $+$ the one cited H-tame axiom. \emph{No}
+\texttt{clusterMeasure}, \texttt{AX\_cellRecursion}, \texttt{omCells},
+\texttt{descend\_size\_lt}, or \texttt{sorryAx}.
+\item \texttt{countingDensity\_isRational}, \texttt{countingDensity\_eq\_sum\_coeff},
+\texttt{coeff\_isRational}, \texttt{C}, \texttt{undecidedVanishes},
+\texttt{nodeMultiplicativity}, \texttt{stratum\_tendsto\_C}, \texttt{boxVolume\_eq},
+\texttt{residualBoxCount}, \texttt{residualBoxCount\_eq\_factor},
+\texttt{clusterCount\_boxSum}, \texttt{clusterCount\_rec},
+\texttt{OMInduction.clusterVol\_isRational} $\to$
+$\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{Quot.sound}\}$ (core only).
+\end{itemize}
+
+\subsection{Non-vacuity (the witness, resolved)}\label{sec:vacuity}
+
+An adversarial audit flagged that \texttt{Witness.DensityFoundation\_nonempty}
+inhabits only \texttt{DensityFoundation} (density $\equiv0$), which is \emph{necessary
+but not sufficient} for \texttt{goal\_theorem\_montes}: its hypothesis
+$\texttt{hbridge}$ \emph{couples} $F$ to a \texttt{MontesData}\ $D$, and the trivial
+density-$0$ foundation is incompatible with any non-trivial $D$. This is now
+\textbf{resolved}: \texttt{Witness.montes\_bundle\_nonempty} (core-only) exhibits a
+complete coupled witness ($q=2,n=0$: \texttt{trivM : CountingModel},
+\texttt{trivD : MontesData} with the new box-wise fields --- $\texttt{boxMeasure}
+:= \texttt{countCellCoeff}$ so \texttt{boxHaarEquidist} is \texttt{rfl} and
+\texttt{nodeMeasure\_boxSum} is the constant limit --- and \texttt{trivF} whose
+density \emph{is} the count-native tree-sum, so \texttt{hbridge} holds by
+\texttt{rfl}), with \emph{non-trivial} density $g_\sigma\equiv1$. The instance
+\texttt{Witness.montes\_full\_instance} (= \texttt{goal\_theorem\_montes} applied to
+the bundle) is sorry-free with footprint
+$\{\texttt{propext},\ \texttt{Classical.choice},\ \texttt{tame\_functionalEquation},\
+\texttt{Quot.sound}\}$. So \texttt{goal\_theorem\_montes} is demonstrably non-vacuous
+over genuine inhabited types, and the new minimal box-wise axiom is itself
+satisfiable. The \texttt{DensityFoundation\_nonempty} docstring was corrected to drop
+the prior \texttt{goal\_theorem\_montes} over-claim and point at the coupled witness.
+
+\paragraph{The measure wall stays honest.} This witness crosses \emph{no} measure
+wall: \texttt{trivM} is a trivial degree-$0$ model, \emph{not} the paper's $p$-adic
+$\rho$. No genuine $p$-adic Haar instance of \texttt{boxMeasure} is (or can be)
+constructed in mathlib v4.31.0. The Lean development therefore proves the
+\emph{conditional} statement ``\emph{given} the GMN count shadow and the minimal
+box-Haar identification, the counting density is a uniform rational, palindromic
+function of $q$'' --- a faithful conditional theorem with the assumed ledger above,
+not an unconditional construction of $\rho$.
+
+\section*{Verification artifacts}
+\begin{itemize}[nosep]
+\item \texttt{notes/decomp\_blueprint\_verify.py} --- EXACT (rational-arithmetic)
+graded enumeration over $(\mathbb Z/p^N)^s$, three blocks: \textbf{(A)} the $s=2$
+single-geometric collapse (constant $a=(q-1)/q$, ratio $q^{-w(2)}=q^{-2}$, limit
+$q/(q+1)$, inside the rigorous bracket) at $p\in\{2,3,5\}$; \textbf{(B)} the
+\emph{deliberate demonstration} that the single-geometric model fails for $s=3$
+($a_N$ strictly increases; increment ratio $\to q^{-2}$, not $q^{-w(3)}$);
+\textbf{(C)} the \emph{nested recursion} reproducing $I_2,I_3,I_4$ symbolically and
+landing $I_3$ inside the rigorous bracket $[L_N,L_N+U_N]$ ($8/31$ at $p=2$,
+$189/484$ at $p=3$). Also verifies the exponent $w(s)=s(s+1)/2-1=2,5,9,14,20$.
+\item \texttt{notes/r1\_verify.py} --- the symbolic backbone: the \emph{bottom-up,
+non-circular} \texttt{I\_recursion} (base $I_0=I_1=1$) giving
+$I_2=q/(q+1)$, $I_3=q^3(q^2-q+1)/((q+1)\Phi_5)$, $I_4$, exponents $w=2,5,9$, and the
+\emph{projective} assembly $\rho_{\mathrm{proj}}(3,1^3;q)=(q^2+1)^2/(6\Phi_5)$
+(symmetry factor $3!$, divided by $|\mathbb P^3|$ --- \emph{not} the monic density of
+Def.~\ref{def:count}, see flag~C3); Vieta Jacobian $=$ Vandermonde, $\disc=V^2$ (the
+R1 inputs to Lemma~\ref{lem:rescale}).
+\item \texttt{forum-sigma/uniform-rationality/rpoint\_exact.py} --- the exact,
+never-Monte-Carlo $r$-point leading-constant enumerator (two-layer exact
+$\mu_k$ with a rigorous bracket and self-similar tail extrapolation), the
+anti-fooling ground truth.
+\end{itemize}
+
+All numeric ``matches'' above are \emph{exact rational equalities} across several
+primes (so a bounded-degree rational function of $q$ is pinned), or rigorous
+\emph{exact brackets} $L_N\le\text{value}\le L_N+U_N$ that contain the claimed
+rational; wild $p=2,3$ included. No floats or Monte-Carlo enter any acceptance test.
+
+\end{document}

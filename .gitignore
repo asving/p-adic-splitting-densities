@@ -8,3 +8,6 @@ __pycache__/
 *.toc
 *.blg
 .DS_Store
+
+# editor/superseded backups
+*.bak
