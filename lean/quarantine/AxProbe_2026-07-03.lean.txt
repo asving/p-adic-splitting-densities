@@ -1,0 +1,21 @@
+import LeanUrat.OM.Order0Capstone
+
+open LeanUrat
+
+/-! ## §7 ENFORCEMENT AUDIT — footprints of the genuine capstone + F2 guard -/
+
+-- F2 guard: MUST be a proved theorem, no sorryAx
+#print axioms LeanUrat.OM.Order0.omDensity_ne_zero
+#print axioms LeanUrat.OM.Order0.omDensity_isRational
+#print axioms LeanUrat.OM.Order0.montes_via_omDensity
+#print axioms LeanUrat.OM.Order0.omDensity_tame_functionalEquation
+#print axioms LeanUrat.OM.Order0.omFoundation
+#print axioms LeanUrat.OM.Order0.clusterCount_sepShape_pos
+#print axioms LeanUrat.OM.Order0.montes_order0
+
+-- old montes capstones (baseline comparison)
+#print axioms LeanUrat.OM.M9.montes_unconditional
+#print axioms LeanUrat.OM.M9.realDensity_tame_functionalEquation
+#print axioms LeanUrat.Goal.goal_theorem_via_montes
+#print axioms LeanUrat.Goal.goal_theorem_montes
+#print axioms LeanUrat.Goal.goal_theorem

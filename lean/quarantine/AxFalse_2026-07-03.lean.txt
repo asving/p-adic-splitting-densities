@@ -1,0 +1,38 @@
+import LeanUrat.OM.LevelNCount
+
+/-!
+# §7(a) FALSE-WITNESS probes for the free-`cells` axioms (audit landmines, OFF the capstone footprint)
+
+These are the axioms the MONTES_AUDIT flagged as FALSE-AS-STATED over a free `cells`/`classify` binder.
+Each `example : False` below type-checks, DEMONSTRATING the axiom is still falsifiable — they are
+therefore flagged loudly. They are all OFF the `montes_via_omDensity` capstone footprint (verified by
+`#print axioms` in `AxProbe`), so they do not corrupt the genuine capstone; but per the enforcement
+audit they are recorded as unrepaired landmines. -/
+
+open LeanUrat LeanUrat.OM
+
+namespace AxFalseProbe
+
+/-- `L2_reconstruct` (LevelNCount.lean, free `cells`): at `cells := fun _ => []`,
+`classify := fun _ _ => T`, the fiber of decided cosets is the whole box (nonempty), but the selector
+codomain `Fin (cells T).length = Fin 0` is empty — so the asserted `Nonempty (Σ' sel …)` is FALSE. -/
+example : False := by
+  haveI : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  -- degenerate instantiation: empty cells, constant classifier onto the queried shape
+  obtain ⟨sel, _recon⟩ :=
+    (M8.L2_reconstruct (n := 1) (N := 1) 2
+      (fun _ _ => (⟨[], []⟩ : ClusterShape))
+      (fun _ => [])
+      (fun _ _ _ => True)
+      (⟨[], []⟩ : ClusterShape)).some
+  -- `sel` maps the (nonempty) fiber into `Fin ([].length) = Fin 0`, which is empty.
+  -- Produce an element of the fiber: any monic box element (the constant classifier hits T).
+  -- The box `monicBox 2 1 1` is nonempty (it has `(2^1)^1 = 2` elements).
+  have hne : Nonempty (QuotientBox.monicBox 2 1 1) := by
+    have : 0 < Nat.card (QuotientBox.monicBox 2 1 1) := by
+      rw [QuotientBox.card_monicBox 2 1 1 (by norm_num)]; positivity
+    exact (Nat.card_pos_iff.mp this).1
+  obtain ⟨f⟩ := hne
+  exact (sel ⟨f, rfl⟩).elim0
+
+end AxFalseProbe

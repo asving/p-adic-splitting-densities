@@ -20,12 +20,14 @@ Formalizes the content of `notes/L3_proof.md`. Over a finite field `F_Q`:
   `m` over `F_Q` is `Q^m`. Proved via the affine bijection `g ↦ X^m + g` with `degreeLT F_Q m`,
   whose cardinality is `Q^m` (`Module.natCard_eq_pow_finrank` + `degreeLT.basis`).
 
-* **(b)/(c) the count formulas (STATED; `sorry` with a flagged missing-mathlib note).** The
-  squarefree count `Q^m - Q^{m-1}` and the Gauss/Möbius irreducible count `N_d(Q)` and the resulting
-  shape-count polynomials `S_λ(Q)` are **not in mathlib v4.31.0** (confirmed by source search: no
-  `cardSquarefree`, no necklace/Möbius irreducible-count, no zeta-function statement for `F_q[X]`).
-  These would require formalizing the Carlitz/zeta generating-function identity from scratch. We
-  state them and isolate the single missing fact in `sorry`, with the exact gap noted at each site.
+* **(b)/(c) the count formulas (PROVED elsewhere, sorry-free).** The squarefree count `Q^m - Q^{m-1}`
+  and the Gauss/Möbius irreducible count `N_d(Q)` were once STATED here as `sorry`-flagged theorems
+  (mathlib v4.31.0 has no `cardSquarefree`, no necklace/Möbius irreducible-count, no zeta-function
+  statement for `F_q[X]`). Those sorried duplicates have since been **deleted (2026-07-05, hygiene)**;
+  the live, sorry-free proofs are `LeanUrat.L3Squarefree.card_squarefreeMonicDegree` (the `A·B²`
+  unique-factorization convolution) and `LeanUrat.L3Gauss.gauss_necklace_count` (Möbius inversion of
+  the subfield/Frobenius identity). The shared `def`s (`squarefreeMonicDegree`, `monicIrreducibleDegree`)
+  remain here — they are the statements those files and all consumers use. See the tombstones below.
 -/
 
 -- Prose-heavy blueprint docstrings and a research header; these style linters are cosmetic here.
@@ -118,11 +120,12 @@ theorem card_monicDegree (m : ℕ) :
 
 end MonicCount
 
-/-! ## 3. Part (a)/(b)/(c) — the count formulas (STATED; flagged `sorry`)
+/-! ## 3. Part (a)/(b)/(c) — the count formulas (definitions kept; proofs live in L3Squarefree/L3Gauss)
 
-The following are the closed-form counts of `notes/L3_proof.md` (Theorems A, B, C). Each requires a
-generating-function/Möbius identity that is **NOT present in mathlib v4.31.0** (verified by source
-search). We state them with the precise missing-mathlib fact flagged at each `sorry`. -/
+The closed-form counts of `notes/L3_proof.md` (Theorems A, B, C) require a generating-function/Möbius
+identity **not present in mathlib v4.31.0** (verified by source search). The `def`s of the counted sets
+are kept here; the sorry-free proofs live in `LeanUrat.L3Squarefree` (Theorem A) and `LeanUrat.L3Gauss`
+(Theorem B). The `sorry`-flagged duplicates that once stood here are DELETED (see the tombstones). -/
 
 section Counts
 
@@ -130,19 +133,13 @@ section Counts
 def squarefreeMonicDegree (F : Type*) [Field F] (m : ℕ) : Set F[X] :=
   {p | p.Monic ∧ p.natDegree = m ∧ Squarefree p}
 
-/-- **Theorem A (squarefree count).** Over `F_Q`, for `m ≥ 2` the number of squarefree monic
-polynomials of degree `m` is `Q^m - Q^{m-1}`; equivalently the non-squarefree count is `Q^{m-1}`.
-(`notes/L3_proof.md §1.2`, Theorem A.)
-
-FLAGGED SORRY — MISSING MATHLIB. mathlib v4.31.0 has **no** squarefree-polynomial cardinality
-(`cardSquarefree`) and **no** zeta/Carlitz generating-function identity
-`∑_k (#monic deg k) u^k = S(u) · ∑_j Q^j u^{2j}` for `F_q[X]`. Proving this requires either the
-unique-factorization `A·B²` bijection counting argument or the Euler-product identity — a
-self-contained development not yet attempted here. The base fact it builds on (`#monic deg m = Q^m`,
-`card_monicDegree`) **is** proved above. -/
-theorem card_squarefreeMonicDegree (m : ℕ) (hm : 2 ≤ m) :
-    Nat.card (squarefreeMonicDegree F m) = Nat.card F ^ m - Nat.card F ^ (m - 1) := by
-  sorry
+/- TOMBSTONE (superseded duplicate deleted 2026-07-05, hygiene).
+**Theorem A (squarefree count).** The sorried duplicate `theorem card_squarefreeMonicDegree`
+(`Nat.card (squarefreeMonicDegree F m) = Q^m - Q^{m-1}`, `m ≥ 2`) that lived here has been DELETED.
+The live, sorry-free version is `LeanUrat.L3Squarefree.card_squarefreeMonicDegree` (proved by the
+`A·B²` unique-factorization convolution). That is the one `AxChk` prints and every consumer cites
+(`BB3inf`:147, `MontesAxiom`:259, `PadicMeasure`:549, `OM.ResidueCount`:59, `OM.Discriminant`:274).
+The `def squarefreeMonicDegree` above is kept — it is the shared statement those consumers use. -/
 
 end Counts
 
@@ -150,22 +147,13 @@ end Counts
 def monicIrreducibleDegree (F : Type*) [Field F] (d : ℕ) : Set F[X] :=
   {p | Irreducible p ∧ p.Monic ∧ p.natDegree = d}
 
-/-- **Theorem B (Gauss/necklace irreducible count).** The number of monic irreducible polynomials of
-degree `d ≥ 1` over `F_Q` is `N_d(Q) = (1/d) ∑_{e ∣ d} μ(e) Q^{d/e}`, a single polynomial in `Q`
-independent of `p`. (`notes/L3_proof.md §2.1`, Theorem B.)
-
-FLAGGED SORRY — MISSING MATHLIB. mathlib v4.31.0 has no Gauss/necklace count and no Möbius-inversion
-statement for monic-irreducible cardinalities over a finite field (no declaration matching
-`necklace`/Möbius irreducible count was found). The accessible intermediate `∑_{e ∣ d} e · N_e(Q) =
-Q^d` (every element of `F_{Q^d}` is a root of a unique monic irreducible of degree dividing `d`) is
-also absent and would need to be proved from `FiniteField` subfield/Frobenius API before Möbius
-inversion (`ArithmeticFunction.moebius`). -/
-theorem gauss_necklace_count
-    (F : Type*) [Field F] [Finite F] (d : ℕ) (hd : 1 ≤ d) :
-    (d : ℚ) * (Nat.card (monicIrreducibleDegree F d) : ℚ)
-      = ∑ e ∈ d.divisors,
-          ((ArithmeticFunction.moebius e : ℤ) : ℚ) * (Nat.card F : ℚ) ^ (d / e) := by
-  sorry
+/- TOMBSTONE (superseded duplicate deleted 2026-07-05, hygiene).
+**Theorem B (Gauss/necklace irreducible count).** The sorried duplicate `theorem gauss_necklace_count`
+(`d · N_d(Q) = ∑_{e ∣ d} μ(e) · Q^{d/e}`, `d ≥ 1`) that lived here has been DELETED. The live,
+sorry-free version is `LeanUrat.L3Gauss.gauss_necklace_count` (proved via the `∑_{e∣d} e·N_e = Q^d`
+subfield/Frobenius identity + `ArithmeticFunction.moebius` inversion). That is the one `AxChk` prints
+and consumers cite (`OM.Order0Count`:63). The `def monicIrreducibleDegree` above is kept — it is the
+shared statement `L3Gauss` and other consumers use. -/
 
 /-! ## 4. Universality (part (b)/(c)): shape counts are polynomials in `Q`
 

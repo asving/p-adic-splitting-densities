@@ -141,8 +141,8 @@ open LeanUrat.CountingModel LeanUrat.MontesAxiom
 /-- The degree-`0` factorization type `σ₀` (empty multiset of `(e,f)` pairs), `σ₀.degree = 0`. -/
 def trivType : FactorizationType := ⟨0⟩
 
-/-- A single leaf cluster shape `T₀` (empty decorated OM tree). -/
-def trivShape : ClusterShape := ⟨[]⟩
+/-- A single leaf cluster shape `T₀` (empty decorated OM tree, no cell payload). -/
+def trivShape : ClusterShape := ⟨[], []⟩
 
 /-- The single trivial leaf cell: residual degree `dS = 1`, residue-extension `δ = 0`, an empty
 (width-`0`) Newton polygon, no descent children. Then `countCellCoeff` over it is `(2^0)^0 ·
@@ -183,7 +183,12 @@ noncomputable def trivM : CountingModel 2 0 where
 /-- The single-cell list of a shape `T`: the leaf cell `[trivCell]` exactly on `trivShape`, empty
 otherwise. So `clusterCount T 2 = 1` on `trivShape` (one leaf box of measure `1`, pivot `1`) and `0`
 off it, matching `stratumCount`. -/
-def trivCells (T : ClusterShape) : List CountCell := if T = trivShape then [trivCell] else []
+-- `noncomputable` because the enriched `ClusterShape` carries a classical (`noncomputable`)
+-- `DecidableEq` (decision 2b: the recursive, polygon-carrying shape has no derivable structural
+-- instance); the `if T = trivShape` decision is the only computable shape-equality consumer, so this
+-- is the single ripple of that instance change. Its uses are proofs/`rfl`/`MontesData` fields, all of
+-- which are insensitive to computability.
+noncomputable def trivCells (T : ClusterShape) : List CountCell := if T = trivShape then [trivCell] else []
 
 /-- Strict-descent for `trivCells`: every cell is the childless `trivCell`, so the child membership is
 vacuous. Defined standalone so the structure's `cells_descend` field and the `nodeMeasure_boxSum`
@@ -307,15 +312,38 @@ theorem montes_bundle_nonempty :
       (∀ q' : ℕ, 1 < q' → F.density n σ q' = ∑ T ∈ D.shapesOf σ, D.coeff T q') :=
   ⟨2, 0, trivM, trivD, trivType, trivF, rfl, fun _ _ => rfl⟩
 
+/-- **The coupled witness's density sum is the constant `1`.** `trivD.shapesOf trivType = {trivShape}`
+and `trivD.coeff trivShape q' = clusterCount trivCells … trivShape q' = 1` (`clusterCount_trivCells`),
+so the tree-sum is `1` at every `q'`. Feeds `trivF_tame`. -/
+theorem trivD_sum_coeff_eq_one (q' : ℕ) :
+    (∑ T ∈ trivD.shapesOf trivType, trivD.coeff T q') = 1 := by
+  have hs : trivD.shapesOf trivType = {trivShape} := if_pos rfl
+  rw [hs, Finset.sum_singleton]
+  have hcoeff : trivD.coeff trivShape q'
+      = clusterCount trivCells (fun _ => 0) trivCells_descend trivShape q' := rfl
+  rw [hcoeff, clusterCount_trivCells trivCells_descend trivShape q', if_pos rfl]
+
+/-- **The tame functional equation holds (PROVABLY, no axiom) for the coupled witness** (U1 fix,
+2026-07-02). `trivF.density 0 trivType` is the constant `1` (`trivD_sum_coeff_eq_one`), represented by
+the palindromic rational function `1/1`. So the witness bundle discharges `goal_theorem_montes`'s
+`htameFE` hypothesis by a PROOF, keeping the full-bundle non-vacuity instance tame-axiom-free. -/
+theorem trivF_tame : TameFunctionalEquation trivF 0 trivType := by
+  refine ⟨1, 1, one_ne_zero, fun q' _ _ => ?_, fun x _ _ _ => by simp⟩
+  show (∑ T ∈ trivD.shapesOf trivType, trivD.coeff T q') = _
+  rw [trivD_sum_coeff_eq_one q']
+  simp
+
 /-- **`goal_theorem_montes` applied to the full witness bundle (a sorry-free instance).** The
 conclusion of `goal_theorem_montes` holds for the coupled `(trivM, trivD, trivType, trivF)` bundle —
-witnessing that the theorem genuinely fires on an inhabited bundle with non-trivial density. -/
+witnessing that the theorem genuinely fires on an inhabited bundle with non-trivial density. The tame
+hypothesis is discharged by the PROVED `trivF_tame` (no axiom), so this instance's footprint is Lean
+core only. -/
 theorem montes_full_instance :
     ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
       (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
         (∑ T ∈ trivD.shapesOf trivType, trivD.coeff T q') = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
       (1 < 2 → trivM.countingDensity trivType = num.eval ((2 : ℕ) : ℚ) / den.eval ((2 : ℕ) : ℚ)) ∧
       IsPalindromic num den :=
-  Goal.goal_theorem_montes trivM trivD trivType trivF rfl (fun _ _ => rfl)
+  Goal.goal_theorem_montes trivM trivD trivType trivF rfl (fun _ _ => rfl) trivF_tame
 
 end LeanUrat.Witness

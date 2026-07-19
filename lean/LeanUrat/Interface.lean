@@ -157,17 +157,58 @@ structure FactorizationType where
 def FactorizationType.degree (σ : FactorizationType) : ℕ :=
   (σ.data.map (fun p => p.1 * p.2)).sum
 
-/-- A **cluster-tree / OM-type shape** `T` — the index of the cluster recursion (a decorated
+/-! ### `ClusterShape` — the cluster-tree / OM-type shape index (ENRICHED, decision 2b)
+
+A **cluster-tree / OM-type shape** `T` is the index of the cluster recursion (a decorated
 Okutsu–Montes tree). For the assembly (L6M4) it is used only as a *decidable index* carrying a
 per-shape volume; its internal data is the decorated tree (nodes recorded as
 `(order, clusterSize, residualDegree)`). Finitely many shapes contribute to each `(n, σ)` by L5fix
 (GMN termination, `p`-independent bound). This object is **distinct** from `FactorizationType`: a
 single type `σ` is realized by *many* shapes `T` (different root configurations), and the per-type
-density is the multiplicity-weighted sum of per-shape volumes (`DensityFoundation.decomposition`). -/
+density is the multiplicity-weighted sum of per-shape volumes (`DensityFoundation.decomposition`).
+
+**ENRICHED (decision 2b, faithful-by-construction).** Besides the count-native slot list `tree`
+(unchanged: it carries the root `(order, clusterSize, residualDegree)` tuple read by
+`M5.nodeSizeOf`/`M6.treeSize`/the decoder), the shape now carries the genuine per-node **cell data**
+`cells : List ShapeCell`, so that the decoder reconstructs the REAL `MontesAxiom.CountCell` list
+faithful-by-construction (NOT the lossy schematic reconstruction the bare `tree` slot would force —
+cf. `OMSTEP_BLUEPRINT.md §6/§7.8`). The `tree` slot stays so the descent measure read-back
+(`treeSize`/`nodeSizeOf` reading `tree.head.2.1`) and every `⟨tree⟩`-based size lemma are unchanged. -/
+mutual
+/-- A **cluster-tree / OM-type shape**: the count-native `tree` slot list PLUS the faithful per-node
+cell payload `cells` (decision 2b). See the section comment above for the full discussion. -/
 structure ClusterShape where
-  /-- Opaque encoding of the decorated OM tree. -/
+  /-- Count-native slot encoding of the decorated OM tree (root tuple `(order, clusterSize, dr)`
+  followed by the concatenated child subtrees). Read by `M5.nodeSizeOf`/`M6.treeSize`. -/
   tree : List (ℕ × ℕ × ℕ)
-deriving DecidableEq
+  /-- **Faithful per-node cell payload** (decision 2b): the genuine `CountCell` data of every cell of
+  this node, so the decoder is lossless. Empty for a leaf / order-0 shell. -/
+  cells : List ShapeCell
+/-- A faithful per-node OM **cell datum**: the genuine `MontesAxiom.CountCell` data of one OM cell —
+the residual-stratum degree `dS`, the residue-extension degree `δ`, the lattice Newton-polygon face
+`polygon`, and the descent children (each itself a `ClusterShape`). Mirrors `MontesAxiom.CountCell`
+but lives upstream (in `Interface`) so the enriched `ClusterShape` can carry it; the down-stream M7
+reader erases it back to a genuine `CountCell`. -/
+structure ShapeCell where
+  /-- residual-stratum degree `d_S`. -/
+  dS : ℕ
+  /-- residue-extension degree `δ`. -/
+  δ : ℕ
+  /-- the cell's lattice Newton-polygon face. -/
+  polygon : L4.LatticePolygon
+  /-- the descent children of this cell (each a strictly smaller cluster shape). -/
+  children : List ClusterShape
+end
+
+/-- `DecidableEq` for the enriched (recursive, polygon-carrying) `ClusterShape`. The structural
+`deriving` handler does not support recursion through `List` nor the function-typed fields of
+`L4.LatticePolygon`, so the instance is supplied classically (a legitimate `Decidable` instance, not
+an escape hatch). It is `noncomputable`; every consumer of shape-equality in the development is
+already `noncomputable` (the sole exception, `Witness.trivCells`, is marked `noncomputable`). -/
+noncomputable instance : DecidableEq ClusterShape := Classical.decEq _
+
+/-- `DecidableEq` for `ShapeCell` (classical, as for `ClusterShape`). -/
+noncomputable instance : DecidableEq ShapeCell := Classical.decEq _
 
 /-- **The `p`-adic factorization-density foundations, as a stated-hypothesis interface.**
 
@@ -175,10 +216,15 @@ deriving DecidableEq
 factorization-type density** `α/ρ(n,σ;q)`: the Haar volume of the locus of degree-`n` forms of type
 `σ`. The fields record exactly the measure-foundational facts L1/L6M4/M1 consume:
 
-* `density_nonneg`, `density_le_one`: densities are honest probabilities (Haar volumes in `[0,1]`),
-  not value-weighted integrals (load-bearing: at `p=2`, `∫|disc| ≠ volume`; cf. `HUMAN_PROOF §0`).
-* `total_mass`: for each `n`, the densities over all types of degree `n` sum to `1` (cluster-tree
-  stratification is a finite measurable *partition* of `P^n(O_K)` / `M_n`).
+* `density_nonneg`: densities are nonnegative (Haar volumes), not value-weighted integrals
+  (load-bearing: at `p=2`, `∫|disc| ≠ volume`; cf. `HUMAN_PROOF §0`).
+
+(C1 docstring fix, `notes/MONTES_AUDIT.md`, 2026-07-02: earlier versions of this docstring advertised
+`density_le_one` (densities in `[0,1]`) and `total_mass` (`∑_σ density = 1`) fields that the structure
+does NOT carry. The structure is intentionally WEAK — it does not pin `density` to be a probability,
+which is exactly why statements about a FREE `F : DensityFoundation` must never be axioms (see
+`TameFunctionalEquation` below, the U1 lesson). If those fields are ever added, re-audit every `∀ F`
+statement.)
 
 Citation: `p`-adic density foundations, cf. paper §2–4 / Igusa §7.4; cluster-tree stratification
 `notes/HUMAN_PROOF.md §0`, L1 `notes/HUMAN_PROOF.md §3`. -/
@@ -316,19 +362,37 @@ def IsPalindromic (num den : Polynomial ℚ) : Prop :=
   ∀ x : ℚ, x ≠ 0 → den.eval x ≠ 0 → den.eval x⁻¹ ≠ 0 →
     num.eval x⁻¹ / den.eval x⁻¹ = num.eval x / den.eval x
 
-/-- **(H-tame) Tame functional equation / rationality.**
-At tame primes `p > n` (so `p ∤ |S_n|`) the projective density is represented by a *palindromic*
-rational function `R^{tame}_σ ∈ ℚ(t)`, `R^{tame}_σ(1/t) = R^{tame}_σ(t)`. This is the paper's tame
-palindromic-weight machinery (§5), untouched by the Prop 5.3 failure; the proof uses it only via
-"infinitely many tame `p`," sufficient for the `ℚ(t)` identity theorem (L7).
+/-- **(H-tame) The tame functional equation, as a `Prop`-valued PREDICATE** (the U1 soundness fix,
+2026-07-02).
+
+`TameFunctionalEquation F n σ` says: at tame primes `q > n` the density `F.density n σ` is represented
+by a single *palindromic* rational function `R^{tame}_σ ∈ ℚ(t)`, `R^{tame}_σ(1/t) = R^{tame}_σ(t)`.
+This is the paper's tame palindromic-weight machinery (§5), untouched by the Prop 5.3 failure; the
+proofs use it only via "infinitely many tame `p`," sufficient for the `ℚ(t)` identity theorem (L7).
+
+**HISTORY / WHY THIS IS A `def`, NOT AN `axiom` (U1, `notes/MONTES_AUDIT.md`).** This statement was
+previously the GLOBAL AXIOM `tame_functionalEquation (F : DensityFoundation) : ∀ n σ, …` quantified
+over an ARBITRARY `F`. That axiom was FALSE-AS-STATED (machine-checked `False`-witness: a legal `F`
+with `density := fun _ _ q => q` satisfies every `DensityFoundation` field but is not palindromic —
+the axiom then forces `x⁻¹ = x`), so every capstone that consumed it rested on an inconsistent base.
+The mathematics (paper §5, Del Corso–Dvornicich (2000), Yin) is a true statement about the REAL
+density `ρ`, not about an arbitrary `DensityFoundation.density`. The sound encoding is therefore:
+
+* this PREDICATE, consumed as an explicit HYPOTHESIS `htame : TameFunctionalEquation F n σ` by the
+  Goal theorems (`Goal.goal_theorem`, `Goal.goal_theorem_montes`, `Goal.goal_theorem_via_montes`) —
+  free-`F` statements carry it conditionally;
+* ONE concrete NAMED-CITE axiom about the REAL count-native density
+  (`OM.M9.realDensity_tame_functionalEquation`, RealInstance.lean), pinned to the genuine objects
+  (`shapesOf`/`clusterCount` over the real OM decomposition — no free `F`, no free `cells`), which
+  discharges `htame` for the capstone `montes_unconditional`;
+* the coupled non-vacuity witness (`Witness.trivF_tame`) PROVES the predicate outright for the
+  witness bundle (its density is the constant `1`), so the witness instance is now tame-axiom-free.
 
 Citation: `notes/HUMAN_PROOF.md §12` (L7, H-tame); paper §5; Del Corso–Dvornicich (2000), Yin. -/
-axiom tame_functionalEquation
-    (F : DensityFoundation) :
-    ∀ (n : ℕ) (σ : FactorizationType), σ.degree = n →
-      ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
-        (∀ q : ℕ, q.Prime → n < q → F.density n σ q = num.eval (q : ℚ) / den.eval (q : ℚ)) ∧
-        -- palindromy R(1/t) = R(t), in the FAITHFUL degree-robust semantic form (audit B1):
-        IsPalindromic num den
+def TameFunctionalEquation (F : DensityFoundation) (n : ℕ) (σ : FactorizationType) : Prop :=
+  ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+    (∀ q : ℕ, q.Prime → n < q → F.density n σ q = num.eval (q : ℚ) / den.eval (q : ℚ)) ∧
+    -- palindromy R(1/t) = R(t), in the FAITHFUL degree-robust semantic form (audit B1):
+    IsPalindromic num den
 
 end LeanUrat

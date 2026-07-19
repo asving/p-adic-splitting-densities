@@ -135,8 +135,7 @@ theorem bb1Value_isRational (pg : L4.LatticePolygon) : IsRationalFn (fun q => L4
   set A := L4.newtonExponent pg with hA
   refine ⟨(Polynomial.X - 1) ^ V, Polynomial.X ^ (V + A), ?_, fun q hq => ?_⟩
   · exact pow_ne_zero _ Polynomial.X_ne_zero
-  · have hq0 : (0 : ℚ) < (q : ℚ) := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one (le_of_lt hq)
-    have hqne : (q : ℚ) ≠ 0 := ne_of_gt hq0
+  · have hqne : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
     refine ⟨?_, ?_⟩
     · simp only [Polynomial.eval_pow, Polynomial.eval_X]
       exact pow_ne_zero _ hqne
@@ -172,9 +171,7 @@ theorem countPivot_isRational (s : ℕ) : IsRationalFn (countPivot s) := by
     refine ⟨Polynomial.X ^ L5fix.selfLoopExponent s - 1,
       Polynomial.X ^ L5fix.selfLoopExponent s, pow_ne_zero _ Polynomial.X_ne_zero,
       fun q hq => ?_⟩
-    have hq0 : (q : ℚ) ≠ 0 := by
-      have hqpos : (0 : ℚ) < (q : ℚ) := by exact_mod_cast (by omega : 0 < q)
-      exact ne_of_gt hqpos
+    have hq0 : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
     simp only [Polynomial.eval_sub, Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one]
     refine ⟨pow_ne_zero _ hq0, ?_⟩
     rw [eq_div_iff (pow_ne_zero _ hq0)]

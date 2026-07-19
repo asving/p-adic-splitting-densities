@@ -74,8 +74,10 @@ This file implements the **measure layer** of the frozen spec
   do NOT yet prove that the multiset of strata RECONSTRUCTS `T.residual` (an exhaustiveness/partition
   statement — that the cells cover the full GMN factorization). That exhaustiveness is the standard GMN
   cell-decomposition content still recorded via the `omCells` structural axiom.
-* **DERIVED MODULO the two cited analytic axioms** `AX_columnMeasure` (Igusa box/shell) and
-  `AX_cellRecursion` (Igusa/Denef cell decomposition) **+ the GMN structural axioms** `omCells` (the
+* **DERIVED MODULO the cited analytic axiom** `AX_cellRecursion` (Igusa/Denef cell decomposition)
+  (the former second analytic axiom `AX_columnMeasure` was FALSE-AS-STATED over its free `cellVol`
+  binder and DELETED 2026-07-02, U3 — it was dead weight, off every footprint; the box/shell content
+  survives as the `hfactor` HYPOTHESIS of `L4.cellVolume_eq`) **+ the GMN structural axioms** `omCells` (the
   finite cell partition), `descend` (the descent list), and `descend_size_lt` (strict size drop — the
   well-foundedness engine input) **+ Lean core.** (`descend_children_of_factors` is NO LONGER in this
   list — it is a proved lemma.) This is *not* a proof of `clusterVolume_rational` from nothing; it is
@@ -89,14 +91,15 @@ This file implements the **measure layer** of the frozen spec
 tie), `T_BB3`/`L3Squarefree` (the residual count), `T_BB1`/`L4.cellVolume_eq` (the box volume),
 `L5fix.selfLoop_geometric` (the self-loop pivot), the `RatFn` closure lemmas, and the OM induction
 `OMInduction.clusterVol_isRational` are all PROVED (in mathlib or in-project). The cell-volume value
-`(1-Q⁻¹)^V Q^{-A}` is itself PROVED in `L4.cellVolume_eq` from `AX_columnMeasure`, so `AX_columnMeasure`
-asserts strictly *less* than the cell volume.
+`(1-Q⁻¹)^V Q^{-A}` is PROVED in `L4.cellVolume_eq` from the `hfactor` product hypothesis (the Igusa
+box/shell normalization, consumed as a hypothesis — the former `AX_columnMeasure` axiom form was
+FALSE-AS-STATED and deleted, U3 2026-07-02).
 
 ## Citations
 
-* `AX_columnMeasure`: Igusa, *Local Zeta Functions* §7.4 (box/shell normalization
-  `μ{v(c)≥h}=Q^{-h}`, `μ{v(c)=h}=(1-Q⁻¹)Q^{-h}`); standard local-field Haar `[O_δ:p^m O_δ]=Q^m`.
-  `AXIOM_FAITHFULNESS.md` AX-MEASURE(a),(b).
+* Igusa box/shell normalization (`μ{v(c)≥h}=Q^{-h}`, `μ{v(c)=h}=(1-Q⁻¹)Q^{-h}`; Igusa, *Local Zeta
+  Functions* §7.4; standard local-field Haar `[O_δ:p^m O_δ]=Q^m`): consumed as the `hfactor`
+  HYPOTHESIS of `L4.cellVolume_eq`. `AXIOM_FAITHFULNESS.md` AX-MEASURE(a),(b).
 * `AX_cellRecursion`: Igusa, *Local Zeta Functions* §7.4 / Prop 7.4.1 (p-adic change of variables;
   unit-Jacobian ⇒ measure-preserving; cell decomposition of a local zeta integral); Denef, *The
   rationality of the Poincaré series associated to the p-adic points on a variety*, Invent. Math. 77
@@ -324,7 +327,7 @@ asserts a specific *measure-factorization identity* whose three factors are hone
 quantities. Rationality is never asserted here — it emerges only downstream via
 `OMInduction.clusterVol_isRational`. -/
 
-/-- **AX_columnMeasure (Igusa box/shell — single-coordinate Haar value).**
+/- **AX_columnMeasure (Igusa box/shell — single-coordinate Haar value).**
 Over the unramified `O_δ` with residue size `Q = q^δ`, the cell measure of a lattice Newton polygon is
 the **finite product** of the per-column box/shell Haar measures `L4.columnMeasure`. The per-column
 values are the standard `μ{v(c)≥h}=Q^{-h}` (box) and `μ{v(c)=h}=(1-Q⁻¹)Q^{-h}` (shell), using only
@@ -333,10 +336,16 @@ values are the standard `μ{v(c)≥h}=Q^{-h}` (box) and `μ{v(c)=h}=(1-Q⁻¹)Q^
 there, so this axiom asserts strictly LESS than the cell volume.
 
 Citation: Igusa, *Local Zeta Functions* §7.4 (box/shell normalization); standard local-field Haar
-`[O_δ:p^m O_δ]=Q^m`. `AXIOM_FAITHFULNESS.md` AX-MEASURE(a),(b). NOT a rationality claim. -/
-axiom AX_columnMeasure
-    (cellVol : L4.LatticePolygon → ℕ → ℚ) (pg : L4.LatticePolygon) (Q : ℕ) :
-    cellVol pg Q = ∏ i : Fin pg.width, L4.columnMeasure pg Q i
+`[O_δ:p^m O_δ]=Q^m`. `AXIOM_FAITHFULNESS.md` AX-MEASURE(a),(b). NOT a rationality claim.
+
+⚠ **DELETED (U3, `notes/MONTES_AUDIT.md`, 2026-07-02).** The axiom
+`AX_columnMeasure (cellVol : L4.LatticePolygon → ℕ → ℚ) (pg) (Q) : cellVol pg Q = ∏ i, columnMeasure pg Q i`
+was FALSE-AS-STATED: `cellVol` was a FREE function asserted equal to a fixed product (the classic
+conclusion-as-free-parameter defect; at a width-0 polygon the empty product is `1`, so
+`cellVol := fun _ _ => 0` derived `0 = 1`, i.e. `False`). It was DEAD (no consumer besides the equally
+dead `cellVolume_eq_bb1Value`, also deleted). The CORRECT encoding of the same content is the
+`hfactor`-HYPOTHESIS form `L4.cellVolume_eq` (which takes the product identity as an input about a
+given `cellVol`, exactly as a citation should be consumed). -/
 
 /-- The **per-cell residual point-count** factor `N_S(Q_r)` (BB3): the number of non-squarefree
 (refinement-triggering) monic degree-`residualDeg` residual polynomials over the shape's OWN residue
@@ -601,8 +610,7 @@ theorem bb1_isRational (pg : L4.LatticePolygon) : IsRationalFn (fun q => L4.bb1V
   set A := L4.newtonExponent pg with hA
   refine ⟨(Polynomial.X - 1) ^ V, Polynomial.X ^ (V + A), ?_, fun q hq => ?_⟩
   · exact pow_ne_zero _ Polynomial.X_ne_zero
-  · have hq0 : (0 : ℚ) < (q : ℚ) := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one (le_of_lt hq)
-    have hqne : (q : ℚ) ≠ 0 := ne_of_gt hq0
+  · have hqne : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
     refine ⟨?_, ?_⟩
     · simp only [Polynomial.eval_pow, Polynomial.eval_X]
       exact pow_ne_zero _ hqne
@@ -612,17 +620,10 @@ theorem bb1_isRational (pg : L4.LatticePolygon) : IsRationalFn (fun q => L4.bb1V
       rw [h1, div_pow, pow_add]
       ring
 
-/-- **The box factor `bb1Value` IS the cell's box/shell Haar volume — DERIVED from `AX_columnMeasure`
-(+ `L4.cellVolume_eq`), not asserted.** Any cell-volume function `cellVol` satisfying the
-`AX_columnMeasure` product structure equals `bb1Value pg Q = (1-Q⁻¹)^V Q^{-A}` (for `Q ≥ 1`). This is
-the honest justification of the `L4.bb1Value c.polygon q` factor used in `AX_cellRecursion`: its value
-is the standard Igusa box/shell volume, with the closed form PROVED in `L4.cellVolume_eq`. So
-`AX_columnMeasure` is genuinely the box factor's analytic boundary (not dead weight), while the cell
-volume's *value* is proved, not axiomatized. -/
-theorem cellVolume_eq_bb1Value
-    (cellVol : L4.LatticePolygon → ℕ → ℚ) (pg : L4.LatticePolygon) (Q : ℕ) (hQ : 1 ≤ Q) :
-    cellVol pg Q = L4.bb1Value pg Q :=
-  L4.cellVolume_eq cellVol pg Q hQ (AX_columnMeasure cellVol pg Q)
+/- ⚠ **DELETED (U3, `notes/MONTES_AUDIT.md`, 2026-07-02).** `cellVolume_eq_bb1Value` (the sole
+consumer of the deleted FALSE axiom `AX_columnMeasure`) proved `cellVol pg Q = bb1Value pg Q` for a
+FREE `cellVol` — at a width-0 polygon this yielded `0 = 1` (`False`). It had NO consumers. The honest
+surviving form is `L4.cellVolume_eq` with the product structure as the `hfactor` HYPOTHESIS. -/
 
 /-- `cellCoeff T c` is a uniform rational function of `q`: the GENUINELY `q`-varying BB3 count
 `residualCountFn T c.residualDeg` (rational by `residualCountFn_isRational`, whose numerator is the
@@ -642,9 +643,7 @@ theorem omPivot_isRational (T : OMShape) : IsRationalFn (omPivot T) := by
     refine ⟨Polynomial.X ^ L5fix.selfLoopExponent T.size - 1,
       Polynomial.X ^ L5fix.selfLoopExponent T.size, pow_ne_zero _ Polynomial.X_ne_zero,
       fun q hq => ?_⟩
-    have hq0 : (q : ℚ) ≠ 0 := by
-      have hqpos : (0 : ℚ) < (q : ℚ) := by exact_mod_cast (by omega : 0 < q)
-      exact ne_of_gt hqpos
+    have hq0 : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
     simp only [Polynomial.eval_sub, Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one]
     refine ⟨pow_ne_zero _ hq0, ?_⟩
     rw [eq_div_iff (pow_ne_zero _ hq0)]

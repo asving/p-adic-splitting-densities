@@ -169,15 +169,9 @@ noncomputable def closedI3 (q : ℕ) : ℚ :=
 `geometricLimit_of_selfLoop`; this lemma pins the limit VALUE to the closed form). -/
 theorem s2_collapse_value (q : ℕ) (hq : 2 ≤ q) :
     (((q : ℚ) - 1) / q) / (1 - ((q : ℚ) ^ 2)⁻¹) = closedI2 q := by
-  have hq0 : (q : ℚ) ≠ 0 := by
-    have : (0 : ℚ) < q := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_two hq
-    exact ne_of_gt this
-  have hq1 : (q : ℚ) + 1 ≠ 0 := by
-    have : (0 : ℚ) < (q : ℚ) + 1 := by
-      have : (0 : ℚ) < q := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_two hq
-      linarith
-    exact ne_of_gt this
   have hqpos : (0 : ℚ) < q := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_two hq
+  have hq0 : (q : ℚ) ≠ 0 := ne_of_gt hqpos
+  have hq1 : (q : ℚ) + 1 ≠ 0 := by positivity
   have hgt : (1 : ℚ) < q := by exact_mod_cast hq
   -- the pivot `1 - q^{-2} ≠ 0` (positive for q ≥ 2)
   have hpivot : (1 : ℚ) - ((q : ℚ) ^ 2)⁻¹ ≠ 0 := by
@@ -324,16 +318,14 @@ theorem nested_reproduces_I3 (I : ℕ → ℕ → ℚ) (hI : SatisfiesNested I) 
   -- falling factorials as polynomials in q
   have hdf3 : (Nat.descFactorial q 3 : ℚ) = (q : ℚ) * ((q : ℚ) - 1) * ((q : ℚ) - 2) := by
     have h : Nat.descFactorial q 3 = q * (q - 1) * (q - 2) := by
-      simp [Nat.descFactorial]
-      ring
+      simp [Nat.descFactorial]; ring
     rw [h]
     have h2 : (2 : ℕ) ≤ q := hq
     have h1 : (1 : ℕ) ≤ q := by omega
     push_cast [Nat.cast_sub h1, Nat.cast_sub h2]; ring
   have hdf2 : (Nat.descFactorial q 2 : ℚ) = (q : ℚ) * ((q : ℚ) - 1) := by
     have h : Nat.descFactorial q 2 = q * (q - 1) := by
-      simp [Nat.descFactorial]
-      ring
+      simp [Nat.descFactorial]; ring
     rw [h]
     have h1 : (1 : ℕ) ≤ q := by omega
     push_cast [Nat.cast_sub h1]; ring

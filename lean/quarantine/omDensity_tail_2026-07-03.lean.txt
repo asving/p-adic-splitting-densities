@@ -1,0 +1,251 @@
+/-! ## §4 DE-VACUIFICATION — the CONCRETE, PROVED-NON-DEGENERATE count-native density
+
+`MONTES_ARCHITECTURE_REDESIGN.md §2/§4`. The V1 audit found the real density identically `0`
+because the old menu `M9.shapeMenu n` was the `M5.shapeOf`-image of the ORDER-0 LEAF prototypes
+`M9.leafOMTypeOfSize s` (`Rr := 0`), whose `M5.cells` factorizes the ZERO residual, generically to
+the empty cell list, so `clusterCount = (∑ over [])/countPivot = 0` for every menu shape.
+
+The genuine object below is built on the DIRECT `sepShape`-menu (`sepShape n lam`, a `ClusterShape`
+LITERAL carrying a genuine NON-EMPTY cell payload — one childless leaf cell per part of `lam`, with
+the flat order-0 face; no `decode`/`M5.cells`/`Classical.choice` round-trip). Its cells are read by
+the SAME concrete reader `M7.cellsOfShapeWF` the capstone uses, and are provably non-empty for a
+partition with at least one part. This makes `omDensity` genuinely NON-ZERO — the F2 guard
+`omDensity_ne_zero` below is a PROVED theorem, no `sorryAx`. -/
+
+/-- **The genuine (concrete) cell decomposition** `omCellsOf := M7.cellsOfShapeWF` (§2.1). This is the
+faithful cell reader the capstone's `clusterCount` already consumes; on a genuine `sepShape` menu shape
+it returns a NON-EMPTY list of genuine leaf cells (`cellsOfShapeWF_sepShape`), de-vacuifying the sum. -/
+noncomputable def omCellsOf : ClusterShape → List CountCell := M7.cellsOfShapeWF
+
+/-- **The genuine degree-`n` separable order-0 shape menu** (`genuineMenu`, §2.1/§4): the direct
+`sepShape`-image of ALL partitions of `n`. Every shape carries a genuine non-empty cell payload (one
+leaf cell per part), so — unlike the degenerate `M9.shapeMenu` (leaf-`OMType`, `Rr = 0`, empty cells)
+— its `clusterCount` summands are genuinely non-zero. Finiteness is automatic (`Nat.Partition n` is a
+`Fintype`); non-emptiness for `0 < n` is `genuineMenu_nonempty`. -/
+noncomputable def genuineMenu (n : ℕ) : Finset ClusterShape :=
+  (Finset.univ : Finset (Nat.Partition n)).image (sepShape n)
+
+/-- **The genuine, count-native, NON-DEGENERATE density** (`omDensity`, §2.2): the count-native OM
+tree-sum over the genuine `sepShape` menu, using the concrete cell reader `omCellsOf =
+M7.cellsOfShapeWF`, `M6.treeSize`, and the PROVED descent law. This is the concrete object the
+capstone is meant to be about (no free `DensityFoundation`, no free `cells`); its non-degeneracy is
+the F2 guard `omDensity_ne_zero`. (σ enters only as the degree carrier at this order-0 stage — the
+menu is the full degree-`n` separable menu; the genuine per-σ resolution is Phase B.) -/
+noncomputable def omDensity (n : ℕ) (_σ : FactorizationType) (q : ℕ) : ℚ :=
+  ∑ T ∈ genuineMenu n,
+    clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q
+
+/-- `treeSize (sepShape n lam) = n` (the root slot of the `[(0,n,n)]` tree). -/
+theorem treeSize_sepShape (n : ℕ) (lam : Nat.Partition n) :
+    M6.treeSize (sepShape n lam) = n := rfl
+
+/-- **`clusterCount` of a `sepShape` is strictly positive at `q ≥ 2` when `lam` has a part**
+(the per-shape non-degeneracy engine). Every cell of `cellsOfShapeWF (sepShape n lam)` is the
+childless leaf `⟨d, 1, flatFace n, []⟩`; its `countCellCoeff` is
+`(q^1)^{d-1}·bb1Value (flatFace n) q = q^{d-1}·(1 - q⁻¹) > 0`, the children product is `1`, and the
+pivot `countPivot n q > 0`. So the sum-over-cells is positive (non-empty cell list), hence the
+`clusterCount` quotient is positive. -/
+theorem clusterCount_sepShape_pos (n : ℕ) (lam : Nat.Partition n) (q : ℕ)
+    (hq : 2 ≤ q) (hne : (lam.parts.sort (· ≤ ·)) ≠ []) :
+    0 < clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend (sepShape n lam) q := by
+  have hqQ : (2 : ℚ) ≤ (q : ℚ) := by exact_mod_cast hq
+  have hq0 : (0 : ℚ) < (q : ℚ) := by linarith
+  have hqinv : (q : ℚ)⁻¹ < 1 := by
+    rw [inv_lt_one_iff₀]; right; linarith
+  have hqinv0 : (0 : ℚ) < (q : ℚ)⁻¹ := inv_pos.mpr hq0
+  rw [clusterCount_rec, cellsOfShapeWF_sepShape]
+  -- pivot is positive
+  have hpiv : 0 < countPivot (M6.treeSize (sepShape n lam)) q :=
+    lt_of_le_of_ne (M9.countPivot_nonneg _ _)
+      (Ne.symm (countPivot_ne _ q (by omega)))
+  apply div_pos _ hpiv
+  -- each per-cell summand is `q^{d-1}·(1-q⁻¹) > 0`; the sorted parts list is non-empty
+  set cs := (lam.parts.sort (· ≤ ·)).map (fun d => (⟨d, 1, flatFace n, []⟩ : CountCell)) with hcs
+  have hmapne : cs.map (fun c => countCellCoeff c q
+      * (c.children.map (fun ch =>
+          clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend ch q)).prod) ≠ [] := by
+    rw [hcs]
+    simp only [ne_eq, List.map_eq_nil_iff]
+    exact hne
+  -- every summand is > 0 ⇒ the list sum is > 0
+  have hall : ∀ x ∈ cs.map (fun c => countCellCoeff c q
+      * (c.children.map (fun ch =>
+          clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend ch q)).prod),
+      0 < x := by
+    intro x hx
+    rw [hcs, List.map_map, List.mem_map] at hx
+    obtain ⟨d, _hd, rfl⟩ := hx
+    simp only [Function.comp_apply, List.map_nil, List.prod_nil, mul_one]
+    -- countCellCoeff ⟨d,1,flatFace n,[]⟩ q = (q^1)^{d-1} * bb1Value (flatFace n) q, each factor > 0.
+    unfold countCellCoeff L4.bb1Value
+    have h1mq : (0 : ℚ) < 1 - (q : ℚ)⁻¹ := by linarith
+    -- (q^1)^{d-1} > 0, (1-q⁻¹)^V > 0, (q^A)⁻¹ > 0 — each factor strictly positive
+    have hp1 : (0 : ℚ) < ((q : ℚ) ^ (1 : ℕ)) ^ (d - 1) := pow_pos (pow_pos hq0 _) _
+    have hp2 : (0 : ℚ) < (1 - (q : ℚ)⁻¹) ^ L4.newtonVertexCount (flatFace n) := pow_pos h1mq _
+    have hp3 : (0 : ℚ) < ((q : ℚ) ^ L4.newtonExponent (flatFace n))⁻¹ :=
+      inv_pos.mpr (pow_pos hq0 _)
+    exact mul_pos hp1 (mul_pos hp2 hp3)
+  have hsum := List.sum_pos _ hall hmapne
+  simpa using hsum
+
+/-- **`genuineMenu 1` contains the single-part shape `sepShape 1 (indiscrete 1)`.** -/
+theorem sepShape_one_mem_genuineMenu :
+    sepShape 1 (Nat.Partition.indiscrete 1) ∈ genuineMenu 1 := by
+  rw [genuineMenu, Finset.mem_image]
+  exact ⟨Nat.Partition.indiscrete 1, Finset.mem_univ _, rfl⟩
+
+/-- **F2 GUARD — `omDensity` is genuinely NON-ZERO** (`MONTES_ARCHITECTURE_REDESIGN.md §4`, the F2
+guard, a PROVED theorem, no `sorryAx`). At `n = 1` and any residue cardinality `q ≥ 2` the genuine
+count-native density is STRICTLY POSITIVE — the sole menu shape `sepShape 1 (indiscrete 1)` carries a
+genuine single leaf cell with `clusterCount = 1 - q⁻¹ > 0` (the summands are `≥ 0` and this one is
+`> 0`). This certifies that the concrete `omDensity` is NOT identically `0` (unlike the degenerate
+`M9.shapeMenu` leaf-`OMType` menu, which was proved `≡ 0` in the V1 audit), i.e. the capstone is about
+a NON-DEGENERATE object. `[core, no sorryAx]`. -/
+theorem omDensity_ne_zero (σ : FactorizationType) (q : ℕ) (hq : 2 ≤ q) :
+    omDensity 1 σ q ≠ 0 := by
+  have hpos : 0 < omDensity 1 σ q := by
+    rw [omDensity]
+    -- one distinguished positive summand, all others ≥ 0
+    apply Finset.sum_pos'
+    · intro T _
+      exact M9.clusterCount_nonneg M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q
+    · refine ⟨sepShape 1 (Nat.Partition.indiscrete 1), sepShape_one_mem_genuineMenu, ?_⟩
+      apply clusterCount_sepShape_pos 1 (Nat.Partition.indiscrete 1) q hq
+      -- `(indiscrete 1).parts = {1}`, so the sorted list has length `1 > 0`, hence `≠ []`
+      have hlen : 0 < ((Nat.Partition.indiscrete 1).parts.sort (· ≤ ·)).length := by
+        rw [Multiset.length_sort, Nat.Partition.indiscrete_parts (by norm_num)]
+        simp
+      exact List.ne_nil_of_length_pos hlen
+  exact ne_of_gt hpos
+
+/-! ## §5/§6 — the CONCRETE tame cite + capstone about `omDensity` (no free `F`)
+
+`MONTES_ARCHITECTURE_REDESIGN.md §5/§6`. The old capstone `M9.montes_unconditional` certifies the
+DEGENERATE `M9.shapeMenu`-density (V1: `≡ 0`), and its tame input `M9.realDensity_tame_functionalEquation`
+is about that degenerate sum. Here we state the tame functional equation about the CONCRETE,
+PROVED-NON-DEGENERATE `omDensity` (no free `DensityFoundation`, no free `cells`/`classify`), and fire a
+capstone `montes_via_omDensity` that certifies THIS genuine density is uniform-rational + palindromic. -/
+
+/-- **Every menu-shape's `clusterCount` is rational**, via the generic OM engine
+`OMInduction.clusterVol_isRational` over `ClusterShape` (the SAME derivation as
+`MontesData.coeff_isRational`), instantiated at the concrete cell reader `M7.cellsOfShapeWF`,
+`M6.treeSize`, and `M7.cellsOfShapeWF_descend`. `[core]`. -/
+theorem clusterCount_isRational (T : ClusterShape) :
+    IsRationalFn (fun q => clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q) := by
+  have hgen := OMInduction.clusterVol_isRational
+    (Shape := ClusterShape)
+    (size := M6.treeSize)
+    (clusterVol := fun T q => clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q)
+    (contribs := fun T => (M7.cellsOfShapeWF T).map (fun c => (countCellCoeff c, c.children)))
+    (pivot := fun T => countPivot (M6.treeSize T))
+    ?hrec ?hdescend ?hcoeff ?hpivot_rat ?hpivot_ne T
+  · exact hgen
+  case hrec =>
+    intro T q _hq
+    rw [clusterCount_rec M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q]
+    congr 1
+    congr 1
+    rw [List.map_map]
+    apply List.map_congr_left
+    intro c _
+    simp only [Function.comp_apply]
+  case hdescend =>
+    intro T c hc ch hch
+    simp only [List.mem_map] at hc
+    obtain ⟨c', hc', rfl⟩ := hc
+    exact M7.cellsOfShapeWF_descend T c' hc' ch hch
+  case hcoeff =>
+    intro T c hc
+    simp only [List.mem_map] at hc
+    obtain ⟨cell, _, hc_eq⟩ := hc
+    rw [← hc_eq]
+    exact countCellCoeff_isRational cell
+  case hpivot_rat =>
+    intro T
+    exact countPivot_isRational (M6.treeSize T)
+  case hpivot_ne =>
+    intro T q hq
+    exact countPivot_ne (M6.treeSize T) q hq
+
+/-- **`omDensity n σ` is a uniform rational function of `q`** — a PROVED theorem (finite menu sum of
+rational `clusterCount`s, closed under `Finset` sums by `isRationalFn_finsetSum`). `[core]`. -/
+theorem omDensity_isRational (n : ℕ) (σ : FactorizationType) :
+    IsRationalFn (fun q => omDensity n σ q) := by
+  have : (fun q => omDensity n σ q)
+      = fun q => ∑ T ∈ genuineMenu n,
+          clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q := by
+    funext q; rfl
+  rw [this]
+  exact isRationalFn_finsetSum (genuineMenu n)
+    (fun T q => clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q)
+    (fun T _ => clusterCount_isRational T)
+
+/-- **The concrete `DensityFoundation` whose density IS `omDensity`** (the pinned foundation; §3/§6).
+`density := omDensity`, `clusterVolume := clusterCount …`, `shapes := genuineMenu`, `multiplicity := 1`.
+The `decomposition` field holds by `rfl` (`omDensity` IS `∑_{genuineMenu} clusterVolume`), and
+`density_nonneg` by `clusterCount_nonneg`. This is NOT a free `F`: its density field is pinned to the
+concrete `omDensity`, so a vacuous/false instance cannot masquerade as it. -/
+noncomputable def omFoundation : DensityFoundation where
+  density := fun n σ q => omDensity n σ q
+  clusterVolume := fun T q =>
+    clusterCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q
+  shapes := fun n _ => genuineMenu n
+  multiplicity := fun _ => 1
+  decomposition := by
+    intro n σ _ q _
+    simp only [omDensity, Polynomial.eval_one, one_mul]
+  density_nonneg := by
+    intro n σ q
+    exact Finset.sum_nonneg (fun T _ =>
+      M9.clusterCount_nonneg M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T q)
+
+/-- **CITE (paper §5 H-tame; Del Corso–Dvornicich (2000), Yin — the tame functional equation of the
+count-native density).** At tame primes `q' > n` the CONCRETE genuine count-native density `omDensity n σ`
+is represented by a single PALINDROMIC rational function.
+
+**U1/§5 SOUNDNESS SHAPE.** There is NO free `F : DensityFoundation`, NO free `cells`/`classify`/`treeSize`:
+the object is the pinned, PROVED-non-degenerate `omDensity` (`omDensity_ne_zero`), and the only bound
+variables are the indexing `(n, σ)`. The statement passes the free-parameter falsifiability test — no
+legal instantiation of a binder decouples the two sides (there is no binder to instantiate but `n, σ`,
+and the LHS `omDensity n σ q'` is a fixed concrete function of them). It is meaningful precisely because
+`omDensity ≠ 0` (else it would be the trivial "`0` is palindromic"). It is the honest, concrete external
+input: the identification of the count-native density with the real p-adic Haar density at tame primes. -/
+axiom omDensity_tame_functionalEquation (n : ℕ) (σ : FactorizationType) :
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+      (∀ q' : ℕ, q'.Prime → n < q' →
+        omDensity n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
+      IsPalindromic num den
+
+/-- **`montes_via_omDensity` — the CAPSTONE about the GENUINE, NON-DEGENERATE density** (§6). For every
+`n` and degree-`n` type `σ`, the CONCRETE count-native OM density `omDensity n σ` is a UNIFORM RATIONAL
+FUNCTION of `q` (one `num/den`, pole-free at every `q > 1`) AND PALINDROMIC — and, unlike the old
+`M9.montes_unconditional`, it is about a PROVED-NON-DEGENERATE object (`omDensity_ne_zero`, F2 guard),
+not the vacuous `≡ 0` leaf sum.
+
+The rationality is the PROVED `omDensity_isRational`; the palindromy is transferred from the concrete
+tame cite `omDensity_tame_functionalEquation` by the L7 identity theorem (`tame_to_all_primes` +
+`isPalindromic_of_agree`) applied to `omFoundation` (whose density IS `omDensity`, so its `hL6`/`htame`
+clauses are the concrete ones). NO free `F`, NO measure axioms, NO `sorryAx`. -/
+theorem montes_via_omDensity (n : ℕ) (σ : FactorizationType) (hσ : σ.degree = n) :
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+      (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
+        omDensity n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
+      IsPalindromic num den := by
+  -- (1) rationality of the genuine density:
+  obtain ⟨num, den, hden, hall0⟩ := omDensity_isRational n σ
+  have hall : ∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
+      omDensity n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ) := hall0
+  refine ⟨num, den, hden, hall, ?_⟩
+  -- (2) tame palindromic representative for the SAME density (concrete cite):
+  obtain ⟨tnum, tden, htden, htame, hpalin⟩ := omDensity_tame_functionalEquation n σ
+  -- (3) L7 identity-theorem transfer, via `omFoundation` (density = omDensity):
+  have hL6 : ∀ q : ℕ, 1 < q → den.eval (q : ℚ) ≠ 0 ∧
+      omFoundation.density n σ q = num.eval (q : ℚ) / den.eval (q : ℚ) := by
+    intro q hq; exact hall q hq
+  have htame' : ∀ q : ℕ, q.Prime → n < q →
+      omFoundation.density n σ q = tnum.eval (q : ℚ) / tden.eval (q : ℚ) := by
+    intro q hp hlt; exact htame q hp hlt
+  have hagree : num * tden = tnum * den :=
+    L7.tame_to_all_primes omFoundation n σ hσ num den tnum tden hden htden hL6 htame'
+  exact L7.isPalindromic_of_agree num den tnum tden hden htden hagree hpalin
+

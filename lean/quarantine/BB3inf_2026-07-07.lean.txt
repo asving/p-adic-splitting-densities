@@ -166,10 +166,7 @@ theorem T_BB3 (F : Type*) [Field F] [Finite F] (d : ℕ) (hd : 2 ≤ d) :
   rw [hmonic_eq, hsf_eq] at hsum
   -- `Q ^ d = (Q^d - Q^{d-1}) + nonsq`, and `Q^{d-1} ≤ Q^d`, solve for nonsq.
   have hpow_le : Q ^ (d - 1) ≤ Q ^ d := by
-    apply Nat.pow_le_pow_right
-    · -- 1 ≤ Q : a finite field is nonempty (hQpos : 0 < Q)
-      omega
-    · omega
+    apply Nat.pow_le_pow_right <;> omega
   omega
 
 /-! ## D. `T_BB1`: the lattice cell volume (concrete; `L4.cellVolume_eq`, proved modulo Igusa) -/
@@ -185,8 +182,7 @@ theorem T_BB1 (pg : L4.LatticePolygon) :
   set A := L4.newtonExponent pg with hA
   refine ⟨(Polynomial.X - 1) ^ V, Polynomial.X ^ (V + A), ?_, fun q hq => ?_⟩
   · exact pow_ne_zero _ Polynomial.X_ne_zero
-  · have hq0 : (0 : ℚ) < (q : ℚ) := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one (le_of_lt hq)
-    have hqne : (q : ℚ) ≠ 0 := ne_of_gt hq0
+  · have hqne : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
     refine ⟨?_, ?_⟩
     · simp only [Polynomial.eval_pow, Polynomial.eval_X]
       exact pow_ne_zero _ hqne
@@ -194,8 +190,7 @@ theorem T_BB1 (pg : L4.LatticePolygon) :
       simp only [L4.bb1Value, ← hV, ← hA, Polynomial.eval_pow, Polynomial.eval_sub,
         Polynomial.eval_X, Polynomial.eval_one]
       -- Rewrite `1 - q⁻¹ = (q-1)/q`, expand the power, and clear all denominators.
-      have h1 : (1 - (q : ℚ)⁻¹) = ((q : ℚ) - 1) / (q : ℚ) := by
-        field_simp
+      have h1 : (1 - (q : ℚ)⁻¹) = ((q : ℚ) - 1) / (q : ℚ) := by field_simp
       rw [h1, div_pow, pow_add]
       ring
 
@@ -261,11 +256,7 @@ theorem omPivot_isRational (T : OMShape) : IsRationalFn (omPivot T) := by
     refine ⟨Polynomial.X ^ L5fix.selfLoopExponent T.size - 1,
       Polynomial.X ^ L5fix.selfLoopExponent T.size, pow_ne_zero _ Polynomial.X_ne_zero,
       fun q hq => ?_⟩
-    have hq0 : (q : ℚ) ≠ 0 := by
-      have hqpos : (0 : ℚ) < (q : ℚ) := by
-        have : 0 < q := by omega
-        exact_mod_cast this
-      exact ne_of_gt hqpos
+    have hq0 : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
     -- Evaluate `num`,`den` first so both the nonvanishing and the value goal speak of `q^w`.
     simp only [Polynomial.eval_sub, Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one]
     refine ⟨pow_ne_zero _ hq0, ?_⟩

@@ -27,11 +27,16 @@ many tame primes is palindromic identically.
 | Path | What it is |
 |------|------------|
 | `paper/main.pdf`, `paper/main.tex` | The paper. |
-| `paper/certificate.pdf`, `paper/certificate.tex` | **Certificate of correctness**: the exact assumed-vs-proven ledger for the Lean development plus the cross-checks. Read this for precise claims. |
-| `lean/` | Lean 4 (v4.31.0 / mathlib v4.31.0) formalization. See `lean/README.md`. |
+| `paper/certificate.pdf`, `paper/certificate.tex` | Certificate of correctness (the paper's assumed-vs-proven ledger + cross-checks). |
+| `lean/` | Lean 4 (v4.31.0 / mathlib v4.31.0) formalization (~117 modules). See `lean/README.md`. |
+| `docs/PROJECT_STATE.md` | **Current authoritative state**: what is proved, the trusted axiom base, the module ↔ math-proof map, and the in-progress order-≥2 work. Start here. |
+| `docs/HUMAN_PROOF.md` | The math-language proof write-up (13 sections). |
+| `docs/AXIOM_FAITHFULNESS.md` | Audit of every trusted axiom against its published source. |
+| `docs/GMN_citations.md` | Map from the OM/Montes inputs we cite to the exact GMN theorem numbers. |
+| `docs/ASSUMED_VS_PROVEN.md` | Earlier assumed-vs-proven ledger (superseded by `PROJECT_STATE.md`; kept for history). |
+| `docs/in-progress/` | Design blueprints for the order-≥2 (deep-wild) formalization. |
+| `docs/references/montes-blueprint.pdf` | Our blueprint of the Montes/GMN inputs. |
 | `verification/` | Reproducible cross-checks: the symbolic OM density engine vs. BCFG root-count moments, and the PARI `factorpadic` oracle. See `verification/README.md`. |
-| `docs/ASSUMED_VS_PROVEN.md` | Plain-text mirror of the certificate ledger. |
-| `docs/GMN_citations.md` | Map from the OM/Montes inputs we cite to the exact theorem numbers in GMN. |
 
 ## Status — what is and is not proven (please read)
 
@@ -45,27 +50,62 @@ cross-checked:
 - the **symbolic OM engine reproduces the BCFG root-count moments exactly through $n=6$**
   (every $P(n,r;q)$ and binomial moment, as exact rational functions).
 
-The **Lean formalization is sound but conditional**, and we are precise about this:
+The **Lean formalization is `sorry`-free but, at the top level, does not yet *non-vacuously*
+prove the full theorem.** We are precise about exactly what is and is not established (a standing
+semantic audit enforces this honesty; see `docs/PROJECT_STATE.md` for the per-capstone detail).
 
-- The capstone `Goal.goal_theorem_montes` is sorry-free with axiom footprint
-  `{propext, Classical.choice, Quot.sound, tame_functionalEquation}` — Lean's core plus the
-  one cited tame functional equation. The novel argument (the OM cluster-volume recursion,
-  the geometric collapse, the $U_N\to0$ tail bound, the decomposition theorem, rationality,
-  and the palindromy transfer) is machine-checked Lean-core-only.
-- It is **conditional** on a hypothesis bundle: a minimal box-wise identification
-  (`boxHaarEquidist`, `nodeMeasure_boxSum`: per-box Haar volume = the proved closed-form
-  value), the GMN count-shadow hypotheses (partition / descent / finite-termination), and
-  the tame functional equation. mathlib v4.31.0 has **no $p$-adic Haar measure and no
-  Montes machinery**, so the actual density $\rho$ is not constructed inside Lean (the only
-  instance of the bundle in the project is a trivial degree-0 witness). This is **not** an
-  unconditional machine-checked proof.
-- The remaining gap is **combinatorial, not analytic**: $p$-adic density is a limit of
-  counting fractions over $\mathbb{Z}/p^N$ (no Lebesgue measure needed); closing it means
-  formalizing the Montes cell-count bijection (Newton polygons + residual polynomials), a
-  large but in-principle constructive task.
+**Genuinely machine-checked, non-vacuous:**
 
-`paper/certificate.pdf` and `docs/ASSUMED_VS_PROVEN.md` give the exact per-theorem axiom
-footprints.
+- A **$p$-uniform rationality engine.** The count-native OM cluster-volume recursion plus the
+  `RatFn` closure produce, over all primes *including wild*, a uniform rational function of $q$
+  (genuinely $q$-varying; the wild contribution is a lattice-volume factor × a finite-field
+  residual count). The soundness fixes are real: `IsPalindromic` is the faithful degree-robust
+  $R(1/x)=R(x)$, and `TameFunctionalEquation` is a definition (an earlier *false* global axiom
+  was caught and removed).
+- A **real order-0 density theorem** — `Order0RealDensity.montes_order0_density_general_prime`:
+  an actual `Nat.card` fiber count over `monicBox p N n`, uniform-rational over all primes, with
+  a machine-checked positivity/non-vacuity gate. **But** it covers the **order-0
+  separable/unramified stratum only**, in the **monic** (not projective) normalization, carries
+  **no palindromy**, and is consumed by none of the `Goal` capstones.
+- The Okutsu–Montes classifier subsystem is formalized (higher-order Newton polygons, residual
+  polynomials, the OM tree/type, φ-adic development) — the ~95-module `lean/LeanUrat/OM/`.
+
+**`sorry`-free but NOT yet a non-vacuous proof of the full theorem:**
+
+- The palindromic capstones (`goal_theorem`, `goal_theorem_montes`, `goal_theorem_via_montes`)
+  are **`∀ F : DensityFoundation` conditionals over a *free* density field** (`Interface.lean`):
+  they say "for every abstract density satisfying the bridge + tame-functional-equation
+  hypotheses, it is uniform-rational and palindromic." `goal_theorem_via_montes` is `sorry`-free
+  with a Lean-core-only footprint `{propext, Classical.choice, Quot.sound}` — **but its only
+  `sorry`-free non-vacuous instance is the trivial degree-0 witness** (n=0, density ≡ 1).
+- The intended **real all-orders instance** (`M9.montes_unconditional`) is, *by its own
+  docstring*, currently **vacuous**: with the present order-0 decode every coefficient is
+  identically 0 (density ≡ 0), it is **σ-independent**, and it is gated behind a hypothesis that
+  is **false** for the real instance. De-vacuification (repair the decode so cells carry real
+  payloads; resolve per-type σ) is the standing obligation.
+- **Palindromy is assumed, not proved on a real instance:** it enters only as the tame
+  functional-equation hypothesis/axiom (Del Corso–Dvornicich / Igusa–Denef–Meuser), which on the
+  current (constant-0) instance holds trivially.
+
+**Trusted base + hygiene.** A few explicitly-`axiom`-declared citations, each a triple-checked
+faithful semantic port: the GMN **theorem of the index** ($\mathrm{ind}\le v_p(\mathrm{disc})$,
+read-set-restricted / arising-key); the **Denef–Igusa** $p$-adic cell recursion; the
+**Del Corso–Dvornicich** tame functional equation. A standing "semantic guardian" re-audits these
+(two false axioms were caught and removed this way); see `docs/AXIOM_FAITHFULNESS.md`,
+`lean/notes/SEMANTIC_AUDIT_LOG.md`. Exactly **one banked `sorry`**
+(`Classifier.npVertices_stable_of_hull_preserved`), **off** the capstone path.
+
+**In progress:** de-vacuifying the real density instance (decode repair + σ-resolution), and
+extending classifier faithfulness from order ≤ 1 to order ≥ 2 (the deep-wild OM tower). See
+`docs/in-progress/`.
+
+**Bottom line.** The mathematics is complete modulo the published Montes/GMN algorithm and is
+extensively cross-checked; the Lean contribution to date is a genuine $p$-uniform rationality
+engine, a real order-0 density theorem, and the formalized OM classifier — but it is **not** an
+unconditional, non-vacuous machine-checked proof of the full palindromic all-orders theorem. The
+headline palindromic capstones are abstract conditionals whose only real instances are currently
+trivial or vacuous. `docs/PROJECT_STATE.md` is the authority; `lake build LeanUrat.AxChk_baseline`
+prints the machine-checked per-theorem footprints.
 
 ## Building
 

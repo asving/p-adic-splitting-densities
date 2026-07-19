@@ -358,9 +358,6 @@ theorem countingDensity_is_squeezed_limit {q n : ℕ} (M : CountingModel q n)
     (hU : UndecidedVanishes M) (σ : FactorizationType) :
     Filter.Tendsto (fun N => M.decidedMeasure σ N + M.undecided N) Filter.atTop
       (nhds (M.countingDensity σ)) := by
-  have h1 := M.density_isLimit σ
-  have h2 : Filter.Tendsto (fun N => M.decidedMeasure σ N + M.undecided N) Filter.atTop
-      (nhds (M.countingDensity σ + 0)) := h1.add hU
-  simpa using h2
+  simpa using (M.density_isLimit σ).add hU
 
 end LeanUrat.CountingModel

@@ -1,0 +1,200 @@
+# Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
+
+*Snapshot: 2026-07-19. This document lays out (1) the bigger picture, (2) what is proved and on what
+it rests, (3) the Lean blueprint and its correspondence to the math-language proof, and (4) what is in
+progress. It is meant to be sufficient, together with the code, for a reader to reconstruct the full
+state of the project.*
+
+---
+
+## 1. The result and the bigger picture
+
+**Theorem (informal).** Factorization "types" σ classify how a monic polynomial splits (e.g. "two
+distinct linear factors and one irreducible quadratic"). Draw a monic degree-*n* polynomial over ℤ_*p*
+uniformly at random. The probability `ρ(n, σ; p)` that it has factorization type σ over ℚ_*p* is, as a
+function of `q = p`, one **fixed rational function** `R_σ ∈ ℚ(t)` — **independent of the prime**, valid
+even at the *wild* primes `p ≤ n` where naive Hensel/tame arguments break — and in the projective
+weight-normalized normalization `R_σ` is **palindromic**.
+
+**Why it is hard.** At *tame* primes (`p > n`) the count is governed by residue-field combinatorics and
+is visibly a polynomial in `q`. At *wild* primes (`p ≤ n`) ramification is genuinely *p*-adic: the
+factorization is controlled by the Okutsu–Montes (OM) higher-order Newton-polygon algorithm, whose
+combinatorics a priori depend on *p*. The content of the theorem is that, after the right normalization,
+the wild contribution assembles into the *same* rational function — the p-dependence cancels.
+
+**The bigger picture.** This is the local input to a *p*-adic Chebotarev-type program (the companion
+project *"A Chebotarev Density Theorem over p-adic Fields"*, Asvin G., Wei, Yin). The paper being
+formalized is `docs/references/uniform-rationality-paper.pdf` (Claude & Asvin G.).
+
+---
+
+## 2. What is proved, and on what it rests
+
+**Read this section carefully — `sorry`-free is not the same as non-vacuous, and the distinction is
+the whole point.** A standing semantic audit (2026-07-19) established the following honest picture.
+
+### Genuinely machine-checked, non-vacuous
+
+- **A `p`-uniform rationality engine.** The count-native OM cluster-volume recursion + the `RatFn`
+  closure produce, over all primes *including wild*, a uniform rational function of `q` (genuinely
+  `q`-varying; wild contribution = lattice-volume factor × finite-field residual count). The soundness
+  fixes are real: `IsPalindromic` is the faithful `R(1/x)=R(x)`; `TameFunctionalEquation` is a
+  definition (an earlier *false* global axiom was caught and removed).
+- **A real order-0 density theorem** — `Order0RealDensity.montes_order0_density_general_prime`: an
+  actual `Nat.card` fiber count over `monicBox p N n`, uniform-rational over all primes, machine-checked
+  with a positivity/non-vacuity gate. **But** it covers the **order-0 separable/unramified stratum
+  only**, is **monic** (not projective), carries **no palindromy**, and feeds no `Goal` capstone.
+- The Okutsu–Montes classifier subsystem is formalized (higher-order Newton polygons, residual
+  polynomials, the OM tree/type, φ-adic development) — the ~95-module `LeanUrat/OM/`.
+
+### `sorry`-free but NOT (yet) a non-vacuous proof of the full theorem
+
+The top-level statements in `LeanUrat/Goal.lean`:
+
+- **`goal_theorem`**, **`goal_theorem_montes`**, **`goal_theorem_via_montes`** — all
+  **`∀ F : DensityFoundation` conditionals over a *free* density field** (`Interface.lean`): "for every
+  abstract density satisfying the bridge + tame-functional-equation hypotheses, it is uniform-rational
+  and palindromic." `goal_theorem_via_montes` is `sorry`-free with a Lean-core-only footprint
+  `{propext, Classical.choice, Quot.sound}` — **but its only `sorry`-free non-vacuous instance is the
+  trivial degree-0 witness** (`Witness.lean`: n=0, density ≡ 1). The `F.density` in the conclusion is a
+  free structure field, *not* pinned to the paper's Haar density (mathlib has no `p`-adic Haar measure).
+- The intended **real all-orders instance** `M9.montes_unconditional` is, *by its own docstring*,
+  currently **vacuous**: with the present order-0 `decode` every coefficient is identically 0
+  (density ≡ 0), it is **σ-independent** (passes the query σ as the distinguished σ₀), and it is gated
+  behind a hypothesis (`h_node`) that is **false** for the real instance — "conditional-on-a-false-
+  hypothesis: vacuously true, arithmetically empty." De-vacuification (decode repair so cells carry real
+  payloads + per-type σ-resolution) is the standing obligation.
+- **Palindromy is assumed, never proved on a real instance** — it enters only as `htameFE` / the
+  `realDensity_tame_functionalEquation` axiom, which on the current constant-0 instance holds trivially.
+
+**Bottom line for §2:** the genuine machine-checked content is the `p`-uniform rationality *machinery*
+plus the *order-0* real density theorem; the full palindromic all-orders per-type theorem is **not**
+non-vacuously established — the headline capstones are abstract conditionals whose only real instances
+are trivial or vacuous. `LeanUrat/AxChk_baseline.lean` (`lake build LeanUrat.AxChk_baseline`) prints the
+machine-checked per-theorem `#print axioms` — the ground truth for footprints, not this prose.
+
+### The trusted base (the declared `axiom`s)
+
+Each is an explicit `axiom` that faithfully ports one published result. Full audit:
+`docs/AXIOM_FAITHFULNESS.md`; standing re-audit log: `notes/SEMANTIC_AUDIT_LOG.md`.
+
+| axiom | file | ports |
+|---|---|---|
+| `AX_cellRecursion` | `PadicMeasure.lean` | Denef–Igusa *p*-adic Igusa-zeta **cell recursion** (the measure "wall") |
+| `clusterMeasure`, `omCells`, `descend`, `descend_size_lt` | `PadicMeasure.lean` | the measure-route OM-tree interface (dropped by the count-native capstone) |
+| `omReadValuation_lt_of_certLevel_fkeyed` | `OM/Classifier.lean` | GMN (Guàrdia–Montes–Nart, arXiv:0807.2620) **theorem of the index**, `ind(f) ≤ v_p(disc f)`, read-set-restricted, arising-key form |
+| `realDensity_tame_functionalEquation` | `OM/RealInstance.lean` | Del Corso–Dvornicich tame functional equation (tame `q > n` only) |
+
+Faithfulness discipline (why these are trusted, not just asserted): every axiom is checked by a
+standing read-only "semantic guardian" agent under a triple test — (1) *statement-map both directions*
+(says neither more nor less than the cited claim; in particular no smuggled uniformity/rationality/
+p-independence — those are **derived**, never imported); (2) *mutation* (a wrong tweak must break the
+build); (3) *non-vacuity* (hypotheses satisfiable, not a compiled `False`). Two false axioms were caught
+this way and removed (a false *uniform* `omReadValuation`, refuted by `g = xⁿ + pᴺ`; and a *universal*
+descent citation, refuted by `g = X² + X + pᴺ`), which is why the surviving citations are narrowly
+scoped (read-set-restricted, arising-key-only).
+
+### The one banked `sorry`
+
+`Classifier.npVertices_stable_of_hull_preserved` — a Newton-polygon hull-invariance helper. It is the
+**sole** `sorry` in the repository and is **off the capstone path**: it is consumed only by
+`boxValSupport_reduce_stable_R` (an off-capstone reduce-stability lemma), never by any capstone. Retained
+as an honest banked contract rather than deleted.
+
+---
+
+## 3. The Lean blueprint, and how it builds on the math-language proof
+
+The math-language proof is `docs/HUMAN_PROOF.md` (13 sections). The Lean mirrors it layer for layer.
+
+| math proof (`HUMAN_PROOF.md`) | Lean module(s) | content |
+|---|---|---|
+| §1, §13 Goal Theorem + assembly | `Goal.lean`, `Decomposition.lean` | the capstone + `countingDensity_eq_sum_coeff` |
+| §3 L1 Hensel splitting is measure-exact | `Interface.lean`, `Witness.lean` | the density foundation / measure interface |
+| §4 L3 residue-field shape counts are universal polynomials | `L3.lean`, `L3Gauss.lean`, `L3Squarefree.lean` | necklace/Gauss counts over 𝔽_q |
+| §5 L4 = BB1 Newton-polygon cell volume | `L4.lean` | `cellVolume_eq` — a characteristic-independent `q`-power (proved, not axiomatized) |
+| §6 M6 order-`r` residual equidistribution | `OM/` subsystem | count → volume at each OM order |
+| §7 R1 Vandermonde change-of-variables | `R1.lean` | pushforward over `O_K` |
+| §8 L2core / BB3-∞ cluster volume is rational (all OM orders) | `OM/` (count-native); `PadicMeasure.lean` (measure) | the wild engine; the old measure-route `BB3inf` is retired to `quarantine/` |
+| §9 L5fix termination + finite p-independent menu | `L5fix.lean`, `OM/…` | geometric closure, finite shape menu |
+| §10 L6M4 finite linear system over ℚ(q) | `L6M4.lean` | p-independent coefficients |
+| §11 M1 monic → projective bridge | `M1.lean` | normalization |
+| §12 L7 functional equation by interpolation from tame primes | `L7.lean` | palindromy |
+
+Two routes to the capstone are formalized (see `notes/SEMANTIC_AUDIT_LOG.md` / the paper for why both):
+
+- **Measure route** (`PadicMeasure` + `clusterVolume_rational`): full density = rational modulo the
+  Denef cell-recursion axiom `AX_cellRecursion`. Complete but rests on the measure wall.
+- **Count-native route** (`OM/` + `MontesAllOrders` + `ConditionalDensity`): the wild content is moved
+  into explicit hypotheses so `goal_theorem_via_montes` itself is Lean-core-clean. **This is a
+  statement about the shape of the theorem, not a non-vacuity claim** — see §2: the only real instance
+  of those hypotheses is currently trivial/vacuous, and de-vacuifying it is the standing obligation.
+
+### The OM subsystem (`LeanUrat/OM/`, the bulk of the work)
+
+This is the novel formalization: a Lean model of the Okutsu–Montes higher-order Newton-polygon
+classifier — the object that computes the *p*-adic factorization at wild primes. Key pieces:
+`OMType.lean` (the OM tree/type), `Classifier.lean` (the `classify`/`classifyGenuine` reader),
+`Development.lean` (φ-adic development), `NewtonPolygon.lean`, `ResidualPolynomial.lean`,
+`UnramifiedBase.lean` (the residue-field-extension base ring `O'' = AdjoinRoot g`),
+`MontesAllOrders.lean` (assembly), `ConditionalDensity.lean` (the conditional top-level density).
+
+---
+
+## 4. In progress — the order-≥2 wild tower
+
+The classifier's faithfulness to the genuine Montes tree is currently established at **order ≤ 1**
+(tame + first-order wild). Extending it to **order ≥ 2** (deep wild ramification, where the OM algorithm
+descends through a *tower* of residue-field extensions) is the active work. Design docs are in
+`docs/in-progress/`.
+
+**Resolved (2026-07-17):** the semantic scope of the order-≥2 index citation — it is **arising-key-
+restricted**, not universal (forced by GMN's theorem of the index `ind = Σ_r ind_r ≤ v_p(disc)` plus
+worked examples; a universal reading is refuted by `g = X²+X+pᴺ`). Write-up:
+`docs/in-progress/ORDER2_CITE_INTERPRETATION_2026-07-17.md`.
+
+**Landed (builds #70–#72, additive leaf modules, all core-only):**
+- `OM/LevelDrop.lean` — the level-drop ring hom `θ : Oring(N+1,g') → Oring(N,g)` between consecutive
+  truncation levels, + residue hom + the naturality square.
+- `OM/LevelDropResidue.lean` — `resUnitResidue_levelDrop`: the residue reader commutes with `θ` below
+  the read cutoff (CITE-free).
+- `OM/ChildResidualLevelDrop.lean` — `childResidualExt_reduce_stable_of_cuts`: reduces the whole
+  order-≥2 reduce-stability to exactly one input, the per-digit read cutoffs (which *is* the order-≥2
+  citation).
+
+**Remaining (the growing tower):** the architecture is decided — a **fixed ambient residue field**
+`F = 𝔽_{p^{n!}}` giving a field-*constant* recursion (avoids the varying-type recursion-motive
+obstacle), with the subfield-embedding faithfulness as the one new-math obligation, and the order-≥2
+citation declared against the real `θ`. Then a `classifyFull` dispatcher (order ≤ 1 → existing reader,
+order ≥ 2 → tower reader) makes the "classify = Montes tree" coincidence honest at all orders. Design:
+`docs/in-progress/TOWER_ARCHITECTURE_BLUEPRINT_2026-07-18.md`.
+
+---
+
+## 5. What "done" means, and the road there
+
+Three distinct gaps separate the current Lean from a machine-checked proof of the full theorem; they
+should not be conflated (this is the mistake an earlier draft of this document made):
+
+1. **Non-vacuity / the density instance (the nearest and most important gap).** The palindromic
+   capstones are `∀ F` conditionals; their only real instance is trivial (degree-0) and the intended
+   all-orders instance is vacuous (density ≡ 0, σ-independent, false hypothesis — see §2).
+   *Closing it:* repair the `decode` so classifier cells carry real payloads (non-empty ⟹ non-zero
+   coefficients), and σ-resolve the menu so the certified function is the genuine per-type `ρ(n,σ;q)`.
+   This is combinatorial/constructive, not analytic — the honest next milestone.
+2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
+   in progress (§4).
+3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.
+   The Denef–Igusa cell recursion (`AX_cellRecursion`) is known-hard and is the honest citation
+   boundary; the GMN and Del Corso–Dvornicich inputs are literature results ported faithfully.
+
+- **What is genuinely done now:** a `p`-uniform rationality *engine* (all primes, wild included) and a
+  real *order-0* density theorem, plus the formalized OM classifier (§2). Palindromy is proved as a
+  *transfer* mechanism but only ever fed an *assumed* tame functional equation — it is not yet
+  established for a constructed real density.
+- **Honest one-line status:** the *mathematics* is complete modulo the published Montes/GMN algorithm
+  and is extensively cross-checked; the *Lean* is a sound, `sorry`-free engine + order-0 real result, but
+  **not yet a non-vacuous machine-checked proof** of the full palindromic all-orders per-type theorem.
+
+Canonical math notes (blueprints, audits, negative results) live in the companion `uniform-rationality`
+project; the copies in `docs/` here are snapshots sufficient to reconstruct this Lean state.

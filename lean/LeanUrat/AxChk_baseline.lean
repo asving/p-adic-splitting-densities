@@ -1,11 +1,607 @@
 import LeanUrat
+import LeanUrat.OM.RealInstance
+import LeanUrat.OM.Order0Capstone
+import LeanUrat.OM.Necklace
+import LeanUrat.OM.Order0Alpha
+import LeanUrat.OM.Order0RealDensity
+import LeanUrat.OM.Development
+import LeanUrat.OM.LinearFiber
+import LeanUrat.OM.HenselCount
+import LeanUrat.OM.SparseResultant
+import LeanUrat.OM.FineCellResultant
+import LeanUrat.OM.RphiRing
+import LeanUrat.OM.OMCountV2
+import LeanUrat.OM.CellMenu
+import LeanUrat.OM.CellCard
+import LeanUrat.OM.RestartEquiv
+import LeanUrat.OM.BlockProduct
+import LeanUrat.OM.GradedHensel
+import LeanUrat.OM.HNode1
+import LeanUrat.OM.Drainage
+import LeanUrat.OM.SelfLoopTower
+import LeanUrat.OM.GradedCertificates
+import LeanUrat.OM.ProductTheorem
+import LeanUrat.OM.RphiRingGenH
+import LeanUrat.OM.RphiGenHCount
+import LeanUrat.OM.RestartEquivGenH
+import LeanUrat.OM.FDescentCensus
+import LeanUrat.OM.UnramifiedBase
+import LeanUrat.OM.TowerRestartGenH
+import LeanUrat.OM.TowerBase
+import LeanUrat.OM.TowerRestartAbstract
+import LeanUrat.OM.DevelopTower
+import LeanUrat.OM.MontesAllOrders
+import LeanUrat.OM.StratumOrder1
+import LeanUrat.OM.SelfLoopResum
+import LeanUrat.OM.SelfLoopIterate
+import LeanUrat.OM.DecidedOrder1
+import LeanUrat.OM.DecidedOmCountTie
+import LeanUrat.OM.ShapeCountTie
+import LeanUrat.OM.PathShape
+import LeanUrat.OM.ClassifierBridge
+import LeanUrat.OM.PathShapeChildful
+import LeanUrat.OM.ClassifierBridgeFiber
+import LeanUrat.OM.PathShapeMultiSide
+import LeanUrat.OM.ClassifierBridgeFiber2
+import LeanUrat.OM.PathShapeMultiSideTree
+import LeanUrat.OM.ClassifierBridgeChildful
+import LeanUrat.OM.ClassifierBridgeMultiSide
+import LeanUrat.OM.ClassifierBridgeMultiSide2
+import LeanUrat.OM.SelfLoopCensusK
+import LeanUrat.OM.SelfLoopCensusFiltration
+import LeanUrat.OM.SelfLoopCensusVerdict
+import LeanUrat.OM.SelfLoopDensityConnect
+import LeanUrat.OM.SelfLoopFixpoint
+import LeanUrat.OM.SelfLoopFixpointGeneralMu
+import LeanUrat.OM.ConditionalDensity
+import LeanUrat.OM.TameRealDensity
 open LeanUrat
 
 -- Capstones
 #print axioms LeanUrat.Goal.goal_theorem
 #print axioms LeanUrat.Goal.goal_theorem_montes
 #print axioms LeanUrat.clusterVolume_rational
-#print axioms LeanUrat.tame_functionalEquation
+-- (U1 fix 2026-07-02) the global `tame_functionalEquation` axiom is DELETED (it was FALSE-AS-STATED
+-- over a free `F`); the tame input is now the hypothesis `TameFunctionalEquation` + the concrete
+-- named cite below:
+#print axioms LeanUrat.OM.M9.realDensity_tame_functionalEquation
+#print axioms LeanUrat.OM.M9.montes_unconditional
+#print axioms LeanUrat.Goal.goal_theorem_via_montes
+#print axioms LeanUrat.Witness.trivF_tame
+-- Phase-A order-0 capstone + supporting machinery (2026-07-02)
+#print axioms LeanUrat.OM.Order0.montes_order0
+-- ★ the UNCONDITIONAL Phase-A capstone (h_node0 discharged, 2026-07-03) — MUST be core-only:
+#print axioms LeanUrat.OM.Order0.montes_order0_unconditional
+#print axioms LeanUrat.OM.Order0.h_node0_proved
+-- ★ NON-VACUITY (V1 reversal, 2026-07-12): the genuine order-0 capstone's certified density is
+--   STRICTLY POSITIVE for a concrete (inert n=2) type — the machine-checked A8.1 acceptance gate.
+--   MUST be core-only:
+#print axioms LeanUrat.OM.Order0.gate_rootCount_inert2
+#print axioms LeanUrat.OM.Order0.montes_order0_certified_value_pos
+#print axioms LeanUrat.OM.Order0.classify_eq_sepShape_iff
+#print axioms LeanUrat.OM.Order0.rootCount_isRational_of_leaf
+#print axioms LeanUrat.OM.Order0.cellsOfShapeWF_sepShape
+#print axioms LeanUrat.OM.Necklace.dvd_necklaceSum
+#print axioms LeanUrat.OM.Necklace.necklaceSum_nonneg
+#print axioms LeanUrat.OM.Necklace.necklaceQ_eq_natCast
+-- F-A: the φ-adic development bijection (RESTART_LEMMA §1 / Lemma A at level N; 2026-07-03)
+#print axioms LeanUrat.OM.Development.developEquiv
+#print axioms LeanUrat.OM.Development.develop_unique
+#print axioms LeanUrat.OM.Development.developEquiv_card_consistency
+-- F-B1: linear fiber count over ZMod(p^N) (RESTART_LEMMA §8 Master Lemma, linear model; 2026-07-04)
+#print axioms LeanUrat.OM.LinearFiber.card_ker_mulVec_of_det
+#print axioms LeanUrat.OM.LinearFiber.fiber_card
+#print axioms LeanUrat.OM.LinearFiber.image_index
+#print axioms LeanUrat.OM.LinearFiber.mulVec_fiber_card_of_det
+#print axioms LeanUrat.OM.LinearFiber.mulVec_bijective_iff_isUnit_det
+#print axioms LeanUrat.OM.LinearFiber.card_range_mul_pow
+#print axioms LeanUrat.OM.LinearFiber.card_ker_mul_pow
+-- F-B2/F-B3: quantitative level-N Hensel with fiber count (Master Lemma count form; 2026-07-04)
+#print axioms LeanUrat.OM.HenselCount.sylvesterMulVec_eq
+#print axioms LeanUrat.OM.HenselCount.resultant_stable
+#print axioms LeanUrat.OM.HenselCount.fiber_card
+#print axioms LeanUrat.OM.HenselCount.image_card
+-- F-B4: sparse/twist resultant closed forms + dominant-transversal det (2026-07-04)
+#print axioms LeanUrat.OM.SparseResultant.resultant_expand
+#print axioms LeanUrat.OM.SparseResultant.det_eq_pow_mul_unit_of_dominant_transversal
+#print axioms LeanUrat.OM.SparseResultant.resultant_sparseTwist
+#print axioms LeanUrat.OM.SparseResultant.resultant_sparseTwist_isUnit
+#print axioms LeanUrat.OM.SparseResultant.resultant_sparseTwist_cross
+-- ★ WILD-MATH FORMALIZATION Phase 1 (#56, 2026-07-13): fine-cell resultant-valuation constancy — the
+--   deep-wild block-factorization exponent is a genuine CONSTANT lattice integer from Newton data (the
+--   piece GAP1_RESIDUAL/MASTER_LEMMA closed at math level; now core-only Lean). NEW-1: v(Res Gi Gj) =
+--   ∏ v(θi−θj) over root pairs (abstract Valuation; Monic+Splits, via mathlib resultant_eq_prod_roots_sub).
+--   NEW-2: zmodValuation of the sparse-twist resultant = the fixed exponent di·dj·e·h (same/cross side),
+--   below-cutoff hypothesis honest. Shrinks AX_cellRecursion toward exactly the (unformalizable) Haar CoV.
+#print axioms LeanUrat.OM.FineCellResultant.vResultant_eq_prod_roots_sub
+#print axioms LeanUrat.OM.FineCellResultant.vResultant_eq_prod_cross_pairs
+#print axioms LeanUrat.OM.FineCellResultant.finecell_vResultant_const
+#print axioms LeanUrat.OM.FineCellResultant.finecell_vResultant_const_cross
+-- Phase-B W1: the level-N avatar of O_L (RphiRing; 2026-07-04)
+#print axioms LeanUrat.OM.RphiRing.card_Rphi
+#print axioms LeanUrat.OM.RphiRing.digitEquiv
+#print axioms LeanUrat.OM.RphiRing.card_span_theta_pow
+#print axioms LeanUrat.OM.RphiRing.card_residueField
+#print axioms LeanUrat.OM.RphiRing.isUnit_iff_vphi_eq_zero
+-- R1 / Layer C: the corrected per-node counting recursion (PIN §1.2 + R0 errata; 2026-07-04)
+#print axioms LeanUrat.OM.OMCountV2.omCount_sepShape_eq_rootCount
+#print axioms LeanUrat.OM.OMCountV2.omCount_isRational
+#print axioms LeanUrat.OM.OMCountV2.omDensityV2_isRational
+#print axioms LeanUrat.OM.OMCountV2.isRationalFn_compQpow
+#print axioms LeanUrat.OM.OMCountV2.omCount_eq_mul
+-- W2: the order-1 menu classifier (cellMenu shared with Layer C; W0-ground-truthed; 2026-07-04)
+#print axioms LeanUrat.OM.CellMenu.cell_unique
+#print axioms LeanUrat.OM.CellMenu.cell_exists
+#print axioms LeanUrat.OM.CellMenu.classify1_eq_some_iff
+#print axioms LeanUrat.OM.CellMenu.classify1_eq_none_of_tail
+#print axioms LeanUrat.OM.CellMenu.residual_endpoint_units
+-- W4a/W4b: the per-cell counting identity (partition + closed form, W0-census-gated; 2026-07-04)
+#print axioms LeanUrat.OM.CellCard.cell_partition
+#print axioms LeanUrat.OM.CellCard.cell_card_raw
+#print axioms LeanUrat.OM.CellCard.cell_card_mCell
+-- KEYSTONE (2026-07-07): the GENERAL shapeCount = choicePoly count identity. CRUX (multiplicativity
+-- over degrees) FULLY closed; general tie REDUCED to the single-degree count `hSingle` (blueprint #2,
+-- the one remaining obligation). Gate-confirmed true (35 cases). Discharges cell_card_mCell's hties.
+#print axioms LeanUrat.OM.ShapeCountTie.shapeCount_eq_card
+#print axioms LeanUrat.OM.ShapeCountTie.card_shapeSet_prod
+#print axioms LeanUrat.OM.ShapeCountTie.choicePoly_eval_prod
+#print axioms LeanUrat.OM.ShapeCountTie.shapeCount_tie_general_of_singleDegree
+-- KEYSTONE CLOSED (2026-07-07): single_degree_count discharges hSingle ⟹ shapeCount_tie_general is
+-- UNCONDITIONAL ⟹ cell_card_mCell_uncond = the per-cell census with NO hties hypothesis. The count
+-- multinomial built via DomMulAct.stabilizer_card' (∏c_μ!) + Fintype.card_embedding_eq (descFactorial).
+#print axioms LeanUrat.OM.ShapeCountTie.single_degree_count
+#print axioms LeanUrat.OM.ShapeCountTie.shapeCount_tie_general
+#print axioms LeanUrat.OM.ShapeCountTie.cell_card_mCell_uncond
+-- S3 FIRST INCREMENT (2026-07-07): the engine↔classifier bridge. oneSideShape = the (s,pr,shape)→
+-- ClusterShape constructor (one cell PER FACTOR), and configsOf_oneSideShape = [mkCell s [pr.1,pr.2]
+-- [shape]] for single-side childless (all-μ=1) shapes — configOf of the engine shape reproduces the
+-- classifier's mkCell field-for-field. First step of the S3 classifier→shape map. Multi-side diverges
+-- (configOf aggregates faces; deferred). Adversarially verified sound (RHS genuine, not weakened/vacuous).
+#print axioms LeanUrat.OM.PathShape.cellsOfShapeWF_oneSideShape
+#print axioms LeanUrat.OM.PathShape.configsOf_oneSideShape
+-- CLOSED FORM (2026-07-07): omCount(oneSideShape s pr shape) = shapeCount·p^{-(newtonExponent(mkPoly)+
+-- sideDeg)} — the engine value of the constructor family in closed form, tied to the count keystone via
+-- the bridge. The p^{run} in volExp (=Σceil+sideDeg) is the difference between ROOT omCount and the
+-- cluster-conditional density (hnode_decided_order1): omCount(oneSideShape S2C1)=1/8=cluster(1/2)·p^{-run}.
+#print axioms LeanUrat.OM.PathShape.omCount_oneSideShape_closed
+-- FIRST GENUINE CLUSTER-SHAPE h_node (2026-07-07): mkCell_volExp_add_freeExp = the exponent identity
+-- volExp(mkCell s P sh) + freeExp s N P = s*N (Newton-constrained + free digits fill the s×N box;
+-- span=s telescoped via chainOK_run_sum). hnode_oneSideShape = stratumCount1(mkCell s P [shape])/p^{sN}
+-- → omCount(oneSideShape s pr shape) for single-side childless shapes — the genuine stratum density of a
+-- sloped order-1 cluster shape ties to the engine omCount, natural p^{sN} box, real limit. S2C1 → 1/8.
+#print axioms LeanUrat.OM.PathShape.mkCell_volExp_add_freeExp
+#print axioms LeanUrat.OM.PathShape.hnode_oneSideShape
+-- S3 BRIDGE (2026-07-08): connects the order-1 single-side h_node to the REAL density (B.classify).
+-- KEY: omCount is configsOf-agnostic to the tree-head order slot, so omCount_selfloop_eq_oneSideShape
+-- (Tselfloop's order-0-head literal = oneSideShape's value) is UNCONDITIONAL. stratumCount_selfloop +
+-- hnode_selfloop_over_Bclassify are the h_node in EXACTLY montes_allorders_of_hnode's shape, CONDITIONAL
+-- on the one named fiber-iff hfiber (classify_eq_selfloop_iff, documented open; needs a Newton-polygon
+-- uniqueness lemma). 3/4 of the bridge; the S1 skeleton connection is now one lemma away.
+#print axioms LeanUrat.OM.ClassifierBridge.omCount_selfloop_eq_oneSideShape
+#print axioms LeanUrat.OM.ClassifierBridge.stratumCount_selfloop
+#print axioms LeanUrat.OM.ClassifierBridge.hnode_selfloop_over_Bclassify
+-- S3 CHILDFUL (2026-07-08): μ≥2 descent-child constructor + closed form + h_node, via the empty-payload
+-- child collapse (restart NOT needed). FINDING: at a childful cell limit ≠ omCount (differ by ∏ pivot);
+-- proved omCount_eq_limit_mul_pivot honestly, NOT a false limit=omCount. Pivot arg is p^D (base-changed).
+#print axioms LeanUrat.OM.PathShapeChildful.omChildCount_childShape
+#print axioms LeanUrat.OM.PathShapeChildful.cellsOfShapeWF_oneSideShapeChildful
+#print axioms LeanUrat.OM.PathShapeChildful.omCount_oneSideShapeChildful_closed
+#print axioms LeanUrat.OM.PathShapeChildful.hnode_oneSideShapeChildful
+#print axioms LeanUrat.OM.PathShapeChildful.omCount_eq_limit_mul_pivot
+-- S3 FIBER CHARACTERIZATION (2026-07-08): the HARDEST piece of the bridge landed. npVertices_eq_selfloop
+-- = the Newton-polygon hull UNIQUENESS lemma (npVertices(boxValSupport f) = [(0,H),(n,0)] from InCell's
+-- vertex-exactness + SideAbove — new convex geometry, no template). classify_eq_selfloop_of_inCell = the
+-- FORWARD direction of the fiber iff (InCell f → B.classify f = Tselfloop). Respelled Tselfloop (toSideFace
+-- polygon). OPEN: backward direction (2 small named lemmas) → full iff → hfiber discharge → unconditional
+-- real-density h_node. Forward + hull uniqueness = ~80% of the deepest S3 obligation, scariest part done.
+#print axioms LeanUrat.OM.ClassifierBridgeFiber.npVertices_eq_selfloop
+#print axioms LeanUrat.OM.ClassifierBridgeFiber.rootSide_eq_of_inCell
+#print axioms LeanUrat.OM.ClassifierBridgeFiber.rootResidual_eq_residualOf
+#print axioms LeanUrat.OM.ClassifierBridgeFiber.classify_eq_selfloop_of_inCell
+#print axioms LeanUrat.OM.ClassifierBridgeFiber.omCount_selfloop_eq_oneSideShape
+-- S3 MULTI-SIDE (2026-07-08): all-μ=1 multi-side h_node. FINDING: flat per-side polygon OVER-COUNTS for
+-- ≥2 sides, so sideCeilSum_sum (Σ truncated per-side col sums = newtonExponent(mkPoly s P), telescoped) is
+-- the correct reconciliation. hnode_multiSideShape = stratumCount1(mkCell s P sh)/p^{sN} → multiSideValue
+-- (per-side product). OPEN: tie multiSideValue to a single ClusterShape omCount (children-per-side) for omDensityV2.
+#print axioms LeanUrat.OM.PathShapeMultiSide.sideCeilSum_sum
+#print axioms LeanUrat.OM.PathShapeMultiSide.omCount_multiSide_closed
+#print axioms LeanUrat.OM.PathShapeMultiSide.hnode_multiSideShape
+-- ★★★ FIRST UNCONDITIONAL ORDER-1 DENSITY THEOREM (2026-07-08). Fiber bridge COMPLETE:
+-- classify_eq_selfloop_iff (full both-direction fiber characterization: B.classify realP n N f =
+-- Tselfloop ↔ InCell f (mkCell n P [shape]), single-side childless; backward via sideAbove_of_npVertices
+-- + rootSide_eq_of_classify). hfiber DISCHARGED ⟹ hnode_selfloop_over_Bclassify_R UNCONDITIONAL. Then
+-- montes_order1_selfloop_density = montes_allorders_of_hnode on {Tselfloop}: the REAL B.classify stratum
+-- density of a genuine sloped order-1 cluster shape is a rational function of q + the count limit = it.
+-- First density result beyond order 0, tied to the real density engine. Core-only.
+#print axioms LeanUrat.OM.ClassifierBridgeFiber2.rootSide_eq_of_classify
+#print axioms LeanUrat.OM.ClassifierBridgeFiber2.sideAbove_of_npVertices
+#print axioms LeanUrat.OM.ClassifierBridgeFiber2.classify_eq_selfloop_iff
+#print axioms LeanUrat.OM.ClassifierBridgeFiber2.stratumCount_selfloop_R
+#print axioms LeanUrat.OM.ClassifierBridgeFiber2.hnode_selfloop_over_Bclassify_R
+#print axioms LeanUrat.OM.ClassifierBridgeFiber2.montes_order1_selfloop_density
+-- MULTI-SIDE → omDensityV2 semantics (2026-07-08): the multi-side stratum density factors as a PRODUCT
+-- of independent per-side omCounts (product-theorem structure; NOT a single omCount). sideSubShape =
+-- oneSideShape at the per-side 0-based sub-scale. multiSideValue_eq_prod_omCount + hnode_multiSideProduct.
+#print axioms LeanUrat.OM.PathShapeMultiSideTree.omCount_sideSubShape_eq_sideFactor
+#print axioms LeanUrat.OM.PathShapeMultiSideTree.multiSideValue_eq_prod_omCount
+#print axioms LeanUrat.OM.PathShapeMultiSideTree.hnode_multiSideProduct
+#print axioms LeanUrat.OM.PathShapeMultiSideTree.prod_omCount_eq_blockCardinality
+-- S3 CHILDFUL FIBER BRIDGE (2026-07-08, Round 2): classifyAux_of_single_descent (the one-descent OM
+-- expansion, NEW), classify_eq_childful_iff (B.classify f = TselfloopChildful ↔ InCell f (mkCell), for
+-- single-side DISTINCT-DEGREE ALL-childful μ≥2 shapes — honest added hyps: classifier sorts by degree,
+-- μ=1 erases to childless). stratumCount_childful_R (pivot-free discharge). Childful DENSITY deferred:
+-- omCount = limit·∏pivot, and the pivot = the deeper-order self-loop resummation (k-fold census, the
+-- known-hard SelfLoopResum REMAINING_OBLIGATION) — the recurring bottleneck, Round 3 target.
+#print axioms LeanUrat.OM.ClassifierBridgeChildful.classifyAux_of_single_descent
+#print axioms LeanUrat.OM.ClassifierBridgeChildful.classify_eq_childful_iff
+#print axioms LeanUrat.OM.ClassifierBridgeChildful.omCount_TselfloopChildful_eq
+#print axioms LeanUrat.OM.ClassifierBridgeChildful.stratumCount_childful_R
+-- S3 MULTI-SIDE FIBER BRIDGE (2026-07-08, Round 2): classify_multiSide_firstSide_projection (a
+-- classify=Tselfloop node forces the single-side hull), inCell_multiSide_imp_classify_firstSide (multi-side
+-- InCell is a strict refinement), + hnode/prod reexports. Multi-side DENSITY into omDensityV2 deferred:
+-- needs the product-theorem fiber_node_identity (Round 3 target).
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide.classify_multiSide_firstSide_projection
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide.inCell_multiSide_imp_classify_firstSide
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide.hnode_multiSideProduct_reexport
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide.prod_omCount_eq_blockCardinality_reexport
+-- S3 MULTI-SIDE DENSITY (2026-07-08, Round 3): omDensityMultiSide_stratum_product (UNCONDITIONAL) = the
+-- multi-side order-1 stratum density in CLOSED RATIONAL form (= product of per-side omCounts), the multi-
+-- side analogue of montes_order1_selfloop_density on the InCell/stratumCount1 locus (correct, since
+-- B.classify reads only the first side). omDensityMultiSide_of_sides_of_image_eq (CONDITIONAL on the
+-- ProductTheorem image-equality) + gate-cell instances proving it non-vacuous. Unconditional version
+-- bottlenecks on the PRE-EXISTING named obligation_hensel_surjective (graded-Hensel margin W4d2').
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide2.omDensityMultiSide_stratum_product
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide2.omDensityMultiSide_of_sides_of_image_eq
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide2.gate_omDensityMultiSide_instance
+#print axioms LeanUrat.OM.ClassifierBridgeMultiSide2.gate_omDensityMultiSide_fiberCard
+-- ═══ RELABEL (2026-07-10 RECONCILIATION) ═══ The SelfLoopCensusK / SelfLoopCensusFiltration /
+-- SelfLoopCensusVerdict modules below are AUXILIARY PREDICATE MACHINERY, *** NOT the self-loop density. ***
+-- The reconciliation (verified 2 ways: original wild-prime MC N=1e7 om_oracle_check.json + the SelfLoopResum
+-- re-gate) CONFIRMED the true self-loop density = 1/(1-r) = countPivot⁻¹ = omCount, and that the verdict-chain
+-- census here is a once-per-box TRUNCATION (→ 1+r, the K=2 partial sum with the WRONG bare ratio q^{-(w+1)}
+-- instead of the ×q-exposed q^{-w}). These theorems are SOUND (true about the verdict-chain object) but are
+-- NOT density steps. The DENSITY-correct object is SelfLoopIterate.aggSelfLoopBoxTower → depth0·countPivot⁻¹
+-- (already closed via SelfLoopResum.tendsto_aggSelfLoopTower); the sole remaining gap is REMAINING_STEP1
+-- (connect aggSelfLoopBoxTower to stratumCount1 with the per-level ×q residue-branching). VerdictEquidist /
+-- TrueCensusCovariance are FALSE for-all-k; contingent theorems on them are vacuous. DO NOT treat as density.
+-- S3 SELF-LOOP CENSUS (2026-07-08). census_step_equiv/censusEquivQ = a predicate-generic per-level census
+-- bijection (SOUND, core-only). ⚠ ROUND-5 CORRECTION: with the FIXED-cell selfLoopChain predicate here,
+-- census_step_equiv is VACUOUS for k≥2 (the real self-loop-again cell DEEPENS its polygon path per level —
+-- a0 valuation 2→4→…; at (2,5,2) level-1 read = cellB1 ≠ selfLoopCell 2, so selfLoopChain k is EMPTY for
+-- k≥2). So this is NOT yet the meaningful census. census_base (depth-0 = RestartEquiv closed form) is genuine.
+-- CORRECT target = a DEPTH-INDEXED chain predicate; the genuine OPEN lemma = verdict-conditioned coset
+-- equidistribution (does the depth-k self-loop verdict cut each of the p^{s(s+1)/2} cosets to the same
+-- slBoxRatio fraction). This is the recurring multi-round bottleneck (childful density / deeper resummation).
+#print axioms LeanUrat.OM.SelfLoopCensusK.census_step_equiv
+#print axioms LeanUrat.OM.SelfLoopCensusK.censusEquivQ
+#print axioms LeanUrat.OM.SelfLoopCensusK.census_base
+#print axioms LeanUrat.OM.SelfLoopCensusK.census_depth_one
+#print axioms LeanUrat.OM.SelfLoopCensusK.selfLoopChain_succ
+#print axioms LeanUrat.OM.SelfLoopCensusK.gate_census_base_2_5_2
+-- S3 CENSUS, FILTRATION FRAME (2026-07-08, Round 6): the reframing RELOCATED the obstruction. The gapped-
+-- digit filtration RESOLVES the a0-deepening (selfLoop_floor_ratio_uniform: per-level floor-coset index =
+-- fixed p^(selfLoopExponent+1), level/N-independent — deepening confirmed a NON-issue). But it is residue-
+-- BLIND: counts the FLOOR event (p^k|aᵢ), strictly larger than the self-loop VERDICT (residual repeated root
+-- (y-c)^s). So the census DECOMPOSES: floor part DONE × verdict fraction. selfLoopCell_floor +
+-- selfLoopChain_le_floorChain (verdict⟹floor containment); selfLoopCensus_filtration_step(_ratio) = the
+-- per-level census step CONTINGENT on the ONE named residue lemma VerdictTranslationInvariant (the residual-
+-- repeated-root verdict cuts every GammaPattern coset to the same fraction — a residualOf covariance under
+-- coset translation, ZMod/Newton-polygon, NOT filtration-theoretic). This is the clean single remaining target.
+#print axioms LeanUrat.OM.SelfLoopCensusFiltration.selfLoopCell_floor
+#print axioms LeanUrat.OM.SelfLoopCensusFiltration.selfLoopChain_le_floorChain
+#print axioms LeanUrat.OM.SelfLoopCensusFiltration.selfLoop_floor_ratio_uniform
+#print axioms LeanUrat.OM.SelfLoopCensusFiltration.selfLoopCensus_filtration_step
+#print axioms LeanUrat.OM.SelfLoopCensusFiltration.selfLoopCensus_filtration_step_ratio
+-- S3 CENSUS ON THE VERDICT PREDICATE (2026-07-09, Round 7): the census is now on the CORRECT, NON-VACUOUS
+-- object. selfLoopVerdict = residual repeated-root shape [(1,μ)] (cell-label-INDEPENDENT); selfLoopCell_
+-- verdict + cellB1_verdict = both the fixed self-loop cell AND the deepened cellB1 feed the SAME verdict
+-- (the widening that fixes the fixed-cell vacuity). ★ gate_verdict_nonvacuous_depth2_2_5_2 PROVES
+-- verdictChain 2 inhabited at (2,5,2) — where selfLoopChain 2 was EMPTY (the mandatory anti-vacuity guard).
+-- census_step_equiv_verdict = reduction reused verbatim (censusEquivQ predicate-generic). Census reduced to
+-- VerdictEquidist (contingent step PROVED). FINDING: VerdictEquidist is DEPTH-NON-UNIFORM — the coset
+-- covariance holds on the shallow self-loop side but FAILS on the deepened cellB1 side (gapped ⟨e,h⟩ h≥2:
+-- recentering cannot reset scale). The equidistribution coset must deepen with the level.
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.selfLoopCell_verdict
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.cellB1_verdict
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.census_step_equiv_verdict
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.census_base_verdict
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.selfLoopCensusVerdict_step
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.gate_verdict_nonvacuous_depth2_2_5_2
+#print axioms LeanUrat.OM.SelfLoopCensusVerdict.gate_census_base_verdict_2_5_2
+-- ★ S3 SELF-LOOP DENSITY, CORRECT OBJECT (2026-07-10, re-aim): the genuine density connected to omCount.
+-- stratumCount1_selfLoop_eq_fiber = the ACTUAL order-1 stratum count IS the FLOOR fiber (p-1)·p^{s(N-1)-
+-- (selfLoopExp+1)} (NOT the retired verdict-chain object). stratumCount1_selfLoop_ratio/index = the per-level
+-- FLOOR ratio slBoxRatio on the genuine count, uniform in N (REMAINING_STEP1 at k=1). floorAgg_eq_
+-- aggSelfLoopBoxTower + hnode_selfloop_box_order1 = the full box h_node limit → depth0·countPivot⁻¹;
+-- hnode_selfloop_box_child_q2 = omChildCount halfCluster 2 = 2/3 (ENGINE VALUE reached on the CORRECT object).
+-- not_uniformCosetDensity_general = the honest refutation (VerdictEquidist ⟹ cluster_1≥32 vs brute 36 ⟹ FALSE).
+-- Remaining: the general-k (k≥2) grouping of the ACTUAL stratumCount1 by self-loop depth (now on the floor object).
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.stratumCount1_selfLoop_eq_fiber
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.stratumCount1_selfLoop_index
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.stratumCount1_selfLoop_ratio
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.floorAgg_eq_aggSelfLoopBoxTower
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.hnode_selfloop_box_order1
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.hnode_selfloop_box_child_q2
+#print axioms LeanUrat.OM.SelfLoopDensityConnect.not_uniformCosetDensity_general
+-- ★★ S3 SELF-LOOP FIXPOINT (2026-07-10) — the CORRECT proof structure, found by numerically gating the
+-- proof structure (Asvin's method), then formalized. The wild self-loop resummation is the FIXPOINT
+-- b = depth0 + slExposedRatio·b (self-referential/restart), NOT the depth-decomposition (refuted).
+-- selfLoopFixpoint_eq/_unique/_eq_limit: unique fixpoint = depth0·countPivot⁻¹ = the geometric tower.
+-- selfLoopFixpoint_omChild_q2: = omChildCount halfCluster 2 = 2/3 (engine value). stratumCount1_seed_ratio:
+-- the ACTUAL stratumCount1(selfLoopCell)/p^{s(N-1)} = (p-1)·slBoxRatio (k=1 seed on the genuine count, uniform
+-- in N). ★ stratumCount1_hnode_fixpoint_q2: the ACTUAL box census → omChildCount = 2/3 at (2,2), genuinely
+-- (NOT 1+r, NOT vacuous). Scope: μ=2 instance (μ≥3 EFFSEED unresolved — agents disagreed 16/31 vs 20/31);
+-- general-k per-depth uniform identity still open but the fixpoint clarifies its role.
+#print axioms LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_eq
+#print axioms LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_unique
+#print axioms LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_eq_limit
+#print axioms LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_omChild_q2
+#print axioms LeanUrat.OM.SelfLoopFixpoint.stratumCount1_seed_ratio
+#print axioms LeanUrat.OM.SelfLoopFixpoint.stratumCount1_hnode_fixpoint_q2
+#print axioms LeanUrat.OM.SelfLoopFixpoint.stratumCount1_hnode_fixpoint_q2_value
+-- SelfLoopFixpointGeneralMu (#48): μ=3 SETTLED = 20/31 (three-way gated: engine anchor padic_types
+-- monic_cubic_pred '1c' + PARI oracle om_oracle_check.json + fresh 800k MC z=−0.01; naive scalar 16/31
+-- REJECTED at z=+241). The general-μ structure is a COUPLED-DIAGONAL system: diagonal block = scalar
+-- self-loop fixpoint b_μ = EFFSEED_μ + slExposedRatio μ q · b_μ (banked general in μ,q,depth0 via
+-- selfLoopFixpoint_general_closure/_value), cross-fed by the child descent (EFFSEED_μ assembled from
+-- β_{μ'<μ}). ★ selfLoopFixpointValue_mu3_q2 = 20/31 (fixpoint algebra on the gated seed EFFSEED_3=5/8).
+-- ★ omChildCount_shape3Half_q2 = 32/93: a GENUINE cross-fed size-3 omChildCount through the WF recursion
+-- (child step → gate3_cluster_q2 = β_2 = 2/3, size-3 pivot 31/32) — the coupled-diagonal cross-feed on the
+-- ACTUAL engine. HONEST GAPS (in docstring): (1) configOf emits ONE config/shape but EFFSEED_3 is a
+-- TWO-config sum (q−1)/q+(q−1)/q³, so 20/31's seed is gated not engine-reconstructed; (2) general-μ
+-- UNCONDITIONAL still needs the uniform-in-(N,k) per-depth census induction (SelfLoopResum item 2).
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.slExposedRatio_3_q2
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.countPivot_3_q2
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.EFFSEED3_q2
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.EFFSEED3_decomp
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpointValue_mu3_q2
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_eq_mu3
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_unique_mu3
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_general_closure
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_general_value
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.omChildCount_shape3Half_q2
+#print axioms LeanUrat.OM.SelfLoopFixpointGeneralMu.omChildCount_shape3Half_crossfeed
+-- ConditionalDensity (#49): the COMPLETE CONDITIONAL top-level theorem. density_eq_engine_conditional:
+-- for any menu M + self-loop predicate, density = engine rational function, with the per-shape h_node
+-- DISCHARGED unconditionally for non-self-loop shapes (hTame) and ASSUMED via the ONE honest AGGREGATE
+-- hypothesis SelfLoopHNode (stratumCount/realP^nN → omCount on self-loop shapes; MC/PARI-true; NOT the
+-- refuted per-depth FloorCensusPerDepth). density_eq_engine_tame: tame (p>n, no self-loop shape) is
+-- FULLY UNCONDITIONAL (self-loop hyp discharged vacuously). hNodeLimit_unramified: separable h_node
+-- unconditional from h_node0_proved. selfLoop_engine_is_fixpoint: the hyp target = general-μ fixpoint.
+#print axioms LeanUrat.OM.ConditionalDensity.density_eq_engine_conditional
+#print axioms LeanUrat.OM.ConditionalDensity.density_eq_engine_tame
+#print axioms LeanUrat.OM.ConditionalDensity.hNodeLimit_unramified
+#print axioms LeanUrat.OM.ConditionalDensity.selfLoop_engine_is_fixpoint
+#print axioms LeanUrat.OM.CellCard.card_readableBox
+#print axioms LeanUrat.OM.CellCard.consistency_s2
+-- ★ W4d1: THE RESTART EQUIVALENCE at level N (RESTART_LEMMA §13.1 count form; 2026-07-04)
+--   MUST be core-only — this is the project's central new lemma, machine-checked:
+#print axioms LeanUrat.OM.RestartEquiv.restartEquiv
+#print axioms LeanUrat.OM.RestartEquiv.inCellAt_iff_pattern
+#print axioms LeanUrat.OM.RestartEquiv.card_restart_fiber
+#print axioms LeanUrat.OM.RestartEquiv.card_freshPattern
+#print axioms LeanUrat.OM.RestartEquiv.crosscheck_B
+-- W4d2: the multi-block product law (flat-margin general form + gate instances; 2026-07-04)
+#print axioms LeanUrat.OM.BlockProduct.pair_card
+#print axioms LeanUrat.OM.BlockProduct.pair_card_pattern
+#print axioms LeanUrat.OM.BlockProduct.blocks_card
+#print axioms LeanUrat.OM.BlockProduct.mul_image_saturated
+#print axioms LeanUrat.OM.BlockProduct.caseB_hres
+#print axioms LeanUrat.OM.BlockProduct.gateB_law
+-- W3a: B.8 discharged (via the decode degeneracy — see its honest docstring; 2026-07-04)
+#print axioms LeanUrat.OM.B.classify_separable_leaf
+-- ★ DE-STUB first genuine descent (#54, 2026-07-13): the classifier now reads f BELOW the root at the
+--   first descent. childResidual = order-1 residual from the φ-adic development of f (genuinely
+--   f-dependent, vs the Rr:=0 stub); classifyFirstDescent recurses via classifyAux on the f-built
+--   fChildCtx; cells_fChildCtx_ne_nil = the non-vacuity witness (child produces genuine cells from f,
+--   contrast cells_childCtxOfSize which is always []). Additive first increment of the de-stub; full
+--   replacement blocked on (a) Fr-as-computable-field + (b) develop-reduction-stability (CERTLEVEL).
+#print axioms LeanUrat.OM.B.clusterSize_fChildCtx
+#print axioms LeanUrat.OM.B.classifyFirstDescent
+#print axioms LeanUrat.OM.B.cells_fChildCtx_ne_nil
+-- ★ DE-STUB blocker (b) proved standalone (#55, 2026-07-13): develop-reduction-stability.
+--   Development.develop_map (develop commutes with Polynomial.map — general/reusable) →
+--   B.childResidual_reduce_stable (childResidual stable under box-reduction of f below an honest
+--   explicit per-digit cutoff hcut). This is the reduction-stability lemma the full de-stub needs to
+--   restore the CERTLEVEL chain once classifyAux_indep becomes false. Blocker (a) [Fr-as-computable-
+--   field] still remains for the full replacement.
+#print axioms LeanUrat.OM.Development.develop_map
+#print axioms LeanUrat.OM.B.childResidual_reduce_stable
+-- ★ DE-STUB P1 additive increment (#57, 2026-07-14): the GENUINE multi-level f-reading classifier built
+--   ALONGSIDE the stub (master green, additive; the CERTLEVEL-breaking swap is blueprinted for later in
+--   notes/DESTUB_BLUEPRINT_2026-07-13.md). classifyGenuine/classifyGenuineAux descend reading f at EVERY
+--   level via fChildCtx (Rr:=childResidual, Fr:=ZMod p; strict descent by ch.hChildSizeLt). Witnesses:
+--   classifyGenuineAux_head_dr_pos (root tuple's dr-slot > 0 when residual deg>0 — distinguishes the genuine
+--   reader from the f-blind stub AT THE ROOT TUPLE; NOT a tree.length≥2/"descent" claim, see docstring),
+--   classifyGenuine_root_eq_classify (menu-correctness: agrees with the stub at the root, diverges only
+--   below), treeSize_classifyGenuine (=n). All core-only.
+#print axioms LeanUrat.OM.B.classifyGenuineAux_head_dr_pos
+#print axioms LeanUrat.OM.B.classifyGenuine_root_eq_classify
+#print axioms LeanUrat.OM.B.treeSize_classifyGenuine
+-- ★ DE-STUB Ingredient B (#58, 2026-07-14): fChildCtx_reduce_stable — the genuine reader's per-node
+--   CERTLEVEL content (child context stable under one-digit box reduction below the per-digit cutoff),
+--   the multi-level analogue of fRootCtx_reduce_stable, consuming only banked childResidual_reduce_stable.
+#print axioms LeanUrat.OM.B.fChildCtx_reduce_stable
+-- W4d2′: the polygon-graded Hensel margin (holds at the real cells where flat margins fail; 2026-07-04)
+#print axioms LeanUrat.OM.GradedHensel.graded_ker_bound
+#print axioms LeanUrat.OM.GradedHensel.pair_card_graded
+#print axioms LeanUrat.OM.GradedHensel.gate_margin_graded_B
+#print axioms LeanUrat.OM.GradedHensel.caseB_law_graded
+#print axioms LeanUrat.OM.GradedHensel.caseB_matches_gateB
+#print axioms LeanUrat.OM.GradedHensel.blocks_card_graded
+-- ★★ W4e: h_node1 — THE ORDER-1 RESTART IDENTITY, assembled (2026-07-04). MUST be core-only:
+#print axioms LeanUrat.OM.HNode1.h_node1_single
+#print axioms LeanUrat.OM.HNode1.h_node1_single_shape
+#print axioms LeanUrat.OM.HNode1.h_node1_selfLoop
+#print axioms LeanUrat.OM.HNode1.selfLoop_cost_tie
+#print axioms LeanUrat.OM.HNode1.h_node1_census
+#print axioms LeanUrat.OM.HNode1.h_node1_general
+-- W5: order-1 drainage (exact undecided census + density identity; 2026-07-05)
+#print axioms LeanUrat.OM.Drainage.card_tail
+#print axioms LeanUrat.OM.Drainage.card_selfLoopFiber
+#print axioms LeanUrat.OM.Drainage.card_undecided1
+#print axioms LeanUrat.OM.Drainage.undecidedDensity_eq
+#print axioms LeanUrat.OM.Drainage.tendsto_tailDensity_zero
+-- W6-lite: the self-loop tower (two-level classification through the e=1 restart; 2026-07-05)
+#print axioms LeanUrat.OM.SelfLoopTower.two_level_census
+#print axioms LeanUrat.OM.SelfLoopTower.second_level_partition
+#print axioms LeanUrat.OM.SelfLoopTower.read2_eq_none_iff
+#print axioms LeanUrat.OM.SelfLoopTower.pattern_iso
+#print axioms LeanUrat.OM.SelfLoopTower.gate_iterated_selfLoop
+-- W4d2-surj (PARTIAL, named obligation): InCellMulti + the ⊇ containment; the classifier
+-- multi-block fiber identity is hypothesis-gated on the theorem-of-product surjectivity (2026-07-05)
+#print axioms LeanUrat.OM.CellMenu.inCellMulti_single
+#print axioms LeanUrat.OM.ProductTheorem.imageSet_subset_concatCell
+#print axioms LeanUrat.OM.ProductTheorem.cell_sideAbove
+#print axioms LeanUrat.OM.ProductTheorem.fiber_node_identity_of_image_eq
+#print axioms LeanUrat.OM.ProductTheorem.gate_fiber_B_card
+-- W4d2-surj ⊇: residual multiplicativity CLOSED + vertex-exactness building blocks (2026-07-05)
+#print axioms LeanUrat.OM.M4.residualPoly_mul
+#print axioms LeanUrat.OM.ProductTheorem.residualOf_mul_of_conv
+#print axioms LeanUrat.OM.ProductTheorem.zmodValuation_mul
+#print axioms LeanUrat.OM.ProductTheorem.zmodUnitResidue_mul
+-- The dominant-term valuation laws (crux of on_side_conv; scalar analogue of the transversal det; 2026-07-05)
+#print axioms LeanUrat.OM.ProductTheorem.zmodValuation_sum_unique_min
+#print axioms LeanUrat.OM.ProductTheorem.zmodUnitResidue_sum_common_min
+-- Theorem-of-product refactor: P2 bridge (SidedBlock/cellOf) + engine wiring + ⊇ assembly (2026-07-05)
+#print axioms LeanUrat.OM.ProductTheorem.cellOf_wf
+#print axioms LeanUrat.OM.ProductTheorem.vertex_valuation_exact
+#print axioms LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti
+#print axioms LeanUrat.OM.ProductTheorem.card_imageSet_le_fiber
+-- on_side_conv CLOSED: the antidiagonal geometry facts + the wired convolution theorem (2026-07-06)
+#print axioms LeanUrat.OM.ProductTheorem.coeff_mul_pow_factor
+#print axioms LeanUrat.OM.ProductTheorem.antidiag_split_class
+#print axioms LeanUrat.OM.ProductTheorem.on_side_conv_of_cofactor
+-- R1/R2: shape multiplicativity (coprime) + SidedBlock on-side carriers + residual-shape leg (2026-07-06)
+#print axioms LeanUrat.OM.CellMenu.polyShape_mul
+#print axioms LeanUrat.OM.ProductTheorem.polyShape_residualOf_mul
+#print axioms LeanUrat.OM.ProductTheorem.sideMatch_shape_mul
+-- ⊇ CLOSED Matches-free for the gate cell shapes (1-block + 2-distinct-block; 2026-07-06)
+#print axioms LeanUrat.OM.ProductTheorem.offBlock_unit_on_side
+#print axioms LeanUrat.OM.ProductTheorem.product_matches_two_distinct
+#print axioms LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_single_free
+#print axioms LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_two_distinct_free
+-- P3 cardinality route: independent fiber count + forcing → node identity (prodSC=1 cells; 2026-07-06)
+#print axioms LeanUrat.OM.ProductTheorem.card_inCellMulti_fiber
+#print axioms LeanUrat.OM.ProductTheorem.image_card_eq_pow_freeExp
+#print axioms LeanUrat.OM.ProductTheorem.inCellMulti_eq_image
+#print axioms LeanUrat.OM.ProductTheorem.gate_node_A
+#print axioms LeanUrat.OM.ProductTheorem.gate_node_B
+-- prodSC>1 fixed-pin: case C node identity CLOSED outright (all 3 gate cells now closed; 2026-07-06)
+#print axioms LeanUrat.OM.ProductTheorem.cell_card_raw_fixed_single
+#print axioms LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_fiber_single
+#print axioms LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_caseC
+#print axioms LeanUrat.OM.ProductTheorem.gate_node_C_closed
+-- k-block ⊇ fold: Matches-free products-in-cell for general k (multi-side, distinct slopes; 2026-07-06)
+#print axioms LeanUrat.OM.ProductTheorem.product_matches_klist
+#print axioms LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_klist_free
+#print axioms LeanUrat.OM.ProductTheorem.card_imageSet_le_fiber_klist
+#print axioms LeanUrat.OM.ProductTheorem.product_matches_klist_k3
+-- theorem-of-product completion: same-side-sibling ⊇ + multi-side fixed-pin node identity (2026-07-06)
+#print axioms LeanUrat.OM.ProductTheorem.product_matches_sameside
+#print axioms LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_sameside_free
+#print axioms LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_multiside
+#print axioms LeanUrat.OM.ProductTheorem.node_identity_fixedpin_multiside
+-- ProductTheorem concretization: case-A multi-side node identity OUTRIGHT (2026-07-07)
+#print axioms LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_caseA
+#print axioms LeanUrat.OM.ProductTheorem.gate_node_A_multiside_closed
+-- W6a: general-h RphiRing filtration (corrected: gapped ⟨e,h⟩ semigroup, span{θ,p}; 2026-07-06)
+#print axioms LeanUrat.OM.RphiRingGenH.isLocalRing
+#print axioms LeanUrat.OM.RphiRingGenH.maximalIdeal_eq_span_theta_p
+#print axioms LeanUrat.OM.RphiRingGenH.card_residueField
+#print axioms LeanUrat.OM.RphiRingGenH.vL_eq_vphi_of_h_one
+-- W6a-residual: gapped per-digit product count (GENERAL e) + exact vL anchors (2026-07-06)
+#print axioms LeanUrat.OM.RphiGenHCount.vL_theta_eq
+#print axioms LeanUrat.OM.RphiGenHCount.vL_natCast_p_eq
+#print axioms LeanUrat.OM.RphiGenHCount.card_filtIdeal
+#print axioms LeanUrat.OM.RphiGenHCount.card_filtIdeal_h_one_collapse
+-- ★ W6b-h: THE GENERAL-h single-block restart equivalence (referee-gap lemma at arbitrary slope; 2026-07-06)
+#print axioms LeanUrat.OM.RestartEquivGenH.restartEquivGenH
+#print axioms LeanUrat.OM.RestartEquivGenH.inCellAtGenH_iff_pattern
+#print axioms LeanUrat.OM.RestartEquivGenH.card_restartGenH_fiber
+#print axioms LeanUrat.OM.RestartEquivGenH.card_restartGenH_fiber_h_one_collapse
+#print axioms LeanUrat.OM.RestartEquivGenH.gate_H
+-- W6c-2: order-2 two-level restart census at general (e,h); order-r skeleton (deep recursion; 2026-07-06)
+#print axioms LeanUrat.OM.TowerRestartGenH.two_level_census_genH
+#print axioms LeanUrat.OM.TowerRestartGenH.card_two_level_genH
+#print axioms LeanUrat.OM.TowerRestartGenH.card_two_level_genH_h_one_collapse
+#print axioms LeanUrat.OM.TowerRestartGenH.gate_DG_order2_compounded_W13
+-- ★ TowerBase: order-r coefficient-ring abstraction — the deep-recursion infra (2026-07-06)
+#print axioms LeanUrat.OM.TowerBase.card_filtIdeal_gen
+#print axioms LeanUrat.OM.TowerBase.instTowerBase_RphiGenH
+#print axioms LeanUrat.OM.instTowerBase_ZMod
+#print axioms LeanUrat.OM.instTowerBase_level1
+#print axioms LeanUrat.OM.reduction_gate_2323_N5
+-- ★★ Deliverable 5: abstract restart over [TowerBase R] + r_level_census card recursion + O'' instance
+--    (count-native restart CLOSED at all orders; f≥2 subsumed via O''-as-TowerBase; 2026-07-07):
+#print axioms LeanUrat.OM.TowerRestartAbstract.restartEquivAbstract
+#print axioms LeanUrat.OM.TowerRestartAbstract.card_restartAbstract_fiber
+#print axioms LeanUrat.OM.TowerRestartAbstract.card_freshPatternAbstract_ZMod_eq_perdigit
+#print axioms LeanUrat.OM.TowerRestartAbstract.card_freshPatternAbstract_child
+#print axioms LeanUrat.OM.TowerRestartAbstract.gate_reduce_H
+#print axioms LeanUrat.OM.TowerRestartAbstract.instTowerBase_Oring
+-- ★★★ D4d: the order-r restart EQUIVALENCE recursion — the count-native restart CLOSED at all orders
+--     (genuine ≃, all (e,h), f≥2 subsumed via O''; developEquiv found base-general; 2026-07-07):
+#print axioms LeanUrat.OM.DevelopTower.developTower
+#print axioms LeanUrat.OM.DevelopTower.restartEquivTower
+#print axioms LeanUrat.OM.DevelopTower.card_restartTower_fiber
+#print axioms LeanUrat.OM.DevelopTower.r_level_census_equiv
+#print axioms LeanUrat.OM.DevelopTower.card_r_level_census
+#print axioms LeanUrat.OM.DevelopTower.gate_Oring_restart_card
+-- S1: the all-orders assembly SKELETON (density from node-limit, arbitrary menu + omCount; 2026-07-07)
+#print axioms LeanUrat.OM.MontesAllOrders.montes_allorders_of_hnode
+#print axioms LeanUrat.OM.MontesAllOrders.montes_allorders_of_hnode_specializes
+-- S2(i): genuine order-1 stratum count over classify1, bridged to CellCard + the order-1 partition (2026-07-07)
+#print axioms LeanUrat.OM.StratumOrder1.stratumCount1_eq_cellCard
+#print axioms LeanUrat.OM.StratumOrder1.stratumCount1_eq_closed
+#print axioms LeanUrat.OM.StratumOrder1.stratumCount1_partition
+-- S2 crux: the ×q self-loop resummation → countPivot (general s,q; the box-vs-M_e fix; 2026-07-07)
+#print axioms LeanUrat.OM.SelfLoopResum.xqMultiplicity
+#print axioms LeanUrat.OM.SelfLoopResum.aggSelfLoopTower_closed
+#print axioms LeanUrat.OM.SelfLoopResum.tendsto_aggSelfLoopTower
+#print axioms LeanUrat.OM.SelfLoopResum.countPivot_eq_one_sub_slExposedRatio
+#print axioms LeanUrat.OM.SelfLoopResum.resum_omCount_root_q2
+-- S2(iii)+(vi): k-fold self-loop census + the ORDER-1 self-loop h_node LIMIT (mass level, general s,q; 2026-07-07)
+#print axioms LeanUrat.OM.SelfLoopIterate.boxMass_xq
+#print axioms LeanUrat.OM.SelfLoopIterate.aggSelfLoopBoxTower_eq
+#print axioms LeanUrat.OM.SelfLoopIterate.hnode_selfloop_order1
+#print axioms LeanUrat.OM.SelfLoopIterate.hnode_selfloop_limit_child_q2
+-- Order-1 DECIDED-shape h_node (h_node0 analogue; limit = explicit constant = W0 count; 2026-07-07)
+#print axioms LeanUrat.OM.DecidedOrder1.stratumCount1_decided_density
+#print axioms LeanUrat.OM.DecidedOrder1.hnode_decided_order1
+#print axioms LeanUrat.OM.DecidedOrder1.gate_density_S2C1
+-- Order-1 DECIDED omCount TIE + first order-1 engine ClusterShape literal decidedTc (2026-07-07):
+-- childless-collapse eval (all orders), the T_c literal, tie at gate (S2C1/S3C1 → omCount = 1/2),
+-- and the FIRST order-1 h_node fully tied to omCount OUTRIGHT (decided cell). General decided tie
+-- needs the named mCell=prodSC-at-realP bridge.
+#print axioms LeanUrat.OM.DecidedOmCountTie.omCount_childless_eval
+#print axioms LeanUrat.OM.DecidedOmCountTie.omCount_childless_single
+#print axioms LeanUrat.OM.DecidedOmCountTie.configsOf_decidedTc
+#print axioms LeanUrat.OM.DecidedOmCountTie.configOf_decidedTc_childless
+#print axioms LeanUrat.OM.DecidedOmCountTie.mCell_decidedConfig
+#print axioms LeanUrat.OM.DecidedOmCountTie.volExp_decidedConfig
+#print axioms LeanUrat.OM.DecidedOmCountTie.omCount_decidedTc
+#print axioms LeanUrat.OM.DecidedOmCountTie.decided_omCount_tie_S2C1
+#print axioms LeanUrat.OM.DecidedOmCountTie.decided_omCount_tie_S3C1
+#print axioms LeanUrat.OM.DecidedOmCountTie.hnode_decided_order1_omCount_S2C1
+-- W6b-f (census tier): f≥2 residual/child census = f=1 census at q^f (GaloisField tower; 2026-07-06)
+#print axioms LeanUrat.OM.FDescentCensus.galoisField_card_eq_q_pow_f
+#print axioms LeanUrat.OM.FDescentCensus.residualCensus_f_eq_q_pow_f
+#print axioms LeanUrat.OM.FDescentCensus.shapeCensus_f_eq_q_pow_f
+#print axioms LeanUrat.OM.FDescentCensus.conjugateBlock_orbit_count
+-- W6b-f2 infra: level-N unramified base ring O'' (ungapped p-filtration, residue GaloisField p m; 2026-07-06)
+#print axioms LeanUrat.OM.UnramifiedBase.card_Oring_pow
+#print axioms LeanUrat.OM.UnramifiedBase.isLocalRing
+#print axioms LeanUrat.OM.UnramifiedBase.maximalIdeal_eq
+#print axioms LeanUrat.OM.UnramifiedBase.card_residueField
+#print axioms LeanUrat.OM.UnramifiedBase.card_span_p_pow
+-- A/C certificates: h_node1_general fully discharged at all three gate cells (2026-07-05)
+#print axioms LeanUrat.OM.GradedCertificates.caseA_law_graded
+#print axioms LeanUrat.OM.GradedCertificates.caseA_matches_gateA
+#print axioms LeanUrat.OM.GradedCertificates.h_node1_at_A
+#print axioms LeanUrat.OM.GradedCertificates.caseC_law_graded
+#print axioms LeanUrat.OM.GradedCertificates.caseC_matches_gateC
+#print axioms LeanUrat.OM.GradedCertificates.h_node1_at_C
 -- Decomposition / counting path
 #print axioms LeanUrat.MontesAxiom.MontesData.coeff_isRational
 #print axioms LeanUrat.MontesAxiom.MontesData.countingDensity_isRational
@@ -48,11 +644,8 @@ open LeanUrat
 #print axioms LeanUrat.M1.projPointCount_mul
 #print axioms LeanUrat.M1.clusterLaw_baseChange
 #print axioms LeanUrat.R1.treeDistanceWeight_values
--- BB3inf
-#print axioms LeanUrat.BB3inf.clusterVolume_rational_of_OM
-#print axioms LeanUrat.BB3inf.T_BB3
-#print axioms LeanUrat.BB3inf.T_BB1
-#print axioms LeanUrat.BB3inf.bb3CellCount_isRational
+-- BB3inf RETIRED to quarantine 2026-07-07 (R5 Step 0): 3 measure-route axioms off all count-native
+-- footprints, imported by nothing but the root. Prints removed; module in quarantine/.
 -- NestedCollapse
 #print axioms LeanUrat.NestedCollapse.nested_reproduces_I2
 #print axioms LeanUrat.NestedCollapse.nested_reproduces_I3
@@ -67,3 +660,25 @@ open LeanUrat
 #print axioms LeanUrat.Witness.montes_full_instance
 #print axioms LeanUrat.Witness.montes_bundle_nonempty
 #print axioms LeanUrat.Witness.DensityFoundation_nonempty
+-- ★★★ ORDER-1 (single-slope) REAL DENSITY, σ-keyed + general-prime + certified non-vacuity gate
+-- (2026-07-12, ADDITIVE — TameRealDensity). montes_order1_tame_realDensity = the σ-keyed order-1
+-- single-slope real density theorem (same shape as Order0.montes_order0_realDensity): density = engine
+-- rational fn, real counts at realP converge, certified value = engine per-shape sum.
+-- montes_order1_tame_certified_density_pos = the CERTIFIED strictly-positive gate (value =
+-- (realP−1)·(realP^k)⁻¹ > 0 at the concrete self-loop n=2,P=[(0,1),(2,0)],shape=[(1,1)]) — NOT vacuous.
+-- General-prime standalone (gap #2, order-1): stratumCount_selfloop_general / hnode_selfloop_general /
+-- montes_order1_selfloop_density_general_prime (+ its _pos). hnode_multiSideProduct is ALREADY general-
+-- prime. Full σ-keyed disjoint tame ASSEMBLY (order-0 ⊕ order-1) DEFERRED (RealInstance-scale surgery).
+#print axioms LeanUrat.OM.TameRealDensity.stratumCount_selfloop_general
+#print axioms LeanUrat.OM.TameRealDensity.hnode_selfloop_general
+#print axioms LeanUrat.OM.TameRealDensity.montes_order1_selfloop_density_general_prime
+#print axioms LeanUrat.OM.TameRealDensity.montes_order1_tame_realDensity
+#print axioms LeanUrat.OM.TameRealDensity.montes_order1_tame_certified_density_pos
+#print axioms LeanUrat.OM.TameRealDensity.montes_order1_selfloop_density_general_prime_pos
+-- ★ CONDITIONAL TAME ASSEMBLY (#53): montes_tame_realDensity_of_exhaustive — the genuine tame density
+--   (order-0 sepShapes ⊕ order-1 Tselfloop, σ-keyed menu) = engine rational function, per-shape h_nodes
+--   DISCHARGED from the proven order-0/order-1 theorems, with ONLY drainage/exhaustiveness (TameMenuExhaustive)
+--   as an explicit honest hypothesis (genuinely open per Drainage.lean; NOT faked, does not fix the value).
+--   Non-vacuous: montes_tame_realDensity_certified_value_pos > 0 (dominated by the order-1 gate). Core-only.
+#print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_of_exhaustive
+#print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_certified_value_pos

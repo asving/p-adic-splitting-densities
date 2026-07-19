@@ -1,68 +1,47 @@
 # Lean formalization (`LeanUrat`)
 
-Lean 4 (`v4.31.0`) / mathlib (`v4.31.0`). Formalizes the rationality + palindromy argument
-for the projective $p$-adic factorization densities.
+Lean 4 (`v4.31.0`) / mathlib (`v4.31.0`). Formalizes the uniform-rationality + palindromy
+theorem for projective *p*-adic factorization densities, including the wild primes.
+
+**The authoritative statement of what is proved, on what it rests, and the module ↔
+math-proof map is [`../docs/PROJECT_STATE.md`](../docs/PROJECT_STATE.md).** The trusted-axiom
+audit is [`../docs/AXIOM_FAITHFULNESS.md`](../docs/AXIOM_FAITHFULNESS.md); the standing
+faithfulness re-audit log is [`notes/SEMANTIC_AUDIT_LOG.md`](notes/SEMANTIC_AUDIT_LOG.md).
 
 ## Build
 
 ```
 lake exe cache get        # prebuilt mathlib oleans (large download)
-lake build LeanUrat
+lake build                # build the whole library
 ```
 
-Reproduce the axiom footprints (this is the honesty deliverable):
+Reproduce the machine-checked axiom footprint of every capstone (the honesty deliverable):
 
 ```
-lake env lean LeanUrat/AxChk_baseline.lean
+lake build LeanUrat.AxChk_baseline
 ```
 
-This prints `#print axioms` for ~55 key declarations.
+This runs `#print axioms` on the capstones and load-bearing lemmas; that output is the ground
+truth for the trusted base.
 
-> **Environmental caveat.** On a heavily loaded NFS-backed node, `lake build LeanUrat` has
-> been observed to hang at the *final-job commit* step (the worker `lean` exits 0 but lake
-> does not return). This is an environmental I/O issue, not a code error: every module
-> compiles green via `lake env lean`, and `AxChk_baseline.lean` elaborates all declarations
-> with exit 0. On a normal machine `lake build` completes.
+> **Environmental caveat.** On a heavily loaded NFS-backed node, `lake build` has been
+> observed to hang at the *final-job commit* step (the worker `lean` exits 0 but lake does
+> not return). This is an environmental I/O issue, not a code error: every module compiles
+> green via `lake env lean`, and `AxChk_baseline` elaborates all declarations with exit 0.
 
-## What the capstone says
+## Layout
 
-`Goal.goal_theorem_montes` — footprint `{propext, Classical.choice, Quot.sound,
-tame_functionalEquation}` — states that the genuine counting density (the decided-level
-limit `M.countingDensity`, with the undecided tail proved to vanish) is a uniform rational
-function of $q$ **and** palindromic, conditional on a `CountingModel` / `MontesData` /
-`DensityFoundation` hypothesis bundle.
+- `LeanUrat/` — the ~117 modules. `Goal.lean` holds the capstones (`goal_theorem`,
+  `goal_theorem_montes`, `goal_theorem_via_montes`); `L3/L4/L5fix/L6M4/L7/M1/R1/Witness`
+  mirror §§3–13 of the math-language proof (`../docs/HUMAN_PROOF.md`); `PadicMeasure.lean`
+  is the measure route + the Denef cell-recursion axiom; `OM/` is the Okutsu–Montes
+  classifier subsystem (the wild-prime engine); `AxChk_baseline.lean` is the footprint census.
+- `quarantine/` — retired dead-end modules, kept as documented negative results.
+- `notes/SEMANTIC_AUDIT_LOG.md` — the standing semantic-guardian audit log.
 
-**Proved Lean-core-only** (`{propext, Classical.choice, Quot.sound}`, 0 `sorryAx`): the OM
-cluster-volume induction (`OMInduction.clusterVol_isRational`), the box-volume and residual
-counts (`MontesAxiom.boxVolume_eq`, `residualBoxCount`/`T_BB3`), additivity
-(`clusterCount_boxSum`), the geometric self-loop collapse (`NestedCollapse`), the tail bound
-`undecidedVanishes` ($U_N\to0$), the decomposition theorem `countingDensity_eq_sum_coeff`
-(a genuine limit-interchange), `countingDensity_isRational`, the `RatFn` closure lemmas, and
-the `L7` palindromy transfer. `Witness.montes_full_instance` shows the statement is
-non-vacuous over a coupled witness bundle.
+## `sorry` status
 
-## What is assumed (the honest boundary)
-
-- **`boxHaarEquidist` + `nodeMeasure_boxSum`** (`MontesData` fields): the per-box $p$-adic
-  Haar volume equals the proved closed-form value, and the node limit is box-additive. This
-  is the *measure wall* — equivalently, the Montes cell-count bijection. mathlib has no
-  $p$-adic Haar measure, so this is carried as a hypothesis and the only instance built is a
-  trivial degree-0 witness, **not** the real density.
-- **GMN count-shadow hypotheses** (`partition`, `cells_descend`, `finiteTermination`, tail
-  envelopes): the combinatorial shadow of the published Montes algorithm.
-- **`tame_functionalEquation`** (the single declared `axiom`): palindromy at tame primes,
-  cited from the Igusa–Denef–Meuser / tame factorization-density literature.
-
-So: *uniform rationality + palindromy of the genuine counting density, formally verified
-modulo the above + Lean core.* Not an unconditional proof.
-
-## Notes
-
-- `Goal.goal_theorem` is the older measure-route capstone, deliberately kept as a positive
-  control; its footprint still carries the four `PadicMeasure` axioms
-  (`clusterMeasure`, `AX_cellRecursion`, `omCells`, `descend_size_lt`), which the
-  count-native path (`goal_theorem_montes`) eliminates.
-- `L3.lean` has two `sorry`s (`card_squarefreeMonicDegree`, `gauss_necklace_count`); both
-  are re-proved sorry-free in `L3Squarefree.lean` / `L3Gauss.lean`. An import cycle blocks
-  re-pointing them inside `L3` itself, but they are **off every capstone footprint** (the
-  count path consumes the sorry-free versions), and no `sorryAx` reaches the goal.
+Exactly **one** `sorry` in the tree: `OM/Classifier.npVertices_stable_of_hull_preserved`
+(a Newton-polygon hull-invariance helper), which is **off the capstone path** — consumed only
+by an off-capstone reduce-stability lemma, never by any capstone. Every capstone is
+`sorry`-free.

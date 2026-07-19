@@ -1,3 +1,9 @@
+> **⚠ Historical (2026-06-22 snapshot). Superseded by [`PROJECT_STATE.md`](PROJECT_STATE.md).**
+> This ledger describes the pre-OM-subsystem state (the count-native `goal_theorem_montes` path,
+> before the Okutsu–Montes classifier was formalized in Lean). It is kept for history. For the
+> current state — the formalized OM classifier, the trusted axiom base, and the in-progress
+> order-≥2 work — see `PROJECT_STATE.md` and `AXIOM_FAITHFULNESS.md`.
+
 # Assumed vs. Proven — the Lean uniform-rationality formalization
 
 **Project:** `forum-sigma/lean_urat/LeanUrat/`
