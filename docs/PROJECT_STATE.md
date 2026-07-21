@@ -65,6 +65,20 @@ the whole point.** A standing semantic audit (2026-07-19) established the follow
   theorems (`OM/RealInstanceV2Gates.lean`), 21/21 exact Python brute-force cross-check, 2026-07-19
   fresh-context semantic audit clean (no critical error, single gap closed same day).
 
+- **The first machine-checked WILD densities (Wild Wave 1, 2026-07-21;
+  `notes/WILD_WAVE1_BLUEPRINT_2026-07-21.md`).** `OM/RealInstanceW.montes_unconditional_w`
+  (+`_exhaustive`): the capstone statement over the extended σ-keyed menu `omMenuW` — order-0
+  separable shapes ∪ the canonical minimal-H wild stratum for constant-e ramified types (the
+  PROVED terminating "Tselfloop" family; slope −1/e, side (0, n/e)–(n, 0), separable residual).
+  Footprints Lean-core only. Machine-checked wild values through the real instance: the totally
+  ramified quadratic type {(2,1)} — genuinely wild at p=2 (p ∣ e) — certifies density
+  **1/8 = (p−1)/p³** (its V2 menu value was 0); n=4 wild σ-separation 0 vs 1/256 with the p=2
+  empty stratum machine-checked as a pool-size effect, not a bug. Exhaustive Python cross-check
+  exact on all anchors ((p−1)/p³, (p−1)/p⁴, the n=4 pair). Scope honesty (in every docstring):
+  the certified ramified value is the MINIMAL-H stratum density — the leading term of the type's
+  density, NOT the H-tower sum (that resummation is the recursive self-loop wall); mixed-e types
+  (multi-slope) and order ≥ 2 not covered; no exhaustiveness claim.
+
 ### `sorry`-free but NOT (yet) a non-vacuous proof of the FULL theorem — the honest remaining gaps
 
 **The W4 swap (2026-07-21) retired the old vacuous chain**: the old `M9.montes_unconditional` +
