@@ -827,3 +827,26 @@ hypothesis `htameFE`, machine-certified non-trivial for the real instance. Trust
 axiom; the canonical capstone `OM.RealInstanceV2.montes_unconditional` prints
 `[propext, Classical.choice, Quot.sound]`. The DCD cite returns at Phase B where it can be declared
 faithfully. (Standing SUSPECT #1, `classify_singleValued` vacuous-rfl, is unchanged by this wave.)
+
+---
+
+## 2026-07-21 — Wild Wave 1 audit (fresh context): PASS 8/8, no flags
+
+Modules: `OM/WildMenu.lean`, `OM/WildMenuPrep.lean`, `OM/RealInstanceW.lean`,
+`OM/RealInstanceWGates.lean` (design `notes/WILD_WAVE1_BLUEPRINT_2026-07-21.md`). All 8 checklist
+items PASS: σ-keying structural (head-tree invariant `dr = fSum σ < n` vs `dr = n`; no `if σ = σ₀`;
+`n/(n/e) = e` genuinely discharged via `constERam_fSum_dvd`); docstrings honestly scope every wild
+value as the MINIMAL-H stratum leading term (never the H-tower sum or the full type density);
+`upper_tail` non-circular (per-σ increment ≤ total increment ≤ undecided, `Tot ≤ 1` from the
+independent disjoint-fiber box bound); `omCount_eq_mul_all` a sound membership-free generalization
+(`configsOf` is definitionally a singleton for every shape; the dropped hypotheses were
+introduced-and-discarded in the original); wild counting legs route through the banked
+`hnode_selfloop_over_Bclassify_R` via a faithfully-constructed `SelfLoopWitness`; gate values 1/8,
+0, 1/256 rest on genuine pool combinatorics (`shapeCount_split_two = 0` is the C(1,2)=0 pattern,
+machine-checked emptiness); census 18 W1 entries all core-only, V2 capstones unchanged; capstone
+statements verbatim-modulo-menu. Python brute-force cross-check exact on all anchors.
+
+**Standing follow-up (= Wild Wave 2):** the σ-keying is definitional; the semantic faithfulness
+claim ("fiber members' true ℚ_p factorization type is σ") awaits the `om_tree_unique` Montes-paper
+axiom + faithfulness theorem, per the standing directive (wild uniformity conditional on the Montes
+paper).
