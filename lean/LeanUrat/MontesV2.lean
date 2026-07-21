@@ -23,13 +23,16 @@ Contents:
 * `MontesDataV2.countingDensity_eq_sum_coeff` / `countingDensity_isRational` — the V2 siblings of
   `Decomposition.countingDensity_eq_sum_coeff` / `countingDensity_isRational` (same proofs; the
   abstraction does the work).
-* `goal_theorem_montes_v2` / `goal_theorem_via_montes_v2` — the V2 siblings of
+* `goal_theorem_montes` / `goal_theorem_via_montes` — the V2 siblings of the OLD
   `Goal.goal_theorem_montes` / `Goal.goal_theorem_via_montes`, verbatim modulo `MontesData →
-  MontesDataV2` and `D.coeff → D.C`. Footprint must be Lean core only.
+  MontesDataV2` and `D.coeff → D.C`. Footprint must be Lean core only. (W4b, 2026-07-21: renamed
+  from `goal_theorem_montes_v2` / `goal_theorem_via_montes_v2` — they now CARRY the canonical
+  names; the old-`MontesData` siblings are retired to
+  `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`.)
 
-This is a LEAF module: nothing imports it (yet — the W2 real instance `OM/RealInstanceV2.lean`
-will), and it edits nothing. The old `MontesData` chain stays frozen and green until the separately
-signed-off W4 swap.
+This was landed as a LEAF module (W1); as of W4a/W4b it is the ONE capstone spine: the W2 real
+instance `OM/RealInstanceV2.lean` and the ported `Witness.lean` fire the goal theorems below, and
+the old `MontesData` chain is retired.
 -/
 
 set_option linter.style.longLine false
@@ -152,8 +155,10 @@ theorem countingDensity_isRational (σ : FactorizationType) :
 
 end MontesDataV2
 
-/-- **The V2 only-Montes GOAL THEOREM — the sibling of `Goal.goal_theorem_montes` over
-`MontesDataV2` (blueprint W1, verbatim modulo `MontesData → MontesDataV2`, `D.coeff → D.C`).**
+/-- **The V2 only-Montes GOAL THEOREM — the sibling of the OLD `Goal.goal_theorem_montes` over
+`MontesDataV2` (blueprint W1, verbatim modulo `MontesData → MontesDataV2`, `D.coeff → D.C`;
+W4b 2026-07-21: renamed from `goal_theorem_montes_v2`, now carrying the canonical name — the
+old-`MontesData` sibling is retired to `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`).**
 
 For a counting model `M`, abstract-coefficient Montes data `D`, a degree-`n` type `σ`, and an
 abstract foundation `F`, GIVEN (i) the honest measure-wall identification `hbridge` (the abstract
@@ -164,7 +169,7 @@ there is a single `num/den ∈ ℚ(t)` with: `den ≠ 0`; uniform rationality of
 `q' > 1`; the genuine counting density at THIS model's `q` equal to `num(q)/den(q)`; and
 `IsPalindromic num den` (the faithful semantic `R(1/x) = R(x)`).
 
-The conclusion clauses are IDENTICAL to `goal_theorem_montes`'s; only the hypothesis bundle changed
+The conclusion clauses are IDENTICAL to the old `Goal.goal_theorem_montes`'s; only the hypothesis bundle changed
 (abstract `C` in place of the refuted box-sum `coeff`). Rationality flows through
 `MontesDataV2.countingDensity_isRational`, the value tie through
 `MontesDataV2.countingDensity_eq_sum_coeff`, palindromy through L7's identity-theorem transfer
@@ -172,7 +177,7 @@ The conclusion clauses are IDENTICAL to `goal_theorem_montes`'s; only the hypoth
 
 `#print axioms` must show Lean core ONLY (`propext, Classical.choice, Quot.sound` — see the
 `AxCheck` section below): every Montes/counting/tame input is a HYPOTHESIS, never an axiom. -/
-theorem goal_theorem_montes_v2
+theorem goal_theorem_montes
     {q n : ℕ} (M : CountingModel q n) (D : MontesDataV2 q n M)
     (σ : FactorizationType) (F : DensityFoundation) (hσ : σ.degree = n)
     -- The honest measure-wall identification: the abstract tame foundation's density coincides
@@ -217,17 +222,19 @@ theorem goal_theorem_montes_v2
     L7.tame_to_all_primes F n σ hσ num den tnum tden hden htden hF htame
   exact L7.isPalindromic_of_agree num den tnum tden hden htden hagree hpalin
 
-/-- **The V2 re-based uniformity capstone — the sibling of `Goal.goal_theorem_via_montes` over
-`MontesDataV2` (blueprint W1, verbatim modulo names).** Produces the `F.density`-shaped conclusion
+/-- **The V2 re-based uniformity capstone — the sibling of the OLD `Goal.goal_theorem_via_montes`
+over `MontesDataV2` (blueprint W1, verbatim modulo names; W4b 2026-07-21: renamed from
+`goal_theorem_via_montes_v2`, now carrying the canonical name — the old-`MontesData` sibling is
+retired to `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`).** Produces the `F.density`-shaped conclusion
 (uniform rationality of the per-type density + palindromy), routing rationality through the
 count-native abstract-coefficient pair `(M, D)` plus the honest measure-wall identification
 `hbridge`, with the tame functional equation as the explicit hypothesis `htameFE`.
 
-Proof: obtain the count-native `num/den` (rationality + palindromy) from `goal_theorem_montes_v2`,
+Proof: obtain the count-native `num/den` (rationality + palindromy) from `goal_theorem_montes`,
 drop its value clause, and rewrite the count-native rationality onto `F.density` via `hbridge`.
 
 `#print axioms` must show Lean core ONLY (see the `AxCheck` section below). -/
-theorem goal_theorem_via_montes_v2
+theorem goal_theorem_via_montes
     {q n : ℕ} (M : CountingModel q n) (D : MontesDataV2 q n M)
     (F : DensityFoundation) (σ : FactorizationType) (hσ : σ.degree = n)
     (hbridge : ∀ q' : ℕ, 1 < q' →
@@ -240,7 +247,7 @@ theorem goal_theorem_via_montes_v2
         F.density n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
       IsPalindromic num den := by
   obtain ⟨num, den, hden, hgrat, _hval, hpalin⟩ :=
-    goal_theorem_montes_v2 M D σ F hσ hbridge htameFE
+    goal_theorem_montes M D σ F hσ hbridge htameFE
   refine ⟨num, den, hden, fun q' hq' => ?_, hpalin⟩
   obtain ⟨hdenq', hgeq⟩ := hgrat q' hq'
   exact ⟨hdenq', by rw [hbridge q' hq', hgeq]⟩
@@ -253,7 +260,7 @@ section AxCheck
 -- (`propext, Classical.choice, Quot.sound` — fewer is fine, MORE is a stop-the-line event).
 #print axioms LeanUrat.MontesV2.MontesDataV2.countingDensity_eq_sum_coeff
 #print axioms LeanUrat.MontesV2.MontesDataV2.countingDensity_isRational
-#print axioms LeanUrat.MontesV2.goal_theorem_montes_v2
-#print axioms LeanUrat.MontesV2.goal_theorem_via_montes_v2
+#print axioms LeanUrat.MontesV2.goal_theorem_montes
+#print axioms LeanUrat.MontesV2.goal_theorem_via_montes
 
 end AxCheck

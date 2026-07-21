@@ -8,8 +8,10 @@ import LeanUrat.Interface
 import LeanUrat.L6M4
 import LeanUrat.L7
 import LeanUrat.CountingModel
-import LeanUrat.MontesAxiom
-import LeanUrat.Decomposition
+-- (W4b, 2026-07-21) `import LeanUrat.MontesAxiom` / `import LeanUrat.Decomposition` removed with
+-- the old-`MontesData` Goal bridge (`goal_theorem_montes`/`goal_theorem_via_montes`), RETIRED to
+-- `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`; the V2 siblings carrying those names live
+-- in `LeanUrat/MontesV2.lean`.
 
 /-!
 # LeanUrat.Goal — the GOAL THEOREM (`notes/HUMAN_PROOF.md §1, §13`)
@@ -64,7 +66,7 @@ set_option linter.unusedSectionVars false
 
 namespace LeanUrat.Goal
 
-open Polynomial CountingModel MontesAxiom MontesAxiom.MontesData
+open Polynomial CountingModel
 
 /-- **GOAL THEOREM (conditional on an abstract `DensityFoundation`).** For ANY `DensityFoundation F`
 and each `n` and `σ` of degree `n`, there is a single `num/den ∈ ℚ(t)` (`den ≠ 0`) with
@@ -83,7 +85,9 @@ but no constructed `F.density` is proven equal to the genuine `p`-adic Haar dens
 which consumes `clusterVolume_rational` and hence the OM bridge `B : OMBridge F` (now a SEPARATE
 argument, factored out of `DensityFoundation`) and the measure axioms
 `clusterMeasure`/`AX_cellRecursion`/`omCells`/`descend_size_lt`. The only-Montes replacement is
-`goal_theorem_montes` below, which drops the entire measure route. -/
+`MontesV2.goal_theorem_montes` (`LeanUrat/MontesV2.lean`), which drops the entire measure route
+(W4b, 2026-07-21: the old-`MontesData` sibling that lived below is retired to
+`quarantine/MontesData_oldSpine_2026-07-21.lean.txt`). -/
 theorem goal_theorem
     (F : DensityFoundation) (B : OMBridge F) (n : ℕ) (σ : FactorizationType) (hσ : σ.degree = n)
     -- (U1 fix) the tame functional equation is now an explicit HYPOTHESIS (the old global axiom over
@@ -106,137 +110,16 @@ theorem goal_theorem
     L7.tame_to_all_primes F n σ hσ num den tnum tden hden htden hall htame
   exact L7.isPalindromic_of_agree num den tnum tden hden htden hagree hpalin
 
-/-! ## The only-Montes GOAL THEOREM (the 2026-06-20 propagation)
+/-! ## (RETIRED, W4b 2026-07-21) the old-`MontesData` only-Montes bridge
 
-`goal_theorem_montes` re-points the GOAL through the count-native (only-Montes) path. Its
-**rationality** half flows through `MontesData.countingDensity_isRational` (Lean-core + the
-`MontesData` hypothesis bundle only — NO `clusterMeasure`, NO `AX_cellRecursion`, NO `omCells`, NO
-`descend_size_lt`), and its **palindromy** half flows through L7 applied to the SAME count-native
-rational representative of the genuine counting density (consuming the `TameFunctionalEquation`
-HYPOTHESIS `htameFE`, the separate deferred functional-equation input — paper §5 H-tame — which is
-NOT Montes and stays; U1 fix: the old global axiom over a free `F` was FALSE-AS-STATED).
-
-The DensityFoundation / clusterVolume / clusterMeasure route is DROPPED: this theorem does not call
-`L6M4.density_rational` and never touches `PadicMeasure`.
-
-### What the theorem MEANS, and the honest hypotheses
-
-`M.countingDensity σ` is the genuine level-`N` DECIDED limit (the genuine `p`-adic factorization-type
-density of the counting model — `CountingModel`/`undecidedVanishes`). The decomposition theorem
-`countingDensity_eq_sum_coeff` proves `M.countingDensity σ = ∑_{T ∈ shapesOf σ} C_T(q)`, i.e. it is
-the value at this model's residue cardinality `q` of the count-native tree-sum function
-`g_σ := fun q' => ∑_T C_T(q')`. `countingDensity_isRational` proves `g_σ` is a single uniform rational
-function of `q'` (one `num/den ∈ ℚ(t)` at every `q' > 1`).
-
-So the conclusion below is FAITHFULLY "the genuine counting density is a uniform rational function of
-`q` AND palindromic":
-* uniform rationality: `∃ num den, den ≠ 0 ∧ ∀ q' > 1, den(q') ≠ 0 ∧ g_σ(q') = num(q')/den(q')`,
-  AND `M.countingDensity σ = g_σ(q) = num(q)/den(q)` at THIS model's `q` (the `hq` clause ties the
-  single number to the rational function);
-* palindromy: `IsPalindromic num den` (the FAITHFUL semantic `R(1/x) = R(x)`), about the SAME
-  `num/den` the rationality is about.
-
-**The two honest hypotheses.** (i) The measure-wall identification `hbridge`: the tame
-palindromic-rationality input `htameFE` is stated about an abstract `DensityFoundation F`'s density
-`F.density n σ`. To transfer its palindromy to the count-native density we must identify the two
-densities. That identification — that the abstract foundation's density coincides with the genuine
-OM counting tree-sum at every residue cardinality — is the un-constructed `p`-adic measure foundation
-(mathlib v4.31.0 has no `p`-adic Haar measure). It is surfaced HONESTLY as the explicit hypothesis
-`hbridge : ∀ q' > 1, F.density n σ q' = g_σ(q')`. This is NOT the conclusion (it asserts nothing about
-rationality or palindromy — `g_σ` is an arbitrary function here), and NOT an axiom; it is the genuine
-interpretive boundary, the same wall flagged in `Decomposition.wiring_assessment`. (ii) The tame
-functional equation `htameFE : TameFunctionalEquation F n σ` (U1 fix, 2026-07-02: previously a global
-axiom over free `F`, which was FALSE-AS-STATED and made the trusted base inconsistent; now an explicit
-hypothesis, PROVED for the coupled witness by `Witness.trivF_tame`. W4a, 2026-07-21: the interim
-concrete named cite `OM.M9.realDensity_tame_functionalEquation` that discharged it for the OLD vacuous
-capstone is RETIRED with that capstone — see
-`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`; the current capstone
-`RealInstanceV2.montes_unconditional` carries `htameFE` as an explicit hypothesis, so NO tame axiom
-remains in the tree). With both, L7's identity-theorem transfer carries `htameFE`'s palindromy onto
-`num/den`.
-
-`#print axioms goal_theorem_montes` shows dependence on exactly
-`{propext, Classical.choice, Quot.sound}` — Lean core ONLY; the
-`MontesData`/`CountingModel`/`DensityFoundation`/tame content is carried as HYPOTHESES (`M`, `D`, `F`,
-`hbridge`, `htameFE`), not axioms. There is NO `clusterMeasure`, NO `AX_cellRecursion`, NO `omCells`,
-NO `descend_size_lt`, NO `tame_functionalEquation`, NO `sorryAx`. -/
-theorem goal_theorem_montes
-    {q n : ℕ} (M : CountingModel q n) (D : MontesAxiom.MontesData q n M)
-    (σ : FactorizationType) (F : DensityFoundation) (hσ : σ.degree = n)
-    -- The honest measure-wall identification: the abstract tame foundation's density coincides
-    -- with the genuine count-native OM tree-sum `g_σ` at every residue cardinality (NOT a
-    -- rationality/palindromy claim; see docstring):
-    (hbridge : ∀ q' : ℕ, 1 < q' →
-      F.density n σ q' = ∑ T ∈ D.shapesOf σ, D.coeff T q')
-    -- (U1 fix) the tame functional equation is now an explicit HYPOTHESIS (the old global axiom over
-    -- a free `F` was FALSE-AS-STATED; see `Interface.TameFunctionalEquation`):
-    (htameFE : TameFunctionalEquation F n σ) :
-    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
-      -- (uniform rationality of the count-native density family `g_σ`):
-      (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
-        (∑ T ∈ D.shapesOf σ, D.coeff T q') = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
-      -- (the genuine counting density at THIS model's `q` IS that rational function's value):
-      (1 < q → M.countingDensity σ = num.eval (q : ℚ) / den.eval (q : ℚ)) ∧
-      -- (palindromy R(1/t) = R(t), the FAITHFUL semantic form, about the SAME num/den):
-      IsPalindromic num den := by
-  -- (1) RATIONALITY — count-native, only-Montes path (NO clusterMeasure / AX_cellRecursion):
-  obtain ⟨num, den, hden, hall0⟩ := D.countingDensity_isRational σ
-  -- beta-reduce the `IsRationalFn` lambda so the count-native sum appears literally:
-  have hall : ∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
-      (∑ T ∈ D.shapesOf σ, D.coeff T q') = num.eval (q' : ℚ) / den.eval (q' : ℚ) := hall0
-  -- (2) The genuine counting density at this model's `q` is `g_σ(q)` (decomposition theorem), hence
-  -- the value of the rational function `num/den` at `q`:
-  have hdensq : 1 < q → M.countingDensity σ = num.eval (q : ℚ) / den.eval (q : ℚ) := by
-    intro hq
-    rw [D.countingDensity_eq_sum_coeff σ]
-    exact (hall q hq).2
-  -- (3) Tame palindromic representative for `F.density n σ` (the H-tame hypothesis):
-  obtain ⟨tnum, tden, htden, htame, hpalin⟩ := htameFE
-  refine ⟨num, den, hden, hall, hdensq, ?_⟩
-  -- (4) `num/den` represents `F.density n σ` at every prime power (via `hbridge` + the count-native
-  -- rationality), so it agrees in ℚ(t) with the tame palindromic `tnum/tden` (L7 identity theorem),
-  -- and the tame functional equation transfers to `num/den` (L7 palindromy transfer):
-  have hF : ∀ q' : ℕ, 1 < q' →
-      den.eval (q' : ℚ) ≠ 0 ∧ F.density n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ) := by
-    intro q' hq'
-    obtain ⟨hdenq', hgeq⟩ := hall q' hq'
-    exact ⟨hdenq', by rw [hbridge q' hq', hgeq]⟩
-  have hagree : num * tden = tnum * den :=
-    L7.tame_to_all_primes F n σ hσ num den tnum tden hden htden hF htame
-  exact L7.isPalindromic_of_agree num den tnum tden hden htden hagree hpalin
-
-/-! ## The re-based uniformity capstone (`goal_theorem_via_montes`)
-
-`goal_theorem_via_montes` is the **re-based sibling of `goal_theorem`**: it produces `goal_theorem`'s
-EXACT `F.density`-shaped conclusion (uniform rationality of the per-type density + palindromy), but
-routes rationality through the count-native Montes model `(M, D, hbridge)` instead of the
-`OMBridge`/`clusterVolume_rational`/`PadicMeasure` measure route. The `OMBridge F` argument of
-`goal_theorem` is REPLACED by the `(M : CountingModel q n) (D : MontesData q n M)` pair plus the
-honest measure-wall identification `hbridge : F.density n σ = ∑_T D.coeff T` on prime powers.
-
-Because the measure route is dropped, the four measure axioms `clusterMeasure`, `AX_cellRecursion`,
-`omCells`, `descend_size_lt` DROP: this theorem's footprint is exactly
-`{propext, Classical.choice, Quot.sound}` — Lean core only (the tame input is the explicit
-HYPOTHESIS `htameFE` after the U1 fix, no longer a footprint axiom). See
-`notes/UNIFORMITY_WIRING_BLUEPRINT.md` §3 (Option B) / §7.
-
-Proof: obtain the count-native `num/den` (rationality + palindromy) from `goal_theorem_montes`, drop
-its value clause, and rewrite the count-native rationality onto `F.density` via `hbridge`. -/
-theorem goal_theorem_via_montes
-    {q n : ℕ} (M : CountingModel q n) (D : MontesAxiom.MontesData q n M)
-    (F : DensityFoundation) (σ : FactorizationType) (hσ : σ.degree = n)
-    (hbridge : ∀ q' : ℕ, 1 < q' →
-      F.density n σ q' = ∑ T ∈ D.shapesOf σ, D.coeff T q')
-    -- (U1 fix) the tame functional equation is now an explicit HYPOTHESIS (the old global axiom over
-    -- a free `F` was FALSE-AS-STATED; see `Interface.TameFunctionalEquation`):
-    (htameFE : TameFunctionalEquation F n σ) :
-    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
-      (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
-        F.density n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
-      IsPalindromic num den := by
-  obtain ⟨num, den, hden, hgrat, _hval, hpalin⟩ := goal_theorem_montes M D σ F hσ hbridge htameFE
-  refine ⟨num, den, hden, fun q' hq' => ?_, hpalin⟩
-  obtain ⟨hdenq', hgeq⟩ := hgrat q' hq'
-  exact ⟨hdenq', by rw [hbridge q' hq', hgeq]⟩
+`goal_theorem_montes` / `goal_theorem_via_montes` — the Goal-layer siblings typed over the old
+`MontesAxiom.MontesData` — formerly lived here. They are RETIRED VERBATIM to
+`quarantine/MontesData_oldSpine_2026-07-21.lean.txt` (blueprint
+`notes/M9_REBASE_BLUEPRINT_2026-07-19.md`, W4b): after W4a the old spine had no non-quarantined
+instance left. Their V2 replacements carry the SAME canonical names over the abstract-coefficient
+`MontesDataV2`: `LeanUrat.MontesV2.goal_theorem_montes` / `goal_theorem_via_montes`
+(`LeanUrat/MontesV2.lean`, bodies verbatim modulo `MontesData → MontesDataV2`, `D.coeff → D.C`;
+fired by the real capstone `OM.RealInstanceV2.montes_unconditional` and the trivial witness
+`Witness.montes_full_instance`). -/
 
 end LeanUrat.Goal

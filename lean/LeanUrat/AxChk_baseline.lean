@@ -63,7 +63,6 @@ open LeanUrat
 
 -- Capstones
 #print axioms LeanUrat.Goal.goal_theorem
-#print axioms LeanUrat.Goal.goal_theorem_montes
 #print axioms LeanUrat.clusterVolume_rational
 -- (U1 fix 2026-07-02) the global `tame_functionalEquation` axiom is DELETED (it was FALSE-AS-STATED
 -- over a free `F`); the tame input is the hypothesis `TameFunctionalEquation`.
@@ -71,7 +70,11 @@ open LeanUrat
 -- vacuous capstone `M9.montes_unconditional` are RETIRED (their census entries removed here) —
 -- superseded by the V2 chain, whose capstones now carry the canonical names (see the M9 REBASE V2
 -- block below and `quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`).
-#print axioms LeanUrat.Goal.goal_theorem_via_montes
+-- (W4b 2026-07-21) the old-`MontesData` Goal bridge `Goal.goal_theorem_montes` /
+-- `Goal.goal_theorem_via_montes` is RETIRED to `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`
+-- (entries removed here); the canonical names now live on the V2 spine —
+-- `MontesV2.goal_theorem_montes` / `MontesV2.goal_theorem_via_montes`, censused in the M9 REBASE V2
+-- block below.
 #print axioms LeanUrat.Witness.trivF_tame
 -- Phase-A order-0 capstone + supporting machinery (2026-07-02)
 #print axioms LeanUrat.OM.Order0.montes_order0
@@ -607,12 +610,14 @@ open LeanUrat
 #print axioms LeanUrat.OM.GradedCertificates.caseC_law_graded
 #print axioms LeanUrat.OM.GradedCertificates.caseC_matches_gateC
 #print axioms LeanUrat.OM.GradedCertificates.h_node1_at_C
--- Decomposition / counting path
-#print axioms LeanUrat.MontesAxiom.MontesData.coeff_isRational
-#print axioms LeanUrat.MontesAxiom.MontesData.countingDensity_isRational
-#print axioms LeanUrat.MontesAxiom.MontesData.countingDensity_eq_sum_coeff
-#print axioms LeanUrat.MontesAxiom.MontesData.nodeMultiplicativity
-#print axioms LeanUrat.MontesAxiom.MontesData.undecidedVanishes
+-- Decomposition / counting path — RETIRED (W4b 2026-07-21): the old-`MontesData` spine
+-- (`MontesAxiom.MontesData` + `Decomposition.lean`) is quarantined in
+-- `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`; its five census entries
+-- (`MontesData.coeff_isRational` / `countingDensity_isRational` / `countingDensity_eq_sum_coeff` /
+-- `nodeMultiplicativity` / `undecidedVanishes`, all core-only) are removed here. The V2 siblings
+-- (`MontesDataV2.countingDensity_eq_sum_coeff` / `countingDensity_isRational`) are censused
+-- in-module (`LeanUrat/MontesV2.lean` AxCheck section); the goal-layer entries are in the
+-- M9 REBASE V2 block below.
 -- PadicMeasure capstone
 #print axioms LeanUrat.PadicMeasure.clusterMeasure_isRational_of_AX
 #print axioms LeanUrat.PadicMeasure.clusterMeasureModel_rec
@@ -661,7 +666,9 @@ open LeanUrat
 #print axioms LeanUrat.CountingModel.CountingModel.density_le_decided_add_undecided
 #print axioms LeanUrat.CountingModel.CountingModel.decided_le_density
 #print axioms LeanUrat.CountingModel.countingDensity_is_squeezed_limit
--- Witness
+-- Witness (W4b 2026-07-21: montes_full_instance / montes_bundle_nonempty PORTED onto the V2 spine
+-- — same names, same semantic content, now over MontesDataV2/trivD2 firing
+-- MontesV2.goal_theorem_montes; MUST stay core-only)
 #print axioms LeanUrat.Witness.montes_full_instance
 #print axioms LeanUrat.Witness.montes_bundle_nonempty
 #print axioms LeanUrat.Witness.DensityFoundation_nonempty
@@ -687,9 +694,11 @@ open LeanUrat
 --   Non-vacuous: montes_tame_realDensity_certified_value_pos > 0 (dominated by the order-1 gate). Core-only.
 #print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_of_exhaustive
 #print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_certified_value_pos
--- ★★★ M9 REBASE V2 (W2-W4a) — the corrected σ-keyed capstone chain (notes/M9_REBASE_BLUEPRINT_2026-07-19.md).
--- W1: goal_theorem_montes_v2 / goal_theorem_via_montes_v2 = the Goal-layer siblings over the
--- abstract-coefficient MontesDataV2 (D2). W2 (renamed in W4a, 2026-07-21):
+-- ★★★ M9 REBASE V2 (W2-W4b) — the corrected σ-keyed capstone chain (notes/M9_REBASE_BLUEPRINT_2026-07-19.md).
+-- W1: MontesV2.goal_theorem_montes / goal_theorem_via_montes = the Goal-layer siblings over the
+-- abstract-coefficient MontesDataV2 (D2); they carry the canonical names since W4b (2026-07-21,
+-- renamed from goal_theorem_montes_v2 / goal_theorem_via_montes_v2 after the old-`MontesData`
+-- Goal bridge was retired). W2 (renamed in W4a, 2026-07-21):
 -- RealInstanceV2.montes_unconditional(_exhaustive) — formerly montes_unconditional_v2(_exhaustive) —
 -- = THE capstones over the REAL instance (realM2/realD2/realF2, C := omCount over the σ-keyed omMenu):
 -- (R) uniform rationality + (V) decided-density tie UNCONDITIONAL; palindromy via the HYPOTHESIS
@@ -698,8 +707,8 @@ open LeanUrat
 -- (RealInstanceV2Gates): G1 non-vacuity at the capstone's own density (inert n=2 menu sum = 1/4 > 0
 -- at realP, + the realM2 countingDensity pin), G2 σ-separation (split 1/9 ≠ inert 1/3 at q'=3;
 -- ramified menu ∅, sum 0 ≠ 1/4) — the V1/O1 reversals, machine-checked. MUST all be core-only:
-#print axioms LeanUrat.MontesV2.goal_theorem_montes_v2
-#print axioms LeanUrat.MontesV2.goal_theorem_via_montes_v2
+#print axioms LeanUrat.MontesV2.goal_theorem_montes
+#print axioms LeanUrat.MontesV2.goal_theorem_via_montes
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_exhaustive
 #print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_value_inert2

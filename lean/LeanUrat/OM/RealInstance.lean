@@ -7,7 +7,9 @@ import Mathlib
 import LeanUrat.Interface
 import LeanUrat.CountingModel
 import LeanUrat.MontesAxiom
-import LeanUrat.Decomposition
+-- (W4b, 2026-07-21) `import LeanUrat.Decomposition` removed: the module is RETIRED to
+-- `quarantine/MontesData_oldSpine_2026-07-21.lean.txt` with the old `MontesData` spine; nothing
+-- here consumed it after the W4a capstone retirement.
 import LeanUrat.Goal
 import LeanUrat.OM.ResidualPolynomial
 import LeanUrat.OM.QuotientBox

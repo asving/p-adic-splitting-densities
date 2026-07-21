@@ -21,7 +21,27 @@ This module states the single imported assumption of `notes/DECOMP_BLUEPRINT.tex
 "Montes count-multiplicativity over the OM tree"), faithfully and as the *only* axiom in the
 counting-model decomposition. It is the count/measure shadow of GMN (arXiv:0807.2620: Thm 3.1/3.7,
 Cor 3.8, Lemma 3.11(3), Thm 4.18). **M1 imports COMBINATORIAL/COUNTING content only — never
-rationality, uniformity, or `p`-independence**; those are DERIVED (`Decomposition.lean`).
+rationality, uniformity, or `p`-independence**; those are DERIVED (formerly `Decomposition.lean`).
+
+## W4b RETIREMENT (2026-07-21) — the `MontesData` packaging is QUARANTINED
+
+The M1 packaging `structure MontesData` and its derived namespace (`C`, `C_rec`,
+`nodeMultiplicativity`, `stratum_tendsto_C`, `shapesOf_finite`, `decidedCount_eq_sum`,
+`discriminantTail_tendsto`, `undecidedVanishes`, `countingDensity_is_decided_limit`) are RETIRED to
+`quarantine/MontesData_oldSpine_2026-07-21.lean.txt` (blueprint
+`notes/M9_REBASE_BLUEPRINT_2026-07-19.md`, W4b): its `boxMeasure`/`boxHaarEquidist`/
+`nodeMeasure_boxSum` fields hard-pinned every instance to the numerically-REFUTED per-node box-sum
+coefficient shape (blueprint §1, defects D1–D6), and after W4a it had NO non-quarantined instance
+left. The abstract-coefficient replacement is `LeanUrat.MontesV2.MontesDataV2`
+(`LeanUrat/MontesV2.lean`); the trivial degree-0 witness is ported there (`Witness.trivD2`).
+
+What REMAINS in this module are the shared PURE-COUNTING engine primitives (all PROVED, no axiom),
+consumed by the OM modules and the ported Witness: `CountCell`, `countCellCoeff`, `countPivot`
+(+ their rationality/nonvanishing lemmas), the box-wise proved blocks (`boxVolume_eq`,
+`residualBoxCount`, `residualBoxCount_eq_factor`), the standalone recursion `clusterCount`
+(+ `clusterCount_rec`, `clusterCount_boxSum`), and the C1/C2 records (`RescaleC1`,
+`ResidualEquidistributionC2`). The M1 prose below is kept as the HISTORICAL record of what the
+retired structure said.
 
 ## The 2026-06-20 re-architecture (only-Montes footprint)
 
@@ -371,273 +391,17 @@ theorem clusterCount_boxSum
   congr 1
   exact (List.map_congr_left hm).symm
 
-/-! ## M1 — the imported counting axiom over the OM tree (pure-counting node factorization) -/
+/-! ## (RETIRED, W4b 2026-07-21) M1 `structure MontesData` + its namespace
 
-/-- **M1 (`ax:montes`): Montes count-multiplicativity over the OM tree, in the COUNTING model.**
-
-A `MontesData q n M` certifies, for the counting model `M : CountingModel q n` (degree `n`, residue
-cardinality `q`), the counting-shadow clauses of GMN. It is the ONE imported assumption; it carries
-NO rationality, NO opaque measure. The shapes are indexed by `ClusterShape`, with the per-node count
-data carried NATIVELY (`treeSize`, `cells`, `cells_descend`) — the count shadow of
-`PadicMeasure.omCells`/`descend_size_lt`, so they appear in the footprint as M1 FIELDS, not as the
-`PadicMeasure` axioms.
-
-The fields encode `ax:partition`, `ax:multiplicativity` (as a PURE-COUNT factorization), `ax:dichotomy`. -/
-structure MontesData (q n : ℕ) (M : CountingModel q n) where
-  /-- For each type `σ`, the finite set of shapes `T` with `type(T) = σ`. -/
-  shapesOf : FactorizationType → Finset ClusterShape
-  /-- The cluster `treeSize` of a shape `T` (the well-founded descent measure — count shadow of
-  `OMShape.size`). -/
-  treeSize : ClusterShape → ℕ
-  /-- The pure-counting OM cells of a shape `T` (count shadow of `PadicMeasure.omCells`): one entry per
-  order-`r` Newton-polygon face × residual-shape stratum, each carrying its `T_BB3` residual count
-  data (`dS`, `δ`), `T_BB1` box (`polygon`) and descent `children`. -/
-  cells : ClusterShape → List CountCell
-  /-- **STRICT DESCENT (`ax:dichotomy`, count shadow of `PadicMeasure.descend_size_lt`).** Off the
-  self-loop, every descent child of every cell has STRICTLY SMALLER cluster `treeSize`. This is the
-  well-foundedness input of the `MontesData.C` recursion. -/
-  cells_descend : ∀ (T : ClusterShape), ∀ c ∈ cells T, ∀ ch ∈ c.children, treeSize ch < treeSize T
-  /-- The level-`N` stratum count `# S_T^{(N)}` of a shape `T` (decided-at-`N` monic `f` realizing the
-  combinatorial shape `T`). A `ℚ`-valued integer count. -/
-  stratumCount : ClusterShape → ℕ → ℚ
-  /-- Stratum counts are nonnegative. -/
-  stratumCount_nonneg : ∀ T N, 0 ≤ stratumCount T N
-  /-- **(1) PARTITION (`ax:partition`).** Every decided monic `f` of type `σ` lies in exactly one shape
-  stratum: the decided count of type `σ` is the finite sum over shapes `T` with `type(T) = σ` of the
-  stratum counts. (Unique OM tree ⇒ the strata partition the decided polynomials.) -/
-  partition : ∀ (σ : FactorizationType) (N : ℕ),
-    M.decidedCount σ N = ∑ T ∈ shapesOf σ, stratumCount T N
-  /-- **The per-box (per-cell) normalized Haar measure `boxMeasure c q`.** The `p`-adic Haar volume of
-  the box/cell `c` (one order-`r` Newton-polygon face × residual-shape stratum), as a function of the
-  residue cardinality `q`. This is the box-wise primitive on which the SINGLE minimal measure axiom
-  (`boxHaarEquidist`) and the box-additive node-limit (`nodeMeasure_boxSum`) are stated. It is the only
-  place the abstract Haar measure enters; the box-wise refactor (2026-06-21) isolates it here. -/
-  boxMeasure : CountCell → ℕ → ℚ
-  /-- **THE MINIMAL IRREDUCIBLE BOX-WISE AXIOM (box-Haar + residual-equidistribution).** The normalized
-  per-box Haar volume of every cell `c` EQUALS the PROVED box-volume × residual-count value
-  `countCellCoeff c q = (q^δ)^{dS-1} · bb1Value c.polygon q`:
-
-  * `(q^δ)^{dS-1}` is the residual-config count over `F_{q^δ}` — PROVED finite-field count
-    (`residualBoxCount`, `T_BB3`), and asserting the per-box measure realizes it is the **C2 residual
-    equidistribution** (each residual configuration carries equal Haar weight `|F_{q^δ}|^{-(dS-1)}`);
-  * `bb1Value c.polygon q = (1-q⁻¹)^V·q^{-A}` is the Newton-box volume — PROVED lattice count
-    (`boxVolume_eq`, `cellVolume_eq`, `T_BB1`), and asserting the per-box measure realizes it is the
-    **box-Haar normalization** (the per-coordinate box/shell Haar volume).
-
-  This is the GENUINE measure-wall content and the ONLY irreducible measure assumption left: the RHS is
-  entirely proved (box-volume × residual-count); only the *identification* of the abstract `p`-adic
-  Haar volume `boxMeasure c q` with that proved lattice value is assumed (mathlib v4.31.0 has no
-  `p`-adic Haar measure). It asserts NO rationality, NO uniformity, NO closed form beyond the proved
-  factors — it is the per-box Haar-existence + equidistribution statement, box-localized. -/
-  boxHaarEquidist : ∀ (c : CountCell) (q' : ℕ), 1 < q' → boxMeasure c q' = countCellCoeff c q'
-  /-- **BOX-ADDITIVITY of the node measure (the measure-existence / countable-additivity clause).** The
-  normalized stratum measure `lim_N stratumCount T N / q^{nN}` EXISTS and is the box-additive SUM over
-  the cell partition of the per-box Haar measures, each weighted by the children product, self-loop
-  resummed by the geometric pivot `countPivot (treeSize T)`:
-
-      lim_N stratumCount T N / q^{nN}
-        = ( Σ_{cells c} boxMeasure c q · ∏_{children ch} clusterCount … ch q ) / countPivot (treeSize T) q.
-
-  This is the box-additivity of Haar over the finite cell partition (GMN count-multiplicativity), stated
-  in terms of the per-box measure `boxMeasure`. The *arithmetic* of the finite sum is PROVED
-  (`clusterCount_boxSum`); what this field assumes is the measure existence + that the node measure is
-  the box-additive assembly. Combined with `boxHaarEquidist` (`boxMeasure = countCellCoeff`), it yields
-  the per-node `clusterCount` factorization (`nodeMultiplicativity` below, now a THEOREM). -/
-  nodeMeasure_boxSum : ∀ (T : ClusterShape),
-    Filter.Tendsto (fun N => stratumCount T N / (q : ℚ) ^ (n * N))
-      Filter.atTop (nhds
-        (((cells T).map (fun c =>
-            boxMeasure c q
-              * (c.children.map (fun ch => clusterCount cells treeSize cells_descend ch q)).prod)).sum
-          / countPivot (treeSize T) q))
-  /-- **(3b) FINITE TERMINATION (`ax:dichotomy`, GMN Thm 4.18).** The OM descent of a separable
-  degree-`n` `f` terminates: every shape in the menu has cluster `treeSize ≤ n` (at most `n` leaves).
-  This bounds the recursion depth and makes the shape menu finite. -/
-  finiteTermination : ∀ (σ : FactorizationType), σ.degree = n →
-    ∀ T ∈ shapesOf σ, treeSize T ≤ n
-  /-- **The separable-but-undecided-at-`N` measure** `# {separable f not yet resolved below p^N} / q^{nN}`.
-  This is the part of the undecided pool consisting of SEPARABLE polynomials whose OM tree has not yet
-  resolved at precision `N`. -/
-  separableUndecidedMeasure : ℕ → ℚ
-  /-- The non-separable (discriminant-zero mod `p^N`) tail measure
-  `# {f : disc(f) ≡ 0 mod p^N} / q^{nN}` — the part of the undecided pool in the non-separable locus. -/
-  discriminantTailMeasure : ℕ → ℚ
-  /-- The separable-undecided measure is nonnegative (it is a normalized count). -/
-  separableUndecidedMeasure_nonneg : ∀ N, 0 ≤ separableUndecidedMeasure N
-  /-- The discriminant-tail measure is nonnegative (it is a normalized count). -/
-  discriminantTailMeasure_nonneg : ∀ N, 0 ≤ discriminantTailMeasure N
-  /-- **The undecided pool splits (elementary partition bound, `ax:partition`/box-partition consequence).**
-  Every coset undecided at level `N` is EITHER a not-yet-resolved separable polynomial OR a polynomial
-  in the non-separable (discriminant-zero mod `p^N`) locus. So the undecided measure is bounded by the
-  sum of the separable-undecided measure and the discriminant-tail measure. This is elementary counting
-  (a partition/bound over the box), NOT the conclusion. -/
-  undecided_le_split : ∀ N,
-    M.undecided N ≤ separableUndecidedMeasure N + discriminantTailMeasure N
-  /-- **(A2) SEPARABLE TAIL VANISHES (the count shadow of `finiteTermination`).** The separable-undecided
-  measure tends to `0`: every separable degree-`n` `f` resolves its OM tree at finite OM order (GMN Thm
-  4.18, `finiteTermination`), hence is decided at some finite precision `N_f`; the per-level
-  separable-undecided pool is monotone ↓ to 0 as each `f` drops out at its own `N_f`. This is genuine M1
-  termination content (the count shadow of finite resolution), NOT the conclusion `undecided → 0`. -/
-  sepTail_tendsto :
-    Filter.Tendsto (fun N => separableUndecidedMeasure N) Filter.atTop (nhds (0 : ℚ))
-  /-- **(A1) DISCRIMINANT TAIL DECAYS (the "non-separable locus has density 0" elementary clause).** A
-  nonzero polynomial — here the discriminant `Δ` of the generic degree-`n` `f`, a fixed nonzero
-  polynomial — has a mod-`p^N` zero-set of vanishing counting density: `# {f : Δ(f) ≡ 0 mod p^N} / q^{nN}`
-  is bounded by `discriminantTailConst · q^{-N}`. This is elementary number theory (a nonzero
-  polynomial's root-set over `ℤ/p^N` has density `≤ C·q^{-N}`); it is Montes/DISCRIMINANT content, NOT
-  Haar measure. We carry the `q^{-N}` envelope as the genuine elementary counting bound and PROVE the
-  `→ 0` limit from `tendsto_pow_atTop_nhds_zero_of_lt_one` (`undecidedVanishes` below).
-
-  HONEST RESIDUAL FLAG: the explicit root-count bound over `ZMod (p^N)` is the one elementary
-  number-theory fact not directly available in mathlib v4.31.0; it is recorded HONESTLY as this named
-  elementary counting field (the non-separable-locus density clause), never faked in a sorry or renamed
-  as an analytic axiom. It is NOT `clusterMeasure`/`AX_cellRecursion`, so it does NOT block the
-  rationality/decomposition only-Montes footprint. -/
-  discriminantTailConst : ℚ
-  /-- The discriminant-tail envelope constant is nonnegative. -/
-  discriminantTailConst_nonneg : 0 ≤ discriminantTailConst
-  /-- The discriminant-tail `q^{-N}` decay envelope (the elementary root-count bound). -/
-  discriminantTail_envelope : ∀ N,
-    discriminantTailMeasure N ≤ discriminantTailConst * ((q : ℚ) ^ N)⁻¹
-
-namespace MontesData
-
-variable {q n : ℕ} {M : CountingModel q n} (D : MontesData q n M)
-
-/-- **The per-shape coefficient `C_T(q)` — the pure-counting per-node factorization.**
-
-`D.C` is the standalone `clusterCount` recursion run over `D`'s own count data
-(`cells`/`treeSize`/`cells_descend`): by well-founded recursion on `treeSize` it is the faithful
-eq-(4.2) count factorization `(T_BB3 residual count) × (T_BB1 box count) × ∏_children`, the self-loop
-resummed by the geometric pivot `1 − q^{-w(treeSize T)}` (`NestedCollapse.geometricLimit_of_selfLoop`).
-Built ENTIRELY from counting blocks — NO `PadicMeasure.clusterMeasure`, NO `AX_cellRecursion`. Its
-footprint is `[core]` + the M1 fields `cells`/`treeSize`/`cells_descend`.
-
-By M1's `nodeMultiplicativity`, this IS the genuine `lim_N stratumCount T N / q^{nN}`. -/
-noncomputable def C (T : ClusterShape) (q : ℕ) : ℚ :=
-  clusterCount D.cells D.treeSize D.cells_descend T q
-
-/-- **The `MontesData.C` recursion-unfold lemma** (count shadow of `clusterMeasureModel_rec`). PROVED
-from `clusterCount_rec` (pure core + M1 fields). -/
-theorem C_rec (T : ClusterShape) (q : ℕ) :
-    D.C T q
-      = ((D.cells T).map (fun c =>
-            countCellCoeff c q * (c.children.map (fun ch => D.C ch q)).prod)).sum
-        / countPivot (D.treeSize T) q :=
-  clusterCount_rec D.cells D.treeSize D.cells_descend T q
-
-/-- **(2) PER-NODE COUNT-MULTIPLICATIVITY — now a THEOREM (the box-wise derivation).**
-
-The normalized stratum measure `lim_N stratumCount T N / q^{nN}` equals the per-node `clusterCount`
-factorization — DERIVED from the box-wise primitives, no longer a single carried field:
-
-* `nodeMeasure_boxSum` gives the limit = `(Σ_{cells c} boxMeasure c q · ∏_children) / countPivot` —
-  the box-additivity of the node measure (measure existence + additive assembly, the minimal axiom);
-* `boxHaarEquidist` rewrites each per-box Haar measure `boxMeasure c q = countCellCoeff c q` — the
-  proved box-volume `bb1Value` (`T_BB1`) × proved residual count `(q^δ)^{dS-1}` (`T_BB3`, residualBoxCount);
-* `clusterCount_boxSum` (PROVED box-additivity arithmetic) recombines into `clusterCount`.
-
-So this is now PROVED from {box-volume(proved) × residual-count(proved) × box-additivity(proved) ×
-box-Haar/equidistribution(minimal axiom)}, exactly the box-wise decomposition. -/
-theorem nodeMultiplicativity (T : ClusterShape) :
-    Filter.Tendsto (fun N => D.stratumCount T N / (q : ℚ) ^ (n * N))
-      Filter.atTop (nhds (clusterCount D.cells D.treeSize D.cells_descend T q)) := by
-  have hq : 1 < q := lt_of_lt_of_le Nat.one_lt_two M.hq
-  -- the box-additive node limit (minimal axiom):
-  have hbox := D.nodeMeasure_boxSum T
-  -- the box-additive sum (with per-box = box-volume × residual-count) recombines into `clusterCount`:
-  have hrecomb :
-      (((D.cells T).map (fun c =>
-            D.boxMeasure c q
-              * (c.children.map (fun ch => clusterCount D.cells D.treeSize D.cells_descend ch q)).prod)).sum
-          / countPivot (D.treeSize T) q)
-        = clusterCount D.cells D.treeSize D.cells_descend T q := by
-    -- rewrite each per-box Haar measure to the proved box-volume × residual-count value, then fold by
-    -- the PROVED box-additivity `clusterCount_boxSum`.
-    rw [clusterCount_boxSum D.cells D.treeSize D.cells_descend T q
-      (fun c => D.boxMeasure c q
-        * (c.children.map (fun ch => clusterCount D.cells D.treeSize D.cells_descend ch q)).prod)
-      (fun c _ => by rw [D.boxHaarEquidist c q hq])]
-  rwa [hrecomb] at hbox
-
-/-- **(2) re-export: the count-limit equals `D.C`** (now PROVED from the box-wise primitives via
-`nodeMultiplicativity`, restated through `C`). The normalized stratum count `stratumCount T N / q^{nN}`
-tends to `D.C T q`. PROVED. -/
-theorem stratum_tendsto_C (T : ClusterShape) :
-    Filter.Tendsto (fun N => D.stratumCount T N / (q : ℚ) ^ (n * N))
-      Filter.atTop (nhds (D.C T q)) :=
-  D.nodeMultiplicativity T
-
-/-- **The shape menu of type `σ` is finite** (it is a `Finset` by construction — GMN finite
-termination, `ax:dichotomy`/Thm 4.18). -/
-theorem shapesOf_finite (σ : FactorizationType) : (↑(D.shapesOf σ) : Set ClusterShape).Finite :=
-  (D.shapesOf σ).finite_toSet
-
-/-- **Re-export: the partition/additivity identity.** -/
-theorem decidedCount_eq_sum (σ : FactorizationType) (N : ℕ) :
-    M.decidedCount σ N = ∑ T ∈ D.shapesOf σ, D.stratumCount T N :=
-  D.partition σ N
-
-/-! ### (A) `UndecidedVanishes` PROVED from M1 finiteTermination + discriminant-tail decay -/
-
-/-- **(A1) The discriminant tail tends to `0`** — PROVED from the elementary `q^{-N}` decay envelope.
-The discriminant-tail measure is squeezed between `0` (`discriminantTailMeasure_nonneg`) and
-`discriminantTailConst · q^{-N}`, and the envelope `→ 0` because `q ≥ 2` makes `q^{-N} = (q⁻¹)^N → 0`
-(`tendsto_pow_atTop_nhds_zero_of_lt_one`). PROVED. -/
-theorem discriminantTail_tendsto :
-    Filter.Tendsto D.discriminantTailMeasure Filter.atTop (nhds 0) := by
-  -- the envelope `discriminantTailConst · (q^N)⁻¹` tends to 0
-  have hq2 : (2 : ℚ) ≤ (q : ℚ) := by exact_mod_cast M.hq
-  have hqpos : (0 : ℚ) < (q : ℚ) := by linarith
-  -- `(q^N)⁻¹ = (q⁻¹)^N` and `0 ≤ q⁻¹ < 1`
-  have hinv_lt : (q : ℚ)⁻¹ < 1 := by
-    rw [inv_lt_one_iff₀]; right; linarith
-  have hinv_nonneg : (0 : ℚ) ≤ (q : ℚ)⁻¹ := le_of_lt (inv_pos.mpr hqpos)
-  have hpow : Filter.Tendsto (fun N => ((q : ℚ)⁻¹) ^ N) Filter.atTop (nhds 0) :=
-    tendsto_pow_atTop_nhds_zero_of_lt_one hinv_nonneg hinv_lt
-  have henv : Filter.Tendsto (fun N => D.discriminantTailConst * ((q : ℚ) ^ N)⁻¹)
-      Filter.atTop (nhds 0) := by
-    have h0 : Filter.Tendsto (fun N => D.discriminantTailConst * ((q : ℚ)⁻¹) ^ N)
-        Filter.atTop (nhds (D.discriminantTailConst * 0)) :=
-      tendsto_const_nhds.mul hpow
-    rw [mul_zero] at h0
-    refine h0.congr (fun N => ?_)
-    rw [inv_pow]
-  -- squeeze: 0 ≤ discriminantTailMeasure N ≤ envelope
-  exact tendsto_of_tendsto_of_tendsto_of_le_of_le' tendsto_const_nhds henv
-    (Filter.Eventually.of_forall (fun N => D.discriminantTailMeasure_nonneg N))
-    (Filter.Eventually.of_forall (fun N => D.discriminantTail_envelope N))
-
-/-- **(A) `UndecidedVanishes M` — PROVED from M1, no hypothesis.** The undecided measure `U_N → 0`.
-PROVED by squeezing: `0 ≤ undecided N ≤ separableUndecidedMeasure N + discriminantTailMeasure N`
-(`undecided_le_split`, the elementary partition bound), and BOTH summands tend to `0` — the separable
-tail by `separableUndecided_tendsto` (the count shadow of `finiteTermination`: every separable `f`
-resolves at finite OM order), the discriminant tail by `discriminantTail_tendsto` (A1, the
-non-separable locus has density 0). So `undecided → 0` by `squeeze_zero'`. This DISCHARGES the
-`UndecidedVanishes` hypothesis: the bracket collapses unconditionally. -/
-theorem undecidedVanishes (D : MontesData q n M) : CountingModel.UndecidedVanishes M := by
-  -- the sum of the two tails tends to 0
-  have hsep := D.sepTail_tendsto
-  have hdisc := D.discriminantTail_tendsto
-  have hsum := Filter.Tendsto.add hsep hdisc
-  rw [add_zero] at hsum
-  -- squeeze 0 ≤ undecided ≤ sum
-  unfold CountingModel.UndecidedVanishes
-  exact tendsto_of_tendsto_of_tendsto_of_le_of_le' tendsto_const_nhds hsum
-    (Filter.Eventually.of_forall (fun N => M.undecided_nonneg N))
-    (Filter.Eventually.of_forall (fun N => D.undecided_le_split N))
-
-/-- **The bracket collapses UNCONDITIONALLY (no `hU` hypothesis).** Under M1, `countingDensity σ` is
-the genuine `N→∞` decided limit and the upper bracket is tight: both `decidedMeasure σ` and
-`decidedMeasure σ + undecided` converge to `countingDensity σ`. PROVED by feeding the PROVED
-`undecidedVanishes` into `countingDensity_is_squeezed_limit` — the `U_N → 0` hypothesis is no longer
-assumed, it is derived from M1 finiteTermination + discriminant decay. -/
-theorem countingDensity_is_decided_limit (D : MontesData q n M) (σ : FactorizationType) :
-    Filter.Tendsto (fun N => M.decidedMeasure σ N + M.undecided N) Filter.atTop
-      (nhds (M.countingDensity σ)) :=
-  CountingModel.countingDensity_is_squeezed_limit M D.undecidedVanishes σ
-
-end MontesData
+The `MontesData` structure (shape menu, stratum counts, partition, the box-wise
+`boxMeasure`/`boxHaarEquidist`/`nodeMeasure_boxSum` fields, tails) and its derived namespace
+(`C`, `C_rec`, `nodeMultiplicativity`, `stratum_tendsto_C`, `shapesOf_finite`,
+`decidedCount_eq_sum`, `discriminantTail_tendsto`, `undecidedVanishes`,
+`countingDensity_is_decided_limit`) formerly lived here. They are RETIRED VERBATIM to
+`quarantine/MontesData_oldSpine_2026-07-21.lean.txt` (blueprint W4b — see the module header).
+The V2 replacement is `LeanUrat.MontesV2.MontesDataV2` (abstract per-shape coefficient `C` +
+`C_isRational` + `stratum_tendsto_C`), whose real instance is `OM.RealInstanceV2.realD2` and whose
+trivial witness is `Witness.trivD2`. -/
 
 /-! ## C1 — the self-loop rescale exponent `w(s)` and ratio `r(s)`, PROVED as the box q-power
 

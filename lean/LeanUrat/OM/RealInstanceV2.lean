@@ -383,7 +383,8 @@ the canonical capstone name, superseding the old vacuous `M9.montes_unconditiona
 below; the footprint is Lean core ONLY — a net trusted-base reduction).
 
 **What this certifies** (for degree-`n` type `σ`, `n > 0`), firing the V2 Goal theorem
-`goal_theorem_montes_v2` at the corrected real instance `(realM2, realD2, realF2)`:
+`MontesV2.goal_theorem_montes` (renamed from `goal_theorem_montes_v2` in W4b, 2026-07-21) at the
+corrected real instance `(realM2, realD2, realF2)`:
 * (R) UNCONDITIONAL uniform rationality of the σ-KEYED corrected engine density
   `g_σ(q') := ∑_{T ∈ omMenu n σ} omCount T q'` — one `num/den`, denominator nonvanishing at every
   `q' > 1` (`omCount_isRational`);
@@ -417,7 +418,7 @@ theorem montes_unconditional (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (h�
       ((realM2 n hn).countingDensity σ = num.eval (M9.realP : ℚ) / den.eval (M9.realP : ℚ)) ∧
       IsPalindromic num den := by
   obtain ⟨num, den, hden, hall, hval, hpalin⟩ :=
-    LeanUrat.MontesV2.goal_theorem_montes_v2 (realM2 n hn) (realD2 n hn) σ realF2 hσ
+    LeanUrat.MontesV2.goal_theorem_montes (realM2 n hn) (realD2 n hn) σ realF2 hσ
       (fun _ _ => rfl) htameFE
   exact ⟨num, den, hden, hall, hval (by norm_num [M9.realP]), hpalin⟩
 

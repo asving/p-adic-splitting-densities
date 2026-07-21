@@ -271,8 +271,10 @@ function of `q`. The conclusion is never assumed here; only the realization-as-O
 **Separated out (2026-06-20).** The OM bridge was FACTORED OUT of `DensityFoundation` into this
 separate structure so that the measure-free `DensityFoundation` (and the tame functional equation
 stated about it) no longer drags `PadicMeasure.clusterMeasure` into the footprint. The only-Montes
-Goal theorem (`Goal.goal_theorem_montes`) routes rationality through the count-native
-`MontesData.countingDensity_isRational` and never references this bridge; the OLD `Goal.goal_theorem`
+Goal theorem (`MontesV2.goal_theorem_montes` — the V2 carrier of the canonical name since W4b,
+2026-07-21; the old-`MontesData` sibling is in `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`)
+routes rationality through the count-native `MontesDataV2.countingDensity_isRational` and never
+references this bridge; the OLD `Goal.goal_theorem`
 still consumes it (the measure route — kept for the historical derivation, NOT only-Montes).
 
 **Soundness note (2026-06-19 fix, preserved).** The bridge ties `clusterVolume` to the SINGLE fixed
@@ -326,8 +328,10 @@ from:
   (`omCells`, `descend_size_lt`).
 
 Rationality is therefore **never assumed**; it emerges only through the proved engine applied to the
-measure-factorization axiom. NOTE: the count-native only-Montes path (`Decomposition.coeff_isRational`
-/ `MontesData.countingDensity_isRational`) does NOT use this theorem and carries NONE of these measure
+measure-factorization axiom. NOTE: the count-native only-Montes path (since W4b 2026-07-21 the V2
+spine: `MontesDataV2.C_isRational` / `MontesDataV2.countingDensity_isRational` in
+`LeanUrat/MontesV2.lean`; the old `Decomposition.coeff_isRational` route is quarantined) does NOT
+use this theorem and carries NONE of these measure
 axioms. Citation: `notes/HUMAN_PROOF.md §8` (L2core / BB3-∞), `notes/BB3_infinity.md`,
 `notes/MINIMAL_PADIC_AXIOMS.md`. -/
 theorem clusterVolume_rational
@@ -379,7 +383,8 @@ The mathematics (paper §5, Del Corso–Dvornicich (2000), Yin) is a true statem
 density `ρ`, not about an arbitrary `DensityFoundation.density`. The sound encoding is therefore:
 
 * this PREDICATE, consumed as an explicit HYPOTHESIS `htame : TameFunctionalEquation F n σ` by the
-  Goal theorems (`Goal.goal_theorem`, `Goal.goal_theorem_montes`, `Goal.goal_theorem_via_montes`) —
+  Goal theorems (`Goal.goal_theorem`, and since W4b 2026-07-21 the V2 carriers of the only-Montes
+  names, `MontesV2.goal_theorem_montes` / `MontesV2.goal_theorem_via_montes`) —
   free-`F` statements carry it conditionally;
 * (RETIRED, W4a 2026-07-21) the interim concrete NAMED-CITE axiom about the REAL count-native
   density (`OM.M9.realDensity_tame_functionalEquation`) that discharged `htame` for the OLD vacuous
