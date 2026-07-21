@@ -243,9 +243,14 @@ should not be conflated (this is the mistake an earlier draft of this document m
    (`menuFiber_hasType`: fiber members genuinely factor with type σ — core + the one axiom), and
    the axiom-free Eisenstein guard (`OM/QpTypeEisenstein.lean`: e = deg, f = 1 proved; the
    fine-(e,f) mutation machine-refuted). Density capstones remain Lean-core-only throughout.
-   Next waves (unstarted): the H-window menu extension (more terminating wild strata per type),
-   the multi-slope product layer (mixed-e types), the wall (H-tower resummation/exhaustiveness =
-   Denef, and order ≥ 2). Non-imports with machine-checked reasons: finite-level drainage (FALSE
+   Wave 3 LANDED (2026-07-21, `notes/WILD_WAVE3_BLUEPRINT_2026-07-21.md`; guardian re-audit
+   ACCEPT-WITH-FLAGS): the K-windowed menu `omMenuW3` + capstone `montes_unconditional_w3 (n K)`
+   — window K=3 certifies 9/64 for the ramified quadratic at p=2 with machine-checked STRICT
+   growth over Wave 1's 1/8, approaching (never claiming) the tower value 1/7; the axiom
+   re-scoped to the windowed menu with new axiom-free H=3 anchors (non-Eisenstein (e,f)=(2,1)
+   via ϖ-order parity) and both mutation probes re-fired. Next waves (unstarted): the multi-slope
+   product layer (mixed-e types), the wall (H-tower resummation/exhaustiveness = Denef, and
+   order ≥ 2). Non-imports with machine-checked reasons: finite-level drainage (FALSE
    of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
    — `notes/M6_lemma.md`).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
