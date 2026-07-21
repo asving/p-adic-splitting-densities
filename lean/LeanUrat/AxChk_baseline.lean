@@ -65,6 +65,9 @@ import LeanUrat.OM.RealInstanceW
 import LeanUrat.OM.RealInstanceWGates
 import LeanUrat.OM.OmLeafFaithful
 import LeanUrat.OM.QpTypeEisenstein
+import LeanUrat.OM.WildMenuW3
+import LeanUrat.OM.RealInstanceW3
+import LeanUrat.OM.RealInstanceW3Gates
 open LeanUrat
 
 -- Capstones
@@ -808,3 +811,41 @@ open LeanUrat
 -- RE-PRINT (REQUIRED): the density capstones REMAIN Lean core ONLY after the FLAG-1 wave:
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+-- ★★★ WILD WAVE 3 (H-window) (2026-07-21, notes/WILD_WAVE3_BLUEPRINT_2026-07-21.md §2 items 1-3)
+-- — the K-parameterized WINDOW of terminating wild strata per constant-e ramified type:
+-- omMenuW3 n K σ = sepShapesOf n σ ∪ ramShapes3 n K σ, one Tselfloop stratum per admissible
+-- multiplier k ∈ admissibleK (n/fSum σ) K (height H = fSum σ · k, gcd(k, e) = 1 — the keystone
+-- gcd_admissible; Wave 1 IS the K = 1 window: omMenuW3_one). Capstones
+-- RealInstanceW3.montes_unconditional_w3(_exhaustive) = statements VERBATIM the Wave-1 capstones
+-- with omMenuW3 n K for omMenuW n, fired at (realMW3, realDW3, realFW3 K); recovery gate
+-- montes_w3_one_recovers: the K = 1 instance's countingDensity IS Wave 1's, every n and σ.
+-- HONEST SCOPE: window-K certifies the K-TRUNCATED decided density of each constant-e type — a
+-- strictly larger leading sum than Wave 1, NOT the full type density (the geometric tail = the
+-- recursive self-loop wall); mixed-e / order ≥ 2 / exhaustiveness NOT covered. Gates: G1 window
+-- value (n=2, K=3, ramType2: admissibleK 2 3 = {1,3}, legs H=1 → 1/8 and H=3 → (p−1)·p⁻⁶ = 1/64
+-- at realP=2, window sum 9/64 — the EXTERNAL Python gate pinned 1/8, 1/64, 9/64; instance pin
+-- countingDensity = 9/64); G2 STRICT window growth (value(K=1) = 1/8 < 9/64 = value(K=3), both
+-- through the real instances — machine-checked monotone-toward-the-tower, wall value 1/7 never
+-- claimed); G4 mutation (C := 0 copy fails to compile — evidence block in
+-- OM/RealInstanceW3Gates.lean). MUST all be Lean core ONLY (an axiom appearing here is a
+-- stop-the-line event):
+#print axioms LeanUrat.OM.WildMenuW3.gcd_admissible
+#print axioms LeanUrat.OM.WildMenuW3.omMenuW3_one
+#print axioms LeanUrat.OM.WildMenuW3.ramShapeAt_injective_k
+#print axioms LeanUrat.OM.WildMenuW3.eq_of_mem_omMenuW3
+#print axioms LeanUrat.OM.WildMenuW3.sum_stratumCount_le_box_W3
+#print axioms LeanUrat.OM.WildMenuW3.normSum_omMenuW3_mono
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
+#print axioms LeanUrat.OM.RealInstanceW3Gates.admissibleK_two_three
+#print axioms LeanUrat.OM.RealInstanceW3Gates.gate_w3_menu
+#print axioms LeanUrat.OM.RealInstanceW3Gates.gate_w3_omCount_H3
+#print axioms LeanUrat.OM.RealInstanceW3Gates.gate_w3_value
+#print axioms LeanUrat.OM.RealInstanceW3Gates.gate_w3_countingDensity
+#print axioms LeanUrat.OM.RealInstanceW3Gates.gate_w3_one_countingDensity
+#print axioms LeanUrat.OM.RealInstanceW3Gates.gate_w3_growth
+-- RE-PRINT (REQUIRED): the Wave-1 capstones REMAIN Lean core ONLY after the Wave-3 wave (leaf
+-- modules only; nothing on the Wave-1 path was touched):
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
