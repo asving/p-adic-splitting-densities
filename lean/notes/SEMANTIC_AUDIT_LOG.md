@@ -794,3 +794,36 @@ Cross-checked against `uniform-rationality/notes/ORDER2_CITE_INTERPRETATION_2026
 finding corroborated. The two standing baseline SUSPECTs (classify_singleValued vacuous-rfl;
 realDensity_tame_functionalEquation benign order-0 non-vacuity) unchanged; prior CLEAN axioms/defs not
 re-verified (base unchanged), verdicts carry over.**
+
+---
+
+## 2026-07-19/21 — M9-rebase V2 chain audit + the W4a axiom retirement
+
+**Fresh-context guardian audit of the V2 chain (2026-07-19)** — `MontesV2.lean`,
+`OM/RealInstanceV2Prep.lean`, `OM/RealInstanceV2.lean` (design: `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`).
+Ten-item checklist, verdict: **zero CRITICAL ERROR, 9/10 immediate PASS, one JUSTIFICATION GAP closed
+same day.** Highlights: palindromy enters ONLY via the `htameFE` hypothesis (L7 transfer requires it,
+never manufactures it); σ-keying is genuine (`omMenu → sepShapesOf → unramType` filter; no `if σ = σ₀`
+anywhere; cross-σ disjointness PROVED via `eq_of_mem_sepShapesOf`); every `realM2` CountingModel field
+discharge is semantically faithful (decidedCount traced to genuine `Nat.card` classifier fibers over the
+M1 box; undecided = honest remainder with the disjoint-fiber box bound carrying the content;
+`decided_tendsto` limit = the engine value via the PROVED `h_node0` legs); capstone conclusion fully
+pinned to concrete objects (no free fields — the D2 deliberately-weak `MontesDataV2` interface cannot
+leak into it); bracket-uniqueness clause non-circular. THE GAP (item 2): `htameFE` non-triviality was
+certified only at the wild prime 2; closed by `gate_v2_htameFE_nontrivial` (density = 1/3 > 0 at the
+TAME prime 3, n = 2 inert), excluding the vacuous `num = 0` discharge. Gates at close: value 1/4
+through the real instance (V1 reversed), split 1/9 ≠ inert 1/3 at q'=3 (O1 reversed), ramified menu
+honestly empty, `C := 0` mutation refuses to compile, census 14 entries all core-only with byte-identical
+zero regression, Python brute force 21/21 exact (p ∈ {2,3,5}, n ∈ {2,3}, incl. correctly-empty strata).
+
+**W4a (2026-07-21): `realDensity_tame_functionalEquation` RETIRED — the standing baseline SUSPECT is
+RESOLVED by removal.** The 2026-07-16 baseline flagged this axiom SUSPECT (benign): true-but-near-vacuous
+on the degenerate instance (constant-0 density satisfies it trivially). The rebase established the axiom
+CANNOT be mechanically retargeted to the corrected σ-keyed density (that sum is a PARTIAL monic decided
+density — palindromy is false in general; the faithful Del Corso–Dvornicich statement needs
+exhaustiveness + the M1 projective bridge). Per signed-off D4 the axiom was deleted with the old chain
+(quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt); the tame FE is now the explicit capstone
+hypothesis `htameFE`, machine-certified non-trivial for the real instance. Trusted base: ONE FEWER
+axiom; the canonical capstone `OM.RealInstanceV2.montes_unconditional` prints
+`[propext, Classical.choice, Quot.sound]`. The DCD cite returns at Phase B where it can be declared
+faithfully. (Standing SUSPECT #1, `classify_singleValued` vacuous-rfl, is unchanged by this wave.)

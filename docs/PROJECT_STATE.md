@@ -47,12 +47,13 @@ the whole point.** A standing semantic audit (2026-07-19) established the follow
 - The Okutsu–Montes classifier subsystem is formalized (higher-order Newton polygons, residual
   polynomials, the OM tree/type, φ-adic development) — the ~95-module `LeanUrat/OM/`.
 - **The rebased V2 capstone chain (2026-07-19, M9-rebase waves W1–W3;
-  `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`).** `OM/RealInstanceV2.montes_unconditional_v2`: for
+  `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`; canonical names since W4, 2026-07-21).**
+  `OM/RealInstanceV2.montes_unconditional` — THE capstone: for
   every degree-`n` type σ, the σ-KEYED corrected engine density `∑_{T ∈ omMenu n σ} omCount T q'`
   is uniform-rational (unconditional), the real decided counting density at `realP` equals its
   value (unconditional — the counting legs are the PROVED `h_node0` limits), and it is palindromic
   GIVEN the explicit hypothesis `htameFE` (no axiom: footprint is Lean-core ONLY). Fires
-  `goal_theorem_montes_v2` through the first non-trivial real `DensityFoundation` instance
+  `MontesV2.goal_theorem_montes` through the first non-trivial real `DensityFoundation` instance
   (`realF2`). **Non-vacuous and σ-dependent, machine-checked**: value 1/4 at n=2 inert
   (`gate_v2_countingDensity_inert2`, through the real instance), split 1/9 ≠ inert 1/3 at the tame
   prime q'=3 (σ-separation, O1 reversed), ramified menu honestly empty, `htameFE` certified a
@@ -64,30 +65,37 @@ the whole point.** A standing semantic audit (2026-07-19) established the follow
   theorems (`OM/RealInstanceV2Gates.lean`), 21/21 exact Python brute-force cross-check, 2026-07-19
   fresh-context semantic audit clean (no critical error, single gap closed same day).
 
-### `sorry`-free but NOT (yet) a non-vacuous proof of the full theorem
+### `sorry`-free but NOT (yet) a non-vacuous proof of the FULL theorem — the honest remaining gaps
 
-The top-level statements in `LeanUrat/Goal.lean`:
+**The W4 swap (2026-07-21) retired the old vacuous chain**: the old `M9.montes_unconditional` +
+`realM/realD/realF`, the old `MontesData` bridge (`Decomposition.lean`, old `Goal.goal_theorem_montes`
+/`goal_theorem_via_montes`), and the axiom `realDensity_tame_functionalEquation` now live only in
+`lean/quarantine/{RealInstance_oldCapstone,MontesData_oldSpine}_2026-07-21.lean.txt`. The canonical
+spine is `MontesV2.lean` (abstract-coefficient `MontesDataV2` + `goal_theorem_montes`/
+`goal_theorem_via_montes`, ∀-conditionals, core-only) instantiated by `OM/RealInstanceV2.lean`;
+`Goal.goal_theorem` (the measure route, 4 PadicMeasure axioms) remains as the independent second route.
 
-- **`goal_theorem`**, **`goal_theorem_montes`**, **`goal_theorem_via_montes`** — all
-  **`∀ F : DensityFoundation` conditionals over a *free* density field** (`Interface.lean`): "for every
-  abstract density satisfying the bridge + tame-functional-equation hypotheses, it is uniform-rational
-  and palindromic." `goal_theorem_via_montes` is `sorry`-free with a Lean-core-only footprint
-  `{propext, Classical.choice, Quot.sound}` — **but its only `sorry`-free non-vacuous instance is the
-  trivial degree-0 witness** (`Witness.lean`: n=0, density ≡ 1). The `F.density` in the conclusion is a
-  free structure field, *not* pinned to the paper's Haar density (mathlib has no `p`-adic Haar measure).
-- The intended **real all-orders instance** `M9.montes_unconditional` is, *by its own docstring*,
-  currently **vacuous**: with the present order-0 `decode` every coefficient is identically 0
-  (density ≡ 0), it is **σ-independent** (passes the query σ as the distinguished σ₀), and it is gated
-  behind a hypothesis (`h_node`) that is **false** for the real instance — "conditional-on-a-false-
-  hypothesis: vacuously true, arithmetically empty." De-vacuification (decode repair so cells carry real
-  payloads + per-type σ-resolution) is the standing obligation.
-- **Palindromy is assumed, never proved on a real instance** — it enters only as `htameFE` / the
-  `realDensity_tame_functionalEquation` axiom, which on the current constant-0 instance holds trivially.
+What still separates the (non-vacuous, σ-keyed, order-0) capstone from the FULL theorem:
 
-**Bottom line for §2:** the genuine machine-checked content is the `p`-uniform rationality *machinery*
-plus the *order-0* real density theorem; the full palindromic all-orders per-type theorem is **not**
-non-vacuously established — the headline capstones are abstract conditionals whose only real instances
-are trivial or vacuous. `LeanUrat/AxChk_baseline.lean` (`lake build LeanUrat.AxChk_baseline`) prints the
+- **`htameFE` is a hypothesis, not yet discharged on the real instance.** Palindromy of the certified
+  density is conditional on the tame functional equation for `realF2`. It is machine-certified
+  NON-trivial (`gate_v2_htameFE_nontrivial`: the density is 1/3 > 0 at the tame prime 3), but its
+  honest discharge needs Phase B: tame-menu exhaustiveness + the M1 projective bridge, at which point
+  the Del Corso–Dvornicich cite can be declared faithfully (the retired axiom's intended content).
+- **Decided vs full density.** The certified value is the order-0-decided stratum density; the tie to
+  the full type-σ density is the bracket-uniqueness clause of `montes_unconditional_exhaustive`,
+  conditional on `hExhaust` (undecided normalized mass → 0) — open until the classifier drains
+  (Phase B; `Drainage.lean` shows the current classifier does not drain at any finite order).
+- **Order ≥ 1 wild content.** The current `omMenu` is the order-0 separable slice; deeper decided
+  shapes and the wild self-loop `h_node` legs (the `SelfLoopHNode` aggregate) re-enter as menu growth
+  in Phase B. The `F.density` of the abstract conditionals remains un-pinned to the paper's Haar
+  density (mathlib has no `p`-adic Haar measure) — the standing interpretive wall, carried honestly
+  as `hbridge` (discharged by `rfl` for the count-native real instance).
+
+**Bottom line for §2:** the machine-checked content is now the rationality machinery PLUS a
+non-vacuous, σ-dependent, core-only order-0 capstone through the full interface; the FULL palindromic
+all-orders per-type theorem still awaits Phase B (drainage, wild legs, faithful tame cite, projective
+normalization). `LeanUrat/AxChk_baseline.lean` (`lake build LeanUrat.AxChk_baseline`) prints the
 machine-checked per-theorem `#print axioms` — the ground truth for footprints, not this prose.
 
 ### The trusted base (the declared `axiom`s)
@@ -100,7 +108,14 @@ Each is an explicit `axiom` that faithfully ports one published result. Full aud
 | `AX_cellRecursion` | `PadicMeasure.lean` | Denef–Igusa *p*-adic Igusa-zeta **cell recursion** (the measure "wall") |
 | `clusterMeasure`, `omCells`, `descend`, `descend_size_lt` | `PadicMeasure.lean` | the measure-route OM-tree interface (dropped by the count-native capstone) |
 | `omReadValuation_lt_of_certLevel_fkeyed` | `OM/Classifier.lean` | GMN (Guàrdia–Montes–Nart, arXiv:0807.2620) **theorem of the index**, `ind(f) ≤ v_p(disc f)`, read-set-restricted, arising-key form |
-| `realDensity_tame_functionalEquation` | `OM/RealInstance.lean` | Del Corso–Dvornicich tame functional equation (tame `q > n` only) |
+
+**RETIRED (W4, 2026-07-21):** `realDensity_tame_functionalEquation` (Del Corso–Dvornicich tame
+functional equation) — deleted with the old capstone chain. It could not be faithfully retargeted to
+the corrected σ-keyed density (a partial monic decided density is non-palindromic in general; the old
+version was satisfied only vacuously by the constant-0 instance). The tame FE is now the capstone's
+explicit `htameFE` hypothesis, machine-certified non-trivial; the DCD cite returns at Phase B where
+exhaustiveness + the M1 projective bridge make it faithfully statable. Net: the count-native capstone
+footprint is Lean-core ONLY, and the trusted base is one axiom smaller.
 
 Faithfulness discipline (why these are trusted, not just asserted): every axiom is checked by a
 standing read-only "semantic guardian" agent under a triple test — (1) *statement-map both directions*
@@ -126,7 +141,7 @@ The math-language proof is `docs/HUMAN_PROOF.md` (13 sections). The Lean mirrors
 
 | math proof (`HUMAN_PROOF.md`) | Lean module(s) | content |
 |---|---|---|
-| §1, §13 Goal Theorem + assembly | `Goal.lean`, `Decomposition.lean` | the capstone + `countingDensity_eq_sum_coeff` |
+| §1, §13 Goal Theorem + assembly | `MontesV2.lean` (count-native spine), `Goal.lean` (measure route), `OM/RealInstanceV2.lean` (the real capstone) | the capstones + `countingDensity_eq_sum_coeff` (old `Decomposition.lean` quarantined at W4) |
 | §3 L1 Hensel splitting is measure-exact | `Interface.lean`, `Witness.lean` | the density foundation / measure interface |
 | §4 L3 residue-field shape counts are universal polynomials | `L3.lean`, `L3Gauss.lean`, `L3Squarefree.lean` | necklace/Gauss counts over 𝔽_q |
 | §5 L4 = BB1 Newton-polygon cell volume | `L4.lean` | `cellVolume_eq` — a characteristic-independent `q`-power (proved, not axiomatized) |
@@ -142,10 +157,12 @@ Two routes to the capstone are formalized (see `notes/SEMANTIC_AUDIT_LOG.md` / t
 
 - **Measure route** (`PadicMeasure` + `clusterVolume_rational`): full density = rational modulo the
   Denef cell-recursion axiom `AX_cellRecursion`. Complete but rests on the measure wall.
-- **Count-native route** (`OM/` + `MontesAllOrders` + `ConditionalDensity`): the wild content is moved
-  into explicit hypotheses so `goal_theorem_via_montes` itself is Lean-core-clean. **This is a
-  statement about the shape of the theorem, not a non-vacuity claim** — see §2: the only real instance
-  of those hypotheses is currently trivial/vacuous, and de-vacuifying it is the standing obligation.
+- **Count-native route** (`MontesV2` spine + `OM/` + `MontesAllOrders` + `ConditionalDensity` +
+  `OM/RealInstanceV2`): the wild content is moved into explicit hypotheses so the spine theorems are
+  Lean-core-clean, and — since the M9 rebase (W1–W4, 2026-07-21) — the spine has a **non-vacuous,
+  σ-keyed real instance** (`realF2`, order-0 decided stratum; §2). The residual vacuity is honestly
+  scoped to Phase B: the order-≥1 menu legs, drainage/exhaustiveness, and the `htameFE` discharge
+  remain open hypotheses, not instances.
 
 ### The OM subsystem (`LeanUrat/OM/`, the bulk of the work)
 
