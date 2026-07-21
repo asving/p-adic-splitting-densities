@@ -234,13 +234,20 @@ should not be conflated (this is the mistake an earlier draft of this document m
    tame-FE discharge (needs exhaustiveness + the M1 projective bridge).
    **Standing directive (Asvin, 2026-07-21): formalize WILD-case uniformity conditional on the
    Montes paper** (paper-stated results importable as axioms under the faithfulness discipline).
-   Active blueprint: `lean/notes/WILD_WAVE1_BLUEPRINT_2026-07-21.md` — Wave 1 (no new axiom
-   needed): σ-keyed constant-e ramified menus from the PROVED terminating order-1 shapes (the
-   "Tselfloop" misnomer family — genuinely wild, e.g. e=2 at p=2, counting limits banked);
-   Wave 2: declare `om_tree_unique` (GMN Thm 3.1/3.7 + Cor 3.8 + Lem 3.11(3) + Def 3.10 +
-   Cor 4.19) over the genuine per-f tree for semantic faithfulness of the σ-keying. Non-imports
-   with machine-checked reasons: finite-level drainage (FALSE of the truncated classifier —
-   `Drainage.lean`), residual equidistribution (no GMN counterpart — `notes/M6_lemma.md`).
+   Waves 1–2 LANDED (2026-07-21): Wave 1 (`notes/WILD_WAVE1_BLUEPRINT_2026-07-21.md`, audited
+   PASS 8/8) — the first machine-checked wild densities, no new axiom; Wave 2
+   (`notes/WILD_WAVE2_BLUEPRINT_2026-07-21.md`, guardian ACCEPT-WITH-FLAGS, flag 1 closed
+   same-day) — genuine (e,f) vocabulary (`OM/QpType.lean`: mathlib ramificationIdx/inertiaDeg via
+   the `LocalFactorData` bundle), the menu-scoped Montes-paper axiom `om_leaf_faithful`
+   (`OM/OmLeafFaithful.lean`; see the trusted-base table), the faithfulness theorems
+   (`menuFiber_hasType`: fiber members genuinely factor with type σ — core + the one axiom), and
+   the axiom-free Eisenstein guard (`OM/QpTypeEisenstein.lean`: e = deg, f = 1 proved; the
+   fine-(e,f) mutation machine-refuted). Density capstones remain Lean-core-only throughout.
+   Next waves (unstarted): the H-window menu extension (more terminating wild strata per type),
+   the multi-slope product layer (mixed-e types), the wall (H-tower resummation/exhaustiveness =
+   Denef, and order ≥ 2). Non-imports with machine-checked reasons: finite-level drainage (FALSE
+   of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
+   — `notes/M6_lemma.md`).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
    in progress (§4).
 3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.
