@@ -68,6 +68,7 @@ import LeanUrat.OM.QpTypeEisenstein
 import LeanUrat.OM.WildMenuW3
 import LeanUrat.OM.RealInstanceW3
 import LeanUrat.OM.RealInstanceW3Gates
+import LeanUrat.OM.QpTypeH3
 open LeanUrat
 
 -- Capstones
@@ -769,13 +770,22 @@ open LeanUrat
 -- — the ONE Wave-2 axiom: GMN Thm 1.15/1.19/Cor 1.20 (order-≤1 instances of Thm 3.1/3.7/Cor 3.8)
 -- + Def 3.10/eq.(37) + local-field structure theory (Serre I–II), packaged as LocalFactorData
 -- existence, MENU-FIBER-SCOPED (only over polynomials the level-N classifier ACTUALLY sends to the
--- σ-keyed omMenuW menu; no uniformity/rationality/measure/density term; non-imports: drainage,
--- equidistribution). Faithfulness theorems menuFiber_hasType / gateFiber_hasType /
+-- σ-keyed menu; no uniformity/rationality/measure/density term; non-imports: drainage,
+-- equidistribution). ★ RE-SCOPED W3c (2026-07-21, blueprint WILD_WAVE3 §2 item 4): the menu
+-- hypothesis is now (K : ℕ) (hT : T ∈ WildMenuW3.omMenuW3 n K σ) — the K-windowed menu, all
+-- admissible heights H = fSum σ·k, gcd(k, e) = 1; Cor 1.20 applies verbatim per window leg (same
+-- sideDeg = fSum σ, same all-μ=1 residual, keystone WildMenuW3.gcd_admissible); everything else
+-- byte-identical. The old (K = 1) form is now the THEOREM om_leaf_faithful_w1 (via omMenuW3_one),
+-- printing core + om_leaf_faithful EXACTLY, and consumers are re-pointed through it (statements
+-- UNCHANGED). Faithfulness theorems om_leaf_faithful_w1 / menuFiber_hasType / gateFiber_hasType /
 -- gate_axiom_coherent MUST print core + om_leaf_faithful EXACTLY. Probe legs
 -- (gate_mem_omMenuW, gateFiber_nonempty = the inhabited gate fiber at the concrete X²+2X+2, N=3)
 -- MUST be core-only. Mutation evidence (split-type mutation ⟹ False against
--- QpType.wildGateFiber_eisenstein) recorded in OM/OmLeafFaithful.lean (scratch not committed).
+-- QpType.wildGateFiber_eisenstein) recorded in OM/OmLeafFaithful.lean (scratch not committed);
+-- the W3c re-run of BOTH probes at the H = 3 window stratum is recorded in OM/QpTypeH3.lean
+-- (see the WILD WAVE 3c block at the bottom of this file).
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1
 #print axioms LeanUrat.OM.OmLeafFaithful.menuFiber_hasType
 #print axioms LeanUrat.OM.OmLeafFaithful.gate_mem_omMenuW
 #print axioms LeanUrat.OM.OmLeafFaithful.gateFiber_hasType
@@ -849,3 +859,52 @@ open LeanUrat
 -- modules only; nothing on the Wave-1 path was touched):
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+-- ★★★ WILD WAVE 3c (axiom re-scope + the H = 3 axiom-free anchor) (2026-07-21,
+-- notes/WILD_WAVE3_BLUEPRINT_2026-07-21.md §2 item 4). The declared axiom om_leaf_faithful is
+-- RE-SCOPED to the K-windowed menu (see the annotated WILD WAVE 2 block above — its entries
+-- re-print the re-scoped axiom + the derived K = 1 form om_leaf_faithful_w1 + the re-pointed
+-- consumers). OM/QpTypeH3.lean is the NEW axiom-free anchor at the H = 3 window leg
+-- (Tselfloop 2 ((0,3),(2,0)) [(1,1)] = ramShapeAt 2 {(2,1)} 3, the k = 3 admissible multiplier):
+-- wildH3_irreducible('') = the elementary two-root valuation contradiction (v(a₀) = 3,
+-- a₁ ∈ (p)² ⟹ ℚ_p-irreducible; NO Newton polygon); wildH3Fiber_valuation/_irreducible = the
+-- level-N (N ≥ 4) classifier-fiber link through classify_eq_selfloop_iff + the decode bridge;
+-- h3Fiber_nonempty = the inhabited H = 3 fiber (X² + 4X + 8 over ℤ_[2] at N = 5, InCell proved
+-- from the digit conditions — no banked N ≥ 4 gate existed); ef_of_wildH3/gate_h3_ef_forced =
+-- route (a), the PARITY argument (e·f = 2, e = 1 refuted by ϖ-divisibility in the DVR: y² =
+-- −(a₀ + a₁y) with orders 2k / exactly 3 / ≥ 2+k), forcing efOf = (2,1) for EVERY bundle on the
+-- H = 3 fiber. Both mutation probes RE-RUN against the RE-SCOPED hypotheses at H = 3 (split-type
+-- {(1,1),(1,1)} AND fine-swap {(1,2)} ⟹ machine-checked False; evidence blocks in
+-- OM/QpTypeH3.lean; scratches not committed). MUST all be Lean core ONLY (an axiom appearing
+-- here is a stop-the-line event):
+#print axioms LeanUrat.OM.QpTypeH3.sidePairs_h3Path
+#print axioms LeanUrat.OM.QpTypeH3.menuPath_h3
+#print axioms LeanUrat.OM.QpTypeH3.shapesFor_h3
+#print axioms LeanUrat.OM.QpTypeH3.ramShapeAt_h3
+#print axioms LeanUrat.OM.QpTypeH3.h3_mem_omMenuW3
+#print axioms LeanUrat.OM.QpTypeH3.mem_maximalIdeal_pow_of_le_zmodValuation
+#print axioms LeanUrat.OM.QpTypeH3.wildH3_irreducible'
+#print axioms LeanUrat.OM.QpTypeH3.wildH3_irreducible
+#print axioms LeanUrat.OM.QpTypeH3.wildH3Fiber_valuation
+#print axioms LeanUrat.OM.QpTypeH3.wildH3Fiber_irreducible
+#print axioms LeanUrat.OM.QpTypeH3.h3Poly_monic
+#print axioms LeanUrat.OM.QpTypeH3.h3Poly_natDegree
+#print axioms LeanUrat.OM.QpTypeH3.toBox_h3Poly
+#print axioms LeanUrat.OM.QpTypeH3.h3box_inCell
+#print axioms LeanUrat.OM.QpTypeH3.h3Fiber_nonempty
+#print axioms LeanUrat.OM.QpTypeH3.not_pow_succ_dvd_unit_mul_pow
+#print axioms LeanUrat.OM.QpTypeH3.ef_of_wildH3
+#print axioms LeanUrat.OM.QpTypeH3.gate_h3_ef_forced
+-- RE-PRINT (REQUIRED): the faithfulness theorems after the W3c re-scope — footprints MUST be
+-- core + om_leaf_faithful EXACTLY (nothing more, nothing less):
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1
+#print axioms LeanUrat.OM.OmLeafFaithful.menuFiber_hasType
+#print axioms LeanUrat.OM.OmLeafFaithful.gateFiber_hasType
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent
+-- RE-PRINT (REQUIRED): ALL FOUR density capstones (Waves 1 and 3) + the V2 capstone REMAIN
+-- Lean core ONLY after the W3c re-scope — om_leaf_faithful is consumed ONLY by the faithfulness
+-- theorems above; a wild-wave axiom appearing in ANY footprint below is a stop-the-line event:
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
