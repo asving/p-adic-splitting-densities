@@ -63,6 +63,7 @@ import LeanUrat.OM.WildMenu
 import LeanUrat.OM.WildMenuPrep
 import LeanUrat.OM.RealInstanceW
 import LeanUrat.OM.RealInstanceWGates
+import LeanUrat.OM.OmLeafFaithful
 open LeanUrat
 
 -- Capstones
@@ -760,3 +761,24 @@ open LeanUrat
 #print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_sigmaA_value
 #print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_sigmaB_value
 #print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_wild_sigma_separation
+-- ★★★ WILD WAVE 2 (om_leaf_faithful) (2026-07-21, notes/WILD_WAVE2_BLUEPRINT_2026-07-21.md §2 W2b/W2c)
+-- — the ONE Wave-2 axiom: GMN Thm 1.15/1.19/Cor 1.20 (order-≤1 instances of Thm 3.1/3.7/Cor 3.8)
+-- + Def 3.10/eq.(37) + local-field structure theory (Serre I–II), packaged as LocalFactorData
+-- existence, MENU-FIBER-SCOPED (only over polynomials the level-N classifier ACTUALLY sends to the
+-- σ-keyed omMenuW menu; no uniformity/rationality/measure/density term; non-imports: drainage,
+-- equidistribution). Faithfulness theorems menuFiber_hasType / gateFiber_hasType /
+-- gate_axiom_coherent MUST print core + om_leaf_faithful EXACTLY. Probe legs
+-- (gate_mem_omMenuW, gateFiber_nonempty = the inhabited gate fiber at the concrete X²+2X+2, N=3)
+-- MUST be core-only. Mutation evidence (split-type mutation ⟹ False against
+-- QpType.wildGateFiber_eisenstein) recorded in OM/OmLeafFaithful.lean (scratch not committed).
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.menuFiber_hasType
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_mem_omMenuW
+#print axioms LeanUrat.OM.OmLeafFaithful.gateFiber_hasType
+#print axioms LeanUrat.OM.OmLeafFaithful.gateFiber_nonempty
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent
+-- RE-PRINT (REQUIRED): the density capstones REMAIN Lean core ONLY — om_leaf_faithful is consumed
+-- ONLY by the faithfulness theorems above and must NOT enter the capstone cones (a wild-wave-2
+-- axiom appearing in either footprint below is a stop-the-line event):
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional

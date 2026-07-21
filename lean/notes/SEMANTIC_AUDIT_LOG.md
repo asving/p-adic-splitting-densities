@@ -850,3 +850,37 @@ statements verbatim-modulo-menu. Python brute-force cross-check exact on all anc
 claim ("fiber members' true ℚ_p factorization type is σ") awaits the `om_tree_unique` Montes-paper
 axiom + faithfulness theorem, per the standing directive (wild uniformity conditional on the Montes
 paper).
+
+---
+
+## 2026-07-21 — Wild Wave 2: `om_leaf_faithful` DECLARED (the Montes-paper types↔factors import)
+
+New axiom `OM/OmLeafFaithful.om_leaf_faithful` per the standing directive (wild uniformity
+conditional on the Montes paper) and `notes/WILD_WAVE2_BLUEPRINT_2026-07-21.md`. Content: for monic
+`f : ℤ_[p][X]` that the level-N classifier sends to a shape `T ∈ omMenuW n σ`, there EXISTS a
+`QpFactorization` (monic ℚ_p-irreducible factors, each with a `LocalFactorData` bundle carrying its
+genuine mathlib `ramificationIdx`/`inertiaDeg`) whose induced (e,f)-multiset is σ. Cite: GMN Thm
+1.15/1.19 + Cor 1.20 (+ Def 3.10/eq.(37)) jointly with the Serre-standard local-field structure the
+paper presupposes (DVR-ness of the integers of finite L/ℚ_p — unprovable at the mathlib pin; this
+existence is exactly what the axiom carries). Menu-fiber-scoped (arising-shape house form);
+existence-only; no uniformity/rationality/measure/density term; drainage and equidistribution
+remain deliberate NON-imports.
+
+Safety evidence at declaration (all machine-checked, on record in the module):
+- **Non-vacuity of the bundle type**: degree-1 witness (`L = ℚ_p`, `𝒪 = ℤ_p`) with (e,f) = (1,1)
+  PROVED (`QpType.trivialFactorData`).
+- **Axiom-free coherence layer**: the wild gate fiber (classify = Tselfloop, n=2) is PROVED
+  ℚ_p-irreducible with NO axiom (fiber ⟹ Eisenstein ⟹ irreducible; `wildGateFiber_eisenstein`).
+- **Mutation probe**: the split-type mutated variant + the concrete fiber witness
+  (`X² + 2X + 2` at N=3, via the banked `gate_S2C1`) derives `False` (scratch compiled, recorded,
+  deleted) — the (e,f) content of the conclusion is load-bearing, not decorative.
+- **Footprint containment**: census re-prints confirm both density capstones
+  (`montes_unconditional`, `montes_unconditional_w`) remain `[propext, Classical.choice,
+  Quot.sound]`; the axiom enters exactly the faithfulness cones (`menuFiber_hasType`,
+  `gateFiber_hasType`, `gate_axiom_coherent` = core + `om_leaf_faithful`).
+- Pre-declaration truth-scope check (module header): the minimal `0 < N` guard is sound — a
+  nonempty menu fiber forces `fSum σ < N` (support-dot valuations < N), the range where the banked
+  fiber characterizations exhibit the genuine stratum; below threshold the instance is vacuous.
+
+Guardian audit: PENDING (this entry records the declaration; the fresh-context audit verdict is
+appended separately and gates the push).
