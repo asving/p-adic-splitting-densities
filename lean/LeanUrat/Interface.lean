@@ -381,10 +381,12 @@ density `ρ`, not about an arbitrary `DensityFoundation.density`. The sound enco
 * this PREDICATE, consumed as an explicit HYPOTHESIS `htame : TameFunctionalEquation F n σ` by the
   Goal theorems (`Goal.goal_theorem`, `Goal.goal_theorem_montes`, `Goal.goal_theorem_via_montes`) —
   free-`F` statements carry it conditionally;
-* ONE concrete NAMED-CITE axiom about the REAL count-native density
-  (`OM.M9.realDensity_tame_functionalEquation`, RealInstance.lean), pinned to the genuine objects
-  (`shapesOf`/`clusterCount` over the real OM decomposition — no free `F`, no free `cells`), which
-  discharges `htame` for the capstone `montes_unconditional`;
+* (RETIRED, W4a 2026-07-21) the interim concrete NAMED-CITE axiom about the REAL count-native
+  density (`OM.M9.realDensity_tame_functionalEquation`) that discharged `htame` for the OLD vacuous
+  capstone is GONE with that capstone (blueprint D4; see
+  `quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`) — the current capstone
+  `RealInstanceV2.montes_unconditional` consumes this predicate as the explicit HYPOTHESIS
+  `htameFE`, so the trusted base carries NO tame axiom;
 * the coupled non-vacuity witness (`Witness.trivF_tame`) PROVES the predicate outright for the
   witness bundle (its density is the constant `1`), so the witness instance is now tame-axiom-free.
 

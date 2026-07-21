@@ -66,10 +66,11 @@ open LeanUrat
 #print axioms LeanUrat.Goal.goal_theorem_montes
 #print axioms LeanUrat.clusterVolume_rational
 -- (U1 fix 2026-07-02) the global `tame_functionalEquation` axiom is DELETED (it was FALSE-AS-STATED
--- over a free `F`); the tame input is now the hypothesis `TameFunctionalEquation` + the concrete
--- named cite below:
-#print axioms LeanUrat.OM.M9.realDensity_tame_functionalEquation
-#print axioms LeanUrat.OM.M9.montes_unconditional
+-- over a free `F`); the tame input is the hypothesis `TameFunctionalEquation`.
+-- (W4a 2026-07-21) the concrete named cite `M9.realDensity_tame_functionalEquation` and the old
+-- vacuous capstone `M9.montes_unconditional` are RETIRED (their census entries removed here) —
+-- superseded by the V2 chain, whose capstones now carry the canonical names (see the M9 REBASE V2
+-- block below and `quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`).
 #print axioms LeanUrat.Goal.goal_theorem_via_montes
 #print axioms LeanUrat.Witness.trivF_tame
 -- Phase-A order-0 capstone + supporting machinery (2026-07-02)
@@ -686,20 +687,21 @@ open LeanUrat
 --   Non-vacuous: montes_tame_realDensity_certified_value_pos > 0 (dominated by the order-1 gate). Core-only.
 #print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_of_exhaustive
 #print axioms LeanUrat.OM.TameRealDensity.montes_tame_realDensity_certified_value_pos
--- ★★★ M9 REBASE V2 (W2-W3) — the corrected σ-keyed capstone chain (notes/M9_REBASE_BLUEPRINT_2026-07-19.md).
+-- ★★★ M9 REBASE V2 (W2-W4a) — the corrected σ-keyed capstone chain (notes/M9_REBASE_BLUEPRINT_2026-07-19.md).
 -- W1: goal_theorem_montes_v2 / goal_theorem_via_montes_v2 = the Goal-layer siblings over the
--- abstract-coefficient MontesDataV2 (D2). W2: montes_unconditional_v2(_exhaustive) = the rebased
--- capstones over the REAL instance (realM2/realD2/realF2, C := omCount over the σ-keyed omMenu):
+-- abstract-coefficient MontesDataV2 (D2). W2 (renamed in W4a, 2026-07-21):
+-- RealInstanceV2.montes_unconditional(_exhaustive) — formerly montes_unconditional_v2(_exhaustive) —
+-- = THE capstones over the REAL instance (realM2/realD2/realF2, C := omCount over the σ-keyed omMenu):
 -- (R) uniform rationality + (V) decided-density tie UNCONDITIONAL; palindromy via the HYPOTHESIS
--- htameFE (D4 — the old axiom realDensity_tame_functionalEquation is NOT consumed), so the
+-- htameFE (D4 — the old axiom realDensity_tame_functionalEquation is RETIRED in W4a), so the
 -- footprints MUST be Lean core ONLY (an axiom appearing here is a stop-the-line event). W3 gates
 -- (RealInstanceV2Gates): G1 non-vacuity at the capstone's own density (inert n=2 menu sum = 1/4 > 0
 -- at realP, + the realM2 countingDensity pin), G2 σ-separation (split 1/9 ≠ inert 1/3 at q'=3;
 -- ramified menu ∅, sum 0 ≠ 1/4) — the V1/O1 reversals, machine-checked. MUST all be core-only:
 #print axioms LeanUrat.MontesV2.goal_theorem_montes_v2
 #print axioms LeanUrat.MontesV2.goal_theorem_via_montes_v2
-#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_v2
-#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_v2_exhaustive
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_exhaustive
 #print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_value_inert2
 #print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_nonvacuous
 #print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_countingDensity_inert2

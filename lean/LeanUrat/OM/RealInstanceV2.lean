@@ -13,7 +13,8 @@ import LeanUrat.OM.ConditionalDensity
 
 This module is **Wave 2 of `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`** (signed off 2026-07-19):
 the CORRECTED, σ-KEYED real instance of the V2 spine (`LeanUrat/MontesV2.lean`), replacing the
-vacuous `M9.montes_unconditional` chain (order-0 decode ≡ 0, σ-independent) with an instance whose
+old vacuous `M9.montes_unconditional` chain (order-0 decode ≡ 0, σ-independent; retired in W4a to
+`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`) with an instance whose
 per-shape coefficient is the corrected engine evaluator `OMCountV2.omCount` over the σ-keyed menu
 `OMCountV2.omMenu n σ` (= `Order0.sepShapesOf n σ` at R1).
 
@@ -29,12 +30,16 @@ Contents:
   `density m σ q' := ∑_{T ∈ omMenu m σ} omCount T q'` (UNGUARDED: nonnegativity is proved at
   EVERY natural `q'`, via the all-naturals necklace integrality `Necklace.necklaceQ_eq_natCast`);
   `decomposition` via the m×C split `omCount_eq_mul`.
-* `montes_unconditional_v2` — the W2 capstone (honesty block in its docstring).
-* `montes_unconditional_v2_exhaustive` — the bracket-uniqueness companion under `hExhaust`.
+* `montes_unconditional` — THE all-orders capstone (honesty block in its docstring; renamed from
+  `montes_unconditional_v2` in W4a, 2026-07-21, superseding the retired old vacuous
+  `M9.montes_unconditional`).
+* `montes_unconditional_exhaustive` — the bracket-uniqueness companion under `hExhaust` (renamed
+  from `montes_unconditional_v2_exhaustive` in W4a).
 
 Footprint gate (`AxCheck` section): both capstones must be Lean core ONLY — the tame functional
-equation is a HYPOTHESIS (`htameFE`), never the retired-in-W4 axiom
-`M9.realDensity_tame_functionalEquation` (blueprint D4).
+equation is a HYPOTHESIS (`htameFE`), never the axiom `M9.realDensity_tame_functionalEquation`
+(blueprint D4; RETIRED in W4a, 2026-07-21 — it no longer exists in the tree, see
+`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`).
 -/
 
 set_option linter.style.longLine false
@@ -367,8 +372,15 @@ noncomputable def realF2 : DensityFoundation where
 
 /-! ## 5. Block 3 — the W2 capstone -/
 
-/-- **`montes_unconditional_v2` — the rebased W2 capstone (blueprint §2, hypothesis-minimal
+/-- **`montes_unconditional` — THE all-orders capstone (blueprint §2, hypothesis-minimal
 form).**
+
+**SUPERSESSION (W4a, 2026-07-21).** Renamed from `montes_unconditional_v2`: this theorem now CARRIES
+the canonical capstone name, superseding the old vacuous `M9.montes_unconditional` (order-0 decode
+≡ 0, σ-independent, conditional on false-for-the-instance hypotheses), which is retired to
+`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt` together with the axiom
+`realDensity_tame_functionalEquation` (blueprint D4: the tame input is the HYPOTHESIS `htameFE`
+below; the footprint is Lean core ONLY — a net trusted-base reduction).
 
 **What this certifies** (for degree-`n` type `σ`, `n > 0`), firing the V2 Goal theorem
 `goal_theorem_montes_v2` at the corrected real instance `(realM2, realD2, realF2)`:
@@ -386,7 +398,7 @@ form).**
 **What this does NOT claim** (honesty block, blueprint §0):
 * NOT that `g_σ` is the FULL type-`σ` density `ρ(n,σ;q)`: `countingDensity` is the DECIDED limit;
   it equals the full density only given exhaustiveness/drainage of the undecided pool (see
-  `montes_unconditional_v2_exhaustive` for the honest bracket-uniqueness form; the classifier
+  `montes_unconditional_exhaustive` for the honest bracket-uniqueness form; the classifier
   does not drain at any finite order — Phase B);
 * NOT unconditional palindromy: the monic decided stratum is genuinely non-palindromic in
   general; palindromy here is exactly the content of the hypothesis `htameFE`;
@@ -397,7 +409,7 @@ Non-vacuity and σ-dependence are enforced against THIS instance by the W3 gates
 `1/4 > 0` at `n = 2` inert; O1-reversal σ-separation). `#print axioms` must be Lean core ONLY
 (see the `AxCheck` section): every tame/counting input is a hypothesis or a theorem, never an
 axiom. -/
-theorem montes_unconditional_v2 (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (hσ : σ.degree = n)
+theorem montes_unconditional (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (hσ : σ.degree = n)
     (htameFE : TameFunctionalEquation realF2 n σ) :
     ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
       (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
@@ -411,17 +423,19 @@ theorem montes_unconditional_v2 (n : ℕ) (hn : 0 < n) (σ : FactorizationType) 
 
 /-! ## 6. Block 4 — the exhaustive companion (bracket uniqueness) -/
 
-/-- **`montes_unconditional_v2_exhaustive` — the exhaustive companion (blueprint §2, W2 packaging
-refinement).** Adds the honest exhaustiveness input `hExhaust` (the normalized undecided mass
+/-- **`montes_unconditional_exhaustive` — the exhaustive companion of THE all-orders capstone
+(blueprint §2, W2 packaging refinement; renamed from `montes_unconditional_v2_exhaustive` in W4a,
+2026-07-21 — see the supersession note on `montes_unconditional`).**
+Adds the honest exhaustiveness input `hExhaust` (the normalized undecided mass
 drains: `undecidedCount N / realP^(nN) → 0` — TRUE-shaped, numerics-confirmed, Phase-B target;
 the classifier does NOT discharge it at any finite order) and concludes, on top of the
-`montes_unconditional_v2` clauses, the BRACKET-UNIQUENESS form of the full-density tie: any `d`
+`montes_unconditional` clauses, the BRACKET-UNIQUENESS form of the full-density tie: any `d`
 consistent with EVERY level-`N` bracket
 `[decidedMeasure σ N, decidedMeasure σ N + undecidedMeasure N]` (for `N ≥ 1`) equals
 `(realM2 n hn).countingDensity σ`. This is the only definable full-density tie short of the
 semantic wall (no formal "true factorization type of `f` over `ℚ_p`" exists to compare against);
 under `hExhaust` the bracket width vanishes, so the decided limit is the UNIQUE such `d`. -/
-theorem montes_unconditional_v2_exhaustive (n : ℕ) (hn : 0 < n) (σ : FactorizationType)
+theorem montes_unconditional_exhaustive (n : ℕ) (hn : 0 < n) (σ : FactorizationType)
     (hσ : σ.degree = n) (htameFE : TameFunctionalEquation realF2 n σ)
     (hExhaust : Filter.Tendsto
       (fun N => (realM2 n hn).undecidedCount N / (M9.realP : ℚ) ^ (n * N))
@@ -436,7 +450,7 @@ theorem montes_unconditional_v2_exhaustive (n : ℕ) (hn : 0 < n) (σ : Factoriz
         d ≤ (realM2 n hn).decidedCount σ N / (M9.realP : ℚ) ^ (n * N)
               + (realM2 n hn).undecidedCount N / (M9.realP : ℚ) ^ (n * N)) →
       d = (realM2 n hn).countingDensity σ := by
-  refine ⟨montes_unconditional_v2 n hn σ hσ htameFE, ?_⟩
+  refine ⟨montes_unconditional n hn σ hσ htameFE, ?_⟩
   intro d hd
   have hlim : Filter.Tendsto
       (fun N => (realM2 n hn).decidedCount σ N / (M9.realP : ℚ) ^ (n * N))
@@ -465,10 +479,10 @@ section AxCheck
 
 -- Blueprint W2/D4 gate: the V2 capstones' footprints must be Lean core ONLY
 -- (`propext, Classical.choice, Quot.sound` — fewer is fine, MORE is a stop-the-line event).
--- In particular the tame content enters as the HYPOTHESIS `htameFE`, and the retired-in-W4 axiom
--- `LeanUrat.OM.M9.realDensity_tame_functionalEquation` must NOT appear (importing the module that
--- declares it is fine; DEPENDING on it is failure).
-#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_v2
-#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_v2_exhaustive
+-- In particular the tame content enters as the HYPOTHESIS `htameFE`; the old axiom
+-- `LeanUrat.OM.M9.realDensity_tame_functionalEquation` was RETIRED in W4a (2026-07-21) and no
+-- longer exists in the tree (`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`).
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional_exhaustive
 
 end AxCheck

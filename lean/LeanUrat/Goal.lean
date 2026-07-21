@@ -147,9 +147,12 @@ rationality or palindromy — `g_σ` is an arbitrary function here), and NOT an 
 interpretive boundary, the same wall flagged in `Decomposition.wiring_assessment`. (ii) The tame
 functional equation `htameFE : TameFunctionalEquation F n σ` (U1 fix, 2026-07-02: previously a global
 axiom over free `F`, which was FALSE-AS-STATED and made the trusted base inconsistent; now an explicit
-hypothesis, discharged for the real instance by the concrete NAMED CITE
-`OM.M9.realDensity_tame_functionalEquation` and for the coupled witness by the PROVED
-`Witness.trivF_tame`). With both, L7's identity-theorem transfer carries `htameFE`'s palindromy onto
+hypothesis, PROVED for the coupled witness by `Witness.trivF_tame`. W4a, 2026-07-21: the interim
+concrete named cite `OM.M9.realDensity_tame_functionalEquation` that discharged it for the OLD vacuous
+capstone is RETIRED with that capstone — see
+`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`; the current capstone
+`RealInstanceV2.montes_unconditional` carries `htameFE` as an explicit hypothesis, so NO tame axiom
+remains in the tree). With both, L7's identity-theorem transfer carries `htameFE`'s palindromy onto
 `num/den`.
 
 `#print axioms goal_theorem_montes` shows dependence on exactly

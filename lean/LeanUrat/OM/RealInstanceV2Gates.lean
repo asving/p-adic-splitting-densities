@@ -14,7 +14,8 @@ import LeanUrat.OM.Order0Alpha
 This module is **Wave 3 of `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`** (§4-W3): the mandatory
 machine-checked gates pinned to the CORRECTED real V2 instance's own density
 `g_σ(q') := ∑_{T ∈ omMenu n σ} omCount T q'` — the exact sum appearing in the conclusion of the
-W2 capstone `RealInstanceV2.montes_unconditional_v2`.
+W2 capstone `RealInstanceV2.montes_unconditional` (named `montes_unconditional_v2` until the W4a
+swap, 2026-07-21).
 
 * **G1 (V1 reversal — non-vacuity at the capstone's own density).** At `n = 2`, the INERT type
   `unramType 2 (indiscrete 2)`, and the real prime `realP = 2`, the capstone's menu-sum density
@@ -93,7 +94,7 @@ theorem gate_v2_value_inert2 :
   exact Order0.gate_rootCount_inert2
 
 /-- **G1 (V1 reversal).** The V2 capstone's menu-sum density is STRICTLY POSITIVE at a concrete
-type: the corrected σ-keyed engine density certified by `montes_unconditional_v2` is NOT the
+type: the corrected σ-keyed engine density certified by `RealInstanceV2.montes_unconditional` is NOT the
 vacuous constant `0`. -/
 theorem gate_v2_nonvacuous :
     (0 : ℚ) < ∑ T ∈ OMCountV2.omMenu 2 (Order0.unramType 2 (Nat.Partition.indiscrete 2)),
