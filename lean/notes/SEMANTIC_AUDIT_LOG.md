@@ -884,3 +884,19 @@ Safety evidence at declaration (all machine-checked, on record in the module):
 
 Guardian audit: PENDING (this entry records the declaration; the fresh-context audit verdict is
 appended separately and gates the push).
+
+**Guardian audit verdict (2026-07-21, fresh context): ACCEPT-WITH-FLAGS — push cleared.**
+Triple test: STATEMENT-MAP PASS both directions (bundle demands exactly the GMN+Serre package;
+both menu branches' (e,f)-multisets faithful — order-0 via Hensel/Thm 1.15, wild via Cor 1.20 with
+the right-vertex forcing deg φ = 1; no smuggled uniformity/rationality/measure/uniqueness; the
+`0 < N`-only guard PROVABLY sound — `stratumCount_ramShape_smallN` closes the small-N wild hole,
+`classify_eq_sepShape_iff` covers order-0 at every level). MUTATION PASS (probe genuine; refutation
+cone free of the real axiom; `hT` confirmed load-bearing — dropping it makes the axiom blatantly
+false, as intended). NON-VACUITY PASS (gate fiber inhabited by the concrete `X²+2X+2`; order-0 leg
+inhabited; conclusion type inhabited; core-only capstone containment STRUCTURAL — no module imports
+OmLeafFaithful except the census).
+FLAGS on record: (1) fine-(e,f) swap ({(1,2)} vs {(2,1)}) not yet machine-refutable — value is
+math-forced by the proved Eisenstein condition but catching the mutation needs an axiom-free
+`eOf = deg` for Eisenstein bundles (the named follow-up); (2) mutation coverage is n=2-gate-local;
+general constant-e σ and the order-0 branch are cite-trusted; (3) `LocalFactorData` omits
+`eOf·fOf = finrank` — existence-only conclusion ⟹ no soundness exposure.
