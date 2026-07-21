@@ -900,3 +900,15 @@ math-forced by the proved Eisenstein condition but catching the mutation needs a
 `eOf = deg` for Eisenstein bundles (the named follow-up); (2) mutation coverage is n=2-gate-local;
 general constant-e σ and the order-0 branch are cite-trusted; (3) `LocalFactorData` omits
 `eOf·fOf = finrank` — existence-only conclusion ⟹ no soundness exposure.
+
+**FLAG 1 CLOSED (2026-07-21, same day): `OM/QpTypeEisenstein.lean`.** Axiom-free
+`ef_of_eisenstein`: for monic Eisenstein `g` and ANY `LocalFactorData p g`, `eOf = g.natDegree ∧
+fOf = 1` — full equality on both coordinates (route: root descends to the integral closure, the
+Eisenstein unit identity `y^(m+1) = p·unit` pins `map(pℤ_p) = m_O^(k·n)` exactly via
+`ramificationIdx_spec`, and `Ideal.ramificationIdx_mul_inertiaDeg_of_isLocalRing` collapses k = 1).
+Gate corollary `gate_ef_forced : efOf = (2,1)` for every bundle on a gate-fiber member, stated
+WITHOUT the axiom. The fine-(e,f)-swap mutation ({(1,2)} at the gate — which passed the old
+count-only probe) now machine-derives `False`; refutation cone free of the real axiom; scratch
+recorded and deleted. 12 new declarations + census, all core-only, zero regression. The wild
+branch's (e,f) payload at the gate is now MACHINE-GUARDED, not cite-trusted. FLAGS 2–3 unchanged
+(probe coverage gate-local; bundle e·f-coherence rests on the pinned integral closure).

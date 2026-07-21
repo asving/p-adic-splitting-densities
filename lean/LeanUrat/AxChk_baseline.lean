@@ -64,6 +64,7 @@ import LeanUrat.OM.WildMenuPrep
 import LeanUrat.OM.RealInstanceW
 import LeanUrat.OM.RealInstanceWGates
 import LeanUrat.OM.OmLeafFaithful
+import LeanUrat.OM.QpTypeEisenstein
 open LeanUrat
 
 -- Capstones
@@ -780,5 +781,30 @@ open LeanUrat
 -- RE-PRINT (REQUIRED): the density capstones REMAIN Lean core ONLY — om_leaf_faithful is consumed
 -- ONLY by the faithfulness theorems above and must NOT enter the capstone cones (a wild-wave-2
 -- axiom appearing in either footprint below is a stop-the-line event):
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+-- ★★★ WILD WAVE 2 FLAG-1 (2026-07-21, guardian-audit follow-up) — the AXIOM-FREE Eisenstein
+-- (e,f) theorem (OM/QpTypeEisenstein.lean): for monic Eisenstein g of positive degree, EVERY
+-- LocalFactorData bundle has eOf = deg g and fOf = 1 (root descends to O; y^n = p·unit forces
+-- map(p·ℤ_p) = m_O^(k·n) hence e = k·n by ramificationIdx_spec; e·f = [L:ℚ_p] = n collapses
+-- k = 1, f = 1). Gate corollary gate_ef_forced: the Wave-1 wild gate fiber forces efOf = (2,1)
+-- for every bundle — the fine-(e,f) swap mutation {(1,2)} (singleton type, INVISIBLE to the old
+-- factor-count probe) now derives False (evidence block in OM/QpTypeEisenstein.lean; scratch not
+-- committed). MUST all be Lean core ONLY (an axiom appearing here is a stop-the-line event):
+#print axioms LeanUrat.OM.QpTypeEisenstein.isUnit_add_of_mem_maximalIdeal
+#print axioms LeanUrat.OM.QpTypeEisenstein.ef_of_eisenstein
+#print axioms LeanUrat.OM.QpTypeEisenstein.eOf_of_eisenstein
+#print axioms LeanUrat.OM.QpTypeEisenstein.fOf_of_eisenstein
+#print axioms LeanUrat.OM.QpTypeEisenstein.efOf_of_eisenstein
+#print axioms LeanUrat.OM.QpTypeEisenstein.gate_ef_forced
+#print axioms LeanUrat.OM.QpTypeEisenstein.gate_eOf_forced
+-- non-vacuity gate (U1 lesson): the theorem's hypothesis set is inhabited (g = X + p, trivial
+-- bundle) and fires with the correct value (1,1):
+#print axioms LeanUrat.OM.QpTypeEisenstein.isEisensteinAt_X_add_p
+#print axioms LeanUrat.OM.QpTypeEisenstein.eisWitnessData
+#print axioms LeanUrat.OM.QpTypeEisenstein.eisWitness_ef
+#print axioms LeanUrat.OM.QpTypeEisenstein.efOf_mem_qpType
+#print axioms LeanUrat.OM.QpTypeEisenstein.qpType_singleton_forces
+-- RE-PRINT (REQUIRED): the density capstones REMAIN Lean core ONLY after the FLAG-1 wave:
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
