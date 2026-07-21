@@ -912,3 +912,34 @@ count-only probe) now machine-derives `False`; refutation cone free of the real 
 recorded and deleted. 12 new declarations + census, all core-only, zero regression. The wild
 branch's (e,f) payload at the gate is now MACHINE-GUARDED, not cite-trusted. FLAGS 2–3 unchanged
 (probe coverage gate-local; bundle e·f-coherence rests on the pinned integral closure).
+
+---
+
+## 2026-07-21 — Wild Wave 3 (H-window): capstone extension + `om_leaf_faithful` RE-SCOPE
+
+**Waves 3a/3b (no trusted-base change):** `omMenuW3 n K σ` — the K-windowed menu (admissible heights
+H = fSumσ·k, gcd(k,e)=1; keystone `gcd_admissible`: gcd(F·k, F·e) = F); capstone
+`montes_unconditional_w3 (n K)` verbatim-modulo-menu, K=1 recovering Wave 1 exactly
+(`montes_w3_one_recovers`, strong countingDensity form). Machine-checked window values at n=2, p=2:
+K=3 certifies 9/64 = 1/8 + 1/64 through the real instance, with STRICT growth 1/8 < 9/64
+(`gate_w3_growth`) — the certified windows approach the tower value 1/7 from below (Python:
+73/512 < 1/7 at K=5), the tower itself remaining the honest un-imported wall. External brute force
+exact on all six new strata anchors ((p−1)/p⁶, (p−1)/p⁹). All wave footprints core-only; census
+purely additive.
+
+**Wave 3c — the axiom re-scope (statement change; guardian re-audit ACCEPT-WITH-FLAGS, push
+cleared):** `om_leaf_faithful`'s menu hypothesis widened to `(K : ℕ) (hT : T ∈ omMenuW3 n K σ)` —
+a sound strict generalization: every window leg is single-slope all-μ=1 with sideDeg = fSum σ and
+k-INDEPENDENT (e,f) reading (the gcd(k,e)=1 filter is exactly what pins ramification e), so GMN
+Cor 1.20 applies verbatim per leg; guard soundness per leg via the H-generic small-N emptiness +
+vertex/residual exactness at N > F·k (deeper digits cannot change the pinned polygon); K-universal
+≡ the monotone union, with NO μ≥2/resummation content (ramShapes3 emits only all-μ=1 literals).
+Old form derived back (`om_leaf_faithful_w1`); consumers byte-unchanged, core+axiom footprints.
+NEW axiom-free anchors at H=3 (`OM/QpTypeH3.lean`): elementary two-root irreducibility (no Newton
+polygon), the fiber link with EXACT valuation pinning, `h3Fiber_nonempty` (X²+4X+8 at N=5), and
+`ef_of_wildH3` — (e,f) = (2,1) at the NON-Eisenstein H=3 stratum via ϖ-order parity (e=1 refuted:
+2k / exactly-3 / ≥2+k orders incompatible). BOTH mutation probes re-fired at H=3 (split-type and
+fine-swap ⟹ machine-checked False; real axiom absent from cones; scratches recorded + deleted).
+FLAGS: docs lag fixed this commit; standing W2 flags 2–3 carried (general-σ multi-factor residual
+faithfulness cite-trusted beyond the machine anchors; bundle e·f-coherence via the pinned integral
+closure).
