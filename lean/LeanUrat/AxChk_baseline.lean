@@ -59,6 +59,10 @@ import LeanUrat.MontesV2
 import LeanUrat.OM.RealInstanceV2Prep
 import LeanUrat.OM.RealInstanceV2
 import LeanUrat.OM.RealInstanceV2Gates
+import LeanUrat.OM.WildMenu
+import LeanUrat.OM.WildMenuPrep
+import LeanUrat.OM.RealInstanceW
+import LeanUrat.OM.RealInstanceWGates
 open LeanUrat
 
 -- Capstones
@@ -724,3 +728,35 @@ open LeanUrat
 -- q > n; this pins realF2.density > 0 at the tame prime 3 (inert n=2, value 1/3), so the capstone's
 -- palindromy hypothesis constrains a genuinely NONZERO rational function (num = 0 witness excluded):
 #print axioms LeanUrat.OM.RealInstanceV2Gates.gate_v2_htameFE_nontrivial
+-- ★★★ WILD WAVE 1 (2026-07-21, notes/WILD_WAVE1_BLUEPRINT_2026-07-21.md) — the σ-keyed WILD menu:
+-- omMenuW n σ = sepShapesOf n σ ∪ (ramShape n σ).toFinset, with constant-e ramified σ carrying the
+-- ONE canonical minimal-H terminating Tselfloop stratum (the PROVED order-1 counting legs; NO new
+-- axiom — the ramified leg is the banked THEOREM hnode_selfloop_over_Bclassify_R). Capstones
+-- RealInstanceW.montes_unconditional_w(_exhaustive) = statements VERBATIM the V2 capstones with
+-- omMenuW for omMenu, fired at (realMW, realDW, realFW). HONEST SCOPE: the certified ramified value
+-- is the MINIMAL-H canonical-stratum density (the leading term of the type's density), NOT the
+-- H-tower sum; mixed-e types / order ≥ 2 / exhaustiveness NOT covered. Gates: G1W first wild
+-- non-vacuity (ramType2 = ⟨{(2,1)}⟩ menu-sum = (p−1)·p⁻³ at every prime, = 1/8 at realP, > 0; the
+-- V2 value of the SAME type was 0 — genuine de-vacuification; instance pin countingDensity = 1/8);
+-- G2W σ-separation (ramified 1/8 ≠ inert 1/4; n=4 constant-e pair ⟨{(2,1),(2,1)}⟩ vs ⟨{(2,2)}⟩ →
+-- 0 vs 1/256, the honest-empty pattern shapeCount_split_two machine-checked); G4W mutation
+-- (C := 0 copy fails to compile — evidence block in OM/RealInstanceWGates.lean). MUST all be
+-- Lean core ONLY (an axiom appearing here is a stop-the-line event):
+#print axioms LeanUrat.OM.WildMenu.eq_of_mem_omMenuW
+#print axioms LeanUrat.OM.WildMenu.omMenuW_ram_of_constE
+#print axioms LeanUrat.OM.WildMenuPrep.sum_stratumCount_le_box_W
+#print axioms LeanUrat.OM.WildMenuPrep.normSum_omMenuW_mono
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceWGates.omCount_Tselfloop_closed
+#print axioms LeanUrat.OM.RealInstanceWGates.constERam_ramType2
+#print axioms LeanUrat.OM.RealInstanceWGates.omMenuW_ramType2
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w1_omCount_value
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w1_value
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w1_nonvacuous
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w1_countingDensity
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_inert_value
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_ram_vs_inert
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_sigmaA_value
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_sigmaB_value
+#print axioms LeanUrat.OM.RealInstanceWGates.gate_w2_wild_sigma_separation

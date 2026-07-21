@@ -20,4 +20,7 @@ import LeanUrat.Witness
 import LeanUrat.CountingModel
 import LeanUrat.MontesAxiom
 import LeanUrat.NestedCollapse
-import LeanUrat.Decomposition
+-- (W4b, 2026-07-21) LeanUrat.Decomposition RETIRED to quarantine/MontesData_oldSpine_2026-07-21
+-- .lean.txt with the whole old-`MontesData` spine; the V2 siblings live in LeanUrat.MontesV2
+-- (imported transitively via LeanUrat.Witness).
+import LeanUrat.MontesV2
