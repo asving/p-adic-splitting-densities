@@ -210,16 +210,22 @@ order ≥ 2 → tower reader) makes the "classify = Montes tree" coincidence hon
 Three distinct gaps separate the current Lean from a machine-checked proof of the full theorem; they
 should not be conflated (this is the mistake an earlier draft of this document made):
 
-1. **Non-vacuity / the density instance — SUBSTANTIALLY CLOSED at order 0 (2026-07-19).** The
-   V2 rebase (§2, `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`) delivers a non-vacuous, σ-keyed,
-   Goal-firing real instance and capstone (`montes_unconditional_v2`, Lean-core-only footprint),
-   with V1 (density ≡ 0) and O1 (σ-independence) both reversed by machine-checked gates. The OLD
-   vacuous `M9.montes_unconditional` + its `clusterCount` bridge still exist pending the
-   signed-off W4 swap (rename v2 → `montes_unconditional`, quarantine the old chain, RETIRE the
-   axiom `realDensity_tame_functionalEquation` — a trusted-base reduction). Remaining density
-   content beyond order 0 is Phase B: menu growth (deeper decided shapes), the wild self-loop
-   `h_node` legs, exhaustiveness/drainage (`hExhaust`), and the faithful tame-FE discharge
-   (needs exhaustiveness + the M1 projective bridge).
+1. **Non-vacuity / the density instance — CLOSED at order 0 (M9 rebase W1–W4, 2026-07-21).** The
+   V2 rebase (§2, `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`) delivered the non-vacuous, σ-keyed,
+   Goal-firing capstone `montes_unconditional` (Lean-core-only footprint), V1/O1 both reversed by
+   machine-checked gates; the W4 swap executed (old chain quarantined, tame axiom RETIRED).
+   Remaining density content beyond order 0 is Phase B: menu growth (deeper decided shapes), the
+   recursive wild self-loop `h_node` legs, exhaustiveness/drainage (`hExhaust`), and the faithful
+   tame-FE discharge (needs exhaustiveness + the M1 projective bridge).
+   **Standing directive (Asvin, 2026-07-21): formalize WILD-case uniformity conditional on the
+   Montes paper** (paper-stated results importable as axioms under the faithfulness discipline).
+   Active blueprint: `lean/notes/WILD_WAVE1_BLUEPRINT_2026-07-21.md` — Wave 1 (no new axiom
+   needed): σ-keyed constant-e ramified menus from the PROVED terminating order-1 shapes (the
+   "Tselfloop" misnomer family — genuinely wild, e.g. e=2 at p=2, counting limits banked);
+   Wave 2: declare `om_tree_unique` (GMN Thm 3.1/3.7 + Cor 3.8 + Lem 3.11(3) + Def 3.10 +
+   Cor 4.19) over the genuine per-f tree for semantic faithfulness of the σ-keying. Non-imports
+   with machine-checked reasons: finite-level drainage (FALSE of the truncated classifier —
+   `Drainage.lean`), residual equidistribution (no GMN counterpart — `notes/M6_lemma.md`).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
    in progress (§4).
 3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.
