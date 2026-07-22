@@ -8,6 +8,7 @@ import LeanUrat.OM.QpType
 import LeanUrat.OM.WildMenuW3
 import LeanUrat.OM.MultiSlopeMenu
 import LeanUrat.OM.QpTypeChain
+import LeanUrat.OM.ChainMenu6
 
 /-!
 # OmLeafFaithful — the Montes-paper semantic axiom `om_leaf_faithful` (Wave 2b,
@@ -18,7 +19,10 @@ dispatch `fiberOf4`, per `notes/WILD_WAVE4_BLUEPRINT_2026-07-22.md` §W4c; **RE-
 2026-07-22, Wave 5c — scope #4** to the depth-windowed chain menu `ChainMenu.omMenu5` with the
 three-family fiber dispatch `fiberOf5`, per `notes/WILD_WAVE56_BLUEPRINT_2026-07-22.md` §2-W5c,
 after completion of the boundary-#5 lift-invariance pin
-`notes/GMN_citations.md` §"Lift/representative invariance — pin (P4)" — the DECLARATION GATE)
+`notes/GMN_citations.md` §"Lift/representative invariance — pin (P4)" — the DECLARATION GATE;
+**RE-SCOPED AGAIN 2026-07-22, Wave 6c — scope #5** to the depth-0-widened menu
+`ChainMenu6.omMenu6` — a pure MENU widening, fiber dispatch `fiberOf5` and conclusion
+byte-identical — per `notes/WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3)
 
 Wave 1's σ-keying is DEFINITIONAL (`WildMenu.typeOfW` reads `(e,f)` off shape literals); Wave 2a
 (`OM/QpType.lean`) built the genuine ℚ_p-factorization vocabulary (`LocalFactorData`,
@@ -103,6 +107,20 @@ frame, composed back by the PROVED translation lemma `QpTypeChain.qpType_transla
 The depth-1 chain-gate axiom-free anchor + the W5c mutation probes live in
 `OM/QpTypeChain.lean` (`chainGate_irreducible`, `chainGate_ef_forced`); the positive coherence
 check at the chain gate is `chainGate_axiom_coherent` below.
+
+**W6c change record (2026-07-22, scope #5)**: the menu hypothesis is re-scoped from
+`(D K : ℕ) … T ∈ ChainMenu.omMenu5 n D K σ` to `(D K : ℕ) … T ∈ ChainMenu6.omMenu6 n D K σ`
+(the W5 menu ∪ the depth-0 leaf literals `chainLit [] leaf`, `leaf ∈ chainLeaves K σ`,
+`n = 2` only — `ChainMenu6.chainShapes0`, the `chainShapes` emission without the `ms ≠ []`
+filter); the fiber hypothesis `fiberOf5` and the conclusion are BYTE-IDENTICAL (`fiberOf5`
+already dispatches chain-headed literals — including the new depth-0 ones — to
+`ChainMenu.ChainCell (decodeMs T) (decodeLeaf T)`, which at `ms = []` is the `LeafPair`
+digit fiber the W6 full model counts). The W5 form survives as the derived THEOREM
+`om_leaf_faithful_w5` (menu leg `ChainMenu6.omMenu5_subset_omMenu6`; fiber leg verbatim),
+and the W4/W3/W2 chains keep deriving as before, so all consumers compile unchanged. The
+per-literal GMN statement map for the three depth-0 literal kinds is in the axiom docstring
+below (blueprint `WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3 — the declaration-gate content for
+the new instances).
 -/
 
 set_option linter.style.longLine false
@@ -215,11 +233,13 @@ carries, cf. `OM/QpType.lean` header and `notes/GMN_citations.md` §§1–2).**
 **MENU-FIBER-SCOPED** (the arising-shape restriction — the house discipline of
 `B.omReadValuation_lt_of_certLevel_fkeyed`): quantified ONLY over genuine monic `f : ℤ_[p][X]`
 that the level-`N` classifier ACTUALLY sends into the `fiberOf5`-fiber of a shape `T` of the
-CURRENT Wave-5 σ-keyed menu `ChainMenu.omMenu5 n D K σ` (order-0 separable `sepShape`s ∪
+CURRENT Wave-6 σ-keyed menu `ChainMenu6.omMenu6 n D K σ` (order-0 separable `sepShape`s ∪
 the constant-e `Tselfloop` window strata at all admissible heights `H = fSum σ · k`,
 `gcd(k, e) = 1`, `1 ≤ k ≤ K`, ∪ — for mixed-all-e≥2 σ — the ONE canonical multi-slope literal
 `multiSideLit n (mixedPath σ) (mixedSh σ)`, ∪ — at `n = 2` ONLY — the depth-`≤ D` descent
-chains `chainLit ms leaf` with leaf keyed to σ; nothing else; ∀ D K). A nonempty fiber forces
+chains `chainLit ms leaf` with leaf keyed to σ, ∪ — at `n = 2` ONLY, NEW (W6c) — the depth-0
+leaf literals `chainLit [] leaf` with `leaf ∈ ChainMenu.chainLeaves K σ`; nothing else;
+∀ D K). A nonempty fiber forces
 the level past the shape's own decision threshold (module docstring; small-N emptiness =
 `WildMenuW3.stratumCount_ramShapeAt_smallN` resp. `MultiSlopeMenu.stratumCount4_mixed_smallN`
 resp. `ChainMenu.card_chainCell_smallN` for the chain branch — below the threshold
@@ -264,6 +284,47 @@ fiber as the genuine Ore/GMN stratum:
   of the same proved lemma). The AXIOM-FREE depth-1 anchor `QpTypeChain.chainGate_irreducible`
   + `chainGate_ef_forced` machine-checks exactly this composite at the `ms = [1]`, `ram 1`
   gate: fiber ⟹ `f` irreducible over ℚ_p with EVERY bundle forced to `(e,f) = (2,1)`.
+* NEW (W6c), the `n = 2` DEPTH-0 leaf literals `chainLit [] leaf`, `leaf ∈ chainLeaves K σ`
+  (`ChainMenu6.chainShapes0` — the scope-#5 menu widening; `fiberOf5` dispatches them, via
+  `decodeMs`/`decodeLeaf`, to `ChainCell [] leaf`, i.e. the `LeafPair leaf` digit fiber at
+  the ROOT frame `(N, N)` — no recentering step, no lift choice; these are formally NEW
+  digit-form fiber predicates for the axiom, so their GMN statement map is displayed PER
+  LITERAL (blueprint `WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3, the declaration-gate content
+  for the new instances):
+  - **`chainLit [] (ram H)`** (`H` odd, `leafOK`): the `LeafPair` conditions `v(b₀) = H`
+    EXACT (box dvd + nonzero digit at `H`, readable since `leafNeed = H + 1 ≤ L₀`) and
+    `v(b₁) ≥ (H+1)/2` pin the principal Newton polygon of `y² + b₁y + b₀` to the single side
+    `(0,H)–(2,0)`: the middle dot `(1, v(b₁))` lies strictly above it since
+    `v(b₁) ≥ (H+1)/2 > H/2`. Slope `−H/2` with `gcd(H, 2) = 1` ⟹ `d(S) = 1`: **Cor 1.20**
+    gives exactly one irreducible factor with `(e,f) = (2,1)`. This is the same Cor-1.20
+    reading the W1/W3 window legs receive (there routed through the classify-fiber
+    characterization; here directly from the digits) — same cited theorem, new instance
+    form; guarded by the W6c-a all-fiber ram master (R) at ALL odd `H` (strictly stronger
+    than the banked `H ∈ {1, 3}` anchors).
+  - **`chainLit [] (inert m)`** (`m ≥ 1`): `v(b₀) = 2m` exact (the root-free pair's first
+    digit is nonzero — `noRootPairs_fst_ne_zero`), `v(b₁) ≥ m`: single side `(0,2m)–(2,0)`
+    of slope `−m = −m/1` in lowest terms ⟹ `e = 1`, side degree 2, residual = the digit
+    quadratic `z² + w̄₁z + w̄₀`, root-free hence irreducible: **Thm 1.19 + Cor 1.20** give
+    one leaf with `(e,f) = (1,2)`. Guarded by the W6c-a all-fiber inert master (I).
+  - **`chainLit [] (split k)`** (`k ≥ 1`): `v(b₁) = k` exact (with nonzero digit, so
+    `b₁ ≠ 0`), `v(b₀) ≥ 2k+1`, readability gate `2k+1 ≤ L₀`. Case `b₀ ≠ 0`: polygon
+    vertices `(0, v(b₀))–(1, k)–(2, 0)` with DISTINCT slopes (left side slope
+    `−(v(b₀) − k) ≤ −(k+1) < −k` = right side slope): **Thm 1.15** dissects into two
+    coprime width-1 (hence linear) blocks, each `(e,f) = (1,1)`. Case `b₀ = 0` (ADMITTED by
+    the fiber): `g = y·(y + b₁)` factors LITERALLY into two linear (hence `(1,1)`) factors
+    — the GMN reading applies via the standard split-off of the x-power factor (the paper's
+    `f = x^{ord₀ f}·f′` convention) and the width-1 side `(1,k)–(2,0)` for `f′`; no finite
+    point `(0, v(b₀))` exists and none is needed. Both cases guarded by the W6c-a split
+    master (S), whose proof uses only `v(b₀) ≥ 2k+1` (`w₀ = 0` allowed) — indeed for split
+    literals the certificate is PROVED outright (axiom-free) and the axiom instance is
+    REDUNDANT in consumers (kept in the menu for uniform emission).
+  Ram/inert existence for the new literals rests on the axiom exactly as every
+  irreducible-leaf leg has since W2 (the Serre `LocalFactorData` carrier); "no new citation"
+  means: same cited theorems (Thm 1.15/1.19/Cor 1.20 + the carrier), new INSTANCES,
+  statement-mapped above. Translate (`c = 1`) coverage is deliberately NOT in the axiom —
+  the (P4d) discipline: the paper states no translation form, so none may enter; translate
+  coverage is DERIVED (blueprint §1.3, the PROVED `QpTypeChain.qpType_translate_rescale` at
+  `a = 1`).
 
 **W4c re-scope record (2026-07-22, blueprint `WILD_WAVE4` §W4c; third scope)**: hypothesis
 `hT` re-scoped from `T ∈ WildMenuW3.omMenuW3 n K σ` to `T ∈ MultiSlopeMenu.omMenu4 n K σ`, and
@@ -280,6 +341,21 @@ and hypothesis `hfib` from `fiberOf4` to the three-family dispatch `fiberOf5`; e
 byte-identical. The W4 instance is EXACTLY the previously accepted W4c form (derived below as
 `om_leaf_faithful_w4` — menu leg `ChainMenu.omMenu5_zero` at `D = 0`, fiber leg definitional
 via `fiberOf5_notChain` + `ChainMenu.headOrd_of_mem_omMenu4`).
+
+**W6c re-scope record (2026-07-22, blueprint `WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3;
+scope #5)**: hypothesis `hT` re-scoped from `(D K : ℕ) … T ∈ ChainMenu.omMenu5 n D K σ` to
+`(D K : ℕ) … T ∈ ChainMenu6.omMenu6 n D K σ` — a pure MENU widening: the new members are
+exactly the depth-0 leaf literals `{chainLit [] leaf : leaf ∈ chainLeaves K σ}` (`n = 2`
+only, σ-keyed, window `K`; `ChainMenu6.chainShapes0` = the `chainShapes` emission without
+the `ms ≠ []` filter). Hypothesis `hfib` is BYTE-IDENTICAL (`fiberOf5` already dispatches
+chain-headed literals, including the depth-0 ones, to `ChainMenu.ChainCell (decodeMs T)
+(decodeLeaf T)`; at `ms = []` that is the `LeafPair leaf` digit fiber — the EXACT fiber the
+W6 full model counts at depth 0), and the conclusion is byte-identical. The W5 instance is
+EXACTLY the previously accepted W5c form (derived below as `om_leaf_faithful_w5` — menu leg
+`ChainMenu6.omMenu5_subset_omMenu6`, fiber leg verbatim); the W4/W3/W2 chains keep deriving
+as before. Anti-vacuity of the new legs: below the leaf threshold (`L₀ < leafNeed leaf`) the
+depth-0 fiber is EMPTY (`ChainMenu.chainPair_empty` at `ms = []`, i.e. `leafPair_empty`);
+nonemptiness witnesses + mutation probes at the new legs are task W6c-d.
 
 **NO uniformity / rationality / measure / density term appears in the statement** (existence
 only; no uniqueness clause — consumers need none). Deliberate NON-imports (blueprint §2 W2b,
@@ -299,12 +375,28 @@ stratum (n = 2, `ms = [1]`, `ram 1`, σ = {(2,1)}) after the W5c re-scope (split
 `chainGate_axiom_coherent`. -/
 axiom om_leaf_faithful (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
     (σ : FactorizationType) (T : ClusterShape) (D K : ℕ)
-    (hT : T ∈ ChainMenu.omMenu5 n D K σ)
+    (hT : T ∈ ChainMenu6.omMenu6 n D K σ)
     (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
     (hfib : fiberOf5 p n N hN T f hf hdeg) :
     ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ
 
-/-- **The Wave-4c form of the axiom, now a THEOREM** (W5c re-scope, 2026-07-22): the
+/-- **The Wave-5c form of the axiom, now a THEOREM** (W6c re-scope, 2026-07-22): the
+previously accepted `om_leaf_faithful` statement over the depth-windowed chain menu
+`ChainMenu.omMenu5 n D K σ` with the `fiberOf5` dispatch is an instance of the re-scoped
+axiom — the menu leg by the recovery inclusion `ChainMenu6.omMenu5_subset_omMenu6` (the W6
+menu is the W5 menu ∪ the depth-0 leaf literals), the fiber leg VERBATIM (`hfib` was not
+re-scoped). Every W5c consumer keeps compiling against this form. -/
+theorem om_leaf_faithful_w5 (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
+    (σ : FactorizationType) (T : ClusterShape) (D K : ℕ)
+    (hT : T ∈ ChainMenu.omMenu5 n D K σ)
+    (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
+    (hfib : fiberOf5 p n N hN T f hf hdeg) :
+    ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ :=
+  om_leaf_faithful p n N hN σ T D K
+    (ChainMenu6.omMenu5_subset_omMenu6 n D K σ hT) f hf hdeg hfib
+
+/-- **The Wave-4c form of the axiom, now a THEOREM** (W5c re-scope, 2026-07-22; routed
+through the derived W5 form `om_leaf_faithful_w5` since the W6c re-scope): the
 previously accepted `om_leaf_faithful` statement over the mixed-e menu
 `MultiSlopeMenu.omMenu4 n K σ` with the `fiberOf4` dispatch is an instance of the re-scoped
 axiom — the menu leg by the recovery gate `ChainMenu.omMenu5_zero` (`D = 0`: no chains), the
@@ -316,7 +408,7 @@ theorem om_leaf_faithful_w4 (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
     (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
     (hfib : fiberOf4 p n N hN T f hf hdeg) :
     ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ :=
-  om_leaf_faithful p n N hN σ T 0 K
+  om_leaf_faithful_w5 p n N hN σ T 0 K
     (by rw [ChainMenu.omMenu5_zero]; exact hT) f hf hdeg
     ((fiberOf5_notChain p n N hN (ChainMenu.headOrd_of_mem_omMenu4 hT) f hf hdeg).mpr hfib)
 
@@ -440,7 +532,9 @@ exactly those of the derived theorem `om_leaf_faithful_w1`; the probes were RE-R
 re-scoped W3 hypotheses at the H = 3 window stratum the same day, evidence blocks in
 `OM/QpTypeH3.lean` — those W3-form hypotheses are, since the W4c re-scope of 2026-07-22,
 exactly those of the derived theorem `om_leaf_faithful_w3`; the W4c probes at the NEW mixed
-menu content live in `OM/QpTypeMixed.lean`).** The following scratch module — the (W2) axiom's hypotheses verbatim,
+menu content live in `OM/QpTypeMixed.lean`).**
+**W6c note (2026-07-22, scope #5): the menu widening `ChainMenu.omMenu5 → ChainMenu6.omMenu6` preserves this record verbatim — every hypothesis form quoted or referenced in this block is that of a DERIVED theorem (`om_leaf_faithful_w1`/`_w3`/`_w4`/`_w5`), unchanged by the re-scope; the probes re-fire at the NEW depth-0 legs in task W6c-d.**
+The following scratch module — the (W2) axiom's hypotheses verbatim,
 conclusion mutated to the SPLIT type `{(1,1),(1,1)}` — was compiled against this module and
 `lake env lean` accepted it with zero errors, i.e. `False` DERIVES from the mutated axiom +
 `gateFiber_nonempty` + `QpType.wildGateFiber_eisenstein`. A wrong-(e,f) payload at the gate is
@@ -552,7 +646,7 @@ theorem chainGate_axiom_coherent :
     ∃ (f0 : Polynomial ℤ_[2]) (F : QpType.QpFactorization 2 f0),
       QpType.qpType 2 F = ChainMenu.ramType2 ∧
       Irreducible (f0.map (algebraMap ℤ_[2] ℚ_[2])) := by
-  obtain ⟨F, hF⟩ := om_leaf_faithful 2 2 4 (by norm_num) ChainMenu.ramType2
+  obtain ⟨F, hF⟩ := om_leaf_faithful_w5 2 2 4 (by norm_num) ChainMenu.ramType2
     (ChainMenu.chainLit [1] (ChainMenu.ChainLeaf.ram 1)) 1 1
     QpTypeChain.chainGate_mem_omMenu5 QpTypeChain.chainGatePoly
     QpTypeChain.chainGatePoly_monic QpTypeChain.chainGatePoly_natDegree
@@ -562,9 +656,9 @@ theorem chainGate_axiom_coherent :
       QpTypeChain.chainGatePoly_monic QpTypeChain.chainGatePoly_natDegree
       QpTypeChain.chainGateFiber_nonempty⟩
 
-/-! ## Block 6 — axiom census (this module declares EXACTLY ONE axiom, the W5c-re-scoped one)
+/-! ## Block 6 — axiom census (this module declares EXACTLY ONE axiom, the W6c-re-scoped one)
 
-Expected footprints: `om_leaf_faithful` = itself; `om_leaf_faithful_w4` /
+Expected footprints: `om_leaf_faithful` = itself; `om_leaf_faithful_w5` / `om_leaf_faithful_w4` /
 `om_leaf_faithful_w3` / `om_leaf_faithful_w1` / `menuFiber_hasType` / `gateFiber_hasType` /
 `gate_axiom_coherent` / `chainGate_axiom_coherent` = Lean core + `om_leaf_faithful`;
 `fiberOf4` / `fiberOf4_mixed` / `fiberOf4_old` / `fiberOf5` / `fiberOf5_chain` /
@@ -584,6 +678,7 @@ section AxCheck
 #print axioms LeanUrat.OM.OmLeafFaithful.fiberOf5_chain
 #print axioms LeanUrat.OM.OmLeafFaithful.fiberOf5_notChain
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w5
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w4
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w3
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1
