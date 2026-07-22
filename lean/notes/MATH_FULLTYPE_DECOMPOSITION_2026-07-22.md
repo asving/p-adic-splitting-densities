@@ -641,7 +641,10 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > **(iii) Conditional quantitative form [OPEN-gated].** For class-3 strata the (‡) values of
 > `μ(S_s)` are conditional on JOINT-D1 (+ D2 in Lean; a whole-stratum (‡) value is a joint
 > statement, so the marginal form would not suffice); for class-2 partial-side/mid-polygon strata, on
-> D3/D5; the corresponding level-tail RATES are conditional on D4 (resp. the D3/D5 upper-bound
+> D3/D5; the corresponding level-tail RATES are conditional on D4 **PLUS the A_net-growth/prefix-
+> summability hypothesis** (that `A_net` grows linearly along prefixes so the (3i) bounds sum
+> geometrically — the (‡)-lattice [COUNT] obligation 3.4′(c) assigns to this consumer and does
+> NOT assert; pass-6 fix 2026-07-22) (resp. the D3/D5 upper-bound
 > halves), per 3.4′(c). Nothing in (i) depends on (iii).
 >
 > Import summary: the [MONTES] content in (i) is termination + depth-index (3.2, boundary #6),
@@ -705,8 +708,9 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > is `O(p^{−c'·H})` [COUNT].
 > (iii) [conditional] The same two-parameter bound `O(p^{−c·d} + p^{−c'·H})` over ALL strata
 > (class 3, partial-side/mid-polygon class 2) holds GIVEN the one-sided ledger halves (D4, resp.
-> D3/D5 upper bounds) — the `H`-tail of an unproved-(‡) stratum family has no unconditional
-> price yet.
+> D3/D5 upper bounds) **AND the A_net-growth/prefix-summability hypothesis** (the consumer-side
+> obligation 3.4′(c) names and does not assert; pass-6 fix 2026-07-22) — the `H`-tail of an
+> unproved-(‡) stratum family has no unconditional price yet.
 
 > **Definition 4.2 (shape grouping).** Group strata by SHAPE (†): the p-independent tree of
 > polygons, side data `(h, e, ℓ)`, residual SHAPES (degree–multiplicity partitions), and residue
@@ -1140,3 +1144,15 @@ uniform-bound requirement added to D4's statement.
    summary line with the same defect).
 
 **Status: fixes applied 2026-07-22 (fifth revision), awaiting pass 6 — the acceptance pass.**
+
+**Pass-6 record (2026-07-22) — ACCEPTED (scoped).** Verdict: R1 PASS (genuinely rate-free, the
+rejected circular route confirmed unused), R2 PASS (joint-D1's conditional clause exactly strong
+enough; chain rule sound), D4/(3i) PASS as stated, §8 relabel PASS, final sweep PASS — with ONE
+dependency/gating GAP: Thm 3.5(iii)/4.1(iii) cited D4 without naming the A_net-growth/summability
+hypothesis 3.4′(c) assigns to them. Fixed in place (both gate lines now carry the hypothesis
+explicitly). Verifier's acceptance line verbatim: "**Accept as ground truth for W5+W6: yes.**"
+STATUS: this note is ACCEPTED as the mathematical ground truth for Lean Waves 5–6 (the n=2
+descent-tower capstones and the F₀-fragment series assembly), after six adversarial passes across
+two independent verifier models (Claude pass 1; Codex passes 2–6; defect counts 8 → 5 → 6 → 2 → 3
+→ 1, final gap W7-only bookkeeping). The class-3 apparatus (D1 joint ledger, D2, D3/D5, D4 +
+A_net-growth) remains the explicitly-conditional W7 perimeter.
