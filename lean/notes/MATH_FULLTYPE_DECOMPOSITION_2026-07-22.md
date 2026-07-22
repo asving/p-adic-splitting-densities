@@ -163,41 +163,121 @@ union `Z_∞`; `μ(Z_∞) = 0` [COUNT — countable union of measure-zero polyno
 >   residual values, a universal necklace/Gauss polynomial (L3) evaluated at `Q_r`] ×
 >   `(p^{w}−1)`-type unit factors at polygon vertices (`(1−Q^{-1})^V` in mass form).
 >
-> **Status by stratum class:**
-> 1. Order ≤ 1 reads over the base pool (root read + first polygon + residual shapes over `F_q`):
->    **[COUNT — PROVED in Lean]**: `StratumOrder1.stratumCount1_eq_closed`
+> **Status by stratum class (the classes are a PARTITION of terminating strata — re-cut this
+> revision, 2026-07-22, after pass-2 found the old classes 1/3 overlapping).** Partition key: the
+> KEY DEGREES of the stratum's node reads. Call a stratum **all-linear** if every opened window
+> (every cluster node, at every depth) has a degree-1 key — equivalently: every opened root
+> cluster sits at a residue point of degree `δ = 1`, and every descend event has `deg ψ = 1`,
+> `e = 1`. (Root LEAVES of degree `δ ≥ 2` open no window and are compatible with all-linear —
+> they are the proved order-0 Hensel legs. All-linear forces every pool field `= F_q`, so
+> "order ≤ 1 over the base pool" is not an extra condition but a consequence.) Then:
+> - **class 1 := all-linear, depth 0** (no descend events);
+> - **class 2 := all-linear, depth ≥ 1**;
+> - **class 3 := not all-linear** (some window ANYWHERE in the tree has key degree ≥ 2: a
+>   `δ ≥ 2` root point opened with multiplicity, or a `f_ψ ≥ 2` / `e ≥ 2, μ ≥ 2` descend —
+>   whether at the root, at depth 5, or on one branch of an otherwise linear stratum).
+> Every terminating stratum is in exactly one class. Statuses:
+> 1. **Class 1 [COUNT — PROVED in Lean for the banked menus; general class 1 = same pattern +
+>    L1 cross-cluster split [MONTES #1]]**: `StratumOrder1.stratumCount1_eq_closed`
 >    `= prodSC p sh · p ^ freeExp s N P` (`CellCard.freeExp` is exactly `nN − A_s` in the
 >    order-1 window); counting limits `hnode_selfloop_over_Bclassify_R`
 >    (`OM/ClassifierBridgeFiber2.lean`), multi-side product `hnode_multiSideShape`/
 >    `hnode_multiSideProduct` (`OM/ClassifierBridgeMultiSide2.lean`, `PathShapeMultiSideTree`),
->    order-0 legs `Order0RealDensity`.
-> 2. Any depth of **FULL-SIDE `deg ψ = 1` recenterings over the base field** (all descents linear
->    with residual `(y−c̃)^s` filling its WHOLE side, all pools over `F_q` — includes ALL of
->    `n = 2`, where a `μ ≥ 2` side is automatically full, and every constant-e H-tower):
->    **[COUNT — provable now, (b)]** by Lemma 2.3; partial-side linear descents (residual
->    `(y−c̃)^s · (coprime rest)` on one side, arising only at `n ≥ 3`) are **[OPEN-D3]**;
->    not yet in Lean beyond depth 0 (this is Wave 5's core).
-> 3. Reads with **`deg φ ≥ 2`** (root points of degree `δ ≥ 2` with multiplicity, or descend
->    factors with `f_ψ ≥ 2` / `e ≥ 2, μ ≥ 2`): the cylinder structure and the FORM (‡) hold as
->    stated, but the proof that the read digits are jointly free with the displayed pool counts is
->    **[OPEN-D1]** (the development-digit ledger), and the pool counts over `F_{Q}` with `Q = q^w`
->    are **[OPEN-D2]** in Lean (math-solid: L3 holds over every finite field, `HUMAN_PROOF §4`;
->    Lean's `CellCard.shapeCount` is `ZMod p` only — the `UnramifiedBase`/tower work).
+>    order-0 legs `Order0RealDensity`. Exact masses for strata spanning several root clusters
+>    multiply across clusters by L1's product measure [MONTES #1, solid].
+> 2. **Class 2 — status split by descend geometry:**
+>    * **whole-window towers** (every descend's side spans its whole window — includes ALL of
+>      `n = 2`, where a `μ ≥ 2` side is automatically whole-window, and every constant-e
+>      H-tower): **[COUNT — PROVED]**, Lemma 2.3 (general `s`, `m`, depth; full proof below;
+>      cross-cluster assembly of multi-cluster strata as in class 1, via L1 [MONTES #1]);
+>      not yet in Lean beyond depth 0 (this is Wave 5's core).
+>    * **partial-side linear descents** (residual `(y−c̃)^s · (coprime rest)` on one side,
+>      `n ≥ 3` only): **[OPEN-D3]**.
+>    * **mid-polygon full-side linear descents** (side full but a proper side of a multi-side
+>      window polygon, `n ≥ 3` only): **[OPEN-D5]** (new this revision).
+> 3. **Class 3**: the cylinder structure (Thm 2.1) holds, hence each `μ(S_s)` is unconditionally
+>    a rational number of the form `(integer)·p^{−nN₀(s)}` [COUNT]; but the DISPLAYED (‡) values
+>    `C_s, A_s` — i.e. that the read digits are jointly free with the displayed pool counts — are
+>    **[OPEN-D1]** (the development-digit ledger), and the pool counts over `F_Q`, `Q = q^w`, are
+>    **[OPEN-D2]** in Lean (math-solid: L3 holds over every finite field, `HUMAN_PROOF §4`;
+>    Lean's `CellCard.shapeCount` is `ZMod p` only — the `UnramifiedBase`/tower work). Do NOT
+>    read "the FORM (‡) holds" as proved for class 3: only the p-power-rationality is.
 
-> **Lemma 2.3 (recenter–rescale bijection, linear case) [COUNT — proof, (b)].** Let a node's read
-> select an integer slope `m`, full-side repeated residual `(y−c̃)^s` on a size-`s` cluster (frame:
-> coefficients `a_1,…,a_{s}` of the current recentered window). Then the map
-> `f ↦ g, g(y) := f(ĉp^m + p^m y)/p^{sm}` restricted to the stratum's cylinder is an affine
-> triangular measure-scaling isomorphism onto `{residual digits = c̃-data} × (fresh size-s
-> cluster box)`, carrying normalized level-`N` counts to level-`(N − sm)`-frame counts.
-> *Proof.* Binomial expansion: the window-coefficient transition matrix is triangular with
-> diagonal `p^{m(s−i)}` (`i`-th window coefficient, `i = 0,…,s−1`, reading the fresh-frame
-> coordinates back into the original window) — a measure-SCALING bijection, not a unipotent one;
-> the scaling is exactly absorbed by the frame-level shift `N ↦ N − sm` in the normalized counts
-> (the net bookkeeping displayed in the statement). The stratum's defining digit
-> conditions (side exact, residual root `c̃`) consume exactly the fixed digits, leaving the fresh
-> box digits free — verified digit-by-digit at `n=2` in §7 (Case A ledger), general `s` identical
-> in structure (the Vieta/binomial matrix is independent of `f`). ∎
+> **Lemma 2.3 (recenter–rescale bijection, whole-window linear case) [COUNT — PROVED, (b);
+> general `s`, general `m`, general depth — full proof this revision, 2026-07-22].**
+> **Scope (marked restriction, 2026-07-22):** the descend side spans the WHOLE window polygon —
+> single side `(0, sm)–(s, 0)` on a size-`s` window, residual `(y−c̃)^s` (up to the unit leading
+> residue), `m ≥ 1` an integer, `c̃ ∈ F_q^×`. Full-side descends on a PROPER side of a multi-side
+> window polygon (possible only at `n ≥ 3`) are NOT covered — they are the new **[OPEN-D5]**
+> below. All of `n = 2` and all constant-window H-towers are whole-window, so Waves 5–6 sit
+> entirely inside this scope.
+>
+> *Setting.* Window vector `(a_0, …, a_{s−1}; a_s)` with `a_s` a fixed unit (`a_s = 1` for a
+> monic window; at a size-`s` root cluster of `f`, the `a_i` are the Taylor/φ-adic development
+> coefficients and `a_s` is a unit by size-exactness; coefficients above the window enter only
+> through the `p^m`-divisible tail terms of (2.3a), handled below). **Frame:** the free
+> coordinates `(a_0,…,a_{s−1})` are jointly uniform on a MONOTONE STAIRCASE box
+> `∏_{i<s} ℤ/p^{L_i}`, `L_0 ≤ L_1 ≤ … ≤ L_{s−1}` (base case: `L_i = N` constant), conditionally
+> on everything else (tail coefficients, previously consumed digits). Budget `B := L_0 ≥ sm + 1`.
+> **Stratum conditions at this read:**
+> (S1) `v(a_i) ≥ m(s−i)` for `i < s` (points on/above the side);
+> (S2) residual `= ā_s·(y−c̃)^s`, i.e. `(a_i/p^{m(s−i)}) ≡ ā_s·C(s,i)(−c̃)^{s−i} (mod p)` for
+> `i < s` — together: the base-`p` digits of `a_i` at positions `0,…,m(s−i)` are prescribed,
+> `Σ_{i<s}(m(s−i)+1) = m·s(s+1)/2 + s` digits in all.
+>
+> *Claim.* With `ĉ` the Teichmüller lift of `c̃` and `g(y) := f(ĉp^m + p^m y)/p^{sm}` the child
+> (window coefficients `b_0,…,b_{s−1}; b_s`), the map `f ↦ g` restricted to (S1)∧(S2) is a
+> bijection onto the CHILD STAIRCASE CLUSTER BOX
+> `{ (b_k mod p^{M_k})_{k<s} : b_k ≡ 0 (mod p) }`, `M_k := L_k − m(s−k)` (again a monotone
+> staircase, child budget `B′ = M_0 = B − sm`); consequently, conditionally on the stratum the
+> child window is UNIFORM on that box, and the stratum's frame-relative mass is exactly
+> `p^{−s − m·s(s+1)/2}` per `(m, c̃)`.
+>
+> *Proof.* **(1) Coefficient identity.** Binomial expansion of `g(y) = f(ĉp^m + p^m y)/p^{sm}`
+> gives, for `i, k ≤ s` and with `ã_i := a_i / p^{m(s−i)}` (defined on (S1)),
+> ```
+>   b_k = Σ_{i=k}^{s} C(i,k) ĉ^{i−k} ã_i  +  t_k ,      t_k ≡ 0 (mod p^m),               (2.3a)
+> ```
+> where `t_k` := the contribution of the coefficients ABOVE the window (`t_k = Σ_{i>s}
+> C(i,k)ĉ^{i−k}p^{m(i−s)}a_i`) — a fixed additive constant given the conditioning, absent for a
+> monic window (`t_k = 0`). Equivalently `Σ_i ã_i y^i = Σ_k (b_k − t_k)(y−ĉ)^k`: the map
+> `(ã_i) ↦ (b_k)` is affine UNIPOTENT upper-triangular over ℤ_p, inverse
+> `ã_i = Σ_{k≥i} C(k,i)(−ĉ)^{k−i}(b_k − t_k)`.
+> **(2) Staircase bijection.** At levels `M_k = L_k − m(s−k)`: `ã_i mod p^{M_i}` needs
+> `b_k mod p^{M_i}` for `k ≥ i` only, and `M_k ≥ M_i` for `k ≥ i` (monotonicity: both `L_k` and
+> `−m(s−k)` are non-decreasing in `k`); the inverse shift likewise. So (2.3a) induces mutually
+> inverse maps on staircase boxes — a bijection; composing with the digit shift
+> `a_i = p^{m(s−i)}·ã_i` (a bijection `ℤ/p^{M_i} → p^{m(s−i)}·ℤ/p^{L_i}`, exactly condition (S1))
+> exhibits every (S1)-window as `Φ(b)` for a unique staircase `b`.
+> **(3) Residual identity.** Reducing `Σ_i ã_i y^i = Σ_k (b_k − t_k)(y−ĉ)^k` mod `p` — the tail
+> dies, `t̄_k = 0` since `m ≥ 1`:
+> ```
+>   R_S(y) = ḡ_w(y − c̃),    ḡ_w(z) := Σ_{k≤s} b̄_k z^k ,                              (2.3b)
+> ```
+> so (S2) `R_S = ā_s (y−c̃)^s  ⟺  ḡ_w(z) = ā_s z^s  ⟺  b̄_k = 0 for all k < s` — the stratum's
+> residual condition IS the child cluster condition; no digit is left over and none is missing.
+> **(4) Mass and child law.** By (2)+(3), Φ bijects `{staircase b : b̄ = 0}` onto the stratum
+> slice; uniform measure pushes through a bijection, so the child is uniform on the staircase
+> cluster box, and
+> ```
+>   μ_frame(S1 ∧ S2) = ∏_{k<s} p^{M_k − 1} / ∏_{i<s} p^{L_i} = p^{−s − m·s(s+1)/2}.     (2.3c)
+> ```
+> The child budget is `B′ = B − sm` — the level pin `N′ = N − sm` in the constant-staircase base
+> case. **(5) Chains.** The child frame (staircase cluster box, monotone) is a frame of the same
+> form, so (1)–(4) iterate; at every step past the first, the `s` cluster digits are already part
+> of the frame (each step's (S1) re-uses the cluster condition its predecessor delivered), so a
+> depth-`k` chain `(m_1,c̃_1),…,(m_k,c̃_k)` of whole-window descends has exact frame-relative mass
+> `p^{−s} · ∏_t p^{−m_t·s(s+1)/2}` — the cluster digits priced ONCE, the per-step conditional
+> factor being `p^{−m_t·s(s+1)/2}` per `c̃_t` (checked against §7 Case C:
+> `p^{−2}·p^{−3}·(1/2) = 1/64` ✓) — child budget `B − s·Σ_t m_t`, and
+> uniform staircase-cluster law at the bottom — so any terminating read at the bottom frame whose
+> digits sit within budget has the same conditional mass as in a box-uniform frame. ∎
+> *Numerics (2026-07-22, this revision):* (2.3c) + the bijection + the staircase support verified
+> by brute force at `(p,s,m) ∈ {(2,3,1),(3,3,1),(2,3,2),(2,2,1),(3,2,2)}` and, in the embedded
+> form (unit `a_s`, tails with `p`-divisible entries, `n = 4, 5`), at five more configurations —
+> every child fiber hit exactly once, support exactly the staircase cluster box; the depth-2
+> chain mass `p^{−s}·p^{−m_1·w}·p^{−m_2·w}` verified exactly at `n = 2, p = 2, m = (1,1)`
+> (`= 2^{−8}`, census mod `2^{10}`).
 > Consequence: depth adds exponents and multiplies choice counts in (‡) — the per-stratum masses of
 > a descend chain are the PRODUCTS of per-step masses in fresh frames. This is the count-level
 > content that the engine's self-similar recursion uses at the `e=1` node, obtained here WITHOUT
@@ -212,7 +292,24 @@ union `Z_∞`; `μ(Z_∞) = 0` [COUNT — countable union of measure-zero polyno
 > the residual fills the side (Lemma 2.3's hypothesis, which covers all of `n = 2` and all Wave-5
 > needs); OPEN in the partial case — the same "jointly free" content as D1, but for a single
 > `deg φ = 1` read, hence expected far easier. Until proved, class-2 status (Thm 2.2.2,
-> Claim 4.4(ii)) extends only to FULL-SIDE linear towers.
+> Claim 4.4(ii)) extends only to WHOLE-WINDOW full-side linear towers.
+
+> **[OPEN-D5] (mid-polygon full-side linear descend — new this revision, 2026-07-22).** For a
+> read whose window polygon has SEVERAL sides, one of which (of integer slope `−m`, lattice
+> length `ℓ ≥ 2`, NOT spanning the whole window) carries residual `(y−c̃)^ℓ`, `c̃ ∈ F_q^×`: the
+> child read is the read of the literally recentered polynomial (Def 1.2.4), so the child's
+> conditions are exact digit conditions on the coefficients of `F := f(window recentered by
+> ĉp^m)` at abscissas `≤ ℓ` — a DIFFERENT unipotent frame from the parent's. The open content:
+> the joint distribution of the child's inspected `F`-digits with the parent's OTHER sides'
+> conditions (which live in the parent's frame) is the product of their separate laws with the
+> displayed pool counts — the exact failing step when Lemma 2.3's proof is attempted here: the
+> staircase bijection (2.3a)–(2.3c) needs the diagonal rescale to absorb the WHOLE window
+> (`a_i = p^{m(s−i)}ã_i` for every window coordinate); for a proper side the co-side coordinates
+> are rescaled at the WRONG heights (their polygon lines are not `m(s−i)`), so the bijection onto
+> a product frame fails as stated, and no elementary replacement is known. Possible only at
+> `n ≥ 3` (a size-2 window polygon carrying a `μ ≥ 2` side is automatically whole-window). A
+> strictly weaker sibling of D1 (one linear read across the frame change instead of a `deg φ ≥ 2`
+> development); implied by D1's ledger mechanism. Not needed for `n = 2` or Waves 5–6.
 
 > **[OPEN-D1] (development-digit ledger, `deg φ ≥ 2`) — the precise open lemma.** For a fixed
 > canonical key `φ` (degree `m_φ ≥ 2`) over node ring `O_r` and a fixed read of its polygon/
@@ -298,8 +395,9 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > an unconditional measure bound [COUNT].
 
 > **Lemma 3.4′ (level tail — the undecided-mass envelope). Status split: (a) `n = 2` PROVED with
-> explicit constants [COUNT via 2.3]; (b) full-side linear fragment PROVED with crude explicit
-> constants [COUNT via 2.3]; (c) class-3 rate [OPEN-D4].** Let `Undec(N)` be the level-`N`
+> explicit constants [COUNT via 2.3]; (b) whole-window linear fragment, general `n`, PROVED with
+> explicit constants [COUNT via 2.3]; (c) prefixes leaving the fragment [OPEN-D4 / D3 / D5].**
+> Let `Undec(N)` be the level-`N`
 > undecided set (stuck + tail in Lemma 3.1). By (3a), N-stability (Thm 2.1) and
 > `μ(non-terminating) = 0` (3.2 + 3.3),
 > ```
@@ -335,43 +433,93 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > [The exact criticality `Σ_m(...) = 1` is the `s = 2` tower's signature: undecidedness drains
 > like `N·p^{−N}` — geometrically with one polynomial factor, not faster.]
 >
-> **(b) full-side linear fragment (classes 1–2: order ≤ 1 pools, every descend a full-side
-> `deg ψ = 1` recentering), general `n` [COUNT via 2.3 — proved, crude constants]:**
+> **(b) whole-window linear fragment, general `n` [COUNT via 2.3 — PROVED, explicit constants;
+> rewritten this revision, 2026-07-22, after pass-2 found the old assembly incomplete].**
+> **The fragment `F₀`** := read histories all of whose descend events are whole-window full-side
+> linear (Lemma 2.3's scope: at a `δ = 1` root cluster, every descend a single side `(0, sm)–(s,0)`
+> with residual `(y−c̃)^s`). In `F₀` a window never branches before descending, so each opened
+> cluster runs a CONSTANT-size chain until it terminates or stalls — there is no mixed-size
+> assembly (the old text's "mixed sizes" and `n^n` branch-shape count are gone, not hidden).
+> `Undec_F(N)` := the level-`N` undecided `f` whose level-`N` read history lies in `F₀`; the
+> complement `Undec(N) ∖ Undec_F(N)` (some read outside `F₀`: a `deg φ ≥ 2` descend → class 3, or
+> a partial-side/mid-polygon linear descend → D3/D5) is (c)'s scope, NOT bounded here. At `n = 2`,
+> `Undec_F = Undec`. Claim:
 > ```
->   μ(Undec_F(N)) ≤ n^{n+1} · (N + 2) · p^{−(N − n − 1)}.
+>   μ(Undec_F(N)) ≤ 6 · (⌊N/2⌋ + 1) · p^{−N}         for every n ≥ 2, p, N ≥ 1.
 > ```
-> *Proof (same three ingredients, crude bounds).* (i) *Stall containment:* a read on a size-`s ≤ n`
-> window with budget `B` stalls only if some window coefficient has `v_frame(a_i) ≥ B − n` (every
-> pinned digit lies within `n` positions of the height that pins it); by the product structure of
-> the development coordinates [COUNT, Thm 2.1] this has conditional mass `≤ s·p^{−(B−n−1)}`.
-> (ii) *Per-step ledger:* a full-side descend on a size-`s` window at slope `m` has exact
-> conditional mass `(p−1)·p^{−m·s(s+1)/2}` (Lemma 2.3; `n = 2` check: `(1−1/p)p^{−(3m−1)}` ✓)
-> against a budget shift `s·m`, so the recovery-adjusted per-step factor is
-> `Σ_m (p−1)p^{−m·s(s−1)/2} = (p−1)/(p^{s(s−1)/2}−1)`: `= 1` at `s = 2` (the critical tower —
-> polynomial factor `⌊N/2⌋+1` as in (a); windows never grow along a branch, so the critical
-> segment occurs at most once per branch) and `< 1` for `s ≥ 3` (geometric). At a branch node the
-> sibling sides' conditions are DROPPED for the upper bound (legitimate: intersecting events),
-> so each node's stall mass is controlled by its own branch chain alone. (iii) *Union bound:*
-> `≤ n` nodes per branch shape, `≤ n^n` fragment branch shapes (crude), total mass of all root
-> cluster boxes `≤ 1`. Assembling: per node `≤ (⌊N/2⌋+1)·p^{−(N−n−1)}`, times `n^{n+1}`. ∎
-> (The sharp per-`n` constants are Wave-6 bookkeeping on the same ledger.)
+> *Proof.* Every `f ∈ Undec_F(N)` stalls at some cluster of its (deterministic) read: at a residue
+> point `c ∈ F_q`, cluster size `s ∈ {2,…,n}`, after a certified chain `(m_1,c̃_1),…,(m_k,c̃_k)`
+> (`k ≥ 0`) of whole-window descends. Union bound over `(c, s)` and chains. Fix `(c, s)`; work in
+> the cluster's window coordinates `a_0,…,a_{s−1}` (the φ-adic/Taylor development at `c`, a
+> unipotent-triangular level-preserving function of `f`'s coefficients — Thm 2.1), which are
+> jointly uniform at level `N` conditionally on any fixed values of the remaining development
+> coordinates; every event below is a digit event in these `s` coordinates alone, so its mass is
+> computed exactly in this frame and all sibling conditions (other clusters, multiplicity-
+> exactness, root shape) are DROPPED — an upper bound; no L1 and no cross-cluster independence is
+> used. Three displayed ingredients:
+> (i) *Stall containment.* At a frame of budget `B` (free coordinates staircase-uniform with
+> minimum level `B`, Lemma 2.3(5)), if `v(a_i) < B` for every `i < s` then the read COMPLETES —
+> whatever its polygon shape (multi-side terminating reads included): all heights are visible
+> (`v(a_i) < B ≤` known level; the endpoint `v(a_s) = 0` is conditioned tail data), the polygon
+> is determined, every residual digit sits at an on-line position `≤ v(a_0) < B` (the polygon's
+> maximal height), and a certified descend's digits (S1)∧(S2) sit at positions
+> `≤ sm ≤ v(a_0) < B`. Hence
+> ```
+>   {stall at this frame} ⊆ ⋃_{i<s} {v(a_i) ≥ B},   conditional mass ≤ s · p^{−(B−1)}      (3f)
+> ```
+> (each event: one coordinate, `B−1` further zero digits beyond the cluster digit, within the
+> staircase's known levels since `M_i ≥ B`).
+> (ii) *Per-step ledger.* A certified whole-window descend at slope `m` has exact conditional
+> mass `(q−1)·p^{−m·s(s+1)/2}` summed over the `q−1` values of `c̃` (Lemma 2.3, (2.3c)), and hands
+> the child a budget smaller by `s·m` with the staircase-cluster UNIFORM law (Lemma 2.3(4)–(5) —
+> this is what makes the chain product exact, per stratum, with no independence assumption).
+> Certification within budget forces `s·Σ_t m_t ≤ B`, so `k ≤ B/2`. The budget-recovery-adjusted
+> per-step factor is
+> ```
+>   r_s := Σ_{m≥1} (q−1) p^{−m·s(s+1)/2 + sm} = (q−1)/(p^{s(s−1)/2} − 1)
+>        = 1 at s = 2 (critical),  < 1 for s ≥ 3  (e.g. r_3 = 1/(p²+p+1)).               (3g)
+> ```
+> (iii) *Chain sum.* With `B = N` at the top frame (the window coordinates are exact level-`N`
+> data — no level loss), summing over chains and applying (3f) at the stalled frame with budget
+> `N − sΣm`:
+> ```
+>   μ_cond(stall in this cluster) ≤ Σ_{k≥0} Σ_{sΣm≤N} ∏_t (q−1)p^{−m_t s(s+1)/2} · s·p^{−(N−sΣm−1)}
+>                                 = s·p^{−(N−1)} · Σ_{k≤N/2} r_s^k
+>                                 ≤ s·(⌊N/2⌋+1)·p^{−(N−1)},                              (3h)
+> ```
+> using `r_s ≤ 1` (equality only at `s = 2`, which is what forces the polynomial factor).
+> *Assembly* (all displayed, no "similarly"): the cluster-box mass at `(c, s)` is `p^{−s}`
+> (`s` cluster digits), so
+> ```
+>   μ(Undec_F(N)) ≤ Σ_{c∈F_q} Σ_{s=2}^{n} p^{−s} · s·(⌊N/2⌋+1)·p^{−(N−1)}
+>                 ≤ q · 6p^{−2} · (⌊N/2⌋+1) · p^{−(N−1)} = 6·(⌊N/2⌋+1)·p^{−N},
+> ```
+> where `Σ_{s≥2} s·p^{−s} ≤ 6p^{−2}` (equality-check at `p = 2`: `Σ_{s≥2} s·2^{−s} = 3/2 = 6·2^{−2}`;
+> the sum decreases in `p`). ∎
+> (`n = 2` cross-check: (b) gives `6(⌊N/2⌋+1)p^{−N}`, (a) gives `(⌊N/2⌋+1)p^{−(N−1)}` — both
+> valid, neither implies the other; (a)'s constants stay the sharp ones for Wave 5/6 at `n = 2`.)
 >
-> **(c) general `n` with `deg φ ≥ 2` descends — [OPEN-D4], precisely scoped.** The same scheme
-> needs, across each NONLINEAR descend, an upper bound
-> `μ(prefix ∧ child-read conditions) ≤ C·p^{−(A(prefix) + child exponent)}` — the one-sided
+> **(c) general `n`, read-prefixes leaving the fragment — precisely scoped opens.** For prefixes
+> whose exit step is a `deg φ ≥ 2` descend, the same scheme needs, across that descend, an upper
+> bound `μ(prefix ∧ child-read conditions) ≤ C·p^{−(A(prefix) + child exponent)}` — the one-sided
 > (upper-bound) half of D1's development-digit ledger. Single-read conditions have exact product
 > mass in their own development coordinates [COUNT], but the JOINT of parent and child conditions
 > across a `deg φ ≥ 2` descend is exactly D1's content (GAP-2's count half); no elementary route
 > is known. **OPEN-D4 :=** for class-3 read-prefixes, `μ(prefix) ≤ C(n)·p^{−A(prefix)}` with `A`
-> the prefix's ledger exponent (implied by D1; strictly weaker). D4 is NOT needed for Waves 5–6
-> — (b) covers `hExhaust` on the linear-tower fragment (§8) — and rate-free exhaustion (Thm 3.5)
-> needs neither.
+> the prefix's ledger exponent (implied by D1; strictly weaker). For prefixes whose exit step is a
+> partial-side or mid-polygon LINEAR descend, the needed one-sided bound is the corresponding
+> upper-bound half of **D3 / D5** (strictly easier than D4). None of D3/D4/D5 is needed for
+> Waves 5–6 — (b) covers `hExhaust` on the whole-window linear fragment (§8) — and rate-free
+> exhaustion (Thm 3.5(i)) needs none of them.
 >
 > *Mechanism correction (pass-1).* The previous sketch routed (3e) through "undecided ⟹ two
 > roots at mutual valuation `≥ (N−consumed)/n` ⟹ `v_p(disc)` large" plus the classical
 > polygon⟹root-valuation import. That pointwise route is FALSE for degree-1 high sides: at
-> `n = 2`, `v(a₁) = 1`, `v(a₀) ≥ N` is undecided under the strict Def-1.2 reader at every level
-> `N`, yet `v_p(disc) = 2·v(a₁) = 2` for odd `p` — the unread height measures root-to-CENTER
+> `n = 2`, `v(a₁) = 1`, `v(a₀) ≥ N` with `N ≥ 3` is undecided under the strict Def-1.2 reader at
+> that level, yet `v_p(disc) = 2·v(a₁) = 2` for odd `p` (the `N ≥ 3` matters: it forces
+> `v(4a₀) ≥ 3 > 2 = v(a₁²)`, so no cancellation in `disc = a₁² − 4a₀`; at `N = 2` the two terms
+> can cancel to `v(disc) > 2`; the cleanest witness is `a₀ = 0`, `f = x² + a₁x` with `v(a₁) = 1`,
+> undecided at EVERY level) — the unread height measures root-to-CENTER
 > depth, not root-to-root depth. The counting proof above replaces it; the classical NP import
 > drops out of 3.4′ entirely. *Order-1 Lean instance of the tail half:*
 > `Drainage.tendsto_tailDensity_zero`; the order-1 STUCK mass is the `N`-independent self-loop
@@ -380,24 +528,41 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 
 ### 3.5 Exhaustion
 
-> **Theorem 3.5 (decomposition of the full decided density) [(b); statuses inline].** The
-> terminating strata are pairwise disjoint, each of exact mass (‡), and
+> **Theorem 3.5 (decomposition of the full decided density) — split into three statements of
+> distinct strength (this revision, 2026-07-22; pass-2 found the old single statement asserting
+> (‡)-masses for EVERY stratum unconditionally, which contradicted the D1/D2 ledger).**
+>
+> **(i) Unconditional qualitative decomposition [COUNT + MONTES #6 only — NO open item, NO (‡)
+> values, NO rate].** The terminating strata are pairwise disjoint and, with their ABSTRACT
+> masses `μ(S_s)` (well-defined: each `S_s` is a finite union of cylinders, Thm 2.1),
 > ```
 >   μ(box) = Σ_{s terminating} μ(S_s),   and per type:
 >   ρ_dec(n, σ; p) = Σ_{s terminating, σ(s) = σ} μ(S_s)      (σ(s) as in §6),               (3d)
 > ```
-> the series converging absolutely (positive terms). Moreover the level-`N` normalized decided
-> count equals the partial sum over `{s : N₀(s) ≤ N}` up to the envelope error (3c)+(3.4′), so the
-> Lean counting limits converge to (3d).
+> the series converging absolutely (positive terms). Moreover `μ(Undec(N)) → 0` as `N → ∞`
+> WITHOUT any rate input: decisions are stable under refinement (a read visible at level `N`
+> stays visible at `N+1`), so `Undec(N)` is non-increasing with intersection ⊆ (non-terminating
+> ∪ `Z_∞`), which has measure zero by 3.2 + 3.3 — monotone convergence. Hence the level-`N`
+> normalized decided counts converge to (3d).
 > *Proof.* Disjointness: distinct read-histories are incompatible outcomes of the same
 > deterministic reader [COUNT]. Cover: `f` outside `Z_∞ ∪ {disc = 0}` (measure zero, 3.3) has a
-> terminating history by Lemma 3.2 [MONTES]. Countable additivity of Haar measure gives (3d); the
-> quantitative form is Lemma 3.1 + Corollary 3.4 + Lemma 3.4′. ∎
-> The only [MONTES] content: termination + depth-index (3.2), lift-invariance (Def 1.2) — the
-> level-tail rate (3.4′) is now pure [COUNT] on the linear fragment (its class-3 rate: OPEN-D4).
-> The only [OPEN] content: the VALUE of each `μ(S_s)` via (‡) in class
-> 3 (D1/D2). **Exhaustion itself needs neither D1 nor D2** — (3d) with abstract masses is
-> COUNT+MONTES only.
+> terminating history by Lemma 3.2 [MONTES]. Countable additivity of Haar measure gives (3d);
+> the tail statement is the displayed monotone-convergence argument. ∎
+>
+> **(ii) Quantitative form on the proved fragment [COUNT via 2.3 + L1].** For class-1 strata and
+> class-2 WHOLE-WINDOW towers, each `μ(S_s)` equals its (‡) value (Thm 2.2.1–2, Lemma 2.3), and
+> the level-`N` decided count over these strata equals the partial sum over `{s : N₀(s) ≤ N}` up
+> to the explicit envelope errors (3c) + 3.4′(a)/(b). This is the exact input Wave 6's `hExhaust`
+> consumes at `n = 2` (where the fragment is everything).
+>
+> **(iii) Conditional quantitative form [OPEN-gated].** For class-3 strata the (‡) values of
+> `μ(S_s)` are conditional on D1 (+ D2 in Lean); for class-2 partial-side/mid-polygon strata, on
+> D3/D5; the corresponding level-tail RATES are conditional on D4 (resp. the D3/D5 upper-bound
+> halves), per 3.4′(c). Nothing in (i) depends on (iii).
+>
+> Import summary: the only [MONTES] content in (i) is termination + depth-index (3.2) and
+> lift-invariance (Def 1.2); the only [OPEN] content anywhere is confined to (iii). **Exhaustion
+> itself needs neither D1 nor D2 nor any rate** — that is exactly statement (i).
 
 ### 3.6 Confronting the wall (`SELFLOOP_GENERALK_WALL.md`)
 
@@ -429,21 +594,34 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
    normal form, not of any stratum's conditional law.
 4. **Honest residue.** The wall's deep reason ("the ×q is measure-theoretic") survives in exactly
    one place: for `deg φ ≥ 2` descents the per-stratum count formula (class 3) is OPEN-D1 — the
-   same content as GAP-1/GAP-2's count-level half. For full-side `deg ψ = 1` chains (the wall's
-   own `e=1` self-loop regime!) Lemma 2.3 makes it elementary — consistent with the wall, because Lemma 2.3
+   same content as GAP-1/GAP-2's count-level half (with the linear-but-cross-frame shadows D3/D5
+   as its `deg φ = 1` siblings). For WHOLE-WINDOW full-side `deg ψ = 1` chains (the wall's
+   own `e=1` self-loop regime!) Lemma 2.3 now proves it elementarily — consistent with the wall, because Lemma 2.3
    produces per-STRATUM masses in fresh frames, not the fixed-box per-depth census the wall
    demanded. If D1 turns out to genuinely require non-Montes measure content, that is precisely
-   BB3_infinity GAP-1/GAP-2 resurfacing — the finding is: **it is confined to D1, and touches
-   neither exhaustion (§3) nor the linear-descent strata (class 2).**
+   BB3_infinity GAP-1/GAP-2 resurfacing — the finding is: **it is confined to D1 (and its
+   linear cross-frame shadows D3/D5), and touches neither exhaustion (§3) nor the whole-window
+   linear towers (class 2's proved core, all of `n = 2`).**
 
 ---
 
 ## 4. The series and its rationality
 
-> **Theorem 4.1 (convergence, per fixed p) [(b)].** The series (3d) converges absolutely;
-> moreover grouped by (depth `d`, max height `H`), the tail beyond `(d, H)` is
-> `O(p^{−c·d} + p^{−c'·H})` by Corollary 3.4 and the height ladder in (‡) (heights enter `A_s`
-> linearly with positive weight). [COUNT given §2 statuses.]
+> **Theorem 4.1 (convergence, per fixed p) [(b); split this revision, 2026-07-22 — the old
+> single statement priced the `H`-tail through the (‡) ledger without conditioning].**
+> (i) [UNCONDITIONAL] The series (3d) converges absolutely (positive terms, total ≤ 1 — Thm
+> 3.5(i)); and the DEPTH tail is geometric: `Σ_{s terminating, d(s) ≥ d} μ(S_s) ≤ μ{v_p(disc) ≥ 2d}
+> ≤ (n−1)·p^{−⌈(2d − n·v_p(n))/(n−1)⌉}` — the pointwise inclusion of Lemma 3.2 applies verbatim
+> to strata that PERFORMED `≥ d` descend events, terminating or not, so this is Corollary 3.4's
+> bound [MONTES 3.2 + COUNT 3.3], no (‡) input.
+> (ii) [proved fragment] Within class 1 and class-2 whole-window towers, the HEIGHT tail is also
+> geometric with explicit constants: heights enter `A_s` linearly with positive weight ((‡),
+> proved there via Thm 2.2.1–2 + Lemma 2.3), so the tail beyond max height `H` at bounded depth
+> is `O(p^{−c'·H})` [COUNT].
+> (iii) [conditional] The same two-parameter bound `O(p^{−c·d} + p^{−c'·H})` over ALL strata
+> (class 3, partial-side/mid-polygon class 2) holds GIVEN the one-sided ledger halves (D4, resp.
+> D3/D5 upper bounds) — the `H`-tail of an unproved-(‡) stratum family has no unconditional
+> price yet.
 
 > **Definition 4.2 (shape grouping).** Group strata by SHAPE (†): the p-independent tree of
 > polygons, side data `(h, e, ℓ)`, residual SHAPES (degree–multiplicity partitions), and residue
@@ -466,10 +644,11 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > L5fix(d); Lean pattern exists (window-K staircases, `normSum_omMenuW3_mono`; the K→∞ sum is
 > Wave 6). Multi-side reads sum over the strictly-decreasing-slope cone via the gap substitution —
 > engine `_sum_by_gaps`, pure lattice algebra [COUNT].
-> (ii) **Depth towers**: by Lemma 2.3, a FULL-SIDE `deg ψ = 1` descend multiplies masses by a
-> fixed per-step total ratio (e.g. `Σ_m (1−q^{-1})q^{−(3m−1)} = 1/(q²+q+1)` at `n=2`); chains
-> resum geometrically [COUNT via 2.3]. Partial-side linear descents (`n ≥ 3` only) need
-> [OPEN-D3]. For `deg φ ≥ 2` descents the same closure holds GIVEN D1 (the
+> (ii) **Depth towers**: by Lemma 2.3, a WHOLE-WINDOW full-side `deg ψ = 1` descend multiplies
+> masses by a fixed per-step total ratio (e.g. `Σ_m (1−q^{-1})q^{−(3m−1)} = 1/(q²+q+1)` at
+> `n=2`); chains resum geometrically [COUNT via 2.3 — PROVED]. Partial-side linear descents
+> (`n ≥ 3` only) need [OPEN-D3]; mid-polygon full-side linear descents (`n ≥ 3` only) need
+> [OPEN-D5]. For `deg φ ≥ 2` descents the same closure holds GIVEN D1 (the
 > per-step masses then being class-3 (‡) values with base-changed `q ↦ q^{w}`) [OPEN-D1].
 > (iii) Everything else (slopes' denominators, shapes, residue degrees, number of sides, depth of
 > the SHAPE tree after quotienting ladders/towers) is finite and p-independent — (a): L5fix(b),
@@ -483,9 +662,10 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > positive series [justified by Thm 4.1]): verified symbolically at `n = 2` (§7 Case A — both
 > groupings give `q/(q+1)`), conditional at general `n`; the resummation's pivot (`(⋆⋆)` of
 > BB3_infinity §4) is `1 − w(e) ≠ 0`.
-> For strata classes 1–2 (order ≤ 1 + linear towers) the rationality is UNCONDITIONAL
-> [COUNT+MONTES]. p-independence of the assembled function: derived, never imported (the
-> GMN-citations discipline: per-p imports of p-free shape).
+> For class 1 and class-2 WHOLE-WINDOW towers the rationality is UNCONDITIONAL [COUNT+MONTES];
+> the class-2 remainder (partial-side/mid-polygon linear) is conditional on D3/D5. p-independence
+> of the assembled function: derived, never imported (the GMN-citations discipline: per-p imports
+> of p-free shape).
 
 ---
 
@@ -501,20 +681,21 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 | 6 | Termination + depth ≤ ind ≤ ½·v_p(disc) | [MONTES] | Thm 4.18 + Cor 4.19 + §-intro bound; **pins (P1)–(P3), `GMN_citations.md` §"§4 index machinery"** (ind definition + ON-OR-BELOW convention, now pinned verbatim; index–disc identity, textbook pin TO-VERIFY; per-event increment via the on-side witness point); declare as pointwise depth⟹disc (Lemma 3.2 form); repo precedent `omReadValuation_lt_of_certLevel_fkeyed` |
 | 7 | Discriminant tail (3b) | [COUNT — proved here] | Lemma 3.3 (elementary; Lean-able: resultant product + Fubini + ball bound) |
 | 8 | Per-level partition (3a) | [COUNT — order-1 proved] | `stratumCount1_partition`; general = same pattern |
-| 9 | Per-stratum counts, classes 1–2 | [COUNT — proved/provable] | §2 Thm 2.2.1–2, Lemma 2.3 (class 2 = FULL-SIDE linear towers; partial-side = **[OPEN-D3]**, `n ≥ 3` only) |
+| 9 | Per-stratum counts, classes 1–2 | [COUNT — class 1 + whole-window class 2 PROVED] | §2 Thm 2.2.1–2, Lemma 2.3 (whole-window towers, general `s,m,depth` — proved this revision); class-2 remainder: partial-side = **[OPEN-D3]**, mid-polygon full-side = **[OPEN-D5]**, both `n ≥ 3` only |
 | 10 | Per-stratum counts, class 3 (`deg φ ≥ 2`) | **[OPEN-D1]** | the development-digit ledger; = count-level GAP-1/GAP-2 (`BB3_infinity §4.2/§8`); route: RESTART_LEMMA triangular coordinates |
 | 11 | Pool counts over `F_{q^w}` in Lean | **[OPEN-D2]** | math (a)-known (L3 all finite fields); Lean `UnramifiedBase` tower work |
 | 12 | Residual equidistribution as an AXIOM | **excluded** | standing non-import (no GMN counterpart — `M6_lemma.md`, PROJECT_STATE); its role is absorbed by D1 as a provable count statement |
 | 13 | Geometric/cone resummation | [COUNT] | §4.4; engine `_sum_by_gaps`; L5fix(d) |
-| 14 | Exhaustion (3d) | [COUNT+MONTES 6] | Thm 3.5 — needs NO open item |
-| 15 | Level-tail rate (3e) | [COUNT via 2.3 — proved on the full-side linear fragment; class-3 rate **[OPEN-D4]**] | Lemma 3.4′(a)/(b)/(c) — Waves 5–6 need only the fragment |
+| 14 | Exhaustion (3d), abstract masses + qualitative tail | [COUNT+MONTES 6] | Thm 3.5(i) — needs NO open item; the (‡)-valued quantitative forms are 3.5(ii) [proved fragment] and 3.5(iii) [conditional] |
+| 15 | Level-tail rate (3e) | [COUNT via 2.3 — proved on the whole-window linear fragment, explicit constants; out-of-fragment rates **[OPEN-D4 / D3 / D5]**] | Lemma 3.4′(a)/(b)/(c) — Waves 5–6 need only the fragment |
 
 **Answer to the task's (iii):** nothing in the decomposition/exhaustion/convergence genuinely
 requires non-Montes content. The only candidate for genuinely-new measure content is D1 (count
 form at `deg φ ≥ 2` — believed provable as pure counting via triangular coordinates, but open; if
-it fails, that failure IS GAP-1/GAP-2 and must be reported as such); its two strictly weaker
-shadows D3 (partial-side linear window-freeness, one `deg φ = 1` read) and D4 (class-3 prefix
-upper bound, Lemma 3.4′(c)) are both implied by D1 and add no new candidate content. The
+it fails, that failure IS GAP-1/GAP-2 and must be reported as such); its three strictly weaker
+shadows D3 (partial-side linear window-freeness), D5 (mid-polygon full-side linear cross-frame
+freeness) and D4 (class-3 prefix upper bound, Lemma 3.4′(c)) are all implied by D1's mechanism
+and add no new candidate content. The
 palindromy/htameFE layer stays outside this note's scope (declared endpoint boundary,
 PROJECT_STATE §5.1).
 
@@ -607,12 +788,14 @@ against the pivot; exhaustion runs through the pointwise discriminant inclusion 
 only as a rearrangement of an absolutely convergent series of exactly-counted stratum masses. The
 wall's content survives, confined to OPEN-D1 (class-3 count forms), which exhaustion does not need.
 
-**The three claim classes (contents):**
-- **[COUNT/provable]:** development & recenter triangular bijections; strata are N-stable cylinder
-  unions; per-stratum counts for order ≤ 1 pools (PROVED in Lean) and all FULL-SIDE `deg ψ = 1`
-  towers (Lemma 2.3 — includes ALL of n=2); the per-level partition (3a) (order-1 PROVED); the
+**The three claim classes (contents; stratum classes 1/2/3 are the PARTITION of Thm 2.2):**
+- **[COUNT/proved]:** development & recenter triangular bijections; strata are N-stable cylinder
+  unions; per-stratum counts for class 1 (PROVED in Lean for banked menus) and all WHOLE-WINDOW
+  `deg ψ = 1` towers (Lemma 2.3, now a full digit-by-digit proof at general `s, m`, depth —
+  includes ALL of n=2); the per-level partition (3a) (order-1 PROVED); the
   discriminant tail (3b); the level-tail rate (3.4′) with explicit constants at `n = 2` and on
-  the full-side linear fragment; the geometric/cone resummations; convergence.
+  the whole-window linear fragment (`6(⌊N/2⌋+1)p^{−N}`); the geometric/cone resummations;
+  convergence and qualitative exhaustion (Thm 3.5(i), rate-free).
 - **[MONTES/axiomatizable]:** Hensel/L1 root split; order-r read definitions; leaf dichotomy +
   (e,f) product law (Cor 1.20/3.8 — extend `om_leaf_faithful` fiber-scoped per menu wave); lift
   invariance; termination/depth ≤ ind ≤ ½v_p(disc) (Thm 4.18/Cor 4.19 — new axiom candidate in the
@@ -622,13 +805,16 @@ wall's content survives, confined to OPEN-D1 (class-3 count forms), which exhaus
   **D2** — L3 pool counts over `F_{q^w}` in Lean (math known; tower vocabulary work);
   **D3** — partial-side linear descend window-freeness (`deg φ = 1` mini-analogue of D1;
   `n ≥ 3` only, not needed for Wave 5); **D4** — the class-3 prefix upper bound / level-tail
-  rate (Lemma 3.4′(c); implied by D1, not needed for Waves 5–6).
+  rate (Lemma 3.4′(c); implied by D1, not needed for Waves 5–6); **D5** — mid-polygon full-side
+  linear descend cross-frame freeness (`n ≥ 3` only; the exact failing step of extending
+  Lemma 2.3 past whole-window sides — the diagonal rescale absorbs the whole window or nothing;
+  not needed for Waves 5–6).
 
 **Recommended wave order** (each preceded by its §7 numeric gate):
 1. **Wave 4 (mixed-e, order ≤ 1)** — class-1 strata only: menu = multi-slope shapes, counting legs
    already banked (`hnode_multiSideProduct`); gate Case D. Lowest risk.
 2. **Wave 5 (μ≥2 linear descents)** — Lemma 2.3 in Lean + the depth-indexed menu for `n=2`-style
-   full-side recenter chains; gates Cases A/B/C. Closes the FIRST complete per-type tower
+   whole-window recenter chains; gates Cases A/B/C. Closes the FIRST complete per-type tower
    (`n = 2` all types, exact `q/(q+1)`-family values) with no new axiom beyond the depth⟹disc
    declaration (boundary #6) if the envelope is wired.
 3. **Wave 6 (series assembly)** — infinite menu with per-level finite support; partial sums = the
@@ -677,4 +863,45 @@ ZERO failures.
    unipotent); Lemma 3.3's `μ(Z_∞)` parenthetical dropped; Thm 2.1's bijection line qualified to
    the unipotent steps (rescale steps are `p`-power-to-one across levels).
 
-**Status: fixes applied 2026-07-22, awaiting pass 2.**
+**Pass 2 (adversarial verification, fresh context/model, 2026-07-22): pass-1 fixes ACCEPTED**
+(per-descend lattice mechanism, reducible-disc derivation via Def 4.11 + `disc(PQ) =
+disc P·disc Q·Res²`, the `n = 2` tail arithmetic, the root-opening counterexample), **with NEW
+findings:** (1) BLOCKING — 3.4′(b)'s general-`n` bound not proved (factors + mixed-size assembly
+incomplete); (2) BLOCKING — old classes 1/3 overlapped, letting open extension-field reads carry
+"proved" labels; (3) BLOCKING — Thm 3.5 asserted (‡)-masses for EVERY stratum unconditionally
+while D1/D2 were open; (4) substantial — (4a) Lemma 2.3's general-`s` child uniformity asserted
+from the `n = 2` ledger + "identical in structure", not proved; (4b) Thm 3.5's quantitative
+clause cited 3.4′ with no class restriction; (4c) Thm 4.1's `H`-tail priced through (‡) without
+conditioning; (5) small — the old-mechanism witness needed `N ≥ 3` or `a₀ = 0`.
+
+**Fixes applied 2026-07-22 (second revision):**
+1. *(4a — the central repair)* Lemma 2.3 re-proved digit-by-digit at general `s`, general `m`,
+   general depth: the coefficient identity (2.3a) (unipotent binomial shift × diagonal
+   `p^{m(s−i)}`), the monotone-STAIRCASE bijection (child levels `M_k = N − m(s−k)`, level pin
+   `N′ = N − sm`), the residual identity (2.3b) `R_S(y) = ḡ_w(y−c̃)` making the stratum's
+   residual condition EXACTLY the child cluster condition, the exact mass (2.3c)
+   `p^{−s−m·s(s+1)/2}` per `(m,c̃)`, and the chain corollary — all verified by brute force at
+   `s = 3` (five configurations) and in the embedded-window form (unit `a_s`, `p`-divisible
+   tails, `n = 4,5`; five more). **Honest scope boundary found:** the proof works iff the descend
+   side spans the WHOLE window (the diagonal rescale must absorb every window coordinate);
+   mid-polygon full-side descends (`n ≥ 3` only) are the new **[OPEN-D5]** with the failing step
+   named (cross-frame joint freeness). All of `n = 2` and Waves 5–6 sit inside the proved scope.
+2. *(1)* 3.4′(b) restated on the fragment `F₀` (all descends whole-window) and re-proved with
+   displayed identities (3f)–(3h), no "similarly": stall containment (stall ⟹ some window
+   coefficient has `v ≥ B`), per-step ledger from (2.3c) with the critical factor
+   `r_s = (q−1)/(p^{s(s−1)/2}−1)`, chain sum, and an assembly that needs NO L1 and no branch-shape
+   count (in `F₀` windows never branch before descending — the old `n^{n+1}(N+2)` bound's
+   mixed-size assembly is gone, replaced by `6(⌊N/2⌋+1)p^{−N}`); out-of-fragment prefixes
+   explicitly routed to (c) [D4/D3/D5].
+3. *(2)* Classes made a PARTITION (Thm 2.2): class 3 = some key degree ≥ 2 ANYWHERE; classes 1–2
+   = all-linear (which provably forces base-field pools), split by depth 0 / ≥ 1; every "proved"
+   label re-audited against it (class-3 masses: only p-power-rationality unconditional; `δ ≥ 2`
+   root LEAVES stay order-0-proved).
+4. *(3, 4b, 4c)* Thm 3.5 split into (i) unconditional qualitative (abstract masses + rate-free
+   monotone-convergence exhaustion), (ii) proved-fragment quantitative, (iii) D-conditional;
+   Thm 4.1 split likewise (depth tail unconditional via 3.2+3.3; height tail proved on the
+   fragment, conditional beyond); Thm 4.5 and Claim 4.4(ii) scoped to match.
+5. *(5)* Witness fixed: `v(a₁) = 1, v(a₀) ≥ N` with `N ≥ 3` (cancellation at `N = 2` noted), or
+   `a₀ = 0`.
+
+**Status: fixes applied 2026-07-22 (second revision), awaiting pass 3.**
