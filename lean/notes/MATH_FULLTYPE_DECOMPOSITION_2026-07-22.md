@@ -87,7 +87,8 @@ combinatorial data + residue-field values); no measure claims yet.
 > **Canonical lifts.** All lifts (`φ_j`, `ĉ`, `φ'`) are made by a FIXED choice function (Teichmüller
 > digits / minimal-support lifts). That the resulting reads compute the same leaves/(e,f) as any
 > admissible-lift Montes run is lift-invariance [MONTES §2–3 admissible-representative invariance;
-> exact GMN pin to be fixed at axiom-declaration time — flagged]. With canonical lifts, every read
+> exact GMN pin TBD at axiom-declaration time (standard Montes content, citation pending) —
+> flagged]. With canonical lifts, every read
 > along the tree is a **fixed, f-independent** triangular coordinate change followed by digit
 > inspections — the load-bearing structural observation of this note.
 
@@ -199,8 +200,10 @@ union `Z_∞`; `μ(Z_∞) = 0` [COUNT — countable union of measure-zero polyno
 >      window polygon, `n ≥ 3` only): **[OPEN-D5]** (new this revision).
 > 3. **Class 3**: the cylinder structure (Thm 2.1) holds, hence each `μ(S_s)` is unconditionally
 >    a rational number of the form `(integer)·p^{−nN₀(s)}` [COUNT]; but the DISPLAYED (‡) values
->    `C_s, A_s` — i.e. that the read digits are jointly free with the displayed pool counts — are
->    **[OPEN-D1]** (the development-digit ledger), and the pool counts over `F_Q`, `Q = q^w`, are
+>    `C_s, A_s` — i.e. that the read digits, across ALL reads of the history, are jointly free
+>    with the displayed pool counts — are
+>    **[OPEN-D1]** (the development-digit ledger, JOINT form — exactly what a whole-stratum (‡)
+>    value needs), and the pool counts over `F_Q`, `Q = q^w`, are
 >    **[OPEN-D2]** in Lean (math-solid: L3 holds over every finite field, `HUMAN_PROOF §4`;
 >    Lean's `CellCard.shapeCount` is `ZMod p` only — the `UnramifiedBase`/tower work). Do NOT
 >    read "the FORM (‡) holds" as proved for class 3: only the p-power-rationality is.
@@ -315,17 +318,33 @@ union `Z_∞`; `μ(Z_∞) = 0` [COUNT — countable union of measure-zero polyno
 > supplied — D1 as stated concerns `deg φ ≥ 2` keys and does not logically imply this
 > `deg φ = 1` cross-frame statement. Not needed for `n = 2` or Waves 5–6.
 
-> **[OPEN-D1] (development-digit ledger, `deg φ ≥ 2`) — the precise open lemma.** For a fixed
-> canonical key `φ` (degree `m_φ ≥ 2`) over node ring `O_r` and a fixed read of its polygon/
-> residual data: the joint distribution, under uniform `f mod p^N`, of the inspected digits — the
-> `F_r`-residues of the on-side development coefficients `a_i(f)` at their polygon heights — is
-> uniform and independent over their pools (endpoint units, interior free), with all uninspected
-> digits free; equivalently, count = (‡) with the displayed `C_s, A_s`. *Route (recorded, not
-> proved):* the development is linear-triangular for fixed φ (Def 1.2.1), so D1 reduces to tracking
-> which base-`p` digit functionals the `v_r`-heights inspect — the `RESTART_LEMMA.md` unipotent-
-> triangular route, = the count-level content of BB3_infinity's GAP-1/GAP-2 in the ONLY place this
-> note needs it. At order 1 with `deg φ = 1` it is proved (`CellCard.cell_card_raw`). **This is the
-> single riskiest lemma of the program** (§8).
+> **[OPEN-D1] (development-digit ledger, `deg φ ≥ 2`) — the precise open lemma, JOINT form
+> (restated this revision, 2026-07-22, pass 4: the previous statement gave only the single-read
+> marginal below, while every consumer needs the joint ledger).** For a complete fixed
+> read-HISTORY/prefix `s` containing some `deg φ ≥ 2` development step (a class-3 history; ALL
+> its reads — the `deg φ ≥ 2` steps included — are priced jointly, so this scope matches the
+> class-3 consumers and leaves the all-linear D3/D5 strata outside, as before), under uniform
+> `f mod p^N`, `N ≥ N₀(s)`: the full collection of inspected digit
+> functionals — for each read, the `F_r`-residues of the on-side development coefficients
+> `a_i(f)` at their polygon heights — is JOINTLY uniform and independent over their pools
+> (endpoint units, interior free), with all uninspected digits free. Equivalently: each read's
+> displayed law holds CONDITIONALLY on every compatible ancestor-stratum cylinder (the
+> conditional law of a read's inspected digits, given any compatible outcome of all earlier
+> reads, is the same uniform-product law); equivalently, count = (‡) with the displayed
+> `C_s, A_s` — the whole-stratum count formula IS the joint statement, which is why the marginal
+> form below does not suffice for any (‡) consumer.
+> **D1-marginal (corollary/special case — the pre-pass-4 statement of this item):** for a fixed
+> canonical key `φ` (degree `m_φ ≥ 2`) over node ring `O_r` and a fixed SINGLE read of its
+> polygon/residual data, the joint distribution of that read's inspected digits is uniform and
+> independent over their pools, with all uninspected digits free.
+> *Route (recorded, not proved):* the development is linear-triangular for fixed φ (Def 1.2.1),
+> and each descend's frame change is itself a fixed triangular map, so joint-D1 reduces to
+> tracking which base-`p` digit functionals the `v_r`-heights inspect across the whole history —
+> the `RESTART_LEMMA.md` unipotent-triangular route, = the count-level content of BB3_infinity's
+> GAP-1/GAP-2 in the ONLY place this note needs it. At order 1 with `deg φ = 1` the MARGINAL
+> analogue is proved (`CellCard.cell_card_raw`); the joint analogue for whole-window linear
+> chains is Lemma 2.3(4)–(5) [COUNT — proved]. **This is the single riskiest lemma of the
+> program** (§8).
 
 ---
 
@@ -516,7 +535,9 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > mass in their own development coordinates [COUNT], but the JOINT of parent and child conditions
 > across a `deg φ ≥ 2` descend is exactly D1's content (GAP-2's count half); no elementary route
 > is known. **OPEN-D4 :=** for class-3 read-prefixes, `μ(prefix) ≤ C(n)·p^{−A(prefix)}` with `A`
-> the prefix's ledger exponent (implied by D1; strictly weaker). For prefixes whose exit step is a
+> the prefix's ledger exponent (implied by JOINT-D1, whose conditional-on-ancestors form prices
+> the whole prefix; the single-read D1-marginal does NOT imply it — the joint across reads is
+> exactly what it lacks; strictly weaker than joint-D1). For prefixes whose exit step is a
 > partial-side or mid-polygon LINEAR descend, the needed one-sided bound is the corresponding
 > upper-bound half of **D3 / D5** (strictly easier than D4). None of D3/D4/D5 is needed for
 > Waves 5–6 — (b) covers `hExhaust` on the whole-window linear fragment (§8) — and rate-free
@@ -542,10 +563,11 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > distinct strength (this revision, 2026-07-22; pass-2 found the old single statement asserting
 > (‡)-masses for EVERY stratum unconditionally, which contradicted the D1/D2 ledger).**
 >
-> **(i) Unconditional qualitative decomposition [COUNT + MONTES #4 + #5 + #6 — NO open item,
+> **(i) Unconditional qualitative decomposition [COUNT + MONTES #4 + #5 + #6 — NO open D-lemma,
 > NO (‡) values, NO rate; #4 (leaf/type faithfulness) enters the per-type clause `σ(s) = σ`,
-> #5 (lift invariance) identifies the canonical-lift tree with a Montes run, #6 is
-> termination + depth⟹disc].** The terminating strata are pairwise disjoint and, with their ABSTRACT
+> #5 (lift invariance) identifies the canonical-lift tree with a Montes run — boundary #5's
+> exact GMN pin is TBD at axiom-declaration time (standard Montes content, citation pending),
+> #6 is termination + depth⟹disc].** The terminating strata are pairwise disjoint and, with their ABSTRACT
 > masses `μ(S_s)` (well-defined: each `S_s` is a finite union of cylinders, Thm 2.1),
 > ```
 >   μ(box) = Σ_{s terminating} μ(S_s),   and per type:
@@ -568,7 +590,8 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > consumes at `n = 2` (where the fragment is everything).
 >
 > **(iii) Conditional quantitative form [OPEN-gated].** For class-3 strata the (‡) values of
-> `μ(S_s)` are conditional on D1 (+ D2 in Lean); for class-2 partial-side/mid-polygon strata, on
+> `μ(S_s)` are conditional on JOINT-D1 (+ D2 in Lean; a whole-stratum (‡) value is a joint
+> statement, so the marginal form would not suffice); for class-2 partial-side/mid-polygon strata, on
 > D3/D5; the corresponding level-tail RATES are conditional on D4 (resp. the D3/D5 upper-bound
 > halves), per 3.4′(c). Nothing in (i) depends on (iii).
 >
@@ -657,7 +680,7 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > ladder sums to a rational function with denominator `1 − q^{−(ladder weight)}` [COUNT] —
 > (a)/(b): exactly the engine's `_geom_sum_inf`/`_cone_sum` and L5fix(d); Lean pattern exists
 > (window-K staircases, `normSum_omMenuW3_mono`; the K→∞ sum is Wave 6).
-> (i-b) [conditional] for class-3 ladders the same closure holds GIVEN D1 (+ D2 in Lean); for
+> (i-b) [conditional] for class-3 ladders the same closure holds GIVEN joint-D1 (+ D2 in Lean); for
 > the class-2 partial-side/mid-polygon portions, GIVEN D3/D5 — the (‡) form there is exactly
 > what those opens supply. Multi-side reads sum over the strictly-decreasing-slope cone via the
 > gap substitution — engine `_sum_by_gaps`, pure lattice algebra [COUNT].
@@ -665,14 +688,19 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > masses by a fixed per-step total ratio (e.g. `Σ_m (1−q^{-1})q^{−(3m−1)} = 1/(q²+q+1)` at
 > `n=2`); chains resum geometrically [COUNT via 2.3 — PROVED]. Partial-side linear descents
 > (`n ≥ 3` only) need [OPEN-D3]; mid-polygon full-side linear descents (`n ≥ 3` only) need
-> [OPEN-D5]. For `deg φ ≥ 2` descents the same closure holds GIVEN D1 (the
-> per-step masses then being class-3 (‡) values with base-changed `q ↦ q^{w}`) [OPEN-D1].
+> [OPEN-D5]. For `deg φ ≥ 2` descents the same closure holds GIVEN joint-D1 (the
+> per-step masses then being class-3 (‡) values with base-changed `q ↦ q^{w}`, each conditional
+> on its ancestor cylinder — the conditional-on-ancestors form is exactly what joint-D1
+> supplies) [OPEN-D1].
 > (iii) Everything else (slopes' denominators, shapes, residue degrees, number of sides, depth of
 > the SHAPE tree after quotienting ladders/towers) is finite and p-independent — (a): L5fix(b),
 > `HUMAN_PROOF §9`; the menu `T_n` finiteness.
 
 > **Theorem 4.5 (conditional rationality; agreement with the engine) [(b), conditional].** Modulo
-> D1+D2 (the class-3 strata) AND D3+D5 (the class-2 partial-side/mid-polygon remainder): for each
+> D1+D2 (the class-3 strata) AND D3+D5 (the class-2 partial-side/mid-polygon remainder), the D1
+> gate meaning JOINT-D1 (§2's restated form — under the joint ledger every class-3 stratum's (‡)
+> mass and its ladder/tower closures (Claim 4.4) follow, so the gate is SUFFICIENT; the marginal
+> form alone would not be): for each
 > `n, σ` the sum (3d), grouped by shape and resummed by 4.4, is
 > a single rational function of `q` evaluated at `q = p`, equal to the engine's
 > `alpha_full(n)[σ]` (the `beta_e` fixpoint assembly of `om_density_engine.py`) — the engine
@@ -701,20 +729,23 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 | 7 | Discriminant tail (3b) | [COUNT — proved here] | Lemma 3.3 (elementary; Lean-able: resultant product + Fubini + ball bound) |
 | 8 | Per-level partition (3a) | [COUNT — order-1 proved] | `stratumCount1_partition`; general = same pattern |
 | 9 | Per-stratum counts, classes 1–2 | [COUNT — class 1 + whole-window class 2 PROVED] | §2 Thm 2.2.1–2, Lemma 2.3 (whole-window towers, general `s,m,depth` — proved this revision); class-2 remainder: partial-side = **[OPEN-D3]**, mid-polygon full-side = **[OPEN-D5]**, both `n ≥ 3` only |
-| 10 | Per-stratum counts, class 3 (`deg φ ≥ 2`) | **[OPEN-D1]** | the development-digit ledger; = count-level GAP-1/GAP-2 (`BB3_infinity §4.2/§8`); route: RESTART_LEMMA triangular coordinates |
+| 10 | Per-stratum counts, class 3 (`deg φ ≥ 2`) | **[OPEN-D1]** | the development-digit ledger, JOINT form (restated pass 4 — whole-stratum counts need the joint, not the single-read marginal); = count-level GAP-1/GAP-2 (`BB3_infinity §4.2/§8`); route: RESTART_LEMMA triangular coordinates |
 | 11 | Pool counts over `F_{q^w}` in Lean | **[OPEN-D2]** | math (a)-known (L3 all finite fields); Lean `UnramifiedBase` tower work |
 | 12 | Residual equidistribution as an AXIOM | **excluded** | standing non-import (no GMN counterpart — `M6_lemma.md`, PROJECT_STATE); its role is absorbed by D1 as a provable count statement |
 | 13 | Geometric/cone resummation | [COUNT] | §4.4; engine `_sum_by_gaps`; L5fix(d) |
-| 14 | Exhaustion (3d), abstract masses + qualitative tail | [COUNT+MONTES #4/#5/#6] | Thm 3.5(i) — needs NO open item; the (‡)-valued quantitative forms are 3.5(ii) [proved fragment] and 3.5(iii) [conditional] |
+| 14 | Exhaustion (3d), abstract masses + qualitative tail | [COUNT+MONTES #4/#5/#6] | Thm 3.5(i) — needs NO open D-lemma; boundary #5's exact GMN pin is TBD at axiom-declaration time (standard Montes content, citation pending); the (‡)-valued quantitative forms are 3.5(ii) [proved fragment] and 3.5(iii) [conditional] |
 | 15 | Level-tail rate (3e) | [COUNT via 2.3 — proved on the whole-window linear fragment, explicit constants; out-of-fragment rates **[OPEN-D4 / D3 / D5]**] | Lemma 3.4′(a)/(b)/(c) — Waves 5–6 need only the fragment |
 
 **Answer to the task's (iii):** nothing in the decomposition/exhaustion/convergence genuinely
-requires non-Montes content. The only candidate for genuinely-new measure content is D1 (count
-form at `deg φ ≥ 2` — believed provable as pure counting via triangular coordinates, but open; if
+requires non-Montes content. The only candidate for genuinely-new measure content is D1 (the
+JOINT count ledger at `deg φ ≥ 2` — believed provable as pure counting via triangular
+coordinates, but open; if
 it fails, that failure IS GAP-1/GAP-2 and must be reported as such); its three
 shadows D3 (partial-side linear window-freeness), D5 (mid-polygon full-side linear cross-frame
 freeness) and D4 (class-3 prefix upper bound, Lemma 3.4′(c)) add no new candidate content —
-D4 is implied by D1 (Lemma 3.4′(c)); D3/D5 are expected to follow from an extension of the D1
+D4 is implied by JOINT-D1 (Lemma 3.4′(c); the implication survives ONLY in the joint form — a
+single-read marginal does not bound a multi-read prefix); D3/D5 are expected to follow from an
+extension of the D1
 ledger method (no formal reduction supplied). The
 palindromy/htameFE layer stays outside this note's scope (declared endpoint boundary,
 PROJECT_STATE §5.1).
@@ -796,7 +827,9 @@ gate. PARI-type samples must give the mixed-e σ.
 `v(a₀) = 1` exact (unit `F_4`-digit), `v(a₁) ≥ 1`: leaf `(e,f) = (2,2)`. Expected mass
 `(Q−1)·Q^{−3}` with `Q = q² = 4`: `3/64` (one root point at q=2). Count mod `2^N` (`N ≥ 2`;
 `N=2`: 12 of 256) + PARI type `{(2,2)}`. **This is the decisive empirical gate for OPEN-D1's
-count form before any Lean work on class-3 strata.**
+count form before any Lean work on class-3 strata** (a depth-0, single-development instance —
+it exercises D1-marginal conditioned on the root read; the joint ledger at depth ≥ 1 needs a
+deeper class-3 probe on top).
 
 ---
 
@@ -820,12 +853,16 @@ wall's content survives, confined to OPEN-D1 (class-3 count forms), which exhaus
   (e,f) product law (Cor 1.20/3.8 — extend `om_leaf_faithful` fiber-scoped per menu wave); lift
   invariance; termination/depth ≤ ind ≤ ½v_p(disc) (Thm 4.18/Cor 4.19 — new axiom candidate in the
   pointwise depth⟹disc form).
-- **[OPEN]:** **D1** — the development-digit ledger for `deg φ ≥ 2` (count-level GAP-1/GAP-2;
-  believed pure counting via fixed triangular coordinates; Case E is its empirical gate);
+- **[OPEN]:** **D1** — the development-digit ledger for `deg φ ≥ 2`, in the JOINT form (all
+  reads of a history jointly free — restated pass 4; the single-read marginal is a corollary,
+  D1-marginal) (count-level GAP-1/GAP-2;
+  believed pure counting via fixed triangular coordinates; Case E is the empirical gate for its
+  depth-0 instance);
   **D2** — L3 pool counts over `F_{q^w}` in Lean (math known; tower vocabulary work);
   **D3** — partial-side linear descend window-freeness (`deg φ = 1` mini-analogue of D1;
   `n ≥ 3` only, not needed for Wave 5); **D4** — the class-3 prefix upper bound / level-tail
-  rate (Lemma 3.4′(c); implied by D1, not needed for Waves 5–6); **D5** — mid-polygon full-side
+  rate (Lemma 3.4′(c); implied by JOINT-D1 only — the marginal does not give it; not needed for
+  Waves 5–6); **D5** — mid-polygon full-side
   linear descend cross-frame freeness (`n ≥ 3` only; the exact failing step of extending
   Lemma 2.3 past whole-window sides — the diagonal rescale absorbs the whole window or nothing;
   not needed for Waves 5–6).
@@ -841,10 +878,12 @@ wall's content survives, confined to OPEN-D1 (class-3 count forms), which exhaus
    window staircases (Wave-3 pattern); exhaustion clause via (3a)+(3c)+(3.4′) discharging
    `hExhaust` on the linear-tower fragment.
 4. **Wave 7 (class 3 / D1)** — only after Case E passes and D1 is proved on paper for one `deg φ = 2`
-   order-1 read; if D1 resists pure counting, STOP and report it as GAP-1/GAP-2 resurfacing — do
-   not axiomatize it (non-import #12).
+   order-1 read (the D1-marginal instance; the Wave-7 target is the JOINT ledger along full
+   class-3 histories); if D1 resists pure counting, STOP and report it as GAP-1/GAP-2
+   resurfacing — do not axiomatize it (non-import #12).
 
-**Single riskiest open lemma: OPEN-D1** (the development-digit ledger at `deg φ ≥ 2`). Everything
+**Single riskiest open lemma: OPEN-D1** (the development-digit ledger at `deg φ ≥ 2`, joint
+form). Everything
 else in this note is either proved, provable by the exhibited elementary arguments, or a
 faithful-scope extension of the existing Montes axiom pattern.
 
@@ -967,4 +1006,39 @@ keys and does not logically imply the `deg φ = 1` cross-frame D5.
    overstated "every proved label re-audited" line of the pass-2 record corrected in place
    (annotation at pass-2 fix 3 above).
 
-**Status: fixes applied 2026-07-22 (third revision), awaiting pass 4.**
+**Pass 4 (adversarial verification, fresh context, 2026-07-22): all six pass-3 fixes CLEAN** —
+Def 1.3's recursive terminating characterization, Thm 4.5's D1+D2+D3+D5 gate, the Claim 4.4(i)
+split, the 3.4′(a)/(3h) relaxation displays, Thm 3.5(i)'s import line, and the D5 dependency
+downgrade all verified in place. **Waves 5 and 6 declared mathematically unblocked** (their
+inputs lie in the proved whole-window fragment — Lemma 2.3, 3.4′(a)/(b), Thm 3.5(i)–(ii) — per
+§8's wave order). TWO defects remain:
+(1) CRITICAL — [OPEN-D1] was stated at single-read MARGINAL strength ("for a fixed canonical
+key `φ` and a fixed read: the joint distribution, under uniform `f mod p^N`, of the inspected
+digits is uniform and independent over their pools") while its consumers price MULTIPLE reads
+jointly: the "equivalently, count = (‡)" line inside the D1 block itself, the
+D4-implied-by-D1 claims (Lemma 3.4′(c), §5's answer, §8), and Thm 4.5's D1+D2+D3+D5 gate.
+(2) GAP — Thm 3.5(i)'s bracket "NO open item" conflated mathematical import with
+axiom-declaration readiness: boundary #5's exact GMN pin is still TBD at declaration time.
+
+**Fixes applied 2026-07-22 (fourth revision) — exactly the two, no other content change:**
+1. [OPEN-D1] restated at JOINT-ledger strength: for a complete fixed read-history/prefix
+   containing a `deg φ ≥ 2` development step (class-3 scope — the all-linear D3/D5 strata stay
+   outside, as before), the inspected digit functionals of ALL its reads are JOINTLY uniform
+   and independent over their pools — equivalently, each read's displayed law holds
+   CONDITIONALLY on every compatible ancestor-stratum cylinder; the old single-read form kept
+   as the labeled corollary **D1-marginal**. The named citing sites re-audited: the
+   "count = (‡)" equivalence now attaches to the JOINT form (a whole-stratum count IS a joint
+   statement); D4 ⟸ D1 confirmed to survive ONLY under joint-D1 and annotated so at 3.4′(c),
+   §5's answer, and §8; Thm 4.5's gate annotated to mean JOINT-D1, under which the gate is
+   sufficient. Grep-audit of every remaining D1 citation: Thm 2.2.3 (class-3 (‡) values),
+   Thm 3.5(iii), Claim 4.4(i-b)/(ii), boundary row 10 marked joint; §7 Case E and the Wave-7
+   entry gate marked as depth-0/marginal instances (the Wave-7 target is the joint ledger).
+   No [COUNT]/proved label was changed; the proved order-1 instance is now cited precisely
+   (marginal: `CellCard.cell_card_raw`; joint analogue on whole-window linear chains:
+   Lemma 2.3(4)–(5), already [COUNT — proved]).
+2. Thm 3.5(i)'s bracket softened to distinguish mathematical import from declaration
+   readiness: "NO open D-lemma; boundary #5's exact GMN pin is TBD at axiom-declaration time
+   (standard Montes content, citation pending)"; the same phrasing harmonized at Def 1.2's
+   lift-invariance flag and boundary-table row 14.
+
+**Status: fixes applied 2026-07-22 (fourth revision), awaiting pass 5.**
