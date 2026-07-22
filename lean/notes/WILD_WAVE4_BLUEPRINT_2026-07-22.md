@@ -8,7 +8,9 @@ exactly; W4 untouched by the findings).**
 
 Extend the certified σ-keyed menu to MIXED-e types: multi-slope Newton polygons, all-μ=1 per-side
 residuals, order ≤ 1. First increment: **all side-e's ≥ 2 and pairwise distinct** (one side per
-distinct e, canonical minimal height k=1 per side; slopes −1/e strictly increasing as e decreases).
+distinct e, canonical minimal height k=1 per side; sides ordered steepest-FIRST = INCREASING e,
+since slope −1/e increases with e and F4 demands strictly increasing slopes — ERRATUM fixed
+2026-07-22 after the external gate proved the decreasing-e order hull-inadmissible/empty).
 DEFERRED (named): e=1-mixed types (need the flat slope-0 side supported in the path machinery —
 check `MenuPath`/residual reading on flat sides before attempting); same-e multi-side (two sides,
 same denominator, different heights — a later window); per-side K-windows.
@@ -44,7 +46,7 @@ same denominator, different heights — a later window); per-side K-windows.
    defer to `typeOfW`. Prove recovery on the canonical family + cross-family/cross-σ disjointness.
 3. **The canonical menu**: for σ with distinct e's ≥ 2 (each (e, f-parts-of-that-e) group):
    `mixedShape σ := multiSideLit (canonical path) (per-side wShape-style parts)` — sides ordered by
-   increasing slope (decreasing e), side for group e: run = e·(Σf), drop = Σf (k=1 minimal).
+   increasing slope = INCREASING e (steepest first; erratum fixed 2026-07-22), side for group e: run = e·(Σf), drop = Σf (k=1 minimal).
    Admissibility: `MenuPath` (H_total = Σ drops; threshold N₀ = H_total + 1), `ShapesFor` (per-side
    partition of sideDeg = Σf via the gcd argument per side), `AllMuOne`, `AllNonempty`.
    `omMenu4 n K σ := omMenuW3 n K σ ∪ (mixedShape σ).toFinset` (empty extra branch unless σ is
@@ -68,9 +70,7 @@ same denominator, different heights — a later window); per-side K-windows.
 — finite: partitions of n into distinct-e≥2 groups), `realDW4` (C := C4), `realFW4` (decomposition:
 per-family split — omCount_eq_mul_all for old shapes, blockCardinality for multi-slope; multiplicity
 polynomial := prodSC-as-polynomial), capstones `montes_unconditional_w4 (n K)` verbatim-modulo-menu
-+ recovery gate (`omMenu4 = omMenuW3` on non-mixed σ). Gates: n=5, σ = {(2,1),(3,1)} (sides slope
-−1/3 then −1/2), value computed both by the Lean product and the external brute force (p=2, N=4:
-2^20 boxes); a σ-separation pair; census; C4 := 0 mutation.
++ recovery gate (`omMenu4 = omMenuW3` on non-mixed σ). Gates: n=5, σ = {(2,1),(3,1)}, canonical path (0,2)→(2,1)→(5,0) (e=2 side FIRST, slope −1/2 then −1/3), value (p−1)²·p⁻⁹ = 1/512 at p=2 (externally verified exact; newtonExponent 7, V = 9, per-side product factorization confirmed, cross-term p⁻²); a σ-separation pair; census; C4 := 0 mutation.
 
 ### W4c — axiom extension #3 + guardian ceremony
 Re-scope `om_leaf_faithful`'s menu to `omMenu4` (adds the mixed literals; the (e,f)-multiset
