@@ -65,7 +65,7 @@ open LeanUrat.OM.ChainMenu
 
 /-! ## 1. The splitU literal and its exact decode -/
 
-/-- The numeric head of the splitU leaf: order-slot `3` (fresh), tag `3` (below the
+/-- The numeric head of the splitU leaf: order-slot `3` (fresh), tag `3` (OUTSIDE the
 `ChainLeaf` tags `0/1/2` of `ChainMenu.leafHead`, which live in trees headed `(2, 2, ·)` —
 different head, no overlap), parameter `m` in the last slot. -/
 def splitUHead (m : ℕ) : ℕ × ℕ × ℕ := (3, 3, m)

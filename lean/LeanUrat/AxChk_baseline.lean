@@ -84,6 +84,8 @@ import LeanUrat.OM.QpTypeChainAll
 import LeanUrat.OM.ChainMenu6
 import LeanUrat.OM.FullFaithful
 import LeanUrat.OM.FullFaithfulGates
+import LeanUrat.OM.UniformCapstone
+import LeanUrat.OM.UniformModelN2Recovery
 open LeanUrat
 
 -- Capstones
@@ -1295,3 +1297,113 @@ open LeanUrat
 #print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive
 #print axioms LeanUrat.OM.RealInstanceW5.montes_w5_recovers
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+
+-- ══ Wave W6q-d (2026-07-22): splitU faithfulness masters + axiom RE-SCOPE #6
+-- (the general-p splitU family, split-keyed, axiom-free by REQUIREMENT) ══
+-- W6q-a (OM/ChainMenuU.lean, landed separately): the general-p splitU counting core
+-- (rootedPairs pool, LeafPairU/ChainPairU, counts; honestly EMPTY at p = 2).
+-- W6q-d THIS task: OM/QpTypeSplitU.lean — the AXIOM-FREE splitU masters: the root-generic
+-- two-simple-roots Hensel engine (GENERALIZING the banked split_two_roots, which was
+-- hard-coded to the residual roots {0, −w̄₁}; the derivative read h̄'(r̄) = r̄ − s̄ ≠ 0 is
+-- char-2-safe), the (SU) master at all m ≥ 0 over BOTH pools (rootedPairs and the order-0
+-- splitResPairs — ord0Split_master_hasType is the m = 0 boundary), the box-decode wrappers,
+-- the TRANSCRIBED ChainPairU step decode + unwind (stepDecode_general/chainUnwind are
+-- hard-coded to ChainMenu.ChainPair and were transcribed, engine pieces consumed from the
+-- bank), and the GENERAL-p translate commutation transBoxP_comp (re-derived against
+-- RecenterBox.affineEquiv; the banked transBox_comp is pinned to M9.realP).
+-- + OM/ChainMenu7.lean: the splitU literal splitULit at the FRESH head order-slot 3
+-- (head-encoding audit: headOrd reads the FIRST tree component, so a (2, 3, len) head
+-- would be dispatched to the chain branch and MIS-decoded by decodeLeaf's wildcard);
+-- omMenu7 = omMenu6 ∪ splitUShapes; typeOf7 keying; ChainCellU box fiber.
+-- + axiom RE-SCOPE #6 in OM/OmLeafFaithful.lean: om_leaf_faithful over omMenu7 with the
+-- four-family dispatch fiberOf7 (headOrd 3 → ChainCellU at the exact decode; else fiberOf5
+-- byte-identical); the W6c form DERIVED back as om_leaf_faithful_w6 (the exact former
+-- scope-#5 statement); the W5 derivation repointed through it (statement unchanged); two
+-- forced consumer repoints om_leaf_faithful → om_leaf_faithful_w6
+-- (FullFaithful.transChain_menuFiber_hasType, FullFaithfulGates.gate_w6c_axiom_coherent —
+-- hypotheses unchanged, footprints unchanged); p = 3 witness gates (y² + 9y + 18 =
+-- (y+3)(y+6), residual pair (2,0) ∈ rootedPairs 3) + the recorded wrong-keying mutation
+-- probe (evidence Block 5d there; the real axiom in NEITHER refutation cone).
+-- Blueprint §3 REQUIREMENT enforced by THIS census: the split-keyed payloads (masters,
+-- wrappers, unwind, translate, and the witness gate gate_w6q_splitU_hasType_axfree) MUST
+-- be Lean core ONLY — om_leaf_faithful appearing in ANY line of this group is a
+-- stop-the-line defect:
+#print axioms LeanUrat.OM.QpTypeSplitU.hensel_lift_at_simple_root
+#print axioms LeanUrat.OM.QpTypeSplitU.splitRes_two_roots
+#print axioms LeanUrat.OM.QpTypeSplitU.splitSep_master_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.leafSplitU_master_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.ord0Split_master_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.leafFiberU_split_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.ord0SplitCell_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.stepDecodeU_general
+#print axioms LeanUrat.OM.QpTypeSplitU.chainUnwindU
+#print axioms LeanUrat.OM.QpTypeSplitU.chainFiberU_split_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.transBoxP_comp
+#print axioms LeanUrat.OM.QpTypeSplitU.transChainFiberU_split_hasType
+#print axioms LeanUrat.OM.QpTypeSplitU.w6qSplitUPair_mem
+#print axioms LeanUrat.OM.QpTypeSplitU.w6qSplitU_not_irreducible
+#print axioms LeanUrat.OM.QpTypeSplitU.gate_w6q_splitU_hasType_axfree
+#print axioms LeanUrat.OM.ChainMenu7.splitULit
+#print axioms LeanUrat.OM.ChainMenu7.headOrd_splitULit
+#print axioms LeanUrat.OM.ChainMenu7.decodeMsU_splitULit
+#print axioms LeanUrat.OM.ChainMenu7.decodeMU_splitULit
+#print axioms LeanUrat.OM.ChainMenu7.splitULit_injective
+#print axioms LeanUrat.OM.ChainMenu7.headOrd_ne_three_of_mem_omMenu6
+#print axioms LeanUrat.OM.ChainMenu7.omMenu7
+#print axioms LeanUrat.OM.ChainMenu7.omMenu6_subset_omMenu7
+#print axioms LeanUrat.OM.ChainMenu7.mem_omMenu7_type
+#print axioms LeanUrat.OM.ChainMenu7.ChainCellU
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf7
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf7_splitU
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf7_not_splitU
+#print axioms LeanUrat.OM.OmLeafFaithful.w6qSplitU_mem_omMenu7
+#print axioms LeanUrat.OM.OmLeafFaithful.w6qSplitUFiber7_nonempty
+-- RE-PRINT (REQUIRED): the re-scoped axiom + the scope-#6 derived chain + the coherence
+-- gates + the repointed consumers — footprints MUST be core + om_leaf_faithful EXACTLY
+-- (nothing more, nothing less); the W6c form om_leaf_faithful_w6 is now a theorem in this
+-- list:
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w6
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w5
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_w6q_splitU_coherent
+#print axioms LeanUrat.OM.FullFaithful.transChain_menuFiber_hasType
+#print axioms LeanUrat.OM.FullFaithful.fullFiber_hasType
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_axiom_coherent
+-- RE-PRINT (REQUIRED): the split-keyed assembled corollaries stay CORE-ONLY after the
+-- re-scope (the §3 stop-the-line check at the consumer level):
+#print axioms LeanUrat.OM.FullFaithful.fullFiber_split_hasType_axfree
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_split_hasType_axfree
+-- RE-PRINT (REQUIRED): ALL density capstones (Waves 1, 3, 4, 5, the V2 capstone, the W6
+-- full-model capstone, and the recovery gates) REMAIN Lean core ONLY after W6q —
+-- om_leaf_faithful is consumed ONLY by the faithfulness theorems; a wild-wave axiom
+-- appearing in ANY footprint below is a stop-the-line event:
+#print axioms LeanUrat.OM.SeriesAssembly.montes_unconditional_n2_full
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW4.montes_w4_recovers
+#print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5
+#print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW5.montes_w5_recovers
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+
+-- ══ W6q (2026-07-22): THE ALL-PRIMES UNIFORMITY CAPSTONE — montes_uniform_n2 and its
+-- supporting chain MUST be Lean core ONLY (the capstone consumes NO project axiom; the
+-- directive's target statement: one FIXED rational function per type at EVERY prime,
+-- wild included). Any axiom in these footprints is a stop-the-line event:
+#print axioms LeanUrat.OM.UniformCapstone.montes_uniform_n2
+#print axioms LeanUrat.OM.UniformCapstone.hExhaustP
+#print axioms LeanUrat.OM.UniformCapstone.undecided_envelopeP
+#print axioms LeanUrat.OM.UniformCapstone.uniformDecided_tendsto
+#print axioms LeanUrat.OM.UniformCapstone.gate_uniform_p2_ram
+#print axioms LeanUrat.OM.UniformCapstone.gate_uniform_p3_ram
+#print axioms LeanUrat.OM.UniformCapstone.gate_uniform_p3_inert
+#print axioms LeanUrat.OM.UniformCapstone.gate_uniform_checksum
+#print axioms LeanUrat.OM.UniformCapstone.gate_wild_included
+#print axioms LeanUrat.OM.UniformModelN2.cluster_coveringP
+#print axioms LeanUrat.OM.UniformModelN2.decidedCountP_two_eq
+#print axioms LeanUrat.OM.QpTypeSplitU.transChainFiberU_split_hasType

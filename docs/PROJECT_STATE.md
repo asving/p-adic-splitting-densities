@@ -260,13 +260,35 @@ should not be conflated (this is the mistake an earlier draft of this document m
    OUT OF SCOPE ENTIRELY — do not touch `htameFE`/L7/M1/DCD at all. The end goal of the
    formalization is EXACTLY the uniformity statement: for each type σ, ONE fixed rational
    function computes the density at ALL primes, wild included. Move directly toward
-   formalizing the (accepted-note) argument proving this.** Concretely the next target is the
-   n=2 ALL-PRIMES uniformity capstone (Wave 7): the accepted note's tower argument at general
-   q — the full counting model at every prime p (all p residue points; the even-height
-   split-residual leaf family, pool (q−1)(q−2)/2, empty only at q=2), the general-q envelope
-   and exhaustion, the per-type value ties to the FIXED closed forms (ram 1/(q+1),
-   inert/split q/(2(q+1))), and `∀ p, countingDensity = R_σ(p)` — with faithfulness via the
-   already-general-p masters + axiom re-scope #6 for the new leaf family.
+   formalizing the (accepted-note) argument proving this.**
+   **W6q LANDED (2026-07-22, same day; blueprint `notes/WILD_WAVE6Q_BLUEPRINT_2026-07-22.md`
+   Codex-verified CLEAN in 2 passes; guardian audit #7 ACCEPT-WITH-FLAGS): THE ALL-PRIMES
+   UNIFORMITY CAPSTONE — `OM/UniformCapstone.montes_uniform_n2`, footprint Lean-core-ONLY.**
+   FIXED polynomials (num, den) per degree-2 type — numR = 1, denR = X+1, numI = numS = X,
+   denI = denS = 2X+2, defined once with NO prime in them — and for EVERY prime p (wild
+   p = 2 included): (R) fixed-num/den uniform rationality, (V) `(M7 p).countingDensity σ =
+   num(p)/den(p)` with den(p) ≠ 0, (B) bracket uniqueness fired OUTRIGHT via the general-p
+   exhaustion `hExhaustP` (envelope (⌊N/2⌋+1)·p^{−(N−1)}, pure counting, NO new axiom).
+   The general-p model `M7 p : CountingModel p 2` (`OM/UniformModelN2.lean`: residual-shape
+   order-0 cells; ALL p residue points; FOUR chain families incl. the NEW even-height
+   split-residual splitU leaf — pool (q−1)(q−2)/2, machine-checked empty at q = 2 —
+   `OM/ChainMenuU.lean`); the four-way `cluster_coveringP` with NO parity case-split;
+   the folded-weight envelope + the exact (q−1)-cancellation ledger + two-sided squeeze
+   (`OM/UniformCapstone.lean`, 2107 lines). Gates: p = 2 recovers the W6 values 1/3 (plus
+   the model-level tie `(M7 2).countingDensity = realMW6.countingDensity` for every σ);
+   p = 3 certifies 1/4, 3/8, 3/8 (census-anchored); checksum = 1 at every p. Faithfulness:
+   splitU masters axiom-free at general p (`OM/QpTypeSplitU.lean`, root-generic Hensel);
+   axiom RE-SCOPE #6 (`OM/ChainMenu7.lean` splitU literals at fresh order-slot 3 —
+   collision-safe vs the chain decoder — + `fiberOf7`; scope #5 derived back; split-keyed
+   cones machine-checked CORE-ONLY per the redundancy requirement). External validation:
+   `verification/census_n2_uniform.py` — per-family digit census EXACT at every (family,
+   height, translate) for p = 2 and p = 3. Spine note: the capstone fires
+   `MontesDataV2.countingDensity_eq_sum_coeff` (the decomposition theorem inside
+   `goal_theorem_montes`) — the full spine theorem bundles palindromy/htameFE, excluded by
+   this directive; the monic uniform densities are not palindromic, so no honest htameFE
+   exists to supply. Guardian flags (all benign, recorded in the audit log): bibliographic
+   pagination confirmation to carry; census stop-the-line is review-enforced (CI suggestion
+   noted). Remaining beyond n = 2: the note's class-3/D1–D5 perimeter (n ≥ 3), order ≥ 2.
    PROGRESS (2026-07-22): **Wave 4 COMPLETE** (mixed-e types certified — σ = {(2,1),(3,1)} at
    n=5 certifies 1/512 through the real instance; axiom re-scope #3 with the per-family
    `fiberOf4` dispatch, guardian audit #4 ACCEPT). **The math ground truth is ACCEPTED**:
@@ -410,9 +432,15 @@ should not be conflated (this is the mistake an earlier draft of this document m
   complete per-type density value — and since W6c (same day) the σ-keying is Montes-faithful in
   EVERY counted fiber (`FullFaithful.fullFiber_hasType`, core + `om_leaf_faithful`; split legs
   axiom-free); palindromy still conditional on `htameFE`.
-- **Honest one-line status:** the *mathematics* is complete modulo the published Montes/GMN algorithm
-  and is extensively cross-checked; the *Lean* is a sound, `sorry`-free engine + order-0 real result, but
-  **not yet a non-vacuous machine-checked proof** of the full palindromic all-orders per-type theorem.
+- **Honest one-line status (updated 2026-07-22, post-W6q):** at n = 2 the DIRECTIVE TARGET is
+  machine-checked, Lean-core-only, at every prime: `montes_uniform_n2` — one fixed rational
+  function per type computes the full counting density at ALL primes including the wild one,
+  exhaustion discharged, faithfulness modulo the one Montes axiom (split-keyed legs
+  axiom-free). Palindromy is out of scope by directive. Beyond n = 2, the general-n statement
+  awaits the note's class-3/D1–D5 perimeter and the order ≥ 2 tower — the *mathematics* is
+  complete modulo the published Montes/GMN algorithm at n = 2 unconditionally and conditional
+  on D1–D5 beyond; the *Lean* general-n content remains the p-uniform engine + the order-0
+  real theorem.
 
 Canonical math notes (blueprints, audits, negative results) live in the companion `uniform-rationality`
 project; the copies in `docs/` here are snapshots sufficient to reconstruct this Lean state.

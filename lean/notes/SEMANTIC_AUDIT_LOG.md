@@ -1101,3 +1101,76 @@ proofs hold at every translate — honest surplus in PROVED lemmas, not in the a
 fibers is definitional" is RETIRED; the first complete per-type density (n=2, p=2) is now
 Montes-faithful in every counted fiber, modulo exactly the one axiom. Unchanged: the q>2
 even-height split family (empty at q=2), palindromy = htameFE, order ≥ 2.
+
+---
+
+## 2026-07-22 — Wild Wave 6q: THE ALL-PRIMES UNIFORMITY CAPSTONE (n = 2) + re-scope #6
+
+**Directive (Asvin, post-W6c): palindromy OUT OF SCOPE entirely; the end goal is the
+uniformity statement.** This wave delivers it at n = 2: `UniformCapstone.montes_uniform_n2`
+— FIXED polynomials (numR = 1, denR = X+1; numI = numS = X, denI = denS = 2X+2; no prime in
+them) with, for EVERY prime p: (R) fixed-num/den rationality, (V) the value tie with
+nonvanishing denominator, (B) bracket uniqueness fired OUTRIGHT (`hExhaustP`: the general-p
+envelope (⌊N/2⌋+1)·p^{−(N−1)}, pure counting, NO new axiom). Capstone footprint:
+Lean core ONLY, in the baseline census (728 lines, zero errors).
+
+**Blueprint discipline:** `WILD_WAVE6Q_BLUEPRINT_2026-07-22.md`, math-first: the general-q
+ledger derived in closed form and CAUGHT-AND-FIXED once by the census cross-check (a dropped
+(q−1) cancellation produced a fake q = 3 contradiction — the method note is in §1.2); Codex
+passes: 0 critical/3 plan gaps (envelope derivation, splitU consumer requirement, wave
+order) → all fixed → CLEAN, the full ledger independently recomputed twice. Numeric gates
+BEFORE Lean: fresh p = 3 census mod 3⁷ (per-type 182/729, 91/243, 91/243, undecided EXACTLY
+1/729); per-family digit census (committed `verification/census_n2_uniform.py`) EXACT at
+every (family, height, translate) for p = 2 AND p = 3, incl. splitU emptiness at p = 2.
+
+**W6q-a/b/c (no trusted-base change; all core-only):** `ChainMenuU.lean` (the splitU pool
+`rootedPairs`, card (q−1)(q−2)/2, empty at q = 2 by decide; LeafPairU/ChainPairU; general-p
+order-0 residual-shape cells; the w̄₀ ≠ 0 trichotomy and order-0 partition as consumable
+covers); `UniformModelN2.lean` (+Recovery) — the four-family model over ALL p residue
+points, `cluster_coveringP` with NO parity case-split (the banked square-residual digit form
+serves both parities), master fiber disjointness over `ChainLeaf ⊕ ℕ` (the inductive NOT
+extended), box bound, and the p = 2 recovery `decidedCountP_two_eq` to W6's counts;
+`UniformCapstone.lean` (2107 lines) — the folded-weight bank (per-step domination
+(q−1)/q² ≤ 1/2, Σ ≤ 1/(q+1) ≤ 1/3), the msWP composition bounds with the
+normalized-count-to-∏w comparison established BEFORE composition (the Codex-mandated
+order), the exact (q−1)-cancellation ledger closures, the two-sided squeeze, `M7 p :
+CountingModel p 2` + `uniformD p : MontesDataV2` (realMW6/realDW6 at general p), the
+capstone, and gates (p = 2: 1/3 ×3 + the model tie to realMW6 at every σ; p = 3: 1/4, 3/8,
+3/8; checksum ∀p). Spine note: fires `MontesDataV2.countingDensity_eq_sum_coeff` — the full
+`goal_theorem_montes` bundles palindromy/htameFE (directive-excluded; the monic uniform
+densities are not palindromic, so no honest htameFE exists). Envelope note: the stall leg
+uses the critical folded weight (q−1)q^{−m} (Σ ≤ 1), the direct W6 generalization; the
+blueprint's subcritical bank is proved alongside.
+
+**W6q-d — RE-SCOPE #6 (guardian audit #7: ACCEPT-WITH-FLAGS, push cleared):** menu →
+`ChainMenu7.omMenu7 = omMenu6 ∪ splitUShapes` (n = 2, splitType2 only); literal `splitULit`
+at FRESH order-slot 3 — the task's first candidate (2,3,·) was REJECTED on inspection: a
+(2,·,·) head enters the chain dispatch where `decodeLeaf`'s wildcard mis-reads unknown leaf
+triples as `ram` (guardian: "slot 3 is necessary"; full no-collision inventory). Fiber →
+`fiberOf7` (headOrd-3 branch → the PROVED `ChainCellU` digit fiber at exact decode; else
+`fiberOf5` byte-identical). Statement map per literal (single side (0,2m)–(2,0), slope
+−m/1 ⟹ e = 1; Thm 1.19 two coprime factors; Cor 1.20 (1,1) legs). Scope #5 derived back
+(`om_leaf_faithful_w6`); w5 repointed; TWO forced consumer repoints
+(`transChain_menuFiber_hasType`, `gate_w6c_axiom_coherent` → routed through w6; statements
+unchanged; guardian: "the forced recovery path", accepted). The masters are AXIOM-FREE at
+general p (`QpTypeSplitU.lean`: root-generic Hensel engine — the banked two-root machinery
+was {0, −w̄₁}-hard-coded and was generalized, char-2-safe; all m ≥ 0, the m = 0 boundary =
+the general-p order-0 split master; unwind + all-translate transport). Witness: y² + 9y +
+18 = (y+3)(y+6) over ℤ₃ (the rootedPairs 3 singleton (2,0)); coherence gate core + axiom;
+axiom-free gate core-only. Mutation probe: {(1,2)}-keying mutation at the witness derives
+False against the two-factor refuter (real axiom outside the cone; recorded, scratch
+deleted). Census: byte-identical on all pre-existing lines; the split-keyed cones ALL
+CORE-ONLY (the blueprint §3 redundancy REQUIREMENT, machine-enforced by the census).
+
+**Guardian #7 flags (recorded):** (i) bibliographic — confirm the TAMS-print numbering of
+Thm 1.15/1.19/Cor 1.20 against the published PDF (statements are pinned from arXiv v2);
+(ii) cosmetic wording in a ChainMenu7 comment (FIXED same-day: "below" → "OUTSIDE");
+(iii) the census stop-the-line discipline is review-enforced — a CI check on the census
+output would make it a hard guard (suggestion carried); (iv) the guardian could not
+re-execute footprints itself (broken sandbox box) — the census runs are recorded in
+`lean/logs/` and the commit history.
+
+**Net effect:** the standing directive's target theorem EXISTS at n = 2 — density =
+R_σ(p) at every prime, wild included, machine-checked, core-only, externally validated at
+p = 2 and p = 3, faithful modulo exactly one axiom. Open beyond n = 2: class-3/D1–D5
+(n ≥ 3), order ≥ 2.
