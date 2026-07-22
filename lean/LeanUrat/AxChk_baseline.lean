@@ -72,6 +72,7 @@ import LeanUrat.OM.QpTypeH3
 import LeanUrat.OM.MultiSlopeMenu
 import LeanUrat.OM.RealInstanceW4
 import LeanUrat.OM.RealInstanceW4Gates
+import LeanUrat.OM.QpTypeMixed
 open LeanUrat
 
 -- Capstones
@@ -974,4 +975,85 @@ open LeanUrat
 #print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
 #print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
 #print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+-- ★★★ WILD WAVE 4c (axiom re-scope #3 + the mixed-gate axiom-free anchor) (2026-07-22,
+-- notes/WILD_WAVE4_BLUEPRINT_2026-07-22.md §W4c). The declared axiom om_leaf_faithful is
+-- RE-SCOPED (third scope) to the mixed-e menu MultiSlopeMenu.omMenu4 n K σ, with the fiber
+-- hypothesis re-scoped from the bare `B.classify … = T` equation to the PER-FAMILY DISPATCH
+-- fiberOf4: on multi-slope literals (headOrd T = 1) the GENUINE order-1 classify1/InCell fiber
+-- at the decoded cell `classify1 p (toBox …) = some (mkCell n (decodePath T) (decodeShapes T))`
+-- (mirroring the PROVED counting fiber MultiSlopeMenu.Fiber4 exactly); on every old shape,
+-- DEFINITIONALLY the old B.classify equation (fiberOf4_old). This dispatch is what avoids the
+-- vacuity trap (V1 failure mode): B.classify reads only the first Newton side and can never
+-- emit a multi-slope literal, so the naive re-scope would have made every mixed instance
+-- vacuously true. The W3c form is now the THEOREM om_leaf_faithful_w3 (menu leg by union
+-- injection, fiber leg definitional), and W1/W2 consumers route through om_leaf_faithful_w1
+-- unchanged. GMN content of the mixed branch: a nonempty classify1 fiber pins the multi-slope
+-- polygon + per-side all-μ=1 separable residuals; Thm 1.15 (slope dissection: one coprime
+-- factor block per side) + per-side Thm 1.19/Cor 1.20 give the factorization with mixed
+-- (e,f)-multiset = σ (= the definitional decode typeOf4_multiSideLit).
+-- OM/QpTypeMixed.lean is the NEW axiom-free anchor at the n = 5 mixed-gate stratum
+-- (multiSideLit 5 [(0,2),(2,1),(5,0)] [[(1,1)],[(1,1)]] = the canonical omMenu4 entry at
+-- σ₅ = {(2,1),(3,1)}): mixedGateFiber_valuation = the fiber link (v(a₀) = 2 exact, a₁ ∈ (p)²,
+-- v(a₂) = 1 exact, a₃, a₄ ∈ (p) — the two-slope digit conditions through
+-- classify1_eq_some_iff + inCell_mkCell_iff + the decode bridge); mixedGate_no_root('/)
+-- + mixedGate_no_linear_factor' + the fiber forms = the FULL-strength elementary anchor
+-- (a ℚ_p-root descends to ℤ_[p]; p ∣ y forces p³ ∣ a₀ against exactness, p ∤ y forces
+-- p ∣ y⁵ against primality — no ℚ_p-root, hence NO degree-1 factor over ℚ_p);
+-- mixedGateFiber_nonempty = the inhabited mixed fiber (X⁵ + 2X² + 4 over ℤ_[2] at N = 4,
+-- InCell proved from the digit conditions on BOTH sides, residuals X + 1 each);
+-- ef_mul_eq_natDegree + natDegree_pos_of_irreducible_map = the degree-ledger probe plumbing
+-- (eOf·fOf = [L:ℚ_p] = deg g for EVERY bundle). Both W4c mutation probes RE-RUN against the
+-- RE-SCOPED hypotheses at the mixed gate (all-unramified {(1,1)}⁵ ⟹ a forced degree-1 factor
+-- vs the no-linear-factor anchor, AND wrong-e singleton {(2,1)} ⟹ 2·1 = 5 vs the degree
+-- ledger; both machine-checked False; evidence blocks in OM/QpTypeMixed.lean; scratches not
+-- committed). MUST all be Lean core ONLY (an axiom appearing here is a stop-the-line event):
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf4
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf4_mixed
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf4_old
+#print axioms LeanUrat.OM.QpTypeMixed.sidePairs_mixedGatePath
+#print axioms LeanUrat.OM.QpTypeMixed.menuPath_mixedGate
+#print axioms LeanUrat.OM.QpTypeMixed.shapesFor_mixedGate
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateLit_eq_canonical
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateLit_mem_omMenu4
+#print axioms LeanUrat.OM.QpTypeMixed.headOrd_mixedGateLit
+#print axioms LeanUrat.OM.QpTypeMixed.decodePath_mixedGateLit
+#print axioms LeanUrat.OM.QpTypeMixed.decodeShapes_mixedGateLit
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateFiber_valuation
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGate_no_root'
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGate_no_root
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGate_no_linear_factor'
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateFiber_no_root
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateFiber_no_linear_factor
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGatePoly_monic
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGatePoly_natDegree
+#print axioms LeanUrat.OM.QpTypeMixed.toBox_mixedGatePoly
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateBox_inCell
+#print axioms LeanUrat.OM.QpTypeMixed.mixedGateFiber_nonempty
+#print axioms LeanUrat.OM.QpTypeMixed.natDegree_pos_of_irreducible_map
+#print axioms LeanUrat.OM.QpTypeMixed.ef_mul_eq_natDegree
+-- RE-PRINT (REQUIRED): the re-scoped axiom + the faithfulness theorems after the W4c re-scope
+-- — footprints MUST be core + om_leaf_faithful EXACTLY (nothing more, nothing less); the W3c
+-- form om_leaf_faithful_w3 is now a theorem in this list:
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w3
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1
+#print axioms LeanUrat.OM.OmLeafFaithful.menuFiber_hasType
+#print axioms LeanUrat.OM.OmLeafFaithful.gateFiber_hasType
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent
+-- probe legs MUST stay core-only:
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_mem_omMenuW
+#print axioms LeanUrat.OM.OmLeafFaithful.gateFiber_nonempty
+-- RE-PRINT (REQUIRED): ALL density capstones (Waves 1, 3 and 4, the V2 capstone, and both
+-- recovery gates) REMAIN Lean core ONLY after the W4c re-scope — om_leaf_faithful is consumed
+-- ONLY by the faithfulness theorems above; a wild-wave axiom appearing in ANY footprint below
+-- is a stop-the-line event:
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW4.montes_w4_recovers
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
