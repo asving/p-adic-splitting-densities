@@ -78,8 +78,13 @@ first FULL per-type density capstone (blueprint `notes/WILD_WAVE56_BLUEPRINT_202
 * `w5_window_mono` records the Wave-5 windowed family's monotonicity in the depth window `D`;
   the full model's `decided_tendsto` (the level-`N` window limit, monotone by
   `decided6_mono`) is this wave's window-limit theorem. The Wave-5 family's own `D → ∞` limit
-  (which is NOT the full density: the W5 menu has one residue point and no depth-0
-  inert/split cluster legs) is not computed here — see the module-end status note.
+  is NOT the full density and is not computed in Lean; the informal ledger arithmetic (2026-07-22
+  audit fix — this replaces a dangling forward reference): the W5 menu reads ONE residue point
+  (c = 0) and carries NO depth-0 even-height inert/split cluster legs, so for the ramified type
+  its D → ∞ limit is the c = 0 half of the tower only: at q = 2, order-0 window legs 1/8 (H=1)
+  + 1/64 (H=3) + … = 1/7-per-point summed with the c=0 chain tower gives 1/6 — versus the full
+  model's 1/3 (both residue points). The factor-2 deficit is exactly the missing c = 1 translate;
+  this is the structural motivation for `realMW6`'s two-residue-point + depth-0-legs design.
 
 ## Python cross-check dispatch (for the coordinator; not run here)
 
