@@ -73,6 +73,9 @@ import LeanUrat.OM.MultiSlopeMenu
 import LeanUrat.OM.RealInstanceW4
 import LeanUrat.OM.RealInstanceW4Gates
 import LeanUrat.OM.QpTypeMixed
+import LeanUrat.OM.ChainMenu
+import LeanUrat.OM.RealInstanceW5
+import LeanUrat.OM.RealInstanceW5Gates
 open LeanUrat
 
 -- Capstones
@@ -1047,6 +1050,80 @@ open LeanUrat
 -- RE-PRINT (REQUIRED): ALL density capstones (Waves 1, 3 and 4, the V2 capstone, and both
 -- recovery gates) REMAIN Lean core ONLY after the W4c re-scope — om_leaf_faithful is consumed
 -- ONLY by the faithfulness theorems above; a wild-wave axiom appearing in ANY footprint below
+-- is a stop-the-line event:
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW4.montes_w4_recovers
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+
+-- ══ Wave W5b (2026-07-22): the n=2 DESCENT-CHAIN menu + depth-windowed real instance ══
+-- OM/ChainMenu.lean + OM/RealInstanceW5.lean + OM/RealInstanceW5Gates.lean (leaf modules; no
+-- existing file modified except this census). Menu omMenu5 n D K σ = omMenu4 n K σ ∪
+-- chainShapes n D K σ: chainLit ms leaf literals (tree head (2, 2, depth) — order-slot 2
+-- discriminates from every W1/W3 order-0 head and the W4 multi-slope order-slot 1 — then the
+-- ms entries, then the leaf head; exact decode + injectivity), emitted at n = 2 ONLY
+-- (general-n chains are the accepted note's OPEN-D3/D5 territory). Counts: stratumCount5 =
+-- genuine Nat.card of the ChainCell digit fibers (the W5a staircase bijection
+-- stratumPairEquiv transported per step via descendPair — descendPair_eq_stratumPairEquiv —
+-- with the c̃-digit pool counted per step: card_chainPair = (p−1)^depth · leafCount, thresholds
+-- + small-N vanishing + level constancy exact). Coefficient C5 = chainC = (q−1)^depth ·
+-- leafPool(q) · q^{−(3Σms + eLeaf)} on chain literals (rationality: (poly)·q^{−V}), C4 else.
+-- Leaves: ram H (odd rungs, type (2,1)), inert m (root-free residual pool q(q−1)/2 — counted
+-- exactly via the Sym2/Vieta parametrization, two_mul_card_noRootPairs), split k (two-sided,
+-- pool q−1, with the note-§7 readability gate 2k+1 ≤ L₀ — the two-sided bookkeeping caveat).
+-- Disjointness: chain-vs-chain by the pinned digit ledgers (chainPair_disjoint: v-pins /
+-- (c̃²,−2c̃) field pin / double-root-vs-root-free), chain-vs-old by the exact root valuation
+-- v(a₀) = 2m₁ EVEN vs sepShape v(a₀) = 0 and W3-window v(a₀) = k ODD (gcd(k,2)=1), old-vs-old
+-- banked (fiber4_disjoint); box bound sum_stratumCount5_le_box; monotone staircases
+-- normSum_omMenu5_mono. Capstones montes_unconditional_w5(_exhaustive) = statements VERBATIM
+-- Wave-4's with omMenu5 n D K for omMenu4 n K and C5 for C4, fired at (realMW5, realDW5,
+-- realFW5 D K); recovery montes_w5_recovers: at D = 0 the Wave-5 countingDensity IS Wave 4's,
+-- every n, σ, K. HONEST SCOPE: chain fibers are COUNTING-side digit fibers — per-fiber Montes
+-- TYPE faithfulness (translation invariance [COUNT] + Cor 1.20 in the recentered frame) is
+-- W5c's boundary #4/#5 (typeOf5 keying is definitional); the (D, K) window is a PARTIAL SUM
+-- of the descent tower (W6 resums); odd-p even-height split-residual leaf deferred (pool
+-- empty at realP = 2); no exhaustiveness claim (hExhaust explicit). Gates: the §7 Case-A
+-- ledger ABSOLUTE values at p = 2 (cluster-conditional ledger × the one-time 2⁻²
+-- normalization): (1)→ram1 = 1/64 (Case C, x²−12), (1,1)→ram1 = 1/512, (1)→ram3 = 1/512,
+-- (1)→inert1 = 1/256, (1)→split1 = 1/256; the COUNT gate (4 points of 256 at N = 4); the
+-- depth-window growth 1/8 = value(D=0) < value(D=1) = 9/64 through the REAL instances'
+-- countingDensity; G4 mutation (C := 0 copy fails to compile — evidence block in
+-- OM/RealInstanceW5Gates.lean; scratch deleted after capture).
+-- MUST all be Lean core ONLY (an axiom appearing here is a stop-the-line event):
+#print axioms LeanUrat.OM.ChainMenu.chainLit_injective
+#print axioms LeanUrat.OM.ChainMenu.typeOf5_chainLit
+#print axioms LeanUrat.OM.ChainMenu.two_mul_card_noRootPairs
+#print axioms LeanUrat.OM.ChainMenu.descendPair_eq_stratumPairEquiv
+#print axioms LeanUrat.OM.ChainMenu.card_chainPair
+#print axioms LeanUrat.OM.ChainMenu.card_chainCell
+#print axioms LeanUrat.OM.ChainMenu.chainPair_disjoint
+#print axioms LeanUrat.OM.ChainMenu.fiber5_disjoint
+#print axioms LeanUrat.OM.ChainMenu.sum_stratumCount5_le_box
+#print axioms LeanUrat.OM.ChainMenu.normSum_omMenu5_mono
+#print axioms LeanUrat.OM.ChainMenu.stratum_tendsto_C5_chain
+#print axioms LeanUrat.OM.ChainMenu.omMenu5_zero
+#print axioms LeanUrat.OM.ChainMenu.eq_of_mem_omMenu5
+#print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5
+#print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW5.montes_w5_recovers
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_caseC
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_depth2
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_ram3
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_inert
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_split
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_count_at_threshold
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_menu
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_D0
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_D1
+#print axioms LeanUrat.OM.RealInstanceW5Gates.gate_w5_window_growth
+-- RE-PRINT (REQUIRED): ALL prior density capstones (Waves 1, 3 and 4, the V2 capstone, and
+-- the recovery gates) REMAIN Lean core ONLY after the Wave-5b wave (leaf modules only;
+-- nothing on any prior path was touched); a wild-wave axiom appearing in ANY footprint below
 -- is a stop-the-line event:
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive

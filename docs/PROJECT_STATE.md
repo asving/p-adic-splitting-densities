@@ -266,9 +266,27 @@ should not be conflated (this is the mistake an earlier draft of this document m
    discriminant tail — no per-depth identities); class-3 (deg φ ≥ 2) apparatus = the explicit
    conditional W7 perimeter (joint-D1/D2/D3/D4/D5). **Active: Waves 5–6**
    (`notes/WILD_WAVE56_BLUEPRINT_2026-07-22.md`): the n=2 descent-tower capstones (W5a staircase
-   bijection in flight) → the series assembly with the FIRST `hExhaust` discharge (n=2 envelope is
-   pure counting, no new axiom) → `montes_unconditional_n2_full`: the first COMPLETE per-type
-   density, machine-checked modulo the Montes faithfulness axiom (+ htameFE for palindromy).
+   bijection LANDED — `OM/RecenterBox.lean`) → the series assembly with the FIRST `hExhaust`
+   discharge (n=2 envelope is pure counting, no new axiom) → `montes_unconditional_n2_full`: the
+   first COMPLETE per-type density, machine-checked modulo the Montes faithfulness axiom
+   (+ htameFE for palindromy).
+   **W5b LANDED (2026-07-22, no new axiom, no sorry):** the n=2 depth-windowed DESCENT-CHAIN menu
+   + real instance (`OM/ChainMenu.lean`, `OM/RealInstanceW5.lean`, `OM/RealInstanceW5Gates.lean`).
+   Menu `omMenu5 n D K σ = omMenu4 ∪ chainLit`-literals (head order-slot 2; exact decode;
+   n=2-only emission); counts = genuine `ChainCell` digit-fiber `Nat.card`s (W5a
+   `stratumPairEquiv` iterated via `descendPair`; closed form `(p−1)^depth · leafCount`,
+   thresholds exact); leaves = ram-rungs / inert (root-free pool `q(q−1)/2` counted via
+   Sym2/Vieta) / two-sided split (note-§7 readability gate); coefficient
+   `C5 = (q−1)^k·pool·q^{−(3Σm+eLeaf)}`; capstone `montes_unconditional_w5 (n D K)` verbatim-
+   modulo, recovery `montes_w5_recovers` at D=0. Gates reproduce the §7 Case-A ledger ABSOLUTE
+   values at p=2 (cluster-conditional × 2⁻²): Case C (1)→ram1 = 1/64 (count gate: 4 of 256 at
+   N=4), (1,1)→ram1 = 1/512, (1)→ram3 = 1/512, (1)→inert1 = (1)→split1 = 1/256; depth-window
+   growth 1/8 (D=0) < 9/64 (D=1) through the real `countingDensity`; C:=0 mutation refused by
+   the compiler; external brute-force census re-verified all five masses at p=2 (N=8) and the
+   closed form at p=3. HONEST SCOPE: counting-side only — chain-fiber TYPE faithfulness
+   (translation invariance [COUNT] + Cor 1.20 in the recentered frame, boundary #5 pin) is
+   **W5c** (next); the (D,K) window is a partial tower sum (W6 resums); odd-p even-height
+   split-residual leaf deferred to W6 (pool empty at realP=2).
    Non-imports with machine-checked reasons: finite-level drainage (FALSE
    of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
    — `notes/M6_lemma.md`).
