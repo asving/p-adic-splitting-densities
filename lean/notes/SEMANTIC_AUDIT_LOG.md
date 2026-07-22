@@ -995,3 +995,10 @@ Eisenstein child → f irreducible, (e,f)=(2,1) forced on every bundle). Both mu
 guard universally sound (chainPair_empty general); census 597 footprints, 60 capstones core-only.
 FLAGS carried: machine anchors gate-local (ram leaf only — inert/split chain payloads
 cite-trusted pending the named follow-up); probes recorded-not-committed.
+
+**Guardian #5 FLAG CLOSED (2026-07-22, same day): `OM/QpTypeChainLeaves.lean`.** All three n=2
+chain payload types now machine-guarded axiom-free: ram (W5c), inert (irreducibility + the FULL
+(e,f)=(1,2) forcing — f=1 would root the root-free residual, via the residue-field finrank
+argument), split (the faithfulness theorem ITSELF proved via mathlib hensels_lemma at the simple
+residue roots — stronger than a mutation guard). Four cross-mutations refuted; witnesses X²+12,
+X²+28; 32 declarations core-only; capstones unchanged.
