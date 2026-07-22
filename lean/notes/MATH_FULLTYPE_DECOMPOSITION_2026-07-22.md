@@ -95,9 +95,11 @@ combinatorial data + residue-field values); no measure claims yet.
 > outcome, and recursively, for every opened cluster node, a finite (possibly empty) sequence of
 > cluster-read outcomes (Def 1.2 data: polygon, per-side residual shape, per-descend-factor the
 > residual value `ψ` — value, not just degree). `S_s ⊆` box is the set of `f` realizing `s`.
-> `s` is **TERMINATING** if every branch has ended in leaves (every residual factor everywhere has
-> `μ = 1`, every opened node fully read); it is **DESCENDING (open)** if some child node is still
-> unread. The **depth** `d(s)` = the number of descend events along its deepest branch.
+> `s` is **TERMINATING** if every branch has ended in leaves — recursively: every residual factor
+> with `μ ≥ 2` has an opened child node whose read-history is itself recursively resolved
+> (terminating), and every TERMINAL (unopened) residual factor has `μ = 1`; it is
+> **DESCENDING (open)** if some child node is still unread. The **depth** `d(s)` = the number of
+> descend events along its deepest branch.
 > **Descend events are exactly the Def 1.2.4 `μ ≥ 2` outcomes at cluster reads; the ROOT read's
 > opening of a cluster node (Def 1.1, `m_j ≥ 2`) is NOT a descend event and contributes 0 to
 > `d(s)`.** This exclusion is load-bearing for (3c): at `n = 2`, `p` odd, `f = x² − p` has
@@ -308,8 +310,10 @@ union `Z_∞`; `μ(Z_∞) = 0` [COUNT — countable union of measure-zero polyno
 > are rescaled at the WRONG heights (their polygon lines are not `m(s−i)`), so the bijection onto
 > a product frame fails as stated, and no elementary replacement is known. Possible only at
 > `n ≥ 3` (a size-2 window polygon carrying a `μ ≥ 2` side is automatically whole-window). A
-> strictly weaker sibling of D1 (one linear read across the frame change instead of a `deg φ ≥ 2`
-> development); implied by D1's ledger mechanism. Not needed for `n = 2` or Waves 5–6.
+> sibling of D1 (one linear read across the frame change instead of a `deg φ ≥ 2` development);
+> expected to follow from an extension of the D1 ledger method, but NO formal reduction is
+> supplied — D1 as stated concerns `deg φ ≥ 2` keys and does not logically imply this
+> `deg φ = 1` cross-frame statement. Not needed for `n = 2` or Waves 5–6.
 
 > **[OPEN-D1] (development-digit ledger, `deg φ ≥ 2`) — the precise open lemma.** For a fixed
 > canonical key `φ` (degree `m_φ ≥ 2`) over node ring `O_r` and a fixed read of its polygon/
@@ -422,14 +426,17 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > frame the budget `B − 2m` with the fresh-box UNIFORM conditional law (Lemma 2.3's
 > measure-isomorphism — this is what makes the chain rule exact). (iii) *Chain sum:* each
 > undecided `f` stalls at exactly one frame of its deterministic read, so, over certified chains
-> `(m₁,…,m_k)` (which satisfy `2Σmᵢ ≤ N` — deeper chains cannot certify within budget and their
-> `f`'s already stalled shallower),
+> `(m₁,…,m_k)` (which satisfy `2Σmᵢ ≤ N − 1` — each step certifies with `2m ≤ B − 1`, leaving
+> bottom budget `≥ 1`, per (ii); relaxed to the weaker `2Σmᵢ ≤ N` in the display — deeper chains
+> cannot certify within budget and their `f`'s already stalled shallower),
 > ```
 >   μ_cond(Undec(N)) ≤ Σ_{k≥0} Σ_{2Σm≤N} ∏ᵢ (1−1/p)p^{−(3mᵢ−1)} · p^{−(N−2Σmᵢ−2)}
->                    = p^{−(N−2)} · Σ_{k≤N/2} [Σ_m (1−1/p)p^{−(m−1)}]^k
+>                    ≤ p^{−(N−2)} · Σ_{k≤N/2} [Σ_m (1−1/p)p^{−(m−1)}]^k
 >                    = p^{−(N−2)} · (⌊N/2⌋ + 1),
 > ```
-> since `Σ_{m≥1} (1−1/p)p^{−(m−1)} = 1` EXACTLY. Multiply by the cluster mass `p^{−1}`. ∎
+> (the second `≤` relaxes the joint constraint `2Σmᵢ ≤ N` to independent unrestricted sums over
+> the `mᵢ`, keeping only `k ≤ N/2` — an over-count), and the last `=` holds since
+> `Σ_{m≥1} (1−1/p)p^{−(m−1)} = 1` EXACTLY. Multiply by the cluster mass `p^{−1}`. ∎
 > [The exact criticality `Σ_m(...) = 1` is the `s = 2` tower's signature: undecidedness drains
 > like `N·p^{−N}` — geometrically with one polynomial factor, not faster.]
 >
@@ -473,8 +480,9 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > mass `(q−1)·p^{−m·s(s+1)/2}` summed over the `q−1` values of `c̃` (Lemma 2.3, (2.3c)), and hands
 > the child a budget smaller by `s·m` with the staircase-cluster UNIFORM law (Lemma 2.3(4)–(5) —
 > this is what makes the chain product exact, per stratum, with no independence assumption).
-> Certification within budget forces `s·Σ_t m_t ≤ B`, so `k ≤ B/2`. The budget-recovery-adjusted
-> per-step factor is
+> Certification within budget forces `s·Σ_t m_t ≤ B − 1` (Lemma 2.3 leaves the bottom frame a
+> budget `≥ 1`); this is relaxed below to the weaker `s·Σ_t m_t ≤ B`, so `k ≤ B/2`. The
+> budget-recovery-adjusted per-step factor is
 > ```
 >   r_s := Σ_{m≥1} (q−1) p^{−m·s(s+1)/2 + sm} = (q−1)/(p^{s(s−1)/2} − 1)
 >        = 1 at s = 2 (critical),  < 1 for s ≥ 3  (e.g. r_3 = 1/(p²+p+1)).               (3g)
@@ -484,10 +492,12 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > `N − sΣm`:
 > ```
 >   μ_cond(stall in this cluster) ≤ Σ_{k≥0} Σ_{sΣm≤N} ∏_t (q−1)p^{−m_t s(s+1)/2} · s·p^{−(N−sΣm−1)}
->                                 = s·p^{−(N−1)} · Σ_{k≤N/2} r_s^k
+>                                 ≤ s·p^{−(N−1)} · Σ_{k≤N/2} r_s^k
 >                                 ≤ s·(⌊N/2⌋+1)·p^{−(N−1)},                              (3h)
 > ```
-> using `r_s ≤ 1` (equality only at `s = 2`, which is what forces the polynomial factor).
+> the second `≤` relaxing the joint constraint `sΣm ≤ N` to independent unrestricted sums over
+> the `m_t` (keeping only `k ≤ N/2` — an over-count), the third using `r_s ≤ 1` (equality only
+> at `s = 2`, which is what forces the polynomial factor).
 > *Assembly* (all displayed, no "similarly"): the cluster-box mass at `(c, s)` is `p^{−s}`
 > (`s` cluster digits), so
 > ```
@@ -532,8 +542,10 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > distinct strength (this revision, 2026-07-22; pass-2 found the old single statement asserting
 > (‡)-masses for EVERY stratum unconditionally, which contradicted the D1/D2 ledger).**
 >
-> **(i) Unconditional qualitative decomposition [COUNT + MONTES #6 only — NO open item, NO (‡)
-> values, NO rate].** The terminating strata are pairwise disjoint and, with their ABSTRACT
+> **(i) Unconditional qualitative decomposition [COUNT + MONTES #4 + #5 + #6 — NO open item,
+> NO (‡) values, NO rate; #4 (leaf/type faithfulness) enters the per-type clause `σ(s) = σ`,
+> #5 (lift invariance) identifies the canonical-lift tree with a Montes run, #6 is
+> termination + depth⟹disc].** The terminating strata are pairwise disjoint and, with their ABSTRACT
 > masses `μ(S_s)` (well-defined: each `S_s` is a finite union of cylinders, Thm 2.1),
 > ```
 >   μ(box) = Σ_{s terminating} μ(S_s),   and per type:
@@ -560,9 +572,10 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 > D3/D5; the corresponding level-tail RATES are conditional on D4 (resp. the D3/D5 upper-bound
 > halves), per 3.4′(c). Nothing in (i) depends on (iii).
 >
-> Import summary: the only [MONTES] content in (i) is termination + depth-index (3.2) and
-> lift-invariance (Def 1.2); the only [OPEN] content anywhere is confined to (iii). **Exhaustion
-> itself needs neither D1 nor D2 nor any rate** — that is exactly statement (i).
+> Import summary: the [MONTES] content in (i) is termination + depth-index (3.2, boundary #6),
+> lift-invariance (Def 1.2, boundary #5), and — for the per-type clause of (3d) — leaf/type
+> faithfulness (§6, boundary #4); the only [OPEN] content anywhere is confined to (iii).
+> **Exhaustion itself needs neither D1 nor D2 nor any rate** — that is exactly statement (i).
 
 ### 3.6 Confronting the wall (`SELFLOOP_GENERALK_WALL.md`)
 
@@ -638,12 +651,16 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > universal-polynomial form carries correctly.
 
 > **Claim 4.4 (geometric closure of the two infinite directions) — status split.**
-> (i) **H-ladders** (heights within one read, everything else fixed): masses are
-> `const · p^{−(linear in H)}` by (‡), so each ladder sums to a rational function with denominator
-> `1 − q^{−(ladder weight)}` — (a)/(b): exactly the engine's `_geom_sum_inf`/`_cone_sum` and
-> L5fix(d); Lean pattern exists (window-K staircases, `normSum_omMenuW3_mono`; the K→∞ sum is
-> Wave 6). Multi-side reads sum over the strictly-decreasing-slope cone via the gap substitution —
-> engine `_sum_by_gaps`, pure lattice algebra [COUNT].
+> (i) **H-ladders** (heights within one read, everything else fixed) — split like Thm 4.1:
+> (i-a) [proved fragment] within class 1 and class-2 WHOLE-WINDOW towers the masses are
+> `const · p^{−(linear in H)}` by the PROVED (‡) instances (Thm 2.2.1–2, Lemma 2.3), so each
+> ladder sums to a rational function with denominator `1 − q^{−(ladder weight)}` [COUNT] —
+> (a)/(b): exactly the engine's `_geom_sum_inf`/`_cone_sum` and L5fix(d); Lean pattern exists
+> (window-K staircases, `normSum_omMenuW3_mono`; the K→∞ sum is Wave 6).
+> (i-b) [conditional] for class-3 ladders the same closure holds GIVEN D1 (+ D2 in Lean); for
+> the class-2 partial-side/mid-polygon portions, GIVEN D3/D5 — the (‡) form there is exactly
+> what those opens supply. Multi-side reads sum over the strictly-decreasing-slope cone via the
+> gap substitution — engine `_sum_by_gaps`, pure lattice algebra [COUNT].
 > (ii) **Depth towers**: by Lemma 2.3, a WHOLE-WINDOW full-side `deg ψ = 1` descend multiplies
 > masses by a fixed per-step total ratio (e.g. `Σ_m (1−q^{-1})q^{−(3m−1)} = 1/(q²+q+1)` at
 > `n=2`); chains resum geometrically [COUNT via 2.3 — PROVED]. Partial-side linear descents
@@ -655,15 +672,17 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 > `HUMAN_PROOF §9`; the menu `T_n` finiteness.
 
 > **Theorem 4.5 (conditional rationality; agreement with the engine) [(b), conditional].** Modulo
-> D1+D2 for class-3 strata: for each `n, σ` the sum (3d), grouped by shape and resummed by 4.4, is
+> D1+D2 (the class-3 strata) AND D3+D5 (the class-2 partial-side/mid-polygon remainder): for each
+> `n, σ` the sum (3d), grouped by shape and resummed by 4.4, is
 > a single rational function of `q` evaluated at `q = p`, equal to the engine's
 > `alpha_full(n)[σ]` (the `beta_e` fixpoint assembly of `om_density_engine.py`) — the engine
 > normal form is a REGROUPING of the stratum series (a rearrangement of an absolutely convergent
 > positive series [justified by Thm 4.1]): verified symbolically at `n = 2` (§7 Case A — both
 > groupings give `q/(q+1)`), conditional at general `n`; the resummation's pivot (`(⋆⋆)` of
 > BB3_infinity §4) is `1 − w(e) ≠ 0`.
-> For class 1 and class-2 WHOLE-WINDOW towers the rationality is UNCONDITIONAL [COUNT+MONTES];
-> the class-2 remainder (partial-side/mid-polygon linear) is conditional on D3/D5. p-independence
+> Separately and UNCONDITIONALLY [COUNT+MONTES]: the partial sum over class-1 strata and class-2
+> WHOLE-WINDOW towers is a single rational function of `q` (the proved fragment; at `n = 2` the
+> fragment is everything, so there the full statement holds unconditionally). p-independence
 > of the assembled function: derived, never imported (the GMN-citations discipline: per-p imports
 > of p-free shape).
 
@@ -686,16 +705,17 @@ the ×q-exposed per-depth form (FACT B: `P(deep|verdict)(N) → slBox`, bare).
 | 11 | Pool counts over `F_{q^w}` in Lean | **[OPEN-D2]** | math (a)-known (L3 all finite fields); Lean `UnramifiedBase` tower work |
 | 12 | Residual equidistribution as an AXIOM | **excluded** | standing non-import (no GMN counterpart — `M6_lemma.md`, PROJECT_STATE); its role is absorbed by D1 as a provable count statement |
 | 13 | Geometric/cone resummation | [COUNT] | §4.4; engine `_sum_by_gaps`; L5fix(d) |
-| 14 | Exhaustion (3d), abstract masses + qualitative tail | [COUNT+MONTES 6] | Thm 3.5(i) — needs NO open item; the (‡)-valued quantitative forms are 3.5(ii) [proved fragment] and 3.5(iii) [conditional] |
+| 14 | Exhaustion (3d), abstract masses + qualitative tail | [COUNT+MONTES #4/#5/#6] | Thm 3.5(i) — needs NO open item; the (‡)-valued quantitative forms are 3.5(ii) [proved fragment] and 3.5(iii) [conditional] |
 | 15 | Level-tail rate (3e) | [COUNT via 2.3 — proved on the whole-window linear fragment, explicit constants; out-of-fragment rates **[OPEN-D4 / D3 / D5]**] | Lemma 3.4′(a)/(b)/(c) — Waves 5–6 need only the fragment |
 
 **Answer to the task's (iii):** nothing in the decomposition/exhaustion/convergence genuinely
 requires non-Montes content. The only candidate for genuinely-new measure content is D1 (count
 form at `deg φ ≥ 2` — believed provable as pure counting via triangular coordinates, but open; if
-it fails, that failure IS GAP-1/GAP-2 and must be reported as such); its three strictly weaker
+it fails, that failure IS GAP-1/GAP-2 and must be reported as such); its three
 shadows D3 (partial-side linear window-freeness), D5 (mid-polygon full-side linear cross-frame
-freeness) and D4 (class-3 prefix upper bound, Lemma 3.4′(c)) are all implied by D1's mechanism
-and add no new candidate content. The
+freeness) and D4 (class-3 prefix upper bound, Lemma 3.4′(c)) add no new candidate content —
+D4 is implied by D1 (Lemma 3.4′(c)); D3/D5 are expected to follow from an extension of the D1
+ledger method (no formal reduction supplied). The
 palindromy/htameFE layer stays outside this note's scope (declared endpoint boundary,
 PROJECT_STATE §5.1).
 
@@ -894,9 +914,12 @@ conditioning; (5) small — the old-mechanism witness needed `N ≥ 3` or `a₀ 
    mixed-size assembly is gone, replaced by `6(⌊N/2⌋+1)p^{−N}`); out-of-fragment prefixes
    explicitly routed to (c) [D4/D3/D5].
 3. *(2)* Classes made a PARTITION (Thm 2.2): class 3 = some key degree ≥ 2 ANYWHERE; classes 1–2
-   = all-linear (which provably forces base-field pools), split by depth 0 / ≥ 1; every "proved"
-   label re-audited against it (class-3 masses: only p-power-rationality unconditional; `δ ≥ 2`
-   root LEAVES stay order-0-proved).
+   = all-linear (which provably forces base-field pools), split by depth 0 / ≥ 1; the Thm 2.2
+   status labels re-cut against it (class-3 masses: only p-power-rationality unconditional;
+   `δ ≥ 2` root LEAVES stay order-0-proved). *Correction (pass 3): the claim originally recorded
+   here — that EVERY "proved" label in the note had been re-audited against the partition — was
+   overstated; pass 3 found stale gating/import lines in Thm 4.5, Claim 4.4(i), and Thm 3.5(i),
+   fixed in the third revision below.*
 4. *(3, 4b, 4c)* Thm 3.5 split into (i) unconditional qualitative (abstract masses + rate-free
    monotone-convergence exhaustion), (ii) proved-fragment quantitative, (iii) D-conditional;
    Thm 4.1 split likewise (depth tail unconditional via 3.2+3.3; height tail proved on the
@@ -904,4 +927,44 @@ conditioning; (5) small — the old-mechanism witness needed `N ≥ 3` or `a₀ 
 5. *(5)* Witness fixed: `v(a₁) = 1, v(a₀) ≥ N` with `N ≥ 3` (cancellation at `N = 2` noted), or
    `a₀ = 0`.
 
-**Status: fixes applied 2026-07-22 (second revision), awaiting pass 3.**
+**Pass 3 (adversarial verification, fresh context, 2026-07-22): ALL core mathematics CLEAN** —
+Lemma 2.3 (statement, proof, chain corollary), the 3.4′(a)/(b) tail arithmetic, the Thm 2.2
+class partition, the D5 scoping, and the `n = 2` scope claims verified clean. Six precise
+stale/gating defects found (no new mathematical content — all are bookkeeping of what gates
+what):
+(1) CRITICAL — Def 1.3's terminating characterization ("every residual factor everywhere has
+`μ = 1`, every opened node fully read"), read literally, emptied class 2: a depth-`k ≥ 1`
+history necessarily contains ancestor `μ ≥ 2` factors.
+(2) CRITICAL — Thm 4.5's opening gate ("Modulo D1+D2 for class-3 strata") contradicted its own
+closing sentence conditioning the class-2 remainder on D3/D5; the full rationality needs
+D1+D2+D3+D5.
+(3) CRITICAL — Claim 4.4(i) asserted the H-ladder closure via (‡) unqualified, though (‡) is
+proved only on the fragment (class 1 + whole-window class 2).
+(4) GAP — the chain-sum displays in 3.4′(a) and (3h) wrote "=" at steps that relax the joint
+budget constraint (`2Σmᵢ ≤ N` resp. `sΣm ≤ N`) to independent unrestricted sums; and the chain
+certification bound was stated as `≤ B` where Lemma 2.3's bottom budget `≥ 1` gives `≤ B − 1`.
+(5) GAP — Thm 3.5(i)'s import line claimed "[COUNT + MONTES #6 only]", but the per-type clause
+of (3d) also uses boundary #4 (leaf/type faithfulness) and #5 (lift invariance).
+(6) GAP — the D5 block claimed D5 "implied by D1's ledger mechanism"; D1 concerns `deg φ ≥ 2`
+keys and does not logically imply the `deg φ = 1` cross-frame D5.
+
+**Fixes applied 2026-07-22 (third revision) — exactly the six, no content change elsewhere:**
+1. Def 1.3: terminating recharacterized recursively (every `μ ≥ 2` residual factor has an opened
+   child whose history is recursively resolved; every TERMINAL unopened factor has `μ = 1`).
+2. Thm 4.5: full-rationality gate corrected to D1+D2+D3+D5; the unconditional fragment
+   rationality (class 1 + whole-window class 2; everything at `n = 2`) stated separately.
+3. Claim 4.4(i): split into (i-a) proved-fragment (whole-window ladders via the proved (‡)
+   instances) and (i-b) D-conditional (class 3 GIVEN D1(+D2); class-2 partial-side/mid-polygon
+   GIVEN D3/D5), mirroring the Thm 4.1 split.
+4. 3.4′(a) + (3h): the relaxation steps now display `≤` with the relaxation named (joint budget
+   constraint dropped to independent unrestricted sums, only `k ≤ N/2` kept); certification
+   bounds stated sharp first (`2Σmᵢ ≤ N − 1` resp. `s·Σ_t m_t ≤ B − 1`, Lemma 2.3 leaving bottom
+   budget `≥ 1`) and explicitly relaxed.
+5. Thm 3.5(i): import line corrected to [COUNT + MONTES #4 + #5 + #6]; the in-theorem import
+   summary and boundary-table row 14 brought into line.
+6. D5 dependency downgraded to "expected to follow from an extension of the D1 ledger method
+   (no formal reduction supplied)" — in the [OPEN-D5] block and §5's closing answer; the
+   overstated "every proved label re-audited" line of the pass-2 record corrected in place
+   (annotation at pass-2 fix 3 above).
+
+**Status: fixes applied 2026-07-22 (third revision), awaiting pass 4.**
