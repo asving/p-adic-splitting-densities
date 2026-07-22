@@ -211,6 +211,103 @@ more dissections for each order."*
 
 ---
 
+## §4 index machinery — pins required for the depth⟹disc axiom (P1–P3; added 2026-07-22)
+
+**Consumer:** `MATH_FULLTYPE_DECOMPOSITION_2026-07-22.md` Lemma 3.2 / boundary #6 — the planned
+pointwise axiom **"still descending at depth `d` ⟹ `v_p(disc f) ≥ 2d`"** (the W5/W6 exhaustion
+envelope). That axiom rests on exactly the three pins below, each with its verification status.
+
+**Source status.** The old `gmn_v2.txt` extraction is no longer on this machine. For this section
+the paper was **re-downloaded from arXiv (0807.2620v2) and re-extracted 2026-07-22** with
+`pdftotext` (4350 lines; line numbers below refer to THIS extraction and differ from the old
+mutool line numbers cited elsewhere in this file — sanity anchor: "We fix a finite extension K of
+Qp" is line 381 here vs. 482 there). Every quote below was read from that text on 2026-07-22.
+
+### (P1) `ind(f)` / `ind(N)` definitions + the lattice-point convention — **VERIFIED verbatim; the on-or-below question is RESOLVED (on-or-below)**
+
+From §4.2 "Index of a polynomial and index of a polygon" (line 3221 ff.):
+
+- **v-index of an irreducible `F`** (lines 3225–3227): "(OL : O[θ]) = q^{ind(F)}, for some natural
+  number ind(F) that will be called the v-index of F(x). Note that ind(F) = v(OL : O[θ])/[K : Qp]."
+- **Definition 4.11** (monic separable `f = F₁⋯F_k`):
+  `ind(f) := Σᵢ ind(Fᵢ) + Σ_{1≤i<j≤k} v(Res(Fᵢ, Fⱼ))`.
+- **Definition 4.12** (side `S` of negative slope; `E = ℓ(S)`, `H = H(S)`, `d = d(S)`):
+  `ind(S) := ½(EH − E − H + d)` for finite slope, `0` for slope `−∞`. For a principal polygon
+  `N = S₁ + ⋯ + S_g` (increasing slopes): `ind(N) := Σᵢ ind(Sᵢ) + Σ_{i<j} EᵢHⱼ`, an infinite side
+  contributing `E_∞ · H_fin(N)`.
+- **Remark 4.14 — THE CONVENTION, verbatim:** "The contribution of the sides of finite slope to
+  ind(N) is the number of points of integer coordinates that lie **below or on** the finite part
+  of N, **strictly above** the horizontal line L that passes through the last point of N, and
+  **strictly beyond** the vertical line L′ that passes through the initial point of the finite
+  part of N." Column form, eq. (40): `ind(N_fin) = ⌊y_{i₁+1}⌋ + ⋯ + ⌊y_{i₂−1}⌋` (`yᵢ` = height of
+  `N` above `L` at integer abscissa `i`).
+
+**The previously load-bearing unknown — on-or-below vs strictly-below — is hereby resolved: GMN
+counts ON-OR-BELOW** (with the two strictness clauses of Remark 4.14). Cross-checks performed:
+
+- Pick-style identity: for one side, (strictly-interior points) + (non-vertex on-side points)
+  `= [(EH − E − H − d)/2 + 1] + (d − 1) = ½(EH − E − H + d)` = Def 4.12's formula — so the
+  formula itself certifies that on-side points are included. ✓
+- **Discriminating witness (pass-1 verifier's; recomputed here):** `f = x² + 6x + 36` over `ℤ₃`.
+  First polygon `(0,2)–(2,0)` (`E = H = d = 2`, slope `−1`), residual `(y+1)²` ⟹ **one depth-1
+  descend**; recentered `x² + 27` ⟹ leaf `(e,f) = (2,1)`, `L = ℚ₃(√−3)`. True index:
+  `θ = −3 + 3√−3`, `O_L = ℤ₃[√−3]`, so `(O_L : ℤ₃[θ]) = 3`, `ind(f) = 1`. On-or-below count of the
+  first polygon = 1 (the point `(1,1)`, which lies ON the side); strictly-below count = 0 ≠ 1.
+  Def 4.12 gives `½(4−2−2+2) = 1` ✓, and the identity check `v₃(disc f) = v₃(−108) = 3 =
+  2·1 + v₃(disc L/ℚ₃) = 2 + 1` ✓ (tame ramified quadratic, `v(disc) = e−1 = 1`).
+
+### (P2) the index–discriminant identity — **GMN sentence VERIFIED verbatim; independent textbook pin TO-VERIFY**
+
+- **Verbatim** (§4.2, line 3233): "Recall the **well-known relationship**,
+  `v(disc(F)) = 2 ind(F) + v(disc(L/K))`, linking ind(F) with the discriminant of F(x) and the
+  discriminant of L/K." (Irreducible case. GMN cite it as classical — a citable carrier, not the
+  origin.)
+- **Reducible case** (the form Lemma 3.2 of the decomposition note uses): combine the above with
+  Def 4.11 and the elementary multiplicativity `disc(PQ) = disc(P)·disc(Q)·Res(P,Q)²` to get
+  `v_p(disc f) = 2·ind(f) + Σᵢ v_p(disc(Lᵢ/K)) ≥ 2·ind(f)`. The multiplicativity step is
+  elementary resultant algebra (provable, not an import).
+- **Independent literature pin: TO-VERIFY against a printed source.** The order-index formula
+  `disc(O′) = (O : O′)² · disc(O)` is standard (candidate pins: Neukirch, *Algebraic Number
+  Theory*, Ch. I §2; Serre, *Local Fields*, Ch. III; Ore 1928), but **no exact
+  proposition/theorem number has been verified in this session** — pin before axiom declaration.
+  Meanwhile the GMN verbatim sentence above is the primary citation and suffices.
+
+### (P3) per-descend-event increment `ind_r ≥ 1` — **mechanism VERIFIED against Defs 4.12/4.15 + Thm 4.18; declaration caveats listed**
+
+- **Definition 4.15 (verbatim content):** `ind_t(P) := f₀⋯f_{r−1} · ind(N_r^−(P))`;
+  `ind_r(P) := Σ_{t ∈ t_{r−1}(P)} ind_t(P)`. GMN note explicitly that "the value of ind_t(P)
+  depends on this choice [of the representative φ_r], although this is not reflected in the
+  notation."
+- **The increment.** A descend event at order `r` — a side `S` of `N_r^−(f)` of finite slope
+  `−h/e` carrying a residual factor `ψ^μ` with `μ ≥ 2` — forces `d = d(S) ≥ μ·deg ψ ≥ 2`. Then
+  the **on-side lattice point `(s+e, u+(d−1)h)`** (`s` = initial abscissa of `S`, `u` = ordinate
+  of `S`'s last point; the point one `e`-step in from the initial point) lies below-or-on `N`
+  (it is ON `S`), strictly above `L` (its height above `N`'s last point is `≥ h ≥ 1` since
+  `d ≥ 2`), and strictly beyond `L′` (`s + e > s ≥` initial abscissa of the finite part) — so it
+  counts in `ind(N_r^−)` under (P1)'s on-or-below convention. **It would NOT count under a
+  strictly-below convention — this is exactly where (P1) is load-bearing** and is the intended
+  proof mechanism for the axiom. Closed-form corroboration from Def 4.12 directly:
+  `EH − E − H + d = d(deh − e − h + 1) ≥ d·e(d−1) ≥ 2` for `d ≥ 2`, so `ind(S) ≥ 1`. ✓
+- **Assembly into depth⟹disc.** In THIS paper's accounting every `μ ≥ 2` residual factor sprouts
+  an order-`(r+1)` type (Def 3.10) — including the `deg ψ = 1, e = 1` "refinement-like" sprouts
+  (later Montes-algorithm papers optimize these away; here they increment the order). A branch
+  with `d` descend events therefore has events at orders `1, …, d`, each giving
+  `ind_r(f) ≥ ind_t(f) ≥ f₀⋯f_{r−1}·1 ≥ 1` (all terms of `ind_r` are `≥ 0`), whence Thm 4.18(1):
+  `ind(f) ≥ Σ_{r ≤ d} ind_r(f) ≥ d`; with (P2): **`v_p(disc f) ≥ 2d`**. Consistency check on the
+  (P1) witness: `ind(f) = 1 = ind₁` forces `ind₂(f) = 0` (Thm 4.18) — the terminal leaf read
+  contributes nothing, exactly as Lemma 4.16(1) requires. ✓
+- **Declaration-time caveats** (carry into the axiom's faithfulness entry): (i) heights/abscissas
+  in `ind_r` live in GMN's `v_r`-normalized coordinates (Def 2.5), NOT raw coefficient
+  valuations; (ii) `ind_t` is representative-dependent (GMN's own remark) — Thm 4.18(1) holds per
+  admissible choice, and the decomposition note's canonical lifts are one admissible choice
+  within the "universally fixed family" that §4.2's opening sentence assumes (verbatim: "All
+  types that we consider are still assumed to be made up with polynomials φi (x) belonging to a
+  universally fixed family"); (iii) a ROOT cluster opening (choosing the order-0 type `ψ₀`) is
+  NOT a descend event and carries no polygon side — consistent with the decomposition note's
+  Def 1.3 exclusion (its `n = 2`, `p`-odd counterexample `x² − p` is recorded there).
+
+---
+
 ## 3. Exactly how each GMN item is consumed (the derived/imported boundary)
 
 | GMN item | imported fact | where consumed | what is DERIVED (not imported) |
