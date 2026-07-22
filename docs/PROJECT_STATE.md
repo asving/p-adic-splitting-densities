@@ -256,6 +256,17 @@ should not be conflated (this is the mistake an earlier draft of this document m
    projective bridge — NOT Montes-paper content); "complete modulo Montes" = clauses (R)/(V) with
    full type coverage and full per-type mass, faithfulness modulo the (possibly extended)
    Montes-cited axioms.
+   **Directive superseding the endpoint boundary (Asvin, 2026-07-22, post-W6c): PALINDROMY IS
+   OUT OF SCOPE ENTIRELY — do not touch `htameFE`/L7/M1/DCD at all. The end goal of the
+   formalization is EXACTLY the uniformity statement: for each type σ, ONE fixed rational
+   function computes the density at ALL primes, wild included. Move directly toward
+   formalizing the (accepted-note) argument proving this.** Concretely the next target is the
+   n=2 ALL-PRIMES uniformity capstone (Wave 7): the accepted note's tower argument at general
+   q — the full counting model at every prime p (all p residue points; the even-height
+   split-residual leaf family, pool (q−1)(q−2)/2, empty only at q=2), the general-q envelope
+   and exhaustion, the per-type value ties to the FIXED closed forms (ram 1/(q+1),
+   inert/split q/(2(q+1))), and `∀ p, countingDensity = R_σ(p)` — with faithfulness via the
+   already-general-p masters + axiom re-scope #6 for the new leaf family.
    PROGRESS (2026-07-22): **Wave 4 COMPLETE** (mixed-e types certified — σ = {(2,1),(3,1)} at
    n=5 certifies 1/512 through the real instance; axiom re-scope #3 with the per-family
    `fiberOf4` dispatch, guardian audit #4 ACCEPT). **The math ground truth is ACCEPTED**:
