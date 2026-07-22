@@ -971,3 +971,27 @@ False (cones free of the real axiom; scratches recorded + deleted) — the mixed
 shape AND degree-ledger coordinates. Census: 493 priors byte-identical; nine capstones core-only
 (structural: no capstone module imports OmLeafFaithful). Carried flags: instance-local coverage at
 realP; general-σ multi-factor faithfulness cite-trusted beyond the gates.
+
+---
+
+## 2026-07-22 — Wild Wave 5 (n=2 descent chains): W5a/b/c + `om_leaf_faithful` RE-SCOPE #4
+
+**W5a/b (no trusted-base change):** the staircase recenter–rescale bijection in Lean
+(`OM/RecenterBox.lean` — the accepted note's Lemma 2.3 verbatim, general-frame core, chains
+compose; depth-2 gate 2⁻⁸ exact) + the chain menu/instance/capstone
+(`montes_unconditional_w5 (D K)`; Case-A ledger reproduced exactly, absolute masses 1/64, 1/512,
+1/256 at p=2; window growth 9/64 > 1/8 load-bearing through the real instances). Two task-card
+normalization slips caught by the ledger discipline (agents followed ground truth — ratified).
+
+**W5c — RE-SCOPE #4 (guardian audit #5: ACCEPT-WITH-FLAGS, push cleared, 7/7 PASS):** menu →
+`omMenu5 n D K σ` (chain literals, head slot 2); fiber → `fiberOf5` (ChainCell at the exact
+decode). THE CENTERPIECE — the P4 pin's honest split, verified verbatim against the paper text:
+GMN states lift-invariance ONLY in per-choice form (types non-canonical, dissection valid per
+admissible lift — P4a–c verbatim); NO translation-form statement exists in the paper (P4d,
+grep-verified) — so that content was PROVED in Lean (`qpType_translate_rescale`: any affine
+substitution, any degree; bundles transported with L/O literally unchanged, eOf/fOf by rfl),
+NOT imported. Depth-1 chain anchor axiom-free END-TO-END (X²+4: fiber → staircase decode →
+Eisenstein child → f irreducible, (e,f)=(2,1) forced on every bundle). Both mutations refuted;
+guard universally sound (chainPair_empty general); census 597 footprints, 60 capstones core-only.
+FLAGS carried: machine anchors gate-local (ram leaf only — inert/split chain payloads
+cite-trusted pending the named follow-up); probes recorded-not-committed.
