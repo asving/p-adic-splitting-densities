@@ -347,13 +347,43 @@ should not be conflated (this is the mistake an earlier draft of this document m
    (evidence block), `AxChk_baseline` re-run UNCHANGED. HONEST SCOPE: counting-side digit
    fibers — σ-keying of the translate fibers and the depth-0 inert/split cluster leaves is
    DEFINITIONAL here, outside W5c's declared axiom scope #4 (a W6c-style faithfulness scope
-   extension is required before calling the full model's keying Montes-faithful); the
+   extension is required before calling the full model's keying Montes-faithful —
+   **CLOSED by W6c, next paragraph**); the
    `q`-uniform family omits the even-height split-residual family (pool `(q−1)(q−2)/2`, empty
    at the real prime q=2), so at general q the split form is NOT the true split density
    (difference `(q−2)/(2q²(q+1))`); palindromy remains exactly the content of `htameFE`
    (whether `htameFE` holds at `realFW6` is NOT established — the capstone is conditional on
    it, per the standing endpoint boundary). Python cross-check dispatch values are in the
    module docstring (per-type limits 1/3; envelope at N=9 ≤ 5/256; per-stratum anchors).
+   **W6c LANDED (2026-07-22, guardian audit #6 ACCEPT-WITH-FLAGS, all flags adjudicated
+   benign; leaves `OM/QpTypeLeafMasters.lean`, `OM/QpTypeChainAll.lean`, `OM/ChainMenu6.lean`,
+   `OM/FullFaithful.lean`, `OM/FullFaithfulGates.lean`; blueprint
+   `notes/WILD_WAVE6C_BLUEPRINT_2026-07-22.md`, math §1 Codex-verified over 3 adversarial
+   passes 4 gaps → 1 gap → CLEAN): the scope-#5 faithfulness extension — W6's named honest
+   gap CLOSED.** `FullFaithful.fullFiber_hasType`: every genuine monic quadratic in ANY
+   counted fiber of `realMW6`'s decided count (order-0 sep cells; `TransChain c ms leaf` at
+   both residue points, all depths, all leaf kinds) has a genuine ℚ₂-factorization of the
+   keyed type — footprint core + `om_leaf_faithful` EXACTLY; the split-keyed legs are
+   axiom-FREE (`fullFiber_split_hasType_axfree`). Machinery all PROVED core-only: the three
+   leaf masters at ALL parameters (ram: every odd H — two-root ultrametric irreducibility +
+   every-bundle (2,1) forcing, the H=3 parity argument generalized; inert: every m ≥ 0
+   including the order-0 sep cell, (1,2) forced, the sep-inert classify glue proved via the
+   banked `Order0.classify_eq_sepShape_iff`; split: every k ≥ 0 including b₀ = 0, full
+   Hensel certificate), the general-m tail-generic step decode (erratum recorded: the
+   staircase invariant L₀ ≤ L₁ is required), the chain unwind composing each chain into ONE
+   affine relation, and the c=1 translate reduction DERIVED via the proved transport — per
+   the (P4d) discipline no translation content enters the axiom. Axiom re-scope #5 = pure
+   menu widening (`omMenu6` admits the depth-0 `chainLit []` literals; fiber dispatch and
+   conclusion byte-identical; per-literal GMN statement map incl. the b₀ = 0 split case in
+   the docstring; scope #4 derived back as `om_leaf_faithful_w5`). Gates: four externally
+   cross-checked witnesses (depth-0 inert x²+2x+4 — a literal on NO earlier menu — depth-0
+   split x²+2x+8, c=1 translate x²−2x+5, general-m chain x²+16 at m=2), both wrong-keying
+   mutation probes derive False against the axiom-free forcing (real axiom outside both
+   refuter cones), positive coherence gate through the new depth-0 menu leg, and the
+   capstone companion `montes_n2_full_faithful` (capstone conclusion verbatim ∧ the
+   faithfulness clause; capstone itself untouched). Census byte-identical on all 600 prior
+   entries; every capstone still Lean-core-only. Honest limits UNCHANGED by W6c: the q>2
+   even-height split-residual family (empty at q=2) and palindromy = `htameFE`.
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
    in progress (§4).
 3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.
@@ -366,8 +396,9 @@ should not be conflated (this is the mistake an earlier draft of this document m
   established for a constructed real density. NEW (W6, 2026-07-22): at `n = 2, p = 2` the FULL
   decided tower is machine-counted with a PROVED exhaustion envelope (`hExhaust` discharged, no
   axiom) and per-type full densities `1/3, 1/3, 1/3` tied to closed rational forms — the first
-  complete per-type density value, counting-side (σ-keying of the new fibers definitional pending
-  a faithfulness scope extension; palindromy still conditional on `htameFE`).
+  complete per-type density value — and since W6c (same day) the σ-keying is Montes-faithful in
+  EVERY counted fiber (`FullFaithful.fullFiber_hasType`, core + `om_leaf_faithful`; split legs
+  axiom-free); palindromy still conditional on `htameFE`.
 - **Honest one-line status:** the *mathematics* is complete modulo the published Montes/GMN algorithm
   and is extensively cross-checked; the *Lean* is a sound, `sorry`-free engine + order-0 real result, but
   **not yet a non-vacuous machine-checked proof** of the full palindromic all-orders per-type theorem.

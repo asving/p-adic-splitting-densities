@@ -1027,3 +1027,77 @@ faithfulness extension is the named next lever before "complete per-type density
 Montes-faithful in every fiber; (ii) the split q-family is the p=2-complete tree's family (differs
 from the true split density by the q>2-only even-height pool term); (iii) palindromy = htameFE,
 as always.
+
+---
+
+## 2026-07-22 — Wild Wave 6c: faithfulness scope #5 — every counted fiber of the full n=2 model Montes-faithful
+
+**Blueprint discipline:** math ground truth first (`notes/WILD_WAVE6C_BLUEPRINT_2026-07-22.md`
+§1) — Codex adversarial verification, 3 fresh-context passes: pass 1 = 4 justification gaps
+(bundle-quantifier in the ram forcing; understated step-decode generalization; bundle-transport
+direction; missing per-literal statement map for the widening), all closed by revision; pass 2
+confirmed closures + caught 1 more (the split-literal map omitted the ADMITTED b₀ = 0 case —
+fixed with the y(y+b₁) literal-factorization reading); pass 3 CLEAN. One implementation erratum
+recorded in the blueprint: the step decode requires the staircase invariant L₀ ≤ L₁
+(counter-frame (10,1,1) refutes the weaker form).
+
+**W6c-a/b (no trusted-base change; the axiom-free masters):** `OM/QpTypeLeafMasters.lean` (715
+lines) + `OM/QpTypeChainAll.lean` (615 lines), 37 public declarations, ALL Lean-core-only. The
+three leaf masters at ALL parameters on genuine coefficients — ram: every odd H, two-root
+ultrametric irreducibility + EVERY-BUNDLE (2,1) forcing inside an arbitrary bundle (Vieta
+r' = −b₁ − r, no Galois theory; the QpTypeH3 H=3 parity argument generalized); inert: every
+m ≥ 0 (the m = 0 instance IS the order-0 sep cell), (1,2) forced via compData pullback at
+inverted affine data + ef_of_inert_quadratic; split: every k ≥ 0 incl. b₀ = 0, the FULL
+certificate via Hensel + the proved transport (the om_leaf_faithful conclusion itself,
+axiom-free). The general-m TAIL-GENERIC step decode; the chain unwind composing any chain into
+ONE affine relation f∘(p^Σm·X + c) = p^{2Σm}·g_leaf (certificates transport up via
+qpType_translate_rescale; bundles pull back via compData, efOf unchanged rfl); the c=1
+translate reduction transBox_comp/transChain_fiber_iff — translate coverage DERIVED, per (P4d)
+NEVER imported.
+
+**W6c-c — RE-SCOPE #5 (guardian audit #6: ACCEPT-WITH-FLAGS, push cleared, all three test
+legs PASS):** menu → `ChainMenu6.omMenu6 n D K σ = omMenu5 ∪ chainShapes0` (the depth-0
+`chainLit []` literals, n = 2 only); the axiom's hypothesis diff is ONE token
+(omMenu5 → omMenu6); `fiberOf5` dispatch + conclusion byte-identical. Per-literal GMN
+statement map in the docstring (ram: single side (0,H)–(2,0), gcd(H,2)=1, Cor 1.20 → (2,1);
+inert: slope −m/1 lowest terms e=1, root-free degree-2 residual, Thm 1.19 + Cor 1.20 → (1,2);
+split: b₀ ≠ 0 two distinct-slope width-1 sides via Thm 1.15, b₀ = 0 the literal y(y+b₁)
+factorization via the x-power split-off convention → (1,1)²). Scope #4 derived back as
+`om_leaf_faithful_w5`; w4 repointed through w5; guardian adjudicated the two forced proof-term
+repoints (w4, chainGate_axiom_coherent) BENIGN — logically exact, no semantic widening. THE
+PAYOFF — `FullFaithful.fullFiber_hasType`: over the `W6Fiber` index mirroring
+`decidedCount6`'s summands EXACTLY (definitional correspondence lemmas), every genuine monic
+quadratic in any counted fiber has a genuine certificate of the keyed type; footprint core +
+`om_leaf_faithful` EXACTLY; split-keyed legs axiom-free (`fullFiber_split_hasType_axfree`).
+The sep-inert glue PROVED axiom-free (`sepInert_classify_glue` via the banked
+`Order0.classify_eq_sepShape_iff` — squarefree, partition-(2) residual x²+x+1 — feeding the
+landed W2 consumer `menuFiber_hasType`; no dispatch change needed). Companion
+`montes_n2_full_faithful` = the W6 capstone's conclusion verbatim ∧ the faithfulness clause
+(capstone untouched; core + om_leaf_faithful, the pairing's honest cost).
+
+**W6c-d evidence (`OM/FullFaithfulGates.lean`):** four witnesses machine-checked at the
+blueprinted frames, all externally cross-checked (2-adic disc square-class, calibrated 3/3 on
+the banked X²+4/X²+12/X²+28 anchors; the PARI oracle env is not mounted on this box): depth-0
+inert x²+2x+4 (N=5; incl. the omMenu6 membership — a literal on NO earlier menu), depth-0
+split x²+2x+8 (N=5), c=1 translate x²−2x+5 (N=4; f(x+1) = the banked X²+4 gate), general-m
+chain x²+16 (ChainPair [2] (ram 1), N=6; the m=2 descent digits landed exactly as
+blueprinted). Mutation probes (scratch → False → recorded → deleted): (1) the axiom-shaped
+split-keying mutation at the depth-0 inert witness refuted by the proved irreducibility; (2)
+the MODEL-shaped (1,2)-keying mutation at the translate witness refuted by
+transChainFiber_ram_forced — model-shaped BY DESIGN: guardian confirmed an axiom-shaped
+translate mutation would itself violate the (P4d) statement map. Real axiom absent from both
+refuter cones; positive coherence gate fires through the NEW depth-0 menu leg. Full `lake
+build` green (8579 jobs; the census target needs the explicit `lake build
+LeanUrat.AxChk_baseline`, green 8688 jobs — README caveat sharpened). Census: all 888
+pre-wave output lines BYTE-IDENTICAL (600 entries; every capstone core-only); W6c census
+section appended (append-only), incl. the W6 capstone `montes_unconditional_n2_full`
+(core-only) now in the baseline census. Sorry census: only the banked Classifier sorry.
+
+**Guardian flags (all adjudicated benign, carried for the record):** (a) the two proof-term
+repoints; (b) probe 2 model-shaped per (P4d); (c) the `c ∈ {0,1}` counting-index surplus (the
+proofs hold at every translate — honest surplus in PROVED lemmas, not in the axiom).
+
+**Net effect on the honest picture:** W6's clause "σ-keying of the translate and depth-0
+fibers is definitional" is RETIRED; the first complete per-type density (n=2, p=2) is now
+Montes-faithful in every counted fiber, modulo exactly the one axiom. Unchanged: the q>2
+even-height split family (empty at q=2), palindromy = htameFE, order ≥ 2.
