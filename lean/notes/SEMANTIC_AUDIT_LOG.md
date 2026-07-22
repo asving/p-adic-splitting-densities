@@ -1002,3 +1002,28 @@ chain payload types now machine-guarded axiom-free: ram (W5c), inert (irreducibi
 argument), split (the faithfulness theorem ITSELF proved via mathlib hensels_lemma at the simple
 residue roots — stronger than a mutation guard). Four cross-mutations refuted; witnesses X²+12,
 X²+28; 32 declarations core-only; capstones unchanged.
+
+---
+
+## 2026-07-22 — Wave 6: THE MILESTONE — the first complete per-type densities (n=2)
+
+**`OM/SeriesAssembly.montes_unconditional_n2_full`** (2333 lines; fresh audit ACCEPT-WITH-FLAGS,
+one doc defect fixed in-commit; external verification COMPLETE PASS): for each degree-2 type σ,
+the FULL decided density over ℤ₂ — the entire descent tower — is a certified rational function
+(ram 1/(q+1), inert q/(2(q+1)), split the p=2-complete form; all = 1/3 at q=2, checksum = 1
+machine-checked), with **`hExhaust` PROVED** (the envelope at the accepted note's exact constant,
+valid for ALL N ≥ 1 — better than the note's N ≥ 4; pure counting, NO new axiom) — the
+bracket-uniqueness full-density clause fires OUTRIGHT for the first time. Capstone footprint:
+Lean core only, verified live. Audit highlights: `cluster_covering` exhaustive (every leaf kind +
+stall, p=2 residual arithmetic genuine); the translate equivalence measure-exact; the 1/3 values
+DERIVED from stratum counts by a two-sided squeeze closing exactly (7/6 fixpoint), not
+reverse-engineered; the general-q closed forms are ledger-matched definitions with clause (R)
+not over-readable. External brute force: per-type masses → 1/3 at N ≤ 11 with undecided EXACTLY
+2^{3−N} (10× inside the envelope); an INDEPENDENT discriminant-square-class oracle agrees with
+zero disagreements (4.19M boxes at N=11 + 200k at N=16); all six anchor families exact.
+HONEST LIMITS (documented in-module, in three places): (i) the c=1 translate and depth-0
+inert/split cluster fibers' σ-keying is DEFINITIONAL — outside axiom scope #4; the W6c scope-#5
+faithfulness extension is the named next lever before "complete per-type density" is
+Montes-faithful in every fiber; (ii) the split q-family is the p=2-complete tree's family (differs
+from the true split density by the q>2-only even-height pool term); (iii) palindromy = htameFE,
+as always.
