@@ -363,7 +363,9 @@ theorem gate_w6c_axiom_coherent :
     ∃ (f0 : Polynomial ℤ_[M9.realP]) (F : QpType.QpFactorization M9.realP f0),
       QpType.qpType M9.realP F = ChainMenu.inertType2 ∧
       Irreducible (f0.map (algebraMap ℤ_[M9.realP] ℚ_[M9.realP])) := by
-  obtain ⟨F, hF⟩ := OmLeafFaithful.om_leaf_faithful M9.realP 2 5 (by norm_num)
+  -- (W6q re-scope repoint, 2026-07-22: `om_leaf_faithful` → `om_leaf_faithful_w6`, the
+  -- derived theorem whose statement IS the former scope-#5 axiom — hypotheses unchanged)
+  obtain ⟨F, hF⟩ := OmLeafFaithful.om_leaf_faithful_w6 M9.realP 2 5 (by norm_num)
     ChainMenu.inertType2 (ChainMenu.chainLit [] (ChainMenu.ChainLeaf.inert 1)) 1 1
     w6cInert_mem_omMenu6 w6cInertPoly w6cInertPoly_monic w6cInertPoly_natDegree
     w6cInertFiber5_nonempty

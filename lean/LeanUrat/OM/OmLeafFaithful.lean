@@ -9,6 +9,8 @@ import LeanUrat.OM.WildMenuW3
 import LeanUrat.OM.MultiSlopeMenu
 import LeanUrat.OM.QpTypeChain
 import LeanUrat.OM.ChainMenu6
+import LeanUrat.OM.ChainMenu7
+import LeanUrat.OM.QpTypeSplitU
 
 /-!
 # OmLeafFaithful — the Montes-paper semantic axiom `om_leaf_faithful` (Wave 2b,
@@ -22,7 +24,12 @@ after completion of the boundary-#5 lift-invariance pin
 `notes/GMN_citations.md` §"Lift/representative invariance — pin (P4)" — the DECLARATION GATE;
 **RE-SCOPED AGAIN 2026-07-22, Wave 6c — scope #5** to the depth-0-widened menu
 `ChainMenu6.omMenu6` — a pure MENU widening, fiber dispatch `fiberOf5` and conclusion
-byte-identical — per `notes/WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3)
+byte-identical — per `notes/WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3; **RE-SCOPED AGAIN
+2026-07-22, Wave 6q — scope #6** to the splitU-widened menu `ChainMenu7.omMenu7` with the
+four-family fiber dispatch `fiberOf7`, per `notes/WILD_WAVE6Q_BLUEPRINT_2026-07-22.md`
+§1.5/§3 — the general-`p` splitU literals `splitULit ms m` (keyed `{(1,1),(1,1)}`, honestly
+EMPTY at `p = 2`), whose payload is GUARDED by the axiom-free masters of
+`OM/QpTypeSplitU.lean` and REQUIRED to stay redundant-in-consumers)
 
 Wave 1's σ-keying is DEFINITIONAL (`WildMenu.typeOfW` reads `(e,f)` off shape literals); Wave 2a
 (`OM/QpType.lean`) built the genuine ℚ_p-factorization vocabulary (`LocalFactorData`,
@@ -121,6 +128,26 @@ and the W4/W3/W2 chains keep deriving as before, so all consumers compile unchan
 per-literal GMN statement map for the three depth-0 literal kinds is in the axiom docstring
 below (blueprint `WILD_WAVE6C_BLUEPRINT_2026-07-22.md` §3 — the declaration-gate content for
 the new instances).
+
+**W6q change record (2026-07-22, scope #6)**: the menu hypothesis is re-scoped from
+`ChainMenu6.omMenu6 n D K σ` to `ChainMenu7.omMenu7 n D K σ` (the W6 menu ∪ the general-`p`
+splitU literals `ChainMenu7.splitULit ms m` — `ms ∈ msMenu D K`, depth 0 included,
+`m ∈ Icc 1 K`; `n = 2`, `σ = splitType2` ONLY), and the fiber hypothesis from `fiberOf5` to
+the four-family dispatch `fiberOf7` (splitU heads, `headOrd T = 3` — a FRESH order slot,
+chosen because a `(2, ·, ·)` head would be MIS-decoded by the chain branch (see
+`ChainMenu7`'s head-encoding audit): the PROVED W6q-a counting fiber
+`ChainMenu7.ChainCellU` at the exact decode `decodeMs`/`decodeMU`; every other head:
+`fiberOf5`, byte-identical). Everything else is byte-identical. The W6c form survives as
+the derived THEOREM `om_leaf_faithful_w6` (menu leg `ChainMenu7.omMenu6_subset_omMenu7`;
+fiber leg `fiberOf7_not_splitU` + `ChainMenu7.headOrd_ne_three_of_mem_omMenu6`), the W5
+derivation is repointed through it (statement unchanged), and the W4/W3/W2 chains keep
+deriving as before. **The splitU legs are split-keyed, hence — per the blueprint §3
+REQUIREMENT — REDUNDANT-IN-CONSUMERS**: their entire payload is PROVED axiom-free in
+`OM/QpTypeSplitU.lean` (masters + unwind + translate, core-only footprints), consumers must
+fire those masters and never this axiom's splitU instances, and a census line showing the
+axiom inside a split-keyed corollary's cone is a stop-the-line defect. The `p = 3` witness
+gates + the wrong-keying mutation probe live in Block 5c below; at `p = 2` the splitU pool
+is honestly EMPTY (`ChainMenuU.rootedPairs_two_empty`).
 -/
 
 set_option linter.style.longLine false
@@ -216,6 +243,46 @@ theorem fiberOf5_notChain (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N) {T :
   unfold fiberOf5
   rw [if_neg hT]
 
+/-- **The unified four-family fiber predicate** (W6q, blueprint `WILD_WAVE6Q` §3). The
+Wave-6q menu `ChainMenu7.omMenu7` adds the splitU literals (head order-slot `3`,
+`ChainMenu7.headOrd_splitULit`, carried by NO earlier menu shape —
+`ChainMenu7.headOrd_ne_three_of_mem_omMenu6`); on them the fiber is the PROVED W6q-a
+counting fiber `ChainMenu7.ChainCellU` at the exact decode (`decodeMs`/`decodeMU` —
+`ChainMenu7.splitULit_injective`), i.e. the very `ChainPairU` digit fibers the W6q model
+counts; on every other head it is `fiberOf5`, byte-identical. (Same anti-vacuity design as
+`fiberOf4`/`fiberOf5`: no old classifier or dispatch ever emits/reads a splitU head — a
+`headOrd = 3` literal under `fiberOf5` would fall through to the vacuous `B.classify`
+equation, true but empty; the new branch instead quantifies over the counted fibers.
+Head-encoding audit: `headOrd` reads the FIRST tree component, so the tempting
+`(2, 3, len)` head would be dispatched to the CHAIN branch and MIS-decoded by
+`decodeLeaf`'s wildcard — hence the fresh slot `3`; see `ChainMenu7`.) -/
+def fiberOf7 (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N) (T : ClusterShape)
+    (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n) : Prop :=
+  if MultiSlopeMenu.headOrd T = 3 then
+    ChainMenu7.ChainCellU p (ChainMenu.decodeMs T) (ChainMenu7.decodeMU T)
+      (PadicLift.toBox p n N hN f hf hdeg)
+  else fiberOf5 p n N hN T f hf hdeg
+
+/-- `fiberOf7` on a splitU literal IS the genuine `ChainCellU` digit fiber at the decoded
+splitU index. -/
+theorem fiberOf7_splitU (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N) {T : ClusterShape}
+    (hT : MultiSlopeMenu.headOrd T = 3) (f : Polynomial ℤ_[p]) (hf : f.Monic)
+    (hdeg : f.natDegree = n) :
+    fiberOf7 p n N hN T f hf hdeg
+      ↔ ChainMenu7.ChainCellU p (ChainMenu.decodeMs T) (ChainMenu7.decodeMU T)
+          (PadicLift.toBox p n N hN f hf hdeg) := by
+  unfold fiberOf7
+  rw [if_pos hT]
+
+/-- `fiberOf7` on every non-splitU-headed shape IS `fiberOf5` — the W6c fiber hypothesis,
+byte-identical. -/
+theorem fiberOf7_not_splitU (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N) {T : ClusterShape}
+    (hT : MultiSlopeMenu.headOrd T ≠ 3) (f : Polynomial ℤ_[p]) (hf : f.Monic)
+    (hdeg : f.natDegree = n) :
+    fiberOf7 p n N hN T f hf hdeg ↔ fiberOf5 p n N hN T f hf hdeg := by
+  unfold fiberOf7
+  rw [if_neg hT]
+
 /-- **[CITE] GMN (Guàrdia–Montes–Nart, *Newton polygons of higher order in algebraic number
 theory*, TAMS 364 (2012); arXiv:0807.2620v2) Thm 1.15 + Thm 1.19 + Cor 1.20 — the order-1
 dissections with the explicit leaf `(e,f)` (Thm 1.15, Theorem of the polygon: one coprime
@@ -232,18 +299,21 @@ carries, cf. `OM/QpType.lean` header and `notes/GMN_citations.md` §§1–2).**
 
 **MENU-FIBER-SCOPED** (the arising-shape restriction — the house discipline of
 `B.omReadValuation_lt_of_certLevel_fkeyed`): quantified ONLY over genuine monic `f : ℤ_[p][X]`
-that the level-`N` classifier ACTUALLY sends into the `fiberOf5`-fiber of a shape `T` of the
-CURRENT Wave-6 σ-keyed menu `ChainMenu6.omMenu6 n D K σ` (order-0 separable `sepShape`s ∪
+that the level-`N` classifier ACTUALLY sends into the `fiberOf7`-fiber of a shape `T` of the
+CURRENT Wave-6q σ-keyed menu `ChainMenu7.omMenu7 n D K σ` (order-0 separable `sepShape`s ∪
 the constant-e `Tselfloop` window strata at all admissible heights `H = fSum σ · k`,
 `gcd(k, e) = 1`, `1 ≤ k ≤ K`, ∪ — for mixed-all-e≥2 σ — the ONE canonical multi-slope literal
 `multiSideLit n (mixedPath σ) (mixedSh σ)`, ∪ — at `n = 2` ONLY — the depth-`≤ D` descent
-chains `chainLit ms leaf` with leaf keyed to σ, ∪ — at `n = 2` ONLY, NEW (W6c) — the depth-0
-leaf literals `chainLit [] leaf` with `leaf ∈ ChainMenu.chainLeaves K σ`; nothing else;
+chains `chainLit ms leaf` with leaf keyed to σ, ∪ — at `n = 2` ONLY (W6c) — the depth-0
+leaf literals `chainLit [] leaf` with `leaf ∈ ChainMenu.chainLeaves K σ`, ∪ — at `n = 2`,
+`σ = splitType2` ONLY, NEW (W6q) — the splitU literals `ChainMenu7.splitULit ms m` with
+`ms ∈ msMenu D K` (depth 0 included) and `m ∈ Icc 1 K`; nothing else;
 ∀ D K). A nonempty fiber forces
 the level past the shape's own decision threshold (module docstring; small-N emptiness =
 `WildMenuW3.stratumCount_ramShapeAt_smallN` resp. `MultiSlopeMenu.stratumCount4_mixed_smallN`
 resp. `ChainMenu.card_chainCell_smallN` for the chain branch — below the threshold
-`2·Σms + leafNeed` the `ChainCell` fiber is EMPTY, `ChainMenu.chainPair_empty`),
+`2·Σms + leafNeed` the `ChainCell` fiber is EMPTY, `ChainMenu.chainPair_empty` — resp.
+`ChainMenuU.chainPairU_empty` for the splitU branch, threshold `2·Σms + leafNeedU m`),
 where the banked fiber characterizations (`Order0`,
 `ClassifierBridgeFiber2.classify_eq_selfloop_iff`, `CellMenu.inCell_mkCell_iff`) exhibit the
 fiber as the genuine Ore/GMN stratum:
@@ -325,6 +395,31 @@ fiber as the genuine Ore/GMN stratum:
   the (P4d) discipline: the paper states no translation form, so none may enter; translate
   coverage is DERIVED (blueprint §1.3, the PROVED `QpTypeChain.qpType_translate_rescale` at
   `a = 1`).
+* NEW (W6q), the `n = 2` general-`p` SPLITU literals `splitULit ms m` (`m ≥ 1`, window
+  `(D, K)`, `σ = splitType2` only — `ChainMenu7.splitUShapes`; `fiberOf7` dispatches them,
+  via the exact decode `decodeMs`/`decodeMU`, to `ChainMenu7.ChainCellU ms m` — the
+  `ChainMenuU.ChainPairU` digit fiber: the SAME per-step (S1)∧(S2) recentering reads as the
+  chain literals, same `StratumPair`/`descendPair` machinery, same (P4) lift-invariance
+  pin, terminating in the splitU leaf `LeafPairU m` in the final staircase frame:
+  `v(b₀) = 2m` EXACT (the rooted pair's constant digit is nonzero —
+  `ChainMenuU.rootedPairs_fst_ne_zero`), `v(b₁) ≥ m`, residual digit pair in
+  `ChainMenuU.rootedPairs p` — two DISTINCT roots, both nonzero). **Statement map (per
+  literal, blueprint §3)**: single side `(0, 2m)–(2, 0)`, slope `−m/1` in lowest terms ⟹
+  `e = 1`, side degree 2; residual = the digit quadratic `z² + w̄₁z + w̄₀`, separable with
+  two distinct linear factors ⟹ **Thm 1.19**: TWO coprime factors, each with
+  `(e, f) = (1, 1)` by **Cor 1.20** (`a_i = 1`, `deg ψ_i = 1`); assembled type
+  `{(1,1),(1,1)} = splitType2`. **Guard + REQUIREMENT (blueprint §3, Codex pass-1 gap
+  #2)**: the entire splitU payload is PROVED AXIOM-FREE by the `OM/QpTypeSplitU.lean`
+  masters (`leafSplitU_master_hasType` through `transChainFiberU_split_hasType` — the
+  root-generic Hensel at `h̄'(r̄) = r̄ − s̄ ≠ 0`, char-2-safe, plus the transcribed unwind
+  and the general-`p` translate commutation `transBoxP_comp`), so these axiom instances are
+  REDUNDANT-IN-CONSUMERS **by requirement, not observation**: every split-keyed consumer
+  branch MUST fire the axiom-free masters, never this leg; split-keyed corollaries are
+  packaged with machine-checked CORE-ONLY footprints, and a census line showing this axiom
+  inside a split-keyed corollary's cone is a stop-the-line defect. The legs are kept on the
+  menu for uniform emission only. Non-vacuity: the `p = 3` witness `y² + 9y + 18` (Block 5c;
+  pool nonempty ⟺ `q ≥ 3`); at `p = 2` the pool is honestly EMPTY
+  (`ChainMenuU.rootedPairs_two_empty` — the W1 honest-empty pattern, note Claim 4.3).
 
 **W4c re-scope record (2026-07-22, blueprint `WILD_WAVE4` §W4c; third scope)**: hypothesis
 `hT` re-scoped from `T ∈ WildMenuW3.omMenuW3 n K σ` to `T ∈ MultiSlopeMenu.omMenu4 n K σ`, and
@@ -357,6 +452,21 @@ as before. Anti-vacuity of the new legs: below the leaf threshold (`L₀ < leafN
 depth-0 fiber is EMPTY (`ChainMenu.chainPair_empty` at `ms = []`, i.e. `leafPair_empty`);
 nonemptiness witnesses + mutation probes at the new legs are task W6c-d.
 
+**W6q re-scope record (2026-07-22, blueprint `WILD_WAVE6Q_BLUEPRINT_2026-07-22.md` §1.5/§3;
+scope #6)**: hypothesis `hT` re-scoped from `(D K : ℕ) … T ∈ ChainMenu6.omMenu6 n D K σ` to
+`(D K : ℕ) … T ∈ ChainMenu7.omMenu7 n D K σ` (the new members are exactly the splitU
+literals `{splitULit ms m : ms ∈ msMenu D K, m ∈ Icc 1 K}` at `n = 2`, `σ = splitType2`),
+and hypothesis `hfib` from `fiberOf5` to the four-family dispatch `fiberOf7` (splitU heads
+`headOrd T = 3` → the PROVED counting fiber `ChainMenu7.ChainCellU` at the exact decode;
+every other head → `fiberOf5`, byte-identical). Conclusion byte-identical. The W6c
+instance is EXACTLY the previously accepted scope-#5 form (derived below as
+`om_leaf_faithful_w6` — menu leg `ChainMenu7.omMenu6_subset_omMenu7`, fiber leg
+`fiberOf7_not_splitU` at `ChainMenu7.headOrd_ne_three_of_mem_omMenu6`); the W5/W4/W3/W2
+chains keep deriving as before (the W5 derivation now routes through `om_leaf_faithful_w6`,
+statement unchanged). The splitU instances are guarded by the AXIOM-FREE
+`OM/QpTypeSplitU.lean` masters and are redundant-in-consumers by REQUIREMENT (see the
+NEW (W6q) bullet above). Guardian audit #7 owns this re-scope.
+
 **NO uniformity / rationality / measure / density term appears in the statement** (existence
 only; no uniqueness clause — consumers need none). Deliberate NON-imports (blueprint §2 W2b,
 unchanged): drainage (false of the truncated classifier), residual equidistribution (not
@@ -372,27 +482,50 @@ re-run at the NEW mixed-gate stratum (n = 5, σ = {(2,1),(3,1)}) after the W4c r
 stratum (n = 2, `ms = [1]`, `ram 1`, σ = {(2,1)}) after the W5c re-scope (split-type
 `{(1,1),(1,1)}` AND fine-(e,f)-swap `{(1,2)}` — both against the AXIOM-FREE
 `OM/QpTypeChain.lean` anchors; evidence block in Block 4b below) plus the positive check
-`chainGate_axiom_coherent`. -/
+`chainGate_axiom_coherent`; re-run at the NEW splitU stratum (p = 3, n = 2, `splitULit [] 1`,
+σ = {(1,1),(1,1)}) after the W6q re-scope (wrong-keying `{(1,2)}` against the AXIOM-FREE
+two-factor refuter `QpTypeSplitU.w6qSplitU_not_irreducible`; evidence block in Block 5c
+below) plus the positive check `gate_w6q_splitU_coherent`. -/
 axiom om_leaf_faithful (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
+    (σ : FactorizationType) (T : ClusterShape) (D K : ℕ)
+    (hT : T ∈ ChainMenu7.omMenu7 n D K σ)
+    (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
+    (hfib : fiberOf7 p n N hN T f hf hdeg) :
+    ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ
+
+/-- **The Wave-6c form of the axiom, now a THEOREM** (W6q re-scope, 2026-07-22): the
+previously accepted `om_leaf_faithful` statement over the depth-0-widened menu
+`ChainMenu6.omMenu6 n D K σ` with the `fiberOf5` dispatch is an instance of the re-scoped
+axiom — the menu leg by the recovery inclusion `ChainMenu7.omMenu6_subset_omMenu7` (the W6q
+menu is the W6 menu ∪ the splitU literals), the fiber leg by `fiberOf7_not_splitU` (NO
+scope-#5 menu shape carries the splitU head `3` —
+`ChainMenu7.headOrd_ne_three_of_mem_omMenu6`). Every W6c consumer keeps compiling against
+this form. -/
+theorem om_leaf_faithful_w6 (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
     (σ : FactorizationType) (T : ClusterShape) (D K : ℕ)
     (hT : T ∈ ChainMenu6.omMenu6 n D K σ)
     (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
     (hfib : fiberOf5 p n N hN T f hf hdeg) :
-    ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ
+    ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ :=
+  om_leaf_faithful p n N hN σ T D K
+    (ChainMenu7.omMenu6_subset_omMenu7 n D K σ hT) f hf hdeg
+    ((fiberOf7_not_splitU p n N hN
+      (ChainMenu7.headOrd_ne_three_of_mem_omMenu6 hT) f hf hdeg).mpr hfib)
 
-/-- **The Wave-5c form of the axiom, now a THEOREM** (W6c re-scope, 2026-07-22): the
+/-- **The Wave-5c form of the axiom, now a THEOREM** (W6c re-scope, 2026-07-22; routed
+through the derived W6 form `om_leaf_faithful_w6` since the W6q re-scope): the
 previously accepted `om_leaf_faithful` statement over the depth-windowed chain menu
 `ChainMenu.omMenu5 n D K σ` with the `fiberOf5` dispatch is an instance of the re-scoped
 axiom — the menu leg by the recovery inclusion `ChainMenu6.omMenu5_subset_omMenu6` (the W6
 menu is the W5 menu ∪ the depth-0 leaf literals), the fiber leg VERBATIM (`hfib` was not
-re-scoped). Every W5c consumer keeps compiling against this form. -/
+re-scoped at W6c). Every W5c consumer keeps compiling against this form. -/
 theorem om_leaf_faithful_w5 (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
     (σ : FactorizationType) (T : ClusterShape) (D K : ℕ)
     (hT : T ∈ ChainMenu.omMenu5 n D K σ)
     (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
     (hfib : fiberOf5 p n N hN T f hf hdeg) :
     ∃ F : QpType.QpFactorization p f, QpType.qpType p F = σ :=
-  om_leaf_faithful p n N hN σ T D K
+  om_leaf_faithful_w6 p n N hN σ T D K
     (ChainMenu6.omMenu5_subset_omMenu6 n D K σ hT) f hf hdeg hfib
 
 /-- **The Wave-4c form of the axiom, now a THEOREM** (W5c re-scope, 2026-07-22; routed
@@ -534,6 +667,7 @@ re-scoped W3 hypotheses at the H = 3 window stratum the same day, evidence block
 exactly those of the derived theorem `om_leaf_faithful_w3`; the W4c probes at the NEW mixed
 menu content live in `OM/QpTypeMixed.lean`).**
 **W6c note (2026-07-22, scope #5): the menu widening `ChainMenu.omMenu5 → ChainMenu6.omMenu6` preserves this record verbatim — every hypothesis form quoted or referenced in this block is that of a DERIVED theorem (`om_leaf_faithful_w1`/`_w3`/`_w4`/`_w5`), unchanged by the re-scope; the probes re-fire at the NEW depth-0 legs in task W6c-d.**
+**W6q note (2026-07-22, scope #6): same preservation again — the widening `ChainMenu6.omMenu6 → ChainMenu7.omMenu7` + the `fiberOf5 → fiberOf7` dispatch leaves every quoted hypothesis form that of a DERIVED theorem (now including `om_leaf_faithful_w6`, the exact former scope-#5 statement); the probe at the NEW splitU leg is recorded in Block 5d below.**
 The following scratch module — the (W2) axiom's hypotheses verbatim,
 conclusion mutated to the SPLIT type `{(1,1),(1,1)}` — was compiled against this module and
 `lake env lean` accepted it with zero errors, i.e. `False` DERIVES from the mutated axiom +
@@ -656,14 +790,159 @@ theorem chainGate_axiom_coherent :
       QpTypeChain.chainGatePoly_monic QpTypeChain.chainGatePoly_natDegree
       QpTypeChain.chainGateFiber_nonempty⟩
 
-/-! ## Block 6 — axiom census (this module declares EXACTLY ONE axiom, the W6c-re-scoped one)
+/-! ## Block 5c — W6q gates at the splitU witness (scope-#6 non-vacuity + positive coherence)
 
-Expected footprints: `om_leaf_faithful` = itself; `om_leaf_faithful_w5` / `om_leaf_faithful_w4` /
+The witness OBJECTS live with the axiom-free masters (`OM/QpTypeSplitU.lean` Block 7):
+`w6qSplitUPoly = y² + 9y + 18 = (y + 3)(y + 6)` over `ℤ_[3]` (residual pair `(2, 0)` — the
+`rootedPairs 3` singleton), its `LeafPairU` membership `w6qSplitUPair_mem` at the minimal
+frame `N = leafNeedU 1 = 3` (digit checks by `decide`), the DIRECT two-factor
+irreducibility refuter `w6qSplitU_not_irreducible`, and the CORE-ONLY master gate
+`gate_w6q_splitU_hasType_axfree`. HERE: the omMenu7 membership, the `fiberOf7` fiber
+membership, and the axiom-consuming positive coherence gate (the probe pattern of Blocks
+3–5b, re-run at the scope-#6 emission). -/
+
+/-- The splitU literal `splitULit [] 1` is on the scope-#6 menu at `σ = splitType2`, window
+`D = 0`, `K = 1` — via the NEW `splitUShapes` leg (it is on NO earlier menu: the head
+order-slot `3` is fresh, `ChainMenu7.headOrd_ne_three_of_mem_omMenu6`). -/
+theorem w6qSplitU_mem_omMenu7 :
+    ChainMenu7.splitULit [] 1 ∈ ChainMenu7.omMenu7 2 0 1 ChainMenu.splitType2 := by
+  refine ChainMenu7.mem_omMenu7_cases.mpr (Or.inr ⟨rfl, rfl, [], 1, ?_, ?_, rfl⟩)
+  · rw [ChainMenu.mem_msMenu]
+    exact ⟨Nat.le_refl 0, fun m hm => absurd hm (List.not_mem_nil)⟩
+  · rw [Finset.mem_Icc]
+    omega
+
+/-- The splitU witness inhabits the `fiberOf7` fiber of the NEW splitU literal — the
+scope-#6 instance of the axiom is NOT vacuous (the anti-vacuity leg of blueprint §3 at the
+new emission; the pool itself is nonempty exactly for `q ≥ 3`). -/
+theorem w6qSplitUFiber7_nonempty :
+    fiberOf7 3 2 3 (by norm_num) (ChainMenu7.splitULit [] 1)
+      QpTypeSplitU.w6qSplitUPoly QpTypeSplitU.w6qSplitUPoly_monic
+      QpTypeSplitU.w6qSplitUPoly_natDegree := by
+  rw [fiberOf7_splitU 3 2 3 (by norm_num) (ChainMenu7.headOrd_splitULit _ _) _ _ _,
+    ChainMenu7.decodeMsU_splitULit, ChainMenu7.decodeMU_splitULit]
+  unfold ChainMenu7.ChainCellU
+  have hcoeff : ∀ i, ((PadicLift.toBox 3 2 3 (by norm_num) QpTypeSplitU.w6qSplitUPoly
+      QpTypeSplitU.w6qSplitUPoly_monic QpTypeSplitU.w6qSplitUPoly_natDegree).1).coeff i
+      = PadicInt.toZModPow 3 (QpTypeSplitU.w6qSplitUPoly.coeff i) := by
+    intro i
+    rw [PadicLift.toBox_val, Polynomial.coeff_map]
+  rw [hcoeff 0, hcoeff 1]
+  exact QpTypeSplitU.w6qSplitUPair_mem
+
+/-- **W6q positive coherence at the splitU witness.** The re-scoped axiom's concrete splitU
+instance (`p = 3`, `N = 3`, `w6qSplitUPoly = y² + 9y + 18`, type `{(1,1),(1,1)}` =
+`splitType2`) COEXISTS with the PROVED two-factor reducibility
+(`QpTypeSplitU.w6qSplitU_not_irreducible`, from the literal factorization `(y+3)(y+6)`).
+Together with the recorded W6q wrong-keying mutation probe (evidence block below, Block 5d),
+the axiom's keying at the new splitU leg is pinned. Footprint: core + `om_leaf_faithful`
+EXACTLY. **NOTE (the blueprint §3 REQUIREMENT)**: this gate is a PROBE of the axiom's
+keying, NOT a consumer route — the production split-keyed payload at this fiber is the
+CORE-ONLY `QpTypeSplitU.gate_w6q_splitU_hasType_axfree` (same witness, same type, no
+axiom). -/
+theorem gate_w6q_splitU_coherent :
+    ∃ (f0 : Polynomial ℤ_[3]) (F : QpType.QpFactorization 3 f0),
+      QpType.qpType 3 F = ChainMenu.splitType2 ∧
+      ¬ Irreducible (f0.map (algebraMap ℤ_[3] ℚ_[3])) := by
+  obtain ⟨F, hF⟩ := om_leaf_faithful 3 2 3 (by norm_num) ChainMenu.splitType2
+    (ChainMenu7.splitULit [] 1) 0 1 w6qSplitU_mem_omMenu7 QpTypeSplitU.w6qSplitUPoly
+    QpTypeSplitU.w6qSplitUPoly_monic QpTypeSplitU.w6qSplitUPoly_natDegree
+    w6qSplitUFiber7_nonempty
+  exact ⟨QpTypeSplitU.w6qSplitUPoly, F, hF, QpTypeSplitU.w6qSplitU_not_irreducible⟩
+
+/-! ## Block 5d — W6q mutation probe evidence (machine-checked 2026-07-22, scratch NOT
+committed)
+
+**The wrong-keying mutation at the NEW scope-#6 splitU leg** — the re-scoped axiom's
+hypotheses VERBATIM (over `ChainMenu7.omMenu7` with `fiberOf7`), conclusion replaced by the
+INERT type `{(1,2)}`, fired at the `p = 3` splitU witness — was compiled against this module
+and `OM/QpTypeSplitU.lean`, and `lake env lean` accepted the following scratch with zero
+errors: `False` DERIVES from the mutated axiom + the inhabited fiber
+(`w6qSplitUFiber7_nonempty`) + the AXIOM-FREE two-factor refuter
+(`QpTypeSplitU.w6qSplitU_not_irreducible`, from the literal factorization
+`y² + 9y + 18 = (y + 3)(y + 6)`). The real `om_leaf_faithful` appears NOWHERE in the
+refutation cone (footprint below: core + the mutated axiom ONLY); the positive check
+`gate_w6q_splitU_coherent` (Block 5c) consumes exactly core + the real axiom. A singleton
+keying at the splitU family is therefore machine-refutable, and — by the §3 REQUIREMENT —
+the split keying itself never needs the axiom (`gate_w6q_splitU_hasType_axfree`, core-only).
+
+```lean
+import Mathlib
+import LeanUrat.OM.OmLeafFaithful
+
+namespace LeanUrat.OM.OmLeafFaithfulScratchW6q
+
+open Polynomial
+open LeanUrat LeanUrat.OM
+
+/-- THE MUTATED AXIOM (scratch only): hypotheses of the W6q-re-scoped `om_leaf_faithful`
+verbatim (menu `ChainMenu7.omMenu7`, fiber `fiberOf7`), conclusion replaced by the
+wrong-keying INERT type `{(1,2)}`. -/
+axiom om_leaf_faithful_MUTATED_splitUinert (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
+    (σ : FactorizationType) (T : ClusterShape) (D K : ℕ)
+    (hT : T ∈ ChainMenu7.omMenu7 n D K σ)
+    (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
+    (hfib : OmLeafFaithful.fiberOf7 p n N hN T f hf hdeg) :
+    ∃ F : QpType.QpFactorization p f,
+      QpType.qpType p F = (⟨{((1 : ℕ), (2 : ℕ))}⟩ : FactorizationType)
+
+/-- The mutated axiom is REFUTED at the inhabited splitU witness fiber: a `{(1,2)}`
+conclusion forces a SINGLETON certificate, whose one factor is ℚ₃-irreducible and equals
+the witness — but the witness factors LITERALLY as `(y+3)(y+6)`
+(`QpTypeSplitU.w6qSplitU_not_irreducible`). -/
+theorem mutation_w6q_splitUwrongkey_refuted : False := by
+  obtain ⟨F, hF⟩ := om_leaf_faithful_MUTATED_splitUinert 3 2 3 (by norm_num)
+    ChainMenu.splitType2 (ChainMenu7.splitULit [] 1) 0 1
+    OmLeafFaithful.w6qSplitU_mem_omMenu7 QpTypeSplitU.w6qSplitUPoly
+    QpTypeSplitU.w6qSplitUPoly_monic QpTypeSplitU.w6qSplitUPoly_natDegree
+    OmLeafFaithful.w6qSplitUFiber7_nonempty
+  -- the mutated conclusion forces EXACTLY ONE factor
+  have hlen : F.factors.length = 1 := by
+    have hdata := congrArg FactorizationType.data hF
+    have hcard := congrArg Multiset.card hdata
+    simpa [QpType.qpType] using hcard
+  obtain ⟨g₁, hfac⟩ := List.length_eq_one_iff.mp hlen
+  have hg₁ : g₁ = QpTypeSplitU.w6qSplitUPoly := by
+    have hprod := F.prod_eq
+    rw [hfac, List.prod_singleton] at hprod
+    exact hprod
+  -- the one factor is ℚ₃-irreducible and IS the witness — against the two-factor refuter
+  have hirr : Irreducible (QpTypeSplitU.w6qSplitUPoly.map (algebraMap ℤ_[3] ℚ_[3])) := by
+    rw [← hg₁]
+    exact F.irred g₁ (by rw [hfac]; exact List.mem_singleton_self _)
+  exact QpTypeSplitU.w6qSplitU_not_irreducible hirr
+
+end LeanUrat.OM.OmLeafFaithfulScratchW6q
+
+#print axioms LeanUrat.OM.OmLeafFaithfulScratchW6q.mutation_w6q_splitUwrongkey_refuted
+```
+
+`lake env lean` output on the scratch (2026-07-22): NO errors; the single info line
+
+```
+'LeanUrat.OM.OmLeafFaithfulScratchW6q.mutation_w6q_splitUwrongkey_refuted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ LeanUrat.OM.OmLeafFaithfulScratchW6q.om_leaf_faithful_MUTATED_splitUinert]
+```
+
+i.e. `False` follows from the MUTATED axiom + Lean core + PROVED theorems alone — the real
+`om_leaf_faithful` appears in neither the refutation cone nor the refuter. -/
+
+/-! ## Block 6 — axiom census (this module declares EXACTLY ONE axiom, the W6q-re-scoped one)
+
+Expected footprints: `om_leaf_faithful` = itself; `om_leaf_faithful_w6` /
+`om_leaf_faithful_w5` / `om_leaf_faithful_w4` /
 `om_leaf_faithful_w3` / `om_leaf_faithful_w1` / `menuFiber_hasType` / `gateFiber_hasType` /
-`gate_axiom_coherent` / `chainGate_axiom_coherent` = Lean core + `om_leaf_faithful`;
+`gate_axiom_coherent` / `chainGate_axiom_coherent` / `gate_w6q_splitU_coherent` = Lean core
++ `om_leaf_faithful`;
 `fiberOf4` / `fiberOf4_mixed` / `fiberOf4_old` / `fiberOf5` / `fiberOf5_chain` /
-`fiberOf5_notChain` / `gate_mem_omMenuW` / `gatePoly*` / `toBox_gatePoly` /
-`gateFiber_nonempty` / `chainGateFiber5_nonempty` = Lean core ONLY.
+`fiberOf5_notChain` / `fiberOf7` / `fiberOf7_splitU` / `fiberOf7_not_splitU` /
+`gate_mem_omMenuW` / `gatePoly*` / `toBox_gatePoly` /
+`gateFiber_nonempty` / `chainGateFiber5_nonempty` / `w6qSplitU_mem_omMenu7` /
+`w6qSplitUFiber7_nonempty` = Lean core ONLY (the split-keyed PAYLOAD gate
+`QpTypeSplitU.gate_w6q_splitU_hasType_axfree` is core-only in ITS module — the §3
+requirement).
 The density capstones (`RealInstanceW.montes_unconditional_w`,
 `RealInstanceV2.montes_unconditional`, `RealInstanceW3.montes_unconditional_w3`,
 `RealInstanceW4.montes_unconditional_w4`, `RealInstanceW5.montes_unconditional_w5`) do NOT
@@ -677,7 +956,11 @@ section AxCheck
 #print axioms LeanUrat.OM.OmLeafFaithful.fiberOf5
 #print axioms LeanUrat.OM.OmLeafFaithful.fiberOf5_chain
 #print axioms LeanUrat.OM.OmLeafFaithful.fiberOf5_notChain
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf7
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf7_splitU
+#print axioms LeanUrat.OM.OmLeafFaithful.fiberOf7_not_splitU
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w6
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w5
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w4
 #print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w3
@@ -693,6 +976,9 @@ section AxCheck
 #print axioms LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent
 #print axioms LeanUrat.OM.OmLeafFaithful.chainGateFiber5_nonempty
 #print axioms LeanUrat.OM.OmLeafFaithful.chainGate_axiom_coherent
+#print axioms LeanUrat.OM.OmLeafFaithful.w6qSplitU_mem_omMenu7
+#print axioms LeanUrat.OM.OmLeafFaithful.w6qSplitUFiber7_nonempty
+#print axioms LeanUrat.OM.OmLeafFaithful.gate_w6q_splitU_coherent
 
 end AxCheck
 

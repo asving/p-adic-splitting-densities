@@ -324,7 +324,9 @@ theorem transChain_menuFiber_hasType {N : ℕ} (hN : 0 < N) {σ : FactorizationT
       exact Finset.mem_union_right _
         (ChainMenu.mem_chainShapes.mpr ⟨rfl, ms, leaf, hms, hnil, hleaf, rfl⟩)
   -- the axiom hands `g` a certificate; the proved pure translation carries it to `f`
-  obtain ⟨Fg, hFg⟩ := OmLeafFaithful.om_leaf_faithful M9.realP 2 N hN σ
+  -- (W6q re-scope repoint, 2026-07-22: `om_leaf_faithful` → `om_leaf_faithful_w6`, the
+  -- derived theorem whose statement IS the former scope-#5 axiom — hypotheses unchanged)
+  obtain ⟨Fg, hFg⟩ := OmLeafFaithful.om_leaf_faithful_w6 M9.realP 2 N hN σ
     (ChainMenu.chainLit ms leaf) N N hT (f.comp (X + C (c : ℤ_[M9.realP]))) hg hgdeg hfib5
   obtain ⟨Fc, hFc⟩ := qpType_translate_rescale M9.realP (1 : ℤ_[M9.realP]) (c : ℤ_[M9.realP])
     one_ne_zero (translate_rel M9.realP f (c : ℤ_[M9.realP])) Fg
