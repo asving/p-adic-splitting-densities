@@ -943,3 +943,31 @@ fine-swap ⟹ machine-checked False; real axiom absent from cones; scratches rec
 FLAGS: docs lag fixed this commit; standing W2 flags 2–3 carried (general-σ multi-factor residual
 faithfulness cite-trusted beyond the machine anchors; bundle e·f-coherence via the pinned integral
 closure).
+
+---
+
+## 2026-07-22 — Wild Wave 4 (mixed-e): capstone + `om_leaf_faithful` RE-SCOPE #3 (omMenu4/fiberOf4)
+
+**W4a/b (no trusted-base change):** the multi-slope literal family (`MultiSlopeMenu.lean`, 95 decls)
++ mixed-e instance/capstone (`montes_unconditional_w4`): first mixed-ramification density
+machine-checked — σ = {(2,1),(3,1)} at n=5 certifies 1/512 = (1/32)·(1/16) through the real
+instance (externally pinned; the per-side product IS `hnode_multiSideProduct`'s target; the
+whole-path/per-side volume ledger reconciled by `decide`). The blueprint's side-order ERRATUM
+(decreasing-e = hull-inadmissible/empty strata) was caught by the external gate BEFORE Lean work
+and fixed mid-flight. Census +27, all core-only, zero regression.
+
+**W4c — the axiom re-scope (guardian audit #4: ACCEPT-WITH-FLAGS, push cleared, 8/8 substantive
+PASS):** menu → `omMenu4 n K σ`; fiber hypothesis → the per-family dispatch `fiberOf4`
+(B.classify on old families; `classify1 = some (mkCell (decodePath T) (decodeShapes T))` on the
+mixed literals — decode∘mint = id proved). The dispatch DESIGNS OUT the V1 vacuity trap
+(B.classify can never emit a multi-slope literal); the mixed branch is inhabited
+(`X⁵+2X²+4` at N=4) and InCell pins ALL polygon vertices exactly (incl. the interior (2,1)), so
+the fiber IS the GMN Thm 1.15 stratum. Statement-map faithful (Thm 1.15 + per-side 1.19/Cor 1.20;
+`typeOf4` = Cor 1.20's law under the ascending-e path); no smuggled uniqueness/measure/uniformity;
+K innocuous (mixedShape K-independent). Guard: sub-threshold mixed fibers IsEmpty. Anchors:
+five valuation pins; FULL-strength no-root (p∣y ⟹ p³∣a₀ contradiction; p∤y ⟹ p∣y⁵ contradiction);
+`ef_mul_eq_natDegree`. Probes: all-unramified {(1,1)}⁵ AND wrong-e {(2,1)} both machine-derive
+False (cones free of the real axiom; scratches recorded + deleted) — the mixed payload guarded in
+shape AND degree-ledger coordinates. Census: 493 priors byte-identical; nine capstones core-only
+(structural: no capstone module imports OmLeafFaithful). Carried flags: instance-local coverage at
+realP; general-σ multi-factor faithfulness cite-trusted beyond the gates.
