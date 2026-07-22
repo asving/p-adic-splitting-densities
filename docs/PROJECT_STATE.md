@@ -316,6 +316,44 @@ should not be conflated (this is the mistake an earlier draft of this document m
    of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
    — `notes/M6_lemma.md`), translation-form GMN invariance (NOT stated in the paper — (P4d);
    PROVED instead as `QpTypeChain.qpType_translate_rescale`).
+   **W6 LANDED (2026-07-22, leaf `OM/SeriesAssembly.lean`, 2333 lines, no new axiom, no sorry,
+   ALL capstones Lean-core-only): the n=2 SERIES ASSEMBLY — the FIRST unconditional `hExhaust`
+   discharge and the first FULL per-type density capstone.** The full counting model `realMW6 :
+   CountingModel realP 2`: decided counts = order-0 separable cells + BOTH residue points
+   (translate `f(x)↦f(x+c)` = `affineEquiv` at `(N,N)` — measure-exact) × ALL depth-`k ≥ 0`
+   chains × all leaf kinds (including the depth-0 even-height inert/split cluster leaves NO
+   earlier menu carried — structural finding: `omMenu5` covers one residue point and lacks
+   those legs, so the W5 window family's `D→∞` limit is NOT the full density; the full model
+   per blueprint §3 bypasses the Finset-menu spine, then re-enters `MontesDataV2` via
+   one-marker-shape bookkeeping `realDW6` to reuse `goal_theorem_montes` verbatim).
+   Key theorems (all pure counting, core-only): `cluster_covering` (the note-3.4′(a) decision
+   tree: every cluster pair terminates in a menu leaf within budget or stalls at
+   `v(a₀) ≥ B−1`, strong induction on the budget); `card_stallPair_le`
+   (`≤ (p−1)^k·p^{L₁−Σm}`, `card_step` transport); **`undecided_envelope`:
+   `undecided(N)/p^{2N} ≤ (⌊N/2⌋+1)·p^{−(N−1)}` for ALL `N ≥ 1`** (the note proved `N ≥ 4`;
+   same constant) via the ≤-relaxed critical chain sum `msW_half_le` (`Σ_{ms}(1/2)^{Σm} ≤ D+1`);
+   **`hExhaust_n2`** (envelope → 0); the value ties by two-sided squeeze — (U)
+   `decided ≤ (1/3)·box` per type (the geometric fixpoint `msW_eighth_le : Σ(1/8)^{Σm} ≤ 7/6`
+   closing EXACTLY at the full values) and `≥ (1/3 − envelope)·box` (box partition + (U) for
+   the other two) — so `fullDecided_tendsto : → 1/3` per type. **Capstone
+   `montes_unconditional_n2_full (σ) (hσ : σ.degree = 2) (htameFE)`**: (R) rationality of the
+   closed forms `fullValueFn` (ram `1/(q+1)`, inert `q/(2(q+1))`, split `(q³−q+2)/(2q²(q+1))`
+   — the p=2-complete tree; ledger match β_ram = q/(q+1)), (V) `realMW6.countingDensity σ =
+   num(2)/den(2) = 1/3` per type, (P) palindromy conditional on `htameFE` (about `realFW6`),
+   (B) **bracket-uniqueness UNCONDITIONAL — `hExhaust` supplied by `hExhaust_n2`, the first
+   full-density clause fired outright**. Gates: `gate_w6_{ram,inert,split}_full = 1/3`,
+   `gate_w6_checksum` (sum = 1), window comparisons (`1/8, 9/64 < 1/3`), `w5_window_mono`
+   (W5 family monotone in D), `decided6_mono` (level-window monotone), C:=0 mutation refused
+   (evidence block), `AxChk_baseline` re-run UNCHANGED. HONEST SCOPE: counting-side digit
+   fibers — σ-keying of the translate fibers and the depth-0 inert/split cluster leaves is
+   DEFINITIONAL here, outside W5c's declared axiom scope #4 (a W6c-style faithfulness scope
+   extension is required before calling the full model's keying Montes-faithful); the
+   `q`-uniform family omits the even-height split-residual family (pool `(q−1)(q−2)/2`, empty
+   at the real prime q=2), so at general q the split form is NOT the true split density
+   (difference `(q−2)/(2q²(q+1))`); palindromy remains exactly the content of `htameFE`
+   (whether `htameFE` holds at `realFW6` is NOT established — the capstone is conditional on
+   it, per the standing endpoint boundary). Python cross-check dispatch values are in the
+   module docstring (per-type limits 1/3; envelope at N=9 ≤ 5/256; per-stratum anchors).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
    in progress (§4).
 3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.
@@ -325,7 +363,11 @@ should not be conflated (this is the mistake an earlier draft of this document m
 - **What is genuinely done now:** a `p`-uniform rationality *engine* (all primes, wild included) and a
   real *order-0* density theorem, plus the formalized OM classifier (§2). Palindromy is proved as a
   *transfer* mechanism but only ever fed an *assumed* tame functional equation — it is not yet
-  established for a constructed real density.
+  established for a constructed real density. NEW (W6, 2026-07-22): at `n = 2, p = 2` the FULL
+  decided tower is machine-counted with a PROVED exhaustion envelope (`hExhaust` discharged, no
+  axiom) and per-type full densities `1/3, 1/3, 1/3` tied to closed rational forms — the first
+  complete per-type density value, counting-side (σ-keying of the new fibers definitional pending
+  a faithfulness scope extension; palindromy still conditional on `htameFE`).
 - **Honest one-line status:** the *mathematics* is complete modulo the published Montes/GMN algorithm
   and is extensively cross-checked; the *Lean* is a sound, `sorry`-free engine + order-0 real result, but
   **not yet a non-vacuous machine-checked proof** of the full palindromic all-orders per-type theorem.
