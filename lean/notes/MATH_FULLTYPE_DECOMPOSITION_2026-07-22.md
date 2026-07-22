@@ -321,7 +321,9 @@ union `Z_∞`; `μ(Z_∞) = 0` [COUNT — countable union of measure-zero polyno
 > **[OPEN-D1] (development-digit ledger, `deg φ ≥ 2`) — the precise open lemma, JOINT form
 > (restated this revision, 2026-07-22, pass 4: the previous statement gave only the single-read
 > marginal below, while every consumer needs the joint ledger).** For a complete fixed
-> read-HISTORY/prefix `s` containing some `deg φ ≥ 2` development step (a class-3 history; ALL
+> read-HISTORY `s` (scope: COMPLETE histories only — bounds for PREFIXES are D4's business,
+> formally reduced to this joint form at Lemma 3.4′(c)) containing some `deg φ ≥ 2`
+> development step (a class-3 history; ALL
 > its reads — the `deg φ ≥ 2` steps included — are priced jointly, so this scope matches the
 > class-3 consumers and leaves the all-linear D3/D5 strata outside, as before), under uniform
 > `f mod p^N`, `N ≥ N₀(s)`: the full collection of inspected digit
@@ -530,14 +532,61 @@ Two independent bounds; (ENV-1) is the clean axiomatizable one, (ENV-2) the elem
 >
 > **(c) general `n`, read-prefixes leaving the fragment — precisely scoped opens.** For prefixes
 > whose exit step is a `deg φ ≥ 2` descend, the same scheme needs, across that descend, an upper
-> bound `μ(prefix ∧ child-read conditions) ≤ C·p^{−(A(prefix) + child exponent)}` — the one-sided
-> (upper-bound) half of D1's development-digit ledger. Single-read conditions have exact product
+> bound `μ(prefix ∧ child-read conditions) ≤ p^{−(A_net(prefix) + child net exponent)}` — the
+> one-sided (upper-bound) half of D1's development-digit ledger, with the pool factor absorbed
+> into the exponent (the NET form defined next; the chain sum's constants must stay uniform in
+> `p`). Single-read conditions have exact product
 > mass in their own development coordinates [COUNT], but the JOINT of parent and child conditions
 > across a `deg φ ≥ 2` descend is exactly D1's content (GAP-2's count half); no elementary route
-> is known. **OPEN-D4 :=** for class-3 read-prefixes, `μ(prefix) ≤ C(n)·p^{−A(prefix)}` with `A`
-> the prefix's ledger exponent (implied by JOINT-D1, whose conditional-on-ancestors form prices
-> the whole prefix; the single-read D1-marginal does NOT imply it — the joint across reads is
-> exactly what it lacks; strictly weaker than joint-D1). For prefixes whose exit step is a
+> is known.
+> **OPEN-D4 (restated pass 5 — net exponent; formal reduction to joint-D1 below) :=** for
+> class-3 read-PREFIXES `P` (partial read-histories containing a `deg φ ≥ 2` step — NOT the
+> complete strata joint-D1 is stated for),
+> ```
+>   μ(P) ≤ p^{−A_net(P)},        A_net(P) := A(P) − W(P),                                  (3i)
+> ```
+> where `A(P)` is the prefix's ledger exponent (the (‡) sum `Σ_r w_r·A(Π_r)` + depth-shift
+> costs, over the reads of `P`) and `W(P) := Σ_r w_r·d_r` is its total POOL DIMENSION — `d_r`
+> the number of inspected digit functionals of read `r`, each pool a subset of a residue field
+> of size `Q_r = p^{w_r}`, so every pool-count product obeys `C_P(p) ≤ p^{W(P)}` UNIFORMLY in
+> `p` (`w_r, d_r` are shape data, p-independent). The net form is forced by D4's CONSUMER: the
+> class-3 tail estimate — the out-of-fragment analogue of the chain sum (3f)–(3h), which
+> supplies the class-3 level-tail RATES of Thm 3.5(iii) and the `H`-tail of Thm 4.1(iii) —
+> must sum per-step factors with constants uniform in `p`; a bound `C(n)·p^{−A(P)}` with the
+> pool counts hidden in the constant is unavailable (choice counts are polynomials in
+> `Q_r = p^{w_r}`, GROWING with `p`) and would break the chain sum's `p`-uniformity — the same
+> bookkeeping (3g) performs on the fragment, netting the `(q−1)` pool factor against the step
+> exponent `m·s(s+1)/2`. (Whether `A_net` grows linearly along class-3 prefixes is (‡)-side
+> lattice arithmetic, checkable per shape [COUNT] — a separate obligation of the consumer, not
+> asserted here and not part of D4's measure content.)
+> *Reduction to JOINT-D1 (formal — replacing the bare "implied by" annotation of the pass-4
+> text; joint-D1 is stated for COMPLETE class-3 histories, `P` is a prefix, so the implication
+> needs an argument; two ingredients).*
+> **(R1) [unconditional]** If `μ(P) > 0`, a.e. `f` in the prefix cylinder has a terminating
+> read-history (Lemma 3.2 + 3.3 — Thm 3.5(i)'s pointwise argument restricted to the cylinder),
+> and every such history extends `P` through all its reads (the reader is deterministic, so
+> `f ∈ P` forces `P` to be an initial segment of `f`'s history); hence terminating class-3
+> completions `s ⊇ P` exist (class 3: `s` inherits `P`'s `deg φ ≥ 2` step). This is RATE-FREE
+> qualitative exhaustion below the prefix; it uses no D-lemma and no rate, and D4 feeds only
+> the quantitative RATES, so no circularity arises. (Honest scoping of the circularity worry:
+> the identity `μ(P) = Σ_{s ⊇ P terminating} μ(S_s)` is itself unconditional by the same
+> argument + countable additivity; what a completion-SUM route cannot honestly do is bound
+> `Σ C_s p^{−A_s}` by `p^{−A_net(P)}` — that needs the geometric closure of the sub-tree below
+> `P`, i.e. tail rates below the prefix, the very content D4 exists to supply. That route is
+> NOT used; only the existence statement (R1) is.)
+> **(R2) [joint-D1]** Fix any terminating completion `s ⊇ P` from (R1). Joint-D1's
+> conditional-on-ancestors clause, applied to `s`, gives each read `i` of `P` the displayed
+> uniform-product law over its pools conditionally on the outcomes of reads `1..i−1` (an
+> ancestor-stratum cylinder — exactly the clause's conditioning event); the chain rule over
+> `P`'s reads multiplies the conditional masses (per-read choice count × `p^{−(read exponent)}`)
+> into the EXACT mass
+> `μ(P) = C_P(p)·p^{−A(P)} ≤ p^{−A_net(P)}` — computed at any level `N ≥ N₀(s)`; `P` is a
+> finite union of level-`N₀(P)` cylinders (Thm 2.1), so the mass is `N`-stable. If `μ(P) = 0`,
+> (3i) is trivial. Hence **D4 ⟸ joint-D1**, with (R1) as the only extra (unconditional)
+> ingredient. The single-read D1-marginal still does NOT imply D4 — the
+> conditional-on-ancestors clause is exactly the joint content it lacks; and D4 remains
+> strictly weaker than joint-D1 (one-sided, no exact constants, no per-read joint law).
+> For prefixes whose exit step is a
 > partial-side or mid-polygon LINEAR descend, the needed one-sided bound is the corresponding
 > upper-bound half of **D3 / D5** (strictly easier than D4). None of D3/D4/D5 is needed for
 > Waves 5–6 — (b) covers `hExhaust` on the whole-window linear fragment (§8) — and rate-free
@@ -742,8 +791,10 @@ JOINT count ledger at `deg φ ≥ 2` — believed provable as pure counting via 
 coordinates, but open; if
 it fails, that failure IS GAP-1/GAP-2 and must be reported as such); its three
 shadows D3 (partial-side linear window-freeness), D5 (mid-polygon full-side linear cross-frame
-freeness) and D4 (class-3 prefix upper bound, Lemma 3.4′(c)) add no new candidate content —
-D4 is implied by JOINT-D1 (Lemma 3.4′(c); the implication survives ONLY in the joint form — a
+freeness) and D4 (class-3 prefix upper bound (3i), Lemma 3.4′(c)) add no new candidate content —
+D4 follows from JOINT-D1 by the formal reduction displayed at Lemma 3.4′(c) ((R1) unconditional
+terminating completions via 3.2 + 3.3, (R2) the conditional-on-ancestors chain rule over the
+prefix's reads; the implication survives ONLY in the joint form — a
 single-read marginal does not bound a multi-read prefix); D3/D5 are expected to follow from an
 extension of the D1
 ledger method (no formal reduction supplied). The
@@ -847,12 +898,13 @@ wall's content survives, confined to OPEN-D1 (class-3 count forms), which exhaus
   `deg ψ = 1` towers (Lemma 2.3, now a full digit-by-digit proof at general `s, m`, depth —
   includes ALL of n=2); the per-level partition (3a) (order-1 PROVED); the
   discriminant tail (3b); the level-tail rate (3.4′) with explicit constants at `n = 2` and on
-  the whole-window linear fragment (`6(⌊N/2⌋+1)p^{−N}`); the geometric/cone resummations;
-  convergence and qualitative exhaustion (Thm 3.5(i), rate-free).
+  the whole-window linear fragment (`6(⌊N/2⌋+1)p^{−N}`); the geometric/cone resummations.
 - **[MONTES/axiomatizable]:** Hensel/L1 root split; order-r read definitions; leaf dichotomy +
   (e,f) product law (Cor 1.20/3.8 — extend `om_leaf_faithful` fiber-scoped per menu wave); lift
   invariance; termination/depth ≤ ind ≤ ½v_p(disc) (Thm 4.18/Cor 4.19 — new axiom candidate in the
-  pointwise depth⟹disc form).
+  pointwise depth⟹disc form). Convergence and qualitative exhaustion (Thm 3.5(i), rate-free)
+  sits ACROSS the two classes above — its import is [COUNT + MONTES #4 + #5 + #6] (per its own
+  import line and boundary row 14), not [COUNT/proved].
 - **[OPEN]:** **D1** — the development-digit ledger for `deg φ ≥ 2`, in the JOINT form (all
   reads of a history jointly free — restated pass 4; the single-read marginal is a corollary,
   D1-marginal) (count-level GAP-1/GAP-2;
@@ -861,7 +913,9 @@ wall's content survives, confined to OPEN-D1 (class-3 count forms), which exhaus
   **D2** — L3 pool counts over `F_{q^w}` in Lean (math known; tower vocabulary work);
   **D3** — partial-side linear descend window-freeness (`deg φ = 1` mini-analogue of D1;
   `n ≥ 3` only, not needed for Wave 5); **D4** — the class-3 prefix upper bound / level-tail
-  rate (Lemma 3.4′(c); implied by JOINT-D1 only — the marginal does not give it; not needed for
+  rate, NET-exponent form (3i) (Lemma 3.4′(c); formally reduced to JOINT-D1 there — (R1)
+  unconditional terminating completions + (R2) conditional-on-ancestors chain rule; the
+  marginal does not give it; not needed for
   Waves 5–6); **D5** — mid-polygon full-side
   linear descend cross-frame freeness (`n ≥ 3` only; the exact failing step of extending
   Lemma 2.3 past whole-window sides — the diagonal rescale absorbs the whole window or nothing;
@@ -1041,4 +1095,48 @@ axiom-declaration readiness: boundary #5's exact GMN pin is still TBD at declara
    (standard Montes content, citation pending)"; the same phrasing harmonized at Def 1.2's
    lift-invariance flag and boundary-table row 14.
 
-**Status: fixes applied 2026-07-22 (fourth revision), awaiting pass 5.**
+**Pass 5 (adversarial verification, fresh context, 2026-07-22): 0 CRITICAL errors; all
+pass-4 fixes verified in place; Waves 5 and 6 mathematics RECONFIRMED unblocked** (their
+inputs — Lemma 2.3, 3.4′(a)/(b), Thm 3.5(i)–(ii) — untouched by the findings). THREE gaps,
+all annotation/bookkeeping, none in the proved core (quoted from the pass-5 verdict):
+(1) GAP — OPEN-D4's "implied by JOINT-D1" annotation asserted an unsupplied reduction:
+"joint-D1 as restated covers COMPLETE class-3 strata; D4 concerns PREFIXES (partial
+read-histories)"; and the naive route — "prefix mass = sum of complete-stratum masses below
+it" — holds "ONLY given exhaustion below the prefix", raising a circularity worry for a
+rate-supplying lemma.
+(2) GAP — OPEN-D4's displayed bound `μ(prefix) ≤ C(n)·p^{−A(prefix)}` was not uniformly
+meaningful: "C_s(p) pool factors can grow with p" (choice counts are polynomials in
+`Q_r = p^{w_r}`), so the pool factor must either be netted into the exponent or an explicit
+uniform-bound requirement added to D4's statement.
+(3) GAP — §8's [COUNT/proved] class listed "convergence and qualitative exhaustion
+(Thm 3.5(i), rate-free)" although Thm 3.5(i)'s own import line is
+[COUNT + MONTES #4 + #5 + #6].
+
+**Fixes applied 2026-07-22 (fifth revision) — exactly the three, no other content change:**
+1. *(1)* The bare "implied by" annotation replaced by a FORMAL reduction, written out at
+   Lemma 3.4′(c): **(R1)** [unconditional] a positive-mass class-3 prefix has terminating
+   class-3 completions (Lemma 3.2 + 3.3 — Thm 3.5(i)'s pointwise argument restricted to the
+   prefix cylinder; rate-free, no D-lemma, so no circularity — D4 feeds only the quantitative
+   RATES); the circularity worry honestly scoped in place: the completion-SUM route (bounding
+   `Σ C_s p^{−A_s}` over completions) would need tail rates below the prefix — D4-strength
+   content — and is named and NOT used, only (R1)'s existence statement is; **(R2)** joint-D1's
+   conditional-on-ancestors clause, applied to any terminating completion, prices each read of
+   the prefix; the chain rule gives the EXACT mass `μ(P) = C_P(p)·p^{−A(P)}`. D4 stays strictly
+   weaker than joint-D1; the D1-marginal still does not give it. §5's answer and §8's D4 entry
+   re-annotated to cite (R1)+(R2); joint-D1's scope line clarified in place ("read-HISTORY",
+   the stray "/prefix" removed, with a pointer to the D4 reduction).
+2. *(2)* D4 restated in NET-exponent form, displayed as (3i): `μ(P) ≤ p^{−A_net(P)}` with
+   `A_net(P) := A(P) − W(P)`, `W(P) = Σ_r w_r·d_r` the total pool dimension (p-independent
+   shape data; every pool-count product obeys `C_P(p) ≤ p^{W(P)}` uniformly in `p`) — the
+   formulation D4's CONSUMER needs, named in the statement: the class-3 tail estimate (the
+   out-of-fragment analogue of the chain sum (3f)–(3h), supplying Thm 3.5(iii)'s class-3
+   level-tail rates and Thm 4.1(iii)'s `H`-tail) requires per-step constants uniform in `p`,
+   as in (3g)'s netting of the `(q−1)` pool factor. `A_net`'s linear growth along class-3
+   prefixes flagged as a separate (‡)-lattice [COUNT] obligation of the consumer, not
+   asserted.
+3. *(3)* The stale summary line moved out of §8's [COUNT/proved] class and relabeled
+   [COUNT + MONTES #4 + #5 + #6] at the end of the [MONTES/axiomatizable] bullet, cross-
+   referencing Thm 3.5(i)'s import line and boundary row 14 (grep of §8 found no other
+   summary line with the same defect).
+
+**Status: fixes applied 2026-07-22 (fifth revision), awaiting pass 6 — the acceptance pass.**
