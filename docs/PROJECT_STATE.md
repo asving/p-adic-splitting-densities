@@ -248,9 +248,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    — window K=3 certifies 9/64 for the ramified quadratic at p=2 with machine-checked STRICT
    growth over Wave 1's 1/8, approaching (never claiming) the tower value 1/7; the axiom
    re-scoped to the windowed menu with new axiom-free H=3 anchors (non-Eisenstein (e,f)=(2,1)
-   via ϖ-order parity) and both mutation probes re-fired. Next waves (unstarted): the multi-slope
-   product layer (mixed-e types), the wall (H-tower resummation/exhaustiveness = Denef, and
-   order ≥ 2). Non-imports with machine-checked reasons: finite-level drainage (FALSE
+   via ϖ-order parity) and both mutation probes re-fired.
+   **Directive extended (Asvin, 2026-07-22): keep iterating toward the COMPLETE formalization
+   modulo the Montes paper, or until multiple iterations stop moving the needle. Method: math
+   first → detailed Lean blueprint → implementation; on difficulty, refine the math.** Declared
+   endpoint boundary: palindromy remains conditional on `htameFE` (Del Corso–Dvornicich + the M1
+   projective bridge — NOT Montes-paper content); "complete modulo Montes" = clauses (R)/(V) with
+   full type coverage and full per-type mass, faithfulness modulo the (possibly extended)
+   Montes-cited axioms. Roadmap: Wave 4 mixed-e types via the abstract product coefficient
+   (banked `hnode_multiSideProduct`); Wave 5 the μ≥2 descent strata (recentering = the
+   paper-stated OM descent; math-first note required); Wave 6 the K→∞ full-tower assembly
+   (infinite menus, per-level finite support, series rationality via L5fix closure).
+   Non-imports with machine-checked reasons: finite-level drainage (FALSE
    of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
    — `notes/M6_lemma.md`).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
