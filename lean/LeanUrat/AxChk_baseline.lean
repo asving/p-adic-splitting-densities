@@ -69,6 +69,9 @@ import LeanUrat.OM.WildMenuW3
 import LeanUrat.OM.RealInstanceW3
 import LeanUrat.OM.RealInstanceW3Gates
 import LeanUrat.OM.QpTypeH3
+import LeanUrat.OM.MultiSlopeMenu
+import LeanUrat.OM.RealInstanceW4
+import LeanUrat.OM.RealInstanceW4Gates
 open LeanUrat
 
 -- Capstones
@@ -907,4 +910,68 @@ open LeanUrat
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
 #print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
 #print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+-- ★★★ WILD WAVE 4 (mixed-e) (2026-07-22, notes/WILD_WAVE4_BLUEPRINT_2026-07-22.md §2-W4a/W4b)
+-- — the multi-slope σ-keyed menu extension: omMenu4 n K σ = omMenuW3 n K σ ∪ (mixedShape n σ),
+-- ONE canonical multi-slope stratum multiSideLit n (mixedPath σ) (mixedSh σ) per mixed-e type
+-- (all side-e's ≥ 2 pairwise DISTINCT, ascending-e steepest-first — the erratum-corrected F4
+-- order; per-side minimal height k = 1, all-μ=1 residuals). The COEFFICIENT IS C4, NOT omCount
+-- (first wave with a non-omCount coefficient): the per-side product ∏ omCount (sideSubShape …)
+-- on the mixed literal (no single omCount carries the product — PathShapeMultiSideTree header,
+-- candidate (c) refuted), omCount unchanged on every old shape; the COUNT is stratumCount4:
+-- GENUINE order-1 classify1 fibers (stratumCount1) on the mixed leg, B.classify fibers on the
+-- old legs — both subsets of the SAME box, pairwise disjoint across families and σ
+-- (fiber4_disjoint: unit-a₀ vs hull; vertex exactness vs the ≥2-side polygon; mkCell
+-- injectivity back to σ). The m×C decomposition split routes through per-factor
+-- omCount_eq_mul_all (multiplicity := ∏ omMultiplicity (sideSubShape …), a genuine polynomial;
+-- prodSC : ℕ is p-dependent, NOT polynomial-shaped — the blueprint's prodSC question resolved
+-- WITHOUT a new shapeCount-as-polynomial tie). Capstones
+-- RealInstanceW4.montes_unconditional_w4(_exhaustive) = statements VERBATIM the Wave-3
+-- capstones with omMenu4 n K for omMenuW3 n K and C4 T q' for omCount T q' (the ONE
+-- coefficient change), fired at (realMW4, realDW4, realFW4 K); recovery gate
+-- montes_w4_recovers: on every NON-mixed σ the Wave-4 countingDensity IS Wave 3's, every n, K.
+-- HONEST SCOPE: the mixed value is the ONE canonical stratum's density (the leading term of
+-- the type's density, no tower/window resummation on the mixed leg); e=1-mixing / same-e
+-- multi-side / per-side K-windows / order ≥ 2 / exhaustiveness NOT covered. Gates: G1 mixed
+-- value (n=5, σ₅ = {(2,1),(3,1)}, K=3: menu = the canonical singleton on the path
+-- (0,2)→(2,1)→(5,0), slopes −1/2 then −1/3; per-side factors (p−1)·p⁻⁵ [e=2 side, newton 4 +
+-- sideDeg 1] × (p−1)·p⁻⁴ [e=3 side, newton 3 + sideDeg 1] = (p−1)²·p⁻⁹ = 1/512 at realP=2 —
+-- the blueprint's EXTERNALLY verified exact value; volume reconciliation 5+4 = 7+2 = 9 pinned
+-- by decide [whole-path newtonExponent 7, cross-term Σ sideDeg = 2]; instance pin
+-- countingDensity = 1/512 through realDW4's decomposition theorem, consuming the GENUINE
+-- order-1 mixed counting leg stratum_tendsto_C4_mixed ← hnode_multiSideProduct); G2
+-- σ-separation (1/512 ≠ 1/64 = the constant-e5 type's K=1 value, both through the real Wave-4
+-- instances, the e5 leg routed through the recovery gate); G4 mutation (C := 0 copy fails to
+-- compile — evidence block in OM/RealInstanceW4Gates.lean; scratch deleted after capture).
+-- MUST all be Lean core ONLY (an axiom appearing here is a stop-the-line event):
+#print axioms LeanUrat.OM.MultiSlopeMenu.multiSideLit_injective
+#print axioms LeanUrat.OM.MultiSlopeMenu.typeOf4_multiSideLit
+#print axioms LeanUrat.OM.MultiSlopeMenu.omMenu4_of_mixed
+#print axioms LeanUrat.OM.MultiSlopeMenu.omMenu4_eq_of_not_mixed
+#print axioms LeanUrat.OM.MultiSlopeMenu.eq_of_mem_omMenu4
+#print axioms LeanUrat.OM.MultiSlopeMenu.fiber4_disjoint
+#print axioms LeanUrat.OM.MultiSlopeMenu.sum_stratumCount4_le_box
+#print axioms LeanUrat.OM.MultiSlopeMenu.normSum_omMenu4_mono
+#print axioms LeanUrat.OM.MultiSlopeMenu.stratum_tendsto_C4_mixed
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW4.montes_w4_recovers
+#print axioms LeanUrat.OM.RealInstanceW4Gates.mixedOK_sigma5
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_menu
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_side_e2
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_side_e3
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_volume_reconciliation
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_value
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_countingDensity
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_e5_countingDensity
+#print axioms LeanUrat.OM.RealInstanceW4Gates.gate_w4_separation
+-- RE-PRINT (REQUIRED): ALL prior density capstones (Waves 1 and 3, the V2 capstone, and the
+-- Wave-3 recovery gate) REMAIN Lean core ONLY after the Wave-4 wave (leaf modules only;
+-- nothing on any prior path was touched); a wild-wave axiom appearing in ANY footprint below
+-- is a stop-the-line event:
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
 #print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
