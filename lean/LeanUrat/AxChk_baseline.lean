@@ -77,6 +77,13 @@ import LeanUrat.OM.ChainMenu
 import LeanUrat.OM.RealInstanceW5
 import LeanUrat.OM.RealInstanceW5Gates
 import LeanUrat.OM.QpTypeChain
+import LeanUrat.OM.QpTypeChainLeaves
+import LeanUrat.OM.SeriesAssembly
+import LeanUrat.OM.QpTypeLeafMasters
+import LeanUrat.OM.QpTypeChainAll
+import LeanUrat.OM.ChainMenu6
+import LeanUrat.OM.FullFaithful
+import LeanUrat.OM.FullFaithfulGates
 open LeanUrat
 
 -- Capstones
@@ -1189,6 +1196,93 @@ open LeanUrat
 -- recovery gates) REMAIN Lean core ONLY after the W5c re-scope — om_leaf_faithful is consumed
 -- ONLY by the faithfulness theorems above; a wild-wave axiom appearing in ANY footprint below
 -- is a stop-the-line event:
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
+#print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4
+#print axioms LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW4.montes_w4_recovers
+#print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5
+#print axioms LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive
+#print axioms LeanUrat.OM.RealInstanceW5.montes_w5_recovers
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
+
+-- ══ Wave W6 + W6c (2026-07-22): the full n=2 model capstone + faithfulness scope #5
+-- (every fiber of the full model) ══
+-- W6 (OM/SeriesAssembly.lean): montes_unconditional_n2_full — full per-type n=2 densities
+-- (1/3 each at p=2), hExhaust PROVED; capstone footprint MUST be Lean core only.
+-- W6c-a (OM/QpTypeLeafMasters.lean): the general-(H, m, k) leaf masters (R)/(I)/(S) + the
+-- tail-generic general-m step decode. W6c-b (OM/QpTypeChainAll.lean): the chain unwind, the
+-- DERIVED translate reduction (transChain_fiber_iff — no translation form enters any axiom,
+-- (P4d)), the all-depth all-translate per-leaf conclusions, and the order-0 separable-cell
+-- masters. W6c-c: OM/ChainMenu6.lean (omMenu6 = omMenu5 ∪ the depth-0 leaf literals) +
+-- axiom RE-SCOPE #5 in OM/OmLeafFaithful.lean (om_leaf_faithful over omMenu6, fiber leg
+-- byte-identical; the W5c form DERIVED back as om_leaf_faithful_w5) + OM/FullFaithful.lean
+-- (fullFiber_hasType: every decided fiber of the full model's per-type count carries a
+-- genuine certificate of its keyed type). W6c-d (OM/FullFaithfulGates.lean): four fiber
+-- witnesses (x²+2x+4 depth-0 inert at N=5; x²+2x+8 depth-0 split at N=5; x²−2x+5 in the
+-- c=1 translate ram fiber at N=4 — its translate IS the banked X²+4; x²+16 in the
+-- general-m chain fiber [2] at N=6), their type-consequence gates, the positive coherence
+-- gate at the NEW depth-0 menu leg, and the recorded wrong-keying mutation probes
+-- (evidence block there; the real axiom in NEITHER refutation cone).
+-- MUST all be Lean core ONLY (an axiom appearing here is a stop-the-line event):
+#print axioms LeanUrat.OM.SeriesAssembly.montes_unconditional_n2_full
+#print axioms LeanUrat.OM.QpTypeLeafMasters.stepDecode_general
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafRam_master_irreducible
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafRam_master_forced
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafInert_master_irreducible
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafInert_master_forced
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafSplit_master_hasType
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafFiber_ram_forced
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafFiber_inert_forced
+#print axioms LeanUrat.OM.QpTypeLeafMasters.leafFiber_split_hasType
+#print axioms LeanUrat.OM.QpTypeChainAll.chainUnwind
+#print axioms LeanUrat.OM.QpTypeChainAll.chainFiber_split_hasType
+#print axioms LeanUrat.OM.QpTypeChainAll.chainFiber_ram_forced
+#print axioms LeanUrat.OM.QpTypeChainAll.chainFiber_inert_forced
+#print axioms LeanUrat.OM.QpTypeChainAll.transBox_comp
+#print axioms LeanUrat.OM.QpTypeChainAll.transChain_fiber_iff
+#print axioms LeanUrat.OM.QpTypeChainAll.transChainFiber_split_hasType
+#print axioms LeanUrat.OM.QpTypeChainAll.transChainFiber_ram_forced
+#print axioms LeanUrat.OM.QpTypeChainAll.transChainFiber_inert_forced
+#print axioms LeanUrat.OM.QpTypeChainAll.sepSplitCell_hasType
+#print axioms LeanUrat.OM.QpTypeChainAll.sepInertCell_forced
+#print axioms LeanUrat.OM.ChainMenu6.chainShapes0
+#print axioms LeanUrat.OM.ChainMenu6.omMenu6
+#print axioms LeanUrat.OM.ChainMenu6.omMenu5_subset_omMenu6
+#print axioms LeanUrat.OM.ChainMenu6.mem_omMenu6_cases
+#print axioms LeanUrat.OM.ChainMenu6.mem_omMenu6_type
+#print axioms LeanUrat.OM.FullFaithful.sepInert_classify_glue
+#print axioms LeanUrat.OM.FullFaithful.fullFiber_split_hasType_axfree
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cInertPair_mem
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cSplitPair_mem
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cTransFiber_nonempty
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cDeepFiber_nonempty
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cTrans_index_ok
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cSplit_index_ok
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cInert_mem_omMenu6
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cInertFiber5_nonempty
+#print axioms LeanUrat.OM.FullFaithfulGates.w6cSplitTransFiber_nonempty
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_inert_forced
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_split_hasType_axfree
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_deep_forced
+-- RE-PRINT (REQUIRED): the re-scoped axiom + the scope-#5 faithfulness theorems — footprints
+-- MUST be core + om_leaf_faithful EXACTLY (nothing more, nothing less); the W5c form
+-- om_leaf_faithful_w5 is now a theorem in this list:
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful
+#print axioms LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w5
+#print axioms LeanUrat.OM.FullFaithful.sepInertCell_hasType
+#print axioms LeanUrat.OM.FullFaithful.transChain_menuFiber_hasType
+#print axioms LeanUrat.OM.FullFaithful.fullFiber_hasType
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_trans_hasType
+#print axioms LeanUrat.OM.FullFaithfulGates.gate_w6c_axiom_coherent
+#print axioms LeanUrat.OM.FullFaithfulGates.montes_n2_full_faithful
+-- RE-PRINT (REQUIRED): ALL density capstones (Waves 1, 3, 4, 5, the V2 capstone, the W6
+-- full-model capstone above, and the recovery gates) REMAIN Lean core ONLY after W6c —
+-- om_leaf_faithful is consumed ONLY by the faithfulness theorems; a wild-wave axiom
+-- appearing in ANY footprint below is a stop-the-line event:
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
 #print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive
 #print axioms LeanUrat.OM.RealInstanceW3.montes_unconditional_w3
