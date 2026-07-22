@@ -255,10 +255,20 @@ should not be conflated (this is the mistake an earlier draft of this document m
    endpoint boundary: palindromy remains conditional on `htameFE` (Del Corso–Dvornicich + the M1
    projective bridge — NOT Montes-paper content); "complete modulo Montes" = clauses (R)/(V) with
    full type coverage and full per-type mass, faithfulness modulo the (possibly extended)
-   Montes-cited axioms. Roadmap: Wave 4 mixed-e types via the abstract product coefficient
-   (banked `hnode_multiSideProduct`); Wave 5 the μ≥2 descent strata (recentering = the
-   paper-stated OM descent; math-first note required); Wave 6 the K→∞ full-tower assembly
-   (infinite menus, per-level finite support, series rationality via L5fix closure).
+   Montes-cited axioms.
+   PROGRESS (2026-07-22): **Wave 4 COMPLETE** (mixed-e types certified — σ = {(2,1),(3,1)} at
+   n=5 certifies 1/512 through the real instance; axiom re-scope #3 with the per-family
+   `fiberOf4` dispatch, guardian audit #4 ACCEPT). **The math ground truth is ACCEPTED**:
+   `notes/MATH_FULLTYPE_DECOMPOSITION_2026-07-22.md` — six adversarial passes across two verifier
+   models (defects 8→5→6→2→3→1); proved perimeter: the whole-window recenter–rescale staircase
+   bijection (Lemma 2.3, general s/m/depth), the n=2 undecided envelope (pure counting), the class
+   partition; the wall SIDESTEPPED (exhaustion via pointwise depth⟹disc + the elementary
+   discriminant tail — no per-depth identities); class-3 (deg φ ≥ 2) apparatus = the explicit
+   conditional W7 perimeter (joint-D1/D2/D3/D4/D5). **Active: Waves 5–6**
+   (`notes/WILD_WAVE56_BLUEPRINT_2026-07-22.md`): the n=2 descent-tower capstones (W5a staircase
+   bijection in flight) → the series assembly with the FIRST `hExhaust` discharge (n=2 envelope is
+   pure counting, no new axiom) → `montes_unconditional_n2_full`: the first COMPLETE per-type
+   density, machine-checked modulo the Montes faithfulness axiom (+ htameFE for palindromy).
    Non-imports with machine-checked reasons: finite-level drainage (FALSE
    of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
    — `notes/M6_lemma.md`).
