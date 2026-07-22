@@ -308,6 +308,113 @@ counts ON-OR-BELOW** (with the two strictness clauses of Remark 4.14). Cross-che
 
 ---
 
+## Lift/representative invariance — pin (P4) for boundary #5 (added 2026-07-22, the W5c declaration gate)
+
+**Consumer:** `MATH_FULLTYPE_DECOMPOSITION_2026-07-22.md` Def 1.2 "Canonical lifts" paragraph /
+boundary table #5 ("Lift admissibility/invariance (canonical lifts read the same tree)") and the
+Wave-5c re-scope #4 of `om_leaf_faithful` (chain branch of `fiberOf5`): the recentered read
+`g(y) = f(ĉp^m + p^m y)/p^{2m}` at a `deg ψ = 1`, integer-slope descend is a genuine Montes run,
+for the canonical lift `ĉ` and independently of the choice of lift. This section completes the pin
+that boundary #5 carried as "exact pin TBD at declaration".
+
+**Source status.** Same extraction as (P1)–(P3): arXiv:0807.2620v2 re-extracted 2026-07-22 with
+`pdftotext` (4350 lines; line numbers refer to that extraction, `/tmp/gmn_v2.txt`). Every quote
+below was read from that text on 2026-07-22.
+
+### (P4a) the order-1 theory is stated for an ARBITRARY monic lift — **VERIFIED verbatim**
+
+§1.2 opening (line 389): the standing hypothesis under which ALL of §1 (Thm 1.15, Thm 1.19,
+Cor 1.20) is developed is
+
+> "Let φ(x) ∈ O[x] be a monic polynomial of degree m whose reduction modulo m is irreducible."
+
+— nothing more. The recentering lift `φ = x − ĉp^m` (`m ≥ 1`) is monic of degree 1 with reduction
+`x̄`, irreducible — **inside this stated scope, for EVERY choice of the lift `ĉ` of `c̃`**, and its
+`φ`-adic development of `f` is the Taylor expansion at `ĉp^m`, i.e. exactly the recentered
+coefficients (the note's staircase identity (2.3a) is the [COUNT] shear between the `φ`-polygon of
+`f` and the plain polygon of the recentered `g`). So "the recentered read is a genuine Montes run"
+is, at order 1, an INSTANCE of the paper's stated generality, not an extra import.
+
+### (P4b) lift-dependence acknowledged, dissections valid PER CHOICE — **VERIFIED verbatim**
+
+§1.5, the construction of `t1(f)` (lines 977–983):
+
+> "…for any non-f-complete ψ0 (y) ∈ t0 (f ), we take a monic lift φ(x) to O[x]; then we consider
+> all finite slopes λ of the sides of positive length of Nφ− (f ), and finally, for each of them we
+> take the different monic irreducible factors ψ(y) of the residual polynomial Rλ (f )(y) ∈ Fφ [y].
+> **These types are not intrinsical objects of f (x). There is a non-canonical choice of the lifts
+> φ(x) ∈ O[x], and the data λ, ψ(y) depend on this choice.**"
+
+followed immediately (lines 984–1003) by the factorization valid for the chosen lifts:
+
+> "By the previous results we have a factorization in O[x] f (x) = f∞ (x) ∏_{t∈T1 (f )} ft (x) …
+> Also, if a = 1, the Theorem of the residual polynomial shows that ft (x) is irreducible too."
+
+I.e. the paper's own form of lift invariance: the intermediate DATA `(λ, ψ)` are
+choice-dependent (our menu treats them as indexing, never as invariants of `f`), while EVERY
+admissible choice's run yields a genuine factorization whose multiplicity-1 leaves are genuine
+irreducible factors with the Cor 1.20 `(e, f)`.
+
+### (P4c) order-`r` analogue: arbitrary representative — **VERIFIED verbatim**
+
+Definition 2.12 (lines 1624–1626) and its sequel (lines 1632–1633):
+
+> "Definition 2.12. A representative of the type t is a monic polynomial φr (x) ∈ O[x] of type t
+> such that Rr−1 (φr )(y) ∼ ψr−1 (y). This object plays the analogous role in order r − 1 to that
+> of an irreducible polynomial modulo m in order one."
+>
+> "From now on, we fix a representative φr (x) of t, **without necessarily assuming that it has
+> been constructed by the method of Propositon 2.10** [sic]."
+
+— all of §§2.5–3 (Thm 3.1, Thm 3.7, Cor 3.8) holds for an arbitrary representative. And the
+Definition 3.10 remark (lines 2881–2883) with the Lemma 3.11 sequel (lines 2913–2915):
+
+> "This set is not an intrinsic invariant of f (x) because it depends on the choices of the
+> representatives φ1 (x), . . . , φr (x) of the truncations of t." …
+> "If these conditions are satisfied, then (37) is a factorization of f (x) into the product of
+> monic irreducible polynomials in O[x], and we get arithmetic information about each factor by
+> Corollary 3.8."
+
+— the same per-choice pattern at every order: type sets non-intrinsic, factorization + leaf
+`(e,f)` data valid for each admissible choice of representatives. (Cross-check: (P3) already
+recorded §4.2's "universally fixed family" convention and GMN's own remark that `ind_t(P)` is
+representative-dependent.)
+
+### (P4d) what the paper does NOT state — **the honest gap, and where it is closed**
+
+The paper **nowhere states a translation-form invariance** ("the factorization type of
+`f(ĉp^m + p^m y)/p^{2m}` equals that of `f`", or any statement about types of substitution
+transforms `x ↦ ux + c`): a full-text search of the extraction for "translat"/"transform" finds
+only POLYGON translations (lines 188, 283, 763, 2266 — `N_r(F_i)` equal to a side "up to a
+translation") and Prop 3.6 (base change to an unramified extension, a different axis). Verdict on
+the blueprint's clause (b): **the paper does not state it in translation form.**
+
+Accordingly the W5c chain branch imports from GMN ONLY already-pinned §1 content applied to the
+genuine recentered polynomial `g` — which is itself a genuine monic polynomial of `O[x]`, so
+Cor 1.20 (ram leaf), Hensel/order-0 (inert/split leaves) apply to it VERBATIM in the final frame,
+inside (P4a)'s arbitrary-lift scope — while the two remaining steps are **PROVED in Lean, not
+imported** (Wave W5c, `OM/QpTypeChain.lean`):
+
+- **the transport back**: `qpType_translate_rescale` — a `QpFactorization` of `g` induces one of
+  `f` with the SAME type along `f(x) = p^{(deg g)·m}·g((x − c)/p^m)` (roots correspond by the
+  affine bijection, the generated fields are literally identical, so each factor's
+  `LocalFactorData` bundle transports with `eOf`/`fOf` unchanged);
+- **lift-choice independence**: two lifts `ĉ, ĉ' = ĉ + pδ` of the same digit `c̃` give
+  `g'(y) = g(y + δp)`, the pure-translation (`m = 0`) instance of the SAME proved lemma.
+
+The residual imported content of the chain branch is therefore exactly: (P4a)+(P4b) scope (the
+shifted-lift read is a genuine Ore/GMN order-1 read of `f`, per choice of lift) + the §1 pins of
+§1 above (Thm 1.15/1.19/Cor 1.20 leaf data) + the box-level decode of truncated digit conditions
+into genuine valuations (same [COUNT]-style content as prior scopes, cf.
+`QpType.valuation_eq_of_zmodValuation_lt`). The axiom's docstring (scope #4) carries this gap
+note verbatim-in-substance.
+
+**Gate verdict (2026-07-22): PASS — declaration unblocked.** Status labels: (P4a)–(P4c) VERIFIED
+verbatim; (P4d) records the absence of a translation-form statement and closes it with the PROVED
+Lean lemma, so no unstated GMN content is imported.
+
+---
+
 ## 3. Exactly how each GMN item is consumed (the derived/imported boundary)
 
 | GMN item | imported fact | where consumed | what is DERIVED (not imported) |

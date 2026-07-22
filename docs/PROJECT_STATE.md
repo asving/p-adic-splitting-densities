@@ -287,9 +287,35 @@ should not be conflated (this is the mistake an earlier draft of this document m
    (translation invariance [COUNT] + Cor 1.20 in the recentered frame, boundary #5 pin) is
    **W5c** (next); the (D,K) window is a partial tower sum (W6 resums); odd-p even-height
    split-residual leaf deferred to W6 (pool empty at realP=2).
+   **W5c LANDED (2026-07-22, guardian audit #5 PENDING before push): axiom re-scope #4 +
+   the PROVED translation lemma + the full depth-1 chain-gate anchor.** The BLOCKING
+   declaration gate was completed FIRST: boundary #5 (lift invariance) pinned verbatim as
+   `notes/GMN_citations.md` §(P4) — (P4a) GMN §1.2's arbitrary-monic-lift scope (line 389 of
+   the 2026-07-22 pdftotext extraction), (P4b) §1.5's explicit "types are not intrinsical
+   objects… the data λ, ψ(y) depend on this choice" WITH the per-choice factorization +
+   Cor 1.20, (P4c) the order-r analogues (Def 2.12 sequel, Def 3.10 remark), (P4d) the paper
+   states NO translation-form invariance — that content is PROVED, not imported. New leaf
+   `OM/QpTypeChain.lean` (core-only, no sorry): `qpType_translate_rescale` — a
+   `QpFactorization` of `g` transports to `f` with the SAME `qpType` along
+   `f(a·y+c) = a^{deg g}·g(y)`, ANY `a ≠ 0`, ANY degree (factor transport `affLift`; affine
+   `AlgEquiv` irreducibility transfer; bundle transport `compData` with `L`, `O` literally
+   unchanged); the box→genuine decode (`dvd_of_box_dvd`, `box_shift_cast`); and the FULL
+   axiom-free anchor: `ChainCell [1] (ram 1)` fiber at `N ≥ 4` ⟹ recentered `g` genuinely
+   Eisenstein ⟹ `f` IRREDUCIBLE over ℚ_p AND every `LocalFactorData` bundle forced to
+   `efOf = (2,1)` (`chainGate_irreducible`, `chainGate_ef_forced`) — the target anchor at full
+   strength. `om_leaf_faithful` re-scoped to `(D K) omMenu5 n D K σ` + `fiberOf5` (chain heads
+   → the PROVED `ChainCell` counting fiber at the exact decode; else `fiberOf4`); W4c form
+   DERIVED back (`om_leaf_faithful_w4`), W3c/W2 chains unchanged; witness
+   `chainGatePoly = X²+4` (`p=2, N=4`; recentered read = the W1 gate witness `y²+2y+2`);
+   probes: split-type AND fine-(e,f)-swap mutations at the chain gate both derive `False`
+   against the axiom-free anchors (evidence block `OM/QpTypeChain.lean` Block 7b; real axiom
+   in neither cone); positive coherence `chainGate_axiom_coherent`. Census: all capstones
+   re-printed core-only (`AxChk_baseline` W5c section); faithfulness theorems = core +
+   `om_leaf_faithful` exactly; full `lake build` green 2026-07-22.
    Non-imports with machine-checked reasons: finite-level drainage (FALSE
    of the truncated classifier — `Drainage.lean`), residual equidistribution (no GMN counterpart
-   — `notes/M6_lemma.md`).
+   — `notes/M6_lemma.md`), translation-form GMN invariance (NOT stated in the paper — (P4d);
+   PROVED instead as `QpTypeChain.qpType_translate_rescale`).
 2. **Order ≥ 2 (deep wild).** Classifier faithfulness is at order ≤ 1; the higher-order OM tower is
    in progress (§4).
 3. **The trusted citation base.** Fully unconditional would require *proving* the cited axioms in Lean.

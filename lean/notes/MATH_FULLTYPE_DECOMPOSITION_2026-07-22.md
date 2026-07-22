@@ -1156,3 +1156,15 @@ descent-tower capstones and the F₀-fragment series assembly), after six advers
 two independent verifier models (Claude pass 1; Codex passes 2–6; defect counts 8 → 5 → 6 → 2 → 3
 → 1, final gap W7-only bookkeeping). The class-3 apparatus (D1 joint ledger, D2, D3/D5, D4 +
 A_net-growth) remains the explicitly-conditional W7 perimeter.
+
+**Post-acceptance record (2026-07-22, W5c) — boundary #5's pin COMPLETED.** The acceptance
+caveat "exact GMN pin TBD at axiom-declaration time" (Def 1.2 "Canonical lifts" paragraph,
+boundary rows 5 and 14, Thm 3.5(i) import line) is discharged: the pin is
+`GMN_citations.md` §"Lift/representative invariance — pin (P4)" (verbatim quotes, read from the
+2026-07-22 arXiv re-extraction). Honest outcome: (P4a–P4c) the paper's stated
+arbitrary-lift/representative scope and per-choice dissections are VERIFIED verbatim; (P4d) the
+paper states NO translation-form invariance — that instance is PROVED in Lean
+(`OM/QpTypeChain.qpType_translate_rescale`, any `a ≠ 0`, any degree), so the [MONTES #5] import
+reduces to already-pinned §1 content applied to the genuine recentered polynomial. Scope #4 of
+`om_leaf_faithful` (over `omMenu5`/`fiberOf5`) was declared the same day; this note's text is
+unchanged (this paragraph is a record, not a revision).
