@@ -134,3 +134,53 @@ One new leaf module `OM/DevBijection.lean` (purely additive, general p), the W5a
 2. Gates: p=2 N=2 count 12; p=3 N=2 count 72; the 3/64 mass identity.
 3. Census: capstones byte-identical (additive module).
 4. Blueprint §1 Codex-verified before dispatch; docs/log updated at landing.
+
+---
+
+## §5. ADDENDUM (2026-07-23, post-Case-F): JOINT-D1 — the conjectured mechanism, now
+empirically pinned at depth 1
+
+**Case F (the depth-1 joint-D1 probe) PASSES** (`verification/case_f_gate.py`, N = 5):
+n = 4, p = 2, the history ⟨root read ḡ²; descend read at φ = x²+x+1, slope −1, square
+residual with center c̃ ∈ F₄ˣ; child key φ' = φ + 2ĉ, ĉ the minimal-support lift⟩:
+- F0: first-read stratum mass EXACTLY 3·2^{−10} (nominal product);
+- F1: child cluster v(a₀') ≥ 3, v(a₁') ≥ 2 on the whole stratum (heights 2m+1, m+1 at
+  m = 1 — the deg-2-key staircase frame);
+- F2 (the crux): per fixed c̃, the child digit vector (a₀'/8, a₁'/4 windows) is EXACTLY
+  UNIFORM (all 256 buckets of size 4 at N = 5) — the joint ledger is product-exact;
+- F3: the child ram-leaf (v(a₀') = 3 exact) product count exact per c̃;
+- bonus: the child (v(a₀'), v(a₁')) distribution is exactly geometric (ratio 4 per step)
+  — the child H-ladder.
+
+**The mechanism (to prove — the campaign's next math task).** Volume bookkeeping from
+F0/F1: mass(S_c̃) = 2^{−4}·2^{−6} = 2^{−10} = vol{v(a₀') ≥ 3 ∧ v(a₁') ≥ 2}. Together with
+F2-uniformity this pins the statement:
+
+> **Conjecture J1-step (the class-3 descend bijection).** For fixed history values (fixed
+> c̃, hence fixed ĉ and φ' = φ + p^m·ĉ), the re-development map
+> Θ_ĉ : (a₁, a₀) ↦ (a₁', a₀') is an affine bijection with ℤ_p-coefficients (composition
+> of the D1m unitriangular map at φ' with the inverse at φ — both proved-shape), and it
+> maps the parent descend stratum S_c̃ (root-read + slope-m square-residual-center-c̃
+> digit conditions) BIJECTIVELY onto the child cluster box
+> {v(a₀') ≥ 2m+1, v(a₁') ≥ m+1} — the deg-φ = 2 analogue of the n = 2 whole-window
+> staircase bijection (note Lemma 2.3 / Lean `RecenterBox.stratumPairEquiv`).
+
+If J1-step holds (with its general-m, general-deg-φ block form), JOINT-D1 follows by
+iterating: each descend re-enters a fresh child cluster box measure-exactly, so the
+digits of successive reads are jointly free — the depth-1 chain rule (R2) the note asked
+for, in bijection form. Proof plan: explicit matching-coefficients computation of Θ_ĉ
+(the φ' = φ + p^mĉ substitution + one re-reduction of the deg-2 cross terms ĉ·a₁, ĉ²
+by φ' — all ℤ[s,t,ĉ]-affine, expected unitriangular in the height filtration); then
+inclusion Θ_ĉ(S_c̃) ⊆ child box (the F1 computation, done above symbolically for m = 1:
+a₀'-pre = p^{2m}(ĉ² + w) − p^mĉ·a₁ with (ĉ² + w) ≡ 0 mod p by the center equation) +
+volume equality ⟹ bijection. When stuck: smaller/explicit cases per the directive
+(vary m, p = 3, deg ψ = 2 children where deg φ' = 4).
+
+**Campaign order (updated):** (i) J1-step proof on paper + Codex passes; (ii) W8b (the
+(2,2) leaf master + re-scope #7) in parallel — Lean work independent of J1; (iii)
+J1-step in Lean (the W5a pattern again); (iv) D3/D5 (the n ≥ 3 deg-1-key analogues —
+expected to fall to the SAME bijection mechanism, which is how Lemma 2.3 proved the
+whole-window case); (v) the general-n menu/assembly waves; (vi) the depth⟹disc Montes
+axiom (boundary #6, pre-audited form) for general-n exhaustion — guardian audit
+required, as for every axiom touchpoint (directive: semantic audits maintained
+throughout).

@@ -298,6 +298,14 @@ should not be conflated (this is the mistake an earlier draft of this document m
    core-only). OPEN: JOINT-D1 (depth-≥1 class-3 histories; non-import #12 — prove or
    carry conditionally); W8b (the (2,2) leaf master + axiom re-scope #7) is the named
    next lever.
+   **Directive (Asvin, 2026-07-23): go for the GENERAL-n case and the complete theorem.**
+   Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
+   (+ D3/D5 at n ≥ 3; D2 = Lean vocabulary). Campaign method (per directive): attack the
+   open lemmas MATH-FIRST with Codex as helper; when stuck, compute explicit small cases
+   at the sticking point and diagnose; maintain semantic-guardian audits at every axiom
+   change; keep going to the full theorem. Campaign artifacts live under the W8+ blueprint
+   series; empirical gates in verification/ (Case E landed; Case F = the depth-1 joint-D1
+   uniformity probe is next).
    PROGRESS (2026-07-22): **Wave 4 COMPLETE** (mixed-e types certified — σ = {(2,1),(3,1)} at
    n=5 certifies 1/512 through the real instance; axiom re-scope #3 with the per-family
    `fiberOf4` dispatch, guardian audit #4 ACCEPT). **The math ground truth is ACCEPTED**:
