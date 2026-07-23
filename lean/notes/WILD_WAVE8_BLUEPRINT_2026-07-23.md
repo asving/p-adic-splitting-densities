@@ -184,3 +184,13 @@ whole-window case); (v) the general-n menu/assembly waves; (vi) the depth⟹disc
 axiom (boundary #6, pre-audited form) for general-n exhaustion — guardian audit
 required, as for every axiom touchpoint (directive: semantic audits maintained
 throughout).
+
+**§5.1 Sign correction (2026-07-23, caught while deriving Θ_ĉ symbolically).** The
+general-p child key is φ' = φ − p^m·ĉ (complete the square: on S_c̃, f ≈ (φ − c̃p^m)²;
+then digit_{2m}(a₀') = c̃² + c̃·(−2c̃) + c̃² = 0 for ALL p). The + sign used in
+`case_f_gate.py` is p = 2-benign only (the discrepant term 4c̃² gains v₂ ≥ 2). The Θ_ĉ
+matching-coefficients derivation (all four explicit component formulas, unitriangular,
+≡ id mod p^m) is drafted; MANDATORY next gates before the J1-step write-up is trusted:
+(i) Case F at p = 3 with the minus sign (odd-p joint uniformity), (ii) the symbolic
+inclusion Θ_ĉ(S_c̃) ⊆ child box re-checked at odd p with the corrected sign, (iii) the
+same at a deg ψ = 2 child (deg φ' = 4) — the other class-3 descend species.
