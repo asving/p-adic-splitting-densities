@@ -87,6 +87,7 @@ import LeanUrat.OM.FullFaithfulGates
 import LeanUrat.OM.UniformCapstone
 import LeanUrat.OM.UniformModelN2Recovery
 import LeanUrat.OM.DevBijection
+import LeanUrat.OM.DescendBijection
 open LeanUrat
 
 -- Capstones
@@ -1417,3 +1418,11 @@ open LeanUrat
 #print axioms LeanUrat.OM.DevBijection.caseE_mass
 #print axioms LeanUrat.OM.DevBijection.gate_caseE_p2_N2
 #print axioms LeanUrat.OM.DevBijection.gate_caseE_p3_N2
+
+-- ══ W9a (2026-07-23): JOINT-D1 formalized (deg-2-key descend bijection + tower).
+-- Counting only; core-only required:
+#print axioms LeanUrat.OM.DescendBijection.descend_division_padic
+#print axioms LeanUrat.OM.DescendBijection.descend_bijection
+#print axioms LeanUrat.OM.DescendBijection.descendTower_bijection
+#print axioms LeanUrat.OM.DescendBijection.joint_count
+#print axioms LeanUrat.OM.DescendBijection.gate_caseF_144
