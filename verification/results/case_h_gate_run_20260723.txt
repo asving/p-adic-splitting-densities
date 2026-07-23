@@ -1,0 +1,990 @@
+
+==============================================================================
+CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=2 N=8
+  spec side labels: A=(0,4)-(2,2) slope -1 width 2 (descend); B=(2,2)-(3,0) slope -2 width 1 (flank)
+  ** INVALID-AS-D5-PROBE: (0,4),(2,2),(3,0) is not a lower hull — the chord (0,4)-(3,0) has value 4/3 < 2 at abscissa 2; see per-stratum hull lines.  Superseded by CONFIG 1-CORRECTED below. **
+
+  (ct,u)=(1,1): imposed d2(a2)=1 d3(a1)=0 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 4), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,4) +4/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 4096 (nominal-predicted 4096); mass 1/4096 vs nominal p^-12 = 1/4096 [EXACT] (membership rechecked 4096, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):4096}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 7]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 2 of 64 possible; size histogram {size: #buckets} = {2048: 2} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 4096 / 4096
+
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=2 N=8 SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d2: 4096/4096
+  [0.0s]
+
+==============================================================================
+CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=3 N=6
+  spec side labels: A=(0,4)-(2,2) slope -1 width 2 (descend); B=(2,2)-(3,0) slope -2 width 1 (flank)
+  ** INVALID-AS-D5-PROBE: (0,4),(2,2),(3,0) is not a lower hull — the chord (0,4)-(3,0) has value 4/3 < 2 at abscissa 2; see per-stratum hull lines.  Superseded by CONFIG 1-CORRECTED below. **
+
+  (ct,u)=(1,1): imposed d2(a2)=1 d3(a1)=1 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 729 (nominal-predicted 729); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 729, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(2,3,3):729}
+        forced: v(a2') FORCED = 2; v(a1') FORCED = 3; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 9 of 729 possible; size histogram {size: #buckets} = {81: 9} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 729 / 729
+
+  (ct,u)=(1,2): imposed d2(a2)=2 d3(a1)=2 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 729 (nominal-predicted 729); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 729, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(3,3,3):486, (4,3,3):162, (5,3,3):81}
+        forced: v(a2') bounded: min 3, values [3, 4, 5]; v(a1') FORCED = 3; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 9 of 729 possible; size histogram {size: #buckets} = {81: 9} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 729 / 729
+
+  (ct,u)=(2,1): imposed d2(a2)=1 d3(a1)=2 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 729 (nominal-predicted 729); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 729, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(3,3,3):486, (4,3,3):162, (5,3,3):81}
+        forced: v(a2') bounded: min 3, values [3, 4, 5]; v(a1') FORCED = 3; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 9 of 729 possible; size histogram {size: #buckets} = {81: 9} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 729 / 729
+
+  (ct,u)=(2,2): imposed d2(a2)=2 d3(a1)=1 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 729 (nominal-predicted 729); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 729, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(2,3,3):729}
+        forced: v(a2') FORCED = 2; v(a1') FORCED = 3; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 9 of 729 possible; size histogram {size: #buckets} = {81: 9} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 729 / 729
+
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=3 N=6 SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d2: 2916/2916
+  [0.0s]
+
+==============================================================================
+CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=5 N=5
+  spec side labels: A=(0,4)-(2,2) slope -1 width 2 (descend); B=(2,2)-(3,0) slope -2 width 1 (flank)
+  ** INVALID-AS-D5-PROBE: (0,4),(2,2),(3,0) is not a lower hull — the chord (0,4)-(3,0) has value 4/3 < 2 at abscissa 2; see per-stratum hull lines.  Superseded by CONFIG 1-CORRECTED below. **
+
+  (ct,u)=(1,1): imposed d2(a2)=1 d3(a1)=3 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 125
+
+  (ct,u)=(1,2): imposed d2(a2)=2 d3(a1)=1 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 125
+
+  (ct,u)=(1,3): imposed d2(a2)=3 d3(a1)=4 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 125
+
+  (ct,u)=(1,4): imposed d2(a2)=4 d3(a1)=2 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 125
+
+  (ct,u)=(2,1): imposed d2(a2)=1 d3(a1)=1 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(2,2): imposed d2(a2)=2 d3(a1)=2 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(2,3): imposed d2(a2)=3 d3(a1)=3 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(2,4): imposed d2(a2)=4 d3(a1)=4 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(3,1): imposed d2(a2)=1 d3(a1)=4 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(3,2): imposed d2(a2)=2 d3(a1)=3 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(3,3): imposed d2(a2)=3 d3(a1)=2 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(3,4): imposed d2(a2)=4 d3(a1)=1 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(4,1): imposed d2(a2)=1 d3(a1)=2 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(4,2): imposed d2(a2)=2 d3(a1)=4 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(4,3): imposed d2(a2)=3 d3(a1)=1 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  (ct,u)=(4,4): imposed d2(a2)=4 d3(a1)=3 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 125 (nominal-predicted 125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 125, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):125}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {25: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 125 / 125
+
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=5 N=5 SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d2: 1500/2000
+  [0.0s]
+
+==============================================================================
+CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=5 N=6  [beyond-spec robustness rerun]
+  spec side labels: A=(0,4)-(2,2) slope -1 width 2 (descend); B=(2,2)-(3,0) slope -2 width 1 (flank)
+  ** INVALID-AS-D5-PROBE: (0,4),(2,2),(3,0) is not a lower hull — the chord (0,4)-(3,0) has value 4/3 < 2 at abscissa 2; see per-stratum hull lines.  Superseded by CONFIG 1-CORRECTED below. **
+
+  (ct,u)=(1,1): imposed d2(a2)=1 d3(a1)=3 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 15625
+
+  (ct,u)=(1,2): imposed d2(a2)=2 d3(a1)=1 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 15625
+
+  (ct,u)=(1,3): imposed d2(a2)=3 d3(a1)=4 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 15625
+
+  (ct,u)=(1,4): imposed d2(a2)=4 d3(a1)=2 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 15625
+
+  (ct,u)=(2,1): imposed d2(a2)=1 d3(a1)=1 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(2,2): imposed d2(a2)=2 d3(a1)=2 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(2,3): imposed d2(a2)=3 d3(a1)=3 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(2,4): imposed d2(a2)=4 d3(a1)=4 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(3,1): imposed d2(a2)=1 d3(a1)=4 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(3,2): imposed d2(a2)=2 d3(a1)=3 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(3,3): imposed d2(a2)=3 d3(a1)=2 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(3,4): imposed d2(a2)=4 d3(a1)=1 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(4,1): imposed d2(a2)=1 d3(a1)=2 d4(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(4,2): imposed d2(a2)=2 d3(a1)=4 d4(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(4,3): imposed d2(a2)=3 d3(a1)=1 d4(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,u)=(4,4): imposed d2(a2)=4 d3(a1)=3 d4(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 4), (1, 3), (2, 2), (3, 0)]; computed hull: (0,4)-(3,0) slope -4/3 width 3; non-vertex pts: (1,3) +1/3 ABOVE hull; (2,2) +2/3 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,2,3):15625}
+        forced: v(a2') FORCED = 1; v(a1') FORCED = 2; v(a0') FORCED = 3  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[2..3], a0'@h[3..4] (K=(2, 2, 2))
+        buckets present 5 of 15625 possible; size histogram {size: #buckets} = {3125: 5} [UNIFORM]
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=5 N=6  [beyond-spec robustness rerun] SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d2: 187500/250000
+  [0.4s]
+
+==============================================================================
+CONFIG 1-CORRECTED (mid-polygon / D5) p=2 N=9
+  vertices (0,5),(2,1),(3,0): side A=(0,5)-(2,1) slope -2 width 2 (descend, d_S=2); side B=(2,1)-(3,0) slope -1 width 1 (flank); shift x = y + chat*p^2
+  vertex check: chord (0,5)-(3,0) at abscissa 2 = 5/3 > 1 = v(a2)  [(2,1) strictly BELOW chord: TRUE VERTEX]; side-A line at abscissa 1 = 3 (imposed v(a1) >= 3 consistent)
+
+  (ct,u)=(1,1): imposed d1(a2)=1 d3(a1)=0 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 4), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,4) +1 ABOVE hull
+    H0: count 32768 (nominal-predicted 32768); mass 1/4096 vs nominal p^-12 = 1/4096 [EXACT] (membership rechecked 32768, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):8192, (1,4,7):4096, (1,4,8):4096, (1,5,6):4096, (1,5,7):2048, (1,5,8):2048, (1,6,6):2048, (1,6,7):1024, (1,6,8):1024, (1,7,6):1024, (1,7,7):512, (1,7,8):512, (1,8,6):1024, (1,8,7):512, (1,8,8):512}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6, 7, 8]; v(a0') bounded: min 6, values [6, 7, 8]  [cap 8]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..7] (K=(2, 2, 2))
+        buckets present 32 of 64 possible; size histogram {size: #buckets} = {1024: 32} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 32768} [CONSTANT = 1]
+
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=2 N=9 SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (32768 members)
+  [0.0s]
+
+==============================================================================
+CONFIG 1-CORRECTED (mid-polygon / D5) p=3 N=7  [spec N; a0' K=2 window does not fit, cap pins v(a0')]
+  vertices (0,5),(2,1),(3,0): side A=(0,5)-(2,1) slope -2 width 2 (descend, d_S=2); side B=(2,1)-(3,0) slope -1 width 1 (flank); shift x = y + chat*p^2
+  vertex check: chord (0,5)-(3,0) at abscissa 2 = 5/3 > 1 = v(a2)  [(2,1) strictly BELOW chord: TRUE VERTEX]; side-A line at abscissa 1 = 3 (imposed v(a1) >= 3 consistent)
+
+  (ct,u)=(1,1): imposed d1(a2)=1 d3(a1)=1 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 19683 (nominal-predicted 19683); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):13122, (1,5,6):4374, (1,6,6):2187}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 81 of 243 possible; size histogram {size: #buckets} = {243: 81} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 19683} [CONSTANT = 1]
+
+  (ct,u)=(1,2): imposed d1(a2)=2 d3(a1)=2 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 19683 (nominal-predicted 19683); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):13122, (1,5,6):4374, (1,6,6):2187}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 81 of 243 possible; size histogram {size: #buckets} = {243: 81} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 19683} [CONSTANT = 2]
+
+  (ct,u)=(2,1): imposed d1(a2)=1 d3(a1)=2 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 19683 (nominal-predicted 19683); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):13122, (1,5,6):4374, (1,6,6):2187}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 81 of 243 possible; size histogram {size: #buckets} = {243: 81} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 19683} [CONSTANT = 1]
+
+  (ct,u)=(2,2): imposed d1(a2)=2 d3(a1)=1 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 19683 (nominal-predicted 19683); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):13122, (1,5,6):4374, (1,6,6):2187}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 81 of 243 possible; size histogram {size: #buckets} = {243: 81} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 19683} [CONSTANT = 2]
+
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=3 N=7  [spec N; a0' K=2 window does not fit, cap pins v(a0')] SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (78732 members)
+  [0.1s]
+
+==============================================================================
+CONFIG 1-CORRECTED (mid-polygon / D5) p=3 N=8  [beyond-spec; full a0' window]
+  vertices (0,5),(2,1),(3,0): side A=(0,5)-(2,1) slope -2 width 2 (descend, d_S=2); side B=(2,1)-(3,0) slope -1 width 1 (flank); shift x = y + chat*p^2
+  vertex check: chord (0,5)-(3,0) at abscissa 2 = 5/3 > 1 = v(a2)  [(2,1) strictly BELOW chord: TRUE VERTEX]; side-A line at abscissa 1 = 3 (imposed v(a1) >= 3 consistent)
+
+  (ct,u)=(1,1): imposed d1(a2)=1 d3(a1)=1 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 531441 (nominal-predicted 531441); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 5478, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):236196, (1,4,7):118098, (1,5,6):78732, (1,5,7):39366, (1,6,6):26244, (1,6,7):13122, (1,7,6):13122, (1,7,7):6561}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6, 7]; v(a0') bounded: min 6, values [6, 7]  [cap 7]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..7] (K=(2, 2, 2))
+        buckets present 243 of 729 possible; size histogram {size: #buckets} = {2187: 243} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 531441} [CONSTANT = 1]
+
+  (ct,u)=(1,2): imposed d1(a2)=2 d3(a1)=2 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 531441 (nominal-predicted 531441); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 5478, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):236196, (1,4,7):118098, (1,5,6):78732, (1,5,7):39366, (1,6,6):26244, (1,6,7):13122, (1,7,6):13122, (1,7,7):6561}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6, 7]; v(a0') bounded: min 6, values [6, 7]  [cap 7]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..7] (K=(2, 2, 2))
+        buckets present 243 of 729 possible; size histogram {size: #buckets} = {2187: 243} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 531441} [CONSTANT = 2]
+
+  (ct,u)=(2,1): imposed d1(a2)=1 d3(a1)=2 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 531441 (nominal-predicted 531441); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 5478, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):236196, (1,4,7):118098, (1,5,6):78732, (1,5,7):39366, (1,6,6):26244, (1,6,7):13122, (1,7,6):13122, (1,7,7):6561}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6, 7]; v(a0') bounded: min 6, values [6, 7]  [cap 7]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..7] (K=(2, 2, 2))
+        buckets present 243 of 729 possible; size histogram {size: #buckets} = {2187: 243} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 531441} [CONSTANT = 1]
+
+  (ct,u)=(2,2): imposed d1(a2)=2 d3(a1)=1 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 531441 (nominal-predicted 531441); mass 1/531441 vs nominal p^-12 = 1/531441 [EXACT] (membership rechecked 5478, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):236196, (1,4,7):118098, (1,5,6):78732, (1,5,7):39366, (1,6,6):26244, (1,6,7):13122, (1,7,6):13122, (1,7,7):6561}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6, 7]; v(a0') bounded: min 6, values [6, 7]  [cap 7]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..7] (K=(2, 2, 2))
+        buckets present 243 of 729 possible; size histogram {size: #buckets} = {2187: 243} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 531441} [CONSTANT = 2]
+
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=3 N=8  [beyond-spec; full a0' window] SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (2125764 members)
+  [2.1s]
+
+==============================================================================
+CONFIG 1-CORRECTED (mid-polygon / D5) p=5 N=7  [a0' K=2 window does not fit; N=8 unaffordable]
+  vertices (0,5),(2,1),(3,0): side A=(0,5)-(2,1) slope -2 width 2 (descend, d_S=2); side B=(2,1)-(3,0) slope -1 width 1 (flank); shift x = y + chat*p^2
+  vertex check: chord (0,5)-(3,0) at abscissa 2 = 5/3 > 1 = v(a2)  [(2,1) strictly BELOW chord: TRUE VERTEX]; side-A line at abscissa 1 = 3 (imposed v(a1) >= 3 consistent)
+
+  (ct,u)=(1,1): imposed d1(a2)=1 d3(a1)=3 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 1953125} [CONSTANT = 1]
+
+  (ct,u)=(1,2): imposed d1(a2)=2 d3(a1)=1 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 1953125} [CONSTANT = 2]
+
+  (ct,u)=(1,3): imposed d1(a2)=3 d3(a1)=4 d5(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {3: 1953125} [CONSTANT = 3]
+
+  (ct,u)=(1,4): imposed d1(a2)=4 d3(a1)=2 d5(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {4: 1953125} [CONSTANT = 4]
+
+  (ct,u)=(2,1): imposed d1(a2)=1 d3(a1)=1 d5(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 1953125} [CONSTANT = 1]
+
+  (ct,u)=(2,2): imposed d1(a2)=2 d3(a1)=2 d5(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 1953125} [CONSTANT = 2]
+
+  (ct,u)=(2,3): imposed d1(a2)=3 d3(a1)=3 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {3: 1953125} [CONSTANT = 3]
+
+  (ct,u)=(2,4): imposed d1(a2)=4 d3(a1)=4 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {4: 1953125} [CONSTANT = 4]
+
+  (ct,u)=(3,1): imposed d1(a2)=1 d3(a1)=4 d5(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 1953125} [CONSTANT = 1]
+
+  (ct,u)=(3,2): imposed d1(a2)=2 d3(a1)=3 d5(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 1953125} [CONSTANT = 2]
+
+  (ct,u)=(3,3): imposed d1(a2)=3 d3(a1)=2 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {3: 1953125} [CONSTANT = 3]
+
+  (ct,u)=(3,4): imposed d1(a2)=4 d3(a1)=1 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {4: 1953125} [CONSTANT = 4]
+
+  (ct,u)=(4,1): imposed d1(a2)=1 d3(a1)=2 d5(a0)=1 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {1: 1953125} [CONSTANT = 1]
+
+  (ct,u)=(4,2): imposed d1(a2)=2 d3(a1)=4 d5(a0)=2 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {2: 1953125} [CONSTANT = 2]
+
+  (ct,u)=(4,3): imposed d1(a2)=3 d3(a1)=1 d5(a0)=3 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {3: 1953125} [CONSTANT = 3]
+
+  (ct,u)=(4,4): imposed d1(a2)=4 d3(a1)=3 d5(a0)=4 | side-A residual u(y-ct)^2 check OK
+    parent min-val points [(0, 5), (1, 3), (2, 1), (3, 0)]; computed hull: (0,5)-(2,1) slope -2 width 2, (2,1)-(3,0) slope -1 width 1; non-vertex pts: (1,3) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/244140625 vs nominal p^-12 = 1/244140625 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,4,6):1562500, (1,5,6):312500, (1,6,6):78125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 4, values [4, 5, 6]; v(a0') FORCED = 6  [cap 6]
+    H2: windows a2'@h[1..2], a1'@h[4..5], a0'@h[6..6] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 625 of 3125 possible; size histogram {size: #buckets} = {3125: 625} [UNIFORM]
+    H3 (deterministic transport): digit_1(a2') distribution {4: 1953125} [CONSTANT = 4]
+
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=5 N=7  [a0' K=2 window does not fit; N=8 unaffordable] SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (31250000 members)
+  [37.1s]
+
+==============================================================================
+CONFIG 2 (partial-side / D3) p=2 N=8
+  full side (0,3)-(1,2)-(2,1)-(3,0) slope -1 (colinear); descend subsegment (0,3)-(2,1) mu=2 at ct; width-1 tail (2,1)-(3,0)
+
+  (ct,r) INDEX SET EMPTY at p=2: F_2^x = {1}, r must avoid {0, ct} = {0,1} = all of F_2.  Recorded honestly; config 2 runs at p=3 and p=5 instead (per spec).
+
+  --- r = 0 BOUNDARY (R3 = (y-ct)^2 * y; C = 0 so v(a0) >= 4: vertex moves) — recorded separately ---
+
+  r=0 boundary, ct=1: d1(a2)=0 d2(a1)=1 d3(a0)=0
+    H0: count 32768 (nominal-predicted 32768); mass 1/512 vs nominal p^-9 = 1/512 [EXACT] (membership rechecked 32768, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):8192, (1,3,5):4096, (1,3,6):2048, (1,3,7):2048, (1,4,4):4096, (1,4,5):2048, (1,4,6):1024, (1,4,7):1024, (1,5,4):2048, (1,5,5):1024, (1,5,6):512, (1,5,7):512, (1,6,4):1024, (1,6,5):512, (1,6,6):256, (1,6,7):256, (1,7,4):1024, (1,7,5):512, (1,7,6):256, (1,7,7):256}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5, 6, 7]; v(a0') bounded: min 4, values [4, 5, 6, 7]  [cap 7]
+  [0.0s]
+
+==============================================================================
+CONFIG 2 (partial-side / D3) p=3 N=6
+  full side (0,3)-(1,2)-(2,1)-(3,0) slope -1 (colinear); descend subsegment (0,3)-(2,1) mu=2 at ct; width-1 tail (2,1)-(3,0)
+
+  (ct,r)=(1,2): R3(y) = y^3 + 2 y^2 + 2 y + 1 = (y-1)^2 (y-2) over F_3; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 19683 (nominal-predicted 19683); mass 1/19683 vs nominal p^-9 = 1/19683 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):8748, (1,3,5):4374, (1,4,4):2916, (1,4,5):1458, (1,5,4):1458, (1,5,5):729}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 729 of 729 possible; size histogram {size: #buckets} = {27: 729} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 0 / 19683
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 19683 / 19683
+
+  (ct,r)=(2,1): R3(y) = y^3 + 1 y^2 + 2 y + 2 = (y-2)^2 (y-1) over F_3; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 19683 (nominal-predicted 19683); mass 1/19683 vs nominal p^-9 = 1/19683 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):8748, (1,3,5):4374, (1,4,4):2916, (1,4,5):1458, (1,5,4):1458, (1,5,5):729}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 729 of 729 possible; size histogram {size: #buckets} = {27: 729} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 0 / 19683
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 19683 / 19683
+
+  --- r = 0 BOUNDARY (R3 = (y-ct)^2 * y; C = 0 so v(a0) >= 4: vertex moves) — recorded separately ---
+
+  r=0 boundary, ct=1: d1(a2)=1 d2(a1)=1 d3(a0)=0
+    H0: count 19683 (nominal-predicted 19683); mass 1/19683 vs nominal p^-9 = 1/19683 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):8748, (1,3,5):4374, (1,4,4):2916, (1,4,5):1458, (1,5,4):1458, (1,5,5):729}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+
+  r=0 boundary, ct=2: d1(a2)=2 d2(a1)=1 d3(a0)=0
+    H0: count 19683 (nominal-predicted 19683); mass 1/19683 vs nominal p^-9 = 1/19683 [EXACT] (membership rechecked 19683, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):8748, (1,3,5):4374, (1,4,4):2916, (1,4,5):1458, (1,5,4):1458, (1,5,5):729}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+
+  CONFIG 2 (partial-side / D3) p=3 N=6 SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d1: 0/39366, d2: 39366/39366
+  [0.1s]
+
+==============================================================================
+CONFIG 2 (partial-side / D3) p=5 N=5  [spec N; a0' K=2 window does not fit]
+  full side (0,3)-(1,2)-(2,1)-(3,0) slope -1 (colinear); descend subsegment (0,3)-(2,1) mu=2 at ct; width-1 tail (2,1)-(3,0)
+
+  (ct,r)=(1,2): R3(y) = y^3 + 1 y^2 + 0 y + 3 = (y-1)^2 (y-2) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 15625
+
+  (ct,r)=(1,3): R3(y) = y^3 + 0 y^2 + 2 y + 2 = (y-1)^2 (y-3) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 15625
+
+  (ct,r)=(1,4): R3(y) = y^3 + 4 y^2 + 4 y + 1 = (y-1)^2 (y-4) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(2,1): R3(y) = y^3 + 0 y^2 + 3 y + 1 = (y-2)^2 (y-1) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(2,3): R3(y) = y^3 + 3 y^2 + 1 y + 3 = (y-2)^2 (y-3) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(2,4): R3(y) = y^3 + 2 y^2 + 0 y + 4 = (y-2)^2 (y-4) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(3,1): R3(y) = y^3 + 3 y^2 + 0 y + 1 = (y-3)^2 (y-1) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(3,2): R3(y) = y^3 + 2 y^2 + 1 y + 2 = (y-3)^2 (y-2) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(3,4): R3(y) = y^3 + 0 y^2 + 3 y + 4 = (y-3)^2 (y-4) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(4,1): R3(y) = y^3 + 1 y^2 + 4 y + 4 = (y-4)^2 (y-1) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(4,2): R3(y) = y^3 + 0 y^2 + 2 y + 3 = (y-4)^2 (y-2) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  (ct,r)=(4,3): R3(y) = y^3 + 4 y^2 + 0 y + 2 = (y-4)^2 (y-3) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..4] (K=(2, 2, 1))  ** WINDOW TRUNCATED (N too small) **
+        buckets present 3125 of 3125 possible; size histogram {size: #buckets} = {5: 3125} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 15625 / 15625
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 15625 / 15625
+
+  --- r = 0 BOUNDARY (R3 = (y-ct)^2 * y; C = 0 so v(a0) >= 4: vertex moves) — recorded separately ---
+
+  r=0 boundary, ct=1: d1(a2)=3 d2(a1)=1 d3(a0)=0
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+
+  r=0 boundary, ct=2: d1(a2)=1 d2(a1)=4 d3(a0)=0
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+
+  r=0 boundary, ct=3: d1(a2)=4 d2(a1)=4 d3(a0)=0
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+
+  r=0 boundary, ct=4: d1(a2)=2 d2(a1)=1 d3(a0)=0
+    H0: count 15625 (nominal-predicted 15625); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 15625, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):12500, (1,4,4):3125}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4]; v(a0') FORCED = 4  [cap 4]
+
+  CONFIG 2 (partial-side / D3) p=5 N=5  [spec N; a0' K=2 window does not fit] SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d1: 187500/187500, d2: 156250/187500
+  [0.3s]
+
+==============================================================================
+CONFIG 2 (partial-side / D3) p=5 N=6  [full a0' K=2 window]
+  full side (0,3)-(1,2)-(2,1)-(3,0) slope -1 (colinear); descend subsegment (0,3)-(2,1) mu=2 at ct; width-1 tail (2,1)-(3,0)
+
+  (ct,r)=(1,2): R3(y) = y^3 + 1 y^2 + 0 y + 3 = (y-1)^2 (y-2) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 1953125
+
+  (ct,r)=(1,3): R3(y) = y^3 + 0 y^2 + 2 y + 2 = (y-1)^2 (y-3) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 0 / 1953125
+
+  (ct,r)=(1,4): R3(y) = y^3 + 4 y^2 + 4 y + 1 = (y-1)^2 (y-4) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(2,1): R3(y) = y^3 + 0 y^2 + 3 y + 1 = (y-2)^2 (y-1) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(2,3): R3(y) = y^3 + 3 y^2 + 1 y + 3 = (y-2)^2 (y-3) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(2,4): R3(y) = y^3 + 2 y^2 + 0 y + 4 = (y-2)^2 (y-4) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(3,1): R3(y) = y^3 + 3 y^2 + 0 y + 1 = (y-3)^2 (y-1) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(3,2): R3(y) = y^3 + 2 y^2 + 1 y + 2 = (y-3)^2 (y-2) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(3,4): R3(y) = y^3 + 0 y^2 + 3 y + 4 = (y-3)^2 (y-4) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(4,1): R3(y) = y^3 + 1 y^2 + 4 y + 4 = (y-4)^2 (y-1) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK
+    parent min-val points [(0, 3), (1, 2), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(4,2): R3(y) = y^3 + 0 y^2 + 2 y + 3 = (y-4)^2 (y-2) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** A=0: d1(a2)=0, v(a2)>=2 (point (2,1) moves) **
+    parent min-val points [(0, 3), (1, 2), (2, 2), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,2) ON hull; (2,2) +1 ABOVE hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  (ct,r)=(4,3): R3(y) = y^3 + 4 y^2 + 0 y + 2 = (y-4)^2 (y-3) over F_5; checks R3(ct)=0 OK, R3'(ct)=0 OK, R3(r)=0 OK  ** B=0: d2(a1)=0, v(a1)>=3 (point (1,2) moves) **
+    parent min-val points [(0, 3), (1, 3), (2, 1), (3, 0)]; computed hull: (0,3)-(3,0) slope -1 width 3; non-vertex pts: (1,3) +1 ABOVE hull; (2,1) ON hull
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+    H2: windows a2'@h[2..3], a1'@h[3..4], a0'@h[4..5] (K=(2, 2, 2))
+        buckets present 15625 of 15625 possible; size histogram {size: #buckets} = {125: 15625} [UNIFORM]
+    H3 (d1): digit_1(a2') != digit_1(a2) violations: 1953125 / 1953125
+    H3 (d2): digit_2(a2') != digit_2(a2) violations: 1953125 / 1953125
+
+  --- r = 0 BOUNDARY (R3 = (y-ct)^2 * y; C = 0 so v(a0) >= 4: vertex moves) — recorded separately ---
+
+  r=0 boundary, ct=1: d1(a2)=3 d2(a1)=1 d3(a0)=0
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+
+  r=0 boundary, ct=2: d1(a2)=1 d2(a1)=4 d3(a0)=0
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+
+  r=0 boundary, ct=3: d1(a2)=4 d2(a1)=4 d3(a0)=0
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+
+  r=0 boundary, ct=4: d1(a2)=2 d2(a1)=1 d3(a0)=0
+    H0: count 1953125 (nominal-predicted 1953125); mass 1/1953125 vs nominal p^-9 = 1/1953125 [EXACT] (membership rechecked 20135, failures 0)
+    H1: joint (v(a2'),v(a1'),v(a0')) dist: {(1,3,4):1250000, (1,3,5):312500, (1,4,4):250000, (1,4,5):62500, (1,5,4):62500, (1,5,5):15625}
+        forced: v(a2') FORCED = 1; v(a1') bounded: min 3, values [3, 4, 5]; v(a0') bounded: min 4, values [4, 5]  [cap 5]
+
+  CONFIG 2 (partial-side / D3) p=5 N=6  [full a0' K=2 window] SUMMARY: H0 all exact: YES; H2 all uniform: YES; H3 violation totals: d1: 23437500/23437500, d2: 19531250/23437500
+  [25.3s]
+
+==============================================================================
+CASE H SUMMARY (65.4s total)
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=2 N=8: H0 EXACT; H2 UNIFORM; H3 d2: 4096/4096
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=3 N=6: H0 EXACT; H2 UNIFORM; H3 d2: 2916/2916
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=5 N=5: H0 EXACT; H2 UNIFORM; H3 d2: 1500/2000
+  CONFIG 1 (ORIGINAL — INVALID-AS-D5-PROBE, kept for record) p=5 N=6  [beyond-spec robustness rerun]: H0 EXACT; H2 UNIFORM; H3 d2: 187500/250000
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=2 N=9: H0 EXACT; H2 UNIFORM; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (32768 members)
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=3 N=7  [spec N; a0' K=2 window does not fit, cap pins v(a0')]: H0 EXACT; H2 UNIFORM; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (78732 members)
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=3 N=8  [beyond-spec; full a0' window]: H0 EXACT; H2 UNIFORM; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (2125764 members)
+  CONFIG 1-CORRECTED (mid-polygon / D5) p=5 N=7  [a0' K=2 window does not fit; N=8 unaffordable]: H0 EXACT; H2 UNIFORM; H3 digit1(a2') CONSTANT per stratum and = parent digit u in every stratum (31250000 members)
+  CONFIG 2 (partial-side / D3) p=2 N=8: H0 EXACT; H2 n/a; H3 n/a (empty index set at p=2)
+  CONFIG 2 (partial-side / D3) p=3 N=6: H0 EXACT; H2 UNIFORM; H3 d1: 0/39366, d2: 39366/39366
+  CONFIG 2 (partial-side / D3) p=5 N=5  [spec N; a0' K=2 window does not fit]: H0 EXACT; H2 UNIFORM; H3 d1: 187500/187500, d2: 156250/187500
+  CONFIG 2 (partial-side / D3) p=5 N=6  [full a0' K=2 window]: H0 EXACT; H2 UNIFORM; H3 d1: 23437500/23437500, d2: 19531250/23437500
+
+VERDICT: H0 masses ALL EXACT; H2 joint-ledger buckets ALL UNIFORM (H1/H3 are reported data, not pass/fail)

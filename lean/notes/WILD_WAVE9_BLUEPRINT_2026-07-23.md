@@ -41,3 +41,32 @@ first). Owner: orchestrator + Codex. NOT dispatched to Lean until their notes ar
 
 ## Done criteria: module green, core-only; census extended; gates tie to Case F/F-odd
 numbers; docs/log updated; Codex audit of any statement that cites the math note.
+
+---
+
+## §W9-STATE ADDENDUM (2026-07-23, post-census): the five-species ledger table
+
+All move species of the OM read apparatus at n ≤ 4 are now empirically pinned, each with
+exact masses and exactly uniform child digits, and each explicable by the SAME mechanism
+(unitriangular transport + volume-matched stratum→box bijection):
+
+| species | gate | status |
+|---|---|---|
+| D1-marginal (development at a monic key) | Case E | PROVED + formalized (W8a) |
+| same-degree descend, deg-2 keys, all depths | Case F, F-odd | PROVED (JOINT-D1 note, accepted) + formalized (W9a) |
+| order-increment key jump (e=2, μ=2: deg-1 → deg-2 key) | Case G | gate PASSED; box bounds symbolically verified from the W8a formulas at (s,t)=(0,−2); J2-step write-up PENDING |
+| D3: partial-side descend, deg-1 key, n=3 | Case H cfg 2 | gate PASSED (14 strata + boundaries, full window coverage); D3-step (Taylor-shift) write-up PENDING |
+| D5: mid-polygon descend, deg-1 key, n=3 | Case H cfg 1-CORRECTED | gate PASSED (25 strata, 4 runs; flank digit = point mass at the parent digit — deterministic transport); D5-step write-up PENDING. NOTE: the first cfg-1 spec was HULL-INVALID (caught by the agent's independent hull check — method-log entry; the invalid config kept in the script, labeled) |
+
+Volume-match verifications from the data: J2 (2⁻⁸ = 2^{−(1+2+2+3)}); D5 (p⁻¹² in = 2+4+6
+pinned digits out incl. the transported flank digit); D3 (p⁻⁹ = 2+3+4).
+
+REMAINING MATH to complete generality (the write-up queue, each Codex-audited to
+acceptance): (1) the MOVES note — J2/D3/D5-step proofs (Taylor-shift and development
+algebra, all in the J1 pattern) + the compositional master theorem (every read-history =
+a composition of measure-exact moves); (2) J1-general-d (deg-d ≥ 3 keys — needed for
+n ≥ 6-type towers; multi-step reduction unitriangularity); (3) the order-r ≥ 2 tower
+recursion (induction on the same move types in the v_r-weighted frames; Case G opened
+r = 2); (4) the explicit D4 reduction; (5) THE ASSEMBLY: per-shape universal-polynomial
+counts × exact ledgers × the note-§4 geometric resummations × exhaustion (depth⟹disc +
+tail) ⟹ R_σ(q) for ALL n, σ, p. Formalization stays HELD until (1)–(5) are accepted.
