@@ -1,0 +1,223 @@
+==============================================================================
+CASE G GATE — the ORDER-INCREMENT move (e=2, mu=2 descend at a deg-1 key
+creating the deg-2 key phi2), n = 4, at p = 2 and p = 3
+==============================================================================
+
+################ p = 2 (center c~ = 1, key phi2 = x^2 - 2) ################
+
+GATE G0a (derive-check) — naive full-box census at N=4, closed-form vs
+independent Newton-polygon/residual-square read, f-by-f over all 2^16:
+  mismatches: 0 [OK]; independent-read count {1: 256} (expect {1: 256})
+
+GATE G0 (mass exactness, nominal 2^-8) — full-box pruned census:
+  N=4: count 256 of 65536, mass 1/256 [== 2^-8 OK]
+  N=5: count 4096 of 1048576, mass 1/256 [== 2^-8 OK]
+  N=6: count 65536 of 16777216, mass 1/256 [== 2^-8 OK]
+
+--- p=2, N=5, center c~=1 (key phi2 = x^2 - 2) ---
+  enumeration: direct stratum digit parametrization; phi2-development by genuine division per member
+  stratum size 4096 (of box 1048576); reconstruction f == phi2^2+b1*phi2+b0 spot-checked on 4096 members: OK
+  stratum mass 1/256 vs nominal 1/256 [OK]
+  GATE G1 (landing zone) — joint (v-profile(b1), v-profile(b0)), valuations capped at N-1 = 4:
+    v(b1.x) marginal: {1: 2048, 2: 1024, 3: 512, 4: 512}
+    v(b1.c) marginal: {2: 2048, 3: 1024, 4: 1024}
+    v(b0.x) marginal: {2: 2048, 3: 1024, 4: 1024}
+    v(b0.c) marginal: {3: 2048, 4: 2048}
+    attained minima per coordinate (('b1.x', 1), ('b1.c', 2), ('b0.x', 2), ('b0.c', 3))
+    attained maxima per coordinate (('b1.x', 5), ('b1.c', 5), ('b0.x', 5), ('b0.c', 5)) (cap 5 = v(0))
+    FORCED components: NONE constant; the forced part is the lower-bound box v >= (1, 2, 2, 3) (every coordinate valuation varies upward)
+    observation: joint == product of the two pair-profile marginals EXACTLY: True; == product of all four coordinate marginals EXACTLY: True
+  G2 bucketing: K=2 digit window above the GLOBAL minima (1, 2, 2, 3) (per-member minima vary — none constant — so windows are anchored at the stratum-global minimum, as specced)
+  GATE G2 (joint uniformity, 256 nominal buckets): 256 buckets (window space 256, fully covered), sizes {16: 256} (uniform would be 16 each) [UNIFORM OK]
+
+--- p=2, N=6, center c~=1 (key phi2 = x^2 - 2) ---
+  enumeration: direct stratum digit parametrization; phi2-development by genuine division per member
+  stratum size 65536 (of box 16777216); reconstruction f == phi2^2+b1*phi2+b0 spot-checked on 65536 members: OK
+  stratum mass 1/256 vs nominal 1/256 [OK]
+  GATE G1 (landing zone) — joint (v-profile(b1), v-profile(b0)), valuations capped at N-1 = 5:
+    rows = v-profile(b1) = (v(b1.x), v(b1.c)); cols = v-profile(b0) = (v(b0.x), v(b0.c))
+             (2, 3) (2, 4) (2, 5) (3, 3) (3, 4) (3, 5) (4, 3) (4, 4) (4, 5) (5, 3) (5, 4) (5, 5)
+    (1, 2)     4096   2048   2048   2048   1024   1024   1024    512    512   1024    512    512
+    (1, 3)     2048   1024   1024   1024    512    512    512    256    256    512    256    256
+    (1, 4)     1024    512    512    512    256    256    256    128    128    256    128    128
+    (1, 5)     1024    512    512    512    256    256    256    128    128    256    128    128
+    (2, 2)     2048   1024   1024   1024    512    512    512    256    256    512    256    256
+    (2, 3)     1024    512    512    512    256    256    256    128    128    256    128    128
+    (2, 4)      512    256    256    256    128    128    128     64     64    128     64     64
+    (2, 5)      512    256    256    256    128    128    128     64     64    128     64     64
+    (3, 2)     1024    512    512    512    256    256    256    128    128    256    128    128
+    (3, 3)      512    256    256    256    128    128    128     64     64    128     64     64
+    (3, 4)      256    128    128    128     64     64     64     32     32     64     32     32
+    (3, 5)      256    128    128    128     64     64     64     32     32     64     32     32
+    (4, 2)      512    256    256    256    128    128    128     64     64    128     64     64
+    (4, 3)      256    128    128    128     64     64     64     32     32     64     32     32
+    (4, 4)      128     64     64     64     32     32     32     16     16     32     16     16
+    (4, 5)      128     64     64     64     32     32     32     16     16     32     16     16
+    (5, 2)      512    256    256    256    128    128    128     64     64    128     64     64
+    (5, 3)      256    128    128    128     64     64     64     32     32     64     32     32
+    (5, 4)      128     64     64     64     32     32     32     16     16     32     16     16
+    (5, 5)      128     64     64     64     32     32     32     16     16     32     16     16
+    v(b1.x) marginal: {1: 32768, 2: 16384, 3: 8192, 4: 4096, 5: 4096}
+    v(b1.c) marginal: {2: 32768, 3: 16384, 4: 8192, 5: 8192}
+    v(b0.x) marginal: {2: 32768, 3: 16384, 4: 8192, 5: 8192}
+    v(b0.c) marginal: {3: 32768, 4: 16384, 5: 16384}
+    attained minima per coordinate (('b1.x', 1), ('b1.c', 2), ('b0.x', 2), ('b0.c', 3))
+    attained maxima per coordinate (('b1.x', 6), ('b1.c', 6), ('b0.x', 6), ('b0.c', 6)) (cap 6 = v(0))
+    FORCED components: NONE constant; the forced part is the lower-bound box v >= (1, 2, 2, 3) (every coordinate valuation varies upward)
+    observation: joint == product of the two pair-profile marginals EXACTLY: True; == product of all four coordinate marginals EXACTLY: True
+  G2 bucketing: K=2 digit window above the GLOBAL minima (1, 2, 2, 3) (per-member minima vary — none constant — so windows are anchored at the stratum-global minimum, as specced)
+  GATE G2 (joint uniformity, 256 nominal buckets): 256 buckets (window space 256, fully covered), sizes {256: 256} (uniform would be 256 each) [UNIFORM OK]
+
+  GATE G3 (sub-strata by the digit of a0/4 at height 1) — recorded raw, no pre-registered pass condition:
+    sub-stratum digit=0: size 32768, occupied buckets 128 of 256, bucket sizes {256: 128}
+      b1.x window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      b1.c window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      b0.x window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      b0.c window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      pairwise window scan: NON-uniform pairs: [('b1.c', 'b0.c')] — tables:
+      pair ('b1.c', 'b0.c'):
+      cols = second coordinate window value 0..3
+                 0      1      2      3
+          0   4096      0   4096      0
+          1      0   4096      0   4096
+          2   4096      0   4096      0
+          3      0   4096      0   4096
+    sub-stratum digit=1: size 32768, occupied buckets 128 of 256, bucket sizes {256: 128}
+      b1.x window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      b1.c window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      b0.x window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      b0.c window marginal: {0: 8192, 1: 8192, 2: 8192, 3: 8192} [uniform]
+      pairwise window scan: NON-uniform pairs: [('b1.c', 'b0.c')] — tables:
+      pair ('b1.c', 'b0.c'):
+      cols = second coordinate window value 0..3
+                 0      1      2      3
+          0      0   4096      0   4096
+          1   4096      0   4096      0
+          2      0   4096      0   4096
+          3   4096      0   4096      0
+    restricted G1 v-profile table, digit=0:
+    rows = v-profile(b1) = (v(b1.x), v(b1.c)); cols = v-profile(b0) = (v(b0.x), v(b0.c))
+             (2, 3) (2, 4) (2, 5) (3, 3) (3, 4) (3, 5) (4, 3) (4, 4) (4, 5) (5, 3) (5, 4) (5, 5)
+    (1, 2)     4096      0      0   2048      0      0   1024      0      0   1024      0      0
+    (1, 3)        0   1024   1024      0    512    512      0    256    256      0    256    256
+    (1, 4)        0    512    512      0    256    256      0    128    128      0    128    128
+    (1, 5)        0    512    512      0    256    256      0    128    128      0    128    128
+    (2, 2)     2048      0      0   1024      0      0    512      0      0    512      0      0
+    (2, 3)        0    512    512      0    256    256      0    128    128      0    128    128
+    (2, 4)        0    256    256      0    128    128      0     64     64      0     64     64
+    (2, 5)        0    256    256      0    128    128      0     64     64      0     64     64
+    (3, 2)     1024      0      0    512      0      0    256      0      0    256      0      0
+    (3, 3)        0    256    256      0    128    128      0     64     64      0     64     64
+    (3, 4)        0    128    128      0     64     64      0     32     32      0     32     32
+    (3, 5)        0    128    128      0     64     64      0     32     32      0     32     32
+    (4, 2)      512      0      0    256      0      0    128      0      0    128      0      0
+    (4, 3)        0    128    128      0     64     64      0     32     32      0     32     32
+    (4, 4)        0     64     64      0     32     32      0     16     16      0     16     16
+    (4, 5)        0     64     64      0     32     32      0     16     16      0     16     16
+    (5, 2)      512      0      0    256      0      0    128      0      0    128      0      0
+    (5, 3)        0    128    128      0     64     64      0     32     32      0     32     32
+    (5, 4)        0     64     64      0     32     32      0     16     16      0     16     16
+    (5, 5)        0     64     64      0     32     32      0     16     16      0     16     16
+    restricted G1 v-profile table, digit=1:
+    rows = v-profile(b1) = (v(b1.x), v(b1.c)); cols = v-profile(b0) = (v(b0.x), v(b0.c))
+             (2, 3) (2, 4) (2, 5) (3, 3) (3, 4) (3, 5) (4, 3) (4, 4) (4, 5) (5, 3) (5, 4) (5, 5)
+    (1, 2)        0   2048   2048      0   1024   1024      0    512    512      0    512    512
+    (1, 3)     2048      0      0   1024      0      0    512      0      0    512      0      0
+    (1, 4)     1024      0      0    512      0      0    256      0      0    256      0      0
+    (1, 5)     1024      0      0    512      0      0    256      0      0    256      0      0
+    (2, 2)        0   1024   1024      0    512    512      0    256    256      0    256    256
+    (2, 3)     1024      0      0    512      0      0    256      0      0    256      0      0
+    (2, 4)      512      0      0    256      0      0    128      0      0    128      0      0
+    (2, 5)      512      0      0    256      0      0    128      0      0    128      0      0
+    (3, 2)        0    512    512      0    256    256      0    128    128      0    128    128
+    (3, 3)      512      0      0    256      0      0    128      0      0    128      0      0
+    (3, 4)      256      0      0    128      0      0     64      0      0     64      0      0
+    (3, 5)      256      0      0    128      0      0     64      0      0     64      0      0
+    (4, 2)        0    256    256      0    128    128      0     64     64      0     64     64
+    (4, 3)      256      0      0    128      0      0     64      0      0     64      0      0
+    (4, 4)      128      0      0     64      0      0     32      0      0     32      0      0
+    (4, 5)      128      0      0     64      0      0     32      0      0     32      0      0
+    (5, 2)        0    256    256      0    128    128      0     64     64      0     64     64
+    (5, 3)      256      0      0    128      0      0     64      0      0     64      0      0
+    (5, 4)      128      0      0     64      0      0     32      0      0     32      0      0
+    (5, 5)      128      0      0     64      0      0     32      0      0     32      0      0
+    bucket-support overlap: |digit0-only|=128, |digit1-only|=128, |both|=0, union covers 256 of 256
+
+################ p = 3 (centers c~ in {1, 2}, keys x^2-3, x^2-6) ##########
+
+GATE G0a (derive-check) — naive full-box census at N=3, closed-form vs
+independent NP/residual read (incl. center assignment), all 3^12 quartics:
+  mismatches: 0 [OK]; independent-read per-center counts {1: 81, 2: 81} (expect {1: 81, 2: 81})
+
+GATE G0 (mass exactness, nominal 3^-8 PER CENTER — the digit conditions:
+  a3: 1/3; a1: 1/9; a2 digit1 = c~: 1/9; a0 v=2 digit2 = 1: 1/27) —
+full-box pruned census:
+  N=3 c~=1: count 81 of 531441, mass 1/6561 [== 3^-8 OK]
+  N=3 c~=2: count 81 of 531441, mass 1/6561 [== 3^-8 OK]
+  N=4 c~=1: count 6561 of 43046721, mass 1/6561 [== 3^-8 OK]
+  N=4 c~=2: count 6561 of 43046721, mass 1/6561 [== 3^-8 OK]
+  N=5 c~=1: count 531441 of 3486784401, mass 1/6561 [== 3^-8 OK]
+  N=5 c~=2: count 531441 of 3486784401, mass 1/6561 [== 3^-8 OK]
+
+--- p=3, N=5, center c~=1 (key phi2 = x^2 - 3) ---
+  enumeration: direct stratum digit parametrization; phi2-development by genuine division per member
+  stratum size 531441 (of box 3486784401); reconstruction f == phi2^2+b1*phi2+b0 spot-checked on 534 members: OK
+  stratum mass 1/6561 vs nominal 1/6561 [OK]
+  GATE G1 (landing zone) — joint (v-profile(b1), v-profile(b0)), valuations capped at N-1 = 4:
+    rows = v-profile(b1) = (v(b1.x), v(b1.c)); cols = v-profile(b0) = (v(b0.x), v(b0.c))
+             (2, 3) (2, 4) (3, 3) (3, 4) (4, 3) (4, 4)
+    (1, 2)   104976  52488  34992  17496  17496   8748
+    (1, 3)    34992  17496  11664   5832   5832   2916
+    (1, 4)    17496   8748   5832   2916   2916   1458
+    (2, 2)    34992  17496  11664   5832   5832   2916
+    (2, 3)    11664   5832   3888   1944   1944    972
+    (2, 4)     5832   2916   1944    972    972    486
+    (3, 2)    11664   5832   3888   1944   1944    972
+    (3, 3)     3888   1944   1296    648    648    324
+    (3, 4)     1944    972    648    324    324    162
+    (4, 2)     5832   2916   1944    972    972    486
+    (4, 3)     1944    972    648    324    324    162
+    (4, 4)      972    486    324    162    162     81
+    v(b1.x) marginal: {1: 354294, 2: 118098, 3: 39366, 4: 19683}
+    v(b1.c) marginal: {2: 354294, 3: 118098, 4: 59049}
+    v(b0.x) marginal: {2: 354294, 3: 118098, 4: 59049}
+    v(b0.c) marginal: {3: 354294, 4: 177147}
+    attained minima per coordinate (('b1.x', 1), ('b1.c', 2), ('b0.x', 2), ('b0.c', 3))
+    attained maxima per coordinate (('b1.x', 5), ('b1.c', 5), ('b0.x', 5), ('b0.c', 5)) (cap 5 = v(0))
+    FORCED components: NONE constant; the forced part is the lower-bound box v >= (1, 2, 2, 3) (every coordinate valuation varies upward)
+    observation: joint == product of the two pair-profile marginals EXACTLY: True; == product of all four coordinate marginals EXACTLY: True
+  G2 bucketing: K=2 digit window above the GLOBAL minima (1, 2, 2, 3) (per-member minima vary — none constant — so windows are anchored at the stratum-global minimum, as specced)
+  GATE G2 (joint uniformity, 6561 nominal buckets): 6561 buckets (window space 6561, fully covered), sizes {81: 6561} (uniform would be 81 each) [UNIFORM OK]
+
+--- p=3, N=5, center c~=2 (key phi2 = x^2 - 6) ---
+  enumeration: direct stratum digit parametrization; phi2-development by genuine division per member
+  stratum size 531441 (of box 3486784401); reconstruction f == phi2^2+b1*phi2+b0 spot-checked on 534 members: OK
+  stratum mass 1/6561 vs nominal 1/6561 [OK]
+  GATE G1 (landing zone) — joint (v-profile(b1), v-profile(b0)), valuations capped at N-1 = 4:
+    rows = v-profile(b1) = (v(b1.x), v(b1.c)); cols = v-profile(b0) = (v(b0.x), v(b0.c))
+             (2, 3) (2, 4) (3, 3) (3, 4) (4, 3) (4, 4)
+    (1, 2)   104976  52488  34992  17496  17496   8748
+    (1, 3)    34992  17496  11664   5832   5832   2916
+    (1, 4)    17496   8748   5832   2916   2916   1458
+    (2, 2)    34992  17496  11664   5832   5832   2916
+    (2, 3)    11664   5832   3888   1944   1944    972
+    (2, 4)     5832   2916   1944    972    972    486
+    (3, 2)    11664   5832   3888   1944   1944    972
+    (3, 3)     3888   1944   1296    648    648    324
+    (3, 4)     1944    972    648    324    324    162
+    (4, 2)     5832   2916   1944    972    972    486
+    (4, 3)     1944    972    648    324    324    162
+    (4, 4)      972    486    324    162    162     81
+    v(b1.x) marginal: {1: 354294, 2: 118098, 3: 39366, 4: 19683}
+    v(b1.c) marginal: {2: 354294, 3: 118098, 4: 59049}
+    v(b0.x) marginal: {2: 354294, 3: 118098, 4: 59049}
+    v(b0.c) marginal: {3: 354294, 4: 177147}
+    attained minima per coordinate (('b1.x', 1), ('b1.c', 2), ('b0.x', 2), ('b0.c', 3))
+    attained maxima per coordinate (('b1.x', 5), ('b1.c', 5), ('b0.x', 5), ('b0.c', 5)) (cap 5 = v(0))
+    FORCED components: NONE constant; the forced part is the lower-bound box v >= (1, 2, 2, 3) (every coordinate valuation varies upward)
+    observation: joint == product of the two pair-profile marginals EXACTLY: True; == product of all four coordinate marginals EXACTLY: True
+  G2 bucketing: K=2 digit window above the GLOBAL minima (1, 2, 2, 3) (per-member minima vary — none constant — so windows are anchored at the stratum-global minimum, as specced)
+  GATE G2 (joint uniformity, 6561 nominal buckets): 6561 buckets (window space 6561, fully covered), sizes {81: 6561} (uniform would be 81 each) [UNIFORM OK]
+
+==============================================================================
+VERDICT: CASE G GATE PASSES (G0 exact, G2 exactly uniform everywhere run; G3 recorded)
