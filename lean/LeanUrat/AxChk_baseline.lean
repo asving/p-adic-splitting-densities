@@ -86,6 +86,7 @@ import LeanUrat.OM.FullFaithful
 import LeanUrat.OM.FullFaithfulGates
 import LeanUrat.OM.UniformCapstone
 import LeanUrat.OM.UniformModelN2Recovery
+import LeanUrat.OM.DevBijection
 open LeanUrat
 
 -- Capstones
@@ -1407,3 +1408,12 @@ open LeanUrat
 #print axioms LeanUrat.OM.UniformModelN2.cluster_coveringP
 #print axioms LeanUrat.OM.UniformModelN2.decidedCountP_two_eq
 #print axioms LeanUrat.OM.QpTypeSplitU.transChainFiberU_split_hasType
+
+-- ══ W8a (2026-07-23): class-3 phase 1 — the D1-marginal development bijection.
+-- Counting-only (no type/leaf claim; JOINT-D1 open). Core-only required:
+#print axioms LeanUrat.OM.DevBijection.dev_division_padic
+#print axioms LeanUrat.OM.DevBijection.develop_eq_devMap
+#print axioms LeanUrat.OM.DevBijection.card_caseE_original
+#print axioms LeanUrat.OM.DevBijection.caseE_mass
+#print axioms LeanUrat.OM.DevBijection.gate_caseE_p2_N2
+#print axioms LeanUrat.OM.DevBijection.gate_caseE_p3_N2

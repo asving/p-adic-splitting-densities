@@ -1174,3 +1174,32 @@ re-execute footprints itself (broken sandbox box) — the census runs are record
 R_σ(p) at every prime, wild included, machine-checked, core-only, externally validated at
 p = 2 and p = 3, faithful modulo exactly one axiom. Open beyond n = 2: class-3/D1–D5
 (n ≥ 3), order ≥ 2.
+
+---
+
+## 2026-07-23 — Wave 8a: class-3 phase 1 — Case E gate + D1-marginal landed (general-n start)
+
+**Directive execution ("run the Case E gate and start on general n").** Both note-mandated
+preconditions for class-3 (deg φ ≥ 2) work were discharged, then the first Lean brick landed:
+
+1. **Case E gate PASSED** (`verification/case_e_gate.py`, ad5c02e): count in ORIGINAL
+   coordinates via genuine φ-adic division — stratum mass EXACTLY 3/64 = (Q−1)Q^{−3} at
+   N = 2,3,4 (12/256 = the note's anchor); 36/36 sampled members certified (e,f) = (2,2)
+   via Hensel-over-W Galois-ring factorization + the 2-ADIC ramification classifier.
+   Method note: the oracle's first version used the odd-p disc criterion (false at p = 2);
+   its own failures caught it; count side never affected.
+2. **D1-marginal PROVED on paper** (`WILD_WAVE8_BLUEPRINT_2026-07-23.md` §1, Codex pass:
+   0 critical/1 gap (missing N ≥ 2 annotation, fixed)): the deg-φ = 2 development map is
+   affine lower-unitriangular over ℤ[s,t] (four explicit formulas, machine-checked on 200
+   random instances + independently re-derived) ⟹ exact cylinder transport for EVERY
+   digit set ⟹ the Case-E ledger. JOINT-D1 (depth ≥ 1) remains OPEN; non-import #12
+   stands (prove or carry conditionally, never axiomatize).
+3. **W8a landed** (`OM/DevBijection.lean`, 494 lines, 40 declarations, ALL core-only, no
+   sorry, no axiom): `devEquiv` (the box bijection) + `dev_division_padic` (the genuine
+   identity) + `develop_eq_devMap` — compatibility with the classifier's own
+   `Development.develop` machinery PROVED (via `develop_unique`), a theorem not a remark
+   — + `card_caseE_original` (the D1m count transport) + `caseE_mass` = (Q−1)Q^{−3} +
+   kernel-decide gates in original coordinates: p=2 N=2 count 12; p=3 N=2 count 72 (at
+   the honest irreducible key x²+1 mod 3). Honest scope in-module: counting only, NO
+   type/leaf claim (phase 2 = W8b leaf master + re-scope #7). Census: 734 lines green,
+   capstones unchanged, DevBijection prints added.

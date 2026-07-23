@@ -289,6 +289,15 @@ should not be conflated (this is the mistake an earlier draft of this document m
    exists to supply. Guardian flags (all benign, recorded in the audit log): bibliographic
    pagination confirmation to carry; census stop-the-line is review-enforced (CI suggestion
    noted). Remaining beyond n = 2: the note's class-3/D1–D5 perimeter (n ≥ 3), order ≥ 2.
+   **General-n START (2026-07-23, W8a landed):** Case E gate PASSED (count 3/64 exact in
+   original coordinates; 36/36 type certificates (2,2)); D1-marginal PROVED (paper +
+   Codex; `WILD_WAVE8_BLUEPRINT_2026-07-23.md` §1) and MACHINE-CHECKED
+   (`OM/DevBijection.lean`: the unitriangular development bijection, the division
+   identity, compatibility with `Development.develop` proved, the Case-E stratum count
+   transported to original coordinates, kernel-decide gates at p = 2 and p = 3 — all
+   core-only). OPEN: JOINT-D1 (depth-≥1 class-3 histories; non-import #12 — prove or
+   carry conditionally); W8b (the (2,2) leaf master + axiom re-scope #7) is the named
+   next lever.
    PROGRESS (2026-07-22): **Wave 4 COMPLETE** (mixed-e types certified — σ = {(2,1),(3,1)} at
    n=5 certifies 1/512 through the real instance; axiom re-scope #3 with the per-family
    `fiberOf4` dispatch, guardian audit #4 ACCEPT). **The math ground truth is ACCEPTED**:
