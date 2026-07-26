@@ -1,0 +1,303 @@
+{
+ "provenance": "Discharges MOVES_LEAN_BLUEPRINT_2026-07-26.md §R5.3 (the graded-ring boundary) and MOVES_LEAN_SEMAUDIT5_2026-07-26.md's 'definitional facade' objection. Design/DAG/mathlib-reuse/gaps: MOVESGR_LEAN_BLUEPRINT_2026-07-26.md. Shared vocabulary: LeanUrat/MovesGr/Defs.lean (compiles green, no sorry/axiom).",
+ "preamble": "import Mathlib; import LeanUrat.Moves.Defs; import LeanUrat.Moves.DefsT; import LeanUrat.Moves.DefsCore; import LeanUrat.Moves.DefsL; import LeanUrat.MovesGr.Defs; open Polynomial LeanUrat.Moves LeanUrat.MovesGr LeanUrat.MovesGr.SideVal; variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]",
+ "elaboration_test": "All 26 statements elaborated together against the Defs preamble (`:= sorry`, `lake env lean`, exit 0, exactly 26 `sorry` warnings, zero errors) on 2026-07-26, Lean 4.31.0.",
+ "layer_counts": {
+  "L0": 6,
+  "L1": 5,
+  "L2": 4,
+  "L3": 4,
+  "L4": 6,
+  "L5": 1
+ },
+ "deferred_units_covered": {
+  "L1.baseStage_exists": "L4_baseStage_exists",
+  "L1.base_nonvacuity_gate": "L4_base_nonvacuity_gate",
+  "L4.TRANSvi": "L4_TRANSvi",
+  "L4.TRANSstage": "L4_TRANSstage",
+  "L5.recTRANSRS": "L5_recTRANSRS"
+ },
+ "units": [
+  {
+   "id": "L0_gt_le_ge",
+   "layer": "L0",
+   "difficulty": "easy",
+   "deps": [],
+   "statement": "theorem L0_gt_le_ge (S : SideVal p) (γ : ℤ) : S.gt γ ≤ S.ge γ := sorry",
+   "sketch": "gt γ = {w > γ} ⊆ {w ≥ γ} = ge γ; `fun x hx => le_of_lt hx` after unfolding membership."
+  },
+  {
+   "id": "L0_ge_antitone",
+   "layer": "L0",
+   "difficulty": "easy",
+   "deps": [],
+   "statement": "theorem L0_ge_antitone (S : SideVal p) {γ δ : ℤ} (h : γ ≤ δ) : S.ge δ ≤ S.ge γ := sorry",
+   "sketch": "γ ≤ δ ≤ w x ⟹ γ ≤ w x; `le_trans (WithTop.coe_le_coe.mpr h)`."
+  },
+  {
+   "id": "L0_pmul_mk",
+   "layer": "L0",
+   "difficulty": "medium",
+   "deps": [],
+   "statement": "theorem L0_pmul_mk (S : SideVal p) (γ δ : ℤ) (a : S.ge γ) (b : S.ge δ) : S.pmul γ δ (Submodule.Quotient.mk a) (Submodule.Quotient.mk b) = Submodule.Quotient.mk (S.mulToGe γ δ a b) := sorry",
+   "sketch": "The defining equation of `pmul`: `LinearMap.liftQ₂_mk` + `LinearMap.compr₂_apply` + `Submodule.mkQ_apply` unfold to `[a·b]`. This certifies the piece product is `[a][b]=[ab]`, induced from A."
+  },
+  {
+   "id": "L0_initialForm_zero",
+   "layer": "L0",
+   "difficulty": "easy",
+   "deps": [],
+   "statement": "theorem L0_initialForm_zero (S : SideVal p) : S.initialForm 0 = 0 := sorry",
+   "sketch": "mkPiece 0 = mk ⟨0,_⟩ = 0 in the quotient; `DirectSum.of _ _ 0 = 0` by `map_zero`."
+  },
+  {
+   "id": "L0_initialForm_ne_zero",
+   "layer": "L0",
+   "difficulty": "medium",
+   "deps": [],
+   "statement": "theorem L0_initialForm_ne_zero (S : SideVal p) {f : Polynomial ℤ_[p]} (hf : f ≠ 0) : S.initialForm f ≠ 0 := sorry",
+   "sketch": "[f]≠0 in degree deg f: `mkPiece f = 0 ↔ f ∈ gt (deg f) ↔ deg f < w f`, but `deg_eq hf` gives equality; then `DirectSum.of_ne_zero`.",
+   "faithfulness": "D.1(a): the initial form of a nonzero element is nonzero — the honest non-vacuity of the piece."
+  },
+  {
+   "id": "L0_deg_add",
+   "layer": "L0",
+   "difficulty": "medium",
+   "deps": [],
+   "statement": "theorem L0_deg_add (S : SideVal p) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) (hfg : f * g ≠ 0) (hval : S.w (f * g) = S.w f + S.w g) : S.deg (f * g) = S.deg f + S.deg g := sorry",
+   "sketch": "Cast `deg_eq` on all three: `↑(deg fg) = w(fg) = w f + w g = ↑(deg f)+↑(deg g) = ↑(deg f+deg g)`; `WithTop.coe_inj`."
+  },
+  {
+   "id": "L1_pmul_assoc",
+   "layer": "L1",
+   "difficulty": "hard",
+   "deps": [
+    "L0_pmul_mk"
+   ],
+   "statement": "theorem L1_pmul_assoc (S : SideVal p) (Rg : GradedRingStr S) (γ δ ε : ℤ) (x : S.grPiece γ) (y : S.grPiece δ) (z : S.grPiece ε) : HEq (S.pmul (γ + δ) ε (S.pmul γ δ x y) z) (S.pmul γ (δ + ε) x (S.pmul δ ε y z)) := sorry",
+   "sketch": "Associativity of the piece product (HEq because the two sides live in `gr_{(γ+δ)+ε}` vs `gr_{γ+(δ+ε)}`). Reduce via `L0_pmul_mk` to `[(ab)c]=[a(bc)]` in A, then `mul_assoc` + degree `add_assoc` cast. One of the fields feeding `L1_gradedRingStr_exists`."
+  },
+  {
+   "id": "L1_initialForm_mul",
+   "layer": "L1",
+   "difficulty": "hard",
+   "deps": [
+    "L0_pmul_mk",
+    "L0_deg_add"
+   ],
+   "statement": "theorem L1_initialForm_mul (S : SideVal p) (Rg : GradedRingStr S) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : letI := Rg.ring; S.initialForm (f * g) = S.initialForm f * S.initialForm g := sorry",
+   "sketch": "Rg.mul_of reduces the RHS to `of (deg f+deg g) (pmul [f] [g])`; `L0_pmul_mk` gives `pmul [f][g]=[fg]`; `L0_deg_add hval` aligns the degree index (hval from `if_mul`/valuation). D.1(c) multiplicativity of [·].",
+   "faithfulness": "D.1(c): equivalent to `w` being a valuation (equality in submult)."
+  },
+  {
+   "id": "L1_initialForm_add_lt",
+   "layer": "L1",
+   "difficulty": "medium",
+   "deps": [
+    "L0_deg_add"
+   ],
+   "statement": "theorem L1_initialForm_add_lt (S : SideVal p) (Rg : GradedRingStr S) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) (hfg : f + g ≠ 0) (hlt : S.deg f < S.deg g) : S.initialForm (f + g) = S.initialForm f := sorry",
+   "sketch": "D.1(b) tie: w(f+g)=w f < w g so deg(f+g)=deg f and [f+g]=[f] in that piece (g ∈ gt(deg f)). Reduce to quotient `sub_mem` of `f+g-f=g ∈ gt`.",
+   "faithfulness": "D.1(b) — the strictly-lower-weight-wins tie law."
+  },
+  {
+   "id": "L1_gradedRingStr_exists",
+   "layer": "L1",
+   "difficulty": "hard",
+   "deps": [
+    "L0_pmul_mk",
+    "L1_pmul_assoc",
+    "L1_initialForm_mul",
+    "L1_initialForm_add_lt"
+   ],
+   "statement": "theorem L1_gradedRingStr_exists (S : SideVal p) (hval : ∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) : Nonempty (GradedRingStr S) := sorry",
+   "sketch": "CAPSTONE of D.1(a)-(c): assemble the `CommRing S.Gr` by extending `pmul` over the DirectSum (`DirectSum.toAddMonoid` bilinear extension), then discharge the ring axioms from `L1_pmul_assoc` (assoc), symmetry of `pmul` (comm), and `mul_of`/`one_def`/`if_mul`/`if_add_lt` fields. Uses `hval` (valuation) for `if_mul`. Largest unit; may itself split into a `GMul`/`GSemiring` sub-thread in the fan-out.",
+   "faithfulness": "The genuine graded ring; its inhabitation is the point that discharges the façade."
+  },
+  {
+   "id": "L1_gr_domain_iff_val",
+   "layer": "L1",
+   "difficulty": "hard",
+   "deps": [
+    "L1_initialForm_mul"
+   ],
+   "statement": "theorem L1_gr_domain_iff_val (S : SideVal p) (Rg : GradedRingStr S) : (letI := Rg.ring; IsDomain S.Gr) ↔ (∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) := sorry",
+   "sketch": "D.1(c) verbatim: `gr` is a domain ⟺ `w` is a valuation. (⟸) products of nonzero homogeneous [f][g]=[fg]≠0 by `L0_initialForm_ne_zero`; (⟹) a strict submult drop makes [f][g]=0 with both nonzero.",
+   "faithfulness": "D.1(c)."
+  },
+  {
+   "id": "L2_loc_exists",
+   "layer": "L2",
+   "difficulty": "easy",
+   "deps": [
+    "L1_gradedRingStr_exists"
+   ],
+   "statement": "theorem L2_loc_exists (S : SideVal p) (Rg : GradedRingStr S) (M : letI := Rg.ring; Submonoid S.Gr) : letI := Rg.ring; ∃ (L : Type) (_ : CommRing L) (_ : Algebra S.Gr L), IsLocalization M L := sorry",
+   "sketch": "D.1(d): mathlib `Localization M` is the canonical witness — `⟨Localization M, inferInstance, inferInstance, Localization.isLocalization⟩`. Direct mathlib reuse."
+  },
+  {
+   "id": "L2_degZero_subring",
+   "layer": "L2",
+   "difficulty": "medium",
+   "deps": [
+    "L1_gradedRingStr_exists"
+   ],
+   "statement": "theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.ring; ∃ (R0 : Subring S.Gr), ∀ x : S.Gr, x ∈ R0 ↔ (∀ γ ≠ (0:ℤ), (x γ : S.grPiece γ) = 0) := sorry",
+   "sketch": "D.1(d): the degree-0 elements form a subring; `R0 := { x | ∀ γ≠0, x γ = 0 }` closed under +,*,1 (degree-0 · degree-0 ⊆ degree-0 via `mul_of`+`pmul`).",
+   "faithfulness": "The `L₀`/degree-0 subring of the graded localization."
+  },
+  {
+   "id": "L2_homMon_homogeneous",
+   "layer": "L2",
+   "difficulty": "medium",
+   "deps": [
+    "L1_gradedRingStr_exists"
+   ],
+   "statement": "theorem L2_homMon_homogeneous (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Rg.ring; ∀ x ∈ M.homMon, ∃ (γ : ℤ) (c : M.S.grPiece γ), x = DirectSum.of _ γ c := sorry",
+   "sketch": "The multiplicative set ⟨U∪{Y}⟩ (=`M.homMon`, generated by `initialForm` of `σ.reps` and `σ.Φ`) consists of HOMOGENEOUS elements: generators are single-degree `initialForm`s; closed under product via `mul_of`. `Submonoid.closure_induction`."
+  },
+  {
+   "id": "L2_coeffLoc",
+   "layer": "L2",
+   "difficulty": "hard",
+   "deps": [
+    "L2_loc_exists",
+    "L2_degZero_subring"
+   ],
+   "statement": "theorem L2_coeffLoc (σ : Stage p F) (M : GenuineStageModel σ) : CoeffLocLaw σ := sorry",
+   "sketch": "S4 (DefsL `CoeffLocLaw`) DERIVED from the genuine model: the coefficient sub-localization at ⟨U⟩ (no Y) has degree-0 part = K and z pinned; transported across `M.Θ`. Replaces the DefsL definitional `coeffLocSR` with the genuine object's image.",
+   "faithfulness": "Discharges audit #5 §2: coeffLoc now has source provenance."
+  },
+  {
+   "id": "L3_Tunit_deg1",
+   "layer": "L3",
+   "difficulty": "medium",
+   "deps": [
+    "L2_loc_exists"
+   ],
+   "statement": "theorem L3_Tunit_deg1 (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; M.Θ (M.Tunit : M.Lo) = (locT ↥σ.K : LTwo ↥σ.K) := sorry",
+   "sketch": "The degree-1 unit T maps under Θ to the outer Laurent variable `locT` — this is `M.hT` (the field is exactly this pin). As a fan-out unit it verifies the constructed T is the D.1(e) normalizing unit.",
+   "faithfulness": "D.1(e) degree-1 unit; identified with DefsL `locT`."
+  },
+  {
+   "id": "L3_iso_exists",
+   "layer": "L3",
+   "difficulty": "hard",
+   "deps": [
+    "L2_loc_exists",
+    "L2_degZero_subring",
+    "L3_Tunit_deg1"
+   ],
+   "statement": "theorem L3_iso_exists (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; Nonempty (M.Lo ≃+* LExt ↥σ.K) := sorry",
+   "sketch": "D.1(e) as a THEOREM: the degree-1 unit induces `Θ : L ≅ L₀[T^{±1}]`, each `L_γ = T^γ·L₀` free rank 1. Witnessed by `M.Θ`; the fan-out CONSTRUCTS such Θ from the graded ring + degree-1 unit + the `L₀≅K[z^{±1}]` fiat `hL0`. The single genuinely-hard localization unit.",
+   "faithfulness": "D.1(e). The `L₀ ≅ K[z^{±1}]` step remains the standing fiat (blueprint gap G-L0)."
+  },
+  {
+   "id": "L3_residual_mul",
+   "layer": "L3",
+   "difficulty": "medium",
+   "deps": [
+    "L3_iso_exists"
+   ],
+   "statement": "theorem L3_residual_mul (σ : Stage p F) (M : GenuineStageModel σ) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : σ.R (f * g) = σ.R f * σ.R g := sorry",
+   "sketch": "Recovers `σ.hRmul` FROM the genuine structure: `Θ` a ring hom + `L1_initialForm_mul` + `L3_rank1_residual` give `C(R(fg)) = C(R f · R g)`, then `LaurentPolynomial.C` injective. Shows the DefsL residual laws are consequences, not postulates.",
+   "faithfulness": "The DefsL residual axiom `hRmul` is now a theorem of the genuine model."
+  },
+  {
+   "id": "L4_grRes_eq_genuine",
+   "layer": "L4",
+   "difficulty": "hard",
+   "deps": [
+    "L3_rank1_residual"
+   ],
+   "statement": "theorem L4_grRes_eq_genuine (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : letI := M.Rg.ring; letI := M.Loring; letI := M.alg; σ.grRes f = M.Θ (algebraMap M.S.Gr M.Lo (M.S.initialForm f)) := sorry",
+   "sketch": "THE FIAT DISCHARGE (R5.3 step 4): the round-5 `Stage.grRes` (defined backwards from `σ.R`) EQUALS the transported genuine initial form `Θ(ι[f])`. Directly `(M.discharge f hf).symm`. This is the identity audit #5 §7 said the signatures lacked.",
+   "faithfulness": "Kills audit #5's central objection: grRes is now provably the genuine initial form, not a façade."
+  },
+  {
+   "id": "L3_rank1_residual",
+   "layer": "L3",
+   "difficulty": "hard",
+   "deps": [
+    "L3_iso_exists"
+   ],
+   "statement": "theorem L3_rank1_residual (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : letI := M.Rg.ring; letI := M.Loring; letI := M.alg; M.Θ (algebraMap M.S.Gr M.Lo (M.S.initialForm f)) * LaurentPolynomial.T (- σ.w f) = LaurentPolynomial.C (σ.R f) := sorry",
+   "sketch": "D.1(e) normalization at the GENUINE object: `Θ([f])·T^{-w f} = C(R f)`, i.e. `R(f)=[f]·T^{-w f}` holds for the constructed structure. Follows from `M.discharge` + `Stage.grRes_mul_T_neg` (DefsL).",
+   "faithfulness": "D.1(e) rank-1 normalization; the equation R5.3(4) displays."
+  },
+  {
+   "id": "L4_genuine_imp_stageCoreL",
+   "layer": "L4",
+   "difficulty": "hard",
+   "deps": [
+    "L4_grRes_eq_genuine",
+    "L2_coeffLoc",
+    "L3_residual_mul"
+   ],
+   "statement": "theorem L4_genuine_imp_stageCoreL (σ : Stage p F) (M : GenuineStageModel σ) : StageCoreL σ := sorry",
+   "sketch": "THE BRIDGE: a genuine graded model implies the round-5 DefsL certificate `StageCoreL` (= `StageCore` + `TvecUnitLaw` + `CoeffLocLaw`). `TvecUnitLaw` from `L3_iso_exists`+`L3_Tunit_deg1` (the T-vector product is an identity of the genuine units mapped by Θ); `CoeffLocLaw` from `L2_coeffLoc`; `StageCore` tie laws from `L1_initialForm_add_lt`/`L3_residual_mul`. Every StageCoreL law now has provenance.",
+   "faithfulness": "Discharges audit #5 §7: the theorem interface now carries `GenuineStageModel`."
+  },
+  {
+   "id": "L4_baseStage_exists",
+   "layer": "L4",
+   "difficulty": "hard",
+   "deps": [
+    "L1_gradedRingStr_exists",
+    "L2_loc_exists",
+    "L3_iso_exists",
+    "L4_genuine_imp_stageCoreL"
+   ],
+   "statement": "theorem L4_baseStage_exists (σ : Stage p F) (hbase : σ.wPrev = fun _ => (0 : ℤ)) : Nonempty (GenuineStageModel σ) ∧ StageCoreL σ := sorry",
+   "sketch": "The deferred `L1.baseStage_exists`, reborn NON-VACUOUS: for the base stage (`wPrev = 0`, the Gauss root) CONSTRUCT a `GenuineStageModel` — `S` from `σ.w`, gr the base graded ring `F[π,y]` (`L1_gradedRingStr_exists`), `L = F[π^{±1},y^{±1}]` (`L2_loc_exists`), `T=π^s y^t`, Θ the base D.1(e) iso — then `StageCoreL` via `L4_genuine_imp_stageCoreL`. (Faithful hypotheses: the full base data of §B2-DEF D.2; `hbase` shown here is the representative pin.)",
+   "faithfulness": "One of the five R5.3-deferred units; the tower's non-vacuity anchor."
+  },
+  {
+   "id": "L4_base_nonvacuity_gate",
+   "layer": "L4",
+   "difficulty": "medium",
+   "deps": [
+    "L4_baseStage_exists"
+   ],
+   "statement": "theorem L4_base_nonvacuity_gate : ∃ (σ : Stage 2 (GaloisField 2 2)), Nonempty (GenuineStageModel σ) := sorry",
+   "sketch": "The deferred `L1.base_nonvacuity_gate`: a CONCRETE inhabitant — p=2, F=GaloisField 2 2, φ=X²+X+1 (as in `DevBijection.caseEPhi`) — exhibiting a genuine graded model, so `GenuineStageModel` is not empty. `Field`/`Finite` instances resolve from mathlib.",
+   "faithfulness": "The second of the five; concrete witness that the whole bundle is inhabited."
+  },
+  {
+   "id": "L4_TRANSvi",
+   "layer": "L4",
+   "difficulty": "hard",
+   "deps": [
+    "L4_genuine_imp_stageCoreL",
+    "L2_coeffLoc"
+   ],
+   "statement": "theorem L4_TRANSvi (σ σ' : Stage p F) (M : GenuineStageModel σ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ) (ht : TransitionCoreL σ σ' Φhat e' h' zbar) (M' : GenuineStageModel σ') : CoeffLocLaw σ' ∧ TvecUnitLaw σ' := sorry",
+   "sketch": "The deferred `L4.TRANSvi`, now with GENUINE provenance: the child S4 + T-vector product laws follow from the CHILD's graded model `M'` (built by `L4_TRANSstage`) via `L4_genuine_imp_stageCoreL`/`L2_coeffLoc`, no longer inferred from records that do not entail them (audit #5 §5).",
+   "faithfulness": "Third of the five; resolves audit #5's `TRANSvi` overclaim by consuming the child model."
+  },
+  {
+   "id": "L4_TRANSstage",
+   "layer": "L4",
+   "difficulty": "hard",
+   "deps": [
+    "L4_baseStage_exists",
+    "L4_TRANSvi"
+   ],
+   "statement": "theorem L4_TRANSstage (σ : Stage p F) (M : GenuineStageModel σ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ) : ∃ (σ' : Stage p F), TransitionCoreL σ σ' Φhat e' h' zbar ∧ Nonempty (GenuineStageModel σ') := sorry",
+   "sketch": "The deferred `L4.TRANSstage`, CONSTRUCTIVE: from the parent genuine model build the CHILD graded model — `w'` the slot-minimum valuation (D.7(i)-(iii)), gr' its associated graded (a genuine domain by D.7(iii)), L' the localization, T'=V'^{s'}Y'^{t'} the transported unit (D.7(vi)-(vii)), Θ' the child iso. `TransitionCoreL` records the transport. The induction step at the genuine objects.",
+   "faithfulness": "Fourth of the five; the tower induction closes at the genuine level."
+  },
+  {
+   "id": "L5_recTRANSRS",
+   "layer": "L5",
+   "difficulty": "hard",
+   "deps": [
+    "L4_TRANSstage",
+    "L4_genuine_imp_stageCoreL"
+   ],
+   "statement": "theorem L5_recTRANSRS (σ σ' : Stage p F) (M : GenuineStageModel σ) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecentering σ σ' cc tt) : Nonempty (GenuineStageModel σ') ∧ StageCoreL σ' := sorry",
+   "sketch": "The deferred `L5.recTRANSRS`: recentering (e_read=1, z'=z-c̃) transports the genuine model. At e=1 the T-vector is coefficient-pure (`σ.t=0`), gr'/L' share the parent's up to the change of transcendental (D.10), so `GenuineStageModel σ'` is built from `M` and `hrec`; `StageCoreL σ'` via the bridge. The child normalizing unit is LITERALLY the parent's — equality of ACTUAL objects (audit #5's defect).",
+   "faithfulness": "Fifth of the five; the recentered stage is a full genuine stage."
+  }
+ ]
+}
