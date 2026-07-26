@@ -1,4 +1,4 @@
-# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 7)
+# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 8)
 
 *Plan architect: Fable, 2026-07-26. REV 2, same day: rebuilt against the pass-1
 structural review (ASSEMBLY_PLAN_PASS1_2026-07-26.md — 8 critical obstructions,
@@ -38,7 +38,22 @@ templates; resummed one-step masses G only in kernels) with the TWO composition
 identities COMP-h/COMP-Σ — heights summed exactly once; (3) the ENTRANCE COUNT
 I^ent_γ replacing the unjustified |β₀| count shadow; (4) the NINE-input
 conditionality ledger (iv-PART, iv-MEAS, and the COMP-typing duty added at every
-ledger site). The REV 7 record is the final table. Directive (Asvin, 2026-07-26):
+ledger site). REV 8, same day: rebuilt against the pass-7 review
+(ASSEMBLY_PLAN_PASS7_2026-07-26.md — 2 criticals, 4 concerns, verdict UNSOUND) AND
+the MOVES §D4-R rev-6 F1 inheritance (the BRANCH-TREE architecture: the run map does
+not exist — "patterns are functions of f" is REFUTED; T_can(f), branch-indexed
+fibers, multiplicity weights): (1) the branch-tree roster propagated plan-wide —
+[1]'s lemma set = MOVES rev 6 (sum law D4R.1-SUM + event bound D4R.1-EV, the
+digit-cell partition kernel, the M-carrying pool bound D4R.2′ superseding literal
+(3i)); the BRANCH-CELL decision displayed at CTS-S; [2a] restated branch-aware and
+CLEARED-AS-RESTATED; (2) entrance granularity UNIFIED by ENTRANCE-SHAPE REFINEMENT
+(pass-7 critical 1) — ι_{e,ε,β₀}/I^ent_{ε,β₀} with per-shape ledger exponents A(ε)
+and the CONSTRUCTED degree bound W_ent(ε), COMP-h pairing like with like, the
+ENT-AGG aggregation lemma and the INIT-RAT rationality burden (ι_e ∈ ℚ(q)^{𝒞_n});
+(3) SQ.4's capstone ledger completed with iv-POLY + TRACK-COUNT (pass-7 critical 2);
+(4) the HMC-probe respecified on the fixed/resummed split; [2b]'s internal proof
+order and STATE-probe-2's seal source displayed (pass-7 concern 4). The REV 8
+record is the final table. Directive (Asvin, 2026-07-26):
 iterate on the math with
 Codex until either a COMPLETE math proof of wild uniformity exists or the approach is shown
 conclusively to not work. This plan is the architecture for everything between the accepted
@@ -60,6 +75,10 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
   SCOPE NOTES consumed at REV 2: C.0's LIFT-TRANSLATION remark equates masses of
   TRANSPORTED pairs only — no fixed-downstream correspondence is claimed; and §C names
   a CANONICAL lift choice (the (S6b) offset-P-lift realizer), on which [1] D4-R builds.
+  (SAE) CAVEAT (REV 8, from the §C fresh-Fable pass recorded in MOVES §D4-R rev 6):
+  §C's realizability class is read as (NA)+(HV)+(SAE) — the span-entry inequality is a
+  third independent condition; §C's own repair is QUEUED, and [1] D4-R (hence this
+  plan's [1]-consumers) is conditional on that repair landing as stated.
 - **§B2-DEF** (ACCEPTED): the per-move ledger D.11 at all tower stages (the order-r
   induction TRANS), increments at any (e, h, g, μ, a), recenterings at e_read = 1,
   lift-independence D.10, realizability (NA)/(HV).
@@ -117,8 +136,11 @@ missing), [3] · [1v]-FULL → [3]
 and [2b] → [2r] now factors through the [2b] → [1v]-FULL → [3] acceptance chain
 where kernel objects are consumed.)
 
-- **[1] D4-R** — *the per-shape-prefix mass law* on the CANONICAL-POLICY history
-  (strata are fibers, no quotient); the pool BOUND (3i) survives verbatim. (§2)
+- **[1] D4-R** — *the per-shape-prefix mass law* on the CANONICAL-POLICY branch
+  tree T_can(f) (REV 8 — branch-indexed fibers with multiplicity weights; the sum
+  law D4R.1-SUM + the event bound D4R.1-EV); the pool bound survives in the
+  M-CARRYING form D4R.2′ (C_P̂ ≤ M(P̂)·p^{W(P̂)}, M p-free) — "(3i) verbatim" is
+  WITHDRAWN. (§2)
 - **[2a] SPECIES** — *the raw shape catalogue*: M1's corrected degree bounds + M5
   completeness; NO strata, NO state types — exactly the finite list [1v] needs to
   quantify over, so no cycle. (§3)
@@ -165,9 +187,12 @@ hypotheses — an acceptance event, no new mathematics) → { [2r] ∥ [5] } →
 [4], with X.1a/X.1b draftable right after [2a]. DRAFT CLEARANCE (REV 4, pass-3
 closing; REAFFIRMED at REV 5 — pass-4 verdict GO): [1] D4-R is cleared to draft
 FIRST — its partition argument and pool inequality do not depend on the unresolved
-RESUM architecture; MANDATORY CORRECTION (pass-4 critical 4): the draft uses maximal
-finite-or-infinite canonical runs H_can^max — never "prefix cylinder = union of
-finite terminating completions" — and follows the pass-4 twelve-lemma roster (§2). Both wall probes
+RESUM architecture; MANDATORY CORRECTION (pass-4 critical 4, SUPERSEDED at REV 8 by
+the F1 inheritance): the draft — now at MOVES §D4-R rev 6 — uses the maximal
+canonical BRANCH TREE T_can(f) (the rev-5 unique run H_can^max is REFUTED: the
+descended factor ψ and, at multi-side polygons, the side are BRANCH data), never
+"prefix cylinder = union of finite terminating completions", and follows the pass-4
+twelve-lemma roster in its rev-6 branch-tree form (§2). Both wall probes
 have ALREADY reported (exploration-class, 2026-07-26; verification/results/): the
 VALUE probe (R1) NO-WALL with the anchor-twist caveat; the STATE probe (R2)
 probe-level NO-WALL with the vtx-rigidity feasibility finding — its sealed gate is
@@ -196,23 +221,33 @@ every count now flows through the CTS (§2v):
   integer-valued at every prime power. **Theorem VAL LOCAL and the (†) rule apply
   HERE**, per table entry and per row, at degree bound W_loc(m).
 - **REALIZED history/prefix η (lift-carrying).** Actual node VALUES and canonical
-  lifts — Theorem C's object, [1]'s object. Masses attach to η; Pref(P̂) collects the
-  realized prefixes of one shape prefix P̂, counted by C_P̂(p) = #Pref(P̂) in [1].
+  lifts — Theorem C's object, [1]'s object. REV 8 (F1): η is a SINGLE BRANCH (a
+  chain of the canonical branch tree T_can(f), §2) — one f may carry SEVERAL η of
+  the same or different shapes, with multiplicity mult_P̂(f) := #{η ∈ Pref(P̂) : η ∈
+  T_can(f)}; every per-η mass is Theorem C(b) verbatim, and per-shape masses are
+  branch-weighted SUMS, exact as f-events only where mult ≡ 1. Masses attach to η;
+  Pref(P̂) collects the realized single-branch prefixes of one shape prefix P̂,
+  counted by C_P̂(p) = #Pref(P̂) in [1].
   NEVER written H when a template is meant (pass-4 critical 3's demanded split; H is
   reserved for complete finite terminal realized histories).
-- **TEMPLATE γ (value-forgotten finite path).** A finite PATH in the CTS: a source
+- **TEMPLATE γ (value-forgotten finite path).** A finite PATH in the CTS, walked
+  along ONE BRANCH (REV 8 — the branch-cell decision, §2v CTS-S): a source
   cell plus a sequence of (move species, outcome, target cell) steps — heights
   retained as ℕ-parameters, values forgotten. `unroll`: a JREF^src-chained move
   sequence ↦ γ. TWO counts, split at REV 6 (pass-5 critical 2 — ∏ T counts
   extensions from ONE fixed initial representative, never all realizations):
   the PER-REPRESENTATIVE count C_γ(q) = ∏_i T_{m_i,o_i}^{β_{i−1},β_i}(q) — a
   DEFINED matrix-product operation (VAL CHAIN, §2v), degree ≤ W(γ) := Σ_i
-  W_loc(m_i) — and the FULL realization count Ĉ_γ(q) := I^ent_γ(q)·C_γ(q)
-  (ENTRANCE COUNT × per-representative product; CTS-M(iii) ENT-COUNT — REV 7,
-  pass-6 critical 3: the bare cell size |β₀| is NOT a valid entrance factor
-  unless the template provably enters with one unrestricted copy of every
-  concrete state of the cell), degree ≤ W̄(γ) :=
-  W_ent(γ) + W(γ), W_ent the displayed shallow-entrance pool dimension. Both
+  W_loc(m_i) — and the FULL realization count, REFINED at REV 8 by the ENTRANCE
+  SHAPE ε (pass-7 critical 1: the rev-7 I^ent_γ mixed granularities — "γ's
+  entrance shape" was undefined for a within-block path): Ĉ_{ε,γ}(q) :=
+  I^ent_{ε,β₀}(q)·C_γ(q) (per-entrance-shape ENTRANCE COUNT × per-representative
+  product; CTS-M(iii) ENT-COUNT — the bare cell size |β₀| is NOT a valid
+  entrance factor unless the family provably enters with one unrestricted copy
+  of every concrete state of the cell), degree ≤ W̄(ε,γ) := W_ent(ε) + W(γ),
+  W_ent(ε) := Σ_{r ∈ reads(ε)} w_r·d_r the CONSTRUCTED per-shape shallow pool
+  dimension ([1]'s W(P̂) of the entrance shape — displayed per shape; counts
+  with DIFFERENT entrance exponents A(ε) are never added raw). Both
   GROW with path length: a k-loop template is a k-step
   path with k fresh pools and a k-fold
   product — NEVER one position-independent C_{S,τ} (that claim is STRUCK at REV 5).
@@ -221,8 +256,9 @@ every count now flows through the CTS (§2v):
   to a completed sum.
 - **FAM (resummed families) β, ι, G, K_e-entries, R_σ.** `resum`: templates form
   the REGULAR LANGUAGE of the finite CTS automaton; measured paths compose as
-  initial vector × kernel product (ι_{β₀}·∏ steps = realized cylinder mass,
-  CTS-M(vi) COMP-Σ — REV 7); the depth direction resums as the
+  initial vector × kernel product (ι_{e,ε,β₀}·∏ steps = realized cylinder mass
+  per entrance shape, CTS-M(vi) COMP-Σ; cell-aggregated ONLY via ENT-AGG/
+  (COMP-AGG) — REV 8); the depth direction resums as the
   matrix fixpoint (I − K_e)^{−1} (Neumann series of path products), and the height
   ℕ-parameters at each step resum as geometric series over XHD/M4a-X-exact
   congruence
@@ -241,16 +277,21 @@ every count now flows through the CTS (§2v):
   CTS-M(vi)) — so no height coordinate is ever summed twice.
 
 **Notation rule (binding, tightened at REV 5; Ĉ/ι added at REV 6; I^ent/g/G split
-at REV 7):** T entries and
+at REV 7; entrance-shape refinement + branch typing at REV 8):** T entries and
 their rows = LOC; g^{α,β}_{m,o}(h) = fixed-height step weights (LOC-level
 monomials; the only height-bearing measured factor); C_P̂(p) = #Pref(P̂), counts
-of REALIZED prefixes ([1] only,
-evaluated at p); I^ent_γ = ENTRANCE COUNTS (CTS-M(iii), a realized-prefix count
-refined by the landing cell — never the bare cell size |β₀|); C_γ =
-PER-REPRESENTATIVE template path products; Ĉ_γ = I^ent_γ·C_γ,
-FULL template realization counts (the only template count consumers may sum);
+of REALIZED single-branch prefixes ([1] only, evaluated at p — branch-weighted:
+Σ_P̂ μ(P̂) may exceed 1, REV 8 consumer duty §2); ε = ENTRANCE SHAPES (shallow
+shape prefixes, [1]-objects); I^ent_{ε,β₀} = ENTRANCE COUNTS (CTS-M(iii), a
+realized-prefix count at ONE entrance shape ε refined by the landing cell —
+never the bare cell size |β₀|, never aggregated raw across shapes with
+different A(ε)); C_γ =
+PER-REPRESENTATIVE template path products; Ĉ_{ε,γ} = I^ent_{ε,β₀}·C_γ,
+FULL template realization counts (the only template count consumers may sum,
+each at its own displayed normalization);
 β/ι/G/K/R = FAM (G = the one-step RESUMMED height masses — never evaluated at a
-height point). The symbol C_{S,τ} is RETIRED — every former
+height point; ι_{e,ε,β₀} = per-entrance-shape entrance masses, ι_{e,β₀} their
+ENT-AGG aggregate — CTS-M(iii), REV 8). The symbol C_{S,τ} is RETIRED — every former
 use is either a table entry or a path product C_γ (per-template, path-length-
 dependent); a per-point count at a lattice point is C_{γ(point)}(q), constant only
 along the HEIGHT directions through that point (M4b, narrowed — §3), never in the
@@ -259,7 +300,7 @@ outside LOC/template are void. RS.2's matrix entries are FAM objects assembled f
 LOC tables × XHD/M4a-X-exact geometric sums; the raw catalogue [2a] indexes shapes, and
 assigns NO count.
 
-## 2. NOTE [1] D4-R — the per-shape-prefix mass law (REV 3: canonical policy, Z = ⊤, three-obligation kernel; REV 5: MAXIMAL-RUN interface alignment ONLY — the GO stands, the concurrent draft binds to the pass-4 twelve-lemma roster)
+## 2. NOTE [1] D4-R — the per-shape-prefix mass law (REV 3: canonical policy, Z = ⊤, three-obligation kernel; REV 5: MAXIMAL-RUN interface alignment; REV 8: the BRANCH-TREE architecture — the roster below IS MOVES §D4-R rev 6's lemma set, F1's refutation inherited: the unique run H_can^max does not exist and "patterns are FUNCTIONS of f" is STRUCK)
 
 **What D4 was.** Decomposition note (3i): for class-3 read-prefixes P,
 μ(P) ≤ p^{−A_net(P)}, A_net(P) := A(P) − W(P), with A(P) the ledger exponent and
@@ -274,62 +315,85 @@ no constraint, vol(⊤) = 1 — NOT the empty locus (which has volume 0); every 
 **Key definitions (REV 2 — the transport quotient is RETIRED; pass-1 obstruction 2:
 lift-translation gives equal mass for TRANSPORTED pairs, never a license to discard
 all but one representative while computing the mass of a union).**
-- CANONICAL-POLICY HISTORY (MAXIMAL-RUN FORM — REV 5 interface alignment, pass-4
-  critical 4: a finite prefix cylinder can contain inputs whose canonical run is
-  infinite, so the classifier must be totalized BEFORE termination is invoked): the
-  classifier run with the (S6b) offset-P-lift realizer at every recentering (already
-  the named canonical choice in §C C.0) assigns to EVERY f its unique MAXIMAL
-  canonical run H_can^max(f) — finite terminal or infinite, a deterministic total
-  object; H_can(f) denotes its value on terminating f. Pref(P̂) := the FINITE set of
-  realized lift-carrying PREFIXES η with shape prefix P̂ (the former Hist(P̂),
-  renamed per §1s — never a set of terminal completions). Lift-transport is demoted
-  to a symmetry remark (MENU M3); nothing counts through it.
-- SHAPE-PREFIX P̂: a history prefix with node VALUES forgotten — species, (e, h, g, μ, a),
-  strides, residue degrees w_r retained; the side-digit tuples (d_j) and lifts forgotten.
-- C_P̂(p) := #Pref(P̂) — a COUNT of realized prefixes; realizability = (NA)/(HV) per
-  node. NO uniformity or polynomial structure in q is claimed in this note (that is
-  [1v]'s burden). DRAFT SPEC (binding for the concurrent draft): the pass-4
-  twelve-lemma roster — canonical-choice totality, maximal canonical run, the
-  three-level objects P̂/η/H, common-frame coherence, next-outcome totality and
-  exclusivity, realized-prefix cylinder identification, complete-history fiber
-  identification, finite value-prefix lemma, shape-constant fresh volume, exact
-  prefix mass law, pool encoding/bound, uniform finite-level realization.
+- THE CANONICAL BRANCH TREE T_can(f) (REV 8 — F1; replaces the rev-5 maximal run:
+  the next-NODE datum is NOT a function of f — the descended factor ψ and, at
+  multi-side polygons, the side are BRANCH data, and at F1's instance two
+  same-shape factors are simultaneously eligible with no rule picking one). The
+  classifier with the (S6b) offset-P-lift realizer at every recentering (§C C.0's
+  named canonical choice) assigns to EVERY f its unique maximal canonical BRANCH
+  TREE T_can(f): prefix-closed, CHOICE-FREE (polygon and all side-digit tuples at
+  each node are functions of f; eligibility of (side, ψ) is CELL data), total —
+  branches finite (verdict leaves) or infinite, no a.e.-termination consumed.
+  Each single branch is a lift-carrying history in §C's sense; complete finite
+  terminal histories of f = T_can(f)'s finite maximal branches. Pref(P̂) := the
+  FINITE set of realized single-branch PREFIXES η with shape prefix P̂; the
+  MULTIPLICITY mult_P̂(f) := #{η ∈ Pref(P̂) : η ∈ T_can(f)}. Lift-transport stays
+  demoted to a symmetry remark (MENU M3); nothing counts through it.
+- SHAPE-PREFIX P̂: a branch prefix with node VALUES forgotten — species,
+  (e, h, g, μ, a), strides, residue degrees w_r, AND (rev-6 F2) the per-read SIDE
+  DATA: endpoints s₀′_r, raw widths w′_r, slot sets (hence d_r), anchors a_r — all
+  retained (L9/L11/W(P̂) consume them as shape data); side-digit tuples and lifts
+  forgotten.
+- C_P̂(p) := #Pref(P̂) — a COUNT of realized branch prefixes; realizability =
+  (NA)+(HV)+(SAE) per node (the §0 (SAE) caveat). NO uniformity or polynomial
+  structure in q is claimed in this note (that is [1v]'s burden). DRAFT SPEC
+  (binding; the pass-4 twelve-lemma roster in its rev-6 branch-tree form):
+  canonical-choice totality (L1), the maximal canonical branch tree (L2), the
+  three-level objects P̂/η/H (L3), common-frame coherence (L4), digit-outcome
+  totality + CELL exclusivity with branch sets as cell data (L5), realized-branch
+  cylinder identification (D4R-CYL, L6) + mult_P̂, terminal-branch identification
+  (L7), finite value-prefix lemma (L8), shape-constant fresh volume (L9), the
+  SUM/EVENT mass law (D4R.1), pool encoding/bound with the p-free factor M(P̂)
+  (L11), uniform finite-level realization D4R.4-SUM/-EV (L12).
 
-**Load-bearing lemmas.**
-- **D4R.0 (PARTITION — promoted kernel; pass-1 concern 3).** On every state cylinder
-  Σ_i of a canonical prefix, the strata of the possible next nodes ν_{i+1} PARTITION
-  Σ_i: the frame-(i+1) development's polygon and side patterns are FUNCTIONS of f, so
-  distinct node data have disjoint strata and every f realizes exactly one outcome (or
-  terminates); consequently — WITH THE PREFIX/COMPLETE DISTINCTION DISPLAYED (REV 5
-  maximal-run form, pass-4 critical 4) — for a COMPLETE finite terminal history H,
-  S(H, ⊤) = {f : H_can^max(f) = H} (a fiber of the finite-complete-history map); for
-  a PREFIX P, S(P, ⊤) = {f : P ⪯ H_can^max(f)} (a fiber of the finite-prefix map —
-  NOT the union of fibers of finite completions: the cylinder can contain inputs
-  with infinite canonical runs, and measure-zero nontermination does not repair an
-  exact finite-cylinder partition statement). Theorem C(b) with Z = ⊤ is applied to
-  the PREFIX event;
-  terminal exhaustiveness (obligation (b) below) is stated for completions of a prefix,
-  never conflating the two. Strata are fibers of a map, and disjointness is automatic.
-  *Derivation obligations (REV 3, pass-2 concern 1 —
-  the three named burdens this kernel carries):* (a) TOTALITY: the (S6b) canonical
-  choice is defined at EVERY eligible recentering (no node where the policy is
-  partial); (b) TERMINAL EXHAUSTIVENESS: the outcome case analysis covers every f in
-  the cylinder — every f produces SOME next-node stratum or a terminal verdict, none
-  omitted; (c) COMMON FRAME: two histories sharing a prefix are compared in the COMMON
-  frame Ψ_prefix (same prefix + same canonical lifts ⟹ IDENTICAL frame before the
-  next read — to be PROVED, not assumed), where the two node-(i+1) patterns read
-  different digit values of the same development — never across transported
-  coordinates (Theorem C alone does NOT supply this; it is a new lemma).
-- **D4R.1 (exact prefix mass).** μ(P̂) = Σ_{η ∈ Pref(P̂)} ∏ᵢ vol(E_fresh(νᵢ))
-  = C_P̂(p)·p^{−A(P̂)}, the sum over REALIZED PREFIXES — never over terminal
-  completions (§1s). *Sketch:* disjointness + exhaustion of the prefix event by
-  D4R.0 (fibers of the finite-prefix map on maximal runs); each mass is Theorem C(b)
-  with Z = ⊤; vol(E_fresh) depends only on shape (C.3), so the sum factors as
-  (count) × (common p-power).
-- **D4R.2 (pool bound, p-uniform — SURVIVES verbatim).** C_P̂(p) ≤ p^{W(P̂)}: each
-  read's value choices live in ≤ d_r digit functionals over a pool of size Q_r = p^{w_r};
-  (NA)/(HV) only shrink the count. Hence (3i) verbatim: μ(P̂) ≤ p^{−A_net(P̂)}. [An
-  INEQUALITY — untouched by the death of value-fiber uniformity.]
+**Load-bearing lemmas (REV 8 — the rev-6 set; the rev-5/rev-7 per-node partition
+readings are WITHDRAWN AS REFUTED, not open).**
+- **D4R.0 (CELL PARTITION + BRANCH SETS — promoted kernel; RESTATED at REV 8 per
+  F1).** On every state cylinder Σ_k of a realized prefix η (empty prefix included),
+  the value-CELLS of the full next-outcome DIGIT datum — window polygon + every
+  side's digit tuple, or a terminal verdict — PARTITION Σ_k: the DIGIT datum is a
+  function of f. Each cell carries a finite BRANCH SET as CELL data (the eligible
+  (side, ψ) continuations — conditions on the cell's fixed residual polynomials,
+  NOT on f); a next-NODE stratum is a UNION of cells, and DISTINCT node data need
+  NOT have disjoint strata — two same-shape ψ in one R_anch give two nodes over
+  the SAME cells (F1's instance: n = 4, p = 5, cell (4,3,3,4), R₀ = (z−1)²(z−2)²).
+  The rev-7 sentence "polygon and side patterns are FUNCTIONS of f, so distinct
+  node data have disjoint strata and every f realizes exactly one outcome" is
+  REFUTED and STRUCK: exclusivity survives at the DIGIT-CELL level only. With the
+  PREFIX/COMPLETE distinction displayed: S(η, ⊤) = {f : η ∈ T_can(f)} (D4R-CYL,
+  L6 — tree MEMBERSHIP, not a fiber of a run map; fibers of the CHOICE-FREE tree
+  map f ↦ T_can(f) do partition, and SQ.1 consumes exactly that); complete
+  terminal histories are identified as finite maximal branches (L7). Theorem C(b)
+  with Z = ⊤ is applied per BRANCH event; terminal exhaustiveness (obligation (b))
+  is stated for the digit-outcome case list — (z) zero/vanishing-digit cases,
+  (ep) endpoint/hinge cases, (ns) no-side verdicts — never per node.
+  *Derivation obligations (REV 3, relabeled at REV 8 per MOVES rev 6):* the kernel
+  D4R.0-K has parts (a) TOTALITY: the (S6b) canonical choice is defined at EVERY
+  eligible recentering (L1 — stated and consumed as OPEN; the totality quantifier
+  incl. minimal ν, g = 1, a > 0 is not yet derived), and (b) DIGIT-CELL
+  EXHAUSTIVENESS: L5's case list (z)/(ep)/(ns) covers every f in the cylinder,
+  none orphaned. COMMON FRAME is the plan's burden label (c), NOT a kernel part
+  (rev-6 F3): L4's induction discharges it conditional on L1 (equal prefix + equal
+  canonical lifts ⟹ identical Ψ_η) — never across transported coordinates.
+- **D4R.1 (the mass law — SUM form, the event demoted to a bound; REV 8).**
+      Σ_{η ∈ Pref(P̂)} μ(S(η,⊤)) = C_P̂(p)·p^{−A(P̂)}          (D4R.1-SUM)
+      μ(P̂) := μ(⋃_η S(η,⊤)) ≤ C_P̂(p)·p^{−A(P̂)}             (D4R.1-EV)
+  — the SUM is exact (each summand Theorem C(b) with Z = ⊤; equivalently the
+  level-N average of mult_P̂); the EVENT bound has equality iff mult_P̂ ≡ 1 on the
+  event. F1's instance realizes strict inequality (one tree carrying two branches:
+  the sum counts the cell twice, the event once). vol(E_fresh) depends only on
+  shape (C.3), so the sum factors as (count) × (common p-power). NO sum over
+  terminal completions anywhere.
+- **D4R.2 (pool bound — the M-CARRYING form D4R.2′; REV 8, folding in the MOVES
+  rev-3 plan-reconciliation queue item).** First step = D4R.1-EV's union bound;
+  then C_P̂(p) ≤ M(P̂)·p^{W(P̂)} with M(P̂) ≤ n^{|P̂|} p-FREE (L11's enlarged
+  encoding: the branch-selection index s_r is genuine branch data), hence
+  μ(P̂) ≤ M(P̂)·p^{−A_net(P̂)}. The plan's LITERAL (3i) — coefficient-one
+  C_P̂ ≤ p^{W(P̂)} — is NOT established and is SUPERSEDED: every (3i)-consumer
+  in this plan (decomp Cor 3.4's envelope, X.2's constants, SQ.0/SQ.2's budgets)
+  CARRIES M(P̂) or displays a per-consumer discharge M(P̂) = 1 (e.g. every read
+  with m̄_r = 1, as at the D4-n3 instance). [Still an INEQUALITY, p-uniform up to
+  the p-free constant — untouched by the death of value-fiber uniformity.]
 - **D4R.3 — RETIRED (pass-1 obstruction 1).** The rev-1 torus lemma is FALSE for
   extension-valued vertices: the torus is only Fˣ, with orbits of size ≤ q−1 on
   F_{q^g}ˣ (g > 1), and z ↦ uz transports ψ rather than acting on a fixed-ψ fiber.
@@ -338,16 +402,29 @@ all but one representative while computing the mass of a union).**
   (target α: needs B = 0, prohibited by the nonzero-endpoint convention). The lemma is
   STRUCK; every downstream use re-routes to NOTE [1v]. Nothing in THIS note needs it
   (D4R.1 counts, D4R.2 bounds).
-- **D4R.4 (N-stability).** μ(P̂) is computed at any N ≥ max_{η ∈ Pref(P̂)} N(η, ⊤):
-  Pref(P̂) is finite WITHOUT any quotient (pass-1 concern 4 repaired) — value
-  assignments range
-  over finite alphabets, the canonical lift is a function of node data, the fixed shape
-  bounds all heights hence all constrained levels hence each N(H, ⊤), and the max over
-  a finite set is finite. [Thm 2.1 re-derived from Theorem C's N(H, Z) clause.]
+- **D4R.4 (N-stability — SUM + EVENT split at REV 8).** At any
+  N ≥ max_{η ∈ Pref(P̂)} N(η, ⊤) (Pref(P̂) finite WITHOUT any quotient — L8/L12):
+      Σ_η #{f mod p^N ∈ S(η,⊤)} = C_P̂(p)·p^{nN−A(P̂)}        (D4R.4-SUM)
+      #{f mod p^N ∈ S(P̂,⊤)} ≤ C_P̂(p)·p^{nN−A(P̂)}           (D4R.4-EV)
+  — level-N residues counted WITH multiplicity in the sum; equality in -EV iff
+  mult_P̂ ≡ 1 on the event. No disjointness is consumed by -SUM (a sum over the
+  index set); "the fibers are disjoint" is struck. [Thm 2.1 re-derived from
+  Theorem C's N(H, Z) clause.]
+- **CONSUMER DUTY (REV 8 — F1's cross-shape face, owned as follows).** One f may
+  realize prefixes of SEVERAL shapes at the same length (branch sets mix shapes:
+  a cubic cell R₀ = ψ·(z−r) carries a quadratic-descend AND a linear-descend
+  branch), so the shape events {S(P̂,⊤)} are a MULTIPLICITY-WEIGHTED COVER, never
+  a partition — Σ_P̂ μ(P̂) may exceed 1. OWNERSHIP: [1] owns the SUM/EVENT laws;
+  [3] RS.1 owns MULT-ACCOUNTING at assembly (every f-level mass claim runs
+  through the T_can-fiber partition with per-branch masses composed by the C.1.5
+  chain + REL.2(c) sibling independence — §4); [2a]/[5]/(†-AGG) consumers state
+  per use whether they consume D4R.1-SUM/D4R.4-SUM (branch-weighted) or the
+  event BOUNDS — a partition-of-the-box-by-shapes claim is banned.
 
-**Kernels (derivation-grade):** D4R.0 (the partition/fiber argument at common frames;
-the totality half needs the read-outcome case analysis to be exhaustive — every f in
-the cylinder produces SOME polygon side or terminal verdict).
+**Kernels (derivation-grade):** D4R.0-K = L1 TOTALITY + L5 DIGIT-CELL
+EXHAUSTIVENESS (the case list (z)/(ep)/(ns) covers every f — each degeneracy
+exhibited with its receiving typing clause, non-overlap derived from the polygon
+conventions); common frame = L4, conditional on L1.
 
 **Sealed gate D4-n3 (aggregated prefix mass — SCOPE RECORDED).** n = 3, class-3
 prefix: root read with residual shape (irreducible quadratic)·(linear) → deg-2 key
@@ -356,9 +433,15 @@ Seal BEFORE running: C_P̂(p) by direct enumeration of realizable value assignme
 A(P̂), the predicted #{f mod p^N ∈ P̂} = C_P̂(p)·p^{3N−A} at p = 2 AND p = 3, two
 levels N each, verified on EXHAUSTIVE level-N boxes (feasible through 2^24 and 3^15);
 plus the net bound check; plus a PARTITION check — every box member lands in exactly
-one next-node stratum, 0 double-counts and 0 orphans tolerated. RECORDED LIMITATION
-(pass-1 obstruction 8): μ = 1 only — this gate exercises D4R.0/1/2 and does NOT touch
-the value-count risk; the μ ≥ 2 / a > 0 danger is gated in [1v] at n = 5 and over F_q.
+one DIGIT-VALUE CELL (REV 8: the cell partition, not next-node strata), 0
+double-counts and 0 orphans tolerated. RECORDED LIMITATIONS
+(pass-1 obstruction 8; REV 8 from the MOVES rev-6 gate verdict): μ = 1 only — this
+gate exercises D4R.0/1/2 and does NOT touch the value-count risk (the μ ≥ 2 / a > 0
+danger is gated in [1v] at n = 5 and over F_q); AND mult_P̂* ≡ 1 at the gate
+instance (EV bounds hold with equality there), so the m ≥ 2 branch-multiplicity
+regime — F1's regime — is NOT exercised: the rev-6 MULTIPLICITY GATE (a sealed
+m ≥ 2 instance, e.g. the (z−1)²(z−2)² cell) is QUEUED per the MOVES record and
+joins this note's gate roster.
 
 ## 2v. NOTE [1v] VALUE — the cell-to-cell polynomial transition system (REV 6: ONE displayed measured theorem CTS-M replaces the CTS.0–5 burden list; Theorem VAL = tables + path products + the measured composition; (†) scoped + (†-AGG); R1's decision point — PROBE REPORTED NO-WALL. REV 7: CTS-M stated GIVEN the NAMED XHD interface; the g/G height typing with COMP-h/COMP-Σ; ENT-COUNT; acceptance split [1v]-COND / [1v]-FULL)
 
@@ -399,12 +482,15 @@ and RS.2 could not construct K_e).**
 > PATH PRODUCT C_γ(q) = ∏_i T_{m_i,o_i}^{β_{i−1},β_i}(q) — matrix multiplication
 > is a DEFINED operation because source and target cells are drawn from the ONE
 > global partition (CTS-M(i)) — degree ≤ W(γ) = Σ W_loc; the FULL realization
-> count is Ĉ_γ(q) = I^ent_γ(q)·C_γ(q), degree ≤ W̄(γ) = W_ent(γ) + W(γ)
-> (REV 7, pass-6 critical 3: the entrance factor is the ENTRANCE COUNT of
-> CTS-M(iii) — never omitted, never smuggled into T, and never replaced by the
-> bare cell size |β₀| without the displayed one-unrestricted-copy theorem for
-> that family). Degree
-> bounds are PER TEMPLATE, path-length-dependent, never per raw shape. The rev-4
+> count is PER ENTRANCE SHAPE (REV 8, pass-7 critical 1): Ĉ_{ε,γ}(q) =
+> I^ent_{ε,β₀}(q)·C_γ(q), degree ≤ W̄(ε,γ) = W_ent(ε) + W(γ)
+> (the entrance factor is the ENTRANCE COUNT of
+> CTS-M(iii) at ONE entrance shape ε — never omitted, never smuggled into T,
+> never replaced by the bare cell size |β₀| without the displayed
+> one-unrestricted-copy theorem for that family, and never summed raw across
+> entrance shapes with different ledger exponents A(ε)). Degree
+> bounds are PER (ENTRANCE SHAPE, TEMPLATE), path-length-dependent, never per
+> raw shape. The rev-4
 > scalar totals C_m are recovered as row sums Σ_{o,β} T_{m,o}^{α,β}. Measured
 > composition (masses, not counts) is CTS-M(vi); resummed FAM objects are outside
 > this theorem (§1s).
@@ -456,6 +542,25 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   states are 𝒞_n := {(s, α) : α ∈ JREF^src(s)}; finiteness follows only AFTER
   using finiteness of Out(s) (a finite meet of finite partitions); cells whose
   size polynomial is IDENTICALLY zero are deleted from 𝒞_n once, symbolically.
+  **BRANCH-CELL DECISION (REV 8 — displayed; the F1 inheritance forced a
+  choice).** A CTS cell is a BRANCH-CELL: its concrete states are states of ONE
+  continuing branch of T_can(f) in that branch's own frame (current key/residual
+  data + the digit-value cell of the residual tuple), and the CTS walks SINGLE
+  branches — every transition step consumes the branch's next read, T counts
+  per-branch fresh assignments from one representative, and every measured step
+  factor is a per-branch Theorem C(b)/C.1.5 object. This is the reading
+  CONSISTENT with [1v]'s tables (single-valued (m, o, β) steps from one
+  representative) and with §C's single-branch Theorem C; the alternative —
+  f-cells with SET-VALUED transitions (a cell's branch set spawning several
+  simultaneous successors) — is REJECTED for exactly the reason MOVES rev 6
+  rejected joint multiset prefixes: §C has NO mass theorem for
+  joint-over-branch loci, and the tables would not be §C-citable. CONSEQUENCE
+  (binding on FAM): BRANCHING EXITS TO THE FAM LAYER — a read whose digit cell
+  carries several eligible (side, ψ) continuations contributes each
+  continuation as a separate branch entry (SHALLOW/exit-vector legs, [2r] mixed
+  legs composed multiplicatively by RS.1's tree assembly), and MULTIPLICITY
+  WEIGHTS (mult, [1] D4R.1) are carried by the FAM aggregation — never inside T,
+  never inside a single-branch path product.
   DISPLAY DUTY (REV 6, pass-5 concern 3 — no schematic meets): the draft must
   COMPUTE and LIST, per skeleton s, the resulting finite uniform partition —
   explicit cell predicates as boolean combinations of the (a)/(b) generators,
@@ -539,28 +644,51 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > anywhere. [refuters: the VALUE-Fq small-q table layer; RESUM-n3's wild-p
   > ACTIVE-VALUE agreement layer — junk determinants recorded, agreement gated]
   >
-  > **(iii) INIT — the initial distribution AND the entrance count (pass-5
-  > critical 2; count shadow REBUILT at REV 7, pass-6 critical 3).** For each
-  > block e there is a DISPLAYED initial vector ι_e(q) = (ι_{e,(s,α)}(q)),
-  > assembled in the SHALLOW layer from [1] D4R.1 masses: at each p,
-  > ι_{e,(s,α)}(p) = the mass of the event "the root/branch cascade enters the
-  > size-e block in cell (s, α)". Its count shadow is the ENTRANCE COUNT: for a
-  > template γ entering block e in cell β₀,
-  >     I^ent_γ(q) := #{realized shallow entrance prefixes η_sh with γ's
-  >     entrance shape whose continuation lands in cell β₀}
-  > — a REALIZED-PREFIX count in [1]'s sense (D4R.1's C_P̂ refined by the
-  > landing-cell condition; finite at each level by D4R.4), so that the full
-  > count is Ĉ_γ = I^ent_γ·C_γ.
-  > **ENT-COUNT (named burden):** I^ent_γ is one polynomial in q of displayed
-  > degree ≤ W_ent(γ) (the shallow-entrance pool dimension), computed as a CTS
-  > path count through the shallow layer. The identity I^ent_γ = |β₀| is NOT
-  > general: it holds exactly when the entrance places one unrestricted copy of
-  > every concrete state of β₀, a per-family theorem to be DISPLAYED wherever
-  > used (pass-6 critical 3: for root/branch-cascade entries ι_e repairs the
-  > mass but |β₀| does not automatically repair the count). NO path product is
-  > a mass or a full realization
-  > count without its initial factor: ∏ T counts extensions from ONE fixed
-  > initial representative, nothing more.
+  > **(iii) INIT — the initial distribution AND the entrance count, BOTH
+  > refined by ENTRANCE SHAPE (pass-5 critical 2; REBUILT at REV 8, pass-7
+  > critical 1: rev 7 paired a shape-refined count with a cell-aggregated
+  > mass — mismatched objects; the refinement is now the PRIMITIVE and the
+  > aggregate is DERIVED).** An ENTRANCE SHAPE ε into (e, β₀) is a shallow
+  > shape-prefix in [1]'s sense (a P̂ of the root/branch cascade, heights
+  > retained as ℕ-parameters) whose designated continuing BRANCH enters the
+  > size-e block landing in cell β₀; the shape family {ε} is FINITE up to its
+  > height parameters ([2a]/M1). The per-shape PRIMITIVES, at each height
+  > point of ε:
+  >     ι_{e,ε,β₀}(p) := the D4R.1-SUM branch-weighted mass of the entrance
+  >       event refined by ε (each summand Theorem C(b); branch-weighted per
+  >       [1]'s consumer duty — an f entering twice is counted per branch,
+  >       matching the per-branch solve);
+  >     I^ent_{ε,β₀}(q) := #{realized shallow entrance prefixes η of shape ε
+  >       whose continuation lands in cell β₀}
+  > — a realized-prefix count (D4R.1's C_P̂ refined by the landing cell;
+  > finite at each level by D4R.4), with its own LEDGER EXPONENT A(ε) and
+  > pool dimension W_ent(ε) := Σ_{r ∈ reads(ε)} w_r·d_r (the CONSTRUCTION
+  > pass-7 concern 2 demanded: [1]'s W(P̂) evaluated at the entrance shape,
+  > displayed per shape). Full count: Ĉ_{ε,γ} = I^ent_{ε,β₀}·C_γ.
+  > **ENT-COUNT (named burden, per shape):** each I^ent_{ε,β₀} is one
+  > polynomial in q of displayed degree ≤ W_ent(ε), computed as a CTS path
+  > count through the shallow layer. The identity I^ent_{ε,β₀} = |β₀| is NOT
+  > general: it holds exactly when ε's entrance places one unrestricted copy
+  > of every concrete state of β₀ — a per-family theorem to be DISPLAYED
+  > wherever used. Counts at DIFFERENT ε are NEVER added raw: distinct
+  > entrance shapes carry distinct A(ε), and any aggregated count exists only
+  > under (†-AGG)'s per-summand displayed normalization.
+  > **ENT-AGG (the derived cell aggregate — the MASS side does aggregate):**
+  >     ι_{e,β₀} := Σ_ε Σ_{h ∈ H(ε)} ι_{e,ε,β₀}(h)
+  > — a finite shape sum of XHD-s-summed height series; licit because MASSES
+  > add and, by (iv)-REP, the within-block continuation row from any
+  > representative of β₀ is ENTRANCE-INDEPENDENT, so
+  > Σ_ε ι_{e,ε,β₀}·(continuation factor) = ι_{e,β₀}·(continuation factor).
+  > The aggregate ι_{e,β₀} is consumed ONLY in FAM (RS.PRE's ι_e), never
+  > paired with a per-shape count.
+  > **INIT-RAT (named burden — pass-7 concern 1: RS.2 previously ASSUMED
+  > this):** each component ι_{e,(s,α)} ∈ ℚ(q) — assembled as the displayed
+  > finite-shape sum above with per-shape ENT-COUNT polynomials, ledger
+  > exponents A(ε, h) affine in the shallow heights (M4a), and the height
+  > sums XHD-s geometric — hence ι_e ∈ ℚ(q)^{𝒞_n}, a CONCLUSION of this
+  > clause (GIVEN XHD on the shallow layer), CITED by RS.2. NO path product
+  > is a mass or a full realization count without its initial factor: ∏ T
+  > counts extensions from ONE fixed initial representative, nothing more.
   > **(iv) STEP — correctly normalized measured rows (pass-5 critical 1;
   > retyped on XHD at REV 7).** The
   > one-step kernel entry is the CONDITIONAL MASS OF LANDING GIVEN THE SOURCE
@@ -621,39 +749,64 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > 𝒞_n refinement round); a second coupling surviving refinement is R2's wall
   > channel. Until HMC closes, K_e(p)^k is NOT a theorem about the process and
   > COMP-Σ holds only per template, never as a kernel-power identity.
-  > **HMC-probe (exploration-class, runs with this note's draft):** a two-step
-  > p = 2 conditioned-cylinder family with step-1 height h₁ varied across its
-  > exact domain — exact census of two-step realized masses vs ι-weighted
-  > products of the sealed one-step (T·G) factors; any dependence on h₁ beyond
-  > the retained state refutes HMC as stated and triggers the augmentation
-  > round.
+  > **HMC-probe (exploration-class, runs with this note's draft; RESPECIFIED
+  > at REV 8 — pass-7 concern 3: the rev-7 spec compared a fixed-h₁ event
+  > against resummed T·G products, mixing the fixed/resummed types it exists
+  > to police).** A two-step p = 2 conditioned-cylinder family, ONE entrance
+  > shape ε sealed, TWO layers with the g/G typing explicit: (a) COMP-h
+  > layer (typing check, no HMC content) — for sealed height PAIRS (h₁, h₂),
+  > exact census of the fixed-height realized masses vs
+  > ι_{e,ε,β₀}·T·g(h₁)·T·g(h₂) — only fixed-height monomials g appear;
+  > (b) HMC layer (the kernel's content) — for each FIXED h₁ across its exact
+  > one-step domain, census the CONDITIONAL step-2 exact height domain and
+  > per-h₂ mass law given (m₁, o₁, β₁ at h₁): HMC predicts both are
+  > INDEPENDENT of h₁ given the retained state β₁; equivalently, after
+  > summing over h₂ ONLY, the fixed-h₁ two-step mass equals
+  > ι_{e,ε,β₀}·T·g(h₁)·(T·G)₂ — the resummed G appears ONLY after the
+  > h₂-sum, never at fixed h₂, and h₁ is never summed in this layer. Any
+  > h₁-dependence of the conditional step-2 law beyond the retained state
+  > refutes HMC as stated and triggers the augmentation round.
   >
   > **(vi) COMP — the TWO composition identities, and the conditional solve
   > (pass-5 concern 6; REWRITTEN at REV 7 — pass-6 critical 2: rev 6 stated
   > only the resummed identity while using γ as a height-retaining object,
   > summing the height coordinates twice).** For every finite path template
-  > γ = (β₀ →^{m₁,o₁} β₁ → … → β_k) in block e:
-  > "CYLINDER OF (γ, h)" DISPLAY (pass-6 fresh sweep 1): the realized event of
-  > (γ, h) at p is the UNION ⋃_η S(η, ⊤) over the finitely many (D4R.4)
-  > realized lift-carrying histories η with template γ and height point h —
-  > pairwise DISJOINT by D4R.0 (fibers of the finite-prefix map), each a
-  > finite-level measurable cylinder — hence measurable with μ = the finite
-  > sum of constituent masses; no single-cylinder reading is intended.
-  >     (COMP-h) FIXED HEIGHT — for every height point h = (h₁,…,h_k) ∈ H(γ):
-  >       μ(realized event of (γ, h) at p) = ι_{e,β₀}(p) ·
+  > γ = (β₀ →^{m₁,o₁} β₁ → … → β_k) in block e, and every entrance shape ε
+  > into (e, β₀) (REV 8 — pass-7 critical 1: COMP-h now pairs LIKE WITH LIKE,
+  > the per-shape mass with the per-shape count; the cell-aggregated form is
+  > DERIVED by ENT-AGG, never primitive):
+  > "CYLINDER OF (ε, γ, h)" DISPLAY (pass-6 fresh sweep 1; branch-typed at
+  > REV 8): the realized event of (ε, γ, h) at p is the UNION ⋃_η S(η, ⊤)
+  > over the finitely many (D4R.4) realized single-branch histories η with
+  > entrance shape ε, template γ, and height point h — pairwise DISJOINT
+  > realized-prefix events at ONE fixed shape (D4R.0's digit-cell partition;
+  > within one shape prefix distinct η occupy distinct cells, so no
+  > multiplicity enters HERE — cross-shape multiplicity is [1]'s consumer
+  > duty, carried at RS.1's tree assembly), each a finite-level measurable
+  > cylinder — hence measurable with μ = the finite sum of constituent
+  > masses; no single-cylinder reading is intended.
+  >     (COMP-h) FIXED HEIGHT, PER ENTRANCE SHAPE — for every height point
+  >     h = (h₁,…,h_k) ∈ H(γ):
+  >       μ(realized event of (ε, γ, h) at p) = ι_{e,ε,β₀}(p) ·
   >         ∏_{i=1}^k [T_{m_i,o_i}^{β_{i−1},β_i} · g^{β_{i−1},β_i}_{m_i,o_i}(h_i)](p),
-  >     with g the XHD-w fixed-height monomial weight; count shadow at fixed h:
-  >     I^ent_γ·∏ T (Theorem VAL(b) + ENT-COUNT).
+  >     with g the XHD-w fixed-height monomial weight; count shadow at fixed
+  >     h: I^ent_{ε,β₀}·∏ T (Theorem VAL(b) + ENT-COUNT — same ε both sides).
   >     (COMP-Σ) RESUMMED — GIVEN (v) HMC:
-  >       Σ_{h ∈ H(γ)} μ(realized event of (γ, h)) = ι_{e,β₀} ·
+  >       Σ_{h ∈ H(γ)} μ(realized event of (ε, γ, h)) = ι_{e,ε,β₀} ·
   >         ∏_{i=1}^k [T_{m_i,o_i}^{β_{i−1},β_i} · G^{β_{i−1},β_i}_{m_i,o_i}],
   >     because HMC factors H(γ) = ∏ H(γ¹_i) and G = Σ_{h ∈ H(γ¹)} g.
+  >     (COMP-AGG) CELL-AGGREGATED — summing (COMP-Σ) over ε via ENT-AGG
+  >     ((iii); licit by (iv)-REP entrance-independence of the continuation):
+  >       Σ_ε (COMP-Σ, ε) = ι_{e,β₀} · ∏ (T·G) — the FAM-side identity
+  >     RS.PRE/RS.1 consume; masses aggregate, counts do NOT.
   > COMPOSITION-TYPING DUTY (ledger item, REV 7): every consumer sums heights
   > EXACTLY ONCE, via the (COMP-h)→(COMP-Σ) passage — G never appears at a
   > height point, g never in a kernel entry. ORIENTATION DISPLAY (pass-6 fresh
-  > sweep 2): the solved scalar output is
+  > sweep 2; ONE convention fixed at REV 8, pass-7 fresh sweep): the solved
+  > scalar output is
   >     ι_e^T (I − K_e)^{−1} b_e,
-  > ι_e the ROW entrance vector ((iii), left factor) and b_e the named EXIT
+  > ι_e the entrance COLUMN vector of (iii)/ENT-AGG, acting once on the LEFT
+  > via its transpose (the word "row" is retired), and b_e the named EXIT
   > VECTOR — per-state one-step terminal/deciding conditional mass ((iv)-PART's
   > absorbing columns), weighted where applicable by certified downstream
   > values ([2r] mixed legs); (R_e)'s unknown β_{e,·} is the COLUMN solve
@@ -694,9 +847,10 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   product of the sealed one-step tables; an exact mismatch refutes CTS-M(i)'s
   typing or VAL CHAIN
   at k = 2 before RESUM consumes them. The COUNT layer includes the entrance
-  factor: the full two-step count is checked as Ĉ = I^ent·T·T, never ∏ T alone
-  (CTS-M(iii) ENT-COUNT — REV 7); in this designed family the entrance is one
-  unrestricted copy of each source-cell state, so I^ent = |β₀| holds as a
+  factor AT ONE SEALED ENTRANCE SHAPE ε (REV 8): the full two-step count is
+  checked as Ĉ_{ε,γ} = I^ent_{ε,β₀}·T·T, never ∏ T alone
+  (CTS-M(iii) ENT-COUNT); in this designed family the entrance is one
+  unrestricted copy of each source-cell state, so I^ent_{ε,β₀} = |β₀| holds as a
   SEALED PER-FAMILY IDENTIFICATION, displayed with the seal — never cited as a
   general rule. The MASS layer is HMC-probe's (CTS-M(v), above).
 - **VAL.3 (aggregate branch — RECLASSIFIED at REV 3: a REDESIGN, not a fallback;
@@ -739,21 +893,32 @@ integer-valued count).**
 > FINITE explicitly-listed sum of LOC/template counts, (b) carrying a DISPLAYED
 > common monomial normalization making it an integer count, and (c) carrying a
 > DISPLAYED degree bound. The canonical instance: decided_σ(N) — an integer in
-> [0, p^{nN}], a finite sum Σ_{threshold(γ) ≤ N} Ĉ_γ(q)·q^{nN−A(γ)} of degree
-> ≤ nN (REV 7: the FULL count Ĉ_γ = I^ent_γ·C_γ per CTS-M(iii) ENT-COUNT — the
+> [0, p^{nN}], a finite sum over (ENTRANCE SHAPE, template) PAIRS (REV 8 —
+> per-shape normalization, pass-7 critical 1's (†-AGG) face):
+>     Σ_{(ε,γ): threshold ≤ N} Ĉ_{ε,γ}(q)·q^{nN−A(ε)−A(γ)},
+> each SUMMAND separately an integer count at its OWN displayed monomial
+> normalization — no single cell-wide q^{nN−A} exists when entrance shapes
+> carry different A(ε), and no cross-shape raw count aggregation occurs —
+> of total degree
+> ≤ nN (the FULL count Ĉ_{ε,γ} = I^ent_{ε,β₀}·C_γ per CTS-M(iii) ENT-COUNT — the
 > per-representative C_γ alone undercounts by the entrance multiplicity, and
 > the rev-6 |β₀| stand-in is STRUCK, pass-6 critical 3),
 > so (†) applies verbatim at W = nN — CONDITIONAL (REV 5, pass-4 concern 5;
-> widened at REV 7) on SIX
+> widened at REV 7/8) on SEVEN
 > exposed inputs: (i) SQ.0's finite p-INDEPENDENT syntactic template family; (ii)
-> ZERO-EXTENSION — templates unrealizable at a particular p contribute Ĉ_γ(p) = 0,
+> ZERO-EXTENSION — templates unrealizable at a particular p contribute Ĉ(p) = 0,
 > never a missing row (built into the CTS itself at REV 6, CTS-M(ii));
 > (iii) polynomiality of every normalized summand through
 > CTS-M(iv)-POLY (Theorem VAL); (iv) the degree-≤ nN bound (SQ.0(d)); (v) for PRIME-POWER
 > censuses q = p^δ, the relative W(F_q) reading via REL.1/REL.2 — never a silent
-> ordinary-ℤ_p-box treatment; (vi) ENT-COUNT (REV 7, pass-6 critical 3) — every
-> Ĉ_γ's entrance factor is the displayed entrance count I^ent_γ of CTS-M(iii),
-> polynomial at degree ≤ W_ent(γ), never the bare cell size |β₀|. The COMPLETED
+> ordinary-ℤ_p-box treatment; (vi) ENT-COUNT (REV 8 form) — every
+> entrance factor is the displayed PER-SHAPE entrance count I^ent_{ε,β₀} of
+> CTS-M(iii), polynomial at degree ≤ W_ent(ε), never the bare cell size |β₀|;
+> (vii) MULT (NEW at REV 8 — F1's (†-AGG) face): the (ε, γ)-sum counts level-N
+> residues BRANCH-WEIGHTED (D4R.4-SUM), while decided_σ(N) counts each decided
+> f ONCE — the identification of the two is a displayed mult-accounting step
+> (mult ≡ 1 proved on the family, or the tree-assembly regrouping of RS.1),
+> never assumed. The COMPLETED
 > density R_σ is NEVER
 > census-refuted by interpolation: it is tested only by the two-sided SQUEEZE
 > brackets (⌈(R_σ(p) − env(N))p^{nN}⌉ ≤ decided_σ(N) ≤ ⌊R_σ(p)p^{nN}⌋), which refute
@@ -778,8 +943,9 @@ integer-valued count).**
   fresh-pool total, CTS-M(iv)-PART), WEIGHTED representative independence (≥ 2
   representatives per cell, the measured (T·G)-row compared exactly —
   CTS-M(iv)-REP, REV 6), the two-node FULL-count layer carrying its sealed
-  ENTRANCE COUNT I^ent (CTS-M(iii) ENT-COUNT — REV 7; where the gated family
-  enters with one unrestricted copy per state, I^ent = |β₀| is displayed as a
+  ENTRANCE COUNT I^ent_{ε,β₀} at its sealed entrance shape ε (CTS-M(iii)
+  ENT-COUNT — REV 8, with W_ent(ε) displayed; where the gated family
+  enters with one unrestricted copy per state, I^ent_{ε,β₀} = |β₀| is displayed as a
   sealed per-family identification), and the EMPTY-CELL layer — at every sealed q where
   some cell size vanishes, entries into that cell verified 0 and no formal row
   cited (CTS-M(ii-a)) — checked exactly. PASS = exact integer equality throughout, with
@@ -797,25 +963,42 @@ integer-valued count).**
 
 ## 3. NOTES [2a] SPECIES + [2b] STATE-GEOM — the rev-2 MENU, split acyclic (REV 5: τ = the CTS state; M4a-X height-scoped + the affine-semigroup duty; M4b narrowed to height-translation constancy; [2b] gated on STATE-probe-2)
 
-**Split delivery (pass-2 obstruction 3; REV 6 duty added):** [2a] SPECIES = the
-raw catalogue 𝒮_n^raw — ALSO the source of the CTS's SYNTACTIC outgoing menus:
+**Split delivery (pass-2 obstruction 3; REV 6 duty added; BRANCH-AWARE at REV 8
+— the F1 inheritance changes [2a]'s objects):** [2a] SPECIES = the
+raw catalogue 𝒮_n^raw of BRANCH shapes: a shape/species is read off ONE BRANCH of
+the canonical tree T_can(f) (a §C single-branch history — [1] L2/L3), NEVER off f;
+the catalogue indexes branch shapes and assigns NO count, and any consumer that
+counts f's through it owes MULT ACCOUNTING (shape events are a multiplicity-
+weighted COVER, Σ_P̂ μ(P̂) may exceed 1 — the duty is STATED here, D4R.1-SUM vs
+-EV consumption declared per use; OWNED by [1] for the sum/event laws and by [3]
+RS.1 for the tree-assembly conversion — §2's consumer-duty bullet). [2a] is ALSO
+the source of the CTS's SYNTACTIC outgoing menus:
 Out(s) reads its species labels from 𝒮_n^raw by degree/bound bookkeeping alone,
-with NO residue-field evaluation (CTS-M(i)/pass-5 concern 1) —
+with NO residue-field evaluation (CTS-M(i)/pass-5 concern 1) — a source cell's
+BRANCH SET may list several (side, ψ) continuations, and the syntactic menu lists
+them ALL (branching itself exits to FAM per the §2v branch-cell decision) —
 M1's bounds + M5's completeness, with NO strata and NO state types: this is the finite
-list Theorem VAL quantifies over, so [1v] consumes [2a] and no cycle exists. [2b]
+list Theorem VAL quantifies over, so [1v] consumes [2a] and no cycle exists. The
+shallow ENTRANCE-SHAPE family {ε} of CTS-M(iii) is a sub-catalogue of 𝒮_n^raw
+(finite up to height parameters — [2a] supplies its finiteness). [2b]
 STATE-GEOM = M2 + M4a + M4b/M4b-T, drafted AFTER [1v] (it consumes the twisted cells).
 𝒮_n = 𝒮_n^raw enriched by [2b]'s types. M3 stays a remark. Theorem MENU below is
 delivered jointly: its finiteness/completeness clauses by [2a], its parameter-geometry
-and type clauses by [2b].
+and type clauses by [2b]. **[2a] DRAFT STATUS (REV 8): CLEARED-AS-RESTATED** —
+pass 7 cleared SPECIES for drafting; the F1 inheritance changes its objects to
+branch shapes as specified in this paragraph; the clearance carries over to the
+RESTATED spec, and drafting may start once REV 8 lands (this revision).
 
 **The statement to prove.**
-> **Theorem MENU.** Fix n. Define the shape of a realizable canonical-policy history by
+> **Theorem MENU (branch-typed at REV 8).** Fix n. Define the shape of a realizable
+> canonical-policy BRANCH (a chain of T_can(f) — [1] L2; shapes are read off
+> branches, never off f) by
 > forgetting: all side HEIGHTS h (per read), all self-loop repetition counts (depths),
-> all digit values — retaining the finite tree of reads with per-node species
+> all digit values — retaining the finite chain of reads with per-node species
 > (increment / recentering / root), slope denominators e, key degrees, multiplicities
 > μ, residual SHAPES (degree–multiplicity partitions), residue degrees w,
 > stride/anchor combinatorics, and the flank/co-factor pattern. Then 𝒮_n is FINITE and
-> INDEPENDENT of p, and every realizable history is a shape + a tuple of ℕ-parameters
+> INDEPENDENT of p, and every realizable branch is a shape + a tuple of ℕ-parameters
 > (heights, depths) lying in explicit per-shape sets: products of cones INTERSECTED
 > WITH CONGRUENCE LATTICES (M4a). NO claim that the lattice points exhaust
 > realizability (pass-1 obstruction 3): the arithmetic layer — (NA)/(HV), factor
@@ -920,14 +1103,28 @@ and type clauses by [2b].
   CLAUSE (to prove): with cells defined in the twisted frame, π_v acts trivially on
   type labels; if instead π_v is nontrivial, RS.0 and K_e are re-indexed by
   π-orbits and the height sums run per orbit — stated here so RESUM cannot
-  silently assume π_v = id. THEN CTS-M(iv)-REP + M2(ii) close the count. Evidence: the
+  silently assume π_v = id. THEN CTS-M(iv)-REP + M2(ii) close the count — a step
+  that runs strictly AFTER XHD is established (see the proof-order display
+  below): if it were used in proving XHD itself, the pass-6 cycle would return.
+  **INTERNAL PROOF ORDER OF [2b] (binding display — REV 8, pass-7 concern 4).**
+  Within [2b]: (1) FIRST prove the XHD package = M4a-X (+ M4a's affine weights,
+  M4b-T's compatibility) from §C/§B2-DEF/M4a/M4b-T materials ALONE — no
+  G-bearing clause of conditional CTS-M ((iv) STEP/PART/REP/MEAS, (vi) COMP) may
+  be cited at this stage; (2) THEN instantiate [1v]-COND's conditional theorem —
+  the implication XHD ⟹ CTS-M's G-bearing clauses — discharging the hypothesis
+  inside [2b]; (3) ONLY THEN may M2(ii)'s lumpability and M4b's count-closing
+  step consume CTS-M(iv)-REP. Any [2b] draft violating (1)→(2)→(3) re-opens
+  pass-6 critical 1 and is rejected at verification. Evidence: the
   value probe's a_eff ∈ {0, 1, 2} twisted-cell exactness is M4b-T's shadow; its
   fixed-frame char-splits are what M4b-T looks like when the twist is omitted.
   With M4a-X, this is what makes per-height geometric resummation legitimate in
   RESUM.
-- **M5 (menu completeness).** Every monic f with terminating resolution has its
-  canonical history of some shape in 𝒮_n. *Sketch:* §B2-DEF TRANS constructs stage
-  r+1 data of exactly the retained vocabulary; nothing else occurs.
+- **M5 (menu completeness — branch-typed at REV 8).** EVERY branch of EVERY
+  T_can(f) (terminal-verdict branches and infinite branches alike, prefixwise)
+  has its shape in 𝒮_n. *Sketch:* §B2-DEF TRANS constructs stage
+  r+1 data of exactly the retained vocabulary; nothing else occurs. Completeness
+  is per BRANCH — f-level completeness is the tree statement (every chain of
+  T_can(f) is a catalogued shape), and no single-run totality is invoked (F1).
 
 **Kernels:** M2 (STATE on the CTS state space — CTS-M(iv)-REP consumed; the e_birth/e_read
 threading re-walk is its residual duty), M4a (the affine-exponent +
@@ -983,7 +1180,9 @@ hypothesis at base-changed arguments sits outside the certified perimeter.
   the conditioned ℤ_p-mass equals the vol_{O_δ} mass (a measure comparison, not a
   bijection alone); (c) SIBLING INDEPENDENCE — conditioning on the other factors does
   not distort the cluster's law; (d) LIFT-POLICY COMPATIBILITY — [1]'s canonical
-  H_can commutes with the identification. Consumers: RS.1's mixed legs; SQ.2's
+  branch tree T_can (REV 8: the cluster's continuation subtree, per branch)
+  commutes with the identification. Consumers: RS.1's mixed legs (the tree
+  assembly's per-branch factors); SQ.2's
   induction at β_m(p^δ).
 - **REL.3 (positivity/domination transfer).** The finite-level covering and
   monotone-domination statements SQUEEZE needs, restated and proved over O — stated
@@ -1048,7 +1247,10 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
         T_{m,o}^{α,β}(q) · G^{α,β}_{m,o}(q)   — NO source-mass division,
   the conditional mass of landing given the source cylinder from one
   representative (well-defined across representatives by CTS-M(iv)-REP); ι_e :=
-  the CTS-M(iii) initial vector from the SHALLOW layer; G^{α,β}_{m,o}(q) the
+  the CTS-M(iii) initial vector from the SHALLOW layer — at REV 8 the ENT-AGG
+  aggregate of the per-entrance-shape masses ι_{e,ε,β₀} (aggregation licit by
+  (iv)-REP; components in ℚ(q) by INIT-RAT, which RS.2 cites; per-branch
+  entrances, branch-weighted per [1]'s consumer duty); G^{α,β}_{m,o}(q) the
   XHD one-step resummed height mass (REV 7 — the XHD-w fixed-height monomials g
   summed over the XHD-d one-step exact domain; affine exponents, positive
   weights — M4a; source-and-target-indexed per pass-6 concern 1) —
@@ -1060,8 +1262,9 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   mass without its initial factor). ORIENTATION DISPLAY (REV 7, pass-6 fresh
   sweep 2): the solved scalar block output is
       ι_e^T (I − K_e)^{−1} b_e,
-  with ι_e the ROW entrance vector (left factor) and b_e the named EXIT
-  VECTOR — the per-state one-step terminal/deciding conditional mass
+  with ι_e the entrance COLUMN vector acting once on the LEFT via its transpose
+  (REV 8 — pass-7 fresh sweep: ONE convention; "row" is retired) and b_e the
+  named EXIT VECTOR — the per-state one-step terminal/deciding conditional mass
   (CTS-M(iv)-PART's absorbing columns), weighted where applicable by certified
   downstream values ([2r] mixed legs β_m(q^δ)); (R_e)'s unknown β_{e,·} is the
   COLUMN solve β_e = K_e β_e + b_e, ι_e pairing once on the left — "SHALLOW
@@ -1082,7 +1285,9 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   factor the whole-template height domains — OPEN kernel); (7) CTS-M(ii) ACT
   (else empty cells at wild p corrupt rows, denominators, determinants);
   (8) CTS-M(iii) INIT + ENT-COUNT (else no product is tied to a cylinder mass
-  or a full count); (9) the CTS-M(vi) COMP-TYPING duty — heights summed
+  or a full count — at REV 8 the per-entrance-shape form: ι_{e,ε,β₀} and
+  I^ent_{ε,β₀} with ENT-AGG and INIT-RAT, pass-7 critical 1 + concern 1);
+  (9) the CTS-M(vi) COMP-TYPING duty — heights summed
   exactly once, through the (COMP-h)→(COMP-Σ) passage (else the height
   coordinate is double-counted, pass-6 critical 2). K_e carries
   all nine tags until each closes.
@@ -1105,19 +1310,33 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
 
 **Load-bearing lemmas.**
 - **RS.1 (the aggregation identity — REV 4: exact domains + Tonelli).** For each
-  type σ: Σ_{complete realizable canonical H of type σ} mass(H) — a positive series
-  of masses of DISJOINT events (D4R.0), hence bounded by 1 and unconditionally
+  type σ: Σ_{complete finite realizable canonical TREES T of type σ} mass(T) — at
+  REV 8 the outer sum runs over complete TREES (all branches terminal; type σ is
+  a function of the TREE, aggregating its branches' outcomes), whose fibers
+  {f : T_can(f) = T} are DISJOINT because T_can is a CHOICE-FREE function of f
+  (the rev-7 per-history disjointness citation is retyped: per-SHAPE events are
+  a multiplicity-weighted cover, never a partition — F1); a positive series
+  bounded by 1, unconditionally
   convergent with all rearrangements licit (Tonelli; the rev-3 citation of the
   X.1b-tagged envelope for CONVERGENCE is dropped — the envelope is needed only for
   RATES, in X.2/SQUEEZE) — equals, after grouping by (MENU shape, state type) and
   resumming each parameter set, the σ-component of the solution of (R_e).
+  MULT-ACCOUNTING DUTY (REV 8 — OWNED HERE, per §2's consumer-duty bullet):
+  tree masses decompose into PER-BRANCH Theorem C(b) masses through the C.1.5
+  conditional chain + REL.2(c) sibling independence, and every branch-indexed
+  regrouping below (templates, entrance shapes) is a sum over BRANCHES — the
+  conversion back to f-events/trees happens ONLY at this tree-fiber level;
+  D4R.1-SUM/D4R.4-SUM quantities are consumed as branch-weighted sums, never as
+  f-event masses (mult ≡ 1 instances displayed where claimed).
   *Sketch (REV 5 — `unroll` then `resum` through the CTS):* Theorem C gives
-  mass(η) = ∏ vol(E_fresh); D4R.0/D4R.1 give disjoint exhaustion (canonical
-  fibers — no quotient multiplicity; the pass-1 obstruction-2 aggregation gap is
-  repaired upstream, in [1]); group realized histories by TEMPLATE γ (the CTS path)
-  and height point: per (template, height point) the realized count is the FULL
-  count Ĉ_γ(q) = I^ent_γ·C_γ(q), and the realized MASS is
-  ι_{β₀}·∏(T·g(h_i)) per COMP-h (REV 7, pass-6 critical 2 — the FIXED-HEIGHT
+  mass(η) = ∏ vol(E_fresh) per branch; the tree-fiber partition + the per-branch
+  chain give exhaustion (the pass-1 obstruction-2 aggregation gap is
+  repaired upstream, in [1]); group branches by ENTRANCE SHAPE ε, TEMPLATE γ
+  (the CTS path, single-branch per the §2v branch-cell decision)
+  and height point: per (ε, γ, h) the realized branch count is the FULL
+  count Ĉ_{ε,γ}(q) = I^ent_{ε,β₀}·C_γ(q), and the realized MASS is
+  ι_{e,ε,β₀}·∏(T·g(h_i)) per COMP-h (REV 8 — same ε on mass and count sides,
+  pass-7 critical 1; the FIXED-HEIGHT
   identity: at a height point the step factor is the monomial weight g, NEVER
   the resummed G; the initial factor is never omitted), constant along
   path-length-neutral height
@@ -1133,14 +1352,21 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   then re-summed them — pass-6 critical 2. Exact
   rational summability of each fixed path does NOT imply generation by a fixed
   one-step matrix; the factorization through the retained state is HMC's open
-  duty); the DEPTH direction is the regular path
+  duty); THEN the entrance-shape sum via ENT-AGG/(COMP-AGG) — Σ_ε ι_{e,ε,β₀}
+  = ι_{e,β₀} against the entrance-independent continuation ((iv)-REP), the ONE
+  place the cell-aggregated ι_e is formed (REV 8); the DEPTH direction is the
+  regular path
   language of the finite CTS automaton — a depth-k chain = the k-fold matrix
   product (RS.0), and the geometric FIXPOINT (I − K_e)^{−1} is the block solve, not
   a new sum; positivity licenses every regrouping (Tonelli).
 - **RS.2 (coefficient p-independence).** Every coefficient of (R_e) is one fixed
   element of ℚ(q): numerators from CTS-M(iv)-POLY (polynomial table entries at
   degree ≤ W_loc(m), cell sizes at degree ≤ W_state(s)), the CTS-M(iii)
-  initial vectors, and the ENT-COUNT entrance polynomials (REV 7);
+  initial vectors — whose ℚ(q)-membership is the CITED conclusion INIT-RAT
+  (REV 8, pass-7 concern 1: previously assumed; now a displayed CTS-M(iii)
+  burden — finite entrance-shape family, per-shape ENT-COUNT polynomials at
+  degree ≤ W_ent(ε), XHD-s shallow height sums) — and the per-shape ENT-COUNT
+  entrance polynomials;
   denominators from the XHD/M4a-X-exact one-step geometric height sums
   (REV 7). REV 2 HONESTY (pass-1
   obstruction 4): this rests on [1v] Theorem VAL (CTS-M form) — it does NOT follow
@@ -1271,7 +1497,12 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   names): p = 2, monic sextics, root Newton side with residual R₀ = ψ²·χ (ψ = z²+z+1;
   χ a monic quadratic coprime to ψ) — the continuing ψ-cluster's vtx = χ(α) ∈ F_4ˣ
   GENUINELY VARIES across VAL.1 twisted cells as χ ranges. Seal: the per-τ
-  conditional next-move rows from RS.PRE/M2. Census: exhaustive CONDITIONED CYLINDERS
+  conditional next-move rows from CTS-M(iv) IN ITS [1v]-COND FORM (GOVERNANCE
+  NOTE, REV 8 — pass-7 concern 4: the sealed rows are definable from CTS-M(iv)'s
+  conditional (T·G)-rows alone; the rev-7 attribution "from RS.PRE/M2" made the
+  seal formally depend on [3]/RS.PRE, an unaccepted LATER note in the acceptance
+  order — RS.PRE consumes the SAME rows downstream, and the seal depends on no
+  [3] text). Census: exhaustive CONDITIONED CYLINDERS
   (root stratum pinned, fresh digits free), N = 8, designed so each state's cylinder
   is ≤ 2^28 (feasible: the first probe's 2^26 box censused in 3 s; ≤ 12 s/state on
   40 workers, ≤ 12 states — minutes); states in ≥ 2 distinct twisted cells AND ≥ 2
@@ -1410,8 +1641,10 @@ hypothesis and ESCAPE supplying Neumann convergence.
 - **SQ.0 (DECIDED-BUDGET — clauses (c)/(d) REDONE at REV 5; pass-4 critical 5: the
   rev-4 single-ladder bound n!·w*(N) bounded ONE monotone ladder while a history
   can contain several keys, branches, and ladder restarts, and (d)'s template form
-  did not follow from C_H(p)·p^{nN−A(H)} ∈ ℤ).** If f's canonical history has
-  decision threshold ≤ N, then — proved from DECISION STABILITY (Thm 2.1 / X.2
+  did not follow from C_H(p)·p^{nN−A(H)} ∈ ℤ).** If f's canonical TREE T_can(f)
+  has decision threshold ≤ N (REV 8 — every branch terminal, each budget below
+  read PER BRANCH and the family bound over the finitely many branches of a
+  degree-n tree), then — proved from DECISION STABILITY (Thm 2.1 / X.2
   PROGRESS mechanics), never from the tail: (a) every height ≤ h*(N) (each move
   constrains levels ≥ an affine function of its heights, and all constrained levels
   are ≤ N); (b) every key weight ≤ w*(N) (a key's weight is a consumed side value,
@@ -1452,10 +1685,15 @@ hypothesis and ESCAPE supplying Neumann convergence.
   around it. SCOPE: a candidate-refuter only — the existential TRACK-COUNT
   statement (some L(n) exists) is decided by the charging derivation alone,
   never by the probe.
-- **SQ.1 (budgeted covering — finiteness re-cited at REV 4).** Every f in the
-  level-N box is in exactly one of: (a) the stratum of one complete realizable
-  canonical history with threshold ≤ N, or (b) Undec(N). PARTITION (not mere
-  covering): D4R.0, with the prefix/complete distinction per §2. FINITENESS of the
+- **SQ.1 (budgeted covering — finiteness re-cited at REV 4; TREE-FIBER form at
+  REV 8).** Every f in the
+  level-N box is in exactly one of: (a) the T_can-FIBER of one complete finite
+  realizable canonical TREE (all branches terminal) with threshold ≤ N, or (b)
+  Undec(N). PARTITION (not mere covering): tree fibers partition because T_can
+  is a CHOICE-FREE function of f ([1] L2) — NEVER via per-shape strata, which
+  are a multiplicity-weighted cover (F1); the fiber identification is D4R.0's
+  digit-cell partition + L6/L7 tree membership, with the prefix/complete
+  distinction per §2. FINITENESS of the
   family in (a): SQ.0 ALONE — the rev-3 conjunction (box-level disc bound + X.1b
   stall cap) is retired, and SQ.1's CONDITIONAL-ON-X.1b tag is REMOVED. Then strong
   induction on the remaining degree budget, per the decomposition note 3.4′(a).
@@ -1474,14 +1712,22 @@ hypothesis and ESCAPE supplying Neumann convergence.
 - **SQ.3 (the lower bound).** decided_σ(N) ≥ (R_σ(p) − env(N))·p^{nN}: box partition
   p^{nN} = Σ_τ decided_τ(N) + undec(N), apply SQ.2 to every τ ≠ σ, RS.4's checksum,
   and X.2's envelope.
-- **SQ.4 = THEOREM U (conditional qualifier INLINE at REV 4, pass-3 concern 5).**
+- **SQ.4 = THEOREM U (conditional qualifier INLINE at REV 4, pass-3 concern 5;
+  ledger COMPLETED at REV 8, pass-7 critical 2).**
   ρ_σ := lim decided_σ(N)/p^{nN} exists and equals R_σ(p) for every p; R_σ ∈ ℚ(q) is
   the p-independent solution of (R_e); Σ_σ R_σ = 1. Assembled from SQ.2 + SQ.3 +
-  X.2 — hence CONDITIONAL on ESCAPE(E0) and on X.1b (via X.2's env constants) and
-  on K_e's nine RS.PRE inputs (XHD = M4a-X, D4R.0, CTS-M(iv)-PART,
+  X.2 — hence CONDITIONAL on the CAPSTONE LEDGER, all of: ESCAPE(E0); X.1b (via
+  X.2's env constants);
+  K_e's nine RS.PRE inputs (XHD = M4a-X, D4R.0, CTS-M(iv)-PART,
   CTS-M(iv)-REP, CTS-M(iv)-MEAS, CTS-M(v) HMC, CTS-M(ii) ACT, CTS-M(iii)
-  INIT + ENT-COUNT, the CTS-M(vi) COMP-typing duty — the REV 7 nine-input
-  ledger, pass-6 critical 4) until each closes; the
+  INIT + ENT-COUNT in the REV 8 per-entrance-shape form with ENT-AGG/INIT-RAT,
+  the CTS-M(vi) COMP-typing duty — the nine-input
+  ledger, pass-6 critical 4); PLUS the two items the nine-input ledger does not
+  carry but this theorem consumes (REV 8 — pass-7 critical 2): CTS-M(iv)-POLY
+  (through RS.2 — without it R_σ ∈ ℚ(q) and the p-independence clause are
+  unfounded) and TRACK-COUNT with its D(n)/positive-genuine-increment
+  companion duties (through SQ.0/SQ.1 — without them the finite-level squeeze
+  has no finite decided family) — until each closes; the
   capstone statement and its
   acceptance record carry these tags verbatim (§7's acceptance-record rule). State
   with the honest normalization sentence (monic-box density; projective/palindromy
@@ -1541,12 +1787,17 @@ Per note, in order; no step may be skipped, no note trusted early:
    conclusive — the roster may not claim a probe refutes an existential open
    kernel (REV 7, pass-6 concern 3; the one exception is ESCAPE-probe's
    symbolic closed-class layer, whose finding refutes E0 itself at that p).
-   Gate roster at REV 7: D4-n3, VALUE-Fq (24 q-points, + the CTS-M
+   Gate roster at REV 8: D4-n3 + the QUEUED m ≥ 2 MULTIPLICITY gate (a sealed
+   mult_P̂ ≥ 2 instance testing D4R.1-SUM vs -EV — §2), VALUE-Fq (24 q-points,
+   + the CTS-M
    TABLE layer: displayed cell predicates, cell sizes at W_state bounds, full T
    tables, row-partition, WEIGHTED representative-independence, entrance-count
-   factors I^ent with per-family identifications displayed, empty-cell zero
+   factors I^ent_{ε,β₀} at sealed entrance shapes with per-family
+   identifications and W_ent(ε) displayed, empty-cell zero
    checks) + VALUE-p (+ JOINT-probe + COMPOSE-probe
-   with the Ĉ = I^ent·∏T count layer + HMC-probe for CTS-M(v)),
+   with the Ĉ_{ε,γ} = I^ent_{ε,β₀}·∏T count layer + HMC-probe for CTS-M(v),
+   respecified two-layer at REV 8 — COMP-h typing layer + fixed-h₁ conditional
+   step-2-law layer),
    MENU-n3 (two-sided parameter exactness — XHD-d's refuter), REL-n4,
    EXHAUST-n3 (+ STALL-probe, candidate-s(n) scope),
    STATE-probe-2 (blocks [2b] AND [3]) + ESCAPE-probe (REV 7 two-layer:
@@ -1555,13 +1806,16 @@ Per note, in order; no step may be skipped, no note trusted early:
    + the wild-p ACTIVE-VALUE agreement checks), SQUEEZE-n3 (+ TRACK-probe,
    candidate-L(n) scope, for SQ.0's TRACK-COUNT). Gate scripts live in `verification/`, predictions in
    `verification/*_SEALED_PREDICTIONS_<date>.md`.
-   ACCEPTANCE-RECORD RULE (REV 4, pass-3 concern 5): every acceptance record names
+   ACCEPTANCE-RECORD RULE (REV 4, pass-3 concern 5; ledger completed at REV 8,
+   pass-7 critical 2): every acceptance record names
    its note's open conditions INLINE — RS.4, [3], [4], and the capstone may not be
-   recorded unconditional while ESCAPE(E0), WEIGHT-CHARGE (X.1b), TRACK-COUNT,
+   recorded unconditional while ESCAPE(E0), WEIGHT-CHARGE (X.1b), TRACK-COUNT
+   (+ its D(n)/positive-genuine-increment companions), CTS-M(iv)-POLY,
    or any RS.PRE
    input (XHD = M4a-X, D4R.0, CTS-M(iv)-PART, CTS-M(iv)-REP = M2(ii),
-   CTS-M(iv)-MEAS, CTS-M(v) HMC, CTS-M(ii) ACT, CTS-M(iii) INIT + ENT-COUNT,
-   the CTS-M(vi) COMP-typing duty — the REV 7 NINE-input ledger, pass-6
+   CTS-M(iv)-MEAS, CTS-M(v) HMC, CTS-M(ii) ACT, CTS-M(iii) INIT + ENT-COUNT
+   in the REV 8 per-entrance-shape form (with ENT-AGG and INIT-RAT),
+   the CTS-M(vi) COMP-typing duty — the NINE-input ledger, pass-6
    critical 4) is open; and [1v]'s record states its LEVEL — [1v]-COND
    (GIVEN XHD) vs [1v]-FULL (XHD discharged by [2b]) — explicitly (REV 7,
    pass-6 critical 1). A record lacking its
@@ -1690,8 +1944,9 @@ certified perimeter.
 
 ## 9. Effort map (REV 3 — for scheduling, not for skipping)
 
-[1] D4-R: 1 unit (restatement + the PARTITION kernel with three named obligations,
-maximal-run form; DRAFT-CLEARED first, §1). [2a] SPECIES: 1 unit (M1 + M5). [1v]
+[1] D4-R: 1 unit (drafted to MOVES §D4-R rev 6 — branch-tree form; kernel D4R.0-K
+open; awaiting its fresh dual pass, §1). [2a] SPECIES: 1 unit (M1 + M5,
+branch-aware per REV 8 — CLEARED-AS-RESTATED, drafting may start). [1v]
 VALUE: 4.5 units (VAL.1 + the CTS-M build — the displayed partitions, ACT, INIT,
 STEP, the HMC kernel — with the full tables + the
 widened 24-point gates with the TABLE layer + JOINT-probe + COMPOSE-probe +
@@ -2083,3 +2338,86 @@ named open burden on the count side (its failure mode — a non-polynomial or
 misidentified entrance count — is R1's channel, adjudicated under (†) at
 W_ent(γ)); XHD is the single named interface whose delivery unblocks
 [1v]-FULL, so the campaign's critical path is [1] → [2a] → [1v]-COND → [2b].
+
+---
+
+## REV 8 RECORD (2026-07-26) — response to the pass-7 structural review + the MOVES §D4-R rev-6 F1 inheritance
+
+*(Two input streams. (1) ASSEMBLY_PLAN_PASS7_2026-07-26.md: 2 critical
+obstructions, 4 concerns, verdict UNSOUND — the verifier's closing: the defects
+are the mismatched entrance objects at the CTS-M/COMP boundary and the
+incomplete capstone ledger, NOT the open kernels; pass-6 dispositions re-judged
+C1/C2/K1–K4 GENUINE, C3/C4 PARTIAL — the PARTIAL pair redone here; '[2a]
+SPECIES cleared for drafting' noted. (2) The §D4-R REV 6 RECORD in
+MOVES_2026-07-24.md: the Fable F1 puncture forced §D4-R onto the BRANCH-TREE
+architecture, and its consumer-duty and (3i)-reconciliation items were QUEUED
+for this revision. C = critical, K = concern, F = F1-inheritance item.)*
+
+**Build I — the F1 inheritance (branch trees plan-wide).** The rev-5/7 single
+maximal run H_can^max does NOT exist (the descended factor ψ and, at multi-side
+polygons, the side are BRANCH data); "the polygon and side patterns are
+FUNCTIONS of f, so distinct node data have disjoint strata" — asserted by this
+plan's §2 through rev 7 — is REFUTED (n = 4, p = 5, cell (4,3,3,4),
+R₀ = (z−1)²(z−2)²: one tree, two same-shape branches, literally equal strata).
+
+| F-item | Disposition at REV 8 |
+|---|---|
+| F1 roster | §2 rebuilt to the MOVES rev-6 lemma set: T_can(f) choice-free/total (L2); digit-cell partition + branch sets as CELL data (L5/D4R.0 — exclusivity survives at the DIGIT-CELL level only); D4R.1-SUM (exact, each summand Theorem C(b)) + D4R.1-EV (≤, equality iff mult_P̂ ≡ 1); D4R.2 = union bound + the M-CARRYING pool bound; D4R.4-SUM/-EV; kernel D4R.0-K = L1 totality + L5 exhaustiveness |
+| F1 consumer duty | Shape events = a multiplicity-weighted COVER (Σ_P̂ μ(P̂) may exceed 1); OWNERSHIP displayed in §2: [1] owns the sum/event laws, [3] RS.1 owns MULT-ACCOUNTING (tree-fiber partition + per-branch C.1.5 chain + REL.2(c)), every other consumer declares SUM vs EVENT per use; (†-AGG) gains MULT as its SEVENTH exposed input; SQ.1 re-based on T_can-fibers (choice-free ⟹ genuine partition) |
+| F1 [2a] | Catalogue objects BRANCH shapes (read off one branch, never off f); counts through the catalogue are branch-weighted; mult-accounting duty stated in [2a] with its owners; Out(s) lists a cell's FULL branch set — see [2a]'s CLEARED-AS-RESTATED declaration (§3) |
+| F1 CTS cells | BRANCH-CELL DECISION displayed at CTS-S (§2v): a cell is a BRANCH-cell — the CTS walks single branches (consistent with [1v]'s per-representative tables and §C's single-branch Theorem C); f-cells with set-valued transitions REJECTED (no §C mass theorem for joint-over-branch loci — the same ground on which MOVES rejected multiset prefixes); branching + multiplicity live ONLY in FAM (SHALLOW legs, RS.1 tree assembly) |
+| F1 (3i) queue item | The plan reconciliation QUEUED in MOVES D4-R.3 is folded in: §2 D4R.2 now states the M-carrying D4R.2′ (C_P̂ ≤ M(P̂)·p^{W(P̂)}, M(P̂) ≤ n^{|P̂|} p-free); "(3i) verbatim" WITHDRAWN plan-wide (§1 bullet, §2); every (3i)-consumer carries M(P̂) or displays a per-consumer M = 1 discharge |
+| F1 gate | D4-n3's instance has mult_P̂* ≡ 1 — the m ≥ 2 regime is NOT exercised; the rev-6 MULTIPLICITY GATE is QUEUED and added to the §7 roster |
+| F1 perimeter | §0 carries the (SAE) caveat: [1] reads §C realizability as (NA)+(HV)+(SAE); §C's own repair QUEUED, [1] conditional on it |
+
+**Build II — the entrance-shape refinement (the pass-7 interface repair).**
+
+| Finding | Verdict on rev 7 | REV 8 disposition |
+|---|---|---|
+| C1 INIT/ENT-COUNT/COMP mix entrance granularities (I^ent shape-refined vs ι cell-aggregated; per-shape exponents A differ) | COMP-h pairs mismatched objects; (†-AGG) normalization unfounded | REFINEMENT CHOSEN over aggregation (different A(ε) admit no common cell-wide normalization on the count side; the mass side aggregates for free): CTS-M(iii) rebuilt with PRIMITIVES ι_{e,ε,β₀} and I^ent_{ε,β₀} per entrance shape ε (a shallow [1]-shape-prefix, finite family up to heights via [2a]); COMP-h/COMP-Σ stated PER (ε, γ, h) — like with like, same ε both sides; the cell aggregate ι_{e,β₀} DERIVED by the displayed ENT-AGG lemma (masses add; continuation entrance-independent by (iv)-REP), consumed only in FAM via (COMP-AGG); (†-AGG)'s decided_σ(N) restated as a sum over (ε, γ) pairs, each summand at its OWN normalization q^{nN−A(ε)−A(γ)}; W_ent CONSTRUCTED: W_ent(ε) = Σ_{r ∈ reads(ε)} w_r·d_r, the [1] pool dimension of ε, displayed per shape (also closes K2); RS.1/RS.2/VALUE-Fq/COMPOSE-probe propagated |
+| C2 SQ.4's inline ledger omits iv-POLY + TRACK-COUNT | capstone conditionality understated | SQ.4 now cites the CAPSTONE LEDGER: E0 + X.1b + the nine RS.PRE inputs + CTS-M(iv)-POLY (via RS.2 — R_σ ∈ ℚ(q)) + TRACK-COUNT with the D(n)/positive-genuine-increment companions (via SQ.0/SQ.1); §7's acceptance-record rule extended to match |
+| K1 ι_e ∈ ℚ(q)^{𝒞_n} never concluded; RS.2 assumes it | coefficient closure gap | INIT-RAT named as a CTS-M(iii) burden: ι assembled as the displayed finite-shape sum of ENT-COUNT polynomials × q^{−A(ε,h)} with XHD-s shallow height sums ⟹ ι_e ∈ ℚ(q)^{𝒞_n}; RS.2 CITES it |
+| K2 W_ent construction undisplayed | degree bound unanchored | Constructed per shape (see C1); per-shape bounds remove the cross-shape compatibility question — no common W_ent across shapes is needed or claimed |
+| K3 HMC-probe mixes fixed and resummed objects | probe could recreate the height-typing error | Respecified TWO-LAYER (§2v (v)): (a) COMP-h typing layer — fixed (h₁, h₂) masses vs ι_{e,ε,β₀}·T·g(h₁)·T·g(h₂), g only; (b) HMC layer — the CONDITIONAL step-2 domain/law at each fixed h₁, h₁-independence given the retained state; G appears only after the h₂-sum, h₁ never summed |
+| K4 [2b] internal order + STATE-probe-2 governance | cycle-drift risk | INTERNAL PROOF ORDER OF [2b] displayed and binding (§3): (1) XHD first, no G-bearing CTS-M clause cited; (2) instantiate the conditional theorem, discharging XHD; (3) only then REP/M2(ii) close counts — M4b's sentence explicitly staged; STATE-probe-2's seal re-attributed to CTS-M(iv)'s [1v]-COND rows (no dependence on unaccepted [3] text) |
+| Fresh sweep: ι "ROW vector" vs ι^T | notational contradiction | ONE convention fixed: ι_e is the entrance COLUMN vector acting once on the left via ι_e^T; "row" retired (CTS-M(vi), RS.PRE) |
+
+**[2a] SPECIES — CLEARED-AS-RESTATED (the drafting declaration).** Pass 7
+cleared [2a] for drafting; the F1 inheritance changed its objects; §3 restates
+the spec BRANCH-AWARE (branch shapes read off single chains of T_can(f);
+catalogue assigns no count; mult-accounting duty stated with owners [1]/[3];
+Out(s) menus list full branch sets; the entrance-shape family {ε} delivered as
+a sub-catalogue). The clearance CARRIES OVER to the restated spec: [2a]
+drafting may start now that REV 8 has landed.
+
+**The DAG after REV 8 (unchanged, ACYCLIC):**
+[1] → [2a] → [1v]-COND → [2b] → [1v]-FULL → { [2r] ∥ [5] } → [3] → [4], §C and
+decomp §3 feeding [1]/[2a]/[2r]/[5] as before. No node or edge changes; the
+acceptance events and their order are rev 7's.
+
+**Open kernels after REV 8 (each with its refuter/gate):** D4R.0-K = L1
+totality + L5 digit-cell exhaustiveness, branch-tree form (D4-n3 + the QUEUED
+m ≥ 2 multiplicity gate); CTS-M(i)/(ii)/(iii incl. per-shape ENT-COUNT,
+ENT-AGG, INIT-RAT)/(iv) GIVEN XHD + VAL.1 (VALUE-Fq TABLE layer with sealed
+per-shape entrance counts; VALUE-p; JOINT-probe; COMPOSE-probe + the
+Ĉ_{ε,γ} = I^ent_{ε,β₀}·∏T layer); CTS-M(v) HMC — OPEN (HMC-probe, two-layer
+REV 8 form); CTS-M(ii-c) ACTIVE-VALUE agreement (RESUM-n3 ACT layer); XHD =
+M4a-X — OPEN, [2b]'s central delivery under the displayed internal proof order
+(MENU-n3 two-sided (iii)); M2 lumpability (STATE-probe-2 — blocks [2b] AND [3],
+seal from [1v]-COND rows); M4b narrowed constancy + M4b-T equivariance
+(VALUE-Fq twisted layers; MENU-n3); REL.1/REL.2 (REL-n4); X.1a (EXHAUST-n3
+(i)/(i′)); X.1b WEIGHT-CHARGE — OPEN (STALL-probe, candidate scope); ESCAPE(E0)
+— OPEN (ESCAPE-probe two-layer; RESUM-n3); RS.0(β) (STATE-probe-2 + RESUM-n3);
+X.2 PROGRESS (EXHAUST-n3 (iv)); TRACK-COUNT — OPEN (TRACK-probe, candidate
+scope) + D(n)/positive-genuine-increment ([4]); SQ.2's no-equal-e-feedback
+check (SQUEEZE-n3); RS.1's mult-accounting regrouping (tree assembly — [3]'s
+draft duty, exercised by RESUM-n3's discriminating layer).
+
+**Wall status after REV 8:** unchanged in substance — no wall demonstrated,
+none closed. R1 open (sealed TABLE-layer gates next; a non-polynomial PER-SHAPE
+entrance count is R1's channel, adjudicated under (†) at W_ent(ε)). R2 open
+(STATE-probe-2 pending). R4 live (WEIGHT-CHARGE open). R9 on the active block
+(E0 open). NEW at REV 8: the branch-multiplicity accounting is a named duty
+with owners, not a wall — but an f-event/branch-sum confusion surviving
+adjudication in a gate (e.g. the queued m ≥ 2 D4 gate) would be structural.
+The critical path is unchanged: [1] → [2a] → [1v]-COND → [2b].
