@@ -1,0 +1,286 @@
+R1 VALUE PROBE (exploration-class, no seal) — spec: ASSEMBLY_PLAN_2026-07-26.md §2v + §8 R1
+q sealed: [2, 3, 4, 5, 7, 8, 9, 11, 13]   extra: [16, 17, 19, 23, 25, 27, 29, 31, 32, 37, 41, 43, 49, 53, 59]
+
+== STAGE 1: exhaustive parent census (FAM-L all q; FAM-Q small q), child counts ==
+q=2   #psi=1    #psi[c1=0]=0    parent totals [1, 1, 1]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FS', 'FG'): 1}
+   joint (fixed x twisted) aeff=2: {('FL', 'FG'): 1}
+q=3   #psi=3    #psi[c1=0]=1    parent totals [12, 12, 12]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 8, ('FS', 'FG'): 4}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 4, ('FS', 'FG'): 4, ('FL', 'FG'): 4}
+q=4   #psi=6    #psi[c1=0]=0    parent totals [54, 54, 54]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 36, ('FS', 'FG'): 18}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 18, ('FS', 'FG'): 18, ('FL', 'FG'): 18}
+q=5   #psi=10   #psi[c1=0]=2    parent totals [160, 160, 160]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 128, ('FS', 'FG'): 32}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 112, ('FS', 'FG'): 16, ('FL', 'FG'): 32}
+q=7   #psi=21   #psi[c1=0]=3    parent totals [756, 756, 756]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 648, ('FS', 'FG'): 108}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 540, ('FS', 'FG'): 108, ('FL', 'FG'): 108}
+q=8   #psi=28   #psi[c1=0]=0    parent totals [1372, 1372, 1372]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 1176, ('FS', 'FG'): 196}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 1029, ('FS', 'FG'): 147, ('FL', 'FG'): 196}
+q=9   #psi=36   #psi[c1=0]=4    parent totals [2304, 2304, 2304]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 2048, ('FS', 'FG'): 256}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 1792, ('FS', 'FG'): 256, ('FL', 'FG'): 256}
+q=11  #psi=55   #psi[c1=0]=5    parent totals [5500, 5500, 5500]  (0.0s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 5000, ('FS', 'FG'): 500}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 4600, ('FS', 'FG'): 400, ('FL', 'FG'): 500}
+q=13  #psi=78   #psi[c1=0]=6    parent totals [11232, 11232, 11232]  (0.1s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 10368, ('FS', 'FG'): 864}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 9504, ('FS', 'FG'): 864, ('FL', 'FG'): 864}
+q=16  #psi=120  #psi[c1=0]=0    parent totals [27000, 27000, 27000]  (0.2s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 25200, ('FS', 'FG'): 1800}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 23400, ('FS', 'FG'): 1800, ('FL', 'FG'): 1800}
+q=17  #psi=136  #psi[c1=0]=8    parent totals [34816, 34816, 34816]  (0.3s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 32768, ('FS', 'FG'): 2048}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 30976, ('FS', 'FG'): 1792, ('FL', 'FG'): 2048}
+q=19  #psi=171  #psi[c1=0]=9    parent totals [55404, 55404, 55404]  (0.4s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 52488, ('FS', 'FG'): 2916}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 49572, ('FS', 'FG'): 2916, ('FL', 'FG'): 2916}
+q=23  #psi=253  #psi[c1=0]=11   parent totals [122452, 122452, 122452]  (0.9s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 117128, ('FS', 'FG'): 5324}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 112288, ('FS', 'FG'): 4840, ('FL', 'FG'): 5324}
+q=25  #psi=300  #psi[c1=0]=12   parent totals [172800, 172800, 172800]  (1.3s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 165888, ('FS', 'FG'): 6912}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 158976, ('FS', 'FG'): 6912, ('FL', 'FG'): 6912}
+q=27  #psi=351  #psi[c1=0]=13   parent totals [237276, 237276, 237276]  (1.8s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 228488, ('FS', 'FG'): 8788}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 219700, ('FS', 'FG'): 8788, ('FL', 'FG'): 8788}
+q=29  #psi=406  #psi[c1=0]=14   parent totals [318304, 318304, 318304]  (2.3s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 307328, ('FS', 'FG'): 10976}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 297136, ('FS', 'FG'): 10192, ('FL', 'FG'): 10976}
+q=31  #psi=465  #psi[c1=0]=15   parent totals [418500, 418500, 418500]  (3.1s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 405000, ('FS', 'FG'): 13500}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 391500, ('FS', 'FG'): 13500, ('FL', 'FG'): 13500}
+q=32  #psi=496  #psi[c1=0]=0    parent totals [476656, 476656, 476656]  (3.6s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 461280, ('FS', 'FG'): 15376}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 446865, ('FS', 'FG'): 14415, ('FL', 'FG'): 15376}
+q=37  #psi=666  #psi[c1=0]=18   parent totals [863136, 863136, 863136]  (6.5s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 839808, ('FS', 'FG'): 23328}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 816480, ('FS', 'FG'): 23328, ('FL', 'FG'): 23328}
+q=41  #psi=820  #psi[c1=0]=20   parent totals [1312000, 1312000, 1312000]  (9.6s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 1280000, ('FS', 'FG'): 32000}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 1249600, ('FS', 'FG'): 30400, ('FL', 'FG'): 32000}
+q=43  #psi=903  #psi[c1=0]=21   parent totals [1592892, 1592892, 1592892]  (11.7s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 1555848, ('FS', 'FG'): 37044}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 1518804, ('FS', 'FG'): 37044, ('FL', 'FG'): 37044}
+q=49  #psi=1176 #psi[c1=0]=24   parent totals [2709504, 2709504, 2709504]  (19.9s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 2654208, ('FS', 'FG'): 55296}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 2598912, ('FS', 'FG'): 55296, ('FL', 'FG'): 55296}
+q=53  #psi=1378 #psi[c1=0]=26   parent totals [3726112, 3726112, 3726112]  (27.6s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 3655808, ('FS', 'FG'): 70304}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 3588208, ('FS', 'FG'): 67600, ('FL', 'FG'): 70304}
+q=59  #psi=1711 #psi[c1=0]=29   parent totals [5755804, 5755804, 5755804]  (42.8s)
+   joint (fixed x twisted) aeff=1: {('FG', 'FG'): 5658248, ('FS', 'FG'): 97556}
+   joint (fixed x twisted) aeff=2: {('FG', 'FG'): 5564056, ('FS', 'FG'): 94192, ('FL', 'FG'): 97556}
+
+== child-count verification ==
+  q=2  monic-exhaustive vs formula: MATCH  
+    irr-count per fixed const c (exhibit; char-structure lives here, cancelled by the free endpoint): {2: 3}
+  q=3  monic-exhaustive vs formula: MATCH  
+  q=3  second psi (2, 2): MATCH
+    irr-count per fixed const c (exhibit; char-structure lives here, cancelled by the free endpoint): {4: 4, 5: 4}
+  q=4  monic-exhaustive vs formula: MATCH  
+  q=4  second psi (3, 3): MATCH
+    irr-count per fixed const c (exhibit; char-structure lives here, cancelled by the free endpoint): {8: 15}
+  q=5  monic-exhaustive vs formula: MATCH  
+  q=5  second psi (4, 2): MATCH
+    irr-count per fixed const c (exhibit; char-structure lives here, cancelled by the free endpoint): {12: 12, 13: 12}
+  q=7  monic-exhaustive vs formula: MATCH  
+  q=7  second psi (6, 6): MATCH
+  q=8  monic-exhaustive vs formula: MATCH  
+  q=8  second psi (7, 5): MATCH
+  q=9  monic-exhaustive vs formula: MATCH  
+  q=9  second psi (8, 5): MATCH
+  q=11 monic-exhaustive vs formula: MATCH  
+  q=13 monic-exhaustive vs formula: MATCH  
+  q=2 LITERAL per-t (all 15 t in F_4[w]-coeff field F_16*): t-independent: True; counts {'lin': 3, 'e2': 3, 'irr': 6, 'split': 3, 'dbl': 3}
+
+fiber-constancy violations on TWISTED cells (expect none): NONE
+closed-form prediction mismatches (expect none): NONE
+
+== STAGE 2: polynomiality verdicts (exact interpolation; rule in docstring) ==
+
+-- parent structure --
+  NPSI                                           UNIVERSAL deg 2 (excess 21): -1/2 q^1 + 1/2 q^2
+  NPSI_c1eq0                                     CHAR-SPLIT: odd deg 1 (excess 17): -1/2 + 1/2 q^1; char2 (5 pts, deg 0): 0
+
+-- FAM-L parent totals + twisted cells --
+  FAML/aeff0/total                               UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff0/twist/FG                            UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff0/twist/FL                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff0/twist/FS                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff1/total                               UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff1/twist/FG                            UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff1/twist/FL                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff1/twist/FS                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff2/total                               UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff2/twist/FG                            UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff2/twist/FL                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff2/twist/FS                            UNIVERSAL deg 0 (excess 23): 0
+
+-- FAM-L parent FIXED cells (frame NOT anchor-aligned) --
+  FAML/aeff0/fixed/FG                            UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff0/fixed/FL                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff0/fixed/FS                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff1/fixed/FG                            CHAR-SPLIT: odd deg 4 (excess 14): 1/2 + -2 q^1 + 3 q^2 + -2 q^3 + 1/2 q^4; char2 (5 pts, deg 4): -1 q^1 + 5/2 q^2 + -2 q^3 + 1/2 q^4
+  FAML/aeff1/fixed/FL                            UNIVERSAL deg 0 (excess 23): 0
+  FAML/aeff1/fixed/FS                            CHAR-SPLIT: odd deg 3 (excess 15): -1/2 + 3/2 q^1 + -3/2 q^2 + 1/2 q^3; char2 (5 pts, deg 3): 1/2 q^1 + -1 q^2 + 1/2 q^3
+  FAML/aeff2/fixed/FG                            FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 4 (excess 3): 1 + -7/2 q^1 + 9/2 q^2 + -5/2 q^3 + 1/2 q^4
+      ('odd', 2): deg 4 (excess 3): 2 + -11/2 q^1 + 11/2 q^2 + -5/2 q^3 + 1/2 q^4
+      [thin classes, no fit attempted: {('char2', 1): [(4, 18), (16, 23400)], ('char2', 2): [(2, 0), (8, 1029), (32, 446865)], ('odd', 0): [(3, 4), (9, 1792), (27, 219700)]}]
+  FAML/aeff2/fixed/FL                            CHAR-SPLIT: odd deg 3 (excess 15): -1/2 + 3/2 q^1 + -3/2 q^2 + 1/2 q^3; char2 (5 pts, deg 3): 1/2 q^1 + -1 q^2 + 1/2 q^3
+  FAML/aeff2/fixed/FS                            FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 3 (excess 4): -1/2 + 3/2 q^1 + -3/2 q^2 + 1/2 q^3
+      ('odd', 2): deg 3 (excess 4): -3/2 + 7/2 q^1 + -5/2 q^2 + 1/2 q^3
+      [thin classes, no fit attempted: {('char2', 1): [(4, 18), (16, 1800)], ('char2', 2): [(2, 0), (8, 147), (32, 14415)], ('odd', 0): [(3, 4), (9, 256), (27, 8788)]}]
+
+-- FAM-L joint matrix (nonzero entries) --
+  FAML/aeff0/joint/FG_FG                         UNIVERSAL deg 4 (excess 19): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAML/aeff1/joint/FG_FG                         CHAR-SPLIT: odd deg 4 (excess 14): 1/2 + -2 q^1 + 3 q^2 + -2 q^3 + 1/2 q^4; char2 (5 pts, deg 4): -1 q^1 + 5/2 q^2 + -2 q^3 + 1/2 q^4
+  FAML/aeff1/joint/FS_FG                         CHAR-SPLIT: odd deg 3 (excess 15): -1/2 + 3/2 q^1 + -3/2 q^2 + 1/2 q^3; char2 (5 pts, deg 3): 1/2 q^1 + -1 q^2 + 1/2 q^3
+  FAML/aeff2/joint/FG_FG                         FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 4 (excess 3): 1 + -7/2 q^1 + 9/2 q^2 + -5/2 q^3 + 1/2 q^4
+      ('odd', 2): deg 4 (excess 3): 2 + -11/2 q^1 + 11/2 q^2 + -5/2 q^3 + 1/2 q^4
+      [thin classes, no fit attempted: {('char2', 1): [(4, 18), (16, 23400)], ('char2', 2): [(2, 0), (8, 1029), (32, 446865)], ('odd', 0): [(3, 4), (9, 1792), (27, 219700)]}]
+  FAML/aeff2/joint/FL_FG                         CHAR-SPLIT: odd deg 3 (excess 15): -1/2 + 3/2 q^1 + -3/2 q^2 + 1/2 q^3; char2 (5 pts, deg 3): 1/2 q^1 + -1 q^2 + 1/2 q^3
+  FAML/aeff2/joint/FS_FG                         FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 3 (excess 4): -1/2 + 3/2 q^1 + -3/2 q^2 + 1/2 q^3
+      ('odd', 2): deg 3 (excess 4): -3/2 + 7/2 q^1 + -5/2 q^2 + 1/2 q^3
+      [thin classes, no fit attempted: {('char2', 1): [(4, 18), (16, 1800)], ('char2', 2): [(2, 0), (8, 147), (32, 14415)], ('odd', 0): [(3, 4), (9, 256), (27, 8788)]}]
+
+-- child counts --
+  CHILD/dbl                                      UNIVERSAL deg 2 (excess 21): -1 + 1 q^2
+  CHILD/e2                                       UNIVERSAL deg 2 (excess 21): -1 + 1 q^2
+  CHILD/irr                                      UNIVERSAL deg 4 (excess 19): -1/2 q^2 + 1/2 q^4
+  CHILD/lin                                      UNIVERSAL deg 2 (excess 21): -1 + 1 q^2
+  CHILD/split                                    UNIVERSAL deg 4 (excess 19): 1 + -3/2 q^2 + 1/2 q^4
+
+-- LINKED totals (the C_S(q) of the plan) --
+  LINKED/aeff0/dbl/total                         UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff0/e2/total                          UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff0/irr/total                         UNIVERSAL deg 8 (excess 15): 1/4 q^3 + -3/4 q^4 + 1/2 q^5 + 1/2 q^6 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff0/lin/total                         UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff0/split/total                       UNIVERSAL deg 8 (excess 15): -1/2 q^1 + 3/2 q^2 + -3/4 q^3 + -7/4 q^4 + 2 q^5 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff1/dbl/total                         UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff1/e2/total                          UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff1/irr/total                         UNIVERSAL deg 8 (excess 15): 1/4 q^3 + -3/4 q^4 + 1/2 q^5 + 1/2 q^6 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff1/lin/total                         UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff1/split/total                       UNIVERSAL deg 8 (excess 15): -1/2 q^1 + 3/2 q^2 + -3/4 q^3 + -7/4 q^4 + 2 q^5 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff2/dbl/total                         UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff2/e2/total                          UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff2/irr/total                         UNIVERSAL deg 8 (excess 15): 1/4 q^3 + -3/4 q^4 + 1/2 q^5 + 1/2 q^6 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff2/lin/total                         UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff2/split/total                       UNIVERSAL deg 8 (excess 15): -1/2 q^1 + 3/2 q^2 + -3/4 q^3 + -7/4 q^4 + 2 q^5 + -3/4 q^7 + 1/4 q^8
+
+-- LINKED per fixed cell (stress exhibit) --
+  LINKED/aeff0/dbl/fixed/FG                      UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff0/e2/fixed/FG                       UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff0/irr/fixed/FG                      UNIVERSAL deg 8 (excess 15): 1/4 q^3 + -3/4 q^4 + 1/2 q^5 + 1/2 q^6 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff0/lin/fixed/FG                      UNIVERSAL deg 6 (excess 17): 1/2 q^1 + -3/2 q^2 + 1 q^3 + 1 q^4 + -3/2 q^5 + 1/2 q^6
+  LINKED/aeff0/split/fixed/FG                    UNIVERSAL deg 8 (excess 15): -1/2 q^1 + 3/2 q^2 + -3/4 q^3 + -7/4 q^4 + 2 q^5 + -3/4 q^7 + 1/4 q^8
+  LINKED/aeff1/dbl/fixed/FG                      CHAR-SPLIT: odd deg 6 (excess 12): -1/2 + 2 q^1 + -5/2 q^2 + 5/2 q^4 + -2 q^5 + 1/2 q^6; char2 (5 pts, deg 4): 950272 + -904191 q^1 + 543611/2 q^2 + -30999 q^3 + 1180 q^4
+  LINKED/aeff1/dbl/fixed/FS                      CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  LINKED/aeff1/e2/fixed/FG                       CHAR-SPLIT: odd deg 6 (excess 12): -1/2 + 2 q^1 + -5/2 q^2 + 5/2 q^4 + -2 q^5 + 1/2 q^6; char2 (5 pts, deg 4): 950272 + -904191 q^1 + 543611/2 q^2 + -30999 q^3 + 1180 q^4
+  LINKED/aeff1/e2/fixed/FS                       CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  LINKED/aeff1/irr/fixed/FG                      CHAR-SPLIT: odd deg 8 (excess 10): -1/4 q^2 + 1 q^3 + -5/4 q^4 + 5/4 q^6 + -1 q^7 + 1/4 q^8; char2 (5 pts, deg 4): 690765824 + -649846272 q^1 + 190864736 q^2 + -41478231/2 q^3 + 2845175/4 q^4
+  LINKED/aeff1/irr/fixed/FS                      CHAR-SPLIT: odd deg 7 (excess 11): 1/4 q^2 + -3/4 q^3 + 1/2 q^4 + 1/2 q^5 + -3/4 q^6 + 1/4 q^7; char2 (5 pts, deg 4): 20316160 + -19189760 q^1 + 5682432 q^2 + -2511745/4 q^3 + 44641/2 q^4
+  LINKED/aeff1/lin/fixed/FG                      CHAR-SPLIT: odd deg 6 (excess 12): -1/2 + 2 q^1 + -5/2 q^2 + 5/2 q^4 + -2 q^5 + 1/2 q^6; char2 (5 pts, deg 4): 950272 + -904191 q^1 + 543611/2 q^2 + -30999 q^3 + 1180 q^4
+  LINKED/aeff1/lin/fixed/FS                      CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  LINKED/aeff1/split/fixed/FG                    CHAR-SPLIT: odd deg 8 (excess 10): 1/2 + -2 q^1 + 9/4 q^2 + 1 q^3 + -15/4 q^4 + 2 q^5 + 3/4 q^6 + -1 q^7 + 1/4 q^8; char2 (5 pts, deg 4): 689815552 + -648942081 q^1 + 381185861/2 q^2 + -41416233/2 q^3 + 2840455/4 q^4
+  LINKED/aeff1/split/fixed/FS                    CHAR-SPLIT: odd deg 7 (excess 11): -1/2 + 3/2 q^1 + -3/4 q^2 + -7/4 q^3 + 2 q^4 + -3/4 q^6 + 1/4 q^7; char2 (5 pts, deg 4): 20299776 + -38347775/2 q^1 + 5677471 q^2 + -2509265/4 q^3 + 44581/2 q^4
+  LINKED/aeff2/dbl/fixed/FG                      IRREGULAR (all-pts deg 23, excess 0)
+  LINKED/aeff2/dbl/fixed/FL                      CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  LINKED/aeff2/dbl/fixed/FS                      FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 5 (excess 2): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5
+      ('odd', 2): deg 5 (excess 2): 3/2 + -7/2 q^1 + 1 q^2 + 3 q^3 + -5/2 q^4 + 1/2 q^5
+      [thin classes, no fit attempted: {('char2', 1): [(4, 270), (16, 459000)], ('char2', 2): [(2, 0), (8, 9261), (32, 14746545)], ('odd', 0): [(3, 32), (9, 20480), (27, 6397664)]}]
+  LINKED/aeff2/e2/fixed/FG                       IRREGULAR (all-pts deg 23, excess 0)
+  LINKED/aeff2/e2/fixed/FL                       CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  LINKED/aeff2/e2/fixed/FS                       FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 5 (excess 2): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5
+      ('odd', 2): deg 5 (excess 2): 3/2 + -7/2 q^1 + 1 q^2 + 3 q^3 + -5/2 q^4 + 1/2 q^5
+      [thin classes, no fit attempted: {('char2', 1): [(4, 270), (16, 459000)], ('char2', 2): [(2, 0), (8, 9261), (32, 14746545)], ('odd', 0): [(3, 32), (9, 20480), (27, 6397664)]}]
+  LINKED/aeff2/irr/fixed/FG                      IRREGULAR (all-pts deg 23, excess 0)
+  LINKED/aeff2/irr/fixed/FL                      CHAR-SPLIT: odd deg 7 (excess 11): 1/4 q^2 + -3/4 q^3 + 1/2 q^4 + 1/2 q^5 + -3/4 q^6 + 1/4 q^7; char2 (5 pts, deg 4): 20316160 + -19189760 q^1 + 5682432 q^2 + -2511745/4 q^3 + 44641/2 q^4
+  LINKED/aeff2/irr/fixed/FS                      IRREGULAR (all-pts deg 23, excess 0)
+  LINKED/aeff2/lin/fixed/FG                      IRREGULAR (all-pts deg 23, excess 0)
+  LINKED/aeff2/lin/fixed/FL                      CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  LINKED/aeff2/lin/fixed/FS                      FINE-SPLIT(char,mod3):
+      ('odd', 1): deg 5 (excess 2): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5
+      ('odd', 2): deg 5 (excess 2): 3/2 + -7/2 q^1 + 1 q^2 + 3 q^3 + -5/2 q^4 + 1/2 q^5
+      [thin classes, no fit attempted: {('char2', 1): [(4, 270), (16, 459000)], ('char2', 2): [(2, 0), (8, 9261), (32, 14746545)], ('odd', 0): [(3, 32), (9, 20480), (27, 6397664)]}]
+  LINKED/aeff2/split/fixed/FG                    IRREGULAR (all-pts deg 23, excess 0)
+  LINKED/aeff2/split/fixed/FL                    CHAR-SPLIT: odd deg 7 (excess 11): -1/2 + 3/2 q^1 + -3/4 q^2 + -7/4 q^3 + 2 q^4 + -3/4 q^6 + 1/4 q^7; char2 (5 pts, deg 4): 20299776 + -38347775/2 q^1 + 5677471 q^2 + -2509265/4 q^3 + 44581/2 q^4
+  LINKED/aeff2/split/fixed/FS                    IRREGULAR (all-pts deg 23, excess 0)
+
+-- FAM-Q (EXTRA) parent series --
+  FAMQ/aeff0/fixed/FG                            UNIVERSAL deg 5 (excess 6): 1 q^1 + -7/2 q^2 + 9/2 q^3 + -5/2 q^4 + 1/2 q^5
+  FAMQ/aeff0/fixed/FL                            UNIVERSAL deg 4 (excess 7): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAMQ/aeff0/fixed/FS                            UNIVERSAL deg 4 (excess 7): -1 q^1 + 5/2 q^2 + -2 q^3 + 1/2 q^4
+  FAMQ/aeff0/total                               UNIVERSAL deg 5 (excess 6): -1/2 q^1 + 1/2 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5
+  FAMQ/aeff0/twist/FG                            UNIVERSAL deg 5 (excess 6): 1 q^1 + -7/2 q^2 + 9/2 q^3 + -5/2 q^4 + 1/2 q^5
+  FAMQ/aeff0/twist/FL                            UNIVERSAL deg 4 (excess 7): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAMQ/aeff0/twist/FS                            UNIVERSAL deg 4 (excess 7): -1 q^1 + 5/2 q^2 + -2 q^3 + 1/2 q^4
+  FAMQ/aeff1/fixed/FG                            CHAR-SPLIT: odd deg 5 (excess 2): -1/2 + 5/2 q^1 + -5 q^2 + 5 q^3 + -5/2 q^4 + 1/2 q^5; char2 (4 pts, deg 3): -12800 + 22979/2 q^1 + -6049/2 q^2 + 240 q^3
+  FAMQ/aeff1/fixed/FL                            UNIVERSAL deg 4 (excess 7): -1 q^1 + 5/2 q^2 + -2 q^3 + 1/2 q^4
+  FAMQ/aeff1/fixed/FS                            CHAR-SPLIT: odd deg 4 (excess 3): 1/2 + -2 q^1 + 3 q^2 + -2 q^3 + 1/2 q^4; char2 (4 pts, deg 3): -512 + 479 q^1 + -275/2 q^2 + 13 q^3
+  FAMQ/aeff1/total                               UNIVERSAL deg 5 (excess 6): -1/2 q^1 + 1/2 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5
+  FAMQ/aeff1/twist/FG                            UNIVERSAL deg 5 (excess 6): 1 q^1 + -7/2 q^2 + 9/2 q^3 + -5/2 q^4 + 1/2 q^5
+  FAMQ/aeff1/twist/FL                            UNIVERSAL deg 4 (excess 7): -1/2 q^1 + 3/2 q^2 + -3/2 q^3 + 1/2 q^4
+  FAMQ/aeff1/twist/FS                            UNIVERSAL deg 4 (excess 7): -1 q^1 + 5/2 q^2 + -2 q^3 + 1/2 q^4
+
+-- sigma-aggregates --
+  AGG/dbl                                        UNIVERSAL deg 6 (excess 17): 1 q^1 + -3 q^2 + 2 q^3 + 2 q^4 + -3 q^5 + 1 q^6
+  AGG/e2                                         UNIVERSAL deg 6 (excess 17): 1 q^1 + -3 q^2 + 2 q^3 + 2 q^4 + -3 q^5 + 1 q^6
+  AGG/irr                                        UNIVERSAL deg 8 (excess 15): 1/2 q^3 + -3/2 q^4 + 1 q^5 + 1 q^6 + -3/2 q^7 + 1/2 q^8
+  AGG/lin                                        UNIVERSAL deg 6 (excess 17): 1 q^1 + -3 q^2 + 2 q^3 + 2 q^4 + -3 q^5 + 1 q^6
+  AGG/split                                      UNIVERSAL deg 8 (excess 15): -1 q^1 + 3 q^2 + -3/2 q^3 + -7/2 q^4 + 4 q^5 + -3/2 q^7 + 1/2 q^8
+  AGG_CELL/dbl/FG                                CHAR-SPLIT: odd deg 6 (excess 12): -1/2 + 5/2 q^1 + -4 q^2 + 1 q^3 + 7/2 q^4 + -7/2 q^5 + 1 q^6; char2 (5 pts, deg 4): 1916928 + -3648509/2 q^1 + 548572 q^2 + -62618 q^3 + 2390 q^4
+  AGG_CELL/dbl/FL                                UNIVERSAL deg 0 (excess 23): 0
+  AGG_CELL/dbl/FS                                CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  AGG_CELL/e2/FG                                 CHAR-SPLIT: odd deg 6 (excess 12): -1/2 + 5/2 q^1 + -4 q^2 + 1 q^3 + 7/2 q^4 + -7/2 q^5 + 1 q^6; char2 (5 pts, deg 4): 1916928 + -3648509/2 q^1 + 548572 q^2 + -62618 q^3 + 2390 q^4
+  AGG_CELL/e2/FL                                 UNIVERSAL deg 0 (excess 23): 0
+  AGG_CELL/e2/FS                                 CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  AGG_CELL/irr/FG                                CHAR-SPLIT: odd deg 8 (excess 10): -1/4 q^2 + 5/4 q^3 + -2 q^4 + 1/2 q^5 + 7/4 q^6 + -7/4 q^7 + 1/2 q^8; char2 (5 pts, deg 4): 1401847808 + -1318882304 q^1 + 387411904 q^2 + -168424669/4 q^3 + 1444908 q^4
+  AGG_CELL/irr/FL                                UNIVERSAL deg 0 (excess 23): 0
+  AGG_CELL/irr/FS                                CHAR-SPLIT: odd deg 7 (excess 11): 1/4 q^2 + -3/4 q^3 + 1/2 q^4 + 1/2 q^5 + -3/4 q^6 + 1/4 q^7; char2 (5 pts, deg 4): 20316160 + -19189760 q^1 + 5682432 q^2 + -2511745/4 q^3 + 44641/2 q^4
+  AGG_CELL/lin/FG                                CHAR-SPLIT: odd deg 6 (excess 12): -1/2 + 5/2 q^1 + -4 q^2 + 1 q^3 + 7/2 q^4 + -7/2 q^5 + 1 q^6; char2 (5 pts, deg 4): 1916928 + -3648509/2 q^1 + 548572 q^2 + -62618 q^3 + 2390 q^4
+  AGG_CELL/lin/FL                                UNIVERSAL deg 0 (excess 23): 0
+  AGG_CELL/lin/FS                                CHAR-SPLIT: odd deg 5 (excess 13): 1/2 + -3/2 q^1 + 1 q^2 + 1 q^3 + -3/2 q^4 + 1/2 q^5; char2 (5 pts, deg 4): 16384 + -31745/2 q^1 + 4961 q^2 + -620 q^3 + 30 q^4
+  AGG_CELL/split/FG                              CHAR-SPLIT: odd deg 8 (excess 10): 1/2 + -5/2 q^1 + 15/4 q^2 + 1/4 q^3 + -11/2 q^4 + 4 q^5 + 3/4 q^6 + -7/4 q^7 + 1/2 q^8; char2 (5 pts, deg 4): 1399930880 + -2634116099/2 q^1 + 386863332 q^2 + -168174197/4 q^3 + 1442518 q^4
+  AGG_CELL/split/FL                              UNIVERSAL deg 0 (excess 23): 0
+  AGG_CELL/split/FS                              CHAR-SPLIT: odd deg 7 (excess 11): -1/2 + 3/2 q^1 + -3/4 q^2 + -7/4 q^3 + 2 q^4 + -3/4 q^6 + 1/4 q^7; char2 (5 pts, deg 4): 20299776 + -38347775/2 q^1 + 5677471 q^2 + -2509265/4 q^3 + 44581/2 q^4
+  AGG_PARENT                                     UNIVERSAL deg 4 (excess 19): -1 q^1 + 3 q^2 + -3 q^3 + 1 q^4
+
+== STAGE 3: aggregate-cancellation / wild-p test (plan §8 R1(2),(3)) ==
+tame points (char not in {2,3}): [5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 37, 41, 43, 49, 53, 59]
+  AGG_PARENT                                     tame fit deg 4 (excess 11) -> p=2 pts MATCH | p=3 pts MATCH
+  AGG/lin                                        tame fit deg 6 (excess 9) -> p=2 pts MATCH | p=3 pts MATCH
+  AGG/e2                                         tame fit deg 6 (excess 9) -> p=2 pts MATCH | p=3 pts MATCH
+  AGG/irr                                        tame fit deg 8 (excess 7) -> p=2 pts MATCH | p=3 pts MATCH
+  AGG/split                                      tame fit deg 8 (excess 7) -> p=2 pts MATCH | p=3 pts MATCH
+  AGG/dbl                                        tame fit deg 6 (excess 9) -> p=2 pts MATCH | p=3 pts MATCH
+  AGG_CELL/dbl/FG                                tame fit deg 6 (excess 9) -> p=2 pts DEVIATE [(2, Fraction(-3, 2)), (4, Fraction(-135, 2)), (8, Fraction(-3087, 2)), (16, Fraction(-57375, 2)), (32, Fraction(-983103, 2))] | p=3 pts MATCH
+  AGG_CELL/dbl/FS                                tame fit deg 5 (excess 10) -> p=2 pts DEVIATE [(2, Fraction(3, 2)), (4, Fraction(135, 2)), (8, Fraction(3087, 2)), (16, Fraction(57375, 2)), (32, Fraction(983103, 2))] | p=3 pts MATCH
+  AGG_CELL/e2/FG                                 tame fit deg 6 (excess 9) -> p=2 pts DEVIATE [(2, Fraction(-3, 2)), (4, Fraction(-135, 2)), (8, Fraction(-3087, 2)), (16, Fraction(-57375, 2)), (32, Fraction(-983103, 2))] | p=3 pts MATCH
+  AGG_CELL/e2/FS                                 tame fit deg 5 (excess 10) -> p=2 pts DEVIATE [(2, Fraction(3, 2)), (4, Fraction(135, 2)), (8, Fraction(3087, 2)), (16, Fraction(57375, 2)), (32, Fraction(983103, 2))] | p=3 pts MATCH
+  AGG_CELL/irr/FG                                tame fit deg 8 (excess 7) -> p=2 pts DEVIATE [(2, Fraction(-3, 1)), (4, Fraction(-540, 1)), (8, Fraction(-49392, 1)), (16, Fraction(-3672000, 1)), (32, Fraction(-251674368, 1))] | p=3 pts MATCH
+  AGG_CELL/irr/FS                                tame fit deg 7 (excess 8) -> p=2 pts DEVIATE [(2, Fraction(3, 1)), (4, Fraction(540, 1)), (8, Fraction(49392, 1)), (16, Fraction(3672000, 1)), (32, Fraction(251674368, 1))] | p=3 pts MATCH
+  AGG_CELL/lin/FG                                tame fit deg 6 (excess 9) -> p=2 pts DEVIATE [(2, Fraction(-3, 2)), (4, Fraction(-135, 2)), (8, Fraction(-3087, 2)), (16, Fraction(-57375, 2)), (32, Fraction(-983103, 2))] | p=3 pts MATCH
+  AGG_CELL/lin/FS                                tame fit deg 5 (excess 10) -> p=2 pts DEVIATE [(2, Fraction(3, 2)), (4, Fraction(135, 2)), (8, Fraction(3087, 2)), (16, Fraction(57375, 2)), (32, Fraction(983103, 2))] | p=3 pts MATCH
+  AGG_CELL/split/FG                              tame fit deg 8 (excess 7) -> p=2 pts DEVIATE [(2, Fraction(-3, 2)), (4, Fraction(-945, 2)), (8, Fraction(-95697, 2)), (16, Fraction(-7286625, 2)), (32, Fraction(-502365633, 2))] | p=3 pts MATCH
+  AGG_CELL/split/FS                              tame fit deg 7 (excess 8) -> p=2 pts DEVIATE [(2, Fraction(3, 2)), (4, Fraction(945, 2)), (8, Fraction(95697, 2)), (16, Fraction(7286625, 2)), (32, Fraction(502365633, 2))] | p=3 pts MATCH
+
+========================================================================
+R1 READING (per ASSEMBLY_PLAN_2026-07-26.md §8 R1):
+  per-stratum linked counts C_S(q) universal: True (15 series)
+  sigma-aggregates universal: True; wild-p (2 and 3) on tame interpolation: True
+  fiber constancy on ANCHOR-TWISTED cells: EXACT (all q, all aeff)
+  in-context closed-form predictions: all match
+  NON-universal series (all in the fixed, non-anchor-aligned frame): 32
+  VERDICT: NO-WALL: linked counts universal in q; aggregates match at wild p. CAVEAT for [1v]: VAL.2 must use the ANCHOR-TWISTED stratification — fixed-frame cell counts are provably char-dependent (and q mod 3-dependent at aeff=2).
+========================================================================
+wall time 145s
