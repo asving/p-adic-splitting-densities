@@ -1,4 +1,4 @@
-# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 4)
+# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 5)
 
 *Plan architect: Fable, 2026-07-26. REV 2, same day: rebuilt against the pass-1
 structural review (ASSEMBLY_PLAN_PASS1_2026-07-26.md — 8 critical obstructions,
@@ -12,8 +12,14 @@ REV 4, same day: rebuilt against the pass-3 review (ASSEMBLY_PLAN_PASS3_2026-07-
 (B1) the JOINT-REFINED STATE JREF/τ built ONCE in [1v]/[2b] and consumed by
 MENU/RESUM/SQUEEZE; (B2) the LOC/HIST/FAM three-object separation (§1s) with displayed
 maps; (B3) the ESCAPE kernel replacing the refuted WEIGHT-CHARGE→B(n)-leak route; (B4)
-the truncated aggregate-census protocol replacing the unjustified σ-aggregate (†). The
-REV 4 record is the final table. Directive (Asvin, 2026-07-26): iterate on the math with
+the truncated aggregate-census protocol replacing the unjustified σ-aggregate (†).
+REV 5, same day: rebuilt against the pass-4 review (ASSEMBLY_PLAN_PASS4_2026-07-26.md —
+5 criticals, 7 concerns, verdict UNSOUND) around its DECISIVE ARCHITECTURAL DIRECTIVE:
+the species-relative JREF + position-independent C_{S,τ} picture is REPLACED by the
+globally compatible CELL-TO-CELL POLYNOMIAL TRANSITION SYSTEM (the CTS, §2v) — ONE
+state space of cells, ONE polynomial transition-table family, LOC→HIST→FAM =
+finite-path matrix products followed by positive rational resummation. The REV 5
+record is the final table. Directive (Asvin, 2026-07-26): iterate on the math with
 Codex until either a COMPLETE math proof of wild uniformity exists or the approach is shown
 conclusively to not work. This plan is the architecture for everything between the accepted
 §C (MOVES_2026-07-24.md, passes 12+13 CLEAN) and the endpoint theorem.*
@@ -77,7 +83,8 @@ SPLIT into [2a] SPECIES (the raw catalogue, no strata — feeds [1v]) and [2b] S
 Full edge list (ACYCLIC; every rev-2 edge preserved or corrected): §C → [1], [2a],
 [2r] · decomp §3 → [5] · [1] → [2a] (canonical policy) · [2a] → [1v] (the local
 species Theorem VAL quantifies over — §1s), [2b], [5] (X.1a's species dictionary) ·
-[1v] → [2b] (the JREF cells in M2's τ — REV 4; VAL.2J in M4b), [3] (RS.2) · [2b] →
+[1v] → [2b] (the CTS state (s, α) in M2's τ — REV 5; CTS.4 in M2(ii)/M4b), [3]
+(RS.2 + the K_e assembly) · [2b] →
 [2r] (stratification
 vocabulary), [5] (X.2's envelope constants ← M4a tails — the edge pass-2 found
 missing), [3] · [2r] → [3], [4] · [5] → [3], [4] · [3] → [4].
@@ -87,35 +94,41 @@ missing), [3] · [2r] → [3], [4] · [5] → [3], [4] · [3] → [4].
 - **[2a] SPECIES** — *the raw shape catalogue*: M1's corrected degree bounds + M5
   completeness; NO strata, NO state types — exactly the finite list [1v] needs to
   quantify over, so no cycle. (§3)
-- **[1v] VALUE** — *the linked value-count structure*: VAL.1 with the CORRECTED
-  three-cell example, VAL.2J on the DEFINED joint refinement JREF (REV 4 — no longer
-  "or an explicit common refinement"), the (†) census epistemics restricted to
-  integer-count objects (§1s classes LOC/HIST); risk R1's decision point. PROBE
+- **[1v] VALUE** — *the cell-to-cell polynomial transition system (the CTS — REV 5)*:
+  VAL.1 with the CORRECTED three-cell example; the GLOBAL source partition JREF^src
+  and the transition-table family T with burdens CTS.0–CTS.5 (subsuming the rev-4
+  JREF J1–J3 and VAL.2J); the (†) census epistemics restricted to integer-count
+  objects (§1s classes LOC/template); risk R1's decision point. PROBE
   REPORTED (2026-07-26): NO-WALL, exploration-class, anchor-twist caveat adopted. (§2v)
-- **[2b] STATE-GEOM** — M2 STATE = the JOINT-REFINED type τ (JREF-valued — REV 4;
-  a LUMPABILITY theorem, not label closure), M4a cone geometry + M4a-X EXACT-DOMAIN
-  (REV 4 kernel), M4b per-point counts + M4b-T translation/equivariance; supplies 𝒯_n
-  to [3]. ACCEPTANCE BLOCKED on STATE-probe-2 (REV 4, pass-3 obstruction 7). (§3)
+- **[2b] STATE-GEOM** — M2 STATE = the CTS state τ = (s, α) (REV 5; a LUMPABILITY
+  theorem, not label closure — consumed as CTS.4), M4a cone geometry + M4a-X
+  EXACT-DOMAIN (height directions at fixed template — REV 5 scope, with the
+  affine-semigroup duty), M4b height-translation constancy (NARROWED at REV 5; the
+  loop direction is a matrix power, never a constant) + M4b-T equivariance; supplies
+  𝒯_n to [3]. ACCEPTANCE BLOCKED on STATE-probe-2 (REV 4, pass-3 obstruction 7). (§3)
 - **[2r] REL** — *the relative ledger*: Theorem C over unramified O = W(F_{p^δ}) +
   the four-obligation sub-cluster base change — what β_m(q^δ) MEANS. (§3r)
 - **[5] EXHAUST** — *the discriminant-tail tie-in*, two-track: X.1a genuine-event
   dictionary (per-species GMN index table) + X.1b STALL (an OPEN kernel at REV 3:
   WEIGHT-CHARGE + its own STALL-probe) + X.2 PROGRESS. (§5)
-- **[3] RESUM** — *the depth resummation*: block system over (cluster size e, state
-  type τ); RS.PRE defines the NORMALIZED kernel K_e (substochastic GIVEN three named
-  inputs — REV 4, no longer "by construction" tout court); RS.0 TYPE-CLOSURE
-  (lumpability + height-shift bisimulation); solvability via the ESCAPE kernel
-  (REV 4 — the WEIGHT-CHARGE→B(n) route is STRUCK); p-uniformity from [1v].
-  ACCEPTANCE BLOCKED on STATE-probe-2 (§4).
+- **[3] RESUM** — *the depth resummation*: block system over (cluster size e, CTS
+  state τ); RS.PRE assembles the NORMALIZED kernel K_e from CTS tables × exact
+  height sums (substochastic GIVEN three named inputs); RS.0 TYPE-CLOSURE (CTS.4
+  consumed + height-shift bisimulation); solvability via ESCAPE route E0 (REV 5 —
+  the per-fixed-p spectral argument; the uniform (B, c) variant is a separate
+  optional kernel consumed by nothing); p-uniformity from [1v]. ACCEPTANCE BLOCKED
+  on STATE-probe-2 (§4).
 - **[4] SQUEEZE** — *the two-sided finite-level bound*: decided_σ(N) ≤ R_σ(p)·p^{nN}
   and ≥ (R_σ(p) − env(N))·p^{nN}, hence ρ_σ = R_σ(p) — Theorem U; the domination
   induction over (e, τ) blocks with base-changed hypotheses from [2r]. (§6)
 
 **Execution order:** [1] → [2a] → [1v] → [2b] → { [2r] ∥ [5] } → [3] → [4], with
-X.1a/X.1b draftable right after [2a]. DRAFT CLEARANCE (REV 4, pass-3 closing): [1]
-D4-R is cleared to draft FIRST — its partition argument and pool inequality do not
-depend on the unresolved RESUM architecture; its draft must distinguish complete
-histories from prefixes (§2) and prove all three D4R.0 obligations. Both wall probes
+X.1a/X.1b draftable right after [2a]. DRAFT CLEARANCE (REV 4, pass-3
+closing; REAFFIRMED at REV 5 — pass-4 verdict GO): [1] D4-R is cleared to draft
+FIRST — its partition argument and pool inequality do not depend on the unresolved
+RESUM architecture; MANDATORY CORRECTION (pass-4 critical 4): the draft uses maximal
+finite-or-infinite canonical runs H_can^max — never "prefix cylinder = union of
+finite terminating completions" — and follows the pass-4 twelve-lemma roster (§2). Both wall probes
 have ALREADY reported (exploration-class, 2026-07-26; verification/results/): the
 VALUE probe (R1) NO-WALL with the anchor-twist caveat; the STATE probe (R2)
 probe-level NO-WALL with the vtx-rigidity feasibility finding — its sealed gate is
@@ -132,35 +145,54 @@ exhaustive finite-level enumeration or exact F_q counts; sampling survives only 
 labeled consistency layers. And n = 3 alone is NOT enough: a cubic's deg-2 key cannot
 carry μ ≥ 2, so the value-kernel gates run at n = 5 and directly over F_q.
 
-## 1s. The three counting objects — LOC / HIST / FAM (NEW at REV 4; pass-3 obstruction 4: "(†), M4b, and RS.2 refer to different objects under the same C_S notation")
+## 1s. The four counting objects — LOC / realized η / template γ / FAM (REWRITTEN at REV 5; pass-4 critical 3: "H is still used for at least two different mathematical objects", and M4b's position-independent C_{S,τ} contradicted the k-growing degree)
 
-One separation, built once, binding on every note. Three distinct objects, two maps:
+One separation, built once, binding on every note. Four distinct objects, two maps —
+every count now flows through the CTS (§2v):
 
 - **LOC (local move species) m ∈ ℳ_n.** ONE node/move with its linked data: species,
-  (e, h, g, μ, a) bounds, residual shape, the JREF stratum vocabulary (§2v). Finite
-  p-independent list, extracted from [2a]'s shapes. Each m has a FIXED pool dimension
-  W_loc(m). Its count C_m(q) is an integer at every prime power. **Theorem VAL and the
-  (†) rule apply HERE**, per species, at degree bound W_loc(m).
-- **HIST (unrolled finite histories) H.** A shape PLUS a full ℕ-parameter tuple
-  (heights, depths/loop counts k). `unroll`: a JREF-chained sequence of LOC moves ↦ H.
-  Its count C_H(q) = the VAL.2J-iterated product of local counts along the chain —
-  polynomial of degree ≤ W(H) := Σ_moves W_loc, which GROWS with the loop parameters
-  (k loop reads = k fresh pools; pass-3's point). (†) applies to each FINITE H, or to
-  any FINITE explicitly-listed family with a displayed common monomial normalization,
-  at ITS OWN displayed degree bound — never to a completed sum.
-- **FAM (resummed families) β, K_e-entries, R_σ.** `resum`: a per-(shape, type)
-  cone-lattice sum of HIST masses ↦ an element of ℚ(q) with geometric denominators
-  (1 − q^{−a}). NOT integer-valued, NOT degree-bounded, NOT subject to (†). Tested
-  only via the truncated-census protocol (§2v (†-AGG)) or the two-sided SQUEEZE
-  brackets — never by interpolation.
+  (e, h, g, μ, a) bounds, residual shape. Finite p-independent list from [2a]. Each m
+  has a FIXED pool dimension W_loc(m). Its counting content is its BLOCK of CTS
+  transition-table entries T_{m,o}^{α,β}(q) (§2v) — polynomials of degree ≤ W_loc(m),
+  integer-valued at every prime power. **Theorem VAL LOCAL and the (†) rule apply
+  HERE**, per table entry and per row, at degree bound W_loc(m).
+- **REALIZED history/prefix η (lift-carrying).** Actual node VALUES and canonical
+  lifts — Theorem C's object, [1]'s object. Masses attach to η; Pref(P̂) collects the
+  realized prefixes of one shape prefix P̂, counted by C_P̂(p) = #Pref(P̂) in [1].
+  NEVER written H when a template is meant (pass-4 critical 3's demanded split; H is
+  reserved for complete finite terminal realized histories).
+- **TEMPLATE γ (value-forgotten finite path).** A finite PATH in the CTS: a source
+  cell plus a sequence of (move species, outcome, target cell) steps — heights
+  retained as ℕ-parameters, values forgotten. `unroll`: a JREF^src-chained move
+  sequence ↦ γ. Its realization count is the PATH PRODUCT
+  C_γ(q) = ∏_i T_{m_i,o_i}^{β_{i−1},β_i}(q) — a DEFINED matrix-product operation
+  (VAL CHAIN, §2v), polynomial of degree ≤ W(γ) := Σ_i W_loc(m_i), which GROWS with
+  path length: a k-loop template is a k-step path with k fresh pools and a k-fold
+  product — NEVER one position-independent C_{S,τ} (that claim is STRUCK at REV 5).
+  (†) applies to each FINITE γ, or to any FINITE explicitly-listed family with a
+  displayed common monomial normalization, at ITS OWN displayed degree bound — never
+  to a completed sum.
+- **FAM (resummed families) β, K_e-entries, R_σ.** `resum`: templates form the
+  REGULAR LANGUAGE of the finite CTS automaton; the depth direction resums as the
+  matrix fixpoint (I − K_e)^{−1} (Neumann series of path products), and the height
+  ℕ-parameters at each step resum as geometric series over M4a-X-exact congruence
+  sublattices with ratio q^{−(positive weight)} — positive rational resummation into
+  ℚ(q) with geometric denominators (1 − q^{−a}). NOT integer-valued, NOT
+  degree-bounded, NOT subject to (†). Tested only via the truncated-census protocol
+  (§2v (†-AGG)) or the two-sided SQUEEZE brackets — never by interpolation.
 
-**Notation rule (binding):** C_m = LOC counts; C_H (and C_{S,τ} at a fixed lattice
-point) = HIST counts; β/K/R = FAM. Any statement using "C_S" must say which class it
-means. (†) claims outside LOC/HIST are void. RS.2's matrix entries are FAM objects
-assembled from LOC counts × M4a-X-exact geometric sums; M4b's per-point counts are
-HIST-at-a-point; the raw catalogue [2a] indexes shapes, and assigns NO count.
+**Notation rule (binding, tightened at REV 5):** T entries and their rows = LOC;
+C_P̂(p) = #Pref(P̂), counts of REALIZED prefixes ([1] only, evaluated at p); C_γ =
+template path products; β/K/R = FAM. The symbol C_{S,τ} is RETIRED — every former
+use is either a table entry or a path product C_γ (per-template, path-length-
+dependent); a per-point count at a lattice point is C_{γ(point)}(q), constant only
+along the HEIGHT directions through that point (M4b, narrowed — §3), never in the
+loop direction. Any statement using "C_S" must say which class it means. (†) claims
+outside LOC/template are void. RS.2's matrix entries are FAM objects assembled from
+LOC tables × M4a-X-exact geometric sums; the raw catalogue [2a] indexes shapes, and
+assigns NO count.
 
-## 2. NOTE [1] D4-R — the per-shape-prefix mass law (REV 3: canonical policy, Z = ⊤, three-obligation kernel)
+## 2. NOTE [1] D4-R — the per-shape-prefix mass law (REV 3: canonical policy, Z = ⊤, three-obligation kernel; REV 5: MAXIMAL-RUN interface alignment ONLY — the GO stands, the concurrent draft binds to the pass-4 twelve-lemma roster)
 
 **What D4 was.** Decomposition note (3i): for class-3 read-prefixes P,
 μ(P) ≤ p^{−A_net(P)}, A_net(P) := A(P) − W(P), with A(P) the ledger exponent and
@@ -175,25 +207,40 @@ no constraint, vol(⊤) = 1 — NOT the empty locus (which has volume 0); every 
 **Key definitions (REV 2 — the transport quotient is RETIRED; pass-1 obstruction 2:
 lift-translation gives equal mass for TRANSPORTED pairs, never a license to discard
 all but one representative while computing the mass of a union).**
-- CANONICAL-POLICY HISTORY: the classifier run with the (S6b) offset-P-lift realizer at
-  every recentering (already the named canonical choice in §C C.0) is a deterministic
-  TOTAL map f ↦ H_can(f) on terminating f. Hist(P̂) := { canonical-lift realizable
-  histories H with shape P̂ } — a literal SET of histories, NO quotient. Lift-transport
-  is demoted to a symmetry remark (MENU M3); nothing counts through it.
+- CANONICAL-POLICY HISTORY (MAXIMAL-RUN FORM — REV 5 interface alignment, pass-4
+  critical 4: a finite prefix cylinder can contain inputs whose canonical run is
+  infinite, so the classifier must be totalized BEFORE termination is invoked): the
+  classifier run with the (S6b) offset-P-lift realizer at every recentering (already
+  the named canonical choice in §C C.0) assigns to EVERY f its unique MAXIMAL
+  canonical run H_can^max(f) — finite terminal or infinite, a deterministic total
+  object; H_can(f) denotes its value on terminating f. Pref(P̂) := the FINITE set of
+  realized lift-carrying PREFIXES η with shape prefix P̂ (the former Hist(P̂),
+  renamed per §1s — never a set of terminal completions). Lift-transport is demoted
+  to a symmetry remark (MENU M3); nothing counts through it.
 - SHAPE-PREFIX P̂: a history prefix with node VALUES forgotten — species, (e, h, g, μ, a),
   strides, residue degrees w_r retained; the side-digit tuples (d_j) and lifts forgotten.
-- C_P̂(p) := #Hist(P̂) — a COUNT; realizability = (NA)/(HV) per node. NO uniformity or
-  polynomial structure in q is claimed in this note (that is [1v]'s burden).
+- C_P̂(p) := #Pref(P̂) — a COUNT of realized prefixes; realizability = (NA)/(HV) per
+  node. NO uniformity or polynomial structure in q is claimed in this note (that is
+  [1v]'s burden). DRAFT SPEC (binding for the concurrent draft): the pass-4
+  twelve-lemma roster — canonical-choice totality, maximal canonical run, the
+  three-level objects P̂/η/H, common-frame coherence, next-outcome totality and
+  exclusivity, realized-prefix cylinder identification, complete-history fiber
+  identification, finite value-prefix lemma, shape-constant fresh volume, exact
+  prefix mass law, pool encoding/bound, uniform finite-level realization.
 
 **Load-bearing lemmas.**
 - **D4R.0 (PARTITION — promoted kernel; pass-1 concern 3).** On every state cylinder
   Σ_i of a canonical prefix, the strata of the possible next nodes ν_{i+1} PARTITION
   Σ_i: the frame-(i+1) development's polygon and side patterns are FUNCTIONS of f, so
   distinct node data have disjoint strata and every f realizes exactly one outcome (or
-  terminates); consequently — WITH THE PREFIX/COMPLETE DISTINCTION DISPLAYED (REV 4,
-  pass-3 concern 1) — for a COMPLETE history H, S(H, ⊤) = {f : H_can(f) = H} (a fiber);
-  for a PREFIX P, S(P, ⊤) = {f : P ⪯ H_can(f)} (a prefix-fiber — the union of the
-  fibers of all completions). Theorem C(b) with Z = ⊤ is applied to the PREFIX event;
+  terminates); consequently — WITH THE PREFIX/COMPLETE DISTINCTION DISPLAYED (REV 5
+  maximal-run form, pass-4 critical 4) — for a COMPLETE finite terminal history H,
+  S(H, ⊤) = {f : H_can^max(f) = H} (a fiber of the finite-complete-history map); for
+  a PREFIX P, S(P, ⊤) = {f : P ⪯ H_can^max(f)} (a fiber of the finite-prefix map —
+  NOT the union of fibers of finite completions: the cylinder can contain inputs
+  with infinite canonical runs, and measure-zero nontermination does not repair an
+  exact finite-cylinder partition statement). Theorem C(b) with Z = ⊤ is applied to
+  the PREFIX event;
   terminal exhaustiveness (obligation (b) below) is stated for completions of a prefix,
   never conflating the two. Strata are fibers of a map, and disjointness is automatic.
   *Derivation obligations (REV 3, pass-2 concern 1 —
@@ -206,10 +253,12 @@ all but one representative while computing the mass of a union).**
   next read — to be PROVED, not assumed), where the two node-(i+1) patterns read
   different digit values of the same development — never across transported
   coordinates (Theorem C alone does NOT supply this; it is a new lemma).
-- **D4R.1 (exact prefix mass).** μ(P̂) = Σ_{H ∈ Hist(P̂)} ∏ᵢ vol(E_fresh(νᵢ))
-  = C_P̂(p)·p^{−A(P̂)}. *Sketch:* disjointness + exhaustion of the prefix event by
-  D4R.0 (fibers of H_can); each mass is Theorem C(b) with Z = ⊤; vol(E_fresh) depends
-  only on shape (C.3), so the sum factors as (count) × (common p-power).
+- **D4R.1 (exact prefix mass).** μ(P̂) = Σ_{η ∈ Pref(P̂)} ∏ᵢ vol(E_fresh(νᵢ))
+  = C_P̂(p)·p^{−A(P̂)}, the sum over REALIZED PREFIXES — never over terminal
+  completions (§1s). *Sketch:* disjointness + exhaustion of the prefix event by
+  D4R.0 (fibers of the finite-prefix map on maximal runs); each mass is Theorem C(b)
+  with Z = ⊤; vol(E_fresh) depends only on shape (C.3), so the sum factors as
+  (count) × (common p-power).
 - **D4R.2 (pool bound, p-uniform — SURVIVES verbatim).** C_P̂(p) ≤ p^{W(P̂)}: each
   read's value choices live in ≤ d_r digit functionals over a pool of size Q_r = p^{w_r};
   (NA)/(HV) only shrink the count. Hence (3i) verbatim: μ(P̂) ≤ p^{−A_net(P̂)}. [An
@@ -222,8 +271,9 @@ all but one representative while computing the mass of a union).**
   (target α: needs B = 0, prohibited by the nonzero-endpoint convention). The lemma is
   STRUCK; every downstream use re-routes to NOTE [1v]. Nothing in THIS note needs it
   (D4R.1 counts, D4R.2 bounds).
-- **D4R.4 (N-stability).** μ(P̂) is computed at any N ≥ max_H N(H, ⊤): Hist(P̂) is
-  finite WITHOUT any quotient (pass-1 concern 4 repaired) — value assignments range
+- **D4R.4 (N-stability).** μ(P̂) is computed at any N ≥ max_{η ∈ Pref(P̂)} N(η, ⊤):
+  Pref(P̂) is finite WITHOUT any quotient (pass-1 concern 4 repaired) — value
+  assignments range
   over finite alphabets, the canonical lift is a function of node data, the fixed shape
   bounds all heights hence all constrained levels hence each N(H, ⊤), and the max over
   a finite set is finite. [Thm 2.1 re-derived from Theorem C's N(H, Z) clause.]
@@ -243,7 +293,7 @@ one next-node stratum, 0 double-counts and 0 orphans tolerated. RECORDED LIMITAT
 (pass-1 obstruction 8): μ = 1 only — this gate exercises D4R.0/1/2 and does NOT touch
 the value-count risk; the μ ≥ 2 / a > 0 danger is gated in [1v] at n = 5 and over F_q.
 
-## 2v. NOTE [1v] VALUE — the linked value-count structure (REV 4: JREF defined, Theorem VAL split LOCAL/CHAIN, (†) scoped + (†-AGG); R1's decision point — PROBE REPORTED NO-WALL)
+## 2v. NOTE [1v] VALUE — the cell-to-cell polynomial transition system (REV 5: the CTS replaces the species-relative JREF; Theorem VAL = tables + path products; (†) scoped + (†-AGG); R1's decision point — PROBE REPORTED NO-WALL)
 
 **Why this note exists (pass-1 obstructions 1, 3, 4).** The retired torus lemma was the
 only bridge from Theorem C (per-history masses) to p-independent COEFFICIENTS (counts
@@ -258,33 +308,36 @@ the failure (risk R1's wall).
 - Per node ν_{i+1} of a shape: the EVALUATION MAP V, from the node's side-pattern value
   tuple (d_j) to its transported vertex value vtx(ν_{i+1}) ∈ F_{i+2}ˣ (C.0's explicit
   formula: vtx = z̄^{−μm̂}·z̄^{a}·((R_anch/ψ^μ) mod ψ)).
-- The LINKED COUNT of a shape S: C_S(p) := #{ joint value assignments over all nodes :
-  per-node residual shape, irreducibility, nonzero-endpoint, and factor-collision/
-  distinctness conditions hold; (HV) links each adjacent child's pattern lead to
-  vtx(parent); (NA) holds at non-adjacent reads }. By [1] this is D4R.1's C_P̂(p),
-  extended node by node to complete histories.
+- The LINKED COUNT of a template γ (§1s): C_γ(p) := #{ joint value assignments over
+  all steps : per-node residual shape, irreducibility, nonzero-endpoint, and
+  factor-collision/distinctness conditions hold; (HV) links each adjacent child's
+  pattern lead to vtx(parent); (NA) holds at non-adjacent reads }. Summing C_γ over
+  the cell decorations compatible with one shape prefix P̂ recovers [1]'s C_P̂(p);
+  Theorem VAL's burden is to compute each C_γ as a PATH PRODUCT of table entries.
 - FIBER-COUNT FUNCTION of V: c_V : Fˣ → ℕ, c_V(t) := #{pattern values : V = t}. The
   pass-1 counterexample establishes c_V is NOT constant (values 0 and 1 at fixed shape).
 
-**The statement to prove (RESTATED at REV 4 per §1s — pass-3 obstruction 4: the
-rev-3 form assigned one C_S and one W(S) to a raw shape whose unrolled pool dimension
-grows with its loop parameters).**
-> **Theorem VAL (target form).** (a) LOCAL: for each local move species m ∈ ℳ_n
-> (extracted from the [2a] raw catalogue — the acyclic dependency, §1) there is ONE
-> polynomial C_m ∈ ℚ[q], deg C_m ≤ W_loc(m), whose value at the species' pool sizes
-> is the linked count of that single move, for every p — equivalently every prime
-> power q at the finite-field layer. (b) CHAIN: for each unrolled finite history H,
-> the linked count is the JREF-conditioned iterated pairing of the constituent local
-> counts (VAL.2J below), hence one polynomial C_H of degree ≤ W(H) = Σ W_loc — the
-> degree bound is PER HISTORY, parameter-dependent, never per raw shape. Resummed
-> FAM objects are outside this theorem (§1s). [REV 3, pass-2 obstruction 2: the
-> rev-2 "OR" clause (type-aggregated ℚ(q) values) is NOT a form that closes the
-> stated RESUM — cancellation visible only after summing all shapes yields no local
-> matrix M_e and no induction in e; it survives only as the VAL.3 REDESIGN branch
-> below.]
+**The statement to prove (RESTATED at REV 5 as the CTS theorem — pass-4 critical 2:
+one total polynomial C_m per species supplies no cell-to-cell transition numerators,
+so "iterated pairing" was not a defined operation, M2(ii) was not proved by VAL.2J,
+and RS.2 could not construct K_e).**
+> **Theorem VAL (CTS form).** (a) LOCAL: the transition-table family
+> T_{m,o}^{α,β}(q) of the CTS (displayed below) EXISTS and satisfies burdens
+> CTS.1–CTS.5 — in particular every entry AND every source-cell size is ONE
+> polynomial in ℚ[q] of displayed degree ≤ W_loc(m), valued correctly at every
+> prime power q. (b) CHAIN: for each finite path template γ, the linked realization
+> count is the PATH PRODUCT C_γ(q) = ∏_i T_{m_i,o_i}^{β_{i−1},β_i}(q) — matrix
+> multiplication is now a DEFINED operation because source and target cells are
+> drawn from the ONE global partition (CTS.5) — hence one polynomial of degree
+> ≤ W(γ) = Σ W_loc; the degree bound is PER TEMPLATE, path-length-dependent, never
+> per raw shape. The rev-4 scalar totals C_m are recovered as row sums
+> Σ_{o,β} T_{m,o}^{α,β}. Resummed FAM objects are outside this theorem (§1s).
+> [REV 3, pass-2 obstruction 2: aggregate-only cancellation yields no local matrix
+> M_e and no induction in e — that clause survives only as the VAL.3 REDESIGN
+> branch below.]
 
-**Route (three derivation-grade objects — VAL.1, JREF, VAL.2J — + a REDESIGN
-branch; REV 4).**
+**Route (two derivation-grade objects — VAL.1, the CTS — + a REDESIGN branch;
+REV 5; VAL.2J is subsumed into the CTS burdens).**
 - **VAL.1 (stratified fiber calculus — worked example CORRECTED at REV 3, pass-2
   obstruction 1).** For each node species, c_V is CONSTANT on the cells of an explicit
   p-independent stratification of the target F_{q^g}ˣ. Worked instance (V(A,B) = Aα+B,
@@ -299,47 +352,80 @@ branch; REV 4).**
   split at a_eff = 2) while TWISTED cells are fiber-constant EXACTLY at all 24 census
   q. Cell sizes and counts universal polynomials; the L3 necklace/Gauss counts are
   the depth-0 instance.
-- **JREF (the JOINT REFINEMENT — DEFINED at REV 4; pass-3 obstruction 2 + its
-  disposition 1: "or an explicit common refinement" postponed the decisive issue).**
-  Per local species m with residual-factor tuple (φ₁, …, φ_k) and transported-value
-  tuple (t₁, …, t_k): JREF(m) := the common refinement of (a) the k per-coordinate
-  ANCHOR-TWISTED VAL.1 cell partitions, and (b) the RELATIONAL strata of exactly the
-  finitely many polynomial relations that m's displayed evaluation and admissibility
-  maps mention — factor collision/distinctness (φ_i = φ_j), hinge-ratio cells (the
-  twisted cell of t_i/t_j where a shared parent links i and j), and the norm/trace
-  strata to subfields tested by (NA)/(HV) and the nonzero-endpoint convention. The
-  relation list is read off the species' displayed maps — a finite SYNTACTIC object.
-  THREE BURDENS, each a proof duty of this note, consumed downstream as ONE object
-  (M2's τ, RS.0, SQ.2 all condition on JREF cells and on nothing finer):
-  (J1) FINITENESS/p-INDEPENDENCE — JREF(m) is a finite p-independent partition;
-  (J2) POLYNOMIAL COUNTS — every JREF cell's size is a universal polynomial in q
-  (a kernel duty: general definable families do NOT have this; it must come from the
-  specific triangular/monomial shape of the vtx formulas);
-  (J3) SUFFICIENCY — the joint outgoing one-step law is constant on JREF cells.
-- **VAL.2J (JOINT hinge/collision law — now stated ON JREF; REV 4).** For each node
-  with its FULL tuple of linked data — every (HV) hinge value it supplies to adjacent
-  children, every sibling-collision/distinctness condition among its residual
-  factors — the JOINT distribution of that tuple over the parent's linked assignments
-  is constant on JREF cells (= burden J3). The scalar statement (one hinge, "the
-  distribution of vtx(parent)") is the one-child special case; a node feeding k
-  linked children needs the k-fold joint law — scalar marginals do NOT suffice when
-  children are correlated through the parent, and MULTISETS of individual cells do
-  NOT suffice either (pass-3 obstruction 2: ratios, traces, norms, collisions,
-  shared-parent correlations all escape the multiset). Then the linked count is the
-  iterated pairing Σ_{JREF cells} (parent joint count on the cell)·∏(child fiber
-  counts) — polynomial with degree per §1s. This is where the note closes or hits
-  R1: the matching must hold at EVERY hinge tuple of every species, μ ≥ 2 and a > 0
-  included. Probe evidence: the (fixed × twisted) joint matrix is exactly constant on
-  twisted cells at every census q (exploration-class; ONE two-node family — the
-  k = 1 case; no k ≥ 2 joint family has been probed). JOINT-probe (exploration-class,
-  runs with this note's draft): one species with k = 2 linked children sharing a
-  parent PLUS one sibling-collision condition, exact F_q joint census over the 24-q
-  list — measures joint-law constancy on JREF cells vs on the product of marginal
-  cells; a marginal-constant/joint-varying finding refutes any τ lacking (b)-strata.
+- **THE CTS (the GLOBAL cell-to-cell polynomial transition system — REV 5,
+  replacing the species-relative JREF; pass-4 critical 1: species-relative
+  partitions JREF(m) do not define one common source-state type, so "same τ" was
+  not simultaneously meaningful for all outgoing moves).** Built in TWO displayed
+  pieces carrying SIX burdens.
+  **(CTS-S) STATE SPACE.** For every bounded current-state skeleton s (residual
+  degrees/multiplicities, anchor a, tower phase — values forgotten), let Out(s) :=
+  the finite menu of admissible outgoing move species ([2a] + M1). The SOURCE
+  partition of s's concrete states is the MEET over the whole menu:
+      JREF^src(s) := ⋀_{m ∈ Out(s)} JREF_m^source,
+  where JREF_m^source is the common refinement of (a) the per-coordinate
+  ANCHOR-TWISTED VAL.1 cell partitions of the residual-factor value tuple, and
+  (b) the RELATIONAL strata of exactly the finitely many polynomial relations that
+  m's displayed evaluation and admissibility maps mention — factor collision/
+  distinctness (φ_i = φ_j), hinge-ratio cells (the twisted cell of t_i/t_j), and
+  the norm/trace strata tested by (NA)/(HV) and the nonzero-endpoint convention —
+  i.e. EVERY source observable used by EVERY admissible outgoing species. The CTS
+  states are 𝒞_n := {(s, α) : α ∈ JREF^src(s)}; finiteness follows only AFTER
+  using finiteness of Out(s) (a finite meet of finite partitions).
+  **(CTS-T) TABLES.** For every source cell α ∈ JREF^src(s), species m : s → s′ in
+  Out(s), full outcome label o (next-node data + all hinge-value cells + collision
+  pattern, or a terminal verdict), and target cell β ∈ JREF^src(s′):
+      T_{m,o}^{α,β}(q) := #{fresh assignments producing (m, o, β) | one
+      representative source state in α}.
+  **The SIX burdens (proof duties of this note, consumed downstream as ONE object —
+  M2's τ, RS.0, SQ.2 condition on CTS cells and on nothing finer or coarser):**
+  (CTS.0) DISPLAY — the actual cell predicates are DISPLAYED per species: defining
+  polynomial conditions, their target cells, and the exceptional-characteristic
+  conventions; a finite syntactic list of relation NAMES is not itself a partition
+  with polynomial cardinalities (pass-4 critical 1's second defect).
+  (CTS.1) FINITENESS/p-INDEPENDENCE — 𝒞_n is a finite p-independent state set.
+  (CTS.2) POLYNOMIALITY — every table entry AND every cell size is one universal
+  polynomial in ℚ[q] with a DISPLAYED degree bound ≤ W_loc(m); cell sizes alone are
+  insufficient (a fiber-constant value may still depend non-polynomially on q —
+  pass-4 critical 2). EXPONENT-MAP AUDIT (pass-4 concern 1): every exponent map in
+  every norm/trace/ratio/collision stratum is audited for congruence factors such
+  as gcd(a, q^g − 1) — "triangular/monomial shape" alone is NOT accepted; the
+  anchor twist eliminated one observed characteristic split and proves nothing
+  about the rest.
+  (CTS.3) ROW PARTITION — at each fixed source representative, the fresh-assignment
+  sets over all (m, o, β) (terminal verdicts included as absorbing columns)
+  PARTITION the full fresh-assignment set.
+  (CTS.4) REPRESENTATIVE INDEPENDENCE — every entry is independent of the
+  representative chosen inside α; this is lumpability at the source, the ONE clause
+  M2(ii) consumes, subsuming the rev-4 burden J3 and the joint law VAL.2J.
+  (CTS.5) GLOBAL COMPATIBILITY — for each transition m : s → s′ the TARGET-CELL MAP
+  is displayed and lands in JREF^src(s′) under the SAME global definition, so
+  matrix products type-check; no species-relative cell ever appears as an index.
+- **VAL.2J (SUBSUMED at REV 5 into CTS.3 + CTS.4).** The joint hinge/collision law
+  IS the table row: the joint distribution of (next node data, all hinge values,
+  all collision/admissibility data) over one source cell α is the row
+  (T_{m,o}^{α,β})_{o,β}, and "constancy on cells" is exactly CTS.4 representative
+  independence. Scalar marginals and multisets of individual cells remain
+  insufficient (pass-3 obstruction 2 stands: ratios, traces, norms, collisions,
+  shared-parent correlations all escape them); the former "iterated pairing" is now
+  the literal matrix product of VAL CHAIN. This is where the note closes or hits
+  R1: CTS.2/CTS.4 must hold at EVERY entry of every species, μ ≥ 2 and a > 0
+  included. Probe evidence: the (fixed × twisted) joint matrix is exactly constant
+  on twisted cells at every census q (exploration-class; ONE two-node family — the
+  k = 1 case; no k ≥ 2 joint family has been probed). JOINT-probe
+  (exploration-class, runs with this note's draft): one species with k = 2 linked
+  children sharing a parent PLUS one sibling-collision condition, exact F_q joint
+  census over the 24-q list — measures row constancy on JREF^src cells vs on the
+  product of marginal cells; a marginal-constant/joint-varying finding refutes any
+  τ lacking relational strata. COMPOSE-probe (NEW at REV 5, exploration-class, same
+  run): one two-step family in which step 1's target cell is consumed as step 2's
+  source cell — exact F_q census of the two-step linked counts vs the matrix
+  product of the sealed one-step tables; an exact mismatch refutes CTS.5/VAL CHAIN
+  at k = 2 before RESUM consumes them.
 - **VAL.3 (aggregate branch — RECLASSIFIED at REV 3: a REDESIGN, not a fallback;
-  pass-2 obstruction 2).** RS.0–RS.3 need per-(shape, type) coefficients BEFORE the
-  final σ-aggregate; aggregate-only cancellation yields no local M_e and no induction
-  in e. So if some C_S is genuinely non-polynomial: (i) VAL.3 is a NEW ARCHITECTURE —
+  pass-2 obstruction 2).** RS.0–RS.3 need per-(cell, cell) transition coefficients
+  BEFORE the final σ-aggregate; aggregate-only cancellation yields no local M_e and
+  no induction in e. So if some CTS table entry or template count is genuinely
+  non-polynomial: (i) VAL.3 is a NEW ARCHITECTURE —
   aggregate-block unknowns, a new transition law, a new closure theorem and
   solvability argument, a new DAG node [3′] replacing [3], budgeted 3+ units with its
   own verification rounds (§8 R8); (ii) it is entered only on BOTH a proved per-shape
@@ -353,8 +439,9 @@ scope restricted to §1s integer-count classes; the rev-3 σ-aggregate clause is
 STRUCK — pass-3 obstruction 5 + disposition 2: a resummed aggregate has geometric
 denominators such as 1 − q^{−a}, and no single finite "A-shift" makes it an
 integer-valued count).**
-> **(†) Degree bound (LOC/HIST only).** For every local species m (resp. finite
-> history H, resp. finite explicitly-listed history family with a displayed common
+> **(†) Degree bound (LOC/template only — REV 5 class names).** For every CTS table
+> entry or row of a local species m (resp. finite template γ, resp. finite
+> explicitly-listed template family with a displayed common
 > monomial normalization q^{A_max}), pool arithmetic gives 0 ≤ C(q) ≤ q^{W} at every
 > prime power q, with W the DISPLAYED pool dimension of that object. Consequence: if
 > C agrees with ANY R ∈ ℚ(q) at all prime powers, then R is a POLYNOMIAL (a rational
@@ -367,15 +454,21 @@ integer-valued count).**
 > adjudication, CONCLUSIVELY refutes ℚ(q)-universality of that count — by (†), finite
 > data DOES decide the negative. SUPPORT: all points match — universality is
 > SUPPORTED at surplus m − W − 1, never proved; acceptance still requires the
-> VAL.1/VAL.2J derivation, with the census as its standing falsifier.
+> VAL.1/CTS derivation, with the census as its standing falsifier.
 >
 > **(†-AGG) The truncated aggregate-census protocol (REV 4 — the ONLY admissible
 > aggregate census).** An aggregate census quantity is ADMISSIBLE iff it is (a) a
-> FINITE explicitly-listed sum of LOC/HIST counts, (b) carrying a DISPLAYED common
-> monomial normalization making it an integer count, and (c) carrying a DISPLAYED
-> degree bound. The canonical instance: decided_σ(N) — an integer in [0, p^{nN}],
-> and by SQ.0 (§6) a finite sum Σ_{threshold(H) ≤ N} C_H(q)·q^{nN−A(H)} of degree
-> ≤ nN — so (†) applies verbatim at W = nN. The COMPLETED density R_σ is NEVER
+> FINITE explicitly-listed sum of LOC/template counts, (b) carrying a DISPLAYED
+> common monomial normalization making it an integer count, and (c) carrying a
+> DISPLAYED degree bound. The canonical instance: decided_σ(N) — an integer in
+> [0, p^{nN}], a finite sum Σ_{threshold(γ) ≤ N} C_γ(q)·q^{nN−A(γ)} of degree ≤ nN,
+> so (†) applies verbatim at W = nN — CONDITIONAL (REV 5, pass-4 concern 5) on FIVE
+> exposed inputs: (i) SQ.0's finite p-INDEPENDENT syntactic template family; (ii)
+> ZERO-EXTENSION — templates unrealizable at a particular p contribute C_γ(p) = 0,
+> never a missing row; (iii) polynomiality of every normalized summand through the
+> CTS (Theorem VAL); (iv) the degree-≤ nN bound (SQ.0(d)); (v) for PRIME-POWER
+> censuses q = p^δ, the relative W(F_q) reading via REL.1/REL.2 — never a silent
+> ordinary-ℤ_p-box treatment. The COMPLETED density R_σ is NEVER
 > census-refuted by interpolation: it is tested only by the two-sided SQUEEZE
 > brackets (⌈(R_σ(p) − env(N))p^{nN}⌉ ≤ decided_σ(N) ≤ ⌊R_σ(p)p^{nN}⌋), which refute
 > a candidate VALUE at a given p quantitatively, envelope in hand. §8 R1(3)'s wall
@@ -390,10 +483,14 @@ integer-valued count).**
   family (genuinely non-constant fibers), at the 24-point list
   q ∈ {2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,49,53,59} — prime
   powers included deliberately. Seal: per-series displayed pool dimension W (§1s
-  class stated per series — LOC or finite HIST), the VAL.1/VAL.2J closed forms with
-  exact values at every q, AND (REV 4) the JREF layer — the sealed JREF cell list
-  with per-cell counts for each gated species, verified cell-by-cell. PASS = exact
-  integer equality throughout, with surplus ≥ 3 per series per (†). STATUS: the exploration-class probe
+  class stated per series — LOC or finite template), the VAL.1 closed forms with
+  exact values at every q, AND (REV 5) the TABLE layer — for each gated species the
+  sealed JREF^src cell list (predicates displayed per CTS.0), per-cell sizes, and
+  the FULL transition table T_{m,o}^{α,β} as closed-form polynomials: verified
+  entry-by-entry at every q, with the row-partition identity (Σ_{o,β} entries =
+  fresh-pool total, CTS.3) and representative independence (≥ 2 representatives per
+  cell, CTS.4) checked exactly. PASS = exact integer equality throughout, with
+  surplus ≥ 3 per series per (†). STATUS: the exploration-class probe
   (verification/value_probe.py, 2026-07-26) already ran this geometry UNSEALED —
   all linked totals UNIVERSAL, twisted-cell fiber constancy exact, aggregates match
   at wild p; the gate re-runs SEALED with the closed forms committed first (Case-K
@@ -405,7 +502,7 @@ integer-valued count).**
 - A FAIL is adjudicated (prediction-derivation error vs theory error); if theory: run
   §8 R1's isolation experiment BEFORE any further RESUM work.
 
-## 3. NOTES [2a] SPECIES + [2b] STATE-GEOM — the rev-2 MENU, split acyclic (REV 4: joint-refined τ, M4a-X, M4b-T equivariance; [2b] gated on STATE-probe-2)
+## 3. NOTES [2a] SPECIES + [2b] STATE-GEOM — the rev-2 MENU, split acyclic (REV 5: τ = the CTS state; M4a-X height-scoped + the affine-semigroup duty; M4b narrowed to height-translation constancy; [2b] gated on STATE-probe-2)
 
 **Split delivery (pass-2 obstruction 3):** [2a] SPECIES = the raw catalogue 𝒮_n^raw —
 M1's bounds + M5's completeness, with NO strata and NO state types: this is the finite
@@ -427,7 +524,9 @@ and type clauses by [2b].
 > WITH CONGRUENCE LATTICES (M4a). NO claim that the lattice points exhaust
 > realizability (pass-1 obstruction 3): the arithmetic layer — (NA)/(HV), factor
 > degrees and irreducibility, nonzero endpoints, cofactor/residual collisions — is
-> counted PER LATTICE POINT by [1v], never encoded in the cone.
+> counted by the CTS ([1v]): per-template path products, constant along HEIGHT
+> directions only (M4b, REV 5), never encoded in the cone and never
+> position-independent in the loop direction.
 
 **Load-bearing lemmas.**
 - **M1 (per-node data bounded — bound CORRECTED, pass-1 concern 1).** Display the
@@ -437,31 +536,29 @@ and type clauses by [2b].
   rev-1 "n!-bounded" is retired; the review found no unbounded-g counterexample, and
   this displayed invariant is why). Also e ≤ n, μ ≤ n, residual degree ≤ n, #sides ≤ n,
   strides/anchors ≤ side width ≤ n — every bound the one displayed degree budget.
-- **M2 (STATE — the JOINT-REFINED type; REWRITTEN AGAIN at REV 4, pass-3
-  obstruction 2 + disposition 4: the rev-3 multiset of individual cells does NOT
-  determine the joint outgoing law — ratios, traces, norms, collisions, shared-parent
-  correlations escape it). Lives in [2b].** The LOOP STATE TYPE at a node is
-  τ = (the JREF CELL of the FULL residual-factor tuple — [1v]'s joint refinement,
-  §2v, carrying the individual twisted cells AND all relational strata as ONE
-  object; anchor a; tower phase). This is the plan's SINGLE state definition: M2,
-  RS.PRE/RS.0, SQ.2 and every conditional law condition on τ and on NOTHING finer or
-  coarser — a law needing more than τ is a lumpability failure (R2), never a local
-  patch. DECIDED (rev 2 was internally inconsistent about position): loop POSITION
-  and heights are NOT in τ; their irrelevance is RS.0(β)'s THEOREM, never a
-  definition. Prove: (i) τ ranges over a FINITE p-INDEPENDENT list 𝒯_n (from JREF
-  burden J1 + the M1 bounds); (ii) LUMPABILITY, not label-closure (pass-2's
-  distinction) — any two CONCRETE states of one type have IDENTICAL full outgoing
-  one-step laws: the JOINT law of (next node data, all hinge values, all
-  collision/admissibility data), exhibited per move species, with the e_birth vs
+- **M2 (STATE = the CTS state; REWRITTEN at REV 5, pass-4 critical 1: the rev-4 τ
+  cited "the JREF CELL" of the current state while JREF existed only per outgoing
+  species — "same τ" was not simultaneously meaningful for all possible outgoing
+  moves). Lives in [2b].** The LOOP STATE TYPE at a node is τ = (s, α): the bounded
+  skeleton s (which carries anchor a and tower phase) together with its GLOBAL
+  source cell α ∈ JREF^src(s) — [1v]'s CTS-S, the meet over the FULL outgoing menu
+  Out(s). This is the plan's SINGLE state definition: M2, RS.PRE/RS.0, SQ.2 and
+  every conditional law condition on τ and on NOTHING finer or coarser — a law
+  needing more than τ is a lumpability failure (R2), never a local patch. DECIDED:
+  loop POSITION and heights are NOT in τ; their irrelevance is RS.0(β)'s THEOREM,
+  never a definition. Prove: (i) τ ranges over the FINITE p-INDEPENDENT list
+  𝒯_n = 𝒞_n (CTS.1 + the M1 bounds); (ii) LUMPABILITY = CTS.4 CONSUMED — any two
+  CONCRETE states of one type have IDENTICAL full outgoing one-step laws: the JOINT
+  law of (next node data, all hinge values, all collision/admissibility data) = the
+  table row (T_{m,o}^{α,β})_{o,β}, exhibited per move species, with the e_birth vs
   e_read threading re-walked once here (what "self-loop at fixed key data" is at
   order r ≥ 2). Route: Theorem C freshness (fresh digits uniform on the state
   cylinder — the mechanism the state probe verified exactly: every readable word
-  cell 1024/729 on the nose) + VAL.2J constancy on JREF cells (burden J3 — the
-  route now consumes the JOINT law, closing pass-3's "the state definition does not
-  support the theorem it is supposed to prove"); (iii) proper refinements number
-  ≤ n − 1 (L5fix Invariant 1 transported). Load-bearing TWICE: menu finiteness and
-  the block-index set of RESUM's system (RS.0). ACCEPTANCE of [2b] is BLOCKED on
-  STATE-probe-2 (§4) — it tests M2(ii) directly (pass-3 obstruction 7).
+  cell 1024/729 on the nose) + CTS.4 representative independence; (iii) proper
+  refinements number ≤ n − 1 (L5fix Invariant 1 transported). Load-bearing TWICE:
+  menu finiteness and the block-index set of RESUM's system (RS.0). ACCEPTANCE of
+  [2b] is BLOCKED on STATE-probe-2 (§4) — it tests M2(ii) directly (pass-3
+  obstruction 7).
 - **M3 (lift symmetry — DEMOTED; pass-1 obstruction 2).** The C.0 lift-translation
   remark is retained only as a consistency check on shape-determined volumes (C.3
   already supplies those). NO counting quotient runs through it; the menu counts
@@ -473,49 +570,65 @@ and type clauses by [2b].
   with positive weights. *Sketch:* D.3's stride rule makes the per-digit pin count
   affine in h; the (‡) ledger arithmetic of the decomposition note §2, unconditional
   via §B2-DEF/§C. Sufficiency NOT claimed (obstruction 3).
-- **M4a-X (EXACT-DOMAIN — NEW OPEN KERNEL at REV 4; pass-3 obstruction 1: M4a's
-  cones are NECESSARY only, yet RS.1 summed them as exact domains — summing a
-  containing cone overcounts histories).** Target theorem, either route: (Route A —
-  semilinear via zero-extension) the M4b-T translation bijection is defined at EVERY
-  lattice point of the M4a cone, with count 0 allowed; then the per-point count
-  (zeros included) is constant on each congruence class, the zero pattern is itself
-  translation-invariant, and the EXACT realizable domain = the union of the nonzero
-  classes — semilinear by construction, with per-class counts C_{S,τ}. (Route B —
-  admissibility classes) if the bijection degenerates at boundary strata, partition
-  the cone into FINITELY MANY explicitly-listed exact admissibility classes with a
-  per-class count polynomial each; RS.1 then sums per class. Until M4a-X closes, NO
-  cone-lattice sum is exact: RS.1 cites M4a-X, never M4a alone. Deciding probe: the
-  MENU-n3 parameter check is upgraded two-sided (clause (iii), gate below).
-- **M4b (per-point counts factor through the type) + M4b-T (TRANSLATION — the new
-  arithmetic theorem pass-2 concern 3 identified; EQUIVARIANCE FORM at REV 4,
-  pass-3 concerns 2 + 3).** At every lattice point of M4a's cone, the number of
-  realizable value assignments (0 allowed) is C_{S,τ}(q) — a function of shape and
-  state type ONLY, not of the cone position. *Route:* M4b-T FIRST, as a NORMAL-FORM
-  AUDIT whose TARGET CONCLUSION — proved, never premised (pass-3 concern 3) — is
-  that after auditing ALL residual coefficients, factor collisions, and lift
-  choices, the anchor monomial z̄^{a−μm̂} (C.0's display) is the ONLY
-  position-dependent factor. PRECISE EQUIVARIANCE STATEMENT (pass-3 concern 2):
-  translation by a lattice vector v induces an explicit BIJECTION of linked value
-  systems composing each target with the twist by anchor^{⟨w,v⟩}; this carries the
-  JREF stratification at point P to the one at P + v, a priori PERMUTING cell
-  labels by some π_v — the natural result is a bijection between two differently
-  twisted stratifications, NOT automatically preservation of one fixed label.
-  EQUIVARIANCE CLAUSE (to prove): with types defined in the twisted frame, π_v acts
-  trivially on type labels; if instead π_v is nontrivial, RS.0 and K_e are
-  re-indexed by π-orbits and the cone sums run per orbit — the matrix indexing must
-  absorb π_v, stated here so RESUM cannot silently assume π_v = id. THEN VAL.2J +
-  M2(ii) close the count. Evidence: the value probe's a_eff ∈ {0, 1, 2}
-  twisted-cell exactness is M4b-T's shadow; its fixed-frame char-splits are exactly
-  what M4b-T looks like when the twist is omitted. With M4a-X, this is what makes
-  per-cone geometric resummation legitimate in RESUM.
+- **M4a-X (EXACT-DOMAIN — OPEN KERNEL; SCOPE RESTATED at REV 5: it governs the
+  HEIGHT directions at FIXED path template — the loop/depth direction left the
+  cone-sum picture entirely (it is the CTS matrix power, §1s); pass-3 obstruction 1
+  stands for what remains: M4a's cones are NECESSARY only, and summing a containing
+  cone overcounts).** Target theorem, either route: (Route A — semilinear via
+  zero-extension) the M4b-T translation bijection is defined at EVERY height-lattice
+  point of the M4a cone, with count 0 allowed; the per-point template count (zeros
+  included) is constant on each congruence class, the zero pattern is itself
+  translation-invariant, and the EXACT realizable height domain = the union of the
+  nonzero classes. AFFINE-SEMIGROUP DUTY (REV 5, pass-4 concern 2): Route A must
+  additionally prove a Gordan-lemma/fundamental-module statement for the exact cone
+  semigroup — every congruence class in the cone decomposes into finitely many
+  translation orbits with finitely many boundary orbits — plus compatibility of the
+  translation bijections under composition; translation invariance alone does NOT
+  imply the claimed finite semilinear decomposition. (Route B — admissibility
+  classes) if the bijection degenerates at boundary strata, partition the cone into
+  FINITELY MANY explicitly-listed exact admissibility classes with a per-class
+  count polynomial each; RS.1 then sums per class. Until M4a-X closes, NO
+  height-lattice sum is exact: RS.1 cites M4a-X, never M4a alone. FRONT-LOADED
+  REFUTER (REV 5 language, pass-4 concern 7 — a finite test can refute the sealed
+  exact domain in its box, never establish it for unbounded parameters or higher
+  degree): the MENU-n3 two-sided parameter check (clause (iii), gate below).
+- **M4b (HEIGHT-TRANSLATION CONSTANCY — NARROWED at REV 5; pass-4 critical 3: the
+  rev-4 claim "the per-point count is C_{S,τ}(q), a function of shape and state
+  type ONLY, not of the cone position" is FALSE as stated — loop repetition count
+  is one of the forgotten ℕ-parameters, a point with k loop reads has k fresh pools
+  and a count given by a k-fold transition product whose degree grows with k; that
+  claim is STRUCK) + M4b-T (equivariance, retained).** Corrected statement: at
+  FIXED path template γ, the per-point count C_γ(q) is constant along the
+  PATH-LENGTH-NEUTRAL height directions of M4a's lattice — translations that change
+  no step of the template. The loop direction is NEVER covered: a k-loop point's
+  count is the k-fold matrix product of CTS tables (§1s), and depth resummation is
+  the matrix fixpoint, not a constancy claim. *Route:* M4b-T FIRST, as a
+  NORMAL-FORM AUDIT whose TARGET CONCLUSION — proved, never premised (pass-3
+  concern 3) — is that after auditing ALL residual coefficients, factor collisions,
+  and lift choices, the anchor monomial z̄^{a−μm̂} (C.0's display) is the ONLY
+  height-dependent factor at fixed template. PRECISE EQUIVARIANCE STATEMENT
+  (pass-3 concern 2): translation by a path-length-neutral lattice vector v induces
+  an explicit BIJECTION of linked value systems composing each target with the
+  twist by anchor^{⟨w,v⟩}; this carries the JREF^src stratification at point P to
+  the one at P + v, a priori PERMUTING cell labels by some π_v. EQUIVARIANCE
+  CLAUSE (to prove): with cells defined in the twisted frame, π_v acts trivially on
+  type labels; if instead π_v is nontrivial, RS.0 and K_e are re-indexed by
+  π-orbits and the height sums run per orbit — stated here so RESUM cannot
+  silently assume π_v = id. THEN CTS.4 + M2(ii) close the count. Evidence: the
+  value probe's a_eff ∈ {0, 1, 2} twisted-cell exactness is M4b-T's shadow; its
+  fixed-frame char-splits are what M4b-T looks like when the twist is omitted.
+  With M4a-X, this is what makes per-height geometric resummation legitimate in
+  RESUM.
 - **M5 (menu completeness).** Every monic f with terminating resolution has its
   canonical history of some shape in 𝒮_n. *Sketch:* §B2-DEF TRANS constructs stage
   r+1 data of exactly the retained vocabulary; nothing else occurs.
 
-**Kernels:** M2 (STATE, a lumpability theorem on the JOINT-REFINED τ), M4a (the
-affine-exponent + congruence-lattice bookkeeping, with the Case-J anchor-monomial
-a > 0 exponents as worked instances), M4a-X (EXACT-DOMAIN — OPEN, REV 4), and M4b-T
-(the translation normal-form audit + equivariance clause — REV 4).
+**Kernels:** M2 (STATE on the CTS state space — CTS.4 consumed; the e_birth/e_read
+threading re-walk is its residual duty), M4a (the affine-exponent +
+congruence-lattice bookkeeping, with the Case-J anchor-monomial a > 0 exponents as
+worked instances), M4a-X (EXACT-DOMAIN in the height directions — OPEN; Route A
+carries the REV 5 affine-semigroup duty), and M4b-T (the normal-form audit +
+equivariance clause, on path-length-neutral translations only — REV 5).
 
 **Sealed gate MENU-n3 (EXHAUSTIVE; pass-1 obstruction 8 repairs).** Enumerate 𝒮_3
 with per-shape parameter sets and state types BEFORE any census. Then: (a) EXHAUSTIVE
@@ -588,7 +701,7 @@ of both with the sealed law. RECORDED RESIDUE: (i) is MOVES-free at the DECISION
 only; the history-level identification stays REL.2(a)–(d)'s proof burden, not the
 gate's.
 
-## 4. NOTE [3] RESUM — the depth resummation into rational functions of q (REV 4: normalized kernel K_e with displayed conditionality, ESCAPE kernel, STATE-probe-2 blocking [2b]+[3])
+## 4. NOTE [3] RESUM — the depth resummation into rational functions of q (REV 5: K_e assembled from the CTS; ESCAPE restructured — per-fixed-p route E0 primary; STATE-probe-2 blocking [2b]+[3])
 
 **The algebraic form (REV 2 — BLOCK-triangular; pass-1 obstruction 5 + concern 5).**
 Unknowns β_{e,τ} : {types of degree e} → ℚ(q), indexed by cluster size e ≤ n AND state
@@ -597,8 +710,9 @@ UNPROVED closure, asserted against risk R2; closure is now the theorem RS.0):
 
   (R_e)   β_{e,·} = q^{−e(e−1)/2} · M_e(q) β_{e,·} + SHALLOW_{e,·}      (e = 1, …, n)
 
-with M_e(q) the SAME-SIZE TRANSITION MATRIX (rows/columns = state types; entries =
-[1v]-counted one-move coefficients in ℚ(q)); SHALLOW_{e,·} collects deciding/branching
+with M_e(q) the SAME-SIZE TRANSITION MATRIX (rows/columns = CTS states τ = (s, α);
+entries assembled per RS.PRE from CTS table entries × M4a-X-exact height sums);
+SHALLOW_{e,·} collects deciding/branching
 root reads (coefficients: MENU shapes × [1v] counts × [2r]-certified mixed legs
 β_m(q^δ), m < e). Triangular in e; within e the block solve is
 (I − q^{−e(e−1)/2}M_e)^{−1}, licit by RS.3. The n = 2 instance is the 1×1 case (W6's
@@ -610,32 +724,36 @@ an input.
 
 **Key definitions.** Per-shape weight w(S) ∈ ℚ(q)-monomials: by MENU M4a the
 fresh-volume exponent is affine in the shape's ℕ-parameters, so the sum over one
-ladder/tower direction is a geometric series over a congruence sublattice with ratio
-q^{−(positive weight)}; per-(shape, type) VALUE count C_{S,τ}(q): from [1v] Theorem VAL
-via [2b] M4b + M4b-T — NOT from the retired torus lemma.
+height direction is a geometric series over a congruence sublattice with ratio
+q^{−(positive weight)}; transition counts: the CTS tables T_{m,o}^{α,β}(q) from [1v]
+Theorem VAL, height-constant at fixed template via [2b] M4b + M4b-T — NOT from the
+retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
 
-- **RS.PRE (the NORMALIZED kernel — definition supplied at REV 3; pass-2
-  obstruction 7: rev 2 never fixed what M_e contains).** Define K_e(q) entrywise as a
-  CONDITIONAL MASS: K_e(q)_{τ,τ′} := (the [1v]-counted, M4a-height-resummed mass of
-  the disjoint union of one-move continuations τ → τ′ inside one source cylinder) /
-  (the source cylinder's mass) — fresh-volume costs, cone/height sums, multiplicities
-  and the displayed exterior factor ALL INSIDE. Then q^{−e(e−1)/2}M_e(q) := K_e(q)
-  (the display (R_e) is unchanged; the exterior factor is notation, not an extra
-  cost). Because the continuations are DISJOINT sub-events of the source cylinder
-  (D4R.0) and height resummation is countable additivity over disjoint cylinders,
-  K_e(p) ≥ 0 and Σ_{τ′} K_e(p)_{τ,τ′} + (deciding/branching fraction) ≤ 1 hold at
-  every p: substochasticity is inherited from measure, never asserted of a resummed
-  matrix. CONDITIONALITY DISPLAYED (REV 4, pass-3 disposition 7: "by construction"
-  was overclaimed): the inheritance is conditional on THREE named inputs — (1) M4a-X
-  exact domains (else the resummed rows sum masses of non-events); (2) D4R.0
-  disjointness after height grouping; (3) M2(ii) lumpability (else the quotient by τ
-  is not well-defined). K_e carries all three tags until each closes. Every
-  probabilistic claim in RS.3/SQ.2 is about K_e.
+- **RS.PRE (the NORMALIZED kernel — ASSEMBLED FROM THE CTS at REV 5; the numerator
+  is now a DEFINED object, closing pass-4 critical 2's "RS.2 cannot construct
+  K_e").** Define K_e(q) entrywise as a CONDITIONAL MASS:
+      K_e(q)_{(s,α),(s′,β)} := Σ_{m: s→s′} Σ_{o continuing}
+        T_{m,o}^{α,β}(q) · G_{m,o}(q) / (source-cell mass),
+  where G_{m,o}(q) is the M4a-X-exact geometric height sum of the per-assignment
+  fresh-volume monomials (affine exponents, positive weights — M4a) — fresh-volume
+  costs, height sums, multiplicities and the displayed exterior factor ALL INSIDE.
+  Then q^{−e(e−1)/2}M_e(q) := K_e(q) (the display (R_e) is unchanged; the exterior
+  factor is notation, not an extra cost). Because the continuations are DISJOINT
+  sub-events of the source cylinder (D4R.0) and height resummation is countable
+  additivity over disjoint cylinders, K_e(p) ≥ 0 and (row sum) +
+  (deciding/branching fraction) ≤ 1 hold at every p: substochasticity is inherited
+  from measure, never asserted of a resummed matrix. CONDITIONALITY DISPLAYED: the
+  inheritance is conditional on THREE named inputs — (1) M4a-X exact height domains
+  (else the resummed rows sum masses of non-events); (2) D4R.0 disjointness after
+  height grouping; (3) CTS.4 representative independence = M2(ii) (else the
+  quotient by τ is not well-defined). K_e carries all three tags until each closes.
+  Every probabilistic claim in RS.3/SQ.2 is about K_e.
 - **RS.0 (TYPE-CLOSURE — promoted kernel; PROOF SHAPE fixed at REV 3, pass-2
   concern 8 + obstruction 4).** Two theorems, proved not extrapolated: (α)
-  LUMPABILITY = M2(ii) — any two concrete same-type states have identical full
-  outgoing JOINT laws (VAL.2J + Theorem C freshness); (β) POSITION/HEIGHT
-  ELIMINATION, as a finite-state BISIMULATION: exhibit the height-shift conjugacy —
+  LUMPABILITY = M2(ii) = CTS.4 consumed — any two concrete same-type states have
+  identical full outgoing JOINT laws (the CTS table row + Theorem C freshness); (β)
+  POSITION/HEIGHT ELIMINATION, as a finite-state BISIMULATION: exhibit the
+  height-shift conjugacy —
   the state at height h+1 is the state at height h composed with one uniform fresh
   layer (the exact mechanism behind the probe's uniform-word rows) — so the
   conditional law is h-invariant and the retained data after k self-loops is a state
@@ -652,51 +770,67 @@ via [2b] M4b + M4b-T — NOT from the retired torus lemma.
   X.1b-tagged envelope for CONVERGENCE is dropped — the envelope is needed only for
   RATES, in X.2/SQUEEZE) — equals, after grouping by (MENU shape, state type) and
   resumming each parameter set, the σ-component of the solution of (R_e).
-  *Sketch:* Theorem C gives mass(H) = ∏ vol(E_fresh); D4R.0/D4R.1 give disjoint
-  exhaustion (canonical fibers — no quotient multiplicity; the pass-1 obstruction-2
-  aggregation gap is repaired upstream, in [1]); group by shape (M5); per shape,
-  Fubini the lattice sum over the EXACT semilinear domain (M4a-X — REV 4, pass-3
-  obstruction 1: the rev-3 sketch summed the containing CONE, which overcounts;
-  per-class summation with sealed zero classes replaces it); per-point counts are
-  C_{S,τ}(q), constant across each class (M4b + M4b-T's equivariance clause);
-  per-direction sums are geometric series over congruence sublattices (M4a); the
-  self-loop directions are the M_e legs (a depth-k chain = k-fold composition of ONE
-  matrix — RS.0; the geometric FIXPOINT is the block solve, not a new sum).
+  *Sketch (REV 5 — `unroll` then `resum` through the CTS):* Theorem C gives
+  mass(η) = ∏ vol(E_fresh); D4R.0/D4R.1 give disjoint exhaustion (canonical
+  fibers — no quotient multiplicity; the pass-1 obstruction-2 aggregation gap is
+  repaired upstream, in [1]); group realized histories by TEMPLATE γ (the CTS path)
+  and height point: per (template, height point) the realized count is the path
+  product C_γ(q) (VAL CHAIN), constant along path-length-neutral height
+  translations (M4b narrowed + M4b-T's equivariance clause); Fubini the height sum
+  over the EXACT semilinear domain (M4a-X — per-class summation with sealed zero
+  classes, never the containing cone); per-direction height sums are geometric
+  series over congruence sublattices (M4a); the DEPTH direction is the regular path
+  language of the finite CTS automaton — a depth-k chain = the k-fold matrix
+  product (RS.0), and the geometric FIXPOINT (I − K_e)^{−1} is the block solve, not
+  a new sum; positivity licenses every regrouping (Tonelli).
 - **RS.2 (coefficient p-independence).** Every coefficient of (R_e) is one fixed
-  element of ℚ(q). REV 2 HONESTY (pass-1 obstruction 4): this rests on [1v] Theorem
-  VAL — it does NOT follow from Theorem C + Claim 4.3; the torus-lemma bridge is
-  dead. (REV 3: the VAL.3 aggregate form does NOT support THIS system — if VAL.3 is
+  element of ℚ(q): numerators from CTS.2 (polynomial table entries and cell sizes),
+  denominators from the M4a-X-exact geometric height sums. REV 2 HONESTY (pass-1
+  obstruction 4): this rests on [1v] Theorem VAL (CTS form) — it does NOT follow
+  from Theorem C + Claim 4.3; the torus-lemma bridge is dead. (REV 3: if VAL.3 is
   entered, RS.2 and the whole block system are re-derived in [3′], per §2v/R8.)
   Shapes and exponents: [2a]/[2b]. Mixed legs: [2r].
   Per-shape emptiness at wild p = polynomial vanishing (W1's pool-size effect).
   p enters only at evaluation q = p.
-- **RS.3 (solvability — REBUILT at REV 4; pass-3 obstruction 3: the rev-3 route
-  "B(n) via the menu diameter + X.1b's STALL budget" is STRUCK — WEIGHT-CHARGE only
-  bounds zero-gain nodes by s(n)·v_p(disc f), and v_p(disc f) is UNBOUNDED across a
-  source cylinder, so no B depending only on n follows; individual-path termination
-  also gives no uniform spectral gap).** (i) cites the SEPARATE kernel:
-  > **ESCAPE (OPEN KERNEL, REV 4 — the uniform escape/spectral-radius argument).**
-  > There exist B = B(n) and c = c(n) such that for every e ≤ n, every τ ∈ 𝒯_n(e),
-  > and every p: the B-step still-in-block conditional mass from any concrete state
-  > of type τ is ≤ 1 − p^{−c} — i.e. K_e(p)^B has all row sums ≤ 1 − p^{−c}.
-  Route candidates (named, neither asserted): (E1) REACHABLE-EXIT — from every τ the
-  K_e-transition graph reaches, within B ≤ |𝒯_n(e)| steps, a type with one-step exit
-  mass ≥ p^{−c₀}; the per-step witness is an (NA)/(HV)-style realizability lemma: at
-  each self-loop read at least one fresh-digit assignment produces a deciding or
-  strictly-refining outcome, with witness count ≥ 1 from the VAL tables — a lemma to
-  PROVE, not assume. (E2) DRIFT/RENEWAL fallback (the pass-3 suggestion, tolerant of
-  unbounded zero-gain runs): a weighted norm V(τ, key weight) with K_e V ≤ λV,
-  λ = λ(n, p) < 1, from D.10's strict weight climb + the positive per-move
-  fresh-volume cost. **ESCAPE-probe (exploration-class, runs before [3] drafting):**
+- **RS.3 (solvability — REBUILT AGAIN at REV 5; pass-4 concern 3: a drift estimate
+  on an infinite augmented state space does not by itself yield a uniform finite-B
+  bound — and the pass's own closing observation is ADOPTED: RS.3 needs LESS than
+  a uniform (B, c); per-fixed-p spectral radius suffices for the block solve).**
+  (i) cites the RESTRUCTURED kernel:
+  > **ESCAPE (OPEN KERNEL — REV 5, primary route E0, per-fixed-p).** For each fixed
+  > p and each e ≤ n: K_e(p)^k 𝟙 → 0 as k → ∞ — the k-step still-in-block mass from
+  > every concrete state tends to 0 — hence, K_e(p) being a FINITE nonnegative
+  > matrix, ρ(K_e(p)) < 1, Neumann convergence, and (I − K_e(p))^{−1} ≥ 0.
+  Route E0 (the pass-4 suggestion, adopted as primary): X.3's a.e. exit from the
+  same-size block + the EXACT finite substochastic kernel identification (RS.PRE's
+  three inputs) give K_e(p)^k 𝟙 = (still-in-block-after-k masses) ↓ μ(never exits)
+  = 0 — monotone convergence, no uniformity in p needed anywhere downstream.
+  (ii) Then det(I − K_e) ≠ 0 at every prime evaluation, hence at infinitely many
+  points, hence ≠ 0 in ℚ(q): the symbolic block solve is licit. Solution:
+  R_σ ∈ ℚ(q), one per σ. RS.3 and SQ.2 consume E0 ONLY (each runs at fixed q = p);
+  both are CONDITIONAL-ON-ESCAPE(E0) until the kernel closes, and E0 is itself
+  conditional on X.3 + RS.PRE's three inputs.
+  > **ESCAPE-UNIF (OPTIONAL STRENGTHENING — the rev-4 uniform statement, kept OPEN,
+  > currently CONSUMED BY NOTHING).** ∃ B(n), c(n): K_e(p)^B has all row sums
+  > ≤ 1 − p^{−c} for every p. Routes: (E1) REACHABLE-EXIT — from every τ the
+  > K_e-graph reaches, within B ≤ |𝒯_n(e)| steps, a type with one-step exit mass
+  > ≥ p^{−c₀}; the PROBABILITY MULTIPLICATION IS DISPLAYED (REV 5, pass-4
+  > concern 4): a length-≤B path whose EVERY required transition has mass ≥ p^{−c₀}
+  > has path mass ≥ p^{−Bc₀}, so c = B·c₀ must absorb the full path length and all
+  > fresh-pool dimensions, and the witness lemma concerns the REQUIRED transition
+  > at each intermediate type — never merely the existence of some exit-producing
+  > assignment somewhere. (E2) DRIFT/RENEWAL — a weighted norm V(τ, key weight)
+  > with K_e V ≤ λV; REV 5 honesty (pass-4 concern 3): drift on the unbounded
+  > weight-augmented space gives eventual escape, NOT a uniform finite-B bound —
+  > E2 closes ESCAPE-UNIF only with an added uniform minorization/renewal event
+  > within bounded time. Any future consumer needing p-uniformity must cite
+  > ESCAPE-UNIF explicitly.
+  **ESCAPE-probe (exploration-class, runs before [3] drafting — RETARGETED at E0):**
   in the STATE-probe-2 cylinders (n = 6, p = 2, conditioned, N = 8) and the 2^24
-  cubic box, measure per-type one-step and B-step exit masses against a sealed
-  candidate (B, c); a type with B-step exit mass 0 at every loop position refutes
-  (E1) for that candidate and forces (E2). With RS.PRE's K_e(p) ≥ 0 and
-  substochasticity, ESCAPE gives ρ(K_e(p)) < 1, Neumann convergence, and
-  (I − K_e(p))^{−1} ≥ 0. (ii) Hence det(I − K_e) ≠ 0 at infinitely many evaluations,
-  so ≠ 0 in ℚ(q): the symbolic block solve is licit. Solution: R_σ ∈ ℚ(q), one per
-  σ. RS.3 no longer cites X.1b ANYWHERE; it is CONDITIONAL-ON-ESCAPE until the
-  kernel closes.
+  cubic box, measure per-type k-step still-in-block masses for k = 1…8 — E0
+  predicts strict decay toward 0 in every row; a row whose still-in-block mass
+  stabilizes above 0 refutes the E0 mechanism in that box and reopens the uniform
+  routes. RS.3 no longer cites X.1b ANYWHERE.
 - **RS.4 (checksum — CONDITIONAL, tag inline at REV 4, pass-3 concern 5).**
   Σ_σ R_σ = 1 identically in q (series = 1 at every p by [5]; a rational function
   equal to 1 at infinitely many q is 1). Cheapest layer invariant. STANDING TAG:
@@ -710,17 +844,19 @@ via [2b] M4b + M4b-T — NOT from the retired torus lemma.
   independent evidence — pass-1 obstruction 8.)
 
 **Kernels (derivation-grade — the campaign's biggest, now four):**
-1. **RS.1's regrouping**: multi-side reads (strictly-decreasing-slope cones, the gap
-   substitution `_sum_by_gaps`), summation over M4a-X's EXACT classes only, the
+1. **RS.1's regrouping**: `unroll`/`resum` through the CTS — grouping by template,
+   multi-side reads (strictly-decreasing-slope cones, the gap substitution
+   `_sum_by_gaps`), height summation over M4a-X's EXACT classes only, the
    conditional-on-ancestors chain via C.1.5 stepwise (NO independence assumption),
    base-changed legs entering ONLY through [2r] REL.2.
-2. **The depth-leg coefficient derivation**: M_e's entries with the Case-J a > 0
-   anchor exponents inline — a wrong anchor exponent silently corrupts every deep
-   coefficient.
-3. **RS.0 TYPE-CLOSURE**: with M2/VAL.2J in hand, the height-shift bisimulation —
+2. **The K_e assembly**: RS.PRE's entries from the CTS tables × exact height sums,
+   with the Case-J a > 0 anchor exponents inline — a wrong anchor exponent silently
+   corrupts every deep coefficient.
+3. **RS.0 TYPE-CLOSURE**: with M2/CTS.4 in hand, the height-shift bisimulation —
    the residual argument that loop position adds nothing (RS.0(β)).
-4. **ESCAPE (OPEN — REV 4)**: the uniform B(n)-step spectral-gap lemma above, routes
-   (E1)/(E2), with the ESCAPE-probe as its front-loaded discriminator.
+4. **ESCAPE (OPEN — REV 5)**: route E0's per-p exit argument (X.3 + the exact
+   kernel identification), with the retargeted ESCAPE-probe as its front-loaded
+   refuter; ESCAPE-UNIF optional, consumed by nothing.
 
 **Sealed gates (two; STATE-probe runs FIRST, before this note is drafted).**
 - **STATE-probe — RAN 2026-07-26 (exploration-class; results/state_probe_output.txt).
@@ -825,15 +961,20 @@ incompatible; the raw node-count premise is WITHDRAWN).** Depth splits into two 
   envelope and uniform-leak designs as built; the exact termination consequence is
   adjudicated against L5fix's precise quantifiers — stop, record, check L5fix's
   statement, run §8 R4's experiment.
-- **X.2 (undecided ⊆ deep-or-tall, coercivity DISPLAYED — pass-1 concern 6).** Kernel
-  PROGRESS: each move's fresh content constrains levels ≤ an explicit affine function
-  of its heights, so f undecided at level N has (d_total ≥ d*(N)) OR (some height ≥
-  h*(N)), with the d*/h* balance displayed — no "positive exponents ⟹ done" step
-  (mixed height cones can grow nominal exponent and required precision at different
-  rates; the uniform bound must be exhibited). Then env(N) ≤ c₃(n)·p^{−c₄(n)·N} with
-  constants traced to X.1b (OPEN — this trace carries the CONDITIONAL-ON-X.1b tag
-  until WEIGHT-CHARGE closes) + M4a tails (from [2b] — the DAG edge pass-2 found
-  missing). This is what SQUEEZE and RESUM-n3 consume.
+- **X.2 (undecided ⊆ deep-or-tall — the QUANTITATIVE DICHOTOMY displayed at REV 5,
+  pass-4 concern 6).** Kernel PROGRESS must prove, with constants:
+      threshold(H) > N ⟹ d_total(H) ≥ d*(N) OR max h(H) ≥ h*(N),
+  with BOTH d*(N) and h*(N) explicit and LINEAR enough in N (d*(N) ≥ c_d·N − c_d′,
+  h*(N) ≥ c_h·N − c_h′, positive slopes) to yield the claimed exponential
+  envelope — each move's fresh content constrains levels ≤ an explicit affine
+  function of its heights, and no "positive exponents ⟹ done" step is accepted
+  (mixed height cones can grow nominal exponent and required precision at
+  different rates; the uniform bound must be exhibited). Then env(N) ≤
+  c₃(n)·p^{−c₄(n)·N} with constants traced to X.1b (OPEN — this trace carries the
+  CONDITIONAL-ON-X.1b tag until WEIGHT-CHARGE closes) + M4a tails (from [2b] — the
+  DAG edge pass-2 found missing). Until WEIGHT-CHARGE and this coercivity
+  calculation close, X.2 — hence SQ.3/SQ.4 — remains conditional. This is what
+  SQUEEZE and RESUM-n3 consume.
 - **X.3 (termination a.e. + N-stability restated).** μ(non-terminating) = 0; every
   terminating f decided at its finite threshold; the stratum series per σ sums the
   full type density (3.2 + 3.3 + Thm 2.1, restated in MOVES vocabulary — one cite
@@ -853,7 +994,7 @@ overrun kills X.1b; (iii) the (3b) constant at D = 2…8 vs exact counts; (iv) X
 env(N) at N = 4…8 vs measured undecided mass, both primes, exhaustive. A violation in
 (i)/(ii) is adjudicated against the dictionary X.1a/X.1b, not patched.
 
-## 6. NOTE [4] SQUEEZE — the two-sided general-n bound, and THEOREM U (REV 4: SQ.0 DECIDED-BUDGET; ESCAPE-conditional domination)
+## 6. NOTE [4] SQUEEZE — the two-sided general-n bound, and THEOREM U (REV 5: SQ.0(c)/(d) redone multi-track/realized-level; ESCAPE(E0)-conditional domination)
 
 **The n = 2 pattern to generalize (W6):** (U) decided_σ(N) ≤ (value)·p^{2N} via the
 fixpoint inequality `msW_eighth_le`, plus decided_σ(N) ≥ (value − env(N))·p^{2N} via the
@@ -862,20 +1003,33 @@ lemma (the rev-2 STALL citation and rev-3's box-level disc bound are both retire
 SQ.2's induction runs over (e, τ) blocks with [2r] supplying every base-changed
 hypothesis and ESCAPE supplying Neumann convergence.
 
-- **SQ.0 (DECIDED-BUDGET — NEW LEMMA at REV 4; pass-3 obstruction 6: Lemma 3.3 is a
-  MEASURE bound and implies NO pointwise discriminant bound on a level-N box —
-  residue boxes contain discriminant-zero polynomials and lifts of arbitrarily high
-  valuation; the rev-3 citation is STRUCK).** If f's canonical history has decision
-  threshold ≤ N, then — proved from DECISION STABILITY (Thm 2.1 / X.2 PROGRESS
-  mechanics), never from the tail: (a) every height ≤ h*(N) (each move constrains
-  levels ≥ an affine function of its heights, and all constrained levels are ≤ N);
-  (b) every key weight ≤ w*(N) (a key's weight is a consumed side value, bounded by
-  the height budget); (c) #zero-gain nodes ≤ n!·w*(N) (D.10: each zero-gain
-  recentering STRICTLY increases key weight; weights are quantized in (1/n!)·ℤ — a
-  flagged derivation sub-claim); (d) the ledger exponent A(H) ≤ nN and every
-  genuine-index node has POSITIVE ledger increment (flagged sub-claim), so
-  #genuine nodes ≤ nN. Hence histories with threshold ≤ N form a FINITE family with
-  an explicit bound T(n, N) — X.1b appears NOWHERE in this lemma.
+- **SQ.0 (DECIDED-BUDGET — clauses (c)/(d) REDONE at REV 5; pass-4 critical 5: the
+  rev-4 single-ladder bound n!·w*(N) bounded ONE monotone ladder while a history
+  can contain several keys, branches, and ladder restarts, and (d)'s template form
+  did not follow from C_H(p)·p^{nN−A(H)} ∈ ℤ).** If f's canonical history has
+  decision threshold ≤ N, then — proved from DECISION STABILITY (Thm 2.1 / X.2
+  PROGRESS mechanics), never from the tail: (a) every height ≤ h*(N) (each move
+  constrains levels ≥ an affine function of its heights, and all constrained levels
+  are ≤ N); (b) every key weight ≤ w*(N) (a key's weight is a consumed side value,
+  bounded by the height budget); (c) MULTI-TRACK zero-gain bound:
+      d_zero(H) ≤ L(n)·D(n)·w*(N),
+  proved by exhibiting — per history — (c1) an assignment of EVERY zero-gain move
+  to ONE of at most L(n) monotone weight TRACKS (keys, branches, and ladder
+  restarts each open a track; L(n) bounds their number in a degree-n history),
+  (c2) a common denominator D(n) with all key weights in (1/D(n))·ℤ, so each
+  zero-gain move strictly increases its own track by ≥ 1/D(n) (D.10), and (c3) a
+  DISPLAYED interval, bounded via threshold ≤ N, containing every track's weight —
+  the budget is SUMMED over tracks, never charged to one ladder; (d) ledger budget,
+  argued at the REALIZED level: for an individual realized lift-carrying history η,
+  Theorem C gives the NONZERO integer count p^{nN−A(η)} of its level-N stratum,
+  forcing A(η) ≤ nN; A is shape-determined (C.3), so every REALIZABLE template γ
+  inherits A(γ) ≤ nN (unrealizable templates are zero-extended, (†-AGG)(ii)) —
+  NEVER derived from C_γ(p)·p^{nN−A} ∈ ℤ alone, which proves nothing; plus the
+  positive genuine-increment sub-claim (still flagged), so #genuine nodes ≤ nN.
+  Hence histories with threshold ≤ N form a FINITE family with an explicit bound
+  T(n, N) — X.1b appears NOWHERE in this lemma. L(n) and D(n) are DERIVATION
+  DUTIES of this note (flagged): candidate L(n) ≤ #keys × #branch-openings ≤ n²,
+  D(n) | n!.
 - **SQ.1 (budgeted covering — finiteness re-cited at REV 4).** Every f in the
   level-N box is in exactly one of: (a) the stratum of one complete realizable
   canonical history with threshold ≤ N, or (b) Undec(N). PARTITION (not mere
@@ -887,8 +1041,9 @@ hypothesis and ESCAPE supplying Neumann convergence.
   decided_σ(N) ≤ R_σ(p)·p^{nN}. *Route (REV 2):* the depth/height partial sums of
   RS.1's positive series are ≤ the full sum; the full sum = the block solve; the
   solution dominates every partial sum by MATRIX monotone iteration — RS.PRE's
-  normalized K_e ≥ 0, Neumann convergence via the ESCAPE kernel at q = p (REV 4;
-  CONDITIONAL-ON-ESCAPE until it closes) — inducted in cluster size
+  normalized K_e ≥ 0, Neumann convergence via ESCAPE route E0 at the FIXED
+  evaluation q = p (REV 5 — per-p suffices, no uniformity consumed;
+  CONDITIONAL-ON-ESCAPE(E0) until it closes) — inducted in cluster size
   e, with ALL base-changed legs β_m(p^δ) supplied as [2r] REL.3 statements over O_δ
   (pass-1 obstruction 6: the induction hypothesis is now a certified input, not a
   formal substitution). Needs R_σ(p) ≥ 0 and block positivity (RS.3), stated
@@ -899,8 +1054,9 @@ hypothesis and ESCAPE supplying Neumann convergence.
 - **SQ.4 = THEOREM U (conditional qualifier INLINE at REV 4, pass-3 concern 5).**
   ρ_σ := lim decided_σ(N)/p^{nN} exists and equals R_σ(p) for every p; R_σ ∈ ℚ(q) is
   the p-independent solution of (R_e); Σ_σ R_σ = 1. Assembled from SQ.2 + SQ.3 +
-  X.2 — hence CONDITIONAL on ESCAPE and on X.1b (via X.2's env constants) and on
-  K_e's three RS.PRE inputs until each closes; the capstone statement and its
+  X.2 — hence CONDITIONAL on ESCAPE(E0) and on X.1b (via X.2's env constants) and
+  on K_e's three RS.PRE inputs (M4a-X, D4R.0, CTS.4) until each closes; the
+  capstone statement and its
   acceptance record carry these tags verbatim (§7's acceptance-record rule). State
   with the honest normalization sentence (monic-box density; projective/palindromy
   OUT OF SCOPE per the standing directive).
@@ -950,17 +1106,22 @@ Per note, in order; no step may be skipped, no note trusted early:
    MENU-n3/EXHAUST-n3 exercise n = 3 species only). AGGREGATE-CENSUS clause (REV 4,
    pass-3 obstruction 5): any census of an aggregate quantity must satisfy §2v
    (†-AGG) — finite listed sum, displayed monomial normalization, displayed degree
-   bound; completed densities are gated ONLY by two-sided SQUEEZE brackets. Gate
-   roster at REV 4: D4-n3, VALUE-Fq (24 q-points, + the JREF joint layer) + VALUE-p
-   (+ JOINT-probe), MENU-n3 (two-sided parameter exactness), REL-n4, EXHAUST-n3
-   (+ STALL-probe), STATE-probe-2 (blocks [2b] AND [3]) + ESCAPE-probe + RESUM-n3,
+   bound; completed densities are gated ONLY by two-sided SQUEEZE brackets.
+   PROBE-LANGUAGE clause (REV 5, pass-4 concern 7): finite tests REFUTE within
+   their tested box and never establish — the words "deciding probe"/"decisive
+   test" may not appear in any acceptance record; every probe is a front-loaded
+   REFUTER. Gate roster at REV 5: D4-n3, VALUE-Fq (24 q-points, + the CTS TABLE
+   layer: cell predicates, cell sizes, full T tables, row-partition and
+   representative-independence checks) + VALUE-p (+ JOINT-probe + COMPOSE-probe),
+   MENU-n3 (two-sided parameter exactness), REL-n4, EXHAUST-n3 (+ STALL-probe),
+   STATE-probe-2 (blocks [2b] AND [3]) + ESCAPE-probe (E0-retargeted) + RESUM-n3,
    SQUEEZE-n3. Gate scripts live in `verification/`, predictions in
    `verification/*_SEALED_PREDICTIONS_<date>.md`.
    ACCEPTANCE-RECORD RULE (REV 4, pass-3 concern 5): every acceptance record names
    its note's open conditions INLINE — RS.4, [3], [4], and the capstone may not be
-   recorded unconditional while ESCAPE, WEIGHT-CHARGE (X.1b), or any RS.PRE input
-   (M4a-X, D4R.0, M2(ii)) is open; a record lacking its tags is a protocol
-   violation, not an oversight.
+   recorded unconditional while ESCAPE(E0), WEIGHT-CHARGE (X.1b), or any RS.PRE
+   input (M4a-X, D4R.0, CTS.4 = M2(ii)) is open; a record lacking its tags is a
+   protocol violation, not an oversight.
 5. **Update `docs/PROJECT_STATE.md` + the MOVES ledger** at every acceptance
    (update-then-act); axiom changes (none planned — X.1 cites the already-pinned GMN
    material) would additionally require the semantic-guardian triple test.
@@ -981,22 +1142,24 @@ certified perimeter.
   exposure is [1v] Theorem VAL (torus lemma dead, counterexample on record in §2).
   WALL RULE (REV 4 — refute-or-support per §2v (†)/(†-AGG); the rev-3 σ-aggregate
   clause was NOT justified — pass-3 obstruction 5: a completed density has geometric
-  denominators and no finite A-shift restores integrality): (1) census a LOC/HIST
-  count at m ≥ W+2 exact points (W = ITS displayed pool dimension, per §1s); (2) an
+  denominators and no finite A-shift restores integrality): (1) census a
+  LOC/template count at m ≥ W+2 exact points (W = ITS displayed pool dimension, per §1s); (2) an
   exact mismatch with the degree-≤W interpolant, surviving adjudication,
   CONCLUSIVELY refutes universality of that count — the displayed growth bound plus
-  integrality means finite data DOES decide the negative; at the aggregate level the
+  integrality means finite data DOES decide the negative — table entries and path
+  products included, per the CTS; at the aggregate level the
   same conclusive force attaches ONLY to (†-AGG)-admissible quantities — e.g. a
   wild-p mismatch of decided_σ(N) (integer, degree ≤ nN) against its degree-bounded
   tame interpolant is the WALL, demonstrated conclusively (the directive's
   obstruction); a COMPLETED-density discrepancy becomes a wall only via the
   two-sided SQUEEZE brackets excluding the candidate value, envelope in hand —
   quantitative, never interpolation; (3) an all-points match is SUPPORT at stated
-  surplus, and acceptance still runs through the VAL.1/VAL.2J proofs. PROBE RESULT (exploration-class, 24 q-points,
+  surplus, and acceptance still runs through the VAL.1/CTS proofs. PROBE RESULT (exploration-class, 24 q-points,
   results/value_probe_output.txt): all 15 linked totals UNIVERSAL (surplus ≥ 15);
   σ-aggregates match the tame interpolant at p = 2 and p = 3 EXACTLY; twisted-cell
   fiber constancy exact everywhere; 32 fixed-frame series provably char-dependent —
-  adopted as the ANCHOR-TWIST design constraint on VAL.2J/M2/M4b-T, NOT a wall. The
+  adopted as the ANCHOR-TWIST design constraint on the CTS tables/M2/M4b-T, NOT a
+  wall. The
   SEALED VALUE-Fq/VALUE-p gates still run before [1v] is trusted (Case-K discipline).
 - **R2 — the same-size recursion does not close in finitely many state types
   (POTENTIAL STRUCTURAL WALL). PROBE REPORTED 2026-07-26: probe-level NO-WALL; the
@@ -1010,11 +1173,12 @@ certified perimeter.
   vtx-stratum-varying regime rev 2 specified. WALL EXPERIMENT now = STATE-probe-2
   (§4: n = 6, p = 2, R₀ = ψ²·χ, conditioned cylinders ≤ 2^28 per state at N = 8,
   REQUIRED before [2b]'s OR [3]'s acceptance — REV 4 scope): a same-TYPE mismatch
-  surviving adjudication AND one 𝒯-refinement round via [1v]'s JREF strata = the
-  wall — a genuinely new resummation idea required; no fallback inside this
-  architecture. (Same-SHAPE different-TYPE differences are expected and carried by
-  the block system. A JREF-insufficiency finding — joint law varying within one τ —
-  is the SAME wall channel: one refinement round, then wall.)
+  surviving adjudication AND one 𝒯-refinement round via [1v]'s CTS cells (one
+  JREF^src refinement) = the wall — a genuinely new resummation idea required; no
+  fallback inside this architecture. (Same-SHAPE different-TYPE differences are
+  expected and carried by the block system. A CTS.4-insufficiency finding — the
+  table row varying within one τ — is the SAME wall channel: one refinement round,
+  then wall.)
 - **R3 — menu completeness failure (M5).** A realized history species outside the
   retained vocabulary. DEMONSTRATED BY: a stray shape or a PARI-oracle mismatch in the
   exhaustive MENU-n3 census. REV 2 honesty (pass-1 obstruction 8): gates cannot
@@ -1033,16 +1197,20 @@ certified perimeter.
   Invariant-2 budget. CONSUMERS NARROWED at REV 4: only X.2's env constants (hence
   SQ.3 and the envelope gate layers) carry the CONDITIONAL-ON-X.1b tag — RS.1, RS.3,
   SQ.1 discharged (§4/§6); no acceptance of [3]/[4] hides the condition.
-- **R9 — ESCAPE fails (NEW at REV 4; pass-3 obstruction 3 made the spectral gap an
-  UNSUPPORTED claim, not a consequence of WEIGHT-CHARGE).** If no uniform (B(n),
-  c(n)) exists — some type family retains still-in-block mass → 1 — then Neumann
-  inversion and SQ.2's domination both fail; RESUM's solvability is unfounded even
-  with all counts polynomial. DEMONSTRATED BY: the ESCAPE-probe (§4) measuring a
-  type with B-step exit mass 0 at every loop position for every candidate constant,
-  or the (E1)/(E2) derivations both failing with a witness family. FALLBACK: route
-  (E2)'s drift/renewal argument tolerates unbounded zero-gain runs; if BOTH routes
-  fail with witnesses, that is a structural wall of the block architecture —
-  recorded, not patched.
+- **R9 — ESCAPE fails (RESTRUCTURED at REV 5; pass-4 concern 3: a uniform (B, c)
+  was MORE than RS.3 needs, and E2's drift alone could never deliver it).** The
+  live exposure is now E0: if for some fixed p and e the k-step still-in-block
+  mass does NOT tend to 0, then ρ(K_e(p)) = 1, Neumann inversion fails at that p,
+  and SQ.2's domination fails with it; RESUM's solvability is unfounded even with
+  all counts polynomial. DEMONSTRATED BY: the retargeted ESCAPE-probe (§4) finding
+  a row whose k-step still-in-block mass stabilizes above 0, or the E0 derivation
+  failing at the kernel-identification step. ADJUDICATION ORDER: an E0 failure
+  with sound RS.PRE inputs would CONTRADICT X.3's a.e. exit — so a failure is
+  adjudicated first against the kernel identification (M4a-X/D4R.0/CTS.4), then
+  against L5fix's termination quantifiers; only then is it a structural wall of
+  the block architecture — recorded, not patched. ESCAPE-UNIF's routes (E1 with
+  the displayed path-mass multiplication; E2 plus bounded-time minorization) stay
+  on record as optional strengthenings, consumed by nothing.
 - **R5 — fixpoint domination circularity (SQ.2).** As rev 1, sharpened: the induction
   order is now explicit ((e, τ) blocks, Neumann index within e; base-changed legs only
   via REL.3), and the kernel must check no equal-e feedback outside M_e. DEMONSTRATED
@@ -1070,15 +1238,17 @@ certified perimeter.
 
 ## 9. Effort map (REV 3 — for scheduling, not for skipping)
 
-[1] D4-R: 1 unit (restatement + the PARTITION kernel with three named obligations;
-DRAFT-CLEARED first, §1). [2a] SPECIES: 1 unit (M1 + M5). [1v] VALUE: 3 units (VAL.1
-+ the JREF burdens J1–J3 + the widened 24-point gates + JOINT-probe). [2b] STATE-GEOM:
-2.5 units (M2 joint-refined lumpability + M4a + M4a-X + M4b-T equivariance;
-acceptance behind STATE-probe-2). [2r] REL: 1.5–2 units (the re-scoping pass + the
-four REL.2 obligations + one gate). [5] EXHAUST: 2 units (three kernels; X.1b is
-OPEN — WEIGHT-CHARGE may resist). [3] RESUM: 4–5 units (RS.PRE/RS.0/RS.1 + ESCAPE
-kernels + STATE-probe-2 + ESCAPE-probe + RESUM-n3). [4] SQUEEZE: 2 units (incl.
-SQ.0's flagged sub-claims). Verification multiplies each by the usual ~2× (the §C
+[1] D4-R: 1 unit (restatement + the PARTITION kernel with three named obligations,
+maximal-run form; DRAFT-CLEARED first, §1). [2a] SPECIES: 1 unit (M1 + M5). [1v]
+VALUE: 4 units (VAL.1 + the CTS build CTS.0–CTS.5 with the full tables + the
+widened 24-point gates with the TABLE layer + JOINT-probe + COMPOSE-probe). [2b]
+STATE-GEOM: 2.5 units (M2 on the CTS state + M4a + M4a-X incl. the affine-semigroup
+duty + M4b-T equivariance; acceptance behind STATE-probe-2). [2r] REL: 1.5–2 units
+(the re-scoping pass + the four REL.2 obligations + one gate). [5] EXHAUST: 2 units
+(three kernels; X.1b is OPEN — WEIGHT-CHARGE may resist; X.2's displayed
+dichotomy). [3] RESUM: 4–5 units (the K_e assembly/RS.0/RS.1 + ESCAPE(E0) +
+STATE-probe-2 + ESCAPE-probe + RESUM-n3). [4] SQUEEZE: 2 units (incl. SQ.0's
+multi-track (c) and the L(n)/D(n) duties). Verification multiplies each by the usual ~2× (the §C
 precedent: 13 passes). Gates are cheap (CPU-only, exhaustive boxes ≤ 2^28 conditioned
 / 2^24 full / 3^15–3^18; `verification/` patterns exist); seal discipline is the
 cost. REV 3 status: both wall probes have REPORTED (R1 NO-WALL exploration-class; R2
@@ -1236,3 +1406,81 @@ STATE-probe-2, which now blocks [2b] too; JREF-insufficiency identified as the s
 wall channel). R4 live (WEIGHT-CHARGE open; consumers narrowed to X.2). R9 NEW and
 live (ESCAPE open; two named routes, probe specified). No wall demonstrated; none
 closed.
+
+---
+
+## REV 5 RECORD (2026-07-26) — response to the pass-4 structural review
+
+*(ASSEMBLY_PLAN_PASS4_2026-07-26.md: 5 critical obstructions, 7 concerns, verdict
+UNSOUND, D4-R drafting GO with the mandatory prefix/maximal-run repair; plus
+re-judgments of the rev-4 dispositions, of which pass-3 C2 and C4 were judged NOT
+GENUINE and C1, C3, C5, C6, K1 partial/incomplete — all redone here. C = critical,
+K = concern.)*
+
+**The decisive architectural build (the pass's closing directive, delivered):** the
+species-relative JREF + position-independent C_{S,τ} picture is REPLACED by the
+GLOBALLY COMPATIBLE CELL-TO-CELL POLYNOMIAL TRANSITION SYSTEM (the CTS, §2v):
+
+1. **ONE state space** 𝒞_n = {(s, α)}: per bounded skeleton s, the source partition
+   JREF^src(s) = ⋀_{m ∈ Out(s)} JREF_m^source — the meet over the FULL outgoing
+   menu, so "same τ" is meaningful for all outgoing moves simultaneously;
+   finiteness only after finiteness of Out(s); cell predicates a DISPLAY duty
+   (CTS.0), never a vocabulary list.
+2. **ONE polynomial transition-table family** T_{m,o}^{α,β}(q) with the pass's five
+   demanded clauses as burdens CTS.1–CTS.5: finiteness/p-independence;
+   polynomiality of entries AND cell sizes with displayed degrees (+ the
+   exponent-map congruence audit, K1); row partition of the source assignment set;
+   representative independence (= M2(ii), subsuming J3/VAL.2J); global
+   source/target compatibility so matrix products type-check.
+3. **LOC→HIST→FAM recomposed as finite-path matrix products + positive rational
+   resummation:** realized η (Theorem C's object) SPLIT from the value-forgotten
+   template γ (a finite CTS path) — §1s now has FOUR objects; template counts =
+   path products C_γ = ∏ T (VAL CHAIN — "iterated pairing" is now a defined matrix
+   operation); FAM = the matrix fixpoint over the regular path language (depth) ×
+   M4a-X-exact geometric series (heights); M4b's position-independence claim
+   STRUCK, narrowed to path-length-neutral height translations; C_{S,τ} notation
+   RETIRED.
+
+| Finding | Verdict on rev 4 | REV 5 disposition |
+|---|---|---|
+| C1 JREF not a single state partition; cells not displayed | "same τ" undefined across moves | CTS-S: JREF^src(s) = the meet over Out(s) (§2v); explicit target-cell maps = CTS.5; predicate display = CTS.0; M2's τ = (s, α) (§3). Redoes pass-3 disposition C2 (NOT YET GENUINE) |
+| C2 Theorem VAL LOCAL too weak (one total C_m; no transition numerators) | chain/M2/K_e unconstructible | Theorem VAL restated as the CTS table theorem (CTS.1–5): entries in ℚ[q], displayed degrees, row partition, representative independence, global cells; cell sizes AND numerators both polynomial (CTS.2); scalar C_m recovered as row sums; RS.PRE's numerator now a defined object; VALUE-Fq gains the sealed TABLE layer; COMPOSE-probe added for CTS.5/CHAIN (§2v, §4, §7) |
+| C3 LOC/HIST/FAM still do not compose; M4b contradicts the k-growing degree | two objects under H; C_{S,τ} false | §1s rewritten to FOUR objects (LOC m / realized η / template γ / FAM) with `unroll`/`resum` through the CTS; the pass's automaton formulation adopted (k-loop count = k-fold matrix product; only path-length-neutral height coordinates use M4b-T constancy); M4b's "not of the cone position" STRUCK; C_{S,τ} RETIRED; RS.1 re-sketched as path products then fixpoint (§1s, §3, §4). Redoes pass-3 disposition C4 (NOT GENUINE) |
+| C4 D4R.0 mishandles nonterminating runs | prefix ≠ union of completions | MAXIMAL-RUN interface alignment in §2 (localized, per the pass's own note — drafting independence intact): H_can^max total, finite-or-infinite; prefix cylinders = fibers of the finite-prefix map, complete-history fibers separate; Pref(P̂) replaces Hist(P̂); the pass-4 twelve-lemma roster recorded as the BINDING draft spec; the GO stands |
+| C5 SQ.0(c) single-ladder bound; (d) template-level non sequitur | budget unproved | SQ.0(c) redone MULTI-TRACK: d_zero ≤ L(n)·D(n)·w*(N) with per-move track assignment, common denominator D(n), per-track displayed interval (L(n)/D(n) flagged derivation duties); SQ.0(d) argued at the REALIZED level — Theorem C's nonzero p^{nN−A(η)} forces A(η) ≤ nN, shape-determinacy transfers it to realizable templates, zero-extension covers the rest (§6) |
+| K1 J2 congruence dependence (gcd(a, q^g−1)) | audit missing | EXPONENT-MAP AUDIT written into CTS.2: every norm/trace/ratio/collision exponent map audited; "triangular/monomial shape" explicitly not accepted; the anchor twist proves nothing about unaudited strata (§2v) |
+| K2 Route A needs an affine-semigroup argument | finite decomposition unproved | AFFINE-SEMIGROUP DUTY added to M4a-X Route A: Gordan/fundamental-module statement + composition compatibility of the translation bijections; Route B intact; M4a-X also SCOPE-RESTATED to the height directions at fixed template (§3) |
+| K3 E2 does not imply ESCAPE; RS.3 needs less | uniform B unsupported | ESCAPE RESTRUCTURED: primary route E0 per-fixed-p (X.3 a.e. exit + exact kernel identification ⟹ K_e(p)^k𝟙 ↓ 0 ⟹ ρ(K_e(p)) < 1) — the pass's own suggestion adopted; RS.3/SQ.2 consume E0 only (both run at fixed q = p); ESCAPE-UNIF kept as optional strengthening with E2's bounded-time minorization duty displayed; ESCAPE-probe retargeted at k-step decay; R9 rebuilt with its adjudication order (§4, §6, §8) |
+| K4 E1 path-mass multiplication undisplayed | constant unabsorbed | Displayed inside ESCAPE-UNIF(E1): path mass ≥ p^{−Bc₀}, c = B·c₀ absorbs path length and fresh-pool dimensions; witness lemma per REQUIRED transition at each intermediate type (§4) |
+| K5 (†-AGG) canonical example hidden dependencies | conditionality unexposed | FIVE exposed inputs written into (†-AGG): SQ.0's p-independent template family; zero-extension; CTS polynomiality; the degree-≤nN bound; REL.1/REL.2 for prime-power q (§2v) |
+| K6 X.2 needs the quantitative dichotomy | constants missing | The dichotomy DISPLAYED with linear-in-N constants: threshold > N ⟹ d_total ≥ d*(N) ∨ max h ≥ h*(N); X.2's conditional status (and SQ.3/SQ.4's) restated inline (§5) |
+| K7 gate language overstates finite tests | proof-language drift | PROBE-LANGUAGE clause in §7 ("deciding probe"/"decisive test" banned from acceptance records; probes are front-loaded REFUTERS); M4a-X's "deciding probe" reworded accordingly (§3, §7) |
+
+**Also at REV 5 (forced by the repairs):** the (†) rule's classes renamed
+LOC/template throughout the live text; RS.2 re-derived from CTS.2; the DAG's
+[1v]→[2b]/[3] edge labels updated (no node or edge changes — the graph is
+unchanged and acyclic); [1v]'s budget raised 3 → 4 units (the tables); the
+honest-kernel-with-probe discipline preserved everywhere (every open kernel below
+keeps a named refuter).
+
+**Open kernels after REV 5 (each with its refuter/gate):** D4R.0 maximal-run form
+(gate D4-n3); the CTS — CTS.0–CTS.5 + VAL.1 (VALUE-Fq with the TABLE layer,
+VALUE-p, JOINT-probe, COMPOSE-probe); M2 lumpability = CTS.4 consumption + the
+e_birth/e_read threading re-walk (STATE-probe-2 — blocks [2b] AND [3]); M4a-X
+EXACT-DOMAIN incl. the affine-semigroup duty (MENU-n3 two-sided (iii)); M4b
+narrowed constancy + M4b-T equivariance incl. π_v (VALUE-Fq twisted layers;
+MENU-n3); REL.1/REL.2 (REL-n4); X.1a (EXHAUST-n3 (i)/(i′)); X.1b WEIGHT-CHARGE —
+OPEN (STALL-probe, EXHAUST-n3 (ii)); ESCAPE(E0) — OPEN (retargeted ESCAPE-probe;
+RESUM-n3); RS.0(β) height-shift bisimulation (STATE-probe-2 + RESUM-n3); X.2
+PROGRESS dichotomy with its constants (EXHAUST-n3 (iv)); SQ.0's L(n)/D(n) +
+positive genuine-increment sub-claims (derivation duties inside [4]); SQ.2's
+no-equal-e-feedback check (SQUEEZE-n3).
+
+**Wall status after REV 5:** R1 open (probe-level NO-WALL; the sealed TABLE-layer
+gates are the next discriminator — a non-polynomial table entry surviving (†)
+adjudication is the wall). R2 open (vtx-varying regime untested pending
+STATE-probe-2; CTS.4-insufficiency — the table row varying within one τ — is the
+same wall channel: one JREF^src refinement round, then wall). R4 live
+(WEIGHT-CHARGE open; consumers narrowed to X.2's env constants). R9 restructured
+(E0 open; an E0 failure with sound kernel inputs would contradict X.3 and is
+adjudicated in the displayed order). No wall demonstrated; none closed.
