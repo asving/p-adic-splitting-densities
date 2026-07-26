@@ -255,3 +255,113 @@ TRANSstage`; `L5.landVertex, landVertexDigit, recSubst, recVV, recSpecies, recRS
 recLiftIndep, realRecursion, realDomination, realConclusion-form`; `L6.moveReduceCommute,
 ledgerCount, measureExact`. The `{F : Type*}` binder form used in `MANIFEST.json` was confirmed to
 elaborate standalone. The DAG was verified acyclic (DFS) and all deps resolve.
+
+---
+
+# ROUND 2 (2026-07-26) — redesign after the semantic-faithfulness rejection
+
+The round-1 `Defs.lean` + `MANIFEST.json` (§§1–7 above) were REJECTED by
+`lean/notes/MOVES_LEAN_SEMAUDIT1_2026-07-26.md` (39 FAITHLESS / 2 IMPRECISE / 3 FLAGGED-OK / 15
+faithful of 59 statements; 10 structural `DEF` defects + 1 IMPRECISE in `Defs`). This section
+records the round-2 redesign that repairs it. **§§1–7 above are SUPERSEDED where they conflict
+with this section** (notably D2/D3's fixed-ambient-`F` residual model and the `resUnits` tracker).
+Round-2 `Defs.lean` and `MANIFEST.json` (61 units) are the current deliverables. Both were fully
+elaboration-tested (below).
+
+## R2.1 The one structural decision that fixes most defects
+
+The round-1 root cause was modelling the residue side with a bare `resUnits : Subgroup Fˣ` over a
+single fixed ambient `F`, with residue growth faked as `Algebra.adjoin F {z̄}` (= all of `F`, so
+every degree-`g` descent collapsed to `g = 1`) and the residual map `R` landing in ambient
+`F[z^{±1}]` (where an irreducible `ψ` over the *current* field splits, breaking K1). Round 2:
+
+> **The stage carries the CURRENT residue field as a genuine `K : Subfield F`, and
+> `R : A → LaurentPolynomial ↥K` lands in the CURRENT field's Laurent ring.**
+
+Consequences: `ψ : Polynomial ↥σ.K` is genuinely prime in `↥K[z^{±1}]` (K1/width/ψ-order are
+faithful); `F' = σ.nextField z̄ := Subfield.closure (↑K ∪ {z̄})` is a genuine degree-`g` extension
+inside `F` (`σ.K ≤ σ'.K`, no collapse); the base field `σ.FQ : Subfield F` is fixed across the
+tower (`TRANSstage` carries `σ'.FQ = σ.FQ`). The ambient `F` survives only as a big container
+(`PROJECT_STATE.md` §4), now carrying `[Finite F]` (weaker than round-1 `[Fintype F]`, so the
+concrete `GaloisField 2 2` gate elaborates).
+
+## R2.2 The 10 `DEF` defects — one-line resolutions
+
+| DEF | round-1 defect | round-2 resolution |
+|---|---|---|
+| DEF-1 | S3 (slot decomposition / Y-transcendence) absent | new **derived** unit `L2.slotDecomp`: graded-piece additivity from `strideRule`+`anchorCong`+`GRb` (distinct minimizing slots ⟹ distinct `z`-positions ⟹ no cancellation) |
+| DEF-2 | S4 / current residue field absent; `adjoin F {z̄}` = all of `F` | `σ.K : Subfield F` current field; `R` over `↥K`; `F' = σ.nextField z̄ = K⟮z̄⟯`, genuine degree-`g` |
+| DEF-3 | `U`, representatives, `V`, `T`-vector absent | `σ.reps : List (Polynomial ℤ_[p])` (the `U` list, all in `C` so current key adjoined separately) + `σ.Tvec : List (Polynomial ℤ_[p] × ℤ)` (exponent-vector pairs), `hTvec : Tvec.map Prod.fst = reps` |
+| DEF-4 | S5 wrong scale (`−t·w(B)` for `−t·w_prev(B)`) | `σ.wPrev` (parent valuation) added; `hStretch : w B = e·wPrev B`; `hS5` position `−t·wPrev B`; base spot-check `dig(B)=ū·z^{−t·v(B)}` now comes out right |
+| DEF-5 | `e=1` pinning missing | `he1t : e = 1 → t = 0` (P2), a `Stage` field |
+| DEF-6 | S6a orbit group not constant | `σ.FQ : Subfield F` fixed base; `hS6a` scalar `c` ranges over `FQ`; `TRANSstage` preserves `FQ` |
+| DEF-7 | S6b not "all current-field scalars" | `hS6b` scalar is any `a : (↥σ.K)ˣ` (current field units), no `resUnits=⊤` smuggling |
+| DEF-8 | `thr` arbitrary | no free `thr`; `hS6b` threshold is literally `σ.wPrev σ.Φ` (the key's parent weight) |
+| DEF-9 | `IsStandardLift` weaker than the displayed lift | `IsStandardLift` **is** the displayed formula `Φ^{eg}+Σ_{ψ_k≠0} t_k Φ^{ek}` with realizer conditions; monic/degree/weight/residual are the **theorems** `L3.liftMonic/liftWeight/liftResidual` |
+| DEF-10 | `IsRecentering` assumes an unrelated stage | `IsRecentering` is a **field-by-field construction** relating `σ'` to `σ` (TRANS-RS items: `w'=w`, `wPrev'=wPrev`, `K'=K`, `FQ'=FQ`, `weightSet'=weightSet`, coefficient digits unchanged at the `digPrime` level) |
+| DEF-11 | value group as `∃ f g, w f − w g = 1` | `hvalgrp : AddSubgroup.closure {n \| ∃ f g, … w f − w g = n} = ⊤` (generated subgroup) |
+| IMPRECISE | `OrdPsiEq X` in Laurent (always false) | new `OrdPsiPoly` over `Polynomial K` + `HasAnchorK` (z-order via the anchored polynomial); no `ord_ψ` of a Laurent unit anywhere |
+
+## R2.3 Per-unit FAITHLESS repairs (the 39 + the 3 vacuity collapses)
+
+All keyed to the same `Stage` redesign. Highlights: `L1.baseStage_exists` now takes a genuine
+`K0 : Subfield F` with `Nat.card ↥K0 = p^{deg φ}` (repairs the "`d ≤ [F:F_p]` insufficient"
+finding — the caller supplies the subfield, so `d ∣ [F:F_p]` is its obligation). `L2.iaugRoot` is
+restated **without a `Stage`** (the round-1 form forced `w Φ = 0` on a stage with `w Φ = h ≥ 1` —
+vacuous); it is now the arithmetic ROOT base case over the trivial parent. `L3.liftExists` drops
+`resUnits=⊤` and returns the displayed lift. `L4.TRANSv`/`TRANSviii_b` quantify `a ∈ σ.nextField z̄`
+(genuine `F'`), not the vacuous self-adjoin. `L4.TRANSstage` produces `σ'` with `σ'.K = K⟮z̄⟯`,
+`σ.K ≤ σ'.K` (genuine growth), `σ'.FQ = σ.FQ`. `L5.realCofin`/`realDomination`/`realConclusion` use
+the parent-scale weight set + threshold `wPrev Φ` + position-0 pinning (no `fr`-trivialisation).
+`L5.recRSland`'s RHS is the z'-anchor exponent `a' = μ` (not `OrdPsiEq X`). `L5.recVV`/`recLiftIndep`/
+`recTRANSRS` consume the field-by-field `IsRecentering` (no longer circular).
+
+## R2.4 Kept faithful-as-scoped (import/name adjustments only)
+
+The audit's 15 faithful units are retained with the residue-tower type changes only: `L0.GRa–GRf`
+(now generic over any field, applied at `↥K`), `L0.FactA_exists`, `L1.gaussVal`, `L2.keyResidualPow`,
+`L2.strideRule`, `L4.TRANSii`, `L4.TRANSiv`, `L5.realRecursion`, `L6.moveReduceCommute`. The three
+**FLAGGED-OK** scopings are kept and recorded as gaps below: `L2.iaugStep` (chord, not full hull),
+`L5.landTransport` (determinacy, not the carry `Equiv`), `L6.ledgerCount` (single uniform `p^{−k}`).
+
+## R2.5 Honest gaps (blueprint gaps — explicit, NOT silent weakenings)
+
+- **G1 — `T` exponent-vector product identity.** `σ.Tvec`/`σ.reps` carry the `(representative, ℤ)`
+  data and the "representatives are nonzero coefficients / current key adjoined separately" pins,
+  but the graded-product identity `T = Π in(ũ_i)^{a_i}` and the transport `V' := Π in_{w'}(ũ)^{s b}·…`
+  are **not** stated as `Stage` equations (the graded ring is deliberately not built, per §B2-DEF's
+  structural decision). The load-bearing residual consequences ARE pinned (`hRΦ`, `hS5`); the raw
+  exponent values are construction detail inside `TRANSstage`. **Flag for review.**
+- **G2 — ambient-`F` sufficiency of the residue tower.** `F` must contain every residue field of
+  a run; carried as `Nat.card ↥K0 = p^{deg φ}` in `baseStage_exists` and as `σ.nextField z̄ ⊆ F`
+  (requires a root `z̄ ∈ F`). A per-stage bundled `F' : Type` model would avoid this but is heavier;
+  the ambient model matches `PROJECT_STATE.md` §4. **Flag: correspondence `nextField z̄` = the
+  note's `F'`, and that `F` is large enough.**
+- **G3 — I-aug ROOT.** `L2.iaugRoot` is the arithmetic base case (trivial parent, `w = 0`); the
+  full "§A initial cluster has positive slopes" is folded into `baseStage_exists`.
+- **G4 — I-aug convexity.** `L2.iaugStep` states the chord inequality `ehg·(μ−j) < w(B_j)−w(B_μ)`;
+  the "every continuing hull side is steeper" half is in the sketch, not the statement.
+- **G5 — `TRANSvi/vii` as post-construction extractions** of `σ'.hRΦ`/`σ'.hS5`; the weight is in
+  `TRANSstage`+`TRANSviii_b`+`TRANSv`. `TRANSstage` must build `σ'.hS6b` from the standalone
+  `TRANSviii_b`, not from `σ'` (non-circularity flag).
+- **G6 — `L5.landTransport` = determinacy**, not the carry `Equiv` (term-by-term ψ-digit equality
+  is false, pass-9 finding 10). The ledger consumes determinacy + `P6ii` only.
+- **G7 — lift-independence scope.** `L5.recLiftIndep` is graded/read-height only; digits below the
+  read line are not lift-independent (Case-K-sharpened D.10 scope clause).
+- **G8 — `L6.moveAffineBij`** states injectivity; the full affine-unitriangular bijection is
+  `FactA` (surjectivity) + `moveReduceCommute` (reduction-compatibility) combined.
+- **G9 — `L6.ledgerCount`/`measureExact`** use the single exponent `k` (uniform `p^{−k}`); the
+  per-equation alphabet-factor bookkeeping (rev-D¹⁰) is collapsed, adequate for measure-exactness.
+- **§C composition** remains out of scope (D.11 defers it, pass-8 gap 7).
+
+## R2.6 Elaboration-test record (round 2)
+
+`Defs.lean` compiles green (`lake env lean LeanUrat/Moves/Defs.lean`, exit 0, no `sorry`, no
+axiom). **All 61 `MANIFEST.json` statements** were elaborated together against the `Defs` body
+(`:= sorry`, `lake env lean`, exit 0, exactly 61 `sorry` warnings, zero errors), including the
+`↥σ.K` residual type, `σ.nextField`, `OrdPsiPoly`/`HasAnchorK`, the field-by-field `IsRecentering`,
+the displayed `IsStandardLift`, and the concrete `GaloisField 2 2` gate (with its
+`Fact (Nat.Prime 2)` + `Fintype.ofFinite` instances). The def-introducing L1 units' signatures
+(`gaussVal`, `baseWeight`, `baseResidual` into `↥K0[z^{±1}]`) were confirmed to elaborate. The DAG
+was verified acyclic (DFS) with all 61 deps resolving; per-layer counts L0=9, L1=5, L2=11, L3=7,
+L4=10, L5=15, L6=4.
