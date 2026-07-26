@@ -1,0 +1,3 @@
+verdid 114 series: {'UNIVERSAL': 66, 'CHAR-SPLIT': 34, 'FINE-SPLIT': 7, 'IRREGULAR': 7}
+NO-WALL: linked counts universal in q; aggregates match at wild p. CAVEAT for [1v]: VAL.2 must use the ANCHOR-TWISTED stratification — fixed-frame cell counts are provably char-dependent (and q mod 3-dependent at aeff=2).
+full tables: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/results/value_probe_output.txt
