@@ -309,6 +309,15 @@ should not be conflated (this is the mistake an earlier draft of this document m
    sealed gates. Next campaign units: §C (composition along read histories), the D4
    restatement, the assembly notes (menu finiteness, depth resummation, general-n
    squeeze), exhaustion tie-in.**
+   MILESTONE (2026-07-26, the parallel campaign): **§C at rev 7** (kernel derived twice
+   over — the C10B window derivation and the Case-L sealed gate, ALL 21 verdicts, the
+   β-strip 760σ discriminant; sole remaining proof obligation = C.1.5, in derivation) and
+   **the MOVES LEAN CORPUS: 50/61 units proved-clean** (core axioms only, 294
+   declarations audited, 0 fence breaks; 5 semantic-audit rounds drove unsafe 39→5;
+   3 statements machine-refuted and corrected; 5 units boundary-deferred to the specced
+   graded-ring campaign — `lean/notes/MOVES_LEAN_FINAL_CENSUS_2026-07-26.md` +
+   `MOVES_LEAN_BLUEPRINT_2026-07-26.md` R5.3). Evidence perimeter: E…L (ten sealed
+   gates).**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
    (+ D3/D5 at n ≥ 3; D2 = Lean vocabulary). Campaign method (per directive): attack the
    open lemmas MATH-FIRST with Codex as helper; when stuck, compute explicit small cases
