@@ -1,0 +1,344 @@
+SEALED CASE-K v2 GATE CENSUS, p = 3 (predictions: CASE_K_SEALED_PREDICTIONS_V2_2026-07-26.md)
+N = 12, mod 3^12 = 531441; caps: main 6 (3^24 members), stability 5.
+SUB' = {w(B0) = 8 exact, w(B1) = 4 exact}; keys (Phi' = Phi - t; (alpha,beta) = (tau1, tau0 - 9)):
+  t=0 (base)                         kind=base  tau=0
+  t=27x*0+81*1 (tau=1)               kind=w4    tau=1
+  t=27x*0+81*2 (tau=2)               kind=w4    tau=2
+  t=27x*1+81*0 (tau=zb)              kind=w4    tau=zb
+  t=27x*1+81*1 (tau=zb+1)            kind=w4    tau=zb+1
+  t=27x*1+81*2 (tau=zb+2)            kind=w4    tau=zb+2
+  t=27x*2+81*0 (tau=2zb)             kind=w4    tau=2zb
+  t=27x*2+81*1 (tau=2zb+1)           kind=w4    tau=2zb+1
+  t=27x*2+81*2 (tau=2zb+2)           kind=w4    tau=2zb+2
+  t=27 (w3 ctrl)                     kind=ctrl3 
+  t=243 (w5 ctrl)                    kind=ctrl5 
+  t=27x+243 (lift of k3)             kind=lift  tau=zb
+  t=27x+81+243 (lift of k4)          kind=lift  tau=zb+1
+
+== SIGN CHECK (1200 members x 13 keys, genuine polydiv by the literal Phi - t):
+  sign B (tau1, tau0-9):  mismatches 0 of 15600; reconstruction failures 0
+  sign A (tau1, -9-tau0): mismatches 12000 of 12000 sign-distinguishable (tau0 != -tau0) cases
+
+== BASE JOINT (w(B1) rows, w(B0) cols) at cap 6 (282429536481 members; census 26s):
+                  5            6            7            8            9           10           12
+3      223154201664  24794911296   2754990144    306110016     34012224      3779136       472392
+4       24794911296   2754990144    306110016     34012224      3779136       419904        52488
+5        2754990144    306110016     34012224      3779136       419904        46656         5832
+6         306110016     34012224      3779136       419904        46656         5184          648
+7          34012224      3779136       419904        46656         5184          576           72
+8           3779136       419904        46656         5184          576           64            8
+12           472392        52488         5832          648           72            8            1
+
+== Q1 (cell structure) — SUB' count 34012224 of 282429536481, fraction 64/531441; per-cell counts (rows d1, cols d0):
+              1        2       zb     zb+1     zb+2      2zb    2zb+1    2zb+2
+1        531441   531441   531441   531441   531441   531441   531441   531441
+2        531441   531441   531441   531441   531441   531441   531441   531441
+zb       531441   531441   531441   531441   531441   531441   531441   531441
+zb+1     531441   531441   531441   531441   531441   531441   531441   531441
+zb+2     531441   531441   531441   531441   531441   531441   531441   531441
+2zb      531441   531441   531441   531441   531441   531441   531441   531441
+2zb+1    531441   531441   531441   531441   531441   531441   531441   531441
+2zb+2    531441   531441   531441   531441   531441   531441   531441   531441
+Q1: all 64 cells non-empty with equal masses: YES (min 531441, max 531441); equal masses on the full 8x8 grid make (d1,d0) exactly a product measure, so d1 indep d0.
+
+== Q2 (conditioned substitution law, member-by-member): 512 (cell,tau) combos; R2(tau)=0 on 56, 2tau+d1=0 on 64, both on 8; violations: 0
+
+== Q3 (fresh-digit genericity at the died heights) [fractions of the cell]:
+  cell (d1=1, d0=1) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=2) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=zb) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=zb+1) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=zb+1) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=zb+1) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=zb+2) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2zb) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2zb+1) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2zb+1) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=2zb+1) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=2zb+2) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=1) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=2) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=zb) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=zb+1) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=zb+1) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=zb+1) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=zb+2) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2zb) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2zb+1) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2zb+1) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=2zb+1) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=2zb+2) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=1) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=1) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=1) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=2) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb+1) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb+2) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=zb+2) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb+2) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=2zb) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=2zb+1) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=2zb+2) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=2zb+2) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=2zb+2) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=1) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=zb) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=zb) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=zb) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=zb+1) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=zb+2) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb+1) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=2zb+1) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb+1) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=2zb+2) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=2zb+2) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb+2) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=1) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=zb) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=zb+1) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+1) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=zb+1) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+2) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+2) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+2) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2zb) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=2zb) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2zb) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=2zb+1) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2zb+2) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=1) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=1) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=1) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=2) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=zb) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=zb+1) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=zb+2) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=zb+2) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=zb+2) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=2zb) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=2zb+1) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=2zb+2) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=2zb+2) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=2zb+2) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=1) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=2) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb+1) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=zb+1) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=zb+1) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb+2) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=zb+2) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb+2) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=2zb) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=2zb) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=2zb) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=2zb+1) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=2zb+2) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=1) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=zb) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=zb) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=zb) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=zb+1) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=zb+2) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2zb) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2zb+1) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+1) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+1) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+Q3: affected combos 56 (B0'-died) + 64 (B1'-died), overlap 8; deviations: 0
+
+== Q4 (discriminating selection on the 8 cells d0 = d1^2): both-rise (cell,cand) combos over ALL 512: 8 (context; the 8 matched combos below are the prediction):
+  cell (d1=1, d0=d1^2=1): matched tau=d1=1 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2, d0=d1^2=1): matched tau=d1=2 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=zb, d0=d1^2=2): matched tau=d1=zb both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=zb+1, d0=d1^2=2zb): matched tau=d1=zb+1 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=zb+2, d0=d1^2=zb): matched tau=d1=zb+2 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2zb, d0=d1^2=2): matched tau=d1=2zb both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2zb+1, d0=d1^2=zb): matched tau=d1=2zb+1 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2zb+2, d0=d1^2=2zb): matched tau=d1=2zb+2 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+
+== Q5 control t=27 (weight 3): aggregated (w(B0'),dig(B0')) = {(w=6,dig=1):34012224}; members with w(B0')>=8: 0 (MUST be 0)
+   control t=243 (weight 5): cells NOT keeping (8,d0) and (4,d1) unchanged: 0 of 64
+
+== Q6 (lift independence WITH SCOPE; truncation: w(B0') cap 9, w(B1') cap 5, digits kept only at exact heights 8 resp. 4):
+  pair t=27x*1+81*0 (tau=zb) vs t=27x+243 (lift of k3): TRUNCATED-table diffs 0 cells (MUST be 0); full-table diffs: T0 on 7 cells [('1', '2zb+1'), ('2', 'zb+1'), ('zb', '2'), ('zb+1', '2zb+2'), ('zb+2', 'zb+2'), ('2zb+1', '2zb'), ('2zb+2', 'zb')], T1 on 0 cells []; out-of-scope diffs 0
+    example T0 diff, cell (d1=1, d0=2zb+1), (orig,lift) at differing entries: (w=11,dig=1):711/732, (w=11,dig=2):711/728, (w=11,dig=zb):711/728, (w=11,dig=zb+1):738/730, (w=11,dig=zb+2):738/729, (w=11,dig=2zb):711/732, (w=11,dig=2zb+1):738/725, (w=11,dig=2zb+2):738/730, (w=12,dig=0):291/242, (w=12,dig=zb):237/254, (w=12,dig=2zb):237/231
+  pair t=27x*1+81*1 (tau=zb+1) vs t=27x+81+243 (lift of k4): TRUNCATED-table diffs 0 cells (MUST be 0); full-table diffs: T0 on 7 cells [('1', '2'), ('2', '2zb+1'), ('zb', '1'), ('zb+1', '2zb'), ('zb+2', 'zb+2'), ('2zb', '2zb+2'), ('2zb+1', 'zb+1')], T1 on 0 cells []; out-of-scope diffs 0
+    example T0 diff, cell (d1=1, d0=2), (orig,lift) at differing entries: (w=11,dig=1):755/725, (w=11,dig=zb):750/729, (w=11,dig=zb+1):680/734, (w=11,dig=zb+2):757/724, (w=11,dig=2zb):741/732, (w=11,dig=2zb+1):752/728, (w=11,dig=2zb+2):694/727, (w=12,dig=0):236/240, (w=12,dig=zb):235/239, (w=12,dig=2zb):225/247
+  Q6 verdict basis: truncated-diff cells 0 of 128 (both pairs, both tables); full-diff cells 14; out-of-scope diffs 0
+
+== CAP-STABILITY RE-CENSUS at cap 5 (3486784401 members; census 2s):
+
+== Q1 (cell structure) — SUB' count 419904 of 3486784401, fraction 64/531441; per-cell counts (rows d1, cols d0):
+              1        2       zb     zb+1     zb+2      2zb    2zb+1    2zb+2
+1          6561     6561     6561     6561     6561     6561     6561     6561
+2          6561     6561     6561     6561     6561     6561     6561     6561
+zb         6561     6561     6561     6561     6561     6561     6561     6561
+zb+1       6561     6561     6561     6561     6561     6561     6561     6561
+zb+2       6561     6561     6561     6561     6561     6561     6561     6561
+2zb        6561     6561     6561     6561     6561     6561     6561     6561
+2zb+1      6561     6561     6561     6561     6561     6561     6561     6561
+2zb+2      6561     6561     6561     6561     6561     6561     6561     6561
+Q1: all 64 cells non-empty with equal masses: YES (min 6561, max 6561); equal masses on the full 8x8 grid make (d1,d0) exactly a product measure, so d1 indep d0.
+
+== Q2 (conditioned substitution law, member-by-member): 512 (cell,tau) combos; R2(tau)=0 on 56, 2tau+d1=0 on 64, both on 8; violations: 0
+
+== Q3 (fresh-digit genericity at the died heights) [fractions of the cell]:
+  cell (d1=1, d0=1) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=2) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=zb) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=zb+1) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=zb+1) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=zb+1) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=zb+2) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2zb) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2zb+1) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=1, d0=2zb+1) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=2zb+1) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=1, d0=2zb+2) tau=1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=1) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=2) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=zb) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=zb+1) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=zb+1) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=zb+1) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=zb+2) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2zb) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2zb+1) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2, d0=2zb+1) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=2zb+1) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2, d0=2zb+2) tau=2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=1) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=1) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=1) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=2) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb+1) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb+2) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=zb+2) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=zb+2) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=2zb) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=2zb+1) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=2zb+2) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb, d0=2zb+2) tau=zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb, d0=2zb+2) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=1) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=zb) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=zb) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=zb) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=zb+1) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=zb+2) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb+1) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=2zb+1) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb+1) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=2zb+2) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+1, d0=2zb+2) tau=zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+1, d0=2zb+2) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=1) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=zb) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=zb+1) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+1) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=zb+1) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+2) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+2) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=zb+2) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2zb) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=2zb) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2zb) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=zb+2, d0=2zb+1) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=zb+2, d0=2zb+2) tau=zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=1) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=1) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=1) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=2) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=zb) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=zb+1) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=zb+2) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=zb+2) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=zb+2) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=2zb) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=2zb+1) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb, d0=2zb+2) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=2zb+2) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb, d0=2zb+2) tau=2zb: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=1) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=2) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb+1) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=zb+1) tau=zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=zb+1) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb+2) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=zb+2) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=zb+2) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=2zb) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=2zb) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+1, d0=2zb) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=2zb+1) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+1, d0=2zb+2) tau=2zb+1: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=1) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=zb) tau=1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=zb) tau=zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=zb) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=zb+1) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=zb+2) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2zb) tau=2zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9; w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2zb+1) tau=2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+1) tau=zb+2: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+1) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb+1: w(B0')=9 frac 8/9, >=10 frac 1/9;
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb+2: w(B1')=5 frac 8/9, >=6 frac 1/9
+Q3: affected combos 56 (B0'-died) + 64 (B1'-died), overlap 8; deviations: 0
+
+== Q4 (discriminating selection on the 8 cells d0 = d1^2): both-rise (cell,cand) combos over ALL 512: 8 (context; the 8 matched combos below are the prediction):
+  cell (d1=1, d0=d1^2=1): matched tau=d1=1 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2, d0=d1^2=1): matched tau=d1=2 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=zb, d0=d1^2=2): matched tau=d1=zb both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=zb+1, d0=d1^2=2zb): matched tau=d1=zb+1 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=zb+2, d0=d1^2=zb): matched tau=d1=zb+2 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2zb, d0=d1^2=2): matched tau=d1=2zb both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2zb+1, d0=d1^2=zb): matched tau=d1=2zb+1 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+  cell (d1=2zb+2, d0=d1^2=2zb): matched tau=d1=2zb+2 both-rise on all members: True; other 7 candidates non-both-rise with an exact-weight Q2 clause: YES
+
+== Q5 control t=27 (weight 3): aggregated (w(B0'),dig(B0')) = {(w=6,dig=1):419904}; members with w(B0')>=8: 0 (MUST be 0)
+   control t=243 (weight 5): cells NOT keeping (8,d0) and (4,d1) unchanged: 0 of 64
+
+== Q6 (lift independence WITH SCOPE; truncation: w(B0') cap 9, w(B1') cap 5, digits kept only at exact heights 8 resp. 4):
+  pair t=27x*1+81*0 (tau=zb) vs t=27x+243 (lift of k3): TRUNCATED-table diffs 0 cells (MUST be 0); full-table diffs: T0 on 7 cells [('1', '2zb+1'), ('2', 'zb+1'), ('zb', '2'), ('zb+1', '2zb+2'), ('zb+2', 'zb+2'), ('2zb+1', '2zb'), ('2zb+2', 'zb')], T1 on 0 cells []; out-of-scope diffs 0
+    example T0 diff, cell (d1=1, d0=2zb+1), (orig,lift) at differing entries: (w=10,dig=1):81/79, (w=10,dig=2):72/82, (w=10,dig=zb):72/79, (w=10,dig=zb+1):81/85, (w=10,dig=zb+2):90/79, (w=10,dig=2zb):81/82, (w=10,dig=2zb+1):81/79, (w=10,dig=2zb+2):81/82, (w=11,dig=1):9/11, (w=11,dig=2):9/7, (w=11,dig=zb+2):9/10, (w=11,dig=2zb):9/8, (w=11,dig=2zb+2):9/11, (w=12,dig=0):9/3, (w=12,dig=zb):9/2, (w=12,dig=2zb):0/3
+  pair t=27x*1+81*1 (tau=zb+1) vs t=27x+81+243 (lift of k4): TRUNCATED-table diffs 0 cells (MUST be 0); full-table diffs: T0 on 7 cells [('1', '2'), ('2', '2zb+1'), ('zb', '1'), ('zb+1', '2zb'), ('zb+2', 'zb+2'), ('2zb', '2zb+2'), ('2zb+1', 'zb+1')], T1 on 0 cells []; out-of-scope diffs 0
+    example T0 diff, cell (d1=1, d0=2), (orig,lift) at differing entries: (w=10,dig=1):90/81, (w=10,dig=zb):90/81, (w=10,dig=zb+2):78/87, (w=10,dig=2zb+1):78/87, (w=10,dig=2zb+2):90/81, (w=11,dig=1):13/8, (w=11,dig=zb):11/10, (w=11,dig=zb+1):8/9, (w=11,dig=zb+2):7/9, (w=11,dig=2zb+1):6/9, (w=11,dig=2zb+2):9/10, (w=12,dig=0):1/2, (w=12,dig=zb):0/6, (w=12,dig=2zb):1/2
+  Q6 verdict basis: truncated-diff cells 0 of 128 (both pairs, both tables); full-diff cells 14; out-of-scope diffs 0
+
+CAP STABILITY: verdict dicts identical: True; SUB' + cell fractions equal: True; base-joint cells with cap6 != 81*cap5: 24 (cap-truncation tail); (cell,key) probe tables not scaling exactly: 140 of 832
+========================================================================
+SUMMARY — SEALED CASE-K v2 GATE p=3 (cap 6, 282429536481 members, SUB' 34012224, 531441 per cell):
+sign: (tau1, tau0-9) matches genuine division by Phi - t (0 mismatches / 15600, 0 reconstruction failures); (tau1, -9-tau0) mismatches 12000/12000 distinguishable
+Q1 PASS — 64 cells, counts min 531441 max 531441
+Q2 PASS — 512 (cell,tau) combos (R2(tau)=0: 56, 2tau+d1=0: 64, both: 8); violations 0
+Q3 PASS — 8/9 vs 1/9 fresh-digit splits; deviations 0 of 120 died clauses
+Q4 PASS — unique both-rise at tau=d1 on the 8 cells d0=d1^2 (violating cells 0; both-rise combos overall 8)
+Q5 PASS — t=27: members with w(B0')>=8: 0; t=243: cells changed: 0 of 64
+Q6 PASS — truncated-table diff cells 0 of 128; full-diff cells 14, out-of-scope 0
+cap stability (cap 5): verdicts identical: True; fractions equal: True
+total wall time 27s (census 26s + 2s)
+========================================================================
