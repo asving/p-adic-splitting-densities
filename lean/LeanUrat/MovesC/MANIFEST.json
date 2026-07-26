@@ -1,0 +1,472 @@
+{
+ "campaign": "MOVES §C composition theorem — Lean formalization blueprint (§C-Lean campaign)",
+ "source": "lean/notes/MOVES_2026-07-24.md §C REV 2 (ACCEPTED 2026-07-26, passes 12+13 CLEAN)",
+ "derivations": [
+  "lean/notes/C10B_DERIVATION_2026-07-26.md (window kernel)",
+  "lean/notes/C15_DERIVATION_2026-07-26.md (counting mechanism, Route B)"
+ ],
+ "blueprint": "lean/notes/MOVESC_LEAN_BLUEPRINT_2026-07-26.md",
+ "defs": "lean/LeanUrat/MovesC/Defs.lean (COMPILES green via `lake env lean`, no sorry/axiom) — imports Moves.{Defs,DefsT,DefsCore,DefsL}",
+ "preamble": "Every unit file: `import Mathlib`, `import LeanUrat.Moves.Defs` (+DefsT/DefsCore/DefsL), `import LeanUrat.MovesC.Defs`, then `open Polynomial LeanUrat.Moves` and `namespace LeanUrat.MovesC`; set_option linter.style.longLine/header false, maxHeartbeats 1000000. Build per file with `lake env lean` (NEVER `lake build`).",
+ "section_binder": "{p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]",
+ "note_on_deferral": "BOUNDARY-DEFERRED units carry an interface hypothesis (LstData / a coordinate-height presentation htc / TypObject / JetSetup) that encodes the UNBUILT graded ring (R4.5 items 1&3: graded pieces gr^Ĉ_δ and the global jet-coordinate system D.3(e)(ii)). They are provable FROM the interface, exactly as L6.measureExact takes codeN/ΘN/hcylN. The counting core (C0/C4/C5/C6) is combinatorial over DigitSystem and provable outright.",
+ "layers": {
+  "0": "digit systems / global order / transport corollary (C.0, C.0.5)",
+  "1": "the (ZC) state cylinder (C.1.5)",
+  "2": "DOM / TYP / LST — the geometric+graded interface (C.1)",
+  "3": "the species inventory + E_fresh selection (C.1)",
+  "4": "C.1.5′ the per-step conditional exactness lemma",
+  "5": "the mass recursion (C.2)",
+  "6": "Theorem C (C.2)"
+ },
+ "counts": {
+  "total": 31,
+  "by_layer": {
+   "0": 8,
+   "1": 4,
+   "2": 5,
+   "3": 4,
+   "4": 4,
+   "5": 2,
+   "6": 4
+  },
+  "deferred": 5,
+  "elaboration_tested": 31,
+  "by_difficulty": {
+   "easy": 6,
+   "medium": 18,
+   "hard": 7
+  }
+ },
+ "units": [
+  {
+   "id": "C0.coordPrec_trichotomy",
+   "file": "lean/LeanUrat/MovesC/C0_coordPrec_trichotomy.lean",
+   "layer": 0,
+   "deps": [],
+   "statement": "theorem C0_coordPrec_trichotomy (c c' : Coord) : CoordPrec c c' ∨ c = c' ∨ CoordPrec c' c",
+   "moves_ref": "§C.0 the global order ≺",
+   "sketch": "≺ (level asc, index desc) is a strict linear order on ℕ×ℕ; trichotomy by Nat trichotomy on levels then indices. Pure.",
+   "difficulty": "easy",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.coordPrec_trans",
+   "file": "lean/LeanUrat/MovesC/C0_coordPrec_trans.lean",
+   "layer": 0,
+   "deps": [
+    "C0.coordPrec_trichotomy"
+   ],
+   "statement": "theorem C0_coordPrec_trans (a b c : Coord) (h1 : CoordPrec a b) (h2 : CoordPrec b c) : CoordPrec a c",
+   "moves_ref": "§C.0 the global order ≺",
+   "sketch": "Transitivity of the lex order (level asc, index desc). Pure omega/case split.",
+   "difficulty": "easy",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.coordSort",
+   "file": "lean/LeanUrat/MovesC/C0_coordSort.lean",
+   "layer": 0,
+   "deps": [],
+   "statement": "theorem C0_coordSort (n N : ℕ) : Nonempty ((Fin n × Fin N) ≃ Fin (n * N))",
+   "moves_ref": "§C.0 'solve in ≺-order'; the ≺-sorted enumeration",
+   "sketch": "The box has n·N coordinates; the ≺-sorted enumeration realizes it as Fin (n·N). Cardinality equiv (Fintype.equivFinOfCardEq / finProdFinEquiv). Justifies working in ≺-sorted Fin m.",
+   "difficulty": "easy",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.digitSystemMass",
+   "file": "lean/LeanUrat/MovesC/C0_digitSystemMass.lean",
+   "layer": 0,
+   "deps": [
+    "L2.P6ii"
+   ],
+   "statement": "theorem C0_digitSystemMass {m : ℕ} (D : Locus p m) : D.mass = p ^ (m - D.numPinned)",
+   "moves_ref": "§C.0 BLOCK CONVENTION; D.3(e)(ii)/D.11 count law",
+   "sketch": "Specialization of the accepted P6ii DigitSystem count |α|^{n−k} to α = ZMod p (card p). mass = p^{m−numPinned}. Reuses L2.P6ii.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.pinWelldef",
+   "file": "lean/LeanUrat/MovesC/C0_pinWelldef.lean",
+   "layer": 0,
+   "deps": [
+    "C0.digitSystemMass"
+   ],
+   "statement": "theorem C0_pinWelldef {m : ℕ} (D D' : Locus p m) (h : ∀ x, D.IsSolution x ↔ D'.IsSolution x) : D.numPinned = D'.numPinned",
+   "moves_ref": "§C.0.5 PIN-WELLDEF",
+   "sketch": "Same solution set ⟹ same mass (h gives a set equality); by C0.digitSystemMass both masses are p^{m−numPinned}; p≥2 ⟹ the exponent, hence numPinned, is determined (Nat.pow injectivity).",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.unitriBij",
+   "file": "lean/LeanUrat/MovesC/C0_unitriBij.lean",
+   "layer": 0,
+   "deps": [],
+   "statement": "theorem C0_unitriBij {m : ℕ} {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} (h : IsUnitriangular Θ) : Function.Bijective Θ",
+   "moves_ref": "§C.0.5 (unitriangular ⟹ bijection, both directions)",
+   "sketch": "Invert coordinate by coordinate in ≺-order: (Θx)_i = x_i + corr_i(earlier), so x_i = (Θx)_i − corr_i(earlier) recovers x by strong recursion on i. Injective+surjective.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.moveMass",
+   "file": "lean/LeanUrat/MovesC/C0_moveMass.lean",
+   "layer": 0,
+   "deps": [
+    "C0.unitriBij"
+   ],
+   "statement": "theorem C0_moveMass {m : ℕ} (D : Locus p m) {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} (h : Function.Bijective Θ) : Nat.card {x // D.IsSolution (Θ x)} = D.mass",
+   "moves_ref": "§C.2 move maps are global digit-level bijections (Fact A/B): mass preserved",
+   "sketch": "Θ bijective ⟹ Equiv.ofBijective Θ restricts to an equiv {x // D.IsSol (Θx)} ≃ {y // D.IsSol y}; Nat.card_congr.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C0.pinTransport",
+   "file": "lean/LeanUrat/MovesC/C0_pinTransport.lean",
+   "layer": 0,
+   "deps": [
+    "C0.unitriBij",
+    "C0.pinWelldef"
+   ],
+   "statement": "theorem C0_pinTransport {m : ℕ} (D : Locus p m) {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} (h : IsUnitriangular Θ) : ∃ D' : Locus p m, (∀ x, D'.IsSolution x ↔ D.IsSolution (Θ x)) ∧ D'.numPinned = D.numPinned",
+   "moves_ref": "§C.0.5 pin-transport corollary: Θ*(E) is a digit system with the same pins/vol",
+   "sketch": "Build D' as the pullback digit system: substitute Θ's unitriangular corrections into D's solve functions and re-solve each equation for the SAME leading coordinate (corrections are ≺-earlier). Same numPinned by pin-welldef + the mass-preserving bijection.",
+   "difficulty": "hard",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C1.zcMass",
+   "file": "lean/LeanUrat/MovesC/C1_zcMass.lean",
+   "layer": 1,
+   "deps": [
+    "C0.digitSystemMass"
+   ],
+   "statement": "theorem C1_zcMass {m : ℕ} (D : Locus p m) (zc : ZCData D) : D.mass = p ^ (m - zc.freshSum)",
+   "moves_ref": "§C.1.5 (ZC-c) mass = p^{nN}·∏ vol_nom",
+   "sketch": "Rewrite numPinned by zc.zc_c (= freshSum) into C0.digitSystemMass.",
+   "difficulty": "easy",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C1.zcInit",
+   "file": "lean/LeanUrat/MovesC/C1_zcInit.lean",
+   "layer": 1,
+   "deps": [
+    "C1.zcMass"
+   ],
+   "statement": "theorem C1_zcInit {m : ℕ} {H : History p F} (J : JetSetup H m) (hroot : (J.Sigma 0).numPinned = (J.fresh 0).mstar) : (J.zc 0).freshSum = (J.fresh 0).mstar",
+   "moves_ref": "§C.1.5 INITIALIZATION (i=0 root): (ZC) = D.8 at the root read (D.4 ROOT case) + D.11, one move",
+   "sketch": "The root read's cylinder Σ₀ (D.8 ROOT case) has numPinned = m*(ν₀) (hroot, supplied by the root LandingCylinderL presentation); (ZC-c) gives freshSum = numPinned = m*₀. Base of the mass recursion.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C1.valClauseDownset",
+   "file": "lean/LeanUrat/MovesC/C1_valClauseDownset.lean",
+   "layer": 1,
+   "deps": [
+    "C0.digitSystemMass"
+   ],
+   "statement": "theorem C1_valClauseDownset {m : ℕ} (htc : Fin m → ℚ) (β : ℚ) : ∃ D : Locus p m, (∀ c, D.pinned c = true ↔ htc c < β) ∧ (∀ x, D.IsSolution x ↔ ∀ c, htc c < β → x c = 0)",
+   "moves_ref": "§C.1.5 KEY OBSERVATION 1 / DOWNSET NOTATION: a valuation clause 'w ≥ β' = literal zero downset",
+   "sketch": "BOUNDARY-DEFERRED: htc is the K1-chain height on base coordinates (the global jet-coordinate system, R4.5 item 3 — unbuilt graded ring). GIVEN htc, the downset {ht<β} is literally the DigitSystem pinning those coords to 0. The DEFERRED half is that w-DEFINED-through-K1 realizes as this htc.",
+   "difficulty": "hard",
+   "boundary_deferred": true,
+   "elaborated": true
+  },
+  {
+   "id": "C1.rimLeads",
+   "file": "lean/LeanUrat/MovesC/C1_rimLeads.lean",
+   "layer": 1,
+   "deps": [
+    "C0.pinTransport"
+   ],
+   "statement": "theorem C1_rimLeads {m : ℕ} (D : Locus p m) (zc : ZCData D) {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} (h : IsUnitriangular Θ) : ∃ (D' : Locus p m) (_ : ZCData D'), ∀ x, D'.IsSolution x ↔ D.IsSolution (Θ x)",
+   "moves_ref": "§C.1.5 (ZC-b') LEADS AT RIM persist under Θ-pushforward (C.0.5 preserves leads)",
+   "sketch": "C0.pinTransport gives the pushed digit system D' with the same pins; its pins solve for the SAME leading level sets (rim blocks), so the pin_dichotomy transfers ⟹ ZCData D'. Non-lead corrections are ≺-earlier (unrestricted).",
+   "difficulty": "hard",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C2.DOM",
+   "file": "lean/LeanUrat/MovesC/C2_DOM.lean",
+   "layer": 2,
+   "deps": [],
+   "statement": "theorem C2_DOM {lines : ℕ → Line} {i interiorEnd : ℕ} (dom : DomData lines i interiorEnd) (b : ℕ) (hb : b ≤ interiorEnd) (m : ℕ) (hm : m ≤ i) : (lines m).at b ≤ (lines i).at b",
+   "moves_ref": "§C.1 Lemma DOM (interior floor domination), the displayed affine induction",
+   "sketch": "PROVABLE affine: dom.steeper (slope_m < slope_i) + dom.vertex_entry (line_i ≥ line_m at interiorEnd). For b ≤ interiorEnd, line_i(b)−line_m(b) = (line_i−line_m)(interiorEnd) + (slope_i−slope_m)(interiorEnd−b) ≥ 0. Pure ℚ/linarith.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C2.DOM_floorForm",
+   "file": "lean/LeanUrat/MovesC/C2_DOM_floorForm.lean",
+   "layer": 2,
+   "deps": [
+    "C2.DOM"
+   ],
+   "statement": "theorem C2_DOM_floorForm {lines : ℕ → Line} {i interiorEnd : ℕ} (dom : DomData lines i interiorEnd) (b : ℕ) (hb : b ≤ interiorEnd) : floorOf lines i b = (lines i).at b",
+   "moves_ref": "§C.1 DOM floor form: on the factor interior the floor F_i IS the current line",
+   "sketch": "floorOf = sup' over m≤i of line_m at b; by C2.DOM every line_m(b) ≤ line_i(b) and m=i attains it, so the sup' is line_i(b). Finset.sup'-le + le_sup'.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C2.LST_selection",
+   "file": "lean/LeanUrat/MovesC/C2_LST_selection.lean",
+   "layer": 2,
+   "deps": [
+    "C2.DOM_floorForm"
+   ],
+   "statement": "theorem C2_LST_selection {σ : Stage p F} {ht : HtMap} {lines : ℕ → Line} {i : ℕ} (lst : LstData σ ht lines i) (b : ℕ) (γ' : ℚ) (hb : (lines i).at b < γ') (l : ℕ) (hl : ht (l, b) = γ') : floorOf lines i b < γ'",
+   "moves_ref": "§C Lemma LST(iii) SELECTION: a level set at γ'>old sits strictly above the floor downset",
+   "sketch": "Direct from lst.selection (an LstData field encoding the deferred graded content). BOUNDARY-DEFERRED via LstData (the ht ↔ K1-weight identification).",
+   "difficulty": "medium",
+   "boundary_deferred": true,
+   "elaborated": true
+  },
+  {
+   "id": "C2.LST_typing",
+   "file": "lean/LeanUrat/MovesC/C2_LST_typing.lean",
+   "layer": 2,
+   "deps": [],
+   "statement": "theorem C2_LST_typing {σ : Stage p F} {ht : HtMap} {lines : ℕ → Line} {i : ℕ} (lst : LstData σ ht lines i) : ∃ off : ℕ → ℚ, ∀ b l : ℕ, ht (l, b) = (l : ℚ) + off b",
+   "moves_ref": "§C Lemma LST(i) TYPING + the scale declaration ht(ℓ,b)=ℓ+off(b)",
+   "sketch": "Direct from lst.ht_scale. The DEFERRED half — that off = Σ_r innerslot_r·κ_r equals the genuine K1-chain weight — is the unbuilt graded ring (R4.5 item 3).",
+   "difficulty": "medium",
+   "boundary_deferred": true,
+   "elaborated": true
+  },
+  {
+   "id": "C2.TYP_fiberCount",
+   "file": "lean/LeanUrat/MovesC/C2_TYP_fiberCount.lean",
+   "layer": 2,
+   "deps": [],
+   "statement": "theorem C2_TYP_fiberCount {s : ℕ} {α : Type*} [AddCommGroup α] [Fintype α] (T : TypObject (p := p) s α) (v : α) : Nat.card {x : Fin s → ZMod p // T.φ x = v} * Nat.card α = p ^ s",
+   "moves_ref": "§C Lemma TYP(b): the piece map is an additive surjection ⟹ equal-size fibers ⟹ cuts |α|⁻¹",
+   "sketch": "PROVABLE combinatorial consequence of TypObject.surj: a surjective AddMonoidHom between finite groups has all fibers ≅ its kernel (each fiber a coset), so |fiber(v)|·|α| = |domain| = p^s. Uses AddMonoidHom kernel-coset equipotence. The TypObject itself (that the fresh value clause IS such a surjection) is BOUNDARY-DEFERRED (the graded piece R_δ).",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C3.crossing",
+   "file": "lean/LeanUrat/MovesC/C3_crossing.lean",
+   "layer": 3,
+   "deps": [],
+   "statement": "theorem C3_crossing {old new : Line} (hsteep : old.slope < new.slope) (s0 jstar : ℕ) (hend0 : old.at s0 ≤ new.at s0) (hend1 : old.at jstar ≤ new.at jstar) (b : ℕ) (hb0 : s0 ≤ b) (hb1 : b ≤ jstar) : old.at b ≤ new.at b",
+   "moves_ref": "§C.1(i)(α) THE ENDPOINT/AFFINE-LINE COMPARISON (crossing analysis, single crossing j×)",
+   "sketch": "PROVABLE affine: new−old is affine in b with slope (new.slope−old.slope)>0; ≥0 at both endpoints s0,jstar ⟹ ≥0 on the whole span [s0,jstar] by convex interpolation. Pure ℚ/linarith.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C3.crossing_reverse",
+   "file": "lean/LeanUrat/MovesC/C3_crossing_reverse.lean",
+   "layer": 3,
+   "deps": [
+    "C3.crossing"
+   ],
+   "statement": "theorem C3_crossing_reverse {old new : Line} (hsteep : old.slope < new.slope) (jstar : ℕ) (hend : new.at jstar ≤ old.at jstar) (b : ℕ) (hb : jstar ≤ b) : new.at b ≤ old.at b",
+   "moves_ref": "§C.1(i)(γ) right of the crossing slot j×: new ≤ old (weaker bound — implied)",
+   "sketch": "Affine: right of j× the steeper new line stays below old (new−old decreasing, ≤0 at jstar ⟹ ≤0 for b≥jstar). Pure ℚ/linarith.",
+   "difficulty": "easy",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C3.EInh_implied",
+   "file": "lean/LeanUrat/MovesC/C3_EInh_implied.lean",
+   "layer": 3,
+   "deps": [
+    "C1.valClauseDownset"
+   ],
+   "statement": "theorem C3_EInh_implied {m : ℕ} (Sigma : Locus p m) (zc : ZCData Sigma) (htc fl : Fin m → ℚ) (hdownset : ∀ c, ¬ zc.rimStart ≤ c → htc c ≤ fl c → Sigma.pinned c = true) (inh : Finset (Fin m)) (hbelow : ∀ c ∈ inh, ¬ zc.rimStart ≤ c ∧ htc c ≤ fl c) : ∀ c ∈ inh, Sigma.pinned c = true",
+   "moves_ref": "§C.1(i) CLAIM: on Σ_i, every clause of E_inh (at-or-below-floor content) is implied",
+   "sketch": "The inherited (below-floor, non-rim) coordinates are already in Σ_i's zero downset (hdownset: below-floor non-rim ⟹ pinned), so imposing E_inh adds nothing. BOUNDARY-DEFERRED via hdownset (the downset structure = the K1/jet bridge).",
+   "difficulty": "medium",
+   "boundary_deferred": true,
+   "elaborated": true
+  },
+  {
+   "id": "C3.freshFree",
+   "file": "lean/LeanUrat/MovesC/C3_freshFree.lean",
+   "layer": 3,
+   "deps": [],
+   "statement": "theorem C3_freshFree {m : ℕ} (Sigma : Locus p m) (zc : ZCData Sigma) (htc fl : Fin m → ℚ) (hdownset : ∀ c, Sigma.pinned c = true → ¬ zc.rimStart ≤ c → htc c ≤ fl c) (coords : Finset (Fin m)) (habove : ∀ c ∈ coords, ¬ zc.rimStart ≤ c → fl c < htc c) : ∀ c ∈ coords, Sigma.pinned c = false ∨ zc.rimStart ≤ c",
+   "moves_ref": "§C.1(ii) E_fresh's realizations constrain only coordinates FREE on Σ_i (strictly above the floor)",
+   "sketch": "If a fresh coordinate were pinned and non-rim it would be a zero-downset coord (hdownset: htc ≤ fl) contradicting habove (fl < htc). So fresh coords are free (unpinned) or rim. BOUNDARY-DEFERRED via the htc/fl height presentation (the jet bridge).",
+   "difficulty": "medium",
+   "boundary_deferred": true,
+   "elaborated": true
+  },
+  {
+   "id": "C4.stripCount",
+   "file": "lean/LeanUrat/MovesC/C4_stripCount.lean",
+   "layer": 4,
+   "deps": [
+    "C0.pinWelldef"
+   ],
+   "statement": "theorem C4_stripCount {m : ℕ} (Sigma : Locus p m) (fd : FreshData Sigma) (hstrip : ∀ c, fd.pinTo c = 0) : ∃ Dn : Locus p m, (∀ x, Dn.IsSolution x ↔ (Sigma.IsSolution x ∧ fd.sat x)) ∧ Dn.numPinned = Sigma.numPinned + fd.mstar",
+   "moves_ref": "§C.1.5' STEP 2: fresh STRIP zeros are literal free coordinates, each cuts p⁻¹",
+   "sketch": "Extend Sigma's digit system by pinning each fresh coordinate (free by fd.free, distinct as a Finset) to 0; the combined pinned set is a DISJOINT union, so numPinned = Sigma.numPinned + |coords| = + mstar.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C4.valueCount",
+   "file": "lean/LeanUrat/MovesC/C4_valueCount.lean",
+   "layer": 4,
+   "deps": [
+    "C2.TYP_fiberCount"
+   ],
+   "statement": "theorem C4_valueCount {s : ℕ} {α : Type*} [AddCommGroup α] [Fintype α] (T : TypObject (p := p) s α) (v : α) : Nat.card {x : Fin s → ZMod p // T.φ x = v} = p ^ s / Nat.card α",
+   "moves_ref": "§C.1.5' STEP 3: a fresh VALUE clause cuts exactly (alphabet)⁻¹ (graded fiber count)",
+   "sketch": "Divide C2.TYP_fiberCount: |fiber(v)| = p^s / |α|; the value clause on the level-set assignments cuts the box by |α|⁻¹ (the D.11-nominal per-digit factor). |α|=|piece| by piece-map injectivity.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C4.conditionalMass",
+   "file": "lean/LeanUrat/MovesC/C4_conditionalMass.lean",
+   "layer": 4,
+   "deps": [
+    "C4.stripCount",
+    "C4.valueCount",
+    "C3.freshFree"
+   ],
+   "statement": "theorem C4_conditionalMass {m : ℕ} (Sigma : Locus p m) (fd : FreshData Sigma) : ∃ Dn : Locus p m, (∀ x, Dn.IsSolution x ↔ (Sigma.IsSolution x ∧ fd.sat x)) ∧ Dn.numPinned = Sigma.numPinned + fd.mstar",
+   "moves_ref": "§C.1.5'(1): mass(Σ_i ∩ stratum) = mass(Σ_i)·vol_nom(E_fresh) — THE conditional count",
+   "sketch": "The fresh coords are free on Σ_i (C3.freshFree/fd.free) and pairwise distinct; each strip/value coordinate cuts exactly p⁻¹ (C4.stripCount/C4.valueCount, the latter via the graded fiber count). Combined pinned set is a disjoint union: numPinned adds mstar. Mass form via C0.digitSystemMass.",
+   "difficulty": "hard",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C4.zcPersist",
+   "file": "lean/LeanUrat/MovesC/C4_zcPersist.lean",
+   "layer": 4,
+   "deps": [
+    "C4.conditionalMass",
+    "C1.rimLeads",
+    "L5.landTwoSided"
+   ],
+   "statement": "theorem C4_zcPersist {m : ℕ} {H : History p F} (J : JetSetup H m) (i : ℕ) : (J.zc (i+1)).freshSum = (J.zc i).freshSum + (J.fresh i).mstar",
+   "moves_ref": "§C.1.5'(2): (ZC) holds for Σ_{i+1} = Θ_{i+1}(Σ_i ∩ stratum) (persistence)",
+   "sketch": "From the JetSetup recursion Σ_{i+1}=Θ_i(Σ_i ∩ E_fresh) + C4.conditionalMass (numPinned adds mstar) + C0.pinTransport (Θ preserves pins) + zc_c both sides. The re-presentation as Λ(ν_{i+1}) (BOX/VERTEX/TRANSPORT) uses L5.landTwoSided two-sidedness; leads stay at rim (C1.rimLeads).",
+   "difficulty": "hard",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C5.massRec",
+   "file": "lean/LeanUrat/MovesC/C5_massRec.lean",
+   "layer": 5,
+   "deps": [
+    "C1.zcInit",
+    "C4.zcPersist"
+   ],
+   "statement": "theorem C5_massRec {m : ℕ} {H : History p F} (J : JetSetup H m) (k : ℕ) : (J.Sigma k).numPinned = (Finset.range (k + 1)).sum (fun i => (J.fresh i).mstar)",
+   "moves_ref": "§C.2 the mass recursion along the prefix (induction with (ZC))",
+   "sketch": "Induction on k: base C1.zcInit (numPinned Σ₀ = m*₀); step C4.zcPersist adds mstar_k. numPinned Σ_k = Σ_{i≤k} m*(ν_i). Uses zc_c to read numPinned from freshSum.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C5.numPinnedCodim",
+   "file": "lean/LeanUrat/MovesC/C5_numPinnedCodim.lean",
+   "layer": 5,
+   "deps": [
+    "C5.massRec",
+    "C0.digitSystemMass"
+   ],
+   "statement": "theorem C5_numPinnedCodim {m : ℕ} {H : History p F} (J : JetSetup H m) (k : ℕ) : (J.Sigma k).mass = p ^ (m - (Finset.range (k + 1)).sum (fun i => (J.fresh i).mstar))",
+   "moves_ref": "§C.2 codimension read off the mass: mass(Σ_k) = p^{nN − Σ m*}",
+   "sketch": "Combine C5.massRec (numPinned = Σ m*) with C0.digitSystemMass (mass = p^{m−numPinned}). This is level-independent: Σ m* is fixed once N passes the largest constrained level (N ≥ N(H,∅)).",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C6.transportedAdmissible",
+   "file": "lean/LeanUrat/MovesC/C6_transportedAdmissible.lean",
+   "layer": 6,
+   "deps": [
+    "C0.pinWelldef"
+   ],
+   "statement": "theorem C6_transportedAdmissible {m : ℕ} (Sigma Z : Locus p m) (hZ : AdmissibleZ Sigma Z) : ∃ Dn : Locus p m, (∀ x, Dn.IsSolution x ↔ (Sigma.IsSolution x ∧ Z.IsSolution x)) ∧ Dn.numPinned = Sigma.numPinned + Z.numPinned",
+   "moves_ref": "§C.2 ADMISSIBLE Z: Z solves only for coordinates free on Σ_k, so Z cuts exactly vol(Z)",
+   "sketch": "AdmissibleZ ⟹ Z's pinned set is disjoint from Sigma's; the combined digit system has numPinned = Sigma.numPinned + Z.numPinned (disjoint union of pins). Z appended after ν_k.",
+   "difficulty": "medium",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C6.psiBij",
+   "file": "lean/LeanUrat/MovesC/C6_psiBij.lean",
+   "layer": 6,
+   "deps": [
+    "C0.unitriBij"
+   ],
+   "statement": "theorem C6_psiBij {m : ℕ} {Θ₁ Θ₂ : (Fin m → ZMod p) → (Fin m → ZMod p)} (h1 : IsUnitriangular Θ₁) (h2 : IsUnitriangular Θ₂) : Function.Bijective (Θ₂ ∘ Θ₁)",
+   "moves_ref": "§C.2 Ψ_H := Θ_k∘…∘Θ₀ is a global digit-level bijection (Fact A/B)",
+   "sketch": "Composition of the per-move bijections (C0.unitriBij) is bijective. The full Ψ_H is the k-fold fold; this is the two-step kernel (Bijective.comp), iterated along the history.",
+   "difficulty": "easy",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C6.thmC_b",
+   "file": "lean/LeanUrat/MovesC/C6_thmC_b.lean",
+   "layer": 6,
+   "deps": [
+    "C5.numPinnedCodim",
+    "C6.transportedAdmissible",
+    "C0.digitSystemMass"
+   ],
+   "statement": "theorem C6_thmC_b {m : ℕ} {H : History p F} (J : JetSetup H m) (k : ℕ) (Z : Locus p m) (hZ : AdmissibleZ (J.Sigma k) Z) : ∃ Dfin : Locus p m, Dfin.mass * p ^ (totalPins J k Z) = boxMass p m",
+   "moves_ref": "§C Theorem C(b): #{f mod p^N ∈ S(H,Z)} = p^{nN}·∏ vol(E_fresh(ν_i))·vol(Z)",
+   "sketch": "Dfin := Σ_k ∩ Z (C6.transportedAdmissible); numPinned = Σ m* + |pins Z| = totalPins (C5.massRec). mass·p^{totalPins} = p^m = boxMass (C0.digitSystemMass, m−K then +K). The product form in pin-arithmetic (avoids ℚ division); level-independent for N ≥ N(H,Z).",
+   "difficulty": "hard",
+   "boundary_deferred": false,
+   "elaborated": true
+  },
+  {
+   "id": "C6.thmC_a",
+   "file": "lean/LeanUrat/MovesC/C6_thmC_a.lean",
+   "layer": 6,
+   "deps": [
+    "C0.moveMass",
+    "C6.psiBij",
+    "C0.pinWelldef"
+   ],
+   "statement": "theorem C6_thmC_a {m : ℕ} {H : History p F} (J : JetSetup H m) (k : ℕ) (Z : Locus p m) (hZ : AdmissibleZ (J.Sigma k) Z) {Ψ : (Fin m → ZMod p) → (Fin m → ZMod p)} (hΨ : Function.Bijective Ψ) : Nat.card {x // (J.Sigma k).IsSolution x ∧ Z.IsSolution x} = Nat.card {x // (J.Sigma k).IsSolution (Ψ x) ∧ Z.IsSolution (Ψ x)}",
+   "moves_ref": "§C Theorem C(a): S(H,Z) = Ψ_H⁻¹(Σ_k ∩ locus Z), carried bijectively with equal mass",
+   "sketch": "Ψ_H (C6.psiBij) bijective ⟹ Equiv.ofBijective gives {x // (Σ_k∩Z)(Ψx)} ≃ {y // (Σ_k∩Z) y}; Nat.card_congr (C0.moveMass pattern). Equal mass ⟹ equal pin count via PIN-WELLDEF (C0.pinWelldef). Pin data enter only as cardinalities.",
+   "difficulty": "hard",
+   "boundary_deferred": false,
+   "elaborated": true
+  }
+ ]
+}
