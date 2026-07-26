@@ -243,3 +243,157 @@ deferred).
 end each file with `#print axioms` (Lean-core only; `sorryAx` acceptable this campaign but flag in
 the docstring). Search-before-prove ladder as the repo standard. Do NOT edit `MovesC/Defs.lean`
 without re-running the §5 elaboration sample; new shared defs go in a `MovesC/Defs2.lean`.
+
+---
+
+# ROUND 2 (2026-07-26) — rebuild after the STOP-THE-LINE audit
+
+*The round-1 manifest above is RETIRED (do not fan out from it). The audit
+`lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_2026-07-26.md` found 5 structural failures, 13 FAITHLESS
+units and 3 outright-false statements. `MovesC/Defs.lean` was OVERWRITTEN (round 2, 399 lines,
+compiles green under `lake env lean`, no `sorry`/axiom) and `MANIFEST.json` rebuilt: 34 units,
+all statements elaboration-tested twice, the second time generated verbatim FROM the manifest
+JSON. This section answers each audit objection at its own address.*
+
+## R2.A — answers to the definitions audit (audit §a)
+
+**A1. "`Node` stores many appropriately named fields, but does not enforce their §C meanings."**
+Point by point, all now `Prop` FIELDS of `Node`:
+- *`Ranch` untied to `pat`/stride/anchor* → `hRanch : Ranch = Σ_{k ≤ wSide/e} C (pat k)·X^k`
+  (D.3(c)'s stride positions collapse to CONSECUTIVE powers past the anchor because consecutive
+  on-lattice slots differ in z-position by `e·s + h·t = 1`; the anchor `a` locates the absolute
+  position `a + k` and enters `vtx` as `z̄^{a−μm̂}`), plus the polygon-convention endpoints
+  `hpat0 : pat 0 ≠ 0`, `hpatTop : pat (wSide/e) ≠ 0`.
+- *`ψ` unconstrained* → `hψmonic`, `hψdeg : ψ.natDegree = g`, and `hOrd : OrdPsiPoly ψ Ranch μ`
+  (`ψ^μ ∥ Ranch` EXACTLY — the reused accepted predicate).
+- *`e, h, g, μ, Dwidth, line`, stage mutually unrelated* → `he/hh/hcop` (lowest-terms side),
+  `hg/hμ` (genuine descend), `hEdvd : e ∣ wSide`, `hDwidth : Dwidth = σ.Φ.natDegree` (frame
+  link), and in `HistoryCoherent`: the width chain `Dwidth_{i+1} = e_i·g_i·Dwidth_i`
+  (`Node.childWidth`), the (I-aug) slope chain `slope_i < slope_{i+1}`, and the absolute-scale
+  slope law `slope_i·(e_i·STR_i·D_i) = h_i` with `STR_i = History.strFrame i = Π_{m<i} e_m`.
+  NOT enforced (honest): the line's INTERCEPT tie to the pinned vertex — that is D.8 geometry,
+  still entering through `DomData.vertex_entry` as a hypothesis.
+- *species constraints absent* → `hspecInc : increment → 1 < e·g`,
+  `hspecRec : recentering → e = 1 ∧ g = 1`, `hspecRecCenter : recentering → ψ = X − C center ∧
+  z̄ = center` (D.10's consumed linear factor at the recorded center).
+- *recentering witness existential, untied to the recorded lift* → `HistoryCoherent` now states
+  `IsRecenteringCore σ_i σ_{i+1} center_i lift_i` AT the parent node's RECORDED `center`/`lift`;
+  no existential anywhere in the coherence predicate.
+- *increment transition used child-Stage fields, not the node's recorded read data* → the
+  increment/root clause is `IsStandardLift σ_i ψ_i g_i (σ_{i+1}.Φ) ∧ TransitionCoreL σ_i σ_{i+1}
+  (σ_{i+1}.Φ) e_i h_i z̄_i` — the recorded `ψ, g, e, h, zbar` of the PARENT node, keyed on the
+  PARENT's species (the read that produces the next frame), with the lifted key pinned to the
+  child frame's actual key.
+- *"a later node may have species root"* → `History.root_iff : species = root ↔ index = 0`, and
+  the coherence transition clause is TOTAL over species (recentering vs. not-recentering).
+- *`HistoryCoherent`/`Realizable` unconsumed* → both are FIELDS of `JetSetup`
+  (`coherent`/`realizable`), so every C4/C5/C6 theorem consumes them by construction;
+  `C3.steeperChain` additionally consumes coherence directly (it supplies `DomData.steeper`).
+- *(HV) vacuous (`∃ lead, vtxPoly = lead`)* → `Realizable`'s adjacent clause is now the data
+  IDENTITY `(pat_{ν_{i+1}} (wSide/e) : F) = vtx(ν_i)` where `Node.vtx := z̄^{a−μ·m̂} ·
+  ((Ranch/ψ^μ) mod ψ)(z̄) ∈ F` — the FULL transported vertex value with its scalar factors
+  (`m̂ = −t·h·g`, `Node.mhat`), valued in the ambient field containing `F_{i+1} = K(z̄)`;
+  `z̄` is required to be a genuine root of `ψ` (`hzbarRoot`). Nothing is trivially witnessable.
+- *(NA) typing (line evaluated at a slot index)* → (NA) now compares both lines at the BASE
+  index `μ_i·childWidth_i` (= `μ_i·D_{i+1}`).
+
+**A2. "Locus and mass: locally faithful, globally incomplete."**
+- *`m` never tied to `n·N`* → `JetSetup.hm : m = n·N`, with `n N` explicit parameters.
+- *no `N(H,Z)` hypothesis* → recorded honestly as an EXISTENCE condition on the presentation
+  (the `JetSetup` docstring): a jet presentation exists at every `N ≥ N(H,Z)`; each unit is
+  stated per presented box. `N` largeness is not internalized as arithmetic — flagged in R2.C.
+- *`coordSort` cardinal-only; flattening unlinked* → two repairs: the theorem `C0.coordSort` now
+  produces the SORTED enumeration (`j < j' ↔ CoordPrec (f j) (f j')`, range in the box), and —
+  the load-bearing one — `JetSetup` carries the chart `coordOf : Fin m → Coord` with
+  `coordOf_sorted : j < j' ↔ CoordPrec (coordOf j) (coordOf j')` and `coordOf_lt` (levels `< N`,
+  indices `< n`), so every downstream height/floor/rim statement reads through the genuine
+  `(level, index)` pair rather than a bare `Fin m`.
+
+**A3. "`ZCData` materially weaker than (ZC)."** Rebuilt (parameters: `coordOf`, `ht`, `floor`,
+`rimIdx`):
+- *floor downset not exact* → `downset_exact : pinned j = true ↔ ht(coordOf j) ≤ floor(index)`
+  at interior indices — BOTH directions (the round-1 `pin_dichotomy` allowed under-pinning);
+  *literal zeros* → `interior_zero : interior pins solve to 0`.
+- *no floor or height map; not node-dependent* → the floor parameter is pinned by `JetSetup.zc`
+  to `History.floorH (i+1)` — the max of the recorded nodes' `Node.staircase` step functions
+  (line value at the left block edge on the factor interior `[0, μ·childWidth)`, `⊥` outside) —
+  and the rim threshold to the RECORDED `μ_i·childWidth_i`.
+- *rim not a ≺-suffix; `rimStart := 0` vacuity; `m = 0` uninhabited* → the rim condition is now
+  a BASE-INDEX region (`(coordOf j).2 < rimIdx`), exactly §C's `≥ μ_i·D_{i+1}`; `rimIdx : ℕ` is
+  node-supplied (not a free `Fin m` datum), so the vacuity move and the `m = 0` failure are gone.
+- *DIG solving for whole rim LEVEL SETS* → NOT encoded (honest): `DigitSystem` pins are
+  per-base-digit; the counting consumes only rim-ness of the non-zero pins (C15 S4c). Flagged.
+
+**A4. "`FreshData` contradicts accepted Route B (pin addresses)."** The round-1
+`coords : Finset (Fin m)` + `pinTo` model is DELETED. A fresh clause is now a `LevelClause`:
+`support` (strip region / weight-γ′ level set) + `codim` + a constraint `sat` with `dep` (reads
+only the support) and `count` — the division-free EXACT-FIBER law `#{supported y | sat y}·
+p^codim = p^{|support|}`. A fresh value clause is an additive function of an entire level set,
+entering ONLY through `C1.TYP_toClause` (so `C4.conditionalMass` now genuinely consumes TYP —
+the audit's "bypasses TYP" is structurally impossible); strip zeros are the singleton case
+(`C1.stripClause`). `FreshData = clauses + pairwise-disjoint supports`; freeness on `Σ_i` is the
+THEOREM `C2.freshFree` (from the exact downset + the above-floor/interior links), not a field.
+The `count` field is self-policing: an unsatisfiable or inexact clause admits no instance.
+
+**A5. "Pin arithmetic sound, but `thmC_b` disconnected and false in general."** The final
+statements are now Theorem C: `C6.thmC_a/b` are stated about the ACTUAL final joint locus
+`{x | Σ_len x ∧ Z x}` and its image `S(H,Z)` under the RECORDED composite `JetSetup.Psi`
+(`Ψ_H`), with `AdmissibleZ` against the FINAL state `Sigma H.nodes.length`, `m = n·N`, and
+coherence/realizability consumed through `J`. No existential `Dfin` remains anywhere.
+
+## R2.B — the audit's per-unit dispositions
+
+FAITHLESS/IMPRECISE round-1 units and their fates: `C0.coordSort` → re-stated with the order
+property; `C0.pinWelldef`/`C0.pinTransport` → upgraded to per-coordinate STATUS (`C0.pinStatus`
+new; `pinTransport` returns the same pinned FUNCTION); `C1.zcInit` → deleted (initialization is
+`JetSetup.init`: `Sigma 0` IS the full box — nothing left to assume-as-conclusion);
+`C1.valClauseDownset` → deleted (the K1-downset realization is presentation content inside the
+deferred `Sigma`; no synthetic `htc` unit survives); `C1.rimLeads` → deleted (rim persistence
+is `JetSetup.zc` at every prefix — interface content, honestly deferred, no longer fake-proved);
+`C2.LST_selection`/`C2.LST_typing` → deleted with `LstData`; their genuine content became the
+`JetSetup` links `fresh_above` (LST(iii) selection) + `zc` floor exactness, consumed by
+`C2.freshFree`; the ht-=-K1-weight identification stays flagged on the bare `ht` field;
+`C3.EInh_implied` → re-stated as FORCED ZEROS on the locus from the exact downset (derives,
+not restates); `C3.freshFree` → `C2.freshFree` (no rim alternative in the conclusion: fresh
+supports are interior by `fresh_interior`); `C4.conditionalMass` → re-stated address-free over
+`LevelClause`s (consumes TYP via the clause bridge); `C4.zcPersist` → deleted as a theorem
+((ZC) persistence is interface content; the numeric residue it carried is `C4.numPinnedStep`,
+proved from masses); `C5.massRec`/`C5.numPinnedCodim` → re-indexed (`Sigma 0` = full box; sum
+over `range k`; `k ≤ len`) — the audit's k = 0 countermodel is unbuildable since `init` forces
+`numPinned (Sigma 0) = 0` and `fresh 0` sits between `Sigma 0` and `Sigma 1`; `C6.psiBij` →
+about the recorded composite `JetSetup.Psi` (with `C6.transportedSystem` supplying the
+history-composition content); `C6.thmC_a/b` → see R2.A5. FLAGGED-OK units (14) are carried
+over verbatim or strengthened.
+
+## R2.C — honest gaps after round 2 (the deferred boundary, restated)
+
+1. **`JetSetup` existence for a real classifier history** — the unbuilt graded ring / global
+   jet-coordinate system (R4.5 items 1&3). Includes: the presentation of each `Σ_i` as a digit
+   system; `Theta_uni` (Fact A's division accounting); the `recursion` field, which ABSORBS
+   C.1(i)'s inherited-clause implication (the crossing analysis) into the presentation; the
+   (ZC) invariant `zc` at every prefix (persistence, C15 S4c); `fresh_above`/`fresh_interior`
+   (LST(iii) + rim domination). These are §C's PROVED steps — deferred here only because their
+   Lean form needs the jet coordinates; the interface records their exact statements.
+2. **`ht` = the K1-chain weight** (LST(i)): `ht` is bare data; its identification with
+   `l + Σ innerslot_r·κ_r` at CURRENT κ is deferred.
+3. **`TypObject` existence** for each real fresh value digit (graded piece `gr^Ĉ_{δ'}`, piece
+   map `R_δ'` additive/injective/image = alphabet).
+4. **`N ≥ N(H,Z)`** is an existence condition on the presentation, not internal arithmetic.
+5. **(ZC-b) level-set grouping** of DIG equations not encoded (rim-ness of pins only).
+6. **`vtx ≠ 0`** (hence `∈ Fˣ`) is not claimed: needs ψ-irreducibility/residue-iso content;
+   the polynomial factor's nonvanishing IS proved (`C3.vtxPolyNe`).
+7. **`DomData.vertex_entry`** (D.8's box geometry) remains a per-instance hypothesis; only the
+   `steeper` half is derived from coherence (`C3.steeperChain`).
+8. **`m*(ν_i)` = the D.11 species inventory**: `mstar` is the presented clauses' codim sum; its
+   equality with the inventory computed from node data (α/β/γ strips + value digits) is
+   presentation content.
+9. **Line intercept tie** (the read line passes through the pinned vertex) not enforced (A1).
+
+## R2.D — elaboration record (round 2)
+
+`MovesC/Defs.lean`: 399 lines, `lake env lean` exit 0, no output, no `sorry`/`axiom`; olean
+rebuilt. All 34 manifest statements elaborated with `:= sorry` against the standard preamble —
+TWICE: hand-assembled scratch (12+12+10, zero errors), then REGENERATED VERBATIM from
+`MANIFEST.json` by script and re-run (12+12+10, zero errors, two runs). Scratch files removed.
+Layer counts 10/4/6/4/3/2/5 = 34; difficulty 6 easy / 22 medium / 6 hard; 12 units carry a
+deferred-interface hypothesis (`JetSetup`/`TypObject`).
