@@ -1,4 +1,4 @@
-# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 6)
+# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 7)
 
 *Plan architect: Fable, 2026-07-26. REV 2, same day: rebuilt against the pass-1
 structural review (ASSEMBLY_PLAN_PASS1_2026-07-26.md — 8 critical obstructions,
@@ -27,8 +27,19 @@ empty-cell semantics at every prime, the initial distribution vector, correctly
 normalized per-representative transition probabilities (NO source-mass division),
 the height-domain Markov compatibility hypothesis (HMC, open kernel), and the
 composition law tying initial vector × kernel path products to realized cylinder
-masses, with the E0-conditional rational solve displayed. The REV 6 record is the
-final table. Directive (Asvin, 2026-07-26): iterate on the math with
+masses, with the E0-conditional rational solve displayed. REV 7, same day: rebuilt
+against the pass-6 review (ASSEMBLY_PLAN_PASS6_2026-07-26.md — 4 criticals,
+4 concerns, ALL interface-grade; the verifier's own closing: open kernels are NOT
+the issue) around the [2b]→[1v] INTERFACE: (1) the NAMED exact-height-domain
+package XHD — CTS-M's displayed HYPOTHESES, proved in [2b] as M4a-X — cutting the
+hidden [1v]↔[2b] cycle via the [1v]-COND / [1v]-FULL acceptance split; (2) the
+binding g/G HEIGHT TYPING (fixed-height monomial weights g on height-retaining
+templates; resummed one-step masses G only in kernels) with the TWO composition
+identities COMP-h/COMP-Σ — heights summed exactly once; (3) the ENTRANCE COUNT
+I^ent_γ replacing the unjustified |β₀| count shadow; (4) the NINE-input
+conditionality ledger (iv-PART, iv-MEAS, and the COMP-typing duty added at every
+ledger site). The REV 7 record is the final table. Directive (Asvin, 2026-07-26):
+iterate on the math with
 Codex until either a COMPLETE math proof of wild uniformity exists or the approach is shown
 conclusively to not work. This plan is the architecture for everything between the accepted
 §C (MOVES_2026-07-24.md, passes 12+13 CLEAN) and the endpoint theorem.*
@@ -65,7 +76,7 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
   (`msW_eighth_le` fixpoint) → two-sided squeeze (U) → `montes_uniform_n2` with fixed
   (num, den) per type. This is the pattern each note below generalizes.
 
-## 1. The DAG of the remaining notes (REV 3 — eight notes, ACYCLIC)
+## 1. The DAG of the remaining notes (REV 3 — eight notes, ACYCLIC; REV 7 — [1v] split into the acceptance events [1v]-COND / [1v]-FULL, cutting the pass-6 hidden cycle)
 
 Arrows = "consumes the accepted statement of". REV 3 (pass-2 obstruction 3): the rev-2
 graph was CYCLIC — [1v] VALUE quantified over MENU's shape list while MENU's M2/M4b
@@ -89,14 +100,22 @@ SPLIT into [2a] SPECIES (the raw catalogue, no strata — feeds [1v]) and [2b] S
                     THEOREM U  (assembly capstone paragraph inside [4])
 ```
 
-Full edge list (ACYCLIC; every rev-2 edge preserved or corrected): §C → [1], [2a],
-[2r] · decomp §3 → [5] · [1] → [2a] (canonical policy) · [2a] → [1v] (the local
-species Theorem VAL quantifies over — §1s), [2b], [5] (X.1a's species dictionary) ·
-[1v] → [2b] (the CTS state (s, α) in M2's τ — REV 5; CTS-M(iv)-REP in M2(ii)/M4b), [3]
-(RS.2 + the K_e assembly) · [2b] →
-[2r] (stratification
+Full edge list (ACYCLIC; every rev-2 edge preserved or corrected; REV 7 — pass-6
+critical 1: the [1v] node SPLITS into two ACCEPTANCE EVENTS, [1v]-COND and
+[1v]-FULL, cutting the hidden [1v]↔[2b] cycle): §C → [1], [2a],
+[2r] · decomp §3 → [5] · [1] → [2a] (canonical policy) · [2a] → [1v]-COND (the
+local species Theorem VAL quantifies over — §1s) · [1v]-COND → [2b] (the CTS
+state (s, α) in M2's τ — REV 5; CTS-M(iv)-REP in M2(ii)/M4b, consumed in its
+XHD-CONDITIONAL form — REV 7), [5] (X.1a's species dictionary) · [2b] →
+[1v]-FULL (the XHD DISCHARGE — an acceptance-only edge: [2b] proves the XHD
+package = M4a-X, discharging CTS-M's displayed hypotheses; no new [1v]
+mathematics), [2r] (stratification
 vocabulary), [5] (X.2's envelope constants ← M4a tails — the edge pass-2 found
-missing), [3] · [2r] → [3], [4] · [5] → [3], [4] · [3] → [4].
+missing), [3] · [1v]-FULL → [3]
+(RS.2 + the K_e assembly) · [2r] → [3], [4] · [5] → [3], [4] · [3] → [4].
+(The §1 diagram's [1v] box = [1v]-COND; the [1v] → [2b] arrow is [1v]-COND → [2b],
+and [2b] → [2r] now factors through the [2b] → [1v]-FULL → [3] acceptance chain
+where kernel objects are consumed.)
 
 - **[1] D4-R** — *the per-shape-prefix mass law* on the CANONICAL-POLICY history
   (strata are fibers, no quotient); the pool BOUND (3i) survives verbatim. (§2)
@@ -107,13 +126,16 @@ missing), [3] · [2r] → [3], [4] · [5] → [3], [4] · [3] → [4].
   VAL.1 with the CORRECTED three-cell example; the GLOBAL source partition JREF^src
   and the ONE displayed MEASURED CTS THEOREM CTS-M, clauses (i)–(vi) (REV 6 —
   replacing the rev-5 burden list CTS.0–CTS.5, subsuming the rev-4
-  JREF J1–J3 and VAL.2J); the (†) census epistemics restricted to integer-count
+  JREF J1–J3 and VAL.2J); CTS-M stated GIVEN the NAMED XHD interface hypotheses
+  (REV 7 — the exact-height-domain package [2b] must deliver; acceptance split
+  [1v]-COND / [1v]-FULL); the (†) census epistemics restricted to integer-count
   objects (§1s classes LOC/template); risk R1's decision point. PROBE
   REPORTED (2026-07-26): NO-WALL, exploration-class, anchor-twist caveat adopted. (§2v)
 - **[2b] STATE-GEOM** — M2 STATE = the CTS state τ = (s, α) (REV 5; a LUMPABILITY
   theorem, not label closure — consumed as CTS-M(iv)-REP), M4a cone geometry + M4a-X
   EXACT-DOMAIN (height directions at fixed template — REV 5 scope, with the
-  affine-semigroup duty), M4b height-translation constancy (NARROWED at REV 5; the
+  affine-semigroup duty; REV 7: M4a-X's deliverable IS the XHD package, and [2b]'s
+  acceptance triggers the [1v]-FULL discharge), M4b height-translation constancy (NARROWED at REV 5; the
   loop direction is a matrix power, never a constant) + M4b-T equivariance; supplies
   𝒯_n to [3]. ACCEPTANCE BLOCKED on STATE-probe-2 (REV 4, pass-3 obstruction 7). (§3)
 - **[2r] REL** — *the relative ledger*: Theorem C over unramified O = W(F_{p^δ}) +
@@ -134,8 +156,13 @@ missing), [3] · [2r] → [3], [4] · [5] → [3], [4] · [3] → [4].
   and ≥ (R_σ(p) − env(N))·p^{nN}, hence ρ_σ = R_σ(p) — Theorem U; the domination
   induction over (e, τ) blocks with base-changed hypotheses from [2r]. (§6)
 
-**Execution order:** [1] → [2a] → [1v] → [2b] → { [2r] ∥ [5] } → [3] → [4], with
-X.1a/X.1b draftable right after [2a]. DRAFT CLEARANCE (REV 4, pass-3
+**Execution order (REV 7 — the acceptance order explicit and ACYCLIC; pass-6
+critical 1):** [1] → [2a] → [1v]-COND (draft + accept CTS-M GIVEN the displayed
+XHD hypotheses — drafting UNBLOCKED, consuming [2a] only) → [2b] (proves XHD =
+M4a-X + M4a weights + M4b-T compatibility; consumes [1v]-COND's cells/tables and
+its XHD-conditional REP) → [1v]-FULL (the recorded DISCHARGE of the XHD
+hypotheses — an acceptance event, no new mathematics) → { [2r] ∥ [5] } → [3] →
+[4], with X.1a/X.1b draftable right after [2a]. DRAFT CLEARANCE (REV 4, pass-3
 closing; REAFFIRMED at REV 5 — pass-4 verdict GO): [1] D4-R is cleared to draft
 FIRST — its partition argument and pool inequality do not depend on the unresolved
 RESUM architecture; MANDATORY CORRECTION (pass-4 critical 4): the draft uses maximal
@@ -180,36 +207,56 @@ every count now flows through the CTS (§2v):
   extensions from ONE fixed initial representative, never all realizations):
   the PER-REPRESENTATIVE count C_γ(q) = ∏_i T_{m_i,o_i}^{β_{i−1},β_i}(q) — a
   DEFINED matrix-product operation (VAL CHAIN, §2v), degree ≤ W(γ) := Σ_i
-  W_loc(m_i) — and the FULL realization count Ĉ_γ(q) := |β₀|(q)·C_γ(q) (initial
-  source-cell size × per-representative product; CTS-M(vi)), degree ≤ W̄(γ) :=
-  W_state(β₀) + W(γ). Both GROW with path length: a k-loop template is a k-step
+  W_loc(m_i) — and the FULL realization count Ĉ_γ(q) := I^ent_γ(q)·C_γ(q)
+  (ENTRANCE COUNT × per-representative product; CTS-M(iii) ENT-COUNT — REV 7,
+  pass-6 critical 3: the bare cell size |β₀| is NOT a valid entrance factor
+  unless the template provably enters with one unrestricted copy of every
+  concrete state of the cell), degree ≤ W̄(γ) :=
+  W_ent(γ) + W(γ), W_ent the displayed shallow-entrance pool dimension. Both
+  GROW with path length: a k-loop template is a k-step
   path with k fresh pools and a k-fold
   product — NEVER one position-independent C_{S,τ} (that claim is STRUCK at REV 5).
   (†) applies to each FINITE γ, or to any FINITE explicitly-listed family with a
   displayed common monomial normalization, at ITS OWN displayed degree bound — never
   to a completed sum.
-- **FAM (resummed families) β, ι, K_e-entries, R_σ.** `resum`: templates form the
-  REGULAR LANGUAGE of the finite CTS automaton; measured paths compose as
+- **FAM (resummed families) β, ι, G, K_e-entries, R_σ.** `resum`: templates form
+  the REGULAR LANGUAGE of the finite CTS automaton; measured paths compose as
   initial vector × kernel product (ι_{β₀}·∏ steps = realized cylinder mass,
-  CTS-M(vi) — REV 6); the depth direction resums as the
+  CTS-M(vi) COMP-Σ — REV 7); the depth direction resums as the
   matrix fixpoint (I − K_e)^{−1} (Neumann series of path products), and the height
-  ℕ-parameters at each step resum as geometric series over M4a-X-exact congruence
+  ℕ-parameters at each step resum as geometric series over XHD/M4a-X-exact
+  congruence
   sublattices with ratio q^{−(positive weight)} — positive rational resummation into
   ℚ(q) with geometric denominators (1 − q^{−a}). NOT integer-valued, NOT
   degree-bounded, NOT subject to (†). Tested only via the truncated-census protocol
   (§2v (†-AGG)) or the two-sided SQUEEZE brackets — never by interpolation.
+  **HEIGHT TYPING (binding at REV 7 — pass-6 critical 2: rev 6 double-typed the
+  height variables, summing them twice).** A template CARRIES its height point;
+  the per-step factor AT A HEIGHT POINT is the fixed-height monomial weight
+  g^{α,β}_{m,o}(h) (LOC-level; XHD-w, §2v). The RESUMMED one-step mass
+  G^{α,β}_{m,o} := Σ_{h ∈ one-step exact domain} g^{α,β}_{m,o}(h) is a FAM
+  object: it appears ONLY in kernel entries K_e and in the resummed identity
+  COMP-Σ, and is NEVER attached to a height-retaining template. The two levels
+  convert ONLY through the displayed (COMP-h)→(COMP-Σ) passage (XHD + HMC,
+  CTS-M(vi)) — so no height coordinate is ever summed twice.
 
-**Notation rule (binding, tightened at REV 5; Ĉ/ι added at REV 6):** T entries and
-their rows = LOC; C_P̂(p) = #Pref(P̂), counts of REALIZED prefixes ([1] only,
-evaluated at p); C_γ = PER-REPRESENTATIVE template path products; Ĉ_γ = |β₀|·C_γ,
+**Notation rule (binding, tightened at REV 5; Ĉ/ι added at REV 6; I^ent/g/G split
+at REV 7):** T entries and
+their rows = LOC; g^{α,β}_{m,o}(h) = fixed-height step weights (LOC-level
+monomials; the only height-bearing measured factor); C_P̂(p) = #Pref(P̂), counts
+of REALIZED prefixes ([1] only,
+evaluated at p); I^ent_γ = ENTRANCE COUNTS (CTS-M(iii), a realized-prefix count
+refined by the landing cell — never the bare cell size |β₀|); C_γ =
+PER-REPRESENTATIVE template path products; Ĉ_γ = I^ent_γ·C_γ,
 FULL template realization counts (the only template count consumers may sum);
-β/ι/K/R = FAM. The symbol C_{S,τ} is RETIRED — every former
+β/ι/G/K/R = FAM (G = the one-step RESUMMED height masses — never evaluated at a
+height point). The symbol C_{S,τ} is RETIRED — every former
 use is either a table entry or a path product C_γ (per-template, path-length-
 dependent); a per-point count at a lattice point is C_{γ(point)}(q), constant only
 along the HEIGHT directions through that point (M4b, narrowed — §3), never in the
 loop direction. Any statement using "C_S" must say which class it means. (†) claims
 outside LOC/template are void. RS.2's matrix entries are FAM objects assembled from
-LOC tables × M4a-X-exact geometric sums; the raw catalogue [2a] indexes shapes, and
+LOC tables × XHD/M4a-X-exact geometric sums; the raw catalogue [2a] indexes shapes, and
 assigns NO count.
 
 ## 2. NOTE [1] D4-R — the per-shape-prefix mass law (REV 3: canonical policy, Z = ⊤, three-obligation kernel; REV 5: MAXIMAL-RUN interface alignment ONLY — the GO stands, the concurrent draft binds to the pass-4 twelve-lemma roster)
@@ -313,7 +360,7 @@ one next-node stratum, 0 double-counts and 0 orphans tolerated. RECORDED LIMITAT
 (pass-1 obstruction 8): μ = 1 only — this gate exercises D4R.0/1/2 and does NOT touch
 the value-count risk; the μ ≥ 2 / a > 0 danger is gated in [1v] at n = 5 and over F_q.
 
-## 2v. NOTE [1v] VALUE — the cell-to-cell polynomial transition system (REV 6: ONE displayed measured theorem CTS-M replaces the CTS.0–5 burden list; Theorem VAL = tables + path products + the measured composition; (†) scoped + (†-AGG); R1's decision point — PROBE REPORTED NO-WALL)
+## 2v. NOTE [1v] VALUE — the cell-to-cell polynomial transition system (REV 6: ONE displayed measured theorem CTS-M replaces the CTS.0–5 burden list; Theorem VAL = tables + path products + the measured composition; (†) scoped + (†-AGG); R1's decision point — PROBE REPORTED NO-WALL. REV 7: CTS-M stated GIVEN the NAMED XHD interface; the g/G height typing with COMP-h/COMP-Σ; ENT-COUNT; acceptance split [1v]-COND / [1v]-FULL)
 
 **Why this note exists (pass-1 obstructions 1, 3, 4).** The retired torus lemma was the
 only bridge from Theorem C (per-history masses) to p-independent COEFFICIENTS (counts
@@ -352,8 +399,11 @@ and RS.2 could not construct K_e).**
 > PATH PRODUCT C_γ(q) = ∏_i T_{m_i,o_i}^{β_{i−1},β_i}(q) — matrix multiplication
 > is a DEFINED operation because source and target cells are drawn from the ONE
 > global partition (CTS-M(i)) — degree ≤ W(γ) = Σ W_loc; the FULL realization
-> count is Ĉ_γ(q) = |β₀|(q)·C_γ(q), degree ≤ W̄(γ) (REV 6, pass-5 critical 2:
-> the initial-cell factor is never omitted and never smuggled into T). Degree
+> count is Ĉ_γ(q) = I^ent_γ(q)·C_γ(q), degree ≤ W̄(γ) = W_ent(γ) + W(γ)
+> (REV 7, pass-6 critical 3: the entrance factor is the ENTRANCE COUNT of
+> CTS-M(iii) — never omitted, never smuggled into T, and never replaced by the
+> bare cell size |β₀| without the displayed one-unrestricted-copy theorem for
+> that family). Degree
 > bounds are PER TEMPLATE, path-length-dependent, never per raw shape. The rev-4
 > scalar totals C_m are recovered as row sums Σ_{o,β} T_{m,o}^{α,β}. Measured
 > composition (masses, not counts) is CTS-M(vi); resummed FAM objects are outside
@@ -416,12 +466,40 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   pattern, or a terminal verdict), and target cell β ∈ JREF^src(s′):
       T_{m,o}^{α,β}(q) := #{fresh assignments producing (m, o, β) | one
       representative source state in α}.
+  **(XHD) THE EXACT-HEIGHT-DOMAIN PACKAGE (NEW at REV 7 — pass-6 critical 1: the
+  NAMED [2b]→[1v] interface. These are displayed HYPOTHESES of CTS-M's measured
+  clauses, PROVED in [2b] as M4a-X + M4a's affine weights + M4b-T's
+  compatibility — never [1v]'s duty. Three clauses:**
+  > **(XHD-w) WEIGHTS.** For every step datum (m, o) with source cell α and
+  > target cell β, and every height point h of that step's parameter space, a
+  > FIXED-HEIGHT weight monomial g^{α,β}_{m,o}(h) = q^{−E(h)}, E affine in h
+  > with positive weights (M4a), equal to the per-assignment C.1.5 fresh-volume
+  > ratio at height h — indexed by SOURCE AND TARGET cells (pass-6 concern 1:
+  > HMC's own statement lets the height mass depend on the retained source
+  > state; (m, o) alone is under-indexed).
+  > **(XHD-d) DOMAINS.** For every finite template γ (length 1 included), the
+  > EXACT realizable height domain H(γ) ⊆ ∏_i ℕ^{d_i}: semilinear — a finite
+  > EXPLICITLY-LISTED union of congruence-class translates of cone lattices
+  > (Route A) or of exact admissibility classes (Route B) — with two-sided
+  > exactness (no orphan realized points, no stray listed points).
+  > **(XHD-s) SUMS.** Per listed class, Σ_{h ∈ class} ∏_i g_i(h_i) ∈ ℚ(q) with
+  > geometric denominators (1 − q^{−a}), convergent at every prime evaluation
+  > (positive weights).
   **THEOREM CTS-M (the MEASURED transition system — REV 6, the pass-5
   highest-leverage repair, replacing burdens CTS.0–CTS.5. ONE statement, six
-  clauses, cited as CTS-M(i)…(vi); each is a proof duty of this note except (v),
-  an OPEN KERNEL with its own probe. Downstream, M2's τ, RS.0, RS.PRE, SQ.2
+  clauses, cited as CTS-M(i)…(vi). REV 7 STATUS DISCIPLINE — pass-6 critical 1:
+  the theorem is stated GIVEN the XHD hypotheses displayed above. Clauses (i),
+  (ii), (iii)'s mass vector, and the T-half of (iv)-POLY are XHD-FREE proof
+  duties of this note; the G-bearing clauses — (iv) STEP/PART/REP/MEAS and (vi)
+  COMP — are proved here CONDITIONAL ON XHD; (v) HMC is an OPEN KERNEL with its
+  own probe; ENT-COUNT ((iii)) is a named companion burden. ACCEPTANCE SPLIT:
+  [1v]-COND = acceptance of CTS-M GIVEN XHD (drafting unblocked, consumes [2a]
+  only); [2b] proves XHD; [1v]-FULL = the recorded discharge of the XHD
+  hypotheses upon [2b]'s acceptance — no new mathematics. Downstream, M2's τ,
+  RS.0, RS.PRE, SQ.2
   condition on CTS cells and on nothing finer or coarser.)**
-  > Fix n. With 𝒞_n and the table family T as displayed above:
+  > Fix n. GIVEN the XHD package, with 𝒞_n and the table family T as displayed
+  > above:
   >
   > **(i) SYNTAX — fixed state set with the partition displayed.** 𝒞_n is ONE
   > finite p-INDEPENDENT SYMBOLIC index set: Out(s) is the syntactic menu (never
@@ -443,33 +521,63 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > measured statement of clauses (iii)–(vi) reads ONLY the A-block, and
   > deleting the empty rows/columns at each prime is thereby COMPATIBLE with the
   > one fixed symbolic matrix — the fixed-matrix convention the pass demanded;
-  > (ii-c) NO-JUNK-POLE (named burden) — det(I − K_e)(q₀) = det(I − A)·
-  > det(I − D); det(I − A) ≠ 0 is ESCAPE(E0)'s duty, and det(I − D) ≠ 0 at the
-  > finitely many prime evaluations with empty cells must be checked so that no
-  > R_σ denominator vanishes at a wild p through the junk block (cofinitely in
-  > q₀, every cell is active and D is empty). A formal row out of an empty cell
+  > (ii-c) ACTIVE-VALUE (WEAKENED at REV 7 from NO-JUNK-POLE — pass-6 concern
+  > 4: the active solution is independent of the junk block, so junk
+  > singularity is not intrinsically an error). The realized density at each
+  > prime q₀ is DEFINED through the ACTIVE subsystem alone — β_A = A·β_A +
+  > SHALLOW_A and the ι-pairing read only A-block coordinates (ii-a/b) — so no
+  > junk-block quantity enters the value. det(I − K_e) = det(I − A)·det(I − D),
+  > and det(I − A)(q₀) ≠ 0 is ESCAPE(E0)'s duty. The REV 7 burden is
+  > AGREEMENT, not junk invertibility: at the finitely many q₀ with empty
+  > cells, the symbolic ℚ(q)-solution's density component, after cancellation,
+  > EVALUATES to the active-subsystem value — any det(I − D)(q₀) = 0 must be
+  > checked REMOVABLE on that component. The blanket condition det(I − D_p) ≠ 0
+  > is NOT a standing burden (nothing downstream consumes it; it is retained
+  > only as a convenience that makes wild-p evaluation direct when it holds).
+  > A formal row out of an empty cell
   > is NEVER cited as a probability, and no division by a zero cell mass occurs
   > anywhere. [refuters: the VALUE-Fq small-q table layer; RESUM-n3's wild-p
-  > evaluation and its n = 3 junk-block determinant check]
+  > ACTIVE-VALUE agreement layer — junk determinants recorded, agreement gated]
   >
-  > **(iii) INIT — the initial distribution (pass-5 critical 2).** For each
+  > **(iii) INIT — the initial distribution AND the entrance count (pass-5
+  > critical 2; count shadow REBUILT at REV 7, pass-6 critical 3).** For each
   > block e there is a DISPLAYED initial vector ι_e(q) = (ι_{e,(s,α)}(q)),
   > assembled in the SHALLOW layer from [1] D4R.1 masses: at each p,
   > ι_{e,(s,α)}(p) = the mass of the event "the root/branch cascade enters the
-  > size-e block in cell (s, α)". Its count shadow is the initial-cell size
-  > |β₀|(q) in Ĉ_γ = |β₀|·C_γ. NO path product is a mass or a full realization
+  > size-e block in cell (s, α)". Its count shadow is the ENTRANCE COUNT: for a
+  > template γ entering block e in cell β₀,
+  >     I^ent_γ(q) := #{realized shallow entrance prefixes η_sh with γ's
+  >     entrance shape whose continuation lands in cell β₀}
+  > — a REALIZED-PREFIX count in [1]'s sense (D4R.1's C_P̂ refined by the
+  > landing-cell condition; finite at each level by D4R.4), so that the full
+  > count is Ĉ_γ = I^ent_γ·C_γ.
+  > **ENT-COUNT (named burden):** I^ent_γ is one polynomial in q of displayed
+  > degree ≤ W_ent(γ) (the shallow-entrance pool dimension), computed as a CTS
+  > path count through the shallow layer. The identity I^ent_γ = |β₀| is NOT
+  > general: it holds exactly when the entrance places one unrestricted copy of
+  > every concrete state of β₀, a per-family theorem to be DISPLAYED wherever
+  > used (pass-6 critical 3: for root/branch-cascade entries ι_e repairs the
+  > mass but |β₀| does not automatically repair the count). NO path product is
+  > a mass or a full realization
   > count without its initial factor: ∏ T counts extensions from ONE fixed
   > initial representative, nothing more.
-  > **(iv) STEP — correctly normalized measured rows (pass-5 critical 1).** The
+  > **(iv) STEP — correctly normalized measured rows (pass-5 critical 1;
+  > retyped on XHD at REV 7).** The
   > one-step kernel entry is the CONDITIONAL MASS OF LANDING GIVEN THE SOURCE
   > CYLINDER, from one representative x ∈ α:
   >     K_e(q)_{(s,α),(s′,β)} := Σ_{m: s→s′} Σ_{o continuing}
-  >       T_{m,o}^{α,β}(q) · G_{m,o}(q)   — NO division by source-cell mass.
-  > (G_{m,o} = the M4a-X-exact height sum of per-assignment fresh-volume ratios
-  > vol_nom(E_fresh), C.1.5 — ALREADY conditional on the source cylinder;
+  >       T_{m,o}^{α,β}(q) · G^{α,β}_{m,o}(q)   — NO division by source-cell mass.
+  > Here G^{α,β}_{m,o} := Σ_{h ∈ H(γ¹)} g^{α,β}_{m,o}(h), the RESUMMED one-step
+  > height mass over the XHD-d exact domain of the LENGTH-1 template
+  > γ¹ = (α →^{m,o} β) — well-typed from XHD alone, no HMC needed at k = 1;
+  > source-and-target-indexed per pass-6 concern 1 (the bare G_{m,o} was
+  > under-indexed relative to HMC's own statement). Each g-summand is the
+  > per-assignment C.1.5 fresh-volume ratio — ALREADY conditional on the source
+  > cylinder;
   > dividing again inflates the conditional probability, and an aggregate
   > whole-cell numerator would first need a source-mass factor that cancels
-  > under (iv)-REP. The two conventions are never mixed.) Sub-clauses:
+  > under (iv)-REP. The two conventions are never mixed. The G-bearing
+  > sub-clauses below are proved GIVEN XHD ([1v]-COND scope). Sub-clauses:
   > (iv)-POLY — every entry T is one polynomial of degree ≤ W_loc(m) and every
   > cell size one polynomial of degree ≤ W_state(s) (the SPLIT degree bounds of
   > Theorem VAL(a) — pass-5 concern 2), valued correctly at every prime power;
@@ -483,28 +591,36 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > continuing part is a per-representative identity, never an assertion about
   > a resummed matrix.
   > (iv)-REP — WEIGHTED representative independence (pass-5 concern 4): the
-  > MEASURED row (T_{m,o}^{α,β}(q)·G_{m,o}(q))_{m,o,β} is identical from every
+  > MEASURED row (T_{m,o}^{α,β}(q)·G^{α,β}_{m,o}(q))_{m,o,β} is identical from
+  > every
   > representative of α — cardinality-row equality alone is insufficient —
   > so even a nonuniform within-cell source distribution yields the same
   > next-row law. This is lumpability at the source, the ONE clause M2(ii)
   > consumes, subsuming the rev-4 burden J3 and the joint law VAL.2J.
-  > (iv)-MEAS — every (m, o, β, height-class) summand is identified with a
+  > (iv)-MEAS — every (m, o, β, XHD height-class) summand is identified with a
   > MEASURABLE DISJOINT sub-event of the source cylinder (D4R.0 strata as
   > fibers of finite-level maps; a stated lemma, not a convention — pass-5
   > concern 4's second half: D4R.0 alone gives realized-prefix cylinders, not
-  > this identification).
+  > this identification). Multi-step events are the (vi) "cylinder of (γ, h)"
+  > displays — finite disjoint unions, never single cylinders (REV 7).
   >
   > **(v) HMC — height-domain Markov compatibility (OPEN KERNEL; pass-5
-  > critical 4).** M4a-X's exact height domains are WHOLE-TEMPLATE objects,
-  > while K_e^k presupposes stepwise factorization. HMC: for every template γ
-  > and every step i, the exact admissible height domain of step i and its
-  > geometric mass G_{m_i,o_i} depend ONLY on the retained CTS state β_{i−1}
-  > and the step data (m_i, o_i) — never on earlier height choices — so
-  > G_γ = ∏_i G_{m_i,o_i} and whole-template height sums factor through the
-  > one-step kernel. If a global cone inequality couples successive steps, the
+  > critical 4; RETYPED on XHD at REV 7).** XHD-d's exact height domains are
+  > WHOLE-TEMPLATE objects,
+  > while K_e^k presupposes stepwise factorization. HMC: for every template γ,
+  > the whole-template exact domain FACTORS stepwise,
+  >     H(γ) = ∏_i H(γ¹_i),   γ¹_i := the length-1 template
+  >     (β_{i−1} →^{m_i,o_i} β_i),
+  > each factor depending ONLY on the retained CTS state β_{i−1} and the step
+  > data (m_i, o_i, β_i) — never on earlier height choices — so
+  > Σ_{h ∈ H(γ)} ∏_i g_i(h_i) = ∏_i G^{β_{i−1},β_i}_{m_i,o_i} and
+  > whole-template height sums factor through the
+  > one-step kernel (the (COMP-h)→(COMP-Σ) passage of clause (vi)). If a global
+  > cone inequality couples successive steps, the
   > state is AUGMENTED by the finitely-valued boundary/gap data needed (one
   > 𝒞_n refinement round); a second coupling surviving refinement is R2's wall
-  > channel. Until HMC closes, K_e(p)^k is NOT a theorem about the process.
+  > channel. Until HMC closes, K_e(p)^k is NOT a theorem about the process and
+  > COMP-Σ holds only per template, never as a kernel-power identity.
   > **HMC-probe (exploration-class, runs with this note's draft):** a two-step
   > p = 2 conditioned-cylinder family with step-1 height h₁ varied across its
   > exact domain — exact census of two-step realized masses vs ι-weighted
@@ -512,16 +628,44 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > the retained state refutes HMC as stated and triggers the augmentation
   > round.
   >
-  > **(vi) COMP — composition, and the conditional solve (pass-5 concern 6).**
-  > For every finite path template γ = (β₀ →^{m₁,o₁} β₁ → … → β_k) in block e:
-  >     μ(realized cylinder of γ at p) = ι_{e,β₀}(p) ·
-  >       ∏_{i=1}^k [T_{m_i,o_i}^{β_{i−1},β_i} · G_{m_i,o_i}](p),
-  > with count shadow Ĉ_γ = |β₀|·∏ T (Theorem VAL(b)). CONDITIONALITY
+  > **(vi) COMP — the TWO composition identities, and the conditional solve
+  > (pass-5 concern 6; REWRITTEN at REV 7 — pass-6 critical 2: rev 6 stated
+  > only the resummed identity while using γ as a height-retaining object,
+  > summing the height coordinates twice).** For every finite path template
+  > γ = (β₀ →^{m₁,o₁} β₁ → … → β_k) in block e:
+  > "CYLINDER OF (γ, h)" DISPLAY (pass-6 fresh sweep 1): the realized event of
+  > (γ, h) at p is the UNION ⋃_η S(η, ⊤) over the finitely many (D4R.4)
+  > realized lift-carrying histories η with template γ and height point h —
+  > pairwise DISJOINT by D4R.0 (fibers of the finite-prefix map), each a
+  > finite-level measurable cylinder — hence measurable with μ = the finite
+  > sum of constituent masses; no single-cylinder reading is intended.
+  >     (COMP-h) FIXED HEIGHT — for every height point h = (h₁,…,h_k) ∈ H(γ):
+  >       μ(realized event of (γ, h) at p) = ι_{e,β₀}(p) ·
+  >         ∏_{i=1}^k [T_{m_i,o_i}^{β_{i−1},β_i} · g^{β_{i−1},β_i}_{m_i,o_i}(h_i)](p),
+  >     with g the XHD-w fixed-height monomial weight; count shadow at fixed h:
+  >     I^ent_γ·∏ T (Theorem VAL(b) + ENT-COUNT).
+  >     (COMP-Σ) RESUMMED — GIVEN (v) HMC:
+  >       Σ_{h ∈ H(γ)} μ(realized event of (γ, h)) = ι_{e,β₀} ·
+  >         ∏_{i=1}^k [T_{m_i,o_i}^{β_{i−1},β_i} · G^{β_{i−1},β_i}_{m_i,o_i}],
+  >     because HMC factors H(γ) = ∏ H(γ¹_i) and G = Σ_{h ∈ H(γ¹)} g.
+  > COMPOSITION-TYPING DUTY (ledger item, REV 7): every consumer sums heights
+  > EXACTLY ONCE, via the (COMP-h)→(COMP-Σ) passage — G never appears at a
+  > height point, g never in a kernel entry. ORIENTATION DISPLAY (pass-6 fresh
+  > sweep 2): the solved scalar output is
+  >     ι_e^T (I − K_e)^{−1} b_e,
+  > ι_e the ROW entrance vector ((iii), left factor) and b_e the named EXIT
+  > VECTOR — per-state one-step terminal/deciding conditional mass ((iv)-PART's
+  > absorbing columns), weighted where applicable by certified downstream
+  > values ([2r] mixed legs); (R_e)'s unknown β_{e,·} is the COLUMN solve
+  > β_e = K_e β_e + b_e, and ι_e acts ONCE, by left pairing — "SHALLOW carries
+  > ι_e" means exactly this split, never a second insertion. CONDITIONALITY
   > DISPLAYED: finiteness + substochasticity give only ρ ≤ 1 (a stochastic
-  > closed class has ρ = 1). GIVEN clauses (i)–(v) AND ESCAPE(E0) on the ACTIVE
+  > closed class has ρ = 1). GIVEN XHD, clauses (i)–(v) with ENT-COUNT, AND
+  > ESCAPE(E0) on the ACTIVE
   > submatrix: ρ(A) < 1 at each prime evaluation, the Neumann series converges,
-  > the block solve (I − K_e)^{−1} is licit on active coordinates ((ii-c)
-  > guarding wild-p poles), and det(I − K_e) ≢ 0 in ℚ(q) because infinitely
+  > the block solve (I − K_e)^{−1} is licit on active coordinates ((ii-c)'s
+  > ACTIVE-VALUE agreement covering wild-p evaluation), and det(I − K_e) ≢ 0
+  > in ℚ(q) because infinitely
   > many prime evaluations are all-active with E0 giving det ≠ 0 there — hence
   > the rational solve R_σ ∈ ℚ(q). Every downstream fixpoint assertion carries
   > this conditionality until E0 and (v) close.
@@ -549,9 +693,12 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   source cell — exact F_q census of the two-step linked counts vs the matrix
   product of the sealed one-step tables; an exact mismatch refutes CTS-M(i)'s
   typing or VAL CHAIN
-  at k = 2 before RESUM consumes them. The COUNT layer includes the initial-cell
-  factor: the full two-step count is checked as Ĉ = |β₀|·T·T, never ∏ T alone
-  (CTS-M(iii)/(vi) — REV 6). The MASS layer is HMC-probe's (CTS-M(v), above).
+  at k = 2 before RESUM consumes them. The COUNT layer includes the entrance
+  factor: the full two-step count is checked as Ĉ = I^ent·T·T, never ∏ T alone
+  (CTS-M(iii) ENT-COUNT — REV 7); in this designed family the entrance is one
+  unrestricted copy of each source-cell state, so I^ent = |β₀| holds as a
+  SEALED PER-FAMILY IDENTIFICATION, displayed with the seal — never cited as a
+  general rule. The MASS layer is HMC-probe's (CTS-M(v), above).
 - **VAL.3 (aggregate branch — RECLASSIFIED at REV 3: a REDESIGN, not a fallback;
   pass-2 obstruction 2).** RS.0–RS.3 need per-(cell, cell) transition coefficients
   BEFORE the final σ-aggregate; aggregate-only cancellation yields no local M_e and
@@ -593,16 +740,21 @@ integer-valued count).**
 > common monomial normalization making it an integer count, and (c) carrying a
 > DISPLAYED degree bound. The canonical instance: decided_σ(N) — an integer in
 > [0, p^{nN}], a finite sum Σ_{threshold(γ) ≤ N} Ĉ_γ(q)·q^{nN−A(γ)} of degree
-> ≤ nN (REV 6: the FULL count Ĉ_γ = |β₀|·C_γ per CTS-M(iii)/(vi) — the
-> per-representative C_γ alone undercounts by the initial-cell size),
-> so (†) applies verbatim at W = nN — CONDITIONAL (REV 5, pass-4 concern 5) on FIVE
+> ≤ nN (REV 7: the FULL count Ĉ_γ = I^ent_γ·C_γ per CTS-M(iii) ENT-COUNT — the
+> per-representative C_γ alone undercounts by the entrance multiplicity, and
+> the rev-6 |β₀| stand-in is STRUCK, pass-6 critical 3),
+> so (†) applies verbatim at W = nN — CONDITIONAL (REV 5, pass-4 concern 5;
+> widened at REV 7) on SIX
 > exposed inputs: (i) SQ.0's finite p-INDEPENDENT syntactic template family; (ii)
 > ZERO-EXTENSION — templates unrealizable at a particular p contribute Ĉ_γ(p) = 0,
 > never a missing row (built into the CTS itself at REV 6, CTS-M(ii));
 > (iii) polynomiality of every normalized summand through
 > CTS-M(iv)-POLY (Theorem VAL); (iv) the degree-≤ nN bound (SQ.0(d)); (v) for PRIME-POWER
 > censuses q = p^δ, the relative W(F_q) reading via REL.1/REL.2 — never a silent
-> ordinary-ℤ_p-box treatment. The COMPLETED density R_σ is NEVER
+> ordinary-ℤ_p-box treatment; (vi) ENT-COUNT (REV 7, pass-6 critical 3) — every
+> Ĉ_γ's entrance factor is the displayed entrance count I^ent_γ of CTS-M(iii),
+> polynomial at degree ≤ W_ent(γ), never the bare cell size |β₀|. The COMPLETED
+> density R_σ is NEVER
 > census-refuted by interpolation: it is tested only by the two-sided SQUEEZE
 > brackets (⌈(R_σ(p) − env(N))p^{nN}⌉ ≤ decided_σ(N) ≤ ⌊R_σ(p)p^{nN}⌋), which refute
 > a candidate VALUE at a given p quantitatively, envelope in hand. §8 R1(3)'s wall
@@ -625,8 +777,10 @@ integer-valued count).**
   entry-by-entry at every q, with the row-partition identity (Σ_{o,β} entries =
   fresh-pool total, CTS-M(iv)-PART), WEIGHTED representative independence (≥ 2
   representatives per cell, the measured (T·G)-row compared exactly —
-  CTS-M(iv)-REP, REV 6), the two-node FULL-count layer carrying its initial-cell
-  factor |β₀| (CTS-M(iii)), and the EMPTY-CELL layer — at every sealed q where
+  CTS-M(iv)-REP, REV 6), the two-node FULL-count layer carrying its sealed
+  ENTRANCE COUNT I^ent (CTS-M(iii) ENT-COUNT — REV 7; where the gated family
+  enters with one unrestricted copy per state, I^ent = |β₀| is displayed as a
+  sealed per-family identification), and the EMPTY-CELL layer — at every sealed q where
   some cell size vanishes, entries into that cell verified 0 and no formal row
   cited (CTS-M(ii-a)) — checked exactly. PASS = exact integer equality throughout, with
   surplus ≥ 3 per series per (†). STATUS: the exploration-class probe
@@ -690,7 +844,9 @@ and type clauses by [2b].
   loop POSITION and heights are NOT in τ; their irrelevance is RS.0(β)'s THEOREM,
   never a definition. Prove: (i) τ ranges over the FINITE p-INDEPENDENT list
   𝒯_n = 𝒞_n (CTS-M(i) + the M1 bounds); (ii) LUMPABILITY = CTS-M(iv)-REP
-  CONSUMED, in the WEIGHTED form (REV 6) — any two
+  CONSUMED, in the WEIGHTED form (REV 6) — at REV 7 consumed in its [1v]-COND
+  XHD-CONDITIONAL form, the condition discharging INSIDE [2b] itself once
+  M4a-X/XHD closes (pass-6 critical 1: no cycle) — any two
   CONCRETE states of one type have IDENTICAL full outgoing one-step laws: the JOINT
   law of (next node data, all hinge values, all collision/admissibility data) = the
   table row (T_{m,o}^{α,β})_{o,β}, exhibited per move species, with the e_birth vs
@@ -731,8 +887,14 @@ and type clauses by [2b].
   imply the claimed finite semilinear decomposition. (Route B — admissibility
   classes) if the bijection degenerates at boundary strata, partition the cone into
   FINITELY MANY explicitly-listed exact admissibility classes with a per-class
-  count polynomial each; RS.1 then sums per class. Until M4a-X closes, NO
-  height-lattice sum is exact: RS.1 cites M4a-X, never M4a alone. FRONT-LOADED
+  count polynomial each; RS.1 then sums per class. INTERFACE DUTY (REV 7,
+  pass-6 critical 1): M4a-X's deliverable IS the XHD package (§2v) — XHD-w
+  fixed-height weights (with M4a's affine exponents), XHD-d two-sided-exact
+  semilinear domains for every finite template (length 1 included — the
+  one-step domains K_e's G entries consume), XHD-s per-class rational sums;
+  [2b]'s acceptance of this package is the [1v]-FULL discharge event. Until
+  M4a-X closes, NO
+  height-lattice sum is exact: RS.1 cites M4a-X/XHD, never M4a alone. FRONT-LOADED
   REFUTER (REV 5 language, pass-4 concern 7 — a finite test can refute the sealed
   exact domain in its box, never establish it for unbounded parameters or higher
   degree): the MENU-n3 two-sided parameter check (clause (iii), gate below).
@@ -845,7 +1007,7 @@ of both with the sealed law. RECORDED RESIDUE: (i) is MOVES-free at the DECISION
 only; the history-level identification stays REL.2(a)–(d)'s proof burden, not the
 gate's.
 
-## 4. NOTE [3] RESUM — the depth resummation into rational functions of q (REV 6: K_e + ι_e consumed from CTS-M — no source-mass division; E0 on the active block; STATE-probe-2 blocking [2b]+[3])
+## 4. NOTE [3] RESUM — the depth resummation into rational functions of q (REV 6: K_e + ι_e consumed from CTS-M — no source-mass division; E0 on the active block; STATE-probe-2 blocking [2b]+[3]. REV 7: G via XHD; the NINE-input ledger; ι^T(I−K)^{−1}b orientation; RS.1 heights summed once via COMP-h→COMP-Σ)
 
 **The algebraic form (REV 2 — BLOCK-triangular; pass-1 obstruction 5 + concern 5).**
 Unknowns β_{e,τ} : {types of degree e} → ℚ(q), indexed by cluster size e ≤ n AND state
@@ -855,7 +1017,8 @@ UNPROVED closure, asserted against risk R2; closure is now the theorem RS.0):
   (R_e)   β_{e,·} = q^{−e(e−1)/2} · M_e(q) β_{e,·} + SHALLOW_{e,·}      (e = 1, …, n)
 
 with M_e(q) the SAME-SIZE TRANSITION MATRIX (rows/columns = CTS states τ = (s, α);
-entries assembled per RS.PRE from CTS table entries × M4a-X-exact height sums);
+entries assembled per RS.PRE from CTS table entries × XHD one-step height sums
+— REV 7);
 SHALLOW_{e,·} collects deciding/branching
 root reads (coefficients: MENU shapes × [1v] counts × [2r]-certified mixed legs
 β_m(q^δ), m < e) AND carries the CTS-M(iii) initial vectors ι_e — the block-entry
@@ -882,28 +1045,47 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   mass; substochasticity did not follow and K_e^k 𝟙 was mistyped).**
   K_e(q) := the CTS-M(iv) kernel, entrywise
       K_e(q)_{(s,α),(s′,β)} = Σ_{m: s→s′} Σ_{o continuing}
-        T_{m,o}^{α,β}(q) · G_{m,o}(q)   — NO source-mass division,
+        T_{m,o}^{α,β}(q) · G^{α,β}_{m,o}(q)   — NO source-mass division,
   the conditional mass of landing given the source cylinder from one
   representative (well-defined across representatives by CTS-M(iv)-REP); ι_e :=
-  the CTS-M(iii) initial vector from the SHALLOW layer; G_{m,o}(q) the
-  M4a-X-exact geometric height sum of per-assignment fresh-volume monomials
-  (affine exponents, positive weights — M4a) — fresh-volume costs, height sums,
+  the CTS-M(iii) initial vector from the SHALLOW layer; G^{α,β}_{m,o}(q) the
+  XHD one-step resummed height mass (REV 7 — the XHD-w fixed-height monomials g
+  summed over the XHD-d one-step exact domain; affine exponents, positive
+  weights — M4a; source-and-target-indexed per pass-6 concern 1) —
+  fresh-volume costs, height sums,
   multiplicities and the displayed exterior factor ALL INSIDE.
   Then q^{−e(e−1)/2}M_e(q) := K_e(q) (the display (R_e) is unchanged; the
   exterior factor is notation, not an extra cost), and SHALLOW_{e,·} carries ι_e
   so that every solved series is ι-weighted (CTS-M(vi): no path product is a
-  mass without its initial factor). Substochasticity is the per-representative
+  mass without its initial factor). ORIENTATION DISPLAY (REV 7, pass-6 fresh
+  sweep 2): the solved scalar block output is
+      ι_e^T (I − K_e)^{−1} b_e,
+  with ι_e the ROW entrance vector (left factor) and b_e the named EXIT
+  VECTOR — the per-state one-step terminal/deciding conditional mass
+  (CTS-M(iv)-PART's absorbing columns), weighted where applicable by certified
+  downstream values ([2r] mixed legs β_m(q^δ)); (R_e)'s unknown β_{e,·} is the
+  COLUMN solve β_e = K_e β_e + b_e, ι_e pairing once on the left — "SHALLOW
+  carries ι_e" means exactly this split, never a second insertion of ι into
+  the matrix or into b_e. Substochasticity is the per-representative
   identity CTS-M(iv)-PART (Σ T·G + terminal mass = 1), inherited from measure —
-  never asserted of a resummed matrix. CONDITIONALITY DISPLAYED (REV 6 — the
-  ledger the pass-5 review found incomplete): K_e's probabilistic reading is
-  conditional on SIX named inputs — (1) M4a-X exact height domains (else
-  resummed rows sum masses of non-events); (2) D4R.0 disjointness after height
-  grouping; (3) CTS-M(iv)-REP weighted representative independence = M2(ii)
-  (else the quotient by τ is ill-defined); (4) CTS-M(v) HMC (else K_e^k does not
-  factor the whole-template height domains — OPEN kernel); (5) CTS-M(ii) ACT
+  never asserted of a resummed matrix. CONDITIONALITY DISPLAYED (REV 7 — the
+  NINE-input ledger; pass-6 critical 4: iv-PART, iv-MEAS, and the COMP-typing
+  duty were load-bearing but unlisted): K_e's probabilistic reading is
+  conditional on NINE named inputs — (1) XHD = M4a-X exact height domains,
+  weights, and sums (else resummed rows sum masses of non-events); (2) D4R.0
+  disjointness after height
+  grouping; (3) CTS-M(iv)-PART (else rows are not sub-distributions);
+  (4) CTS-M(iv)-REP weighted representative independence = M2(ii)
+  (else the quotient by τ is ill-defined); (5) CTS-M(iv)-MEAS (else summands
+  are not masses of disjoint measurable events); (6) CTS-M(v) HMC (else K_e^k
+  does not
+  factor the whole-template height domains — OPEN kernel); (7) CTS-M(ii) ACT
   (else empty cells at wild p corrupt rows, denominators, determinants);
-  (6) CTS-M(iii) INIT (else no product is tied to a cylinder mass). K_e carries
-  all six tags until each closes.
+  (8) CTS-M(iii) INIT + ENT-COUNT (else no product is tied to a cylinder mass
+  or a full count); (9) the CTS-M(vi) COMP-TYPING duty — heights summed
+  exactly once, through the (COMP-h)→(COMP-Σ) passage (else the height
+  coordinate is double-counted, pass-6 critical 2). K_e carries
+  all nine tags until each closes.
   Every probabilistic claim in RS.3/SQ.2 is about K_e restricted per CTS-M(ii)
   to the active block.
 - **RS.0 (TYPE-CLOSURE — promoted kernel; PROOF SHAPE fixed at REV 3, pass-2
@@ -934,13 +1116,21 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   fibers — no quotient multiplicity; the pass-1 obstruction-2 aggregation gap is
   repaired upstream, in [1]); group realized histories by TEMPLATE γ (the CTS path)
   and height point: per (template, height point) the realized count is the FULL
-  count Ĉ_γ(q) = |β₀|·C_γ(q), and the realized MASS is ι_{β₀}·∏(T·G) per
-  CTS-M(vi) (REV 6 — the initial factor is never omitted), constant along path-length-neutral height
-  translations (M4b narrowed + M4b-T's equivariance clause); Fubini the height sum
-  over the EXACT semilinear domain (M4a-X — per-class summation with sealed zero
+  count Ĉ_γ(q) = I^ent_γ·C_γ(q), and the realized MASS is
+  ι_{β₀}·∏(T·g(h_i)) per COMP-h (REV 7, pass-6 critical 2 — the FIXED-HEIGHT
+  identity: at a height point the step factor is the monomial weight g, NEVER
+  the resummed G; the initial factor is never omitted), constant along
+  path-length-neutral height
+  translations (M4b narrowed + M4b-T's equivariance clause); then the ONE
+  height sum: Fubini
+  over the EXACT semilinear domain H(γ) (XHD-d — per-class summation with
+  sealed zero
   classes, never the containing cone); per-direction height sums are geometric
-  series over congruence sublattices (M4a); the per-step height sums compose
-  into path masses ONLY through CTS-M(v) HMC (REV 6 — pass-5 critical 4: exact
+  series over congruence sublattices (XHD-s/M4a); this whole-template height
+  sum factors into the per-step resummed masses ∏(T·G) ONLY through CTS-M(v)
+  HMC — the (COMP-h)→(COMP-Σ) passage, after which NO further height sum
+  occurs anywhere (REV 7; the rev-6 sketch attached G to height points and
+  then re-summed them — pass-6 critical 2. Exact
   rational summability of each fixed path does NOT imply generation by a fixed
   one-step matrix; the factorization through the retained state is HMC's open
   duty); the DEPTH direction is the regular path
@@ -949,9 +1139,10 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   a new sum; positivity licenses every regrouping (Tonelli).
 - **RS.2 (coefficient p-independence).** Every coefficient of (R_e) is one fixed
   element of ℚ(q): numerators from CTS-M(iv)-POLY (polynomial table entries at
-  degree ≤ W_loc(m), cell sizes at degree ≤ W_state(s)) and the CTS-M(iii)
-  initial vectors,
-  denominators from the M4a-X-exact geometric height sums. REV 2 HONESTY (pass-1
+  degree ≤ W_loc(m), cell sizes at degree ≤ W_state(s)), the CTS-M(iii)
+  initial vectors, and the ENT-COUNT entrance polynomials (REV 7);
+  denominators from the XHD/M4a-X-exact one-step geometric height sums
+  (REV 7). REV 2 HONESTY (pass-1
   obstruction 4): this rests on [1v] Theorem VAL (CTS-M form) — it does NOT follow
   from Theorem C + Claim 4.3; the torus-lemma bridge is dead. (REV 3: if VAL.3 is
   entered, RS.2 and the whole block system are re-derived in [3′], per §2v/R8.)
@@ -972,19 +1163,21 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   > scope — pass-5 critical 3 — and are guarded by CTS-M(ii-c) instead.)
   Route E0 (the pass-4 suggestion, adopted as primary): X.3's a.e. exit from the
   same-size block + the EXACT finite substochastic kernel identification (RS.PRE's
-  six CTS-M-side inputs) give A^k 𝟙 = (still-in-block-after-k masses) ↓ μ(never
+  nine inputs — REV 7) give A^k 𝟙 = (still-in-block-after-k masses) ↓ μ(never
   exits) = 0 — monotone convergence, no uniformity in p needed anywhere downstream.
   (ii) Then det(I − K_e) ≠ 0 at infinitely many prime evaluations (all-active
   primes, where K_e(p) = A — cofinitely many, since only finitely many primes
   are roots of some not-identically-zero cell size), hence ≠ 0 in ℚ(q): the
   symbolic block solve is licit; its evaluation at the finitely many
-  NON-all-active (wild) primes additionally needs the CTS-M(ii-c) NO-JUNK-POLE
-  burden — det(I − D_p) ≠ 0 for the junk block — before R_σ(p) may be read
-  off there (REV 6; the active coordinates then solve the active system by
-  CTS-M(ii-a/b)). Solution:
+  NON-all-active (wild) primes reads the ACTIVE subsystem (CTS-M(ii-a/b)) with
+  E0 supplying det(I − A_p) ≠ 0, and CTS-M(ii-c)'s ACTIVE-VALUE AGREEMENT
+  burden (WEAKENED at REV 7, pass-6 concern 4) certifies that the symbolic
+  R_σ's value there equals the active-subsystem solve — junk-block zeros
+  removable — before R_σ(p) may be read
+  off there; a blanket det(I − D_p) ≠ 0 is no longer required. Solution:
   R_σ ∈ ℚ(q), one per σ. RS.3 and SQ.2 consume E0 ONLY (each runs at fixed q = p);
   both are CONDITIONAL-ON-ESCAPE(E0) until the kernel closes, and E0 is itself
-  conditional on X.3 + RS.PRE's six named inputs.
+  conditional on X.3 + RS.PRE's nine named inputs (REV 7).
   > **ESCAPE-UNIF (OPTIONAL STRENGTHENING — the rev-4 uniform statement, kept OPEN,
   > currently CONSUMED BY NOTHING).** ∃ B(n), c(n): K_e(p)^B has all row sums
   > ≤ 1 − p^{−c} for every p. Routes: (E1) REACHABLE-EXIT — from every τ the
@@ -1000,17 +1193,25 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   > E2 closes ESCAPE-UNIF only with an added uniform minorization/renewal event
   > within bounded time. Any future consumer needing p-uniformity must cite
   > ESCAPE-UNIF explicitly.
-  **ESCAPE-probe (exploration-class, runs before [3] drafting — RETARGETED at E0):**
-  in the STATE-probe-2 cylinders (n = 6, p = 2, conditioned, N = 8) and the 2^24
-  cubic box, measure per-type k-step still-in-block masses for k = 1…8 — E0
-  predicts strict decay toward 0 in every row; a row whose still-in-block mass
-  stabilizes above 0 refutes the E0 mechanism in that box and reopens the uniform
-  routes. RS.3 no longer cites X.1b ANYWHERE.
+  **ESCAPE-probe (exploration-class, runs before [3] drafting — RETARGETED at
+  E0; REBUILT at REV 7, pass-6 concern 2: a k ≤ 8 decay observation cannot
+  refute the asymptotic E0 — arbitrarily delayed escape is E0-compatible).**
+  Two layers. (a) SYMBOLIC CLOSED-CLASS REFUTER (the genuine E0 falsifier):
+  from the sealed active kernel at q = p, compute the directed transition
+  graph of A and its strongly-connected components; any CLOSED class — no
+  outgoing edges leaving it AND zero one-step terminal mass on every member,
+  i.e. exactly stochastic rows on the class — refutes E0 at that p OUTRIGHT
+  (a stochastic closed class has ρ = 1), finitely and conclusively. (b) the
+  k = 1…8 per-type still-in-block decay census (the former layer) —
+  CONSISTENCY-CLASS ONLY: it refutes sealed finite-depth predictions, never
+  E0 itself; a row stabilizing above 0 within the box is a FINDING to
+  adjudicate, not a refutation of the asymptotic statement.
+  RS.3 no longer cites X.1b ANYWHERE.
 - **RS.4 (checksum — CONDITIONAL, tag inline at REV 4, pass-3 concern 5).**
   Σ_σ R_σ = 1 identically in q (series = 1 at every p by [5]; a rational function
   equal to 1 at infinitely many q is 1). Cheapest layer invariant. STANDING TAG:
-  RS.4 inherits every condition of the block solve (ESCAPE(E0); K_e's six RS.PRE
-  inputs; the total-mass identity via [5]'s X.3 — REV 6, per the pass-5 §C
+  RS.4 inherits every condition of the block solve (ESCAPE(E0); K_e's nine RS.PRE
+  inputs — REV 7; the total-mass identity via [5]'s X.3 — REV 6, per the pass-5 §C
   finding: the rev-5 X.1b-through-X.2 tag was OVER-conditioning, since "total
   terminating mass = 1" needs X.3, not the quantitative envelope; X.1b remains
   tagged only where env constants are consumed) — its acceptance record, like [3]'s,
@@ -1022,13 +1223,16 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   independent evidence — pass-1 obstruction 8.)
 
 **Kernels (derivation-grade — the campaign's biggest, now four):**
-1. **RS.1's regrouping**: `unroll`/`resum` through the CTS — grouping by template,
+1. **RS.1's regrouping**: `unroll`/`resum` through the CTS — grouping by template
+   AND height point (COMP-h typing — REV 7),
    multi-side reads (strictly-decreasing-slope cones, the gap substitution
-   `_sum_by_gaps`), height summation over M4a-X's EXACT classes only, the
+   `_sum_by_gaps`), the ONE height summation over XHD-d's EXACT classes only
+   (factored into ∏ G through HMC — never a second height sum), the
    conditional-on-ancestors chain via C.1.5 stepwise (NO independence assumption),
    base-changed legs entering ONLY through [2r] REL.2.
 2. **The K_e + ι_e assembly**: RS.PRE's entries per CTS-M(iv) (T·G, NO
-   source-mass division) and the initial vector per CTS-M(iii),
+   source-mass division; G = the XHD one-step sums, REV 7) and the initial
+   vector per CTS-M(iii), the ι^T(I−K)^{−1}b orientation displayed,
    with the Case-J a > 0 anchor exponents inline — a wrong anchor exponent silently
    corrupts every deep coefficient. HMC (CTS-M(v)) is consumed here, not proved
    here — its home is [1v].
@@ -1037,9 +1241,11 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
    the residual argument that loop position adds nothing (RS.0(β)).
 4. **ESCAPE (OPEN — REV 6, active-block form)**: route E0's per-p exit argument
    (X.3 + the exact
-   kernel identification), with the retargeted ESCAPE-probe as its front-loaded
-   refuter; ESCAPE-UNIF optional, consumed by nothing; the wild-p junk-block
-   determinant check delegated to CTS-M(ii-c) and gated at RESUM-n3.
+   kernel identification), with the REV 7 two-layer ESCAPE-probe as its
+   front-loaded refuter (the symbolic closed-class layer is the genuine one);
+   ESCAPE-UNIF optional, consumed by nothing; the wild-p ACTIVE-VALUE
+   agreement check delegated to CTS-M(ii-c) (weakened, REV 7) and gated at
+   RESUM-n3.
 
 **Sealed gates (two; STATE-probe runs FIRST, before this note is drafted).**
 - **STATE-probe — RAN 2026-07-26 (exploration-class; results/state_probe_output.txt).
@@ -1072,15 +1278,20 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   loop-position variants per cell (pass-2 concern 8's residue). PASS = conditions
   (i)+(ii) above, exactly. Adjudication and the single-𝒯-refinement clause as in
   STATE-probe; a second same-type failure invokes §8 R2's wall protocol.
-- **RESUM-n3 (the headline gate, REV 2 form; ACT layer added at REV 6).** Solve
+- **RESUM-n3 (the headline gate, REV 2 form; ACT layer added at REV 6,
+  weakened to ACTIVE-VALUE agreement at REV 7).** Solve
   (R_e) for n = 3 symbolically.
   Seal BEFORE any census: the FIVE rational functions R_σ, σ ∈ {(1,1)³, (1,1)+(1,2),
   (1,3), (1,1)+(2,1), (3,1)}, values at p = 2, 3 (wild), 5, 7 (tame), the checksum,
   AND the exact finite-level partial sums by depth; PLUS (CTS-M(ii) — pass-5
   critical 3's refuter) the sealed active-state lists Act_2/Act_3, the verified
-  vanishing at p = 2, 3 of every entry into an inactive cell, and the junk-block
-  determinants det(I − D_p) ≠ 0 at both wild primes — a vanishing junk
-  determinant or a wild-p pole of any R_σ is a FAIL of CTS-M(ii-c), adjudicated
+  vanishing at p = 2, 3 of every entry into an inactive cell, and the
+  ACTIVE-VALUE AGREEMENT layer (CTS-M(ii-c), REV 7 — pass-6 concern 4): the
+  junk-block determinants det(I − D_p) RECORDED at both wild primes (a zero is
+  a FINDING, not by itself a FAIL), plus the sealed check that each R_σ's
+  wild-p value — after cancellation where needed — equals the ACTIVE-subsystem
+  solve there; a density-component pole at a wild p SURVIVING cancellation is
+  the FAIL of CTS-M(ii-c), adjudicated
   before any density comparison. DISCRIMINATING layer (exact,
   pass-1 obstruction 8): decided_σ(N) by EXHAUSTIVE enumeration (p = 2: N ≤ 8, 2^24;
   p = 3: N ≤ 5, 3^15), types from the PARI `factorpadic` oracle
@@ -1137,12 +1348,16 @@ incompatible; the raw node-count premise is WITHDRAWN).** Depth splits into two 
   pass-3 obstruction 3 established that WEIGHT-CHARGE canNOT yield a uniform B(n)
   (v_p(disc) is unbounded across a source cylinder), so no consumer may cite it for
   uniform leakage.
-  **STALL-probe (exploration-class, runs with the kernel draft):** exhaustive p = 2
+  **STALL-probe (exploration-class, runs with the kernel draft; SCOPE RESTATED
+  at REV 7 — pass-6 concern 3):** exhaustive p = 2
   boxes — the full cubic box 2^24 at N = 8 and the quartic RS-chain conditioned
   cylinder 2^26 at N = 10 (the state-probe geometry: RS self-loops ARE zero-gain
   recenterings) — measure the max zero-gain run and the per-f ratio
   #zero-gain / v_p(disc f); one f violating the candidate s(n) kills that constant
-  before the kernel is drafted around it. If the derivation instead finds a legal
+  before the kernel is drafted around it. SCOPE: the probe refutes SEALED
+  CANDIDATE constants s(n) only — it can neither refute nor establish the
+  existential WEIGHT-CHARGE statement itself (some s(n) exists), which is
+  decided by derivation alone. If the derivation instead finds a legal
   UNBOUNDED zero-gain chain (REV 4 rewording, pass-3 concern 6: this is NOT
   automatically "a hole in the termination story" — unbounded finite chain lengths
   across inputs are compatible with a.e. termination, and even an infinite chain on
@@ -1228,12 +1443,15 @@ hypothesis and ESCAPE supplying Neumann convergence.
   > a monotone consumable (a key-degree drop, a branch-budget decrement, or a
   > weight-lattice coarsening) that can occur ≤ f(n) times; the candidate
   > L(n) ≤ n² is NOT accepted without that charging argument.
-  **TRACK-probe (exploration-class, runs with this note's draft):** on the
+  **TRACK-probe (exploration-class, runs with this note's draft; SCOPE
+  RESTATED at REV 7 — pass-6 concern 3):** on the
   STALL-probe boxes (the exhaustive 2^24 cubic box at N = 8 and the 2^26
   quartic conditioned cylinder at N = 10), extract each f's canonical history
   and count its track-opening events under the sealed assignment rule; ONE f
   exceeding the candidate L(n) refutes that candidate before SQ.0 is drafted
-  around it.
+  around it. SCOPE: a candidate-refuter only — the existential TRACK-COUNT
+  statement (some L(n) exists) is decided by the charging derivation alone,
+  never by the probe.
 - **SQ.1 (budgeted covering — finiteness re-cited at REV 4).** Every f in the
   level-N box is in exactly one of: (a) the stratum of one complete realizable
   canonical history with threshold ≤ N, or (b) Undec(N). PARTITION (not mere
@@ -1260,8 +1478,10 @@ hypothesis and ESCAPE supplying Neumann convergence.
   ρ_σ := lim decided_σ(N)/p^{nN} exists and equals R_σ(p) for every p; R_σ ∈ ℚ(q) is
   the p-independent solution of (R_e); Σ_σ R_σ = 1. Assembled from SQ.2 + SQ.3 +
   X.2 — hence CONDITIONAL on ESCAPE(E0) and on X.1b (via X.2's env constants) and
-  on K_e's six RS.PRE inputs (M4a-X, D4R.0, CTS-M(iv)-REP, CTS-M(v) HMC,
-  CTS-M(ii) ACT, CTS-M(iii) INIT — REV 6) until each closes; the
+  on K_e's nine RS.PRE inputs (XHD = M4a-X, D4R.0, CTS-M(iv)-PART,
+  CTS-M(iv)-REP, CTS-M(iv)-MEAS, CTS-M(v) HMC, CTS-M(ii) ACT, CTS-M(iii)
+  INIT + ENT-COUNT, the CTS-M(vi) COMP-typing duty — the REV 7 nine-input
+  ledger, pass-6 critical 4) until each closes; the
   capstone statement and its
   acceptance record carry these tags verbatim (§7's acceptance-record rule). State
   with the honest normalization sentence (monic-box density; projective/palindromy
@@ -1316,22 +1536,35 @@ Per note, in order; no step may be skipped, no note trusted early:
    PROBE-LANGUAGE clause (REV 5, pass-4 concern 7): finite tests REFUTE within
    their tested box and never establish — the words "deciding probe"/"decisive
    test" may not appear in any acceptance record; every probe is a front-loaded
-   REFUTER. Gate roster at REV 6: D4-n3, VALUE-Fq (24 q-points, + the CTS-M
+   REFUTER; probes refute SEALED CANDIDATES (constants, formulas, finite-depth
+   predictions) unless a displayed finite reduction makes the refutation
+   conclusive — the roster may not claim a probe refutes an existential open
+   kernel (REV 7, pass-6 concern 3; the one exception is ESCAPE-probe's
+   symbolic closed-class layer, whose finding refutes E0 itself at that p).
+   Gate roster at REV 7: D4-n3, VALUE-Fq (24 q-points, + the CTS-M
    TABLE layer: displayed cell predicates, cell sizes at W_state bounds, full T
-   tables, row-partition, WEIGHTED representative-independence, initial-cell
-   factors, empty-cell zero checks) + VALUE-p (+ JOINT-probe + COMPOSE-probe
-   with the Ĉ count layer + HMC-probe for CTS-M(v)),
-   MENU-n3 (two-sided parameter exactness), REL-n4, EXHAUST-n3 (+ STALL-probe),
-   STATE-probe-2 (blocks [2b] AND [3]) + ESCAPE-probe (E0-retargeted, active
-   block) + RESUM-n3 (+ the ACT layer: Act_p lists, entry vanishing, junk-block
-   determinants at wild p), SQUEEZE-n3 (+ TRACK-probe for SQ.0's TRACK-COUNT). Gate scripts live in `verification/`, predictions in
+   tables, row-partition, WEIGHTED representative-independence, entrance-count
+   factors I^ent with per-family identifications displayed, empty-cell zero
+   checks) + VALUE-p (+ JOINT-probe + COMPOSE-probe
+   with the Ĉ = I^ent·∏T count layer + HMC-probe for CTS-M(v)),
+   MENU-n3 (two-sided parameter exactness — XHD-d's refuter), REL-n4,
+   EXHAUST-n3 (+ STALL-probe, candidate-s(n) scope),
+   STATE-probe-2 (blocks [2b] AND [3]) + ESCAPE-probe (REV 7 two-layer:
+   symbolic closed-class refuter + k ≤ 8 decay consistency layer) + RESUM-n3
+   (+ the ACT layer: Act_p lists, entry vanishing, junk determinants RECORDED
+   + the wild-p ACTIVE-VALUE agreement checks), SQUEEZE-n3 (+ TRACK-probe,
+   candidate-L(n) scope, for SQ.0's TRACK-COUNT). Gate scripts live in `verification/`, predictions in
    `verification/*_SEALED_PREDICTIONS_<date>.md`.
    ACCEPTANCE-RECORD RULE (REV 4, pass-3 concern 5): every acceptance record names
    its note's open conditions INLINE — RS.4, [3], [4], and the capstone may not be
    recorded unconditional while ESCAPE(E0), WEIGHT-CHARGE (X.1b), TRACK-COUNT,
    or any RS.PRE
-   input (M4a-X, D4R.0, CTS-M(iv)-REP = M2(ii), CTS-M(v) HMC, CTS-M(ii) ACT,
-   CTS-M(iii) INIT — the REV 6 six-input ledger) is open; a record lacking its
+   input (XHD = M4a-X, D4R.0, CTS-M(iv)-PART, CTS-M(iv)-REP = M2(ii),
+   CTS-M(iv)-MEAS, CTS-M(v) HMC, CTS-M(ii) ACT, CTS-M(iii) INIT + ENT-COUNT,
+   the CTS-M(vi) COMP-typing duty — the REV 7 NINE-input ledger, pass-6
+   critical 4) is open; and [1v]'s record states its LEVEL — [1v]-COND
+   (GIVEN XHD) vs [1v]-FULL (XHD discharged by [2b]) — explicitly (REV 7,
+   pass-6 critical 1). A record lacking its
    tags is a
    protocol violation, not an oversight.
 5. **Update `docs/PROJECT_STATE.md` + the MOVES ledger** at every acceptance
@@ -1416,12 +1649,16 @@ certified perimeter.
   live exposure is now E0: if for some fixed p and e the k-step still-in-block
   mass does NOT tend to 0, then ρ(K_e(p)) = 1, Neumann inversion fails at that p,
   and SQ.2's domination fails with it; RESUM's solvability is unfounded even with
-  all counts polynomial. DEMONSTRATED BY: the retargeted ESCAPE-probe (§4) finding
-  a row whose k-step still-in-block mass stabilizes above 0, or the E0 derivation
+  all counts polynomial. DEMONSTRATED BY: the REV 7 ESCAPE-probe's SYMBOLIC
+  CLOSED-CLASS layer (§4 — an exactly stochastic closed active class at some p:
+  the genuine finite refuter; the k ≤ 8 decay layer is consistency-only,
+  pass-6 concern 2), or the E0 derivation
   failing at the kernel-identification step. ADJUDICATION ORDER: an E0 failure
   with sound RS.PRE inputs would CONTRADICT X.3's a.e. exit — so a failure is
-  adjudicated first against the kernel identification (M4a-X/D4R.0/
-  CTS-M(iv)-REP/CTS-M(v)/CTS-M(ii)/CTS-M(iii) — the six-input ledger), then
+  adjudicated first against the kernel identification (XHD = M4a-X / D4R.0 /
+  CTS-M(iv)-PART / CTS-M(iv)-REP / CTS-M(iv)-MEAS / CTS-M(v) / CTS-M(ii) /
+  CTS-M(iii)+ENT-COUNT / the CTS-M(vi) COMP-typing duty — the REV 7 nine-input
+  ledger, pass-6 critical 4), then
   against L5fix's termination quantifiers; only then is it a structural wall of
   the block architecture — recorded, not patched. ESCAPE-UNIF's routes (E1 with
   the displayed path-mass multiplication; E2 plus bounded-time minorization) stay
@@ -1458,9 +1695,10 @@ maximal-run form; DRAFT-CLEARED first, §1). [2a] SPECIES: 1 unit (M1 + M5). [1v
 VALUE: 4.5 units (VAL.1 + the CTS-M build — the displayed partitions, ACT, INIT,
 STEP, the HMC kernel — with the full tables + the
 widened 24-point gates with the TABLE layer + JOINT-probe + COMPOSE-probe +
-HMC-probe). [2b]
+HMC-probe; REV 7 — drafted and accepted at the [1v]-COND level, GIVEN XHD). [2b]
 STATE-GEOM: 2.5 units (M2 on the CTS state + M4a + M4a-X incl. the affine-semigroup
-duty + M4b-T equivariance; acceptance behind STATE-probe-2). [2r] REL: 1.5–2 units
+duty + M4b-T equivariance; REV 7 — delivers the XHD package, whose acceptance is
+the [1v]-FULL discharge; acceptance behind STATE-probe-2). [2r] REL: 1.5–2 units
 (the re-scoping pass + the four REL.2 obligations + one gate). [5] EXHAUST: 2 units
 (three kernels; X.1b is OPEN — WEIGHT-CHARGE may resist; X.2's displayed
 dichotomy). [3] RESUM: 4–5 units (the K_e assembly/RS.0/RS.1 + ESCAPE(E0) +
@@ -1770,3 +2008,78 @@ both feed it — one refinement/augmentation round each, then wall). R4 live
 (WEIGHT-CHARGE open). R9 restructured onto the active block (E0 open;
 NO-JUNK-POLE is a separate named burden, not a wall). No wall demonstrated;
 none closed.
+
+---
+
+## REV 7 RECORD (2026-07-26) — response to the pass-6 structural review
+
+*(ASSEMBLY_PLAN_PASS6_2026-07-26.md: 4 critical obstructions, 4 concerns,
+verdict UNSOUND — the verifier's own closing: open kernels are NOT the issue;
+the defects were the hidden [1v]↔[2b] cycle and mismatched measured objects at
+the COMP/RESUM interface. Pass-5 dispositions re-judged: C1/C3 GENUINE, C2/C4
+PARTIAL — the PARTIAL pair redone here. C = critical, K = concern.)*
+
+**The interface build (the pass's diagnosis, delivered):** ALL four criticals
+are cuts of one defect — [1v] consumed [2b]'s M4a-X informally. REV 7 names the
+interface: **XHD, the exact-height-domain package** (§2v — XHD-w fixed-height
+weight monomials g^{α,β}_{m,o}(h); XHD-d two-sided-exact semilinear whole-
+template domains, length-1 included; XHD-s per-class rational sums), stated as
+displayed HYPOTHESES of CTS-M and proved in [2b] as M4a-X.
+
+| Finding | Verdict on rev 6 | REV 7 disposition |
+|---|---|---|
+| C1 hidden DAG cycle: [1v] CTS-M/REP → [2b] M4a-X → [1v] STEP/HMC/COMP | the note partition is not acyclic; [1v] cannot prove its displayed theorem before [2b] | XHD named and displayed as CTS-M's hypotheses; ACCEPTANCE SPLIT — [1v]-COND (CTS-M GIVEN XHD; drafting unblocked, consumes [2a] only) → [2b] (proves XHD; consumes [1v]-COND's cells/tables and its XHD-conditional REP, the condition discharging inside [2b] itself) → [1v]-FULL (recorded discharge, no new mathematics) → [3]; execution order and edge list rebuilt (§1); the §7 rule requires every [1v] record to state its level |
+| C2 COMP/RS.1 double-type the heights (templates retain height points while G is already the height sum; RS.1 sums again) | COMP not well-typed for RESUM | TYPING DECIDED (§1s, binding): templates CARRY height points; the per-step factor at a height point is the FIXED-HEIGHT monomial g (LOC); G^{α,β}_{m,o} := Σ_{h ∈ one-step XHD-d domain} g is FAM-only (kernels and COMP-Σ), well-typed from XHD alone at k = 1. CTS-M(vi) rewritten as TWO displayed identities — (COMP-h) μ(γ, h) = ι·∏ T·g(h_i); (COMP-Σ), GIVEN HMC, Σ_{H(γ)} = ι·∏(T·G) — and HMC retyped as the stepwise factorization H(γ) = ∏ H(γ¹_i); RS.1 re-sketched: COMP-h at fixed height, ONE Fubini over XHD-d's exact domain, factorization through HMC, then the depth fixpoint — no height summed twice; the COMP-typing duty added to the ledger |
+| C3 the cell-size count shadow (Ĉ = ⟨cell size⟩·C_γ) unjustified — the entrance count need not equal the cell size for block-entry templates | VAL CHAIN's full count and (†-AGG)'s decided_σ(N) unsupported | ENTRANCE COUNT I^ent_γ defined (CTS-M(iii)): the number of realized shallow entrance prefixes landing in the entry cell — D4R.1's C_P̂ refined by the landing cell, finite-level by D4R.4; named burden ENT-COUNT (polynomial, degree ≤ W_ent(γ)); Ĉ_γ := I^ent_γ·C_γ with W̄(γ) = W_ent(γ) + W(γ) (§1s, Theorem VAL(b)); (†-AGG) restated on I^ent with ENT-COUNT its SIXTH exposed input; the equality of I^ent with the bare cell size demoted to a per-family identification that must be displayed (sealed as such in COMPOSE-probe/VALUE-Fq) |
+| C4 ledger omits load-bearing measured clauses (iv-PART, iv-MEAS; plus the composition duty) | six-input ledger semantically incomplete | The NINE-input ledger: XHD = M4a-X · D4R.0 · CTS-M(iv)-PART · CTS-M(iv)-REP = M2(ii) · CTS-M(iv)-MEAS · CTS-M(v) HMC · CTS-M(ii) ACT · CTS-M(iii) INIT + ENT-COUNT · CTS-M(vi) COMP-typing — cited verbatim at RS.PRE, SQ.4, the §7 acceptance-record rule, and R9 |
+| K1 G_{m,o} under-indexed (HMC lets height mass depend on retained source state) | notation weaker than the statement | g and G indexed g^{α,β}_{m,o} / G^{α,β}_{m,o} (source AND target cells) throughout XHD-w, CTS-M(iv)/(v)/(vi), RS.PRE |
+| K2 ESCAPE-probe's k ≤ 8 decay cannot refute asymptotic E0 | probe overstated as refuter | ESCAPE-probe rebuilt two-layer (§4): (a) SYMBOLIC CLOSED-CLASS refuter — an exactly stochastic closed active class at q = p refutes E0 outright, finitely; (b) the decay census demoted to consistency-class; R9's DEMONSTRATED-BY updated |
+| K3 TRACK-/STALL-probe scopes overstated | candidate-refuters billed as kernel-refuters | SCOPE clauses added at both probes (they refute sealed s(n)/L(n) candidates only; the existentials are decided by derivation) + the §7 probe-scope rule (no probe refutes an existential open kernel; the closed-class layer is the displayed exception) |
+| K4 NO-JUNK-POLE stronger than needed (active solution independent of D) | avoidable failure mode | CTS-M(ii-c) WEAKENED to ACTIVE-VALUE: the wild-p value is DEFINED through the active subsystem; the burden is AGREEMENT (symbolic R_σ's wild-p value = active-subsystem solve; det(I − D_p) zeros checked removable); blanket det(I − D_p) ≠ 0 dropped (consumed by nothing); RS.3(ii) and RESUM-n3's ACT layer restated (junk determinants RECORDED, agreement GATED) |
+
+**Also at REV 7 (the pass's fresh sweep):** the ι-orientation DISPLAYED at
+RS.PRE and CTS-M(vi) — the solved scalar is ι_e^T (I − K_e)^{−1} b_e with the
+EXIT VECTOR b_e named ((iv)-PART's absorbing columns, weighted by [2r] mixed
+legs); "SHALLOW carries ι_e" disambiguated as the left/right split, ι applied
+once. "Cylinder of γ" disambiguated in CTS-M(vi): the realized event of (γ, h)
+is a FINITE (D4R.4) DISJOINT (D4R.0) union of realized-history cylinders,
+measurable with additive mass — no single-cylinder reading; iv-MEAS points to
+it. RS.2's numerator list gains the ENT-COUNT polynomials; §9's effort map
+notes the [1v]-COND/[1v]-FULL split. NOTE [1] D4-R remains UNTOUCHED (its GO
+stands; the twelve-lemma roster binds).
+
+**The DAG after REV 7 (acceptance order, ACYCLIC):**
+[1] → [2a] → [1v]-COND → [2b] → [1v]-FULL → { [2r] ∥ [5] } → [3] → [4]
+— with §C/decomp §3 feeding [1]/[2a]/[2r]/[5] as before; the only [2b]-ward
+edge out of [1v] is [1v]-COND → [2b] (conditional statements), and the only
+[1v]-ward edge out of [2b] is the XHD-discharge acceptance edge [2b] →
+[1v]-FULL; [3] consumes [1v]-FULL. No cycle at either the note or the
+acceptance-event level.
+
+**Open kernels after REV 7 (each with its refuter/gate; unchanged in
+mathematical content, re-homed where renamed):** D4R.0 maximal-run form
+(D4-n3); CTS-M(i)/(ii)/(iii incl. ENT-COUNT)/(iv) GIVEN XHD + VAL.1 (VALUE-Fq
+with the TABLE layer — now entrance-count factors; VALUE-p; JOINT-probe;
+COMPOSE-probe + the Ĉ = I^ent·∏T layer); CTS-M(v) HMC — OPEN (HMC-probe);
+CTS-M(ii-c) ACTIVE-VALUE agreement (RESUM-n3 ACT layer, weakened form); XHD =
+M4a-X EXACT-DOMAIN incl. the affine-semigroup duty — OPEN, [2b]'s central
+delivery (MENU-n3 two-sided (iii)); M2 lumpability = XHD-conditional
+CTS-M(iv)-REP consumption + the e_birth/e_read re-walk (STATE-probe-2 — blocks
+[2b] AND [3]); M4b narrowed constancy + M4b-T equivariance (VALUE-Fq twisted
+layers; MENU-n3); REL.1/REL.2 (REL-n4); X.1a (EXHAUST-n3 (i)/(i′)); X.1b
+WEIGHT-CHARGE — OPEN (STALL-probe, candidate scope; EXHAUST-n3 (ii));
+ESCAPE(E0) — OPEN (ESCAPE-probe two-layer, the closed-class layer its genuine
+refuter; RESUM-n3); RS.0(β) height-shift bisimulation (STATE-probe-2 +
+RESUM-n3); X.2 PROGRESS dichotomy (EXHAUST-n3 (iv)); TRACK-COUNT — OPEN
+(TRACK-probe, candidate scope) + the D(n) and positive genuine-increment
+sub-claims ([4]); SQ.2's no-equal-e-feedback check (SQUEEZE-n3).
+
+**Wall status after REV 7:** unchanged in substance from REV 6 — no wall
+demonstrated, none closed. R1 open (sealed TABLE-layer gates next). R2 open
+(STATE-probe-2 pending; the REP and HMC channels feed it). R4 live
+(WEIGHT-CHARGE open). R9 on the active block (E0 open; its genuine finite
+refuter is now the symbolic closed-class check). NEW at REV 7: ENT-COUNT is a
+named open burden on the count side (its failure mode — a non-polynomial or
+misidentified entrance count — is R1's channel, adjudicated under (†) at
+W_ent(γ)); XHD is the single named interface whose delivery unblocks
+[1v]-FULL, so the campaign's critical path is [1] → [2a] → [1v]-COND → [2b].
