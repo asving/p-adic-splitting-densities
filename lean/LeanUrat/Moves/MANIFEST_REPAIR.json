@@ -1,0 +1,163 @@
+{
+  "campaign": "MOVES §B2-DEF — repair-and-completion manifest (2026-07-26)",
+  "role": "Closes the 5 genuinely-open sorried units + 1 conditional unit of the MOVES corpus, cleans 2 stale comments, adds 5 deprecation headers, and enumerates the graded-ring sub-campaign (MovesGr) that completes §A/§B1 coverage of MOVES_2026-07-24.md.",
+  "authority": "lean/notes/MOVES_LEAN_FINAL_CENSUS_2026-07-26.md (scorecard: 50/61 clean, 1 conditional, 5 sorried-open, 5 boundary-deferred).",
+  "moves_source": "lean/notes/MOVES_2026-07-24.md — §A (rev-2 graded proof of RS, ACCEPTED) + §B1 (fractional-slope graded ring / Ore / K1 / landing, ACCEPTED lines ~224-408).",
+  "blueprint": "lean/notes/MOVES_LEAN_BLUEPRINT_2026-07-26.md — REPAIR section appended.",
+  "defs": "lean/LeanUrat/Moves/{Defs,DefsT,DefsCore,DefsL}.lean — ALL UNCHANGED by this manifest. MovesGr coverage requires a NEW MovesGr/DefsGr.lean (deferred; justified below).",
+  "policy": "NO new axioms. NO silent statement weakening. Three fence-changes (iaugStep, landTwoSided, TRANSv) are EXPLICIT statement amendments flagged semantic_audit=true. New Defs only in the deferred MovesGr campaign (unavoidable: cannot state 'gr_w(A) is a domain' without defining gr_w(A)).",
+  "elaboration_test": "9 statements (the 6 repair units + 3 MovesGr statable-now lemmas) elaborated together against Defs+DefsT+DefsCore+DefsL (freshly built via lake env lean -o), `:= sorry`: exit 0, exactly 9 sorry warnings, zero errors. Toolchain leanprover/lean4:v4.31.0. The 6 repair statements are the load-bearing tests; the MovesGr full graded-ring statements are NOT tested here (they need MovesGr/DefsGr, flagged needs_defsgr).",
+  "preamble": "Every repair file keeps its existing preamble: `import Mathlib`, `import LeanUrat.Moves.Defs` (+ DefsT/DefsCore/DefsL + listed unit deps), `open Polynomial LeanUrat.Moves`, `namespace LeanUrat.Moves`, repo linter/heartbeat options.",
+
+  "repair_units": [
+    {
+      "id": "L1.baseWeight",
+      "file": "lean/LeanUrat/Moves/L1_baseWeight_R3.lean",
+      "sorry_at": "L1_baseWeight_valuation :62",
+      "repair_kind": "statement UNCHANGED (byte-exact MANIFEST_R3); proof blocked on external sub-campaign",
+      "fence_change": false,
+      "semantic_audit": false,
+      "statement": "theorem L1_baseWeight_valuation {p : ℕ} [Fact p.Prime] (φ : Polynomial ℤ_[p]) (e h : ℕ) (hmon : φ.Monic) (hd : 1 ≤ φ.natDegree) (he : 1 ≤ e) (hh : 1 ≤ h) (hcop : Nat.gcd e h = 1) (hirred : Irreducible (φ.map (PadicInt.toZMod : ℤ_[p] →+* ZMod p))) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : baseWeight φ e h (f * g) = baseWeight φ e h f + baseWeight φ e h g",
+      "deps": ["L1.gaussVal"],
+      "deps_external": ["MovesGr.grRing", "MovesGr.grDomain"],
+      "discharged_by": "MovesGr.grDomain (gr_w(A) ≅ F_Q[π,y] is a domain because φ̄ irreducible ⟹ F_Q a field). Multiplicativity is then §A.1 Cor A2 / §B1.2: w(fg)=w(f)+w(g) because [f][g]=[fg]≠0 in the domain. The added hyps (hmon, hd, he, hh, hcop, hirred) are EXACTLY what makes gr a domain — no statement change needed, only the graded object.",
+      "difficulty": "hard / blocked-on-MovesGr",
+      "moves_ref": "MOVES §A.1 Lemma A1 + Cor A2 (~251-279); §B1.1 (~340-349), §B1.2 (~360-368)",
+      "note": "MARK THE DEPENDENCY: this sorry stays until MovesGr lands. baseResidual (L1_baseResidual_R4) was made clean by a DEGENERATE constant-coefficient def whose multiplicativity is `leadingCoeff_mul`; baseWeight cannot use that trick (its min-formula genuinely needs the domain). Flag: reconcile baseWeight/baseResidual so both consume the same MovesGr graded object."
+    },
+    {
+      "id": "L2.iaugStep",
+      "file": "lean/LeanUrat/Moves/L2_iaugStep.lean",
+      "sorry_at": "L2_iaugStep :72 (the reducible-ψ branch)",
+      "repair_kind": "statement AMENDED: add `hψ : Irreducible ψ`",
+      "fence_change": true,
+      "semantic_audit": true,
+      "statement": "theorem L2_iaugStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hψ : Irreducible ψ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) (j : ℕ) (hj : j < μ) (hjnz : B j ≠ 0) : (σ.e : ℤ) * σ.h * g * ((μ : ℤ) - j) < σ.w (B j) - σ.w (B μ)",
+      "deps": ["L3.K1", "L5.landBox", "L5.landVertex"],
+      "deps_external": [],
+      "discharged_by": "With `hψ : Irreducible ψ` in scope, DELETE the `by_cases hψ` split and the reducible-branch `sorry`: the file already proves the irreducible branch in full (derive hψz in-file from the anchor normalization, fire L5_landBox + L5_landVertex, `ring`+`linarith`). Everything else stays.",
+      "difficulty": "easy (once amended)",
+      "moves_ref": "MOVES §B2-DEF D.4 (~2085-2094); blueprint gap G4",
+      "note": "FAITHFUL amendment: every dep unit (L5.landBox/landVertex, L3.K1) and the underlying D.8 ψ-order mathematics REQUIRE ψ irreducible; blueprint G4 already scopes iaugStep to the irreducible key. `hψz : ψ ≠ X` remains DERIVED in-file (needs no hypothesis). Semantic-guardian: confirm the tower only ever applies iaugStep at an irreducible ψ (it does — ψ is always a residual minimal polynomial, D.5)."
+    },
+    {
+      "id": "L5.landVertexDigit",
+      "file": "lean/LeanUrat/Moves/L5_landVertexDigit.lean",
+      "sorry_at": "vertexCongruence (private core) :70",
+      "repair_kind": "statement UNCHANGED; discharge the private core from now-clean deps + STALE-COMMENT cleanup",
+      "fence_change": false,
+      "semantic_audit": false,
+      "statement": "theorem L5_landVertexDigit {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) : ∃ q : LaurentPolynomial ↥σ.K, σ.R f = (Polynomial.toLaurent ψ) ^ μ * q ∧ ¬ (Polynomial.toLaurent ψ ∣ q) ∧ σ.digPrime zbar (B μ) = ((zbar ^ ((μ : ℤ) * σ.t * (σ.h : ℤ) * (g : ℤ)) : Fˣ) : F) * LaurentPolynomial.eval₂ σ.K.subtype zbar q",
+      "deps": ["L5.landVertex", "L3.K1", "L3.liftResidual", "L0.GRc"],
+      "deps_external": [],
+      "discharged_by": "The census confirms L3_K1 AND L5_landVertex are on disk and CLEAN (core footprint). Parts 1,2,3-modulo-core are already proved; ONLY the private `vertexCongruence` is `sorry`. Discharge it by the minimizing-slot residual-sum identity `R(f) = Σ_{minimizing j} T^{jm̂}·R(B_j)·ψ^j` (m̂ = −t·h·g): this is L3_K1's private `resSum`/`minsum_facts` engine (already CRIBBED verbatim into L5_landTwoSided_R5 — reuse that copy, or refactor resSum into a shared private helper). Divide by ψ^μ and reduce mod ψ; distinct ψ-orders (psiNotDvd) leave `T^a·R' ≡ T^{μm̂}·R(B_μ) (mod ψ)`.",
+      "difficulty": "medium",
+      "moves_ref": "MOVES §B2-DEF D.8 VERTEX (~2349-2358); pass-10 finding 2",
+      "note": "STALE COMMENT: the docstring (~34-41) and the private-core doc (~54-58) say deps' oleans are 'unbuilt'/'still open (sorry)' — FALSE per census. Rewrite to: 'deps L3_K1 + L5_landVertex are CLEAN on disk; the core is discharged via the resSum minimizing-slot decomposition.' Add imports `L3_K1`, `L5_landVertex`."
+    },
+    {
+      "id": "L5.landTwoSided",
+      "file": "lean/LeanUrat/Moves/L5_landTwoSided_R5.lean",
+      "sorry_at": "L5_landTwoSided :964 (reverse direction, anchor exactness)",
+      "repair_kind": "statement AMENDED per the file's own docstring proposal: add anchor-exactness hypothesis `hexact`",
+      "fence_change": true,
+      "semantic_audit": true,
+      "statement": "theorem L5_landTwoSided {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hμN : μ < N) (hdev : IsDevelopment Φhat f B N) (a : ℤ) (Cdig : ℕ → Polynomial ↥σ.K) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range N, Cdig j * ψ ^ j) : StratumData σ ψ μ a Cdig N f ↔ LandingCylinderL σ ψ g μ a Cdig B N",
+      "deps": ["L5.landBox", "L5.landVertex", "L5.landVertexDigit", "L3.K1", "L3.DIV", "L2.widthBound", "L0.FactA_exists", "L0.FactB_unique"],
+      "deps_external": [],
+      "discharged_by": "The FORWARD direction and everything but the last line are already proved. The final `sorry` needs `Ranch.coeff 0 ≠ 0`. Since StratumData's `IsDevelopment ψ Ranch Cdig N` gives `Ranch = Σ_{j<N} Cdig j·ψ^j`, `hexact : ¬ X ∣ Σ_j Cdig j·ψ^j` is exactly `¬ X ∣ Ranch`, i.e. `Ranch.coeff 0 ≠ 0` (Polynomial.X_dvd_iff). Supply it to close the HasAnchorK exactness clause.",
+      "difficulty": "medium",
+      "moves_ref": "MOVES §B2-DEF D.8 (~2316-2371); the file's own docstring round-6-repair proposal",
+      "note": "This IS the docstring's proposed repair ('add an anchor-exactness clause ¬ X ∣ Σ_j Cdig j·ψ^j'), carried as a STATEMENT HYPOTHESIS rather than baked into DefsL.LandingCylinderL — honors 'no new Defs' and keeps the blast radius to this one unit. ALTERNATIVE (lower faithfulness-risk of the ↔, higher Defs-risk): edit DefsL.LandingCylinderL to add the clause; blast radius is exactly this unit (grep: LandingCylinderL is referenced only by DefsL + L5_landTwoSided_R5). Semantic-guardian MUST rule which form is faithful to D.8's stratum-data pin `a := ord_z R(f)`."
+    },
+    {
+      "id": "L6.measureExact",
+      "file": "lean/LeanUrat/Moves/L6_measureExact_R4.lean",
+      "sorry_at": "L6_measureExact :189 (zero-coordinate leg) — and the SEPARATE :143 missing-dep placeholder",
+      "repair_kind": "statement AMENDED (the zero-code hole): add `hzsolN`, `hzsolM` pinning the zero polynomial's code out of the digit-system solution set",
+      "fence_change": true,
+      "semantic_audit": true,
+      "statement": "theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (a : ℤ) (Cdig : ℕ → Polynomial ↥σ.K) (Nslots : ℕ) (hμN : μ < Nslots) (D k : ℕ) (hD : D = Φhat.natDegree * Nslots) (N M : ℕ) (hN : 1 ≤ N) (hM : 1 ≤ M) (hkN : k ≤ D * N) (hkM : k ≤ D * M) (stratN : (Fin (D * N) → ZMod p) → Prop) (stratM : (Fin (D * M) → ZMod p) → Prop) (codeN : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (codeM : Polynomial ℤ_[p] → (Fin (D * M) → ZMod p)) (hcodeN : ∀ x, ∃ f, f.natDegree < D ∧ codeN f = x) (hcodeM : ∀ x, ∃ f, f.natDegree < D ∧ codeM f = x) (hstratN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratN (codeN f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (hstratM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratM (codeM f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (ΘN : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (ΘM : (Fin (D * M) → ZMod p) ≃ (Fin (D * M) → ZMod p)) (EN : DigitSystem (D * N) (ZMod p)) (EM : DigitSystem (D * M) (ZMod p)) (hENk : EN.numPinned = k) (hEMk : EM.numPinned = k) (hcylN : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EN.IsSolution (ΘN (codeN f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hcylM : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EM.IsSolution (ΘM (codeM f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hzN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratN (codeN f)) (hzM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratM (codeM f)) (hzsolN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ EN.IsSolution (ΘN (codeN f))) (hzsolM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ EM.IsSolution (ΘM (codeM f))) : (Nat.card {x // stratN x} : ℚ) / (p : ℚ) ^ (D * N) = (Nat.card {x // stratM x} : ℚ) / (p : ℚ) ^ (D * M)",
+      "deps": ["L6.ledgerCount", "L2.P6ii", "L3.liftMonic", "L0.FactA_exists", "L5.landTwoSided"],
+      "deps_external": [],
+      "discharged_by": "The :189 `sorry` is `exfalso` inside the `f = 0` branch of `hiff`, needing `¬ E.IsSolution (Θ (code 0))`. `hzsolN`/`hzsolM` supply exactly this (mirroring hzN/hzM, which already pin `¬ stratN (codeN 0)`). Replace the `sorry` with the hypothesis. Everything else is PROVED.",
+      "difficulty": "easy (zero-code); medium (the separate missing-dep bridge)",
+      "moves_ref": "MOVES §B2-DEF D.11 (~2489-2519)",
+      "note": "TWO holes. (1) :189 zero-code — closed by this amendment (the digit system rejects the zero polynomial's coordinate, a genuine hypothesis on the presentation, symmetric to the already-present hzN/hzM). (2) :143 `L5_landTwoSided_missing` private placeholder is a MISSING-DEP bridge, NOT closed here. ANOMALY to flag: this placeholder is stated over DefsCore.LandingCylinder/StratumData, whereas the real L5_landTwoSided proves the DefsL.LandingCylinderL form — the two cylinder objects are DIFFERENT. A future bridge unit must reconcile DefsCore.LandingCylinder ⟺ DefsL.LandingCylinderL, or measureExact must be re-pointed onto the DefsL form."
+    },
+    {
+      "id": "L4.TRANSv",
+      "file": "lean/LeanUrat/Moves/L4_TRANSv_R3.lean",
+      "sorry_at": "none of its own — inherits sorryAx transitively (census §5: the ONLY conditional unit)",
+      "repair_kind": "statement AMENDED: add `hcore : StageCore σ`; re-point import to the CLEAN L4_TRANSviii_b_R4",
+      "fence_change": true,
+      "semantic_audit": true,
+      "statement": "theorem L4_TRANSv {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (a : F) (ha : a ∈ σ.nextField zbar) : ∃ B : Polynomial ℤ_[p], inC Φhat B ∧ σ.digPrime zbar B = a ∧ (a ≠ 0 → B ≠ 0)",
+      "deps": ["L4.TRANSviii_b (the CLEAN _R4 file, NOT _R3)"],
+      "deps_external": [],
+      "discharged_by": "Change `import LeanUrat.Moves.L4_TRANSviii_b_R3` → `import LeanUrat.Moves.L4_TRANSviii_b_R4`. The R4 TRANSviii_b has signature `... (hcore : StageCore σ) ... (ν : ℤ) (hthr : σ.w Φhat < ν) ...`; call it with `hcore`, `ν := σ.w Φhat + 1`, `hthr := by omega`, and project the conjunction as before (`fun ha0 => (hnz ha0).1`). Discharges the transitive-only sorryAx (census §5).",
+      "difficulty": "easy (once amended)",
+      "moves_ref": "MOVES §B2-DEF D.7(v) (~2213-2240)",
+      "note": "FAITHFUL: the clean TRANSviii_b_R4 is the machine-checked-finding-1 correction that requires StageCore (the prevIaug law `e·wPrev(Φ) < h`). TRANSv is a pure corollary of it, so it must carry the same `hcore`. Semantic-guardian: confirm every caller of TRANSv already has StageCore in scope (TRANSstage constructs it)."
+    }
+  ],
+
+  "stale_comment_cleanups": [
+    {
+      "id": "L3.K1",
+      "file": "lean/LeanUrat/Moves/L3_K1.lean",
+      "lines": "42-43",
+      "current_text": "comment claims L3_K1's footprint inherits slotDecomp's sorry via L2.widthBound",
+      "action": "DELETE / rewrite. Census §5 REFUTED it by #print axioms: L3_K1, L2_widthBound, L2_slotDecomp_R4 are ALL clean ({propext, Classical.choice, Quot.sound}); L3_K1 does not even import slotDecomp. Replace with: 'L3.K1 is proved CLEAN (core footprint); no sorry in cone.'",
+      "changes_proof": false
+    },
+    {
+      "id": "L5.landVertexDigit",
+      "file": "lean/LeanUrat/Moves/L5_landVertexDigit.lean",
+      "lines": "34-41, 54-58",
+      "current_text": "docstring says deps L3.K1/L5.landVertex are 'still open (sorry)' and their oleans 'unbuilt'",
+      "action": "REWRITE (folded into the L1.baseWeight... no — into the L5.landVertexDigit repair): both deps are CLEAN on disk per census; the private core is dischargeable now. See repair_units/L5.landVertexDigit.",
+      "changes_proof": false
+    }
+  ],
+
+  "deprecation_headers": [
+    {"file": "lean/LeanUrat/Moves/L2_P6i_R5.lean", "unit": "L2.P6i", "superseded_by": "L2_P6i_R5_final.lean (clean)", "header": "DEPRECATED — superseded by L2_P6i_R5_final.lean (sorry-free, byte-exact fence). Retained only for the round-5 provenance record; NOT on any capstone path. Do not import."},
+    {"file": "lean/LeanUrat/Moves/L4_TRANSviii_a_R5.lean", "unit": "L4.TRANSviii_a", "superseded_by": "L4_TRANSviii_a_R5_final.lean (clean)", "header": "DEPRECATED — superseded by L4_TRANSviii_a_R5_final.lean (sorry-free). Two sorries (:71 Φ-adic development, :107 single-slot realizers) closed in the _final file. Do not import."},
+    {"file": "lean/LeanUrat/Moves/L4_TRANSviii_b_R3.lean", "unit": "L4.TRANSviii_b", "superseded_by": "L4_TRANSviii_b_R4.lean (clean, machine-checked-finding-1 correction)", "header": "DEPRECATED — superseded by L4_TRANSviii_b_R4.lean (sorry-free, adds hcore : StageCore σ per machine-checked finding 1). The :98 I-aug/prev-read sorry is closed there. NOTE: L4_TRANSv_R3 currently imports THIS file — re-point it to _R4 (see MANIFEST_REPAIR L4.TRANSv). Do not import elsewhere."},
+    {"file": "lean/LeanUrat/Moves/L5_landTransport_R3.lean", "unit": "L5.landTransport", "superseded_by": "L5_landTransport_R4.lean (clean, restated with slot-tie hypothesis)", "header": "DEPRECATED — REFUTED AS STATED (machine counterexample in-file). Superseded by L5_landTransport_R4.lean (sorry-free, restated with the K1At slot-tie hypothesis per machine-checked finding 2). Do not import."},
+    {"file": "lean/LeanUrat/Moves/L6_moveReduceCommute_R3.lean", "unit": "L6.moveReduceCommute", "superseded_by": "L6_moveReduceCommute_R4.lean (clean, +1≤M)", "header": "DEPRECATED — M=0 branch is machine-checked FALSE (L6_moveReduceCommute_statement_false in-file). Superseded by L6_moveReduceCommute_R4.lean (sorry-free, adds 1 ≤ M per machine-checked finding 3). Do not import."}
+  ],
+
+  "movesgr_coverage": {
+    "purpose": "§A (rev-2 graded proof of RS) and §B1 (fractional-slope graded ring / Ore / K1 / landing) of MOVES_2026-07-24.md are ACCEPTED math but only PARTIALLY reflected in the corpus (baseWeight is sorried, baseResidual is degenerate, and the 5 boundary-deferred units — baseStage_exists, base_nonvacuity_gate, TRANSvi, TRANSstage, recTRANSRS — are SEMAUDIT5-FAITHLESS because a full StageCore certificate silently consumes the graded-localization identification 'grRes-from-R'). MovesGr is the sub-campaign that BUILDS gr_w(A) and discharges that boundary.",
+    "new_defs_justification": "MovesGr REQUIRES a new MovesGr/DefsGr.lean (the graded ring gr_w(A), its localization L = F_Q[π^{±1},y], the side residual R_S). This is the ONE place new Defs are unavoidable: 'gr is a domain', 'gr ≅ F_Q[π,y]', 'R_S multiplicative' are not statable without defining gr. All other repairs in this manifest add ZERO Defs.",
+    "elaboration_note": "Units marked needs_defsgr=true are stated at the mathematical level; they elaborate only after MovesGr/DefsGr exists. Units marked needs_defsgr=false are statable NOW against the existing `baseWeight`/`baseResidual` defs + Defs, and 3 of them (GR4/GR5/GR10) were elaboration-tested in this pass.",
+    "units": [
+      {"id": "MovesGr.grRing", "maps_to": "§A.1 Lemma A1 / §B1.1 Lemma B1.1", "needs_defsgr": true, "statement_shape": "def grW (φ e h) : the associated graded of the baseWeight filtration on ℤ_[p][X]; theorem grW ≃+* (F_Q[π,y] graded), deg π = e, deg y = h, degree-0 = F_Q via ρ = mod (p,φ̄).", "discharges": "the graded object baseWeight/baseResidual consume", "difficulty": "hard"},
+      {"id": "MovesGr.grDomain", "maps_to": "§A.1 (F_Q field ⟸ φ̄ irreducible)", "needs_defsgr": true, "statement_shape": "theorem IsDomain (grW φ e h)  (⟸ F_Q = 𝔽_p[x]/(φ̄) a field ⟸ hirred; polynomial ring over a field).", "discharges": "L1.baseWeight (multiplicativity = domain product)", "difficulty": "medium"},
+      {"id": "MovesGr.weightMul", "maps_to": "§A.1 Cor A2 / §B1.2", "needs_defsgr": false, "statement_shape": "= L1.baseWeight_valuation exactly (baseWeight (f*g) = baseWeight f + baseWeight g); proved via grDomain: [f][g]=[fg]≠0.", "discharges": "L1.baseWeight (IS the target)", "difficulty": "medium"},
+      {"id": "MovesGr.weightUlt", "maps_to": "§A.1 (ultrametric)", "needs_defsgr": false, "statement_shape": "theorem min (baseWeight φ e h f) (baseWeight φ e h g) ≤ baseWeight φ e h (f+g)  [ELAB-TESTED]", "discharges": "Stage.hwult for baseStage", "difficulty": "medium"},
+      {"id": "MovesGr.weightNonneg", "maps_to": "§A.1 (0-bounded slot set)", "needs_defsgr": false, "statement_shape": "theorem f ≠ 0 → 0 ≤ baseWeight φ e h f  [ELAB-TESTED]", "discharges": "well-definedness of the base weight-set", "difficulty": "easy"},
+      {"id": "MovesGr.weightKey", "maps_to": "§A.1 / §B1.1 (w Φ = h, w p = e)", "needs_defsgr": false, "statement_shape": "theorem baseWeight φ e h φ = h  ∧  baseWeight φ e h (C p) = e (the pinned generator weights).", "discharges": "Stage.hwΦ (w Φ = h) for baseStage", "difficulty": "medium"},
+      {"id": "MovesGr.anchorCongMod", "maps_to": "§B1.2 (support anchor)", "needs_defsgr": false, "statement_shape": "theorem two min-achieving φ-slots i,i' of f satisfy e ∣ (i' − i)  (from e(v−v')=(i'−i)h, gcd(e,h)=1).", "discharges": "L2.anchorCong at base / R_S well-definedness", "difficulty": "medium"},
+      {"id": "MovesGr.normalForm", "maps_to": "§A.1 Cor A2 localization / §B1 normal form", "needs_defsgr": true, "statement_shape": "def L := F_Q[π^{±1},y]; theorem every homogeneous [f] writes uniquely as π^{v₀}·y^{i₀}·R(f)(z), z = y^e·π^{−h}, R(f) ∈ F_Q[z], R(0) ≠ 0.", "discharges": "the residual-extraction R_S", "difficulty": "hard"},
+      {"id": "MovesGr.oreResidual", "maps_to": "§A.1 Cor A2 / §B1.2 Cor B1.2", "needs_defsgr": true, "statement_shape": "theorem R_S(fg) = R_S(f)·R_S(g)  ∧  i₀(fg) = i₀(f)+i₀(g)  (no twist, support-anchored; domain product in L).", "discharges": "L1.baseResidual (the NON-degenerate multiplicativity) + Stage.hRmul for baseStage", "difficulty": "hard"},
+      {"id": "MovesGr.K1dev", "maps_to": "§B1.3 Lemma B1.3 (the keystone)", "needs_defsgr": false, "statement_shape": "theorem baseWeight φ e h f = sInf { m | ∃ j<N, B j ≠ 0 ∧ m = baseWeight φ e h (B j) + j·h } over any Φ-development (IsDevelopment) — the base K1.  [ELAB-TESTED]", "discharges": "L3.K1 at base / Stage.hK1 for baseStage", "difficulty": "hard"},
+      {"id": "MovesGr.rsLemma", "maps_to": "§A.2 Lemma RS", "needs_defsgr": true, "statement_shape": "theorem for φ' = φ − p^h·ĉ (ĉ a lift of c̃ ∈ F_Qˣ): the primed filtration = the unprimed, and R'_S(f)(z) = R_S(f)(z + c̃) for every f.", "discharges": "L5.recSubst / recRSland at base (e=1)", "difficulty": "hard"},
+      {"id": "MovesGr.rsLanding", "maps_to": "§A.2 Cor RS-landing", "needs_defsgr": true, "statement_shape": "theorem on the stratum R_S(f) = (z−c̃)^μ·h(z), h(c̃)≠0: the recentering move is a TWO-SIDED bijection stratum ↔ landing cylinder (primed side digits vanish for i<μ, pinned vertex h(c̃)≠0 at μ, transported above).", "discharges": "the base RECENTERING landing (D.10, e=1)", "difficulty": "hard"},
+      {"id": "MovesGr.incLanding", "maps_to": "§B1.4 Cor B1.4", "needs_defsgr": true, "statement_shape": "theorem on the descend stratum R(f) = ψ^μ·h̃ (ψ ∤ h̃, deg ψ ≥ 2 or fractional μ ≥ 2): the Φ-development lands in the box (w(B_j) > w(f) − j·w(Φ) for j<μ; w(B_μ) = w(f) − μ·w(Φ), leading residual ≠ 0); two-sided via Fact A at Φ.", "discharges": "the base ORDER-INCREMENT landing (D.8) — feeds L2.iaugStep / L5.landBox at base", "difficulty": "hard"}
+    ]
+  },
+
+  "summary": {
+    "repair_units": 6,
+    "stale_comment_cleanups": 2,
+    "deprecation_headers": 5,
+    "movesgr_units": 13,
+    "fence_changes_needing_audit": ["L2.iaugStep (+hψ)", "L5.landTwoSided (+hexact)", "L4.TRANSv (+hcore, re-point)", "L6.measureExact (+hzsolN/hzsolM)"],
+    "new_defs_added": 0,
+    "new_defs_deferred_to_movesgr": "MovesGr/DefsGr.lean (grW, L, R_S — unavoidable, justified)",
+    "elaboration_tested": 9
+  }
+}

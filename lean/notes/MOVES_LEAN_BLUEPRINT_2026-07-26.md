@@ -893,3 +893,140 @@ then REGENERATED verbatim from the manifest `statement` fields (`:= sorry` again
 `lake env lean`, exit 0, exactly 8 `sorry` warnings, zero errors, both runs) — no
 transcription drift. `Field`/`Finite` instances for `GaloisField 2 2` resolve from mathlib
 (probe-checked; the R4 preamble's explicit `Fintype` instance is no longer needed).
+
+---
+
+# REPAIR (2026-07-26) — the completion manifest after the FINAL census
+
+Companion to `lean/LeanUrat/Moves/MANIFEST_REPAIR.json`. Reads the FINAL census
+(`MOVES_LEAN_FINAL_CENSUS_2026-07-26.md`: 50/61 units clean, 1 conditional,
+5 sorried-open, 5 boundary-deferred). This section is the human-readable rationale for the
+6 repairs, 2 stale-comment cleanups, 5 deprecation headers, and the graded-ring sub-campaign
+(`MovesGr`) that completes §A/§B1 coverage. **All statements elaboration-tested (9 total,
+exit 0, zero errors) against freshly-built `Defs`/`DefsT`/`DefsCore`/`DefsL` oleans.** No new
+axioms; no new Defs except the deferred `MovesGr/DefsGr.lean` (justified below).
+
+## RP.1 The 5 genuinely-open sorried units (census §2's non-superseded set)
+
+| unit | file | sorry locus | repair | fence? |
+|---|---|---|---|---|
+| `L1.baseWeight` | `L1_baseWeight_R3` :62 | multiplicativity | statement UNCHANGED; discharged by external `MovesGr.grDomain` | no |
+| `L2.iaugStep` | `L2_iaugStep` :72 | reducible-ψ branch | **+`hψ : Irreducible ψ`** (delete `by_cases`+sorry) | YES |
+| `L5.landVertexDigit` | `L5_landVertexDigit` :70 | private `vertexCongruence` | UNCHANGED; discharge from now-clean `L3.K1`/`L5.landVertex` | no |
+| `L5.landTwoSided` | `L5_landTwoSided_R5` :964 | reverse anchor-exactness | **+`hexact : ¬ X ∣ Σⱼ Cdig j·ψ^j`** (its own docstring's proposal) | YES |
+| `L6.measureExact` | `L6_measureExact_R4` :189 | zero-code leg | **+`hzsolN`/`hzsolM`** (zero poly ∉ digit-system solutions) | YES |
+
+**`L1.baseWeight` — mark the dependency, do not touch the statement.** The sorry is the
+MacLane multiplicativity `w(fg) = w(f) + w(g)`. It is TRUE under the file's hypotheses
+(`hmon, hd, he, hh, hcop=gcd(e,h)=1, hirred`) — those hypotheses are *exactly* what makes the
+associated graded `gr = F_Q[π,y]` a **domain** (`φ̄` irreducible ⟹ `F_Q = 𝔽_p[x]/(φ̄)` a
+field). The proof is §A.1 Cor A2 / §B1.2: `[f][g] = [fg] ≠ 0` in the domain. Building `gr`
+as a domain is the `MovesGr` sub-campaign (RP.4); until it lands, `sorry` is honest. **Flag:**
+`L1_baseResidual_R4` was made *clean* by a DEGENERATE def — `baseResidual f := C(emb(lead f mod p))`,
+whose multiplicativity is one line of `leadingCoeff_mul` — so it does NOT actually exercise the
+graded domain. `baseWeight` cannot take that shortcut (its `sInf` min-formula genuinely needs
+the domain). MovesGr should give both a common, non-degenerate graded object.
+
+**`L2.iaugStep` — add `hψ : Irreducible ψ` (fence-change, faithful).** The file already proves
+the irreducible branch in full (derives `ψ ≠ X` in-file, fires `L5.landBox`+`L5.landVertex`,
+finishes by `ring`+`linarith`); the lone `sorry` is the *reducible* branch, which is genuinely
+underivable — every dep and the D.8 ψ-order mathematics require an irreducible key. Blueprint
+gap **G4** already scopes `iaugStep` to the irreducible key. The amendment inserts `hψ` after
+`(g : ℕ)` and deletes the `by_cases`.
+
+**`L5.landVertexDigit` — no statement change; the census-flagged comment is STALE.** The
+docstring claims deps `L3.K1`/`L5.landVertex` are "still open" with "unbuilt oleans" — FALSE:
+the census shows both CLEAN on disk. Only the private `vertexCongruence` is `sorry`; discharge
+it via the minimizing-slot residual-sum identity `R(f) = Σ_{min j} T^{jm̂}·R(B_j)·ψ^j`
+(`m̂ = −t·h·g`), which is `L3.K1`'s private `resSum`/`minsum_facts` engine — **already cribbed
+verbatim into `L5_landTwoSided_R5`**, so reuse that copy (or promote `resSum` to a shared
+private helper). Divide by `ψ^μ`, reduce mod `ψ`, distinct ψ-orders (`psiNotDvd`) isolate the
+μ-term. Rewrite the docstring; add the two imports.
+
+**`L5.landTwoSided` — add the anchor-exactness hypothesis its OWN docstring proposes.** The
+reverse direction needs `Ranch.coeff 0 ≠ 0`, and no `LandingCylinderL` clause forces it (the
+cylinder pins only `a ≤ ord_z R(f)`, per the file's own countermodel). Since
+`StratumData`'s `IsDevelopment ψ Ranch Cdig N` gives `Ranch = Σⱼ Cdig j·ψ^j`, the clause
+`hexact : ¬ X ∣ Σⱼ Cdig j·ψ^j` **is** `¬ X ∣ Ranch = (Ranch.coeff 0 ≠ 0)`. I carry it as a
+statement hypothesis (not a `DefsL` edit) to honor "no new Defs" and keep the blast radius to
+this one unit. **Alternative** (baking the clause into `DefsL.LandingCylinderL`) is also
+single-unit — `grep` shows `LandingCylinderL` is referenced only by `DefsL` + this file — but
+it edits a shared Defs. **Semantic-guardian decides** which form is faithful to D.8's stratum
+pin `a := ord_z R(f)`.
+
+**`L6.measureExact` — restate the zero-code hole; flag the SEPARATE missing-dep bridge.** Two
+distinct holes. (1) The `:189` `sorry` is inside the `f = 0` branch and needs
+`¬ E.IsSolution (Θ (code 0))`; the amendment adds `hzsolN`/`hzsolM` supplying exactly this
+(symmetric to the already-present `hzN`/`hzM`, which pin `¬ stratN (codeN 0)`). This closes
+`:189`. (2) The `:143` `L5_landTwoSided_missing` private placeholder is a MISSING-DEP bridge and
+is **not** closed here. **ANOMALY (flag):** that placeholder is stated over
+`DefsCore.LandingCylinder`/`StratumData`, whereas the real `L5.landTwoSided` proves the
+`DefsL.LandingCylinderL` form — **two different cylinder objects.** A future bridge unit must
+reconcile them (or re-point `measureExact` onto the `DefsL` form).
+
+## RP.2 The conditional unit `L4.TRANSv` (census §5: the only `sorryAx`-via-import case)
+
+`L4.TRANSv` has a clean body but imports the SORRIED `L4_TRANSviii_b_R3`, so its
+`#print axioms` lists `sorryAx`. Its sibling `L4_TRANSviii_b_R4` IS clean — but that clean
+version is the machine-checked-finding-1 correction and carries `hcore : StageCore σ` (the
+`prevIaug` law `e·wPrev(Φ) < h`). So the repair: **re-point the import to `_R4` and add
+`hcore : StageCore σ`** (after `σ`), calling the R4 dep with `ν := σ.w Φhat + 1`,
+`hthr := by omega`. Fence-change (semantic audit): confirm every caller has `StageCore` in
+scope — `TRANSstage` constructs it, so this holds along the tower.
+
+## RP.3 Cleanups and deprecations
+
+- **Stale comment `L3_K1` :42-43** — deletes the "inherits `slotDecomp`'s sorry via
+  `widthBound`" note; census §5 refuted it (`L3_K1`, `widthBound`, `slotDecomp_R4` all clean,
+  and `L3_K1` doesn't import `slotDecomp`).
+- **Stale comment `L5_landVertexDigit`** — folded into RP.1 (deps are clean, not "unbuilt").
+- **5 deprecation headers** for the superseded sorried siblings (census §2: each has a clean
+  later file): `L2_P6i_R5`→`_R5_final`, `L4_TRANSviii_a_R5`→`_R5_final`,
+  `L4_TRANSviii_b_R3`→`_R4`, `L5_landTransport_R3`→`_R4`, `L6_moveReduceCommute_R3`→`_R4`. Each
+  header states "DEPROCATED — superseded by …; retained for provenance; do not import." Two of
+  the superseded files (`landTransport_R3`, `moveReduceCommute_R3`) carry machine-checked
+  DISPROOFS of their old statements — keep those in-file as negative-result assets.
+
+## RP.4 §A/§B1 coverage — the `MovesGr` graded-ring sub-campaign (13 units)
+
+§A (the rev-2 graded proof of RS) and §B1 (fractional-slope graded ring, Ore, K1, landing) are
+ACCEPTED math but only PARTIALLY in the corpus: `baseWeight` is sorried, `baseResidual` is
+degenerate, and — per census §6 — the **5 boundary-deferred units** (`baseStage_exists`,
+`base_nonvacuity_gate`, `TRANSvi`, `TRANSstage`, `recTRANSRS`) are SEMAUDIT5-FAITHLESS precisely
+because a full `StageCore` certificate silently consumes the graded-localization identification
+(the `grRes`-from-`R` façade). `MovesGr` is the sub-campaign that BUILDS `gr_w(A)` and discharges
+that boundary — the project's long-standing **non-vacuity anchor**.
+
+**One new Defs file is unavoidable here (and only here):** `MovesGr/DefsGr.lean` = the graded
+ring `grW`, its localization `L = F_Q[π^{±1},y]`, the side residual `R_S`. You cannot state
+"`gr` is a domain" / "`gr ≅ F_Q[π,y]`" / "`R_S` multiplicative" without defining `gr`. Every
+other repair in this campaign adds ZERO Defs.
+
+The 13 units (full statements in `MANIFEST_REPAIR.json → movesgr_coverage`):
+
+- **Graded base construction (B1.1):** `grRing` (`grW ≅ F_Q[π,y]`, deg π=e, deg y=h),
+  `grDomain` (`IsDomain grW`), `weightMul` (= `L1.baseWeight`, via `grDomain`), `weightUlt`
+  (ultrametric — *elab-tested*), `weightNonneg` (*elab-tested*), `weightKey` (`w Φ = h`, `w p = e`).
+- **Ore / normal-form (B1.2):** `anchorCongMod` (min-slots congruent mod e), `normalForm`
+  (`[f] = π^{v₀}y^{i₀}R(f)(z)`, `z = y^e π^{−h}`, `R(0)≠0`), `oreResidual`
+  (`R_S(fg)=R_S(f)R_S(g)`, `i₀` additive — the NON-degenerate `L1.baseResidual`), `K1dev` (the
+  base K1 as a min over any Φ-development — *elab-tested*).
+- **Base landing corollaries:** `rsLemma` (§A.2 Lemma RS: `φ'=φ−p^hĉ` ⟹ `R'_S(f)(z)=R_S(f)(z+c̃)`,
+  filtrations equal), `rsLanding` (§A.2 Cor: recentering is a two-sided bijection stratum ↔
+  cylinder, e=1), `incLanding` (§B1.4 Cor: the order-increment landing box, deg ψ≥2 / fractional
+  μ≥2, two-sided via Fact A).
+
+Dependency edges out of the corpus: `L1.baseWeight ⟸ {grRing, grDomain}`;
+`L1.baseResidual (non-degenerate) ⟸ oreResidual`; the 5 boundary-deferred units ⟸ the
+`normalForm`/`oreResidual`/`rsLanding` localization objects (the `grRes`-from-`R` façade made
+honest). `MovesGr` is the thing that turns "`sorry`-free but conditionally non-vacuous" into
+"non-vacuous at the base."
+
+## RP.5 Elaboration-test record (repair)
+
+`Defs`/`DefsT`/`DefsCore`/`DefsL` oleans built fresh via `lake env lean -o` (never
+`lake build`), each exit 0. All **9** statements — the 6 repair units (with their amended
+hypotheses) + the 3 statable-now `MovesGr` lemmas (`weightUlt`, `weightNonneg`, `K1dev`) —
+elaborated together (`:= sorry`, `lake env lean`, exit 0, exactly 9 `sorry` warnings, **zero
+errors**). The remaining 10 `MovesGr` units are stated at the mathematical level and elaborate
+only after `MovesGr/DefsGr.lean` exists (`needs_defsgr=true`).
