@@ -301,8 +301,14 @@ should not be conflated (this is the mistake an earlier draft of this document m
    **Directive (Asvin, 2026-07-23): go for the GENERAL-n case and the complete theorem.**
    **Directive (Asvin, 2026-07-26): keep iterating on the MATH with Codex until either a
    COMPLETE math proof of wild uniformity exists or the current approach is shown
-   conclusively to not work. Campaign ledger: `lean/notes/MOVES_2026-07-24.md` (§B2-DEF
-   in adversarial-pass iteration; then §C composition; then the assembly notes).**
+   conclusively to not work. Campaign ledger: `lean/notes/MOVES_2026-07-24.md`.
+   MILESTONE (2026-07-26): **§B2-DEF — the MOVES tower induction — ACCEPTED** after 13
+   adversarial passes (two consecutive CLEAN; all five pass-8 structural demands
+   discharged; Case-K sealed gates: v1 failed-and-adjudicated, v2 all-pass). The
+   general-n move ledger now rests on accepted §A + §B1 + §B2-DEF + JOINT-D1 + nine
+   sealed gates. Next campaign units: §C (composition along read histories), the D4
+   restatement, the assembly notes (menu finiteness, depth resummation, general-n
+   squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
    (+ D3/D5 at n ≥ 3; D2 = Lean vocabulary). Campaign method (per directive): attack the
    open lemmas MATH-FIRST with Codex as helper; when stuck, compute explicit small cases
