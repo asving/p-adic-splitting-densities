@@ -321,6 +321,16 @@ should not be conflated (this is the mistake an earlier draft of this document m
    MILESTONE (2026-07-26, later): **§C ACCEPTED** (passes 12+13 consecutive CLEAN;
    13-pass arc; the pass-13 instance trace reproduced the sealed Case-L masses through
    the live apparatus). Certified: §A + §B1 + §B2-DEF + §C + JOINT-D1 + eleven gates.
+   MILESTONE (2026-07-26, latest): **§D4-R ACCEPTED — the first assembly note** (the
+   per-shape-prefix mass law; passes 5+6 consecutive CLEAN after a 1-crit + 3
+   zero-critical spiral). Conditionality: accepted §C + §B2-DEF + the OPEN kernel
+   D4R.0-K (offset-P totality; outcome exhaustiveness — derivation unit launched).
+   **Gate D4-n3 PASSED** (sealed pre-census, FC1–FC9 documented, the note's pin = the
+   seal by two-way convergence; all predictions exact at 4 configs; partition 0
+   double-counts/0 orphans over 404,128,692 boxes). Twelve gates now. Assembly plan
+   at rev 7 under structural passes (pass 6: criticals now interface-grade only; open
+   kernels each carry a named refuter). DUAL BAR in force: §B2-DEF D¹¹d Codex-CLEAN
+   (0/0) + Fable confirm running; §C Fable pass running; §D4-R Fable pass launched.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
