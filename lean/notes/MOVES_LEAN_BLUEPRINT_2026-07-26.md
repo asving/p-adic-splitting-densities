@@ -479,3 +479,261 @@ TRANSviii_a, TRANSviii_b, TRANSstage}`, `L5.{landTransport, landTwoSided, realRe
 realDomination, recSpecies, recVV, recLiftIndep, recSubst, recRSland, recTRANSRS}`,
 `L6.{moveReduceCommute, measureExact}` — the exact 29 in the audit's "Units unsafe to prove as
 stated" list.
+
+---
+
+# ROUND 4 (2026-07-26) — the design escalation: real objects for the 17-unit hard core
+
+Round 3 was rejected by `lean/notes/MOVES_LEAN_SEMAUDIT3_2026-07-26.md` (17 FAITHLESS, 1
+IMPRECISE, 11 FLAGGED-OK; G1′/G5′/G7′/G9′/S4-partial all unacceptable). Three audits converged
+on the same conclusion: the residual-only model — `R : A → LaurentPolynomial ↥K` as abstract
+data with Prop laws — **erased structure that four clusters of the accepted proof are
+statements about**: (i) the S4 coefficient localization and its exponent group, (ii) the T
+exponent-vector product law, (iii) the D.10 cross-stage common-localization substitution,
+(iv) the D.8 landing cylinder's transported (triangular) pattern. This round is a design
+decision, not a patch. Deliverables: `lean/LeanUrat/Moves/DefsCore.lean` (imports
+`Defs`+`DefsT`, both UNCHANGED; compiles green, no `sorry`/axiom),
+`lean/LeanUrat/Moves/MANIFEST_CORE.json` (the 17 units restated + 3 machine-checked
+corrections; all 20 elaboration-tested), and this section.
+
+## R4.0 The decision: **(C) hybrid — build the minimal real objects where structure was erased; keep faithful residual-level laws where it was not, bundled into a constructed-and-transported core**
+
+One paragraph of rationale. Option (A)-pure (build `gr_w(A)`, its localization, and the
+graded module isomorphisms as mathlib objects) was rejected because the four failures do not
+need the full graded ring — each has a MINIMAL faithful object, three of them off-the-shelf —
+and a bespoke graded-ring layer would move the trust boundary into a large pile of new
+definitions (the thing this repo's discipline exists to avoid). Option (B)-pure (a fourth
+residual-level re-encoding) was rejected because the audits are RIGHT that (i)–(iv) cannot be
+expressed at that level: I verified the sharpest instance myself — the D.1(b) tie laws
+(`w_strict`, `w_jump`, `R_neg`) are formally underivable from the round-2 `Stage` fields, so
+round 3's unconditional `L2_slotDecomp` was not just unintegrated but UNPROVABLE, exactly as
+audit #3 suspected. The hybrid: (1) the D.10 common localization is `RatFunc F` — a genuine
+mathlib field of fractions containing both frames' Laurent rings, with the substitution law
+stated at the TRANSCENDENTAL variable (injective on Laurent polynomials — kills the
+finite-field-evaluation defect) for EVERY `f`; (2) the T product law is carried EXACTLY with
+no graded ring by a two-element trick: `T = Π in(ũᵢ)^{aᵢ}·Y^t` ⟺ `R(P) = R(Q) ∧ w(P) = w(Q)+1`
+for the literal elements `P = Π ũᵢ^{aᵢ⁺}·Φ^{t⁺}`, `Q = Π ũᵢ^{aᵢ⁻}·Φ^{t⁻}` of `A` (proof:
+`R(P)·R(Q)⁻¹ = ([P]/[Q])·T^{−(wP−wQ)}`, so the equation pins `[P]/[Q] = T`); (3) S4 is
+characterized on the localization's actual GENERATORS (coefficient-monomial products), where
+the clauses are no longer automatic; (4) the D.8 transported pattern is an EXECUTABLE carry
+recursion (`%ₘ`/`/ₘ` at monic ψ) and the stratum's pattern is the canonical ψ-adic
+`IsDevelopment` — real data structures, not erased. Everything is then integrated by a single
+architecture move the audits demanded three times: the well-formed package `StageCore` is
+**CONSTRUCTED by the base, TRANSPORTED by both transitions, and CONSUMED by every unit
+needing provenance** — no law is ever claimed for a bare `Stage`.
+
+## R4.1 `DefsCore.lean` inventory (all new; `Defs`/`DefsT` untouched)
+
+- `ratX F`, `ratXShift c` : units of `RatFunc F` (the variable `ζ` and `ζ + c`);
+  `Stage.ratRes`, `Stage.ratResShift` : the residual embedded in `RatFunc F` via
+  `LaurentPolynomial.eval₂` at those units; **`RecenterSubstCore σ σ' cc`** : `∀ f,
+  σ'.ratRes f = σ.ratResShift c̃ f` — D.10's display `R'(f)(z') = R(f)(z' + c̃)` verbatim.
+- `Stage.tvecNum`, `Stage.tvecDen`, **`TvecLaw`** : the T-vector product law (§R4.0(2)).
+- `IsCoeffProd`, `IsUnitMonProd`, **`CoeffFieldLawCore`** : (a) every `Kˣ`-scalar realized at
+  its forced position; (b) equal-weight coefficient-product residual ratios are `K`-CONSTANTS
+  (`(L^coeff)₀ ⊆ K` — forces equal `z`-positions across products, NOT automatic); (c) the
+  degree-0 exponent group — position differences of equal-weight `L`-monomial products —
+  generates all of `ℤ` (`= ⟨class of z⟩`, `z` at position 1).
+- `Stage.slotImages` : the slot-image set at weight γ (for P6i's image-as-span).
+- **`StageCore`** : parent-valuation laws, genuine reps, the three D.1(b) tie laws
+  `w_strict`/`w_jump`/`R_neg` (NEW — see R4.0), `TvecLaw`, **`prevIaug : e·wPrev(Φ) < h`**
+  (machine-checked finding 1, below), `SlotDecomp`, `CoeffFieldLawCore`.
+- **`TransitionCore`** : `TransitionData` + `child_Tvec` (the FACTORWISE vector transport
+  `σ'.Tvec = map (s'·) σ.Tvec ++ [(Φ, s'·t)]` — D.7(vi)/(vii)'s `V' ↦ T' = V'^{s'}Y'^{t'}` as
+  a literal list equation) + `child_dig` (the child residual BUILT from parent ψ-digits:
+  scalar `dig'(B)·z̄^m`, position `−t'·σ.w B`).
+- **`IsRecenteringCore`** : `IsRecentering` + `coeff_R` (coefficient residuals LITERALLY
+  unchanged, cast-free via `ratRes`) + `reps_eq`/`Tvec_eq` (T coefficient-pure, untouched).
+- `carryStep`/`carryRec`/**`carryDigit`** : the D.8 triangular carry recursion, executable;
+  **`StratumData`** (anchor + canonical ψ-adic pattern via `IsDevelopment` at key ψ);
+  **`LandingCylinder`** (BOX/VERTEX/side-line + the anchored slot terms reproducing the
+  pattern under `carryDigit` — the transported pattern as data).
+
+## R4.2 The three machine-checked prover findings (mandatory inputs, folded in)
+
+1. **`L4.TRANSviii_b`'s true blocker is the previous-read (I-aug) law** (prover note in
+   `L4_TRANSviii_b_R3.lean`): the offset-P-lift summand weights clear only `μ_k > h/e`; MOVES
+   ~2299-2303 closes the (S6b) application via `h/e > w_prevprev(Φ_prev)` — i.e.
+   `e·wPrev(Φ) < h` — which NO `Stage` field supplied (`wPrev Φ` was free, and enlarging it
+   weakens `hS6b` without touching `w`/`R`/`digPrime`). The prover explicitly corrected audit
+   #3's emphasis: S3/S4 was NOT the blocker there. **Resolution: `StageCore.prevIaug` is
+   exactly this law** — it holds at the base (`wPrev(φ) = v(φ) = 0 < h`), is LITERALLY `IAug`
+   for the increment child (`h' > e'·w(Φ̂) = e'·wPrev'(Φ̂)`), and transports through a
+   recentering (`wPrev(Φ − t) = wPrev(Φ)` under the strict inequality + tie laws). The
+   corrected `TRANSviii_b` adds the one hypothesis `hcore : StageCore σ`.
+2. **`L5.landTransport` is FALSE as stated** (machine counterexample in
+   `L5_landTransport_R3.lean`: base stage, `Φhat = 1 + X` untied to σ; equal slot residuals
+   and weights, unequal totals via total residual cancellation of the minimal block).
+   **Resolution: restated with the prover's prescribed tie** — `Φhat` a standard lift with
+   `K1At σ.w Φhat (σ.w Φhat)` + `StageCore` (SlotDecomp): distinct ψ-orders make the
+   cancellation impossible.
+3. **`L6.moveReduceCommute` is FALSE at `M = 0`** (certified disproof
+   `L6_moveReduceCommute_statement_false` in `L6_moveReduceCommute_R3.lean`).
+   **Resolution: `1 ≤ M` added**; the corrected statement is the already-fully-proven
+   `L6_moveReduceCommute_of_one_le` from that file, restated under the fenced name.
+
+## R4.3 Audit #3, answered point by point (quote → answer; the next auditor starts here)
+
+**Decisive defect 1.** *"`StageWF.reps_pinned` is not the residual consequence of a transported
+`T`-vector and is generally false for outgoing keys."* — Conceded and REMOVED. `StageWF` is
+retired from the core path (nothing in `MANIFEST_CORE` concludes or consumes it). The honest
+residual consequence of `T = Π in(ũᵢ)^{aᵢ}·Y^t` is now the exact equation `TvecLaw`
+(`R(tvecNum) = R(tvecDen)` at weight gap 1 — no scalar-1 pin on any representative; the
+outgoing key's `c·z^k` monomiality is already `hS5`/D.3(b) and needs no new law). Transport is
+`TransitionCore.child_Tvec`, factorwise and literal.
+
+**Decisive defect 2.** *"`CoeffFieldLaw` does not characterize the coefficient localization or
+its exponent group."* — Replaced by `CoeffFieldLawCore`, whose clauses quantify over the
+localization's GENERATORS: clause (b) states `(L^coeff)₀ ⊆ K` on equal-weight
+coefficient-monomial PRODUCTS (`IsCoeffProd`) — `R f = C d · R g` forces equal positions
+across products, which is NOT automatic in the flattened codomain (it needs S5's forced
+positions + `wPrev` additivity — precisely the `(L^coeff)₀ = F` content); clause (a) is `⊇`;
+clause (c) restricts the exponent set to `IsUnitMonProd` pairs of equal weight (degree-0
+monomials of `L` mod `Kˣ`) and states the group is `ℤ` — infinite cyclic on the generator `z`
+(position 1). What is NOT built: the localization as a ring with a universal property
+(honest-impossible list, R4.5).
+
+**Decisive defect 3.** *"`TransitionData` contains no `Tvec`/`V'` transport and does not
+ensure child S3/S4."* — `TransitionCore` adds the transport as data (`child_Tvec` — the
+in_{w'}-image of T's vector over `reps' = reps ++ [Φ]` with the Bézout re-pinning `s'`, key
+exponent `t' = σ'.t`; this IS D.7(vi)'s `V'` and D.7(vii)'s `T' = V'^{s'}Y'^{t'}` in vector
+form) and the child-residual construction record (`child_dig`). Child S3/S4 are ENSURED by
+`L4_TRANSstage`'s conclusion `StageCore σ'` (which contains `SlotDecomp σ'` and
+`CoeffFieldLawCore σ'`), not by `TransitionData` alone — deliberately, so that
+`TRANSvi`/`TRANSvii` verify recorded construction data instead of projecting a complete child
+(the G5′ demand).
+
+**Decisive defect 4.** *"The recentering law is restricted to old coefficients, whereas D.10's
+read-height identity applies to every polynomial's graded residual."* — `RecenterSubstCore`
+quantifies **every `f`** with no coefficient restriction. The read-height scope is honest by
+construction, not by restriction: `σ'.R f` IS the graded (read-height) data of `f`; digits
+strictly below the read line are not present in either side (Case-K clause satisfied without
+any quantifier narrowing).
+
+**Decisive defect 5.** *"`recRSland` consumes an arbitrary-`f` cross-frame identity that
+`IsRecenteringT` does not provide."* — The identity is now PROVIDED: `L5_recTRANSRS`
+constructs `RecenterSubstCore` for the actual move, `L5_recSubst` derives it from the
+recorded Laurent-level coefficient data (`IsRecenteringCore.coeff_R`, K1(Φ'/v) from `recVV`,
+child slot decomposition) — the D.10 proof itself: at `e = 1` coefficient residuals are
+position-0 constants, hence substitution-invariant, and the two slotwise expansions assemble.
+`recRSland` then legitimately consumes `hsub : RecenterSubstCore` and displays the anchored
+transform `ζ^{a'}·Ranch'(ζ) = (ζ+c̃)^a·Ranch(ζ+c̃)` — the `(z+c̃)^a` anchor-monomial factor
+explicit.
+
+**Decisive defect 6.** *"`measureExact` still assumes the move equivalence and cylinder
+identification instead of deriving them for an actual move."* — The move equivalence
+(`hmove`) is GONE from the statement: it is derived inside the proof from `hcodeN`
+(coordinate surjectivity) + `hstratN` (the abstract family pinned to the ACTUAL
+`StratumData` locus) + `L5.landTwoSided` at each point's development (`L0.FactA_exists`) +
+`hcylN` (the digit system pinned to the ACTUAL `LandingCylinder` through the development
+coordinates). What remains hypothesis: the level-`N` coordinates themselves and the
+D.3(e)(ii) DigitSystem presentation OF THE ACTUAL CYLINDER — named, locus-specific, and on
+the honest-impossible list (R4.5), no longer free-floating counting data.
+
+**Fresh-eyes 1 (pathological stages).** *"`σ.Tvec` … can remain decorative and unrelated to
+`R`, `T`, `V`, or transition transport"; "`wPrev` … is not related globally to the current
+valuation"; "`K_gen` is also not a localization theorem"; "genuine OM stages can fail
+`StageWF`" (scalar-1).* — `TvecLaw` makes `Tvec` load-bearing (it pins `T` through `R`);
+`wPrev` is a valuation in `StageCore` and globally tied at transitions (`child_wPrev`,
+`threshold`, `prevIaug`); `K_gen` is dropped for `CoeffFieldLawCore` (the localization
+characterization); scalar-1 is gone (defect 1). Additionally the round-4 analysis found and
+closed a DEEPER pathology the audits circled: the D.1(b) tie laws (`w_strict` strict-triangle
+equality, `w_jump` cancellation at a weight jump, `R_neg`) are underivable from `Stage` — they
+are now `StageCore` fields, constructed at the base and re-proved for each child (where `w'`
+is the definitional slot minimum).
+
+**Fresh-eyes 2 (pathological children).** — See defect 3; additionally `TRANSstage` now
+REQUIRES the full parent core (audit: "does not assume a well-formed parent").
+
+**Fresh-eyes 3 (recentering scope).** *"For an `e = 1` coefficient, this is essentially the
+trivial constant-digit part … It is also weaker than a polynomial/common-localization
+identity because it only compares evaluations at unit points. Over a finite field, equality
+on the available evaluation points need not identify Laurent polynomials."* — Both halves
+answered by the `RatFunc` design: the identity is at the TRANSCENDENTAL point (evaluation
+`LaurentPolynomial ↥K → RatFunc F` is injective: a nonzero Laurent polynomial times `ζ^n` is
+a nonzero polynomial, and `RatFunc F` is its fraction field — so the stated equation carries
+the full Laurent-polynomial identity), and it holds for every `f`, where the non-trivial
+content (key slots, the `(z+c̃)^a` factor) lives — not only for constant coefficient digits.
+
+**Fresh-eyes 4 (`DigitSystem` scope).** *"Those omissions are acceptable for `L2.P6ii`, but
+not for `L6.measureExact` as a claimed D.11 endpoint."* — `P6ii` is untouched (FLAGGED-OK).
+`measureExact` now consumes `DigitSystem` only through the locus-pinning hypotheses
+(defect 6): the bridge OM-development → coordinates is the named jet-coordinate gap, R4.5.
+
+**Per-unit answers (the 17).** `L1.baseResidual` — adds `1 ≤ e`, `1 ≤ h`, `gcd e h = 1`, and
+replaces the cardinality proxy with the compatibility itself: `emb : AdjoinRoot φ̄ ≃+* ↥K0`
+(the residue quotient identified with `K0` by a SPECIFIED isomorphism, used by the def).
+`L1.baseStage_exists` / `L1.base_nonvacuity_gate` — conclude `StageCore` (not `StageWF`),
+with the base T-vector pinned literally (`Tvec = [(C p, σ.s)]`). `L2.slotDecomp` — no longer
+unconditional: carries the three tie laws as hypotheses (the audit's "no provenance" point
+was correct — see R4.0; with them the derivation via forced positions + GRb closes, and
+consumers get `SlotDecomp` from `StageCore` anyway). `L2.P6i` — restated per-piece at fixed
+`γ`: injectivity ON GRADED CLASSES (`f − f' = 0 ∨ γ < w(f − f')`), per-piece additivity,
+`F_Q`-scaling of EVERY piece element, and the image description in BOTH directions against
+`AddSubgroup.closure (slotImages γ)` (the additive span of the slot images — the audit's
+"per-piece `F_Q`-linear image-as-slot-span theorem"). `L4.TRANSvi` — concludes
+`CoeffFieldLawCore σ' ∧ TvecLaw σ'` from the `TransitionCore` records (no `hRΦ` projection —
+that is a `Stage` field already). `L4.TRANSvii` — concludes the CROSS-STAGE digit
+construction (parent ψ-digit × explicit `z̄^m` frame unit at position `−t'·σ.w B`, plus the
+history clause `σ'.wPrev B = σ.w B`). `L4.TRANSviii_a` — forced position `−t'·(γ+jh)`
+INSTANTIATED, child scale `σ'.w B = e'·(γ+jh)` explicit, constant orbit `c ∈ FQ`, and the
+"fixed z̄-monomial class" as `∃ m` BEFORE `∀ c`. `L4.TRANSstage` — consumes `StageCore σ`,
+returns `TransitionCore ∧ StageCore σ'` (transport + child S3/S4/T'/prevIaug constructed).
+`L5.landTwoSided` — the stratum carries its canonical ψ-adic PATTERN (`IsDevelopment` at ψ)
+and the cylinder carries the TRANSPORTED pattern via the executable `carryDigit` recursion
+(BOX/VERTEX with the pinned `T(μm̂−a)` unit + one unitriangular equation per transported
+digit); this is D.8's triangular data as structure. `L5.recSpecies` — adds `1 ≤ g`,
+monic/irreducible ψ, and the explicit REAL hypothesis `hreal` (the D.9(d) realization the
+audit demanded). `L5.recVV` — NO `σ'` in the statement: both conclusions (`w(Φ−t) = w(Φ)`,
+`K1At σ.w (Φ−t)`) are parent-frame statements derived by the g = 1 instance of D.5 —
+non-circular by construction. `L5.recLiftIndep` — every `f`, at the residual level in the
+common localization (defect 4). `L5.recSubst` — now a DERIVATION of the full
+`RecenterSubstCore` (defect 5). `L5.recRSland` — see defect 5. `L5.recTRANSRS` — assumes
+`StageCore σ`, constructs `IsRecenteringCore + RecenterSubstCore + StageCore σ'` (child
+S3/S4 + the vector, reps, coefficient residuals recorded unchanged). `L6.measureExact` —
+defect 6.
+
+**Declared-gap verdicts.** *G1′ unacceptable* → resolved: the product law IS an equation
+(`TvecLaw`) and the transport IS an equation (`child_Tvec`); `TRANSstage`/`TRANSvii`/
+`recTRANSRS` now claim exactly what these interfaces construct. *G5′ unacceptable* →
+resolved: `TransitionCore` records S4/T' construction data; `TRANSvi`/`TRANSvii` verify
+against records produced by `TRANSstage`. *G6′ acceptable only for landTransport* → kept as
+determinacy, but restated with the machine-checked tie (R4.2(2)); the carry `Equiv` content
+now lives in `landTwoSided`'s `carryDigit` clauses. *G7′ unacceptable* → resolved: every-`f`
+scope (defect 4). *G9′ unacceptable for the endpoint* → resolved for the move equivalence;
+the jet-coordinate presentation remains a named hypothesis (R4.5). *S4 partial unacceptable*
+→ resolved: `CoeffFieldLawCore` on monomial products (defect 2).
+
+## R4.4 Elaboration-test record (round 4)
+
+`DefsCore.lean` compiles green (`lake env lean LeanUrat/Moves/DefsCore.lean`, exit 0, no
+`sorry`, no axiom; olean built via `lake env lean -o`, never `lake build`). **All 20
+`MANIFEST_CORE.json` statements** (17 core + 3 corrections) were elaborated TWICE: first
+hand-written, then REGENERATED verbatim from the manifest `statement` fields
+(`:= sorry` against the `Defs`+`DefsT`+`DefsCore` preamble with the stub `baseResidual` def
+and the `GaloisField 2 2` gate instances; `lake env lean`, exit 0, exactly 21 `sorry`
+warnings = 1 stub + 20 statements, zero errors) — no transcription drift.
+
+## R4.5 What remains honestly impossible without building the full graded ring (explicit)
+
+1. **The graded module isomorphism `gr_γ(A) ≅ ⊕_j gr^C_{γ−jh}` as a mathlib iso of built
+   modules.** We state its complete element-level content (`SlotDecomp` decomposition +
+   independence, `P6i` per-piece injectivity/additivity/`F_Q`-scaling/image-as-span), which
+   is everything D.3(e) says the ledger consumes — but the OBJECT `gr_γ(A)` (quotient
+   `A_{≥γ}/A_{>γ}`) and the map itself are not constructed.
+2. **The localizations `L`, `L^coeff` as rings with universal properties.** `TvecLaw` pins
+   `T` and `CoeffFieldLawCore` pins the degree-0 field and exponent group ON GENERATORS;
+   the abstract monoid of `⟨U ∪ {Y}⟩`-monomials and the statement "`L₀ = F[z^{±1}]`" as a
+   ring isomorphism are not built (the model takes `L₀ := LaurentPolynomial ↥K` by fiat —
+   the standing D2 flag since round 1).
+3. **D.3(e)(ii)'s global jet-coordinate system** (Fact A applied down the WHOLE tower,
+   giving literal digit coordinates on every coefficient space, in which strata/cylinders
+   are digit cylinders). This needs the full read-history recursion (§C territory) and is
+   consumed by exactly one unit (`L6.measureExact`) as the named locus-specific hypotheses
+   `codeN`/`ΘN`/`EN`/`hcylN`. Everything else in D.11's chain is derived.
+4. **The upward (inverse) direction of the carry transport as a function.** `carryDigit` is
+   the downward recursion; uniqueness of inversion on actual loci is a theorem the
+   `landTwoSided` iff encodes, but no inverse FUNCTION (pattern ↦ slot data) is defined —
+   defining it well requires the graded pieces as types (item 1).
+5. **§C composition along read histories** — deliberately out of scope (D.11 defers it;
+   pass-8 gap 7); no round-4 unit claims it.

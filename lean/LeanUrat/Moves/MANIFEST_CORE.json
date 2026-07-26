@@ -1,0 +1,224 @@
+{
+  "campaign": "MOVES §B2-DEF tower induction — Lean formalization [ROUND 4: the 17-unit hard core + 3 machine-checked corrections]",
+  "moves_source": "lean/notes/MOVES_2026-07-24.md §B2-DEF (D.0–D.11)",
+  "audit_repaired": "lean/notes/MOVES_LEAN_SEMAUDIT3_2026-07-26.md (round-3 STOP-THE-LINE: 17 FAITHLESS structural core) + three machine-checked prover findings (previous-read I-aug is the TRANSviii_b blocker; landTransport FALSE as stated; moveReduceCommute FALSE at M=0)",
+  "blueprint": "lean/notes/MOVES_LEAN_BLUEPRINT_2026-07-26.md (§ ROUND 4 — the design decision and the point-by-point audit answers)",
+  "defs": "lean/LeanUrat/Moves/Defs.lean + DefsT.lean (both UNCHANGED — concurrent fan-outs read them) + lean/LeanUrat/Moves/DefsCore.lean (round-4 core objects; COMPILES green, no sorry/axiom)",
+  "concurrency_note": "Round-4 unit files use the `_R4.lean` suffix. Defs.lean, DefsT.lean, MANIFEST.json, MANIFEST_R3.json are untouched. The 11 FLAGGED-OK R3 units (psiNotDvd, P6ii, TRANSi, TRANSiii, TRANSv, landTransport*, realRecursion, realDomination, TRANSviii_b*, moveReduceCommute*, realCofin-relabeled) continue under R3 statements EXCEPT the three starred, corrected here per the machine-checked findings.",
+  "preamble": "Every R4 unit file begins: `import Mathlib`, `import LeanUrat.Moves.Defs`, `import LeanUrat.Moves.DefsT`, `import LeanUrat.Moves.DefsCore`, then earlier-layer unit files per `deps`; then `open Polynomial LeanUrat.Moves`, `namespace LeanUrat.Moves`, repo linter options, `set_option maxHeartbeats 400000`. All 20 statements below were elaboration-tested TOGETHER against Defs+DefsT+DefsCore (`:= sorry`, `lake env lean`, exit 0, exactly 21 sorry warnings = 1 stub def + 20 theorems, zero errors). `sorry` is the only allowed escape (NO new axioms; statement fence applies). The L1 def-introducing unit declares `noncomputable def baseResidual (K0 : Subfield F) (φ) (e h : ℕ) (emb : AdjoinRoot (φ.map PadicInt.toZMod) ≃+* ↥K0) : Polynomial ℤ_[p] → LaurentPolynomial ↥K0` in-file; the gate file declares `instance : Fact (Nat.Prime 2)` and `noncomputable instance : Fintype (GaloisField 2 2)`.",
+  "defsCore_vocabulary": {
+    "ratX/ratXShift/Stage.ratRes/Stage.ratResShift": "(D.10) the COMMON LOCALIZATION for real: both frames' residuals embedded in RatFunc F by evaluation at the TRANSCENDENTAL variable (injective; not finite-field points); ratResShift evaluates at ζ + c̃ (the substitution z = z' + c̃)",
+    "RecenterSubstCore": "(D.10) the substitution identity R'(f)(ζ) = R(f)(ζ + c̃) in RatFunc F for EVERY f — the honest read-height scope (residuals ARE the read-height data)",
+    "Stage.tvecNum/tvecDen/TvecLaw": "(P2/D.3(b)) the T exponent-vector PRODUCT law, exact and graded-ring-free: P = Π ũᵢ^{aᵢ⁺}·Φ^{t⁺}, Q = Π ũᵢ^{aᵢ⁻}·Φ^{t⁻} literal elements of A with w(P) = w(Q)+1 ∧ R(P) = R(Q) ⟺ [P]/[Q] is the degree-1 unit T normalizing R",
+    "IsCoeffProd/IsUnitMonProd/CoeffFieldLawCore": "(S4) the coefficient localization characterized on its generators: (L^coeff)₀ ⊇ K (scalar surjectivity), (L^coeff)₀ ⊆ K (equal-weight coefficient-product ratios are K-CONSTANTS), degree-0 exponent group of L = ℤ = ⟨z⟩ (position differences of equal-weight L-monomial products)",
+    "Stage.slotImages": "(D.3(e)(i)) the slot-image set at weight γ, for the P6i image-as-additive-span description",
+    "StageCore": "the well-formed stage package: parent valuation laws, reps genuine, the three D.1(b) TIE LAWS (w_strict/w_jump/R_neg — underivable from Stage, root of pathological-stage vacuity), TvecLaw, prevIaug (MACHINE-CHECKED: e·wPrev(Φ) < h, the previous-read I-aug — the TRANSviii_b blocker), SlotDecomp, CoeffFieldLawCore. CONSTRUCTED by L1.baseStage_exists, TRANSPORTED by L4.TRANSstage/L5.recTRANSRS",
+    "TransitionCore": "(D.7) TransitionData + child_Tvec (FACTORWISE T-vector transport: s'·(parent vector) over old reps ++ [(Φ, s'·t)]) + child_dig (child residual BUILT from parent ψ-digits: scalar dig'(B)·z̄^m at forced position −t'·(parent weight))",
+    "IsRecenteringCore": "(D.10) IsRecentering + coeff_R (coefficient residuals LITERALLY unchanged, cast-free via ratRes) + reps_eq/Tvec_eq (T coefficient-pure, untouched)",
+    "carryStep/carryRec/carryDigit": "(D.8 TRANSPORT) the triangular carry recursion, EXECUTABLE: canonical ψ-digit (%ₘ) + overflow (/ₘ), accumulated along slots",
+    "StratumData": "(D.8) the descend stratum with full pinned data: anchor a + the CANONICAL ψ-adic pattern Cdig of Ranch (IsDevelopment at key ψ; zero below μ, alive at μ ⟺ ord_ψ = μ)",
+    "LandingCylinder": "(D.8) BOX/VERTEX/TRANSPORT on child data alone: side line m₀, vertex at μ, box strict above, and the anchored minimizing-slot terms reproduce Cdig under carryDigit (the transported pattern, unitriangular; the vertex unit z̄^{−μm̂} is the T(μm̂−a) factor)"
+  },
+  "units": [
+    {
+      "id": "L1.baseResidual",
+      "file": "lean/LeanUrat/Moves/L1_baseResidual_R4.lean",
+      "deps": ["L1.baseWeight"],
+      "layer": 1,
+      "statement": "theorem L1_baseResidual_laws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (K0 : Subfield F) (φ : Polynomial ℤ_[p]) (e h : ℕ) (hmon : φ.Monic) (hd : 1 ≤ φ.natDegree) (he : 1 ≤ e) (hh : 1 ≤ h) (hcop : Nat.gcd e h = 1) (hirred : Irreducible (φ.map (PadicInt.toZMod : ℤ_[p] →+* ZMod p))) (emb : AdjoinRoot (φ.map (PadicInt.toZMod : ℤ_[p] →+* ZMod p)) ≃+* ↥K0) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : baseResidual K0 φ e h emb (f * g) = baseResidual K0 φ e h emb f * baseResidual K0 φ e h emb g",
+      "moves_ref": "D.2 (S4)(S5) base residual multiplicative; gr A ≅ F_Q[π,y]; MOVES ~2007-2014",
+      "sketch": "AUDIT-3 REPAIR (omitted 1≤e, 1≤h, gcd(e,h)=1; K0-cardinality did not state compatibility with the residue quotient). Adds he/hh/hcop, and REPLACES the cardinality proxy by the compatibility itself: `emb : AdjoinRoot φ̄ ≃+* ↥K0` — a SPECIFIED ring isomorphism from the base residue quotient F_Q = F_p[x]/(φ̄) onto K0 (baseResidual reduces coefficients through emb; no unpinned identification remains). INTRODUCES `noncomputable def baseResidual` into LaurentPolynomial ↥K0. Multiplicativity = A2/B1.2 in the domain gr = F_Q[π,y].",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L1.baseStage_exists",
+      "file": "lean/LeanUrat/Moves/L1_baseStage_exists_R4.lean",
+      "deps": ["L1.gaussVal", "L1.baseWeight", "L1.baseResidual", "L0.FactA_exists", "L0.FactB_unique", "L2.slotDecomp"],
+      "layer": 1,
+      "statement": "theorem L1_baseStage_exists {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (φ : Polynomial ℤ_[p]) (hmon : φ.Monic) (hdeg : 1 ≤ φ.natDegree) (e h : ℕ) (he : 1 ≤ e) (hh : 1 ≤ h) (hcop : Nat.gcd e h = 1) (hirred : Irreducible (φ.map (PadicInt.toZMod : ℤ_[p] →+* ZMod p))) (K0 : Subfield F) (emb : AdjoinRoot (φ.map (PadicInt.toZMod : ℤ_[p] →+* ZMod p)) ≃+* ↥K0) : ∃ σ : Stage p F, σ.Φ = φ ∧ σ.e = e ∧ σ.h = h ∧ σ.K = K0 ∧ σ.FQ = K0 ∧ σ.reps = [Polynomial.C (p : ℤ_[p])] ∧ σ.Tvec = [(Polynomial.C (p : ℤ_[p]), σ.s)] ∧ StageCore σ",
+      "moves_ref": "D.2 the base stage, (S1)-(S6) + the FULL core package; MOVES ~1995-2014",
+      "sketch": "AUDIT-3 REPAIR (concluded the defective StageWF with the refuted scalar-1 reps_pinned). Now concludes StageCore: the T-vector is PINNED LITERALLY (Tvec = [(C p, s)] — base vector (s) over (p), key exponent t = σ.t per (P2)); TvecLaw holds by w(p^{s⁺}φ^{t⁺}) − w(p^{s⁻}φ^{t⁻}) = es + ht = 1 and R(P) = R(Q) (both = T·T^{w-of-P-side} normalizations); prevIaug: wPrev(φ) = v(φ) = 0 < h (φ monic); the three tie laws w_strict/w_jump/R_neg hold for the concrete graded construction; SlotDecomp via L2.slotDecomp's derivation (its three hypotheses are these tie laws); CoeffFieldLawCore: base digits fill K0ˣ, equal-weight products have constant ratio (positions forced by v), exponent-group witness pair (φ^e, p^h): position difference es + th = 1. THE NON-VACUITY ANCHOR.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L1.base_nonvacuity_gate",
+      "file": "lean/LeanUrat/Moves/L1_base_nonvacuity_gate_R4.lean",
+      "deps": ["L1.baseStage_exists"],
+      "layer": 1,
+      "statement": "theorem L1_base_gate : ∃ σ : Stage 2 (GaloisField 2 2), σ.Φ = (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial ℤ_[2]) ∧ σ.e = 1 ∧ σ.h = 1 ∧ σ.reps = [Polynomial.C (2 : ℤ_[2])] ∧ StageCore σ",
+      "moves_ref": "Non-vacuity gate: the base Stage inhabits the FULL core package; MOVES D.12",
+      "sketch": "AUDIT-3 REPAIR (gated the defective layered package). Instantiates baseStage_exists at p=2, F=𝔽₄, φ=X²+X+1, e=h=1, K0=⊤ with the explicit emb : AdjoinRoot φ̄ ≃+* 𝔽₄ (φ̄ irreducible over 𝔽₂). Concludes StageCore — including TvecLaw ((C 2, 1) vector: w(C 2)=1=w(1)+1, R(C 2)=1=R(1)), prevIaug (0 < 1), the tie laws, SlotDecomp, CoeffFieldLawCore — so the gate certifies the genuine tower data, not a weakened shell. File declares the Fact/Fintype instances.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "L2.slotDecomp",
+      "file": "lean/LeanUrat/Moves/L2_slotDecomp_R4.lean",
+      "deps": ["L2.strideRule", "L2.anchorCong", "L0.GRb"],
+      "layer": 2,
+      "statement": "theorem L2_slotDecomp {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hstrict : ∀ f g, f ≠ 0 → g ≠ 0 → σ.w f < σ.w g → σ.w (f + g) = σ.w f) (hjump : ∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → σ.w f = σ.w g → σ.w f < σ.w (f + g) → σ.R f + σ.R g = 0) (hneg : ∀ f, σ.R (-f) = - σ.R f) : SlotDecomp σ",
+      "moves_ref": "D.2 (S3) slot decomposition + Y-transcendence, DERIVED from the D.1(b) tie laws; MOVES ~1959-1962, 1931-1936",
+      "sketch": "AUDIT-3 REPAIR (round-3 claimed SlotDecomp unconditionally; the audit correctly noted no provenance — and indeed the D.1(b) tie laws w_strict/w_jump/R_neg are UNDERIVABLE from Stage's fields, so the unconditional claim was unprovable). Now carries them as explicit hypotheses (they are StageCore fields, so every core-provenance stage supplies them; base constructs them concretely — no circularity: this unit does not consume StageCore). DERIVATION: equal-weight slots at piece γ have distinct z-positions p_j(γ) = (j − tγ)/e (hS5 forced positions + hStretch + hbez = anchorCong/stride); partial-sum induction: a weight jump would force R-sum = 0 (hjump), contradicting GRb distinct-position independence; vanishing partial sum forces term = −(prefix) and hneg + GRb again contradicts; so weights stay at γ, hRadd applies termwise (DECOMPOSITION), and a vanishing Y-combination is termwise zero (INDEPENDENCE).",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L2.P6i",
+      "file": "lean/LeanUrat/Moves/L2_P6i_R4.lean",
+      "deps": ["L2.slotDecomp", "L2.strideRule", "L0.GRb"],
+      "layer": 2,
+      "statement": "theorem L2_P6i {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (γ : ℤ) : (∀ f f', f ≠ 0 → f' ≠ 0 → σ.w f = γ → σ.w f' = γ → σ.R f = σ.R f' → f - f' = 0 ∨ γ < σ.w (f - f')) ∧ (∀ f f', f ≠ 0 → f' ≠ 0 → f + f' ≠ 0 → σ.w f = γ → σ.w f' = γ → σ.w (f + f') = γ → σ.R (f + f') = σ.R f + σ.R f') ∧ (∀ (û : Polynomial ℤ_[p]) (c : ↥σ.FQ), û ≠ 0 → c ≠ 0 → inC σ.Φ û → σ.R û = LaurentPolynomial.C (Subfield.inclusion σ.hFQ_le c) * LaurentPolynomial.T (0 : ℤ) → ∀ f, f ≠ 0 → σ.w f = γ → û * f ≠ 0 → σ.R (û * f) = LaurentPolynomial.C (Subfield.inclusion σ.hFQ_le c) * σ.R f) ∧ (∀ f, f ≠ 0 → σ.w f = γ → σ.R f ∈ AddSubgroup.closure (σ.slotImages γ)) ∧ (∀ x ∈ AddSubgroup.closure (σ.slotImages γ), x ≠ 0 → ∃ f, f ≠ 0 ∧ σ.w f = γ ∧ σ.R f = x)",
+      "moves_ref": "D.3(e)(i) per-piece: R_δ additive, F_Q-linear, INJECTIVE, image = the ADDITIVE SPAN of the slot images; MOVES ~2057-2063",
+      "sketch": "AUDIT-3 REPAIR (conditional scalar multiplication + IsMonomialUnit was not the per-piece F_Q-linear image-as-slot-span theorem). Five conjuncts, ALL per-piece at a FIXED γ: (1) INJECTIVITY ON GRADED CLASSES — R f = R f' at weight γ forces [f] = [f'] (f − f' = 0 or strictly deeper), the honest injectivity of R_γ : gr_γ → L₀; (2) per-piece additivity; (3) F_Q-LINEARITY — base-unit lifts scale the residual of EVERY piece element (not only coefficients); (4)+(5) the IMAGE DESCRIPTION, both inclusions: image ⊆ additive span of the slot images (via the SlotDecomp decomposition of the Φ-development), and every nonzero span element is realized. Uses StageCore's tie laws throughout.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L4.TRANSvi",
+      "file": "lean/LeanUrat/Moves/L4_TRANSvi_R4.lean",
+      "deps": ["L4.TRANSstage", "L4.TRANSv", "L3.DIV"],
+      "layer": 4,
+      "statement": "theorem L4_TRANSvi {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hcore : StageCore σ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ) (htrans : TransitionCore σ σ' Φhat e' h' zbar) : CoeffFieldLawCore σ' ∧ TvecLaw σ'",
+      "moves_ref": "D.7(vi) fixed-Y'-lines, z' = V'^{−h'}·Y'^{e'}, L'₀ = F'[z'^{±1}], exponent group; T' = V'^{s'}·Y'^{t'}; MOVES ~2241-2267",
+      "sketch": "AUDIT-3 REPAIR (round-3 attempted to infer CoeffFieldLaw σ' from an arbitrary complete target; TransitionData carried no S4/T' construction). Now consumes the TransitionCore RECORDS — child_Tvec (the factorwise V'/T' transport) and child_dig (child residuals built from parent ψ-digits) — and VERIFIES the two genuinely-missing D.7(vi)-(vii) outputs: CoeffFieldLawCore σ' (S4': surjectivity onto σ'.Kˣ = F'ˣ from TRANSv + child_dig, z̄ a scalar of F'; equal-weight ratio constancy from child hS5 forced positions; exponent group ℤ from the child stride) and TvecLaw σ' (the transported vector satisfies the PRODUCT law — the D.3(b) identity re-run: the transported num/den pair differs by one w'-degree and equal residual, computed from StageCore σ.tvec + the transport formula). Post-construction verification of records, per audit gap G5'.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L4.TRANSvii",
+      "file": "lean/LeanUrat/Moves/L4_TRANSvii_R4.lean",
+      "deps": ["L4.TRANSstage", "L3.DIV"],
+      "layer": 4,
+      "statement": "theorem L4_TRANSvii {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hcore : StageCore σ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ) (htrans : TransitionCore σ σ' Φhat e' h' zbar) (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBc : inC σ'.Φ B) : ∃ (c' : (↥σ'.K)ˣ) (m : ℤ), σ'.R B = LaurentPolynomial.C (c' : ↥σ'.K) * LaurentPolynomial.T (- σ'.t * σ.w B) ∧ ((c' : ↥σ'.K) : F) = σ.digPrime zbar B * ((zbar ^ m : Fˣ) : F) ∧ σ'.wPrev B = σ.w B",
+      "moves_ref": "D.7(vii) T', S5': the child coefficient digit is the parent ψ-digit times an explicit frame unit, at the forced position read against the PARENT valuation; MOVES ~2258-2267",
+      "sketch": "AUDIT-3 REPAIR (round-3 verified the child's already-assumed hS5; constructed neither T' nor transported V'/Tvec). Now the conclusion is the CROSS-STAGE construction: σ'.R B is a monomial whose SCALAR is σ.digPrime z̄ B · z̄^m (the D.6 parent digit times a z̄-power — the frame unit, cf. D.8's explicit z̄^{−μm̂}) at position −σ'.t·σ.w B with σ'.wPrev B = σ.w B (the history invariant). Derived from the TransitionCore records child_dig + base.child_wPrev — post-construction verification, not projection: the records are construction data that TRANSstage wrote, and this unit checks S5' against them.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "L4.TRANSviii_a",
+      "file": "lean/LeanUrat/Moves/L4_TRANSviii_a_R4.lean",
+      "deps": ["L5.realRecursion", "L2.strideRule", "L4.TRANSstage"],
+      "layer": 4,
+      "statement": "theorem L4_TRANSviii_a {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hcore : StageCore σ) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hΦdeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree) (e' h' : ℕ) (zbar : Fˣ) (htrans : TransitionCore σ σ' Φhat e' h' zbar) : (∀ W' : ℤ, (∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = W') ↔ (∃ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) ∧ j < σ.e * g ∧ W' = γ + (j : ℤ) * σ.h)) ∧ (∀ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) → j < σ.e * g → ∃ m : ℤ, ∀ c : (↥σ'.K)ˣ, ((c : ↥σ'.K) : F) ∈ σ'.FQ → ∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = γ + (j : ℤ) * σ.h ∧ σ'.w B = (σ'.e : ℤ) * (γ + (j : ℤ) * σ.h) ∧ ∃ d : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C (d : ↥σ'.K) * LaurentPolynomial.T (- σ'.t * (γ + (j : ℤ) * σ.h)) ∧ ((d : ↥σ'.K) : F) = ((c : ↥σ'.K) : F) * ((zbar ^ m : Fˣ) : F))",
+      "moves_ref": "D.7(viii) S6a': 𝒜' = {(e'·(γ+jh), −t'·(γ+jh))} with INSTANTIATED positions, child scale, constant orbit, fixed z̄-monomial class; MOVES ~2272-2284",
+      "sketch": "AUDIT-3 REPAIR (realizer conclusion had only ∃k; omitted the forced child position −t'·(γ+jh) and the child scale e'). Conjunct 1: the weight-set recursion over the CHILD's parent valuation (σ'.wPrev = σ.w). Conjunct 2, the repaired realizers: for each index (γ, j) there is ONE m (the index's fixed z̄-monomial class — ∃ m BEFORE ∀ c, so the class is uniform over the orbit) such that every constant-orbit scalar c ∈ F_Qˣ (σ'.FQ = σ.FQ) is realized by a single-slot element with parent-scale weight γ+jh, CHILD-scale weight e'·(γ+jh) (the e' mention), residual monomial at the FORCED position −t'·(γ+jh), and scalar c·z̄^m. Via strideRule + child_dig.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L4.TRANSstage",
+      "file": "lean/LeanUrat/Moves/L4_TRANSstage_R4.lean",
+      "deps": ["L4.TRANSi", "L4.TRANSii", "L4.TRANSiii", "L4.TRANSiv", "L4.TRANSv", "L4.TRANSviii_b", "L3.K1", "L3.DIV", "L2.iaugStep", "L2.slotDecomp"],
+      "layer": 4,
+      "statement": "theorem L4_TRANSstage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hcop' : Nat.gcd e' h' = 1) (hiaug : IAug σ Φhat e' h') : ∃ σ' : Stage p F, TransitionCore σ σ' Φhat e' h' zbar ∧ StageCore σ'",
+      "moves_ref": "D.7 Proposition TRANS — the next stage CONSTRUCTED: S1'-S6' + S3'/S4'/T' transport + the core package; MOVES ~2177-2314",
+      "sketch": "AUDIT-3 REPAIR (assumed only StageWF σ, not parent SlotDecomp/CoeffFieldLaw, and produced neither for the child; no vector transport). Now: consumes the FULL parent core (StageCore σ — including prevIaug, which with hiaug closes the S6b threshold recursion) and RETURNS (a) TransitionCore — TransitionData + the LITERAL factorwise T-vector transport child_Tvec = s'·(vector) ++ [(Φ, s'·t)] + the cross-stage residual record child_dig — and (b) StageCore σ' — child tie laws (w' slot-min makes them provable), TvecLaw σ' (T' = V'^{s'}Y'^{t'} product law), prevIaug σ' (LITERALLY hiaug: h' > e'·w(Φ̂) = e'·wPrev'(Φ̂)), SlotDecomp σ' (L2.slotDecomp at the child tie laws), CoeffFieldLawCore σ' (via TRANSv's large-weight F'-surjectivity). THE INDUCTIVE STEP, closing the induction with the split axiom.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L5.landTwoSided",
+      "file": "lean/LeanUrat/Moves/L5_landTwoSided_R4.lean",
+      "deps": ["L5.landBox", "L5.landVertex", "L5.landVertexDigit", "L0.FactB_unique", "L3.K1", "L2.slotDecomp"],
+      "layer": 5,
+      "statement": "theorem L5_landTwoSided {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hμN : μ < N) (hdev : IsDevelopment Φhat f B N) (a : ℤ) (Cdig : ℕ → Polynomial ↥σ.K) : StratumData σ ψ μ a Cdig N f ↔ LandingCylinder σ ψ g μ a Cdig B N",
+      "moves_ref": "D.8 two-sided: stratum (ord_ψ = μ, anchor a, ψ-adic PATTERN Cdig) ⟺ landing cylinder (BOX + VERTEX with explicit unit + TRANSPORTED pattern via the carry recursion); MOVES ~2316-2371",
+      "sketch": "AUDIT-3 REPAIR (round-3 added the vertex digit but no higher transported pattern or landing-cylinder parameter). Now BOTH sides carry the full D.8 data: the stratum's pattern Cdig is the CANONICAL ψ-adic development of the anchored residual (StratumData: IsDevelopment at key ψ, unique by Fact B; zero below μ, alive at μ ⟺ ord_ψ = μ), and the cylinder (LandingCylinder) is conditions on the development data B ALONE — side line m₀, VERTEX at μ, BOX strict above for j<μ, and the anchored minimizing-slot terms c_j = z^{jm̂−a}·R(B_j) reproducing Cdig under the EXECUTABLE carry recursion (carryDigit = the displayed triangular bijection's downward direction; each equation pins one datum from strictly earlier slot data — the unitriangular shape D.11 counts; the vertex unit z̄^{−μm̂} is the T(μm̂−a) factor at j=μ). (→) K1(Φ̂/w) + D.1(e) + D.3(d) distinct ψ-orders + the carry recursion's correctness (Σc_jψ^j re-developed canonically); (←) the forward order argument on the cylinder's own data. No residue evaluation appears — the pattern lives over ↥σ.K.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L5.recSpecies",
+      "file": "lean/LeanUrat/Moves/L5_recSpecies_R4.lean",
+      "deps": ["L5.realConclusion", "L3.liftWeight"],
+      "layer": 5,
+      "statement": "theorem L5_recSpecies {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hcop : Nat.gcd e' h' = 1) (hiaug : IAug σ Φhat e' h') (w' : Polynomial ℤ_[p] → ℤ) (hw' : IsSlotMinWeight w' Φhat e' h' σ.w) (hreal : ∀ ν : ℤ, σ.w Φhat < ν → ∃ tt, tt ≠ 0 ∧ inC Φhat tt ∧ σ.w tt = ν) : (∃ tt : Polynomial ℤ_[p], inC Φhat tt ∧ tt ≠ 0 ∧ w' tt = w' Φhat) ↔ e' = 1",
+      "moves_ref": "D.10 species lemma: recenterings exist exactly at e_read = 1 sides; MOVES ~2410-2413",
+      "sketch": "AUDIT-3 REPAIR (no g ≥ 1/irreducibility explicit; existence direction lacked a stated REAL/S6b realization hypothesis). Adds hgpos + the full ψ data + `hreal` — the EXPLICIT D.9(d) realization hypothesis (every weight above the clean threshold σ.w Φ̂ is realized in Ĉ; provable downstream from realCofin/realDomination/realConclusion, taken here as the named input the audit demanded). (→) w' tt = h' with coefficient w'-weights in e'·ℤ forces e' ∣ h', so e' = 1 (hcop). (←) e' = 1: hiaug gives σ.w Φ̂ < h', hreal realizes weight h', and w' tt = 1·σ.w tt = h' = w' Φ̂.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "L5.recVV",
+      "file": "lean/LeanUrat/Moves/L5_recVV_R4.lean",
+      "deps": ["L3.K1", "L2.slotDecomp"],
+      "layer": 5,
+      "statement": "theorem L5_recVV {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (htc : inC σ.Φ tt) (httne : tt ≠ 0) (htw : σ.w tt = σ.w σ.Φ) (htdig : σ.R tt = LaurentPolynomial.C cc * LaurentPolynomial.T (0 : ℤ)) : σ.w (σ.Φ - tt) = σ.w σ.Φ ∧ K1At σ.w (σ.Φ - tt) (σ.w σ.Φ)",
+      "moves_ref": "D.10 v = v': K1(Φ'/v) is the g = 1 instance of D.5; the recentered key's weight ties; MOVES ~2426-2431",
+      "sketch": "AUDIT-3 REPAIR (round-3 was circular: started from an already-complete σ' and projected). Now NO σ' APPEARS: both conclusions are statements in the PARENT frame about the recentered key Φ' = Φ − tt. w(Φ − tt) = w(Φ): the tie is non-degenerate (R Φ = z^s = T s at position s = 1 (e=1, Bézout), R tt = cc at position 0 — distinct positions, StageCore.w_jump/GRb exclude a jump). K1(Φ'/v): the g = 1 instance of the D.5 argument (ψ' = X − C cc monic irreducible degree 1, ≠ X since cc ≠ 0), run with StageCore's tie laws. This IS 'v restricted to Φ'-developments is the slot minimum' — the definition of v', hence v = v', without any child stage in the statement.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L5.recLiftIndep",
+      "file": "lean/LeanUrat/Moves/L5_recLiftIndep_R4.lean",
+      "deps": ["L5.recSubst"],
+      "layer": 5,
+      "statement": "theorem L5_recLiftIndep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ1 σ2 : Stage p F) (cc : ↥σ.K) (t1 t2 : Polynomial ℤ_[p]) (hrec1 : IsRecenteringCore σ σ1 cc t1) (hsub1 : RecenterSubstCore σ σ1 cc) (hrec2 : IsRecenteringCore σ σ2 cc t2) (hsub2 : RecenterSubstCore σ σ2 cc) : ∀ f : Polynomial ℤ_[p], σ1.ratRes f = σ2.ratRes f",
+      "moves_ref": "D.10 lift independence at its honest scope: EVERY f, at read heights (the primed residual IS the graded/read-height data); MOVES ~2433-2445",
+      "sketch": "AUDIT-3 REPAIR (round-3 was restricted to old coefficients; D.10's identity applies to every polynomial's graded residual). Now quantifies EVERY f, at the residual level in the common localization: two admissible lifts t1, t2 of the same center cc give THE SAME primed residual on every f — σ1.ratRes f = σ2.ratRes f, an identity in RatFunc F carrying full Laurent information (transcendental evaluation is injective). The scope is honest by construction: R'(f) depends on f only through its graded (read-height) class, and digits strictly below the read line never enter either side (Case-K clause — they are simply not in R'). Proof: both sides equal σ.ratResShift cc f by the two RecenterSubstCore laws (the mathematical content — everything depends on t only through (v(t), dig(t)) — is exactly why the derivation is this short; the weight is in recSubst/recTRANSRS which SUPPLY the law).",
+      "difficulty": "easy"
+    },
+    {
+      "id": "L5.recSubst",
+      "file": "lean/LeanUrat/Moves/L5_recSubst_R4.lean",
+      "deps": ["L5.recVV", "L2.slotDecomp", "L2.P6i"],
+      "layer": 5,
+      "statement": "theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hcore : StageCore σ) (hcore' : StageCore σ') (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (hK1' : K1At σ.w σ'.Φ (σ.w σ.Φ)) : RecenterSubstCore σ σ' cc",
+      "moves_ref": "D.10 the substitution identity R'(f) = R(f)(z' + c̃) in the COMMON LOCALIZATION, for every f — DERIVED; MOVES ~2447-2469",
+      "sketch": "AUDIT-3 REPAIR (round-3 stated only an old-coefficient evaluation identity — weaker than a common-localization identity, and over a finite field evaluation points do not identify Laurent polynomials). Now the conclusion is the FULL law `RecenterSubstCore`: for EVERY f, σ'.ratRes f = σ.ratResShift cc f as elements of RatFunc F — evaluation at the TRANSCENDENTAL variable, injective on Laurent polynomials, i.e. the genuine change-of-variable z = z' + c̃ in a genuine common localization (RatFunc F ⊇ F[z^{±1}], F[z'^{±1}] ⊇ the two-key localization L_both). DERIVATION (the D.10 proof): develop f at Φ'; K1(Φ'/v) (hK1', from recVV) + the child slot decomposition (hcore'.slot) expand both sides over minimizing slots; at e = 1 the coefficient residuals are position-0 CONSTANTS (hence substitution-invariant, and literally unchanged by hrec.coeff_R); R(Φ') = z − c̃ parent-side (hRadd) vs R'(Φ') = z' child-side (hRΦ', s' = 1) — the slotwise identities assemble to the claim.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L5.recRSland",
+      "file": "lean/LeanUrat/Moves/L5_recRSland_R4.lean",
+      "deps": ["L5.recSubst", "L5.landTwoSided"],
+      "layer": 5,
+      "statement": "theorem L5_recRSland {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (hsub : RecenterSubstCore σ σ' cc) (μ : ℕ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (a' : ℤ) (Ranch' : Polynomial ↥σ'.K) (hanch' : HasAnchorK (σ'.R f) a' Ranch') : (OrdPsiPoly (Polynomial.X - Polynomial.C cc) Ranch μ ↔ a' = (μ : ℤ)) ∧ (((ratX F ^ a' : (RatFunc F)ˣ) : RatFunc F) * algebraMap (Polynomial F) (RatFunc F) (Ranch'.map σ'.K.subtype) = ((ratXShift ((cc : ↥σ.K) : F) ^ a : (RatFunc F)ˣ) : RatFunc F) * algebraMap (Polynomial F) (RatFunc F) ((Ranch.map σ.K.subtype).comp (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F))))",
+      "moves_ref": "D.10 RS-landing + the anchored transform: a' = μ and R'_anch(z') = (z' + c̃)^a·h(z' + c̃) — the (z+c̃)^a anchor-monomial factor EXPLICIT; MOVES ~2460-2476",
+      "sketch": "AUDIT-3 REPAIR (round-3 consumed an arbitrary-f cross-frame identity that IsRecenteringT did not provide). Now the arbitrary-f identity IS provided: `hsub : RecenterSubstCore` (constructed by recTRANSRS, derived by recSubst). Conjunct 1: ord_{z−c̃}(Ranch) = μ ⟺ the primed anchor exponent a' = μ (the RS landing, both directions — D.8 at g = 1 through the substitution). Conjunct 2, the pass-7-confirmed anchored transform DISPLAYED in the common localization: ζ^{a'}·Ranch'(ζ) = (ζ+c̃)^a·Ranch(ζ+c̃) — i.e. R'_anch = (z'+c̃)^a·h(z'+c̃) with the anchor-monomial factor (z'+c̃)^a explicit (Case-J content; trivial at a = 0, exactly as the probed a = 0 gates saw). Both sides are the two unfoldings of hsub at f through the two anchors.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L5.recTRANSRS",
+      "file": "lean/LeanUrat/Moves/L5_recTRANSRS_R4.lean",
+      "deps": ["L5.recVV", "L5.recSubst", "L4.TRANSstage"],
+      "layer": 5,
+      "statement": "theorem L5_recTRANSRS {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (htc : inC σ.Φ tt) (httne : tt ≠ 0) (htw : σ.w tt = σ.w σ.Φ) (htdig : σ.R tt = LaurentPolynomial.C cc * LaurentPolynomial.T (0 : ℤ)) : ∃ σ' : Stage p F, σ'.Φ = σ.Φ - tt ∧ IsRecenteringCore σ σ' cc tt ∧ RecenterSubstCore σ σ' cc ∧ StageCore σ'",
+      "moves_ref": "D.10 TRANS-RS: the recentered stage is a FULL stage, item by item, WITH the substitution law and the core package — CONSTRUCTED; MOVES ~2478-2487",
+      "sketch": "AUDIT-3 REPAIR (round-3 did not assume a well-formed parent and produced neither child S3 nor S4; the residual/localization/vector construction was absent). Now: assumes StageCore σ, and CONSTRUCTS σ' with key Φ' = Φ − tt, same v (recVV), same wPrev/K/FQ/weightSet, reps and Tvec LITERALLY UNCHANGED (IsRecenteringCore.reps_eq/Tvec_eq — T is coefficient-pure at e = 1, untouched by the move), coefficient residuals literally unchanged (coeff_R), R' re-read at z' = z − c̃ with R'(Φ') = T 1 (s' = 1); RETURNS the substitution law RecenterSubstCore (via recSubst's derivation) and StageCore σ' — TvecLaw σ' (same vector, same w: the product law transfers), prevIaug σ' (wPrev(Φ−tt) = wPrev(Φ) < h under the strict inequality + tie laws), SlotDecomp σ', CoeffFieldLawCore σ' (same coefficient field F, D.7(vi)'s argument at Φ' — no residue growth at a recentering).",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L6.measureExact",
+      "file": "lean/LeanUrat/Moves/L6_measureExact_R4.lean",
+      "deps": ["L6.ledgerCount", "L6.moveAffineBij", "L6.moveReduceCommute", "L0.FactA_exists", "L5.landTwoSided", "L2.P6ii"],
+      "layer": 6,
+      "statement": "theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (a : ℤ) (Cdig : ℕ → Polynomial ↥σ.K) (Nslots : ℕ) (hμN : μ < Nslots) (D k : ℕ) (hD : D = Φhat.natDegree * Nslots) (N M : ℕ) (hN : 1 ≤ N) (hM : 1 ≤ M) (hkN : k ≤ D * N) (hkM : k ≤ D * M) (stratN : (Fin (D * N) → ZMod p) → Prop) (stratM : (Fin (D * M) → ZMod p) → Prop) (codeN : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (codeM : Polynomial ℤ_[p] → (Fin (D * M) → ZMod p)) (hcodeN : ∀ x, ∃ f, f.natDegree < D ∧ codeN f = x) (hcodeM : ∀ x, ∃ f, f.natDegree < D ∧ codeM f = x) (hstratN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratN (codeN f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (hstratM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratM (codeM f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (ΘN : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (ΘM : (Fin (D * M) → ZMod p) ≃ (Fin (D * M) → ZMod p)) (EN : DigitSystem (D * N) (ZMod p)) (EM : DigitSystem (D * M) (ZMod p)) (hENk : EN.numPinned = k) (hEMk : EM.numPinned = k) (hcylN : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EN.IsSolution (ΘN (codeN f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hcylM : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EM.IsSolution (ΘM (codeM f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hzN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratN (codeN f)) (hzM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratM (codeM f)) : (Nat.card {x // stratN x} : ℚ) / (p : ℚ) ^ (D * N) = (Nat.card {x // stratM x} : ℚ) / (p : ℚ) ^ (D * M)",
+      "moves_ref": "D.11 the per-move ledger: #stratum = p^{DN}·vol(cylinder), mass level-independent, in ONE unit system; MOVES ~2489-2519",
+      "sketch": "AUDIT-3 REPAIR (round-3 assumed hmove and hcyl — exactly the move/cylinder bridge D.11 must obtain). THE MOVE EQUIVALENCE IS NOW DERIVED, NOT ASSUMED: there is no hmove hypothesis. Derivation: for any coordinate point x = codeN f (hcodeN surjectivity), stratN x ⟺ f in the ACTUAL stratum locus (hstratN pins stratN to StratumData — the real residual data, not an abstract predicate family) ⟺ [L5.landTwoSided, at f's development from L0.FactA_exists] LandingCylinder of its development ⟺ EN.IsSolution (ΘN x) (hcylN pins EN to the ACTUAL LandingCylinder through the development-coordinate map). Hence card{stratN} = card{IsSolution EN} (ΘN an Equiv) = p^{DN−k} (L2.P6ii + hENk), and mass = p^{−k} at both levels. WHAT REMAINS HYPOTHESIS (the honest, named gap): the level-N digit COORDINATES (codeN, ΘN — Fact A/B at level N ≥ 1, the moveReduceCommute/moveAffineBij package) and the D.3(e)(ii) JET-COORDINATE presentation of the actual cylinder as a DigitSystem (EN/hcylN — Fact A applied down the tower; requires the full history recursion, out of one-unit scope). Both are hypotheses ABOUT THE ACTUAL LOCI of THIS move, no longer free-floating counting data.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L4.TRANSviii_b [CORRECTED: machine-checked finding 1]",
+      "file": "lean/LeanUrat/Moves/L4_TRANSviii_b_R4.lean",
+      "deps": ["L2.anchorCong", "L3.digPrime_nonzero", "L3.DIV"],
+      "layer": 4,
+      "statement": "theorem L4_TRANSviii_b {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (ν : ℤ) (hthr : σ.w Φhat < ν) (a : F) (ha : a ∈ σ.nextField zbar) : ∃ B, inC Φhat B ∧ σ.digPrime zbar B = a ∧ (a ≠ 0 → B ≠ 0 ∧ σ.w B = ν)",
+      "moves_ref": "D.7(viii) S6b': the OFFSET P-LIFT above the clean threshold; the (S6b) recursion bottoms through (I-aug) AT THE PREVIOUS READ; MOVES ~2285-2311, esp. ~2299-2303",
+      "sketch": "MACHINE-CHECKED CORRECTION (prover fan-out, L4_TRANSviii_b_R3.lean): the R3 statement was unprovable because the summand weights μ_k > h/e need '(I-aug) at the previous read' — e·wPrev(Φ) < h — which no Stage field or R3 hypothesis supplied (wPrev Φ was free; enlarging it weakened hS6b without touching w/R/digPrime). The prover explicitly noted S3/S4 was NOT the blocker. The ONE new hypothesis `hcore : StageCore σ` supplies `prevIaug : e·wPrev(Φ) < h`, closing exactly that bridge: μ_k ≥ (ν − (eg−1)h)/e > h/e > wPrev(Φ), so σ.hS6b applies at every summand. Everything else as R3 (threshold σ.w Φ̂ < ν; realized weight for a ≠ 0; B = 0 realizes a = 0).",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L5.landTransport [CORRECTED: machine-checked finding 2]",
+      "file": "lean/LeanUrat/Moves/L5_landTransport_R4.lean",
+      "deps": ["L3.K1", "L3.liftResidual", "L0.GRe", "L2.slotDecomp"],
+      "layer": 5,
+      "statement": "theorem L5_landTransport {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hK1 : K1At σ.w Φhat (σ.w Φhat)) (f f' : Polynomial ℤ_[p]) (hf : f ≠ 0) (hf' : f' ≠ 0) (B B' : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hd : IsDevelopment Φhat f B N) (hd' : IsDevelopment Φhat f' B' N) (hslotR : ∀ j, j < N → σ.R (B j) = σ.R (B' j)) (hslotw : ∀ j, j < N → σ.w (B j) = σ.w (B' j)) : σ.R f = σ.R f'",
+      "moves_ref": "D.8 (TRANSPORT) determinacy: slot residuals + slot weights AT THE STANDARD LIFT determine R(f); MOVES ~2326-2358",
+      "sketch": "MACHINE-CHECKED CORRECTION (prover counterexample in L5_landTransport_R3.lean): with Φhat = 1 + X untied to σ, the minimal-weight block can TOTALLY CANCEL residually and R(f) is read off sub-leading data the slot residuals do not pin — the R3 statement is FALSE. The prover's prescribed repair: tie Φhat to σ. Now Φhat is the STANDARD LIFT with `hK1 : K1At σ.w Φhat (σ.w Φhat)` and the stage carries StageCore (SlotDecomp + tie laws): the minimizing slot terms z^{jm̂}R(B_j)ψ^j have DISTINCT ψ-orders (D.3(d)), so the minimal block cannot cancel, the two developments have the same minimizing set and total weight (hslotw), and R f = Σ_min R(B_j)·R(Φ̂)^j = R f' termwise (hslotR). Still DETERMINACY ONLY (G6 scope): the carry Equiv is landTwoSided's carryDigit clause.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "L6.moveReduceCommute [CORRECTED: machine-checked finding 3]",
+      "file": "lean/LeanUrat/Moves/L6_moveReduceCommute_R4.lean",
+      "deps": ["L0.FactB_unique"],
+      "layer": 6,
+      "statement": "theorem L6_moveReduceCommute {p : ℕ} [Fact p.Prime] (Φhat f : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (B : ℕ → Polynomial ℤ_[p]) (N M : ℕ) (hM : 1 ≤ M) (hdev : IsDevelopment Φhat f B N) : IsDevelopment (Φhat.map (PadicInt.toZModPow M)) (f.map (PadicInt.toZModPow M)) (fun j => (B j).map (PadicInt.toZModPow M)) N",
+      "moves_ref": "§0 Fact A / D.11: development commutes with reduction mod p^M, M ≥ 1; MOVES ~35-46, 2489-2493",
+      "sketch": "MACHINE-CHECKED CORRECTION (certified disproof `L6_moveReduceCommute_statement_false` in L6_moveReduceCommute_R3.lean): at M = 0 the target ring ZMod 1 is trivial and clause 1 of the reduced development demands ⊥ < ⊥ — the R3 statement is FALSE. The corrected statement adds `hM : 1 ≤ M` (all D.11 counting levels are ≥ 1 — matching measureExact's hN/hM ≥ 1). FULLY PROVEN already as `L6_moveReduceCommute_of_one_le` in the R3 file; the R4 unit is that theorem restated under the fenced name.",
+      "difficulty": "easy"
+    }
+  ]
+}
