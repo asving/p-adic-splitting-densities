@@ -397,3 +397,198 @@ TWICE: hand-assembled scratch (12+12+10, zero errors), then REGENERATED VERBATIM
 `MANIFEST.json` by script and re-run (12+12+10, zero errors, two runs). Scratch files removed.
 Layer counts 10/4/6/4/3/2/5 = 34; difficulty 6 easy / 22 medium / 6 hard; 12 units carry a
 deferred-interface hypothesis (`JetSetup`/`TypObject`).
+
+---
+
+# ROUND 3 TRIAGE (2026-07-26) — the R2 audit's 60 findings split over the 34 units
+
+*Audit: `MOVES_LEAN_SEMAUDIT_MOVESC_R2_2026-07-26.md` (REJECT; blockers 55-60). Its verdict line:
+the LOCAL layer (abstract LevelClause counting + local C0-C4 combinatorics) is sound; the GLOBAL
+layer (JetSetup, C5/C6, thmC_a/b) admits trivial presentations. Split: **FROZEN** = statement
+untouched by any finding, ready for provers against the round-3 Defs (statements byte-identical;
+all re-elaborated); **RETYPE** = statement or a definition under it is rebuilt in round 3.*
+
+## FROZEN — 23 units
+
+| unit | one-line justification (finding numbers) |
+|---|---|
+| C0.coordPrec_trichotomy | pure ≺ arithmetic; no finding touches `CoordPrec` |
+| C0.coordPrec_trans | same |
+| C0.coordSort | F13 endorses the sorted chart; standalone statement |
+| C0.digitSystemMass | local count law; untouched (F37 relies on it) |
+| C0.solvedGraph | local solved-graph equiv; untouched |
+| C0.pinWelldef | F20: GENUINE |
+| C0.pinStatus | F20: "a genuine new status statement" |
+| C0.unitriBij | untouched (F42's junk-index note: harmless, no change asked) |
+| C0.moveMass | untouched |
+| C0.pinTransport | F21: GENUINE |
+| C1.stripClause | F37/38: count law sound; the degeneracy escape is a JetSetup provenance problem (fixed there, blocker 60), not this statement's |
+| C1.TYP_fiberCount | F37 sound; F48 defers only the TypObject INSTANCE, statement kept |
+| C1.TYP_toClause | same as TYP_fiberCount |
+| C1.clausesCount | F37: "sufficient for C4.conditionalMass" |
+| C2.DOM | F52: honest lemma-level hypothesis; the GLOBAL bypass is fixed by new units (C3.lineDom), not by retyping DOM |
+| C2.DOM_floorForm | same |
+| C2.floorH_root | floorH arithmetic; F41 criticizes floorH's (ZC)-completeness LABEL, not this lemma; History structure byte-stable in round 3 |
+| C2.floorH_succ | same |
+| C3.crossing | pure line arithmetic; untouched |
+| C3.crossing_reverse | same |
+| C3.vtxPolyNe | stated on bare (K, psi, Ranch, mu); F51 endorses as the genuine residue gap; F10's mhat issue lives in Node.vtx, not here |
+| C4.conditionalMass | F28: "GENUINE as an abstract combinatorial lemma"; bare Locus+FreshData statement |
+| C6.transportedAdmissible | F44: AdmissibleZ locally faithful; bare-locus statement |
+
+## RETYPE — 11 units
+
+| unit | why (finding numbers) |
+|---|---|
+| C2.freshFree | F27: genuine only "relative to the interface"; JetSetup rebuilt (55/59); now consumes the htH-keyed zc/fresh_above |
+| C2.EInh_implied | F26: "much narrower than all of C.1(i)"; C.1(i) now EXISTS as `J.inh_implied`; statement re-keyed from the deleted bare `J.ht` to the defined `H.htH` |
+| C3.steeperChain | HistoryCoherent retyped: IsNodeLift replaces the mis-indexed IsStandardLift call (F10's root cause), + intercept ties (F3/54/59), + read-Bezout ties |
+| C4.stepMass | F31/43: `recursion` replaced by the stratum equation + `inh_implied`; proof route changes |
+| C4.numPinnedStep | same JetSetup retype (F29-adjacent) |
+| C5.massRec | F30: indexing genuine, but sits on the retyped JetSetup (F39: trivial setups) |
+| C5.massCodim | same |
+| C6.psiBij | F32: the composite must be H-determined; Theta now carries `pres`-provenance (55) |
+| C6.transportedSystem | F35; the retyped recursion sits beneath it |
+| C6.thmC_a | F35/45/58: restated with an INDEPENDENTLY defined `S(H,Z)` + the classifier-locus = transported-image equality |
+| C6.thmC_b | F36/53/57: restated on `S(H,Z)` with `mstar` pinned to the D.11 inventory by `mstar_eq` |
+
+NEW round-3 units (provenance consumers): **C3.widthConfine** (the (W) confinement
+`mu*childWidth <= wSide*Dwidth` from Node fields alone) and **C3.lineDom** (Lemma DOM's chain for
+the RECORDED lines from the new coherence tie clauses — closes F52's "bypassed globally").
+Totals: 23 FROZEN + 11 RETYPE + 2 NEW = 36.
+
+---
+
+# ROUND 3 (2026-07-26) — global-layer rebuild: provenance sentences for every JetSetup field
+
+*Answers the R2 audit's six blockers at their own addresses. Design rule (the audit's own
+point): every honest gap is now an EXPLICIT NAMED SENTENCE consumed as a hypothesis/field —
+never an absent predicate. `MovesC/Defs.lean` round 3: 711 lines, `lake env lean` exit 0, no
+`sorry`/axiom; local layer byte-stable; olean rebuilt.*
+
+## R3.A — per-blocker dispositions
+
+**B55 (no provenance ties Theta/Sigma/fresh/ht → H.nodes).** Four mechanisms:
+1. *The presentation spine* — `JetSetup.pres i x f` ("x is the frame-i digit presentation of
+   the integral polynomial f") with `pres_zero` (frame 0 = the LITERAL p-adic coefficient
+   chart, via the new concrete `baseDigit p ℓ a = (a mod p^{ℓ+1})/p^ℓ`), `pres_total`
+   (existence for every monic degree-n f — the D.3(e)(ii) jet chart, DEFERRED), `pres_theta`
+   (**Theta i translates frame-(i+1) presentations of f to frame-i presentations of the SAME
+   f** — Θ_i IS the move, stated on actual polynomials), and `pres_block` (frame-(i+1)
+   presentations are block-local over the recorded landing key's development — C.1.0(a)).
+2. *Sigma via the stratum equation* — `stratum i` (read i's full clause content) with
+   `recursion : Σ_{i+1} = Θ_i(Σ_i ∩ stratum i)` (D.8/D.10 two-sidedness, NOTHING absorbed)
+   and `inh_implied : on Σ_i, stratum i ↔ (fresh i).sat` — **C.1(i) now exists as a
+   sentence** (the R2 F43 objection: the old recursion absorbed it silently).
+3. *fresh via assembly + inventory* — `fresh_assembled` (below, B60) + `mstar_eq` (B57) +
+   the retained `fresh_above`/`fresh_interior` (now htH-keyed and UNIFORM incl. the root,
+   via the new `History.prevRim`).
+4. *ht by definition* — the bare `ht` field is DELETED; all heights are `History.htH i c =
+   c.level + Σ_{r<i} innerslot_r(c.idx)·κ_r` with `κ_r = h_r/(e_r·STR_r)` and
+   `innerslot_r(b) = (b mod D_{r+1})/D_r` — ALL from recorded node data (recentering levels
+   contribute 0 automatically since childWidth = Dwidth). LST(i)'s sentence exists as this
+   definition; the graded-bridge FLAG moves to its docstring (see gaps).
+
+**B56 (final read's landing unrepresented).** `JetSetup.keys i` = the recorded landing key of
+read i, `keys_mid` pins interior keys to the child frames, and `landing : ∀ i < len,
+LandingKey nodes[i] (keys i)` imposes the D.5/D.10 landing-key law at EVERY read — including
+the last: increments/root get `IsNodeLift ν (keys i)` (the displayed standard-lift formula at
+the node's recorded data), recenterings get `keys i = σ.Φ − lift` with the recorded lift's
+digit laws. `pres_block` then keys the final move's development to `keys (len−1)`.
+
+**B57 (mstar ≠ D.11 inventory).** `mstar_eq : (fresh i).mstar = #{c : idx(c) < prevRim i ∧
+floorH i < htH i (c) ≤ lineStep_i(c)}` — the fresh-band count computed from node data (the
+new `Node.lineStep` = the read line as a step function over the WHOLE window). Species check:
+α-strips + on-lattice value digits + β-strips + the non-adjacent endpoint are exactly the
+band (a value digit's codim = its level-set size, by D.3(e)(ii)'s attainable accounting —
+flagged); (γ) past the crossing slot the line is BELOW the floor so the band self-truncates;
+the adjacent hinge block sits at/beyond prevRim so it is excluded ((HV) pins nothing). Root:
+prevRim 0 = n, floor ⊥ — the band is E(ν₀)'s full downset (cluster zeros + root pattern),
+closing R2 F40.
+
+**B58 (thmC_a tautological).** `JetSetup.SHZ Z` is the INDEPENDENT S(H,Z): the transported
+system T(H,Z) as an ∃-chain (`y 0 = x`, `y i = Θ_i (y (i+1))`, `(fresh i).sat (y i)`,
+`Z(y len)`) — §C.2's `E(ν₀) ∪ Θ₀*(… ∪ Θ_k*(Z))` with the pullbacks unfolded; no image, no
+Sigma. `thmC_a` now PROVES: Ψ_H bijective ∧ **SHZ = Ψ_H '' (Σ_len ∩ locus Z)** ∧ equal mass.
+`thmC_b`: `#SHZ · p^{totalPins} = p^m` with the mstar summands pinned by `mstar_eq` — §C(b)'s
+actual RHS.
+
+**B59 (line intercept + K1-height absent).** Heights: B55.4 (definition, not data). Intercept:
+`HistoryCoherent` gains the DOM(2) vertex-entry ties — `old.at(j*·D_{i+1}) ≤ new.at(j*·D_{i+1})`
+at the side's right endpoint `j* = s₀'+w'`, with EQUALITY of the two lines at the hinge for
+ADJACENT reads (the new line passes through the pinned old vertex — intercept pinned there).
+The new unit `C3.lineDom` derives Lemma DOM for the recorded lines from these ties + steeper
++ `C3.widthConfine` — closing R2 F52's "DomData bypassed globally".
+
+**B60 (empty/codim-0 fresh legal).** `fresh_assembled`: every clause is a literal STRIP ZERO
+(singleton support, codim 1, `sat ↔ x c = 0`) or a TYP VALUE clause (a `TypObject` surjection
+onto `(ZMod p)^codim`, supported on ONE htH-level set). With `mstar_eq` pinning the total
+codimension to the recorded geometry, a trivial `fresh` is unbuildable whenever the band is
+nonempty. (Residual junk: a codim-0 value clause on a level set remains legal — it contributes
+0 to mstar and cuts nothing; harmless, noted.)
+
+## R3.B — the F10 correction (a REAL index bug, fixed; FLAG for the round-3 verifier)
+
+R2 F10 asked whether `Node.mhat = −σ.t·σ.h·g` uses the right `h`. Settled against the note:
+D.3's header fixes "a stage with READ INDEX (e, h) and Bézout (s, t)" and D.5/D.8 build the
+lift positions and `m̂ = −t·h·g` from THAT pair — the pair of the read being processed. The
+Lean `Stage.(e, h, s, t)` records the frame-CREATING read's pair (forced by `hwΦ : w Φ = h` —
+the augmented key weight), one step EARLIER than the node's own read. So round 2's `mhat`
+(frame pair) and its `IsStandardLift ν.σ …` call (frame stride/weights/threshold) were both
+mis-indexed. Round 3: `Node` records its read-side Bézout pair (`s t : ℤ`, `hbez`,
+`hspecRecBez : recentering → (s,t) = (1,0)` so `m̂ = 0` per D.10); `Node.mhat := −t·h·g` at
+the NODE's pair; `IsNodeLift` (D.5 displayed at the node's read data: stride `ν.e`, realizer
+weights `σ.w(t_k) = ν.h·(g−k)` on the frame's CURRENT valuation, scalars = the literal
+ψ-coefficients at the frame's forced S5 positions) replaces the `IsStandardLift` call in
+`HistoryCoherent`; and the ties `σ_{i+1}.s = ν_i.s`, `σ_{i+1}.t = ν_i.t` pin the recorded
+pair to the tower. **This changes a clause the R2 audit had marked GENUINE (its F6) — the
+round-3 verifier must re-adjudicate `IsNodeLift` against D.5 explicitly.**
+
+## R3.C — honest gaps after round 3 (all now attached to existing sentences)
+
+1. **JetSetup existence for a real classifier history** — unchanged as THE deferral (R4.5
+   items 1&3), but no longer a hidden weakening: the bundle's fields are provenance
+   sentences (`pres_*`, `landing`, `recursion`/`inh_implied`, `fresh_assembled`, `mstar_eq`,
+   `zc`, `fresh_above/interior`), so existence now ENTAILS faithfulness. Includes
+   `pres_total` (the D.3(e)(ii) jet chart) and (ZC) persistence.
+2. **`htH`'s two identifications** (flagged on its docstring): (a) `htH` = the K1-chain
+   weight of the basis monomial `p^ℓ·Π Φ̂_r^{innerslot_r}` (LST(i)); (b) `log_p|𝔸(γ)|` =
+   level-set cardinality per block (D.3(e)(ii) attainable accounting — consumed by
+   `mstar_eq`). Both graded-ring content; the SENTENCES exist (the definition + the fields
+   that consume it).
+3. **`TypObject` existence** per real fresh value digit — unchanged, but now REQUIRED
+   (`fresh_assembled`); no bypass remains (R2 F48's globally-hidden weakening closed).
+4. **`N ≥ N(H, Z)`** — still an existence condition on the presentation (R2 F49), not
+   internal arithmetic.
+5. **(ZC-b) DIG level-set grouping** — still not encoded (rim-ness of pins only); `ZCData`'s
+   docstring continues to flag that it is NOT full (ZC) (R2 F50).
+6. **`vtx ≠ 0` / the residue-field bridge** — unchanged (R2 F51); `C3.vtxPolyNe` covers the
+   polynomial factor only.
+7. **Non-adjacent intercepts quantized to the lattice** — the new ties pin adjacent
+   intercepts exactly and bound non-adjacent ones (vertex entry); that a non-adjacent
+   endpoint's line value is an ATTAINED htH-height is not stated (it feeds nothing counted;
+   noted for completeness).
+8. **`stratum i` off the locus** — unconstrained off `Σ_i`-solutions (harmless: `recursion`
+   consumes it only through `Σ_i ∩ ·`, and `inh_implied` pins it there).
+9. **The final landing frame's stage package** — `landing` records the final KEY (all the
+   final MOVE needs, via `pres_block`); the post-final frame's valuation/field are not
+   recorded (nothing consumes them; Z is a locus on the box).
+10. **Recentering-landing `center ≠ 0`** — not asserted in `LandingKey` (interior
+    recenterings get it from `IsRecenteringCore`); a final-read recentering with center 0 is
+    excluded only by realizability of the history producing it. Minor, noted.
+
+Gaps CLOSED relative to R2's list: R2.C.2 (ht bare data — now defined), R2.C.7 (vertex_entry
+bypassed — now derived, `C3.lineDom`), R2.C.8 (mstar — now `mstar_eq`), R2.C.9 (intercept —
+now tied); R2.C.1/3/4/5/6 persist as items 1/3/4/5/6 above, now sentence-attached.
+
+## R3.D — elaboration record (round 3)
+
+`MovesC/Defs.lean`: 711 lines, `lake env lean` exit 0, no output, no `sorry`/`axiom`; olean
+rebuilt (`lake env lean -o`). Unit statements: the 13 RETYPE+NEW statements hand-elaborated
+(exit 0, exactly 13 sorry-warnings, zero errors); 6 FROZEN statements spot-checked (zero
+errors); then ALL 36 statements REGENERATED VERBATIM from `MANIFEST.json` by script and
+elaborated in two halves (18+18 sorry-warnings, zero errors, exit 0 both).
+Unit census: **36 = 23 FROZEN + 11 RETYPE + 2 NEW** (`C3.widthConfine`, `C3.lineDom`);
+layers 10/4/6/6/3/2/5; difficulty 6 easy / 22 medium / 8 hard; 12 interface-consuming.
+Fan-out gate: FROZEN units may go to provers now; RETYPE/NEW wait on the round-3 semantic
+audit (in particular R3.B's `IsNodeLift` re-adjudication).

@@ -10,7 +10,44 @@ import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.DefsL
 
 /-!
-# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 2]
+# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 3]
+
+**ROUND 3 (2026-07-26).** Rebuild of the GLOBAL layer after the round-2 audit
+`lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R2_2026-07-26.md` (REJECT: blockers 55-60 — the local
+layer certified sound, the global layer admitted trivial presentations). The local layer
+(C0/C1/C2 clause vocabulary, `LevelClause`/`FreshData`/`TypObject`/`DomData`/`ZCData`, lines,
+species) is BYTE-STABLE. Changes, keyed to blockers:
+* **B55 (no provenance ties)** — `JetSetup` gains the presentation spine `pres`
+  (`pres_zero` = the concrete frame-0 p-adic digit chart `baseDigit`; `pres_theta` = each
+  `Theta i` translates frame-(i+1) presentations of `f` to frame-i presentations of the SAME
+  `f`; `pres_block` = frame-(i+1) presentations are block-local over the recorded landing key's
+  development — C.1.0(a)); the recorded landing keys `keys` with `keys_mid`+`landing`
+  (`LandingKey`, D.5/D.10 at the node's data); `Sigma`'s `recursion` now runs through the
+  STRATUM (`stratum` + `inh_implied` — C.1(i) as a sentence); `fresh` is pinned by
+  `fresh_assembled` (strip / TypObject-value shapes on ht-level sets) and `mstar_eq`.
+* **B56 (final landing)** — `landing` holds at EVERY `i < len` including the last: the final
+  read's landing key obeys the same recorded-data lift law (`LandingKey`).
+* **B57 (mstar RHS)** — `mstar_eq`: `(fresh i).mstar` EQUALS the D.11 species-inventory count,
+  the fresh-band cardinality `#{c : idx < prevRim, floor_i < htH_i(c) ≤ lineStep_i(c)}`
+  computed from node data (the band self-truncates at the (γ) crossing slot).
+* **B58 (thmC_a)** — `S(H,Z)` is INDEPENDENTLY defined (`JetSetup.SHZ`, the transported system
+  `T(H,Z)` as an ∃-chain over the recorded moves); `thmC_a` states the classifier-locus =
+  transported-image EQUALITY plus the mass carriage.
+* **B59 (ht + line ties)** — the bare `ht` field is DELETED: heights are the DEFINED K1-chain
+  formula `History.htH` (LST(i)'s sentence now exists; the graded-bridge FLAG moves to its
+  docstring). The read-line intercept is tied by the new `HistoryCoherent` vertex-entry clauses
+  (endpoint comparison at `j*`, hinge EQUALITY at adjacent reads).
+* **B60 (degenerate fresh)** — `fresh_assembled` + `mstar_eq` exclude empty/afresh-free
+  presentations wherever the recorded geometry has a nonempty fresh band.
+* **F10 (the m̂ index)** — CONFIRMED A REAL BUG and fixed: D.3's header fixes "(a stage with)
+  READ INDEX (e,h) and Bézout (s,t)" — the D.5 lift positions and D.8 normalization
+  `m̂ = −t·h·g` use the READ's own pair, while `Stage.(e,h,s,t)` records the frame-CREATING
+  read's. `Node` now records its read-side Bézout pair `(s,t)` (`hbez`, recentering pinning
+  `hspecRecBez`), `Node.mhat := −t·h·g` uses it, `IsNodeLift` replaces the mis-indexed
+  `IsStandardLift σ` call in `HistoryCoherent`, and the child-frame ties `σ'.s = ν.s`,
+  `σ'.t = ν.t` pin the recorded pair to the tower.
+
+[ROUND 2 header, still accurate for the local layer:]
 
 **Provenance.** `lean/notes/MOVES_2026-07-24.md` §C REV 2 (ACCEPTED 2026-07-26, passes 12+13
 CLEAN), derivations `C10B_DERIVATION_2026-07-26.md` / `C15_DERIVATION_2026-07-26.md` (Route B).
@@ -228,6 +265,12 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   σ : Stage p F
   e : ℕ
   h : ℕ
+  /-- ROUND 3 (audit R2 F10): the READ side's own Bézout pair `e·s + h·t = 1` — D.3's header
+  data "read index (e, h) and Bézout (s, t)". D.5's realizer positions and D.8's normalization
+  `m̂ = −t·h·g` consume THIS `t` (the frame's `σ.t` is the frame-CREATING read's — wrong index).
+  `HistoryCoherent` ties the child frame's recorded pair to it (`σ'.s = s`, `σ'.t = t`). -/
+  s : ℤ
+  t : ℤ
   g : ℕ
   μ : ℕ
   a : ℤ
@@ -245,6 +288,8 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   he : 1 ≤ e
   hh : 1 ≤ h
   hcop : Nat.gcd e h = 1
+  /-- the recorded pair is a genuine Bézout pair for the read side (ROUND 3, F10). -/
+  hbez : (e : ℤ) * s + (h : ℤ) * t = 1
   /-- the descend data are genuine: `g ≥ 1`, `μ ≥ 1` (the read DESCENDS into `ψ`). -/
   hg : 1 ≤ g
   hμ : 1 ≤ μ
@@ -273,6 +318,10 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   center, and its residue "root" is the center itself (no field growth). -/
   hspecRecCenter : species = ReadSpecies.recentering →
     ψ = Polynomial.X - Polynomial.C center ∧ ((zbar : Fˣ) : F) = ((center : ↥σ.K) : F)
+  /-- SPECIES (D.10, ROUND 3): at a recentering (`e = 1`) the read-side Bézout pair is the
+  canonical `(1, 0)` — so `m̂ = 0`, matching D.10's "the D.5 normalization exponent is
+  `m̂' = 0` and no z̄-unit" (MOVES ~2604). -/
+  hspecRecBez : species = ReadSpecies.recentering → s = 1 ∧ t = 0
 
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
@@ -281,9 +330,12 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 unchanged). `HistoryCoherent` pins the successor node's `Dwidth` to this. -/
 def Node.childWidth (ν : Node p F) : ℕ := ν.e * ν.g * ν.Dwidth
 
-/-- The D.8 normalization exponent `m̂ = −t·h·g` of the read's frame (the vertex unit
-`z̄^{−μm̂}` of D.8's (VERTEX); cf. `LandingCylinderL`'s `T(j·m̂ − a)` factors). -/
-def Node.mhat (ν : Node p F) : ℤ := -ν.σ.t * (ν.σ.h : ℤ) * (ν.g : ℤ)
+/-- The D.8 normalization exponent `m̂ = −t·h·g` of the READ (the vertex unit `z̄^{−μm̂}` of
+D.8's (VERTEX)). ROUND 3 (audit R2 F10 — a REAL index bug in round 2): `(t, h)` are the read
+side's OWN slope numerator and recorded Bézout coefficient (D.3's header pair), NOT the
+frame's `(σ.t, σ.h)` (which record the frame-CREATING read, one step earlier). At a
+recentering, `t = 0` (`hspecRecBez`), so `m̂ = 0` — D.10's normalization. -/
+def Node.mhat (ν : Node p F) : ℤ := -ν.t * (ν.h : ℤ) * (ν.g : ℤ)
 
 /-- The polynomial factor `(Ranch/ψ^μ) mod ψ` of the transported vertex value — pattern-only
 data (§C.0 rev 8: the descend stratum fixes the side-digit tuple, which determines `Ranch`;
@@ -308,6 +360,45 @@ noncomputable def Node.staircase (ν : Node p F) (b : ℕ) : WithBot ℚ :=
   if b < ν.μ * ν.childWidth
     then ((ν.line.at ((b / ν.childWidth) * ν.childWidth) : ℚ) : WithBot ℚ)
     else ⊥
+
+/-- The read line as a STEP function of the base index over the WHOLE window (block-left-edge
+value; NO factor-interior cutoff — cf. `staircase`). ROUND 3: the UPPER EDGE of the fresh band
+(`JetSetup.mstar_eq`): read `i`'s fresh content sits at heights in `(floor, line]`; past the
+(γ) crossing slot the line drops below the floor, so the band self-truncates there — the
+geometry performs C.1(i)(γ)'s cut. -/
+def Node.lineStep (ν : Node p F) (b : ℕ) : ℚ := ν.line.at ((b / ν.childWidth) * ν.childWidth)
+
+/-- **The node's standard lift** — D.5 displayed AT THE NODE's READ INDEX (ROUND 3, audit R2
+F10): `Φ̂ = Φ^{e·g} + Σ_{ψ_k ≠ 0} t_k·Φ^{e·k}` over the frame's key/valuation/residual map,
+with stride `ν.e`, realizer weights `σ.w(t_k) = h·(g−k)` (the READ's `h`, on the frame's
+CURRENT valuation — the scale the coming augmentation stretches), digit scalars the literal
+`ψ`-coefficients at the frame's forced (S5) positions `−σ.t·wPrev(t_k)`. Round 2 invoked
+`IsStandardLift ν.σ`, whose stride/weights are the frame's stage pair `(σ.e, σ.h)` — the
+frame-CREATING read's index, wrong for the node's own read. Replaces it in `HistoryCoherent`
+and supplies the FINAL read's landing key (`LandingKey`, blocker 56). -/
+def IsNodeLift (ν : Node p F) (Φhat : Polynomial ℤ_[p]) : Prop :=
+  ∃ tt : ℕ → Polynomial ℤ_[p],
+    (∀ k, ν.ψ.coeff k = 0 → tt k = 0) ∧
+    (∀ k, k < ν.g → ν.ψ.coeff k ≠ 0 →
+        tt k ≠ 0 ∧ inC ν.σ.Φ (tt k) ∧
+          ν.σ.w (tt k) = (ν.h : ℤ) * ((ν.g : ℤ) - (k : ℤ)) ∧
+          ν.σ.R (tt k) = LaurentPolynomial.C (ν.ψ.coeff k) *
+            LaurentPolynomial.T (- ν.σ.t * ν.σ.wPrev (tt k))) ∧
+    Φhat = ν.σ.Φ ^ (ν.e * ν.g) + ∑ k ∈ Finset.range ν.g, tt k * ν.σ.Φ ^ (ν.e * k)
+
+/-- **The landing-key law of one read** (D.5 increment/root; D.10 recentering — ROUND 3,
+blocker 56): the key the read's landing produces, tied to the RECORDED node data. At a
+recentering: `Φ' = Φ − lift` with the recorded lift a genuine center realizer (`w(lift) =
+w(Φ)`, digit = the recorded center at position 0 — `IsRecentering`'s lift clauses, stated on
+the node alone). Otherwise: the standard lift of the recorded `(ψ, g)` at the read's index.
+`JetSetup.landing` imposes this at EVERY read `i < len` on the recorded key `keys i` —
+including the FINAL read, whose landing transition round 2 left unrepresented. -/
+def LandingKey (ν : Node p F) (Φtop : Polynomial ℤ_[p]) : Prop :=
+  (ν.species = ReadSpecies.recentering →
+    inC ν.σ.Φ ν.lift ∧ ν.lift ≠ 0 ∧ ν.σ.w ν.lift = ν.σ.w ν.σ.Φ ∧
+      ν.σ.R ν.lift = LaurentPolynomial.C ν.center * LaurentPolynomial.T 0 ∧
+      Φtop = ν.σ.Φ - ν.lift) ∧
+  (ν.species ≠ ReadSpecies.recentering → IsNodeLift ν Φtop)
 
 end
 
@@ -336,14 +427,50 @@ function of the base index. `floorH 0 = ⊥` (the root reads against an empty fl
 noncomputable def History.floorH (H : History p F) (i b : ℕ) : WithBot ℚ :=
   ((H.nodes.take i).map (fun ν => ν.staircase b)).foldr max ⊥
 
+/-- Level-`r` weight `κ_r = h_r/(e_r·STR_r)` (the C.1.5 scale declaration / LST(i)): FIXED by
+node `r`'s READ data at the read that created the level; recenterings create no level (their
+`innerslotH` below is 0, since `childWidth = Dwidth`). Junk `0` beyond the history. -/
+noncomputable def History.kappaH (H : History p F) (r : ℕ) : ℚ :=
+  (H.nodes[r]?).elim 0 (fun ν => (ν.h : ℚ) / ((ν.e : ℚ) * (H.strFrame r : ℚ)))
+
+/-- The level-`r` inner slot of base index `b`: `(b mod D_{r+1}) / D_r` on the recorded width
+chain (C.1.0(a) BLOCKS). At a recentering `D_{r+1} = D_r`, so the slot is 0 — no level. -/
+def History.innerslotH (H : History p F) (r b : ℕ) : ℕ :=
+  (H.nodes[r]?).elim 0 (fun ν => (b % ν.childWidth) / ν.Dwidth)
+
+/-- **The K1-chain height, DEFINED from node data** (LST(i)/KEY OBS 1 — ROUND 3, audit R2
+F47 + blocker 59; the round-2 bare `JetSetup.ht` field is DELETED): the frame-`i` absolute
+v_p-height of base coordinate `c = (ℓ, b)` is `ℓ + Σ_{r<i} innerslot_r(b)·κ_r` — the current
+key never enters (levels `r < i` only), κ's are birth-fixed, recentering levels contribute 0.
+FLAG (the deferred graded bridge, its content unchanged but now attached to a SENTENCE):
+that this formula is the K1-chain weight of the basis monomial `p^ℓ·Π_r Φ̂_r^{innerslot_r}`
+(LST(i)) and that `log_p|𝔸(γ)| = |{c : htH = γ}|` per block (D.3(e)(ii)'s attainable
+accounting, consumed by `mstar_eq`) are graded-ring content. -/
+noncomputable def History.htH (H : History p F) (i : ℕ) (c : Coord) : ℚ :=
+  (c.1 : ℚ) + (Finset.range i).sum (fun r => (H.innerslotH r c.2 : ℚ) * H.kappaH r)
+
+/-- Read `i`'s constraint-region bound (C.1(ii)'s rim rule): fresh content of read `i` sits at
+base indices `< μ_{i−1}·D_i` (the PREVIOUS read's rim threshold); the root read constrains the
+whole `n`-index box. -/
+def History.prevRim (H : History p F) (n : ℕ) : ℕ → ℕ
+  | 0 => n
+  | i + 1 => (H.nodes[i]?).elim n (fun ν => ν.μ * ν.childWidth)
+
 /-- **History coherence** (§C.0 + C.1.0): the recorded frames are linked by the ACCEPTED
 §B2-DEF transitions AT THE RECORDED NODE DATA — no free existentials (round-1 audit repairs:
 the increment transition consumes the PARENT node's recorded `ψ, g, e, h, zbar` through
-`IsStandardLift` + `TransitionCoreL`; the recentering consumes the RECORDED `center`/`lift`
+`IsNodeLift` + `TransitionCoreL`; the recentering consumes the RECORDED `center`/`lift`
 through `IsRecenteringCore`; the root frame is the base frame `deg Φ₀ = 1`; windows are
 contained (`s₀'+w' ≤ μ`); the width chain `D_{i+1} = e_i·g_i·D_i` holds; lines steepen along
 the history ((I-aug), absolute scale) and obey the absolute-scale slope law
-`slope_i·(e_i·STR_i·D_i) = h_i`). -/
+`slope_i·(e_i·STR_i·D_i) = h_i`).
+ROUND 3 additions: `IsNodeLift` replaces the round-2 `IsStandardLift ν.σ` call (F10: the lift
+must use the READ's index, not the frame-creating read's); the child frame's Bézout pair is
+tied to the node's recorded read pair (`σ'.s = s`, `σ'.t = t` — so `Node.mhat`/`vtx` carry the
+tower's D.8 unit); and the READ-LINE INTERCEPT TIES (blocker 59 / DOM(2) vertex entry): the
+old line lies weakly below the new at the side's right endpoint `j* = s₀'+w'` (base index
+`j*·D_{i+1}`), with EQUALITY of the two lines at the hinge for ADJACENT reads (`j* = μ_i`) —
+the new line passes through the pinned old vertex, pinning its intercept there. -/
 def HistoryCoherent (H : History p F) : Prop :=
   (∀ hj : 0 < H.nodes.length, (H.nodes[0]'hj).σ.Φ.natDegree = 1) ∧
   (∀ (i : ℕ) (hi : i < H.nodes.length),
@@ -355,14 +482,25 @@ def HistoryCoherent (H : History p F) : Prop :=
       IsRecenteringCore (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
         (H.nodes[i]'(by omega)).center (H.nodes[i]'(by omega)).lift) ∧
     ((H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering →
-      IsStandardLift (H.nodes[i]'(by omega)).σ (H.nodes[i]'(by omega)).ψ
-          (H.nodes[i]'(by omega)).g (H.nodes[i+1]'hi).σ.Φ ∧
+      IsNodeLift (H.nodes[i]'(by omega)) (H.nodes[i+1]'hi).σ.Φ ∧
         TransitionCoreL (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
           (H.nodes[i+1]'hi).σ.Φ (H.nodes[i]'(by omega)).e (H.nodes[i]'(by omega)).h
           (H.nodes[i]'(by omega)).zbar) ∧
+    ((H.nodes[i+1]'hi).σ.s = (H.nodes[i]'(by omega)).s) ∧
+    ((H.nodes[i+1]'hi).σ.t = (H.nodes[i]'(by omega)).t) ∧
     ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide ≤ (H.nodes[i]'(by omega)).μ) ∧
     ((H.nodes[i+1]'hi).Dwidth = (H.nodes[i]'(by omega)).childWidth) ∧
-    ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope)
+    ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope) ∧
+    ((H.nodes[i]'(by omega)).line.at
+        (((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide) * (H.nodes[i]'(by omega)).childWidth)
+      ≤ (H.nodes[i+1]'hi).line.at
+        (((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide)
+          * (H.nodes[i]'(by omega)).childWidth)) ∧
+    ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide = (H.nodes[i]'(by omega)).μ →
+      (H.nodes[i]'(by omega)).line.at
+          ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth)
+        = (H.nodes[i+1]'hi).line.at
+            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth))
 
 /-- **Realizability** (§C.0, the two data-side conditions C.1(ii) isolates — equations of NO
 `E`; a history failing either has EMPTY joint stratum and Theorem C's quantifier excludes it):
@@ -407,23 +545,25 @@ structure ZCData {p m : ℕ} (D : Locus p m) (coordOf : Fin m → Coord) (ht : H
   interior_zero : ∀ j : Fin m, (coordOf j).2 < rimIdx → D.pinned j = true →
     ∀ f : (j' : Fin m) → j' < j → ZMod p, D.solve j f = 0
 
+/-- The `ℓ`-th base-`p` digit of a p-adic integer, valued in `ZMod p` — concretely
+`(a mod p^{ℓ+1}) / p^ℓ`. The FRAME-0 jet chart (`JetSetup.pres_zero`) reads a polynomial's
+base coordinate `(ℓ, i)` as `baseDigit p ℓ (f.coeff i)`: the presentation spine bottoms out
+at literal p-adic digits of literal coefficients (ROUND 3, blocker 55). -/
+noncomputable def baseDigit (p : ℕ) [Fact p.Prime] (ℓ : ℕ) (a : ℤ_[p]) : ZMod p :=
+  (((PadicInt.toZModPow (ℓ + 1) a).val / p ^ ℓ : ℕ) : ZMod p)
+
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- **The jet presentation of a history** — the BOUNDARY-DEFERRED bridge from the accepted
-tower to digit systems (§C.2's `Ψ_H`; the global jet-coordinate system D.3(e)(ii) down the
-whole tower, at a fixed level cutoff `N ≥ N(H, Z)` — largeness of `N` is a condition on the
-EXISTENCE of the presentation, recorded here by `hm`/`coordOf` tying the box to `n·N`).
-Indexing (round-1 audit's off-by-one repaired): `Sigma 0` is `Σ_{−1}` = the FULL BOX (`init`);
-read `ν_i` is consumed ONCE, between `Sigma i` and `Sigma (i+1)` (`recursion`, `i < len`);
-the final state is `Sigma H.nodes.length`. Every field about reads is bounded by
-`H.nodes.length`; values beyond the bound are junk and no theorem consumes them.
-The presentation is LINKED to the history (round-1 audit: "unrelated to the nodes of `H`"):
-it contains `HistoryCoherent`/`Realizable`; the (ZC) floor is the HISTORY's `floorH`; the rim
-threshold is the recorded `μ_i·childWidth`; fresh supports sit strictly above the floor
-(`fresh_above`, LST(iii)'s selection) and inside the previous read's factor interior
-(`fresh_interior`, C.1's rim bullet). FLAGGED for semantic review: the existence of this
-bundle for a real history is the unbuilt graded ring (R4.5 items 1&3). -/
+tower to digit systems (§C.2's `Ψ_H`; D.3(e)(ii) down the whole tower, at a level cutoff
+`N ≥ N(H, Z)` — largeness of `N` is an existence condition on the presentation). Indexing:
+`Sigma 0` = the full box; read `ν_i` is consumed once between `Sigma i` and `Sigma (i+1)`;
+junk beyond `H.nodes.length` is never consumed. ROUND 3 (blockers 55-60): every field now
+carries a PROVENANCE law tying it to `H.nodes` — see the module header. The deferred content
+(the unbuilt graded ring, R4.5 items 1&3) is the EXISTENCE of this bundle for a real
+classifier history, plus the two flagged identifications on `History.htH`; the SENTENCES all
+exist below. FLAGGED for semantic-guardian review throughout. -/
 structure JetSetup (H : History p F) (n N m : ℕ) where
   /-- the box is the `n·N` coefficient box (BLOCK CONVENTION, base digits). -/
   hm : m = n * N
@@ -432,8 +572,6 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
   coordOf_sorted : ∀ j j' : Fin m, j < j' ↔ CoordPrec (coordOf j) (coordOf j')
   /-- the chart lands in the box: levels `< N`, base indices `< n`. -/
   coordOf_lt : ∀ j : Fin m, (coordOf j).1 < N ∧ (coordOf j).2 < n
-  /-- the absolute-height map (DEFERRED: = the K1-chain weight, LST(i)). -/
-  ht : HtMap
   /-- the presented history is coherent (consumed by every downstream theorem). -/
   coherent : HistoryCoherent H
   /-- and realizable ((NA)/(HV); §C's quantifier ranges over realizable histories only). -/
@@ -442,33 +580,91 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
   Sigma : ℕ → Locus p m
   /-- INITIALIZATION: `Σ_{−1}` is the full box — nothing is pinned before the root read. -/
   init : ∀ c : Fin m, (Sigma 0).pinned c = false
-  /-- the fresh clause data of read `ν_i` (§C.1(ii)'s species inventory, address-free). -/
+  /-- the fresh clause data of read `ν_i` (§C.1(ii)'s species inventory, address-free);
+  PINNED to the node by `fresh_assembled`/`mstar_eq`/`fresh_above`/`fresh_interior`. -/
   fresh : ℕ → FreshData p m
-  /-- the move maps `Θ_i` (the `Φ̂`-development / `Φ'`-re-development, child-to-parent
-  coordinate reading). -/
+  /-- the move maps `Θ_i` (child-to-parent coordinate reading); PINNED to the recorded keys
+  by `pres_theta`/`pres_block` (ROUND 3, blocker 55). -/
   Theta : ℕ → ((Fin m → ZMod p) → (Fin m → ZMod p))
   /-- (§C.0.5) each move is unitriangular for `≺` (Fact A's division accounting; DEFERRED). -/
   Theta_uni : ∀ i : ℕ, IsUnitriangular (Theta i)
-  /-- the defining recursion `Σ_i = Θ_i(Σ_{i−1} ∩ E_fresh(ν_i))` (D.8/D.10 two-sidedness with
-  C.1(i)'s inherited-implication absorbed — the stratum meets `Σ_{i−1}` in its FRESH content;
-  this absorption is part of the deferred presentation, flagged). -/
+  /-- the recorded LANDING KEYS: `keys i` = the key read `ν_i`'s landing produces (frame-(i+1)
+  key). Interior: pinned to the child frame (`keys_mid`); ALL reads incl. the FINAL one obey
+  the recorded-data landing law (`landing` — ROUND 3, blocker 56). -/
+  keys : ℕ → Polynomial ℤ_[p]
+  keys_mid : ∀ (i : ℕ) (hi : i + 1 < H.nodes.length), keys i = (H.nodes[i+1]'hi).σ.Φ
+  landing : ∀ (i : ℕ) (hi : i < H.nodes.length), LandingKey (H.nodes[i]'hi) (keys i)
+  /-- **the presentation spine** (ROUND 3, blocker 55): `pres i x f` = "`x` is the frame-`i`
+  digit presentation of the integral polynomial `f`". The spine is what ties the abstract
+  digit-level data to actual polynomials; its EXISTENCE laws are the deferred jet bridge. -/
+  pres : ℕ → (Fin m → ZMod p) → Polynomial ℤ_[p] → Prop
+  /-- frame 0 is the LITERAL p-adic coefficient chart — fully concrete. -/
+  pres_zero : ∀ (x : Fin m → ZMod p) (f : Polynomial ℤ_[p]),
+    pres 0 x f ↔ ∀ j : Fin m, x j = baseDigit p (coordOf j).1 (f.coeff (coordOf j).2)
+  /-- every monic degree-`n` integral polynomial has a frame-`i` presentation (D.3(e)(ii)
+  existence; DEFERRED — the graded bridge). -/
+  pres_total : ∀ i : ℕ, i ≤ H.nodes.length → ∀ f : Polynomial ℤ_[p],
+    f.Monic → f.natDegree = n → ∃ x, pres i x f
+  /-- **`Θ_i` IS read `ν_i`'s move** (blocker 55): it translates frame-(i+1) presentations of
+  `f` to frame-`i` presentations of the SAME `f` — the Fact-A re-reading, on actual
+  polynomials. -/
+  pres_theta : ∀ i : ℕ, i < H.nodes.length →
+    ∀ (x : Fin m → ZMod p) (f : Polynomial ℤ_[p]), pres (i+1) x f → pres i (Theta i x) f
+  /-- frame-(i+1) presentations are BLOCK-LOCAL over the recorded landing key's development
+  (C.1.0(a)): the digits over slot `j`'s base-index block depend on the development slot
+  `B j` alone. -/
+  pres_block : ∀ i : ℕ, i < H.nodes.length →
+    ∀ (f f' : Polynomial ℤ_[p]) (x x' : Fin m → ZMod p), pres (i+1) x f → pres (i+1) x' f' →
+    ∀ (B B' : ℕ → Polynomial ℤ_[p]) (Nd Nd' : ℕ),
+      IsDevelopment (keys i) f B Nd → IsDevelopment (keys i) f' B' Nd' →
+      ∀ c : Fin m,
+        B ((coordOf c).2 / (keys i).natDegree) = B' ((coordOf c).2 / (keys i).natDegree) →
+        x c = x' c
+  /-- read `ν_i`'s STRATUM, in frame-`i` coordinates (the full clause content `E(ν_i)`,
+  inherited + fresh). -/
+  stratum : ℕ → (Fin m → ZMod p) → Prop
+  /-- **the stratum equation** (ROUND 3, F43/blocker 55 — replaces the round-2 fresh-only
+  `recursion`): `Σ_i = Θ_i(Σ_{i−1} ∩ stratum(ν_i))` — D.8/D.10 two-sidedness AT THE STRATUM,
+  no implication absorbed. -/
   recursion : ∀ i : ℕ, i < H.nodes.length → ∀ x : Fin m → ZMod p,
-    (Sigma (i+1)).IsSolution x ↔
-      ((Sigma i).IsSolution (Theta i x) ∧ (fresh i).sat (Theta i x))
-  /-- the (ZC) invariant at every prefix, at the HISTORY's floor and the RECORDED rim
-  threshold (§C.1.5; node-tied — round-1 audit repair). -/
+    (Sigma (i+1)).IsSolution x ↔ ((Sigma i).IsSolution (Theta i x) ∧ stratum i (Theta i x))
+  /-- **C.1(i) AS A SENTENCE** (ROUND 3): on the state cylinder, the stratum's inherited
+  content is implied — the stratum reduces to exactly its fresh clauses. -/
+  inh_implied : ∀ i : ℕ, i < H.nodes.length → ∀ y : Fin m → ZMod p,
+    (Sigma i).IsSolution y → (stratum i y ↔ (fresh i).sat y)
+  /-- the (ZC) invariant at every prefix, at the HISTORY's floor, the DEFINED K1 heights
+  (`History.htH`, frame `i+1`), and the RECORDED rim threshold (§C.1.5). -/
   zc : ∀ (i : ℕ) (hi : i < H.nodes.length),
-    ZCData (Sigma (i+1)) coordOf ht (H.floorH (i+1))
+    ZCData (Sigma (i+1)) coordOf (H.htH (i+1)) (H.floorH (i+1))
       ((H.nodes[i]'hi).μ * (H.nodes[i]'hi).childWidth)
-  /-- fresh content sits STRICTLY ABOVE the cumulative floor (LST(iii) selection /
-  §C.1(ii)). -/
+  /-- fresh content sits STRICTLY ABOVE the cumulative floor, in the DEFINED frame-`i`
+  heights (LST(iii) selection; ROUND 3: `ht` is no longer adjustable data — F47). -/
   fresh_above : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses, ∀ c ∈ cl.support,
-    H.floorH i (coordOf c).2 < ((ht (coordOf c) : ℚ) : WithBot ℚ)
-  /-- fresh content is FACTOR-INTERIOR: no fresh clause ever constrains a rim coordinate of
-  the previous read (C.1's rim bullet / rim domination; base indices `< μ_i·D_{i+1}`). -/
-  fresh_interior : ∀ (i : ℕ) (hi : i + 1 < H.nodes.length),
-    ∀ cl ∈ (fresh (i+1)).clauses, ∀ c ∈ cl.support,
-      (coordOf c).2 < (H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth
+    H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ)
+  /-- fresh content is region-confined (C.1(ii)'s rim rule, UNIFORM incl. the root):
+  read `i` constrains base indices `< H.prevRim n i` only. -/
+  fresh_interior : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses, ∀ c ∈ cl.support,
+    (coordOf c).2 < H.prevRim n i
+  /-- **fresh clauses are ASSEMBLED from the two §C shapes** (ROUND 3, blocker 60 / task
+  "TypObject bridges"): each is a literal STRIP ZERO (singleton support, codim 1), or a TYP
+  VALUE clause — a `TypObject` surjection onto the elementary abelian alphabet
+  `(ZMod p)^codim`, supported on ONE `htH`-level set (LST/TYP support typing). -/
+  fresh_assembled : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses,
+    (∃ c : Fin m, cl.support = {c} ∧ cl.codim = 1 ∧ ∀ x, (cl.sat x ↔ x c = 0)) ∨
+    ((∃ γ' : ℚ, ∀ c ∈ cl.support, H.htH i (coordOf c) = γ') ∧
+      ∃ (T : TypObject p m cl.support (Fin cl.codim → ZMod p)) (v : Fin cl.codim → ZMod p),
+        ∀ x, (cl.sat x ↔ T.φ x = v))
+  /-- **`m*(ν_i)` IS the D.11 species inventory** (ROUND 3, blocker 57): the presented fresh
+  codimension sum equals the FRESH-BAND count computed from node data — the coordinates of
+  read `i`'s region strictly above the cumulative floor and at-or-below the read line
+  (strips + value level sets; past the (γ) crossing the line is below the floor, so the band
+  self-truncates — C.1(i)(γ); at an adjacent read the hinge block sits at/beyond `prevRim`,
+  so it is excluded — the (HV) no-pin clause). -/
+  mstar_eq : ∀ (i : ℕ) (hi : i < H.nodes.length),
+    (fresh i).mstar = Nat.card {c : Fin m //
+      (coordOf c).2 < H.prevRim n i ∧
+      H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ) ∧
+      H.htH i (coordOf c) ≤ (H.nodes[i]'hi).lineStep (coordOf c).2}
 
 /-- The partial move composite `seg i k = Θ_i ∘ Θ_{i+1} ∘ … ∘ Θ_{k−1}` (frame-`k` coordinates
 down to frame-`i` coordinates); `seg 0 k` is `Ψ_H^{−1}` up to prefix `k`. -/
@@ -482,6 +678,20 @@ final-frame presentation back to `f`-coordinates (§C.2: `S(H,Z) = Ψ_H^{−1}(�
 stated in `C6.thmC_a/b` about THIS composite — round-1 audit: "no history move composition"). -/
 def JetSetup.Psi {H : History p F} {n N m : ℕ} (J : JetSetup H n N m) (k : ℕ) :
     (Fin m → ZMod p) → (Fin m → ZMod p) := J.seg 0 k
+
+/-- **The classifier locus `S(H, Z)`, INDEPENDENTLY defined** (ROUND 3, blocker 58 — §C.2's
+transported system `T(H, Z)` as a sentence): `x` (frame-0 digits) lies in `S(H, Z)` iff it
+carries a presentation chain `y` down the recorded moves (`y 0 = x`, `y i = Θ_i (y (i+1))`)
+whose frame-`i` stage satisfies read `ν_i`'s fresh clauses and whose final stage solves `Z`.
+This is `E(ν₀) ∪ Θ₀*(E_fresh(ν₁) ∪ Θ₁*( … ∪ Θ_k*(Z)))` with the pullbacks unfolded as the
+∃-chain — NO reference to `Sigma` or to any image; `C6.thmC_a` PROVES the equality with the
+transported image of the final joint locus. -/
+def JetSetup.SHZ {H : History p F} {n N m : ℕ} (J : JetSetup H n N m) (Z : Locus p m) :
+    Set (Fin m → ZMod p) :=
+  {x | ∃ y : ℕ → (Fin m → ZMod p), y 0 = x ∧
+    (∀ i : ℕ, i < H.nodes.length → y i = J.Theta i (y (i+1))) ∧
+    (∀ i : ℕ, i < H.nodes.length → (J.fresh i).sat (y i)) ∧
+    Z.IsSolution (y H.nodes.length)}
 
 /-- **Admissible terminal system `Z`** (§C.2, rev 9 — a LOCUS condition): `Z` solves only for
 coordinates FREE on the FINAL state cylinder (round-1 audit: admissibility was checked against
