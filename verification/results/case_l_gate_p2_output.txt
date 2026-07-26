@@ -1,0 +1,110 @@
+SEALED CASE-L GATE CENSUS, p = 2 (predictions: CASE_L_SEALED_PREDICTIONS_2026-07-26.md, committed before this script existed)
+n = 9 monic, N = 12 (mod 4096), root stratum = R0-pattern (R0 = z^8+z^4+1), M = 1000000, seed 20260726
+history: nu0 side [0,8] slope 1 / Phi0 = x^2+2x+4; nu1 side [1,4] slope 7/3 (beta-probe); nu2 tail read at stage 29
+Phi1(d) = Phi0^3 + 64*d_x*x + 128*d_c; Phi0^3 mod 4096 = [64, 96, 96, 56, 24, 6, 1]
+
+== CLOSED-FORM VERIFICATION (2000 fresh members, genuine subtract-multiples division by the LITERAL divisors):
+  Phi0 tower, sign B (c1,c0)=(2,4):  mismatches 0 of 2000; reconstruction failures 0
+  Phi0 tower, sign A (c1,c0)=(-2,-4): mismatches 2000 of 2000
+  Phi1(d) division on 369 NU1 members: closed-vs-literal mismatches 0; reconstruction failures 0; c0j-expansion mismatches 0
+
+(census 25s for 1000000 members incl. per-member cap-11 reclassification)
+
+== EMISSION PARTITION (M = 1000000 root-stratum members): WS [0,4]-slope-9/4: 750900; NU1 [1,4]-slope-7/3: 187021; DEEP (both dead): 62079; OTHER (floor violations): 0 (w0<9: 0, w1<7: 0, w2<5/w3<3 [B4]: 0, w4 bad: 0); ws[dig=0]: 0, nu1[d=0]: 0
+  WS total: 750900 of 1000000 (frac 0.750900); sealed 3/4 -> expected 750000.0, +2.08 sigma
+  NU1 total (P2): 187021 of 1000000 (frac 0.187021); sealed 3/16 -> expected 187500.0, -1.23 sigma
+  DEEP: 62079 of 1000000 (frac 0.062079); sealed 1/16 -> expected 62500.0, -1.74 sigma
+
+== C-WS control family (beta pair alive at ((0,9),(1,8))):
+  u0-cell 1: 250209 of 1000000 (frac 0.250209); sealed 1/4 -> expected 250000.0, +0.48 sigma
+  u0-cell zb: 249661 of 1000000 (frac 0.249661); sealed 1/4 -> expected 250000.0, -0.78 sigma
+  u0-cell zb+1: 251030 of 1000000 (frac 0.251030); sealed 1/4 -> expected 250000.0, +2.38 sigma
+  [info] WS members with dig(B1)@7 alive (the rev-4/5 would-be d-cells): 563850 of 750900 (0.7509; free digit -> 3/4)
+
+== NU1 cells (per d): P1 masses, B3 splits, stage ladder:
+  P1 d-cell 1: 62478 of 1000000 (frac 0.062478); sealed 1/16 -> expected 62500.0, -0.09 sigma
+    B3 w(B0)=10 | d=1: 46983 of 62478 (frac 0.751993); sealed 3/4 -> expected 46858.5, +1.15 sigma
+    B3 w(B0)>=11 | d=1: 15495 of 62478 (frac 0.248007); sealed 1/4 -> expected 15619.5, -1.15 sigma
+    [info] dig(B0)@10 hist (codes 0..3): [15495, 15652, 15593, 15738]
+    stage hist (3*v1(C0), 33 = lump >= 33): {29: 46840, 30: 11758, 31: 2918, 32: 749, 33: 213}; <28: 0
+    PD1 stage-29 | d=1: 46840 of 62478 (frac 0.749704); sealed 3/4 -> expected 46858.5, -0.17 sigma
+      u-cell 1 | d=1: 15609 of 62478 (frac 0.249832); sealed 1/4 -> expected 15619.5, -0.10 sigma
+      u-cell zb | d=1: 15727 of 62478 (frac 0.251721); sealed 1/4 -> expected 15619.5, +0.99 sigma
+      u-cell zb+1 | d=1: 15504 of 62478 (frac 0.248151); sealed 1/4 -> expected 15619.5, -1.07 sigma
+    PD4 deeper (stage>=30) | d=1: 15638 of 62478 (frac 0.250296); sealed 1/4 -> expected 15619.5, +0.17 sigma
+    c01 raw digit pair at frame-2 labels (2,7),(3,6) [(lvl7 of c01c, lvl6 of c01x)]: {(0, 0): 62478}
+  P1 d-cell zb: 62632 of 1000000 (frac 0.062632); sealed 1/16 -> expected 62500.0, +0.55 sigma
+    B3 w(B0)=10 | d=zb: 46913 of 62632 (frac 0.749026); sealed 3/4 -> expected 46974.0, -0.56 sigma
+    B3 w(B0)>=11 | d=zb: 15719 of 62632 (frac 0.250974); sealed 1/4 -> expected 15658.0, +0.56 sigma
+    [info] dig(B0)@10 hist (codes 0..3): [15719, 15570, 15746, 15597]
+    stage hist (3*v1(C0), 33 = lump >= 33): {29: 46846, 30: 11926, 31: 2899, 32: 715, 33: 246}; <28: 0
+    PD1 stage-29 | d=zb: 46846 of 62632 (frac 0.747956); sealed 3/4 -> expected 46974.0, -1.18 sigma
+      u-cell 1 | d=zb: 15714 of 62632 (frac 0.250894); sealed 1/4 -> expected 15658.0, +0.52 sigma
+      u-cell zb | d=zb: 15486 of 62632 (frac 0.247254); sealed 1/4 -> expected 15658.0, -1.59 sigma
+      u-cell zb+1 | d=zb: 15646 of 62632 (frac 0.249808); sealed 1/4 -> expected 15658.0, -0.11 sigma
+    PD4 deeper (stage>=30) | d=zb: 15786 of 62632 (frac 0.252044); sealed 1/4 -> expected 15658.0, +1.18 sigma
+    c01 raw digit pair at frame-2 labels (2,7),(3,6) [(lvl7 of c01c, lvl6 of c01x)]: {(0, 0): 62632}
+  P1 d-cell zb+1: 61911 of 1000000 (frac 0.061911); sealed 1/16 -> expected 62500.0, -2.43 sigma
+    B3 w(B0)=10 | d=zb+1: 46376 of 61911 (frac 0.749075); sealed 3/4 -> expected 46433.2, -0.53 sigma
+    B3 w(B0)>=11 | d=zb+1: 15535 of 61911 (frac 0.250925); sealed 1/4 -> expected 15477.8, +0.53 sigma
+    [info] dig(B0)@10 hist (codes 0..3): [15535, 15601, 15336, 15439]
+    stage hist (3*v1(C0), 33 = lump >= 33): {29: 46467, 30: 11567, 31: 2947, 32: 704, 33: 226}; <28: 0
+    PD1 stage-29 | d=zb+1: 46467 of 61911 (frac 0.750545); sealed 3/4 -> expected 46433.2, +0.31 sigma
+      u-cell 1 | d=zb+1: 15295 of 61911 (frac 0.247048); sealed 1/4 -> expected 15477.8, -1.70 sigma
+      u-cell zb | d=zb+1: 15557 of 61911 (frac 0.251280); sealed 1/4 -> expected 15477.8, +0.74 sigma
+      u-cell zb+1 | d=zb+1: 15615 of 61911 (frac 0.252217); sealed 1/4 -> expected 15477.8, +1.27 sigma
+    PD4 deeper (stage>=30) | d=zb+1: 15444 of 61911 (frac 0.249455); sealed 1/4 -> expected 15477.8, -0.31 sigma
+    c01 raw digit pair at frame-2 labels (2,7),(3,6) [(lvl7 of c01c, lvl6 of c01x)]: {(0, 0): 61911}
+
+== P3 joint (d,u) cells (sealed 1/64 each, d indep u):
+  (1,1): 15609 of 1000000 (frac 0.015609); sealed 1/64 -> expected 15625.0, -0.13 sigma
+  (1,zb): 15727 of 1000000 (frac 0.015727); sealed 1/64 -> expected 15625.0, +0.82 sigma
+  (1,zb+1): 15504 of 1000000 (frac 0.015504); sealed 1/64 -> expected 15625.0, -0.98 sigma
+  (zb,1): 15714 of 1000000 (frac 0.015714); sealed 1/64 -> expected 15625.0, +0.72 sigma
+  (zb,zb): 15486 of 1000000 (frac 0.015486); sealed 1/64 -> expected 15625.0, -1.12 sigma
+  (zb,zb+1): 15646 of 1000000 (frac 0.015646); sealed 1/64 -> expected 15625.0, +0.17 sigma
+  (zb+1,1): 15295 of 1000000 (frac 0.015295); sealed 1/64 -> expected 15625.0, -2.66 sigma
+  (zb+1,zb): 15557 of 1000000 (frac 0.015557); sealed 1/64 -> expected 15625.0, -0.55 sigma
+  (zb+1,zb+1): 15615 of 1000000 (frac 0.015615); sealed 1/64 -> expected 15625.0, -0.08 sigma
+
+== EXACT-ZERO FALSIFIERS (one hit kills the gate):
+  F1 (NU1 member with w(B0) < 10, =B1):        0
+  F2 (NU1 member at stage 28, =PD0/C-WW):      0
+  F3 (B1 digits at (2,7),(3,6) differ from d): 0
+  F4 ([1,4] emission with beta pair alive):    0
+  [reading note] F3/PD2 occupancy is graded on the digits of B1 (frame 1, where nu1 pinned the labels (2,7),(3,6)); the frame-2 referent of the same labels, the c01 pair (printed per cell above), is the D.8-carry exhibit: the realizer division transports d and the naive labels come back CANCELLED — constancy per cell is required, its value is reported verbatim.
+  [info] stage < 28 (floor break, would kill PD1): 0; w(c00) < 10: 0; C1 vertex (1,7/3) not inherited: 0
+
+== WRONG-TAU DISCRIMINANT PROBE (first 2000 NU1 members; realizer replaced by tau' != d; theory: stage 28 on every member — the naive line-staircase reading; NOT sealed, control exhibit):
+  tau' = 0   : probed 2000, stage-28 hits 2000 (1.0000)
+  tau' = 1   : probed 1341, stage-28 hits 1341 (1.0000)
+  tau' = zb  : probed 1364, stage-28 hits 1364 (1.0000)
+  tau' = zb+1: probed 1295, stage-28 hits 1295 (1.0000)
+
+== CAP STABILITY: members whose sealed classification tuple differs between mod 2^12 and mod 2^11: 0
+========================================================================
+SUMMARY — SEALED CASE-L GATE p=2 (M = 1000000, NU1 total 187021, WS total 750900, DEEP 62079, OTHER 0):
+closed forms: Phi0-tower sign B mismatches 0/2000, sign A 2000/2000, reconstruction fails 0; Phi1 division mismatches 0/369, reconstruction fails 0, expansion mismatches 0
+P1: PASS
+P2: PASS
+P3: PASS
+P4: PASS
+B1: PASS
+B2: PASS
+B3: PASS
+B4: PASS
+PD0: PASS
+PD1: PASS
+PD2: PASS
+PD4: PASS
+C-WS: PASS
+F1: PASS
+F2: PASS
+F3: PASS
+F4: PASS
+F5: PASS
+F6: PASS
+F7: PASS
+F8: PASS
+cap stability: 0 differing members; wall time 25s
+========================================================================
