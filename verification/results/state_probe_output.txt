@@ -1,0 +1,96 @@
+STATE-PROBE (R2/C5 wall probe) — exploration-class, exact exhaustive enumeration
+spec: ASSEMBLY_PLAN_2026-07-26.md §4 STATE-probe + §8 R2; configuration per the feasibility finding in this script's docstring
+p=2: N=10, box 2^26 = 67108864 members; p=3: N=8, box 3^18 = 387420489 members
+
+== CLOSED-FORM VERIFICATION (4000 members/prime, literal subtract-multiples division + reconstruction): {'div2': 0, 'rec2': 0, 'div3': 0, 'rec3': 0} ==
+
+p=2 census done in 3s; nu1 buckets:
+  DEEP         4096
+  INERT1       6291456
+  INERT2       98304
+  RAM5         50331648
+  RAM7         786432
+  RAM9         12288
+  RS1          3145728
+  RS2          49152
+  SPLIT1       3145728
+  SPLIT2       49152
+  TS(3,7)      2359296
+  TS(3,8)      589824
+  TS(3,9)      147456
+  TS(3,ge10)   49152
+  TS(4,9)      36864
+  TS(4,ge10)   12288
+  nu1 floor violations: 0; nu2 floor violations: 0
+
+p=3 census done in 14s; nu1 buckets:
+  DEEP         59049
+  INERT1       19131876
+  RAM5         344373768
+  RAM7         472392
+  RS1          4251528
+  SPLIT1       14880348
+  TS(3,7)      3779136
+  TS(3,ge8)    472392
+  nu1 floor violations: 0; nu2 floor violations: 0
+
+== p=2 h'=1 states (r in F_4*): per-state sizes and word histograms (theory: |S_r| = 1048576, every word cell = 1024) ==
+  r=1: |S_r| = 1048576 (OK); cells 1024/1024; off-uniform cells: 0
+  r=2: |S_r| = 1048576 (OK); cells 1024/1024; off-uniform cells: 0
+  r=3: |S_r| = 1048576 (OK); cells 1024/1024; off-uniform cells: 0
+
+== p=2 h'=2 states (height/position layer): per-state sizes and word histograms (theory: |S_r| = 16384, every word cell = 1024) ==
+  r=1: |S_r| = 16384 (OK); cells 16/16; off-uniform cells: 0
+  r=2: |S_r| = 16384 (OK); cells 16/16; off-uniform cells: 0
+  r=3: |S_r| = 16384 (OK); cells 16/16; off-uniform cells: 0
+
+== p=3 h'=1 states (r in F_9*, 5 physical cells {1},{2},{a,2a},{a+1,2a+1},{a+2,2a+2}): per-state sizes and word histograms (theory: |S_r| = 531441, every word cell = 729) ==
+  r=1: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=2: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=3: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=4: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=5: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=6: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=7: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+  r=8: |S_r| = 531441 (OK); cells 729/729; off-uniform cells: 0
+
+== nu2 NAMED-BUCKET ROW, p=2 h'=1 (per state r) ==
+  DEEP'(d5=0)      {1: 1024, 2: 1024, 3: 1024}
+  DEEP'(d5=1)      {1: 1024, 2: 1024, 3: 1024}
+  DEEP'(d5=2)      {1: 1024, 2: 1024, 3: 1024}
+  DEEP'(d5=3)      {1: 1024, 2: 1024, 3: 1024}
+  INERT'(1,2)      {1: 16384, 2: 16384, 3: 16384}
+  INERT'(1,3)      {1: 16384, 2: 16384, 3: 16384}
+  INERT'(2,1)      {1: 16384, 2: 16384, 3: 16384}
+  INERT'(2,2)      {1: 16384, 2: 16384, 3: 16384}
+  INERT'(3,1)      {1: 16384, 2: 16384, 3: 16384}
+  INERT'(3,3)      {1: 16384, 2: 16384, 3: 16384}
+  RAM7(u=1)        {1: 262144, 2: 262144, 3: 262144}
+  RAM7(u=2)        {1: 262144, 2: 262144, 3: 262144}
+  RAM7(u=3)        {1: 262144, 2: 262144, 3: 262144}
+  RAM9(u=1)        {1: 4096, 2: 4096, 3: 4096}
+  RAM9(u=2)        {1: 4096, 2: 4096, 3: 4096}
+  RAM9(u=3)        {1: 4096, 2: 4096, 3: 4096}
+  RS'(r'=1)        {1: 16384, 2: 16384, 3: 16384}
+  RS'(r'=2)        {1: 16384, 2: 16384, 3: 16384}
+  RS'(r'=3)        {1: 16384, 2: 16384, 3: 16384}
+  SPLIT'(d=1)      {1: 16384, 2: 16384, 3: 16384}
+  SPLIT'(d=2)      {1: 16384, 2: 16384, 3: 16384}
+  SPLIT'(d=3)      {1: 16384, 2: 16384, 3: 16384}
+  TS'(d=1)         {1: 16384, 2: 16384, 3: 16384}
+  TS'(d=2)         {1: 16384, 2: 16384, 3: 16384}
+  TS'(d=3)         {1: 16384, 2: 16384, 3: 16384}
+
+== CROSS-HEIGHT (loop-position) CHECK: S1 marginal (d@4,d@7) vs S2 word (d@5,d@9), fractions (x64) ==
+  r=1: MATCH (all 16 cells)
+  r=2: MATCH (all 16 cells)
+  r=3: MATCH (all 16 cells)
+
+== VERDICT LAYER (the plan's reading) ==
+========================================================================
+STATE-PROBE SUMMARY: p2/S1 states 3, p2/S2 states 3, p3/S1 states 8
+floors: 0 violations; closed-form: {'div2': 0, 'rec2': 0, 'div3': 0, 'rec3': 0}; cross-height mismatched cells: 0
+T-refinement round used: False
+R2 VERDICT (probe-level): NO-WALL
+wall time 17s
+========================================================================
