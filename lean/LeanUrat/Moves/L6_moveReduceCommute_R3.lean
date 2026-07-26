@@ -8,6 +8,10 @@ import LeanUrat.Moves.Defs
 import LeanUrat.Moves.DefsT
 
 /-!
+**DEPRECATED — M=0 branch is machine-checked FALSE (`L6_moveReduceCommute_statement_false`
+in-file). Superseded by `L6_moveReduceCommute_R4.lean` (sorry-free, adds `1 ≤ M` per
+machine-checked finding 3). Do not import.**
+
 # Moves/L6_moveReduceCommute_R3 — development commutes with reduction mod p^M (§0 Fact A / D.11)
 
 STATUS: the manifest statement is **false at `M = 0`** (target ring `ZMod (p^0) = ZMod 1` is

@@ -36,9 +36,12 @@ EXPLICIT normalization unit `z̄^{−μm̂} = z̄^{μthg}` (m̂ = −thg):
 `vertexCongruence` is the residual minimizing-slot content of the deps `L5.landVertex` +
 `L3.K1` (D.8 VERTEX / D.5 K1): `R(f) = Σ_{minimizing j} T^{jm̂}·R(B_j)·ψ^j` with pairwise
 distinct ψ-orders, `μ` = least minimizing slot, so dividing by `ψ^μ` leaves
-`T^a·R' = T^{μm̂}·R(B_μ) + ψ·r`.  Both dep units are still open (`sorry`) and their `.olean`s
-are unbuilt, so the core cannot be imported; it is stated here as a faithful PRIVATE lemma
-with an honest `sorry`, pending `L3.K1`/`L5.landVertex` landing.
+`T^a·R' = T^{μm̂}·R(B_μ) + ψ·r`.  STALE-COMMENT FIX (2026-07-26 census §5): both dep units
+`L3.K1` and `L5.landVertex` are in fact CLEAN (sorry-free) on disk — the earlier note that
+they were "still open (`sorry`)" with "unbuilt `.olean`s" was REFUTED — so the core is
+dischargeable from them (the `resSum` minimizing-slot decomposition, MANIFEST_REPAIR
+L5.landVertexDigit).  That discharge is a separate repair unit; this pass touches comments
+only, so the honest `sorry` below is still carried here pending that repair.
 -/
 
 set_option linter.style.longLine false
@@ -51,8 +54,9 @@ open Polynomial
 
 namespace LeanUrat.Moves
 
-/-- PRIVATE CORE (honest `sorry` — the K1 minimizing-slot residual content of the open deps
-`L5.landVertex`/`L3.K1`, whose `.olean`s are not built): dividing the minimizing-slot
+/-- PRIVATE CORE (honest `sorry`, discharge deferred — the K1 minimizing-slot residual content
+of the deps `L5.landVertex`/`L3.K1`, which the 2026-07-26 census §5 confirms are CLEAN
+(sorry-free) on disk): dividing the minimizing-slot
 decomposition `R(f) = Σ_{minimizing j≥μ} T^{jm̂}·R(B_j)·(toLaurent ψ)^j` (`m̂ = −t·h·g`, cf.
 `L3_liftResidual`) by `ψ^μ` leaves the congruence
 `T^a·R' ≡ T^{μm̂}·R(B_μ) (mod toLaurent ψ)` in `↥K[z^{±1}]`. -/

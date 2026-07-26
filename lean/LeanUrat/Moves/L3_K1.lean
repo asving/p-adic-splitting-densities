@@ -38,9 +38,10 @@ statement).
 * `L0.GRe` → `R_pow` (verbatim from `L0_GRe.lean`).
 * `L0.GRf` → `GRf_priv` (verbatim from `L0_GRf.lean`).
 * `L2.psiNotDvd` → `psiNotDvd` (verbatim from `L2_psiNotDvd_R3.lean`, the audit-corrected R3
-  statement with `hmon`; its inputs `L2.widthBound`/`L0.GRg` ARE imported — NOTE `L2.widthBound`
-  carries the repo's standing honest hole `slotDecomp` (a `sorry` in that unit), which therefore
-  sits in this theorem's axiom footprint even though this file is sorry-free).
+  statement with `hmon`; its inputs `L2.widthBound`/`L0.GRg` ARE imported — NOTE the earlier
+  claim that `L2.widthBound` injects a `slotDecomp` `sorry` into this footprint was REFUTED by
+  the 2026-07-26 census (§5, via `#print axioms`): `L2_widthBound` and `L2_slotDecomp_R4` are
+  themselves sorry-free, so L3.K1 is proved CLEAN with no `sorry` in its import cone).
 * `L3.liftWeight` → `w_Phat` (verbatim from `L3_liftWeight.lean`).
 -/
 

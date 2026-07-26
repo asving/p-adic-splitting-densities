@@ -17,6 +17,9 @@ set_option linter.style.header false
 set_option linter.unusedSectionVars false
 set_option maxHeartbeats 400000
 
+/- DEPRECATED — superseded by `L2_P6i_R5_final.lean` (sorry-free, byte-exact fence). Retained
+only for the round-5 provenance record; NOT on any capstone path. Do not import. -/
+
 namespace LeanUrat.Moves
 
 open Polynomial

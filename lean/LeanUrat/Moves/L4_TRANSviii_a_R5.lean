@@ -10,6 +10,9 @@ import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.DefsL
 
 /-!
+**DEPRECATED — superseded by `L4_TRANSviii_a_R5_final.lean` (sorry-free). Two sorries
+(:71 Φ-adic development, :107 single-slot realizers) closed in the _final file. Do not import.**
+
 # Moves/L4_TRANSviii_a — S6a' index recursion + single-slot realizers (D.7(viii))
 
 `moves_ref`: D.7(viii) (S6a'), the index recursion 𝒜' and the single-slot realizers with ONE

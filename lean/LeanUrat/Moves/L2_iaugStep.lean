@@ -21,21 +21,18 @@ so the chord from `(j, w(B_j))` to the pinned vertex `(μ, w(B_μ))` descends wi
 
   `ehg·(μ − j) < w(B_j) − w(B_μ)`.   (MOVES ~2085-2094.)
 
-## Proof structure (and the one honest gap)
+## Proof structure
 
 * The strict box inequality `w f < w(B_j) + j·ehg` for `j < μ` is the imported dep unit
   `L5.landBox`; the pinned-vertex identity `w(B_μ) + μ·ehg = w f` is the imported dep unit
   `L5.landVertex`.  The arithmetic rearrangement into the cleared-denominator chord is proved
   here in full.
-* Both dep units carry the hypotheses `hψ : Irreducible ψ` and `hψz : ψ ≠ X`, which THIS unit's
-  fenced statement does not.  `ψ ≠ X` is DERIVED below from the hypotheses at hand: `j < μ`
-  forces `μ ≥ 1`, so `ψ^μ ∣ Ranch` with `ψ = X` would give `Ranch.coeff 0 = 0`, contradicting
-  the anchor normalization `hanch.1`.
-* `Irreducible ψ` is NOT derivable from this unit's hypotheses (`hlift` supplies only `ψ.Monic`
-  and `ψ.natDegree = g`).  The proof case-splits on it: the irreducible case is complete from
-  the deps; the reducible case is the single localized `sorry`, flagged as a manifest-level
-  statement gap (the dep units — and the underlying D.8 residue-order mathematics — require
-  irreducibility of ψ; cf. blueprint gap G4 on the scope of `iaugStep`).
+* Both dep units carry the hypotheses `hψ : Irreducible ψ` and `hψz : ψ ≠ X`.  `Irreducible ψ`
+  is now a hypothesis of THIS unit (the MOVES §B2-DEF repair fence-change, semantic-audit
+  approved: the tower only ever applies `iaugStep` at an irreducible residual minimal
+  polynomial ψ; cf. blueprint gap G4 scoping `iaugStep` to the irreducible key).  `ψ ≠ X` is
+  DERIVED below from the hypotheses at hand: `j < μ` forces `μ ≥ 1`, so `ψ^μ ∣ Ranch` with
+  `ψ = X` would give `Ranch.coeff 0 = 0`, contradicting the anchor normalization `hanch.1`.
 -/
 
 set_option linter.style.longLine false
@@ -44,7 +41,7 @@ set_option linter.unusedSectionVars false
 
 namespace LeanUrat.Moves
 
-theorem L2_iaugStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) (j : ℕ) (hj : j < μ) (hjnz : B j ≠ 0) : (σ.e : ℤ) * σ.h * g * ((μ : ℤ) - j) < σ.w (B j) - σ.w (B μ) := by
+theorem L2_iaugStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hψ : Irreducible ψ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) (j : ℕ) (hj : j < μ) (hjnz : B j ≠ 0) : (σ.e : ℤ) * σ.h * g * ((μ : ℤ) - j) < σ.w (B j) - σ.w (B μ) := by
   -- `ψ` data carried by the standard lift.
   have hmon : ψ.Monic := hlift.1
   have hg : ψ.natDegree = g := hlift.2.1
@@ -57,18 +54,13 @@ theorem L2_iaugStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (�
       refine dvd_trans (dvd_pow_self Polynomial.X hμpos.ne') ?_
       rw [← heq]; exact hord.1
     exact hanch.1 (Polynomial.X_dvd_iff.mp hXdvd)
-  by_cases hψ : Irreducible ψ
-  · -- The irreducible case: fire the two dep units and rearrange.
-    have hbox := L5_landBox σ ψ g hg hmon hψ hψz Φhat hlift f hf μ a Ranch hanch hord B N hdev j hj hjnz
-    have hpin := (L5_landVertex σ ψ g hg hmon hψ hψz Φhat hlift f hf μ a Ranch hanch hord B N hdev).1
-    -- ARITHMETIC CORE: `ehg·(μ−j) = μ·ehg − j·ehg`, then the chord follows linearly.
-    have expand : (σ.e : ℤ) * σ.h * g * ((μ : ℤ) - j)
-        = (μ : ℤ) * ((σ.e : ℤ) * σ.h * g) - (j : ℤ) * ((σ.e : ℤ) * σ.h * g) := by ring
-    rw [expand]
-    linarith
-  · -- HONEST GAP: this unit's fenced statement omits `Irreducible ψ`, which every dep unit
-    -- (L3.K1 / L5.landBox / L5.landVertex) and the D.8 ψ-order mathematics require.
-    -- Not reconstructible from `ψ.Monic` + `ψ.natDegree = g`.  Flagged for the manifest owner.
-    sorry
+  -- With `hψ : Irreducible ψ` now a hypothesis, fire the two dep units and rearrange.
+  have hbox := L5_landBox σ ψ g hg hmon hψ hψz Φhat hlift f hf μ a Ranch hanch hord B N hdev j hj hjnz
+  have hpin := (L5_landVertex σ ψ g hg hmon hψ hψz Φhat hlift f hf μ a Ranch hanch hord B N hdev).1
+  -- ARITHMETIC CORE: `ehg·(μ−j) = μ·ehg − j·ehg`, then the chord follows linearly.
+  have expand : (σ.e : ℤ) * σ.h * g * ((μ : ℤ) - j)
+      = (μ : ℤ) * ((σ.e : ℤ) * σ.h * g) - (j : ℤ) * ((σ.e : ℤ) * σ.h * g) := by ring
+  rw [expand]
+  linarith
 
 end LeanUrat.Moves

@@ -15,6 +15,11 @@ set_option linter.style.longLine false
 set_option linter.style.header false
 set_option maxHeartbeats 400000
 
+/- DEPRECATED — superseded by `L4_TRANSviii_b_R4.lean` (sorry-free, adds `hcore : StageCore σ`
+per machine-checked finding 1). The :98 I-aug/prev-read sorry is closed there. NOTE:
+`L4_TRANSv_R3` currently imports THIS file — re-point it to _R4 (see MANIFEST_REPAIR L4.TRANSv).
+Do not import elsewhere. -/
+
 /-- **D.7(viii) S6b': the OFFSET P-LIFT.** Above the CLEAN threshold `σ.w Φ̂ < ν` (the child's
 S6b threshold `σ'.wPrev Φ̂ = σ.w Φ̂`, DEF-8), every NEXT-field scalar `a ∈ K⟮z̄⟯` is a residue
 digit of some coefficient `B ∈ C_{Φ̂}`, realized at the prescribed weight when `a ≠ 0`. -/

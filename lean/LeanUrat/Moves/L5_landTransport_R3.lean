@@ -12,6 +12,10 @@ namespace LeanUrat.Moves
 
 /-! # L5.landTransport (MANIFEST_R3) — REFUTED AS STATED; honest `sorry`
 
+**DEPRECATED — REFUTED AS STATED (machine counterexample in-file). Superseded by
+`L5_landTransport_R4.lean` (sorry-free, restated with the K1At slot-tie hypothesis per
+machine-checked finding 2). Do not import.**
+
 **Verdict: the fenced statement is FALSE in the intended model, hence unprovable.**
 The statement quantifies over an ARBITRARY `Φhat : Polynomial ℤ_[p]` with no hypothesis tying
 it to `σ` — no `IsStandardLift σ ψ g Φhat`, no `K1At σ.w Φhat _`, no `SlotDecomp σ`
