@@ -1,0 +1,260 @@
+SEALED CASE-K GATE CENSUS, p = 3 (predictions: CASE_K_SEALED_PREDICTIONS_2026-07-25.md)
+N = 12, mod 3^12 = 531441; caps: main 4 (3^16 members), stability 3.
+Keys (Phi' = Phi - t; (alpha,beta) = (tau1, tau0 - 9)):
+  t=0 (base)                   kind=base  tau=0
+  t=9x*0+27*1 (tau=1)          kind=w3    tau=1
+  t=9x*0+27*2 (tau=2)          kind=w3    tau=2
+  t=9x*1+27*0 (tau=zb)         kind=w3    tau=zb
+  t=9x*1+27*1 (tau=zb+1)       kind=w3    tau=zb+1
+  t=9x*1+27*2 (tau=zb+2)       kind=w3    tau=zb+2
+  t=9x*2+27*0 (tau=2zb)        kind=w3    tau=2zb
+  t=9x*2+27*1 (tau=2zb+1)      kind=w3    tau=2zb+1
+  t=9x*2+27*2 (tau=2zb+2)      kind=w3    tau=2zb+2
+  t=9 (w2 ctrl)                kind=ctrl2 
+  t=81 (w4 ctrl)               kind=ctrl4 
+  t=9x+81 (lift of k3)         kind=lift  tau=zb
+  t=9x+27+243 (lift of k4)     kind=lift  tau=zb+1
+
+== SIGN CHECK (1200 members x 13 keys, genuine polydiv by the literal Phi - t):
+  sign B (tau1, tau0-9):  mismatches 0 of 15600; reconstruction failures 0
+  sign A (tau1, -9-tau0): mismatches 12000 of 12000 sign-distinguishable (tau0 != -tau0) cases
+
+== BASE JOINT (w(B1) rows, w(B0) cols) at cap 4 (43046721 members; census 3s):
+               5         6         7         8        12
+3       34012224   3779136    419904     46656      5832
+4        3779136    419904     46656      5184       648
+5         419904     46656      5184       576        72
+6          46656      5184       576        64         8
+12          5832       648        72         8         1
+
+== P1 (cell structure) — SUB count 3779136 of 43046721, fraction 64/729; per-cell counts (rows d1, cols d0):
+              1        2       zb     zb+1     zb+2      2zb    2zb+1    2zb+2
+1         59049    59049    59049    59049    59049    59049    59049    59049
+2         59049    59049    59049    59049    59049    59049    59049    59049
+zb        59049    59049    59049    59049    59049    59049    59049    59049
+zb+1      59049    59049    59049    59049    59049    59049    59049    59049
+zb+2      59049    59049    59049    59049    59049    59049    59049    59049
+2zb       59049    59049    59049    59049    59049    59049    59049    59049
+2zb+1     59049    59049    59049    59049    59049    59049    59049    59049
+2zb+2     59049    59049    59049    59049    59049    59049    59049    59049
+P1: equal masses YES (min 59049, max 59049); equal masses on the full 8x8 grid make (d1,d0) exactly a product measure, so d1 indep d0.
+
+== P2 (substitution law): combos by mu: mu=0 456, mu=1 48, mu=2 8 (of 512); violations: 56
+  deviation structure: all mu=0: True; all tau = d1 (i.e. R2'(tau) = 2tau+d1 = 0): True; B0'-clause (w=6, dig=R2(tau)) holds on ALL of them: True
+  DEVIATION cell (d1=1, d0=2) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=1, d0=zb) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=zb+2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=1, d0=zb+1) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=zb):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=1, d0=zb+2) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=zb+1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=1, d0=2zb) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=2zb+2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=1, d0=2zb+1) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=2zb):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=1, d0=2zb+2) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=2zb+1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=2) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=zb) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=zb+2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=zb+1) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=zb):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=zb+2) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=zb+1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=2zb) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=2zb+2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=2zb+1) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=2zb):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=2, d0=2zb+2) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=2zb+1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=1):81}
+  DEVIATION cell (d1=zb, d0=1) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}
+  DEVIATION cell (d1=zb, d0=zb) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=zb+1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}
+  DEVIATION cell (d1=zb, d0=zb+1) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=zb+2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}
+  DEVIATION cell (d1=zb, d0=zb+2) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=zb):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}
+  DEVIATION cell (d1=zb, d0=2zb) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=2zb+1):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}
+  DEVIATION cell (d1=zb, d0=2zb+1) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=2zb+2):59049} T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}
+  ... plus 36 more (same structure)
+
+== P3 (cell d1=zb, d0=2=d1^2, 59049 members): matched tau=zb both-rise on all members: True (T0={(w=7,dig=1):6561, (w=7,dig=2):6561, (w=7,dig=zb):6561, (w=7,dig=zb+1):6561, (w=7,dig=zb+2):6561, (w=7,dig=2zb):6561, (w=7,dig=2zb+1):6561, (w=7,dig=2zb+2):6561, (w=8,dig=1):729, (w=8,dig=2):729, (w=8,dig=zb):729, (w=8,dig=zb+1):729, (w=8,dig=zb+2):729, (w=8,dig=2zb):729, (w=8,dig=2zb+1):729, (w=8,dig=2zb+2):729, (w=9,dig=1):61, (w=9,dig=2):61, (w=9,dig=zb):61, (w=9,dig=zb+1):91, (w=9,dig=zb+2):91, (w=9,dig=2zb):61, (w=9,dig=2zb+1):91, (w=9,dig=2zb+2):91, (w=10,dig=2):65, (w=10,dig=zb):56}, T1={(w=4,dig=1):6561, (w=4,dig=2):6561, (w=4,dig=zb):6561, (w=4,dig=zb+1):6561, (w=4,dig=zb+2):6561, (w=4,dig=2zb):6561, (w=4,dig=2zb+1):6561, (w=4,dig=2zb+2):6561, (w=5,dig=1):729, (w=5,dig=2):729, (w=5,dig=zb):729, (w=5,dig=zb+1):729, (w=5,dig=zb+2):729, (w=5,dig=2zb):729, (w=5,dig=2zb+1):729, (w=5,dig=2zb+2):729, (w=6,dig=1):81, (w=6,dig=2):81, (w=6,dig=zb):81, (w=6,dig=zb+1):81, (w=6,dig=zb+2):81, (w=6,dig=2zb):81, (w=6,dig=2zb+1):81, (w=6,dig=2zb+2):81, (w=7,dig=zb):81}); all 7 other candidates keep w(B1')=3: True; tau=zb+1 gives dig(B1')=2 on all: True (T1={(w=3,dig=2):59049})
+
+== P4 (fresh-digit genericity) per mu>=1 combo [fractions of the cell]:
+  cell (d1=1, d0=1) tau=1 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=zb+1) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=zb+1) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2zb+1) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2zb+1) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=1) tau=2 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=zb+1) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=zb+1) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2zb+1) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2zb+1) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=1) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=1) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=2) tau=zb mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=zb+2) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=zb+2) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=2zb+2) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=2zb+2) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=zb) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=zb) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb) tau=zb+1 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+1) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+1) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+2) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+2) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb) tau=zb+2 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+1) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+1) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+2) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+2) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=2zb) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=2zb) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=1) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=1) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=2) tau=2zb mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=zb+2) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=zb+2) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=2zb+2) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=2zb+2) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb) tau=2zb+1 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+1) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+1) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+2) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+2) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=2zb) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=2zb) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=zb) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=zb) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb) tau=2zb+2 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+1) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+1) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+
+== P5 control t=9 (weight 2): aggregated (w(B0'),dig(B0')) = {(w=4,dig=1):3779136}; members with w(B0')>=6: 0 (MUST be 0); all mass at (4, dig=1): True
+   control t=81 (weight 4): cells NOT keeping (w,dig) of both B0,B1 unchanged: 0 of 64
+
+== P6 (lift independence):
+  pair t=9x*1+27*0 (tau=zb) vs t=9x+81 (lift of k3): T0 tables differ on 7 cells [('1', '2zb+1'), ('2', 'zb+1'), ('zb', '2'), ('zb+1', '2zb+2'), ('zb+2', 'zb+2'), ('2zb+1', '2zb'), ('2zb+2', 'zb')]; T1 tables differ on 8 cells [('zb', '1'), ('zb', '2'), ('zb', 'zb'), ('zb', 'zb+1'), ('zb', 'zb+2'), ('zb', '2zb'), ('zb', '2zb+1'), ('zb', '2zb+2')]
+    example T0 diff, cell (d1=1, d0=2zb+1), (orig,lift) at differing entries: (w=9,dig=1):61/84, (w=9,dig=2):60/79, (w=9,dig=zb):60/84, (w=9,dig=zb+1):91/75, (w=9,dig=zb+2):92/84, (w=9,dig=2zb):61/79, (w=9,dig=2zb+1):91/84, (w=9,dig=2zb+2):91/80, (w=10,dig=1):0/2, (w=10,dig=2):61/14, (w=10,dig=zb):61/13, (w=10,dig=zb+1):0/2, (w=10,dig=zb+2):0/10, (w=10,dig=2zb):0/8, (w=10,dig=2zb+1):0/13, (w=10,dig=2zb+2):0/9, (w=11,dig=2zb):0/9
+    example T1 diff, cell (d1=zb, d0=1), (orig,lift) at differing entries: (w=7,dig=zb):81/0, (w=7,dig=zb+1):0/81
+  pair t=9x*1+27*1 (tau=zb+1) vs t=9x+27+243 (lift of k4): T0 tables differ on 7 cells [('1', '2'), ('2', '2zb+1'), ('zb', '1'), ('zb+1', '2zb'), ('zb+2', 'zb+2'), ('2zb', '2zb+2'), ('2zb+1', 'zb+1')]; T1 tables differ on 8 cells [('zb+1', '1'), ('zb+1', '2'), ('zb+1', 'zb'), ('zb+1', 'zb+1'), ('zb+1', 'zb+2'), ('zb+1', '2zb'), ('zb+1', '2zb+1'), ('zb+1', '2zb+2')]
+    example T0 diff, cell (d1=1, d0=2), (orig,lift) at differing entries: (w=9,dig=1):111/81, (w=9,dig=2):107/80, (w=9,dig=zb):110/77, (w=9,dig=zb+2):48/81, (w=9,dig=2zb):108/84, (w=9,dig=2zb+1):47/77, (w=9,dig=2zb+2):88/82, (w=10,dig=1):0/9, (w=10,dig=2):15/8, (w=10,dig=zb):0/10, (w=10,dig=zb+1):0/9, (w=10,dig=zb+2):0/11, (w=10,dig=2zb):0/8, (w=10,dig=2zb+1):10/9, (w=10,dig=2zb+2):0/9, (w=11,dig=2):0/1, (w=11,dig=zb):0/1, (w=11,dig=zb+1):0/2, (w=11,dig=zb+2):0/1, (w=11,dig=2zb):0/1, (w=11,dig=2zb+1):0/1, (w=11,dig=2zb+2):0/1, (w=12,dig=zb):0/1
+    example T1 diff, cell (d1=zb+1, d0=1), (orig,lift) at differing entries: (w=7,dig=zb):81/0, (w=7,dig=zb+1):0/81
+  P6 verdict basis: (pair,cell) combos with any table difference: 28 of 128
+
+== CAP-STABILITY RE-CENSUS at cap 3 (531441 members; census 0s):
+
+== P1 (cell structure) — SUB count 46656 of 531441, fraction 64/729; per-cell counts (rows d1, cols d0):
+              1        2       zb     zb+1     zb+2      2zb    2zb+1    2zb+2
+1           729      729      729      729      729      729      729      729
+2           729      729      729      729      729      729      729      729
+zb          729      729      729      729      729      729      729      729
+zb+1        729      729      729      729      729      729      729      729
+zb+2        729      729      729      729      729      729      729      729
+2zb         729      729      729      729      729      729      729      729
+2zb+1       729      729      729      729      729      729      729      729
+2zb+2       729      729      729      729      729      729      729      729
+P1: equal masses YES (min 729, max 729); equal masses on the full 8x8 grid make (d1,d0) exactly a product measure, so d1 indep d0.
+
+== P2 (substitution law): combos by mu: mu=0 456, mu=1 48, mu=2 8 (of 512); violations: 56
+  deviation structure: all mu=0: True; all tau = d1 (i.e. R2'(tau) = 2tau+d1 = 0): True; B0'-clause (w=6, dig=R2(tau)) holds on ALL of them: True
+  DEVIATION cell (d1=1, d0=2) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=1, d0=zb) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=zb+2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=1, d0=zb+1) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=zb):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=1, d0=zb+2) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=zb+1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=1, d0=2zb) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=2zb+2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=1, d0=2zb+1) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=2zb):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=1, d0=2zb+2) cand t=9x*0+27*1 (tau=1) mu=0: T0={(w=6,dig=2zb+1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=2) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=zb) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=zb+2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=zb+1) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=zb):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=zb+2) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=zb+1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=2zb) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=2zb+2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=2zb+1) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=2zb):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=2, d0=2zb+2) cand t=9x*0+27*2 (tau=2) mu=0: T0={(w=6,dig=2zb+1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=1):9}
+  DEVIATION cell (d1=zb, d0=1) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}
+  DEVIATION cell (d1=zb, d0=zb) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=zb+1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}
+  DEVIATION cell (d1=zb, d0=zb+1) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=zb+2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}
+  DEVIATION cell (d1=zb, d0=zb+2) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=zb):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}
+  DEVIATION cell (d1=zb, d0=2zb) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=2zb+1):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}
+  DEVIATION cell (d1=zb, d0=2zb+1) cand t=9x*1+27*0 (tau=zb) mu=0: T0={(w=6,dig=2zb+2):729} T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}
+  ... plus 36 more (same structure)
+
+== P3 (cell d1=zb, d0=2=d1^2, 729 members): matched tau=zb both-rise on all members: True (T0={(w=7,dig=1):81, (w=7,dig=2):81, (w=7,dig=zb):81, (w=7,dig=zb+1):81, (w=7,dig=zb+2):81, (w=7,dig=2zb):81, (w=7,dig=2zb+1):81, (w=7,dig=2zb+2):81, (w=8,dig=1):7, (w=8,dig=2):7, (w=8,dig=zb):7, (w=8,dig=zb+1):10, (w=8,dig=zb+2):10, (w=8,dig=2zb):7, (w=8,dig=2zb+1):10, (w=8,dig=2zb+2):10, (w=9,dig=2):8, (w=9,dig=zb):5}, T1={(w=4,dig=1):81, (w=4,dig=2):81, (w=4,dig=zb):81, (w=4,dig=zb+1):81, (w=4,dig=zb+2):81, (w=4,dig=2zb):81, (w=4,dig=2zb+1):81, (w=4,dig=2zb+2):81, (w=5,dig=1):9, (w=5,dig=2):9, (w=5,dig=zb):9, (w=5,dig=zb+1):9, (w=5,dig=zb+2):9, (w=5,dig=2zb):9, (w=5,dig=2zb+1):9, (w=5,dig=2zb+2):9, (w=6,dig=zb):9}); all 7 other candidates keep w(B1')=3: True; tau=zb+1 gives dig(B1')=2 on all: True (T1={(w=3,dig=2):729})
+
+== P4 (fresh-digit genericity) per mu>=1 combo [fractions of the cell]:
+  cell (d1=1, d0=1) tau=1 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=zb+1) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=zb+1) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2zb+1) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=1, d0=2zb+1) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=1) tau=2 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=zb+1) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=zb+1) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2zb+1) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2, d0=2zb+1) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=1) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=1) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=2) tau=zb mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=zb+2) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=zb+2) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=2zb+2) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb, d0=2zb+2) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=zb) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=zb) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb) tau=zb+1 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+1) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+1) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+2) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+1, d0=2zb+2) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb) tau=zb+2 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+1) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+1) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+2) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=zb+2) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=2zb) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=zb+2, d0=2zb) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=1) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=1) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=2) tau=2zb mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=zb+2) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=zb+2) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=2zb+2) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb, d0=2zb+2) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb) tau=2zb+1 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+1) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+1) tau=zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+2) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=zb+2) tau=2zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=2zb) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+1, d0=2zb) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=zb) tau=1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=zb) tau=zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb) tau=2zb+2 mu=2: w(B0')=7 frac 8/9, >=8 frac 1/9; w(B1')=4 frac 8/9, >=5 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+1) tau=2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+1) tau=zb+2 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+  cell (d1=2zb+2, d0=2zb+2) tau=2zb+1 mu=1: w(B0')=7 frac 8/9, >=8 frac 1/9   <-- DEVIATION
+
+== P5 control t=9 (weight 2): aggregated (w(B0'),dig(B0')) = {(w=4,dig=1):46656}; members with w(B0')>=6: 0 (MUST be 0); all mass at (4, dig=1): True
+   control t=81 (weight 4): cells NOT keeping (w,dig) of both B0,B1 unchanged: 0 of 64
+
+== P6 (lift independence):
+  pair t=9x*1+27*0 (tau=zb) vs t=9x+81 (lift of k3): T0 tables differ on 7 cells [('1', '2zb+1'), ('2', 'zb+1'), ('zb', '2'), ('zb+1', '2zb+2'), ('zb+2', 'zb+2'), ('2zb+1', '2zb'), ('2zb+2', 'zb')]; T1 tables differ on 8 cells [('zb', '1'), ('zb', '2'), ('zb', 'zb'), ('zb', 'zb+1'), ('zb', 'zb+2'), ('zb', '2zb'), ('zb', '2zb+1'), ('zb', '2zb+2')]
+    example T0 diff, cell (d1=1, d0=2zb+1), (orig,lift) at differing entries: (w=8,dig=1):7/9, (w=8,dig=2):6/9, (w=8,dig=zb):6/9, (w=8,dig=zb+1):10/8, (w=8,dig=zb+2):11/10, (w=8,dig=2zb):7/9, (w=8,dig=2zb+2):10/8, (w=9,dig=2):7/1, (w=9,dig=zb):7/1, (w=9,dig=zb+2):0/1, (w=9,dig=2zb):0/1, (w=9,dig=2zb+1):0/3, (w=9,dig=2zb+2):0/1, (w=10,dig=2zb):0/1
+    example T1 diff, cell (d1=zb, d0=1), (orig,lift) at differing entries: (w=6,dig=zb):9/0, (w=6,dig=zb+1):0/9
+  pair t=9x*1+27*1 (tau=zb+1) vs t=9x+27+243 (lift of k4): T0 tables differ on 7 cells [('1', '2'), ('2', '2zb+1'), ('zb', '1'), ('zb+1', '2zb'), ('zb+2', 'zb+2'), ('2zb', '2zb+2'), ('2zb+1', 'zb+1')]; T1 tables differ on 8 cells [('zb+1', '1'), ('zb+1', '2'), ('zb+1', 'zb'), ('zb+1', 'zb+1'), ('zb+1', 'zb+2'), ('zb+1', '2zb'), ('zb+1', '2zb+1'), ('zb+1', '2zb+2')]
+    example T0 diff, cell (d1=1, d0=2), (orig,lift) at differing entries: (w=8,dig=1):14/9, (w=8,dig=2):11/6, (w=8,dig=zb):12/13, (w=8,dig=zb+1):9/4, (w=8,dig=zb+2):6/10, (w=8,dig=2zb):13/2, (w=8,dig=2zb+1):4/14, (w=8,dig=2zb+2):10/11, (w=9,dig=zb):0/1, (w=9,dig=zb+1):0/1, (w=9,dig=zb+2):0/2, (w=9,dig=2zb):0/1, (w=9,dig=2zb+1):0/1, (w=9,dig=2zb+2):0/2, (w=10,dig=1):0/1, (w=10,dig=zb+2):0/1
+    example T1 diff, cell (d1=zb+1, d0=1), (orig,lift) at differing entries: (w=6,dig=zb):9/0, (w=6,dig=zb+1):0/9
+  P6 verdict basis: (pair,cell) combos with any table difference: 28 of 128
+
+CAP STABILITY: verdict dicts identical: True; SUB + cell fractions equal: True; base-joint cells with cap4 != 81*cap3: 16 (cap-truncation tail); (cell,key) probe tables not scaling exactly: 140 of 832
+========================================================================
+SUMMARY — SEALED CASE-K GATE p=3 (cap 4, 43046721 members, SUB 3779136):
+sign: (tau1, tau0-9) matches genuine division by Phi - t (0 mismatches / 15600); (tau1, -9-tau0) mismatches 12000/12000 distinguishable
+P1 PASS — 64 cells, counts min 59049 max 59049
+P2 FAIL — 512 (cell,tau) combos (456 mu=0 / 48 mu=1 / 8 mu=2 expected)
+P3 PASS — unique both-rise at tau=d1 on cell (zb, 2); tau=zb+1 digit law
+P4 FAIL — 2/3 vs 1/3 fresh-digit splits on all mu>=1 combos
+P5 PASS — controls t=9 (no w>=6) and t=81 (digits unchanged)
+P6 FAIL — lift tables identical
+cap stability (cap 3): verdicts identical: True; fractions equal: True
+total wall time 3s
+========================================================================
