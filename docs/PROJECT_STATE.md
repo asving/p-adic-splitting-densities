@@ -299,6 +299,10 @@ should not be conflated (this is the mistake an earlier draft of this document m
    carry conditionally); W8b (the (2,2) leaf master + axiom re-scope #7) is the named
    next lever.
    **Directive (Asvin, 2026-07-23): go for the GENERAL-n case and the complete theorem.**
+   **Directive (Asvin, 2026-07-26): keep iterating on the MATH with Codex until either a
+   COMPLETE math proof of wild uniformity exists or the current approach is shown
+   conclusively to not work. Campaign ledger: `lean/notes/MOVES_2026-07-24.md` (§B2-DEF
+   in adversarial-pass iteration; then §C composition; then the assembly notes).**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
    (+ D3/D5 at n ≥ 3; D2 = Lean vocabulary). Campaign method (per directive): attack the
    open lemmas MATH-FIRST with Codex as helper; when stuck, compute explicit small cases
