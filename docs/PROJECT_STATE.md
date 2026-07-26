@@ -328,9 +328,19 @@ should not be conflated (this is the mistake an earlier draft of this document m
    **Gate D4-n3 PASSED** (sealed pre-census, FC1–FC9 documented, the note's pin = the
    seal by two-way convergence; all predictions exact at 4 configs; partition 0
    double-counts/0 orphans over 404,128,692 boxes). Twelve gates now. Assembly plan
-   at rev 7 under structural passes (pass 6: criticals now interface-grade only; open
-   kernels each carry a named refuter). DUAL BAR in force: §B2-DEF D¹¹d Codex-CLEAN
-   (0/0) + Fable confirm running; §C Fable pass running; §D4-R Fable pass launched.
+   at rev 7 under structural passes (pass 7: 2 criticals, both interface-grade;
+   [2a] SPECIES cleared for drafting). DUAL BAR results (2026-07-26, latest):
+   **§B2-DEF DUAL-ACCEPTED** (Codex CLEAN + Fable CLEAN on identical D¹¹d text — the
+   first section through the full standard). **§C PUNCTURED by its Fable pass**: 1
+   CRITICAL — the realizability class (NA)+(HV) is incomplete, needs the independent
+   span-entry condition (SAE); certified by an empty-stratum instance predicted 62500
+   members; counting engine itself validated on a fresh species mix; + 4 gaps; repair
+   queued. **§D4-R PUNCTURED by its Fable pass**: 1 CRITICAL — factor/side selection
+   is not a function of f (two same-shape factors ⟹ equal strata for distinct
+   prefixes; the D4-n3 gate structurally blind to it); sum-form mass law survives;
+   branch-multiset repair (rev 6) in flight; plan rev 8 inherits. The dual bar is
+   catching decorrelated criticals exactly as designed — three Fable passes, two
+   fresh criticals that 6–13 Codex passes each missed, one clean confirmation.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
