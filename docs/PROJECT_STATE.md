@@ -318,6 +318,11 @@ should not be conflated (this is the mistake an earlier draft of this document m
    graded-ring campaign — `lean/notes/MOVES_LEAN_FINAL_CENSUS_2026-07-26.md` +
    `MOVES_LEAN_BLUEPRINT_2026-07-26.md` R5.3). Evidence perimeter: E…L (ten sealed
    gates).**
+   MILESTONE (2026-07-26, later): **§C ACCEPTED** (passes 12+13 consecutive CLEAN;
+   13-pass arc; the pass-13 instance trace reproduced the sealed Case-L masses through
+   the live apparatus). Certified: §A + §B1 + §B2-DEF + §C + JOINT-D1 + eleven gates.
+   REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
+   notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
    (+ D3/D5 at n ≥ 3; D2 = Lean vocabulary). Campaign method (per directive): attack the
    open lemmas MATH-FIRST with Codex as helper; when stuck, compute explicit small cases
