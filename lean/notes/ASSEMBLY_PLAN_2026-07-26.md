@@ -1,4 +1,4 @@
-# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 9)
+# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 10)
 
 *Plan architect: Fable, 2026-07-26. REV 2, same day: rebuilt against the pass-1
 structural review (ASSEMBLY_PLAN_PASS1_2026-07-26.md — 8 critical obstructions,
@@ -67,8 +67,24 @@ marked→per-f conversion site; (†-AGG) input vii = the displayed tree-shape
 normalization identity; the entrance height h_ent carried explicitly through
 INIT/COMP/ENT-AGG; b_e's MULTILINEAR branching formula displayed at RS.PRE;
 the ONE canonical CAPSTONE LEDGER (§6, CL-1…CL-12) cited at every site; the
-D4-m2 multiplicity-gate status unified (PASSED 33/33). The REV 9
-record is the final table. Directive (Asvin, 2026-07-26):
+D4-m2 multiplicity-gate status unified (PASSED 33/33). REV 10,
+2026-07-27: rebuilt against the pass-9 review (ASSEMBLY_PLAN_PASS9_2026-07-26.md —
+2 criticals, 6 concerns, verdict UNSOUND: the shallow-entry routing of the tree
+recursion, and the capstone ledger still incomplete under its own standard) around
+the SHALLOW CONVOLUTION RS.1-SH (§4): EVERY split — root, shallow, deep — passes
+through a multilinear b^split-style construction BEFORE any linear marked
+aggregation; (R_e) retyped onto the ENTRANCE-FREE exit solve β_e = K_e β_e + b_e
+with the symbol SHALLOW_{e,·} RETIRED; ι retyped as aggregating POST-SPLIT marked
+entrance masses only (its pairing μ̂-typed, never the density); the CAPSTONE
+LEDGER completed to CL-1…CL-16 (CTS-M(i), M1/M5, X.1a, M4b/M4b-T appended;
+DEG-CONS at CL-11); the [5] → [3t] conditionality edge made explicit; the
+SIB-gate extended by a DEPTH-2 subtree layer (the tree-indexed (SIB) statement
+adopted as the kernel form); the PCI parent-context-independence interface named;
+the SIBLING INDEXING convention displayed (unordered individuated members;
+shape-level multinomial factor); VP-3's (c3) gloss corrected — (c3-b) FINITE-CAP
+DETECTABILITY an explicit duty, stated as a UNIFORM per-class detection cap
+N_V(cell data) (D4R0K rev 3 §S2.6 + pass-3 finding 7); the stale (3i)
+risk-register line fixed. The REV 10 record is the final table. Directive (Asvin, 2026-07-26):
 iterate on the math with
 Codex until either a COMPLETE math proof of wild uniformity exists or the approach is shown
 conclusively to not work. This plan is the architecture for everything between the accepted
@@ -110,7 +126,7 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
   (`msW_eighth_le` fixpoint) → two-sided squeeze (U) → `montes_uniform_n2` with fixed
   (num, den) per type. This is the pattern each note below generalizes.
 
-## 1. The DAG of the remaining notes (REV 3 — eight notes, ACYCLIC; REV 7 — [1v] split into the acceptance events [1v]-COND / [1v]-FULL, cutting the pass-6 hidden cycle; REV 9 — NINTH NOTE [3t] TREE inserted before [3], the branch-to-tree assembly)
+## 1. The DAG of the remaining notes (REV 3 — eight notes, ACYCLIC; REV 7 — [1v] split into the acceptance events [1v]-COND / [1v]-FULL, cutting the pass-6 hidden cycle; REV 9 — NINTH NOTE [3t] TREE inserted before [3], the branch-to-tree assembly; REV 10 — the [5] → [3t] conditionality edge explicit)
 
 Arrows = "consumes the accepted statement of". REV 3 (pass-2 obstruction 3): the rev-2
 graph was CYCLIC — [1v] VALUE quantified over MENU's shape list while MENU's M2/M4b
@@ -154,6 +170,11 @@ REV 9 additions (the [3t] TREE edges, still ACYCLIC): §C → [3t] (C.1.5, C.3,
 the (ZC) pool structure — (SIB)'s raw material) · [1] → [3t] (T_can, the
 tree-fiber partition, D4R.1/D4R.4) · [2r] → [3t] (REL.2(a)/(b)/(d) coordinates
 for sibling clusters; REL.2(c)'s content is stated ONCE as (SIB), §4t) ·
+[5] → [3t] (NEW IN THE PROSE LIST at REV 10, pass-9 concern 1 — the diagram
+already showed it: X.3's undecided-complement clause in (TGT); the DENSITY
+form of (TGT) is conditional on X.3 (CL-4) and [3t]'s acceptance record
+carries that tag until [5] closes, while TREE-EXP/TREE-N's finite-tree mass
+identities are X.3-free) ·
 [3t] → [3] (RS.1 consumes TREE-EXP; RS.PRE's b_e consumes the multilinear
 branching formula) · [3t] → [4] (SQ.1's tree fibers via TREE-N; (†-AGG) input
 vii's normalization identity).
@@ -349,7 +370,11 @@ MARKED MASS is
 exactly a μ̂ evaluation). TYPING RULE: every entrance mass ι_{e,ε,β₀}, every
 COMP-h/COMP-Σ/COMP-AGG left side, every kernel-path mass, and every solved
 FAM series is a μ̂-object (per-branch, branch-weighted) — writing μ for any
-of them is a type error. Per-f event masses μ exist in exactly TWO places:
+of them is a type error. (REV 10 precision — pass-9 critical 1: the block
+unknown β_{e,τ}(σ′) is the ENTRANCE-FREE conditional subtree value —
+[3t]-typed, RS.PRE — and becomes μ̂-typed only upon ι-pairing; the density
+R_σ is assembled from the β's by RS.1-SH's shallow convolution, never from
+the pairing.) Per-f event masses μ exist in exactly TWO places:
 [1]'s D4R.1-EV/D4R.4-EV bounds, and [3t]'s tree fibers {f : T_can^τ(f) = T}
 (a genuine partition, T_can choice-free). The SOLE marked→per-f conversion
 is [3t]'s TREE-EXP (§4t), consumed by RS.1; no other consumer may equate a
@@ -620,10 +645,11 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   joint-over-branch loci, and the tables would not be §C-citable. CONSEQUENCE
   (binding on FAM): BRANCHING EXITS TO THE FAM LAYER — a read whose digit cell
   carries several eligible (side, ψ) continuations contributes each
-  continuation as a separate branch entry (SHALLOW/exit-vector legs; siblings
-  composed multiplicatively CONDITIONALLY on the shared prefix by [3t]'s
-  (SIB) + TREE-EXP, entering RS.PRE's b_e through its displayed MULTILINEAR
-  branching formula — REV 9), and MULTIPLICITY
+  continuation as a separate branch entry (exit-vector or shallow-convolution
+  legs; siblings composed multiplicatively CONDITIONALLY on the shared prefix
+  by [3t]'s (SIB) + TREE-EXP, entering RS.PRE's b_e^split at DEEP splits and
+  RS.1-SH's shallow convolution at ROOT/SHALLOW splits — the REV 10 ROUTING,
+  §4; never a raw sum of separately-inserted child entrances), and MULTIPLICITY
   WEIGHTS (mult, [1] D4R.1) are carried by the FAM aggregation — never inside T,
   never inside a single-branch path product. All FAM masses are μ̂-typed
   (marked-branch, §1s REV 9); [3t] alone converts them to per-f masses.
@@ -696,7 +722,8 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > 4: the active solution is independent of the junk block, so junk
   > singularity is not intrinsically an error). The realized density at each
   > prime q₀ is DEFINED through the ACTIVE subsystem alone — β_A = A·β_A +
-  > SHALLOW_A and the ι-pairing read only A-block coordinates (ii-a/b) — so no
+  > b_A (b_A the active exit vector — REV 10 renaming, SHALLOW retired) and
+  > the ι-pairing read only A-block coordinates (ii-a/b) — so no
   > junk-block quantity enters the value. det(I − K_e) = det(I − A)·det(I − D),
   > and det(I − A)(q₀) ≠ 0 is ESCAPE(E0)'s duty. The REV 7 burden is
   > AGREEMENT, not junk invertibility: at the finitely many q₀ with empty
@@ -747,8 +774,19 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > wherever used. Counts at DIFFERENT ε are NEVER added raw: distinct
   > entrance shapes carry distinct A(ε), and any aggregated count exists only
   > under (†-AGG)'s per-summand displayed normalization.
+  > **POST-SPLIT TYPING (REV 10 — pass-9 critical 1's ι face: exactly which
+  > object ι aggregates).** An entrance shape ε RECORDS its branch's full
+  > shallow context, including the (side, ψ-slot) branch-selection datum at
+  > every shallow branching cell it passed ([1] L11's s_r — genuine branch
+  > data), so entering branches are POST-SPLIT objects: at a shallow split
+  > each sibling carries its OWN ε and its OWN mark. ι_{e,ε,β₀}(h_ent) is
+  > the marked mass of these post-split entrances; ι NEVER aggregates a
+  > pre-split f-event or a joint-sibling locus, and the pairing ι_e^T β_e
+  > is the μ̂-typed MARKED-entrance total — consumed by (COMP-AGG) and the
+  > gates, NEVER a clause of the density R_σ (which is assembled by
+  > RS.1-SH's shallow convolution, §4).
   > **ENT-AGG (the derived cell aggregate — the MASS side does aggregate;
-  > h_ent displayed at REV 9):**
+  > h_ent displayed at REV 9; post-split marks per the typing above):**
   >     ι_{e,β₀} := Σ_ε Σ_{h_ent ∈ H(ε)} ι_{e,ε,β₀}(h_ent)
   > — a finite shape sum of XHD-s-summed entrance-height series (h_ent is
   > summed HERE and nowhere else); licit because μ̂-masses add over disjoint
@@ -903,8 +941,11 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > children's smaller-block type vectors, multiset-convolved, per [3t]'s
   > (SIB)/TREE-EXP; never a sum of child masses); (R_e)'s unknown β_{e,·} is
   > the COLUMN solve
-  > β_e = K_e β_e + b_e, and ι_e acts ONCE, by left pairing — "SHALLOW carries
-  > ι_e" means exactly this split, never a second insertion. CONDITIONALITY
+  > β_e = K_e β_e + b_e — ENTRANCE-FREE (REV 10: the symbol SHALLOW is
+  > RETIRED) — and ι_e acts ONCE, by left pairing; the solved scalar is the
+  > μ̂-typed MARKED-entrance total over post-split marks ((iii) POST-SPLIT),
+  > consumed by (COMP-AGG)/gates — the density is assembled ONLY by
+  > RS.1-SH's shallow convolution (§4). CONDITIONALITY
   > DISPLAYED: finiteness + substochasticity give only ρ ≤ 1 (a stochastic
   > closed class has ρ = 1). GIVEN XHD, clauses (i)–(v) with ENT-COUNT, AND
   > ESCAPE(E0) on the ACTIVE
@@ -1342,7 +1383,10 @@ the fibers pairwise DISJOINT (T_can^τ a choice-free TOTAL function of f —
 [1] L2 + VP below), the series positive and ≤ 1 (Tonelli; regroupings
 licit). typemult(T) := ⊎_{leaves ℓ ∈ T} v(ℓ), v the verdict map of VP;
 type(T) := typemult(T). The undecided complement has mass 0 by X.3
-(consumed at [4]/[5], not proved here).
+(consumed at [4]/[5], not proved here) — the DENSITY form of (TGT) is
+thereby conditional on X.3 (CL-4; the explicit [5] → [3t] edge, REV 10,
+pass-9 concern 1), while TREE-EXP/TREE-N's finite-tree mass identities
+below are X.3-free.
 
 **VP (THE VERDICT PIN — the assembly-side definition discharging
 D4R.0-K(c); cites D4R0K_DERIVATION_2026-07-26.md §S2.6, clauses
@@ -1370,9 +1414,19 @@ cluster's certified sub-multiset.
    statement means T_can^τ.
  (VP-3) PROOF DUTIES (kernel-grade, this note): (c2) EXACTLY-ONE-VERDICT —
    (τ-irr)/(τ-ns)/(τ-hen) mutually exclusive AND covering every
-   non-continuing configuration (no orphan, no double verdict); (c3)
-   compatibility — automatic given (c1)+(c2) (a cell-data function refines
-   Theorem B's partition; D4R0K (c3)); PLUS VP-SOUND — at every τ-halted
+   non-continuing configuration (no orphan, no double verdict); (c3) SPLIT
+   at REV 10 (source: D4R0K_DERIVATION rev 3, §S2.6/(c3-b) — the rev-9
+   gloss "automatic" covered only half): (c3-a) partition compatibility —
+   automatic given (c1)+(c2) (a cell-data function refines Theorem B's
+   partition); (c3-b) FINITE-CAP DETECTABILITY — an EXPLICIT DUTY, owner
+   [3t], stated UNIFORMLY (sharpened per D4R0K pass 3, finding 7: a
+   POINTWISE stopping rule is NOT enough — it makes each verdict set a
+   union of finite cylinders but gives no single detection height for a
+   verdict CLASS): each τ clause ((τ-irr)/(τ-ns)/(τ-hen)) admits a UNIFORM
+   detection cap N_V(cell data) such that the verdict class is a finite
+   union of level-N_V cylinders — the cap computable from cell data,
+   pointwise stopping alone insufficient (the finite-cap census layers
+   consume the uniform bound); PLUS VP-SOUND — at every τ-halted
    leaf, v equals the TRUE type multiset of the cluster's factors, for
    EVERY f in the leaf's cell (Montes certificate + Hensel + the (ns)
    exact identification). REFUTERS already in the roster: the PARI-oracle
@@ -1423,6 +1477,41 @@ may need its measure-level form; hence kernel-with-probe, never a citation.
 REL.2(c) is this statement's base-changed face (one owner — §3r). REFUTER:
 the SIB-gate below.
 
+**DEPTH SCOPE (decided at REV 10 — pass-9 concern 2).** (SIB) is adopted in
+its TREE-INDEXED form as displayed: each S_j is a PRESCRIBED FINITE SUBTREE
+event, and the statement applies at EVERY realized branching prefix η — so
+recursive application at descendant prefixes supplies the all-depth product
+law TREE-EXP's induction consumes, and NO separate one-step-to-tree
+induction is needed or claimed. A one-step weakening ("next outcome" in
+place of "prescribed finite subtree") would NOT suffice for TREE-EXP. The
+SIB-gate exercises the one-step face AND (REV 10) a DEPTH-2 subtree layer;
+depth ≥ 3 remains derivation-only — recorded in the gate's cannot-see line.
+
+**PCI (PARENT-CONTEXT INDEPENDENCE — the named β-substitution interface;
+REV 10, pass-9 concern 3).** Replacing μ(S_j │ Σ_c) by the state-indexed
+value β_{e_j,τ_j(c)} needs: the conditional continuation law of branch b_j
+depends ONLY on its child CTS state τ_j(c) (and its entrance height), never
+on unused parent/sibling cell data. PCI is NOT part of (SIB)'s displayed
+equation; it is a SEPARATE stated interface, supplied by REL.2(a)/(b)/(d)
+(the O_{δ_j} identification) + CTS-M(iv)-REP (single-branch representative
+independence), and CITED wherever the substitution occurs (RS.PRE's
+b_e^split; RS.1-SH). A PCI failure is adjudicated as R2's lumpability
+channel (one refinement round, then wall), never as a (SIB) failure.
+
+**SIBLING INDEXING (convention displayed at REV 10 — pass-9 concern 4).**
+The branch set {b₁, …, b_m} is an UNORDERED SET whose members are
+INDIVIDUATED by cell data (the (side, ψ-slot) selection — [1] L11's
+branch-selection index s_r); every sibling product and type convolution
+runs over MEMBER-INDEXED tuples — no ordering, hence NO symmetry factor,
+at the value/FAM level (equal-SHAPE siblings, as at F1's cell, are
+distinct members). The symmetry factor lives ONLY at the shape level: tree
+shapes T̂ carry UNORDERED child-shape multisets, C_T̂ counts realized
+value-trees directly (members individuated), and any shape-level
+factorization of C_T̂ across a branching node with child-shape
+multiplicities (m₁, …, m_k), Σ_j m_j = m, DISPLAYS the multinomial factor
+m!/(m₁!·…·m_k!) — the count of member-to-shape assignments; no hidden
+automorphism factor enters C_T̂.
+
 **TREE-EXP (the tree-mass expansion — THE assembly theorem; GIVEN (SIB)).**
 For every complete finite realizable canonical tree T (all branches
 τ-halted):
@@ -1438,7 +1527,10 @@ A(T̂) := Σ_ν A(ν); summing over realized value-trees of one tree SHAPE T̂
 gives the EXACT per-shape law
     Σ_{T of shape T̂} μ(fiber T) = C_T̂(p)·p^{−A(T̂)},
 C_T̂(p) := #{realized value-trees of shape T̂} — NO multiplicity weights:
-one f, ONE tree, so distinct-tree fibers are disjoint. At the TREE level
+one f, ONE tree, so distinct-tree fibers are disjoint. (Shape convention,
+REV 10: T̂'s children are an UNORDERED multiset; C_T̂ is counted directly
+on individuated members, the multinomial factor appearing only in displayed
+shape-level factorizations — SIBLING INDEXING above.) At the TREE level
 the shape-sum is genuinely disjoint; branch multiplicity was an artifact of
 projecting trees onto marked branches.
 **TREE-N (finite-level stability).** At any N ≥ thr(T) := the max over T's
@@ -1458,10 +1550,13 @@ weights on marks.
 
 **Kernels (derivation-grade):** (SIB) — OPEN, the note's central kernel
 (fresh-context derivation: the cross-sibling disjoint-pool display, the
-frame-triangularity risk adjudicated head-on); VP(c2) + VP-SOUND (the
-certificate case analysis); TREE-EXP/TREE-N (mechanical GIVEN (SIB) +
-C.1.5 + REL.2, but the first-split induction and leaf bookkeeping are
-written out, not waved).
+frame-triangularity risk adjudicated head-on; PCI split out so the
+derivation's burden is exactly the joint law); VP(c2) + VP(c3-b)
+FINITE-CAP DETECTABILITY (REV 10 — the per-clause UNIFORM detection cap
+N_V(cell data), D4R0K rev 3 §S2.6 + pass-3 finding 7: pointwise stopping
+insufficient) + VP-SOUND (the certificate case analysis);
+TREE-EXP/TREE-N (mechanical GIVEN (SIB) + C.1.5 + REL.2 + PCI, but the
+first-split induction and leaf bookkeeping are written out, not waved).
 
 **Sealed gate SIB-gate (EXACT — the m ≥ 2 JOINT law).** Layer 1: at F1's
 own instance (n = 4, p = 5, root cell (4,3,3,4) with branch set
@@ -1471,10 +1566,18 @@ AND their product; census the JOINT law of (branch-1 outcome, branch-2
 outcome) on the conditioned cell cylinder. PASS = exact factorization at
 every outcome pair, zero tolerance. Layer 2 (mixed shapes): one cubic cell
 R₀ = ψ·(z−r) (quadratic-descend × linear-descend siblings), same protocol,
-p = 2 (2^24 box). A mismatch surviving adjudication refutes (SIB) as
-stated — §8 R-SIB. WHAT THIS GATE CANNOT SEE: one-step joint laws only;
-multi-step subtree factorization is exercised (consistency-class) by
-RESUM-n3's discriminating layer.
+p = 2 (2^24 box). Layer 3 (DEPTH-2 SUBTREES — NEW at REV 10, pass-9
+concern 2: the gate now exercises (SIB)'s subtree quantifier, which the
+one-step layers cannot see): at F1's cell, seal each branch's conditional
+mass of a prescribed DEPTH-2 subtree event T_j (the branch's next read
+PLUS one prescribed continuation outcome below it, from the [1]/§C
+formulas) and the product; census the joint law of the (T₁, T₂) pair on
+the conditioned cell cylinder within the same 5^14 box — PASS = exact
+factorization at every sealed subtree pair, zero tolerance. A mismatch
+surviving adjudication refutes (SIB) as stated — §8 R-SIB. WHAT THIS GATE
+CANNOT SEE: one-step and depth-2 subtree events only; depth ≥ 3 /
+unbounded-tree factorization is derivation-only ((SIB)'s quantifier),
+exercised (consistency-class) by RESUM-n3's discriminating layer.
 
 ## 4. NOTE [3] RESUM — the depth resummation into rational functions of q (REV 6: K_e + ι_e consumed from CTS-M — no source-mass division; E0 on the active block; STATE-probe-2 blocking [2b]+[3]. REV 7: G via XHD; the NINE-input ledger; ι^T(I−K)^{−1}b orientation; RS.1 heights summed once via COMP-h→COMP-Σ)
 
@@ -1483,15 +1586,18 @@ Unknowns β_{e,τ} : {types of degree e} → ℚ(q), indexed by cluster size e �
 type τ ∈ 𝒯_n (MENU M2's finite p-independent list — rev 1's scalar-per-e form was
 UNPROVED closure, asserted against risk R2; closure is now the theorem RS.0):
 
-  (R_e)   β_{e,·} = q^{−e(e−1)/2} · M_e(q) β_{e,·} + SHALLOW_{e,·}      (e = 1, …, n)
+  (R_e)   β_{e,·} = q^{−e(e−1)/2} · M_e(q) β_{e,·} + b_{e,·}      (e = 1, …, n)
 
 with M_e(q) the SAME-SIZE TRANSITION MATRIX (rows/columns = CTS states τ = (s, α);
 entries assembled per RS.PRE from CTS table entries × XHD one-step height sums
-— REV 7);
-SHALLOW_{e,·} collects deciding/branching
-root reads (coefficients: MENU shapes × [1v] counts × [2r]-certified mixed legs
-β_m(q^δ), m < e) AND carries the CTS-M(iii) initial vectors ι_e — the block-entry
-masses that tie every solved series to realized cylinders (REV 6).
+— REV 7); b_{e,·} the EXIT VECTOR (RS.PRE: b_e = b_e^term + b_e^split —
+terminal verdicts plus the multilinear strictly-smaller-block convolution,
+carrying the [2r]-certified mixed legs β_m(q^δ), m < e). RETYPED at REV 10
+(pass-9 critical 1): the rev-6/9 term SHALLOW_{e,·} is RETIRED — β_{e,τ} is
+the ENTRANCE-FREE conditional subtree value (given ONE branch entering state
+τ), so (R_e) carries NO ι; the entrance masses ι_e appear ONLY in the outer
+marked pairing (μ̂-typed, CTS-M(vi)/(iii) POST-SPLIT), and the shallow layer
+enters the DENSITY only through RS.1-SH's shallow convolution below.
 Triangular in e; within e the block solve is
 (I − q^{−e(e−1)/2}M_e)^{−1}, licit by RS.3. The n = 2 instance is the 1×1 case (W6's
 geometric series, denominator q²+q+1; `msW_eighth_le` its p = 2 inequality shadow).
@@ -1517,29 +1623,32 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
         T_{m,o}^{α,β}(q) · G^{α,β}_{m,o}(q)   — NO source-mass division,
   the conditional mass of landing given the source cylinder from one
   representative (well-defined across representatives by CTS-M(iv)-REP); ι_e :=
-  the CTS-M(iii) initial vector from the SHALLOW layer — at REV 8 the ENT-AGG
-  aggregate of the per-entrance-shape masses ι_{e,ε,β₀} (aggregation licit by
-  (iv)-REP; components in ℚ(q) by INIT-RAT, which RS.2 cites; per-branch
-  entrances, branch-weighted per [1]'s consumer duty); G^{α,β}_{m,o}(q) the
+  the CTS-M(iii) initial vector of the shallow entrance layer — at REV 8 the
+  ENT-AGG aggregate of the per-entrance-shape masses ι_{e,ε,β₀} (aggregation
+  licit by (iv)-REP; components in ℚ(q) by INIT-RAT, which RS.2 cites;
+  per-branch POST-SPLIT entrances, branch-weighted per [1]'s consumer duty
+  and CTS-M(iii) POST-SPLIT — REV 10); G^{α,β}_{m,o}(q) the
   XHD one-step resummed height mass (REV 7 — the XHD-w fixed-height monomials g
   summed over the XHD-d one-step exact domain; affine exponents, positive
   weights — M4a; source-and-target-indexed per pass-6 concern 1) —
   fresh-volume costs, height sums,
   multiplicities and the displayed exterior factor ALL INSIDE.
   Then q^{−e(e−1)/2}M_e(q) := K_e(q) (the display (R_e) is unchanged; the
-  exterior factor is notation, not an extra cost), and SHALLOW_{e,·} carries ι_e
-  so that every solved series is ι-weighted (CTS-M(vi): no path product is a
-  mass without its initial factor). ORIENTATION DISPLAY (REV 7, pass-6 fresh
-  sweep 2): the solved scalar block output is
+  exterior factor is notation, not an extra cost); b_e carries NO entrance
+  data, and every MARKED series is ι-weighted at the outer pairing alone
+  (CTS-M(vi): no path product is a mass without its initial factor; the
+  DENSITY is RS.1-SH's object — REV 10). ORIENTATION DISPLAY (REV 7, pass-6
+  fresh sweep 2): the solved scalar block output is
       ι_e^T (I − K_e)^{−1} b_e,
   with ι_e the entrance COLUMN vector acting once on the LEFT via its transpose
   (REV 8 — pass-7 fresh sweep: ONE convention; "row" is retired) and b_e the
   named EXIT VECTOR — the per-state one-step terminal/deciding conditional mass
   (CTS-M(iv)-PART's absorbing columns), weighted where applicable by certified
   downstream values ([2r] mixed legs β_m(q^δ)); (R_e)'s unknown β_{e,·} is the
-  COLUMN solve β_e = K_e β_e + b_e, ι_e pairing once on the left — "SHALLOW
-  carries ι_e" means exactly this split, never a second insertion of ι into
-  the matrix or into b_e.
+  COLUMN solve β_e = K_e β_e + b_e, ι_e pairing once on the left — the pairing's
+  output is the μ̂-typed MARKED-entrance total over post-split marks, consumed
+  by (COMP-AGG) and the gates, NEVER the density (REV 10: SHALLOW retired;
+  RS.1-SH assembles R_σ); ι is never inserted into the matrix or into b_e.
   **THE MULTILINEAR EXIT FORMULA (NEW at REV 9 — pass-8 concern 5: how a
   branching cell contributes several child types, displayed).** Per state
   τ and type argument σ′:
@@ -1551,11 +1660,25 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   — the MULTISET CONVOLUTION over the children's types, the product over
   siblings licensed by [3t]'s (SIB) conditionally on the branching cell,
   each child's factor the base-changed [2r]/[3t] value β_{e_j,·}(q^{δ_j}).
-  WELL-FOUNDEDNESS DISPLAYED: a branching outcome has m ≥ 2 children with
-  positive sizes summing ≤ e, so EVERY e_j < e — b_e is multilinear in
-  STRICTLY-SMALLER-block solutions only, (R_e) stays LINEAR within block e
-  (the same-size direction is single-child by the same degree identity),
-  and the triangular induction in e survives. TYPING (REV 9): β_{e,τ}(σ′)
+  The substitution of the state-indexed β_{e_j,τ_j(o)} for the subtree mass
+  μ(S_j │ Σ_c) CITES the named interface PCI ([3t], REV 10 — parent-context
+  independence from REL.2(a)/(b)/(d) + CTS-M(iv)-REP), and the child index j
+  runs over the branch set's INDIVIDUATED members ([3t] SIBLING INDEXING —
+  member-indexed tuples, no order, no symmetry factor here).
+  WELL-FOUNDEDNESS DISPLAYED — tied to the CTS outcome roster at REV 10
+  (pass-9 concern 5) by the named law
+  > **DEG-CONS (per-outcome degree conservation — DERIVABLE, not a new
+  > kernel).** For EVERY branching outcome o in the CTS outcome roster (a
+  > cell's branch set — CTS-S/[2a]): m ≥ 2 children, each child's cluster
+  > size e_j ≥ 1, and Σ_j e_j ≤ e — per member, from M1's degree identity
+  > applied to the cell's residual-factor degrees. The per-outcome check
+  > against the FULL roster is a DISPLAY DUTY of the [1v] table build (an
+  > analogy to "the same degree identity" is NOT the check); ledgered at
+  > CL-11.
+  Hence EVERY e_j < e: b_e is multilinear in STRICTLY-SMALLER-block
+  solutions only, (R_e) stays LINEAR within block e (the same-size
+  direction is single-child, by DEG-CONS), and the triangular induction in
+  e survives. TYPING (REV 9): β_{e,τ}(σ′)
   is the CONDITIONAL PER-f value — the probability, given ONE branch
   entering state τ, that its full T_can^τ-subtree completes with type
   multiset σ′ (a [3t]/TREE-EXP object, NOT a marked-branch total); the
@@ -1624,9 +1747,40 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   b_e^split (RS.PRE), and the per-f meaning enters ONLY through TREE-EXP's
   fiber expansion — D4R.1-SUM/D4R.4-SUM quantities are consumed as marked
   sums, never as f-event masses (mult ≡ 1 instances displayed where
-  claimed). RS.1's statement is thereby the identity: the σ-component of
-  the (R_e) solve — with b_e's multilinear exit formula — EQUALS (TGT)'s
-  tree-fiber series, GIVEN the [3t] package + the K_e ledger below.
+  claimed). RS.1's statement is the displayed TWO-CLAUSE identity (REV 10 —
+  pass-9 critical 1: the shallow case is its OWN clause, the recursion's
+  base at entrance cells; GIVEN the [3t] package + the K_e ledger below):
+      (RS.1-DEEP) per block (e, τ): β_{e,τ}(σ′) = ((I − K_e)^{−1} b_e)_τ(σ′)
+      — the ENTRANCE-FREE conditional subtree value (RS.PRE typing), with
+      b_e = b_e^term + b_e^split consuming every DEEP (in-block) split
+      multilinearly;
+      (RS.1-SH) THE SHALLOW CONVOLUTION (the base clause):
+      R_σ = Σ_{Ŝ} W_Ŝ(q) · Σ_{σ = σ₀(Ŝ) ⊎ σ₁ ⊎ … ⊎ σ_{k(Ŝ)}}
+              ∏_{i=1}^{k(Ŝ)} β_{e_i(Ŝ), τ_i(Ŝ)}(σ_i)(q^{δ_i})
+      — Ŝ running over the finite-up-to-heights family of SHALLOW TREE
+      SHAPES (the [1] root cascade from the empty prefix to every block
+      entrance and every shallow τ-halt, splits included; finiteness from
+      [2a]), W_Ŝ ∈ ℚ(q) the resummed shallow tree mass (C.1.5 node volumes
+      × CTS/[1] counts × XHD-s height sums, with (SIB)'s COUNT face across
+      shallow splits), σ₀(Ŝ) the verdict multiset of Ŝ's shallow τ-halted
+      leaves, and the product over Ŝ's k(Ŝ) block entrances licensed by
+      (SIB) at EVERY shallow branching cell of Ŝ — PCI substituting
+      β_{e_i,τ_i} for each subtree mass, [2r]'s type dictionary applied at
+      δ_i > 1. The ROOT read's own factorization (the L3 Gauss/necklace
+      layer) is RS.1-SH's outermost instance, its sibling law the ACCEPTED
+      depth-0 JOINT-D1;
+      (RS.1-MARKED) the pairing ι_e^T (I − K_e)^{−1} b_e is the μ̂-typed
+      MARKED-entrance total (post-split marks, CTS-M(iii) POST-SPLIT) —
+      the object (COMP-AGG) and the gates consume; it is NEVER summed
+      into R_σ.
+  ROUTING (prove-on-display, REV 10): every split of T_can^τ(f) is consumed
+  at EXACTLY ONE multilinear site — DEEP splits at b_e^split (RS.1-DEEP),
+  ROOT/SHALLOW splits at RS.1-SH's convolution — and BOTH sites act BEFORE
+  any linear marked aggregation (ENT-AGG/ι-pairing applies only to
+  post-split marks); no split is ever represented as a sum of
+  separately-inserted child entrances — the pass-9 failure mode
+  ι_{e₁}^T β_{e₁} + ι_{e₂}^T β_{e₂} is excluded by construction, not by
+  cancellation.
   *Sketch (REV 5 — `unroll` then `resum` through the CTS):* Theorem C gives
   mass(η) = ∏ vol(E_fresh) per branch; the tree-fiber partition + the per-branch
   chain give exhaustion (the pass-1 obstruction-2 aggregation gap is
@@ -1660,7 +1814,11 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   regular path
   language of the finite CTS automaton — a depth-k chain = the k-fold matrix
   product (RS.0), and the geometric FIXPOINT (I − K_e)^{−1} is the block solve, not
-  a new sum; positivity licenses every regrouping (Tonelli).
+  a new sum; positivity licenses every regrouping (Tonelli). SKETCH SCOPE
+  (REV 10): the regrouping above establishes the MARKED clause
+  (RS.1-MARKED); the DENSITY clauses RS.1-DEEP/RS.1-SH regroup the SAME
+  per-node TREE-EXP expansions PER SHALLOW SHAPE Ŝ — the tree product cut
+  at the block boundary — never through ι.
 - **RS.2 (coefficient p-independence).** Every coefficient of (R_e) is one fixed
   element of ℚ(q): numerators from CTS-M(iv)-POLY (polynomial table entries at
   degree ≤ W_loc(m), cell sizes at degree ≤ W_state(s)), the CTS-M(iii)
@@ -1760,7 +1918,9 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
    conditional-on-ancestors chain via C.1.5 stepwise (NO independence assumption),
    base-changed legs entering ONLY through [2r] REL.2, and the TREE-EXP
    consumption (REV 9): the multilinear reassembly at branching cells via
-   b_e^split — (SIB) and TREE-EXP consumed from [3t], never proved here.
+   b_e^split (DEEP splits) and RS.1-SH's shallow convolution (ROOT/SHALLOW
+   splits — REV 10, with PCI at every β-substitution) — (SIB) and TREE-EXP
+   consumed from [3t], never proved here.
 2. **The K_e + ι_e assembly**: RS.PRE's entries per CTS-M(iv) (T·G, NO
    source-mass division; G = the XHD one-step sums, REV 7) and the initial
    vector per CTS-M(iii), the ι^T(I−K)^{−1}b orientation displayed,
@@ -2021,7 +2181,8 @@ hypothesis and ESCAPE supplying Neumann convergence.
   p^{nN} = Σ_τ decided_τ(N) + undec(N), apply SQ.2 to every τ ≠ σ, RS.4's checksum,
   and X.2's envelope.
 - **SQ.4 = THEOREM U (conditional qualifier INLINE at REV 4, pass-3 concern 5;
-  the ledger made CANONICAL and COMPLETE at REV 9, pass-8 critical 3).**
+  the ledger made CANONICAL at REV 9, pass-8 critical 3; COMPLETED at REV 10,
+  pass-9 critical 2 — CL-13…CL-16 appended, CL-11 extended, numbers stable).**
   ρ_σ := lim decided_σ(N)/p^{nN} exists and equals R_σ(p) for every p; R_σ ∈ ℚ(q) is
   the p-independent solution of (R_e); Σ_σ R_σ = 1. Assembled from SQ.2 + SQ.3 +
   X.2 — hence CONDITIONAL on THE CAPSTONE LEDGER below, which is THE ONE
@@ -2046,14 +2207,34 @@ hypothesis and ESCAPE supplying Neumann convergence.
   > CL-8 REL.1 + REL.2(a)/(b)/(d) + REL.3 — the relative measure statements;
   >   (c)'s content lives at CL-10's (SIB) (§3r).
   > CL-9 RS.0 (α) lumpability consumed + (β) height-shift bisimulation (§4).
-  > CL-10 the [3t] TREE-ASSEMBLY package (§4t): (SIB); TREE-EXP + TREE-N;
-  >   VP = the D4R.0-K(c) pin with duties (c2) exactly-one-verdict and
-  >   VP-SOUND. Without CL-10 the solve computes marked-branch totals, not
-  >   densities — pass-8 critical 1.
-  > CL-11 SQ.2's no-equal-e-feedback check (§6 kernel).
+  > CL-10 the [3t] TREE-ASSEMBLY package (§4t): (SIB) with its PCI
+  >   interface; TREE-EXP + TREE-N; VP = the D4R.0-K(c) pin with duties
+  >   (c2) exactly-one-verdict, (c3-b) FINITE-CAP DETECTABILITY (the
+  >   per-clause UNIFORM detection cap N_V(cell data) — REV 10, D4R0K
+  >   rev 3 §S2.6 + pass-3 finding 7), and VP-SOUND. Without CL-10 the
+  >   solve computes marked-branch totals, not densities — pass-8
+  >   critical 1.
+  > CL-11 SQ.2's no-equal-e-feedback check (§6 kernel) + DEG-CONS, the
+  >   per-outcome degree-conservation law licensing b_e^split's
+  >   strict-smaller-block well-foundedness (RS.PRE — derivable from M1;
+  >   the full-roster per-outcome check a display duty of the [1v] table
+  >   build; REV 10, pass-9 concern 5).
   > CL-12 perimeter conditionality: §C's acceptance spiral (rev 12+) and its
   >   QUEUED (SAE) repair; kernel D4R.0-K (L1 totality + L5 digit-cell
   >   exhaustiveness); D4R0K's O3 base-digit-section declaration (§0, §2).
+  > CL-13 CTS-M(i) SYNTAX (REV 10, pass-9 critical 2) — the ONE fixed
+  >   finite p-independent state set with DISPLAYED cell predicates and
+  >   globally compatible target-cell maps; without it no path product or
+  >   kernel index type-checks (§2v).
+  > CL-14 [2a] M1 + M5 (REV 10) — the finite exhaustive branch-shape
+  >   catalogue with the corrected degree bounds; every "over all
+  >   species/shapes" quantifier (Out(s), Theorem VAL, the entrance-shape
+  >   family {ε}, 𝒯_n's finiteness) reads from it (§3).
+  > CL-15 X.1a (REV 10) — the per-species GMN index dictionary; X.2's
+  >   constants and the depth ⟹ disc envelope consume it (§5).
+  > CL-16 M4b narrowed height-translation constancy + M4b-T equivariance
+  >   incl. the π_v clause (REV 10) — the count-closure interface at fixed
+  >   template, beyond the XHD portions already carried at CL-5 (§3).
   Until each CL-item closes, the capstone statement and its acceptance record
   carry these tags verbatim (§7's acceptance-record rule). State
   with the honest normalization sentence (monic-box density; projective/palindromy
@@ -2115,7 +2296,9 @@ Per note, in order; no step may be skipped, no note trusted early:
    symbolic closed-class layer, whose finding refutes E0 itself at that p).
    Gate roster at REV 9: D4-n3 + D4-m2 (**PASSED 33/33** — the sealed
    mult_P̂ ≥ 2 instance testing D4R.1-SUM vs -EV at the F1 cell; §2's status
-   update, one status governing) + the SIB-gate (NEW at REV 9 — the m ≥ 2
+   update, one status governing) + the SIB-gate (NEW at REV 9; THREE layers
+   at REV 10 — the two one-step layers + the depth-2 subtree layer, pass-9
+   concern 2 — the m ≥ 2
    JOINT sibling law, [3t] §4t; blocks [3t]'s acceptance), VALUE-Fq (24 q-points,
    + the CTS-M
    TABLE layer: displayed cell predicates, cell sizes at W_state bounds, full T
@@ -2136,7 +2319,8 @@ Per note, in order; no step may be skipped, no note trusted early:
    `verification/*_SEALED_PREDICTIONS_<date>.md`.
    ACCEPTANCE-RECORD RULE (REV 4, pass-3 concern 5; made CANONICAL at REV 9,
    pass-8 critical 3): every acceptance record names its note's open
-   conditions INLINE, citing THE CAPSTONE LEDGER (§6 SQ.4, CL-1…CL-12) by
+   conditions INLINE, citing THE CAPSTONE LEDGER (§6 SQ.4, CL-1…CL-16 —
+   completed at REV 10, pass-9 critical 2) by
    CL-number — the ONE canonical list; partial lists elsewhere (RS.PRE's
    nine inputs = CL-5) are pointers into it, and no record may substitute a
    partial list for the CL citation. RS.4, [3t], [3], [4], and the capstone
@@ -2157,7 +2341,10 @@ Per note, in order; no step may be skipped, no note trusted early:
 list):** the base-change substitution q ↦ q^δ does not threaten rationality (the
 missing piece was the MEASURE statement, now note [2r]); unbounded deep residual
 degrees are NOT the MENU obstruction (M1's corrected degree identity bounds cumulative
-residue degree by n). Also surviving intact: D4R.2's pool bound (3i) and the entire §0
+residue degree by n). Also surviving intact: D4R.2's pool bound in its M-CARRYING
+form D4R.2′ (C_P̂ ≤ M(P̂)·p^{W(P̂)} — LITERAL coefficient-one (3i) is WITHDRAWN,
+REV 8/§2; this line said "(3i)" through rev 9 — a STALE statement fixed at REV 10
+per pass-9 concern 6, and it may not enter any acceptance record) and the entire §0
 certified perimeter.
 
 - **R1 — the linked value count is not universal in q (the theorem-killer; POTENTIAL
@@ -2297,9 +2484,11 @@ duty + M4b-T equivariance; REV 7 — delivers the XHD package, whose acceptance 
 the [1v]-FULL discharge; acceptance behind STATE-probe-2). [2r] REL: 1.5–2 units
 (the re-scoping pass + the REL.2 obligations, (c) re-homed to [3t]'s (SIB) +
 one gate). [3t] TREE (NEW at REV 9): 2 units — the (SIB) fresh-context
-derivation (the campaign's deepest new §C-side kernel), VP's certificate case
-analysis + VP-SOUND, TREE-EXP/TREE-N's first-split induction, and the
-SIB-gate; draftable right after [1], acceptance after [2r]. [5] EXHAUST: 2 units
+derivation (the campaign's deepest new §C-side kernel; PCI split out), VP's
+certificate case analysis + the (c3-b) uniform detection caps + VP-SOUND,
+TREE-EXP/TREE-N's first-split induction, and the three-layer SIB-gate
+(REV 10); draftable right after [1], acceptance after [2r] (the density
+form of (TGT) tagged CL-4/X.3 until [5] closes). [5] EXHAUST: 2 units
 (three kernels; X.1b is OPEN — WEIGHT-CHARGE may resist; X.2's displayed
 dichotomy). [3] RESUM: 4–5 units (the K_e assembly/RS.0/RS.1 + ESCAPE(E0) +
 STATE-probe-2 + ESCAPE-probe + RESUM-n3). [4] SQUEEZE: 2 units (incl. SQ.0's
@@ -2829,3 +3018,47 @@ structural wall of the tree assembly — probed by the SIB-gate at F1's cell
 none closed. The critical path is unchanged ([1] → [2a] → [1v]-COND → [2b]),
 with [3t]'s (SIB) derivation now the deepest OPEN mathematics on the
 assembly side — front-loadable, since it needs only §C + [1].
+
+---
+
+## REV 10 RECORD (2026-07-27) — response to the pass-9 structural review + the D4R0K rev-3/pass-3 VP inheritance
+
+*(ASSEMBLY_PLAN_PASS9_2026-07-26.md: 2 critical obstructions, 6 concerns,
+verdict UNSOUND — the verifier's closing: the first-split mechanism is SOUND
+given the stated all-depth (SIB); the unsoundness is the missing shallow-entry
+realization of that recursion and the still-incomplete conditionality ledger.
+Pass-8 dispositions re-judged: C2/K1–K4 GENUINE, C1/C3/K5 PARTIAL — all three
+redone here. Second input stream: D4R0K_DERIVATION rev 3 §S2.6 + its pass-3
+(Codex, SOUND) finding 7 — the VP-3 (c3) alignment. C = critical, K = concern,
+V = VP inheritance.)*
+
+| Finding | Verdict on rev 9 | REV 10 disposition |
+|---|---|---|
+| C1 shallow-entry routing incomplete: β/ι/SHALLOW mutually inconsistent; no root/shallow analogue of b_e^split; RS.1's solve = tree-series identity unestablished | the FAM solve still computes marked totals at the entrance boundary | (R_e) RETYPED entrance-free — β_e = K_e β_e + b_e, the symbol SHALLOW_{e,·} RETIRED plan-wide (§4, CTS-M(ii-c)/(vi)); RS.1 restated as the displayed TWO-CLAUSE identity RS.1-DEEP + RS.1-SH with RS.1-MARKED separated (§4): RS.1-SH is THE SHALLOW CONVOLUTION — R_σ = Σ_Ŝ W_Ŝ · (multiset convolution of the entered blocks' β values over shallow tree shapes Ŝ), the root/shallow instance of the SAME first-split mechanism, the L3 root layer its outermost case (JOINT-D1 = depth 0); ι retyped as aggregating POST-SPLIT marked entrance masses ONLY (CTS-M(iii) POST-SPLIT — ε records the branch-selection data s_r, each sibling its own ε and mark; the pairing ι^T β is μ̂-typed, consumed by (COMP-AGG)/gates, never the density); the ROUTING statement displays that EVERY split is consumed at exactly ONE multilinear site BEFORE any linear aggregation — the pass-9 failure mode ι_{e₁}^Tβ_{e₁} + ι_{e₂}^Tβ_{e₂} excluded by construction (§4, §2v, §1s precision note) |
+| C2 capstone ledger incomplete under its own standard (CTS-M(i), M1/M5, X.1a, M4b/M4b-T absent) | acceptance records could under-tag | CL-13 CTS-M(i), CL-14 M1+M5, CL-15 X.1a, CL-16 M4b/M4b-T APPENDED (numbers stable — appending, not renumbering, keeps every existing CL citation intact); CL-11 extended with DEG-CONS; the §7 rule and SQ.4 header cite CL-1…CL-16 (§6, §7) |
+| K1 prose edge list omits [5] → [3t] | conditionality edge implicit | The edge added to the prose list (§1) with its precise content: (TGT)'s DENSITY form is conditional on X.3 (CL-4) — tagged at (TGT) itself (§4t) — while TREE-EXP/TREE-N's finite-tree mass identities are X.3-free; [3t]'s acceptance record carries the tag until [5] closes |
+| K2 SIB-gate exercises only one-step laws while the kernel is all-depth | quantified depth untested | DEPTH SCOPE decided and displayed (§4t): (SIB) is ADOPTED in its tree-indexed form (S_j = prescribed finite subtree events at every realized branching prefix; recursive application supplies the all-depth product law — no separate one-step-to-tree induction claimed; a one-step weakening would NOT suffice); the SIB-gate EXTENDED by Layer 3 — depth-2 subtree events at F1's cell, exact factorization, zero tolerance (§4t, §7 roster); cannot-see line updated (depth ≥ 3 derivation-only) |
+| K3 the β-substitution needs a parent-context-independence interface | unstated burden at μ(S_j│Σ_c) → β_{e_j,τ_j} | PCI NAMED and stated (§4t): the continuation law depends only on the child CTS state (and entrance height) — supplied by REL.2(a)/(b)/(d) + CTS-M(iv)-REP, NOT part of (SIB)'s display, CITED at b_e^split and RS.1-SH; a PCI failure adjudicated as R2's lumpability channel, never as a (SIB) failure |
+| K4 sibling indexing/automorphism convention unspecified for equal-shape siblings and C_T̂ | hidden symmetry factors possible | SIBLING INDEXING displayed (§4t): branch sets = UNORDERED sets of members INDIVIDUATED by cell data ([1] L11's s_r); all products/convolutions member-indexed — no order, no symmetry factor at the value/FAM level (b_e^split cites this); tree shapes carry UNORDERED child multisets, C_T̂ counted directly on individuated members, the multinomial m!/(m₁!·…·m_k!) DISPLAYED at any shape-level factorization (TREE-EXP note) |
+| K5 strict-smaller-block induction rests on an asserted degree law | roster tie missing | DEG-CONS named and stated at RS.PRE (§4): for EVERY branching outcome in the CTS outcome roster — m ≥ 2, e_j ≥ 1, Σ_j e_j ≤ e, per member from M1's degree identity; status DERIVABLE (not a new kernel), the full-roster per-outcome check a DISPLAY DUTY of the [1v] table build; ledgered at CL-11 |
+| K6 risk register still says literal (3i) survives | stale acceptance-record input | §8 preamble line FIXED: the surviving bound is the M-CARRYING D4R.2′; literal (3i) recorded WITHDRAWN, and the stale line barred from acceptance records (§8) |
+| V VP-3's (c3) glossed "automatic" while only the partition half is; pointwise stopping insufficient | (c3-b) missing as a duty | VP-3 SPLIT (§4t): (c3-a) partition compatibility — automatic given (c1)+(c2); (c3-b) FINITE-CAP DETECTABILITY — an EXPLICIT [3t]-owned duty stated UNIFORMLY: each τ clause admits a uniform detection cap N_V(cell data) with the verdict class a finite union of level-N_V cylinders — pointwise stopping alone insufficient (D4R0K rev 3 §S2.6; pass-3 finding 7); added to CL-10 and the [3t] kernels list |
+
+**DAG change at REV 10:** none at the node level; the [5] → [3t]
+conditionality edge is now in the prose list (the §1 diagram already showed
+it); the graph remains ACYCLIC and the acceptance order is unchanged.
+
+**Open kernels after REV 10 (delta from REV 9):** NONE added, none closed.
+(SIB) carries its depth-scope note and the three-layer gate; PCI and DEG-CONS
+are named interfaces/duties DERIVABLE from existing CL items (REL.2 +
+(iv)-REP; M1) with stated refuter channels (PCI → STATE-probe-2/R2's channel;
+DEG-CONS → the [1v] table display + MENU-n3); VP gains the explicit (c3-b)
+uniform-cap duty inside the existing VP kernel (CL-10).
+
+**Wall status after REV 10:** R1, R2, R4, R9, R-SIB unchanged — no wall
+demonstrated, none closed. The critical path is unchanged
+([1] → [2a] → [1v]-COND → [2b]); [3t]'s (SIB) derivation remains the deepest
+open assembly-side mathematics, now with PCI split out (so the derivation's
+burden is exactly the joint law), the depth-2 gate layer, and the shallow
+convolution RS.1-SH giving the recursion its previously missing entrance-side
+realization.
