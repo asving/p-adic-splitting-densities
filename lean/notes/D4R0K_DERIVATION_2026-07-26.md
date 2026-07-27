@@ -38,6 +38,8 @@ coordinator's retarget directive (recorded in S0).
 
 ## S6. REV 2 RECORD
 
+## S7. REV 3 RECORD
+
 ---
 *(S0 appended.)*
 
@@ -81,9 +83,10 @@ the refutation instance.
   multisets + no-side status. The terminal-verdict refinement is NOT
   derived — the sources underdetermine the verdict function — and is
   split off as the explicit OPEN interface obligation D4R.0-K(c)
-  (S2.6; route (b) of the rev-2 charge). Conditional on accepted
-  §B2-DEF + §C only (L4's common frame becomes unconditional once
-  Theorem A closes L1 — S1.5).
+  (S2.6; route (b) of the rev-2 charge; at REV 3 tightened and aligned
+  to the assembly plan's VP pin — the pin supplies the data, note [3t]
+  owes the proofs). Conditional on accepted §B2-DEF + §C only (L4's
+  common frame becomes unconditional once Theorem A closes L1 — S1.5).
 - What Theorem B does NOT restore: §D4-R's linear-run consumers (L2's
   unique run, L6's fiber form, D4R.1's disjoint union) still need the
   note-side rewiring recorded in S2.7 and O2. That is repair work on
@@ -519,7 +522,12 @@ S2.2's ROOT INSTANCE) with state cylinder Σ_k in the common frame
 (L4 + Theorem A). VALUES [REV 2 — pass-1 finding 3, route (b)]: 𝒟's
 values are the STRUCTURAL data only — case R: polygon + per-side digit
 tuples + factor multisets (branch species and canonical lifts
-attached); case T: the no-side STATUS (ns, μ). NO general
+attached); case T: the no-side STATUS (ns, μ); at the EMPTY prefix
+(Σ_{−1} = T(∅,⊤) = the full box) the value is the ROOT datum 𝒟_root of
+case R0 below — the level-0 factor multiset with the per-opened-track
+T/R data, componentwise [REV 3 — pass-2 gap 6: the root case is now an
+explicit tree root, no longer conflated with the one-cluster instance].
+NO general
 terminal-verdict function is defined or claimed in this theorem; the
 verdict refinement of L5's clause (ii) is the OPEN interface
 obligation D4R.0-K(c), stated exactly at S2.6. With that scope:
@@ -527,19 +535,42 @@ obligation D4R.0-K(c), stated exactly at S2.6. With that scope:
      is defined at EVERY f ∈ Σ_k — no orphan.
  (ii) EXCLUSIVITY: distinct outcome data have disjoint loci (fibers of
      one function), so the fibers PARTITION Σ_k; every emitted branch
-     satisfies §C realizability ((NA)/(HV)) — the joint read emits only
-     grammatical continuations.
+     satisfies §C realizability in the FULL rev-12 three-condition
+     sense (NA)/(HV)/(SAE) [REV 3 — pass-2 gap 4: (SAE) now named,
+     derived, and stated in the interface], so appending any emitted
+     branch to η is TRANSITION-ADMISSIBLE (§C rev 13, cite [c-sae]) —
+     the joint read emits only grammatical continuations.
  (iii) RESOLUTION: 𝒟 is measurable w.r.t. the window digit filtration:
      its fibers are countable nested intersections of finite digit
      cylinders, and at every finite height cap H the capped outcome
      (window digits at heights < H) induces a partition of Σ_k into
-     FINITE digit cylinders refining to 𝒟 as H → ∞ — the census format
-     (FC8/FC9 are its instances at the gate's caps), with the deeper
-     data appearing as capped (z)-lumps, none orphaned.
+     finite PURE digit cylinders, every capped OUTCOME CLASS (valuation
+     lump, verdict cell) a FINITE UNION of these [REV 3 — pass-2
+     wording gap: an exact capped valuation is a union over its
+     possible nonzero digit values, not one pure cylinder], refining
+     to 𝒟 as H → ∞ — the census format (FC8/FC9 are its instances at
+     the gate's caps, in the union-of-cylinders reading), with the
+     deeper data appearing as capped (z)-lumps, none orphaned.
 
 *Proof.*
 
-(i) TOTALITY — the case tree, every leaf displayed.
+(i) TOTALITY — the case tree, every leaf displayed; ROOT FIRST [REV 3
+ — pass-2 gap 6].
+ R0. EMPTY PREFIX (Σ_{−1} = T(∅,⊤) = the full box): 𝒟_root(f) :=
+    ( {(π̄_i, m_i)}_i, (𝒟^{(i)}(f))_{i: m_i ≥ 2} ) — the multiset of
+    monic irreducible factors of f̄ (unique factorization in F_Q[x]:
+    total, single-valued) together with, per OPENED track i (key π̂_i,
+    window [0, m_i], its own frame — S2.2 ROOT INSTANCE), that track's
+    case-T/R datum computed by the cases below IN THE TRACK'S FRAME.
+    Factors with m_i = 1 are Hensel leaves (terminal root branches, no
+    track opened). (BOX)/(VERTEX) hold per track (the cofactor unit
+    gives the exact vertex ord, S2.2), so the T/R dichotomy below
+    applies to each track separately; MIXED per-track statuses (some
+    tracks T, some R) are carried componentwise by the product datum —
+    one function value, no selection, no conflation. The normalized
+    single-cluster box is the one-track instance (E(ν₀) pins one
+    factor): on it 𝒟_root = the single track's 𝒟 and the cases below
+    read verbatim.
  T. J(f) = ∅: outcome (ns, μ), defined. [Uses only (VERTEX): B_μ ≠ 0,
     so the factorization f = Φ̂^μ·(unit-slot cofactor) is exact.]
  R. J(f) ≠ ∅: the finite nonempty point set {(j, w(B_j)) : j ∈ J(f)} ∪
@@ -567,7 +598,9 @@ obligation D4R.0-K(c), stated exactly at S2.6. With that scope:
         c̃ = the root of its linear ψ_i, c̃ ∈ Fˣ (R-c), and side value
         > w(Φ̂) (R-a): Theorem A supplies its unique canonical lift.
     So 𝒟(f) is defined, with every component forced. Cases T and R are
-    complementary by the definition of J(f). ∎(i)
+    complementary by the definition of J(f), per track; R0's value
+    aggregates the per-track values componentwise over the (total)
+    level-0 factorization. ∎(i)
 
 (ii) EXCLUSIVITY. 𝒟 is a single-valued function (every step of (i) is
  deterministic: J, the hull, the digits, the anchored factorization,
@@ -584,7 +617,21 @@ obligation D4R.0-K(c), stated exactly at S2.6. With that scope:
    rightward of S at shallower slopes, so S's extension to slot μ lies
    strictly below the hull at μ, i.e. old(μ) > (S's extended line at
    μ): (NA) holds for every non-adjacent branch.
- So every branch of every emitted 𝒟 is §C-realizable. ∎(ii)
+  (SAE) [REV 3 — pass-2 gap 4] every side S, at every span slot j < μ:
+   S's endpoints are hull vertices, i.e. POINTS of the set — heights
+   strictly above old at slots < μ ((BOX)), equal at μ ((VERTEX)) —
+   and (new_S − old) is AFFINE on the span; an affine function
+   strictly positive at both span endpoints (both < μ), or strictly
+   positive at the left endpoint and zero exactly at the right
+   endpoint μ, is strictly positive at every span slot j < μ:
+   new_S(j) > old(j) there, and new_S(μ) = old(μ) when the span
+   reaches the vertex — exactly §C rev 12's two displayed (SAE) lines
+   ([c-sae]).
+ So every branch of every emitted 𝒟 is §C-realizable in the full
+ (NA)+(HV)+(SAE) sense, hence TRANSITION-ADMISSIBLE when appended to η
+ (§C rev 13, [c-sae]); at R0 the same three displays run per track in
+ the track's frame (nothing above used more than an arbitrary realized
+ frame's (BOX)/(VERTEX)). ∎(ii)
 
 (iii) RESOLUTION. Each component of 𝒟(f) is computed from finitely
  many digit coordinates once the valuation profile is known; the
@@ -596,8 +643,15 @@ obligation D4R.0-K(c), stated exactly at S2.6. With that scope:
  partition Σ_k for every H; 𝒟(f) is a function of the full tower of
  caps (H → ∞ recovers J, the hull, the digits); hence 𝒟's fibers are
  the displayed countable intersections, and each capped partition
- refines the previous. FC8 (root cap: V-lumps + on-line cells) and FC9
- (depth-1 cap: δ-cells + DEEP) are literal instances. ∎(iii) ∎
+ refines the previous. FC8's target-region cells are single pure
+ cylinders (each digit VALUE fixed); its 20 V-lumps and FC9's DEEP
+ class are finite UNIONS of the capped fibers (coarser,
+ cell-data-measurable) — instances of the capped format in the
+ union-of-cylinders reading [REV 3 — pass-2 wording gap]. At R0 the
+ level-0 multiset is a function of the height-0 digits (a finite pure
+ cylinder datum) and each track's window digits are capped functions
+ of the box digits (C.0.5's unitriangular transport through the pinned
+ key π̂_i), so the product datum is measurable cap by cap. ∎(iii) ∎
 
 ---
 *(S2.5–S2.6 appended.)*
@@ -612,9 +666,14 @@ realized or a proof that it is empty. The dividing line is GRAMMAR:
 consumed at a named step].** An abstract case-R datum 𝒟 (side list
 with headers (e′,h′,s₀′,w′,a_S,u_S), digit tuples (d_j), factor sets)
 is GRAMMATICAL at the state when:
- (G0) WELL-FORMED SIDES: each header is a lattice side over [0, μ]:
-   gcd(e′,h′) = 1, e′ | w′, span [s₀′, s₀′+w′] ⊆ [0, μ], digit tuple
-   indexed by exactly the on-lattice slots s₀′ + e′·{0, …, w′/e′}.
+ (G0) WELL-FORMED SIDES: the side list is NONEMPTY (a case-R datum;
+   the no-side case is leaf T's DIRECT witness below, not a G0
+   instance) and each header is a NONDEGENERATE lattice side over
+   [0, μ]: gcd(e′,h′) = 1, w′ > 0 [REV 3 — pass-2 type omission:
+   zero-width "sides" excluded], e′ | w′, span [s₀′, s₀′+w′] ⊆ [0, μ],
+   digit tuple indexed by exactly the on-lattice slots
+   s₀′ + e′·{0, …, w′/e′}. (With (G3)+(G5), w′ > 0 forces s_min < μ:
+   case R is nonvacuous.)
  (G1) SLOPE BOUND: every side's per-slot descent slope h′/e′ > w(Φ̂)
    (ROOT: > 0) — R-a's bound.
  (G2) LATTICE/ALPHABET: prescribed heights lie on the attainable
@@ -625,16 +684,31 @@ is GRAMMATICAL at the state when:
    [s_min, μ]: side i's right endpoint slot = side (i+1)'s left
    endpoint slot, BOTH lines passing through ONE shared point (equal
    height there); no other slot doubly covered, none between uncovered.
+ (G3′) SHARED-VERTEX DIGIT CONSISTENCY [REV 3 — pass-2 critical 1]: at
+   each shared vertex slot j of (G3) (side i's right endpoint = side
+   (i+1)'s left endpoint), the two sides prescribe THE SAME digit:
+   d_j^{(i)} = d_j^{(i+1)} — ONE digit value for the ONE coefficient
+   B_j at the ONE shared height, nonzero (both sides' endpoint-nonzero
+   requirements met by the single value) and in the slot's attainable
+   alphabet at that height (both (G2) memberships met by the single
+   value). [The per-side tuples overlap at j; G3′ says the overlap is
+   consistent — equal lines give one HEIGHT (G3), not one DIGIT.]
  (G4) CONVEX ORDER: descent slopes strictly increase leftward (§B2-DEF
    D.4's convention — S5 cite [c-hull]); successive sides have
    DISTINCT slopes, so every shared point is a genuine vertex.
  (G5) RIGHT ANCHOR + (HV): the rightmost side ends at (μ, old(μ)) with
    lead (= right-endpoint digit) = vtx(ν_k).
- (G6) (NA), derived clause: every non-rightmost side's extension to
-   slot μ lies strictly below old(μ). IMPLIED by (G3)+(G4)+(G5): right
-   of side S the chain descends at strictly shallower slopes (G4),
-   unbroken (G3), to (μ, old(μ)) (G5), so old(μ) = chain(μ) > ext_S(μ).
-   Kept explicit for the §C interface and Lemma E's clause-for-clause
+ (G6) (NA)+(SAE), derived clauses [REV 3 — (SAE) added, pass-2 gap 4]:
+   (NA) every non-rightmost side's extension to slot μ lies strictly
+   below old(μ) — IMPLIED by (G3)+(G4)+(G5): right of side S the chain
+   descends at strictly shallower slopes (G4), unbroken (G3), to
+   (μ, old(μ)) (G5), so old(μ) = chain(μ) > ext_S(μ). (SAE) every
+   side's line lies strictly above the old line at its span slots
+   j < μ, with equality at μ when the span reaches the vertex —
+   IMPLIED by (G1)+(G3)+(G5): Step 2's telescoping display below IS
+   this inequality (chain(j) > old(j)), and the vertex equality is
+   (G5). Kept explicit for the §C interface (realizability =
+   (NA)+(HV)+(SAE), rev 12 — [c-sae]) and Lemma E's clause-for-clause
    complement.
  (G7) DERIVED-FIELD COHERENCE: per side, (a_S, u_S, factor set) equal
    the values FORCED by (d_j): a_S = ord_z R_S, u_S = lead unit of
@@ -643,12 +717,17 @@ Then S(𝒟) ∩ Σ_k ≠ ∅: some f ∈ Σ_k computes 𝒟(f) = 𝒟.
 *Proof.* STEP 1 (the condition set 𝒞(𝒟) is well-defined). "𝒟(f) = 𝒟"
 transcribes per slot: (left) B_j = 0 at every height for j < s_min;
 (side) for j ∈ [s_min, μ): j lies on EXACTLY ONE side line — by (G3)
-one covering side, or a shared vertex where the two lines AGREE — so
-"zeros strictly below line(j); digit at line(j) = d_j where on-lattice"
-demands ONE height profile per slot, never two [(G3) consumed:
-overlapping sides would demand two heights at one B_j — no f satisfies
-both; a gap would leave a slot free to dip below the chain, changing
-the hull]; (vertex) slot μ: NO new demand — Σ_k pins w(B_μ) = old(μ)
+one covering side, or a shared vertex where the two lines AGREE (one
+HEIGHT) and where, by (G3′), the two prescribed digits AGREE (one
+DIGIT) — so "zeros strictly below line(j); digit at line(j) = d_j
+where on-lattice" demands ONE height profile AND ONE digit value per
+slot, never two [(G3) consumed: overlapping sides would demand two
+heights at one B_j — no f satisfies both; (G3′) consumed [REV 3 —
+pass-2 critical 1]: without it two adjacent sides could prescribe two
+DISTINCT nonzero digits for the one coefficient B_j at the one shared
+height — a datum passing rev-2's G0–G7 whose condition set is
+instantly empty; a gap would leave a slot free to dip below the chain,
+changing the hull]; (vertex) slot μ: NO new demand — Σ_k pins w(B_μ) = old(μ)
 with digit vtx(ν_k), and (G5) says the prescribed value MATCHES the
 pinned one [(G5) consumed: else 𝒞(𝒟) re-pins a DETERMINED coordinate
 to a different value — instantly empty, and not a fresh demand].
@@ -681,17 +760,22 @@ DECOMPOSITION: the hull's maximal segments = the prescribed sides
 [(G4) STRICTNESS consumed: each shared vertex is a genuine slope
 break, so no two prescribed sides merge; no new break appears inside a
 side — the hull is linear there]. DIGITS: read off f = the prescribed
-(d_j). DERIVED FIELDS: computed from (d_j) by the same forced
+(d_j); at a shared vertex the ONE digit of B_j is the ONE demanded
+value, which BOTH adjacent sides' tuples carry [(G3′) consumed: both
+per-side tuples are recovered from the single coefficient]. DERIVED
+FIELDS: computed from (d_j) by the same forced
 functions = the prescribed ones [(G7) consumed]. So 𝒟(f) = 𝒟
 componentwise, with f ∈ Σ_k. ∎
 
 **Lemma E (non-grammatical ⟹ empty) [REBUILT at REV 2 — pass-1
 finding 2: exhaustive BY COMPLEMENTATION against the rebuilt
-grammar].** GRAMMATICAL := G0 ∧ G1 ∧ … ∧ G7 (Lemma W); NON-GRAMMATICAL
-:= ¬(G0 ∧ … ∧ G7) = ¬G0 ∨ ¬G1 ∨ … ∨ ¬G7 (De Morgan). The case list
-below carries EXACTLY ONE clause per grammar conjunct — the bijection
-G_i ↔ ¬G_i is the identity on indices — so it is complete BY
-CONSTRUCTION, not by hand enumeration. Witness schema: each step of
+grammar].** GRAMMATICAL := G0 ∧ G1 ∧ G2 ∧ G3 ∧ G3′ ∧ G4 ∧ G5 ∧ G6 ∧ G7
+(Lemma W — NINE conjuncts at rev 3, G3′ inserted); NON-GRAMMATICAL :=
+the negation = ¬G0 ∨ ¬G1 ∨ ¬G2 ∨ ¬G3 ∨ ¬G3′ ∨ ¬G4 ∨ ¬G5 ∨ ¬G6 ∨ ¬G7
+(De Morgan — the bijection RE-CHECKED after G3′'s insertion [REV 3]:
+still one clause per conjunct, identity on indices). The case list
+below carries EXACTLY ONE clause per grammar conjunct, so it is
+complete BY CONSTRUCTION, not by hand enumeration. Witness schema: each step of
 Theorem B(i)/(ii) proves every ACTUAL datum 𝒟(f) satisfies the
 corresponding G_i; a 𝒟 violating G_i therefore equals no 𝒟(f).
  ¬G0 (malformed header): 𝒟(f)'s sides are maximal hull segments of a
@@ -709,6 +793,14 @@ corresponding G_i; a 𝒟 violating G_i therefore equals no 𝒟(f).
    planar geometry): successive segments share their vertex at ONE
    height, tile the span, never overlap — a datum violating any of
    this differs from every such decomposition.
+ ¬G3′ (shared-vertex digit conflict) [REV 3 — pass-2 critical 1's
+   matching negation clause]: every ACTUAL datum satisfies G3′ —
+   𝒟(f)'s two adjacent side tuples at a shared vertex both read THE
+   digit of the single coefficient B_j at the single shared height
+   (R-b): one coefficient, one digit, so the two entries are EQUAL. A
+   datum with d_j^{(i)} ≠ d_j^{(i+1)} therefore equals no 𝒟(f);
+   moreover its emptiness is direct — its condition set demands two
+   distinct values of one digit, which no f satisfies.
  ¬G4 (non-convex order / repeated slope): a hull's maximal segments
    have strictly increasing descent slopes leftward (D.4, cite
    [c-hull]); equal successive slopes would merge into one maximal
@@ -716,22 +808,45 @@ corresponding G_i; a 𝒟 violating G_i therefore equals no 𝒟(f).
  ¬G5 (bad right end / bad lead): a rightmost side not ending at
    (μ, old(μ)), or with lead ≠ vtx(ν_k), contradicts (ii)'s (HV)
    derivation ((VERTEX)+(TRANSPORT) via the landing).
- ¬G6 ((NA) violated): every actual datum satisfies (NA) by (ii)'s
-   convexity display. [Relative to ¬G3/¬G4/¬G5 this clause is VACUOUS
-   — G6 is implied by G3+G4+G5, Lemma W — recorded so the bijection
-   stays clause-for-clause.]
+ ¬G6 ((NA) or (SAE) violated) [REV 3 — (SAE) added; vacuity wording
+   precisified per pass-2]: every actual datum satisfies BOTH — (NA)
+   by (ii)'s convexity display, (SAE) by (ii)'s affine-interpolation
+   display. [Precisely: ¬G6 is IMPOSSIBLE when G1, G3, G4, G5 all hold
+   (G6 is implied, Lemma W), though it CAN co-occur with failures
+   among them; a redundant conjunct does not break De Morgan
+   complementation — recorded so the bijection stays
+   clause-for-clause.]
  ¬G7 (derived-field mismatch): contradicts the forced computations:
    a_S = ord_z R_S, u_S = the anchored lead, and UFD uniqueness of the
    factorization in F[z] (ψ_i ≠ z since R_anch,S(0) ≠ 0).
 Each clause names its witness fact; completeness is the displayed
 complementation, one negation clause per grammar clause. ∎
 
-Leaf T is realized at every state: apply Lemma W to the EMPTY side
-list (vacuously grammatical — G0–G7 quantify over the side list; its
-condition set is "all window slots vanish to every height", all
-strictly above the floor; same compactness) — the witness locus is
-exactly {f = Φ̂^μ·g : g monic of cofactor degree, slot-μ digit
-matching the pin} ∩ Σ_k ≠ ∅.
+Leaf T is realized at every state — DIRECT witness [REV 3 — pass-2
+gap 3: this is NOT an application of Lemma W, which is stated for
+case-R data with a NONEMPTY side list (G0 at rev 3); an empty list has
+no s_min (G3) and no rightmost side (G5), and leaf T is case T]. Leaf
+T's condition set on Σ_k is "B_j = 0 for every j < μ": the demands at
+heights ≤ old(j) are Σ_k's own (BOX) zeros — nothing new; the FRESH
+demands are the zeros at heights strictly above old(j), all at
+coordinates free on Σ_k ([c-free]); each finite truncation (fresh
+zeros at heights < H) is a pure digit cylinder of positive mass
+([c-cut]: each zero clause cuts exactly p^{−1}; mass(Σ_k) > 0);
+truncations nest as H grows and are closed in the compact level-∞
+box: the intersection is NONEMPTY (finite intersection property —
+Lemma W Step 2's MECHANISM, run directly on this condition set). Any
+f in it has J(f) = ∅ and the pinned slot-μ digit (Σ_k's (VERTEX)), so
+𝒟(f) = (ns, μ): the witness locus is exactly {f = Φ̂^μ·g : g the
+unit-slot cofactor} ∩ Σ_k ≠ ∅.
+ROOT LEAVES (case R0) [REV 3 — with pass-2 gap 6's root case]:
+realized-or-empty splits as (a) the level-0 multiset: every
+{(π̄_i, m_i)} with Σ m_i·deg π̄_i = n is realized (the Teichmüller-
+coefficient monic lift of ∏ π̄_i^{m_i}), every other multiset empty
+(degree budget); (b) per opened track: Lemmas W/E and the leaf-T
+witness, applied in the track's frame; (c) the JOINT witness — all
+tracks' data realized SIMULTANEOUSLY — is the cross-cluster product,
+MONTES L1's territory (O4): consumed as a cite, NOT re-derived here;
+rev 3 claims per-track realized-or-empty only.
 
 ### S2.6 The (z)/(ep)/(ns) obligation + the D4R.0-K(c) residual [REV 2]
 
@@ -769,17 +884,51 @@ off as the explicit interface obligation D4R.0-K(c) below:
 
 THE RESIDUAL, NAMED [REV 2 — pass-1 finding 3; route (b) of the rev-2
 charge]. **D4R.0-K(c) (terminal-verdict interface — OPEN).** Supply:
- (c1) a pinned VERDICT ALPHABET V and a HALTING RULE τ assigning to
-   each Theorem-B cell datum and each branch of its branch set a value
-   in {CONTINUE} ∪ V, and to the no-side status (ns, μ) a value in V —
-   τ a function of CELL data alone (never of f);
- (c2) the proof that every non-continuing configuration of the
-   canonical tree receives EXACTLY ONE verdict: the no-side cells,
-   every τ-halted branch, and (if in scope — O4) the root Hensel
-   leaves (m_i = 1);
- (c3) compatibility — automatic given (c1)+(c2): the τ-refined cells
-   are Theorem B's cells split by a cell-data function, hence again a
-   partition (B(ii)), measurable at every cap (B(iii)).
+ (c1) VERDICT DATA [REV 3 — the two attachment levels separated,
+   per pass-2]: a pinned VERDICT ALPHABET V and a HALTING RULE τ
+   assigning (i) to each BRANCH of each case-R cell's branch set a
+   value in {CONTINUE} ∪ V (verdicts attach to BRANCHES) and (ii) to
+   each no-side status (ns, μ) a value in V (the whole track halts);
+   a CELL-level terminal outcome is DERIVED — the multiset of its
+   halted branches' verdicts — never a second primitive. τ a function
+   of CELL data alone (never of f).
+ (c2) EXACTLY-ONE-VERDICT on a CLOSED domain [REV 3 — the "if in
+   scope" conditional removed]: the non-continuing configurations are
+   pinned as: every no-side cell, every τ-halted branch, AND the root
+   Hensel leaves (m_i = 1 — explicit in case R0); each receives
+   exactly one verdict, none orphaned, none doubled.
+ (c3) COMPATIBILITY, two parts, only the first automatic [REV 3 —
+   pass-2: rev 2's "automatic" was an overclaim]:
+   (c3-a) PARTITION — automatic given (c1)+(c2): τ-refined cells are
+     Theorem B's cells split by a cell-data function, hence fibers of
+     a function of f: again a partition (B(ii)).
+   (c3-b) FINITE-CAP DETECTABILITY — NOT automatic: a function of the
+     complete (possibly infinite-height) cell datum need not be
+     determined at any finite cap (exact fibers are pro-cylinders —
+     B(iii)'s nested intersections, e.g. the (z-2) identically-zero
+     slots). REQUIRED as a condition on τ: τ is a STOPPING RULE for
+     the window digit filtration — every halt-and-verdict decision is
+     determined by the capped cell datum at some finite height. Under
+     (c3-b) each τ-refined cell is, at every cap at or beyond its
+     detection height, a finite UNION of pure digit cylinders
+     (B(iii)'s capped format as re-worded at rev 3); without (c3-b),
+     τ-preimages are only countable unions of B(iii)'s fibers —
+     measurable, but not cap-detectable, and the census format does
+     not apply to them.
+ DISCHARGING INSTANCE [REV 3 — the assembly pin consumed]. The
+ assembly plan (ASSEMBLY_PLAN_2026-07-26.md §4t, rev 9) has PINNED the
+ verdict system as VP ([c-vp]): (VP-1) V := finite multisets of pairs
+ (E, F) ∈ ℕ_{≥1}² (a τ-halted leaf of a degree-d cluster carries v
+ with Σ E·F = d) — (c1)'s alphabet; (VP-2) τ := the three displayed
+ cell-data certificate clauses (τ-irr)/(τ-ns)/(τ-hen), a function of
+ cell data alone, with the root Hensel leaves pinned IN SCOPE — (c1)'s
+ rule with (c2)'s domain closed exactly as required here (and the
+ leaf-rule refutation resolved by T_can^τ pruning); (VP-3) carries the
+ proof duties = (c2) exactly-one-verdict + (c3) + VP-SOUND, owed by
+ note [3t]. So D4R.0-K(c) is no longer an unaddressed specification:
+ it is an interface CONSUMED by that pin. What remains open is VP-3's
+ proofs at [3t] — including (c3-b)'s stopping-rule check for each of
+ (τ-irr)/(τ-ns)/(τ-hen) — not any further specification in this unit.
 WHY THE SOURCES UNDERDETERMINE τ (exact quotes with line numbers in
 S5, cites [c-term], [c-hull]'s register): §C covers "any admissible
 terminal system" (C.3) — a parameter, not a list; §D4-R's L2/L5 use
@@ -842,7 +991,11 @@ O1 = D4R.0-K(c) (interface — OPEN, and BLOCKING for the full-verdict
   — that is D4R.0-K(c), stated exactly at S2.6 ((c1)–(c3)), to be
   pinned by the assembly ([2a]/SQ interface). Non-blocking for the
   structural Theorems A/B; BLOCKING for adopting Theorem B as a
-  discharge of L5's full next-outcome/terminal partition.
+  discharge of L5's full next-outcome/terminal partition. [REV 3: the
+  assembly plan's rev-9 VP pin ([c-vp]) now SUPPLIES (c1)–(c2)'s data
+  and owns the proof duties at note [3t]; S2.6's (c1)–(c3) are
+  tightened to consume it, with (c3-b) finite-cap detectability stated
+  as the explicitly NON-automatic clause. Still open pending VP-3.]
 O2 (downstream) JOINT MASS LAW. Sibling independence / multi-branch
   freshness (the mass of a TREE prefix as the product over all its
   nodes) is not derived here; §C's Theorem C is per-path. Until it
@@ -855,8 +1008,13 @@ O3 (bookkeeping) BASE DIGIT SECTION. Theorem A consumes one pinned
 O4 (scope) ROOT MULTI-CLUSTER CASE. S2.2's ROOT INSTANCE derives the
   level-0 partition (reduction types) and per-cluster tracks; the
   cross-cluster mass product is MONTES L1's (outside §D4-R's
-  normalized box, as in the live note). No gap for the kernel; noted
-  so the quantifier "empty prefix included" is read at the right box.
+  normalized box, as in the live note). Noted so the quantifier
+  "empty prefix included" is read at the right box. [REV 3 — pass-2
+  gap 6: the root state is now case R0 of Theorem B's displayed tree
+  (product datum, mixed statuses componentwise); VP-2 ([c-vp]) pins
+  the Hensel leaves IN verdict scope; realized-or-empty at the root is
+  claimed PER TRACK only — the all-tracks-simultaneous witness stays
+  MONTES L1's cite (S2.5 ROOT LEAVES).]
 
 ## S4. VERDICT
 
@@ -867,12 +1025,15 @@ O4 (scope) ROOT MULTI-CLUSTER CASE. S2.2's ROOT INSTANCE derives the
   (S2.1: R₀ = (z−1)²(z−2)² at n = 4, p = 5; plus the two-sided-window
   class); refutation adopted, per-branch form not repaired.
 - Part (b) as RETARGETED (joint/branch-multiset): DERIVED AT
-  STRUCTURAL STRENGTH [REV 2, route (b)] — Theorem B (S2.4): totality
-  with the full case tree, exclusivity with derived (HV)/(NA),
-  finite-cap resolution matching FC8/FC9 (the target-region agreement
-  now DISPLAYED, S2.3b); per-leaf realized-or-empty (S2.5, Lemmas W/E
-  — REBUILT at rev 2: full hull-topology grammar G0–G7,
-  complementation-complete case list). The terminal-verdict refinement
+  STRUCTURAL STRENGTH [REV 2, route (b); REV 3 repairs in place] —
+  Theorem B (S2.4): totality with the full case tree (root case R0
+  displayed, rev 3), exclusivity with derived (HV)/(NA)/(SAE) (the
+  full rev-12 realizability class, rev 3), finite-cap resolution
+  matching FC8/FC9 (the target-region agreement DISPLAYED, S2.3b;
+  pure-cylinder vs union wording fixed, rev 3); per-leaf
+  realized-or-empty (S2.5, Lemmas W/E — grammar G0–G7 + G3′ at rev 3,
+  nine-conjunct complementation-complete case list; leaf T by DIRECT
+  witness; root leaves per track). The terminal-verdict refinement
   is NOT derived: D4R.0-K(c) (S2.6) is OPEN and blocks the full-verdict
   form of L5. Uniqueness verified FIRST on the refutation instance and
   the D4-n3 cell (S2.3), per the retarget directive.
@@ -965,6 +1126,28 @@ with the number as a locator hint.
     coefficient space and weight are unchanged (D.10: v = v'), and
     subsequent side values only grow (convexity within the frame +
     (I-aug)); so (d) persists along every history."
+[c-sae] (rev-3 (SAE) wiring — Theorem B(ii), Lemma W G6, Lemma E ¬G6).
+  §C C.0 rev 12, lines 3523–3531 as read 2026-07-27 (drift caveat as
+  above): "(SAE) SPAN-ENTRY INEQUALITY [rev 12 — the third condition]:
+  the read side lies strictly above the old box line at every span
+  slot below the window vertex, and matches it at the vertex when the
+  span reaches it: new(j) > old(j) for every span slot j ∈ [s₀', j*],
+  j < μ_i; new(μ_i) = old(μ_i) when j* = μ_i (adjacent)." Rev 13's
+  appended-read clause, lines 3546–3550: "a read ν_{i+1} appended to a
+  prefix (ν₀, …, ν_i) is TRANSITION-ADMISSIBLE iff the extended prefix
+  through ν_{i+1} satisfies the three data conditions (NA)+(HV)+(SAE)
+  at the appended read ν_{i+1}". §D4-R's own binding, lines 4714–4715:
+  realizability "read throughout this note as (NA) + (HV) + (SAE)".
+[c-vp] (rev-3 (c1)–(c3) alignment — S2.6's discharging instance).
+  ASSEMBLY_PLAN_2026-07-26.md §4t (rev 9), "VP (THE VERDICT PIN — the
+  assembly-side definition discharging D4R.0-K(c); cites
+  D4R0K_DERIVATION_2026-07-26.md §S2.6, clauses (c1)–(c3))": VP-1 (the
+  alphabet — finite multisets of (E, F) pairs, Σ E·F = cluster
+  degree); VP-2 (τ — "(τ-irr)/(τ-ns)/(τ-hen)", "a function of CELL
+  data alone, never of f", root Hensel leaves "pinned IN scope",
+  T_can^τ pruning resolving the leaf-rule refutation); VP-3 (proof
+  duties: "(c2) EXACTLY-ONE-VERDICT", "(c3) compatibility", VP-SOUND;
+  refuters: the PARI-oracle layers).
 
 ## S6. REV 2 RECORD (2026-07-26 — repairs to D4R0K_PASS1's verdict)
 
@@ -1009,3 +1192,71 @@ cite-unchecked. Finding → repair, one line each:
 Statement changes beyond repairs: NONE — Theorem A untouched (pass 1:
 "essentially established"); Theorem B narrowed, not strengthened;
 no new claims added anywhere.
+
+## S7. REV 3 RECORD (2026-07-27 — repairs to D4R0K_PASS2's verdict)
+
+Pass 2 (D4R0K_PASS2_2026-07-26.md): UNSOUND — 2 critical, 4 gaps + 1
+wording gap, 0 cite-unchecked; Theorem A adoptable. Finding → repair:
+
+- CRITICAL 1 (shared-vertex digit conflict: two adjacent sides may
+  prescribe DISTINCT nonzero digits for the one shared-endpoint
+  coefficient; grammatical under rev-2's G0–G7 yet empty; plus G0's
+  type omissions) → G3′ ADDED (S2.5): one digit at each shared vertex,
+  satisfying both endpoint-nonzero and both G2 memberships; Lemma W
+  Step 1 re-walked ("ONE height profile AND ONE digit value per slot",
+  G3′ consumed at a named point) and Step 3 re-walked (both tuples
+  recovered from the single coefficient); G0 TIGHTENED: nonempty side
+  list, w′ > 0, s_min < μ noted as forced.
+- CRITICAL 2 (Lemma E exhaustive only against the defective grammar)
+  → Lemma E preamble now NINE conjuncts (G3′ inserted), De Morgan
+  bijection RE-CHECKED (identity on indices, one clause per conjunct);
+  ¬G3′ clause added with a DOUBLE witness (actual data satisfy G3′
+  since one coefficient has one digit; violating data are directly
+  empty); ¬G6's vacuity bracket precisified per the pass ("impossible
+  when G1/G3/G4/G5 hold, can co-occur with their failures").
+- GAP (no-side leaf mis-derived as a Lemma-W instance) → leaf T now a
+  DIRECT witness (S2.5): the condition set displayed, fresh zeros at
+  free coordinates, per-truncation positive mass, compactness run
+  directly; explicitly NOT an application of Lemma W.
+- GAP ((SAE) not wired into Theorem B's realizability conclusion) →
+  Theorem B(ii) statement and proof now derive the FULL rev-12 class
+  (NA)+(HV)+(SAE): the (SAE) display via affine interpolation from
+  (BOX)/(VERTEX) at hull-vertex endpoints; emitted branches stated
+  TRANSITION-ADMISSIBLE (§C rev 13); Lemma W's G6 extended to
+  (NA)+(SAE) as derived clauses (Step 2's telescoping IS the grammar-
+  side (SAE)); Lemma E's ¬G6 extended to match; new cite [c-sae].
+- GAP (empty-prefix/full-box root case asserted, not in the tree) →
+  case R0 ADDED as the tree root (S2.4(i)): 𝒟_root = level-0 factor
+  multiset + per-opened-track T/R data, componentwise; mixed statuses
+  carried by the product datum; (ii)/(iii) extended per track ((SAE)
+  etc. per track frame; C.0.5 transport for cap measurability); S2.5
+  ROOT LEAVES clause: realized-or-empty per track, the joint witness
+  honestly left to MONTES L1's cite (O4 updated) — the one-cluster
+  and full-box theorems no longer conflated.
+- GAP (D4R.0-K(c)'s (c1)–(c3) not a dischargeable spec; c3 "automatic"
+  an overclaim; c1's attachment level ambiguous; c2's domain open) →
+  (c1)–(c3) TIGHTENED (S2.6): (c1) verdicts attach to BRANCHES + the
+  no-side track halt, cell outcomes derived; (c2) domain CLOSED (root
+  Hensel leaves in); (c3) split into (c3-a) partition (automatic) and
+  (c3-b) finite-cap detectability (NOT automatic — τ must be a
+  STOPPING RULE for the digit filtration; pro-cylinder fibers are the
+  obstruction). ALIGNED to the assembly plan's rev-9 VP pin ([c-vp])
+  as the discharging instance: VP-1/VP-2 supply (c1)–(c2)'s data,
+  VP-3 owes the proofs at note [3t]. DISCREPANCY FLAGGED: the plan's
+  VP-3 still glosses (c3) as "automatic given (c1)+(c2)" — this unit's
+  (c3-b) says the finite-cap half is not; [3t] must add the
+  stopping-rule check for (τ-irr)/(τ-ns)/(τ-hen).
+- WORDING GAP (capped outcomes called "FINITE digit cylinders" too
+  literally) → B(iii) statement + proof re-worded: the capped digit
+  map's fibers are finite PURE cylinders; outcome classes (valuation
+  lumps, verdict cells) are finite UNIONS of them; FC8's target cells
+  are single cylinders, its V-lumps unions.
+
+Consistency touches: S0.2 and S4 updated to the rev-3 claim set; O1
+notes the VP pin; TOC gains S7. Statement changes: Theorem A UNTOUCHED
+(adopted per the pass); Theorem B EXTENDED where the pass demanded it
+(R0 root case; (SAE) in the realizability conclusion) — both
+strengthenings repay defects, neither weakens any prior claim; Lemma
+W's grammatical class is strictly NARROWER (G0 tightened, G3′ added) —
+the safe direction for a realized-or-empty dichotomy, with Lemma E
+widened in exact complement. MOVES untouched.
