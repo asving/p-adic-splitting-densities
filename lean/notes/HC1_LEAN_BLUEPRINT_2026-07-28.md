@@ -1,11 +1,25 @@
-# HC1 LEAN BLUEPRINT — §B2-DEF's tower induction (2026-07-28)
+# HC1 LEAN BLUEPRINT — §B2-DEF's tower induction — REV 2 (2026-07-28)
+
+AUDIT TRAIL: rev 1 → fresh-Fable REJECT 3 crit / 6 gap
+(`HC1_AUDIT_FABLE_2026-07-28.md`; every critical machine-confirmed, computations
+re-verified against the note and disk at this revision). REV 2 folds all nine findings:
+C-1 (the κ double-count → the note's EXCLUSIVE-STR convention, §2.2 + `strTop`
+re-thread through T3/T6/the C-layer), C-2 (S1's unsatisfiable increment gate → the
+degree-1 base inside ambient F₄, satisfiability re-derived by explicit construction),
+C-3 (G4's wrong both-rise algebra → `d₀ = d₁²`, decide gates CONTENT-pinned on element
+lists per the campaign order-discipline precedent), G-1–G-6 (the §4 re-census against
+disk — four rev-1 dep-sorries were already CLOSED at this blueprint's own commit —
+plus the 4.5/4.6 repair-spec corrections, the §2.2 recorded-decisions paragraph, C6's
+full dichotomy, T9's de-trivialization, S12's quantifier pin). Dispositions in §1.1.
 
 *Hard-core #1 blueprint (Fable writer, wave 5 of the campaign master plan
 `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`). GROUND TRUTH: the dual-accepted §B2-DEF
 text `MOVES_2026-07-24.md` 1849–2745 (D.0–D.12) + the §C displays 3644–3831 (Lemma DOM
 3644, Lemma LST 3728, Lemma TYP 3783) + the pass-7 carry-algebra spec 1502–1530.
-BUILDS OVER: `lean/LeanUrat/Moves/` (61 units, 50 clean + 2 conditional + 9 tail
-sorries per `MOVES_LEAN_FINAL_CENSUS_2026-07-26.md`), `lean/LeanUrat/MovesGr/`
+BUILDS OVER: `lean/LeanUrat/Moves/` (the census document
+`MOVES_LEAN_FINAL_CENSUS_2026-07-26.md` predates the repair wave; DISK at REV 2:
+the tail is down to `L6_measureExact_R4`'s two sorries + the not-consumed
+superseded files — the §4 re-census is normative), `lean/LeanUrat/MovesGr/`
 (19 proved + 2 sorried + 5 held, option-(a) `add_def` landed), `lean/LeanUrat/MovesC/`
 (36/36, the Line/DomData/LevelClause layer), and the PARKED `MovesR` CInterface
 (`MOVESR_LEAN_BLUEPRINT_2026-07-28.md` §1, `GradedCarrier`/`ReBased`) whose REAL
@@ -39,11 +53,17 @@ every k. Consumers quantify over towers; no "abstract history" type rides.
 
 **(D3) Heights and carriers live at the TOWER, in absolute v_p-scale, ℚ-valued.**
 Chain weight `ht(c) = l + Σ_r innerslot_r(c)·κ_r`, κ_r = h_r/(e_r·STR_r) fixed at the
-read that augmented level r (LST head, MOVES 3731–3735). The MovesR `GradedCarrier`
-indexes `Gr : ℚ → Type`; the real instance sets `Gr γ := S.grPiece ⌊str·γ⌋` (S = the
-top stage's SideVal, str = the accumulated stretch): on-lattice γ hits the genuine
-stage-scale piece; off-lattice γ has `inγ γ := 0` and no weight ever equals it, so
-`inγ_kills`/`inγ_detects` hold with no junk (recorded, auditable convention).
+read that augmented level r (LST head, MOVES 3731–3735) — **with the note's EXCLUSIVE
+STR convention** (audit C-1): STR_r := e₀·…·e_{r−1}, the stretch accumulated BEFORE
+level r's read, STR₀ = 1 (LST base 3752: "w(x) = h₀/e₀ = κ₀ (STR₀ = 1)"); so
+κ_r = h_r/(e₀·…·e_r) with each e counted ONCE. The frame conversion factor is a
+SEPARATE object, `strTop := STR_K·e_K = e₀·…·e_K` (C.1.0(c)'s frame str: "the product
+of the history's stretches down to that frame" — inclusive of the last read; the
+exclusive/inclusive seam is exactly where rev 1 double-counted). The MovesR
+`GradedCarrier` indexes `Gr : ℚ → Type`; the real instance sets
+`Gr γ := S.grPiece ⌊strTop·γ⌋` (S = the top stage's SideVal): on-lattice γ hits the
+genuine stage-scale piece; off-lattice γ has `inγ γ := 0` and no weight ever equals
+it, so `inγ_kills`/`inγ_detects` hold with no junk (recorded, auditable convention).
 
 **(D4) The MovesGr fences are LOAD-BEARING inputs, not obstacles.** The three
 machine-checked certificates (`MOVESGR §8.2`) shape HC1's statements: (i)
@@ -58,9 +78,13 @@ is only-vacuously-provable from bare `IsRecentering` ⟹ HC1 consumes
 **(D5) The base stage is CONSTRUCTED at the Gauss valuation, then gated concretely.**
 Unit T1 builds `Stage p F` for a base read (e, h) over `wPrev = gaussVal` (§A/§B1
 re-expressed, MOVES 1992–2015), discharging its `Stage` fields from the Moves L1
-layer (`L1_gaussVal`, `L1_baseResidual_R4`; the sorried `L1_baseWeight_R3` is a
-NAMED dep — §4). Unit T2 inhabits it at p = 2, F = GaloisField 2 2, φ = X² + X + 1 —
-the honest replacement for MovesGr's held `L4_base_nonvacuity_gate`.
+layer (`L1_gaussVal`, `L1_baseResidual_R4`, `L1_baseWeight_R3` — ALL clean on disk;
+rev 1's dep-sorry tag was stale, §4 re-census). Unit T2 inhabits it at p = 2,
+F = GaloisField 2 2, φ = X² + X + 1 — the honest replacement for MovesGr's held
+`L4_base_nonvacuity_gate`. A SECOND base instance — the degree-1 pin φ = X,
+(e,h) = (1,1), K = the prime subfield F₂ inside the same ambient F₄ — is
+constructed in S1 as the increment gate's base (audit C-2: over T2's own base
+K = F₄ = F, NO degree-≥2 TransHyp is inhabitable at all — see §1.1).
 
 **(D6) e_birth vs e_read is a TOWER function, threaded through 𝒟.** Per level k ≥ 1,
 `eBirth T k` := the e′ of the increment that created level k's coefficient algebra;
@@ -68,7 +92,7 @@ recenterings PRESERVE it (they replace the current key, never the coefficient
 algebra — D.10/TRANS-RS: "same C, same v, same T"). A key born at e_birth > 1 read
 later at e_read = 1 keeps nontrivial ℤ/e_birth anchor cosets (the pass-7 critical 2,
 MOVES 1478–1499); HC1 types this as: the DIG map lands in `CarryAlg F (eBirth T k)`,
-and the recentering units (S16/S17) run the D.10 substitution WITH the coset data
+and the substitution/landing units (S15/S16) run the D.10 substitution WITH the coset data
 visible — the ledger reads e_read = 1 stages' digits at position 0 (P2), but the
 𝒟-typing is what makes the rerun's carry bookkeeping well-formed at e_birth > 1.
 
@@ -121,6 +145,24 @@ as hypothesis fields or named `sorry`-fenced deps (§4), never as axioms.
 DOCTRINE (wave-3+ prompts carry it, campaign ledger): every interface below must be
 FALSE for instances the note would reject; obligations may be open, but their TYPES
 pin their content. Per-structure falsifiability notes are given inline (§2).
+
+### 1.1 The rev-1 audit findings (`HC1_AUDIT_FABLE_2026-07-28.md`) — REV-2 dispositions
+
+All nine findings folded; the three criticals were machine-confirmed by the auditor
+and re-verified against the note/disk at this revision. These rows now BIND this
+blueprint exactly like the §1 fences.
+
+| finding | content (one line) | REV-2 disposition |
+|---|---|---|
+| C-1 | κ formula double-counted e_k (exclusive-STR formula pasted onto an inclusive STR; κ₀ = 1/4 instead of 1/2 at (e₀,h₀) = (2,1)) | §2.2: `Tower.str` = the note's EXCLUSIVE STR (STR₀ = 1); κ_k = h_k/(e_k·STR_k) verbatim; NEW `Tower.strTop` = STR_K·e_K carries the frame conversion; T3's factor, T6/carrier's reindexing, C2's δ' re-threaded to strTop |
+| C-2 | S1's gate unsatisfiable: z²+z+1 is REDUCIBLE over F₄ (roots = the cube roots of unity), and over T2's base K = F₄ = F no g ≥ 2 TransHyp exists (hirr + hroot force [K(z̄):K] = g ≤ [F:K] = 1) | S1(a) re-based: degree-1 base (φ = X, K = F₂) inside ambient F₄; ψ = z²+z+1 now genuinely irreducible over K; z̄ = a primitive cube root in F₄ˣ; satisfiability re-derived clause by clause in-unit. RECORDED CONSTRAINT: any increment gate needs [F : K] ≥ g |
+| C-3 | G4's both-rise predicate d₀ = d₁³ contradicts the seal's d₀ = d₁² (char-3 double root forces τ = d₁, d₀ = τ² = d₁²); both sets have card 8, so a count-only decide passes SILENTLY on the wrong algebra | G4 predicate fixed to d₀ = d₁²; ALL G4 decide legs CONTENT-pinned — finite-set EQUALITY against explicit element lists, cardinalities only as corollaries (the campaign order-discipline precedent; the v1-seal adjudication at MOVES 2934 is the warrant) |
+| G-1 | §4 ledger stale at the blueprint's own commit: 4.1/4.2/4.4 were already proved (35bf18a, 4b29f6e); 4.3's cone repaired | §4 re-censused against disk: 4.1–4.4 CLOSED (entries retained with their landing commits); phantom `dep-sorry:` tags dropped from T1, S12, C4, S16; only 4.6's pair remains open |
+| G-2 | 4.5's gloss ("ord_z of the vertex slot term = 0") is NOT the file's clause and is FALSE by rev-D¹¹ F4 (the anchor is the ord of the SUM); the repair already LANDED fence-safe (`L5_landTwoSided_repair.lean` :755, hexact hypothesis); 4.6's ":143 resolves with 4.5" wrong — the inlined lemma lacks the clause and needs it THREADED | §4.5 rewritten: RESOLVED-fence-safe, citing the landed repair theorem and the correct clause `¬ X ∣ Σ_j Cdig j·ψ^j` (the digit TOTAL); S16/S17 thread `hexact` as a stratum-side hypothesis; §4.6's :143 spec = restate the inlined lemma + L6_measureExact's hypotheses WITH the clause (sign-off), then import the repair |
+| G-3 | `Coord`/`slotBound`/`kappa`/root-`eBirth` underspecified (top-level slot bound not tower data; recentered levels implicit; κ total; root convention unrecorded) | §2.2's RECORDED DECISIONS paragraph pins all four |
+| G-4 | C6 stated only the sufficient direction, dropping the note's "exactly when" + "STRICTLY SMALLER at shallow heights" | C6 upgraded to the full dichotomy (iff + strict inequality on the unattainable side), per MOVES 2160–2165 |
+| G-5 | T9 as re-typed was definitionally trivial; the note's leaf-partition content (disjoint leaf subtrees, "no two equations of one system pin the same digit coordinate") uncertified | T9 gains leg (b): the mixed-radix leaf-address injectivity — the content S17's ledger counting consumes |
+| G-6 | S12's "(I-aug) holds at every read" ambiguous between the projection-trivial reading (TransHyp carries hiaug) and the substantive D.4 derivation | S12 pinned to the D.4 derivation form: every side of every landing's child polygon available to the next read, per D.4's three bullets |
 
 ## 2. Defs skeleton (normative for CONTENT; E-phase fixes syntax only; statement
 fence applies from acceptance)
@@ -221,16 +263,32 @@ structure Tower (p : ℕ) [Fact p.Prime] (F : Type u) [Field F] [Finite F] where
 KEEPS the previous value ("same C, same v, same T" — TRANS-RS). -/
 def Tower.eBirth (T : Tower p F) : Fin (T.K + 1) → ℕ := ...   -- recursion on moves
 
-/-- accumulated stretch `STR_k = e₀·e₁·…·e_k` (C.1.0(c)); κ_k := h_k/(e_k·STR_k). -/
+/-- **EXCLUSIVE accumulated stretch** (the note's STR, audit C-1): the stretch
+accumulated BEFORE level k's read — `STR₀ = 1`, `STR_{k+1} = STR_k · e_k`
+(e_k := (T.stg k).e; recentered stages contribute e = 1 — D.10's e_read = 1
+precondition, S10's `σ.e = 1` hypothesis). LST base 3752: κ₀ at STR₀ = 1. -/
 def Tower.str (T : Tower p F) : Fin (T.K + 1) → ℕ := ...
+
+/-- κ_k := h_k/(e_k·STR_k) — the note's formula VERBATIM on the exclusive STR
+(LST head, MOVES 3731–3735); = h_k/(e₀·…·e_k), each e counted once. AUDIT
+RECOMPUTE (C-1): at (e₀,h₀) = (2,1), κ₀ = 1/2 — rev 1's inclusive-STR paste gave
+1/4, the stale-κ-class defect the note itself warns about (3640). -/
 noncomputable def Tower.kappa (T : Tower p F) : Fin (T.K + 1) → ℚ := ...
 
+/-- the frame-(K+1) accumulated stretch `strTop = STR_K·e_K = e₀·…·e_K`
+(C.1.0(c)'s frame str, inclusive of the last read): THE stage-scale conversion
+factor — stage-K weights = strTop × absolute heights (T3; the carrier's
+reindexing, T6; TYP's δ' := strTop·γ', C2). -/
+def Tower.strTop (T : Tower p F) : ℕ := T.str (Fin.last T.K) * (T.stg (Fin.last T.K)).e
+
 /-- A tower coordinate: p-adic level l + inner slot vector (bounded per level by the
-key-degree ratios — the iterated-development address (b, l) of D.3(e)). -/
+key-degree ratios — the iterated-development address (b, l) of D.3(e)); the TOP
+slot is the current development-slot index (unbounded here — see the recorded
+decisions below). -/
 structure Tower.Coord (T : Tower p F) where
   l : ℕ
   slot : Fin (T.K + 1) → ℕ
-  slot_lt : ∀ r, slot r < slotBound T r   -- e_r·g_r ratios; def in-file
+  slot_lt : ∀ r : Fin T.K, slot r.castSucc < slotBound T r   -- ratios; def in-file
 
 /-- the coordinate's basis monomial `m_c = p^l·∏_r Φ_r^{slot r}` (TYP(a) display). -/
 noncomputable def Tower.mono (T : Tower p F) (c : T.Coord) : Polynomial ℤ_[p] :=
@@ -239,6 +297,26 @@ noncomputable def Tower.mono (T : Tower p F) (c : T.Coord) : Polynomial ℤ_[p] 
 /-- the absolute height `ht(c) = l + Σ_r slot_r·κ_r` (LST head, MOVES 3734–3735). -/
 noncomputable def Tower.ht (T : Tower p F) (c : T.Coord) : ℚ := ...
 ```
+
+**RECORDED DECISIONS (audit G-3 — four conventions pinned, one paragraph).**
+(1) `slotBound T r` for r < K := the key-degree ratio
+`deg (T.stg r.succ).Φ / deg (T.stg r.castSucc).Φ` — an integer (= e_r·g_{r+1} at an
+increment, by D.3; = 1 at a recentering, degree unchanged). (2) THE TOP LEVEL:
+D.3(e)'s C_{K+1} coordinates would need the PENDING read's g, which a K-move Tower
+does not carry — so `slot (Fin.last T.K)` (the current development-slot index, = the
+block label: `blk c := c.slot (Fin.last T.K)`, DefsCar) is UNBOUNDED in `Coord`;
+every consumer pins it per use (levelSet fixes it to b; T12's level-N boxes bound it
+by the box's window length; LST/TYP are per-block statements, so no top bound is
+ever consumed). (3) RECENTERED LEVELS: ratio 1 at (1) forces slot ≡ 0 there, so
+`mono` auto-selects the CURRENT frame's key of each degree class (replaced keys
+never appear — the note's "the replaced key is the CURRENT one, absent from off",
+LST step); `kappa` is TOTAL on Fin (T.K + 1) and its value at a recentered level is
+junk-but-harmless (it multiplies a forced-0 slot; the note assigns κ only to
+augmented levels — recorded, no consumer reads the junk). (4) ROOT e_birth:
+`eBirth T 0 := (T.stg 0).e` (the base e) — deliberately diverging from the pass-7
+root phrasing ("e_birth = 1 at the root"): the root coefficient algebra is born at
+the base read, whose (S5) digit positions −t·v carry ℤ/e₀ coset structure, and
+D7/D8's DIG typing consumes exactly that; a convention decision, recorded here.
 
 ### 2.3 `HC1/DefsCar.lean` — the REAL graded carriers
 
@@ -250,7 +328,8 @@ noncomputable def Tower.side (T : Tower p F) : SideVal p := ...
 
 /-- **The real GradedCarrier** (instantiates MovesR D4(a) at δ = 1; D3 convention):
 Coeff := the top coefficient space as a submodule-carrier (deg < deg Φ̂_top, an
-AddCommGroup via Polynomial.degreeLT); Gr γ := (T.side).grPiece ⌊strTop·γ⌋;
+AddCommGroup via Polynomial.degreeLT); Gr γ := (T.side).grPiece ⌊T.strTop·γ⌋
+(strTop = §2.2's frame stretch STR_K·e_K — audit C-1's re-thread);
 w := strTop⁻¹·(side weight) in WithTop ℚ; inγ := the class map into the piece
 (0 off-lattice). The four laws are unit T6's theorems (from MovesGr L0/L1). -/
 noncomputable def Tower.carrier (T : Tower p F) : GradedCarrierR p := ...
@@ -384,8 +463,8 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   the §A base pins: monic φ of degree d ≥ 1, φ̄ irreducible over F_p, F_Q := the
   splitting subfield, gcd(e,h) = 1, w := min_i(e·v(aᵢ) + i·h)). moves_ref: MOVES
   1992–2015 (the base stage, (S1)–(S6) item by item). deps: Moves `L1_gaussVal`,
-  `L1_baseResidual_R4` (clean); dep-sorry: `L1_baseWeight_R3` (the min-formula
-  valuation law — §4.1). sketch: fields of `Stage` from the display: hS5 = D.2's
+  `L1_baseResidual_R4`, `L1_baseWeight_R3` (ALL clean — baseWeight proved on disk
+  at 35bf18a via direct MacLane, §4.1 CLOSED). sketch: fields of `Stage` from the display: hS5 = D.2's
   dig(B) = ū·z^{−tv} computation; hS6a/hS6b coincide at the base (𝒜 = {(ev, −tv)},
   realizers p^v·û); value group from gcd(e,h) = 1. difficulty: HARD (pre-split:
   T1a fields through hS5; T1b the (S6) legs). hyp: none beyond bdata.
@@ -396,14 +475,19 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   instantiate T1's data; decidable side conditions by decide/norm_num. difficulty:
   HARD (the concrete Gauss-valuation fields are labor; escalation-risk). hyp: none.
 * **HC1.T3_htChainWeight** — `theorem ht_chainWeight (T : Tower p F) (c : T.Coord)
-  (hc : c.MonoNZ) : ((T.stg T.K).w (T.mono c) : ℚ) = (T.str T.K : ℚ) * T.ht c` —
-  LST(i-a): ht IS the K1-chain weight of the basis monomial, stage scale = str·abs.
-  moves_ref: MOVES 3736–3738 "ht(b, l) is the K1-chain weight of the coordinate's
-  basis monomial p^l·∏_r Φ̂_r^{innerslot_r(b)}". deps: DefsTower; Moves `L3_K1`,
+  (hc : c.MonoNZ) : ((T.stg T.K).w (T.mono c) : ℚ) = (T.strTop : ℚ) * T.ht c` —
+  LST(i-a): ht IS the K1-chain weight of the basis monomial, stage scale =
+  strTop·abs (strTop = STR_K·e_K, §2.2 — audit C-1: rev 1's factor `T.str T.K`
+  paired with the double-counted κ; SANITY at K = 0, (e₀,h₀): w(p^l·φ^b) =
+  e₀·l + b·h₀ = e₀·(l + b·κ₀) = strTop·ht ✓). moves_ref: MOVES 3736–3738 "ht(b, l)
+  is the K1-chain weight of the coordinate's basis monomial
+  p^l·∏_r Φ̂_r^{innerslot_r(b)}". deps: DefsTower; Moves `L3_K1`,
   `L2_keyResidualPow` (clean); the per-move κ-update discipline (LST proof, MOVES
   3750–3777). sketch: induction on K; increment step adds one inner level at
-  κ_{new} = h/(e·STR) (w′(Φ̂) = h′; multiplicativity hwmul on the monomial);
-  recentering step: v = v′ at fixed labels. difficulty: HARD. hyp: none.
+  κ_{new} = h_{new}/(e_{new}·STR_{new}) — the EXCLUSIVE prefix STR, so the child
+  frame's strTop = STR_{new}·e_{new} absorbs exactly the D.0 stretch (w′(Φ̂) = h′;
+  multiplicativity hwmul on the monomial); recentering step: v = v′ at fixed
+  labels, strTop unchanged (e = 1). difficulty: HARD. hyp: none.
 * **HC1.T4_slotMinHt** — LST(i-b): for a block b and assignment y with
   `slotCoeff b y ≠ 0`, `(T.carrier).w (T.slotCoeff b y) = inf {T.ht c : c ∈ blk b,
   y c ≠ 0}` (WithTop ℚ inf over the nonzero digit coordinates). moves_ref: MOVES
@@ -420,8 +504,9 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   laws (`w_add`, `inγ_add`, `inγ_kills`, `inγ_detects`). moves_ref: MOVES 3799–3801
   ("the class map is additive and kills weight > δ′ — D.1") + D.1(b). deps:
   DefsCar; MovesGr `L0_pmul_mk`, `L0_initialForm_*`, `L0_deg_add` (proved). sketch:
-  transport MovesGr's piece lemmas through the ⌊str·γ⌋ reindexing; off-lattice
-  clauses vacuous by D3's convention. difficulty: medium. hyp: none.
+  transport MovesGr's piece lemmas through the ⌊strTop·γ⌋ reindexing (§2.2's frame
+  stretch — C-1 re-thread); off-lattice clauses vacuous by D3's convention.
+  difficulty: medium. hyp: none.
 
 * **HC1.T7_alphabetSpan** — `Tower.alphabet` is the additive span of the slot
   images, is finite, and `Nat.card = p ^ aDim` for `aDim := (Nat.card …).log p`
@@ -440,15 +525,27 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   unit; injectivity = the basis independence, surjectivity = span; induction up the
   tower. difficulty: HARD (pre-split: T8a fixed-level bijection; T8b the tower
   induction on block size). hyp: none.
-* **HC1.T9_blockDisjoint** — (ii.3): distinct (b, γ) ≠ (b, γ′) pins have disjoint
-  coordinate sets: `γ ≠ γ' → Disjoint (levelSet b γ) (levelSet b γ')` and distinct
-  blocks partition coordinates. moves_ref: MOVES 2175–2188 ("distinct development
-  slots have disjoint leaf subtrees … induction bottoms at distinct p-adic
-  heights"). deps: DefsCar. sketch: level sets at distinct heights are disjoint by
-  definition of ht (a function); block partition from the development coordinate
-  partition. difficulty: easy (the note's hard content — distinct slot CLASSES mod
-  e via t invertible — is absorbed into ht being single-valued on coordinates; the
-  unit states the locus-level disjointness the ledger consumes). hyp: none.
+* **HC1.T9_blockDisjoint** — (ii.3), TWO legs (audit G-5: rev 1 stated only (a),
+  which is definitionally trivial — ht is a function). (a) locus disjointness:
+  `γ ≠ γ' → Disjoint (levelSet b γ) (levelSet b γ')` and distinct blocks partition
+  coordinates (kept as the ledger-facing form). (b) **THE CONTENT — leaf-address
+  injectivity**: the mixed-radix address map
+  `c ↦ (Σ_r c.slot r · ((T.stg r).Φ.natDegree), c.l)` (the base index of `mono c`'s
+  x-leading block + the p-level — C.1.0(a)/(c)'s affine correspondence) is
+  INJECTIVE on Coord at each fixed window (top slot bounded per T12's box): the
+  slot vector is the mixed-radix representation of the base index in the
+  degree-ratio radices (slot_lt = exactly the digit bounds), so distinct
+  coordinates address distinct base digit coordinates — hence distinct (b, γ)-pins
+  constrain DISJOINT base coordinate sets: the note's "no two equations of one
+  system pin the same digit coordinate", the injectivity S17's `L6_ledgerCount`
+  consumption rests on. moves_ref: MOVES 2175–2188 ("distinct development slots
+  have disjoint leaf subtrees (the development is a coordinate partition) … the two
+  forced slot classes t_k·γ*, t_k·γ′* differ (t_k invertible mod e_k) … induction
+  bottoms at distinct p-adic heights … disjoint addresses"). deps: DefsCar, T12;
+  Moves `L0_FactB_unique` (clean — development uniqueness = the partition).
+  sketch: (a) definitional; (b) mixed-radix uniqueness (Nat.div/mod induction down
+  the radix list; the note's slot-class argument is the γ-indexed instance of it).
+  difficulty: medium. hyp: none.
 * **HC1.T10_floorStaircase** — `T.floorB b = (T.lines T.K).at (T.blockEdge b)` is
   DEFINITIONAL (rfl-level); the content unit: on factor-interior blocks the
   coordinate floor is the block staircase — `interiorB b → ∀ c, blk c = b →
@@ -508,7 +605,8 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   steeper chain. sketch: instantiate MovesC's affine engine with `DomData` built
   from (I-aug) (steeper) + (SAE)'s vertex-entry (hypothesis); per-i interiors nest
   (MOVES 3683–3688), recorded. difficulty: medium. hyp: `TowerRealizable` —
-  (SAE)+(NA)+(HV) per move; dep-sorry: `L2_iaugStep` (§4.2).
+  (SAE)+(NA)+(HV) per move. (`L2_iaugStep` is PROVED on disk with the +Irreducible
+  hypothesis, §4.2 CLOSED — instantiated here at TransHyp's own `hirr`.)
 * **HC1.C5_typToClause** — the bridge to MovesC's counting: a TYP(b) fresh value
   clause yields a `MovesC.LevelClause` with `support = levelSet b γ'` (as base
   coordinates), `codim = aDim b γ'`, and the `count` law from C3's equal-fiber
@@ -517,25 +615,48 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   restated). sketch: package; count = card kernel-coset arithmetic, division-free.
   difficulty: medium. hyp: none.
 * **HC1.C6_alphabetCard** — `Nat.card (T.alphabet b γ) = p ^ (T.aDim b γ)` and
-  monotone assembly: at clean-threshold heights `𝔸 = the full piece` (the
-  D.9(b)-cleared regime), strictly smaller at shallow heights — stated as: IF every
-  slot height in γ's tree clears its stage bound THEN aDim = the full piece
-  dimension (no unconditional fullness claim — the rev-D¹¹c fix). moves_ref: MOVES
-  2160–2165 "= [F_{k+1} : F_p] … exactly when every height in γ's slot tree is
-  attainable … STRICTLY SMALLER at shallow heights". deps: T7, T8; Moves
-  `L5_realCofin_R3`, `L5_realDomination_R3` (clean). sketch: T8's product formula;
-  fullness under the cofiniteness bound. difficulty: medium. hyp: none.
+  **the fullness DICHOTOMY, both directions** (audit G-4 — rev 1 stated only the
+  sufficient leg): `𝔸(b,γ) = the full piece ⟺ every height in γ's slot tree is
+  attainable`, and on the failing side STRICTLY SMALLER — `(∃ unattainable slot
+  height in γ's tree) → aDim b γ < full piece dimension` (the shallow-heights
+  clause); the D.9(b) clean-threshold regime is the displayed sufficient INSTANCE
+  of the ⟸ leg (every stage bound cleared ⟹ attainable), not the statement. Still
+  no unconditional fullness claim (the rev-D¹¹c fix stands). moves_ref: MOVES
+  2160–2165 "= [F_{k+1} : F_p] … EXACTLY WHEN every height in γ's slot tree is
+  attainable … and STRICTLY SMALLER at shallow heights". deps: T7, T8; Moves
+  `L5_realCofin_R3`, `L5_realDomination_R3` (clean). sketch: T8's product formula
+  per factor — full ⟺ each factor full ⟺ each height attainable; one unattained
+  factor is a PROPER subgroup of its piece line, so the product card strictly
+  drops. difficulty: medium. hyp: none.
 
 ### Layer S — the induction spine + per-level transports (17 units, `HC1/S_*.lean`)
 
 * **HC1.S1_transHypGate** — `TransHyp` is non-vacuously inhabitable AND correctly
-  exclusive: (a) a concrete inhabitant at p = 2 (base stage of T2, ψ = z² + z + 1,
-  g = 2, the D.5 lift, (e′,h′) = (1, w(Φ̂)+1)); (b) `¬∃` at e′ = 0 (respects the
-  MovesGr certificate — provable now as `TransHyp → 1 ≤ e'` is a field: state as
-  the structure being False on the e′ = 0 instantiation by projection). moves_ref:
-  MOVES 2325–2328 (D.7 head: the side satisfies (I-aug)); MOVESGR §8.2
-  `transitionCoreL_e0_false`. deps: DefsTower, T2. sketch: (a) construct; (b)
-  projection. difficulty: medium. hyp: none.
+  exclusive. **RE-BASED (audit C-2): rev 1's data (T2's base, ψ = z² + z + 1) was
+  UNSATISFIABLE** — z² + z + 1 is reducible over F₄ (its roots ARE F₄'s cube roots
+  of unity), and structurally NO g ≥ 2 TransHyp exists over T2's base at all:
+  hirr + hroot force [σ.K⟮z̄⟯ : σ.K] = g ≤ [F : σ.K], and T2 has K = F_Q = F₄ = F.
+  RECORDED CONSTRAINT: any increment-gate instance needs [F : K] ≥ g. (a) the
+  repaired concrete inhabitant at p = 2, ambient F := GaloisField 2 2 (= F₄, T2's
+  ambient reused): base σ_lin := T1's package at the DEGREE-1 pin (φ = X, monic,
+  φ̄ = X irreducible over F₂; (e,h) = (1,1); K = F_Q = the prime subfield F₂ — so
+  [F : K] = 2 = g); ψ := z² + z + 1 ∈ K[z], now GENUINELY irreducible over K = F₂
+  (root-free: ψ(0) = ψ(1) = 1; degree 2), monic, ≠ X, g = 2; z̄ := a primitive cube
+  root of unity in F₄ˣ (exists since X² + X + 1 splits in F₄ — G1's own identity
+  z̄² = z̄ + 1 is its root equation), giving hroot: aeval z̄ (ψ.map K.subtype) = 0;
+  Φ̂ from `L3_liftExists` (clean; its threshold `wPrev(Φ) < h·(g−k)` reads
+  gaussVal(X) = 0 < 1, 2 ✓); (e′,h′) := (1, w(Φ̂)+1) — hiaug: w(Φ̂)+1 > 1·w(Φ̂) ✓,
+  hcop: gcd(1,·) = 1 ✓, hh′: w(Φ̂) = e·h·g = 2 ≥ 0 by the L3 lift-weight law ✓ —
+  every TransHyp field discharged by the listed computation. (b) `¬∃` at e′ = 0
+  (respects the MovesGr certificate — provable now as `TransHyp → 1 ≤ e'` is a
+  field: state as the structure being False on the e′ = 0 instantiation by
+  projection). moves_ref: MOVES 2325–2328 (D.7 head: the side satisfies (I-aug));
+  MOVESGR §8.2 `transitionCoreL_e0_false`; HC1_AUDIT C-2. deps: DefsTower, T1 (the
+  degree-1 base instance, constructed in-unit from T1's bdata); Moves
+  `L3_liftExists`, `L3_liftWeight` (clean). sketch: (a) construct per the listed
+  data (E-phase latitude: if GaloisField-root plumbing stalls, the recorded
+  fallback ambient is `AdjoinRoot (X² + X + 1 : (ZMod 2)[X])` — G1's concrete F₄
+  model, same content); (b) projection. difficulty: medium. hyp: none.
 * **HC1.S2_childW** — `childW` well-defined: for f ≠ 0 the Φ̂-development exists and
   is unique (Moves L0 Fact A/B), the min is attained, and `IsSlotMinWeight
   (childW σ Φhat e' h') Φhat e' h' σ.w` holds. moves_ref: MOVES 2329
@@ -568,11 +689,13 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   K⟮z̄⟯: the D-map (dig′ per piece) is additive-injective per piece with image ALL
   of F′ by the LARGE-WEIGHT (S6b) argument (the three displayed ingredients).
   moves_ref: MOVES 2364–2391 (D.7(v), ingredients (1)–(3) displayed). deps: S5;
-  Moves `L4_TRANSv_R3` (CONDITIONAL — inherits sorryAx via an import, §4.3),
+  Moves `L4_TRANSv_R3` (CLEAN — repaired at 4b29f6e: +StageCore fence-change
+  APPROVED per its header, import re-pointed to `L4_TRANSviii_b_R4`,
+  fresh-recompile axiom-clean; §4.3 CLOSED — S6 supplies `hcore` from the spine),
   `L4_TRANSviii_b_R4` (clean, the (S6b) recursion), `L2_widthBound` (clean).
   sketch: unit-monomial weights from powers of in(p); g consecutive stride
   positions; (S6b) scalars above the clean threshold; span = F′. difficulty: HARD.
-  hyp: none new; dep-sorry: the `L4_TRANSv` cone (§4.3).
+  hyp: none.
 * **HC1.S7_childPin** — D.7(vi)–(vii): the transported vector V′, u₀ := V′^{−h′},
   z′ := u₀·Y′^{e′}, T′ per the e′ = 1 / e′ ≥ 2 split, and S5′ (child digits are
   monomial units at forced positions −t′·w′). moves_ref: MOVES 2392–2418
@@ -619,12 +742,22 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   witnesses, so the spine is the PROPAGATION of StageCoreL, with S9/S10 showing
   such witnesses EXIST for legal reads — both directions recorded. difficulty:
   medium. hyp: none.
-* **HC1.S12_iaugPersist** — (I-aug) holds at every read of a tower (root case,
-  increment landings, recentering landings — D.4's induction along the history).
-  moves_ref: MOVES 2217–2249 (D.4, all three bullets + "by induction along the
-  history"). deps: DefsTower; Moves `L2_iaugRoot`, `L2_iaugRecenter` (clean);
-  dep-sorry: `L2_iaugStep` (reducible case — §4.2). sketch: induction on move
-  index; each case is the proved Moves unit. difficulty: medium. hyp: none.
+* **HC1.S12_iaugPersist** — (I-aug) in **the D.4 DERIVATION form** (audit G-6 —
+  the quantifier pinned; rev 1's "(I-aug) holds at every read" admitted the
+  projection-trivial reading via TransHyp's own hiaug field, which is the D4(ii)
+  INTERFACE, not this unit's content): for every tower T, every level k, and every
+  landing at k (root case k = 0, increment landings, recentering landings — D.4's
+  three bullets), EVERY side of the child polygon available to the NEXT read is
+  steeper than w(Φ̂) — displayed per-side as the chord inequality
+  `e·h·g·(μ − j) < w(B_j) − w(B_μ)` for j < μ (the L2_iaug* statement shape), so
+  that any (e′,h′) read off such a side satisfies `IAug`. This unit DERIVES that
+  legal continuations exist at every level; TransHyp merely records the derived
+  fact per read. moves_ref: MOVES 2217–2249 (D.4, all three bullets + "by
+  induction along the history"). deps: DefsTower, S11; Moves `L2_iaugRoot`,
+  `L2_iaugRecenter`, `L2_iaugStep` (ALL clean — iaugStep proved on disk at 4b29f6e
+  with the +Irreducible hypothesis, discharged here by the move's `hirr`; §4.2
+  CLOSED). sketch: induction on move index; each case is the proved Moves unit.
+  difficulty: medium. hyp: none.
 
 * **HC1.S13_realPersist** — Lemma REAL along the tower (D.9): the per-stage weight
   sets, cofiniteness bounds, and the domination h_r > e_r·f_r persist; at every
@@ -655,26 +788,39 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   level k, and stratum data (ψ, μ, a, pattern Cdig), the move at level k restricts
   to a bijection stratum → landing cylinder: `StratumData … f ↔ LandingCylinderL …
   (development of f)`, both directions, at level k's stage (hypotheses DISCHARGED
-  by S11). moves_ref: MOVES 2484–2546 (D.8 proof: BOX/VERTEX both directions +
-  TRANSPORT + two-sidedness); 2654–2659 (RS-landing, the g = 1 case). deps: S11,
-  S15; Moves `L5_landBox`, `L5_landVertex`, `L5_landTransport_R4`,
-  `L6_moveAffineBij` (clean); dep-sorry: `L5_landVertexDigit` (§4.4),
-  `L5_landTwoSided_R5` (§4.5 — the anchor-exactness clause). sketch: instantiate
-  the five Moves landing units at `T.stg k` with StageCoreL from the spine; the
-  recentering case via S10 + L5_recRSland. difficulty: medium-hard (assembly).
-  hyp: none new; two dep-sorries (BLOCKING for full closure — §4).
+  by S11). The statement THREADS the anchor-exactness clause (§4.5's landed
+  repair): the increment leg carries the explicit hypothesis
+  `hexact : ¬ X ∣ Σ_{j<N} Cdig j · ψ^j` — the stratum's own a = ord_z pin (part of
+  the stratum's DATA per D.8; forward it is derivable from `HasAnchorK`'s
+  exactness, backward it is genuinely additional — the shifted-anchor
+  countermodel), matching `L5_landTwoSided_repair`'s theorem verbatim. moves_ref:
+  MOVES 2484–2546 (D.8 proof: BOX/VERTEX both directions + TRANSPORT +
+  two-sidedness); 2654–2659 (RS-landing, the g = 1 case). deps: S11, S15; Moves
+  `L5_landBox`, `L5_landVertex`, `L5_landVertexDigit` (CLEAN — proved on disk,
+  §4.4 CLOSED), `L5_landTransport_R4`, `L5_landTwoSided` from
+  `L5_landTwoSided_repair.lean` (CLEAN, sorry-free, the hexact-hypothesized
+  theorem at :755 — §4.5 RESOLVED; the superseded `_R5` file is NOT consumed),
+  `L6_moveAffineBij` (clean). sketch: instantiate the five Moves landing units at
+  `T.stg k` with StageCoreL from the spine; the recentering case via S10 +
+  L5_recRSland. difficulty: medium-hard (assembly). hyp: `hexact` per stratum
+  (threaded, never dropped); zero dep-sorries (rev 1's two tags were stale/
+  resolved — §4 re-census).
 * **HC1.S17_levelMeasureExact** — **D.11 at every level**: for every tower T, level
   k, admissible stratum, and every N above the largest constrained height + 1:
   `#{f mod p^N ∈ stratum} = #{development data mod p^N ∈ cylinder} = p^{nN} ·
   vol(cylinder)`, vol = the ATTAINABLE product over the cylinder's digit equations
   (each factor `|𝔸(γ)|⁻¹` = C6's cardinality; inadmissible pins ⟹ empty locus —
-  the D¹¹d dichotomy). ONE move; no composition (D8 fence). moves_ref: MOVES
+  the D¹¹d dichotomy). ONE move; no composition (D8 fence). "Admissible stratum"
+  INCLUDES the anchor-exactness clause `hexact : ¬ X ∣ Σ_{j<N} Cdig j · ψ^j`
+  (threaded from S16 — §4.5's landed repair; the G-2 threading). moves_ref: MOVES
   2672–2718 (D.11 in full, incl. the unit-system clause and the dichotomy). deps:
   S16, C3, C5, C6, T11; Moves `L6_ledgerCount`, `L6_moveReduceCommute_R4` (clean);
-  dep-sorry: `L6_measureExact_R4` (§4.6 — two sorries). sketch: first equality =
-  S16's bijection + moveReduceCommute at level N; second = the unitriangular
-  digit-count (ledgerCount) with per-pin attainable factors from C3/T11.
-  difficulty: HARD. hyp: none new; dep-sorries §4.4–4.6.
+  dep-sorry: `L6_measureExact_R4` (§4.6 — two sorries, the SOLE surviving tail
+  entry; its :143 inline lemma needs the same hexact clause threaded by
+  restatement — §4.6's spec). sketch: first equality = S16's bijection +
+  moveReduceCommute at level N; second = the unitriangular digit-count
+  (ledgerCount) with per-pin attainable factors from C3/T11. difficulty: HARD.
+  hyp: `hexact` per stratum; dep-sorry §4.6 only.
 
 ### Layer G — sealed-gate check units (5 units, `HC1/G_*.lean`; all decide/eval,
 no sorry allowed, Lean-core footprints)
@@ -701,17 +847,30 @@ no sorry allowed, Lean-core footprints)
 * **HC1.G4_caseKGate** — the Case-K F₉ conditioned-digit gate: with
   `F9 := ZMod 3 × ZMod 3` (product carrying the X²+1 multiplication
   `(a,b)·(c,d) = (ac − bd, ad + bc)`; a hand-rolled CommRing instance — fully
-  decidable), τ := (0,1): verify by `decide` over all (d₀, d₁, τ-cell) triples the
-  v2 seal's algebra: (i) the Frobenius-matched both-rise set
-  `{(d₀,d₁) ∈ (F9ˣ)² : d₀ = d₁³}` meets the census's 8-of-512 count pattern at the
-  gate's cell granularity, and (ii) the char-3 edge clauses `2τ + d₁ = 0` /
-  `R₂(τ) = 0` have the sealed cardinalities on their cells (the counts of MOVES
-  3025–3032, re-derived as finite-set cards). moves_ref: MOVES 3017–3045 (CASE-K v2
-  SEALED GATE RECORD, Q1–Q6). deps: none (self-contained F9 arithmetic; the gate
-  re-checks the ALGEBRAIC layer of the seal, not the p-adic census). difficulty:
-  medium. hyp: none. NOTE: exact cell predicates transcribed from
-  `verification/case_k_gate_v2_p3.py` at E-phase; the unit's fence is the SEALED
-  RECORD's displayed counts.
+  decidable), τ-variable over F9. **PREDICATE CORRECTED (audit C-3): the both-rise
+  cell law is `d₀ = d₁²`** — the seal's own algebra: both-rise ⟺ R₂ = X² + d₁X + d₀
+  has the double root τ ⟺ τ = −d₁/2 = d₁ (char 3) and d₀ = τ² = d₁² (rev 1's
+  `d₀ = d₁³` was the wrong algebra; script ground truth
+  `case_k_gate_v2_p3.py` :396 `d0 = f9mul(d1, d1)`). **ALL legs CONTENT-pinned:
+  finite-set/list EQUALITY against explicit element lists, never bare
+  cardinalities** — the audit's demonstration that {d₀ = d₁³} ALSO has card 8
+  makes a count-only decide pass silently on the wrong set (the exact species of
+  the adjudicated v1-seal failure, MOVES 2934; the campaign order-discipline
+  precedent governs). Legs: (i) the Frobenius-matched both-rise set
+  `{(d₀,d₁,τ) ∈ F9ˣ × F9ˣ × F9 : d₀ = d₁² ∧ τ = d₁}` = the EXPLICIT 8-triple list
+  {(d₁², d₁, d₁) : d₁ ∈ F9ˣ} (elements enumerated literally in the unit;
+  8-of-512 as a Nat.card COROLLARY of the list equality, matching Q4's "the unique
+  both-rise is the Frobenius-matched τ = d₁ on each d₀ = d₁² cell — 8 both-rise
+  combos of 512"); (ii) the char-3 edge clauses `2τ + d₁ = 0` / `R₂(τ) = 0`:
+  solution SETS pinned as explicit element lists per cell, with Q2's sealed
+  cardinalities (56 / 64 / 8 both) as corollaries. moves_ref: MOVES 3017–3045
+  (CASE-K v2 SEALED GATE RECORD, Q1–Q6; Q4 at 3030–3032). deps: none
+  (self-contained F9 arithmetic; the gate re-checks the ALGEBRAIC layer of the
+  seal, not the p-adic census). difficulty: medium. hyp: none. NOTE: the literal
+  element lists are transcribed from `verification/case_k_gate_v2_p3.py` at
+  E-phase, but the NORMATIVE predicates are the ones displayed HERE (d₀ = d₁²,
+  τ = d₁) — the sealed record's displayed law, not the script, is the fence; a
+  transcription that disagrees with these predicates is a stop-the-line event.
 * **HC1.G5_spanGate** — the F₉ a = 2 span-pricing gate (the F3-2 check): over F9,
   the ADDITIVE closure of the two slot-image lines `{c·1 : c ∈ ZMod 3} ∪
   {c·τ : c ∈ ZMod 3}` is all of F9 (card 9 = 3², aDim = 2), while any single line
@@ -765,44 +924,59 @@ MovesR unparks — these are the statement defs MovesR's CInterface will import)
 
 ## 4. The Moves tail dependencies (dep-sorry ledger + repair specs)
 
-HC1 consumes these sorried/conditional Moves units. Their closure is the wave-5
-"Moves tail backlog fleet" (campaign §5); each entry names the consuming HC1 unit,
-the gap, and the census-recorded repair direction. NO HC1 unit may close a gap by
-weakening a Moves statement (fence).
+**RE-CENSUSED AGAINST DISK at REV 2 (audit G-1: rev 1's ledger was stale at this
+blueprint's own commit — entries 4.1–4.4 were already closed by 35bf18a/4b29f6e;
+re-verified by `grep sorry` + file headers + `git show` at this revision).** Each
+entry names the consuming HC1 unit and its disposition. NO HC1 unit may close a
+gap by weakening a Moves statement (fence). ONE entry remains open: 4.6.
 
-* **4.1 `L1_baseWeight_R3`** (1 sorry :62 — the base min-formula valuation law).
-  Consumer: T1. In-file verdict: statement TRUE under its hypotheses, proof
-  outstanding. Repair: honest Gauss-valuation × Newton-slope argument (accepted
-  B1.1); no restatement needed.
-* **4.2 `L2_iaugStep`** (1 sorry :72 — the reducible case of the increment
-  (I-aug) step). Consumers: S12, C4. Repair: D.4's chord-convexity display (MOVES
-  2229–2237) — the landing-box chord inequality + hull monotonicity; flagged
-  in-file as manifest-level gap, statement stands.
-* **4.3 `L4_TRANSv_R3`** (CONDITIONAL — own file sorry-free, main theorem inherits
-  `sorryAx` via an import; census `cond` row). Consumer: S6. Repair: rebuild its
-  import cone on the closed 4.1/4.2 (the census identifies the cone; no
-  mathematical gap of its own).
-* **4.4 `L5_landVertexDigit`** (1 sorry :70 — private core; in-file comment STALE:
-  deps `L3_K1`/`L5_landVertex` are CLEAN on disk). Consumer: S16. Repair: discharge
-  the private core against the now-clean deps (the census's own note); expected
-  medium.
-* **4.5 `L5_landTwoSided_R5`** (1 sorry :964 — anchor exactness NOT encoded in the
-  cylinder). Consumer: S16. Repair (the file's proposed round-6, adopted here as
-  the spec): add the anchor-exactness clause to `LandingCylinderL` as an ADDITIVE
-  field (`ord_z` of the vertex slot term = 0 after anchoring — the a-datum made
-  cylinder-side), then close the sorry; this is a statement CHANGE on a Moves def
-  → requires sign-off per the fence; flagged as the single fence-gated repair of
-  the tail. Until closed, S16/S17 carry the dep-sorry honestly.
-* **4.6 `L6_measureExact_R4`** (2 sorries :143/:189 — the landTwoSided placeholder
-  + the zero-coordinate leg). Consumer: S17. Repair: :143 resolves with 4.5;
-  :189 (the `exfalso; sorry` zero-coordinate leg — a genuine faithfulness gap the
-  fenced statement omits) needs the E.IsSolution-at-Θ(0) hypothesis threaded — a
+* **4.1 `L1_baseWeight_R3` — CLOSED** (proved at 35bf18a, +823 lines, header dated
+  2026-07-27: the direct-MacLane φ-adic development argument — `dev_slots` master
+  lemma, Cauchy-product ≥, dominant-slot ≤). Consumer T1's dep is clean; no tag.
+* **4.2 `L2_iaugStep` — CLOSED** (proved at 4b29f6e, the +`Irreducible ψ`
+  hypothesis fence-change flagged at bfdfb5e and landed: the statement now covers
+  the irreducible branch only). Consumers S12/C4 instantiate it at TransHyp's own
+  `hirr`, so the strengthened hypothesis is discharged for free; no tag.
+* **4.3 `L4_TRANSv_R3` — CLOSED** (repaired at 4b29f6e: +`StageCore` fence-change
+  APPROVED per its own header, import re-pointed to the clean
+  `L4_TRANSviii_b_R4`; commit message records fresh-recompile axiom-clean).
+  Consumer S6 supplies `hcore` from the spine; no tag. E-phase verify leg
+  re-checks the cone's footprint as usual.
+* **4.4 `L5_landVertexDigit` — CLOSED** (the private core discharged on disk:
+  +757 lines at 35bf18a, `vertexCongruence` closed from clean deps at 4b29f6e;
+  header: "fully closed — no sorry"). Consumer S16's dep is clean; no tag.
+* **4.5 `L5_landTwoSided` — RESOLVED FENCE-SAFE (audit G-2a/b; rev 1's spec was
+  doubly wrong).** The repair ALREADY LANDED as `L5_landTwoSided_repair.lean`'s
+  theorem (:755, commit 4b29f6e, file sorry-free): the anchor-exactness clause
+  rides as the explicit hypothesis `hexact : ¬ X ∣ Σ_{j<N} Cdig j · ψ^j` — the
+  file's own proposed clause, on the digit TOTAL. No `LandingCylinderL` field
+  change and NO sign-off event occurred or is needed; rev 1's fence-gated
+  field-addition plan is moot. Rev 1's gloss ("ord_z of the vertex slot term = 0
+  after anchoring") is hereby STRUCK: it is not the file's clause and is FALSE on
+  honest strata by rev-D¹¹ F4 (MOVES 2500–2505 — individual anchored slot terms
+  need not have ord_z 0; the anchor is the ord of the SUM, bottom coefficients can
+  cancel across slots); implemented literally it would empty legitimate strata.
+  HC1 consumption: S16 imports the repair theorem and THREADS `hexact` (S16/S17
+  hypothesis fields); the superseded `L5_landTwoSided_R5.lean` (:964 sorry) is NOT
+  consumed.
+* **4.6 `L6_measureExact_R4` — OPEN (2 sorries :143/:189; the sole surviving tail
+  entry).** Consumer: S17. (a) :143 is the inlined private
+  `L5_landTwoSided_missing` (:130–:143), stated on `LandingCylinder` WITHOUT the
+  exactness clause — REFUTED-as-stated by the same shifted-anchor countermodel, so
+  4.5's closure does NOT discharge it (audit G-2c; rev 1's ":143 resolves with
+  4.5" struck). Repair spec: RESTATE the inline lemma and thread the `hexact`
+  clause through `L6_measureExact`'s own hypotheses (a restatement on a fenced
+  statement → sign-off required), after which :143 becomes an import of 4.5's
+  repair theorem. (b) :189 is the `exfalso; sorry` zero-coordinate leg — a genuine
+  faithfulness gap the fenced statement omits (the in-file FLAG): needs the
+  E.IsSolution-at-Θ(code 0) hypothesis threaded (the "+hzsol" spec of bfdfb5e) — a
   restatement candidate for the tail fleet WITH sign-off, or a strengthened-
-  hypothesis v5 unit (option (b) style), decided at adjudication.
+  hypothesis v5 unit (option (b) style), decided at adjudication. Until closed,
+  S17 carries the dep-sorry honestly.
 
 Superseded sorried files (`L2_P6i_R5`, `L4_TRANSviii_a_R5`, `L4_TRANSviii_b_R3`,
-`L5_landTransport_R3`, `L6_moveReduceCommute_R3`) are NOT consumed — HC1 imports
-only the clean finals/R4s.
+`L5_landTransport_R3`, `L5_landTwoSided_R5`, `L6_moveReduceCommute_R3`) are NOT
+consumed — HC1 imports only the clean finals/R4s/the landed repair files.
 
 ## 5. Hypothesis-field ledger (open kernels; the axiom answer)
 
@@ -815,7 +989,12 @@ only the clean finals/R4s.
   (MOVES 9379–9418): HC1's R-layer TYPES it faithfully (with the seven repairs)
   and INSTANTIATES the carrier legs at δ = 1 (R6); the base-change instances
   δ > 1 and the jets/counting legs are not claimed.
-* **dep-sorries** — §4's six entries, each named at its consumer.
+* **`hexact` (anchor exactness, per stratum)** — `¬ X ∣ Σ_{j<N} Cdig j · ψ^j`, the
+  a = ord_z pin that is part of the stratum's data per D.8; rides as an explicit
+  hypothesis on S16/S17 exactly as on the landed `L5_landTwoSided_repair` theorem
+  (§4.5). Never silently strengthened into the cylinder or dropped.
+* **dep-sorries** — §4.6's pair only (the sole survivors of rev 1's six entries —
+  §4 re-census, audit G-1), named at S17.
 * **PUBLISHED-AXIOM CANDIDATES: NONE.** This is our own mathematics (D9). The
   verify leg must show Lean-core-only footprints on every proved unit; `sorryAx`
   appears exactly where §4 predicts, and any GMN/Denef import in an HC1 cone is a
@@ -826,7 +1005,7 @@ only the clean finals/R4s.
 ```
 lean/LeanUrat/HC1/DefsD.lean      §2.1  (CarryAlg, carryExp, cmul, dOf, IsHomog, digD)
 lean/LeanUrat/HC1/DefsTower.lean  §2.2  (TransHyp, MoveWitness, IsBaseStage, Tower,
-                                         eBirth, str, kappa, Coord, mono, ht)
+                                         eBirth, str, kappa, strTop, Coord, mono, ht)
 lean/LeanUrat/HC1/DefsCar.lean    §2.3  (side, carrier, levelSet, blk, slotCoeff,
                                          typComposite, alphabet, blockEdge, lines, floorB)
 lean/LeanUrat/HC1/DefsSpine.lean  §2.4  (childW, LevelMove)
@@ -845,8 +1024,9 @@ verbatim — the MOVESGR §6 double-elaboration protocol).
 
 ## 7. Census, risks, process
 
-**54 units**: D-layer 8 (5 easy / 3 medium) · T-layer 12 (4 easy / 4 medium /
-4 hard: T1, T2, T3, T8) · C-layer 6 (5 medium / 1 hard: C2) · S-layer 17 (1 easy /
+**54 units**: D-layer 8 (5 easy / 3 medium) · T-layer 12 (3 easy / 5 medium /
+4 hard: T1, T2, T3, T8 — T9 easy → medium at REV 2, the G-5 content leg) ·
+C-layer 6 (5 medium / 1 hard: C2) · S-layer 17 (1 easy /
 11 medium incl. the medium-hard S16 / 5 hard: S2, S6, S9, S10, S17) · G-layer 5
 (4 easy / 1 medium) · R-layer 6 (4 easy / 2 medium). **HARD TOTAL: 10** (T1, T2,
 T3, T8, C2, S2, S6, S9, S10, S17), each with a pre-approved split (T1a/b, T8a/b,
@@ -857,9 +1037,13 @@ C2 (the unit-lift additive carry — the one delicate new algebra step), T2
 
 Process per the campaign gates: this blueprint → Codex/Fable semantic audit
 (REJECT loops; audit charge: faithfulness to the quoted displays, non-vacuity per
-the doctrine, quantifier exactness, hypothesis-field fidelity, the §1 fence table)
-→ E-phase (Defs compile + statements elaborate twice) → prover fleet (D/T-easy/G
-first; S9/S10/S17 last, after their deps) → per-unit verify (Lean-core footprints)
-→ the R-layer re-audit gates MovesR's unparking. STUCK rule per campaign §3.
+the doctrine, quantifier exactness, hypothesis-field fidelity, the §1 fence table
+AND the §1.1 disposition table) → E-phase (Defs compile + statements elaborate
+twice) → prover fleet (D/T-easy/G first; S9/S10/S17 last, after their deps) →
+per-unit verify (Lean-core footprints) → the R-layer re-audit gates MovesR's
+unparking. STUCK rule per campaign §3. REV-2 loop record: rev 1 REJECT 3c/6g
+(`HC1_AUDIT_FABLE_2026-07-28.md`) → this revision (all nine folded, §1.1);
+re-audit required before E-phase.
 
-END OF BLUEPRINT (54 units; 10 hard; 0 published-axiom candidates).
+END OF BLUEPRINT — REV 2 (54 units; 10 hard; 0 published-axiom candidates;
+rev-1 audit findings C-1..C-3, G-1..G-6 all folded, dispositions §1.1).

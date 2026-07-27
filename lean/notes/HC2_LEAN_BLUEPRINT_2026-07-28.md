@@ -1,10 +1,26 @@
-# HC-2 LEAN BLUEPRINT — the JetSetup-existence bridge (2026-07-28, rev 1)
+# HC-2 LEAN BLUEPRINT — the JetSetup-existence bridge (2026-07-28, REV 2)
 
 STATUS: BLUEPRINT (phase B of the campaign gate chain B → A → E → P → V).
 NOTHING in this file is declared code. In particular §3's axiom statements are
 **PROPOSALS ONLY** — none may be declared without (i) a published-source citation
 confirmed against the PDF, (ii) a faithfulness entry in `docs/AXIOM_FAITHFULNESS.md`,
 (iii) a semantic-guardian audit pass (the process that has caught two false axioms).
+
+REV 2 (2026-07-28), per the fresh-instance audit `HC2_AUDIT_FABLE_2026-07-28.md`
+(verdict: REJECT, 1 critical / 7 gaps; the architecture itself ratified — "a
+targeted rev 2 fixing CRIT-1 and GAP-1…7 (no structural rebuild) is the expected
+disposition"). What changed: CRIT-1 → §3's P-1 rebuilt STAGE-MINUS-LEDGER with
+DEFAULT = NO DECLARATION (consumers carry the named hypothesis `StageTransHyp`);
+GAP-2/GAP-3 → P-2 and P-3 STRUCK to hypothesis-only (tombstones kept in §3);
+GAP-1 → the stage↔node lift keying gets an owned bridge (D8 `IsReadLift` + U1b
+`nodeLift_exists`); GAP-4 → new order-0 gate U31 anchors `ReadsOf` non-vacuity;
+GAP-5 → D5 `PresentSeed` pruned to the genuinely deferred fields and SEED-EXIST
+restated once, in U15's reprOf form; GAP-6 → the POL-PIN naming reconciled (polOM
+= the offset-P policy, spec-realized; sign-off inline at D2); GAP-7 → count/
+reading/obligation fixes. Both displayed deviations RATIFIED — records inline at
+§2.1 and D2. Census 45 → 48. Full disposition table: §8. This file returns to a
+fresh verifier for the acceptance pass (perimeter: §3 + the seven gap sites + the
+two inline ratification records).
 
 ## 0. Charge and ground truth
 
@@ -34,13 +50,13 @@ reject; obligations may be open, but their TYPES must pin their content."
 
 | consumer object (owner file) | HC-2 deliverable | unit(s) |
 |---|---|---|
-| `MovesC.JetSetup H n N m` existence (MovesC honest boundary, Defs header "The honest boundary") | `jetSetup_of_seed` : `PresentSeed` → coherent → realizable → JetSetup | U13 (+U1–U11) |
+| `MovesC.JetSetup H n N m` existence (MovesC honest boundary, Defs header "The honest boundary") | `jetSetup_of_seed` : `PresentSeed` → coherent → realizable → JetSetup | U13 (+U1/U1b–U11) |
 | **PRESENT-EXIST** (MovesD §2: `∀ N ≥ P.NP pol, Nonempty (Presented p F n N (n*N) pol P)`) | reduced to SEED-EXIST (the named HC-1 graded hypothesis, §2 Wall B) + proved assembly | U14, U15, U16 |
 | **PresentNorm** (MovesD §3.2, the typed two-sided dictionary) | totality (lift-swap + Galois re-rooting) + uniqueness (embedding rigidity) | U17a–c, U18 |
-| **POL-PIN** (MovesD §2: the canonical-policy instance + realizer laws) | `polOM : CanonPolicy p F` + blindness + totality-on-eligible-nodes (L1 kernel-(a)) | D2, U24, U25 |
+| **POL-PIN** (MovesD §2: the canonical-policy instance + realizer laws) | `polOM : CanonPolicy p F` — the (S6b′) offset-P policy, spec-realized (RATIFIED; sign-off at D2) + blindness + totality-on-eligible-nodes (L1 kernel-(a)) | D2, U24, U25 |
 | W4-1 `TreeModel.eligible` seam (MovesD §2.5) | the f-explicit run predicate `ReadsOf` (the negotiating definition MovesT re-keys) | D4, U19–U23 |
-| `ClassFiberWelldef` (MovesD §3.4; D15's `hwd`) | conditional unit, proof-first with P-3 fallback; DEFERRABLE (its consumer already carries it as a hypothesis) | U26 |
-| order-0 non-vacuity (the realF2 lesson) | gates: inert-n=2 value tie, σ-separation, NP(P̂*)=5, polOM instance | U27–U30 |
+| `ClassFiberWelldef` (MovesD §3.4; D15's `hwd`) | conditional unit, proof-first; on failure its consumers carry `OmUniqHyp` (P-3 STRUCK, §3); DEFERRABLE (its consumer already carries it as a hypothesis) | U26 |
+| order-0 non-vacuity (the realF2 lesson) | gates: inert-n=2 value tie, σ-separation, NP(P̂*)=5, polOM instance, ReadsOf instance (rev 2, GAP-4) | U27–U31 |
 
 NOT HC-2's to deliver (recorded so nobody silently widens scope): the graded ring
 itself and the two R4.5 identifications (HC-1; here the `PresentSeed` fields, §2
@@ -78,34 +94,48 @@ spine (`pres`, `Theta`, `Theta_uni`, `pres_total`, `pres_block`), the TYP piece
 maps, and the two `History.htH` identifications are "the unbuilt graded ring
 (§B2-DEF gap R4.5 items 1&3)". These are §B2-DEF/§C content — dual-accepted but
 OURS and unpublished — so by the campaign axiom policy (§4) they CANNOT be axioms.
-HC-2 packages exactly these fields as the structure `PresentSeed` (D5) and proves
-EVERYTHING ELSE of `JetSetup` from it (U1–U13). The named hypothesis
+HC-2 packages exactly these fields — and, after the rev-2 pruning (audit GAP-5),
+literally NOTHING else — as the structure `PresentSeed` (D5), and proves
+EVERYTHING ELSE of `JetSetup` from it (U1–U13). The named hypothesis, in its
+rev-2 form (stated ONCE, aligned with U15's consumption; the `reprOf` quantifier
+— one representative per class — is the weaker form and IS HC-1's actual
+deliverable, per audit GAP-5):
 
-  (SEED-EXIST)  ∀ H ∈ PrefSet n polOM P, ∀ N, P.NP polOM ≤ N →
-                  Nonempty (PresentSeed H n N (n*N))
+  (SEED-EXIST)  ∀ (i : PrefIdx n (polOM p F) P) (N : ℕ), P.NP (polOM p F) ≤ N →
+                  ∃ keys, KeysLawful (reprOf i) keys ∧
+                    Nonempty (PresentSeed p F (reprOf i) n N keys)
 
 is HC-1's deliverable (its graded carriers are precisely the CStatements/
-GradedCarrier raw material of the parked MovesR re-architecture). PRESENT-EXIST =
-SEED-EXIST + U15; the reduction is the deliverable, the seed is the honest residue.
-Optionally, proposal P-2 (§3) lets a PUBLISHED GMN citation supply the pres/Theta
-half of the seed early — the "budget-saver" the campaign plan names — with the
-piece-map half (TYP-SPAN) explicitly carved out as guardian-checkable-or-hypothesis.
+GradedCarrier raw material of the parked MovesR re-architecture). `KeysLawful`
+(D5) names U1's key-tower laws; the ∃-keys form is the WEAKEST form sufficient
+for U15 (U13 accepts any lawful tower), keeping HC-1's obligation minimal — the
+point of the GAP-5 pruning. [Rev 1 displayed a `∀ H ∈ PrefSet` form here and a
+`PrefIdx` form at U15; the audit required recording which quantifier is the
+deliverable: THIS one.] PRESENT-EXIST = SEED-EXIST + U15; the reduction is the
+deliverable, the seed is the honest residue. The former "budget-saver" proposal
+P-2 is STRUCK (audit GAP-2; tombstone in §3): its post-carve-out residue was
+already-proved Fact A content, so there was no budget to save — SEED-EXIST is
+the sole supplier of D5 values.
 
-**Wall C — published Montes content (the fenced axiom proposals).** Three places
-where a published statement can honestly shortcut work that is otherwise blocked
-behind HC-1 or behind new hull-geometry proofs:
-  P-1 stage-transition existence (GMN's order-r apparatus = §B2-DEF D.7's
-      conclusion) — unblocks Wall-A history CONSTRUCTION without HC-1's TRANS
-      assembly;
-  P-2 higher-order φ-adic coordinates (GMN §2's admissible φ-developments) —
-      optionally supplies the pres/Theta seed half;
-  P-3 OM-invariant choice-independence (GMN §1.5/Cor 1.20 + companion) — fallback
-      for PresentNorm uniqueness / ClassFiberWelldef.
-All three are PROPOSALS (§3), each with: exact statement, citation, faithfulness-
-entry draft, carve-out warnings, a downgrade-to-hypothesis path, and mutation
-probes. Declaration order of preference, per the standing policy: prove > cite >
-hypothesize; an axiom is declared only where the guardian confirms the citation
-says NEITHER MORE NOR LESS.
+**Wall C — published Montes content (the fenced axiom surface, post-audit).**
+Rev 1 proposed three axioms here; the audit round (CRIT-1, GAP-2, GAP-3) resolved
+the surface to:
+  P-1 stage-transition existence — SURVIVES only in STAGE-MINUS-LEDGER form, and
+      even that is NOT declared by default: the reduced form cannot populate a
+      `Stage`-carrying consumer by itself (§3's consumer analysis), so consumers
+      carry the named hypothesis `StageTransHyp`; P-1-reduced is recorded as a
+      CONTINGENT declaration for one precisely named future state (§3);
+  P-2 higher-order φ-adic coordinates — STRUCK (tombstone, §3): after its own
+      carve-outs, the residue is already-proved Fact A content; SEED-EXIST stands
+      as the sole seed supplier;
+  P-3 OM-invariant choice-independence — STRUCK (tombstone, §3): it cannot
+      discharge U18/U26 as typed, and the retyped version would be OUR
+      normalization theorem (undeclarable); consumers carry `OmUniqHyp` if the
+      proof-first route fails.
+The standing policy is unchanged — prove > cite > hypothesize; an axiom is
+declared only where the guardian confirms the citation says NEITHER MORE NOR
+LESS. The audit round APPLIED it, and "hypothesize" won on all three counts
+(with P-1's "cite" kept alive as the one recorded contingency).
 
 ### 2.1 The one pre-declared DESIGN DEVIATION (displayed for the audit round)
 
@@ -124,6 +154,17 @@ U8 re-opens as a full C.1(i) unit (add ~1 hard unit). [Wave-3 doctrine check: wi
 stratum := fresh, a WRONG fresh construction still fails U9/U10/U6 — the interface
 stays falsifiable; no degenerate instance slips through.]
 
+**AUDIT RULING 1 (2026-07-28): RATIFIED.** The auditor confirmed:
+`JetSetup.recursion`/`inh_implied` (MovesC/Defs.lean 872–877) evaluate `stratum`
+only in conjunction with `Sigma i`-membership, and `SHZ` reads `fresh` only, so
+with the note's C.1(i) ("E_inh is implied", C.1.5's proof line) the installed
+`inh_implied` is a STRONGER-than-note law (it holds off-cylinder too) — sound for
+an interface consumed as a hypothesis bundle. The semantic residue (constructed
+`Sigma` = the classifier's per-prefix locus) is carried exactly where displayed:
+U9/U10 pin the (ZC) geometry per C.1.5, U27/U28 pin the numbers. Falsifiability
+holds: a wrong `mkFresh` still fails U6 (`mstar_eq`)/U9/U10. No inherited carrier
+demanded; U8 stays `Iff.rfl`-easy.
+
 ## 3. THE AXIOM PROPOSALS — FENCED; PROPOSALS ONLY, NOTHING DECLARED
 
 Common citation base (already pinned verbatim in `lean/notes/GMN_citations.md`):
@@ -135,169 +176,256 @@ The campaign charge names "GMN/HN papers": **"HN" is NOT yet pinned in this repo
 — candidate second sources for the uniqueness leg are J. Guàrdia, J. Montes,
 E. Nart, *Okutsu invariants and Newton polygons* (Acta Arith. 145 (2010) 83–108)
 and J. Guàrdia, E. Nart, *Genetics of polynomials over local fields* (Contemp.
-Math. 637 (2015)); the guardian round must pin which (or correct the acronym)
-BEFORE P-3 can cite it. GMN's scope fence (GMN_citations.md §0): base field a
+Math. 637 (2015)); with P-3 STRUCK (below), the pinning duty now attaches only to
+a FUTURE uniqueness declaration — none is proposed — and lapses until one is.
+GMN's scope fence (GMN_citations.md §0): base field a
 finite extension of ℚ_p, per-fixed-p; our `ℤ_[p]` sits inside it; NO uniformity/
 rationality/p-independence content may ride in any of these axioms — those are
 derived, never imported.
 
-### P-1 `AX_stage_trans` — order-r stage existence (the increment transition)
+### P-1 `AX_stage_trans_gmn` — order-r stage existence, STAGE-MINUS-LEDGER (rev 2 per CRIT-1); DEFAULT: NOT DECLARED
+
+**Why rev 1's form was UNDECLARABLE (CRIT-1, the axiom-discipline event).** Rev 1
+concluded `∃ σ' : Stage p F, … ∧ TransitionCoreL σ σ' … ∧ StageCoreL σ'`, and its
+SAYS-NO-MORE claimed every conclusion field is a GMN-§2/§3 object. FALSE:
+`Stage p F` is a Lean structure whose FIELDS already carry the graded-localization
+ledger — `hRadd`/`hRlt` (a graded residual MAP with exact additivity/domination
+laws, where GMN's Thm 2.26/Thm 3.7 state "∼"-form normalized up-to-unit
+multiplicativity of residual POLYNOMIALS, per `GMN_citations.md` §2), `hRΦ`
+(D.3(b)'s `R Φ = z^s` pinning), `he1t` (D.0(P2)), `hS5` (the forced-position digit
+law), `hStretch`, the `reps`/`Tvec` bookkeeping, the (S6a)/(S6b) realizer
+exactness — and `StageCoreL` adds the D.1(b) tie laws (`w_strict`/`w_jump`/
+`R_neg`), `TvecLaw`/`TvecUnitLaw`, `CoeffLocLaw`, `prevIaug`, `SlotDecomp`. That
+is the §B2-DEF D.0(P2)/D.1(e)/D.2(S4) ledger — OURS (the `Moves/DefsL.lean`
+header's "single remaining boundary — the identification of `(σ.R, σ.w)` with the
+residual calculus of a genuine graded tower", with a dedicated unfinished
+graded-ring campaign), stated in no GMN theorem. The same holds one level down:
+`TransitionData` is itself parameterized over a child `Stage p F`, so ANY
+conclusion that so much as MENTIONS a `Stage` value smuggles the ledger. There is
+no carve-out patch; the conclusion TYPE must change.
+
+**The only faithful shape — the reduced conclusion.** A MovesJ-owned, ledger-free
+skeleton: exactly the four GMN conjunct groups, each at GMN's own strength
+(∼-forms), reusing existing Moves vocabulary (`IsSlotMinWeight`, `K1At`) only
+where it is ledger-free:
 
 ```lean
-/-- PROPOSAL P-1 (NOT DECLARED). GMN order-r apparatus: an eligible increment read
-on a lawful stage produces a next lawful stage with the recorded canonical Bézout
-pair. Lean surface = the CONCLUSION of §B2-DEF D.7 (Prop TRANS), keyed to the
-Moves corpus's own transition record. -/
-axiom AX_stage_trans {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+/-- PROPOSAL P-1-REDUCED (NOT DECLARED; contingency only — see DISPOSITION).
+GMN order-r apparatus, stage-minus-ledger: an eligible increment read on a lawful
+stage produces the order-(r+1) GMN SKELETON — key, valuation + polygon, residual
+operator at ∼-strength, residue tower — and NOTHING of our Stage/StageCoreL
+ledger. -/
+axiom AX_stage_trans_gmn {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (σ : Stage p F) (hσ : StageCoreL σ)
     (ψ : Polynomial ↥σ.K) (g : ℕ) (hψm : ψ.Monic) (hψd : ψ.natDegree = g)
     (hψirr : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (hg : 1 ≤ g)
     (zbar : Fˣ) (hroot : Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0)
-    (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat)
-    (e' h' : ℕ) (s' t' : ℤ) (he' : 1 ≤ e') (hh' : 1 ≤ h')
-    (hcop : Nat.gcd e' h' = 1) (hbez : (e' : ℤ) * s' + (h' : ℤ) * t' = 1)
-    (hwin : 0 ≤ t' ∧ t' < (e' : ℤ)) (hiaug : IAug σ Φhat e' h') :
+    (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hcop : Nat.gcd e' h' = 1)
+    (Φhat : Polynomial ℤ_[p]) (hlift : IsReadLift σ ψ g e' h' Φhat)  -- D8; GAP-1
+    (hiaug : IAug σ Φhat e' h') :
+    ∃ (w' : Polynomial ℤ_[p] → ℤ) (K' : Subfield F)
+      (R' : Polynomial ℤ_[p] → Polynomial ↥K'),
+      -- (key)  Thm 2.11: Φ̂ is a key polynomial of the augmented type
+      (Φhat.Monic ∧ Φhat.natDegree = e' * g * σ.Φ.natDegree) ∧
+      -- (valuation + polygon)  §2.2 (v_{r+1}) + Thm 2.9/Thm 3.1: w' a valuation,
+      -- slot-minimum over (σ.w, e', h') at Φ̂, K1 at Φ̂
+      ((∀ f g', f ≠ 0 → g' ≠ 0 → w' (f * g') = w' f + w' g') ∧
+       (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → min (w' f) (w' g') ≤ w' (f + g')) ∧
+       IsSlotMinWeight w' Φhat e' h' σ.w ∧ K1At w' Φhat (w' Φhat)) ∧
+      -- (residual, ∼-form ONLY)  Def 2.20–2.21 + Thm 2.26 + Thm 3.7/Cor 3.8: a
+      -- residual-POLYNOMIAL operator, multiplicative UP TO nonzero K'-scalars;
+      -- NO graded map, NO exact hRadd/hRlt, NO position/monomial pinning
+      ((∀ f, f ≠ 0 → R' f ≠ 0) ∧
+       (∀ f g', f ≠ 0 → g' ≠ 0 →
+          ∃ c : (↥K')ˣ, R' (f * g') = (c : ↥K') • (R' f * R' g'))) ∧
+      -- (residue tower)  §2.1: F_{r+1} = F_r[y]/(ψ) via the chosen root
+      K' = σ.nextField zbar
+```
+
+The exact conjunct list is transcribed against the TAMS PDF AT DECLARATION TIME
+(if the contingency ever fires); the four GROUPS above are normative, and nothing
+outside them may be added without a fresh guardian pass. Note what fell out of
+the hypotheses too: rev 1's `(s' t' : ℤ)`, `hbez`, `hwin` (the canonical Bézout
+window) are GONE — they were our convention riding on the axiom; they now live
+only in `StageTransHyp` below, which is the faithful place for a selection.
+
+**`hlift` keying (audit GAP-1, resolved).** Rev 1 keyed `hlift` by
+`IsStandardLift σ ψ g Φhat` — stride `σ.e`, parent-scale weights
+`σ.wPrev (t_k) = σ.h·(g−k)`: the frame-CREATING read's pair. History consumers
+hold `IsNodeLift ν` — stride `ν.e`, CURRENT-valuation weights
+`ν.σ.w (t_k) = ν.h·(ν.g−k)`: the READ's own pair (the F10 adjudication; MovesC
+round 3 replaced `IsStandardLift ν.σ` inside `HistoryCoherent` for exactly this).
+The two are GENUINELY differently keyed; conflating them was the F10 trap. Rev-2
+resolution, both halves of the audit's demand: (a) the reindexing is FOLDED INTO
+the signature — `IsReadLift` (D8) is the `IsNodeLift` formula abstracted off
+`Node` (`isNodeLift_iff : IsNodeLift ν Φhat ↔ IsReadLift ν.σ ν.ψ ν.g ν.e ν.h
+Φhat`, definitional), and BOTH `StageTransHyp` and P-1-reduced key `hlift` by it;
+(b) the OWNED BRIDGE UNIT is U1b `nodeLift_exists` (read-pair lift existence from
+stage data — L3's proof shape at the node's pair), which is how consumers
+DISCHARGE the hypothesis. Any re-keying of `hlift` in a P-phase repair is a
+MEANING CHANGE requiring a fresh guardian pass — recorded here so it cannot
+happen silently.
+
+**Consumer analysis — the "too weak?" question, answered.** The declared
+consumers (U17a's chain rebuild; history construction generally) must BUILD
+`Node` values, and a `Node` carries a full `Stage p F`; they must further supply
+`TransitionCoreL`/`StageCoreL` for `HistoryCoherent`'s legs. The reduced
+conclusion contains no `Stage` — it CANNOT populate a `Node`. So P-1-reduced
+alone discharges NO consumer obligation as typed: the stage-minus-ledger form IS
+too weak for the consumers, and the honest default is NO DECLARATION. The
+consumer-facing surface is the FULL-STRENGTH named hypothesis (ours;
+hypothesis-never-axiom):
+
+```lean
+/-- The stage-transition supplier hypothesis (HC-1's TRANS; rev-1 P-1's statement
+with the lift keyed at the READ pair per GAP-1). NEVER an axiom. -/
+def StageTransHyp (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop :=
+  ∀ (σ : Stage p F), StageCoreL σ →
+    ∀ (ψ : Polynomial ↥σ.K) (g : ℕ), ψ.Monic → ψ.natDegree = g → Irreducible ψ →
+      ψ ≠ Polynomial.X → 1 ≤ g →
+    ∀ (zbar : Fˣ), Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0 →
+    ∀ (e' h' : ℕ) (s' t' : ℤ), 1 ≤ e' → 1 ≤ h' → Nat.gcd e' h' = 1 →
+      (e' : ℤ) * s' + (h' : ℤ) * t' = 1 → 0 ≤ t' ∧ t' < (e' : ℤ) →
+    ∀ (Φhat : Polynomial ℤ_[p]), IsReadLift σ ψ g e' h' Φhat →
+      IAug σ Φhat e' h' →
     ∃ σ' : Stage p F, σ'.Φ = Φhat ∧ σ'.e = e' ∧ σ'.h = h' ∧ σ'.s = s' ∧ σ'.t = t' ∧
       TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ'
 ```
 
-* citation map (each conjunct of the conclusion → a GMN pin): the next key exists
-  and is a representative of the augmented type — Thm 2.11 (key polynomial of a
-  type, "effectively construct"); the next valuation `σ'.w` with value group ℤ and
-  K1 at Φhat — §2.2 (`v_{r+1}`) + Thm 2.9/Thm 3.1 (Theorem of the polygon);
-  the residual map laws (hR0/hRne/hRmul/hRadd/hRlt) — Def 2.20–2.21 + Thm 2.26
-  (product theorem) + Thm 3.7/Cor 3.8 (Theorem of the residual polynomial);
-  residue tower `F_{r+1} = F_r[y]/ψ` finite — §2.1 (types of order r+1).
-* **CARVE-OUT WARNING (the guardian's first question):** the (S6a)/(S6b) realizer
-  EXACTNESS fields of `Stage` ("every parent-scale weight above the threshold is
-  realized, with EVERY scalar of Kˣ") are §B2-DEF D.7's (S6b′) offset-P-lift
-  DERIVATION (MOVES 2436–2465) — the guardian must check whether GMN §2.4's
-  residual-coefficient computation states attainability in this strength. If NOT
-  (expected), P-1 must be declared with (S6a)/(S6b) REMOVED from the packaged
-  conclusion (i.e. `∃ σ'` producing a Stage-minus-(S6) structure) and the (S6)
-  fields supplied by HC-1's D.7 induction, OR not declared at all (downgrade
-  path: `StageTransHyp` as a named hypothesis with the same signature, consumed
-  by U-layer units verbatim — zero re-statement cost, the campaign's standard
-  open-kernel pattern).
-* non-vacuity probe: instantiate at the base stage (`L1.baseStage_exists`,
-  Moves corpus, PROVED) with the n=2 Eisenstein read (e=2, h=1, ψ = z+1, g=1) —
-  the Wave-1 wild gate data; the ∃ must produce the stage the W1 chain built by
-  hand. Mutation probes: drop `hiaug` → must break (the F-EMPTY family);
-  `hwΦ : w Φhat = h'` mutated to `h' + 1` → must break K1 gate arithmetic.
-* faithfulness-entry DRAFT (`docs/AXIOM_FAITHFULNESS.md` format):
+The factored discharge — the ONLY configuration in which declaring P-1-reduced
+ever pays — is
+
+  StageTransHyp  ⇐  P-1-reduced  +  StageLedgerHyp,
+
+where `StageLedgerHyp` (HC-1's; named here so the factoring is on record)
+upgrades any reduced skeleton to a lawful stage: given skeleton data
+`(w', K', R'∼)` for an eligible read on a lawful stage, there is `σ' : Stage p F`
+with the tie fields, `σ'.w = w'`, `σ'.K = K'`, the EXACTIFIED residual map, and
+`TransitionCoreL ∧ StageCoreL` — precisely the D.0(P2)/D.1(e)/D.2(S4)
+exactification-plus-ties: the D.7-induction / graded-ring content.
+
+**DISPOSITION (the honest answer to CRIT-1's downgrade question): DEFAULT = NO
+DECLARATION.** If HC-1's D.7 induction lands, it proves `StageTransHyp` outright
+(the induction constructs the stage — skeleton and ledger together) and P-1 is
+never declared. The ONE state in which declaring P-1-reduced pays: HC-1 proves
+`StageLedgerHyp` (the ledger upgrade, conditional on a skeleton) but stalls on
+skeleton EXISTENCE — the genuinely published-hard content (Thm 2.11 / Thm 3.1 /
+Thm 2.26 / Thm 3.7). ONLY in that state does the §7.4 gate chain run for
+P-1-reduced (PDF re-extraction, faithfulness entry from the draft below,
+guardian, compiled probes). Until then every consumer carries `StageTransHyp`
+verbatim — zero re-statement cost, the campaign's standard open-kernel pattern.
+
+* citation map (per conjunct GROUP of the reduced conclusion): key — Thm 2.11
+  (key polynomial of a type, "effectively construct"); valuation/polygon — §2.2
+  (`v_{r+1}`) + Thm 2.9/Thm 3.1 (Theorem of the polygon); residual ∼-laws —
+  Def 2.20–2.21 + Thm 2.26 (product theorem) + Thm 3.7/Cor 3.8 (Theorem of the
+  residual polynomial); residue tower — §2.1 (types of order r+1).
+* the rev-1 (S6) CARVE-OUT WARNING is DISSOLVED (audit charge (iv)): no (S6)
+  field — indeed no `Stage` field of any kind — appears in the reduced
+  conclusion; (S6) attainability now sits inside `StageLedgerHyp`, ours to prove,
+  not the guardian's to check against GMN §2.4.
+* non-vacuity probe (retargeted at the skeleton): instantiate at the base stage
+  (`L1.baseStage_exists`, Moves corpus, PROVED) with the n=2 Eisenstein read
+  (e=2, h=1, ψ = z+1, g=1) — the Wave-1 wild gate data; the ∃ must produce the
+  SKELETON of the stage the W1 chain built by hand (its `w'`/`K'` checked against
+  the W1 data). Mutation probes: drop `hiaug` → must break (the F-EMPTY family);
+  mutate the slot-min/K1 conjunct's `h'` to `h' + 1` → must break the K1 gate
+  arithmetic.
+* faithfulness-entry DRAFT (rev 2 — the SAYS clauses now truthful):
   - VERIFIED CORE: GMN §§2–3 construct, for each type of order r and each side/
     residual-factor choice, the order-(r+1) data: key (Thm 2.11), valuation and
-    polygon (§2.2, Thm 3.1), residual polynomial and its multiplicativity
-    (Def 2.21, Thm 2.26, Thm 3.7). Existence-only; per fixed p.
+    polygon (§2.2, Thm 3.1), residual polynomial with UP-TO-UNIT
+    multiplicativity (Def 2.21, Thm 2.26, Thm 3.7), residue tower (§2.1).
+    Existence-only; per fixed p.
   - SAYS NO MORE: no uniformity, no rationality, no measure/density term, no
-    p-independence; conclusion is one ∃ over `Stage p F` records whose every
-    field is a GMN-§2/§3 object [MINUS (S6) if the carve-out fires].
-  - SAYS NO LESS: the Bézout-window pinning (`hwin`) is a convention choice
-    (canonical pair), not GMN content — it rides as a hypothesis on OUR side of
-    the statement (selection, not import).
-  - CONSUMED BY: U-layer history construction (U19, U17a) and T_can totality;
-    never by a density/counting capstone directly.
+    p-independence; the conclusion is one ∃ over a LEDGER-FREE skeleton —
+    residual laws at ∼-strength (up-to-unit, polynomial-level) ONLY; NO `Stage`/
+    `StageCoreL` content: no exact `hRadd`/`hRlt`, no `hRΦ` pinning, no `he1t`
+    (P2), no `hS5` position law, no `hStretch`, no tie laws
+    (`w_strict`/`w_jump`/`R_neg`), no `TvecUnitLaw`/`CoeffLocLaw`/`SlotDecomp`/
+    `prevIaug`, no `reps`/`Tvec` bookkeeping, no (S6a)/(S6b) exactness — all of
+    that is §B2-DEF D.0(P2)/D.1(e)/D.2(S4) content, carried as
+    `StageLedgerHyp`/`StageTransHyp` (named HC-1 hypotheses) at the consumption
+    sites.
+  - SAYS NO LESS: the eligibility hypotheses (`hσ : StageCoreL σ`,
+    `hlift : IsReadLift …`, `hiaug`) are OUR selections riding hypothesis-side
+    (stronger hypotheses only weaken an axiom); the Bézout window is GONE from
+    the statement (never GMN content; it lives in `StageTransHyp`).
+  - CONSUMED BY: nothing directly — only via the factored discharge of
+    `StageTransHyp` (whose consumers are U17a and history construction; never a
+    density/counting capstone).
 
-### P-2 `AX_om_present` — higher-order φ-adic coordinate presentations
+### P-2 `AX_om_present` — STRUCK to hypothesis-only (audit GAP-2); tombstone
+
+Rev 1 proposed GMN §2's admissible φ-developments (iterated down a recorded key
+tower) as the optional "budget-saver" supplying the seed's pres/Theta half. The
+audit confirmed rev 1's own expected outcome ("P-2 survives only in reduced form
+or not at all") at its strong end — NOTHING declarable remains:
+* carve-out (i) fires: `IsUnitriangular (Theta i)` is Fact A's ≺-triangular
+  DIVISION ACCOUNTING — PROVED corpus content (Moves `L0_FactA_exists`/
+  `L0_FactB_unique`), ours; GMN does not state it in this coordinate form.
+* carve-out (ii) fires: the DIGIT-level chart (coefficients → `ZMod p` tuples
+  through the block convention, `pres` itself as a base-p digit statement) rides
+  on the K1-height reading — R4.5 item 1, OURS, not GMN-citable.
+* the post-carve-out residue — polynomial-level φ-development existence/
+  uniqueness iterated down the recorded keys — is ALREADY PROVED (Fact A/B,
+  iterated): declaring it would AXIOMATIZE PROVABLE MATERIAL.
+* the un-reduced form would import our-math as ∃-CONCLUSION conjuncts
+  (`pres_zero`'s baseDigit chart, the ≺-sort, `pres_block`'s block convention) —
+  conclusion-side conventions are IMPORTS, not selections.
+Also on record from the audit: (a) rev 1's "P-2 and SEED-EXIST are
+interchangeable suppliers" was NOT literal — P-2's unitriangularity conjunct was
+BOUNDED (`∀ i, i < H.nodes.length`) where `PresentSeed.Theta_uni`/`JetSetup` need
+UNBOUNDED `∀ i` (junk-index patching `Theta i := id` beyond `len` would have been
+required); (b) rev 1's carve-out (i) referenced a unit "U12′" that exists nowhere
+in the census — the PHANTOM UNIT is DELETED with this tombstone.
+DISPOSITION: no axiom, and no new named hypothesis either — SEED-EXIST (Wall B)
+is the sole supplier of D5 values, and the would-be P-2 content is either proved
+(Fact A/B) or already inside SEED-EXIST. The campaign plan's "budget-saver" line
+is answered: the saving was illusory. No downstream unit ever referenced P-2 by
+name (they consume `PresentSeed` values only), so the striking is
+consumer-invisible.
+
+### P-3 `AX_om_uniq` — STRUCK to hypothesis-only (audit GAP-3); tombstone + standing probe
+
+Rev 1 proposed choice-independence of η-data (same f, same shape, same recorded
+branch choices, normalized presentations ⇒ equal η-data) as the U18/U26 fallback.
+The audit found the fallback ILLUSORY AS TYPED, and the citation direction wrong:
+* TYPE MISMATCH: U18 (= MovesD's `PresentNorm` clause (ii)) and U26 quantify over
+  `H, H' ∈ PrefSet` — histories carry NO polynomial, and two members are in
+  general runs of DIFFERENT `f`'s. P-3 hypothesized `ReadsOf … f H` and
+  `ReadsOf … f H'` at the SAME `f` plus `branchChoicesOf H = branchChoicesOf H'`
+  — hypotheses simply UNAVAILABLE in the consumers' context. If U18 fails as a
+  proof, P-3 as displayed rescues nothing; the axiom that WOULD rescue it is
+  essentially U18 itself.
+* CITATION DIRECTION: (P4b) (verified verbatim in `GMN_citations.md`) asserts the
+  data `(λ, ψ)` "depend on this choice" — GMN states choice-DEPENDENCE with
+  per-choice factorization validity plus intrinsic `(e,f)` (Cor 1.20). The η-data
+  EQUALITY under our canonical normalization is OUR normalization theorem, not
+  the cited invariance — so retyping P-3 to match U18's quantification would make
+  the axiom BE our theorem: UNDECLARABLE. ("HN" was never pinned; that duty
+  lapses with this striking — §3 header.)
+DISPOSITION: U18 stays PROOF-FIRST (unchanged — the only real route; sketch at
+U18). If the proof fails, its consumers carry the named hypothesis
 
 ```lean
-/-- PROPOSAL P-2 (NOT DECLARED; the optional budget-saver for the pres/Theta seed
-half). GMN §2's admissible φ-developments, iterated down a recorded key tower:
-every monic degree-n integral polynomial has, at every frame i of a coherent
-history H with recorded keys, a UNIQUE block-local digit presentation refining the
-frame-(i+1) one. Stated as: the seed's presentation spine exists. -/
-axiom AX_om_present {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realizable H)
-    (n N m : ℕ) (hm : m = n * N) (hN : 1 ≤ N)
-    (keys : ℕ → Polynomial ℤ_[p])
-    (hkeys : ∀ (i : ℕ) (hi : i < H.nodes.length), LandingKey (H.nodes[i]'hi) (keys i))
-    (hmid : ∀ (i : ℕ) (hi : i + 1 < H.nodes.length), keys i = (H.nodes[i+1]'hi).σ.Φ) :
-    ∃ (coordOf : Fin m → Coord) (pres : ℕ → (Fin m → ZMod p) → Polynomial ℤ_[p] → Prop)
-      (Theta : ℕ → ((Fin m → ZMod p) → (Fin m → ZMod p))),
-      (∀ j j' : Fin m, j < j' ↔ CoordPrec (coordOf j) (coordOf j')) ∧
-      (∀ j : Fin m, (coordOf j).1 < N ∧ (coordOf j).2 < n) ∧
-      (∀ x f, pres 0 x f ↔ ∀ j, x j = baseDigit p (coordOf j).1 (f.coeff (coordOf j).2)) ∧
-      (∀ i, i ≤ H.nodes.length → ∀ f : Polynomial ℤ_[p], f.Monic → f.natDegree = n →
-        ∃ x, pres i x f) ∧
-      (∀ i, i < H.nodes.length → ∀ x f, pres (i+1) x f → pres i (Theta i x) f) ∧
-      (∀ i, i < H.nodes.length → IsUnitriangular (Theta i)) ∧
-      (∀ i, i < H.nodes.length →   -- pres_block, verbatim JetSetup shape
-        ∀ (f f' : Polynomial ℤ_[p]) (x x' : Fin m → ZMod p), pres (i+1) x f → pres (i+1) x' f' →
-        ∀ (B B' : ℕ → Polynomial ℤ_[p]) (Nd Nd' : ℕ),
-          IsDevelopment (keys i) f B Nd → IsDevelopment (keys i) f' B' Nd' →
-          ∀ c : Fin m,
-            B ((coordOf c).2 / (keys i).natDegree) = B' ((coordOf c).2 / (keys i).natDegree) →
-            x c = x' c)
+/-- The uniqueness supplier hypothesis — typed VERBATIM as U18's statement
+(MovesD `PresentNorm` clause (ii)). NEVER an axiom. -/
+def OmUniqHyp {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (n : ℕ) (pol : CanonPolicy p F) (P : Shape n) : Prop :=
+  ∀ H H', H ∈ PrefSet n pol P → H' ∈ PrefSet n pol P →
+    EtaGalEq (etaData H) (etaData H') → etaData H = etaData H'
 ```
 
-* citation map: φ-adic developments of higher order and their canonicity — GMN
-  §2.5 (the `φ`-expansions and the operators `R_r`; Def 2.14–2.19), existence and
-  uniqueness of the development against a monic key — GMN §1.2 (order 1) + §2.5
-  (order r); block-locality is the development's slot structure (Def 2.14).
-* **CARVE-OUT WARNINGS:** (i) `IsUnitriangular (Theta i)` — the ≺-triangular
-  DIVISION ACCOUNTING is Fact A's bookkeeping (Moves `L0_FactA_exists`/
-  `L0_FactB_unique`, PROVED, ours); GMN does not state it in this coordinate
-  form. Preferred split: DELETE the Theta_uni conjunct from the axiom and prove
-  it in U12′ from Fact A over the axiom's pres/Theta (keeps the axiom smaller
-  than the citation, never larger). (ii) The DIGIT-level chart (coefficients →
-  `ZMod p` tuples through the block convention, i.e. `pres` itself as a base-p
-  digit statement) rides on the K1-height reading — R4.5 item 1, OURS. If the
-  guardian judges the digit-flattening not GMN-citable, P-2 collapses to the
-  polynomial-level development statement and the digit chart stays in SEED-EXIST
-  (HC-1). EXPECTED OUTCOME: P-2 survives only in reduced form or not at all —
-  it is listed because the campaign plan names it the budget-saver; the DEFAULT
-  route remains SEED-EXIST (Wall B). P-2 and SEED-EXIST are interchangeable
-  suppliers of D5's spine fields; no downstream unit references either by name
-  (they consume `PresentSeed` values only).
-* non-vacuity probe: the root-only n=2 history — the axiom's output at i=0 must
-  reproduce the literal `baseDigit` chart (pres_zero forces it). Mutation probe:
-  drop `hmid` → must break (the tower would develop against unrecorded keys).
-* faithfulness-entry DRAFT: VERIFIED CORE = GMN §1.2/§2.5 existence+uniqueness of
-  φ-developments per key tower, per fixed p; SAYS NO MORE = existence-only, no
-  counting/measure content, digit-flattening carved out per (ii); SAYS NO LESS =
-  the ≺-sort and box-cutoff conjuncts are our bookkeeping conventions riding as
-  conclusion shape, not GMN claims (guardian to confirm this is acceptable or
-  demand their removal to lemma form); CONSUMED BY: D5-seed supply only.
-
-### P-3 `AX_om_uniq` — OM-invariant choice-independence (uniqueness leg)
-
-```lean
-/-- PROPOSAL P-3 (NOT DECLARED; PROOF-FIRST — declare only if U18/U26 fail as
-proofs). Two realizable coherent histories of the SAME polynomial through the same
-shape with normalized (canonical-root, canonical-lift) presentations have EQUAL
-η-data. GMN: types are non-intrinsic but their invariants are; the per-choice
-factorizations correspond. -/
-axiom AX_om_uniq {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    {n : ℕ} (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n)
-    (H H' : History p F)
-    (hrun : ReadsOf p F n f H) (hrun' : ReadsOf p F n f H')
-    (hshape : shapeOfHist H = shapeOfHist H')   -- same ShapePrefix (MovesD vocabulary)
-    (hcanon : (polOM p F).IsCanonPres H) (hcanon' : (polOM p F).IsCanonPres H')
-    (hbr : branchChoicesOf H = branchChoicesOf H') :  -- same recorded (side, ψ) choices
-    etaData (shapeOfHist H) H = etaData (shapeOfHist H') H'
-```
-
-* citation map: GMN §1.5 ("types are not intrinsical objects… the data λ, ψ(y)
-  depend on this choice" WITH the per-choice factorization — already pinned as
-  (P4b) in GMN_citations.md) + Cor 1.20 (the invariants (e,f) intrinsic) + the
-  order-r analogues (Def 2.12 sequel, Def 3.10 remark — pinned as (P4c)); the
-  "HN" companion pin (§3 header) for the invariance apparatus at all orders.
-* **PROOF-FIRST INSTRUCTION:** U18 (PresentNorm uniqueness) is expected PROVABLE
-  outright — normalized classes pin `zbar = canonRoot` per read, and `EtaGalEq`'s
-  automorphism must fix each `fieldEnum`-least root it relates, whence fix the
-  generated tower pointwise (mathlib finite-field Galois theory). P-3 exists ONLY
-  as the fallback if the per-read induction hits genuinely Montes-theoretic
-  content (e.g. cross-read rigidity of the recorded ψ-coefficients). U26
-  (ClassFiberWelldef) is likewise proof-first via Theorem C(a) at Z = ⊤.
-* mutation probe: drop `hbr` → MUST NOT be provable/declared (two same-shape
-  factors give distinct branches with equal shape — the §D4-R F1 refutation
-  instance; an axiom without `hbr` is FALSE). This probe is mandatory in the
-  guardian charge — it is exactly the dual-bar critical that punctured §D4-R.
-* faithfulness-entry DRAFT: VERIFIED CORE = per-choice factorization
-  correspondence + intrinsic invariants (GMN §1.5, Cor 1.20, order-r remarks);
-  SAYS NO MORE = data-equality of recorded η only, under IDENTICAL branch
-  choices; no counting content; SAYS NO LESS = normalization clauses are our
-  conventions (hypothesis side). CONSUMED BY: U18/U26 fallback only.
+(consumed by U15/U16 through `hnorm`'s uniqueness clause, and by U26) — a
+recorded non-discharge, never a declaration.
+RETAINED — THE STANDING PROBE (audit-confirmed well-formed and FIRING): the
+`hbr`-drop mutation probe. §D4-R L2's rev-6 F1 record ("two same-shape factors
+are simultaneously eligible") supplies same-f, same-shape, DISTINCT-BRANCH
+histories with DISTINCT η-data — refuting any uniqueness statement lacking a
+branch-identity hypothesis. This probe rides in the guardian charge PERMANENTLY:
+any FUTURE uniqueness declaration, at any type, must survive it (it is the dual
+of the F1 critical that punctured §D4-R).
 
 ## 4. Defs skeleton — `lean/LeanUrat/MovesJ/Defs.lean` (definitions only)
 
@@ -307,8 +435,8 @@ Imports: `Mathlib`, `LeanUrat.MovesC.Defs`, `LeanUrat.Moves.Defs{,Core,L,T}`,
 lands, per the wave plan). Namespace `LeanUrat.MovesJ`,
 `open LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD`.
 
-DECLARATION ORDER (normative, the MovesD §3.0 discipline): D1 → D3 → D2 → D4 →
-D5 → D6 → D7. NO axiom declarations in this file, ever (proposals live in §3 of
+DECLARATION ORDER (normative, the MovesD §3.0 discipline): D1 → D3 → D2 → D8 →
+D4 → D5 → D6 → D7 (D8 added at rev 2, audit GAP-1). NO axiom declarations in this file, ever (proposals live in §3 of
 this note until their gate chain completes; if declared, they go in a dedicated
 `MovesJ/Axioms.lean` behind the guardian gate, mirroring `OM/OmLeafFaithful.lean`).
 
@@ -343,9 +471,12 @@ w(t) = w(Φ), dig(t) = c̃ (position 0)".
 ### D2 `polOM` — the canonical policy instance (POL-PIN's carrier)  [easy]
 
 ```lean
-/-- THE canonical policy: at every node, the classically chosen realizer of
-`RecenterLiftSpec` when one exists, else 0. Deterministic; reads only (σ, center)
-— never the lift field — so `blind` holds. -/
+/-- THE canonical policy — nominally the note's (S6b′) OFFSET-P policy (MovesD
+§2's POL-PIN row names it so; naming per the rev-2 GAP-6 reconciliation),
+delivered as the choice-selected realizer of that policy's specification: at
+every node, the classically chosen realizer of `RecenterLiftSpec` when one
+exists, else 0. Deterministic; reads only (σ, center) — never the lift field —
+so `blind` holds. -/
 noncomputable def polOM (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] :
     CanonPolicy p F where
   liftOf ν := if h : ∃ tL, RecenterLiftSpec ν tL then h.choose else 0
@@ -355,7 +486,8 @@ noncomputable def polOM (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F
     -- are literally the same proposition/term.
     rfl
 ```
-**DISPLAYED CANONICITY DEVIATION (for the audit + POL-PIN record):** the note's
+**DISPLAYED CANONICITY DEVIATION — RATIFIED (audit 2026-07-28, RULING 2; record
+below):** the note's
 canonical policy is the (S6b′) OFFSET-P FORMULA (§B2-DEF MOVES 2446–2449: anchor
 slot j₀ forced by the congruence, summands t_k·Φ^{j₀+e·k}, prescribed digits);
 `polOM` is instead THE choice-selected realizer of the SAME spec
@@ -368,6 +500,24 @@ as a construction) remains HC-1 property and can later replace `h.choose` with
 zero consumer changes (same spec). If the audit rejects the substitution, U25
 re-keys to the formula and inherits HC-1's D.7 dependency — recorded as the
 downgrade path.
+
+**AUDIT RULING 2 (2026-07-28): RATIFIED, with the GAP-6 naming condition —
+discharged here.** The auditor verified SPEC-IDENTITY: `RecenterLiftSpec` is
+verbatim `LandingKey`'s recentering conjuncts (MovesC/Defs.lean 552–557) = D.10's
+admissible-lift clause ("take ANY t ∈ C_Φ̂ with v(t) = v(Φ̂) and dig(t) = c̃",
+MOVES 2593–2594); D.10's dual-accepted lift-independence ("everything below
+depends on t only through (v(t), dig(t))", whose honest below-the-line scope no
+HC-2 consumer crosses) + ∀-pol MovesD theorems + lift-free `etaData` (MOVESD
+707–711) ⇒ every spec-realizer — the offset-P formula included — produces
+identical graded data, η's, masses, counts, gates. `polOM` is deterministic;
+`blind := rfl` plausible under structure eta. CONDITION DISCHARGE (GAP-6): rev 2
+therefore NAMES `polOM` under the offset-P policy (docstring above) — MovesD §2's
+row "pol := the (S6b) offset-P policy" is satisfied by `polOM` AS the
+spec-realized instance of that policy; THIS PARAGRAPH IS THE SIGN-OFF the audit
+demanded, and the wave-4 reconciliation copies it into MovesD's ledger row (seam
+registry, §7.6) so no nominal drift is flagged. U25's totality-of-the-∃ (weaker
+than the formula's totality; math support: PROJECT_STATE "kernel (a)+(b)
+DISCHARGED") and the U30 tripwire remain the D.10 scale-risk insurance.
 
 ### D4 `ReadsOf` — the f-explicit run predicate (Wall A; the W4-1 seam)  [def-only]
 
@@ -412,39 +562,55 @@ box/vertex/transport shape — reuse it verbatim for the μ-side reading rather 
 re-deriving). moves_ref: §D4-R L2 "ALL next-node data ν = (side s, its digit
 tuple, ψ, canonical lift) where s is an eligible side of the polygon f produces
 in η's frame"; §C C.3 "the classifier reads actual hull sides".
+NON-VACUITY ANCHOR (rev 2, audit GAP-4): U31 `gate_readsOf_inert2` instantiates
+`ReadsOf` on concrete order-0 data in the FIRST E-phase block — if the E-phase
+transcription of `SideReads` over-strengthens, `ReadsOf` goes EMPTY, U19–U24 turn
+vacuously true, and the W4-1 `eligible` seam dies silently (the pre-rebase trap);
+U31 converts that failure mode into a day-one gate. See Layer E.
 
 ### D5 `PresentSeed` — the graded seed (Wall B; the HC-1 interface)  [def-only]
 
+REV 2 (audit GAP-5): PRUNED to the genuinely deferred fields. Moved OUT (they
+were provable or constructible, inflating HC-1's obligation and falsifying the
+docstring's minimality claim): `coordOf`/`coordOf_sorted`/`coordOf_lt` — the
+chart is D1's `boxChart` (audit-checked against C.0's display: level-major,
+base-descending, with the recorded `n = 0` junk-guard), hardwired below;
+`keys`/`keys_mid`/`landing` — U1 PROVES a lawful tower exists from coherence;
+`keys` becomes a structure PARAMETER with U1's laws named `KeysLawful`;
+`hm`/`hN` — hypotheses at the consuming units (the tuple type is `Fin (n * N)`
+directly; the parameter `m` is eliminated).
+
 ```lean
+/-- U1's key-tower laws, named (rev 2): interior keys are the recorded child
+keys, and EVERY read (incl. the final one) lands on `keys i`. -/
+def KeysLawful {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : History p F) (keys : ℕ → Polynomial ℤ_[p]) : Prop :=
+  (∀ (i : ℕ) (hi : i + 1 < H.nodes.length), keys i = (H.nodes[i+1]'hi).σ.Φ) ∧
+  (∀ (i : ℕ) (hi : i < H.nodes.length), LandingKey (H.nodes[i]'hi) (keys i))
+
 /-- The graded-presentation SEED: exactly the fields of `JetSetup` that MovesC's
 honest boundary defers to the unbuilt graded ring (§B2-DEF R4.5 items 1&3), and
-NOTHING else. HC-1 (or proposal P-2, reduced form) supplies values; U13 proves
-`JetSetup` from a seed. Field statements are byte-identical to `JetSetup`'s. -/
+— after the rev-2 pruning — literally NOTHING else. HC-1 supplies values
+(SEED-EXIST, Wall B); U13 proves `JetSetup` from a seed. Field statements are
+byte-identical to `JetSetup`'s at `coordOf := boxChart n N` and these `keys`. -/
 structure PresentSeed (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
-    (H : History p F) (n N m : ℕ) where
-  hm : m = n * N
-  hN : 1 ≤ N
-  coordOf : Fin m → Coord
-  coordOf_sorted : ∀ j j' : Fin m, j < j' ↔ CoordPrec (coordOf j) (coordOf j')
-  coordOf_lt : ∀ j : Fin m, (coordOf j).1 < N ∧ (coordOf j).2 < n
-  keys : ℕ → Polynomial ℤ_[p]
-  keys_mid : ∀ (i : ℕ) (hi : i + 1 < H.nodes.length), keys i = (H.nodes[i+1]'hi).σ.Φ
-  landing : ∀ (i : ℕ) (hi : i < H.nodes.length), LandingKey (H.nodes[i]'hi) (keys i)
-  pres : ℕ → (Fin m → ZMod p) → Polynomial ℤ_[p] → Prop
-  pres_zero : ∀ x f, pres 0 x f ↔ ∀ j, x j = baseDigit p (coordOf j).1 (f.coeff (coordOf j).2)
+    (H : History p F) (n N : ℕ) (keys : ℕ → Polynomial ℤ_[p]) where
+  pres : ℕ → (Fin (n * N) → ZMod p) → Polynomial ℤ_[p] → Prop
+  pres_zero : ∀ x f, pres 0 x f ↔
+      ∀ j, x j = baseDigit p (boxChart n N j).1 (f.coeff (boxChart n N j).2)
   pres_total : ∀ i, i ≤ H.nodes.length → ∀ f : Polynomial ℤ_[p],
       f.Monic → f.natDegree = n → ∃ x, pres i x f
-  Theta : ℕ → ((Fin m → ZMod p) → (Fin m → ZMod p))
+  Theta : ℕ → ((Fin (n * N) → ZMod p) → (Fin (n * N) → ZMod p))
   Theta_uni : ∀ i, IsUnitriangular (Theta i)
   pres_theta : ∀ i, i < H.nodes.length → ∀ x f, pres (i+1) x f → pres i (Theta i x) f
-  pres_block : (verbatim JetSetup.pres_block, at these keys)
+  pres_block : (verbatim JetSetup.pres_block, at these keys and boxChart)
   /-- R4.5 item 1: the graded piece map of each recorded value support — a
   TypObject with FULL alphabet (Fin S.card → ZMod p): D.3(e)(i)'s additive span +
   D.3(e)(ii)'s attainable accounting, jointly (surjectivity onto the full p^{|S|}
   alphabet IS the two identifications' consumer form). -/
-  typObj : ∀ (i : ℕ) (hi : i < H.nodes.length) (S : Finset (Fin m)),
-      IsValueSupport H coordOf i (H.nodes[i]'hi) S →
-      TypObject p m S (Fin S.card → ZMod p)
+  typObj : ∀ (i : ℕ) (hi : i < H.nodes.length) (S : Finset (Fin (n * N))),
+      IsValueSupport H (boxChart n N) i (H.nodes[i]'hi) S →
+      TypObject p (n * N) S (Fin S.card → ZMod p)
   /-- the height law consumer form (LST(i), R4.5 item 3): the DEFINED `History.htH`
   is the presentation's own height reading — carried as the ZC-seed law the U10
   induction consumes; exact clause list fixed at E-phase against C.1.5's proof
@@ -453,16 +619,21 @@ structure PresentSeed (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
   a fresh-band/floor consequence (U-layer), the second is C0.pinTransport;
   whatever residue of C.1.5's step is NOT derivable from the above lands HERE as
   named seed laws, never silently). -/
-  zcSeed : ZCSeedLaws H coordOf pres Theta keys
+  zcSeed : ZCSeedLaws H (boxChart n N) pres Theta keys
 ```
+Coverage map (audit-verified faithful, now also MINIMAL): pres/Theta + laws →
+the presentation spine; typObj → the TYP piece maps + D.3(e)(ii); zcSeed →
+LST(i)/the two `htH` identifications. Nothing else.
 FENCE: `ZCSeedLaws` is a TO-BE-FIXED-AT-E-PHASE Prop bundle; the blueprint
 pre-authorizes ONLY laws that are (a) stated in §C C.1.5/rev-9's display or
 (b) §B2-DEF D.3(e) content — anything else added there is a statement-fence event
-requiring sign-off. The audit round must check `ZCSeedLaws`'s final field list
-against C.1.5's proof line by line. [This is the blueprint's declared
-seam-of-least-knowledge: the exact split of the C.1.5 induction between provable
-(U10) and seed (zcSeed) is the one genuinely open design point — the stuck-rule's
-expected firing site.]
+requiring sign-off. STANDING OBLIGATION (rev 2, audit GAP-7(iii)): the E-PHASE
+audit round checks `ZCSeedLaws`'s final field list line-by-line against C.1.5's
+proof — every field a quoted note display; the check is NOT dischargeable before
+the list exists and is carried forward explicitly. [This remains the blueprint's
+declared seam-of-least-knowledge: the exact split of the C.1.5 induction between
+provable (U10) and seed (zcSeed) is the one genuinely open design point — the
+stuck-rule's expected firing site.]
 
 ### D6 `mkFresh` — the fresh-data constructor  [def-only]
 
@@ -472,8 +643,8 @@ expected firing site.]
 recorded span slot with nonempty exact-valuation level set, with support that
 level set, codim = |support|, and constraint `typObj.φ x = vOf i j` (the emitted
 value at the node's read digit — the R4.B.2 provenance boundary). -/
-noncomputable def mkFresh {p F …} (H) (n N m) (S : PresentSeed p F H n N m)
-    (vOf : ℕ → ℕ → …) (i : ℕ) (hi : i < H.nodes.length) : FreshData p m := …
+noncomputable def mkFresh {p F …} (H) (n N) {keys} (S : PresentSeed p F H n N keys)
+    (vOf : ℕ → ℕ → …) (i : ℕ) (hi : i < H.nodes.length) : FreshData p (n * N) := …
 ```
 Consumes MovesC's `C1.stripClause` (strip `LevelClause` constructor) and
 `C1.TYP_toClause` (TypObject → LevelClause) — both PROVED units. The emitted
@@ -501,12 +672,44 @@ coordinates) + a strip/value pin-attachment constructor. The (ZC)-relevant
 geometry (WHICH coordinates the value clauses pin) is settled by U9/U10, not by
 this definition; the definition only fixes the digit-system CARRIER.
 
+### D8 `IsReadLift` — the read-pair lift predicate (rev 2, the GAP-1 keying)  [easy]
+
+```lean
+/-- The `IsNodeLift` formula abstracted off `Node` (rev 2, audit GAP-1): stride
+`e'`, CURRENT-valuation weights `σ.w (t_k) = h'·(g−k)`, digit scalars the literal
+ψ-coefficients at the frame's forced (S5) positions — the READ's own pair (the
+F10 adjudication), NOT the frame-creating pair of `IsStandardLift`. -/
+def IsReadLift {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g e' h' : ℕ)
+    (Φhat : Polynomial ℤ_[p]) : Prop :=
+  ∃ tt : ℕ → Polynomial ℤ_[p],
+    (∀ k, ψ.coeff k = 0 → tt k = 0) ∧
+    (∀ k, k < g → ψ.coeff k ≠ 0 →
+        tt k ≠ 0 ∧ inC σ.Φ (tt k) ∧
+          σ.w (tt k) = (h' : ℤ) * ((g : ℤ) - (k : ℤ)) ∧
+          σ.R (tt k) = LaurentPolynomial.C (ψ.coeff k) *
+            LaurentPolynomial.T (- σ.t * σ.wPrev (tt k))) ∧
+    Φhat = σ.Φ ^ (e' * g) + ∑ k ∈ Finset.range g, tt k * σ.Φ ^ (e' * k)
+```
+definitional lemma (same file): `isNodeLift_iff : IsNodeLift ν Φhat ↔
+IsReadLift ν.σ ν.ψ ν.g ν.e ν.h Φhat` — both sides are the same formula at
+`(ψ, g, e', h') := (ν.ψ, ν.g, ν.e, ν.h)` (unfold). Consumers: `StageTransHyp` and
+P-1-reduced key `hlift` by THIS predicate (§3); U1/U1b discharge it; U17a's
+rebuilds route through it. moves_ref: MovesC `IsNodeLift` (Defs.lean 535–543) +
+the round-3 F10 record ("the D.5 lift positions use the READ's own pair, while
+Stage.(e,h,s,t) records the frame-CREATING read's").
+
 
 ## 5. Unit specs (campaign §2 format; every unit ≤ ~40 expected proof lines or pre-split)
 
 Binder conventions for all units: `variable {p : ℕ} [Fact p.Prime] {F : Type*}
-[Field F] [Finite F] {n N m : ℕ} {H : History p F}`; `S : PresentSeed p F H n N m`;
+[Field F] [Finite F] {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}`;
+`S : PresentSeed p F H n N keys`;
 `hcoh : HistoryCoherent H`; `hreal : Realizable H`; `len := H.nodes.length`.
+REV 2 NOTE (audit GAP-5): `m` reads `n * N` throughout (D5's pruning eliminated
+the `m` parameter and its `hm`/`hN` fields; units needing `1 ≤ N` carry it
+explicitly), and the chart is D1's `boxChart n N` wherever rev 1 wrote a seed
+chart field.
 `hypothesis_fields` lists the OPEN objects a statement carries — never silently
 strengthened or dropped (campaign rule).
 
@@ -524,12 +727,33 @@ FINAL one obey the recorded-data landing law"). deps: Moves `L3_liftExists`
 (standard lift exists, PROVED), `IsRecenteringCore` (final-read recentering:
 `Φ' = Φ − lift` is explicit). sketch: interior keys are recorded (coherence's
 `IsNodeLift`/`IsRecenteringCore` clauses ARE the landing law there — extract);
-the FINAL key: recentering → `σ.Φ − lift` literally; else `L3_liftExists` at the
-node's read index gives an `IsNodeLift` witness (check: L3's lift is at the
-STAGE pair; U1 needs the NODE pair (e,h,s,t) — the `IsNodeLift` reindexing; if
-L3's unit is stage-keyed only, add helper `nodeLift_exists`, same proof shape,
-(S6b) realizers at the node's h — the MovesC F10 lesson says DO NOT conflate).
-difficulty: medium. hypothesis_fields: none.
+the FINAL key: recentering → `σ.Φ − lift` literally; else U1b `nodeLift_exists`
+(rev 2: the owned stage↔node bridge, PROMOTED from this sketch's inline "check"
+per audit GAP-1) gives the `IsNodeLift` witness via D8's `isNodeLift_iff` —
+L3's lift is at the STAGE pair and must NEVER be conflated with the node pair
+(the MovesC F10 lesson). difficulty: medium. hypothesis_fields: none.
+
+**U1b `nodeLift_exists`** · `MovesJ/U1b_nodeLift.lean` · THE OWNED STAGE↔NODE
+BRIDGE (rev 2, audit GAP-1 — the F10 trap gets a named unit instead of an inline
+check). statement:
+```lean
+theorem nodeLift_exists (σ : Stage p F) (hσ : StageCoreL σ)
+    (ψ : Polynomial ↥σ.K) (g e' h' : ℕ) (hψm : ψ.Monic) (hψd : ψ.natDegree = g)
+    (hg : 1 ≤ g) (hh' : 1 ≤ h') …(the read's D.5 side conditions)… :
+    ∃ Φhat, IsReadLift σ ψ g e' h' Φhat
+```
+moves_ref: §B2-DEF D.5 (the lift at the READ's own pair, per the F10
+adjudication); MovesC `IsNodeLift` docstring. deps: D8, Moves `L3_liftExists`
+(the stage-pair sibling — its proof SHAPE only, never its statement),
+`Stage.hS6b`. sketch: L3's proof shape with the (S6b) realizers taken at the
+node's h (current scale). NAMED RISK: the stride/stretch arithmetic — `hStretch`
+puts C-weights in `e·ℤ` while the read pair wants `σ.w (t_k) = h'·(g−k)`; if some
+read pairs are unreachable from (S6b)'s parent-scale realizers, the D.5 side
+conditions enter as named hypotheses (statement-fence: hypothesis narrowing,
+sign-off + note-line citation — the U25 pattern). Consumers: U1 (final-read
+landing), U17a (rebuilt chains discharge `StageTransHyp`'s lift hypothesis), the
+P-1-reduced contingency (§3). difficulty: medium. hypothesis_fields: none
+(target), or the named D.5 side conditions (fallback).
 
 **U2 `mkFresh_disj`** · `MovesJ/U2_freshDisj.lean` ·
 `(mkFresh … i hi).clauses.Pairwise (Disjoint ·.support ·.support)`.
@@ -540,7 +764,7 @@ coords by definition; list construction indexes clauses by disjoint coordinate
 sets. difficulty: easy-medium. hypothesis_fields: none.
 
 **U3 `mkFresh_band`** · `MovesJ/U3_freshBand.lean` ·
-`∀ cl ∈ (mkFresh … i hi).clauses, ∀ c ∈ cl.support, inFreshBand H n S.coordOf i (H.nodes[i]'hi) c`.
+`∀ cl ∈ (mkFresh … i hi).clauses, ∀ c ∈ cl.support, inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c`.
 moves_ref: MovesC `JetSetup.fresh_band` docstring. deps: D6. sketch: strip
 supports are chosen from the band; value level-set members have height = slotVal
 (the band's upper edge) — membership needs `floorH < slotVal ≤ slotVal` and
@@ -570,7 +794,7 @@ bookkeeping). hypothesis_fields: the emitted values `vOf` (R4.B.2 boundary —
 free parameters here).
 
 **U6 `mkFresh_mstar`** · `MovesJ/U6_mstarEq.lean` ·
-`(mkFresh … i hi).mstar = Nat.card {c : Fin m // inFreshBand H n S.coordOf i (H.nodes[i]'hi) c}`.
+`(mkFresh … i hi).mstar = Nat.card {c : Fin m // inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c}`.
 moves_ref: `mstar_eq` docstring ("the presented fresh codimension sum equals the
 FRESH-BAND count computed from node data"). deps: U2–U5. sketch: mstar = Σ codim
 = Σ strips 1 + Σ value |support| = |non-value band| + |value band| (U3 supports ⊆
@@ -610,7 +834,7 @@ junk). difficulty: medium. hypothesis_fields: `hbox`.
 ### Layer B — the (ZC) induction (the hard core of the hard core)
 
 **U9 `zc_root`** · `MovesJ/U9_zcRoot.lean` ·
-`ZCData (mkSigma … 1) S.coordOf (H.htH 1) (H.floorH 1) ((H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth)`
+`ZCData (mkSigma … 1) (boxChart n N) (H.htH 1) (H.floorH 1) ((H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth)`
 (the i = 0 instance of `JetSetup.zc`). moves_ref: §C C.2 proof "initialized at
 the root (C.1.5's base = D.8 + D.11 at ν₀)". deps: U7, D6/D7, S.zcSeed, U11.
 sketch: after the root read, pins = root fresh cuts; downset-exactness: a level-0
@@ -622,7 +846,7 @@ hypothesis_fields: S.zcSeed.
 
 **U10 `zc_step`** · `MovesJ/U10_zcStep.lean` · the inductive step: given
 `ZCData (mkSigma … (i+1)) … (rim i)`, prove
-`ZCData (mkSigma … (i+2)) S.coordOf (H.htH (i+2)) (H.floorH (i+2)) (rim (i+1))`.
+`ZCData (mkSigma … (i+2)) (boxChart n N) (H.htH (i+2)) (H.floorH (i+2)) (rim (i+1))`.
 moves_ref: §C C.1.5 (per-step conditional exactness): "(1) multiplies the mass by
 exactly vol_nom(E_fresh(ν_{i+1})); (2) re-establishes (ZC)". deps: U3–U7, S
 (zcSeed, Theta_uni, pres_block), `C0.pinTransport`, MovesC `C2.freshFree`,
@@ -642,15 +866,20 @@ S.zcSeed, hreal.
 
 **U13 `jetSetup_of_seed`** · `MovesJ/U13_assembly.lean` ·
 ```lean
-theorem jetSetup_of_seed (S : PresentSeed p F H n N m)
+theorem jetSetup_of_seed {keys : ℕ → Polynomial ℤ_[p]} (hkeys : KeysLawful H keys)
+    (S : PresentSeed p F H n N keys) (hN : 1 ≤ N)
     (hcoh : HistoryCoherent H) (hreal : Realizable H) (hbox : InBox n H)
-    (vOf : …) : Nonempty (JetSetup H n N m)
+    (vOf : …) : Nonempty (JetSetup H n N (n * N))
 ```
-moves_ref: MovesC `JetSetup` structure (all 25 fields). deps: U1–U11 (+U9/U10 for
-`zc`), D5–D7. sketch: field-by-field packaging; `coherent := hcoh`, `realizable
-:= hreal`, seed fields verbatim, constructed fields with their U-layer laws.
-difficulty: medium (assembly only). hypothesis_fields: S (SEED-EXIST's payload),
-hbox, vOf.
+moves_ref: MovesC `JetSetup` structure (all 29 fields — rev 2, audit GAP-7(i):
+the round-6 structure has 29, not the 25 rev 1 claimed). deps: D1 (`boxChart` +
+its two lemmas supply the chart fields), U1 (discharges `hkeys` at call sites),
+U2–U11 (+U9/U10 for `zc`), D5–D7. sketch: field-by-field packaging;
+`coordOf := boxChart n N` with D1's lemmas, `keys := keys` with `hkeys`'s two
+laws, `coherent := hcoh`, `realizable := hreal`, seed fields verbatim,
+constructed fields with their U-layer laws. difficulty: medium (assembly only).
+hypothesis_fields: S (SEED-EXIST's payload), hkeys (U1-dischargeable), hN, hbox,
+vOf.
 
 ### Layer C — MovesD discharge
 
@@ -671,16 +900,20 @@ hypothesis_fields: none beyond PrefSet membership.
 ```lean
 theorem present_exist_of_seeds {P : Shape n}
     (hseed : ∀ (i : PrefIdx n (polOM p F) P) (N : ℕ), P.NP (polOM p F) ≤ N →
-       Nonempty (PresentSeed p F (reprOf i) n N (n * N)))
+       ∃ keys, KeysLawful (reprOf i) keys ∧
+         Nonempty (PresentSeed p F (reprOf i) n N keys))
     (hnorm : PresentNorm n (polOM p F) P) :
     ∀ N : ℕ, P.NP (polOM p F) ≤ N → Nonempty (Presented p F n N (n * N) (polOM p F) P)
 ```
 moves_ref: MovesD §2 PRESENT-EXIST row ("∀ N ≥ P.NP pol, Nonempty (Presented …) —
 presentability at every level of L12's exact range (§C C.2)"). deps: U13, U14
 (reprOf i ∈ PrefSet gives hcoh/hreal/hbox), U17/U18 (hnorm — or carried).
-sketch: `jet i := jetSetup_of_seed (hseed i N hN).some …`; `hnorm := hnorm`.
-difficulty: easy-medium. hypothesis_fields: **hseed = SEED-EXIST (HC-1)**; hnorm
-(dischargeable by U17/U18, else carried).
+sketch: obtain `⟨keys, hkeys, ⟨S⟩⟩ := hseed i N hN`; `jet i := jetSetup_of_seed
+hkeys S …`; `hnorm := hnorm`. `hseed` is SEED-EXIST VERBATIM (Wall B's rev-2
+display — the single, reprOf-form statement recorded as HC-1's deliverable per
+audit GAP-5; rev 1's two divergent displays are gone). difficulty: easy-medium.
+hypothesis_fields: **hseed = SEED-EXIST (HC-1)**; hnorm (dischargeable by
+U17/U18, else carried).
 
 **U16 `threshold_of_seeds`** · `MovesJ/U16_threshold.lean` ·
 `… → Nonempty (Threshold p F n (polOM p F) P)` via MovesD's `TW_threshold_witness`
@@ -693,18 +926,21 @@ difficulty: easy. hypothesis_fields: hseed, hnorm.
 lifts = `polOM.liftOf`, `HistoryCoherent H'`, `Realizable H'`, `InBox n H'`.
 moves_ref: MovesD §3.2 PresentNorm docstring clause (i) totality "= L1's
 kernel-(a) totality + the L6-corollary + conjugation equivariance"; §B2-DEF D.10
-"lift independence". deps: U25 (polOM total on eligible nodes), Moves
-`L5_recLiftIndep_R4` (PROVED — D.10's lift-independence core), P-1 OR HC-1-TRANS
-(swapping a lift changes the child key `Φ′ = Φ − t′`, so the DOWNSTREAM stages
-must be rebuilt — stage existence enters HERE). sketch: induct along the chain;
-at each recentering replace lift and rebuild the child stage by
-`IsRecenteringCore` (explicit construction, Moves DefsCore 242 — check whether
-the recentered stage is CONSTRUCTED by a proved Moves unit or only specified;
-if specified-only, this is P-1's recentering sibling — add it to P-1's ∃ or
-consume HC-1); transport the remaining reads (their data are development-side,
-unchanged by the D.10 independence lemma). difficulty: HARD — escalation risk;
-the one unit consuming stage RECONSTRUCTION. hypothesis_fields: stage-existence
-supplier (P-1 | HC-1-TRANS | named hyp `StageTransHyp`).
+"lift independence". deps: U25 (polOM total on eligible nodes), U1b (read-pair
+lift discharge), Moves `L5_recLiftIndep_R4` (PROVED — D.10's lift-independence
+core), `StageTransHyp` (swapping a lift changes the child key `Φ′ = Φ − t′`, so
+the DOWNSTREAM stages must be rebuilt — stage existence enters HERE, ONLY through
+the named hypothesis: rev 2 per audit GAP-6/§7.3(v), no unit names P-1). sketch:
+induct along the chain; at each recentering replace lift and rebuild the child
+stage by `IsRecenteringCore` (explicit construction, Moves DefsCore 242 — check
+whether the recentered stage is CONSTRUCTED by a proved Moves unit or only
+specified; if specified-only, this is `StageTransHyp`'s recentering sibling —
+extend `StageTransHyp`'s signature, a designer-round event, or consume HC-1);
+transport the remaining reads (their data are development-side, unchanged by the
+D.10 independence lemma). difficulty: HARD — escalation risk; the one unit
+consuming stage RECONSTRUCTION. hypothesis_fields: `StageTransHyp` (§3 —
+discharge: HC-1's D.7 induction, or the recorded P-1-reduced contingency;
+consumer-invisible either way).
 
 **U17b `galois_normalize`** · `MovesJ/U17b_galois.lean` · statement: for coherent
 realizable H there is `φ : F ≃+* F` and `H'` with `zbar`'s = `canonRoot` at every
@@ -736,8 +972,11 @@ induction up the tower φ fixes the generated subfield (least-root pinning:
 φ permutes the root set of the SAME polynomial once coefficients are fixed, and
 order-preservation of the FIXED enumeration forces the least root to the least
 root — φ fixes it; then the frame subfield of the next read is generated by
-fixed elements). PROOF-FIRST; P-3 is the recorded fallback. difficulty: hard.
-hypothesis_fields: none (or P-3 if it fails).
+fixed elements). PROOF-FIRST — and rev 2 REMOVES the illusory axiom fallback
+(P-3 STRUCK, audit GAP-3: it could not discharge this statement as typed). If
+the proof fails, the consumers carry `OmUniqHyp` (§3), typed verbatim as this
+statement — a recorded non-discharge, never a declaration. difficulty: hard.
+hypothesis_fields: none (or `OmUniqHyp` if it fails).
 
 ### Layer D — the run predicate and realizability (Wall A)
 
@@ -830,16 +1069,18 @@ DIFFERENT seeds may present differently; the Prop (check MovesD's final typing
 at E-phase) should be consumed at FIXED presentation data. If the Prop
 quantifies over jets, prove locus-equality via Theorem C(a) (both loci = the
 same transported T(H,⊤) system). DEFERRABLE: D15 carries it as `hwd`; deferral
-is a recorded non-discharge, not a failure. difficulty: hard. fallback: P-3.
-hypothesis_fields: possibly P-3.
+is a recorded non-discharge, not a failure. difficulty: hard. fallback:
+`OmUniqHyp` (§3; P-3 STRUCK — rev 2). hypothesis_fields: possibly `OmUniqHyp`.
 
 ### Layer E — the order-0 gates (the realF2 lesson; run FIRST at E-phase)
 
 **U27 `gate_order0_inert`** · `MovesJ/U27_gateInert.lean` · the root-only n = 2
 inert history at p = 2: construct `H₀` (one root read; the inert shape's side +
-residual data), a CONCRETE `PresentSeed` (the literal `baseDigit` chart; `pres i`
-for i = 0 only-history; Theta trivial-free since len = 1 uses only Θ₀), fire
-`jetSetup_of_seed`, then check via MovesC `C6.thmC_b`:
+residual data), the U1 key tower, a CONCRETE `PresentSeed` at it (rev 2: the
+chart is D1's `boxChart`, no longer a seed field; the seed supplies `pres` — the
+literal `baseDigit` chart at the root-only history — Theta trivial since len = 1
+uses only Θ₀, plus concrete typObj/zcSeed), fire `jetSetup_of_seed`, then check
+via MovesC `C6.thmC_b`:
 `Nat.card (S(H₀,⊤) ∩ box) * 2^(totalPins) = 2^(2N)` with totalPins = the inert
 shape's m* — and tie the resulting stratum mass to the independently recorded
 engine value (realM2's decided count for the inert shape at n = 2; the 1/4
@@ -870,77 +1111,131 @@ risk's early tripwire: if even the witness instance fails to typecheck against
 `RecenterLiftSpec`, the scale-bookkeeping risk fires at day one, not at
 escalation). difficulty: medium. hypothesis_fields: none.
 
+**U31 `gate_readsOf_inert2`** · `MovesJ/U31_gateReadsOf.lean` · the `ReadsOf`
+non-vacuity anchor (rev 2, audit GAP-4): at U27's root-only inert history `H₀`
+(p = 2, n = 2), a CONCRETE monic quadratic `f` (the inert gate's polynomial —
+the E-phase pins the exact instance from the W1/realF2 gate data) with
+`ReadsOf 2 F 2 f H₀` PROVED by an explicit development witness — axiom- and
+seed-free. Purpose: D4's `SideReads` body is an E-phase transcription duty; if
+the transcription over-strengthens, `ReadsOf` is EMPTY, U19–U24 become vacuously
+true, and the W4-1 `eligible` seam (MovesT re-keys to THIS predicate) dies
+silently — the pre-rebase trap the charge's item 2 exists for. U31 converts that
+silent death into a day-one gate failure; it runs in the FIRST E-phase block
+with U27/U30. difficulty: medium. hypothesis_fields: none.
+
 ## 6. The DAG, difficulty census, escalation-risk set
 
 ```
-D1 D3 D2 D4 D5 D6 D7                     (Defs; D5's zcSeed list = E-phase design duty)
- │        │  │  │
- ├─ U1 ───┼──┼──┤          U19 ← D4      U25 ← D2,D3   (U30 tripwire first)
+D1 D3 D2 D8 D4 D5 D6 D7                  (Defs; D5's zcSeed list = E-phase design duty)
+ │        │  │  │  │
+ ├─ U1 ← U1b(D8) ──┼──┤    U19 ← D4      U25 ← D2,D3   (U30+U31 tripwires first)
  ├─ U2 U3 U4 U5 U6 ← D6    U20 U21 U22 ← D4,Moves-L5
  ├─ U7 U8 ← D7             U23 ← U20–22
- ├─ U11 ← MovesD.InBox     U24 ← D4
+ ├─ U11 ← MovesD.InBox     U24 ← D4     U31 ← D4 (concrete f at U27's H₀)
  ├─ U9 ← U7,U11,zcSeed
  ├─ U10a–d ← U9,U3–U7,zcSeed,hreal
- └─ U13 ← U1–U11
+ └─ U13 ← D1,U1,U2–U11
 U14 ← U3,MovesD.bandS      U27 U28 ← U13(concrete seed), MovesC.thmC_b   U29 ← U14
 U15 ← U13,U14,(SEED-EXIST),(hnorm)       U16 ← U15,MovesD.TW
-U17a ← U25,Moves.L5_recLiftIndep,(P-1|HC1-TRANS)   U17b   U17c ← U17a,U17b
-U18 (proof-first; P-3 fallback)          U26 ← U18,thmC_a (deferrable)
+U17a ← U25,U1b,Moves.L5_recLiftIndep,(StageTransHyp)   U17b   U17c ← U17a,U17b
+U18 (proof-first; OmUniqHyp if it fails)  U26 ← U18,thmC_a (deferrable)
 ```
 
-Census, flat prover-unit granularity (pre-splits counted): D1–D7 (7) +
-U1–U8 (8) + U9a–c (3) + U10a–d (4) + U11, U13, U14, U15, U16 (5) +
+Census, flat prover-unit granularity (pre-splits counted): D1–D8 (8) +
+U1, U1b, U2–U8 (9) + U9a–c (3) + U10a–d (4) + U11, U13, U14, U15, U16 (5) +
 U17a, U17b-1..3, U17c (5) + U18 (1) + U19–U26 (8, incl. U26 deferrable) +
-U27–U30 (4) = **45 units**.
-Difficulty: easy 11 (D1–D7, U8, U16, U23, U24) · medium 18 (U1–U7, U11, U13,
-U14, U15, U17c, U19, U20, U27–U30) · **HARD 16** (U9a–c, U10a–d, U17a,
-U17b-1..3, U18, U21, U22, U25, U26) — of which the PRE-DECLARED
-ESCALATION-RISK SET is: **U10 (the C.1.5 step, ×4), U25 (D.10 scale
+U27–U31 (5) = **48 units** (rev 1: 45; rev 2 adds D8 + U1b per audit GAP-1 and
+U31 per GAP-4; nothing removed — the phantom "U12′" was never counted).
+Difficulty: easy 12 (D1–D8, U8, U16, U23, U24) · medium 20 (U1, U1b, U2–U7,
+U11, U13, U14, U15, U17c, U19, U20, U27–U31) · **HARD 16** (U9a–c, U10a–d,
+U17a, U17b-1..3, U18, U21, U22, U25, U26) — of which the PRE-DECLARED
+ESCALATION-RISK SET is unchanged: **U10 (the C.1.5 step, ×4), U25 (D.10 scale
 arithmetic), U21 (D.8 exponent bookkeeping), U22 (SAE strictness), U17a (stage
 reconstruction)**. Expected stuck-rule firings: U10 (→ zcSeed law extraction,
 the D5 fence) and U25 (→ eligibility-predicate narrowing, statement-fence).
 
 ## 7. Process notes (binding on E/P phases)
 
-1. **Order of battle.** E-phase elaborates D1–D7 + U27/U30 FIRST (the realF2
-   lesson: the concrete order-0 seed and the polOM witness instance are the
-   cheapest falsifiers of the whole design — if either fails to typecheck, the
-   Defs are wrong, not the provers). Then layer A, then B, then C/D in parallel.
-   Gates U27–U29 gate the corpus's acceptance exactly as RealInstanceV2Gates
-   gated the V2 capstone.
+1. **Order of battle.** E-phase ELABORATES D1–D8 + U27/U30/U31 FIRST (the realF2
+   lesson: the concrete order-0 seed, the polOM witness instance, and the ReadsOf
+   instance are the cheapest falsifiers of the whole design — if any fails to
+   TYPECHECK, the Defs are wrong, not the provers). REV-2 READING NOTE (audit
+   GAP-7(ii)): "first" means elaborate/typecheck-first, NOT prove-first — U27's
+   PROOF needs U13 ← U9/U10; the prover-phase scheduler orders PROOFS by the §6
+   DAG. Then layer A, then B, then C/D in parallel. Gates U27–U29 + U31 gate the
+   corpus's acceptance exactly as RealInstanceV2Gates gated the V2 capstone.
 2. **Statement fence.** MovesC/Defs.lean, MovesD's accepted Defs, and Moves/Defs*
    are FROZEN inputs — HC-2 adds files, never edits them. Any needed change is a
-   designer-round event with sign-off. The two pre-declared displayed deviations
-   (§2.1 stratum-as-fresh; D2 polOM-as-choice) and the two pre-declared possible
-   hypothesis adjustments (U11 InBox strength; U25 eligibility) are the ONLY
-   authorized flex points; each requires the audit round's explicit ruling.
-3. **Audit charge additions (beyond the standard non-vacuity/faithfulness/
-   quantifier charge):** (i) rule on §2.1 and D2's deviations; (ii) check D5's
-   final `ZCSeedLaws` field list line-by-line against §C C.1.5's proof — every
-   field must be a quoted note display; (iii) fire P-3's mandatory `hbr`-drop
-   mutation probe; (iv) verify P-1's (S6) carve-out question against GMN §2.4;
-   (v) confirm no unit consumes P-1/P-2/P-3 by name (only via supplier
-   hypotheses), so declaration/downgrade decisions stay consumer-invisible.
-4. **Axiom gate.** If any proposal is to be declared: pin the "HN" citation
-   first (§3 header), re-extract the GMN PDF lines for each cited theorem into
-   `GMN_citations.md` (§P5+ entries), write the faithfulness entry from the §3
-   draft, run the guardian, and add the mutation probes as compiled `example`-
-   refutation blocks next to the axiom (the `OM/QpTypeChain.lean` Block-7b
-   pattern). Footprint census: `AxChk_baseline` gains a MovesJ section; the
+   designer-round event with sign-off. The two displayed deviations (§2.1
+   stratum-as-fresh; D2 polOM-as-choice) were RATIFIED at the audit round
+   (records inline; D2's carried the GAP-6 naming condition, discharged there).
+   The remaining authorized flex points are the two pre-declared possible
+   hypothesis adjustments (U11 InBox strength; U25 eligibility) plus U1b's D.5
+   side-condition fallback (rev 2) — each a statement-fence event needing
+   sign-off.
+3. **Audit charge additions — REV-2 DISPOSITIONS:** (i) DONE — both deviations
+   RATIFIED (records at §2.1 and D2). (ii) STANDING OBLIGATION, carried to the
+   E-PHASE audit round (audit GAP-7(iii)): check D5's final `ZCSeedLaws` field
+   list line-by-line against §C C.1.5's proof — every field a quoted note
+   display; not dischargeable before the list exists. (iii) DONE — the
+   `hbr`-drop probe fired and refutes (the §D4-R F1 instance); it survives P-3's
+   striking as the STANDING PROBE for any future uniqueness declaration (§3).
+   (iv) DISSOLVED — the stage-minus-ledger restatement removes every `Stage`
+   field from P-1's conclusion; (S6) attainability sits in `StageLedgerHyp`
+   (ours), no longer a citation question. (v) ENFORCED at rev 2 — every
+   hypothesis_field names supplier hypotheses only (`StageTransHyp`,
+   `OmUniqHyp`); no unit names P-1/P-2/P-3.
+4. **Axiom gate.** Applies to the ONE surviving contingent proposal,
+   P-1-reduced (§3; P-2/P-3 struck) — and only if its named contingency state
+   fires. Then: re-extract the GMN PDF lines for each cited theorem into
+   `GMN_citations.md` (§P5+ entries), write the faithfulness entry from §3's
+   rev-2 draft, run the guardian, and add the mutation probes as compiled
+   `example`-refutation blocks next to the axiom (the `OM/QpTypeChain.lean`
+   Block-7b pattern). ("HN" pinning is moot — §3 header.) Footprint census:
+   `AxChk_baseline` gains a MovesJ section; the
    MovesC 36/36 and every density capstone must remain Lean-core-only — any
    declared HC-2 axiom may appear ONLY in MovesJ/MovesD-discharge footprints.
 5. **Codex budget.** Per the campaign ledger (90%+ used, reset Sun Aug 02):
    this blueprint's audit round runs on fresh-Fable legs now; the Codex leg is
    the FINAL confirmation, batched post-reset with the MovesS/MovesD
    ratifications.
-6. **Seam registry (who unblocks whom).** HC-1 → SEED-EXIST (D5 values) and,
-   if P-1 is not declared, StageTransHyp's discharge (U17a). MovesT (wave 4) →
-   re-keys W4-1 `eligible` to D4's SideReads clauses and consumes U14 as NP-ID's
-   ⊆ direction. MovesD E-phase core → `CanonPolicy`/`Shape`/`PrefSet`/
-   `PresentNorm`/`Presented`/`Threshold` binders used verbatim here; if its
-   audited types drift during its Codex ratification, U14–U18 re-elaborate
-   (statements re-generated from this blueprint's semantic specs — the specs,
-   not the transcribed binders, are normative).
+6. **Seam registry (who unblocks whom).** HC-1 → SEED-EXIST (the rev-2 form:
+   the reprOf + `KeysLawful` display, Wall B — the ONLY display) and
+   `StageTransHyp`'s discharge (U17a); the P-1-reduced contingency (§3) fires
+   ONLY in the named StageLedgerHyp-without-skeleton state. MovesT (wave 4) →
+   re-keys W4-1 `eligible` to D4's SideReads clauses (non-vacuity anchored by
+   U31) and consumes U14 as NP-ID's ⊆ direction. MovesD E-phase core →
+   `CanonPolicy`/`Shape`/`PrefSet`/`PresentNorm`/`Presented`/`Threshold` binders
+   used verbatim here; if its audited types drift during its Codex ratification,
+   U14–U18 re-elaborate (statements re-generated from this blueprint's semantic
+   specs — the specs, not the transcribed binders, are normative). REGISTERED
+   (rev 2, audit GAP-6): the POL-PIN naming reconciliation — D2's sign-off
+   (polOM = the (S6b′) offset-P policy, spec-realized) is copied into MovesD
+   §2's POL-PIN row at the wave-4 reconciliation, so the seam registry never
+   flags nominal drift between the two ledgers.
 
-— end of blueprint (rev 1). Next: fresh-verifier structural pass per memory rule
-"plan-level adversarial passes", then the A-round.
+## 8. Audit record (rev 1 → rev 2) — the findings table
+
+Rev-1 verdict (fresh-instance audit, `HC2_AUDIT_FABLE_2026-07-28.md`): **REJECT,
+1 critical / 7 gaps**; perimeter = the §3 axiom-proposal surface plus four
+spec-hygiene gaps; the architecture (three walls, D1–D7, U-layer, both displayed
+deviations, gate block, seam registry) RATIFIED. Rev-2 dispositions:
+
+| finding | class | rev-2 disposition | where |
+|---|---|---|---|
+| CRIT-1: P-1's conclusion smuggled the graded-localization ledger (`Stage`/`StageCoreL` fields are OUR D.0(P2)/D.1(e)/D.2(S4) content; even the mapped residual laws exceed GMN's ∼-forms); the SAYS-NO-MORE draft was false | CRITICAL | P-1 rebuilt STAGE-MINUS-LEDGER (ledger-free skeleton conclusion, ∼-strength residual laws; Bézout window dropped from the statement); consumer analysis shows the reduced form alone discharges nothing → DEFAULT = NO DECLARATION; consumers carry `StageTransHyp`; the factored contingency (P-1-reduced + `StageLedgerHyp`) recorded; SAYS clauses redrafted truthfully | §3 P-1 |
+| GAP-1: `IsStandardLift` (stage pair) vs `IsNodeLift` (read pair) conflation; no owned bridge (the F10 trap) | GAP | new D8 `IsReadLift` (keying folded into the signatures; `isNodeLift_iff`) + owned bridge unit U1b `nodeLift_exists`; `StageTransHyp`/P-1-reduced key `hlift` at the READ pair; any re-keying = fresh guardian pass | §3 P-1, D8, U1b |
+| GAP-2: P-2's post-carve-out residue already proved (Fact A/B); "interchangeable suppliers" not literal; phantom U12′ | GAP | P-2 STRUCK to tombstone (no axiom, no new hypothesis — SEED-EXIST sole supplier); both defects recorded; the phantom unit deleted | §3 P-2 |
+| GAP-3: P-3 cannot discharge U18/U26 as typed (same-f/`hbr` hypotheses unavailable); (P4b) cites choice-DEPENDENCE, not the equality | GAP | P-3 STRUCK to tombstone; `OmUniqHyp` (typed verbatim as U18) carried on proof failure; the `hbr`-drop probe RETAINED as the permanent standing falsifier | §3 P-3, U18/U26 |
+| GAP-4: `ReadsOf` had no non-vacuity anchor among the units (the W4-1 seam could die silently) | GAP | new gate unit U31 `gate_readsOf_inert2` — concrete order-0 instantiation, axiom- and seed-free, first E-phase block | U31, D4, §7.1 |
+| GAP-5: `PresentSeed` not minimal (provable fields inflated HC-1's obligation); SEED-EXIST's two displays differed | GAP | D5 pruned to the genuinely deferred fields (chart → D1's boxChart; keys → parameter + `KeysLawful` proved by U1; hm/hN → unit hypotheses); SEED-EXIST stated ONCE, in U15's reprOf form | D5, §2 Wall B, U13/U15 |
+| GAP-6: POL-PIN nominal drift vs MovesD's row; units named P-1/P-3 in hypothesis_fields | GAP | polOM named under the offset-P policy (spec-realized; sign-off inline at D2 — the ratification's condition discharged; wave-4 copy registered at §7.6); hypothesis_fields renamed to `StageTransHyp`/`OmUniqHyp` | D2, §7.6, U17a/U18/U26 |
+| GAP-7: U13 claimed 25 `JetSetup` fields (round 6 has 29); §7.1's "first" readable as prove-first; `ZCSeedLaws` line-check not yet dischargeable | GAP | 29 corrected; elaborate-not-prove-first reading note added; the line-check recorded as a STANDING E-phase obligation | U13, §7.1, D5/§7.3 |
+| RULING 1: §2.1 `mkStratum := fresh` | RATIFIED | recorded inline; U8 stays `Iff.rfl`-easy; no inherited carrier demanded | §2.1 |
+| RULING 2: D2 `polOM` (choice-realizer of the offset-P spec) | RATIFIED (condition: GAP-6) | recorded inline; condition discharged by the D2 sign-off + the §7.6 registration | D2 |
+
+Census: 45 (rev 1) → **48** (rev 2): +D8 (easy), +U1b (medium), +U31 (medium).
+
+— end of blueprint (REV 2). Next: the acceptance pass — a fresh verifier on this
+file (perimeter: §3 + the seven gap sites + the two inline ratification
+records), then the A-round; the Codex leg batched post-reset per §7.5.
