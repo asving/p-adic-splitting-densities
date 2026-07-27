@@ -20,6 +20,8 @@ variable (p : ℕ) [hp : Fact p.Prime]
 /-- D1's local composition ext lemma for `WittVector.map` (absent from Mathlib). -/
 theorem map_comp {R S T : Type*} [CommRing R] [CommRing S] [CommRing T]
     (g : S →+* T) (f : R →+* S) (x : WittVector p R) :
-    WittVector.map g (WittVector.map f x) = WittVector.map (g.comp f) x := sorry
+    WittVector.map g (WittVector.map f x) = WittVector.map (g.comp f) x :=
+  WittVector.ext fun n => by
+    simp only [WittVector.map_coeff, RingHom.comp_apply]
 
 end MovesRBase

@@ -24,6 +24,14 @@ variable (p : ℕ) [hp : Fact p.Prime]
 theorem EQ2law_card {Sp} (AD : AlphabetData p Sp) (h : EQ2law p AD) :
     ∀ (δ : ℕ+) (x : AD.Pos), AlphabetData.Stable p AD δ x →
       Nat.card (AD.alpha δ x) = qq p δ ^ AD.aDim 1 x ∧
-      Nat.card (AD.alpha δ x) = Nat.card (AD.alpha 1 x) ^ (δ : ℕ) := sorry
+      Nat.card (AD.alpha δ x) = Nat.card (AD.alpha 1 x) ^ (δ : ℕ) := by
+  intro δ x hx
+  obtain ⟨_, hdim⟩ := h δ x hx
+  have hcardδ := AD.card_eq δ x
+  have hcard1 := AD.card_eq 1 x
+  refine ⟨?_, ?_⟩
+  · rw [hcardδ, hdim]
+    simp only [qq, pow_mul]
+  · rw [hcardδ, hcard1, hdim, ← pow_mul, Nat.mul_comm]
 
 end MovesRBase

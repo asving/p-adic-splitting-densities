@@ -29,6 +29,7 @@ variable (p : ℕ) [hp : Fact p.Prime]
 `O_m ≤ O_{m·δrel} ≤ O_{m·δrel·δ″}` in `W(F̄_p)` (with `m·δrel` the absolute
 accumulated index `δ_j`). -/
 theorem O_chain (m δrel δ'' : ℕ+) :
-    O p m ≤ O p (m * δrel) ∧ O p (m * δrel) ≤ O p (m * δrel * δ'') := sorry
+    O p m ≤ O p (m * δrel) ∧ O p (m * δrel) ≤ O p (m * δrel * δ'') :=
+  ⟨O_le p ⟨δrel, rfl⟩, O_le p ⟨δ'', rfl⟩⟩
 
 end MovesRBase
