@@ -433,6 +433,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    sealed gates; drafting ruling: [5] + [3]-COND cleared NOW, [4] not cleared). The write-up now has SEVEN dual-accepted artifacts + one note in
    spiral + two plan notes ([3] RESUM, [4] SQUEEZE + [5] EXHAUST) not yet drafted —
    those await [2b]'s package and the remaining kernels per the plan's DAG.
+   UPDATE (2026-07-27, night): NINE artifacts through the full dual standard —
+   **§X-EXHAUST DUAL-ACCEPTED** (the [5] note: the explicit index table with two
+   Fable censuses totaling 6,181 polynomials at 0 violations; WEIGHT-CHARGE and
+   the X2 kernels honestly open) and **§H-DOMAINS DUAL-ACCEPTED** (the [2b] note:
+   the H-LIST construction survived SIX break campaigns, the last a 409/409
+   attack suite; gate H-n3 151/151 with the factorpadic oracle; the [1v]-FULL
+   blockers = its six fences, displayed). **§S-RESUM ([3]-COND) in its final
+   round** (Codex-accepted; the Fable pass 0-critical; a wording resolution on
+   the single-child size clause + the dual shot remain). GATES: 20 sealed, all
+   passing. Remaining after §S: the [4] SQUEEZE note (Theorem U's closer, gated
+   on [3]'s solve), the unrun census layers (X-n3, RESUM-n3, STALL/ESCAPE
+   probes), and the named open kernels — each fenced with a refuter.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
