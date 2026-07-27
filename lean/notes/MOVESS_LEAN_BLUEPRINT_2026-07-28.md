@@ -1,6 +1,42 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 9
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 10 (the seam split)
 
-## H000000. REV-9 rulings — THE TYPING RULE, applied uniformly
+## SPLIT RECORD (READ FIRST — orchestrator adjudication, stuck rule #3)
+
+Rev-9 verdicts: Codex#6 REJECT (10 crit / 3 gap, `MOVESS_AUDIT_CODEX_FINAL6…`) —
+EVERY critical at the WAVE-4 SEAM (package/carrier ties into MovesT/MovesV
+vocabulary: canonical-tree fibers, TREE-EXP, CUT-WD, entrance machinery — none of
+which exists yet); Fable#7 REJECT (0 crit / 2 gap, all computation-verified passes,
+`MOVESS_AUDIT_FABLE7…`). ADJUDICATION: further spiraling would duplicate wave-4
+design blind (the MovesR lesson). THE SPLIT:
+
+**THE CORE (§2.A–2.D + §3; E-phase-ready, a closed import DAG):** the ℚ(q) linear
+algebra + adjugate solve, the (m,c) dispatch, (K-TRI)/(K-SUB) over LedgerIV,
+per-pool evaluation/OKat, PolyGeom (SETTLED at R30, both verifiers), Sigmas/vEquiv,
+RegP/EscapeE0, the DecidableEq-clean matrix units, U-24a1/a2/24b (their guards are
+core), and the n = 2 gate RELABELED as an INTERNAL CONSISTENCY INSTANCE (R44
+below). Three core-visible rev-9 findings are FIXED IN CORE: `resFactors` is a
+`Multiset` (Codex#6-10 — multiplicity per "Σᵢ g⁽ⁱ⁾μ⁽ⁱ⁾"); `act_iff` is ROUTED
+(Codex#6-4 — tgP.countS on non-split, jP.countS on split, per-outcome over the
+full roster); U-22b is REBASED in-scope (Fable#7-GAP-2 — infinitude from
+`M.pools_infinite` minus the finite root union; the base-prime cofiniteness face
+takes the chain's `prime_base`/`prime_sub` as EXPLICIT theorem hypotheses).
+
+**THE SEAM (§W4-SYNC, replacing §2.E; a CONTRACT, not Lean units):** the pins
+W1/W1e/W1m/W2/W3/W4/W7/W8/W10/W17ii, their carriers (TreeIface, FiberIface,
+ReadLedger, XRBPackage, RS1GivenPackage, Wsh17Package), and the gate unit U-29d6
+(TreeIface-dependent). NOT built at E-phase. Each entry records its current typed
+form, the FULL union of Codex's tie demands across all rounds, and the re-keying
+charge for when MovesT/MovesV exist. Fable#7-GAP-1 is fixed AT THE CONTRACT:
+W1/W1e/W1m gain the RS1GivenPackage premise (+ Wsh17Package at W1's CL-17(ii)
+leg), with the consumed-vs-proved adjudication recorded.
+
+RS4Chain itself STAYS CORE (its fields are typed and tree-free: functions,
+Box-events, Props over declared carriers); only its provenance notes point into
+the seam. U-28 stays core (it consumes chain FIELDS). Wave-2 conditionality is
+unchanged: U-28/U-24b remain conditional on their explicit hypothesis fields.
+
+## H000000. REV-9 rulings — THE TYPING RULE, applied uniformly [superseded at the
+## seam by the SPLIT RECORD; still governing the core]
 
 **R37 — THE HARD RULE (coordinator, closing rev): every note-displayed hypothesis
 package appears as TYPED FIELDS.** No comment-register, no quote-register: where a
@@ -433,11 +469,16 @@ structure SCSData (T : TableShape n) where
   W D ℓ g μsel W' D' : ∀ e τ (o : T.Out e τ), ℕ
   flankCount  : ∀ e τ (o : T.Out e τ), ℕ
   flankWidth  : ∀ e τ (o : T.Out e τ), ℕ
-  resFactors  : ∀ e τ (o : T.Out e τ), Finset (ℕ × ℕ)
+  resFactors  : ∀ e τ (o : T.Out e τ), Multiset (ℕ × ℕ)   -- MULTISET (REV 10,
+    -- Codex#6-10: "Σᵢ g⁽ⁱ⁾μ⁽ⁱ⁾ = ℓ" is an indexed family — repeated equal factors
+    -- carry multiplicity; a Finset would collapse them and corrupt res_sum/U-4)
   selIdx      : ∀ e τ (o : T.Out e τ), Fin (T.odata e τ o).mem.length
   memberOf    : ∀ e τ o, Fin (flankCount e τ o) ⊕
-    {x // x ∈ resFactors e τ o ∧ x ≠ (g e τ o, μsel e τ o)} →
+    Fin ((resFactors e τ o).erase (g e τ o, μsel e τ o)).card →
     Fin (T.odata e τ o).mem.length
+    -- POSITION-indexed over the non-selected factors (Multiset.erase removes ONE
+    -- selected copy — duplicates keep their own member positions, REV 10); U-4's
+    -- pigeonhole: m = 1 ⟹ both domains empty ⟹ erase-card 0 ⟹ resFactors = {sel}
   -- laws
   ℓpos : ∀ e τ o, 1 ≤ ℓ e τ o
   window_comp : ∀ e τ o, W e τ o = e * ℓ e τ o + flankWidth e τ o
@@ -446,7 +487,8 @@ structure SCSData (T : TableShape n) where
   flank_zero : ∀ e τ o, flankCount e τ o = 0 → flankWidth e τ o = 0   -- (R2-2): no
     -- sides ⟹ no width (the width is the sides' total raw width)
   sel_mem : ∀ e τ o, (g e τ o, μsel e τ o) ∈ resFactors e τ o
-  res_sum : ∀ e τ o, ∑ x ∈ resFactors e τ o, x.1 * x.2 = ℓ e τ o     -- "Σ g⁽ⁱ⁾μ⁽ⁱ⁾ = ℓ"
+  res_sum : ∀ e τ o, ((resFactors e τ o).map (fun x => x.1 * x.2)).sum = ℓ e τ o
+    -- "Σᵢ g⁽ⁱ⁾·μ⁽ⁱ⁾ = ℓ" — Multiset.sum (multiplicity-correct, REV 10)
   memberOf_inj : ∀ e τ o, Function.Injective (memberOf e τ o)
   memberOf_ne_sel : ∀ e τ o i, memberOf e τ o i ≠ selIdx e τ o        -- (R2-1): the
     -- REAL inequality — every flank side / non-selected residual factor is a member
@@ -672,10 +714,18 @@ structure RatBurdens (T : TableShape n) (M : MeasuredSide T) where
     -- degree ≤ W_state(s)" — per piece, never a merged sum bound; ι's ENT-COUNT
     -- polynomials "of degree ≤ W_ent(ε)" pin both pieces to W_ent. The W-data live
     -- on TableShape/MeasuredSide, fixed BEFORE the burdens.
-  cellsize_nonzero : ∀ e ∈ Finset.Icc 1 n, ∀ τ o, (tgP e τ o).countS ≠ 0
-    -- "NOT-IDENTICALLY-ZERO cell-size polynomial" — TYPED (R39, Codex#5-5)
+  cellsize_nonzero : ∀ e ∈ Finset.Icc 1 n, ∀ τ o,
+    (routeOf (T.odata e τ o) ≠ .split → (tgP e τ o).countS ≠ 0) ∧
+    (routeOf (T.odata e τ o) = .split → (jP e τ o).countS ≠ 0)
+    -- "NOT-IDENTICALLY-ZERO cell-size polynomial" — TYPED (R39) and ROUTED
+    -- (REV 10, Codex#6-4: the mass-carrying piece per route)
   act_iff : ∀ q₀ ∈ M.Pools, ∀ e ∈ Finset.Icc 1 n, ∀ τ,
-    M.activeState q₀ e τ ↔ ∀ o, (tgP e τ o).countS.eval q₀ ≠ 0
+    M.activeState q₀ e τ ↔
+      (∀ o, routeOf (T.odata e τ o) ≠ .split → (tgP e τ o).countS.eval q₀ ≠ 0) ∧
+      (∀ o, routeOf (T.odata e τ o) = .split → (jP e τ o).countS.eval q₀ ≠ 0)
+    -- ROUTED (REV 10, Codex#6-4): the cell-size polynomial that carries the
+    -- measured mass — tgP on non-split, jP on split — per outcome over the FULL
+    -- roster; no unconstrained polynomial can flip activity
     -- activity IS cell-size nonvanishing at the pool (CTS-M(ii)'s mechanism; W1's
     -- pool-size effect) — with cellsize_nonzero this makes the note's display
     -- "at all-active primes (cofinitely many — only finitely many primes are roots
@@ -904,8 +954,55 @@ one fixed rational function, and U-28 consumes Rval through `rs1_equates` + the 
 interpolation `wsh_interp`/blockSolve chain. No conclusion is a field beyond the
 note's displayed GIVENs, each tagged CL-4/CL-8/CL-10/CL-17/CL-5/CL-1/CL-9 above.)*
 
-### 2.E `MovesS/Interfaces.lean` (CANONICAL — R29, Codex#3-8; no `SyncDefs.lean`
-exists) — the PINNED wave-4 Props (R10; no prose deferrals)
+### §W4-SYNC — THE SEAM CONTRACT (REV 10; replaces §2.E as a build target)
+
+**NOT LEAN UNITS. NOT BUILT AT E-PHASE.** The typed forms below (carried from
+REV 9) are each entry's CURRENT PIN — the contract MovesT/MovesV re-key when
+their vocabulary exists. Every Codex tie-demand across rounds 1–9 is recorded at
+its entry; a seam entry is DONE only when re-keyed against the real corpora and
+re-audited. The former file plan (`MovesS/Interfaces.lean`) is retired for these
+declarations; the CORE keeps `RS1Bundle`/`RS4Chain`/`ReadOffBundle` (§2.D — typed,
+tree-free) in `Interfaces.lean`, which at E-phase contains NOTHING from this
+section.
+
+**THE SEAM LIST (11 entries; tie-demand union + re-keying charge):**
+- **S-1 `W1_RS1SH`** (+ **S-1e `W1e_equates`**, **S-1m `W1m_marked`**): current
+  forms below. DEMANDS: premise all three on `RS1GivenPackage` (+ `Wsh17Package`
+  at W1's CL-17(ii) leg) — Fable#7-GAP-1, FIXED at this contract: the S.2 GIVEN
+  list premises ALL THREE RS.1 clauses; adjudication recorded — RS.1 is
+  theorem-under-hypotheses in THIS note (not a consumed [5]-style item), so the
+  pins carry the package. RE-KEY: package fields → the real MovesT statements.
+- **S-2 `W2_xrb`**: DEMANDS (Codex#6-1): package fields must REFER to T/M/ledger/
+  owner interfaces — re-key each Prop field to the real [2b]/[3t]/[2r] statement;
+  until then the field-registry form stands as the contract shape ONLY.
+- **S-3 `W3_recursion`**: DEMANDS (Codex#6-2): assume XRB's CONCLUSION (the
+  invariance equality, or the thirteen premises + W2), not the bare implication;
+  re-keyed form: `(hxrb : ∀ …, B₀.βmeas … = B₀.βmeas …) → …`.
+- **S-4 `W4_x3`**: consumed-item pin ([5]'s package displayed THERE); unchanged.
+- **S-5 `W7_cutWD` + TreeIface**: DEMANDS (Codex#6-5): the no-reclassification
+  fence must say "a deep split has a FIRST-ENTRANCE ANCESTOR" (placed strictly in
+  an entered block subtree), not `¬isEntrance`; re-keyed clause:
+  `∀ t ν, TI.isDeepSplit t ν → ∃ ν', TI.isEntrance t ν' ∧ TI.onPath t ν' ν`.
+- **S-6 `W8_bdy` + ReadLedger**: DEMANDS (Codex#6-6): tie ReadLedger to the tree
+  — a per-entered-path assignment `RL : (t, first-entrance ν) → ReadLedger` with
+  charges = the tree's read masses, Wcharge feeding WshVal, βcharge feeding βmeas.
+- **S-7 `W10_convergence` + FiberIface**: DEMANDS (Codex#6-9): `Fib` must MAP to
+  canonical-tree fibers (TREE-N's complete finite subtrees; disjointness; the
+  ONE-F partition) — add `fibOf : Fib → TI.Tree`-style keying; βmeas = 0 must not
+  trivialize (fiber nonemptiness where βmeas > 0).
+- **S-8 `W17ii` + Wsh17Package**: DEMANDS (Codex#6-7/8): add the `xhd_s` face to
+  the package; exclude the empty menu (`F.Sh.Nonempty`, or premise W7's tree_ne
+  through S-5); package fields re-keyed to real interfaces.
+- **S-9 packages as registries** (Codex#6-1, global): every abstract Prop field
+  in XRBPackage/RS1GivenPackage/Wsh17Package is a NAME AWAITING RE-KEYING — the
+  contract's whole point; none is consumed by a core unit.
+- **S-10 RS4Chain's tree-tied provenance**: `rs1_equates`/`rsh_interp`/
+  `sh_realized`/`wshval_card` keep their field forms in core; their DISCHARGE
+  provenance (TREE-EXP/CUT-WD/ONE-F) is seam.
+- **S-11 `n2_treeiface`** (ex-U-29d6): the gate's TreeIface instance + W7 check,
+  built when TreeIface is re-keyed.
+
+The REV-9 typed forms (the contract's current shapes):
 
 ```lean
 -- minimal carriers for statements whose native vocabulary is MovesT's:
@@ -941,18 +1038,29 @@ structure ReadLedger where                          -- W-8's carrier (one entere
   Wcharge βcharge : ℝ                               -- the W_Ŝ-side / β-side totals
 
 -- the pinned deferrals (each cites its owner; NONE is a wave-2 unit):
-def W1_RS1SH (C : RS4Chain …) (hdet) : Prop :=      -- RS.1-SH's CONTENT (Fable G2):
-  ∀ σ ∈ C.Sigmas, ∀ p ∈ C.PrimePools,               -- the MEASURED density identity.
-    ∃ hok : Rsh T M RB hdc hK hdet F C.WshP σ ∈ OKat p,
-      (evalAt p ⟨Rsh T M RB hdc hK hdet F C.WshP σ, hok⟩ : ℝ) = C.Rval σ p
-  -- The SYMBOLIC half of S.2's display ("R_σ = Σ_Ŝ W_Ŝ · Σ ∏ β…") is DEFINITIONAL
-  -- here: U-18 DEFINES Rsh as that right side, so the note's identity reduces to
-  -- "the measured density Rval IS Rsh's evaluation" — this Prop. No rfl-conjunct.
-  -- (Owners MovesT: TREE-EXP, (CUT-WD), (SIB)/CL-10, PCI/CL-8, XRB/CL-9, CL-17(ii).)
-def W1e_equates (C : RS4Chain …) : Prop :=          -- ONE-F + convergence regrouping
+def W1_RS1SH (Π' : RS1GivenPackage) (Πw : Wsh17Package) (Π : XRBPackage)
+    (L : LedgerIV T M) (C : RS4Chain …) (hdet) : Prop :=   -- RS.1-SH, PREMISED on
+  Π'.tree_exp_fin → Π'.tree_exp_ns → Π'.tree_n → Π'.one_f → Π'.sib →   -- the S.2
+  Π'.tb_cap → Π'.vp → Π'.pci →                                          -- GIVEN
+  Π'.rel2_a → Π'.rel2_b → Π'.rel2_c → Π'.rel2_d → Π'.rel2_e →           -- list +
+  Πw.c15_volumes → Πw.cts_counts → Πw.sib_count →       -- CL-17(ii)'s leg + XRB
+  W2_xrb Π (B₀-of C) →                                  -- (Fable#7-GAP-1, fixed at
+  ∀ σ ∈ C.Sigmas, ∀ p ∈ C.PrimePools,                   --  the contract): the S.2
+    ∃ hok : Rsh T M RB hdc hK hdet F C.WshP σ ∈ OKat p, --  GIVEN list premises ALL
+      ((evalAt p ⟨Rsh T M RB hdc hK hdet F C.WshP σ, hok⟩ : ℚ) : ℝ) = C.Rval σ p
+  -- THREE RS.1 clauses; the symbolic half is definitional (U-18 defines Rsh).
+  -- ADJUDICATION (recorded): RS.1 is THIS note's theorem-under-hypotheses (S.2),
+  -- not a consumed [5]-style item — so its pins CARRY the package (contrast W4).
+def RS1Given.holds (Π' : RS1GivenPackage) : Prop :=  -- the premise row, named once
+  Π'.tree_exp_fin ∧ Π'.tree_exp_ns ∧ Π'.tree_n ∧ Π'.one_f ∧ Π'.sib ∧
+  Π'.tb_cap ∧ Π'.vp ∧ Π'.pci ∧
+  Π'.rel2_a ∧ Π'.rel2_b ∧ Π'.rel2_c ∧ Π'.rel2_d ∧ Π'.rel2_e
+def W1e_equates (Π' : RS1GivenPackage) (C : RS4Chain …) : Prop :=
+  RS1Given.holds Π' →                                -- the S.2 GIVEN list (GAP-1)
   ∀ p ∈ C.PrimePools, (∑ σ ∈ C.Sigmas, C.Rval σ p) = C.decidedTotal p
-def W1m_marked (B : RS1Bundle …) (hdet) : Prop :=   -- RS.1-MARKED's identification,
-  ∀ e (he : e ∈ Finset.Icc 1 n) q₀ (h : q₀ ∈ M.Pools)   -- GATED per pool (Fable2-G2):
+def W1m_marked (Π' : RS1GivenPackage) (B : RS1Bundle …) (hdet) : Prop :=
+  RS1Given.holds Π' →                               -- RS.1-MARKED, premised (GAP-1)
+  ∀ e (he : e ∈ Finset.Icc 1 n) q₀ (h : q₀ ∈ M.Pools)   -- + GATED per pool:
     (hok : (markedPairing T M RB hdc hK hdet e he).val ∈ OKat q₀),
       ((evalAt q₀ ⟨_, hok⟩ : ℚ) : ℝ) = M.markedVal e q₀
     -- the OKat membership (no pole surviving cancellation — the (ii-c) PASS) is a
@@ -1073,7 +1181,8 @@ every §2 structure by the REAL CTS objects) is a wave-4 PROCESS gate (§5), not
 
 ---
 
-## 3. The unit DAG — REV 9: 82 units (43 easy / 39 medium / 0 hard)
+## 3. The unit DAG — REV 10: THE CORE, 85 units (45 easy / 40 medium / 0 hard);
+## the seam's 11 contract entries live at §W4-SYNC, not here
 
 ### Layer S0 — dispatch, (SCS), (BDY) [9]
 
@@ -1258,17 +1367,23 @@ cofiniteness face, now over the DEFINED locus) + per-pool packages at that locus
 sketch: at an all-active pool Act = univ (act_spec + the locus definition); if
 det = 0 in Qq its evaluation vanishes there (U-20), contradicting U-21c.
 
-**U-22b `allActive_cofinite` · AllActiveCofinite.lean · medium — NEW (R39).**
-`statement`: `theorem allActive_cofinite (RB : RatBurdens T M) :`
-`{p : ℕ | p.Prime ∧ (p:ℚ) ∈ M.Pools ∧ (p:ℚ) ∉ allActivePools M}.Finite ∧`
-`(allActivePools M).Infinite`
+**U-22b `allActive_cofinite` · AllActiveCofinite.lean · medium — REBASED IN SCOPE
+(REV 10, Fable#7-GAP-2 + Codex#6-3).** TWO statements, hypotheses explicit:
+`theorem allActive_cofinite (RB : RatBurdens T M) :`
+`{q₀ ∈ M.Pools | q₀ ∉ allActivePools M}.Finite ∧ (allActivePools M).Infinite`
+— route IN SCOPE: the exceptional pools are roots of the finitely many routed
+countS ≠ 0 polynomials (`Polynomial.setOf_isRoot_finite` + act_iff); infinitude =
+**`M.pools_infinite` minus the finite root union** (never
+`Nat.exists_infinite_primes`, which cannot place a prime in Pools). AND the
+base-prime face, chain hypotheses EXPLICIT:
+`theorem allActive_cofinite_primes (PP : Set ℚ) (hsub : PP ⊆ M.Pools)`
+`(hbase : ∀ q₀, q₀ ∈ PP ↔ ∃ p : ℕ, p.Prime ∧ q₀ = (p:ℚ)) :`
+`{q₀ ∈ PP | q₀ ∉ allActivePools M}.Finite`
+— "cofinitely many BASE primes are all-active" (Codex#6-3's scope), consumed by
+U-24b's locus through the chain's prime_base/prime_sub instantiation.
 moves_ref: "at all-active primes (cofinitely many — only finitely many primes are
 roots of some not-identically-zero cell-size polynomial)". deps: Defs · hyp:
-RB.cellsize_nonzero + RB.act_iff (+ prime_base ⊆ Pools via the chain's prime_sub) ·
-sketch: each countS ≠ 0 has ≤ deg roots (`Polynomial.setOf_isRoot_finite`); finitely
-many (e, τ, o); a prime outside the finite root union is all-active by act_iff;
-infinitude from `Nat.exists_infinite_primes`. THE NOTE'S DISPLAY, DERIVED — the
-REV-8 assumption `allActive_infinite` is gone; U-9b/U-22/U-24b consume this lemma.
+RB.cellsize_nonzero + RB.act_iff (routed forms) + M.pools_infinite.
 
 **U-23a `neumann_partial` / U-23b `pow_entry_nonneg` / U-23c `pow_entry_tendsto` ·
 easy ×3 — unchanged.** **U-23d `e0_inv_nonneg` · medium — unchanged** (consumer
@@ -1363,9 +1478,21 @@ eval(Σ Rsh − 1) at p ∈ PrimePools = Σ Rval − decidedTotal = 0 (rsh_inter
 rs1_equates, x3_total); prime_infinite + U-27. The docstring lists every tag: the
 acceptance fence "may NOT be marked unconditional before those close" verbatim.
 
-### Layer S5 — the schema-consistency gate on the NOTE's n = 2 instance (R26),
-### fully one-obligation-split (R28/R43) [36]
-*(deps reading "U-29a"/"U-29a chain" = the nine a-units after the REV-9 split)*
+### Layer S5 — THE INTERNAL CONSISTENCY INSTANCE at n = 2 (RELABELED, REV 10 —
+### R44, Codex#6-11/12) [39 core units]
+
+**R44 (the honest claim, superseding R26's label).** The three-outcome roster and
+the numerators (q+1, q²) are a CONSISTENCY DEVICE, NOT note displays. What IS
+note-displayed and reproduced by this instance: the 1×1 block shape, the solve
+denominator q² + q + 1, the p = 2 ratio-1/8 shadow (`msW_eighth_le`), and the
+checksum shadows (part1 sums to 1; β's sum to 1). The gate claims: (i) the CORE §2
+structures (TableShape, MeasuredSide, LedgerIV, RatBurdens, SCSData, DegCons,
+PoolHyp/RegP, ReadOffBundle, RS1Bundle, RS4Chain's core fields) are SIMULTANEOUSLY
+inhabitable by a nontrivial instance — nothing more. SEAM structures (TreeIface,
+FiberIface, ReadLedger, the packages) and RS4Chain's shallow-production laws are
+NOT claimed inhabited here (Codex#6-12): their instances are wave-4 duties on the
+§W4-SYNC contract; the chain fields the gate does instantiate are listed per unit.
+*(deps "U-29a"/"U-29a chain" = the a-units below.)*
 
 THE INSTANCE (R26; moves_ref for the layer: "The n = 2 instance is the 1×1 case
 (W6's geometric series, denominator q² + q + 1; `msW_eighth_le` its p = 2
@@ -1387,16 +1514,20 @@ process gate still owns intended-CTS instantiation.
   outcome (1,1), Kmat 1 = 0) + the three-outcome block-2 roster + vEquiv +
   Wloc/Wstate. deps: Defs.
 · `n2_scs_data` (easy) — DegCons/SCSData DATA (the corrected R35 windows).
-· `n2_boxes` (medium) — Box/Cell/Rep carriers + boxpos/rep_ne + the cell events
-  realizing the four row masses as card ratios.
+· `n2_carriers` (medium) — Box/Cell/Rep carriers + boxpos/rep_ne (Codex#6-13
+  split).
+· `n2_events` (medium) — the cell events realizing the four row masses as card
+  ratios (split).
 · `n2_pools` (easy) — Pools := all prime powers; pools_prime_pow/closed/infinite.
-· `n2_heights_ent` (easy) — Hgt/HDom/gwt + entrance carriers (one ε per block,
-  entLvl/entInst/hent/Went) + kstep/activeState/markedVal data.
+· `n2_heights` (easy) — Hgt/HDom/gwt data (split).
+· `n2_ent_flow` (easy) — entrance carriers (one ε per block, entLvl/entInst/hent/
+  Went) + kstep/activeState/markedVal data (split).
 · `n2_polygeom` (medium) — the three PolyGeom presentations in the CORRECTED form
   (R30: q⁻³ qpow 3; (X−1)/X qpow 1; (X²−1)/X³ qpow 3) + tg_ok/j_ok/ι_ok.
 · `n2_interp` (medium) — tg/j/ι interpolation laws at every pool.
-· `n2_degpins_act` (easy) — the six per-piece degree pins + cellsize_nonzero +
-  act_iff (all states active at all pools: countS ≡ 1 conventions).
+· `n2_degpins` (easy) — the six per-piece degree pins (split).
+· `n2_activity` (easy) — cellsize_nonzero + act_iff in their ROUTED forms (all
+  states active at all pools: the mass-carrying countS ≡ 1 conventions) (split).
 · `n2_shapefam` (easy) — ShapeFam (the n = 2 root shapes, δOf ≡ 1). deps: chain.
 
 **U-29b-i…vii — LedgerIV items (1)–(5), ONE FIELD EACH (R28, Codex#3-4):**
@@ -1436,9 +1567,14 @@ prime: 1×1 packages, entry q₀⁻³ < 1 uniformly at q₀ ≥ 2. deps: U-29a, 
 
 **U-29d-iv…vi — RS4Chain, ONE DISPLAY EACH (Codex#3-7):**
 `n2_sigmas` (easy — sig_exact forces Sigmas = {(1,1)², (1,2), (2,1)}, the three
-degree-2 multisets) · `n2_x3_rs1` (easy — decidedTotal := Σ Rval; x3_total/
-rs1_equates by construction) · `n2_rsh` (medium — rsh_interp at the explicit
-values: eval β_{(1,2)} = (q₀+1)/(q₀²+q₀+1) etc.). deps: U-29d-i…iii, U-29d2.
+degree-2 multisets) · `n2_x3` (easy — decidedTotal := Σ Rval; x3_total by
+construction; Codex#6-13 split) · `n2_rs1eq` (easy — rs1_equates by construction;
+split) · `n2_rsh` (medium — rsh_interp at the explicit values: eval β_{(1,2)} =
+(q₀+1)/(q₀²+q₀+1) etc.). CHAIN FIELDS INSTANTIATED (R44 scope): Sigmas/sig_exact,
+PrimePools/prime_base/prime_sub, decidedTotal, Rval/r_bdd, x3_total, rs1_equates,
+rsh_interp, pools_e0/legs_reg, L, B, hns — NOT the shallow-production carriers
+(WshP/WshVal/shDom/shEvtH/… = seam duties, W17ii's contract).
+deps: U-29d-i…iv, U-29d2.
 
 **U-29d5 `n2_readoff` · N2ReadOff.lean · medium — scope CORRECTED (Codex#4-10).**
 Inhabits `ReadOffBundle` with **S := the BASE-PRIME pools** {(p:ℚ) | p prime} —
@@ -1449,11 +1585,9 @@ AVAgree from the explicit reduced denominators (q²+q+1 and q³ nonvanishing at
 every q₀ ≥ 2 supply hok; the active solve = the explicit values; no split legs).
 deps: U-29d2, U-24a2.
 
-**U-29d6 `n2_treeiface` · N2Tree.lean · easy — NEW (R41, Codex#5-3 non-vacuity).**
-A concrete `TreeIface` for the n = 2 shapes (one tree per shape: root + shallow
-leaves + one entrance node; the order laws by `decide`-scale case analysis;
-isDeepSplit ≡ False — no split outcomes) + `W7_cutWD` VERIFIED for it (the σ₀ and
-entrance-data clauses by construction). deps: U-29a chain, `n2_shapefam`.
+**U-29d6 `n2_treeiface` — MOVED TO THE SEAM (REV 10).** TreeIface is a seam
+carrier (canonical-tree vocabulary, MovesT-owned); its n = 2 instance and the
+W7 verification are §W4-SYNC entry S-11, NOT built at E-phase.
 
 **U-29e `n2_denominator` · N2Denom.lean · easy — the W6 CHECK (explicit).**
 `(1 - Kmat).det = (q³−1)/q³ ≠ 0`, and the reduced solve entries are
@@ -1611,6 +1745,8 @@ proves toward `xrb`; no PCI site is consumed by S.1-shaped content.
 
 ## 5. Conventions (phase E / prover fleet) + census
 
+**E-PHASE SCOPE (REV 10): THE CORE ONLY** — §2.A–2.D + the 85 §3 units; NOTHING
+from §W4-SYNC is elaborated or built (its entries have no files until re-keyed).
 Build per file `lake env lean LeanUrat/MovesS/<file>.lean`; `#print axioms` per unit
 (Lean-core only; `sorryAx` flagged). Skeleton `sorry`s (`OKat`/`evalAt` bodies,
 `kTarget`, `Kmat`, `bTerm`, `consumedDeltas`) elaborate at phase E BEFORE fan-out;
@@ -1620,14 +1756,15 @@ with real semantics, MovesV/MovesT must exhibit instances of every §2 structure
 the real CTS objects and discharge W-1/W-1e/W-1m/W-2/W-3/W-4/W-7/W-8/W-10; the
 campaign ledger tracks this per structure.
 
-**Census (REV 9): 82 units = 43 easy / 39 medium / 0 hard** (S0:9 · S1:4 · S2:16 ·
-S3:11 · S4:6 · S5:36). Easy: the 18 wave-2 core {U-1, U-2, U-3, U-5, U-7a/b/c,
-U-12b, U-12c, U-13, U-18b, U-20, U-21a, U-23a/b/c, U-24a2, U-25} + S5's 25
-{n2_scs_data, n2_pools, n2_heights_ent, n2_degpins_act, n2_shapefam, b-i…vi,
-n2_kstep_one, n2_hmc, n2_act, n2_init_agg, n2_entcount, n2_comp, b3, c, n2_xrb,
-n2_rexact, n2_sigmas, n2_x3_rs1, d6, e}; medium the remaining 39 (27 core +
-U-22b + S5's {n2_shape, n2_boxes, n2_polygeom, n2_interp, b-vii, n2_init_count,
-d-i, d-ii, d2, d-vi, d5} = 11). NO hard units (unchanged since R14).
+**Census (REV 10, THE CORE): 85 units = 45 easy / 40 medium / 0 hard** (S0:9 ·
+S1:4 · S2:16 · S3:11 · S4:6 · S5:39). Easy: the 18 wave-2 core {U-1, U-2, U-3,
+U-5, U-7a/b/c, U-12b, U-12c, U-13, U-18b, U-20, U-21a, U-23a/b/c, U-24a2, U-25}
++ S5's 27 {n2_scs_data, n2_pools, n2_heights, n2_ent_flow, n2_degpins,
+n2_activity, n2_shapefam, b-i…vi, n2_kstep_one, n2_hmc, n2_act, n2_init_agg,
+n2_entcount, n2_comp, b3, c, n2_xrb, n2_rexact, n2_sigmas, n2_x3, n2_rs1eq, e};
+medium the remaining 40 (27 wave-2 core + U-22b + S5's {n2_shape, n2_carriers,
+n2_events, n2_polygeom, n2_interp, b-vii, n2_init_count, d-i, d-ii, d2, n2_rsh,
+d5} = 12). SEAM (§W4-SYNC, not built): 11 entries incl. ex-U-29d6. NO hard units.
 
 ---
 
@@ -1754,8 +1891,28 @@ TYPING RULE (R37):**
 | Codex#5-8 | gap | U-29a → nine one-obligation-group units (data vs laws separated) | R43, §3 S5 |
 | Codex#5-9 | gap | n2_kstep_hmc → 2, n2_init → 3, n2_xrb_rexact → 2 one-field units | R43, §3 S5 |
 
-STATUS: REV 9 complete. Cumulative: R1 22/22 → … → R7 12/12 → R8 11/11 repaired
-(6 crit / 5 gap after de-duplication); PolyGeom settled at R8 (convention fix,
-confirmed by both verifiers). THE TYPING RULE (R37) is now uniform: grep-clean for
-comment-register hypothesis packages. 82 units = 43 easy / 39 medium / 0 hard.
-Awaits the dual confirmation on REV 9.
+**Rev-9 verdicts — Codex#6 (10 crit / 3 gap, ALL criticals at the wave-4 seam) +
+Fable#7 (0 crit / 2 gap) → REV 10, THE SEAM SPLIT (orchestrator adjudication,
+stuck rule #3 — see the SPLIT RECORD at the top):**
+
+| finding | disposition | where |
+|---|---|---|
+| Codex#6-1/2 (package registries; W3's XRB) | SEAM — re-keying charges S-2/S-3 (fields → real owner statements; W3 assumes XRB's conclusion) | §W4-SYNC |
+| Codex#6-3 (cofinite base primes) | CORE FIX — U-22b rebased in scope (pools_infinite route) + the base-prime face with explicit chain hypotheses | U-22b |
+| Codex#6-4 (act_iff over jP) | CORE FIX — act_iff/cellsize_nonzero ROUTED (tgP non-split, jP split, full roster) | §2.C |
+| Codex#6-5/6 (fence target; BDY tie) | SEAM — S-5 (deep split has a first-entrance ancestor), S-6 (ReadLedger keyed to entered paths) | §W4-SYNC |
+| Codex#6-7/8 (W17ii menu/xhd_s) | SEAM — S-8 (F.Sh.Nonempty or tree_ne premise; xhd_s face added to the package) | §W4-SYNC |
+| Codex#6-9 (Fib unrelated) | SEAM — S-7 (fibOf keying to TREE-N fibers) | §W4-SYNC |
+| Codex#6-10 (resFactors) | CORE FIX — Multiset with position-indexed memberOf; res_sum multiplicity-correct | §2.A |
+| Codex#6-11/12 (gate overclaim/omissions) | CORE FIX — R44 relabel: INTERNAL CONSISTENCY INSTANCE (roster + numerators = device, not displays; note-displayed content listed); claim scoped to the CORE structures; instantiated chain fields listed per unit | §3 S5 |
+| Codex#6-13 (bundling) | CORE FIX — n2_boxes/heights_ent/degpins_act/x3_rs1 each split in two | §3 S5 |
+| Fable#7-GAP-1 (W1-family premise-free) | SEAM CONTRACT FIX — W1/W1e/W1m premised on RS1Given.holds (+ Wsh17Package + W2 at W1); adjudication recorded (RS.1 is THIS note's theorem-under-hypotheses) | §W4-SYNC |
+| Fable#7-GAP-2 (U-22b route) | CORE FIX — pools_infinite route; chain hypotheses explicit | U-22b |
+
+STATUS: REV 10 (the seam split) complete. THE CORE: 85 units (45 easy / 40 medium
+/ 0 hard), closed import DAG, E-phase-ready; grep-clean (`: True`, `∨ True`,
+comment-register packages: none). THE SEAM: 11 §W4-SYNC contract entries, not
+built at E-phase, each carrying its full tie-demand union and re-keying charge.
+PolyGeom settled (R30, both verifiers). Cumulative: R1 22/22 → … → R8 11/11 →
+R9 split-adjudicated per the SPLIT RECORD. Next: ONE dual confirmation of the
+CORE, then E-phase.
