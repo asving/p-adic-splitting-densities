@@ -2153,3 +2153,68 @@ closed import DAG. THE SEAM: 11 §W4-SYNC contract entries. PolyGeom settled
 (R30); per-cell architecture settled (R45+R50, A-1). Cumulative: R1 22/22 → … →
 R11 5/5 → R12 4 repairs + 3 adjudications. **E-PHASE FOLLOWS IMMEDIATELY**
 (scope: §5).
+
+---
+
+## DEVIATIONS (E-PHASE, 2026-07-27) — elaboration-level only; every statement's
+## meaning per §2/§3; corpus `lean/LeanUrat/MovesS/` (97 files, 116 sorried
+## declarations, Defs/Interfaces sorry-free; census 95 = 52 easy / 43 medium ✓)
+
+**D-1 (bhatMeas arity).** `bhatMeas` (EvalReDef) takes the RAW measured β-family
+`(∀ e', e' ∈ Icc 1 n → State e' → Multiset VType → ℚ → ℝ)` instead of the
+RS1Bundle — the bundle is declared later (Interfaces.lean) and importing it would
+cycle. Use sites (ReadOffBundle.read, U-24a1/a2) pass
+`fun e' he' => B.βmeas e' he' h_ent`. Same evaluated object.
+
+**D-2 (legFactor guard).** `legFactor`'s continuing branch is dite-guarded on
+`μ.size < e` (else 0) instead of threading U-2's ktri bound through the
+definition — citing the SORRIED U-2 inside a def/statement type would put
+sorryAx into statement dependencies. Under DegCons the guard always holds on
+split outcomes, so the pinned bSplit_def equation is the note's object verbatim.
+
+**D-3 (hypothesis-shape names).** `KmatHyp T e` (the U-6 product) and
+`DetHyp T RB hK` (U-22's target) are named transparent abbrevs; `hK`'s type is
+normalized to `∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e` at every site (the note's
+display alternates `hK e` / `hK e ‹_›`). rsh_interp's hdet binder is stated as
+`DetHyp T RB hK` (defeq to the displayed ∀-form).
+
+**D-4 (decidability plumbing).** Defs opens `scoped Classical` from §2.A on
+(verdictImage/splitOuts/kstep_one `.toFinset`, `MeasuredSide.cells`);
+Interfaces.lean and N2ShEvents.lean take `attribute [local instance 0]
+Classical.decEq` for `shevt_grouping`'s `biUnion` over the abstract Box carrier.
+Proof-irrelevant; computable instances still win (last-resort priority).
+
+**D-5 (gate architecture).** Construction units carry the instance data as
+sorried defs (n2T/n2SCS/n2M/n2RB/n2F/n2P2/n2B/n2Chain/n2_readoff) plus named
+accessors (n2τ, n2oK/n2oSpl/n2oIn — sorried; n2v11/n2v12/n2v21 — REAL through
+vEquiv) and per-unit PIN THEOREMS restating each obligation group at the
+instance (P-phase fills the data once; the pins then discharge per unit).
+Named terms n2hdc/n2hK (N2ScsData) and n2hdet (N2Det) carry the U-6/U-22
+consequences downstream. n2_rsh additionally asserts `n2Chain.wsh17_pin` (the
+gate's device-W17ii discharge per R57/REV-13).
+
+**D-6 (bTot/blockSolveTot/markedPairing arity).** bTot/blockSolveTot take
+`(T M RB hdc hK e he)` — M explicit (RB's index), no hdet (Mathlib `⁻¹` total,
+the R29 clarifier); markedPairing likewise takes no hdet, exactly per R29.
+
+**D-7 (Defs fills).** The §2 skeleton sorries are FILLED sorry-free in Defs.lean:
+OKat (Subring via denom_add_dvd/denom_mul_dvd/denom_algebraMap), evalAt
+(RingHom via the hypothesis-carrying RatFunc.eval_add/eval_mul), kTarget
+(Sum.getRight + the kcol head-continuing lemma kcol_head_isRight), Kmat/bTerm
+(dite/if Finset sums over the roster), consumedDeltas (n-fold iterate of
+image₂-products from {1} over the NEW named def `deltaFactors` = split-leg δ's
+over the full roster ∪ shape-leg δ's). Axioms verified Lean-core only.
+
+**D-8 (U-9a hok packaging).** ksub_eval's conclusion is
+`∃ hok : (Σ routedMass) ∈ OKat q₀, evalAt ⟨…, hok⟩ = 1` — the membership is
+subring closure over tg_ok/j_ok, packaged existentially rather than as an extra
+displayed hypothesis.
+
+**D-9 (blockSolveLt).** U-17a introduces the named restriction `blockSolveLt`
+(dite on `e' ∈ Icc 1 n`) feeding bSplit's βlt slot — the display's
+"(blockSolve-restriction)" made a definition.
+
+**Sorried instance obligations (MovesU precedent):** `decompFintype` (U-11) and
+`shDecompFintype` (RshDef) — no off-the-shelf Mathlib instance for the bounded
+multiset-decomposition subtypes; `decompFintypeFlip` (BSplitDef) is REAL from
+U-11's via `Equiv.subtypeEquivRight eq_comm`.
