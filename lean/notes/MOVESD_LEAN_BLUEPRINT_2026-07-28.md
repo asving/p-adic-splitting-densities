@@ -1,23 +1,30 @@
-# MOVESD LEAN BLUEPRINT — REV 4
+# MOVESD LEAN BLUEPRINT — REV 5
 
 Campaign unit-spec per `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md` §2. Writer: Fable.
-REV 4 (2026-07-28): triage of the CONFLICTING rev-3 verdicts — Codex FINAL#2
-(`MOVESD_AUDIT_CODEX_FINAL2_2026-07-28.md`, REJECT 8/2) vs Fable#2
-(`MOVESD_AUDIT_FABLE2_2026-07-28.md`, REJECT 1/1, WITH gate-numeric evidence:
-reproduced Nshape(P̂*) = 5, A(P̂*) = 11, W = 7, M = 1, and counterexampled rev 3's
-class construction at the sealed gate). Protocol: evidence beats plausibility; every
-Codex finding contradicted by Fable's re-derivation is re-verified here and either
-FIXED or PUSHED BACK with note lines + gate numbers (§10 table). HEADLINE REPAIRS:
-the η-granularity is REBUILT conjugation-free (the canonical RESIDUE-ROOT rule joins
-the canonical-lift rule — Fable C1; the gate numbers re-derived in §0.6, MANDATORY);
-`EligibleImage` is the explicit TRANSPORTED predicate (Fable G1 ≈ Codex 3);
-the unconditional coarse pool bound W3 (Codex 5); `hne` on the C-carrying mass laws
-(Codex 6, second half); the honest presentability hypothesis PRESENT-EXIST named and
-wired (Codex 7); representative-independence pinned as ClassFiberWelldef (Codex 9);
-VerdictModel gains the finite-level locality law (Codex 10). PUSHBACKS (evidence in
-§10): Codex 1 (monicTop — partially conceded: root-species guard added), Codex 4
-(CanonPolicy), Codex 6 first half (empty ontology), Codex 8 (TreeModel).
-REV-2 table at §9, REV-3 at §10, REV-4 at §11.
+REV 5 (2026-07-28): the rev-4 verdicts SPLIT maximally — Fable#3 ACCEPT 0/0
+(`MOVESD_AUDIT_FABLE3_2026-07-28.md`: gate recomputed, all four pushbacks UPHELD)
+vs Codex FINAL#3 REJECT 7/1 (`MOVESD_AUDIT_CODEX_FINAL3_2026-07-28.md`: all four
+pushbacks rejected). ORCHESTRATOR ADJUDICATION: most disputes are two-readings-
+both-right; REV 5 implements RECONCILING DESIGNS satisfying both (each pointed at
+EXPLICITLY where the auditors looked; table §12):
+(1) TreeModel is OPTION-ROOTED with the root's presence a LAW (`root_mem` — L2's
+"its root is the empty chain ∅") while nonempty-chain inhabitation stays unforced
+(L5's (ns) leaf case — Fable's computation stands);
+(2) PRESENT-NORM is now the TYPED Prop `PresentNorm` — source set POLICY-FREE
+(`PrefSetAny`), so a junk policy or a truncated normalization VIOLATES the field
+`Presented.hnorm` (this also implements (6): CanonPolicy adequacy — L1 totality +
+the L6-corollary "realizable ⟺ realized" — without pinning offset-P, still POL-PIN);
+(3) the ∅ representation is a machine-checked BRIDGE THEOREM (F3 on the new
+Option-level `PrefOpt`: literally `Pref(∅) = {∅}` + the CD correspondence);
+(4) monicTop keeps the Boolean + guard (Fable's L11 reconstruction stands) PLUS the
+definitional tie `MonicTie` (monicTop ↔ the root window's degree-n slot) as a
+PrefSet clause — junk-monicTop shapes void their own PrefSet;
+(5) D4R4_all is restated at the NOTE's threshold: `Threshold` structure with field
+NP + its L12-visible defining properties; Nshape = the constructive witness
+(`threshold_witness`); L12/D4R.4 quantifier quoted and matched;
+(7) ClassFiberWelldef displayed as a Defs Prop and WIRED as D15's hypothesis;
+(8) VerdictModel's cell tie stays the honest declared deferral.
+REV-2 table §9, REV-3 §10, REV-4 §11, REV-5 reconciliation §12.
 
 ## 0. Source and ground truth
 
@@ -151,16 +158,16 @@ uniform quantifier, with cross-level compatibility automatic (same C, same A′)
 | object | encodes | status |
 |---|---|---|
 | `pol : CanonPolicy p F` (parameter) | WHICH canonical policy (the (S6b) offset-P formula) | OPEN parameter, pinned by §B2-DEF/HC-1; its LAWS (lift = function of node data, per-node) are structure fields — `False` not expressible |
-| `Matches.hmonic` | root monic lead digit = 1 (scoped, §0.5) | interface equality justified by §D4-R.6's display + the monic box; the ONLY off-tuple forcing |
+| `Matches.hmonic` + `ShapePrefix.MonicTie` (PrefSet clause) [REV 5] | root monic lead digit = 1 (scoped, §0.5) + monicTop ⟺ the root window's degree-n slot (reconciliation (4)) | interface equalities; junk-monicTop shapes void their own PrefSet |
 | `InBox n` (PrefSet clause) | the root side lies in the degree-n box | part of "§C history of the degree-n box" (the note's setting); consumed by W1 |
-| `Presented.jet` | per-class presentation at level N (N ≥ N(η,⊤), §C C.2) | HC-2 bridge — THE sole assumed structure field of the corpus |
+| `Presented.jet` + `Presented.hnorm` [REV 5] | per-class presentations (§C C.2) + the typed dictionary pin | HC-2 bridge — the corpus's two assumed structure fields; `Threshold.{hstab, jets}` packages them at the note's NP (reconciliation (5)) |
 | `D4R_CYL S T` (pinned Prop, def) | L6's (D4R-CYL) | note-PROVED given kernel (a)+(b) (both dual-verified-discharged) + Thm C(a); Lean proof EXPLICITLY DEFERRED to the wave-4/HC-2 tree corpus; D15 consumes it as a named hypothesis |
 | `TreeModel` data (`mem`, `child`) + laws | L2's T_can | interface data; laws are fields; uniqueness/eligibility semantics = kernel-(b) content, HC-2 |
 | `VerdictModel` (whole) | D4R.0-K(c)/VP: alphabet V, emission, halt dichotomy, per-class cap law | **OPEN** — owned by §T-ASSEMBLY → MovesT; typed, consumed by nothing in MovesD |
 | `hN : 1 ≤ N`, `hm : m = n*N` (D14a/D14b hyps) | L12's empty-case N(P̂) := 1 convention; the box shape | explicit theorem hypotheses (no jet available) |
-| **PRESENT-NORM** (declared pin) [REV 4] | every note-η has EXACTLY ONE root-normalized presentation class (conjugation equivariance of the Stage/Node laws + finite-field embedding rigidity — Fable#2 C1's repair route; §0.6) | HC-2; the classes ↔ η dictionary rests on it; gate-checked at §0.6 (3/48, mult ≡ 1) |
-| **PRESENT-EXIST** (declared hyp) [REV 4, Codex#2 f.7] | `∀ N ≥ Nshape P, Nonempty (Presented p F n N (n*N) pol P)` — presentability at every sufficient level (§C C.2's N(η,⊤) presentations) | HC-2; consumed EXPLICITLY by the wrapper unit D4R4_all; D10/D12/D13 remain ∀-statements over supplied S |
-| **ClassFiberWelldef** (pinned Prop, def) [REV 4, Codex#2 f.9] | representative independence: `∀ H H' ∈ PrefSet, etaData H = etaData H' → ∀ jets J, J', J.SHZ ⊤ = J'.SHZ ⊤` (one η-class, one classifier locus — §C L4's semantic content) | HC-2 (wave-4 tree corpus, with D4R_CYL); D15's specs cite BOTH pins |
+| **PresentNorm** (TYPED Prop + the FIELD `Presented.hnorm`) [REV 5 ⇐ rev-4 prose pin] | the two-sided classes ↔ η dictionary: totality from the POLICY-FREE `PrefSetAny` (L1 kernel-(a) totality + L6-corollary realizable ⟺ realized + conjugation equivariance) ∧ Galois uniqueness (embedding rigidity) | HC-2 discharge; VIOLATED by truncated normalizations AND by history-voiding junk policies (reconciliations (2)+(6)); gate-checked §0.6 |
+| **PRESENT-EXIST** (declared hyp) [REV 4] | `∀ N ≥ Nshape P, Nonempty (Presented …)` — presentability at every sufficient level (§C C.2) | HC-2; sole consumer: `TW_threshold_witness` (Nshape as the constructive `Threshold` witness — reconciliation (5)) |
+| **ClassFiberWelldef** (Defs Prop, §3.4) [REV 5: displayed AND wired] | representative independence: one η-class, one classifier locus (§C L4) | HC-2 (wave-4 tree corpus, with D4R_CYL); WIRED as D15's explicit hypothesis `hwd` (reconciliation (7)) |
 | **POL-PIN** (future unit, named) [REV 4, Codex#2 f.4] | the instance `pol := the (S6b) offset-P policy` with its realizer laws | owned by HC-1/§B2-DEF corpus; until then all MovesD theorems are ∀-pol |
 
 GONE at rev 3 (previously assumed): `henc` (→ PROVED, E1–E9), `hn : ℓ_r ≤ n`
@@ -208,7 +215,14 @@ structure ShapeRead where
   hmonicRoot : monicTop = true → species = ReadSpecies.root
 
 def ShapeRead.len (R : ShapeRead) : ℕ := R.wSide / R.e         -- ℓ_r = deg R_anch,r
-def ShapeRead.d (R : ShapeRead) : ℕ :=                          -- d_r (the tuple size)
+/-- d_r (the tuple size). [REV 5, reconciliation (4) — Codex#3 finding 1]: the
+Boolean is EXACT because at most ONE slot per read is off-box (the degree-n monic
+slot, root only — Fable#3 C-1), AND `monicTop` is now SEMANTICALLY TIED by
+`ShapePrefix.MonicTie` (a PrefSet clause, §3.2): monicTop = true ⟺ the read is the
+root AND its top slot IS the degree-n coefficient position (s0 + wSide = n). A junk
+shape faking (or omitting) monicTop violates MonicTie and voids its own PrefSet —
+the "artificially smaller W" instance is unbuildable on C-carrying territory. -/
+def ShapeRead.d (R : ShapeRead) : ℕ :=
   R.len + (if R.monicTop then 0 else 1)
 def ShapeRead.mbar (R : ShapeRead) : ℕ := R.len / (R.g * R.μ)   -- m̄_r (Nat ⌊·⌋)
 def ShapeRead.childWidthS (R : ShapeRead) : ℕ := R.e * R.g * R.Dwidth
@@ -224,6 +238,15 @@ member; W2 turns it into M ≤ n^{|P̂|}): the root side fits the box and the wi
 degree chain descends — the note's "deg R_anch,r ≤ n ALWAYS", shape-side. -/
 def ShapePrefix.Wellformed (P : ShapePrefix) (n : ℕ) : Prop :=
   ∀ (r : ℕ) (hr : r < P.reads.length), (P.reads[r]'hr).len ≤ n
+
+/-- [REV 5, reconciliation (4)] **The monic-slot tie**: `monicTop` is true EXACTLY at
+the root read whose side's top slot is the box's degree-n coefficient position
+(root frame width 1: slot index = base index). Both directions: faking monicTop
+(omitting a genuine digit, shrinking W) AND hiding it (inflating W past the box)
+violate the tie. A PrefSet clause (§3.2), so violating shapes have empty PrefSet. -/
+def ShapePrefix.MonicTie (P : ShapePrefix) (n : ℕ) : Prop :=
+  ∀ (r : ℕ) (hr : r < P.reads.length),
+    (P.reads[r]'hr).monicTop = true ↔ (r = 0 ∧ (P.reads[r]'hr).s0 + (P.reads[r]'hr).wSide = n)
 ```
 
 ### 3.2 Canonical policy, PrefSet, η-classes, the constructed family (findings 1–3)
@@ -291,10 +314,57 @@ def InBox (n : ℕ) (H : History p F) : Prop :=
 /-- **The LITERAL Lean Pref(P̂)** (L3: shape-match + realizable + canonical lifts, in
 the degree-n box). -/
 def PrefSet (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) : Set (History p F) :=
-  {H | P.MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧ InBox n H ∧ pol.IsCanonPres H}
--- [REV 4] `IsCanon` → `IsCanonPres` (the root-normalized presentation class, §0.6).
+  {H | P.MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧ InBox n H ∧
+       P.MonicTie n ∧ pol.IsCanonPres H}
+-- [REV 4] `IsCanon` → `IsCanonPres` (root-normalized presentation class, §0.6).
+-- [REV 5, reconciliation (4)] + the `MonicTie` clause.
 -- Defs-file order note: `RanchImage`/`ψImage`/`poolSubfield` (§3.4) precede this
 -- section in the actual `Defs.lean` (canonRoot consumes ψImage).
+
+/-- [REV 5, reconciliations (2)+(6) — Codex#3 findings 2/3; Fable#3 OBS-1's own
+recommendation] The POLICY-FREE realizable prefix set: shape-matched, coherent,
+realizable, in-box — NO canonicity clause of either kind. The reference set for the
+typed dictionary pin `PresentNorm` below. -/
+def PrefSetAny (n : ℕ) (P : ShapePrefix) : Set (History p F) :=
+  {H | P.MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧ InBox n H ∧ P.MonicTie n}
+
+/-- Coordinatewise field-automorphism action on η-class data (the Galois relation
+between conjugate presentations — Fable#2 C1's witness action). -/
+def EtaGalEq {P : ShapePrefix} (d d' : EtaData F P) : Prop :=
+  ∃ φ : F ≃+* F, ∀ r : Fin P.reads.length,
+    ((d' r).1 = fun k => φ ((d r).1 k)) ∧ ((d' r).2 = fun k => φ ((d r).2 k))
+
+/-- **PRESENT-NORM, TYPED** [REV 5, reconciliation (2)+(6) — supersedes the rev-4
+prose pin]: the two-sided dictionary between the note's η's and the normalized
+classes. (i) TOTALITY (= L1's kernel-(a) totality + the L6-corollary "realizable ⟺
+realized" + conjugation equivariance): every POLICY-FREE realizable prefix has a
+normalized class-mate up to Galois — so BOTH a truncated normalization (empty
+PrefIdx against nonempty PrefSetAny) AND a history-voiding junk policy VIOLATE this
+Prop; (ii) UNIQUENESS (embedding rigidity): Galois-related normalized classes
+coincide — classes never double-count an η. Math status: note-supported (L1
+dual-verified-discharged; equivariance/rigidity per Fable#2 C1); Lean discharge =
+HC-2. Carried as the FIELD `Presented.hnorm` — every consumer of a presented family
+consumes it (the auditors' wiring demand). -/
+def PresentNorm (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) : Prop :=
+  (∀ H ∈ PrefSetAny n P, ∃ i : PrefIdx n pol P, EtaGalEq (etaData P H) (i : EtaData F P)) ∧
+  (∀ H H', H ∈ PrefSet n pol P → H' ∈ PrefSet n pol P →
+    EtaGalEq (etaData P H) (etaData P H') → etaData P H = etaData P H')
+
+/-- [REV 5, reconciliation (3) — Codex#3 finding 5] The OPTION-LEVEL Pref: the
+note's chain ontology with the empty prefix as a first-class member (`none` = the
+empty chain ∅). F3 proves `Pref(∅) = {∅}` LITERALLY on this object, and the CD
+correspondence — the representation deviation is machine-checked, not declared. -/
+def PrefOpt (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) :
+    Set (Option (History p F)) :=
+  {c | match c with
+       | none => P.reads = []
+       | some H => H ∈ PrefSet n pol P ∧ P.reads ≠ []}
+
+/-- Option-level class data (none ↦ none — the η = ∅ class). -/
+noncomputable def etaDataO (P : ShapePrefix) :
+    Option (History p F) → Option (EtaData F P)
+  | none => none
+  | some H => some (etaData P H)
 
 /-- **The η-class data** — the note's η-granularity [REV 3, finding 3's enabler]: per
 read, the side-digit tuple AND ψ's coefficient tuple, ambient-field-valued. Everything
@@ -328,10 +398,35 @@ noncomputable def ShapePrefix.CD (P : ShapePrefix) (n : ℕ) (pol : CanonPolicy 
 def emptyFiber (p m : ℕ) : Set (Box p m) := Set.univ
 
 /-- **The presented family** [REV 3, finding 3]: everything is CONSTRUCTED from
-`PrefSet` except the one genuinely-open datum — the HC-2 presentations. -/
+`PrefSet` except the two genuinely-open data — the HC-2 presentations and the typed
+dictionary pin. [REV 5, reconciliation (2)+(6) — Codex#3 findings 2/3, Fable#3
+OBS-1]: `hnorm` makes PRESENT-NORM a FIELD: a family over a truncated normalization
+(empty `PrefIdx`, nonempty `PrefSetAny`) or over a history-voiding junk policy is
+NOT `Presented` — the vacuity instances Codex exhibited violate `hnorm`, and every
+mass-law unit consumes it through its `S` binder. -/
 structure Presented (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
     (n N m : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) where
   jet : (i : PrefIdx n pol P) → JetSetup (reprOf i) n N m
+  hnorm : PresentNorm n pol P
+
+/-- [REV 5, reconciliation (5) — Codex#3 finding 4] **The note's threshold, as
+data with its L12-visible defining properties.** L12 QUOTED: "N(P̂) :=
+max_{η ∈ Pref(P̂)} N(η,⊤) if Pref(P̂) ≠ ∅ … N(P̂) is finite, and for EVERY
+N ≥ N(P̂): (D4R.4-SUM) … (D4R.4-EV)". `N(η,⊤)` is a §C-presentation quantity, so
+its corpus-visible content is exactly: (i) `hstab` — the ledger exponent is stable
+from NP on (each fiber is cut at level ≤ NP: no band content above); (ii) `jets` —
+presentations exist at EVERY level ≥ NP (§C C.2). `Nshape` is the CONSTRUCTIVE
+WITNESS: unit TW proves `Threshold` inhabited with NP := Nshape under PRESENT-EXIST
+(the note: "an a priori shape bound on N(P̂) is available but not needed"), i.e.
+Nshape ≥ N(P̂) materialized. The note does NOT quantify over presentations (its
+counts are intrinsic); the per-level count is presentation-mediated here, with
+intrinsic-ness = ClassFiberWelldef (declared). -/
+structure Threshold (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
+    (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) where
+  NP : ℕ
+  hNP1 : 1 ≤ NP
+  hstab : ∀ N : ℕ, NP ≤ N → P.A n N = P.A' n
+  jets : ∀ N : ℕ, NP ≤ N → Presented p F n N (n * N) pol P
 
 def Presented.fiber (S : Presented p F n N m pol P) (i : PrefIdx n pol P) :
     Set (Box p m) := (S.jet i).SHZ (topLocus p m)
@@ -448,22 +543,28 @@ generation laws; prefix-closure becomes a THEOREM (T1a). Eligibility semantics o
 HC-2; uniqueness of the tree per input is the model's meta-duty, documented. -/
 structure TreeModel (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
     (n N m : ℕ) (pol : CanonPolicy p F) where
-  mem : History p F → Box p m → Prop
+  /-- [REV 5, reconciliation (1) — Codex#3 finding 6 ∧ Fable#3 C-8, BOTH satisfied]:
+  the node carrier is `Option (History p F)` — `none` IS the empty chain ∅, a
+  first-class tree node. -/
+  mem : Option (History p F) → Box p m → Prop
   child : Option (History p F) → Node p F → Box p m → Prop
-  mem_single : ∀ (ν : Node p F) (h1 : _) (x), mem ⟨[ν], h1.1, h1.2⟩ x ↔ child none ν x
-  mem_snoc : ∀ (H ν hν x), mem (H.snoc ν hν) x ↔ (mem H x ∧ child (some H) ν x)
-  mem_realizable : ∀ H x, mem H x → HistoryCoherent H ∧ Realizable H ∧ pol.IsCanonPres H
+  /-- **THE ROOT'S PRESENCE IS A LAW** (L2: "its root is the empty chain ∅" — the
+  root exists for EVERY input; Codex's reading). It may be a LEAF (no children —
+  L5's (ns) case; Fable's computation), so NO nonempty-chain inhabitation is forced:
+  both rev-4 readings hold on this carrier. -/
+  root_mem : ∀ x : Box p m, mem none x
+  mem_single : ∀ (ν : Node p F) (h1 : _) (x), mem (some ⟨[ν], h1.1, h1.2⟩) x ↔ child none ν x
+  mem_snoc : ∀ (H ν hν x), mem (some (H.snoc ν hν)) x ↔ (mem (some H) x ∧ child (some H) ν x)
+  mem_realizable : ∀ H x, mem (some H) x →
+    HistoryCoherent H ∧ Realizable H ∧ pol.IsCanonPres H
 
-/-- [REV 4, Codex#2 finding 8 — PUSHBACK, the falsifying computation displayed]:
-`mem := False, child := False` satisfies the generation laws, but it cannot enter
-ANY consuming theorem: D15 requires `D4R_CYL S T`, and by D0c every enumerated fiber
-is NONEMPTY (Theorem C(b)'s positive mass), so the empty tree FAILS `D4R_CYL` for
-every family with a realized class — the degenerate instance is data that no
-consumer accepts, exactly like a junk shape. A root-inhabitation law would be
-UNFAITHFUL: L5's (ns) case ("the window polygon admits no eligible side: a terminal
-verdict") makes ∅ a LEAF for some inputs — nonempty chains need not exist.
-Exhaustive-children semantics is kernel-(b) cell content, carried by the D4R_CYL /
-ClassFiberWelldef pins. §11 row 8. -/
+/-- [REV 5, reconciliation (1) — superseding the rev-4 pushback display]: the
+rev-4 dispute is RESOLVED on the Option carrier: Codex#3-f.6's "the empty root
+always exists" is now the LAW `root_mem`; Fable#3-C-8's "nonempty chains need not
+exist" (L5 (ns): ∅ can be a leaf) remains respected — no law forces `some`-chains;
+and the old falsifying computation still guards consumers (`mem some· := False`
+fails `D4R_CYL` against D0c's nonempty fibers). Exhaustive-children semantics stays
+kernel-(b) content behind the D4R_CYL / ClassFiberWelldef pins. §12 row 1. -/
 
 /-- L6's (D4R-CYL), as the PINNED Prop [REV 3, finding 7]: S(η,⊤) = {f : η ∈ T_can(f)}
 for every enumerated class. Note-PROVED (kernel (a)+(b) dual-verified-discharged +
@@ -471,7 +572,19 @@ Thm C(a)); its LEAN proof is EXPLICITLY DEFERRED to the wave-4/HC-2 tree corpus.
 D15 consumes it as a named hypothesis — it is NOT a TreeModel field. -/
 def D4R_CYL {n N m : ℕ} {pol : CanonPolicy p F} {P : ShapePrefix}
     (S : Presented p F n N m pol P) (T : TreeModel p F n N m pol) : Prop :=
-  ∀ (i : PrefIdx n pol P) (x : Box p m), x ∈ S.fiber i ↔ T.mem (reprOf i) x
+  ∀ (i : PrefIdx n pol P) (x : Box p m), x ∈ S.fiber i ↔ T.mem (some (reprOf i)) x
+
+/-- [REV 5, reconciliation (7) — Codex#3 finding 7: now DISPLAYED and WIRED (D15's
+`hwd` hypothesis), no longer ledger-only] Representative independence: one η-class,
+one classifier locus, over ALL representatives and ALL jets (§C L4's semantic
+content). Deferred to the wave-4/HC-2 tree corpus together with `D4R_CYL`; the two
+jointly restore L6's every-η/every-presentation reading. -/
+def ClassFiberWelldef (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
+    (n N m : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) : Prop :=
+  ∀ (H H' : History p F), H ∈ PrefSet n pol P → H' ∈ PrefSet n pol P →
+    etaData P H = etaData P H' →
+    ∀ (J : JetSetup H n N m) (J' : JetSetup H' n N m),
+      J.SHZ (topLocus p m) = J'.SHZ (topLocus p m)
 
 /-- **The (c)/VP surface, typed** [REV 3, gap 9]: alphabet V; the emission map vdict
 (none = the read continues); the HALT DICHOTOMY = L2's "a chain has NO children iff
@@ -487,9 +600,11 @@ structure VerdictModel {n N m : ℕ} {pol : CanonPolicy p F}
   hVfin : Finite V
   hVne : Nonempty V
   vdict : History p F → Box p m → Option V
-  halt_iff : ∀ H x, T.mem H x →
+  halt_iff : ∀ H x, T.mem (some H) x →
     (vdict H x ≠ none ↔ ∀ (ν : Node p F) (hν : ν.species ≠ ReadSpecies.root),
       ¬ T.child (some H) ν x)
+  -- [REV 5] vdict stays on NONEMPTY chains; the ∅-root's own (ns) verdict is
+  -- MovesT's corner (VP-2's root clause), documented not modeled.
   /-- the box level of each digit coordinate (the presented charts' first component;
   MovesT pins it to the jets' `coordOf`). -/
   levelOf : Fin m → ℕ
@@ -512,7 +627,7 @@ end
 end LeanUrat.MovesD
 ```
 
-## 4. Unit specs (45 units [REV 4: +W3, +D4R4_all]; all in `lean/LeanUrat/MovesD/`)
+## 4. Unit specs (46 units [REV 4: +W3, +D4R4_all; REV 5: +F3]; all in `lean/LeanUrat/MovesD/`)
 
 Common binders (elided): `{p} [Fact p.Prime] {F} [Field F] [Finite F] {n N m : ℕ}
 {pol : CanonPolicy p F} {P : ShapePrefix}`; `S : Presented p F n N m pol P`;
@@ -622,9 +737,13 @@ statement:
   `theorem card_classes : Nat.card (PrefIdx n pol P) = Nat.card (etaData P '' PrefSet n pol P)`
 moves_ref: "Pref(P̂) := { η : shape(η) = P̂, η realizable, canonical lifts }, C_P̂(p) :=
 #Pref(P̂)" — the enumeration is CONSTRUCTED, completeness/injectivity are definitional
-theorems (final-audit finding 3: nothing assumed). [REV 4: classes are the
-ROOT-NORMALIZED presentation classes; "classes ↔ η's" is the PRESENT-NORM pin (§2),
-gate-checked at §0.6 — C_P̂*(2) = 3, C_P̂*(3) = 48, mult ≡ 1.]
+theorems (final-audit finding 3: nothing assumed). [REV 5, reconciliation (2) —
+Codex#3 finding 3, ANSWERED WHERE IT LOOKED: "classes ↔ η's" is NO LONGER prose —
+it is the TYPED Prop `PresentNorm n pol P` (§3.2: totality from the POLICY-FREE
+`PrefSetAny` + Galois uniqueness), carried by every family as the FIELD
+`Presented.hnorm`. The truncated-normalization instance (empty PrefIdx, nonempty
+PrefSetAny) VIOLATES it. Gate-checked at §0.6 — C_P̂*(2) = 3, C_P̂*(3) = 48,
+mult ≡ 1.]
 deps: Defs. sketch: `Exists.choose_spec` twice; `Nat.card` of a subtype of a set
 coerced. easy.
 
@@ -668,7 +787,7 @@ easy. hypothesis_fields: NONE — the injection is PROVED (final-audit finding 4
 repaired: nothing assumed, no rider).
 
 ### D3b — D4R2_cor · `D3b_corD4R2.lean`
-statement: `theorem D4R2_cor (hne : P.reads ≠ []) (N : ℕ) (hN : P.Nshape ≤ N) (S : Presented p F n N m pol P) : Nat.card S.event * p ^ (P.A' n) ≤ P.Mfac * p ^ (P.W + n * N)`
+statement: `theorem D4R2_cor (hne : P.reads ≠ []) (N : ℕ) (hA : P.A n N = P.A' n) (S : Presented p F n N m pol P) : Nat.card S.event * p ^ (P.A' n) ≤ P.Mfac * p ^ (P.W + n * N)`
 moves_ref: "μ(P̂) ≤ C_P̂(p)·p^{−A(P̂)} ≤ M(P̂)·p^{W(P̂)−A(P̂)} = M(P̂)·p^{−A_net(P̂)},
 A_net(P̂) := A(P̂) − W(P̂)" (Corollary D4R.2), division-free (`Anet` records the named
 exponent). deps: D12, D3a, D2a. sketch: chain D4R1_EV with D4R2' (via CD_eq);
@@ -713,15 +832,14 @@ split. medium.
 ### THE MASS LAWS (final-audit finding 5: the uniform quantifier ∀ N ≥ N(P̂))
 
 ### D10 — D4R1_SUM · `D10_sumLaw.lean`
-statement: `theorem D4R1_SUM (hne : P.reads ≠ []) (N : ℕ) (hN : P.Nshape ≤ N) (S : Presented p F n N m pol P) : (∑ᶠ i : PrefIdx n pol P, Nat.card (S.fiber i)) * p ^ (P.A' n) = Nat.card (PrefIdx n pol P) * p ^ (n * N)`
+statement: `theorem D4R1_SUM (hne : P.reads ≠ []) (N : ℕ) (hA : P.A n N = P.A' n) (S : Presented p F n N m pol P) : (∑ᶠ i : PrefIdx n pol P, Nat.card (S.fiber i)) * p ^ (P.A' n) = Nat.card (PrefIdx n pol P) * p ^ (n * N)`
 moves_ref: "Σ_{η ∈ Pref(P̂)} μ(S(η,⊤)) = C_P̂(p)·p^{−A(P̂)} (D4R.1-SUM)" ≡ "N(P̂) is
 finite, and for EVERY N ≥ N(P̂): Σ_η #{f mod p^N ∈ S(η,⊤)} = C_P̂(p)·p^{nN − A(P̂)}
-(D4R.4-SUM)". THE QUANTIFIER: N and S are UNIVERSALLY bound at every level ≥ the
-shape threshold; C and A′ are N-FREE (PrefIdx/A′ do not mention N), so the equations
-at different levels share their constants — D4R.4's content. `Nshape ≥ the note's
-N(P̂)` on presented shapes is the jets' existence side (§C C.2, HC-2); the theorem
-is stated at every N ≥ Nshape where a presentation exists, which is the note's "for
-every N ≥ N(P̂)" read through the HC-2 boundary (documented).
+(D4R.4-SUM)". THE QUANTIFIER [REV 5]: N and S universally bound at every
+level where the ledger has stabilized — `hA : P.A n N = P.A' n`, DISCHARGED by L9s
+whenever `Nshape ≤ N` and by `Threshold.hstab` from the note's own NP on (so
+D4R4_all covers [N(P̂), Nshape) too); C and A′ are N-FREE, so all levels share their
+constants — D4R.4's content. The uniform-threshold packaging is D4R4_all.
 deps: D0b, D9, L9s, D2a (Fintype from Finite for ∑ᶠ). sketch: per summand
 thmC_top + D9 + A_stable; sum the constant. NO disjointness consumed. medium.
 hypothesis_fields: `S.jet` only.
@@ -732,13 +850,13 @@ hypothesis_fields: `S.jet` only.
 easy.
 
 ### D12 — D4R1_EV · `D12_evBound.lean`
-statement: `theorem D4R1_EV (hne : P.reads ≠ []) (N : ℕ) (hN : P.Nshape ≤ N) (S : Presented p F n N m pol P) : Nat.card S.event * p ^ (P.A' n) ≤ Nat.card (PrefIdx n pol P) * p ^ (n * N)`
+statement: `theorem D4R1_EV (hne : P.reads ≠ []) (N : ℕ) (hA : P.A n N = P.A' n) (S : Presented p F n N m pol P) : Nat.card S.event * p ^ (P.A' n) ≤ Nat.card (PrefIdx n pol P) * p ^ (n * N)`
 moves_ref: "μ(P̂) ≤ C_P̂(p)·p^{−A(P̂)} (D4R.1-EV) by subadditivity" ≡ "(D4R.4-EV) …
 the union bound within the level-N box", at every N ≥ N(P̂) (same quantifier note as
 D10). deps: D10, D11a, D11b. sketch: card event = #{mult ≥ 1} ≤ Σ mult. medium.
 
 ### D13 — D4R1_EV_iff · `D13_evIff.lean`
-statement: `theorem D4R1_EV_iff (hne : P.reads ≠ []) (N : ℕ) (hN : P.Nshape ≤ N) (S : Presented p F n N m pol P) : (Nat.card S.event * p ^ (P.A' n) = Nat.card (PrefIdx n pol P) * p ^ (n * N)) ↔ (∀ x ∈ S.event, S.mult x = 1)`
+statement: `theorem D4R1_EV_iff (hne : P.reads ≠ []) (N : ℕ) (hA : P.A n N = P.A' n) (S : Presented p F n N m pol P) : (Nat.card S.event * p ^ (P.A' n) = Nat.card (PrefIdx n pol P) * p ^ (n * N)) ↔ (∀ x ∈ S.event, S.mult x = 1)`
 moves_ref: "with EQUALITY iff mult_P̂ ≡ 1 on the event … count-equality ⟺ …
 mult_P̂ ≡ 1 POINTWISE on the event — the finite-level statement carries no
 measure-zero exception" (D4R.1/L12). deps: D10, D11a, D11b. sketch: cancel p^{A′}
@@ -750,18 +868,49 @@ their whole domain, and the P̂ = ∅ display is carried ONLY by D14a — the no
 two-mechanism proof ("The EMPTY prefix η = ∅ … is dispatched FIRST, separately from
 Theorem C(b)"). First half PUSHED BACK — §11 row 6.]
 
-### D4R4_all — the quantified law with witnessed non-vacuity · `D4R4all_wrapper.lean`
-[REV 4, Codex#2 finding 7]
-statement: `theorem D4R4_all (hne : P.reads ≠ []) (hex : ∀ N, P.Nshape ≤ N → Nonempty (Presented p F n N (n*N) pol P)) : ∀ N, P.Nshape ≤ N → ∃ S : Presented p F n N (n*N) pol P, ((∑ᶠ i, Nat.card (S.fiber i)) * p ^ (P.A' n) = P.CD n pol * p ^ (n * N) ∧ Nat.card S.event * p ^ (P.A' n) ≤ P.CD n pol * p ^ (n * N))`
-moves_ref: "N(P̂) is finite, and for EVERY N ≥ N(P̂): …(D4R.4-SUM)…(D4R.4-EV)" — the
-uniform quantifier WITH a witness at every level, under the DECLARED presentability
-hypothesis `hex` = **PRESENT-EXIST** (§2 ledger: §C C.2's N(η,⊤) presentations,
-HC-2). The honest reading: the note's unconditional quantifier rests on §C's
-presentability, which is this corpus's HC-2 boundary — stated, not smuggled.
-deps: D10, D12, D2a (CD_eq). sketch: instantiate hex; apply D10/D12. easy.
-hypothesis_fields: `hex` (PRESENT-EXIST — the sole consumer of the declared pin).
+### D4R4_all — the law at the NOTE's threshold · `D4R4all_wrapper.lean`
+[REV 5, reconciliation (5) — Codex#3 finding 4; restated on `Threshold`]
+statement:
+  `theorem D4R4_all (hne : P.reads ≠ []) (T : Threshold p F n pol P) : ∀ N, T.NP ≤ N → (((∑ᶠ i, Nat.card ((T.jets N ‹_›).fiber i)) * p ^ (P.A' n) = P.CD n pol * p ^ (n * N)) ∧ (Nat.card (T.jets N ‹_›).event * p ^ (P.A' n) ≤ P.CD n pol * p ^ (n * N)))`
+  `theorem TW_threshold_witness (hex : ∀ N, P.Nshape ≤ N → Nonempty (Presented p F n N (n*N) pol P)) : Nonempty (Threshold p F n pol P)`
+moves_ref: L12 QUOTED VERBATIM: "N(P̂) is finite, and for EVERY N ≥ N(P̂):
+Σ_{η ∈ Pref(P̂)} #{f mod p^N ∈ S(η,⊤)} = C_P̂(p)·p^{nN − A(P̂)} (D4R.4-SUM) …
+#{f mod p^N ∈ S(P̂,⊤)} ≤ C_P̂(p)·p^{nN − A(P̂)} (D4R.4-EV)". MATCH: ∀ N ≥ NP (the
+threshold DATA with its L12-visible properties), the SUM equality ∧ the EV bound,
+constants CD and A′ N-free. The note quantifies over LEVELS only (its counts are
+intrinsic — no ∃-over-presentations remains in the conclusion; presentation-
+intrinsic-ness = ClassFiberWelldef, declared). `TW`: Nshape is the CONSTRUCTIVE
+WITNESS (NP := Nshape, hstab := L9s, jets := hex via choice) — "Nshape ≥ N(P̂)"
+materialized as witness-hood; PRESENT-EXIST (§2) is consumed HERE and only here.
+deps: D10, D12, D2a (CD_eq), L9s; T.hstab bridges A n N to A′ below Nshape.
+sketch: apply D10/D12 at T.jets N (their hN-argument replaced by T.hstab — D10/D12
+generalize to any N with `P.A n N = P.A' n`, a one-line hypothesis swap noted in
+their specs). easy-medium.
+hypothesis_fields: `T : Threshold` (fields hstab/jets = the L12 threshold content,
+HC-2); `hex` (PRESENT-EXIST) only in TW. Non-vacuity: T.jets carry `hnorm`
+(PresentNorm), so truncated/junk-policy instantiations violate the field — the
+"trivially satisfiable hex" instance is unbuildable.
+
+### F3 — the ∅-representation BRIDGE · `F3_emptyBridge.lean`
+[REV 5, reconciliation (3) — Codex#3 finding 5 ∧ Fable#3 C-6: the deviation is now
+a THEOREM on the Option-level object, not a prose declaration]
+statement:
+  `theorem PrefOpt_empty (hP : P.reads = []) : PrefOpt n pol P = {Option.none}`
+  `theorem PrefOpt_nonempty (hne : P.reads ≠ []) : PrefOpt n pol P = Option.some '' PrefSet n pol P`
+  `theorem CD_correspondence : P.CD n pol = Nat.card (etaDataO P '' PrefOpt n pol P)`
+moves_ref: "Pref(∅) = {∅}" (L12/D4R.1's dispatch) — now LITERAL: the Option-level
+Pref of the empty shape IS the singleton of the empty chain, and the corpus C (`CD`)
+equals the class count of `PrefOpt` UNIFORMLY (both branches machine-checked: ∅ —
+image = {none}, card 1; nonempty — etaDataO ∘ some classes = the PrefIdx classes).
+The consumed arithmetic (D14a's law, D10's constant via CD_eq) is thereby EQUIVALENT
+to the note's ontology by theorem.
+deps: Defs, D2a, F1. sketch: set ext + match unfolding; `Option.some` injective for
+the card transport. easy.
 
 ### D14a — emptyShape_law · `D14a_emptyShape.lean` (final-audit finding 6)
+[REV 5: `Pref_empty_shape`'s History-level display now sits UNDER the F3 bridge —
+the Option-level `PrefOpt_empty` carries the note's "Pref(∅) = {∅}" literally; this
+unit keeps the History-level honesty display + the mass law.]
 statement:
   `theorem Pref_empty_shape (hP : P.reads = []) : PrefSet n pol P = ∅ ∧ P.CD n pol = 1`
   `theorem A'_nil (hP : P.reads = []) : ∀ n, P.A' n = 0`
@@ -785,7 +934,7 @@ hypothesis_fields: `hN`, `hm` explicit (L12's N(P̂) := 1 convention).
 ### THE TREE UNITS (final-audit finding 7 + gap 8)
 
 ### T1a — tree_prefix_closed · `T1a_prefixClosed.lean`
-statement: `theorem tree_prefix_closed (T : TreeModel p F n N m pol) : ∀ H H' x, H.IsPrefixOf H' → T.mem H' x → T.mem H x`
+statement: `theorem tree_prefix_closed (T : TreeModel p F n N m pol) : ∀ H H' x, H.IsPrefixOf H' → T.mem (some H') x → T.mem (some H) x` — plus the base `∀ H x, T.mem (some H) x → T.mem none x` (immediate from `root_mem`). [REV 5: Option carrier.]
 moves_ref: "T_can(f) is prefix-closed — a tree" (L2) — now a THEOREM from the
 generation laws, not a field. deps: Defs. sketch: downward induction along
 `mem_snoc` (peel the last node; a prefix of a snoc is the history or a prefix of it).
@@ -793,8 +942,8 @@ medium.
 
 ### D15 — tree_bridge · `D15_tree.lean`
 statement:
-  `theorem mult_eq_tree (S) (T : TreeModel p F n N m pol) (hcyl : D4R_CYL S T) (x : Box p m) : S.mult x = Nat.card {i : PrefIdx n pol P // T.mem (reprOf i) x}`
-  `theorem event_iff_tree (S) (T) (hcyl : D4R_CYL S T) (x : Box p m) : x ∈ S.event ↔ ∃ i : PrefIdx n pol P, T.mem (reprOf i) x`
+  `theorem mult_eq_tree (S) (T : TreeModel p F n N m pol) (hcyl : D4R_CYL S T) (hwd : ClassFiberWelldef p F n N m pol P) (x : Box p m) : S.mult x = Nat.card {i : PrefIdx n pol P // T.mem (some (reprOf i)) x}`
+  `theorem event_iff_tree (S) (T) (hcyl : D4R_CYL S T) (hwd : ClassFiberWelldef p F n N m pol P) (x : Box p m) : x ∈ S.event ↔ ∃ i : PrefIdx n pol P, T.mem (some (reprOf i)) x`
 moves_ref: "mult_P̂(f) := #{ η ∈ Pref(P̂) : η ∈ T_can(f) } … S(P̂,⊤) = {f : mult_P̂(f)
 ≥ 1}" (L6 corollary). `hcyl` is the PINNED, EXPLICITLY DEFERRED L6 obligation (§2
 ledger; wave-4/HC-2 owns its proof) — a named theorem hypothesis, NOT a structure
@@ -833,7 +982,9 @@ content. `Nshape ≥ N(η,⊤)`-adequacy of the presentations is existence-side 
 3. `D4R_CYL` consumed only as a named deferred hypothesis; no unit proves or assumes
    it as a field. Kernel (a)/(b) cited as MATH-discharged only; (c)/VP only in
    `VerdictModel`.
-4. The EV criterion pointwise-on-the-event; ∀ N ≥ Nshape quantifier present on
+4. The EV criterion pointwise-on-the-event; the level quantifier via
+   `hA : P.A n N = P.A' n` (discharged by L9s at N ≥ Nshape, by `Threshold.hstab`
+   at N ≥ NP) and the note-threshold form at D4R4_all — present on
    D10/D12/D13 with N-free C and A′.
 5. `ShapePrefix.A`/`A'`/`CD` are DEFINITIONS; `CD`'s if-branch is the note's own
    Pref(∅) = {∅} dispatch — reject any unit weakening it to a hypothesis.
@@ -844,8 +995,8 @@ content. `Nshape ≥ N(η,⊤)`-adequacy of the presentations is existence-side 
 ## 8. MANIFEST stub
 
 corpus: MovesD · source: §D4-R rev 9 (DUAL-ACCEPTED 2026-07-27) · consumes: MovesC ·
-units: 45 (D0a–c; E1–E9; D1c; D2a; F1; W1–W3; D3a–b; D4a–b; D5a–b; D6a–e; D7a–c; D8;
-D9; L9s; D10; D4R4_all; D11a–b; D12; D13; D14a–b; T1a; D15; 13 AUX) · defs: 1 file ·
+units: 46 (D0a–c; E1–E9; D1c; D2a; F1; F3; W1–W3; D3a–b; D4a–b; D5a–b; D6a–e; D7a–c;
+D8; D9; L9s; D10; D4R4_all(+TW); D11a–b; D12; D13; D14a–b; T1a; D15; 13 AUX) · defs: 1 file ·
 open surface: `pol : CanonPolicy` (parameter), `Presented.jet` (HC-2), `D4R_CYL`
 (deferred pinned Prop), `TreeModel`/`VerdictModel` data + laws, `Matches.hmonic`
 (scoped, §0.5), explicit `hN`/`hm` on the empty units — §2 ledger.
@@ -893,6 +1044,23 @@ split D4a/D4b. 10 D6/D7 bundles → one lemma per unit.
 | C-9 | D4R_CYL covers representatives only; representative-independence missing | correct as a scope gap | **FIXED**: ClassFiberWelldef pinned (§2) + D15 spec cites both pins |
 | C-10 | VerdictModel: no vdict↔cell tie, no levelOf↔chart link | partially correct: full cell tie needs frames (MovesT); a finite-level locality law and chart-range consistency are expressible here | **FIXED (partial, typed)**: `vdict_local` (vdict a function of the digits below the cap envelope — the finite-level shadow of "τ is a function of CELL data, never of f") + `levelOf_lt`; the cell-exact tie documented as MovesT's VP duty |
 
-Unit count: 45 (rev 3's 43 + W3 + D4R4_all); AUX still 13. Gate acceptance test
+Unit count at rev 4: 45; at rev 5: 46 (+F3). AUX still 13. Gate acceptance test
 (per the triage protocol): §0.6 — C_P̂*(2) = 3 ✓, C_P̂*(3) = 48 ✓, mult_P̂* ≡ 1 ✓,
 Nshape(P̂*) = 5 ✓, A(P̂*) = 11 ✓, W = 7 ✓, M = 1 ✓.
+
+## 12. REV 5 reconciliation table (Fable#3 ACCEPT 0/0 vs Codex FINAL#3 REJECT 7/1 — orchestrator-adjudicated designs)
+
+| # | dispute (who held what) | the reconciling design (both readings satisfied) |
+|---|---|---|
+| 1 | TreeModel root: Codex f.6 "the empty root ALWAYS exists" (L2: "its root is the empty chain ∅") vs Fable C-8 upheld "root-inhabitation on nonempty History would be unfaithful (L5 (ns): ∅ can be a leaf)" — BOTH RIGHT | node carrier = `Option (History)`: `root_mem : ∀ x, mem none x` is a LAW (Codex's reading); NO law forces `some`-chains (Fable's (ns) computation stands); `mem_single`/`mem_snoc`/`D4R_CYL`/T1a/D15 requantified on `some`; VerdictModel stays on nonempty chains (∅-verdict = MovesT's VP-2 root corner, documented) |
+| 2 | PresentNorm: Codex f.3 "prose pin, PrefIdx may truncate Pref" vs Fable OBS-1 (same recommendation, non-blocking) | `PresentNorm n pol P` TYPED (§3.2): totality from the POLICY-FREE `PrefSetAny` + Galois uniqueness; carried as the FIELD `Presented.hnorm` — the empty-PrefIdx-vs-nonempty-Pref instance VIOLATES it, and every mass unit consumes it through S |
+| 3 | ∅ representation: Codex f.5 "Pref_empty_shape states the wrong set" vs Fable C-6 upheld "the History type has no empty chain; CD's if-branch IS the note's dispatch" | the deviation is now a THEOREM (F3, on the new Option-level `PrefOpt`): `PrefOpt_empty : PrefOpt = {none}` = the note's "Pref(∅) = {∅}" LITERALLY; `CD_correspondence` machine-checks the consumed arithmetic equivalence; D14a keeps the History-level honesty display |
+| 4 | monicTop: Codex f.1 "Boolean unfaithful to L3's slot sets; junk root shapes shrink W" vs Fable C-1 upheld (L11 reconstruction + at most one off-box slot + gate d-counts) | Boolean + root guard STAND (Fable), PLUS the definitional tie `ShapePrefix.MonicTie` (monicTop ⟺ root ∧ s0+wSide = n) as a PrefSet clause — faking/hiding monicTop voids the shape's PrefSet (Codex's instance unbuildable on C-carrying territory) |
+| 5 | D4R4_all: Codex f.4 "starts at Nshape not N(P̂); ∃-S conclusion; hex trivially satisfiable" vs Fable §5 PASS (documented boundary, note licenses the shape bound) | `Threshold` structure = the note's NP with its L12-VISIBLE properties (`hstab`, `jets`); D4R4_all restated ∀ N ≥ NP with NO ∃-over-presentations in the conclusion (L12 quantifies over LEVELS only — quoted verbatim in the spec); D10/D12/D13/D3b generalized to `hA : P.A n N = P.A' n` (covers [N(P̂), Nshape)); `TW_threshold_witness`: Nshape = the constructive witness under PRESENT-EXIST; hnorm kills the trivial-hex instance |
+| 6 | CanonPolicy: Codex f.2 "junk pol can void the corpus; POL-PIN not a hypothesis" vs Fable C-4 upheld (L1 verbatim; ∀-pol sound; DAG ownership) | parameter design STANDS (Fable) + the note-supported adequacy is now INSIDE `PresentNorm`'s totality clause (source set = policy-FREE `PrefSetAny`): a history-voiding policy violates `Presented.hnorm` — vacuity killed WITHOUT pinning offset-P (POL-PIN stays HC-1) |
+| 7 | ClassFiberWelldef: Codex f.7 "not shown, not a hypothesis" | displayed as a Defs Prop (§3.4) and WIRED: D15's two theorems carry `hwd : ClassFiberWelldef …` explicitly |
+| 8 | VerdictModel cells: Codex f.8 (GAP) "no digit-cell factorization" — acknowledged by both as the declared MovesT boundary | stays the honest deferral: `vdict_local`/`levelOf_lt`/`cap_law` are the interface-expressible shadow; the cell-exact tie is VP-2/MovesT's, stated in the structure docstring — no silent claim |
+
+Gate acceptance (unchanged from §0.6, re-affirmed by BOTH rev-4 verdicts'
+independent recomputations): C_P̂*(2) = 3, C_P̂*(3) = 48, mult ≡ 1, Nshape = 5,
+A = 11, W = 7, M = 1.
