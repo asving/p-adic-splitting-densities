@@ -181,6 +181,12 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   instantiation is the remaining campaign (the other corpora + HC-1/HC-2).
   This is the capstone TARGET of the master plan, standing as a checked
   conditional theorem exactly as the math delivers it. *****
+  *** MovesSp DUAL-ACCEPTED (2026-07-28, rev 5): Codex 0/0 + Fable 0/0 on
+  identical text; the Fable leg re-implemented the defs in Python and verified
+  every decide target TRUE (closure 53, loops, exclusions, rosters). 67 units.
+  Journey: 6/11 -> 2/4 -> split (5/8 vs 0/0) -> adjudicated 1/1 + 0/1 -> 0/0
+  dual. THE NOTE ERRATUM (R6 row) now confirmed by four independent auditor
+  passes. E-phase launched. ***
   CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
   Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
   Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
