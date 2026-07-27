@@ -1871,7 +1871,9 @@ identity holds VERBATIM for trees ALL of whose leaves are
 (τ-irr)/(τ-hen) — 𝒯^fin, (NS-a); for T ∈ 𝒯^ns the level-N object is
 the LUMPED FIBER T[N] — T with every ns leaf replaced by its (ns-lump)
 cylinder L_{M(N)} ((NS-b)) — an all-finite-level event, N-STABLE by
-construction, satisfying TREE-N verbatim:
+construction (for N at least the thresholds of ALL ordinary nodes, and with the
+chosen lump L_{M(N)} readable at level N — the quantifier that blocks a small-N
+misreading; REV 14, pass-13 concern 2), satisfying TREE-N verbatim:
     #{f mod p^N : f ∈ fiber(T[N])} = p^{nN}·μ(fiber(T[N])).
 The EXACT ns fiber enters only through the displayed containment and
 limit — fiber(T) = ⋂_N fiber(T[N]), so μ(fiber T) = lim_N
@@ -2059,7 +2061,11 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
         [(ns-null)/CL-10-CONDITIONAL — the exact form: GIVEN (ns-null)
         ((NS-c)) the eventual-ns residual is 0, so the SAME solve equals
         the FULL conditional subtree density; until (ns-null) closes,
-        every full-density reading of β_e carries this displayed tag].
+        every full-density reading of β_e carries this displayed tag; the
+        non-null ns residual stays SCHEMATIC and OUTSIDE the recursion — there
+        is NO licensed additive root-level b_e^{ns} formula, and it may never be
+        promoted into one absent a branching-aware derivation (REV 14,
+        pass-13 concern 3)].
       b_e^split(τ)(σ′) := Σ_{o branching} T·G ·
         Σ_{σ′ = σ₁ ⊎ … ⊎ σ_m} ∏_{j=1}^m β_{e_j, τ_j(o)}(σ_j)
   — the MULTISET CONVOLUTION over the children's types, the product over
@@ -2341,6 +2347,12 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   independent evidence — pass-1 obstruction 8.)
 
 **Kernels (derivation-grade — the campaign's biggest, now four):**
+**INTERNAL PROOF ORDER (BINDING — REV 14, pass-13 concern 1):** RS.0(β)/XRB
+(kernel 3) is proved BEFORE either PCI β-substitution site — b_e^split (RS.PRE)
+and RS.1-SH's convolution, both inside kernel 1. The event DAG is already
+acyclic ([3] → [3t]-FULL only); this fixes the DRAFTING order so the
+height-elimination package is discharged first, or a future draft could
+accidentally recreate a local proof cycle inside [3] despite the correct DAG.
 1. **RS.1's regrouping**: `unroll`/`resum` through the CTS — grouping by template
    AND height point (COMP-h typing — REV 7),
    multi-side reads (strictly-decreasing-slope cones, the gap substitution
@@ -3763,3 +3775,14 @@ demonstrated, none closed. The critical path is unchanged
 ([1] → [2a] → [1v]-COND → [2b]); [2a] SPECIES is the next drafting unit;
 [3t]'s remaining substance = the (SIB-STEP) derivation (joint-vector form),
 the T-n3 gate (with its seal duty), and (ns-null)'s verification passes.
+
+## REV 14 RECORD (the pass-13 concerns; SOUND at pass 13)
+
+Pass 13 (ASSEMBLY_PLAN_PASS13_2026-07-27.md): SOUND, 0 criticals, 3 concerns, all
+drafting-level, applied here as guarded one-liners. (1) [3]'s kernel roster pins a
+BINDING internal proof order — RS.0(β)/XRB before either PCI β-substitution site
+(b_e^split, RS.1-SH) — so no local proof cycle is redraftable despite the acyclic
+event DAG. (2) TREE-N's T[N] identity gains the ordinary-threshold / level-N-
+readability quantifier blocking a small-N misreading. (3) The (R_e-exact) display
+notes the non-null ns residual stays SCHEMATIC and OUTSIDE the recursion — no
+licensed additive b_e^{ns} formula. No kernel added/closed; clearances = REV 13.
