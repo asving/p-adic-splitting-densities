@@ -419,6 +419,16 @@ should not be conflated (this is the mistake an earlier draft of this document m
    the JOINT-D1 cross-cluster rewording at four lines), the [2a]/[3t] acceptance-event
    formalities, and the remaining kernels ((SIB-STEP), HMC, ESCAPE, WEIGHT-CHARGE,
    TRACK-COUNT, X-items) each with a named refuter.
+   UPDATE (2026-07-27, final): **§R-LEDGER DUAL-ACCEPTED** (Codex 5+6 + Fable on
+   rev 5; the Fable spiral caught and fixed the (EQ-2) refutation-stability defect
+   with a per-position-class pin) — the SEVENTH artifact through the full dual
+   standard: §B2-DEF, §C, §D4-R, §T-ASSEMBLY, §V-TABLES, §M-SPECIES, §R-LEDGER.
+   **§H-DOMAINS ([2b]) drafted and in spiral** (pass 1: 9c/2g — the derivation-heavy
+   note held to proof standards; H-LIST's slack/cone injectivity, the honest
+   consumer-match rewrite, and a real seal for gate H-n3 are the rev-2 work; rev 2
+   in flight). The write-up now has SEVEN dual-accepted artifacts + one note in
+   spiral + two plan notes ([3] RESUM, [4] SQUEEZE + [5] EXHAUST) not yet drafted —
+   those await [2b]'s package and the remaining kernels per the plan's DAG.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
