@@ -1,0 +1,404 @@
+{
+ "campaign": "HC1 — the §B2-DEF tower induction hard core (wave 5, E-phase elaboration)",
+ "blueprint": "lean/notes/HC1_LEAN_BLUEPRINT_2026-07-28.md (REV 2, accepted; DEVIATIONS appendix added at E-phase 2026-07-28)",
+ "moves_source": "lean/notes/MOVES_2026-07-24.md §B2-DEF 1849-2745 + §C displays 3644-3831 + pass-7 carry spec 1502-1530",
+ "defs": [
+  "lean/LeanUrat/HC1/DefsD.lean",
+  "lean/LeanUrat/HC1/DefsTower.lean",
+  "lean/LeanUrat/HC1/DefsCar.lean",
+  "lean/LeanUrat/HC1/DefsSpine.lean"
+ ],
+ "defs_sorry_free": true,
+ "preamble": "Every unit file begins: `import Mathlib` then the HC1 Defs module(s) it needs (`LeanUrat.HC1.DefsD` / `DefsTower` / `DefsCar` / `DefsSpine`) then the cited PROVED Moves/MovesGr/MovesC unit files; then `set_option linter.style.longLine false`, `set_option linter.style.header false`, `set_option linter.unusedSectionVars false`, `set_option maxHeartbeats 800000`; then `namespace LeanUrat.HC1` and `open Polynomial LeanUrat.Moves` (plus `open scoped Classical` where Pi.single/filters need decidability). Statements elaborate under that preamble (verified per-file by `lake env lean`, MOVESGR §6 double-elaboration discipline: statements regenerated verbatim from this manifest must re-elaborate). `sorry` is the only allowed escape — ZERO new axioms; any GMN/Denef import in a cone is stop-the-line.",
+ "build": "cd lean && lake env lean -o .lake/build/lib/lean/LeanUrat/HC1/<f>.olean LeanUrat/HC1/<f>.lean, topological order per Defs chain; NEVER bare `lake build`. Every unit file ends with `#print axioms <thm>` (expected: propext, sorryAx, Classical.choice, Quot.sound until proved; then Lean-core only).",
+ "decide_gates": "G1-G5 carry typed statements with sorry bodies at E-phase; the fleet closes them by decide/norm_num/construction — NO sorry allowed at acceptance for the G layer.",
+ "dep_sorries": {
+  "S17": "Moves L6_measureExact_R4 (:143/:189 — §4.6, the sole surviving tail entry; sign-off spec in blueprint §4.6)"
+ },
+ "hypothesis_ledger": {
+  "TowerRealizable": "Type-valued open kernel (blueprint §5 + Deviation D-3): carries the per-read lines/windows + slope/vertex ties + steeper/vertex-entry/window conditions; consumers T10, C1, C4, R6; never discharged inside HC1",
+  "hexact": "anchor exactness per stratum, threaded on S16/S17 verbatim from L5_landTwoSided_repair",
+  "REL1": "R-layer statement defs (LSTStmt'/TYPStmt'/DOMStmt'/SecB1Stmt'/EQ2lawIfREL1') are the typed open kernel; consumers hypothesize, never assert"
+ },
+ "blocked": [],
+ "units": [
+  {
+   "id": "HC1.D1_carryRing",
+   "file": "lean/LeanUrat/HC1/D1_carryRing.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem D1_carryRing (F : Type*) [Field F] (e : ℕ) [NeZero e] (zbar : Fˣ) : Nonempty (CarryRingPack F e zbar)"
+  },
+  {
+   "id": "HC1.D2_carryGrading",
+   "file": "lean/LeanUrat/HC1/D2_carryGrading.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem D2_carryGrading {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : (∀ (ρ σ : ZMod e) (c c' : F), (letI := P.ring; dOf ρ c * dOf σ c') = dOf (ρ + σ) (c * c' * (zbar : F) ^ carryExp ρ σ)) ∧ (∀ (x y : CarryAlg F e) (ρ σ : ZMod e), IsHomog x ρ → IsHomog y σ → IsHomog (letI := P.ring; x * y) (ρ + σ))"
+  },
+  {
+   "id": "HC1.D3_carryDomain",
+   "file": "lean/LeanUrat/HC1/D3_carryDomain.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem D3_carryDomain {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) (x y : CarryAlg F e) (ρ σ : ZMod e) (hx : IsHomog x ρ) (hy : IsHomog y σ) (hx0 : x ≠ 0) (hy0 : y ≠ 0) : (letI := P.ring; x * y) ≠ 0"
+  },
+  {
+   "id": "HC1.D4_carryAdjoinRoot",
+   "file": "lean/LeanUrat/HC1/D4_carryAdjoinRoot.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem D4_carryAdjoinRoot {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : ∃ Θ : (letI := P.ring; CarryAlg F e ≃+* AdjoinRoot (Polynomial.X ^ e - Polynomial.C ((zbar : F)))), ∀ (ρ : ZMod e) (c : F), Θ (dOf ρ c) = algebraMap F _ c * AdjoinRoot.root (Polynomial.X ^ e - Polynomial.C ((zbar : F))) ^ ρ.val"
+  },
+  {
+   "id": "HC1.D5_carryE1",
+   "file": "lean/LeanUrat/HC1/D5_carryE1.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem D5_carryE1 {F : Type*} [Field F] {zbar : Fˣ} (P : CarryRingPack F 1 zbar) : ∃ Θ : (letI := P.ring; CarryAlg F 1 ≃+* F), ∀ x : CarryAlg F 1, Θ x = x 0"
+  },
+  {
+   "id": "HC1.D6_carryHomogUnits",
+   "file": "lean/LeanUrat/HC1/D6_carryHomogUnits.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem D6_carryHomogUnits {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : (∀ (ρ : ZMod e) (c : F), c ≠ 0 → (letI := P.ring; dOf ρ c * dOf (-ρ) (c⁻¹ * ((zbar : F) ^ carryExp ρ (-ρ))⁻¹) = 1)) ∧ (∀ (x : CarryAlg F e) (ρ : ZMod e), IsHomog x ρ → x ≠ 0 → (letI := P.ring; IsUnit x))"
+  },
+  {
+   "id": "HC1.D7_digD_mul",
+   "file": "lean/LeanUrat/HC1/D7_digD_mul.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem D7_digD_mul {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0) (e_b : ℕ) [NeZero e_b] (B B'' Rdev Q : Polynomial ℤ_[p]) (hB : B ≠ 0) (hB'' : B'' ≠ 0) (hBd : B.natDegree < σ.e * g * σ.Φ.natDegree) (hB''d : B''.natDegree < σ.e * g * σ.Φ.natDegree) (hdiv : B * B'' = Q * Φhat + Rdev) (hRd : Rdev.natDegree < σ.e * g * σ.Φ.natDegree) (h5B : IsMonomialUnit (σ.R B)) (h5B'' : IsMonomialUnit (σ.R B'')) (h5R : IsMonomialUnit (σ.R Rdev)) : σ.digD zbar e_b Rdev = cmul zbar (σ.digD zbar e_b B) (σ.digD zbar e_b B'')"
+  },
+  {
+   "id": "HC1.D8_digD_recenter",
+   "file": "lean/LeanUrat/HC1/D8_digD_recenter.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem D8_digD_recenter {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (zbar : Fˣ) (e_b : ℕ) [NeZero e_b] (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBc : inC σ.Φ B) : σ'.digD zbar e_b B = σ.digD zbar e_b B"
+  },
+  {
+   "id": "HC1.T1_baseStage",
+   "file": "lean/LeanUrat/HC1/T1_baseStage.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem T1_baseStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (e h : ℕ) (bdata : BaseReadData p F e h) : ∃ σ : Stage p F, IsBaseStage σ ∧ StageCoreL σ ∧ σ.e = e ∧ σ.h = h"
+  },
+  {
+   "id": "HC1.T2_baseGate",
+   "file": "lean/LeanUrat/HC1/T2_baseGate.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem T2_baseGate : ∃ σ : Stage 2 (GaloisField 2 2), IsBaseStage σ ∧ StageCoreL σ"
+  },
+  {
+   "id": "HC1.T3_htChainWeight",
+   "file": "lean/LeanUrat/HC1/T3_htChainWeight.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem T3_htChainWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (c : T.Coord) (hc : c.MonoNZ) : (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c"
+  },
+  {
+   "id": "HC1.T4_slotMinHt",
+   "file": "lean/LeanUrat/HC1/T4_slotMinHt.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ) (hfin : (Function.support y).Finite) (hsupp : ∀ c, y c ≠ 0 → T.blk c = b) (hne : T.slotCoeff b y ≠ 0) : ∃ c₀ : T.Coord, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c : T.Coord, y c ≠ 0 → T.ht c₀ ≤ T.ht c"
+  },
+  {
+   "id": "HC1.T5_levelSetInGamma",
+   "file": "lean/LeanUrat/HC1/T5_levelSetInGamma.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem T5_levelSetInGamma {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ) (hxfin : (Function.support x).Finite) (hyfin : (Function.support y).Finite) (hagree : ∀ c ∈ T.levelSet b γ, x c = y c) (hxlow : ∀ c, T.blk c = b → T.ht c < γ → x c = 0) (hylow : ∀ c, T.blk c = b → T.ht c < γ → y c = 0) : T.inGr γ (T.slotCoeff b x) = T.inGr γ (T.slotCoeff b y)"
+  },
+  {
+   "id": "HC1.T6_carrierLaws",
+   "file": "lean/LeanUrat/HC1/T6_carrierLaws.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem T6_carrierLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : T.HasSide ∧ T.CarrierLaws"
+  },
+  {
+   "id": "HC1.T7_alphabetSpan",
+   "file": "lean/LeanUrat/HC1/T7_alphabetSpan.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem T7_alphabetSpan {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) : ((T.alphabet b γ : Set (T.grQ γ)) = { x | ∃ (s : Finset ↥(T.levelSet b γ)) (dig : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ), x = ∑ c ∈ s, T.typComposite b γ (Pi.single c (dig c)) }) ∧ Finite ↥(T.alphabet b γ) ∧ p ^ T.aDim b γ = Nat.card ↥(T.alphabet b γ)"
+  },
+  {
+   "id": "HC1.T8_alphabetStep",
+   "file": "lean/LeanUrat/HC1/T8_alphabetStep.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem T8_alphabetStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) : ∃ A : AddSubgroup (↥(T.levelSet b γ) → ↥(T.stg 0).FQ), Set.BijOn (T.typComposite b γ) ↑A ↑(T.alphabet b γ) ∧ (∀ x ∈ A, ∀ y ∈ A, T.typComposite b γ (x + y) = T.typComposite b γ x + T.typComposite b γ y) ∧ p ^ T.aDim b γ = Nat.card ↥A"
+  },
+  {
+   "id": "HC1.T9_blockDisjoint",
+   "file": "lean/LeanUrat/HC1/T9_blockDisjoint.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem T9_blockDisjoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ (b b' : ℕ) (γ γ' : ℚ), (b, γ) ≠ (b', γ') → Disjoint (T.levelSet b γ) (T.levelSet b' γ')) ∧ Function.Injective (fun c : T.Coord => (T.baseIdx c, c.l))"
+  },
+  {
+   "id": "HC1.T10_floorStaircase",
+   "file": "lean/LeanUrat/HC1/T10_floorStaircase.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem T10_floorStaircase {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) (hb : rl.interiorB b) : rl.floorB b = (rl.line T.K).at (T.blockEdge b) ∧ (∀ c : T.Coord, T.blk c = b → rl.floorC c = rl.floorB b)"
+  },
+  {
+   "id": "HC1.T11_attainDichotomy",
+   "file": "lean/LeanUrat/HC1/T11_attainDichotomy.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem T11_attainDichotomy {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (X : T.grQ γ) : ((∃ y : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ, T.typComposite b γ y = X) ↔ X ∈ T.alphabet b γ) ∧ (X ∉ T.alphabet b γ → {y : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ | T.typComposite b γ y = X} = ∅) ∧ (0 : T.grQ γ) ∈ T.alphabet b γ"
+  },
+  {
+   "id": "HC1.T12_coordFin",
+   "file": "lean/LeanUrat/HC1/T12_coordFin.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem T12_coordFin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (lmax bmax : ℕ) : Set.Finite {c : T.Coord | c.l < lmax ∧ c.slot (Fin.last T.K) < bmax} ∧ (∀ (b : ℕ) (γ : ℚ), {c : T.Coord | T.blk c = b ∧ T.ht c = γ} = T.levelSet b γ)"
+  },
+  {
+   "id": "HC1.C1_LST",
+   "file": "lean/LeanUrat/HC1/C1_LST.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : -- (i-a): ht is the K1-chain weight of the basis monomial (T3's form) (∀ c : T.Coord, c.MonoNZ → (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c) ∧ -- (i-b): the iterated slot minimum (T4's form) (∀ (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ), (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → T.slotCoeff b y ≠ 0 → ∃ c₀, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c, y c ≠ 0 → T.ht c₀ ≤ T.ht c) ∧ -- (i-c): in_γ' is a function of exactly the level set (T5's form) (∀ (b : ℕ) (γ' : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ), (Function.support x).Finite → (Function.support y).Finite → (∀ c ∈ T.levelSet b γ', x c = y c) → (∀ c, T.blk c = b → T.ht c < γ' → x c = 0) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b x) = T.inGr γ' (T.slotCoeff b y)) ∧ -- (ii): the staircase floor on factor-interior blocks (T10's form) (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorC c = rl.floorB b) ∧ -- (iii): level sets strictly above the floor avoid the floor set (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' → T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅)"
+  },
+  {
+   "id": "HC1.C2_TYPa",
+   "file": "lean/LeanUrat/HC1/C2_TYPa.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem C2_TYPa {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) : (∀ y : T.Coord → ↥(T.stg 0).FQ, (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b y) = T.typComposite b γ' (fun c => y c.1)) ∧ (∀ x y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ, T.typComposite b γ' (x + y) = T.typComposite b γ' x + T.typComposite b γ' y)"
+  },
+  {
+   "id": "HC1.C3_TYPb",
+   "file": "lean/LeanUrat/HC1/C3_TYPb.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem C3_TYPb {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) : (Set.range (T.typComposite b γ') = ↑(T.alphabet b γ')) ∧ (∀ X X' : T.grQ γ', X ∈ T.alphabet b γ' → X' ∈ T.alphabet b γ' → Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X} = Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X'}) ∧ (∀ X : T.grQ γ', X ∈ T.alphabet b γ' → Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X} * Nat.card ↥(T.alphabet b γ') = Nat.card (↥(T.levelSet b γ') → ↥(T.stg 0).FQ))"
+  },
+  {
+   "id": "HC1.C4_DOM",
+   "file": "lean/LeanUrat/HC1/C4_DOM.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem C4_DOM {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (i : Fin (T.K + 1)) (m : ℕ) (hm : m < i.val) (b : ℕ) (hb : b < rl.interiorEnd i.val) : (rl.line m).at b ≤ (rl.line i.val).at b ∧ MovesC.floorOf rl.line i.val b = (rl.line i.val).at b"
+  },
+  {
+   "id": "HC1.C5_typToClause",
+   "file": "lean/LeanUrat/HC1/C5_typToClause.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem C5_typToClause {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (m : ℕ) (S : Finset (Fin m)) (enc : (Fin m → ZMod p) →+ (↥(T.levelSet b γ') → ↥(T.stg 0).FQ)) (hdep : ∀ x y : Fin m → ZMod p, (∀ c ∈ S, x c = y c) → enc x = enc y) (hsurj : Function.Surjective enc) (X : T.grQ γ') (hX : X ∈ T.alphabet b γ') : ∃ cl : MovesC.LevelClause p m, cl.support = S ∧ cl.codim = T.aDim b γ' ∧ ∀ x : Fin m → ZMod p, cl.sat x ↔ T.typComposite b γ' (enc x) = X"
+  },
+  {
+   "id": "HC1.C6_alphabetCard",
+   "file": "lean/LeanUrat/HC1/C6_alphabetCard.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem C6_alphabetCard {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (hne : (T.levelSet b γ).Nonempty) : Nat.card ↥(T.alphabet b γ) = p ^ T.aDim b γ ∧ (Nat.card ↥(T.alphabet b γ) = Nat.card ↥(T.stg (Fin.last T.K)).K ↔ ∀ c : ↥(T.levelSet b γ), ∃ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) ≠ 0) ∧ ((∃ c : ↥(T.levelSet b γ), ∀ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) = 0) → T.aDim b γ < Nat.log p (Nat.card ↥(T.stg (Fin.last T.K)).K))"
+  },
+  {
+   "id": "HC1.S1_transHypGate",
+   "file": "lean/LeanUrat/HC1/S1_transHypGate.lean",
+   "difficulty": "medium",
+   "sorries": 2,
+   "statement": "theorem S1_transHypGate_a : ∃ (σ : Stage 2 (GaloisField 2 2)) (Φhat : Polynomial ℤ_[2]) (h' : ℕ) (zbar : (GaloisField 2 2)ˣ), IsBaseStage σ ∧ StageCoreL σ ∧ σ.Φ = Polynomial.X ∧ σ.e = 1 ∧ σ.h = 1 ∧ σ.K = ⊥ ∧ TransHyp σ (Polynomial.X ^ 2 + Polynomial.X + 1) 2 Φhat 1 h' zbar\n\ntheorem S1_transHypGate_b {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (h' : ℕ) (zbar : Fˣ) : ¬ TransHyp σ ψ g Φhat 0 h' zbar"
+  },
+  {
+   "id": "HC1.S2_childW",
+   "file": "lean/LeanUrat/HC1/S2_childW.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem S2_childW {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hdeg : 1 ≤ Φhat.natDegree) (e' h' : ℕ) : (∀ f : Polynomial ℤ_[p], f ≠ 0 → ∃ (B : ℕ → Polynomial ℤ_[p]) (N : ℕ), IsDevelopment Φhat f B N ∧ SlotMinAttained (childW σ Φhat e' h' f) N (fun j => (e' : ℤ) * σ.w (B j) + (j : ℤ) * (h' : ℤ)) (fun j => B j ≠ 0)) ∧ IsSlotMinWeight (childW σ Φhat e' h') Φhat e' h' σ.w"
+  },
+  {
+   "id": "HC1.S3_childK1",
+   "file": "lean/LeanUrat/HC1/S3_childK1.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem S3_childK1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hdeg : 1 ≤ Φhat.natDegree) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hw1 : σ.w 1 = 0) : childW σ Φhat e' h' Φhat = (h' : ℤ) ∧ K1At (childW σ Φhat e' h') Φhat ((h' : ℤ))"
+  },
+  {
+   "id": "HC1.S4_childSubmult",
+   "file": "lean/LeanUrat/HC1/S4_childSubmult.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S4_childSubmult {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (f f' : Polynomial ℤ_[p]) (hf : f ≠ 0) (hf' : f' ≠ 0) : childW σ Φhat e' h' f + childW σ Φhat e' h' f' ≤ childW σ Φhat e' h' (f * f')"
+  },
+  {
+   "id": "HC1.S5_childValuation",
+   "file": "lean/LeanUrat/HC1/S5_childValuation.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S5_childValuation {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : (∀ f f' : Polynomial ℤ_[p], f ≠ 0 → f' ≠ 0 → childW σ Φhat e' h' (f * f') = childW σ Φhat e' h' f + childW σ Φhat e' h' f') ∧ AddSubgroup.closure {n : ℤ | ∃ f f' : Polynomial ℤ_[p], f ≠ 0 ∧ f' ≠ 0 ∧ childW σ Φhat e' h' f - childW σ Φhat e' h' f' = n} = ⊤"
+  },
+  {
+   "id": "HC1.S6_childS4field",
+   "file": "lean/LeanUrat/HC1/S6_childS4field.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem S6_childS4field {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : (∀ x : F, x ∈ σ.nextField zbar → x ≠ 0 → ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC Φhat B ∧ σ.digPrime zbar B = x) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → σ.digPrime zbar B ∈ σ.nextField zbar) ∧ (∀ B B' : Polynomial ℤ_[p], B ≠ 0 → B' ≠ 0 → B - B' ≠ 0 → inC Φhat B → inC Φhat B' → σ.w B = σ.w B' → σ.digPrime zbar B = σ.digPrime zbar B' → σ.w B < σ.w (B - B'))"
+  },
+  {
+   "id": "HC1.S7_childPin",
+   "file": "lean/LeanUrat/HC1/S7_childPin.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S7_childPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : ((e' : ℤ) * σ'.s + (h' : ℤ) * σ'.t = 1 ∧ (e' = 1 → σ'.t = 0)) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → ∃ c' : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C ((c' : ↥σ'.K)) * LaurentPolynomial.T (- σ'.t * σ.w B)) ∧ CoeffLocLaw σ'"
+  },
+  {
+   "id": "HC1.S8_childS6",
+   "file": "lean/LeanUrat/HC1/S8_childS6.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S8_childS6 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : TvecUnitLaw σ' ∧ ((σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ))"
+  },
+  {
+   "id": "HC1.S9_transStage",
+   "file": "lean/LeanUrat/HC1/S9_transStage.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem S9_transStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ' ∧ σ'.K = σ.nextField zbar ∧ σ'.e = e' ∧ σ'.h = h'"
+  },
+  {
+   "id": "HC1.S10_recStage",
+   "file": "lean/LeanUrat/HC1/S10_recStage.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem S10_recStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (hlift : ∃ tt : Polynomial ℤ_[p], tt ≠ 0 ∧ inC σ.Φ tt ∧ σ.w tt = σ.w σ.Φ ∧ σ.R tt = LaurentPolynomial.C cc * LaurentPolynomial.T 0) : ∃ (σ' : Stage p F) (tt : Polynomial ℤ_[p]), IsRecenteringCore σ σ' cc tt ∧ StageCoreL σ'"
+  },
+  {
+   "id": "HC1.S11_towerSpine",
+   "file": "lean/LeanUrat/HC1/S11_towerSpine.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S11_towerSpine {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ k : Fin (T.K + 1), StageCoreL (T.stg k)) ∧ (∀ k : Fin T.K, match T.move k with | .inc _ _ _ e' h' zbar _ _ => (T.stg k.succ).K = (T.stg k.castSucc).nextField zbar ∧ (T.stg k.succ).e = e' ∧ (T.stg k.succ).h = h' | .recenter _ _ _ => (T.stg k.succ).e = 1 ∧ (T.stg k.succ).K = (T.stg k.castSucc).K)"
+  },
+  {
+   "id": "HC1.S12_iaugPersist",
+   "file": "lean/LeanUrat/HC1/S12_iaugPersist.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S12_iaugPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) (ψ : Polynomial ↥(T.stg k).K) (g : ℕ) (hψ : Irreducible ψ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k) ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥(T.stg k).K) (hanch : HasAnchorK ((T.stg k).R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) : (∀ j, j < μ → B j ≠ 0 → ((T.stg k).e : ℤ) * (T.stg k).h * g * ((μ : ℤ) - j) < (T.stg k).w (B j) - (T.stg k).w (B μ)) ∧ (∀ (e' h' : ℕ) (j : ℕ), 1 ≤ e' → j < μ → B j ≠ 0 → (h' : ℤ) * ((μ : ℤ) - (j : ℤ)) = (e' : ℤ) * ((T.stg k).w (B j) - (T.stg k).w (B μ)) → IAug (T.stg k) Φhat e' h')"
+  },
+  {
+   "id": "HC1.S13_realPersist",
+   "file": "lean/LeanUrat/HC1/S13_realPersist.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) : (∃ ν₀ : ℤ, ∀ ν : ℤ, ν₀ ≤ ν → ν ∈ (T.stg k).weightSet) ∧ (((T.stg k).e : ℤ) * (T.stg k).wPrev (T.stg k).Φ < ((T.stg k).h : ℤ)) ∧ ((T.stg k).e = 1 → ∀ (ν : ℤ) (c : (↥(T.stg k).K)ˣ), ν ∈ (T.stg k).weightSet → ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC (T.stg k).Φ B ∧ (T.stg k).wPrev B = ν ∧ (T.stg k).R B = LaurentPolynomial.C ((c : ↥(T.stg k).K)) * LaurentPolynomial.T 0)"
+  },
+  {
+   "id": "HC1.S14_wellTypedAnchor",
+   "file": "lean/LeanUrat/HC1/S14_wellTypedAnchor.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S14_wellTypedAnchor {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) (he1 : (T.stg k).e = 1) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : ∃ (a : ℤ) (Ranch : Polynomial ↥(T.stg k).K), HasAnchorK ((T.stg k).R f) a Ranch ∧ 0 ≤ a"
+  },
+  {
+   "id": "HC1.S15_anchoredSubst",
+   "file": "lean/LeanUrat/HC1/S15_anchoredSubst.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem S15_anchoredSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (hsub : RecenterSubstCore σ σ' cc) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (a : ℤ) (ha : 0 ≤ a) (μ : ℕ) (hpoly : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a ((Polynomial.X - Polynomial.C cc) ^ μ * hpoly)) (hnd : ¬ (Polynomial.X - Polynomial.C cc) ∣ hpoly) (zbar : Fˣ) (e_b : ℕ) [NeZero e_b] : (∃ Ranch' : Polynomial ↥σ'.K, HasAnchorK (σ'.R f) (μ : ℤ) Ranch' ∧ Ranch'.map σ'.K.subtype = (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F)) ^ a.toNat * (hpoly.map σ.K.subtype).comp (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F))) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC σ.Φ B → σ'.digD zbar e_b B = σ.digD zbar e_b B)"
+  },
+  {
+   "id": "HC1.S16_levelLanding",
+   "file": "lean/LeanUrat/HC1/S16_levelLanding.lean",
+   "difficulty": "medium-hard",
+   "sorries": 1,
+   "statement": "theorem S16_levelLanding {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (B : ℕ → Polynomial ℤ_[p]) (hdev : IsDevelopment Φhat f B lm.N) : StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N"
+  },
+  {
+   "id": "HC1.S17_levelMeasureExact",
+   "file": "lean/LeanUrat/HC1/S17_levelMeasureExact.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem S17_levelMeasureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (D ktot N : ℕ) (hD : D = Φhat.natDegree * lm.N) (hN : 1 ≤ N) (hkN : ktot ≤ D * N) (strat : (Fin (D * N) → ZMod p) → Prop) (code : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (hcode : ∀ x, ∃ f : Polynomial ℤ_[p], f.natDegree < D ∧ code f = x) (hstrat : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (strat (code f) ↔ (f ≠ 0 ∧ StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f))) (hz : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ strat (code f)) (Θ : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (hΘ : LeanUrat.MovesC.IsUnitriangular fun x => Θ x) (E : DigitSystem (D * N) (ZMod p)) (hEk : E.numPinned = ktot) (hcyl : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B lm.N → (E.IsSolution (Θ (code f)) ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N)) : Nat.card {x : Fin (D * N) → ZMod p // strat x} * p ^ ktot = p ^ (D * N)"
+  },
+  {
+   "id": "HC1.G1_divGate",
+   "file": "lean/LeanUrat/HC1/G1_divGate.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem G1_divGate : zbGate ^ 2 = zbGate + 1 ∧ zbGate * zbGate = zbGate + 1"
+  },
+  {
+   "id": "HC1.G2_carryGate",
+   "file": "lean/LeanUrat/HC1/G2_carryGate.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem G2_carryGate : ∃ zbar : (GaloisField 2 2)ˣ, ((zbar : GaloisField 2 2) ^ 2 = (zbar : GaloisField 2 2) + 1) ∧ ∀ P : CarryRingPack (GaloisField 2 2) 2 zbar, (letI := P.ring; dOf (1 : ZMod 2) (1 : GaloisField 2 2) * dOf 1 1 = dOf 0 ((zbar : GaloisField 2 2))) ∧ (∀ c c' : GaloisField 2 2, letI := P.ring; dOf (1 : ZMod 2) c * dOf 0 c' = dOf 1 (c * c')) ∧ (∀ ρ σ τ : ZMod 2, carryExp ρ σ + carryExp (ρ + σ) τ = carryExp σ τ + carryExp ρ (σ + τ))"
+  },
+  {
+   "id": "HC1.G3_caseJGate",
+   "file": "lean/LeanUrat/HC1/G3_caseJGate.lean",
+   "difficulty": "easy-medium",
+   "sorries": 1,
+   "statement": "theorem G3_caseJGate : (caseJP.comp (Polynomial.X + 1) = Polynomial.X ^ 2 * ((Polynomial.X + 1) * ((Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)).comp (Polynomial.X + 1)))) ∧ ((Polynomial.X : Polynomial (ZMod 2)) ^ 2 ∣ caseJP.comp (Polynomial.X + 1)) ∧ (¬ (Polynomial.X : Polynomial (ZMod 2)) ^ 3 ∣ caseJP.comp (Polynomial.X + 1))"
+  },
+  {
+   "id": "HC1.G4_caseKGate",
+   "file": "lean/LeanUrat/HC1/G4_caseKGate.lean",
+   "difficulty": "medium",
+   "sorries": 2,
+   "statement": "theorem G4_caseKGate_i : (Finset.univ.filter caseKBothRise = ({((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((1, 0), (1, 0), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 1), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)), ((0, 1), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter caseKBothRise).card = 8\n\ntheorem G4_caseKGate_ii : (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0) = ({((0, 1), (1, 1), (0, 2)), ((0, 1), (1, 1), (2, 0)), ((0, 1), (1, 2), (1, 2)), ((0, 1), (2, 1), (2, 1)), ((0, 1), (2, 2), (0, 1)), ((0, 1), (2, 2), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 2), (1, 2), (0, 1)), ((0, 2), (1, 2), (2, 0)), ((0, 2), (2, 1), (0, 2)), ((0, 2), (2, 1), (1, 0)), ((0, 2), (2, 2), (2, 2)), ((1, 0), (0, 1), (1, 1)), ((1, 0), (0, 1), (2, 1)), ((1, 0), (0, 2), (1, 2)), ((1, 0), (0, 2), (2, 2)), ((1, 0), (1, 0), (1, 0)), ((1, 0), (2, 0), (2, 0)), ((1, 1), (1, 0), (0, 2)), ((1, 1), (1, 0), (2, 1)), ((1, 1), (1, 2), (1, 0)), ((1, 1), (1, 2), (1, 1)), ((1, 1), (2, 0), (0, 1)), ((1, 1), (2, 0), (1, 2)), ((1, 1), (2, 1), (2, 0)), ((1, 1), (2, 1), (2, 2)), ((1, 2), (1, 0), (0, 1)), ((1, 2), (1, 0), (2, 2)), ((1, 2), (1, 1), (1, 0)), ((1, 2), (1, 1), (1, 2)), ((1, 2), (2, 0), (0, 2)), ((1, 2), (2, 0), (1, 1)), ((1, 2), (2, 2), (2, 0)), ((1, 2), (2, 2), (2, 1)), ((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((2, 0), (1, 0), (1, 1)), ((2, 0), (1, 0), (1, 2)), ((2, 0), (2, 0), (2, 1)), ((2, 0), (2, 0), (2, 2)), ((2, 1), (0, 1), (1, 2)), ((2, 1), (0, 1), (2, 0)), ((2, 1), (0, 2), (1, 0)), ((2, 1), (0, 2), (2, 1)), ((2, 1), (1, 2), (0, 2)), ((2, 1), (1, 2), (2, 2)), ((2, 1), (2, 1), (0, 1)), ((2, 1), (2, 1), (1, 1)), ((2, 2), (0, 1), (1, 0)), ((2, 2), (0, 1), (2, 2)), ((2, 2), (0, 2), (1, 1)), ((2, 2), (0, 2), (2, 0)), ((2, 2), (1, 1), (0, 1)), ((2, 2), (1, 1), (2, 1)), ((2, 2), (2, 2), (0, 2)), ((2, 2), (2, 2), (1, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0) = ({((0, 1), (0, 1), (0, 1)), ((0, 1), (0, 2), (0, 2)), ((0, 1), (1, 0), (1, 0)), ((0, 1), (1, 1), (1, 1)), ((0, 1), (1, 2), (1, 2)), ((0, 1), (2, 0), (2, 0)), ((0, 1), (2, 1), (2, 1)), ((0, 1), (2, 2), (2, 2)), ((0, 2), (0, 1), (0, 1)), ((0, 2), (0, 2), (0, 2)), ((0, 2), (1, 0), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 2), (1, 2), (1, 2)), ((0, 2), (2, 0), (2, 0)), ((0, 2), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2)), ((1, 0), (0, 1), (0, 1)), ((1, 0), (0, 2), (0, 2)), ((1, 0), (1, 0), (1, 0)), ((1, 0), (1, 1), (1, 1)), ((1, 0), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)), ((1, 0), (2, 1), (2, 1)), ((1, 0), (2, 2), (2, 2)), ((1, 1), (0, 1), (0, 1)), ((1, 1), (0, 2), (0, 2)), ((1, 1), (1, 0), (1, 0)), ((1, 1), (1, 1), (1, 1)), ((1, 1), (1, 2), (1, 2)), ((1, 1), (2, 0), (2, 0)), ((1, 1), (2, 1), (2, 1)), ((1, 1), (2, 2), (2, 2)), ((1, 2), (0, 1), (0, 1)), ((1, 2), (0, 2), (0, 2)), ((1, 2), (1, 0), (1, 0)), ((1, 2), (1, 1), (1, 1)), ((1, 2), (1, 2), (1, 2)), ((1, 2), (2, 0), (2, 0)), ((1, 2), (2, 1), (2, 1)), ((1, 2), (2, 2), (2, 2)), ((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((2, 0), (1, 0), (1, 0)), ((2, 0), (1, 1), (1, 1)), ((2, 0), (1, 2), (1, 2)), ((2, 0), (2, 0), (2, 0)), ((2, 0), (2, 1), (2, 1)), ((2, 0), (2, 2), (2, 2)), ((2, 1), (0, 1), (0, 1)), ((2, 1), (0, 2), (0, 2)), ((2, 1), (1, 0), (1, 0)), ((2, 1), (1, 1), (1, 1)), ((2, 1), (1, 2), (1, 2)), ((2, 1), (2, 0), (2, 0)), ((2, 1), (2, 1), (2, 1)), ((2, 1), (2, 2), (2, 2)), ((2, 2), (0, 1), (0, 1)), ((2, 2), (0, 2), (0, 2)), ((2, 2), (1, 0), (1, 0)), ((2, 2), (1, 1), (1, 1)), ((2, 2), (1, 2), (1, 2)), ((2, 2), (2, 0), (2, 0)), ((2, 2), (2, 1), (2, 1)), ((2, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0)).card = 56 ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0)).card = 64 ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0)).card = 8"
+  },
+  {
+   "id": "HC1.G5_spanGate",
+   "file": "lean/LeanUrat/HC1/G5_spanGate.lean",
+   "difficulty": "easy",
+   "sorries": 1,
+   "statement": "theorem G5_spanGate : (AddSubgroup.closure ({x : F9 | ∃ c : ZMod 3, x = (c, 0)} ∪ {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = ⊤) ∧ Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (c, 0)}) = 3 ∧ Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = 3 ∧ Nat.card F9 = 3 ^ 2"
+  },
+  {
+   "id": "HC1.R1_LSTStmt",
+   "file": "lean/LeanUrat/HC1/R1_LSTStmt.lean",
+   "difficulty": "easy",
+   "sorries": 0,
+   "statement": "structure CarrierPackR (p : ℕ) [Fact p.Prime] where\n  G : GradedCarrierR p\n  Hist : Type\n  Coord : Type\n  Digit : Type\n  [digitAdd : AddCommGroup Digit]\n  kIdx : Hist → ℕ\n  ht : Hist → Coord → ℚ\n  blk : Hist → Coord → ℕ\n  lvl : Hist → ℕ → ℚ → Set Coord\n  slotCoeff : Hist → ℕ → (Coord → Digit) → G.Coeff\n  aDim : Hist → ℕ → ℚ → ℕ\n  lines : Hist → ℕ → MovesC.Line\n  blockEdge : Hist → ℕ → ℕ\n  interiorEnd : Hist → ℕ → ℕ\n  window : Hist → ℕ → Prop\n  mono : Hist → Coord → G.Coeff\n  floorB : Hist → ℕ → ℚ\n\ndef LSTStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ H : K.Hist,\n    (∀ c : K.Coord, K.G.w (K.mono H c) = (K.ht H c : WithTop ℚ)) ∧\n    (∀ b : ℕ, K.window H b → ∀ y : K.Coord → K.Digit, K.slotCoeff H b y ≠ 0 →\n      ∃ c₀ : K.Coord, y c₀ ≠ 0 ∧ K.G.w (K.slotCoeff H b y) = (K.ht H c₀ : WithTop ℚ) ∧\n        ∀ c : K.Coord, y c ≠ 0 → K.ht H c₀ ≤ K.ht H c) ∧\n    (∀ b : ℕ, K.window H b → ∀ (γ : ℚ) (x y : K.Coord → K.Digit),\n      (∀ c ∈ K.lvl H b γ, x c = y c) →\n      (∀ c : K.Coord, K.blk H c = b → K.ht H c < γ → x c = 0 ∧ y c = 0) →\n      K.G.inγ γ (K.slotCoeff H b x) = K.G.inγ γ (K.slotCoeff H b y)) ∧\n    (∀ b : ℕ, K.floorB H b = (K.lines H (K.kIdx H)).at (K.blockEdge H b)) ∧\n    (∀ (b : ℕ) (γ' : ℚ), K.floorB H b < γ' →\n      ∀ c ∈ K.lvl H b γ', ¬ (K.blk H c = b ∧ K.ht H c ≤ K.floorB H b))"
+  },
+  {
+   "id": "HC1.R2_TYPStmt",
+   "file": "lean/LeanUrat/HC1/R2_TYPStmt.lean",
+   "difficulty": "medium",
+   "sorries": 0,
+   "statement": "def TYPStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (b : ℕ) (γ' : ℚ),\n    (∀ x y : K.Coord → K.Digit,\n      K.G.inγ γ' (K.slotCoeff H b (x + y))\n        = K.G.inγ γ' (K.slotCoeff H b x) + K.G.inγ γ' (K.slotCoeff H b y)) ∧\n    (Nat.card ↥(AddSubgroup.closure\n        (⋃ c ∈ K.lvl H b γ', Set.range fun y : K.Digit =>\n          K.G.inγ γ' (K.slotCoeff H b (Pi.single c y))))\n      = p ^ K.aDim H b γ')"
+  },
+  {
+   "id": "HC1.R3_DOMStmt",
+   "file": "lean/LeanUrat/HC1/R3_DOMStmt.lean",
+   "difficulty": "easy",
+   "sorries": 0,
+   "statement": "def DOMStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (i m b : ℕ), m < i → b < K.interiorEnd H i →\n    (K.lines H m).at b ≤ (K.lines H i).at b"
+  },
+  {
+   "id": "HC1.R4_SecB1Stmt",
+   "file": "lean/LeanUrat/HC1/R4_SecB1Stmt.lean",
+   "difficulty": "easy",
+   "sorries": 0,
+   "statement": "def SecB1Stmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (b : ℕ) (γ : ℚ) (x y : K.Coord → K.Digit),\n    K.G.inγ γ (K.slotCoeff H b (x + y))\n      = K.G.inγ γ (K.slotCoeff H b x) + K.G.inγ γ (K.slotCoeff H b y)"
+  },
+  {
+   "id": "HC1.R5_EQ2Pass",
+   "file": "lean/LeanUrat/HC1/R5_EQ2Pass.lean",
+   "difficulty": "easy",
+   "sorries": 0,
+   "statement": "def REL1Pack (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K ∧ SecB1Stmt' p K\n\ndef EQ2lawIfREL1' (p : ℕ) [Fact p.Prime] (EQ2law : Prop) : Prop :=\n  (∀ K : CarrierPackR p, REL1Pack p K) → EQ2law"
+  },
+  {
+   "id": "HC1.R6_carrierInstance",
+   "file": "lean/LeanUrat/HC1/R6_carrierInstance.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : ∃ K : CarrierPackR p, (∀ γ : ℚ, K.G.Gr γ = T.grQ γ) ∧ LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K"
+  }
+ ]
+}

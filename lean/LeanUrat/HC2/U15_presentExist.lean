@@ -1,0 +1,35 @@
+/-
+Unit U15.present_exist_of_seeds  (HC-2 campaign, E-phase — blueprint §5 Layer C: the
+PRESENT-EXIST discharge)
+moves_ref: MovesD §2 PRESENT-EXIST row ("∀ N ≥ P.NP pol, Nonempty (Presented …) —
+presentability at every level of L12's exact range (§C C.2)").
+deps: U13, U14 (reprOf i ∈ PrefSet gives hcoh/hreal/hbox), U17/U18 (hnorm — or carried).
+difficulty: easy-medium.
+hypothesis_fields: **hseed = SEED-EXIST (HC-1; the rev-2 reprOf + KeysLawful form — the
+ONLY display, stated here verbatim per audit GAP-5)**; hnorm (dischargeable by U17/U18,
+else carried).
+-/
+import Mathlib
+import LeanUrat.HC2.Defs
+
+set_option linter.style.longLine false
+set_option linter.style.header false
+set_option linter.unusedSectionVars false
+set_option maxHeartbeats 1000000
+
+namespace LeanUrat.MovesJ
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
+
+/-- PRESENT-EXIST = SEED-EXIST + assembly: the reduction is the deliverable, the seed is
+the honest residue (blueprint §2 Wall B). -/
+theorem present_exist_of_seeds {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    {n : ℕ} {P : Shape n}
+    (hseed : ∀ (i : PrefIdx n (polOM p F) P) (N : ℕ), P.NP (polOM p F) ≤ N →
+       ∃ keys : ℕ → Polynomial ℤ_[p], KeysLawful (reprOf i) keys ∧
+         Nonempty (PresentSeed p F (reprOf i) n N keys))
+    (hnorm : PresentNorm n (polOM p F) P) :
+    ∀ N : ℕ, P.NP (polOM p F) ≤ N →
+      Nonempty (Presented p F n N (n * N) (polOM p F) P) := by
+  sorry
+
+end LeanUrat.MovesJ

@@ -1047,3 +1047,75 @@ re-audit required before E-phase.
 
 END OF BLUEPRINT — REV 2 (54 units; 10 hard; 0 published-axiom candidates;
 rev-1 audit findings C-1..C-3, G-1..G-6 all folded, dispositions §1.1).
+
+## 8. E-PHASE DEVIATIONS APPENDIX (2026-07-28, elaborator record — all elaboration-level;
+no statement meaning changed; deliverable `lean/LeanUrat/HC1/` = 4 Defs files (sorry-free)
++ 54 units (51 sorry statements) + MANIFEST.json; every file `lake env lean`-green,
+footprints Lean-core + sorryAx only; ZERO blocked units)
+
+* **D-1 (rename).** `MoveWitness`'s blueprint constructor `rec` collides with the
+  auto-generated recursor; renamed `recenter`. No content change.
+* **D-2 (digD position).** `Stage.digD` guards on the (S5) MONOMIAL-UNIT shape of `σ.R B`
+  and uses the monomial's OWN choice-extracted position, not the display-comment's
+  `−t·wPrev B` (the S5 law identifies them on `C_Φ`; D7's `C_Φ̂` digits must carry their
+  own positions or D7 is vacuous/false as typed). Scalar = the display's aligned class.
+* **D-3 (lines/windows are not tower data).** `Tower.lines`/`floorB` as §2.3 displays them
+  are UNDERDETERMINED by `Tower` (intercepts need each read's recorded vertex; windows are
+  §C node data). They ride as fields of the Type-valued `TowerRealizable` (§5's own open
+  kernel, which every line-consuming unit already hypothesizes: T10/C1/C4/R6), tied to
+  tower data by the slope law `slope·frameWidth = κ` and the vertex/entry/window condition
+  fields ((SAE)/(NA)/(HV) in the consumers' form). `floorB`/`floorC`/`interiorB` live on
+  `TowerRealizable`; `blockEdge`/`baseIdx`/`frameWidth` stay pure tower defs.
+* **D-4 (side by choice).** `Tower.side` is chosen against `HasSide` (∃ MovesGr `SideVal`
+  agreeing with the top stage's `w` on nonzeros — the `GenuineStageModel.hSw` pattern) with
+  a trivial fallback: `SideVal.w_smul` needs constant-weight nonnegativity, a spine-induction
+  fact not definitionally dischargeable in a sorry-free Defs layer. `HasSide` is T6's first leg.
+* **D-5 (carrier packaging).** `GradedCarrierR` keeps MovesR's ten-field law-carrying shape
+  verbatim; since its four laws are unit T6's THEOREMS, `Tower.carrier` takes the
+  `CarrierLaws` proof as an argument, and downstream units are stated on the concrete
+  carrier data (`wQ`/`inGr`/`grQ`/`typComposite`) that `carrier` packages. T6 =
+  `HasSide ∧ CarrierLaws`.
+* **D-6 (attained-min form).** T4 / C1(i-b) / R1(i-b) state the slot minimum in the Moves
+  `SlotMinAttained` attained form (corpus convention) instead of an `sInf` on `WithTop ℚ`.
+* **D-7 (syntax fixes).** `aDim := Nat.log p (Nat.card …)` (the display's dot-notation
+  reversed Nat.log's arguments); T3's stage weight read at `Fin.last T.K`; recursions
+  (`eBirthAux`/`strAux`/`frameWidth`) clamp junk indices beyond K.
+* **D-8 (S1 split + pins).** S1 = two theorems: (a) the concrete gate with the C-2 re-based
+  data pinned in-statement (σ.Φ = X, σ.e = σ.h = 1, σ.K = ⊥ inside ambient `GaloisField 2 2`,
+  ψ = X²+X+1 literal, e′ = 1); (b) the generic ¬TransHyp at e′ = 0.
+* **D-9 (S17 conclusion form).** S17 concludes the division-free count law
+  `#stratum · p^ktot = p^{D·N}` with the jet chart (code/Θ/E + unitriangularity) riding as
+  hypotheses EXACTLY as the fenced `L6_measureExact` takes them; the inadmissible-pin
+  empty-locus leg is T11's dichotomy (cited dep, not restated). Dep-sorry §4.6 recorded in
+  the manifest.
+* **D-10 (C6 typing).** "Every height in γ's slot tree is attainable" typed per-coordinate
+  (each level-set coordinate's slot image nonzero); "the full piece" = cardinality agreement
+  with the top residue field `[F_{K+1}]`; a `levelSet.Nonempty` guard added (the note's
+  regime; an empty set would satisfy the ∀ vacuously and falsify the ⟸ leg).
+* **D-11 (C5 chart).** The block-convention base-coordinate chart `enc` of the level set is
+  §C-side data and rides as an additive-surjective-dep hypothesis; the LevelClause produced
+  is pinned by support/codim/sat-iff exactly per `C1_TYP_toClause`'s shape.
+* **D-12 (the two editorial folds, per the E-phase charge).** (a) G4(ii)'s clause order
+  fixed to the seal tuple pairing — `R₂(τ) = 0` ↦ 56, `2τ + d₁ = 0` ↦ 64, both ↦ 8
+  (machine-recomputed from `verification/case_k_gate_v2_p3.py`'s arithmetic at E-phase;
+  the element lists are machine-transcribed, the normative predicates the §3 displays).
+  (b) §4's closing paragraph adjective is STALE for `L2_P6i_R5.lean` and
+  `L4_TRANSviii_a_R5.lean`: both are on disk SORRY-FREE (deprecated/superseded, not
+  sorried); they remain NOT consumed. `L4_TRANSviii_b_R3`, `L5_landTransport_R3`,
+  `L5_landTwoSided_R5`, `L6_moveReduceCommute_R3` remain superseded as listed.
+* **D-13 (stale/missing oleans rebuilt).** `L4_TRANSv_R3.olean` was stale (predated the
+  4b29f6e import re-point to `L4_TRANSviii_b_R4`; its stale import graph clashed with the
+  clean R4 import) — recompiled green. Never-compiled oleans built for: MovesGr `L0_pmul_mk`,
+  `L0_initialForm_zero/_ne_zero`, `L0_deg_add`, `L0_ge_antitone`, `L0_gt_le_ge`,
+  `HeldUnits_certs`; MovesC `C2_DOM`, `C2_DOM_floorForm`; Moves `L5_landTwoSided_repair`.
+  All Lean-core footprints (no sorryAx) — the §4 re-census confirmed on disk.
+* **D-14 (small hypothesis notes).** S3 carries the derivable `hw1 : σ.w 1 = 0` explicitly
+  (keeps the unit easy); S4–S9 bundle the read's legality as `TransHyp` (the D4(ii)
+  interface) instead of re-listing its eleven fields; S8's (S6a′)/(S6b′) legs are Stage
+  fields of the assembled child (projections), so S8 states the non-projection content
+  (child `TvecUnitLaw` + child prevIaug — the `L4_TRANSvi` fence's derivation); S10's D.9
+  lift existence rides as `hlift` (the blueprint's "existence via S13" cross-reference);
+  S15 takes the stratum factorization `Ranch = (X − C cc)^μ · h` with `ψ′ ∤ h` and `a ≥ 0`
+  (S14's clause) explicitly, conclusion in the `map`-to-F frame (the ↥K/↥K′ wall, the
+  L5_recRSland precedent); T2/G2/S1 use `GaloisField 2 2` as the concrete ambient, G1 uses
+  the recorded `AdjoinRoot` latitude model.
