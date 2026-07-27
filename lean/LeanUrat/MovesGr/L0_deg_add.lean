@@ -13,3 +13,5 @@ theorem L0_deg_add (S : SideVal p) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg
   have h : (↑(S.deg (f * g)) : WithTop ℤ) = ↑(S.deg f + S.deg g) := by
     rw [S.deg_eq hfg, hval, ← S.deg_eq hf, ← S.deg_eq hg, ← WithTop.coe_add]
   exact WithTop.coe_inj.mp h
+
+#print axioms L0_deg_add

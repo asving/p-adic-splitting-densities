@@ -13,3 +13,5 @@ theorem L0_gt_le_ge (S : SideVal p) (γ : ℤ) : S.gt γ ≤ S.ge γ := by
   intro x hx
   have hlt : (γ : WithTop ℤ) < S.w x := hx
   exact le_of_lt hlt
+
+#print axioms L0_gt_le_ge

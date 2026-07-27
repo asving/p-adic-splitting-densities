@@ -44,3 +44,5 @@ theorem L1_pmul_assoc (S : SideVal p) (Rg : GradedRingStr S) (γ δ ε : ℤ) (x
   apply mk_heq_of S (add_assoc γ δ ε)
   simp only [coe_mulToGe]
   ring
+
+#print axioms L1_pmul_assoc

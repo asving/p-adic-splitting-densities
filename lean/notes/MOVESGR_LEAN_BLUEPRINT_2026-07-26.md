@@ -173,3 +173,107 @@ repo options (`linter.style.longLine/header false`, `maxHeartbeats 800000`). End
 units reuse `DirectSum`/`GradedRing`/`HomogeneousLocalization`/`Localization` (§2) — grep those
 namespaces before hand-rolling. **Build/verify:** `lake env lean LeanUrat/MovesGr/<file>.lean`
 per file (NOT `lake build` — NFS hang). `Defs.lean` is green and its olean is built.
+
+## 8. Round-2 record — bridge engineer, 2026-07-27 (sorried + held units; fence stops)
+
+**Verification pass.** All 21 unit files re-verified (`lake env lean`, exit 0 each; log
+`/tmp/movesgr_verify.log`). Every proved unit file now ENDS with `#print axioms` (the §7
+protocol line the round-1 files omitted). **Axiom footprints, all 17 proved units:
+`[propext, Classical.choice, Quot.sound]` (Lean-core only), machine-printed 2026-07-27.**
+The 4 sorried units compile with exactly one `sorry` warning each. Status counts unchanged:
+17 proved + 4 sorried + 5 held. NEW (additive, fence untouched): `HeldUnits_certs.lean` +
+`HeldUnits_L5_cert.lean`, 6 theorems, all Lean-core footprints (see below).
+
+### 8.1 The sorried four (charge 1)
+
+* **`L1_gr_domain_iff_val` — FENCE-STOPPED.** The v2 diagnosis is CONFIRMED: the backward
+  direction is FALSE as stated. `GradedRingStr` pins `Rg.ring`'s `*` on homogeneous elements
+  (`mul_of`), `1` (`one_def`) and the `initialForm` laws, but never its `+`/`0`; transporting
+  `R₀ × R₀` (R₀ the genuine graded ring, a non-domain product) along any bijection fixing the
+  homogeneous set `range (DirectSum.of)` pointwise satisfies all four fields yet has zero
+  divisors, while the RHS (forward direction is unconditional) holds for e.g. the Gauss
+  valuation. FAITHFUL FIX = a STATEMENT change, so per the fence: proposed here, NOT made.
+  **Proposed Defs change (awaiting sign-off), option (a) — add one field to `GradedRingStr`:**
+  ```
+  /-- the additive structure is the DirectSum's — D.1 makes gr's additive group part of
+  the DEFINITION; only the multiplication is new structure -/
+  add_def : ∀ x y : S.Gr, (letI := ring; x + y) = x + y
+  ```
+  (RHS = the ambient DirectSum addition.) Justification: with `add_def`, `0`/`-` are pinned
+  (uniqueness of additive identity/inverse — the derivations already machine-checked in
+  `L2_degZero_subring_v2`), and `mul_of` + biadditivity then determine `*` on ALL of `Gr`,
+  so `GradedRingStr` is categorical and D.1(c) domain ⟺ valuation is honest (leading-term
+  argument). Cost audit: sole constructor site is `L1_gradedRingStr_exists` (its instance is
+  `DirectSum.GCommRing`'s ring over the DirectSum additive structure — `add_def` should be
+  `rfl`); all 17 proved units only CONSUME `Rg`, so they stay valid with a strengthened
+  hypothesis, but their MANIFEST statements are re-keyed by the structure change — hence
+  sign-off. Option (b), no Defs change: state `hadd` as an explicit theorem hypothesis in a
+  v3 statement (same text as the field). Until sign-off: honest `sorry` stands at v2:109.
+* **`L2_degZero_subring` — sorried-at-goal (unchanged).** Single gap `hadd` (v2:53) = exactly
+  the `add_def` instance at degree 0; everything else machine-checked. Unblocks fully and
+  immediately under the §8.1 proposal (either option).
+* **`L2_coeffLoc` — sorried-at-goal (unchanged).** Conjunct 1 ((L^coeff)₀ ⊆ K) PROVED,
+  stage-laws only. Conjuncts 2 (⊇ K) and 3 (z-pinning) stay `sorry`: both need the
+  rep-weight-lattice / scalar-product data that neither `Stage` nor `GenuineStageModel`
+  carries (v2 header analysis re-checked this round; `Θ`-surjectivity gives preimages of
+  arbitrary `grRes f`, never rep-monomial provenance). Needs base/TRANS construction data —
+  same repair family as the held units (§8.2).
+* **`L4_genuine_imp_stageCoreL` — sorried-at-goal (unchanged).** v2's 13-obligation
+  classification re-confirmed: proved (all p): `w_strict`, `coeff.1`; proved odd p (p = 2
+  leg needs `CharP F p` or `add_def`): `w_jump`, `R_neg`; underivable from the interface:
+  `wPrev_mul/ult`, `reps_nonempty`, `p_is_rep`, `tvec`, `tvec_unit`, `prevIaug`,
+  `coeff_loc.2-3`; derivable-in-principle, not completed: `coeff.2-3`, `slot` (`slot.1`
+  also gated on `add_def`). The audit already classifies the UNIT as overreaching (FAITHLESS
+  #21): its faithful repair belongs with the `GenuineStageModel` enrichment, not with more
+  proof effort against the current interface.
+
+### 8.2 The held five (charge 2) — machine-checked certificates, no held unit proved
+
+New files (additive; each theorem `#print axioms` = Lean-core only, 2026-07-27):
+`LeanUrat/MovesGr/HeldUnits_certs.lean`, `LeanUrat/MovesGr/HeldUnits_L5_cert.lean`.
+
+* **`L4_baseStage_exists` — VACUOUS as stated** (`baseStage_hbase_empty`): NO stage satisfies
+  `σ.wPrev = fun _ => 0` — `hS6b` at `ν = wPrev Φ + 1` forces a parent weight 1. Proving the
+  unit would be a dishonest vacuity. Proposed repair: replace `hbase` by the faithful D.2
+  base bundle (wPrev = the Gauss valuation of the `L1_gaussVal` layer + base key/field pins);
+  architect to draft against `Moves/L1_baseWeight_R3`/`L1_baseResidual_R4`.
+* **`L4_base_nonvacuity_gate` — held, nothing cheap supported.** An honest existential, but
+  discharging it requires a full concrete `GenuineStageModel` (graded ring + localization +
+  `Θ` + discharge for an explicit p = 2 stage) — a dedicated construction unit; and per the
+  audit its restatement should pin the D.2 base witness.
+* **`L4_TRANSvi` — supported fragment PROVED** (`tvec_units_fragment`): the two unit-ness
+  conjuncts of `TvecUnitLaw` — the key and every T-vector entry have genuinely UNIT initial
+  forms in `LTwo` (from `hRΦ` resp. `hTvec`+`hreps`+`hS5`). The product law and
+  `CoeffLocLaw`.2-3 remain underivable (σ.Tvec's ℤ-exponents free; M Tvec-blind). Proposed
+  repair: the child law must be DERIVED from a parent `StageCoreL` (its `tvec_unit`) +
+  `child_Tvec` + a transport record for `σ'.R` on parent reps — or consumed from the child
+  construction of `L4_TRANSstage`, never from `(ht, M')` alone.
+* **`L4_TRANSstage` — non-vacuously unprovable as stated** (`transitionCoreL_e0_false`): at
+  `e' = 0` (an allowed instantiation — the statement carries NO D.3-D.7 hypotheses) no child
+  exists (`child_e` vs `he`). Proposed repair: hypotheses per the audit list — standard lift
+  (`IsStandardLift`), irreducible `ψ ≠ z`, `1 ≤ e'`, `1 ≤ h'`, coprimality, `IAug`, DIV —
+  i.e. the D.3/D.7 interface, before any fan-out.
+* **`L5_recTRANSRS` — provable only vacuously as stated** (`recTRANSRS_only_vacuous`, via
+  `stripReps`): `σ'.reps`/`σ'.Tvec` are invisible to `IsRecentering` + parent model, and
+  `StageCoreL` fails on the reps-stripped clone. Proposed repair: consume
+  `IsRecenteringCore` (`reps_eq`/`Tvec_eq`, DefsCore §7) — or `IsRecenteringT` + the reps
+  records — instead of bare `IsRecentering`.
+
+**Round verdict:** no fenced statement changed; one Defs change proposed and blocked on
+sign-off (`add_def`, §8.1); the five held units each carry either a machine-checked
+unprovability/vacuity certificate or their supported fragment, and stay held pending the
+proposed restatements.
+
+### 8.3 The exact proposed replacement statement for `L1_gr_domain_iff_val` (option (b) form)
+
+```
+theorem L1_gr_domain_iff_val (S : SideVal p) (Rg : GradedRingStr S)
+    (hadd : ∀ x y : S.Gr, (letI := Rg.ring; x + y) = x + y) :
+    (letI := Rg.ring; IsDomain S.Gr) ↔
+      (∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g)
+```
+
+Under option (a) the statement text is unchanged and `hadd` is `Rg.add_def`. Either way the
+backward direction becomes the honest graded leading-term argument (decompose along DirectSum
+support, top-degree component of a product = `pmul` of nonzero top classes = `[ab] ≠ 0` by
+`hval` + `deg_eq`); forward direction already machine-checked unconditionally (v2:77-97).

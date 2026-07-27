@@ -39,3 +39,5 @@ theorem L2_homMon_homogeneous (σ : Stage p F) (M : GenuineStageModel σ) : letI
       exact ⟨γ + δ, M.S.pmul γ δ c d, M.Rg.mul_of γ δ c d⟩
 
 end LeanUrat.MovesGr
+
+#print axioms LeanUrat.MovesGr.L2_homMon_homogeneous

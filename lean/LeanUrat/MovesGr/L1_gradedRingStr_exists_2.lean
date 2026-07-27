@@ -214,3 +214,5 @@ theorem L1_gradedRingStr_exists (S : SideVal p) (hval : ∀ f g, f ≠ 0 → g �
     rw [hdfg, S.deg_eq hf]; exact hlt'
 
 end LeanUrat.MovesGr
+
+#print axioms LeanUrat.MovesGr.L1_gradedRingStr_exists

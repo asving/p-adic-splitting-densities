@@ -14,3 +14,5 @@ set_option linter.style.header false
 
 theorem L3_iso_exists (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; Nonempty (M.Lo ≃+* LExt ↥σ.K) := by
   exact ⟨M.Θ⟩
+
+#print axioms L3_iso_exists

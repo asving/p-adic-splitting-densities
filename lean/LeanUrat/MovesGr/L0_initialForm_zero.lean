@@ -18,3 +18,5 @@ theorem L0_initialForm_zero (S : SideVal p) : S.initialForm 0 = 0 := by
     rw [show (⟨0, S.coe_deg_le 0⟩ : S.ge (S.deg 0)) = 0 from rfl, Submodule.Quotient.mk_zero]
   unfold SideVal.initialForm
   rw [h, map_zero]
+
+#print axioms L0_initialForm_zero

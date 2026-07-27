@@ -23,3 +23,5 @@ theorem L0_initialForm_ne_zero (S : SideVal p) {f : Polynomial ℤ_[p]} (hf : f 
   have hlt : (S.deg f : WithTop ℤ) < S.w f := h2
   rw [S.deg_eq hf] at hlt
   exact lt_irrefl _ hlt
+
+#print axioms L0_initialForm_ne_zero

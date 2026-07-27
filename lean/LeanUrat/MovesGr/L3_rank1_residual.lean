@@ -15,3 +15,5 @@ set_option linter.style.header false
 theorem L3_rank1_residual (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : letI := M.Rg.ring; letI := M.Loring; letI := M.alg; M.Θ (algebraMap M.S.Gr M.Lo (M.S.initialForm f)) * LaurentPolynomial.T (- σ.w f) = LaurentPolynomial.C (σ.R f) := by
   rw [M.discharge f hf]
   exact σ.grRes_mul_T_neg f
+
+#print axioms L3_rank1_residual

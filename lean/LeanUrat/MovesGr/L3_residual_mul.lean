@@ -52,3 +52,5 @@ theorem L3_residual_mul (σ : Stage p F) (M : GenuineStageModel σ) (f g : Polyn
   -- `C` injective: read coefficient at 0
   have hc := congrArg (fun x : LTwo ↥σ.K => x 0) hCeq
   simpa only [LaurentPolynomial.C_apply, if_true] using hc
+
+#print axioms L3_residual_mul

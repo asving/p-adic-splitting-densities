@@ -26,3 +26,5 @@ faithfulness content). Those are separate MANIFEST units (`L2_degZero_subring`, 
 theorem L2_loc_exists (S : SideVal p) (Rg : GradedRingStr S) (M : letI := Rg.ring; Submonoid S.Gr) : letI := Rg.ring; ∃ (L : Type) (_ : CommRing L) (_ : Algebra S.Gr L), IsLocalization M L := by
   letI := Rg.ring
   exact ⟨Localization M, inferInstance, inferInstance, Localization.isLocalization⟩
+
+#print axioms L2_loc_exists

@@ -14,3 +14,5 @@ set_option linter.style.header false
 
 theorem L1_initialForm_mul (S : SideVal p) (Rg : GradedRingStr S) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : letI := Rg.ring; S.initialForm (f * g) = S.initialForm f * S.initialForm g := by
   exact Rg.if_mul f g hf hg
+
+#print axioms L1_initialForm_mul
