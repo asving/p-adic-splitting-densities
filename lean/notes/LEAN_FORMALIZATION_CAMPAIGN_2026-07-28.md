@@ -106,7 +106,17 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
 ## 6. The campaign ledger (updated per event)
 
   MovesGr option-(a): IN FLIGHT (the add_def propagation agent).
-  Wave 1 blueprints: LAUNCHED 2026-07-28 (6 writers: Sp, X, S, U, D, R).
+  Wave 1 blueprints: ALL SIX WRITTEN + COMMITTED (2026-07-28).
+    MovesU 11 units (6e/5m) · MovesD 16 (2 hard pre-split) · MovesS 28 (10e/15m/3h)
+    · MovesSp 56 (30e/22m/4mh; decide-native n=3 layer) · MovesX 35 (16e/13m/6h)
+    · MovesR 21 (15 statements-only + 6 provable; concrete Witt route, no axioms).
+    TOTAL: 167 units. Escalation-risk set pre-declared: X's 6 hard (P1 lattice
+    counts, ValExt/Krasner archaeology, a0-translation covering), S's 3 hard
+    (blockSolve WF-recursion, e0 determinant/inverse), D's 2 (chart uniqueness,
+    D13 double count), Sp's 4 medium-hard (each with pre-approved splits).
+  Wave 2 audits: ALL SIX LAUNCHED (consolidated single-pass; D and S runners
+    needed the foreground-wait resume — the known parking failure mode).
+  MovesT/MovesV blueprints: deferred to wave 4 by design (consume wave-3 corpora).
   Everything else: PENDING.
 
   CODEX BUDGET NOTE (checked at launch): 72% of the 7-day window used, resets
