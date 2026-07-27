@@ -1,6 +1,10 @@
 # MOVESSP LEAN BLUEPRINT (2026-07-28) — the §M-SPECIES corpus, unit specs
+# REV 5 (closing rev: Codex 1c/1g + Fable 0c/1g on rev 4 — the n = 1
+# catalogue word WIRED into CanTreeModel (hN1 + Sp.n1Branch); thresholdData
+# split one-display-each (6 units); succTerminal gains the C-3 domain; §7c)
+
 # REV 4 (split-verdict adjudication: Codex REJECT 5c/8g vs Fable ACCEPT 0/0;
-# per-finding dispositions at §8c — 11 Codex findings FIXED, 2 part-fixed with
+# per-finding dispositions at §7b — 11 Codex findings FIXED, 2 part-fixed with
 # quoted pushback; Fable's two NOTES folded in)
 
 REV 3 (Fable audit `lean/notes/MOVESSP_AUDIT_FABLE_2026-07-28.md`): C1 loops3
@@ -277,11 +281,20 @@ structure CanTreeModel (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) where
   hTotal : Nonempty Branch
   /-- length of η's CATALOGUE WORD in ℕ∞ [REV 4, Codex-1 — infinite branches
   are REPRESENTED: len η = ⊤ is the prefixwise-catalogued infinite chain
-  ("Infinite branches are catalogued prefixwise", SP.5). len η = 0 is ALSO a
-  REAL case, kept deliberately: "(τ-hen) ROOT HENSEL LEAVES — … halts with NO
-  window read ever opened" — a Hensel track has an empty catalogue word, so a
-  zero-read branch is faithful, not degenerate.] -/
+  ("Infinite branches are catalogued prefixwise", SP.5). len η = 0 stays a
+  REAL case AT n ≥ 2 ("(τ-hen) ROOT HENSEL LEAVES — … halts with NO window
+  read ever opened": a Hensel track below a SPLIT f̄ carries no catalogue
+  letter). REFINED at REV 5 (Codex rev-4 crit — the conflation conceded AT
+  n = 1): at n = 1 the note's word is NONEMPTY — see hN1.] -/
   len : Branch → ℕ∞
+  /-- THE n = 1 CLAUSE AS A MODEL LAW [REV 5, Codex rev-4 crit]: "At n = 1 the
+  catalogue word is the single ROOT letter (W = n = 1, selection ⊥ — (G6)'s
+  degenerate degree)" — only the τ-WORD is empty. So at n = 1 no branch has an
+  empty catalogue word; the all-len-0 CanTreeModel at n = 1 now VIOLATES this
+  field. Stated as nonemptiness only: len η = 1 and datum η 0 = the confirming
+  root letter are then DERIVED (Sp.n1Branch) via hRoot + hHalt + n1singleton —
+  the minimal field carrying the display. -/
+  hN1 : n = 1 → ∀ η, 0 < len η
   /-- the retained datum of read r < len η (junk above). -/
   datum : Branch → ℕ → Species
   /-- step (1)+(3)+(3′) at r = 0: root stage (D, w, W) = (1, 1, n), datum
@@ -455,7 +468,7 @@ of monic-linear factors, WITH multiset multiplicity ("nonzero by the endpoint
 convention: a is split off, so z ∤ R_anch"). -/
 def linCount (s : Species) : ℕ := Multiset.card (s.lam.filter fun gm => gm.1 = 1)
 /-- Field-size exclusion lists as LITERAL lists of named letters [F5]; their
-λ-content is PINNED by Sp.n3thresholdData's filter identities (q = 2: ≥ 2
+λ-content is PINNED by Sp.n3exclusionLists' filter identities (q = 2: ≥ 2
 distinct linears, q = 3: ≥ 3), not by cardinality. -/
 -- [REV 4, Codex-9/12] literal bodies + row-named letters (order = catalogue3):
 def exR4c : Species   -- R4 {(1,1)²}▸(1,1) row          (groupR)
@@ -521,10 +534,15 @@ And-transport with the two reflection iffs; rootAdmissibleB_iff = the RootStage
 equality checks + the same transport. · difficulty: easy
 
 **Sp.succTerminal** · SP0_succTerminal.lean
-statement: `theorem succ_terminal (n : ℕ) (s : Species) (h : s.sel = none) :
-Succ n s = ∅` AND `theorem stageLaws_terminal (s s' : Species)
-(h : s.sel = none) : ¬ StageLaws s s'` [REV 2: second statement in full]
-moves_ref: "and SUCC(s) := ∅ for terminal s (selection ⊥)."
+statement: `theorem succ_terminal (n : ℕ) (s : Species)
+(hs : InCatalogue n s) (h : s.sel = none) : Succ n s = ∅` AND
+`theorem stageLaws_terminal (s s' : Species) (h : s.sel = none) :
+¬ StageLaws s s'` [REV 2: second statement in full; REV 5, Fable rev-4 gap —
+hs added per the C-3 pattern: the clause sits inside SP.4's catalogue-scoped
+definition block, and hs is faithfulness-only, unused by the proof;
+stageLaws_terminal stays unrestricted (corpus-internal bookkeeping)]
+moves_ref: "For s ∈ 𝒮_n^raw, the OUTGOING MENU Out(s) ⊆ 𝒮_n^raw ∪ V_term …
+and SUCC(s) := ∅ for terminal s (selection ⊥)."
 deps: — · sketch: unfold StageLaws; the match's none-branch is False; Succ empty
 via its StageLaws conjunct. · difficulty: easy
 
@@ -991,6 +1009,30 @@ W = 1; hFirstW1 then empties dropLast; length 1; tauWord = dropLast = [].
 difficulty: easy-medium
 hypothesis_fields: as Sp.n1RootConfirming.
 
+**Sp.n1Branch** · SP3_n1Branch.lean  [REV 5, Codex rev-4 crit — the tie
+between an ACTUAL CanTreeModel branch and the n = 1 CatalogueWord; with hN1,
+an all-len-0 model at n = 1 is now unsatisfiable and this unit exhibits the
+forced word]
+statement: `theorem n1_branch_word (p : ℕ) [Fact p.Prime]
+(f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = 1)
+(M : CanTreeModel 1 p f) (η : M.Branch) :
+M.len η = 1 ∧ M.datum η 0 = confirmingRoot1` AND the packaging
+`def CanTreeModel.n1CatalogueWord (M : CanTreeModel 1 p f) (η : M.Branch) :
+CatalogueWord 1` with `word := [M.datum η 0]` (hMem via SP_COMP; hChain
+trivial on a singleton; hLast from n1_root_confirming's W = 1; hFirstW1
+vacuous) and `theorem n1_branch_word_eq (…) :
+(M.n1CatalogueWord η).word = [confirmingRoot1]`
+moves_ref: "At n = 1 the catalogue word is the single ROOT letter (W = n = 1,
+selection ⊥ — (G6)'s degenerate degree) … the τ-WORD is EMPTY …; the
+CATALOGUE WORD is the single confirming root letter — census data,
+gate-walked".
+deps: Sp.n1singleton, Sp.n1RootConfirming, Sp.compMember · sketch: hN1 gives
+0 < M.len η; hRoot + n1_root_confirming give (M.datum η 0).W = 1; hHalt
+closes M.len η = 1; SP_COMP + n1singleton pin datum η 0 = confirmingRoot1;
+package the singleton word. · difficulty: medium (easy-medium)
+hypothesis_fields: the standing group-F list; hN1 is the note-quoted n = 1
+clause (rev 5 of the note), not an engine kernel.
+
 **Sp.collapseSublist** · SP3_collapseSublist.lean  [REV 4, Codex-13 — the
 rev-3 four-lemma unit split into four]
 statement: `theorem collapseRuns_sublist (l : List Species) :
@@ -1201,14 +1243,30 @@ corrected anchor bound) a = 2 ≤ ⌊(W − w′)/e⌋ = 2 ✓ (saturated)".
 deps: DefsN3 · sketch: decide — the note's own saturating witnesses for the
 corrected (B5), one per flank composition. · difficulty: easy
 
-**Sp.n3thresholdData** · SP6_thresholdData.lean  [REV 4, Codex-5/8 FIXED: the
-six names pinned to LITERAL Species terms whose field values ARE the note's
-displayed rows — the RHS is note content, not a def reference, so wrong or
-repeated Q3 letters fail the decide; Codex-6: Bool-routed]
-statement: `theorem threshold_data_pinned :
+[REV 5, Codex rev-4 gap — the rev-4 Sp.n3thresholdData split ONE DISPLAY
+EACH into the six units below; the literal-RHS pins and Bool routing of REV 4
+are unchanged, only redistributed. Shared moves_ref head: SP.6's threshold
+clause; docstring duties on every unit: field-size pass "NECESSARY for
+realization, NOT sufficient"; N*₃ values are gate-censused data (M-n3-V2),
+never theorems; realizability semantics stays out (§0).]
+
+**Sp.n3exclusionLists** · SP6_exclusionLists.lean
+statement: `theorem exclusion_lists_pinned :
 catalogue3.filter (fun s => decide (2 ≤ linCount s)) = fieldSizeExcluded2 ∧
-catalogue3.filter (fun s => decide (3 ≤ linCount s)) = fieldSizeExcluded3 ∧
-multiSide6 =
+catalogue3.filter (fun s => decide (3 ≤ linCount s)) = fieldSizeExcluded3`
+moves_ref: "p = 2 (one nonzero root): the 11 letters with λ ⊇ two distinct
+linears — {(1,1)²}: …; {(1,2),(1,1)}: …; {(1,1)³}: …. p = 3 (two nonzero
+roots): exactly the 2 letters with λ = {(1,1)³}."
+deps: DefsN3 · sketch: decide (two 53-letter filters). · difficulty: easy
+
+**Sp.n3exclusionCards** · SP6_exclusionCards.lean
+statement: `theorem exclusion_cards : fieldSizeExcluded2.length = 11 ∧
+fieldSizeExcluded3.length = 2`
+moves_ref: "the 11 letters" / "exactly the 2 letters" (the displayed counts).
+deps: DefsN3 · sketch: rfl/decide. · difficulty: easy
+
+**Sp.n3multiSide6** · SP6_multiSide6.lean
+statement: `theorem multiSide6_pinned : multiSide6 =
   [⟨.postRec, 1, 1, 3, 1, 0, 1, 0, 2, Finset.Icc 0 1, {(1,1)}, some (1,1),
      [], [1,1]⟩,                                        -- Q3(R1), rf (1,1)
    ⟨.postRec, 1, 1, 3, 1, 1, 1, 1, 2, Finset.Icc 1 2, {(1,1)}, some (1,1),
@@ -1220,27 +1278,40 @@ multiSide6 =
    ⟨.postRec, 1, 1, 3, 1, 0, 2, 0, 3, Finset.Icc 0 2, {(1,2)}, some (1,2),
      [], [1]⟩,                                          -- Q3(R4) ▸(1,2)
    ⟨.postRec, 1, 1, 3, 1, 0, 2, 0, 3, Finset.Icc 0 2, {(1,1),(1,1)},
-     some (1,1), [], [1]⟩] ∧                            -- Q3(R4) ▸(1,1)
-(multiSide6.all groupQ3.contains) = true ∧ multiSide6.Nodup ∧
-Nstar3six msQ3R1 = some 7 ∧ Nstar3six msQ3R2 = some 6 ∧
-Nstar3six msQ3R3 = some 6 ∧ Nstar3six msQ3R4a = some 6 ∧
-Nstar3six msQ3R4b = some 6 ∧ Nstar3six msQ3R4c = some 6 ∧
-(catalogue3.all fun s => (Nstar3six s).isSome == multiSide6.contains s) = true
-∧ fieldSizeExcluded2.length = 11 ∧ fieldSizeExcluded3.length = 2`
-(Species field order: tag, D, w, W, e, s0, ell, a, d, slots, lam, sel,
-lflank, rflank. The literals transcribe "Q3(R1, right flank (1,1)), Q3(R2),
-Q3(R3, left flank (1,1)), and the three Q3(R4) λ-rows" against the R1–R4 row
-displays; Nodup rules out repeats; the filter identities pin the exclusion
-lists non-definitionally as before)
-moves_ref: "p = 2 (one nonzero root): the 11 letters with λ ⊇ two distinct
-linears — {(1,1)²}: … {(1,2),(1,1)}: … {(1,1)³}: …; p = 3 (two nonzero roots):
-exactly the 2 letters with λ = {(1,1)³}" + "THE SIX COMPUTATIONS …: Q3(R1,
-right flank (1,1)), Q3(R2), Q3(R3, left flank (1,1)), and the three Q3(R4)
-λ-rows … N*_3 = 6; … N*_3 = 6; … N*_3 = 7." + the R1–R4 group-R rows.
-deps: DefsN3 · sketch: decide throughout. Realizability semantics stays out
-(§0: "SEALED PREDICTION, not a theorem of this note"). · difficulty: easy
-hypothesis_fields: none stated — docstring duties as before (field-size pass
-"NECESSARY for realization, NOT sufficient"; N*₃ gate-censused data).
+     some (1,1), [], [1]⟩]                              -- Q3(R4) ▸(1,1)`
+(RHS = literal Species terms transcribing the note's rows — REV 4's C-8 pin;
+field order: tag, D, w, W, e, s0, ell, a, d, slots, lam, sel, lflank, rflank)
+moves_ref: "the exceptions are the multi-side μ = 3 letters — the sel-carrying
+Q3 copies whose child window [0,3] has ≥ 2 sides: Q3(R1, right flank (1,1)),
+Q3(R2), Q3(R3, left flank (1,1)), and the three Q3(R4) λ-rows" + the R1–R4
+group-R row displays.
+deps: DefsN3 · sketch: decide (list of literals). · difficulty: easy
+
+**Sp.n3multiSideMem** · SP6_multiSideMem.lean
+statement: `theorem multiSide6_mem : (multiSide6.all groupQ3.contains) = true
+∧ multiSide6.Nodup`
+moves_ref: "the sel-carrying Q3 copies" (six DISTINCT letters of group Q3).
+deps: DefsN3 · sketch: decide; Nodup rules out repeated letters (the C-8
+repeat scenario). · difficulty: easy
+
+**Sp.n3NstarValues** · SP6_NstarValues.lean
+statement: `theorem nstar_values : Nstar3six msQ3R1 = some 7 ∧
+Nstar3six msQ3R2 = some 6 ∧ Nstar3six msQ3R3 = some 6 ∧
+Nstar3six msQ3R4a = some 6 ∧ Nstar3six msQ3R4b = some 6 ∧
+Nstar3six msQ3R4c = some 6`
+moves_ref: "THE SIX COMPUTATIONS (all at p = 3 — the labels are N*_3): … the
+three Q3(R4)-copies …: N*_3 = 6; · Q3(R2)/Q3(R3)-copies …: N*_3 = 6; · the
+Q3(R1)-copy …: N*_3 = 7."
+deps: DefsN3 · sketch: six rfl/decide reads of the table. · difficulty: easy
+
+**Sp.n3NstarDomain** · SP6_NstarDomain.lean
+statement: `theorem nstar_domain : (catalogue3.all fun s =>
+(Nstar3six s).isSome == multiSide6.contains s) = true`
+moves_ref: "N*_p(letter) := the least such N … — DEFINED exactly on the
+eventually-realized letters" [here: the table's domain is exactly the six
+displayed exceptions; the other 45 carry only the censused N*₃ ≤ 5 remark,
+deliberately not a def]. deps: DefsN3 · sketch: decide over 53.
+difficulty: easy
 
 **Sp.n3entrancePatterns** · SP6_entrance.lean  [REV 2, F17: full roster, no
 ellipses; REV 3, C2: the ▸(1,2) rosters corrected to their TRUE three members
@@ -1318,24 +1389,45 @@ difficulty: easy-medium
    this corpus; MovesX reads SP.4/SP-DAG; MovesS defines its (m, c) roster on
    `Species.lam` ITSELF (the F15 deferral — §2's record; wave-4 sync item).
 
-## 7. Roster summary  [REV 4]
+## 7. Roster summary  [REV 5]
 
-61 units + 3 def-only files. By group: A 5 · B 8 · C 4 · D 6 · E 11 ·
-F SP-COMP/words/entrance 11 (REV 4: +compCollapsed; collapseWalk split into 4
-per Codex-13) · G 3 · H 13.
+67 units + 3 def-only files. By group: A 5 · B 8 · C 4 · D 6 · E 11 ·
+F SP-COMP/words/entrance 12 (REV 5: +n1Branch) · G 3 · H 18 (REV 5:
+thresholdData → 6 one-display units).
 
-easy: 32 — all of A; shCongr/shDvd/shE1/shEquiv/shStage/shExample;
+easy: 37 — all of A; shCongr/shDvd/shE1/shEquiv/shStage/shExample;
   anchorBoundGeo/b4Derived; encodeCard; outFinite/selfloopFull/fullUnique/
   rankStepInc/rankStrict; compEdges/tauWord/n1RootConfirming/collapseSublist/
   collapseNeNil; n3card53/n3reachable/n3selfloops/n3postincW1/n3terminal5/
-  n3R3check/n3thresholdData/n3entrancePatterns.
-medium: 25 (incl. 4 easy-medium: compMember, compCollapsed, n1Word,
-  n1singleton) — shSlots/shAnchorInv; anchorBoundCensus/g6Forcing; compEncode/
-  lamEncode/finThm/finWords; selfloopChar/fullForcing/rankRadix/dagWalk/
-  dagWords; collapseEqSelf/collapseWalk/entranceDef; compEnumComplete;
+  n3R3check/n3exclusionLists/n3exclusionCards/n3multiSide6/n3multiSideMem/
+  n3NstarValues/n3NstarDomain/n3entrancePatterns.
+medium: 26 (incl. 5 easy-medium: compMember, compCollapsed, n1Word,
+  n1Branch, n1singleton) — shSlots/shAnchorInv; anchorBoundCensus/g6Forcing;
+  compEncode/lamEncode/finThm/finWords; selfloopChar/fullForcing/rankRadix/
+  dagWalk/dagWords; collapseEqSelf/collapseWalk/entranceDef; compEnumComplete;
   n3rootLetters/n3closureStep/n3catalogueEq/n3menuMap.
 medium-hard: 4 — encodeInj, rankStepRec, lamEnumComplete, speciesEnumComplete.
 hard: 0. Split points as before.
+
+## 7c. REV 5 CLOSING ADJUDICATION (Codex rev-4: 1c/1g; Fable rev-4: 0c/1g)
+
+  CX-1' crit  n = 1 len-0 vacuity   → CODEX RIGHT, FIXED: the rev-4 pushback
+        conflated τ-hen's "NO window read" with an empty CATALOGUE word AT
+        n = 1 — the note's n = 1 clause says "the catalogue word is the
+        single ROOT letter", only the τ-WORD is empty. New model law hN1
+        (n = 1 → 0 < len η, the minimal field carrying the display; len 0
+        stays real at n ≥ 2 per (τ-hen)); new unit Sp.n1Branch derives
+        len = 1 ∧ datum = confirmingRoot1 and packages every branch's
+        CatalogueWord — the all-len-0 model at n = 1 now violates hN1.
+  CX-2' gap   thresholdData 6-in-1  → CODEX RIGHT, FIXED: split one display
+        each (exclusionLists / exclusionCards / multiSide6 / multiSideMem /
+        NstarValues / NstarDomain); REV-4 pins unchanged, redistributed.
+  FA-1' gap   succTerminal domain   → FABLE RIGHT, FIXED: hs : InCatalogue
+        added per the C-3 pattern (SP.4's "For s ∈ 𝒮_n^raw" block quoted);
+        stageLaws_terminal stays unrestricted (corpus-internal).
+  Codex CONFIRMED the rev-4 refutations (unbounded reads; the VP rider) and
+  all §7b dispositions; Fable walked the menu chain and verified both
+  refutations independently. No other finding on either side.
 
 ## 7b. REV 4 SPLIT-VERDICT ADJUDICATION (Codex REJECT 5c/8g vs Fable ACCEPT
 0/0 on identical rev-3 text; principle: evidence over plausibility; Lean
