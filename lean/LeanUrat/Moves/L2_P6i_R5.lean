@@ -8,6 +8,8 @@ import LeanUrat.Moves.Defs
 import LeanUrat.Moves.DefsT
 import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.DefsL
+import LeanUrat.Moves.L0_FactA_exists
+import LeanUrat.Moves.L0_FactB_unique
 import LeanUrat.Moves.L2_slotDecomp_R4
 import LeanUrat.Moves.L2_strideRule
 import LeanUrat.Moves.L0_GRb
@@ -23,6 +25,143 @@ only for the round-5 provenance record; NOT on any capstone path. Do not import.
 namespace LeanUrat.Moves
 
 open Polynomial
+
+/-- `w 1 = 0` (from `hwmul` at `1·1`). -/
+private lemma w_one_aux {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) : σ.w (1 : Polynomial ℤ_[p]) = 0 := by
+  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+  rw [mul_one] at h; omega
+
+/-- `w (Φ^j) = j·w Φ`. -/
+private lemma w_keyPow {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (j : ℕ) : σ.w (σ.Φ ^ j) = (j : ℤ) * σ.w σ.Φ := by
+  have hΦ : σ.Φ ≠ 0 := σ.hmonic.ne_zero
+  induction j with
+  | zero => simp only [pow_zero, Nat.cast_zero, zero_mul]; exact w_one_aux σ
+  | succ n ih =>
+    rw [pow_succ, σ.hwmul (σ.Φ ^ n) σ.Φ (pow_ne_zero n hΦ) hΦ, ih]
+    push_cast; ring
+
+/-- `w (B·Φ^j) = w B + j·w Φ` for `B ≠ 0`. -/
+private lemma w_slot_aux {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (B : Polynomial ℤ_[p]) (j : ℕ) (hB : B ≠ 0) :
+    σ.w (B * σ.Φ ^ j) = σ.w B + (j : ℤ) * σ.w σ.Φ := by
+  rw [σ.hwmul B (σ.Φ ^ j) hB (pow_ne_zero j σ.hmonic.ne_zero), w_keyPow]
+
+/-- **Clause (4) engine — image ⊆ additive span of the slot images.** Develop `f` Φ-adically
+(Fact A); split the development into the K1-minimizing slots (all at total weight `γ`) and the
+strictly-higher rest. The minimizing part is nonzero (Fact B uniqueness vs. the attained
+minimum witness), sits at weight `γ` (K1 again), and `R` decomposes across its slots
+(StageCore's S3 DECOMPOSITION); the rest has weight `> γ` (K1 on the rest), so `hRlt` drops
+it. Each slot residual is literally a `slotImages γ` element. -/
+private lemma image_in_span {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (hcore : StageCore σ) (γ : ℤ) (f : Polynomial ℤ_[p])
+    (hf : f ≠ 0) (hwf : σ.w f = γ) :
+    σ.R f ∈ AddSubgroup.closure (σ.slotImages γ) := by
+  obtain ⟨B, N, hdev⟩ := L0_FactA_exists σ.Φ σ.hmonic σ.hdeg f
+  obtain ⟨hBdeg, hBvan, hBsum⟩ := hdev
+  obtain ⟨hmin, j₀, hj₀N, hBj₀, hγ₀⟩ := σ.hK1 f B N hf ⟨hBdeg, hBvan, hBsum⟩
+  replace hmin : ∀ j, j < N → B j ≠ 0 → σ.w f ≤ σ.w (B j) + (j : ℤ) * σ.w σ.Φ := hmin
+  replace hγ₀ : σ.w f = σ.w (B j₀) + (j₀ : ℤ) * σ.w σ.Φ := hγ₀
+  rw [hwf] at hmin hγ₀
+  have h0deg : (0 : Polynomial ℤ_[p]).degree < σ.Φ.degree := by
+    rw [Polynomial.degree_zero]
+    exact bot_lt_iff_ne_bot.mpr (fun hb => σ.hmonic.ne_zero (Polynomial.degree_eq_bot.mp hb))
+  -- the minimizing-slot truncation
+  set B' : ℕ → Polynomial ℤ_[p] :=
+    fun j => if σ.w (B j) + (j : ℤ) * σ.w σ.Φ = γ then B j else 0 with hB'def
+  have hB'cases : ∀ j, B' j = B j ∨ B' j = 0 := by
+    intro j
+    by_cases hc : σ.w (B j) + (j : ℤ) * σ.w σ.Φ = γ
+    · exact Or.inl (by simp only [hB'def]; exact if_pos hc)
+    · exact Or.inr (by simp only [hB'def]; exact if_neg hc)
+  have hB'ne : ∀ j, B' j ≠ 0 → B' j = B j ∧ σ.w (B j) + (j : ℤ) * σ.w σ.Φ = γ := by
+    intro j hj
+    by_cases hc : σ.w (B j) + (j : ℤ) * σ.w σ.Φ = γ
+    · exact ⟨by simp only [hB'def]; exact if_pos hc, hc⟩
+    · exact absurd (by simp only [hB'def]; exact if_neg hc) hj
+  have hB'deg : ∀ j, (B' j).degree < σ.Φ.degree := by
+    intro j
+    rcases hB'cases j with h | h
+    · rw [h]; exact hBdeg j
+    · rw [h]; exact h0deg
+  have hB'van : ∀ j, N ≤ j → B' j = 0 := by
+    intro j hj
+    rcases hB'cases j with h | h
+    · rw [h]; exact hBvan j hj
+    · exact h
+  have hdevmin : IsDevelopment σ.Φ (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j) B' N :=
+    ⟨hB'deg, hB'van, rfl⟩
+  -- the minimizing part is nonzero (Fact B uniqueness against the zero development)
+  have hfmin_ne : (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j) ≠ 0 := by
+    intro h0
+    have hzdev : IsDevelopment σ.Φ (0 : Polynomial ℤ_[p]) (fun _ => (0 : Polynomial ℤ_[p])) 0 :=
+      ⟨fun _ => h0deg, fun _ _ => rfl, by simp⟩
+    have hdev0 : IsDevelopment σ.Φ (0 : Polynomial ℤ_[p]) B' N := by
+      rw [← h0]; exact hdevmin
+    have hu := L0_FactB_unique σ.Φ σ.hmonic 0 hdev0 hzdev j₀
+    have hB'j₀ : B' j₀ = B j₀ := by simp only [hB'def]; exact if_pos hγ₀.symm
+    rw [hB'j₀] at hu
+    exact hBj₀ hu
+  -- every active slot of the minimizing part is at total weight γ
+  have hwslot' : ∀ j, j < N → B' j ≠ 0 → σ.w (B' j * σ.Φ ^ j) = γ := by
+    intro j hj hne
+    obtain ⟨heq, hc⟩ := hB'ne j hne
+    rw [heq] at hne ⊢
+    rw [w_slot_aux σ (B j) j hne]
+    exact hc
+  -- the minimizing part sits at weight γ (K1 on it: the attained witness slot has value γ)
+  have hwfmin : σ.w (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j) = γ := by
+    obtain ⟨_, j₁, hj₁N, hB'j₁, hwmin⟩ := σ.hK1 _ B' N hfmin_ne hdevmin
+    replace hwmin : σ.w (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j)
+        = σ.w (B' j₁) + (j₁ : ℤ) * σ.w σ.Φ := hwmin
+    obtain ⟨heq, hc⟩ := hB'ne j₁ hB'j₁
+    rw [hwmin, heq]
+    exact hc
+  -- S3 DECOMPOSITION across the minimizing slots
+  have hRdec : σ.R (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j)
+      = ∑ j ∈ Finset.range N, σ.R (B' j * σ.Φ ^ j) :=
+    hcore.slot.1 B' N γ hB'van hwslot' hfmin_ne hwfmin
+  -- f = (minimizing part) + (rest)
+  have hsplit : f = (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j)
+      + ∑ j ∈ Finset.range N, (B j - B' j) * σ.Φ ^ j := by
+    calc f = ∑ j ∈ Finset.range N, B j * σ.Φ ^ j := hBsum
+    _ = ∑ j ∈ Finset.range N, (B' j * σ.Φ ^ j + (B j - B' j) * σ.Φ ^ j) :=
+        Finset.sum_congr rfl (fun j _ => by ring)
+    _ = _ := Finset.sum_add_distrib
+  -- R f = R (minimizing part): the rest is 0 or strictly heavier (K1 on the rest + hRlt)
+  have hRf : σ.R f = σ.R (∑ j ∈ Finset.range N, B' j * σ.Φ ^ j) := by
+    rcases eq_or_ne (∑ j ∈ Finset.range N, (B j - B' j) * σ.Φ ^ j) 0 with hr0 | hrne
+    · rw [hsplit, hr0, add_zero]
+    · have hdevrest : IsDevelopment σ.Φ (∑ j ∈ Finset.range N, (B j - B' j) * σ.Φ ^ j)
+          (fun j => B j - B' j) N :=
+        ⟨fun j => lt_of_le_of_lt (Polynomial.degree_sub_le _ _) (max_lt (hBdeg j) (hB'deg j)),
+         fun j hj => by show B j - B' j = 0; rw [hBvan j hj, hB'van j hj]; exact sub_zero 0,
+         rfl⟩
+      obtain ⟨_, j₁, hj₁N, hne₁, hwrest⟩ := σ.hK1 _ (fun j => B j - B' j) N hrne hdevrest
+      replace hne₁ : B j₁ - B' j₁ ≠ 0 := hne₁
+      replace hwrest : σ.w (∑ j ∈ Finset.range N, (B j - B' j) * σ.Φ ^ j)
+          = σ.w (B j₁ - B' j₁) + (j₁ : ℤ) * σ.w σ.Φ := hwrest
+      have hkey : γ < σ.w (∑ j ∈ Finset.range N, (B j - B' j) * σ.Φ ^ j) := by
+        by_cases hc : σ.w (B j₁) + (j₁ : ℤ) * σ.w σ.Φ = γ
+        · exfalso
+          have hB'e : B' j₁ = B j₁ := by simp only [hB'def]; exact if_pos hc
+          rw [hB'e, sub_self] at hne₁
+          exact hne₁ rfl
+        · have hB'0 : B' j₁ = 0 := by simp only [hB'def]; exact if_neg hc
+          rw [hB'0, sub_zero] at hne₁ hwrest
+          rw [hwrest]
+          exact lt_of_le_of_ne (hmin j₁ hj₁N hne₁) (Ne.symm hc)
+      rw [hsplit]
+      exact σ.hRlt _ _ hfmin_ne hrne (by rw [← hsplit]; exact hf) (by rw [hwfmin]; exact hkey)
+  -- conclude: each slot residual is a slot image
+  rw [hRf, hRdec]
+  refine AddSubgroup.sum_mem _ (fun j hj => ?_)
+  rcases eq_or_ne (B' j) 0 with h0 | hne
+  · rw [h0, zero_mul, σ.hR0]
+    exact zero_mem _
+  · exact AddSubgroup.subset_closure
+      ⟨B' j, j, hne, hB'deg j, hwslot' j (Finset.mem_range.mp hj) hne, rfl⟩
 
 /-- **L2.P6i** (D.3(e)(i) per-piece: R_δ additive, F_Q-linear, injective; image = additive span of slot images).
 
@@ -73,8 +212,9 @@ theorem L2_P6i {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : S
     refine ⟨?_, ?_⟩
     · rw [σ.hwmul u f hu hf, hwu, hwf, zero_add]
     · rw [σ.hRmul u f hu hf, hRu, LaurentPolynomial.T_zero, mul_one]
-  · -- (4) image ⊆ additive span of the slot images (needs Φ-adic development + slot drop)
-    sorry
+  · -- (4) image ⊆ additive span of the slot images (Fact A development + K1 split + S3)
+    intro f hf hwf
+    exact image_in_span σ hcore γ f hf hwf
   · -- (5) additive span ⊆ image: the image ∪ {0} is a subgroup containing the slot images
     intro x hx hxne
     let S : AddSubgroup (LaurentPolynomial ↥σ.K) :=
