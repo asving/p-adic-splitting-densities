@@ -1,5 +1,17 @@
 # MovesU — Lean blueprint for §U-SQUEEZE (Theorem U, conditional form)
-# REV 4 (post-Fable-audit, menu layer repaired; spine untouched) — 2026-07-28
+# REV 5 (post-Codex-FINAL: hypothesis SLICES for U3/U4/U6; nothing else) — 2026-07-28
+
+*REV 5 (Codex FINAL `MOVESU_AUDIT_CODEX_FINAL_2026-07-28.md`: REJECT 3c/0g, all three
+= OVER-hypothesization — U3/U4/U6 took the full `CapstoneLedger` where the note's
+displays cite only slices): three Prop SUB-BUNDLES added in DefsLedger — `FinStack`
+(CL-7 + CL-10 + the TREE-N identity; U3's exact stack), `SolveStack` (the (U-n)
+upper-side citation list CL-1/5/6/8/9/11/13–16/17/18/19 + the operative
+identification; with FinStack = U4's exact stack), `LowerStack` (RS.4's inherited
+checksum + the CL-4 slot; U6-lower's addition) — as FIELD-SELECTIONS with projection
+defs `CapstoneLedger.finStack/solveStack/lowerStack`, so `CapstoneLedger` itself is
+untouched and U10 fires the earlier units without re-packing. CL-2/CL-3 now appear in
+NO unit except U10's full ledger: the rate form they attach to is gate SQUEEZE-n3, a
+census artifact, not a Lean unit (no U6b needed). D12 records the slice discipline.*
 
 *REV 4 (Fable audit `MOVESU_AUDIT_FABLE_2026-07-28.md`: REJECT 2c/4g, spine verified):
 KsubM1C1 rebound to same-size CONTINUATIONS (same-size halts exempt — F3-C1); the full
@@ -203,6 +215,22 @@ a second squeeze — "ρ_σ(p) IS the splitting density … the undecided comple
 mass 0 and the classifier verdicts are the true factorization types", at exactly the
 note's granularity. Clause (iii): env → 0 re-emitted. The ℤ_p-Haar reading of the
 limit of `trueDmass` is HC-2's declared bridge (D9), not re-derived here.
+
+**D12 — The slice discipline (Codex-FINAL, REV 5): a unit's hypothesis is EXACTLY the
+display's citation list.** In Lean, `(L : CapstoneLedger …)` assumes EVERY field —
+projecting one field in the proof does not weaken the premise. So each intermediate
+unit consumes a Prop SUB-BUNDLE matching its display's cited stack verbatim: U3 ←
+`FinStack` (the (U-n) upper side's "finiteness stack {SQ.0's budgets … (CL-7); the
+[3t] package (CL-10)}" + the operative TREE-N identity); U4 ← `FinStack` +
+`SolveStack` (the upper side's "solve stack {E0 (CL-1); the CL-5 nine; CL-6; the CL-8
+(e1)–(e5) legs; CL-9 …; CL-11; CL-13…CL-16's table inputs; CL-17; CL-18; CL-19}" +
+the operative RegP-guarded identification); U6 ← those + `LowerStack` ("the LOWER
+side additionally GIVEN RS.4's inherited set (X.3/CL-4 included)"). CL-2/CL-3 attach
+ONLY to the RATE form ("the RATE form … additionally inherits CL-2/CL-3 + the (X2-*)
+family") = gate SQUEEZE-n3, not a Lean unit — so they appear in NO unit's premise
+except U10's full `CapstoneLedger`, which IS the note's Theorem U consumption. The
+sub-bundles are field-selections (projection defs), so the ledger structure and the
+verified spine are untouched.
 
 **D11 — File split kills the Defs circularity (gap 7).** `Defs.lean` (SplittingType,
 Box/toPoly, ClassifierSpec + counts, SolveData, RegData/RegP, FiberSeries, MenuData +
@@ -593,6 +621,59 @@ structure UInstance (n : ℕ) (S : SolveData n) (M : MenuData) (K : KernelStatem
   F : FiberSeries n p X
   D : RegData p
   L : CapstoneLedger n p X F S D M K
+
+/-- SQ.2-partial's EXACT stack (D12): the finiteness stack {CL-7; CL-10} + the
+    operative TREE-N identity — nothing else (Codex-FINAL 1). -/
+structure FinStack (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n p X)
+    (K : KernelStatements) : Prop where
+  cl7 : K.trackCount ∧ K.dnDuty ∧ K.genuineIncrement
+  cl10 : K.sib ∧ K.jcMulti ∧ K.treeExpTreeN
+  finiteness_stack : ∀ σ N,
+    (X.decided σ N : ℝ≥0∞) =
+      (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T
+
+/-- SQ.2-upper's EXACT solve stack (D12): the (U-n) upper-side citation list —
+    CL-1, CL-5, CL-6, CL-8, CL-9, CL-11, CL-13…CL-16, CL-17, CL-18, CL-19 — + the
+    operative RegP-guarded identification. NO CL-2/CL-3/CL-4, NO RS.4, NO VP-SOUND,
+    NO O3 (Codex-FINAL 2). -/
+structure SolveStack (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n p X)
+    (S : SolveData n) (D : RegData p) (M : MenuData) (K : KernelStatements) : Prop where
+  cl1 : K.escapeE0
+  cl5 : K.xhdM4aX ∧ K.d4r0 ∧ K.ctsmIvPart ∧ K.ctsmIvRep ∧ K.ctsmIvMeas ∧
+        K.ctsmVHmc ∧ K.ctsmIiAct ∧ K.ctsmIiiInit ∧ K.ctsmViComp
+  cl6 : K.ctsmIvPoly
+  cl8 : K.rel1 ∧ K.rel2a ∧ K.rel2b ∧ K.rel2d ∧ K.rel2e ∧ K.rel3
+  cl9 : K.rs0LumpBisim
+  cl11 : K.noEqualEFeedback ∧ KsubM1C1 M
+  cl13 : K.ctsmSyntax ∧ MenuWF M
+  cl14 : K.m1m5
+  cl15 : K.x1aDict
+  cl16 : K.m4bConstancy
+  cl17 : K.rs1Assembly
+  cl18 : K.jRat
+  cl19 : K.jcInv
+  solve_stack : RegP S D → ∀ σ,
+    F.seriesSum σ ≠ ⊤ ∧ F.seriesSum σ = ENNReal.ofReal (evalℝ S σ p) ∧
+    0 ≤ evalℝ S σ p
+
+/-- (U-n)-LOWER's ADDITIONAL slice (D12): RS.4's checksum with its inherited set —
+    the CL-4 slot ("X.3/CL-4 included") + both checksum forms. CL-2/CL-3 attach ONLY
+    to the rate form = gate SQUEEZE-n3, not a Lean unit (Codex-FINAL 3). -/
+structure LowerStack (n p : ℕ) (S : SolveData n) (D : RegData p)
+    (K : KernelStatements) : Prop where
+  cl4 : K.x3Termination
+  rs4_checksum : ∑ σ, S.R σ = 1
+  rs4_eval : RegP S D → ∑ σ, evalℝ S σ p = 1
+
+/-- Field-selection projections: U10 fires the earlier units without re-packing. -/
+def CapstoneLedger.finStack (L : CapstoneLedger n p X F S D M K) :
+    FinStack n p X F K := ⟨L.cl7, L.cl10, L.finiteness_stack⟩
+def CapstoneLedger.solveStack (L : CapstoneLedger n p X F S D M K) :
+    SolveStack n p X F S D M K :=
+  ⟨L.cl1, L.cl5, L.cl6, L.cl8, L.cl9, L.cl11, L.cl13, L.cl14, L.cl15, L.cl16,
+   L.cl17, L.cl18, L.cl19, L.solve_stack⟩
+def CapstoneLedger.lowerStack (L : CapstoneLedger n p X F S D M K) :
+    LowerStack n p S D K := ⟨L.cl4, L.rs4_checksum, L.rs4_eval⟩
 ```
 
 Greppable audit: every CL-1 … CL-19 item is now a REAL hypothesis field (F5) — the
@@ -662,34 +743,38 @@ Defs ← U0b ← DefsLedger ← every ledger-consuming unit (U3, U4, U6, U10, U1
 
 ### U3 `MovesU.U3_sq2_partial` — decided mass IS the thr ≤ N partial sum  [conditional]
 - **file**: `MovesU/U3_sq2_partial.lean`  ·  **difficulty**: easy  ·  **deps**: U2
-- **statement** (F3's repair — the IDENTITY is the claim; domination is the corollary):
-  `theorem sq2_partial (L : CapstoneLedger n p X F S D M K) (σ N) :`
+- **statement** (F3's repair — the IDENTITY is the claim; REV 5/Codex-FINAL 1: the
+  premise is the SLICE, never the full ledger):
+  `theorem sq2_partial (FS : FinStack n p X F K) (σ N) :`
   `(X.decided σ N : ℝ≥0∞) = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T`
   and `theorem sq2_partial_le … : (X.decided σ N : ℝ≥0∞) ≤ (p : ℝ≥0∞) ^ (n * N) * F.seriesSum σ`
 - **moves_ref**: "decided_σ(N)/p^{nN} is a PARTIAL SUM (the thr ≤ N slice) of RS.1's
-  positive tree-fiber series for type σ" (SQ.2 ROUTE)
-- **sketch**: the identity IS `L.finiteness_stack σ N` (re-exposed as the unit's named
+  positive tree-fiber series for type σ" (SQ.2 ROUTE); tags "(SQ.0/CL-7) … (TREE-N/CL-10)"
+- **sketch**: the identity IS `FS.finiteness_stack σ N` (re-exposed as the unit's named
   statement so the exact claim is auditable, not hidden — F3); the corollary rewrites
   by it and applies U2 + `mul_le_mul_left'`.
-- **hypothesis_fields**: `finiteness_stack` (CL-7 + CL-10).
+- **hypothesis_fields**: EXACTLY `FinStack` (CL-7 + CL-10 + the TREE-N identity, D12).
 
 ### U4 `MovesU.U4_sq2_upper` — SQ.2, the fixpoint upper bound  [conditional]
 - **file**: `MovesU/U4_sq2_upper.lean`  ·  **difficulty**: medium  ·  **deps**: U3
-- **statement**: `theorem sq2_upper (L : CapstoneLedger n p X F S D M K)`
+- **statement** (REV 5/Codex-FINAL 2 — the premise is FinStack + SolveStack, the
+  (U-n) upper side's two cited stacks and NOTHING else):
+  `theorem sq2_upper (FS : FinStack n p X F K) (SS : SolveStack n p X F S D M K)`
   `(hreg : RegP S D) (hp : p.Prime) (σ N) :`
   `(X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)` (F9: `p.Prime`, never
-  `1 < p`; ruling (D): `hreg` now also gives `DefinedAt (S.R σ) p`, so `evalℝ` is
-  the genuine literal value, never junk — rev-2 critical 4)
+  `1 < p`; ruling (D): `hreg` also gives `DefinedAt (S.R σ) p`, so `evalℝ` is the
+  genuine literal value, never junk)
 - **moves_ref**: "decided_σ(N) ≤ R_σ(p)·p^{nN} [hypothesis stack at (U-n) below]" (SQ.2);
   "with RS.3's positivity … R_σ(p) ≥ 0 stated EXPLICITLY — both GIVEN E0 + the CL-5 mass
   identification"
-- **sketch** (F8's repair): `L.solve_stack hreg σ` now GIVES `0 ≤ evalℝ S σ p` as its
-  third conjunct — no bogus case split. Transfer ℝ≥0∞ → ℝ from U3's corollary:
-  `ENNReal.toReal_le_toReal` (LHS ≠ ⊤ since the RHS is finite), `ENNReal.toReal_mul`,
-  `ENNReal.toReal_ofReal` (its nonnegativity input = the positivity conjunct).
-- **hypothesis_fields**: `finiteness_stack`, `solve_stack` (incl. the explicit
-  positivity conjunct = RS.3's clause; the full solve stack CL-1, CL-5, CL-6, CL-8,
-  CL-9, CL-11, CL-13…CL-19 rides the ledger's cl-slots); explicit `RegP S D`, `p.Prime`.
+- **sketch** (F8's repair): `SS.solve_stack hreg σ` GIVES `0 ≤ evalℝ S σ p` as its
+  third conjunct — no bogus case split. Transfer ℝ≥0∞ → ℝ from U3's corollary (fired
+  on `FS`): `ENNReal.toReal_le_toReal` (LHS ≠ ⊤ since the RHS is finite),
+  `ENNReal.toReal_mul`, `ENNReal.toReal_ofReal` (nonnegativity = the positivity
+  conjunct).
+- **hypothesis_fields**: EXACTLY `FinStack` + `SolveStack` (the (U-n) upper side's
+  displayed citation list, D12 — NO CL-2/CL-3/CL-4, NO RS.4, NO VP-SOUND, NO O3);
+  explicit `RegP S D`, `p.Prime`.
 
 ### U5 `MovesU.U5_sq3_arith` — SQ.3's bracket arithmetic AS arithmetic  [TAG-FREE step 2]
 - **file**: `MovesU/U5_sq3_arith.lean`  ·  **difficulty**: medium  ·  **deps**: U1
@@ -712,18 +797,23 @@ Defs ← U0b ← DefsLedger ← every ledger-consuming unit (U3, U4, U6, U10, U1
 
 ### U6 `MovesU.U6_un_bracket` — (U-n), the two-sided bracket  [conditional; the note's product]
 - **file**: `MovesU/U6_un_bracket.lean`  ·  **difficulty**: easy  ·  **deps**: U4, U5
-- **statement**: `theorem un_bracket (L : CapstoneLedger n p X F S D M K)`
-  `(hreg : RegP S D) (hp : p.Prime) (σ N) :`
+- **statement** (REV 5/Codex-FINAL 3 — the NON-RATE bracket, on exactly its displayed
+  stacks: upper = FinStack + SolveStack, lower additionally LowerStack; CL-2/CL-3
+  appear NOWHERE — they attach only to the rate form, which is gate SQUEEZE-n3 and
+  not a Lean unit, so no U6b exists):
+  `theorem un_bracket (FS : FinStack n p X F K) (SS : SolveStack n p X F S D M K)`
+  `(LS : LowerStack n p S D K) (hreg : RegP S D) (hp : p.Prime) (σ N) :`
   `(evalℝ S σ p - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ) ∧`
   `(X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)` — `p.Prime` per F9
   (`NeZero p`/`1 < p` derived from `hp` inside)
 - **moves_ref**: "(U-n) (R_σ(p) − env(N))·p^{nN} ≤ decided_σ(N) ≤ R_σ(p)·p^{nN}" — "for
   every n, σ, N, and EVERY prime p satisfying (REG-p) … at a p failing (REG-p) neither
   inequality is asserted" (the rev-3 qualifier = the `hreg` argument, D8)
-- **sketch**: right leg = U4; left leg = U5 applied with `R := fun τ => evalℝ S τ p`,
-  `hupper` from U4 at each τ ≠ σ, `hsum := L.rs4_eval hreg`.
-- **hypothesis_fields**: `finiteness_stack`, `solve_stack`, `rs4_eval` (RS.4's full
-  inherited set incl. X.3/CL-4); explicit `RegP S D`.
+- **sketch**: right leg = U4 (on FS, SS); left leg = U5 applied with `R := fun τ =>
+  evalℝ S τ p`, `hupper` from U4 at each τ ≠ σ, `hsum := LS.rs4_eval hreg`.
+- **hypothesis_fields**: EXACTLY `FinStack` + `SolveStack` + `LowerStack` (the lower
+  side's "additionally GIVEN RS.4's inherited set (X.3/CL-4 included)", D12);
+  explicit `RegP S D`.
 
 ### U7 `MovesU.U7_squeeze` — the limit forcing  [TAG-FREE step 4]
 - **file**: `MovesU/U7_squeeze.lean`  ·  **difficulty**: medium  ·  **deps**: Defs
@@ -822,9 +912,10 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   (RS.4). … The quantifier 'for EVERY prime p' reads: every p satisfying (REG-p)."
 - **sketch**: witness `R := S.R`. Checksum: `(inst 2 Nat.prime_two).L.rs4_checksum`
   (p-independent, any prime's ledger). Per p: clause (i) = U7 with `r := evalℝ S σ p`,
-  bracket from U6 (`hp` supplies `NeZero p`, `1 < p`); clause (ii) = U11 applied to
-  clause (i) + `L.cl10_vpsound` + `L.cl4_env_tendsto`; clause (iii) =
-  `L.cl4_env_tendsto`. The conclusion split is the note's own (D10, ruling (B)):
+  bracket from U6 fired on the ledger's PROJECTIONS `L.finStack`/`L.solveStack`/
+  `L.lowerStack` (D12 — no re-packing; `hp` supplies `NeZero p`, `1 < p`); clause
+  (ii) = U11 applied to clause (i) + `L.cl10_vpsound` + `L.cl4_env_tendsto`; clause
+  (iii) = `L.cl4_env_tendsto`. The conclusion split is the note's own (D10, ruling (B)):
   (i) is what Theorem U literally concludes (T_can-keyed); (ii) is "ρ_σ(p) IS the
   splitting density" at the note's granularity, conditional on VP-SOUND exactly as
   the note's parenthetical "(X.3/CL-4 + [3t] VP, with VP-SOUND's citation duty)"
@@ -883,6 +974,11 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   `solve_stack` MUST carry the explicit `0 ≤ evalℝ` conjunct (RS.3's clause, F8);
   the ledger MUST carry `o3_teichmuller` (gap 6) — check neither drops in
   elaboration.
+- **G9 the slice discipline (REV 5)**: no unit below U10 may take `L :
+  CapstoneLedger` — audit that U3/U4/U6 consume exactly `FinStack`/`SolveStack`/
+  `LowerStack` per D12, that the three sub-bundles' fields stay LITERAL copies of the
+  ledger's (the projections must be `⟨…⟩` re-bundlings, no strengthening or
+  weakening), and that CL-2/CL-3 occur in no premise outside `CapstoneLedger`.
 - **G8 the count data (`blockDim`/`cellCount`/`shapeCount`/`legCount`/`menuCount`)**:
   the cardinality equations pin the index families to these ℕ fields (ruling (C);
   menus via `menu_card` + `menu_not_all_empty`, F3-G1), but the VALUES are owner data
@@ -929,7 +1025,12 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   deriving `rs4_eval` from `rs4_checksum` (`RatFunc.eval_add`'s hypotheses) — if absent
   or awkward, `rs4_eval` stays a field (already the blueprint default).
 
-## 6. Status and counts (REV 4)
+## 6. Status and counts (REV 5)
+
+REV 5 delta only: three Prop sub-bundles (`FinStack`/`SolveStack`/`LowerStack`) +
+three projection defs in DefsLedger; U3/U4/U6 premises re-sliced per D12; CL-2/CL-3
+confined to `CapstoneLedger` (U10). Unit count, difficulties, tag-free perimeter,
+and everything below unchanged from REV 4.
 
 13 units (U0, U0b, U1–U11) over THREE Defs files (Defs ← U0b ← DefsLedger, D11):
 4 TAG-FREE/unconditional (U1 (BOX-N), U2 Tonelli existence, U5 SQ.3-as-arithmetic,
@@ -943,8 +1044,9 @@ tag-free units); REV 4 repaired its menu-layer findings only. p-uniform layer:
 S, M, K bound before ∀ p. Instantiation hooks per D9: `ClassifierSpec`/`FiberSeries`
 ← MovesD/HC-2/[3t], `SolveData`/`RegData` ← MovesS, `MenuData` ← [2a]/[1v],
 `KernelStatements` ← owner notes. OWED BEFORE E-PHASE (F3-G3): owner-table
-confirmation on zero-cell/zero-shape blocks (G8). Next gate: Codex FINAL on REV 4;
-charge = §4's flags + the 26-finding disposition table (§7).
+confirmation on zero-cell/zero-shape blocks (G8). Next gate: the in-flight fresh-Fable
+confirm on rev 4 (its findings fold into this rev if any) + Codex re-verdict on REV 5;
+charge = §4's flags + the 29-finding disposition table (§7).
 
 ## 7. Findings→repairs table (Codex audit 2026-07-28, REJECT 10c/3g → REV 2)
 
@@ -986,4 +1088,12 @@ charge = §4's flags + the 26-finding disposition table (§7).
 | F3-G2 | gap | §7 misstatements: "all `_pos`" (no `legCount_pos` exists), "degenerate-proof" shorthand | FIXED: R2-1/R2-3 rows corrected in place; G1 flag reworded (non-vacuous ≠ degenerate-proof) |
 | F3-G3 | gap | `cellCount_pos`/`shapeCount_pos` note-unsupported — (K-TRI) minimal blocks may have zero branching cells/shapes; truthful-instantiability risk | FIXED: both DROPPED; equation pins stay; owner-table confirmation owed before E-phase recorded at G8; `instBiNe`/`blockDim_pos` kept (audited safe) |
 | F3-G4 | gap | `KernelStatements` per-prime though referents are p-uniform | FIXED: `K` (with `M`) moved out of `UInstance` to `theoremU` parameters before ∀ p — one pack, audited once |
+
+**Rev-4 Codex FINAL (REJECT 3c/0g, all over-hypothesization → REV 5, surgical):**
+
+| # | class | finding (short) | repair in REV 5 |
+|---|---|---|---|
+| CF-1 | crit | U3 takes the full `CapstoneLedger` — assumes every field (CL-1–19, VP-SOUND, O3, RS.4, env → 0) where the display cites only the finiteness stack | FIXED: `FinStack` sub-bundle (CL-7 + CL-10 slots + the TREE-N identity); U3's premise is exactly it (D12) |
+| CF-2 | crit | U4 likewise — SQ.2's upper display cites the finiteness + solve stacks only, not CL-2/CL-3/CL-4, RS.4, VP-SOUND, O3 | FIXED: `SolveStack` sub-bundle (the (U-n) upper citation list CL-1/5/6/8/9/11/13–16/17/18/19 + the operative identification); U4 = FinStack + SolveStack + RegP + p.Prime |
+| CF-3 | crit | U6 requires CL-2/CL-3 (rate-form-only per the note) and other capstone-only fields for the non-rate bracket | FIXED: U6 = FinStack + SolveStack + `LowerStack` (RS.4's inherited set, CL-4 included); CL-2/CL-3 in NO unit premise — the rate form is gate SQUEEZE-n3, not a Lean unit, so no U6b; `CapstoneLedger` (with CL-2/CL-3) remains U10's full consumption with projection defs `finStack`/`solveStack`/`lowerStack` |
 
