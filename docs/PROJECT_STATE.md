@@ -341,6 +341,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    branch-multiset repair (rev 6) in flight; plan rev 8 inherits. The dual bar is
    catching decorrelated criticals exactly as designed — three Fable passes, two
    fresh criticals that 6–13 Codex passes each missed, one clean confirmation.
+   UPDATE (2026-07-27): **§C DUAL-ACCEPTED** (revs 12–14 added (SAE) +
+   TRANSITION-ADMISSIBLE + the fence; Codex 16+17 clean + Fable confirm clean —
+   F-EMPTY excluded live, new empty-stratum hunt found none). **§D4-R rebuilt on the
+   branch-tree architecture** (T_can(f); SUM + EVENT laws with multiplicity; gate
+   D4-m2 33/33 census-pinned the mult ≥ 2 regime at the refutation shape) and
+   re-accepted at the Codex bar (passes 8+9); its Fable pass: 0 criticals, 2 one-line
+   display gaps — dual acceptance imminent. D4R.0-K kernel derivation under its own
+   spiral (Theorem A adoptable; grammar rebuild converging). ASSEMBLY PLAN at rev 10:
+   [3t] TREE note (first-split recursion, certified sound given the new open kernel
+   (SIB), whose SIB-gate census is running), verdict pin VP; FOUR notes cleared for
+   drafting ([1] accepted, [2a] drafting, [1v]-COND, [3t]). LEAN: MovesC frozen layer
+   23/23 PROVED-CLEAN (opus fleet, zero escalations, independently recompiled).
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
