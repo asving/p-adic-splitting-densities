@@ -445,6 +445,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    §S's plan-sync flags); THE UNRUN-CENSUS ROSTER consolidated at plan §7
    (12 rows, owners + blockers; rows 1–4 — STATE-probe-2, X-n3, STALL-,
    ESCAPE-probe — runnable now). Next drafting unit: [4]-COND.
+   UPDATE (2026-07-28, the campaign completion): **THE WRITE-UP'S DUAL STANDARD
+   IS COMPLETE** — every artifact incl. **§U-SQUEEZE/THEOREM U DUAL-ACCEPTED**
+   (the theorem in the full honest form: one fixed R_σ ∈ ℚ(q) per type at every
+   (REG-p)-satisfying prime incl. wild, Σ R_σ = 1, conditional on the complete
+   displayed ledger; the (REG-p) separateness spiral closed with both verifiers
+   concurring; the Fable side's numeric instances exact at p = 2, 3, 5 — its own
+   wrong R(2) falsified live by the bracket discipline). STATE-probe-2 PASSED
+   (the vtx-varying regime; the [2b]/[3] probe blocker discharged). 21 sealed
+   censuses. The distance to the UNCONDITIONAL theorem is exactly §U.SQ.6's
+   displayed list: the named open kernels + the event discharges, each fenced
+   with a refuter. The goal's dual-verification condition is met for the entire
+   drafted write-up.
    UPDATE (2026-07-27, night — THE DUAL-STANDARD MILESTONE): **TEN artifacts
    through the full dual bar — the ENTIRE math write-up drafted to date passes
    BOTH Codex and a fresh Fable instance clean on identical text**: §B2-DEF, §C,
