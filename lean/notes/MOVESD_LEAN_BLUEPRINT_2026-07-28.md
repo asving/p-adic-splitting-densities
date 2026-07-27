@@ -1529,3 +1529,24 @@ hAnchor + hbezCanon-uniqueness against `bezT`). Gate acceptance UNCHANGED (§0.6
 the §3.1 adversary block): P̂* ∈ Shape 3 under the COMPLETED certificate;
 C_P̂*(2) = 3, C_P̂*(3) = 48, mult ≡ 1, NP = 5 (inhabited branch), Nshape = 5,
 A = 11, W = 7, M = 1.
+
+## 15. REV 8 table (closing; Fable#6 ACCEPT 0/2 ∪ Codex FINAL#6 REJECT 3/3)
+
+| # | finding (who) | REV-8 repair |
+|---|---|---|
+| 1 | ShapeWF admits residue-degree-impossible shapes (root-only w = 2) — Codex c.1 | `ShapeWF.w0` (w₀ = 1: the root pool is F_p — §D4-R.6 "Side digits (pool F_p)") + `ShapeWF.wchain` (w_{r+1} = w_r·g_r: F_{r+1} = F_r[z]/(ψ_r); recenterings g = 1 unchanged — one law; §D4-R.6 "F₁ := F_p[z]/(ψ) = F_{p²}, w₁ = 2"); adversary A-vi (root-only w = 2) fails w0 ✗ |
+| 2 | SW1 assumes MonicTie, a certificate component — Codex c.2 | MonicTie's derivable clauses now DERIVED in SW1 (monicTop → r = 0 via hmonicRoot + root_iff; non-root monicTop = false); the underivable residue (root monicTop ↔ s0+wSide = n — Matches' clause speaks of the digit VALUE, not the slot POSITION) is the NAMED encoding gap **ENC-MONIC**, SW1's weakest sufficient hypothesis `hmt0`, §D4-R.6 quoted, owner = D4-n3 gate + menu-wave verification (§2 ledger) |
+| 3 | E9/D3a/W3 lose the empty prefix (0-bounds where the note has C_∅ = 1) — Codex c.3 | routed through the F3/CD bridge: D4R2'/D4R2'_full restated on `Shape.CD` — at P̂ = ∅ the theorem IS C_∅ = 1 ≤ Mfac(∅)·p^{W(∅)} = 1 (empty product); E9 gains `encTargetP_empty` (the singleton-to-unit encoding, card 1 = C_∅); D3a's proof is the explicit ∅/nonempty case split |
+| 4 | declaration order: gamTie consumes strS declared later — Codex g.4 | `strS` HOISTED to §3.0 group (1) before ShapeWF; group (2) re-scoped — the order elaborates |
+| 5 | TreeModel lacks L2's exhaustive-child law — Codex g.5 | typed OPEN fields `eligible` + `child_iff` (mem o x → (child o ν x ↔ eligible o ν x)) — L2's "ALL next-node data … where s is an eligible side and ψ ranges over the eligible factors"; eligible's cell-data semantics = kernel-(b), HC-2/MovesT — the dependency is a named field, not prose |
+| 6 | VerdictModel cure degenerate (Cell := Box, cap > N); no uniform cap — Codex g.6 | `capBound`/`hcapU` (per-class caps uniformly bounded) + `hcapB : capBound < N` (the box exceeds the envelope) + `hlevel` (chart level-surjectivity): coordinates outside the envelope exist, so `cellOf := id` fails `cell_local`; cross-level uniformity documented as MovesT's VP packaging; constant-verdict instances excluded only by the semantic pin (stated) |
+| 7 | §3.2 variable line incomplete; NP ∅-routing gloss; "every [value] assignment" — Fable G-1/G-2/OBS-A | variable line completed (`{n N m pol P}`); the Shape.NP docstring displays the ∅-shape routing (note: MAX branch with N(∅,⊤) = 1; Lean: else-branch, value 1; NPband(∅) = 1 — all routes value-exact, deviation = F3's) ; the elided word restored |
+
+FULL ADVERSARY BLOCK (re-run, §3.1): A-i root_box ✗ · A-ii MonicTie ✗ · A-iii
+hmonicRoot/species ✗ · A-iv h = 0 unbuildable ✗ · A-v gcd(2,4) ✗ · A-vi root-only
+w = 2 ✗ (NEW). Positives: P̂* ∈ Shape 3 (now incl. w₀ = 1, w₁ = 2 — the note's
+"w₁ = 2") ✓ · P̂₀ ∈ Shape 4 (w₀ = 1; A(P̂₀) = 14, Fable#6's unclaimed cross-check) ✓.
+GATE (unchanged, both auditors' recomputations + §0.6): C_P̂*(2) = 3, C_P̂*(3) = 48,
+mult ≡ 1, NP = 5 (inhabited branch = the note's own derivation), Nshape = 5,
+A = 11, W = 7, M = 1; the ∅ arithmetic now THEOREMS on E9/D3a/W3 (C_∅ = 1 ≤ 1).
+Unit count: 48 (unchanged; fields grew, statements restated).
