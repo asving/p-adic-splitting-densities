@@ -1,4 +1,50 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 12
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 13 (closure)
+
+## ADJUDICATIONS (binding; orchestrator, from direct note reads — REV 13)
+
+**A-1 (Codex#9-1 OVERRULED).** The note's evaluation discipline is PER POOL with
+junk blocks RECORDED-not-required: "At every NON-all-active pool q₀ (the wild
+pools; finitely many per e) the symbolic solve is read on the ACTIVE subsystem …
+the junk-block determinants det(I − D_{q₀}) are RECORDED (a zero is a FINDING,
+not by itself a FAIL; a blanket det(I − D_{q₀}) ≠ 0 is NOT required)" (MOVES
+12198–12209). The `activeState` gate on `cellP_count` IS the note's scope; no
+ungated per-cell valuation is displayed.
+
+**A-2 (Codex#9-2 OVERRULED).** The note's leg quantifier is the CONSUMED legs:
+"the evaluated object's q₀-value (R_σ(p) at δ = 1; a β_{e_j,τ_j}(p^{δ_j}) leg at
+δ > 1 — after cancellation where needed)" (12205) and ESCAPE(E0)'s "δ ranging
+over 1 AND every base-change index a β_{e_j,τ_j}(q^{δ_j}) leg of b_e^split or
+RS.1-SH consumes" — NOT the full ≤ n-factor closure as a DEMAND (consumedDeltas'
+closure is a sound SUPERSET, Fable#3-O-1; the note requires no more). Fable's
+reading matches the text; U-22/legs_reg stand as REV 12 scoped them.
+
+**A-3 (Codex#9-3, recorded).** The per-cell (J-RAT) PRESENTATION deliverable is
+OWNER [1v]'s, per the note's own PLAN-SYNC flag: "(J-RAT) — owner [1v],
+deliverable the PER-CELL rational tables (per branching digit cell … the
+cell-count polynomial per the (iv)-POLY pattern + its XHD-s height sum …) — a
+deliverable BEYOND PART-1's TOTAL cell-partition mass" (12295–12307). It rides
+the existing typed open fields (jP/j_interp + cellP family); seam territory.
+
+**DISPOSITION (recorded from the campaign ledger):** the core is **ACCEPTED BY
+ADJUDICATED CLOSURE** — Fable 0-crit across three consecutive
+computation-verified rounds (Fable#8/#9/#10); Codex's residual criticals
+overruled on the note's text (A-1/A-2 above). The deferred Codex leg = a
+RATIFICATION pass on the E-phase LEAN STATEMENTS after the Aug-02 budget reset.
+E-phase follows immediately, scope §5.
+
+## H-CLOSE13. REV-13 repairs
+
+**R55 (Fable#10-GAP-1):** `shWeightH` ownership restored — added to
+`n2_sh_events`'s carrier list (the R52 split had dropped it; the events unit
+owns the carrier family its gloss presupposes).
+**R56 (Fable#10-GAP-2):** the retired name `n2_shallow_device` purged at its
+three live sites (n2_rsh body + deps; §W4-SYNC S-8).
+**R57 (Codex#9-4, one line):** `RS4Chain.wsh17_pin : Prop` — the CL-17(ii)
+inheritance as a NAMED TYPED FIELD; U-28 takes `h17 : C.wsh17_pin` as an
+explicit premise; wave 4 instantiates the field with W17ii's statement (S-8) —
+the DISCHARGE stays the seam's.
+**R58 (Fable#10-O-1):** U-22's dep line reads U-22b AND U-22c; the §3b edges
+carry U-22b → U-22c → U-22.
 
 ## H-CLOSE. REV-12 rulings (the convergent list)
 
@@ -977,10 +1023,14 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
   WshP : Shape T → PolyGeom                        -- CL-17(ii): W_Ŝ in rational form —
   wsh_ok : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools, (WshP Ŝ).val ∈ OKat q₀
     -- DENOMINATOR REGULARITY ONLY (R53, Codex#8-3): wsh_ok does NOT carry
-    -- CL-17(ii)'s production burden. RS.4 INHERITS CL-17(ii) (S.5's tag list) —
-    -- that inheritance is DECLARED here and carried by the SEAM pin W17ii (S-8);
-    -- U-28's acceptance record may not be marked unconditional while it is open.
-    -- (the OPEN production
+    -- CL-17(ii)'s production burden.
+  wsh17_pin : Prop
+    -- THE CL-17(ii) INHERITANCE AS A NAMED TYPED FIELD (R57, Codex#9-4): wave 4
+    -- instantiates it with the seam pin W17ii's statement (S-8); U-28 takes
+    -- `h17 : C.wsh17_pin` as an explicit premise — RS.4 inherits CL-17(ii) BY
+    -- TYPE, its DISCHARGE staying the seam's; U-28's acceptance record may not
+    -- be marked unconditional while it is open.
+    -- (wsh_ok remains the OPEN production
                                                    -- duty rides this presentation
   WshVal : Shape T → ℚ → ℝ                         -- measured shallow-shape masses
   wsh_interp : ∀ Ŝ ∈ F.Sh, ∀ q₀ (h : q₀ ∈ M.Pools),
@@ -1091,7 +1141,8 @@ section.
   the package; exclude the empty menu (`F.Sh.Nonempty`, or premise W7's tree_ne
   through S-5); package fields re-keyed to real interfaces. RE-KEYING REPLACES
   (R46): the gate's DEVICE fields `WshP`/`WshVal`/`shDom`/`shEvtH`/`visH`/
-  `shEvt`/`shWeightH` (from `n2_shallow_device`) by the real production objects.
+  `shEvt`/`shWeightH` (from the device batch n2_wshp_device/n2_sh_events/
+  n2_sh_laws — R56) by the real production objects.
 - **S-9 packages as registries** (Codex#6-1, global): every abstract Prop field
   in XRBPackage/RS1GivenPackage/Wsh17Package is a NAME AWAITING RE-KEYING — the
   contract's whole point; none is consumed by a core unit.
@@ -1468,13 +1519,15 @@ Codex#8-2).**
 δ = 1; the consumed legs ride legs_reg/RegP, never this unit); U-22c is now
 CONSUMED: {q₀ ∈ PP | not all-active}.Finite + PP infinite (hbase + prime
 infinitude) give infinitely many all-active base pools, one witness kills a
-vanishing det. Per-block binders inside both (R2-13 preserved).
+vanishing det. Per-block binders inside both (R2-13 preserved). deps: U-19,
+U-20, U-21c, U-22b, U-22c, U-27 (R58: U-22c IS a dep, matching the consumption
+claim; §3b carries U-22b → U-22c → U-22).
 moves_ref: "at all-active primes (cofinitely many …) K_e(p) = A and ρ(A) < 1 gives
 det(I − A) ≠ 0; a rational function vanishing at infinitely many prime evaluations
-is 0". deps: U-19, U-20, U-21c, U-22b, U-27 · hyp: U-22b's cofiniteness (the (iv)-POLY
-cofiniteness face, now over the DEFINED locus) + per-pool packages at that locus ·
-sketch: at an all-active pool Act = univ (act_spec + the locus definition); if
-det = 0 in Qq its evaluation vanishes there (U-20), contradicting U-21c.
+is 0". hyp: U-22b/U-22c's cofiniteness (the (iv)-POLY face, per-cell keyed) +
+per-pool packages at the all-active base locus · sketch: at an all-active base
+pool Act = univ (act_spec + the locus definition); if det = 0 in Qq its
+evaluation vanishes there (U-20), contradicting U-21c.
 
 **U-22b `allActive_cofinite` · AllActiveCofinite.lean · medium — PER-CELL keyed
 (R45); split (R48).** ONE statement:
@@ -1574,6 +1627,7 @@ the PINNED W1m (never claimed here).
 
 **U-28 `rs4_rational_step` · Rs4.lean · medium — full inherited set (R2-19).**
 `statement`: `theorem rs4_rational_step (C : RS4Chain T M RB hdc hK F)`
+`(h17 : C.wsh17_pin)  -- the CL-17(ii) inheritance, typed (R57)`
 `(hdet : ∀ e ∈ Finset.Icc 1 n, (1 - Kmat T RB e (hK e ‹_›)).det ≠ 0) :`
 `(∑ σ ∈ C.Sigmas, Rsh T M RB hdc hK hdet F C.WshP σ) = 1`
 moves_ref: "(RS.4) Σ_σ R_σ = 1 identically in q … RS.4 inherits EVERY condition of
@@ -1687,12 +1741,16 @@ prime: 1×1 packages, entry q₀⁻³ < 1 uniformly at q₀ ≥ 2. deps: U-29a, 
 degree-2 multisets) · `n2_x3` (easy — decidedTotal := Σ Rval; x3_total by
 construction; Codex#6-13 split) · `n2_rs1eq` (easy — rs1_equates by construction;
 split) · `n2_rsh` (medium — rsh_interp at the explicit values: eval β_{(1,2)} =
-(q₀+1)/(q₀²+q₀+1) etc., with the DEVICE WshP from `n2_shallow_device` — the R44
+(q₀+1)/(q₀²+q₀+1) etc., with the DEVICE WshP from `n2_wshp_device` — the R44
 scope contradiction is GONE: R46). THE FULL RS4Chain IS INSTANTIATED (R46,
 Codex#7-2 = Fable#8-F2 — no partial structures): Sigmas/sig_exact, PrimePools/
 prime_base/prime_sub, decidedTotal, Rval/r_bdd, x3_total, rs1_equates, rsh_interp,
-pools_e0/legs_reg, L, B, hns, AND the device shallow data (next unit). deps: the
-d-batch, U-29d2, `n2_shallow_device`.
+pools_e0/legs_reg, L, B, hns, wsh17_pin (at the gate := the device W17ii
+height-sum instance — NONTRIVIALLY discharged by n2_sh_laws' shweight_card at
+the singleton height; at wave 4 := W17ii's real statement, R57), AND the device
+shallow data
+(the next batch). deps: the d-batch, U-29d2, n2_wshp_device/n2_sh_events/
+n2_sh_laws (R56).
 
 **The shallow-device batch — DEVICE-ONLY data completing RS4Chain, split by
 carrier family (R46/R52, Codex#8-4; wave-4 re-keying REPLACES exactly these
@@ -1701,8 +1759,8 @@ fields — §W4-SYNC S-8/S-10 name them):**
   geom = 1, qpow = 0) on the root shape (Rsh σ = blockSolve values —
   Fable-verified); WshVal := its evaluations; wsh_ok/wsh_interp.
 · `n2_sh_events` (medium) — the device carriers shDom (singleton height),
-  shEvtH/visH/shEvt (synthetic events whose cards realize the weights) +
-  shevt_grouping.
+  shEvtH/visH/shEvt AND `shWeightH` (the weights the events' cards realize —
+  ownership restored, R55/Fable#10-GAP-1) + shevt_grouping.
 · `n2_sh_laws` (medium) — wshval_bdd, shDom_ne, sh_realized, shweight_card, AND
   `wshval_card` (Fable#9-G-1: previously unowned; the device's singleton height
   class discharges it via shweight_card + shevt_grouping).
@@ -1844,7 +1902,8 @@ U-12 → U-12c → U-16a3 (the DELTA-ABS composition — Fable#3 O-2) ·
 U-13 → U-14 → {U-15, U-16b/c, U-24a1} · U-16a1 → U-16a2 → U-24a1; U-16a1 → U-16b →
 {U-17a, U-18, U-29}; U-16a3 → RegP · U-16c → U-25 · U-19 → {U-9a, U-10, U-20, U-22,
 U-16a2} · U-23b → U-21b; U-21a, U-21b → U-21c → {U-22, U-23d, U-24a1} · U-23a/b/c →
-U-23d · U-27 → {U-9b, U-18b, U-22, U-24b, U-28} · U-24a1 → U-24a2 → U-24b · U-22 →
+U-23d · U-22b → U-22c → U-22 (R58) · U-27 → {U-9b, U-18b, U-22, U-24b, U-28} ·
+U-24a1 → U-24a2 → U-24b · U-22 →
 hdet of {U-16b/c, U-24a2/b, U-25, U-28} · RegP/AVAgree → {U-24a1, U-24a2, U-24b,
 RS4Chain.legs_reg} (the guards are CONSUMED — Fable C1's symptom is gone).
 CONSUMPTION-DAG discipline: U-24a1/a2/b consume `xrb`/`recursion_meas`; nothing
@@ -2073,9 +2132,24 @@ CONVERGENT on countS_cells → REV 12:**
 | Fable#9-G-1 | `wshval_card` now OWNED (n2_sh_laws) — the full-chain claim has every field's unit | R52, §3 S5 |
 | Codex#8-5 + Fable#9-O-1/O-2 | staleness: E-phase scope reads the current census; "§2/§W4-SYNC" fence; "FIFTEEN" label | R54 |
 
-STATUS: REV 12 complete. THE CORE: 95 units (52 easy / 43 medium / 0 hard),
-closed import DAG, E-phase-ready. THE SEAM: 11 §W4-SYNC contract entries
-(unchanged this rev; W17ii's inheritance now cross-declared from the core).
-PolyGeom settled (R30); the per-cell architecture settled (R45+R50). Cumulative:
-R1 22/22 → … → R10 6/6 → R11 5/5 + 2 obs, fully convergent list repaired. Next:
-the acceptance pass.
+**Rev-12 verdicts + the binding adjudications → REV 13 (closure):**
+
+| finding | disposition | where |
+|---|---|---|
+| Codex#9-1 | OVERRULED (A-1): the activeState gate on cellP_count IS the note's per-pool scope (12198–12209 quoted) | ADJUDICATIONS |
+| Codex#9-2 | OVERRULED (A-2): the leg quantifier is the CONSUMED legs (12205 quoted); the ≤n closure is a sound superset, not a demand | ADJUDICATIONS |
+| Codex#9-3 | RECORDED (A-3): per-cell (J-RAT) presentation = [1v]'s PLAN-SYNC deliverable (12295–12307); rides the typed open fields; seam | ADJUDICATIONS |
+| Codex#9-4 | `RS4Chain.wsh17_pin : Prop` — the CL-17(ii) inheritance as a named typed field; U-28 takes `h17 : C.wsh17_pin`; discharge = seam S-8 | R57, §2.D, U-28 |
+| Fable#10-GAP-1 | `shWeightH` ownership restored (n2_sh_events) | R55, §3 S5 |
+| Fable#10-GAP-2 | `n2_shallow_device` purged at its three live sites | R56 |
+| Fable#10-O-1 | U-22's deps include U-22c; §3b edge U-22b → U-22c → U-22 | R58 |
+
+STATUS: **REV 13 — CLOSURE. The core is ACCEPTED BY ADJUDICATED CLOSURE** (see
+ADJUDICATIONS: Fable 0-crit across three consecutive computation-verified rounds;
+Codex's residual criticals overruled on the note's text; the deferred Codex leg =
+a RATIFICATION pass on the E-phase Lean statements after the Aug-02 budget
+reset, ledger-recorded). THE CORE: 95 units (52 easy / 43 medium / 0 hard),
+closed import DAG. THE SEAM: 11 §W4-SYNC contract entries. PolyGeom settled
+(R30); per-cell architecture settled (R45+R50, A-1). Cumulative: R1 22/22 → … →
+R11 5/5 → R12 4 repairs + 3 adjudications. **E-PHASE FOLLOWS IMMEDIATELY**
+(scope: §5).
