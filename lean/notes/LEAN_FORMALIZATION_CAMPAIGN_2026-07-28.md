@@ -170,6 +170,17 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   instance a = 2 is the check); link floorB to K.lines with a block-edge
   field + staircase equation; then the 4 gaps. Both verifiers agree the
   missing pieces are CARRIER structure = HC-1's surface.
+  ***** THEOREM U MACHINE-CHECKED (2026-07-28). The MovesU fleet: 13/13 on
+  the first opus pass (0 escalations, 0 stuck, 0 verify-failures).
+  LeanUrat.MovesU.theoremU + .identification PROVED; corpus sorry-free;
+  axiom footprint Lean-core only (verified post-rebuild by the orchestrator).
+  The statement is the dual-accepted conditional Theorem U: ∃ one fixed
+  R_σ family, ∀ p prime satisfying (REG-p), classifier-keyed density → R_σ(p)
+  with Σ_σ R_σ = 1, and the VP-SOUND-conditional identification clause —
+  over the CL-1..19 CapstoneLedger and the typed interface structures whose
+  instantiation is the remaining campaign (the other corpora + HC-1/HC-2).
+  This is the capstone TARGET of the master plan, standing as a checked
+  conditional theorem exactly as the math delivers it. *****
   CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
   Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
   Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
