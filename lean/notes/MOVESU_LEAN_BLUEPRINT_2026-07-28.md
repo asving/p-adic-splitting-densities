@@ -1,14 +1,17 @@
 # MovesU — Lean blueprint for §U-SQUEEZE (Theorem U, conditional form)
-# REV 2 (post-Codex-audit, 13 findings repaired) — 2026-07-28
+# REV 3 (post-re-audit, orchestrator design ruling implemented) — 2026-07-28
 
-*Codex audit `MOVESU_AUDIT_CODEX_2026-07-28.md`: REJECT (10 crit / 3 gap). REV 2 repairs
-ALL 13 in one batch; the findings→repairs table is §7. Architecture changes: `Census`
-REPLACED by `ClassifierSpec` (the verdict IS the interface's canonical classifier map,
-with characterizing Props — F1/F13); `SplittingType n` concrete (F11); `RegData` carries
-the FULL displayed entry list + nonemptiness (F4/F10); the kernel ledger is a
-`KernelStatements` pack asserted per-CL by `CapstoneLedger` (F5/F6/F7); U10 gains the
-∃-ONE-fixed-R form + the density-identification conjuncts (F11/F12); exact partial-sum
-identity (F3); positivity (F8); primality (F9).*
+*Audit trail: rev 1 REJECT 10c/3g (`MOVESU_AUDIT_CODEX_2026-07-28.md`, repaired at
+REV 2); rev 2 REJECT 4c/3g (`MOVESU_AUDIT_CODEX_REV2_2026-07-28.md`, repaired HERE per
+the orchestrator ruling (A)–(E)). Findings→repairs table: §7 (extended). REV 3
+architecture: (A) the polynomial space is CONCRETE (`Box` + `toPoly` — monic degree-n
+polynomials over ZMod (p^N); all counts over THIS space); (B) U10's conclusion SPLITS as
+the note does — clause (i) the classifier-keyed density, clause (ii) the identification
+corollary under VP-SOUND, now a TYPED ledger field over the concrete box (new unit U11);
+(C) RegData de-vacuified: every entry family index-typed with cardinality equations
+pinned to block/table data; (D) (REG-p) gains the explicit R_σ-evaluability clause;
+(E) menus concrete (`MenuData`), the O3 Teichmüller pin a field, the
+Defs/U0b/DefsLedger circularity fixed, `DecidableEq (Tree σ)` added.*
 
 *Blueprint-writer deliverable (campaign wave 1, `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`).
 Source of truth: the DUAL-ACCEPTED §U-SQUEEZE rev 7 (`lean/notes/MOVES_2026-07-24.md`,
@@ -45,19 +48,23 @@ note's "a multiset of pairs (e_i, f_i) with Σ e_i·f_i = n". A Fintype instance
 U0b (entries bounded by n). No abstract label type anywhere; `hn : 2 ≤ n` now has
 semantic force (the type is the real one).
 
-**D2 — The box is concrete; the verdict is THE CLASSIFIER INTERFACE (F1/F13).**
-`Box p n N := Fin n → ZMod (p ^ N)` (`Nat.card = p^(n*N)`). `Census` is DELETED. In its
-place `ClassifierSpec n p` — the MovesC-precedent interface structure (cf. MovesD's
-`PrefFamily` carrying jet/enc/hist_inj), owner MovesD + HC-2 (the OM engine) — carries:
-`trueType N f` (the GROUND-TRUTH factorization type of the level-N class, abstract here,
-the ONE semantic pin; owner HC-2); `canonical N f` (T_can^τ's verdict-type map — "a
-CHOICE-FREE function of f", [1] L2 + VP + ONE-F); `canonical_sound` (a decided verdict
-AGREES with `trueType` — VP/VP-SOUND at interface strength); `canonical_stable` (a
-level-N decision persists to every N' ≥ N along `ZMod.castHom` reduction — TREE-N's
-thr ≤ N join / Thm 2.1 decision stability). `decided`/`undec`/`env`/`dmass` are DEFINED
-from `canonical` — an arbitrary labeling is no longer an instance: the verdict function
-is pinned to the named upstream object with its characterizing Props. (BOX-N) stays a
-tag-free count identity (it holds for the interface's canonical map by counting alone).
+**D2 — The polynomial space is CONCRETE; the verdict is the classifier interface
+(ruling (A); rev-2 criticals 1/2's space objection).** `Box p n N := Fin n →
+ZMod (p ^ N)` with `Box.toPoly f := X^n + Σ_i C (f i) * X^i : Polynomial (ZMod (p^N))`
+— a REAL Fintype of monic degree-n polynomials mod p^N, no interface. ALL counts
+(`decided`/`undec`/`trueCount`) are `Nat.card` counts over THIS space. `ClassifierSpec
+n p` (owner MovesD + HC-2, the MovesC-`JetSetup` precedent) carries: `canonical N f`
+(T_can^τ's verdict-type map — "a CHOICE-FREE function of f", [1] L2 + VP + ONE-F);
+`trueType N f` (the true-factorization-type FIELD, constrained by soundness laws ON
+THE CONCRETE SPACE — see D10; its fidelity to real ℤ_p factorization is HC-2's
+declared bridge, NOT defined from scratch here, per the ruling); `canonical_stable`
+(a level-N decision persists to N' ≥ N along `ZMod.castHom` reduction — TREE-N's join
+/ Thm 2.1); `baseSection` (the pinned base digit section, an enum FIELD — the O3
+TEICHMÜLLER declaration, gap 6; the ledger pins `= .teichmuller`). `canonical_sound`
+is REMOVED as a structure field: verdict soundness is VP-SOUND, an OPEN kernel — it
+becomes a TYPED LEDGER FIELD `VPSound X` over the concrete box (D10), never a baked-in
+interface law and never a bare Prop slot. `decided`/`undec`/`env`/`dmass`/`trueCount`/
+`trueDmass` are DEFINED from the fields. (BOX-N) stays a tag-free count identity.
 
 **D3 — Tonelli is typed in ℝ≥0∞** (unchanged). `seriesSum σ := ∑' T, mass σ T` exists
 UNCONDITIONALLY (`ENNReal.summable`); partial sums are dominated (`ENNReal.sum_le_tsum`,
@@ -74,7 +81,8 @@ for the audit). The tie to the CLASSIFIER is the ledger's `finiteness_stack` IDE
 canonical classifier never emits σ at any level (decided ≡ 0 is then forced, not
 smuggled). The Finset type of `thrSlice` is still CL-7's finiteness riding the
 instantiation (TRACK-COUNT + D(n) + genuine-increment, OPEN — named in KernelStatements,
-D7).
+D7). REV 3 (gap 7): `instTreeDeq : ∀ σ, DecidableEq (Tree σ)` added as a field (the
+instantiation needs it to build the Finsets; no classical smuggling at the interface).
 
 **D5 — (REG-p) is a Prop schema over the FULL displayed entry bundle (F4/F10).**
 `RegData p` now carries: `depthSet : Finset ℕ` with `one_mem_depthSet : 1 ∈ depthSet`
@@ -82,30 +90,29 @@ D7).
 `pool_eq : Pool = depthSet.image (p ^ ·)` — Q(p) is EXACTLY the pool set, nonempty by
 construction (p ∈ Pool), never an arbitrary Finset; `Block` with `instNe : Nonempty
 Block` (the top block exists); the matrices `K`; AND ALL remaining displayed entry
-families as data: `bterm`/`bsplit` (both b_e components), `Jcell` (the per-cell J
-entries, CL-18), `iota` (ι_e), `Wcoef` (the W_Ŝ coefficients), `betaLegs` (every
-β_{e,τ} entry, all base-changed legs). `entryList e` is a DEFINITION — the union of the
-seven families, exactly SQ.4's displayed E(e) — not a free field, so (r2) quantifies
-over the whole display and nothing can be silently dropped. `act` stays abstract
-(CTS-M(ii)'s semantics, owner [1v]); RegP stays the rev-5 SEPARATE hypothesis.
-
-**D2 — Tonelli is typed in ℝ≥0∞.** The tree-fiber series (RS.1's positive series) lives
-in `ℝ≥0∞`: `seriesSum σ := ∑' T, mass σ T` exists UNCONDITIONALLY (`ENNReal.summable` —
-every ℝ≥0∞ family is summable), and every finite partial sum is dominated by the tsum
-(`ENNReal.sum_le_tsum`, `ENNReal.tsum_eq_iSup_sum`). This is rev 2's retyped SQ.2 clause
-verbatim: existence tag-free; FINITENESS (`seriesSum σ ≠ ⊤`) and IDENTIFICATION with
-R_σ(p) are ledger fields (the tagged stack), never Tonelli's.
-
-**D3 — Finiteness of the decided family is DATA-level.** `FiberSeries.thrSlice σ N :
-Finset (Tree σ)` — the thr ≤ N slice is Finset-typed, so SQ.0/CL-7's finiteness
-(TRACK-COUNT + D(n) + the genuine-increment sub-claim) rides the INSTANTIATION: whoever
-builds a `FiberSeries` from MovesD trees must produce the Finset, which is exactly CL-7's
-open duty. Flagged in the docstring; no silent strengthening — the abstract corpus never
-proves finiteness, it consumes it.
+families as data. REV 3 (ruling (C), rev-2 critical 3): every family is INDEX-TYPED
+with a CARDINALITY EQUATION pinned to block/table count data — never `Nonempty` alone,
+never a free Finset that could be empty: `instBiNe : ∀ e, Nonempty (bidx e)` +
+`bidx_card : Fintype.card (bidx e) = blockDim e`, `blockDim_pos` (kills the
+empty-matrix det = 1 dodge); `Jcell : JIdx e → RatFunc ℚ` with `JIdx_card :
+Fintype.card (JIdx e) = cellCount e`, `cellCount_pos` (|Jcell| = the branching-cell
+count of the block's table, CL-18); `Wcoef : WIdx → RatFunc ℚ` with `WIdx_card =
+shapeCount`, `shapeCount_pos` (one coefficient per shallow shape Ŝ, CL-17);
+`betaLeg : legIdx e → ℕ → RatFunc ℚ` with `legIdx_card = legCount e` — β entries are
+functions of (leg, depth δ), and `entryList` unions their images over EVERY
+δ ∈ depthSet (the display's "at every pool of Q(p)"). The count DATA (`blockDim`,
+`cellCount`, `shapeCount`, `legCount`) is the owner tables'; its VALUES' fidelity is
+MovesS/[1v]'s declared instantiation pin (D9). `entryList e` stays a DEFINITION (the
+union of all families), so (r2) quantifies over the whole display. RULING (D) (rev-2
+critical 4): `RegP` becomes `RegP S D` and gains the note's EVALUABILITY clause —
+`∀ σ, DefinedAt (S.R σ) (p : ℚ)` — "UNDER (REG-p), the literal evaluation R_σ(p) …
+is DEFINED"; U4/U10's `evalℝ` is thereby guarded, never junk. `act` stays abstract
+(CTS-M(ii), owner [1v]); (REG-p) stays the rev-5 SEPARATE hypothesis.
 
 **D6 — Literal evaluation.** `evalℝ S σ p := ((S.R σ).eval (RingHom.id ℚ) (p:ℚ) : ℝ)`
 (Mathlib `RatFunc.eval`, junk-valued at poles). The theorem NEVER consumes `evalℝ` except
-under `RegP D`, where the ledger's solve-stack field asserts the identification — so the
+under `RegP S D`, where the ledger's solve-stack field asserts the identification (and
+REV 3's evaluability clause asserts definedness, ruling (D)) — so the
 junk case is never load-bearing. The WILD-p/ACT reading is carried by (r2)'s agreement
 clause inside `RegP`, exactly the note's "the two readings coincide, so ρ_σ(p) = R_σ(p)
 is well-typed".
@@ -113,24 +120,28 @@ is well-typed".
 **D7 — The kernel ledger: a `KernelStatements` pack + per-CL assertion fields
 (F5/F6/F7).** The open kernels are STATEMENTS owned upstream; MovesU cannot re-state
 their content, but it CAN carry them as named Prop-valued parameters. `KernelStatements`
-is a structure of ~30 `Prop` fields — one named slot per open kernel/obligation of the
-capstone ledger (escapeE0, weightCharge, progressX2 with the (X2-*) family, the CL-5
-nine individually, ivPoly, trackCount/dnDuty/genuineIncrement, the six CL-8 REL legs,
-rs0LumpBisim, sib/sibStep/jcMulti/treeExpNs/vpSound, noEqualEFeedback/degCons,
-ctsmSyntax (the move menus, empty-menu/(BDY) conventions, target-cell maps — F7),
-ksubM1C1 (the (m,c) classification incl. the equal-e m = 1, c = 1 rows — F7), m1m5,
-x1aDict, m4bConstancy, rs1Assembly, jRat, jcInv) — filled with the REAL statements at
-instantiation (owners named per field). `CapstoneLedger` then has a field PER CL ITEM
-(`cl1_escapeE0 : K.escapeE0`, …, `cl19_jcInv : K.jcInv` — CL-2/CL-3 INCLUDED even though
-the qualitative limit never uses their constants: the frozen theorem is conditional on
-the COMPLETE ledger, F6) PLUS the four operative consumption fields (`finiteness_stack`,
-`solve_stack` — now with EXPLICIT positivity, F8 —, `rs4_checksum`/`rs4_eval`,
-`cl4_env_tendsto`), each operative docstring naming the CL items whose consequence it
-is. Every kernel is now a REAL hypothesis field, not a docstring (F5). (REG-p) is NOT a
-ledger field: the ONE explicit hypothesis (rev 3, pass-2 critical 2).
+is a structure of `Prop` slots — one per open kernel/obligation of the capstone ledger
+(escapeE0, weightCharge, progressX2 with the (X2-*) family, the CL-5 nine, ivPoly,
+trackCount/dnDuty/genuineIncrement, the six CL-8 REL legs, rs0LumpBisim,
+sib/jcMulti/treeExpTreeN, noEqualEFeedback/degCons, m1m5, x1aDict, m4bConstancy,
+rs1Assembly, jRat, jcInv) — filled with the REAL statements at instantiation (owners
+per slot). REV 3 (ruling (B)/(E), rev-2 gap 5): THREE former slots are no longer bare
+Props — `vpSound` is DELETED from the pack and becomes the TYPED ledger field
+`cl10_vpsound : VPSound X` over the concrete box (D10); `ksubM1C1` and `ctsmSyntax`
+are DELETED and become TYPED fields over the concrete menu vocabulary `MenuData`
+(menus as Finsets of `(m, c, sameSize, target)` entries): `cl11`'s second conjunct
+`KsubM1C1 M` (every same-size outcome has m = 1 ∧ c = 1 — the equal-e classification
+as a real Prop) and `cl13 : MenuWF M` (m ≥ 1, c ≤ m, targets total on continuing
+outcomes; the empty menu = halt, the (BDY) reading) — the FULL upstream statements
+still live with their owners; these are their MovesU-visible faces, now checkable.
+`CapstoneLedger` keeps a field PER CL ITEM (CL-2/CL-3 included, F6) PLUS the operative
+consumption fields (`finiteness_stack`, `solve_stack` with explicit positivity,
+`rs4_checksum`/`rs4_eval`, `cl4_env_tendsto`) PLUS the O3 pin `o3_teichmuller :
+X.baseSection = .teichmuller` (gap 6). (REG-p) is NOT a ledger field: the ONE explicit
+hypothesis.
 
 **D8 — NO-CLAIM failure semantics = the restricted quantifier, no Lean artifact.** The
-theorem's conclusion is `∀ p, p.Prime → RegP D → (...)`. At a p failing (REG-p) the
+theorem's conclusion is `∀ p, p.Prime → RegP S D → (...)`. At a p failing (REG-p) the
 implication is vacuously satisfied — Lean asserts NOTHING there: no equality, no bound,
 no non-existence (the removable-auxiliary-zero case needs no encoding). This is the
 note's failure semantics EXACTLY, for free. Design note only; no unit.
@@ -143,15 +154,40 @@ an instantiation-fidelity violation adjudicated at the HC-2 audit, exactly like
 MovesC's `JetSetup`); `FiberSeries` ← MovesD/[3t]'s complete finite realizable trees
 with TREE-N thresholds; `SolveData`/`RegData` ← MovesS's block solve ([3]);
 `KernelStatements` ← the owner notes per field ([3], [5], [2b], [2r], [1v], [3t], [4]).
-What the abstract corpus CAN pin, it now does (canonical soundness + stability, the
-slice characterization, the full entry list, pool/block nonemptiness, concrete
-SplittingType); what it CANNOT pin (that `trueType`/`canonical`/the kernel Props are the
-real ones) is exactly the conditional-over-interface boundary of the MovesC precedent,
-declared here and at every consuming unit. The audit's fake instance is dead: constant
-verdicts now contradict `canonical_sound` against any faithful `trueType`, `RegP` is
-never vacuous (Pool ∋ p, Block nonempty), and `K.trackCount := True` etc. is a
-fidelity violation caught at instantiation review, not a satisfiable reading of THIS
-corpus's claims.
+What the abstract corpus CAN pin, it now does (the concrete polynomial space and
+counts, stability, the slice characterization, the index-typed entry families with
+pinned cardinalities, concrete SplittingType, concrete menus, the O3 pin). THE HONEST
+NON-VACUITY STATEMENT (ruling (B), superseding REV 2's refuted "fake instance is dead"
+claim): for U10's CLAUSE (i) — the classifier-keyed density — the degenerate-instance
+objection DIES, because the clause asserts a real limit of real `Nat.card` counts over
+the concrete box; a degenerate `canonical` merely makes clause (i) a true statement
+about a different (unfaithful) classifier, which is exactly the conditionality the
+note itself has ("keyed to ClassifierSpec verdicts"). For CLAUSE (ii) — the true-type
+density — the objection MOVES INTO VP-SOUND's faithfulness: `cl10_vpsound : VPSound X`
+is typed over the concrete box, and the residual pin (that `trueType` denotes real
+ℤ_p factorization types, that the kernel slots carry the real statements) is DECLARED,
+owner-audited at instantiation — the MovesC `JetSetup` precedent, not a hidden hole.
+
+**D10 — U10's conclusion splits exactly as the note does (ruling (B); rev-2 criticals
+1/2).** Clause (i): ∀ σ, `dmass σ N → R_σ(p)` — the classifier-keyed density, what
+Theorem U literally concludes ("decided_σ(N)" IS T_can^τ-keyed in the note's own
+notation). Clause (ii), the IDENTIFICATION COROLLARY (new unit U11): with
+`VPSound X : ∀ N f σ, canonical N f = some σ → trueType N f = some σ` (typed over the
+concrete box) and env → 0, the TRUE-type counts `trueCount σ N := Nat.card {f //
+trueType N f = some σ}` obey `decided ≤ trueCount ≤ decided + undec` (soundness gives
+the left inclusion; a true-σ class is decided-σ or undecided, since a decided-τ class
+is true-τ by soundness and trueType is single-valued), so `trueDmass σ N → R_σ(p)` by
+a second squeeze — "ρ_σ(p) IS the splitting density … the undecided complement has
+mass 0 and the classifier verdicts are the true factorization types", at exactly the
+note's granularity. Clause (iii): env → 0 re-emitted. The ℤ_p-Haar reading of the
+limit of `trueDmass` is HC-2's declared bridge (D9), not re-derived here.
+
+**D11 — File split kills the Defs circularity (gap 7).** `Defs.lean` (SplittingType,
+Box/toPoly, ClassifierSpec + counts, SolveData, RegData/RegP, FiberSeries, MenuData +
+KsubM1C1/MenuWF — NO ledger) ← `U0b_splitTypeFintype.lean` (the `Fintype
+(SplittingType n)` + `Nonempty` instances) ← `DefsLedger.lean` (KernelStatements,
+CapstoneLedger — its `∑ σ` now has its instance in scope — UInstance). All
+ledger-consuming units import `DefsLedger`.
 
 **The four TAG-FREE units** (= the note's re-audited unconditional perimeter, and the
 only units proved without ledger fields): `U1_boxN`, `U2_tonelli`, `U5_sq3_arith`,
@@ -161,10 +197,13 @@ only units proved without ledger fields): `U1_boxN`, `U2_tonelli`, `U5_sq3_arith
 
 ## 2. Defs skeleton — `lean/LeanUrat/MovesU/Defs.lean` (inline; elaboration-phase target)
 
+THREE-FILE ORDER (D11, gap 7): `Defs.lean` (below, NO ledger) ← `U0b_splitTypeFintype.lean`
+← `DefsLedger.lean` (§2b).
+
 ```lean
 import Mathlib
 namespace LeanUrat.MovesU
-open Filter Topology ENNReal
+open Filter Topology ENNReal Polynomial
 
 /-- A splitting type of degree n: "a multiset of pairs (e_i, f_i) with Σ e_i·f_i = n"
     (SQ.4, verbatim; entries ≥ 1). CONCRETE — F11's repair. Fintype: unit U0b. -/
@@ -172,30 +211,48 @@ def SplittingType (n : ℕ) : Type :=
   {σ : Multiset (ℕ × ℕ) // (∀ x ∈ σ, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
     (σ.map fun x => x.1 * x.2).sum = n}
 
-/-- The level-N monic coefficient box: n free coefficients mod p^N (p^{nN} classes). -/
+/-- The level-N box, CONCRETE (ruling (A)): the n free coefficients of a monic
+    degree-n polynomial mod p^N (p^{nN} classes; a real Fintype). -/
 abbrev Box (p n N : ℕ) := Fin n → ZMod (p ^ N)
+
+/-- The monic polynomial a box point denotes: X^n + Σ_i C (f i) · X^i — THE
+    polynomial space behind every count (rev-2 criticals 1/2's space objection). -/
+noncomputable def Box.toPoly {p n N : ℕ} (f : Box p n N) : Polynomial (ZMod (p ^ N)) :=
+  X ^ n + ∑ i : Fin n, C (f i) * X ^ (i : ℕ)
 
 /-- The level reduction Box p n N' → Box p n N for N ≤ N' (`ZMod.castHom`, p^N ∣ p^N'). -/
 noncomputable def boxProj (p n : ℕ) {N N' : ℕ} (h : N ≤ N') : Box p n N' → Box p n N :=
   fun f i => ZMod.castHom (pow_dvd_pow p h) _ (f i)
 
-/-- THE CLASSIFIER INTERFACE (F1/F13 repair; replaces Census). HYPOTHESIS STRUCTURE,
-    owner MovesD + HC-2 (the OM engine) — the MovesC `JetSetup` precedent.
-    `trueType`: the GROUND-TRUTH factorization type of the level-N class (abstract; the
-    semantic anchor, D9). `canonical`: T_can^τ's verdict-type map — "T_can^τ is a
-    CHOICE-FREE function of f" ([1] L2 + VP; [3t] ONE-F); `some σ` = complete finite
-    realizable tree, all leaves (τ-irr)/(τ-hen), certified at level N (thr ≤ N).
-    `canonical_sound`: "the classifier verdicts are the true factorization types"
-    (VP + VP-SOUND's citation duty, at interface strength). `canonical_stable`:
-    TREE-N's join / Thm 2.1 decision stability — a decision persists upward. -/
+/-- The base digit section policy (D4R0K S1.4 (B4)/O3 — gap 6). -/
+inductive BaseSection | teichmuller | unspecified
+  deriving DecidableEq
+
+/-- THE CLASSIFIER INTERFACE (rulings (A)/(B); replaces Census). HYPOTHESIS
+    STRUCTURE, owner MovesD + HC-2 — the MovesC `JetSetup` precedent.
+    `canonical`: T_can^τ's verdict-type map — "T_can^τ is a CHOICE-FREE function of f"
+    ([1] L2 + VP; [3t] ONE-F); `some σ` = complete finite realizable tree, all leaves
+    (τ-irr)/(τ-hen), certified at level N (thr ≤ N). `trueType`: the
+    true-factorization-type field of the level-N class — constrained on the concrete
+    box by `VPSound` (a LEDGER field, D10), its ℤ_p fidelity HC-2's declared bridge
+    (D9); NOT a baked-in soundness law (rev-2 critical 1: soundness is an OPEN
+    kernel, so it is a hypothesis, never an interface axiom). `canonical_stable`:
+    TREE-N's join / Thm 2.1 decision stability. `baseSection`: the O3 pin datum
+    (the ledger requires `= .teichmuller`). -/
 structure ClassifierSpec (n p : ℕ) where
-  trueType : ∀ N : ℕ, Box p n N → Option (SplittingType n)
   canonical : ∀ N : ℕ, Box p n N → Option (SplittingType n)
-  canonical_sound : ∀ N f σ, canonical N f = some σ → trueType N f = some σ
+  trueType : ∀ N : ℕ, Box p n N → Option (SplittingType n)
   canonical_stable : ∀ {N N'} (h : N ≤ N') (f : Box p n N') (σ : SplittingType n),
     canonical N (boxProj p n h f) = some σ → canonical N' f = some σ
+  baseSection : BaseSection
 
 variable {n p : ℕ}
+
+/-- VP-SOUND at interface strength, TYPED over the concrete box (ruling (B); never a
+    bare Prop slot): every decided-σ class has true factorization type σ. An OPEN
+    kernel (CL-10's VP + VP-SOUND citation duty) — consumed as a ledger field. -/
+def VPSound (X : ClassifierSpec n p) : Prop :=
+  ∀ N (f : Box p n N) σ, X.canonical N f = some σ → X.trueType N f = some σ
 
 /-- decided_σ(N) — DEFINED from the canonical map (never a free field). -/
 noncomputable def ClassifierSpec.decided (X : ClassifierSpec n p)
@@ -211,6 +268,14 @@ noncomputable def ClassifierSpec.env (X : ClassifierSpec n p) (N : ℕ) : ℝ :=
 noncomputable def ClassifierSpec.dmass (X : ClassifierSpec n p)
     (σ : SplittingType n) (N : ℕ) : ℝ :=
   (X.decided σ N : ℝ) / (p : ℝ) ^ (n * N)
+/-- The TRUE-type count (clause (ii)'s object, D10): #{f : trueType N f = some σ}. -/
+noncomputable def ClassifierSpec.trueCount (X : ClassifierSpec n p)
+    (σ : SplittingType n) (N : ℕ) : ℕ :=
+  Nat.card {f : Box p n N // X.trueType N f = some σ}
+/-- The true-type mass trueCount_σ(N)/p^{nN}. -/
+noncomputable def ClassifierSpec.trueDmass (X : ClassifierSpec n p)
+    (σ : SplittingType n) (N : ℕ) : ℝ :=
+  (X.trueCount σ N : ℝ) / (p : ℝ) ^ (n * N)
 
 /-- HYPOTHESIS STRUCTURE (MovesS interface): the fixed p-independent rational output.
     R_σ := RS.1-SH's object — "the ONLY density-typed output of the solve" (§S type
@@ -235,43 +300,74 @@ structure RegData (p : ℕ) where
   depthSet : Finset ℕ                          -- base-change depths δ of RS.1-SH
   one_mem_depthSet : 1 ∈ depthSet              -- δ = 1 (the shallow pool) always arises
   Pool : Finset ℕ                              -- Q(p)
-  pool_eq : Pool = depthSet.image (p ^ ·)      -- Q(p) IS the depth image (F4)
+  pool_eq : Pool = depthSet.image (p ^ ·)      -- Q(p) IS the depth image
   Block : Type
   instB : Fintype Block
-  instNe : Nonempty Block                      -- the top block exists (F4)
+  instNe : Nonempty Block                      -- the top block exists
+  -- per-block state indices: size PINNED to the table's row count (ruling (C))
   bidx : Block → Type
   instBi : ∀ e, Fintype (bidx e)
   instBd : ∀ e, DecidableEq (bidx e)
+  instBiNe : ∀ e, Nonempty (bidx e)            -- kills the empty-det = 1 dodge
+  blockDim : Block → ℕ                         -- the block table's row count (owner [1v]/[3])
+  blockDim_pos : ∀ e, 0 < blockDim e
+  bidx_card : ∀ e, Fintype.card (bidx e) = blockDim e
   K : ∀ e : Block, Matrix (bidx e) (bidx e) (RatFunc ℚ)   -- {each entry of K_e}
   bterm : ∀ e : Block, bidx e → RatFunc ℚ      -- b_e^{term,fin}
   bsplit : ∀ e : Block, bidx e → RatFunc ℚ     -- b_e^split
-  Jcell : Block → Finset (RatFunc ℚ)           -- every per-cell J entry (CL-18)
   iota : ∀ e : Block, bidx e → RatFunc ℚ       -- {each entry of ι_e}
-  Wcoef : Finset (RatFunc ℚ)                   -- {each W_Ŝ coefficient}
-  betaLegs : Block → Finset (RatFunc ℚ)        -- every β_{e,τ} entry, all pools' legs
+  -- per-cell J entries (CL-18): |Jcell e| = the table's branching-cell count
+  cellCount : Block → ℕ
+  cellCount_pos : ∀ e, 0 < cellCount e
+  JIdx : Block → Type
+  instJ : ∀ e, Fintype (JIdx e)
+  JIdx_card : ∀ e, Fintype.card (JIdx e) = cellCount e
+  Jcell : ∀ e : Block, JIdx e → RatFunc ℚ
+  -- W_Ŝ coefficients (CL-17): one per shallow shape
+  shapeCount : ℕ
+  shapeCount_pos : 0 < shapeCount
+  WIdx : Type
+  instW : Fintype WIdx
+  WIdx_card : Fintype.card WIdx = shapeCount
+  Wcoef : WIdx → RatFunc ℚ
+  -- β legs: per (leg, depth δ); entryList covers EVERY δ ∈ depthSet (per-pool coverage)
+  legCount : Block → ℕ
+  legIdx : Block → Type
+  instL : ∀ e, Fintype (legIdx e)
+  legIdx_card : ∀ e, Fintype.card (legIdx e) = legCount e
+  betaLeg : ∀ e : Block, legIdx e → ℕ → RatFunc ℚ
   act : RatFunc ℚ → ℕ → ℚ                      -- ACT active value at a pool
 
-/-- E(e) — a DEFINITION, verbatim the union SQ.4 displays (nothing droppable; F4/F10).
-    (Classical DecidableEq on RatFunc ℚ for the images.) -/
+/-- E(e) — a DEFINITION, verbatim the union SQ.4 displays; every family index-typed
+    and cardinality-pinned (ruling (C)), the β images taken at EVERY depth of
+    `depthSet`. (Classical DecidableEq on RatFunc ℚ for the images.) -/
 noncomputable def RegData.entryList {p : ℕ} (D : RegData p) (e : D.Block) :
     Finset (RatFunc ℚ) :=
-  letI := Classical.decEq (RatFunc ℚ); letI := D.instBi e; letI := D.instBd e
+  letI := Classical.decEq (RatFunc ℚ)
+  letI := D.instBi e; letI := D.instBd e; letI := D.instJ e
+  letI := D.instW; letI := D.instL e
   (Finset.univ.image fun ij : D.bidx e × D.bidx e => D.K e ij.1 ij.2)
     ∪ (Finset.univ.image (D.bterm e)) ∪ (Finset.univ.image (D.bsplit e))
-    ∪ D.Jcell e ∪ (Finset.univ.image (D.iota e)) ∪ D.Wcoef ∪ D.betaLegs e
+    ∪ (Finset.univ.image (D.Jcell e)) ∪ (Finset.univ.image (D.iota e))
+    ∪ (Finset.univ.image D.Wcoef)
+    ∪ D.depthSet.biUnion (fun δ => Finset.univ.image (fun l => D.betaLeg e l δ))
 
 /-- (REG-p), the rev-5 SEPARATE named hypothesis: (r1) full determinant (junk blocks
     included) defined and ≠ 0 at every pool; (r2) every member of the DEFINED E(e)
-    (all seven displayed families, F10) defined at q₀ AND literal = ACT active value
-    ((ii-c) agreement). Neither implies nor is implied by E0/CL-1 or ACT/CL-5 (D5).
-    Never vacuous: Pool ∋ p^1, Block nonempty (F4). -/
-def RegP {p : ℕ} (D : RegData p) : Prop :=
-  ∀ q₀ ∈ D.Pool, ∀ e : D.Block,
+    (all seven displayed families, cardinality-pinned) defined at q₀ AND literal =
+    ACT active value ((ii-c) agreement); PLUS the EVALUABILITY clause (ruling (D),
+    rev-2 critical 4): the literal R_σ(p) is DEFINED — "UNDER (REG-p), the literal
+    evaluation R_σ(p) of the fixed element of ℚ(q) is DEFINED and IS the active
+    value". Neither implies nor is implied by E0/CL-1 or ACT/CL-5 (D5). Never
+    vacuous: Pool ∋ p^1, Block nonempty, every index family nonempty-pinned. -/
+def RegP {n p : ℕ} (S : SolveData n) (D : RegData p) : Prop :=
+  (∀ q₀ ∈ D.Pool, ∀ e : D.Block,
     (letI := D.instBi e; letI := D.instBd e;
      DefinedAt (Matrix.det (1 - D.K e)) (q₀ : ℚ) ∧
      (Matrix.det (1 - D.K e)).eval (RingHom.id ℚ) (q₀ : ℚ) ≠ 0) ∧
     ∀ g ∈ D.entryList e,
-      DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = D.act g q₀
+      DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = D.act g q₀) ∧
+  (∀ σ : SplittingType n, DefinedAt (S.R σ) (p : ℚ))
 
 /-- HYPOTHESIS STRUCTURE (MovesD/[3t] interface; F2 repair): the tree-fiber series.
     `Tree σ` = the complete finite realizable canonical trees of verdict-type σ (owner
@@ -283,6 +379,7 @@ def RegP {p : ℕ} (D : RegData p) : Prop :=
     an empty `Tree σ` forces decided_σ ≡ 0 — nothing degenerate satisfiable (D4). -/
 structure FiberSeries (n p : ℕ) (X : ClassifierSpec n p) where
   Tree : SplittingType n → Type
+  instTreeDeq : ∀ σ, DecidableEq (Tree σ)       -- gap 7: needed to build the Finsets
   mass : ∀ σ, Tree σ → ℝ≥0∞                     -- μ(fiber T): RS.1's positive series
   thr : ∀ σ, Tree σ → ℕ                         -- TREE-N's threshold
   thrSlice : ∀ σ : SplittingType n, ℕ → Finset (Tree σ)
@@ -294,12 +391,45 @@ structure FiberSeries (n p : ℕ) (X : ClassifierSpec n p) where
 noncomputable def FiberSeries.seriesSum {X : ClassifierSpec n p}
     (F : FiberSeries n p X) (σ : SplittingType n) : ℝ≥0∞ := ∑' T : F.Tree σ, F.mass σ T
 
+/-- One menu outcome, minimal concrete vocabulary (ruling (E), rev-2 gap 5):
+    m members, c continuations, whether it stays at equal block size, and its
+    target state (`none` = halt — the (BDY)/empty-continuation reading). -/
+structure MenuEntry (State : Type) where
+  m : ℕ
+  c : ℕ
+  sameSize : Bool
+  target : Option State
+  deriving DecidableEq
+
+/-- The move-menu vocabulary (CL-13/CL-11's MovesU-visible face; owner [1v]/[2a]):
+    the ONE fixed finite state set with per-state outcome menus AS FINSETS. -/
+structure MenuData where
+  State : Type
+  instState : Fintype State
+  instStateDeq : DecidableEq State
+  instStateNe : Nonempty State
+  menu : State → Finset (MenuEntry State)
+
+/-- The (K-SUB) m = 1 classification as a REAL Prop over menus (was a bare slot):
+    "equal-e continuation rides EXCLUSIVELY in K_e's (c = 1, m = 1) rows" — every
+    same-size outcome is single-member, single-continuation. -/
+def KsubM1C1 (M : MenuData) : Prop :=
+  ∀ s, ∀ o ∈ M.menu s, o.sameSize = true → o.m = 1 ∧ o.c = 1
+
+/-- CL-13's menu well-formedness face (was a bare slot): every outcome has ≥ 1
+    member, ≤ m continuations, and a target whenever it continues (globally
+    compatible target-cell maps); the empty menu is the halt convention. The FULL
+    CTS-M(i) statement lives with [1v]; this is its checkable MovesU trace. -/
+def MenuWF (M : MenuData) : Prop :=
+  ∀ s, ∀ o ∈ M.menu s, 1 ≤ o.m ∧ o.c ≤ o.m ∧ (o.c ≠ 0 → o.target.isSome)
+
 end LeanUrat.MovesU
 ```
 
-## 2b. The kernel pack + capstone ledger (Defs, continued) — THE trust surface
+## 2b. The kernel pack + capstone ledger — `MovesU/DefsLedger.lean` (imports U0b, D11)
 
 ```lean
+import LeanUrat.MovesU.U0b_splitTypeFintype  -- Fintype (SplittingType n) IN SCOPE (gap 7)
 /-- THE KERNEL STATEMENT PACK (F5/F6/F7): one named Prop slot per open
     kernel/obligation of the capstone ledger. Filled with the REAL upstream statements
     at instantiation (owner per slot); filling a slot with `True` is an
@@ -335,13 +465,11 @@ structure KernelStatements where
   sib : Prop              -- CL-10 [3t]: (SIB)/(SIB-STEP), measure-level joint form
   jcMulti : Prop          -- CL-10 [3t]: (JC-multi)
   treeExpTreeN : Prop     -- CL-10 [3t]: TREE-EXP(-fin/-ns) + TREE-N, (NS-ROUTE)-scoped
-  vpSound : Prop          -- CL-10 [3t]: VP (TB-CAP per clause) + VP-SOUND's two cites
+  -- (vpSound: DELETED as a slot at REV 3 — now the TYPED ledger field
+  --  `cl10_vpsound : VPSound X`, ruling (B); rev-2 gap 5)
   noEqualEFeedback : Prop -- CL-11 [4]/[1v]: no-equal-e-feedback + DEG-CONS full roster
-  ksubM1C1 : Prop         -- CL-11/CL-13 face (F7): (K-SUB)'s (m,c) classification —
-                          --   equal-e continuation EXCLUSIVELY in m = 1, c = 1 rows;
-                          --   the empty-menu/(BDY) conventions ride here
-  ctsmSyntax : Prop       -- CL-13 [1v]: CTS-M(i) SYNTAX — the ONE fixed finite state
-                          --   set, move menus, cell predicates, target-cell maps (F7)
+  -- (ksubM1C1, ctsmSyntax: DELETED as slots at REV 3 — now TYPED over MenuData:
+  --  `KsubM1C1 M` in cl11, `MenuWF M` in cl13, ruling (E); rev-2 gap 5)
   m1m5 : Prop             -- CL-14 [2a]: M1 + M5 — CLOSED upstream; ledger-echo slot
   x1aDict : Prop          -- CL-15 [5]: the per-species GMN index dictionary
   m4bConstancy : Prop     -- CL-16 [1v]/[2b]: M4b constancy + M4b-T equivariance (π_v)
@@ -355,7 +483,7 @@ structure KernelStatements where
     may drop a tag while any cited CL-item is open." (REG-p) is NOT a field: the ONE
     explicit hypothesis. CL-12 is CLOSED ("NOTHING at CL-12 is open") — no slot. -/
 structure CapstoneLedger (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n p X)
-    (S : SolveData n) (D : RegData p) (K : KernelStatements) : Prop where
+    (S : SolveData n) (D : RegData p) (M : MenuData) (K : KernelStatements) : Prop where
   cl1 : K.escapeE0
   cl2 : K.weightCharge
   cl3 : K.progressX2
@@ -366,9 +494,16 @@ structure CapstoneLedger (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n
   cl7 : K.trackCount ∧ K.dnDuty ∧ K.genuineIncrement
   cl8 : K.rel1 ∧ K.rel2a ∧ K.rel2b ∧ K.rel2d ∧ K.rel2e ∧ K.rel3
   cl9 : K.rs0LumpBisim
-  cl10 : K.sib ∧ K.jcMulti ∧ K.treeExpTreeN ∧ K.vpSound
-  cl11 : K.noEqualEFeedback ∧ K.ksubM1C1
-  cl13 : K.ctsmSyntax
+  cl10 : K.sib ∧ K.jcMulti ∧ K.treeExpTreeN
+  /-- CL-10's VP-SOUND leg, TYPED over the concrete box (ruling (B)): decided-σ ⟹
+      true type σ. The identification corollary (U11, clause (ii)) consumes it. -/
+  cl10_vpsound : VPSound X
+  cl11 : K.noEqualEFeedback ∧ KsubM1C1 M
+  cl13 : MenuWF M
+  /-- The O3 BASE-PIN DECLARATION (SQ.4's display duty, gap 6): the pinned base digit
+      section is TEICHMÜLLER (D4R0K S1.4 (B4)/O3) — "declared once, as the definitive
+      write-up must". -/
+  o3_teichmuller : X.baseSection = BaseSection.teichmuller
   cl14 : K.m1m5
   cl15 : K.x1aDict
   cl16 : K.m4bConstancy
@@ -389,7 +524,7 @@ structure CapstoneLedger (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n
       positivity ((I − A(q₀))^{−1} ≥ 0) and R_σ(p) ≥ 0 stated EXPLICITLY — both GIVEN
       E0 + the CL-5 mass identification" (F8's repair: positivity is a conjunct, not
       an inference from `ofReal`). -/
-  solve_stack : RegP D → ∀ σ,
+  solve_stack : RegP S D → ∀ σ,
     F.seriesSum σ ≠ ⊤ ∧ F.seriesSum σ = ENNReal.ofReal (evalℝ S σ p) ∧
     0 ≤ evalℝ S σ p
   /-- RS.4's checksum (§S S.5) WITH its full inherited set riding verbatim: "E0, the
@@ -400,7 +535,7 @@ structure CapstoneLedger (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n
   /-- RS.4 EVALUATED at p under (REG-p) — the form SQ.3's arithmetic consumes. Same
       inherited set. (E-phase note: derivable from `rs4_checksum` + (r2)-definedness
       via RatFunc eval-hom side conditions; carried as a field until that unit lands.) -/
-  rs4_eval : RegP D → ∑ σ, evalℝ S σ p = 1
+  rs4_eval : RegP S D → ∑ σ, evalℝ S σ p = 1
   /-- OPERATIVE trace of CL-4 = X.3 (QUALITATIVE form — "the limit consumes no
       envelope constant"; the statement slot is `cl4` above; discharges only at [5]'s
       EVENT): env(N) → 0. The quantitative rate form (CL-2/CL-3's constants) is
@@ -414,8 +549,9 @@ structure UInstance (n : ℕ) (S : SolveData n) (p : ℕ) where
   X : ClassifierSpec n p
   F : FiberSeries n p X
   D : RegData p
+  M : MenuData
   K : KernelStatements
-  L : CapstoneLedger n p X F S D K
+  L : CapstoneLedger n p X F S D M K
 ```
 
 Greppable audit: every CL-1 … CL-19 item is now a REAL hypothesis field (F5) — the
@@ -425,14 +561,16 @@ display duty is a write-up sentence, out of Lean scope).
 
 ---
 
-## 3. The unit DAG — 12 units, one file each: `lean/LeanUrat/MovesU/<id>.lean`
+## 3. The unit DAG — 13 units, one file each: `lean/LeanUrat/MovesU/<id>.lean`
 
 Layers: L0 Defs+counting (U0, U0b, U1) → L1 series (U2–U4) → L2 bracket (U5–U6) →
-L3 limit (U7) → L4 schema/aux (U8–U9) → L5 capstone (U10). TAG-FREE = proved with no
-ledger/structure hypothesis fields beyond definitions.
+L3 limit (U7) → L4 schema/aux (U8–U9) → L5 capstone (U10, U11). TAG-FREE = proved with
+no ledger/structure hypothesis fields beyond definitions. Import order per D11:
+Defs ← U0b ← DefsLedger ← every ledger-consuming unit (U3, U4, U6, U10, U11).
 
 ### U0b `MovesU.U0b_splitTypeFintype` — splitting types are a nonempty Fintype  [support]
-- **file**: `MovesU/U0b_splitTypeFintype.lean`  ·  **difficulty**: medium  ·  **deps**: Defs
+- **file**: `MovesU/U0b_splitTypeFintype.lean` (imports Defs ONLY; imported BY
+  DefsLedger — the gap-7 circularity fix, D11)  ·  **difficulty**: medium  ·  **deps**: Defs
 - **statement**: `instance : Fintype (SplittingType n)` and
   `theorem splittingType_nonempty (hn : 1 ≤ n) : Nonempty (SplittingType n)`
 - **moves_ref**: "For each splitting type σ of degree n (a multiset of pairs (e_i, f_i)
@@ -463,7 +601,8 @@ ledger/structure hypothesis fields beyond definitions.
   `some σ` are `decided`, fiber of `none` is `undec` (`Nat.card_eq_fintype_card` +
   subtype/filter card transfer); close with U0. Tag-free BECAUSE it is a count
   identity for the interface's canonical map — the map's fidelity Props
-  (`canonical_sound`/`_stable`) are carried by the structure, not consumed here.
+  (`canonical_stable`; VP-SOUND as the ledger's `cl10_vpsound`) are carried
+  elsewhere, not consumed here.
 - **hypothesis_fields**: none consumed (F1's repair: the verdict is now the pinned
   classifier interface, D2; no arbitrary labeling is an instance).
 
@@ -483,7 +622,7 @@ ledger/structure hypothesis fields beyond definitions.
 ### U3 `MovesU.U3_sq2_partial` — decided mass IS the thr ≤ N partial sum  [conditional]
 - **file**: `MovesU/U3_sq2_partial.lean`  ·  **difficulty**: easy  ·  **deps**: U2
 - **statement** (F3's repair — the IDENTITY is the claim; domination is the corollary):
-  `theorem sq2_partial (L : CapstoneLedger n p X F S D K) (σ N) :`
+  `theorem sq2_partial (L : CapstoneLedger n p X F S D M K) (σ N) :`
   `(X.decided σ N : ℝ≥0∞) = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T`
   and `theorem sq2_partial_le … : (X.decided σ N : ℝ≥0∞) ≤ (p : ℝ≥0∞) ^ (n * N) * F.seriesSum σ`
 - **moves_ref**: "decided_σ(N)/p^{nN} is a PARTIAL SUM (the thr ≤ N slice) of RS.1's
@@ -495,11 +634,11 @@ ledger/structure hypothesis fields beyond definitions.
 
 ### U4 `MovesU.U4_sq2_upper` — SQ.2, the fixpoint upper bound  [conditional]
 - **file**: `MovesU/U4_sq2_upper.lean`  ·  **difficulty**: medium  ·  **deps**: U3
-- **statement**: `theorem sq2_upper (L : CapstoneLedger n p X F S D K)`
-  `(hreg : RegP D) (hp : p.Prime) (σ N) :`
-  `(X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)` (F9's repair: `p.Prime`,
-  never `1 < p` — the note asserts SQ.2 only at primes satisfying (REG-p);
-  composite p is NOT claimed)
+- **statement**: `theorem sq2_upper (L : CapstoneLedger n p X F S D M K)`
+  `(hreg : RegP S D) (hp : p.Prime) (σ N) :`
+  `(X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)` (F9: `p.Prime`, never
+  `1 < p`; ruling (D): `hreg` now also gives `DefinedAt (S.R σ) p`, so `evalℝ` is
+  the genuine literal value, never junk — rev-2 critical 4)
 - **moves_ref**: "decided_σ(N) ≤ R_σ(p)·p^{nN} [hypothesis stack at (U-n) below]" (SQ.2);
   "with RS.3's positivity … R_σ(p) ≥ 0 stated EXPLICITLY — both GIVEN E0 + the CL-5 mass
   identification"
@@ -509,7 +648,7 @@ ledger/structure hypothesis fields beyond definitions.
   `ENNReal.toReal_ofReal` (its nonnegativity input = the positivity conjunct).
 - **hypothesis_fields**: `finiteness_stack`, `solve_stack` (incl. the explicit
   positivity conjunct = RS.3's clause; the full solve stack CL-1, CL-5, CL-6, CL-8,
-  CL-9, CL-11, CL-13…CL-19 rides the ledger's cl-slots); explicit `RegP D`, `p.Prime`.
+  CL-9, CL-11, CL-13…CL-19 rides the ledger's cl-slots); explicit `RegP S D`, `p.Prime`.
 
 ### U5 `MovesU.U5_sq3_arith` — SQ.3's bracket arithmetic AS arithmetic  [TAG-FREE step 2]
 - **file**: `MovesU/U5_sq3_arith.lean`  ·  **difficulty**: medium  ·  **deps**: U1
@@ -532,8 +671,8 @@ ledger/structure hypothesis fields beyond definitions.
 
 ### U6 `MovesU.U6_un_bracket` — (U-n), the two-sided bracket  [conditional; the note's product]
 - **file**: `MovesU/U6_un_bracket.lean`  ·  **difficulty**: easy  ·  **deps**: U4, U5
-- **statement**: `theorem un_bracket (L : CapstoneLedger n p X F S D K)`
-  `(hreg : RegP D) (hp : p.Prime) (σ N) :`
+- **statement**: `theorem un_bracket (L : CapstoneLedger n p X F S D M K)`
+  `(hreg : RegP S D) (hp : p.Prime) (σ N) :`
   `(evalℝ S σ p - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ) ∧`
   `(X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)` — `p.Prime` per F9
   (`NeZero p`/`1 < p` derived from `hp` inside)
@@ -543,7 +682,7 @@ ledger/structure hypothesis fields beyond definitions.
 - **sketch**: right leg = U4; left leg = U5 applied with `R := fun τ => evalℝ S τ p`,
   `hupper` from U4 at each τ ≠ σ, `hsum := L.rs4_eval hreg`.
 - **hypothesis_fields**: `finiteness_stack`, `solve_stack`, `rs4_eval` (RS.4's full
-  inherited set incl. X.3/CL-4); explicit `RegP D`.
+  inherited set incl. X.3/CL-4); explicit `RegP S D`.
 
 ### U7 `MovesU.U7_squeeze` — the limit forcing  [TAG-FREE step 4]
 - **file**: `MovesU/U7_squeeze.lean`  ·  **difficulty**: medium  ·  **deps**: Defs
@@ -567,24 +706,24 @@ ledger/structure hypothesis fields beyond definitions.
 
 ### U8 `MovesU.U8_regP_access` — (REG-p) accessors over the FULL entry list  [definitional]
 - **file**: `MovesU/U8_regP_access.lean`  ·  **difficulty**: easy  ·  **deps**: Defs
-- **statement** (F10's repair — the generic accessor + one corollary PER displayed
-  family + (r1) + nonemptiness):
-  `theorem RegP.entry_agree {D : RegData p} (h : RegP D) (hq : q₀ ∈ D.Pool) (e)`
-  `  {g} (hg : g ∈ D.entryList e) : DefinedAt g q₀ ∧ g.eval (RingHom.id ℚ) q₀ = D.act g q₀`
-  — with corollaries `K_agree`, `bterm_agree`, `bsplit_agree`, `Jcell_agree`,
-  `iota_agree`, `Wcoef_agree`, `betaLegs_agree` (membership in the `entryList` union,
-  one per family — so ALL of (r2)'s displayed E(e) is exposed, not just K);
-  `theorem RegP.det_ne_zero {D : RegData p} (h : RegP D) (hq : q₀ ∈ D.Pool) (e) :`
-  `  (Matrix.det (1 - D.K e)).eval (RingHom.id ℚ) q₀ ≠ 0`;
-  `theorem RegData.pool_self_mem (D : RegData p) : p ∈ D.Pool` (from `pool_eq` +
-  `one_mem_depthSet`, `pow_one` — RegP is never pool-vacuous, F4).
+- **statement** (the generic accessor + one corollary PER displayed family + (r1) +
+  nonemptiness + REV 3's evaluability accessor):
+  `theorem RegP.entry_agree {S : SolveData n} {D : RegData p} (h : RegP S D)`
+  `  (hq : q₀ ∈ D.Pool) (e) {g} (hg : g ∈ D.entryList e) :`
+  `  DefinedAt g q₀ ∧ g.eval (RingHom.id ℚ) q₀ = D.act g q₀`
+  — with corollaries `K_agree`, `bterm_agree`, `bsplit_agree`, `Jcell_agree` (∀ j :
+  JIdx e), `iota_agree`, `Wcoef_agree` (∀ w : WIdx), `betaLeg_agree` (∀ leg, ∀ δ ∈
+  depthSet — the per-pool coverage now provable BECAUSE entryList unions over
+  depthSet, ruling (C)); `theorem RegP.det_ne_zero … (h : RegP S D) …`;
+  `theorem RegP.R_defined {S D} (h : RegP S D) (σ) : DefinedAt (S.R σ) (p : ℚ)`
+  (ruling (D)); `theorem RegData.pool_self_mem (D : RegData p) : p ∈ D.Pool`.
 - **moves_ref**: "(r1) det(I − K_e(q₀)) ≠ 0; and (r2) for EVERY member of the DISPLAYED
   ENTRY LIST E(e) := { each entry of K_e } ∪ { each entry of b_e — BOTH components …
   per-cell J … } ∪ { each entry of ι_e } ∪ { each W_Ŝ coefficient } ∪ { each entry of
   every β_{e,τ} … }" (SQ.4's rev-3 schema, now covered in full)
 - **sketch**: unfold `RegP` + `RegData.entryList` (Finset union membership per family).
   The API the MovesS instantiation consumes; no content beyond the schema.
-- **hypothesis_fields**: explicit `RegP D` only.
+- **hypothesis_fields**: explicit `RegP S D` only.
 
 ### U9 `MovesU.U9_lmeas` — (L-meas)'s retype: equivalence + IMPLIED-BY  [conditional on `rs4_eval` only]
 - **file**: `MovesU/U9_lmeas.lean`  ·  **difficulty**: medium  ·  **deps**: U1, U4
@@ -622,12 +761,17 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
     (inst : ∀ p : ℕ, p.Prime → UInstance n S p) :
     ∃ R : SplittingType n → RatFunc ℚ,
       (∑ σ, R σ = 1) ∧
-      ∀ (p : ℕ) (hp : p.Prime), RegP (inst p hp).D →
+      ∀ (p : ℕ) (hp : p.Prime), RegP S (inst p hp).D →
+        -- (i) the classifier-keyed density (the note's ρ_σ(p) = R_σ(p), T_can-keyed)
         (∀ σ : SplittingType n,
           Tendsto ((inst p hp).X.dmass σ) atTop (𝓝 (evalℝ ⟨R⟩ σ p)))
+        -- (ii) the identification corollary (U11; via cl10_vpsound : VPSound X):
+        --     the TRUE-type density is the same limit — "ρ_σ(p) IS the splitting
+        --     density of type σ"
+        ∧ (∀ σ : SplittingType n,
+          Tendsto ((inst p hp).X.trueDmass σ) atTop (𝓝 (evalℝ ⟨R⟩ σ p)))
+        -- (iii) the undecided complement has mass 0
         ∧ Tendsto (inst p hp).X.env atTop (𝓝 0)
-        ∧ (∀ N f σ, (inst p hp).X.canonical N f = some σ →
-            (inst p hp).X.trueType N f = some σ)
 ```
 - **moves_ref**: "there is ONE fixed rational function R_σ ∈ ℚ(q) … such that for EVERY
   prime p, WILD primes included: ρ_σ(p) … exists and equals R_σ(p), and ρ_σ(p) IS the
@@ -635,24 +779,51 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   classifier verdicts are the true factorization types … Σ_σ R_σ = 1 identically in q
   (RS.4). … The quantifier 'for EVERY prime p' reads: every p satisfying (REG-p)."
 - **sketch**: witness `R := S.R`. Checksum: `(inst 2 Nat.prime_two).L.rs4_checksum`
-  (p-independent, any prime's ledger). Per p: limit = U7 with `r := evalℝ S σ p`,
-  bracket from U6 (`hp` supplies `NeZero p`, `1 < p`), env-limit = `L.cl4_env_tendsto`
-  (also the second conjunct verbatim); third conjunct = `X.canonical_sound`. The three
-  density-identification conjuncts TOGETHER are the note's "ρ_σ(p) IS the splitting
-  density" AT INTERFACE STRENGTH (F12): limit + vanishing undecided + verdict truth,
-  with `trueType`'s fidelity the declared HC-2 instantiation pin (D9). ≤ 20 lines.
-- **hypothesis_fields**: the COMPLETE ledger — all 19 cl-slots + the operative fields —
-  via `UInstance.L` at every prime, + explicit `RegP` per adjudicated p. Nothing else.
+  (p-independent, any prime's ledger). Per p: clause (i) = U7 with `r := evalℝ S σ p`,
+  bracket from U6 (`hp` supplies `NeZero p`, `1 < p`); clause (ii) = U11 applied to
+  clause (i) + `L.cl10_vpsound` + `L.cl4_env_tendsto`; clause (iii) =
+  `L.cl4_env_tendsto`. The conclusion split is the note's own (D10, ruling (B)):
+  (i) is what Theorem U literally concludes (T_can-keyed); (ii) is "ρ_σ(p) IS the
+  splitting density" at the note's granularity, conditional on VP-SOUND exactly as
+  the note's parenthetical "(X.3/CL-4 + [3t] VP, with VP-SOUND's citation duty)"
+  says; the ℤ_p reading of `trueType` is HC-2's declared pin (D9). ≤ 25 lines.
+- **hypothesis_fields**: the COMPLETE ledger — all cl-fields incl. the typed
+  `cl10_vpsound`/`cl11`/`cl13`/`o3_teichmuller` + the operative fields — via
+  `UInstance.L` at every prime, + explicit `RegP S` per adjudicated p. Nothing else.
+
+### U11 `MovesU.U11_identification` — clause (ii): the true-type density  [derived; inputs explicit]
+- **file**: `MovesU/U11_identification.lean`  ·  **difficulty**: medium  ·  **deps**: U7 (DefsLedger for `VPSound`)
+- **statement** (the second squeeze; all inputs EXPLICIT arguments):
+  `theorem identification (X : ClassifierSpec n p) [NeZero p] (hp : 1 < p)`
+  `(r : ℝ) (σ : SplittingType n) (hvs : VPSound X)`
+  `(hd : Tendsto (X.dmass σ) atTop (𝓝 r))`
+  `(henv : Tendsto X.env atTop (𝓝 0)) :`
+  `Tendsto (X.trueDmass σ) atTop (𝓝 r)`
+- **moves_ref**: "and ρ_σ(p) IS the splitting density of type σ over ℤ_p — the
+  undecided complement has mass 0 and the classifier verdicts are the true
+  factorization types (X.3/CL-4 + [3t] VP, with VP-SOUND's citation duty)"
+- **sketch**: sandwich `decided σ N ≤ trueCount σ N ≤ decided σ N + undec N`. Left:
+  `hvs` injects {f // canonical = some σ} ⊆ {f // trueType = some σ}
+  (`Nat.card_le_card_of_injective` on subtype inclusion). Right: a true-σ class is
+  decided-σ or undecided — if `canonical N f = some τ` then `hvs` gives `trueType =
+  some τ = some σ`, so `τ = σ` (`Option.some.inj`; trueType is single-valued);
+  else `canonical N f = none` (undec). So {true-σ} ⊆ {decided-σ} ⊎ {undec}, card ≤.
+  Divide by p^{nN}: `dmass ≤ trueDmass ≤ dmass + env`; squeeze
+  (`tendsto_of_tendsto_of_tendsto_of_le_of_le`, upper leg `hd.add henv` + `add_zero`).
+- **hypothesis_fields**: none as stated (`VPSound X` explicit — instantiated at U10
+  from `cl10_vpsound`); the derivation itself is unconditional arithmetic + counting,
+  NOT a fifth tag-free note-step (the note carries this clause inside Theorem U's
+  conditional sentence, and it rides VP-SOUND/CL-4's tags at U10).
 
 ---
 
 ## 4. Semantic-guardian flags (the trust surface, for the Codex audit)
 
-- **G1 `ClassifierSpec.trueType`/`canonical`**: the ONE semantic pin (D9). The
-  interface now CARRIES soundness + stability, but that the instantiated `trueType`
-  is the real ℤ_p factorization type (and `canonical` the real T_can^τ) is the
-  HC-2/MovesD instantiation-fidelity duty. U10's density-identification conjuncts are
-  interface-strength; say so in any progress claim.
+- **G1 `ClassifierSpec.trueType`/`canonical`**: the semantic pins (D9). Soundness is
+  NOT baked in (REV 3): it is the typed ledger hypothesis `cl10_vpsound : VPSound X`.
+  U10's clause (i) is degenerate-proof (concrete counts); clause (ii)'s meaning rests
+  on `trueType`/VP-SOUND fidelity — the HC-2/MovesD owner-audited pin. Say so in any
+  progress claim.
 - **G2 `evalℝ` junk values**: Mathlib `RatFunc.eval` returns 0 at poles. Audit that no
   unit consumes `evalℝ` outside a `RegP`-guarded context except as the LIMIT TARGET in
   U10, where `solve_stack`/`rs4_eval` (both RegP-guarded) give it content.
@@ -660,10 +831,19 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   instantiation (D4); `mem_slice_iff` pins the slice to `thr`. Audit TRACK-COUNT +
   D(n) + genuine-increment stay named OPEN (`KernelStatements` slots + docstrings).
 - **G4 the kernel slots**: every CL-1 … CL-19 item is an ASSERTED field (grep the
-  `cl1`…`cl19` fields); `KernelStatements` slots are `Prop`-typed parameters — a
-  `True`-filled slot is an instantiation-fidelity violation (D9), flag any instance
-  unit that fills one. `solve_stack` MUST carry the explicit `0 ≤ evalℝ` conjunct
-  (RS.3's clause, F8) — check it is not dropped in elaboration.
+  `cl`-fields); the vpSound/ksubM1C1/ctsmSyntax slots are GONE — replaced by the
+  typed `cl10_vpsound : VPSound X`, `KsubM1C1 M`, `MenuWF M` (rev-2 gap 5). Remaining
+  bare slots are `Prop` parameters — a `True`-filled slot is an
+  instantiation-fidelity violation (D9), flag any instance unit that fills one.
+  `solve_stack` MUST carry the explicit `0 ≤ evalℝ` conjunct (RS.3's clause, F8);
+  the ledger MUST carry `o3_teichmuller` (gap 6) — check neither drops in
+  elaboration.
+- **G8 the count data (`blockDim`/`cellCount`/`shapeCount`/`legCount`)**: the
+  cardinality equations pin the index families to these ℕ fields (ruling (C)), but
+  the VALUES are owner data (MovesS/[1v] tables) — audit any instantiation against
+  the sealed tables; a fabricated count is a fidelity violation, not satisfiable
+  slack in THIS corpus's statements. Same for `MenuData.menu` vs the [2a]/[1v]
+  catalogue.
 - **G5 `RegData.act` abstract**: (r2)'s ACT agreement is against an UNINTERPRETED
   `act`; the CTS-M(ii) semantics arrive at instantiation. (REG-p) stays the rev-5
   SEPARATE hypothesis — audit that no unit derives RegP from, or uses it to derive,
@@ -693,21 +873,27 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
 - `ZMod.castHom` + `pow_dvd_pow` (`boxProj`, D2); `Set.Finite.fintype`/classical
   finiteness for `SplittingType n` (U0b — E-phase may swap in a cleaner
   `Multiset`-bounded construction; the instance's EXISTENCE is not in doubt).
+- `Polynomial.X`, `Polynomial.C` (`Box.toPoly`, ruling (A));
+  `Nat.card_le_card_of_injective` (or `Set.ncard`/`Fintype.card_le_of_injective`
+  route) + `Option.some.injEq` for U11's sandwich; `Filter.Tendsto.add` + `add_zero`
+  for U11's upper leg; `Finset.biUnion` membership lemmas for `entryList`'s β
+  coverage (U8's `betaLeg_agree`).
 - E-phase check (flagged, not assumed): eval-additivity side-condition lemmas for
   deriving `rs4_eval` from `rs4_checksum` (`RatFunc.eval_add`'s hypotheses) — if absent
   or awkward, `rs4_eval` stays a field (already the blueprint default).
 
-## 6. Status and counts (REV 2)
+## 6. Status and counts (REV 3)
 
-12 units (U0, U0b, U1–U10): 4 TAG-FREE/unconditional (U1 (BOX-N), U2 Tonelli
-existence, U5 SQ.3-as-arithmetic, U7 limit forcing — exactly the note's re-audited
-tag-free perimeter) + 2 support (U0, U0b) + 6 conditional/definitional, every
-hypothesis a named structure field, kernel slot, or explicit `RegP`. Difficulty:
-5 easy, 7 medium, 0 hard. No new axiom; no `sorry` planned (conditional content =
-hypothesis structures). Self-contained per the master plan; instantiation hooks per
-D9: `ClassifierSpec` ← MovesD/HC-2, `FiberSeries` ← MovesD/[3t], `SolveData`/
-`RegData`/`KernelStatements` ← MovesS + owner notes. Next gate: Codex re-audit
-(one shot), charge = §4's guardian flags + the 13-finding disposition table (§7).
+13 units (U0, U0b, U1–U11) over THREE Defs files (Defs ← U0b ← DefsLedger, D11):
+4 TAG-FREE/unconditional (U1 (BOX-N), U2 Tonelli existence, U5 SQ.3-as-arithmetic,
+U7 limit forcing — exactly the note's re-audited tag-free perimeter; U11 is derived
+arithmetic with explicit inputs, NOT a fifth) + 2 support (U0, U0b) + 7
+conditional/definitional/derived, every hypothesis a named structure field, typed
+kernel field, kernel slot, or explicit `RegP S`. Difficulty: 5 easy, 8 medium,
+0 hard. No new axiom; no `sorry` planned. Instantiation hooks per D9:
+`ClassifierSpec`/`FiberSeries` ← MovesD/HC-2/[3t], `SolveData`/`RegData` ← MovesS,
+`MenuData` ← [2a]/[1v], `KernelStatements` ← owner notes. Next gate: Codex re-audit
+(one shot), charge = §4's guardian flags + the 20-finding disposition table (§7).
 
 ## 7. Findings→repairs table (Codex audit 2026-07-28, REJECT 10c/3g → REV 2)
 
@@ -726,4 +912,16 @@ D9: `ClassifierSpec` ← MovesD/HC-2, `FiberSeries` ← MovesD/[3t], `SolveData`
 | 11 | crit | U10: arbitrary σTy, no ∃-R, hn inert | FIXED: concrete `SplittingType n` (Σ eᵢfᵢ = n as data, U0b Fintype); conclusion `∃ R …` binding ONE fixed family before ∀ p |
 | 12 | crit | U10 drops the density-identification clause | FIXED: conjuncts env → 0 + verdict-truth (`canonical_sound`) added; interface-strength caveat at G1 |
 | 13 | crit | capstone satisfiable by fake instance | REDESIGNED: D9's non-vacuity boundary — pinned interfaces (soundness/stability, nonempty pools/blocks, defined entry list, concrete types); residual pin = `trueType`/kernel-slot fidelity, declared owner-audited (MovesC precedent) |
+
+**Rev-2 re-audit (REJECT 4c/3g → REV 3, per the orchestrator ruling (A)–(E)):**
+
+| # | class | finding (short) | repair in REV 3 |
+|---|---|---|---|
+| R2-1 | crit | U10 still satisfiable by degenerate instance (constant verdict + trueType, True slots) | REDESIGNED per ruling (A)/(B): concrete polynomial space (`Box.toPoly`, real counts) makes clause (i) degenerate-proof; clause (ii)'s residue moves into typed `VPSound X` fidelity, DECLARED owner-audited (D9 rewritten — the refuted "fake instance is dead" claim withdrawn) |
+| R2-2 | crit | no identification with the actual ℤ_p splitting density | REDESIGNED per ruling (B): conclusion splits — clause (ii) `trueDmass σ → R_σ(p)` via new unit U11 (second squeeze: decided ≤ trueCount ≤ decided + undec under VP-SOUND); ℤ_p-Haar reading = HC-2's declared bridge, not re-derived |
+| R2-3 | crit | (REG-p) families could be empty (empty `bidx` ⟹ det = 1; free Finsets) | FIXED per ruling (C): every family index-typed with cardinality EQUATIONS pinned to count data (`bidx_card`/`JIdx_card`/`WIdx_card`/`legIdx_card`, all `_pos`), `instBiNe`; β entries functions of (leg, δ) with `entryList` unioning over EVERY δ ∈ depthSet |
+| R2-4 | crit | literal R_σ(p) never asserted DEFINED | FIXED per ruling (D): `RegP S D` gains `∀ σ, DefinedAt (S.R σ) p`; accessor `RegP.R_defined` (U8); U4/U10 consume `evalℝ` only under it |
+| R2-5 | gap | ksubM1C1/ctsmSyntax/vpSound bare Prop slots | FIXED per ruling (E): slots DELETED; `MenuData` (menus as Finsets of (m, c, sameSize, target)) with `KsubM1C1 M` and `MenuWF M` as real Props (cl11/cl13); `cl10_vpsound : VPSound X` typed over the concrete box |
+| R2-6 | gap | O3 Teichmüller pin absent | FIXED: `BaseSection` enum + `ClassifierSpec.baseSection` field + ledger field `o3_teichmuller : X.baseSection = .teichmuller` |
+| R2-7 | gap | Defs circularity (Fintype before U0b); missing `DecidableEq (Tree σ)` | FIXED per ruling (E)/D11: three-file order Defs ← U0b ← DefsLedger (the `∑ σ` fields live in DefsLedger); `instTreeDeq` field added to `FiberSeries` |
 
