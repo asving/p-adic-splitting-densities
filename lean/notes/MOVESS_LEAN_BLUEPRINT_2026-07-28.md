@@ -1,13 +1,48 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 5
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 6
 
-*REV 5, 2026-07-27. Repairs the UNION of the two parallel rev-4 verdicts — Codex FINAL
-(`MOVESS_AUDIT_CODEX_FINAL_2026-07-28.md`, 6 crit / 2 gap) and Fable#2
-(`MOVESS_AUDIT_FABLE2_2026-07-28.md`, 1 crit / 4 gap): 11 distinct findings, which
-converge independently on the ℚ/ℝ carrier mismatch and jointly bracket the
-active-block boundary. Audit trail: REV 2 ← Codex(19/3); REV 3 ← Codex(13/7); REV 4 ←
-Fable(2/4); cumulative table §6. Ground truth: DUAL-ACCEPTED **§S-RESUM rev 6**,
-`MOVES_2026-07-24.md` ~11557–12430. Protocol-L; no new axioms; statement-fence;
-declaration order = spec.*
+*REV 6, 2026-07-27. Repairs the two parallel rev-5 verdicts — Codex#2
+(`MOVESS_AUDIT_CODEX_FINAL2_2026-07-28.md`, 2 crit / 4 gap) and Fable#3
+(`MOVESS_AUDIT_FABLE3_2026-07-28.md`, 0 crit / 2 gap; DELTA-ABS, the guards, U-24a1's
+closure, U-24b's locus, and Aℝ all DIRECTLY VERIFIED there). Audit trail: REV 2 ←
+Codex(19/3) · REV 3 ← Codex(13/7) · REV 4 ← Fable(2/4) · REV 5 ← Codex(6/2)+Fable(1/4)
+· REV 6 ← Codex(2/4)+Fable(0/2); cumulative table §6. Ground truth: DUAL-ACCEPTED
+**§S-RESUM rev 6**, `MOVES_2026-07-24.md` ~11557–12430 — cite the ACCEPTANCE RECORD
+(line ~12854), NEVER the in-body STATUS trailer (~12412: stale rev-3 narration;
+Fable#3 O-4). Protocol-L; no new axioms; statement-fence; declaration order = spec.*
+
+## H000. REV-6 rulings (on top of R1–R19)
+
+**R20 — the verdict vocabulary is PINNED STRUCTURALLY (Codex#2-1).** `TableShape`
+gains `vEquiv : VType ≃ {ef : ℕ+ × ℕ+ // (ef.1 : ℕ) * ef.2 ≤ n}` and `vdeg_spec :
+(vdeg v : ℕ) = (vEquiv v).1.1 * (vEquiv v).1.2` — verdict types ARE the (e, f) pairs
+of degree ≤ n, one label each (no extra, no missing), degree = e·f. With `sig_exact`
+this forces Sigmas = the note's roster AT EVERY instance (n = 3: exactly the
+displayed five — "σ ∈ {(1,1)³, (1,1)+(1,2), (1,3), (1,1)+(2,1), (3,1)}", S.7(i)).
+
+**R21 — PrimePools = ALL base primes, both directions (Codex#2-2).** `prime_base`
+becomes an iff; `prime_infinite` demoted to a derivable lemma
+(`Nat.exists_infinite_primes`); x3_total/rs1_equates/rsh_interp/legs_reg now
+quantify over every base prime — the note's "at each prime p" / CL-1's "δ = 1 the
+base instance", with `prime_sub` forcing every base prime into `Pools`.
+
+**R22 — carrier genericization (Codex#2-3 + Fable#3-G2, one fix family).** U-13/U-14
+are stated over a generic carrier (`[CommRing R]` / `[Field F]`), so their ℝ
+instances exist at U-24a1's seam; U-10's conclusion is stated over `Aℝ P` per D11;
+D11's prose corrected (Fable#3 O-3).
+
+**R23 — `hread` is TYPED DATA (Codex#2-4): `ReadOffBundle`** — packages at every
+q₀ ∈ S and every e ∈ Icc 1 n, with AVAgree read-offs at EVERY (e, τA : Act, σ' :
+Multiset VType); U-24b consumes it; coordinate coverage is auditable from the type.
+
+**R24 — gate splits (Codex#2-5/6):** U-29b → U-29b1/b2/b3; U-29d → U-29d1/d2/d3.
+
+**R25 — elaboration order made real (Fable#3-G1).** FILE PLACEMENT: §2.D's
+RS1Bundle/RS4Chain + §2.E's SyncDefs live in `MovesS/Interfaces.lean`, elaborated
+AFTER the S2/S4 definition units (imports BSplitDef, EvalReDef, ConsumedDeltas,
+BlockSolve, BlockSolveTot, RshDef, MarkedDef) — cross-file declaration order = the
+import DAG. `legs_reg` reordered after `PrimePools`; `splitOuts` declared in §2.C;
+`bhatMeas` declared in U-16a2 (EvalReDef); `rsh_interp`'s `hdet` binder typed;
+U-12c added to §3b's edges (O-2).
 
 ## H00. REV-5 rulings (on top of R1–R15)
 
@@ -168,8 +203,9 @@ in ℚ; measured values live in ℝ; the identification passes through ONE coerc
 declared in Defs — `def Aℝ (P : PoolHyp …) : Matrix P.Act P.Act ℝ :=
 P.A.map (algebraMap ℚ ℝ)` — with det transported by `RingHom.map_det` +
 `Rat.cast_injective` (so `(1 - Aℝ P).det ≠ 0 ↔ (1 - P.A).det ≠ 0`); every mixed
-statement (U-24a1, AVAgree, U-24a2, U-10's row sums) is stated over ℝ via `Aℝ`/
-`(algebraMap ℚ ℝ)` and NOWHERE else coerces.
+statement (U-24a1, AVAgree, U-24a2, and — REV 6, R22 — U-10's conclusion) is stated
+over ℝ via `Aℝ`/`(algebraMap ℚ ℝ)` and NOWHERE else coerces; the generic-carrier
+U-13/U-14 (R22) supply the ℝ instances at U-24a1's seam.
 
 ---
 
@@ -213,8 +249,14 @@ structure TableShape (n : ℕ) where
   VType  : Type
   deqV   : DecidableEq VType
   finV   : Fintype VType            -- the MovesSp verdict catalogue is finite (R18)
-  vdeg   : VType → ℕ+               -- the verdict type's degree (e·f for (e, f);
-                                    --   MovesSp vocabulary — Sigmas' exactness pin)
+  vdeg   : VType → ℕ+               -- the verdict type's degree
+  vEquiv : VType ≃ {ef : ℕ+ × ℕ+ // ((ef.1 : ℕ) * (ef.2 : ℕ)) ≤ n}
+    -- STRUCTURAL PIN (R20, Codex#2-1): verdict types ARE the (e, f) pairs of degree
+    -- e·f ≤ n — exactly one label per pair, none extra, none missing (the note's
+    -- vocabulary: σ′ multisets of (e_i, f_i); roster display S.7(i))
+  vdeg_spec : ∀ v, (vdeg v : ℕ) = ((vEquiv v).1.1 : ℕ) * ((vEquiv v).1.2 : ℕ)
+    -- degree THROUGH the pin — vdeg cannot be gamed; with sig_exact this forces
+    -- Sigmas = the note's full roster at every n (n = 3: exactly the five)
   Out    : ∀ e, State e → Type
   finO   : ∀ e τ, Fintype (Out e τ)
   odata  : ∀ e τ, Out e τ → Outcome VType State
@@ -434,6 +476,8 @@ abbrev RatBurdens.TG (RB) e τ o : Qq := (RB.tgP e τ o).val
 abbrev RatBurdens.J  (RB) e τ o : Qq := (RB.jP e τ o).val
 noncomputable def RatBurdens.ι (RB) e : T.State e → Qq := fun τ => ∑ ε, (RB.ιP e τ ε).val
 
+def splitOuts (T : TableShape n) (e : ℕ) (τ : T.State e) : Finset (T.Out e τ) :=
+  {o | routeOf (T.odata e τ o) = .split}.toFinset      -- (Fable#3-G1(iii): declared)
 def kTarget (T) e τ (o : T.Out e τ) (hk : routeOf (T.odata e τ o) = .kcol)
     (hK : ∀ μ ∈ (T.odata e τ o).mem, μ.size = e) : T.State e := sorry   -- U-16a region
 def Kmat (T) (RB : RatBurdens T M) (e : ℕ)
@@ -478,6 +522,14 @@ def AVAgree (P : PoolHyp T M RB e hK q₀) (v : Qq) (bA : P.Act → ℝ) (τ : P
 *(`consumedDeltas`/`RegP` are declared in §2.D AFTER `ShapeFam` — declaration order.)*
 
 ### 2.D (BDY), shapes, RS.1/RS.4 interfaces (R2-9/10/11/17/19 repaired)
+
+**FILE PLACEMENT (R25, Fable#3-G1):** `MuHat`/`ReadOwner`/`Shape`/`ShapeFam`/
+`consumedDeltas`/`RegP` below live in `Defs.lean`; **`RS1Bundle`, `RS4Chain`,
+`ReadOffBundle`, and all of §2.E live in `MovesS/Interfaces.lean`**, which imports
+the S2/S4 definition units (BSplitDef, EvalReDef — incl. `bhatMeas` —
+ConsumedDeltas, BlockSolve, BlockSolveTot, RshDef, MarkedDef), so `evalRe`/`Rsh`/
+`markedPairing`/`bhatMeas` are in scope where the interface fields cite them.
+Cross-file declaration order = the import DAG; phase E elaborates as written.
 
 ```lean
 structure MuHat where val : Qq                    -- the μ̂ fence (no Add, no coercion)
@@ -540,10 +592,18 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
   hns : B.nsNull                                   -- (ns-null)'s proof demanded HERE
   pools_e0 : ∀ e ∈ Finset.Icc 1 n, ∀ q₀ ∈ allActivePools M,
     Nonempty (PoolHyp T M RB e (hK e) q₀)          -- the all-active face (feeds U-22)
+  PrimePools : Set ℚ                               -- (declared BEFORE legs_reg — R25)
+  prime_sub : PrimePools ⊆ M.Pools
+  prime_base : ∀ q₀, q₀ ∈ PrimePools ↔ ∃ p : ℕ, p.Prime ∧ q₀ = (p : ℚ)
+    -- DOMAIN PIN, BOTH DIRECTIONS (R21, Codex#2-2): PrimePools = ALL base primes,
+    -- not an infinite selection — X.3/RS.1/E0's base instance fire at EVERY prime
+    -- ("at each prime p the decided-mass series totals 1"); with prime_sub this
+    -- also forces every base prime into Pools. Infinitude now DERIVABLE
+    -- (`Nat.exists_infinite_primes`) — prime_infinite demoted to a lemma.
   legs_reg : ∀ p, (p:ℚ) ∈ PrimePools → RegP T M RB p hK F
-    -- CL-1's FULL per-pool quantifier (Fable C1): E0/ACT packages at δ = 1 AND every
-    -- consumed base-change leg pool p^δ — wild pools included; their READ-OFF is
-    -- still gated per object by AVAgree (W-6), never asserted wholesale
+    -- CL-1's FULL per-pool quantifier at EVERY base prime (R21): E0/ACT packages at
+    -- δ = 1 AND every consumed base-change leg pool p^δ — wild pools included;
+    -- their READ-OFF stays gated per object by AVAgree (W-6)
   Sigmas : Finset (Multiset T.VType)               -- the splitting types of degree n
   sig_exact : ∀ σ, σ ∈ Sigmas ↔ (σ.map fun v => ((T.vdeg v : ℕ))).sum = n
     -- EXACTNESS PIN (R18, Codex-1/2): Sigmas IS the full degree-n verdict-type
@@ -558,25 +618,33 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
     (evalAt q₀ ⟨(WshP Ŝ).val, wsh_ok Ŝ ‹_› q₀ h⟩ : ℝ) = WshVal Ŝ q₀
   Rval : Multiset T.VType → ℚ → ℝ                  -- measured densities (owner [3t])
   r_bdd : ∀ σ q₀, q₀ ∈ M.Pools → Rval σ q₀ ∈ Set.Icc (0:ℝ) 1
-  PrimePools : Set ℚ
-  prime_sub : PrimePools ⊆ M.Pools
-  prime_base : ∀ q₀ ∈ PrimePools, ∃ p : ℕ, p.Prime ∧ q₀ = (p : ℚ)
-    -- DOMAIN PIN (R18, Codex-3): BASE primes, δ = 1 — the note's per-prime density
-    -- route ("at each prime p the decided-mass series totals 1"); x3_total/
-    -- rs1_equates/rsh_interp below quantify over exactly this pinned domain
-  prime_infinite : PrimePools.Infinite
+  -- (PrimePools/prime_sub/prime_base are declared ABOVE, before legs_reg — R25;
+  --  the REV-5 duplicate block here is REMOVED, prime_infinite now a lemma — R21)
   decidedTotal : ℚ → ℝ                             -- the decided-mass series total
   x3_total : ∀ p ∈ PrimePools, decidedTotal p = 1  -- X.3's density form — CL-4, OPEN,
                                                    -- owner [5]; pinned as W-4
   rs1_equates : ∀ p ∈ PrimePools, (∑ σ ∈ Sigmas, Rval σ p) = decidedTotal p
     -- "RS.1 equates that series with Σ_σ R_σ(p)" — provenance the PINNED W-1e
     -- (RS.1-SH + ONE-F + W-10 convergence), a deferral, never proved here
-  rsh_interp : ∀ σ ∈ Sigmas, ∀ p ∈ PrimePools, ∀ hdet,
+  rsh_interp : ∀ σ ∈ Sigmas, ∀ p ∈ PrimePools,
+    ∀ hdet : (∀ e (he : e ∈ Finset.Icc 1 n), (1 - Kmat T RB e (hK e he)).det ≠ 0),
     ∃ hok : Rsh T M RB hdc hK hdet F WshP σ ∈ OKat p,
-      (evalAt p ⟨_, hok⟩ : ℝ) = Rval σ p
-    -- the measured densities are the evaluations of THE symbolic Rsh (U-18's one
-    -- fixed rational function) — the evaluated shadow of the PINNED W-1; U-28's
-    -- symbolic target is Σ_σ Rsh, never a free R field
+      ((evalAt p ⟨_, hok⟩ : ℚ) : ℝ) = Rval σ p
+    -- (hdet binder TYPED — Fable#3-G1(iii)) the measured densities are the
+    -- evaluations of THE symbolic Rsh (U-18's one fixed rational function) — the
+    -- evaluated shadow of the PINNED W-1; U-28's target is Σ_σ Rsh, never a free R
+
+/-- R23 (Codex#2-4): the read-off bundle U-24b consumes — coordinate coverage as
+    TYPED DATA. Lives in `Interfaces.lean` (R25; blockSolve/bhatMeas in scope). -/
+structure ReadOffBundle (S : Set ℚ) (hS : S ⊆ allActivePools M)
+    (B : RS1Bundle T M RB hdc hK) (hdet) where
+  pkg : ∀ q₀ ∈ S, ∀ e ∈ Finset.Icc 1 n, PoolHyp T M RB e (hK e ‹_›) q₀
+  read : ∀ q₀ (hq : q₀ ∈ S), ∀ e (he : e ∈ Finset.Icc 1 n),
+    ∀ τA : (pkg q₀ hq e he).Act, ∀ σ' : Multiset T.VType, ∀ h_ent,
+    AVAgree (pkg q₀ hq e he) (blockSolve T RB hdc hK hdet e he τA σ')
+      (bhatMeas (pkg q₀ hq e he) B σ' h_ent) τA
+  -- EVERY e ∈ Icc 1 n, EVERY τA : Act (= every τ — the pools are all-active),
+  -- EVERY σ', every h_ent: total coordinate coverage, auditable from the type.
 ```
 
 *(R : the symbolic R_σ is NOT a field — RS.2 for R_σ is DERIVED: `Rsh` (U-18) is the
@@ -650,7 +718,7 @@ every §2 structure by the REAL CTS objects) is a wave-4 PROCESS gate (§5), not
 
 ---
 
-## 3. The unit DAG — REV 5: 50 units (20 easy / 30 medium / 0 hard)
+## 3. The unit DAG — REV 6: 54 units (21 easy / 33 medium / 0 hard)
 
 ### Layer S0 — dispatch, (SCS), (BDY) [9]
 
@@ -719,7 +787,9 @@ at every ALL-ACTIVE pool (activity supplied by the locus) + U-27 infinitude on
 added (Fable2-G3).**
 `statement`: `theorem ksub_pool (he : e ∈ Finset.Icc 1 n) (L : LedgerIV T M)`
 `(P : PoolHyp T M RB e hK q₀) (τA : P.Act) :`
-`(∀ βA : P.Act, 0 ≤ P.A τA βA) ∧ (∑ βA : P.Act, P.A τA βA) ≤ 1`
+`(∀ βA : P.Act, 0 ≤ Aℝ P τA βA) ∧ (∑ βA : P.Act, Aℝ P τA βA) ≤ 1`
+— stated over `Aℝ` per D11 (R22, Codex#2-3): the proof's chain (rowVal/μcell/interp)
+is ℝ-native; the ℚ facts transfer through the one coercion point, nowhere else.
 moves_ref: "K_e's rows are genuine sub-distributions … every summand ≥ 0 (the
 ns-bound tail rides INSIDE the K_e term)". deps: U-9a, U-19 · hyp: LedgerIV +
 RatBurdens ONLY — the routed nonnegativity is DERIVED: for non-split o,
@@ -760,11 +830,13 @@ leaf convention" (S.0): a halted leg forces its σ_j to the verdict SINGLETON
 Σ_{o branching} J_{τ,o}(q) · Σ_{σ′ = σ₁ ⊎ … ⊎ σ_m} ∏_{j=1}^m β_{e_j,τ_j(o)}(σ_j)(q^{δ_j})
 [… the product ranges over ALL branch members]". deps: U-1, U-2, U-11, U-12.
 
-**U-16a2 `evalRe_def` · EvalReDef.lean · medium — split (G3).** Defines `evalRe`, the
-per-pool EVALUATED right side of (R_e-lump) that `recursion_meas` cites: eval-K-row ·
-β̂ + eval-bTerm + the evaluated split summand with MEASURED legs β̂ at q₀^(δ:ℕ)
-(well-typed by `pools_closed`; halted legs the same indicator as U-16a1). deps:
-U-16a1, U-19.
+**U-16a2 `evalRe_def` · EvalReDef.lean · medium — split (G3); also declares
+`bhatMeas` (R25).** Defines `evalRe`, the per-pool EVALUATED right side of
+(R_e-lump) that `recursion_meas` cites: eval-K-row · β̂ + eval-bTerm + the evaluated
+split summand with MEASURED legs β̂ at q₀^(δ:ℕ) (well-typed by `pools_closed`;
+halted legs the same indicator as U-16a1) — AND `bhatMeas P B σ' h_ent : P.Act → ℝ`,
+its Act-restricted exit-vector face (consumed by U-24a1/a2 and `ReadOffBundle`).
+deps: U-16a1, U-19.
 
 **U-16a3 `consumedDeltas_def` · ConsumedDeltas.lean · medium — REWRITTEN (R17,
 Codex-5; the REV-4 "stays inside the roster" claim is PURGED).** Defines
@@ -875,10 +947,13 @@ primes (R16(ii), Codex-4).** `statement`: GIVEN an INFINITE pool set
 `S ⊆ allActivePools M` with, at every q₀ ∈ S, a package P and the AVAgree read-off
 for every (e, τA, σ') consumed (the explicit `hread` bundle): any family f that is
 OK on S and interpolates βmeas there equals `blockSolve …` — "every β_{e,τ}(σ′) is
-ONE FIXED rational function" (RS.2's fixedness). COORDINATE COVERAGE: at an
-all-active pool EVERY (e, τ) is active (`allActivePools`' definition quantifies
-∀ e ∀ τ), so each coordinate's identification set is ALL of S — no coordinate is
-identified outside its activity locus, and none is skipped. This is the note's own
+ONE FIXED rational function" (RS.2's fixedness). The bundle is TYPED DATA (R23,
+Codex#2-4): `hread : ReadOffBundle S hS B hdet` (§2.D) — packages at every q₀ ∈ S
+and e ∈ Icc 1 n, AVAgree at every (e, τA : Act, σ', h_ent). COORDINATE COVERAGE: at
+an all-active pool EVERY (e, τ) is active (`allActivePools` quantifies ∀ e ∀ τ), so
+each coordinate's identification set is ALL of S — no coordinate is identified
+outside its activity locus, and none is skipped; coverage is auditable from
+`ReadOffBundle`'s type. This is the note's own
 locus, quoted: "at all-active primes (cofinitely many — only finitely many primes
 are roots of some not-identically-zero cell-size polynomial)" (S.4(ii)); RS.2's
 assertion "every β_{e,τ}(σ′) is one fixed rational function" is claimed exactly
@@ -912,7 +987,7 @@ eval(Σ Rsh − 1) at p ∈ PrimePools = Σ Rval − decidedTotal = 0 (rsh_inter
 rs1_equates, x3_total); prime_infinite + U-27. The docstring lists every tag: the
 acceptance fence "may NOT be marked unconditional before those close" verbatim.
 
-### Layer S5 — the schema-consistency gate, SPLIT per Codex-8 [5]
+### Layer S5 — the schema-consistency gate, SPLIT per Codex-8 + Codex#2-5/6 [9]
 
 The n = 2 gate (R11's honest claim: SCHEMA CONSISTENCY with the note's displayed 1×1
 shadow — NOT intended-instance inhabitation, which is the §5 W-11 process gate).
@@ -925,18 +1000,37 @@ verdict vocabulary with vdeg), `MeasuredSide` (level-N residue boxes; synthetic
 nontrivial cell events; pools = all prime powers), `RatBurdens` data (the W6 kernel
 entry in PolyGeom form), `SCSData`/`ShapeFam` data. deps: Defs.
 
-**U-29b `n2_ledger` · N2Ledger.lean · medium.** Proves the LAWS: `LedgerIV` (guarded
-fields fire on the synthetic events; part1 by finite card arithmetic), `DegCons`,
-the SCSData laws. deps: U-29a.
+**U-29b1 `n2_ledger_counting` · N2LedgerCount.lean · medium — split (Codex#2-5).**
+LedgerIV items (1)–(5) at the n = 2 instance: xhd (sum + two-sided exactness),
+d4r0, part1, rep_indep, meas_card — finite card arithmetic on the synthetic events.
+deps: U-29a.
+
+**U-29b2 `n2_ledger_flow` · N2LedgerFlow.lean · medium — split.** LedgerIV items
+(6)–(9): kstep_one/hmc (1×1: scalar powers), act_target, init_agg/init_count/
+ent_count_card, comp_once. deps: U-29a.
+
+**U-29b3 `n2_degcons_scs` · N2DegScs.lean · easy — split.** `DegCons` + the SCSData
+laws for the one-outcome roster (omega-level window arithmetic). deps: U-29a.
 
 **U-29c `n2_pool` · N2Pool.lean · easy.** `PoolHyp` at q₀ = 2 with the 1×1
 `EscapeE0`: the single active entry is < 1, so `A^k *ᵥ 1 → 0` by geometric decay
 (`tendsto_pow_atTop_nhds_zero_of_lt_one`). deps: U-29a.
 
-**U-29d `n2_bundles` · N2Bundles.lean · medium.** `RS1Bundle` (βmeas := the
-evaluated solve, so `recursion_meas`/`xrb`/`β_bdd` hold by construction — activity
-guard trivial: all-active) and `RS4Chain` (Sigmas = the degree-2 roster via
-sig_exact; decidedTotal := Σ Rval; PrimePools = the base primes). deps: U-29a/b/c.
+**U-29d1 `n2_rs1bundle` · N2Rs1.lean · medium — split (Codex#2-6).** `RS1Bundle`:
+βmeas := the evaluated solve (so `recursion_meas`/`xrb`/`β_bdd`/`βfull`/`rexact`
+hold by construction; activity guard trivially satisfied — all-active instance).
+deps: U-29a, U-29b1/b2, U-29c.
+
+**U-29d2 `n2_pools_all` · N2Pools.lean · medium — split.** The pool obligations at
+EVERY base prime (R21's domain): `legs_reg`/`pools_e0` for the n = 2 instance — 1×1
+packages per pool, E0 from the entry < 1 uniformly in q₀ ≥ 2 (geometric decay per
+pool; consumedDeltas here = {1}: the n = 2 roster has no multi-member split legs,
+shapes contribute δ = 1). deps: U-29a, U-29c pattern.
+
+**U-29d3 `n2_rs4chain` · N2Rs4.lean · medium — split.** `RS4Chain` assembly: Sigmas
+= the degree-2 roster forced by sig_exact + vEquiv; PrimePools = all base primes
+(prime_base iff); decidedTotal := Σ Rval with x3_total/rs1_equates/rsh_interp at
+the constructed values. deps: U-29d1, U-29d2.
 
 **U-29e `n2_denominator` · N2Denom.lean · easy — the W6 CHECK.** The gate's one
 display: `(1 - Kmat …).det ≠ 0` and the solve's denominator is `q² + q + 1` up to
@@ -975,13 +1069,17 @@ ranges over finitely many sub-multisets.
 moves_ref: "composed with q ↦ q^{δ_j} … ([2r] (e2), δ absolute)" · sketch:
 `IsFractionRing.lift` over `aeval (X^(δ:ℕ))`; δ ≥ 1 ⟹ nonzero ↦ nonzero.
 
-**U-13** `theorem solve_iff [Fintype ι] (K : Matrix ι ι Qq) (b β) :
+**U-13** — GENERIC CARRIER (R22, Codex#2-3/Fable#3-G2): `theorem solve_iff
+[Fintype ι] [CommRing R] (K : Matrix ι ι R) (b β : ι → R) :
 β = K *ᵥ β + b ↔ (1 - K) *ᵥ β = b` · sketch: sub_mulVec/one_mulVec; sub_eq_iff.
+Instances at Qq (U-14/16b) AND at ℝ via `Aℝ` (U-24a1).
 
-**U-14** `theorem solve_exists_unique [Fintype ι] [DecidableEq ι] (hdet :
+**U-14** — GENERIC CARRIER (R22): `theorem solve_exists_unique [Fintype ι]
+[DecidableEq ι] [Field F] (K : Matrix ι ι F) (b : ι → F) (hdet :
 (1 - K).det ≠ 0) : ∃! β, β = K *ᵥ β + b` (witness `(1-K)⁻¹ *ᵥ b`) · Mathlib:
 `isUnit_iff_ne_zero` + `Matrix.isUnit_iff_isUnit_det` + `mul_nonsing_inv`/
-`nonsing_inv_mul` + `mulVec_mulVec`.
+`nonsing_inv_mul` + `mulVec_mulVec`. F := Qq at the solve; F := ℝ at U-24a1
+(det transported by `Aℝ_det_iff`).
 
 **U-15** `theorem solve_cramer (hdet) : (1 - K)⁻¹ *ᵥ b = fun τ => ((1 - K).det)⁻¹ *
 ((1 - K).adjugate *ᵥ b) τ` · moves_ref: "β_e = adj(I − K_e) b_e / det(I − K_e)
@@ -1042,6 +1140,7 @@ powers is identically 1" (consumers apply to f − 1) · sketch: num vanishes on
 U-1 → {U-3, U-6, U-8, U-16a1} · U-2 → {U-3, U-16a1} · U-4 → U-5 → U-6 · U-6 ⟹ `hK`
 for {U-8, U-16b/c, U-22, U-24a1/a2/b, U-25, U-29} · U-8 → U-9a → {U-9b, U-10} ·
 U-11, U-12 → {U-16a1, U-18} · U-12, U-19 → U-12b → {U-24a2 plumbing, W-1 hok} ·
+U-12 → U-12c → U-16a3 (the DELTA-ABS composition — Fable#3 O-2) ·
 U-13 → U-14 → {U-15, U-16b/c, U-24a1} · U-16a1 → U-16a2 → U-24a1; U-16a1 → U-16b →
 {U-17a, U-18, U-29}; U-16a3 → RegP · U-16c → U-25 · U-19 → {U-9a, U-10, U-20, U-22,
 U-16a2} · U-23b → U-21b; U-21a, U-21b → U-21c → {U-22, U-23d, U-24a1} · U-23a/b/c →
@@ -1093,13 +1192,12 @@ with real semantics, MovesV/MovesT must exhibit instances of every §2 structure
 the real CTS objects and discharge W-1/W-1e/W-1m/W-2/W-3/W-4/W-7/W-8/W-10; the
 campaign ledger tracks this per structure.
 
-**Census (REV 5): 50 units = 20 easy / 30 medium / 0 hard** (S0:9 · S1:4 · S2:16 ·
-S3:10 · S4:6 · S5:5). Easy {U-1, U-2, U-3, U-5, U-7a, U-7b, U-7c, U-12b, U-12c,
-U-13, U-18b, U-20, U-21a, U-23a, U-23b, U-23c, U-24a2, U-25, U-29c, U-29e}; medium
-the remaining 30 (U-16a3 promoted to medium — it now carries the `nested_delta_mem`
-closure lemma). NO hard units: the REV-3 hard dissolved under R14 — its difficulty
-was the unhypothesized per-pool (ii-c)/E0 burden, which the note keeps as open
-per-pool hypotheses and U-24a1/a2/24b now consume as such.
+**Census (REV 6): 54 units = 21 easy / 33 medium / 0 hard** (S0:9 · S1:4 · S2:16 ·
+S3:10 · S4:6 · S5:9). Easy {U-1, U-2, U-3, U-5, U-7a, U-7b, U-7c, U-12b, U-12c,
+U-13, U-18b, U-20, U-21a, U-23a, U-23b, U-23c, U-24a2, U-25, U-29b3, U-29c, U-29e};
+medium the remaining 33. NO hard units: the REV-3 hard dissolved under R14 — its
+difficulty was the unhypothesized per-pool (ii-c)/E0 burden, which the note keeps
+as open per-pool hypotheses and U-24a1/a2/24b consume as such.
 
 ---
 
@@ -1164,6 +1262,21 @@ residuals found by the re-audit are below.
 | Fable2-G3 | gap | U-10 gains `he : e ∈ Finset.Icc 1 n` | U-10 |
 | Fable2-G4 | gap | layer headcounts corrected (S2 [16], S4 [6], new S5 [5]); census re-enumerated | §3 |
 
-STATUS: REV 5 complete, 2026-07-27. Cumulative: R1 Codex 22/22 → R2 Codex 20/20 →
-R3 Fable 6/6 → R4 dual-parallel 11/11 repaired; nothing pushed back, no STUCK. 50
-units = 20 easy / 30 medium / 0 hard. Awaits the parallel dual confirmation on REV 5.
+**Parallel rev-5 verdicts — Codex#2 (2 crit / 4 gap) + Fable#3 (0 crit / 2 gap;
+DELTA-ABS/guards/U-24a1/U-24b/Aℝ directly verified) → REV 6:**
+
+| finding | class | REV-6 repair | where |
+|---|---|---|---|
+| Codex#2-1 | crit | `vEquiv : VType ≃ {(e,f) // e·f ≤ n}` + `vdeg_spec` — the verdict vocabulary pinned STRUCTURALLY (one label per pair, none extra/missing); with sig_exact, Sigmas = the note's roster at every instance | R20, §2.A |
+| Codex#2-2 | crit | `prime_base` an IFF: PrimePools = ALL base primes; `prime_infinite` demoted to a lemma (`Nat.exists_infinite_primes`); x3_total/rs1_equates/rsh_interp/legs_reg re-domained to every prime | R21, §2.D |
+| Codex#2-3 (+Fable#3-G2) | gap+gap | U-13 over `[CommRing R]`, U-14 over `[Field F]` (ℝ instances exist at U-24a1's seam); U-10's conclusion over `Aℝ P`; D11 prose corrected (O-3) | R22, §3c, U-10 |
+| Codex#2-4 | gap | `ReadOffBundle` — hread as TYPED DATA: packages ∀ q₀ ∈ S, ∀ e ∈ Icc 1 n; AVAgree ∀ (e, τA, σ', h_ent); U-24b consumes it | R23, §2.D, U-24b |
+| Codex#2-5 | gap | U-29b → U-29b1 (ledger counting laws) / b2 (flow laws) / b3 (DegCons+SCS) | R24, §3 S5 |
+| Codex#2-6 | gap | U-29d → U-29d1 (RS1Bundle) / d2 (all-prime pool obligations) / d3 (RS4Chain assembly) | R24, §3 S5 |
+| Fable#3-G1 | gap | elaboration order made real: `Interfaces.lean` placement (import DAG = declaration order); legs_reg after PrimePools; `splitOuts` declared; `bhatMeas` in U-16a2; `rsh_interp`'s hdet typed | R25, §2.C/D |
+| Fable#3 O-2/O-3/O-4 | obs | U-12c edge added to §3b; D11 prose fixed; header now directs citation to the acceptance record, never the note's stale in-body trailer | §3b, D11, header |
+
+STATUS: REV 6 complete, 2026-07-27. Cumulative: R1 Codex 22/22 → R2 Codex 20/20 →
+R3 Fable 6/6 → R4 dual 11/11 → R5 dual 8/8 repaired (2 crit / 6 gap + 2 obs);
+nothing pushed back, no STUCK. 54 units = 21 easy / 33 medium / 0 hard. Awaits the
+parallel dual confirmation on REV 6.
