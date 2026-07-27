@@ -11,6 +11,7 @@ hypothesis_fields: verdict pinning (WHERE the halt verdict sits — parent read 
 level-0 track) is VP's, NOT stated; only the word arithmetic is.
 -/
 import LeanUrat.MovesSp.Defs
+import LeanUrat.MovesSp.SP0_memCoherent
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -21,6 +22,24 @@ namespace LeanUrat.MovesSp
 theorem tauWord_spec {n : ℕ} (cw : CatalogueWord n) :
     cw.tauWord.length + 1 = cw.word.length ∧
     (∀ s, cw.word.getLast? = some s → s.W = 1 ∧ s.sel = none) ∧
-    (∀ s ∈ cw.tauWord, s.W ≠ 1 ∧ s.sel ≠ none) := sorry
+    (∀ s ∈ cw.tauWord, s.W ≠ 1 ∧ s.sel ≠ none) := by
+  refine ⟨?_, ?_, ?_⟩
+  · -- length arithmetic: tauWord = dropLast, word ≠ [] (hne)
+    have hpos : 0 < cw.word.length := List.length_pos_of_ne_nil cw.hne
+    unfold CatalogueWord.tauWord
+    rw [List.length_dropLast]
+    omega
+  · -- last letter: W = 1 by hLast; sel = none by (G6) through memCoherent
+    intro s hs
+    have hW : s.W = 1 := cw.hLast s hs
+    have hmem : s ∈ cw.word := List.mem_of_getLast? hs
+    have hco := (InCatalogue.coherent_budget (cw.hMem s hmem)).1
+    exact ⟨hW, hco.2.2.2.2.2.mpr hW⟩
+  · -- τ-word letters: W ≠ 1 by hFirstW1; sel ≠ none by (G6) through memCoherent
+    intro s hs
+    have hne1 : s.W ≠ 1 := cw.hFirstW1 s hs
+    have hmem : s ∈ cw.word := (List.dropLast_sublist cw.word).subset hs
+    have hco := (InCatalogue.coherent_budget (cw.hMem s hmem)).1
+    exact ⟨hne1, fun hsel => hne1 (hco.2.2.2.2.2.mp hsel)⟩
 
 end LeanUrat.MovesSp

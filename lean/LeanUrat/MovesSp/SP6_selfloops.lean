@@ -16,6 +16,6 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem loops3 : catalogue3.filter (fun s => succStepB 3 s s) =
-    [loopQ3, loopQ23] := sorry
+    [loopQ3, loopQ23] := by rfl
 
 end LeanUrat.MovesSp

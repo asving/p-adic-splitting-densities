@@ -15,6 +15,8 @@ namespace LeanUrat.MovesSp
 
 theorem anchor_bound_geo {n} {s : Species} (hc : Coherent s)
     (hb : Budget n s) (σ ageo : ℤ) (hshift : (s.a : ℤ) = ageo + σ) :
-    -σ ≤ ageo ∧ ageo ≤ ((s.W - s.wraw) / s.e : ℕ) - σ := sorry
+    -σ ≤ ageo ∧ ageo ≤ ((s.W - s.wraw) / s.e : ℕ) - σ := by
+  have hbound : s.a ≤ (s.W - s.wraw) / s.e := hb.2.2.2.2.2.2.2.2.2.2.2
+  omega
 
 end LeanUrat.MovesSp

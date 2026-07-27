@@ -12,6 +12,7 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem sh_e1 (h s t γ s0 : ℤ) (ht : t = 0) :
-    shSigma t γ 1 = 0 ∧ Sh t γ 1 (geoPos 1 t γ s0) = s0 := sorry
+    shSigma t γ 1 = 0 ∧ Sh t γ 1 (geoPos 1 t γ s0) = s0 := by
+  simp [shSigma, Sh, geoPos, Int.fdiv_one, ht]
 
 end LeanUrat.MovesSp

@@ -11,6 +11,8 @@ set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesSp
 
-theorem code_card (n : ℕ) : Nat.card (Code n) = (n+2)^(n^2 + 3*n + 12) := sorry
+theorem code_card (n : ℕ) : Nat.card (Code n) = (n+2)^(n^2 + 3*n + 12) := by
+  change Nat.card (Fin (n ^ 2 + 3 * n + 12) → Fin (n + 2)) = _
+  rw [Nat.card_eq_fintype_card, Fintype.card_fun, Fintype.card_fin, Fintype.card_fin]
 
 end LeanUrat.MovesSp

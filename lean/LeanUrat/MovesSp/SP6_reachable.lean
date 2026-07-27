@@ -14,6 +14,6 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem reachable3 : (catalogue3.all fun s' => rootAdmissibleB 3 s' ||
-    groupR.any fun s => succStepB 3 s s') = true := sorry
+    groupR.any fun s => succStepB 3 s s') = true := by decide
 
 end LeanUrat.MovesSp

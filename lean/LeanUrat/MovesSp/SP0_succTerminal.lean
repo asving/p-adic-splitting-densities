@@ -16,9 +16,15 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem succ_terminal (n : ℕ) (s : Species)
-    (hs : InCatalogue n s) (h : s.sel = none) : Succ n s = ∅ := sorry
+    (hs : InCatalogue n s) (h : s.sel = none) : Succ n s = ∅ := by
+  ext s'
+  simp only [Succ, Set.mem_setOf_eq, Set.mem_empty_iff_false, iff_false]
+  rintro ⟨_, hSL, _, _⟩
+  simp only [StageLaws, h] at hSL
 
 theorem stageLaws_terminal (s s' : Species) (h : s.sel = none) :
-    ¬ StageLaws s s' := sorry
+    ¬ StageLaws s s' := by
+  intro hSL
+  simp only [StageLaws, h] at hSL
 
 end LeanUrat.MovesSp

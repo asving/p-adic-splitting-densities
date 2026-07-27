@@ -15,6 +15,9 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem n1_root_confirming {s : Species} (h : RootAdmissible 1 s) :
-    s.W = 1 ∧ s.sel = none := sorry
+    s.W = 1 ∧ s.sel = none := by
+  obtain ⟨hRoot, hCoh, _⟩ := h
+  have hW : s.W = 1 := hRoot.2.2.2
+  exact ⟨hW, hCoh.2.2.2.2.2.mpr hW⟩
 
 end LeanUrat.MovesSp

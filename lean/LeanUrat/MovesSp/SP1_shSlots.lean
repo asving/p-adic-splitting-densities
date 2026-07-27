@@ -16,11 +16,21 @@ namespace LeanUrat.MovesSp
 
 theorem sh_slots (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e)
     (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) (k : ℤ) :
-    Sh t γ e (geoPos e t γ (s0 + k * e)) = s0.fdiv e + k := sorry
+    Sh t γ e (geoPos e t γ (s0 + k * e)) = s0.fdiv e + k := by
+  have he0 : e ≠ 0 := by omega
+  -- (SH-G): the geometric-slot numerator is an exact multiple of e (= Sp.shDvd).
+  have hdvd : e ∣ (s0 + k * e - t * γ) :=
+    ⟨s0 * s - t * u0 + k, by linear_combination (-s0) * hbez + (-t) * hγ⟩
+  simp only [Sh, geoPos, shSigma]
+  -- fdiv-additivity: e ∣ first summand ⇒ split fuses into one fdiv.
+  rw [← Int.add_fdiv_of_dvd_left hdvd]
+  have harg : s0 + k * e - t * γ + t * γ = s0 + k * e := by ring
+  rw [harg, Int.add_mul_fdiv_right s0 k he0]
 
 /-- = sh_slots at k = 0. -/
 theorem sh_anchor (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e)
     (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) :
-    Sh t γ e (geoPos e t γ s0) = s0.fdiv e := sorry
+    Sh t γ e (geoPos e t γ s0) = s0.fdiv e := by
+  simpa using sh_slots e h s t γ u0 s0 he hbez hγ 0
 
 end LeanUrat.MovesSp

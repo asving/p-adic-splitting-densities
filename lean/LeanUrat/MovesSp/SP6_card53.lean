@@ -10,10 +10,12 @@ set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesSp
 
-theorem catalogue3_card : catalogue3.length = 53 ∧ catalogue3.Nodup := sorry
+theorem catalogue3_card : catalogue3.length = 53 ∧ catalogue3.Nodup :=
+  ⟨rfl, by decide⟩
 
 theorem groups_card : groupR.length = 21
     ∧ groupQ3.length = 21 ∧ groupQ2.length = 6 ∧ groupQ1.length = 1
-    ∧ groupI.length = 4 := sorry
+    ∧ groupI.length = 4 :=
+  ⟨rfl, rfl, rfl, rfl, rfl⟩
 
 end LeanUrat.MovesSp

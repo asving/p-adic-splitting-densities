@@ -18,6 +18,6 @@ theorem R3_members : coherentB R3letterA = true ∧
     budgetB 3 R3letterA = true ∧ R3letterA ∈ groupR ∧ R3letterA.a = 2 ∧
     R3letterA.lflank = [2] ∧ coherentB R3letterB = true ∧
     budgetB 3 R3letterB = true ∧ R3letterB ∈ groupR ∧ R3letterB.a = 2 ∧
-    R3letterB.lflank = [1, 1] := sorry
+    R3letterB.lflank = [1, 1] := by decide
 
 end LeanUrat.MovesSp

@@ -13,6 +13,9 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem InCatalogue.coherent_budget {n s} (h : InCatalogue n s) :
-    Coherent s ∧ Budget n s := sorry
+    Coherent s ∧ Budget n s := by
+  cases h with
+  | root ha => exact ha.2
+  | step _ hstep => exact hstep.2
 
 end LeanUrat.MovesSp

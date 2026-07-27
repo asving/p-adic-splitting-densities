@@ -13,6 +13,15 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem collapseRuns_sublist (l : List Species) :
-    (collapseRuns l).Sublist l := sorry
+    (collapseRuns l).Sublist l := by
+  induction l using collapseRuns.induct with
+  | case1 => simp [collapseRuns]
+  | case2 s => simp [collapseRuns]
+  | case3 s' rest ih =>
+      simp only [collapseRuns]
+      exact ih.cons s'
+  | case4 s s' rest h ih =>
+      simp only [collapseRuns, if_neg h]
+      exact ih.cons_cons s
 
 end LeanUrat.MovesSp

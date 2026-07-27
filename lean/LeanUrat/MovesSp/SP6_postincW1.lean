@@ -13,6 +13,6 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem postInc3_W1 : (catalogue3.all fun s => !(s.tag == .postInc)
-    || (s.W == 1)) = true := sorry
+    || (s.W == 1)) = true := by decide
 
 end LeanUrat.MovesSp

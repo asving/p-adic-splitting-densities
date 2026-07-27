@@ -16,6 +16,9 @@ namespace LeanUrat.MovesSp
 
 theorem hasAnchorK_T_mul {K : Type*} [Field K] (x : LaurentPolynomial K)
     (a σ : ℤ) (R : Polynomial K) (h : Moves.HasAnchorK x a R) :
-    Moves.HasAnchorK (LaurentPolynomial.T σ * x) (a + σ) R := sorry
+    Moves.HasAnchorK (LaurentPolynomial.T σ * x) (a + σ) R := by
+  obtain ⟨h0, hx⟩ := h
+  refine ⟨h0, ?_⟩
+  rw [hx, ← mul_assoc, ← LaurentPolynomial.T_add, add_comm σ a]
 
 end LeanUrat.MovesSp

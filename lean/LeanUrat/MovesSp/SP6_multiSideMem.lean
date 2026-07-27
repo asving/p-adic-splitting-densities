@@ -13,6 +13,6 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem multiSide6_mem : (multiSide6.all groupQ3.contains) = true
-    ∧ multiSide6.Nodup := sorry
+    ∧ multiSide6.Nodup := by decide
 
 end LeanUrat.MovesSp

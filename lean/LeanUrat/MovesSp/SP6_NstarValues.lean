@@ -17,6 +17,6 @@ namespace LeanUrat.MovesSp
 theorem nstar_values : Nstar3six msQ3R1 = some 7 ∧
     Nstar3six msQ3R2 = some 6 ∧ Nstar3six msQ3R3 = some 6 ∧
     Nstar3six msQ3R4a = some 6 ∧ Nstar3six msQ3R4b = some 6 ∧
-    Nstar3six msQ3R4c = some 6 := sorry
+    Nstar3six msQ3R4c = some 6 := by decide
 
 end LeanUrat.MovesSp

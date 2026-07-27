@@ -12,6 +12,10 @@ set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesSp
 
-theorem coherentB_iff (s : Species) : coherentB s = true ↔ Coherent s := sorry
+theorem coherentB_iff (s : Species) : coherentB s = true ↔ Coherent s := by
+  simp only [coherentB, Coherent, WellTyped, IsComposition, wellTypedB,
+    Bool.and_eq_true, decide_eq_true_eq, List.all_eq_true, beq_iff_eq]
+  cases hsel : s.sel <;>
+    simp_all <;> tauto
 
 end LeanUrat.MovesSp

@@ -18,6 +18,10 @@ namespace LeanUrat.MovesSp
 theorem terminal3 : catalogue3.filter (fun s => s.W == 1) =
     groupQ1 ++ groupI ∧ (catalogue3.all fun s => (s.W == 1) == (s.sel == none)) =
     true ∧ ((groupQ1 ++ groupI).all fun s => catalogue3.all fun s' =>
-    !(succStepB 3 s s')) = true := sorry
+    !(succStepB 3 s s')) = true := by
+  refine ⟨?_, ?_, ?_⟩
+  · decide
+  · decide
+  · decide
 
 end LeanUrat.MovesSp

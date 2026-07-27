@@ -29,6 +29,6 @@ theorem multiSide6_pinned : multiSide6 =
        [], [1]⟩,                                          -- Q3(R4) ▸(1,2)
      ⟨.postRec, 1, 1, 3, 1, 0, 2, 0, 3, Finset.Icc 0 2, {(1,1),(1,1)},
        some (1,1), [], [1]⟩]                              -- Q3(R4) ▸(1,1)
-    := sorry
+    := by rfl
 
 end LeanUrat.MovesSp

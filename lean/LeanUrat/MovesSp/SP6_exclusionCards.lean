@@ -13,6 +13,6 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem exclusion_cards : fieldSizeExcluded2.length = 11 ∧
-    fieldSizeExcluded3.length = 2 := sorry
+    fieldSizeExcluded3.length = 2 := ⟨rfl, rfl⟩
 
 end LeanUrat.MovesSp

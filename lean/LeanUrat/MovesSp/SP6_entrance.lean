@@ -48,6 +48,6 @@ theorem entrance3_patterns :
     -- …and each such row lives in R, Q2, or Q3 (never I, Q1: those are terminal)
     ((catalogue3.filter fun s => s.sel == some (2, 1) || s.sel == some (3, 1) ||
       ((s.e == 2 || s.e == 3) && !(s.sel == none))).all fun s =>
-      (groupR ++ groupQ2 ++ groupQ3).contains s) = true := sorry
+      (groupR ++ groupQ2 ++ groupQ3).contains s) = true := by decide
 
 end LeanUrat.MovesSp

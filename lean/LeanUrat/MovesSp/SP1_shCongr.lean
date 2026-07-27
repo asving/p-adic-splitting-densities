@@ -14,6 +14,10 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem sh_congr (e h s t γ u0 s0 : ℤ) (hbez : e * s + h * t = 1)
-    (hγ : γ = e * u0 + s0 * h) : t * γ ≡ s0 [ZMOD e] := sorry
+    (hγ : γ = e * u0 + s0 * h) : t * γ ≡ s0 [ZMOD e] := by
+  have hdvd : s0 - t * γ = e * (s * s0 - t * u0) := by
+    linear_combination (-t) * hγ + (-s0) * hbez
+  rw [Int.modEq_iff_dvd]
+  exact ⟨s * s0 - t * u0, hdvd⟩
 
 end LeanUrat.MovesSp

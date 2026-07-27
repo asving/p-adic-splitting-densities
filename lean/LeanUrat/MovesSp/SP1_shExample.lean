@@ -14,6 +14,6 @@ namespace LeanUrat.MovesSp
 
 theorem sh_example : geoPos 2 1 3 1 = -1 ∧ geoPos 2 1 3 3 = 0 ∧ shSigma 1 3 2 = 1
     ∧ Sh 1 3 2 (-1) = 0 ∧ Sh 1 3 2 0 = 1 ∧ shSigma (-1) 3 2 = -2 ∧
-    Sh (-1) 3 2 (geoPos 2 (-1) 3 1) = 0 := sorry
+    Sh (-1) 3 2 (geoPos 2 (-1) 3 1) = 0 := by decide
 
 end LeanUrat.MovesSp

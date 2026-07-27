@@ -15,6 +15,6 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesSp
 
 theorem nstar_domain : (catalogue3.all fun s =>
-    (Nstar3six s).isSome == multiSide6.contains s) = true := sorry
+    (Nstar3six s).isSome == multiSide6.contains s) = true := by decide
 
 end LeanUrat.MovesSp

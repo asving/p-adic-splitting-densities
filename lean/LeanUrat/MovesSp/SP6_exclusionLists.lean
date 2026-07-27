@@ -19,6 +19,7 @@ namespace LeanUrat.MovesSp
 
 theorem exclusion_lists_pinned :
     catalogue3.filter (fun s => decide (2 ≤ linCount s)) = fieldSizeExcluded2 ∧
-    catalogue3.filter (fun s => decide (3 ≤ linCount s)) = fieldSizeExcluded3 := sorry
+    catalogue3.filter (fun s => decide (3 ≤ linCount s)) = fieldSizeExcluded3 := by
+  decide
 
 end LeanUrat.MovesSp
