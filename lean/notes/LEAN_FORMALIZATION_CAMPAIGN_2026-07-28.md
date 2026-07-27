@@ -114,8 +114,20 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
     counts, ValExt/Krasner archaeology, a0-translation covering), S's 3 hard
     (blockSolve WF-recursion, e0 determinant/inverse), D's 2 (chart uniqueness,
     D13 double count), Sp's 4 medium-hard (each with pre-approved splits).
-  Wave 2 audits: ALL SIX LAUNCHED (consolidated single-pass; D and S runners
-    needed the foreground-wait resume — the known parking failure mode).
+  Wave 2 audits, ROUND 1 COMPLETE (2026-07-28): 6/6 REJECT — 72 criticals,
+    36 gaps total (U 10/3 · S 19/3 · X 14/11 · R 15/6 · D 8/2 · Sp 6/11).
+    THE SYSTEMATIC DEFECT (all six): hypothesis structures satisfiable by
+    degenerate instances (True-typed tags, Empty index types, False-valued
+    predicates) — the audits' non-vacuity charge did exactly its job. Plus:
+    two arithmetic transcription errors in X (counterexampled by the auditor),
+    circular interfaces in S/Sp (structures assuming their own conclusions),
+    R inventing a satisfiable pseudo-statement for REL.3 where the note says
+    none is possible. All six writers resumed on batched rev-2 repairs; ONE
+    re-audit each per the budget rule. (D and S runners needed the
+    foreground-wait resume — the known parking failure mode; Sp too.)
+    DOCTRINE FOR ALL FUTURE UNITS (wave 3+ prompts must carry it): a faithful
+    interface must be FALSE for instances the note would reject; obligations
+    may be open, but their TYPES must pin their content.
   MovesT/MovesV blueprints: deferred to wave 4 by design (consume wave-3 corpora).
   Everything else: PENDING.
 
