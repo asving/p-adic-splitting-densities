@@ -106,5 +106,13 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
 ## 6. The campaign ledger (updated per event)
 
   MovesGr option-(a): IN FLIGHT (the add_def propagation agent).
-  Wave 1 blueprints: LAUNCHED 2026-07-28.
+  Wave 1 blueprints: LAUNCHED 2026-07-28 (6 writers: Sp, X, S, U, D, R).
   Everything else: PENDING.
+
+  CODEX BUDGET NOTE (checked at launch): 72% of the 7-day window used, resets
+  Sun Aug 02. Per the conservation rule (>75% → cut mechanical delegation), the
+  wave-2 audits run as SINGLE CONSOLIDATED passes per blueprint (audit prompt
+  covers faithfulness + vacuity + quantifiers + hypothesis-fields in ONE charge;
+  repair loops batched), with fresh-Fable reads carrying the second leg of the
+  dual bar at zero Codex cost. Codex is reserved for semantic verification ONLY —
+  no mechanical Codex delegation this campaign.
