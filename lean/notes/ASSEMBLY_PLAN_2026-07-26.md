@@ -1,4 +1,4 @@
-# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 12)
+# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 13)
 
 *Plan architect: Fable, 2026-07-26. REV 2, same day: rebuilt against the pass-1
 structural review (ASSEMBLY_PLAN_PASS1_2026-07-26.md — 8 critical obstructions,
@@ -125,7 +125,27 @@ acceptance-only (concern 3); (6) T-n3's assembly-independent ground truth DISPLA
 side A = the direct T_can^τ-walk census, consuming no assembly formula — as a binding
 seal duty (no CASE_TN3 seal exists yet; concern 4); (7) the SIB-gate depth convention
 fixed: READ DEPTH vs WORD LENGTH, one-read-stage joint laws at word length 3
-(concern 5). The REV 12 record is the final table. Directive (Asvin, 2026-07-26):
+(concern 5). REV 13, 2026-07-27: rebuilt against the pass-12 review
+(ASSEMBLY_PLAN_PASS12_2026-07-27.md — 2 criticals, 4 concerns): (1) the ns route
+RETYPED at its two ill-typed sites — TREE-N's ns clause counts the LUMPED FIBER
+T[N] (the level-N saturation, N-stable by construction; the exact ns fiber has NO
+defined level-N residue set and appears only inside displayed limits), and RS.PRE's
+exit vector carries NO ns column (the finite ns shadows stay in K_e's continuing
+vanishing-digit columns; the eventual-ns residual is a lumped-limit object OUTSIDE
+the recursion — the recursion displayed in its unconditional lump form (R_e-lump)
+and its (ns-null)-conditional exact form (R_e-exact), one line each, tagged); (2)
+the hidden [3t] ↔ [3] PCI cycle CUT on the XHD pattern — the RS.0(β)
+height-elimination interface is the NAMED HYPOTHESIS PACKAGE XRB (§4t): consumed
+HYPOTHETICALLY at [3t]-COND, proved by [3] (RS.0(β)/CL-9), discharged at the
+acceptance-only edge [3] → [3t]-FULL; PCI struck from TREE-EXP's input list (the
+abstract tree-fiber product performs no β-substitution); (3) (ns-null)'s status
+recorded — §T-ASSEMBLY rev 2 claims a PROOF (the single-state admissible-Z
+argument), CLAIMED-PROOF-PENDING-PASSES; its honest refuter = the finite-lump
+decay census (nullity itself proof-only); (4) 𝒯^ns's countable SYMBOLIC INDEXING
+displayed at (NS-c); (5) TREE-EXP-ns's lump factors typed CONDITIONAL in the leaf
+frame; (6) [3t]-FULL wording pinned — named-hypothesis discharge only, never
+global closure while any CL-10 duty is open. The REV 13 record is the final
+table. Directive (Asvin, 2026-07-26):
 iterate on the math with
 Codex until either a COMPLETE math proof of wild uniformity exists or the approach is shown
 conclusively to not work. This plan is the architecture for everything between the
@@ -224,18 +244,30 @@ already showed it: X.3's undecided-complement clause in (TGT); the DENSITY
 form of (TGT) is conditional on X.3 (CL-4) and [3t]'s acceptance record
 carries that tag until [5] closes, while TREE-EXP/TREE-N's finite-tree mass
 identities are X.3-free. ACCEPTANCE SPLIT — REV 12, pass-11 concern 3, the
-[1v] pattern: [3t] has TWO acceptance events. [3t]-COND = acceptance of the
+[1v] pattern; EXTENDED at REV 13, pass-12 critical 2: [3t] has TWO
+acceptance events. [3t]-COND = acceptance of the
 package with (TGT)'s density form stated CONDITIONAL on X.3/CL-4 and
-(ns-null)/CL-10 — consumes [2r], NOT [5]; every "[3t] acceptance after
+(ns-null)/CL-10, AND with the height-elimination package XRB (§4t, REV 13)
+consumed as a displayed HYPOTHESIS on its record — consumes [2r], NOT [5],
+NOT [3]; every "[3t] acceptance after
 [2r]" in the execution order names THIS event. [3t]-FULL = the recorded
-discharge of the X.3 condition upon [5]'s acceptance — an acceptance-only
-event, no new [3t] mathematics. The [5] → [3t] edge is thereby retyped
-[5] → [3t]-FULL, so every arrow again consumes an ACCEPTED statement and
+discharge of the X.3 condition upon [5]'s acceptance AND of the XRB
+hypothesis upon [3]'s acceptance ([3] proves XRB = RS.0(β)/CL-9) — an
+acceptance-only event, no new [3t] mathematics, and NEVER unconditional
+closure: (ns-null) and every other open CL-10 duty keeps its tag on the
+record until it closes (REV 13, pass-12 concern 4). The [5] → [3t] edge is
+thereby retyped [5] → [3t]-FULL, and the PCI/RS.0(β) dependency pass 12
+exposed is the acceptance-only edge [3] → [3t]-FULL — the former hidden
+[3t] ↔ [3] cycle is CUT on the XHD pattern ([3t]-COND → [3] consumption,
+[3] → [3t]-FULL discharge, nothing else). Every arrow again consumes an
+ACCEPTED statement and
 no acceptance event precedes its source; the §1 diagram's [3t] box =
 [3t]-COND) ·
-[3t] → [3] (RS.1 consumes TREE-EXP; RS.PRE's b_e consumes the multilinear
-branching formula) · [3t] → [4] (SQ.1's tree fibers via TREE-N; (†-AGG) input
-vii's normalization identity).
+[3t]-COND → [3] (RS.1 consumes TREE-EXP; RS.PRE's b_e consumes the multilinear
+branching formula; XRB consumed there as [3t]-COND's displayed hypothesis,
+proved by [3] itself) · [3t]-COND → [4] (SQ.1's tree fibers via TREE-N; (†-AGG) input
+vii's normalization identity) · [3] → [3t]-FULL (acceptance-only: the XRB
+discharge — REV 13).
 (The §1 diagram's [1v] box = [1v]-COND; the [1v] → [2b] arrow is [1v]-COND → [2b],
 and [2b] → [2r] now factors through the [2b] → [1v]-FULL → [3] acceptance chain
 where kernel objects are consumed.)
@@ -298,7 +330,8 @@ XHD hypotheses — drafting UNBLOCKED, consuming [2a] only) → [2b] (proves XHD
 M4a-X + M4a weights + M4b-T compatibility; consumes [1v]-COND's cells/tables and
 its XHD-conditional REP) → [1v]-FULL (the recorded DISCHARGE of the XHD
 hypotheses — an acceptance event, no new mathematics) → { [2r] ∥ [5] } → [3t]
-([3t]-COND after [2r], [3t]-FULL at [5]'s closure — the REV 12 split;
+([3t]-COND after [2r]; [3t]-FULL at [5]'s AND [3]'s closure — the REV 12
+split, the XRB discharge added at REV 13 (pass-12 critical 2);
 DRAFTABLE right after [1] — its (SIB)/VP/TREE-EXP
 material consumes only §C + [1], with the base-changed quantifier entering
 through [2r] at acceptance) → [3] → [4], with X.1a/X.1b draftable right after
@@ -1013,10 +1046,13 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   > ι_e the entrance COLUMN vector of (iii)/ENT-AGG, acting once on the LEFT
   > via its transpose (the word "row" is retired), and b_e the named EXIT
   > VECTOR — per-state one-step terminal/deciding conditional mass ((iv)-PART's
-  > absorbing columns; the (τ-ns) component is NOT one-step — it is the
-  > lumped-limit object of (NS-ROUTE)/RS.PRE, REV 12), with BRANCHING exits
+  > absorbing columns; b_e carries NO (τ-ns) column — REV 13, pass-12
+  > critical 1: the ns finite shadows ride K_e's CONTINUING vanishing-digit
+  > columns, and the eventual-ns residual is the (NS-ROUTE) lumped-limit
+  > object OUTSIDE the recursion, = 0 GIVEN (ns-null) — RS.PRE's two
+  > displayed forms (R_e-lump)/(R_e-exact)), with BRANCHING exits
   > entering through the displayed
-  > MULTILINEAR formula b_e = b_e^term + b_e^split(β_{<e}) (RS.PRE, REV 9 —
+  > MULTILINEAR formula b_e = b_e^{term,fin} + b_e^split(β_{<e}) (RS.PRE, REV 9/13 —
   > pass-8 concern 5: a branching cell contributes the PRODUCT of its
   > children's smaller-block type vectors, multiset-convolved, per [3t]'s
   > (SIB)/TREE-EXP; never a sum of child masses); (R_e)'s unknown β_{e,·} is
@@ -1460,10 +1496,16 @@ D4R.0-K(c)), which needs a citable home. DRAFTED (REV 11): MOVES
 §T-ASSEMBLY (assembly note 3, = this note [3t]) — its §T.2 TB-CAP
 per-clause adjudication, §T.3(iv) (SIB-STEP) naming, and §T.6 T-n3 gate
 spec are adopted here; awaiting its dual passes. ACCEPTANCE (SPLIT at
-REV 12 — §1's [3t]-COND / [3t]-FULL): [3t]-COND after [1] and [2r]
-(§1's order), with (TGT)'s density form X.3- and (ns-null)-tagged;
-[3t]-FULL = the X.3 discharge upon [5]'s acceptance, no new
-mathematics. The SIB-gate must PASS before [3t]-COND —
+REV 12 — §1's [3t]-COND / [3t]-FULL; EXTENDED at REV 13, pass-12
+critical 2): [3t]-COND after [1] and [2r]
+(§1's order), with (TGT)'s density form X.3- and (ns-null)-tagged AND
+the XRB height-elimination package (PCI display below) consumed as a
+displayed HYPOTHESIS on the record;
+[3t]-FULL = the discharge of X.3 upon [5]'s acceptance AND of XRB upon
+[3]'s acceptance ([3] proves XRB = RS.0(β)/CL-9), no new
+mathematics — the discharge of the NAMED hypotheses ONLY, never
+unconditional closure while (ns-null) or any other CL-10 duty is open
+(pass-12 concern 4). The SIB-gate must PASS before [3t]-COND —
 SATISFIED (REV 11): the gate PASSED 32/32 on 2026-07-27 (status below);
 [1] is dual-accepted, so the remaining [3t]-COND blockers are [2r], the
 T-n3 RECURSION gate (§T.6 — seals the ASSEMBLY itself: tree fibers both
@@ -1553,8 +1595,15 @@ cluster's certified sub-multiset.
        the displayed pair (ns-lump) CAP-APPROXIMABILITY (PROVED — B(iii)'s
        capped lumped format: the level-N saturation is the single
        cylinder L_{M(N)}) + (ns-null) NULLITY (the class has conditional
-       mass 0; mechanism displayed, its ALL-DEPTH quantifier an OPEN
-       sub-obligation carried on [3t]'s record — TB-CAP(ns-null)).
+       mass 0 — STATUS at REV 13: §T-ASSEMBLY rev 2 claims a PROOF, the
+       SINGLE-STATE ADMISSIBLE-Z argument (the lump's fresh clauses Z_M
+       form an admissible-Z system free on Σ; Theorem C(b) prices
+       μ(Σ ∩ L_M) = μ(Σ)·p^{−|Z_M|}; |Z_M| → ∞; continuity from above) —
+       CLAIMED-PROOF-PENDING-PASSES, rev 2's one substantive new claim;
+       the obligation stays OPEN on [3t]'s record until the dual passes
+       land — TB-CAP(ns-null); refuter scope per CL-10, REV 13: finite
+       censuses refute sealed lump masses/decay rates only — NULLITY
+       ITSELF is proof-only).
    The finite-cap census layers consume the (hen)/(irr) caps and see the
    (ns) clause only as its DEEP lump, never as an exact class; PLUS
    VP-SOUND — at every τ-halted
@@ -1586,9 +1635,24 @@ DISPLAYED limiting operation. Binding clauses:
    ONE ordinary cylinder, PROVED); the exact class is the nested
    intersection ⋂_N L_{M(N)}, and every exact-ns quantity is a
    DISPLAYED N → ∞ limit of lumped quantities — never a per-node
-   fresh-volume factor, never a one-step T·G column.
+   fresh-volume factor, never a one-step T·G column, and never a
+   level-N RESIDUE SET (REV 13, pass-12 critical 1: membership in the
+   exact class is determined at NO finite level, so a set
+   "{f mod p^N : exact-ns condition}" is UNDEFINED — every level-N
+   count attaches to the lumps alone; TREE-N's lumped fiber T[N] is
+   the binding instance).
  (NS-c) NULL RESIDUAL: each 𝒯^ns fiber has mass 0 GIVEN (ns-null) —
-   μ(fiber) ≤ (its lumped mass at N) → 0 — and 𝒯^ns is countable, so
+   μ(fiber) ≤ (its lumped mass at N) → 0 — and 𝒯^ns is COUNTABLE, by
+   the displayed SYMBOLIC INDEXING (REV 13, pass-12 concern 2): every
+   complete tree, ns-leaf trees included, is a FINITE symbolic object —
+   T_can^τ is pruned AT its τ-halts, so an ns leaf carries only its
+   finite verdict datum (Φ̂, μ), never an infinite value decoration
+   (what fails at finite level is DETECTION of the leaf event, not
+   finiteness of its description) — finitely many nodes, each branch a
+   finite WORD over the finite [2a] species/outcome alphabet, decorated
+   by per-node ℕ-valued height/depth parameters and per-node residue
+   values drawn from finite sets; hence 𝒯^ns injects into the countable
+   union ⋃_k (finite alphabet × ℕ)^k. So
    its TOTAL contribution to any density/series identity is 0 GIVEN
    (ns-null); every such drop is DISPLAYED with the (ns-null) tag
    (CL-10), never silent.
@@ -1599,7 +1663,8 @@ DISPLAYED limiting operation. Binding clauses:
    accounted on the undecided/envelope side; no (†)/(†-AGG) claim is
    made about an exact ns class.
 CITE SITES (each carries the tag "(NS-ROUTE)"): (TGT) above, TREE-EXP
-+ TREE-N below, b_e^term (RS.PRE, §4), (†-AGG) input (vii) (§2v),
++ TREE-N below, RS.PRE's exit typing (the (ns) TYPING block with the
+(R_e-lump)/(R_e-exact) forms — §4, REV 13), (†-AGG) input (vii) (§2v),
 SQ.1 (§6).
 
 **MECHANISM DECISION (displayed — the pass-8 charge: choose what §C's
@@ -1695,18 +1760,37 @@ branch — TREE-EXP's recursion) is untested and derivation-only — the
 seal's S6 line verbatim ("ONE-STEP joint laws only").
 
 **PCI (PARENT-CONTEXT INDEPENDENCE — the named β-substitution interface;
-REV 10, pass-9 concern 3).** Replacing μ(S_j │ Σ_c) by the state-indexed
+REV 10, pass-9 concern 3; RESTATED ON THE XRB HYPOTHESIS at REV 13,
+pass-12 critical 2).** Replacing μ(S_j │ Σ_c) by the state-indexed
 value β_{e_j,τ_j(c)} needs: the conditional continuation law of branch b_j
 depends ONLY on its child CTS state τ_j(c) (and its entrance height), never
 on unused parent/sibling cell data. HEIGHT FACE (REV 11, pass-10 concern 1):
 PCI permits entrance-HEIGHT dependence while β_{e,τ} carries no height
-index — the elimination is RS.0(β)'s height-shift bisimulation (CL-9), so
-the substitution interface is supplied by REL.2(a)/(b)/(d)
+index — the elimination is RS.0(β)'s height-shift bisimulation (CL-9).
+> **(XRB) THE HEIGHT-ELIMINATION HYPOTHESIS PACKAGE (NEW at REV 13 — the
+> XHD pattern; pass-12 critical 2: rev 12 had PCI, packaged in
+> [3t]/CL-10, CONSUME RS.0(β) from [3]/CL-9 while [3] consumes [3t] — a
+> hidden acceptance cycle).** XRB := RS.0(β)'s height-shift bisimulation
+> stated as a displayed HYPOTHESIS: for every block (e, τ), the
+> entrance-free conditional continuation law from a concrete state of
+> type τ at entrance height h_ent is h_ent-INVARIANT (the height-shift
+> conjugacy), so β_{e,τ} carries no height index. GOVERNANCE: [3t]-COND
+> consumes XRB HYPOTHETICALLY — a displayed conditionality item on its
+> acceptance record, alongside X.3/CL-4 and (ns-null)/CL-10; [3] PROVES
+> it (RS.0(β), CL-9); [3t]-FULL records the discharge. The
+> acceptance-event DAG carries [3] → [3t]-FULL ONLY — no [3t]-time
+> consumption of an unaccepted [3] theorem remains (§1's edge list).
+PCI's supply is thereby REL.2(a)/(b)/(d)
 (the O_{δ_j} identification) + CTS-M(iv)-REP (single-branch representative
-independence) + RS.0(β) (height elimination), ALL THREE cited wherever the
+independence) + XRB (height elimination — HYPOTHESIS at [3t]-COND, THEOREM
+at [3]), ALL THREE cited wherever the
 substitution occurs (RS.PRE's
-b_e^split; RS.1-SH) — and PCI's discharge thereby depends on CL-9, not on
-REL.2/(iv)-REP alone. A PCI failure is adjudicated as R2's lumpability
+b_e^split; RS.1-SH — both [3] displays, where XRB is discharged by CL-9's
+own proof). CONSUMPTION SCOPE (REV 13 — the pass's finding adopted): PCI
+is consumed ONLY at the β-substitution sites; TREE-EXP's abstract
+tree-fiber product performs NO β-substitution and does NOT consume PCI
+(struck from its input list below). A PCI failure is adjudicated as R2's
+lumpability
 channel (one refinement round, then wall), never as a (SIB) failure.
 
 **SIBLING INDEXING (convention displayed at REV 10 — pass-9 concern 4).**
@@ -1745,7 +1829,12 @@ display its own exchangeability proof.
  its (ns-lump) cylinder L_{M(N)}); each capped fiber is an all-finite-
  level event whose mass IS a finite product —
     ∏_{ordinary ν} vol(E_fresh(ν)) · ∏_{ns leaves} μ(L_{M(N)}-block)
- ((SIB) applied to the capped, finite-level events) — and
+ ((SIB) applied to the capped, finite-level events; LEAF-FRAME TYPING,
+ REV 13 — pass-12 concern 3: each μ(L_{M(N)}-block) factor is the
+ CONDITIONAL lump mass GIVEN the ns leaf's entrance state, evaluated in
+ that leaf's own transported frame — a C.1.5-conditional per-node factor
+ exactly like every vol(E_fresh); an UNCONDITIONAL cylinder reading
+ would charge the shared prefix twice) — and
     μ{f : T_can^τ(f) = T} = lim_N (that capped product) = 0
  GIVEN (ns-null) ((NS-c); the limit displayed, the tag carried).
  Every downstream consumer of "TREE-EXP" consumes TREE-EXP-fin unless
@@ -1774,12 +1863,20 @@ caps N_V of T's halted cells:
 — the fiber is a finite intersection of finite-level digit-cell conditions
 (D4R.4 per branch, finitely many branches). This is (†-AGG) input (vii)'s
 cited source. (ns)-LEAF SCOPE (REV 11, per §T.2's consequences; = the
-(NS-ROUTE) instance at this display — REV 12): the
+(NS-ROUTE) instance at this display — REV 12; RETYPED at REV 13,
+pass-12 critical 1: an exact ns condition is determined at NO finite
+level, so for T ∈ 𝒯^ns the residue set "{f mod p^N : T_can^τ(f) = T}"
+is NOT DEFINED — the rev-12 capped bound named it and is struck): the
 identity holds VERBATIM for trees ALL of whose leaves are
-(τ-irr)/(τ-hen) — 𝒯^fin, (NS-a); for (ns)-leaf trees it is
-replaced by the one-sided capped bound #{f mod p^N : T_can^τ(f) = T} ≤
-p^{nN}·μ(L_{M(N)} ∩ the other leaves' conditions) → 0, and the fiber
-contributes 0 to (TGT)'s series GIVEN TB-CAP(ns-null).
+(τ-irr)/(τ-hen) — 𝒯^fin, (NS-a); for T ∈ 𝒯^ns the level-N object is
+the LUMPED FIBER T[N] — T with every ns leaf replaced by its (ns-lump)
+cylinder L_{M(N)} ((NS-b)) — an all-finite-level event, N-STABLE by
+construction, satisfying TREE-N verbatim:
+    #{f mod p^N : f ∈ fiber(T[N])} = p^{nN}·μ(fiber(T[N])).
+The EXACT ns fiber enters only through the displayed containment and
+limit — fiber(T) = ⋂_N fiber(T[N]), so μ(fiber T) = lim_N
+μ(fiber(T[N])) = 0 GIVEN TB-CAP(ns-null) — contributing 0 to (TGT)'s
+series GIVEN (ns-null) and appearing in NO level-N count.
 **ONE-F (the once-per-f normalization — pass-8 concern 3 discharged).** For
 every decided f: Σ_{T̂} 1_{shape(T_can^τ(f)) = T̂} = 1 — the tree fibers
 partition the decided set, so each decided f has total coefficient ONE in
@@ -1805,11 +1902,16 @@ sibling at word length 3 — the GATE DEPTH CONVENTION above)); VP(c2) +
 VP(c3-b) = TB-CAP, adjudicated PER CLAUSE (§T.2, REV 11: (τ-hen) cap 1
 PROVED; (τ-irr) per-realized-cell cap PROVED conditional on the
 perimeter; (τ-ns) NO cap — pro-cylinder, replaced by (ns-lump) [proved]
-+ (ns-null) [OPEN sub-obligation]; D4R0K rev 3 §S2.6 + pass-3 finding 7:
++ (ns-null) [OPEN on the record; REV 13: §T-ASSEMBLY rev 2 claims a
+PROOF — the single-state admissible-Z argument — CLAIMED-PROOF-PENDING-
+PASSES]; D4R0K rev 3 §S2.6 + pass-3 finding 7:
 pointwise stopping insufficient; the blanket uniform wording REFUTED —
 never restate it) + VP-SOUND (the certificate case analysis — per §T.2 a
 citation obligation with a named source);
-TREE-EXP/TREE-N (mechanical GIVEN (SIB) + C.1.5 + REL.2 + PCI, but the
+TREE-EXP/TREE-N (mechanical GIVEN (SIB) + C.1.5 + REL.2 — PCI STRUCK
+from this input list at REV 13, pass-12 critical 2: the abstract
+tree-fiber product performs no β-substitution, so TREE-EXP does not
+consume PCI (PCI's home is [3]'s substitution sites) — but the
 first-split induction and leaf bookkeeping are written out, not waved).
 
 **Sealed gate SIB-gate (EXACT — the m ≥ 2 JOINT law). STATUS: PASSED
@@ -1864,9 +1966,11 @@ UNPROVED closure, asserted against risk R2; closure is now the theorem RS.0):
 
 with M_e(q) the SAME-SIZE TRANSITION MATRIX (rows/columns = CTS states τ = (s, α);
 entries assembled per RS.PRE from CTS table entries × XHD one-step height sums
-— REV 7); b_{e,·} the EXIT VECTOR (RS.PRE: b_e = b_e^term + b_e^split —
-terminal verdicts plus the multilinear strictly-smaller-block convolution,
-carrying the [2r]-certified mixed legs β_m(q^δ), m < e). RETYPED at REV 10
+— REV 7); b_{e,·} the EXIT VECTOR (RS.PRE: b_e = b_e^{term,fin} + b_e^split —
+(τ-irr)/(τ-hen) terminal verdicts plus the multilinear
+strictly-smaller-block convolution,
+carrying the [2r]-certified mixed legs β_m(q^δ), m < e; NO ns column —
+REV 13, RS.PRE's (ns) TYPING). RETYPED at REV 10
 (pass-9 critical 1): the rev-6/9 term SHALLOW_{e,·} is RETIRED — β_{e,τ} is
 the ENTRANCE-FREE conditional subtree value (given ONE branch entering state
 τ), so (R_e) carries NO ι; the entrance masses ι_e appear ONLY in the outer
@@ -1917,8 +2021,9 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   with ι_e the entrance COLUMN vector acting once on the LEFT via its transpose
   (REV 8 — pass-7 fresh sweep: ONE convention; "row" is retired) and b_e the
   named EXIT VECTOR — the per-state one-step terminal/deciding conditional mass
-  (CTS-M(iv)-PART's absorbing columns; ns component = the (NS-ROUTE)
-  lumped-limit object, REV 12 — the multilinear formula below), weighted where
+  (CTS-M(iv)-PART's absorbing columns; NO ns column — REV 13, pass-12
+  critical 1: the eventual-ns residual sits OUTSIDE the recursion, the (ns)
+  TYPING block below), weighted where
   applicable by certified
   downstream values ([2r] mixed legs β_m(q^δ)); (R_e)'s unknown β_{e,·} is the
   COLUMN solve β_e = K_e β_e + b_e, ι_e pairing once on the left — the pairing's
@@ -1928,19 +2033,33 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   **THE MULTILINEAR EXIT FORMULA (NEW at REV 9 — pass-8 concern 5: how a
   branching cell contributes several child types, displayed).** Per state
   τ and type argument σ′:
-      b_e(τ)(σ′) = b_e^term(τ)(σ′) + b_e^split(τ)(σ′),
-      b_e^term(τ)(σ′) := Σ_{o terminal fin, v(o) = σ′} T·G + b_e^{ns}(τ)(σ′)
+      b_e(τ)(σ′) = b_e^{term,fin}(τ)(σ′) + b_e^split(τ)(σ′),
+      b_e^{term,fin}(τ)(σ′) := Σ_{o terminal fin, v(o) = σ′} T·G
         (the (τ-irr)/(τ-hen) verdicts are the one-step τ-halts,
-        (iv)-PART's absorbing columns; (ns) TYPING, REV 12 —
-        (NS-ROUTE)(NS-b), pass-11 critical 2: the (τ-ns) component is
-        NOT a one-step T·G column — no finite read detects ns, and its
-        level-N shadow lies inside the CONTINUING vanishing-digit
-        columns, so (iv)-PART's finite fresh-assignment partition is
-        untouched. b_e^{ns}(τ)(σ′) := lim_N μ̂(the reachable ns classes
-        with verdict σ′, LUMPED at N via L_{M(N)} │ entering state τ) —
-        the lumped-limit object, = 0 GIVEN (ns-null) ((NS-c)); it is
-        carried symbolically with the (ns-null)/CL-10 tag, and the
-        solve may drop it only WITH that displayed tag),
+        (iv)-PART's absorbing columns).
+  **(ns) TYPING (REWRITTEN at REV 13 — pass-12 critical 1; supersedes the
+  REV 12 form, whose unconditional additive insertion of b_e^{ns} into
+  b_e^term is STRUCK: every finite ns shadow stays inside K_e's
+  CONTINUING vanishing-digit columns — no finite read detects ns,
+  (iv)-PART untouched — so a positive-mass ns path would be counted
+  through BOTH K_e β_e AND b_e^{ns}; a tail event already propagated
+  through the continuing columns is not a one-step exit.)** The
+  eventual-ns object
+      b_e^{ns}(τ)(σ′) := lim_N μ̂(the reachable ns classes with verdict
+        σ′, LUMPED at N via L_{M(N)} │ entering state τ)
+  is the (NS-ROUTE)(NS-b) lumped-limit RESIDUAL — it sits OUTSIDE the
+  recursion and is NEVER a summand of b_e. The recursion, displayed in
+  its two forms (one line each, tagged):
+      (R_e-lump)  β_e = K_e β_e + b_e^{term,fin} + b_e^split
+        [UNCONDITIONAL — the lump form: the solve's unknown is the
+        𝒯^fin-completion value (the subtree completes with every leaf
+        (τ-irr)/(τ-hen)); ns-bound paths ride K_e's continuing columns
+        and exit through NO column, contributing 0 to the Neumann sum];
+      (R_e-exact) β_e^full = β_e + b_e^{ns}-residual terms, = β_e
+        [(ns-null)/CL-10-CONDITIONAL — the exact form: GIVEN (ns-null)
+        ((NS-c)) the eventual-ns residual is 0, so the SAME solve equals
+        the FULL conditional subtree density; until (ns-null) closes,
+        every full-density reading of β_e carries this displayed tag].
       b_e^split(τ)(σ′) := Σ_{o branching} T·G ·
         Σ_{σ′ = σ₁ ⊎ … ⊎ σ_m} ∏_{j=1}^m β_{e_j, τ_j(o)}(σ_j)
   — the MULTISET CONVOLUTION over the children's types, the product over
@@ -1948,8 +2067,9 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   each child's factor the base-changed [2r]/[3t] value β_{e_j,·}(q^{δ_j}).
   The substitution of the state-indexed β_{e_j,τ_j(o)} for the subtree mass
   μ(S_j │ Σ_c) CITES the named interface PCI ([3t], REV 10 — parent-context
-  independence from REL.2(a)/(b)/(d) + CTS-M(iv)-REP + RS.0(β) height
-  elimination, the REV 11 third leg: β carries no height index, so the
+  independence from REL.2(a)/(b)/(d) + CTS-M(iv)-REP + XRB (REV 13 — the
+  height-elimination HYPOTHESIS package, [3t]'s display, proved in THIS
+  note as RS.0(β)/CL-9): β carries no height index, so the
   entrance-height dependence PCI permits is eliminated by CL-9's
   bisimulation), and the child index j
   runs over the branch set's INDIVIDUATED members ([3t] SIBLING INDEXING —
@@ -1967,10 +2087,12 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   Hence EVERY e_j < e: b_e is multilinear in STRICTLY-SMALLER-block
   solutions only, (R_e) stays LINEAR within block e (the same-size
   direction is single-child, by DEG-CONS), and the triangular induction in
-  e survives. TYPING (REV 9): β_{e,τ}(σ′)
+  e survives. TYPING (REV 9; ns scope at REV 13): β_{e,τ}(σ′)
   is the CONDITIONAL PER-f value — the probability, given ONE branch
-  entering state τ, that its full T_can^τ-subtree completes with type
-  multiset σ′ (a [3t]/TREE-EXP object, NOT a marked-branch total); the
+  entering state τ, that its T_can^τ-subtree completes with an
+  ALL-(τ-irr)/(τ-hen) leaf set of type
+  multiset σ′ (a [3t]/TREE-EXP object, NOT a marked-branch total; = the
+  FULL completion value GIVEN (ns-null) — the (R_e-exact) display); the
   ι-pairing then yields μ̂-weighted entrance sums whose per-f meaning is
   restored at RS.1's TREE-EXP consumption. Substochasticity is the per-representative
   identity CTS-M(iv)-PART (Σ T·G + terminal mass = 1), inherited from measure —
@@ -2041,7 +2163,8 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   base at entrance cells; GIVEN the [3t] package + the K_e ledger below):
       (RS.1-DEEP) per block (e, τ): β_{e,τ}(σ′) = ((I − K_e)^{−1} b_e)_τ(σ′)
       — the ENTRANCE-FREE conditional subtree value (RS.PRE typing), with
-      b_e = b_e^term + b_e^split consuming every DEEP (in-block) split
+      b_e = b_e^{term,fin} + b_e^split (REV 13 — no ns column; RS.PRE's
+      (R_e-lump)/(R_e-exact) forms) consuming every DEEP (in-block) split
       multilinearly;
       (RS.1-SH) THE SHALLOW CONVOLUTION (the base clause):
       R_σ = Σ_{Ŝ} W_Ŝ(q) · Σ_{σ = σ₀(Ŝ) ⊎ σ₁ ⊎ … ⊎ σ_{k(Ŝ)}}
@@ -2058,8 +2181,9 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
       the drop displayed once at (TGT)), and the product over Ŝ's k(Ŝ)
       block entrances licensed by
       (SIB) at EVERY shallow branching cell of Ŝ — PCI substituting
-      β_{e_i,τ_i} for each subtree mass (with RS.0(β) eliminating the
-      entrance-height index — REV 11), [2r]'s type dictionary applied at
+      β_{e_i,τ_i} for each subtree mass (with XRB = RS.0(β) eliminating the
+      entrance-height index — REV 11/13, proved in this note as
+      CL-9), [2r]'s type dictionary applied at
       δ_i > 1. The ROOT read's own factorization (the L3 Gauss/necklace
       layer) is RS.1-SH's outermost instance, its sibling law the ACCEPTED
       depth-0 JOINT-D1.
@@ -2226,7 +2350,8 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
    base-changed legs entering ONLY through [2r] REL.2, and the TREE-EXP
    consumption (REV 9): the multilinear reassembly at branching cells via
    b_e^split (DEEP splits) and RS.1-SH's shallow convolution (ROOT/SHALLOW
-   splits — REV 10, with PCI + RS.0(β) at every β-substitution), the
+   splits — REV 10, with PCI (its XRB leg proved HERE as RS.0(β)/CL-9 —
+   REV 13) at every β-substitution), the
    shallow-cut exhaustive/nonoverlapping decomposition and the W_Ŝ
    rational machinery (the CL-17 duties — REV 11) — (SIB) and TREE-EXP
    consumed from [3t], never proved here.
@@ -2524,21 +2649,37 @@ hypothesis and ESCAPE supplying Neumann convergence.
   >   through SQ.0/SQ.1; without them no finite decided family (§6).
   > CL-8 REL.1 + REL.2(a)/(b)/(d) + REL.3 — the relative measure statements;
   >   (c)'s content lives at CL-10's (SIB) (§3r).
-  > CL-9 RS.0 (α) lumpability consumed + (β) height-shift bisimulation (§4).
+  > CL-9 RS.0 (α) lumpability consumed + (β) height-shift bisimulation (§4)
+  >   — (β) IS the prover of XRB, [3t]-COND's displayed height-elimination
+  >   hypothesis package (§4t, REV 13): proved in [3], discharged at the
+  >   acceptance-only edge [3] → [3t]-FULL.
   > CL-10 the [3t] TREE-ASSEMBLY package (§4t): (SIB) — OPEN in its
   >   MEASURE-LEVEL form (REV 11: joint-fiber equidistribution of the
   >   cross-sibling read map; coordinate disjointness refuted; SIB-gate
   >   PASSED 32/32, supports not closes; the residual kernel named
   >   (SIB-STEP) in its JOINT-VECTOR form, REV 12 + the unimodularity
   >   mechanism, §T.3(iv)) — with its PCI
-  >   interface (REL.2(a)/(b)/(d) + CTS-M(iv)-REP + RS.0(β)/CL-9 height
-  >   elimination — REV 11); TREE-EXP (-fin/-ns split) + TREE-N, both
-  >   (NS-ROUTE)-scoped (REV 12); VP = the D4R.0-K(c) pin
+  >   interface (REL.2(a)/(b)/(d) + CTS-M(iv)-REP + XRB — REV 13, pass-12
+  >   critical 2: the height-elimination HYPOTHESIS package, consumed
+  >   hypothetically at [3t]-COND, proved by [3] as RS.0(β)/CL-9,
+  >   discharged at [3t]-FULL; PCI is consumed ONLY at the β-substitution
+  >   sites, NEVER by TREE-EXP — no [3t] ↔ [3] cycle);
+  >   TREE-EXP (-fin/-ns split) + TREE-N, both
+  >   (NS-ROUTE)-scoped (REV 12; TREE-N's ns clause on the LUMPED fiber
+  >   T[N], REV 13); VP = the D4R.0-K(c) pin
   >   with duties (c2) exactly-one-verdict, (c3-b) = TB-CAP adjudicated
   >   PER CLAUSE (§T.2, REV 11: (τ-hen) cap N_V = 1 PROVED; (τ-irr)
   >   per-realized-cell cap PROVED, perimeter-conditional; (τ-ns) NO
   >   uniform cap — pro-cylinder, REPLACED by (ns-lump) [proved] +
-  >   (ns-null) [OPEN sub-obligation], routed plan-wide by (NS-ROUTE);
+  >   (ns-null) [OPEN on the record — REV 13, pass-12 concern 1:
+  >   §T-ASSEMBLY rev 2 claims a PROOF (the single-state admissible-Z
+  >   argument), CLAIMED-PROOF-PENDING-PASSES; REFUTER CHANNEL, honest
+  >   scope: the finite-lump decay census — T-n3's lump layers falsify a
+  >   SEALED lump mass or decay rate at finite N — while NULLITY ITSELF
+  >   (the all-depth assertion) is PROOF-ONLY: finitely many
+  >   positive-mass lumps are compatible with a null intersection, so no
+  >   finite census can refute it; it closes or falls by derivation +
+  >   dual passes alone], routed plan-wide by (NS-ROUTE);
   >   the blanket uniform wording
   >   REFUTED), and VP-SOUND (a citation obligation — the PARI-oracle
   >   refuters test IT, never the caps). Without CL-10 the
@@ -2702,8 +2843,12 @@ Per note, in order; no step may be skipped, no note trusted early:
    partial list for the CL citation. RS.4, [3t], [3], [4], and the capstone
    may not be recorded unconditional while ANY cited CL-item is open; [3t]'s
    record additionally names (SIB)/VP status and the SIB-gate result, and
-   states its LEVEL — [3t]-COND (X.3/(ns-null)-tagged density form) vs
-   [3t]-FULL (X.3 discharged by [5]) — explicitly (REV 12, pass-11
+   states its LEVEL — [3t]-COND (X.3/(ns-null)-tagged density form,
+   XRB-hypothetical — REV 13) vs
+   [3t]-FULL (X.3 discharged by [5], XRB by [3] — the discharge of the
+   NAMED hypotheses ONLY: the label never reads as unconditional closure
+   while (ns-null) or any other CL-10 duty is open — REV 13, pass-12
+   concern 4) — explicitly (REV 12, pass-11
    concern 3); and
    [1v]'s record states its LEVEL — [1v]-COND (GIVEN XHD) vs [1v]-FULL (XHD
    discharged by [2b]) — explicitly (REV 7, pass-6 critical 1). A record
@@ -2882,8 +3027,9 @@ certificate case analysis + TB-CAP's residual (ns-null) +
 VP-SOUND's cite, TREE-EXP/TREE-N's first-split induction; the SIB-gate is
 DONE (PASSED 32/32, 2026-07-27 — REV 11) and the T-n3 RECURSION gate
 (§T.6) remains; acceptance split [3t]-COND after [2r] / [3t]-FULL at
-[5]'s closure (REV 12 — the density
-form of (TGT) tagged CL-4/X.3 + (ns-null) until each closes). [5] EXHAUST: 2 units
+[5]'s AND [3]'s closure (REV 12/13 — the density
+form of (TGT) tagged CL-4/X.3 + (ns-null), the XRB hypothesis discharged
+by [3], until each closes). [5] EXHAUST: 2 units
 (three kernels; X.1b is OPEN — WEIGHT-CHARGE may resist; X.2's displayed
 dichotomy). [3] RESUM: 4–5 units (the K_e assembly/RS.0/RS.1 + ESCAPE(E0) +
 STATE-probe-2 + ESCAPE-probe + RESUM-n3). [4] SQUEEZE: 2 units (incl. SQ.0's
@@ -3562,3 +3708,58 @@ none closed. The critical path is unchanged ([1] → [2a] → [1v]-COND →
 [2b]); [2a] SPECIES is the next drafting unit; the (SIB-STEP) derivation
 (joint-vector form) + the T-n3 gate (with its seal duty) + the (ns-null)
 sub-obligation are [3t]'s remaining substance.
+
+---
+
+## REV 13 RECORD (2026-07-27) — response to the pass-12 structural review
+
+*(ASSEMBLY_PLAN_PASS12_2026-07-27.md: 2 critical obstructions, 4 concerns,
+verdict UNSOUND — the verifier's closing: "The unsoundness is architectural,
+not a demolition of the ordinary first-split recursion... the failures are
+the two incorrectly typed dependency/routing displays." Pass-11 dispositions
+re-judged: C1/K1/K2/K4/K5 GENUINE, C2 PARTIAL (the two ns sites), K3 GENUINE
+for X.3 but with a fresh DAG problem (the PCI cycle) — the PARTIAL and the
+fresh problem both redone here. C = critical, K = concern.)*
+
+| Finding | Verdict on rev 12 | REV 13 disposition |
+|---|---|---|
+| C1 the ns route ill-typed at TREE-N and b_e^{ns}: TREE-N counts an exact non-N-stable ns fiber mod p^N; RS.PRE keeps finite ns shadows in K_e's continuing columns AND inserts the eventual-ns event additively into the exit vector — a positive-mass ns path would be counted through BOTH K_e β_e AND b_e^{ns} | the displayed unconditional symbolic decomposition is false as typed | BOTH sites RETYPED. TREE-N (§4t): for T ∈ 𝒯^ns the residue set "{f mod p^N : T_can^τ(f) = T}" is recorded UNDEFINED (an exact ns condition is determined at no finite level); the level-N object is the LUMPED FIBER T[N] (every ns leaf replaced by L_{M(N)} — the saturation, N-STABLE by construction), satisfying TREE-N verbatim: #{f mod p^N : f ∈ fiber(T[N])} = p^{nN}·μ(fiber(T[N])); the exact fiber appears ONLY inside the displayed containment/limit fiber(T) = ⋂_N fiber(T[N]), lim = 0 GIVEN (ns-null). RS.PRE (§4): the unconditional additive insertion of b_e^{ns} is STRUCK — b_e := b_e^{term,fin} + b_e^split carries NO ns column; the finite ns shadows STAY in K_e's continuing vanishing-digit columns ((iv)-PART untouched); b_e^{ns} is retyped as the lumped-limit RESIDUAL sitting OUTSIDE the recursion; the recursion displayed in TWO tagged one-line forms — (R_e-lump), UNCONDITIONAL (the solve = the 𝒯^fin-completion value; ns-bound paths exit through no column) and (R_e-exact), (ns-null)/CL-10-CONDITIONAL (the same solve = the FULL density, the omitted residual being 0). Propagated: CTS-M(vi)'s orientation display, (R_e)'s b description, RS.1-DEEP, β's TYPING clause, (NS-ROUTE)'s cite-sites line; (NS-b) gains the binding no-level-N-residue-set clause. SWEEP: no other live display consumes an exact ns event at finite level (checked: (TGT), TREE-EXP-ns, (†-AGG)(vii), SQ.1, RS.1-SH — all lump/limit-typed or 𝒯^fin-scoped) |
+| C2 hidden [3t] ↔ [3] cycle through PCI: CL-10 packages PCI into [3t]; PCI consumes RS.0(β) = CL-9, proved in [3]; PCI even listed among TREE-EXP's inputs; [3] consumes [3t] | the acceptance DAG is cyclic on the displayed package boundaries | CUT ON THE XHD PATTERN (§4t PCI display): the RS.0(β) height-elimination interface is the NAMED HYPOTHESIS PACKAGE **XRB** — RS.0(β)'s height-shift bisimulation stated as a displayed HYPOTHESIS (for every (e, τ): the entrance-free conditional continuation law is h_ent-invariant, so β_{e,τ} needs no height index). GOVERNANCE: [3t]-COND consumes XRB HYPOTHETICALLY (a displayed conditionality item on its record, alongside X.3/CL-4 and (ns-null)/CL-10); [3] PROVES it (RS.0(β)/CL-9); [3t]-FULL records the discharge — the acceptance DAG carries [3] → [3t]-FULL ONLY. PCI's supply restated as REL.2(a)/(b)/(d) + CTS-M(iv)-REP + XRB; CONSUMPTION SCOPE displayed — PCI is consumed only at the β-substitution sites (b_e^split, RS.1-SH — both [3] displays, where XRB is discharged by CL-9's own proof); PCI STRUCK from TREE-EXP's kernel-roster input list (the abstract tree-fiber product performs no β-substitution — the pass's finding adopted). CL-9/CL-10, §1's split + edge list, §4t's acceptance sentence, §7's rule, §9's effort map all updated; acyclicity verified by the full event/edge listing below |
+| K1 (ns-null) lacks a named refuter with honest all-depth scope | derivation-only channel unrecorded at CL-10 | RECORDED at CL-10 + VP-3 + the §4t kernels roster: REFUTER = the FINITE-LUMP DECAY CENSUS (T-n3's lump layers falsify a SEALED lump mass or decay rate at finite N); NULLITY ITSELF is PROOF-ONLY — finitely many positive-mass lumps are compatible with a null intersection, so NO finite census can refute the all-depth assertion; it closes or falls by derivation + dual passes alone. STATUS noted: §T-ASSEMBLY rev 2 claims a PROOF — the SINGLE-STATE ADMISSIBLE-Z argument (the lump's fresh clauses Z_M admissible and free on Σ; Theorem C(b) prices μ(Σ ∩ L_M) = μ(Σ)·p^{−|Z_M|}; |Z_M| → ∞; continuity from above) — CLAIMED-PROOF-PENDING-PASSES; the obligation stays OPEN on [3t]'s record until the dual passes land |
+| K2 countability of 𝒯^ns asserted without an indexing | arbitrary infinite value-trees would not be countable | SYMBOLIC INDEXING DISPLAYED at (NS-c): every complete tree (ns-leaf trees included) is a FINITE symbolic object — T_can^τ is pruned AT its τ-halts, an ns leaf carries only its finite verdict datum (Φ̂, μ), never an infinite value decoration (DETECTION fails at finite level, not finiteness of description); finitely many nodes, branches = finite WORDS over the finite [2a] species/outcome alphabet + per-node ℕ height/depth parameters + per-node residue values from finite sets — 𝒯^ns injects into ⋃_k (finite alphabet × ℕ)^k, countable |
+| K3 TREE-EXP-ns's L_{M(N)}-block factors could read as unconditional cylinder masses | shared prefix double-charged | LEAF-FRAME TYPING added at the TREE-EXP-ns product (§4t): each μ(L_{M(N)}-block) factor is the CONDITIONAL lump mass GIVEN the ns leaf's entrance state, evaluated in that leaf's own transported frame — a C.1.5-conditional per-node factor exactly like every vol(E_fresh); the unconditional reading named and barred |
+| K4 "[3t]-FULL" readable as global closure while (ns-null)/CL-10 duties stay open | label semantics | PINNED at §1's split, §4t's acceptance sentence, and §7's record rule: [3t]-FULL = the discharge of the NAMED hypotheses ONLY (X.3 by [5]; XRB by [3] — REV 13); the label NEVER reads as unconditional closure while (ns-null) or any other CL-10 duty is open; a record violating this is a protocol violation |
+
+**THE ACCEPTANCE-EVENT DAG AFTER REV 13 (all events + every edge, verified
+acyclic).** Events, in a witnessing topological order: §C, decomp §3 (both
+accepted perimeter) · [1] · [2a] · [1v]-COND · [2b] · [1v]-FULL · [2r] ·
+[5] · [3t]-COND · [3] · [3t]-FULL · [4]. Edges ("consumes the accepted
+statement of", except the three acceptance-only discharge edges marked ⊳):
+§C → [1], [2a], [2r], [3t]-COND · decomp §3 → [5] · [1] → [2a], [3t]-COND ·
+[2a] → [1v]-COND, [5] (X.1a) · [1v]-COND → [2b], [5] (X.2 ← M4a tails) ·
+[2b] ⊳ [1v]-FULL (XHD discharge), [2b] → [2r], [5] · [1v]-FULL → [3] ·
+[2r] → [3t]-COND, [3], [4] · [5] → [3], [4] · [5] ⊳ [3t]-FULL (X.3
+discharge) · [3t]-COND → [3], [4] · [3] → [4] · [3] ⊳ [3t]-FULL (XRB
+discharge — NEW at REV 13). Every edge goes strictly forward in the listed
+order, so the graph is ACYCLIC; the former [3t] → [3] → [3t] cycle through
+PCI/RS.0(β) is gone — [3t]-COND → [3] is consumption of an accepted
+conditional package, [3] → [3t]-FULL is a discharge, and no event precedes
+its source. [3t]-FULL is a sink (consumed by nothing; the capstone's
+unconditional reading runs through the CL ledger, not through it).
+
+**Open kernels after REV 13 (delta from REV 12):** NONE added, none closed.
+XRB is NOT a new kernel — it is CL-9's RS.0(β) restated as a displayed
+hypothesis package (one statement, two roles: hypothesis at [3t]-COND,
+theorem at [3]). (ns-null) unchanged OPEN on the record, now carrying its
+claimed-proof-pending-passes status (§T-ASSEMBLY rev 2, single-state
+admissible-Z) and its honest refuter channel (finite-lump decay census;
+nullity itself proof-only). b_e^{ns} is retyped (residual outside the
+recursion), not re-opened — the mathematical content is unchanged, the
+false unconditional display is struck. T-n3 remains specced/unrun with its
+REV 12 seal duty.
+
+**Wall status after REV 13:** R1, R2, R4, R9, R-SIB all unchanged — no wall
+demonstrated, none closed. The critical path is unchanged
+([1] → [2a] → [1v]-COND → [2b]); [2a] SPECIES is the next drafting unit;
+[3t]'s remaining substance = the (SIB-STEP) derivation (joint-vector form),
+the T-n3 gate (with its seal duty), and (ns-null)'s verification passes.
