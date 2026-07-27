@@ -10,7 +10,56 @@ import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.DefsL
 
 /-!
-# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 3]
+# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 4]
+
+**ROUND 4 (2026-07-27).** Retype of the global layer against §C REV 14 EXACTLY, after the
+round-3 audit `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R3_2026-07-27.md` (REJECT — the rev-14
+delta). The 23 frozen units are BYTE-STABLE. Changes, keyed to the audit's final-disposition
+list (its finding 20):
+* **(SAE) + the full realizability class (findings 8/9)** — `TransitionAdmissible νp ν` is the
+  NAMED per-step predicate: (NA)+(HV)+(SAE) at the appended read. (SAE) is rev 12's two-line
+  display: `new(j) > old(j)` STRICT at every span slot `j ∈ [s₀', j*]` with `j < μ`, and
+  `new(μ) = old(μ)` at the adjacent tie. `Realizable H` := every appended read is
+  transition-admissible — the THREE-condition class (the round-3 two-condition docstring and
+  definition are gone; the certified F-EMPTY configuration now violates `Realizable`).
+* **TRANSITION-ADMISSIBLE per-step interface (findings 10/16)** — per-step consumers take it
+  through `JetSetup.realizable` (definitionally the ∀-step form of `TransitionAdmissible`);
+  `C3.lineDom` now HYPOTHESIZES `Realizable` (rev 14's DOM: "for every realizable prefix").
+  The round-3 weak vertex-entry ties (`old ≤ new` at `j*`, hinge equality) are DELETED from
+  `HistoryCoherent`: the span-entry inequality is (SAE)'s, sourced from REALIZABILITY, never
+  from coherence (finding 16's "wrong semantic hypothesis boundary" repaired).
+* **u*, the side height (finding 11)** — `Node.ustar` (absolute v_p-scale) with `hLineU`: the
+  read line passes through `(j*, u*)` — slope from coherence's slope law, intercept pinned by
+  `u*`. `Node.gam : ℤ` records the augmented-scale TOTAL SIDE WEIGHT `γ = e·(STR·u*) + j*·h`
+  (rev 14 C.0, the argument of D.3(c)'s stride positions); the tie lives in `HistoryCoherent`
+  (where `STR` exists) and its ℤ-typing IS the on-lattice condition. Adjacent vertex
+  anchoring (`u* =` the standing window-vertex height) = (SAE)'s equality line + `hLineU`.
+* **canonical Bézout pair (finding 12)** — `hbezCanon : 0 ≤ t < e` selects THE canonical pair:
+  unique in the window, hence a FUNCTION of `(e, h)` only (rev 14's `(sᴮ, tᴮ)`). It extends
+  the accepted `Stage.he1t` (P2) pinning to every `e`: at `e = 1` the window FORCES
+  `t = 0, s = 1`, so `m̂ = 0` at recenterings BY the convention — rev 14's exact sentence;
+  the round-3 field `hspecRecBez` is deleted as now derivable.
+* **ψ irreducible (finding 13)** — `hψirr : Irreducible ψ` (rev 14: "monic irreducible over
+  F_i"; recenterings are consistent — degree-1 polynomials over a field are irreducible).
+* **anchored-residual provenance (finding 14)** — `hAnchor : e·a = s₀ − t·γ` pins the anchor
+  to D.3(c/d): `a = p_{s₀}(γ) = (s₀ − t·γ)/e` is the z-order of the side residual (its lead
+  digit is nonzero, `hpat0`), so with `hRanch`'s consecutive powers `Ranch` IS rev 14's
+  `R_anch = Σ_j d_j·z^{p_j(γ)−a}`; `a` can no longer move freely under (HV).
+* **fresh-species coverage (finding 17)** — `inFreshBand` names the D.11 band as a coordinate
+  predicate; `fresh_band` (every clause support ⊆ the band — replaces
+  `fresh_above`/`fresh_interior`, adding the upper edge), `fresh_cover` (every band coordinate
+  lies in SOME clause's support — EXACTLY one, by `FreshData.disj`), and `fresh_assembled`'s
+  value branch adds the per-clause `codim = support.card` (TYP(b)'s |alphabet| = |piece|,
+  now placed PER CLAUSE). The permutation loophole is dead: the total codimension decomposes
+  coordinate-by-coordinate over the band; nothing can move to unrelated above-floor supports.
+* **cutoff (finding 18)** — `hN : 1 ≤ N` (Theorem C's quantifier is `N ≥ N(H,Z)` with
+  `N(H,Z) ≥ 1`; the `≥ N(H,Z)` half is automatic inside the box — `coordOf_lt` bounds every
+  equation level below `N` — and otherwise existence-side). `N = 0` presentations are gone.
+* **root-side height (finding 19)** — `root_height`: the root line dominates the cluster
+  floor (`1 ≤ line₀.at b` on the root factor interior — DOM's rev-11 base display), so
+  `mstar_eq` at `i = 0` counts the cluster zeros; the root intercept is no longer free.
+
+[ROUND 3 header, kept for the audit trail:]
 
 **ROUND 3 (2026-07-26).** Rebuild of the GLOBAL layer after the round-2 audit
 `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R2_2026-07-26.md` (REJECT: blockers 55-60 — the local
@@ -278,6 +327,19 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   wSide : ℕ
   Dwidth : ℕ
   line : Line
+  /-- ROUND 4 (audit R3 finding 11): the **SIDE HEIGHT** `u*` — the read side's right-endpoint
+  height, ABSOLUTE v_p-scale (rev 14 C.0: "on-lattice; at an ADJACENT read, u* = the standing
+  window-vertex height"). Its three rev-14 roles: (i) it pins the read line's INTERCEPT
+  (`hLineU`: the line of slope `−h/e` per slot passes through `(j*, u*)`); (ii) it is
+  on-lattice — the augmented-scale weight `γ = e·(STR·u*) + j*·h` is the INTEGER `gam`
+  (`HistoryCoherent`'s γ-tie, where the stretch `STR` lives); (iii) at an adjacent read it is
+  vertex-anchored ((SAE)'s equality line + `hLineU`). -/
+  ustar : ℚ
+  /-- ROUND 4 (findings 11/14): the read's **TOTAL SIDE WEIGHT** `γ := e·u* + j*·h` in the
+  augmented (stage) scale — rev 14 C.0's `γ_i`, the argument of D.3(c)'s stride positions
+  `p_j(γ) = (j − t·γ)/e`. Recorded as an INTEGER: its ℤ-typing is the on-lattice condition;
+  `HistoryCoherent` ties it to `(ustar, e, h, s0, wSide)` at the history's stretch. -/
+  gam : ℤ
   zbar : Fˣ
   center : ↥σ.K
   lift : Polynomial ℤ_[p]
@@ -290,6 +352,14 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   hcop : Nat.gcd e h = 1
   /-- the recorded pair is a genuine Bézout pair for the read side (ROUND 3, F10). -/
   hbez : (e : ℤ) * s + (h : ℤ) * t = 1
+  /-- ROUND 4 (audit R3 finding 12): the pair is CANONICAL — `t` in the window `[0, e)` is the
+  UNIQUE Bézout coefficient there (any two solutions differ by `(h·k, −e·k)`), so `(s, t)` is
+  rev 14's `(sᴮ, tᴮ)`: "a function of `(e, h)` only", not a recorded choice. Extends the
+  accepted `Stage.he1t` (D.5 P2) pinning to every `e`: at `e = 1` the window forces `t = 0`,
+  whence `s = 1` by `hbez` — so at a recentering `m̂ = −t·h·g = 0` BY the convention (rev 14:
+  "NOT because the lift `t_i` is zero"); the round-3 `hspecRecBez` field is deleted as
+  derivable. -/
+  hbezCanon : 0 ≤ t ∧ t < (e : ℤ)
   /-- the descend data are genuine: `g ≥ 1`, `μ ≥ 1` (the read DESCENDS into `ψ`). -/
   hg : 1 ≤ g
   hμ : 1 ≤ μ
@@ -300,12 +370,31 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   /-- `ψ` is monic of degree `g` (D.3(c)). -/
   hψmonic : ψ.Monic
   hψdeg : ψ.natDegree = g
+  /-- ROUND 4 (audit R3 finding 13): `ψ` is IRREDUCIBLE over the stage's residue field (rev 14
+  C.0: "ψ_i: … monic irreducible over F_i"; D.3's header). Reducible residual factors are no
+  longer legal nodes; `F_{i+1} = F_i[z]/(ψ_i)` is a field. (Recenterings are consistent:
+  `ψ = z − c̃` has degree 1.) -/
+  hψirr : Irreducible ψ
   /-- ANCHORED RESIDUAL (§C.0, rev 8): `Ranch = Σ_k pat(k)·z^k`, `k ≤ wSide/e` — the pattern
   DETERMINES `Ranch` (pattern-only data; the anchor `a` locates it: absolute position `a + k`). -/
   hRanch : Ranch = ∑ k ∈ Finset.range (wSide / e + 1), Polynomial.C (pat k) * Polynomial.X ^ k
   /-- polygon conventions: the endpoint digits are nonzero (anchor exact, side width exact). -/
   hpat0 : pat 0 ≠ 0
   hpatTop : pat (wSide / e) ≠ 0
+  /-- ROUND 4 (audit R3 finding 14) — **ANCHORED-RESIDUAL PROVENANCE**: the anchor is D.3(c)'s
+  stride position of the side's LEFT endpoint, `a = p_{s₀}(γ) = (s₀ − t·γ)/e` — displayed
+  division-free. Why this is `ord_z R` (D.8's anchoring, as recorded stratum data): the side's
+  minimizing slots are `s₀, s₀+e, …, s₀+wSide` at the constant total weight `γ`, their
+  positions `p_j(γ)` increase by 1 per `e`-step (D.3(c)), and the lead digit is nonzero
+  (`hpat0`) — so the smallest occupied position is `p_{s₀}(γ)`. With `hRanch`'s consecutive
+  powers, `Ranch` is exactly rev 14's `R_anch = Σ_j d_j·z^{p_j(γ)−a}`; `a` can no longer be
+  shifted independently of the side data (the (HV) exponent `z̄^{a−μm̂}` is now pinned). -/
+  hAnchor : (e : ℤ) * a = (s0 : ℤ) - t * gam
+  /-- ROUND 4 (finding 11, role (i)): the read line PASSES THROUGH `(j*, u*)` — evaluated at
+  the right endpoint's base index `j*·Dwidth`. Slope is fixed by `HistoryCoherent`'s
+  absolute-scale slope law, so `u*` pins the intercept: intercept translations (audit R2
+  B59's residue) are dead. -/
+  hLineU : line.at ((s0 + wSide) * Dwidth) = ustar
   /-- `ord_ψ(Ranch) = μ` EXACTLY (D.3(c): `ψ^μ ∥ Ranch`). -/
   hOrd : OrdPsiPoly ψ Ranch μ
   /-- `zbar` is a genuine root of `ψ` in the ambient field (D.6: `F' = K(z̄)`, `ψ(z̄) = 0`). -/
@@ -318,10 +407,6 @@ structure Node (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] where
   center, and its residue "root" is the center itself (no field growth). -/
   hspecRecCenter : species = ReadSpecies.recentering →
     ψ = Polynomial.X - Polynomial.C center ∧ ((zbar : Fˣ) : F) = ((center : ↥σ.K) : F)
-  /-- SPECIES (D.10, ROUND 3): at a recentering (`e = 1`) the read-side Bézout pair is the
-  canonical `(1, 0)` — so `m̂ = 0`, matching D.10's "the D.5 normalization exponent is
-  `m̂' = 0` and no z̄-unit" (MOVES ~2604). -/
-  hspecRecBez : species = ReadSpecies.recentering → s = 1 ∧ t = 0
 
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
@@ -333,8 +418,9 @@ def Node.childWidth (ν : Node p F) : ℕ := ν.e * ν.g * ν.Dwidth
 /-- The D.8 normalization exponent `m̂ = −t·h·g` of the READ (the vertex unit `z̄^{−μm̂}` of
 D.8's (VERTEX)). ROUND 3 (audit R2 F10 — a REAL index bug in round 2): `(t, h)` are the read
 side's OWN slope numerator and recorded Bézout coefficient (D.3's header pair), NOT the
-frame's `(σ.t, σ.h)` (which record the frame-CREATING read, one step earlier). At a
-recentering, `t = 0` (`hspecRecBez`), so `m̂ = 0` — D.10's normalization. -/
+frame's `(σ.t, σ.h)` (which record the frame-CREATING read, one step earlier). ROUND 4: the
+pair is CANONICAL (`hbezCanon`); at `e = 1` — every recentering — the window forces `t = 0`,
+so `m̂ = 0` BY the convention (D.10's normalization, rev 14's exact sentence). -/
 def Node.mhat (ν : Node p F) : ℤ := -ν.t * (ν.h : ℤ) * (ν.g : ℤ)
 
 /-- The polynomial factor `(Ranch/ψ^μ) mod ψ` of the transported vertex value — pattern-only
@@ -467,16 +553,24 @@ the history ((I-aug), absolute scale) and obey the absolute-scale slope law
 ROUND 3 additions: `IsNodeLift` replaces the round-2 `IsStandardLift ν.σ` call (F10: the lift
 must use the READ's index, not the frame-creating read's); the child frame's Bézout pair is
 tied to the node's recorded read pair (`σ'.s = s`, `σ'.t = t` — so `Node.mhat`/`vtx` carry the
-tower's D.8 unit); and the READ-LINE INTERCEPT TIES (blocker 59 / DOM(2) vertex entry): the
-old line lies weakly below the new at the side's right endpoint `j* = s₀'+w'` (base index
-`j*·D_{i+1}`), with EQUALITY of the two lines at the hinge for ADJACENT reads (`j* = μ_i`) —
-the new line passes through the pinned old vertex, pinning its intercept there. -/
+tower's D.8 unit).
+ROUND 4 (audit R3 findings 11/16): the round-3 vertex-entry/hinge clauses — a WEAKENED,
+non-strict shadow of (SAE) — are DELETED: the span-entry inequality belongs to the
+REALIZABILITY class (`TransitionAdmissible`/`Realizable`), rev 14's hypothesis boundary, and
+never to coherence. In their place, the per-node **γ-TIE** (the on-lattice condition, role
+(ii) of `Node.ustar`): the recorded integer `gam` equals the augmented-scale total side
+weight `e_i·(STR_i·u*_i) + j*_i·h_i` (stage scale = `STR_i ×` absolute, C.1.0(c); `γ ∈ ℤ`
+IS on-lattice, and `hAnchor` reads the stride-position anchor off it). -/
 def HistoryCoherent (H : History p F) : Prop :=
   (∀ hj : 0 < H.nodes.length, (H.nodes[0]'hj).σ.Φ.natDegree = 1) ∧
   (∀ (i : ℕ) (hi : i < H.nodes.length),
     (H.nodes[i]'hi).line.slope *
         (((H.nodes[i]'hi).e : ℚ) * (H.strFrame i : ℚ) * ((H.nodes[i]'hi).Dwidth : ℚ))
       = ((H.nodes[i]'hi).h : ℚ)) ∧
+  (∀ (i : ℕ) (hi : i < H.nodes.length),
+    (((H.nodes[i]'hi).gam : ℤ) : ℚ)
+      = ((H.nodes[i]'hi).e : ℚ) * ((H.strFrame i : ℚ) * (H.nodes[i]'hi).ustar)
+        + ((((H.nodes[i]'hi).s0 + (H.nodes[i]'hi).wSide) : ℕ) : ℚ) * ((H.nodes[i]'hi).h : ℚ)) ∧
   ∀ (i : ℕ) (hi : i + 1 < H.nodes.length),
     ((H.nodes[i]'(by omega)).species = ReadSpecies.recentering →
       IsRecenteringCore (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
@@ -490,35 +584,45 @@ def HistoryCoherent (H : History p F) : Prop :=
     ((H.nodes[i+1]'hi).σ.t = (H.nodes[i]'(by omega)).t) ∧
     ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide ≤ (H.nodes[i]'(by omega)).μ) ∧
     ((H.nodes[i+1]'hi).Dwidth = (H.nodes[i]'(by omega)).childWidth) ∧
-    ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope) ∧
-    ((H.nodes[i]'(by omega)).line.at
-        (((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide) * (H.nodes[i]'(by omega)).childWidth)
-      ≤ (H.nodes[i+1]'hi).line.at
-        (((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide)
-          * (H.nodes[i]'(by omega)).childWidth)) ∧
-    ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide = (H.nodes[i]'(by omega)).μ →
-      (H.nodes[i]'(by omega)).line.at
-          ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth)
-        = (H.nodes[i+1]'hi).line.at
-            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth))
+    ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope)
 
-/-- **Realizability** (§C.0, the two data-side conditions C.1(ii) isolates — equations of NO
-`E`; a history failing either has EMPTY joint stratum and Theorem C's quantifier excludes it):
-* **(NA)** at a NON-ADJACENT read (`s₀'+w' < μ_i`): the pinned old vertex lies STRICTLY ABOVE
-  the extended new line, compared at the vertex's BASE index `μ_i·D_{i+1}` (round-1 audit:
-  the slot/base-index mismatch — repaired via `childWidth`);
-* **(HV)** at an ADJACENT read (`s₀'+w' = μ_i`): the pattern LEAD of `ν_{i+1}` (its endpoint
-  digit `pat(wSide/e)`, the vertex digit) EQUALS the transported vertex value `vtx(ν_i)` — a
-  genuine identity of node data in `F` (round-1 audit: the `∃ lead` tautology — repaired). -/
+/-- **TRANSITION-ADMISSIBLE** (§C.0, rev 13 — ROUND 4, audit R3 finding 10): the read `ν`
+appended after the standing node `νp` satisfies the THREE data conditions (NA)+(HV)+(SAE) at
+the appended read — all equations/inequalities of NO `E`, on node data alone. Lines are
+compared at BASE indices: standing-window slot `j` ↔ `j·νp.childWidth` (= `j·ν.Dwidth` under
+coherence). This is THE per-step interface rev 14's C.1/C.1.0(b)(iii)/C.1.5 hypothesize of
+their appended reads (consumed here through `Realizable`/`JetSetup.realizable`, and directly
+by `C3.lineDom`); without it their conclusions are FALSE on the certified F-EMPTY data.
+* **(NA)** at a NON-ADJACENT read (`s₀'+w' < μ`): the pinned old vertex lies STRICTLY ABOVE
+  the extended new line at the vertex's base index `μ·D_{i+1}`;
+* **(HV)** at an ADJACENT read (`s₀'+w' = μ`): the pattern LEAD of `ν` (its endpoint digit
+  `pat(wSide/e)`, the vertex digit) EQUALS the transported vertex value `vtx(νp)` in `F`;
+* **(SAE)** SPAN-ENTRY INEQUALITY (rev 12 — the third condition; ROUND 4, audit R3 findings
+  8/9: absent in round 3, whose coherence tie allowed equality — the F-EMPTY configuration):
+  the read side lies STRICTLY ABOVE the old box line at every span slot below the window
+  vertex, and MATCHES it at the vertex when the span reaches it:
+    `new(j) > old(j)` for every span slot `j ∈ [s₀', j*]` with `j < μ`;
+    `new(μ) = old(μ)` when `j* = μ` (adjacent — the vertex-anchored side height:
+    with `hLineU`, `u* =` the standing window-vertex height). -/
+def TransitionAdmissible (νp ν : Node p F) : Prop :=
+  (ν.s0 + ν.wSide < νp.μ →
+    ν.line.at (νp.μ * νp.childWidth) < νp.line.at (νp.μ * νp.childWidth)) ∧
+  (ν.s0 + ν.wSide = νp.μ →
+    ((ν.pat (ν.wSide / ν.e) : ↥ν.σ.K) : F) = νp.vtx) ∧
+  (∀ j : ℕ, ν.s0 ≤ j → j ≤ ν.s0 + ν.wSide → j < νp.μ →
+    νp.line.at (j * νp.childWidth) < ν.line.at (j * νp.childWidth)) ∧
+  (ν.s0 + ν.wSide = νp.μ →
+    ν.line.at (νp.μ * νp.childWidth) = νp.line.at (νp.μ * νp.childWidth))
+
+/-- **Realizability** (§C.0, rev 12/14 — ROUND 4, audit R3 finding 9: the FULL three-condition
+class): a lift-carrying history is REALIZABLE iff EVERY appended read is transition-admissible
+— (NA)+(HV)+(SAE) at every read `ν_{i+1}`, `i ≥ 0`. A history failing any of the three has
+EMPTY joint stratum (the classifier never emits it), and Theorem C's quantifier ranges over
+realizable histories only. The round-3 two-condition version admitted (SAE)-violating
+histories (the F-EMPTY instance: nominal fresh volume `2⁻⁶`, actual census count 0). -/
 def Realizable (H : History p F) : Prop :=
   ∀ (i : ℕ) (hi : i + 1 < H.nodes.length),
-    ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide < (H.nodes[i]'(by omega)).μ →
-      (H.nodes[i+1]'hi).line.at ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth)
-        < (H.nodes[i]'(by omega)).line.at
-            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth)) ∧
-    ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide = (H.nodes[i]'(by omega)).μ →
-      (((H.nodes[i+1]'hi).pat ((H.nodes[i+1]'hi).wSide / (H.nodes[i+1]'hi).e) :
-          ↥(H.nodes[i+1]'hi).σ.K) : F) = (H.nodes[i]'(by omega)).vtx)
+    TransitionAdmissible (H.nodes[i]'(by omega)) (H.nodes[i+1]'hi)
 
 end
 
@@ -555,6 +659,20 @@ noncomputable def baseDigit (p : ℕ) [Fact p.Prime] (ℓ : ℕ) (a : ℤ_[p]) :
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
+/-- **The FRESH BAND of read `i`** (ROUND 4, audit R3 finding 17 — §C.1(ii)'s D.11 species
+inventory, named as a COORDINATE predicate): coordinate `c` is in read `i`'s band iff it lies
+in the read's constraint region (base index `< prevRim` — C.1(ii)'s rim rule), STRICTLY ABOVE
+the cumulative floor (LST(iii) selection), and AT-OR-BELOW the read line (`Node.lineStep`, the
+band's upper edge; past the (γ) crossing slot the line drops below the floor, so the band
+self-truncates — C.1(i)(γ)). `ν` is instantiated at `H.nodes[i]`; heights are the DEFINED
+`History.htH`. Consumed by `JetSetup.fresh_band`/`fresh_cover`/`mstar_eq`: together they say
+each band coordinate belongs to EXACTLY its strip/level-set clause and nothing else. -/
+def inFreshBand (H : History p F) (n : ℕ) {m : ℕ} (coordOf : Fin m → Coord)
+    (i : ℕ) (ν : Node p F) (c : Fin m) : Prop :=
+  (coordOf c).2 < H.prevRim n i ∧
+  H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ) ∧
+  H.htH i (coordOf c) ≤ ν.lineStep (coordOf c).2
+
 /-- **The jet presentation of a history** — the BOUNDARY-DEFERRED bridge from the accepted
 tower to digit systems (§C.2's `Ψ_H`; D.3(e)(ii) down the whole tower, at a level cutoff
 `N ≥ N(H, Z)` — largeness of `N` is an existence condition on the presentation). Indexing:
@@ -567,6 +685,13 @@ exist below. FLAGGED for semantic-guardian review throughout. -/
 structure JetSetup (H : History p F) (n N m : ℕ) where
   /-- the box is the `n·N` coefficient box (BLOCK CONVENTION, base digits). -/
   hm : m = n * N
+  /-- ROUND 4 (audit R3 finding 18) — the CUTOFF condition: Theorem C's quantifier is
+  "for every `N ≥ N(H, Z)`", with `N(H, Z) := 1 + the largest base level among `T(H,Z)`'s
+  equations `≥ 1`. The `≥ 1` floor is recorded here (killing the `N = 0`, `m = 0` degenerate
+  presentations, whose `pres_zero` was vacuous); the `≥ N(H, Z)` half is automatic INSIDE the
+  box (`coordOf_lt` bounds every equation's level below `N`) and is otherwise the
+  existence-side largeness condition on the presentation. -/
+  hN : 1 ≤ N
   /-- the ≺-SORTED coordinate chart: `Fin m`-order IS the global order `≺`. -/
   coordOf : Fin m → Coord
   coordOf_sorted : ∀ j j' : Fin m, j < j' ↔ CoordPrec (coordOf j) (coordOf j')
@@ -574,14 +699,25 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
   coordOf_lt : ∀ j : Fin m, (coordOf j).1 < N ∧ (coordOf j).2 < n
   /-- the presented history is coherent (consumed by every downstream theorem). -/
   coherent : HistoryCoherent H
-  /-- and realizable ((NA)/(HV); §C's quantifier ranges over realizable histories only). -/
+  /-- and realizable — ROUND 4: the FULL (NA)+(HV)+(SAE) class, definitionally
+  `∀ i, TransitionAdmissible ν_i ν_{i+1}`: every per-step consumer (the C.1/C.1.5 mirrors
+  `C2.EInh_implied`/`C4.stepMass`) receives rev 13's per-step hypothesis for its read through
+  this field; §C's quantifier ranges over realizable histories only. -/
   realizable : Realizable H
+  /-- ROUND 4 (audit R3 finding 19) — the ROOT-SIDE HEIGHT condition (DOM's rev-11 base
+  display): the root line dominates the CLUSTER FLOOR — height `≥ 1` at every base index of
+  the root factor interior (D.4's ROOT case: every side slope `≥ 1`; the cluster zeros pin
+  level 0, floor height 1). So `mstar_eq` at `i = 0` COUNTS the cluster zeros (level-0
+  coordinates sit in the root band), and the root intercept can no longer be translated
+  below the cluster floor. -/
+  root_height : ∀ (hj : 0 < H.nodes.length) (b : ℕ),
+    b < (H.nodes[0]'hj).μ * (H.nodes[0]'hj).childWidth → 1 ≤ (H.nodes[0]'hj).line.at b
   /-- the state cylinder before read `i`: `Sigma i = Σ_{i−1}` in frame-`i` coordinates. -/
   Sigma : ℕ → Locus p m
   /-- INITIALIZATION: `Σ_{−1}` is the full box — nothing is pinned before the root read. -/
   init : ∀ c : Fin m, (Sigma 0).pinned c = false
   /-- the fresh clause data of read `ν_i` (§C.1(ii)'s species inventory, address-free);
-  PINNED to the node by `fresh_assembled`/`mstar_eq`/`fresh_above`/`fresh_interior`. -/
+  PINNED to the node by `fresh_assembled`/`mstar_eq`/`fresh_band`/`fresh_cover` (ROUND 4). -/
   fresh : ℕ → FreshData p m
   /-- the move maps `Θ_i` (child-to-parent coordinate reading); PINNED to the recorded keys
   by `pres_theta`/`pres_block` (ROUND 3, blocker 55). -/
@@ -637,34 +773,42 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
   zc : ∀ (i : ℕ) (hi : i < H.nodes.length),
     ZCData (Sigma (i+1)) coordOf (H.htH (i+1)) (H.floorH (i+1))
       ((H.nodes[i]'hi).μ * (H.nodes[i]'hi).childWidth)
-  /-- fresh content sits STRICTLY ABOVE the cumulative floor, in the DEFINED frame-`i`
-  heights (LST(iii) selection; ROUND 3: `ht` is no longer adjustable data — F47). -/
-  fresh_above : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses, ∀ c ∈ cl.support,
-    H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ)
-  /-- fresh content is region-confined (C.1(ii)'s rim rule, UNIFORM incl. the root):
-  read `i` constrains base indices `< H.prevRim n i` only. -/
-  fresh_interior : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses, ∀ c ∈ cl.support,
-    (coordOf c).2 < H.prevRim n i
-  /-- **fresh clauses are ASSEMBLED from the two §C shapes** (ROUND 3, blocker 60 / task
-  "TypObject bridges"): each is a literal STRIP ZERO (singleton support, codim 1), or a TYP
-  VALUE clause — a `TypObject` surjection onto the elementary abelian alphabet
-  `(ZMod p)^codim`, supported on ONE `htH`-level set (LST/TYP support typing). -/
+  /-- **every fresh clause support lies INSIDE the band** (ROUND 4, audit R3 finding 17 —
+  replaces the round-3 `fresh_above` + `fresh_interior`, which gave only the floor and rim
+  bounds and left the band's UPPER EDGE open): each supported coordinate is in read `i`'s
+  region (`< prevRim`), strictly above the cumulative floor (LST(iii)), and at-or-below the
+  read line. No fresh codimension can sit on unrelated above-floor coordinates. -/
+  fresh_band : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ cl ∈ (fresh i).clauses,
+    ∀ c ∈ cl.support, inFreshBand H n coordOf i (H.nodes[i]'hi) c
+  /-- **every band coordinate is covered** (ROUND 4, finding 17): each coordinate of read
+  `i`'s fresh band lies in SOME fresh clause's support — and in EXACTLY ONE, by
+  `FreshData.disj`. With `fresh_band` (supports ⊆ band) and `fresh_assembled`'s per-clause
+  codimension, every counted band coordinate belongs to exactly its strip/level-set clause:
+  the permutation loophole (equal totals on permuted supports) is unbuildable. -/
+  fresh_cover : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ c : Fin m,
+    inFreshBand H n coordOf i (H.nodes[i]'hi) c → ∃ cl ∈ (fresh i).clauses, c ∈ cl.support
+  /-- **fresh clauses are ASSEMBLED from the two §C shapes** (ROUND 3, blocker 60; ROUND 4,
+  finding 17): each is a literal STRIP ZERO (singleton support, codim 1), or a TYP VALUE
+  clause — a `TypObject` surjection onto the elementary abelian alphabet `(ZMod p)^codim`,
+  supported on ONE `htH`-level set (LST/TYP support typing), with the PER-CLAUSE codimension
+  identification `codim = support.card` (TYP(b)'s `|alphabet| = |piece|` / D.3(e)(ii)'s
+  attainable accounting, now placed per clause — the flagged graded identification (b), no
+  longer only in-total). So `mstar = Σ codim = Σ |support| = |band|` decomposes
+  coordinate-by-coordinate. -/
   fresh_assembled : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses,
     (∃ c : Fin m, cl.support = {c} ∧ cl.codim = 1 ∧ ∀ x, (cl.sat x ↔ x c = 0)) ∨
     ((∃ γ' : ℚ, ∀ c ∈ cl.support, H.htH i (coordOf c) = γ') ∧
+      cl.codim = cl.support.card ∧
       ∃ (T : TypObject p m cl.support (Fin cl.codim → ZMod p)) (v : Fin cl.codim → ZMod p),
         ∀ x, (cl.sat x ↔ T.φ x = v))
-  /-- **`m*(ν_i)` IS the D.11 species inventory** (ROUND 3, blocker 57): the presented fresh
-  codimension sum equals the FRESH-BAND count computed from node data — the coordinates of
-  read `i`'s region strictly above the cumulative floor and at-or-below the read line
-  (strips + value level sets; past the (γ) crossing the line is below the floor, so the band
-  self-truncates — C.1(i)(γ); at an adjacent read the hinge block sits at/beyond `prevRim`,
-  so it is excluded — the (HV) no-pin clause). -/
+  /-- **`m*(ν_i)` IS the D.11 species inventory** (ROUND 3, blocker 57; ROUND 4: stated via
+  the named band `inFreshBand`): the presented fresh codimension sum equals the FRESH-BAND
+  count computed from node data (strips + value level sets; past the (γ) crossing the line
+  is below the floor, so the band self-truncates — C.1(i)(γ); at an adjacent read the hinge
+  block sits at/beyond `prevRim`, so it is excluded — the (HV) no-pin clause). With
+  `fresh_band`/`fresh_cover`/`fresh_assembled` this total now also decomposes PER CLAUSE. -/
   mstar_eq : ∀ (i : ℕ) (hi : i < H.nodes.length),
-    (fresh i).mstar = Nat.card {c : Fin m //
-      (coordOf c).2 < H.prevRim n i ∧
-      H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ) ∧
-      H.htH i (coordOf c) ≤ (H.nodes[i]'hi).lineStep (coordOf c).2}
+    (fresh i).mstar = Nat.card {c : Fin m // inFreshBand H n coordOf i (H.nodes[i]'hi) c}
 
 /-- The partial move composite `seg i k = Θ_i ∘ Θ_{i+1} ∘ … ∘ Θ_{k−1}` (frame-`k` coordinates
 down to frame-`i` coordinates); `seg 0 k` is `Ψ_H^{−1}` up to prefix `k`. -/

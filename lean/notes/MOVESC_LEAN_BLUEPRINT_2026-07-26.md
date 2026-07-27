@@ -592,3 +592,105 @@ Unit census: **36 = 23 FROZEN + 11 RETYPE + 2 NEW** (`C3.widthConfine`, `C3.line
 layers 10/4/6/6/3/2/5; difficulty 6 easy / 22 medium / 8 hard; 12 interface-consuming.
 Fan-out gate: FROZEN units may go to provers now; RETYPE/NEW wait on the round-3 semantic
 audit (in particular R3.B's `IsNodeLift` re-adjudication).
+
+---
+
+# ROUND 4 (2026-07-27) — global-layer retype against §C REV 14 exactly
+
+*Audit: `MOVES_LEAN_SEMAUDIT_MOVESC_R3_2026-07-27.md` (REJECT — the rev-14 delta; its finding 20
+is the blocking list this round answers item-by-item). The 23 FROZEN units are byte-stable
+(spot-verified: C2.DOM, C3.crossing, C4.conditionalMass green against the round-4 Defs).
+`MovesC/Defs.lean` round 4: 855 lines, `lake env lean` exit 0, no `sorry`/axiom, olean rebuilt;
+all 13 RETYPE/NEW statements re-elaborated (13 sorry-warnings, 0 errors) — 12 unchanged,
+C3.lineDom retyped (status RETYPE-R4).*
+
+## R4.A — per-finding dispositions (audit findings 8–19; 1–7 are the round-2 blocker residues they subsume)
+
+- **F8 ((SAE) absent) — ENCODED.** `TransitionAdmissible`'s third+fourth conjuncts are rev 12's
+  two-line display verbatim: `old.at(j·D) < new.at(j·D)` STRICT at every span slot
+  `j ∈ [s₀', j*]` with `j < μ` (base-index comparison at the parent's `childWidth`), and
+  `new.at(μ·D) = old.at(μ·D)` when `j* = μ`. The F-EMPTY configuration (equality at the
+  endpoint) now violates the class.
+- **F9 (two-condition realizability) — ENCODED.** `Realizable H := ∀ i, TransitionAdmissible
+  ν_i ν_{i+1}` — the full (NA)+(HV)+(SAE) class; docstring rewritten (the "two data-side
+  conditions" text is gone).
+- **F10 (TRANSITION-ADMISSIBLE absent) — ENCODED.** The named def exists (rev 13's sentence, on
+  the node pair — the three conditions only read `ν_i`/`ν_{i+1}`); per-step consumers
+  (C2.EInh_implied, C4.stepMass — the C.1/C.1.5 mirrors) receive it through
+  `JetSetup.realizable`, which is definitionally the ∀-step form; `C3.lineDom` consumes it
+  directly via the new `hreal` hypothesis.
+- **F11 (u* absent) — ENCODED.** `Node.ustar` (absolute scale) + `hLineU` (line through
+  `(j*, u*)`: intercept pinned) + `Node.gam : ℤ` with `HistoryCoherent`'s γ-tie
+  `γ = e·(STR·u*) + j*·h` (ℤ-typing = on-lattice); adjacent vertex-anchoring = (SAE)'s equality
+  line + `hLineU`. Simultaneous intercept translation is dead (root: see F19).
+- **F12 (Bézout canonicity) — ENCODED.** `hbezCanon : 0 ≤ t < e`: the unique window
+  representative, hence a FUNCTION of `(e, h)` only; extends the accepted `Stage.he1t` (P2).
+  At `e = 1` the window + `hbez` FORCE `(s, t) = (1, 0)` — `hspecRecBez` deleted as derivable;
+  `m̂ = 0` at recenterings BY the convention (rev 14's sentence).
+- **F13 (ψ irreducibility) — ENCODED.** `hψirr : Irreducible ψ`.
+- **F14 (anchor unconstrained) — ENCODED.** `hAnchor : e·a = s₀ − t·γ` — the anchor is
+  D.3(c)'s stride position `p_{s₀}(γ)` (= ord_z of the side residual: positions increase along
+  the side and the lead digit is nonzero, `hpat0`); with `hRanch`'s consecutive powers, `Ranch`
+  IS rev 14's `R_anch = Σ_j d_j·z^{p_j(γ)−a}`. `a` no longer moves freely under (HV).
+- **F15 (final residue extension) — PARTIAL, honest gap 7 below.** `hψirr` supplies the missing
+  irreducibility; the identification `F_{i+1} = F_i[z]/(ψ_i)` at the FINAL node (beyond
+  `hzbarRoot` + `LandingKey`) remains open — nothing counted consumes it (Z is a box locus).
+- **F16 (lineDom's hypothesis boundary) — REPAIRED.** The round-3 weak vertex-entry/hinge ties
+  are DELETED from `HistoryCoherent` (coherence is tower provenance + width/slope/steeper +
+  the γ-tie only); `C3.lineDom` now takes `(hreal : Realizable H)` — rev 14's "for every
+  realizable prefix", with DOM(2) sourced from (SAE) exactly as the note's proof does.
+- **F17 (fresh permutation loophole) — ENCODED.** `inFreshBand` names the D.11 band;
+  `fresh_band` (every support ⊆ band — replaces `fresh_above`/`fresh_interior`, adding the
+  upper edge `htH ≤ lineStep`), `fresh_cover` (every band coordinate in SOME support — EXACTLY
+  one by `FreshData.disj`), `fresh_assembled` value branch gains `codim = support.card`
+  (TYP(b)'s |alphabet| = |piece|, per clause). Total codimension now decomposes
+  coordinate-by-coordinate over the band; `mstar_eq` (restated via `inFreshBand`) is kept as
+  the D.11 inventory sentence, now derivable-in-principle from the three.
+- **F18 (zero cutoff) — ENCODED.** `hN : 1 ≤ N` (Theorem C's `N ≥ N(H,Z) ≥ 1`; the `≥ N(H,Z)`
+  half is automatic inside the box via `coordOf_lt`, otherwise existence-side). `N = 0`
+  degenerate presentations are unbuildable.
+- **F19 (root cluster geometry) — ENCODED.** `JetSetup.root_height`: `1 ≤ line₀.at b` on the
+  root factor interior (DOM's rev-11 base display: the root line dominates the cluster floor),
+  so the `i = 0` band contains the level-0 cluster coordinates and `mstar_eq` counts them.
+
+## R4.B — honest gaps after round 4 (the deferred boundary, restated)
+
+1. **JetSetup existence for a real classifier history** — THE deferral (R4.5 items 1&3),
+   unchanged in kind; the bundle's provenance sentences now include the round-4 fields, so
+   existence entails rev-14 faithfulness (incl. `pres_total`, (ZC) persistence, `root_height`,
+   `fresh_cover`).
+2. **`htH`'s two identifications** (flagged on its docstring): (a) htH = the K1-chain weight;
+   (b) `log_p|𝔸(γ)| = |level set|` per block — (b) is now consumed PER CLAUSE
+   (`fresh_assembled`'s `codim = support.card`) as well as in-total (`mstar_eq`). Both remain
+   graded-ring content.
+3. **`TypObject` existence** per real fresh value digit — unchanged.
+4. **`N ≥ N(H, Z)` largeness** — the `≥ 1` floor is now internal (`hN`); sufficiency for a
+   given real (H, Z) remains existence-side. Companion degeneracy `n = 0` is NOT excluded
+   (harmless: the box is a point, the band empty, C(b) trivially consistent — noted).
+5. **(ZC-b) DIG level-set grouping** — still rim-ness of leads only.
+6. **`vtx ≠ 0` / the residue-field bridge** — unchanged (C3.vtxPolyNe covers the polynomial
+   factor); `hψirr` now supplies the field-quotient input when the bridge is built.
+7. **`F_{i+1} = F_i[z]/(ψ_i)` at the FINAL node** (audit F15) — `hzbarRoot` + `hψirr` +
+   `LandingKey` only; the quotient identification is not recorded (nothing counted consumes
+   it).
+8. **`stratum i` off the locus** — unchanged (harmless, pinned on-locus by `inh_implied`).
+9. **Recentering-landing `center ≠ 0`** at a final read — unchanged, minor.
+10. **u* attainability at non-adjacent endpoints** — the γ-tie makes the endpoint weight an
+    integer of the augmented scale (on-lattice as rev 14 states it); that this height is
+    ATTAINED by a coordinate of the endpoint block is presentation content (feeds nothing
+    counted; the adjacent case is pinned by (SAE)+`hLineU`).
+
+Gaps CLOSED relative to R3.C: R3.C.7 (non-adjacent intercept quantization — now the γ-tie,
+residue narrowed to attainability, item 10); the R3.C intercept/vertex-entry items are fully
+closed by F11/F16/F19 above.
+
+## R4.C — elaboration record (round 4)
+
+`MovesC/Defs.lean`: 855 lines, `lake env lean` exit 0, no output, no `sorry`/`axiom`; olean
+rebuilt in place. Frozen spot-check: C2.DOM, C3.crossing, C4.conditionalMass — `lake env lean`
+exit 0 each (pre-existing unused-variable linter warnings only). The 13 RETYPE/NEW statements
+elaborated in one file against the round-4 Defs: exactly 13 sorry-warnings, zero errors,
+exit 0. Unit census unchanged: 36 = 23 FROZEN + 13 RETYPE/NEW (12 statements unchanged,
+C3.lineDom gains `hreal : Realizable H`). Fan-out gate: RETYPE/NEW units wait on the round-4
+semantic audit (re-adjudicate: TransitionAdmissible vs rev 12/13's displays; hAnchor vs
+D.3(c); hbezCanon vs D.5 P2; the fresh_band/fresh_cover/codim-per-clause triple vs D.11).
