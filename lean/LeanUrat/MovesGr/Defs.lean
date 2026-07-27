@@ -196,6 +196,12 @@ rests on the L1 units inhabiting this for the base stage. -/
 structure GradedRingStr {p : ℕ} [Fact p.Prime] (S : SideVal p) where
   /-- the commutative ring structure on `gr_w(A)` -/
   ring : CommRing S.Gr
+  /-- the additive structure is the DirectSum's — D.1 makes gr's additive group part of
+  the DEFINITION; only the multiplication is new structure. Stated COMPONENTWISE (the
+  DirectSum addition IS the componentwise one, and DirectSum elements are equal iff all
+  components are): a Gr-level `x + y` RHS would silently re-read the ambient `ring`
+  field's `+` and state a tautology (machine-checked; blueprint §8.4). -/
+  add_def : ∀ (x y : S.Gr) (γ : ℤ), (letI := ring; x + y) γ = x γ + y γ
   /-- the product restricts to the genuine piece multiplication `pmul` (D.1(a)) -/
   mul_of : letI := ring; ∀ (γ δ : ℤ) (x : S.grPiece γ) (y : S.grPiece δ),
       DirectSum.of _ γ x * DirectSum.of _ δ y = DirectSum.of _ (γ + δ) (S.pmul γ δ x y)

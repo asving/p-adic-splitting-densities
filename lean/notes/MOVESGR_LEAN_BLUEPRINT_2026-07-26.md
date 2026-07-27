@@ -199,6 +199,7 @@ The 4 sorried units compile with exactly one `sorry` warning each. Status counts
   the DEFINITION; only the multiplication is new structure -/
   add_def : ∀ x y : S.Gr, (letI := ring; x + y) = x + y
   ```
+  **§8.1 OPTION (a) SIGNED OFF by Asvin, 2026-07-28.**
   (RHS = the ambient DirectSum addition.) Justification: with `add_def`, `0`/`-` are pinned
   (uniqueness of additive identity/inverse — the derivations already machine-checked in
   `L2_degZero_subring_v2`), and `mul_of` + biadditivity then determine `*` on ALL of `Gr`,
@@ -277,3 +278,68 @@ Under option (a) the statement text is unchanged and `hadd` is `Rg.add_def`. Eit
 backward direction becomes the honest graded leading-term argument (decompose along DirectSum
 support, top-degree component of a product = `pmul` of nonzero top classes = `[ab] ≠ 0` by
 `hval` + `deg_eq`); forward direction already machine-checked unconditionally (v2:77-97).
+
+### 8.4 OPTION (a) EXECUTED — structure-change engineer, 2026-07-28
+
+**The field, as landed (Defs.lean `GradedRingStr`):**
+
+```
+add_def : ∀ (x y : S.Gr) (γ : ℤ), (letI := ring; x + y) γ = x γ + y γ
+```
+
+**Deviation from the signed-off text, machine-forced (flagged for semantic-guardian
+review):** the signed-off Gr-level equation `(letI := ring; x + y) = x + y` elaborates to
+a TAUTOLOGY — Lean makes the `ring` field an ambient instance for the later field types,
+so the RHS `x + y` silently re-reads the ring's `+` (machine-checked with `pp.explicit`:
+both sides `instDistribOfSemiring(... Rg.ring)`; an inner `letI` on the RHS is also
+ignored — the postponed `+` elaborator resumes against the ambient field instance, minimal
+repro kept in this section's history). The componentwise form above is instance-unambiguous
+(`grPiece`-level `+` on the RHS; DirectSum addition IS the componentwise one, and DirectSum
+elements are equal iff componentwise equal) and elaborates faithfully: LHS `Rg.ring`'s `+`
+at component γ, RHS the piece addition — verified with `pp.explicit`. The elementwise
+DS-flavored equation is DERIVED in consumer files (`ring_add_eq`, via `DFinsupp.ext`).
+Content = the signed-off content; only the elaboration vehicle differs.
+
+**The rfl check (2):** at the sole constructor `L1_gradedRingStr_exists`
+(`L1_gradedRingStr_exists_2.lean`, ring := `DirectSum.commRing` over `DirectSum.GCommRing`),
+`add_def := fun _ _ _ => rfl` CLOSES — and non-vacuously so (the componentwise field pins
+the ring's `+`; the vacuous-rfl trap of the raw signed-off text is documented above). The
+superseded partial `L1_gradedRingStr_exists.lean` got the same one-token fix.
+
+**Stability (3):** all 17 previously-proved units re-verified against the new Defs
+(`lake env lean`, exit 0 each; logs `/tmp/movesgr_optA_verify.log`, `_verify2.log`) —
+NO breakage, zero proof-side fixes needed beyond the constructor; footprints all
+`[propext, Classical.choice, Quot.sound]`. Held certificates (`HeldUnits_certs.lean`,
+`HeldUnits_L5_cert.lean`, 6 theorems) re-verified, Lean-core. The still-sorried
+`L1_gr_domain_iff_val_v2`, `L2_coeffLoc_v2` and the superseded v1 files compile unchanged.
+
+**The unblocked fills (4), per-unit outcomes + machine-printed footprints:**
+
+* `L2_degZero_subring` — **FULLY PROVED** (`L2_degZero_subring_v2.lean`): the single `hadd`
+  gap = `add_def` at degree 0 (`DFinsupp.ext` + `Rg.add_def` + `of`-component lemmas).
+  `#print axioms` = `[propext, Classical.choice, Quot.sound]`.
+* `L1_gr_domain_iff_val` — **FULLY PROVED, statement text UNCHANGED** (the option-(a)
+  re-key; new file `L1_gr_domain_iff_val_v3.lean`, v2 kept as the diagnosis record):
+  backward = the graded leading-term argument exactly as outlined in §8.3 — `add_def`
+  pins `0`/`+`, bounded elements decompose into `AddSubmonoid.closure` of homogeneous
+  classes (`DirectSum.sum_support_of`), the biadditive extension is pinned by `mul_of`
+  (`mul_component_top`: `(a*b)(γa+γb) = pmul (a γa) (b γb)` via double
+  `closure_induction`), and top classes have exact-weight representatives whose product
+  keeps exact weight by `hval`. Forward verbatim from v2.
+  `#print axioms` = `[propext, Classical.choice, Quot.sound]`.
+* `L4_genuine_imp_stageCoreL` — **the add_def-gated legs CLOSED, all p**
+  (`L4_genuine_imp_stageCoreL_v2.lean`): `R_neg` and `w_jump` now uniform in p via the
+  graded route (`R_neg_model`/`w_jump_model`: `[−f] = −[f]` through `Θ∘ι`, ring `−`
+  pinned by `add_def`; supersedes the odd-p arithmetic detour, which is retained for the
+  record), and `slot`.1 via `slot_decomp_model` (the additive γ-graded evaluation
+  `EV u = Θ(ι(of γ [u]))` on `A_{≥γ}`, `Finset` additivity + termwise `C(R·)·Tγ`).
+  Remaining `sorry`s = exactly the v2 classification (11 obligations: `wPrev_mul`,
+  `wPrev_ult`, `reps_nonempty`, `p_is_rep`, `tvec`, `prevIaug`, `slot`.2, `coeff`.2-3,
+  `tvec_unit`, `coeff_loc`) — the unit stays audited FAITHLESS-overreaching (#21); its
+  faithful repair remains the `GenuineStageModel` enrichment, NOT more proof effort.
+* Held five: untouched, certificates re-verified (§8.2 stands).
+
+**Ledger after this round:** 19 proved + 2 sorried (`L2_coeffLoc`,
+`L4_genuine_imp_stageCoreL`) + 5 held. MANIFEST: top-level `rekey_2026-07-28` note +
+`rekey` markers on the 7 statements mentioning `GradedRingStr`
+(`GenuineStageModel`-consuming statements inherit through `Rg`).

@@ -2,6 +2,7 @@
  "provenance": "Discharges MOVES_LEAN_BLUEPRINT_2026-07-26.md §R5.3 (the graded-ring boundary) and MOVES_LEAN_SEMAUDIT5_2026-07-26.md's 'definitional facade' objection. Design/DAG/mathlib-reuse/gaps: MOVESGR_LEAN_BLUEPRINT_2026-07-26.md. Shared vocabulary: LeanUrat/MovesGr/Defs.lean (compiles green, no sorry/axiom).",
  "preamble": "import Mathlib; import LeanUrat.Moves.Defs; import LeanUrat.Moves.DefsT; import LeanUrat.Moves.DefsCore; import LeanUrat.Moves.DefsL; import LeanUrat.MovesGr.Defs; open Polynomial LeanUrat.Moves LeanUrat.MovesGr LeanUrat.MovesGr.SideVal; variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]",
  "elaboration_test": "All 26 statements elaborated together against the Defs preamble (`:= sorry`, `lake env lean`, exit 0, exactly 26 `sorry` warnings, zero errors) on 2026-07-26, Lean 4.31.0.",
+ "rekey_2026-07-28": "OPTION (a) of blueprint §8.1 EXECUTED (signed off by Asvin, 2026-07-28): `GradedRingStr` gained the field `add_def : ∀ (x y : S.Gr) (γ : ℤ), (letI := ring; x + y) γ = x γ + y γ` — the ring's addition is componentwise, i.e. the DirectSum's. (Stated componentwise, NOT as the signed-off Gr-level equation: Lean makes the `ring` field an ambient instance for later field types, so a Gr-level RHS `x + y` silently re-reads the ring's `+` and states a tautology — machine-checked; see blueprint §8.4.) Every statement whose text mentions `GradedRingStr` is re-keyed by the structure change and carries a `rekey` marker below; statements consuming `GenuineStageModel` inherit the re-key through its `Rg : GradedRingStr` field.",
  "layer_counts": {
   "L0": 6,
   "L1": 5,
@@ -75,7 +76,8 @@
     "L0_pmul_mk"
    ],
    "statement": "theorem L1_pmul_assoc (S : SideVal p) (Rg : GradedRingStr S) (γ δ ε : ℤ) (x : S.grPiece γ) (y : S.grPiece δ) (z : S.grPiece ε) : HEq (S.pmul (γ + δ) ε (S.pmul γ δ x y) z) (S.pmul γ (δ + ε) x (S.pmul δ ε y z)) := sorry",
-   "sketch": "Associativity of the piece product (HEq because the two sides live in `gr_{(γ+δ)+ε}` vs `gr_{γ+(δ+ε)}`). Reduce via `L0_pmul_mk` to `[(ab)c]=[a(bc)]` in A, then `mul_assoc` + degree `add_assoc` cast. One of the fields feeding `L1_gradedRingStr_exists`."
+   "sketch": "Associativity of the piece product (HEq because the two sides live in `gr_{(γ+δ)+ε}` vs `gr_{γ+(δ+ε)}`). Reduce via `L0_pmul_mk` to `[(ab)c]=[a(bc)]` in A, then `mul_assoc` + degree `add_assoc` cast. One of the fields feeding `L1_gradedRingStr_exists`.",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def (statement consumes Rg; proof unaffected, re-verified)."
   },
   {
    "id": "L1_initialForm_mul",
@@ -87,7 +89,8 @@
    ],
    "statement": "theorem L1_initialForm_mul (S : SideVal p) (Rg : GradedRingStr S) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : letI := Rg.ring; S.initialForm (f * g) = S.initialForm f * S.initialForm g := sorry",
    "sketch": "Rg.mul_of reduces the RHS to `of (deg f+deg g) (pmul [f] [g])`; `L0_pmul_mk` gives `pmul [f][g]=[fg]`; `L0_deg_add hval` aligns the degree index (hval from `if_mul`/valuation). D.1(c) multiplicativity of [·].",
-   "faithfulness": "D.1(c): equivalent to `w` being a valuation (equality in submult)."
+   "faithfulness": "D.1(c): equivalent to `w` being a valuation (equality in submult).",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def (statement consumes Rg; proof unaffected, re-verified)."
   },
   {
    "id": "L1_initialForm_add_lt",
@@ -98,7 +101,8 @@
    ],
    "statement": "theorem L1_initialForm_add_lt (S : SideVal p) (Rg : GradedRingStr S) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) (hfg : f + g ≠ 0) (hlt : S.deg f < S.deg g) : S.initialForm (f + g) = S.initialForm f := sorry",
    "sketch": "D.1(b) tie: w(f+g)=w f < w g so deg(f+g)=deg f and [f+g]=[f] in that piece (g ∈ gt(deg f)). Reduce to quotient `sub_mem` of `f+g-f=g ∈ gt`.",
-   "faithfulness": "D.1(b) — the strictly-lower-weight-wins tie law."
+   "faithfulness": "D.1(b) — the strictly-lower-weight-wins tie law.",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def (statement consumes Rg; proof unaffected, re-verified)."
   },
   {
    "id": "L1_gradedRingStr_exists",
@@ -112,7 +116,8 @@
    ],
    "statement": "theorem L1_gradedRingStr_exists (S : SideVal p) (hval : ∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) : Nonempty (GradedRingStr S) := sorry",
    "sketch": "CAPSTONE of D.1(a)-(c): assemble the `CommRing S.Gr` by extending `pmul` over the DirectSum (`DirectSum.toAddMonoid` bilinear extension), then discharge the ring axioms from `L1_pmul_assoc` (assoc), symmetry of `pmul` (comm), and `mul_of`/`one_def`/`if_mul`/`if_add_lt` fields. Uses `hval` (valuation) for `if_mul`. Largest unit; may itself split into a `GMul`/`GSemiring` sub-thread in the fan-out.",
-   "faithfulness": "The genuine graded ring; its inhabitation is the point that discharges the façade."
+   "faithfulness": "The genuine graded ring; its inhabitation is the point that discharges the façade.",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; constructor site updated, add_def closes by rfl for DirectSum.commRing (non-vacuously: componentwise field), proved in L1_gradedRingStr_exists_2.lean."
   },
   {
    "id": "L1_gr_domain_iff_val",
@@ -123,7 +128,8 @@
    ],
    "statement": "theorem L1_gr_domain_iff_val (S : SideVal p) (Rg : GradedRingStr S) : (letI := Rg.ring; IsDomain S.Gr) ↔ (∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) := sorry",
    "sketch": "D.1(c) verbatim: `gr` is a domain ⟺ `w` is a valuation. (⟸) products of nonzero homogeneous [f][g]=[fg]≠0 by `L0_initialForm_ne_zero`; (⟹) a strict submult drop makes [f][g]=0 with both nonzero.",
-   "faithfulness": "D.1(c)."
+   "faithfulness": "D.1(c).",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; statement text UNCHANGED, but under add_def the backward direction is TRUE (v2 diagnosed it FALSE against the old 4-field structure); FULLY PROVED in L1_gr_domain_iff_val_v3.lean (graded leading-term argument)."
   },
   {
    "id": "L2_loc_exists",
@@ -133,7 +139,8 @@
     "L1_gradedRingStr_exists"
    ],
    "statement": "theorem L2_loc_exists (S : SideVal p) (Rg : GradedRingStr S) (M : letI := Rg.ring; Submonoid S.Gr) : letI := Rg.ring; ∃ (L : Type) (_ : CommRing L) (_ : Algebra S.Gr L), IsLocalization M L := sorry",
-   "sketch": "D.1(d): mathlib `Localization M` is the canonical witness — `⟨Localization M, inferInstance, inferInstance, Localization.isLocalization⟩`. Direct mathlib reuse."
+   "sketch": "D.1(d): mathlib `Localization M` is the canonical witness — `⟨Localization M, inferInstance, inferInstance, Localization.isLocalization⟩`. Direct mathlib reuse.",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def (statement consumes Rg; proof unaffected, re-verified)."
   },
   {
    "id": "L2_degZero_subring",
@@ -144,7 +151,8 @@
    ],
    "statement": "theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.ring; ∃ (R0 : Subring S.Gr), ∀ x : S.Gr, x ∈ R0 ↔ (∀ γ ≠ (0:ℤ), (x γ : S.grPiece γ) = 0) := sorry",
    "sketch": "D.1(d): the degree-0 elements form a subring; `R0 := { x | ∀ γ≠0, x γ = 0 }` closed under +,*,1 (degree-0 · degree-0 ⊆ degree-0 via `mul_of`+`pmul`).",
-   "faithfulness": "The `L₀`/degree-0 subring of the graded localization."
+   "faithfulness": "The `L₀`/degree-0 subring of the graded localization.",
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; the single hadd gap of v2 is exactly add_def at degree 0; FULLY PROVED in L2_degZero_subring_v2.lean."
   },
   {
    "id": "L2_homMon_homogeneous",

@@ -3,22 +3,20 @@ MovesGr unit L2_degZero_subring (v2 — restructured second attempt, 2026-07-26)
 Statement byte-identical to lean/LeanUrat/MovesGr/MANIFEST.json.
 
 RESTRUCTURE vs. the first attempt (L2_degZero_subring.lean, 3 sorries): the whole
-additive gap is reduced to a SINGLE sorry, `hadd` below — ring addition agrees with
+additive gap is reduced to the SINGLE equation `hadd` below — ring addition agrees with
 DirectSum addition on degree-0 `of`-elements. From that one equation the ring zero
 (`of 0 0 + of 0 0 = of 0 0` + cancellation) and ring negation
 (`of 0 a + of 0 (-a) = 0` + uniqueness of inverses) are DERIVED, so `zero_mem'` and
 `neg_mem'` are no longer independent gaps. `mul_mem'`, `one_mem'`, and the membership
 iff are fully proved.
 
-WHY `hadd` cannot be closed (machine-confirmed by attempt 1, re-verified by analysis):
-the four fields of `GradedRingStr` (`mul_of`, `one_def`, `if_mul`, `if_add_lt`) contain
-NO occurrence of `Rg.ring`'s `+` — `if_add_lt` adds POLYNOMIALS, not Gr-elements — so no
-equation about the ring's addition beyond the bare group axioms is derivable; `(a+b) γ`
-reads `Rg.ring`'s `HAdd`, a distinct instance from the DirectSum one. For the INTENDED
-instance (`ring` built on the DirectSum's own additive structure in
-`L1_gradedRingStr_exists`) `hadd` holds definitionally (`DirectSum.add_apply`). The fix
-is a `GradedRingStr` field tying the additive structures — a statement change to
-MovesGr/Defs.lean requiring sign-off (flagged; NOT made here).
+HISTORY: `hadd` could not be closed against the original 4-field `GradedRingStr` (the
+fields contained NO occurrence of `Rg.ring`'s `+`; machine-confirmed by attempt 1). The
+fix was the §8.1 blueprint proposal, OPTION (a) SIGNED OFF by Asvin 2026-07-28: the
+`add_def` field of `GradedRingStr` ties `Rg.ring`'s addition to the DirectSum's.
+
+STATUS NOW: FULLY PROVED. `hadd` is exactly `Rg.add_def` composed with additivity of
+`DirectSum.of` (the one-line term below); everything else was already machine-checked.
 -/
 import Mathlib
 import LeanUrat.Moves.Defs
@@ -47,10 +45,18 @@ theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.r
     rcases eq_or_ne j 0 with hj | hj
     · subst hj; simp
     · rw [hx j hj]; symm; exact DirectSum.of_eq_of_ne _ _ _ hj
-  -- THE SINGLE GAP (see file header): ring `+` = DirectSum `+` on degree-0 `of`-elements.
+  -- The former single gap, closed by `Rg.add_def` (option (a), signed off 2026-07-28):
+  -- ring `+` = DirectSum `+` on degree-0 `of`-elements.
   have hadd : ∀ a b : S.grPiece 0,
       DirectSum.of (fun γ => S.grPiece γ) 0 a + DirectSum.of (fun γ => S.grPiece γ) 0 b
-        = DirectSum.of (fun γ => S.grPiece γ) 0 (a + b) := sorry
+        = DirectSum.of (fun γ => S.grPiece γ) 0 (a + b) := by
+    intro a b
+    refine DFinsupp.ext fun j => ?_
+    rw [Rg.add_def]
+    rcases eq_or_ne j 0 with hj | hj
+    · subst hj; simp
+    · rw [DirectSum.of_eq_of_ne _ _ _ hj, DirectSum.of_eq_of_ne _ _ _ hj,
+        DirectSum.of_eq_of_ne _ _ _ hj, add_zero]
   -- Derived: the ring zero is `of 0 0` (idempotent + cancellation).
   have hzero : DirectSum.of (fun γ => S.grPiece γ) 0 (0 : S.grPiece 0) = (0 : S.Gr) := by
     have h1 := hadd 0 0
@@ -92,3 +98,5 @@ theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.r
     rw [hdecomp a ha, hneg (a 0), DirectSum.of_eq_of_ne _ _ _ hγ]
 
 end LeanUrat.MovesGr
+
+#print axioms LeanUrat.MovesGr.L2_degZero_subring

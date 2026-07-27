@@ -172,7 +172,7 @@ end Build
 
 theorem L1_gradedRingStr_exists (S : SideVal p) (hval : ∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) : Nonempty (GradedRingStr S) := by
   letI cr : CommRing S.Gr := DirectSum.commRing (fun γ => S.grPiece γ)
-  refine ⟨{ ring := cr, mul_of := ?_, one_def := ?_, if_mul := ?_, if_add_lt := ?_ }⟩
+  refine ⟨{ ring := cr, add_def := fun _ _ _ => rfl, mul_of := ?_, one_def := ?_, if_mul := ?_, if_add_lt := ?_ }⟩
   · intro γ δ x y; exact DirectSum.of_mul_of x y
   · -- one_def : (1 : S.Gr) = S.initialForm 1
     have hdeg : S.deg 1 = 0 := by unfold SideVal.deg; rw [S.w_one]; rfl
