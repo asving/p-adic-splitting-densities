@@ -187,6 +187,24 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   Journey: 6/11 -> 2/4 -> split (5/8 vs 0/0) -> adjudicated 1/1 + 0/1 -> 0/0
   dual. THE NOTE ERRATUM (R6 row) now confirmed by four independent auditor
   passes. E-phase launched. ***
+  PHASE-2 CLOSURE DISPOSITIONS (2026-07-28, orchestrator):
+  - MovesS: rev 13 = closure by ADJUDICATION — Fable 0-crit three consecutive
+    computation-verified rounds; Codex's residual scope criticals OVERRULED by
+    direct note reads (per-pool junk-block discipline 12198-12209; consumed
+    legs 12205; the J-RAT per-cell presentation = owner [1v] per the note's
+    own PLAN-SYNC flag). The deferred Codex leg = a RATIFICATION pass on the
+    E-phase Lean statements after the Aug-02 reset. Core -> E-phase.
+  - MovesD: rev 9 = the SEAM SPLIT (the TreeModel semantic layer + VerdictModel
+    + D4R_CYL consumer + the NPband pin -> a §W4-SYNC contract; they are
+    §T-ASSEMBLY vocabulary — Codex's own rev-8 findings demand ties in BOTH
+    directions that only MovesT's apparatus can state). Core (certificate +
+    E1-E9 + mass laws + gate, repeatedly number-confirmed by both verifiers)
+    -> E-phase; Codex ratification post-reset.
+  - Verifier-disagreement lesson (for the record): NINE MovesS rounds and
+    EIGHT MovesD rounds; every mathematical-content finding converged; the
+    non-converging residue was always interface-pinning strength at seams
+    whose owner vocabulary doesn't exist yet. The seam-split + adjudicated
+    closure is the honest boundary, matching the notes' own owner ledgers.
   CODEX BUDGET AT 90% (post-XE-refutation): remaining Codex = the queued
   closing finals ONLY (MovesS rev 11, MovesD rev 7, the XE mini-audit).
   After those: Codex PAUSED until the window resets (Sun Aug 02); interim
