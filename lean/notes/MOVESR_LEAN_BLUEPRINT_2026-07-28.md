@@ -1,18 +1,28 @@
-# MovesR LEAN BLUEPRINT — REV 3
+# MovesR LEAN BLUEPRINT — REV 4 (re-architecture per stuck-rule adjudication #1)
 
 SOURCE (ground truth): `lean/notes/MOVES_2026-07-24.md` §R-LEDGER, rev 5, DUAL-ACCEPTED
-2026-07-27. AUDITS: `MOVESR_AUDIT_CODEX_2026-07-28.md` — REJECT (15 crit / 6 gap) on
-rev 1, all 21 repaired at rev 2 and verified genuine by the fresh-Fable re-audit;
-`MOVESR_AUDIT_FABLE_2026-07-28.md` — REJECT (2 crit / 5 gap) on rev 2, all 7 (FF1–FF7)
-repaired here (findings→repairs table, §5). For Lemma LST the §C display itself
-(MOVES 3728–3781) is now a consulted source (the FF1 adjudication). The
+2026-07-27; Lemma LST's §C display (MOVES 3728–3781) a consulted source since rev 3.
+AUDIT TRAIL: rev 1 → Codex REJECT 15c/6g (all repaired rev 2); rev 2 → Fable REJECT
+2c/5g, Codex repairs verified genuine (all repaired rev 3); rev 3 → MAXIMAL SPLIT:
+fresh-Fable #2 ACCEPT 0/0 (`MOVESR_AUDIT_FABLE2_2026-07-28.md`, FF1–FF7 verified
+leg-by-leg) vs Codex FINAL REJECT 15c/5g (`MOVESR_AUDIT_CODEX_FINAL_2026-07-28.md`).
+ORCHESTRATOR ADJUDICATION (campaign ledger, stuck-rule #1): the split is systematic —
+Codex reads explicit fences (K1-chain/in_γ internals, §B1 graded machinery) as DROPPED
+CONTENT; Fable reads them as faithful declared pointers; unresolvable at the
+statements-only level because §R-LEDGER's clauses genuinely POINT INTO §C machinery
+with no Lean form. RESOLUTION = THIS REV: the §C machinery gets a minimal abstract
+interface (`GradedCarrier` + per-lemma statement defs + `CStatements`), so every
+clause field's TYPE is the cited lemma's full statement — no fence; instantiating the
+interface from the OM engine is HC-1's declared deliverable. Codex-FINAL findings are
+each triaged in §5 (survived → folded in / resolved-by-rearchitecture / note-rejected
+after the ordered note-checks). The
 campaign-wide lesson driving this revision: **STATEMENTS-ONLY ≠ CONTENT-FREE** — a
 faithful obligation statement must be FALSE for instances the note would reject. So
 every carrier structure now carries the note's own laws as fields (measure laws,
 normalized-cylinder masses, nonemptiness/finiteness, typed clause content), and every
 open kernel remains a named Prop that consumers hypothesize — nothing is discharged.
 Units are definitions + elaboration checks; proof burden = the base-index layer only
-(R2–R6, R20, R23). Unit format per `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md` §2.
+(U2–U6, U12, U41). Unit format per `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md` §2.
 Files land under `lean/LeanUrat/MovesR/`.
 
 ## 0. Design decisions
@@ -57,44 +67,44 @@ note's own provisos exclude, and every display carries the proviso as its guard.
 masses are exact rationals ("sealed rational mass, displayed fractions"); β entries
 are ℚ(q) evaluated at q = p^{δ_j} ∈ ℕ. No `ℝ≥0∞`.
 
-**(D4) REL.1 = TYPED CLAUSE LEDGER + THE (REL.1-b) DISPLAY (findings 3/4/5 repair).**
-The rev-1 arbitrary-Prop slots are RETIRED. `REL1Clauses` is now a Prop-structure
-over a re-based carrier package `ReBased p δ n` (fixed box degree n — finding 4),
-with TEN NAMED FIELDS, each typed over the actual objects its clause mentions, in
-the vocabulary §R-LEDGER itself displays ((R0-box/tower/reads/ledger) + the walk
-items): tower laws via `AdjoinRoot` presentations (§A/§B1/§B2-DEF), classifier locus
-= jet-preimage of a digit system (Theorem C(a), MovesC's thmC_a shape), unitriangular
-transports + frame-invariant pin statistics (C.0.5/PIN-WELLDEF), the per-constrained-
-digit |𝔸_δ|⁻¹ = (p^{a_δ})⁻¹ product (C.1, (R0-ledger) verbatim), a transport-invariant
-(ZC) statistic (C.1.5), Lemma LST's level-set scale-typing legs (LST — retyped at
-REV 3 per FF1: ht-weight slot-minimum TYPING, interior FLOOR CONSTANCY, floor-downset
-SELECTION, against the §C display at MOVES 3728; the rev-2 stabilization reading is
-REFUTED and withdrawn), per-digit ADDITIVITY of the jet map (TYP — walk item (i)'s
-retyping, verbatim), and MovesC's base-free `DomData` (DOM — the note: "valuation
-geometry … carries over as written"). The (REL.1-b) LHS `count` is no longer free
-data: it is DEFINED from in-corpus vocabulary (`SHZ` + `cyl`, FF2), so `REL1b` is a
-counting fact about the classifier locus, not a relation between supplied numbers.
-`ReBased` is parameterized by (Sp, AD) and carries `posOfDigit` + `aDim_eq`, tying
-the c1 exponents to (EQ-2)'s alphabet data (FF4). The
-clause fields REMAIN unproved obligations; their TYPES now pin their content. Where
-§R-LEDGER's own text gives no display for a clause's internals (§B1's graded pieces),
-the field types the typable residue (finite stage carriers, char p, tower embeddings)
-and the docstring cites the (R0-tower) fence — recorded, not smuggled.
+**(D4) REL.1 = THE CInterface (REV-4 RE-ARCHITECTURE; supersedes the rev-2/3 clause
+ledger and its fences).** Three layers:
+(a) **`GradedCarrier p δ`** — the D.3(e)/§C graded vocabulary as ABSTRACT TYPES WITH
+LAWS, ≤ ~10 fields, NO construction: coefficients, graded pieces Gr γ, the K1-chain-
+weight function w, the initial-form/class map in_γ, ultrametric additivity of w,
+additivity of in_γ at its weight, kills-weight-above, weight-detection. Instantiating
+it from the OM engine is **HC-1's declared deliverable** (campaign plan §1).
+(b) **Per-lemma statement defs + `CStatements`** — one named def per §C lemma the
+ledger cites (`SecAStmt, SecB1Stmt, SecB2Stmt, ThmCaStmt, ThmCbStmt, C05Stmt, C1Stmt,
+C15Stmt, LSTStmt, TYPStmt, DOMStmt`), each def's body = the lemma's FULL statement
+over the carrier bundle at the base params — LST's def carries ALL of (i) including
+the K1-chain-weight typing (`G.w (mono i) = ht i`) and the initial-form/level-set
+functionality, plus (ii) and (iii), typed once, NO FENCE. `CStatements p Sp AD δ n K`
+is the record with one field per lemma, each field's type the named def.
+(c) **REL.1's ledger := `CStatements` at base δ** — a TYPED POINTER, the note's own
+"MUTATIS MUTANDIS" (`def REL1 … := CStatements …`, with `ThmCbStmt` = the (REL.1-b)
+display over the DEFINED count — FF2's pin retained). EQ-1/EQ-2 are ATTACHED to
+REL.1 per the note (CF17): `REL1PassDeliverable := REL1 ∧ EQ1` (EQ-1 is "a named
+checkpoint of REL.1's re-scoping pass") and `EQ2lawIfREL1 := REL1 → EQ2law` (the
+note's "OPEN, REL.1-conditional" status, typed).
+Retained from rev 3 (Fable-verified, re-keyed onto the interface): the count
+definition (FF2), the (Sp, AD) wiring `posOfDigit`/`aDim_eq` (FF4), pin-statistics
+invariance — now over a proper STATUS carrier (CF9) — the memberships (FF5), the
+`_linked` pattern (FF6), and the unitriangularity anchors (FF7).
 
-**(D5) THE (e) KEYING (findings 13/14 repair).** `entryFirst : ℕ` is FIXED per
-branch (the note: e_j defined "from b_j's data" — never varying with T, which would
-smuggle the subtree into the first index). The prescriptions [3]'s entry at this key
-actually consumes form a deliverable set `consumed : Set S.PTree` (nonempty); (e5)'s
-first disjunct `determines` says `consumed` is a singleton class (the entry's indices
-determine T_j); (e3) `massEqEntry` is stated GIVEN `determines` (the note: without
-(e5) the equation is ill-typed) and prices every consumed prescription. The re-keying
-escape ("T_j added as an explicit further index, tables re-keyed") is a STATEMENT-
-FENCE EVENT — if `determines` is refuted, R17's β field type changes only with
-designer sign-off. (e4)'s agreement with [3]'s table convention is typed as
-`e4agrees (tableConv : ℕ → Prop)` — the convention itself is [3]/MovesS's export,
-threaded as a parameter, so the agreement is a typed claim, not prose. (e1)'s
-compatibility with (a6) is typed: states carry defining reads, transported
-letter-for-letter through `readDict` (`stateDict_compat`).
+**(D5) THE (e) KEYING (findings 13/14 + CF13/CF14 repair).** `entryFirst : ℕ` is
+FIXED per branch (the note: e_j defined "from b_j's data"). REV 4 (CF14): `consumed`
+is NO LONGER an inhabitant-chosen field — it is a PARAMETER of the (e)-Props, supplied
+by [3]/MovesS's export exactly like `tableConv` (the prescriptions [3]'s tables
+actually consume at this key; choosing it here was the vacuity Codex flagged). (e5)'s
+first disjunct `determines` says the consumed class is a singleton; (e3) `massEqEntry`
+is stated GIVEN `determines` and prices every consumed prescription at THE REL.1 mass
+(`_linked`, FF6). The re-keying escape stays a STATEMENT-FENCE EVENT. (e4)'s
+obligation is `e4agrees (tableConv)` — [3]'s exported convention — ONLY; REV 4
+(CF13): `firstIdxCandidate` is DEMOTED to a named CANDIDATE definition that NO
+consumer may hypothesize (the note: "candidate … owed, not assumed"; it is removed
+from the D7 hypothesis list and marked non-obligation in its docstring). (e1)'s
+(a6)-compatibility stays typed (`stateDict_compat`).
 
 **(D6) NON-UNITS (deliberate, with reasons).**
 - **REL.3 (finding 21 repair — the rev-1 pseudo-statement is DELETED).** The note:
@@ -119,9 +129,11 @@ letter-for-letter through `readDict` (`stateDict_compat`).
 
 **(D7) HYPOTHESIS vs DELIVERABLE (explicit; per unit below).**
 - HYPOTHESES (open kernels; named Props consumers hypothesize — never proved or
-  axiomatized here): `REL1` (+ its `REL1Clauses` fields and `REL1b`), `REL2b`,
-  `REL2e.massEqEntry` (e3), `REL2e.determines` (e5), `REL2e.e4agrees` +
-  `firstIdxCandidate` (e4), `EQ1`, `EQ2law`, `EQ3`, `SIBOdelta`.
+  axiomatized here): `REL1` (= `CStatements` at base δ; + `REL1PassDeliverable`,
+  `EQ2lawIfREL1`), `REL2b`, `REL2e.massEqEntry` (e3), `REL2e.determines` (e5),
+  `REL2e.e4agrees` (e4), `EQ1`, `EQ2law`, `EQ3`, `SIBOdelta`.
+  (`firstIdxCandidate` REMOVED from this list at REV 4 — CF13: a candidate, not an
+  obligation; no consumer may hypothesize it.)
 - DELIVERABLES (data a future pass must EXHIBIT; the structure's INHABITANT is the
   deliverable): `REL2a` ((a1)–(a6) with `teich_pin` a FIELD), `REL2d` (square +
   typed node-data correspondence), `REL2e`'s data ((e1) dictionary + compat, β
@@ -134,7 +146,7 @@ letter-for-letter through `readDict` (`stateDict_compat`).
   remain possible wherever the ambient engine's objects (transports, trees, reads)
   do not exist in Lean — RECORDED as widening (v) in §3. Full pinning of those
   objects is REL.1-pass territory, not this corpus's.
-- PROVABLE NOW (the only proof burden): R2–R6, R20, R23.
+- PROVABLE NOW (the only proof burden): U2–U6, U12, U41.
 
 **(D8) REUSE OF EXISTING CORPORA (new; supports D4).** `DigitSystem n α`
 (`Moves/DefsT.lean:187`) is digit-polymorphic — instantiated at `α := ↥(Fsub p δ)`
@@ -149,8 +161,9 @@ any semantic mismatch discovered there re-enters the audit loop.
 instances (`Setting`, `SettingsFamily`, `SpeciesSyntax`, `AlphabetData`) get
 instance `example`s (well-formedness only, never evidence — the surviving trivial
 instances are exactly proviso-excluded or vacuous-by-the-note's-own-fences cases).
-Structures whose inhabitation IS the obligation (`REL2a`, `REL2d`, `REL2e`,
-`BoxVol`, `ReBased`, `TowerData`) get `#check` type-correctness elaborations ONLY —
+Structures whose inhabitation IS the obligation or HC-1's deliverable (`REL2a1`–
+`REL2a6` + bundle, `REL2d`, `REL2e`, `BoxVol`, `GradedCarrier`, `ReBased`,
+`TowerData`, `SIBPkg`) get `#check` type-correctness elaborations ONLY —
 their inhabitation story is the future pass, and that is the point (audit charge:
 "an inhabitation story OR an explicit instance unit"; the story is recorded per
 structure in its docstring).
@@ -235,9 +248,19 @@ structure Setting where
   SEvent_mem : ∀ T, SEvent T ∈ AmbEvents
   StateIdx : Type                         -- [3]/[3t]'s state indices
   τ : StateIdx                            -- τ_j(c)
+  /-- (CF10) the AMBIENT C.0.5 frame family at the cell ("state cylinder Σ (frame
+  Ψ_η)"): frames and their transports on continuation points are SUPPLIED BY THE
+  AMBIENT THEORY — (a5)'s commutation quantifies over THIS family, so no inhabitant
+  can substitute a private identity-only family. -/
+  FrameC : Type
+  frameCNe : Nonempty FrameC
+  reframe : FrameC → FrameC → Cont → Cont
 
 /-- `δ_j := δ·δ_j^rel` — ABSOLUTE accumulated residue degree; target base O_{δ_j}. -/
 def Setting.δabs (S : Setting) : ℕ+ := S.δ * S.δrel
+/-- (a2)'s target degree `d_j^rel := d_j/δ_j^rel` (ℕ-division; integrality is
+(a2)'s obligation `REL2a2`). -/
+def Setting.dRel (S : Setting) : ℕ := (S.d : ℕ) / (S.δrel : ℕ)
 /-- (e2)'s DEGREE CONVENTION pinned: "the β-argument is p^{δ_j} with δ_j ABSOLUTE". -/
 def Setting.βarg (S : Setting) : ℕ := qq p S.δabs
 
@@ -249,6 +272,13 @@ structure SettingsFamily where
   mem : Set (Setting p)
   ne : mem.Nonempty
   root_mem : ∃ S ∈ mem, S.δ = 1
+  /-- (CF1; NOTE-CHECK RESULT recorded) the note displays NO positive-cell
+  existence law; its only positivity text is (b)'s proviso "μ(Σ_c) > 0, the only
+  cells any (SIB) display conditions on". `mem_pos` types exactly that FAMILY
+  SCOPE: the family IS the family of (SIB)-conditioning sites, so its members are
+  the positive-mass cells — the advertised all-zero-mass singleton is dead
+  (ne + mem_pos), with no existence claim beyond the already-parameterized `ne`. -/
+  mem_pos : ∀ S ∈ mem, 0 < S.cellMass
   desc : (S : Setting p) → S ∈ mem → S.PTree → Set (Setting p)
   desc_sub : ∀ S hS T, desc S hS T ⊆ mem
   desc_amb : ∀ S hS T, ∀ S' ∈ desc S hS T, S'.δ = S.δabs
@@ -265,8 +295,19 @@ FINSET (finiteness typed — finding 15) and nonempty (species exist at every ba
 structure SpeciesSyntax where
   Letter : Type
   shape : Letter → ℕ × ℕ × ℕ × ℕ          -- the stage tuple (e, h, g, μ)
+  /-- (CF4) the rest of the note's grammar: "species letters are DEFINED BY stage
+  tuples (e, h, g, μ), side/lattice data, and polygon conventions" — side/lattice
+  and polygon-convention data as declared carriers, with `letter_det` typing
+  "defined by": the full datum determines the letter. -/
+  SideData : Type
+  side : Letter → SideData
+  PolyConv : Type
+  poly : Letter → PolyConv
+  letter_det : Function.Injective (fun l => (shape l, side l, poly l))
   menu : ℕ+ → Finset Letter               -- the realized menu over O_δ
-  menuNe : ∀ δ, (menu δ).Nonempty
+  -- (CF3, NOTE-CHECK RESULT: rev-3's `menuNe` was a STRENGTHENING — the note
+  -- asserts menu INVARIANCE only, and R.5 says "no menu/exhaustion claims".
+  -- REMOVED; empty menus are back in the statement's range.)
 
 /-- **(EQ-1)** [PREDICTED — "nothing derived here"; walked in REL.1's pass]:
 "the species alphabet and menu are the SAME finite syntax over every O_δ …
@@ -285,9 +326,19 @@ structure AlphabetData (Sp : SpeciesSyntax) where
   posNe : Nonempty Pos
   Carrier : ℕ+ → Pos → Type               -- the re-based receiving group
   [carrierGrp : ∀ δ x, AddCommGroup (Carrier δ x)]
-  alpha : ∀ δ x, Set (Carrier δ x)        -- 𝔸_δ: the attainable additive span
-  alpha_zero : ∀ δ x, (0 : Carrier δ x) ∈ alpha δ x
-  alpha_add : ∀ δ x, ∀ a ∈ alpha δ x, ∀ b ∈ alpha δ x, a + b ∈ alpha δ x
+  [carrierMod : ∀ δ x, Module ↥(Fsub p δ) (Carrier δ x)]   -- F_δ-structure (CF6)
+  /-- (CF5) the RE-BASED SLOT MAPS themselves, as declared data ("D.3(e)(i)/C.3
+  run over O_δ"): abstract domains with F_δ-structure and the piece maps. -/
+  SlotDom : ℕ+ → Pos → Type
+  [slotDomGrp : ∀ δ x, AddCommGroup (SlotDom δ x)]
+  [slotDomMod : ∀ δ x, Module ↥(Fsub p δ) (SlotDom δ x)]
+  slotMap : ∀ δ x, SlotDom δ x → Carrier δ x
+  alpha : ∀ δ x, Set (Carrier δ x)        -- 𝔸_δ
+  /-- (CF5) ATTAINABILITY, typed as span-generation equality: 𝔸_δ IS "the
+  attainable additive image/span of the RE-BASED slot maps" — not an arbitrary
+  additively-closed subset of the right size. -/
+  alpha_attain : ∀ δ x,
+    alpha δ x = ↑(AddSubgroup.closure (Set.range (slotMap δ x)))
   aDim : ℕ+ → Pos → ℕ                     -- a_δ: F_p-additive-span dimension
   card_eq : ∀ δ x, Nat.card (alpha δ x) = p ^ aDim δ x
   posLetter : ℕ+ → Pos → Sp.Letter        -- the realized species letter (owed dictionary, typed)
@@ -298,11 +349,15 @@ letter persists under re-basing. Split positions fail this and are OUT-OF-DOMAIN
 def AlphabetData.Stable {Sp} (AD : AlphabetData p Sp) (δ : ℕ+) (x : AD.Pos) : Prop :=
   AD.posLetter δ x = AD.posLetter 1 x
 
-/-- **(EQ-2) the a_δ = δ·a law ON THE PINNED PER-POSITION-CLASS DOMAIN** [OPEN,
-REL.1-conditional]: "at a fixed shape position WHOSE SPECIES IS δ-STABLE …
-the re-based piece maps are F_δ-linear and a_δ = δ·a". -/
+/-- **(EQ-2) the law ON THE PINNED PER-POSITION-CLASS DOMAIN** [OPEN,
+REL.1-conditional; attachment typed as `EQ2lawIfREL1`]: "at a fixed shape position
+WHOSE SPECIES IS δ-STABLE …, the re-based piece maps are F_δ-linear AND a_δ = δ·a"
+— BOTH conjuncts typed (CF6: the linearity half is now stateable, the slot maps
+being declared data with F_δ-module structure). -/
 def EQ2law {Sp} (AD : AlphabetData p Sp) : Prop :=
-  ∀ (δ : ℕ+) (x : AD.Pos), AD.Stable δ x → AD.aDim δ x = (δ : ℕ) * AD.aDim 1 x
+  ∀ (δ : ℕ+) (x : AD.Pos), AD.Stable δ x →
+    IsLinearMap ↥(Fsub p δ) (AD.slotMap δ x) ∧
+    AD.aDim δ x = (δ : ℕ) * AD.aDim 1 x
 
 /-- (EQ-2)'s displayed consequence "|𝔸_δ| = q_δ^a = |𝔸|^δ" on the pinned domain —
 PROVABLE (R20) from `card_eq` + hypothesized `EQ2law` by `pow_mul`. -/
@@ -310,6 +365,7 @@ theorem EQ2law_card {Sp} (AD : AlphabetData p Sp) (h : EQ2law p AD) :
     ∀ (δ : ℕ+) (x : AD.Pos), AD.Stable δ x →
       Nat.card (AD.alpha δ x) = qq p δ ^ AD.aDim 1 x ∧
       Nat.card (AD.alpha δ x) = Nat.card (AD.alpha 1 x) ^ (δ : ℕ) := sorry
+      -- (proof consumes h's DIMENSION conjunct only; pow arithmetic as before)
 
 -- (EQ-3) is declared after REL2b (it aliases it verbatim); see Rel2 block.
 ```
@@ -337,6 +393,33 @@ structure BoxVol (m : ℕ+) (n : ℕ) where
     Disjoint W W' → vol (W ∪ W') = vol W + vol W'
   vol_cyl : ∀ (N : ℕ) (g : Fin n → ↥(O p m)),
     vol (cyl p m N g) = ((qq p m : ℚ) ^ (n * N))⁻¹
+  /-- (CF15) LEVEL DETERMINATION: every event is, at some level, a finite union of
+  level-N cylinders — so `vol` on the WHOLE event class is FORCED by additivity +
+  `vol_cyl`: it IS the normalized Haar mass, not merely Haar-on-cylinders with
+  freedom elsewhere. This is the finitely-additive reading of "(digit cylinders
+  generate)", and it is the note's own discipline: (g7)'s "CERTIFIED determination
+  radius — every level-N box's … verdict constant on the box" is exactly the
+  requirement that priced events be level-determined. -/
+  events_level : ∀ W ∈ events, ∃ (N : ℕ) (G : Finset (Fin n → ↥(O p m))),
+    W = ⋃ g ∈ G, cyl p m N g
+
+/-- **THE CInterface, layer (a) — `GradedCarrier`** (REV 4, D4): the D.3(e)/§C
+graded vocabulary as abstract types with laws; NO construction — instantiation
+from the OM engine is HC-1's declared deliverable. Fields: coefficients, graded
+pieces, the K1-chain-weight function, the initial-form/class map, and its laws
+(ultrametric weight, additivity at weight, kills-weight-above, weight detection). -/
+structure GradedCarrier (δ : ℕ+) where
+  Coeff : Type                             -- slot coefficients B
+  [coeffAdd : AddCommGroup Coeff]
+  Gr : ℚ → Type                            -- D.3(e)(i)'s graded pieces
+  [grAdd : ∀ γ, AddCommGroup (Gr γ)]
+  w : Coeff → WithTop ℚ                    -- the K1-chain-weight function
+  inγ : (γ : ℚ) → Coeff → Gr γ             -- the initial-form / class map
+  w_add : ∀ B B', min (w B) (w B') ≤ w (B + B')
+  inγ_add : ∀ (γ : ℚ) (B B'), (γ : WithTop ℚ) ≤ w B → (γ : WithTop ℚ) ≤ w B' →
+    inγ γ (B + B') = inγ γ B + inγ γ B'    -- additivity at weight γ
+  inγ_kills : ∀ (γ : ℚ) B, (γ : WithTop ℚ) < w B → inγ γ B = 0  -- kills weight above
+  inγ_detects : ∀ (γ : ℚ) B, w B = (γ : WithTop ℚ) → inγ γ B ≠ 0  -- weight detection
 
 /-- (R0-tower) carrier: the re-based classifier tower of one history — "built
 afresh, NOT by scalar-extending the ℤ_p tower". Base shape F₁ = F_δ[x]/(φ̄), climb
@@ -421,20 +504,38 @@ structure ReBased (Sp : SpeciesSyntax) (AD : AlphabetData p Sp) (δ : ℕ+) (n :
   the exponents c1 consumes; REL-n4's exponent leg tests exactly these. -/
   posOfDigit : (H : C.Hist) → Fin (mOf H) → AD.Pos
   aDim_eq : ∀ H i, aDim H i = AD.aDim δ (posOfDigit H i)
-  pinnedIn : (H : C.Hist) → Frame H → C.Locus H → Finset (Fin (mOf H))  -- constrained digits
+  /-- (CF9) PIN STATUS as a proper carrier: each coordinate's pin-status datum
+  (C.0/C.0.5's "cardinality-and-STATUS statistics"), with the pinned set DEFINED
+  from it — alphabet dimensions are ledger weights, not statuses. -/
+  Status : Type
+  pinStatus : (H : C.Hist) → Frame H → C.Locus H → Fin (mOf H) → Status
+  constrained : Status → Prop
+  pinnedIn : (H : C.Hist) → Frame H → C.Locus H → Finset (Fin (mOf H))
+  pinnedIn_spec : ∀ H F Z i, i ∈ pinnedIn H F Z ↔ constrained (pinStatus H F Z i)
   zcStat : (H : C.Hist) → Frame H → C.Locus H → ℤ            -- C.1.5's (ZC) statistic
   lines : (H : C.Hist) → ℕ → Line         -- base-free floor lines (MovesC, D8)
   interiorEnd : C.Hist → ℕ
-  /-- LST carriers (FF1): absolute height ht(b,l) = l + off(b), block (slot-
-  coefficient) assignment, per-coordinate and per-block floors, factor-interior
-  blocks, the engine's floor downset, and the engine's slot-coefficient weight. -/
+  /-- THE CInterface ATTACHMENT (D4(a)): the graded carrier this instance's §C
+  statements quantify over. -/
+  G : GradedCarrier p δ
+  /-- LST carriers (FF1, upgraded at REV 4): absolute height, block assignment,
+  floors, factor-interior blocks, the engine's floor downset — PLUS the objects
+  the previously-fenced LST(i) clauses need: each coordinate's BASIS MONOMIAL in
+  the carrier and each block's SLOT COEFFICIENT at a digit vector (the engine's
+  weight is now `G.w (slotCoeff …)`, not a free field). -/
   ht : (H : C.Hist) → Fin (mOf H) → ℚ
   blkOf : (H : C.Hist) → Fin (mOf H) → ℕ
   floorC : (H : C.Hist) → Fin (mOf H) → ℚ
   floorB : (H : C.Hist) → ℕ → ℚ
   interiorB : (H : C.Hist) → ℕ → Prop
   floorSet : (H : C.Hist) → ℕ → Set (Fin (mOf H))
-  wSlot : (H : C.Hist) → ℕ → (Fin (mOf H) → ↥(Fsub p δ)) → WithTop ℚ
+  mono : (H : C.Hist) → Fin (mOf H) → G.Coeff
+  slotCoeff : (H : C.Hist) → ℕ → (Fin (mOf H) → ↥(Fsub p δ)) → G.Coeff
+  /-- (CF8) the note's own interior anchor: "on the factor interior — where ALL
+  FRESH CONTENT lives (C.1's rim bullet)" — constrained digits sit on
+  factor-interior blocks, so `interiorB ≡ False` forces the degenerate all-free
+  perimeter instead of silently discharging the LST legs. -/
+  interior_fresh : ∀ H (F : Frame H) Z, ∀ i ∈ pinnedIn H F Z, interiorB H (blkOf H i)
 
 /-- `#{ f mod p^N ∈ S(H, Z) }` — the (REL.1-b) LHS, DEFINED from in-corpus
 vocabulary (FF2 repair: kills the free-count instances): the number of level-N
@@ -444,143 +545,192 @@ noncomputable def ReBased.count {Sp AD δ n} (K : ReBased p Sp AD δ n)
     (H : K.C.Hist) (Z : K.C.Locus H) (N : ℕ) : ℕ :=
   Nat.card {W : Set (Fin n → ↥(O p δ)) // ∃ f ∈ K.SHZ H Z, W = cyl p δ N f}
 
-/-- **The REL.1 clause ledger, TYPED (findings 3/5 repair).** Ten named fields =
-the note's clause list "§A, §B1, §B2-DEF, and §C — through Theorem C(a)/(b) with
-C.0.5/PIN-WELLDEF, C.1, C.1.5/(ZC), LST, TYP, DOM"; each typed over the actual
-re-based objects; contents = the future re-scoping pass's theorems ("MUTATIS
-MUTANDIS, NOT verbatim … RECONSTRUCTED over F_δ"). C(b) is `REL1b` below. -/
-structure REL1Clauses (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
-    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop where
-  /-- §A: base tower shape over F_δ (φ̄ monic irr, F₁ = F_δ[x]/(φ̄)). -/
-  secA : ∀ H, (K.tower H).BaseLaws
-  /-- §B1: the typable stage-carrier residue; graded internals (R0-tower)-fenced. -/
-  secB1 : ∀ H, (K.tower H).StageCarrierLaws
-  /-- §B2-DEF: the D.0 climb, residual factors computed OVER THE NEW BASE. -/
-  secB2def : ∀ H, (K.tower H).ClimbLaws
-  /-- Theorem C(a): classifier locus = jet-preimage of the digit-system locus
-  (MovesC thmC_a's shape, re-based). -/
-  thmCa : ∀ H Z, K.SHZ H Z =
-    (fun f => K.jet H f) ⁻¹' {x | (K.digitLocus H Z).IsSolution x}
-  /-- C.0.5 + PIN-WELLDEF: transports unitriangular ("ring-polynomial identities in
-  strictly ≺-earlier coefficients"); pin statistics frame-invariant — BOTH legs of
-  "cardinality-AND-STATUS statistics" (FF3): the pinned-set cardinality AND the
-  multiset of per-digit alphabet exponents over the pinned set. -/
-  c05PinWelldef : ∀ H F F', IsUnitriangular (K.T H F F') ∧
+/-! **THE CInterface, layer (b): per-lemma statement defs** (D4; CF18's
+decomposition — ONE display per def, each its own unit). Each def's body is the
+cited lemma's FULL statement over the carrier bundle; the fences are gone. -/
+
+/-- §A re-based: the base tower shape over F_δ (φ̄ monic irr, F₁ = F_δ[x]/(φ̄)). -/
+def SecAStmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H, (K.tower H).BaseLaws
+/-- §B1 re-based (CF16): the graded vocabulary is now TYPED — `K.G` carries the
+pieces/class map/weight WITH their laws (its structure fields), so §B1's citation
+is a typed pointer, not a fence; the statement asserts the stage-carrier laws AND
+the block expansion's additivity into the carrier (slot coefficients additive in
+the digit vector — the D.3(e) attachment). Localization L / degree-1 unit T ride
+as HC-1 instantiation obligations, recorded in D4. -/
+def SecB1Stmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  (∀ H, (K.tower H).StageCarrierLaws) ∧
+  (∀ H (B : ℕ) (x y : Fin (K.mOf H) → ↥(Fsub p δ)),
+    K.slotCoeff H B (x + y) = K.slotCoeff H B x + K.slotCoeff H B y)
+/-- §B2-DEF re-based: the D.0 climb, residual factors OVER THE NEW BASE. -/
+def SecB2Stmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H, (K.tower H).ClimbLaws
+/-- Theorem C(a): classifier locus = jet-preimage of the digit-system locus. -/
+def ThmCaStmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H Z, K.SHZ H Z = (fun f => K.jet H f) ⁻¹' {x | (K.digitLocus H Z).IsSolution x}
+/-- Theorem C(b) = (REL.1-b), LHS the DEFINED count (FF2): "#{ f mod p^N ∈ S(H,Z) }
+= q_δ^{nN} · ∏_{i=0}^{k} vol(E_fresh(ν_i)) · vol(Z) for every N ≥ N(H, Z)". -/
+def ThmCbStmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ (H : K.C.Hist) (Z : K.C.Locus H) (N : ℕ), K.C.Nmin H Z ≤ N →
+    (K.count H Z N : ℚ) = (qq p δ : ℚ) ^ (n * N) *
+      ((∏ i ∈ Finset.range (K.C.kIdx H + 1), K.C.V.vol (K.C.freshEvent H i)) *
+        K.C.V.vol (K.C.locusEvent H Z))
+/-- C.0.5 + PIN-WELLDEF: transports unitriangular; pin statistics frame-invariant —
+cardinality AND STATUS (CF9: over the `Status` carrier, pinned sets DEFINED from
+it) AND the aDim ledger-weights c1 consumes. -/
+def C05Stmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H (F F' : K.Frame H), IsUnitriangular (K.T H F F') ∧
     ∀ Z, (K.pinnedIn H F Z).card = (K.pinnedIn H F' Z).card ∧
+      Multiset.map (K.pinStatus H F Z) Finset.univ.val
+        = Multiset.map (K.pinStatus H F' Z) Finset.univ.val ∧
       (K.pinnedIn H F Z).val.map (K.aDim H) = (K.pinnedIn H F' Z).val.map (K.aDim H)
-  /-- C.1: "each constrained digit contributing the factor |𝔸_δ|⁻¹ of its
-  ATTAINABLE alphabet" — the locus mass is the per-pinned-digit product. -/
-  c1 : ∀ H (F : K.Frame H) Z, K.C.V.vol (K.C.locusEvent H Z) =
+/-- C.1: "each constrained digit contributing the factor |𝔸_δ|⁻¹ of its ATTAINABLE
+alphabet" — the locus mass is the per-pinned-digit product. -/
+def C1Stmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H (F : K.Frame H) Z, K.C.V.vol (K.C.locusEvent H Z) =
     ∏ i ∈ K.pinnedIn H F Z, ((p : ℚ) ^ (K.aDim H i))⁻¹
-  /-- C.1.5's (ZC) invariant: the statistic is transport/frame-invariant. -/
-  c15ZC : ∀ H F F' Z, K.zcStat H F Z = K.zcStat H F' Z
-  /-- LST = Lemma LST, level-set scale-typing (§C display, MOVES 3728 — the FF1
-  repair; the rev-2 stabilization reading was REFUTED: non-LST content and entailed
-  by REL1b). The three legs' typable residue: (i) TYPING — the engine's slot-
-  coefficient weight is the iterated slot-minimum of the absolute height over the
-  block's nonzero digits ("w(B) = min{ht(b, l) : (b, l) ∈ blk(B), y ≠ 0}");
-  (ii) FLOOR CONSTANCY ON THE INTERIOR — the per-coordinate floor is the block
-  floor ("F_i(b) = old_i(slot(b)): ht-constant on each current block");
-  (iii) SELECTION — the engine's floor downset IS the ht-downset {ht ≤ F_i}, hence
-  the ENTIRE level set at γ' > floor avoids it ("lies strictly above the floor
-  downset"). The K1-chain/in_γ graded internals stay §C-side (same fence as §B1's). -/
-  lst : ∀ (H : K.C.Hist),
+/-- C.1.5's (ZC) invariant: the statistic is transport/frame-invariant. -/
+def C15Stmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H F F' Z, K.zcStat H F Z = K.zcStat H F' Z
+/-- Lemma LST (level-set scale-typing), FULL statement (§C display MOVES 3728;
+CF7 RESOLVED-BY-REARCHITECTURE — the previously-fenced clauses are typed over the
+carrier): (i-a) TYPING: "ht(b, l) is the K1-chain weight of the coordinate's basis
+monomial" — `G.w (mono i) = ht i`; (i-b) "w(B) = min{ht(b, l) : (b, l) ∈ blk(B),
+y ≠ 0} (the iterated slot-minimum)"; (i-c) "the weight-γ initial form in_γ(B) is a
+function of exactly the LEVEL SET L_γ(B)"; (ii) FLOOR CONSTANCY ON THE INTERIOR;
+(iii) SELECTION via the ht-downset. -/
+def LSTStmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ (H : K.C.Hist),
+    (∀ i, K.G.w (K.mono H i) = ((K.ht H i : ℚ) : WithTop ℚ)) ∧
     (∀ (B : ℕ) (x : Fin (K.mOf H) → ↥(Fsub p δ)),
-      K.wSlot H B x = (Finset.univ.filter fun i =>
+      K.G.w (K.slotCoeff H B x) = (Finset.univ.filter fun i =>
         K.blkOf H i = B ∧ x i ≠ 0).inf fun i => ((K.ht H i : ℚ) : WithTop ℚ)) ∧
+    (∀ (γ : ℚ) (B : ℕ) (x y : Fin (K.mOf H) → ↥(Fsub p δ)),
+      (∀ i, K.blkOf H i = B → K.ht H i = γ → x i = y i) →
+      K.G.inγ γ (K.slotCoeff H B x) = K.G.inγ γ (K.slotCoeff H B y)) ∧
     (∀ i, K.interiorB H (K.blkOf H i) → K.floorC H i = K.floorB H (K.blkOf H i)) ∧
     (∀ B, K.interiorB H B →
       K.floorSet H B = {i | K.blkOf H i = B ∧ K.ht H i ≤ K.floorB H B} ∧
       ∀ (γ' : ℚ), K.floorB H B < γ' →
         ∀ i, K.blkOf H i = B → K.ht H i = γ' → i ∉ K.floorSet H B)
-  /-- TYP, walk item (i)'s RETYPING verbatim: "per-digit ADDITIVE on O_δ-digit
-  blocks" (additivity is all TYP(b) consumes; F_δ-linearity stays EXPECTED, walked). -/
-  typ : ∀ H (i : Fin (K.mOf H)) (f g : Fin n → ↥(O p δ)),
-    K.jet H (f + g) i = K.jet H f i + K.jet H g i
-  /-- DOM: base-free floor domination, MovesC's `DomData` verbatim ("valuation
-  geometry … carries over as written"). -/
-  dom : ∀ H, ∀ i ≤ K.kIdx H, DomData (K.lines H) i (K.interiorEnd H)
+/-- Lemma TYP: walk item (i)'s retyping (per-digit ADDITIVE on O_δ-digit blocks) +
+TYP's graded leg at cardinality granularity: each digit position's ATTAINABLE
+image has the alphabet's size p^{a_δ} ("SURJECTIVE onto the digit alphabet (image
+= the additive span of the slot images, D.3(e)(i))"), tied to (EQ-2)'s data via
+`aDim_eq`. F_δ-linearity stays EXPECTED, walked — not asserted (the note). -/
+def TYPStmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  (∀ H (i : Fin (K.mOf H)) (f g : Fin n → ↥(O p δ)),
+    K.jet H (f + g) i = K.jet H f i + K.jet H g i) ∧
+  (∀ H (i : Fin (K.mOf H)),
+    Nat.card (Set.range fun f => K.jet H f i) = p ^ K.aDim H i)
+/-- Lemma DOM: base-free floor domination, MovesC's `DomData` verbatim
+("valuation geometry … carries over as written"). -/
+def DOMStmt {Sp AD δ n} (K : ReBased p Sp AD δ n) : Prop :=
+  ∀ H, ∀ i ≤ K.C.kIdx H, DomData (K.lines H) i (K.interiorEnd H)
 
-/-- (REL.1-b), typed verbatim through the pinned BoxVol, LHS the DEFINED count
-(FF2): "#{ f mod p^N ∈ S(H, Z) } = q_δ^{nN} · ∏_{i=0}^{k} vol(E_fresh(ν_i)) ·
-vol(Z) for every N ≥ N(H, Z)". -/
-def REL1b (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
-    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop :=
-  ∀ (H : K.C.Hist) (Z : K.C.Locus H) (N : ℕ), K.C.Nmin H Z ≤ N →
-    (K.count H Z N : ℚ) = (qq p δ : ℚ) ^ (n * N) *
-      ((∏ i ∈ Finset.range (K.C.kIdx H + 1), K.C.V.vol (K.C.freshEvent H i)) *
-        K.C.V.vol (K.C.locusEvent H Z))
+/-- **THE CInterface, layer (b)-record: `CStatements`** — one field per §C lemma
+the ledger cites; each field's type IS the named statement def. The note's clause
+list, typed with no fence: "§A, §B1, §B2-DEF, and §C — through Theorem C(a)/(b)
+with C.0.5/PIN-WELLDEF, C.1, C.1.5/(ZC), LST, TYP, DOM". -/
+structure CStatements (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop where
+  secA : SecAStmt p K
+  secB1 : SecB1Stmt p K
+  secB2 : SecB2Stmt p K
+  thmCa : ThmCaStmt p K
+  thmCb : ThmCbStmt p K
+  c05PinWelldef : C05Stmt p K
+  c1 : C1Stmt p K
+  c15ZC : C15Stmt p K
+  lst : LSTStmt p K
+  typ : TYPStmt p K
+  dom : DOMStmt p K
 
-/-- **(REL.1), the Prop-family over δ** [OPEN KERNEL — "a NEW THEOREM with its own
-verification passes"]. Parameterized by the carrier package the pass must supply;
-consumers hypothesize it per instance, ABSOLUTE index displayed per site. -/
+/-- **THE CInterface, layer (c): (REL.1) := `CStatements` at base δ** — the typed
+mutatis-mutandis pointer [OPEN KERNEL — "a NEW THEOREM with its own verification
+passes"]. Instantiating the carrier package = HC-1's deliverable; consumers
+hypothesize per instance, ABSOLUTE index displayed per site. -/
 def REL1 (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
     (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop :=
-  REL1Clauses p Sp AD δ n K ∧ REL1b p Sp AD δ n K
+  CStatements p Sp AD δ n K
+/-- (CF17) the pass's full deliverable: EQ-1 is "a named checkpoint of REL.1's
+re-scoping pass, where it is walked" — attached, typed. -/
+def REL1PassDeliverable (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop :=
+  REL1 p Sp AD δ n K ∧ EQ1 Sp
+/-- (CF17) (EQ-2)'s "OPEN, REL.1-conditional" status, typed. -/
+def EQ2lawIfREL1 (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop :=
+  REL1 p Sp AD δ n K → EQ2law p AD
 ```
 
 ```lean
 /-! ## REL.2 (file Rel2.lean; units R14–R17) -/
 
-/-- **(REL.2a) COORDINATE IDENTIFICATION — the six-item deliverables checklist**
-["nothing short of all six items is '(a) stated'"]. Findings 6/7 repairs: nonempty
-frame/read carriers; `readDict` letter-for-letter (injective + species-letter-
-preserving through `Sp`); the (a3) Teichmüller pin is now a FIELD (`teich_pin`), so
-every inhabitant carries the convention. Inhabitation story: the future (a)-pass. -/
-structure REL2a (S : Setting p) (Sp : SpeciesSyntax) where
-  /-- (a2) integrality of d_j^rel := d_j/δ_j^rel — "part of the obligation …
-  EXPECTED from the tower data, walked in (a)'s pass" (E·F ∣ d_j route EXPECTED only). -/
-  drel_dvd : (S.δrel : ℕ) ∣ (S.d : ℕ)
-  drel_pos : 0 < (S.d : ℕ) / (S.δrel : ℕ)
-  /-- (a1) DOMAIN: the free base coordinates (ℓ, i) — infinitely many (Σ_c fixes
-  finitely many digits; the continuation is a full sub-box). -/
+/-! **(REL.2a) — SIX SUB-DELIVERABLES (a1)–(a6)** (CF19's decomposition: one
+checklist item per structure, composed by the bundle; "nothing short of all six
+items is '(a) stated'"). Inhabitation story: the future (a)-pass. -/
+
+/-- (a1) DOMAIN + MEASURABILITY (FF5(i)): the free base coordinates (ℓ, i)
+(infinitely many — Σ_c fixes finitely many digits), the identification with the
+"measurable product of O_δ-digit spaces" ((R0-box)'s ATOM), the product-side
+event algebra with digit cylinders, and event-algebra compatibility. -/
+structure REL2a1 (S : Setting p) where
   freeCoords : Set (ℕ × ℕ)
   freeCoords_inf : freeCoords.Infinite
-  /-- (a1) the identification with the "measurable product of O_δ-digit spaces"
-  (one F_δ-valued digit per free coordinate — (R0-box)'s ATOM, never unpacked). -/
   domIdent : S.Cont ≃ (freeCoords → ↥(Fsub p S.δ))
-  /-- (a1) MEASURABILITY (FF5(i)): the product-side event algebra — finite-
-  coordinate digit cylinders present — and the identification is event-algebra-
-  compatible ("as a MEASURABLE product" was previously a bare Equiv). -/
   prodEvents : Set (Set (freeCoords → ↥(Fsub p S.δ)))
   prodCyl_mem : ∀ (E : Finset (ℕ × ℕ)) (v : (ℕ × ℕ) → ↥(Fsub p S.δ)),
     {x | ∀ c : freeCoords, (c : ℕ × ℕ) ∈ E → x c = v c} ∈ prodEvents
   domIdent_meas : ∀ W, W ∈ prodEvents ↔ (fun f => domIdent f) ⁻¹' W ∈ S.AmbEvents
-  /-- (a3) the named F_{δ_j} ↪ (tower residue field) embedding. -/
+
+/-- (a2) TARGET integrality of `d_j^rel := d_j/δ_j^rel` — "part of the obligation,
+EXPECTED from the tower data, walked in (a)'s pass" (E·F ∣ d_j route EXPECTED only). -/
+structure REL2a2 (S : Setting p) : Prop where
+  drel_dvd : (S.δrel : ℕ) ∣ (S.d : ℕ)
+  drel_pos : 0 < S.dRel
+
+/-- (a3) EMBEDDING CONVENTION: the named F_{δ_j} ↪ (tower residue field) embedding
+and the canonical-lift convention, PINNED to Mathlib's Teichmüller (a field). -/
+structure REL2a3 (S : Setting p) where
   TowerRes : Type
   [towerResField : Field TowerRes]
   embed : ↥(Fsub p S.δabs) →+* TowerRes
-  /-- (a3) the canonical-lift convention — datum + PIN AS A FIELD (finding 7):
-  agreement with Mathlib's Teichmüller representative in W(F̄_p). -/
   teich : ↥(Fsub p S.δabs) → ↥(O p S.δabs)
   teich_pin : ∀ x, ((teich x : ↥(O p S.δabs)) : Wbar p)
     = WittVector.teichmuller p (x : Kbar p)
-  /-- (a4) FORMULA: the map Θ_j itself. -/
-  Θ : (freeCoords → ↥(Fsub p S.δ)) → (Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs))
-  /-- (a5) FRAME COMPATIBILITY: commutation with C.0.5's UNITRIANGULAR transports;
-  nonempty transport family (the identity frame change exists). FF7's anchor: both
-  transport families carry the unitriangularity law — the offset added at a
-  coordinate depends only on strictly ≺-earlier coordinates (C.0's order on the
-  free (ℓ, i)-coordinates via MovesC's `CoordPrec`; the Fin-order on the target's
-  C.0-order digit coordinates) — so `frame_compat` is commutation with C.0.5-shaped
-  transports, not with arbitrary bijections. -/
-  FrameIdx : Type
-  frameIdxNe : Nonempty FrameIdx
-  ambT : FrameIdx → ((freeCoords → ↥(Fsub p S.δ)) ≃ (freeCoords → ↥(Fsub p S.δ)))
-  tgtT : FrameIdx → ((Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs)) ≃
-                     (Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs)))
-  ambT_unitri : ∀ (i : FrameIdx) (x y : freeCoords → ↥(Fsub p S.δ)) (c : freeCoords),
-    (∀ c' : freeCoords, CoordPrec (c' : ℕ × ℕ) (c : ℕ × ℕ) → x c' = y c') →
-    ambT i x c - x c = ambT i y c - y c
-  tgtT_unitri : ∀ (i : FrameIdx)
-      (x y : Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs))
-      (j : Fin ((S.d : ℕ) / (S.δrel : ℕ))),
-    (∀ j' < j, x j' = y j') → tgtT i x j - x j = tgtT i y j - y j
-  frame_compat : ∀ (i : FrameIdx) x, Θ (ambT i x) = tgtT i (Θ x)
-  /-- (a6) READ DICTIONARY, letter-for-letter (finding 6): injective, and each
-  read's SPECIES LETTER is preserved ((EQ-1)'s dictionary); reads nonempty (the
-  branch's continuation has its defining read). Residue-datum fields are
-  RECONSTRUCTED, not included (R0-reads' no-monotonicity fence). -/
+
+/-- (a4) FORMULA: the map Θ_j itself, on (a1)'s coordinates. -/
+structure REL2a4 (S : Setting p) (A1 : REL2a1 p S) where
+  Θ : (A1.freeCoords → ↥(Fsub p S.δ)) → (Fin S.dRel → ↥(O p S.δabs))
+
+/-- (a5) FRAME COMPATIBILITY over the AMBIENT family (CF10 repair): the transports
+are S's OWN C.0.5 family (`S.reframe`, supplied by the ambient theory), conjugated
+to the digit side through (a1) — an inhabitant can no longer substitute a private
+identity-only family. Deliverables: the target-side transports and the displayed
+commutation, with unitriangularity anchors on BOTH sides (FF7; `CoordPrec` = C.0's
+order on the free coordinates, Fin-order on the target coefficients). -/
+structure REL2a5 (S : Setting p) (A1 : REL2a1 p S) (A4 : REL2a4 p S A1) where
+  tgtOf : S.FrameC → S.FrameC →
+    ((Fin S.dRel → ↥(O p S.δabs)) ≃ (Fin S.dRel → ↥(O p S.δabs)))
+  ambT_unitri : ∀ (F F' : S.FrameC) (x y : A1.freeCoords → ↥(Fsub p S.δ))
+      (c : A1.freeCoords),
+    (∀ c' : A1.freeCoords, CoordPrec (c' : ℕ × ℕ) (c : ℕ × ℕ) → x c' = y c') →
+    A1.domIdent (S.reframe F F' (A1.domIdent.symm x)) c - x c
+      = A1.domIdent (S.reframe F F' (A1.domIdent.symm y)) c - y c
+  tgtT_unitri : ∀ (F F' : S.FrameC) (x y : Fin S.dRel → ↥(O p S.δabs))
+      (j : Fin S.dRel),
+    (∀ j' < j, x j' = y j') → tgtOf F F' x j - x j = tgtOf F F' y j - y j
+  frame_compat : ∀ (F F' : S.FrameC) (f : S.Cont),
+    A4.Θ (A1.domIdent (S.reframe F F' f)) = tgtOf F F' (A4.Θ (A1.domIdent f))
+
+/-- (a6) READ DICTIONARY, PER READ FIELD (CF11 repair): (R0-reads)' node-datum
+fields — "SHAPE (e, h, g, μ), anchor a, SIDE endpoints/height and stride
+positions, DIGITS (d_j), branch factor ψ, recentering lifts" — with the
+integer/lattice fields PRESERVED (the SAME GRAMMAR) and the residue-datum fields
+(digits, ψ, lifts) transported by DECLARED per-read maps (RECONSTRUCTED over the
+re-based tower — no canonical inclusion, so a transport map, never an equality). -/
+structure REL2a6 (S : Setting p) (Sp : SpeciesSyntax) where
   AmbRead : Type
   ambReadNe : Nonempty AmbRead
   TgtRead : Type
@@ -589,9 +739,27 @@ structure REL2a (S : Setting p) (Sp : SpeciesSyntax) where
   ambLetter : AmbRead → Sp.Letter
   tgtLetter : TgtRead → Sp.Letter
   readDict_letter : ∀ r, tgtLetter (readDict r) = ambLetter r
+  ambShape : AmbRead → ℕ × ℕ × ℕ × ℕ
+  tgtShape : TgtRead → ℕ × ℕ × ℕ × ℕ
+  readDict_shape : ∀ r, tgtShape (readDict r) = ambShape r
+  ambAnchor : AmbRead → ℕ
+  tgtAnchor : TgtRead → ℕ
+  readDict_anchor : ∀ r, tgtAnchor (readDict r) = ambAnchor r
+  ambSide : AmbRead → (ℚ × ℚ) × List ℕ
+  tgtSide : TgtRead → (ℚ × ℚ) × List ℕ
+  readDict_side : ∀ r, tgtSide (readDict r) = ambSide r
+  AmbResDat : AmbRead → Type
+  TgtResDat : TgtRead → Type
+  resDict : ∀ r, AmbResDat r → TgtResDat (readDict r)
 
-/-- (a2)'s target degree d_j^rel, named. -/
-def REL2a.dRel {S : Setting p} {Sp} (_A : REL2a p S Sp) : ℕ := (S.d : ℕ) / (S.δrel : ℕ)
+/-- **(REL.2a) the bundle** — all six items or nothing. -/
+structure REL2a (S : Setting p) (Sp : SpeciesSyntax) where
+  a1 : REL2a1 p S
+  a2 : REL2a2 p S
+  a3 : REL2a3 p S
+  a4 : REL2a4 p S a1
+  a5 : REL2a5 p S a1 a4
+  a6 : REL2a6 p S Sp
 
 /-- **(REL.2b) NORMALIZATION / JACOBIAN** [OPEN KERNEL]: "for every REL.1-measurable
 continuation event W over O_{δ_j} (digit cylinders generate — V's `cyl_mem`),
@@ -601,24 +769,24 @@ proviso as guard. Non-vacuous: `V.events` contains univ and every cylinder, and
 the ambient event algebra — the Θ-measurability half of "the PUSHFORWARD of the
 conditional continuation measure … IS the normalized O_{δ_j}-box measure". -/
 def REL2b (S : Setting p) (Sp : SpeciesSyntax) (A : REL2a p S Sp)
-    (V : BoxVol p S.δabs A.dRel) : Prop :=
+    (V : BoxVol p S.δabs S.dRel) : Prop :=
   0 < S.cellMass →
     ∀ W ∈ V.events,
-      (fun f => A.Θ (A.domIdent f)) ⁻¹' W ∈ S.AmbEvents ∧
-      S.condMass ((fun f => A.Θ (A.domIdent f)) ⁻¹' W) = V.vol W
+      (fun f => A.a4.Θ (A.a1.domIdent f)) ⁻¹' W ∈ S.AmbEvents ∧
+      S.condMass ((fun f => A.a4.Θ (A.a1.domIdent f)) ⁻¹' W) = V.vol W
 
 /-- (b) WITH ITS REL.1 CONDITIONALITY TYPED: the target measure IS the REL.1
 theory's (`RB.C.V`), and REL.1 at (δ_j, d_j^rel) rides as an explicit conjunct —
 "EVERY consumer below is conditional on REL.1, displayed per site". -/
 def REL2b_linked (S : Setting p) (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
-    (A : REL2a p S Sp) (RB : ReBased p Sp AD S.δabs A.dRel) : Prop :=
-  REL1 p Sp AD S.δabs A.dRel RB ∧ REL2b p S Sp A RB.C.V
+    (A : REL2a p S Sp) (RB : ReBased p Sp AD S.δabs S.dRel) : Prop :=
+  REL1 p Sp AD S.δabs S.dRel RB ∧ REL2b p S Sp A RB.C.V
 
 /-- **(EQ-3) CONDITIONAL MASSES TRANSPORTED** — "REL.2(b) verbatim … no weaker
 reading (bijection-only, or level-matching without normalization) counts."
 (Alias inherits the finding-9 repair.) -/
 abbrev EQ3 (S : Setting p) (Sp : SpeciesSyntax) (A : REL2a p S Sp)
-    (V : BoxVol p S.δabs A.dRel) : Prop := REL2b p S Sp A V
+    (V : BoxVol p S.δabs S.dRel) : Prop := REL2b p S Sp A V
 ```
 
 ```lean
@@ -635,24 +803,28 @@ structure REL2d (S : Setting p) (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
   ambTreeNe : Nonempty AmbTree
   ambTcan : S.Cont → AmbTree
   TgtTree : Type                          -- the O_{δ_j}-engine's canonical trees
-  tgtTcan : (Fin A.dRel → ↥(O p S.δabs)) → TgtTree
+  tgtTcan : (Fin S.dRel → ↥(O p S.δabs)) → TgtTree
   nodeCorr : AmbTree → TgtTree            -- the SPECIFIED correspondence
   /-- "The square commutes for every f ∈ Σ_c." -/
-  square : ∀ f : S.Cont, nodeCorr (ambTcan f) = tgtTcan (A.Θ (A.domIdent f))
+  square : ∀ f : S.Cont, nodeCorr (ambTcan f) = tgtTcan (A.a4.Θ (A.a1.domIdent f))
   /-- node-data content of the correspondence: species word preserved … -/
   ambWord : AmbTree → List Sp.Letter
   tgtWord : TgtTree → List Sp.Letter
   corr_word : ∀ t, tgtWord (nodeCorr t) = ambWord t
   /-- … reads transported via (a6)'s dictionary … -/
-  ambReads : AmbTree → List A.AmbRead
-  tgtReads : TgtTree → List A.TgtRead
-  corr_reads : ∀ t, tgtReads (nodeCorr t) = (ambReads t).map A.readDict
+  ambReads : AmbTree → List A.a6.AmbRead
+  tgtReads : TgtTree → List A.a6.TgtRead
+  corr_reads : ∀ t, tgtReads (nodeCorr t) = (ambReads t).map A.a6.readDict
   /-- … τ-verdicts preserved … -/
   ambVerdict : AmbTree → List Bool
   tgtVerdict : TgtTree → List Bool
   corr_verdict : ∀ t, tgtVerdict (nodeCorr t) = ambVerdict t
   /-- … and (EQ-2)'s alphabets: each target read sits at an `AD` position class. -/
-  posOf : A.TgtRead → AD.Pos
+  posOf : A.a6.TgtRead → AD.Pos
+  /-- (CF12) posOf is CONSTRAINED: the position class assigned to a target read
+  carries that read's species letter — the (EQ-2)-alphabet wiring is the read's
+  own, not a free assignment. -/
+  posOf_letter : ∀ r, AD.posLetter S.δabs (posOf r) = A.a6.tgtLetter r
   /-- canonical O_{δ_j}-side prescribed subtrees, T_j's identification, and the
   target realization predicate ((W1)'s reading inherited from [1]/[3t]). -/
   TgtSub : Type
@@ -671,42 +843,51 @@ structure REL2e (S : Setting p) (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
   stateDict : S.StateIdx → RelState
   /-- … "compatible with (a6)'s read dictionary", TYPED: states carry their
   defining reads; the dictionary transports them letter-for-letter. -/
-  stateReadsAmb : S.StateIdx → List A.AmbRead
-  stateReadsRel : RelState → List A.TgtRead
-  stateDict_compat : ∀ s, stateReadsRel (stateDict s) = (stateReadsAmb s).map A.readDict
+  stateReadsAmb : S.StateIdx → List A.a6.AmbRead
+  stateReadsRel : RelState → List A.a6.TgtRead
+  stateDict_compat : ∀ s, stateReadsRel (stateDict s) = (stateReadsAmb s).map A.a6.readDict
   /-- [3]'s table, in [3]'s own keying: (first index, state, argument) ↦ entry. -/
   β : ℕ → S.StateIdx → ℕ → ℚ
-  /-- (e4) the first index e_j, FROM b_j's DATA — one value per branch (finding 13). -/
+  /-- (e4) the first index e_j, FROM b_j's DATA — one value per branch (finding 13).
+  (CF14: the consumed-prescription set is NOT a field — it is a parameter of the
+  (e)-Props below, supplied by [3]/MovesS exactly like `tableConv`.) -/
   entryFirst : ℕ
-  /-- the prescriptions [3]'s entry at this key consumes (nonempty deliverable). -/
-  consumed : Set S.PTree
-  consumedNe : consumed.Nonempty
 
 /-- (e4)'s agreement with [3]'s table convention, TYPED against the convention as
 a parameter ([3]/MovesS's export — D5): a typed claim, not prose. -/
 def REL2e.e4agrees {S Sp AD A D} (E : REL2e p S Sp AD A D)
     (tableConv : ℕ → Prop) : Prop := tableConv E.entryFirst
 /-- (e4)'s CANDIDATE ["candidate: (a2)'s O_{δ_j}-degree d_j^rel — owed, not
-assumed"]: named, hypothesis-side, asserted nowhere. -/
+assumed"]. (CF13) DEMOTED: a NAMED CANDIDATE definition only — NOT an obligation,
+REMOVED from D7's hypothesis list; NO consumer may hypothesize it. (e4)'s
+obligation is `e4agrees` alone. -/
 def REL2e.firstIdxCandidate {S Sp AD A D} (E : REL2e p S Sp AD A D) : Prop :=
-  E.entryFirst = A.dRel
-/-- (e5) first disjunct: "the entry's indices must DETERMINE the prescribed subtree
-T_j" — the consumed class at this key is a singleton. The second disjunct
-(re-keying) is a statement-fence event (D5). -/
-def REL2e.determines {S Sp AD A D} (E : REL2e p S Sp AD A D) : Prop :=
-  ∀ T ∈ E.consumed, ∀ T' ∈ E.consumed, T = T'
-/-- (e3) MASS = ENTRY, stated GIVEN (e5) (the note: without (e5) the equation is
-ill-typed): β_{e_j, τ_j(c)}(p^{δ_j}) IS **the REL.1 mass** — FF6: the _linked
-pattern applied, so the vol is `RB.C.V` of a REL1-hypothesized package, never an
-arbitrary BoxVol ("IS the REL.1 mass vol_{O_{δ_j}}{…}" — the note names the
-theory's measure, not a measure). FF5(iii): the realization event is required IN
-`RB.C.V.events`, so V's measure laws bind at it. -/
+  E.entryFirst = S.dRel
+/-- (e5) first disjunct: "the entry's indices must DETERMINE the prescribed
+subtree T_j". (CF14) `consumed` — the prescriptions [3]'s tables actually consume
+at this key — is a PARAMETER supplied by [3]/MovesS's export, like `tableConv`:
+choosing it here was the vacuity Codex flagged. Re-keying stays a statement-fence
+event (D5). -/
+def REL2e.determines {S Sp AD A D} (_E : REL2e p S Sp AD A D)
+    (consumed : Set S.PTree) : Prop :=
+  ∀ T ∈ consumed, ∀ T' ∈ consumed, T = T'
+/-- (e3) MASS = ENTRY, stated GIVEN (e5): β_{e_j, τ_j(c)}(p^{δ_j}) IS **the REL.1
+mass** (FF6 `_linked`: the vol is `RB.C.V` of a REL1-hypothesized package;
+FF5(iii): the realization event ∈ `RB.C.V.events`; CF14: `consumed` is [3]'s
+parameter). -/
 def REL2e.massEqEntry {S Sp AD A D} (E : REL2e p S Sp AD A D)
-    (RB : ReBased p Sp AD S.δabs A.dRel) : Prop :=
-  REL1 p Sp AD S.δabs A.dRel RB ∧ E.determines p ∧ ∀ T ∈ E.consumed,
+    (consumed : Set S.PTree) (RB : ReBased p Sp AD S.δabs S.dRel) : Prop :=
+  REL1 p Sp AD S.δabs S.dRel RB ∧ E.determines p consumed ∧ ∀ T ∈ consumed,
     {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)} ∈ RB.C.V.events ∧
     E.β E.entryFirst S.τ (S.βarg p) =
       RB.C.V.vol {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)}
+/-- (CF20) THE COLLECTING CONJUNCTION — one Prop gathering the (e)-obligations
+((e2) is the definitional `βarg_eq`; (e1) is E's data + `stateDict_compat` field):
+the single hypothesis interface consumers cite. -/
+def REL2eObligations {S Sp AD A D} (E : REL2e p S Sp AD A D)
+    (tableConv : ℕ → Prop) (consumed : Set S.PTree)
+    (RB : ReBased p Sp AD S.δabs S.dRel) : Prop :=
+  E.e4agrees p tableConv ∧ E.determines p consumed ∧ E.massEqEntry p consumed RB
 ```
 
 ```lean
@@ -727,21 +908,41 @@ with absolute re-indexing — findings 19/20); the positive-cell guard is the no
 own conditioning proviso; the first conjunct of the ∀T clause is the "S_j IS an
 O_{δ_j}-statement" typing itself (S_j = the Θ-pullback of the target realization
 event); the second is the pricing, at a realization event required IN
-`RB.C.V.events` (FF5(iii)) so the REL.1 measure laws bind there. RECURSION CLAUSE
-= `F.desc*` (family closure) + `O_chain` (the literal subring chain TREE-EXP's
-induction consumes). -/
+`RB.C.V.events` (FF5(iii)) so the REL.1 measure laws bind there.
+REV 4 (CF1/CF2): the quantifier is over a `mem_pos`-restricted family (the
+conditioning sites — the zero-mass singleton is dead), the identification data is
+ONE COHERENT PACKAGE FUNCTION over the whole family with ONE (Sp, AD) — (EQ-1)'s
+same-syntax-over-every-base — and the RECURSION CLAUSE is now TYPED COMPOSITION:
+each descendant's AMBIENT theory IS the parent's TARGET theory (same base index by
+`desc_amb`, same box degree, same carrier package up to the index transport) —
+"the obligations must COMPOSE across nested base changes"; `O_chain` supplies the
+literal subring chain TREE-EXP's induction consumes. -/
+structure SIBPkg (Sp : SpeciesSyntax) (AD : AlphabetData p Sp) (S : Setting p) where
+  A : REL2a p S Sp
+  D : REL2d p S Sp AD A
+  ambDeg : ℕ                                    -- the ambient box degree at S's cell
+  ambK : ReBased p Sp AD S.δ ambDeg             -- the AMBIENT REL.1 carrier (base O_δ)
+  RB : ReBased p Sp AD S.δabs S.dRel            -- the TARGET REL.1 carrier (base O_{δ_j})
+
 def SIBOdelta (F : SettingsFamily p) : Prop :=
-  ∀ S ∈ F.mem, 0 < S.cellMass →
-    ∃ (Sp : SpeciesSyntax) (AD : AlphabetData p Sp) (A : REL2a p S Sp)
-      (D : REL2d p S Sp AD A) (RB : ReBased p Sp AD S.δabs A.dRel),
-      REL1 p Sp AD S.δabs A.dRel RB ∧
-      REL2b p S Sp A RB.C.V ∧
-      ∀ T : S.PTree,
-        {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)} ∈ RB.C.V.events ∧
-        S.SEvent T = (fun f => A.Θ (A.domIdent f)) ⁻¹'
-            {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)} ∧
+  ∃ (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (pkg : ∀ S ∈ F.mem, SIBPkg p Sp AD S),
+    ∀ S (hS : S ∈ F.mem), 0 < S.cellMass →
+      REL1 p Sp AD S.δ (pkg S hS).ambDeg (pkg S hS).ambK ∧      -- ambient REL.1 (δ = 1: verbatim)
+      REL1 p Sp AD S.δabs S.dRel (pkg S hS).RB ∧                -- target REL.1
+      REL2b p S Sp (pkg S hS).A (pkg S hS).RB.C.V ∧
+      (∀ T : S.PTree,
+        {g | (pkg S hS).D.TgtRealizes ((pkg S hS).D.tgtTcan g) ((pkg S hS).D.subtreeCorr T)}
+            ∈ (pkg S hS).RB.C.V.events ∧
+        S.SEvent T = (fun f => (pkg S hS).A.a4.Θ ((pkg S hS).A.a1.domIdent f)) ⁻¹'
+            {g | (pkg S hS).D.TgtRealizes ((pkg S hS).D.tgtTcan g) ((pkg S hS).D.subtreeCorr T)} ∧
         S.condMass (S.SEvent T) =
-          RB.C.V.vol {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)}
+          (pkg S hS).RB.C.V.vol
+            {g | (pkg S hS).D.TgtRealizes ((pkg S hS).D.tgtTcan g) ((pkg S hS).D.subtreeCorr T)}) ∧
+      -- (CF2) COMPOSITION across nested base changes: descendant ambient = parent target
+      (∀ (T : S.PTree) (S' : Setting p) (hS' : S' ∈ F.desc S hS T),
+        (pkg S' (F.desc_sub S hS T hS')).ambDeg = S.dRel ∧
+        HEq (pkg S' (F.desc_sub S hS T hS')).ambK (pkg S hS).RB)
 
 /-- R23: the recursion clause's ring-side witness — "a branch of relative
 accumulated degree δ″ at ambient O_{δ_j} targets O_{δ_j·δ″}, literally a subring
@@ -761,18 +962,20 @@ theorem about `BoxVol`-masses), NEVER the formal substitution q ↦ q^δ in a
 
 /-! ## Elaboration checks (per D9) -/
 section Elab
--- Carrier instances (honest trivial cases only):
---   example : Setting 2 := ⟨1, 1, 1, PUnit, ⟨⟨⟩⟩, Set.univ, trivial, …, 0, le_rfl,
---     zero_le_one, fun _ => 0, …⟩   -- a cellMass = 0 cell: proviso-excluded by
---                                   -- every display's guard, honest as a carrier
---   example : SettingsFamily 2 := singleton family on the above, desc _ _ _ := ∅
---   example : SpeciesSyntax := ⟨PUnit, fun _ => (1,1,1,1), fun _ => {PUnit.unit}, …⟩
---   example : AlphabetData 2 Sp₀ := ⟨PUnit, ⟨⟨⟩⟩, fun _ _ => PUnit, …, {0}, …⟩
---     (card_eq: Nat.card {0} = 1 = 2^0 with aDim ≡ 0 — a degenerate but LAWFUL
---      alphabet; the EQ2law statement about it is not asserted anywhere)
--- Obligation/deliverable structures: #check only (inhabitation = the pass):
---   #check @REL1  #check @REL1Clauses  #check @REL2a  #check @REL2b_linked
---   #check @REL2d #check @REL2e.massEqEntry  #check @SIBOdelta  #check @BoxVol
+-- Carrier instances (honest trivial cases only). REV-4 note: a trivial
+-- `SettingsFamily` now needs a POSITIVE-mass member (mem_pos + ne) — use
+-- cellMass := 1, condMass := indicator laws; desc _ _ _ := ∅ stays lawful.
+--   example : Setting 2 := ⟨…, cellMass := 1, …, FrameC := PUnit, ⟨⟨⟩⟩,
+--     reframe := fun _ _ => id, …⟩
+--   example : SettingsFamily 2 := singleton on the above (mem_pos by rfl-arith)
+--   example : SpeciesSyntax := ⟨PUnit, fun _ => (1,1,1,1), PUnit, fun _ => ⟨⟩,
+--     PUnit, fun _ => ⟨⟩, injective-into-constant …, fun _ => ∅⟩  -- empty menus OK (CF3)
+--   example : AlphabetData 2 Sp₀ := degenerate-lawful (alpha = closure of range of
+--     the zero slotMap = {0}; card_eq : 1 = 2^0; aDim ≡ 0)
+-- Obligation/deliverable structures: #check only (inhabitation = the pass/HC-1):
+--   #check @GradedCarrier  #check @CStatements  #check @REL1  #check @LSTStmt
+--   #check @REL2a  #check @REL2b_linked  #check @REL2d  #check @REL2eObligations
+--   #check @SIBPkg  #check @SIBOdelta  #check @BoxVol  #check @ReBased.count
 end Elab
 end MovesR
 ```
@@ -783,225 +986,149 @@ namespace qualification for `DigitSystem`/`IsUnitriangular`/`Line`/`DomData`)
 WITHOUT changing any quantifier, equality, guard, or field list; anything beyond
 syntax re-enters the audit loop (statement fence).
 
-## 2. Unit specs (23 units)
+## 2. Unit specs (41 units; compact REV-4 format — id · statement · moves_ref key · deps · difficulty)
 
-Files: `Base.lean` R1–R6 · `Interface.lean` R7–R8 · `Eq.lean` R18–R21 (carriers
-consumed by Rel2) · `Rel1.lean` R9–R13 · `Rel2.lean` R14–R17 · `Sib.lean` R22–R23 ·
-`Defs.lean` re-export shim. Import order: Base → Interface → Eq → Rel1 → Rel2 → Sib.
-Acceptance per def-unit: definitions land verbatim-from-skeleton + its D9
-elaboration compiles.
+Files/import order: `Base` → `Interface` → `Eq` → `CInt` (GradedCarrier + statement
+defs + CStatements) → `Rel1` → `Rel2` → `Sib`; `Defs.lean` re-export shim. Per-unit
+acceptance: definitions land verbatim-from-skeleton + D9 elaboration compiles.
+moves_ref keys quote §R-LEDGER (rev 5) unless marked §C (= the LST/TYP/DOM displays
+at MOVES 3728–3831, consulted sources per the adjudication).
 
-**R1 base_defs** · Base.lean · defs `Kbar, Wbar, Fsub, O, qq, relExt, cyl` + `#check`s.
-moves_ref: "Fix an algebraic closure F̄_p once; F_m is THE subfield of order p^m and
-O_m := W(F_m) ⊂ W(F̄_p)." · deps: — · sketch: D1 route; cyl via Witt-coefficient
-truncation (perfect residue field) · easy · hyp_fields: none (concrete).
+BASE (U1–U6; provable U2–U6):
+- U1 base_defs: `Kbar/Wbar/Fsub/O/qq/relExt/cyl` · "F_m is THE subfield of order
+  p^m and O_m := W(F_m) ⊂ W(F̄_p)" · — · easy.
+- U2 Fsub_le · U3 O_le: nesting · "compose LITERALLY as subrings" · U1 · medium.
+- U4 relExt_comp (`rfl`/`mul_assoc`/`O_le_relExt`) · "'(O_δ)_{δ′} = O_{δδ′}' is
+  bookkeeping inside W(F̄_p)" · U1,U3 · easy.
+- U5 qq_mul + βarg_eq · "q_{δ_j} = p^{δ_j} = q_δ^{δ_j^rel}" + (e2) · U1,U7 · easy.
+- U6 Fsub_card: `Nat.card ↥(Fsub p m) = p^m` · "THE subfield of order p^m" · U1 ·
+  hard (wave-3).
 
-**R2 Fsub_le** · `d ∣ m → Fsub p d ≤ Fsub p m` · moves_ref: "Nested base changes
-then compose LITERALLY as subrings — O_δ ⊂ O_{δδ′}". · deps R1 · sketch: x^{p^d}=x ⇒
-x^{p^{dk}}=x by pow-iteration · medium · PROVED-class.
+INTERFACE (U7–U8):
+- U7 Setting + δabs/dRel/βarg + FrameC/reframe (CF10's ambient family) + measure
+  laws · the SETTING paragraph + "frame Ψ_η" · U1 · medium.
+- U8 SettingsFamily + mem_pos (CF1, note-checked: the (b) proviso's "the only
+  cells any (SIB) display conditions on") + desc closure · "(SIB-Oδ)" quantifier +
+  recursion clause · U7 · medium.
 
-**R3 O_le** · `d ∣ m → O p d ≤ O p m` · moves_ref: as R2 (subring layer). · deps R1,
-R2 · sketch: local `map_comp` by `WittVector.ext`+`map_coeff`; ranges nest via
-`Subfield.inclusion` · medium · PROVED-class.
+EQ (U9–U12; provable U12):
+- U9 SpeciesSyntax (shape/side/poly + letter_det — CF4; menuNe REMOVED — CF3) +
+  EQ1 · "(EQ-1) … SAME finite syntax … never the letter set" · — · medium.
+- U10 AlphabetData + slotMap/alpha_attain (CF5) + posLetter/Stable · "(EQ-2)
+  DEFINITION (unconditional): … attainable additive image/span of the RE-BASED
+  slot maps" · U1,U9 · medium.
+- U11 EQ2law (BOTH conjuncts — F_δ-linearity + a_δ = δ·a, CF6) · "the re-based
+  piece maps are F_δ-linear and a_δ = δ·a" (pinned domain) · U10 · easy-medium.
+- U12 EQ2law_card · "|𝔸_δ| = q_δ^a = |𝔸|^δ" · U5,U11 · easy (provable).
 
-**R4 relExt_comp** · `relExt_eq` (rfl), `relExt_relExt` (mul_assoc), `O_le_relExt` ·
-moves_ref: "'(O_δ)_{δ′} = O_{δδ′}' is bookkeeping inside W(F̄_p), never an
-identification up to isomorphism." · deps R1, R3 · easy · PROVED-class (the
-charge's definitional lemma).
+CINTERFACE (U13–U29; one display per unit — CF18):
+- U13 BoxVol + events_level (CF15: Haar characterized on the WHOLE event class;
+  (g7)'s determination-radius discipline cited) · "(R0-box) … vol_{O_δ}(O_δ^n)=1;
+  … q_δ^{nN} residue points" · U1 · medium.
+- U14 GradedCarrier (D4(a): Coeff/Gr/w/inγ + 4 laws; ≤10 fields, no construction;
+  instantiation = HC-1) · "(R0-tower) graded rings … D.3(e)(i)'s graded piece"
+  (via §C consumption) · — · medium.
+- U15 TowerData + Base/Climb/StageCarrier laws · "(R0-tower) F₁ := F_δ[x]/(φ̄) …
+  F_{k+1} = F_k[z]/(ψ_k) … built afresh" · U1 · medium.
+- U16 REL1Counting (no count field — FF2) · "(REL.1-b)" carriers · U13 · easy.
+- U17 ReBased (carriers: jet/tower/frames/Status+pinStatus (CF9)/aDim wiring
+  (FF4)/G attachment/LST carriers + mono/slotCoeff/interior_fresh (CF8)) +
+  `ReBased.count` def (FF2) · (R0-box/tower/reads/ledger) · U9,U10,U14,U15,U16 ·
+  hard (carrier only — no Props beyond laws).
+- U18 SecAStmt · §A base shape · U17 · easy. — U19 SecB1Stmt (CF16: graded
+  vocabulary typed via G; slotCoeff additivity) · "§B1 … same construction run
+  over the new base" · U17 · easy-medium. — U20 SecB2Stmt · D.0 climb · U17 · easy.
+- U21 ThmCaStmt · "Theorem C(a)" locus = jet-preimage · U17 · easy.
+- U22 ThmCbStmt · "(REL.1-b)" verbatim over the DEFINED count · U17 · medium.
+- U23 C05Stmt (unitri + card AND STATUS multiset (CF9) + aDim multiset) ·
+  "C.0.5/PIN-WELLDEF … cardinality-and-status statistics" · U17 · medium.
+- U24 C1Stmt · "(R0-ledger) … factor |𝔸_δ|⁻¹ of its ATTAINABLE alphabet" · U17 ·
+  easy. — U25 C15Stmt · "C.1.5's (ZC) invariant" · U17 · easy.
+- U26 LSTStmt (FULL: chain-weight typing + slot-min + in_γ/level-set + interior
+  constancy + selection — CF7 resolved, no fence) · §C Lemma LST (i)/(ii)/(iii),
+  MOVES 3728 · U14,U17 · hard (typing).
+- U27 TYPStmt (additivity + attainable-image cardinality = p^{a_δ}) · §C Lemma
+  TYP + walk item (i) · U17 · medium.
+- U28 DOMStmt · §C Lemma DOM via MovesC `DomData` ("valuation geometry … carries
+  over as written") · U17 · easy.
+- U29 CStatements + REL1 (:= CStatements at δ — the typed mutatis-mutandis
+  pointer) + REL1PassDeliverable/EQ2lawIfREL1 (CF17 attachments) · "(REL.1) …
+  hold over O_δ … MUTATIS MUTANDIS" + (EQ-1)/(EQ-2) status lines · U18–U28 · easy.
 
-**R5 qq_mul + βarg_eq** · `qq p (m*δ') = qq p m ^ δ'`; `S.βarg = qq p S.δ ^ S.δrel` ·
-moves_ref: "pool size q_{δ_j} = p^{δ_j} = q_δ^{δ_j^rel}" + (e2). · deps R1 (βarg_eq
-also R7) · sketch: pow_mul · easy · PROVED-class.
+REL.2 (U30–U39; one checklist item per unit — CF19/CF20):
+- U30 REL2a1 (a1 + FF5(i)) · "(a1) DOMAIN … measurable product" · U7 · medium.
+- U31 REL2a2 (a2) · "(a2) … integrality of d_j^rel" · U7 · easy.
+- U32 REL2a3 (a3 + teich_pin) · "(a3) EMBEDDING CONVENTION … Teichmüller" · U1 ·
+  easy-medium.
+- U33 REL2a4 (a4) · "(a4) FORMULA: … Θ_j itself" · U30 · easy.
+- U34 REL2a5 (a5 over the AMBIENT family — CF10; unitri anchors — FF7) · "(a5) …
+  C.0.5's unitriangular transports" · U7,U30,U33 · medium.
+- U35 REL2a6 (a6 PER READ FIELD — CF11: shape/anchor/side preserved, residue-datum
+  transports declared) · "(a6) READ DICTIONARY … displayed per read field" +
+  (R0-reads) · U9 · medium.
+- U36 REL2a bundle · "nothing short of all six items" · U30–U35 · easy.
+- U37 REL2b (+ FF5(ii) membership) + REL2b_linked + EQ3 · "(REL.2b)" display +
+  "(EQ-3) … REL.2(b) verbatim" · U13,U29,U36 · medium.
+- U38 REL2d (square + word/reads/verdict corr + posOf_letter — CF12) · "(REL.2d)
+  … COMMUTATIVE SQUARE … SPECIFIED node-data correspondence" · U36,U9,U10 · hard.
+- U39 REL2e + e4agrees/firstIdxCandidate(demoted — CF13)/determines/massEqEntry
+  (consumed = [3]'s parameter — CF14) + REL2eObligations (CF20 conjunction) ·
+  "(REL.2e) … (e1)–(e5)" · U29,U36,U38 · medium-hard.
 
-**R6 Fsub_card [NEW — finding 1]** · `Nat.card ↥(Fsub p m) = p ^ (m : ℕ)` ·
-moves_ref: "F_m is THE subfield of order p^m". · deps R1 · sketch: fixed points of
-Frob^m = roots of the separable X^{p^m} − X, which splits in F̄_p; count roots
-(`galois_poly_separable`, `Polynomial.card_roots_le_degree` + separability for
-equality) · hard · PROVED-class (wave-3 fleet; statement frozen now).
+SIB (U40–U41; provable U41):
+- U40 SIBPkg + SIBOdelta (family package function + ambient/target REL1 + the CF2
+  composition clause: descendant ambient = parent target, HEq up to index
+  transport) · "(SIB-Oδ)" + "the obligations must COMPOSE across nested base
+  changes" · U8,U29,U36,U37,U38 · hard.
+- U41 O_chain · "literally a subring chain in W(F̄_p)" · U3,U7 · easy (provable).
 
-**R7 Setting [finding 2 repaired]** · structure + `δabs` + `βarg` + carrier example.
-moves_ref: "Ambient base O_δ …, a realized prefix η, state cylinder Σ (frame Ψ_η),
-digit cell c of Σ, and a branch b_j … δ_j := δ·δ_j^rel, the ABSOLUTE accumulated
-residue degree." · deps R1 · sketch: opaque carriers + REALIZED-MEASURE LAWS
-(nonneg, ≤ 1, event algebra, additivity, conditional normalization guarded by
-μ(Σ_c) > 0); nonempty Cont/PTree · medium · hyp_fields: none asserted — the law
-fields are carrier well-formedness, the note's own.
-
-**R8 SettingsFamily [findings 19/20 repaired]** · structure + singleton example.
-moves_ref: "simultaneously over every unramified O_δ that arises (all δ ≥ 1 in one
-statement)… the same typing applies at every descendant branching cell inside T_j,
-ABSOLUTE indices throughout." · deps R7 · sketch: nonempty + root δ=1 + typed
-descent closure (`desc_sub`, `desc_amb : S'.δ = S.δabs`) · easy-medium ·
-hyp_fields: none (carrier; closure fields are the recursion clause's typing).
-
-**R9 TowerData + Laws [finding 3 part]** · structure + BaseLaws/ClimbLaws/
-StageCarrierLaws + `#check`. moves_ref: "F₁ := F_δ[x]/(φ̄) … the tower F_{k+1} =
-F_k[z]/(ψ_k) climbs by residual factors COMPUTED OVER THE NEW BASE — built afresh,
-NOT by scalar-extending." · deps R1 · sketch: AdjoinRoot presentations; laws split
-§A/§B1/§B2-DEF; §B1 = typable residue + (R0-tower) fence in docstring · medium ·
-hyp_fields: the three Law bundles (obligations, consumed by R11).
-
-**R10 BoxVol [finding 8 repaired]** · structure + `#check` (no instance — D9).
-moves_ref: "(R0-box) … normalized Haar measure vol_{O_δ}(O_δ^n) = 1 … f mod p^N
-ranges over q_δ^{nN} residue points." · deps R1 · sketch: event algebra containing
-all cylinders; nonneg/additive/normalized content; `vol_cyl` pins cylinder masses
-to q^{-nN} · medium · hyp_fields: all law fields (well-formedness of the note's
-measure; inhabitation = Haar, the pass's).
-
-**R11 REL1Counting [FF2 repaired]** · structure + `#check`. moves_ref:
-"(REL.1-b) #{ f mod p^N ∈ S(H, Z) } = q_δ^{nN} · ∏_{i=0}^{k} vol(E_fresh(ν_i)) ·
-vol(Z) for every N ≥ N(H, Z)." · deps R10 · sketch: fixed degree n; nonempty
-Hist/per-H Locus; fresh/locus events IN V.events; NO count field — the LHS is
-`ReBased.count`, DEFINED (R12) · medium · hyp_fields: none asserted (carrier).
-
-**R12 ReBased + count + REL1Clauses [FF1/FF2/FF3/FF4 repaired]** · structures +
-def + `#check`. moves_ref: "§A, §B1, §B2-DEF, and §C — through Theorem C(a)/(b)
-with C.0.5/PIN-WELLDEF, C.1, C.1.5/(ZC), LST, TYP, DOM — hold over O_δ … MUTATIS
-MUTANDIS" + Lemma LST's display (MOVES 3728, the FF1 source). · deps R9, R10, R11,
-R18, R19 (+ D8 imports) · sketch: ReBased parameterized by (Sp, AD) with
-`posOfDigit`/`aDim_eq` tying c1's exponents to (EQ-2)'s data (FF4) and the LST
-carriers (ht/blkOf/floors/interior/floorSet/wSlot); `ReBased.count` DEFINED as the
-level-N cylinder-class count of SHZ (FF2 — the free-count instance family is
-dead); ten TYPED clause fields — tower laws, thmCa jet-preimage, C.0.5 unitri +
-pin statistics BOTH legs (cardinality AND the aDim-multiset — FF3), |𝔸_δ|⁻¹
-product, (ZC) invariance, LST's three legs (slot-min TYPING, interior FLOOR
-CONSTANCY, floor-downset SELECTION — FF1), TYP additivity, DomData · hard (the
-corpus's largest unit — split at E-phase into ReBased/REL1Clauses files if
-elaboration drags) · hyp_fields: every clause field (open; the pass's theorems).
-
-**R13 REL1b + REL1** · defs + `#check`. moves_ref: "STATUS: a NEW THEOREM with its
-own verification passes — not a corollary, not 'by inspection'." · deps R12 ·
-sketch: REL1 := REL1Clauses ∧ REL1b, over (Sp, AD)-parameterized carriers, LHS the
-DEFINED count — REL1b is now a counting fact about the classifier locus (FF2) ·
-easy · hyp_fields: REL1 (THE open kernel; never instantiated here).
-
-**R14 REL2a [FF5(i)/FF7 repaired]** · structure + `dRel` + `#check`. moves_ref:
-"(a) is now a DELIVERABLES CHECKLIST, and nothing short of all six items is '(a)
-stated' … (a1) … as a MEASURABLE product of O_δ-digit spaces … (a5) … C.0.5's
-unitriangular transports." · deps R1, R7, R18 (+ D8 `CoordPrec`) · sketch: six
-field-blocks; NONEMPTY FrameIdx/AmbRead; readDict injective + letter-preserving;
-`teich_pin` a FIELD; freeCoords infinite; (a1) now carries `prodEvents` +
-digit-cylinder anchor + `domIdent_meas` (the measurability half — FF5(i)); (a5)
-now carries `ambT_unitri`/`tgtT_unitri` (offset depends only on strictly ≺-earlier
-coordinates, C.0's order — the C.0.5 anchor, FF7) · hard (largest structure) ·
-hyp_fields: none asserted; the INHABITANT is (a)'s deliverable (#check per D9).
-
-**R15 REL2b + REL2b_linked + EQ3 [FF5(ii) repaired]** · defs + `#check`.
-moves_ref: "for every REL.1-measurable continuation event W over O_{δ_j} (digit
-cylinders generate), μ( Θ_j⁻¹(W) │ Σ_c ) = vol_{O_{δ_j}}(W) … the pushforward of
-the conditional continuation measure under Θ_j IS the normalized O_{δ_j}-box
-measure" + "(EQ-3) … REL.2(b) verbatim". · deps R13, R14 · sketch: guard
-0 < cellMass; V.events cylinder-populated; NEW conjunct: Θ-pullback ∈ AmbEvents
-(the pushforward reading's measurability half — FF5(ii)); `REL2b_linked` conjoins
-REL1 at (δ_j, d_rel) over the (Sp, AD)-parameterized ReBased; EQ3 aliases the
-repaired REL2b · easy-medium · hyp_fields: REL2b (OPEN KERNEL = (EQ-3)); REL1
-(in _linked).
-
-**R16 REL2d [findings 11/12 repaired]** · structure + `#check`. moves_ref: "a
-displayed COMMUTATIVE SQUARE — vertices … — with horizontal maps Θ_j ((a4)) and a
-SPECIFIED node-data correspondence (species word, node datum fields, τ-verdicts,
-via (a6)'s dictionary + (EQ-2)'s alphabets)." · deps R14, R18, R19 · sketch:
-square + corr_word/corr_reads/corr_verdict (the correspondence SPECIFIED, junk
-nodeCorr excluded) + posOf into AD (EQ-2 wiring); (a3) policy via A.teich_pin;
-TgtSub/subtreeCorr/TgtRealizes for (SIB-Oδ)'s typing · hard · hyp_fields:
-inhabitant = (d)'s deliverable; `square`+corr fields are its displays.
-
-**R17 REL2e [FF5(iii)/FF6 repaired]** · structure + e4agrees/firstIdxCandidate/
-determines/massEqEntry + `#check`. moves_ref: "(e1) STATE-INDEX CORRESPONDENCE …
-(e2) DEGREE CONVENTION … (e3) MASS = ENTRY — the displayed equation that [3]'s
-table entry β_{e_j, τ_j(c)}(p^{δ_j}) IS the REL.1 mass … (e4) FIRST-INDEX
-DICTIONARY … (e5) SUBTREE/OUTCOME TYPING." · deps R5, R13, R14, R16 · sketch:
-entryFirst FIXED; `consumed` nonempty; stateDict_compat types (e1)↔(a6); e4agrees
-takes [3]'s convention as parameter; massEqEntry now takes `RB : ReBased` and
-conjoins REL1 (the _linked pattern — FF6: THE REL.1 mass, not an arbitrary
-BoxVol) plus realization-event ∈ RB.C.V.events (FF5(iii)); re-keying =
-statement-fence event (D5) · medium-hard · hyp_fields: massEqEntry (e3, now
-REL1-carrying), determines (e5), e4agrees + firstIdxCandidate (e4) — open; data
-fields deliverable.
-
-**R18 SpeciesSyntax + EQ1 [finding 15 repaired]** · structure + def + example.
-moves_ref: "the species alphabet and menu are the SAME finite syntax over every O_δ
-… never the letter set. STATUS: PREDICTED." · deps: — · sketch: Finset menu
-(finiteness typed), menuNe, shape = the stage tuple (e,h,g,μ); EQ1 := ∀ δ, menu δ =
-menu 1 · easy · hyp_fields: EQ1 (PREDICTED, fenced into REL.1's pass).
-
-**R19 AlphabetData + Stable + EQ2law [findings 16/17 repaired]** · structure + defs
-+ degenerate-lawful example. moves_ref: "DEFINITION (unconditional): … the
-attainable additive image/span of the RE-BASED slot maps … |𝔸_δ| = p^{a_δ} …
-PREDICTION … at a fixed shape position WHOSE SPECIES IS δ-STABLE … a_δ = δ·a." ·
-deps R1, R18 · sketch: alphabets as additively-closed subsets of carrier groups
-(span typed); card_eq = the unconditional part; posLetter = the owed matching
-dictionary AS DATA; Stable DEFINED (letter persistence), Pos nonempty · medium ·
-hyp_fields: EQ2law (OPEN, REL.1-conditional, pinned domain).
-
-**R20 EQ2law_card** · theorem (skeleton). moves_ref: "i.e. |𝔸_δ| = q_δ^a = |𝔸|^δ —
-whence exponent preservation in base q_δ." · deps R5, R19 · sketch: card_eq +
-hypothesized law + pow_mul/pow_right_comm · easy · PROVED-class
-(hypothesis-conditional arithmetic; no kernel discharged).
-
-**R21 EQ3 placement** · covered in R15 (alias, same file section); listed for the
-ledger's 1:1 clause coverage. moves_ref: "(EQ-3) CONDITIONAL MASSES TRANSPORTED.
-REL.2(b) verbatim." · deps R15 · easy · hyp_fields: = REL2b.
-
-**R22 SIBOdelta [FF5(iii) repaired]** · def + `#check`. moves_ref: "(SIB-Oδ)
-[FENCED = REL.1 + REL.2(a)+(b)+(d), composed …] … μ( S_j │ Σ_c ) =
-vol_{O_{δ_j}}{ g : T_can^{O_{δ_j}}(g) realizes T_j }, the right side a
-REL.1-theory mass." · deps R8, R13, R14, R15, R16 · sketch: ∀ over the realized
-family (nonempty, root, descent-closed), guard 0 < cellMass, ∃-composition WITH
-the REL1 conjunct over the (Sp, AD)-parameterized ReBased; per T: realization
-event ∈ RB.C.V.events (FF5(iii)) + event-typing + pricing · medium-hard ·
-hyp_fields: SIBOdelta (OPEN — the sentence [3t]-COND waits on).
-
-**R23 O_chain** · theorem. moves_ref: "a branch of relative accumulated degree δ″ at
-ambient O_{δ_j} targets O_{δ_j·δ″}, literally a subring chain in W(F̄_p)." · deps
-R3, R7 · sketch: O_le at δ ∣ δ·δrel and δabs ∣ δabs·δ″ · easy · PROVED-class
-(ring half of the recursion clause; family half is R8's closure).
-
-(REL.3: NO UNIT — finding 21, D6. REL.2(c), REL-n4, (R0-tower) bracket: non-units,
-D6, unchanged rationale.)
+(REL.3: NO UNIT — D6. REL.2(c), REL-n4, PREDICTED brackets: non-units, D6.)
 
 ## 3. Audit notes (wave-2 re-audit; budget: exactly one pass)
 
 - FAITHFULNESS ANCHORS: every docstring quotes the rev-5 display it encodes; the
-  moves_refs above are the check keys. Only `theorem`s: R2–R6, R20, R23 (base-index
+  moves_refs above are the check keys. Only `theorem`s: U2–U6, U12, U41 (base-index
   bookkeeping + the card fact + one hypothesis-conditional pow identity).
 - DELIBERATE RESIDUAL WIDENINGS (each recorded): (i) `Setting` absorbs η/Σ_c/b_j
   into carriers-with-laws; the realized quantifier is `SettingsFamily` (supplied by
-  the ambient theory; closure typed). (ii) REL.1's clause fields type each clause's
-  HEAD SHAPE in §R-LEDGER's own vocabulary — their full §C-level content is the
-  re-scoping pass's (the note: the clause list is re-scoped THERE, not here); where
-  §R-LEDGER displays nothing (§B1 internals), the field types the typable residue
-  and the docstring cites the fence. (iii) (e5)'s second disjunct (re-keying) is a
-  statement-fence event, not a Prop disjunct — a satisfiable-by-construction
-  disjunct would be vacuous (D5). (iv) WITHDRAWN at REV 3 (FF1): the rev-2 premise
-  that LST had no named display was factually wrong — Lemma LST exists (§C, MOVES
-  3728, "level-set scale-typing") and `lst` now types its three legs' residue; the
-  K1-chain/in_γ graded internals stay §C-side under the §B1-style fence.
-  (v) NEW (FF7): free-data relativity — where the ambient engine's objects
-  (transports, trees, reads, floors) do not exist in Lean, the corresponding
-  deliverable fields are free data constrained ONLY by their typed laws
-  (unitriangularity anchors, letter/word/verdict preservation, cylinder pins,
-  teich_pin, the floor-downset pin); law-respecting junk remains constructible,
-  and D7 now says exactly this. Full pinning = REL.1-pass territory.
+  the ambient theory; closure typed; conditioning sites per `mem_pos`).
+  (ii) SUPERSEDED AT REV 4: the §B1/LST fences are GONE — the CInterface types the
+  graded vocabulary (`GradedCarrier`) and each cited lemma's full statement
+  (`*Stmt` defs); what remains recorded is that the interface's INSTANTIATION from
+  the OM engine is HC-1's deliverable (localization L / degree-1 unit T ride
+  there), not this corpus's.
+  (iii) (e5)'s second disjunct (re-keying) is a statement-fence event, not a Prop
+  disjunct (D5). (iv) WITHDRAWN at REV 3 (FF1); the rev-4 `LSTStmt` types ALL
+  legs including the formerly-fenced clauses.
+  (v) free-data relativity (FF7), NARROWED at REV 4: the ambient engine's
+  transports are no longer inhabitant-chosen ((a5) quantifies over `S.reframe`,
+  CF10); trees/reads/floors remain free data constrained by their typed laws
+  (anchors, preservation, cylinder pins, teich_pin, `posOf_letter`, `mem_pos`,
+  `interior_fresh`, attainability). Law-respecting junk remains constructible
+  exactly where the engine has no Lean form; D7 says this accurately; full pinning
+  = HC-1 + the REL.1 pass.
 - CROSS-NOTE WATCHES INHERITED: (W1) `SEvent`/`TgtRealizes` stay opaque — every
   MovesR statement is neutral to the [1]/[3t] "realizes" pin; the pinned reading
   lands as the supplier's definition at the CL-10 sync, no statement changes.
   (W2) absolute indices enforced by construction (`δabs`, `βarg`, `relExt`).
 - PLAN-SYNC FLAG (note R.1): CL-8 owes the (e) leg + the five-count; MovesR carries
   the five-obligation convention ((c) absent by re-homing).
-- CONSUMER EDGES: MovesT consumes `SIBOdelta`/`Setting`/`SettingsFamily`/R23;
-  MovesS consumes `REL2e` + `βarg_eq` and EXPORTS `tableConv` (e4's parameter);
-  MovesU consumes the future REL.3 units (none yet — D6); MovesV cites `REL1`.
-  Import direction: those corpora import MovesR, never conversely.
+- CONSUMER EDGES: MovesT consumes `SIBOdelta`/`Setting`/`SettingsFamily`/`O_chain`;
+  MovesS consumes `REL2e` + `βarg_eq` and EXPORTS `tableConv` AND `consumed`
+  ((e4)'s and (e5)'s parameters — CF14); MovesU consumes the future REL.3 units
+  (none yet — D6); MovesV cites `REL1` (= `CStatements`); HC-1 owes the
+  `GradedCarrier`/`ReBased` instantiation. Import direction: those corpora import
+  MovesR, never conversely.
 
 ## 4. File map + status ledger
 
-  lean/LeanUrat/MovesR/Base.lean       R1–R6   (defs + 5 provable lemmas + card)
-  lean/LeanUrat/MovesR/Interface.lean  R7–R8   (Setting+laws, SettingsFamily)
-  lean/LeanUrat/MovesR/Eq.lean         R18–R21 (SpeciesSyntax, AlphabetData, EQ-1/2)
-  lean/LeanUrat/MovesR/Rel1.lean       R9–R13  (TowerData, BoxVol, counting, clauses)
-  lean/LeanUrat/MovesR/Rel2.lean       R14–R17 ((a), (b)+EQ-3, (d), (e))
-  lean/LeanUrat/MovesR/Sib.lean        R22–R23 ((SIB-Oδ), chain)
+  lean/LeanUrat/MovesR/Base.lean       U1–U6   (defs + 5 provable lemmas + card)
+  lean/LeanUrat/MovesR/Interface.lean  U7–U8   (Setting+FrameC+laws, SettingsFamily+mem_pos)
+  lean/LeanUrat/MovesR/Eq.lean         U9–U12  (SpeciesSyntax+grammar, AlphabetData+spans, EQ-1/2)
+  lean/LeanUrat/MovesR/CInt.lean       U13–U29 (BoxVol, GradedCarrier, TowerData, counting,
+                                                ReBased+count, the 11 *Stmt defs, CStatements+REL1)
+  lean/LeanUrat/MovesR/Rel2.lean       U30–U39 ((a1)–(a6)+bundle, (b)+EQ-3, (d), (e))
+  lean/LeanUrat/MovesR/Sib.lean        U40–U41 (SIBPkg+SIBOdelta, chain)
   lean/LeanUrat/MovesR/Defs.lean       re-export shim
   (REL.3: no file, no object — D6.)
 
@@ -1053,6 +1180,67 @@ Codex repairs verified genuine there):
       (CoordPrec-anchored unitriangularity); D7's false claim withdrawn and
       replaced; residue recorded as widening (v) (R14, D7, §3).
 
-STATUS (2026-07-28): REV 3 WRITTEN — Codex 21/21 + Fable 7/7 repaired. 23 units:
-7 provable (R2–R6, R20, R23), 16 statements-only. No axioms; no kernel discharged;
-statement fence in force. Next gate: the Codex FINAL confirmation pass, then E-phase.
+Codex FINAL audit on rev 3 (`MOVESR_AUDIT_CODEX_FINAL_2026-07-28.md`, 15 crit /
+5 gap; parallel fresh-Fable #2: ACCEPT 0/0) — per-finding TRIAGE (adjudication #1;
+S = survived, folded in · R = resolved-by-rearchitecture · N = note-rejected):
+
+  CF1  (crit, zero-mass singleton)   S → `mem_pos` family-scope law (NOTE-CHECK: the note has
+       NO positive-cell existence law; the (b) proviso "the only cells any (SIB) display
+       conditions on" is the warrant — family = conditioning sites) (U8, U40).
+  CF2  (crit, composition untyped)   S → ONE coherent package function per family + the typed
+       composition clause: descendant AMBIENT theory = parent TARGET theory (ambDeg equality
+       + HEq across desc_amb's index transport) (U40).
+  CF3  (crit, menuNe strengthens)    S — NOTE-CHECK CONFIRMS CODEX ("no menu/exhaustion
+       claims", R.5) → `menuNe` REMOVED; empty menus back in range (U9).
+  CF4  (crit, species grammar)       S → SideData/PolyConv carriers + projections +
+       `letter_det` injectivity ("letters are DEFINED BY …") (U9).
+  CF5  (crit, alpha not attainable)  S → declared `slotMap` + `alpha_attain` span-generation
+       equality (U10).
+  CF6  (crit, EQ-2 linearity half)   R → the slot maps now EXIST as data with F_δ-module
+       structure; EQ2law types BOTH conjuncts (U10, U11).
+  CF7  (crit, LST incomplete)        R → `LSTStmt` types ALL legs over `GradedCarrier`:
+       chain-weight typing `G.w (mono i) = ht i`, slot-min, in_γ/level-set functionality,
+       (ii), (iii) — no fence (U14, U26).
+  CF8  (crit, interiorB vacuous)     S → `interior_fresh` ("on the factor interior — where
+       all fresh content lives"): constrained digits sit on interior blocks (U17).
+  CF9  (crit, pin status ≠ aDim)     S → `Status` carrier + `pinStatus` + `pinnedIn_spec`;
+       C05Stmt's status-multiset invariance leg (aDim multiset retained as the ledger
+       weight) (U17, U23).
+  CF10 (crit, (a5) identity family)  S → (a5) quantifies over the AMBIENT `S.reframe`
+       family (Setting-supplied); deliverable = target transports + commutation (U7, U34).
+  CF11 (crit, (a6) letter-only)      S → per-read-field typing: SHAPE/anchor/SIDE preserved;
+       DIGITS/ψ/lifts as declared per-read transports (RECONSTRUCTED, per (R0-reads)) (U35).
+  CF12 (crit, (d) unconstrained)     S (typable layer) → `posOf_letter` pins the alphabet
+       wiring; reads structured via U35; the full canonical-tree/lift-policy pinning to the
+       ENGINE = HC-1's instantiation, recorded in D4/§3(v) (U38).
+  CF13 (crit, candidate promoted)    S → `firstIdxCandidate` DEMOTED (named candidate, no
+       consumer may hypothesize it; removed from D7's list); (e4) = `e4agrees` alone (U39).
+  CF14 (crit, consumed free)         S → `consumed` re-keyed as [3]/MovesS's exported
+       PARAMETER, like `tableConv` (U39, §3 consumer edges).
+  CF15 (crit, BoxVol not Haar)       S → `events_level`: every event a finite cylinder union
+       at some level, so vol is FORCED everywhere by additivity + `vol_cyl` ((g7)'s
+       determination-radius discipline cited) (U13).
+  CF16 (gap, §B1 fenced)             R → `GradedCarrier` types the graded vocabulary + laws;
+       `SecB1Stmt` adds slotCoeff additivity; localization/degree-1 unit ride at HC-1,
+       recorded (U14, U19).
+  CF17 (gap, EQ unattached)          S → `REL1PassDeliverable := REL1 ∧ EQ1` (the pass's
+       named checkpoint) + `EQ2lawIfREL1 := REL1 → EQ2law` ("OPEN, REL.1-conditional") (U29).
+  CF18 (gap, R12 multi-lemma)        S → split into U13–U29: carriers, count, and ELEVEN
+       one-display statement defs, each its own unit.
+  CF19 (gap, R14 multi-lemma)        S → split into U30–U36: one checklist item per
+       structure + the bundle.
+  CF20 (gap, R17 split ambiguity)    S → e-Props separated + `REL2eObligations` as THE single
+       collecting conjunction consumers cite (U39).
+
+  TRIAGE COUNTS: 17 SURVIVED (folded in) · 3 RESOLVED-BY-REARCHITECTURE (CF6, CF7,
+  CF16) · 0 NOTE-REJECTED (both ordered note-checks resolved FOR the repair: CF1's
+  law does not exist in the note — family-scope mechanism used instead; CF3's
+  strengthening confirmed and removed).
+
+STATUS (2026-07-28): REV 4 WRITTEN (re-architecture per stuck-rule adjudication #1)
+— Codex 21/21 (rev 2) + Fable 7/7 (rev 3, confirmed genuine by Fable #2) + Codex
+FINAL 20/20 triaged (17 folded / 3 by re-architecture). 41 units: 7 provable
+(U2–U6, U12, U41), 34 statements-only; the CInterface (GradedCarrier + 11 *Stmt
+defs + CStatements) replaces every fence; HC-1 owes the instantiation. No axioms;
+no kernel discharged; statement fence in force. This corpus PARKS here pending the
+campaign's next gate.
