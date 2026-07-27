@@ -1,3 +1,32 @@
+# MOVESD LEAN BLUEPRINT — REV 7 (certificate completion)
+
+REV 7 (2026-07-28): completion sweep on the DUAL-CONFIRMED architecture — Codex
+FINAL#5 REJECT 2/3 (`MOVESD_AUDIT_CODEX_FINAL5_2026-07-28.md`) ∪ Fable#5 REJECT
+0 crit/2 gap (`MOVESD_AUDIT_FABLE5_2026-07-28.md`); both AFFIRM the domain-subtype
+cure and the gate arithmetic. The union, implemented:
+(1) ShapeWF COMPLETION (Codex c.1 — its h = 0 adversary stands): `ShapeRead` gains
+`hh`/`hcop`/`hspecInc`/`hspecRec` (Node's "genuine polygon side: e, h ≥ 1, coprime"
++ the §C.0 species laws), `ShapeWF` gains the LATTICE ties `gamTie` (coherence's
+γ-tie: γ = e·(STR·u*) + j*·h — L3 rev 9's "γ_r := e_r·u*_r + j*_r·h_r, §C's
+DERIVED list") and `anchorTie` (Node.hAnchor at THE canonical Bézout coefficient
+`bezT`, D.3(c)'s stride anchor). ALL adversaries re-run in §3.1: Fable's three +
+Codex's h = 0 + a gcd violation (all FAIL the certificate); positives P̂*, P̂₀
+(both PASS, every new clause checked).
+(2) NP EMPTY-FAMILY CASE (Codex c.2): L12 QUOTED — "N(P̂) := 1 if Pref(P̂) = ∅" is
+UNCONDITIONAL on the band, so the PIECEWISE form is required: `NP` is now
+`if Nonempty (PrefIdx …) then NPband else 1` (`NPband` = the band-sup formula);
+a nonempty shape with no realizable assignment gets NP = 1 exactly; the max-η
+identification claim is SOFTENED to its corpus-consumed content (NP_stab + range).
+(3) THE BINDING SWEEP (Fable g.1 = Codex g.3): §3.2/§3.4 signatures re-bound to
+`Shape n` throughout (PrefIdx, PresentNorm, reprOf, CD → `Shape.CD`, PrefOpt,
+Presented, D4R_CYL, ClassFiberWelldef) — the skeleton elaborates as displayed.
+(4) SMALL ITEMS: stale TW sketch line purged (Fable g.2); hypothesis_fields now
+list `hnorm` on D2a/F1/E9/D3a (Codex g.4); VerdictModel's `Cell` gains `hCellFin`
++ `cell_local` (the typed non-degeneracy tie, OPEN — Codex g.5); `rootHalt_iff`
+gains the root-species filter (Fable OBS-1); NP docstring re-scoped (OBS-2);
+§7 item 7 updated to "jet + hnorm" (OBS-3).
+Tables §9–§13 historical; §14 = REV 7. [Pre-REV-7 headers follow, audit trail:]
+
 # MOVESD LEAN BLUEPRINT — REV 6 (the domain-subtype ruling)
 
 REV 6 (2026-07-28): the rev-5 verdicts split a fifth time — Fable#4 ACCEPT 0/0
@@ -274,6 +303,15 @@ structure ShapeRead where
   hμ : 1 ≤ μ
   hw : 1 ≤ w
   hDw : 1 ≤ Dwidth
+  /-- [REV 7, Codex#5 c.1 — certificate completion, per-read part] Node's "the read
+  side is a genuine polygon side: `e, h ≥ 1`, coprime (lowest terms)" (MovesC
+  `Node.hh`/`Node.hcop`), and the §C.0 species laws (`Node.hspecInc`/`hspecRec`):
+  an increment grows the stage, a recentering has e = 1, g = 1. Codex#5's h = 0
+  adversary can no longer BUILD a ShapeRead. -/
+  hh : 1 ≤ h
+  hcop : Nat.gcd e h = 1
+  hspecInc : species = ReadSpecies.increment → 1 < e * g
+  hspecRec : species = ReadSpecies.recentering → e = 1 ∧ g = 1
   /-- [REV 4, Codex#2 finding 1 — partial concession]: the monic lead exists only at
   the ROOT read (the box's top coefficient; deeper windows sit inside the box). -/
   hmonicRoot : monicTop = true → species = ReadSpecies.root
@@ -312,6 +350,12 @@ def ShapePrefix.MonicTie (P : ShapePrefix) (n : ℕ) : Prop :=
   ∀ (r : ℕ) (hr : r < P.reads.length),
     (P.reads[r]'hr).monicTop = true ↔ (r = 0 ∧ (P.reads[r]'hr).s0 + (P.reads[r]'hr).wSide = n)
 
+/-- [REV 7] THE canonical Bézout coefficient `t ∈ [0, e)` of a read side (rev 14's
+`t^B`; MovesC `hbezCanon`: unique in the window, a FUNCTION of (e, h) — mirrored
+shape-side; junk when gcd ≠ 1, excluded by `ShapeRead.hcop`). At e = 1: t = 0
+(D.5's (P2) base — the γ-blind case that forced u*'s retention, L3 rev 9). -/
+def bezT (e h : ℕ) : ℤ := (((Nat.xgcd e h).2 % (e : ℤ)) + (e : ℤ)) % (e : ℤ)
+
 /-- [REV 6 — THE DOMAIN-SUBTYPE RULING; Codex#4 findings 1–3's one disease] **The
 shape wf-certificate**: the L3-dictionary-image laws expressible on shape data —
 what a note shape-prefix IS. A malformed encoding "is not a valid shape-prefix; it
@@ -333,6 +377,19 @@ structure ShapeWF (n : ℕ) (P : ShapePrefix) : Prop where
   dchain : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
     (P.reads[r+1]'hr).Dwidth = (P.reads[r]'(by omega)).childWidthS
   monic : P.MonicTie n
+  /-- [REV 7, Codex#5 c.1 — LATTICE COMPATIBILITY] the γ-tie, shape-side: L3 rev 9's
+  "γ_r := e_r·u*_r + j*_r·h_r, §C's DERIVED list" at the chain stretch — mirrors
+  `HistoryCoherent`'s γ-tie clause verbatim (γ's ℤ-typing IS on-lattice). -/
+  gamTie : ∀ (r : ℕ) (hr : r < P.reads.length),
+    (((P.reads[r]'hr).gam : ℤ) : ℚ)
+      = ((P.reads[r]'hr).e : ℚ) * ((P.strS r : ℚ) * (P.reads[r]'hr).ustar)
+        + ((((P.reads[r]'hr).s0 + (P.reads[r]'hr).wSide) : ℕ) : ℚ) * ((P.reads[r]'hr).h : ℚ)
+  /-- [REV 7, c.1] the ANCHOR tie at THE canonical Bézout coefficient (`bezT` below;
+  MovesC `hbezCanon`'s unique window representative): Node.hAnchor's
+  "a = p_{s₀}(γ) = (s₀ − t·γ)/e", D.3(c/d), shape-side. -/
+  anchorTie : ∀ (r : ℕ) (hr : r < P.reads.length),
+    ((P.reads[r]'hr).e : ℤ) * (P.reads[r]'hr).a
+      = ((P.reads[r]'hr).s0 : ℤ) - bezT (P.reads[r]'hr).e (P.reads[r]'hr).h * (P.reads[r]'hr).gam
 
 /-- **THE NOTE'S SHAPE UNIVERSE, BY TYPE** [REV 6]: every shape-quantified unit
 binds `{P : Shape p F n}` (coercion `↑P : ShapePrefix`; certificate `P.2`) — the
