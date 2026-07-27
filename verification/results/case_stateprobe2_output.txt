@@ -1,0 +1,97 @@
+STATE-PROBE-2 SEALED GATE — exhaustive exact census
+seal: CASE_STATEPROBE2_SEALED_PREDICTIONS.md (P1-P6, sealed 2026-07-27 BEFORE this run)
+boxes: 3 nu1 root strata (N=9, a-coords) + 9 h'=1 states (N=10) + 3 h'=2 states (N=11), each 2^27 members
+
+== UNIT TESTS (worked instance, F4 tables): OK ==
+== LITERAL-DIVISION LAYER (500 members/box, literal polydiv + reconstruction + stratum + Phi1 round trip) ==
+  NU1(chi=z^2+1,v=2)     {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  NU1(chi=z^2+z,v=1)     {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  NU1(chi=z^2,v=3)       {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=1,r=1,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=1,r=1,h2)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=1,r=2,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=1,r=3,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=2,r=1,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=2,r=1,h2)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=2,r=2,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=2,r=3,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=3,r=1,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=3,r=1,h2)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=3,r=2,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+  S(v=3,r=3,h1)          {'div': 0, 'rec': 0, 'stratum': 0, 'roundtrip': 0}
+
+census done in 16s
+  NU1(chi=z^2+z,v=1)     |S|=134217728 floors_viol=0 vtx_viol=0
+  NU1(chi=z^2+1,v=2)     |S|=134217728 floors_viol=0 vtx_viol=0
+  NU1(chi=z^2,v=3)       |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=1,r=1,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=1,r=2,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=1,r=3,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=2,r=1,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=2,r=2,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=2,r=3,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=3,r=1,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=3,r=2,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=3,r=3,h1)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=1,r=1,h2)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=2,r=1,h2)          |S|=134217728 floors_viol=0 vtx_viol=0
+  S(v=3,r=1,h2)          |S|=134217728 floors_viol=0 vtx_viol=0
+P3/P4(i) (sizes 2^27, 0 floor viol, 0 vtx-transport viol): PASS
+
+== P1 SAME-TYPE IDENTITY (M2(ii) = CTS-M(iv)-REP; sealed falsifier) ==
+ group P1a typeB h1 (vtx in {a,a^2} x r):
+  EQUAL  S(v=2,r=1,h1)    == S(v=2,r=2,h1)    (all 1024 cells)
+  EQUAL  S(v=2,r=1,h1)    == S(v=2,r=3,h1)    (all 1024 cells)
+  EQUAL  S(v=2,r=1,h1)    == S(v=3,r=1,h1)    (all 1024 cells)
+  EQUAL  S(v=2,r=1,h1)    == S(v=3,r=2,h1)    (all 1024 cells)
+  EQUAL  S(v=2,r=1,h1)    == S(v=3,r=3,h1)    (all 1024 cells)
+ group P1b typeA h1 (vtx=1, r varying):
+  EQUAL  S(v=1,r=1,h1)    == S(v=1,r=2,h1)    (all 1024 cells)
+  EQUAL  S(v=1,r=1,h1)    == S(v=1,r=3,h1)    (all 1024 cells)
+ group P1c typeB h2 (vtx a vs a^2):
+  EQUAL  S(v=2,r=1,h2)    == S(v=3,r=1,h2)    (all 256 cells)
+P1: PASS (all same-type laws identical cell-by-cell)
+
+== P2 SEALED PER-TAU ROWS (uniform: h1 cells = 2^17, h2 cells = 2^19) ==
+  S(v=1,r=1,h1)    off-uniform cells: 0
+  S(v=1,r=2,h1)    off-uniform cells: 0
+  S(v=1,r=3,h1)    off-uniform cells: 0
+  S(v=2,r=1,h1)    off-uniform cells: 0
+  S(v=2,r=2,h1)    off-uniform cells: 0
+  S(v=2,r=3,h1)    off-uniform cells: 0
+  S(v=3,r=1,h1)    off-uniform cells: 0
+  S(v=3,r=2,h1)    off-uniform cells: 0
+  S(v=3,r=3,h1)    off-uniform cells: 0
+  S(v=1,r=1,h2)    off-uniform cells: 0
+  S(v=2,r=1,h2)    off-uniform cells: 0
+  S(v=3,r=1,h2)    off-uniform cells: 0
+P2: PASS
+
+== P4 NU1 ROOT-BOX LAYER (a-coords, N=9; dictionary + entry masses) ==
+  NU1(chi=z^2+z,v=1)       off-uniform (t,u7,u8) cells: 0; bucket row: {'DEEP': 2097152, 'TS(5,>=9)': 6291456, 'RAM7': 100663296, 'RS1(r=1)': 2097152, 'SPLIT1': 6291456, 'INERT1': 12582912, 'RS1(r=3)': 2097152, 'RS1(r=2)': 2097152}
+  NU1(chi=z^2+1,v=2)       off-uniform (t,u7,u8) cells: 0; bucket row: {'DEEP': 2097152, 'TS(5,>=9)': 6291456, 'RAM7': 100663296, 'RS1(r=2)': 2097152, 'INERT1': 12582912, 'SPLIT1': 6291456, 'RS1(r=1)': 2097152, 'RS1(r=3)': 2097152}
+  NU1(chi=z^2,v=3)         off-uniform (t,u7,u8) cells: 0; bucket row: {'DEEP': 2097152, 'TS(5,>=9)': 6291456, 'RAM7': 100663296, 'RS1(r=3)': 2097152, 'INERT1': 12582912, 'SPLIT1': 6291456, 'RS1(r=2)': 2097152, 'RS1(r=1)': 2097152}
+P4(ii,iii): PASS (64x2^21 uniform; bucket rows exact incl. RS1 entry masses)
+
+== P5 LOOP-POSITION INVARIANCE (h1 marginal over u9, digits @6..9, vs h2 word @7..10; floor-aligned shift) ==
+  EQUAL  h1-marg(v=1,r=1) == h2(v=1,r=1)      (all 256 cells)
+  EQUAL  h1-marg(v=2,r=1) == h2(v=2,r=1)      (all 256 cells)
+  EQUAL  h1-marg(v=3,r=1) == h2(v=3,r=1)      (all 256 cells)
+P5: PASS
+
+== P6 CROSS-TYPE (typeA vs typeB raw rows; report-only, NON-falsifying) ==
+  S(v=1,r=1,h1) vs S(v=2,r=1,h1): 0 differing cells (differences expected-permitted; carried by the block system)
+== GALOIS RELABEL LAYER (S(a,r) vs S(a^2,r^2) with conjugated words; adjudication aid, not a pass condition) ==
+  S(v=2,r=1,h1)^conj vs S(v=3,r=1,h1): 0 differing cells
+  S(v=2,r=2,h1)^conj vs S(v=3,r=3,h1): 0 differing cells
+  S(v=2,r=3,h1)^conj vs S(v=3,r=2,h1): 0 differing cells
+========================================================================
+STATE-PROBE-2 SEALED GATE SUMMARY
+12 states (9 h'=1 @N=10, 3 h'=2 @N=11) + 3 nu1 root boxes @N=9; 15 x 2^27 members, exhaustive
+arith layer: clean (unit tests OK)
+P1 same-type identity: PASS | P2 sealed uniform rows: PASS
+P3 floors/sizes/vtx-transport: PASS | P4 nu1 dictionary+row: PASS | P5 loop-position: PASS
+P6 cross-type (report-only): 0 differing cells; Galois layer: 0 differing cells
+VERDICT: PASS
+wall time 16s
+========================================================================
