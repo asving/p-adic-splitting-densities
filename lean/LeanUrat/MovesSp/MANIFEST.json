@@ -1,0 +1,825 @@
+{
+ "campaign": "MOVES §M-SPECIES corpus - Lean formalization, E-phase (statement files, sorry bodies)",
+ "source": "lean/notes/MOVES_2026-07-24.md §M-SPECIES (rev-8 text, DUAL-ACCEPTED 2026-07-27: Codex pass 7 + Fable confirm)",
+ "blueprint": "lean/notes/MOVESSP_LEAN_BLUEPRINT_2026-07-28.md (rev 5, dual-accepted 0/0; § DEVIATIONS (E-PHASE) appended 2026-07-28)",
+ "ephase": "2026-07-28 (E-phase Fable) - all 70 .lean files elaborate green under `lake env lean` (toolchain 4.31.0, mathlib cache; per-module `lake build` oleans). Defs/DefsEnum/DefsN3 sorry-free; 88 sorried obligations across the 67 units = 81 theorems + 2 blueprint-specified def bodies (compCuts, encode) + 5 proof fields of the pinned n1CatalogueWord packaging. NO axioms, NO native_decide (banned corpus-wide), statements verbatim per blueprint §2/§3/§4/§5. Sealed n=3/n=1 data QA'd by compiled #eval before freezing: every §5 decide target evaluates TRUE against DefsN3 (53 letters, closure, menu exactness, loops order [loopQ3, loopQ23], exclusion filters 11/2, entrance rosters incl. the §9 three-member ▸(1,2) roster, n=1 singleton).",
+ "def_layer_order": "Defs.lean (Species/Coherent/Budget/StageLaws/SuccStep/InCatalogue/Sh/rank/CanTreeModel/CatalogueWord/EntranceShape/collapseRuns/Code) <- DefsEnum.lean (compEnum/lamEnumAux/lamEnum/speciesEnum + Bool layer coherentB/budgetB/rootAdmissibleB/succStepB + routing conventions) <- DefsN3.lean (the SEALED 53-letter catalogue in pinned order R++Q3++Q2++Q1++I, named letters, menuMap3, linCount, exclusion lists, Nstar3six, confirmingRoot1).",
+ "preamble": "Every unit file: import LeanUrat.MovesSp.<Defs|DefsEnum|DefsN3> ONLY (deps are proof-level; P-phase adds unit imports as needed - the corpus convention, cf. MovesC C6_thmC_a), namespace LeanUrat.MovesSp; set_option linter.style.longLine/header false, maxHeartbeats 1000000. Build per file with `lake env lean` / `lake build LeanUrat.MovesSp.<mod>` (NEVER full `lake build`).",
+ "instance_obligations": [],
+ "decide_discipline": "DECIDE units (group H + shExample + the two n3rootLetters Bool facts) are typed decide-ready but sorried at E-phase; P-phase closes with kernel decide/rfl. native_decide BANNED (axiom fence: Lean.ofReduceBool outside the allowed set). Perf fence blueprint §1.6: worst hotspot closure_step3 = 53 x 567 succStepB evals; split per stage group on overrun; speciesEnum 3 has 567 candidates, speciesEnum 1 has 6.",
+ "conditionality": "Blueprint §0 ledger: group F consumes the OPEN engine interface CanTreeModel (fields = raw per-read laws, owner HC-1/MovesD; hVerdictPin = the D4R.0-K(c) residual, owner [3t] via VP). Everything else is unconditional bookkeeping over N/Z/Multiset. p-independence of SnRaw: by typing. N*3 values: censused data, no realizability theorem.",
+ "counts": {
+  "total_units": 67,
+  "def_files": 3,
+  "by_group": {
+   "A": 5,
+   "B": 8,
+   "C": 4,
+   "D": 6,
+   "E": 11,
+   "F": 12,
+   "G": 3,
+   "H": 18
+  },
+  "sorries_total": 88,
+  "by_difficulty": {
+   "easy": 37,
+   "medium_incl_easy_medium_and_perf": 26,
+   "medium-hard": 4,
+   "hard": 0
+  }
+ },
+ "units": [
+  {
+   "id": "Sp.reflCoherent",
+   "file": "lean/LeanUrat/MovesSp/SP0_reflCoherent.lean",
+   "group": "A",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem coherentB_iff (s : Species) : coherentB s = true ↔ Coherent s",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.reflBudget",
+   "file": "lean/LeanUrat/MovesSp/SP0_reflBudget.lean",
+   "group": "A",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem budgetB_iff (n : ℕ) (s : Species) : budgetB n s = true ↔ Budget n s",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.reflSucc",
+   "file": "lean/LeanUrat/MovesSp/SP0_reflSucc.lean",
+   "group": "A",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.reflCoherent",
+    "Sp.reflBudget"
+   ],
+   "sorries": 2,
+   "statement": "theorem succStepB_iff (n : ℕ) (s s' : Species) : succStepB n s s' = true ↔ SuccStep n s s' AND theorem rootAdmissibleB_iff (n : ℕ) (s : Species) : rootAdmissibleB n s = true ↔ RootAdmissible n s",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.succTerminal",
+   "file": "lean/LeanUrat/MovesSp/SP0_succTerminal.lean",
+   "group": "A",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 2,
+   "statement": "theorem succ_terminal (n : ℕ) (s : Species) (hs : InCatalogue n s) (h : s.sel = none) : Succ n s = ∅ AND theorem stageLaws_terminal (s s' : Species) (h : s.sel = none) : ¬ StageLaws s s'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.memCoherent",
+   "file": "lean/LeanUrat/MovesSp/SP0_memCoherent.lean",
+   "group": "A",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem InCatalogue.coherent_budget {n s} (h : InCatalogue n s) : Coherent s ∧ Budget n s",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.shCongr",
+   "file": "lean/LeanUrat/MovesSp/SP1_shCongr.lean",
+   "group": "B",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem sh_congr (e h s t γ u0 s0 : ℤ) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) : t * γ ≡ s0 [ZMOD e]",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.shDvd",
+   "file": "lean/LeanUrat/MovesSp/SP1_shDvd.lean",
+   "group": "B",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.shCongr"
+   ],
+   "sorries": 1,
+   "statement": "theorem sh_dvd (e h s t γ u0 s0 : ℤ) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) (k : ℤ) : e ∣ (s0 + k * e - t * γ)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.shSlots",
+   "file": "lean/LeanUrat/MovesSp/SP1_shSlots.lean",
+   "group": "B",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.shDvd"
+   ],
+   "sorries": 2,
+   "statement": "theorem sh_slots (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) (k : ℤ) : Sh t γ e (geoPos e t γ (s0 + k * e)) = s0.fdiv e + k AND theorem sh_anchor (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) : Sh t γ e (geoPos e t γ s0) = s0.fdiv e",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.shE1",
+   "file": "lean/LeanUrat/MovesSp/SP1_shE1.lean",
+   "group": "B",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem sh_e1 (h s t γ s0 : ℤ) (ht : t = 0) : shSigma t γ 1 = 0 ∧ Sh t γ 1 (geoPos 1 t γ s0) = s0",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.shEquiv",
+   "file": "lean/LeanUrat/MovesSp/SP1_shEquiv.lean",
+   "group": "B",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.shSlots"
+   ],
+   "sorries": 2,
+   "statement": "def shEquiv (σ : ℤ) : ℤ ≃ ℤ   [def, body given] AND theorem sh_image (t γ e ag : ℤ) (ℓ : ℕ) : (Finset.Icc ag (ag + ℓ)).image (Sh t γ e) = Finset.Icc (ag + shSigma t γ e) (ag + shSigma t γ e + ℓ) AND theorem sh_geo_slots (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) (ℓ : ℕ) : (Finset.image (fun k : Fin (ℓ + 1) => Sh t γ e (geoPos e t γ (s0 + k * e))) Finset.univ) = Finset.Icc (s0.fdiv e) (s0.fdiv e + ℓ)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.shAnchorInv",
+   "file": "lean/LeanUrat/MovesSp/SP1_shAnchorInv.lean",
+   "group": "B",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem hasAnchorK_T_mul {K : Type*} [Field K] (x : LaurentPolynomial K) (a σ : ℤ) (R : Polynomial K) (h : Moves.HasAnchorK x a R) : Moves.HasAnchorK (LaurentPolynomial.T σ * x) (a + σ) R",
+   "hypothesis_fields": "none (REUSES Moves.HasAnchorK - the corpus-link unit)"
+  },
+  {
+   "id": "Sp.shStage",
+   "file": "lean/LeanUrat/MovesSp/SP1_shStage.lean",
+   "group": "B",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.shCongr",
+    "Sp.shE1"
+   ],
+   "sorries": 2,
+   "statement": "theorem sh_congr_stage {p : ℕ} {F : Type u} [Fact p.Prime] [Field F] [Finite F] (σs : Moves.Stage p F) (γ u0 s0 : ℤ) (hγ : γ = σs.e * u0 + s0 * σs.h) : σs.t * γ ≡ s0 [ZMOD σs.e] AND theorem sh_e1_stage {p : ℕ} {F : Type u} [Fact p.Prime] [Field F] [Finite F] (σs : Moves.Stage p F) (γ s0 : ℤ) (he1 : σs.e = 1) : shSigma σs.t γ σs.e = 0 ∧ Sh σs.t γ σs.e (geoPos σs.e σs.t γ s0) = s0",
+   "hypothesis_fields": "none (consumes an actual Moves.Stage - reuse, not duplication)"
+  },
+  {
+   "id": "Sp.shExample",
+   "file": "lean/LeanUrat/MovesSp/SP1_shExample.lean",
+   "group": "B",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem sh_example : geoPos 2 1 3 1 = -1 ∧ geoPos 2 1 3 3 = 0 ∧ shSigma 1 3 2 = 1 ∧ Sh 1 3 2 (-1) = 0 ∧ Sh 1 3 2 0 = 1 ∧ shSigma (-1) 3 2 = -2 ∧ Sh (-1) 3 2 (geoPos 2 (-1) 3 1) = 0",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.anchorBoundCensus",
+   "file": "lean/LeanUrat/MovesSp/SP1_anchorBound.lean",
+   "group": "C",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem anchor_bound {n : ℕ} {s : Species} (hc : Coherent s) (hb : Budget n s) : s.a ≤ (s.W - s.wraw) / s.e ∧ s.a + s.ell ≤ s.W / s.e ∧ s.W / s.e ≤ s.W ∧ s.W ≤ n ∧ (s.e = 1 → s.a = s.s0 ∧ s.a ≤ s.W - s.wraw)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.anchorBoundGeo",
+   "file": "lean/LeanUrat/MovesSp/SP1_anchorBoundGeo.lean",
+   "group": "C",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.anchorBoundCensus"
+   ],
+   "sorries": 1,
+   "statement": "theorem anchor_bound_geo {n} {s : Species} (hc : Coherent s) (hb : Budget n s) (σ ageo : ℤ) (hshift : (s.a : ℤ) = ageo + σ) : -σ ≤ ageo ∧ ageo ≤ ((s.W - s.wraw) / s.e : ℕ) - σ",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.g6Forcing",
+   "file": "lean/LeanUrat/MovesSp/SP1_g6Forcing.lean",
+   "group": "C",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem w1_forces {n} {s : Species} (hc : Coherent s) (hb : Budget n s) (hW : s.W = 1) : s.e = 1 ∧ s.ell = 1 ∧ s.s0 = 0 ∧ s.a = 0 ∧ s.lam = {(1,1)} ∧ s.lflank = [] ∧ s.rflank = [] ∧ s.sel = none",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.b4Derived",
+   "file": "lean/LeanUrat/MovesSp/SP2_b4Derived.lean",
+   "group": "C",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem egμD_le {n} {s : Species} (hc : Coherent s) (hb : Budget n s) {g μ : ℕ} (hsel : s.sel = some (g, μ)) : s.e * g * μ * s.D ≤ s.wraw * s.D ∧ s.wraw * s.D ≤ n",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.compEncode",
+   "file": "lean/LeanUrat/MovesSp/SP2_compEncode.lean",
+   "group": "D",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 2,
+   "statement": "def compCuts (c : List ℕ) : Finset ℕ   [def, body = sorry (P-phase work per blueprint)] AND theorem compCuts_inj {span} {c c' : List ℕ} (h : IsComposition c span) (h' : IsComposition c' span) (he : compCuts c = compCuts c') : c = c'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.lamEncode",
+   "file": "lean/LeanUrat/MovesSp/SP2_lamEncode.lean",
+   "group": "D",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 1,
+   "statement": "def lamMatrix (n : ℕ) (lam : Multiset (ℕ × ℕ)) : Fin n × Fin n → ℕ   [def, body given] AND theorem lamMatrix_inj {n : ℕ} {lam lam' : Multiset (ℕ × ℕ)} (hbd : ∀ gm ∈ lam, 1 ≤ gm.1 ∧ gm.1 ≤ n ∧ 1 ≤ gm.2 ∧ gm.2 ≤ n) (hbd' : ∀ gm ∈ lam', 1 ≤ gm.1 ∧ gm.1 ≤ n ∧ 1 ≤ gm.2 ∧ gm.2 ≤ n) (heq : lamMatrix n lam = lamMatrix n lam') : lam = lam'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.encodeInj",
+   "file": "lean/LeanUrat/MovesSp/SP2_encodeInj.lean",
+   "group": "D",
+   "difficulty": "medium-hard",
+   "deps": [
+    "Sp.compEncode",
+    "Sp.lamEncode"
+   ],
+   "sorries": 2,
+   "statement": "def encode (n : ℕ) (hn : 1 ≤ n) (s : Species) : Code n   [def, body = sorry (P-phase work per blueprint)] AND theorem encode_inj {n hn} {s s' : Species} (hs : Coherent s ∧ Budget n s) (hs' : Coherent s' ∧ Budget n s') (h : encode n hn s = encode n hn s') : s = s'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.encodeCard",
+   "file": "lean/LeanUrat/MovesSp/SP2_encodeCard.lean",
+   "group": "D",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem code_card (n : ℕ) : Nat.card (Code n) = (n+2)^(n^2 + 3*n + 12)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.finThm",
+   "file": "lean/LeanUrat/MovesSp/SP2_finThm.lean",
+   "group": "D",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.memCoherent",
+    "Sp.encodeInj",
+    "Sp.encodeCard"
+   ],
+   "sorries": 1,
+   "statement": "theorem SP_FIN (n : ℕ) (hn : 1 ≤ n) : (SnRaw n).Finite ∧ Nat.card (SnRaw n) ≤ (n+2)^(n^2 + 3*n + 12)",
+   "hypothesis_fields": "none (p-INDEPENDENCE by typing - docstring, no clause)"
+  },
+  {
+   "id": "Sp.finWords",
+   "file": "lean/LeanUrat/MovesSp/SP2_finWords.lean",
+   "group": "D",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.finThm"
+   ],
+   "sorries": 1,
+   "statement": "theorem SP_FIN' (n L : ℕ) (hn : 1 ≤ n) : {w : List Species | w.length = L ∧ ∀ s ∈ w, s ∈ SnRaw n}.Finite ∧ Nat.card {w : List Species | w.length = L ∧ ∀ s ∈ w, s ∈ SnRaw n} ≤ (Nat.card (SnRaw n))^L",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.outFinite",
+   "file": "lean/LeanUrat/MovesSp/SP4_outFinite.lean",
+   "group": "E",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.finThm"
+   ],
+   "sorries": 1,
+   "statement": "theorem out_finite (n : ℕ) (hn : 1 ≤ n) (s : Species) (hs : InCatalogue n s) : (Out n s).Finite ∧ Nat.card (Out n s) ≤ Nat.card (SnRaw n) + 3",
+   "hypothesis_fields": "none (hs : InCatalogue is faithfulness-only, unused by the proof)"
+  },
+  {
+   "id": "Sp.selfloopChar",
+   "file": "lean/LeanUrat/MovesSp/SP4_selfloopChar.lean",
+   "group": "E",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.memCoherent"
+   ],
+   "sorries": 2,
+   "statement": "theorem selfloop_iff {n : ℕ} {s : Species} (hs : InCatalogue n s) : s ∈ Succ n s ↔ (s.tag = .postRec ∧ s.e = 1 ∧ s.sel = some (1, s.W)) AND theorem selfloop_succStep_iff {n : ℕ} {s : Species} (hc : Coherent s) (hb : Budget n s) : SuccStep n s s ↔ (s.tag = .postRec ∧ s.e = 1 ∧ s.sel = some (1, s.W))",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.selfloopFull",
+   "file": "lean/LeanUrat/MovesSp/SP4_selfloopFull.lean",
+   "group": "E",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.selfloopChar"
+   ],
+   "sorries": 1,
+   "statement": "theorem selfloop_isFull {n : ℕ} {s : Species} (hc : Coherent s) (hb : Budget n s) (h : SuccStep n s s) : IsFull s ∧ s.tag = .postRec",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.fullForcing",
+   "file": "lean/LeanUrat/MovesSp/SP4_fullForcing.lean",
+   "group": "E",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem full_forces {n} {s : Species} (hc : Coherent s) (hb : Budget n s) (hf : IsFull s) : s.e = 1 ∧ s.ell = s.W ∧ s.a = 0 ∧ s.s0 = 0 ∧ s.lam = {(1, s.W)} ∧ s.lflank = [] ∧ s.rflank = [] ∧ s.slots = Finset.Icc 0 s.W",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.fullUnique",
+   "file": "lean/LeanUrat/MovesSp/SP4_fullUnique.lean",
+   "group": "E",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.fullForcing"
+   ],
+   "sorries": 1,
+   "statement": "theorem full_unique {n} {s s' : Species} (hcs : Coherent s) (hbs : Budget n s) (hcs' : Coherent s') (hbs' : Budget n s') (hf : IsFull s) (hf' : IsFull s') (htag : s.tag = s'.tag) (hD : s.D = s'.D) (hw : s.w = s'.w) (hW : s.W = s'.W) : s = s'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.rankRadix",
+   "file": "lean/LeanUrat/MovesSp/SP4_rankRadix.lean",
+   "group": "E",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 2,
+   "statement": "theorem rankNat_lt {n : ℕ} {s : Species} (hn : 1 ≤ n) (hc : Coherent s) (hb : Budget n s) : rankNat n s < 6 * n ^ 2 AND theorem rankNat_lt_of_lex {n : ℕ} {s s' : Species} (hc : Coherent s) (hb : Budget n s) (hc' : Coherent s') (hb' : Budget n s') (h : s.D < s'.D ∨ (s.D = s'.D ∧ tagord s.tag < tagord s'.tag) ∨ (s.D = s'.D ∧ s.tag = s'.tag ∧ n - s.W < n - s'.W) ∨ (s.D = s'.D ∧ s.tag = s'.tag ∧ s.W = s'.W ∧ fullBit s < fullBit s')) : rankNat n s < rankNat n s'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.rankStepInc",
+   "file": "lean/LeanUrat/MovesSp/SP4_rankStepInc.lean",
+   "group": "E",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem rank_step_inc {n} {s s'} (h : SuccStep n s s') (hcb : Coherent s ∧ Budget n s) (hg : ∀ g μ, s.sel = some (g,μ) → 2 ≤ s.e * g) : s.D < s'.D",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.rankStepRec",
+   "file": "lean/LeanUrat/MovesSp/SP4_rankStepRec.lean",
+   "group": "E",
+   "difficulty": "medium-hard",
+   "deps": [
+    "Sp.fullForcing",
+    "Sp.fullUnique",
+    "Sp.rankRadix",
+    "Sp.memCoherent"
+   ],
+   "sorries": 1,
+   "statement": "theorem rank_step_rec {n} {s s'} (h : SuccStep n s s') (hne : s ≠ s') (hin : InCatalogue n s) (hin' : InCatalogue n s') (he1 : ∀ g μ, s.sel = some (g,μ) → s.e * g = 1) : rankNat n s < rankNat n s'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.rankStrict",
+   "file": "lean/LeanUrat/MovesSp/SP4_rankStrict.lean",
+   "group": "E",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.rankStepInc",
+    "Sp.rankStepRec",
+    "Sp.rankRadix"
+   ],
+   "sorries": 1,
+   "statement": "theorem rank_strict {n} {s s'} (hin : InCatalogue n s) (hin' : InCatalogue n s') (h : SuccStep n s s') (hne : s ≠ s') : rankNat n s < rankNat n s'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.dagWalk",
+   "file": "lean/LeanUrat/MovesSp/SP4_dagWalk.lean",
+   "group": "E",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.rankStrict",
+    "Sp.rankRadix"
+   ],
+   "sorries": 1,
+   "statement": "theorem SP_DAG_walk {n} (hn : 1 ≤ n) {l : List Species} (h : CollapsedWalk n l) : l.length ≤ 6 * n^2",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.dagWords",
+   "file": "lean/LeanUrat/MovesSp/SP4_dagWords.lean",
+   "group": "E",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.dagWalk",
+    "Sp.finThm"
+   ],
+   "sorries": 1,
+   "statement": "theorem SP_DAG_words (n : ℕ) (hn : 1 ≤ n) : {l | CollapsedWalk n l}.Finite ∧ Nat.card {l | CollapsedWalk n l} ≤ (Nat.card (SnRaw n) + 1)^(6 * n^2)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.compMember",
+   "file": "lean/LeanUrat/MovesSp/SP3_compMember.lean",
+   "group": "F",
+   "difficulty": "easy-medium",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem SP_COMP (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n) (M : CanTreeModel n p f) (η : M.Branch) (r : ℕ) (hr : (r : ℕ∞) < M.len η) : InCatalogue n (M.datum η r)",
+   "hypothesis_fields": "hRoot/hStage/hCoh/hHalt (SP-COMP steps (1)/(2)/(3)/(3')/(5) - §B2-DEF D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner HC-1/MovesD; OPEN) + hVerdictPin (THE D4R.0-K(c) residual - verdict pin, owner [3t] via VP; explicit per F7, visible-not-type-enforced per REV3 G4). FENCE: no field mentions InCatalogue/Succ/Out. hVerdictPin UNUSED by this unit's proof but part of the interface. hf/hdeg: quantifier fidelity, unused."
+  },
+  {
+   "id": "Sp.compEdges",
+   "file": "lean/LeanUrat/MovesSp/SP3_compEdges.lean",
+   "group": "F",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.compMember"
+   ],
+   "sorries": 1,
+   "statement": "theorem SP_COMP_edges (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n) (M : CanTreeModel n p f) (η : M.Branch) (r : ℕ) (hr : (r + 1 : ℕ∞) < M.len η) : Sum.inl (M.datum η (r + 1)) ∈ Out n (M.datum η r)",
+   "hypothesis_fields": "hRoot/hStage/hCoh/hHalt (SP-COMP steps (1)/(2)/(3)/(3')/(5) - §B2-DEF D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner HC-1/MovesD; OPEN) + hVerdictPin (THE D4R.0-K(c) residual - verdict pin, owner [3t] via VP; explicit per F7, visible-not-type-enforced per REV3 G4). FENCE: no field mentions InCatalogue/Succ/Out."
+  },
+  {
+   "id": "Sp.compCollapsed",
+   "file": "lean/LeanUrat/MovesSp/SP3_compCollapsed.lean",
+   "group": "F",
+   "difficulty": "medium (easy-medium)",
+   "deps": [
+    "Sp.compMember",
+    "Sp.collapseWalk",
+    "Sp.dagWalk"
+   ],
+   "sorries": 1,
+   "statement": "theorem SP_COMP_collapsed (n p : ℕ) (hn : 1 ≤ n) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n) (M : CanTreeModel n p f) (η : M.Branch) (m : ℕ) (hm : (m : ℕ∞) ≤ M.len η) : (collapseRuns ((List.range m).map (M.datum η))).length ≤ 6 * n ^ 2",
+   "hypothesis_fields": "hRoot/hStage/hCoh/hHalt (SP-COMP steps (1)/(2)/(3)/(3')/(5) - §B2-DEF D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner HC-1/MovesD; OPEN) + hVerdictPin (THE D4R.0-K(c) residual - verdict pin, owner [3t] via VP; explicit per F7, visible-not-type-enforced per REV3 G4). FENCE: no field mentions InCatalogue/Succ/Out. NOTE the fence: m (the READ count) is NOT bounded - only the collapsed image."
+  },
+  {
+   "id": "Sp.tauWord",
+   "file": "lean/LeanUrat/MovesSp/SP3_tauWord.lean",
+   "group": "F",
+   "difficulty": "easy",
+   "deps": [
+    "Sp.memCoherent"
+   ],
+   "sorries": 1,
+   "statement": "theorem tauWord_spec {n : ℕ} (cw : CatalogueWord n) : cw.tauWord.length + 1 = cw.word.length ∧ (∀ s, cw.word.getLast? = some s → s.W = 1 ∧ s.sel = none) ∧ (∀ s ∈ cw.tauWord, s.W ≠ 1 ∧ s.sel ≠ none)",
+   "hypothesis_fields": "verdict pinning (WHERE the halt verdict sits) is VP's, NOT stated; only the word arithmetic is."
+  },
+  {
+   "id": "Sp.n1RootConfirming",
+   "file": "lean/LeanUrat/MovesSp/SP3_n1Root.lean",
+   "group": "F",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem n1_root_confirming {s : Species} (h : RootAdmissible 1 s) : s.W = 1 ∧ s.sel = none",
+   "hypothesis_fields": "(tau-hen) SEMANTICS is VP's - only letter arithmetic stated."
+  },
+  {
+   "id": "Sp.n1Word",
+   "file": "lean/LeanUrat/MovesSp/SP3_n1Word.lean",
+   "group": "F",
+   "difficulty": "easy-medium",
+   "deps": [
+    "Sp.n1singleton",
+    "Sp.memCoherent"
+   ],
+   "sorries": 1,
+   "statement": "theorem n1_word (cw : CatalogueWord 1) : cw.word.length = 1 ∧ cw.tauWord = []",
+   "hypothesis_fields": "as Sp.n1RootConfirming."
+  },
+  {
+   "id": "Sp.n1Branch",
+   "file": "lean/LeanUrat/MovesSp/SP3_n1Branch.lean",
+   "group": "F",
+   "difficulty": "medium (easy-medium)",
+   "deps": [
+    "Sp.n1singleton",
+    "Sp.n1RootConfirming",
+    "Sp.compMember"
+   ],
+   "sorries": 7,
+   "statement": "theorem n1_branch_word (p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = 1) (M : CanTreeModel 1 p f) (η : M.Branch) : M.len η = 1 ∧ M.datum η 0 = confirmingRoot1 AND def CanTreeModel.n1CatalogueWord {p : ℕ} [Fact p.Prime] {f : Polynomial ℤ_[p]} (M : CanTreeModel 1 p f) (η : M.Branch) : CatalogueWord 1   [structure def: word := [M.datum eta 0] pinned; 5 proof fields sorried] AND theorem n1_branch_word_eq (p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = 1) (M : CanTreeModel 1 p f) (η : M.Branch) : (M.n1CatalogueWord η).word = [confirmingRoot1]",
+   "hypothesis_fields": "hRoot/hStage/hCoh/hHalt (SP-COMP steps (1)/(2)/(3)/(3')/(5) - §B2-DEF D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner HC-1/MovesD; OPEN) + hVerdictPin (THE D4R.0-K(c) residual - verdict pin, owner [3t] via VP; explicit per F7, visible-not-type-enforced per REV3 G4). FENCE: no field mentions InCatalogue/Succ/Out. hN1 is the note-quoted n = 1 clause (rev 5), not an engine kernel."
+  },
+  {
+   "id": "Sp.collapseSublist",
+   "file": "lean/LeanUrat/MovesSp/SP3_collapseSublist.lean",
+   "group": "F",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem collapseRuns_sublist (l : List Species) : (collapseRuns l).Sublist l",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.collapseNeNil",
+   "file": "lean/LeanUrat/MovesSp/SP3_collapseNeNil.lean",
+   "group": "F",
+   "difficulty": "easy",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem collapseRuns_ne_nil {l : List Species} (h : l ≠ []) : collapseRuns l ≠ []",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.collapseEqSelf",
+   "file": "lean/LeanUrat/MovesSp/SP3_collapseEqSelf.lean",
+   "group": "F",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.collapseSublist"
+   ],
+   "sorries": 1,
+   "statement": "theorem collapseRuns_eq_self_iff (l : List Species) : collapseRuns l = l ↔ l.Chain' (· ≠ ·)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.collapseWalk",
+   "file": "lean/LeanUrat/MovesSp/SP3_collapseWalk.lean",
+   "group": "F",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.collapseSublist"
+   ],
+   "sorries": 1,
+   "statement": "theorem collapseRuns_collapsedWalk {n : ℕ} {l : List Species} (hmem : ∀ s ∈ l, InCatalogue n s) (hch : l.Chain' (SuccStep n)) : CollapsedWalk n (collapseRuns l)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.entranceDef",
+   "file": "lean/LeanUrat/MovesSp/SP3_entrance.lean",
+   "group": "F",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.collapseWalk",
+    "Sp.collapseNeNil",
+    "Sp.dagWalk",
+    "Sp.dagWords"
+   ],
+   "sorries": 2,
+   "statement": "theorem entrance_collapsed_finite (n gsel μsel : ℕ) (hn : 1 ≤ n) : {l : List Species | ∃ E : EntranceShape n gsel μsel, collapseRuns E.word = l}.Finite AND theorem entrance_collapsed_len {n gsel μsel : ℕ} (hn : 1 ≤ n) (E : EntranceShape n gsel μsel) : (collapseRuns E.word).length ≤ 6 * n ^ 2",
+   "hypothesis_fields": "the size-e-block / landing-cell beta0 IDENTIFICATION of the entry datum is [1v] CTS-M(iii)'s (owner, cited); per-shape masses and entrance counts are [1]/[1v] objects, never assigned here."
+  },
+  {
+   "id": "Sp.compEnumComplete",
+   "file": "lean/LeanUrat/MovesSp/SP2_compEnum.lean",
+   "group": "G",
+   "difficulty": "medium",
+   "deps": [],
+   "sorries": 2,
+   "statement": "theorem compEnum_complete {span : ℕ} {c : List ℕ} : IsComposition c span ↔ c ∈ compEnum span AND theorem compEnum_nodup (span : ℕ) : (compEnum span).Nodup",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.lamEnumComplete",
+   "file": "lean/LeanUrat/MovesSp/SP2_lamEnum.lean",
+   "group": "G",
+   "difficulty": "medium-hard",
+   "deps": [],
+   "sorries": 1,
+   "statement": "theorem lamEnum_complete {bound weight : ℕ} {lam : Multiset (ℕ × ℕ)} (hpos : ∀ gm ∈ lam, 1 ≤ gm.1 ∧ 1 ≤ gm.2) (hbd : ∀ gm ∈ lam, gm.1 ≤ bound ∧ gm.2 ≤ bound) : ((lam.map fun gm => gm.1 * gm.2).sum = weight ↔ lam ∈ lamEnum bound weight)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.speciesEnumComplete",
+   "file": "lean/LeanUrat/MovesSp/SP2_speciesEnum.lean",
+   "group": "G",
+   "difficulty": "medium-hard",
+   "deps": [
+    "Sp.compEnumComplete",
+    "Sp.lamEnumComplete"
+   ],
+   "sorries": 1,
+   "statement": "theorem speciesEnum_complete {n : ℕ} {s : Species} (hc : Coherent s) (hb : Budget n s) : s ∈ speciesEnum n",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3card53",
+   "file": "lean/LeanUrat/MovesSp/SP6_card53.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 2,
+   "statement": "theorem catalogue3_card : catalogue3.length = 53 ∧ catalogue3.Nodup AND theorem groups_card : groupR.length = 21 ∧ groupQ3.length = 21 ∧ groupQ2.length = 6 ∧ groupQ1.length = 1 ∧ groupI.length = 4",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3rootLetters",
+   "file": "lean/LeanUrat/MovesSp/SP6_rootLetters.lean",
+   "group": "H",
+   "difficulty": "medium (perf)",
+   "deps": [
+    "Sp.speciesEnumComplete",
+    "Sp.reflSucc"
+   ],
+   "sorries": 3,
+   "statement": "theorem root3_enum_check : ((speciesEnum 3).all fun s => rootAdmissibleB 3 s == groupR.contains s) = true AND theorem groupR_admissible : (groupR.all (rootAdmissibleB 3)) = true AND theorem rootAdmissible3_iff (s : Species) : RootAdmissible 3 s ↔ s ∈ groupR",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3closureStep",
+   "file": "lean/LeanUrat/MovesSp/SP6_closureStep.lean",
+   "group": "H",
+   "difficulty": "medium (perf)",
+   "deps": [
+    "DefsN3",
+    "DefsEnum"
+   ],
+   "sorries": 1,
+   "statement": "theorem closure_step3 : (catalogue3.all fun s => (speciesEnum 3).all fun s' => !(succStepB 3 s s') || catalogue3.contains s') = true",
+   "hypothesis_fields": "none (THE perf hotspot; split per stage group on overrun, blueprint §1.6)"
+  },
+  {
+   "id": "Sp.n3reachable",
+   "file": "lean/LeanUrat/MovesSp/SP6_reachable.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem reachable3 : (catalogue3.all fun s' => rootAdmissibleB 3 s' || groupR.any fun s => succStepB 3 s s') = true",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3catalogueEq",
+   "file": "lean/LeanUrat/MovesSp/SP6_catalogueEq.lean",
+   "group": "H",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.memCoherent",
+    "Sp.speciesEnumComplete",
+    "Sp.reflSucc",
+    "Sp.n3rootLetters",
+    "Sp.n3closureStep",
+    "Sp.n3reachable"
+   ],
+   "sorries": 1,
+   "statement": "theorem SnRaw3_eq : ∀ s, InCatalogue 3 s ↔ s ∈ catalogue3",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3menuMap",
+   "file": "lean/LeanUrat/MovesSp/SP6_menuMap.lean",
+   "group": "H",
+   "difficulty": "medium (perf, moderate)",
+   "deps": [
+    "Sp.reflSucc",
+    "Sp.speciesEnumComplete",
+    "Sp.n3closureStep"
+   ],
+   "sorries": 2,
+   "statement": "theorem menu3_local : (catalogue3.all fun s => catalogue3.all fun s' => succStepB 3 s s' == (menuMap3 s).contains s') = true AND theorem menu3_exact_global (s : Species) (hs : s ∈ catalogue3) (s' : Species) : SuccStep 3 s s' ↔ s' ∈ menuMap3 s",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3selfloops",
+   "file": "lean/LeanUrat/MovesSp/SP6_selfloops.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem loops3 : catalogue3.filter (fun s => succStepB 3 s s) = [loopQ3, loopQ23]",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3postincW1",
+   "file": "lean/LeanUrat/MovesSp/SP6_postincW1.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem postInc3_W1 : (catalogue3.all fun s => !(s.tag == .postInc) || (s.W == 1)) = true",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3terminal5",
+   "file": "lean/LeanUrat/MovesSp/SP6_terminal5.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem terminal3 : catalogue3.filter (fun s => s.W == 1) = groupQ1 ++ groupI ∧ (catalogue3.all fun s => (s.W == 1) == (s.sel == none)) = true ∧ ((groupQ1 ++ groupI).all fun s => catalogue3.all fun s' => !(succStepB 3 s s')) = true",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3R3check",
+   "file": "lean/LeanUrat/MovesSp/SP6_R3check.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem R3_members : coherentB R3letterA = true ∧ budgetB 3 R3letterA = true ∧ R3letterA ∈ groupR ∧ R3letterA.a = 2 ∧ R3letterA.lflank = [2] ∧ coherentB R3letterB = true ∧ budgetB 3 R3letterB = true ∧ R3letterB ∈ groupR ∧ R3letterB.a = 2 ∧ R3letterB.lflank = [1, 1]",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3exclusionLists",
+   "file": "lean/LeanUrat/MovesSp/SP6_exclusionLists.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem exclusion_lists_pinned : catalogue3.filter (fun s => decide (2 ≤ linCount s)) = fieldSizeExcluded2 ∧ catalogue3.filter (fun s => decide (3 ≤ linCount s)) = fieldSizeExcluded3",
+   "hypothesis_fields": "none (N*3 data + field-size necessity caveats: docstring duty)"
+  },
+  {
+   "id": "Sp.n3exclusionCards",
+   "file": "lean/LeanUrat/MovesSp/SP6_exclusionCards.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem exclusion_cards : fieldSizeExcluded2.length = 11 ∧ fieldSizeExcluded3.length = 2",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3multiSide6",
+   "file": "lean/LeanUrat/MovesSp/SP6_multiSide6.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem multiSide6_pinned : multiSide6 = [⟨.postRec, 1, 1, 3, 1, 0, 1, 0, 2, Finset.Icc 0 1, {(1,1)}, some (1,1), [], [1,1]⟩, -- Q3(R1), rf (1,1) ⟨.postRec, 1, 1, 3, 1, 1, 1, 1, 2, Finset.Icc 1 2, {(1,1)}, some (1,1), [1], [1]⟩, -- Q3(R2) ⟨.postRec, 1, 1, 3, 1, 2, 1, 2, 2, Finset.Icc 2 3, {(1,1)}, some (1,1), [1,1], []⟩, -- Q3(R3), lf (1,1) ⟨.postRec, 1, 1, 3, 1, 0, 2, 0, 3, Finset.Icc 0 2, {(2,1)}, some (2,1), [], [1]⟩, -- Q3(R4) ▸(2,1) ⟨.postRec, 1, 1, 3, 1, 0, 2, 0, 3, Finset.Icc 0 2, {(1,2)}, some (1,2), [], [1]⟩, -- Q3(R4) ▸(1,2) ⟨.postRec, 1, 1, 3, 1, 0, 2, 0, 3, Finset.Icc 0 2, {(1,1),(1,1)}, some (1,1), [], [1]⟩] -- Q3(R4) ▸(1,1)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3multiSideMem",
+   "file": "lean/LeanUrat/MovesSp/SP6_multiSideMem.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem multiSide6_mem : (multiSide6.all groupQ3.contains) = true ∧ multiSide6.Nodup",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3NstarValues",
+   "file": "lean/LeanUrat/MovesSp/SP6_NstarValues.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem nstar_values : Nstar3six msQ3R1 = some 7 ∧ Nstar3six msQ3R2 = some 6 ∧ Nstar3six msQ3R3 = some 6 ∧ Nstar3six msQ3R4a = some 6 ∧ Nstar3six msQ3R4b = some 6 ∧ Nstar3six msQ3R4c = some 6",
+   "hypothesis_fields": "none (values are gate-censused DATA, never theorems)"
+  },
+  {
+   "id": "Sp.n3NstarDomain",
+   "file": "lean/LeanUrat/MovesSp/SP6_NstarDomain.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem nstar_domain : (catalogue3.all fun s => (Nstar3six s).isSome == multiSide6.contains s) = true",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.n3entrancePatterns",
+   "file": "lean/LeanUrat/MovesSp/SP6_entrance.lean",
+   "group": "H",
+   "difficulty": "easy",
+   "deps": [
+    "DefsN3"
+   ],
+   "sorries": 1,
+   "statement": "theorem entrance3_patterns : -- into the μ=2 block, direct: root▸(1,2) = the ▸(1,2) rows of R4/R5/R6 -- (three members; §9 — the note's bracket omits R6's) (groupR.filter fun s => s.sel == some (1, 2)) = [rootR4sel12, rootR5sel12, rootR6sel12] ∧ -- into the μ=2 block, via the μ=3 loop: root▸(1,3)·(Q3-loop)^d·▸(1,2) succStepB 3 rootR6sel13 loopQ3 = true ∧ succStepB 3 loopQ3 loopQ3 = true ∧ ((groupQ3.filter fun s => s.sel == some (1, 2)).all fun q => succStepB 3 loopQ3 q) = true ∧ ((groupQ3.filter fun s => s.sel == some (1, 2)).length = 3) ∧ -- into the μ=3 block: root▸(1,3) rootR6sel13.sel = some (1, 3) ∧ rootR6sel13 ∈ groupR ∧ -- into the increment landings (D ≥ 2): the ▸(2,1)/▸(3,1)/e=2/e=3 rows of -- R, Q2, Q3, each stepping into its I letter ((catalogue3.filter fun s => s.sel == some (2, 1)).all fun s => succStepB 3 s letterI22) = true ∧ ((catalogue3.filter fun s => s.sel == some (3, 1)).all fun s => succStepB 3 s letterI33) = true ∧ ((catalogue3.filter fun s => (s.e == 2) && !(s.sel == none)).all fun s => succStepB 3 s letterI21) = true ∧ ((catalogue3.filter fun s => (s.e == 3) && !(s.sel == none)).all fun s => succStepB 3 s letterI31) = true ∧ -- …and each such row lives in R, Q2, or Q3 (never I, Q1: those are terminal) ((catalogue3.filter fun s => s.sel == some (2, 1) || s.sel == some (3, 1) || ((s.e == 2 || s.e == 3) && !(s.sel == none))).all fun s => (groupR ++ groupQ2 ++ groupQ3).contains s) = true",
+   "hypothesis_fields": "none (cites blueprint §9 erratum record; TRUE three-member roster pinned)"
+  },
+  {
+   "id": "Sp.n1singleton",
+   "file": "lean/LeanUrat/MovesSp/SP6_n1singleton.lean",
+   "group": "H",
+   "difficulty": "easy-medium",
+   "deps": [
+    "Sp.speciesEnumComplete",
+    "Sp.n1RootConfirming",
+    "Sp.succTerminal",
+    "Sp.g6Forcing"
+   ],
+   "sorries": 1,
+   "statement": "theorem SnRaw1_eq : ∀ s, InCatalogue 1 s ↔ s = confirmingRoot1",
+   "hypothesis_fields": "none"
+  }
+ ]
+}

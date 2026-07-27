@@ -1582,3 +1582,45 @@ menu map, and the M-n3/V2 gate records are untouched (the census walked the
 true menu; only the gloss bracket under-listed). Blueprint-side: unit
 Sp.n3entrancePatterns pins the TRUE roster and cites this section; nothing
 silently repairs the note.
+
+## DEVIATIONS (E-PHASE, 2026-07-28 — elaboration-level only; no statement's meaning changed)
+
+E-phase record (Fable elaborator): 70 files under `lean/LeanUrat/MovesSp/` (Defs /
+DefsEnum / DefsN3 sorry-free + 67 unit files, statements verbatim per §2/§3/§4/§5,
+bodies `sorry`), all green under `lake env lean` AND per-module `lake build`
+(toolchain 4.31.0, mathlib cache; 84 sorried declarations = 88 `sorry` tokens =
+81 theorems + the 2 blueprint-specified def bodies compCuts/encode + the 5 proof
+fields of the pinned n1CatalogueWord packaging). MANIFEST.json in MovesU schema.
+Deviations, most conservative reading taken in each case:
+
+D1. `Species` derives `DecidableEq` ONLY — §2's `deriving DecidableEq, Repr` fails
+    kernel compilation because `Finset.instRepr` is an `unsafe` instance (Species'
+    `slots` field). Repr is consumed by no unit; Tag/Verdict keep Repr.
+D2. `Code n := Fin (n^2+3n+12) → Fin (n+2)` (§5 group-D header) is DECLARED in
+    Defs.lean — it is shared by three units (encodeInj/encodeCard/finThm) and §2
+    assigned it no file. Definition text unchanged.
+D3. `speciesEnum` realizes "sel ∈ none :: (lam.toList.map some)" as
+    `none :: lamL.map some` over `lamEnumAux`'s underlying CANONICAL LIST lamL
+    (nondecreasing pair-index representative; `lam := Multiset.ofList lamL`) —
+    avoids `Multiset.toList` (choice-based) in a computable enum. Same candidate
+    multiset per letter; duplicate sel candidates remain harmless per F16.
+    `lamEnumAux bound weight lo` is the §3 lamEnum's engine (recursion on weight,
+    least-allowed-index lo); `lamEnum bound weight = (lamEnumAux … 0).map ofList`
+    exactly as §3 types it. n = 3 census: |speciesEnum 3| = 567, |speciesEnum 1| = 6.
+D4. `CanTreeModel.n1CatalogueWord` binder list (elided by §5's "(…)"): the def
+    takes `{p} [Fact p.Prime] {f}` (M η) and NOT hf/hdeg — the packaging consumes
+    only interface fields (hMem at r = 0 needs no monic/degree binder); both
+    n1Branch THEOREMS carry the §5 full binder list verbatim. `word := [M.datum η 0]`
+    pinned as data; the 5 proof fields sorried.
+D5. Unit files import ONLY the def layer (Defs/DefsEnum/DefsN3); §5 deps are
+    proof-level and P-phase adds unit imports when consuming them (the MovesC
+    convention, cf. C6_thmC_a's header; keeps every unit compilable independently).
+D6. NOTE, not a deviation: `List.Chain'` is deprecated in this mathlib
+    (→ `List.IsChain`); statements keep the blueprint's `Chain'` verbatim
+    (same definition, warning-only).
+E-phase QA (beyond the auditor's Python): every §4/§5 sealed-data decide target
+was evaluated TRUE by compiled `#eval` against the frozen DefsN3 before the unit
+statements were written (53/21/21/6/1/4 cards, Nodup, closure, reachability, menu
+locality, loops = [loopQ3, loopQ23], terminal filter, exclusion filters 11/2,
+multiSide6 literal pin + membership, Nstar domain/values, the §9 three-member
+▸(1,2) roster, R3 saturating witnesses, n = 1 singleton + terminality).
