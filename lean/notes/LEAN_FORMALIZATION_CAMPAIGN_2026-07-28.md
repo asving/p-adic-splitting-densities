@@ -187,6 +187,11 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   Journey: 6/11 -> 2/4 -> split (5/8 vs 0/0) -> adjudicated 1/1 + 0/1 -> 0/0
   dual. THE NOTE ERRATUM (R6 row) now confirmed by four independent auditor
   passes. E-phase launched. ***
+  CODEX BUDGET AT 90% (post-XE-refutation): remaining Codex = the queued
+  closing finals ONLY (MovesS rev 11, MovesD rev 7, the XE mini-audit).
+  After those: Codex PAUSED until the window resets (Sun Aug 02); interim
+  audits Fable-only; deferred Codex finals batched post-reset. Also:
+  runners now get SCRUBBED workdirs (the stale-verdict anchoring flag).
   CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
   Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
   Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
