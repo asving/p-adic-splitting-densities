@@ -1,5 +1,6 @@
 # MOVES §X-EXHAUST — Lean formalization blueprint (MovesX corpus)
 # REV 4 (post-Fable-audit: the 4 rev-3 residue findings repaired; surgical)
+# + XE.2/XE.3 RESTATED POST-REFUTATION (2026-07-27, stuck-rule adjudication; §7)
 
 *Rev 4, 2026-07-28. Repairs the 4 residue findings of the fresh-Fable audit
 `lean/notes/MOVESX_AUDIT_FABLE_2026-07-28.md` (REJECT 2 crit / 2 gap; all 13 rev-3 repairs
@@ -445,17 +446,39 @@ moves_ref: "(X2-HYP) … DERIVED given (X2-AFF) ∧ (X2-CAP) … both prices in 
 
 **XE.1a–h** — one unit per kernel Prop: **XE.1a** `X1aAlignP` · **XE.1b** `WeightChargeT4P` · **XE.1c** `WeightChargeFullP` · **XE.1d** `X2AffP` · **XE.1e** `X2CapP` · **XE.1f** `X2BridgeP` · **XE.1g** `X2TailsP` · **XE.1h** `X2ProgressP`. Each unit: the `def` elaborates against Defs; docstring = its display verbatim + owner/status line (a/b/c math-side OPEN; d/e/h owned by PROGRESS; f owned by PROGRESS; g [2b]-owed, discharged at [2b]'s acceptance). NON-VACUITY BY CONSTRUCTION (Ruling 1): each is a Prop about the shared `X : XFamily n` — it carries no data of its own to degenerate; the ONE inhabitation obligation (the real `XFamily` instance, owner MovesD/MovesT) is ledger-tracked. deps: Defs. EASY ×8. hyp: they ARE the hypotheses.
 
-**XE.2 envelopeExp** — the note's exponential envelope, as the DERIVED ∃-theorem (finding 7):
+**XE.2 envelopeExp** — the note's exponential envelope [RESTATED POST-REFUTATION, §7 — the
+rev-4 ∀N form was KERNEL-CERTIFIED FALSE; the adjudication: the NOTE's envelope is vacuous
+at small N by design (the (N−1−c_cap) numerator; X.5(iii)'s "no teeth at census range"),
+so the conclusion now binds ONLY where the note's arithmetic has content — ∃ N₀ before ∀ N,
+with N₀, c3, c4 functions of (n, K) alone (bound BEFORE p, the D9 discipline)]:
 ```lean
 theorem envelopeExp (n : ℕ) (hn : 2 ≤ n) (X : XFamily n) (K : XConsts n)
     (PR : X2ProgressP n X K) (BR : X2BridgeP n X) (AF : X2AffP n X K) (CP : X2CapP n X K)
     (AL : X1aAlignP n X ⟨true, false⟩) (WC : WeightChargeFullP n X K)
     (TL : X2TailsP n X K) (NS : NsNullP n X) (R : X3aRouteP n X K) :
-    ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧ ∀ (p : ℕ) [Fact p.Prime] (N : ℕ),
+    ∃ N₀ : ℕ, ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧ ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N →
       ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3 * (p : ℝ) ^ (-(c4 * N))
 ```
+TAG CHECK against the CONDITIONALITY SUMMARY (MOVES ~11449, "exponential GIVEN
+(X.2)+X.1b+(ALIGN-inc)+(X2-TAILS)+(X2-BRIDGE)+(X2-CAP)"): PR=(X.2), WC=X.1b,
+AL=(ALIGN-inc), TL, BR, CP — ALL present; the retained extras are themselves displayed
+(AF from the envelope block's opening "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF)"; NS per
+the (NS-c) display rule; R = X.3(a)'s tags for the bridge's first-three-pieces mass).
+INTENDED N₀ (sketch-level): the least N at which BOTH displayed exponents are positive —
+N > 1 + c_cap (the (N−1−c_cap) numerator) AND d*(N) = cd·N − cd′ exceeds the ⌊log₂ n⌋
+offset AND h*(N) ≥ 1 — an (n, K)-formula, p-free.
+REFUTATION-ESCAPE WALK (the certified countermodel now SATISFIES the statement): the
+countermodel (point mass at X² + X — unit discriminant at every p — with the root-only
+tree, threshold 1, detCap 1) has Undec N = univ for N < 2 and ∅ for N ≥ 2; the refutation
+lived at the FIXED N = 1, where frac = 1 for every p while all nine tags hold. Restated:
+the prover picks N₀ ≥ 2 (this K has c_cap = 1, so the intended formula gives N₀ ≥ 3);
+for every claimed N ≥ N₀, Undec N = ∅ and frac = 0 ≤ RHS; N ∈ {0, 1} are OUTSIDE the
+claim — exactly the note's no-teeth regime. No p-uniform decay at fixed small N is
+asserted anywhere anymore.
 moves_ref: "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF) … Given (X.2) with linear d*, h* AND both legs …: env(N) ≤ c₃(n)·p^{−c₄(n)·N}, with c₃, c₄ traced to s(n), c₀, C_T, c_T, c_cap". deps: XC.3, XE.1*, XF.7, XG.2b–d (for the bridge's first-three-pieces mass, via X.3's tags). sketch: BR splits Undec(N) into the three null-tagged pieces (discZero via XF.7/vdisc_le_tail; ns via NS; InfTree via XG.2d ⊆ discZero) + the witness-branch piece. WITNESS FEED (rev 4, traced): BR's witness b carries `IsLeafB b ∧ NsFreeB b`, hence `FourthPieceB b` by the FIRST disjunct of FourthPieceB — exactly PR's (and XD.4's, in XE.3) hypothesis; PR on b gives deep-or-tall at d* = cd·N − cd', h* = ch·N − ch'; DEEP LEG: DeepEvent d* ⊆ {vdisc ≥ (2(d*−log)/(2s+1))} pointwise (XC.3 + gmnLink) → vdisc_le_tail + XF.7 give the (3b) bound with the note's displayed exponent; TALL LEG: TL. Constants assembled n-only (c₄ from cd, s, n − 1; the p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} absorption into c₃ — p-free). HARD. hyp_fields: the FULL tag set, verbatim the note's "CONSUMERS … inherit ALL tags above" line.
-**XE.3 envelopeSqrt** — the √N fallback, same signature MINUS `PR` (X2ProgressP), conclusion `… ≤ c3' * (p : ℝ) ^ (-(c4' * Real.sqrt N))`.
+**XE.3 envelopeSqrt** — the √N fallback [RESTATED POST-REFUTATION, §7 — same adjudication;
+the same countermodel refuted the ∀N form and escapes identically via N₀]: same signature
+MINUS `PR` (X2ProgressP), conclusion `∃ N₀ : ℕ, ∃ c3' c4' : ℝ, 0 < c3' ∧ 0 < c4' ∧ ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N → ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3' * (p : ℝ) ^ (-(c4' * Real.sqrt N))`. TAG CHECK (summary's √N line "(X2-HYP)+(X2-AFF)+(X2-CAP)+X.1b+(ALIGN-inc)+(X2-TAILS)+(X2-BRIDGE)"): (X2-HYP) is XD.4's derived shape from AF ∧ CP; WC=X.1b, AL, TL, BR all present; NS/R as in XE.2.
 moves_ref: "Given (X2-HYP) + (X2-AFF) + (X2-CAP) + (X2-BRIDGE) PLUS the same two leg tags …: env(N) ≤ c₃′(n)·p^{−c₄′(n)·√N} — subexponential, enough for X.3's qualitative form, NOT for SQUEEZE's constants". deps: XD.4 in place of PR; otherwise as XE.2. HARD. hyp_fields: (X2-HYP)'s inputs + both leg tags — the rev-4 leg-tag line reproduced.
 
 ### Layer F — the ELEMENTARY DISCRIMINANT TAIL, UNCONDITIONAL (Ruling 2; findings 8/9/13)
@@ -683,3 +706,41 @@ conservative reading, flagged here for the Defs-sync round.
   sorries); XD.1 is the specified 3-declaration unit (3 sorries). `Defs.lean` has 0.
   No `native_decide`/`decide` anywhere; the only in-statement tactics are the
   blueprint's own `(by omega)` coherence casts (fTail/Event/XF.6).
+
+---
+
+## 7. REFUTATION RECORD (stuck-rule outcome, 2026-07-27 — XE.2/XE.3 as E-phase-stated)
+
+**Event.** The prover fleet KERNEL-CERTIFIED the E-phase statements of XE.2
+(`envelopeExp`) and XE.3 (`envelopeSqrt`) FALSE — sorry-free refutations with
+statement-match certificates:
+- `lean/notes/XE2_refutation_witness.lean` — the countermodel + `envelopeExp_statement_false`
+  (axiom-clean; `#print axioms` in-file);
+- `lean/notes/XE2_refutation_transcription_check.lean` — the type-agreement certificate
+  (the refuted ∀-closure accepts `envelopeExp` itself as an inhabitant);
+- `lean/notes/XE3_REFUTATION_2026-07-27.lean` — the XE.3 certificate (verbatim Pi-type
+  `abbrev` + `example : XE3Statement := envelopeSqrt` match) whose one countermodel also
+  satisfies `X2ProgressP`, re-refuting XE.2.
+
+**The countermodel.** n = 2; every f gets the root-only tree (Branch = Unit, hist = [],
+children = ∅); threshold = 1, capDetectable with detCap = 1, DetectedAt _ N := 2 ≤ N, so
+Undec N = univ for N < 2 and ∅ for N ≥ 2; content = the point mass at f₀ = X² + X, whose
+discriminant is 1 — a UNIT at every prime (vdisc f₀ = 0, f₀ ∉ discZero, `vdisc_le_tail`
+slack). All nine/eight tags hold verbatim, yet frac (Undec 1) = 1 for EVERY p, killing
+`∃ c3 c4, … ∀ p N` at N = 1 as p → ∞.
+
+**Adjudication (orchestrator, against the note's own display).** The NOTE is intact: its
+(N−1−c_cap) numerator makes the envelope vacuous at small N by design (X.5(iii) records
+env*(N) > 1 at every N ≤ 8 — "no teeth at census range, displayed for shape only"). The
+blueprint's `∃ c ∀ p N` rendering was unfaithfully STRONG — a transcription defect of
+rev 3/4, not a math error. Repair: the §3 XE.2/XE.3 statements now bind `∃ N₀` (an
+(n, K)-function, bound before p per D9) with the claim quantified over N ≥ N₀ only; the
+countermodel's escape is walked in the XE.2 spec (N₀ ≥ 2 empties every claimed Undec N).
+
+**Process notes.** E-phase files `XE2.lean`/`XE3.lean` restated to the §3 forms (bodies
+`sorry` again; fleet re-proves); MANIFEST entries re-hashed with status
+`restated-post-refutation`. The restated units get a mini dual audit (Codex + fresh
+Fable) before re-proving. The three refutation artifacts are NOTES-side (outside the
+lake build graph) and are retained as permanent negative controls: any future draft of
+XE.2/XE.3 whose statement the transcription-check `example` still accepts is refuted
+before proving starts.
