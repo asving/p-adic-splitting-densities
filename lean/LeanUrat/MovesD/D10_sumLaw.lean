@@ -12,10 +12,14 @@ difficulty: medium.  hypothesis_fields: `S.jet` only.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D0b_thmCtop
+import LeanUrat.MovesD.D9_L9
+import LeanUrat.MovesD.D2a_finite
 
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
+set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesD
@@ -30,6 +34,21 @@ theorem D4R1_SUM (hne : (P : ShapePrefix).reads ≠ []) (N : ℕ)
     (S : Presented p F n N m pol P) :
     (∑ᶠ i : PrefIdx n pol P, Nat.card ↥(S.fiber i)) * p ^ ((P : ShapePrefix).A' n)
       = Nat.card (PrefIdx n pol P) * p ^ (n * N) := by
-  sorry
+  classical
+  haveI : Fintype (PrefIdx n pol P) := Fintype.ofFinite _
+  -- Per summand: Theorem C(b) at Z = ⊤ (D0b), with the total pin count identified as the
+  -- N-free shape exponent A′ (D9's `L9_A` composed with the stabilization hypothesis `hA`).
+  have key : ∀ i : PrefIdx n pol P,
+      Nat.card ↥(S.fiber i) * p ^ ((P : ShapePrefix).A' n) = p ^ (n * N) := by
+    intro i
+    have h2 : totalPins (S.jet i) (topLocus p m) = (P : ShapePrefix).A' n :=
+      (L9_A S i).trans hA
+    have h1 := thmC_top (S.jet i)
+    rw [h2] at h1
+    simpa [Presented.fiber] using h1
+  -- Sum the constant `p ^ (n·N)` over the finite class index `PrefIdx`.
+  rw [finsum_eq_sum_of_fintype, Finset.sum_mul,
+    Finset.sum_congr rfl (fun i (_ : i ∈ Finset.univ) => key i),
+    Finset.sum_const, Finset.card_univ, Nat.card_eq_fintype_card, smul_eq_mul]
 
 end LeanUrat.MovesD

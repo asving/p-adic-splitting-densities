@@ -21,6 +21,28 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
 /-- The level weights κ_r are shape data. -/
 theorem kappaH_shape {H : History p F} (hP : (P : ShapePrefix).MatchesHist H) :
     ∀ r, H.kappaH r = (P : ShapePrefix).kappaS r := by
-  sorry
+  obtain ⟨hlen, hmatch⟩ := hP
+  -- The retained ramification indices agree nodewise, hence as mapped lists.
+  have hmapE : H.nodes.map Node.e = (P : ShapePrefix).reads.map ShapeRead.e := by
+    apply List.ext_getElem
+    · simp [hlen]
+    · intro i h1 _
+      have hi : i < H.nodes.length := by simpa using h1
+      simpa using (hmatch i hi).2.1
+  -- The accumulated stretch STR_r is shape data (D6a, proved inline).
+  have hstr : ∀ r, H.strFrame r = (P : ShapePrefix).strS r := by
+    intro r
+    simp only [History.strFrame, ShapePrefix.strS]
+    congr 1
+    rw [List.map_take, List.map_take, hmapE]
+  intro r
+  simp only [History.kappaH, ShapePrefix.kappaS]
+  rcases Nat.lt_or_ge r H.nodes.length with hr | hr
+  · rw [List.getElem?_eq_getElem hr, List.getElem?_eq_getElem (hlen ▸ hr)]
+    have hm := hmatch r hr
+    simp only [Option.elim_some]
+    rw [hm.2.1, hm.2.2.1, hstr r]
+  · rw [List.getElem?_eq_none hr, List.getElem?_eq_none (hlen ▸ hr)]
+    simp
 
 end LeanUrat.MovesD

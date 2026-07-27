@@ -12,6 +12,9 @@ Codex#5 g.4); the INJECTION itself is proved, nothing else assumed.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D2a_finite
+import LeanUrat.MovesD.D1c_encCard
+import LeanUrat.MovesD.E9_encInj
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -27,6 +30,19 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
 /-- D4R.2′: C_P̂(p) ≤ M(P̂)·p^{W(P̂)}, on the CD form (∅ dispatch included). -/
 theorem D4R2' (hnorm : PresentNorm n pol P) :
     P.CD pol ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W := by
-  sorry
+  by_cases hP : (P : ShapePrefix).reads = []
+  · -- ∅ dispatch: CD = 1, and Mfac·p^W = 1·p⁰ = 1 (empty product/sum)
+    rw [Shape.CD, if_pos hP]
+    simp only [ShapePrefix.Mfac, ShapePrefix.W, hP, List.map_nil, List.prod_nil,
+      List.sum_nil, pow_zero, mul_one, le_refl]
+  · -- nonempty: CD = #PrefIdx (CD_eq), inject into EncTargetP (encIdx_inj), bound by D1c
+    haveI : Finite (EncTargetP p F (P : ShapePrefix)) := by
+      unfold EncTargetP; infer_instance
+    rw [CD_eq hnorm hP]
+    calc Nat.card (PrefIdx n pol P)
+        ≤ Nat.card (EncTargetP p F (P : ShapePrefix)) :=
+          Nat.card_le_card_of_injective _ encIdx_inj
+      _ ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W :=
+          encTargetP_card (Nat.Prime.two_le Fact.out)
 
 end LeanUrat.MovesD

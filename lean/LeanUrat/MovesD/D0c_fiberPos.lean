@@ -6,6 +6,7 @@ hypothesis_fields: none.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesC.C6_thmC_b
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -21,6 +22,19 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n N m : ℕ}
 /-- Every presented class fiber is nonempty (positive Theorem-C(b) mass). -/
 theorem fiber_pos (S : Presented p F n N m pol P) (i : PrefIdx n pol P) :
     (S.fiber i).Nonempty := by
-  sorry
+  -- The fiber is `S(η, ⊤) = (S.jet i).SHZ (topLocus p m)`; Theorem C(b) at Z = ⊤ gives
+  -- `#S · p^(pins) = p^m > 0`, so the count is positive, so the fiber is nonempty.
+  change ((S.jet i).SHZ (topLocus p m)).Nonempty
+  have hZ : AdmissibleZ ((S.jet i).Sigma (reprOf i).nodes.length) (topLocus p m) := by
+    intro c h
+    simp [topLocus] at h
+  have hkey := C6_thmC_b (S.jet i) (topLocus p m) hZ
+  have hbox : 0 < boxMass p m := pow_pos (Fact.out : p.Prime).pos m
+  have hcard : 0 < Nat.card ((S.jet i).SHZ (topLocus p m)) := by
+    rcases Nat.eq_zero_or_pos (Nat.card ((S.jet i).SHZ (topLocus p m))) with h | h
+    · rw [h, zero_mul] at hkey
+      omega
+    · exact h
+  exact Set.nonempty_coe_sort.mp (Nat.card_pos_iff.mp hcard).1
 
 end LeanUrat.MovesD

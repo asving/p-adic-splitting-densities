@@ -17,6 +17,10 @@ hypothesis_fields: `T : Threshold` (sole field: jets — the L12 presentations, 
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D10_sumLaw
+import LeanUrat.MovesD.D12_evBound
+import LeanUrat.MovesD.NPu_threshold
+import LeanUrat.MovesD.D2a_finite
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -36,12 +40,37 @@ theorem D4R4_all (hne : (P : ShapePrefix).reads ≠ []) (T : Threshold p F n pol
           * p ^ ((P : ShapePrefix).A' n) = P.CD pol * p ^ (n * N)) ∧
       (Nat.card ↥(T.jets N hNP).event * p ^ ((P : ShapePrefix).A' n)
           ≤ P.CD pol * p ^ (n * N)) := by
-  sorry
+  classical
+  intro N hNP
+  by_cases hInh : Nonempty (PrefIdx n pol P)
+  · -- INHABITED branch: NP = NPband, so `NP_stab` discharges the ledger stabilization
+    -- `hA : A n N = A′ n`, and `CD_eq` identifies the corpus constant with the class count.
+    haveI : Nonempty (PrefIdx n pol P) := hInh
+    have hA : (P : ShapePrefix).A n N = (P : ShapePrefix).A' n := NP_stab N hNP
+    have hCD : P.CD pol = Nat.card (PrefIdx n pol P) := CD_eq (T.jets N hNP).hnorm hne
+    refine ⟨?_, ?_⟩
+    · rw [hCD]; exact D4R1_SUM hne N hA (T.jets N hNP)
+    · rw [hCD]; exact D4R1_EV hne N hA (T.jets N hNP)
+  · -- EMPTY branch (Pref(P̂) = ∅): L12's "C_P̂(p) = 0 and S(P̂,⊤) = ∅" clause — both sides
+    -- vanish at EVERY N ≥ 1, no stabilization consumed.
+    rw [not_nonempty_iff] at hInh
+    haveI : IsEmpty (PrefIdx n pol P) := hInh
+    have hCD0 : P.CD pol = 0 := by
+      unfold Shape.CD
+      rw [if_neg hne]
+      exact Nat.card_of_isEmpty
+    have hsum0 : (∑ᶠ i : PrefIdx n pol P, Nat.card ↥((T.jets N hNP).fiber i)) = 0 :=
+      finsum_of_isEmpty _
+    have hev0 : (T.jets N hNP).event = ∅ := by
+      simp only [Presented.event, Set.iUnion_of_empty]
+    refine ⟨?_, ?_⟩
+    · rw [hsum0, hCD0]; ring
+    · rw [hCD0, hev0]; simp
 
 /-- TW: the threshold witness from PRESENT-EXIST at L12's exact range. -/
 theorem TW_threshold_witness
     (hex : ∀ N : ℕ, P.NP pol ≤ N → Nonempty (Presented p F n N (n * N) pol P)) :
-    Nonempty (Threshold p F n pol P) := by
-  sorry
+    Nonempty (Threshold p F n pol P) :=
+  ⟨{ jets := fun N hNP => (hex N hNP).some }⟩
 
 end LeanUrat.MovesD

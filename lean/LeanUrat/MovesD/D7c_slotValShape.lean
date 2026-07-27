@@ -8,6 +8,7 @@ hypothesis_fields: none.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D5b_lineShape
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -27,6 +28,13 @@ theorem slotVal_shape {H : History p F} (hcoh : HistoryCoherent H)
     ∀ b, (H.nodes[r]'hr).slotVal ((H.nodes[r]'hr).fineSlot b)
       = ((P : ShapePrefix).lineS r).at
           ((b / ((P : ShapePrefix).reads[r]'hr').Dwidth) * ((P : ShapePrefix).reads[r]'hr').Dwidth) := by
-  sorry
+  -- D5b: the recorded read line IS the shape line.
+  have hline : (H.nodes[r]'hr).line = (P : ShapePrefix).lineS r := line_shape hcoh hP r hr
+  -- Matches: the recorded frame width IS the shape width.
+  obtain ⟨hlen, hmatch⟩ := hP
+  obtain ⟨_, _, _, _, _, _, _, _, hDw, -⟩ := hmatch r hr
+  intro b
+  simp only [Node.slotVal, Node.fineSlot]
+  rw [hline, hDw]
 
 end LeanUrat.MovesD

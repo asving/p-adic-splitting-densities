@@ -21,6 +21,17 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
 /-- Inner slots are shape data. -/
 theorem innerslot_shape {H : History p F} (hP : (P : ShapePrefix).MatchesHist H) :
     ∀ r b, H.innerslotH r b = (P : ShapePrefix).innerslotS r b := by
-  sorry
+  obtain ⟨hlen, hmatch⟩ := hP
+  intro r b
+  simp only [History.innerslotH, ShapePrefix.innerslotS]
+  by_cases hr : r < H.nodes.length
+  · have hr2 : r < (P : ShapePrefix).reads.length := hlen ▸ hr
+    rw [List.getElem?_eq_getElem hr, List.getElem?_eq_getElem hr2]
+    obtain ⟨_, he, _, hg, _, _, _, _, hD, _, _, _, _⟩ := hmatch r hr
+    simp only [Option.elim, Node.childWidth, ShapeRead.childWidthS]
+    rw [he, hg, hD]
+  · have hr2 : (P : ShapePrefix).reads.length ≤ r := by rw [← hlen]; exact not_lt.mp hr
+    rw [List.getElem?_eq_none (not_lt.mp hr), List.getElem?_eq_none hr2]
+    rfl
 
 end LeanUrat.MovesD

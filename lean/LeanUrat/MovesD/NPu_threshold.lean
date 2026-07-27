@@ -12,6 +12,7 @@ NP_le_Nshape.  difficulty: medium.  hypothesis_fields: none.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.L9s_Astable
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -26,15 +27,53 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
 
 /-- 1 ≤ N(P̂) (both branches of the piecewise NP). -/
 theorem NP_pos : 1 ≤ P.NP pol := by
-  sorry
+  unfold Shape.NP
+  split
+  · rw [ShapePrefix.NPband]; omega
+  · omega
 
 /-- N(P̂) ≤ Nshape(P̂) (sup < Nshape; 1 ≤ Nshape). -/
 theorem NP_le_Nshape : P.NP pol ≤ (P : ShapePrefix).Nshape := by
-  sorry
+  have hNs : 0 < (P : ShapePrefix).Nshape := by rw [ShapePrefix.Nshape]; omega
+  unfold Shape.NP
+  split
+  · rw [ShapePrefix.NPband, Nat.add_comm 1, Nat.add_one_le_iff, Finset.sup_lt_iff hNs]
+    intro c hc
+    simp only [Finset.mem_filter, Finset.mem_product, Finset.mem_range] at hc
+    exact hc.1.1
+  · omega
 
 /-- A-stability from NP on (INHABITED branch — NP = NPband). -/
 theorem NP_stab [Nonempty (PrefIdx n pol P)] :
     ∀ N : ℕ, P.NP pol ≤ N → (P : ShapePrefix).A n N = (P : ShapePrefix).A' n := by
-  sorry
+  classical
+  intro N hN
+  have hne : Nonempty (PrefIdx n pol P) := inferInstance
+  have hNPeq : P.NP pol = (P : ShapePrefix).NPband n := by
+    unfold Shape.NP; rw [if_pos hne]
+  rw [hNPeq] at hN
+  rcases Nat.lt_or_ge N (P : ShapePrefix).Nshape with hcase | hcase
+  · unfold ShapePrefix.A' ShapePrefix.A
+    refine Finset.sum_congr rfl (fun r hr => ?_)
+    rw [Finset.mem_range] at hr
+    congr 1
+    apply Finset.ext
+    intro c
+    simp only [Finset.mem_filter, Finset.mem_product, Finset.mem_range]
+    constructor
+    · rintro ⟨⟨h1, h2⟩, hband⟩
+      exact ⟨⟨lt_of_lt_of_le h1 hcase.le, h2⟩, hband⟩
+    · rintro ⟨⟨h1, h2⟩, hband⟩
+      refine ⟨⟨?_, h2⟩, hband⟩
+      have hmem : c ∈ (Finset.range (P : ShapePrefix).Nshape ×ˢ Finset.range n).filter
+          (fun c => ∃ r < (P : ShapePrefix).reads.length, (P : ShapePrefix).bandS n r c) := by
+        simp only [Finset.mem_filter, Finset.mem_product, Finset.mem_range]
+        exact ⟨⟨h1, h2⟩, ⟨r, hr, hband⟩⟩
+      have hlt : c.1 < (P : ShapePrefix).NPband n := by
+        rw [ShapePrefix.NPband]
+        have hle : c.1 ≤ _ := Finset.le_sup (f := fun c => c.1) hmem
+        omega
+      exact lt_of_lt_of_le hlt hN
+  · exact A_stable hcase
 
 end LeanUrat.MovesD

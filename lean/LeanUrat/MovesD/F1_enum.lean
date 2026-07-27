@@ -17,6 +17,7 @@ import LeanUrat.MovesD.Defs
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
+set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesD
@@ -26,18 +27,18 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
   {pol : CanonPolicy p F} {P : Shape n}
 
 /-- The classical representative is a member of the literal Pref set. -/
-theorem reprOf_mem (i : PrefIdx n pol P) : reprOf i ∈ PrefSet n pol P := by
-  sorry
+theorem reprOf_mem (i : PrefIdx n pol P) : reprOf i ∈ PrefSet n pol P :=
+  i.2.choose_spec.1
 
 /-- The representative's class is the index itself. -/
 theorem etaData_reprOf (i : PrefIdx n pol P) :
-    etaData (P : ShapePrefix) (reprOf i) = i.1 := by
-  sorry
+    etaData (P : ShapePrefix) (reprOf i) = i.1 :=
+  i.2.choose_spec.2
 
 /-- The enumeration count IS the image-class count. -/
 theorem card_classes (hnorm : PresentNorm n pol P) :
     Nat.card (PrefIdx n pol P)
-      = Nat.card ↥(etaData (P : ShapePrefix) '' PrefSet n pol P) := by
-  sorry
+      = Nat.card ↥(etaData (P : ShapePrefix) '' PrefSet n pol P) :=
+  rfl
 
 end LeanUrat.MovesD

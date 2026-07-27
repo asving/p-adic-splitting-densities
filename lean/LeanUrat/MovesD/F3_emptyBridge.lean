@@ -28,16 +28,30 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
 /-- The note's "Pref(∅) = {∅}", literally, on the Option-level object. -/
 theorem PrefOpt_empty (hP : (P : ShapePrefix).reads = []) :
     PrefOpt n pol P = ({Option.none} : Set (Option (History p F))) := by
-  sorry
+  ext c
+  cases c with
+  | none => simp [PrefOpt, hP]
+  | some H => simp [PrefOpt, hP]
 
 /-- On nonempty shapes the Option-level Pref is the some-image of the literal PrefSet. -/
 theorem PrefOpt_nonempty (hne : (P : ShapePrefix).reads ≠ []) :
     PrefOpt n pol P = Option.some '' PrefSet n pol P := by
-  sorry
+  ext c
+  cases c with
+  | none => simp [PrefOpt, hne]
+  | some H => simp [PrefOpt, hne]
 
 /-- The corpus C equals the Option-level class count UNIFORMLY (both branches). -/
 theorem CD_correspondence :
     P.CD pol = Nat.card ↥(etaDataO (P : ShapePrefix) '' PrefOpt n pol P) := by
-  sorry
+  by_cases hP : (P : ShapePrefix).reads = []
+  · rw [Shape.CD, if_pos hP, PrefOpt_empty hP, Set.image_singleton]
+    simp
+  · rw [Shape.CD, if_neg hP]
+    have key : etaDataO (P : ShapePrefix) '' PrefOpt n pol P
+        = Option.some '' (etaData (P : ShapePrefix) '' PrefSet n pol P) := by
+      rw [PrefOpt_nonempty hP, Set.image_image, Set.image_image]
+      rfl
+    rw [key, Nat.card_image_of_injective (Option.some_injective _)]
 
 end LeanUrat.MovesD

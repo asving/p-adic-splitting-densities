@@ -10,6 +10,8 @@ hypothesis_fields: `hnorm` (Codex#4 f.2).
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D3a_poolBound
+import LeanUrat.MovesD.W2_MfacLe
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -25,7 +27,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
 /-- D4R.2′, the display pair: C ≤ M·p^W and M ≤ n^{|P̂|}. -/
 theorem D4R2'_full (hnorm : PresentNorm n pol P) :
     P.CD pol ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W ∧
-      (P : ShapePrefix).Mfac ≤ n ^ (P : ShapePrefix).reads.length := by
-  sorry
+      (P : ShapePrefix).Mfac ≤ n ^ (P : ShapePrefix).reads.length :=
+  ⟨D4R2' hnorm, Mfac_le P⟩
 
 end LeanUrat.MovesD

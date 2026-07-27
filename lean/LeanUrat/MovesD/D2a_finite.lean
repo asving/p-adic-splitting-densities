@@ -21,14 +21,21 @@ open LeanUrat.Moves LeanUrat.MovesC
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n : ℕ}
   {pol : CanonPolicy p F} {P : Shape n}
 
+/-- `EtaData` is a Pi (over `Fin _.length`) of products of function types `Fin _ → F`;
+since `F` is finite it is finite. -/
+instance instEtaDataFinite (P' : ShapePrefix) : Finite (EtaData F P') := by
+  unfold EtaData
+  infer_instance
+
 /-- L8, structural: the class index is finite (a subtype of the finite `EtaData`). -/
 instance instPrefIdxFinite : Finite (PrefIdx n pol P) := by
-  sorry
+  infer_instance
 
 /-- On nonempty shapes the corpus C is the class count (the note's C over normalized
 presentations, never a policy-void artifact — hnorm). -/
 theorem CD_eq (hnorm : PresentNorm n pol P) (hne : (P : ShapePrefix).reads ≠ []) :
     P.CD pol = Nat.card (PrefIdx n pol P) := by
-  sorry
+  unfold Shape.CD
+  rw [if_neg hne]
 
 end LeanUrat.MovesD

@@ -20,6 +20,7 @@ import LeanUrat.MovesD.Defs
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
+set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesD
@@ -32,17 +33,39 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n N m : ℕ}
 exactly the η = ∅ class. -/
 theorem Pref_empty_shape (hP : (P : ShapePrefix).reads = []) :
     PrefSet n pol P = ∅ ∧ P.CD pol = 1 := by
-  sorry
+  refine ⟨?_, ?_⟩
+  · -- The History type has no empty chain: MatchesHist forces `H.nodes.length = 0`,
+    -- contradicting `H.nonempty`.
+    ext H
+    simp only [Set.mem_empty_iff_false, iff_false]
+    rintro ⟨⟨hlen, -⟩, -⟩
+    have : H.nodes = [] := by
+      rw [hP] at hlen
+      simpa using hlen
+    exact H.nonempty this
+  · -- CD's `if` branch IS the note's definition-level dispatch Pref(∅) = {∅}.
+    rw [Shape.CD, if_pos hP]
 
 /-- A(∅) = 0 (empty read sum), at every degree. -/
 theorem A'_nil (hP : (P : ShapePrefix).reads = []) :
     ∀ n' : ℕ, (P : ShapePrefix).A' n' = 0 := by
-  sorry
+  intro n'
+  -- Empty read list ⇒ the per-read fresh-band sum ranges over `Finset.range 0 = ∅`.
+  simp only [ShapePrefix.A', ShapePrefix.A, hP, List.length_nil, Finset.range_zero,
+    Finset.sum_empty]
 
 /-- The η = ∅ mass law on the corpus objects: full box = C_∅·p^{nN − A(∅)}. -/
 theorem emptyShape_law (hm : m = n * N) (hN : 1 ≤ N) (hP : (P : ShapePrefix).reads = []) :
     Nat.card ↥(emptyFiber p m) * p ^ ((P : ShapePrefix).A' n)
       = P.CD pol * p ^ (n * N) := by
-  sorry
+  have hA : (P : ShapePrefix).A' n = 0 := A'_nil hP n
+  have hCD : P.CD pol = 1 := (Pref_empty_shape hP).2
+  -- The fiber is the FULL BOX: `Nat.card (Fin m → ZMod p) = p^m`.
+  have hcard : Nat.card ↥(emptyFiber p m) = p ^ m := by
+    haveI : NeZero p := ⟨(Fact.out (p := p.Prime)).pos.ne'⟩
+    have e : ↥(emptyFiber p m) ≃ (Fin m → ZMod p) := Equiv.Set.univ (Fin m → ZMod p)
+    rw [Nat.card_congr e, Nat.card_eq_fintype_card, Fintype.card_fun, ZMod.card,
+      Fintype.card_fin]
+  rw [hA, hCD, pow_zero, mul_one, one_mul, hcard, hm]
 
 end LeanUrat.MovesD

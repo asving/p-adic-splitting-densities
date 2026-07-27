@@ -27,6 +27,17 @@ theorem D4R4_emptyPref (hne : (P : ShapePrefix).reads ≠ [])
     (S : Presented p F n N m pol P) :
     S.event = ∅ ∧ P.CD pol = 0 ∧
       Nat.card ↥S.event * p ^ ((P : ShapePrefix).A' n) = P.CD pol * p ^ (n * N) := by
-  sorry
+  haveI := hemp
+  have hev : S.event = ∅ := Set.iUnion_of_empty _
+  have hCD : P.CD pol = 0 := by
+    unfold Shape.CD
+    rw [if_neg hne]
+    exact Nat.card_of_isEmpty
+  have hcard : Nat.card ↥S.event = 0 := by
+    rw [hev]
+    haveI : IsEmpty ↥(∅ : Set (Box p m)) := Set.isEmpty_coe_sort.mpr rfl
+    exact Nat.card_of_isEmpty
+  refine ⟨hev, hCD, ?_⟩
+  rw [hcard, hCD, zero_mul, zero_mul]
 
 end LeanUrat.MovesD

@@ -10,6 +10,9 @@ quantifier, discharged by L9s/NP_stab).
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D2a_finite
+import LeanUrat.MovesD.D3a_poolBound
+import LeanUrat.MovesD.D12_evBound
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -28,6 +31,17 @@ theorem D4R2_cor (hne : (P : ShapePrefix).reads ≠ []) (N : ℕ)
     (S : Presented p F n N m pol P) :
     Nat.card ↥S.event * p ^ ((P : ShapePrefix).A' n)
       ≤ (P : ShapePrefix).Mfac * p ^ ((P : ShapePrefix).W + n * N) := by
-  sorry
+  -- D4R.1-EV: the union bound within the level-N box (division-free).
+  have h1 := D4R1_EV hne N hA S
+  -- D4R.2′: C_P̂(p) ≤ M(P̂)·p^{W(P̂)}, on the CD form; hnorm from the Presented setup.
+  have h2 := D4R2' (P := P) S.hnorm
+  -- On the nonempty shape, CD is the class count (CD_eq), so #PrefIdx ≤ M·p^W.
+  rw [CD_eq S.hnorm hne] at h2
+  calc Nat.card ↥S.event * p ^ ((P : ShapePrefix).A' n)
+      ≤ Nat.card (PrefIdx n pol P) * p ^ (n * N) := h1
+    _ ≤ ((P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W) * p ^ (n * N) := by
+        gcongr
+    _ = (P : ShapePrefix).Mfac * p ^ ((P : ShapePrefix).W + n * N) := by
+        rw [mul_assoc, ← pow_add]
 
 end LeanUrat.MovesD

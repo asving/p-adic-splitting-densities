@@ -19,6 +19,8 @@ import LeanUrat.MovesD.Defs
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
+set_option linter.unusedSimpArgs false
+set_option linter.unnecessarySeqFocus false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesD
@@ -138,47 +140,220 @@ def advVI : ShapeRead where
 
 /-- GATE (positive): P̂* carries the certificate — P̂* ∈ Shape 3, clause by clause. -/
 theorem PhatStar_wf : ShapeWF 3 PhatStar := by
-  sorry
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · decide
+  · decide +revert
+  · intro r hr
+    have hr0 : r = 0 := by have hlen : PhatStar.reads.length = 2 := rfl; omega
+    subst hr0
+    decide +revert
+  · decide
+  · decide
+  · decide +revert
+  · intro r hr
+    have hr0 : r = 0 := by have hlen : PhatStar.reads.length = 2 := rfl; omega
+    subst hr0
+    decide +revert
+  · unfold ShapePrefix.MonicTie; decide
+  · decide +revert
+  · intro r hr
+    have hr0 : r = 0 := by have hlen : PhatStar.reads.length = 2 := rfl; omega
+    subst hr0
+    decide +revert
+  · intro r hr
+    rw [show PhatStar.reads.length = 2 from rfl] at hr
+    interval_cases r <;> norm_num [PhatStar, readStar0, readStar1, ShapePrefix.strS]
+  · intro r hr
+    rw [show PhatStar.reads.length = 2 from rfl] at hr
+    interval_cases r <;> norm_num [PhatStar, readStar0, readStar1, bezT]
 
 /-- GATE (positive): P̂₀ carries the certificate — P̂₀ ∈ Shape 4. -/
 theorem Phat0_wf : ShapeWF 4 Phat0 := by
-  sorry
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · decide
+  · decide +revert
+  · intro r hr; exfalso; have hlen : Phat0.reads.length = 1 := rfl; omega
+  · decide
+  · decide
+  · decide +revert
+  · intro r hr; exfalso; have hlen : Phat0.reads.length = 1 := rfl; omega
+  · unfold ShapePrefix.MonicTie; decide
+  · decide +revert
+  · intro r hr; exfalso; have hlen : Phat0.reads.length = 1 := rfl; omega
+  · intro r hr
+    rw [show Phat0.reads.length = 1 from rfl] at hr
+    interval_cases r <;> norm_num [Phat0, read0Phat0, ShapePrefix.strS]
+  · intro r hr
+    rw [show Phat0.reads.length = 1 from rfl] at hr
+    interval_cases r <;> norm_num [Phat0, read0Phat0, bezT]
 
 /-- GATE: W(P̂*) = 1·3 + 2·2 = 7. -/
 theorem PhatStar_W : PhatStar.W = 7 := by
-  sorry
+  decide
 
 /-- GATE: M(P̂*) = 1·1 = 1. -/
 theorem PhatStar_Mfac : PhatStar.Mfac = 1 := by
-  sorry
+  decide
 
 /-- GATE: Nshape(P̂*) = 1 + max(⌈3⌉, ⌈4⌉) = 5. -/
 theorem PhatStar_Nshape : PhatStar.Nshape = 5 := by
-  sorry
+  norm_num [ShapePrefix.Nshape, ShapePrefix.lineS, ShapePrefix.strS, PhatStar, readStar0,
+    readStar1, List.range_succ, List.range_zero]
+  decide
+
+/-- The `bandS` predicate for P̂*'s ROOT read, decidably characterized on the level grid
+`[0,5) × [0,3)`: the fresh band is exactly `ℓ + i ≤ 3` (the root line `3 − i`). -/
+private theorem PhatStar_bandS0_iff :
+    ∀ c ∈ (Finset.range 5 ×ˢ Finset.range 3), PhatStar.bandS 3 0 c ↔ c.1 + c.2 ≤ 3 := by
+  intro c hc
+  simp only [Finset.mem_product, Finset.mem_range] at hc
+  obtain ⟨ℓ, i⟩ := c
+  obtain ⟨hℓ, hi⟩ := hc
+  simp only at hℓ hi
+  interval_cases i <;> interval_cases ℓ <;>
+    simp only [PhatStar, ShapePrefix.bandS, ShapePrefix.prevRimS, ShapePrefix.floorS,
+      ShapePrefix.htS, ShapePrefix.lineS, ShapePrefix.kappaS, ShapePrefix.innerslotS,
+      ShapePrefix.strS, ShapeRead.childWidthS, readStar0, readStar1, Line.at, ShapeRead.staircaseS,
+      List.range_zero, List.range_succ, List.foldr_nil, List.foldr_cons, List.map_nil,
+      List.map_cons, Finset.range_zero, Finset.range_one, Finset.sum_empty, Finset.sum_range_one,
+      List.getElem?_cons_zero, List.getElem?_cons_succ, Option.elim_some, List.take, List.prod_nil,
+      List.prod_cons, WithBot.coe_lt_coe, WithBot.coe_le_coe, WithBot.bot_lt_coe] <;>
+    norm_num
+
+/-- The `bandS` predicate for P̂*'s recentering read, decidably characterized: the only
+fresh-band coordinates are `(ℓ,i) = (4,0)` and `(3,1)`. -/
+private theorem PhatStar_bandS1_iff :
+    ∀ c ∈ (Finset.range 5 ×ˢ Finset.range 3), PhatStar.bandS 3 1 c ↔
+      (c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3) := by
+  intro c hc
+  simp only [Finset.mem_product, Finset.mem_range] at hc
+  obtain ⟨ℓ, i⟩ := c
+  obtain ⟨hℓ, hi⟩ := hc
+  simp only at hℓ hi
+  interval_cases i <;> interval_cases ℓ <;>
+    simp only [PhatStar, ShapePrefix.bandS, ShapePrefix.prevRimS, ShapePrefix.floorS,
+      ShapePrefix.htS, ShapePrefix.lineS, ShapePrefix.kappaS, ShapePrefix.innerslotS,
+      ShapePrefix.strS, ShapeRead.childWidthS, readStar0, readStar1, Line.at, ShapeRead.staircaseS,
+      List.range_zero, List.range_succ, List.foldr_nil, List.foldr_cons, List.map_nil,
+      List.map_cons, Finset.range_zero, Finset.range_one, Finset.sum_empty, Finset.sum_range_one,
+      List.getElem?_cons_zero, List.getElem?_cons_succ, Option.elim_some, List.take, List.prod_nil,
+      List.prod_cons, WithBot.coe_lt_coe, WithBot.coe_le_coe, WithBot.bot_lt_coe] <;>
+    norm_num <;> norm_cast
 
 /-- GATE: A(P̂*) = 9 + 2 = 11 (at n = 3, N = Nshape = 5). -/
 theorem PhatStar_A' : PhatStar.A' 3 = 11 := by
-  sorry
+  classical
+  have key0 : (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => PhatStar.bandS 3 0 c)
+            = (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => c.1 + c.2 ≤ 3) := by
+    ext c
+    simp only [Finset.mem_filter]
+    constructor
+    · exact fun h => ⟨h.1, (PhatStar_bandS0_iff c h.1).mp h.2⟩
+    · exact fun h => ⟨h.1, (PhatStar_bandS0_iff c h.1).mpr h.2⟩
+  have key1 : (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => PhatStar.bandS 3 1 c)
+            = (Finset.range 5 ×ˢ Finset.range 3).filter
+                (fun c => (c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3)) := by
+    ext c
+    simp only [Finset.mem_filter]
+    constructor
+    · exact fun h => ⟨h.1, (PhatStar_bandS1_iff c h.1).mp h.2⟩
+    · exact fun h => ⟨h.1, (PhatStar_bandS1_iff c h.1).mpr h.2⟩
+  unfold ShapePrefix.A'
+  rw [PhatStar_Nshape]
+  unfold ShapePrefix.A
+  rw [show PhatStar.reads.length = 2 from rfl]
+  simp only [Finset.sum_range_succ, Finset.sum_range_zero, Nat.zero_add]
+  rw [key0, key1]
+  decide
 
 /-- GATE: NPband(P̂*) = 1 + 4 = 5 (the inhabited-branch NP value — the note's own
 "N(P̂*) = 1 + (largest pinned base level = 4, at c₀) = 5"). -/
 theorem PhatStar_NPband : PhatStar.NPband 3 = 5 := by
-  sorry
+  classical
+  have hpred : ∀ c ∈ (Finset.range 5 ×ˢ Finset.range 3),
+      (∃ r < PhatStar.reads.length, PhatStar.bandS 3 r c) ↔
+        (c.1 + c.2 ≤ 3) ∨ ((c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3)) := by
+    intro c hc
+    constructor
+    · rintro ⟨r, hr, hb⟩
+      rw [show PhatStar.reads.length = 2 from rfl] at hr
+      interval_cases r
+      · exact Or.inl ((PhatStar_bandS0_iff c hc).mp hb)
+      · exact Or.inr ((PhatStar_bandS1_iff c hc).mp hb)
+    · rintro (h | h)
+      · exact ⟨0, by decide, (PhatStar_bandS0_iff c hc).mpr h⟩
+      · exact ⟨1, by decide, (PhatStar_bandS1_iff c hc).mpr h⟩
+  have keyNP : (Finset.range 5 ×ˢ Finset.range 3).filter
+        (fun c => ∃ r < PhatStar.reads.length, PhatStar.bandS 3 r c)
+      = (Finset.range 5 ×ˢ Finset.range 3).filter
+        (fun c => (c.1 + c.2 ≤ 3) ∨ ((c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3))) := by
+    ext c
+    simp only [Finset.mem_filter]
+    constructor
+    · exact fun h => ⟨h.1, (hpred c h.1).mp h.2⟩
+    · exact fun h => ⟨h.1, (hpred c h.1).mpr h.2⟩
+  unfold ShapePrefix.NPband
+  rw [PhatStar_Nshape, keyNP]
+  decide
+
+/-- Nshape(P̂₀) = 1 + ⌈4⌉ = 5. -/
+private theorem Phat0_Nshape : Phat0.Nshape = 5 := by
+  norm_num [ShapePrefix.Nshape, ShapePrefix.lineS, ShapePrefix.strS, Phat0, read0Phat0,
+    List.range_succ, List.range_zero]
+  decide
+
+/-- The `bandS` predicate for P̂₀'s single root read (n = 4): the band is `ℓ + i ≤ 4`. -/
+private theorem Phat0_bandS0_iff :
+    ∀ c ∈ (Finset.range 5 ×ˢ Finset.range 4), Phat0.bandS 4 0 c ↔ c.1 + c.2 ≤ 4 := by
+  intro c hc
+  simp only [Finset.mem_product, Finset.mem_range] at hc
+  obtain ⟨ℓ, i⟩ := c
+  obtain ⟨hℓ, hi⟩ := hc
+  simp only at hℓ hi
+  interval_cases i <;> interval_cases ℓ <;>
+    simp only [Phat0, ShapePrefix.bandS, ShapePrefix.prevRimS, ShapePrefix.floorS,
+      ShapePrefix.htS, ShapePrefix.lineS, ShapePrefix.kappaS, ShapePrefix.innerslotS,
+      ShapePrefix.strS, ShapeRead.childWidthS, read0Phat0, Line.at, ShapeRead.staircaseS,
+      List.range_zero, List.range_succ, List.foldr_nil, List.foldr_cons, List.map_nil,
+      List.map_cons, Finset.range_zero, Finset.range_one, Finset.sum_empty, Finset.sum_range_one,
+      List.getElem?_cons_zero, List.getElem?_cons_succ, Option.elim_some, List.take, List.prod_nil,
+      List.prod_cons, WithBot.coe_lt_coe, WithBot.coe_le_coe, WithBot.bot_lt_coe] <;>
+    norm_num
 
 /-- GATE: A(P̂₀) = 14 (Fable#6's unclaimed cross-check against the note). -/
 theorem Phat0_A' : Phat0.A' 4 = 14 := by
-  sorry
+  classical
+  have key0 : (Finset.range 5 ×ˢ Finset.range 4).filter (fun c => Phat0.bandS 4 0 c)
+            = (Finset.range 5 ×ˢ Finset.range 4).filter (fun c => c.1 + c.2 ≤ 4) := by
+    ext c
+    simp only [Finset.mem_filter]
+    constructor
+    · exact fun h => ⟨h.1, (Phat0_bandS0_iff c h.1).mp h.2⟩
+    · exact fun h => ⟨h.1, (Phat0_bandS0_iff c h.1).mpr h.2⟩
+  unfold ShapePrefix.A'
+  rw [Phat0_Nshape]
+  unfold ShapePrefix.A
+  rw [show Phat0.reads.length = 1 from rfl]
+  simp only [Finset.sum_range_one]
+  rw [key0]
+  decide
 
 /-- ADVERSARY A-i: fails `root_box` at n = 3. -/
 theorem advI_not_wf : ¬ ShapeWF 3 ⟨[advI]⟩ := by
-  sorry
+  intro h
+  have h1 := h.root_box (by decide)
+  revert h1; decide
 
 /-- ADVERSARY A-ii: fails `MonicTie` at n = 3. -/
 theorem advII_not_wf : ¬ ShapeWF 3 ⟨[advII]⟩ := by
-  sorry
+  intro h
+  have h1 := h.monic 0 (by decide)
+  revert h1; decide
 
 /-- ADVERSARY A-vi: fails `w0` at n = 4. -/
 theorem advVI_not_wf : ¬ ShapeWF 4 ⟨[advVI]⟩ := by
-  sorry
+  intro h
+  have h1 := h.w0 (by decide)
+  revert h1; decide
 
 end LeanUrat.MovesD

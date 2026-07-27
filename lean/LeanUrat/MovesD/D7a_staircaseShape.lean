@@ -7,6 +7,7 @@ hypothesis_fields: none.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.D5b_lineShape
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -25,6 +26,10 @@ theorem staircase_shape {H : History p F} (hcoh : HistoryCoherent H)
     (hr' : r < (P : ShapePrefix).reads.length) :
     ∀ b, (H.nodes[r]'hr).staircase b
       = ((P : ShapePrefix).reads[r]'hr').staircaseS ((P : ShapePrefix).lineS r) b := by
-  sorry
+  intro b
+  obtain ⟨hlen, hmatch⟩ := hP
+  obtain ⟨-, he, -, hg, hμ, -, -, -, hD, -, -, -, -⟩ := hmatch r hr
+  unfold Node.staircase ShapeRead.staircaseS Node.childWidth ShapeRead.childWidthS
+  rw [line_shape hcoh ⟨hlen, hmatch⟩ r hr, he, hg, hμ, hD]
 
 end LeanUrat.MovesD

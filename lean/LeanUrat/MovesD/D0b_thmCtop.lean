@@ -9,6 +9,7 @@ hypothesis_fields: none (J a binder; existence = `Presented.jet`, HC-2).
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesC.C6_thmC_b
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -24,11 +25,25 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n N m : ℕ}
 theorem totalPins_top {H : History p F} (J : JetSetup H n N m) :
     totalPins J (topLocus p m)
       = (Finset.range H.nodes.length).sum (fun i => (J.fresh i).mstar) := by
-  sorry
+  -- `topLocus` pins nothing, so `numPinned = 0` (D0a's `topLocus_numPinned`, inlined).
+  have hnp : (topLocus p m).numPinned = 0 := by
+    unfold DigitSystem.numPinned
+    rw [Finset.card_eq_zero, Finset.filter_eq_empty_iff]
+    intro i _
+    simp [topLocus]
+  simp only [totalPins, hnp, Nat.add_zero]
 
 /-- Theorem C(b) at Z = ⊤ on the presented history (division-free box identity). -/
 theorem thmC_top {H : History p F} (J : JetSetup H n N m) :
     Nat.card (J.SHZ (topLocus p m)) * p ^ totalPins J (topLocus p m) = p ^ (n * N) := by
-  sorry
+  -- `⊤` is admissible against any state (nothing pinned — D0a's `topLocus_admissible`, inlined).
+  have hadm : AdmissibleZ (J.Sigma H.nodes.length) (topLocus p m) := by
+    intro c hc
+    simp [topLocus] at hc
+  -- Theorem C(b) at `Z = ⊤`; `boxMass p m = p ^ m` and `J.hm : m = n * N`.
+  have h := C6_thmC_b J (topLocus p m) hadm
+  simp only [boxMass] at h
+  rw [← J.hm]
+  exact h
 
 end LeanUrat.MovesD
