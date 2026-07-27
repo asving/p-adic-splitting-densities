@@ -11,6 +11,15 @@ sketch: field-by-field packaging; `coordOf := boxChart n N` with D1's laws,
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.U3_freshBand
+import LeanUrat.HC2.U4_freshCover
+import LeanUrat.HC2.U5_freshAssembled
+import LeanUrat.HC2.U6_mstarEq
+import LeanUrat.HC2.U7_sigmaRec
+import LeanUrat.HC2.U8_inhImplied
+import LeanUrat.HC2.U9_zcRoot
+import LeanUrat.HC2.U10_zcStep
+import LeanUrat.HC2.U11_rootHeight
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -29,6 +38,70 @@ theorem jetSetup_of_seed {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
     (hcoh : HistoryCoherent H) (hreal : Realizable H) (hbox : InBox n H)
     (vOf : VOf p (n * N)) :
     Nonempty (JetSetup H n N (n * N)) := by
-  sorry
+  -- the fresh-data field: `mkFresh` inside the history's range, `emptyFresh` junk beyond.
+  set freshFn : ℕ → FreshData p (n * N) :=
+    fun i => if hi : i < H.nodes.length then mkFresh H n N S vOf i hi
+             else emptyFresh p (n * N) with hfreshFn
+  have hfresh : ∀ (i : ℕ) (hi : i < H.nodes.length),
+      freshFn i = mkFresh H n N S vOf i hi := by
+    intro i hi; rw [hfreshFn]; exact dif_pos hi
+  refine ⟨{
+    hm := rfl
+    hN := hN
+    coordOf := boxChart n N
+    coordOf_sorted := boxChart_sorted n N
+    coordOf_lt := boxChart_lt n N
+    coherent := hcoh
+    realizable := hreal
+    root_height := root_height_of_inBox hcoh hbox
+    Sigma := mkSigma H n N S vOf
+    init := mkSigma_init H n N S vOf
+    fresh := freshFn
+    Theta := S.Theta
+    Theta_uni := S.Theta_uni
+    keys := keys
+    keys_mid := hkeys.1
+    landing := hkeys.2
+    pres := S.pres
+    pres_zero := S.pres_zero
+    pres_total := S.pres_total
+    pres_theta := S.pres_theta
+    pres_block := S.pres_block
+    stratum := mkStratum H n N S vOf
+    recursion := mkSigma_recursion H n N S vOf
+    inh_implied := ?inh
+    zc := ?zc
+    fresh_band := ?fb
+    fresh_cover := ?fc
+    fresh_assembled := ?fa
+    mstar_eq := ?me
+  }⟩
+  case inh =>
+    intro i hi y hy
+    rw [hfresh i hi]
+    exact mkStratum_inh H n N S vOf i hi y hy
+  case zc =>
+    intro i
+    induction i with
+    | zero => intro hi; exact zc_root S vOf hcoh hreal hbox hN hi
+    | succ k ihk =>
+        intro hi
+        exact zc_step S vOf hcoh hreal hbox hN k hi (ihk (by omega))
+  case fb =>
+    intro i hi cl hcl c hc
+    rw [hfresh i hi] at hcl
+    exact mkFresh_band H n N S vOf i hi cl hcl c hc
+  case fc =>
+    intro i hi c hband
+    rw [hfresh i hi]
+    exact mkFresh_cover H n N S vOf i hi c hband
+  case fa =>
+    intro i hi cl hcl
+    rw [hfresh i hi] at hcl
+    exact mkFresh_assembled H n N S vOf i hi cl hcl
+  case me =>
+    intro i hi
+    rw [hfresh i hi]
+    exact mkFresh_mstar H n N S vOf i hi
 
 end LeanUrat.MovesJ

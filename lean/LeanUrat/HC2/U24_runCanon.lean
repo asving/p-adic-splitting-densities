@@ -21,6 +21,11 @@ every read). -/
 theorem readsOf_canonical {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) : (polOM p F).IsCanonPres H := by
-  sorry
+  obtain ⟨_, _, _, hReads⟩ := h
+  refine ⟨fun r hr => ?_, fun r hr => ?_⟩
+  · obtain ⟨B, Nd, Φnext, _, _, hSide⟩ := hReads r hr
+    exact hSide.2.2.2.2.1
+  · obtain ⟨B, Nd, Φnext, _, _, hSide⟩ := hReads r hr
+    exact hSide.2.2.2.2.2
 
 end LeanUrat.MovesJ

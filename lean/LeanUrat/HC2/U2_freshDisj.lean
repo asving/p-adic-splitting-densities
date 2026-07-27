@@ -24,7 +24,9 @@ theorem mkFresh_disj {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
     (i : ℕ) (hi : i < H.nodes.length) :
     (mkFresh H n N S vOf i hi).clauses.Pairwise
-      (fun c₁ c₂ => Disjoint c₁.support c₂.support) := by
-  sorry
+      (fun c₁ c₂ => Disjoint c₁.support c₂.support) :=
+  -- `(mkFresh …).clauses` is `mkFreshClauses …` by definition; the disjointness is the
+  -- Defs forward lemma (blueprint §5 Layer A note: the P-phase prover fills both).
+  mkFreshClauses_disj H n N S vOf i hi
 
 end LeanUrat.MovesJ

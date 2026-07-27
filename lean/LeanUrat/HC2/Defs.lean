@@ -66,13 +66,36 @@ def boxChart (n N : ℕ) : Fin (n * N) → Coord :=
 `Fin`-order IS the global order `≺` on the chart. -/
 theorem boxChart_sorted (n N : ℕ) :
     ∀ j j' : Fin (n * N), j < j' ↔ CoordPrec (boxChart n N j) (boxChart n N j') := by
-  sorry
+  intro j j'
+  have hnN : 0 < n * N := lt_of_le_of_lt (Nat.zero_le _) j.isLt
+  have hn : 0 < n := Nat.pos_of_ne_zero (fun h => by subst h; simp at hnN)
+  have hda : n * ((j : ℕ) / n) + (j : ℕ) % n = (j : ℕ) := Nat.div_add_mod _ _
+  have hdb : n * ((j' : ℕ) / n) + (j' : ℕ) % n = (j' : ℕ) := Nat.div_add_mod _ _
+  have hra : (j : ℕ) % n < n := Nat.mod_lt _ hn
+  have hrb : (j' : ℕ) % n < n := Nat.mod_lt _ hn
+  simp only [boxChart, CoordPrec, Fin.lt_def]
+  constructor
+  · intro hab
+    rcases lt_trichotomy ((j : ℕ) / n) ((j' : ℕ) / n) with h | h | h
+    · exact Or.inl h
+    · exact Or.inr ⟨h, by rw [h] at hda; omega⟩
+    · exact absurd (Nat.div_le_div_right hab.le) (not_le.mpr h)
+  · rintro (h | ⟨h, hlt⟩)
+    · by_contra hcon
+      exact absurd (Nat.div_le_div_right (not_lt.mp hcon)) (not_le.mpr h)
+    · rw [h] at hda; omega
 
 /-- D1 law [P-phase obligation]: the chart lands in the box (levels `< N`, base indices
 `< n`); the `n = 0` case is junk-guarded by `Fin (0 * N)` emptiness. -/
 theorem boxChart_lt (n N : ℕ) :
     ∀ j : Fin (n * N), (boxChart n N j).1 < N ∧ (boxChart n N j).2 < n := by
-  sorry
+  intro j
+  have hnN : 0 < n * N := lt_of_le_of_lt (Nat.zero_le _) j.isLt
+  have hn : 0 < n := Nat.pos_of_ne_zero (fun h => by subst h; simp at hnN)
+  simp only [boxChart]
+  refine ⟨?_, ?_⟩
+  · exact (Nat.div_lt_iff_lt_mul hn).mpr (by rw [Nat.mul_comm N n]; exact j.isLt)
+  · omega
 
 /-! ## D3 `RecenterLiftSpec` — the lift specification (before D2, which chooses from it) -/
 
@@ -377,7 +400,75 @@ theorem mkFreshClauses_disj {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fini
     (i : ℕ) (hi : i < H.nodes.length) :
     (mkFreshClauses H n N S vOf i hi).Pairwise
       (fun c₁ c₂ => Disjoint c₁.support c₂.support) := by
-  sorry
+  classical
+  -- Support of a strip clause is the singleton at its coordinate.
+  have hStrip : ∀ c : Fin (n * N),
+      ((C1_stripClause (p := p) c).choose).support = {c} :=
+    fun c => (C1_stripClause (p := p) c).choose_spec.1
+  -- Support of a value clause is its slot's level set.
+  have hVal : ∀ (j : ℕ) (hsp : (H.nodes[i]'hi).spanSlot j),
+      (valueClause H n N S vOf i hi j hsp).support
+        = levelSet H n N i (H.nodes[i]'hi) j := by
+    intro j hsp
+    exact (C1_TYP_toClause
+      (S.typObj i hi (levelSet H n N i (H.nodes[i]'hi) j)
+        ⟨j, hsp, fun c => Iff.intro
+          (fun hc => (Finset.mem_filter.mp hc).2)
+          (fun hc => Finset.mem_filter.mpr ⟨Finset.mem_univ c, hc⟩)⟩)
+      (vOf i j (levelSet H n N i (H.nodes[i]'hi) j))
+      (levelSet H n N i (H.nodes[i]'hi) j).card
+      (card_fin_fun p _)).choose_spec.1
+  -- Level sets of distinct span slots are disjoint (distinct fine slots).
+  have hLSdisj : ∀ (j₁ j₂ : ℕ), j₁ ≠ j₂ →
+      Disjoint (levelSet H n N i (H.nodes[i]'hi) j₁)
+        (levelSet H n N i (H.nodes[i]'hi) j₂) := by
+    intro j₁ j₂ hne
+    rw [Finset.disjoint_left]
+    intro c hc1 hc2
+    unfold levelSet at hc1 hc2
+    rw [Finset.mem_filter] at hc1 hc2
+    exact hne (hc1.2.1.symm.trans hc2.2.1)
+  -- A non-value coordinate cannot lie in any span slot's level set.
+  have hCross : ∀ (c : Fin (n * N)),
+      ¬ IsValueCoord H (boxChart n N) i (H.nodes[i]'hi) c →
+      ∀ (j : ℕ), (H.nodes[i]'hi).spanSlot j →
+        c ∉ levelSet H n N i (H.nodes[i]'hi) j := by
+    intro c hnv j hsp hc
+    unfold levelSet at hc
+    rw [Finset.mem_filter] at hc
+    obtain ⟨-, hfs, hht⟩ := hc
+    exact hnv ⟨by rw [hfs]; exact hsp, by rw [hfs]; exact hht⟩
+  -- Split the list into strips ++ values.
+  unfold mkFreshClauses
+  rw [List.pairwise_append]
+  refine ⟨?_, ?_, ?_⟩
+  · -- strips are pairwise disjoint (distinct singletons)
+    rw [List.pairwise_map]
+    have hnd : ((stripSet H n N i (H.nodes[i]'hi)).toList).Pairwise (· ≠ ·) :=
+      Finset.nodup_toList _
+    refine hnd.imp ?_
+    intro a b hab
+    rw [hStrip a, hStrip b]
+    exact Finset.disjoint_singleton.mpr hab
+  · -- value clauses are pairwise disjoint (distinct slots)
+    rw [List.pairwise_map]
+    have hnd : ((valueSlots H n N i (H.nodes[i]'hi)).attach.toList).Pairwise (· ≠ ·) :=
+      Finset.nodup_toList _
+    refine hnd.imp ?_
+    intro a b hab
+    rw [hVal a.1 (valueSlots_spanSlot a.2), hVal b.1 (valueSlots_spanSlot b.2)]
+    exact hLSdisj a.1 b.1 (fun heq => hab (Subtype.ext heq))
+  · -- a strip and a value clause are disjoint
+    intro x hx y hy
+    simp only [List.mem_map] at hx hy
+    obtain ⟨c, hc, rfl⟩ := hx
+    obtain ⟨jh, hjh, rfl⟩ := hy
+    rw [hStrip c, hVal jh.1 (valueSlots_spanSlot jh.2), Finset.disjoint_singleton_left]
+    refine hCross c ?_ jh.1 (valueSlots_spanSlot jh.2)
+    rw [Finset.mem_toList] at hc
+    unfold stripSet at hc
+    rw [Finset.mem_filter] at hc
+    exact hc.2.2
 
 /-- **D6 `mkFresh`** — read `i`'s fresh clauses, constructed from node geometry (blueprint
 D6): strips + value clauses at the seed's TypObjects and the emitted values `vOf` (the

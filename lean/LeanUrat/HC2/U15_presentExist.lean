@@ -11,6 +11,7 @@ else carried).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.U13_assembly
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -30,6 +31,24 @@ theorem present_exist_of_seeds {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [F
     (hnorm : PresentNorm n (polOM p F) P) :
     ∀ N : ℕ, P.NP (polOM p F) ≤ N →
       Nonempty (Presented p F n N (n * N) (polOM p F) P) := by
-  sorry
+  intro N hN
+  -- `N ≥ 1` from `N ≥ P.NP`: both branches of the piecewise `Shape.NP` are `≥ 1`
+  -- (`NPband = 1 + …`; else-branch `= 1`).
+  have hNP1 : 1 ≤ P.NP (polOM p F) := by
+    unfold Shape.NP
+    split_ifs with h
+    · unfold ShapePrefix.NPband; omega
+    · exact le_refl 1
+  have h1N : 1 ≤ N := le_trans hNP1 hN
+  -- assemble the presented family: `jet i` = U13's `jetSetup_of_seed` fired on the seed
+  -- SEED-EXIST hands us at level `N` (its `keys`, lawfulness, and a `PresentSeed`), plus the
+  -- coherence/realizability/box data carried by `reprOf i ∈ PrefSet`; `hnorm` verbatim.
+  refine ⟨⟨fun i => ?_, hnorm⟩⟩
+  -- SEED-EXIST at this class and level
+  obtain ⟨hkeys, hSne⟩ := (hseed i N hN).choose_spec
+  -- `reprOf i` is the chosen PrefSet representative of the η-class `i`
+  have hmem : reprOf i ∈ PrefSet n (polOM p F) P := i.2.choose_spec.1
+  obtain ⟨-, hcoh, hreal, hbox, -⟩ := hmem
+  exact (jetSetup_of_seed hkeys hSne.some h1N hcoh hreal hbox (fun _ _ _ _ => 0)).some
 
 end LeanUrat.MovesJ

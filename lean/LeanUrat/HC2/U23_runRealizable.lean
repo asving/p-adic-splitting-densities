@@ -7,6 +7,9 @@ hypothesis_fields: none.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.U20_NA
+import LeanUrat.HC2.U21_HV
+import LeanUrat.HC2.U22_SAE
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -20,6 +23,14 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 theorem readsOf_realizable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) : Realizable H := by
-  sorry
+  -- `Realizable H` = at every appended read `ν_{i+1}`, `TransitionAdmissible ν_i ν_{i+1}`;
+  -- `TransitionAdmissible` is the (NA)∧(HV)∧(SAE₁)∧(SAE₂) four-tuple.  Assemble it from
+  -- U20 (NA), U21 (HV), U22 (SAE, both conjuncts) over the standing pair (blueprint §5 D).
+  intro i hi
+  refine ⟨fun hna => ?_, fun hadj => ?_, ?_, ?_⟩
+  · exact readsOf_NA h i hi hna
+  · exact readsOf_HV h i hi hadj
+  · exact (readsOf_SAE h i hi).1
+  · exact (readsOf_SAE h i hi).2
 
 end LeanUrat.MovesJ

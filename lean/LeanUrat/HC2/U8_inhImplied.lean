@@ -30,6 +30,10 @@ theorem mkStratum_inh {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (i : ℕ) (hi : i < H.nodes.length) (y : Fin (n * N) → ZMod p)
     (hy : (mkSigma H n N S vOf i).IsSolution y) :
     (mkStratum H n N S vOf i y ↔ (mkFresh H n N S vOf i hi).sat y) := by
-  sorry
+  constructor
+  · intro h
+    exact h hi
+  · intro h hi'
+    exact h
 
 end LeanUrat.MovesJ

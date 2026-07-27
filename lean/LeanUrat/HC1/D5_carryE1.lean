@@ -27,7 +27,21 @@ plain field). -/
 theorem D5_carryE1 {F : Type*} [Field F] {zbar : Fˣ} (P : CarryRingPack F 1 zbar) :
     ∃ Θ : (letI := P.ring; CarryAlg F 1 ≃+* F),
       ∀ x : CarryAlg F 1, Θ x = x 0 := by
-  sorry
+  letI := P.ring
+  haveI hs : Subsingleton (ZMod 1) := ZMod.subsingleton_iff.mpr rfl
+  refine ⟨{
+    toFun := fun x => x 0
+    invFun := fun c => fun _ => c
+    left_inv := fun x => funext fun i => congrArg x (Subsingleton.elim 0 i)
+    right_inv := fun c => rfl
+    map_mul' := fun x y => by
+      show (x * y) 0 = x 0 * y 0
+      rw [P.mul_def]
+      simp only [cmul]
+      rw [Fintype.sum_subsingleton _ (0 : ZMod 1)]
+      simp [carryExp]
+    map_add' := fun x y => P.add_def x y 0
+  }, fun x => rfl⟩
 
 end LeanUrat.HC1
 

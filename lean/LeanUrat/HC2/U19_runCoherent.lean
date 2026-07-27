@@ -22,7 +22,9 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 /-- A classifier run is a coherent history. -/
 theorem readsOf_coherent {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
-    (h : ReadsOf p F n f H) : HistoryCoherent H := by
-  sorry
+    (h : ReadsOf p F n f H) : HistoryCoherent H :=
+  -- D4's `ReadsOf` RECORDS coherence as its third conjunct (blueprint §5 Layer D:
+  -- "the unit is a PROJECTION"); this is that conjunct.
+  h.2.2.1
 
 end LeanUrat.MovesJ
