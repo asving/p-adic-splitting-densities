@@ -1,5 +1,14 @@
 # MovesU — Lean blueprint for §U-SQUEEZE (Theorem U, conditional form)
-# REV 3 (post-re-audit, orchestrator design ruling implemented) — 2026-07-28
+# REV 4 (post-Fable-audit, menu layer repaired; spine untouched) — 2026-07-28
+
+*REV 4 (Fable audit `MOVESU_AUDIT_FABLE_2026-07-28.md`: REJECT 2c/4g, spine verified):
+KsubM1C1 rebound to same-size CONTINUATIONS (same-size halts exempt — F3-C1); the full
+CTS-M(i) tag restored (`ctsmSyntax` slot reinstated beside the typed face) and `M`/`K`
+moved to the p-UNIFORM layer before ∀ p, making p-independence expressible (F3-C2,
+F3-G4); menus pinned by `menuCount` equations + a not-all-empty law (F3-G1);
+`cellCount_pos`/`shapeCount_pos` DROPPED as note-unsupported — cardinality equations
+stay, positivity was over-strong vs (K-TRI)'s minimal blocks (F3-G3); §7 audit-trail
+misstatements corrected (F3-G2). No spine unit touched.*
 
 *Audit trail: rev 1 REJECT 10c/3g (`MOVESU_AUDIT_CODEX_2026-07-28.md`, repaired at
 REV 2); rev 2 REJECT 4c/3g (`MOVESU_AUDIT_CODEX_REV2_2026-07-28.md`, repaired HERE per
@@ -95,9 +104,14 @@ with a CARDINALITY EQUATION pinned to block/table count data — never `Nonempty
 never a free Finset that could be empty: `instBiNe : ∀ e, Nonempty (bidx e)` +
 `bidx_card : Fintype.card (bidx e) = blockDim e`, `blockDim_pos` (kills the
 empty-matrix det = 1 dodge); `Jcell : JIdx e → RatFunc ℚ` with `JIdx_card :
-Fintype.card (JIdx e) = cellCount e`, `cellCount_pos` (|Jcell| = the branching-cell
-count of the block's table, CL-18); `Wcoef : WIdx → RatFunc ℚ` with `WIdx_card =
-shapeCount`, `shapeCount_pos` (one coefficient per shallow shape Ŝ, CL-17);
+Fintype.card (JIdx e) = cellCount e` (|Jcell| = the branching-cell count of the
+block's table, CL-18); `Wcoef : WIdx → RatFunc ℚ` with `WIdx_card = shapeCount` (one
+coefficient per shallow shape Ŝ, CL-17). REV 4 (F3-G3): the J/W/leg families are
+pinned BY EQUATION ONLY — no positivity: (K-TRI)'s well-foundedness ("every b_e^split
+leg has e_j < e") means MINIMAL blocks have no split legs and plausibly no branching
+cells, so `cellCount_pos`/`shapeCount_pos`/`legCount_pos` would be over-strong
+(truthful-instantiability risk, the dual vacuity trap); `instBiNe`/`blockDim_pos`
+stay (every block's table has rows — audited safe);
 `betaLeg : legIdx e → ℕ → RatFunc ℚ` with `legIdx_card = legCount e` — β entries are
 functions of (leg, depth δ), and `entryList` unions their images over EVERY
 δ ∈ depthSet (the display's "at every pool of Q(p)"). The count DATA (`blockDim`,
@@ -125,15 +139,23 @@ is a structure of `Prop` slots — one per open kernel/obligation of the capston
 trackCount/dnDuty/genuineIncrement, the six CL-8 REL legs, rs0LumpBisim,
 sib/jcMulti/treeExpTreeN, noEqualEFeedback/degCons, m1m5, x1aDict, m4bConstancy,
 rs1Assembly, jRat, jcInv) — filled with the REAL statements at instantiation (owners
-per slot). REV 3 (ruling (B)/(E), rev-2 gap 5): THREE former slots are no longer bare
-Props — `vpSound` is DELETED from the pack and becomes the TYPED ledger field
-`cl10_vpsound : VPSound X` over the concrete box (D10); `ksubM1C1` and `ctsmSyntax`
-are DELETED and become TYPED fields over the concrete menu vocabulary `MenuData`
-(menus as Finsets of `(m, c, sameSize, target)` entries): `cl11`'s second conjunct
-`KsubM1C1 M` (every same-size outcome has m = 1 ∧ c = 1 — the equal-e classification
-as a real Prop) and `cl13 : MenuWF M` (m ≥ 1, c ≤ m, targets total on continuing
-outcomes; the empty menu = halt, the (BDY) reading) — the FULL upstream statements
-still live with their owners; these are their MovesU-visible faces, now checkable.
+per slot). REV 3/4 (rev-2 gap 5; Fable F3-C1/C2/G1/G4): `vpSound` is DELETED from the
+pack and becomes the TYPED ledger field `cl10_vpsound : VPSound X` over the concrete
+box (D10). `ksubM1C1` is DELETED and becomes the typed `KsubM1C1 M` in `cl11` —
+REV 4: rebound to same-size CONTINUATIONS only (`o.c ≠ 0 →`), since the note's clause
+is "equal-e CONTINUATION rides exclusively in the (c = 1, m = 1) rows" and same-size
+HALTS (c = 0, the b_e^{term,fin} leaves) are generic — the faithful catalogue now
+satisfies it (F3-C1). `ctsmSyntax` is REINSTATED as a full-statement slot (F3-C2: the
+typed face `MenuWF M` — m ≥ 1, c ≤ m, PER-ENTRY TARGET TOTALITY (labeled honestly;
+global compatibility is NOT this), empty menu = halt — is strictly weaker than CL-13's
+"ONE fixed finite p-independent state set with DISPLAYED cell predicates and globally
+compatible target-cell maps", and the ledger may not drop an open tag): `cl13 :
+K.ctsmSyntax ∧ MenuWF M`. `MenuData` is PINNED (F3-G1): `menuCount` per-state outcome
+counts with `menu_card` equations + `menu_not_all_empty` (kills the all-∅ dodge; a
+single state MAY have an empty menu — that is the halt convention). p-INDEPENDENCE
+made expressible (F3-C2/G4): `M` and `K` move OUT of the per-prime `UInstance` to the
+p-UNIFORM layer — `theoremU` binds ONE `M` and ONE `K` BEFORE ∀ p, the same ∃-before-∀
+discipline as `S`.
 `CapstoneLedger` keeps a field PER CL ITEM (CL-2/CL-3 included, F6) PLUS the operative
 consumption fields (`finiteness_stack`, `solve_stack` with explicit positivity,
 `rs4_checksum`/`rs4_eval`, `cl4_env_tendsto`) PLUS the O3 pin `o3_teichmuller :
@@ -316,16 +338,16 @@ structure RegData (p : ℕ) where
   bterm : ∀ e : Block, bidx e → RatFunc ℚ      -- b_e^{term,fin}
   bsplit : ∀ e : Block, bidx e → RatFunc ℚ     -- b_e^split
   iota : ∀ e : Block, bidx e → RatFunc ℚ       -- {each entry of ι_e}
-  -- per-cell J entries (CL-18): |Jcell e| = the table's branching-cell count
+  -- per-cell J entries (CL-18): |Jcell e| = the table's branching-cell count.
+  -- REV 4 (F3-G3): EQUATION pin only, NO positivity — (K-TRI) minimal blocks may
+  -- have zero branching cells; positivity would risk truthful uninstantiability.
   cellCount : Block → ℕ
-  cellCount_pos : ∀ e, 0 < cellCount e
   JIdx : Block → Type
   instJ : ∀ e, Fintype (JIdx e)
   JIdx_card : ∀ e, Fintype.card (JIdx e) = cellCount e
   Jcell : ∀ e : Block, JIdx e → RatFunc ℚ
-  -- W_Ŝ coefficients (CL-17): one per shallow shape
+  -- W_Ŝ coefficients (CL-17): one per shallow shape (equation pin only, F3-G3)
   shapeCount : ℕ
-  shapeCount_pos : 0 < shapeCount
   WIdx : Type
   instW : Fintype WIdx
   WIdx_card : Fintype.card WIdx = shapeCount
@@ -402,24 +424,34 @@ structure MenuEntry (State : Type) where
   deriving DecidableEq
 
 /-- The move-menu vocabulary (CL-13/CL-11's MovesU-visible face; owner [1v]/[2a]):
-    the ONE fixed finite state set with per-state outcome menus AS FINSETS. -/
+    the ONE fixed finite state set with per-state outcome menus AS FINSETS — bound at
+    the p-UNIFORM layer (before ∀ p; F3-C2/G4). REV 4 pin (F3-G1): per-state outcome
+    counts are catalogue DATA with a card equation, and menus are not ALL empty
+    (a single empty menu = the halt convention and stays allowed). -/
 structure MenuData where
   State : Type
   instState : Fintype State
   instStateDeq : DecidableEq State
   instStateNe : Nonempty State
   menu : State → Finset (MenuEntry State)
+  menuCount : State → ℕ                       -- the catalogue's per-state outcome count
+  menu_card : ∀ s, (menu s).card = menuCount s
+  menu_not_all_empty : ∃ s, menuCount s ≠ 0   -- kills the all-∅ vacuity dodge (F3-G1)
 
-/-- The (K-SUB) m = 1 classification as a REAL Prop over menus (was a bare slot):
-    "equal-e continuation rides EXCLUSIVELY in K_e's (c = 1, m = 1) rows" — every
-    same-size outcome is single-member, single-continuation. -/
+/-- The (K-SUB) m = 1 classification as a REAL Prop over menus. REV 4 (F3-C1):
+    binds same-size CONTINUATIONS ONLY — "equal-e CONTINUATION rides EXCLUSIVELY in
+    K_e's (c = 1, m = 1) rows" (the same-size single-child direction). Same-size
+    HALTS (c = 0, the b_e^{term,fin} leaves) are generic and EXEMPT: without the
+    `o.c ≠ 0` guard the faithful catalogue would falsify the Prop. -/
 def KsubM1C1 (M : MenuData) : Prop :=
-  ∀ s, ∀ o ∈ M.menu s, o.sameSize = true → o.m = 1 ∧ o.c = 1
+  ∀ s, ∀ o ∈ M.menu s, o.sameSize = true → o.c ≠ 0 → o.m = 1 ∧ o.c = 1
 
-/-- CL-13's menu well-formedness face (was a bare slot): every outcome has ≥ 1
-    member, ≤ m continuations, and a target whenever it continues (globally
-    compatible target-cell maps); the empty menu is the halt convention. The FULL
-    CTS-M(i) statement lives with [1v]; this is its checkable MovesU trace. -/
+/-- CL-13's menu well-formedness FACE (the typed trace, asserted BESIDE the
+    full-statement slot `ctsmSyntax` in `cl13` — F3-C2): every outcome has ≥ 1
+    member, ≤ m continuations, and PER-ENTRY TARGET TOTALITY on continuing outcomes
+    (honest label — this is NOT the global compatibility of the target-cell maps,
+    which lives in the `ctsmSyntax` slot with the cell predicates and
+    p-independence); the empty menu is the halt convention. -/
 def MenuWF (M : MenuData) : Prop :=
   ∀ s, ∀ o ∈ M.menu s, 1 ≤ o.m ∧ o.c ≤ o.m ∧ (o.c ≠ 0 → o.target.isSome)
 
@@ -468,8 +500,14 @@ structure KernelStatements where
   -- (vpSound: DELETED as a slot at REV 3 — now the TYPED ledger field
   --  `cl10_vpsound : VPSound X`, ruling (B); rev-2 gap 5)
   noEqualEFeedback : Prop -- CL-11 [4]/[1v]: no-equal-e-feedback + DEG-CONS full roster
-  -- (ksubM1C1, ctsmSyntax: DELETED as slots at REV 3 — now TYPED over MenuData:
-  --  `KsubM1C1 M` in cl11, `MenuWF M` in cl13, ruling (E); rev-2 gap 5)
+  -- (ksubM1C1: typed-only since REV 3 — `KsubM1C1 M` in cl11; its content is fully
+  --  expressible over MenuData, so no bare slot is needed)
+  ctsmSyntax : Prop       -- CL-13 [1v], REINSTATED at REV 4 (F3-C2): the FULL
+                          --   CTS-M(i) statement — the ONE fixed finite p-independent
+                          --   state set with DISPLAYED cell predicates and GLOBALLY
+                          --   COMPATIBLE target-cell maps ("without it no path
+                          --   product or kernel index type-checks"); the typed face
+                          --   MenuWF M rides beside it in cl13, replacing NOTHING
   m1m5 : Prop             -- CL-14 [2a]: M1 + M5 — CLOSED upstream; ledger-echo slot
   x1aDict : Prop          -- CL-15 [5]: the per-species GMN index dictionary
   m4bConstancy : Prop     -- CL-16 [1v]/[2b]: M4b constancy + M4b-T equivariance (π_v)
@@ -499,7 +537,9 @@ structure CapstoneLedger (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n
       true type σ. The identification corollary (U11, clause (ii)) consumes it. -/
   cl10_vpsound : VPSound X
   cl11 : K.noEqualEFeedback ∧ KsubM1C1 M
-  cl13 : MenuWF M
+  /-- CL-13 in FULL (F3-C2): the reinstated full-statement slot AND the typed menu
+      face — no open tag dropped (SQ.4's acceptance-record rule binds this form). -/
+  cl13 : K.ctsmSyntax ∧ MenuWF M
   /-- The O3 BASE-PIN DECLARATION (SQ.4's display duty, gap 6): the pinned base digit
       section is TEICHMÜLLER (D4R0K S1.4 (B4)/O3) — "declared once, as the definitive
       write-up must". -/
@@ -544,13 +584,14 @@ structure CapstoneLedger (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n
   cl4_env_tendsto : Tendsto X.env atTop (𝓝 0)
 
 /-- THE PER-p INSTANTIATION BUNDLE (for U10's quantifier shape): everything Theorem U
-    needs at one prime, over the FIXED SolveData. -/
-structure UInstance (n : ℕ) (S : SolveData n) (p : ℕ) where
+    needs at one prime, over the FIXED p-uniform data (S, M, K — F3-C2/G4: one menu
+    vocabulary and one kernel pack for ALL primes, so CL-13's p-independence and the
+    slots' p-uniform referents are expressible). -/
+structure UInstance (n : ℕ) (S : SolveData n) (M : MenuData) (K : KernelStatements)
+    (p : ℕ) where
   X : ClassifierSpec n p
   F : FiberSeries n p X
   D : RegData p
-  M : MenuData
-  K : KernelStatements
   L : CapstoneLedger n p X F S D M K
 ```
 
@@ -758,7 +799,8 @@ Defs ← U0b ← DefsLedger ← every ledger-consuming unit (U3, U4, U6, U10, U1
     factorization types (F12). Σ_σ R_σ = 1 identically in ℚ(q). At a p failing
     (REG-p): NO CLAIM (D8). -/
 theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
-    (inst : ∀ p : ℕ, p.Prime → UInstance n S p) :
+    (M : MenuData) (K : KernelStatements)   -- p-UNIFORM (F3-C2/G4): one M, one K, ∀ p
+    (inst : ∀ p : ℕ, p.Prime → UInstance n S M K p) :
     ∃ R : SplittingType n → RatFunc ℚ,
       (∑ σ, R σ = 1) ∧
       ∀ (p : ℕ) (hp : p.Prime), RegP S (inst p hp).D →
@@ -821,9 +863,10 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
 
 - **G1 `ClassifierSpec.trueType`/`canonical`**: the semantic pins (D9). Soundness is
   NOT baked in (REV 3): it is the typed ledger hypothesis `cl10_vpsound : VPSound X`.
-  U10's clause (i) is degenerate-proof (concrete counts); clause (ii)'s meaning rests
-  on `trueType`/VP-SOUND fidelity — the HC-2/MovesD owner-audited pin. Say so in any
-  progress claim.
+  U10's clause (i) is NON-VACUOUS (a real limit of real counts over the concrete box)
+  but remains SATISFIABLE by an unfaithful classifier — D9's declared boundary, not
+  "degenerate-proof" (F3-G2); clause (ii)'s meaning rests on `trueType`/VP-SOUND
+  fidelity — the HC-2/MovesD owner-audited pin. Say so in any progress claim.
 - **G2 `evalℝ` junk values**: Mathlib `RatFunc.eval` returns 0 at poles. Audit that no
   unit consumes `evalℝ` outside a `RegP`-guarded context except as the LIMIT TARGET in
   U10, where `solve_stack`/`rs4_eval` (both RegP-guarded) give it content.
@@ -831,19 +874,23 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   instantiation (D4); `mem_slice_iff` pins the slice to `thr`. Audit TRACK-COUNT +
   D(n) + genuine-increment stay named OPEN (`KernelStatements` slots + docstrings).
 - **G4 the kernel slots**: every CL-1 … CL-19 item is an ASSERTED field (grep the
-  `cl`-fields); the vpSound/ksubM1C1/ctsmSyntax slots are GONE — replaced by the
-  typed `cl10_vpsound : VPSound X`, `KsubM1C1 M`, `MenuWF M` (rev-2 gap 5). Remaining
-  bare slots are `Prop` parameters — a `True`-filled slot is an
-  instantiation-fidelity violation (D9), flag any instance unit that fills one.
+  `cl`-fields); vpSound/ksubM1C1 are typed (`cl10_vpsound : VPSound X`, `KsubM1C1 M`);
+  cl13 asserts BOTH the reinstated full-statement `K.ctsmSyntax` slot AND the typed
+  face `MenuWF M` (F3-C2 — audit that neither conjunct is dropped). `M`/`K` are
+  p-UNIFORM theorem parameters (F3-G4). Remaining bare slots are `Prop` parameters —
+  a `True`-filled slot is an instantiation-fidelity violation (D9), flag any instance
+  unit that fills one.
   `solve_stack` MUST carry the explicit `0 ≤ evalℝ` conjunct (RS.3's clause, F8);
   the ledger MUST carry `o3_teichmuller` (gap 6) — check neither drops in
   elaboration.
-- **G8 the count data (`blockDim`/`cellCount`/`shapeCount`/`legCount`)**: the
-  cardinality equations pin the index families to these ℕ fields (ruling (C)), but
-  the VALUES are owner data (MovesS/[1v] tables) — audit any instantiation against
-  the sealed tables; a fabricated count is a fidelity violation, not satisfiable
-  slack in THIS corpus's statements. Same for `MenuData.menu` vs the [2a]/[1v]
-  catalogue.
+- **G8 the count data (`blockDim`/`cellCount`/`shapeCount`/`legCount`/`menuCount`)**:
+  the cardinality equations pin the index families to these ℕ fields (ruling (C);
+  menus via `menu_card` + `menu_not_all_empty`, F3-G1), but the VALUES are owner data
+  (MovesS/[1v]/[2a] tables) — audit any instantiation against the sealed tables; a
+  fabricated count is a fidelity violation, not satisfiable slack. REV 4 (F3-G3):
+  J/W/leg counts carry NO positivity — owner-table confirmation of which blocks have
+  zero branching cells/legs is OWED BEFORE E-PHASE if any positivity is ever wanted;
+  `instBiNe`/`blockDim_pos` are the only positivity pins, audited safe.
 - **G5 `RegData.act` abstract**: (r2)'s ACT agreement is against an UNINTERPRETED
   `act`; the CTS-M(ii) semantics arrive at instantiation. (REG-p) stays the rev-5
   SEPARATE hypothesis — audit that no unit derives RegP from, or uses it to derive,
@@ -882,7 +929,7 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   deriving `rs4_eval` from `rs4_checksum` (`RatFunc.eval_add`'s hypotheses) — if absent
   or awkward, `rs4_eval` stays a field (already the blueprint default).
 
-## 6. Status and counts (REV 3)
+## 6. Status and counts (REV 4)
 
 13 units (U0, U0b, U1–U11) over THREE Defs files (Defs ← U0b ← DefsLedger, D11):
 4 TAG-FREE/unconditional (U1 (BOX-N), U2 Tonelli existence, U5 SQ.3-as-arithmetic,
@@ -890,10 +937,14 @@ U7 limit forcing — exactly the note's re-audited tag-free perimeter; U11 is de
 arithmetic with explicit inputs, NOT a fifth) + 2 support (U0, U0b) + 7
 conditional/definitional/derived, every hypothesis a named structure field, typed
 kernel field, kernel slot, or explicit `RegP S`. Difficulty: 5 easy, 8 medium,
-0 hard. No new axiom; no `sorry` planned. Instantiation hooks per D9:
-`ClassifierSpec`/`FiberSeries` ← MovesD/HC-2/[3t], `SolveData`/`RegData` ← MovesS,
-`MenuData` ← [2a]/[1v], `KernelStatements` ← owner notes. Next gate: Codex re-audit
-(one shot), charge = §4's guardian flags + the 20-finding disposition table (§7).
+0 hard. No new axiom; no `sorry` planned. The rev-3 Fable audit VERIFIED the spine
+(Box/counts, U1–U11's statements, the RegP pins, the second squeeze, ∃R-∀p, the four
+tag-free units); REV 4 repaired its menu-layer findings only. p-uniform layer:
+S, M, K bound before ∀ p. Instantiation hooks per D9: `ClassifierSpec`/`FiberSeries`
+← MovesD/HC-2/[3t], `SolveData`/`RegData` ← MovesS, `MenuData` ← [2a]/[1v],
+`KernelStatements` ← owner notes. OWED BEFORE E-PHASE (F3-G3): owner-table
+confirmation on zero-cell/zero-shape blocks (G8). Next gate: Codex FINAL on REV 4;
+charge = §4's flags + the 26-finding disposition table (§7).
 
 ## 7. Findings→repairs table (Codex audit 2026-07-28, REJECT 10c/3g → REV 2)
 
@@ -917,11 +968,22 @@ kernel field, kernel slot, or explicit `RegP S`. Difficulty: 5 easy, 8 medium,
 
 | # | class | finding (short) | repair in REV 3 |
 |---|---|---|---|
-| R2-1 | crit | U10 still satisfiable by degenerate instance (constant verdict + trueType, True slots) | REDESIGNED per ruling (A)/(B): concrete polynomial space (`Box.toPoly`, real counts) makes clause (i) degenerate-proof; clause (ii)'s residue moves into typed `VPSound X` fidelity, DECLARED owner-audited (D9 rewritten — the refuted "fake instance is dead" claim withdrawn) |
+| R2-1 | crit | U10 still satisfiable by degenerate instance (constant verdict + trueType, True slots) | REDESIGNED per ruling (A)/(B): concrete polynomial space (`Box.toPoly`, real counts) makes clause (i) NON-VACUOUS — still satisfiable by an unfaithful instance, per D9's declared boundary (wording corrected at REV 4, F3-G2); clause (ii)'s residue moves into typed `VPSound X` fidelity, DECLARED owner-audited |
 | R2-2 | crit | no identification with the actual ℤ_p splitting density | REDESIGNED per ruling (B): conclusion splits — clause (ii) `trueDmass σ → R_σ(p)` via new unit U11 (second squeeze: decided ≤ trueCount ≤ decided + undec under VP-SOUND); ℤ_p-Haar reading = HC-2's declared bridge, not re-derived |
-| R2-3 | crit | (REG-p) families could be empty (empty `bidx` ⟹ det = 1; free Finsets) | FIXED per ruling (C): every family index-typed with cardinality EQUATIONS pinned to count data (`bidx_card`/`JIdx_card`/`WIdx_card`/`legIdx_card`, all `_pos`), `instBiNe`; β entries functions of (leg, δ) with `entryList` unioning over EVERY δ ∈ depthSet |
+| R2-3 | crit | (REG-p) families could be empty (empty `bidx` ⟹ det = 1; free Finsets) | FIXED per ruling (C): every family index-typed with cardinality EQUATIONS pinned to count data (`bidx_card`/`JIdx_card`/`WIdx_card`/`legIdx_card`), `instBiNe` + `blockDim_pos` (the only positivity pins — REV 4/F3-G2 correction: no `legCount_pos` exists, and REV 4 dropped `cellCount_pos`/`shapeCount_pos` per F3-G3); β entries functions of (leg, δ) with `entryList` unioning over EVERY δ ∈ depthSet |
 | R2-4 | crit | literal R_σ(p) never asserted DEFINED | FIXED per ruling (D): `RegP S D` gains `∀ σ, DefinedAt (S.R σ) p`; accessor `RegP.R_defined` (U8); U4/U10 consume `evalℝ` only under it |
 | R2-5 | gap | ksubM1C1/ctsmSyntax/vpSound bare Prop slots | FIXED per ruling (E): slots DELETED; `MenuData` (menus as Finsets of (m, c, sameSize, target)) with `KsubM1C1 M` and `MenuWF M` as real Props (cl11/cl13); `cl10_vpsound : VPSound X` typed over the concrete box |
 | R2-6 | gap | O3 Teichmüller pin absent | FIXED: `BaseSection` enum + `ClassifierSpec.baseSection` field + ledger field `o3_teichmuller : X.baseSection = .teichmuller` |
 | R2-7 | gap | Defs circularity (Fintype before U0b); missing `DecidableEq (Tree σ)` | FIXED per ruling (E)/D11: three-file order Defs ← U0b ← DefsLedger (the `∑ σ` fields live in DefsLedger); `instTreeDeq` field added to `FiberSeries` |
+
+**Rev-3 Fable audit (REJECT 2c/4g, spine verified → REV 4, surgical):**
+
+| # | class | finding (short) | repair in REV 4 |
+|---|---|---|---|
+| F3-C1 | crit | `KsubM1C1` bound same-size HALTS (c = 0, the b_e^{term,fin} leaves) — stronger than the note's continuation-only clause; faithful catalogue would falsify it | FIXED: `o.sameSize = true → o.c ≠ 0 → o.m = 1 ∧ o.c = 1` — same-size continuations only, halts exempt |
+| F3-C2 | crit | `cl13 : MenuWF M` strictly weaker than CL-13 (cell predicates absent, target-totality mislabeled as global compatibility, p-independence inexpressible with per-prime M); full-statement slot deleted = dropped open tag | FIXED: `ctsmSyntax : Prop` slot REINSTATED (full CTS-M(i) content in its docstring); `cl13 : K.ctsmSyntax ∧ MenuWF M`; `MenuWF`'s docstring relabeled (per-entry target totality, honestly); `M` moved to the p-uniform layer so "the ONE fixed p-independent state set" is expressible |
+| F3-G1 | gap | all-empty menus satisfy both typed faces vacuously | FIXED: `menuCount` catalogue data + `menu_card` equations + `menu_not_all_empty` (single-state empty menu = halt convention, still allowed) |
+| F3-G2 | gap | §7 misstatements: "all `_pos`" (no `legCount_pos` exists), "degenerate-proof" shorthand | FIXED: R2-1/R2-3 rows corrected in place; G1 flag reworded (non-vacuous ≠ degenerate-proof) |
+| F3-G3 | gap | `cellCount_pos`/`shapeCount_pos` note-unsupported — (K-TRI) minimal blocks may have zero branching cells/shapes; truthful-instantiability risk | FIXED: both DROPPED; equation pins stay; owner-table confirmation owed before E-phase recorded at G8; `instBiNe`/`blockDim_pos` kept (audited safe) |
+| F3-G4 | gap | `KernelStatements` per-prime though referents are p-uniform | FIXED: `K` (with `M`) moved out of `UInstance` to `theoremU` parameters before ∀ p — one pack, audited once |
 
