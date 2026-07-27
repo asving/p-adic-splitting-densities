@@ -10,7 +10,31 @@ import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.DefsL
 
 /-!
-# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 4]
+# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 5]
+
+**ROUND 5 (2026-07-27).** ONE targeted change, closing the single blocking structure of the
+round-4 audit `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R4_2026-07-27.md` (REJECT — finding 10 /
+blocking list 1–4: the fresh laws determined only a partition of the band and its total
+cardinality, not the geometric clause SPECIES; an all-singleton-zero construction impersonated
+the value clauses, changing Theorem C(a)'s locus). The 23 frozen units are BYTE-STABLE; every
+other round-4 field is unchanged. The change:
+* **exact geometric fresh-clause identification** — `Node.fineSlot`/`Node.spanSlot`/
+  `Node.slotVal` name the read's OWN development geometry (C.1.0(a): frame-`i` blocks of width
+  `Dwidth = deg Φ_i`; the side span `[s₀, s₀+wSide]`; the exact valuation
+  `new(j) = line.at(j·Dwidth)`). `IsValueCoord` (the VALUE positions: span slot ∧ height = that
+  slot's exact valuation — rev 14 C.1(ii)'s on-lattice value-digit locus: (α) digits + the
+  non-adjacent endpoint; β/γ slots carry STRICT bounds, never a value) and `IsValueSupport`
+  (support = the COMPLETE level set of ONE recorded span slot at its recorded exact valuation,
+  membership as an IFF over the whole box — never `⊆`) retype `fresh_assembled`: the STRIP
+  branch (singleton zero, codim 1) now additionally requires its coordinate NOT a value
+  position; the VALUE branch requires `IsValueSupport` (subsuming round 4's bare
+  constant-height law); the per-type codim laws are unchanged (strip: `codim = 1`; value:
+  `codim = support.card`). The audit's all-singleton-zero construction is UNBUILDABLE — walk in
+  `fresh_assembled`'s docstring and blueprint § ROUND 5. The only remaining freedom in a value
+  clause is the emitted value `v` inside its alphabet — the declared graded-provenance boundary
+  (blueprint R4.B.2), not geometry.
+
+[ROUND 4 header, kept for the audit trail:]
 
 **ROUND 4 (2026-07-27).** Retype of the global layer against §C REV 14 EXACTLY, after the
 round-3 audit `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R3_2026-07-27.md` (REJECT — the rev-14
@@ -454,6 +478,24 @@ value; NO factor-interior cutoff — cf. `staircase`). ROUND 3: the UPPER EDGE o
 geometry performs C.1(i)(γ)'s cut. -/
 def Node.lineStep (ν : Node p F) (b : ℕ) : ℚ := ν.line.at ((b / ν.childWidth) * ν.childWidth)
 
+/-- ROUND 5 (audit R4 blocking list): the **FINE SLOT** of base index `b` — the read's OWN
+frame-`i` development slot, blocks of width `Dwidth = deg Φ_i` (C.1.0(a): slot `j`'s
+coefficient `B_j` occupies base indices `[j·Dwidth, (j+1)·Dwidth)`). The read's per-slot
+clauses ((α)/(β)/(γ), the value digits) live at THIS granularity; `lineStep`'s coarser
+`childWidth` blocks are the post-landing (ZC-a) staircase convention. -/
+def Node.fineSlot (ν : Node p F) (b : ℕ) : ℕ := b / ν.Dwidth
+
+/-- ROUND 5: `j` is a **SPAN SLOT** of the read — `j ∈ [s₀, s₀+wSide]`, the side's own slots
+(C.1.0(b)(i)(α)). Exact-valuation VALUE digits live only at span slots (the (α) on-lattice
+digits and the non-adjacent endpoint); β (`j < s₀`) and γ (`j > s₀+wSide`) slots assert
+STRICT bounds — pure strip content, zeros through the line level included. -/
+def Node.spanSlot (ν : Node p F) (j : ℕ) : Prop := ν.s0 ≤ j ∧ j ≤ ν.s0 + ν.wSide
+
+/-- ROUND 5: the read line's **EXACT VALUATION at fine slot `j`** — `new(j) = line.at(j·Dwidth)`,
+the height of slot `j`'s value digit (C.1.5′(1): "fresh VALUE clauses pin the first residual
+digit of a slot coefficient B at its exact valuation γ′ = new(slot)"). -/
+def Node.slotVal (ν : Node p F) (j : ℕ) : ℚ := ν.line.at (j * ν.Dwidth)
+
 /-- **The node's standard lift** — D.5 displayed AT THE NODE's READ INDEX (ROUND 3, audit R2
 F10): `Φ̂ = Φ^{e·g} + Σ_{ψ_k ≠ 0} t_k·Φ^{e·k}` over the frame's key/valuation/residual map,
 with stride `ν.e`, realizer weights `σ.w(t_k) = h·(g−k)` (the READ's `h`, on the frame's
@@ -673,6 +715,33 @@ def inFreshBand (H : History p F) (n : ℕ) {m : ℕ} (coordOf : Fin m → Coord
   H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ) ∧
   H.htH i (coordOf c) ≤ ν.lineStep (coordOf c).2
 
+/-- **The VALUE POSITIONS of read `i`** (ROUND 5, audit R4 finding 10 / blocking item 2 — the
+strip/value species label, now a FUNCTION of node geometry, per coordinate): `c` is a VALUE
+position iff its FINE slot (the read's own development slot, width `Dwidth` — C.1.0(a)) is a
+SPAN slot AND its height is that slot's EXACT VALUATION `new(j)`. This is rev 14 C.1(ii)'s
+on-lattice value-digit locus: the (α) span digits and the non-adjacent endpoint's value digit
+(the adjacent hinge block sits at/beyond `prevRim`, outside the band — the (HV) no-pin
+clause). Everything else in the band is STRIP content: (α)-strips strictly between floor and
+exact valuation, (β)/(γ)-strips through the line at off-span slots (their clauses are strict
+bounds, so the line-level coordinate is a ZERO there, not a value), cluster zeros at the
+root. Off-lattice span heights select the empty level set — no coordinate sits there. -/
+def IsValueCoord (H : History p F) {m : ℕ} (coordOf : Fin m → Coord)
+    (i : ℕ) (ν : Node p F) (c : Fin m) : Prop :=
+  ν.spanSlot (ν.fineSlot (coordOf c).2) ∧
+    H.htH i (coordOf c) = ν.slotVal (ν.fineSlot (coordOf c).2)
+
+/-- **The VALUE-SUPPORT law** (ROUND 5, audit R4 blocking item 3): a value clause's support is
+the COMPLETE height-level set of ONE recorded span slot at its recorded exact valuation —
+membership as an IFF over the whole box, never a `⊆`:
+`c ∈ S ⟺ (c lies in fine block j) ∧ (ht(c) = new(j))`, `j` a span slot. Cross-block subsets,
+partial level sets, level sets of off-span slots, and arbitrary constant-height supports (the
+round-4 permutations, audit finding 10) are all illegal. Membership in a legal value support
+is exactly `IsValueCoord` at the recorded slot. -/
+def IsValueSupport (H : History p F) {m : ℕ} (coordOf : Fin m → Coord)
+    (i : ℕ) (ν : Node p F) (S : Finset (Fin m)) : Prop :=
+  ∃ j : ℕ, ν.spanSlot j ∧
+    ∀ c : Fin m, c ∈ S ↔ (ν.fineSlot (coordOf c).2 = j ∧ H.htH i (coordOf c) = ν.slotVal j)
+
 /-- **The jet presentation of a history** — the BOUNDARY-DEFERRED bridge from the accepted
 tower to digit systems (§C.2's `Ψ_H`; D.3(e)(ii) down the whole tower, at a level cutoff
 `N ≥ N(H, Z)` — largeness of `N` is an existence condition on the presentation). Indexing:
@@ -787,17 +856,31 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
   the permutation loophole (equal totals on permuted supports) is unbuildable. -/
   fresh_cover : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ c : Fin m,
     inFreshBand H n coordOf i (H.nodes[i]'hi) c → ∃ cl ∈ (fresh i).clauses, c ∈ cl.support
-  /-- **fresh clauses are ASSEMBLED from the two §C shapes** (ROUND 3, blocker 60; ROUND 4,
-  finding 17): each is a literal STRIP ZERO (singleton support, codim 1), or a TYP VALUE
-  clause — a `TypObject` surjection onto the elementary abelian alphabet `(ZMod p)^codim`,
-  supported on ONE `htH`-level set (LST/TYP support typing), with the PER-CLAUSE codimension
-  identification `codim = support.card` (TYP(b)'s `|alphabet| = |piece|` / D.3(e)(ii)'s
-  attainable accounting, now placed per clause — the flagged graded identification (b), no
-  longer only in-total). So `mstar = Σ codim = Σ |support| = |band|` decomposes
-  coordinate-by-coordinate. -/
-  fresh_assembled : ∀ i : ℕ, i < H.nodes.length → ∀ cl ∈ (fresh i).clauses,
-    (∃ c : Fin m, cl.support = {c} ∧ cl.codim = 1 ∧ ∀ x, (cl.sat x ↔ x c = 0)) ∨
-    ((∃ γ' : ℚ, ∀ c ∈ cl.support, H.htH i (coordOf c) = γ') ∧
+  /-- **fresh clauses are ASSEMBLED from the two §C shapes, GEOMETRICALLY TAGGED** (ROUND 3,
+  blocker 60; ROUND 4, finding 17; ROUND 5, audit R4 finding 10 / blocking list — the one
+  remaining loophole). Each clause is
+  * a **STRIP** — singleton support `{c}`, `codim = 1`, the literal zero `x c = 0`, at a
+    coordinate that is NOT a value position (`¬ IsValueCoord` — the ROUND-5 tag): β/γ strips
+    through the line, (α)-strips strictly between floor and exact valuation, cluster zeros; or
+  * a **VALUE clause** — support THE COMPLETE level set of ONE recorded span slot at its exact
+    valuation (`IsValueSupport`, an IFF — subsumes round 4's bare constant-height law),
+    `codim = support.card` (TYP(b)'s `|alphabet| = |piece|` / D.3(e)(ii)'s attainable
+    accounting, per clause), constraint a `TypObject` surjection onto `(ZMod p)^codim` at an
+    emitted value `v` (whose provenance from the node's pattern digit is the declared graded
+    boundary — blueprint R4.B.2, not geometry).
+  THE IMPERSONATION WALK (audit R4 blocking item 4, the all-singleton-zero construction: cover
+  every band coordinate by its own `x c = 0` strip): at any VALUE position `c₀` (a span slot's
+  exact-valuation level set), the strip branch now FAILS — `IsValueCoord c₀` holds and the tag
+  forbids it; a "value" clause with support `{c₀} ⊊ L` FAILS the `IsValueSupport` iff whenever
+  the level set `L` has a second coordinate (block convention: every residue degree ≥ 2); and
+  `fresh_cover` + `FreshData.disj` put `c₀` in EXACTLY one clause — which must therefore be THE
+  complete-level-set value clause of its slot. Where `L` is a genuine singleton the forced
+  clause IS the species-correct value clause (only `v` stays existential — R4.B.2). So clause
+  species and support geometry are functions of node data; the construction is unbuildable. -/
+  fresh_assembled : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ cl ∈ (fresh i).clauses,
+    (∃ c : Fin m, cl.support = {c} ∧ cl.codim = 1 ∧ (∀ x, (cl.sat x ↔ x c = 0)) ∧
+      ¬ IsValueCoord H coordOf i (H.nodes[i]'hi) c) ∨
+    (IsValueSupport H coordOf i (H.nodes[i]'hi) cl.support ∧
       cl.codim = cl.support.card ∧
       ∃ (T : TypObject p m cl.support (Fin cl.codim → ZMod p)) (v : Fin cl.codim → ZMod p),
         ∀ x, (cl.sat x ↔ T.φ x = v))

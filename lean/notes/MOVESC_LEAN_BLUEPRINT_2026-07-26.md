@@ -694,3 +694,86 @@ exit 0. Unit census unchanged: 36 = 23 FROZEN + 13 RETYPE/NEW (12 statements unc
 C3.lineDom gains `hreal : Realizable H`). Fan-out gate: RETYPE/NEW units wait on the round-4
 semantic audit (re-adjudicate: TransitionAdmissible vs rev 12/13's displays; hAnchor vs
 D.3(c); hbezCanon vs D.5 P2; the fresh_band/fresh_cover/codim-per-clause triple vs D.11).
+
+# ROUND 5 (2026-07-27) — exact geometric fresh-clause identification (the one round-4 loophole)
+
+Audit: `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R4_2026-07-27.md` (REJECT). Nine of ten retypes
+certified sound; ONE blocking structure (finding 10, blocking list 1–4): `fresh_band +
+fresh_cover + disj + mstar_eq` fixed only a PARTITION of the band and its total cardinality —
+they did not label STRIP vs VALUE clauses from node geometry, did not require a value support
+to be the COMPLETE level set of one slot, and admitted an all-singleton-zero construction that
+impersonated the value clauses (same masses, DIFFERENT locus in Theorem C(a)).
+
+## R5.A — the disposition (one change, three new names, one retyped field)
+
+The species label is now a FUNCTION of node geometry, per coordinate, at the read's OWN
+development granularity (C.1.0(a): frame-`i` blocks of width `Dwidth = deg Φ_i` — the
+granularity at which C.1.5′'s "one level set per slot" is stated; `lineStep`'s coarser
+`childWidth` blocks remain the post-landing (ZC-a) staircase convention, unchanged):
+
+* `Node.fineSlot b := b / Dwidth`; `Node.spanSlot j := s₀ ≤ j ≤ s₀+wSide`;
+  `Node.slotVal j := line.at (j·Dwidth)` — the slot's exact valuation `new(j)`.
+* THE TWO SUPPORT LAWS, as written:
+  - STRIP (in `fresh_assembled`'s first branch): `support = {c}`, `codim = 1`,
+    `sat x ↔ x c = 0`, AND `¬ IsValueCoord … c` — where
+    `IsValueCoord … c := ν.spanSlot (ν.fineSlot (coordOf c).2) ∧
+     H.htH i (coordOf c) = ν.slotVal (ν.fineSlot (coordOf c).2)`.
+    A strip's support is its recorded band coordinate, and that coordinate must be OFF the
+    value locus: β/γ strips through the line (their clauses are STRICT bounds — the
+    line-level coordinate there is a zero, not a value), (α)-strips strictly between floor
+    and exact valuation, cluster zeros.
+  - VALUE (second branch): `IsValueSupport … cl.support ∧ codim = support.card ∧ ∃ T v, …` —
+    where `IsValueSupport … S := ∃ j, ν.spanSlot j ∧ ∀ c, c ∈ S ↔
+    (ν.fineSlot (coordOf c).2 = j ∧ H.htH i (coordOf c) = ν.slotVal j)`.
+    COMPLETENESS AS AN IFF over the whole box, never `⊆`: the support IS the complete
+    height-level set of ONE recorded span slot at its recorded exact valuation. Cross-block
+    subsets, partial level sets, off-span level sets, and round 4's bare constant-height
+    supports are all illegal.
+* Per-type codim laws (retyped per type, values unchanged): strip `codim = 1`; value
+  `codim = support.card` (TYP(b)'s `|alphabet| = |piece|`, per clause).
+* No root special case: the root's rim value content enters as fine span-slot pattern digits
+  (the side spans past the child rim by width confinement `μ·e·g·D ≤ wSide·D`); the coarse
+  (VERTEX)/(TRANSPORT) rim level sets are the POST-landing re-presentation Λ(ν₀) carried by
+  `zc`/(ZC-b), not fresh-clause shapes — fresh clauses are frame-`i` stratum content
+  (`inh_implied` applies them at `Sigma i`, before `Theta i`).
+
+## R5.B — the impersonation walk (audit blocking item 4)
+
+The construction: one singleton strip clause `sat x ↔ x c = 0`, `codim = 1`, per band
+coordinate `c`. Round 4: satisfied every fresh law. Round 5:
+1. Take any VALUE position `c₀` (span slot `j`, `ht(c₀) = new(j)` — nonempty whenever the
+   recorded side carries an on-lattice digit in the box). The STRIP branch FAILS at `c₀`:
+   `IsValueCoord` holds and the new tag `¬ IsValueCoord` forbids it.
+2. Retagging `{c₀}` as a VALUE clause FAILS the `IsValueSupport` iff whenever the level set
+   `L_{new(j)}` has a second coordinate (block convention: every residue degree ≥ 2 — the
+   audit's cross-block/regrouping permutation dies the same way, since the iff pins BOTH
+   directions and one recorded slot).
+3. `fresh_cover` demands `c₀` lie in some clause and `FreshData.disj` in EXACTLY one; by 1+2
+   that clause is THE complete-level-set value clause of slot `j`. Its `codim = |L|` and the
+   `TypObject` functional replace the |L| independent zeros: the impersonated locus is gone.
+4. Degenerate case `|L| = 1`: the forced clause is the species-correct singleton VALUE clause;
+   the only remaining freedom is the emitted value `v` inside its alphabet — the DECLARED
+   graded-provenance boundary (R4.B.2: tying `v`/`T.φ` to the node's pattern digit needs the
+   piece map), not support geometry.
+Scratch-proved coherence (both `example`s elaborate green): members of a legal value support
+are `IsValueCoord`, hence no strip clause can sit on a value-support coordinate — the species
+partition is well-defined and mutually exclusive.
+
+VERDICT: the all-singleton-zero construction is UNBUILDABLE under the round-5 laws; blocking
+items 1–4 are each closed at the sentence level (1: species labels; 2: geometric tagging;
+3: completeness-as-iff of one slot's level set; 4: the walk above).
+
+## R5.C — elaboration record (round 5)
+
+`MovesC/Defs.lean`: 938 lines, `lake env lean` exit 0, no output, no `sorry`/`axiom`; olean
+rebuilt (`lake build LeanUrat.MovesC.Defs` green). Frozen spot-check: C2.DOM,
+C4.conditionalMass, C1.stripClause — `lake env lean` exit 0 each. The 13 RETYPE/NEW statements
+re-elaborated in one scratch file against the round-5 Defs: exactly 13 sorry-warnings, zero
+errors, exit 0; all 13 statements byte-unchanged from round 4. Unit census unchanged:
+36 = 23 FROZEN + 13 RETYPE/NEW. Honest residue carried forward: R4.B.2 now has a SHARPER
+boundary — the geometry of every fresh clause is internal; what remains graded-deferred is the
+piece-map/alphabet identification behind `TypObject` and the provenance of the emitted `v`
+(plus the unchanged R4.B existence items). Fan-out gate: RETYPE/NEW units wait on the round-5
+semantic audit (re-adjudicate: IsValueCoord/IsValueSupport vs rev 14 C.1(ii)/C.1.5′ — span-only
+value slots, the fine `Dwidth` granularity, the no-root-special-case reading of E(ν₀)'s rim
+content as fine span digits).
