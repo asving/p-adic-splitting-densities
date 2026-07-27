@@ -1,11 +1,13 @@
 # MOVES §X-EXHAUST — Lean formalization blueprint (MovesX corpus)
-# REV 3 (post-re-audit: 13 findings repaired under two orchestrator rulings)
+# REV 4 (post-Fable-audit: the 4 rev-3 residue findings repaired; surgical)
 
-*Rev 3, 2026-07-28. Repairs ALL 13 findings of `lean/notes/MOVESX_AUDIT_CODEX_REV2_2026-07-28.md`
-(REJECT 11 crit / 2 gap; the two arithmetic units CONFIRMED by independent recheck — closed).
-Cumulative findings→repairs table (rev-2's 25 + rev-3's 13) in §6. Ground truth unchanged:
-DUAL-ACCEPTED §X-EXHAUST rev 8 (`MOVES_2026-07-24.md` ~10947–11555). Protocol-L. Next
-audit: fresh Fable; Codex final confirmation only.*
+*Rev 4, 2026-07-28. Repairs the 4 residue findings of the fresh-Fable audit
+`lean/notes/MOVESX_AUDIT_FABLE_2026-07-28.md` (REJECT 2 crit / 2 gap; all 13 rev-3 repairs
+verified GENUINE, all arithmetic and derivation chains independently re-derived clean).
+ONLY the four flagged objects changed: X2BridgeP's witness, vdisc's signature, the
+ℤ_[p]→ℚ_[p] hom name, fTail/Event's Fin arity. Cumulative findings→repairs table in §6.
+Ground truth unchanged: DUAL-ACCEPTED §X-EXHAUST rev 8 (`MOVES_2026-07-24.md`
+~10947–11555). Protocol-L. Next: parallel dual confirmation (Codex final + fresh Fable).*
 
 **ORCHESTRATOR RULINGS APPLIED (verbatim scope):**
 - **RULING 1 (findings 6/4/5/2, structural):** kernels are PROPS OVER THE CONCRETE
@@ -61,7 +63,8 @@ Finset, (P1) pin, EQUALITY tie. **D4 (unchanged)** `AlignState`/`dCert`/`DescX`.
 
 **D5 (upgraded — the carrier is now CONCRETE).** `MonicBox n p :=
 {f : Polynomial ℤ_[p] // f.Monic ∧ f.natDegree = n}`; `discZero := {f | f.1.discr = 0}`;
-`vdisc f := (f.1.discr).valuation.toNat` (junk 0 on discZero; every statement using it
+`vdisc f := (f.1.discr).valuation` (pinned `PadicInt.valuation : ℤ_[p] → ℕ`, already
+ℕ-valued — Fable finding 2; junk 0 on discZero via `valuation_zero`; every statement using it
 carries `f ∉ discZero`). Tail (3b) at finite level over `ZMod (p^D)` via
 `PadicInt.toZModPow`; INTEGER exponent `tailExp : ℤ` (spot checks re-confirmed by the
 auditor: 4 and 1/4 at (2,2,0)/(2,2,4); 2/3, 2/9, 2/27 at (3,3,5/7/9)).
@@ -162,7 +165,8 @@ def MonicBox (n p : ℕ) [Fact p.Prime] : Type :=
   { f : Polynomial ℤ_[p] // f.Monic ∧ f.natDegree = n }
 def discZero (n p : ℕ) [Fact p.Prime] : Set (MonicBox n p) := { f | f.1.discr = 0 }
 noncomputable def vdisc {n p : ℕ} [Fact p.Prime] (f : MonicBox n p) : ℕ :=
-  (f.1.discr).valuation.toNat        -- junk value 0 on discZero; guarded at every use
+  (f.1.discr).valuation      -- ℕ-valued in pinned mathlib (PadicIntegers.lean:321);
+                             -- junk value 0 on discZero (valuation_zero); guarded at every use
 
 def polyOfCoeffs (R : Type) [CommRing R] (n : ℕ) (a : Fin n → R) : Polynomial R :=
   Polynomial.X ^ n + ∑ i : Fin n, Polynomial.C (a i) * Polynomial.X ^ (i : ℕ)
@@ -170,12 +174,20 @@ def tailCount (p n D : ℕ) : ℕ :=
   Nat.card { a : Fin n → ZMod (p ^ D) // (polyOfCoeffs _ n a).discr = 0 }
 def tailExp (p n D : ℕ) : ℤ := ⌈((D : ℤ) - n * padicValNat p n : ℚ) / (n - 1 : ℚ)⌉
 
-/-- The a₀-free monic family tail and the level-D disc event (finding 13 — now Defs). -/
-def fTail (n p : ℕ) [Fact p.Prime] (aTail : Fin (n - 1) → ℤ_[p]) : Polynomial ℚ_[p] :=
-  ((polyOfCoeffs ℤ_[p] n (Fin.cons 0 (aTail ∘ Fin.cast (by omega)))).map
-    PadicInt.coe).derivative     -- derivative kills a₀: any slot-0 value gives the same fTail
-def Event (p n D : ℕ) [Fact p.Prime] (aTail : Fin (n - 1) → ℤ_[p]) (a0 : ℤ_[p]) : Prop :=
-  (p : ℤ_[p]) ^ D ∣ (polyOfCoeffs ℤ_[p] n (Fin.cons a0 (aTail ∘ Fin.cast (by omega)))).discr
+/-- The a₀-free monic family tail and the level-D disc event (rev 4, Fable findings 3/4:
+    hom name = pinned `PadicInt.Coe.ringHom` (PadicIntegers.lean:130); the Fin (n−1+1)/Fin n
+    unification via an explicit OUTER `Fin.cast` on the index, legal from `hn : 1 ≤ n` —
+    threaded from every consumer's `h2 : 2 ≤ n`. Derivative kills a₀: any slot-0 value
+    gives the same fTail. -/
+def fTail (n p : ℕ) [Fact p.Prime] (hn : 1 ≤ n) (aTail : Fin (n - 1) → ℤ_[p]) :
+    Polynomial ℚ_[p] :=
+  ((polyOfCoeffs ℤ_[p] n
+      ((Fin.cons 0 aTail) ∘ Fin.cast (by omega : n = n - 1 + 1))).map
+    PadicInt.Coe.ringHom).derivative
+def Event (p n D : ℕ) [Fact p.Prime] (hn : 1 ≤ n) (aTail : Fin (n - 1) → ℤ_[p])
+    (a0 : ℤ_[p]) : Prop :=
+  (p : ℤ_[p]) ^ D ∣ (polyOfCoeffs ℤ_[p] n
+      ((Fin.cons a0 aTail) ∘ Fin.cast (by omega : n = n - 1 + 1))).discr
 
 structure ValExt (p : ℕ) [Fact p.Prime] (g : Polynomial ℚ_[p]) where
   L : Type ; [field : Field L] ; [alg : Algebra ℚ_[p] L]
@@ -309,9 +321,14 @@ def X2TailsP (n : ℕ) (X : XFamily n) (K : XConsts n) : Prop :=          -- (X2
 def X2BridgeP (n : ℕ) (X : XFamily n) : Prop :=                          -- (X2-BRIDGE), both clauses
   ∀ (p : ℕ) [Fact p.Prime] (N : ℕ),
     ((X.ctx p).Undec N ⊆ discZero n p ∪ (⋃ i, (X.ctx p).nsFiber i) ∪ InfTree (X.ctx p) ∪
-      { f | ∃ b : (X.ctx p).Branch f, NsFreeB b ∧ N < (X.ctx p).threshold b + capHB b }) ∧
+      { f | ∃ b : (X.ctx p).Branch f,
+          IsLeafB b ∧ NsFreeB b ∧ N < (X.ctx p).threshold b + capHB b }) ∧
     (X.ctx p).frac { f | f ∈ (X.ctx p).Undec N ∧
-      ¬ ∃ b : (X.ctx p).Branch f, NsFreeB b ∧ N < (X.ctx p).threshold b + capHB b } = 0
+      ¬ ∃ b : (X.ctx p).Branch f,
+          IsLeafB b ∧ NsFreeB b ∧ N < (X.ctx p).threshold b + capHB b } = 0
+  -- rev 4 (Fable finding 1): the note's "(τ-ns)-FREE FINITE BRANCH" witness — leaf-
+  -- terminated (IsLeafB) in BOTH clauses. The witness then satisfies FourthPieceB via
+  -- its FIRST disjunct (IsLeafB b) ∧ NsFreeB b, which is what X2ProgressP/XD.4 consume.
 
 def NsNullP (n : ℕ) (X : XFamily n) : Prop :=                            -- (ns-null) TAG
   ∀ (p : ℕ) [Fact p.Prime] (i : (X.ctx p).nsIdx), (X.ctx p).frac ((X.ctx p).nsFiber i) = 0
@@ -437,7 +454,7 @@ theorem envelopeExp (n : ℕ) (hn : 2 ≤ n) (X : XFamily n) (K : XConsts n)
     ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧ ∀ (p : ℕ) [Fact p.Prime] (N : ℕ),
       ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3 * (p : ℝ) ^ (-(c4 * N))
 ```
-moves_ref: "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF) … Given (X.2) with linear d*, h* AND both legs …: env(N) ≤ c₃(n)·p^{−c₄(n)·N}, with c₃, c₄ traced to s(n), c₀, C_T, c_T, c_cap". deps: XC.3, XE.1*, XF.7, XG.2b–d (for the bridge's first-three-pieces mass, via X.3's tags). sketch: BR splits Undec(N) into the three null-tagged pieces (discZero via XF.7/vdisc_le_tail; ns via NS; InfTree via XG.2d ⊆ discZero) + the witness-branch piece; on it PR gives deep-or-tall at d* = cd·N − cd', h* = ch·N − ch'; DEEP LEG: DeepEvent d* ⊆ {vdisc ≥ (2(d*−log)/(2s+1))} pointwise (XC.3 + gmnLink) → vdisc_le_tail + XF.7 give the (3b) bound with the note's displayed exponent; TALL LEG: TL. Constants assembled n-only (c₄ from cd, s, n − 1; the p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} absorption into c₃ — p-free). HARD. hyp_fields: the FULL tag set, verbatim the note's "CONSUMERS … inherit ALL tags above" line.
+moves_ref: "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF) … Given (X.2) with linear d*, h* AND both legs …: env(N) ≤ c₃(n)·p^{−c₄(n)·N}, with c₃, c₄ traced to s(n), c₀, C_T, c_T, c_cap". deps: XC.3, XE.1*, XF.7, XG.2b–d (for the bridge's first-three-pieces mass, via X.3's tags). sketch: BR splits Undec(N) into the three null-tagged pieces (discZero via XF.7/vdisc_le_tail; ns via NS; InfTree via XG.2d ⊆ discZero) + the witness-branch piece. WITNESS FEED (rev 4, traced): BR's witness b carries `IsLeafB b ∧ NsFreeB b`, hence `FourthPieceB b` by the FIRST disjunct of FourthPieceB — exactly PR's (and XD.4's, in XE.3) hypothesis; PR on b gives deep-or-tall at d* = cd·N − cd', h* = ch·N − ch'; DEEP LEG: DeepEvent d* ⊆ {vdisc ≥ (2(d*−log)/(2s+1))} pointwise (XC.3 + gmnLink) → vdisc_le_tail + XF.7 give the (3b) bound with the note's displayed exponent; TALL LEG: TL. Constants assembled n-only (c₄ from cd, s, n − 1; the p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} absorption into c₃ — p-free). HARD. hyp_fields: the FULL tag set, verbatim the note's "CONSUMERS … inherit ALL tags above" line.
 **XE.3 envelopeSqrt** — the √N fallback, same signature MINUS `PR` (X2ProgressP), conclusion `… ≤ c3' * (p : ℝ) ^ (-(c4' * Real.sqrt N))`.
 moves_ref: "Given (X2-HYP) + (X2-AFF) + (X2-CAP) + (X2-BRIDGE) PLUS the same two leg tags …: env(N) ≤ c₃′(n)·p^{−c₄′(n)·√N} — subexponential, enough for X.3's qualitative form, NOT for SQUEEZE's constants". deps: XD.4 in place of PR; otherwise as XE.2. HARD. hyp_fields: (X2-HYP)'s inputs + both leg tags — the rev-4 leg-tag line reproduced.
 
@@ -452,18 +469,18 @@ moves_ref: the (3b) event is level-D cylinder data. deps: Defs. sketch: `polyOfC
 moves_ref: "Res(f, f′)" ↔ disc for monic f. deps: Defs. sketch: Mathlib `resultant_deriv`, lc = 1, ‖±x‖. MEDIUM band.
 **XF.3 valExtOf** — `noncomputable def valExtOf (p : ℕ) [Fact p.Prime] (g : Polynomial ℚ_[p]) (hg : g ≠ 0) : ValExt p g`.
 moves_ref: none (proof apparatus; §4 flag: never strengthens (3b) — and per Ruling 2 it appears in NO public statement). deps: Defs. sketch: `g.SplittingField` finite over complete ℚ_[p]; `spectralNorm` multiplicative there (Mathlib `SpectralNorm.lean` + Krasner layer); package as `AbsoluteValue`. HARD; STUCK ⟹ report (Ruling 2), no rider.
-**XF.4 resRootSum** — `theorem resRootSum (p n : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) (f : Polynomial ℤ_[p]) (hm : f.Monic) (hd : f.natDegree = n) (V : ValExt p ((f.map PadicInt.coe).derivative)) : ‖f.resultant f.derivative‖ = ‖(n : ℚ_[p])‖ ^ n * ((((f.map PadicInt.coe).derivative.map (algebraMap ℚ_[p] V.L)).roots).map (fun θ => V.w (Polynomial.aeval θ (f.map PadicInt.coe)))).prod`.
+**XF.4 resRootSum** — `theorem resRootSum (p n : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) (f : Polynomial ℤ_[p]) (hm : f.Monic) (hd : f.natDegree = n) (V : ValExt p ((f.map PadicInt.Coe.ringHom).derivative)) : ‖f.resultant f.derivative‖ = ‖(n : ℚ_[p])‖ ^ n * ((((f.map PadicInt.Coe.ringHom).derivative.map (algebraMap ℚ_[p] V.L)).roots).map (fun θ => V.w (Polynomial.aeval θ (f.map PadicInt.Coe.ringHom)))).prod`.
 moves_ref: "Res(f, f′) over the n−1 roots of f′" + the n·v_p(n) offset. deps: XF.3-independent (V explicit — INTERNAL unit). sketch: resultant map-commutation helper; root-product over V.L (`resultant_eq_prod_roots_sub` + eval-product lemmas); lc(f′) = n. HARD.
 **XF.5 pigeonMax** — `theorem pigeonMax (m : Multiset ℚ) (hm : m ≠ 0) (K : ℚ) (h : K ≤ m.sum) : ∃ v ∈ m, K ≤ (m.card : ℚ) * v`.
 moves_ref: "some θᵢ has v_p(f(θᵢ)) ≥ (D − n·v_p(n))/(n−1)". deps: none. EASY. FLAG: no sign hypothesis (terms may be negative).
-**XF.6 ballCover** — `theorem ballCover (p n D : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) (aTail : Fin (n - 1) → ℤ_[p]) (V : ValExt p (fTail n p aTail)) : ∃ idx : ℤ_[p] → Fin (n - 1), ∀ a0 b0, Event p n D aTail a0 → Event p n D aTail b0 → idx a0 = idx b0 → (p : ℤ_[p]) ^ (tailExp p n D).toNat ∣ (a0 - b0)` (pairwise-congruence form; `Event`/`fTail` = Defs).
+**XF.6 ballCover** — `theorem ballCover (p n D : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) (aTail : Fin (n - 1) → ℤ_[p]) (V : ValExt p (fTail n p (by omega) aTail)) : ∃ idx : ℤ_[p] → Fin (n - 1), ∀ a0 b0, Event p n D (by omega) aTail a0 → Event p n D (by omega) aTail b0 → idx a0 = idx b0 → (p : ℤ_[p]) ^ (tailExp p n D).toNat ∣ (a0 - b0)` (pairwise-congruence form; `Event`/`fTail` = Defs).
 moves_ref: "the a₀-translation, union bound + Fubini". deps: XF.2, XF.4, XF.5 (INTERNAL unit, V explicit). sketch: f′ a₀-free; event point → root θᵢ with V.w(a₀ + c(θᵢ)) ≤ p^{−tailExp}; same-index points ultrametrically congruent; `.toNat` trivializes tailExp ≤ 0. MEDIUM-HARD.
 **XF.7 tailCountBound** — (3b-LEAN), UNCONDITIONAL (Ruling 2 — no V argument):
 ```lean
 theorem tailCountBound (p n D : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) :
     (tailCount p n D : ℚ) * (p : ℚ) ^ (tailExp p n D) ≤ (n - 1 : ℚ) * (p : ℚ) ^ ((n * D : ℕ) : ℤ)
 ```
-moves_ref: "(3b) μ{f monic deg n : v_p(disc f) ≥ D} ≤ (n−1)·p^{−⌈(D − n·v_p(n))/(n−1)⌉}" (auditor-confirmed arithmetic: 4 and 1/4 at (2,2,0)/(2,2,4); 2/3, 2/9, 2/27 at (3,3,5/7/9)). deps: XF.1, XF.6, XF.3. sketch: fiber over aTail ∈ (ZMod p^D)^{n−1} (XF.1); INSIDE the proof, `valExtOf (fTail n p aTail) (fTail ≠ 0: lead coeff n ≠ 0 in char 0)` discharges XF.6's V; ≤ (n−1)·p^{D−tailExp.toNat} residues per fiber; trivial-face check at tailExp ≤ 0. MEDIUM-HARD (carries XF.3's stuck-risk — by ruling, a STUCK report, not a rider).
+moves_ref: "(3b) μ{f monic deg n : v_p(disc f) ≥ D} ≤ (n−1)·p^{−⌈(D − n·v_p(n))/(n−1)⌉}" (auditor-confirmed arithmetic: 4 and 1/4 at (2,2,0)/(2,2,4); 2/3, 2/9, 2/27 at (3,3,5/7/9)). deps: XF.1, XF.6, XF.3. sketch: fiber over aTail ∈ (ZMod p^D)^{n−1} (XF.1); INSIDE the proof, `valExtOf (fTail n p (by omega) aTail) (fTail ≠ 0: lead coeff n ≠ 0 in char 0)` discharges XF.6's V; ≤ (n−1)·p^{D−tailExp.toNat} residues per fiber; trivial-face check at tailExp ≤ 0. MEDIUM-HARD (carries XF.3's stuck-risk — by ruling, a STUCK report, not a rider).
 **XF.8 tailZero** — UNCONDITIONAL: `theorem tailZero (p n : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) : Filter.Tendsto (fun D => (tailCount p n D : ℚ) / (p : ℚ) ^ (n * D)) Filter.atTop (nhds 0)`.
 moves_ref: "→ 0 as D → ∞". deps: XF.7. sketch: tailExp → ∞ linearly; geometric squeeze. MEDIUM.
 **XF.10 discZeroNull** — UNCONDITIONAL over the context (Ruling 2):
@@ -554,9 +571,9 @@ moves_ref: "for each type σ the tree-fiber series sums the full density … [(n
 | `XCtx.nsIdx/nsCountable/nsFiber/nsCover` | "(NS-c)'s symbolic indexing"; ns-leaf f's covered | IF (owed, [3t]) |
 | `XCtx.frac_*` laws + `frac_univ = 1` | the box probability content (finding 5 repaired) | IF (MovesD/T) |
 | `XCtx.vdisc_le_tail` | the level-D cylinder fact ({v_p ≥ D} is level-D data) — definitional | IF definitional (sync) |
-| kernel Props `*P` over `XFamily` | their displays verbatim; Ruling-1 non-vacuity; D9 p-freeness by binder order; NONNEG normalizations on c0/ccap WLOG-safe (flagged) | HYP (open kernels) |
+| kernel Props `*P` over `XFamily` | their displays verbatim; Ruling-1 non-vacuity; D9 p-freeness by binder order; NONNEG normalizations on c0/ccap WLOG-safe (flagged); rev 4: X2BridgeP's witness leaf-qualified (IsLeafB) in both clauses | HYP (open kernels) |
 | `TallEvent`/`DeepEvent`/`InfTree`/`FourthPieceB` | the displayed events/sets (finding 4/1 repaired: defined, 'finite branch' disjunct restored) | DEF |
-| `tailCount`/`tailExp`/`fTail`/`Event` | (3b) finite-level, INTEGER exponent (auditor-confirmed) | DEF |
+| `tailCount`/`tailExp`/`fTail`/`Event` | (3b) finite-level, INTEGER exponent (auditor-confirmed); rev 4: `Coe.ringHom` + outer `Fin.cast` from `hn : 1 ≤ n` | DEF |
 | `ValExt`/`valExtOf` | proof apparatus only — appears in NO public statement (Ruling 2) | DEF+construction |
 | `SeriesData` fields | (NS-a) 𝒯^fin quantification; canonical-tree fiber partition; decided coverage | IF (MovesD/T sync) |
 | `VPSoundP` | VP-SOUND = (HEN-LIFT)/(OM-SAT) at the typemult identification (note finding 13) | HYP tag |
@@ -605,3 +622,13 @@ REV-3 round (13 findings of MOVESX_AUDIT_CODEX_REV2_2026-07-28.md):
 | 11 | CRIT | detectInter | REDESIGNED: field deleted; X.3(b)/(d) DERIVED by units XG.2b (detection join), XG.2c (trichotomy), XG.2d (pointwise tree-finiteness) from the LOCAL inputs detectBranch/undec_spec/nsCover |
 | 12 | CRIT | hσ | REDESIGNED: deleted; `densityOf` DEFINED as frac of the true-type event; XG.4 derives the identity from decided coverage + fiber partition + VPSoundP + Tonelli |
 | 13 | GAP | Defs deps | FIXED: `fTail`, `Event`, `CountableFiberAdditive` fully specified in the Defs skeleton |
+
+REV-4 round (4 findings of MOVESX_AUDIT_FABLE_2026-07-28.md; all 13 rev-3 repairs
+verified genuine there):
+
+| # | class | object | repair (rev 4) |
+|---|---|---|---|
+| F1 | CRIT | X2BridgeP | FIXED: `IsLeafB b ∧ NsFreeB b` witness in BOTH clauses (the note's "(τ-ns)-FREE finite branch"); witness feed traced in XE.2's sketch — IsLeafB ∧ NsFreeB ⟹ FourthPieceB (first disjunct) ⟹ X2ProgressP/XD.4 apply |
+| F2 | CRIT | vdisc | FIXED: `.toNat` dropped — pinned `PadicInt.valuation : ℤ_[p] → ℕ` (PadicIntegers.lean:321); junk-0 convention preserved via `valuation_zero` |
+| F3 | GAP | PadicInt.coe | FIXED: renamed to pinned `PadicInt.Coe.ringHom` (PadicIntegers.lean:130) at fTail + XF.4 (grep-verified) |
+| F4 | GAP | fTail/Event arity | FIXED: explicit OUTER `Fin.cast (by omega : n = n − 1 + 1)` on the index, from a new `hn : 1 ≤ n` argument threaded from every consumer's `h2 : 2 ≤ n` (option chosen and noted; no Fin (n−1+1) restatement ripple) |
