@@ -1,6 +1,6 @@
 /-
 Unit XG.2d treeFinite — X.3(a) pointwise, DERIVED (replaces the deleted
-`stratumLink`/`infBranch` fields)  [E-phase: stated, body sorry]
+`stratumLink`/`infBranch` fields)  [PROVED, fleet 2026-07-28]
 moves_ref: "Off {disc f = 0} …, EITHER route gives every branch finite pointwise, by
 the four-population decomposition … Hence a.e. f has a FINITE tree".
 sketch: an infinite path g (¬Finite via XG.2's contrapositive) gives hist (g k) of

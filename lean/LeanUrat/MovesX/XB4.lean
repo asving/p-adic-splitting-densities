@@ -1,5 +1,5 @@
 /-
-Unit XB.4 t3Charge  [E-phase: stated, body sorry]
+Unit XB.4 t3Charge  [PROVED, fleet 2026-07-28]
 moves_ref: "each T3 node multiplies the key degree by e ≥ 2, so #T3 per branch ≤ ⌊log₂ n⌋
 (derived…)"; exponential step proved in-unit, only Πe ≤ n rides (`HistWF.degProd`,
 MovesSp-discharged). deps: XA.1. difficulty: MEDIUM.

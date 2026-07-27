@@ -1,5 +1,5 @@
 /-
-Unit XC.2 x1aTrivial  [E-phase: stated, body sorry]
+Unit XC.2 x1aTrivial  [PROVED, fleet 2026-07-28]
 moves_ref: "at zero discharge d_cert ≡ 0 and (X.1a) is trivially true" — the same
 two-inclusion statement as XC.1 at st = ⟨false, false⟩ WITHOUT the `AL` hypothesis
 (the honest unconditional instance). deps: XB.1. difficulty: EASY. hyp: none.

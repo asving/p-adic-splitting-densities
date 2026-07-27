@@ -1,5 +1,5 @@
 /-
-Unit XF.3 valExtOf  [E-phase: stated, body sorry]
+Unit XF.3 valExtOf  [PROVED, fleet 2026-07-28]
 moves_ref: none (proof apparatus; §4 flag: never strengthens (3b) — and per Ruling 2 it
 appears in NO public statement).
 sketch: `g.SplittingField` finite over complete ℚ_[p]; `spectralNorm` multiplicative

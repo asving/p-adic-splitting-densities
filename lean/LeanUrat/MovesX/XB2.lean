@@ -1,5 +1,5 @@
 /-
-Unit XB.2 dCertMono  [E-phase: stated, body sorry]
+Unit XB.2 dCertMono  [PROVED, fleet 2026-07-28]
 moves_ref: "given (ALIGN-inc): d_cert = #T1-increments + #T2; given both: also the T1
 recenterings". deps: Defs. difficulty: MEDIUM.
 -/

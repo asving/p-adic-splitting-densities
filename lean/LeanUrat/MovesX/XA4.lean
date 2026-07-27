@@ -1,5 +1,5 @@
 /-
-Unit XA.4 t1Arith  [E-phase: stated, body sorry]
+Unit XA.4 t1Arith  [PROVED, fleet 2026-07-28]
 moves_ref: T1 column bracket "[e ≥ 1: ehℓ−e−h+1 = e(hℓ−1)−(h−1) ≥ h(ℓ−1)]".
 deps: none (Defs only, for the namespace). difficulty: EASY.
 -/

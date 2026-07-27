@@ -1,5 +1,5 @@
 /-
-Unit XA.2 selForce  [E-phase: stated, body sorry]
+Unit XA.2 selForce  [PROVED, fleet 2026-07-28]
 moves_ref: "μ·g ≤ d(S) = ℓ forces every μ ≥ 2 or g ≥ 2 selection onto an ℓ ≥ 2 side".
 deps: XA.1. difficulty: EASY.
 -/

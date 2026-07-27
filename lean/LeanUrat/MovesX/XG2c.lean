@@ -1,6 +1,6 @@
 /-
 Unit XG.2c interTrichotomy — X.3(d)'s first half, DERIVED (finding 11)
-[E-phase: stated, body sorry]
+[PROVED, fleet 2026-07-28]
 moves_ref: "(d) … an f whose complete tree is undetected at EVERY level has an ns leaf
 (TB-CAP's clause trichotomy — detection fails at all N only on the (τ-ns) class)".
 sketch: f ∉ InfTree ⟹ Finite (Branch f); if every leaf ns-free, XG.2b exits f from some

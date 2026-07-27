@@ -1,6 +1,6 @@
 /-
 Unit XG.4 x3Series — the per-σ series identity, DERIVED (finding 12: `hσ` deleted;
-`densityOf` DEFINED)  [E-phase: stated, body sorry]
+`densityOf` DEFINED)  [PROVED, fleet 2026-07-28]
 moves_ref: "for each type σ the tree-fiber series sums the full density … [(ns-null)
 tag displayed]" + "(3e)-style regrouping (Tonelli, positive terms) yields the per-σ
 series identity"; VP-SOUND consumed exactly at the typemult identification (note

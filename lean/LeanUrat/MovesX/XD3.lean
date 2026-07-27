@@ -1,5 +1,5 @@
 /-
-Unit XD.3 x2hypDichotomy  [E-phase: stated, body sorry]
+Unit XD.3 x2hypDichotomy  [PROVED, fleet 2026-07-28]
 moves_ref: the √ dichotomy, squared form.
 deps: none (Defs only, for the namespace). difficulty: EASY.
 -/

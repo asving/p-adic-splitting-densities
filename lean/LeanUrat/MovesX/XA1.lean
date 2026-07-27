@@ -1,5 +1,5 @@
 /-
-Unit XA.1 rowTotal  [E-phase: stated, body sorry]
+Unit XA.1 rowTotal  [PROVED, fleet 2026-07-28]
 moves_ref: "Every continuing node … exactly one row (ℓ ≥ 2 vs ℓ = 1; then e, h…)".
 deps: Defs. difficulty: EASY.
 -/

@@ -1,5 +1,5 @@
 /-
-Unit XC.3 x1bReduction  [E-phase: stated, body sorry]
+Unit XC.3 x1bReduction  [PROVED, fleet 2026-07-28]
 moves_ref: the two-step reduction display, cleared form (auditor-confirmed:
 "2I ≤ v, R ≤ sv, T3 ≤ ⌊log₂n⌋ give 2d_total ≤ (2s+1)v + 2⌊log₂n⌋").
 deps: XB.2–4, XC.1. difficulty: MEDIUM.

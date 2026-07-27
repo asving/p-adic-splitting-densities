@@ -1,5 +1,5 @@
 /-
-Unit XF.5 pigeonMax  [E-phase: stated, body sorry]
+Unit XF.5 pigeonMax  [PROVED, fleet 2026-07-28]
 moves_ref: "some θᵢ has v_p(f(θᵢ)) ≥ (D − n·v_p(n))/(n−1)".
 FLAG (blueprint): no sign hypothesis (terms may be negative).
 deps: none (Defs only, for the namespace). difficulty: EASY.

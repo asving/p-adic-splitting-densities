@@ -1,5 +1,5 @@
 /-
-Unit XA.5 t2Witness  [E-phase: stated, body sorry]
+Unit XA.5 t2Witness  [PROVED, fleet 2026-07-28]
 moves_ref: T2 witness "(s+1, u+1) … gcd(e,h) = 1 excludes (2,2)".
 deps: XA.1. difficulty: MEDIUM (EASY-MEDIUM band).
 -/

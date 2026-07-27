@@ -1,5 +1,5 @@
 /-
-Unit XA.7b latGen  [E-phase: stated, body sorry]
+Unit XA.7b latGen  [PROVED, fleet 2026-07-28]
 moves_ref: "(IND) ind(S) = ½·ℓ·(ehℓ − e − h + 1)" + example anchors
 (ℓ = 1 ↦ XA.6; e = h = ℓ = 1 ↦ 0). deps: XA.6, XA.7a. difficulty: MEDIUM.
 -/

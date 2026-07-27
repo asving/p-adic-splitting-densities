@@ -1,5 +1,5 @@
 /-
-Unit XD.2 x2hypCount  [E-phase: stated, body sorry]
+Unit XD.2 x2hypCount  [PROVED, fleet 2026-07-28]
 moves_ref: "Σ_{r∈H} h_r ≤ (d_total(H) + 1)·max h(H); the d_total = 0 lone-terminal-read
 history is carried by the +1" (unconditional; empty case both sides 0).
 deps: Defs. difficulty: MEDIUM. hyp: HistWF.

@@ -1,6 +1,6 @@
 /-
 Unit XG.2b detectJoin — X.3(b), the finite-level detection, DERIVED (finding 11)
-[E-phase: stated, body sorry]
+[PROVED, fleet 2026-07-28]
 moves_ref: "(b) DETECTION AT A FINITE LEVEL [derived from accepted sources]. Every f
 whose tree is complete with all leaves (τ-irr)/(τ-hen) … exits Undec(N) at its finite
 threshold thr(T): Thm 2.1 … joined over the tree's finitely many branches with TB-CAP's

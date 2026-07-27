@@ -1,5 +1,5 @@
 /-
-Unit XB.1 dCertZero  [E-phase: stated, body sorry]
+Unit XB.1 dCertZero  [PROVED, fleet 2026-07-28]
 moves_ref: "At today's discharge state … d_cert ≡ 0".
 deps: Defs. difficulty: EASY.
 -/

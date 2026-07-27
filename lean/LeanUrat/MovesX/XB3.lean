@@ -1,5 +1,5 @@
 /-
-Unit XB.3 fourPop  [E-phase: stated, body sorry]
+Unit XB.3 fourPop  [PROVED, fleet 2026-07-28]
 moves_ref: "{T1/T2 increments} ⊔ {T1 recenterings} ⊔ {T3} ⊔ {T4}" (coherence fields make
 it typecheck). deps: XA.1. difficulty: MEDIUM.
 -/

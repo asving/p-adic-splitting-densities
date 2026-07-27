@@ -1,6 +1,6 @@
 /-
 Unit XG.2 koenigFinite — the note's König, VERBATIM premise (finding 10 — no uniform
-depth bound)  [E-phase: stated, body sorry]
+depth bound)  [PROVED, fleet 2026-07-28]
 moves_ref: "T_can(f) is FINITELY BRANCHING — each node's child menu is finite … — so
 König's lemma upgrades 'every branch finite' to 'T_can(f) finite'" (finite branching is
 `children : Finset` in the interface; "every branch finite" = no infinite

@@ -1,5 +1,5 @@
 /-
-Unit XA.9 ind2Region  [E-phase: stated, body sorry]
+Unit XA.9 ind2Region  [PROVED, fleet 2026-07-28]
 moves_ref: the table's ind(S) column, EQUALITY (doubled per D2).
 deps: XA.3–XA.8. difficulty: MEDIUM.
 -/

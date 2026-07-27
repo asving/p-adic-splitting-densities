@@ -1,5 +1,5 @@
 /-
-Unit XC.1 x1aChain  [E-phase: stated, body sorry]
+Unit XC.1 x1aChain  [PROVED, fleet 2026-07-28]
 moves_ref: "(X.1a) stratum(H) ⊆ Desc_{d_cert(H)} ⊆ { v_p(disc f) ≥ 2·d_cert(H) }";
 first inclusion definitional, second via transport + (P2).
 deps: Defs. difficulty: MEDIUM (EASY-MEDIUM band).

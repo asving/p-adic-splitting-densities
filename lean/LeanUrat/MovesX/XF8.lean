@@ -1,5 +1,5 @@
 /-
-Unit XF.8 tailZero — UNCONDITIONAL  [E-phase: stated, body sorry]
+Unit XF.8 tailZero — UNCONDITIONAL  [PROVED, fleet 2026-07-28]
 moves_ref: "→ 0 as D → ∞".
 sketch: tailExp → ∞ linearly; geometric squeeze. deps: XF.7. difficulty: MEDIUM.
 -/
