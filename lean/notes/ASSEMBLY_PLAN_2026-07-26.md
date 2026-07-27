@@ -1,4 +1,4 @@
-# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 15)
+# ASSEMBLY_PLAN_2026-07-26 — the final campaign: from accepted §C to the complete wild-uniformity theorem (REV 16)
 
 *Plan architect: Fable, 2026-07-26. REV 2, same day: rebuilt against the pass-1
 structural review (ASSEMBLY_PLAN_PASS1_2026-07-26.md — 8 critical obstructions,
@@ -164,8 +164,21 @@ NINETEEN passed; (6) (ns-null) CLOSED — the single-state admissible-Z proof
 survived the §T-ASSEMBLY dual bar (four independent verifications); (7) the
 REV 15 DRAFTING RULING (§1/§9): [5] EXHAUST and [3] RESUM cleared to draft NOW
 in hypothesis-displayed form; [4] SQUEEZE not cleared (its TRACK-COUNT kernel
-front-loadable as a derivation unit). The REV 15 record is the final
-table. Directive (Asvin, 2026-07-26):
+front-loadable as a derivation unit). REV 16, 2026-07-27 (the dual-standard
+milestone sync + the [4] re-ruling): (1) acceptance state synchronized —
+TEN artifacts through the full dual standard (§X-EXHAUST = [5] rev 8,
+§H-DOMAINS = [2b] rev 6, §S-RESUM = [3]-COND rev 6 join the seven);
+sealed-gate count TWENTY (H-n3 PASSED 151/151); [1v]-FULL's blocker list
+corrected to [2b]'s SIX fences (+ H-LIST-GEN, E-POS, per the §H demand/
+delivery table); (2) THE [4] RE-RULING: [4] SQUEEZE is CLEARED for
+CONDITIONAL drafting in the [4]-COND form — REV 15's blocker (the undrafted
+[3] interface) is void, §S-RESUM's displayed solve being dual-accepted
+frozen text; spec addendum at §1, consumed statements listed; (3) the owed
+sync items: CL-18 (J-RAT) + CL-19 (JC-INV) appended to the capstone ledger
+(§S rev-2/rev-3 plan-sync flags; owners [1v]/[2b]); §4's substochasticity
+parenthetical re-cited to (K-SUB)'s typed form; (4) THE UNRUN-CENSUS ROSTER
+consolidated as one displayed table (§7) — the campaign's empirical to-do
+surface. The REV 16 record is the final table. Directive (Asvin, 2026-07-26):
 iterate on the math with
 Codex until either a COMPLETE math proof of wild uniformity exists or the approach is shown
 conclusively to not work. This plan is the architecture for everything between the
@@ -202,11 +215,14 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
   text): the per-move ledger D.11 at all tower stages (the order-r
   induction TRANS), increments at any (e, h, g, μ, a), recenterings at e_read = 1,
   lift-independence D.10, realizability (NA)/(HV).
-- **THE NOTE-LEVEL ACCEPTANCE LEDGER (NEW at REV 15 — the sync batch).** SEVEN
-  artifacts are through the FULL dual standard (Codex + fresh-Fable, identical
-  text; records in MOVES): §B2-DEF (D¹¹d), §C (rev 14), §D4-R (rev 9, = [1]),
-  §T-ASSEMBLY (rev 7, = [3t]), §V-TABLES (rev 7, = [1v]), §M-SPECIES (rev 8,
-  = [2a]), §R-LEDGER (rev 5, = [2r]). **BINDING DISTINCTION — note-level dual
+- **THE NOTE-LEVEL ACCEPTANCE LEDGER (NEW at REV 15; extended at REV 16 — the
+  dual-standard milestone).** TEN artifacts are through the FULL dual standard
+  (Codex + fresh-Fable, identical text; records in MOVES): §B2-DEF (D¹¹d), §C
+  (rev 14), §D4-R (rev 9, = [1]), §T-ASSEMBLY (rev 7, = [3t]), §V-TABLES
+  (rev 7, = [1v]), §M-SPECIES (rev 8, = [2a]), §R-LEDGER (rev 5, = [2r]),
+  and at REV 16: §X-EXHAUST (rev 8, = [5]), §H-DOMAINS (rev 6, = [2b]),
+  §S-RESUM (rev 6, = [3]-COND) — every artifact of the math write-up drafted
+  to date. **BINDING DISTINCTION — note-level dual
   acceptance ≠ the plan's ACCEPTANCE EVENTS.** A note is accepted AS A TEXT with
   its displayed conditionality; the plan's events additionally carry
   hypothesis-DISCHARGE duties. Current event state, blockers exact:
@@ -216,9 +232,12 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
     that [1v]/CL-13's (D1)–(D4) build consumes.
   · **[1v]-COND** — SATISFIED: the dual-accepted §V-TABLES IS Theorem VAL +
     CTS-M GIVEN the XHD package (its record states the level per §7; V-n3
-    178/178). **[1v]-FULL** — BLOCKED on exactly [2b]/§H-DOMAINS' four open H.6
-    fences: XHD-d-EX(∂), M4b-T-AUD, U-R-COUNT, XHD-u-X (§3 kernel roster) —
-    plus HMC staying an open [1v] kernel (probe specced, not run).
+    178/178). **[1v]-FULL** — BLOCKED on exactly [2b]/§H-DOMAINS' SIX open H.6
+    fences (REV 16 sync — the §H demand/delivery table, dual-accepted, adds
+    two to REV 15's four): XHD-d-EX(∂), M4b-T-AUD, U-R-COUNT, XHD-u-X
+    (first-tested by H-n3's coarse-period leg, fenced), H-LIST-GEN, E-POS
+    (§3 kernel roster) — plus HMC staying an open [1v] kernel (probe specced,
+    not run).
   · **[3t]-COND** — gates and sources in hand (SIB 32/32, T-n3 21/21; [1] and
     [2r] notes dual-accepted); RECORDED (2026-07-27) — the [3t]-COND ACCEPTANCE
     RECORD (§7) carries its displayed conditionality per §7's rule: X.3/CL-4, XRB
@@ -226,21 +245,51 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
     cites, (JC-multi), and [2r]'s obligations ledger being undischarged (the
     O_δ quantifier is consumed at the LEDGER level; REL.1/REL.2 open at CL-8).
     (ns-null) is CLOSED at REV 15 (§4t status) and drops from the tag list.
-    **[3t]-FULL** — BLOCKED on [5]'s acceptance (X.3 discharge) AND [3]'s
-    acceptance (XRB discharge); never unconditional while a CL-10 duty is open.
+    **[3t]-FULL** — BLOCKED on [5]'s acceptance EVENT (X.3 discharge) AND
+    [3]'s acceptance EVENT (XRB discharge); REV 16 note: BOTH owner notes are
+    now dual-accepted AS NOTES, which discharges NEITHER — X.3 and XRB stand
+    in those notes as displayed open items ([5]'s X.3 rides VP-SOUND +
+    (X1a-ALIGN)-adjacent mechanics; [3]'s XRB is proved-under-hypotheses,
+    its set open). Never unconditional while a CL-10 duty is open.
   · **[2r]** — the dual-accepted note is an OBLIGATIONS LEDGER that derives
     NOTHING (its banner is literal): the plan-level discharge — REL.1's
     re-scoping pass, REL.2(a)/(b)/(d)/(e), REL.3, gate REL-n4 (its (g1)–(g7)
     owed) — is ENTIRELY open (CL-8). Consumers may cite the accepted STATEMENTS
-    and their obligation names, never a discharged obligation.
-  · **[2b]** — not accepted: §H-DOMAINS in spiral (pass 1: 9c/2g, rev 2 in
-    flight); acceptance additionally behind STATE-probe-2 (§4).
+    and their obligation names, never a discharged obligation. REV 16 note:
+    §S-RESUM (dual-accepted) now cites the (e1)–(e5) legs exactly this way —
+    the five obligations stay OPEN AS PROOFS; nothing about [3]'s note
+    acceptance advances CL-8.
+  · **[2b]** — note DUAL-ACCEPTED (REV 16): §H-DOMAINS rev 6 (Codex pass 7 +
+    Fable confirm, both CLEAN; six break campaigns survived, the confirm's
+    409/409 attack suite; gate H-n3 PASSED 151/151 with the factorpadic
+    oracle). The [2b] acceptance EVENT stays OPEN: the six H.6 fences above
+    are open kernels (= [1v]-FULL's blockers), and acceptance is additionally
+    behind STATE-probe-2 (§4).
+  · **[5]** — note DUAL-ACCEPTED (REV 16): §X-EXHAUST rev 8 (Codex pass 10 +
+    Fable confirm; two Fable censuses, 6,181 polynomials, 0 violations). The
+    [5] acceptance EVENT stays OPEN: WEIGHT-CHARGE (X.1b) verbatim OPEN,
+    (X1a-ALIGN), (X2-AFF)/(X2-CAP)/(X2-BRIDGE)/(X2-TAILS) open ((X2-TAILS)
+    [2b]-owed), VP-SOUND inherited; gate X-n3's census layers + the
+    STALL-probe NOT yet run (§7 roster). X.3/CL-4 discharges only at THIS
+    event — not at the note acceptance.
+  · **[3]-COND (note level)** — DUAL-ACCEPTED (REV 16): §S-RESUM rev 6 (Codex
+    pass 7 + Fable confirm; the rebuilt 9,494-outcome census — routing
+    exhaustive/exclusive, the (K-SUB) partition exact, (SCS) 0 violations).
+    The solve's display exists HYPOTHESIS-COMPLETE (every input a displayed
+    hypothesis with a named owner; XRB proved-under-hypotheses; ESCAPE(E0)
+    the central open kernel, per-pool form). The plan's [3] acceptance EVENT
+    stays BLOCKED on STATE-probe-2 + [1v]-FULL + RESUM-n3 (stated in-note).
 - **§A, §B1 (surviving parts), JOINT-D1**; eleven sealed census gates (Cases E…L).
-  GATE-LEDGER SYNC (REV 15): the campaign's sealed-gate count stands at NINETEEN
-  passed — the eleven perimeter gates plus (in order) D4-n3, D4-m2 33/33, SIB
-  32/32, T-n3 21/21, M-n3 content (0 strays at 2²⁴ + 3¹⁵), V-n3 178/178, and
-  M-n3-V2 (N = 1..7 exhaustive, all 45 fresh thresholds sharp both sides — the
-  19th; PROJECT_STATE 2026-07-27). H-n3 is SEALED-NEW (§H-DOMAINS), not yet run.
+  GATE-LEDGER SYNC (REV 15; count updated at REV 16): the campaign's
+  sealed-gate count stands at TWENTY passed — the eleven perimeter gates plus
+  (in order) D4-n3, D4-m2 33/33, SIB 32/32, T-n3 21/21, M-n3 content (0 strays
+  at 2²⁴ + 3¹⁵), V-n3 178/178, M-n3-V2 (N = 1..7 exhaustive, all 45 fresh
+  thresholds sharp both sides), and H-n3 (**PASSED 151/151**, 2026-07-27 —
+  the twentieth; 288 factorpadic oracle verdicts; seal
+  verification/CASE_HN3_SEALED_PREDICTIONS.md, its S9 post-census verdict).
+  Two honest FAIL-as-sealed adjudications on record (Case-K p = 3; M-n3 v1).
+  The remaining UNRUN empirical surface is consolidated as ONE displayed
+  table at §7 (REV 16 — THE UNRUN-CENSUS ROSTER).
 - **The decomposition note** (`MATH_FULLTYPE_DECOMPOSITION_2026-07-22.md`, ACCEPTED):
   Lemma 3.2 (depth ⟹ ind ⟹ v_p(disc); GMN pins (P1)–(P3)), Lemma 3.3 (discriminant
   tail (3b), elementary), Cor 3.4 (Desc_d envelope (3c)), Thm 2.1 (N-stability),
@@ -350,8 +399,8 @@ where kernel objects are consumed.)
   objects (§1s classes LOC/template); risk R1's decision point. PROBE
   REPORTED (2026-07-26): NO-WALL, exploration-class, anchor-twist caveat adopted.
   STATUS (REV 15): DUAL-ACCEPTED at the [1v]-COND level — MOVES §V-TABLES rev 7
-  (Codex 6+7 + Fable; gate V-n3 PASSED 178/178); [1v]-FULL blocked on [2b]'s four
-  H.6 fences (§0 ledger). (§2v)
+  (Codex 6+7 + Fable; gate V-n3 PASSED 178/178); [1v]-FULL blocked on [2b]'s SIX
+  H.6 fences (REV 16 sync; §0 ledger). (§2v)
 - **[2b] STATE-GEOM** — M2 STATE = the CTS state τ = (s, α) (REV 5; a LUMPABILITY
   theorem, not label closure — consumed as CTS-M(iv)-REP), M4a cone geometry + M4a-X
   EXACT-DOMAIN (height directions at fixed template — REV 5 scope, with the
@@ -359,16 +408,20 @@ where kernel objects are consumed.)
   acceptance triggers the [1v]-FULL discharge), M4b height-translation constancy (NARROWED at REV 5; the
   loop direction is a matrix power, never a constant) + M4b-T equivariance; supplies
   𝒯_n to [3]. ACCEPTANCE BLOCKED on STATE-probe-2 (REV 4, pass-3 obstruction 7).
-  STATUS (REV 15): DRAFTED as MOVES §H-DOMAINS, in spiral (pass 1: 9c/2g; rev 2
-  in flight); its H.6 fence roster = [1v]-FULL's blockers (§0, §3); gate H-n3
-  sealed-new. (§3)
+  STATUS (REV 16): note DUAL-ACCEPTED — MOVES §H-DOMAINS rev 6 (Codex pass 7 +
+  Fable confirm; gate H-n3 PASSED 151/151); its SIX-fence H.6 roster =
+  [1v]-FULL's blockers (§0, §3); the [2b] EVENT open (fences + STATE-probe-2).
+  (§3)
 - **[2r] REL** — *the relative ledger*: Theorem C over unramified O = W(F_{p^δ}) +
   the FIVE-obligation sub-cluster base change (REV 15: (e) β-typing added; (c)
   re-homed at (SIB)) — what β_m(q^δ) MEANS. STATUS (REV 15): DUAL-ACCEPTED as an
   obligations LEDGER — MOVES §R-LEDGER rev 5; every obligation still OPEN. (§3r)
 - **[5] EXHAUST** — *the discriminant-tail tie-in*, two-track: X.1a genuine-event
   dictionary (per-species GMN index table) + X.1b STALL (an OPEN kernel at REV 3:
-  WEIGHT-CHARGE + its own STALL-probe) + X.2 PROGRESS. (§5)
+  WEIGHT-CHARGE + its own STALL-probe) + X.2 PROGRESS. STATUS (REV 16): note
+  DUAL-ACCEPTED — MOVES §X-EXHAUST rev 8 (Codex pass 10 + Fable confirm; the
+  explicit index table, two censuses at 0 violations); the [5] EVENT open
+  (WEIGHT-CHARGE + the X2 kernels; X-n3 layers/STALL-probe unrun). (§5)
 - **[3t] TREE (NEW at REV 9 — pass-8 criticals 1+2)** — *the branch-to-tree
   assembly*: the TARGET identity (TGT); the verdict pin VP (alphabet V +
   halting rule τ, discharging D4R0K §S2.6's D4R.0-K(c)); the JOINT SIBLING
@@ -391,10 +444,15 @@ where kernel objects are consumed.)
   route E0 on the ACTIVE submatrix (REV 6 —
   the per-fixed-p spectral argument; the uniform (B, c) variant is a separate
   optional kernel consumed by nothing); p-uniformity from [1v]. ACCEPTANCE BLOCKED
-  on STATE-probe-2 (§4).
+  on STATE-probe-2 (§4). STATUS (REV 16): note DUAL-ACCEPTED in the [3]-COND
+  form — MOVES §S-RESUM rev 6 (Codex pass 7 + Fable confirm; the 9,494-outcome
+  census); XRB proved-under-hypotheses; ESCAPE(E0) per-pool the central open
+  kernel; the [3] EVENT blocked on STATE-probe-2 + [1v]-FULL + RESUM-n3.
 - **[4] SQUEEZE** — *the two-sided finite-level bound*: decided_σ(N) ≤ R_σ(p)·p^{nN}
   and ≥ (R_σ(p) − env(N))·p^{nN}, hence ρ_σ = R_σ(p) — Theorem U; the domination
-  induction over (e, τ) blocks with base-changed hypotheses from [2r]. (§6)
+  induction over (e, τ) blocks with base-changed hypotheses from [2r]. STATUS
+  (REV 16): CLEARED for CONDITIONAL drafting in the [4]-COND form (the re-ruling
+  + spec addendum below; supersedes REV 15's NOT-CLEARED). (§6)
 
 **Execution order (REV 7 — the acceptance order explicit and ACYCLIC; pass-6
 critical 1):** [1] → [2a] → [1v]-COND (draft + accept CTS-M GIVEN the displayed
@@ -433,7 +491,8 @@ whose OWNER is a well-specified note, with acceptance split accordingly):**
   drafts in hypothesis-displayed form: its M4a-tail envelope constants enter as
   a NAMED hypothesis owed by [2b]/§H-DOMAINS (discharged at [2b]'s acceptance),
   alongside the standing CONDITIONAL-ON-X.1b tag. The WEIGHT-CHARGE kernel and
-  STALL-probe run with the draft as already specified (§5).
+  STALL-probe run with the draft as already specified (§5). [DELIVERED at
+  REV 16: §X-EXHAUST dual-accepted at rev 8; X-n3/STALL-probe still unrun.]
 - **[3] RESUM: CLEARED for CONDITIONAL drafting NOW ([3]-COND form).** Reasons:
   RS.PRE/RS.0/RS.1/RS.2 consume CTS-M exactly in its XHD-conditional form — the
   form now dual-accepted (§V-TABLES); TREE-EXP is dual-accepted at note level
@@ -445,7 +504,11 @@ whose OWNER is a well-specified note, with acceptance split accordingly):**
   second discharge) and the ESCAPE(E0) kernel, neither consuming any [2b]
   fence; the ESCAPE-probe is a cheap front-loaded discriminator. ACCEPTANCE
   stays blocked on STATE-probe-2 (§4), [1v]-FULL, and RESUM-n3 — unchanged.
-- **[4] SQUEEZE: NOT CLEARED.** (a) SQ.2/SQ.3's spine consumes [3]'s ACCEPTED
+  [DELIVERED at REV 16: §S-RESUM dual-accepted at rev 6 in exactly this
+  form; XRB proved-under-hypotheses; the event blockers stand.]
+- **[4] SQUEEZE: NOT CLEARED** [SUPERSEDED at REV 16 — the re-ruling and spec
+  addendum below; this REV 15 text preserved as the ruling it revises]**.**
+  (a) SQ.2/SQ.3's spine consumes [3]'s ACCEPTED
   solve (R_σ, K_e ≥ 0, RS.3 positivity, Neumann/E0): the [3] → [4] edge is the
   note's SPINE, not an interface seam — a hypothesis-displayed [4] would fence
   essentially every load-bearing input, unlike [1v]-COND where ONE named
@@ -458,6 +521,68 @@ whose OWNER is a well-specified note, with acceptance split accordingly):**
   TRACK-probe are [3]-independent (they consume [1]/§C/L5fix + X.2 mechanics)
   and MAY be front-loaded as a C10B/C15-style KERNEL DERIVATION unit without
   drafting [4] itself.
+
+**THE REV 16 [4] RE-RULING: [4] SQUEEZE is CLEARED for CONDITIONAL drafting
+NOW, in the [4]-COND form.** Reasons, against REV 15's own two grounds:
+- REV 15's (b) is VOID. §S-RESUM is dual-accepted (rev 6, Codex + Fable
+  CLEAN on identical text): the hypothesis owner's interface is no longer an
+  unwritten spiral but FROZEN DISPLAYED TEXT — the (R_e)/(R_e-lump)/
+  (R_e-exact) displays, RS.1-SH/RS.2/RS.3/RS.4, the (K-TRI)/(K-SUB) typed
+  rows with the (m, c) classification, the per-pool ESCAPE(E0) statement,
+  and the S.6 conditionality ledger. A [4]-COND draft writes against text
+  that can no longer drift under it.
+- REV 15's (a) is RECAST, not contradicted: the spine inputs are still the
+  whole solve, but they now enter as ONE named package — §S-RESUM's DISPLAYED
+  SOLVE with its S.6 hypothesis ledger attached — owner-specified (the [3]
+  acceptance EVENT: STATE-probe-2 + [1v]-FULL + RESUM-n3), exactly the
+  pattern that has now worked FIVE times ([1v]-COND, [3t]-COND, X.2's
+  [2b]-owed tails, [3]-COND, and the CL-8 ledger-citation rule). [4]-COND
+  consumes accepted STATEMENTS with named open obligations, never a
+  discharged obligation (§0's rule); nothing is proved from an undrafted
+  interface.
+- FRONT-LOAD VALUE: SQ.4's FULL HONEST FORM — Theorem U with the complete
+  capstone ledger inline — is the campaign's statement-of-record, and
+  writing it NOW forces every note's conditionality through one display
+  while all ten dual-accepted texts are fresh; ledger incoherences surface
+  at draft time, not at closure. SQ.0/TRACK-COUNT were already cleared as a
+  kernel unit and now ride the draft.
+
+**THE [4]-COND SPEC ADDENDUM (what the note MUST display; binding on the
+draft and its acceptance record):**
+- **SQ.0** — the decided-budget arithmetic in full: (a)/(b) height/weight
+  budgets, (c) the multi-track zero-gain bound with TRACK-COUNT displayed
+  as the NAMED OPEN LEMMA (+ the D(n) duty and the positive-genuine-
+  increment sub-claim, flagged), (d) the realized-ledger budget. Consumes
+  [1]/§C/L5fix + X.2 mechanics ONLY — [3]-independent; the TRACK-probe
+  runs with the draft (candidate-refuter scope, §6).
+- **SQ.1 + the envelope side (SQ.3's X-leg)** — the tree-fiber partition
+  via TREE-N/TREE-EXP-fin consumed as [3t]'s note-accepted statements
+  ((NS-ROUTE)-scoped; ns fibers ⊆ Undec(N) at every N); finiteness from
+  SQ.0 alone. The envelope side consumes X.3/CL-4 and X.2's envelope
+  constants as DISPLAYED HYPOTHESES owed by [5]'s EVENT — (X2-AFF)/
+  (X2-CAP)/(X2-BRIDGE)/(X2-TAILS) named per §X-EXHAUST, with §X's
+  toothless-envelope honesty carried verbatim (env* > 1 at census range:
+  the display is shape-only there, never sold as falsifiable).
+- **SQ.2** — the domination induction over (e, τ) blocks with the [3] legs
+  DISPLAYED: the (R_e) block solve, K_e ≥ 0 via the CTS-M(iv)/(K-SUB)
+  typed rows, RS.3 positivity, per-pool ESCAPE(E0)/CL-1, and the Neumann
+  monotone iteration — each consumed as §S-RESUM's displayed statement
+  WITH its S.6 hypothesis set quoted; base-changed legs β(q^δ) cited as
+  [2r] obligation names (e1)–(e5)/CL-8; the no-equal-e-feedback check
+  (CL-11) displayed as this note's kernel duty.
+- **SQ.4 = THEOREM U in the FULL HONEST FORM** — the statement with THE
+  COMPLETE CAPSTONE LEDGER (CL-1…CL-19, the REV 16 extent — CL-18/CL-19
+  added below) cited inline; EVERY note's conditionality restated in one
+  place (which artifacts are dual-accepted as notes, which acceptance
+  EVENTS remain open and on what — the §0 ledger reproduced at the
+  capstone); the O3 base-pin declaration; the monic-box normalization
+  sentence; Σ_σ R_σ = 1 carried with RS.4's inherited set + X.3/CL-4.
+- **ACCEPTANCE SPLIT** — [4]-COND = acceptance of the package with ALL the
+  above displayed; the [4] acceptance EVENT additionally requires [3]'s
+  EVENT, [5]'s EVENT, TRACK-COUNT + D(n) closed, and gate SQUEEZE-n3
+  (which itself waits on RESUM-n3's sealed R_σ — the gates chain). Neither
+  level may ever be recorded unconditional while any cited CL-item is open
+  (§7's rule).
 
 **Format per note (sections 2–6 below):** key definitions · load-bearing lemmas with
 proof sketches · kernels (fresh-context derivation-grade, C10B/C15-style) · the sealed
@@ -912,8 +1037,9 @@ REV 5; VAL.2J is subsumed into the CTS burdens).**
   hypotheses upon [2b]'s acceptance — no new mathematics. STATUS (REV 15):
   [1v]-COND is SATISFIED — MOVES §V-TABLES rev 7 DUAL-ACCEPTED (Codex 6+7 +
   Fable, 2026-07-27; gate V-n3 PASSED 178/178; record states its level, the XHD
-  tag verbatim). [1v]-FULL is BLOCKED on exactly §H-DOMAINS' four open H.6
-  fences — XHD-d-EX(∂), M4b-T-AUD, U-R-COUNT, XHD-u-X (§3 kernel roster; §0
+  tag verbatim). [1v]-FULL is BLOCKED on exactly §H-DOMAINS' SIX open H.6
+  fences (REV 16 sync) — XHD-d-EX(∂), M4b-T-AUD, U-R-COUNT, XHD-u-X,
+  H-LIST-GEN, E-POS (§3 kernel roster; §0
   ledger) — while HMC stays this note's own open kernel (probe specced, unrun)
   and ENT-COUNT/INIT-RAT stay named burdens. Downstream, M2's τ,
   RS.0, RS.PRE, SQ.2
@@ -1381,13 +1507,15 @@ FAIL-as-sealed honestly adjudicated (Case-K precedent; threshold repair) — and
 M-n3-V2 PASSED at every level (N = 1..7 exhaustive; all 45 fresh N* sharp both
 sides; the 19th sealed gate). Residual on its record: the D4R.0-K(c)/VP item
 (CL-10) + the SP-FIN/SP-OUT-side coverage duties [1v]/CL-13 consumes.
-**[2b] DRAFT STATUS (REV 15): DRAFTED as MOVES §H-DOMAINS (assembly note 6),
-in spiral** — pass 1: 9 criticals / 2 gaps (derivation-heavy note held to proof
-standards); rev 2 in flight (H-LIST slack/cone injectivity, the honest
-consumer-match rewrite, a real seal for gate H-n3). Its H.6 OPEN-KERNEL roster
-(owners/refuters in the kernels line below) IS [1v]-FULL's exact blocker list;
-gate H-n3 is SEALED-NEW, ADDITIONAL to MENU-n3/V-n3/STATE-probe-2 (replaces
-none); [2b] acceptance stays additionally behind STATE-probe-2.
+**[2b] DRAFT STATUS (REV 16): note DUAL-ACCEPTED — MOVES §H-DOMAINS rev 6**
+(Codex pass 7 + Fable confirm, both CLEAN on identical text; the spiral
+survived SIX break campaigns — four Codex instances, the Fable (E5) cascade,
+the confirm's 409/409 attack suite: 9 hand-built depth-3/multi-citation/stride
+attacks + 400 fresh randoms, 63 literal-divergent, all rev-6-fixed). Gate
+H-n3 **PASSED 151/151** with the factorpadic oracle (the campaign's twentieth
+sealed gate). Its H.6 OPEN-KERNEL roster — SIX fences at REV 16, per the
+dual-accepted demand/delivery table — IS [1v]-FULL's exact blocker list;
+the [2b] acceptance EVENT stays open behind the fences + STATE-probe-2.
 
 **The statement to prove.**
 > **Theorem MENU (branch-typed at REV 8).** Fix n. Define the shape of a realizable
@@ -1532,18 +1660,32 @@ congruence-lattice bookkeeping, with the Case-J anchor-monomial a > 0 exponents 
 worked instances), M4a-X (EXACT-DOMAIN in the height directions — OPEN; Route A
 carries the REV 5 affine-semigroup duty), and M4b-T (the normal-form audit +
 equivariance clause, on path-length-neutral translations only — REV 5).
-**THE H.6 FENCE ROSTER (REV 15 — §H-DOMAINS' named open kernels; owner [2b];
-= [1v]-FULL's exact blocker list):**
+**THE H.6 FENCE ROSTER (REV 15; extended to SIX at REV 16 per the
+dual-accepted §H-DOMAINS demand/delivery table — §H-DOMAINS' named open
+kernels; owner [2b]; = [1v]-FULL's exact blocker list):**
  (1) XHD-d-EX(∂) — boundary-component exactness (H.2.3). Refuter: H-n3's
-   two-sided census at the low-height corner.
+   two-sided census at the low-height corner (RUN at REV 16 — exercised,
+   evidence not discharge; the general kernel stays fenced).
  (2) M4b-T-AUD — the normal-form audit's ALL-quantifier + π_v = id (H.5.1;
    the M4b-T kernel above, now named as [2b]'s fence). Refuters: H-n3
-   constancy layers; STATE-probe-2.
+   constancy layers (run); STATE-probe-2 (unrun).
  (3) U-R-COUNT — (iv)-REP's residual per-species count check (H.4.2/H.5.3).
-   Refuters: JOINT-probe; H-n3 representative layer.
+   Refuters: JOINT-probe (unrun); H-n3 representative layer (run).
  (4) XHD-u-X — cross-component count equality, (u-T)'s global face (H.4.3).
-   NOT exercised by H-n3's one-component primary family (recorded
-   limitation); needs a second family with ≥ 2 components.
+   FIRST-TESTED at REV 16 but MILD (H-n3's coarse-period (1,2) leg across
+   the two parity components — components share twist + alphabet data);
+   the RE-SEAL DUTIES stand: a genuinely heterogeneous ≥ 2-component
+   second family + the factorization display (§7 unrun roster).
+ (5) H-LIST-GEN (NEW-NAMED here at REV 16; in-note since §H rev 2) — the
+   listed-partition construction beyond class (TRI): multi-bound max
+   branches, the (NA)-coupled slack, negative slopes. NOT exercised by
+   H-n3 (family in-class by design); needs a non-adjacent gate family at
+   the re-seal (§7 unrun roster).
+ (6) E-POS (NEW-NAMED here at REV 16; in-note since §H rev 2) — per-period
+   template-total positivity ⟨w_E, v⟩ ≥ 1 (the coordinatewise form is
+   FALSE — the gate family's E = (3h₁−1)/2 has h₀-weight 0); displayed
+   per-family so far, the general form fenced. Refuter: per-family E
+   displays at any new gate family.
 
 **Sealed gate MENU-n3 (EXHAUSTIVE; pass-1 obstruction 8 repairs).** Enumerate 𝒮_3
 with per-shape parameter sets and state types BEFORE any census. Then: (a) EXHAUSTIVE
@@ -2279,8 +2421,18 @@ retired torus lemma, and NEVER one position-independent C_{S,τ} (struck, §1s).
   FULL completion value GIVEN (ns-null) — the (R_e-exact) display); the
   ι-pairing then yields μ̂-weighted entrance sums whose per-f meaning is
   restored at RS.1's TREE-EXP consumption. Substochasticity is the per-representative
-  identity CTS-M(iv)-PART (Σ T·G + terminal mass = 1), inherited from measure —
-  never asserted of a resummed matrix. CONDITIONALITY DISPLAYED (REV 7 — the
+  identity CTS-M(iv)-PART — RE-CITED at REV 16 (the §S rev-3 plan-sync flag) to
+  (K-SUB)'s TYPED form, §S-RESUM S.0's kernel-row reconciliation:
+    Σ_β K_e(τ,β) + Σ_{σ′} b_e^{term,fin}(τ)(σ′) + Σ_o J_{τ,o} = 1
+  (PART-1's digit-cell partition identity per representative; summands
+  exhausted by the (m, c) classification — (c = 1, m = 1) → K_e /
+  (c = 0, any m) → b^{term,fin} / (c ≥ 1, m ≥ 2) → the cell's J_{τ,o}
+  ONCE). The former gloss "(Σ T·G + terminal mass = 1)" is RETIRED as a
+  citation: read against §V-TABLES' retyping, the all-offspring marked row
+  is PART-2 and sums to 1 + surplus (one T·G per continuing branch —
+  a T·G-sum would multiply-count branching cells); every probabilistic
+  reading routes through (K-SUB), never through PART-2's marked row.
+  Inherited from measure — never asserted of a resummed matrix. CONDITIONALITY DISPLAYED (REV 7 — the
   NINE-input ledger = CL-5 of the canonical CAPSTONE LEDGER, §6 SQ.4 (REV 9);
   pass-6 critical 4: iv-PART, iv-MEAS, and the COMP-typing
   duty were load-bearing but unlisted): K_e's probabilistic reading is
@@ -2720,7 +2872,7 @@ overrun kills X.1b; (iii) the (3b) constant at D = 2…8 vs exact counts; (iv) X
 env(N) at N = 4…8 vs measured undecided mass, both primes, exhaustive. A violation in
 (i)/(ii) is adjudicated against the dictionary X.1a/X.1b, not patched.
 
-## 6. NOTE [4] SQUEEZE — the two-sided general-n bound, and THEOREM U (REV 6: SQ.0(c)'s L(n) = the named open lemma TRACK-COUNT + TRACK-probe; ESCAPE(E0)-conditional domination)
+## 6. NOTE [4] SQUEEZE — the two-sided general-n bound, and THEOREM U (REV 6: SQ.0(c)'s L(n) = the named open lemma TRACK-COUNT + TRACK-probe; ESCAPE(E0)-conditional domination; REV 16: CLEARED for CONDITIONAL drafting — the [4]-COND spec addendum at §1's re-ruling governs the draft)
 
 **The n = 2 pattern to generalize (W6):** (U) decided_σ(N) ≤ (value)·p^{2N} via the
 fixpoint inequality `msW_eighth_le`, plus decided_σ(N) ≥ (value − env(N))·p^{2N} via the
@@ -2817,14 +2969,16 @@ hypothesis and ESCAPE supplying Neumann convergence.
   the ledger made CANONICAL at REV 9, pass-8 critical 3; COMPLETED at REV 10,
   pass-9 critical 2 — CL-13…CL-16 appended, CL-11 extended, numbers stable;
   EXTENDED + SYNCHRONIZED at REV 11, pass-10 criticals 1+2 — CL-17 appended,
-  CL-12 restated to the dual-accepted perimeter, CL-10 updated).**
+  CL-12 restated to the dual-accepted perimeter, CL-10 updated; EXTENDED at
+  REV 16 — CL-18 (J-RAT) + CL-19 (JC-INV) appended per §S-RESUM's plan-sync
+  flags, the owner-side interface for [3]'s two rev-2 hypotheses).**
   ρ_σ := lim decided_σ(N)/p^{nN} exists and equals R_σ(p) for every p; R_σ ∈ ℚ(q) is
   the p-independent solution of (R_e); Σ_σ R_σ = 1. Assembled from SQ.2 + SQ.3 +
   X.2 — hence CONDITIONAL on THE CAPSTONE LEDGER below, which is THE ONE
   canonical list: every other conditionality list in this plan (RS.PRE's
   nine-input ledger included) is a POINTER into this display, and every
   acceptance record cites it by CL-number (§7's rule).
-  > **THE CAPSTONE LEDGER (canonical, REV 9).**
+  > **THE CAPSTONE LEDGER (canonical, REV 9; CL-1…CL-19 at REV 16).**
   > CL-1 ESCAPE(E0) — the active-block solvability kernel (§4).
   > CL-2 X.1b WEIGHT-CHARGE — via X.2's env constants only (§5).
   > CL-3 X.2 PROGRESS itself — the coercivity dichotomy with its constants,
@@ -2903,11 +3057,14 @@ hypothesis and ESCAPE supplying Neumann convergence.
   >   the capstone statement (owner [4], carried at SQ.4's closing
   >   sentence below), never a mathematical residual — NOTHING at CL-12
   >   is open, and the D4R.0-K residual is (c) = VP alone (CL-10).
-  >   PERIMETER SYNC (REV 15): §T-ASSEMBLY (rev 7), §V-TABLES (rev 7),
-  >   §M-SPECIES (rev 8), §R-LEDGER (rev 5) are additionally
-  >   DUAL-ACCEPTED as notes — SEVEN artifacts through the full dual
-  >   standard; their event-level duties are NOT CL-12 items and stay
-  >   tracked at CL-4/CL-5/CL-8/CL-10/CL-13/CL-14 per the §0 ledger.
+  >   PERIMETER SYNC (REV 15; extended REV 16): §T-ASSEMBLY (rev 7),
+  >   §V-TABLES (rev 7), §M-SPECIES (rev 8), §R-LEDGER (rev 5), and at
+  >   REV 16 §X-EXHAUST (rev 8), §H-DOMAINS (rev 6), §S-RESUM (rev 6)
+  >   are additionally DUAL-ACCEPTED as notes — TEN artifacts through
+  >   the full dual standard, the entire write-up drafted to date;
+  >   their event-level duties are NOT CL-12 items and stay tracked at
+  >   CL-1/CL-2/CL-4/CL-5/CL-8/CL-10/CL-13/CL-14/CL-18/CL-19 per the
+  >   §0 ledger.
   > CL-13 CTS-M(i) SYNTAX (REV 10, pass-9 critical 2) — the ONE fixed
   >   finite p-independent state set with DISPLAYED cell predicates and
   >   globally compatible target-cell maps; without it no path product or
@@ -2930,6 +3087,30 @@ hypothesis and ESCAPE supplying Neumann convergence.
   >   regrouping machinery. Without CL-17 the repaired shallow interface
   >   could remain merely asserted while the ledger appears closed —
   >   pass-10 critical 1's channel (§4).
+  > CL-18 (J-RAT) (NEW at REV 16 — owed by §S-RESUM's S.6 plan-sync flag,
+  >   rev 2/pass-2 finding 10; owner [1v], with [2b] on the height-sum
+  >   face): the PER-CELL rational branching-mass tables — per branching
+  >   digit cell of each outcome class o at each state τ, the cell-count
+  >   polynomial per the (iv)-POLY pattern + its XHD-s height sum, i.e.
+  >   J_{τ,o} ∈ ℚ(q) ENTRYWISE — a deliverable BEYOND PART-1's TOTAL
+  >   cell-partition mass, which is all the dual-accepted §V-TABLES
+  >   currently displays. Consumed by [3]'s b_e^split (each branching
+  >   cell's J once — never the marked T·G) and (K-SUB)'s third summand,
+  >   and cited by RS.2's rationality chain, riding RS.4's tag (§4).
+  >   §V-TABLES/§H-DOMAINS are ACCEPTED texts, not edited from here — the
+  >   owner notes' NEXT revision rounds record the deliverable; THIS
+  >   ledger entry is the cross-note authority binding it meanwhile.
+  > CL-19 (JC-INV) (NEW at REV 16 — same flag; owner [2b], the
+  >   joint-lumpability face alongside XHD-u's lumpability clauses): per
+  >   read, the JOINT digit-cell conditional law given the entrance (all
+  >   cells of the read jointly, branching cells INCLUDED — hence the
+  >   branching-cell selection law) is ONE function of the retained
+  >   state — invariant across representatives and admissible histories,
+  >   h_ent included. (u-R) does NOT supply it (single-branch marginals
+  >   tolerate different correlations), and (SIB) starts only AFTER
+  >   conditioning on the branching cell. Consumed by [3]'s XRB = RS.0(β)
+  >   derivation ((β-2b), §S-RESUM S.1); a surviving failure adjudicates
+  >   as R2's lumpability channel (one 𝒯-refinement round, then wall).
   Until each CL-item closes, the capstone statement and its acceptance record
   carry these tags verbatim (§7's acceptance-record rule). State
   with the honest normalization sentence (monic-box density; projective/palindromy
@@ -3046,17 +3227,21 @@ Per note, in order; no step may be skipped, no note trusted early:
    prediction-derivation error class; threshold repair at §M rev 2) and
    M-n3-V2 (**PASSED at every level** — the fresh threshold re-seal,
    N = 1..7 exhaustive, all 45 fresh N* sharp both sides — the
-   campaign's 19th sealed gate); H-n3 (SEALED-NEW in §H-DOMAINS —
-   two-sided exactness census + evaluation chain + representative,
-   constancy, entrance layers at p = 2, 3; ADDITIONAL to
-   MENU-n3/V-n3/STATE-probe-2, replaces none; NOT yet run).
+   campaign's 19th sealed gate); H-n3 (**PASSED 151/151**, 2026-07-27 —
+   REV 16 sync; two-sided exactness census + evaluation chain +
+   representative, constancy, entrance layers at p = 2, 3, with 288
+   factorpadic oracle verdicts; ADDITIONAL to MENU-n3/V-n3/STATE-probe-2,
+   replaces none; seal verification/CASE_HN3_SEALED_PREDICTIONS.md + its
+   S9 post-census verdict — the campaign's TWENTIETH sealed gate; honest
+   perimeter sealed: one family, two parity components sharing
+   twist/alphabet data — the re-seal duties in the unrun roster below).
    Gate scripts live in `verification/`, predictions in
    `verification/*_SEALED_PREDICTIONS_<date>.md`.
    ACCEPTANCE-RECORD RULE (REV 4, pass-3 concern 5; made CANONICAL at REV 9,
    pass-8 critical 3): every acceptance record names its note's open
-   conditions INLINE, citing THE CAPSTONE LEDGER (§6 SQ.4, CL-1…CL-17 —
+   conditions INLINE, citing THE CAPSTONE LEDGER (§6 SQ.4, CL-1…CL-19 —
    completed at REV 10, pass-9 critical 2; extended + synchronized at
-   REV 11, pass-10 criticals 1+2) by
+   REV 11, pass-10 criticals 1+2; CL-18/CL-19 appended at REV 16) by
    CL-number — the ONE canonical list; partial lists elsewhere (RS.PRE's
    nine inputs = CL-5) are pointers into it, and no record may substitute a
    partial list for the CL citation. RS.4, [3t], [3], [4], and the capstone
@@ -3107,6 +3292,40 @@ records themselves live in MOVES; §0's BINDING DISTINCTION). Event [3t]-COND (N
 - [3t]-FULL is a LATER, distinct discharge event, BLOCKED on [5]'s acceptance (X.3
   discharge) AND [3]'s acceptance (XRB discharge); never unconditional while any
   CL-10 duty is open.
+
+**THE UNRUN-CENSUS ROSTER (NEW at REV 16 — the campaign's empirical to-do
+surface, consolidated into ONE displayed table; every scattered "not yet
+run"/"re-seal duty" line above and in MOVES points here. Census epistemics
+unchanged: gates REFUTE or SUPPORT, never prove; every run stays under the
+Case-K seal discipline and the probe-language clause.)**
+
+| # | census / probe | what it tests | owner | status | blocker to running |
+|---|---|---|---|---|---|
+| 1 | STATE-probe-2 | M2(ii) = CTS-M(iv)-REP on vtx-VARYING twisted cells (p = 2 monic sextics, R₀ = ψ²·χ; per-τ conditional rows in [1v]-COND definable form) | [2b] (its PASS required before the [2b] OR [3] EVENT) | specced (§4) | none — runnable NOW; the campaign's #1 front-loaded discriminator |
+| 2 | X-n3 layers (i)–(iii) | the prefix-cumulative index sweep (0 violations); sealed candidates s(3) = 2, c₀(3) = 4, target slopes, C_T(3) = 53 per-letter teeth, the (3b) legs; the decay-curve observation (displayed toothless at N ≤ 8) | [5] | numbers SEALED (§X rev 2, X.5) | none — 2²⁴ + 3¹⁵ boxes, existing patterns |
+| 3 | STALL-probe | candidate-s(n) ratio refuter (= X-n3 layer (ii); one run, sealed jointly per X.5's relation note) | [5] / X.1b WEIGHT-CHARGE | specced | none — runs with row 2 |
+| 4 | ESCAPE-probe | layer (a): the SYMBOLIC closed-class refuter — E0's genuine falsifier at that p; layer (b): k ≤ 8 decay consistency | [3] / ESCAPE(E0)/CL-1 (per-pool form) | specced (§4; §S S.4) | none — front-loaded, [3]-COND now drafted |
+| 5 | RESUM-n3 | the five R_σ + four-prime values + checksum; depth partial sums; THE ACT LAYER (Act_2/Act_3, junk determinants, wild-p active-value agreement; pools q₀ = 2, 3 (+4 as feasible)); the oracle-decided census (ORC-1..4) | [3] (acceptance-blocking) | SPECIFIED, NOT SEALED (S.7 seal semantics) | the seal artifact (RESUM_N3_SEALED_PREDICTIONS.md) + the (ORC-1) Krasner-radius display duty — BOTH owed before any run |
+| 6 | SIB deg-≥5 layer | (SIB)'s census-untested faces: all-continuing MIXED-SHAPE (two continuing different-shape siblings force deg ≥ 5) and all-continuing m ≥ 3 (deg ≥ 6) | [3t] / (SIB-STEP)/CL-10 | unsealed; the B22 box-precision stability pattern is the mandatory template | quintic/sextic cell design + box feasibility |
+| 7 | H-n3 re-seal | XHD-u-X's SECOND family — genuinely HETEROGENEOUS ≥ 2 components (the run family's parity components share twist + alphabet data) — plus the factorization display, and H-LIST-GEN's non-adjacent out-of-class family | [2b] (fences (4)/(5), §3) | re-seal duty recorded in the H-n3 seal itself | family construction (design work), then a FRESH Case-K seal |
+| 8 | HMC-probe | CTS-M(v), two-layer: COMP-h typing; fixed-h₁ conditional step-2 law | [1v] / HMC (CL-5 input 6) | specced, not run | none |
+| 9 | VALUE-Fq / VALUE-p n = 5 layers (+ JOINT-, COMPOSE-probes) | the value-kernel + μ ≥ 2 machinery n = 3 cannot express (§0 gate-design rule): 24 q-points, CTS-M table layers, I^ent factors, Ĉ_{ε,γ} counts | [1v] (the V-n5 duties) | roster-standing (REV 3/7) | n = 5 seal design |
+| 10 | REL-n4 | [2r]'s decision-independent base-change census, (g1)–(g7) | [2r] / CL-8 | specified (§3r; (g2) mandate checked satisfiable) | the REL.1/REL.2 discharge drafting |
+| 11 | TRACK-probe | candidate-L(n) refuter: track-opening counts on the STALL-probe boxes under the sealed assignment rule | [4] / TRACK-COUNT/CL-7 | specced; ACTIVATED by the REV 16 [4] clearance | the sealed assignment-rule display (from the TRACK-COUNT charging derivation or the [4]-COND draft) |
+| 12 | SQUEEZE-n3 | the two-sided brackets at all five σ, PARI-oracle decided counts | [4] | specified (§6) | RESUM-n3's sealed R_σ + X.2's env constants — the gates CHAIN |
+
+ROSTER NOTES. (i) Rows 1–4 are runnable NOW and are the cheap
+discriminators; rows 5/12 carry seal-artifact duties that must exist
+BEFORE their runs. (ii) NAMING CORRECTION recorded: the heterogeneous
+re-seal (row 7) is an H-n3 duty per the record (the H-n3 seal's honest
+limitations + §H rev 3's re-attribution); the M-n3 gates (content + V2)
+are PASSED with NO open M-n3 re-seal — any roster line elsewhere calling
+row 7 "M-n3's" is a mislabel, corrected here. (iii) MENU-n3's oracle
+layer (iv) — the decision-level factorpadic cross-check — rides row 5's
+ORC layers and stands with them as VP-SOUND's standing refuters; H-n3's
+run already banked 288 oracle verdicts. (iv) This table does not narrow
+any quantifier: untested pools/faces ride their kernels (the row-5 pool
+scope note; row 6's derivation-only faces).
 
 ## 8. Honest risk register (REV 3 — updated per the pass-2 review + both probe reports)
 
@@ -3265,11 +3484,12 @@ M-n3-V2 PASSED at every level; residuals on record: VP/CL-10 + the SP-FIN/
 SP-OUT coverage duties [1v]/CL-13 consumes). [1v] VALUE: DONE at the [1v]-COND
 level (REV 15 — §V-TABLES DUAL-ACCEPTED at rev 7, CTS-M GIVEN XHD; gate V-n3
 PASSED 178/178; HMC stays open, probe specced-not-run; [1v]-FULL blocked on
-[2b]'s four H.6 fences — §0 ledger). [2b] STATE-GEOM: 2.5 units, IN SPIRAL
-(REV 15 — §H-DOMAINS drafted, pass 1: 9c/2g, rev 2 in flight; delivers the XHD
-package incl. (XHD-u)/(ENT-U), whose acceptance is the [1v]-FULL discharge;
-open fences XHD-d-EX(∂)/M4b-T-AUD/U-R-COUNT/XHD-u-X + gate H-n3 sealed-new;
-acceptance behind STATE-probe-2). [2r] REL: note DONE as a LEDGER (REV 15 —
+[2b]'s SIX H.6 fences — §0 ledger, REV 16). [2b] STATE-GEOM: note DONE
+(REV 16 — §H-DOMAINS DUAL-ACCEPTED at rev 6, six break campaigns survived;
+gate H-n3 PASSED 151/151) — the DISCHARGE work remains: the six H.6 fences
+(XHD-d-EX(∂)/M4b-T-AUD/U-R-COUNT/XHD-u-X/H-LIST-GEN/E-POS), STATE-probe-2,
+and the H-n3 re-seal families (§7 roster row 7); the [2b] EVENT is the
+[1v]-FULL discharge. [2r] REL: note DONE as a LEDGER (REV 15 —
 §R-LEDGER DUAL-ACCEPTED at rev 5); the DISCHARGE work remains 1.5–2 units (the
 REL.1 re-scoping pass + REL.2(a)/(b)/(d)/(e) — five obligations, (c) re-homed
 to [3t]'s (SIB) — + REL.3 + gate REL-n4 with (g1)–(g7) owed). [3t] TREE: note
@@ -3279,16 +3499,24 @@ dual bar; gates SIB 32/32 + T-n3 21/21 both PASSED) — remaining substance: the
 MEASURE-LEVEL joint-vector equidistribution + the unimodularity mechanism —
 coordinate disjointness unavailable) and VP-SOUND's two declared citations;
 [3t]-COND RECORDED (2026-07-27 — the §7 acceptance record; §0 ledger updated);
-[3t]-FULL at [5]'s AND [3]'s closure (X.3 resp. XRB discharge). [5] EXHAUST: 2 units — CLEARED TO
-DRAFT NOW (REV 15 ruling, §1: X.1a/X.1b unconditionally, X.2 with the M4a-tail
-constants as a displayed [2b]-owed hypothesis; three kernels; X.1b is OPEN —
-WEIGHT-CHARGE may resist). [3] RESUM: 4–5 units — CLEARED FOR CONDITIONAL
-DRAFTING NOW (REV 15 ruling, §1: the [3]-COND form; the K_e assembly/RS.0/RS.1
-+ ESCAPE(E0); front-loads XRB = RS.0(β)/CL-9 and the ESCAPE-probe; acceptance
-still behind STATE-probe-2 + [1v]-FULL + RESUM-n3). [4] SQUEEZE: 2 units — NOT
-CLEARED (REV 15 ruling, §1: its spine consumes [3]'s accepted solve; EXCEPTION:
-the TRACK-COUNT charging derivation + TRACK-probe and SQ.0's arithmetic are
-[3]-independent and front-loadable as a kernel derivation unit).
+[3t]-FULL at [5]'s AND [3]'s closure (X.3 resp. XRB discharge). [5] EXHAUST:
+note DONE (REV 16 — §X-EXHAUST DUAL-ACCEPTED at rev 8) — remaining substance:
+WEIGHT-CHARGE (verbatim OPEN, may resist — R4 live), (X1a-ALIGN), the
+(X2-AFF)/(X2-CAP)/(X2-BRIDGE)/(X2-TAILS) family; census layers X-n3 +
+STALL-probe unrun (§7 roster rows 2–3); the [5] EVENT = the X.3/CL-4
+discharge. [3] RESUM: note DONE in the [3]-COND form (REV 16 — §S-RESUM
+DUAL-ACCEPTED at rev 6; XRB = RS.0(β)/CL-9 delivered under its displayed
+hypothesis set) — remaining substance: ESCAPE(E0) per-pool (the note's
+central open kernel + the ESCAPE-probe, §7 roster row 4), CL-17(ii), the
+RESUM-n3 seal artifact + run (row 5); the [3] EVENT behind STATE-probe-2 +
+[1v]-FULL + RESUM-n3. [4] SQUEEZE: 2 units — CLEARED at REV 16 for
+CONDITIONAL drafting (the [4]-COND form; §1's re-ruling + spec addendum:
+SQ.0's decided-budget with TRACK-COUNT displayed open, SQ.1 + the envelope
+side consuming X.3/CL-4 and X.2's constants as displayed [5]-owed
+hypotheses, SQ.2's induction with §S-RESUM's displayed legs, SQ.4 =
+Theorem U in the FULL HONEST FORM with CL-1…CL-19 + every note's
+conditionality inline); TRACK-probe activated (§7 roster row 11); the [4]
+EVENT behind [3]'s + [5]'s events, TRACK-COUNT + D(n), and SQUEEZE-n3.
 Verification multiplies each by the usual ~2× (the §C
 precedent: 17 passes to dual acceptance). Gates are cheap (CPU-only, exhaustive boxes ≤ 2^28 conditioned
 / 2^24 full / 3^15–3^18; `verification/` patterns exist); seal discipline is the
@@ -4067,3 +4295,43 @@ demonstrated, none closed. The critical path is now [2b]'s spiral
 (§H-DOMAINS rev 2 → its fences → [1v]-FULL) alongside the newly cleared [5]
 and [3]-COND drafting; STATE-probe-2 and the STALL-probe remain the
 front-loaded cheap discriminators.
+
+## REV 16 RECORD (2026-07-27) — the dual-standard-milestone sync + the [4] re-ruling
+
+*(Not a response to a structural pass — the plan is SOUND at pass 13; REV 16
+synchronizes the plan to the MOVES dual-standard milestone (all nine assembly
+notes + §B2-DEF/§C dual-accepted as notes), applies the two owed §S plan-sync
+items, re-rules [4]'s drafting clearance now that its hypothesis owner is
+frozen text, and consolidates the empirical to-do surface. No kernel's
+mathematical content touched.)*
+
+| Item | Source | REV 16 disposition |
+|---|---|---|
+| 1 Acceptance-state sync | MOVES dual-acceptance records (2026-07-27): §X-EXHAUST rev 8 (= [5]), §H-DOMAINS rev 6 (= [2b]), §S-RESUM rev 6 (= [3]-COND) — THE DUAL-STANDARD MILESTONE (TEN artifacts) | §0's ledger extended to TEN with three new event rows ([5], [3]-COND, [2b] restated), the note-acceptance ≠ event distinction maintained row-wise: [5]'s event open on WEIGHT-CHARGE/X2 kernels + X-n3/STALL unrun; [3]'s event blocked on STATE-probe-2 + [1v]-FULL + RESUM-n3; [2b]'s event open on the fences + STATE-probe-2; [2r]'s row gains the REV 16 note — §S-RESUM cites the (e1)–(e5) legs as NAMED OPEN obligations, all five still open AS PROOFS; [3t]-FULL's row retyped to "owner NOTES accepted, discharges NOT advanced". §1 bullets + §3 + §9 restated to match |
+| 2 [1v]-FULL blocker correction | the dual-accepted §H demand/delivery table (its plain statement: [1v]-FULL cannot be recorded on acceptance) | the blocker list is SIX fences, not four: + H-LIST-GEN, E-POS (both in-note since §H rev 2, now plan-named); §0, §1 [1v] bullet, §3's H.6 FENCE ROSTER (entries (5)/(6) added with refuters), §9 all updated |
+| 3 Gate-count sync | H-n3 PASSED 151/151 (2026-07-27; 288 factorpadic verdicts; CASE_HN3 seal S9) | sealed-gate count TWENTY (§0, §7 roster line updated PASSED; the H-n3 honest perimeter — one family, parity components sharing twist/alphabet — carried to the unrun roster's re-seal row) |
+| 4 CL-18/CL-19 (owed by §S-RESUM S.6's plan-sync flags, rev 2 finding 10 + rev 3) | §S-RESUM S.0 (J_{τ,o}) and S.1 (β-2b)/(JC-INV) | the capstone ledger extended CL-1…CL-19: CL-18 (J-RAT) — owner [1v] (+[2b] height-sum face), the PER-CELL rational tables BEYOND PART-1's total; CL-19 (JC-INV) — owner [2b], the joint-lumpability face (branching-cell selection law included; R2-channel adjudication). Accepted texts untouched — the ledger is the cross-note authority; the owner notes' next revision rounds record the deliverables (§6 SQ.4; §7 record-rule range updated) |
+| 5 The §4 parenthetical | §S-RESUM (K-SUB) — the S.0 kernel-row reconciliation (its explicit plan-sync flag) | "(Σ T·G + terminal mass = 1)" RETIRED as a citation and re-cited to (K-SUB)'s typed form — the three-summand display (K_e row + b^{term,fin} + Σ_o J_{τ,o} = 1) with the (m, c) routing and the PART-2 marked-row exclusion displayed at the §4 substochasticity site |
+| 6 THE [4] RE-RULING | the REV 15 ruling's own grounds vs the current state ([3] = frozen dual-accepted text) | **[4] SQUEEZE CLEARED for CONDITIONAL drafting NOW ([4]-COND)**: REV 15's ground (b) void (the owner interface is frozen text), ground (a) recast (ONE named package — §S's displayed solve + S.6 ledger — owner-specified, the five-times-worked pattern); the [4]-COND SPEC ADDENDUM displayed at §1 (SQ.0 decided-budget + TRACK-COUNT open; SQ.1/envelope side consuming X.3/CL-4 + X2 constants as displayed [5]-owed hypotheses with §X's toothless-envelope honesty; SQ.2 induction on §S's displayed legs with CL-8 citations; SQ.4 = Theorem U in the FULL HONEST FORM, CL-1…CL-19 + every note's conditionality inline; acceptance split — the [4] EVENT behind [3]'s + [5]'s events, TRACK-COUNT/D(n), SQUEEZE-n3) |
+| 7 The unrun-census roster | the scattered "not yet run"/"re-seal duty" lines (MOVES statuses, H-n3 S9, S.7, X.5, §7 roster) | consolidated as ONE displayed table at §7 (12 rows: STATE-probe-2, X-n3 layers, STALL-probe, ESCAPE-probe, RESUM-n3, the SIB deg-≥5 faces, the H-n3 heterogeneous re-seal, HMC-probe, the n = 5 VALUE layers, REL-n4, TRACK-probe, SQUEEZE-n3 — owners, statuses, blockers); NAMING CORRECTION recorded there: the heterogeneous re-seal is H-n3's, not M-n3's (M-n3 content + V2 are PASSED, no open M-n3 re-seal); rows 1–4 runnable now |
+
+**DAG change at REV 16:** none — nodes, edges, and every acceptance-event
+split are untouched; only STATUS annotations and the drafting clearances
+moved. The graph remains ACYCLIC ([4]-COND consumes accepted note
+STATEMENTS; the [3] → [4] and [5] → [4] edges stay acceptance-event edges).
+
+**Open kernels after REV 16 (delta from REV 15):** CLOSED — none. ADDED as
+plan-named items: CL-18 (J-RAT), CL-19 (JC-INV) (both §S rev-2 hypotheses,
+now with their owner-side interface); H-LIST-GEN + E-POS join the plan-side
+H.6 roster (in-note since §H rev 2). Everything else carries over:
+(SIB)/(SIB-STEP), HMC, ESCAPE(E0) (per-pool), WEIGHT-CHARGE, (X1a-ALIGN),
+the X2 family, TRACK-COUNT (+ D(n)), CL-17(ii), VP-SOUND's citations, the
+REL.1/REL.2/REL.3 ledger items, the six H.6 fences.
+
+**Wall status after REV 16:** R1, R2, R4, R9, R-SIB unchanged — no wall
+demonstrated, none closed. With every drafted note dual-accepted, the
+critical path is now EMPIRICAL-FIRST: STATE-probe-2 (unblocks [2b] and [3]
+events), the H.6 fence discharges ([1v]-FULL), and ESCAPE(E0); §7's unrun
+roster rows 1–4 are the front-loaded cheap discriminators. The next
+DRAFTING unit is [4]-COND (this record's item 6) — after it, no note of
+the campaign remains undrafted.

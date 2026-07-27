@@ -433,6 +433,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    sealed gates; drafting ruling: [5] + [3]-COND cleared NOW, [4] not cleared). The write-up now has SEVEN dual-accepted artifacts + one note in
    spiral + two plan notes ([3] RESUM, [4] SQUEEZE + [5] EXHAUST) not yet drafted —
    those await [2b]'s package and the remaining kernels per the plan's DAG.
+   UPDATE (2026-07-27, night — PLAN REV 16 LANDED, after the milestone entry
+   below): the plan synchronized to the dual-standard milestone (§0 ledger →
+   TEN note-accepted artifacts with event rows for [5]/[3]-COND/[2b];
+   [1v]-FULL's blockers corrected to [2b]'s SIX H.6 fences; gate count TWENTY
+   with H-n3 151/151). **THE [4] RE-RULING: [4] SQUEEZE CLEARED for
+   CONDITIONAL drafting ([4]-COND)** — REV 15's blocker (undrafted [3]
+   interface) is void with §S-RESUM dual-accepted frozen text; the [4]-COND
+   spec addendum is at plan §1 (SQ.4 = Theorem U in the FULL HONEST FORM,
+   capstone ledger now CL-1…CL-19 — CL-18 (J-RAT)/CL-19 (JC-INV) added per
+   §S's plan-sync flags); THE UNRUN-CENSUS ROSTER consolidated at plan §7
+   (12 rows, owners + blockers; rows 1–4 — STATE-probe-2, X-n3, STALL-,
+   ESCAPE-probe — runnable now). Next drafting unit: [4]-COND.
    UPDATE (2026-07-27, night — THE DUAL-STANDARD MILESTONE): **TEN artifacts
    through the full dual bar — the ENTIRE math write-up drafted to date passes
    BOTH Codex and a fresh Fable instance clean on identical text**: §B2-DEF, §C,
