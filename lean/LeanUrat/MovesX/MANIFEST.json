@@ -459,7 +459,7 @@
     "envelopeExp"
    ],
    "sorries": 1,
-   "status": "restated-post-refutation",
+   "status": "restated-post-refutation+D9-rebind",
    "difficulty": "hard",
    "deps": [
     "XC.3",
@@ -469,7 +469,7 @@
     "XG.2c",
     "XG.2d"
    ],
-   "statement_sha256": "4f8dd07c4ac46faa60c326044eca6025ca726343d716dc5d0f964f9d90088ad6",
+   "statement_sha256": "aa64246adadc1020fd94eb91a3b7086d644cba080cf4dc443eeaf96753becaea",
    "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving."
   },
   {
@@ -479,7 +479,7 @@
     "envelopeSqrt"
    ],
    "sorries": 1,
-   "status": "restated-post-refutation",
+   "status": "restated-post-refutation+D9-rebind",
    "difficulty": "hard",
    "deps": [
     "XC.3",
@@ -490,7 +490,7 @@
     "XG.2c",
     "XG.2d"
    ],
-   "statement_sha256": "960e541629740dbdeee08d833ad2f1caac69784da740a45e129fcab0cc7082a2",
+   "statement_sha256": "a4e98475d925e984865393a3015215daea8cd6adbc57ed5efdef8b4e4614f4a2",
    "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving."
   },
   {

@@ -452,18 +452,28 @@ at small N by design (the (N−1−c_cap) numerator; X.5(iii)'s "no teeth at cen
 so the conclusion now binds ONLY where the note's arithmetic has content — ∃ N₀ before ∀ N,
 with N₀, c3, c4 functions of (n, K) alone (bound BEFORE p, the D9 discipline)]:
 ```lean
-theorem envelopeExp (n : ℕ) (hn : 2 ≤ n) (X : XFamily n) (K : XConsts n)
-    (PR : X2ProgressP n X K) (BR : X2BridgeP n X) (AF : X2AffP n X K) (CP : X2CapP n X K)
-    (AL : X1aAlignP n X ⟨true, false⟩) (WC : WeightChargeFullP n X K)
-    (TL : X2TailsP n X K) (NS : NsNullP n X) (R : X3aRouteP n X K) :
-    ∃ N₀ : ℕ, ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧ ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N →
-      ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3 * (p : ℝ) ^ (-(c4 * N))
+theorem envelopeExp (n : ℕ) (hn : 2 ≤ n) (K : XConsts n) :
+    ∃ N₀ : ℕ, ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧
+      ∀ (X : XFamily n), X2ProgressP n X K → X2BridgeP n X → X2AffP n X K → X2CapP n X K →
+        X1aAlignP n X ⟨true, false⟩ → WeightChargeFullP n X K →
+        X2TailsP n X K → NsNullP n X → X3aRouteP n X K →
+        ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N →
+          ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3 * (p : ℝ) ^ (-(c4 * N))
 ```
 TAG CHECK against the CONDITIONALITY SUMMARY (MOVES ~11449, "exponential GIVEN
 (X.2)+X.1b+(ALIGN-inc)+(X2-TAILS)+(X2-BRIDGE)+(X2-CAP)"): PR=(X.2), WC=X.1b,
 AL=(ALIGN-inc), TL, BR, CP — ALL present; the retained extras are themselves displayed
 (AF from the envelope block's opening "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF)"; NS per
 the (NS-c) display rule; R = X.3(a)'s tags for the bridge's first-three-pieces mass).
+D9 REBIND (XE-audit adjudication: Codex findings 2/4 ACCEPTED — the constants were
+bound after X, so nothing forced them (n,K)-only): N₀, c3, c4 now bind BEFORE ∀ X with
+the tags as implications — quantified over exactly (n, K), no Defs change (XConsts was
+already a separate structure; additive-only rule respected trivially). Findings 1/3/5
+OVERRULED (ledger): the units encode the tags→envelope DERIVATION, and the kernel proved
+the tags cannot yield the ∀N form — ∃N₀ is the derivation's only faithful rendering.
+DISCLOSED: R is redundant given AL ∧ WC (route a2) — kept, matching the tag list; the
+note's summary line under-lists the envelope-block tags (AF/NS) — a NOTE-SIDE
+observation, recorded here only, no statement change.
 INTENDED N₀ (sketch-level): the least N at which BOTH displayed exponents are positive —
 N > 1 + c_cap (the (N−1−c_cap) numerator) AND d*(N) = cd·N − cd′ exceeds the ⌊log₂ n⌋
 offset AND h*(N) ≥ 1 — an (n, K)-formula, p-free.
@@ -478,7 +488,7 @@ asserted anywhere anymore.
 moves_ref: "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF) … Given (X.2) with linear d*, h* AND both legs …: env(N) ≤ c₃(n)·p^{−c₄(n)·N}, with c₃, c₄ traced to s(n), c₀, C_T, c_T, c_cap". deps: XC.3, XE.1*, XF.7, XG.2b–d (for the bridge's first-three-pieces mass, via X.3's tags). sketch: BR splits Undec(N) into the three null-tagged pieces (discZero via XF.7/vdisc_le_tail; ns via NS; InfTree via XG.2d ⊆ discZero) + the witness-branch piece. WITNESS FEED (rev 4, traced): BR's witness b carries `IsLeafB b ∧ NsFreeB b`, hence `FourthPieceB b` by the FIRST disjunct of FourthPieceB — exactly PR's (and XD.4's, in XE.3) hypothesis; PR on b gives deep-or-tall at d* = cd·N − cd', h* = ch·N − ch'; DEEP LEG: DeepEvent d* ⊆ {vdisc ≥ (2(d*−log)/(2s+1))} pointwise (XC.3 + gmnLink) → vdisc_le_tail + XF.7 give the (3b) bound with the note's displayed exponent; TALL LEG: TL. Constants assembled n-only (c₄ from cd, s, n − 1; the p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} absorption into c₃ — p-free). HARD. hyp_fields: the FULL tag set, verbatim the note's "CONSUMERS … inherit ALL tags above" line.
 **XE.3 envelopeSqrt** — the √N fallback [RESTATED POST-REFUTATION, §7 — same adjudication;
 the same countermodel refuted the ∀N form and escapes identically via N₀]: same signature
-MINUS `PR` (X2ProgressP), conclusion `∃ N₀ : ℕ, ∃ c3' c4' : ℝ, 0 < c3' ∧ 0 < c4' ∧ ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N → ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3' * (p : ℝ) ^ (-(c4' * Real.sqrt N))`. TAG CHECK (summary's √N line "(X2-HYP)+(X2-AFF)+(X2-CAP)+X.1b+(ALIGN-inc)+(X2-TAILS)+(X2-BRIDGE)"): (X2-HYP) is XD.4's derived shape from AF ∧ CP; WC=X.1b, AL, TL, BR all present; NS/R as in XE.2.
+MINUS `PR` (X2ProgressP), conclusion `∃ N₀ : ℕ, ∃ c3' c4' : ℝ, 0 < c3' ∧ 0 < c4' ∧ ∀ (X : XFamily n), [the eight tags as implications] → ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N → ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3' * (p : ℝ) ^ (-(c4' * Real.sqrt N))` (D9 REBIND as in XE.2). TAG CHECK (summary's √N line "(X2-HYP)+(X2-AFF)+(X2-CAP)+X.1b+(ALIGN-inc)+(X2-TAILS)+(X2-BRIDGE)"): (X2-HYP) is XD.4's derived shape from AF ∧ CP; WC=X.1b, AL, TL, BR all present; NS/R as in XE.2.
 moves_ref: "Given (X2-HYP) + (X2-AFF) + (X2-CAP) + (X2-BRIDGE) PLUS the same two leg tags …: env(N) ≤ c₃′(n)·p^{−c₄′(n)·√N} — subexponential, enough for X.3's qualitative form, NOT for SQUEEZE's constants". deps: XD.4 in place of PR; otherwise as XE.2. HARD. hyp_fields: (X2-HYP)'s inputs + both leg tags — the rev-4 leg-tag line reproduced.
 
 ### Layer F — the ELEMENTARY DISCRIMINANT TAIL, UNCONDITIONAL (Ruling 2; findings 8/9/13)
