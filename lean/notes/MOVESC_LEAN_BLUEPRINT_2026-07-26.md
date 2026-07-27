@@ -777,3 +777,73 @@ piece-map/alphabet identification behind `TypObject` and the provenance of the e
 semantic audit (re-adjudicate: IsValueCoord/IsValueSupport vs rev 14 C.1(ii)/C.1.5′ — span-only
 value slots, the fine `Dwidth` granularity, the no-root-special-case reading of E(ν₀)'s rim
 content as fine span digits).
+
+---
+
+# ROUND 6 (2026-07-27) — the fine-slot band boundary (the one round-5 defect)
+
+Audit: `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R5_2026-07-27.md` (REJECT). Findings 1–6 and
+8–13 certified the round-5 species laws (strip/value tagging, `IsValueCoord` slot arithmetic,
+value-support completeness-as-iff, strip/value overlap exclusion, no root special case);
+exactly ONE defect remained (finding 7, blocking list 1–3): `inFreshBand`'s upper edge was
+`Node.lineStep` — the COARSE post-landing `childWidth` staircase — while rev 14 C.1(ii)'s
+species inventory runs per FINE slot (frame-`i` blocks of width `Dwidth`, C.1.0(a)).
+
+## R6.A — the disposition (one retyped conjunct, no new names)
+
+THE DEFECT. `lineStep b = line.at((b/childWidth)·childWidth)` with `childWidth = e·g·Dwidth`:
+one coarse left-edge value covers `e·g` fine slots. The line DESCENDS, so at the later fine
+slots of a coarse block `lineStep b > slotVal (fineSlot b)` STRICTLY whenever `e·g > 1`. Any
+coordinate with `slotVal (fineSlot b) < ht ≤ lineStep b` was admitted into the band, though
+rev 14 leaves it UNCONSTRAINED (the read's clause content at fine slot `j` stops at `new(j)`).
+Such a coordinate is never a value position (`IsValueCoord` needs `ht = slotVal (fineSlot b)`),
+so `fresh_cover` + `fresh_assembled`'s strip tag FORCED `x c = 0` there: a spurious locus
+shrink and an `mstar` inflation — R5.B.1's "non-geometric singleton zeros above the true
+fine-slot line". At `e·g = 1` (every recentering; `childWidth = Dwidth`) the two boundaries
+coincide — the defect was invisible there and structural at `e·g > 1`.
+
+THE RETYPE, as written (the third conjunct only; the region and floor conjuncts unchanged):
+
+    H.htH i (coordOf c) ≤ ν.slotVal (ν.fineSlot (coordOf c).2)
+
+the band's upper edge at each fine slot IS that slot's line value `new(j) = line.at(j·Dwidth)`
+— the recorded fine-slot valuation law, the SAME granularity round 5's
+`IsValueCoord`/`IsValueSupport` already read.
+
+## R6.B — why the fine boundary is now exact (per species, against rev 14 C.1(ii))
+
+The band at fine slot `j` (interior indices, floor-strict) is exactly `(F_i(b), new(j)]`, and
+that interval is exactly the read's fresh content at slot `j`:
+* (α) SPAN slots: the off-lattice strip zeros strictly between floor and `new(j)` (on the
+  factor interior the floor IS the old staircase — DOM floor form, so the strip is
+  `(old(j), new(j))`) PLUS the on-lattice level set AT `new(j)` — the value digit,
+  `IsValueCoord` sitting exactly at the band's upper edge (`≤` with equality). NOTHING above
+  `new(j)` is admitted anymore.
+* (β)/(γ) slots: the strip `(old(j), new(j)]` of zeros through the line level inclusive —
+  strict-bound clauses, so the `new(j)`-level coordinate is a zero, not a value (`spanSlot`
+  fails, the strip tag `¬ IsValueCoord` holds); included since `ht ≤ new(j)`.
+* (γ) SELF-TRUNCATION: past the crossing slot `j×`, `new(j) ≤ F_i(b)` and the floor-strict
+  conjunct empties the slot's band — C.1(i)(γ)'s cut now falls at the exact FINE slot, where
+  the coarse bound could hold a partial block open past it.
+* VALUE supports remain in the band (`fresh_band` still satisfiable): a legal `IsValueSupport`
+  coordinate has `ht = slotVal j` at its span slot `j` — the upper edge; strips sit strictly
+  inside. Round 5's species partition is untouched — only the band's EXTENT moved.
+
+`Node.lineStep` is RETAINED, docstring retagged: it remains the post-landing (ZC-a) staircase
+convention only (`Node.staircase` is its factor-interior truncation) and plays no fresh-band
+role. `fresh_band`/`fresh_cover`/`mstar_eq` consume `inFreshBand` BY NAME — statement forms
+byte-stable; their docstrings updated ("its own fine slot's exact valuation"; "self-truncates
+per fine slot").
+
+## R6.C — elaboration record (round 6)
+
+`MovesC/Defs.lean`: 978 lines, `lake env lean` exit 0, no output, no `sorry`/`axiom`; olean
+rebuilt (`lake build LeanUrat.MovesC.Defs` green). Frozen spot-check: C2.DOM, C1.stripClause,
+C4.conditionalMass — `lake env lean` exit 0, zero output each. The 13 RETYPE/NEW statements
+re-elaborated in one scratch file against the round-6 Defs: exactly 13 sorry-warnings, zero
+errors, exit 0; all 13 statements byte-unchanged (manifest text). Unit census unchanged:
+36 = 23 FROZEN + 13 RETYPE/NEW. Honest residue: unchanged from R5.C (graded-deferred piece-map/
+alphabet identification behind `TypObject`; provenance of the emitted `v`; the R4.B existence
+items; R5's harmless empty-support note stands). Fan-out gate: RETYPE/NEW units wait on the
+round-6 semantic audit (re-adjudicate: the fine-slot band boundary vs rev 14 C.1(ii)'s
+per-slot inventory at `e·g > 1`; value positions at the band's upper-edge equality).

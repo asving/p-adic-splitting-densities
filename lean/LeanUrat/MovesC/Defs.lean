@@ -10,7 +10,32 @@ import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.DefsL
 
 /-!
-# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 5]
+# MovesC/Defs — shared vocabulary for §C, the composition theorem  [ROUND 6]
+
+**ROUND 6 (2026-07-27).** ONE targeted change, closing the single defect of the round-5 audit
+`lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R5_2026-07-27.md` (REJECT — finding 7 / blocking list
+1–3: `inFreshBand` bounded the fresh band by the COARSE post-landing `childWidth` staircase
+`Node.lineStep`, while rev 14 C.1(ii)'s species inventory runs per FINE slot — frame-`i`
+blocks of width `Dwidth`, C.1.0(a). Since `childWidth = e·g·Dwidth` and the line descends, at
+`e·g > 1` the coarse left-edge value exceeds the later fine slots' true valuations: coordinates
+with heights in `(slotVal(fineSlot b), lineStep b]` — which rev 14 leaves UNCONSTRAINED — were
+admitted into the band, tagged non-value, and forced into spurious zero strips by
+`fresh_cover` + `fresh_assembled`: a locus shrink and an `mstar` inflation). The change:
+* **the fine-slot band boundary** — `inFreshBand`'s upper edge is retyped to
+  `H.htH i c ≤ ν.slotVal (ν.fineSlot idx)`: each coordinate is bounded by ITS OWN fine slot's
+  exact valuation `new(j) = line.at(j·Dwidth)` — the recorded fine-slot valuation law, the SAME
+  granularity at which round 5's `IsValueCoord`/`IsValueSupport` already read the geometry. The
+  band at fine slot `j` is now exactly `(floor, new(j)]`: the strip zeros strictly between floor
+  and `new(j)`, plus — at span slots — the on-lattice level set AT `new(j)` (the value
+  positions, the band's upper edge): rev 14 C.1(ii)'s actual per-slot inventory, nothing above
+  it. Past the (γ) crossing `new(j) ≤ floor` empties the slot's band — the self-truncation now
+  cuts per FINE slot (no coarse overhang). `Node.lineStep` is retained as the post-landing
+  (ZC-a) staircase convention ONLY (its docstring retagged); at recenterings
+  (`childWidth = Dwidth`) the two boundaries coincide, so all round-5 semantics there are
+  unchanged. `fresh_band`/`fresh_cover`/`mstar_eq` consume the band BY NAME — byte-stable; the
+  23 frozen units are BYTE-STABLE.
+
+[ROUND 5 header, kept for the audit trail:]
 
 **ROUND 5 (2026-07-27).** ONE targeted change, closing the single blocking structure of the
 round-4 audit `lean/notes/MOVES_LEAN_SEMAUDIT_MOVESC_R4_2026-07-27.md` (REJECT — finding 10 /
@@ -471,11 +496,14 @@ noncomputable def Node.staircase (ν : Node p F) (b : ℕ) : WithBot ℚ :=
     then ((ν.line.at ((b / ν.childWidth) * ν.childWidth) : ℚ) : WithBot ℚ)
     else ⊥
 
-/-- The read line as a STEP function of the base index over the WHOLE window (block-left-edge
-value; NO factor-interior cutoff — cf. `staircase`). ROUND 3: the UPPER EDGE of the fresh band
-(`JetSetup.mstar_eq`): read `i`'s fresh content sits at heights in `(floor, line]`; past the
-(γ) crossing slot the line drops below the floor, so the band self-truncates there — the
-geometry performs C.1(i)(γ)'s cut. -/
+/-- The read line as a COARSE step function of the base index over the WHOLE window
+(`childWidth` block-left-edge value; NO factor-interior cutoff — cf. `staircase`, its
+factor-interior truncation). ROUND 6 (audit R5 finding 7): NO LONGER the fresh-band upper edge
+— `childWidth = e·g·Dwidth` groups `e·g` fine slots under ONE left-edge value, so at `e·g > 1`
+this exceeds the later fine slots' true valuations (the line descends); the band boundary is
+now the fine-slot law `Node.slotVal ∘ Node.fineSlot` (`inFreshBand`). Retained SOLELY as the
+post-landing (ZC-a) staircase convention; the two boundaries coincide at recenterings
+(`childWidth = Dwidth`). -/
 def Node.lineStep (ν : Node p F) (b : ℕ) : ℚ := ν.line.at ((b / ν.childWidth) * ν.childWidth)
 
 /-- ROUND 5 (audit R4 blocking list): the **FINE SLOT** of base index `b` — the read's OWN
@@ -702,18 +730,28 @@ section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- **The FRESH BAND of read `i`** (ROUND 4, audit R3 finding 17 — §C.1(ii)'s D.11 species
-inventory, named as a COORDINATE predicate): coordinate `c` is in read `i`'s band iff it lies
-in the read's constraint region (base index `< prevRim` — C.1(ii)'s rim rule), STRICTLY ABOVE
-the cumulative floor (LST(iii) selection), and AT-OR-BELOW the read line (`Node.lineStep`, the
-band's upper edge; past the (γ) crossing slot the line drops below the floor, so the band
-self-truncates — C.1(i)(γ)). `ν` is instantiated at `H.nodes[i]`; heights are the DEFINED
-`History.htH`. Consumed by `JetSetup.fresh_band`/`fresh_cover`/`mstar_eq`: together they say
-each band coordinate belongs to EXACTLY its strip/level-set clause and nothing else. -/
+inventory, named as a COORDINATE predicate; ROUND 6, audit R5 finding 7 / blocking list — the
+upper edge moved from the coarse `childWidth` staircase to the FINE-slot boundary): coordinate
+`c` is in read `i`'s band iff it lies in the read's constraint region (base index `< prevRim`
+— C.1(ii)'s rim rule), STRICTLY ABOVE the cumulative floor (LST(iii) selection), and
+AT-OR-BELOW its own fine slot's EXACT VALUATION `new(j) = slotVal (fineSlot idx)` — the
+recorded fine-slot valuation law, rev 14 C.1(ii)'s per-slot inventory granularity (C.1.0(a):
+frame-`i` blocks of width `Dwidth`). The round-4/5 bound `Node.lineStep` (coarse `childWidth`
+left edges — the post-landing (ZC-a) staircase) exceeds `slotVal (fineSlot b)` at the later
+fine slots of each coarse block whenever `e·g > 1` (the line descends), so it admitted
+coordinates rev 14 leaves UNCONSTRAINED and — via `fresh_cover` + `fresh_assembled`'s strip
+tag — forced spurious zeros there. The band at fine slot `j` is now exactly `(floor, new(j)]`:
+strip zeros strictly between floor and `new(j)`, plus the on-lattice level set AT `new(j)` at
+span slots (`IsValueCoord`, the value positions — the band's upper edge). Past the (γ)
+crossing slot `new(j) ≤ floor`: the band self-truncates per FINE slot — C.1(i)(γ)'s cut,
+exact. `ν` is instantiated at `H.nodes[i]`; heights are the DEFINED `History.htH`. Consumed BY
+NAME (byte-stable) by `JetSetup.fresh_band`/`fresh_cover`/`mstar_eq`: together they say each
+band coordinate belongs to EXACTLY its strip/level-set clause and nothing else. -/
 def inFreshBand (H : History p F) (n : ℕ) {m : ℕ} (coordOf : Fin m → Coord)
     (i : ℕ) (ν : Node p F) (c : Fin m) : Prop :=
   (coordOf c).2 < H.prevRim n i ∧
   H.floorH i (coordOf c).2 < ((H.htH i (coordOf c) : ℚ) : WithBot ℚ) ∧
-  H.htH i (coordOf c) ≤ ν.lineStep (coordOf c).2
+  H.htH i (coordOf c) ≤ ν.slotVal (ν.fineSlot (coordOf c).2)
 
 /-- **The VALUE POSITIONS of read `i`** (ROUND 5, audit R4 finding 10 / blocking item 2 — the
 strip/value species label, now a FUNCTION of node geometry, per coordinate): `c` is a VALUE
@@ -845,8 +883,9 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
   /-- **every fresh clause support lies INSIDE the band** (ROUND 4, audit R3 finding 17 —
   replaces the round-3 `fresh_above` + `fresh_interior`, which gave only the floor and rim
   bounds and left the band's UPPER EDGE open): each supported coordinate is in read `i`'s
-  region (`< prevRim`), strictly above the cumulative floor (LST(iii)), and at-or-below the
-  read line. No fresh codimension can sit on unrelated above-floor coordinates. -/
+  region (`< prevRim`), strictly above the cumulative floor (LST(iii)), and at-or-below its
+  own fine slot's exact valuation (ROUND 6: `inFreshBand`'s fine boundary). No fresh
+  codimension can sit on unrelated above-floor coordinates. -/
   fresh_band : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ cl ∈ (fresh i).clauses,
     ∀ c ∈ cl.support, inFreshBand H n coordOf i (H.nodes[i]'hi) c
   /-- **every band coordinate is covered** (ROUND 4, finding 17): each coordinate of read
@@ -886,8 +925,9 @@ structure JetSetup (H : History p F) (n N m : ℕ) where
         ∀ x, (cl.sat x ↔ T.φ x = v))
   /-- **`m*(ν_i)` IS the D.11 species inventory** (ROUND 3, blocker 57; ROUND 4: stated via
   the named band `inFreshBand`): the presented fresh codimension sum equals the FRESH-BAND
-  count computed from node data (strips + value level sets; past the (γ) crossing the line
-  is below the floor, so the band self-truncates — C.1(i)(γ); at an adjacent read the hinge
+  count computed from node data (strips + value level sets; past the (γ) crossing the
+  fine-slot value `new(j)` is below the floor, so the band self-truncates per fine slot —
+  C.1(i)(γ), ROUND 6's exact boundary; at an adjacent read the hinge
   block sits at/beyond `prevRim`, so it is excluded — the (HV) no-pin clause). With
   `fresh_band`/`fresh_cover`/`fresh_assembled` this total now also decomposes PER CLAUSE. -/
   mstar_eq : ∀ (i : ℕ) (hi : i < H.nodes.length),
