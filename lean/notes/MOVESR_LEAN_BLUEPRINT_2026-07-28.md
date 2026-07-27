@@ -1,8 +1,11 @@
-# MovesR LEAN BLUEPRINT — REV 2 (post-Codex-audit, 21 findings repaired)
+# MovesR LEAN BLUEPRINT — REV 3
 
 SOURCE (ground truth): `lean/notes/MOVES_2026-07-24.md` §R-LEDGER, rev 5, DUAL-ACCEPTED
-2026-07-27. AUDIT: `lean/notes/MOVESR_AUDIT_CODEX_2026-07-28.md` — REJECT (15 crit /
-6 gap) on rev 1; every finding repaired here (findings→repairs table, §5). The
+2026-07-27. AUDITS: `MOVESR_AUDIT_CODEX_2026-07-28.md` — REJECT (15 crit / 6 gap) on
+rev 1, all 21 repaired at rev 2 and verified genuine by the fresh-Fable re-audit;
+`MOVESR_AUDIT_FABLE_2026-07-28.md` — REJECT (2 crit / 5 gap) on rev 2, all 7 (FF1–FF7)
+repaired here (findings→repairs table, §5). For Lemma LST the §C display itself
+(MOVES 3728–3781) is now a consulted source (the FF1 adjudication). The
 campaign-wide lesson driving this revision: **STATEMENTS-ONLY ≠ CONTENT-FREE** — a
 faithful obligation statement must be FALSE for instances the note would reject. So
 every carrier structure now carries the note's own laws as fields (measure laws,
@@ -63,9 +66,16 @@ items): tower laws via `AdjoinRoot` presentations (§A/§B1/§B2-DEF), classifie
 = jet-preimage of a digit system (Theorem C(a), MovesC's thmC_a shape), unitriangular
 transports + frame-invariant pin statistics (C.0.5/PIN-WELLDEF), the per-constrained-
 digit |𝔸_δ|⁻¹ = (p^{a_δ})⁻¹ product (C.1, (R0-ledger) verbatim), a transport-invariant
-(ZC) statistic (C.1.5), normalized-count stabilization (LST), per-digit ADDITIVITY of
-the jet map (TYP — walk item (i)'s retyping, verbatim), and MovesC's base-free
-`DomData` (DOM — the note: "valuation geometry … carries over as written"). The
+(ZC) statistic (C.1.5), Lemma LST's level-set scale-typing legs (LST — retyped at
+REV 3 per FF1: ht-weight slot-minimum TYPING, interior FLOOR CONSTANCY, floor-downset
+SELECTION, against the §C display at MOVES 3728; the rev-2 stabilization reading is
+REFUTED and withdrawn), per-digit ADDITIVITY of the jet map (TYP — walk item (i)'s
+retyping, verbatim), and MovesC's base-free `DomData` (DOM — the note: "valuation
+geometry … carries over as written"). The (REL.1-b) LHS `count` is no longer free
+data: it is DEFINED from in-corpus vocabulary (`SHZ` + `cyl`, FF2), so `REL1b` is a
+counting fact about the classifier locus, not a relation between supplied numbers.
+`ReBased` is parameterized by (Sp, AD) and carries `posOfDigit` + `aDim_eq`, tying
+the c1 exponents to (EQ-2)'s alphabet data (FF4). The
 clause fields REMAIN unproved obligations; their TYPES now pin their content. Where
 §R-LEDGER's own text gives no display for a clause's internals (§B1's graded pieces),
 the field types the typable residue (finite stage carriers, char p, tower embeddings)
@@ -113,16 +123,24 @@ letter-for-letter through `readDict` (`stateDict_compat`).
   `REL2e.massEqEntry` (e3), `REL2e.determines` (e5), `REL2e.e4agrees` +
   `firstIdxCandidate` (e4), `EQ1`, `EQ2law`, `EQ3`, `SIBOdelta`.
 - DELIVERABLES (data a future pass must EXHIBIT; the structure's INHABITANT is the
-  deliverable, and its law fields make junk inhabitants impossible): `REL2a`
-  ((a1)–(a6) with `teich_pin` now a FIELD — finding 7), `REL2d` (square + typed
-  node-data correspondence), `REL2e`'s data ((e1) dictionary + compat, β table,
-  `entryFirst`, `consumed`), `BoxVol`, `ReBased`/`TowerData`, `SettingsFamily`.
+  deliverable): `REL2a` ((a1)–(a6) with `teich_pin` a FIELD), `REL2d` (square +
+  typed node-data correspondence), `REL2e`'s data ((e1) dictionary + compat, β
+  table, `entryFirst`, `consumed`), `BoxVol`, `ReBased`/`TowerData`,
+  `SettingsFamily`. **Accuracy correction (FF7 — the rev-2 "law fields make junk
+  inhabitants impossible" claim was FALSE and is withdrawn):** what the law fields
+  actually enforce is that every inhabitant SATISFIES the note's typed laws
+  (measure laws, cylinder pins, unitriangularity anchors, letter/word/verdict
+  preservation, the Teichmüller pin); free-data inhabitants respecting those laws
+  remain possible wherever the ambient engine's objects (transports, trees, reads)
+  do not exist in Lean — RECORDED as widening (v) in §3. Full pinning of those
+  objects is REL.1-pass territory, not this corpus's.
 - PROVABLE NOW (the only proof burden): R2–R6, R20, R23.
 
 **(D8) REUSE OF EXISTING CORPORA (new; supports D4).** `DigitSystem n α`
 (`Moves/DefsT.lean:187`) is digit-polymorphic — instantiated at `α := ↥(Fsub p δ)`
 (the F_δ-digit ATOM of (R0-box)). `IsUnitriangular` (`MovesC/Defs.lean:241`,
-polymorphic `[Add R]`), `Line` + `DomData` (`MovesC/Defs.lean:255/278`, base-free
+polymorphic `[Add R]`), `CoordPrec` (`MovesC/Defs.lean:221`, C.0's order on ℕ × ℕ
+— the (a5) unitriangularity anchor, FF7), `Line` + `DomData` (`MovesC/Defs.lean:255/278`, base-free
 ℚ-data — the note's "valuation geometry … carries over as written" is the warrant)
 are imported, NOT re-declared. Exact namespaces/qualifications resolved at E-phase;
 any semantic mismatch discovered there re-enters the audit loop.
@@ -142,7 +160,7 @@ structure in its docstring).
 ```lean
 import Mathlib
 import LeanUrat.Moves.DefsT      -- DigitSystem (polymorphic)
-import LeanUrat.MovesC.Defs      -- IsUnitriangular, Line, DomData (base-free)
+import LeanUrat.MovesC.Defs      -- IsUnitriangular, CoordPrec, Line, DomData (base-free)
 namespace MovesR
 variable (p : ℕ) [hp : Fact p.Prime]
 
@@ -356,8 +374,11 @@ structure TowerData.StageCarrierLaws {δ} (T : TowerData p δ) : Prop where
   fin : ∀ k, Finite (T.Res k)
   charP : ∀ k, CharP (T.Res k) p
 
-/-- Counting interface for (REL.1-b) (finding 4 repair: FIXED box degree n;
-nonempty carriers; vols THROUGH the pinned BoxVol; loci indexed by their history). -/
+/-- Counting interface for (REL.1-b) (fixed box degree n; nonempty carriers; vols
+THROUGH the pinned BoxVol; loci indexed by their history). NOTE (FF2): the display's
+LHS `#{f mod p^N ∈ S(H,Z)}` is NOT a field — it is DEFINED (`ReBased.count` below)
+from the classifier locus and the cylinder partition, so no instance can supply a
+count unrelated to any classifier. -/
 structure REL1Counting (δ : ℕ+) (n : ℕ) where
   V : BoxVol p δ n                        -- vol_{O_δ}, cylinder-pinned
   Hist : Type                             -- re-based histories H
@@ -365,7 +386,6 @@ structure REL1Counting (δ : ℕ+) (n : ℕ) where
   Locus : Hist → Type                     -- digit loci Z in H's frame
   locusNe : ∀ H, Nonempty (Locus H)
   kIdx : Hist → ℕ                         -- k, top node index
-  count : (H : Hist) → Locus H → ℕ → ℕ    -- #{ f mod p^N ∈ S(H, Z) }
   Nmin : (H : Hist) → Locus H → ℕ         -- N(H, Z)
   freshEvent : (H : Hist) → ℕ → Set (Fin n → ↥(O p δ))    -- E_fresh(ν_i)
   freshEvent_mem : ∀ H i, freshEvent H i ∈ V.events
@@ -377,9 +397,11 @@ structure REL1Counting (δ : ℕ+) (n : ℕ) where
 /-- The re-based theory carriers ((R0-box/tower/reads/ledger) as typed objects):
 digit spaces are F_δ-valued (the O_δ-digit ATOM), jets expand box points into
 digit coordinates (C.0's block expansion over F_δ), towers per history, frames
-with transports, per-position alphabet dimensions a_δ, pin sets, (ZC) statistic,
-and the base-free floor lines for DOM. -/
-structure ReBased (δ : ℕ+) (n : ℕ) where
+with transports, per-position alphabet dimensions a_δ — WIRED to (EQ-2)'s
+`AlphabetData` via `posOfDigit`/`aDim_eq` (FF4) — pin sets, (ZC) statistic, the
+base-free floor lines for DOM, and the height/block/floor carriers Lemma LST's
+legs consume (FF1). -/
+structure ReBased (Sp : SpeciesSyntax) (AD : AlphabetData p Sp) (δ : ℕ+) (n : ℕ) where
   C : REL1Counting p δ n
   mOf : C.Hist → ℕ                        -- digit count of H's jet frame
   mOf_pos : ∀ H, 0 < mOf H
@@ -393,17 +415,42 @@ structure ReBased (δ : ℕ+) (n : ℕ) where
   SHZ_mem : ∀ H Z, SHZ H Z ∈ C.V.events
   digitLocus : (H : C.Hist) → C.Locus H → DigitSystem (mOf H) ↥(Fsub p δ)  -- Z as digit system
   aDim : (H : C.Hist) → Fin (mOf H) → ℕ   -- a_δ at each digit position ((EQ-2) def part)
+  /-- (FF4) the (R0-ledger)↔(EQ-2) wiring: each digit position sits at an
+  `AlphabetData` position class, and its per-digit exponent IS that class's a_δ —
+  "|𝔸_δ| = p^{a_δ} per (EQ-2)'s re-based-span definition". EQ2law now speaks about
+  the exponents c1 consumes; REL-n4's exponent leg tests exactly these. -/
+  posOfDigit : (H : C.Hist) → Fin (mOf H) → AD.Pos
+  aDim_eq : ∀ H i, aDim H i = AD.aDim δ (posOfDigit H i)
   pinnedIn : (H : C.Hist) → Frame H → C.Locus H → Finset (Fin (mOf H))  -- constrained digits
   zcStat : (H : C.Hist) → Frame H → C.Locus H → ℤ            -- C.1.5's (ZC) statistic
   lines : (H : C.Hist) → ℕ → Line         -- base-free floor lines (MovesC, D8)
   interiorEnd : C.Hist → ℕ
+  /-- LST carriers (FF1): absolute height ht(b,l) = l + off(b), block (slot-
+  coefficient) assignment, per-coordinate and per-block floors, factor-interior
+  blocks, the engine's floor downset, and the engine's slot-coefficient weight. -/
+  ht : (H : C.Hist) → Fin (mOf H) → ℚ
+  blkOf : (H : C.Hist) → Fin (mOf H) → ℕ
+  floorC : (H : C.Hist) → Fin (mOf H) → ℚ
+  floorB : (H : C.Hist) → ℕ → ℚ
+  interiorB : (H : C.Hist) → ℕ → Prop
+  floorSet : (H : C.Hist) → ℕ → Set (Fin (mOf H))
+  wSlot : (H : C.Hist) → ℕ → (Fin (mOf H) → ↥(Fsub p δ)) → WithTop ℚ
+
+/-- `#{ f mod p^N ∈ S(H, Z) }` — the (REL.1-b) LHS, DEFINED from in-corpus
+vocabulary (FF2 repair: kills the free-count instances): the number of level-N
+cylinder classes meeting the classifier locus. For N ≥ N(H,Z) these are exactly
+the level-N residue points of S(H,Z). -/
+noncomputable def ReBased.count {Sp AD δ n} (K : ReBased p Sp AD δ n)
+    (H : K.C.Hist) (Z : K.C.Locus H) (N : ℕ) : ℕ :=
+  Nat.card {W : Set (Fin n → ↥(O p δ)) // ∃ f ∈ K.SHZ H Z, W = cyl p δ N f}
 
 /-- **The REL.1 clause ledger, TYPED (findings 3/5 repair).** Ten named fields =
 the note's clause list "§A, §B1, §B2-DEF, and §C — through Theorem C(a)/(b) with
 C.0.5/PIN-WELLDEF, C.1, C.1.5/(ZC), LST, TYP, DOM"; each typed over the actual
 re-based objects; contents = the future re-scoping pass's theorems ("MUTATIS
 MUTANDIS, NOT verbatim … RECONSTRUCTED over F_δ"). C(b) is `REL1b` below. -/
-structure REL1Clauses (δ : ℕ+) (n : ℕ) (K : ReBased p δ n) : Prop where
+structure REL1Clauses (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop where
   /-- §A: base tower shape over F_δ (φ̄ monic irr, F₁ = F_δ[x]/(φ̄)). -/
   secA : ∀ H, (K.tower H).BaseLaws
   /-- §B1: the typable stage-carrier residue; graded internals (R0-tower)-fenced. -/
@@ -415,20 +462,37 @@ structure REL1Clauses (δ : ℕ+) (n : ℕ) (K : ReBased p δ n) : Prop where
   thmCa : ∀ H Z, K.SHZ H Z =
     (fun f => K.jet H f) ⁻¹' {x | (K.digitLocus H Z).IsSolution x}
   /-- C.0.5 + PIN-WELLDEF: transports unitriangular ("ring-polynomial identities in
-  strictly ≺-earlier coefficients"); pin statistics frame-invariant
-  ("cardinality-and-status statistics"). -/
+  strictly ≺-earlier coefficients"); pin statistics frame-invariant — BOTH legs of
+  "cardinality-AND-STATUS statistics" (FF3): the pinned-set cardinality AND the
+  multiset of per-digit alphabet exponents over the pinned set. -/
   c05PinWelldef : ∀ H F F', IsUnitriangular (K.T H F F') ∧
-    ∀ Z, (K.pinnedIn H F Z).card = (K.pinnedIn H F' Z).card
+    ∀ Z, (K.pinnedIn H F Z).card = (K.pinnedIn H F' Z).card ∧
+      (K.pinnedIn H F Z).val.map (K.aDim H) = (K.pinnedIn H F' Z).val.map (K.aDim H)
   /-- C.1: "each constrained digit contributing the factor |𝔸_δ|⁻¹ of its
   ATTAINABLE alphabet" — the locus mass is the per-pinned-digit product. -/
   c1 : ∀ H (F : K.Frame H) Z, K.C.V.vol (K.C.locusEvent H Z) =
     ∏ i ∈ K.pinnedIn H F Z, ((p : ℚ) ^ (K.aDim H i))⁻¹
   /-- C.1.5's (ZC) invariant: the statistic is transport/frame-invariant. -/
   c15ZC : ∀ H F F' Z, K.zcStat H F Z = K.zcStat H F' Z
-  /-- LST: normalized level counts stabilize above N(H,Z) (cross-multiplied form). -/
-  lst : ∀ H Z N N', K.C.Nmin H Z ≤ N → N ≤ N' →
-    (K.C.count H Z N' : ℚ) * ((qq p δ : ℚ) ^ (n * N)) =
-    (K.C.count H Z N : ℚ) * ((qq p δ : ℚ) ^ (n * N'))
+  /-- LST = Lemma LST, level-set scale-typing (§C display, MOVES 3728 — the FF1
+  repair; the rev-2 stabilization reading was REFUTED: non-LST content and entailed
+  by REL1b). The three legs' typable residue: (i) TYPING — the engine's slot-
+  coefficient weight is the iterated slot-minimum of the absolute height over the
+  block's nonzero digits ("w(B) = min{ht(b, l) : (b, l) ∈ blk(B), y ≠ 0}");
+  (ii) FLOOR CONSTANCY ON THE INTERIOR — the per-coordinate floor is the block
+  floor ("F_i(b) = old_i(slot(b)): ht-constant on each current block");
+  (iii) SELECTION — the engine's floor downset IS the ht-downset {ht ≤ F_i}, hence
+  the ENTIRE level set at γ' > floor avoids it ("lies strictly above the floor
+  downset"). The K1-chain/in_γ graded internals stay §C-side (same fence as §B1's). -/
+  lst : ∀ (H : K.C.Hist),
+    (∀ (B : ℕ) (x : Fin (K.mOf H) → ↥(Fsub p δ)),
+      K.wSlot H B x = (Finset.univ.filter fun i =>
+        K.blkOf H i = B ∧ x i ≠ 0).inf fun i => ((K.ht H i : ℚ) : WithTop ℚ)) ∧
+    (∀ i, K.interiorB H (K.blkOf H i) → K.floorC H i = K.floorB H (K.blkOf H i)) ∧
+    (∀ B, K.interiorB H B →
+      K.floorSet H B = {i | K.blkOf H i = B ∧ K.ht H i ≤ K.floorB H B} ∧
+      ∀ (γ' : ℚ), K.floorB H B < γ' →
+        ∀ i, K.blkOf H i = B → K.ht H i = γ' → i ∉ K.floorSet H B)
   /-- TYP, walk item (i)'s RETYPING verbatim: "per-digit ADDITIVE on O_δ-digit
   blocks" (additivity is all TYP(b) consumes; F_δ-linearity stays EXPECTED, walked). -/
   typ : ∀ H (i : Fin (K.mOf H)) (f g : Fin n → ↥(O p δ)),
@@ -437,19 +501,22 @@ structure REL1Clauses (δ : ℕ+) (n : ℕ) (K : ReBased p δ n) : Prop where
   geometry … carries over as written"). -/
   dom : ∀ H, ∀ i ≤ K.kIdx H, DomData (K.lines H) i (K.interiorEnd H)
 
-/-- (REL.1-b), typed verbatim through the pinned BoxVol: "#{ f mod p^N ∈ S(H, Z) }
-= q_δ^{nN} · ∏_{i=0}^{k} vol(E_fresh(ν_i)) · vol(Z) for every N ≥ N(H, Z)". -/
-def REL1b (δ : ℕ+) (n : ℕ) (K : ReBased p δ n) : Prop :=
+/-- (REL.1-b), typed verbatim through the pinned BoxVol, LHS the DEFINED count
+(FF2): "#{ f mod p^N ∈ S(H, Z) } = q_δ^{nN} · ∏_{i=0}^{k} vol(E_fresh(ν_i)) ·
+vol(Z) for every N ≥ N(H, Z)". -/
+def REL1b (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop :=
   ∀ (H : K.C.Hist) (Z : K.C.Locus H) (N : ℕ), K.C.Nmin H Z ≤ N →
-    (K.C.count H Z N : ℚ) = (qq p δ : ℚ) ^ (n * N) *
+    (K.count H Z N : ℚ) = (qq p δ : ℚ) ^ (n * N) *
       ((∏ i ∈ Finset.range (K.C.kIdx H + 1), K.C.V.vol (K.C.freshEvent H i)) *
         K.C.V.vol (K.C.locusEvent H Z))
 
 /-- **(REL.1), the Prop-family over δ** [OPEN KERNEL — "a NEW THEOREM with its own
 verification passes"]. Parameterized by the carrier package the pass must supply;
 consumers hypothesize it per instance, ABSOLUTE index displayed per site. -/
-def REL1 (δ : ℕ+) (n : ℕ) (K : ReBased p δ n) : Prop :=
-  REL1Clauses p δ n K ∧ REL1b p δ n K
+def REL1 (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (δ : ℕ+) (n : ℕ) (K : ReBased p Sp AD δ n) : Prop :=
+  REL1Clauses p Sp AD δ n K ∧ REL1b p Sp AD δ n K
 ```
 
 ```lean
@@ -472,6 +539,13 @@ structure REL2a (S : Setting p) (Sp : SpeciesSyntax) where
   /-- (a1) the identification with the "measurable product of O_δ-digit spaces"
   (one F_δ-valued digit per free coordinate — (R0-box)'s ATOM, never unpacked). -/
   domIdent : S.Cont ≃ (freeCoords → ↥(Fsub p S.δ))
+  /-- (a1) MEASURABILITY (FF5(i)): the product-side event algebra — finite-
+  coordinate digit cylinders present — and the identification is event-algebra-
+  compatible ("as a MEASURABLE product" was previously a bare Equiv). -/
+  prodEvents : Set (Set (freeCoords → ↥(Fsub p S.δ)))
+  prodCyl_mem : ∀ (E : Finset (ℕ × ℕ)) (v : (ℕ × ℕ) → ↥(Fsub p S.δ)),
+    {x | ∀ c : freeCoords, (c : ℕ × ℕ) ∈ E → x c = v c} ∈ prodEvents
+  domIdent_meas : ∀ W, W ∈ prodEvents ↔ (fun f => domIdent f) ⁻¹' W ∈ S.AmbEvents
   /-- (a3) the named F_{δ_j} ↪ (tower residue field) embedding. -/
   TowerRes : Type
   [towerResField : Field TowerRes]
@@ -483,13 +557,25 @@ structure REL2a (S : Setting p) (Sp : SpeciesSyntax) where
     = WittVector.teichmuller p (x : Kbar p)
   /-- (a4) FORMULA: the map Θ_j itself. -/
   Θ : (freeCoords → ↥(Fsub p S.δ)) → (Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs))
-  /-- (a5) FRAME COMPATIBILITY: commutation with C.0.5's unitriangular transports;
-  nonempty transport family (the identity frame change exists). -/
+  /-- (a5) FRAME COMPATIBILITY: commutation with C.0.5's UNITRIANGULAR transports;
+  nonempty transport family (the identity frame change exists). FF7's anchor: both
+  transport families carry the unitriangularity law — the offset added at a
+  coordinate depends only on strictly ≺-earlier coordinates (C.0's order on the
+  free (ℓ, i)-coordinates via MovesC's `CoordPrec`; the Fin-order on the target's
+  C.0-order digit coordinates) — so `frame_compat` is commutation with C.0.5-shaped
+  transports, not with arbitrary bijections. -/
   FrameIdx : Type
   frameIdxNe : Nonempty FrameIdx
   ambT : FrameIdx → ((freeCoords → ↥(Fsub p S.δ)) ≃ (freeCoords → ↥(Fsub p S.δ)))
   tgtT : FrameIdx → ((Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs)) ≃
                      (Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs)))
+  ambT_unitri : ∀ (i : FrameIdx) (x y : freeCoords → ↥(Fsub p S.δ)) (c : freeCoords),
+    (∀ c' : freeCoords, CoordPrec (c' : ℕ × ℕ) (c : ℕ × ℕ) → x c' = y c') →
+    ambT i x c - x c = ambT i y c - y c
+  tgtT_unitri : ∀ (i : FrameIdx)
+      (x y : Fin ((S.d : ℕ) / (S.δrel : ℕ)) → ↥(O p S.δabs))
+      (j : Fin ((S.d : ℕ) / (S.δrel : ℕ))),
+    (∀ j' < j, x j' = y j') → tgtT i x j - x j = tgtT i y j - y j
   frame_compat : ∀ (i : FrameIdx) x, Θ (ambT i x) = tgtT i (Θ x)
   /-- (a6) READ DICTIONARY, letter-for-letter (finding 6): injective, and each
   read's SPECIES LETTER is preserved ((EQ-1)'s dictionary); reads nonempty (the
@@ -511,18 +597,22 @@ def REL2a.dRel {S : Setting p} {Sp} (_A : REL2a p S Sp) : ℕ := (S.d : ℕ) / (
 continuation event W over O_{δ_j} (digit cylinders generate — V's `cyl_mem`),
 μ( Θ_j⁻¹(W) │ Σ_c ) = vol_{O_{δ_j}}(W)", with the "only for cells with μ(Σ_c) > 0"
 proviso as guard. Non-vacuous: `V.events` contains univ and every cylinder, and
-`V.vol` is cylinder-pinned (finding 9). -/
+`V.vol` is cylinder-pinned. FF5(ii): the Θ-pullback of every event is required IN
+the ambient event algebra — the Θ-measurability half of "the PUSHFORWARD of the
+conditional continuation measure … IS the normalized O_{δ_j}-box measure". -/
 def REL2b (S : Setting p) (Sp : SpeciesSyntax) (A : REL2a p S Sp)
     (V : BoxVol p S.δabs A.dRel) : Prop :=
   0 < S.cellMass →
-    ∀ W ∈ V.events, S.condMass ((fun f => A.Θ (A.domIdent f)) ⁻¹' W) = V.vol W
+    ∀ W ∈ V.events,
+      (fun f => A.Θ (A.domIdent f)) ⁻¹' W ∈ S.AmbEvents ∧
+      S.condMass ((fun f => A.Θ (A.domIdent f)) ⁻¹' W) = V.vol W
 
-/-- (b) WITH ITS REL.1 CONDITIONALITY TYPED (finding 10): the target measure IS the
-REL.1 theory's (`RB.C.V`), and REL.1 at (δ_j, d_j^rel) rides as an explicit
-conjunct — "EVERY consumer below is conditional on REL.1, displayed per site". -/
-def REL2b_linked (S : Setting p) (Sp : SpeciesSyntax) (A : REL2a p S Sp)
-    (RB : ReBased p S.δabs A.dRel) : Prop :=
-  REL1 p S.δabs A.dRel RB ∧ REL2b p S Sp A RB.C.V
+/-- (b) WITH ITS REL.1 CONDITIONALITY TYPED: the target measure IS the REL.1
+theory's (`RB.C.V`), and REL.1 at (δ_j, d_j^rel) rides as an explicit conjunct —
+"EVERY consumer below is conditional on REL.1, displayed per site". -/
+def REL2b_linked (S : Setting p) (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
+    (A : REL2a p S Sp) (RB : ReBased p Sp AD S.δabs A.dRel) : Prop :=
+  REL1 p Sp AD S.δabs A.dRel RB ∧ REL2b p S Sp A RB.C.V
 
 /-- **(EQ-3) CONDITIONAL MASSES TRANSPORTED** — "REL.2(b) verbatim … no weaker
 reading (bijection-only, or level-matching without normalization) counts."
@@ -606,12 +696,17 @@ T_j" — the consumed class at this key is a singleton. The second disjunct
 def REL2e.determines {S Sp AD A D} (E : REL2e p S Sp AD A D) : Prop :=
   ∀ T ∈ E.consumed, ∀ T' ∈ E.consumed, T = T'
 /-- (e3) MASS = ENTRY, stated GIVEN (e5) (the note: without (e5) the equation is
-ill-typed): β_{e_j, τ_j(c)}(p^{δ_j}) IS the REL.1 mass of the realization event. -/
+ill-typed): β_{e_j, τ_j(c)}(p^{δ_j}) IS **the REL.1 mass** — FF6: the _linked
+pattern applied, so the vol is `RB.C.V` of a REL1-hypothesized package, never an
+arbitrary BoxVol ("IS the REL.1 mass vol_{O_{δ_j}}{…}" — the note names the
+theory's measure, not a measure). FF5(iii): the realization event is required IN
+`RB.C.V.events`, so V's measure laws bind at it. -/
 def REL2e.massEqEntry {S Sp AD A D} (E : REL2e p S Sp AD A D)
-    (V : BoxVol p S.δabs A.dRel) : Prop :=
-  E.determines p ∧ ∀ T ∈ E.consumed,
+    (RB : ReBased p Sp AD S.δabs A.dRel) : Prop :=
+  REL1 p Sp AD S.δabs A.dRel RB ∧ E.determines p ∧ ∀ T ∈ E.consumed,
+    {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)} ∈ RB.C.V.events ∧
     E.β E.entryFirst S.τ (S.βarg p) =
-      V.vol {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)}
+      RB.C.V.vol {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)}
 ```
 
 ```lean
@@ -631,15 +726,18 @@ Quantifier = the realized `SettingsFamily` (nonempty, root δ = 1, descent-close
 with absolute re-indexing — findings 19/20); the positive-cell guard is the note's
 own conditioning proviso; the first conjunct of the ∀T clause is the "S_j IS an
 O_{δ_j}-statement" typing itself (S_j = the Θ-pullback of the target realization
-event); the second is the pricing. RECURSION CLAUSE = `F.desc*` (family closure)
-+ `O_chain` (the literal subring chain TREE-EXP's induction consumes). -/
+event); the second is the pricing, at a realization event required IN
+`RB.C.V.events` (FF5(iii)) so the REL.1 measure laws bind there. RECURSION CLAUSE
+= `F.desc*` (family closure) + `O_chain` (the literal subring chain TREE-EXP's
+induction consumes). -/
 def SIBOdelta (F : SettingsFamily p) : Prop :=
   ∀ S ∈ F.mem, 0 < S.cellMass →
     ∃ (Sp : SpeciesSyntax) (AD : AlphabetData p Sp) (A : REL2a p S Sp)
-      (D : REL2d p S Sp AD A) (RB : ReBased p S.δabs A.dRel),
-      REL1 p S.δabs A.dRel RB ∧
+      (D : REL2d p S Sp AD A) (RB : ReBased p Sp AD S.δabs A.dRel),
+      REL1 p Sp AD S.δabs A.dRel RB ∧
       REL2b p S Sp A RB.C.V ∧
       ∀ T : S.PTree,
+        {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)} ∈ RB.C.V.events ∧
         S.SEvent T = (fun f => A.Θ (A.domIdent f)) ⁻¹'
             {g | D.TgtRealizes (D.tgtTcan g) (D.subtreeCorr T)} ∧
         S.condMass (S.SEvent T) =
@@ -750,43 +848,54 @@ all cylinders; nonneg/additive/normalized content; `vol_cyl` pins cylinder masse
 to q^{-nN} · medium · hyp_fields: all law fields (well-formedness of the note's
 measure; inhabitation = Haar, the pass's).
 
-**R11 REL1Counting [finding 4 repaired]** · structure + `#check`. moves_ref:
+**R11 REL1Counting [FF2 repaired]** · structure + `#check`. moves_ref:
 "(REL.1-b) #{ f mod p^N ∈ S(H, Z) } = q_δ^{nN} · ∏_{i=0}^{k} vol(E_fresh(ν_i)) ·
 vol(Z) for every N ≥ N(H, Z)." · deps R10 · sketch: fixed degree n; nonempty
-Hist/per-H Locus; fresh/locus events IN V.events · medium · hyp_fields: none
-asserted (carrier).
+Hist/per-H Locus; fresh/locus events IN V.events; NO count field — the LHS is
+`ReBased.count`, DEFINED (R12) · medium · hyp_fields: none asserted (carrier).
 
-**R12 ReBased + REL1Clauses [findings 3/5 repaired]** · structures + `#check`.
-moves_ref: "§A, §B1, §B2-DEF, and §C — through Theorem C(a)/(b) with
-C.0.5/PIN-WELLDEF, C.1, C.1.5/(ZC), LST, TYP, DOM — hold over O_δ … MUTATIS
-MUTANDIS." · deps R9, R10, R11 (+ D8 imports) · sketch: ten TYPED fields per D4 —
-tower laws, thmCa jet-preimage, unitriangular+pin-stat invariance, |𝔸_δ|⁻¹ product,
-(ZC) invariance, LST stabilization, TYP additivity (walk (i) verbatim), DomData ·
-hard (typing care; the corpus's largest unit — split at E-phase into
-ReBased/REL1Clauses files if elaboration drags) · hyp_fields: every clause field
-(open; the re-scoping pass's theorems).
+**R12 ReBased + count + REL1Clauses [FF1/FF2/FF3/FF4 repaired]** · structures +
+def + `#check`. moves_ref: "§A, §B1, §B2-DEF, and §C — through Theorem C(a)/(b)
+with C.0.5/PIN-WELLDEF, C.1, C.1.5/(ZC), LST, TYP, DOM — hold over O_δ … MUTATIS
+MUTANDIS" + Lemma LST's display (MOVES 3728, the FF1 source). · deps R9, R10, R11,
+R18, R19 (+ D8 imports) · sketch: ReBased parameterized by (Sp, AD) with
+`posOfDigit`/`aDim_eq` tying c1's exponents to (EQ-2)'s data (FF4) and the LST
+carriers (ht/blkOf/floors/interior/floorSet/wSlot); `ReBased.count` DEFINED as the
+level-N cylinder-class count of SHZ (FF2 — the free-count instance family is
+dead); ten TYPED clause fields — tower laws, thmCa jet-preimage, C.0.5 unitri +
+pin statistics BOTH legs (cardinality AND the aDim-multiset — FF3), |𝔸_δ|⁻¹
+product, (ZC) invariance, LST's three legs (slot-min TYPING, interior FLOOR
+CONSTANCY, floor-downset SELECTION — FF1), TYP additivity, DomData · hard (the
+corpus's largest unit — split at E-phase into ReBased/REL1Clauses files if
+elaboration drags) · hyp_fields: every clause field (open; the pass's theorems).
 
-**R13 REL1b + REL1 [finding 5 repaired]** · defs + `#check`. moves_ref: "STATUS: a
-NEW THEOREM with its own verification passes — not a corollary, not 'by
-inspection'." · deps R12 · sketch: REL1 := REL1Clauses ∧ REL1b — no longer
-satisfiable by True-slots/empty carriers (typed clauses; nonempty carriers;
-pinned V) · easy · hyp_fields: REL1 (THE open kernel; never instantiated here).
+**R13 REL1b + REL1** · defs + `#check`. moves_ref: "STATUS: a NEW THEOREM with its
+own verification passes — not a corollary, not 'by inspection'." · deps R12 ·
+sketch: REL1 := REL1Clauses ∧ REL1b, over (Sp, AD)-parameterized carriers, LHS the
+DEFINED count — REL1b is now a counting fact about the classifier locus (FF2) ·
+easy · hyp_fields: REL1 (THE open kernel; never instantiated here).
 
-**R14 REL2a [findings 6/7 repaired]** · structure + `dRel` + `#check`. moves_ref:
+**R14 REL2a [FF5(i)/FF7 repaired]** · structure + `dRel` + `#check`. moves_ref:
 "(a) is now a DELIVERABLES CHECKLIST, and nothing short of all six items is '(a)
-stated' … (a1)…(a6)." · deps R1, R7, R18 · sketch: six field-blocks; NONEMPTY
-FrameIdx/AmbRead; readDict injective + letter-preserving (letter-for-letter);
-`teich_pin` a FIELD; freeCoords infinite; drel_dvd/pos · hard (largest structure) ·
-hyp_fields: none asserted; the INHABITANT is (a)'s deliverable (inhabitation story:
-the (a)-pass; #check only per D9).
+stated' … (a1) … as a MEASURABLE product of O_δ-digit spaces … (a5) … C.0.5's
+unitriangular transports." · deps R1, R7, R18 (+ D8 `CoordPrec`) · sketch: six
+field-blocks; NONEMPTY FrameIdx/AmbRead; readDict injective + letter-preserving;
+`teich_pin` a FIELD; freeCoords infinite; (a1) now carries `prodEvents` +
+digit-cylinder anchor + `domIdent_meas` (the measurability half — FF5(i)); (a5)
+now carries `ambT_unitri`/`tgtT_unitri` (offset depends only on strictly ≺-earlier
+coordinates, C.0's order — the C.0.5 anchor, FF7) · hard (largest structure) ·
+hyp_fields: none asserted; the INHABITANT is (a)'s deliverable (#check per D9).
 
-**R15 REL2b + REL2b_linked + EQ3 [findings 9/10/18 repaired]** · defs + `#check`.
+**R15 REL2b + REL2b_linked + EQ3 [FF5(ii) repaired]** · defs + `#check`.
 moves_ref: "for every REL.1-measurable continuation event W over O_{δ_j} (digit
-cylinders generate), μ( Θ_j⁻¹(W) │ Σ_c ) = vol_{O_{δ_j}}(W)" + "(EQ-3) … REL.2(b)
-verbatim". · deps R13, R14 · sketch: guard 0 < cellMass; V.events cylinder-
-populated (non-vacuous); `REL2b_linked` conjoins REL1 at (δ_j, d_rel) — the typed
-conditionality; EQ3 aliases the repaired REL2b · easy-medium · hyp_fields: REL2b
-(OPEN KERNEL = (EQ-3)); REL1 (in _linked).
+cylinders generate), μ( Θ_j⁻¹(W) │ Σ_c ) = vol_{O_{δ_j}}(W) … the pushforward of
+the conditional continuation measure under Θ_j IS the normalized O_{δ_j}-box
+measure" + "(EQ-3) … REL.2(b) verbatim". · deps R13, R14 · sketch: guard
+0 < cellMass; V.events cylinder-populated; NEW conjunct: Θ-pullback ∈ AmbEvents
+(the pushforward reading's measurability half — FF5(ii)); `REL2b_linked` conjoins
+REL1 at (δ_j, d_rel) over the (Sp, AD)-parameterized ReBased; EQ3 aliases the
+repaired REL2b · easy-medium · hyp_fields: REL2b (OPEN KERNEL = (EQ-3)); REL1
+(in _linked).
 
 **R16 REL2d [findings 11/12 repaired]** · structure + `#check`. moves_ref: "a
 displayed COMMUTATIVE SQUARE — vertices … — with horizontal maps Θ_j ((a4)) and a
@@ -797,14 +906,18 @@ nodeCorr excluded) + posOf into AD (EQ-2 wiring); (a3) policy via A.teich_pin;
 TgtSub/subtreeCorr/TgtRealizes for (SIB-Oδ)'s typing · hard · hyp_fields:
 inhabitant = (d)'s deliverable; `square`+corr fields are its displays.
 
-**R17 REL2e [findings 13/14 repaired]** · structure + e4agrees/firstIdxCandidate/
+**R17 REL2e [FF5(iii)/FF6 repaired]** · structure + e4agrees/firstIdxCandidate/
 determines/massEqEntry + `#check`. moves_ref: "(e1) STATE-INDEX CORRESPONDENCE …
-(e2) DEGREE CONVENTION … (e3) MASS = ENTRY … (e4) FIRST-INDEX DICTIONARY … (e5)
-SUBTREE/OUTCOME TYPING." · deps R5, R14, R16 · sketch: entryFirst FIXED;
-`consumed` nonempty; stateDict_compat types (e1)↔(a6); e4agrees takes [3]'s
-convention as parameter; massEqEntry GIVEN determines; re-keying = statement-fence
-event (D5) · medium-hard · hyp_fields: massEqEntry (e3), determines (e5), e4agrees
-+ firstIdxCandidate (e4) — open; data fields deliverable.
+(e2) DEGREE CONVENTION … (e3) MASS = ENTRY — the displayed equation that [3]'s
+table entry β_{e_j, τ_j(c)}(p^{δ_j}) IS the REL.1 mass … (e4) FIRST-INDEX
+DICTIONARY … (e5) SUBTREE/OUTCOME TYPING." · deps R5, R13, R14, R16 · sketch:
+entryFirst FIXED; `consumed` nonempty; stateDict_compat types (e1)↔(a6); e4agrees
+takes [3]'s convention as parameter; massEqEntry now takes `RB : ReBased` and
+conjoins REL1 (the _linked pattern — FF6: THE REL.1 mass, not an arbitrary
+BoxVol) plus realization-event ∈ RB.C.V.events (FF5(iii)); re-keying =
+statement-fence event (D5) · medium-hard · hyp_fields: massEqEntry (e3, now
+REL1-carrying), determines (e5), e4agrees + firstIdxCandidate (e4) — open; data
+fields deliverable.
 
 **R18 SpeciesSyntax + EQ1 [finding 15 repaired]** · structure + def + example.
 moves_ref: "the species alphabet and menu are the SAME finite syntax over every O_δ
@@ -830,12 +943,14 @@ hypothesized law + pow_mul/pow_right_comm · easy · PROVED-class
 ledger's 1:1 clause coverage. moves_ref: "(EQ-3) CONDITIONAL MASSES TRANSPORTED.
 REL.2(b) verbatim." · deps R15 · easy · hyp_fields: = REL2b.
 
-**R22 SIBOdelta [findings 19/20 repaired]** · def + `#check`. moves_ref: "(SIB-Oδ)
+**R22 SIBOdelta [FF5(iii) repaired]** · def + `#check`. moves_ref: "(SIB-Oδ)
 [FENCED = REL.1 + REL.2(a)+(b)+(d), composed …] … μ( S_j │ Σ_c ) =
-vol_{O_{δ_j}}{ g : T_can^{O_{δ_j}}(g) realizes T_j }." · deps R8, R13, R14, R15,
-R16 · sketch: ∀ over the realized family (nonempty, root, descent-closed), guard
-0 < cellMass, ∃-composition WITH the REL1 conjunct, event-typing + pricing per T ·
-medium-hard · hyp_fields: SIBOdelta (OPEN — the sentence [3t]-COND waits on).
+vol_{O_{δ_j}}{ g : T_can^{O_{δ_j}}(g) realizes T_j }, the right side a
+REL.1-theory mass." · deps R8, R13, R14, R15, R16 · sketch: ∀ over the realized
+family (nonempty, root, descent-closed), guard 0 < cellMass, ∃-composition WITH
+the REL1 conjunct over the (Sp, AD)-parameterized ReBased; per T: realization
+event ∈ RB.C.V.events (FF5(iii)) + event-typing + pricing · medium-hard ·
+hyp_fields: SIBOdelta (OPEN — the sentence [3t]-COND waits on).
 
 **R23 O_chain** · theorem. moves_ref: "a branch of relative accumulated degree δ″ at
 ambient O_{δ_j} targets O_{δ_j·δ″}, literally a subring chain in W(F̄_p)." · deps
@@ -858,9 +973,16 @@ D6, unchanged rationale.)
   §R-LEDGER displays nothing (§B1 internals), the field types the typable residue
   and the docstring cites the fence. (iii) (e5)'s second disjunct (re-keying) is a
   statement-fence event, not a Prop disjunct — a satisfiable-by-construction
-  disjunct would be vacuous (D5). (iv) LST's Lean form is the normalized-count
-  stabilization reading of "for every N ≥ N(H, Z)"; flagged for the re-auditor as
-  the one clause typed from (REL.1-b)'s quantifier rather than a named display.
+  disjunct would be vacuous (D5). (iv) WITHDRAWN at REV 3 (FF1): the rev-2 premise
+  that LST had no named display was factually wrong — Lemma LST exists (§C, MOVES
+  3728, "level-set scale-typing") and `lst` now types its three legs' residue; the
+  K1-chain/in_γ graded internals stay §C-side under the §B1-style fence.
+  (v) NEW (FF7): free-data relativity — where the ambient engine's objects
+  (transports, trees, reads, floors) do not exist in Lean, the corresponding
+  deliverable fields are free data constrained ONLY by their typed laws
+  (unitriangularity anchors, letter/word/verdict preservation, cylinder pins,
+  teich_pin, the floor-downset pin); law-respecting junk remains constructible,
+  and D7 now says exactly this. Full pinning = REL.1-pass territory.
 - CROSS-NOTE WATCHES INHERITED: (W1) `SEvent`/`TgtRealizes` stay opaque — every
   MovesR statement is neutral to the [1]/[3t] "realizes" pin; the pinned reading
   lands as the supplier's definition at the CL-10 sync, no statement changes.
@@ -907,6 +1029,30 @@ D6, unchanged rationale.)
   F20 (gap, REL1/closure missing)    → REL1 conjunct in the ∃; closure typed in family; O_chain = ring half only (R22, R8, R23).
   F21 (crit, REL3 pseudo-statement)  → DELETED; REL.3 = recorded non-unit with acceptance path (D6).
 
-STATUS (2026-07-28): REV 2 WRITTEN — 21/21 findings repaired. 23 units: 7 provable
-(R2–R6, R20, R23), 16 statements-only. No axioms; no kernel discharged; statement
-fence in force. Next gate: the single budgeted Codex re-audit, then E-phase.
+Fresh-Fable audit (`MOVESR_AUDIT_FABLE_2026-07-28.md`, 2 crit / 5 gap; all 21
+Codex repairs verified genuine there):
+
+  FF1 (crit, lst mislabeled + entailed by REL1b) → `lst` RETYPED as Lemma LST's
+      three legs (slot-min TYPING / interior FLOOR CONSTANCY / floor-downset
+      SELECTION) over new ht/blk/floor carriers, per the §C display MOVES 3728;
+      stabilization reading withdrawn; §3 widening (iv) withdrawn (R12, D4).
+  FF2 (crit, count free data → lawful-junk REL1b) → count field DELETED;
+      `ReBased.count` DEFINED from SHZ + cyl (level-N cylinder classes meeting
+      the classifier locus); REL1b consumes the definition (R11, R12, R13).
+  FF3 (gap, PIN-WELLDEF status leg dropped) → c05PinWelldef gains the second leg:
+      frame-invariance of the pinned aDim-multiset (cardinality AND status) (R12).
+  FF4 (gap, a_δ double-booked) → ReBased parameterized by (Sp, AD);
+      `posOfDigit` + `aDim_eq` tie c1's exponents to (EQ-2)'s AlphabetData (R12).
+  FF5 (gap, three measurability memberships dropped) → (i) REL2a gains
+      prodEvents + digit-cylinder anchor + domIdent_meas; (ii) REL2b gains the
+      Θ-pullback ∈ AmbEvents conjunct; (iii) SIBOdelta + massEqEntry require the
+      realization event ∈ RB.C.V.events (R14, R15, R17, R22).
+  FF6 (gap, (e3)'s vol arbitrary) → massEqEntry retyped on `RB : ReBased` with
+      the REL1 conjunct — the _linked pattern; the mass is THE REL.1 theory's (R17).
+  FF7 (gap, (a5) unanchored + D7 overclaim) → ambT_unitri/tgtT_unitri
+      (CoordPrec-anchored unitriangularity); D7's false claim withdrawn and
+      replaced; residue recorded as widening (v) (R14, D7, §3).
+
+STATUS (2026-07-28): REV 3 WRITTEN — Codex 21/21 + Fable 7/7 repaired. 23 units:
+7 provable (R2–R6, R20, R23), 16 statements-only. No axioms; no kernel discharged;
+statement fence in force. Next gate: the Codex FINAL confirmation pass, then E-phase.
