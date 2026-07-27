@@ -426,7 +426,11 @@ should not be conflated (this is the mistake an earlier draft of this document m
    **§H-DOMAINS ([2b]) drafted and in spiral** (pass 1: 9c/2g — the derivation-heavy
    note held to proof standards; H-LIST's slack/cone injectivity, the honest
    consumer-match rewrite, and a real seal for gate H-n3 are the rev-2 work; rev 2
-   in flight). The write-up now has SEVEN dual-accepted artifacts + one note in
+   in flight). **PLAN REV 15 LANDED** (the sync batch: the §0 note-vs-event
+   acceptance ledger with exact blockers — [1v]-FULL = [2b]'s four H.6 fences;
+   [3t]-COND = the conditionality record only; CL-8 five REL.2 obligations; the
+   four JOINT-D1 lines reworded to Montes-L1 authority; (ns-null) CLOSED; 19
+   sealed gates; drafting ruling: [5] + [3]-COND cleared NOW, [4] not cleared). The write-up now has SEVEN dual-accepted artifacts + one note in
    spiral + two plan notes ([3] RESUM, [4] SQUEEZE + [5] EXHAUST) not yet drafted —
    those await [2b]'s package and the remaining kernels per the plan's DAG.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
