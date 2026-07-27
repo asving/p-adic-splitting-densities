@@ -21,6 +21,6 @@ theorem rexact_solve {T : TableShape n} {M : MeasuredSide T} {RB : RatBurdens T 
     ∀ e (he : e ∈ Finset.Icc 1 n) (h_ent : ℕ) (τ : T.State e)
       (σ' : Multiset T.VType) (q₀ : ℚ), q₀ ∈ M.Pools →
       B.βfull e he h_ent τ σ' q₀ = B.βmeas e he h_ent τ σ' q₀ :=
-  sorry
+  B.rexact hns
 
 end LeanUrat.MovesS

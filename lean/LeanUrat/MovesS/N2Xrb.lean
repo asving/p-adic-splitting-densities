@@ -13,6 +13,6 @@ namespace LeanUrat.MovesS
 theorem n2_xrb : ∀ e (he : e ∈ Finset.Icc 1 2) (h h' : ℕ) (τ : n2T.State e)
     (σ' : Multiset n2T.VType) (q₀ : ℚ), q₀ ∈ n2M.Pools →
     n2B.βmeas e he h τ σ' q₀ = n2B.βmeas e he h' τ σ' q₀ :=
-  sorry
+  n2B.xrb
 
 end LeanUrat.MovesS

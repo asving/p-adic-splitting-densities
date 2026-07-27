@@ -16,6 +16,7 @@ theorem n2_degpins_tg : ∀ e (τ : n2T.State e) (o : n2T.Out e τ),
     (n2RB.tgP e τ o).degBoundS = n2T.Wstate e τ ∧
     (n2RB.jP e τ o).degBoundT = n2T.Wloc e τ o ∧
     (n2RB.jP e τ o).degBoundS = n2T.Wstate e τ :=
-  sorry
+  fun e τ o =>
+    ⟨n2RB.tg_degT e τ o, n2RB.tg_degS e τ o, n2RB.j_degT e τ o, n2RB.j_degS e τ o⟩
 
 end LeanUrat.MovesS

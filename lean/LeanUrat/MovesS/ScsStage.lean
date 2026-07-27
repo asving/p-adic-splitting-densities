@@ -16,7 +16,9 @@ variable {n : ℕ}
 
 theorem scs_stage {T : TableShape n} (S : SCSData T) {e : ℕ}
     {τ : T.State e} {o : T.Out e τ} (hm : (T.odata e τ o).m = 1) :
-    S.W' e τ o * S.D' e τ o = S.W e τ o * S.D e τ o :=
-  sorry
+    S.W' e τ o * S.D' e τ o = S.W e τ o * S.D e τ o := by
+  obtain ⟨_, _, hW, hgμ⟩ := scs_flank S hm
+  rw [S.stage_W, S.stage_D, hW, ← hgμ]
+  ring
 
 end LeanUrat.MovesS

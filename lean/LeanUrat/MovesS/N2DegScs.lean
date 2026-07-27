@@ -25,7 +25,7 @@ theorem n2_degcons_scs :
     (n2SCS.W 2 n2τ n2oK = 2 ∧ n2SCS.D 2 n2τ n2oK = 1 ∧
      n2SCS.ℓ 2 n2τ n2oK = 1 ∧ n2SCS.g 2 n2τ n2oK = 1 ∧
      n2SCS.μsel 2 n2τ n2oK = 1 ∧ n2SCS.flankWidth 2 n2τ n2oK = 0 ∧
-     n2SCS.W' 2 n2τ n2oK = 1 ∧ n2SCS.D' 2 n2τ n2oK = 2) :=
-  sorry
+     n2SCS.W' 2 n2τ n2oK = 1 ∧ n2SCS.D' 2 n2τ n2oK = 2) := by
+  decide
 
 end LeanUrat.MovesS

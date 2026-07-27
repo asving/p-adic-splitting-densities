@@ -16,7 +16,15 @@ namespace LeanUrat.MovesS
 theorem ratfunc_eval_infinite (f : Qq) (S : Set ℚ) (hS : S.Infinite)
     (hden : ∀ x ∈ S, f.denom.eval x ≠ 0)
     (hval : ∀ x ∈ S, RatFunc.eval (RingHom.id ℚ) x f = 0) :
-    f = 0 :=
-  sorry
+    f = 0 := by
+  rw [← RatFunc.num_eq_zero_iff]
+  refine Polynomial.eq_zero_of_infinite_isRoot _ (hS.mono ?_)
+  intro x hx
+  have hv := hval x hx
+  have hd := hden x hx
+  rw [RatFunc.eval, Polynomial.eval₂_id, Polynomial.eval₂_id, div_eq_zero_iff] at hv
+  rcases hv with h | h
+  · exact h
+  · exact absurd h hd
 
 end LeanUrat.MovesS

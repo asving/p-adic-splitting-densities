@@ -14,6 +14,6 @@ namespace LeanUrat.MovesS
 
 theorem n2_pools :
     n2M.Pools = {q : ℚ | ∃ (p : ℕ) (_ : p.Prime) (δ : ℕ+), q = (p : ℚ) ^ (δ : ℕ)} :=
-  sorry
+  rfl
 
 end LeanUrat.MovesS

@@ -24,6 +24,7 @@ theorem n2_sh_laws :
     (∀ Ŝ ∈ n2F.Sh, ∀ q₀ ∈ n2M.Pools, ∃ N₀, ∀ N ≥ N₀,
       n2Chain.WshVal Ŝ q₀ * (Fintype.card (n2M.Box q₀ N) : ℝ)
         = ((n2Chain.shEvt Ŝ q₀ N).card : ℝ)) :=
-  sorry
+  ⟨n2Chain.wshval_bdd, n2Chain.shDom_ne, n2Chain.sh_realized,
+    n2Chain.shweight_card, n2Chain.wshval_card⟩
 
 end LeanUrat.MovesS

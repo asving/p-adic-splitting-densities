@@ -19,6 +19,6 @@ theorem allActive_cofinite_primes {T : TableShape n} {M : MeasuredSide T}
     (RB : RatBurdens T M) (PP : Set ℚ) (hsub : PP ⊆ M.Pools)
     (hbase : ∀ q₀, q₀ ∈ PP ↔ ∃ p : ℕ, p.Prime ∧ q₀ = (p : ℚ)) :
     {q₀ ∈ PP | q₀ ∉ allActivePools M}.Finite :=
-  sorry
+  (allActive_cofinite RB).1.subset fun q₀ hq₀ => ⟨hsub hq₀.1, hq₀.2⟩
 
 end LeanUrat.MovesS

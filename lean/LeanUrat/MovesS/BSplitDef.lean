@@ -64,6 +64,6 @@ theorem bSplit_def (T : TableShape n) {M : MeasuredSide T}
       ∑ o ∈ splitOuts T e τ, RB.J e τ o *
         ∑ g : {g : Fin (T.odata e τ o).mem.length → Multiset T.VType // σ' = ∑ j, g j},
           ∏ j, legFactor T e τ o βlt g.1 j :=
-  sorry
+  rfl
 
 end LeanUrat.MovesS

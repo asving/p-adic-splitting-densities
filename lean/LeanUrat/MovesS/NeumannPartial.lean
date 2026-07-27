@@ -14,6 +14,6 @@ open Matrix
 theorem neumann_partial {ι : Type*} [Fintype ι] [DecidableEq ι]
     (A : Matrix ι ι ℚ) (k : ℕ) :
     (1 - A) * (∑ m ∈ Finset.range k, A ^ m) = 1 - A ^ k :=
-  sorry
+  mul_neg_geom_sum A k
 
 end LeanUrat.MovesS

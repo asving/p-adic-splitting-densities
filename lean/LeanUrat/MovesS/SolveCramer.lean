@@ -18,7 +18,8 @@ open Matrix
 
 theorem solve_cramer {ι : Type*} [Fintype ι] [DecidableEq ι] {F : Type*} [Field F]
     (K : Matrix ι ι F) (b : ι → F) (hdet : (1 - K).det ≠ 0) :
-    (1 - K)⁻¹ *ᵥ b = fun τ => ((1 - K).det)⁻¹ * ((1 - K).adjugate *ᵥ b) τ :=
-  sorry
+    (1 - K)⁻¹ *ᵥ b = fun τ => ((1 - K).det)⁻¹ * ((1 - K).adjugate *ᵥ b) τ := by
+  rw [Matrix.inv_def, Ring.inverse_eq_inv, Matrix.smul_mulVec]
+  rfl
 
 end LeanUrat.MovesS

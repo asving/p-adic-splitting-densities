@@ -12,6 +12,6 @@ namespace LeanUrat.MovesS
 
 theorem n2_rs1eq : ∀ p ∈ n2Chain.PrimePools,
     (∑ σ ∈ n2Chain.Sigmas, n2Chain.Rval σ p) = n2Chain.decidedTotal p :=
-  sorry
+  n2Chain.rs1_equates
 
 end LeanUrat.MovesS

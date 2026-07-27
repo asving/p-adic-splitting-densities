@@ -13,6 +13,6 @@ namespace LeanUrat.MovesS
 
 theorem evalAt_coe (q₀ : ℚ) (f : OKat q₀) :
     evalAt q₀ f = RatFunc.eval (RingHom.id ℚ) q₀ (f : Qq) :=
-  sorry
+  rfl
 
 end LeanUrat.MovesS

@@ -16,7 +16,9 @@ theorem dispatch_spec {V : Type*} {St : ℕ → Type*} (o : Outcome V St)
     (h1 : 1 ≤ o.m) (hc : o.c ≤ o.m) :
     (routeOf o = .termFin ↔ o.c = 0) ∧
     (routeOf o = .kcol ↔ o.c = 1 ∧ o.m = 1) ∧
-    (routeOf o = .split ↔ 1 ≤ o.c ∧ 2 ≤ o.m) :=
-  sorry
+    (routeOf o = .split ↔ 1 ≤ o.c ∧ 2 ≤ o.m) := by
+  unfold routeOf
+  split_ifs with hc0 hm1 <;>
+    refine ⟨?_, ?_, ?_⟩ <;> simp_all <;> omega
 
 end LeanUrat.MovesS

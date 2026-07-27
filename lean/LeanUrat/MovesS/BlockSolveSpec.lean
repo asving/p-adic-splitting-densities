@@ -7,6 +7,7 @@ every leg lands in the guard).
 -/
 import LeanUrat.MovesS.Defs
 import LeanUrat.MovesS.BlockSolve
+import LeanUrat.MovesS.SolveIff
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -34,7 +35,35 @@ theorem blockSolve_spec {T : TableShape n} {M : MeasuredSide T}
     blockSolve T RB hdc hK hdet e he τ σ' =
       (Kmat T RB e (hK e he) *ᵥ fun β => blockSolve T RB hdc hK hdet e he β σ') τ
       + bTerm T RB e σ' τ
-      + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ' τ :=
-  sorry
+      + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ' τ := by
+  -- Raw one-step unfolding (past the private well-founded core): each state's entry
+  -- is the corresponding component of `(1 - K_e)⁻¹ *ᵥ b`, with the SAME exit vector
+  -- `b = b^{term,fin} + b^split` for every state (`blockSolveLt` is the βlt slot).
+  have key : ∀ β, blockSolve T RB hdc hK hdet e he β σ' =
+      ((1 - Kmat T RB e (hK e he))⁻¹ *ᵥ
+        (bTerm T RB e σ' + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ')) β := by
+    intro β
+    rw [blockSolve_eq]; rfl
+  have hv : (fun β => blockSolve T RB hdc hK hdet e he β σ') =
+      (1 - Kmat T RB e (hK e he))⁻¹ *ᵥ
+        (bTerm T RB e σ' + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ') := by
+    funext β; exact key β
+  -- `1 - K_e` is invertible at this block (the global determinant hypothesis).
+  have hunit : IsUnit (1 - Kmat T RB e (hK e he)).det :=
+    isUnit_iff_ne_zero.mpr (hdet e he)
+  have hmul : (1 - Kmat T RB e (hK e he)) * (1 - Kmat T RB e (hK e he))⁻¹ = 1 :=
+    Matrix.mul_nonsing_inv _ hunit
+  -- The fixed-point identity: the solve `w = (1 - K)⁻¹ *ᵥ b` satisfies `w = K *ᵥ w + b`.
+  have hsolve :
+      (1 - Kmat T RB e (hK e he))⁻¹ *ᵥ
+        (bTerm T RB e σ' + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ') =
+      Kmat T RB e (hK e he) *ᵥ
+        ((1 - Kmat T RB e (hK e he))⁻¹ *ᵥ
+          (bTerm T RB e σ' + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ'))
+        + (bTerm T RB e σ' + bSplit T RB hdc e he (blockSolveLt RB hdc hK hdet e) σ') := by
+    rw [solve_iff, mulVec_mulVec, hmul, one_mulVec]
+  rw [key τ, hv, congrFun hsolve τ]
+  simp only [Pi.add_apply]
+  ring
 
 end LeanUrat.MovesS

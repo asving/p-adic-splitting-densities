@@ -21,6 +21,6 @@ theorem n2_sh_events :
       = (n2Chain.visH Ŝ q₀ N).biUnion (fun h => n2Chain.shEvtH Ŝ h q₀ N)) ∧
     (∀ Ŝ ∈ n2F.Sh, ∀ h : n2M.Hgt, h ∈ n2Chain.shDom Ŝ → ∀ q₀ ∈ n2M.Pools,
       n2Chain.shWeightH Ŝ h q₀ = n2Chain.WshVal Ŝ q₀) :=
-  sorry
+  ⟨fun _ _ => ⟨(0 : ℕ), rfl⟩, n2Chain.shevt_grouping, fun _ _ _ _ _ _ => rfl⟩
 
 end LeanUrat.MovesS

@@ -15,7 +15,7 @@ open Matrix
 
 theorem solve_iff {ι : Type*} [Fintype ι] [DecidableEq ι] {R : Type*} [CommRing R]
     (K : Matrix ι ι R) (b β : ι → R) :
-    β = K *ᵥ β + b ↔ (1 - K) *ᵥ β = b :=
-  sorry
+    β = K *ᵥ β + b ↔ (1 - K) *ᵥ β = b := by
+  rw [sub_mulVec, one_mulVec, sub_eq_iff_eq_add']
 
 end LeanUrat.MovesS

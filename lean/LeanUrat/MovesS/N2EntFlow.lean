@@ -16,7 +16,9 @@ namespace LeanUrat.MovesS
 theorem n2_ent_flow :
     (∀ e (τ : n2T.State e) (ε ε' : n2M.EntShape e τ), ε = ε') ∧
     (∀ q₀ ∈ n2M.Pools, n2M.kstep 1 2 n2τ n2τ q₀ = ((q₀ : ℝ))⁻¹ ^ 3) ∧
-    (∀ (q₀ : ℚ) e (τ : n2T.State e), n2M.activeState q₀ e τ) :=
-  sorry
+    (∀ (q₀ : ℚ) e (τ : n2T.State e), n2M.activeState q₀ e τ) := by
+  refine ⟨fun _ _ ε ε' => rfl, fun q₀ _ => ?_, fun _ _ _ => trivial⟩
+  change ((if (2 : ℕ) = 2 then ((q₀ : ℝ))⁻¹ ^ 3 else 0) ^ 1) = ((q₀ : ℝ))⁻¹ ^ 3
+  rw [if_pos rfl, pow_one]
 
 end LeanUrat.MovesS

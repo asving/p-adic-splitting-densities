@@ -17,6 +17,6 @@ theorem n2_recursion : ∀ e (he : e ∈ Finset.Icc 1 2) (τ : n2T.State e)
     n2M.activeState q₀ e τ → ∀ h_ent : ℕ,
     n2B.βmeas e he h_ent τ σ' q₀
       = evalRe n2T n2M n2RB n2hdc e he τ σ' q₀ (fun e' he' => n2B.βmeas e' he' h_ent) :=
-  sorry
+  n2B.recursion_meas
 
 end LeanUrat.MovesS

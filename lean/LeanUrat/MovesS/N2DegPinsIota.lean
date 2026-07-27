@@ -14,6 +14,6 @@ namespace LeanUrat.MovesS
 theorem n2_degpins_iota : ∀ e (τ : n2T.State e) (ε : n2M.EntShape e τ),
     (n2RB.ιP e τ ε).degBoundT = n2M.Went e τ ε ∧
     (n2RB.ιP e τ ε).degBoundS = n2M.Went e τ ε :=
-  sorry
+  fun e τ ε => ⟨n2RB.ι_degT e τ ε, n2RB.ι_degS e τ ε⟩
 
 end LeanUrat.MovesS

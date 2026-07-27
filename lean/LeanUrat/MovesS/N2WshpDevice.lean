@@ -18,6 +18,9 @@ theorem n2_wshp_device :
     (∀ Ŝ : Shape n2T, (n2Chain.WshP Ŝ).countT = 1 ∧ (n2Chain.WshP Ŝ).countS = 1 ∧
       (n2Chain.WshP Ŝ).geom = 1 ∧ (n2Chain.WshP Ŝ).qpow = 0) ∧
     (∀ Ŝ ∈ n2F.Sh, ∀ q₀ ∈ n2M.Pools, n2Chain.WshVal Ŝ q₀ = 1) :=
-  sorry
+  -- `n2Chain` inherits the device fields from `n2ChainCore`'s literal (this unit's
+  -- fills, N2Sigmas.lean): WshP ≡ the 1-presentation `n2OnePG`, WshVal ≡ 1 — so
+  -- every conjunct is definitional.
+  ⟨fun _ => ⟨rfl, rfl, rfl, rfl⟩, fun _ _ _ _ => rfl⟩
 
 end LeanUrat.MovesS

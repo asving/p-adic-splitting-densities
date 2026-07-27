@@ -30,7 +30,11 @@ theorem interp_read_off {T : TableShape n} {M : MeasuredSide T}
       (bhatMeas P (fun e' he' => B.βmeas e' he' h_ent) σ') τA) :
     ∃ hok : blockSolve T RB hdc hK hdet e he (↑τA) σ' ∈ OKat q₀,
       ((evalAt q₀ ⟨blockSolve T RB hdc hK hdet e he (↑τA) σ', hok⟩ : ℚ) : ℝ)
-        = B.βmeas e he h_ent (↑τA) σ' q₀ :=
-  sorry
+        = B.βmeas e he h_ent (↑τA) σ' q₀ := by
+  -- AVAgree supplies `hok` and the active-solve value; U-24a1 (`active_solve_meas`)
+  -- identifies that value with the measured `βmeas`.  Uncancelled wild poles are
+  -- excluded by the `hAV` hypothesis — never claimed absent.
+  obtain ⟨hok, hval⟩ := hAV
+  exact ⟨hok, hval.trans (active_solve_meas B L he P σ' h_ent τA).symm⟩
 
 end LeanUrat.MovesS

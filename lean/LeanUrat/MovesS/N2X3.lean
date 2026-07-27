@@ -14,6 +14,6 @@ namespace LeanUrat.MovesS
 theorem n2_x3 :
     (∀ q₀ : ℚ, n2Chain.decidedTotal q₀ = ∑ σ ∈ n2Chain.Sigmas, n2Chain.Rval σ q₀) ∧
     (∀ p ∈ n2Chain.PrimePools, n2Chain.decidedTotal p = 1) :=
-  sorry
+  ⟨fun _ => rfl, n2Chain.x3_total⟩
 
 end LeanUrat.MovesS

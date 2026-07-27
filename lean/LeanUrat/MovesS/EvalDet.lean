@@ -15,6 +15,6 @@ open Matrix
 theorem eval_det {ι : Type*} [Fintype ι] [DecidableEq ι] {q₀ : ℚ}
     (A : Matrix ι ι (OKat q₀)) :
     evalAt q₀ A.det = (A.map (evalAt q₀)).det :=
-  sorry
+  RingHom.map_det (evalAt q₀) A
 
 end LeanUrat.MovesS

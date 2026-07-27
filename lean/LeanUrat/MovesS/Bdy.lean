@@ -13,7 +13,12 @@ namespace LeanUrat.MovesS
 
 theorem bdy_edge : ∀ fe r : ℕ,
     (bdyEdgeOwner fe r = .entrance ↔ r ≤ fe) ∧
-    (bdyEdgeOwner fe r = .block ↔ fe < r) :=
-  sorry
+    (bdyEdgeOwner fe r = .block ↔ fe < r) := by
+  intro fe r
+  unfold bdyEdgeOwner
+  by_cases h : r ≤ fe
+  · simp [h]
+  · simp [h]
+    omega
 
 end LeanUrat.MovesS

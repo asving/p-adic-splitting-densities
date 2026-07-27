@@ -20,9 +20,44 @@ namespace LeanUrat.MovesS
 
 variable {n : ℕ}
 
+/-- The one-step multiplicative-closure operator `s ↦ s ∪ (D * s)` is INFLATIONARY
+under iteration: any starting set is contained in every iterate. -/
+private lemma infl_iterate {α : Type*} [Mul α] [DecidableEq α] (D : Finset α)
+    (s : Finset α) (k : ℕ) :
+    s ⊆ (fun t : Finset α => t ∪ Finset.image₂ (· * ·) D t)^[k] s := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    rw [Function.iterate_succ_apply']
+    exact ih.trans Finset.subset_union_left
+
+/-- The KEY closure fact: a list `l` of factors, each drawn from `D`, has its product
+land in the `l.length`-th iterate of the closure operator started at `{1}`.  Proved by
+induction on `l`: the empty product `1` seeds `{1}`, and prepending a factor `a ∈ D`
+multiplies into the previous iterate via `D * (·)`, one more application of the
+operator. -/
+private lemma prod_mem_iterate {α : Type*} [CommMonoid α] [DecidableEq α]
+    (D : Finset α) :
+    ∀ (l : List α), (∀ δ ∈ l, δ ∈ D) →
+      l.prod ∈ (fun t : Finset α => t ∪ Finset.image₂ (· * ·) D t)^[l.length] {1} := by
+  intro l
+  induction l with
+  | nil => intro _; simp
+  | cons a l' ih =>
+    intro hfac
+    have ha : a ∈ D := hfac a (by simp)
+    have hl' : ∀ δ ∈ l', δ ∈ D := fun δ hδ => hfac δ (List.mem_cons_of_mem _ hδ)
+    have hprev := ih hl'
+    rw [List.prod_cons, List.length_cons, Function.iterate_succ_apply']
+    exact Finset.mem_union.mpr (Or.inr (Finset.mem_image₂_of_mem ha hprev))
+
 theorem nested_delta_mem (T : TableShape n) (F : ShapeFam T) (l : List ℕ+)
     (hlen : l.length ≤ n) (hfac : ∀ δ ∈ l, δ ∈ deltaFactors T F) :
-    l.prod ∈ consumedDeltas T F :=
-  sorry
+    l.prod ∈ consumedDeltas T F := by
+  unfold consumedDeltas
+  set D := deltaFactors T F with hD
+  obtain ⟨d, hd⟩ := Nat.exists_eq_add_of_le hlen
+  rw [hd, Nat.add_comm, Function.iterate_add_apply]
+  exact infl_iterate D _ d (prod_mem_iterate D l hfac)
 
 end LeanUrat.MovesS

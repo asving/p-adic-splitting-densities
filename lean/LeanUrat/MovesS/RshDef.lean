@@ -21,8 +21,26 @@ variable {n : ℕ}
 /-- Sorried instance obligation (U-11's class, shifted base point σ₀). -/
 noncomputable instance shDecompFintype {T : TableShape n} (Ŝ : Shape T)
     (σ : Multiset T.VType) :
-    Fintype {g : Fin Ŝ.k → Multiset T.VType // σ = Ŝ.σ0 + ∑ i, g i} :=
-  sorry
+    Fintype {g : Fin Ŝ.k → Multiset T.VType // σ = Ŝ.σ0 + ∑ i, g i} := by
+  -- Same class as U-11's `decompFintype`, but with the shifted base point σ₀:
+  -- from `σ = σ₀ + ∑ i, g i` each leg `g i` is ≤ the total sum ≤ σ, so the
+  -- decomposition subtype injects into `Fin Ŝ.k → {μ // μ ≤ σ}`, a finite type.
+  haveI : DecidableEq T.VType := T.deqV
+  have hfin : Finite {g : Fin Ŝ.k → Multiset T.VType // σ = Ŝ.σ0 + ∑ i, g i} := by
+    apply Finite.of_injective
+      (β := Fin Ŝ.k → {μ : Multiset T.VType // μ ≤ σ})
+      (fun g j => ⟨g.1 j,
+        le_of_le_of_eq
+          (le_trans
+            (Finset.single_le_sum (fun i _ => Multiset.zero_le (g.1 i)) (Finset.mem_univ j))
+            (self_le_add_left (∑ i, g.1 i) Ŝ.σ0))
+          g.2.symm⟩)
+    intro g g' h
+    apply Subtype.ext
+    funext j
+    exact Subtype.ext_iff.mp (congrFun h j)
+  -- Pass the finiteness witness explicitly (see U-11's note on instance wandering).
+  exact @Fintype.ofFinite _ hfin
 
 /-- The per-shape convolution Σ_{σ = σ₀(Ŝ) ⊎ ⊎ᵢ σᵢ} ∏ᵢ β_{e_i,τ_i}(σ_i)(q^{δ_i}). -/
 noncomputable def shConv (T : TableShape n) (M : MeasuredSide T)

@@ -17,6 +17,7 @@ theorem n2_interp_iota :
         = n2M.ιsh e τ ε q₀ ∧
     (n2RB.ιP e τ ε).countS = 1 ∧
     ((n2RB.ιP e τ ε).countT.eval q₀ : ℚ) = (n2M.entCount e τ ε q₀ : ℚ) :=
-  sorry
+  fun e τ ε q₀ h =>
+    ⟨n2RB.ι_interp e τ ε q₀ h, n2RB.ι_countS_one e τ ε, n2RB.ι_count e τ ε q₀ h⟩
 
 end LeanUrat.MovesS

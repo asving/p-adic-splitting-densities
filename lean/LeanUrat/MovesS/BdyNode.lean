@@ -15,7 +15,13 @@ namespace LeanUrat.MovesS
 theorem bdy_node_shadow : ∀ fe : ℕ,
     bdyNodeOwner fe fe = .block ∧
     bdyEdgeOwner fe fe = .entrance ∧
-    ∀ r ≠ fe, bdyNodeOwner fe r = bdyEdgeOwner fe r :=
-  sorry
+    ∀ r ≠ fe, bdyNodeOwner fe r = bdyEdgeOwner fe r := by
+  intro fe
+  refine ⟨?_, ?_, ?_⟩
+  · simp [bdyNodeOwner]
+  · simp [bdyEdgeOwner]
+  · intro r hr
+    unfold bdyNodeOwner bdyEdgeOwner
+    split_ifs with h1 h2 <;> first | rfl | omega
 
 end LeanUrat.MovesS

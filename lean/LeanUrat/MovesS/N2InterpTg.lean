@@ -21,6 +21,6 @@ theorem n2_interp_tg :
     (routeOf (n2T.odata e τ o) = .split →
       ((evalAt q₀ ⟨(n2RB.jP e τ o).val, n2RB.j_ok e τ o q₀ h⟩ : ℚ) : ℝ)
         = n2M.rowVal e τ o q₀) :=
-  sorry
+  fun e τ o q₀ h => ⟨n2RB.tg_interp e τ o q₀ h, n2RB.j_interp e τ o q₀ h⟩
 
 end LeanUrat.MovesS

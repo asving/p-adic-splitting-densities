@@ -17,6 +17,9 @@ theorem n2_events : ∀ q₀ ∈ n2M.Pools,
     n2M.rowVal 2 n2τ n2oK q₀ = ((q₀ : ℝ))⁻¹ ^ 3 ∧
     n2M.rowVal 2 n2τ n2oSpl q₀ = 1 - ((q₀ : ℝ))⁻¹ ∧
     n2M.rowVal 2 n2τ n2oIn q₀ = ((q₀ : ℝ))⁻¹ - ((q₀ : ℝ))⁻¹ ^ 3 :=
-  sorry
+  -- `rowVal` (this unit's fill in N2Carriers) is keyed by the outcome index, and
+  -- the roster indices n2oK/n2oSpl/n2oIn are 0/1/2 : Fin 3 — each conjunct is a
+  -- definitional `ite`-evaluation, uniformly in the pool.
+  fun _ _ => ⟨rfl, rfl, rfl⟩
 
 end LeanUrat.MovesS

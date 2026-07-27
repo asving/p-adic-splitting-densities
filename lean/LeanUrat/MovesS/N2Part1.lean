@@ -2,7 +2,11 @@
 Unit `n2_part1` (easy; S5 ledger batch, LedgerIV item (3)) — the partition of
 unity; the display: q₀⁻³ + (1 − q₀⁻¹) + (q₀⁻¹ − q₀⁻³) = 1 (`field_simp`).
 -/
-import LeanUrat.MovesS.N2Carriers
+-- Discharges via the `part1` field of the instance `LedgerIV` (the D-5 pin
+-- idiom): the only `LedgerIV n2T n2M` is `n2Chain.L`, so this pin reads that
+-- structure field, exactly as `n2_ok` reads `n2RB.tg_ok`.  N2Sigmas supplies
+-- `n2Chain`; it transitively re-exports N2Carriers.
+import LeanUrat.MovesS.N2Sigmas
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -14,6 +18,6 @@ namespace LeanUrat.MovesS
 theorem n2_part1 : ∀ e ∈ Finset.Icc 1 2, ∀ (τ : n2T.State e) (x : n2M.Rep e τ)
     (q₀ : ℚ), q₀ ∈ n2M.Pools → n2M.activeState q₀ e τ →
     ∑ c : n2M.Cell e τ, n2M.μcell e τ x c q₀ = 1 :=
-  sorry
+  n2Chain.L.part1
 
 end LeanUrat.MovesS
