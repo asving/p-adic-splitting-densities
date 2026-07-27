@@ -149,6 +149,17 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   fix, applied by the orchestrator (no statement touched). 13 units. The
   acceptance record: both verifiers clean on the mathematical content of
   identical rev-6 text. E-phase next. ***
+  MovesR PARKED (2026-07-28, per adjudication #1's condition): the rev-4
+  re-architecture's Codex final = REJECT 15/2 — the CInterface SHAPE is right
+  but faithfully TYPING the eleven §C statements needs the full §C carrier
+  vocabulary (basis monomials, kappa_r/STR_r, stage indices, piece maps, unit
+  lifts) = a real fraction of HC-1's own design. Iterating MovesR now would
+  duplicate HC-1's work badly. DISPOSITION: (a) the Witt BASE LAYER (the ~7
+  provable, multiply-audited-clean units: conventions, composition law,
+  Fsub_card) splits off as a mini-corpus for E-phase + provers; (b) the
+  CStatements/GradedCarrier draft is RAW MATERIAL for the HC-1 blueprint
+  (wave 5), where MovesR gets re-keyed to the real carriers and re-audited.
+  (The parallel Fable leg's verdict folds into this record when it lands.)
   CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
   Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
   Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
