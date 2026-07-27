@@ -671,3 +671,18 @@ it is the note's Theorem U, checked. Also: MovesR parked (its §C-pointer layer 
 HC-1's carriers; Witt base layer split to MovesRBase, fleet running); ONE note erratum
 found and dual-confirmed (the §M-SPECIES [R4/R5 rows] bracket omits R6 — record at the
 end of MOVES_2026-07-24.md).
+
+## UPDATE (2026-07-28b, the proved corpora)
+
+Fleet results, all statement-fenced and footprint-verified post-rebuild (Lean core
+only): **MovesU 13/13 (THE conditional Theorem U + identification)** ·
+**MovesRBase 7/7 (the Witt base layer)** · **MovesSp 67/67** (the §M-SPECIES
+catalogue: |catalogue| = 53, SnRaw3_eq closure, menu3_exact_global, loops,
+exclusions, rosters — all kernel-`decide`d, native_decide banned throughout) ·
+**MovesX 38/40** (§X-EXHAUST incl. the ballCover kernel-timeout repair; the two
+envelope units were KERNEL-REFUTED as first stated, adjudicated as blueprint
+over-strength against the note's own (N−1−c_cap) display, restated with ∃N₀ and
+D9-rebound constants, now in prover hands). MovesS (95-unit core) and MovesD
+(rev 8) are in their acceptance passes. Conditionality discipline unchanged: all
+of this is the statement/derivation layer over typed interfaces + the CL ledger;
+instantiation = the remaining campaign (waves 4–5, HC-1/HC-2).
