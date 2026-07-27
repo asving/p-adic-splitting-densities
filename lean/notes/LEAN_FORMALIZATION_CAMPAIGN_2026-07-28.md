@@ -138,6 +138,9 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
     checks, zero Codex cost); Codex runs ONLY each corpus's final confirmation
     pass. The per-corpus acceptance bar stays dual: last round must be
     Codex-clean AND a Fable pass on identical text.
+  CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
+  Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
+  Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
   MovesGr option (a): EXECUTED (2026-07-28) — with a STATEMENT-FENCE EVENT: the
     signed-off literal add_def was a Lean TAUTOLOGY (instance elaboration
     re-read the RHS + as the ring's own; repro in MOVESGR blueprint §8.4);
