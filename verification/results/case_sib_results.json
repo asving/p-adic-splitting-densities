@@ -1,0 +1,263 @@
+{
+ "L1": {
+  "famA": [
+   78125,
+   78125,
+   15625
+  ],
+  "famB": [
+   3125,
+   78125,
+   625
+  ],
+  "famC": [
+   18750,
+   312500,
+   15000
+  ],
+  "classes_r1": [
+   312500,
+   18750,
+   31250,
+   12500,
+   15625
+  ],
+  "classes_r2": [
+   312500,
+   18750,
+   31250,
+   12500,
+   15625
+  ],
+  "NSigma": 390625,
+  "joint_min": 25,
+  "joint_max": 25,
+  "marg_ok": true
+ },
+ "L2": {
+  "joint": [
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048
+  ],
+  "margL": [
+   8192,
+   8192,
+   8192,
+   8192
+  ],
+  "margQ": [
+   8192,
+   8192,
+   8192,
+   8192
+  ],
+  "famU": [
+   16384,
+   16384,
+   8192
+  ]
+ },
+ "L3": {
+  "triple_min": 125,
+  "triple_max": 125,
+  "marg": [
+   [
+    3125,
+    3125,
+    3125,
+    3125,
+    3125
+   ],
+   [
+    3125,
+    3125,
+    3125,
+    3125,
+    3125
+   ],
+   [
+    3125,
+    3125,
+    3125,
+    3125,
+    3125
+   ]
+  ]
+ },
+ "verdicts": [
+  {
+   "name": "P6 transported state r=1: digit2(B2)=1, digit3(B1)=0, digit4(B0)=0 on ALL members",
+   "ok": true,
+   "detail": "(True, True, True)"
+  },
+  {
+   "name": "P6 transported state r=2: digit2(B2)=1, digit3(B1)=0, digit4(B0)=0 on ALL members",
+   "ok": true,
+   "detail": "(True, True, True)"
+  },
+  {
+   "name": "P6b branch set at (4,3,3,4) = {1,2} (Taylor-shift re-derivation)",
+   "ok": true,
+   "detail": "[1, 2]"
+  },
+  {
+   "name": "P8 S2 form tables == literal digits (all members, both branches)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P1 marginal words: N(W_r=w)=3125 for all 125 words, both branches",
+   "ok": true,
+   "detail": "r=1 min/max 3125/3125, r=2 3125/3125"
+  },
+  {
+   "name": "P2 joint contingency: N(pair)=25 at ALL 15625 pairs (uniform on F5^6)",
+   "ok": true,
+   "detail": "min=25 max=25"
+  },
+  {
+   "name": "P2b product identity N(pair)*N(Sigma)==N(w1)*N(w2) at EVERY pair (census numbers)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P3 family A: S1={v1=1} x S2={v2=2} counts N1/N2/NJ = 78125/78125/15625",
+   "ok": true,
+   "detail": "78125/78125/15625"
+  },
+  {
+   "name": "P3 family A: S1={v1=1} x S2={v2=2} product identity NJ*NSigma == N1*N2",
+   "ok": true,
+   "detail": "15625*390625 = 6103515625 vs 78125*78125 = 6103515625"
+  },
+  {
+   "name": "P4 family B: S1={W1=(0,0,1)} x S2={v2=2} counts N1/N2/NJ = 3125/78125/625",
+   "ok": true,
+   "detail": "3125/78125/625"
+  },
+  {
+   "name": "P4 family B: S1={W1=(0,0,1)} x S2={v2=2} product identity NJ*NSigma == N1*N2",
+   "ok": true,
+   "detail": "625*390625 = 244140625 vs 3125*78125 = 244140625"
+  },
+  {
+   "name": "P5 in-script split set == sealed {(2,2),(1,3),(0,4),(0,1),(4,3),(3,2)}",
+   "ok": true,
+   "detail": "[(0, 1), (0, 4), (1, 3), (2, 2), (3, 2), (4, 3)]"
+  },
+  {
+   "name": "P5 family C: S1={b1 SPLITS} x S2={b2 RAM} counts N1/N2/NJ = 18750/312500/15000",
+   "ok": true,
+   "detail": "18750/312500/15000"
+  },
+  {
+   "name": "P5 family C: S1={b1 SPLITS} x S2={b2 RAM} product identity NJ*NSigma == N1*N2",
+   "ok": true,
+   "detail": "15000*390625 = 5859375000 vs 18750*312500 = 5859375000"
+  },
+  {
+   "name": "P7 outcome classes r=1 RAM/split/inert/double/deep = 312500/18750/31250/12500/15625 (sum 390625)",
+   "ok": true,
+   "detail": "(312500, 18750, 31250, 12500, 15625)"
+  },
+  {
+   "name": "P7 outcome classes r=2 RAM/split/inert/double/deep = 312500/18750/31250/12500/15625 (sum 390625)",
+   "ok": true,
+   "detail": "(312500, 18750, 31250, 12500, 15625)"
+  },
+  {
+   "name": "P13 L1 h-invariance: 0 word changes across the FULL 5^12 (e,g,h) pass",
+   "ok": true,
+   "detail": "0 changes"
+  },
+  {
+   "name": "P13 L1 deepened joint contingency == 625 x primary (15625 per pair)",
+   "ok": true,
+   "detail": "min=15625 max=15625"
+  },
+  {
+   "name": "L2 exactness: G(zeta)=0, c0+alpha*b=0 (mod 2^16), alpha=2 mod 4, a=2 mod 4, b=4 mod 8 on ALL 32768 members",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P9 marginals: N(W_L=x)=N(W_Q=y)=8192 for all x,y",
+   "ok": true,
+   "detail": "[np.int64(8192), np.int64(8192), np.int64(8192), np.int64(8192)] [np.int64(8192), np.int64(8192), np.int64(8192), np.int64(8192)]"
+  },
+  {
+   "name": "P10 joint: N=2048 at all 16 pairs",
+   "ok": true,
+   "detail": "[2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048]"
+  },
+  {
+   "name": "P10b product identity at every pair",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P11 union pair counts 16384/16384/8192",
+   "ok": true,
+   "detail": "16384/16384/8192"
+  },
+  {
+   "name": "P11 product identity NJ*NSigma == N1*N2",
+   "ok": true,
+   "detail": "8192*32768 vs 16384*16384"
+  },
+  {
+   "name": "P12 literal 2^24 membership count == 32768",
+   "ok": true,
+   "detail": "32768"
+  },
+  {
+   "name": "P13 L2 deepening: 0 word changes over 1e5 random extensions (exactness holds too)",
+   "ok": true,
+   "detail": "0 changes"
+  },
+  {
+   "name": "L3 exactness: G(zeta_j)=0 mod 5^7, zeta_j = j mod 5, all members, j=1,2,3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P14 marginals: N(t_j=t)=3125 for all t, j",
+   "ok": true,
+   "detail": "[[3125, 3125, 3125, 3125, 3125], [3125, 3125, 3125, 3125, 3125], [3125, 3125, 3125, 3125, 3125]]"
+  },
+  {
+   "name": "P15 pairwise contingencies: 625 at all 25 cells, all 3 pairs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P15 triple contingency: 125 at all 125 cells",
+   "ok": true,
+   "detail": "min=125 max=125"
+  },
+  {
+   "name": "P15 triple product identity NJ*NSigma^2 == N1*N2*N3 at every cell",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "P13 L3 deepening: 0 word changes over 1e5 random extensions",
+   "ok": true,
+   "detail": "0 changes"
+  }
+ ]
+}
