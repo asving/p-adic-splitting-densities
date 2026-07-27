@@ -632,3 +632,54 @@ verified genuine there):
 | F2 | CRIT | vdisc | FIXED: `.toNat` dropped — pinned `PadicInt.valuation : ℤ_[p] → ℕ` (PadicIntegers.lean:321); junk-0 convention preserved via `valuation_zero` |
 | F3 | GAP | PadicInt.coe | FIXED: renamed to pinned `PadicInt.Coe.ringHom` (PadicIntegers.lean:130) at fTail + XF.4 (grep-verified) |
 | F4 | GAP | fTail/Event arity | FIXED: explicit OUTER `Fin.cast (by omega : n = n − 1 + 1)` on the index, from a new `hn : 1 ≤ n` argument threaded from every consumer's `h2 : 2 ≤ n` (option chosen and noted; no Fin (n−1+1) restatement ripple) |
+
+---
+
+## 7. DEVIATIONS (E-phase elaboration record, 2026-07-27)
+
+E-phase built `lean/LeanUrat/MovesX/` (Defs + 48 unit files + MANIFEST.json); every
+proof body `sorry`. All deviations below are ELABORATION-LEVEL (identifier/spelling/
+marker changes forced by Lean 4 / pinned mathlib v4.31.0); none changes what any
+statement says. Anything semantic the blueprint left open is resolved by the most
+conservative reading, flagged here for the Defs-sync round.
+
+- **D-1 (identifier).** `AlignState`'s second field `rec` is a reserved name in Lean 4
+  (clashes with the auto-generated recursor `AlignState.rec`); renamed to `recn`. No
+  unit statement mentions the field name (all uses are anonymous constructors
+  `⟨true, true⟩` etc. and `st.inc`/`st.recn` inside Defs' `certified` only).
+- **D-2 (spelling).** Inside `structure XCtx`, the fields `detectBranch`, `undec_spec`,
+  `nsCover` spell the comment-block abbreviations inline — `IsLeafB b` as
+  `children b = ∅`, `capHB b` as `@ite ℕ (capDetectable b) (capDec f b) (detCap b) 0` —
+  because the literal `def`s take `(C : XCtx n p)` and can only be declared AFTER the
+  structure. The E-gate `def`s `IsLeafB`/`capHB`/`NsFreeB`/`isPrefixB`/`FourthPieceB`/
+  `InfTree`/`TallEvent`/`DeepEvent` are declared immediately below `XCtx` and unfold
+  DEFINITIONALLY to exactly these inline spellings.
+- **D-3 (left-open semantic choice, conservative).** `SplitType n` exists nowhere in
+  the codebase yet ("bound to the campaign's target type at the Defs sync" — E-gate
+  note). Declared `opaque SplitType : ℕ → Type`: commits to NO structure, admits no
+  degenerate models, nothing about it is provable until the sync round replaces the
+  `opaque` with the campaign binding (candidate: `LeanUrat.FactorizationType` filtered
+  by degree n, `LeanUrat/Interface.lean:152`). Statement forms are byte-stable under
+  that replacement (they consume `SplitType n` by name).
+- **D-4 (pinned-mathlib API).** `ValExt.splits`: mathlib v4.31.0 carries the REFACTORED
+  absolute `Polynomial.Splits (f : R[X]) : Prop` (Algebra/Polynomial/Splits.lean:36),
+  not the old relative `Splits (i : K →+* L) f`. The blueprint's
+  `(g.map (algebraMap ℚ_[p] L)).Splits (RingHom.id L)` is the pre-refactor spelling;
+  the field is `(g.map (algebraMap ℚ_[p] L)).Splits` — the identical condition
+  (old `Splits (RingHom.id L) q ↔ new q.Splits`).
+- **D-5 (elliptical binders).** XA.6/XA.7a/XA.7b's unannotated `(he) (hh) (hl)` are
+  resolved to `1 ≤ e`, `1 ≤ h`, `1 ≤ ell`, matching XA.4's explicit spelling (the only
+  annotated occurrence) and the ℓ ≥ 1 anchor set.
+- **D-6 (markers only).** `noncomputable` added where mathlib forces it
+  (`polyOfCoeffs`, `tailCount`, `fTail` — Polynomial arithmetic and `Nat.card` are
+  noncomputable; `vdisc` was already marked in the skeleton). Two external instance
+  accessors `Field V.L`/`Algebra ℚ_[p] V.L` for `ValExt` (structure instance-fields are
+  not auto-instances outside the structure; needed to ELABORATE XF.4/XF.6's statements,
+  zero content).
+- **Census note (blueprint-specified multi-decl units).** 44 `sorry` declarations for
+  48 stated units: XE.1a–h are def-witness units (their kernels are Defs §D `def`s per
+  the skeleton; each file = display docstring + an `example` forcing elaboration — no
+  proof obligation, 0 sorries); XA.7b carries its 2 specified example anchors (3
+  sorries); XD.1 is the specified 3-declaration unit (3 sorries). `Defs.lean` has 0.
+  No `native_decide`/`decide` anywhere; the only in-statement tactics are the
+  blueprint's own `(by omega)` coherence casts (fTail/Event/XF.6).

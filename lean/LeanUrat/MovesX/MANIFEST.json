@@ -1,0 +1,737 @@
+{
+ "campaign": "MOVES SectionX-EXHAUST - Lean formalization (MovesX corpus, E-PHASE: stated units, all bodies sorry)",
+ "source": "lean/notes/MOVES_2026-07-24.md SectionX-EXHAUST rev 8 (DUAL-ACCEPTED)",
+ "blueprint": "lean/notes/MOVESX_LEAN_BLUEPRINT_2026-07-28.md (rev 4, dual-accepted at 0/0; DEVIATIONS section appended at E-phase)",
+ "defs": {
+  "file": "lean/LeanUrat/MovesX/Defs.lean",
+  "sha256": "b28d443d240c689110d6ff3bda565e873abb6267803a0426e4c61dde79ffee33",
+  "sorries": 0,
+  "note": "compiles green via lake env lean + lake build LeanUrat.MovesX.Defs; no sorry, no axiom; deviations D-1..D-6 recorded in the blueprint"
+ },
+ "preamble": "Every unit file: import LeanUrat.MovesX.Defs (+ earlier units per deps); namespace LeanUrat.MovesX; set_option linter.style.longLine/header false, linter.unusedVariables false, maxHeartbeats 1000000. Build per module with lake build LeanUrat.MovesX.<id> (NEVER whole-project lake build).",
+ "statement_fence": "Statements are the blueprint Section3 verbatim (rev 4). Do NOT weaken a statement to prove it; do NOT edit MovesX/Defs.lean without re-running the elaboration sample.",
+ "sorry_census": {
+  "total": 44,
+  "sorry_bearing_units": 40,
+  "extra": "XA.7b carries its 2 blueprint example anchors (+2); XD.1 is a 3-declaration unit per its spec (+2); XE.1a-h are def-witness units (kernel defs live in Defs Section D) with NO proof obligation (0 sorries each)"
+ },
+ "units": [
+  {
+   "id": "XA.1",
+   "file": "lean/LeanUrat/MovesX/XA1.lean",
+   "decls": [
+    "rowTotal"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "6aa5f6522ba081e659ee219dfb28b63b803482a2b52418e2b3bc88d0cf6805ed"
+  },
+  {
+   "id": "XA.2",
+   "file": "lean/LeanUrat/MovesX/XA2.lean",
+   "decls": [
+    "selForce"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "XA.1"
+   ],
+   "statement_sha256": "6f6ce48292cf4cfe25745b17917d1059817475f77446f70c1fdc863e0d026bf9"
+  },
+  {
+   "id": "XA.3",
+   "file": "lean/LeanUrat/MovesX/XA3.lean",
+   "decls": [
+    "t1Witness"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "XA.1"
+   ],
+   "statement_sha256": "95386e038a34ec05e9602058f2c799eb23137b7c94570a135cdc8c0cc2bb1339"
+  },
+  {
+   "id": "XA.4",
+   "file": "lean/LeanUrat/MovesX/XA4.lean",
+   "decls": [
+    "t1Arith"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [],
+   "statement_sha256": "468437b2f1431e52f9fffda0d38d27df764d941a93e189de0f071268b92b17ce"
+  },
+  {
+   "id": "XA.5",
+   "file": "lean/LeanUrat/MovesX/XA5.lean",
+   "decls": [
+    "t2Witness"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XA.1"
+   ],
+   "statement_sha256": "7eb4d8953db71e841d6d4933b392377c3f2e5bed9566eadc28dfb6385fbd997a"
+  },
+  {
+   "id": "XA.6",
+   "file": "lean/LeanUrat/MovesX/XA6.lean",
+   "decls": [
+    "lat1"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "77e5edcb37b4127fd542e4950ffdc4b9c32318dcf4ed01fb6d4b8d8e5ab20c35"
+  },
+  {
+   "id": "XA.7a",
+   "file": "lean/LeanUrat/MovesX/XA7a.lean",
+   "decls": [
+    "latSlice"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "39c8ea15007a360246a111a88c2115993fb8ebd96de61813c311be968f6060e3"
+  },
+  {
+   "id": "XA.7b",
+   "file": "lean/LeanUrat/MovesX/XA7b.lean",
+   "decls": [
+    "latGen",
+    "example (anchor l=1)",
+    "example (anchor e=h=l=1)"
+   ],
+   "sorries": 3,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XA.6",
+    "XA.7a"
+   ],
+   "statement_sha256": "b0ca807cd0ed02a0a8da33456303b013dfa9d9f71365c2791fd74179fc936b9d"
+  },
+  {
+   "id": "XA.8",
+   "file": "lean/LeanUrat/MovesX/XA8.lean",
+   "decls": [
+    "t34Zero"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "XA.1",
+    "XA.6"
+   ],
+   "statement_sha256": "ea8d2a25af86c281729c302a292e9a9fa580d91c6804d3ef74f5071fa8a7cc4b"
+  },
+  {
+   "id": "XA.9",
+   "file": "lean/LeanUrat/MovesX/XA9.lean",
+   "decls": [
+    "ind2Region"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XA.3",
+    "XA.4",
+    "XA.5",
+    "XA.6",
+    "XA.7a",
+    "XA.7b",
+    "XA.8"
+   ],
+   "statement_sha256": "045de7c46f43f536b0ff969d7ac63d36e5e8e97c4dee4f1ffd112a6907e28587"
+  },
+  {
+   "id": "XB.1",
+   "file": "lean/LeanUrat/MovesX/XB1.lean",
+   "decls": [
+    "dCertZero"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "89dbc60334698f3e3367ed07d7b1e6c32797a762b30c127436e6da63a2ad8c80"
+  },
+  {
+   "id": "XB.2",
+   "file": "lean/LeanUrat/MovesX/XB2.lean",
+   "decls": [
+    "dCertMono"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "e60fb17a3b9f8d2cf962c07639b07b0ed74336e81da32a3364bebaf1c2532c3c"
+  },
+  {
+   "id": "XB.3",
+   "file": "lean/LeanUrat/MovesX/XB3.lean",
+   "decls": [
+    "fourPop"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XA.1"
+   ],
+   "statement_sha256": "159f9511002f196c061b996db5b88dc576374d186409219b919c447e8dcd4af9"
+  },
+  {
+   "id": "XB.4",
+   "file": "lean/LeanUrat/MovesX/XB4.lean",
+   "decls": [
+    "t3Charge"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XA.1"
+   ],
+   "statement_sha256": "0cdf38538fe1eaa713bfe483c2c30f4c789866b02ef8afd167873789abe8df13"
+  },
+  {
+   "id": "XC.1",
+   "file": "lean/LeanUrat/MovesX/XC1.lean",
+   "decls": [
+    "x1aChain"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "54c207f59bc1ac842e9b3702e2769864910c90310b6b8c133067742bc9f9e9aa"
+  },
+  {
+   "id": "XC.2",
+   "file": "lean/LeanUrat/MovesX/XC2.lean",
+   "decls": [
+    "x1aTrivial"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "XB.1"
+   ],
+   "statement_sha256": "2c1154bf3100b9bbb6bed668f2fc1ca8aba0fca3003f24f3d1073d7636999d7a"
+  },
+  {
+   "id": "XC.3",
+   "file": "lean/LeanUrat/MovesX/XC3.lean",
+   "decls": [
+    "x1bReduction"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XB.2",
+    "XB.3",
+    "XB.4",
+    "XC.1"
+   ],
+   "statement_sha256": "eae9b32876b652f4f22618b203ae4c453ec7de16ed67300511c5e0923b6d5013"
+  },
+  {
+   "id": "XC.4",
+   "file": "lean/LeanUrat/MovesX/XC4.lean",
+   "decls": [
+    "x1bReductionT4"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XB.2",
+    "XB.3",
+    "XB.4",
+    "XC.1"
+   ],
+   "statement_sha256": "a403f24c7595dc51a40aea6c9e33f1e179c7f960dbf1ce269bf418cd283b93f2"
+  },
+  {
+   "id": "XD.1",
+   "file": "lean/LeanUrat/MovesX/XD1.lean",
+   "decls": [
+    "nsFreeDec (instance)",
+    "capTotal",
+    "maxHNil"
+   ],
+   "sorries": 3,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "07314fb690e01d39823c18d58e536c0c12016222ebb9e8caf786fcb0f1513146"
+  },
+  {
+   "id": "XD.2",
+   "file": "lean/LeanUrat/MovesX/XD2.lean",
+   "decls": [
+    "x2hypCount"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "0e3e980319605d9524ff0bfb1ad1e2cc85949fe294b6e003041736aca4a0e2e9"
+  },
+  {
+   "id": "XD.3",
+   "file": "lean/LeanUrat/MovesX/XD3.lean",
+   "decls": [
+    "x2hypDichotomy"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [],
+   "statement_sha256": "42113ed51f2f3af550b06a3d533460b47851e7a46254e47150233543851525bc"
+  },
+  {
+   "id": "XD.4",
+   "file": "lean/LeanUrat/MovesX/XD4.lean",
+   "decls": [
+    "x2hypAssembled"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XD.1",
+    "XD.2",
+    "XD.3"
+   ],
+   "statement_sha256": "14d059d22ccf0201856b68d31147c5420680664031dda6ddbd284630246d641b"
+  },
+  {
+   "id": "XE.1a",
+   "file": "lean/LeanUrat/MovesX/XE1a.lean",
+   "decls": [
+    "(def-witness: X1aAlignP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "7ca83a51a7a98e1ebe4e15095cce7a9c26a34bb3464dd4d24fb10ed64f6b452b"
+  },
+  {
+   "id": "XE.1b",
+   "file": "lean/LeanUrat/MovesX/XE1b.lean",
+   "decls": [
+    "(def-witness: WeightChargeT4P in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "647f41bade66482d06992b3529cdc981bfebc0c26a42db74cb5005342ee4a938"
+  },
+  {
+   "id": "XE.1c",
+   "file": "lean/LeanUrat/MovesX/XE1c.lean",
+   "decls": [
+    "(def-witness: WeightChargeFullP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "a3294b821bdf5a884fd7fe73aaf4567ee8b2942db73b367e7ea6b6dfed2b8a72"
+  },
+  {
+   "id": "XE.1d",
+   "file": "lean/LeanUrat/MovesX/XE1d.lean",
+   "decls": [
+    "(def-witness: X2AffP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "7c3eb5e9de4df700cdc2564c583b617d38ee5363eb5ebdd8921b36a364c66216"
+  },
+  {
+   "id": "XE.1e",
+   "file": "lean/LeanUrat/MovesX/XE1e.lean",
+   "decls": [
+    "(def-witness: X2CapP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "3058dedd996978f66f3244557ee0045b9400dc28d9fb7a0b9674bba7fcfaecdc"
+  },
+  {
+   "id": "XE.1f",
+   "file": "lean/LeanUrat/MovesX/XE1f.lean",
+   "decls": [
+    "(def-witness: X2BridgeP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "e908416d742168ef8b0d988f88462a598a9c2a7cfa7fbf3e58e2dcb6a078b0c6"
+  },
+  {
+   "id": "XE.1g",
+   "file": "lean/LeanUrat/MovesX/XE1g.lean",
+   "decls": [
+    "(def-witness: X2TailsP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "b93b6290089db06a179968d62cbb079faa767c7126baced4e53f3a42a37bfc7a"
+  },
+  {
+   "id": "XE.1h",
+   "file": "lean/LeanUrat/MovesX/XE1h.lean",
+   "decls": [
+    "(def-witness: X2ProgressP in Defs)"
+   ],
+   "sorries": 0,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "bfece0fb29356703834d257b8ed55562ee2660a2e35528760679c4f0e9db1d3e"
+  },
+  {
+   "id": "XE.2",
+   "file": "lean/LeanUrat/MovesX/XE2.lean",
+   "decls": [
+    "envelopeExp"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XC.3",
+    "XE.1a-h",
+    "XF.7",
+    "XG.2b",
+    "XG.2c",
+    "XG.2d"
+   ],
+   "statement_sha256": "71830b5190e252535aebbc3ecc2b64c3ee3646a7488fc71e776c8b7fa07892bc"
+  },
+  {
+   "id": "XE.3",
+   "file": "lean/LeanUrat/MovesX/XE3.lean",
+   "decls": [
+    "envelopeSqrt"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XC.3",
+    "XD.4",
+    "XE.1a-h",
+    "XF.7",
+    "XG.2b",
+    "XG.2c",
+    "XG.2d"
+   ],
+   "statement_sha256": "3ebb9b13c2eb5196b2c400ac3b72b307289164ecb6b3d0f7d674ce86bb4d1958"
+  },
+  {
+   "id": "XF.1",
+   "file": "lean/LeanUrat/MovesX/XF1.lean",
+   "decls": [
+    "discCylinder"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "c3f35b6f43b8581dbc4aa3b0c26cf58d60bed28a7c592ed08ddaacf6977db41c"
+  },
+  {
+   "id": "XF.2",
+   "file": "lean/LeanUrat/MovesX/XF2.lean",
+   "decls": [
+    "discResBridge"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "570a7b613fcc701bd704a5f79a804000f28554b2b6193ee6d5b5381d04998d2b"
+  },
+  {
+   "id": "XF.3",
+   "file": "lean/LeanUrat/MovesX/XF3.lean",
+   "decls": [
+    "valExtOf (noncomputable def)"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "d4ccf8d4e5ccd6dc925e5d9f4b59678be3c8ad6c8b5f91963288f6f0d76a27d4"
+  },
+  {
+   "id": "XF.4",
+   "file": "lean/LeanUrat/MovesX/XF4.lean",
+   "decls": [
+    "resRootSum"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "06374631b1f526576c85436888e0f88f75883107e98b99f11e00c95e9755e4ad"
+  },
+  {
+   "id": "XF.5",
+   "file": "lean/LeanUrat/MovesX/XF5.lean",
+   "decls": [
+    "pigeonMax"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [],
+   "statement_sha256": "d92e613b1ed34ecfbd8e1c7c3552927b66ba654e2f5961c2e846bd584a30a40b"
+  },
+  {
+   "id": "XF.6",
+   "file": "lean/LeanUrat/MovesX/XF6.lean",
+   "decls": [
+    "ballCover"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XF.2",
+    "XF.4",
+    "XF.5"
+   ],
+   "statement_sha256": "b3f3b1a166de111e75ee99dc3778baa44a297f93410db6aecfb37ac3b3f642d0"
+  },
+  {
+   "id": "XF.7",
+   "file": "lean/LeanUrat/MovesX/XF7.lean",
+   "decls": [
+    "tailCountBound"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XF.1",
+    "XF.3",
+    "XF.6"
+   ],
+   "statement_sha256": "1a04b299816901fa8a1efbfdd39b506d2636e83a4b48090c4f84f43c3e449e35"
+  },
+  {
+   "id": "XF.8",
+   "file": "lean/LeanUrat/MovesX/XF8.lean",
+   "decls": [
+    "tailZero"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XF.7"
+   ],
+   "statement_sha256": "6bfb4f32ac179600c69ff7c032df3ef5d160fa3f25f3ac9023029bffb52d74b1"
+  },
+  {
+   "id": "XF.10",
+   "file": "lean/LeanUrat/MovesX/XF10.lean",
+   "decls": [
+    "discZeroNull"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XF.8"
+   ],
+   "statement_sha256": "91827d5c23910428d6f62766f2d32808c9b076961449941597ebc2a6fe71c0b3"
+  },
+  {
+   "id": "XG.1",
+   "file": "lean/LeanUrat/MovesX/XG1.lean",
+   "decls": [
+    "branchLenBound"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "easy",
+   "deps": [
+    "XC.3",
+    "XC.4"
+   ],
+   "statement_sha256": "971196ea8e2fecf39067273eac1a75d71c8b03a87cdb78a2d3dd81fdc7db849c"
+  },
+  {
+   "id": "XG.2",
+   "file": "lean/LeanUrat/MovesX/XG2.lean",
+   "decls": [
+    "koenigFinite"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "14718e10165884eaaf0113aeb95d1622219c370da94ba186d266b8cc2deaafa0"
+  },
+  {
+   "id": "XG.2b",
+   "file": "lean/LeanUrat/MovesX/XG2b.lean",
+   "decls": [
+    "detectJoin"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "Defs"
+   ],
+   "statement_sha256": "38e1ac6911e151c068ca793934b03eaa9b32b05c8e8d1dfc39154818c38624a7"
+  },
+  {
+   "id": "XG.2c",
+   "file": "lean/LeanUrat/MovesX/XG2c.lean",
+   "decls": [
+    "interTrichotomy"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "medium",
+   "deps": [
+    "XG.2b"
+   ],
+   "statement_sha256": "9c0f7d70cc7af49fe38779113e4655e7fe539df488b26e3e65b3356dcf5e7704"
+  },
+  {
+   "id": "XG.2d",
+   "file": "lean/LeanUrat/MovesX/XG2d.lean",
+   "decls": [
+    "treeFinite"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XG.1",
+    "XG.2"
+   ],
+   "statement_sha256": "cf031bcbf8f83ec5edd04f658313738418e76949dbb10fb4574ff583e7a1ea0a"
+  },
+  {
+   "id": "XG.3",
+   "file": "lean/LeanUrat/MovesX/XG3.lean",
+   "decls": [
+    "x3Density"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XG.2c",
+    "XG.2d",
+    "XF.10",
+    "XD.1"
+   ],
+   "statement_sha256": "dd04eb52d155a48453da70d206d06c2786f6840a1450ba94253de7639bfaf48d"
+  },
+  {
+   "id": "XG.4",
+   "file": "lean/LeanUrat/MovesX/XG4.lean",
+   "decls": [
+    "x3Series"
+   ],
+   "sorries": 1,
+   "status": "stated",
+   "difficulty": "hard",
+   "deps": [
+    "XG.3",
+    "XF.10"
+   ],
+   "statement_sha256": "b90c99eda2327cbd5a28591bfc8499d33328edeed25b4ab88d1e24468503f953"
+  }
+ ],
+ "counts": {
+  "total_units": 48,
+  "stated": 48,
+  "blocked": 0,
+  "by_difficulty": {
+   "easy": 19,
+   "medium": 17,
+   "hard": 12
+  }
+ }
+}
