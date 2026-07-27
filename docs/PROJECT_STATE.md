@@ -375,7 +375,10 @@ should not be conflated (this is the mistake an earlier draft of this document m
    with the realizability clause FAIL-as-sealed adjudicated (Case-K class; threshold
    repair at §M rev 2; v2 re-seal running). FOUR assembly notes in flight: §D4-R
    dual-accepted; §M-SPECIES rev 2 (pass 1 running); §T-ASSEMBLY rev 3 (passes: 8c →
-   1c; the (ns-null) PROOF survived); §V-TABLES rev 2 ((U-A) PROVED; pass 2 running).
+   1c; the (ns-null) PROOF survived); §V-TABLES rev 2 pass 2: **NOT ACCEPTED
+   (3 critical / 3 gaps)** — semilinear-overlap summation, ordinary-source
+   disjointness in (iv)-MEAS, and VAL(b)'s XHD-free count-product status remain;
+   V-n3 arithmetic checked, census not yet run.
    LEAN: MovesC fully ACCEPTED at audit round 6 (six-round spiral) — 23 frozen proved
    + the 13-unit fleet running. The campaign's remaining structural risk is
    concentrated in the named kernels, each with a live refuter.
