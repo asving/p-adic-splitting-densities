@@ -1,0 +1,110 @@
+# THE LEAN FORMALIZATION CAMPAIGN (2026-07-28) — master plan
+
+DIRECTIVE (Asvin, /goal): convert the dual-accepted math write-up into a careful
+blueprint, break it into many short parallel sections, ~100 agents — opus-4.8
+formalizers, Codex semantic verification, Fable-5 escalation for stuck units; a unit
+stuck too long feeds back into blueprint refinement or a math-error flag. The
+orchestrator holds the whole proof and how each piece fits.
+
+## 0. The target and the ground truth
+
+TARGET: **Theorem U machine-checked in its dual-accepted CONDITIONAL form** — for each
+splitting type σ, one fixed R_σ ∈ ℚ(q) with the density identity at every
+(REG-p)-satisfying prime, Σ_σ R_σ = 1 — with the open kernels as NAMED HYPOTHESES
+(they are ours, not published, so they cannot be axioms), and published statements
+axiomatizable per the standing policy (citation + faithfulness entry + guardian
+audit; the process has caught two false axioms).
+
+GROUND TRUTH for every statement: the frozen dual-accepted text in
+`lean/notes/MOVES_2026-07-24.md` (each note's final rev, per its DUAL-ACCEPTED
+record). A Lean statement is faithful iff it says what the note's display says —
+the Codex semantic audit is the gate, exactly as in the MovesC six-round discipline.
+
+## 1. The corpus DAG (how each piece fits the proof)
+
+EXISTING (built): `OM/` the classifier engine + the V2/W capstones ·
+`Moves/` §B2-DEF's move ledger (54/61) · `MovesC/` §C's Theorem C over the JetSetup
+interface (36/36 PROVED) · `MovesGr/` the graded model (option-(a) add_def landing).
+
+NEW CORPORA, one per assembly note, in DAG order (consumer ← producer):
+
+  MovesD  (§D4-R):   T_can trees, branch-indexed fibers, D4R.1-SUM/EV, D4R.2′, D4R.4.
+                     Consumes: MovesC's thmC interface (Theorem C at Z = ⊤).
+  MovesSp (§M-SPECIES): the (G1)–(G6) catalogue, SP-DAG, the 53-letter n=3 instance,
+                     the shift map Sh. Consumes: Moves' species vocabulary.
+                     MOSTLY DECIDABLE — the n=3 layer should be `decide`/`Decidable`.
+  MovesV  (§V-TABLES): the CTS cell space, tables T, the measured clauses GIVEN the
+                     XHD package as a structure of hypotheses. Consumes: MovesSp
+                     (cells/menus), MovesD (marked masses).
+  MovesT  (§T-ASSEMBLY): VP, TB-CAP per clause, (SIB) as hypothesis, TREE-EXP's
+                     read-site recursion, ONE-F, (ns-null)'s proof. Consumes: MovesD,
+                     MovesV.
+  MovesR  (§R-LEDGER): the base-change obligation STATEMENTS ((a1)–(a6), (b), (d),
+                     (e1)–(e5), the (EQ) trio) — a statements-only corpus by design.
+  MovesX  (§X-EXHAUST): the T0–T5 index table, (CD), the X.1a chain, the elementary
+                     discriminant tail, X.3's assembly with tags. Consumes: MovesSp.
+  MovesS  (§S-RESUM): K_e/b_e/ι_e over ℚ(q), (K-TRI)/(K-SUB), the adjugate solve,
+                     the (m,c) dispatch, RS.4's checksum. Consumes: MovesV, MovesT.
+  MovesU  (§U-SQUEEZE): (BOX-N), (U-n), the squeeze, THEOREM U with (REG-p) and the
+                     full hypothesis ledger as a structure. Consumes: MovesS, MovesX,
+                     MovesD.
+
+HARD CORES (phase 3, blueprint-first, after phase-1/2 experience):
+  HC-1: §B2-DEF's tower induction (the transport bijections at every level) over
+        Moves/MovesGr.  HC-2: the JetSetup-existence bridge (MovesC's interface
+        instantiated from the OM engine; Montes existence/uniqueness axiomatizable).
+
+## 2. The unit-spec format (every blueprint emits these)
+
+Per unit: `id` (Corpus.name) · `file` · `statement` (full Lean, against the corpus
+Defs) · `moves_ref` (the note display it encodes, quoted ≤ 3 lines) · `deps` ·
+`sketch` (the informal proof in ≤ 8 lines, from the note) · `difficulty`
+(easy/medium/hard) · `hypothesis_fields` (which open kernels/packages ride as
+hypotheses — NEVER silently strengthened or dropped). Units SHORT: one display,
+one lemma, ≤ ~40 lines of expected proof; split anything bigger.
+
+## 3. The process gates (per corpus, the MovesC discipline)
+
+  B (blueprint, Fable) → A (Codex semantic audit of blueprint+Defs; REJECT loops
+  until ACCEPT — statements must be faithful, non-vacuous, quantifier-exact) →
+  E (statement elaboration, scratch sorry-bodies compile) → P (prover fleet:
+  opus-4.8 workflows, ≤ ~16 concurrent; fable escalation on failure) →
+  V (independent recompile + sorry census + #print axioms per proved unit;
+  Lean-core-only expected unless a declared published axiom) → record + commit.
+
+STUCK RULE (the directive's feedback loop): a unit that fails opus AND fable
+escalation twice is STUCK → the orchestrator (me) reads the stuck goal and
+adjudicates: (i) blueprint defect → refine the unit spec (split/re-state) and
+re-audit; (ii) Defs defect → designer round (statement-fence discipline: changes
+need sign-off unless additive); (iii) SUSPECTED MATH ERROR → a math-side
+verification pass on the source display (the write-up is dual-accepted, but the
+machine has refuted 'accepted' displays before — moveReduceCommute, L1_gr_domain);
+any confirmed math error goes back to the note + both verifiers.
+
+## 4. Published-axiom policy (unchanged, restated)
+
+Allowed as axioms: Lean core + already-declared (GMN index, Denef cells — measure
+route) + NEW published statements ONLY with: the citation, a faithfulness entry in
+docs/AXIOM_FAITHFULNESS.md, and a guardian audit. Candidates this campaign will
+likely need: Montes existence/uniqueness (HC-2), Krasner continuity bounds (ORC/
+X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
+(WEIGHT-CHARGE, (SIB), E0/(REG-p), HMC, ALIGN, X2-*, the H.6 fences, (JC-INV),
+(J-RAT), TRACK-COUNT) are HYPOTHESES, never axioms.
+
+## 5. Wave plan (~100 agents)
+
+  WAVE 1 (now): blueprints for the 5 most tractable corpora — MovesSp, MovesX,
+    MovesS, MovesU, MovesD (5 Fable writers, parallel) + the add_def propagation
+    (running). MovesR is statements-only (folded into wave 1 as a 6th small job).
+  WAVE 2: Codex audits (≤ 6) → Defs designers (≤ 6 Fable) → audit loops.
+  WAVE 3: prover fleets per accepted corpus (opus workflows, ~30–60 provers total,
+    fable escalations inside the workflow).
+  WAVE 4: MovesT + MovesV (they consume wave-3 corpora) — same pipeline.
+  WAVE 5 (phase 3): HC-1/HC-2 blueprints + the Moves tail backlog fleet.
+  Throughout: stuck-rule adjudications; the ledger below updated per event.
+
+## 6. The campaign ledger (updated per event)
+
+  MovesGr option-(a): IN FLIGHT (the add_def propagation agent).
+  Wave 1 blueprints: LAUNCHED 2026-07-28.
+  Everything else: PENDING.
