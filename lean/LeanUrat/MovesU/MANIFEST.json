@@ -1,0 +1,51 @@
+{
+ "campaign": "MOVES §U-SQUEEZE Theorem U (conditional form) — Lean formalization, E-phase (statement files, sorry bodies)",
+ "source": "lean/notes/MOVES_2026-07-24.md §U-SQUEEZE rev 7 (~12879–13629; DUAL-ACCEPTED: Codex passes 8+9 + Fable confirm CLEAN on identical text)",
+ "blueprint": "lean/notes/MOVESU_LEAN_BLUEPRINT_2026-07-28.md (rev 7 text, dual-accepted; § DEVIATIONS (E-PHASE) appended 2026-07-27)",
+ "ephase": "2026-07-27 — all 15 .lean files elaborate green under `lake env lean` + per-module `lake build` (toolchain 4.31.0, mathlib cache). Defs/DefsLedger sorry-free; 26 sorried declarations across the 13 units (the blueprint specifies multiple named statements for U0b/U3/U8/U9). NO axioms, NO native_decide, statements verbatim per blueprint §2/§2b/§3.",
+ "three_file_order": "Defs.lean (NO ledger) <- U0b_splitTypeFintype.lean (Fintype/DecidableEq instances) <- DefsLedger.lean (KernelStatements, CapstoneLedger, UInstance, FinStack/SolveStack/LowerStack + projections) — D11, the rev-3 circularity fix; load-bearing (the ledger's ∑ σ needs U0b's Fintype).",
+ "preamble": "Every file: `import Mathlib` + its dep modules, `namespace LeanUrat.MovesU`; set_option linter.style.longLine/header false, maxHeartbeats 1000000 (linter.unusedSectionVars false where variables are used). Build per file with `lake env lean` / `lake build LeanUrat.MovesU.<mod>` (NEVER full `lake build`).",
+ "instance_obligations": [
+  "instSplittingTypeFintype (U0b): `Fintype (SplittingType n)` carried as a sorried noncomputable instance — no off-the-shelf mathlib instance for card-bounded multisets over a bounded pair range; P-phase proves it (sketch: embed into multisets over range(n+1) x range(n+1) of card <= n). Counted in the census as one of U0b's 2 sorries."
+ ],
+ "slice_discipline": "G9/D12: no unit below U10 takes CapstoneLedger — U3 consumes FinStack; U4 FinStack+SolveStack; U6 FinStack+SolveStack+LowerStack; CL-2/CL-3 occur in NO premise outside CapstoneLedger (U10). The projections finStack/solveStack/lowerStack are literal field re-bundlings.",
+ "tag_free_units": ["U1_boxN", "U2_tonelli", "U5_sq3_arith", "U7_squeeze"],
+ "units": [
+  {"id": "U0.boxCard", "file": "lean/LeanUrat/MovesU/U0_boxCard.lean", "layer": 0, "difficulty": "easy", "deps": ["Defs"], "sorries": 1,
+   "statement": "boxCard (p n N : ℕ) [NeZero p] : Nat.card (Box p n N) = p ^ (n * N)", "hypothesis_fields": "none"},
+  {"id": "U0b.splitTypeFintype", "file": "lean/LeanUrat/MovesU/U0b_splitTypeFintype.lean", "layer": 0, "difficulty": "medium", "deps": ["Defs"], "sorries": 2,
+   "statement": "instance Fintype (SplittingType n) [sorried, instance obligation]; instance DecidableEq (SplittingType n) [PROVED, inferInstanceAs on the subtype]; splittingType_nonempty (hn : 1 ≤ n)", "hypothesis_fields": "none"},
+  {"id": "U1.boxN", "file": "lean/LeanUrat/MovesU/U1_boxN.lean", "layer": 0, "difficulty": "medium", "deps": ["U0", "U0b"], "sorries": 1, "tag_free": true,
+   "statement": "boxN (X : ClassifierSpec n p) [NeZero p] (N) : (∑ σ, X.decided σ N) + X.undec N = p ^ (n * N)", "hypothesis_fields": "none"},
+  {"id": "U2.tonelli", "file": "lean/LeanUrat/MovesU/U2_tonelli.lean", "layer": 1, "difficulty": "easy", "deps": ["Defs"], "sorries": 1, "tag_free": true,
+   "statement": "tonelli_partial_le (F : FiberSeries n p X) (σ N) : ∑ T ∈ F.thrSlice σ N, F.mass σ T ≤ F.seriesSum σ", "hypothesis_fields": "none (FiberSeries DATA only)"},
+  {"id": "U3.sq2_partial", "file": "lean/LeanUrat/MovesU/U3_sq2_partial.lean", "layer": 1, "difficulty": "easy", "deps": ["U2", "DefsLedger"], "sorries": 2,
+   "statement": "sq2_partial (FS : FinStack n p X F K) (σ N) : (X.decided σ N : ℝ≥0∞) = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T; sq2_partial_le … ≤ (p : ℝ≥0∞) ^ (n * N) * F.seriesSum σ", "hypothesis_fields": "EXACTLY FinStack (D12)"},
+  {"id": "U4.sq2_upper", "file": "lean/LeanUrat/MovesU/U4_sq2_upper.lean", "layer": 1, "difficulty": "medium", "deps": ["U3"], "sorries": 1,
+   "statement": "sq2_upper (FS : FinStack …) (SS : SolveStack …) (hreg : RegP S D) (hp : p.Prime) (σ N) : (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)", "hypothesis_fields": "EXACTLY FinStack + SolveStack + RegP + p.Prime (D12)"},
+  {"id": "U5.sq3_arith", "file": "lean/LeanUrat/MovesU/U5_sq3_arith.lean", "layer": 2, "difficulty": "medium", "deps": ["U1"], "sorries": 1, "tag_free": true,
+   "statement": "sq3_arith (X) [NeZero p] (hp : 1 < p) (R : SplittingType n → ℝ) (σ N) (hupper) (hsum : ∑ τ, R τ = 1) : (R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ)", "hypothesis_fields": "none (1 < p = declared arithmetic scaffolding, G6)"},
+  {"id": "U6.un_bracket", "file": "lean/LeanUrat/MovesU/U6_un_bracket.lean", "layer": 2, "difficulty": "easy", "deps": ["U4", "U5"], "sorries": 1,
+   "statement": "un_bracket (FS) (SS) (LS : LowerStack …) (hreg : RegP S D) (hp : p.Prime) (σ N) : (evalℝ S σ p - X.env N) * (p:ℝ)^(n*N) ≤ (X.decided σ N : ℝ) ∧ (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p:ℝ)^(n*N)", "hypothesis_fields": "EXACTLY FinStack + SolveStack + LowerStack + RegP + p.Prime (D12)"},
+  {"id": "U7.squeeze", "file": "lean/LeanUrat/MovesU/U7_squeeze.lean", "layer": 3, "difficulty": "medium", "deps": ["Defs"], "sorries": 1, "tag_free": true,
+   "statement": "squeeze_limit (X) (hp : 1 < p) (r : ℝ) (σ) (hbr : ∀ N, bracket) (henv : Tendsto X.env atTop (𝓝 0)) : Tendsto (X.dmass σ) atTop (𝓝 r)", "hypothesis_fields": "none (tagged bracket/limit enter as arguments)"},
+  {"id": "U8.regP_access", "file": "lean/LeanUrat/MovesU/U8_regP_access.lean", "layer": 4, "difficulty": "easy", "deps": ["Defs"], "sorries": 11,
+   "statement": "RegData.pool_self_mem; RegP.entry_agree (generic); RegP.det_ne_zero (r1); RegP.R_defined (ruling (D)); per-family K_agree/bterm_agree/bsplit_agree/Jcell_agree/iota_agree/Wcoef_agree/betaLeg_agree (β at every δ ∈ depthSet)", "hypothesis_fields": "explicit RegP S D only"},
+  {"id": "U9.lmeas", "file": "lean/LeanUrat/MovesU/U9_lmeas.lean", "layer": 4, "difficulty": "medium", "deps": ["U1", "U4"], "sorries": 2,
+   "statement": "lmeas_equiv [NeZero p] (hp : 1 < p) (σ N) (hsum) : lower-leg ↔ aggregate erase-sum inequality; lmeas_implied (σ N) (hupper) : one direction only", "hypothesis_fields": "none as stated (R abstract, hsum explicit)"},
+  {"id": "U10.theoremU", "file": "lean/LeanUrat/MovesU/U10_theoremU.lean", "layer": 5, "difficulty": "medium", "deps": ["U6", "U7", "U11"], "sorries": 1,
+   "statement": "theoremU (n) (hn : 2 ≤ n) (S) (M) (K) (inst : ∀ p, p.Prime → UInstance n S M K p) : ∃ R, (∑ σ, R σ = 1) ∧ ∀ p hp, RegP S (inst p hp).D → (i) dmass → evalℝ ∧ (ii) trueDmass → evalℝ ∧ (iii) env → 0 — verbatim blueprint U10", "hypothesis_fields": "the COMPLETE CapstoneLedger via UInstance.L per prime + explicit RegP; S/M/K p-uniform before ∀ p"},
+  {"id": "U11.identification", "file": "lean/LeanUrat/MovesU/U11_identification.lean", "layer": 5, "difficulty": "medium", "deps": ["U7", "DefsLedger"], "sorries": 1,
+   "statement": "identification (X) [NeZero p] (hp : 1 < p) (r) (σ) (hvs : VPSound X) (hd) (henv) : Tendsto (X.trueDmass σ) atTop (𝓝 r)", "hypothesis_fields": "none as stated (VPSound explicit; instantiated at U10 from cl10_vpsound)"}
+ ],
+ "counts": {
+  "defs_files": 3,
+  "unit_files": 13,
+  "sorried_declarations": 26,
+  "sorries_by_file": {"U0": 1, "U0b": 2, "U1": 1, "U2": 1, "U3": 2, "U4": 1, "U5": 1, "U6": 1, "U7": 1, "U8": 11, "U9": 2, "U10": 1, "U11": 1},
+  "multi_statement_units_per_blueprint": ["U0b", "U3", "U8", "U9"],
+  "blocked": 0,
+  "deviations": 3
+ },
+ "statement_fence": "Statements are the blueprint's rev-7 dual-accepted forms, elaboration-tested. Do NOT weaken a statement to prove it; do NOT edit Defs.lean/DefsLedger.lean without re-elaborating every unit; semantic changes require a blueprint re-audit."
+}

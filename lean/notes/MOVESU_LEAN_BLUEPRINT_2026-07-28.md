@@ -1119,3 +1119,40 @@ charge = §4's flags + the 29-finding disposition table (§7).
 |---|---|---|---|
 | CF2-1..3 | crit | `FinStack` omitted `cl10_vpsound : VPSound X` — U3/U4/U6's premises one field THINNER than the note's CL-10 citation | FIXED: `cl10_vpsound` added to `FinStack`; projection updated to `⟨L.cl7, L.cl10, L.cl10_vpsound, L.finiteness_stack⟩`. VERIFIED the citation is WHOLE-CL-10: the (U-n) display reads "the UPPER side GIVEN the finiteness stack {SQ.0's budgets with TRACK-COUNT + D(n) + the genuine-increment sub-claim (CL-7); the [3t] package (CL-10)}" (MOVES 13140–13143) — no display cites a VP-SOUND-free half: CL-10's entry itself ends "and VP-SOUND (a citation obligation …)" (13281–13284) and SQ.1 rules "CL-10's tags ride every consumption" (13033). So the field belongs in FinStack, not in a finer split |
 
+## DEVIATIONS (E-PHASE, 2026-07-27) — elaboration-level only; no statement's meaning changed
+
+E-phase built `lean/LeanUrat/MovesU/` (Defs/U0b/DefsLedger + U0–U11 + MANIFEST.json);
+all files elaborate green (toolchain 4.31.0, per-file `lake env lean` + per-module
+`lake build`). Three recorded items:
+
+1. **Docstring text fix (non-semantic).** The `treeExpTreeN` slot docstring's
+   `TREE-EXP(-fin/-ns)` contains the substring `/-`, which opens a NESTED Lean block
+   comment (unterminated-comment error at EOF). Rendered as `TREE-EXP(-fin, -ns)` in
+   `DefsLedger.lean`. Comment-only; the slot's type (`Prop`) and docstring content are
+   unchanged.
+
+2. **U8 statement shapes (blueprint listed the corollaries by name only; most
+   conservative reading taken).** `q₀` bound as an implicit `ℕ` with explicit
+   `hq : q₀ ∈ D.Pool` throughout; `RegP.det_ne_zero` re-exposes (r1)'s FULL
+   conjunction (`DefinedAt … ∧ eval … ≠ 0`) under the same `letI` instances as
+   `RegP`'s definition; `RegP.Wcoef_agree` is stated BLOCK-FREE (W_Ŝ rides in every
+   block's `entryList` and `D.instNe` supplies a block at P-phase — same content, no
+   spurious block argument); `RegP.betaLeg_agree` binds `δ` implicit with explicit
+   `hδ : δ ∈ D.depthSet`. Each conclusion is verbatim the `entry_agree` shape at its
+   family member.
+
+3. **U0b instances.** `DecidableEq (SplittingType n)` PROVED
+   (`inferInstanceAs` on the underlying subtype — needed by U9's
+   `Finset.univ.erase σ`). `Fintype (SplittingType n)` carried as a SORRIED
+   noncomputable instance (declared instance obligation in MANIFEST.json): the pinned
+   mathlib has no off-the-shelf instance for card-bounded multisets over a bounded
+   range, so no ≤ 10-line mechanical route exists; the sketch (embed into multisets
+   over `range (n+1) ×ˢ range (n+1)` of card ≤ n) is the P-phase target, per §3 U0b.
+
+Cosmetic note (not a deviation): `Defs.lean` writes every `{n p : ℕ}`-style implicit
+binder explicitly instead of the skeleton's section `variable` (avoids binder
+shadowing with the later explicit-binder structures; zero semantic difference).
+Sorry census: 26 sorried declarations over the 13 units — the blueprint itself
+specifies multiple named statements for U0b (2), U3 (2), U8 (11), U9 (2); the other
+nine units carry exactly 1 each. Defs.lean and DefsLedger.lean are sorry-free.
+
