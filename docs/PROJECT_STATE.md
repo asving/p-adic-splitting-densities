@@ -686,3 +686,11 @@ D9-rebound constants, now in prover hands). MovesS (95-unit core) and MovesD
 (rev 8) are in their acceptance passes. Conditionality discipline unchanged: all
 of this is the statement/derivation layer over typed interfaces + the CL ledger;
 instantiation = the remaining campaign (waves 4–5, HC-1/HC-2).
+
+## UPDATE (2026-07-28c): MovesX COMPLETE 40/40
+
+XE.2/XE.3 proved in their refutation-hardened forms (∃N₀ + D9-rebound constants;
+Lean-core footprints). Four campaign corpora now FULLY PROVED: MovesU 13 (Theorem U),
+MovesRBase 7, MovesSp 67, MovesX 40 — 127 units, plus MovesC's 36 pre-campaign.
+MovesS (95) + MovesD (48) cores in E-phase; HC-1/HC-2 blueprints being written;
+the 9-unit Moves tail under Fable provers.
