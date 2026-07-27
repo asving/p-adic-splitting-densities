@@ -652,3 +652,22 @@ should not be conflated (this is the mistake an earlier draft of this document m
 
 Canonical math notes (blueprints, audits, negative results) live in the companion `uniform-rationality`
 project; the copies in `docs/` here are snapshots sufficient to reconstruct this Lean state.
+
+## UPDATE (2026-07-28, THE LEAN FORMALIZATION CAMPAIGN — Theorem U machine-checked)
+
+The wave-1/2/3 campaign (master plan: lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md)
+converted the dual-accepted assembly notes into audited Lean blueprints and began proving.
+Milestone: **`LeanUrat.MovesU.theoremU` and `.identification` are PROVED** (13/13 fleet,
+zero sorries in LeanUrat/MovesU, footprint = Lean core only, verified post-rebuild).
+CONDITIONALITY (named per the honesty invariant): this is the dual-accepted CONDITIONAL
+Theorem U — quantified over typed interface structures (ClassifierSpec, SolveData,
+RegData/RegP, FiberSeries) and the CapstoneLedger (CL-1..19 as hypothesis fields incl.
+VP-SOUND); the identification clause (ii) is VP-SOUND-conditional. The interfaces are
+degenerate-instantiable at the declared D9 boundary — the REAL instantiation is the
+remaining campaign: MovesX (dual-accepted, fleet running), MovesS/MovesSp/MovesD (audit
+spirals converging), MovesT/MovesV (wave 4), HC-1 (B2 tower induction), HC-2 (the
+JetSetup/classifier bridge). Do NOT describe this as an unconditional density theorem;
+it is the note's Theorem U, checked. Also: MovesR parked (its §C-pointer layer awaits
+HC-1's carriers; Witt base layer split to MovesRBase, fleet running); ONE note erratum
+found and dual-confirmed (the §M-SPECIES [R4/R5 rows] bracket omits R6 — record at the
+end of MOVES_2026-07-24.md).
