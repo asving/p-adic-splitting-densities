@@ -220,8 +220,8 @@ type σ equals R_σ(p); and Σ_σ R_σ = 1 identically in q.
     fences: XHD-d-EX(∂), M4b-T-AUD, U-R-COUNT, XHD-u-X (§3 kernel roster) —
     plus HMC staying an open [1v] kernel (probe specced, not run).
   · **[3t]-COND** — gates and sources in hand (SIB 32/32, T-n3 21/21; [1] and
-    [2r] notes dual-accepted); the ONE remaining duty is RECORDING the event
-    with its displayed conditionality per §7's rule: X.3/CL-4, XRB
+    [2r] notes dual-accepted); RECORDED (2026-07-27) — the [3t]-COND ACCEPTANCE
+    RECORD (§7) carries its displayed conditionality per §7's rule: X.3/CL-4, XRB
     (hypothetical, discharged by [3]), (SIB)/(SIB-STEP) open, VP-SOUND's two
     cites, (JC-multi), and [2r]'s obligations ledger being undischarged (the
     O_δ quantifier is consumed at the LEDGER level; REL.1/REL.2 open at CL-8).
@@ -381,8 +381,8 @@ where kernel objects are consumed.)
   construction) + TREE-N stability; the once-per-f normalization ONE-F. The
   SOLE site where marked-branch masses μ̂ convert to per-f event masses.
   STATUS (REV 15): DUAL-ACCEPTED as a note — MOVES §T-ASSEMBLY rev 7 (Codex
-  pass 8 + Fable confirm); the [3t]-COND EVENT awaits only its conditionality
-  record (§0 ledger). (§4t)
+  pass 8 + Fable confirm); the [3t]-COND EVENT is RECORDED (2026-07-27 — the
+  §7 acceptance record; §0 ledger). (§4t)
 - **[3] RESUM** — *the depth resummation*: block system over (cluster size e, CTS
   state τ); RS.PRE assembles the kernel K_e per CTS-M(iv)/(vi) — per-representative
   CONDITIONAL rows, initial vector ι from CTS-M(iii), NO source-mass division
@@ -1676,8 +1676,8 @@ cells) — SATISFIED at REV 15: PASSED 21/21, 2026-07-27 (seal
 verification/CASE_TN3_SEALED_PREDICTIONS.md, results/
 case_tn3_results.json — the REV 12 seal duty DISCHARGED: the seal
 displays side A's formula-independence). [1] and the [2r] ledger are
-dual-accepted, so [3t]-COND's ONE remaining duty (REV 15) is RECORDING
-the event with its displayed conditionality per §7's rule — X.3/CL-4,
+dual-accepted, and [3t]-COND is RECORDED (2026-07-27 — the §7 acceptance
+record) with its displayed conditionality per §7's rule — X.3/CL-4,
 XRB (hypothetical), (SIB)/(SIB-STEP) open, VP-SOUND's two cites,
 (JC-multi), the undischarged [2r] obligations (CL-8); (ns-null) CLOSED,
 dropped from the tag list (status below).
@@ -3079,6 +3079,35 @@ Per note, in order; no step may be skipped, no note trusted early:
 6. Check `codex-limits` before each heavy verification round; adversarial verification
    is the LAST Codex use to cut.
 
+**[3t]-COND ACCEPTANCE RECORD (2026-07-27).** The first plan-level ACCEPTANCE EVENT
+written here under the §7 ACCEPTANCE-RECORD RULE (note-level dual-acceptance pass
+records themselves live in MOVES; §0's BINDING DISTINCTION). Event [3t]-COND (NOTE
+[3t] TREE — the branch-to-tree assembly) is ACCEPTED at its COND level.
+- SOURCE. §T-ASSEMBLY DUAL-ACCEPTED at rev 7 (Codex pass 8 + fresh-Fable confirm,
+  both CLEAN on identical text; pass records in MOVES).
+- GATES. SIB 32/32 and T-n3 21/21 — both SEALED-PASSED (2026-07-27); the REV 12
+  T-n3 binding seal duty (side-A T_can^τ-walk formula-independence displayed) is
+  DISCHARGED (seal verification/CASE_TN3_SEALED_PREDICTIONS.md).
+- LEVEL = COND. (TGT)'s density form is recorded CONDITIONAL; this record is NOT
+  unconditional closure (§7's LEVEL rule).
+- CONDITIONALITY TAGS (the displayed hypotheses + open items carried, cited by
+  CL-number per §7's rule):
+  · X.3 / CL-4 — the undecided-complement mass; discharged at [5].
+  · XRB — the RS.0(β) height-elimination package, consumed HYPOTHETICALLY;
+    [3]-owed (proved as RS.0(β)/CL-9 at [3]; CL-10).
+  · (SIB)/(SIB-STEP) — OPEN kernel (measure-level joint-vector equidistribution);
+    the passed SIB-gate is SUPPORT, not proof.
+  · VP-SOUND's two declared cites (HEN-LIFT)/(OM-SAT) — the Montes-certificate +
+    Hensel leaf-type identification, a citation obligation per §T.2.
+  · (JC-multi) — OPEN; its multi-side sites tagged.
+  · CL-8 — [2r]'s five undischarged obligations (REL.1 re-scoping +
+    REL.2(a)/(b)/(d)/(e)); the O_δ quantifier consumed at the LEDGER level only.
+  · (ns-null) — CLOSED at REV 15 (§4t's one governing status); NOT a tag on this
+    record (the finite-lump decay census retained as standing falsifier).
+- [3t]-FULL is a LATER, distinct discharge event, BLOCKED on [5]'s acceptance (X.3
+  discharge) AND [3]'s acceptance (XRB discharge); never unconditional while any
+  CL-10 duty is open.
+
 ## 8. Honest risk register (REV 3 — updated per the pass-2 review + both probe reports)
 
 **Recorded NON-failures (the review's own closing findings — keep off the worry
@@ -3249,8 +3278,8 @@ dual bar; gates SIB 32/32 + T-n3 21/21 both PASSED) — remaining substance: the
 (SIB-STEP) fresh-context derivation (the campaign's deepest new §C-side kernel;
 MEASURE-LEVEL joint-vector equidistribution + the unimodularity mechanism —
 coordinate disjointness unavailable) and VP-SOUND's two declared citations;
-[3t]-COND awaits only its conditionality record (§0); [3t]-FULL at [5]'s AND
-[3]'s closure (X.3 resp. XRB discharge). [5] EXHAUST: 2 units — CLEARED TO
+[3t]-COND RECORDED (2026-07-27 — the §7 acceptance record; §0 ledger updated);
+[3t]-FULL at [5]'s AND [3]'s closure (X.3 resp. XRB discharge). [5] EXHAUST: 2 units — CLEARED TO
 DRAFT NOW (REV 15 ruling, §1: X.1a/X.1b unconditionally, X.2 with the M4a-tail
 constants as a displayed [2b]-owed hypothesis; three kernels; X.1b is OPEN —
 WEIGHT-CHARGE may resist). [3] RESUM: 4–5 units — CLEARED FOR CONDITIONAL
