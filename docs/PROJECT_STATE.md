@@ -382,6 +382,20 @@ should not be conflated (this is the mistake an earlier draft of this document m
    LEAN: MovesC fully ACCEPTED at audit round 6 (six-round spiral) — 23 frozen proved
    + the 13-unit fleet running. The campaign's remaining structural risk is
    concentrated in the named kernels, each with a live refuter.
+   UPDATE (2026-07-27, latest): **§T-ASSEMBLY DUAL-ACCEPTED** (Codex pass 8 + Fable
+   confirm on identical rev-7 text; the (ns-null) proof verified four times incl. two
+   Fable break-attempt derivations; gates SIB 32/32 + T-n3 21/21) — the FOURTH
+   artifact through the full dual standard (§B2-DEF, §C, §D4-R, §T-ASSEMBLY).
+   **Gate V-n3 PASSED 178/178** (the [1v] tables + COMP-h dyadic mass, exact).
+   §V-TABLES: math clean at passes 4+5 (0 criticals), record sweep in flight.
+   §M-SPECIES at rev 4 (the census-vs-geometric coordinate shift being displayed as
+   an isomorphism; SP-DAG's entrance-finiteness proof GENUINE). LEAN: **MovesC
+   36/36 proved-clean** (the 13-unit fleet closed with zero failures, incl.
+   thmC_a/b); the MovesGr bridge round produced machine-checked REFUTATION
+   certificates for three design statements (vacuous/unprovable-as-stated) + one
+   proved fragment; ONE item awaits Asvin's sign-off: the proposed `add_def` field
+   on GradedRingStr (blueprint §8.1/§8.3 — the L1 statement is false without it;
+   adding it breaks existing instances, so it is fenced). 18 sealed gates.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
