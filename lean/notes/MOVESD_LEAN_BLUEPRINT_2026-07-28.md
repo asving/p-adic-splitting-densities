@@ -1,3 +1,37 @@
+# MOVESD LEAN BLUEPRINT — REV 6 (the domain-subtype ruling)
+
+REV 6 (2026-07-28): the rev-5 verdicts split a fifth time — Fable#4 ACCEPT 0/0
+(`MOVESD_AUDIT_FABLE4_2026-07-28.md`: gate recomputed on the Option carrier,
+adversarial instances constructed and killed, L12 verbatim) vs Codex FINAL#4
+REJECT 4/3 (`MOVESD_AUDIT_CODEX_FINAL4_2026-07-28.md`). ORCHESTRATOR DIAGNOSIS:
+Codex's criticals 1–3 are ONE disease — the Lean `ShapePrefix` TYPE is bigger than
+the note's universe (junk shapes ⟹ vacuous mass laws; pol-quantified units
+trivialize on policy-voided domains; the M-bound needs a rider). THE RULING,
+implemented here:
+(1) the quantification domain becomes the note's universe BY TYPE:
+`Shape n := {P : ShapePrefix // ShapeWF n P}` — the wf-certificate-in-the-type
+pattern (the certificate variant of the L3 dictionary-image predicate, definable
+from existing vocabulary; `MonicTie` is a COMPONENT of `ShapeWF`, §3.1). All
+shape-quantified units re-bind `{P : Shape p F n}`→ mass laws hold UNCONDITIONALLY
+over the note's shapes: no `Wellformed` riders (W2 unconditional over the
+subtype), no junk-shape vacuity (a malformed monic encoding is NOT A SHAPE —
+Codex#4 f.1's own words), W3 states BOTH displayed bounds. Gate preserved: §0.6's
+subtype addendum shows P̂* ∈ Shape 3 and re-derives C_P̂*(2) = 3, mult ≡ 1 there.
+(2) the five pol-standalone units (D2a, F1, E9, D3a, W3) gain
+`hnorm : PresentNorm …` — normalized presentations, exactly the note's domain
+(Codex#4 f.2).
+(3) `Threshold.NP` is GONE as free data: `ShapePrefix.NP` is DEFINED by L12's
+exact formula (1 + the largest constrained level; the max over η collapses by
+shape-constancy — the note's own "identical for every η ∈ Pref(P̂*)"); `hstab`
+and `NP ≤ Nshape` are DERIVED (unit NPu); D4R4_all covers ∀ N ≥ NP exactly —
+no dropped range (Codex#4 f.4). Gate: NP(P̂*) = 1 + 4 = 5, the note's own
+derivation reproduced.
+(4) VerdictModel gains the root-(ns)-verdict and cell-exact-factorization TYPED
+OPEN fields (Codex#4 f.5); §3.0 fixes declaration order normatively (f.6); every
+"as rev 2" unit spec is INLINED in full (f.7).
+Tables: §9–§12 historical; §13 = REV 6. [The pre-REV-6 header follows, kept for
+the audit trail:]
+
 # MOVESD LEAN BLUEPRINT — REV 5
 
 Campaign unit-spec per `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md` §2. Writer: Fable.
@@ -110,6 +144,18 @@ acceptance test per the triage protocol):
   each f in the event realizes exactly the one class of its cell: **mult_P̂* ≡ 1 ✓**,
   D4R.1-EV/D4R.4-EV with EQUALITY — the note's gate re-derivation verbatim.
 
+REV-6 SUBTYPE ADDENDUM (the gate lives in the note's universe — MANDATORY check):
+P̂* satisfies `ShapeWF 3` clause by clause: species root-iff (read 0 root, read 1
+recentering ✓); root_box 0+3 ≤ 3 ✓; window s0₁+wSide₁ = 1 ≤ μ₀ = 1 ✓; gmu
+2·1 ≤ 3, 1·1 ≤ 1 ✓; edvd 1∣3, 1∣1 ✓; dchain D₀ = 1, D₁ = e₀g₀D₀ = 2 ✓ (the F_{p²}
+block width); MonicTie read 0: monicTop ∧ 0+3 = 3 = n ✓, read 1: ¬monicTop ∧
+0+1 ≠ 3 ✓. So P̂* ∈ Shape 3, and every count above is computed OVER THE SUBTYPE
+unchanged: C_P̂*(2) = 3 ✓, C_P̂*(3) = 48 ✓, mult ≡ 1 ✓. The exact threshold formula
+(§3.3): NP(P̂*) = 1 + (largest constrained level = 4, at c₀'s level-4 band
+coordinate) = 5 — the note's own "N(P̂*) = 1 + (largest pinned base level = 4, at
+c₀) = 5" REPRODUCED BY THE DEFINITION (here NP = Nshape = 5; in general NP ≤
+Nshape, unit NPu).
+
 ## 1. The consumption design (what is consumed, what is proved, what remains open)
 
 CONSUMED from MovesC (36/36 PROVED): `History`/`Node` (a realized prefix IS a MovesC
@@ -158,7 +204,7 @@ uniform quantifier, with cross-level compatibility automatic (same C, same A′)
 | object | encodes | status |
 |---|---|---|
 | `pol : CanonPolicy p F` (parameter) | WHICH canonical policy (the (S6b) offset-P formula) | OPEN parameter, pinned by §B2-DEF/HC-1; its LAWS (lift = function of node data, per-node) are structure fields — `False` not expressible |
-| `Matches.hmonic` + `ShapePrefix.MonicTie` (PrefSet clause) [REV 5] | root monic lead digit = 1 (scoped, §0.5) + monicTop ⟺ the root window's degree-n slot (reconciliation (4)) | interface equalities; junk-monicTop shapes void their own PrefSet |
+| `Matches.hmonic` + `ShapePrefix.MonicTie` (a `ShapeWF` COMPONENT) [REV 6] | root monic lead digit = 1 (scoped, §0.5) + monicTop ⟺ the root window's degree-n slot | interface equalities; a malformed monic encoding is NOT A SHAPE (`Shape n` subtype — the domain ruling) |
 | `InBox n` (PrefSet clause) | the root side lies in the degree-n box | part of "§C history of the degree-n box" (the note's setting); consumed by W1 |
 | `Presented.jet` + `Presented.hnorm` [REV 5] | per-class presentations (§C C.2) + the typed dictionary pin | HC-2 bridge — the corpus's two assumed structure fields; `Threshold.{hstab, jets}` packages them at the note's NP (reconciliation (5)) |
 | `D4R_CYL S T` (pinned Prop, def) | L6's (D4R-CYL) | note-PROVED given kernel (a)+(b) (both dual-verified-discharged) + Thm C(a); Lean proof EXPLICITLY DEFERRED to the wave-4/HC-2 tree corpus; D15 consumes it as a named hypothesis |
@@ -166,7 +212,7 @@ uniform quantifier, with cross-level compatibility automatic (same C, same A′)
 | `VerdictModel` (whole) | D4R.0-K(c)/VP: alphabet V, emission, halt dichotomy, per-class cap law | **OPEN** — owned by §T-ASSEMBLY → MovesT; typed, consumed by nothing in MovesD |
 | `hN : 1 ≤ N`, `hm : m = n*N` (D14a/D14b hyps) | L12's empty-case N(P̂) := 1 convention; the box shape | explicit theorem hypotheses (no jet available) |
 | **PresentNorm** (TYPED Prop + the FIELD `Presented.hnorm`) [REV 5 ⇐ rev-4 prose pin] | the two-sided classes ↔ η dictionary: totality from the POLICY-FREE `PrefSetAny` (L1 kernel-(a) totality + L6-corollary realizable ⟺ realized + conjugation equivariance) ∧ Galois uniqueness (embedding rigidity) | HC-2 discharge; VIOLATED by truncated normalizations AND by history-voiding junk policies (reconciliations (2)+(6)); gate-checked §0.6 |
-| **PRESENT-EXIST** (declared hyp) [REV 4] | `∀ N ≥ Nshape P, Nonempty (Presented …)` — presentability at every sufficient level (§C C.2) | HC-2; sole consumer: `TW_threshold_witness` (Nshape as the constructive `Threshold` witness — reconciliation (5)) |
+| **PRESENT-EXIST** (declared hyp) [REV 6: at the EXACT NP] | `∀ N ≥ P.NP n, Nonempty (Presented …)` — presentability at every level of L12's exact range (§C C.2) | HC-2; sole consumer: `TW_threshold_witness` |
 | **ClassFiberWelldef** (Defs Prop, §3.4) [REV 5: displayed AND wired] | representative independence: one η-class, one classifier locus (§C L4) | HC-2 (wave-4 tree corpus, with D4R_CYL); WIRED as D15's explicit hypothesis `hwd` (reconciliation (7)) |
 | **POL-PIN** (future unit, named) [REV 4, Codex#2 f.4] | the instance `pol := the (S6b) offset-P policy` with its realizer laws | owned by HC-1/§B2-DEF corpus; until then all MovesD theorems are ∀-pol |
 
@@ -176,6 +222,24 @@ GONE at rev 3 (previously assumed): `henc` (→ PROVED, E1–E9), `hn : ℓ_r �
 deferred Prop `D4R_CYL`), bare `cap`/`hcap` (→ the typed cap law).
 
 ## 3. Defs skeleton — `lean/LeanUrat/MovesD/Defs.lean` (definitions only)
+
+### 3.0 DECLARATION ORDER — NORMATIVE [REV 6, Codex#4 f.6: the file order IS the
+spec; the §3.x display order below is thematic, the FILE follows THIS list]
+  (1) `Box`, `topLocus`, `ShapeRead` (+ `d`/`len`/`mbar`/`childWidthS`),
+      `ShapePrefix` (+ `W`/`Mfac`), `MonicTie`, `ShapeWF`, `Shape` (the subtype);
+  (2) the shape replicas §3.3 IN FULL — `strS` … `bandS`, `A`, `Nshape`, `A'`,
+      `NP`, `Anet` (they consume ShapeRead only — no forward refs);
+  (3) `pool`, `fieldEnum`, `lexLt`, `RanchImage`, `ψImage`, `poolSubfield`,
+      `EligibleImage`, `selRank`, `Node.sideDigit`;
+  (4) `ShapeRead.Matches`, `MatchesHist`, `CanonPolicy`, `canonRoot`,
+      `IsCanon`/`IsCanonPres`, `InBox`, `PrefSet`, `PrefSetAny`, `EtaData`,
+      `etaData`, `EtaGalEq` (AFTER EtaData), `PrefIdx`, `PresentNorm` (AFTER
+      PrefIdx), `reprOf`, `CD`, `PrefOpt`, `etaDataO`, `emptyFiber`, `Presented`,
+      `Threshold` (AFTER `A`/`A'`/`NP` — supplied by (2));
+  (5) `EncTargetP`, `History.snoc`, `History.IsPrefixOf`, `TreeModel`, `D4R_CYL`,
+      `ClassFiberWelldef`, `VerdictModel`.
+Every forward reference Codex#4 f.6 listed (EtaGalEq, PresentNorm, Threshold.hstab)
+is resolved by this order; `Threshold` moreover no longer HAS an hstab field (§3.2).
 
 ### 3.1 Box, top locus, shape reads (monicTop replaces slots — §0.5)
 
@@ -247,6 +311,38 @@ violate the tie. A PrefSet clause (§3.2), so violating shapes have empty PrefSe
 def ShapePrefix.MonicTie (P : ShapePrefix) (n : ℕ) : Prop :=
   ∀ (r : ℕ) (hr : r < P.reads.length),
     (P.reads[r]'hr).monicTop = true ↔ (r = 0 ∧ (P.reads[r]'hr).s0 + (P.reads[r]'hr).wSide = n)
+
+/-- [REV 6 — THE DOMAIN-SUBTYPE RULING; Codex#4 findings 1–3's one disease] **The
+shape wf-certificate**: the L3-dictionary-image laws expressible on shape data —
+what a note shape-prefix IS. A malformed encoding "is not a valid shape-prefix; it
+cannot be converted into a valid shape having Pref(P̂) = ∅" (Codex#4 f.1, now the
+design). The certificate variant is chosen over the literal ∃-Node-chain image to
+stay non-circular and checkable; `ShapeWF_of_matches` (unit SW1) proves every
+matched coherent in-box history's shape carries it — nothing of the note's universe
+is lost. -/
+structure ShapeWF (n : ℕ) (P : ShapePrefix) : Prop where
+  species_iff : ∀ (r : ℕ) (hr : r < P.reads.length),
+    (P.reads[r]'hr).species = ReadSpecies.root ↔ r = 0
+  root_box : ∀ h0 : 0 < P.reads.length, (P.reads[0]'h0).s0 + (P.reads[0]'h0).wSide ≤ n
+  window : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+    (P.reads[r+1]'hr).s0 + (P.reads[r+1]'hr).wSide ≤ (P.reads[r]'(by omega)).μ
+  gmu : ∀ (r : ℕ) (hr : r < P.reads.length),
+    (P.reads[r]'hr).g * (P.reads[r]'hr).μ ≤ (P.reads[r]'hr).len
+  edvd : ∀ (r : ℕ) (hr : r < P.reads.length), (P.reads[r]'hr).e ∣ (P.reads[r]'hr).wSide
+  dchain0 : ∀ h0 : 0 < P.reads.length, (P.reads[0]'h0).Dwidth = 1
+  dchain : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+    (P.reads[r+1]'hr).Dwidth = (P.reads[r]'(by omega)).childWidthS
+  monic : P.MonicTie n
+
+/-- **THE NOTE'S SHAPE UNIVERSE, BY TYPE** [REV 6]: every shape-quantified unit
+binds `{P : Shape p F n}` (coercion `↑P : ShapePrefix`; certificate `P.2`) — the
+mass laws hold UNCONDITIONALLY over exactly the note's shapes ("always" verbatim);
+junk data is not in the domain of quantification. -/
+def Shape (n : ℕ) : Type := {P : ShapePrefix // ShapeWF n P}
+
+/-- `Wellformed` is now a THEOREM over the subtype (rev-5's W1 argument gone
+shape-internal — no member needed): ℓ₀ ≤ s0+wSide ≤ n (root_box), ℓ_{r+1} ≤
+s0'+wSide' ≤ μ_r ≤ ℓ_r (window, gmu with g ≥ 1). Stated as unit W1′. -/
 ```
 
 ### 3.2 Canonical policy, PrefSet, η-classes, the constructed family (findings 1–3)
@@ -313,11 +409,13 @@ def InBox (n : ℕ) (H : History p F) : Prop :=
 
 /-- **The LITERAL Lean Pref(P̂)** (L3: shape-match + realizable + canonical lifts, in
 the degree-n box). -/
-def PrefSet (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) : Set (History p F) :=
-  {H | P.MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧ InBox n H ∧
-       P.MonicTie n ∧ pol.IsCanonPres H}
+def PrefSet (n : ℕ) (pol : CanonPolicy p F) (P : Shape n) : Set (History p F) :=
+  {H | (P : ShapePrefix).MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧
+       InBox n H ∧ pol.IsCanonPres H}
 -- [REV 4] `IsCanon` → `IsCanonPres` (root-normalized presentation class, §0.6).
--- [REV 5, reconciliation (4)] + the `MonicTie` clause.
+-- [REV 6, the ruling]: the domain is `Shape n` — MonicTie/wellformedness moved
+-- INTO THE TYPE (ShapeWF); the rev-5 clause is deleted, not weakened. ALL
+-- downstream defs/units re-bind `{P : Shape n}` (coercions elided below).
 -- Defs-file order note: `RanchImage`/`ψImage`/`poolSubfield` (§3.4) precede this
 -- section in the actual `Defs.lean` (canonRoot consumes ψImage).
 
@@ -325,8 +423,8 @@ def PrefSet (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) : Set (History p
 recommendation] The POLICY-FREE realizable prefix set: shape-matched, coherent,
 realizable, in-box — NO canonicity clause of either kind. The reference set for the
 typed dictionary pin `PresentNorm` below. -/
-def PrefSetAny (n : ℕ) (P : ShapePrefix) : Set (History p F) :=
-  {H | P.MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧ InBox n H ∧ P.MonicTie n}
+def PrefSetAny (n : ℕ) (P : Shape n) : Set (History p F) :=
+  {H | (P : ShapePrefix).MatchesHist H ∧ HistoryCoherent H ∧ Realizable H ∧ InBox n H}
 
 /-- Coordinatewise field-automorphism action on η-class data (the Galois relation
 between conjugate presentations — Fable#2 C1's witness action). -/
@@ -412,21 +510,21 @@ structure Presented (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
 /-- [REV 5, reconciliation (5) — Codex#3 finding 4] **The note's threshold, as
 data with its L12-visible defining properties.** L12 QUOTED: "N(P̂) :=
 max_{η ∈ Pref(P̂)} N(η,⊤) if Pref(P̂) ≠ ∅ … N(P̂) is finite, and for EVERY
-N ≥ N(P̂): (D4R.4-SUM) … (D4R.4-EV)". `N(η,⊤)` is a §C-presentation quantity, so
-its corpus-visible content is exactly: (i) `hstab` — the ledger exponent is stable
-from NP on (each fiber is cut at level ≤ NP: no band content above); (ii) `jets` —
-presentations exist at EVERY level ≥ NP (§C C.2). `Nshape` is the CONSTRUCTIVE
-WITNESS: unit TW proves `Threshold` inhabited with NP := Nshape under PRESENT-EXIST
-(the note: "an a priori shape bound on N(P̂) is available but not needed"), i.e.
-Nshape ≥ N(P̂) materialized. The note does NOT quantify over presentations (its
-counts are intrinsic); the per-level count is presentation-mediated here, with
-intrinsic-ness = ClassFiberWelldef (declared). -/
+N ≥ N(P̂): (D4R.4-SUM) … (D4R.4-EV)". [REV 6]: NP is now the DEFINED
+`ShapePrefix.NP` (§3.3 — L12's exact formula; the max over η collapses by L9's
+shape-constancy), so the ONLY field left is `jets` — presentations at EVERY level
+≥ NP (§C C.2, HC-2). Stability from NP on is DERIVED (NPu); Nshape ≥ NP is DERIVED
+(NPu); TW constructs `Threshold` from PRESENT-EXIST (jets on [Nshape,∞) suffice
+only if NP = Nshape — in general TW needs presentations from NP on, so its
+hypothesis is restated at NP; see the unit). The note does NOT quantify over
+presentations (its counts are intrinsic); intrinsic-ness = ClassFiberWelldef. -/
 structure Threshold (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
-    (n : ℕ) (pol : CanonPolicy p F) (P : ShapePrefix) where
-  NP : ℕ
-  hNP1 : 1 ≤ NP
-  hstab : ∀ N : ℕ, NP ≤ N → P.A n N = P.A' n
-  jets : ∀ N : ℕ, NP ≤ N → Presented p F n N (n * N) pol P
+    (n : ℕ) (pol : CanonPolicy p F) (P : Shape n) where
+  jets : ∀ N : ℕ, (P : ShapePrefix).NP n ≤ N → Presented p F n N (n * N) pol P
+-- [REV 6, Codex#4 f.4]: NP is no longer a FIELD — it is `ShapePrefix.NP`, L12's
+-- exact formula (§3.3); `1 ≤ NP` is definitional (1 + sup); `hstab` is DERIVED
+-- (unit NPu). The sole remaining datum is the HC-2 presentations at every
+-- N ≥ NP — D4R4_all's range is exactly L12's, no dropped levels.
 
 def Presented.fiber (S : Presented p F n N m pol P) (i : PrefIdx n pol P) :
     Set (Box p m) := (S.jet i).SHZ (topLocus p m)
@@ -481,6 +579,19 @@ noncomputable def ShapePrefix.Nshape (P : ShapePrefix) : ℕ :=
 /-- **The N-FREE ledger exponent A′(P̂, n)** (finding 5): A at the stabilization level. -/
 noncomputable def ShapePrefix.A' (P : ShapePrefix) (n : ℕ) : ℕ := P.A n (P.Nshape)
 noncomputable def ShapePrefix.Anet (P : ShapePrefix) (n : ℕ) : ℤ := (P.A' n : ℤ) - (P.W : ℤ)
+open Classical in
+/-- [REV 6, Codex#4 f.4] **L12's EXACT threshold, DEFINED**: N(P̂) := 1 + the
+largest constrained (band) level. This IS "max_{η ∈ Pref(P̂)} N(η,⊤)": each
+N(η,⊤) = 1 + the largest base level among T(η,⊤)'s equations (§C C.2), the
+equations' levels are the shape-determined band levels (mstar_eq/D8 — L9's
+shape-constancy, whence the max over η COLLAPSES: the note's own gate remark
+"N(P̂*) = 5 — identical for every η ∈ Pref(P̂*)"). Empty band ⟹ sup 0 ⟹ NP = 1:
+L12's empty convention "N(P̂) := 1 if Pref(P̂) = ∅" falls out of the formula.
+Gate: NP(P̂*) = 1 + 4 = 5, the note's own derivation. `hstab` and `NP ≤ Nshape`
+are DERIVED (unit NPu) — no free threshold data remains. -/
+noncomputable def ShapePrefix.NP (P : ShapePrefix) (n : ℕ) : ℕ :=
+  1 + ((Finset.range P.Nshape ×ˢ Finset.range n).filter
+        (fun c => ∃ r < P.reads.length, P.bandS n r c)).sup (fun c => c.1)
 ```
 
 ### 3.4 The encoding target, the tree, the verdict layer (findings 3/7 + gaps 8/9)
@@ -622,23 +733,52 @@ structure VerdictModel {n N m : ℕ} {pol : CanonPolicy p F}
   frames and is MovesT's VP duty — documented, not silently claimed. -/
   vdict_local : ∀ (H : History p F) (x x' : Box p m),
     (∀ c : Fin m, (∃ v : V, levelOf c < cap v) → x c = x' c) → vdict H x = vdict H x'
+  /-- [REV 6, Codex#4 f.5 — TYPED OPEN fields completing the claimed (c) surface]
+  the ∅-ROOT's verdict ((ns) at depth 0 — e.g. non-cluster inputs halt with no
+  eligible side; L5 (ns) + L2's leaf clause at the root node): -/
+  rootVdict : Box p m → Option V
+  rootHalt_iff : ∀ x : Box p m,
+    (rootVdict x ≠ none ↔ ∀ ν : Node p F, ¬ T.child none ν x)
+  /-- CELL-EXACT FACTORIZATION, typed and OPEN: `cellOf` = the full next-outcome
+  digit datum of L5 (its semantics — polygon + digit tuples per kernel-(b) — is
+  the HC-2/MovesT pin); τ/vdict FACTORS THROUGH IT ("a function of CELL data
+  alone, never of f", VP-2) at every node including the root. NOT discharged
+  here; nothing in MovesD consumes it. -/
+  Cell : Type
+  cellOf : Option (History p F) → Box p m → Cell
+  vdict_cell : ∀ (H : History p F) (x x' : Box p m),
+    cellOf (some H) x = cellOf (some H) x' → vdict H x = vdict H x'
+  rootVdict_cell : ∀ (x x' : Box p m),
+    cellOf none x = cellOf none x' → rootVdict x = rootVdict x'
 
 end
 end LeanUrat.MovesD
 ```
 
-## 4. Unit specs (46 units [REV 4: +W3, +D4R4_all; REV 5: +F3]; all in `lean/LeanUrat/MovesD/`)
+## 4. Unit specs (48 units [REV 4: +W3, +D4R4_all; REV 5: +F3; REV 6: +SW1, +NPu]; all in `lean/LeanUrat/MovesD/`)
 
 Common binders (elided): `{p} [Fact p.Prime] {F} [Field F] [Finite F] {n N m : ℕ}
-{pol : CanonPolicy p F} {P : ShapePrefix}`; `S : Presented p F n N m pol P`;
-`top := topLocus p m`. AUX = no note display; informal statement given.
+{pol : CanonPolicy p F} {P : Shape n}` [REV 6: THE SUBTYPE — every shape-quantified
+statement reads the note's universe; `↑P` coercions elided]; `S : Presented p F n N
+m pol P`; `top := topLocus p m`. AUX = no note display; informal statement given.
 
-### D0a — topLocus_laws · `D0a_topLocus.lean` — as rev 2 (sol/numPinned/admissible).
-moves_ref: "Z = ⊤: no constraint, vol(⊤) = 1" (L6). deps: MovesC. easy.
+### D0a — topLocus_laws · `D0a_topLocus.lean`  [REV 6, Codex#4 f.7: INLINED]
+statement:
+  `theorem topLocus_sol : ∀ x : Box p m, (topLocus p m).IsSolution x`
+  `theorem topLocus_numPinned : (topLocus p m).numPinned = 0`
+  `theorem topLocus_admissible (Σf : Locus p m) : AdmissibleZ Σf (topLocus p m)`
+moves_ref: "Z = ⊤: no constraint, vol(⊤) = 1" (L6). deps: MovesC.Defs.
+sketch: `pinned ≡ false`; unfold + simp. easy. hypothesis_fields: none.
 
-### D0b — thmC_top · `D0b_thmCtop.lean` — as rev 2 (`totalPins_top`, `thmC_top`).
-moves_ref: "Each NONEMPTY summand is Theorem C(b) with Z = ⊤". deps: C6_thmC_b, D0a.
-easy. hypothesis_fields: none (J a binder; existence = `Presented.jet`, HC-2).
+### D0b — thmC_top · `D0b_thmCtop.lean`  [REV 6, Codex#4 f.7: INLINED]
+statement:
+  `theorem totalPins_top {H : History p F} (J : JetSetup H n N m) : totalPins J (topLocus p m) = (Finset.range H.nodes.length).sum (fun i => (J.fresh i).mstar)`
+  `theorem thmC_top {H : History p F} (J : JetSetup H n N m) : Nat.card (J.SHZ (topLocus p m)) * p ^ totalPins J (topLocus p m) = p ^ (n * N)`
+moves_ref: "Each NONEMPTY summand is Theorem C(b) with Z = ⊤ on the lift-carrying
+history η: μ(S(η,⊤)) = ∏ᵢ vol(E_fresh(νᵢ))" (D4R.1 proof). deps: C6_thmC_b, D0a.
+sketch: `C6_thmC_b J top (topLocus_admissible _)`; `boxMass = p^(n*N)` by `J.hm`;
+`numPinned = 0`. easy. hypothesis_fields: none (J a binder; existence =
+`Presented.jet`, HC-2).
 
 ### D0c — fiber_pos · `D0c_fiberPos.lean`
 statement: `theorem fiber_pos (S) (i : PrefIdx n pol P) : (S.fiber i).Nonempty`
@@ -707,7 +847,7 @@ F-side eligible sets; two members of a finite set with equal strict-initial-segm
 counts under a strict total order are equal. medium-hard.
 
 ### E9 — encIdx_inj · `E9_encInj.lean`
-statement: `theorem encIdx_inj : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F P)`
+statement: `theorem encIdx_inj (hnorm : PresentNorm n pol P) : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F P)`  [REV 6: + hnorm, Codex#4 f.2 — the injection is stated on the note's normalized domain]
   (Defs addendum: `encIdx i := fun r => (digits of the class at the d_r counted
   positions, ⟨selRank (node r of reprOf i), E7⟩)`.)
 moves_ref: "The map enc′: η ⟼ (the side-digit tuples (d_j) of its reads; the
@@ -724,7 +864,9 @@ unchanged (Fable#2: "NOT contaminated: the E1–E9 chain itself").] medium-hard.
 ### D2a — L8_finite_C · `D2a_finite.lean`
 statement:
   `instance : Finite (PrefIdx n pol P)` — L8, structural (a subtype of the finite `EtaData`).
-  `theorem CD_eq (hne : P.reads ≠ []) : P.CD n pol = Nat.card (PrefIdx n pol P)`
+  `theorem CD_eq (hnorm : PresentNorm n pol P) (hne : (P : ShapePrefix).reads ≠ []) : (P : ShapePrefix).CD n pol = Nat.card (PrefIdx n pol P)`
+  [REV 6, Codex#4 f.2: `hnorm` on the standalone units — the counts are the note's
+  C over normalized presentations, never a policy-void artifact.]
 moves_ref: "L8: Pref(P̂) is FINITE … Hence #Pref(P̂) ≤ M(P̂)·∏_r Q_r^{d_r} < ∞".
 deps: Defs. sketch: EtaData is a Pi of finite types; `if_neg`. easy.
 hypothesis_fields: none — the finiteness mechanism is now the η-class construction
@@ -734,7 +876,7 @@ itself (final-audit finding 3 repaired).
 statement:
   `theorem reprOf_mem (i : PrefIdx n pol P) : reprOf i ∈ PrefSet n pol P`
   `theorem etaData_reprOf (i : PrefIdx n pol P) : etaData P (reprOf i) = (i : EtaData F P)`
-  `theorem card_classes : Nat.card (PrefIdx n pol P) = Nat.card (etaData P '' PrefSet n pol P)`
+  `theorem card_classes (hnorm : PresentNorm n pol P) : Nat.card (PrefIdx n pol P) = Nat.card (etaData P '' PrefSet n pol P)`  [REV 6: + hnorm, Codex#4 f.2]
 moves_ref: "Pref(P̂) := { η : shape(η) = P̂, η realizable, canonical lifts }, C_P̂(p) :=
 #Pref(P̂)" — the enumeration is CONSTRUCTED, completeness/injectivity are definitional
 theorems (final-audit finding 3: nothing assumed). [REV 5, reconciliation (2) —
@@ -747,32 +889,39 @@ mult ≡ 1.]
 deps: Defs. sketch: `Exists.choose_spec` twice; `Nat.card` of a subtype of a set
 coerced. easy.
 
-### W1 — wellformed_of_mem · `W1_wellformed.lean`
-statement: `theorem wellformed_of_mem {H : History p F} (hH : H ∈ PrefSet n pol P) : P.Wellformed n`
-moves_ref: "COARSE CHAIN … deg R_anch,r ≤ n always" (L11) — PROVED: no `hn` rider
-(final-audit finding 4).
-deps: E4, E5. sketch: induction down the reads: root — ℓ₀ = wSide/e ≤ s0+wSide ≤ n
-(`InBox`, a PrefSet clause); step — coherence's window containment
-s0'+wSide' ≤ μ_prev, so ℓ_{r+1} ≤ wSide' ≤ μ_prev ≤ ℓ_prev/(g·μ)·(g·μ) ≤ ℓ_prev
-(E5 at the parent) ≤ n; transport each ℓ to the shape via Matches. medium.
+### W1′ — wellformed_of_wf · `W1_wellformed.lean`  [REV 6: shape-internal — no
+member needed; the rev-5 member-transport version is SUPERSEDED]
+statement: `theorem wellformed_of_wf (P : Shape n) : (P : ShapePrefix).Wellformed n`
+moves_ref: "COARSE CHAIN … deg R_anch,r ≤ n always" (L11) — over the note's shape
+universe BY TYPE, unconditional.
+deps: Defs. sketch: induction down the reads on the CERTIFICATE P.2: root —
+ℓ₀ ≤ s0+wSide ≤ n (root_box); step — ℓ_{r+1} ≤ s0'+wSide' ≤ μ_r (window) ≤ ℓ_r
+(gmu, g ≥ 1). easy-medium.
 
-### W2 — Mfac_le · `W2_MfacLe.lean`
-statement: `theorem Mfac_le (hwf : P.Wellformed n) : P.Mfac ≤ n ^ P.reads.length`
+### SW1 — ShapeWF_of_matches · `SW1_shapeWF.lean`  [REV 6 — the universe-loss guard]
+statement: `theorem ShapeWF_of_matches {Q : ShapePrefix} {H : History p F} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt : Q.MonicTie n) : ShapeWF n Q`
+moves_ref: (the L3 dictionary: every note-η's shape is dictionary-image — so the
+subtype loses NOTHING of the note's universe).
+deps: E4, E5. sketch: transport each certificate clause from the matched history:
+species_iff from `History.root_iff`; window/dchain from `HistoryCoherent`; gmu from
+E5 (hOrd) + E4; edvd from `Node.hEdvd`; root_box from `InBox`. medium.
+
+### W2 — Mfac_le · `W2_MfacLe.lean`  [REV 6, Codex#4 f.3: UNCONDITIONAL over the
+subtype — the "smuggled" rider is GONE with the domain ruling]
+statement: `theorem Mfac_le (P : Shape n) : (P : ShapePrefix).Mfac ≤ n ^ (P : ShapePrefix).reads.length`
 moves_ref: "M(P̂) := ∏_r m̄_r ≤ ∏_r ⌊n/(g_rμ_r)⌋ ≤ n^{|P̂|} (m̄_r as above … coarse
-chain displayed)". deps: Defs. sketch: m̄_r = ℓ_r/(gμ) ≤ ℓ_r ≤ n (hwf, Nat.div_le_self);
-List.prod ≤ pow. easy-medium. hypothesis_fields: `hwf` — PROVED by W1 for every
-inhabited shape; for uninhabited shapes the D4R.2 chain never needs it (C = 0).
+chain displayed)" — for every shape-prefix of the degree-n classifier, verbatim.
+deps: W1′. sketch: m̄_r ≤ ℓ_r ≤ n (W1′); List.prod ≤ pow. easy.
+hypothesis_fields: NONE.
 
-### W3 — D4R2'_coarse · `W3_coarseBound.lean`  [REV 4, Codex#2 finding 5]
-statement: `theorem D4R2'_coarse : Nat.card (PrefIdx n pol P) ≤ n ^ P.reads.length * p ^ P.W`
-moves_ref: "C_P̂(p) ≤ M(P̂)·p^{W(P̂)}, M(P̂) ≤ n^{|P̂|} p-FREE (L11)" — the two displayed
-inequalities CHAINED ON C, now UNCONDITIONAL: no Wellformed hypothesis survives.
-deps: D3a, W1, W2, F1. sketch: case split on `Nonempty (PrefIdx n pol P)`: empty —
-C = 0 ≤ anything; nonempty — pull a member via `reprOf`/F1, W1 gives `Wellformed n`,
-chain D3a with W2. easy. hypothesis_fields: NONE. [The BARE `Mfac ≤ n^{|P̂|}` for
-junk shape data (ℓ_r > n) is FALSE and not the note's claim — the note's "always"
-ranges over shapes of degree-n classifier histories; on C-carrying territory the
-display is now hypothesis-free. Pushback recorded at §11 row 5.]
+### W3 — D4R2'_full · `W3_coarseBound.lean`  [REV 6, Codex#4 f.3: BOTH displayed
+bounds, over the subtype, no case analysis needed]
+statement:
+  `theorem D4R2'_full (hnorm : PresentNorm n pol P) : Nat.card (PrefIdx n pol P) ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W ∧ (P : ShapePrefix).Mfac ≤ n ^ (P : ShapePrefix).reads.length`
+moves_ref: "C_P̂(p) ≤ M(P̂)·p^{W(P̂)}, M(P̂) ≤ n^{|P̂|} p-FREE (L11)" — the display
+PAIR, verbatim, unconditional on the note's universe (`Shape n` + hnorm).
+deps: D3a, W2. sketch: ⟨D4R2' hnorm, Mfac_le P⟩ — both components already
+unconditional over the subtype. easy. hypothesis_fields: `hnorm` (Codex#4 f.2).
 
 ### D1c — encTargetP_card · `D1c_encCard.lean` (AUX)
 statement: `theorem encTargetP_card (hp : 2 ≤ p) : Nat.card (EncTargetP p F P) ≤ P.Mfac * p ^ P.W`
@@ -780,7 +929,7 @@ moves_ref: (L11's codomain count ∏_r Q_r^{d_r}·m̄_r). deps: E2. sketch: Pi/p
 cards; (card pool)^{d} ≤ (p^w)^d; regroup = p^W·Mfac. medium.
 
 ### D3a — D4R2' · `D3a_poolBound.lean`
-statement: `theorem D4R2' : Nat.card (PrefIdx n pol P) ≤ P.Mfac * p ^ P.W`
+statement: `theorem D4R2' (hnorm : PresentNorm n pol P) : Nat.card (PrefIdx n pol P) ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W`  [REV 6: + hnorm; P : Shape n]
 moves_ref: "C_P̂(p) ≤ M(P̂)·p^{W(P̂)}" (D4R.2′ display; the M ≤ n^{|P̂|} clause is W2).
 deps: E9, D1c. sketch: `Nat.card_le_card_of_injective encIdx encIdx_inj` + D1c.
 easy. hypothesis_fields: NONE — the injection is PROVED (final-audit finding 4
@@ -796,25 +945,84 @@ pow_add. easy.
 ### THE L9 CHAIN (D4a–D9, L9s) — substance unchanged from rev 2 (no final-audit
 finding hit it except D10's quantifier); one lemma per unit; specs abbreviated.
 
-### D4a — chart_bij · `D4a_chartBij.lean` (AUX) — as rev 2: `Injective J.coordOf` +
-surjectivity onto the N×n grid (sorted chart + card pigeonhole via `J.hm`). medium.
-### D4b — chart_count · `D4b_chartCount.lean` (AUX) — as rev 2: pulled-back predicate
-counts over `Fin m` = grid filter counts. deps: D4a. medium.
-### D5a — Dwidth_pos · `D5a_dwidthPos.lean` (AUX) — as rev 2 (root deg 1 + width
-chain). deps: MovesC. medium.
-### D6a — strFrame_shape · `D6a_strShape.lean` — `H.strFrame i = P.strS i` under
-`MatchesHist`. easy.
-### D5b — line_shape · `D5b_lineShape.lean` — `(H.nodes[r]'hr).line = P.lineS r`
-under coherence + Matches (slope law; `hLineU` pins the intercept THROUGH u* — the
-rev-9 bracket, quoted in the unit). deps: D5a, D6a. medium.
-### D6b — kappaH_shape · easy. D6c — innerslot_shape · easy. D6d — htH_shape ·
-deps D6b/D6c, easy. D6e — prevRim_shape · easy. (Files `D6*_*.lean`; moves_ref: L9's
-"SHAPE data" sentence, one formula each.)
-### D7a — staircase_shape · deps D5b. easy. D7b — floorH_shape · deps D7a (fold
-congruence). medium. D7c — slotVal_shape · deps D5b (the fine-slot edge). easy.
-### D8 — band_shape · `D8_bandShape.lean` — `inFreshBand H n J.coordOf r ν c ↔
-P.bandS n r (J.coordOf c)` under Matches (+ J.coherent). deps: D6d, D6e, D7b, D7c.
-medium.
+[REV 6, Codex#4 f.7: every "as rev 2" abbreviation below is INLINED in full;
+`Q := (P : ShapePrefix)` inside statements for readability.]
+
+### D4a — chart_bij · `D4a_chartBij.lean` (AUX)
+informal: a JetSetup's ≺-sorted chart is a bijection onto the N×n grid.
+statement: `theorem chart_bij {H : History p F} (J : JetSetup H n N m) : Function.Injective J.coordOf ∧ ∀ c ∈ Finset.range N ×ˢ Finset.range n, ∃ j : Fin m, J.coordOf j = c`
+deps: MovesC.Defs. sketch: injectivity from `coordOf_sorted` + `CoordPrec`
+irreflexivity; surjectivity from injective-into-a-grid-of-card-m (`J.hm`,
+pigeonhole). medium.
+
+### D4b — chart_count · `D4b_chartCount.lean` (AUX)
+informal: pulled-back predicate counts over `Fin m` = grid filter counts.
+statement: `theorem chart_count {H : History p F} (J : JetSetup H n N m) (φ : Coord → Prop) [DecidablePred φ] : Nat.card {c : Fin m // φ (J.coordOf c)} = ((Finset.range N ×ˢ Finset.range n).filter (fun c => φ c)).card`
+deps: D4a. sketch: `Nat.card_congr` along D4a's bijection; `Finset.card_filter`
+bridging. medium.
+
+### D5a — Dwidth_pos · `D5a_dwidthPos.lean` (AUX)
+informal: every read of a coherent history has positive frame width.
+statement: `theorem Dwidth_pos {H : History p F} (hcoh : HistoryCoherent H) (r : ℕ) (hr : r < H.nodes.length) : 0 < (H.nodes[r]'hr).Dwidth`
+deps: MovesC.Defs. sketch: induction on r — root `deg Φ₀ = 1` + `hDwidth`; step
+width chain `D_{r+1} = e·g·D_r`, e, g ≥ 1. medium.
+
+### D6a — strFrame_shape · `D6a_strShape.lean`
+statement: `theorem strFrame_shape {H : History p F} (hP : Q.MatchesHist H) : ∀ i, H.strFrame i = Q.strS i`
+moves_ref: (L9's "SHAPE data" — STR_i = ∏_{m<i} e_m). deps: Defs.
+sketch: List.take/map congruence from Matches' e-clause. easy.
+
+### D5b — line_shape · `D5b_lineShape.lean`
+statement: `theorem line_shape {H : History p F} (hcoh : HistoryCoherent H) (hP : Q.MatchesHist H) (r : ℕ) (hr : r < H.nodes.length) : (H.nodes[r]'hr).line = Q.lineS r`
+moves_ref: "each line is the slope −h_r/e_r line through (j*_r, u*_r), pinned only
+WITH its height … A is a function of P̂ only because u*_r ∈ P̂" (L9 rev 9 — u*
+enters HERE, through the intercept). deps: D5a, D6a. sketch: `Line` ext; slope from
+coherence's slope law (e·STR·D ≠ 0 via he/D5a/strS ≥ 1); intercept solved from
+`hLineU` at the matched right endpoint. medium.
+
+### D6b — kappaH_shape · `D6b_kappaShape.lean`
+statement: `theorem kappaH_shape {H : History p F} (hP : Q.MatchesHist H) : ∀ r, H.kappaH r = Q.kappaS r`
+moves_ref: (L9 — κ_r = h_r/(e_r·STR_r) is shape data). deps: D6a.
+sketch: getElem?-elim; Matches e/h + D6a. easy.
+
+### D6c — innerslot_shape · `D6c_innerslotShape.lean`
+statement: `theorem innerslot_shape {H : History p F} (hP : Q.MatchesHist H) : ∀ r b, H.innerslotH r b = Q.innerslotS r b`
+moves_ref: (L9 — inner slots from the retained width chain). deps: Defs.
+sketch: getElem?-elim; Matches e/g/Dwidth. easy.
+
+### D6d — htH_shape · `D6d_htShape.lean`
+statement: `theorem htH_shape {H : History p F} (hP : Q.MatchesHist H) : ∀ i c, H.htH i c = Q.htS i c`
+moves_ref: "each alphabet cardinality a power of p determined by the history's
+SHAPE data (§C C.3, verbatim)" (L9). deps: D6b, D6c. sketch: Finset.sum congruence
+of the two K1-chain formulas. easy.
+
+### D6e — prevRim_shape · `D6e_prevRimShape.lean`
+statement: `theorem prevRim_shape {H : History p F} (hP : Q.MatchesHist H) : ∀ i, H.prevRim n i = Q.prevRimS n i`
+moves_ref: (L9 — the rim thresholds μ_{i−1}·D_i are shape data). deps: Defs.
+sketch: case split on i; getElem?-elim; Matches μ/e/g/Dwidth. easy.
+
+### D7a — staircase_shape · `D7a_staircaseShape.lean`
+statement: `theorem staircase_shape {H : History p F} (hcoh : HistoryCoherent H) (hP : Q.MatchesHist H) (r : ℕ) (hr : r < H.nodes.length) (hr' : r < Q.reads.length) : ∀ b, (H.nodes[r]'hr).staircase b = (Q.reads[r]'hr').staircaseS (Q.lineS r) b`
+moves_ref: (L9 — the (ZC-a) staircases: line + μ + widths, all retained).
+deps: D5b. sketch: unfold; rewrite line by D5b, μ/childWidth by Matches. easy.
+
+### D7b — floorH_shape · `D7b_floorShape.lean`
+statement: `theorem floorH_shape {H : History p F} (hcoh : HistoryCoherent H) (hP : Q.MatchesHist H) : ∀ i b, H.floorH i b = Q.floorS i b`
+moves_ref: "the fresh inventory's strip depths run between the recorded old/new
+lines, each pinned only WITH its height" (L9 rev 9). deps: D7a.
+sketch: fold congruence over the first-i staircases (List.take/map/range). medium.
+
+### D7c — slotVal_shape · `D7c_slotValShape.lean`
+statement: `theorem slotVal_shape {H : History p F} (hcoh : HistoryCoherent H) (hP : Q.MatchesHist H) (r : ℕ) (hr : r < H.nodes.length) (hr' : r < Q.reads.length) : ∀ b, (H.nodes[r]'hr).slotVal ((H.nodes[r]'hr).fineSlot b) = (Q.lineS r).at ((b / (Q.reads[r]'hr').Dwidth) * (Q.reads[r]'hr').Dwidth)`
+moves_ref: (L9 — the band's fine-slot upper edge `new(j) = line.at(j·Dwidth)`,
+MovesC ROUND 6's boundary). deps: D5b. sketch: unfold slotVal/fineSlot; D5b +
+Matches Dwidth. easy.
+
+### D8 — band_shape · `D8_bandShape.lean`
+statement: `theorem band_shape {H : History p F} {J : JetSetup H n N m} (hP : Q.MatchesHist H) (r : ℕ) (hr : r < H.nodes.length) (c : Fin m) : (inFreshBand H n J.coordOf r (H.nodes[r]'hr) c ↔ Q.bandS n r (J.coordOf c))`
+moves_ref: (L9's per-read exponent — `inFreshBand` is §C C.1(ii)'s inventory; all
+three conjuncts shape formulas). deps: D6d, D6e, D7b, D7c (coherence via
+`J.coherent`). sketch: conjunct-wise transfer. medium.
 ### D9 — L9_A · `D9_L9.lean`
 statement: `theorem L9_A (S : Presented p F n N m pol P) (i : PrefIdx n pol P) : totalPins (S.jet i) (topLocus p m) = P.A n N`
 moves_ref: "∏ vol(E_fresh(νᵢ)) = p^{−A(P̂)} … the product depends on P̂ alone; A(P̂) :=
@@ -828,6 +1036,19 @@ statement: `theorem A_stable (hN : P.Nshape ≤ N) : P.A n N = P.A' n`
 deps: Defs. sketch: band coordinates satisfy ℓ ≤ htS ≤ line value ≤ intercept <
 Nshape, so levels in [Nshape, N) contribute nothing; filter congruence on the grid
 split. medium.
+
+### NPu — the exact-threshold lemmas · `NPu_threshold.lean`  [REV 6, Codex#4 f.4]
+statement:
+  `theorem NP_pos : 1 ≤ (P : ShapePrefix).NP n` (definitional)
+  `theorem NP_le_Nshape : (P : ShapePrefix).NP n ≤ (P : ShapePrefix).Nshape` (sup over levels < Nshape)
+  `theorem NP_stab : ∀ N, (P : ShapePrefix).NP n ≤ N → (P : ShapePrefix).A n N = (P : ShapePrefix).A' n`
+moves_ref: L12: "N(P̂) := max_{η ∈ Pref(P̂)} N(η,⊤) if Pref(P̂) ≠ ∅, N(P̂) := 1 if
+Pref(P̂) = ∅ … N(P̂) is finite" — NP is the DEFINED formula (§3.3; the max collapses
+by shape-constancy; the empty convention falls out of the sup). `hstab` is now
+DERIVED, not assumed (the rev-5 field deleted).
+deps: Defs, L9s. sketch: NP_stab — every band coordinate has level ≤ NP − 1 (the
+filter's sup), so the level-range extension beyond NP adds nothing; combine with
+L9s at Nshape via NP_le_Nshape. medium.
 
 ### THE MASS LAWS (final-audit finding 5: the uniform quantifier ∀ N ≥ N(P̂))
 
@@ -871,8 +1092,8 @@ Theorem C(b)"). First half PUSHED BACK — §11 row 6.]
 ### D4R4_all — the law at the NOTE's threshold · `D4R4all_wrapper.lean`
 [REV 5, reconciliation (5) — Codex#3 finding 4; restated on `Threshold`]
 statement:
-  `theorem D4R4_all (hne : P.reads ≠ []) (T : Threshold p F n pol P) : ∀ N, T.NP ≤ N → (((∑ᶠ i, Nat.card ((T.jets N ‹_›).fiber i)) * p ^ (P.A' n) = P.CD n pol * p ^ (n * N)) ∧ (Nat.card (T.jets N ‹_›).event * p ^ (P.A' n) ≤ P.CD n pol * p ^ (n * N)))`
-  `theorem TW_threshold_witness (hex : ∀ N, P.Nshape ≤ N → Nonempty (Presented p F n N (n*N) pol P)) : Nonempty (Threshold p F n pol P)`
+  `theorem D4R4_all (hne : (P : ShapePrefix).reads ≠ []) (T : Threshold p F n pol P) : ∀ N, (P : ShapePrefix).NP n ≤ N → (((∑ᶠ i, Nat.card ((T.jets N ‹_›).fiber i)) * p ^ ((P : ShapePrefix).A' n) = (P : ShapePrefix).CD n pol * p ^ (n * N)) ∧ (Nat.card (T.jets N ‹_›).event * p ^ ((P : ShapePrefix).A' n) ≤ (P : ShapePrefix).CD n pol * p ^ (n * N)))`
+  `theorem TW_threshold_witness (hex : ∀ N, (P : ShapePrefix).NP n ≤ N → Nonempty (Presented p F n N (n*N) pol P)) : Nonempty (Threshold p F n pol P)`  [REV 6: hex restated AT NP — PRESENT-EXIST's ledger row updated to match; no dropped range]
 moves_ref: L12 QUOTED VERBATIM: "N(P̂) is finite, and for EVERY N ≥ N(P̂):
 Σ_{η ∈ Pref(P̂)} #{f mod p^N ∈ S(η,⊤)} = C_P̂(p)·p^{nN − A(P̂)} (D4R.4-SUM) …
 #{f mod p^N ∈ S(P̂,⊤)} ≤ C_P̂(p)·p^{nN − A(P̂)} (D4R.4-EV)". MATCH: ∀ N ≥ NP (the
@@ -882,14 +1103,11 @@ intrinsic — no ∃-over-presentations remains in the conclusion; presentation-
 intrinsic-ness = ClassFiberWelldef, declared). `TW`: Nshape is the CONSTRUCTIVE
 WITNESS (NP := Nshape, hstab := L9s, jets := hex via choice) — "Nshape ≥ N(P̂)"
 materialized as witness-hood; PRESENT-EXIST (§2) is consumed HERE and only here.
-deps: D10, D12, D2a (CD_eq), L9s; T.hstab bridges A n N to A′ below Nshape.
-sketch: apply D10/D12 at T.jets N (their hN-argument replaced by T.hstab — D10/D12
-generalize to any N with `P.A n N = P.A' n`, a one-line hypothesis swap noted in
-their specs). easy-medium.
-hypothesis_fields: `T : Threshold` (fields hstab/jets = the L12 threshold content,
-HC-2); `hex` (PRESENT-EXIST) only in TW. Non-vacuity: T.jets carry `hnorm`
-(PresentNorm), so truncated/junk-policy instantiations violate the field — the
-"trivially satisfiable hex" instance is unbuildable.
+deps: D10, D12, D2a (CD_eq), NPu; NP_stab bridges A n N to A′ on [NP, ∞) — the exact L12 range.
+sketch: apply D10/D12 at T.jets N with hA := NP_stab N. easy-medium.
+hypothesis_fields: `T : Threshold` (sole field: jets — the L12 presentations,
+HC-2); `hex` (PRESENT-EXIST, restated at NP) only in TW. Non-vacuity: T.jets carry
+`hnorm`, so truncated/junk-policy instantiations violate the field.
 
 ### F3 — the ∅-representation BRIDGE · `F3_emptyBridge.lean`
 [REV 5, reconciliation (3) — Codex#3 finding 5 ∧ Fable#3 C-6: the deviation is now
@@ -995,8 +1213,9 @@ content. `Nshape ≥ N(η,⊤)`-adequacy of the presentations is existence-side 
 ## 8. MANIFEST stub
 
 corpus: MovesD · source: §D4-R rev 9 (DUAL-ACCEPTED 2026-07-27) · consumes: MovesC ·
-units: 46 (D0a–c; E1–E9; D1c; D2a; F1; F3; W1–W3; D3a–b; D4a–b; D5a–b; D6a–e; D7a–c;
-D8; D9; L9s; D10; D4R4_all(+TW); D11a–b; D12; D13; D14a–b; T1a; D15; 13 AUX) · defs: 1 file ·
+units: 48 (D0a–c; E1–E9; D1c; D2a; F1; F3; SW1; W1′–W3; NPu; D3a–b; D4a–b; D5a–b;
+D6a–e; D7a–c; D8; D9; L9s; D10; D4R4_all(+TW); D11a–b; D12; D13; D14a–b; T1a; D15;
+13 AUX) · domain: `Shape n` (the subtype — REV 6 ruling) · defs: 1 file ·
 open surface: `pol : CanonPolicy` (parameter), `Presented.jet` (HC-2), `D4R_CYL`
 (deferred pinned Prop), `TreeModel`/`VerdictModel` data + laws, `Matches.hmonic`
 (scoped, §0.5), explicit `hN`/`hm` on the empty units — §2 ledger.
@@ -1064,3 +1283,20 @@ Nshape(P̂*) = 5 ✓, A(P̂*) = 11 ✓, W = 7 ✓, M = 1 ✓.
 Gate acceptance (unchanged from §0.6, re-affirmed by BOTH rev-4 verdicts'
 independent recomputations): C_P̂*(2) = 3, C_P̂*(3) = 48, mult ≡ 1, Nshape = 5,
 A = 11, W = 7, M = 1.
+
+## 13. REV 6 table (the domain-subtype ruling; Fable#4 ACCEPT 0/0 vs Codex FINAL#4 REJECT 4/3)
+
+| # | Codex#4 finding | REV-6 repair (the ruling) |
+|---|---|---|
+| 1 | `MonicTie` as a PrefSet clause = the prohibited degenerate-instance escape (malformed shapes should not BE shapes) | AGREED — the ruling adopts Codex's own words: `Shape n := {P // ShapeWF n P}` with `MonicTie` a ShapeWF COMPONENT; the malformed encoding is NOT A SHAPE; the PrefSet clause is deleted (moved into the type, not weakened); SW1 proves the note's shapes all carry the certificate (no universe loss); the gate shape's certificate checked clause-by-clause (§0.6 addendum) |
+| 2 | pol-standalone units (D2a, F1, E9, D3a, W3) trivialize on policy-voided domains | all five gain `hnorm : PresentNorm n pol P` — normalized presentations, the note's domain; with hnorm, PrefIdx-emptiness ⟺ the note's Pref = ∅, never a policy artifact |
+| 3 | W2's `Wellformed` rider smuggled; W3 bounds C but not M | over the subtype BOTH are unconditional: W1′ proves `Wellformed` from the CERTIFICATE (no member needed), W2 drops the rider, W3 = `D4R2'_full` states the display PAIR (C ≤ M·p^W ∧ M ≤ n^{|P̂|}) verbatim |
+| 4 | `Threshold.NP` not definitionally L12's N(P̂); range [N(P̂), NP) dropped | `ShapePrefix.NP` DEFINED = 1 + the largest constrained (band) level — L12's formula with the max-over-η collapsed by shape-constancy (the note's own "identical for every η"); the empty convention NP = 1 falls out of the sup; `hstab`/`NP ≤ Nshape` DERIVED (NPu); Threshold's sole field = jets at every N ≥ NP; D4R4_all/TW/PRESENT-EXIST restated at NP — exact range. Gate: NP(P̂*) = 1+4 = 5 = the note's derivation |
+| 5 | VerdictModel missing root-(ns) verdict + cell factorization | TYPED OPEN fields added: `rootVdict`/`rootHalt_iff` ((ns) at the ∅-root) and `Cell`/`cellOf`/`vdict_cell`/`rootVdict_cell` (τ factors through L5's digit cell — VP-2, typed not discharged) |
+| 6 | Defs skeleton not order-correct Lean | §3.0 NORMATIVE declaration order (file order is the spec); EtaGalEq after EtaData, PresentNorm after PrefIdx, A/A′/NP before Threshold; Threshold no longer has an hstab field at all |
+| 7 | "as rev 2" unit specs unauditable | ALL inlined in full: D0a, D0b, D4a, D4b, D5a, D6a–e, D7a–c (+ D5b, D8 restated) — the blueprint is self-contained |
+
+Unit count at rev 6: 48 (+SW1, +NPu). Gate acceptance UNCHANGED over the subtype
+(§0.6 addendum): P̂* ∈ Shape 3 clause-by-clause; C_P̂*(2) = 3, C_P̂*(3) = 48,
+mult ≡ 1, NP = 5 (= the note's N(P̂*), by the DEFINED formula), Nshape = 5, A = 11,
+W = 7, M = 1.
