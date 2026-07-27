@@ -361,7 +361,7 @@ should not be conflated (this is the mistake an earlier draft of this document m
    conditionality reduces to dual-accepted §C + §B2-DEF + the (c) verdict-pin
    residual (uniform detection cap, owned by the plan's [3t]/VP). **THREE artifacts
    through the full dual standard: §B2-DEF, §C, §D4-R.** §M-SPECIES (note [2a])
-   drafted (catalogue bound (n+1)^{n²+3n+14}; n=3 catalogue = 53 by hand; gate M-n3
+   drafted (catalogue bound (n+2)^{n²+3n+12} as corrected at §M rev 3; n=3 catalogue = 53 by hand; gate M-n3
    census running); its P̂ gloss carries a queued gap (the u* witness). Plan at rev
    10 (RS.1-DEEP/SH/MARKED routing; CL-1..16; tree-indexed (SIB) + depth-2 gate
    layer). Gates: 13 sealed + D4-m2 + SIB/M-n3 running.
