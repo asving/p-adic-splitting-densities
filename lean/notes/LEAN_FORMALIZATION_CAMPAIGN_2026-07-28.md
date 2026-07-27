@@ -159,7 +159,17 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   Fsub_card) splits off as a mini-corpus for E-phase + provers; (b) the
   CStatements/GradedCarrier draft is RAW MATERIAL for the HC-1 blueprint
   (wave 5), where MovesR gets re-keyed to the real carriers and re-audited.
-  (The parallel Fable leg's verdict folds into this record when it lands.)
+  FABLE LEG LANDED (folds in): REJECT 3/4 — but confirms the re-architecture
+  SOUND (carrier fields note-supported; CF-triage genuine; criticals LOCAL to
+  U26-U28's LST/TYP typings). Deep catch: the jet-additivity clause as typed
+  is group-theoretically IMPOSSIBLE (p^N-torsion) — the intended instance
+  would FALSIFY REL.1 (the inverse defect of vacuity). RESUMPTION CHARGE
+  (wave 5, with HC-1's carriers): re-type TYP's additive object as the
+  level-set-digits -> graded-piece composite (MOVES 9401-04/3801-07); price
+  the slot-image SPAN not the digit-value set (TYP(b) 3815-21; the F9
+  instance a = 2 is the check); link floorB to K.lines with a block-edge
+  field + staircase equation; then the 4 gaps. Both verifiers agree the
+  missing pieces are CARRIER structure = HC-1's surface.
   CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
   Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
   Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
