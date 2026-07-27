@@ -407,6 +407,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    accepted perimeter now spans the moves ledger (§A/§B1/§B2-DEF), the composition
    theorem (§C), and four of the plan's assembly notes ([1], [2a] at Codex, [1v]-COND,
    [3t]) with every open kernel named, fenced, and refuter-equipped.
+   UPDATE (2026-07-27, end of day): **§M-SPECIES DUAL-ACCEPTED** (Codex pass 7 +
+   Fable on identical rev-8 text; the Fable side REBUILT the 53-letter catalogue from
+   the definition alone, menu 7/7; gate M-n3-V2 PASSED N = 1..7 exhaustive with all
+   45 fresh thresholds sharp both sides — the 19th sealed gate). **§R-LEDGER
+   ACCEPTED at the Codex bar** (passes 3+4 on rev 3; the obligations ledger with the
+   literal derives-nothing banner; its Fable half running). SIX artifacts through
+   the full dual standard: §B2-DEF, §C, §D4-R, §T-ASSEMBLY, §V-TABLES, §M-SPECIES.
+   NEXT FRONTS: [2b] XHD (the big prove-side note: the exact height-domain package
+   that discharges [1v]-FULL), the plan's rev-15 sync batch (CL-8's (e) leg + count;
+   the JOINT-D1 cross-cluster rewording at four lines), the [2a]/[3t] acceptance-event
+   formalities, and the remaining kernels ((SIB-STEP), HMC, ESCAPE, WEIGHT-CHARGE,
+   TRACK-COUNT, X-items) each with a named refuter.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
