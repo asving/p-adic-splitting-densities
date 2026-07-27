@@ -433,6 +433,17 @@ should not be conflated (this is the mistake an earlier draft of this document m
    sealed gates; drafting ruling: [5] + [3]-COND cleared NOW, [4] not cleared). The write-up now has SEVEN dual-accepted artifacts + one note in
    spiral + two plan notes ([3] RESUM, [4] SQUEEZE + [5] EXHAUST) not yet drafted —
    those await [2b]'s package and the remaining kernels per the plan's DAG.
+   UPDATE (2026-07-27, night — THE DUAL-STANDARD MILESTONE): **TEN artifacts
+   through the full dual bar — the ENTIRE math write-up drafted to date passes
+   BOTH Codex and a fresh Fable instance clean on identical text**: §B2-DEF, §C,
+   and all seven assembly notes incl. **§S-RESUM DUAL-ACCEPTED** (the final one:
+   the Fable confirm's rebuilt 9,494-outcome census — routing exhaustive/exclusive,
+   the (K-SUB) partition exact, (SCS) 0 violations). Twenty sealed gates, all
+   passing. The dual bar caught six decorrelated criticals across the campaign.
+   Remaining to the full Theorem U write-up: the [4] SQUEEZE note (the plan's
+   re-ruling next, with [3] note-accepted), the unrun census layers (X-n3,
+   RESUM-n3, STALL/ESCAPE), and the named open kernels — each fenced with a
+   refuter. Earlier same-day entry follows:
    UPDATE (2026-07-27, night): NINE artifacts through the full dual standard —
    **§X-EXHAUST DUAL-ACCEPTED** (the [5] note: the explicit index table with two
    Fable censuses totaling 6,181 polynomials at 0 violations; WEIGHT-CHARGE and
