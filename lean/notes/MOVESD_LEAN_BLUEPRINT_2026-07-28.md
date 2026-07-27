@@ -1,3 +1,39 @@
+# MOVESD LEAN BLUEPRINT — REV 9 (the seam split)
+
+## THE SPLIT RECORD (2026-07-28, orchestrator adjudication)
+
+Verdicts on rev 8: Fable#7 REJECT 0 crit / 2 gaps, BOTH SW1-local, everything else
+Python-replicated clean (`MOVESD_AUDIT_FABLE7_2026-07-28.md`); Codex FINAL#7
+REJECT 4/3, recovered from disk after a harness cut
+(`MOVESD_AUDIT_CODEX_FINAL7_2026-07-28.md`). ADJUDICATION: Codex's criticals 5/6/7
+(+ gap 4) concentrate on the TreeModel/VerdictModel SEMANTIC surface — verdict
+alphabet, halting rule τ, eligible-children semantics, cell factorization — which
+is §T-ASSEMBLY's vocabulary (VP/TB-CAP live there): the SAME wave-4-seam disease
+MovesS had, INCLUDING Codex's own finding 6 that rev 8's `cell_local` now SILENTLY
+STRENGTHENS (the kernel (b)/(c) conflation — over-pinning without the owner's
+apparatus). THE SEAM-SPLIT MEDICINE (as for MovesS):
+- **THE SEAM** (§2.5, the §W4-SYNC contract): TreeModel's semantic layer
+  (`eligible`/`child_iff`), VerdictModel ENTIRE, D15's D4R_CYL consumer side, and
+  the NPband ↔ max-η identification (now the named typed pin **NP-ID**). Contract
+  entries are NOT built at E-phase; each carries its current typed form, the
+  tie-demand union from all seven rounds, and the re-keying charge for when
+  MovesT exists.
+- **THE CORE** (E-phase-ready): the Shape certificate + SW1, E1–E10 + L11, the
+  mass laws, the ∅ bridge, PrefIdx/PresentNorm/Threshold, the gate block, and
+  TreeModel's STRUCTURAL counting fields (mem/child data, root_mem, mem_single,
+  mem_snoc, mem_realizable) — the semantic layer's absence DECLARED.
+- Codex#7 c.1 (gamTie's STR factor) adjudicated on merits: PUSHBACK — the factor
+  mirrors the consumed MovesC γ-tie verbatim (round-4 finding 11 role (ii):
+  "the augmented-scale weight γ = e·(STR·u*) + j*·h"; stage scale = STR ×
+  absolute, C.1.0(c)); L3's display elides the scale conversion (its γ cites "§C's
+  DERIVED list", and §C's γ IS augmented-scale). Without STR, SW1 would be
+  UNPROVABLE from HistoryCoherent. Flagged for the ratification pass (the gate
+  has strS = 1 — numerically untested; the consistency argument is decisive).
+- Fable#7's two SW1-local gaps land IN CORE (hw0 named + the wchain mechanism
+  written in, new AUX unit E10).
+DISPOSITION: the core goes to E-PHASE; the deferred Codex leg becomes a
+post-reset RATIFICATION pass on the E-phase Lean (as MovesS; ledgered).
+
 # MOVESD LEAN BLUEPRINT — REV 8 (closing)
 
 REV 8 (2026-07-28): the closing sweep — Fable#6 ACCEPT (0 crit / 2 one-line gaps;
@@ -268,6 +304,8 @@ uniform quantifier, with cross-level compatibility automatic (same C, same A′)
 | `VerdictModel` (whole) | D4R.0-K(c)/VP: alphabet V, emission, halt dichotomy, per-class cap law | **OPEN** — owned by §T-ASSEMBLY → MovesT; typed, consumed by nothing in MovesD |
 | `hN : 1 ≤ N`, `hm : m = n*N` (D14a/D14b hyps) | L12's empty-case N(P̂) := 1 convention; the box shape | explicit theorem hypotheses (no jet available) |
 | **PresentNorm** (TYPED Prop + the FIELD `Presented.hnorm`) [REV 5 ⇐ rev-4 prose pin] | the two-sided classes ↔ η dictionary: totality from the POLICY-FREE `PrefSetAny` (L1 kernel-(a) totality + L6-corollary realizable ⟺ realized + conjugation equivariance) ∧ Galois uniqueness (embedding rigidity) | HC-2 discharge; VIOLATED by truncated normalizations AND by history-voiding junk policies (reconciliations (2)+(6)); gate-checked §0.6 |
+| **ROOT-POOL** (SW1's `hw0`) [REV 9, Fable#7 G-1] | the root frame field IS the base field (card = p) — w₀ = 1's source | OPEN, research-grade honestly labeled; eventual discharge = the Stage-interface route (Fable#7's sketch: at deg Φ = 1, Hom(ℤ_pˣ, ℤ) = 0 forces units to weight 0; hRmul/hRadd/hS5 pin the fixed-weight digit scalars into one (prime-field)ˣ-coset; hS6b demands ALL of Kˣ ⟹ card K = p) — a hard new `Stage` lemma, wave-4/HC-1 adjacent |
+| **NP-ID** (typed pin, §2.5 W4-4) [REV 9, Codex#7 g.4] | NPband = max_η N(η,⊤) (every transported-equation level is a band level and conversely) | SEAM — wave-4 theorem from mstar_eq + fresh_band/fresh_cover + D8/D4b; D4R4_all's L12-range faithfulness carries the pointer |
 | **PRESENT-EXIST** (declared hyp) [REV 7: at the piecewise NP] | `∀ N ≥ P.NP pol, Nonempty (Presented …)` — presentability at every level of L12's exact range (§C C.2) | HC-2; sole consumer: `TW_threshold_witness` |
 | **ClassFiberWelldef** (Defs Prop, §3.4) [REV 5: displayed AND wired] | representative independence: one η-class, one classifier locus (§C L4) | HC-2 (wave-4 tree corpus, with D4R_CYL); WIRED as D15's explicit hypothesis `hwd` (reconciliation (7)) |
 | **POL-PIN** (future unit, named) [REV 4, Codex#2 f.4] | the instance `pol := the (S6b) offset-P policy` with its realizer laws | owned by HC-1/§B2-DEF corpus; until then all MovesD theorems are ∀-pol |
@@ -276,6 +314,68 @@ GONE at rev 3 (previously assumed): `henc` (→ PROVED, E1–E9), `hn : ℓ_r �
 (→ PROVED, W1), `complete`/`hist_inj`/`hshape`/`hcanon` (→ the construction, F1),
 `offSlots_forced` (→ the scoped `hmonic`), `TreeModel.cyl` field (→ the pinned
 deferred Prop `D4R_CYL`), bare `cap`/`hcap` (→ the typed cap law).
+
+## 2.5 §W4-SYNC — THE SEAM CONTRACT [REV 9; entries NOT built at E-phase]
+
+Format per entry: (a) CURRENT TYPED FORM (the §3.4 declaration, frozen as the
+negotiating position), (b) the TIE-DEMAND UNION (every demand any verdict raised,
+recorded verbatim-grade), (c) the RE-KEYING CHARGE (what happens when MovesT
+exists). The seam is re-keyed and built in wave 4 WITH MovesT; the E-phase core
+never consumes it.
+
+**W4-1 · TreeModel's semantic layer** (`eligible`, `child_iff` — §3.4).
+(a) `eligible : Option (History p F) → Node p F → Box p m → Prop` +
+`child_iff : mem o x → (child o ν x ↔ eligible o ν x)`.
+(b) union: L2's ALL-AND-ONLY children ("ALL next-node data ν = (side s, its digit
+tuple, ψ, canonical lift) where s is an eligible side … ψ ranges over the eligible
+factors") tied to polygon sides / FIXED digit cells / residual factors / canonical
+lifts (Codex#3 f.8, #5 g.5, #6 g.5); NO `eligible := child` vacuity (Codex#7 c.5 —
+the root-only childless tree must not satisfy the law for realizable inputs);
+eligibility is CELL data, never f-data (L5).
+(c) re-key: `eligible` becomes a DEFINED predicate over MovesT's cell/branch-set
+vocabulary (T_can^τ, VP's (c2)); `child_iff` then a THEOREM-obligation of HC-2.
+
+**W4-2 · VerdictModel, ENTIRE** (§3.4).
+(a) V/hVfin/hVne, vdict, halt_iff, rootVdict/rootHalt_iff, levelOf/levelOf_lt/
+hlevel, cap/capBound/hcapU/hcapB/cap_law, vdict_local, Cell/cellOf/hCellFin/
+cell_local/vdict_cell/rootVdict_cell.
+(b) union, BOTH DIRECTIONS recorded: (i) no degenerate satisfiability — singleton
+V/Cell, constant vdict/cellOf, zero caps, childless trees must not inhabit the
+intended surface (Codex#3 f.9, #4 f.5, #7 c.7); (ii) NO OVER-FACTORING — rev 8's
+`cell_local` SILENTLY STRENGTHENS: L5's full polygon/digit outcome cell is
+kernel-(b) data and is NOT determined by the verdict-cap prefix (kernel-(c)) —
+the (b)/(c) conflation can exclude faithful cell partitions (Codex#7 c.6).
+`cell_local` is accordingly WITHDRAWN from any core consumption and its
+CORRECT-strength replacement is the owner's to fix. Also: cross-level cap
+uniformity (one cap per class across ALL presented N — the addendum's "UNIFORM
+per-class detection cap") needs MovesT's Threshold packaging (Codex#6 g.6).
+(c) re-key: the whole structure is re-derived from §T-ASSEMBLY's VP-1/VP-2 +
+TB-CAP; MovesD's form is the negotiating position, not the buildable spec.
+
+**W4-3 · D15, the D4R_CYL consumer side** (`mult_eq_tree`, `event_iff_tree`,
+`hcyl : D4R_CYL`, `hwd : ClassFiberWelldef`).
+(a) as specified at §4/D15. (b) union: D4R_CYL is L6's theorem, deferred (its
+proof needs kernel (a)/(b) apparatus + Thm C(a) — wave-4); representative scope
+(Codex#3 f.9/#4 f.5) carried by hwd. (c) re-key: D4R_CYL and ClassFiberWelldef
+become wave-4 THEOREMS over the MovesT tree; D15 builds then.
+
+**W4-4 · NP-ID, the NPband ↔ max-η identification** (NEW named typed pin —
+Codex#7 g.4).
+(a) typed form: `def NP_ID (n pol P) : Prop := ∀ (i : PrefIdx n pol P) (J :
+JetSetup (reprOf i) n N m), (the level set of J's pinned equations at Z = ⊤) =
+(the bandS levels below NPband)` — i.e. every transported-system equation level is
+a band level and conversely (the §C C.2 cutoff of each η equals NPband).
+(b) union: L12's range is exactly `N ≥ max_η N(η,⊤)`; the corpus's D4R4_all range
+`N ≥ Shape.NP` is L12's IFF NP-ID holds; rev 7 softened the claim to "documented
+semantic reading" — Codex#7 g.4 demands the pin be NAMED AND TYPED, done here.
+(c) re-key: NP-ID becomes a wave-4 theorem from mstar_eq + fresh_band/fresh_cover
++ D8/D4b over the MovesT-presented classes; until then D4R4_all's moves_ref
+carries the conditionality pointer to this entry.
+
+CORE-SIDE DECLARATION: the E-phase core consumes NONE of W4-1…W4-4. TreeModel's
+STRUCTURAL fields (mem/child/root_mem/mem_single/mem_snoc/mem_realizable — the
+counting interface) and T1a stay core; the semantic layer's absence is hereby
+DECLARED (the mass laws never touch `eligible`, `vdict`, `Cell`, or `D4R_CYL`).
 
 ## 3. Defs skeleton — `lean/LeanUrat/MovesD/Defs.lean` (definitions only)
 
@@ -418,7 +518,15 @@ structure ShapeWF (n : ℕ) (P : ShapePrefix) : Prop where
     (P.reads[r+1]'hr).w = (P.reads[r]'(by omega)).w * (P.reads[r]'(by omega)).g
   /-- [REV 7, Codex#5 c.1 — LATTICE COMPATIBILITY] the γ-tie, shape-side: L3 rev 9's
   "γ_r := e_r·u*_r + j*_r·h_r, §C's DERIVED list" at the chain stretch — mirrors
-  `HistoryCoherent`'s γ-tie clause verbatim (γ's ℤ-typing IS on-lattice). -/
+  `HistoryCoherent`'s γ-tie clause verbatim (γ's ℤ-typing IS on-lattice).
+  [REV 9, Codex#7 c.1 PUSHBACK: the STR factor is NOT an addition to L3 — it is
+  MovesC round-4 finding 11 role (ii) VERBATIM ("the augmented-scale weight
+  γ = e·(STR·u*) + j*·h is the INTEGER gam"; stage scale = STR × absolute,
+  C.1.0(c)); ShapeRead.ustar mirrors Node.ustar (ABSOLUTE scale), so the tie
+  needs the conversion, and SW1's derivation from HistoryCoherent would be
+  IMPOSSIBLE without it. L3's display reads u* in §C's own γ-derivation, which
+  carries the stage scale. Flagged for the ratification pass — the gate has
+  strS = 1 throughout, so the factor is numerically untested there.] -/
   gamTie : ∀ (r : ℕ) (hr : r < P.reads.length),
     (((P.reads[r]'hr).gam : ℤ) : ℚ)
       = ((P.reads[r]'hr).e : ℚ) * ((P.strS r : ℚ) * (P.reads[r]'hr).ustar)
@@ -806,16 +914,14 @@ structure TreeModel (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
   mem_snoc : ∀ (H ν hν x), mem (some (H.snoc ν hν)) x ↔ (mem (some H) x ∧ child (some H) ν x)
   mem_realizable : ∀ H x, mem (some H) x →
     HistoryCoherent H ∧ Realizable H ∧ pol.IsCanonPres H
-  /-- [REV 8, Codex#6 g.5 — L2's ALL-AND-ONLY law, typed]: the tree's children are
-  EXACTLY the eligible continuations — L2: "the children of a chain η ∈ T_can(f)
-  … are ALL next-node data ν = (side s, its digit tuple, ψ, canonical lift) where
-  s is an eligible side … and ψ ranges over the eligible factors". The SEMANTICS
-  of `eligible` (side/ψ eligibility computed from the FIXED digit cell — "branch
-  sets are cell data, not f-data", L5) is kernel-(b) content: OPEN, pinned by
-  HC-2/MovesT; the law itself is no longer prose-only. -/
+  -- ==== SEAM (W4-SYNC entry W4-1; NOT built at E-phase) ====================
+  /-- [REV 9: SEAM] L2's ALL-AND-ONLY law — typed form frozen as the §2.5 W4-1
+  negotiating position (tie-demand union + re-keying charge there). The E-phase
+  core consumes ONLY the structural fields above. -/
   eligible : Option (History p F) → Node p F → Box p m → Prop
   child_iff : ∀ (o : Option (History p F)) (ν : Node p F) (x : Box p m),
     mem o x → (child o ν x ↔ eligible o ν x)
+  -- ==== END SEAM ============================================================
 
 /-- [REV 5, reconciliation (1) — superseding the rev-4 pushback display]: the
 rev-4 dispute is RESOLVED on the Option carrier: Codex#3-f.6's "the empty root
@@ -853,6 +959,10 @@ exists); the PER-CLASS DETECTION CAP with its law: verdict v is determined by th
 digits below level `cap v` — the "uniform per-class detection cap" typed against
 vdict. τ-as-cell-data and the VP-1/VP-2 semantics remain MovesT's — this structure is
 the OPEN kernel-(c) surface, consumed by nothing in MovesD. -/
+-- ======== SEAM (W4-SYNC entry W4-2; the ENTIRE structure — NOT built at
+-- E-phase; typed form = the §2.5 negotiating position; rev-8 `cell_local` is
+-- WITHDRAWN from core strength per Codex#7 c.6's (b)/(c)-conflation finding,
+-- recorded in the contract) ==================================================
 structure VerdictModel {n N m : ℕ} {pol : CanonPolicy p F}
     (T : TreeModel p F n N m pol) where
   V : Type
@@ -1027,7 +1137,7 @@ counts under a strict total order are equal. medium-hard.
 
 ### E9 — encIdx_inj · `E9_encInj.lean`
 statement:
-  `theorem encIdx_inj (hnorm : PresentNorm n pol P) : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F P)`  [REV 6: + hnorm]
+  `theorem encIdx_inj : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F P)`  [REV 9: rev-6's hnorm rider REMOVED as unused (Fable#7/coordinator) — the injection is hypothesis-free; the C-READING units (D3a/W3/CD_eq/F1) keep hnorm]
   `theorem encTargetP_empty (hP : (P : ShapePrefix).reads = []) : Nat.card (EncTargetP p F (P : ShapePrefix)) = 1`  [REV 8, Codex#6 c.3 — the ∅ dispatch: L11's encoding at P̂ = ∅ is the SINGLETON-TO-UNIT map (Pref(∅) = {∅}, target = the empty product, card 1 = C_∅); routed with F3/CD, so the note's C_∅ = 1 arithmetic is a THEOREM here, not a 0-bound]
   (Defs addendum: `encIdx i := fun r => (digits of the class at the d_r counted
   positions, ⟨selRank (node r of reprOf i), E7⟩)`.)
@@ -1041,7 +1151,17 @@ E8 recovers ψImage from the rank. So encIdx equal ⟹ etaData equal ⟹ i = j
 (subtype ext). [REV 4: classes are now ROOT-NORMALIZED (§0.6) — the injection's
 source is conjugation-free, so its count is the note's C; the chain itself is
 unchanged (Fable#2: "NOT contaminated: the E1–E9 chain itself").] medium-hard.
-hypothesis_fields: `hnorm : PresentNorm n pol P` (REV 7, Codex#5 g.4).
+hypothesis_fields: none [REV 9 — hnorm removed as unused].
+
+### E10 — fieldTower_card · `E10_towerCard.lean` (AUX)  [REV 9, Fable#7 G-2]
+informal: adjoining a root of a degree-g irreducible to a finite subfield raises
+the cardinality to the g-th power — the residue-tower card law behind wchain.
+statement: `theorem fieldTower_card {K : Subfield F} [Finite ↥K] {ψ : Polynomial ↥K} (hirr : Irreducible ψ) (hmon : ψ.Monic) {g : ℕ} (hdeg : ψ.natDegree = g) {z : F} (hz : Polynomial.eval₂ K.subtype z ψ = 0) : Nat.card ↥(Subfield.closure (↑K ∪ {z})) = (Nat.card ↥K) ^ g`
+deps: Mathlib (minpoly/adjoin degree; `IntermediateField`-to-`Subfield` bridging).
+sketch: ψ is (up to the monic normalization) the minpoly of z over K (hirr + hz);
+[K(z) : K] = g; card K(z) = (card K)^g; identify K(z) with the subfield closure.
+medium-hard (the hardest new core step — Fable#7: "E3-grade field theory").
+hypothesis_fields: none.
 
 ### D2a — L8_finite_C · `D2a_finite.lean`
 statement:
@@ -1085,7 +1205,11 @@ deps: Defs. sketch: induction down the reads on the CERTIFICATE P.2: root —
 ### SW1 — ShapeWF_of_matches · `SW1_shapeWF.lean`  [REV 6 — the universe-loss
 guard; REV 8, Codex#6 c.2 — MonicTie now DERIVED except its one genuinely
 encoding-level clause]
-statement: `theorem ShapeWF_of_matches {Q : ShapePrefix} {H : History p F} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt0 : ∀ h0 : 0 < Q.reads.length, ((Q.reads[0]'h0).monicTop = true ↔ (Q.reads[0]'h0).s0 + (Q.reads[0]'h0).wSide = n)) : ShapeWF n Q`
+statement: `theorem ShapeWF_of_matches {Q : ShapePrefix} {H : History p F} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt0 : ∀ h0 : 0 < Q.reads.length, ((Q.reads[0]'h0).monicTop = true ↔ (Q.reads[0]'h0).s0 + (Q.reads[0]'h0).wSide = n)) (hw0 : ∀ hj : 0 < H.nodes.length, Nat.card ↥((H.nodes[0]'hj).σ.K) = p) : ShapeWF n Q`
+[REV 9, Fable#7 G-1: the `w0` leg's named hypothesis `hw0` — the root pool is the
+BASE field. NOT derivable from SW1's other hypotheses (Fable#7's interface walk:
+coherence's only root clause is deg Φ₀ = 1; `Stage` requires merely FQ ≤ K). The
+ledgered pin **ROOT-POOL** records the eventual discharge route.]
 moves_ref: (the L3 dictionary: every note-η's shape is dictionary-image — so the
 subtype loses NOTHING of the note's universe). THE MONICTIE DERIVATION [REV 8]:
 monicTop → r = 0 is DERIVED (`hmonicRoot` + `root_iff` via Matches), whence
@@ -1102,7 +1226,16 @@ species_iff from `History.root_iff`; window/dchain from `HistoryCoherent`; gmu f
 E5 (hOrd) + E4; edvd from `Node.hEdvd`; root_box from `InBox`; [REV 7] gamTie from
 coherence's γ-tie clause + Matches (e/h/s0/wSide/ustar/gam) + D6a (strS); anchorTie
 from `Node.hAnchor` + `hbezCanon`-uniqueness against `bezT` (the canonical window
-representative is unique — small in-unit lemma). medium.
+representative is unique — small in-unit lemma); [REV 9, Fable#7 G-2 — the wchain
+MECHANISM, written in] w0 from `hw0` + Matches' pool-card clause (p^{w₀} = p ⟹
+w₀ = 1, exponent-injectivity at p ≥ 2); wchain: NON-recentering steps via
+`TransitionData.child_field` (σ'.K = σ.nextField z̄ = `Subfield.closure (K ∪ {z̄})`)
++ E10's field-tower card lemma — the minpoly of z̄ over ↥σ.K is the parent's ψ
+(`hψirr` + `hψmonic` + `hψdeg` + `hzbarRoot`), so card σ'.K = (card σ.K)^g, whence
+p^{w_{r+1}} = p^{w_r·g_r} and exponent-injectivity closes; RECENTERING steps via
+`IsRecenteringCore`'s K-equality + the node's `hspecRec` (g = 1). medium-hard.
+deps + = E10. hypothesis_fields: `hmt0` (ENC-MONIC), `hw0` (ROOT-POOL) — both
+ledgered, §2.
 
 ### W2 — Mfac_le · `W2_MfacLe.lean`  [REV 6, Codex#4 f.3: UNCONDITIONAL over the
 subtype — the "smuggled" rider is GONE with the domain ruling]
@@ -1307,7 +1440,9 @@ moves_ref: L12 QUOTED VERBATIM: "N(P̂) is finite, and for EVERY N ≥ N(P̂):
 threshold DATA with its L12-visible properties), the SUM equality ∧ the EV bound,
 constants CD and A′ N-free. The note quantifies over LEVELS only (its counts are
 intrinsic — no ∃-over-presentations remains in the conclusion; presentation-
-intrinsic-ness = ClassFiberWelldef, declared). `TW` [REV 7 — the stale rev-5
+intrinsic-ness = ClassFiberWelldef, declared). [REV 9: the range's L12-exactness
+rests on the SEAM pin **NP-ID** (§2.5 W4-4) — conditionality pointer, per
+Codex#7 g.4.] `TW` [REV 7 — the stale rev-5
 construction line PURGED, Fable#5 g.2]: `Threshold` has had NO NP/hstab fields
 since rev 6 — TW builds the sole field `jets` from `hex` by choice on L12's exact
 piecewise range; PRESENT-EXIST (§2) is consumed HERE and only here.
@@ -1367,7 +1502,8 @@ generation laws, not a field. deps: Defs. sketch: downward induction along
 `mem_snoc` (peel the last node; a prefix of a snoc is the history or a prefix of it).
 medium.
 
-### D15 — tree_bridge · `D15_tree.lean`
+### D15 — tree_bridge · `D15_tree.lean`  [REV 9: **SEAM UNIT** (W4-SYNC W4-3) —
+NOT built at E-phase; builds in wave 4 with MovesT]
 statement:
   `theorem mult_eq_tree (S) (T : TreeModel p F n N m pol) (hcyl : D4R_CYL S T) (hwd : ClassFiberWelldef p F n N m pol P) (x : Box p m) : S.mult x = Nat.card {i : PrefIdx n pol P // T.mem (some (reprOf i)) x}`
   `theorem event_iff_tree (S) (T) (hcyl : D4R_CYL S T) (hwd : ClassFiberWelldef p F n N m pol P) (x : Box p m) : x ∈ S.event ↔ ∃ i : PrefIdx n pol P, T.mem (some (reprOf i)) x`
@@ -1392,14 +1528,15 @@ M-carrying D4R.2′). NEW: the representative caveat (§3.2, displayed) — per-
 fibers are the chosen representative's SHZ; class-independence is HC-2 semantic
 content. `Nshape ≥ N(η,⊤)`-adequacy of the presentations is existence-side (HC-2).
 
-## 6. Build order
+## 6. Build order [REV 9: refreshed to current unit ids; CORE only — the seam
+unit D15 and the W4-SYNC entries do NOT build at E-phase]
 
   wave A (parallel): D0a, E1, E2, E4, D5a, D6a, D6c, D6e, D14a → D0b, E3, E5, D0c.
-  wave B: E6 → E7, E8 → E9; D2a, F1 → D3a, D1c; W1 → W2.
-  wave C: D5b → D6b, D6d, D7a, D7c → D7b → D4a → D4b → D8 → D9; L9s.
-  wave D: D10 → D11a, D11b → D12 → D13 → D3b (Corollary D4R.2, as rev 2 §D3b with
-    A′); D14b; T1a; D15.
-  Hardest: E6/E8 (polynomial arithmetic over the frame field), D13, D4a, T1a.
+  wave B: E6 → E7, E8 → E9; E10; D2a, F1, F3 → D3a, D1c; W1′, SW1 → W2 → W3.
+  wave C: D5b → D6b, D6d, D7a, D7c → D7b → D4a → D4b → D8 → D9; L9s → NPu.
+  wave D: D10 → D11a, D11b → D12 → D13 → D3b; D14a, D14b; T1a; D4R4_all(+TW).
+  Hardest: E6/E8 (frame-field polynomial arithmetic), E10 (tower card), D13, D4a.
+  SEAM (wave 4, with MovesT): D15 + the §2.5 re-keying charges.
 
 ## 7. Codex-audit checklist (gate A)
 
@@ -1550,3 +1687,25 @@ GATE (unchanged, both auditors' recomputations + §0.6): C_P̂*(2) = 3, C_P̂*(3
 mult ≡ 1, NP = 5 (inhabited branch = the note's own derivation), Nshape = 5,
 A = 11, W = 7, M = 1; the ∅ arithmetic now THEOREMS on E9/D3a/W3 (C_∅ = 1 ≤ 1).
 Unit count: 48 (unchanged; fields grew, statements restated).
+
+## 16. REV 9 table (the seam split; Fable#7 0/2 ∪ Codex FINAL#7 4/3, orchestrator-adjudicated)
+
+| # | finding (who) | REV-9 disposition |
+|---|---|---|
+| 1 | gamTie's STR factor ≠ L3's display (Codex c.1) | PUSHBACK on merits: the factor IS MovesC's consumed γ-tie (round-4 finding 11 role (ii) verbatim; stage scale C.1.0(c)); ShapeRead.ustar mirrors the ABSOLUTE-scale Node.ustar, so the conversion is forced, and SW1 would be unprovable without it; L3's γ cites §C's DERIVED list (augmented scale). Docstring carries the citation; FLAGGED for the ratification pass (gates have strS = 1) |
+| 2 | SW1's w0/wchain legs unaccounted (Codex g.2 = Fable G-1/G-2) | IN CORE: `hw0` named hypothesis (ROOT-POOL, §2 ledger — the Stage-interface discharge route recorded, research-grade honestly labeled); the wchain MECHANISM written into SW1's sketch (TransitionData.child_field + E10's minpoly-degree card law via hψirr/hψdeg/hzbarRoot; recenterings via IsRecenteringCore K-equality + hspecRec); NEW AUX unit E10 (fieldTower_card) |
+| 3 | ENC-MONIC an encoding gap, not a cure (Codex g.3) | stands AS DESIGNED — a named, ledgered encoding-correctness pin with owner (D4-n3 gate + menu wave); Codex itself grants the honesty; no change |
+| 4 | Shape.NP untied to L12's cutoff (Codex g.4) | SEAM: the identification is now the NAMED TYPED pin **NP-ID** (§2.5 W4-4, ledgered); D4R4_all's moves_ref carries the conditionality pointer; re-keying = wave-4 theorem from mstar_eq + fresh_band/fresh_cover + D8/D4b |
+| 5 | TreeModel's all-and-only vacuous via eligible := child (Codex c.5) | SEAM (W4-1): the typed form frozen as the negotiating position; the tie-demand union (incl. THIS vacuity) recorded in the contract; core keeps only the structural counting fields, absence DECLARED |
+| 6 | cell_local SILENTLY STRENGTHENS — kernel (b)/(c) conflation (Codex c.6) | CONCEDED into the SEAM (W4-2): `cell_local` withdrawn from core strength; both-directions demands recorded (no degeneracy AND no cap-prefix over-factoring); correct strength is the owner's (§T-ASSEMBLY/MovesT) |
+| 7 | VerdictModel degenerately satisfiable; semantic pin prose-only (Codex c.7) | SEAM (W4-2): the ENTIRE structure is a contract entry, not an E-phase build; the singleton/constant instance recorded in the tie-demand union |
+| 8 | §6 build-order staleness; E9's unused hnorm (Fable + coordinator) | §6 refreshed to current ids with the seam excluded; E9's hnorm rider removed (injection is hypothesis-free); hypothesis_fields updated |
+
+**CORE (E-phase-ready): 48 units** — D0a–c; E1–E10; D1c; D2a; F1; F3; SW1; W1′–W3;
+NPu; D3a–b; D4a–b; D5a–b; D6a–e; D7a–c; D8; D9; L9s; D10; D4R4_all(+TW); D11a–b;
+D12; D13; D14a–b; T1a (was 48 incl. D15; −D15 to seam, +E10; 14 AUX).
+**SEAM: 1 unit (D15) + 4 contract entries (W4-1…W4-4)**, all ledgered, none built
+at E-phase; ratification pass on the E-phase Lean recorded as the deferred Codex
+leg's disposition. GATE (final): C_P̂*(2) = 3, C_P̂*(3) = 48, mult ≡ 1,
+NP = Nshape = 5, A = 11, W = 7, M = 1; A(P̂₀) = 14; the ∅ arithmetic C_∅ = 1 ≤ 1
+a theorem on the CD form.
