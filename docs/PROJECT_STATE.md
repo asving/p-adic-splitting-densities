@@ -445,6 +445,14 @@ should not be conflated (this is the mistake an earlier draft of this document m
    §S's plan-sync flags); THE UNRUN-CENSUS ROSTER consolidated at plan §7
    (12 rows, owners + blockers; rows 1–4 — STATE-probe-2, X-n3, STALL-,
    ESCAPE-probe — runnable now). Next drafting unit: [4]-COND.
+   UPDATE (2026-07-28, the capstone census): **GATE RESUM-n3 PASSED** — the five
+   R_σ hand-derived through the full solve MATCH the repo's independent records +
+   the Kac-Rice moment, wild values included; 65/65 decided integers exact at both
+   primes; PARI 0 mismatches; det(I−K_e) exact at pools q₀ = 2, 3, 4 (the per-pool
+   E0/(REG-p) evidence); the checksum exact at every level. The assembled pipeline
+   demonstrably computes the correct densities at n = 3. Event-ledger consequence:
+   with STATE-probe-2 and RESUM-n3 both passed, the [3] acceptance event's sole
+   remaining blocker is [1v]-FULL (the six §H fences). 22 sealed censuses.
    UPDATE (2026-07-28, the campaign completion): **THE WRITE-UP'S DUAL STANDARD
    IS COMPLETE** — every artifact incl. **§U-SQUEEZE/THEOREM U DUAL-ACCEPTED**
    (the theorem in the full honest form: one fixed R_σ ∈ ℚ(q) per type at every
