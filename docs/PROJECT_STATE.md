@@ -365,6 +365,20 @@ should not be conflated (this is the mistake an earlier draft of this document m
    census running); its P̂ gloss carries a queued gap (the u* witness). Plan at rev
    10 (RS.1-DEEP/SH/MARKED routing; CL-1..16; tree-indexed (SIB) + depth-2 gate
    layer). Gates: 13 sealed + D4-m2 + SIB/M-n3 running.
+   UPDATE (2026-07-27, latest): **THE ASSEMBLY PLAN IS SOUND** — pass 13: 0 critical
+   obstructions after 13 revisions/passes (conditional on the honestly-listed open
+   kernels: (SIB-STEP), XHD/HMC, (ns-null) verification, EXHAUST/ESCAPE/TRACK-COUNT,
+   RS.1; rev 14 = three one-liner concerns). GATES: SIB-gate 32/32 (the product law
+   census-exact; mechanism corrected to JOINT UNIMODULARITY — coordinate disjointness
+   refuted); T-n3 21/21 (the first-split recursion exact both ways at depths 1+2;
+   ONE-F dictionary exact); M-n3 content PASS (53-letter catalogue complete, 0 strays)
+   with the realizability clause FAIL-as-sealed adjudicated (Case-K class; threshold
+   repair at §M rev 2; v2 re-seal running). FOUR assembly notes in flight: §D4-R
+   dual-accepted; §M-SPECIES rev 2 (pass 1 running); §T-ASSEMBLY rev 3 (passes: 8c →
+   1c; the (ns-null) PROOF survived); §V-TABLES rev 2 ((U-A) PROVED; pass 2 running).
+   LEAN: MovesC fully ACCEPTED at audit round 6 (six-round spiral) — 23 frozen proved
+   + the 13-unit fleet running. The campaign's remaining structural risk is
+   concentrated in the named kernels, each with a live refuter.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
