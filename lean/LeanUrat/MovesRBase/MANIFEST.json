@@ -1,0 +1,35 @@
+{
+ "campaign": "MovesR WITT BASE LAYER — Lean formalization, E-phase (statement files, sorry bodies). BASE-LAYER SPLIT-OFF ONLY: the MovesR corpus is PARKED (its §C-pointer layer awaits HC-1's carriers); the base layer was verified clean across four audits and splits off per the campaign ledger's disposition.",
+ "source": "lean/notes/MOVES_2026-07-24.md §R-LEDGER rev 5 (DUAL-ACCEPTED 2026-07-27), (R0-box)/(R0-tower) base-index conventions",
+ "blueprint": "lean/notes/MOVESR_LEAN_BLUEPRINT_2026-07-28.md (rev 4) — §1 skeleton R0 block + §2 units U1–U6, U12, U41 (the 7 provable units + D1's local map_comp lemma); EXCLUDED per the split-off charge: everything touching GradedCarrier/CStatements/REL1/Setting/BoxVol",
+ "ephase": "2026-07-27 (base-layer split-off) — all 9 .lean files elaborate green under `lake env lean` + per-module `lake build` (toolchain 4.31.0, mathlib cache). Defs sorry-free (defs/structures only); 7 sorried theorems across 7 unit files; U4's three lemmas carry the blueprint's own inline proofs (0 sorries). NO axioms, NO native_decide, statements verbatim per blueprint §1 modulo the deviations below.",
+ "preamble": "Every file: `import Mathlib` + its dep modules, `namespace MovesRBase` (per the split-off charge; the parked corpus proper uses MovesR), set_option linter.style.longLine/header false, maxHeartbeats 1000000. Build per file with `lake env lean` / `lake build LeanUrat.MovesRBase.<mod>` (NEVER full `lake build`).",
+ "units": [
+  {"id": "U1.base_defs", "file": "lean/LeanUrat/MovesRBase/Defs.lean", "difficulty": "easy", "deps": [], "sorries": 0,
+   "statement": "Kbar := AlgebraicClosure (ZMod p); Wbar := WittVector p (Kbar p); Fsub (m : PNat) : Subfield (Kbar p) := RingHom.eqLocusField (iterateFrobenius (Kbar p) p m) (RingHom.id _); O (m : PNat) : Subring (Wbar p) := (WittVector.map (Subfield.subtype (Fsub p m))).range; qq m := p ^ (m : Nat); relExt m d' := O p (m * d'); cyl m N g := {h | forall j i, i < N -> (h j).coeff i = (g j).coeff i}. Plus U12-supporting vocabulary (blueprint U9-U11, verbatim, NOT units): SpeciesSyntax, AlphabetData (+ attribute [instance] on its 4 bracketed class fields), AlphabetData.Stable, EQ2law."},
+  {"id": "R.map_comp", "file": "lean/LeanUrat/MovesRBase/MapComp.lean", "difficulty": "easy", "deps": ["Defs"], "sorries": 1,
+   "statement": "map_comp (g : S ->+* T) (f : R ->+* S) (x : WittVector p R) : WittVector.map g (WittVector.map f x) = WittVector.map (g.comp f) x — D1's local ext lemma (Mathlib lacks WittVector.map_comp); 3 lines via WittVector.ext + map_coeff"},
+  {"id": "U2.Fsub_le", "file": "lean/LeanUrat/MovesRBase/U2_Fsub_le.lean", "difficulty": "medium", "deps": ["Defs"], "sorries": 1,
+   "statement": "Fsub_le {d m : PNat} (h : d dvd m) : Fsub p d <= Fsub p m"},
+  {"id": "U3.O_le", "file": "lean/LeanUrat/MovesRBase/U3_O_le.lean", "difficulty": "medium", "deps": ["Defs", "U2", "map_comp"], "sorries": 1,
+   "statement": "O_le {d m : PNat} (h : d dvd m) : O p d <= O p m"},
+  {"id": "U4.relExt_comp", "file": "lean/LeanUrat/MovesRBase/U4_relExt_comp.lean", "difficulty": "easy", "deps": ["Defs", "U3"], "sorries": 0,
+   "statement": "relExt_eq (m d' : PNat) : relExt p m d' = O p (m * d') [rfl]; relExt_relExt (m d' d'' : PNat) : relExt p (m * d') d'' = relExt p m (d' * d'') [unfold; mul_assoc]; O_le_relExt (m d' : PNat) : O p m <= relExt p m d' [O_le p <d', rfl>] — PROVED (blueprint's inline proofs; O_le_relExt conditional on U3's sorried O_le)"},
+  {"id": "U5.qq_mul", "file": "lean/LeanUrat/MovesRBase/U5_qq_mul.lean", "difficulty": "easy", "deps": ["Defs"], "sorries": 1,
+   "statement": "qq_mul (m d' : PNat) : qq p (m * d') = qq p m ^ (d' : Nat) — betaarg_eq half EXCLUDED (deviation 1)"},
+  {"id": "U6.Fsub_card", "file": "lean/LeanUrat/MovesRBase/U6_Fsub_card.lean", "difficulty": "hard (wave-3)", "deps": ["Defs"], "sorries": 1,
+   "statement": "Fsub_card (m : PNat) : Nat.card (Fsub p m) = p ^ (m : Nat)"},
+  {"id": "U12.EQ2law_card", "file": "lean/LeanUrat/MovesRBase/U12_EQ2law_card.lean", "difficulty": "easy", "deps": ["Defs", "U5"], "sorries": 1,
+   "statement": "EQ2law_card {Sp} (AD : AlphabetData p Sp) (h : EQ2law p AD) : forall (delta : PNat) (x : AD.Pos), AlphabetData.Stable p AD delta x -> Nat.card (AD.alpha delta x) = qq p delta ^ AD.aDim 1 x AND Nat.card (AD.alpha delta x) = Nat.card (AD.alpha 1 x) ^ (delta : Nat)"},
+  {"id": "U41.O_chain", "file": "lean/LeanUrat/MovesRBase/U41_O_chain.lean", "difficulty": "easy", "deps": ["Defs", "U3"], "sorries": 1,
+   "statement": "O_chain (m drel d'' : PNat) : O p m <= O p (m * drel) AND O p (m * drel) <= O p (m * drel * d'') — Setting-free restatement (deviation 2)"}
+ ],
+ "deviations": [
+  "1. U5's second half betaarg_eq (`S.betaarg p = qq p S.delta ^ (S.deltarel : Nat)`) EXCLUDED: parameterized over `Setting`, which the base-layer charge excludes; stays with the parked MovesR corpus. qq_mul (the mathematical content it fires) is stated here.",
+  "2. U41 O_chain restated Setting-free: blueprint's `O p S.delta <= O p S.deltaabs AND O p S.deltaabs <= O p (S.deltaabs * d'')` with the DEFINITIONAL translation m := S.delta, drel := S.deltarel, S.deltaabs = S.delta * S.deltarel = m * drel (`Setting.deltaabs` is literally the product). Ring content unchanged.",
+  "3. Namespace MovesRBase (split-off charge) instead of the blueprint's MovesR; files under lean/LeanUrat/MovesRBase/. The parked corpus re-homes these under MovesR when it un-parks (or imports this module).",
+  "4. U12 support: SpeciesSyntax / AlphabetData / AlphabetData.Stable / EQ2law (blueprint U9-U11 statement-layer carriers) transcribed VERBATIM into Defs.lean as supporting vocabulary — required for U12's statement to be typable; NOT counted as units; sorry-free (defs/structures only).",
+  "5. Elaboration-level (blueprint's declared E-phase latitude): (i) `noncomputable` on Fsub/O/relExt (AlgebraicClosure's field structure and WittVector.map are noncomputable); (ii) `attribute [instance]` on AlphabetData's four bracketed class fields (needed for EQ2law's IsLinearMap to elaborate); (iii) dot-notation threading `AD.Stable delta x` written `AlphabetData.Stable p AD delta x` (explicit p precedes AD, so dot notation mis-threads); (iv) relExt_relExt's proof `by unfold relExt; rw [mul_assoc]` for the blueprint's `by rw [relExt, mul_assoc]`.",
+  "6. D1's map_comp lemma (named in the split-off charge, no blueprint unit number) carried as unit id R.map_comp in MapComp.lean, stated in the pointwise form O_le's proof consumes."
+ ]
+}
