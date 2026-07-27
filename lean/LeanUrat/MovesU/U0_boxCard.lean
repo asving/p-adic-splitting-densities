@@ -17,7 +17,9 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesU
 
 /-- (BOX-N)'s denominator: the level-N box has exactly p^{nN} classes. -/
-theorem boxCard (p n N : ℕ) [NeZero p] : Nat.card (Box p n N) = p ^ (n * N) :=
-  sorry
+theorem boxCard (p n N : ℕ) [NeZero p] : Nat.card (Box p n N) = p ^ (n * N) := by
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero N (NeZero.ne p)⟩
+  rw [Box, Nat.card_eq_fintype_card, Fintype.card_fun, Fintype.card_fin, ZMod.card,
+    ← pow_mul, Nat.mul_comm]
 
 end LeanUrat.MovesU

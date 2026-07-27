@@ -32,14 +32,45 @@ variable {n p : ℕ} {X : ClassifierSpec n p} {R : SplittingType n → ℝ}
 theorem lmeas_equiv [NeZero p] (hp : 1 < p) (σ : SplittingType n) (N : ℕ)
     (hsum : ∑ τ, R τ = 1) :
     ((R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ)) ↔
-      (∑ τ ∈ Finset.univ.erase σ, X.dmass τ N ≤ ∑ τ ∈ Finset.univ.erase σ, R τ) :=
-  sorry
+      (∑ τ ∈ Finset.univ.erase σ, X.dmass τ N ≤ ∑ τ ∈ Finset.univ.erase σ, R τ) := by
+  -- positivity of the box size p^{nN}
+  have hp0 : (0 : ℝ) < (p : ℝ) := by
+    have : 0 < p := by omega
+    exact_mod_cast this
+  have hP : (0 : ℝ) < (p : ℝ) ^ (n * N) := pow_pos hp0 _
+  have hPne : (p : ℝ) ^ (n * N) ≠ 0 := ne_of_gt hP
+  -- (BOX-N), cast to ℝ, then split the decided sum off σ
+  have hbox : (∑ τ : SplittingType n, (X.decided τ N : ℝ)) + (X.undec N : ℝ)
+      = (p : ℝ) ^ (n * N) := by exact_mod_cast boxN X N
+  have hsplit : (∑ τ : SplittingType n, (X.decided τ N : ℝ))
+      = (X.decided σ N : ℝ) + ∑ τ ∈ Finset.univ.erase σ, (X.decided τ N : ℝ) :=
+    (Finset.add_sum_erase Finset.univ (fun τ => (X.decided τ N : ℝ))
+      (Finset.mem_univ σ)).symm
+  rw [hsplit] at hbox
+  -- the checksum hsum, split off σ and scaled by the box size
+  have hRP : R σ * (p : ℝ) ^ (n * N)
+      + (∑ τ ∈ Finset.univ.erase σ, R τ) * (p : ℝ) ^ (n * N) = (p : ℝ) ^ (n * N) := by
+    have hRsum : R σ + ∑ τ ∈ Finset.univ.erase σ, R τ = 1 := by
+      rw [Finset.add_sum_erase Finset.univ R (Finset.mem_univ σ)]; exact hsum
+    linear_combination (p : ℝ) ^ (n * N) * hRsum
+  -- rewrite the bracket leg (clear env, multiply through) and the aggregate leg
+  have hL : (R σ - X.env N) * (p : ℝ) ^ (n * N)
+      = R σ * (p : ℝ) ^ (n * N) - (X.undec N : ℝ) := by
+    rw [ClassifierSpec.env, sub_mul, div_mul_cancel₀ _ hPne]
+  have hR2 : (∑ τ ∈ Finset.univ.erase σ, X.dmass τ N)
+      = (∑ τ ∈ Finset.univ.erase σ, (X.decided τ N : ℝ)) / (p : ℝ) ^ (n * N) := by
+    simp only [ClassifierSpec.dmass, Finset.sum_div]
+  rw [hL, hR2, div_le_iff₀ hP]
+  -- both legs are now the same linear inequality in the box-partition atoms
+  constructor <;> intro h <;> linarith
 
 /-- (L-meas)'s IMPLIED-BY leg — ONE direction only, faithfully (no converse is
     stated anywhere: per-τ violations can cancel). -/
 theorem lmeas_implied (σ : SplittingType n) (N : ℕ)
     (hupper : ∀ τ, τ ≠ σ → X.dmass τ N ≤ R τ) :
-    ∑ τ ∈ Finset.univ.erase σ, X.dmass τ N ≤ ∑ τ ∈ Finset.univ.erase σ, R τ :=
-  sorry
+    ∑ τ ∈ Finset.univ.erase σ, X.dmass τ N ≤ ∑ τ ∈ Finset.univ.erase σ, R τ := by
+  refine Finset.sum_le_sum ?_
+  intro τ hτ
+  exact hupper τ (Finset.ne_of_mem_erase hτ)
 
 end LeanUrat.MovesU

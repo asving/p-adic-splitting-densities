@@ -26,6 +26,8 @@ open ENNReal
 theorem tonelli_partial_le {n p : ℕ} {X : ClassifierSpec n p} (F : FiberSeries n p X)
     (σ : SplittingType n) (N : ℕ) :
     ∑ T ∈ F.thrSlice σ N, F.mass σ T ≤ F.seriesSum σ :=
-  sorry
+  -- `seriesSum σ = ∑' T, F.mass σ T` (`ENNReal.summable`, extended-value existence
+  -- is definitional in ℝ≥0∞), so this is a partial-sum ≤ tsum bound.
+  ENNReal.sum_le_tsum (F.thrSlice σ N)
 
 end LeanUrat.MovesU

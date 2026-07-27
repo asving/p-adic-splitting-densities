@@ -55,7 +55,20 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
         ∧ (∀ σ : SplittingType n,
           Tendsto ((inst p hp).X.trueDmass σ) atTop (𝓝 (evalℝ ⟨R⟩ σ p)))
         -- (iii) the undecided complement has mass 0
-        ∧ Tendsto (inst p hp).X.env atTop (𝓝 0) :=
-  sorry
+        ∧ Tendsto (inst p hp).X.env atTop (𝓝 0) := by
+  -- Witness: the solve's fixed rational family. Checksum: RS.4 (p-independent). -/
+  refine ⟨S.R, (inst 2 Nat.prime_two).L.rs4_checksum, ?_⟩
+  intro p hp hreg
+  set U := inst p hp with hU
+  haveI : NeZero p := ⟨hp.pos.ne'⟩
+  -- clause (i): U7 squeeze, bracket from U6 on the ledger's slice projections.
+  have hi : ∀ σ : SplittingType n,
+      Tendsto (U.X.dmass σ) atTop (𝓝 (evalℝ ⟨S.R⟩ σ p)) := fun σ =>
+    squeeze_limit U.X hp.one_lt (evalℝ ⟨S.R⟩ σ p) σ
+      (fun N => un_bracket U.L.finStack U.L.solveStack U.L.lowerStack hreg hp σ N)
+      U.L.cl4_env_tendsto
+  -- clause (ii): U11 identification (VP-SOUND + env → 0); clause (iii): cl4_env_tendsto.
+  exact ⟨hi, fun σ => identification U.X hp.one_lt (evalℝ ⟨S.R⟩ σ p) σ
+      U.L.cl10_vpsound (hi σ) U.L.cl4_env_tendsto, U.L.cl4_env_tendsto⟩
 
 end LeanUrat.MovesU

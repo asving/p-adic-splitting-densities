@@ -29,11 +29,12 @@ variable {n p : ℕ} {X : ClassifierSpec n p} {F : FiberSeries n p X} {K : Kerne
     thr ≤ N partial sum, scaled by the box cardinality. -/
 theorem sq2_partial (FS : FinStack n p X F K) (σ : SplittingType n) (N : ℕ) :
     (X.decided σ N : ℝ≥0∞) = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T :=
-  sorry
+  FS.finiteness_stack σ N
 
 /-- The domination corollary: the decided count is bounded by the scaled full series. -/
 theorem sq2_partial_le (FS : FinStack n p X F K) (σ : SplittingType n) (N : ℕ) :
-    (X.decided σ N : ℝ≥0∞) ≤ (p : ℝ≥0∞) ^ (n * N) * F.seriesSum σ :=
-  sorry
+    (X.decided σ N : ℝ≥0∞) ≤ (p : ℝ≥0∞) ^ (n * N) * F.seriesSum σ := by
+  rw [sq2_partial FS σ N]
+  exact mul_le_mul_right (tonelli_partial_le F σ N) _
 
 end LeanUrat.MovesU

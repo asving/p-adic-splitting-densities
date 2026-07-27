@@ -32,7 +32,11 @@ theorem un_bracket (FS : FinStack n p X F K) (SS : SolveStack n p X F S D M K)
     (LS : LowerStack n p S D K) (hreg : RegP S D) (hp : p.Prime)
     (σ : SplittingType n) (N : ℕ) :
     (evalℝ S σ p - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ) ∧
-    (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N) :=
-  sorry
+    (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N) := by
+  haveI : NeZero p := ⟨hp.pos.ne'⟩
+  refine ⟨?_, sq2_upper FS SS hreg hp σ N⟩
+  -- left leg = U5 (SQ.3 arithmetic) with R := evalℝ, hupper from U4, hsum := RS.4's eval sum
+  exact sq3_arith X hp.one_lt (fun τ => evalℝ S τ p) σ N
+    (fun τ _ => sq2_upper FS SS hreg hp τ N) (LS.rs4_eval hreg)
 
 end LeanUrat.MovesU

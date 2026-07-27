@@ -21,9 +21,11 @@ import LeanUrat.MovesU.U3_sq2_partial
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
+set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesU
+open scoped ENNReal
 
 variable {n p : ℕ} {X : ClassifierSpec n p} {F : FiberSeries n p X}
   {S : SolveData n} {D : RegData p} {M : MenuData} {K : KernelStatements}
@@ -31,7 +33,20 @@ variable {n p : ℕ} {X : ClassifierSpec n p} {F : FiberSeries n p X}
 /-- SQ.2, the fixpoint upper bound: decided_σ(N) ≤ R_σ(p)·p^{nN}. -/
 theorem sq2_upper (FS : FinStack n p X F K) (SS : SolveStack n p X F S D M K)
     (hreg : RegP S D) (hp : p.Prime) (σ : SplittingType n) (N : ℕ) :
-    (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N) :=
-  sorry
+    (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N) := by
+  -- The solve stack gives finiteness, the literal identification, and RS.3 positivity.
+  obtain ⟨_hfin, heq, hpos⟩ := SS.solve_stack hreg σ
+  -- U3's domination corollary, in ℝ≥0∞, with the series sum rewritten to the literal value.
+  have hle : (X.decided σ N : ℝ≥0∞) ≤ (p : ℝ≥0∞) ^ (n * N) * ENNReal.ofReal (evalℝ S σ p) := by
+    rw [← heq]; exact sq2_partial_le FS σ N
+  have ha : (X.decided σ N : ℝ≥0∞) ≠ ⊤ := ENNReal.natCast_ne_top _
+  have hb : (p : ℝ≥0∞) ^ (n * N) * ENNReal.ofReal (evalℝ S σ p) ≠ ⊤ :=
+    ENNReal.mul_ne_top (ENNReal.pow_ne_top (ENNReal.natCast_ne_top p)) ENNReal.ofReal_ne_top
+  -- Transfer ℝ≥0∞ → ℝ (both sides finite), then compute the toReals.
+  have key := (ENNReal.toReal_le_toReal ha hb).mpr hle
+  rw [ENNReal.toReal_mul, ENNReal.toReal_pow, ENNReal.toReal_ofReal hpos,
+      ENNReal.toReal_natCast, ENNReal.toReal_natCast] at key
+  rw [mul_comm (evalℝ S σ p)]
+  exact key
 
 end LeanUrat.MovesU

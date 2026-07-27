@@ -26,7 +26,32 @@ namespace LeanUrat.MovesU
 /-- (BOX-N), the exact count identity: the box partitions into the decided-τ classes
     and the undecided complement. -/
 theorem boxN {n p : ℕ} (X : ClassifierSpec n p) [NeZero p] (N : ℕ) :
-    (∑ σ : SplittingType n, X.decided σ N) + X.undec N = p ^ (n * N) :=
-  sorry
+    (∑ σ : SplittingType n, X.decided σ N) + X.undec N = p ^ (n * N) := by
+  classical
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero N (NeZero.ne p)⟩
+  -- decided_σ(N) and undec(N) as filter cardinalities over the finite box
+  have hdec : ∀ σ : SplittingType n,
+      X.decided σ N
+        = (Finset.univ.filter fun f : Box p n N => X.canonical N f = some σ).card := by
+    intro σ
+    rw [ClassifierSpec.decided, Nat.card_eq_fintype_card, Fintype.card_subtype]
+  have hundec :
+      X.undec N
+        = (Finset.univ.filter fun f : Box p n N => X.canonical N f = none).card := by
+    rw [ClassifierSpec.undec, Nat.card_eq_fintype_card, Fintype.card_subtype]
+  -- fiberwise partition of the box by the canonical verdict map
+  have hpart : Fintype.card (Box p n N)
+      = ∑ b : Option (SplittingType n),
+          (Finset.univ.filter fun f : Box p n N => X.canonical N f = b).card := by
+    rw [← Finset.card_univ]
+    exact Finset.card_eq_sum_card_fiberwise (fun x _ => Finset.mem_univ _)
+  rw [Fintype.sum_option] at hpart
+  have hbox : Fintype.card (Box p n N) = p ^ (n * N) := by
+    rw [← Nat.card_eq_fintype_card]; exact boxCard p n N
+  rw [hbox] at hpart
+  -- hpart : p ^ (n*N) = (filter none).card + ∑ σ, (filter some σ).card
+  rw [hundec]
+  simp only [hdec]
+  rw [hpart, add_comm]
 
 end LeanUrat.MovesU

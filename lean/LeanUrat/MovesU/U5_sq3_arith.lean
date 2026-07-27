@@ -28,7 +28,40 @@ theorem sq3_arith {n p : ℕ} (X : ClassifierSpec n p) [NeZero p] (hp : 1 < p)
     (R : SplittingType n → ℝ) (σ : SplittingType n) (N : ℕ)
     (hupper : ∀ τ, τ ≠ σ → (X.decided τ N : ℝ) ≤ R τ * (p : ℝ) ^ (n * N))
     (hsum : ∑ τ, R τ = 1) :
-    (R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ) :=
-  sorry
+    (R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ) := by
+  -- Notation: P := p^{nN} (strictly positive, hence nonzero).
+  have hp0 : (0 : ℝ) < (p : ℝ) := by
+    have : 0 < p := lt_trans Nat.zero_lt_one hp
+    exact_mod_cast this
+  have hP : (0 : ℝ) < (p : ℝ) ^ (n * N) := pow_pos hp0 _
+  have hPne : (p : ℝ) ^ (n * N) ≠ 0 := ne_of_gt hP
+  -- (BOX-N) from U1, cast to ℝ.
+  have hbox := boxN X N
+  have hboxR : (∑ τ : SplittingType n, (X.decided τ N : ℝ)) + (X.undec N : ℝ)
+      = (p : ℝ) ^ (n * N) := by exact_mod_cast hbox
+  -- Split the decided sum at σ.
+  have hsplit := Finset.add_sum_erase Finset.univ
+    (fun τ => (X.decided τ N : ℝ)) (Finset.mem_univ σ)
+  -- Split the R-sum at σ (so ∑_{τ≠σ} R τ = 1 - R σ).
+  have hRsplit := Finset.add_sum_erase Finset.univ R (Finset.mem_univ σ)
+  rw [hsum] at hRsplit
+  -- Bound the erased decided sum by the erased R-sum times P.
+  have hbound : (∑ τ ∈ Finset.univ.erase σ, (X.decided τ N : ℝ))
+      ≤ (∑ τ ∈ Finset.univ.erase σ, R τ) * (p : ℝ) ^ (n * N) := by
+    rw [Finset.sum_mul]
+    apply Finset.sum_le_sum
+    intro τ hτ
+    exact hupper τ (Finset.ne_of_mem_erase hτ)
+  -- env(N) · P = undec(N).
+  have henv : (X.env N) * (p : ℝ) ^ (n * N) = (X.undec N : ℝ) := by
+    unfold ClassifierSpec.env
+    exact div_mul_cancel₀ _ hPne
+  -- Turn the erased R-sum·P into (1 - R σ)·P.
+  have hRr : (∑ τ ∈ Finset.univ.erase σ, R τ) * (p : ℝ) ^ (n * N)
+      = (p : ℝ) ^ (n * N) - R σ * (p : ℝ) ^ (n * N) := by
+    have : (∑ τ ∈ Finset.univ.erase σ, R τ) = 1 - R σ := by linarith [hRsplit]
+    rw [this]; ring
+  rw [sub_mul]
+  linarith [hboxR, hsplit, hbound, henv, hRr]
 
 end LeanUrat.MovesU
