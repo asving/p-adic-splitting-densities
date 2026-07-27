@@ -1,4 +1,41 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 10 (the seam split)
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 11 (closing sweep)
+
+## H-FINAL. REV-11 rulings (both verifiers at zero architectural findings)
+
+**R45 (Codex#7-1) — activity re-keyed PER CELL.** The note's mechanism is
+per-cell: "(7) CTS-M(ii) ACT (else EMPTY CELLS at wild p corrupt rows,
+denominators, determinants)" (S.0 ledger); (J-RAT) is per-branching-cell
+("cell-level counts polynomial per the (iv)-POLY pattern"); (iv)-POLY itself:
+"EACH CELL SIZE one polynomial of degree ≤ W_state(s)". RatBurdens gains the
+per-cell family `cellP : ∀ e τ, M.Cell e τ → Polynomial ℚ` with degree/nonzero
+laws and `act_iff` keyed to it (∀ CELL, eval ≠ 0) — an empty cell can no longer
+hide behind aggregate outcome mass; the aggregate countS is TIED to its cells'
+product. `rep_indep` stays OUTCOME-level — that summation IS the note's RS.0(α)
+weighted grouping. U-22b consumes the per-cell roots.
+
+**R46 (Codex#7-2 = Fable#8-F2, convergent) — the gate instantiates the FULL
+RS4Chain.** No partial structures: the DEVICE shallow data (WshP ≡ the
+1-presentation on the root shape — Fable-verified: Rsh = the blockSolve values,
+eval β₍₁,₂₎ = (q₀+1)/(q₀²+q₀+1) — plus device shDom/shEvtH/visH/shWeightH/shEvt
+with their card/grouping laws) enters at the NEW unit `n2_shallow_device`,
+labeled DEVICE-ONLY; the seam entries S-8/S-10 name exactly the fields wave-4
+re-keying replaces (WshP/WshVal and the sh-carriers, by the real production
+objects). n2_rsh's scope contradiction is gone.
+
+**R47 (Fable#8-F1) — U-17b's §3c display restores the R40 `q₀ ∈ M.Pools` guard**
+(the §2.D field carries it; the display now matches).
+
+**R48 (Codex#7-3 + Fable#8-O-2) — one-display splits:** U-12c → +U-12d
+(pow_pool); U-22b → +U-22c (the base-prime face); n2_polygeom → data + OK;
+n2_interp → tg/j + ι; n2_degpins → tg/j + ι; U-29e → det + solve-values +
+checksum. S5 headings and sub-label ranges corrected.
+
+**R49 (Fable#8-F3 + O-1/O-3/O-4/O-5) — staleness sweep:** the §2.D placement
+line loses "and all of §2.E"; the line-843-class pointers read §W4-SYNC; the §3b
+W-1-hok edge is tagged [seam]; the n = 2 "no split outcomes" line no longer cites
+S.7 as support (its display is n = 3-scoped; the roster is a device, R44); U-29e
+is retagged "the NOTE-W6 geometric-series check" (the pin W-6 = AVAgree is
+unrelated).
 
 ## SPLIT RECORD (READ FIRST — orchestrator adjudication, stuck rule #3)
 
@@ -714,24 +751,28 @@ structure RatBurdens (T : TableShape n) (M : MeasuredSide T) where
     -- degree ≤ W_state(s)" — per piece, never a merged sum bound; ι's ENT-COUNT
     -- polynomials "of degree ≤ W_ent(ε)" pin both pieces to W_ent. The W-data live
     -- on TableShape/MeasuredSide, fixed BEFORE the burdens.
-  cellsize_nonzero : ∀ e ∈ Finset.Icc 1 n, ∀ τ o,
-    (routeOf (T.odata e τ o) ≠ .split → (tgP e τ o).countS ≠ 0) ∧
-    (routeOf (T.odata e τ o) = .split → (jP e τ o).countS ≠ 0)
-    -- "NOT-IDENTICALLY-ZERO cell-size polynomial" — TYPED (R39) and ROUTED
-    -- (REV 10, Codex#6-4: the mass-carrying piece per route)
+  cellP : ∀ e τ, M.Cell e τ → Polynomial ℚ         -- PER-CELL size polynomials
+    -- (R45, Codex#7-1: "EACH CELL SIZE one polynomial of degree ≤ W_state(s)")
+  cellP_deg : ∀ e τ c, (cellP e τ c).natDegree ≤ T.Wstate e τ
+  cellP_nonzero : ∀ e ∈ Finset.Icc 1 n, ∀ τ c, cellP e τ c ≠ 0
+    -- "NOT-IDENTICALLY-ZERO cell-size polynomial", PER CELL
+  countS_cells : ∀ e τ o,
+    (if routeOf (T.odata e τ o) = .split then jP e τ o else tgP e τ o).countS
+      = ∏ c ∈ {c : M.Cell e τ | M.cellOut e τ c = o}.toFinset, cellP e τ c
+    -- the aggregate count-piece IS its cells' product — the per-route countS can
+    -- no longer float free of the cells ((iv)-POLY per cell + (J-RAT)'s
+    -- per-branching-cell pattern)
   act_iff : ∀ q₀ ∈ M.Pools, ∀ e ∈ Finset.Icc 1 n, ∀ τ,
-    M.activeState q₀ e τ ↔
-      (∀ o, routeOf (T.odata e τ o) ≠ .split → (tgP e τ o).countS.eval q₀ ≠ 0) ∧
-      (∀ o, routeOf (T.odata e τ o) = .split → (jP e τ o).countS.eval q₀ ≠ 0)
-    -- ROUTED (REV 10, Codex#6-4): the cell-size polynomial that carries the
-    -- measured mass — tgP on non-split, jP on split — per outcome over the FULL
-    -- roster; no unconstrained polynomial can flip activity
-    -- activity IS cell-size nonvanishing at the pool (CTS-M(ii)'s mechanism; W1's
-    -- pool-size effect) — with cellsize_nonzero this makes the note's display
-    -- "at all-active primes (cofinitely many — only finitely many primes are roots
-    -- of some not-identically-zero cell-size polynomial)" a DERIVED LEMMA:
-    -- U-22b `allActive_cofinite` (the REV-8 field allActive_infinite is DELETED —
-    -- it was weaker than the display and is now a corollary, never an assumption)
+    M.activeState q₀ e τ ↔ ∀ c : M.Cell e τ, (cellP e τ c).eval q₀ ≠ 0
+    -- PER CELL (R45): "empty cells at wild p corrupt rows, denominators,
+    -- determinants" — an individual empty cell cannot hide behind nonzero
+    -- aggregate outcome mass; rep_indep's OUTCOME-level summation is untouched
+    -- (that is RS.0(α)'s weighted grouping, exactly as displayed)
+    -- activity IS per-cell-size nonvanishing at the pool (CTS-M(ii); W1's
+    -- pool-size effect) — with cellP_nonzero the note's display "at all-active
+    -- primes (cofinitely many — only finitely many primes are roots of some
+    -- not-identically-zero cell-size polynomial)" is the DERIVED U-22b/U-22c
+    -- (allActive_infinite stays deleted; never an assumption)
 abbrev RatBurdens.TG (RB) e τ o : Qq := (RB.tgP e τ o).val
 abbrev RatBurdens.J  (RB) e τ o : Qq := (RB.jP e τ o).val
 noncomputable def RatBurdens.ι (RB) e : T.State e → Qq := fun τ => ∑ ε, (RB.ιP e τ ε).val
@@ -784,9 +825,10 @@ def AVAgree (P : PoolHyp T M RB e hK q₀) (v : Qq) (bA : P.Act → ℝ) (τ : P
 
 ### 2.D (BDY), shapes, RS.1/RS.4 interfaces (R2-9/10/11/17/19 repaired)
 
-**FILE PLACEMENT (R25, Fable#3-G1):** `MuHat`/`ReadOwner`/`Shape`/`ShapeFam`/
-`consumedDeltas`/`RegP` below live in `Defs.lean`; **`RS1Bundle`, `RS4Chain`,
-`ReadOffBundle`, and all of §2.E live in `MovesS/Interfaces.lean`**, which imports
+**FILE PLACEMENT (R25, Fable#3-G1; REV-11 sweep, Fable#8-F3):** `MuHat`/
+`ReadOwner`/`Shape`/`ShapeFam`/`consumedDeltas`/`RegP` below live in `Defs.lean`;
+**`RS1Bundle`, `RS4Chain`, `ReadOffBundle` live in `MovesS/Interfaces.lean`**
+(the §W4-SYNC pins do NOT — that section has no E-phase file), which imports
 the S2/S4 definition units (BSplitDef, EvalReDef — incl. `bhatMeas` —
 ConsumedDeltas, BlockSolve, BlockSolveTot, RshDef, MarkedDef), so `evalRe`/`Rsh`/
 `markedPairing`/`bhatMeas` are in scope where the interface fields cite them.
@@ -840,7 +882,7 @@ structure RS1Bundle (T) (M : MeasuredSide T) (RB : RatBurdens T M)
     βmeas e he h τ σ' q₀ = βmeas e he h' τ σ' q₀      -- AT POOLS (R40, Codex#5-6):
     -- the note's measured conditionals exist at the relevant pools, never as whole
     -- ℚ-functions (discharge = the pinned W-2 over RS1Meas with its TYPED
-    -- XRBPackage, §2.E)
+    -- XRBPackage, §W4-SYNC — REV-11 pointer sweep, Fable#8-O-5)
   recursion_meas : ∀ e he τ σ' q₀ (h : q₀ ∈ M.Pools), M.activeState q₀ e τ →
     ∀ h_ent, βmeas e he h_ent τ σ' q₀
       = evalRe T M RB hdc e he τ σ' q₀ (fun e' he' => βmeas e' he' h_ent)
@@ -992,13 +1034,16 @@ section.
   trivialize (fiber nonemptiness where βmeas > 0).
 - **S-8 `W17ii` + Wsh17Package**: DEMANDS (Codex#6-7/8): add the `xhd_s` face to
   the package; exclude the empty menu (`F.Sh.Nonempty`, or premise W7's tree_ne
-  through S-5); package fields re-keyed to real interfaces.
+  through S-5); package fields re-keyed to real interfaces. RE-KEYING REPLACES
+  (R46): the gate's DEVICE fields `WshP`/`WshVal`/`shDom`/`shEvtH`/`visH`/
+  `shEvt`/`shWeightH` (from `n2_shallow_device`) by the real production objects.
 - **S-9 packages as registries** (Codex#6-1, global): every abstract Prop field
   in XRBPackage/RS1GivenPackage/Wsh17Package is a NAME AWAITING RE-KEYING — the
   contract's whole point; none is consumed by a core unit.
 - **S-10 RS4Chain's tree-tied provenance**: `rs1_equates`/`rsh_interp`/
   `sh_realized`/`wshval_card` keep their field forms in core; their DISCHARGE
-  provenance (TREE-EXP/CUT-WD/ONE-F) is seam.
+  provenance (TREE-EXP/CUT-WD/ONE-F) is seam. RE-KEYING REPLACES (R46): the
+  device-satisfied instances of these laws at the gate by production-derived ones.
 - **S-11 `n2_treeiface`** (ex-U-29d6): the gate's TreeIface instance + W7 check,
   built when TreeIface is re-keyed.
 
@@ -1181,7 +1226,7 @@ every §2 structure by the REAL CTS objects) is a wave-4 PROCESS gate (§5), not
 
 ---
 
-## 3. The unit DAG — REV 10: THE CORE, 85 units (45 easy / 40 medium / 0 hard);
+## 3. The unit DAG — REV 11: THE CORE, 93 units (51 easy / 42 medium / 0 hard);
 ## the seam's 11 contract entries live at §W4-SYNC, not here
 
 ### Layer S0 — dispatch, (SCS), (BDY) [9]
@@ -1264,7 +1309,7 @@ anywhere (the R2-12 swap is structurally impossible now) · sketch: evaluate U-9
 drop the nonneg exit sums, restrict along act_spec/inactive_vanish (τA ∈ Act supplies the
 activity guard via act_spec — U-9a fires at exactly the note's scope).
 
-### Layer S2 — the ℚ(q) system and its solve [16]  *(headcount fixed — Fable2-G4)*
+### Layer S2 — the ℚ(q) system and its solve [17 at REV 11: + U-12d]
 
 **U-11 `decompFintype` · medium — unchanged** (Fintype on multiset decompositions).
 **U-12 `powSubst` · medium — unchanged** (δ : ℕ+; `IsFractionRing.lift`).
@@ -1314,12 +1359,14 @@ moves_ref: "δ ranging over 1 AND every base-change index a β_{e_j,τ_j}(q^{δ_
 of b_e^split or RS.1-SH consumes ([2r] BASE-INDEX CONVENTION + (e2), δ ABSOLUTE)".
 deps: U-2, U-12c.
 
-**U-12c `powSubst_mul` · PowSubstMul.lean · easy — NEW (R17).**
+**U-12c `powSubst_mul` · PowSubstMul.lean · easy — one display (R48 split).**
 `theorem powSubst_mul (δ₁ δ₂ : ℕ+) : (powSubst δ₁).comp (powSubst δ₂) =`
-`powSubst (δ₁ * δ₂)` and `theorem pow_pool (q₀ : ℚ) : (q₀ ^ (δ₁:ℕ)) ^ (δ₂:ℕ) =`
-`q₀ ^ ((δ₁ * δ₂ : ℕ+) : ℕ)` — nested substitution composes multiplicatively; the
-algebraic face of DELTA-ABS. deps: U-12 · sketch: both ring homs agree on X and
-constants (`IsFractionRing.lift` uniqueness / `RingHom.ext`); `pow_mul`.
+`powSubst (δ₁ * δ₂)` — nested substitution composes multiplicatively (DELTA-ABS's
+symbolic face). deps: U-12 · sketch: ring homs agree on X and constants.
+
+**U-12d `pow_pool` · PowPool.lean · easy — split (R48).**
+`theorem pow_pool (q₀ : ℚ) (δ₁ δ₂ : ℕ+) : (q₀ ^ (δ₁:ℕ)) ^ (δ₂:ℕ) =`
+`q₀ ^ ((δ₁ * δ₂ : ℕ+) : ℕ)` — the pool face. deps: — · sketch: `pow_mul`.
 
 **U-16b `blockSolve` · medium — unchanged** (strong recursion on e ∈ Icc 1 n; σ′
 UNRESTRICTED per R2-10: the solve is a function of every σ' : Multiset VType).
@@ -1337,7 +1384,7 @@ deps: U-14, U-16a pattern · sketch: same WF recursion as U-16b, scalar per stat
 Shape record + blockSolve; now takes `WshP ·` as the W_Ŝ presentation). **U-18b
 `interp_unique` · easy — unchanged** (interpolant uniqueness on infinite OK sets).
 
-### Layer S3 — pools, evaluation, E0 consequences [11: + U-22b at REV 9]
+### Layer S3 — pools, evaluation, E0 consequences [12 at REV 11: + U-22b/U-22c]
 
 **U-19 `evalAt` · medium — unchanged.** **U-20 `eval_det` · easy — unchanged**
 (INFRA; moves_ref the S.4(ii) "K_e(p) = A" reading). **U-21a `pow_fixed_vector` ·
@@ -1367,23 +1414,24 @@ cofiniteness face, now over the DEFINED locus) + per-pool packages at that locus
 sketch: at an all-active pool Act = univ (act_spec + the locus definition); if
 det = 0 in Qq its evaluation vanishes there (U-20), contradicting U-21c.
 
-**U-22b `allActive_cofinite` · AllActiveCofinite.lean · medium — REBASED IN SCOPE
-(REV 10, Fable#7-GAP-2 + Codex#6-3).** TWO statements, hypotheses explicit:
+**U-22b `allActive_cofinite` · AllActiveCofinite.lean · medium — PER-CELL keyed
+(R45); split (R48).** ONE statement:
 `theorem allActive_cofinite (RB : RatBurdens T M) :`
 `{q₀ ∈ M.Pools | q₀ ∉ allActivePools M}.Finite ∧ (allActivePools M).Infinite`
-— route IN SCOPE: the exceptional pools are roots of the finitely many routed
-countS ≠ 0 polynomials (`Polynomial.setOf_isRoot_finite` + act_iff); infinitude =
-**`M.pools_infinite` minus the finite root union** (never
-`Nat.exists_infinite_primes`, which cannot place a prime in Pools). AND the
-base-prime face, chain hypotheses EXPLICIT:
+— route IN SCOPE: the exceptional pools are roots of the finitely many PER-CELL
+polynomials `cellP ≠ 0` (`Polynomial.setOf_isRoot_finite` over the finitely many
+(e, τ, c) — R45; act_iff per cell); infinitude = `M.pools_infinite` minus the
+finite root union. moves_ref: "at all-active primes (cofinitely many — only
+finitely many primes are roots of some not-identically-zero cell-size
+polynomial)". deps: Defs · hyp: RB.cellP_nonzero + RB.act_iff + M.pools_infinite.
+
+**U-22c `allActive_cofinite_primes` · AllActivePrimes.lean · medium — split
+(R48).** The base-prime face, chain hypotheses EXPLICIT:
 `theorem allActive_cofinite_primes (PP : Set ℚ) (hsub : PP ⊆ M.Pools)`
 `(hbase : ∀ q₀, q₀ ∈ PP ↔ ∃ p : ℕ, p.Prime ∧ q₀ = (p:ℚ)) :`
 `{q₀ ∈ PP | q₀ ∉ allActivePools M}.Finite`
 — "cofinitely many BASE primes are all-active" (Codex#6-3's scope), consumed by
-U-24b's locus through the chain's prime_base/prime_sub instantiation.
-moves_ref: "at all-active primes (cofinitely many — only finitely many primes are
-roots of some not-identically-zero cell-size polynomial)". deps: Defs · hyp:
-RB.cellsize_nonzero + RB.act_iff (routed forms) + M.pools_infinite.
+U-24b's locus through prime_base/prime_sub. deps: U-22b.
 
 **U-23a `neumann_partial` / U-23b `pow_entry_nonneg` / U-23c `pow_entry_tendsto` ·
 easy ×3 — unchanged.** **U-23d `e0_inv_nonneg` · medium — unchanged** (consumer
@@ -1479,7 +1527,7 @@ rs1_equates, x3_total); prime_infinite + U-27. The docstring lists every tag: th
 acceptance fence "may NOT be marked unconditional before those close" verbatim.
 
 ### Layer S5 — THE INTERNAL CONSISTENCY INSTANCE at n = 2 (RELABELED, REV 10 —
-### R44, Codex#6-11/12) [39 core units]
+### R44, Codex#6-11/12) [45 core units at REV 11 — R46/R48 splits]
 
 **R44 (the honest claim, superseding R26's label).** The three-outcome roster and
 the numerators (q+1, q²) are a CONSISTENCY DEVICE, NOT note displays. What IS
@@ -1504,12 +1552,13 @@ part1: q₀⁻³ + (1−q₀⁻¹) + (q₀⁻¹−q₀⁻³) = 1 ✓ (every row 
 E0: A = [q₀⁻³] < 1 ✓; det(1 − K) = 1 − q⁻³ = (q−1)(q²+q+1)/q³ ≠ 0 ✓; the REDUCED
 solve: β_{(1,2)} = (q+1)/(q²+q+1), β_{(1,1)²} = q²/(q²+q+1) — the note's displayed
 denominator EXACTLY, and their sum = 1 (the checksum shadow). No split outcomes
-(S.7: "the deep convolution is thin"), so bSplit = 0 and consumedDeltas ⊇ {1} only.
+(a DEVICE choice under R44 — S.7's thin-convolution display is n = 3-scoped and
+is NOT cited as support; Fable#8-O-3), so bSplit = 0 and consumedDeltas = {1}.
 CLAIM (R11 unchanged): schema consistency with the note's instance; the W-11
 process gate still owns intended-CTS instantiation.
 
-**U-29a1–a1b, a2a–a2c, a3a–a3d — the construction, ONE OBLIGATION-GROUP EACH
-(R43, Codex#5-8; nine units):**
+**The construction batch — ONE OBLIGATION-GROUP EACH (R43/R48; FOURTEEN units
+after the REV-10/11 splits — sub-labels retired, names are canonical; Fable#8-O-2):**
 · `n2_shape` (medium) — TableShape DATA: block-1 layer (one state, one terminal
   outcome (1,1), Kmat 1 = 0) + the three-outcome block-2 roster + vEquiv +
   Wloc/Wstate. deps: Defs.
@@ -1522,12 +1571,15 @@ process gate still owns intended-CTS instantiation.
 · `n2_heights` (easy) — Hgt/HDom/gwt data (split).
 · `n2_ent_flow` (easy) — entrance carriers (one ε per block, entLvl/entInst/hent/
   Went) + kstep/activeState/markedVal data (split).
-· `n2_polygeom` (medium) — the three PolyGeom presentations in the CORRECTED form
-  (R30: q⁻³ qpow 3; (X−1)/X qpow 1; (X²−1)/X³ qpow 3) + tg_ok/j_ok/ι_ok.
-· `n2_interp` (medium) — tg/j/ι interpolation laws at every pool.
-· `n2_degpins` (easy) — the six per-piece degree pins (split).
-· `n2_activity` (easy) — cellsize_nonzero + act_iff in their ROUTED forms (all
-  states active at all pools: the mass-carrying countS ≡ 1 conventions) (split).
+· `n2_polygeom_data` (medium) — the three PolyGeom presentations in the CORRECTED
+  form (R30: q⁻³ qpow 3; (X−1)/X qpow 1; (X²−1)/X³ qpow 3) (R48 split).
+· `n2_ok` (easy) — tg_ok/j_ok/ι_ok at every pool (split).
+· `n2_interp_tg` (medium) — tg/j interpolation laws at every pool (split).
+· `n2_interp_iota` (easy) — ι interpolation + ι_count/ι_countS_one (split).
+· `n2_degpins_tg` (easy) — the tg/j per-piece degree pins (split).
+· `n2_degpins_iota` (easy) — the ι degree pins (split).
+· `n2_activity` (easy) — cellP ≡ 1 per cell + cellP_deg/cellP_nonzero +
+  countS_cells + act_iff (all states active at all pools — R45's per-cell form).
 · `n2_shapefam` (easy) — ShapeFam (the n = 2 root shapes, δOf ≡ 1). deps: chain.
 
 **U-29b-i…vii — LedgerIV items (1)–(5), ONE FIELD EACH (R28, Codex#3-4):**
@@ -1565,16 +1617,27 @@ pools, by construction). deps: U-29a chain, U-29b, U-29c.
 **U-29d2 `n2_pools_all` · N2Pools.lean · medium** — legs_reg/pools_e0 at EVERY base
 prime: 1×1 packages, entry q₀⁻³ < 1 uniformly at q₀ ≥ 2. deps: U-29a, U-29c.
 
-**U-29d-iv…vi — RS4Chain, ONE DISPLAY EACH (Codex#3-7):**
+**The RS4Chain batch — ONE DISPLAY EACH (Codex#3-7; ranges retired, Fable#8-O-2):**
 `n2_sigmas` (easy — sig_exact forces Sigmas = {(1,1)², (1,2), (2,1)}, the three
 degree-2 multisets) · `n2_x3` (easy — decidedTotal := Σ Rval; x3_total by
 construction; Codex#6-13 split) · `n2_rs1eq` (easy — rs1_equates by construction;
 split) · `n2_rsh` (medium — rsh_interp at the explicit values: eval β_{(1,2)} =
-(q₀+1)/(q₀²+q₀+1) etc.). CHAIN FIELDS INSTANTIATED (R44 scope): Sigmas/sig_exact,
-PrimePools/prime_base/prime_sub, decidedTotal, Rval/r_bdd, x3_total, rs1_equates,
-rsh_interp, pools_e0/legs_reg, L, B, hns — NOT the shallow-production carriers
-(WshP/WshVal/shDom/shEvtH/… = seam duties, W17ii's contract).
-deps: U-29d-i…iv, U-29d2.
+(q₀+1)/(q₀²+q₀+1) etc., with the DEVICE WshP from `n2_shallow_device` — the R44
+scope contradiction is GONE: R46). THE FULL RS4Chain IS INSTANTIATED (R46,
+Codex#7-2 = Fable#8-F2 — no partial structures): Sigmas/sig_exact, PrimePools/
+prime_base/prime_sub, decidedTotal, Rval/r_bdd, x3_total, rs1_equates, rsh_interp,
+pools_e0/legs_reg, L, B, hns, AND the device shallow data (next unit). deps: the
+d-batch, U-29d2, `n2_shallow_device`.
+
+**`n2_shallow_device` · N2Shallow.lean · medium — NEW (R46).** The DEVICE-ONLY
+shallow data completing RS4Chain: WshP ≡ the 1-presentation (countT = countS = 1,
+geom = 1, qpow = 0) on the root shape (so Rsh σ = blockSolve values —
+Fable-verified); WshVal := its evaluations; device shDom (singleton height),
+shEvtH/visH/shEvt (synthetic events whose cards realize the weights), and the
+laws wshval_bdd/shDom_ne/sh_realized/shevt_grouping/shweight_card/wsh_ok/
+wsh_interp. LABEL: device-only — wave-4 re-keying REPLACES exactly these fields
+with the real production objects (§W4-SYNC S-8/S-10 name them). deps: U-29a
+chain, n2_shapefam.
 
 **U-29d5 `n2_readoff` · N2ReadOff.lean · medium — scope CORRECTED (Codex#4-10).**
 Inhabits `ReadOffBundle` with **S := the BASE-PRIME pools** {(p:ℚ) | p prime} —
@@ -1589,10 +1652,13 @@ deps: U-29d2, U-24a2.
 carrier (canonical-tree vocabulary, MovesT-owned); its n = 2 instance and the
 W7 verification are §W4-SYNC entry S-11, NOT built at E-phase.
 
-**U-29e `n2_denominator` · N2Denom.lean · easy — the W6 CHECK (explicit).**
-`(1 - Kmat).det = (q³−1)/q³ ≠ 0`, and the reduced solve entries are
-`β_{(1,2)} = (q+1)/(q²+q+1)`, `β_{(1,1)²} = q²/(q²+q+1)` — denominator q² + q + 1
-exactly, sum = 1 (`field_simp`/`ring` over `RatFunc ℚ`). deps: U-29a, U-16b.
+**The NOTE-W6 geometric-series check (retagged, Fable#8-O-4: the note's W6
+display, unrelated to the pin W-6 = AVAgree) — THREE units (R48 split):**
+· `n2_det` (easy) — `(1 - Kmat).det = (q³−1)/q³ ≠ 0`. deps: U-29a chain, U-16b.
+· `n2_solve_vals` (easy) — the reduced solve entries `β_{(1,2)} = (q+1)/(q²+q+1)`,
+  `β_{(1,1)²} = q²/(q²+q+1)` — the note-displayed denominator exactly
+  (`field_simp` over `RatFunc ℚ`). deps: n2_det.
+· `n2_checksum` (easy) — their sum = 1 (the checksum shadow). deps: n2_solve_vals.
 
 ---
 
@@ -1659,7 +1725,9 @@ bSplit … (blockSolve-restriction) σ'` · moves_ref: "(R_e-lump) β_e = K_e β
 b_e^{term,fin} + b_e^split [UNCONDITIONAL]".
 
 **U-17b** `theorem rexact_solve (B) (hns : B.nsNull) : ∀ e he h_ent τ σ' q₀,
-B.βfull e he h_ent τ σ' q₀ = B.βmeas e he h_ent τ σ' q₀` · moves_ref: "(R_e-exact)
+q₀ ∈ M.Pools → B.βfull e he h_ent τ σ' q₀ = B.βmeas e he h_ent τ σ' q₀` —
+POOL-GUARDED (REV 11, Fable#8-F1: the display now matches the R40-quantified
+§2.D field; βfull at q₀ ∉ Pools is unconstrained data) · moves_ref: "(R_e-exact)
 β_e^full = β_e [GIVEN (ns-null) — CLOSED at [3t] §T.2]" · sketch: fire `rexact`.
 
 **U-18** `noncomputable def shConv (…) (Ŝ : Shape T) (σ) : Qq := ∑ g : {g : Fin Ŝ.k →
@@ -1701,7 +1769,8 @@ powers is identically 1" (consumers apply to f − 1) · sketch: num vanishes on
 
 U-1 → {U-3, U-6, U-8, U-16a1} · U-2 → {U-3, U-16a1} · U-4 → U-5 → U-6 · U-6 ⟹ `hK`
 for {U-8, U-16b/c, U-22, U-24a1/a2/b, U-25, U-29} · U-8 → U-9a → {U-9b, U-10} ·
-U-11, U-12 → {U-16a1, U-18} · U-12, U-19 → U-12b → {U-24a2 plumbing, W-1 hok} ·
+U-11, U-12 → {U-16a1, U-18} · U-12, U-19 → U-12b → {U-24a2 plumbing, [seam] W-1
+hok (Fable#8-O-1: core feeds seam, dormant)} ·
 U-12 → U-12c → U-16a3 (the DELTA-ABS composition — Fable#3 O-2) ·
 U-13 → U-14 → {U-15, U-16b/c, U-24a1} · U-16a1 → U-16a2 → U-24a1; U-16a1 → U-16b →
 {U-17a, U-18, U-29}; U-16a3 → RegP · U-16c → U-25 · U-19 → {U-9a, U-10, U-20, U-22,
@@ -1756,15 +1825,17 @@ with real semantics, MovesV/MovesT must exhibit instances of every §2 structure
 the real CTS objects and discharge W-1/W-1e/W-1m/W-2/W-3/W-4/W-7/W-8/W-10; the
 campaign ledger tracks this per structure.
 
-**Census (REV 10, THE CORE): 85 units = 45 easy / 40 medium / 0 hard** (S0:9 ·
-S1:4 · S2:16 · S3:11 · S4:6 · S5:39). Easy: the 18 wave-2 core {U-1, U-2, U-3,
-U-5, U-7a/b/c, U-12b, U-12c, U-13, U-18b, U-20, U-21a, U-23a/b/c, U-24a2, U-25}
-+ S5's 27 {n2_scs_data, n2_pools, n2_heights, n2_ent_flow, n2_degpins,
-n2_activity, n2_shapefam, b-i…vi, n2_kstep_one, n2_hmc, n2_act, n2_init_agg,
-n2_entcount, n2_comp, b3, c, n2_xrb, n2_rexact, n2_sigmas, n2_x3, n2_rs1eq, e};
-medium the remaining 40 (27 wave-2 core + U-22b + S5's {n2_shape, n2_carriers,
-n2_events, n2_polygeom, n2_interp, b-vii, n2_init_count, d-i, d-ii, d2, n2_rsh,
-d5} = 12). SEAM (§W4-SYNC, not built): 11 entries incl. ex-U-29d6. NO hard units.
+**Census (REV 11, THE CORE): 93 units = 51 easy / 42 medium / 0 hard** (S0:9 ·
+S1:4 · S2:17 · S3:12 · S4:6 · S5:45). Easy: the 19 wave-2 core {U-1, U-2, U-3,
+U-5, U-7a/b/c, U-12b, U-12c, U-12d, U-13, U-18b, U-20, U-21a, U-23a/b/c, U-24a2,
+U-25} + S5's 32 {n2_scs_data, n2_pools, n2_heights, n2_ent_flow, n2_ok,
+n2_interp_iota, n2_degpins_tg, n2_degpins_iota, n2_activity, n2_shapefam,
+b-i…vi, n2_kstep_one, n2_hmc, n2_act, n2_init_agg, n2_entcount, n2_comp, b3, c,
+n2_xrb, n2_rexact, n2_sigmas, n2_x3, n2_rs1eq, n2_det, n2_solve_vals,
+n2_checksum}; medium the remaining 42 (27 wave-2 core + U-22b + U-22c + S5's
+{n2_shape, n2_carriers, n2_events, n2_polygeom_data, n2_interp_tg, b-vii,
+n2_init_count, d-i, d-ii, d2, n2_rsh, n2_shallow_device, d5} = 13). SEAM
+(§W4-SYNC, not built): 11 entries incl. ex-U-29d6. NO hard units.
 
 ---
 
@@ -1909,10 +1980,21 @@ stuck rule #3 — see the SPLIT RECORD at the top):**
 | Fable#7-GAP-1 (W1-family premise-free) | SEAM CONTRACT FIX — W1/W1e/W1m premised on RS1Given.holds (+ Wsh17Package + W2 at W1); adjudication recorded (RS.1 is THIS note's theorem-under-hypotheses) | §W4-SYNC |
 | Fable#7-GAP-2 (U-22b route) | CORE FIX — pools_infinite route; chain hypotheses explicit | U-22b |
 
-STATUS: REV 10 (the seam split) complete. THE CORE: 85 units (45 easy / 40 medium
-/ 0 hard), closed import DAG, E-phase-ready; grep-clean (`: True`, `∨ True`,
-comment-register packages: none). THE SEAM: 11 §W4-SYNC contract entries, not
-built at E-phase, each carrying its full tie-demand union and re-keying charge.
-PolyGeom settled (R30, both verifiers). Cumulative: R1 22/22 → … → R8 11/11 →
-R9 split-adjudicated per the SPLIT RECORD. Next: ONE dual confirmation of the
-CORE, then E-phase.
+**Core verdicts — Codex#7 (2 crit / 1 gap) + Fable#8 (0 crit / 3 gap, convergent
+on the gate's chain scope) → REV 11 (closing sweep):**
+
+| finding | disposition | where |
+|---|---|---|
+| Codex#7-1 | CORE FIX — activity re-keyed PER CELL: `cellP` family + per-cell deg/nonzero laws + `countS_cells` product tie + per-cell `act_iff`; U-22b consumes per-cell roots; rep_indep stays outcome-level (= RS.0(α)) | R45, §2.C, U-22b |
+| Codex#7-2 = Fable#8-F2 | CORE FIX — the gate instantiates the FULL RS4Chain: new `n2_shallow_device` (device WshP ≡ 1-presentation — Fable-verified values — + device sh-carriers + their laws, labeled DEVICE-ONLY); n2_rsh's scope contradiction gone; S-8/S-10 name the fields wave-4 re-keying replaces | R46, §3 S5, §W4-SYNC |
+| Fable#8-F1 | CORE FIX — U-17b's §3c display restores `q₀ ∈ M.Pools →` (matches the R40 field) | R47, §3c |
+| Codex#7-3 + Fable#8-O-2 | CORE FIX — splits: +U-12d, +U-22c, n2_polygeom → data+OK, n2_interp → tg+ι, n2_degpins → tg+ι, U-29e → det+vals+checksum; S5 headings/sub-label ranges corrected | R48, §3 |
+| Fable#8-F3 + O-1/3/4/5 | SWEEP — "and all of §2.E" struck from the placement line; §2.E-pointers → §W4-SYNC; the §3b W-1-hok edge tagged [seam]; the n = 2 S.7 cite made non-supporting; "NOTE-W6" disambiguated from the pin W-6 | R49 |
+
+STATUS: REV 11 (closing sweep) complete. THE CORE: 93 units (51 easy / 42 medium /
+0 hard), closed import DAG, E-phase-ready; grep-clean. THE SEAM: 11 §W4-SYNC
+contract entries with tie-demand unions, re-keying charges, and (R46) the named
+device-field replacements. PolyGeom settled (R30). Both verifiers at zero
+architectural findings entering this rev; every remaining finding was textual and
+is repaired above. Cumulative: R1 22/22 → … → R9 split → R10 6/6 + 5 obs. Next:
+the FINAL dual confirmation of the core (scrubbed workdirs), then E-phase.
