@@ -353,6 +353,18 @@ should not be conflated (this is the mistake an earlier draft of this document m
    (SIB), whose SIB-gate census is running), verdict pin VP; FOUR notes cleared for
    drafting ([1] accepted, [2a] drafting, [1v]-COND, [3t]). LEAN: MovesC frozen layer
    23/23 PROVED-CLEAN (opus fleet, zero escalations, independently recompiled).
+   UPDATE (2026-07-27, later): **§D4-R DUAL-ACCEPTED at rev 9** (Codex pass 11 +
+   Fable confirm on identical text; the u* spiral-crossing repaired with the
+   γ-blindness analysis and an explicit witness pair). **The D4R.0-K kernel
+   derivation is DUAL-VERIFIED** (Codex SOUND + Fable CLEAN; grammar counterexample
+   attempts all died at named clauses) — kernel parts (a)+(b) DISCHARGED; §D4-R's
+   conditionality reduces to dual-accepted §C + §B2-DEF + the (c) verdict-pin
+   residual (uniform detection cap, owned by the plan's [3t]/VP). **THREE artifacts
+   through the full dual standard: §B2-DEF, §C, §D4-R.** §M-SPECIES (note [2a])
+   drafted (catalogue bound (n+1)^{n²+3n+14}; n=3 catalogue = 53 by hand; gate M-n3
+   census running); its P̂ gloss carries a queued gap (the u* witness). Plan at rev
+   10 (RS.1-DEEP/SH/MARKED routing; CL-1..16; tree-indexed (SIB) + depth-2 gate
+   layer). Gates: 13 sealed + D4-m2 + SIB/M-n3 running.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
