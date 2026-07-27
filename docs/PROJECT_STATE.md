@@ -396,6 +396,17 @@ should not be conflated (this is the mistake an earlier draft of this document m
    proved fragment; ONE item awaits Asvin's sign-off: the proposed `add_def` field
    on GradedRingStr (blueprint §8.1/§8.3 — the L1 statement is false without it;
    adding it breaks existing instances, so it is fenced). 18 sealed gates.
+   UPDATE (2026-07-27, later still): **§V-TABLES DUAL-ACCEPTED** (Codex 6+7 + Fable,
+   all clean on rev 7; the (U-A) proof survived six break vectors; tables exact at
+   off-census q = 16/25) — the FIFTH artifact through the full dual standard.
+   **§M-SPECIES ACCEPTED at the Codex bar** (passes 4+5 clean on rev 5; the
+   two-coordinate-systems repair + the (τ-hen) n=1 adjudication; its Fable half
+   queued behind the M-n3 v2 threshold re-seal, in flight). [2r] REL (assembly note
+   5, the §T acceptance-event dependency) drafting. DUAL LEDGER: five artifacts
+   dual-accepted; §M-SPECIES Codex-accepted; the plan SOUND. The math write-up's
+   accepted perimeter now spans the moves ledger (§A/§B1/§B2-DEF), the composition
+   theorem (§C), and four of the plan's assembly notes ([1], [2a] at Codex, [1v]-COND,
+   [3t]) with every open kernel named, fenced, and refuter-equipped.
    REMAINING to the complete wild-uniformity proof: the D4 restatement, the assembly
    notes (menu finiteness, depth resummation, general-n squeeze), exhaustion tie-in.**
    Honest gap statement: the note's general-n architecture is conditional on JOINT-D1
