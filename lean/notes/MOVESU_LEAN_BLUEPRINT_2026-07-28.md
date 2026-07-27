@@ -786,8 +786,9 @@ Defs ← U0b ← DefsLedger ← every ledger-consuming unit (U3, U4, U6, U10, U1
   `ENNReal.toReal_mul`, `ENNReal.toReal_ofReal` (nonnegativity = the positivity
   conjunct).
 - **hypothesis_fields**: EXACTLY `FinStack` + `SolveStack` (the (U-n) upper side's
-  displayed citation list, D12 — NO CL-2/CL-3/CL-4, NO RS.4, NO VP-SOUND, NO O3);
-  explicit `RegP S D`, `p.Prime`.
+  displayed citation list, D12 — NO CL-2/CL-3/CL-4, NO RS.4, NO O3; VP-SOUND rides
+  IN FinStack via `cl10_vpsound`, per the whole-CL-10 citation [rev-7 gloss fix —
+  the F4-G1 stale phrase]); explicit `RegP S D`, `p.Prime`.
 
 ### U5 `MovesU.U5_sq3_arith` — SQ.3's bracket arithmetic AS arithmetic  [TAG-FREE step 2]
 - **file**: `MovesU/U5_sq3_arith.lean`  ·  **difficulty**: medium  ·  **deps**: U1

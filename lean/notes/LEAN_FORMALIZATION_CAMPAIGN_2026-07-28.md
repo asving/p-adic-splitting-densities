@@ -142,6 +142,13 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   0/0 on identical text (surgical scope verified via git diff; arithmetic
   re-derived by both). FIRST corpus through the full gate. 48 units
   (19e/17m/12h). E-phase (statement elaboration) LAUNCHED. ***
+  *** MovesU DUAL-ACCEPTED (2026-07-28, rev 7): Codex FINAL#3 ACCEPT 0/0 on
+  rev 6; Fable#4 delta-confirm 0 crit with the sole gap = a stale rev-5 prose
+  gloss contradicting the field BOTH verifiers independently requested
+  (cl10_vpsound — decorrelated convergence); rev 7 = that one-phrase gloss
+  fix, applied by the orchestrator (no statement touched). 13 units. The
+  acceptance record: both verifiers clean on the mathematical content of
+  identical rev-6 text. E-phase next. ***
   CODEX BUDGET RE-CHECK (mid-wave-2): 77% — past the conservation threshold.
   Remaining Codex use = FINAL CONFIRMATIONS ONLY (S/U/D running; R re-arch and
   Sp final queued; X's Codex leg DONE at ACCEPT 0/0). No other Codex calls.
