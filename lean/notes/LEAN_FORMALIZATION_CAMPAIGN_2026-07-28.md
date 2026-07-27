@@ -147,6 +147,24 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   MovesT/MovesV blueprints: deferred to wave 4 by design (consume wave-3 corpora).
   Everything else: PENDING.
 
+  STUCK-RULE ADJUDICATION #1 — MovesR (2026-07-28, after rounds 15/6 → 2/5 →
+  15/5 with mostly-fresh findings each round): STRUCTURAL blueprint defect,
+  not writer error. §R-LEDGER's clauses are POINTERS into §C machinery
+  (LST's chain-weight/initial-form content, DOM, C.0.5, C.1) that has no Lean
+  form yet — every attempt to inline a clause's content into a self-contained
+  MovesR Prop is necessarily partial, and each audit finds the next missing
+  piece. RE-ARCHITECTURE: MovesR becomes a corpus PARAMETERIZED by a
+  CInterface (the §C statement bundle over abstract graded carriers — the
+  D.3(e)/K1-weight/initial-form vocabulary as a minimal typed interface,
+  instantiation = HC-1's deliverable); REL.1 clause slots = the bundle's
+  statements at base δ (typed pointers, faithful to the note's own 'mutatis
+  mutandis' structure). MovesR's OWN content shrinks to: the Witt base
+  conventions (clean since rev 2), the composition law, the (EQ) trio, the
+  ledger structure. ONE re-architecture rev + ONE parallel dual confirmation;
+  if it fails again → PARK until wave 4 (MovesR is downstream-light: no
+  wave-3/4 corpus consumes it). I read Lemma LST directly for this ruling —
+  Codex's chain-weight finding CONFIRMED against the display.
+
   CODEX BUDGET NOTE (checked at launch): 72% of the 7-day window used, resets
   Sun Aug 02. Per the conservation rule (>75% → cut mechanical delegation), the
   wave-2 audits run as SINGLE CONSOLIDATED passes per blueprint (audit prompt
