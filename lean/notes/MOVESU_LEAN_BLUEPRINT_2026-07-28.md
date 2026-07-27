@@ -1,5 +1,13 @@
 # MovesU — Lean blueprint for §U-SQUEEZE (Theorem U, conditional form)
-# REV 5 (post-Codex-FINAL: hypothesis SLICES for U3/U4/U6; nothing else) — 2026-07-28
+# REV 6 (post-Codex-FINAL#2: cl10_vpsound added to FinStack; nothing else) — 2026-07-28
+
+*REV 6 (Codex FINAL#2 `MOVESU_AUDIT_CODEX_FINAL2_2026-07-28.md`: REJECT 3c/0g, one
+root cause): `FinStack` carried cl10's three conjuncts but OMITTED `cl10_vpsound`,
+one field thinner than the note's CL-10 citation. VERIFIED against the note: the
+(U-n) upper side cites "the [3t] package (CL-10)" WHOLE — CL-10's own entry ends
+"…and VP-SOUND (a citation obligation…)", and SQ.1 says "CL-10's tags ride every
+consumption". So `cl10_vpsound : VPSound X` is now a `FinStack` field; the
+projection updated. Nothing else changed.*
 
 *REV 5 (Codex FINAL `MOVESU_AUDIT_CODEX_FINAL_2026-07-28.md`: REJECT 3c/0g, all three
 = OVER-hypothesization — U3/U4/U6 took the full `CapstoneLedger` where the note's
@@ -221,7 +229,8 @@ display's citation list.** In Lean, `(L : CapstoneLedger …)` assumes EVERY fie
 projecting one field in the proof does not weaken the premise. So each intermediate
 unit consumes a Prop SUB-BUNDLE matching its display's cited stack verbatim: U3 ←
 `FinStack` (the (U-n) upper side's "finiteness stack {SQ.0's budgets … (CL-7); the
-[3t] package (CL-10)}" + the operative TREE-N identity); U4 ← `FinStack` +
+[3t] package (CL-10)}" — CL-10 WHOLE, `cl10_vpsound` included per REV 6 — + the
+operative TREE-N identity); U4 ← `FinStack` +
 `SolveStack` (the upper side's "solve stack {E0 (CL-1); the CL-5 nine; CL-6; the CL-8
 (e1)–(e5) legs; CL-9 …; CL-11; CL-13…CL-16's table inputs; CL-17; CL-18; CL-19}" +
 the operative RegP-guarded identification); U6 ← those + `LowerStack` ("the LOWER
@@ -628,6 +637,10 @@ structure FinStack (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n p X)
     (K : KernelStatements) : Prop where
   cl7 : K.trackCount ∧ K.dnDuty ∧ K.genuineIncrement
   cl10 : K.sib ∧ K.jcMulti ∧ K.treeExpTreeN
+  /-- REV 6 (Codex-FINAL#2): CL-10 is cited WHOLE by the (U-n) upper side ("the [3t]
+      package (CL-10)"), and VP-SOUND is part of CL-10's own entry — so the typed
+      VP-SOUND field belongs to THIS slice, not only to the capstone. -/
+  cl10_vpsound : VPSound X
   finiteness_stack : ∀ σ N,
     (X.decided σ N : ℝ≥0∞) =
       (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T
@@ -667,7 +680,7 @@ structure LowerStack (n p : ℕ) (S : SolveData n) (D : RegData p)
 
 /-- Field-selection projections: U10 fires the earlier units without re-packing. -/
 def CapstoneLedger.finStack (L : CapstoneLedger n p X F S D M K) :
-    FinStack n p X F K := ⟨L.cl7, L.cl10, L.finiteness_stack⟩
+    FinStack n p X F K := ⟨L.cl7, L.cl10, L.cl10_vpsound, L.finiteness_stack⟩
 def CapstoneLedger.solveStack (L : CapstoneLedger n p X F S D M K) :
     SolveStack n p X F S D M K :=
   ⟨L.cl1, L.cl5, L.cl6, L.cl8, L.cl9, L.cl11, L.cl13, L.cl14, L.cl15, L.cl16,
@@ -1025,12 +1038,14 @@ theorem theoremU (n : ℕ) (hn : 2 ≤ n) (S : SolveData n)
   deriving `rs4_eval` from `rs4_checksum` (`RatFunc.eval_add`'s hypotheses) — if absent
   or awkward, `rs4_eval` stays a field (already the blueprint default).
 
-## 6. Status and counts (REV 5)
+## 6. Status and counts (REV 6)
 
-REV 5 delta only: three Prop sub-bundles (`FinStack`/`SolveStack`/`LowerStack`) +
-three projection defs in DefsLedger; U3/U4/U6 premises re-sliced per D12; CL-2/CL-3
-confined to `CapstoneLedger` (U10). Unit count, difficulties, tag-free perimeter,
-and everything below unchanged from REV 4.
+REV 5 delta: three Prop sub-bundles (`FinStack`/`SolveStack`/`LowerStack`) + three
+projection defs in DefsLedger; U3/U4/U6 premises re-sliced per D12; CL-2/CL-3
+confined to `CapstoneLedger` (U10). REV 6 delta: `cl10_vpsound` added to `FinStack`
+(whole-CL-10 citation verified against the note; projection updated) — one field,
+nothing else. Unit count, difficulties, tag-free perimeter, and everything below
+unchanged from REV 4.
 
 13 units (U0, U0b, U1–U11) over THREE Defs files (Defs ← U0b ← DefsLedger, D11):
 4 TAG-FREE/unconditional (U1 (BOX-N), U2 Tonelli existence, U5 SQ.3-as-arithmetic,
@@ -1096,4 +1111,10 @@ charge = §4's flags + the 29-finding disposition table (§7).
 | CF-1 | crit | U3 takes the full `CapstoneLedger` — assumes every field (CL-1–19, VP-SOUND, O3, RS.4, env → 0) where the display cites only the finiteness stack | FIXED: `FinStack` sub-bundle (CL-7 + CL-10 slots + the TREE-N identity); U3's premise is exactly it (D12) |
 | CF-2 | crit | U4 likewise — SQ.2's upper display cites the finiteness + solve stacks only, not CL-2/CL-3/CL-4, RS.4, VP-SOUND, O3 | FIXED: `SolveStack` sub-bundle (the (U-n) upper citation list CL-1/5/6/8/9/11/13–16/17/18/19 + the operative identification); U4 = FinStack + SolveStack + RegP + p.Prime |
 | CF-3 | crit | U6 requires CL-2/CL-3 (rate-form-only per the note) and other capstone-only fields for the non-rate bracket | FIXED: U6 = FinStack + SolveStack + `LowerStack` (RS.4's inherited set, CL-4 included); CL-2/CL-3 in NO unit premise — the rate form is gate SQUEEZE-n3, not a Lean unit, so no U6b; `CapstoneLedger` (with CL-2/CL-3) remains U10's full consumption with projection defs `finStack`/`solveStack`/`lowerStack` |
+
+**Rev-5 Codex FINAL#2 (REJECT 3c/0g, one root cause → REV 6, one field):**
+
+| # | class | finding (short) | repair in REV 6 |
+|---|---|---|---|
+| CF2-1..3 | crit | `FinStack` omitted `cl10_vpsound : VPSound X` — U3/U4/U6's premises one field THINNER than the note's CL-10 citation | FIXED: `cl10_vpsound` added to `FinStack`; projection updated to `⟨L.cl7, L.cl10, L.cl10_vpsound, L.finiteness_stack⟩`. VERIFIED the citation is WHOLE-CL-10: the (U-n) display reads "the UPPER side GIVEN the finiteness stack {SQ.0's budgets with TRACK-COUNT + D(n) + the genuine-increment sub-claim (CL-7); the [3t] package (CL-10)}" (MOVES 13140–13143) — no display cites a VP-SOUND-free half: CL-10's entry itself ends "and VP-SOUND (a citation obligation …)" (13281–13284) and SQ.1 rules "CL-10's tags ride every consumption" (13033). So the field belongs in FinStack, not in a finer split |
 
