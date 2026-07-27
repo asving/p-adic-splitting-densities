@@ -1,4 +1,53 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 8
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 9
+
+## H000000. REV-9 rulings — THE TYPING RULE, applied uniformly
+
+**R37 — THE HARD RULE (coordinator, closing rev): every note-displayed hypothesis
+package appears as TYPED FIELDS.** No comment-register, no quote-register: where a
+clause's vocabulary is wave-4-owned it is a NAMED TYPED Prop with owner tag (an
+abstract Prop field in a package structure — for a PIN this is the correct
+direction: the obligation becomes an IMPLICATION from the package, weaker to
+prove and exactly the note's theorem-under-hypotheses shape; wave 4 instantiates
+each name with the real statement). Grep duty at §4: no rationale may say
+"quoted"/"comment" where the register should be a field.
+
+**R38 (Codex#5-1/2) — W2/W3 carry their packages as TYPED PREMISES.**
+`XRBPackage` (xhd_w/u/d/s [2b] · jc_inv [2b] · sib, jc_multi [3t]/CL-10 ·
+tb_cap, vp [3t] · rel2_a/b/d [2r]/CL-8 · ns_null [3t], CLOSED) and
+`RS1GivenPackage` (tree_exp_fin/ns, tree_n, one_f, sib, tb_cap, vp, pci [3t] ·
+rel2_a/…/e [2r] · the REAL `LedgerIV T M` — already typed — · the W2 statement as
+the XRB leg): `W2_xrb Π B₀ := Π.* → ∀ …` and `W3_recursion Π' L B₀ := Π'.* → ∀ …`.
+
+**R39 (Codex#5-5) — the cofinite-activity burden TYPED, infinitude DERIVED.**
+`allActive_infinite` is REPLACED by the note's actual clause as fields:
+`cellsize_nonzero : ∀ e τ o, (tgP e τ o).countS ≠ 0` (not-identically-zero) and
+`act_iff : activity ⟺ cell-size nonvanishing at the pool`; NEW derived unit
+U-22b `allActive_cofinite`: only finitely many base primes miss the all-active
+locus (each countS has finitely many roots; finitely many (e,τ,o)), hence
+`allActivePools` ⊇ cofinitely many primes and is infinite — the note's display
+DERIVED, not assumed.
+
+**R40 (Codex#5-6) — xrb/rexact re-quantified over `q₀ ∈ M.Pools`** (pointwise at
+pools, never equality of whole ℚ-functions); W2's body likewise.
+
+**R41 (Codex#5-3 + Fable#6-G2/G3) — W7_cutWD completed.** TreeIface gains root-path
+ORDER LAWS (refl/trans/antisymm + comparability on a common path), `isDeepSplit`,
+and `tree_ne : Nonempty Tree`; W7 states CUT-1 as least-first-entrance
+(∃!-minimum, not antisymmetry), the typed NO-RECLASSIFICATION fence
+(`isDeepSplit → ¬isEntrance`), and (CUT-3)'s ENTRANCE-DATA clause (an equivalence
+`Fin Ŝ.k ≃ first-entrances` matching blockOf with (eOf, τOf) and δOf) — boundary
+data retained, typed. NEW gate unit U-29d6 `n2_treeiface` instantiates it.
+
+**R42 (Codex#5-4 + Fable#6-G4) — W17ii de-degenerated and fenced.** Fields
+`shDom_ne` (every listed shape has height classes) + `sh_realized` (its event is
+eventually nonempty at pools) kill the ∅/0 model; the CTS-count × (SIB)-COUNT ×
+C.1.5 production faces enter as the TYPED `Wsh17Package` (abstract owner-tagged
+Props per R37) premising W17ii; W17ii moved INSIDE the §2.E code fence.
+
+**R43 (Codex#5-7/8/9 = Fable#6-G1) — mechanical:** `ι_count` retyped to `countT`
+with `ι_countS_one : (ιP …).countS = 1` (the ENT-COUNT polynomial is the count
+piece); U-29a1/a2/a3 → nine data/law units; n2_kstep_hmc → 2, n2_init → 3,
+n2_xrb_rexact → 2 units.
 
 ## H00000. REV-8 rulings (on top of R1–R29)
 
@@ -522,7 +571,7 @@ structure LedgerIV (T : TableShape n) (M : MeasuredSide T) : Prop where
     M.ιshH e τ ε h q₀ * (Fintype.card (M.Box q₀ N) : ℝ)
       = ((M.entEvtH e τ ε h q₀ N).card : ℝ)
   ent_count_card : ∀ e τ ε q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
-    ((M.entInst e τ ε q₀ (M.entLvl e τ ε)).card : ℚ) = M.entCount e τ ε q₀
+    ((M.entInst e τ ε q₀ (M.entLvl e τ ε)).card : ℕ) = M.entCount e τ ε q₀
     -- "a full count": I^ent_{ε,β₀} IS the card of the ε-instance event at the
     -- shape's own defining level — the counting tie ι_count's polynomial now means
   -- (9) COMP-TYPING, heights once: (COMP-h) = init_count's fixed-height objects;
@@ -609,8 +658,11 @@ structure RatBurdens (T : TableShape n) (M : MeasuredSide T) where
     -- J = the branching-cell mass, EACH CELL ONCE — never the marked T·G
   ι_interp : ∀ e τ ε q₀ (h : q₀ ∈ M.Pools),
     (evalAt q₀ ⟨(ιP e τ ε).val, ι_ok e τ ε q₀ h⟩ : ℝ) = M.ιsh e τ ε q₀
+  ι_countS_one : ∀ e τ ε, (ιP e τ ε).countS = 1           -- ι's cell-size piece is
+    -- trivial: ENT-COUNT is ONE polynomial (R43, Codex#5-7 — the stale `.count`
+    -- accessor retyped to the countT piece after the R31 split)
   ι_count : ∀ e τ ε q₀, q₀ ∈ M.Pools →                    -- ENT-COUNT's polynomial IS
-    ((ιP e τ ε).count.eval q₀ : ℚ) = M.entCount e τ ε q₀  -- the full count at pools
+    ((ιP e τ ε).countT.eval q₀ : ℚ) = (M.entCount e τ ε q₀ : ℚ)  -- the full count
   tg_degT : ∀ e τ o, (tgP e τ o).degBoundT = T.Wloc e τ o    -- TWO SEPARATE PINS
   tg_degS : ∀ e τ o, (tgP e τ o).degBoundS = T.Wstate e τ    -- (R31, Codex#4-2):
   j_degT  : ∀ e τ o, (jP e τ o).degBoundT = T.Wloc e τ o     -- "T is one polynomial
@@ -620,9 +672,16 @@ structure RatBurdens (T : TableShape n) (M : MeasuredSide T) where
     -- degree ≤ W_state(s)" — per piece, never a merged sum bound; ι's ENT-COUNT
     -- polynomials "of degree ≤ W_ent(ε)" pin both pieces to W_ent. The W-data live
     -- on TableShape/MeasuredSide, fixed BEFORE the burdens.
-  allActive_infinite : (allActivePools M).Infinite
-    -- (iv)-POLY's cofiniteness face: "only finitely many primes are roots of some
-    -- not-identically-zero cell-size polynomial" ⟹ the DEFINED locus is infinite
+  cellsize_nonzero : ∀ e ∈ Finset.Icc 1 n, ∀ τ o, (tgP e τ o).countS ≠ 0
+    -- "NOT-IDENTICALLY-ZERO cell-size polynomial" — TYPED (R39, Codex#5-5)
+  act_iff : ∀ q₀ ∈ M.Pools, ∀ e ∈ Finset.Icc 1 n, ∀ τ,
+    M.activeState q₀ e τ ↔ ∀ o, (tgP e τ o).countS.eval q₀ ≠ 0
+    -- activity IS cell-size nonvanishing at the pool (CTS-M(ii)'s mechanism; W1's
+    -- pool-size effect) — with cellsize_nonzero this makes the note's display
+    -- "at all-active primes (cofinitely many — only finitely many primes are roots
+    -- of some not-identically-zero cell-size polynomial)" a DERIVED LEMMA:
+    -- U-22b `allActive_cofinite` (the REV-8 field allActive_infinite is DELETED —
+    -- it was weaker than the display and is now a corollary, never an assumption)
 abbrev RatBurdens.TG (RB) e τ o : Qq := (RB.tgP e τ o).val
 abbrev RatBurdens.J  (RB) e τ o : Qq := (RB.jP e τ o).val
 noncomputable def RatBurdens.ι (RB) e : T.State e → Qq := fun τ => ∑ ε, (RB.ιP e τ ε).val
@@ -727,9 +786,11 @@ structure RS1Meas (T) (M : MeasuredSide T) where
     from their displayed packages (R32) — the fields cannot be self-supplied. -/
 structure RS1Bundle (T) (M : MeasuredSide T) (RB : RatBurdens T M)
     (hdc : DegCons T) (hK) extends RS1Meas T M where
-  xrb : ∀ e he h h' τ σ', βmeas e he h τ σ' = βmeas e he h' τ σ'   -- (XRB) CL-9, OPEN
-    -- (discharge = the pinned W-2 over RS1Meas — S.1's proof under XHD(w/u/d/s) +
-    -- (JC-INV) + (SIB)/(JC-multi) + TB-CAP/VP + REL.2(a)(b)(d) + (ns-null))
+  xrb : ∀ e he h h' τ σ' q₀, q₀ ∈ M.Pools →           -- (XRB) CL-9, OPEN — POINTWISE
+    βmeas e he h τ σ' q₀ = βmeas e he h' τ σ' q₀      -- AT POOLS (R40, Codex#5-6):
+    -- the note's measured conditionals exist at the relevant pools, never as whole
+    -- ℚ-functions (discharge = the pinned W-2 over RS1Meas with its TYPED
+    -- XRBPackage, §2.E)
   recursion_meas : ∀ e he τ σ' q₀ (h : q₀ ∈ M.Pools), M.activeState q₀ e τ →
     ∀ h_ent, βmeas e he h_ent τ σ' q₀
       = evalRe T M RB hdc e he τ σ' q₀ (fun e' he' => βmeas e' he' h_ent)
@@ -740,8 +801,9 @@ structure RS1Bundle (T) (M : MeasuredSide T) (RB : RatBurdens T M)
     -- (SIB)+PCI). U-24a1 fires it at τA ∈ P.Act (act_spec supplies the guard).
   -- (βmeas/β_bdd/βfull now live in RS1Meas — R32; no duplicate fields here)
   nsNull : Prop                                    -- the (ns-null) tag; [3t]-closed
-  rexact : nsNull → ∀ e he h_ent τ σ' q₀,          -- (R_e-exact) GIVEN (ns-null)
-    βfull e he h_ent τ σ' q₀ = βmeas e he h_ent τ σ' q₀
+  rexact : nsNull → ∀ e he h_ent τ σ' q₀, q₀ ∈ M.Pools →   -- (R_e-exact) GIVEN
+    βfull e he h_ent τ σ' q₀ = βmeas e he h_ent τ σ' q₀    -- (ns-null), AT POOLS
+    -- (R40: pool-quantified like every other measured claim)
 
 /-- RS.4's chain — the FULL displayed inherited set as explicit components (R2-19),
     with the σ-index = verdict multisets (R2-11) so W-1 typechecks. -/
@@ -787,6 +849,14 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
   shWeightH : Shape T → M.Hgt → ℚ → ℝ              -- fixed-height shallow mass
   shevt_grouping : ∀ Ŝ q₀ N,                        -- shEvt = the height grouping
     shEvt Ŝ q₀ N = (visH Ŝ q₀ N).biUnion (fun h => shEvtH Ŝ h q₀ N)
+  shDom_ne : ∀ Ŝ ∈ F.Sh, (shDom Ŝ).Nonempty       -- every LISTED shape has height
+    -- classes (its root read exists) — kills the ∅-model (R42, Codex#5-4)
+  sh_realized : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ allActivePools M,
+    ∃ N₀, ∀ N ≥ N₀, (shEvt Ŝ q₀ N).Nonempty
+    -- the family is "finite-up-to-heights" of REALIZED shapes (S.2's Ŝ-family):
+    -- each listed shape's event is eventually nonempty at all-active pools —
+    -- kills the zero-mass/zero-WshVal model (R42); wild-pool realization stays
+    -- per-pool ACT territory
   shweight_card : ∀ Ŝ ∈ F.Sh, ∀ (h : M.Hgt), h ∈ shDom Ŝ → ∀ q₀ ∈ M.Pools,
     ∃ N₀, ∀ N ≥ N₀, shWeightH Ŝ h q₀ * (Fintype.card (M.Box q₀ N) : ℝ)
       = ((shEvtH Ŝ h q₀ N).card : ℝ)
@@ -839,14 +909,26 @@ exists) — the PINNED wave-4 Props (R10; no prose deferrals)
 
 ```lean
 -- minimal carriers for statements whose native vocabulary is MovesT's:
-structure TreeIface (T : TableShape n) where       -- W-7's carrier — EXPANDED (R33)
-  Tree : Type                                       -- complete finite canonical trees
-  Node : Tree → Type                                -- their nodes
+structure TreeIface (T : TableShape n) where       -- W-7's carrier — R41-COMPLETED
+  Tree : Type
+  tree_ne : Nonempty Tree                           -- no empty-carrier vacuity
+                                                    --   (Codex#5-3)
+  Node : Tree → Type
   finN : ∀ t, Fintype (Node t)
-  onPath : ∀ t, Node t → Node t → Prop              -- ν ≼ ν′ (root-path order)
+  node_ne : ∀ t, Nonempty (Node t)                  -- a tree has a root
+  onPath : ∀ t, Node t → Node t → Prop              -- ν ≼ ν′: ν on ν′'s root-path
+  path_refl : ∀ t ν, onPath t ν ν                   -- ROOT-PATH ORDER LAWS (R41):
+  path_trans : ∀ t ν₁ ν₂ ν₃, onPath t ν₁ ν₂ → onPath t ν₂ ν₃ → onPath t ν₁ ν₃
+  path_antisymm : ∀ t ν ν', onPath t ν ν' → onPath t ν' ν → ν = ν'
+  path_total : ∀ t ν₁ ν₂ ν, onPath t ν₁ ν → onPath t ν₂ ν →   -- ancestors of a node
+    onPath t ν₁ ν₂ ∨ onPath t ν₂ ν₁                            -- are comparable
   isEntrance : ∀ t, Node t → Prop                   -- the CL-13 entrance predicate
   decE : ∀ t, DecidablePred (isEntrance t)          --   (CTS-M(i)/(iii) supply)
+  isDeepSplit : ∀ t, Node t → Prop                  -- b_e^split sites (R41: typed,
+                                                    --   for the reclassification
+                                                    --   fence — Fable#6-G3)
   blockOf : ∀ t (ν : Node t), isEntrance t ν → Σ e, T.State e   -- the entered block
+  entδ : ∀ t (ν : Node t), isEntrance t ν → ℕ+      -- the entrance's δ-leg factor
   leafHalt : ∀ t, Node t → Option T.VType           -- shallow τ-halt leaves (σ₀ feed)
   shapeOf : Tree → Shape T                          -- CUT-3's choice-free assignment
 structure FiberIface (T) (M : MeasuredSide T) where -- W-10's carrier
@@ -877,42 +959,81 @@ def W1m_marked (B : RS1Bundle …) (hdet) : Prop :=   -- RS.1-MARKED's identific
     -- HYPOTHESIS, agreement the conclusion: "the sealed check … must pass BEFORE it
     -- may be read off; a pole SURVIVING cancellation at a wild pool is (ii-c)'s
     -- FAIL" — the pin demands nothing at pools where the gate fails
-def W2_xrb (B₀ : RS1Meas T M) : Prop :=             -- over the RAW family (R32,
-  ∀ e he h h' τ σ', B₀.βmeas e he h τ σ' = B₀.βmeas e he h' τ σ'  -- Codex#4-3): the
-  -- obligation that CREATES RS1Bundle.xrb at wave 4 — NOT a projection. Its
-  -- displayed hypothesis package (S.1 STATUS LINE, quoted): "XHD (w/u/d/s — owner
-  -- [2b]; discharge = [1v]-FULL) + (JC-INV) (owner [2b]) + (SIB)/(JC-multi)
-  -- (CL-10, open) + TB-CAP/VP ([3t] §T.2 per-clause statuses) + REL.2(a)/(b)/(d)
-  -- (CL-8, open) + (ns-null) (CLOSED)". S.1's derivation is measure-side ([2b]/[3t]
-  -- vocabulary) — pinned-sync is what the note supports at wave 2.
-def W3_recursion (B₀ : RS1Meas T M) : Prop :=       -- over the RAW family (R32,
-  ∀ e he τ σ' q₀ (h : q₀ ∈ M.Pools), M.activeState q₀ e τ →     -- Codex#4-4): the
-    ∀ h_ent, B₀.βmeas e he h_ent τ σ' q₀                         -- obligation that
+/-- S.1's displayed hypothesis package as TYPED FIELDS (R37/R38, Codex#5-1): each
+    an abstract owner-tagged Prop, instantiated by its owner's REAL statement at
+    wave 4. Owners per the S.1 STATUS LINE. -/
+structure XRBPackage where
+  xhd_w : Prop ; xhd_u : Prop ; xhd_d : Prop ; xhd_s : Prop  -- [2b]; discharge
+                                                              --   = [1v]-FULL
+  jc_inv : Prop                                               -- [2b] (rev-2, NEW)
+  sib : Prop ; jc_multi : Prop                                -- CL-10, [3t], OPEN
+  tb_cap : Prop ; vp : Prop                                   -- [3t] §T.2 statuses
+  rel2_a : Prop ; rel2_b : Prop ; rel2_d : Prop               -- CL-8, [2r], OPEN
+  ns_null : Prop                                              -- [3t] §T.2, CLOSED
+
+def W2_xrb (Π : XRBPackage) (B₀ : RS1Meas T M) : Prop :=      -- the obligation that
+  Π.xhd_w → Π.xhd_u → Π.xhd_d → Π.xhd_s → Π.jc_inv →          -- CREATES
+  Π.sib → Π.jc_multi → Π.tb_cap → Π.vp →                      -- RS1Bundle.xrb at
+  Π.rel2_a → Π.rel2_b → Π.rel2_d → Π.ns_null →                -- wave 4: XRB GIVEN
+  ∀ e he h h' τ σ' q₀, q₀ ∈ M.Pools →                          -- the package — the
+    B₀.βmeas e he h τ σ' q₀ = B₀.βmeas e he h' τ σ' q₀         -- S.1 theorem-under-
+  -- hypotheses SHAPE, typed (R38); pool-quantified (R40). No premise in comments.
+/-- S.2's GIVEN-list as TYPED FIELDS (R37/R38, Codex#5-2). The nine-input ledger
+    enters as the REAL `LedgerIV` (already typed); the XRB leg as W2's statement. -/
+structure RS1GivenPackage where
+  tree_exp_fin : Prop ; tree_exp_ns : Prop ; tree_n : Prop ; one_f : Prop  -- [3t]
+  sib : Prop                                                   -- CL-10, [3t], OPEN
+  tb_cap : Prop ; vp : Prop                                    -- [3t] §T.2
+  pci : Prop                                                   -- [3t] (PCI =
+                                                               --  REL.2(a)(b)(d) +
+                                                               --  (iv)-REP + XRB)
+  rel2_a : Prop ; rel2_b : Prop ; rel2_c : Prop ; rel2_d : Prop ; rel2_e : Prop
+                                                               -- CL-8, [2r], OPEN
+
+def W3_recursion (Π' : RS1GivenPackage) (Π : XRBPackage) (L : LedgerIV T M)
+    (B₀ : RS1Meas T M) : Prop :=                    -- CREATES recursion_meas:
+  Π'.tree_exp_fin → Π'.tree_exp_ns → Π'.tree_n → Π'.one_f → Π'.sib →
+  Π'.tb_cap → Π'.vp → Π'.pci →
+  Π'.rel2_a → Π'.rel2_b → Π'.rel2_c → Π'.rel2_d → Π'.rel2_e →
+  W2_xrb Π B₀ →                                     -- "XRB (S.1, proved above)"
+  ∀ e he τ σ' q₀ (h : q₀ ∈ M.Pools), M.activeState q₀ e τ →
+    ∀ h_ent, B₀.βmeas e he h_ent τ σ' q₀
     = evalRe T M RB hdc e he τ σ' q₀ (fun e' he' => B₀.βmeas e' he' h_ent)
-    -- CREATES RS1Bundle.recursion_meas at wave 4 — not a projection. Its displayed
-    -- package (S.2's GIVEN-list, quoted): "GIVEN the [3t] package (TREE-EXP fin/ns
-    -- + TREE-N + ONE-F; (SIB), CL-10; TB-CAP/VP), the S.0 nine-input ledger (CL-5),
-    -- XRB (S.1 …), and [2r]'s REL.2 obligations at every base-changed leg (CL-8)".
-    -- ACTIVITY-GUARDED, identical quantifier to the field (R16(i)).
+  -- the S.2 GIVEN-list ("the [3t] package (TREE-EXP fin/ns + TREE-N + ONE-F;
+  -- (SIB), CL-10; TB-CAP/VP), the S.0 nine-input ledger (CL-5), XRB (S.1), and
+  -- [2r]'s REL.2 obligations at every base-changed leg (CL-8)") — EVERY item a
+  -- typed premise (L is the real ledger; the rest owner-tagged Props per R37);
+  -- activity-guarded, identical quantifier to the field (R16(i)).
 def W4_x3 (C : RS4Chain …) : Prop := ∀ p ∈ C.PrimePools, C.decidedTotal p = 1
-def W7_cutWD (F : ShapeFam T) (TI : TreeIface T) : Prop :=   -- (CUT-WD) FAITHFUL
-  (∀ t (ν ν' : TI.Node t), TI.isEntrance t ν → TI.isEntrance t ν' →   -- (CUT-1):
-    TI.onPath t ν ν' → TI.onPath t ν' ν → ν = ν') ∧          -- first entrance UNIQUE
-  (∀ t (ν : TI.Node t),                                       -- (CUT-2): EXHAUSTIVE
-    (¬ ∃ ν', TI.isEntrance t ν' ∧ TI.onPath t ν' ν) ∨         -- + NONOVERLAPPING —
-    (∃! ν', TI.isEntrance t ν' ∧ TI.onPath t ν' ν ∧           -- shallow XOR exactly
-      ∀ ν'', TI.isEntrance t ν'' → TI.onPath t ν'' ν →        -- one FIRST entrance
-        TI.onPath t ν' ν'')) ∧                                -- on the root-path
-  (∀ t, (TI.shapeOf t).σ0 =                          -- shallow τ-halts feed σ₀(Ŝ):
-    (Finset.univ.filter (fun ν : TI.Node t =>        -- the shape's σ₀ IS the multiset
+def W7_cutWD (F : ShapeFam T) (TI : TreeIface T) : Prop :=   -- (CUT-WD), R41-complete
+  -- (CUT-1) — with TreeIface's order laws, ancestors are comparable; the clause is
+  -- LEAST-FIRST-ENTRANCE (not mere antisymmetry — Codex#5-3):
+  (∀ t (ν : TI.Node t), (∃ ν', TI.isEntrance t ν' ∧ TI.onPath t ν' ν) →
+    ∃! ν₀, TI.isEntrance t ν₀ ∧ TI.onPath t ν₀ ν ∧
+      ∀ ν', TI.isEntrance t ν' → TI.onPath t ν' ν → TI.onPath t ν₀ ν') ∧
+  -- (CUT-2) exhaustive/nonoverlapping is the ∃!-dichotomy the above induces
+  -- (shallow := no entrance ancestor; else the UNIQUE first entrance) — plus the
+  -- TYPED NO-RECLASSIFICATION FENCE (Fable#6-G3, a clause not a comment):
+  (∀ t (ν : TI.Node t), TI.isDeepSplit t ν → ¬ TI.isEntrance t ν) ∧
+  -- shallow τ-halts feed σ₀(Ŝ):
+  (∀ t, (TI.shapeOf t).σ0 =
+    (Finset.univ.filter (fun ν : TI.Node t =>
       ¬ ∃ ν', TI.isEntrance t ν' ∧ TI.onPath t ν' ν)).val.filterMap
-      (TI.leafHalt t)) ∧                             -- of SHALLOW leaf verdicts
-  (∀ t, TI.shapeOf t ∈ F.Sh)                        -- (CUT-3): choice-free, listed
--- The (BDY) mass clause (first-entrance node block-side as STATE INDEX — that is
--- `blockOf`'s type, structural — while the entering EDGE charges entrance-side) is
--- the SEPARATE pin W8_bdy (ReadLedger), cited per entered path; deep-split
--- no-reclassification is structural: b_e^split legs are NOT TreeIface entrances
--- (isEntrance's extension excludes them — the ROUTING law, S.2). NO True clause.
+      (TI.leafHalt t)) ∧
+  -- (CUT-3) with the ENTRANCE-BOUNDARY-DATA clause (Fable#6-G2): the shape's
+  -- entrance lists ARE the tree's first entrances, blocks and δ-legs matching —
+  -- "entrance and halt boundary data retained":
+  (∀ t, ∃ enum : Fin (TI.shapeOf t).k ≃
+      {ν : TI.Node t // TI.isEntrance t ν ∧
+        ∀ ν', TI.isEntrance t ν' → TI.onPath t ν' ν → ν' = ν},
+    ∀ i, ∃ hE : TI.isEntrance t (enum i).1,
+      TI.blockOf t (enum i).1 hE
+        = ⟨(TI.shapeOf t).eOf i, (TI.shapeOf t).τOf i⟩ ∧
+      TI.entδ t (enum i).1 hE = (TI.shapeOf t).δOf i) ∧
+  (∀ t, TI.shapeOf t ∈ F.Sh)                        -- choice-free, listed
+-- The (BDY) mass clause (node block-side as STATE INDEX = blockOf's type,
+-- structural; the entering EDGE entrance-side) is the SEPARATE pin W8_bdy
+-- (ReadLedger), cited per entered path. Non-vacuity: TreeIface.tree_ne/node_ne.
 def W8_bdy (RL : ReadLedger) : Prop :=              -- (BDY) consumption: the entering
   RL.Wcharge = ∑ r ∈ Finset.Icc 0 RL.fe, RL.charge r ∧                -- read is W-side
   RL.βcharge = ∑ r ∈ Finset.Icc (RL.fe + 1) RL.L, RL.charge r         -- β charges none
@@ -924,18 +1045,26 @@ def W10_convergence (B : RS1Bundle …) (FI : FiberIface T M) : Prop :=
                                                     -- via β_bdd = the note's
                                                     -- "positive series bounded by 1,
                                                     -- rearrangements licit (Tonelli)")
-```
 
-def W17ii (C : RS4Chain …) : Prop :=                -- CL-17(ii), the OPEN production
-  ∀ Ŝ ∈ F.Sh, ∀ q₀ (h : q₀ ∈ M.Pools),
-    (∃ hok : (C.WshP Ŝ).val ∈ OKat q₀,
-      ((evalAt q₀ ⟨(C.WshP Ŝ).val, hok⟩ : ℚ) : ℝ) = C.WshVal Ŝ q₀) ∧
-    HasSum (fun hh : C.shDom Ŝ => C.shWeightH Ŝ hh q₀) (C.WshVal Ŝ q₀)
+/-- CL-17(ii)'s production faces as TYPED owner-tagged Props (R37/R42). -/
+structure Wsh17Package where
+  c15_volumes : Prop                                -- §C C.1.5 node volumes
+  cts_counts : Prop                                 -- CTS/[1] counts ([1v])
+  sib_count : Prop                                  -- (SIB)'s COUNT face across
+                                                    --   shallow splits ([3t]/CL-10)
+
+def W17ii (Π : Wsh17Package) (C : RS4Chain …) : Prop :=   -- CL-17(ii), OPEN — now
+  Π.c15_volumes → Π.cts_counts → Π.sib_count →            -- INSIDE the fence
+  ∀ Ŝ ∈ F.Sh, ∀ q₀ (h : q₀ ∈ M.Pools),                    -- (Fable#6-G4) and
+    (∃ hok : (C.WshP Ŝ).val ∈ OKat q₀,                    -- PREMISED on the typed
+      ((evalAt q₀ ⟨(C.WshP Ŝ).val, hok⟩ : ℚ) : ℝ) = C.WshVal Ŝ q₀) ∧   -- production
+    HasSum (fun hh : C.shDom Ŝ => C.shWeightH Ŝ hh q₀) (C.WshVal Ŝ q₀)  -- package
   -- "every W_Ŝ is PRODUCED by the stated rational machinery (C.1.5 node volumes ×
   -- CTS/[1] counts × XHD-s shallow height sums, with (SIB)'s COUNT face across
-  -- shallow splits)": the XHD-s height-sum face over the TYPED carriers
-  -- shDom/shWeightH (§2.D fields, card-pinned by shweight_card — R34; no free
-  -- summands); owners [1v]/[3t]; remains OPEN (CL-17).
+  -- shallow splits)": the height-sum face over the TYPED carriers shDom/shWeightH
+  -- (card-pinned by shweight_card; nonempty by shDom_ne/sh_realized — no ∅/0
+  -- model, R42); owners [1v]/[3t]; remains OPEN (CL-17).
+```
 
 W-5 (nsNull's discharge) is the field `RS4Chain.hns` — demanded, not deferred-loose.
 W-6 (wild-pool read-off) is the Prop `AVAgree` (§2.C), cited per consumption site.
@@ -944,7 +1073,7 @@ every §2 structure by the REAL CTS objects) is a wave-4 PROCESS gate (§5), not
 
 ---
 
-## 3. The unit DAG — REV 8: 70 units (32 easy / 38 medium / 0 hard)
+## 3. The unit DAG — REV 9: 82 units (43 easy / 39 medium / 0 hard)
 
 ### Layer S0 — dispatch, (SCS), (BDY) [9]
 
@@ -1007,7 +1136,7 @@ ACTIVE block" · sketch: interp → rowVal; rep_indep → x-grouped cell sum;
 
 **U-9b `ksub` · medium — locus updated.** The SYMBOLIC (K-SUB) `= 1` in Qq, via U-9a
 at every ALL-ACTIVE pool (activity supplied by the locus) + U-27 infinitude on
-`RB.allActive_infinite`. deps: U-8, U-9a, U-27.
+U-22b's derived infinitude (R39). deps: U-8, U-9a, U-22b, U-27.
 
 **U-10 `ksub_pool` · medium — nonnegativity DERIVED and ROUTED (R2-12); `he` binder
 added (Fable2-G3).**
@@ -1099,7 +1228,7 @@ deps: U-14, U-16a pattern · sketch: same WF recursion as U-16b, scalar per stat
 Shape record + blockSolve; now takes `WshP ·` as the W_Ŝ presentation). **U-18b
 `interp_unique` · easy — unchanged** (interpolant uniqueness on infinite OK sets).
 
-### Layer S3 — pools, evaluation, E0 consequences [10]
+### Layer S3 — pools, evaluation, E0 consequences [11: + U-22b at REV 9]
 
 **U-19 `evalAt` · medium — unchanged.** **U-20 `eval_det` · easy — unchanged**
 (INFRA; moves_ref the S.4(ii) "K_e(p) = A" reading). **U-21a `pow_fixed_vector` ·
@@ -1124,10 +1253,22 @@ uses U-21a/b. deps: U-21a, U-21b.
 — per-block hypotheses for the per-block conclusion, `e` bound INSIDE both.
 moves_ref: "at all-active primes (cofinitely many …) K_e(p) = A and ρ(A) < 1 gives
 det(I − A) ≠ 0; a rational function vanishing at infinitely many prime evaluations
-is 0". deps: U-19, U-20, U-21c, U-27 · hyp: RB.allActive_infinite (the (iv)-POLY
+is 0". deps: U-19, U-20, U-21c, U-22b, U-27 · hyp: U-22b's cofiniteness (the (iv)-POLY
 cofiniteness face, now over the DEFINED locus) + per-pool packages at that locus ·
 sketch: at an all-active pool Act = univ (act_spec + the locus definition); if
 det = 0 in Qq its evaluation vanishes there (U-20), contradicting U-21c.
+
+**U-22b `allActive_cofinite` · AllActiveCofinite.lean · medium — NEW (R39).**
+`statement`: `theorem allActive_cofinite (RB : RatBurdens T M) :`
+`{p : ℕ | p.Prime ∧ (p:ℚ) ∈ M.Pools ∧ (p:ℚ) ∉ allActivePools M}.Finite ∧`
+`(allActivePools M).Infinite`
+moves_ref: "at all-active primes (cofinitely many — only finitely many primes are
+roots of some not-identically-zero cell-size polynomial)". deps: Defs · hyp:
+RB.cellsize_nonzero + RB.act_iff (+ prime_base ⊆ Pools via the chain's prime_sub) ·
+sketch: each countS ≠ 0 has ≤ deg roots (`Polynomial.setOf_isRoot_finite`); finitely
+many (e, τ, o); a prime outside the finite root union is all-active by act_iff;
+infinitude from `Nat.exists_infinite_primes`. THE NOTE'S DISPLAY, DERIVED — the
+REV-8 assumption `allActive_infinite` is gone; U-9b/U-22/U-24b consume this lemma.
 
 **U-23a `neumann_partial` / U-23b `pow_entry_nonneg` / U-23c `pow_entry_tendsto` ·
 easy ×3 — unchanged.** **U-23d `e0_inv_nonneg` · medium — unchanged** (consumer
@@ -1193,7 +1334,7 @@ locus, quoted: "at all-active primes (cofinitely many — only finitely many pri
 are roots of some not-identically-zero cell-size polynomial)" (S.4(ii)); RS.2's
 assertion "every β_{e,τ}(σ′) is one fixed rational function" is claimed exactly
 there. moves_ref: as quoted. deps: U-24a1, U-24a2, U-18b, U-27 · hyp: hread (the
-per-pool (ii-c) burden, OPEN — provenance W-6; `allActive_infinite` supplies the
+per-pool (ii-c) burden, OPEN — provenance W-6; U-22b's derived infinitude supplies the
 CANDIDATE locus, activity alone does not discharge AVAgree) · sketch: U-24a2 across
 S; U-18b uniqueness per coordinate over S. Cramer form via U-15.
 
@@ -1222,9 +1363,9 @@ eval(Σ Rsh − 1) at p ∈ PrimePools = Σ Rval − decidedTotal = 0 (rsh_inter
 rs1_equates, x3_total); prime_infinite + U-27. The docstring lists every tag: the
 acceptance fence "may NOT be marked unconditional before those close" verbatim.
 
-### Layer S5 — the schema-consistency gate, REBUILT on the NOTE's n = 2 instance
-### (R26) and one-display-split (R28; U-29a → a1/a2/a3 at REV 8, R36) [25]
-*(deps reading "U-29a" in the b-units = U-29a1–a3 after the REV-8 split)*
+### Layer S5 — the schema-consistency gate on the NOTE's n = 2 instance (R26),
+### fully one-obligation-split (R28/R43) [36]
+*(deps reading "U-29a"/"U-29a chain" = the nine a-units after the REV-9 split)*
 
 THE INSTANCE (R26; moves_ref for the layer: "The n = 2 instance is the 1×1 case
 (W6's geometric series, denominator q² + q + 1; `msW_eighth_le` its p = 2
@@ -1240,21 +1381,23 @@ denominator EXACTLY, and their sum = 1 (the checksum shadow). No split outcomes
 CLAIM (R11 unchanged): schema consistency with the note's instance; the W-11
 process gate still owns intended-CTS instantiation.
 
-**U-29a1 `n2_shape` · N2Shape.lean · medium — split (Codex#4-9).** TableShape at
-n = 2 INCLUDING the block-1 layer (State 1 = one state, roster = one terminal
-outcome, verdict (1,1), mass 1, Kmat 1 = 0), the three-outcome block-2 roster,
-vEquiv on the degree-≤2 pairs, Wloc/Wstate, DegCons/SCSData DATA (laws at
-U-29b3). deps: Defs.
-
-**U-29a2 `n2_measured` · N2Measured.lean · medium — split.** MeasuredSide: level-N
-boxes; cell events realizing the FOUR row masses (block-1's 1; block-2's q₀⁻³,
-1−q₀⁻¹, q₀⁻¹−q₀⁻³) as card ratios; heights/entrance shapes (one ε per block with
-entLvl/entInst); pools = all prime powers. deps: U-29a1.
-
-**U-29a3 `n2_burdens_shapes` · N2Burdens.lean · medium — split.** RatBurdens data
-in the CORRECTED PolyGeom form (R30: q⁻³ = qpow 3; 1−q⁻¹ = (X−1)/X, qpow 1;
-q⁻¹−q⁻³ = (X²−1)/X³, qpow 3; per-piece degree pins to Wloc/Wstate) + ShapeFam
-(the n = 2 root shapes, δOf ≡ 1). deps: U-29a1/a2.
+**U-29a1–a1b, a2a–a2c, a3a–a3d — the construction, ONE OBLIGATION-GROUP EACH
+(R43, Codex#5-8; nine units):**
+· `n2_shape` (medium) — TableShape DATA: block-1 layer (one state, one terminal
+  outcome (1,1), Kmat 1 = 0) + the three-outcome block-2 roster + vEquiv +
+  Wloc/Wstate. deps: Defs.
+· `n2_scs_data` (easy) — DegCons/SCSData DATA (the corrected R35 windows).
+· `n2_boxes` (medium) — Box/Cell/Rep carriers + boxpos/rep_ne + the cell events
+  realizing the four row masses as card ratios.
+· `n2_pools` (easy) — Pools := all prime powers; pools_prime_pow/closed/infinite.
+· `n2_heights_ent` (easy) — Hgt/HDom/gwt + entrance carriers (one ε per block,
+  entLvl/entInst/hent/Went) + kstep/activeState/markedVal data.
+· `n2_polygeom` (medium) — the three PolyGeom presentations in the CORRECTED form
+  (R30: q⁻³ qpow 3; (X−1)/X qpow 1; (X²−1)/X³ qpow 3) + tg_ok/j_ok/ι_ok.
+· `n2_interp` (medium) — tg/j/ι interpolation laws at every pool.
+· `n2_degpins_act` (easy) — the six per-piece degree pins + cellsize_nonzero +
+  act_iff (all states active at all pools: countS ≡ 1 conventions).
+· `n2_shapefam` (easy) — ShapeFam (the n = 2 root shapes, δOf ≡ 1). deps: chain.
 
 **U-29b-i…vii — LedgerIV items (1)–(5), ONE FIELD EACH (R28, Codex#3-4):**
 `n2_xhd_sum` (easy) · `n2_xhd_stray` (easy) · `n2_xhd_orphan` (easy) · `n2_d4r0`
@@ -1262,11 +1405,12 @@ q⁻¹−q⁻³ = (X²−1)/X³, qpow 3; per-piece degree pins to Wloc/Wstate) +
 `field_simp`) · `n2_rep_indep` (easy) · `n2_meas_card` (medium — the card-ratio
 identities at level N). Each: one LedgerIV field at the instance. deps: U-29a.
 
-**U-29b-viii…xi — LedgerIV items (6)–(9), ONE DISPLAY EACH (Codex#3-5):**
-`n2_kstep_hmc` (medium — kstep_one + hmc, 1×1 scalar powers: kstep k = q₀⁻³ᵏ) ·
-`n2_act` (easy — act_target; all-active at q₀ ≥ 2, vacuous inactive case) ·
-`n2_init` (medium — init_agg/init_count/ent_count_card on the one entrance shape) ·
-`n2_comp` (easy — comp_once, a one-term height sum). deps: U-29a.
+**U-29b-viii…xiv — LedgerIV items (6)–(9), ONE FIELD EACH (R43, Codex#5-9):**
+`n2_kstep_one` (easy — the 1×1 tie: kstep 1 = q₀⁻³) · `n2_hmc` (easy — scalar
+powers: kstep (k+1) = kstep k · q₀⁻³) · `n2_act` (easy — act_target; all-active,
+vacuous inactive case) · `n2_init_agg` (easy) · `n2_init_count` (medium — the
+card-ratio tie on the one entrance shape) · `n2_entcount` (easy — the entLvl-level
+card) · `n2_comp` (easy — comp_once, a one-term height sum). deps: U-29a chain.
 
 **U-29b3 `n2_degcons_scs` · N2DegScs.lean · easy — window data CORRECTED (R35,
 Fable#5-F1).** DegCons + SCSData LAWS on the three-outcome roster: sizes (2),
@@ -1280,11 +1424,12 @@ with the kcol outcome's in-block window; masses/det/β's unchanged. deps: U-29a1
 **U-29c `n2_pool` · N2Pool.lean · easy** — PoolHyp at q₀ = 2, EscapeE0 for
 A = [1/8]: geometric decay (`tendsto_pow_atTop_nhds_zero_of_lt_one`). deps: U-29a.
 
-**U-29d-i…iii — RS1Bundle, ONE DISPLAY EACH (Codex#3-6):**
+**U-29d-i…iv — RS1Bundle, ONE FIELD EACH (Codex#3-6 + Codex#5-9):**
 `n2_beta` (medium — βmeas := the evaluated solve values, β_bdd from the explicit
 [0,1] bounds) · `n2_recursion` (medium — the 1×1 measured fixpoint:
-β̂ = q₀⁻³·β̂ + (exit masses), checked by field arithmetic) · `n2_xrb_rexact` (easy —
-h_ent-independence and βfull = βmeas by construction). deps: U-29a/b/c.
+β̂ = q₀⁻³·β̂ + (exit masses), field arithmetic) · `n2_xrb` (easy — h_ent-
+independence at pools, by construction) · `n2_rexact` (easy — βfull = βmeas at
+pools, by construction). deps: U-29a chain, U-29b, U-29c.
 
 **U-29d2 `n2_pools_all` · N2Pools.lean · medium** — legs_reg/pools_e0 at EVERY base
 prime: 1×1 packages, entry q₀⁻³ < 1 uniformly at q₀ ≥ 2. deps: U-29a, U-29c.
@@ -1303,6 +1448,12 @@ U-29d2's construction (the uniform-package step is U-29d2's, cited not rebuilt);
 AVAgree from the explicit reduced denominators (q²+q+1 and q³ nonvanishing at
 every q₀ ≥ 2 supply hok; the active solve = the explicit values; no split legs).
 deps: U-29d2, U-24a2.
+
+**U-29d6 `n2_treeiface` · N2Tree.lean · easy — NEW (R41, Codex#5-3 non-vacuity).**
+A concrete `TreeIface` for the n = 2 shapes (one tree per shape: root + shallow
+leaves + one entrance node; the order laws by `decide`-scale case analysis;
+isDeepSplit ≡ False — no split outcomes) + `W7_cutWD` VERIFIED for it (the σ₀ and
+entrance-data clauses by construction). deps: U-29a chain, `n2_shapefam`.
 
 **U-29e `n2_denominator` · N2Denom.lean · easy — the W6 CHECK (explicit).**
 `(1 - Kmat).det = (q³−1)/q³ ≠ 0`, and the reduced solve entries are
@@ -1469,12 +1620,14 @@ with real semantics, MovesV/MovesT must exhibit instances of every §2 structure
 the real CTS objects and discharge W-1/W-1e/W-1m/W-2/W-3/W-4/W-7/W-8/W-10; the
 campaign ledger tracks this per structure.
 
-**Census (REV 8): 70 units = 32 easy / 38 medium / 0 hard** (S0:9 · S1:4 · S2:16 ·
-S3:10 · S4:6 · S5:25). Easy: {U-1, U-2, U-3, U-5, U-7a/b/c, U-12b, U-12c, U-13,
-U-18b, U-20, U-21a, U-23a/b/c, U-24a2, U-25} (18, wave-2 core) + S5's
-{b-i…vi, b-ix, b-xi, b3, c, d-iii, d-iv, d-v, e} (14); medium the remaining 38
-(S5's {29a1, 29a2, 29a3, b-vii, b-viii, b-x, d-i, d-ii, d2, d-vi, d5} = 11 + 27
-core). NO hard units (unchanged since R14).
+**Census (REV 9): 82 units = 43 easy / 39 medium / 0 hard** (S0:9 · S1:4 · S2:16 ·
+S3:11 · S4:6 · S5:36). Easy: the 18 wave-2 core {U-1, U-2, U-3, U-5, U-7a/b/c,
+U-12b, U-12c, U-13, U-18b, U-20, U-21a, U-23a/b/c, U-24a2, U-25} + S5's 25
+{n2_scs_data, n2_pools, n2_heights_ent, n2_degpins_act, n2_shapefam, b-i…vi,
+n2_kstep_one, n2_hmc, n2_act, n2_init_agg, n2_entcount, n2_comp, b3, c, n2_xrb,
+n2_rexact, n2_sigmas, n2_x3_rs1, d6, e}; medium the remaining 39 (27 core +
+U-22b + S5's {n2_shape, n2_boxes, n2_polygeom, n2_interp, b-vii, n2_init_count,
+d-i, d-ii, d2, d-vi, d5} = 11). NO hard units (unchanged since R14).
 
 ---
 
@@ -1585,8 +1738,24 @@ converging independently on PolyGeom → REV 8:**
 | Fable#5-F1 | crit | the gate's o_K window data corrected to ℓ = g = μ = 1 (window_comp/cluster_child now exact; the μ = 2 conflation with the root-entrance typing diagnosed); masses/det/β's unchanged | R35, U-29b3 |
 | Fable#5-F4 | gap | `[DecidableEq ι]` at U-15 (batch completed) | R36 |
 
-STATUS: REV 8 complete. Cumulative: R1 22/22 → R2 20/20 → R3 6/6 → R4 11/11 →
-R5 8/8 → R6 10/10 → R7 12/12 repaired (8 crit / 6 gap, two convergent); nothing
-pushed back; the one MATH-ERROR CANDIDATE (PolyGeom) adjudicated as a blueprint-side
-convention error, note intact (§2.C.1). 70 units = 32 easy / 38 medium / 0 hard.
-Awaits the dual confirmation on REV 8.
+**Parallel rev-8 verdicts — Codex#5 (6 crit / 3 gap) + Fable#6 (0 crit / 4 gap;
+PolyGeom convention fix CONFIRMED by both, settled, note intact) → REV 9 under the
+TYPING RULE (R37):**
+
+| finding | class | REV-9 repair | where |
+|---|---|---|---|
+| Codex#5-1 | crit | `XRBPackage` — S.1's full package as TYPED owner-tagged Prop fields; `W2_xrb Π B₀` is the implication FROM the package (the theorem-under-hypotheses shape) | R38, §2.E |
+| Codex#5-2 | crit | `RS1GivenPackage` + the REAL `LedgerIV` + `W2_xrb` as typed premises of `W3_recursion` — every S.2 GIVEN-item a field | R38, §2.E |
+| Codex#5-3 (+Fable#6-G2/G3) | crit+gap+gap | TreeIface: order laws (refl/trans/antisymm/ancestor-comparability), `isDeepSplit`, `tree_ne`/`node_ne`, `entδ`; W7: least-first-entrance (CUT-1 proper), the TYPED no-reclassification fence, (CUT-3)'s entrance-boundary-data equivalence (blockOf/δ matched to eOf/τOf/δOf); gate unit U-29d6 instantiates it | R41, §2.E, §3 S5 |
+| Codex#5-4 (+Fable#6-G4) | crit+gap | `Wsh17Package` (C.1.5/CTS/SIB-COUNT as typed premises); `shDom_ne` + `sh_realized` kill the ∅/0 model; W17ii INSIDE the code fence | R42, §2.D/E |
+| Codex#5-5 | crit | `cellsize_nonzero` + `act_iff` typed (the note's actual clause); `allActive_infinite` DELETED; U-22b derives cofiniteness + infinitude | R39, §2.C, U-22b |
+| Codex#5-6 | crit | `xrb`/`rexact`/W2's body pool-quantified (`q₀ ∈ M.Pools`) — never whole-ℚ-function equality | R40, §2.D/E |
+| Codex#5-7 = Fable#6-G1 | gap+gap | stale `.count` → `.countT` with `ι_countS_one`; `ent_count_card` cast fixed | R43, §2.B/C |
+| Codex#5-8 | gap | U-29a → nine one-obligation-group units (data vs laws separated) | R43, §3 S5 |
+| Codex#5-9 | gap | n2_kstep_hmc → 2, n2_init → 3, n2_xrb_rexact → 2 one-field units | R43, §3 S5 |
+
+STATUS: REV 9 complete. Cumulative: R1 22/22 → … → R7 12/12 → R8 11/11 repaired
+(6 crit / 5 gap after de-duplication); PolyGeom settled at R8 (convention fix,
+confirmed by both verifiers). THE TYPING RULE (R37) is now uniform: grep-clean for
+comment-register hypothesis packages. 82 units = 43 easy / 39 medium / 0 hard.
+Awaits the dual confirmation on REV 9.
