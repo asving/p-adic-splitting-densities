@@ -739,7 +739,13 @@ countermodel's escape is walked in the XE.2 spec (N₀ ≥ 2 empties every claim
 
 **Process notes.** E-phase files `XE2.lean`/`XE3.lean` restated to the §3 forms (bodies
 `sorry` again; fleet re-proves); MANIFEST entries re-hashed with status
-`restated-post-refutation`. The restated units get a mini dual audit (Codex + fresh
+`restated-post-refutation`; both compile green (lake build, 2026-07-27, sorry warnings
+only). SIDE EVENT during the recompile: XF.6's fleet proof ("proved pending
+re-verification") FAILED independent re-verification — (kernel) deterministic timeout at
+`ballCover`, reproduced in two clean builds and solo (>590s wall); XF6.lean restored to
+its E-phase sorry with the statement verbatim, the proof text preserved at
+`lean/notes/XF6_pending_reverify_2026-07-27.lean.txt`, MANIFEST noted — an
+escalation-prover item, exactly what the V-gate exists to catch. The restated units get a mini dual audit (Codex + fresh
 Fable) before re-proving. The three refutation artifacts are NOTES-side (outside the
 lake build graph) and are retained as permanent negative controls: any future draft of
 XE.2/XE.3 whose statement the transcription-check `example` still accepts is refuted

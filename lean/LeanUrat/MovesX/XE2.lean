@@ -1,6 +1,12 @@
 /-
 Unit XE.2 envelopeExp — the note's exponential envelope, as the DERIVED ∃-theorem
-(finding 7)  [E-phase: stated, body sorry]
+(finding 7)  [RESTATED-POST-REFUTATION 2026-07-27: the previous ∀N conclusion was
+kernel-certified FALSE (notes/XE2_refutation_witness.lean + _transcription_check.lean;
+adjudication in blueprint §7). The conclusion now binds ∃ N₀ (an (n,K)-function, bound
+BEFORE p) with the claim over N ≥ N₀ only — the note's honest domain of content (the
+(N−1−c_cap) numerator; X.5(iii) no-teeth regime). The refutation countermodel (point
+mass at X²+X, root-only tree, Undec N = ∅ for N ≥ 2) now SATISFIES the statement via
+N₀ ≥ 2. Body sorry; fleet re-proves.]
 moves_ref: "Given (X2-BRIDGE) + (X2-CAP) + (X2-AFF) … Given (X.2) with linear d*, h*
 AND both legs …: env(N) ≤ c₃(n)·p^{−c₄(n)·N}, with c₃, c₄ traced to s(n), c₀, C_T, c_T,
 c_cap".
@@ -41,7 +47,7 @@ theorem envelopeExp (n : ℕ) (hn : 2 ≤ n) (X : XFamily n) (K : XConsts n)
     (PR : X2ProgressP n X K) (BR : X2BridgeP n X) (AF : X2AffP n X K) (CP : X2CapP n X K)
     (AL : X1aAlignP n X ⟨true, false⟩) (WC : WeightChargeFullP n X K)
     (TL : X2TailsP n X K) (NS : NsNullP n X) (R : X3aRouteP n X K) :
-    ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧ ∀ (p : ℕ) [Fact p.Prime] (N : ℕ),
+    ∃ N₀ : ℕ, ∃ c3 c4 : ℝ, 0 < c3 ∧ 0 < c4 ∧ ∀ (p : ℕ) [Fact p.Prime], ∀ N, N₀ ≤ N →
       ((X.ctx p).frac ((X.ctx p).Undec N) : ℝ) ≤ c3 * (p : ℝ) ^ (-(c4 * N)) := by
   sorry
 

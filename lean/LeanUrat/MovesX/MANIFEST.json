@@ -9,7 +9,7 @@
   "note": "compiles green via lake env lean + lake build LeanUrat.MovesX.Defs; no sorry, no axiom; deviations D-1..D-6 recorded in the blueprint"
  },
  "preamble": "Every unit file: import LeanUrat.MovesX.Defs (+ earlier units per deps); namespace LeanUrat.MovesX; set_option linter.style.longLine/header false, linter.unusedVariables false, maxHeartbeats 1000000. Build per module with lake build LeanUrat.MovesX.<id> (NEVER whole-project lake build).",
- "statement_fence": "Statements are the blueprint Section3 verbatim (rev 4). Do NOT weaken a statement to prove it; do NOT edit MovesX/Defs.lean without re-running the elaboration sample.",
+ "statement_fence": "Statements are the blueprint Section3 verbatim (rev 4). Do NOT weaken a statement to prove it; do NOT edit MovesX/Defs.lean without re-running the elaboration sample. EXCEPTION (2026-07-27): XE.2/XE.3 restated post-refutation per blueprint §7 — the §3 rev-4+restatement text is the new frozen form.",
  "sorry_census": {
   "total": 44,
   "sorry_bearing_units": 40,
@@ -459,7 +459,7 @@
     "envelopeExp"
    ],
    "sorries": 1,
-   "status": "stated",
+   "status": "restated-post-refutation",
    "difficulty": "hard",
    "deps": [
     "XC.3",
@@ -469,7 +469,8 @@
     "XG.2c",
     "XG.2d"
    ],
-   "statement_sha256": "71830b5190e252535aebbc3ecc2b64c3ee3646a7488fc71e776c8b7fa07892bc"
+   "statement_sha256": "4f8dd07c4ac46faa60c326044eca6025ca726343d716dc5d0f964f9d90088ad6",
+   "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving."
   },
   {
    "id": "XE.3",
@@ -478,7 +479,7 @@
     "envelopeSqrt"
    ],
    "sorries": 1,
-   "status": "stated",
+   "status": "restated-post-refutation",
    "difficulty": "hard",
    "deps": [
     "XC.3",
@@ -489,7 +490,8 @@
     "XG.2c",
     "XG.2d"
    ],
-   "statement_sha256": "3ebb9b13c2eb5196b2c400ac3b72b307289164ecb6b3d0f7d674ce86bb4d1958"
+   "statement_sha256": "960e541629740dbdeee08d833ad2f1caac69784da740a45e129fcab0cc7082a2",
+   "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving."
   },
   {
    "id": "XF.1",
@@ -573,7 +575,8 @@
     "XF.4",
     "XF.5"
    ],
-   "statement_sha256": "b3f3b1a166de111e75ee99dc3778baa44a297f93410db6aecfb37ac3b3f642d0"
+   "statement_sha256": "342f1d54e55d7cbedf059d804c9cc974d3ee5d134985ed27632a5378d4d447b1",
+   "note": "2026-07-27: fleet proof (\"proved pending re-verification\", 328e926) FAILED independent re-verification — (kernel) deterministic timeout at ballCover, reproduced in 2 clean builds + solo (>590s). Restored to sorry (statement verbatim); proof text preserved at lean/notes/XF6_pending_reverify_2026-07-27.lean.txt. Escalation-prover item."
   },
   {
    "id": "XF.7",
