@@ -15,7 +15,14 @@ set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
 noncomputable def valExtOf (p : ℕ) [Fact p.Prime] (g : Polynomial ℚ_[p]) (hg : g ≠ 0) :
-    ValExt p g :=
-  sorry
+    ValExt p g where
+  L := g.SplittingField
+  w := MulRingNorm.mulRingNormEquivAbsoluteValue
+    (spectralMulAlgNorm ℚ_[p] g.SplittingField).toMulRingNorm
+  ext := fun x => by
+    rw [MulRingNorm.mulRingNormEquivAbsoluteValue_apply]
+    change spectralNorm ℚ_[p] g.SplittingField (algebraMap ℚ_[p] g.SplittingField x) = ‖x‖
+    exact spectralNorm_extends x
+  splits := Polynomial.SplittingField.splits g
 
 end LeanUrat.MovesX

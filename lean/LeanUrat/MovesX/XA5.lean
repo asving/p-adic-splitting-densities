@@ -15,6 +15,44 @@ set_option maxHeartbeats 1000000
 theorem t2Witness {n : ℕ} (ν : XNode n) (h2 : rowOf ν = .T2) :
     (ν.s0 + 1, ν.u0 + 1) ∈ ν.region ∧ 2 ≤ (ν.e - 1) * (ν.h - 1) ∧
     2 ∣ (ν.e - 1) * (ν.h - 1) := by
-  sorry
+  have hep := ν.ellpos
+  -- Extract the T2 characterization directly from `rowOf`.
+  have hfacts : ν.ell = 1 ∧ 2 ≤ ν.e ∧ 2 ≤ ν.h := by
+    unfold rowOf at h2
+    split_ifs at h2 with c1 c2 c3 c4
+    exact ⟨by omega, c3, c4⟩
+  obtain ⟨hell, he, hh⟩ := hfacts
+  -- Coprimality of `e, h` (both ≥ 2) forces at least one of them odd.
+  have hodd : ¬ 2 ∣ ν.e ∨ ¬ 2 ∣ ν.h := by
+    rw [← not_and_or]
+    rintro ⟨he2, hh2⟩
+    have hcop1 : Nat.gcd ν.e ν.h = 1 := ν.hcop
+    have hd : (2 : ℕ) ∣ Nat.gcd ν.e ν.h := Nat.dvd_gcd he2 hh2
+    rw [hcop1] at hd
+    omega
+  refine ⟨?_, ?_, ?_⟩
+  · -- (s0+1, u0+1) lies in the region: the on-or-below pin `e + h ≤ e*h` at ℓ = 1.
+    have key : ν.h + ν.e ≤ ν.e * ν.h := by
+      have := Nat.add_le_mul hh he
+      rwa [Nat.mul_comm] at this
+    simp only [XNode.region, p1Region, hell, Finset.mem_filter, Finset.mem_product,
+      Finset.mem_Ioc, Nat.add_sub_cancel_left, mul_one]
+    omega
+  · -- 2 ≤ (e-1)(h-1): the odd one is ≥ 3, so its factor is ≥ 2.
+    rcases hodd with hE | hH
+    · have h3 : 2 ≤ ν.e - 1 := by omega
+      have h1 : 1 ≤ ν.h - 1 := by omega
+      calc (2 : ℕ) = 2 * 1 := by norm_num
+        _ ≤ (ν.e - 1) * (ν.h - 1) := Nat.mul_le_mul h3 h1
+    · have h3 : 2 ≤ ν.h - 1 := by omega
+      have h1 : 1 ≤ ν.e - 1 := by omega
+      calc (2 : ℕ) = 1 * 2 := by norm_num
+        _ ≤ (ν.e - 1) * (ν.h - 1) := Nat.mul_le_mul h1 h3
+  · -- 2 ∣ (e-1)(h-1): the odd one gives an even factor.
+    rcases hodd with hE | hH
+    · have hd : (2 : ℕ) ∣ (ν.e - 1) := by omega
+      exact dvd_mul_of_dvd_left hd _
+    · have hd : (2 : ℕ) ∣ (ν.h - 1) := by omega
+      exact dvd_mul_of_dvd_right hd _
 
 end LeanUrat.MovesX

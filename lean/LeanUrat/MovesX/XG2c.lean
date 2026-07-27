@@ -18,6 +18,17 @@ set_option maxHeartbeats 1000000
 
 theorem interTrichotomy {n p : ℕ} [Fact p.Prime] (C : XCtx n p) :
     (⋂ N, C.Undec N) ⊆ InfTree C ∪ (⋃ i, C.nsFiber i) := by
-  sorry
+  intro f hf
+  by_cases hfin : Finite (C.Branch f)
+  · -- finite tree: either an ns leaf exists (fiber) or detection contradicts f ∈ ⋂ Undec
+    by_cases hns : ∃ b : C.Branch f, C.children b = ∅ ∧ ∃ ν ∈ C.hist b, C.nsTrack ν
+    · exact Or.inr (Set.mem_iUnion.2 (C.nsCover f hns))
+    · exfalso
+      have hleaves : ∀ b : C.Branch f, IsLeafB C b → ∀ ν ∈ C.hist b, ¬ C.nsTrack ν := by
+        intro b hb ν hν hν'
+        exact hns ⟨b, hb, ν, hν, hν'⟩
+      obtain ⟨N, hN⟩ := detectJoin C f hfin hleaves
+      exact hN (Set.mem_iInter.1 hf N)
+  · exact Or.inl hfin
 
 end LeanUrat.MovesX

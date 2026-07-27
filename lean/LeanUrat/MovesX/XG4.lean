@@ -29,6 +29,62 @@ theorem x3Series {n : ℕ} (X : XFamily n) (K : XConsts n) (hn : 2 ≤ n)
     (VP : VPSoundP S) (ADD : CountableFiberAdditive S) (σ : SplitType n) :
     HasSum (fun T : { T // S.typemult T = σ } => (X.ctx p).frac (S.fiber T))
       (densityOf S σ) := by
-  sorry
+  -- The union event of the σ-typemult fibers.
+  set E : Set (MonicBox n p) := {f | ∃ T, S.typemult T = σ ∧ f ∈ S.fiber T} with hE
+  -- ADD's two coverage hypotheses for I := σ-typemult trees against E.
+  have hcov : ∀ f ∈ E, ∃ T ∈ {T | S.typemult T = σ}, f ∈ S.fiber T := by
+    intro f hf
+    rw [hE] at hf
+    obtain ⟨T, hT, hfT⟩ := hf
+    exact ⟨T, hT, hfT⟩
+  have hsub : ∀ T ∈ {T | S.typemult T = σ}, S.fiber T ⊆ E := by
+    intro T hT f hfT
+    rw [hE]
+    exact ⟨T, hT, hfT⟩
+  -- Countable additivity of the box content over the disjoint σ-fiber family.
+  have hHasSum := ADD {T | S.typemult T = σ} E hcov hsub
+  -- The two null legs: μ(⋂Undec) = 0 (XG.3) and μ(discZero) = 0 (XF.10).
+  have hInter : (X.ctx p).frac (⋂ N, (X.ctx p).Undec N) = 0 :=
+    tendsto_nhds_unique (X.ctx p).frac_inter_tendsto (x3Density X K hn R NS p)
+  have hDisc : (X.ctx p).frac (discZero n p) = 0 := discZeroNull n p hn (X.ctx p)
+  -- E ⊆ true-type event (VP-SOUND: fiber membership pins the true type).
+  have hEA : E ⊆ {f | S.splitType f = σ} := by
+    intro f hf
+    rw [hE] at hf
+    obtain ⟨T, hT, hfT⟩ := hf
+    show S.splitType f = σ
+    rw [VP T f hfT]; exact hT
+  -- true-type event ⊆ E ∪ (⋂Undec ∪ discZero) (decided coverage off the null sets).
+  have hAE : {f | S.splitType f = σ} ⊆ E ∪ ((⋂ N, (X.ctx p).Undec N) ∪ discZero n p) := by
+    intro f hf
+    have hfσ : S.splitType f = σ := hf
+    by_cases h1 : f ∈ ⋂ N, (X.ctx p).Undec N
+    · exact Or.inr (Or.inl h1)
+    · by_cases h2 : f ∈ discZero n p
+      · exact Or.inr (Or.inr h2)
+      · obtain ⟨T, hfT⟩ := S.decided_covered f h1 h2
+        have hTσ : S.typemult T = σ := (VP T f hfT).symm.trans hfσ
+        refine Or.inl ?_
+        rw [hE]
+        exact ⟨T, hTσ, hfT⟩
+  -- frac E = densityOf S σ by the squeeze.
+  have hfracEq : (X.ctx p).frac E = densityOf S σ := by
+    have h1 : (X.ctx p).frac E ≤ (X.ctx p).frac {f | S.splitType f = σ} :=
+      (X.ctx p).frac_mono _ _ hEA
+    have h2 : (X.ctx p).frac {f | S.splitType f = σ} ≤ (X.ctx p).frac E := by
+      calc (X.ctx p).frac {f | S.splitType f = σ}
+          ≤ (X.ctx p).frac (E ∪ ((⋂ N, (X.ctx p).Undec N) ∪ discZero n p)) :=
+            (X.ctx p).frac_mono _ _ hAE
+        _ ≤ (X.ctx p).frac E + (X.ctx p).frac ((⋂ N, (X.ctx p).Undec N) ∪ discZero n p) :=
+            (X.ctx p).frac_union_le _ _
+        _ ≤ (X.ctx p).frac E
+              + ((X.ctx p).frac (⋂ N, (X.ctx p).Undec N) + (X.ctx p).frac (discZero n p)) := by
+            have := (X.ctx p).frac_union_le (⋂ N, (X.ctx p).Undec N) (discZero n p)
+            linarith
+        _ = (X.ctx p).frac E := by rw [hInter, hDisc]; ring
+    have hEq : (X.ctx p).frac E = (X.ctx p).frac {f | S.splitType f = σ} := le_antisymm h1 h2
+    rw [hEq]; rfl
+  rw [hfracEq] at hHasSum
+  exact hHasSum
 
 end LeanUrat.MovesX

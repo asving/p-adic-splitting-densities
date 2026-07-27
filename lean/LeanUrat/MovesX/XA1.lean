@@ -18,6 +18,11 @@ theorem rowTotal {n : ℕ} (ν : XNode n) :
     (rowOf ν = .T2 ↔ ν.sel ≠ none ∧ ν.ell = 1 ∧ 2 ≤ ν.e ∧ 2 ≤ ν.h) ∧
     (rowOf ν = .T3 ↔ ν.sel ≠ none ∧ ν.ell = 1 ∧ 2 ≤ ν.e ∧ ν.h = 1) ∧
     (rowOf ν = .T4 ↔ ν.sel ≠ none ∧ ν.ell = 1 ∧ ν.e = 1) := by
-  sorry
+  have hell := ν.ellpos
+  have he := ν.epos
+  have hh := ν.hpos
+  unfold rowOf
+  split_ifs with h1 h2 h3 h4 <;>
+    refine ⟨?_, ?_, ?_, ?_, ?_⟩ <;> simp_all <;> omega
 
 end LeanUrat.MovesX

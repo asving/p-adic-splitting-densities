@@ -14,6 +14,10 @@ set_option maxHeartbeats 1000000
 
 theorem pigeonMax (m : Multiset ℚ) (hm : m ≠ 0) (K : ℚ) (h : K ≤ m.sum) :
     ∃ v ∈ m, K ≤ (m.card : ℚ) * v := by
-  sorry
+  obtain ⟨w, hw_mem, hw_max⟩ := Multiset.exists_max_image (fun x : ℚ => x) hm
+  refine ⟨w, hw_mem, ?_⟩
+  have hsum : m.sum ≤ m.card • w := Multiset.sum_le_card_nsmul m w hw_max
+  rw [nsmul_eq_mul] at hsum
+  linarith
 
 end LeanUrat.MovesX

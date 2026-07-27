@@ -18,6 +18,15 @@ theorem x1aTrivial {n : ℕ} (X : XFamily n) (p : ℕ) [Fact p.Prime] :
       f ∈ DescX X p ⟨false, false⟩ (dCert ⟨false, false⟩ H)) ∧
     (∀ (f : MonicBox n p) d, f ∈ DescX X p ⟨false, false⟩ d → f ∉ discZero n p →
       2 * d ≤ vdisc f) := by
-  sorry
+  refine ⟨?_, ?_⟩
+  · -- First inclusion: stratum(H) ⊆ Desc_{d_cert(H)}, definitional (witness H, le_refl).
+    intro f H hf
+    exact ⟨H, hf, le_refl _⟩
+  · -- Second inclusion: at ⟨false, false⟩ the certified depth is 0 (XB.1 dCertZero),
+    -- so any d with d ≤ d_cert(H) = 0 forces d = 0 and 2·d = 0 ≤ v_p(disc f).
+    intro f d hf _
+    obtain ⟨H, _, hd⟩ := hf
+    rw [(dCertZero H).1] at hd
+    omega
 
 end LeanUrat.MovesX

@@ -13,6 +13,12 @@ set_option maxHeartbeats 1000000
 
 theorem x2hypDichotomy (M : ℚ) (d m : ℕ) (h : M < (d + 1) * m) :
     M < ((d : ℚ) + 1) ^ 2 ∨ M < (m : ℚ) ^ 2 := by
-  sorry
+  have hd : (0 : ℚ) ≤ (d : ℚ) + 1 := by positivity
+  have hm : (0 : ℚ) ≤ (m : ℚ) := Nat.cast_nonneg m
+  rcases le_total ((d : ℚ) + 1) (m : ℚ) with hle | hle
+  · right
+    nlinarith [h, hle, hd, hm]
+  · left
+    nlinarith [h, hle, hd, hm]
 
 end LeanUrat.MovesX

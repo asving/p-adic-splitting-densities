@@ -23,6 +23,15 @@ theorem detectJoin {n p : ℕ} [Fact p.Prime] (C : XCtx n p) (f : MonicBox n p)
     (hfin : Finite (C.Branch f))
     (hleaves : ∀ b : C.Branch f, IsLeafB C b → ∀ ν ∈ C.hist b, ¬ C.nsTrack ν) :
     ∃ N, f ∉ C.Undec N := by
-  sorry
+  classical
+  haveI : Finite (C.Branch f) := hfin
+  haveI : Fintype (C.Branch f) := Fintype.ofFinite _
+  refine ⟨(Finset.univ : Finset (C.Branch f)).sup (fun b => C.threshold b + capHB C b), ?_⟩
+  rw [C.undec_spec f]
+  refine ⟨hfin, fun b hb => ?_⟩
+  have hle : C.threshold b + capHB C b ≤
+      (Finset.univ : Finset (C.Branch f)).sup (fun b => C.threshold b + capHB C b) :=
+    Finset.le_sup (f := fun b => C.threshold b + capHB C b) (Finset.mem_univ b)
+  exact C.detectBranch b hb (hleaves b hb) _ hle
 
 end LeanUrat.MovesX
