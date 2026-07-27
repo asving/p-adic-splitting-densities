@@ -1,4 +1,16 @@
 # MOVESSP LEAN BLUEPRINT (2026-07-28) — the §M-SPECIES corpus, unit specs
+# REV 3 (post-Fable-audit on rev 2: 2 crit / 4 gap repaired; NOTE ERRATUM
+# CANDIDATE recorded at §9 — the entrance display's "[R4/R5 rows]" bracket)
+
+REV 3 (Fable audit `lean/notes/MOVESSP_AUDIT_FABLE_2026-07-28.md`): C1 loops3
+order corrected + an ORDER DISCIPLINE rule for every pinned-list decide target
+(§4); C2 the ▸(1,2) entrance roster corrected to its TRUE three members per
+group — the note-side bracket flagged as an erratum candidate (§9), verified,
+never silently baked in; G1 collapseRuns pinned by its defining equations; G2
+the n1 dependency cycle split; G3 the group-F fence retargeted to closure-side
+objects only; G4 the non-detachability overclaim weakened to what the encoding
+enforces. Table extended at §8.
+
 # REV 2 (post-Codex-audit, 17 findings repaired)
 
 REV 2 repairs ALL findings of `lean/notes/MOVESSP_AUDIT_CODEX_2026-07-28.md`
@@ -299,8 +311,15 @@ def CatalogueWord.tauWord {n : ℕ} (cw : CatalogueWord n) : List Species :=
   cw.word.dropLast
 
 /-- Collapse self-loop runs: keep one letter per maximal run of equal
-consecutive letters (the depth direction struck). -/
-def collapseRuns : List Species → List Species   -- consecutive-dedup recursion
+consecutive letters (the depth direction struck). PINNED by its defining
+equations [REV 3, G1 — the const-[] degenerate satisfier is excluded: it
+violates the singleton equation]. Equals `List.destutter (· ≠ ·)`. -/
+def collapseRuns : List Species → List Species
+  | [] => []
+  | [s] => [s]
+  | s :: s' :: rest =>
+      if s = s' then collapseRuns (s' :: rest)
+      else s :: collapseRuns (s' :: rest)
 
 /-- An ENTRANCE SHAPE into a block entry [REV 2, F4]: an Out-linked word in
 𝒮ₙ^raw whose LAST letter is the block-entry read with DESIGNATED continuing
@@ -384,6 +403,7 @@ def R3letterA : Species -- R3, left flank [2]      [F6: BOTH variants]
 def R3letterB : Species -- R3, left flank [1, 1]   [F6]
 def rootR4sel12 : Species -- R4's {(1,2)}▸(1,2) row
 def rootR5sel12 : Species -- R5's {(1,2)}▸(1,2) row
+def rootR6sel12 : Species -- R6's {(1,2),(1,1)}▸(1,2) row [REV 3, C2/§9]
 def rootR6sel13 : Species -- R6's {(1,3)}▸(1,3) row
 def letterI21 : Species -- I, stage (D,w) = (2,1)  (via e = 2 sides)
 def letterI22 : Species -- I, stage (2,2)          (via ▸(2,1))
@@ -408,6 +428,16 @@ def linCount (s : Species) : ℕ := Multiset.card (s.lam.filter fun gm => gm.1 =
 distinct linears, q = 3: ≥ 3), not by cardinality. -/
 def fieldSizeExcluded2 : List Species  -- the 11 displayed letters, named
 def fieldSizeExcluded3 : List Species  -- the 2 {(1,1)³} rows, named
+/- ORDER DISCIPLINE [REV 3, C1 — this bug class repeats]: every literal list
+that a unit equates with a `catalogue3.filter …` (or `groupX.filter …`) MUST
+list its members in catalogue3 order — groups R → Q3 → Q2 → Q1 → I, and within
+a group in the displayed row order — because `List.filter` preserves order and
+Nodup pins one occurrence each. Audit of all pinned-list targets under this
+rule: fieldSizeExcluded2/3 (declared here in catalogue3 order), loops3
+([loopQ3, loopQ23] — Q3 before Q2), terminal3 (groupQ1 ++ groupI ✓),
+entrance3_patterns' groupR filter ([rootR4sel12, rootR5sel12, rootR6sel12] —
+R4 < R5 < R6 ✓); all other n = 3 targets are membership/`all` forms,
+order-free. -/
 /-- N*₃ on the six (SP.6): per-NAME table, `none` off multiSide6. -/
 def Nstar3six : Species → Option ℕ
 ```
@@ -793,9 +823,15 @@ STANDING hypothesis_fields FOR THIS GROUP (each cited at its §2 field): hRoot,
 hStage, hCoh, hHalt (SP-COMP proof steps (1)/(2)/(3)/(3′)/(5) — §B2-DEF
 D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner
 HC-1/MovesD; OPEN, never proved here) and hVerdictPin (THE D4R.0-K(c)
-RESIDUAL — the verdict pin, owner [3t] via VP; explicit per F7). NEVER
-strengthen (no field may assume SuccStep/InCatalogue/RootAdmissible), never
-drop (hCoh's coherence stays).
+RESIDUAL — the verdict pin, owner [3t] via VP; explicit per F7). FENCE
+[REV 3, G3 — retargeted to the closure side]: NEVER strengthen — no field may
+mention the CLOSURE-side objects `InCatalogue`, `Succ`, or `Out` (the
+conclusions; the inductively generated catalogue). The per-read fields ARE the
+note's engine outputs, and jointly they unfold to RootAdmissible at r = 0 and
+to SuccStep per step — that is not a leak but the note's own scoping: steps
+(1)–(3′)/(5) hand the closure exactly its premises, and the units' content is
+the quantified induction, not a logical gap between fields and premises.
+NEVER drop (hCoh's coherence stays).
 
 **Sp.compMember** · SP3_compMember.lean
 statement: `theorem SP_COMP (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p])
@@ -812,9 +848,14 @@ with SuccStep ASSEMBLED from M.hStage (StageLaws) + M.hCoh at r + 1
 (Coherent ∧ Budget) — the assembly is the derivation, not an assumption.
 difficulty: easy-medium
 hypothesis_fields: the standing group list above; hVerdictPin UNUSED by this
-unit's proof but part of the interface it quantifies over (the note's SP-COMP
-is conditional on exactly that residual — stating the theorem over the full
-CanTreeModel keeps the conditionality visible and non-detachable).
+unit's proof but part of the interface it quantifies over. [REV 3, G4 — what
+IS enforced:] the field keeps the D4R.0-K(c) conditionality VISIBLE — named in
+the interface every consumer instantiates — but does NOT type-enforce it: a
+model discharges (verdict, hVerdictPin) trivially (e.g. verdict := fun _ =>
+some .z), WHICH verdict being deliberately VP-owned; the ledger rides in the
+named field + its docstring, and Lean-side SP_COMP is equally strong without
+it. Faithful to the note: the residual is a cited OPEN kernel, not a
+consumed premise of steps (1)–(3′)/(5).
 
 **Sp.compEdges** · SP3_compEdges.lean
 statement: `theorem SP_COMP_edges (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p])
@@ -846,18 +887,28 @@ sel ≠ none on tauWord from hFirstW1 + (G6). · difficulty: easy
 hypothesis_fields: verdict pinning (WHERE the halt verdict sits — parent read /
 level-0 track) is VP's, NOT stated; only the word arithmetic is.
 
-**Sp.n1Clause** · SP3_n1Clause.lean
+**Sp.n1RootConfirming** · SP3_n1Root.lean  [REV 3, G2 — split from the rev-2
+Sp.n1Clause to break the n1singleton cycle: this half has NO n = 3/enum deps]
 statement: `theorem n1_root_confirming {s : Species} (h : RootAdmissible 1 s) :
-s.W = 1 ∧ s.sel = none` AND `theorem n1_word (cw : CatalogueWord 1) :
-cw.word.length = 1 ∧ cw.tauWord = []`
+s.W = 1 ∧ s.sel = none`
 moves_ref: "At n = 1 the catalogue word is the single ROOT letter (W = n = 1,
-selection ⊥ — (G6)'s degenerate degree) … the τ-WORD is EMPTY".
-deps: Sp.n1singleton, Sp.memCoherent · sketch: RootStage gives W = 1, (G6)
-gives sel = none; for n1_word: every letter of cw is InCatalogue 1 (hMem) =
-confirmingRoot1 (n1singleton), so every letter has W = 1; hFirstW1 then
-empties dropLast; length 1. · difficulty: easy-medium
-hypothesis_fields: (τ-hen) SEMANTICS (the level-0 track leaf, v = {(1,1)}) is
-VP's — only the word/letter arithmetic is stated.
+selection ⊥ — (G6)'s degenerate degree)".
+deps: — · sketch: RootStage gives W = n = 1; (G6) gives sel = none.
+difficulty: easy
+hypothesis_fields: (τ-hen) SEMANTICS is VP's — only letter arithmetic stated.
+
+**Sp.n1Word** · SP3_n1Word.lean  [REV 3, G2 — the other half; DAG:
+n1RootConfirming → n1singleton → n1Word, acyclic]
+statement: `theorem n1_word (cw : CatalogueWord 1) :
+cw.word.length = 1 ∧ cw.tauWord = []`
+moves_ref: "the τ-WORD is EMPTY (the standing rule 'catalogue word minus the
+final confirming letter' applied to the one-letter word …); the CATALOGUE WORD
+is the single confirming root letter".
+deps: Sp.n1singleton, Sp.memCoherent · sketch: every letter of cw is
+InCatalogue 1 (hMem) = confirmingRoot1 (n1singleton), so every letter has
+W = 1; hFirstW1 then empties dropLast; length 1; tauWord = dropLast = [].
+difficulty: easy-medium
+hypothesis_fields: as Sp.n1RootConfirming.
 
 **Sp.collapseWalk** · SP3_collapseWalk.lean  [REV 2, F4 — new: wires words to
 SP-DAG]
@@ -867,9 +918,15 @@ CollapsedWalk n (collapseRuns l)` AND `theorem collapseRuns_sublist
 (l : List Species) : (collapseRuns l).Sublist l`
 moves_ref: "a loop-collapsed entrance word is a collapsed walk in the menu
 graph" + "(the number of letters after collapsing self-loop runs)".
+PLUS the G1 pinning lemmas [REV 3]: `theorem collapseRuns_ne_nil {l : List
+Species} (h : l ≠ []) : collapseRuns l ≠ []` and `theorem
+collapseRuns_eq_self_iff (l : List Species) : collapseRuns l = l ↔
+l.Chain' (· ≠ ·)` (with §2's defining equations, these exclude every
+degenerate implementation — const-[] fails both)
 deps: — · sketch: consecutive-dedup keeps membership (Sublist) and keeps
 exactly the SuccStep edges with s ≠ s′ (a run boundary is a non-loop edge);
-induction on l with the two-head case split. · difficulty: medium
+induction on l with the two-head case split; the pinning lemmas via Mathlib's
+`List.destutter` API where it applies. · difficulty: medium
 
 **Sp.entranceDef** · SP3_entrance.lean  [REV 2, F4 — EntranceShape (§2) now
 carries the block-entry selection (gsel, μsel) + height/depth parameter slots;
@@ -991,8 +1048,10 @@ deps: DefsN3 · sketch: decide (53 × 53). With Sp.n3catalogueEq this IS the sea
 menu map on 𝒮₃^raw. · difficulty: medium (perf, moderate)
 
 **Sp.n3selfloops** · SP6_selfloops.lean
+[REV 3, C1 — target reordered to catalogue3's pinned order: loopQ3 ∈ groupQ3
+precedes loopQ23 ∈ groupQ2 in groupR ++ groupQ3 ++ groupQ2 ++ groupQ1 ++ groupI]
 statement: `theorem loops3 : catalogue3.filter (fun s => succStepB 3 s s) =
-[loopQ23, loopQ3]`
+[loopQ3, loopQ23]`
 moves_ref: "SELF-LOOPS: Q2.3▸(1,2) → Q2 (the μ = 2 loop) and Q3's ▸(1,3) rows →
 Q3 (the μ = 3 loop) — exactly two loop classes at n = 3, both POST-REC".
 deps: DefsN3 · sketch: decide. Cross-check `Sp.selfloopFull`: both are the full
@@ -1058,17 +1117,23 @@ hypothesis_fields: none stated — but the docstrings MUST carry the note's
 typing: field-size pass is "NECESSARY for realization, NOT sufficient"; N*₃
 values are gate-censused data (M-n3-V2), not theorems.
 
-**Sp.n3entrancePatterns** · SP6_entrance.lean  [REV 2, F17 — the FULL displayed
-roster, no ellipses: one conjunct per displayed pattern clause]
+**Sp.n3entrancePatterns** · SP6_entrance.lean  [REV 2, F17: full roster, no
+ellipses; REV 3, C2: the ▸(1,2) rosters corrected to their TRUE three members
+per group — the note's own R6 row {(1,2),(1,1)}▸(1,2) is a root ▸(1,2) letter
+and its menu law "▸(1,2) → Q2 letters" is row-unrestricted; the entrance
+display's "[R4/R5 rows]" bracket is an ERRATUM CANDIDATE, verified at §9 and
+NOT baked into any target]
 statement: `theorem entrance3_patterns :
--- into the μ=2 block, direct: root▸(1,2) = the R4/R5 ▸(1,2) rows, exactly
-(groupR.filter fun s => s.sel == some (1, 2)) = [rootR4sel12, rootR5sel12] ∧
+-- into the μ=2 block, direct: root▸(1,2) = the ▸(1,2) rows of R4/R5/R6
+-- (three members; §9 — the note's bracket omits R6's)
+(groupR.filter fun s => s.sel == some (1, 2)) =
+  [rootR4sel12, rootR5sel12, rootR6sel12] ∧
 -- into the μ=2 block, via the μ=3 loop: root▸(1,3)·(Q3-loop)^d·▸(1,2)
 succStepB 3 rootR6sel13 loopQ3 = true ∧
 succStepB 3 loopQ3 loopQ3 = true ∧
 ((groupQ3.filter fun s => s.sel == some (1, 2)).all fun q =>
   succStepB 3 loopQ3 q) = true ∧
-((groupQ3.filter fun s => s.sel == some (1, 2)).length = 2) ∧
+((groupQ3.filter fun s => s.sel == some (1, 2)).length = 3) ∧
 -- into the μ=3 block: root▸(1,3)
 rootR6sel13.sel = some (1, 3) ∧ rootR6sel13 ∈ groupR ∧
 -- into the increment landings (D ≥ 2): the ▸(2,1)/▸(3,1)/e=2/e=3 rows of
@@ -1091,8 +1156,9 @@ moves_ref: "ENTRANCE SUB-CATALOGUE {ε} at n = 3 (loops as depth slots): into
 the μ=2 block: root▸(1,2) [R4/R5 rows], or root▸(1,3)·(Q3-loop)^d·▸(1,2); into
 the μ=3 block: root▸(1,3); into each increment landing (D ≥ 2): the
 ▸(2,1)/▸(3,1)/e=2/e=3 rows of R, Q2, Q3 prefixed by their cascades — a finite
-list, displayed by the same map."
-deps: DefsN3 · sketch: decide per conjunct (filters over 53; edge checks).
+list, displayed by the same map." [the bracket read per §9's verified
+correction: the ▸(1,2) rows of R4/R5/R6]
+deps: DefsN3 · sketch: decide per conjunct (filters over 53/21; edge checks).
 difficulty: easy
 
 **Sp.n1singleton** · SP6_n1singleton.lean
@@ -1100,7 +1166,9 @@ statement: `theorem SnRaw1_eq : ∀ s, InCatalogue 1 s ↔ s = confirmingRoot1`
 (confirmingRoot1 := the W = 1 root letter at stage (1,1,1))
 moves_ref: "(G6) … (or W = n = 1 at the root — the degenerate degree)" + the n = 1
 clause: "At n = 1 the catalogue word is the single ROOT letter".
-deps: Sp.speciesEnumComplete, Sp.n1Clause, Sp.succTerminal · sketch: root-admissible
+deps: Sp.speciesEnumComplete, Sp.n1RootConfirming, Sp.succTerminal
+[REV 3, G2 — was Sp.n1Clause; the cycle is split: only the root-confirming
+half is consumed here, and Sp.n1Word consumes THIS unit] · sketch: root-admissible
 at n = 1 pins every field (g6Forcing at W = 1); terminal ⇒ no step case.
 difficulty: easy-medium
 
@@ -1122,18 +1190,20 @@ difficulty: easy-medium
    this corpus; MovesX reads SP.4/SP-DAG; MovesS defines its (m, c) roster on
    `Species.lam` ITSELF (the F15 deferral — §2's record; wave-4 sync item).
 
-## 7. Roster summary  [REV 2]
+## 7. Roster summary  [REV 3]
 
-56 units + 3 def-only files (Defs, DefsEnum, DefsN3). By group: A reflection/
+57 units + 3 def-only files (Defs, DefsEnum, DefsN3). By group: A reflection/
 closure 5 · B shift block 8 · C coherence/budget 4 · D SP-FIN 6 · E SP-OUT/
-SP-DAG 11 · F SP-COMP/words/entrance 6 (mcRoster STRUCK per F15; collapseWalk
-ADDED per F4) · G enumeration 3 · H n = 3 decide layer 13.
+SP-DAG 11 · F SP-COMP/words/entrance 7 (mcRoster STRUCK per F15; collapseWalk
+ADDED per F4; n1Clause SPLIT into n1RootConfirming + n1Word per G2) ·
+G enumeration 3 · H n = 3 decide layer 13.
 
-easy: 29 — all of A; shCongr/shDvd/shE1/shEquiv/shStage/shExample;
+easy: 30 — all of A; shCongr/shDvd/shE1/shEquiv/shStage/shExample;
   anchorBoundGeo/b4Derived; encodeCard; outFinite/selfloopFull/fullUnique/
-  rankStepInc/rankStrict; compEdges/tauWord; n3card53/n3reachable/n3selfloops/
-  n3postincW1/n3terminal5/n3R3check/n3thresholdData/n3entrancePatterns.
-medium: 23 (incl. 3 easy-medium: compMember, n1Clause, n1singleton) — shSlots/
+  rankStepInc/rankStrict; compEdges/tauWord/n1RootConfirming; n3card53/
+  n3reachable/n3selfloops/n3postincW1/n3terminal5/n3R3check/n3thresholdData/
+  n3entrancePatterns.
+medium: 23 (incl. 3 easy-medium: compMember, n1Word, n1singleton) — shSlots/
   shAnchorInv; anchorBoundCensus/g6Forcing; compEncode/lamEncode/finThm/
   finWords; selfloopChar/fullForcing/rankRadix/dagWalk/dagWords; collapseWalk/
   entranceDef; compEnumComplete; n3rootLetters/n3closureStep/n3catalogueEq/
@@ -1185,3 +1255,60 @@ speciesEnumComplete: per-field range lemmas).
       Nodup; duplicate-candidate caveat recorded.
   F17 gap  entrancePatterns ellipsis→ full conjunction, one clause per displayed
       pattern, all letters named.
+
+## 8b. REV 3 findings → repairs (audit MOVESSP_AUDIT_FABLE_2026-07-28.md)
+
+  C1  crit loops3 order-false       → target reordered [loopQ3, loopQ23]
+      (catalogue3 = R ++ Q3 ++ Q2 ++ Q1 ++ I); ORDER DISCIPLINE rule added at
+      §4 with a full audit of every pinned-list decide target (terminal3 ✓,
+      entrance groupR filter ✓, fieldSizeExcluded2/3 declared in catalogue3
+      order, all other targets membership/`all`-form).
+  C2  crit entrance ▸(1,2) roster   → corrected to the true THREE members per
+      group ([rootR4sel12, rootR5sel12, rootR6sel12]; Q3 length 3), per the
+      note's own R6 row and row-unrestricted menu law; the note-side
+      "[R4/R5 rows]" bracket recorded as a VERIFIED erratum candidate (§9),
+      cited by the unit, baked into no target.
+  G1  gap  collapseRuns unpinned    → defining equations written into §2 (=
+      List.destutter (· ≠ ·)); pinning lemmas collapseRuns_ne_nil +
+      collapseRuns_eq_self_iff added to Sp.collapseWalk (const-[] now fails
+      the def AND both lemmas).
+  G2  gap  n1 dependency cycle      → Sp.n1Clause split: Sp.n1RootConfirming
+      (no enum deps) → Sp.n1singleton → Sp.n1Word; deps rewritten; DAG
+      acyclic.
+  G3  gap  fence vs hRoot           → fence retargeted to CLOSURE-side objects
+      only (InCatalogue/Succ/Out); the fields-unfold-to-premises fact stated
+      as the note's own step-(1)–(3′)/(5) scoping, not a leak.
+  G4  gap  non-detachable overclaim → weakened to "visible": the trivial
+      (verdict, hVerdictPin) discharge displayed; ledger carried by the named
+      field + docstring, not by the type.
+
+## 9. NOTE ERRATUM CANDIDATE (routed to the coordinator; NOT applied to the
+frozen note by this blueprint)
+
+LOCATION: `lean/notes/MOVES_2026-07-24.md`, §M-SPECIES SP.6, the entrance
+display (locate by text, per the note's own grep-anchor convention):
+
+  "ENTRANCE SUB-CATALOGUE {ε} at n = 3 (loops as
+   depth slots): into the μ=2 block: root▸(1,2) [R4/R5 rows], or
+   root▸(1,3)·(Q3-loop)^d·▸(1,2); …"
+
+FINDING (CONFIRMED as an incomplete gloss; Fable audit C2 root cause): the
+bracket "[R4/R5 rows]" omits R6's ▸(1,2) row. Cross-check against the note's
+OWN displays:
+ (1) the hand catalogue's R6 row lists a ▸(1,2) selection —
+     "R6  e=1, ℓ=3, a=0 | {(3,1)}▸(3,1); {(2,1),(1,1)}▸(2,1) and ▸(1,1);
+      {(1,3)}▸(1,3); {(1,2),(1,1)}▸(1,2) and ▸(1,1); {(1,1)³}▸(1,1)" —
+     a ROOT letter whose designated selection is (1, 2);
+ (2) the menu law is row-unrestricted — "▸(1,2) → Q2 letters" — so that
+     letter's continuing branch opens the child window [0, 2]: the μ=2 block;
+ (3) the same display's increment-landing clause quantifies over "the
+     ▸(2,1)/▸(3,1)/e=2/e=3 rows of R, Q2, Q3" — the roster-of-rows form the
+     ▸(1,2) clause evidently intends.
+The head clause "root▸(1,2)" is CORRECT as stated; only the parenthetical
+bracket is incomplete. PROPOSED CORRECTION: "[R4/R5 rows]" → "[the ▸(1,2)
+rows of R4/R5/R6]" (three letters; likewise three Q3 copies on the loop-exit
+path). No count, menu edge, or gate quantity of the note changes: the 53, the
+menu map, and the M-n3/V2 gate records are untouched (the census walked the
+true menu; only the gloss bracket under-listed). Blueprint-side: unit
+Sp.n3entrancePatterns pins the TRUE roster and cites this section; nothing
+silently repairs the note.
