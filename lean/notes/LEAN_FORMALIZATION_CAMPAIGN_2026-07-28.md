@@ -128,6 +128,22 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
     DOCTRINE FOR ALL FUTURE UNITS (wave 3+ prompts must carry it): a faithful
     interface must be FALSE for instances the note would reject; obligations
     may be open, but their TYPES must pin their content.
+  Round 2 (re-audits): U REJECT 4/3 (rev 3 charged with the orchestrator ruling:
+    concrete Box N = monic coefficient tuples over ZMod p^N; conclusion split
+    classifier-keyed (i) + VP-SOUND-conditional identification (ii), mirroring
+    the note's own structure; RegP entry families pinned by cardinality
+    equations; pole-freeness explicit in (REG-p)).
+  AUDIT-BUDGET POLICY from round 3 on (Codex window ≥72%): intermediate audit
+    rounds go to FRESH FABLE instances (decorrelated-enough for statement-level
+    checks, zero Codex cost); Codex runs ONLY each corpus's final confirmation
+    pass. The per-corpus acceptance bar stays dual: last round must be
+    Codex-clean AND a Fable pass on identical text.
+  MovesGr option (a): EXECUTED (2026-07-28) — with a STATEMENT-FENCE EVENT: the
+    signed-off literal add_def was a Lean TAUTOLOGY (instance elaboration
+    re-read the RHS + as the ring's own; repro in MOVESGR blueprint §8.4);
+    landed componentwise with identical signed-off CONTENT. Ledger: 19 proved
+    + 2 sorried + 5 held; L1_gr_domain_iff_val + L2_degZero_subring PROVED;
+    footprints Lean-core only. FLAG FOR ASVIN in the next summary.
   MovesT/MovesV blueprints: deferred to wave 4 by design (consume wave-3 corpora).
   Everything else: PENDING.
 
