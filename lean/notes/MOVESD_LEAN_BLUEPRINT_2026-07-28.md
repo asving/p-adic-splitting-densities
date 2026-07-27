@@ -1,3 +1,29 @@
+# MOVESD LEAN BLUEPRINT — REV 8 (closing)
+
+REV 8 (2026-07-28): the closing sweep — Fable#6 ACCEPT (0 crit / 2 one-line gaps;
+certificate replicated in Python, two self-invented adversaries killed, the
+UNCLAIMED A(P̂₀) = 14 cross-checked against the note) ∪ Codex FINAL#6 REJECT 3/3
+(short, note-supported). Implemented:
+(1) ShapeWF gains the RESIDUE-DEGREE laws `w0`/`wchain` (w₀ = 1; w_{r+1} = w_r·g_r
+— L3's retained "residue degrees w_r" now chained; §D4-R.6: "F₁ := F_p[z]/(ψ) =
+F_{p²}, w₁ = 2"); new adversary A-vi (root-only w = 2) FAILS the certificate.
+(2) SW1 now DERIVES MonicTie's derivable clauses (monicTop → r = 0 via
+hmonicRoot + root_iff; non-root reads' monicTop = false); the genuinely
+underivable residue — the ROOT read's monicTop ↔ (s0+wSide = n) — is the named
+encoding gap ENC-MONIC (§2 ledger), kept as SW1's weakest sufficient hypothesis
+`hmt0` with the §D4-R.6 display quoted.
+(3) The ∅ dispatch reaches E9/D3a/W3 through the F3/CD bridge: D4R2'/D4R2'_full
+are restated on `Shape.CD` (C_∅ = 1 ≤ Mfac(∅)·p^{W(∅)} = 1 — the note's C_∅ = 1
+arithmetic IS the theorem there); E9 gains `encTargetP_empty` (the
+singleton-to-unit encoding display).
+(4) Gaps: `strS` HOISTED to §3.0 group (1) (gamTie consumes it — the order now
+elaborates); TreeModel gains L2's ALL-AND-ONLY law (`eligible` + `child_iff`,
+typed OPEN); VerdictModel gains the uniform-cap teeth (`capBound`/`hcapU`/
+`hcapB`/`hlevel` — `cellOf := id` now fails `cell_local`).
+(5) Fable's one-liners: the §3.2 variable line completed; the Shape.NP ∅-routing
+docstring sentence added (+ the elided word "value" restored).
+Tables §9–§14 historical; §15 = REV 8. [Pre-REV-8 headers follow, audit trail:]
+
 # MOVESD LEAN BLUEPRINT — REV 7 (certificate completion)
 
 REV 7 (2026-07-28): completion sweep on the DUAL-CONFIRMED architecture — Codex
@@ -234,7 +260,7 @@ uniform quantifier, with cross-level compatibility automatic (same C, same A′)
 | object | encodes | status |
 |---|---|---|
 | `pol : CanonPolicy p F` (parameter) | WHICH canonical policy (the (S6b) offset-P formula) | OPEN parameter, pinned by §B2-DEF/HC-1; its LAWS (lift = function of node data, per-node) are structure fields — `False` not expressible |
-| `Matches.hmonic` + `ShapePrefix.MonicTie` (a `ShapeWF` COMPONENT) [REV 6] | root monic lead digit = 1 (scoped, §0.5) + monicTop ⟺ the root window's degree-n slot | interface equalities; a malformed monic encoding is NOT A SHAPE (`Shape n` subtype — the domain ruling) |
+| `Matches.hmonic` + `ShapePrefix.MonicTie` (a `ShapeWF` COMPONENT) [REV 6] + **ENC-MONIC** (SW1's `hmt0`) [REV 8] | root monic lead digit = 1 (scoped, §0.5) + monicTop ⟺ the root window's degree-n slot; ENC-MONIC = the one underivable clause (root monicTop ↔ full span), an ENCODING-correctness duty | interface equalities; malformed encodings are NOT SHAPES; ENC-MONIC owned by the D4-n3 gate + menu-wave verification (each catalogued shape's bit checked against its displayed side) |
 | `InBox n` (PrefSet clause) | the root side lies in the degree-n box | part of "§C history of the degree-n box" (the note's setting); consumed by W1 |
 | `Presented.jet` + `Presented.hnorm` [REV 5] | per-class presentations (§C C.2) + the typed dictionary pin | HC-2 bridge — the corpus's two assumed structure fields; `Threshold.{hstab, jets}` packages them at the note's NP (reconciliation (5)) |
 | `D4R_CYL S T` (pinned Prop, def) | L6's (D4R-CYL) | note-PROVED given kernel (a)+(b) (both dual-verified-discharged) + Thm C(a); Lean proof EXPLICITLY DEFERRED to the wave-4/HC-2 tree corpus; D15 consumes it as a named hypothesis |
@@ -256,10 +282,11 @@ deferred Prop `D4R_CYL`), bare `cap`/`hcap` (→ the typed cap law).
 ### 3.0 DECLARATION ORDER — NORMATIVE [REV 6, Codex#4 f.6: the file order IS the
 spec; the §3.x display order below is thematic, the FILE follows THIS list]
   (1) `Box`, `topLocus`, `ShapeRead` (+ `d`/`len`/`mbar`/`childWidthS`),
-      `ShapePrefix` (+ `W`/`Mfac`), `MonicTie`, `ShapeWF`, `Shape` (the subtype);
-  (2) the shape replicas §3.3 IN FULL — `strS` … `bandS`, `A`, `Nshape`, `A'`,
-      `NPband`, `Anet` (they consume ShapeRead only — no forward refs; `bezT`
-      precedes `ShapeWF` in group (1));
+      `ShapePrefix` (+ `W`/`Mfac`), `ShapePrefix.strS` (HOISTED here — REV 8,
+      Codex#6 g.4: `ShapeWF.gamTie` consumes it), `MonicTie`, `bezT`, `ShapeWF`,
+      `Shape` (the subtype);
+  (2) the remaining shape replicas §3.3 — `lineS` … `bandS`, `A`, `Nshape`,
+      `A'`, `NPband`, `Anet` (`strS`/`bezT` already in group (1));
   (3) `pool`, `fieldEnum`, `lexLt`, `RanchImage`, `ψImage`, `poolSubfield`,
       `EligibleImage`, `selRank`, `Node.sideDigit`;
   (4) `ShapeRead.Matches`, `MatchesHist`, `CanonPolicy`, `canonRoot`,
@@ -380,6 +407,15 @@ structure ShapeWF (n : ℕ) (P : ShapePrefix) : Prop where
   dchain : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
     (P.reads[r+1]'hr).Dwidth = (P.reads[r]'(by omega)).childWidthS
   monic : P.MonicTie n
+  /-- [REV 8, Codex#6 c.1 — RESIDUE-DEGREE laws] L3 retains "residue degrees w_r";
+  the tower chains them: the root pool is the BASE field (w₀ = 1 — §D4-R.6's root
+  read: "Side digits (pool F_p)"), and F_{r+1} = F_r[z]/(ψ_r) with deg ψ = g gives
+  w_{r+1} = w_r·g_r (recenterings: g = 1, unchanged — one uniform law; §D4-R.6:
+  "F₁ := F_p[z]/(ψ) = F_{p²}, w₁ = 2"). The root-only w = 2 record is no longer a
+  Shape. -/
+  w0 : ∀ h0 : 0 < P.reads.length, (P.reads[0]'h0).w = 1
+  wchain : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+    (P.reads[r+1]'hr).w = (P.reads[r]'(by omega)).w * (P.reads[r]'(by omega)).g
   /-- [REV 7, Codex#5 c.1 — LATTICE COMPATIBILITY] the γ-tie, shape-side: L3 rev 9's
   "γ_r := e_r·u*_r + j*_r·h_r, §C's DERIVED list" at the chain stretch — mirrors
   `HistoryCoherent`'s γ-tie clause verbatim (γ's ℤ-typing IS on-lattice). -/
@@ -412,12 +448,16 @@ s0'+wSide' ≤ μ_r ≤ ℓ_r (window, gmu with g ≥ 1). Stated as unit W1′. 
 --  A-iv (Codex#5) one-read root, h = 0              → fails ShapeRead.hh: the
 --        record is UNBUILDABLE (was: a certificate-passing junk shape)          ✗
 --  A-v  (new) (e, h) = (2, 4)                       → fails ShapeRead.hcop      ✗
+--  A-vi (Codex#6, REV 8) root-only record, w = 2     → fails ShapeWF.w0          ✗
 --  P̂* (n = 3): hh 1,3 ≥ 1 ✓; gcd(1,1) = gcd(1,3) = 1 ✓; species: read 1
 --    recentering with e₁ = g₁ = 1 ✓; gamTie: γ₀ = 1·(1·0) + 3·1 = 3 ✓ (the
 --    seal's γ₀), γ₁ = 1·(1·1) + 1·3 = 4 ✓; anchorTie: e = 1 ⟹ bezT = 0 ⟹
---    a = s0 = 0 ✓ both reads ((e,h,g,μ,a) = (·,·,·,·,0)). P̂* ∈ Shape 3.        ✓
+--    a = s0 = 0 ✓ both reads ((e,h,g,μ,a) = (·,·,·,·,0)); [REV 8] w0: w₀ = 1 ✓,
+--    wchain: w₁ = w₀·g₀ = 1·2 = 2 ✓ (the note's "w₁ = 2"). P̂* ∈ Shape 3.       ✓
 --  P̂₀ (n = 4, root-only (1,1,1,2,0), full span, u* = 0): hh/hcop ✓; gamTie
---    γ₀ = 0 + 4·1 = 4 ✓; anchorTie a = 0 = s0 ✓. P̂₀ ∈ Shape 4.                 ✓
+--    γ₀ = 0 + 4·1 = 4 ✓; anchorTie a = 0 = s0 ✓; [REV 8] w0: w₀ = 1 ✓ (root-only,
+--    wchain vacuous). P̂₀ ∈ Shape 4; A(P̂₀) = 14 (Fable#6's unclaimed cross-check
+--    against the note's "A(P̂₀) = 14"). ✓
 -- Every REV-6 gate number is untouched (no new clause constrains the counted
 -- digit/class data — they constrain SHAPE fields only).]
 ```
@@ -427,6 +467,10 @@ s0'+wSide' ≤ μ_r ≤ ℓ_r (window, gmu with g ≥ 1). Stated as unit W1′. 
 ```lean
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+variable {n N m : ℕ} {pol : CanonPolicy p F} {P : Shape n}
+-- [REV 8, Fable#6 G-1: the section's variable line completed — the fiber/event/
+-- mult trio and every §3.2 def below elaborate as displayed; defs that bind their
+-- own (n)/(pol)/(P) shadow these harmlessly.]
 
 /-- A node's side digit at pattern position k, in the AMBIENT field. -/
 def _root_.LeanUrat.MovesC.Node.sideDigit (ν : Node p F) (k : ℕ) : F :=
@@ -667,7 +711,7 @@ open Classical in
 /-- [REV 7, Codex#5 c.2 — the PIECEWISE form, L12 QUOTED VERBATIM: "N(P̂) :=
 max_{η ∈ Pref(P̂)} N(η,⊤) if Pref(P̂) ≠ ∅, N(P̂) := 1 if Pref(P̂) = ∅" — the empty
 clause is UNCONDITIONAL on the band, so a nonempty shape whose realizability
-removes every value assignment (the note: "realizability can remove every
+removes every value assignment (the note: "realizability can remove every value
 assignment") gets NP = 1 exactly, even with band coordinates at positive levels.]
 On the NONEMPTY branch, NPband's alignment with max_η N(η,⊤) is the DOCUMENTED
 semantic reading (each N(η,⊤) = 1 + the largest constrained level, §C C.2; the
@@ -676,7 +720,12 @@ max collapses by shape-constancy — the note's "identical for every η"); the
 corpus-CONSUMED content is only NP_stab + the range (NPu, D4R4_all) — nothing
 stronger is claimed as a theorem [Codex#5 c.2's second half]. Note: `PrefIdx` is
 pol-dependent, hence so is NP — as is L12's own Pref-conditional. Gate (inhabited):
-NP(P̂*) = NPband = 1 + 4 = 5, the note's own derivation. -/
+NP(P̂*) = NPband = 1 + 4 = 5, the note's own derivation. [REV 8, Fable#6 G-2 —
+the ∅-shape routing, displayed: the note's Pref(∅) = {∅} ≠ ∅ takes L12's MAX
+branch with N(∅,⊤) = 1 (T(∅,⊤) has no equations); the Lean PrefIdx(∅) is empty
+(History has no empty chain — F3's displayed deviation) and takes the ELSE
+branch, value 1; NPband(∅) = 1 too — ALL routes give L12's N(∅) = 1,
+value-exact.] -/
 noncomputable def Shape.NP {n : ℕ} (P : Shape n) (pol : CanonPolicy p F) : ℕ :=
   if Nonempty (PrefIdx n pol P) then (P : ShapePrefix).NPband n else 1
 -- [REV 7 order note: `NPband` stays in §3.0 group (2); `Shape.NP` DECLARES in
@@ -757,6 +806,16 @@ structure TreeModel (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
   mem_snoc : ∀ (H ν hν x), mem (some (H.snoc ν hν)) x ↔ (mem (some H) x ∧ child (some H) ν x)
   mem_realizable : ∀ H x, mem (some H) x →
     HistoryCoherent H ∧ Realizable H ∧ pol.IsCanonPres H
+  /-- [REV 8, Codex#6 g.5 — L2's ALL-AND-ONLY law, typed]: the tree's children are
+  EXACTLY the eligible continuations — L2: "the children of a chain η ∈ T_can(f)
+  … are ALL next-node data ν = (side s, its digit tuple, ψ, canonical lift) where
+  s is an eligible side … and ψ ranges over the eligible factors". The SEMANTICS
+  of `eligible` (side/ψ eligibility computed from the FIXED digit cell — "branch
+  sets are cell data, not f-data", L5) is kernel-(b) content: OPEN, pinned by
+  HC-2/MovesT; the law itself is no longer prose-only. -/
+  eligible : Option (History p F) → Node p F → Box p m → Prop
+  child_iff : ∀ (o : Option (History p F)) (ν : Node p F) (x : Box p m),
+    mem o x → (child o ν x ↔ eligible o ν x)
 
 /-- [REV 5, reconciliation (1) — superseding the rev-4 pushback display]: the
 rev-4 dispute is RESOLVED on the Option carrier: Codex#3-f.6's "the empty root
@@ -812,6 +871,20 @@ structure VerdictModel {n N m : ℕ} {pol : CanonPolicy p F}
   chart tie `levelOf = (coordOf ·).1` per presented jet is MovesT's, at consumption). -/
   levelOf_lt : ∀ c : Fin m, levelOf c < N
   cap : V → ℕ
+  /-- [REV 8, Codex#6 g.6 — the UNIFORM-cap teeth]: the per-class caps are
+  uniformly bounded (`capBound`) and the presented level EXCEEDS the envelope
+  (`hcapB` — detection is finite-level data, the box is deeper), with the chart
+  level-surjective (`hlevel`). Consequence: coordinates at levels ≥ capBound
+  exist and sit OUTSIDE the cap envelope, so `cellOf := id` FAILS `cell_local`
+  and `Cell := Box` is no longer a free instance. CROSS-LEVEL uniformity (the
+  same `cap` at every presented N — the addendum's "UNIFORM per-class detection
+  cap") is MovesT's VP packaging across its Threshold jets; typed here at each
+  level, documented not silently claimed. Constant-verdict degenerate instances
+  remain type-legal and are excluded only by the SEMANTIC pin (kernel (c)). -/
+  capBound : ℕ
+  hcapU : ∀ v : V, cap v ≤ capBound
+  hcapB : capBound < N
+  hlevel : ∀ ℓ : ℕ, ℓ < N → ∃ c : Fin m, levelOf c = ℓ
   cap_law : ∀ (v : V) (H : History p F) (x x' : Box p m),
     vdict H x = some v → (∀ c : Fin m, levelOf c < cap v → x c = x' c) →
       vdict H x' = some v
@@ -953,7 +1026,9 @@ F-side eligible sets; two members of a finite set with equal strict-initial-segm
 counts under a strict total order are equal. medium-hard.
 
 ### E9 — encIdx_inj · `E9_encInj.lean`
-statement: `theorem encIdx_inj (hnorm : PresentNorm n pol P) : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F P)`  [REV 6: + hnorm, Codex#4 f.2 — the injection is stated on the note's normalized domain]
+statement:
+  `theorem encIdx_inj (hnorm : PresentNorm n pol P) : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F P)`  [REV 6: + hnorm]
+  `theorem encTargetP_empty (hP : (P : ShapePrefix).reads = []) : Nat.card (EncTargetP p F (P : ShapePrefix)) = 1`  [REV 8, Codex#6 c.3 — the ∅ dispatch: L11's encoding at P̂ = ∅ is the SINGLETON-TO-UNIT map (Pref(∅) = {∅}, target = the empty product, card 1 = C_∅); routed with F3/CD, so the note's C_∅ = 1 arithmetic is a THEOREM here, not a 0-bound]
   (Defs addendum: `encIdx i := fun r => (digits of the class at the d_r counted
   positions, ⟨selRank (node r of reprOf i), E7⟩)`.)
 moves_ref: "The map enc′: η ⟼ (the side-digit tuples (d_j) of its reads; the
@@ -1007,10 +1082,21 @@ deps: Defs. sketch: induction down the reads on the CERTIFICATE P.2: root —
 ℓ₀ ≤ s0+wSide ≤ n (root_box); step — ℓ_{r+1} ≤ s0'+wSide' ≤ μ_r (window) ≤ ℓ_r
 (gmu, g ≥ 1). easy-medium.
 
-### SW1 — ShapeWF_of_matches · `SW1_shapeWF.lean`  [REV 6 — the universe-loss guard]
-statement: `theorem ShapeWF_of_matches {Q : ShapePrefix} {H : History p F} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt : Q.MonicTie n) : ShapeWF n Q`
+### SW1 — ShapeWF_of_matches · `SW1_shapeWF.lean`  [REV 6 — the universe-loss
+guard; REV 8, Codex#6 c.2 — MonicTie now DERIVED except its one genuinely
+encoding-level clause]
+statement: `theorem ShapeWF_of_matches {Q : ShapePrefix} {H : History p F} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt0 : ∀ h0 : 0 < Q.reads.length, ((Q.reads[0]'h0).monicTop = true ↔ (Q.reads[0]'h0).s0 + (Q.reads[0]'h0).wSide = n)) : ShapeWF n Q`
 moves_ref: (the L3 dictionary: every note-η's shape is dictionary-image — so the
-subtype loses NOTHING of the note's universe).
+subtype loses NOTHING of the note's universe). THE MONICTIE DERIVATION [REV 8]:
+monicTop → r = 0 is DERIVED (`hmonicRoot` + `root_iff` via Matches), whence
+non-root reads have monicTop = false; the RESIDUE — the root read's
+monicTop ↔ (s0 + wSide = n) — is NOT derivable from Matches (its forcing clause
+`monicTop → sideDigit ℓ = 1` speaks of the digit VALUE, not the slot POSITION,
+and a full-span root can match a monicTop = false record): it is a property of
+the shape's ENCODING, pinned at the gate by "slot 3 = the monic lead, digit 1"
+(§D4-R.6). Kept as the WEAKEST SUFFICIENT hypothesis `hmt0`, named **ENC-MONIC**
+(§2 ledger: encoding-correctness duty, owner = the D4-n3 gate + the menu wave —
+each catalogued shape's monicTop bit is checked against its displayed side).
 deps: E4, E5. sketch: transport each certificate clause from the matched history:
 species_iff from `History.root_iff`; window/dchain from `HistoryCoherent`; gmu from
 E5 (hOrd) + E4; edvd from `Node.hEdvd`; root_box from `InBox`; [REV 7] gamTie from
@@ -1029,7 +1115,9 @@ hypothesis_fields: NONE.
 ### W3 — D4R2'_full · `W3_coarseBound.lean`  [REV 6, Codex#4 f.3: BOTH displayed
 bounds, over the subtype, no case analysis needed]
 statement:
-  `theorem D4R2'_full (hnorm : PresentNorm n pol P) : Nat.card (PrefIdx n pol P) ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W ∧ (P : ShapePrefix).Mfac ≤ n ^ (P : ShapePrefix).reads.length`
+  `theorem D4R2'_full (hnorm : PresentNorm n pol P) : P.CD pol ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W ∧ (P : ShapePrefix).Mfac ≤ n ^ (P : ShapePrefix).reads.length`
+  [REV 8: on `Shape.CD` — the ∅ case is 1 ≤ 1 ∧ 1 ≤ 1, the note's own C_∅
+  arithmetic through the F3/CD bridge.]
 moves_ref: "C_P̂(p) ≤ M(P̂)·p^{W(P̂)}, M(P̂) ≤ n^{|P̂|} p-FREE (L11)" — the display
 PAIR, verbatim, unconditional on the note's universe (`Shape n` + hnorm).
 deps: D3a, W2. sketch: ⟨D4R2' hnorm, Mfac_le P⟩ — both components already
@@ -1041,9 +1129,13 @@ moves_ref: (L11's codomain count ∏_r Q_r^{d_r}·m̄_r). deps: E2. sketch: Pi/p
 cards; (card pool)^{d} ≤ (p^w)^d; regroup = p^W·Mfac. medium.
 
 ### D3a — D4R2' · `D3a_poolBound.lean`
-statement: `theorem D4R2' (hnorm : PresentNorm n pol P) : Nat.card (PrefIdx n pol P) ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W`  [REV 6: + hnorm; P : Shape n]
+statement: `theorem D4R2' (hnorm : PresentNorm n pol P) : P.CD pol ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W`
+  [REV 8, Codex#6 c.3 — stated on `Shape.CD` (the F3/CD bridge): at P̂ = ∅ this IS
+  the note's C_∅ = 1 ≤ Mfac(∅)·p^{W(∅)} = 1·p⁰ = 1 (empty product/sum); at
+  nonempty shapes CD = Nat.card PrefIdx (CD_eq) — the former statement exactly.]
 moves_ref: "C_P̂(p) ≤ M(P̂)·p^{W(P̂)}" (D4R.2′ display; the M ≤ n^{|P̂|} clause is W2).
-deps: E9, D1c. sketch: `Nat.card_le_card_of_injective encIdx encIdx_inj` + D1c.
+deps: E9, D1c, D2a (CD_eq), F3. sketch: case split on `reads = []`: ∅ — CD = 1,
+Mfac·p^W = 1 (empty product, W = 0); nonempty — CD_eq + `Nat.card_le_card_of_injective encIdx encIdx_inj` + D1c.
 easy. hypothesis_fields: `hnorm : PresentNorm n pol P` (the open dictionary pin,
 HC-2 — REV 7, Codex#5 g.4); the INJECTION itself is proved, nothing else assumed.
 

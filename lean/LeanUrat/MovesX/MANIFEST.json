@@ -576,7 +576,7 @@
     "XF.5"
    ],
    "statement_sha256": "342f1d54e55d7cbedf059d804c9cc974d3ee5d134985ed27632a5378d4d447b1",
-   "note": "2026-07-27: fleet proof (\"proved pending re-verification\", 328e926) FAILED independent re-verification — (kernel) deterministic timeout at ballCover, reproduced in 2 clean builds + solo (>590s). Restored to sorry (statement verbatim); proof text preserved at lean/notes/XF6_pending_reverify_2026-07-27.lean.txt. Escalation-prover item."
+   "note": "2026-07-27: fleet proof (\"proved pending re-verification\", 328e926) FAILED independent re-verification — (kernel) deterministic timeout at ballCover, reproduced in 2 clean builds + solo (>590s). Restored to sorry (statement verbatim); proof text preserved at lean/notes/XF6_pending_reverify_2026-07-27.lean.txt. Escalation-prover item. 2026-07-27 PERF-REPAIRED (escalation prover): kernel bomb bisected to the (hgeq a0).symm ▸ V ValExt transport (stuck Eq.rec in the type index); replaced by a subst-based resRootSum wrapper over abstract g (+ per-declaration private-lemma split). ballCover PROVED, 0 sorries in file; lake build LeanUrat.MovesX.XF6 green in ~6s; #print axioms ballCover = [propext, Classical.choice, Quot.sound] (core-only, NO sorryAx — XF.4/XF.5 are proved in-file; XF.3 untouched). Statement verbatim (sha unchanged)."
   },
   {
    "id": "XF.7",

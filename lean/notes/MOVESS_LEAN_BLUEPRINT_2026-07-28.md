@@ -1,4 +1,45 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 11 (closing sweep)
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 12
+
+## H-CLOSE. REV-12 rulings (the convergent list)
+
+**R50 (Codex#8-1 = Fable#9-G-2, convergent) — `countS_cells` DELETED; the per-cell
+laws stand alone, plus the per-cell VALUATION tie.** ADJUDICATION (the coordinator's
+binary, decided by the note): the note NOWHERE displays an aggregate-factorization
+law; its displayed aggregate for split outcomes is a cell-SUM — "J_{τ,o}(q) := …
+the sum, over the branching digit CELLS of outcome class o …, of the XHD-resummed
+conditional cell mass …, EACH CELL ONCE" (S.0) — and THAT sum is already carried at
+the measured level by `j_interp` (val = rowVal = Σ_cells μcell, `rep_indep`). The
+product law was an undisplayed strengthening (satisfiability by the intended CTS
+instance unestablished — Fable#9-G-2's spurious-denominator analysis); R45's whole
+burden is carried by per-cell `act_iff` + `cellP_nonzero` + `cellP_deg` (Fable's
+option, adopted). Codex#8-1's remaining demand — "valued correctly at every prime
+power" PER CELL — is added in the accepted G4 counting pattern: `cellLvl`/`cellInst`
+carriers + `cellP_count` (the polynomial's value at an active pool IS the cell's
+instance-count at its own defining level).
+
+**R51 (Codex#8-2) — E0 re-scoped to the note's pools.** U-22 now takes the
+BASE-POOL locus (PP with the prime_base iff + prime_sub) and E0 packages at
+all-active BASE pools only, CONSUMING U-22c (infinitely many all-active base
+pools); `RS4Chain.pools_e0` is re-quantified over `PrimePools ∩ allActivePools M`.
+E0 at every prime-power pool is demanded NOWHERE; the consumed base-change legs
+stay covered by `legs_reg` (RegP over consumedDeltas) — exactly the note's
+"δ ranging over 1 AND every base-change index a leg consumes".
+
+**R52 (Fable#9-G-1 + Codex#8-4) — the device unit split by carrier family, every
+chain field owned:** `n2_wshp_device` (WshP ≡ 1-presentation, WshVal, wsh_ok/
+wsh_interp) · `n2_sh_events` (shDom/shEvtH/visH/shEvt + shevt_grouping) ·
+`n2_sh_laws` (wshval_bdd, shDom_ne, sh_realized, shweight_card, AND `wshval_card`
+— the field Fable#9-G-1 found unowned).
+
+**R53 (Codex#8-3) — the CL-17(ii) inheritance DECLARED.** `wsh_ok` carries
+denominator regularity ONLY; RS.4's displayed inheritance of CL-17(ii) is recorded
+at RS4Chain's wsh field block and in U-28's hypothesis line as an explicit
+cross-reference to the seam pin W17ii (S-8): U-28's acceptance record may not be
+marked unconditional while W17ii is open — declared, not implied.
+
+**R54 (Codex#8-5 + Fable#9-O-1/O-2) — staleness:** the E-phase scope sentence
+reads the CURRENT census (95 at REV 12); "§2/§2.E statement-fence" → "§2/§W4-SYNC";
+the construction-batch label reads FIFTEEN (the verified list length).
 
 ## H-FINAL. REV-11 rulings (both verifiers at zero architectural findings)
 
@@ -569,6 +610,9 @@ structure MeasuredSide (T : TableShape n) where
   Rep : ∀ e, T.State e → Type          -- concrete states WITH their admissible
   rep_ne : ∀ e ∈ Finset.Icc 1 n, ∀ τ, Nonempty (Rep e τ)   -- histories (design note:
                                         -- the ∀-x quantifiers below quantify histories)
+  cellLvl : ∀ e τ, Cell e τ → ℕ         -- the cell's defining level (R50; the G4
+  cellInst : ∀ e τ, Cell e τ → ∀ q₀ N, Finset (Box q₀ N)   -- pattern: instance
+                                        -- events whose card IS the cell size)
   Hgt : Type
   HDom : ∀ e τ, Cell e τ → Set Hgt     -- the EXACT height domain (XHD-d)
   gwt : ∀ e τ (c : Cell e τ), Hgt → ℚ → ℝ        -- XHD-w fixed-height weight
@@ -756,12 +800,14 @@ structure RatBurdens (T : TableShape n) (M : MeasuredSide T) where
   cellP_deg : ∀ e τ c, (cellP e τ c).natDegree ≤ T.Wstate e τ
   cellP_nonzero : ∀ e ∈ Finset.Icc 1 n, ∀ τ c, cellP e τ c ≠ 0
     -- "NOT-IDENTICALLY-ZERO cell-size polynomial", PER CELL
-  countS_cells : ∀ e τ o,
-    (if routeOf (T.odata e τ o) = .split then jP e τ o else tgP e τ o).countS
-      = ∏ c ∈ {c : M.Cell e τ | M.cellOut e τ c = o}.toFinset, cellP e τ c
-    -- the aggregate count-piece IS its cells' product — the per-route countS can
-    -- no longer float free of the cells ((iv)-POLY per cell + (J-RAT)'s
-    -- per-branching-cell pattern)
+  -- (countS_cells DELETED at REV 12, R50 — an undisplayed product strengthening;
+  --  the note's aggregate for split outcomes is the CELL-SUM "EACH CELL ONCE",
+  --  already carried at the measured level by j_interp + rep_indep)
+  cellP_count : ∀ e τ c q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
+    ((cellP e τ c).eval q₀ : ℚ) = ((M.cellInst e τ c q₀ (M.cellLvl e τ c)).card : ℚ)
+    -- "each cell size one polynomial …, VALUED CORRECTLY at every prime power"
+    -- PER CELL (R50, Codex#8-1): the polynomial's value IS the cell's
+    -- instance-count at its own defining level (the accepted G4 pattern)
   act_iff : ∀ q₀ ∈ M.Pools, ∀ e ∈ Finset.Icc 1 n, ∀ τ,
     M.activeState q₀ e τ ↔ ∀ c : M.Cell e τ, (cellP e τ c).eval q₀ ≠ 0
     -- PER CELL (R45): "empty cells at wild p corrupt rows, denominators,
@@ -904,16 +950,20 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
   L : LedgerIV T M                                 -- the nine CL-5 inputs
   B : RS1Bundle T M RB hdc hK                      -- RS.1's set (xrb, recursion, …)
   hns : B.nsNull                                   -- (ns-null)'s proof demanded HERE
-  pools_e0 : ∀ e ∈ Finset.Icc 1 n, ∀ q₀ ∈ allActivePools M,
-    Nonempty (PoolHyp T M RB e (hK e) q₀)          -- the all-active face (feeds U-22)
-  PrimePools : Set ℚ                               -- (declared BEFORE legs_reg — R25)
+  PrimePools : Set ℚ                               -- (declared BEFORE its consumers
+                                                   --  pools_e0/legs_reg — R25)
   prime_sub : PrimePools ⊆ M.Pools
   prime_base : ∀ q₀, q₀ ∈ PrimePools ↔ ∃ p : ℕ, p.Prime ∧ q₀ = (p : ℚ)
     -- DOMAIN PIN, BOTH DIRECTIONS (R21, Codex#2-2): PrimePools = ALL base primes,
     -- not an infinite selection — X.3/RS.1/E0's base instance fire at EVERY prime
     -- ("at each prime p the decided-mass series totals 1"); with prime_sub this
-    -- also forces every base prime into Pools. Infinitude now DERIVABLE
-    -- (`Nat.exists_infinite_primes`) — prime_infinite demoted to a lemma.
+    -- also forces every base prime into Pools. Infinitude DERIVABLE
+    -- (`Nat.exists_infinite_primes`) — prime_infinite stays a lemma.
+  pools_e0 : ∀ e ∈ Finset.Icc 1 n, ∀ q₀ ∈ PrimePools ∩ allActivePools M,
+    Nonempty (PoolHyp T M RB e (hK e) q₀)
+    -- the all-active BASE-pool face (feeds U-22) — RE-SCOPED (REV 12, R51): the
+    -- note demands E0 at base pools + consumed legs (legs_reg), NEVER at every
+    -- prime-power pool.
   legs_reg : ∀ p, (p:ℚ) ∈ PrimePools → RegP T M RB p hK F
     -- CL-1's FULL per-pool quantifier at EVERY base prime (R21): E0/ACT packages at
     -- δ = 1 AND every consumed base-change leg pool p^δ — wild pools included;
@@ -925,7 +975,12 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
     -- (n = 3 instance: exactly the note's displayed five). Nonemptiness is derivable
     -- for n ≥ 1 from any degree-n verdict; kept as a lemma, not a field.
   WshP : Shape T → PolyGeom                        -- CL-17(ii): W_Ŝ in rational form —
-  wsh_ok : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools, (WshP Ŝ).val ∈ OKat q₀   -- the OPEN production
+  wsh_ok : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools, (WshP Ŝ).val ∈ OKat q₀
+    -- DENOMINATOR REGULARITY ONLY (R53, Codex#8-3): wsh_ok does NOT carry
+    -- CL-17(ii)'s production burden. RS.4 INHERITS CL-17(ii) (S.5's tag list) —
+    -- that inheritance is DECLARED here and carried by the SEAM pin W17ii (S-8);
+    -- U-28's acceptance record may not be marked unconditional while it is open.
+    -- (the OPEN production
                                                    -- duty rides this presentation
   WshVal : Shape T → ℚ → ℝ                         -- measured shallow-shape masses
   wsh_interp : ∀ Ŝ ∈ F.Sh, ∀ q₀ (h : q₀ ∈ M.Pools),
@@ -1226,7 +1281,7 @@ every §2 structure by the REAL CTS objects) is a wave-4 PROCESS gate (§5), not
 
 ---
 
-## 3. The unit DAG — REV 11: THE CORE, 93 units (51 easy / 42 medium / 0 hard);
+## 3. The unit DAG — REV 12: THE CORE, 95 units (52 easy / 43 medium / 0 hard);
 ## the seam's 11 contract entries live at §W4-SYNC, not here
 
 ### Layer S0 — dispatch, (SCS), (BDY) [9]
@@ -1401,12 +1456,19 @@ is `Matrix.det_isEmpty` (det = 1 ≠ 0 — an empty active block is vacuously
 nonsingular, matching the note's "realized states only" scope); the nonempty case
 uses U-21a/b. deps: U-21a, U-21b.
 
-**U-22 `rs3_det_symbolic` · medium — quantifiers FIXED (R2-13).**
+**U-22 `rs3_det_symbolic` · medium — E0 RE-SCOPED to base pools (REV 12, R51,
+Codex#8-2).**
 `statement`: `theorem rs3_det_symbolic (T M RB hdc) (hK : ∀ e ∈ Finset.Icc 1 n, …)`
-`(hact : ∀ e ∈ Finset.Icc 1 n, ∀ q₀ ∈ allActivePools M,`
+`(PP : Set ℚ) (hsub : PP ⊆ M.Pools)`
+`(hbase : ∀ q₀, q₀ ∈ PP ↔ ∃ p : ℕ, p.Prime ∧ q₀ = (p:ℚ))`
+`(hact : ∀ e ∈ Finset.Icc 1 n, ∀ q₀ ∈ PP ∩ allActivePools M,`
 `Nonempty (PoolHyp T M RB e (hK e ‹_›) q₀)) :`
 `∀ e ∈ Finset.Icc 1 n, (1 - Kmat T RB e (hK e ‹_›)).det ≠ 0`
-— per-block hypotheses for the per-block conclusion, `e` bound INSIDE both.
+— E0 demanded at ALL-ACTIVE BASE POOLS ONLY (the note's scope: base instance
+δ = 1; the consumed legs ride legs_reg/RegP, never this unit); U-22c is now
+CONSUMED: {q₀ ∈ PP | not all-active}.Finite + PP infinite (hbase + prime
+infinitude) give infinitely many all-active base pools, one witness kills a
+vanishing det. Per-block binders inside both (R2-13 preserved).
 moves_ref: "at all-active primes (cofinitely many …) K_e(p) = A and ρ(A) < 1 gives
 det(I − A) ≠ 0; a rational function vanishing at infinitely many prime evaluations
 is 0". deps: U-19, U-20, U-21c, U-22b, U-27 · hyp: U-22b's cofiniteness (the (iv)-POLY
@@ -1519,7 +1581,9 @@ the block solve". deps: U-18, U-27 · hyp: THE DISPLAYED INHERITED SET, all expl
 in RS4Chain (R2-19): C.L (nine CL-5 inputs) · C.B (RS.1's set: xrb/CL-9,
 recursion_meas/CL-10+CL-8 provenance) · C.hns ((ns-null) proof) · C.pools_e0 +
 C.legs_reg (ESCAPE(E0)/CL-1 in its FULL per-pool quantifier — REV 4, Fable C1) ·
-C.WshP/wsh_ok (CL-17(ii)) · RB in (iv)-POLY form (CL-6)
+C.WshP/wsh_ok (denominator regularity; CL-17(ii)'s PRODUCTION burden is the seam
+pin W17ii/S-8 — INHERITED AND OPEN, declared per R53: no unconditional marking
+while it stands) · RB in (iv)-POLY form (CL-6)
 + XHD-s geoms + INIT-RAT ιP + (J-RAT) jP · C.x3_total (X.3/CL-4, pinned W-4) ·
 C.rs1_equates (pinned W-1e) · C.rsh_interp (pinned W-1's shadow) · sketch:
 eval(Σ Rsh − 1) at p ∈ PrimePools = Σ Rval − decidedTotal = 0 (rsh_interp,
@@ -1527,7 +1591,7 @@ rs1_equates, x3_total); prime_infinite + U-27. The docstring lists every tag: th
 acceptance fence "may NOT be marked unconditional before those close" verbatim.
 
 ### Layer S5 — THE INTERNAL CONSISTENCY INSTANCE at n = 2 (RELABELED, REV 10 —
-### R44, Codex#6-11/12) [45 core units at REV 11 — R46/R48 splits]
+### R44, Codex#6-11/12) [47 core units at REV 12 — R46/R48/R52 splits]
 
 **R44 (the honest claim, superseding R26's label).** The three-outcome roster and
 the numerators (q+1, q²) are a CONSISTENCY DEVICE, NOT note displays. What IS
@@ -1557,8 +1621,8 @@ is NOT cited as support; Fable#8-O-3), so bSplit = 0 and consumedDeltas = {1}.
 CLAIM (R11 unchanged): schema consistency with the note's instance; the W-11
 process gate still owns intended-CTS instantiation.
 
-**The construction batch — ONE OBLIGATION-GROUP EACH (R43/R48; FOURTEEN units
-after the REV-10/11 splits — sub-labels retired, names are canonical; Fable#8-O-2):**
+**The construction batch — ONE OBLIGATION-GROUP EACH (R43/R48; FIFTEEN units —
+count verified, Fable#9-O-2; sub-labels retired, names are canonical):**
 · `n2_shape` (medium) — TableShape DATA: block-1 layer (one state, one terminal
   outcome (1,1), Kmat 1 = 0) + the three-outcome block-2 roster + vEquiv +
   Wloc/Wstate. deps: Defs.
@@ -1579,7 +1643,8 @@ after the REV-10/11 splits — sub-labels retired, names are canonical; Fable#8-
 · `n2_degpins_tg` (easy) — the tg/j per-piece degree pins (split).
 · `n2_degpins_iota` (easy) — the ι degree pins (split).
 · `n2_activity` (easy) — cellP ≡ 1 per cell + cellP_deg/cellP_nonzero +
-  countS_cells + act_iff (all states active at all pools — R45's per-cell form).
+  cellP_count (singleton cellInst at each cell's level) + act_iff (all states
+  active at all pools — R45's per-cell form; countS_cells is GONE, R50).
 · `n2_shapefam` (easy) — ShapeFam (the n = 2 root shapes, δOf ≡ 1). deps: chain.
 
 **U-29b-i…vii — LedgerIV items (1)–(5), ONE FIELD EACH (R28, Codex#3-4):**
@@ -1629,15 +1694,19 @@ prime_base/prime_sub, decidedTotal, Rval/r_bdd, x3_total, rs1_equates, rsh_inter
 pools_e0/legs_reg, L, B, hns, AND the device shallow data (next unit). deps: the
 d-batch, U-29d2, `n2_shallow_device`.
 
-**`n2_shallow_device` · N2Shallow.lean · medium — NEW (R46).** The DEVICE-ONLY
-shallow data completing RS4Chain: WshP ≡ the 1-presentation (countT = countS = 1,
-geom = 1, qpow = 0) on the root shape (so Rsh σ = blockSolve values —
-Fable-verified); WshVal := its evaluations; device shDom (singleton height),
-shEvtH/visH/shEvt (synthetic events whose cards realize the weights), and the
-laws wshval_bdd/shDom_ne/sh_realized/shevt_grouping/shweight_card/wsh_ok/
-wsh_interp. LABEL: device-only — wave-4 re-keying REPLACES exactly these fields
-with the real production objects (§W4-SYNC S-8/S-10 name them). deps: U-29a
-chain, n2_shapefam.
+**The shallow-device batch — DEVICE-ONLY data completing RS4Chain, split by
+carrier family (R46/R52, Codex#8-4; wave-4 re-keying REPLACES exactly these
+fields — §W4-SYNC S-8/S-10 name them):**
+· `n2_wshp_device` (easy) — WshP ≡ the 1-presentation (countT = countS = 1,
+  geom = 1, qpow = 0) on the root shape (Rsh σ = blockSolve values —
+  Fable-verified); WshVal := its evaluations; wsh_ok/wsh_interp.
+· `n2_sh_events` (medium) — the device carriers shDom (singleton height),
+  shEvtH/visH/shEvt (synthetic events whose cards realize the weights) +
+  shevt_grouping.
+· `n2_sh_laws` (medium) — wshval_bdd, shDom_ne, sh_realized, shweight_card, AND
+  `wshval_card` (Fable#9-G-1: previously unowned; the device's singleton height
+  class discharges it via shweight_card + shevt_grouping).
+deps: U-29a chain, n2_shapefam.
 
 **U-29d5 `n2_readoff` · N2ReadOff.lean · medium — scope CORRECTED (Codex#4-10).**
 Inhabits `ReadOffBundle` with **S := the BASE-PRIME pools** {(p:ℚ) | p prime} —
@@ -1814,28 +1883,29 @@ proves toward `xrb`; no PCI site is consumed by S.1-shaped content.
 
 ## 5. Conventions (phase E / prover fleet) + census
 
-**E-PHASE SCOPE (REV 10): THE CORE ONLY** — §2.A–2.D + the 85 §3 units; NOTHING
+**E-PHASE SCOPE (REV 12): THE CORE ONLY** — §2.A–2.D + the 95 §3 units (the
+CURRENT census, §5 below — one build set, no ambiguity; Codex#8-5); NOTHING
 from §W4-SYNC is elaborated or built (its entries have no files until re-keyed).
 Build per file `lake env lean LeanUrat/MovesS/<file>.lean`; `#print axioms` per unit
 (Lean-core only; `sorryAx` flagged). Skeleton `sorry`s (`OKat`/`evalAt` bodies,
 `kTarget`, `Kmat`, `bTerm`, `consumedDeltas`) elaborate at phase E BEFORE fan-out;
-`bSplit`/`evalRe`/`bTot` live in U-16a/c. Statement changes to §2/§2.E = statement-
+`bSplit`/`evalRe`/`bTot` live in U-16a/c. Statement changes to §2/§W4-SYNC = statement-
 fence events. WAVE-4 PROCESS GATE (W-11): before MovesS results are cited by MovesU
 with real semantics, MovesV/MovesT must exhibit instances of every §2 structure over
 the real CTS objects and discharge W-1/W-1e/W-1m/W-2/W-3/W-4/W-7/W-8/W-10; the
 campaign ledger tracks this per structure.
 
-**Census (REV 11, THE CORE): 93 units = 51 easy / 42 medium / 0 hard** (S0:9 ·
-S1:4 · S2:17 · S3:12 · S4:6 · S5:45). Easy: the 19 wave-2 core {U-1, U-2, U-3,
+**Census (REV 12, THE CORE): 95 units = 52 easy / 43 medium / 0 hard** (S0:9 ·
+S1:4 · S2:17 · S3:12 · S4:6 · S5:47). Easy: the 19 wave-2 core {U-1, U-2, U-3,
 U-5, U-7a/b/c, U-12b, U-12c, U-12d, U-13, U-18b, U-20, U-21a, U-23a/b/c, U-24a2,
-U-25} + S5's 32 {n2_scs_data, n2_pools, n2_heights, n2_ent_flow, n2_ok,
+U-25} + S5's 33 {n2_scs_data, n2_pools, n2_heights, n2_ent_flow, n2_ok,
 n2_interp_iota, n2_degpins_tg, n2_degpins_iota, n2_activity, n2_shapefam,
 b-i…vi, n2_kstep_one, n2_hmc, n2_act, n2_init_agg, n2_entcount, n2_comp, b3, c,
-n2_xrb, n2_rexact, n2_sigmas, n2_x3, n2_rs1eq, n2_det, n2_solve_vals,
-n2_checksum}; medium the remaining 42 (27 wave-2 core + U-22b + U-22c + S5's
-{n2_shape, n2_carriers, n2_events, n2_polygeom_data, n2_interp_tg, b-vii,
-n2_init_count, d-i, d-ii, d2, n2_rsh, n2_shallow_device, d5} = 13). SEAM
-(§W4-SYNC, not built): 11 entries incl. ex-U-29d6. NO hard units.
+n2_xrb, n2_rexact, n2_sigmas, n2_x3, n2_rs1eq, n2_wshp_device, n2_det,
+n2_solve_vals, n2_checksum}; medium the remaining 43 (27 wave-2 core + U-22b +
+U-22c + S5's {n2_shape, n2_carriers, n2_events, n2_polygeom_data, n2_interp_tg,
+b-vii, n2_init_count, d-i, d-ii, d2, n2_rsh, n2_sh_events, n2_sh_laws, d5} = 14).
+SEAM (§W4-SYNC, not built): 11 entries incl. ex-U-29d6. NO hard units.
 
 ---
 
@@ -1991,10 +2061,21 @@ on the gate's chain scope) → REV 11 (closing sweep):**
 | Codex#7-3 + Fable#8-O-2 | CORE FIX — splits: +U-12d, +U-22c, n2_polygeom → data+OK, n2_interp → tg+ι, n2_degpins → tg+ι, U-29e → det+vals+checksum; S5 headings/sub-label ranges corrected | R48, §3 |
 | Fable#8-F3 + O-1/3/4/5 | SWEEP — "and all of §2.E" struck from the placement line; §2.E-pointers → §W4-SYNC; the §3b W-1-hok edge tagged [seam]; the n = 2 S.7 cite made non-supporting; "NOTE-W6" disambiguated from the pin W-6 | R49 |
 
-STATUS: REV 11 (closing sweep) complete. THE CORE: 93 units (51 easy / 42 medium /
-0 hard), closed import DAG, E-phase-ready; grep-clean. THE SEAM: 11 §W4-SYNC
-contract entries with tie-demand unions, re-keying charges, and (R46) the named
-device-field replacements. PolyGeom settled (R30). Both verifiers at zero
-architectural findings entering this rev; every remaining finding was textual and
-is repaired above. Cumulative: R1 22/22 → … → R9 split → R10 6/6 + 5 obs. Next:
-the FINAL dual confirmation of the core (scrubbed workdirs), then E-phase.
+**Rev-11 verdicts — Codex#8 (2 crit / 3 gap) + Fable#9 (0 crit / 2 gap),
+CONVERGENT on countS_cells → REV 12:**
+
+| finding | disposition | where |
+|---|---|---|
+| Codex#8-1 = Fable#9-G-2 | countS_cells DELETED (undisplayed product; the note's aggregate is the CELL-SUM "EACH CELL ONCE", already carried by j_interp + rep_indep — adjudication quoted); per-cell laws stand alone; + `cellLvl`/`cellInst`/`cellP_count` (per-cell "valued correctly", the G4 pattern) | R50, §2.B/C |
+| Codex#8-2 | U-22 re-scoped: E0 at ALL-ACTIVE BASE POOLS only (PP + prime_base/prime_sub explicit), U-22c now CONSUMED; RS4Chain.pools_e0 over PrimePools ∩ allActivePools (field reordered after PrimePools) | R51, U-22, §2.D |
+| Codex#8-3 | CL-17(ii) inheritance DECLARED: wsh_ok = denominator regularity only; the production burden = seam pin W17ii (S-8), cross-referenced at the field and in U-28's hypothesis line; no unconditional marking while open | R53, §2.D, U-28 |
+| Codex#8-4 | n2_shallow_device → n2_wshp_device / n2_sh_events / n2_sh_laws | R52, §3 S5 |
+| Fable#9-G-1 | `wshval_card` now OWNED (n2_sh_laws) — the full-chain claim has every field's unit | R52, §3 S5 |
+| Codex#8-5 + Fable#9-O-1/O-2 | staleness: E-phase scope reads the current census; "§2/§W4-SYNC" fence; "FIFTEEN" label | R54 |
+
+STATUS: REV 12 complete. THE CORE: 95 units (52 easy / 43 medium / 0 hard),
+closed import DAG, E-phase-ready. THE SEAM: 11 §W4-SYNC contract entries
+(unchanged this rev; W17ii's inheritance now cross-declared from the core).
+PolyGeom settled (R30); the per-cell architecture settled (R45+R50). Cumulative:
+R1 22/22 → … → R10 6/6 → R11 5/5 + 2 obs, fully convergent list repaired. Next:
+the acceptance pass.
