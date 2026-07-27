@@ -1,13 +1,44 @@
-# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 3
+# MOVES §S-RESUM — Lean formalization blueprint (corpus MovesS) — REV 4
 
-*REV 3, 2026-07-27. REV 2 RETIRED (do not fan out). Repairs ALL 20 findings of the
-re-audit `lean/notes/MOVESS_AUDIT_CODEX_REV2_2026-07-28.md` (13 crit / 7 gap) under the
-coordinator's guidance (a)–(d); the cumulative findings→repairs table is §6. Ground
-truth unchanged: DUAL-ACCEPTED **§S-RESUM rev 6**, `lean/notes/MOVES_2026-07-24.md`
-lines ~11557–12430. Protocol-L; no new axioms; statement-fence; declaration ORDER in
-the §2 skeleton is part of the spec (finding R2-3).*
+*REV 4, 2026-07-27. Repairs the 6 findings of the fresh-Fable audit
+`lean/notes/MOVESS_AUDIT_FABLE_2026-07-28.md` (2 crit / 4 gap) on REV 3, which had
+repaired the 20 findings of `MOVESS_AUDIT_CODEX_REV2_2026-07-28.md`; cumulative table
+§6. Ground truth: DUAL-ACCEPTED **§S-RESUM rev 6**, `MOVES_2026-07-24.md` ~11557–12430.
+Protocol-L; no new axioms; statement-fence; declaration order = spec.*
 
-## H. HEADER — REV-3 design rulings (on top of REV 2's R1–R6)
+## H0. REV-4 rulings (on top of R1–R12)
+
+**R13 — the ACT scope is a GUARD, never a zero-row law (Fable C2).** The invented
+`act_row` is DELETED (the note displays only entry-INTO-inactive vanishing =
+`act_target`, S.7(iv)). `part1`/`rep_indep`/`xhd_sum`/`xhd_no_stray`/`meas_card` are
+GUARDED by `activeState q₀ e τ` — the note's own scope: "Scope: realized states only"
+(S.4); "Every probabilistic claim … is about K_e restricted per CTS-M(ii) to the
+ACTIVE block" (S.0). Wild pools are now instantiable; the ACT apparatus (act_spec,
+inactive_vanish, AVAgree, U-21c's empty case) is live code. Ripple: U-9a/U-9b/U-10
+carry the activity guard.
+
+**R14 — the per-pool guards are CONSUMED (Fable C1).** U-24a is replaced by the pair
+U-24a1 (the measured value IS the active-subsystem solve — derived per pool from
+`recursion_meas` + subsystem closure (`inactive_vanish`/`act_target`) + E0/U-21c;
+the split legs enter the exit vector as MEASURED values at q₀^δ, pools_closed-typed,
+so NO induction and NO leg evaluation is needed) and U-24a2 (the symbolic read-off:
+`evalAt q₀ (blockSolve …) = βmeas …` GIVEN `AVAgree` at that entry — the note's
+sealed (ii-c) check as an explicit hypothesis; uncancelled wild poles are EXCLUDED by
+the guard, not claimed). `RegP` and `AVAgree` are now consumed (U-24a1/2, U-24b,
+RS4Chain.legs_reg). U-24b's global identification is CONDITIONAL on an infinite
+read-off-valid pool family — the (ii-c) burden stays open and per-pool, as displayed.
+VERDICT: U-24a CLOSES under the wired guards (no STUCK report); the former "hard"
+strong induction DISSOLVES — the hardness was exactly the unhypothesized burden.
+
+**R15 — gap closures (Fable G1–G4).** `kstep_one`'s target predicate is pinned in its
+hK-free existential-cast form; W-1's rfl-conjunct is struck (the symbolic half is
+definitional — RS.1-SH's content is the measured clause), binders unshadowed; U-16a
+splits into U-16a1/2/3 with the halted-member FACTOR-1/verdict-singleton clause
+displayed as bSplit's def-equation; `entCount` gets its event-card tie at the shape's
+own level (`entLvl`/`entInst`/`ent_count_card`). New easy lemma U-12b
+`powSubst_OKat_evalAt` (OK-membership and evaluation transport along q₀ ↦ q₀^δ).
+
+## H. HEADER — REV-3 design rulings (kept; R7–R12)
 
 **R7 — the counting-native event carrier (ORCHESTRATOR RULING, finding R2-4).** MovesS
 gains a MINIMAL event layer in the corpus house style (MovesC's DigitSystem/Nat.card
@@ -225,6 +256,9 @@ structure MeasuredSide (T : TableShape n) where
   ιsh : ∀ e τ, EntShape e τ → ℚ → ℝ              -- resummed per-shape marked mass
   ιval : ∀ e, T.State e → ℚ → ℝ                  -- the ENT-AGG aggregate
   entCount : ∀ e τ, EntShape e τ → ℚ → ℕ         -- the full count I^ent_{ε,β₀}
+  entLvl : ∀ e τ, EntShape e τ → ℕ               -- ε's own defining level (a finite
+                                                  --   prefix shape) — G4's tie level
+  entInst : ∀ e τ, EntShape e τ → ∀ q₀ N, Finset (Box q₀ N)  -- ε-instance events
   markedVal : ∀ e, ℚ → ℝ                          -- the measured μ̂ marked-entrance
                                                   -- total (W-1m's carrier, R2-17)
 
@@ -234,53 +268,64 @@ def allActivePools (M : MeasuredSide T) : Set ℚ :=       -- DEFINED locus (R2-
 /-- CL-5, all nine inputs as contentful Props (R2-4/5/6). Notation: `cells o` :=
     `{c | M.cellOut e τ c = o}.toFinset`; `evR x` := eventually-exact card ratio. -/
 structure LedgerIV (T : TableShape n) (M : MeasuredSide T) : Prop where
-  -- (1) XHD [2b]: weights resum to the cell mass over the EXACT domain, and the
-  -- domain is TWO-SIDED exact, representative-quantified (R2-4):
-  xhd_sum : ∀ e τ x c q₀, q₀ ∈ M.Pools →
+  -- ACTIVITY GUARDS THROUGHOUT (R13, Fable C2): every per-(e,τ,q₀) mass claim below
+  -- carries `M.activeState q₀ e τ` — the note's "realized states only" scope. NO
+  -- zero-row law for inactive sources exists (act_row DELETED — undisplayed).
+  -- (1) XHD [2b], guarded; two-sided exactness representative-quantified (R2-4):
+  xhd_sum : ∀ e τ x c q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
     HasSum (fun h : M.HDom e τ c => M.gwt e τ c h q₀) (M.μcell e τ x c q₀)
   xhd_no_stray : ∀ e τ x c (h : M.Hgt), h ∈ M.HDom e τ c → ∀ q₀ ∈ M.Pools,
-    ∃ N₀, ∀ N ≥ N₀, (M.cellEvt e τ x c h q₀ N).Nonempty
+    M.activeState q₀ e τ → ∃ N₀, ∀ N ≥ N₀, (M.cellEvt e τ x c h q₀ N).Nonempty
   xhd_no_orphan : ∀ e τ x c (h : M.Hgt), h ∉ M.HDom e τ c →
     ∀ q₀ N, M.cellEvt e τ x c h q₀ N = ∅
-  -- (2) D4R.0: the EVENTS are pairwise disjoint after height grouping (R7):
+  -- (2) D4R.0 (event disjointness needs no realization; unguarded is harmless —
+  -- empty events are disjoint):
   d4r0 : ∀ e τ x q₀ N c c' (h h' : M.Hgt), (c, h) ≠ (c', h') →
     Disjoint (M.cellEvt e τ x c h q₀ N) (M.cellEvt e τ x c' h' q₀ N)
-  -- (3) (iv)-PART-1 [1v]: the cells partition the one-step mass:
-  part1 : ∀ e ∈ Finset.Icc 1 n, ∀ τ x q₀, q₀ ∈ M.Pools →
+  -- (3) (iv)-PART-1 [1v], GUARDED (C2's 0 = 1 collapse is gone — at a wild pool the
+  -- inactive rows make NO partition claim):
+  part1 : ∀ e ∈ Finset.Icc 1 n, ∀ τ x q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
     ∑ c : M.Cell e τ, M.μcell e τ x c q₀ = 1
-  -- (4) (iv)-REP = RS.0(α), the WEIGHTED-GROUPING form VERBATIM (R2-5): the measured
-  -- row is identical from every representative — never cellwise:
+  -- (4) (iv)-REP = RS.0(α) verbatim (weighted grouping), GUARDED:
   rep_indep : ∀ e τ (o : T.Out e τ) (x : M.Rep e τ) q₀, q₀ ∈ M.Pools →
-    M.rowVal e τ o q₀ = ∑ c ∈ cells o, M.μcell e τ x c q₀
-  -- (5) (iv)-MEAS, counting-native (R7): each XHD weight IS the eventually-exact
-  -- card-ratio mass of its event:
+    M.activeState q₀ e τ → M.rowVal e τ o q₀ = ∑ c ∈ cells o, M.μcell e τ x c q₀
+  -- (5) (iv)-MEAS counting-native (R7), GUARDED:
   meas_card : ∀ e τ x c (h : M.Hgt), h ∈ M.HDom e τ c → ∀ q₀ ∈ M.Pools,
-    ∃ N₀, ∀ N ≥ N₀, M.gwt e τ c h q₀ * (Fintype.card (M.Box q₀ N) : ℝ)
+    M.activeState q₀ e τ → ∃ N₀, ∀ N ≥ N₀,
+    M.gwt e τ c h q₀ * (Fintype.card (M.Box q₀ N) : ℝ)
       = ((M.cellEvt e τ x c h q₀ N).card : ℝ)
-  -- (6) CTS-M(v) HMC (OPEN kernel) + the base-case tie (R2-6: kstep ≢ free):
-  kstep_one : ∀ e τ β q₀, q₀ ∈ M.Pools → M.kstep 1 e τ β q₀ =
-    ∑ o ∈ {o | routeOf (T.odata e τ o) = .kcol ∧ targets β}.toFinset, M.rowVal e τ o q₀
-  hmc : ∀ k e τ β q₀, q₀ ∈ M.Pools →
+  -- (6) CTS-M(v) HMC (OPEN) + the base tie, target predicate PINNED hK-FREE (G1):
+  kstep_one : ∀ e τ β q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ → M.kstep 1 e τ β q₀ =
+    ∑ o ∈ {o | routeOf (T.odata e τ o) = .kcol ∧
+      ∃ μ ∈ (T.odata e τ o).mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
+      }.toFinset, M.rowVal e τ o q₀
+  hmc : ∀ k e τ β q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
     M.kstep (k+1) e τ β q₀ = ∑ γ, M.kstep k e τ γ q₀ * M.kstep 1 e γ β q₀
-  -- (7) CTS-M(ii) ACT, tied to the classification (R2-6): inactive states carry no
-  -- row and receive no mass:
-  act_row : ∀ e τ o q₀, q₀ ∈ M.Pools → ¬ M.activeState q₀ e τ → M.rowVal e τ o q₀ = 0
+  -- (7) CTS-M(ii) ACT — ONLY the displayed law (S.7(iv): "the verified vanishing …
+  -- of every entry into an inactive cell"); the source-side scope is the guards:
   act_target : ∀ e τ β q₀, q₀ ∈ M.Pools → ¬ M.activeState q₀ e β →
     M.kstep 1 e τ β q₀ = 0
-  -- (8) CTS-M(iii) INIT + ENT-COUNT: ι tied to cylinder counts (R2-6):
-  init_agg : ∀ e τ q₀, q₀ ∈ M.Pools → M.ιval e τ q₀ = ∑ ε, M.ιsh e τ ε q₀
+  -- (8) CTS-M(iii) INIT + ENT-COUNT, guarded; the I^ent tie at ε's OWN level (G4):
+  init_agg : ∀ e τ q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
+    M.ιval e τ q₀ = ∑ ε, M.ιsh e τ ε q₀
   init_count : ∀ e τ ε (h : M.Hgt), h ∈ M.ιDom e τ ε → ∀ q₀ ∈ M.Pools,
-    ∃ N₀, ∀ N ≥ N₀, M.ιshH e τ ε h q₀ * (Fintype.card (M.Box q₀ N) : ℝ)
+    M.activeState q₀ e τ → ∃ N₀, ∀ N ≥ N₀,
+    M.ιshH e τ ε h q₀ * (Fintype.card (M.Box q₀ N) : ℝ)
       = ((M.entEvtH e τ ε h q₀ N).card : ℝ)
+  ent_count_card : ∀ e τ ε q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
+    ((M.entInst e τ ε q₀ (M.entLvl e τ ε)).card : ℚ) = M.entCount e τ ε q₀
+    -- "a full count": I^ent_{ε,β₀} IS the card of the ε-instance event at the
+    -- shape's own defining level — the counting tie ι_count's polynomial now means
   -- (9) COMP-TYPING, heights once: (COMP-h) = init_count's fixed-height objects;
   -- (COMP-hΣ) = THE one height sum; (COMP-Σ)'s factorization is hmc's duty:
-  comp_once : ∀ e τ ε q₀, q₀ ∈ M.Pools →
+  comp_once : ∀ e τ ε q₀, q₀ ∈ M.Pools → M.activeState q₀ e τ →
     HasSum (fun h : M.ιDom e τ ε => M.ιshH e τ ε h q₀) (M.ιsh e τ ε q₀)
 ```
 
 *(Design note: the ONLY height summations in the corpus are xhd_sum and comp_once —
-(COMP-Σ)'s "no further height sum" is structural; `targets β` abbreviates the unique
-continuing member landing in β, elaborated with the `hK` cast at phase E.)*
+(COMP-Σ)'s "no further height sum" is structural. kstep_one's target predicate is the
+PINNED hK-free existential-cast form above (Fable G1) — no SCSData/DegCons/hK is in
+LedgerIV's scope, and none is needed.)*
 
 ### 2.C Evaluation, rationality burdens (POLY bounds restored), kernel, pools
 
@@ -417,9 +462,11 @@ structure RS4Chain (T) (M) (RB : RatBurdens T M) (hdc : DegCons T) (hK)
   B : RS1Bundle T M RB hdc hK                      -- RS.1's set (xrb, recursion, …)
   hns : B.nsNull                                   -- (ns-null)'s proof demanded HERE
   pools_e0 : ∀ e ∈ Finset.Icc 1 n, ∀ q₀ ∈ allActivePools M,
-    Nonempty (PoolHyp T M RB e (hK e) q₀)          -- per-pool E0/ACT (CL-1), the
-                                                   -- all-active locus; wild pools
-                                                   -- ride AVAgree per W-6
+    Nonempty (PoolHyp T M RB e (hK e) q₀)          -- the all-active face (feeds U-22)
+  legs_reg : ∀ p, (p:ℚ) ∈ PrimePools → RegP T M RB p hK F
+    -- CL-1's FULL per-pool quantifier (Fable C1): E0/ACT packages at δ = 1 AND every
+    -- consumed base-change leg pool p^δ — wild pools included; their READ-OFF is
+    -- still gated per object by AVAgree (W-6), never asserted wholesale
   Sigmas : Finset (Multiset T.VType)               -- the splitting types of degree n
   sig_ne : Sigmas.Nonempty
   WshP : Shape T → PolyGeom                        -- CL-17(ii): W_Ŝ in rational form —
@@ -469,12 +516,14 @@ structure ReadLedger where                          -- W-8's carrier (one entere
   Wcharge βcharge : ℝ                               -- the W_Ŝ-side / β-side totals
 
 -- the pinned deferrals (each cites its owner; NONE is a wave-2 unit):
-def W1_RS1SH (C : RS4Chain …) (hdet) : Prop :=      -- RS.1-SH verbatim (S.2)
-  ∀ σ ∈ C.Sigmas, Rsh T M RB hdc hK hdet F C.WshP σ
-    = ∑ Ŝ ∈ F.Sh, (C.WshP Ŝ).val * shConv T M RB hdc hK hdet Ŝ σ ∧
-  ∀ σ ∈ C.Sigmas, ∀ p ∈ C.PrimePools, ∃ hok, (evalAt p ⟨_, hok⟩ : ℝ) = C.Rval σ p
-  -- (the second clause = rsh_interp's provenance; owners MovesT: TREE-EXP, (CUT-WD),
-  --  (SIB)/CL-10, PCI/CL-8, XRB/CL-9, CL-17(ii))
+def W1_RS1SH (C : RS4Chain …) (hdet) : Prop :=      -- RS.1-SH's CONTENT (Fable G2):
+  ∀ σ ∈ C.Sigmas, ∀ p ∈ C.PrimePools,               -- the MEASURED density identity.
+    ∃ hok : Rsh T M RB hdc hK hdet F C.WshP σ ∈ OKat p,
+      (evalAt p ⟨Rsh T M RB hdc hK hdet F C.WshP σ, hok⟩ : ℝ) = C.Rval σ p
+  -- The SYMBOLIC half of S.2's display ("R_σ = Σ_Ŝ W_Ŝ · Σ ∏ β…") is DEFINITIONAL
+  -- here: U-18 DEFINES Rsh as that right side, so the note's identity reduces to
+  -- "the measured density Rval IS Rsh's evaluation" — this Prop. No rfl-conjunct.
+  -- (Owners MovesT: TREE-EXP, (CUT-WD), (SIB)/CL-10, PCI/CL-8, XRB/CL-9, CL-17(ii).)
 def W1e_equates (C : RS4Chain …) : Prop :=          -- ONE-F + convergence regrouping
   ∀ p ∈ C.PrimePools, (∑ σ ∈ C.Sigmas, C.Rval σ p) = C.decidedTotal p
 def W1m_marked (B : RS1Bundle …) (hdet) : Prop :=   -- RS.1-MARKED's identification
@@ -507,7 +556,7 @@ every §2 structure by the REAL CTS objects) is a wave-4 PROCESS gate (§5), not
 
 ---
 
-## 3. The unit DAG — REV 3: 41 units (15 easy / 25 medium / 1 hard)
+## 3. The unit DAG — REV 4: 45 units (18 easy / 27 medium / 0 hard)
 
 ### Layer S0 — dispatch, (SCS), (BDY) [9]
 
@@ -560,15 +609,17 @@ deps: U-1, U-6 · hyp: none beyond structures (verdictImage is exhaustive for th
 terminal columns BY CONSTRUCTION — the R2-10 covering defect is gone) · sketch:
 partition by routeOf; fiberwise regrouping by kTarget / by verdicts.
 
-**U-9a `ksub_eval` · medium** — per pool, per representative:
-`evalAt q₀ (routedMass-sum) = 1`. deps: U-8, U-19 · hyp: LedgerIV.part1 + rep_indep
-(the rowVal grouping) + RB.tg_interp/j_interp — the literal trace of the note's
-bracket "GIVEN the (iv) ledger + DEG-CONS + the (m, c) CLASSIFICATION with its (SCS)
-clause" · sketch: interp fields turn each routedMass into rowVal; rep_indep turns
-rowVal into the x-grouped cell sum; `Finset.sum_fiberwise` over cellOut; part1 → 1.
+**U-9a `ksub_eval` · medium — ACTIVITY-GUARDED (R13).** Per pool, per representative,
+AT ACTIVE STATES: `∀ q₀ ∈ M.Pools, M.activeState q₀ e τ → evalAt q₀ (routedMass-sum)
+= 1`. deps: U-8, U-19 · hyp: LedgerIV.part1 + rep_indep (both now guarded) +
+RB.tg_interp/j_interp — the note's bracket "GIVEN the (iv) ledger + DEG-CONS + the
+(m, c) CLASSIFICATION with its (SCS) clause", scoped "restricted per CTS-M(ii) to the
+ACTIVE block" · sketch: interp → rowVal; rep_indep → x-grouped cell sum;
+`Finset.sum_fiberwise` over cellOut; part1 → 1.
 
-**U-9b `ksub` · medium** — the SYMBOLIC (K-SUB) `= 1` in Qq, via U-9a at every pool +
-U-27 infinitude. deps: U-8, U-9a, U-27.
+**U-9b `ksub` · medium — locus updated.** The SYMBOLIC (K-SUB) `= 1` in Qq, via U-9a
+at every ALL-ACTIVE pool (activity supplied by the locus) + U-27 infinitude on
+`RB.allActive_infinite`. deps: U-8, U-9a, U-27.
 
 **U-10 `ksub_pool` · medium — nonnegativity DERIVED and ROUTED (R2-12).**
 `statement`: `theorem ksub_pool (L : LedgerIV T M) (P : PoolHyp T M RB e hK q₀)`
@@ -580,22 +631,51 @@ eval TG = rowVal = Σ μcell ≥ 0 (tg_interp + rep_indep + a μcell-nonneg lemm
 meas_card's card ratios at heights in the domain + xhd_sum); for split o likewise via
 j_interp. NO hypothesis about TG on split outcomes or J on non-split outcomes exists
 anywhere (the R2-12 swap is structurally impossible now) · sketch: evaluate U-9a,
-drop the nonneg exit sums, restrict along act_spec/inactive_vanish.
+drop the nonneg exit sums, restrict along act_spec/inactive_vanish (τA ∈ Act supplies the
+activity guard via act_spec — U-9a fires at exactly the note's scope).
 
 ### Layer S2 — the ℚ(q) system and its solve [12]
 
 **U-11 `decompFintype` · medium — unchanged** (Fintype on multiset decompositions).
 **U-12 `powSubst` · medium — unchanged** (δ : ℕ+; `IsFractionRing.lift`).
+
+**U-12b `powSubst_OKat_evalAt` · PowSubstOK.lean · easy — NEW (serves R14).**
+`theorem powSubst_OKat (δ : ℕ+) (q₀ : ℚ) (f : Qq) (h : f ∈ OKat (q₀ ^ (δ:ℕ))) :`
+`powSubst δ f ∈ OKat q₀` and `evalAt q₀ ⟨powSubst δ f, _⟩ = evalAt (q₀^(δ:ℕ)) ⟨f, h⟩`
+— OK-membership and evaluation transport along a base-change leg: the denominator of
+`powSubst δ f` divides `f.denom.comp (X^δ)`, and `(f.denom.comp (X^δ)).eval q₀ =
+f.denom.eval (q₀^δ) ≠ 0`. deps: U-12, U-19 · sketch: `Polynomial.eval_comp` +
+divisibility of denominators under ring homs.
 **U-13 `solve_iff` · easy — unchanged.** **U-14 `solve_exists_unique` · medium —
 unchanged.** **U-15 `solve_cramer` · medium — unchanged** (adjugate/Cramer; RS.2's
 conditionality = RatBurdens by construction, now in (iv)-POLY form with degree bounds).
 
-**U-16a `bSplit_def` · medium** — defines `bSplit` (DegCons argument licensing the
-smaller-block legs via U-2, as REV 2) AND `evalRe` (the per-pool EVALUATED right side
-of (R_e-lump): eval K row · β̂ + eval bTerm + eval bSplit with legs β̂ at q₀^δ — the
-object `recursion_meas` cites; well-typed by `pools_closed`) AND `consumedDeltas`.
-moves_ref: "b_e^split(τ)(σ′) := Σ_{o branching} J_{τ,o}(q) · Σ_{σ′ = σ₁ ⊎ …} ∏_j …".
-deps: U-1, U-2, U-11, U-12.
+**U-16a1 `bSplit_def` · BSplitDef.lean · medium — SPLIT + the halted-member clause
+DISPLAYED (Fable G3).** Defines `kTarget` and `bSplit` (DegCons argument licensing
+smaller-block legs via U-2), with the summand's def-equation PINNED:
+`bSplit T RB hdc e he βlt σ' τ = ∑ o ∈ splitOuts T e τ, RB.J e τ o *`
+`∑ g : {g : Fin (T.odata e τ o).m → Multiset T.VType // σ' = ∑ j, g j},`
+`∏ j, legFactor o g j` where, for member μ_j := (T.odata e τ o).mem.get j,
+`legFactor = if v : verdict-halted μ_j v then (if g j = {v} then 1 else 0)`
+`            else powSubst μ_j.δ (βlt μ_j.size (ktri-bound) (state of μ_j) (g j))`
+— "τ-halted members contribute FACTOR 1 with σ_j their verdict value, per §T.4's
+leaf convention" (S.0): a halted leg forces its σ_j to the verdict SINGLETON
+(indicator), continuing legs are β at q^δ. moves_ref: "b_e^split(τ)(σ′) :=
+Σ_{o branching} J_{τ,o}(q) · Σ_{σ′ = σ₁ ⊎ … ⊎ σ_m} ∏_{j=1}^m β_{e_j,τ_j(o)}(σ_j)(q^{δ_j})
+[… the product ranges over ALL branch members]". deps: U-1, U-2, U-11, U-12.
+
+**U-16a2 `evalRe_def` · EvalReDef.lean · medium — split (G3).** Defines `evalRe`, the
+per-pool EVALUATED right side of (R_e-lump) that `recursion_meas` cites: eval-K-row ·
+β̂ + eval-bTerm + the evaluated split summand with MEASURED legs β̂ at q₀^(δ:ℕ)
+(well-typed by `pools_closed`; halted legs the same indicator as U-16a1). deps:
+U-16a1, U-19.
+
+**U-16a3 `consumedDeltas_def` · ConsumedDeltas.lean · easy — split (G3).**
+`consumedDeltas T F := {1} ∪ (split-leg δ's over the full roster) ∪ ⋃_{Ŝ ∈ F.Sh}
+image Ŝ.δOf` — with the docstring duty: these are ABSOLUTE indices ([2r] (e2), the
+`Member.δ` convention), so leg-within-leg pools stay inside the roster; an
+instantiation recording relative indices MUST close the set multiplicatively (a
+statement-fence event). deps: Defs.
 
 **U-16b `blockSolve` · medium — unchanged** (strong recursion on e ∈ Icc 1 n; σ′
 UNRESTRICTED per R2-10: the solve is a function of every σ' : Multiset VType).
@@ -649,30 +729,47 @@ easy ×3 — unchanged.** **U-23d `e0_inv_nonneg` · medium — unchanged** (con
 
 ### Layer S4 — RS.1-DEEP/RS.2 derivation, the marked pairing, RS.4, the gate [6]
 
-**U-24a `rs1_deep_eval` · Rs1DeepEval.lean · HARD — REDESIGNED (R8, R2-9).**
-`statement`: for B : RS1Bundle, hdet (from U-22), every e ∈ Icc 1 n, σ', h_ent, and
-every ALL-ACTIVE pool q₀ ∈ allActivePools M with P := the pools_e0 package:
-`(evalAt q₀ ⟨blockSolve T RB hdc hK hdet e he τ σ', hok⟩ : ℝ) = B.βmeas e he h_ent τ σ' q₀`
-(hok from entry_ok/tg_ok/j_ok closure — the solve's entries are OK at all-active pools).
-moves_ref: "(RS.1-DEEP) per block (e, τ): β_{e,τ}(σ′) = ((I − K_e)^{−1} b_e)_τ(σ′)".
-deps: U-14, U-16a/b, U-17a, U-19, U-20, U-21c · hyp: B.recursion_meas (W-3's pinned
-input) + B.xrb (h_ent dropped) + LedgerIV + PoolHyp — NO symbolic β input exists
-(the R2-9 circularity is gone) · sketch: strong induction on e. At block e the
-measured vector β̂ := (βmeas e · σ' q₀)_τ satisfies the EVALUATED linear system
-β̂ = Â β̂ + b̂ (recursion_meas evaluated; split legs at q₀^δ are handled by the
-induction hypothesis at smaller e — pools_closed keeps q₀^δ ∈ Pools and the δ-leg
-pools all-active is NOT needed: legs enter through evalRe's measured values directly);
-(1 − Â) is invertible (U-21c on P.e0), so β̂ is THE unique solution; the evaluated
-blockSolve satisfies the same system (U-17a evaluated via U-20/eval-hom laws). Equal.
+**U-24a1 `active_solve_meas` · ActiveSolve.lean · medium — REDESIGNED (Fable C1;
+R14): the measured value IS the active-subsystem solve, PER POOL, guards consumed.**
+`statement`: for B : RS1Bundle, L : LedgerIV, e ∈ Icc 1 n, σ', h_ent, ANY relevant
+pool q₀ with package `P : PoolHyp T M RB e (hK e) q₀` (RegP-supplied — wild pools
+INCLUDED), and any τA : P.Act:
+`B.βmeas e he h_ent τA σ' q₀ = ((1 - P.A)⁻¹ *ᵥ bhatMeas P B σ' h_ent) τA`
+where `bhatMeas` := the evaluated exit vector with MEASURED legs: eval-bTerm + the
+split summand with legs `B.βmeas … (q₀^(δ:ℕ))` (pools_closed-typed).
+moves_ref: "(RS.1-DEEP) per block (e, τ): β_{e,τ}(σ′) = ((I − K_e)^{−1} b_e)_τ(σ′)" +
+"Every probabilistic claim in S.4/SQ.2 is about K_e restricted per CTS-M(ii) to the
+ACTIVE block". deps: U-13, U-14 (over ℚ), U-16a2, U-19, U-21c · hyp: B.recursion_meas
+(W-3) + B.xrb + P (E0 inside) + L (act_target + inactive_vanish give SUBSYSTEM
+CLOSURE: entries out of Act vanish, so the active restriction of the measured system
+is itself linear) · sketch: β̂ := (βmeas ·)_Act satisfies β̂ = Â β̂ + b̂ by
+recursion_meas restricted along the closure; (1 − Â) invertible by U-21c on P.e0
+(empty Act: both sides live on an empty type — trivial); uniqueness of the evaluated
+solution. NO induction, NO leg evaluation, NO hok claim — the legs enter b̂ as
+measured values. **CLOSES from the note's own display; the REV-3 hardness was the
+unhypothesized (ii-c) burden, now U-24a2's explicit guard.**
 
-**U-24b `rs2_unique_interp` · Rs2Unique.lean · medium — the RS.2 packaging (R8).**
-`statement`: any family `f : ∀ e ∈ Icc 1 n, T.State e → Multiset T.VType → Qq` that
-is OK and interpolates βmeas at every all-active pool equals `blockSolve …` — hence
-"every β_{e,τ}(σ′) is ONE FIXED rational function" (RS.2), and RS.1-DEEP's symbolic
-reading holds of THE interpolant. moves_ref: "every β_{e,τ}(σ′) is one fixed rational
-function" / "β_e = adj(I − K_e) b_e / det(I − K_e) entrywise". deps: U-24a, U-18b,
-U-27 · hyp: allActive_infinite · sketch: two interpolants agree on an infinite OK
-set (U-24a gives blockSolve interpolates); U-18b. Cramer form via U-15.
+**U-24a2 `interp_read_off` · ReadOff.lean · easy — the (ii-c) gate consumed (C1).**
+`statement`: additionally GIVEN `hAV : AVAgree P (blockSolve T RB hdc hK hdet e he τA
+σ') (bhatMeas P B σ' h_ent) τA` (the note's sealed per-pool read-off check, per
+OBJECT): `∃ hok, (evalAt q₀ ⟨blockSolve … e he τA σ', hok⟩ : ℝ) = B.βmeas e he h_ent
+τA σ' q₀`. moves_ref: "the sealed check that the evaluated object's q₀-value … equals
+the active-subsystem solve there must pass BEFORE it may be read off; a pole
+SURVIVING cancellation at a wild pool is (ii-c)'s FAIL" + the (e3)-FENCE. deps:
+U-24a1 · sketch: AVAgree supplies hok + the active-solve value; rewrite with U-24a1.
+Uncancelled wild poles are EXCLUDED BY HYPOTHESIS — never claimed absent.
+
+**U-24b `rs2_unique_interp` · Rs2Unique.lean · medium — CONDITIONAL identification
+(C1).** `statement`: GIVEN an INFINITE pool set S ⊆ M.Pools with, at every q₀ ∈ S,
+a package P and the AVAgree read-off for every (e, τA, σ') consumed (the U-24a2
+hypotheses — an explicit `hread` bundle): any family f that is OK on S and
+interpolates βmeas there equals `blockSolve …` — "every β_{e,τ}(σ′) is ONE FIXED
+rational function" (RS.2's fixedness), RS.1-DEEP's symbolic reading. moves_ref:
+"every β_{e,τ}(σ′) is one fixed rational function". deps: U-24a1, U-24a2, U-18b,
+U-27 · hyp: hread (the per-pool (ii-c) burden, OPEN, quantified over S — provenance
+the gates/W-6; allActive_infinite supplies the CANDIDATE locus but activity alone
+does not discharge AVAgree at the legs) · sketch: U-24a2 across S gives blockSolve
+interpolates on S; U-18b uniqueness. Cramer form via U-15.
 
 **U-25 `marked_def` · easy — aggregate now DEFINED (R2-17).**
 `noncomputable def markedPairing … : MuHat := ⟨RB.ι e ⬝ᵥ ((1 - Kmat T RB e (hK e))⁻¹`
@@ -690,8 +787,9 @@ the PINNED W1m (never claimed here).
 moves_ref: "(RS.4) Σ_σ R_σ = 1 identically in q … RS.4 inherits EVERY condition of
 the block solve". deps: U-18, U-27 · hyp: THE DISPLAYED INHERITED SET, all explicit
 in RS4Chain (R2-19): C.L (nine CL-5 inputs) · C.B (RS.1's set: xrb/CL-9,
-recursion_meas/CL-10+CL-8 provenance) · C.hns ((ns-null) proof) · C.pools_e0
-(ESCAPE(E0)/CL-1 per pool) · C.WshP/wsh_ok (CL-17(ii)) · RB in (iv)-POLY form (CL-6)
+recursion_meas/CL-10+CL-8 provenance) · C.hns ((ns-null) proof) · C.pools_e0 +
+C.legs_reg (ESCAPE(E0)/CL-1 in its FULL per-pool quantifier — REV 4, Fable C1) ·
+C.WshP/wsh_ok (CL-17(ii)) · RB in (iv)-POLY form (CL-6)
 + XHD-s geoms + INIT-RAT ιP + (J-RAT) jP · C.x3_total (X.3/CL-4, pinned W-4) ·
 C.rs1_equates (pinned W-1e) · C.rsh_interp (pinned W-1's shadow) · sketch:
 eval(Σ Rsh − 1) at p ∈ PrimePools = Σ Rval − decidedTotal = 0 (rsh_interp,
@@ -809,15 +907,17 @@ powers is identically 1" (consumers apply to f − 1) · sketch: num vanishes on
 
 ## 3b. Load-bearing DAG edges (acyclic)
 
-U-1 → {U-3, U-6, U-8, U-16a} · U-2 → {U-3, U-16a} · U-4 → U-5 → U-6 · U-6 ⟹ `hK` for
-{U-8, U-16b/c, U-22, U-24a/b, U-25, U-29} · U-8 → U-9a → {U-9b, U-10} · U-11, U-12 →
-{U-16a, U-18} · U-13 → U-14 → {U-15, U-16b/c, U-24a} · U-16a → {U-16b, U-24a} ·
-U-16b → {U-17a, U-18, U-24a, U-29} · U-16c → U-25 · U-19 → {U-9a, U-10, U-20, U-22,
-U-24a} · U-23b → U-21b; U-21a, U-21b → U-21c → {U-22, U-23d, U-24a} · U-23a/b/c →
-U-23d · U-27 → {U-9b, U-18b, U-22, U-24b, U-28} · U-24a → U-24b · U-22 → hdet of
-{U-16b/c, U-24a/b, U-25, U-28}. CONSUMPTION-DAG discipline: U-24a/b consume `xrb` and
-`recursion_meas`; nothing proves toward `xrb`; no PCI site is consumed by S.1-shaped
-content (there is none at wave 2).
+U-1 → {U-3, U-6, U-8, U-16a1} · U-2 → {U-3, U-16a1} · U-4 → U-5 → U-6 · U-6 ⟹ `hK`
+for {U-8, U-16b/c, U-22, U-24a1/a2/b, U-25, U-29} · U-8 → U-9a → {U-9b, U-10} ·
+U-11, U-12 → {U-16a1, U-18} · U-12, U-19 → U-12b → {U-24a2 plumbing, W-1 hok} ·
+U-13 → U-14 → {U-15, U-16b/c, U-24a1} · U-16a1 → U-16a2 → U-24a1; U-16a1 → U-16b →
+{U-17a, U-18, U-29}; U-16a3 → RegP · U-16c → U-25 · U-19 → {U-9a, U-10, U-20, U-22,
+U-16a2} · U-23b → U-21b; U-21a, U-21b → U-21c → {U-22, U-23d, U-24a1} · U-23a/b/c →
+U-23d · U-27 → {U-9b, U-18b, U-22, U-24b, U-28} · U-24a1 → U-24a2 → U-24b · U-22 →
+hdet of {U-16b/c, U-24a2/b, U-25, U-28} · RegP/AVAgree → {U-24a1, U-24a2, U-24b,
+RS4Chain.legs_reg} (the guards are CONSUMED — Fable C1's symptom is gone).
+CONSUMPTION-DAG discipline: U-24a1/a2/b consume `xrb`/`recursion_meas`; nothing
+proves toward `xrb`; no PCI site is consumed by S.1-shaped content.
 
 ## 4. Trust surface & audit flags (REV 3)
 
@@ -839,8 +939,16 @@ content (there is none at wave 2).
    (R2-7); `Pools` is pinned to prime powers with the δ-closure law (R2-7/14).
 7. U-29's claim is SCHEMA CONSISTENCY (R11) — flag any reading of it as intended-
    instance inhabitation; that is the §5 wave-4 process gate.
-8. S.7 / probe roster / (CUT-WD)'s proof / junk determinants: census-side (AVAgree +
-   W-6/W-7); (BDY) in scope as U-7a/b/c + pinned W-8.
+8. S.7 / probe roster / (CUT-WD)'s proof / junk determinants: census-side; (BDY) in
+   scope as U-7a/b/c + pinned W-8.
+9. (REV 4) The ACT scope is GUARDS, not zero rows: `act_row` DELETED (undisplayed);
+   part1/rep_indep/xhd_sum/no_stray/meas_card/kstep laws guarded by `activeState` —
+   wild pools instantiable; auditor checks no ledger field asserts a mass claim at an
+   unrealized source.
+10. (REV 4) `RegP` and `AVAgree` are CONSUMED: U-24a1 (packages at every relevant
+   pool incl. wild legs), U-24a2 (the per-object (ii-c) read-off hypothesis), U-24b
+   (`hread` over an infinite read-off-valid family), `RS4Chain.legs_reg`. Flag any
+   future unit that reads a numeric β/R value without citing a package + AVAgree.
 
 ## 5. Conventions (phase E / prover fleet) + census
 
@@ -853,10 +961,12 @@ with real semantics, MovesV/MovesT must exhibit instances of every §2 structure
 the real CTS objects and discharge W-1/W-1e/W-1m/W-2/W-3/W-4/W-7/W-8/W-10; the
 campaign ledger tracks this per structure.
 
-**Census: 41 units = 15 easy / 25 medium / 1 hard.** Easy {U-1, U-2, U-3, U-5, U-7a,
-U-7b, U-7c, U-13, U-18b, U-20, U-21a, U-23a, U-23b, U-23c, U-25}; hard {U-24a (the
-per-pool evaluated identification, strong induction + active-subsystem uniqueness)};
-medium the remaining 25.
+**Census (REV 4): 45 units = 18 easy / 27 medium / 0 hard.** Easy {U-1, U-2, U-3,
+U-5, U-7a, U-7b, U-7c, U-12b, U-13, U-16a3, U-18b, U-20, U-21a, U-23a, U-23b, U-23c,
+U-24a2, U-25}; medium the remaining 27. NO hard units remain: the REV-3 hard (U-24a's
+strong-induction identification) DISSOLVED under the R14 repair — its difficulty was
+exactly the unhypothesized per-pool (ii-c)/E0 burden, which the note keeps as open
+per-pool hypotheses and REV 4 now consumes as such (RegP/AVAgree in U-24a1/a2/24b).
 
 ---
 
@@ -892,7 +1002,18 @@ residuals found by the re-audit are below.
 | 19 | gap | RS4Chain carries the full inherited set (LedgerIV, RS1Bundle, hns, pools_e0, CL-17(ii) presentation, POLY-form burdens) + the two pinned primewise inputs; U-28's docstring lists every tag | §2.D, U-28 |
 | 20 | crit | U-29 → `consistency_n2`: covers ALL §2 structures; claim renamed to schema consistency; intended-instance inhabitation = the W-11 process gate | R11, U-29, §5 |
 
-STATUS: REV 3 complete, 2026-07-27. All 20 findings repaired (18 fixed/redesigned in
-place; R2-16/R2-8 partially resolved by SCOPING with the note's own conventions —
-empty-active-block vacuity is the note's "realized states only" reading, displayed at
-U-21c; nothing pushed back). Awaits the fresh-Fable audit.
+**Fresh-Fable audit (2 crit / 4 gap) → REV 4:**
+
+| F-# | class | REV-4 repair | where |
+|---|---|---|---|
+| C1 | crit | U-24a → U-24a1 (measured value = active-subsystem solve, per pool, from recursion_meas + subsystem closure + E0 — no induction, no leg evaluation, no hok claim) + U-24a2 (symbolic read-off GIVEN AVAgree — the (ii-c)/(e3)-FENCE burden as explicit hypothesis); U-24b conditional on an infinite read-off-valid family (`hread`); RegP/AVAgree now CONSUMED; RS4Chain gains `legs_reg` (CL-1's full quantifier); new U-12b transports OK/eval along q₀ ↦ q₀^δ. U-24a CLOSES — no STUCK | R14, U-24a1/a2/b, §2.D |
+| C2 | crit | `act_row` DELETED (undisplayed); part1/rep_indep/xhd_sum/xhd_no_stray/meas_card/kstep_one/hmc/init_*/comp_once GUARDED by `activeState` (the note's "realized states only"/"restricted to the ACTIVE block" scope); `act_target` kept (the displayed entry-INTO-inactive vanishing); wild pools instantiable; U-9a/9b/10 carry the guard | R13, §2.B, U-9a/9b/10 |
+| G1 | gap | `kstep_one`'s target predicate pinned hK-free: `∃ μ ∈ mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β` | §2.B |
+| G2 | gap | W-1's rfl-conjunct STRUCK; W1_RS1SH = the measured density clause only, symbolic half noted definitional; binders unshadowed; `∃ hok` type-ascribed | §2.E |
+| G3 | gap | U-16a split → U-16a1 (bSplit with the PINNED def-equation incl. the halted-member factor-1/verdict-singleton indicator, §T.4 cited) / U-16a2 (evalRe) / U-16a3 (consumedDeltas + the δ-ABSOLUTE fence) | §3 S2 |
+| G4 | gap | `entLvl`/`entInst` carriers + `ent_count_card`: I^ent = the card of the ε-instance event at the shape's own defining level | §2.B |
+
+STATUS: REV 4 complete, 2026-07-27. Round-2 (Codex) 20/20 repaired; round-3 (Fable)
+6/6 repaired, nothing pushed back, no STUCK report — U-24a1/a2 close from the note's
+displays once the per-pool guards are hypotheses (R14). 45 units, 18 easy / 27 medium
+/ 0 hard. Awaits the parallel dual confirmation.
