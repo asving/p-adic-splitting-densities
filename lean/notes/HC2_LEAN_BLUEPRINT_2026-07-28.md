@@ -196,6 +196,23 @@ fleet round. The GAP-7(iii) STANDING OBLIGATION (line-by-line audit of the
 `ZCSeedLaws` list against C.1.5's proof) now explicitly includes re-checking this
 guard's placement.
 
+**DC-2 (2026-07-28): `IsFreshAttach` solution-set clause — REPAIRED (the §9 F-7
+authorization, executed).** The E-phase transcription of D7's fresh-attachment spec
+rendered its solution-set clause as `D'.IsSolution x ↔ (D.IsSolution (Θ x) ∧ fd.sat x)`,
+evaluating the fresh locus at `x` where this blueprint's normative U7 display — and the
+FROZEN `JetSetup.recursion` field type it mirrors (MovesC/Defs.lean 872–873:
+`stratum i (Theta i x)`) — evaluate it at `Θ x`. The mismatch made U7's
+`mkSigma_recursion` unprovable as stated (its in-file STOP-THE-LINE record: after the
+forced reduction the goal demands `Θ`-invariance of the fresh locus, which no
+`PresentSeed` field supplies). THE REPAIR (defs-layer elaboration fix; this blueprint's
+D7/U7 statements — the displayed forms — are the unchanged contract): the clause now
+reads `fd.sat (Θ x)`. Re-checked on application: `pinTransportSystem_spec` (the
+choice-unfolding glue; clause-agnostic) and the proved U8 (`mkStratum`'s junk-guard
+instantiation; never touches the spec) elaborate green, and all unit files re-elaborate
+against the repaired Defs. U7's route re-opens (the ∃-witness via `C0.pinTransport` +
+the strip/value pin-attachment constructor); its sorry stands for the next fleet round
+(QUEUED-PROVABLE-NOW per §9 F-7).
+
 ## 3. THE AXIOM PROPOSALS — FENCED; PROPOSALS ONLY, NOTHING DECLARED
 
 Common citation base (already pinned verbatim in `lean/notes/GMN_citations.md`):

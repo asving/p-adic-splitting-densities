@@ -50,6 +50,11 @@ Elaboration deviations (each recorded in `MANIFEST.json` "deviations"):
   `PresentSeed` via `f = C(p^N)`). Repaired by the CHART-COVERAGE GUARD (see the field's
   docstring); the refutation no longer elaborates. Seed-chain units restated-in-place and
   annotated RESTATED-POST-DEFS-REPAIR (U5, U6, U8, U9, U13, U14, U27, U29, U30).
+* DEFS-REPAIR DC-2 (2026-07-28, deviation-correction — blueprint §2.2; §9 F-7 AUTHORIZED):
+  `IsFreshAttach`'s solution-set clause read the fresh locus at `x` (`fd.sat x`) where the
+  blueprint's normative U7 display and the FROZEN `JetSetup.recursion` field type demand
+  `Θ x`. Repaired to `fd.sat (Θ x)` (see the def's docstring); U7's stop-the-line record
+  is thereby discharged and its route re-opens.
 Flagged for semantic-guardian review throughout (the trust boundary).
 -/
 
@@ -514,11 +519,18 @@ clauses' cut coordinates (= the clause supports: a strip cuts its coordinate, a 
 clause its whole level set — the DIG re-presentation's pinned set), (3) literal-zero
 solves at strip coordinates and (4) zero-solve transport (C.1.5(2): old zeros survive as
 zeros — the (ZC-a) normalized presentation). Existence of such a `D'` from
-`C0.pinTransport` + the strip/value pin-attachment constructor is U7's obligation. -/
+`C0.pinTransport` + the strip/value pin-attachment constructor is U7's obligation.
+DC-2 (2026-07-28, deviation-correction — blueprint §2.2; the §9 F-7 authorization,
+executed): clause (1) originally read the fresh locus at `x` (`fd.sat x`), where the
+blueprint's normative U7 display — and the FROZEN `JetSetup.recursion` field type it
+mirrors (`stratum i (Theta i x)`, MovesC/Defs.lean 872–873) — read it at `Θ x`. That
+E-phase elaboration bug made U7's `mkSigma_recursion` unprovable as stated (its in-file
+STOP-THE-LINE record: the forced reduction demanded `Θ`-invariance of the fresh locus,
+which nothing supplies). Repaired to `fd.sat (Θ x)`; blueprint statement unchanged. -/
 def IsFreshAttach {p m : ℕ} (D : Locus p m)
     (Θ : (Fin m → ZMod p) → (Fin m → ZMod p)) (fd : FreshData p m)
     (D' : Locus p m) : Prop :=
-  (∀ x, D'.IsSolution x ↔ (D.IsSolution (Θ x) ∧ fd.sat x)) ∧
+  (∀ x, D'.IsSolution x ↔ (D.IsSolution (Θ x) ∧ fd.sat (Θ x))) ∧
   (∀ c : Fin m, D'.pinned c = true ↔
     (D.pinned c = true ∨ ∃ cl ∈ fd.clauses, c ∈ cl.support)) ∧
   (∀ c : Fin m, (∃ cl ∈ fd.clauses, cl.support = {c} ∧ ∀ x, (cl.sat x ↔ x c = 0)) →

@@ -1,78 +1,316 @@
 {
- "campaign": "HC-2: the JetSetup-existence bridge (MOVES campaign wave 5, hard core 2) — Lean formalization, E-phase (compiling statement files, sorry bodies)",
- "source": "lean/notes/MOVES_2026-07-24.md — §C rev 14 (C.0–C.3), §B2-DEF (D.0–D.12), §D4-R (D4-R.0 + L1/L2); dual-accepted",
- "blueprint": "lean/notes/HC2_LEAN_BLUEPRINT_2026-07-28.md (REV 2, Fable 0/1 ACCEPTED; 48-unit census)",
+ "campaign": "HC-2: the JetSetup-existence bridge (MOVES campaign wave 5, hard core 2) \u2014 Lean formalization, E-phase (compiling statement files, sorry bodies)",
+ "source": "lean/notes/MOVES_2026-07-24.md \u2014 \u00a7C rev 14 (C.0\u2013C.3), \u00a7B2-DEF (D.0\u2013D.12), \u00a7D4-R (D4-R.0 + L1/L2); dual-accepted",
+ "blueprint": "lean/notes/HC2_LEAN_BLUEPRINT_2026-07-28.md (REV 2 + \u00a79 FRONTIER, Fable 0/1 ACCEPTED; census 48 \u2192 53 per \u00a79 F-2/F-4: +U20a/b/c, +U22-E1/E2)",
  "consumes": "MovesC (36/36 PROVED): JetSetup (29 fields)/History/Node/HistoryCoherent/Realizable/TransitionAdmissible/LandingKey/IsNodeLift/ZCData/FreshData/LevelClause/TypObject/inFreshBand/IsValueCoord/IsValueSupport/baseDigit/totalPins/SHZ + C1_stripClause/C1_TYP_toClause (choice-consumed in D6) + C0_pinTransport (U7 dep) + C6_thmC_b (gate dep); LeanUrat.Moves: Stage/StageCoreL/TransitionCoreL/IsDevelopment/inC/IAug/HasAnchorK/OrdPsiPoly/IsRecenteringCore/LandingCylinderL; MovesD E-phase core: CanonPolicy/Shape/PrefSet/PrefSetAny/PresentNorm/Presented/Threshold/PrefIdx/reprOf/etaData/EtaGalEq/InBox/canonRoot/Shape.NP/topLocus/ClassFiberWelldef + G1_gates.PhatStar/PhatStar_NPband (U29)",
- "ephase": "2026-07-29 (session date 2026-07-27 wall-clock) — Defs.lean + 33 unit files elaborate GREEN under per-file `lake env lean` (toolchain 4.31.0, mathlib cache; HC2.Defs also green under `lake build LeanUrat.HC2.Defs`, 8566 jobs). 51 sorried declarations total (3 in Defs: boxChart_sorted, boxChart_lt, mkFreshClauses_disj — each a named P-phase obligation; 48 across unit files). ZERO axiom declarations (fence grep clean: only docstring mentions). NO native_decide. polOM.blind proved by rfl (structure eta); isNodeLift_iff proved by Iff.rfl (definitional, per blueprint D8); pinTransportSystem_spec is a 3-line choice-unfolding glue proof; valueSlots_spanSlot/card_fin_fun are elaboration helpers (MovesD History.snoc precedent).",
- "layout_note": "Directory lean/LeanUrat/HC2/ per the E-phase charge (blueprint §4 says MovesJ/); module path LeanUrat.HC2.*; NAMESPACE is the blueprint's normative LeanUrat.MovesJ — downstream (MovesT wave-4) references are namespace-keyed.",
+ "ephase": "2026-07-29 (session date 2026-07-27 wall-clock) \u2014 Defs.lean + 33 unit files elaborate GREEN under per-file `lake env lean` (toolchain 4.31.0, mathlib cache; HC2.Defs also green under `lake build LeanUrat.HC2.Defs`, 8566 jobs). 51 sorried declarations total (3 in Defs: boxChart_sorted, boxChart_lt, mkFreshClauses_disj \u2014 each a named P-phase obligation; 48 across unit files). ZERO axiom declarations (fence grep clean: only docstring mentions). NO native_decide. polOM.blind proved by rfl (structure eta); isNodeLift_iff proved by Iff.rfl (definitional, per blueprint D8); pinTransportSystem_spec is a 3-line choice-unfolding glue proof; valueSlots_spanSlot/card_fin_fun are elaboration helpers (MovesD History.snoc precedent).",
+ "layout_note": "Directory lean/LeanUrat/HC2/ per the E-phase charge (blueprint \u00a74 says MovesJ/); module path LeanUrat.HC2.*; NAMESPACE is the blueprint's normative LeanUrat.MovesJ \u2014 downstream (MovesT wave-4) references are namespace-keyed.",
  "preamble": "Every unit file: `import Mathlib` + `import LeanUrat.HC2.Defs` (U29 also `LeanUrat.MovesD.G1_gates`); `namespace LeanUrat.MovesJ`; `open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD`; linter longLine/header/unusedSectionVars off, maxHeartbeats 1000000. Check per file with `lake env lean LeanUrat/HC2/<f>.lean` (NEVER bare full `lake build` for iteration).",
- "axiom_fence": "ABSOLUTE AND HELD: zero `axiom` commands in the corpus. P-1 (AX_stage_trans_gmn) NOT DECLARED per blueprint §3 rev-2 disposition (DEFAULT = NO DECLARATION; the reduced form discharges no consumer as typed); consumers carry the NAMED HYPOTHESIS `StageTransHyp` (Defs). P-2/P-3 STRUCK (tombstones, blueprint §3); U18's fallback is the NAMED HYPOTHESIS `OmUniqHyp` (Defs). Both are `def ... : Prop` per the blueprint's §3 displays (the E-phase charge's word 'structures' read as 'named hypothesis objects'; the blueprint display is the byte-normative form).",
- "open_surface": "StageTransHyp (U17a/U17c binder; discharge = HC-1 D.7 induction or the recorded P-1-reduced+StageLedgerHyp contingency); OmUniqHyp (recorded U18/U26 fallback — consumed by NOTHING yet; proof-first stands); SEED-EXIST = U15/U16's `hseed` binder (HC-1's deliverable, the rev-2 reprOf+KeysLawful form, stated ONCE); PresentNorm `hnorm` binder (dischargeable by U17c/U18 via presentNorm_polOM); vOf : VOf p (n*N) (the R4.B.2 emitted-value boundary, free parameter); U1b's hdvd/hthr side conditions (pre-authorized fallback, sign-off pending).",
+ "axiom_fence": "ABSOLUTE AND HELD: zero `axiom` commands in the corpus. P-1 (AX_stage_trans_gmn) NOT DECLARED per blueprint \u00a73 rev-2 disposition (DEFAULT = NO DECLARATION; the reduced form discharges no consumer as typed); consumers carry the NAMED HYPOTHESIS `StageTransHyp` (Defs). P-2/P-3 STRUCK (tombstones, blueprint \u00a73); U18's fallback is the NAMED HYPOTHESIS `OmUniqHyp` (Defs). Both are `def ... : Prop` per the blueprint's \u00a73 displays (the E-phase charge's word 'structures' read as 'named hypothesis objects'; the blueprint display is the byte-normative form).",
+ "open_surface": "StageTransHyp (U17a/U17c binder; discharge = HC-1 D.7 induction or the recorded P-1-reduced+StageLedgerHyp contingency); OmUniqHyp (recorded U18/U26 fallback \u2014 consumed by NOTHING yet; proof-first stands); SEED-EXIST = U15/U16's `hseed` binder (HC-1's deliverable, the rev-2 reprOf+KeysLawful form, stated ONCE); PresentNorm `hnorm` binder (dischargeable by U17c/U18 via presentNorm_polOM); vOf : VOf p (n*N) (the R4.B.2 emitted-value boundary, free parameter); U1b's hdvd/hthr side conditions (pre-authorized fallback, sign-off pending).",
  "deviations": [
-  "D4 FOLD (route recorded per the E-phase charge): `SideReads` signature WIDENED by a final `Φnext : Polynomial ℤ_[p]` parameter; clause (iv) = `LandingKey ν Φnext` lives inside the bundle; `ReadsOf` adds `∃ Φnext` with the pin `∀ hi1 : i+1 < len, Φnext = (H.nodes[i+1]).σ.Φ` (interior reads pinned to the recorded child key; the blueprint's 'designated final key' stays existential at the last read). The alternative route (hoisting (iv) into ReadsOf) was NOT taken — SideReads stays the single per-read bundle MovesT re-keys to.",
-  "ReadsOf carries `HistoryCoherent H` as a conjunct — the blueprint U19-NOTE's 'D4 RECORDS coherence-adjacent data' route; U19 becomes a projection. Without it, TransitionCoreL/stage-ledger content would be underivable from f-side data alone (Wall C).",
-  "SideReads clause (v) strengthened from 'recentering nodes carry the polOM lift' to the ALL-NODES lift law `ν.lift = (polOM p F).liftOf ν` PLUS the baked root normalization `zbar = canonRoot ν` (the blueprint's own U24 E-phase decision); needed so U24's IsCanonPres (all-nodes IsCanon ∧ canonRoot) is a projection. Lift fields are junk data off recenterings; the policy is blind and deterministic.",
-  "SideReads (i)/(ii) transcribed in STAGE SCALE via the read functional `e·σ.w(B_j) + j·h` against the recorded `ν.gam` (D.3(a)/(c); consistent with coherence's slope law + hLineU: on-side slots satisfy e·w+jh = γ). Clause (iii)'s 'frame residual of f' rendered as `ν.σ.R (Σ_j B_j·Φ^j)` (the StratumData/D.8 shape). FLAGGED RISK: at multi-side polygons the initial form σ.R f reads the slope-h_frame side, not necessarily the read side — possible over-strengthening; U31 is the designed day-one adjudicating gate (blueprint GAP-4).",
-  "D1's boxChart_sorted/boxChart_lt stated with sorry (blueprint says 'proved at E-phase'; the E-phase charge says prove nothing — the duty transfers to P-phase, assigned to the U13 wave).",
-  "D6: mkFresh's FreshData.disj field discharged by the forward lemma mkFreshClauses_disj (sorry in Defs = U2's content; the P-phase U2 prover fills Defs' lemma, the U2 unit file is the consumer form). Strip clauses = choice on C1_stripClause; value clauses = choice on C1_TYP_toClause at the seed's typObj; value-slot roster requires level set nonempty AND in-band (the (γ)-crossing self-truncation) so U3 is provable by construction.",
-  "D6: vOf concretized as `VOf p m := ℕ → ℕ → (T : Finset (Fin m)) → (Fin T.card → ZMod p)` (dependent value-per-support form; blueprint left the type as an ellipsis).",
-  "D7: pinTransportSystem = CHOICE-ON-SPEC (`IsFreshAttach`: solution-set equation + pinned-set equation [old pins ∪ clause supports] + literal-zero solves at strip coordinates + zero-solve transport), junk default D. Existence of the attached system (via C0.pinTransport + the strip/value pin-attachment constructor: a codim=|support| value clause pins its support to the UNIQUE solution by LevelClause.count) is U7's obligation. The 3rd/4th spec clauses are what make U9c/U10c (interior zeros) statable of the chosen system — C.1.5(2)'s normalized re-presentation.",
-  "D7: mkStratum junk-guarded as `fun y => ∀ hi : i < len, (mkFresh … i hi).sat y` (total in i; JetSetup only consumes i < len). U8 is one instantiation step beyond the blueprint's Iff.rfl. mkSigma's junk step (i ≥ len) is the identity.",
-  "D5: ZCSeedLaws field list FIXED AT E-PHASE as: downsets_literal (§C C.1.5 'Downsets are literal' QUOTED — the LST(i)/R4.5-item-3 height reading, stage scale divided by strFrame i) + pres_attain (§B2-DEF D.3(e)(ii) attainable accounting on value supports). STANDING OBLIGATION (blueprint GAP-7(iii)) remains: the E-phase AUDIT round checks this list line-by-line against C.1.5's proof; additions are statement-fence events (the declared stuck-rule site).",
-  "D5 DEFS-REPAIR (2026-07-27, deviation-correction — blueprint §2.2 DC-1): the first transcription of downsets_literal BOX-TRUNCATED the note's iff (the C.1.5 zero system ranges over the frame's OWN tower coordinates, all (b,l) with ht < β, not the n×N chart), over-claiming the ← direction; machine-refuted — scratch_U9_presentSeed_false.lean derived False from ANY PresentSeed via f = C(p^N). REPAIRED by the CHART-COVERAGE GUARD (∀ cc : Coord, fineSlot cc.2 = j → htH i cc < β → ∃ c, coordOf c = cc — the (ZC-c)/C.2 'N ≥ 1 + largest constrained level' proviso per-threshold); the refutation no longer elaborates and its route is closed structurally (scratch_U9_guard_closed.lean). Seed-chain units annotated RESTATED-POST-DEFS-REPAIR: U5, U6, U8, U9, U13, U14, U27, U29, U30 (sorries stand for the next fleet round).",
-  "U1b: the blueprint's '(the read's D.5 side conditions)' ellipsis concretized as the named hypotheses hdvd (e ∣ h'·(g−k)) and hthr (e·wPrev(Φ) < h'·(g−k)) — the pre-authorized fallback form; statement-fence sign-off PENDING (blueprint §7.2 flex point).",
-  "U14: stated on the Defs addendum `inFreshBandC` (the inFreshBand formula on RAW coordinates — band levels are what NPband bounds; the chart-level corollary is NP_fits_box). Addendum def, MovesD-poolProj pattern.",
-  "U9/U10/U17b pre-splits: E-phase renders named sub-statements (U9a/b/c = the two ZCData fields split at i=0; U10a transport / U10b fresh-exactness / U10c interior zeros / U10d confinement + assembled zc_step; U17b-1 root swap / U17b-2 upTo-induction / U17b-3 ∃-form data transport + assembled). Best-faith decompositions — prover refinement authorized without statement-fence for the SUB-lemmas only (the assembled statements are normative).",
-  "Gate concretizations: U27/U31 at F4 := GaloisField 2 2, U28 at F9 := GaloisField 3 2 (Defs addenda); U27 pins length-1 root history with (g,μ)=(2,1), totalPins = 2 and the 1/4 tie `mass·2² = 2^{2·1}` AT THE COVERAGE FLOOR N := 1 (realM2's recorded density anchor; RESTATED 2026-07-28 — see the coverage-floor deviation entry); U28 pins the (g=2) vs (g=1) mass inequality at p=3; U29 = NP_fits at PhatStar (MovesD G1) with gate_NP_value := PhatStar_NPband re-export + attainment at level 4; U30's node is existential with p=2/species pinned (the Case-L data transcription = P-phase duty).",
-  "U17c additionally states the assembled presentNorm_polOM (PresentNorm at polOM, from U17c+U18) — the hnorm discharger; not a separate blueprint unit id.",
+  "D4 FOLD (route recorded per the E-phase charge): `SideReads` signature WIDENED by a final `\u03a6next : Polynomial \u2124_[p]` parameter; clause (iv) = `LandingKey \u03bd \u03a6next` lives inside the bundle; `ReadsOf` adds `\u2203 \u03a6next` with the pin `\u2200 hi1 : i+1 < len, \u03a6next = (H.nodes[i+1]).\u03c3.\u03a6` (interior reads pinned to the recorded child key; the blueprint's 'designated final key' stays existential at the last read). The alternative route (hoisting (iv) into ReadsOf) was NOT taken \u2014 SideReads stays the single per-read bundle MovesT re-keys to.",
+  "ReadsOf carries `HistoryCoherent H` as a conjunct \u2014 the blueprint U19-NOTE's 'D4 RECORDS coherence-adjacent data' route; U19 becomes a projection. Without it, TransitionCoreL/stage-ledger content would be underivable from f-side data alone (Wall C).",
+  "SideReads clause (v) strengthened from 'recentering nodes carry the polOM lift' to the ALL-NODES lift law `\u03bd.lift = (polOM p F).liftOf \u03bd` PLUS the baked root normalization `zbar = canonRoot \u03bd` (the blueprint's own U24 E-phase decision); needed so U24's IsCanonPres (all-nodes IsCanon \u2227 canonRoot) is a projection. Lift fields are junk data off recenterings; the policy is blind and deterministic.",
+  "SideReads (i)/(ii) transcribed in STAGE SCALE via the read functional `e\u00b7\u03c3.w(B_j) + j\u00b7h` against the recorded `\u03bd.gam` (D.3(a)/(c); consistent with coherence's slope law + hLineU: on-side slots satisfy e\u00b7w+jh = \u03b3). Clause (iii)'s 'frame residual of f' rendered as `\u03bd.\u03c3.R (\u03a3_j B_j\u00b7\u03a6^j)` (the StratumData/D.8 shape). FLAGGED RISK: at multi-side polygons the initial form \u03c3.R f reads the slope-h_frame side, not necessarily the read side \u2014 possible over-strengthening; U31 is the designed day-one adjudicating gate (blueprint GAP-4).",
+  "D1's boxChart_sorted/boxChart_lt stated with sorry (blueprint says 'proved at E-phase'; the E-phase charge says prove nothing \u2014 the duty transfers to P-phase, assigned to the U13 wave).",
+  "D6: mkFresh's FreshData.disj field discharged by the forward lemma mkFreshClauses_disj (sorry in Defs = U2's content; the P-phase U2 prover fills Defs' lemma, the U2 unit file is the consumer form). Strip clauses = choice on C1_stripClause; value clauses = choice on C1_TYP_toClause at the seed's typObj; value-slot roster requires level set nonempty AND in-band (the (\u03b3)-crossing self-truncation) so U3 is provable by construction.",
+  "D6: vOf concretized as `VOf p m := \u2115 \u2192 \u2115 \u2192 (T : Finset (Fin m)) \u2192 (Fin T.card \u2192 ZMod p)` (dependent value-per-support form; blueprint left the type as an ellipsis).",
+  "D7: pinTransportSystem = CHOICE-ON-SPEC (`IsFreshAttach`: solution-set equation + pinned-set equation [old pins \u222a clause supports] + literal-zero solves at strip coordinates + zero-solve transport), junk default D. Existence of the attached system (via C0.pinTransport + the strip/value pin-attachment constructor: a codim=|support| value clause pins its support to the UNIQUE solution by LevelClause.count) is U7's obligation. The 3rd/4th spec clauses are what make U9c/U10c (interior zeros) statable of the chosen system \u2014 C.1.5(2)'s normalized re-presentation.",
+  "D7: mkStratum junk-guarded as `fun y => \u2200 hi : i < len, (mkFresh \u2026 i hi).sat y` (total in i; JetSetup only consumes i < len). U8 is one instantiation step beyond the blueprint's Iff.rfl. mkSigma's junk step (i \u2265 len) is the identity.",
+  "D5: ZCSeedLaws field list FIXED AT E-PHASE as: downsets_literal (\u00a7C C.1.5 'Downsets are literal' QUOTED \u2014 the LST(i)/R4.5-item-3 height reading, stage scale divided by strFrame i) + pres_attain (\u00a7B2-DEF D.3(e)(ii) attainable accounting on value supports). STANDING OBLIGATION (blueprint GAP-7(iii)) remains: the E-phase AUDIT round checks this list line-by-line against C.1.5's proof; additions are statement-fence events (the declared stuck-rule site).",
+  "D5 DEFS-REPAIR (2026-07-27, deviation-correction \u2014 blueprint \u00a72.2 DC-1): the first transcription of downsets_literal BOX-TRUNCATED the note's iff (the C.1.5 zero system ranges over the frame's OWN tower coordinates, all (b,l) with ht < \u03b2, not the n\u00d7N chart), over-claiming the \u2190 direction; machine-refuted \u2014 scratch_U9_presentSeed_false.lean derived False from ANY PresentSeed via f = C(p^N). REPAIRED by the CHART-COVERAGE GUARD (\u2200 cc : Coord, fineSlot cc.2 = j \u2192 htH i cc < \u03b2 \u2192 \u2203 c, coordOf c = cc \u2014 the (ZC-c)/C.2 'N \u2265 1 + largest constrained level' proviso per-threshold); the refutation no longer elaborates and its route is closed structurally (scratch_U9_guard_closed.lean). Seed-chain units annotated RESTATED-POST-DEFS-REPAIR: U5, U6, U8, U9, U13, U14, U27, U29, U30 (sorries stand for the next fleet round).",
+  "U1b: the blueprint's '(the read's D.5 side conditions)' ellipsis concretized as the named hypotheses hdvd (e \u2223 h'\u00b7(g\u2212k)) and hthr (e\u00b7wPrev(\u03a6) < h'\u00b7(g\u2212k)) \u2014 the pre-authorized fallback form; statement-fence sign-off PENDING (blueprint \u00a77.2 flex point).",
+  "U14: stated on the Defs addendum `inFreshBandC` (the inFreshBand formula on RAW coordinates \u2014 band levels are what NPband bounds; the chart-level corollary is NP_fits_box). Addendum def, MovesD-poolProj pattern.",
+  "U9/U10/U17b pre-splits: E-phase renders named sub-statements (U9a/b/c = the two ZCData fields split at i=0; U10a transport / U10b fresh-exactness / U10c interior zeros / U10d confinement + assembled zc_step; U17b-1 root swap / U17b-2 upTo-induction / U17b-3 \u2203-form data transport + assembled). Best-faith decompositions \u2014 prover refinement authorized without statement-fence for the SUB-lemmas only (the assembled statements are normative).",
+  "Gate concretizations: U27/U31 at F4 := GaloisField 2 2, U28 at F9 := GaloisField 3 2 (Defs addenda); U27 pins length-1 root history with (g,\u03bc)=(2,1), totalPins = 2 and the 1/4 tie `mass\u00b72\u00b2 = 2^{2\u00b71}` AT THE COVERAGE FLOOR N := 1 (realM2's recorded density anchor; RESTATED 2026-07-28 \u2014 see the coverage-floor deviation entry); U28 pins the (g=2) vs (g=1) mass inequality at p=3; U29 = NP_fits at PhatStar (MovesD G1) with gate_NP_value := PhatStar_NPband re-export + attainment at level 4; U30's node is existential with p=2/species pinned (the Case-L data transcription = P-phase duty).",
+  "U17c additionally states the assembled presentNorm_polOM (PresentNorm at polOM, from U17c+U18) \u2014 the hnorm discharger; not a separate blueprint unit id.",
   "etaData/EtaGalEq call sites carry the explicit `(P : ShapePrefix)` binder (elaboration fix; blueprint displays omitted it).",
-  "U27 COVERAGE-FLOOR RESTATEMENT (2026-07-28, adjudicated): the E-phase gate quantified `∀ N ≥ 1`; REFUTED at N = 2 (lean/U27_OBSTRUCTION_negation.lean — every conjunct verbatim: `root_height` forces line ≥ 1 at both bases, coherence forces Dwidth = 1, and `inFreshBand`'s inclusive upper edge swallows level 1 whenever it exists, so totalPins is forced to 4 at N = 2 and ≥ 4 at every N ≥ 2). The recorded equations (totalPins = 2, the 1/4 tie) are BOX-SIZE-DEPENDENT: they hold exactly at the (ZC-c)/C.2 floor `N(H₀,⊤) = 1 + the largest constrained level = 1 + 0 = 1` (the decided order-0 inert stratum constrains level 0 only — two cluster-zero strips). Unit restated at N := 1 (all other conjuncts byte-identical), proviso quoted in the theorem docstring, and PROVED sorry-free (the refutation artifact stays as the historical witness against the old form; it does not touch — and by consistency cannot touch — the restated one, whose truth is now a compiled theorem)."
+  "U27 COVERAGE-FLOOR RESTATEMENT (2026-07-28, adjudicated): the E-phase gate quantified `\u2200 N \u2265 1`; REFUTED at N = 2 (lean/U27_OBSTRUCTION_negation.lean \u2014 every conjunct verbatim: `root_height` forces line \u2265 1 at both bases, coherence forces Dwidth = 1, and `inFreshBand`'s inclusive upper edge swallows level 1 whenever it exists, so totalPins is forced to 4 at N = 2 and \u2265 4 at every N \u2265 2). The recorded equations (totalPins = 2, the 1/4 tie) are BOX-SIZE-DEPENDENT: they hold exactly at the (ZC-c)/C.2 floor `N(H\u2080,\u22a4) = 1 + the largest constrained level = 1 + 0 = 1` (the decided order-0 inert stratum constrains level 0 only \u2014 two cluster-zero strips). Unit restated at N := 1 (all other conjuncts byte-identical), proviso quoted in the theorem docstring, and PROVED sorry-free (the refutation artifact stays as the historical witness against the old form; it does not touch \u2014 and by consistency cannot touch \u2014 the restated one, whose truth is now a compiled theorem).",
+  "DEFS-REPAIR DC-2 (2026-07-28, deviation-correction \u2014 blueprint \u00a72.2; the \u00a79 F-7 AUTHORIZATION, executed): `IsFreshAttach`'s solution-set clause read the fresh locus at `x` (`fd.sat x`) where the blueprint's normative U7 display AND the FROZEN `JetSetup.recursion` field type it mirrors (MovesC/Defs.lean 872\u2013873: `stratum i (Theta i x)`) read it at `\u0398 x` \u2014 the mismatch made U7's `mkSigma_recursion` unprovable as stated (its in-file stop-the-line record: the forced reduction demanded \u0398-invariance of the fresh locus). Repaired to `fd.sat (\u0398 x)`; blueprint statement unchanged. Re-checked on application: `pinTransportSystem_spec` (choice-unfolding glue, clause-agnostic) and the PROVED U8 (`mkStratum` junk-guard instantiation, spec-untouched) green; all unit files re-elaborate. U7 QUEUED-PROVABLE-NOW.",
+  "F-2/F-4 PRE-SPLITS LANDED (2026-07-28; census 48 \u2192 53; no fence event \u2014 new sub-lemmas under byte-unchanged assembled statements, the U9/U10 precedent): U20 pre-split into U20a `NA_transport_root` / U20b `NA_transport_increment` / U20c `NA_transport_recentering` (one cross-frame vertex-value transport per PARENT species; assembled readsOf_NA = species trichotomy + transports + SideReads(i) strict-above at the off-span vertex) and U22 endpoint-split into U22-E1 `SAE_spanStrict_endpoint` / U22-E2 `SAE_vertexEq_endpoint` (assembled readsOf_SAE = the F-4 proven reduction + E1 + E2; reduction proof lands first). Sub-lemma statements prover-refinable (E-phase best-faith renderings of F-2/F-4's semantic specs: transport/strict-entry equations stated in stage scale \u00d7STR_{i+1} with `B j \u2260 0` guards; E2 as the u*-tie); the assembled statements are normative."
  ],
  "blocked": [],
- "statement_fence": "MovesC/Defs.lean, MovesD/Defs.lean, Moves/Defs*.lean FROZEN — zero edits made. HC-2 adds files only. Pre-declared flex points still open: U11 InBox strength; U25 eligibility narrowing; U1b side conditions (used, sign-off pending).",
- "counts": {"files": 35, "defs_files": 1, "unit_files": 33, "manifest": 1, "blueprint_units_covered": 48, "sorried_declarations": 23, "defs_sorries": 0, "blocked": 0, "axioms": 0, "resync": "2026-07-28 (U27 round): sorry census re-counted from the tree — 23 sorried declarations across 15 unit files (U1 1, U4 1, U7 1, U9 4, U10 5, U11 1, U17a 1, U17b 2, U17c 1, U18 1, U20 1, U21 1, U22 1, U25 1, U26 1); Defs sorries all discharged in earlier rounds; U27/U28/U31 gates PROVED (0)"},
+ "statement_fence": "MovesC/Defs.lean, MovesD/Defs.lean, Moves/Defs*.lean FROZEN \u2014 zero edits made. HC-2 adds files only. Pre-declared flex points still open: U11 InBox strength; U25 eligibility narrowing; U1b side conditions (used, sign-off pending).",
+ "counts": {
+  "files": 40,
+  "defs_files": 1,
+  "unit_files": 38,
+  "manifest": 1,
+  "blueprint_units_covered": 53,
+  "sorried_declarations": 28,
+  "defs_sorries": 0,
+  "blocked": 0,
+  "axioms": 0,
+  "resync": "2026-07-28 (F-7 fixer round, post DC-2 + F-2/F-4 splits): 28 sorried declarations across 20 unit files (U1 1, U4 1, U7 1, U9 4, U10 5, U11 1, U17a 1, U17b 2, U17c 1, U18 1, U20 1, U20a 1, U20b 1, U20c 1, U21 1, U22 1, U22E1 1, U22E2 1, U25 1, U26 1); Defs sorries all discharged in earlier rounds; U27/U28/U31 gates PROVED (0); census 48 \u2192 53 per blueprint \u00a79 F-2/F-4"
+ },
  "units": [
-  {"id": "D1.boxChart", "file": "Defs.lean", "sorries": 2, "note": "def + sorried boxChart_sorted/boxChart_lt"},
-  {"id": "D3.RecenterLiftSpec", "file": "Defs.lean", "sorries": 0},
-  {"id": "D2.polOM", "file": "Defs.lean", "sorries": 0, "note": "blind := rfl (structure eta) — compiled"},
-  {"id": "D8.IsReadLift", "file": "Defs.lean", "sorries": 0, "note": "isNodeLift_iff := Iff.rfl — compiled definitional"},
-  {"id": "S3.StageTransHyp+OmUniqHyp", "file": "Defs.lean", "sorries": 0, "note": "named hypotheses, never axioms"},
-  {"id": "D4.SideReads+ReadsOf", "file": "Defs.lean", "sorries": 0},
-  {"id": "D5.KeysLawful+ZCSeedLaws+PresentSeed", "file": "Defs.lean", "sorries": 0},
-  {"id": "D6.mkFresh", "file": "Defs.lean", "sorries": 1, "note": "mkFreshClauses_disj forward lemma = U2 content"},
-  {"id": "D7.pinTransportSystem+mkStratum+mkSigma", "file": "Defs.lean", "sorries": 0, "note": "+ pinTransportSystem_spec glue"},
-  {"id": "U1.keys_exist", "file": "U1_keysExist.lean", "sorries": 1},
-  {"id": "U1b.nodeLift_exists", "file": "U1b_nodeLift.lean", "sorries": 1, "note": "hdvd/hthr fallback hypotheses — sign-off pending"},
-  {"id": "U2.mkFresh_disj", "file": "U2_freshDisj.lean", "sorries": 1},
-  {"id": "U3.mkFresh_band", "file": "U3_freshBand.lean", "sorries": 1},
-  {"id": "U4.mkFresh_cover", "file": "U4_freshCover.lean", "sorries": 1},
-  {"id": "U5.mkFresh_assembled", "file": "U5_freshAssembled.lean", "sorries": 1},
-  {"id": "U6.mkFresh_mstar", "file": "U6_mstarEq.lean", "sorries": 1},
-  {"id": "U7.mkSigma_init_rec", "file": "U7_sigmaRec.lean", "sorries": 2},
-  {"id": "U8.mkStratum_inh", "file": "U8_inhImplied.lean", "sorries": 1, "note": "carries the §2.1 RATIFIED deviation display"},
-  {"id": "U9a-c+U9.zc_root", "file": "U9_zcRoot.lean", "sorries": 4},
-  {"id": "U10a-d+U10.zc_step", "file": "U10_zcStep.lean", "sorries": 5, "note": "THE escalation-risk center; stuck-rule site → zcSeed"},
-  {"id": "U11.root_height_of_inBox", "file": "U11_rootHeight.lean", "sorries": 1},
-  {"id": "U13.jetSetup_of_seed", "file": "U13_assembly.lean", "sorries": 1},
-  {"id": "U14.NP_fits(+box form)", "file": "U14_npFits.lean", "sorries": 2, "note": "NP-ID ⊆ direction (W4-4 pointer)"},
-  {"id": "U15.present_exist_of_seeds", "file": "U15_presentExist.lean", "sorries": 1, "note": "hseed = SEED-EXIST verbatim (HC-1 seam)"},
-  {"id": "U16.threshold_of_seeds", "file": "U16_threshold.lean", "sorries": 1},
-  {"id": "U17a.lift_swap", "file": "U17a_liftSwap.lean", "sorries": 1, "note": "carries StageTransHyp"},
-  {"id": "U17b-1..3+U17b.galois_normalize", "file": "U17b_galois.lean", "sorries": 4},
-  {"id": "U17c.presentNorm_total(+polOM assembly)", "file": "U17c_total.lean", "sorries": 2, "note": "carries StageTransHyp"},
-  {"id": "U18.presentNorm_unique", "file": "U18_unique.lean", "sorries": 1, "note": "proof-first; OmUniqHyp fallback recorded; hbr-drop standing probe cited"},
-  {"id": "U19.readsOf_coherent", "file": "U19_runCoherent.lean", "sorries": 1, "note": "projection under the D4-records route"},
-  {"id": "U20.readsOf_NA", "file": "U20_NA.lean", "sorries": 1},
-  {"id": "U21.readsOf_HV", "file": "U21_HV.lean", "sorries": 1, "note": "escalation risk: D.8 exponent bookkeeping"},
-  {"id": "U22.readsOf_SAE", "file": "U22_SAE.lean", "sorries": 1, "note": "F-EMPTY record cited"},
-  {"id": "U23.readsOf_realizable", "file": "U23_runRealizable.lean", "sorries": 1},
-  {"id": "U24.readsOf_canonical", "file": "U24_runCanon.lean", "sorries": 1, "note": "projection (SideReads(v) baked)"},
-  {"id": "U25.polOM_total(+liftOf_spec)", "file": "U25_polTotal.lean", "sorries": 2, "note": "escalation risk #1; eligibility-narrowing flex point"},
-  {"id": "U26.class_fiber_welldef", "file": "U26_fiberWelldef.lean", "sorries": 1, "note": "DEFERRABLE (D15's hwd)"},
-  {"id": "U27.gate_order0_inert", "file": "U27_gateInert.lean", "sorries": 0, "note": "PROVED 2026-07-28, RESTATED AT THE COVERAGE FLOOR N := 1 — the pre-restatement ∀ N ≥ 1 form was machine-refuted at N = 2 (lean/U27_OBSTRUCTION_negation.lean: root_height + the band's inclusive upper edge force totalPins ≥ 4 at every N ≥ 2); N₀(H₀,⊤) = 1 + largest constrained level = 1 + 0 per the (ZC-c)/C.2 proviso the DC-1 guard implements. Proof: U31's concrete history/landing key + a concrete seed (literal baseDigit chart; the GUARDED downsets_literal proved outright — the DC-1 inhabitation smoke test) + a concrete JetSetup (U28's gate pattern ported to p = 2). totalPins = 2 and the 1/4 tie at the floor box; #print axioms = Lean core only"},
-  {"id": "U28.gate_order0_sep", "file": "U28_gateSep.lean", "sorries": 1},
-  {"id": "U29.gate_NP", "file": "U29_gateNP.lean", "sorries": 2, "note": "gate_NP_value PROVED (PhatStar_NPband re-export)"},
-  {"id": "U30.gate_polOM", "file": "U30_gatePol.lean", "sorries": 1, "note": "U25's day-one tripwire; FIRST P-block"},
-  {"id": "U31.gate_readsOf_inert2", "file": "U31_gateReadsOf.lean", "sorries": 0, "note": "ReadsOf non-vacuity anchor (GAP-4); PROVED (escalation round). 2026-07-28: a dozen helper lemmas de-privatized (statements byte-unchanged) so U27 reuses the concrete H₀/ν₀/fq, the landing-key witness, and the base-stage valuation facts"}
+  {
+   "id": "D1.boxChart",
+   "file": "Defs.lean",
+   "sorries": 2,
+   "note": "def + sorried boxChart_sorted/boxChart_lt"
+  },
+  {
+   "id": "D3.RecenterLiftSpec",
+   "file": "Defs.lean",
+   "sorries": 0
+  },
+  {
+   "id": "D2.polOM",
+   "file": "Defs.lean",
+   "sorries": 0,
+   "note": "blind := rfl (structure eta) \u2014 compiled"
+  },
+  {
+   "id": "D8.IsReadLift",
+   "file": "Defs.lean",
+   "sorries": 0,
+   "note": "isNodeLift_iff := Iff.rfl \u2014 compiled definitional"
+  },
+  {
+   "id": "S3.StageTransHyp+OmUniqHyp",
+   "file": "Defs.lean",
+   "sorries": 0,
+   "note": "named hypotheses, never axioms"
+  },
+  {
+   "id": "D4.SideReads+ReadsOf",
+   "file": "Defs.lean",
+   "sorries": 0
+  },
+  {
+   "id": "D5.KeysLawful+ZCSeedLaws+PresentSeed",
+   "file": "Defs.lean",
+   "sorries": 0
+  },
+  {
+   "id": "D6.mkFresh",
+   "file": "Defs.lean",
+   "sorries": 1,
+   "note": "mkFreshClauses_disj forward lemma = U2 content"
+  },
+  {
+   "id": "D7.pinTransportSystem+mkStratum+mkSigma",
+   "file": "Defs.lean",
+   "sorries": 0,
+   "note": "+ pinTransportSystem_spec glue"
+  },
+  {
+   "id": "U1.keys_exist",
+   "file": "U1_keysExist.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U1b.nodeLift_exists",
+   "file": "U1b_nodeLift.lean",
+   "sorries": 1,
+   "note": "hdvd/hthr fallback hypotheses \u2014 sign-off pending"
+  },
+  {
+   "id": "U2.mkFresh_disj",
+   "file": "U2_freshDisj.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U3.mkFresh_band",
+   "file": "U3_freshBand.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U4.mkFresh_cover",
+   "file": "U4_freshCover.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U5.mkFresh_assembled",
+   "file": "U5_freshAssembled.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U6.mkFresh_mstar",
+   "file": "U6_mstarEq.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U7.mkSigma_init_rec",
+   "file": "U7_sigmaRec.lean",
+   "sorries": 1,
+   "note": "mkSigma_init PROVED (rfl); mkSigma_recursion's stop-the-line DISCHARGED by DC-2 (IsFreshAttach clause repaired to fd.sat (\u0398 x)) \u2014 QUEUED-PROVABLE-NOW"
+  },
+  {
+   "id": "U8.mkStratum_inh",
+   "file": "U8_inhImplied.lean",
+   "sorries": 1,
+   "note": "carries the \u00a72.1 RATIFIED deviation display"
+  },
+  {
+   "id": "U9a-c+U9.zc_root",
+   "file": "U9_zcRoot.lean",
+   "sorries": 3,
+   "note": "ESCALATION 2026-07-28: U9a (zc_root_downset_mp) PROVED, axioms clean {propext, Classical.choice, Quot.sound} (case split on the IsFreshAttach witness; root floor bridge kappa0 = slope, ustar cancels, U11 not consumed). U9b/U9c/zc_root STOP unprovable-as-stated, in-file records: (1) IsFreshAttach clauses (1)+(3) force S.Theta 0's corrections to vanish at strip coordinates on the fresh locus - not seed-derivable, witness existence fails on junk Theta, pinTransportSystem degenerates (SAME obstruction re-blocks U7.mkSigma_recursion despite DC-2; F-7 ruling overlooked clause (3)); repair = Theta-normalization zcSeed law (D5 fence) or weaken clauses (3)/(4) to Theta-composed zeros. (2) U9c additionally: interior VALUE coordinates not excluded (s0 >= mu*e*g underivable; hOrd gives wSide >= mu*e*g so span slots cross the interior) and their solve is spec-unconstrained/forced to vOf digits; repair = RootD4-class root-shape law mu*childWidth <= s0*Dwidth. Designer sign-off required."
+  },
+  {
+   "id": "U10a-d+U10.zc_step",
+   "file": "U10_zcStep.lean",
+   "sorries": 5,
+   "note": "THE escalation-risk center; stuck-rule site \u2192 zcSeed"
+  },
+  {
+   "id": "U11.root_height_of_inBox",
+   "file": "U11_rootHeight.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U13.jetSetup_of_seed",
+   "file": "U13_assembly.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U14.NP_fits(+box form)",
+   "file": "U14_npFits.lean",
+   "sorries": 2,
+   "note": "NP-ID \u2286 direction (W4-4 pointer)"
+  },
+  {
+   "id": "U15.present_exist_of_seeds",
+   "file": "U15_presentExist.lean",
+   "sorries": 1,
+   "note": "hseed = SEED-EXIST verbatim (HC-1 seam)"
+  },
+  {
+   "id": "U16.threshold_of_seeds",
+   "file": "U16_threshold.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U17a.lift_swap",
+   "file": "U17a_liftSwap.lean",
+   "sorries": 1,
+   "note": "carries StageTransHyp"
+  },
+  {
+   "id": "U17b-1..3+U17b.galois_normalize",
+   "file": "U17b_galois.lean",
+   "sorries": 4
+  },
+  {
+   "id": "U17c.presentNorm_total(+polOM assembly)",
+   "file": "U17c_total.lean",
+   "sorries": 2,
+   "note": "carries StageTransHyp"
+  },
+  {
+   "id": "U18.presentNorm_unique",
+   "file": "U18_unique.lean",
+   "sorries": 1,
+   "note": "proof-first; OmUniqHyp fallback recorded; hbr-drop standing probe cited"
+  },
+  {
+   "id": "U19.readsOf_coherent",
+   "file": "U19_runCoherent.lean",
+   "sorries": 1,
+   "note": "projection under the D4-records route"
+  },
+  {
+   "id": "U20.readsOf_NA",
+   "file": "U20_NA.lean",
+   "sorries": 1,
+   "note": "RESTATED-AS-ASSEMBLY per \u00a79 F-2 (statement byte-unchanged): species trichotomy + U20a/b/c transports + SideReads(i)"
+  },
+  {
+   "id": "U20a.NA_transport_root",
+   "file": "U20a_NAtransportRoot.lean",
+   "sorries": 1,
+   "note": "NEW per \u00a79 F-2 \u2014 vertex-value transport, ROOT parent; statement prover-refinable"
+  },
+  {
+   "id": "U20b.NA_transport_increment",
+   "file": "U20b_NAtransportIncrement.lean",
+   "sorries": 1,
+   "note": "NEW per \u00a79 F-2 \u2014 vertex-value transport, INCREMENT parent (IsNodeLift/TransitionCoreL + LandingCylinderL); statement prover-refinable"
+  },
+  {
+   "id": "U20c.NA_transport_recentering",
+   "file": "U20c_NAtransportRecentering.lean",
+   "sorries": 1,
+   "note": "NEW per \u00a79 F-2 \u2014 vertex-value transport, RECENTERING parent (IsRecenteringCore + L5_recLiftIndep_R4); statement prover-refinable"
+  },
+  {
+   "id": "U21.readsOf_HV",
+   "file": "U21_HV.lean",
+   "sorries": 1,
+   "note": "escalation risk: D.8 exponent bookkeeping; N-4 gated (SideReads clause (vi) sign-off) per \u00a79 F-3"
+  },
+  {
+   "id": "U22.readsOf_SAE",
+   "file": "U22_SAE.lean",
+   "sorries": 1,
+   "note": "F-EMPTY record cited; RESTATED-AS-REDUCTION per \u00a79 F-4 (statement byte-unchanged): proven reduction + E1 + E2, reduction proof lands first"
+  },
+  {
+   "id": "U22-E1.SAE_spanStrict_endpoint",
+   "file": "U22E1_spanStrict.lean",
+   "sorries": 1,
+   "note": "NEW per \u00a79 F-4 \u2014 strict span-entry endpoint ((ZC)-zeroed strips content); statement prover-refinable"
+  },
+  {
+   "id": "U22-E2.SAE_vertexEq_endpoint",
+   "file": "U22E2_vertexEq.lean",
+   "sorries": 1,
+   "note": "NEW per \u00a79 F-4 \u2014 adjacent-vertex equality endpoint (the u*-tie); statement prover-refinable"
+  },
+  {
+   "id": "U23.readsOf_realizable",
+   "file": "U23_runRealizable.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U24.readsOf_canonical",
+   "file": "U24_runCanon.lean",
+   "sorries": 1,
+   "note": "projection (SideReads(v) baked)"
+  },
+  {
+   "id": "U25.polOM_total(+liftOf_spec)",
+   "file": "U25_polTotal.lean",
+   "sorries": 2,
+   "note": "escalation risk #1; eligibility-narrowing flex point"
+  },
+  {
+   "id": "U26.class_fiber_welldef",
+   "file": "U26_fiberWelldef.lean",
+   "sorries": 1,
+   "note": "DEFERRABLE (D15's hwd)"
+  },
+  {
+   "id": "U27.gate_order0_inert",
+   "file": "U27_gateInert.lean",
+   "sorries": 0,
+   "note": "PROVED 2026-07-28, RESTATED AT THE COVERAGE FLOOR N := 1 \u2014 the pre-restatement \u2200 N \u2265 1 form was machine-refuted at N = 2 (lean/U27_OBSTRUCTION_negation.lean: root_height + the band's inclusive upper edge force totalPins \u2265 4 at every N \u2265 2); N\u2080(H\u2080,\u22a4) = 1 + largest constrained level = 1 + 0 per the (ZC-c)/C.2 proviso the DC-1 guard implements. Proof: U31's concrete history/landing key + a concrete seed (literal baseDigit chart; the GUARDED downsets_literal proved outright \u2014 the DC-1 inhabitation smoke test) + a concrete JetSetup (U28's gate pattern ported to p = 2). totalPins = 2 and the 1/4 tie at the floor box; #print axioms = Lean core only"
+  },
+  {
+   "id": "U28.gate_order0_sep",
+   "file": "U28_gateSep.lean",
+   "sorries": 1
+  },
+  {
+   "id": "U29.gate_NP",
+   "file": "U29_gateNP.lean",
+   "sorries": 2,
+   "note": "gate_NP_value PROVED (PhatStar_NPband re-export)"
+  },
+  {
+   "id": "U30.gate_polOM",
+   "file": "U30_gatePol.lean",
+   "sorries": 1,
+   "note": "U25's day-one tripwire; FIRST P-block"
+  },
+  {
+   "id": "U31.gate_readsOf_inert2",
+   "file": "U31_gateReadsOf.lean",
+   "sorries": 0,
+   "note": "ReadsOf non-vacuity anchor (GAP-4); PROVED (escalation round). 2026-07-28: a dozen helper lemmas de-privatized (statements byte-unchanged) so U27 reuses the concrete H\u2080/\u03bd\u2080/fq, the landing-key witness, and the base-stage valuation facts"
+  }
  ]
 }

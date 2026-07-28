@@ -7,6 +7,10 @@ sketch: init is definitional (`topLocus`); recursion = the ∃-witness for `IsFr
 (pinTransport's solution-set law + the strip/value pin-attachment constructor — the value
 clause pins its whole support to the unique solution, by `LevelClause.count` at
 codim = |support|) + `pinTransportSystem_spec`.
+RESTATED-POST-DEFS-REPAIR DC-2 (2026-07-28; statement byte-unchanged): `IsFreshAttach`'s
+solution-set clause repaired `fd.sat x → fd.sat (Θ x)` per the blueprint §9 F-7
+authorization — the in-file stop-the-line obstruction is discharged; U7 is
+QUEUED-PROVABLE-NOW.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -36,16 +40,27 @@ theorem mkSigma_recursion {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
       (mkSigma H n N S vOf (i+1)).IsSolution x ↔
         ((mkSigma H n N S vOf i).IsSolution (S.Theta i x) ∧
           mkStratum H n N S vOf i (S.Theta i x)) := by
-  -- STOP-THE-LINE (frozen frame mismatch; see the note block below the theorem).
-  -- The RHS reads the fresh stratum at `S.Theta i x`, but `mkSigma (i+1)` is DEFINED as
-  -- `pinTransportSystem … (mkFresh … i hi)`, whose only characterization,
-  -- `IsFreshAttach` (HC2/Defs.lean), reads that fresh locus at `x` (`fd.sat x`).  After the
-  -- forced reduction, the goal becomes
-  --   `A ∧ (mkFresh … i hi).sat x  ↔  A ∧ (mkFresh … i hi).sat (S.Theta i x)`
-  -- (with `A = (mkSigma … i).IsSolution (S.Theta i x)`), i.e. it demands `S.Theta i`-
-  -- invariance of the fresh locus, which no `PresentSeed` field supplies (`Theta_uni` only
-  -- gives unitriangularity, and `mkFresh`'s strip/value clauses are moved by the carries).
-  -- Unprovable as stated without editing the frozen `IsFreshAttach` (`fd.sat x → fd.sat (Θ x)`).
+  -- STOP-THE-LINE, SECOND RECORD (2026-07-28, ESCALATION ROUND — supersedes the DC-2
+  -- "QUEUED-PROVABLE-NOW" note below): FALSE AS STATED, MACHINE-REFUTED.
+  -- `lean/scratch_U7_recursion_false.lean` (`U7Refute.mkSigma_recursion_FALSE`, green,
+  -- Lean-core axioms only) refutes THIS statement's ∀-S form: U27's concrete inert gate
+  -- seed perturbed by the constant unitriangular shift `σ x c = x c + 1` is a LAWFUL
+  -- `PresentSeed` (every field discharged; `Theta_uni` is the only law on Θ and does not
+  -- see the correction's value), and at read 0 the post-DC-2 `IsFreshAttach` spec is
+  -- UNSATISFIABLE: clause (1) `fd.sat (Θ x)` forces the all-ones point INTO the solution
+  -- set (its σ-image is 0), clauses (2)+(3) (LITERAL-zero solve at the pinned strip
+  -- coordinate) force it OUT. So `mkSigma` takes the junk branch (`= mkSigma i`) and the
+  -- iff fails at x = 0. ROOT CAUSE: DC-2 transported clause (1) through Θ but left
+  -- clauses (3)/(4) as literal zeros in the post-Θ coordinates; on the transported locus
+  -- a strip coordinate solves to −corr_c(x_<c), not 0. Repair options (designer-round,
+  -- DC-3 class — see the scratch file header): (i) transport clauses (3)/(4) through Θ
+  -- (solve = −corr); (ii) a new D5-fenced seed law forcing Θ-corrections to vanish at
+  -- fresh strip coordinates on the locus (the C.1.5(2) "carries vanish" content);
+  -- (iii) re-key the (ZC-a) literal-zero consumers (U9c/U10c). Statement byte-untouched
+  -- per the fence; sorry stands pending the ruling.
+  -- [Superseded DC-2 record: the earlier `fd.sat x` mismatch was repaired; the route
+  -- `C0.pinTransport` + pin-attachment + `pinTransportSystem_spec` was to close U7 —
+  -- its ∃-obligation is exactly what the countermodel refutes.]
   sorry
 
 end LeanUrat.MovesJ
