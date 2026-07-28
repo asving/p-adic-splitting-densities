@@ -1279,6 +1279,100 @@ private lemma v9c_taylor_ne {K : Type*} [Field K] (c₀ : K) (hc₀ : c₀ ≠ 0
   rw [hshift, htayP, h0, mul_zero] at hcontr
   exact mul_ne_zero (mul_ne_zero hQr (pow_ne_zero _ hr)) (pow_ne_zero _ hr) hcontr
 
+/-- **The Hasse/Taylor VANISHING below the recorded order** (REV 6, the U22-E1 Box
+counterpart of `v9c_taylor_ne`): if `ψ^μ ∣ Ranch` at `ψ = X + C c₀` with `c₀ ≠ 0`, every
+Taylor coefficient of `Ranch·X^{s0}` at `−c₀` of index `j < μ` VANISHES — displayed as
+the explicit binomial digit sum `Σ_k pat k·(−c₀)^k·C(s0+k, j) = 0`.  Only the
+divisibility half of the ψ-order is consumed. -/
+private lemma v9c_taylor_zero {K : Type*} [Field K] (c₀ : K) (hc₀ : c₀ ≠ 0)
+    (Ranch : Polynomial K) (μ s0 wSide : ℕ) (pat : ℕ → K)
+    (hRanch : Ranch = ∑ k ∈ Finset.range (wSide + 1),
+      Polynomial.C (pat k) * Polynomial.X ^ k)
+    (hdvd : (Polynomial.X + Polynomial.C c₀) ^ μ ∣ Ranch)
+    (j : ℕ) (hj : j < μ) :
+    ∑ k ∈ Finset.range (wSide + 1),
+      pat k * (-c₀) ^ k * (((s0 + k).choose j : ℕ) : K) = 0 := by
+  classical
+  set r : K := -c₀ with hrdef
+  have hr : r ≠ 0 := neg_ne_zero.mpr hc₀
+  obtain ⟨Q, hQ⟩ := hdvd
+  set P : Polynomial K := Ranch * Polynomial.X ^ s0 with hPdef
+  have htaylorψ : Polynomial.taylor r (Polynomial.X + Polynomial.C c₀) = Polynomial.X := by
+    rw [Polynomial.taylor_apply, Polynomial.add_comp, Polynomial.X_comp, Polynomial.C_comp,
+      hrdef, map_neg]
+    ring
+  have htayPj : (Polynomial.taylor r P).coeff j = 0 := by
+    have h1 : Polynomial.taylor r P
+        = Polynomial.X ^ μ
+          * (Polynomial.taylor r Q * (Polynomial.X + Polynomial.C r) ^ s0) := by
+      rw [hPdef, hQ]
+      rw [Polynomial.taylor_apply, Polynomial.mul_comp, Polynomial.mul_comp,
+        Polynomial.pow_comp, Polynomial.pow_comp, Polynomial.X_comp]
+      rw [← Polynomial.taylor_apply, ← Polynomial.taylor_apply, htaylorψ]
+      ring
+    rw [h1, Polynomial.X_pow_mul, Polynomial.coeff_mul_X_pow', if_neg (by omega)]
+  have hdegP : P.natDegree < s0 + (wSide + 1) := by
+    have h1 : P.natDegree ≤ Ranch.natDegree + s0 := by
+      rw [hPdef]
+      refine le_trans (Polynomial.natDegree_mul_le) ?_
+      simp [Polynomial.natDegree_X_pow]
+    have h2 : Ranch.natDegree ≤ wSide := by
+      rw [hRanch]
+      refine Polynomial.natDegree_sum_le_of_forall_le _ _ ?_
+      intro k hk
+      refine le_trans (Polynomial.natDegree_C_mul_X_pow_le _ _) ?_
+      have := Finset.mem_range.mp hk
+      omega
+    omega
+  have hexp : (Polynomial.taylor r P).coeff j
+      = ∑ e ∈ Finset.range (s0 + (wSide + 1)),
+          P.coeff e * (r ^ (e - j) * ((e.choose j : ℕ) : K)) := by
+    rw [Polynomial.taylor_apply, Polynomial.comp_eq_sum_left,
+      Polynomial.sum_over_range' P (fun n => by rw [map_zero, zero_mul]) _ hdegP,
+      Polynomial.finset_sum_coeff]
+    refine Finset.sum_congr rfl ?_
+    intro e _
+    rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_add_C_pow]
+  have hexp2 : (Polynomial.taylor r P).coeff j * r ^ j
+      = ∑ e ∈ Finset.range (s0 + (wSide + 1)),
+          P.coeff e * r ^ e * ((e.choose j : ℕ) : K) := by
+    rw [hexp, Finset.sum_mul]
+    refine Finset.sum_congr rfl ?_
+    intro e _
+    rcases le_or_gt j e with hle | hlt
+    · calc P.coeff e * (r ^ (e - j) * ((e.choose j : ℕ) : K)) * r ^ j
+          = P.coeff e * ((r ^ (e - j) * r ^ j) * ((e.choose j : ℕ) : K)) := by ring
+        _ = P.coeff e * r ^ e * ((e.choose j : ℕ) : K) := by
+            rw [← pow_add, Nat.sub_add_cancel hle]; ring
+    · simp [Nat.choose_eq_zero_of_lt hlt]
+  have hPcoeff : ∀ e, P.coeff e = if s0 ≤ e then Ranch.coeff (e - s0) else 0 := by
+    intro e
+    rw [hPdef, Polynomial.coeff_mul_X_pow']
+  have hRanchCoeff : ∀ k, k ≤ wSide → Ranch.coeff k = pat k := by
+    intro k hk
+    rw [hRanch, Polynomial.finset_sum_coeff, Finset.sum_eq_single k]
+    · rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, if_pos rfl, mul_one]
+    · intro b _ hbk
+      rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, if_neg (fun h => hbk h.symm),
+        mul_zero]
+    · intro hknot
+      exact absurd (Finset.mem_range.mpr (by omega)) hknot
+  have hshift : ∑ e ∈ Finset.range (s0 + (wSide + 1)),
+        P.coeff e * r ^ e * ((e.choose j : ℕ) : K)
+      = r ^ s0 * ∑ k ∈ Finset.range (wSide + 1),
+          pat k * r ^ k * (((s0 + k).choose j : ℕ) : K) := by
+    rw [v9c_sum_shift (fun e => P.coeff e * r ^ e * ((e.choose j : ℕ) : K)) s0 (wSide + 1)
+      (fun e he => by rw [hPcoeff e, if_neg (by omega)]; ring), Finset.mul_sum]
+    refine Finset.sum_congr rfl ?_
+    intro k hk
+    rw [hPcoeff (s0 + k), if_pos (by omega), Nat.add_sub_cancel_left,
+      hRanchCoeff k (by have := Finset.mem_range.mp hk; omega), pow_add]
+    ring
+  have h0 : r ^ s0 * (∑ k ∈ Finset.range (wSide + 1),
+      pat k * r ^ k * (((s0 + k).choose j : ℕ) : K)) = 0 := by
+    rw [← hshift, ← hexp2, htayPj, zero_mul]
+  exact (mul_eq_zero.mp h0).resolve_left (pow_ne_zero _ hr)
+
 /-- **THE R3c CORNER CORE**: at a root-shaped `e·g = 1` transition over a
 degree-1 frame, the recorded root-side data (SideReads (i)+(ii) + the lift +
 `TransitionCoreL`'s `child_slotmin`/`child_dig_frame` + the node's ψ-order)
@@ -1971,6 +2065,698 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
     exact_mod_cast hKsum
   exact v9c_taylor_ne c₀ hc₀ne Ranch μ s0 wSide pat hRanch hOrd hKzero
 
+/-- **THE U22-E1 CORNER BOX** (REV 6, the strict sibling of `v9c_corner`): at a
+root-shaped `e·g = 1` transition over a degree-1 frame, the recorded root-side data
+force every child-development slot STRICTLY BELOW the vertex STRICTLY ABOVE the
+transported side value: `j < μ` and `B j ≠ 0` give `gam − j·h★ < σ'.w (B j)`.
+Same pool as `v9c_corner` (SideReads (i)+(ii) + the lift + `child_slotmin`/
+`child_dig_frame` + the node's ψ-order; SideReads(iii) NOT consumed; no StageCore);
+the endgame swaps `v9c_taylor_ne` (nonvanishing AT μ) for `v9c_taylor_zero`
+(vanishing BELOW μ): a minimizing slot `j < μ` would pin its nonzero digit to the
+`j`-th Taylor coefficient of `X^{s0}·Ranch` at the recorded root — which vanishes. -/
+private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
+    (hdeg1 : σ.Φ.natDegree = 1)
+    (hσ'e : σ'.e = 1) (hσ'h : σ'.h = hstar) (hσ's : σ'.s = 1) (hσ't : σ'.t = 0)
+    (hcw : ∀ x, σ'.wPrev x = σ.w x)
+    (hsm : IsSlotMinWeight σ'.w σ'.Φ 1 hstar σ.w)
+    (t₀ : Polynomial ℤ_[p]) (ht₀ne : t₀ ≠ 0) (ht₀C : inC σ.Φ t₀)
+    (ht₀w : σ.w t₀ = (hstar : ℤ))
+    (c₀ : ↥σ.K)
+    (ht₀R : σ.R t₀ = LaurentPolynomial.C c₀
+      * LaurentPolynomial.T (- σ.t * σ.wPrev t₀))
+    (hkey : σ'.Φ = σ.Φ + t₀)
+    (zbar : Fˣ) (hc₀z : ((c₀ : ↥σ.K) : F) = - ((zbar : Fˣ) : F))
+    (Ranch : Polynomial ↥σ.K) (μ s0 wSide : ℕ) (pat : ℕ → ↥σ.K) (gam : ℤ)
+    (hRanch : Ranch = ∑ k ∈ Finset.range (wSide + 1),
+      Polynomial.C (pat k) * Polynomial.X ^ k)
+    (hpat0 : pat 0 ≠ 0)
+    (hOrd : OrdPsiPoly (Polynomial.X + Polynomial.C c₀) Ranch μ)
+    (mfun : ℤ → ℤ)
+    (hmf : ∀ Bb : Polynomial ℤ_[p], Bb ≠ 0 → inC σ'.Φ Bb →
+      ∃ c' : (↥σ'.K)ˣ,
+        σ'.R Bb = LaurentPolynomial.C (c' : ↥σ'.K)
+            * LaurentPolynomial.T (- σ'.t * σ.w Bb) ∧
+        ((c' : ↥σ'.K) : F) = σ.digPrime zbar Bb
+            * ((zbar ^ (mfun (σ.w Bb)) : Fˣ) : F))
+    (f : Polynomial ℤ_[p]) (hf : f ≠ 0)
+    (B₀ : ℕ → Polynomial ℤ_[p]) (Nd₀ : ℕ) (hdev₀ : IsDevelopment σ.Φ f B₀ Nd₀)
+    (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ) (hdev : IsDevelopment σ'.Φ f B Nd)
+    (j : ℕ) (hjμ : j < μ) (hjne : B j ≠ 0)
+    (hside1a : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
+      gam ≤ σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ))
+    (hside1b : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
+      σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ) = gam →
+      ∃ k : ℕ, k ≤ wSide ∧ j = s0 + k ∧ pat k ≠ 0)
+    (hside2 : ∀ k : ℕ, k ≤ wSide → pat k ≠ 0 →
+      B₀ (s0 + k) ≠ 0 ∧
+      σ.w (B₀ (s0 + k)) + ((s0 + k : ℕ) : ℤ) * (hstar : ℤ) = gam ∧
+      σ.R (B₀ (s0 + k)) = LaurentPolynomial.C (pat k) *
+        LaurentPolynomial.T (- σ.t * σ.wPrev (B₀ (s0 + k)))) :
+    gam - (j : ℤ) * (hstar : ℤ) < σ'.w (B j) := by
+  classical
+  -- ══ 0. frame bookkeeping ══
+  have hΦne : σ.Φ ≠ 0 := σ.hmonic.ne_zero
+  have hΦ'ne : σ'.Φ ≠ 0 := σ'.hmonic.ne_zero
+  have hΦdeg : σ.Φ.degree = (1 : WithBot ℕ) := by
+    rw [Polynomial.degree_eq_natDegree hΦne, hdeg1]; rfl
+  have ht₀deg : t₀.degree ≤ 0 := by
+    have h := ht₀C
+    rw [inC, hΦdeg] at h
+    rw [Polynomial.degree_eq_natDegree ht₀ne] at h ⊢
+    have h1 : t₀.natDegree < 1 := by exact_mod_cast h
+    have h2 : t₀.natDegree = 0 := by omega
+    simp [h2]
+  have hΦ'degEq : σ'.Φ.degree = σ.Φ.degree := by
+    have hlt : t₀.degree < σ.Φ.degree := by
+      rw [hΦdeg]
+      exact lt_of_le_of_lt ht₀deg (by exact_mod_cast Nat.zero_lt_one)
+    rw [hkey]
+    exact Polynomial.degree_add_eq_left_of_degree_lt hlt
+  have hΦ'deg1 : σ'.Φ.natDegree = 1 := by
+    have h := Polynomial.natDegree_eq_of_degree_eq hΦ'degEq
+    rw [h, hdeg1]
+  have hΦ'deg : σ'.Φ.degree = (1 : WithBot ℕ) := by rw [hΦ'degEq, hΦdeg]
+  have hwconst : ∀ x : Polynomial ℤ_[p], x ≠ 0 → inC σ'.Φ x → σ'.w x = σ.w x := by
+    intro x hx hxC
+    rw [σ'.hStretch x hx hxC, hσ'e, hcw]
+    push_cast
+    ring
+  have hconstOfP : ∀ x : Polynomial ℤ_[p], inC σ.Φ x → inC σ'.Φ x := by
+    intro x hxC
+    rw [inC, hΦ'degEq]; exact hxC
+  have hconstOf : ∀ x : Polynomial ℤ_[p], inC σ'.Φ x → x.degree ≤ 0 := by
+    intro x hxC
+    rw [inC, hΦ'deg] at hxC
+    rcases eq_or_ne x 0 with h0 | h0
+    · rw [h0, Polynomial.degree_zero]; exact bot_le
+    · rw [Polynomial.degree_eq_natDegree h0] at hxC ⊢
+      have h1 : x.natDegree < 1 := by exact_mod_cast hxC
+      have h2 : x.natDegree = 0 := by omega
+      simp [h2]
+  -- ══ 1. child weights of both keys; child residual of the parent key ══
+  have hwΦ' : σ'.w σ'.Φ = (hstar : ℤ) := by rw [σ'.hwΦ, hσ'h]
+  have ht₀C' : inC σ'.Φ t₀ := hconstOfP t₀ ht₀C
+  have hwt₀' : σ'.w t₀ = (hstar : ℤ) := by rw [hwconst t₀ ht₀ne ht₀C', ht₀w]
+  have hRΦ'key : σ'.R σ'.Φ = LaurentPolynomial.T 1 := by
+    rw [σ'.hRΦ, hσ's]
+  obtain ⟨dt, hdtR, hdtF⟩ := hmf t₀ ht₀ne ht₀C'
+  have hdtR0 : σ'.R t₀ = LaurentPolynomial.C ((dt : ↥σ'.K)) := by
+    rw [hdtR, hσ't]
+    simp
+  have hwΦpar : σ'.w σ.Φ = (hstar : ℤ) := by
+    have hge : (hstar : ℤ) ≤ σ'.w σ.Φ := by
+      have hsub : σ'.Φ + (-t₀) = σ.Φ := by rw [hkey]; ring
+      have hult := σ'.hwult σ'.Φ (-t₀) hΦ'ne (neg_ne_zero.mpr ht₀ne)
+        (by rw [hsub]; exact hΦne)
+      rw [hsub, w_neg_helper σ' t₀ ht₀ne, hwt₀', hwΦ', min_self] at hult
+      exact hult
+    rcases lt_or_eq_of_le hge with hlt | heq
+    · exfalso
+      have hsum : t₀ + σ.Φ = σ'.Φ := by rw [hkey]; ring
+      have hRe := σ'.hRlt t₀ σ.Φ ht₀ne hΦne (by rw [hsum]; exact hΦ'ne)
+        (by rw [hwt₀']; exact hlt)
+      rw [hsum, hRΦ'key, hdtR0] at hRe
+      exact v9c_T1_ne_C _ hRe
+    · exact heq.symm
+  have hRΦpar : σ'.R σ.Φ
+      = LaurentPolynomial.T 1 - LaurentPolynomial.C ((dt : ↥σ'.K)) := by
+    have hsum : σ.Φ + t₀ = σ'.Φ := hkey.symm
+    have hRadd := σ'.hRadd σ.Φ t₀ hΦne ht₀ne (by rw [hsum]; exact hΦ'ne)
+      (by rw [hwΦpar, hwt₀']) (by rw [hsum, hwΦ', hwΦpar])
+    rw [hsum, hRΦ'key, hdtR0] at hRadd
+    exact eq_sub_of_add_eq hRadd.symm
+  -- ══ 2. the root-side index sets ══
+  set Kp : Finset ℕ := (Finset.range (wSide + 1)).filter (fun k => pat k ≠ 0)
+    with hKpdef
+  have h0Kp : 0 ∈ Kp := by
+    rw [hKpdef]
+    exact Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (by omega), hpat0⟩
+  set Sall : Finset ℕ := (Finset.range Nd₀).filter (fun j => B₀ j ≠ 0) with hSalldef
+  have hSide : ∀ k ∈ Kp, B₀ (s0 + k) ≠ 0 ∧
+      σ.w (B₀ (s0 + k)) = gam - ((s0 + k : ℕ) : ℤ) * (hstar : ℤ) ∧
+      σ.R (B₀ (s0 + k)) = LaurentPolynomial.C (pat k) *
+        LaurentPolynomial.T (- σ.t * σ.wPrev (B₀ (s0 + k))) := by
+    intro k hk
+    rw [hKpdef] at hk
+    obtain ⟨hkr, hkp⟩ := Finset.mem_filter.mp hk
+    obtain ⟨h1, h2, h3⟩ := hside2 k (by have := Finset.mem_range.mp hkr; omega) hkp
+    exact ⟨h1, by linarith [h2], h3⟩
+  have hmemS : ∀ k ∈ Kp, s0 + k ∈ Sall := by
+    intro k hk
+    obtain ⟨h1, -, -⟩ := hSide k hk
+    refine Finset.mem_filter.mpr ⟨Finset.mem_range.mpr ?_, h1⟩
+    by_contra hge
+    exact h1 (hdev₀.2.1 _ (by omega))
+  set E : Finset ℕ := Sall.filter
+    (fun j => σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ) = gam) with hEdef
+  set O : Finset ℕ := Sall.filter
+    (fun j => ¬ (σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ) = gam)) with hOdef
+  have hs0E : s0 + 0 ∈ E := by
+    obtain ⟨-, h2, -⟩ := hSide 0 h0Kp
+    exact Finset.mem_filter.mpr ⟨hmemS 0 h0Kp, by rw [h2]; ring⟩
+  have hEeq : E = Kp.image (fun k => s0 + k) := by
+    ext j
+    constructor
+    · intro hj
+      obtain ⟨hjS, hjeq⟩ := Finset.mem_filter.mp hj
+      obtain ⟨hjr, hjne⟩ := Finset.mem_filter.mp hjS
+      obtain ⟨k, hkW, hjk, hkp⟩ := hside1b j (Finset.mem_range.mp hjr) hjne hjeq
+      exact Finset.mem_image.mpr ⟨k, Finset.mem_filter.mpr
+        ⟨Finset.mem_range.mpr (by omega), hkp⟩, hjk.symm⟩
+    · intro hj
+      obtain ⟨k, hk, hjk⟩ := Finset.mem_image.mp hj
+      subst hjk
+      obtain ⟨h1, h2, -⟩ := hSide k hk
+      exact Finset.mem_filter.mpr ⟨hmemS k hk, by rw [h2]; ring⟩
+  -- ══ 3. σ'.w f = gam ══
+  have hfSall : f = ∑ j ∈ Sall, B₀ j * σ.Φ ^ j := by
+    rw [hdev₀.2.2, hSalldef]
+    refine (Finset.sum_filter_of_ne ?_).symm
+    intro j _ hne0 h0
+    exact hne0 (by rw [h0, zero_mul])
+  have hwf : σ'.w f = gam := by
+    rw [hfSall]
+    refine v9c_slotmin σ σ' hstar hdeg1 t₀ ht₀ne ht₀C ht₀w hkey hsm Sall
+      ⟨s0 + 0, (Finset.mem_filter.mp hs0E).1⟩ B₀
+      (fun j hj => (Finset.mem_filter.mp hj).2)
+      (fun j _ => hdev₀.1 j) gam
+      (fun j hj => hside1a j (Finset.mem_range.mp (Finset.mem_filter.mp hj).1)
+        (Finset.mem_filter.mp hj).2) ?_
+    exact ⟨s0 + 0, (Finset.mem_filter.mp hs0E).1, (Finset.mem_filter.mp hs0E).2⟩
+  -- ══ 4. the digit chooser ══
+  have hdigE : ∀ Bb : Polynomial ℤ_[p], Bb ≠ 0 → inC σ'.Φ Bb →
+      ∃ cc : ↥σ'.K, cc ≠ 0 ∧ σ'.R Bb = LaurentPolynomial.C cc ∧
+        (cc : F) = σ.digPrime zbar Bb * ((zbar ^ (mfun (σ.w Bb)) : Fˣ) : F) := by
+    intro Bb h1 h2
+    obtain ⟨c', hR, hF⟩ := hmf Bb h1 h2
+    refine ⟨(c' : ↥σ'.K), c'.ne_zero, ?_, hF⟩
+    rw [hR, hσ't]
+    simp
+  have hbbEx : ∀ k : ℕ, ∃ cc : ↥σ'.K, k ∈ Kp →
+      (cc ≠ 0 ∧ σ'.R (B₀ (s0 + k)) = LaurentPolynomial.C cc ∧
+        (cc : F) = σ.digPrime zbar (B₀ (s0 + k))
+          * ((zbar ^ (mfun (σ.w (B₀ (s0 + k)))) : Fˣ) : F)) := by
+    intro k
+    by_cases hk : k ∈ Kp
+    · obtain ⟨h1, -, -⟩ := hSide k hk
+      obtain ⟨cc, hcc⟩ := hdigE (B₀ (s0 + k)) h1 (hconstOfP _ (hdev₀.1 _))
+      exact ⟨cc, fun _ => hcc⟩
+    · exact ⟨0, fun h => absurd h hk⟩
+  choose bb hbb using hbbEx
+  -- ══ 5. the child development's minimizing slots; strictness at the Box slot ══
+  set NZ : Finset ℕ := (Finset.range Nd).filter (fun m => B m ≠ 0) with hNZdef
+  set M : Finset ℕ := NZ.filter
+    (fun m => σ.w (B m) + (m : ℤ) * (hstar : ℤ) = gam) with hMdef
+  set MC : Finset ℕ := NZ.filter
+    (fun m => ¬ (σ.w (B m) + (m : ℤ) * (hstar : ℤ) = gam)) with hMCdef
+  -- every occupied slot's read value is ≥ gam (LOW of the full development)
+  obtain ⟨hlowf, -⟩ := hsm f B Nd hf hdev
+  have hallge : ∀ m, m < Nd → B m ≠ 0 →
+      gam ≤ σ.w (B m) + (m : ℤ) * (hstar : ℤ) := by
+    intro m hmr hmne
+    have h := hlowf m hmr hmne
+    simp only at h
+    push_cast at h
+    linarith [hwf, h]
+  have hjNd : j < Nd := by
+    by_contra hge
+    exact hjne (hdev.2.1 j (by omega))
+  rw [hwconst (B j) hjne (hdev.1 j)]
+  by_contra hcon
+  push_neg at hcon
+  -- hcon : σ.w (B j) ≤ gam − j·h★ ; with the LOW bound this pins j ∈ M
+  have hjM : j ∈ M := by
+    rw [hMdef]
+    refine Finset.mem_filter.mpr ⟨?_, ?_⟩
+    · rw [hNZdef]
+      exact Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hjNd, hjne⟩
+    · have h1 := hallge j hjNd hjne
+      linarith [h1, hcon]
+  -- membership unpackers
+  have hMr : M ⊆ Finset.range Nd := fun m hm => by
+    rw [hMdef, hNZdef] at hm
+    exact (Finset.mem_filter.mp (Finset.mem_filter.mp hm).1).1
+  have hMne0 : ∀ m ∈ M, B m ≠ 0 := fun m hm => by
+    rw [hMdef, hNZdef] at hm
+    exact (Finset.mem_filter.mp (Finset.mem_filter.mp hm).1).2
+  have hMw : ∀ m ∈ M, σ.w (B m) + (m : ℤ) * (hstar : ℤ) = gam := fun m hm => by
+    rw [hMdef] at hm
+    exact (Finset.mem_filter.mp hm).2
+  have hMCr : MC ⊆ Finset.range Nd := fun m hm => by
+    rw [hMCdef, hNZdef] at hm
+    exact (Finset.mem_filter.mp (Finset.mem_filter.mp hm).1).1
+  have hMCne0 : ∀ m ∈ MC, B m ≠ 0 := fun m hm => by
+    rw [hMCdef, hNZdef] at hm
+    exact (Finset.mem_filter.mp (Finset.mem_filter.mp hm).1).2
+  -- f splits over NZ = M ∪ MC
+  have hNZne : NZ.Nonempty := by
+    rw [Finset.nonempty_iff_ne_empty]
+    intro hNZ
+    apply hf
+    rw [hdev.2.2]
+    refine Finset.sum_eq_zero ?_
+    intro m hmr
+    rcases eq_or_ne (B m) 0 with h0 | h0
+    · rw [h0, zero_mul]
+    · have hmem : m ∈ NZ := by
+        rw [hNZdef]
+        exact Finset.mem_filter.mpr ⟨hmr, h0⟩
+      rw [hNZ] at hmem
+      exact absurd hmem (Finset.notMem_empty m)
+  have hfNZ : f = ∑ m ∈ NZ, B m * σ'.Φ ^ m := by
+    rw [hdev.2.2, hNZdef]
+    refine (Finset.sum_filter_of_ne ?_).symm
+    intro m _ hne0 h0
+    exact hne0 (by rw [h0, zero_mul])
+  have hfsplit : f = (∑ m ∈ M, B m * σ'.Φ ^ m) + ∑ m ∈ MC, B m * σ'.Φ ^ m := by
+    rw [hfNZ, hMdef, hMCdef]
+    exact (Finset.sum_filter_add_sum_filter_not NZ _ _).symm
+  -- per-element and sub-sum weights on the M side
+  have hMterm : ∀ m ∈ M, B m * σ'.Φ ^ m ≠ 0 ∧ σ'.w (B m * σ'.Φ ^ m) = gam := by
+    intro m hm
+    have hmne := hMne0 m hm
+    have hne' : B m * σ'.Φ ^ m ≠ 0 := mul_ne_zero hmne (pow_ne_zero _ hΦ'ne)
+    refine ⟨hne', ?_⟩
+    rw [σ'.hwmul _ _ hmne (pow_ne_zero _ hΦ'ne), w_pow_helper σ' _ hΦ'ne, hwΦ',
+      hwconst (B m) hmne (hdev.1 m)]
+    linarith [hMw m hm]
+  have hMsub : ∀ J ⊆ M, J.Nonempty →
+      (∑ m ∈ J, B m * σ'.Φ ^ m) ≠ 0 ∧ σ'.w (∑ m ∈ J, B m * σ'.Φ ^ m) = gam := by
+    intro J hJM hJne
+    obtain ⟨hne0, hlow', m₂, hm₂J, hm₂eq⟩ := v9c_subsum σ σ' hstar hΦ'deg1 hsm B Nd
+      hdev.1 J (fun m hm => hMr (hJM hm)) hJne (fun m hm => hMne0 m (hJM hm))
+    refine ⟨hne0, ?_⟩
+    rw [hm₂eq]
+    exact hMw m₂ (hJM hm₂J)
+  -- the MC side sits strictly above gam
+  have hMC_gt : MC.Nonempty →
+      (∑ m ∈ MC, B m * σ'.Φ ^ m) ≠ 0 ∧
+      gam < σ'.w (∑ m ∈ MC, B m * σ'.Φ ^ m) := by
+    intro hMCne
+    obtain ⟨hne0, hlow', m₂, hm₂, hm₂eq⟩ := v9c_subsum σ σ' hstar hΦ'deg1 hsm B Nd
+      hdev.1 MC hMCr hMCne hMCne0
+    refine ⟨hne0, ?_⟩
+    rw [hm₂eq]
+    have h1 := hallge m₂ (Finset.mem_range.mp (hMCr hm₂)) (hMCne0 m₂ hm₂)
+    have h2 : ¬ (σ.w (B m₂) + (m₂ : ℤ) * (hstar : ℤ) = gam) := by
+      rw [hMCdef] at hm₂
+      exact (Finset.mem_filter.mp hm₂).2
+    exact lt_of_le_of_ne h1 (fun h => h2 h.symm)
+  have hMne : M.Nonempty := ⟨j, hjM⟩
+  -- M-indexed digits
+  have hbbMEx : ∀ m : ℕ, ∃ cc : ↥σ'.K, m ∈ M →
+      σ'.R (B m) = LaurentPolynomial.C cc := by
+    intro m
+    by_cases hm : m ∈ M
+    · obtain ⟨cc, -, hccR, -⟩ := hdigE (B m) (hMne0 m hm) (hdev.1 m)
+      exact ⟨cc, fun _ => hccR⟩
+    · exact ⟨0, fun h => absurd h hm⟩
+  choose bbM hbbM using hbbMEx
+  -- ══ 6. σ'.R f, computed on the child development (LHS) ══
+  have hRfM : σ'.R f = ∑ m ∈ M, σ'.R (B m * σ'.Φ ^ m) := by
+    have hchain := v9c_Rsum σ' gam (fun m => B m * σ'.Φ ^ m) M hMne
+      (fun m hm => (hMterm m hm).1) (fun m hm => (hMterm m hm).2) hMsub
+    rcases MC.eq_empty_or_nonempty with hMC0 | hMCne
+    · rw [hfsplit, hMC0, Finset.sum_empty, add_zero, hchain]
+    · obtain ⟨hne0, hgt⟩ := hMC_gt hMCne
+      have hMsum := hMsub M (subset_refl M) hMne
+      have hRlt := σ'.hRlt (∑ m ∈ M, B m * σ'.Φ ^ m) (∑ m ∈ MC, B m * σ'.Φ ^ m)
+        hMsum.1 hne0 (by rw [← hfsplit]; exact hf) (by rw [hMsum.2]; exact hgt)
+      rw [hfsplit, hRlt, hchain]
+  have hRterm : ∀ m ∈ M, σ'.R (B m * σ'.Φ ^ m)
+      = Polynomial.toLaurent (Polynomial.C (bbM m) * Polynomial.X ^ m) := by
+    intro m hm
+    rw [σ'.hRmul _ _ (hMne0 m hm) (pow_ne_zero _ hΦ'ne), v9c_R_pow σ' _ hΦ'ne,
+      hRΦ'key, hbbM m hm, map_mul, Polynomial.toLaurent_C, Polynomial.toLaurent_X_pow,
+      LaurentPolynomial.T_pow, mul_one]
+  have hLHS : σ'.R f = Polynomial.toLaurent
+      (∑ m ∈ M, Polynomial.C (bbM m) * Polynomial.X ^ m) := by
+    rw [hRfM, map_sum]
+    exact Finset.sum_congr rfl hRterm
+  -- ══ 7. σ'.R f, computed on the root development (RHS) ══
+  have hEterm : ∀ j ∈ E, B₀ j * σ.Φ ^ j ≠ 0 ∧ σ'.w (B₀ j * σ.Φ ^ j) = gam := by
+    intro j hj
+    rw [hEdef] at hj
+    obtain ⟨hjS, hjeq⟩ := Finset.mem_filter.mp hj
+    obtain ⟨-, hjne⟩ := Finset.mem_filter.mp hjS
+    have hne' : B₀ j * σ.Φ ^ j ≠ 0 := mul_ne_zero hjne (pow_ne_zero _ hΦne)
+    refine ⟨hne', ?_⟩
+    rw [σ'.hwmul _ _ hjne (pow_ne_zero _ hΦne), w_pow_helper σ' _ hΦne, hwΦpar,
+      hwconst (B₀ j) hjne (hconstOfP _ (hdev₀.1 j))]
+    linarith [hjeq]
+  have hEne0 : ∀ j ∈ E, B₀ j ≠ 0 := fun j hj => by
+    rw [hEdef, hSalldef] at hj
+    exact (Finset.mem_filter.mp (Finset.mem_filter.mp hj).1).2
+  have hEw : ∀ j ∈ E, σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ) = gam := fun j hj => by
+    rw [hEdef] at hj
+    exact (Finset.mem_filter.mp hj).2
+  have hEsub : ∀ J ⊆ E, J.Nonempty →
+      (∑ j ∈ J, B₀ j * σ.Φ ^ j) ≠ 0 ∧ σ'.w (∑ j ∈ J, B₀ j * σ.Φ ^ j) = gam := by
+    intro J hJE hJne
+    constructor
+    · exact v9c_sum_ne_zero σ.Φ σ.hmonic hdeg1 J hJne B₀
+        (fun j hj => hEne0 j (hJE hj))
+        (fun j hj => hconstOf _ (hconstOfP _ (hdev₀.1 j)))
+    · refine v9c_slotmin σ σ' hstar hdeg1 t₀ ht₀ne ht₀C ht₀w hkey hsm J hJne B₀
+        (fun j hj => hEne0 j (hJE hj)) (fun j _ => hdev₀.1 j) gam
+        (fun j hj => le_of_eq (hEw j (hJE hj)).symm) ?_
+      obtain ⟨j₀, hj₀⟩ := hJne
+      exact ⟨j₀, hj₀, hEw j₀ (hJE hj₀)⟩
+  have hOne0 : ∀ j ∈ O, B₀ j ≠ 0 := fun j hj => by
+    rw [hOdef, hSalldef] at hj
+    exact (Finset.mem_filter.mp (Finset.mem_filter.mp hj).1).2
+  have hO_gt : O.Nonempty →
+      (∑ j ∈ O, B₀ j * σ.Φ ^ j) ≠ 0 ∧ gam < σ'.w (∑ j ∈ O, B₀ j * σ.Φ ^ j) := by
+    intro hOne
+    have hOSall : O ⊆ Sall := by rw [hOdef]; exact Finset.filter_subset _ _
+    have hOval : ∀ j ∈ O, gam < σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ) := by
+      intro j hj
+      have h1 := hside1a j (Finset.mem_range.mp (Finset.mem_filter.mp (hOSall hj)).1)
+        (hOne0 j hj)
+      have h2 : ¬ (σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ) = gam) := by
+        rw [hOdef] at hj
+        exact (Finset.mem_filter.mp hj).2
+      exact lt_of_le_of_ne h1 (fun h => h2 h.symm)
+    have himne : ((O.image (fun j => σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ)))).Nonempty :=
+      hOne.image _
+    obtain ⟨j₀, hj₀O, hj₀⟩ := Finset.mem_image.mp (Finset.min'_mem _ himne)
+    constructor
+    · exact v9c_sum_ne_zero σ.Φ σ.hmonic hdeg1 O hOne B₀ hOne0
+        (fun j hj => hconstOf _ (hconstOfP _ (hdev₀.1 j)))
+    · have hval := v9c_slotmin σ σ' hstar hdeg1 t₀ ht₀ne ht₀C ht₀w hkey hsm O hOne B₀
+        hOne0 (fun j _ => hdev₀.1 j)
+        ((O.image (fun j => σ.w (B₀ j) + (j : ℤ) * (hstar : ℤ))).min' himne)
+        (fun j hj => Finset.min'_le _ _ (Finset.mem_image_of_mem _ hj))
+        ⟨j₀, hj₀O, hj₀⟩
+      rw [hval, ← hj₀]
+      exact hOval j₀ hj₀O
+  have hfEO : f = (∑ j ∈ E, B₀ j * σ.Φ ^ j) + ∑ j ∈ O, B₀ j * σ.Φ ^ j := by
+    rw [hfSall, hEdef, hOdef]
+    exact (Finset.sum_filter_add_sum_filter_not Sall _ _).symm
+  have hEne : E.Nonempty := ⟨s0 + 0, hs0E⟩
+  have hRfE : σ'.R f = ∑ j ∈ E, σ'.R (B₀ j * σ.Φ ^ j) := by
+    have hchain := v9c_Rsum σ' gam (fun j => B₀ j * σ.Φ ^ j) E hEne
+      (fun j hj => (hEterm j hj).1) (fun j hj => (hEterm j hj).2) hEsub
+    rcases O.eq_empty_or_nonempty with hO0 | hOne
+    · rw [hfEO, hO0, Finset.sum_empty, add_zero, hchain]
+    · obtain ⟨hne0, hgt⟩ := hO_gt hOne
+      have hEsum := hEsub E (subset_refl E) hEne
+      have hRlt := σ'.hRlt (∑ j ∈ E, B₀ j * σ.Φ ^ j) (∑ j ∈ O, B₀ j * σ.Φ ^ j)
+        hEsum.1 hne0 (by rw [← hfEO]; exact hf) (by rw [hEsum.2]; exact hgt)
+      rw [hfEO, hRlt, hchain]
+  have hRtermE : ∀ k ∈ Kp, σ'.R (B₀ (s0 + k) * σ.Φ ^ (s0 + k))
+      = Polynomial.toLaurent (Polynomial.C (bb k)
+        * (Polynomial.X - Polynomial.C ((dt : ↥σ'.K))) ^ (s0 + k)) := by
+    intro k hk
+    obtain ⟨h1, -, -⟩ := hSide k hk
+    obtain ⟨-, hbkR, -⟩ := hbb k hk
+    rw [σ'.hRmul _ _ h1 (pow_ne_zero _ hΦne), v9c_R_pow σ' _ hΦne, hRΦpar, hbkR,
+      map_mul, map_pow, map_sub, Polynomial.toLaurent_C, Polynomial.toLaurent_X,
+      Polynomial.toLaurent_C]
+  have hRHS : σ'.R f = Polynomial.toLaurent
+      (∑ k ∈ Kp, Polynomial.C (bb k)
+        * (Polynomial.X - Polynomial.C ((dt : ↥σ'.K))) ^ (s0 + k)) := by
+    calc σ'.R f = ∑ j ∈ E, σ'.R (B₀ j * σ.Φ ^ j) := hRfE
+      _ = ∑ k ∈ Kp, σ'.R (B₀ (s0 + k) * σ.Φ ^ (s0 + k)) := by
+          rw [hEeq]
+          exact Finset.sum_image (fun k _ k' _ h => by omega)
+      _ = ∑ k ∈ Kp, Polynomial.toLaurent (Polynomial.C (bb k)
+            * (Polynomial.X - Polynomial.C ((dt : ↥σ'.K))) ^ (s0 + k)) :=
+          Finset.sum_congr rfl hRtermE
+      _ = Polynomial.toLaurent (∑ k ∈ Kp, Polynomial.C (bb k)
+            * (Polynomial.X - Polynomial.C ((dt : ↥σ'.K))) ^ (s0 + k)) :=
+          (map_sum _ _ _).symm
+  -- ══ 8. the (★) polynomial identity and its j-coefficient (the pinned digit) ══
+  have hpoly : (∑ m ∈ M, Polynomial.C (bbM m) * Polynomial.X ^ m)
+      = ∑ k ∈ Kp, Polynomial.C (bb k)
+        * (Polynomial.X - Polynomial.C ((dt : ↥σ'.K))) ^ (s0 + k) :=
+    Polynomial.toLaurent_injective (hLHS.symm.trans hRHS)
+  have hbbMjne : bbM j ≠ 0 := by
+    obtain ⟨cc, hccne, hccR, -⟩ := hdigE (B j) (hMne0 j hjM) (hdev.1 j)
+    have hceq : cc = bbM j := v9c_C_inj (hccR.symm.trans (hbbM j hjM))
+    rw [← hceq]
+    exact hccne
+  have hcoefL : (∑ m ∈ M, Polynomial.C (bbM m) * Polynomial.X ^ m).coeff j = bbM j := by
+    rw [Polynomial.finset_sum_coeff]
+    rw [Finset.sum_eq_single j
+      (fun m _ hmj => by
+        rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow,
+          if_neg (fun hh => hmj hh.symm), mul_zero])
+      (fun hjnot => absurd hjM hjnot)]
+    rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, if_pos rfl, mul_one]
+  have hcoefR' : ∑ k ∈ Kp, bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k - j)
+      * (((s0 + k).choose j : ℕ) : ↥σ'.K)) = bbM j := by
+    rw [← hcoefL, hpoly, Polynomial.finset_sum_coeff]
+    refine Finset.sum_congr rfl ?_
+    intro k _
+    rw [Polynomial.coeff_C_mul, sub_eq_add_neg, ← Polynomial.C_neg,
+      Polynomial.coeff_X_add_C_pow]
+  -- clear the natural subtraction: multiply by (−dt)^j
+  have hstep2 : ∑ k ∈ Kp, bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k)
+      * (((s0 + k).choose j : ℕ) : ↥σ'.K)) = bbM j * (- ((dt : ↥σ'.K))) ^ j := by
+    have hmul : (∑ k ∈ Kp, bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k - j)
+        * (((s0 + k).choose j : ℕ) : ↥σ'.K))) * (- ((dt : ↥σ'.K))) ^ j
+        = bbM j * (- ((dt : ↥σ'.K))) ^ j := by
+      rw [hcoefR']
+    rw [Finset.sum_mul] at hmul
+    calc ∑ k ∈ Kp, bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k)
+          * (((s0 + k).choose j : ℕ) : ↥σ'.K))
+        = ∑ k ∈ Kp, bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k - j)
+            * (((s0 + k).choose j : ℕ) : ↥σ'.K)) * (- ((dt : ↥σ'.K))) ^ j := by
+          refine Finset.sum_congr rfl ?_
+          intro k _
+          rcases le_or_gt j (s0 + k) with hle | hlt
+          · calc bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k)
+                  * (((s0 + k).choose j : ℕ) : ↥σ'.K))
+                = bb k * (((- ((dt : ↥σ'.K))) ^ (s0 + k - j)
+                    * (- ((dt : ↥σ'.K))) ^ j) * (((s0 + k).choose j : ℕ) : ↥σ'.K)) := by
+                  rw [← pow_add, Nat.sub_add_cancel hle]
+              _ = bb k * ((- ((dt : ↥σ'.K))) ^ (s0 + k - j)
+                    * (((s0 + k).choose j : ℕ) : ↥σ'.K)) * (- ((dt : ↥σ'.K))) ^ j := by
+                  ring
+          · simp [Nat.choose_eq_zero_of_lt hlt]
+      _ = bbM j * (- ((dt : ↥σ'.K))) ^ j := hmul
+  -- ══ 9. the position collapse and the mfun-free per-k digit identity ══
+  have hwPrevEq : ∀ k ∈ Kp, σ.wPrev (B₀ (s0 + k)) + (k : ℤ) * σ.wPrev t₀
+      = σ.wPrev (B₀ (s0 + 0)) := by
+    intro k hk
+    obtain ⟨h1, hw1, -⟩ := hSide k hk
+    obtain ⟨h10, hw10, -⟩ := hSide 0 h0Kp
+    have hs1 : σ.w (B₀ (s0 + k)) = (σ.e : ℤ) * σ.wPrev (B₀ (s0 + k)) :=
+      σ.hStretch _ h1 (hdev₀.1 _)
+    have hs2 : σ.w t₀ = (σ.e : ℤ) * σ.wPrev t₀ := σ.hStretch _ ht₀ne ht₀C
+    have hs3 : σ.w (B₀ (s0 + 0)) = (σ.e : ℤ) * σ.wPrev (B₀ (s0 + 0)) :=
+      σ.hStretch _ h10 (hdev₀.1 _)
+    have he1 : (1 : ℤ) ≤ (σ.e : ℤ) := by exact_mod_cast σ.he
+    have hkey2 : (σ.e : ℤ) * (σ.wPrev (B₀ (s0 + k)) + (k : ℤ) * σ.wPrev t₀
+        - σ.wPrev (B₀ (s0 + 0))) = 0 := by
+      have hval : σ.w (B₀ (s0 + k)) + (k : ℤ) * σ.w t₀ - σ.w (B₀ (s0 + 0)) = 0 := by
+        rw [hw1, ht₀w, hw10]
+        push_cast
+        ring
+      calc (σ.e : ℤ) * (σ.wPrev (B₀ (s0 + k)) + (k : ℤ) * σ.wPrev t₀
+            - σ.wPrev (B₀ (s0 + 0)))
+          = σ.w (B₀ (s0 + k)) + (k : ℤ) * σ.w t₀ - σ.w (B₀ (s0 + 0)) := by
+            rw [hs1, hs2, hs3]; ring
+        _ = 0 := hval
+    rcases mul_eq_zero.mp hkey2 with h | h
+    · exact absurd h (by omega)
+    · linarith [h]
+  have hKEY : ∀ k ∈ Kp,
+      ((bb k : ↥σ'.K) : F) * ((dt : ↥σ'.K) : F) ^ k * ((pat 0 : ↥σ.K) : F)
+      = ((bb 0 : ↥σ'.K) : F) * ((pat k : ↥σ.K) : F) * ((c₀ : ↥σ.K) : F) ^ k := by
+    intro k hk
+    obtain ⟨h1, hw1, hR1⟩ := hSide k hk
+    obtain ⟨h10, hw10, hR10⟩ := hSide 0 h0Kp
+    obtain ⟨hbkne, hbkR, hbkF⟩ := hbb k hk
+    obtain ⟨hb0ne, hb0R, hb0F⟩ := hbb 0 h0Kp
+    have ht₀kne : t₀ ^ k ≠ 0 := pow_ne_zero _ ht₀ne
+    have hXkne : B₀ (s0 + k) * t₀ ^ k ≠ 0 := mul_ne_zero h1 ht₀kne
+    have hXkC : inC σ'.Φ (B₀ (s0 + k) * t₀ ^ k) := by
+      rw [inC, hΦ'deg]
+      have hd1 : (B₀ (s0 + k)).degree ≤ 0 := hconstOf _ (hconstOfP _ (hdev₀.1 _))
+      have hd2 : (t₀ ^ k).degree ≤ 0 := by
+        have ht0 : t₀.degree = 0 :=
+          le_antisymm ht₀deg (Polynomial.zero_le_degree_iff.mpr ht₀ne)
+        rw [Polynomial.degree_pow, ht0, smul_zero]
+      calc (B₀ (s0 + k) * t₀ ^ k).degree
+          ≤ (B₀ (s0 + k)).degree + (t₀ ^ k).degree := Polynomial.degree_mul_le _ _
+        _ ≤ 0 + 0 := add_le_add hd1 hd2
+        _ = 0 := add_zero 0
+        _ < 1 := by exact_mod_cast Nat.zero_lt_one
+    have hwXk : σ.w (B₀ (s0 + k) * t₀ ^ k) = σ.w (B₀ (s0 + 0)) := by
+      rw [σ.hwmul _ _ h1 ht₀kne, w_pow_helper σ _ ht₀ne, ht₀w, hw1, hw10]
+      push_cast
+      ring
+    obtain ⟨cX, hcXne, hcXR, hcXF⟩ := hdigE (B₀ (s0 + k) * t₀ ^ k) hXkne hXkC
+    have hcXval : cX = bb k * (dt : ↥σ'.K) ^ k := by
+      apply v9c_C_inj
+      rw [← hcXR, σ'.hRmul _ _ h1 ht₀kne, v9c_R_pow σ' _ ht₀ne, hbkR, hdtR0,
+        ← map_pow, ← map_mul]
+    have hdigXk : σ.digPrime zbar (B₀ (s0 + k) * t₀ ^ k)
+        = σ.digPrime zbar (B₀ (s0 + k)) * (σ.digPrime zbar t₀) ^ k := by
+      unfold Stage.digPrime
+      rw [σ.hRmul _ _ h1 ht₀kne, v9c_R_pow σ _ ht₀ne, map_mul, map_pow]
+    have hdig1 : σ.digPrime zbar (B₀ (s0 + k))
+        = ((pat k : ↥σ.K) : F)
+          * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F) := by
+      unfold Stage.digPrime
+      rw [hR1, LaurentPolynomial.eval₂_C_mul_T]
+      simp
+    have hdigt : σ.digPrime zbar t₀
+        = ((c₀ : ↥σ.K) : F) * ((zbar ^ (- σ.t * σ.wPrev t₀) : Fˣ) : F) := by
+      unfold Stage.digPrime
+      rw [ht₀R, LaurentPolynomial.eval₂_C_mul_T]
+      simp
+    have hdig0 : σ.digPrime zbar (B₀ (s0 + 0))
+        = ((pat 0 : ↥σ.K) : F)
+          * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + 0))) : Fˣ) : F) := by
+      unfold Stage.digPrime
+      rw [hR10, LaurentPolynomial.eval₂_C_mul_T]
+      simp
+    have hq : - σ.t * σ.wPrev (B₀ (s0 + k)) + (- σ.t * σ.wPrev t₀) * (k : ℤ)
+        = - σ.t * σ.wPrev (B₀ (s0 + 0)) := by
+      linear_combination (- σ.t) * hwPrevEq k hk
+    have hzv : ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F)
+        * ((zbar ^ (- σ.t * σ.wPrev t₀) : Fˣ) : F) ^ k
+        = ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + 0))) : Fˣ) : F) := by
+      have h2 : ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k)))
+          * (zbar ^ (- σ.t * σ.wPrev t₀)) ^ k : Fˣ) : F)
+          = ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F)
+            * ((zbar ^ (- σ.t * σ.wPrev t₀) : Fˣ) : F) ^ k := by
+        rw [Units.val_mul, Units.val_pow_eq_pow_val]
+      rw [← h2]
+      congr 1
+      rw [← zpow_natCast (zbar ^ (- σ.t * σ.wPrev t₀)) k, ← zpow_mul, ← zpow_add, hq]
+    have hcross : (cX : F)
+        * σ.digPrime zbar (B₀ (s0 + 0))
+        = ((bb 0 : ↥σ'.K) : F) * σ.digPrime zbar (B₀ (s0 + k) * t₀ ^ k) := by
+      rw [hcXF, hb0F, hwXk]
+      ring
+    rw [hcXval] at hcross
+    push_cast at hcross
+    rw [hdigXk, hdig1, hdigt, hdig0] at hcross
+    have hZ0ne : ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + 0))) : Fˣ) : F) ≠ 0 :=
+      Units.ne_zero _
+    refine mul_right_cancel₀ hZ0ne ?_
+    calc ((bb k : ↥σ'.K) : F) * ((dt : ↥σ'.K) : F) ^ k * ((pat 0 : ↥σ.K) : F)
+          * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + 0))) : Fˣ) : F)
+        = (((bb k : ↥σ'.K) : F) * ((dt : ↥σ'.K) : F) ^ k)
+          * (((pat 0 : ↥σ.K) : F)
+            * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + 0))) : Fˣ) : F)) := by ring
+      _ = ((bb 0 : ↥σ'.K) : F)
+          * (((pat k : ↥σ.K) : F)
+              * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F)
+            * (((c₀ : ↥σ.K) : F)
+              * ((zbar ^ (- σ.t * σ.wPrev t₀) : Fˣ) : F)) ^ k) := hcross
+      _ = ((bb 0 : ↥σ'.K) : F) * ((pat k : ↥σ.K) : F) * ((c₀ : ↥σ.K) : F) ^ k
+          * (((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F)
+            * ((zbar ^ (- σ.t * σ.wPrev t₀) : Fˣ) : F) ^ k) := by
+          rw [mul_pow]; ring
+      _ = ((bb 0 : ↥σ'.K) : F) * ((pat k : ↥σ.K) : F) * ((c₀ : ↥σ.K) : F) ^ k
+          * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + 0))) : Fˣ) : F) := by rw [hzv]
+  -- ══ 10. cast to F, apply the KEY, cancel units ══
+  have hstep3 : ∑ k ∈ Kp, ((bb k : ↥σ'.K) : F)
+      * ((- ((dt : ↥σ'.K) : F)) ^ (s0 + k) * (((s0 + k).choose j : ℕ) : F))
+      = ((bbM j : ↥σ'.K) : F) * (- ((dt : ↥σ'.K) : F)) ^ j := by
+    have hc := congrArg (fun y : ↥σ'.K => (y : F)) hstep2
+    push_cast at hc
+    convert hc using 2 with k hk
+  have hterm10 : ∀ k ∈ Kp,
+      ((bb k : ↥σ'.K) : F)
+        * ((- ((dt : ↥σ'.K) : F)) ^ (s0 + k) * (((s0 + k).choose j : ℕ) : F))
+        * ((pat 0 : ↥σ.K) : F)
+      = ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * ((bb 0 : ↥σ'.K) : F))
+        * (((pat k : ↥σ.K) : F) * ((zbar : Fˣ) : F) ^ k
+            * (((s0 + k).choose j : ℕ) : F)) := by
+    intro k hk
+    have hK := hKEY k hk
+    have hcz : (-1 : F) * ((c₀ : ↥σ.K) : F) = ((zbar : Fˣ) : F) := by
+      rw [hc₀z]; ring
+    calc ((bb k : ↥σ'.K) : F)
+          * ((- ((dt : ↥σ'.K) : F)) ^ (s0 + k) * (((s0 + k).choose j : ℕ) : F))
+          * ((pat 0 : ↥σ.K) : F)
+        = ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * (-1 : F) ^ k)
+          * ((((bb k : ↥σ'.K) : F) * ((dt : ↥σ'.K) : F) ^ k * ((pat 0 : ↥σ.K) : F))
+            * (((s0 + k).choose j : ℕ) : F)) := by
+          rw [neg_pow, pow_add, pow_add]
+          ring
+      _ = ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * (-1 : F) ^ k)
+          * ((((bb 0 : ↥σ'.K) : F) * ((pat k : ↥σ.K) : F) * ((c₀ : ↥σ.K) : F) ^ k)
+            * (((s0 + k).choose j : ℕ) : F)) := by rw [hK]
+      _ = ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * ((bb 0 : ↥σ'.K) : F))
+          * (((pat k : ↥σ.K) : F) * (((-1 : F)) * ((c₀ : ↥σ.K) : F)) ^ k
+            * (((s0 + k).choose j : ℕ) : F)) := by
+          rw [mul_pow]
+          ring
+      _ = ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * ((bb 0 : ↥σ'.K) : F))
+          * (((pat k : ↥σ.K) : F) * ((zbar : Fˣ) : F) ^ k
+            * (((s0 + k).choose j : ℕ) : F)) := by rw [hcz]
+  have hsum0 : ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * ((bb 0 : ↥σ'.K) : F))
+      * (∑ k ∈ Kp, ((pat k : ↥σ.K) : F) * ((zbar : Fˣ) : F) ^ k
+          * (((s0 + k).choose j : ℕ) : F))
+      = ((bbM j : ↥σ'.K) : F) * (- ((dt : ↥σ'.K) : F)) ^ j * ((pat 0 : ↥σ.K) : F) := by
+    rw [Finset.mul_sum]
+    calc ∑ k ∈ Kp, ((-1 : F) ^ s0 * ((dt : ↥σ'.K) : F) ^ s0 * ((bb 0 : ↥σ'.K) : F))
+          * (((pat k : ↥σ.K) : F) * ((zbar : Fˣ) : F) ^ k
+              * (((s0 + k).choose j : ℕ) : F))
+        = ∑ k ∈ Kp, ((bb k : ↥σ'.K) : F)
+            * ((- ((dt : ↥σ'.K) : F)) ^ (s0 + k) * (((s0 + k).choose j : ℕ) : F))
+            * ((pat 0 : ↥σ.K) : F) :=
+          (Finset.sum_congr rfl (fun k hk => (hterm10 k hk).symm))
+      _ = (∑ k ∈ Kp, ((bb k : ↥σ'.K) : F)
+            * ((- ((dt : ↥σ'.K) : F)) ^ (s0 + k) * (((s0 + k).choose j : ℕ) : F)))
+            * ((pat 0 : ↥σ.K) : F) := (Finset.sum_mul _ _ _).symm
+      _ = ((bbM j : ↥σ'.K) : F) * (- ((dt : ↥σ'.K) : F)) ^ j * ((pat 0 : ↥σ.K) : F) := by
+          rw [hstep3]
+  -- ══ 11. the Taylor VANISHING below μ kills the pinned digit ══
+  have hc₀ne : c₀ ≠ 0 := by
+    intro h
+    rw [h] at hc₀z
+    push_cast at hc₀z
+    exact zbar.ne_zero (by
+      have := hc₀z.symm
+      rw [neg_eq_zero] at this
+      exact this)
+  have hKzero : ∑ k ∈ Finset.range (wSide + 1),
+      pat k * (- c₀) ^ k * (((s0 + k).choose j : ℕ) : ↥σ.K) = 0 :=
+    v9c_taylor_zero c₀ hc₀ne Ranch μ s0 wSide pat hRanch hOrd.1 j hjμ
+  have hFzero : ∑ k ∈ Finset.range (wSide + 1), ((pat k : ↥σ.K) : F)
+      * ((zbar : Fˣ) : F) ^ k * (((s0 + k).choose j : ℕ) : F) = 0 := by
+    have hc := congrArg (fun y : ↥σ.K => (y : F)) hKzero
+    push_cast at hc
+    calc ∑ k ∈ Finset.range (wSide + 1), ((pat k : ↥σ.K) : F)
+          * ((zbar : Fˣ) : F) ^ k * (((s0 + k).choose j : ℕ) : F)
+        = ∑ k ∈ Finset.range (wSide + 1), ((pat k : ↥σ.K) : F)
+          * (- ((c₀ : ↥σ.K) : F)) ^ k * (((s0 + k).choose j : ℕ) : F) := by
+          refine Finset.sum_congr rfl ?_
+          intro k _
+          rw [hc₀z, neg_neg]
+      _ = 0 := by convert hc using 2 with k hk
+  have hKpzero : ∑ k ∈ Kp, ((pat k : ↥σ.K) : F) * ((zbar : Fˣ) : F) ^ k
+      * (((s0 + k).choose j : ℕ) : F) = 0 := by
+    have hfilter : ∑ k ∈ (Finset.range (wSide + 1)).filter (fun k => pat k ≠ 0),
+        ((pat k : ↥σ.K) : F) * ((zbar : Fˣ) : F) ^ k * (((s0 + k).choose j : ℕ) : F)
+        = ∑ k ∈ Finset.range (wSide + 1), ((pat k : ↥σ.K) : F)
+            * ((zbar : Fˣ) : F) ^ k * (((s0 + k).choose j : ℕ) : F) := by
+      refine Finset.sum_filter_of_ne ?_
+      intro k _ hne0 hpk
+      exact hne0 (by rw [hpk]; simp)
+    rw [hKpdef, hfilter]
+    exact hFzero
+  rw [hKpzero, mul_zero] at hsum0
+  have hdtFne : ((dt : ↥σ'.K) : F) ≠ 0 := by
+    intro h
+    exact dt.ne_zero (by exact_mod_cast h)
+  have hbbMjF : ((bbM j : ↥σ'.K) : F) ≠ 0 := by
+    intro h
+    exact hbbMjne (by exact_mod_cast h)
+  have hpat0F : ((pat 0 : ↥σ.K) : F) ≠ 0 := by
+    intro h
+    exact hpat0 (by exact_mod_cast h)
+  exact (mul_ne_zero (mul_ne_zero hbbMjF (pow_ne_zero _ (neg_ne_zero.mpr hdtFne)))
+    hpat0F) hsum0.symm
+
 end V9CornerHelpers
 
 /-- Unit V9: the K1 kernel residual — `K1_readVertexPin_nonrec`'s statement
@@ -2392,6 +3178,271 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       | recentering =>
           exact absurd hspec hsp
 
+/-- **The U22-E1 Box law, NON-RECENTERING parent** (REV 6): at consecutive reads of a
+run whose parent read `i` is a root or increment read, every slot of f's frame-(i+1)
+development STRICTLY BELOW the standing vertex (`j < μ`, `B j ≠ 0`) weighs STRICTLY
+ABOVE the parent line's value at its base index (stage scale: `σ.w = STR_{i+1} ×`
+absolute) — the strict span-entry content of (SAE) at this species, statement keyed to
+`SAE_spanStrict_endpoint`'s fenced ℚ-form.  Perimeter dispatch mirrors `V9_K1nonrec`
+exactly: the `e·g ≥ 2` legs close by the V10 INCONSISTENCY finding (vacuous — read
+V9's REV-4 header disclosure before consuming), `i ≥ 1 ∧ e·g = 1` by the species
+inventory, and the genuine `i = 0 ∧ e·g = 1` corner by `v9c_cornerBox` (the strict
+Taylor-vanishing sibling of the REV-5 corner core). -/
+theorem V9_E1box_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
+    (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (hsp : (H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering)
+    (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ)
+    (hdev : IsDevelopment (H.nodes[i+1]'hi1).σ.Φ f B Nd)
+    (j : ℕ) (hjμ : j < (H.nodes[i]'(by omega)).μ) (hjne : B j ≠ 0) :
+    (H.strFrame (i+1) : ℚ) *
+        (H.nodes[i]'(by omega)).line.at (j * (H.nodes[i]'(by omega)).childWidth)
+      < (((H.nodes[i+1]'hi1).σ.w (B j) : ℚ)) := by
+  classical
+  have hilen : i < H.nodes.length := by omega
+  by_cases hEG : 2 ≤ (H.nodes[i]'hilen).e * (H.nodes[i]'hilen).g
+  · -- NON-CORNER: the recorded transition data are contradictory (V10 finding 2)
+    exfalso
+    obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
+    obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans i hi1
+    obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
+    have hsteep := V9_transSteepness h.2.2.1 i hi1 hsp hEG
+    -- `ψ.coeff 0 ≠ 0` from irreducibility + monicity + the unit root
+    have hψ0 : (H.nodes[i]'hilen).ψ.coeff 0 ≠ 0 := by
+      intro h0
+      obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
+      rcases (H.nodes[i]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
+      · exact Polynomial.not_isUnit_X hX
+      · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
+        have hψX : (H.nodes[i]'hilen).ψ = Polynomial.C c * Polynomial.X := by
+          rw [hu, ← hc.2]; ring
+        have hlc : c = 1 := by
+          have hm := (H.nodes[i]'hilen).hψmonic
+          rw [hψX] at hm
+          have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
+            rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
+              Polynomial.leadingCoeff_X, mul_one]
+          rw [Polynomial.Monic, hlead] at hm
+          exact hm
+        have hzb := (H.nodes[i]'hilen).hzbarRoot
+        rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
+        exact Units.ne_zero _ hzb
+    -- the P2 pin from the canonical Bézout window
+    have he1t : (H.nodes[i]'hilen).e = 1 → (H.nodes[i]'hilen).t = 0 := by
+      intro he1
+      have hc := (H.nodes[i]'hilen).hbezCanon
+      rw [he1] at hc
+      push_cast at hc
+      omega
+    exact V10_readTransition_incompatible (H.nodes[i]'hilen).σ (H.nodes[i+1]'hi1).σ
+      (H.nodes[i]'hilen).e (H.nodes[i]'hilen).h (H.nodes[i]'hilen).s
+      (H.nodes[i]'hilen).t (H.nodes[i]'hilen).g (H.nodes[i]'hilen).ψ
+      ((H.nodes[i+1]'hi1).σ.Φ) hsteep hEG (H.nodes[i]'hilen).hcop
+      (H.nodes[i]'hilen).hbez he1t hψ0 hliftraw htcoreraw.base.child_key
+      htcoreraw.base.child_e htcoreraw.base.child_wPrev
+      htcoreraw.base.child_slotmin hseq hteq
+  · -- `ν.e·ν.g = 1`
+    rcases Nat.eq_zero_or_pos i with hi0 | hi1'
+    · -- THE `i = 0 ∧ e·g = 1` CORNER — the strict corner Box fires
+      subst hi0
+      -- e = g = 1
+      have hEG1 : (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g = 1 := by
+        have h1 := (H.nodes[0]'hilen).he
+        have h2 := (H.nodes[0]'hilen).hg
+        have h4 : 1 * 1 ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
+          Nat.mul_le_mul h1 h2
+        rw [one_mul] at h4
+        set x := (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g with hx
+        omega
+      have hE1 : (H.nodes[0]'hilen).e = 1 := by
+        have h5 : (H.nodes[0]'hilen).e ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
+          Nat.le_mul_of_pos_right _ (H.nodes[0]'hilen).hg
+        rw [hEG1] at h5
+        have h1 := (H.nodes[0]'hilen).he
+        omega
+      have hG1 : (H.nodes[0]'hilen).g = 1 := by
+        have h5 : (H.nodes[0]'hilen).g ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
+          Nat.le_mul_of_pos_left _ (H.nodes[0]'hilen).he
+        rw [hEG1] at h5
+        have h2 := (H.nodes[0]'hilen).hg
+        omega
+      -- t = 0, s = 1 (canonical Bézout at e = 1)
+      obtain ⟨hbc1, hbc2⟩ := (H.nodes[0]'hilen).hbezCanon
+      rw [hE1] at hbc2
+      have ht0 : (H.nodes[0]'hilen).t = 0 := by push_cast at hbc2; omega
+      have hs1 : (H.nodes[0]'hilen).s = 1 := by
+        have hb := (H.nodes[0]'hilen).hbez
+        rw [hE1, ht0] at hb
+        simp at hb
+        exact hb
+      -- coherence: the recorded (0,1) transition
+      obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
+      obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans 0 hi1
+      obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
+      -- the recorded lift at e·g = 1: Φ̂ = Φ + tt 0
+      obtain ⟨tt, htt0, httk, hPhi⟩ := hliftraw
+      rw [hE1, hG1] at hPhi
+      simp only [one_mul, Finset.sum_range_one, mul_zero, pow_zero, pow_one,
+        mul_one] at hPhi
+      -- ψ.coeff 0 ≠ 0 (unit root of an irreducible monic linear ψ)
+      have hψ0 : (H.nodes[0]'hilen).ψ.coeff 0 ≠ 0 := by
+        intro h0
+        obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
+        rcases (H.nodes[0]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
+        · exact Polynomial.not_isUnit_X hX
+        · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
+          have hψX : (H.nodes[0]'hilen).ψ = Polynomial.C c * Polynomial.X := by
+            rw [hu, ← hc.2]; ring
+          have hlc : c = 1 := by
+            have hm := (H.nodes[0]'hilen).hψmonic
+            rw [hψX] at hm
+            have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
+              rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
+                Polynomial.leadingCoeff_X, mul_one]
+            rw [Polynomial.Monic, hlead] at hm
+            exact hm
+          have hzb := (H.nodes[0]'hilen).hzbarRoot
+          rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
+          exact Units.ne_zero _ hzb
+      -- the lift coefficient's recorded data at k = 0
+      have hg0 : (0 : ℕ) < (H.nodes[0]'hilen).g := by rw [hG1]; norm_num
+      obtain ⟨ht₀ne, ht₀C, ht₀w, ht₀R⟩ := httk 0 hg0 hψ0
+      rw [hG1] at ht₀w
+      have ht₀w' : (H.nodes[0]'hilen).σ.w (tt 0) = ((H.nodes[0]'hilen).h : ℤ) := by
+        rw [ht₀w]; push_cast; ring
+      -- ψ is monic linear: ψ = X + C (ψ.coeff 0), root tie
+      have hψdeg1 : (H.nodes[0]'hilen).ψ.natDegree = 1 := by
+        rw [(H.nodes[0]'hilen).hψdeg, hG1]
+      have hψlin : (H.nodes[0]'hilen).ψ
+          = Polynomial.X + Polynomial.C ((H.nodes[0]'hilen).ψ.coeff 0) :=
+        (H.nodes[0]'hilen).hψmonic.eq_X_add_C hψdeg1
+      have hzb := (H.nodes[0]'hilen).hzbarRoot
+      rw [hψlin, Polynomial.eval₂_add, Polynomial.eval₂_X, Polynomial.eval₂_C] at hzb
+      have hc₀z : (((H.nodes[0]'hilen).ψ.coeff 0 : ↥(H.nodes[0]'hilen).σ.K) : F)
+          = - (((H.nodes[0]'hilen).zbar : Fˣ) : F) := by
+        have h1 : (((H.nodes[0]'hilen).zbar : Fˣ) : F)
+            + (((H.nodes[0]'hilen).ψ.coeff 0 : ↥(H.nodes[0]'hilen).σ.K) : F) = 0 := by
+          rw [← hzb]
+          congr 1
+        exact eq_neg_of_add_eq_zero_right h1
+      -- the ψ-order and pattern data at the linear key
+      have hOrd0 : OrdPsiPoly
+          (Polynomial.X + Polynomial.C ((H.nodes[0]'hilen).ψ.coeff 0))
+          (H.nodes[0]'hilen).Ranch (H.nodes[0]'hilen).μ := by
+        rw [← hψlin]; exact (H.nodes[0]'hilen).hOrd
+      have hRanch0 : (H.nodes[0]'hilen).Ranch
+          = ∑ k ∈ Finset.range ((H.nodes[0]'hilen).wSide + 1),
+              Polynomial.C ((H.nodes[0]'hilen).pat k) * Polynomial.X ^ k := by
+        have hR := (H.nodes[0]'hilen).hRanch
+        rw [hE1, Nat.div_one] at hR
+        exact hR
+      -- child-stage ties
+      have hce : (H.nodes[0+1]'hi1).σ.e = 1 := by rw [htcoreraw.base.child_e, hE1]
+      have hch : (H.nodes[0+1]'hi1).σ.h = (H.nodes[0]'hilen).h :=
+        htcoreraw.base.child_h
+      have hcs : (H.nodes[0+1]'hi1).σ.s = 1 := by rw [hseq]; exact hs1
+      have hct : (H.nodes[0+1]'hi1).σ.t = 0 := by rw [hteq]; exact ht0
+      have hcw := htcoreraw.base.child_wPrev
+      have hsm : IsSlotMinWeight (H.nodes[0+1]'hi1).σ.w (H.nodes[0+1]'hi1).σ.Φ 1
+          (H.nodes[0]'hilen).h (H.nodes[0]'hilen).σ.w := by
+        have hcs' := htcoreraw.base.child_slotmin
+        rw [hE1] at hcs'
+        exact hcs'
+      obtain ⟨mfun, hmf⟩ := htcoreraw.child_dig_frame
+      -- ReadsOf's read-0 record
+      obtain ⟨B₀, Nd₀, Φnext, hdev₀, hΦnext, hside⟩ := h.2.2.2 0 hilen
+      have hΦn : Φnext = (H.nodes[0+1]'hi1).σ.Φ := hΦnext hi1
+      obtain ⟨⟨hside1a, hside1b⟩, hside2, -, -, -, -⟩ := hside
+      -- normalize SideReads (i)+(ii) at e = 1
+      have hside1a' : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
+          (H.nodes[0]'hilen).gam ≤ (H.nodes[0]'hilen).σ.w (B₀ j)
+            + (j : ℤ) * ((H.nodes[0]'hilen).h : ℤ) := by
+        intro j hj hne
+        have h1 := hside1a j hj hne
+        rw [hE1] at h1
+        push_cast at h1
+        linarith
+      have hside1b' : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
+          (H.nodes[0]'hilen).σ.w (B₀ j) + (j : ℤ) * ((H.nodes[0]'hilen).h : ℤ)
+            = (H.nodes[0]'hilen).gam →
+          ∃ k : ℕ, k ≤ (H.nodes[0]'hilen).wSide ∧ j = (H.nodes[0]'hilen).s0 + k ∧
+            (H.nodes[0]'hilen).pat k ≠ 0 := by
+        intro j hj hne heq
+        obtain ⟨k, hkW, hjk, hkp⟩ := hside1b j hj hne (by rw [hE1]; push_cast; linarith)
+        rw [hE1, Nat.div_one] at hkW
+        rw [hE1, one_mul] at hjk
+        exact ⟨k, hkW, hjk, hkp⟩
+      have hside2' : ∀ k : ℕ, k ≤ (H.nodes[0]'hilen).wSide →
+          (H.nodes[0]'hilen).pat k ≠ 0 →
+          B₀ ((H.nodes[0]'hilen).s0 + k) ≠ 0 ∧
+          (H.nodes[0]'hilen).σ.w (B₀ ((H.nodes[0]'hilen).s0 + k))
+            + (((H.nodes[0]'hilen).s0 + k : ℕ) : ℤ) * ((H.nodes[0]'hilen).h : ℤ)
+            = (H.nodes[0]'hilen).gam ∧
+          (H.nodes[0]'hilen).σ.R (B₀ ((H.nodes[0]'hilen).s0 + k))
+            = LaurentPolynomial.C ((H.nodes[0]'hilen).pat k) *
+              LaurentPolynomial.T (- (H.nodes[0]'hilen).σ.t
+                * (H.nodes[0]'hilen).σ.wPrev (B₀ ((H.nodes[0]'hilen).s0 + k))) := by
+        intro k hkW hkp
+        have hkW' : k ≤ (H.nodes[0]'hilen).wSide / (H.nodes[0]'hilen).e := by
+          rw [hE1, Nat.div_one]; exact hkW
+        obtain ⟨h1, h2, h3⟩ := hside2 k hkW' hkp
+        rw [hE1, one_mul] at h1 h2 h3
+        refine ⟨h1, ?_, h3⟩
+        push_cast at h2 ⊢
+        linarith
+      -- THE STRICT CORNER BOX FIRES
+      have hres := v9c_cornerBox (H.nodes[0]'hilen).σ (H.nodes[0+1]'hi1).σ
+        (H.nodes[0]'hilen).h (hroot hilen) hce hch hcs hct hcw hsm
+        (tt 0) ht₀ne ht₀C ht₀w' ((H.nodes[0]'hilen).ψ.coeff 0) ht₀R hPhi
+        (H.nodes[0]'hilen).zbar hc₀z
+        (H.nodes[0]'hilen).Ranch (H.nodes[0]'hilen).μ (H.nodes[0]'hilen).s0
+        (H.nodes[0]'hilen).wSide (H.nodes[0]'hilen).pat (H.nodes[0]'hilen).gam
+        hRanch0 (H.nodes[0]'hilen).hpat0 hOrd0 mfun hmf f h.1.ne_zero
+        B₀ Nd₀ hdev₀ B Nd hdev j hjμ hjne hside1a' hside1b' hside2'
+      -- the ℚ-form: strFrame 1 = 1, childWidth = 1, line.at (j·1) = gam − h·j
+      have hSTR0 : H.strFrame 0 = 1 := by
+        unfold History.strFrame
+        simp
+      have hSTR1 : H.strFrame (0 + 1) = 1 := by
+        rw [v9_strFrame_succ H 0 hilen, hSTR0, hE1]
+      have hDw1 : (H.nodes[0]'hilen).Dwidth = 1 := by
+        rw [(H.nodes[0]'hilen).hDwidth, hroot hilen]
+      have hCW : (H.nodes[0]'hilen).childWidth = 1 := by
+        unfold Node.childWidth
+        rw [hE1, hG1, hDw1]
+      have hsl := hslope 0 hilen
+      rw [hSTR0, hE1, hDw1] at hsl
+      push_cast at hsl
+      have hslope1 : (H.nodes[0]'hilen).line.slope = ((H.nodes[0]'hilen).h : ℚ) := by
+        linarith [hsl]
+      have hgam0 := hgam 0 hilen
+      rw [hSTR0, hE1] at hgam0
+      push_cast at hgam0
+      have hLU := (H.nodes[0]'hilen).hLineU
+      rw [hDw1] at hLU
+      have hresQ : ((H.nodes[0]'hilen).gam : ℚ)
+          - (j : ℚ) * ((H.nodes[0]'hilen).h : ℚ)
+          < (((H.nodes[0+1]'hi1).σ.w (B j) : ℤ) : ℚ) := by
+        exact_mod_cast hres
+      show (H.strFrame (0 + 1) : ℚ)
+          * (H.nodes[0]'hilen).line.at (j * (H.nodes[0]'hilen).childWidth)
+          < (((H.nodes[0+1]'hi1).σ.w (B j) : ℤ) : ℚ)
+      rw [hSTR1, hCW, mul_one]
+      unfold Line.at at hLU ⊢
+      rw [hslope1] at hLU ⊢
+      push_cast at hLU ⊢
+      linarith [hgam0, hLU, hresQ]
+    · -- `i ≥ 1`: a non-recentering non-root read is an increment; `hspecInc`
+      -- forces `1 < e·g` against the case hypothesis.
+      exfalso
+      cases hspec : (H.nodes[i]'hilen).species with
+      | root =>
+          exact absurd ((H.root_iff i hilen).mp hspec) (by omega)
+      | increment =>
+          exact absurd ((H.nodes[i]'hilen).hspecInc hspec) (by omega)
+      | recentering =>
+          exact absurd hspec hsp
+
 end LeanUrat.HC1
 
 #print axioms LeanUrat.HC1.V9_readSteepness
@@ -2402,3 +3453,4 @@ end LeanUrat.HC1
 #print axioms LeanUrat.HC1.V9_bottomSlot_of_wvEqStretch
 #print axioms LeanUrat.HC1.V9_steepSide_frameDescent
 #print axioms LeanUrat.HC1.V9_K1nonrec
+#print axioms LeanUrat.HC1.V9_E1box_nonrec
