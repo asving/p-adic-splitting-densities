@@ -893,3 +893,19 @@ is that the corner leg is now honest transport mathematics: at `e·g = 1` the
 records are consistent and the vertex pin is DERIVED, so `readsOf_NA`/U20a-c and
 the K1 kernel are non-vacuously proved exactly on the recentering-shaped
 (root, e·g = 1) perimeter, machine-checked end to end.
+
+## UPDATE (2026-07-28j): THE HARD-CORE PROGRAM COMPLETE TO THE QUEUE
+
+The carry bridge (R3b/R3c) CLOSED — V9_K1nonrec sorry-free Lean-core; the K1
+vertex pin TOTAL; downstream 14/14 clean (K1 family, U20a/b/c, U22 chain incl.
+both endpoints, readsOf_NA/SAE). S9 (the full TRANS child) PROVED. Every
+remaining sorry in HC1+HC2 is one of ASVIN'S THREE QUEUE ITEMS:
+(Q1) the HistoryCoherent child re-key at the regraded value + 2-node ReadsOf
+gate (the V10 inconsistency finding — repairs steep-read vacuity; frozen
+MovesC interface); (Q2) U21's RunVertexPin (the D.7(v)-warranted
+child_dig_frame pin; frozen interface); (Q3) C6's restatement over the
+alignment class (machine-certified mistyping; ScratchC6.lean the certificate)
+— or wave-4-owned (R6's carrier instance, the seam contracts). The V10
+inconsistency finding and the C6 mistyping certificate are the campaign's
+standing interface findings of record. Wave 4 (MovesT/MovesV) is the next
+program phase; MovesR unparks behind HC-1's now-real carriers.
