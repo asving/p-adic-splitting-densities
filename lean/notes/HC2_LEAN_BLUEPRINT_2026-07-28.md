@@ -1648,3 +1648,51 @@ per-file REV notes):
   the U27 seed; U9c's countermodel closed by hypothesis, proof route in-file.
 Next: the fleet wave on the remaining 19 (priority: U31 gate re-run first — the
 clause-(vi) non-vacuity adjudication), then the Codex ratification batch.
+
+## 11. U18 ADJUDICATION — THE NOTE READ (2026-07-28; U18 REV 3, supersedes K3)
+
+Trigger: U18 refuted TWICE as typed — the unguarded clause-(ii) form
+(`scratch_U18_unique_false.lean`) and the K3 `AdjacentReads`-guarded form
+(`scratch_U18_adjacent_refuted.lean`); both compile green, Lean-core axioms.
+Adjudication verdict: **BLUEPRINT-OVERSTRENGTH**, not a note error. Grounds
+(displays quoted in the U18_unique.lean header): the note's §D4-R L3 pins
+prefix-identity as LITERAL node-data + lift equality (`Pref(P̂)` counts literal
+value prefixes); D.10's only (v, dig)-style identification is LIFT independence
+("depends on t only through (v(t), dig(t))") — lifts only, already normalized by
+`polOM`; the §C C.0.5/LIFT-TRANSLATION transports relate strata of DISTINCT
+transported histories ("no correspondence is claimed"), never identify η's. The
+refuted `EtaGalEq` keying was introduced at MOVESD blueprint REV 5 (clause (ii),
+sourced to audit Fable#2 C1); it relates the etaData PROJECTION, which forgets
+the tower-embedding witnesses (`zbar`/stage conjugation) whose transport DEFINES
+"two presentations of one η". Both refutation witnesses live in that gap: they
+conjugate only the last node's values over a shared pinned node-0, i.e. they
+present two DISTINCT note-η's (centers c̃ vs φ(c̃)) that the note counts
+separately — clause (ii) as typed would UNDERCOUNT the note's C.
+
+RESTATEMENT (U18 REV 3, landed + PROVED sorry-free, Lean-core axioms):
+`presentNorm_unique` is now TRANSPORT-KEYED rigidity — hypotheses
+`∃ φ, HistGalTransport φ H H'` (base frame field pointwise φ-fixed; per-read
+transport of `zbar` + ψ-image + side digits = "one note-η, two tower
+embeddings"), conclusion `etaData` equality. Proof: least-root normalization
+pins the root at every read (`zbar' = canonRoot' = canonRoot = zbar` forces
+`φ(zbar) = zbar`); the coherence tower (`TransitionData.child_field`:
+`σ'.K = K⟮z̄⟯`; `IsRecentering`: `σ'.K = σ.K`) propagates pointwise φ-fixedness
+up the frame fields; all recorded values are then φ-fixed and the transport
+collapses to equality. New file-local defs: `HistGalTransport`,
+`galFixedSubfield` (+ `nextField_le_galFixed`, `canonRoot_congr`). The K3
+`hadj/hadj'` binders are REMOVED (guard refuted, superseded); the `AdjacentReads`
+Defs addendum remains (unconsumed by U18).
+
+Both refutations DIE against REV 3: the theorem is proved, and the witness pairs
+fail `HistGalTransport` — transport at the shared node 0 forces `φ(zbar₀) = zbar₀`,
+whence the tower forces φ to fix `σ₁.K ∋ center` pointwise, contradicting the
+witnesses' `hmove` ((center)² ≠ center). Scratches retained as standing records
+of the retired forms.
+
+Unchanged consequences: `PresentNorm` clause (ii) and `OmUniqHyp` AS TYPED remain
+conditionally refuted (`omUniqHyp_refuted_by_witness`); the K3 scope fence on
+`presentNorm_polOM` stands (U17c docstring updated to point at REV 3); the wave-4
+dictionary negotiation should retype clause (ii) to the transport-keyed form — a
+MOVESD-blueprint designer-round event, out of HC-2 unit scope. The `hbr`-drop
+standing probe (§3 P-3) remains permanent. Census effect: U18 leaves the sorried
+list (19 → 18 sorried declarations).

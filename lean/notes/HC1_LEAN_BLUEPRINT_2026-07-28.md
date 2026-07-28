@@ -1641,3 +1641,58 @@ as listed (Lean-core = [propext, Classical.choice, Quot.sound]).
     byte-unchanged. Footprints: childR_laws Lean-core; S9r/S9w/S9a/S9b/S9c/S9
     sorryAx as expected (banked sorries unchanged in count: S9w still exactly
     one).
+
+* **S9a RESTATED WITH THE NOTE'S INCREMENT GUARD + CENSUS RE-RUN (2026-07-28,
+  adjudicated restate-after-refutation; the bc86e1b acceptance-fleet refutation
+  closed out).** The unguarded S9a was REFUTED at the `σ.e * g = 1` corner:
+  `TransitionData.child_reps` puts the outgoing key `σ.Φ` on the child list,
+  `Stage.hreps` forces it into `C_Φ̂` (`deg σ.Φ < deg Φ̂`), and at the corner
+  `deg Φ̂ = σ.e·g·deg σ.Φ = deg σ.Φ` (L3_liftMonic) — contradiction.
+  ADJUDICATION (note-read): the note's LST tower-induction step carries the
+  guard EXPLICITLY — MOVES 3755–3757: "STEP at an INCREMENT ν_{i+1} (stage data
+  (e_{i+1}, h_{i+1}), e·g > 1): the frame-(i+2) tower adds exactly ONE inner
+  level — the just-read key Φ̂_{i+1}"; the corner is the note's RECENTERING
+  species (MOVES 3766–3767: "e_read = 1, degree unchanged … the key is
+  REPLACED"), handled by the PROVED S10_recStage. §9.5's S9a spec had dropped
+  the guard in transcription. Executed:
+  - STATEMENT: `S9a_stageLiteral` gains `hEG : 1 < σ.e * g` (D.3's degree
+    ratio; `Tower.slotBound`'s increment value). No other change; no consumers
+    import S9a yet (ripple-free).
+  - KERNELS (in-file, PROVED Lean-core): `S9a_ungated_corner_refuted` — the
+    refutation, machine-checked at the corner from `th` + `TransitionData`
+    alone; `S9a_corner_fails_guard` — the corner instance fails the restated
+    hypothesis (the corner-exclusion verification).
+  - CENSUS RE-RUN under the guard: the FULL Stage literal now ASSEMBLED in
+    S9a's proof — data legs (the (vii) Bézout split, P2-pinned at e′ = 1),
+    hmonic/hdeg (L3_liftMonic), w := childW with hwmul/hvalgrp (S5), hwΦ/hK1
+    (S3), hStretch (L4_TRANSii), hwult (NEW in-file: slotwise development
+    addition + the parent ultrametric per slot), reps/hreps + Tvec/hTvec (the
+    guard's degree gap `deg σ.Φ < deg Φ̂`), weightSet := 𝒜′ with hWS
+    definitional, hS6b AND the above-threshold half of hS6a (L4_TRANSviii_b +
+    the carrier's S5′ pin, exact scalars), R/hR0/hRne/hRmul/hRadd/hRlt/hRΦ/hS5
+    (S9w's lawful carrier), `TransitionData` all-definitional on the literal,
+    `VertexPin` = the carrier's `hS5'` verbatim, childW tie `rfl`.
+  - SINGLE RESIDUAL (the file's one sorry, exactly placed): **the (S6a′)
+    BELOW-THRESHOLD STRIP** — `hS6a` at `ν ≤ σ.w Φ̂`. Under the raw D.7(vi)
+    pin (`mfun ≡ 0`), the realizable digit set at `ν = e·w̃ + j·h` is the
+    TWISTED orbit `⋃_slots D(w̃)·z̄^{j·s − t·w̃}` (twist `= (s·ν − w̃)/h`; the
+    twist-0 slot `(t·ν, s·ν)` leaves the window on most of the strip), while
+    `Stage.hS6a` demands the untwisted `F_Qˣ` — the exact `∃ m` that
+    `L4_TRANSviii_a` records. Robust counterexample numerics (semantic;
+    instance not yet built): depth-2 parent `K = 𝔽₉/F_Q = 𝔽₃` (unramified
+    g = 2 root: weight-0 digits exactly `𝔽₃ˣ`), parent side `(e,h) = (3,2)`,
+    Bézout `(1,−1)`, any read on top (guard passes): at `ν = 2` the window is
+    the single slot `(1,0)`, digit set `𝔽₃ˣ·z̄` ∌ `F_Qˣ`. So the strip leg is
+    NOT a proof gap but a NORMALIZATION MISMATCH: the note's (S6a′) lives in
+    the V′-normalized child coordinate (MOVES 2395–2418), where the
+    transported orbit lands untwisted; `VertexPin`/`hS5'` pin the RAW
+    z̄-evaluation coordinate. ADJUDICATION QUEUED: either re-pin
+    `VertexPin`/`ChildResData.hS5'` to the alignment function (§9.5's own
+    "mfun := THE alignment function (pinned, no ∃-slack)"; the K1 faithfulness
+    flag pre-authorized the bridge re-instantiation), or scope the child hS6a
+    obligation to the above-threshold range at increment children. S9b's
+    "(S6a′) via the TRANSviii finals" billing inherits the same seam
+    (viii_a's conclusion carries `∃ m`, not `m = 0`).
+  - Footprints: `S9a_ungated_corner_refuted`/`S9a_corner_fails_guard`
+    Lean-core; `S9a_stageLiteral` sorryAx (its own strip sorry + the S9w
+    cone), as the unbundle event predicted. In-file sorry count unchanged (1).

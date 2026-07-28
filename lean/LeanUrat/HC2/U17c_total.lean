@@ -46,14 +46,18 @@ theorem presentNorm_total {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
   exact hGal''
 
 /-- ASSEMBLED: the full typed dictionary pin `PresentNorm` at `polOM` — U15/U16's `hnorm`
-discharger. K3 RE-KEY (2026-07-28): U18's `presentNorm_unique` now carries the ADJACENCY
-hypotheses the conditional refutation dictates (`AdjacentReads`, Defs K3 addendum;
-`scratch_U18_unique_false.lean`), so it no longer discharges `PresentNorm`'s clause (ii)
-as typed. Per the blueprint's P-3 disposition the consumer carries the NAMED HYPOTHESIS
-`OmUniqHyp` (never an axiom) — NOTE the standing caveat: `OmUniqHyp` as typed is itself
-CONDITIONALLY REFUTED by the same scratch witness (`omUniqHyp_refuted_by_witness`); at
-witness-admitting shapes this hypothesis is unsatisfiable, and the wave-4 negotiation
-(MovesD dictionary vs. the adjacency-restated U18) decides the final uniqueness form.
+discharger. U18-ADJUDICATION (2026-07-28 — supersedes the same-day K3 re-key, whose
+`AdjacentReads` guard was itself refuted, `scratch_U18_adjacent_refuted.lean`): U18's
+`presentNorm_unique` is now the TRANSPORT-KEYED rigidity statement (`HistGalTransport`,
+PROVED sorry-free, Lean-core axioms — see the U18_unique.lean header for the note read),
+which still does not discharge `PresentNorm`'s clause (ii) as typed — clause (ii)'s
+`EtaGalEq` keying is BLUEPRINT-OVERSTRENGTH (relates presentations of DISTINCT note-η's;
+the note's L3 prefix-identity is literal node-data). Per the blueprint's P-3 disposition
+the consumer carries the NAMED HYPOTHESIS `OmUniqHyp` (never an axiom) — NOTE the
+standing caveat: `OmUniqHyp` as typed is itself CONDITIONALLY REFUTED by the scratch
+witness (`omUniqHyp_refuted_by_witness`); at witness-admitting shapes this hypothesis is
+unsatisfiable, and the wave-4 negotiation (MovesD dictionary vs. the transport-restated
+U18) decides the final uniqueness form.
 
 K3 SCOPE RECORD (2026-07-28, remediation round — the Codex-rejection repair): because
 `huniq` may be unsatisfiable at witness-admitting shapes, this theorem's conclusion is
