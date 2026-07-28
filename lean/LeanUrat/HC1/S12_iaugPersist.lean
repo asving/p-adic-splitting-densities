@@ -8,6 +8,8 @@ import LeanUrat.HC1.DefsSpine
 import LeanUrat.Moves.L2_iaugRoot
 import LeanUrat.Moves.L2_iaugRecenter
 import LeanUrat.Moves.L2_iaugStep
+import LeanUrat.Moves.L3_liftWeight
+import LeanUrat.Moves.L3_liftMonic
 
 /-!
 # HC1.S12_iaugPersist — (I-aug) in the D.4 DERIVATION form (audit G-6)
@@ -51,7 +53,41 @@ theorem S12_iaugPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
       (h' : ℤ) * ((μ : ℤ) - (j : ℤ))
           = (e' : ℤ) * ((T.stg k).w (B j) - (T.stg k).w (B μ)) →
       IAug (T.stg k) Φhat e' h') := by
-  sorry
+  refine ⟨?_, ?_⟩
+  · -- Conjunct 1: the per-side chord inequality — exactly the increment move `L2_iaugStep`.
+    intro j hj hjnz
+    exact L2_iaugStep (T.stg k) ψ g hψ Φhat hlift f hf μ a Ranch hanch hord B N hdev j hj hjnz
+  · -- Conjunct 2: any side `(e',h')` read off such a chord is `IAug` (steeper than `w Φ̂`).
+    intro e' h' j he' hj hjnz hchord
+    -- `1 ≤ g`, since `g = deg ψ` and `ψ` is irreducible.
+    have hgdeg : ψ.natDegree = g := by obtain ⟨-, h, -⟩ := hlift; exact h
+    have hg1 : 1 ≤ g := by rw [← hgdeg]; exact hψ.natDegree_pos
+    -- `Φ̂ ≠ 0`, from its monicity (L3_liftMonic).
+    have hΦne : Φhat ≠ 0 := (L3_liftMonic (T.stg k) ψ g hg1 Φhat hlift).1.ne_zero
+    -- The equal-weights theorem: `w Φ̂ = e·h·g` (L3_liftWeight).
+    have hw : (T.stg k).w Φhat = ((T.stg k).e : ℤ) * (T.stg k).h * g :=
+      L3_liftWeight (T.stg k) ψ g hg1 Φhat hlift hΦne
+    -- The step bound at this `j`.
+    have hstep := L2_iaugStep (T.stg k) ψ g hψ Φhat hlift f hf μ a Ranch hanch hord B N hdev j hj hjnz
+    -- Positivity facts.
+    have hΔ : (0 : ℤ) < (μ : ℤ) - (j : ℤ) := by
+      have : (j : ℤ) < (μ : ℤ) := by exact_mod_cast hj
+      linarith
+    have he'pos : (0 : ℤ) < (e' : ℤ) := by
+      have : 0 < e' := he'
+      exact_mod_cast this
+    -- Multiply the step bound by `e' > 0`, then use the chord to rewrite the right side.
+    have key : (e' : ℤ) * ((T.stg k).e * (T.stg k).h * g) * ((μ : ℤ) - (j : ℤ))
+        < (h' : ℤ) * ((μ : ℤ) - (j : ℤ)) := by
+      calc (e' : ℤ) * ((T.stg k).e * (T.stg k).h * g) * ((μ : ℤ) - (j : ℤ))
+          = (e' : ℤ) * (((T.stg k).e : ℤ) * (T.stg k).h * g * ((μ : ℤ) - (j : ℤ))) := by ring
+        _ < (e' : ℤ) * ((T.stg k).w (B j) - (T.stg k).w (B μ)) :=
+              mul_lt_mul_of_pos_left hstep he'pos
+        _ = (h' : ℤ) * ((μ : ℤ) - (j : ℤ)) := by rw [← hchord]
+    -- Divide by `(μ − j) > 0` to land `IAug`.
+    show (h' : ℤ) > (e' : ℤ) * (T.stg k).w Φhat
+    rw [hw]
+    exact lt_of_mul_lt_mul_right key (le_of_lt hΔ)
 
 end LeanUrat.HC1
 

@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsSpine
+import LeanUrat.HC1.S11_towerSpine
 import LeanUrat.Moves.L5_landBox
 import LeanUrat.Moves.L5_landVertex
 import LeanUrat.Moves.L5_landVertexDigit
@@ -53,7 +54,12 @@ theorem S16_levelLanding {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
     (hdev : IsDevelopment Φhat f B lm.N) :
     StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f ↔
       LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N := by
-  sorry
+  -- The spine (S11) discharges the stage-core hypothesis at level `k.castSucc`; the packaged
+  -- two-sided landing bijection (`L5_landTwoSided`, §4.5's `hexact`-hypothesized theorem —
+  -- BOX/VERTEX/TRANSPORT + both directions) is then the goal verbatim, at `σ := T.stg k.castSucc`
+  -- and the `LevelMove` fields.
+  exact L5_landTwoSided (T.stg k.castSucc) ((S11_towerSpine T).1 k.castSucc).core
+    lm.ψ lm.g hg hgpos hmon hψ hψz Φhat hlift lm.μ f hf B lm.N hμN hdev lm.a lm.Cdig hexact
 
 end LeanUrat.HC1
 

@@ -4,6 +4,7 @@ moves_ref: §C C.2 proof "initialized at the root (C.1.5's base = D.8 + D.11 at 
 deps: U7, D6/D7, S.zcSeed, U11.  difficulty: hard — PRE-SPLIT (mandatory): U9a downset ⊆,
 U9b ⊇, U9c interior_zero (the two `ZCData` fields, split).
 hypothesis_fields: S.zcSeed.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

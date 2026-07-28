@@ -43,6 +43,13 @@ Elaboration deviations (each recorded in `MANIFEST.json` "deviations"):
   LST(i)/R4.5 item 3) + `pres_attain` (§B2-DEF D.3(e)(ii) attainable accounting). STANDING
   OBLIGATION (blueprint GAP-7(iii)): the E-phase AUDIT round checks this list line-by-line
   against C.1.5's proof.
+* DEFS-REPAIR (2026-07-27, deviation-correction — blueprint §2.2): the first transcription
+  of `downsets_literal` BOX-TRUNCATED the note's iff (the zero system {ht(b,l) < β} ranges
+  over the frame's OWN tower coordinates, not the n×N box), over-claiming the ← direction;
+  machine-refuted (`scratch_U9_presentSeed_false.lean` derived `False` from any
+  `PresentSeed` via `f = C(p^N)`). Repaired by the CHART-COVERAGE GUARD (see the field's
+  docstring); the refutation no longer elaborates. Seed-chain units restated-in-place and
+  annotated RESTATED-POST-DEFS-REPAIR (U5, U6, U8, U9, U13, U14, U27, U29, U30).
 Flagged for semantic-guardian review throughout (the trust boundary).
 -/
 
@@ -256,6 +263,18 @@ line-by-line against C.1.5's proof — every field a quoted note display):
   This is LST(i)/R4.5 item 3 — the identification of the DEFINED `History.htH` with the
   presentation's own height reading, in its U9/U10 consumer form. Scale: stage-i weights
   are `STR_i ×` absolute (C.1.0(c)); the stage side reads `σ.w B / STR_i` against ht.
+  DEFS-REPAIR (2026-07-27, deviation-correction; blueprint §2.2): the note's zero system
+  ranges over the frame's OWN tower coordinates — ALL `(b,l) : Coord` with `ht(b,l) < β`,
+  unboundedly many levels — while the chart `coordOf` records only the n×N box. The first
+  E-phase transcription BOX-TRUNCATED the iff (quantified the zero system over `Fin m`
+  only), over-claiming its ← direction; machine-refuted (`PresentSeed` uninhabited via
+  `f = C(p^N)`: all box digits vanish, `σ.w (B 0)` finite — `scratch_U9_presentSeed_false`,
+  now dead). Repaired form: the iff carries the note's own losslessness proviso as a
+  CHART-COVERAGE GUARD — the law fires exactly when `coordOf` records the ENTIRE literal
+  zero system of `(j, β)`, which is the note's (ZC-c) side condition "for every N ≥ 1 + the
+  largest constrained level" / C.2's `N(H,Z)` box-size rule, rendered per-threshold. The
+  ⊆-consumption sites (U9/U10) hold `InBox`/`hN`-type hypotheses that discharge the guard
+  at every recorded threshold; blueprint D5 statement UNCHANGED (the quote is the contract).
 * `pres_attain` — §B2-DEF D.3(e)(ii)'s ATTAINABLE ACCOUNTING (MovesC `History.htH` FLAG:
   "log_p|𝒜(γ)| = |{c : htH = γ}| per block"): on each recorded value support,
   presentations attain every digit assignment, holding the off-support digits fixed. -/
@@ -268,6 +287,11 @@ structure ZCSeedLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ),
       pres i x f → IsDevelopment (H.nodes[i]'hi).σ.Φ f B Nd →
       ∀ (j : ℕ) (β : ℚ),
+        -- CHART-COVERAGE GUARD (the DEFS-REPAIR): the chart records the ENTIRE literal
+        -- zero system {(b,l) : ht(b,l) < β, b ∈ blk(B_j)} of the frame's own tower
+        -- coordinates — the note's (ZC-c)/C.2 box-size proviso, per-threshold.
+        (∀ cc : Coord, (H.nodes[i]'hi).fineSlot cc.2 = j → H.htH i cc < β →
+            ∃ c : Fin m, coordOf c = cc) →
         ((B j = 0 ∨ β ≤ ((H.nodes[i]'hi).σ.w (B j) : ℚ) / (H.strFrame i : ℚ)) ↔
           (∀ c : Fin m, (H.nodes[i]'hi).fineSlot (coordOf c).2 = j →
             H.htH i (coordOf c) < β → x c = 0))

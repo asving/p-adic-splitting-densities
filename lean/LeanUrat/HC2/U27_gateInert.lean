@@ -9,6 +9,7 @@ totalPins = 2 (recorded as the first equation — the census stop-the-line numbe
 deps: U13 (concrete seed), MovesC.thmC_b.  difficulty: medium.
 hypothesis_fields: none — THIS UNIT MUST BE AXIOM- AND SEED-HYPOTHESIS-FREE (the seed is
 constructed concretely; that is the point).
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

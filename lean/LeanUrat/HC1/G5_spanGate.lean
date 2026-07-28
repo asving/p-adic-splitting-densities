@@ -31,7 +31,44 @@ theorem G5_spanGate :
     Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (c, 0)}) = 3 ∧
     Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = 3 ∧
     Nat.card F9 = 3 ^ 2 := by
-  sorry
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · -- span: every (a,b) = (a,0) + (0,b), both slot-images sit in the closure
+    rw [AddSubgroup.eq_top_iff']
+    rintro ⟨a, b⟩
+    have hsum : ((a, b) : F9) = ((a, 0) : F9) + ((0, b) : F9) := by simp
+    rw [hsum]
+    exact add_mem
+      (AddSubgroup.subset_closure (Or.inl ⟨a, rfl⟩))
+      (AddSubgroup.subset_closure (Or.inr ⟨b, rfl⟩))
+  · -- line 1 = range of inl, injective, so card = card (ZMod 3) = 3
+    have hinj : Function.Injective (AddMonoidHom.inl (ZMod 3) (ZMod 3)) := by
+      intro x y h
+      simpa using congrArg Prod.fst h
+    have hset : {x : F9 | ∃ c : ZMod 3, x = (c, 0)}
+        = ((AddMonoidHom.inl (ZMod 3) (ZMod 3)).range : Set F9) := by
+      ext x
+      simp [AddMonoidHom.inl_apply, eq_comm]
+    rw [hset, AddSubgroup.closure_eq]
+    have hcard : Nat.card ↥(AddMonoidHom.inl (ZMod 3) (ZMod 3)).range
+        = Nat.card (ZMod 3) :=
+      (Nat.card_congr (AddMonoidHom.ofInjective hinj).toEquiv).symm
+    rw [hcard, Nat.card_eq_fintype_card, ZMod.card]
+  · -- line 2 = range of inr, symmetric
+    have hinj : Function.Injective (AddMonoidHom.inr (ZMod 3) (ZMod 3)) := by
+      intro x y h
+      simpa using congrArg Prod.snd h
+    have hset : {x : F9 | ∃ c : ZMod 3, x = (0, c)}
+        = ((AddMonoidHom.inr (ZMod 3) (ZMod 3)).range : Set F9) := by
+      ext x
+      simp [AddMonoidHom.inr_apply, eq_comm]
+    rw [hset, AddSubgroup.closure_eq]
+    have hcard : Nat.card ↥(AddMonoidHom.inr (ZMod 3) (ZMod 3)).range
+        = Nat.card (ZMod 3) :=
+      (Nat.card_congr (AddMonoidHom.ofInjective hinj).toEquiv).symm
+    rw [hcard, Nat.card_eq_fintype_card, ZMod.card]
+  · -- total: |ZMod 3 × ZMod 3| = 9 = 3²
+    rw [Nat.card_eq_fintype_card]
+    decide
 
 end LeanUrat.HC1
 

@@ -38,7 +38,28 @@ theorem G3_caseJGate :
           (Polynomial.X + 1)))) ∧
     ((Polynomial.X : Polynomial (ZMod 2)) ^ 2 ∣ caseJP.comp (Polynomial.X + 1)) ∧
     (¬ (Polynomial.X : Polynomial (ZMod 2)) ^ 3 ∣ caseJP.comp (Polynomial.X + 1)) := by
-  sorry
+  -- Substituting `z ↦ z + 1` and reducing over F₂ collapses `P` to the anchor
+  -- normal form `z⁵ + z²`; all three legs read off it.
+  have hnf : caseJP.comp (X + 1) = (X : Polynomial (ZMod 2)) ^ 5 + X ^ 2 := by
+    unfold caseJP
+    simp only [mul_comp, pow_comp, add_comp, X_comp, one_comp]
+    ring_nf
+    reduce_mod_char
+  refine ⟨?_, ?_, ?_⟩
+  · -- the anchored substitution display, in the sealed factored form
+    unfold caseJP
+    simp only [mul_comp, pow_comp, add_comp, X_comp, one_comp]
+    ring_nf
+    reduce_mod_char
+  · -- `a' = ord_z P(z+1) ≥ μ = 2`: `X²` divides `X⁵ + X²`
+    rw [hnf]
+    exact ⟨X ^ 3 + 1, by ring⟩
+  · -- `a' = 2` exactly: `X³` does not divide (`coeff 2 = 1 ≠ 0`)
+    rw [hnf]
+    intro hdvd
+    rw [Polynomial.X_pow_dvd_iff] at hdvd
+    have h2 := hdvd 2 (by norm_num)
+    simp [Polynomial.coeff_X_pow] at h2
 
 end LeanUrat.HC1
 

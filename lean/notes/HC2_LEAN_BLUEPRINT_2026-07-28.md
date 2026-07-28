@@ -165,6 +165,37 @@ U9/U10 pin the (ZC) geometry per C.1.5, U27/U28 pin the numbers. Falsifiability
 holds: a wrong `mkFresh` still fails U6 (`mstar_eq`)/U9/U10. No inherited carrier
 demanded; U8 stays `Iff.rfl`-easy.
 
+### 2.2 DEVIATION-CORRECTIONS (E-phase defs repairs; blueprint statements UNCHANGED)
+
+**DC-1 (2026-07-27): `ZCSeedLaws.downsets_literal` box-truncation — REPAIRED.** The
+first E-phase transcription of D5's `zcSeed` law rendered the C.1.5 quote ("a
+valuation clause w(B) ≥ β is, IN THE FRAME'S OWN TOWER COORDINATES, the literal
+zero system {y_(b,l) = 0 : ht(b,l) < β, b ∈ blk(B)}", MOVES 3984–3988) as an iff
+whose zero system was quantified over the n×N CHART ONLY (`∀ c : Fin m`). That
+box truncation weakens the right side (digits beyond the chart carry no
+condition), so the transcribed ← direction OVER-CLAIMED: an escalation prover
+machine-derived `False` from ANY `PresentSeed` (`lean/scratch_U9_presentSeed_false.lean`,
+witness `f = C(p^N)` — every box digit vanishes while `σ.w (B 0)` is finite; fired
+at i = 0 against `pres_zero` with threshold `β = w(B 0)/STR + 1`). `PresentSeed`
+was thereby UNINHABITED — the pre-rebase vacuity trap, caught by the corpus's own
+refutation discipline. THE REPAIR (defs-layer elaboration fix; this blueprint's D5
+statement — the C.1.5 quote — is the unchanged contract): the iff now carries the
+note's own losslessness proviso as a CHART-COVERAGE GUARD,
+`∀ cc : Coord, fineSlot cc.2 = j → htH i cc < β → ∃ c : Fin m, coordOf c = cc`
+— the law fires exactly when the chart records the ENTIRE literal zero system of
+`(j, β)`, which is (ZC-c)'s side condition "for every N ≥ 1 + the largest
+constrained level" (= C.2's `N(H,Z)` box-size rule) rendered per-threshold; on
+covered systems the box iff IS the note's identity. The refutation's route is
+closed structurally: its threshold exceeds the box's level cap, so its guard is
+falsified by the out-of-chart coordinate `(N, 0)` (compiled closure check in
+`lean/scratch_U9_guard_closed.lean`). Consumption sites (U9/U10) hold
+`InBox`/`hN`-type hypotheses that discharge the guard at recorded thresholds.
+Seed-chain units restated-in-place and annotated RESTATED-POST-DEFS-REPAIR
+(U5, U6, U8, U9, U13, U14, U27, U29, U30); their sorries stand for the next
+fleet round. The GAP-7(iii) STANDING OBLIGATION (line-by-line audit of the
+`ZCSeedLaws` list against C.1.5's proof) now explicitly includes re-checking this
+guard's placement.
+
 ## 3. THE AXIOM PROPOSALS — FENCED; PROPOSALS ONLY, NOTHING DECLARED
 
 Common citation base (already pinned verbatim in `lean/notes/GMN_citations.md`):
@@ -627,7 +658,9 @@ LST(i)/the two `htH` identifications. Nothing else.
 FENCE: `ZCSeedLaws` is a TO-BE-FIXED-AT-E-PHASE Prop bundle; the blueprint
 pre-authorizes ONLY laws that are (a) stated in §C C.1.5/rev-9's display or
 (b) §B2-DEF D.3(e) content — anything else added there is a statement-fence event
-requiring sign-off. STANDING OBLIGATION (rev 2, audit GAP-7(iii)): the E-PHASE
+requiring sign-off. [E-phase record: the first `downsets_literal` transcription
+box-truncated C.1.5's iff and was machine-refuted; repaired with the
+chart-coverage guard — deviation-correction DC-1, §2.2.] STANDING OBLIGATION (rev 2, audit GAP-7(iii)): the E-PHASE
 audit round checks `ZCSeedLaws`'s final field list line-by-line against C.1.5's
 proof — every field a quoted note display; the check is NOT dischargeable before
 the list exists and is carried forward explicitly. [This remains the blueprint's

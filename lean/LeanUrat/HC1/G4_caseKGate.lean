@@ -57,8 +57,9 @@ theorem G4_caseKGate_i :
       ((0, 1), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)),
       ((0, 1), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧
     (Finset.univ.filter caseKBothRise).card = 8 := by
-  sorry
+  decide
 
+set_option maxRecDepth 100000 in
 /-- Unit G4 leg (ii): the char-3 edge clauses, solution SETS pinned as explicit
 element lists, with Q2's sealed cardinalities as corollaries — THE SEAL TUPLE
 PAIRING (editorial fold): `R₂(τ) = 0` ↦ 56, `2τ + d₁ = 0` ↦ 64, both ↦ 8 (= the
@@ -135,7 +136,7 @@ theorem G4_caseKGate_ii :
     (Finset.univ.filter (fun x : F9 × F9 × F9 =>
         x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0 ∧
         x.2.2 + x.2.2 + x.2.1 = 0)).card = 8 := by
-  sorry
+  decide
 
 end LeanUrat.HC1
 

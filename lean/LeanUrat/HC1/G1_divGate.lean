@@ -39,7 +39,31 @@ noncomputable def zbGate : F4gate :=
 computation `z̄·z̄ = z̄ + 1` — the verifier's value. -/
 theorem G1_divGate :
     zbGate ^ 2 = zbGate + 1 ∧ zbGate * zbGate = zbGate + 1 := by
-  sorry
+  -- Work in the underlying `AdjoinRoot` type, where the algebra/aeval instances resolve
+  -- (`F4gate` is an opaque `def`, so `Algebra (ZMod 2) F4gate` is not found directly).
+  have key :
+      (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2))) ^ 2 =
+        (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2))) + 1 := by
+    -- The defining relation of the root: `aeval z (X²+X+1) = mk f f = 0`, i.e. `z² + z + 1 = 0`.
+    have hrel :
+        (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2))) ^ 2 +
+          (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2))) + 1 = 0 := by
+      have hz :
+          aeval (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)))
+              (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)) = 0 := by
+        rw [AdjoinRoot.aeval_eq, AdjoinRoot.mk_self]
+      simp only [map_add, map_pow, Polynomial.aeval_X, map_one] at hz
+      exact hz
+    -- Characteristic two: `(2 : AdjoinRoot f) = algebraMap (2 : ZMod 2) = algebraMap 0 = 0`.
+    have h2 : (2 : AdjoinRoot (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2))) = 0 := by
+      rw [← map_ofNat
+            (algebraMap (ZMod 2)
+              (AdjoinRoot (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)))) 2,
+        show (2 : ZMod 2) = 0 from by decide, map_zero]
+    -- `z² = z + 1` follows from `z² + z + 1 = 0` and `2 = 0`.
+    linear_combination hrel -
+      (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)) + 1) * h2
+  exact ⟨key, by rw [← pow_two]; exact key⟩
 
 end LeanUrat.HC1
 

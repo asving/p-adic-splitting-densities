@@ -39,7 +39,12 @@ theorem C4_DOM {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (hm : m < i.val) (b : ℕ) (hb : b < rl.interiorEnd i.val) :
     (rl.line m).at b ≤ (rl.line i.val).at b ∧
     MovesC.floorOf rl.line i.val b = (rl.line i.val).at b := by
-  sorry
+  -- Package the (I-aug) steepness chain and the (SAE) vertex-entry seed recorded on
+  -- the realizable tower as MovesC's `DomData` at the per-i interior end.
+  have dom : MovesC.DomData rl.line i.val (rl.interiorEnd i.val) :=
+    ⟨fun m' hm' => rl.steeper i m' hm', fun m' hm' => rl.vertex_entry i m' hm'⟩
+  have hble : b ≤ rl.interiorEnd i.val := le_of_lt hb
+  exact ⟨MovesC.C2_DOM dom b hble m (le_of_lt hm), MovesC.C2_DOM_floorForm dom b hble⟩
 
 end LeanUrat.HC1
 

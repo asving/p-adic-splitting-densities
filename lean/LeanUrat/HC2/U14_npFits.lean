@@ -6,6 +6,7 @@ deps: U3 (supports ⊆ band), MovesD `bandS`/`NPband` (shape-level band replica)
 addendum `inFreshBandC` (the raw-coordinate band mirror).
 difficulty: medium-hard (the htH ↔ bandS arithmetic).
 hypothesis_fields: none beyond PrefSet membership.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

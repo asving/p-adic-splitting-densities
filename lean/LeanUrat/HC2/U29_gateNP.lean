@@ -5,6 +5,7 @@ G1_gates `PhatStar`), the CONSTRUCTED system's largest equation level + 1 = 5 = 
 (the note's own derivation "NP(P̂*) = 1 + 4 = 5") — U14's arithmetic at one census-pinned
 instance.  deps: U14, MovesD.G1_gates (`PhatStar`, `PhatStar_NPband` PROVED).
 difficulty: easy-medium.  hypothesis_fields: none.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

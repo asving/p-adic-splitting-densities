@@ -10,6 +10,7 @@ inherited content is implied") is thereby INSTALLED rather than re-proved; the s
 residue — constructed `Sigma` = the classifier's per-prefix locus — is carried by the
 zc/fresh laws U9/U10 (which pin Sigma's geometry to the recorded node data exactly) and
 the value gates U27/U28. Falsifiability: a wrong `mkFresh` still fails U6/U9/U10.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

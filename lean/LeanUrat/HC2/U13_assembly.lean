@@ -8,6 +8,7 @@ sketch: field-by-field packaging; `coordOf := boxChart n N` with D1's laws,
 `keys := keys` with `hkeys`'s two laws, `coherent := hcoh`, `realizable := hreal`,
 `root_height` from U11, seed fields verbatim, constructed fields with their U-layer laws
 (`fresh i` = `mkFresh` for `i < len`, `emptyFresh` junk beyond).
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

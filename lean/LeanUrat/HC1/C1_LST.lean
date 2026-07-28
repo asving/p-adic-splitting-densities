@@ -5,6 +5,10 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsCar
+import LeanUrat.HC1.T3_htChainWeight
+import LeanUrat.HC1.T4_slotMinHt
+import LeanUrat.HC1.T5_levelSetInGamma
+import LeanUrat.HC1.T10_floorStaircase
 
 /-!
 # HC1.C1_LST — Lemma LST over the real carriers
@@ -47,7 +51,20 @@ theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     -- (iii): level sets strictly above the floor avoid the floor set
     (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' →
       T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅) := by
-  sorry
+  refine ⟨fun c hc => T3_htChainWeight T c hc,
+          fun b y hfin hsupp hne => T4_slotMinHt T b y hfin hsupp hne,
+          fun b γ' x y hxfin hyfin hagree hxlow hylow =>
+            T5_levelSetInGamma T b γ' x y hxfin hyfin hagree hxlow hylow,
+          fun b hb c hbc => (T10_floorStaircase T rl b hb).2 c hbc,
+          ?_⟩
+  -- (iii): a coordinate in the level set has height exactly γ' > floorB b, so it
+  -- cannot also lie in the floor set (height ≤ floorB b).  Pure arithmetic.
+  intro b γ' _hint hlt
+  rw [Set.eq_empty_iff_forall_notMem]
+  rintro c ⟨⟨_, hlev⟩, ⟨_, hfloor⟩⟩
+  -- hlev : T.ht c = γ',  hfloor : T.ht c ≤ rl.floorB b
+  rw [hlev] at hfloor
+  exact absurd hfloor (not_le.mpr hlt)
 
 end LeanUrat.HC1
 
