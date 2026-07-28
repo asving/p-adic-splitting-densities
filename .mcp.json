@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "lean-lsp": {
+      "type": "stdio",
+      "command": "/data/users/asvin/.local/bin/lean-lsp-mcp",
+      "args": [],
+      "env": {
+        "LEAN_PROJECT_PATH": "/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean"
+      }
+    }
+  }
+}

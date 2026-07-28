@@ -60,6 +60,18 @@ the one remaining hard core, B2-FINAL's carry composition), R3c (the root
 `e·g = 1` corner).  PROVED this round, supporting step (i)/(v):
 `V9_transSteepness`, `V9_readPair`, `V9_wvGeStretch`.
 
+**REV-3 NOTE (carry-bridge escalation round, 2026-07-28)**: R3b adjudicated.  The
+reduction is PROVED in-file, Lean-core (`V9_wvEqStretch_of_bottomSlot` /
+`V9_bottomSlot_of_wvEqStretch` + the seed `V9_steepSide_frameDescent`): R3b ⟺ the
+BOTTOM-WINDOW LAW at the vertex coefficient.  A sympy-verified countermodel
+(f = (X+8)(Φ̂²+8X³) at the (1,1)-Gauss frame, read pair (1,2)) shows R3b is NOT
+derivable from the ⚠-clean pool — SideReads(i)/(ii)/(vi) + hOrd + the V-frame engine —
+and that clause (vi) carries no weight content.  The one display that supplies the
+bottom-window law is §B2-DEF D.8-(TRANSPORT)'s upward FORCED-WINDOW clause (MOVES
+2521–2528), which blueprint §10.1 fenced OUT of V4 as "not needed" — that fencing is
+WRONG for V9 (the campaign finding on B2-FINAL).  Full record at the `sorry` (REV-3
+block); R3c unchanged.
+
 deps: V1–V4 + the HC2 records. difficulty: medium (assembly).
 UNBLOCKS: `K1_readVertexPin` total (close `K1_readVertexPin_nonrec` by `exact`)
 → U20a/U20b/U22-E2 close by the staged one-line consumers.
@@ -519,6 +531,88 @@ theorem V9_wvGeStretch {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   have h2 := mul_le_mul_of_nonneg_left hsteep hj₁0
   nlinarith [h1, h2]
 
+/-- **R3b REDUCED — the forward (sufficient) direction** (REV 3, R3b escalation round,
+2026-07-28): if `x`'s σ.Φ-development attains its σ.w slot-min at the BOTTOM slot, the
+regrade equals the stretch — `wV(x) = e★·σ.w x`.  With `V9_wvGeStretch` (the ≤ half)
+this is an exact equality criterion.  The intended supplier of the bottom-slot
+hypothesis at `x = B μ` is D.8-(TRANSPORT)'s upward FORCED-WINDOW clause (MOVES
+2521–2528) — see the REV-3 obstruction record below. -/
+theorem V9_wvEqStretch_of_bottomSlot {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (estar hstar : ℕ)
+    (hsteep : (estar : ℤ) * (σ.h : ℤ) ≤ (hstar : ℤ))
+    (x : Polynomial ℤ_[p]) (hx : x ≠ 0)
+    (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment σ.Φ x B N)
+    (hB0 : B 0 ≠ 0) (hatt : σ.w x = σ.w (B 0)) :
+    childW σ σ.Φ estar hstar x = (estar : ℤ) * σ.w x := by
+  obtain ⟨-, hSMW⟩ := S2_childW σ σ.Φ σ.hmonic σ.hdeg estar hstar
+  obtain ⟨hlow, -⟩ := hSMW x B N hx hdev
+  have hN0 : 0 < N := by
+    by_contra h0
+    push_neg at h0
+    exact hB0 (hdev.2.1 0 (by omega))
+  have hup := hlow 0 hN0 hB0
+  have hle : childW σ σ.Φ estar hstar x ≤ (estar : ℤ) * σ.w x := by
+    rw [hatt]
+    simpa using hup
+  have hge := V9_wvGeStretch σ estar hstar hsteep x hx
+  exact le_antisymm hle hge
+
+/-- **R3b REDUCED — the converse (necessity) direction** (REV 3): under STRICT read
+steepness, `wV(x) = e★·σ.w x` FORCES bottom-slot attainment of `x`'s σ.Φ-development.
+Together with the forward direction: R3b at the vertex coefficient (the lower half
+`σ'.w(B μ) ≥ ν.gam − μ·e·g·h`, given V4's (VERTEX) + R3a upper half) is EQUIVALENT to
+the **BOTTOM-WINDOW LAW** — `B μ`'s inner σ.Φ-development has a nonzero bottom slot
+attaining its σ.w slot-min.  This is the exact residue of the carry bookkeeping. -/
+theorem V9_bottomSlot_of_wvEqStretch {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (estar hstar : ℕ) (hee : 1 ≤ estar)
+    (hsteep : (estar : ℤ) * (σ.h : ℤ) < (hstar : ℤ))
+    (x : Polynomial ℤ_[p]) (hx : x ≠ 0)
+    (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment σ.Φ x B N)
+    (heq : childW σ σ.Φ estar hstar x = (estar : ℤ) * σ.w x) :
+    B 0 ≠ 0 ∧ σ.w x = σ.w (B 0) := by
+  obtain ⟨-, hSMW⟩ := S2_childW σ σ.Φ σ.hmonic σ.hdeg estar hstar
+  obtain ⟨-, j₂, hj₂N, hj₂ne, hj₂eq⟩ := hSMW x B N hx hdev
+  obtain ⟨hK1low, -⟩ := σ.hK1 x B N hx hdev
+  have hK1j₂ := hK1low j₂ hj₂N hj₂ne
+  rw [σ.hwΦ] at hK1j₂
+  -- hK1j₂ : σ.w x ≤ σ.w (B j₂) + j₂·σ.h ;  hj₂eq : childW x = e★·σ.w (B j₂) + j₂·h★
+  have hE0 : (0 : ℤ) < (estar : ℤ) := by exact_mod_cast hee
+  have hcomb : (estar : ℤ) * σ.w x = (estar : ℤ) * σ.w (B j₂) + (j₂ : ℤ) * (hstar : ℤ) := by
+    rw [← heq]; exact hj₂eq
+  have hscaled : (estar : ℤ) * σ.w x
+      ≤ (estar : ℤ) * (σ.w (B j₂) + (j₂ : ℤ) * (σ.h : ℤ)) :=
+    mul_le_mul_of_nonneg_left hK1j₂ (le_of_lt hE0)
+  have hj₂0 : j₂ = 0 := by
+    by_contra hne
+    have hj₂1 : (1 : ℤ) ≤ (j₂ : ℤ) := by exact_mod_cast Nat.one_le_iff_ne_zero.mpr hne
+    have hlt : (j₂ : ℤ) * ((estar : ℤ) * (σ.h : ℤ)) < (j₂ : ℤ) * (hstar : ℤ) :=
+      mul_lt_mul_of_pos_left hsteep (by linarith)
+    nlinarith [hcomb, hscaled, hlt]
+  subst hj₂0
+  refine ⟨hj₂ne, ?_⟩
+  have hEq2 : (estar : ℤ) * σ.w x = (estar : ℤ) * σ.w (B 0) := by
+    rw [hcomb]; push_cast; ring
+  exact mul_left_cancel₀ (ne_of_gt hE0) hEq2
+
+/-- **The steep-side frame descent** (REV 3, record-grounding): along the read side
+(slot values tied at `gam` in the READ grading), the FRAME-grading slot values strictly
+DESCEND — so at a steep read at most ONE on-side slot attains the frame minimum.  This
+is the machine-checked seed of the SideReads(iii) tension in the REV-3 record below:
+the `σ.R f` rendering demands the side pattern's ≥ 2 nonzero endpoint digits as frame
+residual monomials, while the on-side frame values admit at most one attained minimum. -/
+theorem V9_steepSide_frameDescent {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (estar hstar : ℕ)
+    (hsteep : (estar : ℤ) * (σ.h : ℤ) < (hstar : ℤ))
+    (gam : ℤ) (j j' : ℕ) (hjj' : j < j') (wj wj' : ℤ)
+    (hj : (estar : ℤ) * wj + (j : ℤ) * (hstar : ℤ) = gam)
+    (hj' : (estar : ℤ) * wj' + (j' : ℤ) * (hstar : ℤ) = gam) :
+    (estar : ℤ) * (wj' + (j' : ℤ) * (σ.h : ℤ))
+      < (estar : ℤ) * (wj + (j : ℤ) * (σ.h : ℤ)) := by
+  have hjj : (j : ℤ) < (j' : ℤ) := by exact_mod_cast hjj'
+  nlinarith [hj, hj', hsteep, hjj,
+    mul_pos (by linarith : (0 : ℤ) < (j' : ℤ) - (j : ℤ))
+      (by linarith : (0 : ℤ) < (hstar : ℤ) - (estar : ℤ) * (σ.h : ℤ))]
+
 /-- Unit V9: the K1 kernel residual — `K1_readVertexPin_nonrec`'s statement
 VERBATIM, proved through the ReadFrame chain (route (i)–(vi) in the header).
 Once landed, `K1_readVertexPin_nonrec` closes by
@@ -580,6 +674,75 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   --   data that `ReadsOf` deliberately does not record.  NOT assembled from any
   --   on-disk asset; this is the dedicated carry-algebra unit.
   --
+  -- ── (R3b — REV 3: THE CARRY-BRIDGE ESCALATION FINDING, 2026-07-28) ──────────────
+  --   The dispatched mechanism ("the carry term the twisted product produces is
+  --   EXACTLY absorbed by the frame regrade — quot_add_carry + the V2 identity-digit
+  --   route") was TESTED and does NOT close R3b.  The definitive state:
+  --
+  --   1. REDUCTION — PROVED above, Lean-core (`V9_wvEqStretch_of_bottomSlot`,
+  --      `V9_bottomSlot_of_wvEqStretch`): R3b's lower half is EQUIVALENT to the
+  --      **BOTTOM-WINDOW LAW** — B μ's own σ.Φ-development attains its σ.w slot-min
+  --      at slot 0.  (Forward: bottom slot + `V9_wvGeStretch` pin
+  --      wV(B μ) = e★·σ.w(B μ); converse: a wV-attaining inner slot l ≥ 1 costs
+  --      deficit ≥ l·(h★ − e★·σ.h) > 0 by steepness.)  The carry cocycle
+  --      (quot_add_carry / D7) is scalar bookkeeping and carries no weight content;
+  --      the residue is this ONE window equation.
+  --
+  --   2. COUNTERMODEL — R3b (and the kernel's conclusion) is NOT derivable from
+  --      SideReads(i)+(ii)+(vi) + hOrd/hAnchor/γ-tie + the V-frame engine +
+  --      hStretch/child_slotmin.  Witness (numerics sympy-verified 2026-07-28 —
+  --      reproducible artifact `verification/r3b_countermodel_check.py`, six checks;
+  --      a Lean carrier would be a U31-gate-sized Stage-pair artifact): p = 2, σ = the
+  --      (1,1)-Gauss stage at Φ = X (U31's base stage), read pair (e★,h★) = (1,2)
+  --      (t★ = 0, steep: 1·1 < 2), ψ = z²+z+1, Φ̂ = X²+4X+16 (recorded IsReadLift),
+  --      f = (X+8)·(Φ̂² + 8X³) = X⁵+24X⁴+176X³+512X²+1280X+2048.
+  --      Read-i data: side gam = 10 attained exactly at slots {1,3,5} (values
+  --      10,10,10; off-side 11,13,11), pattern (1,0,1,0,1), Ranch = ψ², μ = 2,
+  --      a = 1 — clauses (i),(ii) + hOrd/hAnchor/hpat0/hpatTop/hLineU/γ-tie ALL HOLD.
+  --      Φ̂-development: B₂ = X+16, B₁ = −384, B₀ = 512X+4096.  V4-(VERTEX) HOLDS:
+  --      wV(B₂) = 2 = gam − μ·e★gh★ (G_V = (11,11,10), BOX strict).  Clause (vi)
+  --      HOLDS: digPrime z̄ (B₂) = z̄ = ν.vtx (a − μ·m̂ = 1, vtxPoly = 1).  BUT
+  --      σ'.w(B₂) = e★·σ.w(B₂) = 1 < 2 = STR·line.at(μ·childWidth): the kernel's
+  --      weight conclusion is FALSE on these data (inner window of B₂ = X+16:
+  --      l₋ = 1, bottom slot 16 too deep — the bottom-window law fails).
+  --      The SOLE ReadsOf clause the witness violates is SideReads(iii)'s `σ.R f`
+  --      rendering (σ.R f = z⁵ — frame-min at the top slot 5 alone — ≠ T(1)·ψ²'s
+  --      3-term pattern): exactly the ⚠-fenced U31 seam this unit is charged NOT to
+  --      consume.  In particular clause (vi) does NOT supply R3b (digit equations
+  --      carry no weight content — the witness satisfies (vi) while violating the
+  --      conclusion).
+  --
+  --   3. THE (iii)-TENSION AT STEEP READS — machine-checked seed:
+  --      `V9_steepSide_frameDescent` (above): along the read side the FRAME values
+  --      strictly descend, so at most ONE on-side slot attains the frame min; while
+  --      (iii) + hpat0/hpatTop (hOrd/hμ force wSide/e★ ≥ μ·g ≥ 1) demand ≥ 2
+  --      occupied σ.R f support positions.  So at EVERY steep read (all i ≥ 1 via
+  --      `V9_readSteepness`; roots with e·g ≥ 2 + successor via `V9_transSteepness`)
+  --      clause (iii) forces f's frame-min entirely OFF the read side — nonzero
+  --      beyond-window slots reproducing the full pattern at the recorded anchor (a
+  --      conspiracy shape); where the window reaches f's top slot, (iii) is
+  --      UNSATISFIABLE and ReadsOf is vacuous.  A kernel proof routed through (iii)
+  --      would lean its full weight on the seam and dies with (iii)'s queued
+  --      RV-vocabulary restatement.  NOT taken.
+  --
+  --   4. WHAT R3b NEEDS (the SPECIFIC note display — the deliverable of record; THE
+  --      CAMPAIGN FINDING ON B2-FINAL): §B2-DEF **D.8-(TRANSPORT), UPWARD leg, the
+  --      FORCED-WINDOW clause** — MOVES 2521–2528: "d_j = z^{q_j}·(a polynomial of
+  --      degree < g) with the window base q_j forced by the stride/width data (slot
+  --      j's S5 position, plus jm̂ − a)" — re-run at the REGRADED frame (the (S5′)
+  --      position law of each minimizing slot term).  At the vertex slot the clause
+  --      IS the bottom-window law: window base (l₋ − t★·wV(B μ))/e★ = S5′ position
+  --      −t★·σ.w(B μ) ⟺ l₋ = t★·(wV(B μ) − e★σ.w(B μ)) = t★·deficit; combined with
+  --      the reduction's deficit ≥ l₋·(h★ − e★σ.h): t★ = 0 forces l₋ = 0 directly
+  --      (kills the countermodel, whose l₋ = 1 at t★ = 0), and t★·(h★ − e★σ.h) ≥ 2
+  --      forces deficit = 0; the BOUNDARY t★ = 1 ∧ h★ − e★σ.h = 1 is NOT decided by
+  --      the window equation alone — the transcriber must take the display's full
+  --      strength (or a sharper reading) there.  Blueprint §10.1 fenced (TRANSPORT)
+  --      OUT of V4 as "NOT needed by any of the three discharges" — that fencing is
+  --      WRONG for V9: (TRANSPORT)'s upward window is exactly R3b.  The dedicated
+  --      unit = transcribe D.8-(TRANSPORT) at the ReadFrame (V4's follow-on), then
+  --      close R3b by `V9_wvEqStretch_of_bottomSlot`.
+  --
   -- (R3c) ROOT STEEPNESS — MOSTLY CLEARED: `V9_transSteepness` (PROVED above) derives
   --   `e·σ.h < h` from the recorded (i, i+1) transition for `e·g ≥ 2`, covering the
   --   root read (rev-1's "fourth seam") without any predecessor.  The corner
@@ -604,4 +767,7 @@ end LeanUrat.HC1
 #print axioms LeanUrat.HC1.V9_transSteepness
 #print axioms LeanUrat.HC1.V9_readPair
 #print axioms LeanUrat.HC1.V9_wvGeStretch
+#print axioms LeanUrat.HC1.V9_wvEqStretch_of_bottomSlot
+#print axioms LeanUrat.HC1.V9_bottomSlot_of_wvEqStretch
+#print axioms LeanUrat.HC1.V9_steepSide_frameDescent
 #print axioms LeanUrat.HC1.V9_K1nonrec

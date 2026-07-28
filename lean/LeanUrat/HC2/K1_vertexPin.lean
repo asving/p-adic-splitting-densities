@@ -124,6 +124,19 @@ end K1Helpers
        the read-side mirror of HC-1 §9.5's S9w block; no smaller on-disk lemma suffices
        (the fleet round-3 U20a/U20b chains were report-side only, and the F-2 spec's
        pointer to `L5_landTransport_R4` is frame-pair-keyed, see 3).
+
+    5. REV (2026-07-28, carry-bridge escalation round) — THE DEFINITIVE R3b RECORD now
+       lives at `HC1/V9_K1nonrec.lean` (the REV-3 block at its `sorry`).  Summary: the
+       residue of item 4 is REDUCED, Lean-core, to the BOTTOM-WINDOW LAW at the vertex
+       coefficient (`V9_wvEqStretch_of_bottomSlot`/`V9_bottomSlot_of_wvEqStretch`); a
+       sympy-verified countermodel (f = (X+8)(Φ̂²+8X³), (1,1)-Gauss frame, read pair
+       (1,2)) shows it is NOT derivable from SideReads(i)/(ii)/(vi) + hOrd + the proved
+       V-frame engine (V1–V4) — the sole blocking clause is SideReads(iii)'s `σ.R f`
+       rendering, the U31-fenced seam.  The needed display: §B2-DEF D.8-(TRANSPORT),
+       upward leg, the FORCED-WINDOW clause (MOVES 2521–2528) at the regraded frame —
+       fenced OUT of V4 by HC-1 blueprint §10.1 ("not needed"): that fencing is WRONG
+       for this kernel.  Dedicated unit = the (TRANSPORT) transcription at the
+       ReadFrame; the kernel then closes through V9's reduction lemmas.
     ═══════════════════════════════════════════════════════════════════════════════════ -/
 
 /-- **The K1 kernel residual** (read-indexed D.8 vertex law, NON-RECENTERING parent):

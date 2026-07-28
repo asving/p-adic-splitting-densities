@@ -737,3 +737,53 @@ witnesses as distinct etas; S9a/S9b's corner = the note's own e·g>1 guard;
 hS6a = the note's coset display). U18 proved under the faithful transport form.
 The wave-4 (MovesT/MovesV) and seam re-keying program is unchanged and fully
 recorded. 550+ commits, all local.
+
+## UPDATE (2026-07-28f): S9c CLOSED → S9 (the D.7 TRANS capstone) PROVED
+
+Kernel (3) of update 2026-07-28e — S9c's core assembly — is CLOSED, and with it
+the parent S9_transStage: every legal INCREMENT read (`e·g > 1`) of a cored
+stage produces a cored child with the full round-5 transition record. Both
+gained the adjudicated note guard `hEG : 1 < σ.e * g` (MOVES 3755–3757; the
+S9a/S9b restate-after-refutation precedent applied verbatim — their unguarded
+conclusions CONTAIN the refuted S9a shape; in-file machine-checked corner
+kernels `S9c_ungated_corner_refuted` / `S9_ungated_corner_refuted`). Suppliers:
+the S9a/S9b guarded literal + the S9w lawful carrier (w_jump/R_neg from
+`ChildResLaws`), S11a's seven non-twist legs, S9d's pin bridges — plus two NEW
+generic in-file lemmas in S9c's file: `tvecLaw_of_tvecUnitLaw` (the round-4
+TvecLaw shadow follows from K1's pin-derived TvecUnitLaw by bare Stage laws)
+and `coeffCore_of_stage` (ALL of CoeffFieldLawCore from bare fields +
+wPrev_mul; clause 3's exponent group hits −1 = −(e·s+h·t) on an hS6b realizer
+pair — supersedes the §9.5 "L4_TRANSvii_R4 + S6" plan). Footprints Lean-core
+(zero axioms, zero sorry); full `lake build` green (8579 jobs);
+AxChk_baseline: no regression, zero sorryAx. Remaining HC-1 sorries: C6
+(card-K bridge leg), R6 (carrier instance), V9/R3b (the carry bridge — kernel
+(1), in flight). MANIFEST units 34/39 updated.
+
+## UPDATE (2026-07-28g): R3b ADJUDICATED — the carry bridge does NOT close from
+## the fenced pool; the missing display is D.8-(TRANSPORT)'s upward FORCED WINDOW
+
+Kernel (1) of update 2026-07-28e (the carry bridge = HC1.V9.R3b =
+HC2.K1_readVertexPin_nonrec) ran its dedicated escalation round. Outcome: NOT
+closed — with the obstruction now EXACT and partly machine-checked. (a) The
+REDUCTION is proved, Lean-core, in `HC1/V9_K1nonrec.lean`
+(`V9_wvEqStretch_of_bottomSlot`, `V9_bottomSlot_of_wvEqStretch`,
+`V9_steepSide_frameDescent`): R3b ⟺ the BOTTOM-WINDOW LAW — the vertex
+coefficient B_μ's own σ.Φ-development attains its σ.w slot-min at inner slot 0.
+(b) A sympy-verified COUNTERMODEL (f = (X+8)(Φ̂²+8X³), (1,1)-Gauss frame at X,
+read pair (1,2), Φ̂ = X²+4X+16: side gam = 10 on slots {1,3,5}, pattern ψ²,
+μ = 2, B₂ = X+16 with σ.w = 1 < 2 = target) shows R3b is NOT derivable from
+SideReads(i)+(ii)+(vi) + hOrd/hAnchor + the PROVED V-frame engine (V1–V4) +
+hStretch/child_slotmin — clause (vi) HOLDS on the witness (digit equations
+carry no weight content); the sole violated ReadsOf clause is SideReads(iii)'s
+`σ.R f` rendering, the U31-fenced seam V9 is charged not to consume (at every
+steep read, (iii) is conspiracy-or-vacuous — seed lemma
+`V9_steepSide_frameDescent`). (c) THE FINDING: the display R3b needs is §B2-DEF
+D.8-(TRANSPORT), UPWARD leg, the FORCED-WINDOW clause (MOVES 2521–2528), re-run
+at the regraded frame — blueprint §10.1 fenced (TRANSPORT) out of V4 as "not
+needed by any of the three discharges"; that fencing is WRONG for V9. The
+dedicated follow-on unit = transcribe D.8-(TRANSPORT) at the ReadFrame; R3b
+then closes via the proved reduction (boundary caveat t★ = 1 ∧ h★ − e★σ.h = 1
+recorded in the REV-3 block). R3c (the root e·g = 1 corner) unchanged. Full
+records: `HC1/V9_K1nonrec.lean` REV-3 block (at the sorry) and
+`HC2/K1_vertexPin.lean` obstruction item 5. Both files compile; footprints
+verified (new theorems Lean-core; sorries unchanged: exactly the two kernels).
