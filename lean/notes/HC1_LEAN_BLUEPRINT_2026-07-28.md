@@ -1696,3 +1696,297 @@ as listed (Lean-core = [propext, Classical.choice, Quot.sound]).
   - Footprints: `S9a_ungated_corner_refuted`/`S9a_corner_fails_guard`
     Lean-core; `S9a_stageLiteral` sorryAx (its own strip sorry + the S9w
     cone), as the unbundle event predicted. In-file sorry count unchanged (1).
+
+## 10. THE V′ KERNEL — the read-functional carry algebra in the aligned frame
+## (designed 2026-07-28, V′-kernel pass; the ONE design behind every remaining
+## hard-core sorry: S9w-(i), S9a's hS6a strip, HC2's K1_readVertexPin_nonrec)
+
+VERDICT FIRST. The three hard residuals are three instances of ONE object —
+the D.1(e) residual pack rebuilt at a NEW (e★, h★, s★, t★)-position law over
+an existing stage's data, with a scalar transform:
+
+  (†)  wV(f) := min_{j} ( e★·σ.w(B_j) + j·h★ )        (the read functional)
+       RV(f) := Σ_{j minimizing} C( φ(slot-j digit) ) · T( j·s★ − t★·σ.w(B_j) )
+
+over the P-development f = Σ B_j·P^j, where the instance is fixed by
+(P, (e★,h★,s★,t★), φ):
+
+* DESCENT instance (S9w): P = Φ̂ (the TransHyp lift), (e★,h★) = th's (e′,h′),
+  φ = evaluation z ↦ z̄ (= `σ.digPrime zbar`) into K′ = σ.nextField z̄.
+  wV = the EXISTING `childW σ Φ̂ e′ h′`; RV = the explicit `childR` carrier.
+* REGRADE instance (K1-nonrec): P = σ.Φ (the SAME key), (e★,h★) = the
+  RECORDED READ pair (ν.e, ν.h), φ = identity on ↥σ.K.
+  wV = `childW σ σ.Φ ν.e ν.h`; RV = the read-graded residual — THE V′ FRAME.
+
+KEY FINDING 1 (the campaign finding the charge asked for — stated LOUDLY,
+but it is GOOD news): **the feared B2-DEF gap does not exist.** The
+obstruction record at `HC2/K1_vertexPin.lean` item 4 derives the read-pair
+vertex law by hand because no note display seems to cover it — but §B2-DEF's
+D.3–D.8 are LEVEL-FREE, STAGE-INDEXED displays ("Fix a stage with read index
+(e, h)…", MOVES 2017–2019), and the note's stages ALWAYS carry the index of
+the side being read. HC2's recorded stages carry their BIRTH pair instead
+(HistoryCoherent ties `TransitionCoreL … ν_i.e ν_i.h`; the next node reads a
+NEW pair). The read-pair landing is therefore §B2-DEF's OWN D.5 + D.8 run at
+the REGRADED frame (†) — an *interface* object HC1 never constructed, not
+missing note mathematics. Two verbatim checks:
+* The recorded lift is (†)-equal-weight: `IsReadLift` weights
+  σ.w(t_k) = h★·(g−k) give e★·σ.w(t_k) + (e★k)·h★ = e★·h★·g for every
+  present slot and for the leading slot — EXACTLY D.5's "EQUAL WEIGHTS"
+  display (MOVES 2268–2269) transposed to wV; hence
+  `IsReadLift σ ψ g e★ h★ Φ̂` IS the standard-lift shape OF THE REGRADED
+  FRAME (wVPrev := σ.w, index (e★,h★)) — the D.5 residual computation
+  re-runs verbatim to RV(Φ̂) = z^{m̂★}·ψ(z), m̂★ := −t★·h★·g (MOVES 2270–2276).
+* The obstruction record's displayed vertex value is D.8-(VERTEX) at (†):
+  F(μ) = wV(f) − μ·wV(Φ̂) + μ·h★ = gam − μ·(e★·g − 1)·h★ — the record's
+  formula, exactly (Case J sealed this empirically at 12 strata).
+
+KEY FINDING 2 (FORCED Defs adjudication — the strip's real content; SIGN-OFF
+REQUIRED, queued as V5 below). `Stage.hS6a`'s untwisted form is an
+OVER-TRANSCRIPTION of the note's (S6a). The note's axiom is "every index is
+realized … whose digit is c·(THE INDEX'S FORCED MONOMIAL CLASS) with c
+ranging over the CONSTANT orbit group O := F_Qˣ" — the orbit group AT ITS
+FIXED POINT (D.2, MOVES 1964–1971, rev D⁶/pass-14 finding 1), and D.7(viii)'s
+child realizers have dig′ = "c·(a fixed z̄-monomial class)" (MOVES 2431–2435).
+The Lean field hard-codes the fixed class to the trivial one. That form is
+machine-refuted on the strip (§9.9's S9a record; F₉/F₃ numerics) — and NO
+re-pin of `hS5'`/`VertexPin` can rescue it:
+* mfun ≡ 0 (the raw z̄-evaluation pin) IS the note's V′ normalization — the
+  parent z-class evaluates to the SCALAR z̄ under the frame change
+  (D-injectivity on degree-0, D.7(v); the parent pinning identity
+  z = V^{−h}Y^{e} pushes to Π dig′(ũ)^{−h·b_i}·dig′(Φ)^{e} = z̄ in F′), so
+  the "alignment function" of §9.5 is the ZERO function; and
+* any OTHER multiplicative renormalization is a linear twist mfun = m₁·id
+  (additivity mod ord(z̄) forces linearity), and the strip windows contain
+  only g consecutive twist values λ (slots at weight ν are
+  (γ, j) = (s·ν − λ·h, t·ν + λ·e), twist = λ): whenever e.g. σ.e | ord(z̄),
+  e·m₁ ≡ −t (mod ord z̄) has no solution (gcd(e, ord z̄) = e ∤ t since
+  th ≡ 1 mod e) — the untwisted demand is unsatisfiable at depth ≥ 2, PERIOD.
+So the §9.9 queued adjudication resolves: NOT a re-pin (option 1 is vacuous),
+NOT a scope-down (option 2 breaks D.7(viii)'s own consumer recursion — the
+next TRANS consumes (S6a) realizers at ALL indices, strip included). The
+faithful field is the FIXED-POINT COSET form (V5).
+
+KEY FINDING 3 (a second forced interface fact, sized small). The regraded
+frame CANNOT be a full `Stage`: its coefficient weights under wVPrev = σ.w
+lie in σ.e·ℤ (hStretch), so `Stage.hS6b`'s quantifier "∀ ν > wPrev Φ" (the
+D.9(b) cofinite range, true at genuine stages) is UNSATISFIABLE at a regrade
+for σ.e > 1. Hence the proved Stage-typed D.8 assets (`L5_landVertex*`)
+cannot be cited verbatim at the regrade; the landing re-runs at a PARTIAL
+pack (V0's `ReadFrame`), with the L5 files as the worked Lean pattern. All
+other fields (hS6a included — regrade scalars are PRESERVED, no z̄ enters at
+the same level) do transport; hS6b alone is the blocker.
+
+DEMOTION NOTE (so nobody hunts for a missing lemma): in the TOTAL (evaluated)
+V′ coordinate the carry cocycle is INVISIBLE — z̄^{e·⌊k/e⌋ + ρ} recombines,
+positions add exactly, and hRmul needs only `L3_DIV`'s evaluated identity.
+The proved D-layer (D1–D8, `cmul`, `digD`) is the GRADED certificate of the
+alignment's well-definedness (and stays cited by any consumer that needs
+positions split mod e_birth); it is NOT load-bearing for V8's product law.
+§9.5's "hRmul via D7's cmul law + L3_DIV" reads, post-design: via L3_DIV;
+D7 certifies.
+
+### 10.1 The unit DAG (files `HC1/V*_*.lean`, all ADDITIVE; zero axioms;
+### `sorry` only as E-phase placeholders inside the new units)
+
+Dependency shape:
+  V0 → V1 → V2 → V3 → V4 → V9   (the regrade/K1 chain)
+  V0 → V6 → (V5 sign-off) → V7  (the aligned-orbit/strip chain)
+  V0 → V8                       (the descent/S9w chain; V8 ⊥ V1–V4)
+V5 is a SIGN-OFF EVENT (Defs restatement), not a proof unit; V7 and the
+TRANSviii_a repair are gated on it.
+
+* **V0 `DefsV.lean`** (definitions only, no theorems, no sorry).
+  - `ReadPair σ e★ h★ s★ t★ : Prop` := 1 ≤ e★ ∧ 1 ≤ h★ ∧ gcd = 1 ∧ Bézout ∧
+    (e★ = 1 → t★ = 0) ∧ **(e★:ℤ)·σ.h < h★** — the read-form (I-aug)
+    steepness (D.4, MOVES 2219–2220 "λ > w(Φ)" at the stage scale; on the
+    HC2 side extracted from HistoryCoherent's slope law + strict steepening:
+    h_{i+1} > h_i·e_{i+1}·e_i·g_i ≥ e_{i+1}·h_i — a short lemma in V9).
+  - `ReadResData σ e★ h★ s★ t★ : Type` — the regrade carrier, mirroring
+    `ChildResData`: `Rv : Polynomial ℤ_[p] → LaurentPolynomial ↥σ.K` + the
+    two pins `Rv σ.Φ = T s★` (key pin; slot-1 arithmetic 1·s★ − t★·σ.w 1 = s★)
+    and the S5-shape pin `∀ B ≠ 0, inC σ.Φ B → Rv B = C(digit scalar of
+    σ.R B)·T(−t★·σ.w B)` — scalars PRESERVED, positions re-forced (the (S5)
+    position law at the new pair, MOVES 1960–1963).
+  - `ReadResLaws` — the D.1(e) law-pack Prop on a carrier w.r.t.
+    `childW σ σ.Φ e★ h★` (NOTE THE REUSE: wV at the same key IS `childW`
+    with Φhat := σ.Φ — no new functional is defined), same seven conjuncts
+    as `ChildResLaws`.
+  - `ReadFrame σ e★ h★ s★ t★ : Type` — the PARTIAL stage pack (Finding 3):
+    a lawful carrier + the wV laws (hwmul/hwult/hwΦ/hK1-at-Φ/hStretch
+    wV = e★·σ.w on C_Φ) + hS6a in the CURRENT form (untwisted — it HOLDS at
+    regrades, V6a) — everything the D.5/D.8 reruns consume; NO hS6b, NO
+    hvalgrp, NO reps/Tvec.
+  Falsifiability: every pin is an equation against existing objects; wrong
+  positions break V2's hRmul at the first product.
+
+* **V1 `V1_readWPack`** — the read functional's laws at the same key.
+  STATEMENT: for σ cored, `ReadPair` hypotheses: `childW σ σ.Φ e★ h★` has
+  the slot-min/attained-min pack (S2 instance at Φhat := σ.Φ — signature
+  admits it verbatim), hwmul, hwult, and the Q-ASCENT lemma: for parent
+  coefficients B·B″ = Q·σ.Φ + R_dev (monic division), the Q-slot's
+  (†)-value exceeds the R_dev-slot's by h★ − e★·σ.h > 0 (steepness).
+  moves_ref: D.7(i) (MOVES 2331–2337) at the same-key instance; D.4.
+  deps: S2_childW, σ's hRmul/hwmul/hwult/hK1. difficulty: medium.
+
+* **V2 `V2_readResidual`** — the lawful regrade carrier exists:
+  `∃ D : ReadResData, ReadResLaws D` (+ w_strict, the S9w-(ii) mirror).
+  Construction: RV per (†) — scalars from σ.hS5's monomial digits (parent
+  coefficients only, so every slot digit IS a monomial), positions
+  (j − t★·wV(f))/e★ = j·s★ − t★·σ.w(B_j), injective in j across minimizing
+  slots (elementary: the map j ↦ (j − t★γ)/e★ on the tie set), so RV(f) ≠ 0.
+  hRmul: V1's Q-ascent + σ.hRmul on slot products + the position additivity
+  (exact, carry-free in the total coordinate — see the DEMOTION NOTE).
+  moves_ref: D.6/D.7(i)–(iii) read at the level-free stage; D.5's "no
+  coset-splitting" absence note (MOVES 2291–2292). deps: V0, V1, L3_K1
+  pattern. difficulty: medium-hard (the S9w mirror, EASIER: no field
+  extension). THIS IS THE V′ FRAME CHANGE UNIT.
+
+* **V3 `V3_readLift`** — the recorded lift is the regrade's standard lift:
+  `IsReadLift σ ψ g e★ h★ Φ̂` → (equal (†)-weights of all slots; the D.5
+  residual display RV(Φ̂) = T(m̂★)·(ψ as Laurent), m̂★ = −t★·h★·g via the
+  distinct-exponents sum k − t★h★g; K1(Φ̂/wV): wV(f) = min_m (wV(B_m) +
+  m·e★h★g) with attainment). moves_ref: D.5 VERBATIM (MOVES 2253–2289 —
+  the whole display re-runs at the ReadFrame; the Lean pattern is
+  L3_liftResidual + L3_K1). deps: V2, L3_digPrime_nonzero-analog at the
+  same key (width < g: D.3(d)). difficulty: medium.
+
+* **V4 `V4_readLanding`** — (BOX)+(VERTEX) at the ReadFrame: for f ≠ 0 with
+  ord_ψ(RV f) = μ and anchored RV-data, the Φ̂-development satisfies
+  wV(B_m) + m·e★h★g > wV(f) for m < μ, = at m = μ with B_μ ≠ 0 (and the
+  vertex digit with its explicit unit z̄^{−μm̂★}, for consumers that want it).
+  moves_ref: D.8 (BOX)/(VERTEX) VERBATIM (MOVES 2469–2490: the displayed
+  proof — K1 + D.1(e) + D.3(d) distinct ψ-orders — consumes NOTHING beyond
+  the ReadFrame pack; S6/valgrp are untouched, which is what makes Finding 3
+  harmless). The Lean pattern: L5_landVertex/L5_landVertexDigit transplanted
+  to the pack. deps: V3. difficulty: HARD-ish but bounded (one L5-sized
+  file). The (TRANSPORT) leg is NOT needed by any of the three discharges —
+  fence it OUT of V4 (record it as available follow-on).
+
+* **V5 SIGN-OFF EVENT (Defs restatement; Asvin's approval REQUIRED; the
+  resolution of §9.9's queued strip adjudication).**
+  - `Stage.hS6a` restates to the FIXED-POINT COSET form:
+    `∀ ν ∈ weightSet, ∃ b : (↥K)ˣ, ∀ c : (↥K)ˣ, ((c:↥K):F) ∈ FQ →
+     ∃ B, B ≠ 0 ∧ inC Φ B ∧ wPrev B = ν ∧
+       R B = C((c*b : ↥K)) * T (−t·ν)`
+    — the base point ∃-quantified BEFORE the orbit scalar, base FREE in Kˣ
+    (weakest faithful form: the note's fixed classes are z̄-monomial at
+    depth 2 but general unit products at depth ≥ 3; no consumer reads the
+    base's shape — D.2's consumer audit "exactness consumes no scalar range",
+    MOVES 1971–1981).
+  - RIPPLE CENSUS (grep `hS6a` at execution; expected complete):
+    constructors — T1/T2 base stage (b := 1: base digits are untwisted,
+    MOVES 2012–2015), S10 recentering (transport with the SAME b: e = 1
+    stages have position-0 constant residuals, the substitution fixes them),
+    R6 carrier instance, S9a/S9b (become CONSUMERS of V7); consumers —
+    `L4_TRANSviii_a_R5{,_final}` (statement restates: conclusion's
+    `(d:F) = c·z̄^m` weakens to the coset form `∃ d₀ : (↥σ'.K)ˣ` base,
+    ∃-before-∀c UNCHANGED; the proof repair is ~10 lines — fold the parent
+    base through `L2_strideRule`; footprint re-verify MANDATORY).
+  - FAITHFULNESS WARRANT: D.2 (S6a) rev D⁶ "orbit group at its FIXED POINT"
+    (MOVES 1964–1971); D.7(viii) "c·(a fixed z̄-monomial class): the O-orbit
+    with O = F_Qˣ CONSTANT" (MOVES 2431–2435); pass-14 finding 1 + pass-15
+    "closure is therefore trivial" (MOVES 3091–3097, 3122–3124). The current
+    Lean form is refuted by the S9a strip countermodel; per Finding 2 no
+    conservative repair exists. This is the honest-restate discipline, same
+    species as the S9a guard event (§9.9).
+
+* **V6 `V6_alignedOrbits`** — the aligned digit orbits, both levels:
+  (a) REGRADE orbits are UNTWISTED: σ★-realizers = parent hS6a realizers
+  re-positioned, scalars preserved (fills ReadFrame.hS6a; also the b-transport
+  helper V5's census cites). (b) DESCENT orbit base points: the strip window
+  display — slots at child weight ν are (γ, j) = (s·ν − λ·h, t·ν + λ·e),
+  λ ∈ (a g-window), twist = λ; the minimizing-slot choice (TRANSviii_a
+  conjunct 1 forward + choice) fixes THE base b(ν) per weight. moves_ref:
+  D.7(viii)'s 𝒜′ + realizer display (MOVES 2423–2435); the S9a header's
+  twisted-orbit display (now a POSITIVE statement, not an obstruction).
+  deps: V0; (b) consumes L4_TRANSviii_a_R5_final post-V5. difficulty: short.
+
+* **V7 `V7_stripDischarge`** — S9a's single sorry closes: under V5's coset
+  hS6a, the below-threshold leg of hS6a′ is V6(b)'s base + TRANSviii_a's
+  conjunct 2 verbatim; the above-threshold leg stays L4_TRANSviii_b (exact
+  scalars, unchanged). S9b's billing seam (§9.9 last bullet) closes with the
+  same key. deps: V5, V6. difficulty: short. UNBLOCKS: S9a → S9b → S9c/S9d
+  → S9 (the assembly chain's statements are already staged).
+
+* **V8 `V8_childResidual`** — S9w-(i) PROVED: the explicit descent carrier
+    `Rc f := Σ_{j minimizing childW} C(⟨digPrime z̄ (B_j), mem⟩)·
+             T(j·s′ − t′·σ.w (B_j))`
+  (choice-packaged against `ChildResData`'s pins — hS5′ is the single-slot
+  case DEFINITIONALLY (mfun ≡ 0 is CORRECT, per Finding 2's first bullet;
+  the strip mismatch was hS6a's transcription, never the pin), hRPhi the
+  slot-1 case) + `ChildResLaws`:
+  - (a) additive legs hR0/hRne/hRadd/hRlt/hRneg + w_jump: slot-min ties
+    (S2's hSMW), position-injectivity across tied slots, parent hRadd/hRlt
+    slotwise; hRne needs D.3(d) (ψ ∤ R(B), width < g — on disk as
+    L3_digPrime_nonzero) for digit nonvanishing and F′[z^{±1}]-domain for
+    sums. difficulty: medium.
+  - (b) hRmul: the bilinear slot expansion; per-pair monic division
+    B_j·B″_k = Q_{jk}·Φ̂ + R_{jk}; `L3_DIV` gives R_{jk} ≠ 0, exact weight,
+    digit product; Q-terms strictly deeper by th's (I-aug) (D.7(i) verbatim);
+    tied (j,k)-pairs land at ONE position (j+k)s′ − t′(σ.w B_j + σ.w B″_k)
+    and SUM as the Laurent product's convolution coefficient; a vanishing
+    convolution coefficient = a parent-residual cancellation = the SAME
+    zero on both sides (no false nonvanishing claim — the D.1(b) δ-calculus,
+    MOVES 2305–2313). difficulty: HARD (the honest §9.5 core), but every
+    ingredient is displayed + on disk.
+  - (c) w_strict (S9w conjunct (ii)): S9a's in-file hwult pattern + strict
+    slot domination. difficulty: short.
+  moves_ref: D.6 Lemma DIV (MOVES 2299–2322), D.7(i)–(iii) (2331–2352),
+  D.7(vi)–(vii) normalization (2392–2418). deps: V0 (shape only), S2, S3,
+  L3_DIV, L3_liftMonic, L3_digPrime_nonzero, th. NOT dependent on V5 (the
+  carrier + laws never mention hS6a). UNBLOCKS: S9w → S9r (already reduced),
+  the S9a census's carrier legs, and kills the S9w cone's sorryAx.
+
+* **V9 `V9_K1nonrec`** — HC2's `K1_readVertexPin_nonrec` PROVED as a
+  corollary: (i) extract the read steepness from HistoryCoherent (slope law
+  + strict steepening → ν.h > ν.e·σ.h — the ReadPair hypothesis); (ii) build
+  the ReadFrame at (ν.e, ν.h) on σ_i (V1/V2); (iii) the recorded
+  `IsNodeLift = IsReadLift` is V3's standard-lift shape — K1(Φ̂/wV) + D.8 at
+  the frame (V4); (iv) f's ReadFrame residual IS the recorded side pattern:
+  RV(f) = Σ_k C(pat k)·T(…) from SideReads (i)+(ii) (the side line supports
+  the development with equality exactly at the stride digits — so wV(f) =
+  ν.gam, attained); its anchor/ord data: HasAnchorK(RV f, a★, pattern-Ranch)
+  DERIVED from (i)+(ii); ord_ψ(pattern) = ν.μ read against SideReads (iii)
+  — ADJUDICATION SURFACED (see below); (v) V4's (VERTEX) gives B_μ ≠ 0 and
+  wV(B_μ) = gam − μ·ν.e·g·ν.h, then σ′.w(B_μ) = ν.e·σ.w(B_μ) = wV(B_μ) via
+  the RECORDED child_wPrev/hStretch on the ONE coefficient (no tower
+  reconciliation needed — the kernel's conclusion touches only a child
+  COEFFICIENT's weight); (vi) the ℚ-conversion to
+  `STR_{i+1}·line.at(μ·childWidth)` is the γ-tie + slope-law arithmetic
+  already PROVED in-file (`K1_SAE_vertexEq_endpoint`'s pattern).
+  deps: V1–V4 + the HC2 records. difficulty: medium (assembly).
+  UNBLOCKS: `K1_readVertexPin` total → U20a/U20b/U22-E2 close by the staged
+  one-line consumers.
+  ⚠ SIDEREADS-(iii) ADJUDICATION (the standing E-PHASE FLAG, now with its
+  resolution named): (iii) anchors `σ.R f` — the FRAME residual — while the
+  landing needs the READ residual RV(f)'s ψ-order. At single-side reads they
+  agree; at multi-side polygons the frame residual sees the WRONG slots.
+  The faithful object is RV(f) (§C's side data are side-local); the DERIVED
+  pattern-anchor route above consumes only (i)+(ii)+the recorded μ, so V9
+  should key ord_ψ to the PATTERN and treat (iii)'s σ.R f rendering as
+  the U31-gated seam it already is. If the gate shows the recorded μ
+  mis-associates on some run shape, THAT restatement (SideReads (iii) →
+  RV-vocabulary) is a NEW sign-off item — flagged now, not silently changed.
+
+### 10.2 What this section does NOT change
+
+No accepted statement moves except the TWO named sign-off items (V5's
+Stage.hS6a + the TRANSviii_a conclusion pair), each with a machine-checked
+refutation of the old form and a quoted note display for the new one — the
+same restate-after-refutation discipline as the S9a guard event. VertexPin,
+ChildResData.hS5′, childR's denotation, S9a–S9d/S9 statements, all L5
+assets, U20c, D1–D8, S10: UNTOUCHED. Zero new axioms anywhere; every new
+unit ends with `#print axioms` and the standard footprint protocol.
+
+### 10.3 Census and estimate
+
+9 proof units (V1,V2,V3,V4,V6,V7,V8a/b/c as one file with three theorems,
+V9) + 1 Defs file (V0) + 1 sign-off event (V5). Confidence the design as
+specified discharges its three targets: V7 ≈ 0.9 (post-V5, mechanical);
+V8 ≈ 0.85 (all engines on disk; the risk is Lean-side Laurent/coercion
+grind, not mathematics); V9 chain ≈ 0.75 (V4 is the big rerun; the
+SideReads-(iii) seam is the one open adjudication and is fenced). Joint
+estimate ≈ 0.8. The failure mode that would falsify the DESIGN (not just
+stall a proof): a ReadFrame law that secretly needs hS6b — Finding 3's
+audit says none does, and V4's fence (no TRANSPORT leg) is chosen to keep
+it that way.
