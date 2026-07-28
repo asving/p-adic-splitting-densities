@@ -833,3 +833,63 @@ transport results — at present their `e·g ≥ 2` content is vacuous-by-incons
 and their corner content is open.  The V10 unit's own docstring carries the same
 disclosure.  Records updated: HC1/HC2 MANIFESTs, HC1 blueprint §10.8,
 `notes/SEMANTIC_AUDIT_LOG.md`.
+
+## UPDATE (2026-07-28i): R3c CORNER CLOSED — V9_K1nonrec is sorry-free, Lean-core;
+## the K1 kernel cone (K1 total, U20a/b/c, readsOf_NA, U22-E2) is Lean-core clean
+
+The one remaining sorry of the K1 cone — V9's R3c corner `i = 0 ∧ e·g = 1` — is
+PROVED (`lean/LeanUrat/HC1/V9_K1nonrec.lean`, REV-5 note + the `V9CornerHelpers`
+toolkit).  The REV-4 adjudication ("needs StageCore tie laws (w_jump) or the
+fenced SideReads(iii)") is SUPERSEDED: neither is consumed.  Three
+corner-specific mechanisms close it from the records alone:
+
+1. **K1 is the cross-slot jump law at the corner.**  Both keys have degree 1, so
+   every sum in sight is a development with CONSTANT coefficients at distinct
+   slots; `TransitionCoreL.child_slotmin` pins the weight of every sub-sum
+   (`v9c_subsum`), so the hRadd/hRlt chains (`v9c_Rsum`) run with no `w_jump`.
+2. **The binomial transport at the degree-1 keys** (`v9c_slotmin`): `Φ = Φ̂ − t₀`
+   re-expands any σ.Φ-development as a σ'.Φ-development with constant
+   coefficients (the coefficient space is multiplication-closed exactly at
+   degree 1), transporting the READ functional's slot-min to the parent key —
+   the S10/D.10 recentering mechanism WITHOUT `StageCoreL`.  With SideReads
+   (i)+(ii) this forces `σ'.w f = gam` and the two residual computations
+   `σ'.R f = Σ_{m∈M} C(β_m)·T(m) = Σ_k C(b_k)·(T1 − C ĉ₀)^{s0+k}` — the (★)
+   polynomial identity, via `toLaurent` injectivity.
+3. **The frame-unit twists cancel.**  `child_dig_frame`'s unknown `z̄^{mfun w}`
+   factors are eliminated by cross-multiplying its two instances at the SHARED
+   weight `σ.w(B₀ s0) = σ.w(B₀(s0+k)·t₀^k)` (mfun is quantified before the
+   elements — the round-5 per-index coherence is exactly what fires), and the
+   (S5) positions collapse by the σ.e-cleared `hStretch` identity
+   `wPrev(B₀(s0+k)) + k·wPrev(t₀) = wPrev(B₀ s0)`.  The μ-coefficient of (★)
+   becomes `unit · Σ_k pat k·z̄^k·C(s0+k,μ)` — the μ-th Taylor coefficient of
+   `X^{s0}·Ranch` at the recorded root `−c₀` — NONZERO by `ν.hOrd`
+   (`v9c_taylor_ne`: Hasse-derivative nonvanishing at an order-exactly-μ zero;
+   mathlib `Polynomial.taylor`/`coeff_X_add_C_pow`).  Hence `μ ∈ M`: both
+   conjuncts of the kernel's conclusion at once — clause (vi)/`vtx` is not
+   even needed.
+
+Discipline: statement verbatim (fence intact); SideReads(iii) consumed NOWHERE;
+ZERO new axioms; `#print axioms LeanUrat.HC1.V9_K1nonrec` =
+`[propext, Classical.choice, Quot.sound]`.
+
+Downstream cone (fresh oleans via explicit `lake build` targets — NOTE lake's
+up-to-date check silently skipped the changed file twice on this NFS; the
+stale-olean discipline caught it):
+* Lean-core CLEAN (previously 0/10 via the corner's sorryAx):
+  `K1_readVertexPin_nonrec`, `K1_readVertexPin` (TOTAL), `K1_NA_transport_root`,
+  `K1_NA_transport_increment`, `K1_SAE_vertexEq_endpoint`, `NA_transport_root`
+  (U20a), `NA_transport_increment` (U20b), `NA_transport_recentering` (U20c),
+  `readsOf_NA` (U20), `SAE_vertexEq_endpoint` (U22-E2) — **10/10**.
+* Still sorryAx, NOT via this kernel: `SAE_spanStrict_endpoint` (U22-E1's own
+  sorry), `readsOf_SAE` (via U22-E1), `readsOf_realizable` (via U21/U22's own
+  sorries).
+* Trusted-base census (`AxChk_baseline`) re-run: no footprint regression; the
+  M9 capstone `montes_unconditional` unchanged Lean-core.
+
+⚠ HONESTY (unchanged in kind from 2026-07-28h): the `e·g ≥ 2` legs of the K1
+kernel remain vacuous-by-inconsistency (the V10 finding — the HistoryCoherent
+child-keying repair + 2-node gate is still the open sign-off item).  What is NEW
+is that the corner leg is now honest transport mathematics: at `e·g = 1` the
+records are consistent and the vertex pin is DERIVED, so `readsOf_NA`/U20a-c and
+the K1 kernel are non-vacuously proved exactly on the recentering-shaped
+(root, e·g = 1) perimeter, machine-checked end to end.
