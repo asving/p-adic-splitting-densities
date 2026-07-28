@@ -308,3 +308,12 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   SibCount finiteness, 3 gaps). MovesV = the G-A record scoping + G-B/G-C +
   the recovered Codex residue; expected CLOSING rev (statement content
   already Fable-clean).
+  CODEX BUDGET RESET (2026-07-28, checked at wave-4 round-5 close): the
+  rolling 7-day window now reads 15% used (resets Tue Aug 04) — the
+  conservation regime is LIFTED. Consequences executed immediately: (1) the
+  deferred ratification batch LAUNCHED (MovesD core vs §D4-R + seam-contract
+  types; MovesS vs §S-RESUM with the three adjudicated items re-judged by
+  the fresh Codex context — the adjudications were orchestrator rulings, so
+  this is their independent check); (2) wave-4 round-6 audits return to FULL
+  DUAL (Codex + Fable) rather than Fable-interim-only. MovesSp confirmed
+  already dual-accepted (rev 5, 0/0 + 0/0) — nothing owed there.
