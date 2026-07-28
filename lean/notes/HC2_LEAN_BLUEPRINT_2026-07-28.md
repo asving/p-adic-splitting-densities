@@ -1298,6 +1298,294 @@ deviations, gate block, seam registry) RATIFIED. Rev-2 dispositions:
 
 Census: 45 (rev 1) → **48** (rev 2): +D8 (easy), +U1b (medium), +U31 (medium).
 
-— end of blueprint (REV 2). Next: the acceptance pass — a fresh verifier on this
-file (perimeter: §3 + the seven gap sites + the two inline ratification
-records), then the A-round; the Codex leg batched post-reset per §7.5.
+## 9. FRONTIER — stuck-rule adjudication PREP (2026-07-28, post fleet rounds 1–3)
+
+The fleet mapped nine sharpened obstructions (in-file escalation records: U1, U4,
+U7, U17c, U25 carry them verbatim; U20/U21/U22's chains were fleet-report-side and
+are re-derived in-file by the assigned provers per this section). This section is
+the designer adjudication PREP: per item, the refinement text and a DISPOSITION in
+{QUEUED-PROVABLE-NOW | NOTE-ROUND-GATED | SEAM-HOMED}. Census re-baseline (from
+the tree, this round): **23 sorried declarations across 15 unit files**; proved
+since the round-1 map: U13, U14 (post-DC-1), U27 (restated at the coverage floor
+N := 1), joining U1b/U2/U3/U5/U6/U8/U15/U16/U19/U23/U24/U28/U29/U30/U31 and all
+Defs-layer sorries (boxChart_sorted, boxChart_lt, mkFreshClauses_disj). The
+MANIFEST's per-unit array is one round stale; its `counts.resync` field is the
+accurate census and matches this count.
+
+### F-1  U1 `keys_exist` + U25 `polOM_total` + U17c `presentNorm_total` — the FINAL-NODE wall, adjudicated jointly
+
+**The shared mechanism — LAST-READ RECORD FREEDOM.** `HistoryCoherent`/`Realizable`
+constrain a node's data only through the transition INTO its recorded child
+(`htrans i` is guarded by `i+1 < len`; `TransitionAdmissible` compares consecutive
+recorded nodes), so the final read's `lift`, `center`, `zbar`, and frame ledger
+are free record fields. This is the D4-fold deviation's own sentence ("the
+designated final key stays existential at the last read") surfacing at the
+theorem layer: there is no recorded transition consuming the final read — "no
+stage-reconstruction consumer available" — hence nothing lawfulizes its fields.
+
+**ADJUDICATION of the charge question ("is this exactly the `StageTransHyp`
+consumption point?"): NO — and for U1/U25 conditionalizing on `StageTransHyp`
+would produce FALSE statements, not honest conditionals.** Warrant, machine-
+checked on disk:
+* U1, recentering leg: the `{ν with lift := 0}` record update preserves
+  `HistoryCoherent` and refutes the landing for EVERY key choice (in-file,
+  Codex-confirmed). The counterexample is H-side; `StageTransHyp` is
+  H-independent and TRUE in the intended model (HC-1's D.7 induction proves it),
+  so `StageTransHyp → keys_exist` is false in the intended model.
+* U25, final leg: `recenterLiftSpec_forces_frame_e_one` (+ necessity 2,
+  `recenterLiftSpec_forces_center_ne_zero`, both PROVED in-file) plus a final
+  recentering whose predecessor is an `e = 2` increment (`TransitionData.child_e`)
+  give a coherent realizable H with NO spec realizer. Same argument: no
+  H-independent hypothesis rescues it.
+* Structurally: the wall's missing content is HYPOTHESIS-side final-read
+  lawfulness (the spec at the recorded lift; D.10 eligibility of the recorded
+  frame; the D.5 side conditions tying the final read pair to its frame), while
+  `StageTransHyp` is CONCLUSION-side stage existence — it consumes an eligible
+  read, it cannot lawfulize a recorded one.
+* U17c ALREADY carries `hst : StageTransHyp` (E-phase binder). Its wall is a
+  missing OUTPUT clause in a dependency (both composition orders verified
+  blocked, in-file record), not a missing hypothesis. The stage-reconstruction
+  consumption point is real there — and already explicit (U17a/U17c binders).
+
+**The honest conditional forms, per unit:**
+
+* **U1 → RE-KEY TO RUNS (the certified route).** Restate as
+  `keys_exist_of_run : ReadsOf p F n f H → ∃ keys, KeysLawful H keys` — D4's
+  clause (iv) records `LandingKey ν Φnext` at EVERY read incl. the final one; the
+  interior `Φnext`-pinning clause gives `KeysLawful`'s conjunct 1
+  (scratch-verified ≈15 lines, per the in-file record). The `hcoh`-keyed form is
+  REFUTED: the assigned prover lands the compiled negation witness beside the
+  re-keyed unit (the `U27_OBSTRUCTION` pattern) so the refutation is durable.
+  Rejected alternative: a named `FinalReadLawful` hypothesis re-encoding
+  `LandingKey` piecewise at the last index — a shadow definition; the run
+  predicate already IS the honest carrier. Consumers unaffected: U13/U15 consume
+  keys through `hseed`'s `∃ keys, KeysLawful` (SEED-EXIST rev-2 form), never
+  through U1; U1's surviving role is run-side (MovesT wave-4 + HC-1 run
+  constructions). Statement-fence: re-key needs sign-off → **N-1**.
+
+* **U25 → the pre-declared eligibility NARROWING, completed.** The blueprint's
+  fallback (`σ.e = 1` alone) is INSUFFICIENT (escalation necessity 2). Defs
+  addendum:
+  `D10Eligible (ν : Node p F) : Prop := ν.σ.e = 1 ∧ ν.center ≠ 0 ∧ ν.σ.wPrev ν.σ.Φ < (ν.σ.h : ℤ)`
+  — the COMPLETE D.10 eligibility (necessity of all three + joint sufficiency
+  machine-checked in-file: `recenterLiftSpec_forces_frame_e_one`,
+  `recenterLiftSpec_forces_center_ne_zero`, `recenterLiftSpec_of_eligible`).
+  Restatement: `polOM_total` (and `polOM_liftOf_spec`) gain the GUARDED
+  hypothesis `helig : i + 1 = H.nodes.length → D10Eligible (H.nodes[i]'hi)` —
+  interior recenterings close from coherence (proved in-file); the final branch
+  closes by `recenterLiftSpec_of_eligible`. The restated unit is sorry-free ON
+  sign-off (all lemmas compiled). RUN-SIDE DISCHARGE (so the guard is never
+  mistaken for dead weight): under `ReadsOf`, clause (iv)'s final `LandingKey`
+  contains `RecenterLiftSpec ν ν.lift` at a final recentering — the realizer
+  exists outright and `D10Eligible` follows from the necessity lemmas; runs need
+  no extra hypothesis. U17a's consumption site inherits the guard; note for its
+  prover: `IsCanon` needs only policy-OUTPUT equality (`lift = polOM.liftOf ν`,
+  which is `0` off-realizers), not spec realization, so the guard is expected
+  dischargeable-or-unneeded in U17a's construction. Statement-fence: hypothesis
+  narrowing, sign-off + note-line cite (MOVES 2583–2671) → **N-2**.
+
+* **U17c → the minimal missing OUTPUT clause (in-file route (A), ratified as the
+  design).** `galois_transport` / `galois_normalize_upTo` / `galois_normalize`
+  (U17b) each gain the ADDITIVE conjunct
+  `((polOM p F).IsCanon H → (polOM p F).IsCanon H')`.
+  Soundness as recorded: the transport fixes ℤ_p[X]-side data (`.lift`, `σ.Φ`,
+  `σ.w`) and φ-conjugates residue data (K, center, R); `RecenterLiftSpec` is then
+  pointwise-iff-invariant, so (propext/funext) the choice-defined `polOM.liftOf`
+  is unchanged node-by-node while the lift field is untouched — `IsCanon`
+  transports verbatim. Consumption in U17c: one line applied to `hCanon'`.
+  COST accepted: re-opens U17b's PROVED assembled `galois_normalize` (the clause
+  threads the upTo induction). Fallback if (A)'s φ-invariance breaks in Lean:
+  route (B) (zbar-equality clause on U17a + reversed composition; in-file
+  record, ≈40 lines). Statement-fence: additive clause on a normative assembled
+  statement → **N-3**.
+
+DISPOSITION: U1, U25, U17c all NOTE-ROUND-GATED (N-1/N-2/N-3); U25's proof is
+complete on file and closes same-day on sign-off; U17c closes in one line once
+U17b's clause lands. No unit gains `StageTransHyp`; the §3 record stands
+unchanged (its consumers remain exactly U17a/U17c, explicit since E-phase).
+
+### F-2  U20 `readsOf_NA` — one minimal missing lemma per parent species
+
+The escalation reduced (NA) to the cross-frame VERTEX-VALUE TRANSPORT, one lemma
+per PARENT species (the transport routes through the species-specific transition
+clause): under `ReadsOf` at consecutive reads (i, i+1), the parent's line value
+at the standing vertex base `μ·childWidth` is realized as the frame-(i+1) actual
+slot weight of f's development at the vertex slot; SideReads(i+1)'s clause-(i)
+strict-above reading at the OFF-SPAN vertex (`s0'+wSide' < μ`) then yields the
+strict gap. New units (sub-lemma discipline: statements prover-refinable; the
+assembled `readsOf_NA` is normative and byte-unchanged):
+* **U20a `NA_transport_root`** — parent = the root read (frame 0: `STR = 1`,
+  `Dwidth = 1` via hroot/hDwidth): D.4 base reading + D.8 at ν₀.
+* **U20b `NA_transport_increment`** — parent an increment: via
+  `IsNodeLift`/`TransitionCoreL` + `LandingCylinderL`'s (BOX)/(VERTEX) clauses
+  (Moves `L5_landTransport_R4`).
+* **U20c `NA_transport_recentering`** — parent a recentering: via
+  `IsRecenteringCore` (`Φ′ = Φ − t`) + D.10's recentered development identity
+  (`L5_recLiftIndep_R4`'s development side).
+* **U20 assembled** = species trichotomy + the three transports + SideReads(i).
+The fleet-round chain was report-side; the assigned prover reconciles the exact
+lemma statements against this semantic spec and records them in-file.
+DISPOSITION: QUEUED-PROVABLE-NOW (no fence event — new sub-lemmas under an
+unchanged assembled statement, the U9/U10 pre-split precedent). Census +3.
+
+### F-3  U21 `readsOf_HV` — the layer-2 TERMINAL interface gap; the minimal ADDITIVE repair
+
+**The gap.** (HV) needs the vertex-digit READ-OFF: the equality between the child
+read's recorded pattern lead `pat (wSide/e)` and the parent's transported vertex
+value computed from f's OWN parent-frame development. The Moves layer-2 landing
+interface (`Moves/DefsL.lean`: `LandingCylinderL` → `CarryTransportL`) delivers
+the pattern only RELATIONALLY through the carry chain, and its one
+evaluation-shaped clause is the TERMINAL no-overflow clause (`∀ j ≥ N, carry j = 0`);
+no clause evaluates the chain AT the vertex μ, and the read-off is not derivable
+from the current clause set (the ∼-strength chain admits contamination of the
+μ-slot from slots in (μ, N)). `L5_landVertexDigit` supplies the parent-frame
+vertex digit of `B μ` — but no interface fact carries it across the frame change
+to the child's recorded lead. That terminal seam between layer 2 and D4 is the
+gap.
+
+**THE MINIMAL ADDITION (additive-only; frozen `Moves/DefsL` untouched).** D4
+`SideReads` gains clause **(vi) — THE VERTEX READ-OFF**: at the read's window
+vertex, the recorded pattern lead is f's actual transported vertex digit — exact
+Lean form fixed at the P-phase against D.8's (VERTEX) display (`T(μ·m̂ − a)`,
+`z̄^{−μm̂}`) and §C C.0's (HV) display, in the `σ.digPrime zbar (B μ)` vocabulary
+of `L5_landVertexDigit`. Discipline:
+(a) ADDITIVE-ONLY — strengthens `ReadsOf`; U19/U23/U24 remain projections;
+    nothing is weakened.
+(b) SIGN-OFF NOTE (this paragraph is its draft): `SideReads` is the W4-1 seam
+    definition MovesT re-keys `eligible` to (D4 + §7.6) — the wave-4
+    reconciliation copies clause (vi) into the re-key; the MovesT ledger row
+    gains the pointer.
+(c) NON-VACUITY GATE RE-RUN MANDATORY: U31's concrete inert-2 run must be
+    RE-PROVED with clause (vi) in place — if the witness cannot discharge (vi),
+    the clause is over-strengthened and the design returns here (the GAP-4
+    mechanism working as designed).
+(d) U21 remains a DERIVATION: clause (vi) + `Node.vtx`/`vtxPoly` bookkeeping +
+    L5's z̄-exponent identities → the (HV) conjunct verbatim. The clause records
+    only the minimal un-derivable fact, never (HV) itself.
+DISPOSITION: NOTE-ROUND-GATED (**N-4**: clause-(vi) sign-off + the seam-registry
+note); U21 then queues as medium-hard bookkeeping.
+
+### F-4  U22 `readsOf_SAE` — the proven reduction; endpoints become units
+
+The escalation PROVED the reduction of (SAE) to two endpoint facts; they become
+named units (statements landed in-file from the reduction; prover-refinable):
+* **U22-E1 `SAE_spanStrict_endpoint`** — the strict span-entry endpoint: at every
+  recorded span slot strictly below the parent vertex, f's actual frame-weight
+  strictly exceeds the parent line's value (the parent's (ZC)-zeroed-strips
+  content: interior zeros push actual valuations strictly above the old line).
+* **U22-E2 `SAE_vertexEq_endpoint`** — the adjacent-vertex equality endpoint:
+  when the new window reaches the vertex, the new side height equals the standing
+  vertex height (`hLineU` + the vertex anchoring; the u*-tie).
+* **U22 assembled** = the proven reduction + E1 + E2; the reduction proof lands
+  FIRST (it exists — the endpoints are the genuine frontier). The F-EMPTY cite
+  stays mandatory on the assembled unit.
+DISPOSITION: QUEUED-PROVABLE-NOW (reduction) + two queued endpoint units; no
+fence event. Census +2.
+
+### F-5  U26 `class_fiber_welldef` — seam-homing CONFIRMED
+
+Ground truth verified this round: `ClassFiberWelldef` is declared in
+`MovesD/Defs.lean` (§3.4 typed form) with the REV 9 SEAM W4-3 record on both
+defs — "its consumer (D15's `hwd`) is NOT built at E-phase — declared, consumed
+by nothing in the core" (same for `D4R_CYL`). U26's non-discharge is therefore
+exactly the blueprint-sanctioned deferral: one sorried statement whose ONLY
+intended consumer does not exist yet and will CARRY the Prop as `hwd` when built
+(wave 4). U26 LEAVES THE ACTIVE QUEUE: no provers assigned until the wave-4 D15
+negotiation fixes the consumption form; at that point the proof-first route
+(U18 + `C6.thmC_a`) re-opens with `OmUniqHyp` as the recorded fallback.
+DISPOSITION: SEAM-HOMED (recorded non-discharge; wave-4 re-entry condition
+named).
+
+### F-6  U11 `root_height_of_inBox` — ustar unpinned CONFIRMED corpus-wide; the designed minimal addition
+
+**The check ran (this round).** `hLineU`'s consumers: MovesD `D5b_lineShape`
+(solves the shape line's intercept — pins the line TO `ustar`, not `ustar`'s
+value) and the HC-2 gate constructions (concrete nodes discharging the field).
+NO value bound on `ustar` exists anywhere in the corpus (grep: no
+`≤ ustar`/`ustar ≤`-shaped Prop outside concrete gate data). `MatchesHist` pins
+`ν.ustar = R.ustar` to the SHAPE, but `ShapeWF` (rev 9) carries `gamTie`/
+`anchorTie` and NO height law — junk shapes with negative root heights inhabit
+the Lean shape universe. Coherence's slope law fixes `slope = h/(e·STR·D) > 0`,
+but the intercept rides on the free `ustar`. Hence U11 is UNPROVABLE as stated
+(and refutable: a one-node coherent in-box history with `ustar := −5` satisfies
+every hypothesis and fails the conclusion). The blueprint's pre-declared U11
+RISK has FIRED.
+
+**THE DESIGNED MINIMAL ADDITION (hypothesis upgrade — the pre-declared flex
+point; the Shape-side alternative REJECTED: `ShapeWF` is frozen MovesD Defs and
+a new component would silently shrink the shape universe — a strictly larger
+seam event).** Defs addendum (exact conjunct list to be fixed at the note round
+against §B2-DEF D.4's root case; the two displayed conjuncts are the
+derivation's sufficient set):
+
+  `RootD4 (H : History p F) : Prop := ∀ h0 : 0 < H.nodes.length, 0 ≤ (H.nodes[0]'h0).ustar ∧ 1 ≤ (H.nodes[0]'h0).line.slope`
+
+Derivation sketch (records why these two suffice): root `Dwidth = 1`
+(hroot + hDwidth) and `STR = 1` give `slope = h/e`, so `1 ≤ slope` IS D.4's
+"every side slope ≥ 1"; `μ·e·g ≤ wSide` node-side (`hOrd`/`hRanch` degree
+arithmetic) puts every interior base `b < μ·childWidth` at least one step left
+of the vertex base, whence `line.at b ≥ ustar + slope ≥ 1` by `hLineU`.
+Restatements: U11 gains `hd4 : RootD4 H`; U13 gains the same binder (it fills
+`JetSetup.root_height`); U15 gains `hd4 : ∀ i : PrefIdx …, RootD4 (reprOf i)`
+alongside `hseed` — an HC-1-seam-adjacent addition placed where the content
+lives: HC-1's seed constructions sit over the decided cluster strata, where
+D.4's root clause is the note's own standing hypothesis. RUN-SIDE: `ReadsOf`
+does NOT currently imply `RootD4` (f's cluster membership is unrecorded) —
+flagged for the wave-4 `eligible` negotiation (MovesT may add the cluster
+clause seam-side); NOT added to D4 this round (minimal-addition discipline:
+clause (vi) is the only D4 change on the table).
+DISPOSITION: NOTE-ROUND-GATED (**N-5**: `RootD4` conjuncts vs §B2-DEF D.4 +
+sign-off on the U11/U13/U15 hypothesis additions).
+
+### F-7  Post-repair re-census + the queue (incl. the two walls the census caught)
+
+Remaining 15 sorried unit files, by disposition:
+
+* **NOTE-ROUND-GATED (6):** U1 (N-1), U25 (N-2), U17c (N-3), U21 (N-4),
+  U11 (N-5), and **U4 (N-6)** — the census catches what the charge list did not:
+  U4 `mkFresh_cover` carries a dual-confirmed FALSE-AS-STATED obstruction
+  (in-file: the `levelSet`/`valueSlots` floor-straddle countermodel; root cause:
+  the E-phase made `levelSet` the FULL level set where the blueprint's U3/U4
+  sketch treats it as band-restricted). Repair options as recorded in-file:
+  **(i) RECOMMENDED** — add `hcoh`/`hreal` to U4 + the geometric NO-STRADDLE
+  lemma (additive; keeps proved U3/U5/U6 untouched; the no-straddle content is
+  (SAE)/C.1.5 line-dominance, the U10 wave's family) vs (ii) band-aware redesign
+  of `levelSet`/`IsValueSupport`/`valueSlots` (re-opens U3/U5/U6 + Defs —
+  rejected as non-minimal). Sign-off decides → **N-6**.
+* **SEAM-HOMED (1):** U26 (F-5).
+* **QUEUED-PROVABLE-NOW (8):**
+  - **U7** — DC-2 DEFS REPAIR AUTHORIZED: `IsFreshAttach`'s solution-set clause
+    reads `fd.sat x` where this blueprint's normative U7 display (and the FROZEN
+    `JetSetup.recursion` field type it mirrors) demands the stratum at
+    `S.Theta i x`. An E-phase elaboration bug in HC-2's OWN Defs — the DC-1
+    class (blueprint statement unchanged): repair the clause to `fd.sat (Θ x)`,
+    re-check `pinTransportSystem_spec` and the proved U8, record DC-2 in §2.2 on
+    application; U7 then closes.
+  - **U9a/b/c + assembly** — post-DC-1 statements stand; the guarded
+    `downsets_literal`'s inhabitation smoke test PASSED inside U27's concrete
+    seed, retiring the vacuity worry.
+  - **U10a–d + assembly** — the declared stuck-rule center, unchanged: any
+    resisting step → zcSeed-law extraction per D5's fence, never a silent axiom.
+  - **U17a** — hard; carries `StageTransHyp`; the recorded designer-round
+    tripwire stands (if the recentered stage is specified-not-constructed in
+    Moves, extending `StageTransHyp`'s signature is a designer-round event).
+  - **U17b-2/-3** — the two remaining Galois sorries (U17b-1 + assembled are
+    proved; the assembly re-opens only when N-3's clause lands).
+  - **U18** — proof-first stands; `OmUniqHyp` fallback recorded.
+  - **U20a–c + assembly** (F-2). — **U22-E1/E2 + assembly** (F-4).
+
+**Note-round agenda (one designer sitting):** N-1 U1 re-key to `ReadsOf` ·
+N-2 U25 `D10Eligible` narrowing (+ MOVES 2583–2671 quote) · N-3 U17b additive
+`IsCanon`-transport clause · N-4 SideReads clause (vi) + seam note ·
+N-5 `RootD4` conjuncts vs §B2-DEF D.4 (+ U11/U13/U15 binder additions) ·
+N-6 U4 option (i) vs (ii). All six are pre-analyzed above; five of six have
+their repair content already machine-checked or scratch-certified — the round
+is sign-off, not design.
+
+Census: 48 → **53** units (+U20a/b/c per F-2, +U22-E1/E2 per F-4; `D10Eligible`,
+`RootD4`, and SideReads clause (vi) are Defs ADDENDA, not census units).
+
+— end of blueprint (REV 2 + §9 FRONTIER addendum 2026-07-28). Next: the §9
+note round (N-1…N-6, one sitting), the DC-2 defs repair, then the next fleet
+wave on the §9 queue; the acceptance-pass perimeter (§3 + gap sites +
+ratification records) unchanged; the Codex leg batched post-reset per §7.5.

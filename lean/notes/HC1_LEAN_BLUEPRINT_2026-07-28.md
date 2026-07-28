@@ -1159,3 +1159,378 @@ footprints Lean-core + sorryAx only; ZERO blocked units)
   (S14's clause) explicitly, conclusion in the `map`-to-F frame (the ↥K/↥K′ wall, the
   L5_recRSland precedent); T2/G2/S1 use `GaloisField 2 2` as the concrete ambient, G1 uses
   the recorded `AdjoinRoot` latitude model.
+
+## 9. FRONTIER — the stuck-rule adjudication PREP (2026-07-28, HC-1 frontier
+designer; round-2 fleet + next-wave state)
+
+STATE AT THIS SECTION: ~44/54 units PROVED on disk (D-layer 8/8 with D7
+restated-proved same day; T-layer 11/12; C-layer 5/6; S-layer incl. S10 PROVED
+at escalation and S13 PROVED under its adjudicated e_read = 1 scope; all 5
+gates). The seven mapped obstructions below are the ENTIRE remaining frontier
+of the fenced statements (R6's independent R-layer kernel is recorded in
+`R6_carrierInstance.lean` and queued with the MovesR re-audit, not here; S16's
+single sorry is unobstructed fleet backlog). Each item: KERNEL (the
+machine-checked artifact) → NOTE TRACE → DIAGNOSIS → REFINEMENT → DISPOSITION.
+
+**Disposition summary: 6 repairable-now · 0 needs-note-round · 1 seam-homed.**
+One coordinated SIGN-OFF EVENT covers all statement/Defs changes below (F-1..F-6
+in the table at §9.8); every change is additive or a refutation-forced
+restatement; the note is INTACT at every item — no note-round required
+anywhere.
+
+### 9.1 T10_floorStaircase — conjunct 2 machine-refuted → restate on the STEP floor
+
+KERNEL: `ScratchT10.lean` `T10_conjunct2_refuted` (Lean-core footprint): on ANY
+realizable tower, ANY factor-interior block b, ANY block coordinate c with a
+nonzero sub-top slot, `rl.floorC c < rl.floorB b` STRICTLY — via
+`baseIdx c = OFF + blockEdge b` (mixed-radix decomposition), `0 < OFF <
+deg Φ_top`, `slopeK > 0` forced by `slope_law` + kappa positivity, and
+`Line.at b = intercept − slope·b` strictly decreasing. Conjunct 1 is rfl
+(recorded in the scratch).
+
+NOTE TRACE: LST(ii), MOVES 3743–3745 — "F_i(b) = old_i(slot(b)): ht-constant on
+each current block" — and DOM's close, MOVES 3648–3651 — "the floor is the
+current staircase: F_i(b) = old_i(slot(b))". The note's floor is old_i evaluated
+at the SLOT of b (the block edge), i.e. a STEP function constant on each current
+block. MovesC's own Defs say this in code: `floorOf` is "§C DOM's floor of RAW
+lines; the step-function floor of a history is `History.floorH`"
+(`MovesC/Defs.lean:268–271`), with the per-node quantization `Node.lineStep ν b
+= ν.line.at ((b/ν.childWidth)·ν.childWidth)` (:507).
+
+DIAGNOSIS: transcription defect in HC1's `floorC` — it bound T10's coordinate
+floor to the RAW-line max `MovesC.floorOf … (T.baseIdx c)` (DefsCar :273–274),
+the object DOM uses for LINE comparisons, where LST(ii) displays the STEP floor.
+On a slope-K > 0 line the raw value strictly descends across the block, so
+"ht-constant on each current block" is provable only for towers with all
+slotBounds = 1 — the scratch's schema. The statement, not the note, is wrong.
+
+REFINEMENT (statement F-1, sign-off; new defs additive, no fence event):
+```lean
+/-- read m's staircase at a base index (MovesC `Node.lineStep` convention):
+the line evaluated at the left edge of b's frame-m fine slot. -/
+noncomputable def TowerRealizable.lineStep (m b : ℕ) : ℚ :=
+  (rl.line m).at ((b / T.frameWidth (m + 1)) * T.frameWidth (m + 1))
+
+/-- THE HISTORY STEP-FLOOR at a coordinate (the note's F_i; MovesC
+`History.floorH`'s shape over the tower's reads). -/
+noncomputable def TowerRealizable.floorS (c : T.Coord) : ℚ :=
+  Finset.sup' (Finset.range (T.K + 1)) (by simp)
+    (fun m => rl.lineStep m (T.baseIdx c))
+```
+T10 conjunct 2 RESTATED: `∀ c, T.blk c = b → rl.floorS c = rl.floorB b` (conjunct
+1 and the hypotheses unchanged). C1_LST leg (ii) restates identically in the same
+event (C1's proof cites T10 verbatim; its other four legs untouched). PROOF
+ROUTE (checked on the kernel's own lemmas): the m = K summand is exactly
+`floorB b` (frame-K quantization of `baseIdx c = OFF + blockEdge b` with
+`OFF < deg Φ_top` returns `blockEdge b`, per `ScratchT10.offset_lt`); for m < K,
+the frame-m edge is ≥ the frame-K edge (nested radices: `frameWidth (m+1) ∣
+frameWidth (K+1)`, a new tower lemma from the move records — `IsStandardLift`
+degree law at increments, degree-preservation at recenterings), `Line.at`
+decreasing gives `lineStep m ≤ (rl.line m).at (blockEdge b)`, and DOM
+(`C2_DOM_floorForm`'s `dom_le`, at `blockEdge b ≤ interiorEnd` from `hb`)
+caps it by `floorB b`. `floorC` STAYS as-is for DOM-side consumers; the
+refuted-statement certificate `ScratchT10` is retained.
+CONSUMER CHECK: C1(iii) and the S17 chain consume only `floorB` — unaffected.
+
+DISPOSITION: **repairable-now** (restate T10(2)+C1(ii) on `floorS`; sign-off
+F-1; proof from existing DOM engine + one divisibility lemma).
+
+### 9.2 C6_alphabetCard — no card-K bridge corpus-wide → the CharP tie (Defs addition)
+
+KERNEL: fleet round-2 verdict (commit 2f388c8; PROJECT_STATE 2026-07-28d):
+conjunct 1 is T7's theorem (`p ^ aDim = Nat.card 𝔸`, PROVED via `IsPGroup` —
+the alphabet is p-torsion by `grQ_torsion`), but conjuncts 2–3 equate/compare
+`Nat.card ↥(T.stg (Fin.last T.K)).K` with p-powers, and NOTHING corpus-wide
+ties `Nat.card K` to p: `Stage p F` carries `[Field F] [Finite F]` with NO
+characteristic pin (`Moves/Defs.lean:106`), so `Nat.card K` is a power of
+char F, and `Nat.log p (Nat.card K)` is junk off char p. The iff/strict legs
+are unprovable as typed — and false on char-≠-p instantiations of the
+interface.
+
+NOTE TRACE: MOVES 2148–2165 — "𝔸(γ) = u(γ)·{Σ c_i·z̄^i : c_i ∈ 𝔸_k(γ_i)}, an
+F_p-SUBSPACE of F_{k+1} … = [F_{k+1} : F_p] with 𝔸(γ) = F_{k+1} exactly when
+every height in γ's slot tree is attainable … and STRICTLY SMALLER at shallow
+heights". The note's F_{k+1} is an F_p-extension BY SETTING (residue fields of
+extensions of ℚ_p); char F = p is intrinsic to §B2-DEF's semantics, never a
+side condition. The Lean interface simply under-records the setting.
+
+REFINEMENT (Defs addition F-2, additive-only, sign-off note): add ONE field to
+`Tower` (HC1's own Defs, `DefsTower.lean`):
+```lean
+  /-- CHAR PIN (frontier adjudication 2026-07-28): the ambient residue field
+  has characteristic p — intrinsic to the note's setting (F_{k+1}/F_p
+  extensions, MOVES 2148–2165); the card-K bridge `Nat.card ↥K = p^[K:F_p]`
+  is underivable without it (round-2 fleet kernel). -/
+  hcharF : CharP F p
+```
+SIGN-OFF NOTE (drafted): additive field on an HC1-owned structure; NO `Tower`
+literal exists anywhere on disk (grep-verified: no `Tower.mk`/anonymous-
+constructor inhabitant yet), so no existing proof re-opens; every planned gate
+instance (T2/S1/G2 ambients: `GaloisField 2 2` at p = 2) satisfies it by
+instance; faithfulness: records the note's own setting, excludes only
+note-rejected instantiations (char ≠ p ambients) — the doctrine's
+"FALSE for instances the note would reject" direction, strengthening
+falsifiability, weakening nothing. Chosen over a `TowerRealizable` card law
+because C6 (and its S17 consumers) are deliberately realizability-free
+(hyp: none), and characteristic is tower-intrinsic, not per-move data.
+BRIDGE LEMMA (new, easy — lands in C6's file): `∃ d, 1 ≤ d ∧
+Nat.card ↥(T.stg k).K = p ^ d` (finite subfield of a char-p field; mathlib
+`CharP.card_eq_prime_pow`-class route via the `Subfield` instance). C6's proof
+then: conjunct 1 = T7; conjuncts 2–3 = T8's per-coordinate product formula +
+the bridge (full ⟺ every factor full ⟺ every slot image nonzero; one dead
+coordinate drops a factor strictly — exponent comparison now in ℕ via the
+bridge). C6's STATEMENT is unchanged — only `Tower` grows the field.
+
+DISPOSITION: **repairable-now** (additive Defs field + bridge lemma; sign-off
+F-2; C6's statement text untouched).
+
+### 9.3 S7_childPin — narrowed to CoeffLocLaw conjunct (c) → the D.7(vi) pin, homed to S9
+
+KERNEL: `lean/scratch_S7_escalation.lean` (escalation pass): conjuncts 1–2
+(child Bézout + P2), 3 (S5′ digit shape), and CoeffLocLaw legs (a) AND (b) are
+PROVED sorry-free from the recorded data alone — (a) via the Ein/Eout
+weight-detecting evaluation (`coeffLocLaw_sub`, machine-checked, printed
+axioms Lean-core), (b) via the NEW route `coeffLocLaw_sup`: the outgoing key
+σ.Φ is a child rep of parent-scale weight σ.h ≥ 1, so an (S6b′) realizer with
+scalar d·c_Φ^k at weight k·σ.h times the k-th power of the σ.Φ rep-unit
+INVERSE is exactly `C (C d)` (the `CT_cancel` identity). THE WALL IS EXACTLY
+leg (c), the z′-pin: decoding `IsLVecVal`/`lvecWeight zv = 0` against
+`hbez`-determinacy leaves (⋆) `∃ v : Σᵢ vᵢ·wPrev(repᵢ) = −h′ ∧ Πᵢ cᵢ^{vᵢ} = 1`;
+the weight leg is always solvable (v₀ := −h′·(transported parent vector)), but
+its scalar is z̄^{h′·E} with E built from `child_dig_frame`'s EXISTENTIALLY
+supplied `mfun` — the SAME uncontrolled frame twist as S8's kernel (the scratch
+says so verbatim). {(a),(b) proved} + {(c) ⟺ the twist} is the exact
+obstruction partition.
+
+NOTE TRACE: the same displays as 9.4 below (MOVES 2395–2402: z = V^{−h}·Y^e BY
+PINNING, z′ := V′^{−h′}·Y′^{e′} "explicit, no choice") — even `CoeffLocLaw`'s
+own docstring cites it: "(P1) the z-pinning — the genuine z = V^{−h}·Y^{e} of
+D.2/D.7(vi)" (`Moves/DefsL.lean:165–166`). The note pins (c)'s witness
+LITERALLY; the recorded interface (bare `Stage` + `TransitionCoreL`) does not
+carry the pin.
+
+REFINEMENT (statement F-3, sign-off): S7 RESTATED to conclude conjuncts 1–3 +
+CoeffLocLaw legs (a) and (b) — the scratch's proved shape, transplanted
+verbatim (`S7_scratch` minus its (c) leg; footprints already Lean-core). Leg
+(c) MOVES to S9d (§9.5), where the child is CONSTRUCTED with
+z′ := V′^{−h′}·Y′^{e′} as the literal witness vector (weight leg: the
+transported vector's Σ b·ν = 1 identity, already derived in the scratch
+comment; scalar leg: 1 by construction — no twist exists on the constructed
+child). No pin hypothesis is added to S7 itself: the corpus consumer of (c) is
+S9's assembly alone (the scratch's own CONSUMER NOTE), so hypothesizing the pin
+here would be dead weight.
+
+DISPOSITION: **seam-homed** — (a)/(b)/1–3 transplant now; the (c) residual is
+the D.7(vi)-pin seam, discharged inside S9d by construction (one seam with 9.4).
+
+### 9.4 S8_childS6 — the twist symmetry vs TvecUnitLaw → the note PINS the twist; statement gains it
+
+KERNEL: `S8_childS6.lean` in-file certificate (dual-audited Fable + Codex,
+findings 1–11, 13 CONFIRMED): with ẑ := z̄, r := ord z̄, λ : ℤ, the twist
+σ̃′ := σ′ with `R̃ f := C (ẑ^{λ·σ'.w f}) · σ'.R f` preserves EVERY Stage law of
+σ′, `child_dig_frame` (via mfun + λe′·id), and every other hypothesis in scope
+(none mention σ′.R), yet multiplies the pinned TvecUnitLaw product by
+C (C (ẑ^λ)); at admitting numerics (𝔽₃ ≤ F ⊇ 𝔽₉, z̄ a generator, (e′,h′) =
+(1,8), λ = 4) the shift is C (C (−1)) ≠ 1 — so NO proof of the conjunct exists
+over the recorded hypothesis class. A twist SYMMETRY of the entire class, not a
+missing lemma.
+
+NOTE TRACE (the adjudication question: does the note pin the twist?) — YES.
+MOVES 2395–2402 (D.7(vi)): "the stage carries the exponent VECTOR of its pinned
+coefficient unit V over the representative list (P2); T = V^s·Y^t and
+z = V^{−h}·Y^e BY PINNING (literal identities) … Transport:
+V′ := Π_i in_{w′}(ũ_i)^{s·b_i} · in_{w′}(Φ)^{t} … Then u₀ := V′^{−h′}
+(explicit, no choice); z′ := u₀·Y′^{e′}". MOVES 2410–2414 (D.7(vii)): "the
+next stage's pinned unit is V′, its vector is the transported one, and the
+D.3(b) literal identity re-runs verbatim". The child residual normalization is
+an EXPLICIT CHOICE-FREE function of the parent data; the z̄-twist freedom
+exists only in the Lean record (`child_dig_frame`'s `∃ mfun`), which
+under-records the display. NOT a note gap — an interface under-recording.
+
+REFINEMENT (statement F-4, sign-off): per the stuck rule, the statement gains
+the pin — and the honest carrier of the pin is the CONSTRUCTION: S8's
+TvecUnitLaw conjunct MOVES to S9d, stated of S9's constructed child (where V′
+is the literal factorwise product and the product law is rfl-adjacent; the
+scratch/kernel reduction shows outer-T/inner-z exponents already collapse from
+parent laws — only the residue leg needed the pin). S8 RESTATED to its proved
+leg: the child previous-read (I-aug) law `(σ'.e : ℤ) * σ'.wPrev σ'.Φ <
+(σ'.h : ℤ)` (already closed in-file from `th.hiaug` + the records; keeps S8 a
+theorem, no sorry). The kernel comment is retained in-file as the certificate
+that no recorded-σ′ form is provable. EXPLICITLY NOT a note-round item: the
+note's pin display is quoted above; nothing to send back.
+
+DISPOSITION: **repairable-now** (S8 restated to the proved leg; TvecUnitLaw
+homed to S9d where the note's pin is realized by construction; sign-off F-4).
+
+### 9.5 S9_transStage — the assembly core: re-census + decomposition
+
+KERNEL/STATE: S9 is the ONE remaining hard construction. Since the round-2
+census: S10 (the recentering twin) is PROVED at escalation (37KB: Stage-literal
++ `shiftL` construction + res lemma — the assembly TEMPLATE now exists on
+disk); S13 PROVED under the adjudicated D.9(d) scope; D7 RESTATED-PROVED (the
+twisted DIG homomorphism with the anchor addition pinned — the carry-exact
+scalar law hRmul needs). RE-CENSUS of S9's ~44 obligations (Stage: 12 data
+choices + 25 law fields; StageCore: 11; StageCoreL extras: 2; TransitionCoreL:
+12; pins: 3):
+
+SUPPLIED (by proved units / rfl-by-construction):
+* w-laws: hwmul + hvalgrp (S5 PROVED), submult (S4 PROVED), slot-min + hwult
+  route (S2 PROVED), hK1 + hwΦ (S3 PROVED), hStretch (childW at j = 0 slots,
+  definitional).
+* (S6′): hS6a/hS6b via `L4_TRANSviii_a_R5_final`/`_b_R4` (clean Moves finals).
+* child field + D-map surjectivity: S6 PROVED; CoeffLocLaw (a)/(b) + Bézout/P2
+  + S5′ shape: the S7 scratch (§9.3, machine-checked).
+* prevIaug: S8's proved leg (§9.4).
+* TransitionData (10 fields), child_Tvec, the 3 conclusion pins: rfl-level
+  from the construction data.
+* arithmetic: he/hh/hcop/hbez/he1t from th + the (vii) Bézout split; hmonic/
+  hdeg from `L3_liftMonic`; hreps by degree arithmetic; hTvec rfl.
+
+REMAINING (the honest core — 1 definition + ~9 laws + assembly):
+* `childR` — the D.7(vi)-NORMALIZED child residual on all of A (the new
+  object; MOVES 2395–2418: normalize the minimal-slot development data by the
+  transported unit T′^{−w′(f)}).
+* its residual apparatus: hR0/hRne/hRadd/hRlt (additive laws via the slot-min
+  ties), hRmul (via D7's cmul law + `L3_DIV` — the carry-exact product), hRΦ +
+  hS5′ (by the normalization), `child_dig_frame` with mfun := THE alignment
+  function (pinned, no ∃-slack — dissolving §9.3/§9.4's twist at the root).
+* StageCore tie laws for the constructed pair: w_strict/w_jump/R_neg (childW/
+  childR ties; S10's res-lemma pattern), SlotDecomp + CoeffFieldLawCore
+  (transports via `L4_TRANSvii_R4` + S6).
+* TvecLaw/TvecUnitLaw + CoeffLocLaw(c) — BY CONSTRUCTION (V′/z′ literal; §9.3/
+  §9.4 land here).
+
+DECOMPOSITION (six sub-units, pre-approved split; statement of S9 UNCHANGED):
+* **S9r** (`DefsChild.lean`, additive + unit): `childR` definition + the S5′
+  shape lemma (positions −t′·σ.w B; scalars = digPrime·(the pinned
+  alignment)). Consumes D7, S2.
+* **S9w**: hR0/hRne/hRadd/hRlt/hRmul + w_strict/w_jump/R_neg for
+  (childW, childR). Consumes D7, `L3_DIV`, S2/S4/S5. HARD (the one genuinely
+  new algebra block).
+* **S9a**: the Stage literal + arithmetic/valuation legs (data + he..he1t,
+  hmonic/hdeg, hwΦ, hStretch, hK1, hreps, hTvec, hWS).
+* **S9b**: weightSet := 𝒜′ + hS6a/hS6b via the TRANSviii finals.
+* **S9c**: StageCore assembly + TransitionCoreL records (TransitionData rfl
+  fields, child_Tvec, pinned child_dig_frame) + SlotDecomp/CoeffFieldLawCore.
+* **S9d**: TvecUnitLaw σ′ + CoeffLocLaw σ′ (transplant scratch (a)/(b);
+  (c) + the product law by construction) → closes StageCoreL σ′ and DISCHARGES
+  the §9.3/§9.4 seam. Then S9 = ⟨literal, S9c, S9a–S9d⟩.
+
+DISPOSITION: **repairable-now** (hard; no note contact — D.7(vi)–(vii) supply
+every construction; the S10 template de-risks the literal+res-lemma pattern).
+
+### 9.6 S11_towerSpine Part 1 — partial transport succeeded → carry the core, name the residual
+
+KERNEL: `S11_towerSpine.lean` in-file, TWO verdicts. (I) route failure: S9/S10
+are ∃-shaped (existential child), type-mismatched against `StageCoreL
+(T.stg i.succ)` for the RECORDED child. (II) semantic countermodel (the
+sign-twist σ″.R f := σ′.R f·C(ξ^{σ′.w f}), ξ ∈ FQˣ, ξ^{h′} = 1, ξ ≠ 1):
+preserves every round-2 Stage field and every carried record, breaks
+TvecLaw/TvecUnitLaw — so Part 1 is UNPROVABLE from the carried witnesses. THE
+PARTIAL TRANSPORT SUCCEEDED (verdict II's positive half, machine-verified at
+escalation): wPrev_mul/wPrev_ult (child_wPrev + parent laws), both reps legs,
+w_strict (the w(−1) = 0 valuation trick), R_neg (child_dig_frame at B = 1 pins
+z̄^{mfun 0} = 1), prevIaug (the move's hiaug + threshold, S8-leg-2's pattern).
+The RESIDUAL CORE — exactly the legs the records cannot pin — is the
+twist-class set: {w_jump, TvecLaw, tvec_unit (TvecUnitLaw), coeff_loc,
+SlotDecomp, CoeffFieldLawCore}.
+
+NOTE TRACE: the note's tower induction CONSTRUCTS each child ("The stage
+axioms (S1′)–(S5′), (S6a′), (S6b′) all hold: the induction closes with the
+split axiom", MOVES 2464–2465) — in the note, a tower level IS the constructed
+package; a `Tower` whose moves record less than stage-hood is a Lean
+under-recording, same species as §9.4.
+
+REFINEMENT (Defs F-5, sign-off + one new certificate unit):
+(a) `MoveWitness` gains the child core (additive field on each constructor):
+```lean
+  | inc (…) (core : TransitionCoreL σ σ' Φhat e' h' zbar)
+        (core' : StageCoreL σ')  : MoveWitness σ σ'
+  | recenter (…) (core : IsRecenteringCore σ σ' cc tt)
+        (core' : StageCoreL σ')  : MoveWitness σ σ'
+```
+Faithfulness: the note's move IS a stage-producing construction (trace above);
+S9/S10 (the ∃-existence theorems, statements unchanged) prove enriched
+witnesses EXIST for every legal read, so `Tower` inhabitation is unweakened —
+both directions stay recorded, exactly as S11's docstring anticipated. No
+MoveWitness LITERAL exists on disk (grep-verified: no constructor application
+anywhere), so no inhabitant re-opens; HOWEVER the constructor-arity change
+ripples through ~10 PATTERN-MATCH sites in Defs recursions (`eBirthAux`/
+`strAux`) and the proved units T3/T4/T6/T7/C2/S13/S11-Part-2 — each needs one
+extra `_` binder, a mechanical edit with NO content change, followed by the
+standard footprint re-verify of the touched cones (stop-the-line on any
+regression). Part 1's proof becomes Fin.induction + projection (~10 lines);
+Part 2 is ALREADY PROVED in-file (both match arms) and only re-binds.
+(b) THE RESIDUAL AS ITS OWN UNIT — **S11a_coreTransport** (NEW, certificate):
+from `StageCoreL σ` + `TransitionCoreL σ σ'` + σ′'s bare Stage laws, derive
+StageCore σ′ MINUS the residual set — i.e. wPrev_mul, wPrev_ult,
+reps_nonempty, p_is_rep, w_strict, R_neg, prevIaug (the escalation's verified
+transport, transplanted). Value: it certifies the F-5 enrichment is MINIMAL
+(everything else was already derivable — the field adds exactly the
+twist-class legs the kernel proved independent), and it shrinks S9c's
+per-field work. The in-file countermodel comment is retained as the
+independence certificate.
+
+DISPOSITION: **repairable-now** (F-5 Defs addition + projection proof + the
+S11a certificate unit; residual core named and homed to S9d's construction).
+
+### 9.7 S17_levelMeasureExact — the L6 mirror → fold §4.6's spec into the restatement
+
+KERNEL: `ScratchS17.lean` `S17_scratch_with_hcore_hzsol` — a SUFFICIENCY
+CERTIFICATE, proved with ZERO sorry, Lean-core footprint: S17's fenced
+statement PLUS exactly two hypotheses closes completely:
+`hcore : StageCore (T.stg k.castSucc)` and
+`hzsol : ¬ E.IsSolution (Θ (code 0))`. Necessity: (A) nothing pins
+`E.IsSolution (Θ (code 0))` when 0 is the only deg-<D preimage — the
+`L6_measureExact_R4`:189 gap = §4.6(b)'s "+hzsol" spec (bfdfb5e); (B) the only
+StratumData ↔ LandingCylinderL bridge (`L5_landTwoSided`, the §4.5 repair
+theorem) needs StageCore at the level stage, which S17 does not carry and the
+tower did not propagate (§9.6's kernel). {A, B} is the EXACT obstruction set —
+countermodels up, this proof down. CRUCIALLY the scratch proof consumes
+`L5_landTwoSided` (repair file) + `L0_FactA_exists` + `L2_P6ii` directly and
+inlines `development_truncate` — it NEVER consumes `L6_measureExact_R4`, so
+the §4.6 dep-sorry pair drops out of HC1's cone entirely.
+
+NOTE TRACE: D.11, MOVES 2672–2718 — statement scope ONE move, count law +
+dichotomy; the note's stratum is a NONZERO-f object read against a genuine
+stage of the tower ("at every tower level … with the stage hypotheses
+DISCHARGED by the induction", blueprint D8) — hcore is the note's own standing
+hypothesis, and the zero-code clause is jet-chart data the fenced Moves
+statement omitted (the in-file FLAG at :189, §4.6(b)). The note is intact.
+
+REFINEMENT (statement F-6, sign-off — the concrete restatement, folding
+§4.6's spec): S17 RESTATED as the scratch theorem VERBATIM — + `hzsol` as an
+explicit hypothesis (part of the jet chart's data, exactly as code/Θ/E
+already ride per deviation D-9), + `hcore` — carried EXPLICITLY until F-5
+lands, then discharged from the tower (`(S11 Part 1 k.castSucc).core`) and
+dropped from the signature in the same sign-off event if F-5 is ratified
+first (adjudicator's ordering choice; the scratch form is the safe landing
+either way). Proof: transplant `ScratchS17` (zero new work). LEDGER EFFECTS:
+§4.6's dep-sorry entry moves from "consumed by S17" to "Moves-tail-only" —
+HC1's hypothesis-field ledger (§5) empties its dep-sorry row; `sorryAx`
+leaves every HC1 cone. `L6_measureExact_R4`'s own repair (§4.6 (a)/(b))
+remains queued for the Moves tail fleet on its own schedule, no longer
+blocking HC1.
+
+DISPOSITION: **repairable-now** (restate + transplant; sign-off F-6; kills
+HC1's last dep-sorry).
+
+### 9.8 The coordinated sign-off queue (one event, six entries)
+
+| id | change | kind | units touched |
+|---|---|---|---|
+| F-1 | T10 conjunct 2 (+C1 leg (ii)) → `floorS` step floor; `lineStep`/`floorS` defs added | refutation-forced restatement + additive defs | T10, C1 |
+| F-2 | `Tower` + `hcharF : CharP F p`; card-K bridge lemma | additive Defs field | DefsTower, C6 |
+| F-3 | S7 → scratch's proved shape (legs (a)/(b) + 1–3); leg (c) to S9d | refutation-narrowed restatement | S7 |
+| F-4 | S8 → its proved (I-aug) leg; TvecUnitLaw to S9d | refutation-forced restatement (note pins the twist — quoted) | S8 |
+| F-5 | `MoveWitness` + `core' : StageCoreL σ'` (both constructors); S11a certificate unit | additive Defs field + new unit | DefsTower, S11, (+S17 via hcore) |
+| F-6 | S17 → the ScratchS17 form (+hzsol, +hcore-until-F-5) | restatement per §4.6 spec | S17 |
+
+S9's decomposition (S9r/S9w/S9a–S9d, §9.5) adds units without touching any
+accepted statement — no sign-off entry needed; `DefsChild.lean` is additive.
+POST-EVENT STATE if all six ratify: the frontier reduces to ONE hard
+construction block (S9r + S9w) + five assembly/projection proofs, zero
+dep-sorries, zero note-round items, the note intact at every point.
+
+END OF FRONTIER SECTION (7 obstructions: 6 repairable-now, 0 needs-note-round,
+1 seam-homed (S7 → the S9d construction seam); sign-off queue F-1..F-6).
