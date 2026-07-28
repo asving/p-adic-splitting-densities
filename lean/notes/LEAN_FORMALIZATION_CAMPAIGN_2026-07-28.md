@@ -272,3 +272,39 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   repair loops batched), with fresh-Fable reads carrying the second leg of the
   dual bar at zero Codex cost. Codex is reserved for semantic verification ONLY —
   no mechanical Codex delegation this campaign.
+
+  WAVE-4 RUNNING RECORD (MovesT 55 units / MovesV 95 units; dual audits per
+  round, Codex + fresh Fable on identical text; Codex crit trajectory for
+  MovesT: 35 -> 21 -> 18 -> 9 -> 6):
+  Round 5 (2026-07-28):
+  - MovesT: Codex REJECT 6/6 + Fable REJECT 1/2. The Fable pass VERIFIED the
+    entire round-4 union repaired and confirmed the derived rigidity genuine;
+    its one fresh critical is the deepest finding of the wave — JOINT
+    UNSATISFIABILITY of the rev-5 toy tables against the built
+    TreeModel.mem_single: {child_cell at o=none + RootCellsOf + mem_single}
+    force one-node-chain state events to be UNIONS of reduction cells while
+    {state_cell + presents...} force a proper sub-stratum. Fix named by the
+    auditor: scope child_cell to some-states, root children via
+    RedCellPartition, pin the toy child(none) window digits.
+  - MovesV: Codex REJECT 5/7 (verdict RECOVERED from the orphaned detached
+    run — the external ~10-min killer claimed the monitor, not the process;
+    parsed from codex_run.jsonl item.completed/agent_message). Per-item
+    re-derivation shows most round-4 repairs LANDED (M-1/M-5 repaired, M-3
+    partial); residue: the selected-member tie (tgtSk must be represented by
+    a continuing roster member), the evt_disj_cell dependent key still
+    outcome-splitting, SelRankTie mis-targeted, a TReal-vs-counts recap
+    contradiction, + the off-pool WORDING overclaim (xhd_no_orphan permits,
+    does not force, off-pool emptiness). CoprimeLiftPack fence CONFIRMED;
+    the 95 = 32e/59m/4h census verified. Fable REJECT 0 crit / 3 gap —
+    STATEMENT CONTENT CLEAN; G-A is a record-line falsity, not a type
+    defect: the auditor PROVED HMCAug derivable from HMC (~30 lines) and
+    underivability unattainable for any faithful encoding (the note's
+    hypothesis is a conditional, vacuous under HMC) — so the Section-2.G
+    "not a consequence" line gets SCOPED, the type stays.
+  Rev 6 CHARGED (2026-07-28, two Fable writers, wf_8158eef8-c13): MovesT =
+  the joint-unsatisfiability fix + the Codex-5 counter-computed items
+  (childless-tower vs ScaleFaithful, trackOf:=0 vacuity, T-E10 hdict
+  two-verdict row, T-G1 Realizes contradiction, W4-1 BDY third adjudication,
+  SibCount finiteness, 3 gaps). MovesV = the G-A record scoping + G-B/G-C +
+  the recovered Codex residue; expected CLOSING rev (statement content
+  already Fable-clean).
