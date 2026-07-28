@@ -293,7 +293,8 @@
    "file": "lean/LeanUrat/HC1/S13_realPersist.lean",
    "difficulty": "medium",
    "sorries": 1,
-   "statement": "theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) : (∃ ν₀ : ℤ, ∀ ν : ℤ, ν₀ ≤ ν → ν ∈ (T.stg k).weightSet) ∧ (((T.stg k).e : ℤ) * (T.stg k).wPrev (T.stg k).Φ < ((T.stg k).h : ℤ)) ∧ ((T.stg k).e = 1 → ∀ (ν : ℤ) (c : (↥(T.stg k).K)ˣ), ν ∈ (T.stg k).weightSet → ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC (T.stg k).Φ B ∧ (T.stg k).wPrev B = ν ∧ (T.stg k).R B = LaurentPolynomial.C ((c : ↥(T.stg k).K)) * LaurentPolynomial.T 0)"
+   "rev": "S13 ADJUDICATION 2026-07-28 (campaign ledger, orchestrator direct read of D.9(d) MOVES 2573-2581): conjunct 3 restated with the e_read = 1 READ scope — any-scalar realizability only at ν strictly above wPrev Φ (the (S6b)/DEF-8 threshold; the display's side values λ″), membership in weightSet now a conclusion; prior all-of-weightSet form = BLUEPRINT OVER-STRENGTH (type i), the note intact",
+   "statement": "theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) : (∃ ν₀ : ℤ, ∀ ν : ℤ, ν₀ ≤ ν → ν ∈ (T.stg k).weightSet) ∧ (((T.stg k).e : ℤ) * (T.stg k).wPrev (T.stg k).Φ < ((T.stg k).h : ℤ)) ∧ ((T.stg k).e = 1 → ∀ ν : ℤ, (T.stg k).wPrev (T.stg k).Φ < ν → ν ∈ (T.stg k).weightSet ∧ ∀ c : (↥(T.stg k).K)ˣ, ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC (T.stg k).Φ B ∧ (T.stg k).wPrev B = ν ∧ (T.stg k).R B = LaurentPolynomial.C ((c : ↥(T.stg k).K)) * LaurentPolynomial.T 0)"
   },
   {
    "id": "HC1.S14_wellTypedAnchor",

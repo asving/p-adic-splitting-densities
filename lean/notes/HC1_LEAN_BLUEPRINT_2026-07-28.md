@@ -767,6 +767,19 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   `L5_realConclusion` (all clean). sketch: thread the four proved units along the
   tower index; the induction order (stage-r quantities before Φ_{r+1}) is the
   Tower's own structural order. difficulty: medium. hyp: none.
+  **REV (2026-07-28, S13 ADJUDICATION — campaign ledger
+  `LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`, orchestrator direct read):**
+  conjunct 3 RESTATED with D.9(d)'s own scope. The note (MOVES 2573–2581) scopes
+  any-scalar realizability to e_read = 1 READS — "At any e_read = 1 read, the
+  side value λ″ … any digit scalar c̃ ∈ F'ˣ is realizable ((S6b) … above the
+  bound by (c))" — persisting along histories; in Lean: at `(T.stg k).e = 1`,
+  for every ν with `wPrev Φ < ν` (the (S6b)/DEF-8 threshold = this statement's
+  rendering of the display's λ″ > w(current key) ≥ bound), ν ∈ weightSet AND
+  any digit scalar `c ∈ Kˣ` has a position-0 realizer. The E-phase conjunct
+  quantified over ALL of `weightSet` (where the note supplies only the (S6a)
+  base orbit) — BLUEPRINT OVER-STRENGTH (type i), the note intact; XE-precedent
+  (statement repair post-refutation). S10's `hlift` consumer unaffected
+  (ν = h is in scope by conjunct 2 at e = 1). MANIFEST statement re-synced.
 * **HC1.S14_wellTypedAnchor** — the rev-D¹¹ F7 lemma: at an e_read = 1 stage,
   `R(f)` is a z-POLYNOMIAL and `a := ord_z R(f) ≥ 0` (T coefficient-pure ⟹ all
   digit positions 0 ⟹ stride positions j ≥ 0). moves_ref: MOVES 2636–2643

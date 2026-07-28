@@ -47,22 +47,40 @@ theorem S11_towerSpine {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
         -- IH : StageCoreL (T.stg i.castSucc);  goal : StageCoreL (T.stg i.succ)
         -- T.move i : MoveWitness (T.stg i.castSucc) (T.stg i.succ)
         cases hmv : T.move i with
-        -- OBSTRUCTION (machine-confirmed, 2026-07-27).  Both branches reduce to
-        -- `StageCoreL (T.stg i.succ)` for the SPECIFIC tower child, from
-        --   IH : StageCoreL (T.stg i.castSucc)  and the carried recording relation.
-        -- The Tower carries only `TransitionCoreL`/`IsRecenteringCore` (§DefsTower,
-        -- `MoveWitness`), NOT `StageCoreL` of the child.  The intended propagators
-        -- S9_transStage / S10_recStage are (i) OPEN (both still `sorry`, marked HARD)
-        -- and, decisively, (ii) MIS-SHAPED: each proves `∃ σ', … ∧ StageCoreL σ' ∧ …`,
-        -- an EXISTENTIAL child, not `StageCoreL` of the given `T.stg i.succ`.  Applying
-        -- them yields `StageCoreL σ'` and a type mismatch against `StageCoreL (T.stg i.succ)`
-        -- (verified: `hsc : StageCoreL σ'` ≠ goal).  No uniqueness bridges them: the
-        -- recording relations underdetermine the child (they pin K, e, h, reps, wPrev,
-        -- Tvec and `R` on Ĉ only — leaving `σ'.R` off-Ĉ, `σ'.w`, weightSet, s, t free),
-        -- while `StageCore` demands R_neg / w_jump / SlotDecomp / CoeffFieldLawCore on all
-        -- of `σ'.R`, `σ'.w`.  So the spine leg is NOT provable sorry/axiom-free as stated;
-        -- the faithful repair pins the child (carry `StageCoreL` in `MoveWitness`, or
-        -- restate S9/S10 as propagation to a given child) — a Defs/statement change.
+        -- OBSTRUCTION — TWO INDEPENDENT VERDICTS (2026-07-27 route failure; 2026-07-28
+        -- escalation COUNTERMODEL).  Both branches reduce to `StageCoreL (T.stg i.succ)`
+        -- for the SPECIFIC tower child, from IH + the carried recording relation only.
+        --
+        -- (I) ROUTE FAILURE (prover 1, machine-confirmed): the intended propagators
+        -- S9_transStage / S10_recStage are OPEN (both `sorry`, marked HARD) and
+        -- MIS-SHAPED — each proves `∃ σ', … ∧ StageCoreL σ' ∧ …`, an EXISTENTIAL child,
+        -- type-mismatched against `StageCoreL (T.stg i.succ)` (verified).
+        --
+        -- (II) SEMANTIC COUNTERMODEL (escalation, sharper locus).  The direct route
+        -- "records + child's own round-2 Stage axioms + parent StageCoreL ⇒ child
+        -- StageCoreL" transports MORE than verdict (I) credited: wPrev_mul/ult
+        -- (child_wPrev + parent hwmul/hwult), both reps legs, w_strict (the valuation
+        -- trick: w(−1) = 0 from hwmul), and even R_neg (child_dig_frame at B = 1 pins
+        -- z̄^{mfun 0} = 1, then B = −1 with parent R_neg gives σ'.R (−1) = −1).  But the
+        -- TVEC legs are NOT valid consequences: the SIGN-TWIST countermodel
+        --   σ''.R f := σ'.R f · C(ξ^{σ'.w f})   (ξ ∈ FQˣ, ξ^{h'} = 1, ξ ≠ 1;
+        --   e.g. odd p, h' even, ξ = −1)
+        -- preserves EVERY round-2 Stage field (hRmul/hRadd/hRlt: f ↦ ξ^{w f} is a
+        -- weight-hom, equal weights ⇒ equal twist; hRΦ: ξ^{h'} = 1; hS5: monomial units
+        -- stay monomial; hS6a/hS6b: FQˣ and Kˣ are closed under ·ξ^{−e'ν} since ξ ∈ FQ)
+        -- and EVERY carried record (TransitionData is weight/field/reps data only;
+        -- child_Tvec untouched; child_dig_frame via mfun'' ν := mfun ν + m₁·e'·ν
+        -- whenever ξ = z̄^{m₁} ∈ ⟨z̄⟩, e.g. z̄ primitive), yet BREAKS TvecLaw and
+        -- TvecUnitLaw: num/den twist factors differ by exactly ξ^{w num − w den} = ξ ≠ 1
+        -- (net weight 1 by hbez — the same identity that closes the w-leg).  So Part 1
+        -- has no proof from the carried witnesses unless the theory refutes every odd-p
+        -- tower ending in an even-h' increment with −1 ∈ ⟨z̄⟩ — false in the intended
+        -- semantics (h' = 2 wild reads are the certified generic case).
+        --
+        -- FAITHFUL REPAIR (Defs/statement change, outside this unit's fence): carry
+        -- `StageCoreL σ'` in `MoveWitness`, or restate S9/S10 as propagation TO A GIVEN
+        -- record-pinned child AND add the tvec legs to the records — the twist shows
+        -- they are independent of the current ones.
         | inc ψ g Φhat e' h' zbar hyp core =>
             sorry
         | recenter cc tt core =>
