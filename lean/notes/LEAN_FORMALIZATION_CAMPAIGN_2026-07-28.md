@@ -197,6 +197,15 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   the recorded waves: 4 (MovesT/MovesV -> 22 seam entries), the Aug-02 Codex
   ratification batch, MovesR unparking. Every sorry in the repo is one of:
   a queue item above, a seam-contract entry, or a named obstruction kernel.
+  N-1/HMC ADJUDICATION (2026-07-28, orchestrator direct read): the note's HMC
+  (v) display (MOVES 8198-8221) asserts the PROCESS-DEFINED exact domain
+  H(gamma) factors stepwise — the blueprint's definitional chainCount built
+  the domain BY the recursion, making HMC true by construction (the 4-line
+  proof = the sanity check that the interface over-committed; the mirror
+  image of the vacuity doctrine). BLUEPRINT OVER-COMMITMENT (traceable to the
+  rev-2 charge wording); the note intact; HMC stays OPEN. Fix: table side
+  (T_gamma, G) recursive by definition; process side H(gamma) defined from
+  the realized marked events; HMC = the typed link.
   S13 ADJUDICATION (2026-07-28, orchestrator direct read): the note's D.9(d)
   (MOVES 2573-2581) scopes any-scalar realizability to e_read = 1 READS
   ("At any e_read = 1 read... any digit scalar is realizable"), persisting
