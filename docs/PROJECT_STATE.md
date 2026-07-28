@@ -694,3 +694,25 @@ Lean-core footprints). Four campaign corpora now FULLY PROVED: MovesU 13 (Theore
 MovesRBase 7, MovesSp 67, MovesX 40 — 127 units, plus MovesC's 36 pre-campaign.
 MovesS (95) + MovesD (48) cores in E-phase; HC-1/HC-2 blueprints being written;
 the 9-unit Moves tail under Fable provers.
+
+## UPDATE (2026-07-28d): PHASE-3 ROUND 1 — the hard cores mapped
+
+HC-1 (the §B2-DEF tower induction): ~40/50 PROVED including the carry algebra,
+the base stages, LST/TYP/DOM AS THEOREMS over the real carriers (C1–C5), the
+child laws S2–S8 (partial), the anchored-substitution/landing spine S14–S16,
+and ALL FIVE sealed decide-gates (Case-J, Case-K with the corrected d₀ = d₁²
+pairing, DIV, carry, span). Seven mapped obstructions with machine-checked
+kernels (T10's conjunct-2 refutation, C6's card-K bridge, S7's CoeffLocLaw(c),
+S8's twist symmetry, S9's assembly core, S13's SOURCE-MISMATCH vs D.9(d) —
+math adjudication queued, S17 mirroring the known measureExact holes); three
+units interrupted mid-attempt (D7/S10/S11, elaborating, honest sorries).
+HC-2 (the JetSetup bridge): the reads layer + both fireable order-0 gates
+PROVED (U19/U23/U24/U28/U31 + the mkFresh chain); the PresentSeed Defs
+inconsistency FOUND BY REFUTATION and REPAIRED with the note's own (ZC-c)
+guard (closure artifact green); the seed chain awaits its re-fleet; nine
+sharpened interface obstructions on record. NO AXIOMS ANYWHERE in either core
+(all three GMN proposals resolved as hypotheses pre-declaration).
+QUEUED NEXT WAVE: the S13 adjudication; the HC-2 seed-chain re-fleet;
+D7/S10/S11 re-attempts; the post-Aug-02 Codex ratification batch; wave 4
+(MovesT/MovesV — unlocks all 22 seam-contract entries); MovesR unparking via
+HC-1's R-layer.
