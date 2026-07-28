@@ -9,8 +9,33 @@ clause pins its whole support to the unique solution, by `LevelClause.count` at
 codim = |support|) + `pinTransportSystem_spec`.
 RESTATED-POST-DEFS-REPAIR DC-2 (2026-07-28; statement byte-unchanged): `IsFreshAttach`'s
 solution-set clause repaired `fd.sat x → fd.sat (Θ x)` per the blueprint §9 F-7
-authorization — the in-file stop-the-line obstruction is discharged; U7 is
-QUEUED-PROVABLE-NOW.
+authorization.
+DC-3 RECORD (2026-07-28, K2 kernel round; statement byte-unchanged): the post-DC-2
+machine refutation (`scratch_U7_recursion_false.lean` — U27's inert gate seed + the
+constant unitriangular shift) fired on `IsFreshAttach` clauses (1)+(3) JOINTLY: clause
+(3) demanded LITERAL-zero solves in the NEW coordinates where the frozen
+`JetSetup.recursion` keying (everything at `Θ x`) and the PROVED `C0_pinTransport`
+transported-solve shape demand zeros OF THE Θ-IMAGE — the same untransported-coordinate
+bug DC-2 fixed in clause (1), one clause over; an E-phase Defs deviation, NOT the
+blueprint's D7 (carrier-only) display. Clauses (3)/(4) repaired to the Θ-composed form
+(Defs, DC-3); the refutation no longer elaborates, and its exact instance (i = 0) is now
+the PROVED `mkSigma_recursion_zero` below — the compiled closure record.
+POST-DC-3 STATUS of `mkSigma_recursion` (the ∀-i form): the ∃-obligation is DISCHARGED
+by the pin-attachment constructor `freshAttach_exists` below UNDER the blueprint's own
+pre-named per-step condition — "fresh clauses cut freshly = their supports are UNPINNED
+on the prior state" (D5 zcSeed docstring; a fresh-band/floor consequence at the U-layer,
+needing hcoh/hreal + (ZC)) — carried here as `mkSigma_recursion_of_unpinned`. At i = 0
+the condition is free (no pins): `mkSigma_recursion_zero`. The BARE ∀-i statement
+(hypothesis_fields: none) is NOT provable from a raw seed: at i > 0 a junk history can
+overlap read-i's band with earlier fresh supports, and a conflicting transported
+equation makes `Θ*(Σ_i) ∩ fresh` non-representable as a digit system with the spec's
+pins (cardinality/emptiness mismatch) — the junk branch then falsifies the iff. This is
+NOT the dead countermodel's bug: it is the statement quantifying over histories/seeds
+the note's C.1.5 (conditional on (ZC) + realizability) never claims. Statement kept
+byte-identical per the fence; DISPOSITION → sign-off queue: either U7 gains the
+`hunpinned` hypothesis (the U25 hypothesis-narrowing pattern; its per-step discharge is
+exactly U10's (ZC)+DOM geometry, U9's at the root), or U13/U9/U10 consume
+`mkSigma_recursion_of_unpinned`/`_zero` directly and U7-as-stated is retired.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -23,12 +48,325 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesJ
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
+variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
 /-- INITIALIZATION: nothing is pinned before the root read (`JetSetup.init`'s type). -/
 theorem mkSigma_init {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (H : History p F) (n N : ℕ) {keys : ℕ → Polynomial ℤ_[p]}
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N)) :
     ∀ c : Fin (n * N), (mkSigma H n N S vOf 0).pinned c = false := by
   intro c; rfl
+
+/-! ### The strip/value pin-attachment constructor (the blueprint D7's named obligation)
+
+`clause_assign`: a `LevelClause` with `codim = |support|` is a PER-COORDINATE ASSIGNMENT
+on its support — `LevelClause.count` leaves exactly ONE supported satisfier (the
+blueprint U7 sketch's "the value clause pins its whole support to the unique solution").
+`mkFresh_codim`: every constructed fresh clause has `codim = |support|` (strips: 1 = |{c}|;
+value clauses: `C1_TYP_toClause` at the level set's card).
+`freshAttach_exists`: the spec witness, built C0_pinTransport-style (transported old
+equations, solve = target − corr) with the fresh per-coordinate assignments attached
+through Θ — REQUIRES the fresh supports UNPINNED on the prior state (the D5-docstring
+per-step condition; free at i = 0). -/
+
+/-- A clause whose codimension is its FULL support is a per-coordinate assignment:
+`LevelClause.count` at `codim = |support|` forces a unique supported satisfier `u`, and
+`dep` extends the characterization to all points. -/
+private lemma clause_assign {m : ℕ} (cl : LevelClause p m)
+    (hcodim : cl.codim = cl.support.card) :
+    ∃ u : Fin m → ZMod p, ∀ x : Fin m → ZMod p,
+      cl.sat x ↔ ∀ c ∈ cl.support, x c = u c := by
+  classical
+  have hp : 0 < p := (Fact.out : p.Prime).pos
+  have hcount := cl.count
+  rw [hcodim] at hcount
+  have hone : Nat.card {y : Fin m → ZMod p // cl.sat y ∧ ∀ c ∉ cl.support, y c = 0} = 1 :=
+    Nat.eq_of_mul_eq_mul_right (pow_pos hp _) (by rw [hcount, one_mul])
+  obtain ⟨y₀, hy₀⟩ := Nat.card_eq_one_iff_exists.mp hone
+  refine ⟨y₀.1, fun x => ⟨fun hx c hc => ?_, fun hx => ?_⟩⟩
+  · -- the support-restriction of x is a supported satisfier, hence IS y₀
+    have hres : cl.sat (fun c' => if c' ∈ cl.support then x c' else 0) := by
+      refine (cl.dep x _ ?_).mp hx
+      intro c' hc'
+      rw [if_pos hc']
+    have hz : (⟨fun c' => if c' ∈ cl.support then x c' else 0, hres,
+        fun c' hc' => if_neg hc'⟩ :
+        {y : Fin m → ZMod p // cl.sat y ∧ ∀ c ∉ cl.support, y c = 0}) = y₀ := hy₀ _
+    have hzc : (if c ∈ cl.support then x c else 0) = y₀.1 c :=
+      congrFun (congrArg Subtype.val hz) c
+    rw [if_pos hc] at hzc
+    exact hzc
+  · exact (cl.dep x y₀.1 fun c hc => hx c hc).mpr y₀.2.1
+
+/-- `Nat.card` of a digit alphabet (Defs' private `card_fin_fun`, replicated — the two
+`choose`s agree by proof irrelevance, the U9a precedent). -/
+private lemma card_fin_fun' (k : ℕ) : Nat.card (Fin k → ZMod p) = p ^ k := by
+  haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
+  simp [Nat.card_eq_fintype_card, ZMod.card]
+
+/-- A constructed value clause has `codim = |support|` (`C1_TYP_toClause` at the level
+set's card; support = the level set). -/
+private lemma valueClause_codim {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
+    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (i : ℕ) (hi : i < H.nodes.length) (j : ℕ) (hsp : (H.nodes[i]'hi).spanSlot j) :
+    (valueClause H n N S vOf i hi j hsp).codim
+      = (valueClause H n N S vOf i hi j hsp).support.card := by
+  classical
+  have h := (C1_TYP_toClause
+    (S.typObj i hi (levelSet H n N i (H.nodes[i]'hi) j)
+      ⟨j, hsp, fun c => Iff.intro
+        (fun hc => (Finset.mem_filter.mp hc).2)
+        (fun hc => Finset.mem_filter.mpr ⟨Finset.mem_univ c, hc⟩)⟩)
+    (vOf i j (levelSet H n N i (H.nodes[i]'hi) j))
+    (levelSet H n N i (H.nodes[i]'hi) j).card
+    (card_fin_fun' _)).choose_spec
+  exact h.2.1.trans (congrArg Finset.card h.1).symm
+
+/-- Every fresh clause of `mkFresh` has `codim = |support|`. -/
+private lemma mkFresh_codim {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
+    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (i : ℕ) (hi : i < H.nodes.length) :
+    ∀ cl ∈ (mkFresh H n N S vOf i hi).clauses, cl.codim = cl.support.card := by
+  intro cl hcl
+  have hcl' : cl ∈ ((stripSet H n N i (H.nodes[i]'hi)).toList.map
+        (fun c => (C1_stripClause (p := p) c).choose))
+      ++ ((valueSlots H n N i (H.nodes[i]'hi)).attach.toList.map
+        (fun jh => valueClause H n N S vOf i hi jh.1 (valueSlots_spanSlot jh.2))) := hcl
+  rcases List.mem_append.mp hcl' with hstrip | hval
+  · obtain ⟨c, -, rfl⟩ := List.mem_map.mp hstrip
+    have h := (C1_stripClause (p := p) c).choose_spec
+    rw [h.2.1, h.1, Finset.card_singleton]
+  · obtain ⟨jh, -, rfl⟩ := List.mem_map.mp hval
+    exact valueClause_codim S vOf i hi jh.1 (valueSlots_spanSlot jh.2)
+
+/-- Pairwise-disjoint supports: the clause through a coordinate is unique (hand-rolled
+list induction; duplicates with nonempty support are excluded by self-disjointness). -/
+private lemma pairwise_clause_unique {m : ℕ} :
+    ∀ (l : List (LevelClause p m)),
+      l.Pairwise (fun c₁ c₂ => Disjoint c₁.support c₂.support) →
+      ∀ {c : Fin m} {cl₁ cl₂ : LevelClause p m}, cl₁ ∈ l → cl₂ ∈ l →
+        c ∈ cl₁.support → c ∈ cl₂.support → cl₁ = cl₂ := by
+  intro l hpw
+  induction l with
+  | nil => intro c cl₁ cl₂ h₁ _ _ _; exact absurd h₁ (List.not_mem_nil)
+  | cons hd tl ih =>
+    rw [List.pairwise_cons] at hpw
+    intro c cl₁ cl₂ h₁ h₂ hc₁ hc₂
+    rcases List.mem_cons.mp h₁ with rfl | h₁t
+    · rcases List.mem_cons.mp h₂ with rfl | h₂t
+      · rfl
+      · exact absurd hc₂ (Finset.disjoint_left.mp (hpw.1 cl₂ h₂t) hc₁)
+    · rcases List.mem_cons.mp h₂ with rfl | h₂t
+      · exact absurd hc₁ (Finset.disjoint_left.mp (hpw.1 cl₁ h₁t) hc₂)
+      · exact ih hpw.2 h₁t h₂t hc₁ hc₂
+
+/-- **The strip/value PIN-ATTACHMENT CONSTRUCTOR** (post-DC-3): the fresh-attachment
+spec has a witness whenever (a) every fresh clause is a per-coordinate assignment on its
+support (`hasg` — true of `mkFresh` via `clause_assign` + `mkFresh_codim`) and (b) the
+fresh supports are UNPINNED on the prior state (`hdisj` — the blueprint's pre-named
+per-step condition, D5 zcSeed docstring: "fresh clauses cut freshly = their supports are
+UNPINNED on the prior state"; free at i = 0, (ZC)/DOM geometry at the induction steps).
+Construction: C0_pinTransport-style — pins = old ∨ fresh supports; solve = (fresh target
+`U c`, else the transported old equation) − corr; every clause of the spec is then
+direct. -/
+theorem freshAttach_exists {m : ℕ} (D : Locus p m)
+    {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} (hΘ : IsUnitriangular Θ)
+    (fd : FreshData p m)
+    (hasg : ∀ cl ∈ fd.clauses, ∃ u : Fin m → ZMod p,
+      ∀ x, cl.sat x ↔ ∀ c ∈ cl.support, x c = u c)
+    (hdisj : ∀ c : Fin m, D.pinned c = true → ¬ ∃ cl ∈ fd.clauses, c ∈ cl.support) :
+    ∃ D' : Locus p m, IsFreshAttach D Θ fd D' := by
+  classical
+  choose corr hcorr using hΘ
+  choose u hu using hasg
+  -- the combined fresh target: the value the (unique) clause through c assigns
+  have hex : ∀ c : Fin m, ∃ v : ZMod p,
+      ∀ (cl : LevelClause p m) (hcl : cl ∈ fd.clauses), c ∈ cl.support → u cl hcl c = v := by
+    intro c
+    by_cases h : ∃ cl ∈ fd.clauses, c ∈ cl.support
+    · obtain ⟨cl₀, hcl₀, hc₀⟩ := h
+      refine ⟨u cl₀ hcl₀ c, fun cl hcl hc => ?_⟩
+      cases pairwise_clause_unique fd.clauses fd.disj hcl hcl₀ hc hc₀
+      rfl
+    · exact ⟨0, fun cl hcl hc => absurd ⟨cl, hcl, hc⟩ h⟩
+  choose U hU using hex
+  -- the fresh locus, per-coordinate form
+  have hsatU : ∀ y : Fin m → ZMod p, fd.sat y ↔
+      (∀ c : Fin m, (∃ cl ∈ fd.clauses, c ∈ cl.support) → y c = U c) := by
+    intro y
+    constructor
+    · rintro hy c ⟨cl, hcl, hc⟩
+      rw [← hU c cl hcl hc]
+      exact ((hu cl hcl y).mp (hy cl hcl)) c hc
+    · intro hy cl hcl
+      rw [hu cl hcl y]
+      intro c hc
+      rw [hU c cl hcl hc]
+      exact hy c ⟨cl, hcl, hc⟩
+  -- Θ-at-a-coordinate reads only ≤-coordinates (C0_pinTransport's `key`)
+  have key : ∀ (i : Fin m) (g₁ g₂ : Fin m → ZMod p),
+      (∀ k : Fin m, k ≤ i → g₁ k = g₂ k) → Θ g₁ i = Θ g₂ i := by
+    intro i g₁ g₂ hag
+    rw [hcorr i g₁, hcorr i g₂, hag i le_rfl]
+    have harg : (fun j (_ : j < i) => g₁ j) = (fun j (_ : j < i) => g₂ j) := by
+      funext k hk
+      exact hag k hk.le
+    rw [harg]
+  have correq : ∀ (i : Fin m) (x : Fin m → ZMod p),
+      corr i (fun j _ => x j) = Θ x i - x i := by
+    intro i x
+    rw [hcorr i x]; ring
+  have argeq : ∀ (i : Fin m) (x : Fin m → ZMod p),
+      D.solve i (fun j (_ : j < i) => Θ (fun k => if hk : k < i then x k else 0) j)
+        = D.solve i (fun j _ => Θ x j) := by
+    intro i x
+    congr 1
+    funext j hj
+    apply key j
+    intro k hk
+    have hki : k < i := lt_of_le_of_lt hk hj
+    simp only [dif_pos hki]
+  -- THE WITNESS
+  set D' : Locus p m :=
+    ⟨fun c => D.pinned c || (if (∃ cl ∈ fd.clauses, c ∈ cl.support) then true else false),
+     fun c g =>
+      (if (∃ cl ∈ fd.clauses, c ∈ cl.support) then U c
+       else D.solve c (fun j (_ : j < c) => Θ (fun k => if hk : k < c then g k hk else 0) j))
+      - corr c g⟩ with hD'
+  have hpin' : ∀ c : Fin m, D'.pinned c = true ↔
+      (D.pinned c = true ∨ ∃ cl ∈ fd.clauses, c ∈ cl.support) := by
+    intro c
+    show (D.pinned c || (if (∃ cl ∈ fd.clauses, c ∈ cl.support) then true else false))
+        = true ↔ _
+    rw [Bool.or_eq_true]
+    constructor
+    · rintro (h | h)
+      · exact Or.inl h
+      · refine Or.inr ?_
+        by_contra hn
+        rw [if_neg hn] at h
+        exact Bool.noConfusion h
+    · rintro (h | h)
+      · exact Or.inl h
+      · exact Or.inr (by rw [if_pos h])
+  -- the solved-coordinate equation, transported form
+  have hsolve' : ∀ (x : Fin m → ZMod p) (c : Fin m),
+      (x c = D'.solve c (fun j _ => x j)) ↔
+      Θ x c = (if (∃ cl ∈ fd.clauses, c ∈ cl.support) then U c
+          else D.solve c (fun j _ => Θ x j)) := by
+    intro x c
+    show (x c = (if (∃ cl ∈ fd.clauses, c ∈ cl.support) then U c
+        else D.solve c (fun j (_ : j < c) => Θ (fun k => if hk : k < c then x k else 0) j))
+      - corr c (fun j _ => x j)) ↔ _
+    rw [argeq c x, correq c x]
+    constructor <;> intro h <;> linear_combination h
+  refine ⟨D', ?_, hpin', ?_, ?_⟩
+  · -- clause (1): exact solution set
+    intro x
+    constructor
+    · intro hx
+      constructor
+      · intro c hc
+        have hnf : ¬ ∃ cl ∈ fd.clauses, c ∈ cl.support := hdisj c hc
+        have hxc := hx c ((hpin' c).mpr (Or.inl hc))
+        rw [hsolve' x c, if_neg hnf] at hxc
+        exact hxc
+      · rw [hsatU]
+        intro c hcf
+        have hxc := hx c ((hpin' c).mpr (Or.inr hcf))
+        rw [hsolve' x c, if_pos hcf] at hxc
+        exact hxc
+    · rintro ⟨hxD, hxf⟩
+      intro c hcp
+      rw [hsolve' x c]
+      by_cases hcf : ∃ cl ∈ fd.clauses, c ∈ cl.support
+      · rw [if_pos hcf]
+        exact (hsatU (Θ x)).mp hxf c hcf
+      · rw [if_neg hcf]
+        rcases (hpin' c).mp hcp with hc | hc
+        · exact hxD c hc
+        · exact absurd hc hcf
+  · -- clause (3'): a strip coordinate's solved value zeroes the Θ-image
+    rintro c ⟨cl, hcl, hsupp, hsat⟩ x hxc
+    have hcs : c ∈ cl.support := by rw [hsupp]; exact Finset.mem_singleton_self c
+    have hcf : ∃ cl ∈ fd.clauses, c ∈ cl.support := ⟨cl, hcl, hcs⟩
+    have hU0 : U c = 0 := by
+      have hsatu : cl.sat (fun _ => u cl hcl c) := by
+        rw [hu cl hcl]
+        intro c' hc'
+        have hcc : c' = c := by rw [hsupp] at hc'; exact Finset.mem_singleton.mp hc'
+        subst hcc
+        rfl
+      have hu0 : u cl hcl c = 0 := (hsat (fun _ => u cl hcl c)).mp hsatu
+      rw [← hU c cl hcl hcs]
+      exact hu0
+    have hth := (hsolve' x c).mp hxc
+    rw [if_pos hcf, hU0] at hth
+    exact hth
+  · -- clause (4'): an old literal zero's solved value zeroes the Θ-image
+    intro c hcpin hczero x hxc
+    have hnf : ¬ ∃ cl ∈ fd.clauses, c ∈ cl.support := hdisj c hcpin
+    have hth := (hsolve' x c).mp hxc
+    rw [if_neg hnf, hczero] at hth
+    exact hth
+
+/-! ### The recursion law: conditional form + the unconditional root instance -/
+
+/-- **The recursion law under the blueprint's per-step condition** (post-DC-3): the
+`JetSetup.recursion`-shaped iff holds at read `i` whenever the fresh supports are
+UNPINNED on the prior state — the D5 zcSeed docstring's pre-named "fresh clauses cut
+freshly" condition (free at i = 0; (ZC)+band geometry at the induction's steps — U10's
+supply). -/
+theorem mkSigma_recursion_of_unpinned {n N : ℕ} {H : History p F}
+    {keys : ℕ → Polynomial ℤ_[p]}
+    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (i : ℕ) (hi : i < H.nodes.length)
+    (hunpinned : ∀ c : Fin (n * N), (mkSigma H n N S vOf i).pinned c = true →
+      ¬ ∃ cl ∈ (mkFresh H n N S vOf i hi).clauses, c ∈ cl.support) :
+    ∀ x : Fin (n * N) → ZMod p,
+      (mkSigma H n N S vOf (i+1)).IsSolution x ↔
+        ((mkSigma H n N S vOf i).IsSolution (S.Theta i x) ∧
+          mkStratum H n N S vOf i (S.Theta i x)) := by
+  classical
+  have hasg : ∀ cl ∈ (mkFresh H n N S vOf i hi).clauses, ∃ u : Fin (n * N) → ZMod p,
+      ∀ x, cl.sat x ↔ ∀ c ∈ cl.support, x c = u c :=
+    fun cl hcl => clause_assign cl (mkFresh_codim S vOf i hi cl hcl)
+  have hEx : ∃ D' : Locus p (n * N),
+      IsFreshAttach (mkSigma H n N S vOf i) (S.Theta i) (mkFresh H n N S vOf i hi) D' :=
+    freshAttach_exists (mkSigma H n N S vOf i) (S.Theta_uni i)
+      (mkFresh H n N S vOf i hi) hasg hunpinned
+  have hspec := pinTransportSystem_spec (mkSigma H n N S vOf i) (S.Theta i)
+    (mkFresh H n N S vOf i hi) hEx
+  have hstep : mkSigma H n N S vOf (i+1)
+      = pinTransportSystem (mkSigma H n N S vOf i) (S.Theta i)
+          (mkFresh H n N S vOf i hi) := by
+    show (if hi' : i < H.nodes.length then
+        pinTransportSystem (mkSigma H n N S vOf i) (S.Theta i) (mkFresh H n N S vOf i hi')
+      else mkSigma H n N S vOf i) = _
+    rw [dif_pos hi]
+  intro x
+  rw [hstep, hspec.1 x]
+  constructor
+  · rintro ⟨h1, h2⟩
+    exact ⟨h1, fun _ => h2⟩
+  · rintro ⟨h1, h2⟩
+    exact ⟨h1, h2 hi⟩
+
+/-- **The root-instance recursion, UNCONDITIONAL** (i = 0: nothing is pinned before the
+root read, so the per-step condition is free). THE DC-3 COMPILED CLOSURE RECORD: this
+instance subsumes the dead countermodel's exact site (`scratch_U7_recursion_false.lean`
+fired at i = 0 against the pre-DC-3 spec) — the statement it falsified is now a theorem
+for EVERY seed. -/
+theorem mkSigma_recursion_zero {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
+    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N)) (h0 : 0 < H.nodes.length) :
+    ∀ x : Fin (n * N) → ZMod p,
+      (mkSigma H n N S vOf 1).IsSolution x ↔
+        ((mkSigma H n N S vOf 0).IsSolution (S.Theta 0 x) ∧
+          mkStratum H n N S vOf 0 (S.Theta 0 x)) := by
+  refine mkSigma_recursion_of_unpinned S vOf 0 h0 ?_
+  intro c hc
+  rw [show (mkSigma H n N S vOf 0).pinned c = false from rfl] at hc
+  exact Bool.noConfusion hc
 
 /-- THE STRATUM RECURSION (`JetSetup.recursion`'s type at `mkStratum`): the constructed
 chain satisfies `Σ_{i+1} = Θ_i*(Σ_i ∩ stratum(ν_i))` solution-setwise. -/
@@ -40,27 +378,18 @@ theorem mkSigma_recursion {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
       (mkSigma H n N S vOf (i+1)).IsSolution x ↔
         ((mkSigma H n N S vOf i).IsSolution (S.Theta i x) ∧
           mkStratum H n N S vOf i (S.Theta i x)) := by
-  -- STOP-THE-LINE, SECOND RECORD (2026-07-28, ESCALATION ROUND — supersedes the DC-2
-  -- "QUEUED-PROVABLE-NOW" note below): FALSE AS STATED, MACHINE-REFUTED.
-  -- `lean/scratch_U7_recursion_false.lean` (`U7Refute.mkSigma_recursion_FALSE`, green,
-  -- Lean-core axioms only) refutes THIS statement's ∀-S form: U27's concrete inert gate
-  -- seed perturbed by the constant unitriangular shift `σ x c = x c + 1` is a LAWFUL
-  -- `PresentSeed` (every field discharged; `Theta_uni` is the only law on Θ and does not
-  -- see the correction's value), and at read 0 the post-DC-2 `IsFreshAttach` spec is
-  -- UNSATISFIABLE: clause (1) `fd.sat (Θ x)` forces the all-ones point INTO the solution
-  -- set (its σ-image is 0), clauses (2)+(3) (LITERAL-zero solve at the pinned strip
-  -- coordinate) force it OUT. So `mkSigma` takes the junk branch (`= mkSigma i`) and the
-  -- iff fails at x = 0. ROOT CAUSE: DC-2 transported clause (1) through Θ but left
-  -- clauses (3)/(4) as literal zeros in the post-Θ coordinates; on the transported locus
-  -- a strip coordinate solves to −corr_c(x_<c), not 0. Repair options (designer-round,
-  -- DC-3 class — see the scratch file header): (i) transport clauses (3)/(4) through Θ
-  -- (solve = −corr); (ii) a new D5-fenced seed law forcing Θ-corrections to vanish at
-  -- fresh strip coordinates on the locus (the C.1.5(2) "carries vanish" content);
-  -- (iii) re-key the (ZC-a) literal-zero consumers (U9c/U10c). Statement byte-untouched
-  -- per the fence; sorry stands pending the ruling.
-  -- [Superseded DC-2 record: the earlier `fd.sat x` mismatch was repaired; the route
-  -- `C0.pinTransport` + pin-attachment + `pinTransportSystem_spec` was to close U7 —
-  -- its ∃-obligation is exactly what the countermodel refutes.]
+  -- POST-DC-3 RECORD (2026-07-28, K2 kernel round — supersedes the two earlier
+  -- stop-the-line records; the machine refutation of this statement is DEAD, see the
+  -- header). The route is `mkSigma_recursion_of_unpinned` above; what is missing for
+  -- the BARE ∀-i form is exactly its `hunpinned` leg — the blueprint's own pre-named
+  -- per-step condition ("fresh supports UNPINNED on the prior state", D5 zcSeed
+  -- docstring), free at i = 0 (`mkSigma_recursion_zero`, PROVED) but underivable at
+  -- i > 0 from a raw (H, S): junk histories can overlap read-i's band with earlier
+  -- fresh supports, where a conflicting transported equation makes the spec's solution
+  -- set non-representable at the spec's pins. Statement byte-unchanged per the fence;
+  -- DISPOSITION → sign-off queue (hypothesis addition, the U25 pattern — its per-step
+  -- discharge is U10's (ZC)+DOM geometry — or consumer re-keying to the two proved
+  -- lemmas above). Sorry stands pending the ruling.
   sorry
 
 end LeanUrat.MovesJ

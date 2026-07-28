@@ -55,6 +55,21 @@ Elaboration deviations (each recorded in `MANIFEST.json` "deviations"):
   blueprint's normative U7 display and the FROZEN `JetSetup.recursion` field type demand
   `Θ x`. Repaired to `fd.sat (Θ x)` (see the def's docstring); U7's stop-the-line record
   is thereby discharged and its route re-opens.
+* DEFS-REPAIR DC-3 (2026-07-28, deviation-correction — same class as DC-1/DC-2; K2 kernel
+  round): `IsFreshAttach` clauses (3)/(4) demanded LITERAL-zero solves in the NEW
+  coordinates where the frozen recursion keying and the PROVED `C0_pinTransport`
+  transported-solve shape demand zeros OF THE Θ-IMAGE (the same untransported-coordinate
+  bug DC-2 fixed in clause (1), one clause over). Post-DC-2 clauses (1)+(3) were JOINTLY
+  UNSATISFIABLE at lawful seeds with nonzero `Theta`-corrections on strip coordinates —
+  machine-refuted (`scratch_U7_recursion_false.lean`, U27's gate seed + the constant
+  unitriangular shift; now dead). Repaired to the Θ-composed form (see the def's
+  docstring); blueprint statements unchanged (its D7 fixes only the carrier). U7's
+  second stop-the-line record is discharged: the i = 0 recursion instance is now PROVED
+  (`mkSigma_recursion_zero`, subsuming the refutation's exact instance), the general
+  attachment constructor is proved under the blueprint's own pre-named per-step
+  condition ("fresh supports UNPINNED on the prior state", D5 zcSeed docstring). The
+  LITERAL-zero (ZC-a) content moves where the note keeps it (conditional): the pending
+  Θ-normalization zcSeed law (U9b/U9c records; D5-fence sign-off item).
 Flagged for semantic-guardian review throughout (the trust boundary).
 -/
 
@@ -516,17 +531,35 @@ def emptyFresh (p m : ℕ) : FreshData p m := ⟨[], List.Pairwise.nil⟩
 /-- **The fresh-attachment SPEC** (D7): `D'` re-presents `Θ*(D) ∩ (fresh locus)` as a digit
 system with (1) that exact solution set, (2) pins = the transported pins PLUS the fresh
 clauses' cut coordinates (= the clause supports: a strip cuts its coordinate, a value
-clause its whole level set — the DIG re-presentation's pinned set), (3) literal-zero
-solves at strip coordinates and (4) zero-solve transport (C.1.5(2): old zeros survive as
-zeros — the (ZC-a) normalized presentation). Existence of such a `D'` from
-`C0.pinTransport` + the strip/value pin-attachment constructor is U7's obligation.
+clause its whole level set — the DIG re-presentation's pinned set), (3) strip coordinates
+solve BY the strip's own transported equation — the solved value zeroes the Θ-IMAGE's
+coordinate — and (4) zero-solve transport (C.1.5(2): old zeros survive as zeros OF THE
+Θ-IMAGE — the transported equation, exactly `C0_pinTransport`'s constructed solve shape).
+Existence of such a `D'` from `C0.pinTransport` + the strip/value pin-attachment
+constructor is U7's obligation.
 DC-2 (2026-07-28, deviation-correction — blueprint §2.2; the §9 F-7 authorization,
 executed): clause (1) originally read the fresh locus at `x` (`fd.sat x`), where the
 blueprint's normative U7 display — and the FROZEN `JetSetup.recursion` field type it
 mirrors (`stratum i (Theta i x)`, MovesC/Defs.lean 872–873) — read it at `Θ x`. That
 E-phase elaboration bug made U7's `mkSigma_recursion` unprovable as stated (its in-file
 STOP-THE-LINE record: the forced reduction demanded `Θ`-invariance of the fresh locus,
-which nothing supplies). Repaired to `fd.sat (Θ x)`; blueprint statement unchanged. -/
+which nothing supplies). Repaired to `fd.sat (Θ x)`; blueprint statement unchanged.
+DC-3 (2026-07-28, deviation-correction — blueprint §2.2 class; the K2 diagnosis): clauses
+(3)/(4) carried the SAME untransported-coordinate bug one clause over — they demanded
+LITERAL-zero solves in the NEW coordinates (`∀ g, D'.solve c g = 0`) where the frozen
+recursion keying (everything at `Θ x`) and the PROVED `C0_pinTransport` (its constructed
+transported solve is `D.solve∘Θ-image − corr`, i.e. the solved value zeroes the Θ-image,
+NOT the new coordinate) demand the transported equation. Post-DC-2 that made clauses
+(1)+(3) JOINTLY UNSATISFIABLE at any lawful seed whose `Theta` carries a nonzero
+correction on a strip coordinate — machine-refuted from U27's gate seed + the constant
+unitriangular shift (`scratch_U7_recursion_false.lean`, now dead; the refutation's own
+header records the blueprint U7 display as NOT refuted). The blueprint's D7 fixes only
+the solution-set/pin CARRIER ("The (ZC)-relevant geometry … is settled by U9/U10, not by
+this definition"); clauses (3)/(4) are E-phase ADDENDA (MANIFEST deviation: they make
+U9c/U10c statable of the chosen system) and are here repaired to the Θ-composed form.
+The LITERAL-zero content ((ZC-a), C.1.5's "No carries occur in valuation content",
+MOVES 3984–3988) is CONDITIONAL note content; its Lean carrier is the pending
+Θ-normalization zcSeed law (D5 fence, U9b/U9c records) — never this unconditional spec. -/
 def IsFreshAttach {p m : ℕ} (D : Locus p m)
     (Θ : (Fin m → ZMod p) → (Fin m → ZMod p)) (fd : FreshData p m)
     (D' : Locus p m) : Prop :=
@@ -534,8 +567,9 @@ def IsFreshAttach {p m : ℕ} (D : Locus p m)
   (∀ c : Fin m, D'.pinned c = true ↔
     (D.pinned c = true ∨ ∃ cl ∈ fd.clauses, c ∈ cl.support)) ∧
   (∀ c : Fin m, (∃ cl ∈ fd.clauses, cl.support = {c} ∧ ∀ x, (cl.sat x ↔ x c = 0)) →
-    ∀ g, D'.solve c g = 0) ∧
-  (∀ c : Fin m, D.pinned c = true → (∀ g, D.solve c g = 0) → ∀ g, D'.solve c g = 0)
+    ∀ x : Fin m → ZMod p, x c = D'.solve c (fun j _ => x j) → Θ x c = 0) ∧
+  (∀ c : Fin m, D.pinned c = true → (∀ g, D.solve c g = 0) →
+    ∀ x : Fin m → ZMod p, x c = D'.solve c (fun j _ => x j) → Θ x c = 0)
 
 open Classical in
 /-- The transported-and-attached system: THE spec-satisfying digit system when one exists

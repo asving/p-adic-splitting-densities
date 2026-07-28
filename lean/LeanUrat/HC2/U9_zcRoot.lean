@@ -15,6 +15,20 @@ at each sorry below. Headline: the F-7 "inlinable ∃-witness" premise is FALSE 
 `IsFreshAttach` clauses (1)+(3) jointly force `S.Theta 0`'s unitriangular corrections
 to vanish at every strip coordinate on the fresh locus, which no `PresentSeed` law
 supplies (the same obstruction re-blocks U7.mkSigma_recursion despite DC-2).
+DC-3 ADDENDUM (2026-07-28, K2 kernel round; statements byte-unchanged, the records
+below kept as history): `IsFreshAttach` clauses (3)/(4) repaired to Θ-COMPOSED zeros
+(Defs DC-3 — the untransported-coordinate bug, same class DC-2 fixed in clause (1));
+the U7 machine refutation is DEAD and the ∃-witness EXISTS at i = 0 for every seed
+(U7.freshAttach_exists + mkSigma_recursion_zero — no pins before the root read).
+Status shift: U9b's existence obstruction is DISCHARGED — its route re-opens as the
+recorded backwards run of the U9a machinery (witness branch now total; pins off spec
+clause (2)). U9c: obstruction (i) is discharged, obstruction (ii) STANDS, and the
+literal-zero leg now needs the Θ-normalization zcSeed law (post-DC-3 the chosen
+system's strip solves are −corr, zero exactly when the correction vanishes — the
+C.1.5 "No carries occur in valuation content" residue, landing as a named seed law
+per D5's fence exactly as the blueprint's residue rule predicted; the dead
+countermodel's badSeed now witnesses U9c-as-stated false pending that law). Both U9c
+legs remain designer sign-off items (N-queue).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
