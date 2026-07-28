@@ -187,6 +187,16 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   Journey: 6/11 -> 2/4 -> split (5/8 vs 0/0) -> adjudicated 1/1 + 0/1 -> 0/0
   dual. THE NOTE ERRATUM (R6 row) now confirmed by four independent auditor
   passes. E-phase launched. ***
+  THE CONSOLIDATED FRONTIER (2026-07-28, end of the autonomous horizon):
+  three kernels carry every remaining hard-core sorry — (K1) the read-indexed
+  D.8 vertex pin (HC-2 U20a/U20b/U22E2 + HC-1 S7(c)/S8/S11a twist class: ONE
+  design, both cores); (K2) the mkSigma recursion clause (U7 refuted on real
+  seeds — a Defs-design item; U10/U9b/U9c gated); (K3) U18's adjacency
+  hypothesis (conditional refutation witness on record). PLUS the sign-off
+  queues F-1..F-6 / N-1..N-6 (drafted, machine-justified, awaiting Asvin) and
+  the recorded waves: 4 (MovesT/MovesV -> 22 seam entries), the Aug-02 Codex
+  ratification batch, MovesR unparking. Every sorry in the repo is one of:
+  a queue item above, a seam-contract entry, or a named obstruction kernel.
   S13 ADJUDICATION (2026-07-28, orchestrator direct read): the note's D.9(d)
   (MOVES 2573-2581) scopes any-scalar realizability to e_read = 1 READS
   ("At any e_read = 1 read... any digit scalar is realizable"), persisting
