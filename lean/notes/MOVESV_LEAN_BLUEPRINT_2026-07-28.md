@@ -1,4 +1,4 @@
-# MOVESV LEAN BLUEPRINT — REV 3 (wave 4)
+# MOVESV LEAN BLUEPRINT — REV 4 (wave 4)
 
 *(2026-07-28, Fable blueprint writer. GROUND TRUTH: the frozen dual-accepted
 §V-TABLES text, `lean/notes/MOVES_2026-07-24.md` lines 7829–9054 (rev 7 —
@@ -103,6 +103,73 @@ the round-2 disposition table is §6.2. The five structural repairs:
    note never displays that string); V3-6(c) re-pointed to the EXPORTED
    `D4R1_SUM`/`D0b_thmCtop`.
 
+**REVISION RECORD — REV 4.** REV 3 was REJECTED by both round-3 auditors:
+Codex 13 crit / 4 gap (`MOVESV_AUDIT_CODEX3_2026-07-28.md`, findings 1–17) and
+Fable fresh-instance 3 crit / 2 gap (`MOVESV_AUDIT_FABLE3_2026-07-28.md`,
+N-1/N-2/N-3, G-1/G-2 — with ALL SIX round-2 F-refutations verified DEAD and the
+rev-3 entrance/census cluster verified correct). The round-3 disposition table
+is §6.3. The structural repairs, named once here:
+1. **THE HMC SPLIT (Fable N-1; ORCHESTRATOR ADJUDICATION, campaign ledger
+   "N-1/HMC ADJUDICATION" 2026-07-28 — binding).** Rev 3's `XHDd` keyed its
+   two-sided exactness to the DEFINITIONAL `chainCount`, which built the
+   domain BY the recursion — `HMC S D` became a four-line THEOREM of every
+   instance, V4-11's false-HMC toy and V4-12(c)'s fence were unsatisfiable,
+   and every XHD consumer could discharge the open kernel (the ledger
+   {XHD-d} vs {XHD-d, HMC} collapsed). ADJUDICATED FIX, implemented here:
+   the TABLE side (T_γ = `chainCount`, G = the XHD-s sums) stays
+   recursive-by-definition; the PROCESS side H(γ) is DEFINED from the
+   realized MARKED EVENTS (the (vi) COMP vocabulary, MOVES 8225–8245) via
+   the new carrier `TmplEvents` (§2.G: free composite-template event data,
+   tied to the step layer ONLY at length 1) and the realization def `TReal`;
+   `XHDd`'s exactness is re-keyed to `TReal`; **HMC is the TYPED LINK** —
+   the factorization hypothesis, OPEN exactly as the note displays it
+   (MOVES 8198–8204, quoted at §2.G) and now underivable (the four-line
+   proof needs count-keyed exactness, which no longer exists). V4-11's toy
+   and V4-12(c)'s fence are re-keyed to the process side (satisfiable
+   again); clause (v)'s conditionality is restored corpus-wide.
+2. **THE POOL PARAMETER (Fable N-2 = Codex-1, the convergent finding).**
+   Rev 3's `Hist`/`Assign`/`cntraw`/`cntc` were pool-FREE while every count
+   law quantified `∀ q₀ ∈ Pools` — forcing constant count polynomials
+   (refuted by the gate: T21 = X(X−1) has eval 2 = 2 ≠ 6 = eval 3). REV 4
+   pool-indexes the history layer: `Hist : ℚ → Cell → Type`; every count is
+   a count AT q₀ through its history's pool index (the same box-side move
+   the rev-3 census carriers already made, extended one layer down). The
+   T21 check 2-vs-6 is the acceptance number, displayed at V2-4.
+3. **kstep's k = 0 case (Fable N-3):** `kstep 0 τ β q₀ := if τ = β then 1
+   else 0` (the Kronecker δ — empty path: ∏T = 1, empty height sum = 1);
+   the frozen `LedgerIV.hmc` at k = 0 now reads kstep 1 = Σ δ·kstep 1 ✓.
+   The built device instance documents the requirement
+   (`MovesS/N2Carriers.lean` 101–105: "kstep 0 = 1 and the HMC scalar law
+   … holds"; kstep := (…)^k).
+4. **THE CODEX-ROUND-3 STATEMENT REPAIRS (findings 2–13):**
+   continuing/terminal status re-keyed from letters to OUTCOMES (§2.C —
+   V.6.3's m₂ has terminal o_split/o_inert AND continuing o_double);
+   `evt_disj` re-keyed to DIGIT-CELL disjointness only (cross-continuation
+   pairs excluded — the note allows equal f-projections across marks; the
+   within-cell sum meas_card needs is the NAMED burden `MarkDisj`);
+   σ_sel's entries tied BY FIELD to the taken continuation's shape-level
+   rank (`hrank`, §2.D); `mdom` tied to XHDd's length-1 domain by the
+   displayed coherence structure `MDomTie` (§2.G); `hent` upgraded from the
+   lossy sum to the INJECTIVE retained-tuple code `hentCode` (SF-1 stands,
+   re-verified: no MovesS law reads the field); ENT-AGG split into the
+   note-exact aggregation (V3-8a, GIVEN the shallow summability face — NO
+   (ENT-U)) and the ιval identification (V3-8b, GIVEN (ENT-U), where the
+   note itself lists it); V4-12's iff restated at the note's EXACT
+   quantifier (the FIXED XHD weight system — the ∀-E-family quantifier is
+   struck; the only-if leg is recorded process-scoped with a machine-checked
+   inderivability witness); `tgt_supported` gains the note's active-source
+   guard; the XRB re-key is now ONE SHARED PACKAGE PARAMETER with the four
+   names as face projections (never four bundle-strength premises);
+   `Wsh17PackageV` carries the FULL frozen field roster (owner Props as
+   parameters); XHD-w/-u laws gain the `zc` realizability guards; V6-2b's
+   moves_ref splice deleted.
+5. **ONE-DISPLAY PROMOTION + ROSTER HYGIENE (Codex-16; Fable G-1/G-2):**
+   the pre-approved splits are PROMOTED to real unit IDs with files
+   (V3-3a–d, V3-5a–c, V4-6a–c, V5-2a–c, V7-5a–c); V7-6a splits into
+   V7-6a1/V7-6a2 (the ≤ 4-lemma roster rule); V7-5's act_iff leg now
+   DISPLAYS its `Nonempty (Cell e τ)` step (G-1). Census: 95 units =
+   32 easy / 59 medium / 4 hard (§5).
+
 ## §0 Charge, status, and the conditionality banner
 
 **WHAT THIS CORPUS IS.** §V-TABLES = assembly note [1v]-COND: ONE fixed
@@ -120,8 +187,13 @@ BY DEFINITION), never an f-event mass and never a density.
   structures; NO unit proves them; the discharge is the separate recorded
   event [1v]-FULL (V1-5's `IsFullDischarge` — bookkeeping, no mathematics).
 - (v) HMC: OPEN KERNEL (probe specced-and-pinned at V.4, RUN status per the
-  note: NOT run at freeze). Typed at §2.G; (HMC-AUG) a SEPARATE named Prop
-  (body now DISPLAYED, §2.G).
+  note: NOT run at freeze). Typed at §2.G as the LINK between the
+  process-side domain (defined from the realized marked events — the N-1
+  adjudication) and the table side; NO unit proves it, and REV 4 restores
+  its underivability: the rev-3 interface PROVED it (XHDd's exactness was
+  keyed to the definitional chain count — the four-line collapse Fable N-1
+  displayed), which the process-side re-key repairs. (HMC-AUG) a SEPARATE
+  named Prop (body DISPLAYED, §2.G, re-based on `TmplEvents`).
 - ENT-COUNT, (ENT-U), INIT-RAT: named burdens of clause (iii) — statements
   typed, INIT-RAT a theorem-under-hypotheses unit (V3-9c).
 - (J-RAT)/CL-18: owner [1v] (with [2b] on the height-sum face) — THE PLAN-SYNC
@@ -148,11 +220,12 @@ own GIVEN); the clause-(i) meet lemma (V2-3); the entrance-template
 finiteness (V3-4, now intrinsic — see C12); ENT-AGG's finite half (V3-7);
 (ii-a)/(ii-b) given ValA's count semantics (V4-1/2); PART-2's n = 3 surplus
 ≡ 0 over the gate rosters + the general lemma GIVEN the displayed
-continuing-size-≥-2 premise (V4-8); the (v)-naming EQUIVALENCE at the
-displayed ∀-weight-system quantifier — HMC ⟺ the factorization identity for
-EVERY positive-affine monomial weight system (V4-12, both directions of the
-note's IF AND ONLY IF, GIVEN only the XHDd data argument; the single-system
-failure witness rides as its non-vacuity fence); and the V.6 gate layer
+continuing-size-≥-2 premise (V4-8); the (v)-naming sentence's IF leg at the
+note's OWN quantifier — HMC ⟹ the factorization identity AT THE FIXED XHD
+weight system, every template (V4-12(a); the ONLY-IF leg is process-scoped
+and recorded NOT interface-derivable — its coincidence witness and the
+false-HMC failure fence are machine-checked, V4-12(b′)/(c)); and the V.6
+gate layer
 **EXCEPT V6-4c** (V6-1a..V6-4b:
 closed forms, PART-1 count faces, DEG-CONS rosters, domain normal form, the
 gate-B dyadic arithmetic and two-history discipline; the census units V6-1c/
@@ -266,8 +339,18 @@ abbrev VLabel (n : ℕ) := {ef : ℕ+ × ℕ+ // (ef.1 : ℕ) * (ef.2 : ℕ) ≤
 XHD is stated over the STEP SYSTEM `StepSys` (§2.C defines its intended
 instance; the structures are parameterized so [2b]'s eventual discharge
 re-keys once). The RAW primitives are HISTORY-INDEXED — without that, (u-R)
-and (U-A) would be contentless (the pass-1/2 lumpability findings). REV-2
-CHANGES (C1/C2/A-2/A-5 repairs), REV-3 AMENDMENTS (Codex-1/2: `out_ne`
+and (U-A) would be contentless (the pass-1/2 lumpability findings).
+**REV-4 CHANGE (N-2 = Codex-1, THE POOL PARAMETER):** the history layer is
+POOL-INDEXED — `Hist : ℚ → Cell → Type`, histories of the process AT the
+pool q₀ (over F_{q₀}) — and every count/mass primitive reads its pool
+through its history argument. The rev-3 defect: `Assign`/`cntraw` had no q₀
+anywhere, so `∀ q₀ ∈ Pools`-quantified count laws forced ONE natural to
+equal T.eval at every pool — every table polynomial CONSTANT, refuted by
+T21 = X(X−1) (eval 2 = 2 ≠ 6 = eval 3, the V2-4 acceptance numbers). The
+census carriers (§2.F) already carried q₀ box-side; this extends the same
+index one layer down. TWO-HORN CLOSURE (N-2's): `u_R_cnt` now compares
+histories AT THE SAME POOL only — no cross-prime count equality is forced.
+REV-2 CHANGES (C1/C2/A-2/A-5 repairs), REV-3 AMENDMENTS (Codex-1/2: `out_ne`
 re-keyed to productivity; terminal twins throughout): non-vacuity laws
 `cell_ne`/`out_ne`/`zc_ne` typed in; the history-extension operation `ext`
 added (the carrier the chain
@@ -313,23 +396,27 @@ structure StepSys (n : ℕ) where
   Pools : Set ℚ
   pools_pp : ∀ q₀ ∈ Pools, IsPP q₀
   pools_gt_one : ∀ q₀ ∈ Pools, (1 : ℚ) < q₀
-  Hist  : Cell → Type
-  hist_ne : ∀ α, Nonempty (Hist α)
-  zc    : ∀ {α}, Hist α → Prop        -- (ZC)-satisfying realizable prefixes
-  zc_ne : ∀ α, ∃ x : Hist α, zc x                      -- [C1 non-vacuity]
-  Assign : ∀ {α β} (m : Move α β), Hist α → Hpt (dim m) → Type
-  finA   : ∀ {α β} (m : Move α β) x h, Fintype (Assign m x h)
-  AssignT : ∀ {α v} (m : MoveT α v), Hist α → Hpt (dimT m) → Type
-  finAT  : ∀ {α v} (m : MoveT α v) x h, Fintype (AssignT m x h)
-  ext : ∀ {α β} (m : Move α β) (x : Hist α) (h : Hpt (dim m)),
-    Assign m x h → Hist β             -- [A-2: the history-extension carrier]
-  ext_zc : ∀ {α β} (m : Move α β) (x : Hist α) (h) (a : Assign m x h),
+  Hist  : ℚ → Cell → Type             -- [REV 4, N-2: histories AT the pool q₀]
+  hist_ne : ∀ q₀ ∈ Pools, ∀ α, Nonempty (Hist q₀ α)
+  zc    : ∀ {q₀ α}, Hist q₀ α → Prop  -- (ZC)-satisfying realizable prefixes
+  zc_ne : ∀ q₀ ∈ Pools, ∀ α, ∃ x : Hist q₀ α, zc x    -- [C1 non-vacuity]
+  Assign : ∀ {α β} (m : Move α β) {q₀}, Hist q₀ α → Hpt (dim m) → Type
+    -- [N-2: the fresh-assignment fiber AT q₀ — the count layer is per-pool
+    --  THROUGH the history index; no law compares fibers across pools]
+  finA   : ∀ {α β} (m : Move α β) {q₀} (x : Hist q₀ α) h, Fintype (Assign m x h)
+  AssignT : ∀ {α v} (m : MoveT α v) {q₀}, Hist q₀ α → Hpt (dimT m) → Type
+  finAT  : ∀ {α v} (m : MoveT α v) {q₀} (x : Hist q₀ α) h, Fintype (AssignT m x h)
+  ext : ∀ {α β} (m : Move α β) {q₀} (x : Hist q₀ α) (h : Hpt (dim m)),
+    Assign m x h → Hist q₀ β          -- [A-2; extension stays AT the pool]
+  ext_zc : ∀ {α β} (m : Move α β) {q₀} (x : Hist q₀ α) (h) (a : Assign m x h),
     zc x → zc (ext m x h a)           -- extension preserves realizability
-  massOf : ∀ {α β} (m : Move α β) (x : Hist α) (h : Hpt (dim m)),
-    Assign m x h → ℚ → ℝ              -- the C.1.5 fresh-volume ratio, per cell
-  massOfT : ∀ {α v} (m : MoveT α v) (x : Hist α) (h : Hpt (dimT m)),
-    AssignT m x h → ℚ → ℝ
-  out_ne : ∀ α (x : Hist α), zc x →
+  massOf : ∀ {α β} (m : Move α β) {q₀} (x : Hist q₀ α) (h : Hpt (dim m)),
+    Assign m x h → ℝ                  -- the C.1.5 fresh-volume ratio AT q₀
+                                      -- (the pool rides the history index —
+                                      --  the rev-3 free ℚ argument is out)
+  massOfT : ∀ {α v} (m : MoveT α v) {q₀} (x : Hist q₀ α) (h : Hpt (dimT m)),
+    AssignT m x h → ℝ
+  out_ne : ∀ q₀ ∈ Pools, ∀ α (x : Hist q₀ α), zc x →
     (∃ β (m : Move α β) (h : Hpt (dim m)), Nonempty (Assign m x h)) ∨
     (∃ v (m : MoveT α v) (h : Hpt (dimT m)), Nonempty (AssignT m x h))
     -- [RE-KEYED at REV 3 (Codex-1's both horns): PRODUCTIVITY at realized
@@ -342,12 +429,15 @@ structure StepSys (n : ℕ) where
     -- all-empty-Assign adversary now violates out_ne at the zc_ne witness.]
 
 /-- T(h) from x — a DEF, not data (C2 repair: the count IS the Assign
-cardinality; nothing to tie). -/
-def StepSys.cntraw {n} (S : StepSys n) {α β} (m : S.Move α β)
-    (x : S.Hist α) (h : Hpt (S.dim m)) : ℕ :=
+cardinality; nothing to tie). REV 4 (N-2): a count AT x's pool — the value
+at q₀ = 2 and the value at q₀ = 3 are counts of DIFFERENT fibers (histories
+over F₂ vs F₃); `tbl_count`'s per-pool valuation is now satisfiable at
+non-constant tables (the T21 gate check, V2-4). -/
+def StepSys.cntraw {n} (S : StepSys n) {α β} (m : S.Move α β) {q₀}
+    (x : S.Hist q₀ α) (h : Hpt (S.dim m)) : ℕ :=
   @Fintype.card (S.Assign m x h) (S.finA m x h)
-def StepSys.cntrawT {n} (S : StepSys n) {α v} (m : S.MoveT α v)
-    (x : S.Hist α) (h : Hpt (S.dimT m)) : ℕ :=
+def StepSys.cntrawT {n} (S : StepSys n) {α v} (m : S.MoveT α v) {q₀}
+    (x : S.Hist q₀ α) (h : Hpt (S.dimT m)) : ℕ :=
   @Fintype.card (S.AssignT m x h) (S.finAT m x h)
 
 /-- (U-A)'s §C supply, TYPED (V.0 "WHAT §C ACTUALLY SUPPLIES, displayed"):
@@ -357,15 +447,15 @@ NOMINAL DIGIT INVENTORY (C.1(ii)) — never of which values the cell pins.
 Owner §C/HC-2; each field cites its display. -/
 structure C15Pack (n : ℕ) (S : StepSys n) where
   Inv   : Type
-  invOf : ∀ {α β} (m : S.Move α β), S.Hist α → Hpt (S.dim m) → Inv
-  invOfT : ∀ {α v} (m : S.MoveT α v), S.Hist α → Hpt (S.dimT m) → Inv  -- [+T]
+  invOf : ∀ {α β} (m : S.Move α β) {q₀}, S.Hist q₀ α → Hpt (S.dim m) → Inv
+  invOfT : ∀ {α v} (m : S.MoveT α v) {q₀}, S.Hist q₀ α → Hpt (S.dimT m) → Inv
   F     : Inv → ℚ → ℝ                 -- the common conditional-mass functional
-  mass_factors : ∀ {α β} (m : S.Move α β) (x : S.Hist α) (h : Hpt (S.dim m))
-    (a : S.Assign m x h) (q₀ : ℚ), q₀ ∈ S.Pools → S.zc x →
-    S.massOf m x h a q₀ = F (invOf m x h) q₀
-  mass_factorsT : ∀ {α v} (m : S.MoveT α v) (x : S.Hist α) (h : Hpt (S.dimT m))
-    (a : S.AssignT m x h) (q₀ : ℚ), q₀ ∈ S.Pools → S.zc x →
-    S.massOfT m x h a q₀ = F (invOfT m x h) q₀
+  mass_factors : ∀ {α β} (m : S.Move α β) {q₀} (x : S.Hist q₀ α)
+    (h : Hpt (S.dim m)) (a : S.Assign m x h), q₀ ∈ S.Pools → S.zc x →
+    S.massOf m x h a = F (invOf m x h) q₀
+  mass_factorsT : ∀ {α v} (m : S.MoveT α v) {q₀} (x : S.Hist q₀ α)
+    (h : Hpt (S.dimT m)) (a : S.AssignT m x h), q₀ ∈ S.Pools → S.zc x →
+    S.massOfT m x h a = F (invOfT m x h) q₀
     -- [+T, Codex-2: the note's (U-A)/C.1.5(1) covers the final terminal read
     -- exactly as it covers continuing reads — same inventory functional F]
   -- [C.1.5(1) + TYP(b): the mass is q^{−pins(inv)}·∏ alph(inv)⁻¹; the
@@ -376,18 +466,23 @@ structure C15Pack (n : ℕ) (S : StepSys n) where
 positive, EQUAL to the per-assignment C.1.5 ratio at h — "the conditional
 mass, given the source cylinder at ANY representative of α under ANY
 admissible history reaching it, of one fresh assignment realizing (m, o, β)
-at h". Indexed by SOURCE AND TARGET cells (pass-6 concern 1). Owner [2b]. -/
+at h". Indexed by SOURCE AND TARGET cells (pass-6 concern 1). REV 4
+(Codex-12): the laws carry the `zc` REALIZABILITY GUARD — the note
+quantifies over "ANY admissible history reaching it", never junk `Hist`
+elements (the `C15Pack.mass_factors` pattern, now uniform). Owner [2b]. -/
 structure XHDw (n : ℕ) (S : StepSys n) where
   E : ∀ {α β} (m : S.Move α β), AffineE (S.dim m)
   ET : ∀ {α v} (m : S.MoveT α v), AffineE (S.dimT m)
-  w_eq : ∀ {α β} (m : S.Move α β) (x : S.Hist α) (h : Hpt (S.dim m))
-    (a : S.Assign m x h) (q₀ : ℚ), q₀ ∈ S.Pools →
-    S.massOf m x h a q₀ = (q₀ : ℝ) ^ (-((E m).eval h : ℤ))
-  wT_eq : ∀ {α v} (m : S.MoveT α v) (x : S.Hist α) (h : Hpt (S.dimT m))
-    (a : S.AssignT m x h) (q₀ : ℚ), q₀ ∈ S.Pools →
-    S.massOfT m x h a q₀ = (q₀ : ℝ) ^ (-((ET m).eval h : ℤ))
+  w_eq : ∀ {α β} (m : S.Move α β) {q₀} (x : S.Hist q₀ α) (h : Hpt (S.dim m))
+    (a : S.Assign m x h), q₀ ∈ S.Pools → S.zc x →
+    S.massOf m x h a = (q₀ : ℝ) ^ (-((E m).eval h : ℤ))
+  wT_eq : ∀ {α v} (m : S.MoveT α v) {q₀} (x : S.Hist q₀ α) (h : Hpt (S.dimT m))
+    (a : S.AssignT m x h), q₀ ∈ S.Pools → S.zc x →
+    S.massOfT m x h a = (q₀ : ℝ) ^ (-((ET m).eval h : ℤ))
 
-/-- the derived one-step weight (a def, not a field): g^{α,β}_{m,o}(h)(q₀). -/
+/-- the derived one-step weight (a def, not a field): g^{α,β}_{m,o}(h)(q₀).
+Pool-explicit BY DESIGN — the weight formula is symbolic; only masses ride
+histories. -/
 noncomputable def XHDw.g {n} {S : StepSys n} (X : XHDw n S) {α β}
     (m : S.Move α β) (h : Hpt (S.dim m)) (q₀ : ℚ) : ℝ :=
   (q₀ : ℝ) ^ (-((X.E m).eval h : ℤ))
@@ -400,21 +495,30 @@ is DERIVED (V1-3's exactness + XHDd.no_stray) — no named `u_T_dom` object
 exists or is pointed to (A-7 repair). Owner [2b]; NOT §C-derivable (V.0's
 honest split — the fence unit V1-7 exhibits a C15Pack model violating u_R). -/
 structure XHDu (n : ℕ) (S : StepSys n) where
-  u_R_mass : ∀ {α β} (m : S.Move α β) (x x' : S.Hist α) (h : Hpt (S.dim m))
-    (a : S.Assign m x h) (a' : S.Assign m x' h) (q₀ : ℚ), q₀ ∈ S.Pools →
-    S.massOf m x h a q₀ = S.massOf m x' h a' q₀
-  u_R_cnt : ∀ {α β} (m : S.Move α β) (x x' : S.Hist α) (h : Hpt (S.dim m)),
+  -- REV 4: SAME-POOL comparisons only (N-2's two-horn closure: no
+  -- cross-prime count equality is forced) + zc guards (Codex-12: the note
+  -- compares "representatives … under admissible histories", never junk):
+  u_R_mass : ∀ {α β} (m : S.Move α β) {q₀} (x x' : S.Hist q₀ α)
+    (h : Hpt (S.dim m)) (a : S.Assign m x h) (a' : S.Assign m x' h),
+    q₀ ∈ S.Pools → S.zc x → S.zc x' →
+    S.massOf m x h a = S.massOf m x' h a'
+  u_R_cnt : ∀ {α β} (m : S.Move α β) {q₀} (x x' : S.Hist q₀ α)
+    (h : Hpt (S.dim m)), q₀ ∈ S.Pools → S.zc x → S.zc x' →
     S.cntraw m x h = S.cntraw m x' h
-  u_T : ∀ {α β} (m : S.Move α β) (x : S.Hist α) (h h' : Hpt (S.dim m)),
+  u_T : ∀ {α β} (m : S.Move α β) {q₀} (x : S.Hist q₀ α)
+    (h h' : Hpt (S.dim m)), q₀ ∈ S.Pools → S.zc x →
     0 < S.cntraw m x h → 0 < S.cntraw m x h' →
     S.cntraw m x h = S.cntraw m x h'
   -- terminal twins (Codex-2: XHD-u covers the final terminal read):
-  u_R_massT : ∀ {α v} (m : S.MoveT α v) (x x' : S.Hist α) (h : Hpt (S.dimT m))
-    (a : S.AssignT m x h) (a' : S.AssignT m x' h) (q₀ : ℚ), q₀ ∈ S.Pools →
-    S.massOfT m x h a q₀ = S.massOfT m x' h a' q₀
-  u_R_cntT : ∀ {α v} (m : S.MoveT α v) (x x' : S.Hist α) (h : Hpt (S.dimT m)),
+  u_R_massT : ∀ {α v} (m : S.MoveT α v) {q₀} (x x' : S.Hist q₀ α)
+    (h : Hpt (S.dimT m)) (a : S.AssignT m x h) (a' : S.AssignT m x' h),
+    q₀ ∈ S.Pools → S.zc x → S.zc x' →
+    S.massOfT m x h a = S.massOfT m x' h a'
+  u_R_cntT : ∀ {α v} (m : S.MoveT α v) {q₀} (x x' : S.Hist q₀ α)
+    (h : Hpt (S.dimT m)), q₀ ∈ S.Pools → S.zc x → S.zc x' →
     S.cntrawT m x h = S.cntrawT m x' h
-  u_TT : ∀ {α v} (m : S.MoveT α v) (x : S.Hist α) (h h' : Hpt (S.dimT m)),
+  u_TT : ∀ {α v} (m : S.MoveT α v) {q₀} (x : S.Hist q₀ α)
+    (h h' : Hpt (S.dimT m)), q₀ ∈ S.Pools → S.zc x →
     0 < S.cntrawT m x h → 0 < S.cntrawT m x h' →
     S.cntrawT m x h = S.cntrawT m x h'
 ```
@@ -484,7 +588,11 @@ structure GenSpec (Carrier : ℚ → Type) where
   relObs : ∀ q₀, Carrier q₀ → Val q₀
   stratOf : ∀ q₀, Val q₀ → idx
   rel_eq : ∀ (P : Polynomial ℤ), kind = .rel P → ∀ q₀ x,
-    base q₀ x = stratOf q₀ ((P.map (Int.castRingHom (Val q₀))).eval (relObs q₀ x))
+    base q₀ x = stratOf q₀
+      (letI := ringV q₀
+       ((P.map (Int.castRingHom (Val q₀))).eval (relObs q₀ x)))
+    -- [REV 4, Codex-15: the stored CommRing installed via letI before the
+    --  polynomial evaluation — the field now elaborates as written]
 
 /-- (D1)–(D4) for ONE skeleton — CL-13's COMPUTED-PARTITION DELIVERABLE, one
 typed record (V.2: "the meet symbol is a construction RECIPE; the clause-(i)
@@ -516,50 +624,65 @@ structure BlockData (n : ℕ) (s : Skeleton n) where
   size_count : ∀ (a) (q₀ : ℚ), IsPP q₀ →
     ((sizeP a).eval q₀ : ℚ)
       = (Finset.univ.filter (fun x : Carrier q₀ => ∀ g, (gen g).part q₀ x = a g)).card
-  -- (D4) the target-cell map per CONTINUING letter, landing in the TARGET
+  -- the letter's FULL OUTCOME roster (REV 4, Codex-2: outcomes moved HERE
+  -- from CtsFamily — continuing/terminal status is an OUTCOME datum, never
+  -- a letter datum: V.6.3's ONE letter m₂ has terminal outcomes o_split,
+  -- o_inert AND the continuing outcome o_double; no `cont : Letter → Prop`
+  -- can represent that roster, so the rev-1..3 letter keying is STRUCK):
+  Outc : Letter → Type
+  finO : ∀ m, Fintype (Outc m)
+  -- (D4) the target data per CONTINUING OUTCOME, landing in the TARGET
   -- block's cells "under the SAME global definition" (typed by codomain):
-  cont : Letter → Prop
-  decCont : DecidablePred cont
-  tgtSk : ∀ m, cont m → Skeleton n
-  tgt_menu : ∀ m (h : cont m), (letterSp m).isLeft   -- continuing ⟹ species side
+  cont : ∀ m, Outc m → Prop
+  decCont : ∀ m, DecidablePred (cont m)
+  tgtSk : ∀ m (o : Outc m), cont m o → Skeleton n
+  tgt_menu : ∀ m (o : Outc m) (h : cont m o), (letterSp m).isLeft
+    -- a continuing OUTCOME forces the species side; a letter may carry
+    -- terminal outcomes besides ((D4)'s duty covers continuing outcomes only)
 ```
 
-`BlockData.CellIdx := {a : ∀ g, (gen g).idx // sizeP a ≠ 0}` after zero-size
-deletion (V.2: "cells with IDENTICALLY-zero size polynomial are deleted once,
-symbolically"). THE TARGET-CELL MAP's cell-level component is a field of the
+`BlockData.CellIdx` (the def now DISPLAYED above, in declaration order —
+Codex-15) encodes zero-size deletion (V.2: "cells with IDENTICALLY-zero size
+polynomial are deleted once, symbolically"); V2-2 keeps its Fintype instance
+and the `deleted_empty` lemma. THE TARGET-CELL MAP's cell-level component is
+a field of the
 GLOBAL family record `CtsFamily`, since its codomain needs the target
 skeleton's own BlockData — matrix indices type-check BY CONSTRUCTION, "no
 species-relative cell ever appears as an index".
 
 ```lean
-/-- The target index of a letter: continuing ⟹ a target-block cell; terminal
-⟹ the absorbing column label. DISPLAYED as the two-constructor inductive it
-is (C29 repair; rev 1's prose intent made real). -/
+/-- `BlockData.CellIdx` — DECLARED IN DEFS (REV 4, Codex-15's order gap:
+rev 3 assigned the def to unit V2-2 while `TargetIx` consumed it here). -/
+def BlockData.CellIdx {n s} (B : BlockData n s) : Type :=
+  {a : ∀ g : B.Gen, (B.gen g).idx // B.sizeP a ≠ 0}
+
+/-- The target index of an OUTCOME (REV 4, Codex-2: per (letter, outcome)):
+continuing outcome ⟹ a target-block cell; terminal outcome ⟹ the absorbing
+column label. -/
 inductive TargetIx (n : ℕ) {s : Skeleton n} (B : BlockData n s)
-    (B' : ∀ s', BlockData n s') (m : B.Letter) where
-  | cell (h : B.cont m) (β : (B' (B.tgtSk m h)).CellIdx)
+    (B' : ∀ s', BlockData n s') (m : B.Letter) (o : B.Outc m) where
+  | cell (h : B.cont m o) (β : (B' (B.tgtSk m o h)).CellIdx)
   | term (v : VLabel n)
 
 /-- THE TABLE FAMILY over one n: per-skeleton BlockData + the globally-typed
 (D4) cell maps + the per-entry count tables (CTS-T). THIS is the record the
-SEAM instantiates into MovesS.TableShape (unit V7-3a). -/
+SEAM instantiates into MovesS.TableShape (unit V7-3a). REV 4 (Codex-2):
+`tcell`/`T`/`vlabOf` keyed per (letter, OUTCOME). -/
 structure CtsFamily (n : ℕ) where
   bd : ∀ s : Skeleton n, BlockData n s
-  tcell : ∀ (s : Skeleton n) (m : (bd s).Letter) (h : (bd s).cont m),
-    (bd s).CellIdx → (bd ((bd s).tgtSk m h)).CellIdx
+  tcell : ∀ (s : Skeleton n) (m : (bd s).Letter) (o : (bd s).Outc m)
+    (h : (bd s).cont m o),
+    (bd s).CellIdx → (bd ((bd s).tgtSk m o h)).CellIdx
   -- (CTS-T) the tables, with Theorem VAL(a)'s per-entry content as TYPE:
   -- one polynomial, degree ≤ W_loc(m); the COUNT SEMANTICS is ValA's field
   -- content (§2.F note + V2-4 — the rev-1 `tbl_count` field moved there,
   -- resolving design-freedom slot (3)):
   Wloc : ∀ (s : Skeleton n), (bd s).Letter → ℕ
-  Outc : ∀ (s : Skeleton n), (bd s).Letter → Type   -- full outcome labels o
-  finO : ∀ s m, Fintype (Outc s m)
-  T : ∀ (s : Skeleton n) (m : (bd s).Letter) (o : Outc s m)
-    (α : (bd s).CellIdx) (β : TargetIx n (bd s) bd m), Polynomial ℚ
+  T : ∀ (s : Skeleton n) (m : (bd s).Letter) (o : (bd s).Outc m)
+    (α : (bd s).CellIdx) (β : TargetIx n (bd s) bd m o), Polynomial ℚ
   T_deg : ∀ s m o α β, (T s m o α β).natDegree ≤ Wloc s m
-  -- terminal outcome labels (REV 3: TermData's typed referent — the outcome's
-  -- absorbing column label, displayed as a field):
-  vlabOf : ∀ (s) (m) (o : Outc s m), ¬ (bd s).cont m → VLabel n
+  -- terminal outcome labels (the outcome's absorbing column label):
+  vlabOf : ∀ (s) (m) (o : (bd s).Outc m), ¬ (bd s).cont m o → VLabel n
 ```
 
 **The (D4)-typed step data (REV 3, Codex-3/Codex-18: displayed closed; the
@@ -570,20 +693,23 @@ is a tcell-image, per `moveOf_bij` in §2.F):**
 structure MoveData (n : ℕ) (C : CtsFamily n) where
   s  : Skeleton n
   m  : (C.bd s).Letter
-  o  : C.Outc s m
-  hc : (C.bd s).cont m
+  o  : (C.bd s).Outc m
+  hc : (C.bd s).cont m o              -- [REV 4, Codex-2: OUTCOME-continuing]
   α  : (C.bd s).CellIdx
 
 /-- the datum's source and its tcell-ENFORCED target. -/
 def MoveData.src {n C} (d : MoveData n C) : Σ s, (C.bd s).CellIdx := ⟨d.s, d.α⟩
 def MoveData.tgt {n C} (d : MoveData n C) : Σ s, (C.bd s).CellIdx :=
-  ⟨(C.bd d.s).tgtSk d.m d.hc, C.tcell d.s d.m d.hc d.α⟩
+  ⟨(C.bd d.s).tgtSk d.m d.o d.hc, C.tcell d.s d.m d.o d.hc d.α⟩
 
 structure TermData (n : ℕ) (C : CtsFamily n) (v : VLabel n) where
   s  : Skeleton n
   m  : (C.bd s).Letter
-  o  : C.Outc s m
-  ht : ¬ (C.bd s).cont m
+  o  : (C.bd s).Outc m
+  ht : ¬ (C.bd s).cont m o            -- [REV 4, Codex-2: OUTCOME-terminal —
+                                      --  m₂'s o_split/o_inert land here while
+                                      --  its o_double is a MoveData; ONE
+                                      --  letter, both kinds, representable]
   hv : C.vlabOf s m o ht = v          -- the absorbing label, enforced
   α  : (C.bd s).CellIdx
 ```
@@ -633,18 +759,29 @@ structure EntShapeV (n : ℕ) where
     ((Phat : MovesD.ShapePrefix).reads.filter IsBranchingRead).length
   hmenu  : ∀ i (hi : i < selRec.length),
     selRec.get ⟨i, hi⟩ < branchMenuCard n Phat i
+  hrank  : ∀ i (hi : i < selRec.length),
+    selRec.get ⟨i, hi⟩ = shapeRank n Phat i (takenGm n Phat gsel musel i)
+    -- [REV 4, Codex-4: the entry IS the rank OF THE TAKEN CONTINUATION —
+    --  the tie is a FIELD, no longer prose; takenGm/shapeRank below]
 ```
 
-**σ_sel's SEMANTIC PIN (REV 3, Codex-5: rev 2's entries were "unrelated
-bounded naturals").** The i-th entry of `selRec` IS the L11 rank s_r —
-`MovesD.selRank` — of the continuation selected at the i-th branching read:
-the note's "σ_sel = (s_r at every shallow branching cell passed — L11's
-encoding data, LIFTED INTO THE LABEL)" makes the rank the label datum ITSELF,
-so at the label layer the tie is DEFINITIONAL (the selection is identified BY
-its rank in the shared enumeration), and the identification of ranks with
-actual ψ-selections is MovesD's PROVED injectivity `E8_rankInj`/`E9_encInj` —
-cited at the instance layer (V3-1(b), V5-1), never re-derived. The entrance
-events and the instance census (§2.F) take the FULL label ε (selRec included)
+**σ_sel's SEMANTIC PIN — REV 4 (Codex-4: rev 3's prose said the entries
+"ARE the L11 ranks" but the TYPE carried only bounded naturals, "no selected
+continuation and no equality to `MovesD.selRank`").** The tie is now the
+FIELD `hrank`: the i-th entry of `selRec` EQUALS the shape-level rank of THE
+CONTINUATION THE PREFIX ACTUALLY TAKES at its i-th branching read — the
+taken continuation is a FUNCTION of the label's own data (`takenGm`: the
+successor read's (g, μ) at interior branching reads; the designated entry
+selection (gsel, musel) at the last), and `shapeRank` is the displayed
+shape-level enumeration index in the m̄-menu. The VALUE-level identification
+of shape ranks with actual ψ-selection ranks is MovesD's own collapse —
+"selRank, mod-collapsed into `Fin m̄` — the collapse is the identity on
+members, where E7 gives selRank < m̄" (MovesD/Defs.lean 522–523) — cited
+with `E8_rankInj`/`E9_encInj` at the instance layer (V3-1(b), V5-1), never
+re-derived. ESCALATION HATCH (recorded): if MovesD's member enumeration
+order differs from `shapeRank`'s lex order, `shapeRank` re-keys to MovesD's
+enumeration THERE, with a fresh audit — never silently. The entrance events
+and the instance census (§2.F) take the FULL label ε (selRec included)
 as their key, so distinct selections cut distinct events by construction.
 The displayed defs (closed, keyed to NAMED MovesD declarations — Codex-18):
 ```lean
@@ -660,6 +797,24 @@ def IsBranchingRead (R : MovesD.ShapeRead) : Prop := 2 ≤ R.mbar
 
 def branchMenuCard (n : ℕ) (P : MovesD.Shape n) (i : ℕ) : ℕ :=
   (((P : MovesD.ShapePrefix).reads.filter IsBranchingRead).getD i default).mbar
+
+/-- the (g, μ) of the continuation TAKEN at the i-th branching read: the
+read FOLLOWING it in P̂ (the prefix's own next step), or the designated
+entry selection at the final read (REV 4, Codex-4). -/
+def takenGm (n : ℕ) (P : MovesD.Shape n) (gsel musel : ℕ) (i : ℕ) : ℕ × ℕ :=
+  let reads := (P : MovesD.ShapePrefix).reads
+  let bIdx  := (List.range reads.length).filter
+                 (fun j => IsBranchingRead (reads.getD j default))
+  match reads.get? (bIdx.getD i 0 + 1) with
+  | some R => (R.g, R.μ)
+  | none   => (gsel, musel)     -- the entry read: b's designated selection
+
+/-- the shape-level rank of a (g, μ) pair in the branching read's eligible
+menu — the `Fin m̄` index MovesD's selRank collapses onto (Defs 522-523). -/
+def shapeRank (n : ℕ) (P : MovesD.Shape n) (i : ℕ) (gm : ℕ × ℕ) : ℕ :=
+  ((eligMenu (branchingRead n P i)).indexOf gm)
+  -- eligMenu R := the lex-sorted list of {(g,μ) // EligPair R g μ};
+  -- branchingRead n P i := the i-th filtered read — closed defs, this file
 ```
 
 ```lean
@@ -668,6 +823,16 @@ data — the (h_r, u*_r) pair vector over P̂'s reads. A FUNCTION of ε,
 displayed; "one concrete ε FIXES its entrance heights". -/
 def EntShapeV.hent {n : ℕ} (ε : EntShapeV n) : List (ℕ × ℚ) :=
   (ε.Phat : MovesD.ShapePrefix).reads.map (fun R => (R.h, R.ustar))
+
+/-- the INJECTIVE ℕ-code of the retained height data (REV 4, Codex-6: the
+seam's `MeasuredSide.hent : … → ℕ` slot is supplied by THIS code, never by
+a lossy sum — distinct retained tuples get distinct codes; u*_r rides via
+its γ-code, determined by `gamTie`): fold Nat.pair over (h_r, zig(γ_r)).
+(`zig` : ℤ ≃ ℕ — displayed with the u*-slot encoding below; the E-file
+declares it before this def.) -/
+def EntShapeV.hentCode {n : ℕ} (ε : EntShapeV n) : ℕ :=
+  ((ε.Phat : MovesD.ShapePrefix).reads.map
+    (fun R => Nat.pair R.h (zig R.gam))).foldr Nat.pair 0
 
 /-- ledger exponent A(ε) := §D4-R's A(P̂) — "a function of ε since u*_r ∈ P̂";
 pool dimension W_ent(ε) := §D4-R's W(P̂) — "height-free, L3 rev 9". -/
@@ -724,6 +889,9 @@ inversion of MovesD's own WF law `ShapePrefix.gamTie`
 u\* from (γ, h, e, s0, wSide, STR):
 ```lean
 abbrev zig : ℤ ≃ ℕ := (Denumerable.eqv ℤ)   -- the standard zigzag code
+-- [REV 4, Codex-15: orientation pinned at E-phase — Mathlib's
+--  `Denumerable.eqv α : α ≃ ℕ`; if the library form is ℕ-first, the fix is
+--  `.symm` (one token, zero design content; recorded so nothing is silent)]
 
 -- inside readOfLetter (V3-3(d)): given the letter's reconstructed
 -- (e, s0, wSide) data, the prefix-so-far's STR value, the h-slot value h,
@@ -799,7 +967,9 @@ of the density R_σ". No unit of this corpus states a per-f density.
 ### 2.F The counting carrier `CtsMeasured` (the `MeasuredSide` producer's data half)
 
 REV 2 REDESIGN (C7/C24/A-1 repair) + REV 3 RE-WIRING (F-1/F-2/F-3/F-5,
-Codex-7/10/15/16). `CtsMeasured` carries ONLY counting data: boxes,
+Codex-7/10/15/16) + REV 4 (N-2's pool-through-history indexing; Codex-3's
+digit-cell-keyed disjointness; the process-side marked events live in §2.G's
+standalone `TmplEvents`, NOT here — see HMCAug's quantification note). `CtsMeasured` carries ONLY counting data: boxes,
 per-assignment events, digit-cell classifiers, listed height domains,
 entrance events and landing data — and, NEW at REV 3, the two INSTANCE-CENSUS
 carriers the round-2 audit showed are NOT box events (their cards scale
@@ -841,48 +1011,59 @@ structure CtsMeasured (n : ℕ) (C : CtsFamily n) (S : StepSys n) where
     (fun d : {d : TermData n C v // toStepCells.symm ⟨d.1.s, d.1.α⟩ = αc} =>
       d.2 ▸ moveOfT d.1)                                            -- [+T]
   -- OUTCOME-KEYED digit cells (C8) + the classifiers (C2's tie):
-  DCellO : ∀ (s : Skeleton n) (m : (C.bd s).Letter) (o : C.Outc s m),
+  DCellO : ∀ (s : Skeleton n) (m : (C.bd s).Letter) (o : (C.bd s).Outc m),
     (C.bd s).CellIdx → Type
   finDO : ∀ s m o α, Fintype (DCellO s m o α)
-  cellOfA : ∀ (d : MoveData n C) (x : S.Hist (toStepCells.symm d.src))
+  cellOfA : ∀ (d : MoveData n C) {q₀} (x : S.Hist q₀ (toStepCells.symm d.src))
     (h : Hpt (S.dim (moveOf d))),
     S.Assign (moveOf d) x h → DCellO d.s d.m d.o d.α
     -- every fresh assignment lies in EXACTLY ONE digit cell — D4R.0 totality
     -- at the assignment level, BY TYPE (a function, not a relation)
-  cellOfAT : ∀ {v} (d : TermData n C v) (x) (h : Hpt (S.dimT (moveOfT d))),
+  cellOfAT : ∀ {v} (d : TermData n C v) {q₀} (x : S.Hist q₀ _)
+    (h : Hpt (S.dimT (moveOfT d))),
     S.AssignT (moveOfT d) x h → DCellO d.s d.m d.o d.α              -- [+T]
   emult : ∀ {s m o α}, DCellO s m o α → ℕ
     -- the cell's eligible continuing-mark count (Codex-18: was prose) — L5
     -- data at the real instance (MovesD EligibleImage census); V4-7's surplus
     -- and §2.H consume it
-  -- per-assignment box events; cell/entrance events are DEFINED from them:
-  evtOf : ∀ {αc βc} (mv : S.Move αc βc) (x : S.Hist αc) (h : Hpt (S.dim mv)),
-    S.Assign mv x h → ∀ (q₀ : ℚ) (N : ℕ), Finset (Box q₀ N)
-  evtOfT : ∀ {αc v} (mv : S.MoveT αc v) (x : S.Hist αc) (h : Hpt (S.dimT mv)),
-    S.AssignT mv x h → ∀ (q₀ : ℚ) (N : ℕ), Finset (Box q₀ N)        -- [+T]
-  -- ONE heterogeneous disjointness law over the assignment-step carrier
-  -- (REV 3, F-3/Codex-10: rev 2's evt_disj was same-(mv,h)-only; LedgerIV.d4r0
-  -- needs cross-cell, cross-HEIGHT, cross-move, terminal included):
-  evt_disj : ∀ {αc} (x : S.Hist αc) (p p' : AStep S αc x) (q₀ : ℚ) (N : ℕ),
-    p ≠ p' → Disjoint (evtOfStep p q₀ N) (evtOfStep p' q₀ N)
+  -- per-assignment box events; cell/entrance events are DEFINED from them
+  -- (pools ride the history index — N-2):
+  evtOf : ∀ {αc βc} (mv : S.Move αc βc) {q₀} (x : S.Hist q₀ αc)
+    (h : Hpt (S.dim mv)), S.Assign mv x h → ∀ N : ℕ, Finset (Box q₀ N)
+  evtOfT : ∀ {αc v} (mv : S.MoveT αc v) {q₀} (x : S.Hist q₀ αc)
+    (h : Hpt (S.dimT mv)), S.AssignT mv x h → ∀ N : ℕ, Finset (Box q₀ N)
+  -- THE DISJOINTNESS LAW — RE-KEYED at REV 4 (Codex-3: rev 3's blanket
+  -- AStep law `p ≠ p' → Disjoint` claimed ORDINARY-BOX disjointness across
+  -- CONTINUATION MARKS too, but the note's (iv)-MEAS display says "the
+  -- summands are pairwise disjoint IN THE MARKED SPACE; as f-events only
+  -- the DIGIT CELLS are disjoint" — two marked summands may have literally
+  -- EQUAL f-projections (one digit cell, two eligible continuations), and
+  -- marked offspring mass may exceed 1. The claim is now keyed to the
+  -- DIGIT-CELL KEY (letter, outcome, cell, height — terminal included):
+  -- distinct KEYS ⟹ disjoint f-events (the D4R.0/PART-1 partition face);
+  -- equal keys (mark-only differences): NOTHING claimed):
+  evt_disj_cell : ∀ {αc q₀} (x : S.Hist q₀ αc) (p p' : AStep S αc x) (N : ℕ),
+    stepKey p ≠ stepKey p' → Disjoint (evtOfStep p N) (evtOfStep p' N)
     -- AStep S αc x := (Σ β (mv : S.Move αc β) (h : Hpt (S.dim mv)),
     --   S.Assign mv x h) ⊕ (Σ v (mv : S.MoveT αc v) (h : Hpt (S.dimT mv)),
     --   S.AssignT mv x h) — a closed def of this file; evtOfStep unpacks to
-    -- evtOf/evtOfT. [tie]
-  -- THE PER-ASSIGNMENT COUNTING LAW (REV 3, F-3/Codex-10: the field that
-  -- exists in no rev-2 structure — "evtOf card at stabilized levels" is now
-  -- a TYPE; C.1.5's counting semantics, discharged by MovesC/MovesD at the
-  -- real instance):
+    -- evtOf/evtOfT; stepKey p := the (MoveData/TermData datum, cellOfA-image,
+    -- Σ-embedded height) triple — a closed def (the mark coordinate — WHICH
+    -- assignment within the digit cell, and for continuing steps WHICH
+    -- target β the mark selects — is NOT part of the key). [tie]
+  -- THE PER-ASSIGNMENT COUNTING LAW (REV 3, F-3/Codex-10; REV-4 pools ride
+  -- histories; C.1.5's counting semantics, discharged by MovesC/MovesD at
+  -- the real instance):
   stabLvl : ∀ {αc βc}, S.Move αc βc → ℕ
   stabLvlT : ∀ {αc v}, S.MoveT αc v → ℕ                              -- [+T]
-  evt_card : ∀ {αc βc} (mv : S.Move αc βc) (x) (h) (a : S.Assign mv x h)
-    (q₀ : ℚ), q₀ ∈ Pools → S.zc x → ∀ N ≥ stabLvl mv,
-    ((evtOf mv x h a q₀ N).card : ℝ)
-      = S.massOf mv x h a q₀ * (Fintype.card (Box q₀ N) : ℝ)  -- [tie]
-  evt_cardT : ∀ {αc v} (mv : S.MoveT αc v) (x) (h) (a) (q₀ : ℚ),
+  evt_card : ∀ {αc βc} (mv : S.Move αc βc) {q₀} (x : S.Hist q₀ αc) (h)
+    (a : S.Assign mv x h), q₀ ∈ Pools → S.zc x → ∀ N ≥ stabLvl mv,
+    ((evtOf mv x h a N).card : ℝ)
+      = S.massOf mv x h a * (Fintype.card (Box q₀ N) : ℝ)  -- [tie]
+  evt_cardT : ∀ {αc v} (mv : S.MoveT αc v) {q₀} (x : S.Hist q₀ αc) (h) (a),
     q₀ ∈ Pools → S.zc x → ∀ N ≥ stabLvlT mv,
-    ((evtOfT mv x h a q₀ N).card : ℝ)
-      = S.massOfT mv x h a q₀ * (Fintype.card (Box q₀ N) : ℝ)  -- [tie, +T]
+    ((evtOfT mv x h a N).card : ℝ)
+      = S.massOfT mv x h a * (Fintype.card (Box q₀ N) : ℝ)  -- [tie, +T]
   -- listed height domains, AS DATA (the [2b] packages assert their EXACTNESS
   -- — XHDd at template level, XHDdC at cell level (§2.G, NEW at REV 3);
   -- the lists themselves are this corpus's constructed data):
@@ -892,7 +1073,11 @@ structure CtsMeasured (n : ℕ) (C : CtsFamily n) (S : StepSys n) where
   mdom : ∀ (d : MoveData n C), SemilinPart (S.dim (moveOf d))
   mdomT : ∀ {v} (d : TermData n C v), SemilinPart (S.dimT (moveOfT d))
     -- the MOVE-level listed one-step domains (ValA.tbl_count's base-point
-    -- keys, REV 3 Codex-4; exactness = XHDd at the length-1 template)
+    -- keys). REV 4 (Codex-5): the identification with XHDd's length-1
+    -- domain is now the TYPED coherence structure `MDomTie` (§2.G) — a
+    -- displayed hypothesis of every unit that transports tbl_count across
+    -- a component (V2-5, V4-5, V5-8, V7-5(a)); [1v] states its lists
+    -- XHD-free (VAL(a)'s duty), [2b]'s exactness binds them through the tie
   -- activity:
   activeState : ℚ → S.Cell → Prop     -- |α|(q₀) > 0 (Act_{q₀}'s predicate)
   act_size : ∀ q₀ ∈ Pools, ∀ c : S.Cell, activeState q₀ c ↔
@@ -930,24 +1115,47 @@ structure CtsMeasured (n : ℕ) (C : CtsFamily n) (S : StepSys n) where
     -- F-1's 128-not-8192 acceptance number
 ```
 
-Derived defs (displayed here; no free data behind them):
+Derived defs (displayed here; no free data behind them; the [+T] twins
+DISPLAYED — Codex-14):
 ```lean
 /-- fixed-height CELL events := the union of the cell's assignments' events
-(C2's demanded tie: cellEvt ↔ Assign ↔ cntraw, definitional). -/
+(C2's demanded tie: cellEvt ↔ Assign ↔ cntraw, definitional). N-2: the pool
+rides x. -/
 noncomputable def CtsMeasured.cellEvt (V : CtsMeasured n C S)
-    (d : MoveData n C) (x : S.Hist _) (c : V.DCellO d.s d.m d.o d.α)
-    (h : Hpt (S.dim (V.moveOf d))) (q₀ : ℚ) (N : ℕ) : Finset (V.Box q₀ N) :=
+    (d : MoveData n C) {q₀} (x : S.Hist q₀ _) (c : V.DCellO d.s d.m d.o d.α)
+    (h : Hpt (S.dim (V.moveOf d))) (N : ℕ) : Finset (V.Box q₀ N) :=
   (Finset.univ.filter (fun a : S.Assign (V.moveOf d) x h =>
-    V.cellOfA d x h a = c)).biUnion (fun a => V.evtOf (V.moveOf d) x h a q₀ N)
--- cellEvtT : the [+T] twin over cellOfAT/evtOfT, same shape.
+    V.cellOfA d x h a = c)).biUnion (fun a => V.evtOf (V.moveOf d) x h a N)
+noncomputable def CtsMeasured.cellEvtT (V : CtsMeasured n C S) {v}
+    (d : TermData n C v) {q₀} (x : S.Hist q₀ _) (c : V.DCellO d.s d.m d.o d.α)
+    (h : Hpt (S.dimT (V.moveOfT d))) (N : ℕ) : Finset (V.Box q₀ N) :=
+  (Finset.univ.filter (fun a : S.AssignT (V.moveOfT d) x h =>
+    V.cellOfAT d x h a = c)).biUnion (fun a => V.evtOfT (V.moveOfT d) x h a N)
 
-/-- the cell-refined count T_c(h) from x — again a def. -/
+/-- the cell-refined MARKED count T_c(h) from x at x's pool — again a def. -/
 def CtsMeasured.cntc (V : CtsMeasured n C S) (d : MoveData n C)
-    (x : S.Hist _) (c : V.DCellO d.s d.m d.o d.α)
+    {q₀} (x : S.Hist q₀ _) (c : V.DCellO d.s d.m d.o d.α)
     (h : Hpt (S.dim (V.moveOf d))) : ℕ :=
   (Finset.univ.filter (fun a : S.Assign (V.moveOf d) x h =>
     V.cellOfA d x h a = c)).card
--- cntcT : the [+T] twin.
+def CtsMeasured.cntcT (V : CtsMeasured n C S) {v} (d : TermData n C v)
+    {q₀} (x : S.Hist q₀ _) (c : V.DCellO d.s d.m d.o d.α)
+    (h : Hpt (S.dimT (V.moveOfT d))) : ℕ :=
+  (Finset.univ.filter (fun a : S.AssignT (V.moveOfT d) x h =>
+    V.cellOfAT d x h a = c)).card
+
+/-- THE MARK-DISJOINTNESS BURDEN (NEW at REV 4, Codex-3's other half):
+within ONE digit cell at one height, distinct marks realize disjoint
+f-events. NOT a CtsMeasured law (the note explicitly allows equal
+f-projections across marks — offspring mass may exceed 1); a NAMED, typed
+hypothesis that V7-6a1's meas_card derivation displays (at the n = 3 gate
+rosters it follows from emult ≤ 1, by decide — V4-8's census; beyond them
+it is open, exactly where PART-2's surplus lives). -/
+def MarkDisj {n C S} (V : CtsMeasured n C S) : Prop :=
+  ∀ (d : MoveData n C) {q₀} (x : S.Hist q₀ _) (c) (h)
+    (a a' : S.Assign (V.moveOf d) x h), V.cellOfA d x h a = c →
+    V.cellOfA d x h a' = c → a ≠ a' →
+    ∀ N, Disjoint (V.evtOf (V.moveOf d) x h a N) (V.evtOf (V.moveOf d) x h a' N)
 
 /-- THE ε-INSTANCE COUNT — a DEF (card of the census at the defining level):
 I^ent_{ε,β₀}(q₀), the note's marked-prefix count. NOT an event card at a
@@ -982,7 +1190,7 @@ representative-uniform count rows per species"); the measured ℝ-objects are
 V7-4a/b/c definitions; A-7's pointer hygiene is moot (each object has one
 home).
 
-### 2.G Templates, the chain count, XHD-d/-s (all faces), the bundle, HMC, and the COMP typing (V.1(iv)–(vi), V.4)
+### 2.G Templates, the two-sided count architecture (table side + process side — the REV-4 N-1 split), XHD-d/-s (all faces), the bundle, HMC, and the COMP typing (V.1(iv)–(vi), V.4)
 
 ```lean
 /-- A finite path template γ in block e (V.1(vi)): β₀ →^{m₁,o₁} β₁ → … → β_k,
@@ -999,43 +1207,132 @@ def Template.D {n S} : ∀ {α}, Template n S α → ℕ    -- total height dime
   | _, .last m => S.dim m | _, .lastT m => S.dimT m
   | _, .cons m γ => S.dim m + γ.D
 
-/-- THE CHAIN COUNT T_γ(x, h) — A DEF, BY THE NOTE'S OWN DEFINITION (C2/C9/
-A-2 repair; design-freedom slot (2) RESOLVED: V.0 "T_γ(x, h) := #{fresh-
-assignment chains from x realizing (γ, h)}" is a DEFINITION, so Lean encodes
-it as the recursion through `StepSys.ext` — no free `chain` field, no tie
-field to forget; XHDd's exactness laws below quantify over THIS count, so a
-degenerate XHDd with junk domains violates them). -/
+/-- THE TABLE-SIDE CHAIN COUNT T_γ(x, h) — A DEF, recursive by definition
+(C2/C9/A-2; **REV-4 SCOPE PER THE N-1 ADJUDICATION**: this recursion is the
+TABLE side — the combinatorial count of iterated fresh-assignment
+extensions, the object VAL(b)/(u-T)/the count shadow consume. It is NOT the
+definition of the process domain H(γ): rev 3 keyed XHDd's exactness to this
+count, and the recursion + the ∀-representative no-stray PROVED HMC in four
+lines — the interface over-commitment Fable N-1 displayed. H(γ) is
+process-side, below.) N-2: counts at x's pool throughout. -/
 def chainCount {n} (S : StepSys n) :
-    ∀ {α} (γ : Template n S α), S.Hist α → Hpt γ.D → ℕ
+    ∀ {α} (γ : Template n S α) {q₀}, S.Hist q₀ α → Hpt γ.D → ℕ
   | _, .last m,  x, h => S.cntraw m x h
   | _, .lastT m, x, h => S.cntrawT m x h
   | _, .cons m γ, x, h =>
       ∑ a : S.Assign m x (Hpt.take h), chainCount S γ (S.ext m x _ a) (Hpt.drop h)
--- (Hpt.take/drop: the Fin-append splitters, defs in 2.A's E-phase file.)
+-- (Hpt.take/drop: the Fin-append splitters, §2.A closed defs.)
 
-/-- (XHD-d) DOMAINS, typed: per template an EXPLICITLY LISTED pairwise-
-disjoint semilinear PARTITION of the EXACT realizable height domain, exact
-two-sidedly against the chain count T_γ(x, h) — which is now the DEF above:
-(no orphan) count > 0 at some representative ⟹ h ∈ H(γ);
-(no stray)  h ∈ H(γ) ⟹ count > 0 at EVERY representative. Owner [2b]. -/
-structure XHDd (n : ℕ) (S : StepSys n) where
+/-- THE PROCESS-SIDE MARKED-EVENT CARRIER (NEW at REV 4 — the N-1
+adjudication's fix: "process side H(γ) defined from the realized marked
+events"). The vocabulary is the note's (vi) COMP display (MOVES 8225–8232):
+"the MARKED EVENT of (ε, γ, h) is the family of marked pairs (f, η) — its
+MARK-INDEX family (the realized histories η) is FINITE per level and its
+level-N residue census is finite (D4R.4); the f-fibers are p-adic boxes,
+generally INFINITE". Fields: per (template, source history, height point),
+the level-N BOX REALIZATION `tevt` of the marked event and its MARK CENSUS
+`tinst` — FREE DATA at composite templates (their tie to the step layer is
+EXACTLY the (v)/(vi) content), tied to the step layer ONLY at length 1 and
+through the two note-definitional mark facts. `Box` is its own carrier
+(MovesD.Box at the real instance — V7-4a identifies it with
+CtsMeasured.Box), so `HMCAug`'s refined systems quantify cleanly. -/
+structure TmplEvents (n : ℕ) (S : StepSys n) where
+  Box  : ℚ → ℕ → Type
+  finB : ∀ q₀ N, Fintype (Box q₀ N)
+  tevt : ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α),
+    Hpt γ.D → ∀ N : ℕ, Finset (Box q₀ N)
+  tinst : ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α),
+    Hpt γ.D → ∀ N : ℕ, Finset (Box q₀ N)   -- the mark census, box-realized
+  tmplLvl : ∀ {α}, Template n S α → ℕ       -- census-defining level
+  -- THE LENGTH-1 TIE [tie]: a one-step marked event is realized iff a fresh
+  -- assignment exists (its marks ARE the fresh assignments; the f-fiber of
+  -- a fresh assignment is a nonempty digit cell — C.1.5 mass-positivity):
+  tevt_last_iff : ∀ {α β} (m : S.Move α β) {q₀} (x : S.Hist q₀ α) (h),
+    q₀ ∈ S.Pools → S.zc x →
+    ((∃ N₀, ∀ N ≥ N₀, (tevt (.last m) x h N).Nonempty) ↔ 0 < S.cntraw m x h)
+  tevt_lastT_iff : ∀ {α v} (m : S.MoveT α v) {q₀} (x : S.Hist q₀ α) (h),
+    q₀ ∈ S.Pools → S.zc x →
+    ((∃ N₀, ∀ N ≥ N₀, (tevt (.lastT m) x h N).Nonempty) ↔ 0 < S.cntrawT m x h)
+  -- THE TWO MARK FACTS [tie], definitional in the note, typed here because
+  -- tevt/tinst are free data: (i) a realized event HAS a mark; (ii) the
+  -- marks are fresh-assignment CHAINS ("the realized histories η"):
+  real_marks : ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h),
+    q₀ ∈ S.Pools → S.zc x → (∃ N₀, ∀ N ≥ N₀, (tevt γ x h N).Nonempty) →
+    0 < (tinst γ x h (tmplLvl γ)).card
+  marks_chains : ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h),
+    q₀ ∈ S.Pools → S.zc x →
+    (tinst γ x h (tmplLvl γ)).card ≤ chainCount S γ x h
+  -- NO composite-template law relates tevt/tinst at (.cons m γ) to the step
+  -- layer. In particular NO census recursion exists: marks may fail to be
+  -- f-realized at composites (empty deep fibers — (HMC-AUG)'s cone
+  -- coupling), which is exactly what keeps (v) OPEN below. The (COMP-h)
+  -- mass identity at REALIZED points is the THEOREM V5-2, GIVEN (U-A) +
+  -- (XHD-u), never a carrier law.
+
+/-- PROCESS REALIZATION: the marked event of (γ, h) from x is realized —
+eventual nonemptiness at x's pool (the entrance layer's `Realizable`
+pattern, §2.G below, now uniform across both layers). -/
+def TReal {n S} (TE : TmplEvents n S) {α} (γ : Template n S α)
+    {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D) : Prop :=
+  ∃ N₀, ∀ N ≥ N₀, (TE.tevt γ x h N).Nonempty
+
+/-- (XHD-d) DOMAINS, typed — RE-KEYED at REV 4 (N-1 adjudication): per
+template an EXPLICITLY LISTED pairwise-disjoint semilinear PARTITION of the
+EXACT realizable height domain, exact two-sidedly. The note's display
+(MOVES 7948–7949): "(no orphan) T_γ(x, h) > 0 for some representative x ⟹
+h ∈ H(γ); (no stray) h ∈ H(γ) ⟹ T_γ(x, h) > 0 for EVERY representative x
+of α" — with T_γ(x,h) > 0 READ PROCESS-SIDE per the adjudication ("chains
+from x REALIZING (γ, h)" = realized marked events, MOVES 7921–7923 +
+8225–8232), i.e. `TReal`. The rev-3 keying to the recursive `chainCount`
+is STRUCK (it proved HMC). Owner [2b]. -/
+structure XHDd (n : ℕ) (S : StepSys n) (TE : TmplEvents n S) where
   dom : ∀ {α} (γ : Template n S α), SemilinPart γ.D
-  no_orphan : ∀ {α} (γ : Template n S α) (x : S.Hist α) (h : Hpt γ.D),
-    0 < chainCount S γ x h → (dom γ).Mem h
+  no_orphan : ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D),
+    q₀ ∈ S.Pools → S.zc x → TReal TE γ x h → (dom γ).Mem h
   no_stray : ∀ {α} (γ : Template n S α) (h : Hpt γ.D),
-    (dom γ).Mem h → ∀ x : S.Hist α, 0 < chainCount S γ x h
+    (dom γ).Mem h → ∀ {q₀}, q₀ ∈ S.Pools → ∀ x : S.Hist q₀ α, S.zc x →
+    TReal TE γ x h
+  -- COUNT SUPPLY (derived, not a field): membership ⟹ positive TABLE-side
+  -- count at every zc representative, via Mem → (no_stray) TReal →
+  -- (real_marks) 0 < census → (marks_chains: census ≤ chainCount)
+  -- 0 < chainCount. Stated as unit V1-3's lemma `mem_chainCount_pos`;
+  -- V2-5/V4-5/V5-8 consume it. The CONVERSE (chainCount > 0 → TReal) is
+  -- NOT derivable at composite templates — combinatorial chains need not
+  -- be f-realized ((HMC-AUG)'s coupling) — and that one-way gap is
+  -- precisely what keeps HMC below out of theorem-hood.
 
-/-- ∏ᵢ g_i(h_i): the fixed-height template weight (a def over XHDw, by
-recursion on γ with Hpt.take/drop). -/
+/-- THE mdom COHERENCE TIE (NEW at REV 4, Codex-5: rev 3 had "no law
+identifying `mdom d` with `XHDd.dom (.last (moveOf d))`"). [1v] lists its
+one-step domains XHD-free (VAL(a)); when the [2b] package is in scope, the
+lists coincide — a displayed hypothesis of every base-point transport
+(V2-5(b), V4-5, V5-8, V7-5(a)). Base realizability follows: base ∈ mdom d
+= dom(.last …) → no_stray → TReal → count > 0 (V1-3's lemma) — u_T's
+transport from tbl_count's base points is licit. -/
+structure MDomTie {n} {S : StepSys n} {C : CtsFamily n}
+    (V : CtsMeasured n C S) (TE : TmplEvents n S) (D : XHDd n S TE) : Prop where
+  mdom_eq : ∀ (d : MoveData n C), D.dom (.last (V.moveOf d)) = V.mdom d
+  mdomT_eq : ∀ {v} (d : TermData n C v), D.dom (.lastT (V.moveOfT d)) = V.mdomT d
+
+/-- ∏ᵢ g_i(h_i): the fixed-height template weight — the TABLE side's weight
+product, a def over XHDw by recursion on γ (DISPLAYED at REV 4 — Codex-14's
+`…`). -/
 noncomputable def gProd {n S} (W : XHDw n S) :
-  ∀ {α} (γ : Template n S α), Hpt γ.D → ℚ → ℝ := …
+    ∀ {α} (γ : Template n S α), Hpt γ.D → ℚ → ℝ
+  | _, .last m,  h, q₀ => (q₀ : ℝ) ^ (-((W.E m).eval h : ℤ))
+  | _, .lastT m, h, q₀ => (q₀ : ℝ) ^ (-((W.ET m).eval h : ℤ))
+  | _, .cons m γ, h, q₀ =>
+      (q₀ : ℝ) ^ (-((W.E m).eval (Hpt.take h) : ℤ)) * gProd W γ (Hpt.drop h) q₀
 
 /-- (XHD-s) SUMS, template face, typed: per LISTED linear set, the height sum
 of the weight product is ONE ℚ(q) element in the note's geometric-denominator
 class (denominators ∣ X^b·∏(1 − X^a)), convergent at every pool evaluation.
 "By XHD-d's disjointness the finitely many component sums ADD EXACTLY to the
-H(γ)-sum" is unit V0-3 + V5-4's consumption, not a field. Owner [2b]. -/
-structure XHDs (n : ℕ) (S : StepSys n) (W : XHDw n S) (D : XHDd n S) where
+H(γ)-sum" is unit V0-3 + V5-4's consumption, not a field. Owner [2b].
+(REV 4: D rides over the process side — the sums are still TABLE-side
+weight sums over the LISTED components; G stays recursive-by-definition
+exactly as the adjudication fixes.) -/
+structure XHDs (n : ℕ) (S : StepSys n) (W : XHDw n S) {TE : TmplEvents n S}
+    (D : XHDd n S TE) where
   Gc : ∀ {α} (γ : Template n S α), Fin (D.dom γ).comps.length → Qq
   Gc_denom : ∀ {α} (γ : Template n S α) (j), ∃ b (as : Finset ℕ+),
     (Gc γ j).denom ∣ Polynomial.X ^ b * ∏ a ∈ as, (1 - Polynomial.X ^ (a : ℕ))
@@ -1053,14 +1350,18 @@ h ∈ cdom(c) ⟺ cntc(c, h) > 0. Supplies LedgerIV.xhd_no_stray/no_orphan
 through the evt_card nonemptiness tie (V7-6a). Owner [2b]. -/
 structure XHDdC (n : ℕ) (S : StepSys n) {C : CtsFamily n}
     (V : CtsMeasured n C S) where
-  no_orphanC : ∀ (d : MoveData n C) (x : S.Hist _) (c : V.DCellO d.s d.m d.o d.α)
-    (h : Hpt (S.dim (V.moveOf d))), 0 < V.cntc d x c h → (V.cdom d c).Mem h
-  no_strayC : ∀ (d : MoveData n C) (c) (h),
-    (V.cdom d c).Mem h → ∀ x, 0 < V.cntc d x c h
-  no_orphanCT : ∀ {v} (d : TermData n C v) (x) (c) (h),
-    0 < V.cntcT d x c h → (V.cdomT d c).Mem h                       -- [+T]
-  no_strayCT : ∀ {v} (d : TermData n C v) (c) (h),
-    (V.cdomT d c).Mem h → ∀ x, 0 < V.cntcT d x c h                  -- [+T]
+  -- (REV 4: pool-per-history + zc guards, N-2/Codex-12; the LISTS stay
+  -- pool-uniform, exactness holds per pool. Length-1 count- and process-
+  -- keying agree through tevt_last_iff, so no second HMC leak opens here.)
+  no_orphanC : ∀ (d : MoveData n C) {q₀} (x : S.Hist q₀ _)
+    (c : V.DCellO d.s d.m d.o d.α) (h : Hpt (S.dim (V.moveOf d))),
+    q₀ ∈ V.Pools → S.zc x → 0 < V.cntc d x c h → (V.cdom d c).Mem h
+  no_strayC : ∀ (d : MoveData n C) (c) (h), (V.cdom d c).Mem h →
+    ∀ {q₀}, q₀ ∈ V.Pools → ∀ x : S.Hist q₀ _, S.zc x → 0 < V.cntc d x c h
+  no_orphanCT : ∀ {v} (d : TermData n C v) {q₀} (x : S.Hist q₀ _) (c) (h),
+    q₀ ∈ V.Pools → S.zc x → 0 < V.cntcT d x c h → (V.cdomT d c).Mem h
+  no_strayCT : ∀ {v} (d : TermData n C v) (c) (h), (V.cdomT d c).Mem h →
+    ∀ {q₀}, q₀ ∈ V.Pools → ∀ x : S.Hist q₀ _, S.zc x → 0 < V.cntcT d x c h
 
 /-- (XHD-s) CELL FACE — RE-KEYED WEIGHT-ONLY at REV 3 (F-4/Codex-9: the rev-2
 count-bearing `Gcell` with `cell_refine : Σ Gcell = Σ Gc` forced T ≡ 1 — the
@@ -1071,8 +1372,9 @@ per (cell, listed component); the COUNT factor enters only through the typed
 the count-bearing refinement identity Σ_c P_c·ΣGcell = T·ΣGc is the DERIVED
 unit V5-8 — count factor displayed, nothing collapsed, nothing decided.
 Owner [2b]. -/
-structure XHDsC (n : ℕ) (S : StepSys n) (W : XHDw n S) (D : XHDd n S)
-    {C : CtsFamily n} (V : CtsMeasured n C S) (Xs : XHDs n S W D) where
+structure XHDsC (n : ℕ) (S : StepSys n) (W : XHDw n S) {TE : TmplEvents n S}
+    (D : XHDd n S TE) {C : CtsFamily n} (V : CtsMeasured n C S)
+    (Xs : XHDs n S W D) where
   Gcell : ∀ (d : MoveData n C) (c : V.DCellO d.s d.m d.o d.α)
     (j : Fin (V.cdom d c).comps.length), Qq
   Gcell_denom : ∀ d c j, ∃ b (as : Finset ℕ+),
@@ -1115,12 +1417,32 @@ structure XHDsEnt (n : ℕ) (S : StepSys n) {C : CtsFamily n}
       ((evalAt q₀ ⟨Gent β₀ i, Gent_ok β₀ i q₀ hq⟩ : ℚ) : ℝ)
     -- WEIGHT-ONLY: the count I^ent multiplies OUTSIDE, through ENT-COUNT +
     -- (ENT-U) at V3-9c/V7-4b — the burdens stay burdens
+  -- THE SHALLOW MASS-SUMMABILITY FACE (NEW at REV 4, Codex-7: the note's
+  -- ENT-AGG ledger line reads "CONVERGENCE of the full aggregate … is GIVEN
+  -- XHD-s on the shallow layer" — convergence of the MASS aggregate is the
+  -- shallow face's own content, NOT an (ENT-U) consequence. Summability
+  -- ONLY: no ℚ(q)-value is asserted, so INIT-RAT is decided by nothing):
+  mass_summable : ∀ (β₀ : S.Cell) (q₀ : ℚ), q₀ ∈ V.Pools →
+    Summable (fun p : Σ i : V.EntIx β₀,
+        {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h} =>
+      (V.entCensus (writeHeights p.1.1.1 p.2.1) β₀ q₀ : ℝ)
+        * (q₀ : ℝ) ^ (-(((writeHeights p.1.1.1 p.2.1).A : ℕ) : ℤ)))
+    -- (the summand IS ιshH's body, inlined for declaration order; the def
+    --  below and this field are matched by rfl at V3-8a)
 
 /-- (XHD-d) ENTRANCE FACE: exactness of the LISTED H(ε̊) against concrete-ε
 realizability (V3-5's hypothesis; `Realizable` DISPLAYED — C29), PLUS the
 REV-3 landing law (Codex-6's second horn: rev 2's no_orphanE concluded only
 domain membership, so a realizable entrance could be excluded from EntIx and
 V3-8 could omit genuine entrances). Owner [2b]. -/
+def Realizable {n C S} (V : CtsMeasured n C S) (ε : EntShapeV n)
+    (β₀ : S.Cell) : Prop :=
+  ∀ q₀ ∈ V.Pools, ∃ N₀, ∀ N ≥ N₀, (V.entEvt ε β₀ q₀ N).Nonempty
+  -- [REV 4, Codex-15: declared BEFORE its consumer XHDdEnt. NOTE the
+  --  symmetry with the new template-side `TReal` — the entrance face was
+  --  ALREADY process-keyed (event realization, not a count recursion);
+  --  the N-1 re-key makes the template face match it.]
+
 structure XHDdEnt (n : ℕ) (S : StepSys n) {C : CtsFamily n}
     (V : CtsMeasured n C S) where
   no_orphanE : ∀ (ε̊ : EntTemplate n) (h : Hpt ε̊.entDim) (β₀ : S.Cell),
@@ -1130,10 +1452,6 @@ structure XHDdEnt (n : ℕ) (S : StepSys n) {C : CtsFamily n}
   lands_of_realizable : ∀ (ε̊ : EntTemplate n) (h : Hpt ε̊.entDim) (β₀ : S.Cell),
     Realizable V (writeHeights ε̊ h) β₀ → V.entLands ε̊ β₀
     -- [REV 3: no realizable entrance falls outside the EntIx carrier]
-
-def Realizable {n C S} (V : CtsMeasured n C S) (ε : EntShapeV n)
-    (β₀ : S.Cell) : Prop :=
-  ∀ q₀ ∈ V.Pools, ∃ N₀, ∀ N ≥ N₀, (V.entEvt ε β₀ q₀ N).Nonempty
 
 /-- the per-instantiation ℝ-valued entrance mass — A DEF, RE-KEYED at REV 3
 (F-1, THE q-POWER SLIP: rev 2's body read the BOX-EVENT card, which is
@@ -1156,24 +1474,37 @@ cell, entrance faces) + the entrance exactness. [1v]-FULL is V1-5's
 `IsFullDischarge`; until it is instantiated every measured unit takes the
 package (or the exact sub-package its V.1 ledger line names) as an explicit
 argument — the tag displayed at its site. -/
-structure XHD (n : ℕ) (S : StepSys n) {C : CtsFamily n}
-    (V : CtsMeasured n C S) where
+structure XHD (n : ℕ) (S : StepSys n) (TE : TmplEvents n S)
+    {C : CtsFamily n} (V : CtsMeasured n C S) where
   w : XHDw n S
   u : XHDu n S
-  d : XHDd n S
-  dC : XHDdC n S V          -- [REV 3: the cell d-face — F-3]
+  d : XHDd n S TE            -- [REV 4: exactness process-keyed — N-1]
+  dC : XHDdC n S V           -- [REV 3: the cell d-face — F-3]
   s : XHDs n S w d
   sC : XHDsC n S w d V s
   sEnt : XHDsEnt n S V
   dEnt : XHDdEnt n S V
 
-/-- (v) HMC — THE OPEN KERNEL, typed exactly as displayed: "the whole-template
-exact domain FACTORS stepwise, each factor depending ONLY on the retained
-state β_{i−1} and the step data — never on earlier height choices". Stated as
-membership-factorization over the flattening; templates INCLUDE terminal-final
-ones (they are `Template` constructors — the rev-4 signature is BY TYPE).
-NEVER proved in this corpus; consumed by (COMP-Σ)/V5-5 and V4-12. -/
-def HMC {n : ℕ} (S : StepSys n) (D : XHDd n S) : Prop :=
+/-- (v) HMC — THE OPEN KERNEL, the TYPED LINK between the process side and
+the table side (the N-1 adjudication). The note's display (MOVES 8198–8204),
+quoted: "**(v) HMC — height-domain Markov compatibility. OPEN KERNEL,
+displayed hypothesis.** For every template γ, the whole-template exact
+domain FACTORS stepwise: H(γ) = ∏_i H(γ¹_i), γ¹_i := (β_{i−1} →^{m_i,o_i}
+β_i), each factor depending ONLY on the retained state β_{i−1} and the step
+data — never on earlier height choices — so Σ_{h ∈ H(γ)} ∏ g_i(h_i) =
+∏_i G^{β_{i−1},β_i}_{m_i,o_i}." Stated as membership-factorization of the
+LISTED presentation of the process-side domain; templates INCLUDE
+terminal-final ones (`Template` constructors — the rev-4 note signature is
+BY TYPE). UNDERIVABILITY RESTORED (the rev-3 defect): with XHDd exact
+against `TReal` and the composite `tevt`/`tinst` free, the four-line proof
+is blocked in BOTH directions at composite tails — no census recursion, no
+count→realization link. (The ⊆-flavored fragment at length-2 composites
+whose TAIL is a single step is derivable GIVEN the mark facts +
+tevt_last_iff — recorded at V4-11; the note's open content, the ⊇ direction
+and state-only dependence, is untouched. The false-HMC toy V4-11 couples
+exactly ⊇.) NEVER proved in this corpus; consumed by (COMP-Σ)/V5-5 and
+V4-12(a). -/
+def HMC {n : ℕ} {S : StepSys n} (TE : TmplEvents n S) (D : XHDd n S TE) : Prop :=
   ∀ {α β} (m : S.Move α β) (γ : Template n S β) (h₁ : Hpt (S.dim m))
     (h₂ : Hpt γ.D),
     (D.dom (.cons m γ)).Mem (Hpt.append h₁ h₂) ↔
@@ -1195,17 +1526,18 @@ structure Refinement (n : ℕ) (S : StepSys n) where
   finB : ∀ α, Fintype (B α)
   S' : StepSys n
   cellEq : S'.Cell ≃ Σ α : S.Cell, B α    -- refined cells fiber over 𝒞_n
-  histOf : ∀ α' : S'.Cell, S'.Hist α' → S.Hist (cellEq α').1
+  histOf : ∀ (α' : S'.Cell) {q₀}, S'.Hist q₀ α' → S.Hist q₀ (cellEq α').1
+    -- [REV 4: pools ride histories on both sides — same-pool projection]
   moveProj : ∀ {α' β'}, S'.Move α' β' → S.Move (cellEq α').1 (cellEq β').1
   dim_eq : ∀ {α' β'} (m' : S'.Move α' β'), S'.dim m' = S.dim (moveProj m')
-  assignOf : ∀ {α' β'} (m' : S'.Move α' β') (x' : S'.Hist α')
+  assignOf : ∀ {α' β'} (m' : S'.Move α' β') {q₀} (x' : S'.Hist q₀ α')
     (h : Hpt (S'.dim m')),
     S'.Assign m' x' h → S.Assign (moveProj m') (histOf α' x') (dim_eq m' ▸ h)
-  mass_eq : ∀ {α' β'} (m' : S'.Move α' β') (x') (h) (a') (q₀ : ℚ),
-    S'.massOf m' x' h a' q₀
+  mass_eq : ∀ {α' β'} (m' : S'.Move α' β') {q₀} (x' : S'.Hist q₀ α') (h) (a'),
+    S'.massOf m' x' h a'
       = S.massOf (moveProj m') (histOf α' x') (dim_eq m' ▸ h) (assignOf m' x' h a')
   assign_cover : ∀ {α β} (m : S.Move α β) (α' : S'.Cell)
-    (hα : (cellEq α').1 = α) (x' : S'.Hist α') (h : Hpt (S.dim m)),
+    (hα : (cellEq α').1 = α) {q₀} (x' : S'.Hist q₀ α') (h : Hpt (S.dim m)),
     Function.Bijective
       (fun p : Σ (β' : {β' : S'.Cell // (cellEq β').1 = β})
           (m' : {m' : S'.Move α' β'.1 // castMove hα β'.2 (moveProj m') = m}),
@@ -1220,11 +1552,16 @@ structure Refinement (n : ℕ) (S : StepSys n) where
   -- assign_coverT, by the §2.B substitution table (targets: the SAME
   -- absorbing label v on both sides — VLabel does not refine).
 
-def HMCAug {n : ℕ} (S : StepSys n) (D : XHDd n S) : Prop :=
-  ∃ (R : Refinement n S) (D' : XHDd n R.S'), HMC R.S' D'
-  -- an unrelated witness is now impossible: D' is exact against S'.counts
-  -- (XHDd quantifies over chainCount, a def), and S'.counts partition S's
-  -- through assign_cover — the refinement is keyed to S by construction
+def HMCAug {n : ℕ} (S : StepSys n) : Prop :=
+  ∃ (R : Refinement n S) (TE' : TmplEvents n R.S') (D' : XHDd n R.S' TE'),
+    HMC TE' D'
+  -- an unrelated witness stays impossible: D' is exact against TE''s
+  -- process realization, TE' is tied to R.S''s step layer at length 1
+  -- (tevt_last_iff over R.S''s cntraw), and R.S''s assignments partition
+  -- S's through assign_cover — the refinement is keyed to S by
+  -- construction. [REV 4: quantifies its own TmplEvents over the refined
+  -- system — the reason TmplEvents is a standalone carrier, not a
+  -- CtsMeasured field]
 
 /-- (ENT-U)'s affine-A face (M4a), DISPLAYED (C29): A(ε̊[h]) is affine in h
 across instantiations of one template (dependent codomain — the rev-2 `_`
@@ -1311,16 +1648,22 @@ height-uniformity to (XHD-u) and V2-4 therefore keys tbl_count to base
 points. A burden may be strong when the note's burden is. -/
 structure CellPolyPack (n : ℕ) (C : CtsFamily n) (S : StepSys n)
     (V : CtsMeasured n C S) where
-  P : ∀ (s) (m) (o : C.Outc s m) (α), V.DCellO s m o α → Polynomial ℚ
+  P : ∀ (s) (m) (o : (C.bd s).Outc m) (α), V.DCellO s m o α → Polynomial ℚ
   deg : ∀ s m o α c, (P s m o α c).natDegree ≤ C.Wloc s m
   count : ∀ (d : MoveData n C) (c : V.DCellO d.s d.m d.o d.α)
-    (x : S.Hist _) (hzc : S.zc x) (q₀ : ℚ), q₀ ∈ V.Pools →
+    {q₀} (x : S.Hist q₀ _) (hzc : S.zc x), q₀ ∈ V.Pools →
     ∀ h, (V.cdom d c).Mem h →
     ((P d.s d.m d.o d.α c).eval q₀ : ℚ) = V.cntc d x c h
-  countT : ∀ {v} (d : TermData n C v) (c) (x) (hzc : S.zc x) (q₀ : ℚ),
-    q₀ ∈ V.Pools → ∀ h, (V.cdomT d c).Mem h →
+  countT : ∀ {v} (d : TermData n C v) (c) {q₀} (x : S.Hist q₀ _)
+    (hzc : S.zc x), q₀ ∈ V.Pools → ∀ h, (V.cdomT d c).Mem h →
     ((P d.s d.m d.o d.α c).eval q₀ : ℚ) = V.cntcT d x c h           -- [+T]
 ```
+N-2 ACCEPTANCE at this layer (the round-3 refuter, now satisfiable): the A2
+digit cell's polynomial (X−1)² evaluates 1 at q₀ = 2 and 4 at q₀ = 3, and
+`cntc` at q₀ = 2 counts F₂-histories' fibers (1) while `cntc` at q₀ = 3
+counts F₃-histories' (4) — two different fibers, no shared ℕ, the law holds
+per pool. Same for `ValA.tbl_count`'s T21 = X(X−1): 2-vs-6 (V2-4's displayed
+gate check).
 
 ### 2.I `DefsGate.lean` — the V.6 sealed data (concrete, decide-native) — REV 2: the A2 chart + the nine-point fields (C3, C20, C21)
 
@@ -1367,11 +1710,42 @@ def f4mul : Fin 4 → Fin 4 → Fin 4 :=
   fun a b => (([[0,0,0,0],[0,1,2,3],[0,2,3,1],[0,3,1,2]].get a).get b)
 def f4add : Fin 4 → Fin 4 → Fin 4 :=
   fun a b => (([[0,1,2,3],[1,0,3,2],[2,3,0,1],[3,2,1,0]].get a).get b)
-instance : Field F4 :=
-  { add := f4add, mul := f4mul, zero := 0, one := 1, neg := id, …laws := by decide }
--- F8 := Fin 8 over F₂[x]/(x³+x+1); F9 := Fin 9 over F₃[x]/(x²+1) — same
--- pattern, the 8×8 / 9×9 tables generated once and PASTED as literals (the
--- E-file displays them in full; decide checks the field laws in-kernel).
+noncomputable instance : Field F4 :=
+  { add := f4add, mul := f4mul, zero := (0 : Fin 4), one := (1 : Fin 4),
+    neg := id, sub := f4add, inv := fun a => [0,1,3,2].get a,
+    -- every remaining structure field/law is discharged `by decide` over
+    -- the Fin-4 tables (add_assoc, mul_comm, left_distrib, mul_inv_cancel
+    -- at a ≠ 0, …) — the full field-instance skeleton is mechanical and
+    -- one `decide` per law [REV 4, Codex-14: no `…laws` stand-in]
+    .. }
+
+-- F8 := Fin 8 over F₂[x]/(x³+x+1) (code b₂b₁b₀ ↦ 4b₂+2b₁+b₀) and
+-- F9 := Fin 9 over F₃[x]/(x²+1) (code a+bx ↦ a+3b) — the tables PASTED
+-- (REV 4, Codex-14; generated by carryless-mod-C₂,₃ / componentwise-mod-3
+-- arithmetic, re-derivable in one line each):
+def F8 : Type := Fin 8
+def f8add : Fin 8 → Fin 8 → Fin 8 := fun a b => (([
+  [0,1,2,3,4,5,6,7],[1,0,3,2,5,4,7,6],[2,3,0,1,6,7,4,5],[3,2,1,0,7,6,5,4],
+  [4,5,6,7,0,1,2,3],[5,4,7,6,1,0,3,2],[6,7,4,5,2,3,0,1],[7,6,5,4,3,2,1,0]
+  ].get a).get b)
+def f8mul : Fin 8 → Fin 8 → Fin 8 := fun a b => (([
+  [0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7],[0,2,4,6,3,1,7,5],[0,3,6,5,7,4,1,2],
+  [0,4,3,7,6,2,5,1],[0,5,1,4,2,7,3,6],[0,6,7,1,5,3,2,4],[0,7,5,2,1,6,4,3]
+  ].get a).get b)
+def F9 : Type := Fin 9
+def f9add : Fin 9 → Fin 9 → Fin 9 := fun a b => (([
+  [0,1,2,3,4,5,6,7,8],[1,2,0,4,5,3,7,8,6],[2,0,1,5,3,4,8,6,7],
+  [3,4,5,6,7,8,0,1,2],[4,5,3,7,8,6,1,2,0],[5,3,4,8,6,7,2,0,1],
+  [6,7,8,0,1,2,3,4,5],[7,8,6,1,2,0,4,5,3],[8,6,7,2,0,1,5,3,4]
+  ].get a).get b)
+def f9mul : Fin 9 → Fin 9 → Fin 9 := fun a b => (([
+  [0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8],[0,2,1,6,8,7,3,5,4],
+  [0,3,6,2,5,8,1,4,7],[0,4,8,5,6,1,7,2,3],[0,5,7,8,1,3,4,6,2],
+  [0,6,3,1,7,4,2,8,5],[0,7,5,4,2,6,8,3,1],[0,8,4,7,3,2,5,1,6]
+  ].get a).get b)
+-- Field instances for F8/F9: the F4 pattern verbatim (neg = id at char 2;
+-- F9's neg a := f9mul 2 a i.e. the mod-3 componentwise negation table);
+-- every law `by decide` over the pasted tables, in-kernel.
 ```
 PROVENANCE (G-2, corrected): x²+x+1 and x³+x+1 ARE the Conway polynomials
 C_{2,2}/C_{2,3}; x²+1 over F₃ is NOT the Conway polynomial (C_{3,2} =
@@ -1436,11 +1810,21 @@ determinacy BY TYPE) · `F4/F8/F9` §2.I (tables displayed; Conway claim
 corrected) · `emult` §2.F (a CtsMeasured FIELD — rev 2 called it a def over
 data the carrier did not have) · `AStep`/`evtOfStep` §2.F (closed Σ-carrier
 defs) · `zig` §2.D (Mathlib's `Denumerable.eqv ℤ`) · `StageLawBurden` V7-3d ·
-`Wsh17PackageV` V7-7 (a displayed TYPE). Residual E-phase freedom: NONE
-declared — the `castMove/castHpt/castAssign` transport helpers (§2.G) and
-the F8/F9 table literals are mechanical one-liners with zero design content.
+`Wsh17PackageV` V7-7 (a displayed TYPE — REV 4: full frozen roster,
+parameterized owner legs). REV-4 ADDITIONS, each displayed closed:
+`TmplEvents`/`TReal` §2.G (the process side; four [tie] fields, no
+composite law BY DESIGN — inventory slot 9) · `MDomTie` §2.G ·
+`MarkDisj` §2.F · `gProd` §2.G (recursion displayed — the last `…` body
+is out) · `cellEvtT`/`cntcT` §2.F (twins displayed, no longer comments) ·
+`takenGm`/`shapeRank` §2.D · `hentCode` §2.D · `BlockData.CellIdx` §2.C
+(moved into Defs — order fixed) · the F8/F9 add/mul tables §2.I (pasted
+literals) · `stepKey` §2.F (the digit-cell key of evt_disj_cell, closed
+def). Residual E-phase freedom: the `castMove/castHpt/castAssign`
+transport helpers (§2.G), the `eligMenu`/`branchingRead` one-liners
+(§2.D), and zig's orientation token — mechanical, zero design content,
+each recorded in §5's inventory.
 
-## §3 The unit DAG — 82 units (33 easy / 43 medium / 6 hard)
+## §3 The unit DAG — 95 units (32 easy / 59 medium / 4 hard)
 
 Format per campaign §2: id `MovesV.<name>` · file · statement (against §2
 Defs) · moves_ref (V-TABLES display, ≤ 3 lines) · deps · sketch · difficulty ·
@@ -1513,12 +1897,20 @@ moves_ref: "Σ_h T(h)·g(h) = T·Σ_h g(h) is EXACTLY (u-T), else false in
 general" ((iv) STEP). deps: Defs. sketch: `Finset.sum_congr` + `mul_sum`;
 norm_num. hyp_fields: none (the premise is the (u-T) instance, explicit).
 
-**V1-3 `xhdd_exact_supp` · `V1_xhdd.lean` · easy.**
-GIVEN XHDd: `(D.dom γ).Mem h ↔ ∀ x, 0 < chainCount S γ x h` at inhabited
-`Hist α` (both directions from no_orphan/no_stray + `hist_ne`) — now over
-the DEFINED count (C2). moves_ref: "(no orphan) … ⟹ h ∈ H(γ); (no stray)
-h ∈ H(γ) ⟹ … EVERY representative". deps: Defs. sketch: unfold;
-`Nonempty.elim`. hyp_fields: XHDd argument (owner [2b]).
+**V1-3 `xhdd_exact_supp` · `V1_xhdd.lean` · easy — RE-KEYED at REV 4 (N-1:
+the rev-3 count-keyed iff was the HMC-proving over-commitment).**
+ROSTER (2): (a) `xhdd_exact : (D.dom γ).Mem h ↔ ∀ q₀ ∈ Pools, ∀ x : Hist q₀ α,
+zc x → TReal TE γ x h` at pool-inhabited zc histories (both directions from
+no_orphan/no_stray + zc_ne) — the exactness iff over PROCESS realization;
+(b) `mem_chainCount_pos : (D.dom γ).Mem h → ∀ q₀ ∈ Pools, ∀ x, zc x →
+0 < chainCount S γ x h` — THE ONE-WAY COUNT SUPPLY (no_stray → real_marks →
+marks_chains), the lemma V2-5/V4-5/V5-8 consume; its converse is NOT stated
+(underivable at composites — exactly HMC's openness, §2.G).
+moves_ref: "(no orphan) T_γ(x, h) > 0 for some representative x ⟹ h ∈ H(γ);
+(no stray) h ∈ H(γ) ⟹ T_γ(x, h) > 0 for EVERY representative" (V.0, the
+process reading per the N-1 adjudication). deps: Defs 2.G.
+sketch: unfold; chain the three TE ties. hyp_fields: XHDd + TmplEvents ties
+(owner [2b] / carrier).
 
 **V1-4 `xhds_eval_nonneg` · `V1_xhds.lean` · easy.**
 GIVEN XHDw/XHDd/XHDs: each `Gc γ j` evaluates ≥ 0 at pools (limit of a
@@ -1527,7 +1919,7 @@ prime power evaluation (positive weights)". deps: V1-1.
 sketch: `HasSum.nonneg`. hyp_fields: XHDw/XHDd/XHDs arguments.
 
 **V1-5 `xhd_discharge` · `V1_discharge.lean` · easy.**
-`def IsFullDischarge (n S C V) : Prop := Nonempty (XHD n S V)` + the RECORD
+`def IsFullDischarge (n S TE C V) : Prop := Nonempty (XHD n S TE V)` + the RECORD
 lemma `theorem cond_of_discharge : IsFullDischarge … → ∀ {P : XHD … → Prop},
 (∀ X, P X) → ∃ X, P X` — the [1v]-FULL bookkeeping shape: discharge =
 INHABITATION of the package, "no new mathematics"; every measured unit keeps
@@ -1559,27 +1951,39 @@ deps: Defs. sketch: two-history toy model, F distinguishing inventories;
 norm_num. hyp_fields: none — a machine-checked record that (XHD-u) is not a
 consequence of the pack (the inverse-defect discipline).
 
-**V1-8a `stepsys_realized` · `V1_witnessA.lean` · medium — SPLIT (Codex-19).**
+**V1-8a `stepsys_realized` · `V1_witnessA.lean` · medium — SPLIT (Codex-19);
+POOL-INDEXED at REV 4.**
 THE STEP-SYSTEM WITNESS: ONE concrete finite `StepSys` instance (two cells,
 one continuing move with dim 1 + one terminal move, listed one-component
-domain, `Assign x h := Fin 1` on the domain and `Empty` off it, `ext` the
-evident map) which INHABITS, non-degenerately, `StepSys` (all non-vacuity
-fields incl. the REV-3 productivity `out_ne`), a `C15Pack` (incl. the T-twin
-fields), an `XHDw` (E = h + 1), an `XHDu` (incl. T-twins). moves_ref: the
-V.0 package displays (each quantifier realized at a true instance).
-deps: Defs. sketch: decide/norm_num. hyp_fields: none — a PROVED instance.
-
-**V1-8b `xhdds_realized` · `V1_witnessB.lean` · medium — SPLIT (Codex-19).**
-Over V1-8a's instance: an `XHDd` (exactness holds BY the count def) and an
-`XHDs` (one geometric sum — the V0-4 pattern at dim 1). moves_ref: (XHD-d)/
-(XHD-s) displays. deps: V1-8a, V0-4's pattern. sketch: one geometric series.
+domain, `Hist q₀ α := PUnit` at every pool, `Assign x h := Fin 1` on the
+domain and `Empty` off it, `ext` the evident map) which INHABITS,
+non-degenerately, `StepSys` (all non-vacuity fields incl. the REV-3
+productivity `out_ne`, now pool-guarded), a `C15Pack` (incl. the T-twin
+fields), an `XHDw` (E = h + 1; zc guards trivial), an `XHDu` (incl.
+T-twins). moves_ref: the V.0 package displays (each quantifier realized at
+a true instance). deps: Defs. sketch: decide/norm_num.
 hyp_fields: none — a PROVED instance.
+
+**V1-8b `xhdds_realized` · `V1_witnessB.lean` · medium — SPLIT (Codex-19);
+REV 4: the PROCESS SIDE realized.**
+Over V1-8a's instance: a `TmplEvents` toy (Box q₀ N := Fin 1; tevt/tinst :=
+the full box on the product-of-listed-domains points, ∅ off them — all four
+ties by decide: length-1 iff, real_marks, marks_chains), an `XHDd` over it
+(exactness against the toy TReal holds by decide), and an `XHDs` (one
+geometric sum — the V0-4 pattern at dim 1); `MDomTie` holds by rfl on the
+toy's lists. moves_ref: (XHD-d)/(XHD-s) displays + the §2.G process carrier.
+deps: V1-8a, V0-4's pattern. sketch: one geometric series + decide.
+hyp_fields: none — a PROVED instance. [At THIS toy HMC happens to be true —
+the false-HMC instance is V4-11's, with a COUPLED composite tevt; together
+they bracket the kernel: satisfiable both ways, provable neither.]
 
 **V1-8c `measured_faces_realized` · `V1_witnessC.lean` · medium — SPLIT
 (Codex-19).** Over a one-cell/one-template `CtsMeasured` toy on the same
-system (incl. the REV-3 census/tie fields: entInst/ent_card/box_card/
-evt_card/stInst_card realized by explicit finite data): the faces
-`XHDdC`/`XHDsC`/`XHDsEnt`/`XHDdEnt`, hence the FULL bundle `XHD`.
+system (incl. the REV-3 census/tie fields entInst/ent_card/box_card/
+evt_card/stInst_card AND the REV-4 fields — evt_disj_cell,
+XHDsEnt.mass_summable — realized by explicit finite data): the faces
+`XHDdC`/`XHDsC`/`XHDsEnt`/`XHDdEnt`, hence the FULL bundle `XHD` (over
+V1-8b's TmplEvents toy).
 moves_ref: the V.0 package + V.1(iii)/(iv) faces. deps: V1-8b, Defs 2.F/2.G.
 sketch: decide + one geometric series; the census data is a literal.
 hyp_fields: none — a PROVED instance; together with V1-7's failure witness
@@ -1622,11 +2026,16 @@ RE-KEYED (Codex-4: rev 2's `tbl_count` was BOTH too weak — guarded by
 `0 < cntraw`, silent at zero-count entries — AND too strong — realized-height
 equality smuggled (u-T), which the note assigns to (XHD-u), into VAL(a)).**
 `structure ValA (n) (C : CtsFamily n) (S) (V : CtsMeasured n C S) : Prop`
-with fields: (a) `tbl_count : ∀ (d : MoveData n C) (β) (x : S.Hist _)
-(hzc : S.zc x) (q₀ ∈ V.Pools) (j : Fin (V.mdom d).comps.length),
+with fields: (a) `tbl_count : ∀ (d : MoveData n C) (β) {q₀} (x : S.Hist q₀ _)
+(hzc : S.zc x) (hq : q₀ ∈ V.Pools) (j : Fin (V.mdom d).comps.length),
 ((C.T d.s d.m d.o d.α β).eval q₀ : ℚ) = S.cntraw (V.moveOf d) x
 (((V.mdom d).comps.get j).base)` — the polynomial valued at the count AT THE
-LISTED BASE POINTS of the one-step domain, ∀ representatives, UNGUARDED:
+LISTED BASE POINTS of the one-step domain, ∀ representatives AT THE POOL
+(REV 4, N-2: the count is a count of q₀-histories' fibers — the law is
+now satisfiable at non-constant tables. THE ACCEPTANCE NUMBERS, displayed:
+T21 = X·(X−1) has eval 2 = 2 and eval 3 = 6; at q₀ = 2 the law pins the
+F₂-fiber count 2, at q₀ = 3 the F₃-fiber count 6 — different fibers,
+different naturals, one polynomial, exactly VAL(a)); UNGUARDED at zero:
 · at an entry inadmissible at q₀ the base counts are 0, so the law FORCES
   T.eval q₀ = 0 (horn (i) closed — it says something at zero counts);
 · NO height-uniformity is entailed: the polynomial is pinned only at base
@@ -1636,12 +2045,20 @@ LISTED BASE POINTS of the one-step domain, ∀ representatives, UNGUARDED:
   proves representative-uniform count rows per species").
 (+ `tbl_countT`, the [+T] twin over mdomT/cntrawT);
 (b) the size ties (`size_deg`/`size_count`-keyed, already TYPE);
-(c) `tgt_supported : ∀ …, ¬ V.activeState q₀ β → S.cntraw (V.moveOf d) x h
-= 0` — "a landing forces a concrete target state", the count-level landing
-tie; (d) NEW at REV 3 (Codex-15): `ent_supported : ∀ (ε : EntShapeV n) (β₀)
+(c) `tgt_supported : ∀ (d : MoveData n C) {q₀} (x : S.Hist q₀ _)
+(hzc : S.zc x) (h), q₀ ∈ V.Pools →
+V.activeState q₀ (toStepCells.symm d.src) →
+¬ V.activeState q₀ (toStepCells.symm d.tgt) → S.cntraw (V.moveOf d) x h = 0`
+— "a landing forces a concrete target state", the count-level landing tie,
+NOW GUARDED BY THE ACTIVE SOURCE + zc (REV 4, Codex-9: the note's (ii-a)
+reads "for every source active at q₀ …" and "deliberately leaves
+inactive-source rows as formal junk" — rev 3 smuggled the unguarded form
+into the hypothesis; V4-1's conclusion guard alone was not enough);
+(d) NEW at REV 3 (Codex-15): `ent_supported : ∀ (ε : EntShapeV n) (β₀)
 (q₀ ∈ V.Pools), ¬ V.activeState q₀ β₀ → V.entCensus ε β₀ q₀ = 0` — the SAME
 landing sentence at the entrance layer ("… and ι of (iii) is supported on
-Act_{q₀}", V.1(ii-a)) — V4-1's iota_supp is now derivable, not free.
+Act_{q₀}", V.1(ii-a); the entrance leg has no source state to guard) —
+V4-1's iota_supp is derivable, not free.
 + `theorem valA_gate : ValA 3 gateFam gateMeas` DEFERRED to V6.
 moves_ref: "(a) LOCAL: every entry T_{m,o}^{α,β} is ONE polynomial in ℚ[q] of
 degree ≤ W_loc(m), and every cell size |α| ONE polynomial of degree ≤
@@ -1658,27 +2075,30 @@ ROSTER (3): (a) `chain_resolved (U : XHDu n S) {α} (γ) (x) (h) :
 chainCount S γ x h = hProd γ h` where `hProd γ h := ∏ᵢ cnt_i(hᵢ)` with each
 factor state-only (well-defined by u_R_cnt) — pure induction on γ through
 `ext` (base = cntraw def; cons = `Fintype.sum_const` after IH + u_R_cnt at
-the extended histories); (b) `valB (hVA : ValA n C S V) (U : XHDu) (D : XHDd)
-(hzc : S.zc x) (q₀ ∈ V.Pools) (hmem : (D.dom γ).Mem h) :
+the extended histories); (b) `valB (hVA : ValA n C S V) (U : XHDu) (D : XHDd n S TE)
+(hTie : MDomTie V TE D) (hzc : S.zc x) (q₀ ∈ V.Pools)
+(hmem : (D.dom γ).Mem h) :
 (chainCount S γ x h : ℚ) = (pathProdPoly C γ).eval q₀` — REV 3 (Codex-4's
-V2-5 leg): the path product is now THE TABLE POLYNOMIALS' product,
+V2-5 leg): the path product is THE TABLE POLYNOMIALS' product,
 `pathProdPoly C γ := ∏ᵢ C.T (step-i data of γ) (its TargetIx)` (a displayed
-def of this file over `dataOf`), CONNECTED to ValA and evaluated at q₀ —
-from (a), replace each realized cnt_i(hᵢ) by the common value via u_T
-(realized-ness from no_stray's positivity, projected per step along the
-witnessing chain), then value each step by `tbl_count` at its base point
-(u_T carries base ↔ hᵢ); terminal factor via the [+T] twins;
+def of this file over `dataOf`), CONNECTED to ValA and evaluated at q₀.
+REV-4 ROUTE (N-1 ripple): realized-ness now comes from V1-3(b)'s
+`mem_chainCount_pos` (Mem → TReal → marks → 0 < chainCount — the ONE-WAY
+supply), whose positivity decomposes stepwise through the recursion; then
+u_T carries each realized cnt_i(hᵢ) to its base point and `tbl_count`
+values it — base realizability through `MDomTie.mdom_eq` (Codex-5's tie,
+now a displayed premise); terminal factor via the [+T] twins;
 (c) `pathProd_deg : (pathProdPoly C γ).natDegree ≤ W γ` —
 the degree bound RE-SCOPED (C9): it is a POLYNOMIAL-degree statement about
 C_γ(q) = ∏ T given ValA's `T_deg` (Σ W_loc arithmetic), NOT a counting
 inequality with no hypotheses. moves_ref: "(b) CHAIN — GIVEN (XHD-u)'s COUNT
 FACE …: the PER-REPRESENTATIVE linked count from one fixed source
 representative EQUALS the PATH PRODUCT C_γ(q) = ∏ T" (Thm VAL).
-deps: Defs, V1-2, V2-4 (for (c)). sketch: as per roster.
-hyp_fields: XHDu + XHDd (owner [2b]); "never proved here" — the unit derives
-the equality FROM them, matching "hypothesized in (XHD-u), never proved here
-(alternative discharge: the table build proves representative-uniform count
-rows per species)".
+deps: Defs, V1-2, V1-3, V2-4 (for (c)). sketch: as per roster.
+hyp_fields: XHDu + XHDd (owner [2b]) + MDomTie (the [1v]/[2b] coherence tie,
+displayed); "never proved here" — the unit derives the equality FROM them,
+matching "hypothesized in (XHD-u), never proved here (alternative discharge:
+the table build proves representative-uniform count rows per species)".
 
 **V2-6 `exp_audit_pow` · `V2_audit.lean` · medium.**
 The EXPONENT-MAP AUDIT's worked law: for a finite field F with `|Fˣ| = m`,
@@ -1750,7 +2170,7 @@ moves_ref: "(SPLIT bounds — a source-cell size belongs to (s, α), not to any
 outgoing m, and may exceed some W_loc(m))" ((iv)-POLY). deps: DefsGate.
 sketch: norm_num + a two-line instance. hyp_fields: none.
 
-### Layer V3 — entrance shapes + clause (iii) [11]
+### Layer V3 — entrance shapes + clause (iii) [17]
 
 **V3-1 `entshape_postsplit` · `V3_eps.lean` · easy — RE-SCOPED (Codex-5:
 rev 2's (b) claimed a derivation the fields cannot give).**
@@ -1778,34 +2198,50 @@ quotiented). moves_ref: "h_ent(ε) := the tuple of ε's RETAINED height data —
 deps: Defs. sketch: `List.map` congruence + a two-read discriminating
 instance. hyp_fields: none.
 
-**V3-3 `spword_bridge` · `V3_spword.lean` · HARD — EXTENDED (A-3; + REV 3
-leg (d), the Codex-6 reconstruction bridge; ⌿ pre-approved split by leg).**
-ROSTER (4): (a) `def spWord (n) (P : MovesD.ShapePrefix) : List
-MovesSp.Species` (fold of the stage laws along `P.reads`) + its law:
-consecutive outputs satisfy `MovesSp.SuccStep` when the reads satisfy
-MovesD's `ShapeWF` stage clauses; (b) the COLLAPSE law: `EntShapeV.template`
-lands in `EntTemplate` (the collapsed word is a `CollapsedWalk`; entry/menu
-WF fields transported from ε's §2.D ties); (c) the ENTRANCE-SHAPE BRIDGE:
-from (ε̊, h) construct the `MovesSp.EntranceShape n gsel musel` behind it
-(word + hMem + hChain + hEntry from ε̊'s fields; heights h into the slot
-functions) — the §1 consumption tie A-3 demanded; (d) RECONSTRUCTION
-(NEW — Codex-6's lossiness horn + G-3): `readOfLetter` (species letter +
-(h-slot, u*-code slot) + the WF prefix-so-far ↦ the unique WF `ShapeRead`
-with those data — e/g/μ/s0/wSide/Dwidth/w from the letter's stage fields and
-the WF chains (width chain, wchain), ustar via zig + `gamTie`'s inversion,
-a/gam via `anchorTie`/`gamTie`) and `spWord_faithful`: two shallow WF
-prefixes with equal collapsed spWord, equal height/depth/u*-code slots are
-EQUAL — i.e. SP.1 genuinely forgets ONLY heights, realized as a THEOREM from
-the two corpora's WF laws. THIS is the load-bearing leg of V3-5's bijection;
-ESCALATION HATCH recorded at §2.D (if a datum is genuinely lost, the
-template gains it as a field, with a fresh audit — never silently).
+**V3-3a `spword_def` · `V3_spwordA.lean` · medium — REAL UNIT ID at REV 4
+(Codex-16: the pre-approved split is PROMOTED; the parent V3-3 dissolves
+into a/b/c/d, each one display).**
+`def spWord (n) (P : MovesD.ShapePrefix) : List MovesSp.Species` (fold of
+the stage laws along `P.reads`) + its law: consecutive outputs satisfy
+`MovesSp.SuccStep` when the reads satisfy MovesD's `ShapeWF` stage clauses.
 moves_ref: "ε̊ := ε's height-forgetting TEMPLATE (SP.1 applied to P̂,
-selection data kept)" (V.1(iii)) + L3 rev 9 (retained (h, u*)).
-deps: MovesD.Defs (gamTie/anchorTie/wchain), MovesSp.Defs.
-sketch: structural recursion over reads; match `ShapeRead` fields (e, g, μ,
-species tags) to `Species` stage fields via the D.5/D.7/D.8 output laws both
-corpora carry; (d) inverts the same laws. hyp_fields: the ShapeWF
-certificate (MovesD's, PROVED apparatus) — no open kernel.
+selection data kept)" (V.1(iii)). deps: MovesD.Defs, MovesSp.Defs.
+sketch: structural recursion over reads; match `ShapeRead` fields to
+`Species` stage fields via the D.5/D.7/D.8 output laws. hyp_fields: the
+ShapeWF certificate (MovesD's, PROVED apparatus) — no open kernel.
+
+**V3-3b `spword_collapse` · `V3_spwordB.lean` · medium.**
+The COLLAPSE law: `EntShapeV.template` lands in `EntTemplate` (the collapsed
+word is a `CollapsedWalk`; entry/menu WF fields transported from ε's §2.D
+ties — incl. the REV-4 `hrank` field, transported through `takenGm`'s
+letter-level image). moves_ref: as V3-3a + [2a]'s collapse convention.
+deps: V3-3a. sketch: CollapsedWalk transport. hyp_fields: as V3-3a.
+
+**V3-3c `entshape_bridge` · `V3_spwordC.lean` · medium.**
+The ENTRANCE-SHAPE BRIDGE: from (ε̊, h) construct the
+`MovesSp.EntranceShape n gsel musel` behind it (word + hMem + hChain +
+hEntry from ε̊'s fields; heights h into the slot functions) — the §1
+consumption tie A-3 demanded. moves_ref: as V3-3a. deps: V3-3a/b.
+sketch: field transport. hyp_fields: as V3-3a.
+
+**V3-3d `spword_faithful` · `V3_spwordD.lean` · HARD — the Codex-6
+reconstruction bridge (the corpus's real E-phase risk).**
+`readOfLetter` (species letter + (h-slot, u*-code slot) + the WF
+prefix-so-far ↦ the unique WF `ShapeRead` with those data — e/g/μ/s0/wSide/
+Dwidth/w from the letter's stage fields and the WF chains (width chain,
+wchain), ustar via zig + `gamTie`'s inversion, a/gam via
+`anchorTie`/`gamTie`) and `spWord_faithful`: two shallow WF prefixes with
+equal collapsed spWord, equal height/depth/u*-code slots are EQUAL — SP.1
+genuinely forgets ONLY heights, realized as a THEOREM from the two corpora's
+WF laws. THE load-bearing leg of V3-5a's injectivity; ESCALATION HATCH
+recorded at §2.D (if a datum is genuinely lost, the template gains it as a
+field, with a fresh audit — never silently).
+moves_ref: as V3-3a + L3 rev 9 (retained (h, u*)).
+deps: V3-3a, MovesD.Defs (gamTie/anchorTie/wchain).
+sketch: invert the stage-output laws read by read. hyp_fields: as V3-3a.
+
+*(Legacy ID note: "V3-3" in earlier dispositions = the a/b/c/d suite;
+"V3-3(d)" = V3-3d.)*
 
 **V3-4 `template_finite` · `V3_tfin.lean` · medium — RESTATED (C12/A-3).**
 The template family is FINITE, OUTRIGHT AND UNCONDITIONALLY (no `WordBounded`
@@ -1824,27 +2260,30 @@ hyp_fields: NONE (this was C12's silent-weakening finding: the note asserts
 finiteness from [2a]/M1 + L5, and the Lean statement now proves exactly
 that, quantifier unmoved).
 
-**V3-5 `inst_bijection` · `V3_instbij.lean` · HARD.**
-The rev-4 INSTANTIATION BIJECTION, GIVEN the entrance exactness face:
-`theorem inst_bij (DE : XHDdEnt n S V) (ε̊ : EntTemplate n) (β₀)
-(hl : V.entLands ε̊ β₀) : ∃ e : {h // (V.entDom ε̊).Mem h} ≃
-{ε : EntShapeV n // ε.template = ε̊ ∧ Realizable V ε β₀},
-∀ h, (e h).1 = writeHeights ε̊ h.1` — "write the heights h into the
-template's retained slots" (`writeHeights`, the §2.D def) is a BIJECTION
-from H(ε̊) onto the concrete realizable ε with that template.
-moves_ref: "the INSTANTIATION MAP h ↦ ε̊[h] … is a BIJECTION from H(ε̊) onto
-{concrete ε with template ε̊} — D4R.1-SUM is cited ONLY at concrete ε"
-(V.1(iii), pass-3 F1's two horns). deps: V3-3, V3-4, Defs 2.D/2.G.
-sketch: injectivity = V3-3(d)'s `spWord_faithful` (heights + u*-codes
-determine the reads given the template — the REV-3 reconstruction leg, no
-longer hand-waved); surjectivity = no_strayE realizability +
-template-matching through readOfLetter; `Realizable` is the DISPLAYED §2.G
-def (entrance-event nonemptiness at stabilized levels); membership in EntIx
-via `lands_of_realizable` (the REV-3 XHDdEnt field — Codex-6's landing
-horn). ⌿ pre-approved split: (a) injectivity; (b) surjectivity; (c) the
-writeHeights-computation law (incl. the zig/gamTie roundtrip).
-deps += V3-3(d). hyp_fields: XHDdEnt (owner [2b] — the shallow-layer XHD-d
-face, now with the landing law).
+**V3-5a `inst_bij_inj` · `V3_instbijA.lean` · HARD — REAL UNIT ID at REV 4
+(Codex-16; the parent V3-5 dissolves into a/b/c).**
+INJECTIVITY of the instantiation map on H(ε̊): distinct h give distinct
+`writeHeights ε̊ h` — V3-3d's `spWord_faithful` (heights + u*-codes
+determine the reads given the template). moves_ref: "the INSTANTIATION MAP
+h ↦ ε̊[h] … is a BIJECTION from H(ε̊) onto {concrete ε with template ε̊} —
+D4R.1-SUM is cited ONLY at concrete ε" (V.1(iii), pass-3 F1's two horns).
+deps: V3-3d, Defs 2.D. hyp_fields: none beyond V3-3d's apparatus.
+
+**V3-5b `inst_bij_surj` · `V3_instbijB.lean` · medium.**
+SURJECTIVITY onto {concrete realizable ε with template ε̊}, GIVEN the
+entrance exactness face: no_strayE realizability + template-matching
+through readOfLetter; membership in EntIx via `lands_of_realizable`
+(Codex-6's landing horn). `Realizable` is the DISPLAYED §2.G def.
+deps: V3-3d, V3-4, Defs 2.G. hyp_fields: XHDdEnt (owner [2b] — the
+shallow-layer XHD-d face, with the landing law).
+
+**V3-5c `inst_bij_eq` · `V3_instbijC.lean` · medium.**
+THE ASSEMBLED EQUIV + computation law: `∃ e : {h // (V.entDom ε̊).Mem h} ≃
+{ε : EntShapeV n // ε.template = ε̊ ∧ Realizable V ε β₀}, ∀ h, (e h).1 =
+writeHeights ε̊ h.1` (incl. the zig/gamTie roundtrip check).
+deps: V3-5a/b. hyp_fields: XHDdEnt.
+
+*(Legacy ID note: "V3-5" = the a/b/c suite.)*
 
 **V3-6 `iota_muhat` · `V3_iota.lean` · medium — RESTATED (C13).**
 ι's typing laws, the FALSE IFF STRUCK: ROSTER (3): (a) `iota_le_total`:
@@ -1873,32 +2312,41 @@ moves_ref: "The primitives and every FINITE partial sum are hypothesis-free
 distinct marked pairs)" (V.1(iii)). deps: V3-6, V3-1.
 sketch: `finsum_mem_union` on disjoint index sets. hyp_fields: none.
 
-**V3-8 `ent_agg_full` · `V3_aggfull.lean` · medium — RE-KEYED at REV 3
-(F-1/Codex-8: the summand is the CORRECTED ιshH — census·q^{−A} — and the
-package face is weight-only, so the count constancy that resummation uses
-is now the DISPLAYED (ENT-U) premise, not a hypothesis-field freebie).**
-The FULL aggregate over the DECLARED carrier (EntIx = template × listed
-component; ιval/ιsh are V7-4b's DEFS: ιsh i q₀ := entCount i q₀ ·
-evalAt (XsEnt.Gent β₀ i), ιval := Σ_i ιsh):
-`theorem ent_agg_full (XsEnt : XHDsEnt n S V) (DE : XHDdEnt …) (hEU : EntU V)
-(β₀) (q₀ ∈ Pools) : HasSum (fun p : Σ i : V.EntIx β₀, {h // comp-Mem i h} =>
-ιshH V p.1.1.1 p.2.1 β₀ q₀) (ιval β₀ q₀)` — entrance heights summed HERE and
+**V3-8a `ent_agg_conv` · `V3_aggfullA.lean` · medium — SPLIT at REV 4
+(Codex-7: rev 3's single unit required (ENT-U) for the AGGREGATE, but the
+note's ledger line gives ENT-AGG's convergence "GIVEN XHD-s on the shallow
+layer" ALONE — "(ENT-U) is required for INIT-RAT, not for defining or
+aggregating the marked masses". The aggregation and the ιval identification
+are now SEPARATE units with SEPARATE premise sets).**
+THE NOTE-EXACT AGGREGATION: `theorem ent_agg_conv (XsEnt : XHDsEnt n S V)
+(DE : XHDdEnt …) (β₀) (q₀ ∈ Pools) : ∃ v : ℝ, HasSum (fun p : Σ i :
+V.EntIx β₀, {h // comp-Mem i h} => ιshH V p.1.1.1 p.2.1 β₀ q₀) v` —
+convergence from the REV-4 shallow MASS-SUMMABILITY face
+`XsEnt.mass_summable` (the ledger line's own premise, typed; summability
+only, so INIT-RAT is decided by nothing); entrance heights summed HERE and
 nowhere else; each concrete realizable ε hit EXACTLY ONCE (V3-5's bijection
 composed with the disjoint component listing + lands_of_realizable — no
-realizable entrance omitted); per component: the census is CONSTANT at q₀
-by (ENT-U), factor it out (HasSum.mul_left) of XHDsEnt's weight-only
-Gent_hasSum; the outer sum is FINITE (V3-4 × list length).
-ADJUDICATION (recorded): the note's ledger line names "GIVEN XHD-s
-(shallow)" alone; the per-component count constancy the factoring uses is
-(ENT-U)'s content, so the Lean statement displays BOTH — conditionality made
-explicit, never silently absorbed into a package field (Codex-8's charge).
-moves_ref: "ι_{e,β₀} := Σ_{ε̊} Σ_{h ∈ H(ε̊)} ι_{e,ε̊[h],β₀} … CONVERGENCE of
-the full aggregate … is GIVEN XHD-s on the shallow layer" (ENT-AGG).
-deps: V3-5, V3-7, V3-9b, V0-3. sketch: reindex by the bijection;
-per-component weight HasSum × constant census; finite outer sum.
-hyp_fields: XHD-s shallow + XHD-d shallow (owner [2b]) + (ENT-U) (owner [2b]
-M4b — displayed); (iv)-REP invoked NOWHERE (the note: "never for the sum's
+realizable entrance omitted). NO (ENT-U). moves_ref: "ι_{e,β₀} := Σ_{ε̊}
+Σ_{h ∈ H(ε̊)} ι_{e,ε̊[h],β₀} … CONVERGENCE of the full aggregate … is GIVEN
+XHD-s on the shallow layer" (ENT-AGG). deps: V3-5a/b/c, V3-7, V0-3.
+sketch: Summable → HasSum to its tsum; the exactly-once structure is the
+content. hyp_fields: XHD-s shallow (mass_summable) + XHD-d shallow (owner
+[2b]); (iv)-REP invoked NOWHERE (the note: "never for the sum's
 definition").
+
+**V3-8b `ent_agg_ival` · `V3_aggfullB.lean` · medium.**
+THE ιval IDENTIFICATION (the seam's object): GIVEN additionally (ENT-U),
+V3-8a's aggregate value IS `ιval β₀ q₀ = Σ_i entCount i q₀ · evalAt
+(XsEnt.Gent β₀ i)` (V7-4b's DEF): per component the census is CONSTANT by
+(ENT-U), factor it out (HasSum.mul_left) of the weight-only Gent_hasSum;
+finite outer sum (V3-4 × list length). THIS is where (ENT-U) enters — the
+note's own INIT-RAT line lists it; the aggregate's existence never needed
+it (V3-8a). moves_ref: ENT-AGG + "INIT-RAT (BURDEN, GIVEN XHD on the
+shallow layer + (ENT-U))" (V.3(iii)). deps: V3-8a, V3-9b.
+sketch: per-component factoring; sum comparison. hyp_fields: V3-8a's set +
+(ENT-U) (owner [2b] M4b — displayed).
+
+*(Legacy ID note: "V3-8" = a + b.)*
 
 **V3-9a `ent_count_stmt` · `V3_entcount.lean` · easy (statement unit) —
 RE-KEYED at REV 3 (F-2 + Codex-7: PER CONCRETE ε, against the CENSUS —
@@ -1956,17 +2404,20 @@ design-freedom slot (5) resolved: the closure route, no MovesS edit).
 moves_ref: "INIT-RAT (BURDEN, GIVEN XHD on the shallow layer + (ENT-U)):
 ι_{e,(s,α)} = Σ_{ε̊} Σ_{c ⊆ H(ε̊)} I^ent_c(q)·Σ_{h∈c} p^{−A(ε̊[h])} … hence
 ∈ ℚ(q); CITED by RS.2" (V.3(iii)).
-deps: V3-8, V3-9a, V3-9b, V0-3, V0-4 (the witness pattern).
+deps: V3-8a/b, V3-9a, V3-9b, V0-3, V0-4 (the witness pattern).
 sketch: per component: constant I^ent_c times the XHDsEnt geometric value;
 finitely many components and templates. hyp_fields: XHD-s shallow + (ENT-U)
 + ENT-COUNT + M4a's affine-A face (`AffEnt`) — EXACTLY the V.1 ledger line
 "INIT-RAT GIVEN XHD (shallow) + (ENT-U)"; supplies `RatBurdens.ιP/ι_interp`.
 
-### Layer V4 — clauses (ii), (iv), (v) [12]
+### Layer V4 — clauses (ii), (iv), (v) [14]
 
-**V4-1 `act_no_entry` · `V4_act.lean` · medium — GUARD RESTORED (C15).**
+**V4-1 `act_no_entry` · `V4_act.lean` · medium — GUARD RESTORED (C15);
+REV 4 (Codex-9): the guard now ALSO sits on ValA's `tgt_supported` FIELD
+(V2-4(c)) — the theorem's premise and the hypothesis's premise match, and
+inactive-source rows are formal junk at BOTH layers.**
 (ii-a) NO-ENTRY, GIVEN ValA (whose `tbl_count`/`tgt_supported` fields carry
-(iv)-POLY's correct valuation + the landing tie), WITH the note's
+(iv)-POLY's correct valuation + the GUARDED landing tie), WITH the note's
 active-source guard: `theorem no_entry (hVA : ValA …) … (hact :
 V.activeState q₀ αc) (hin : ¬ V.activeState q₀ βc) :
 (C.T s m o α β).eval q₀ = 0` — zero is claimed ONLY for active sources
@@ -2030,7 +2481,8 @@ The (iv) STEP display, GIVEN XHD-w + (U-A) + (XHD-u) + XHD-d/s — the XHDw
 argument now EXPLICIT (rev 1 used `X.g` with no `X`; and (U-A) alone does
 NOT identify the common mass with q^{−E(h)} — that identification is
 XHDw.w_eq's): `theorem step_row (P : C15Pack) (X : XHDw) (U : XHDu)
-(D : XHDd) (Xs : XHDs) {αc βc} (mv) (x) (hzc : S.zc x) (q₀ ∈ Pools) (j) :
+(D : XHDd n S TE) (hTie : MDomTie V TE D) (Xs : XHDs) {αc βc} (mv) {q₀}
+(x : S.Hist q₀ αc) (hzc : S.zc x) (hq : q₀ ∈ Pools) (j) :
 HasSum (fun h : {h // comp-Mem j h} => (S.cntraw mv x h.1 : ℝ) *
 X.g mv h.1 q₀) ((T : ℝ) * G_j)` — the height-resolved row Σ T(h)·g(h)
 equals T·G: w_eq + (U-A) make g the common per-assignment mass at the fixed
@@ -2039,13 +2491,18 @@ g-summand ALREADY conditional (no re-division — no |α| factor exists).
 moves_ref: "UNIFORMITY CONSUMPTION, displayed at the product (rev 2 —
 findings 2–3: T·G is NOT licit from XHD-w/d alone): the height-resolved row
 is Σ_{h} T(h)·g(h) … = T·Σ_h g(h) is EXACTLY (u-T)" (V.1(iv)).
-deps: V1-6, V1-2, V1-1, Defs. sketch: pointwise congr to constant count;
-`HasSum.mul_left`; G := the length-1 XHD-s component value.
-hyp_fields: XHD-w + (U-A)'s pack + XHD-u + XHD-d/s — VERBATIM the ledger
-"(iv) measured faces GIVEN XHD-w + (U-A) + (XHD-u); resummed forms also
-GIVEN XHD-d/s".
+deps: V1-6, V1-2, V1-1, V1-3, Defs. sketch: pointwise congr to constant
+count (realizedness across the component from V1-3(b)'s
+`mem_chainCount_pos` at length 1 — the REV-4 one-way supply; base-point
+valuation through `MDomTie.mdom_eq`); `HasSum.mul_left`; G := the length-1
+XHD-s component value.
+hyp_fields: XHD-w + (U-A)'s pack + XHD-u + XHD-d/s + MDomTie — VERBATIM the
+ledger "(iv) measured faces GIVEN XHD-w + (U-A) + (XHD-u); resummed forms
+also GIVEN XHD-d/s" (the tie is [1v]/[2b] coherence, displayed).
 
-**V4-6 `part1_route` · `V4_part1.lean` · HARD — FULL SIGNATURE DISPLAYED (C17).**
+**V4-6a/b/c `part1_route` · `V4_part1A/B/C.lean` · m/HARD/m — SUITE
+(REV 4, Codex-16: real unit IDs, assigned below); FULL SIGNATURE DISPLAYED
+(C17).**
 PART-1 by the rev-3 countable route; ALL premises now in the displayed
 signature (rev 1 left (U-A)/XHD-d/s to the prose):
 `theorem part1 (P : C15Pack) (X : XHDw) (D : XHDd) (Xs : XHDs)
@@ -2069,8 +2526,12 @@ whole partition sum to 1" (V.3(iv), pass-2 finding 4: "mass 1 is NOT a
 finite-pool identity"). deps: Defs, V0-3.
 sketch: (d) gives per-(c,h) masses; (a)+(b) give the countable HasSum to the
 total minus remainder; (c) kills the remainder; assemble by monotone limits
-on nonneg terms. ⌿ pre-approved split: (i) the countable-partition HasSum
-from legs a/b/d; (ii) the remainder-null limit from leg c; (iii) assembly.
+on nonneg terms. REV 4 (Codex-16): the split is PROMOTED to real units —
+**V4-6a `part1_ctbl`** (the countable-partition HasSum from legs a/b/d,
+medium, `V4_part1A.lean`), **V4-6b `part1_null`** (the remainder-null limit
+from leg c + the monotone assembly bound, HARD, `V4_part1B.lean`),
+**V4-6c `part1`** (the assembled theorem, medium, `V4_part1C.lean`) —
+"V4-6" = the suite.
 hyp_fields: the four legs VERBATIM (the ledger: "PART-1 additionally GIVEN
 D4R.0 totality + countable additivity + the null no-finite-height remainder"
 + XHD-w's (U-A) face at fixed history + XHD-d/s) — every one in the
@@ -2138,96 +2599,166 @@ SPACE; as f-events only the DIGIT CELLS are disjoint. No ordinary-source
 disjointness is claimed anywhere" (V.1(iv), pass-2 finding 2).
 deps: Defs 2.E/2.F, MovesD (L12/D4R.4 finite-level realization).
 sketch: the marked event's carrier is `Σ (cell × mark)`; disjointness from
-the mark coordinate (evt_disj + cellOfA); the equal-projection witness from
-L5's two eligible (side, ψ) continuations. hyp_fields: XHD-d (height classes
+the mark coordinate (BY CONSTRUCTION on the Σ-carrier — REV 4, Codex-3: no
+box-level cross-mark law exists any more) + `evt_disj_cell` at distinct
+digit-cell keys; the equal-projection witness from L5's two eligible
+(side, ψ) continuations — now REALIZABLE as an instance (rev 3's blanket
+evt_disj CONTRADICTED it; the re-key makes this unit's witness and the
+carrier laws jointly satisfiable). hyp_fields: XHD-d (height classes
 listed); the L5 eligibility roster (MovesD-keyed field).
 
-**V4-11 `hmc_typing` · `V4_hmc.lean` · easy (typing unit).**
-The HMC/HMCAug Prop shapes compile against a NON-degenerate instance: a toy
-StepSys with a 2-step template where `HMC` is FALSE (a coupled domain) and a
-refined one where it holds — the kernel is a real hypothesis, not a
-tautology; + the terminal-final signature check: `Template.lastT` instances
-type against `HMC`'s quantifier (the probe's step 2 is a literal instance BY
-TYPE). moves_ref: "(v) HMC — … OPEN KERNEL, displayed hypothesis … TERMINAL-
+**V4-11 `hmc_typing` · `V4_hmc.lean` · medium — RE-KEYED TO THE PROCESS
+SIDE at REV 4 (N-1: the rev-3 spec was UNSATISFIABLE — with count-keyed
+exactness no false-HMC XHDd existed; Fable N-1's four-line proof. With
+`TReal`-keyed exactness and FREE composite events the toy exists again).**
+The HMC/HMCAug Prop shapes compile against NON-degenerate instances, BOTH
+WAYS: (i) THE FALSE-HMC TOY — over V1-8a's StepSys, a `TmplEvents` with a
+COUPLED composite: the 2-step template's `tevt`/`tinst` empty at the
+product point (h₁, h₂) = (0, 0) while both one-step events are realized
+there (the ⊇ direction of the factorization FAILS; all four TE ties hold
+by decide — the coupling lives entirely in the free composite data, exactly
+(HMC-AUG)'s "global cone inequality couples successive steps"), with the
+`XHDd` listing dom(cons) = the coupled set: `HMC TE D` is FALSE, by decide;
+(ii) V1-8b's toy, where HMC is TRUE — the kernel is a REAL hypothesis,
+satisfiable both ways, provable neither; + the terminal-final signature
+check: `Template.lastT` instances type against `HMC`'s quantifier (the
+probe's step 2 is a literal instance BY TYPE); + the HONESTY REMARK,
+recorded (from §2.G's underivability audit): the ⊆-flavored fragment at
+single-step tails is derivable GIVEN the mark facts + tevt_last_iff — the
+toy therefore couples ⊇, which is the note's open direction.
+moves_ref: "(v) HMC — … OPEN KERNEL, displayed hypothesis … TERMINAL-
 FINAL EXTENSION (rev 4 …): templates INCLUDE those whose FINAL step carries a
-terminal outcome" (V.1(v)). deps: Defs 2.G. sketch: two decide-scale toy
-models. hyp_fields: none proved ABOUT the CTS instance; HMC itself OPEN
-(V.5(2)) — "until HMC closes, K_e(p)^k is NOT a theorem about the process".
+terminal outcome" (V.1(v), MOVES 8198–8213). deps: Defs 2.G, V1-8a/b.
+sketch: two decide-scale toy models. hyp_fields: none proved ABOUT the CTS
+instance; HMC itself OPEN (V.5(2)) — "until HMC closes, K_e(p)^k is NOT a
+theorem about the process".
 
-**V4-12 `comp_naming` · `V4_naming.lean` · HARD — THE IFF RESTORED at REV 3
-(Codex-14: rev 2's adjudication DROPPED the note's "IF AND ONLY IF"; rev 1's
-version was false at a FIXED weight system (round-1 C19). The two verdicts
-are jointly satisfiable at the right quantifier: the note's g's range over
-ALL positive-affine monomial systems, and at THAT quantifier both directions
-are true).** ROSTER (3):
-(a) `comp_upgrade (hHMC : HMC S D) (X : XHDw) (Xs : XHDs) … :
-FactorizesAll S D` where `FactorizesAll S D : Prop := ∀ (E-family :
-∀ step, AffineE (dim step)) {α β} (m : S.Move α β) (γ : Template n S β)
-(q₀ ∈ S.Pools), (Σ_{h∈H(cons m γ)} ∏ q₀^{−E_i(h_i)}) = (Σ_{h₁∈H(.last m)}
-q₀^{−E_m(h₁)})·(Σ_{h₂∈H(γ)} ∏ q₀^{−E_i(h₂,i)})` — HMC ⟹ the factorization
-identity for EVERY positive-affine monomial weight system (Fubini /
-`HasSum.mul_eq` over the product decomposition HMC provides);
-(b) `comp_upgrade_conv : FactorizesAll S D → HMC S D` — THE ⟸-TO-⟹
-COMPLETION (the round-1 falsifier evaporates at the ∀-E quantifier): the
-three sums are multivariate generating functions of the 0/1-coefficient
-membership series of H(cons m γ) vs H(.last m) × H(γ), evaluated at
-x_i = q₀^{−e_i} for all positive-affine exponent choices and all pool q₀;
-agreement at all such points forces coefficient-wise equality (extract
-minimal points by sending selected coefficients → ∞ along pool powers —
-pools are infinite and closed under powers), and equality of 0/1 series IS
-the membership factorization = HMC. ⌿ pre-approved split: (b-i) the
-point-separation lemma for 0/1 multivariate series over pool evaluations;
-(b-ii) the assembly.
-(c) `comp_upgrade_fails`: the MACHINE-CHECKED FENCE — at V4-11's false-HMC
-toy instance, ONE DISPLAYED weight system where the identity FAILS
-(norm_num): the ∀-E quantifier in (a)/(b) is NOT removable (a single-system
-iff would be false — round-1 C19's content, kept as the fence).
-moves_ref: "The right side factors into ∏(T·G), i.e. (COMP-hΣ) upgrades to
-(COMP-Σ), IF AND ONLY IF the whole-template domain factors stepwise with
-state-only dependence — exactly (v) HMC" (V.4) — carried as the BICONDITIONAL
-(a) + (b) at the weight-system-quantified reading, the only reading on which
-the sentence is true; (c) records why.
-deps: V0-3, V1-1, V4-11, Defs 2.G. sketch: product of HasSums over the
-HMC-factored domain; series separation; the toy witness. hyp_fields:
-XHD-w/-d/-s data + HMC in (a)'s premise slot (owner [2b] / open kernel) —
-hypotheses of the lemma, displayed; (b) consumes only the XHDd data.
+**V4-12 `comp_naming` · `V4_naming.lean` · medium — RESTATED at REV 4 AT
+THE NOTE'S EXACT QUANTIFIER (Codex-8: rev 3 quantified over EVERY
+positive-affine E-family, but the note's sentence "refers to the actual XHD
+weight system attached to the process. It does not quantify over every
+possible positive-affine exponent family" — the ∀-E quantifier is STRUCK.
+Fable round-3 §B independently found rev 3's version OVERTAKEN by N-1; both
+verdicts land here).** The note's sentence, quoted exactly (V.4, MOVES
+8596–8602): "Summing (COMP-h) over h ∈ H(γ) GIVEN XHD-d/s yields the
+unfactored per-template series (COMP-hΣ) — always well-defined, no HMC. The
+right side factors into ∏(T·G), i.e. (COMP-hΣ) upgrades to (COMP-Σ), IF AND
+ONLY IF the whole-template domain factors stepwise with state-only
+dependence — exactly (v) HMC, a displayed open hypothesis." ROSTER (4):
+(a) `comp_upgrade (hHMC : HMC TE D) (X : XHDw) (Xs : XHDs) … :
+Factorizes X D` — THE IF LEG, PROVED, at the FIXED system: `Factorizes X D
+:= ∀ {α β} (m : S.Move α β) (γ : Template n S β) (q₀ ∈ S.Pools),
+(Σ_{h∈dom(cons m γ)} gProd X (cons m γ) h q₀) = (Σ_{h₁∈dom(.last m)}
+X.g m h₁ q₀)·(Σ_{h₂∈dom γ} gProd X γ h₂ q₀)` (HasSum-typed via V0-3) —
+Fubini over the membership factorization HMC provides. Supplies V5-5.
+(b) `def UpgradeOnlyIf (X : XHDw) (TE) (D) : Prop := Factorizes X D →
+HMC TE D` — THE ONLY-IF LEG at the note's exact quantifier, a NAMED
+STATEMENT with its status RECORDED: it is the note's claim ABOUT THE
+PROCESS (where H(γ) is the realized domain of the actual splitting flow);
+it is NOT an interface-general theorem, by (b′), and NO unit consumes it
+(downstream needs only (a) + the hHMC tag: "until HMC closes, only
+(COMP-hΣ) holds" is enforced by V5-5's explicit hypothesis, not by the
+converse). It rides inside clause (v)'s kernel scope — never proved, never
+assumed.
+(b′) `sum_not_membership` — the MACHINE-CHECKED SUM-LEVEL COINCIDENCE
+(why (b) is not a SUM-ARITHMETIC consequence and therefore cannot be
+proved by V5-4/V5-5-style reasoning): two DIFFERENT listed sets with
+IDENTICAL fixed-system weight sums — {(0,0),(1,0),(0,1),(2,0)} vs
+{0,1} × {0,1} under E = h₁ + h₂: both sum to 1 + 2q₀⁻¹ + q₀⁻² =
+(1 + q₀⁻¹)² at every q₀ (the E-value multisets {0,1,1,2} coincide;
+membership does not) — norm_num/ring. Round-1 C19's coincidence content,
+correctly placed. DERIVABILITY STATUS OF (b), recorded honestly (computed
+at THIS revision): the naive lift of this coincidence to a full
+interface instance DIES against `marks_chains` (the point (2,0) carries
+no chain, so no_stray at a dom(cons) containing it is unsatisfiable), and
+the inner-template clauses of `Factorizes` block the 2-step and the
+tested 3-step arrangements — so whether (b) is interface-derivable from
+the FULL tie set is OPEN and CLAIMED NEITHER WAY; nothing rests on it
+((b) is consumed by no unit, and (v)'s conditionality is carried by
+V5-5's explicit hHMC, not by the converse).
+(c) `comp_upgrade_fails` — THE FENCE, RE-KEYED TO THE PROCESS SIDE (the
+N-1 directive): at V4-11's false-HMC toy, the FIXED gate weight system's
+identity FAILS (norm_num) — an instance where ¬HMC ∧ ¬Factorizes: no
+unconditional upgrade theorem can exist, the hHMC tag is not vacuous.
+SATISFIABLE AGAIN (rev 3's version had no false-HMC instance to stand on).
+moves_ref: the V.4 sentence quoted above — the IF leg proved as (a), the
+ONLY-IF leg carried as the recorded process-scoped statement (b) with its
+interface status machine-checked at (b′)/(c); nothing weakened silently,
+nothing over-quantified.
+deps: V0-3, V1-1, V4-11, Defs 2.G. sketch: (a) HasSum.mul over the
+factored domain; (b′)/(c) norm_num toys. hyp_fields: XHD-w/-d/-s data +
+HMC in (a)'s premise slot (owner [2b] / open kernel) — hypotheses of the
+lemma, displayed; (b) NEVER consumed.
 
-### Layer V5 — COMP + the J tables [10]
+### Layer V5 — COMP + the J tables [12]
 
-**V5-1 `marked_event_census` · `V5_event.lean` · medium.**
-The (vi) marked event, typed over 2.E/2.F: its MARK-INDEX family is FINITE
-per level and its level-N residue census is finite (keyed to MovesD.D4R4_all
-at the entrance layer + the finite step data); the f-fibers are boxes,
-GENERALLY INFINITE — typed by the carrier: the event is a Finset of
-(box-point, mark) pairs at each level, NEVER a Finset of f's; + the census
-lemma: card = Σ over marks of fiber cards.
+**V5-1 `marked_event_census` · `V5_event.lean` · medium — RE-KEYED at
+REV 4 (N-1 ripple: the (vi) marked event's carrier is now the PROCESS-side
+`TmplEvents` (tevt/tinst, §2.G) paired with the entrance events — no
+independent event object exists).**
+The (vi) marked event, typed: the (ε, γ, h) event's carrier is the pair
+(entrance mark family, per-mark tevt from the entrance-extended histories);
+its MARK-INDEX family is FINITE per level and its level-N residue census is
+finite (keyed to MovesD.D4R4_all at the entrance layer + `tinst`'s Finset
+typing); the f-fibers are boxes, GENERALLY INFINITE — the event is a Finset
+of (box-point, mark) pairs at each level, NEVER a Finset of f's; + the
+census lemma AT REALIZED POINTS: card = Σ over marks of fiber cards —
+GIVEN the named, displayed mark-fiber tie
+`MarkFiberTie TE : Prop := ∀ γ {q₀} (x) (h), q₀ ∈ Pools → zc x →
+TReal TE γ x h → ∀ N ≥ tmplLvl γ, (TE.tevt γ x h N).card = Σ over the
+mark census of the per-mark fiber cards` — the note-DEFINITIONAL mark-fiber
+structure of the (vi) display, typed as a GUARDED premise because tevt is
+free data. HMC-SAFETY (the §2.G audit's pattern, re-run for this tie): the
+guard is TReal of the COMPOSITE itself, so the four-line proof's (←) leg
+cannot manufacture TReal(cons) to enter it, and the (→) leg gains nothing
+beyond the already-recorded single-step-tail fragment — the kernel stays
+open (any UNGUARDED version would re-prove HMC through no_stray; the guard
+is load-bearing and mirrors the note's own scope "(COMP-h) at every
+concrete ε and fixed h ∈ H(γ)").
 moves_ref: "its MARK-INDEX family (the realized histories η) is FINITE per
 level and its level-N residue census is finite (D4R.4); the f-fibers are
 p-adic boxes, generally INFINITE (rev 2, finding 13 — never 'finitely many
-f')" (V.1(vi)). deps: Defs 2.E/2.F, MovesD.D4R4all_wrapper, V3-6.
-sketch: Fintype instances + double counting (MovesD.mult_sum's idiom).
-hyp_fields: none beyond MovesD's proved apparatus.
+f')" (V.1(vi), MOVES 8225–8232). deps: Defs 2.E/2.F/2.G,
+MovesD.D4R4all_wrapper, V3-6. sketch: Fintype instances + double counting
+(MovesD.mult_sum's idiom) under the tie.
+hyp_fields: MovesD's proved apparatus + the TE mark facts (carrier ties) +
+`MarkFiberTie` (the guarded (vi) structure tie — [1v]/[2b] seam-grade,
+displayed; consumed by V5-2a/b/c and V5-4).
 
-**V5-2 `comp_h` · `V5_comph.lean` · HARD.**
-(COMP-h), GIVEN (U-A)'s pack + (XHD-u), ε concrete and h FIXED:
-`theorem comp_h … : μ̂N (markedEvent ε γ h) q₀ N
-= ιN ε β₀ q₀ N * ∏ i, (T_i * g_i(h_i))` — in the counting-native form:
-`(markedEvent …).card * (normalization) = iotaCount … * ∏ (cnt · q₀^{−E})`
-(exact at stabilized levels, the MovesC idiom). The chain grouping now rides
-the DEFINED `chainCount`/`ext` (no free chain data — A-2/C2 repaired
-upstream; the induction has its carrier).
-moves_ref: "(COMP-h) at every concrete ε and fixed h ∈ H(γ): μ̂(marked event
-of (ε, γ, h) at p) = ι_{e,ε,β₀}(p) · ∏_{i=1}^k [T·g](p)" + the V.4 route
-"Group the marked event by its entrance prefix … Per entrance mark, the
-continuation mass along γ at h is the C.1.5 conditional chain".
-deps: V5-1, V1-6, V4-5, V3-6. sketch: group by entrance mark (V5-1's census);
-per mark, induct along γ through `ext`: each step contributes cnt·g by (U-A)
-at the fixed history + (u-R) across the histories reaching βᵢ; multiply out.
-⌿ pre-approved split: (a) the one-step case; (b) the induction step; (c) the
-grouping identity. hyp_fields: (U-A) pack (§C/HC-2) + (XHD-u) (owner [2b]) —
-VERBATIM V.4's GIVEN; "at a FIXED path height point AND one fixed entrance
-history, the identity consumes only (U-A)'s §C-derivable content" is the
-V6-4 gate's per-history face.
+**V5-2a `comp_h_one` · `V5_comphA.lean` · medium — REAL UNIT ID at REV 4
+(Codex-16; the parent V5-2 dissolves into a/b/c).**
+(COMP-h)'s ONE-STEP case at a fixed entrance mark: the counting-native
+`(one-step event).card × normalization = cnt · q₀^{−E} × |Box|-power` at
+stabilized levels — evt_card + (U-A) at the fixed history + w_eq.
+moves_ref: "(COMP-h) at every concrete ε and fixed h ∈ H(γ): μ̂(marked
+event of (ε, γ, h) at p) = ι_{e,ε,β₀}(p) · ∏_{i=1}^k [T·g](p)" (V.1(vi)).
+deps: V5-1, V1-6, V4-5. hyp_fields: (U-A) pack (§C/HC-2) + (XHD-u)
+(owner [2b]).
+
+**V5-2b `comp_h_step` · `V5_comphB.lean` · HARD.**
+THE INDUCTION STEP along γ through `ext`: each step contributes cnt·g by
+(U-A) at the fixed history + (u-R) across the histories reaching βᵢ —
+REV 4: the per-mark fiber decomposition at REALIZED points rides V5-1's
+census lemma (the (COMP-h) scope guard: h ∈ H(γ), supplied by no_stray →
+TReal); the count positivity along the chain from V1-3(b). NO unguarded
+composite recursion is consumed (none exists — §2.G).
+deps: V5-2a, V5-1, V1-3, V2-5. hyp_fields: as V5-2a + XHD-d (the scope
+guard's face).
+
+**V5-2c `comp_h` · `V5_comphC.lean` · medium.**
+(COMP-h) ASSEMBLED, GIVEN (U-A)'s pack + (XHD-u), ε concrete and h FIXED
+in H(γ): `μ̂N (markedEvent ε γ h) q₀ N = ιN ε β₀ q₀ N * ∏ i, (T_i *
+g_i(h_i))` in counting-native form (exact at stabilized levels, the MovesC
+idiom) — group by entrance mark (V5-1), multiply out (V5-2a/b).
+moves_ref: as V5-2a + the V.4 route "Group the marked event by its entrance
+prefix … Per entrance mark, the continuation mass along γ at h is the
+C.1.5 conditional chain". deps: V5-2a/b, V3-6.
+hyp_fields: (U-A) pack (§C/HC-2) + (XHD-u) (owner [2b]) + `MarkFiberTie`
+(V5-1's guarded structure tie) — VERBATIM V.4's GIVEN plus the typed
+carrier tie the free process data makes explicit; "at a FIXED path height
+point AND one fixed entrance history, the identity consumes only (U-A)'s
+§C-derivable content" is the V6-4 gate's per-history face.
+*(Legacy ID note: "V5-2" = the a/b/c suite.)*
 
 **V5-3 `comp_h_count` · `V5_shadow.lean` · medium.**
 The COUNT SHADOW: `Ĉ_{ε,γ}(q) = I^ent_{ε,β₀}(q)·C_γ(q)` at the same concrete
@@ -2238,7 +2769,7 @@ raw across ε with different A(ε) (the aggregation lemma V5-6 takes masses
 ONLY). moves_ref: "the FULL realization count is PER (concrete) ENTRANCE
 SHAPE: Ĉ_{ε,γ}(q) = I^ent_{ε,β₀}(q)·C_γ(q) (same (XHD-u) tag, plus
 ENT-COUNT), degree ≤ W̄(ε,γ) = W_ent(ε) + W(γ) — the entrance factor never
-omitted" (Thm VAL(b)). deps: V2-5, V3-9a, V5-2's grouping.
+omitted" (Thm VAL(b)). deps: V2-5, V3-9a, V5-2c's grouping.
 sketch: count-layer replay of V5-2. hyp_fields: (XHD-u) + ENT-COUNT.
 
 **V5-4 `comp_hsum` · `V5_comphs.lean` · medium.**
@@ -2247,7 +2778,7 @@ sketch: count-layer replay of V5-2. hyp_fields: (XHD-u) + ENT-COUNT.
 per-template series, well-defined via V0-3 over the listed disjoint
 components. moves_ref: "(COMP-hΣ) GIVEN XHD-d/s, NO HMC (rev 2, finding 11
 — the unfactored height sum carries its OWN name)" (V.1(vi)).
-deps: V5-2, V0-3, V1-4. sketch: sum V5-2 over h; `HasSum.mul_left`.
+deps: V5-2c, V0-3, V1-4. sketch: sum V5-2c over h; `HasSum.mul_left`.
 hyp_fields: XHD-d/s + V5-2's set.
 
 **V5-5 `comp_sigma` · `V5_compsig.lean` · easy.**
@@ -2334,25 +2865,30 @@ Codex-9: rev 2 carried this as an XHDsC FIELD equating count-bearing cell
 sums with the count-free template sum — forcing T ≡ 1, the (q−1)²
 adversary. It is neither a field nor false: with the counts displayed it is
 a DERIVED identity).** `theorem cell_refine (hVA : ValA …) (U : XHDu)
-(DC : XHDdC …) (Xs : XHDs) (XsC : XHDsC …) (hcell : CellPolyPack …)
-(d : MoveData n C) (x) (hzc : S.zc x) (q₀ ∈ Pools) :
+(DC : XHDdC …) (D : XHDd n S TE) (hTie : MDomTie V TE D) (Xs : XHDs)
+(XsC : XHDsC …) (hcell : CellPolyPack …) (d : MoveData n C) {q₀}
+(x : S.Hist q₀ _) (hzc : S.zc x) (hq : q₀ ∈ Pools) :
 ∑ c, ((hcell.P d.s d.m d.o d.α c).eval q₀ : ℝ) *
   ∑ j, evalAt (XsC.Gcell d c j)
 = ((C.T d.s d.m d.o d.α (its TargetIx)).eval q₀ : ℝ) *
   ∑ j', evalAt (Xs.Gc (.last (V.moveOf d)) j')` — the COUNT FACTOR ON BOTH
 SIDES, displayed: cell count polynomials on the left, the table entry on the
 right. ADVERSARY CHECK (F-4's acceptance): A2's one digit cell with count
-(q−1)²: LHS = (q−1)²·G = TA2·G = RHS ✓ — no collapse. [+T twin over
+(q−1)²: LHS = (q−1)²·G = TA2·G = RHS ✓ — no collapse; pool-consistently at
+REV 4 (eval 2 = 1 vs eval 3 = 4 — the N-2 layer, §2.H). [+T twin over
 GcellT/mdomT.] moves_ref: "by XHD-d's disjointness the finitely many
 component sums ADD EXACTLY to the H(γ)-sum" (XHD-s) + the (iv)-STEP row
 "Σ_h T(h)·g(h) … = T·Σ_h g(h) is EXACTLY (u-T)" (V.1(iv)).
-deps: V2-4, V0-3, V1-2, Defs 2.F/2.G/2.H. sketch: Fubini the double
+deps: V2-4, V0-3, V1-2, V1-3, Defs 2.F/2.G/2.H. sketch: Fubini the double
 (c, h)-sum over nonneg terms (HasSum rearrangement); pointwise
 Σ_{c ∋ h} P_c.eval = Σ_c cntc = cntraw (CellPolyPack.count on the domain +
 XHDdC exactness + the cntc/cntraw partition identity, definitional); then
-cntraw(h) = T.eval across the domain by u_T + no_stray + tbl_count at base.
-hyp_fields: ValA + (XHD-u) + XHDdC + XHD-s (template + cell faces) +
-CellPolyPack — all displayed; supplies LedgerIV.kstep_one through V7-6b.
+cntraw(h) = T.eval across the domain — REV 4 route: u_T + V1-3(b)'s
+`mem_chainCount_pos` (Mem → count > 0, the one-way supply) + tbl_count at
+base through `MDomTie.mdom_eq` (Codex-5's tie, displayed premise).
+hyp_fields: ValA + (XHD-u) + XHDd + XHDdC + MDomTie + XHD-s (template +
+cell faces) + CellPolyPack — all displayed; supplies LedgerIV.kstep_one
+through V7-6b.
 
 ### Layer V6 — gate V-n3, decide-native (the seal's displays re-derived) [10]
 
@@ -2414,8 +2950,11 @@ declaration IS in the chart) and the sealed point: `A2chart ![1,0] = ![4,1]`
 no half-integral coefficient exists anywhere; (c) `TA2 = (X−1)²` with the
 nine evaluations 1,4,9,16,36,49,64,100,144 and PART-1 `(q−1)² = pool` (one
 letter). moves_ref: "g(h₀,h₂) = q^{−E}, E = (3(h₀+h₂)−1)/2 — affine,
-positive weights. Sealed census height point: (4, 1): E = 7" + "= 6t+3u+1"
-+ the T = (q−1)² table (V.6.2). deps: DefsGate, V6-2a. sketch: omega/
+positive weights. Sealed census height point: (4, 1): E = 7" + the
+T = (q−1)² table (V.6.2). [REV 4, Codex-13: the "= 6t+3u+1" splice is
+DELETED from this quotation — that string is OUR derived chart form (§2.I's
+attribution record) and appears nowhere in the frozen note; it lives only
+in the statement body, marked ours.] deps: DefsGate, V6-2a. sketch: omega/
 norm_num. hyp_fields: none.
 
 **V6-3a `blk2_table` · `V6_bpoly.lean` · easy.**
@@ -2489,7 +3028,7 @@ determinacy; counting the free digits. hyp_fields: `CoprimeLiftPack`
 published-axiom candidate per campaign §4 — flag at E-phase, do NOT silently
 strengthen; NEVER an unconditional Lean axiom).
 
-### Layer V7 — CTS-M assembly + the seam instances [15] (Codex-19 splits: every former multi-lemma unit is now one display per unit)
+### Layer V7 — CTS-M assembly + the seam instances [18] (Codex-19/REV-4 splits: every former multi-lemma unit is now one display per unit)
 
 **V7-1 `ctsm_ledger` · `V7_ledger.lean` · easy (typing unit).**
 THE PER-CLAUSE HYPOTHESIS LEDGER as ONE record (V.1's rev-2 finding-7 list,
@@ -2505,7 +3044,10 @@ ESCAPE(E0)/(ii-c)/ENT-COUNT/INIT-RAT. REV-3 additions: the (J-RAT) cell
 pack (`CellPolyPack`) and (ENT-U) ride as their own ledger fields (they are
 consumed by the REV-3 defs, V7-4b/c), and the general table-build law supply
 is the TYPED field `stage_laws : StageLawBurden n C` (V7-3d — Codex-20's
-missing closed structure). Every field TYPED to the §3 unit statements (no
+missing closed structure). REV-4 additions: the process-side carrier
+`TE : TmplEvents n S` rides as ledger DATA (the (v)/(vi) clauses quantify
+over it), and `MDomTie`/`MarkDisj` ride as their own ledger fields (the
+coherence tie and the within-cell disjointness burden — Codex-5/Codex-3). Every field TYPED to the §3 unit statements (no
 Prop-placeholder fields for in-corpus content; owner-tagged packages for
 [2b]/[3t]). moves_ref: "PER-CLAUSE HYPOTHESIS LEDGER (rev 2 — finding 7 …)"
 (V.1). deps: all statement layers. sketch: record decl.
@@ -2575,21 +3117,33 @@ hyp_fields: none at gates; general = V7-3d.
 **V7-3d `stage_law_burden` · `V7_stageLaw.lean` · medium — NEW TYPE
 (Codex-20: the general SCSData/KmatHyp supply was an untyped prose burden).**
 ```lean
+-- (the *Of functions below are V7-3c's DATA suppliers — W/D/ℓ/g/μsel/W'/D'/
+--  flankCount/flankWidth/resFactors/selIdx/memberOf from the MovesSp
+--  species stage fields; TS := tableShapeOf C. The law statements are the
+--  VERBATIM MovesS.SCSData laws (Defs.lean 1509–1531 of the pasted source)
+--  with those data substituted — displayed in full at REV 4, Codex-14.)
 structure StageLawBurden (n : ℕ) (C : CtsFamily n) : Prop where
   kmat_all : ∀ e, MovesS.KmatHyp (tableShapeOf C) e
   degcons_all : MovesS.DegCons (tableShapeOf C)          -- CL-11, full roster
-  ℓpos : …          -- the twelve SCSData laws, one field each, quantified
-  window_comp : …   -- over ALL skeletons (verbatim MovesS field statements
-  flank_zero : …    -- at the V7-3c data): ℓpos/window_comp/flank_zero/
-  sel_mem : …       -- sel_mem/res_sum/memberOf_inj/memberOf_ne_sel/
-  res_sum : …       -- sel_continuing/stage_D/stage_W/cluster_parent/
-  memberOf_inj : …  -- cluster_child — each `…` is the MovesS law's statement
-  memberOf_ne_sel : …  -- with V7-3c's data substituted (a mechanical
-  sel_continuing : …   -- transcription; the FIELD LIST is the closed type,
-  stage_D : …          -- and no law is missing or renamed)
-  stage_W : …
-  cluster_parent : …
-  cluster_child : …
+  ℓpos : ∀ e (τ : (tableShapeOf C).State e) (o), 1 ≤ ℓOf C e τ o
+  window_comp : ∀ e τ o, WOf C e τ o = e * ℓOf C e τ o + flankWidthOf C e τ o
+  flank_zero : ∀ e τ o, flankCountOf C e τ o = 0 → flankWidthOf C e τ o = 0
+  sel_mem : ∀ e τ o, (gOf C e τ o, μselOf C e τ o) ∈ resFactorsOf C e τ o
+  res_sum : ∀ e τ o,
+    ((resFactorsOf C e τ o).map (fun x => x.1 * x.2)).sum = ℓOf C e τ o
+  memberOf_inj : ∀ e τ o, Function.Injective (memberOfOf C e τ o)
+  memberOf_ne_sel : ∀ e τ o i, memberOfOf C e τ o i ≠ selIdxOf C e τ o
+  sel_continuing : ∀ e τ o,
+    MovesS.routeOf ((tableShapeOf C).odata e τ o) = .kcol →
+    (((tableShapeOf C).odata e τ o).mem.get (selIdxOf C e τ o)).continuing
+  stage_D : ∀ e τ o, D'Of C e τ o = e * gOf C e τ o * DOf C e τ o
+  stage_W : ∀ e τ o, W'Of C e τ o = μselOf C e τ o
+  cluster_parent : ∀ e τ o, WOf C e τ o * DOf C e τ o = e
+  cluster_child : ∀ e τ o (i : Fin ((tableShapeOf C).odata e τ o).mem.length),
+    (((tableShapeOf C).odata e τ o).mem.get i).continuing →
+    i = selIdxOf C e τ o →
+    (((tableShapeOf C).odata e τ o).mem.get i).size
+      = W'Of C e τ o * D'Of C e τ o
 ```
 + `theorem stage_law_gate : StageLawBurden-restricted-to-gates` by decide.
 A FIELD of `CtsmLedger` (V7-1); at gates discharged by V7-3b/c; beyond them
@@ -2635,15 +3189,29 @@ Fintype/Nonempty instances. hyp_fields: as in the header (data args).
   `LedgerIV.ent_count_card` is rfl-level AGAINST THE CENSUS (the ledger
   comment "the counting tie ι_count's polynomial now means the full count"
   is honored: ι_count's polynomial = the census polynomial, degree ≤ Went);
-- `hent i := Σ_k ((V.entDom i.1.1).comps.get i.1.2).base k` — ADJUDICATION
-  RETAINED AND RE-RECORDED (A-1(2); round-2 DISAGREEMENT on file: Codex-7
-  called the scalar unfaithful, Fable's fresh pass source-verified that NO
-  law in MovesS Defs/Interfaces reads `hent` and endorsed SF-1 as the right
-  record. Disposition: the field is semantically INERT in the frozen seam;
-  the instance supplies the component's base-height total as a canonical ℕ
-  datum; SEAM FLAG SF-1 stands — MovesT's wave-4 re-keying of βmeas's h_ent
-  argument must bind to the Hgt-indexed carriers (ιDom/ιshH/entEvtH), never
-  to `hent`. Any future MovesS law reading `hent` re-opens this line item);
+- `hent i := (writeHeights i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base
+  ).hentCode` — REV 4 (Codex-6, THIRD-round adjudication with the
+  two-verdict record): the supplied value is UPGRADED from the rev-3 lossy
+  base-coordinate SUM to the INJECTIVE retained-tuple code (§2.D
+  `hentCode`: Nat.pair-fold over the reads' (h_r, zig(γ_r)) — distinct
+  retained height data get distinct ℕ values; "identifies distinct entrance
+  heights" is dead). WHAT REMAINS STRUCTURAL AND STAYS SF-1: the frozen
+  seam's `hent : EntShape e τ → ℕ` is ONE value per (template, component)
+  INDEX while the note's h_ent(ε) is per CONCRETE ε — no per-index ℕ can
+  carry the full family; the supplied code is the BASE instantiation's.
+  TWO-VERDICT RECORD: Codex round-3 #6 called the scalar supply CRITICAL
+  ("RS1Meas.βmeas and the W4 seam expressly use the h_ent : ℕ index");
+  Fable round-3 §B re-verified SF-1 HONEST with computed evidence. THIS
+  revision's own re-grep (2026-07-28): `hent` in the BUILT MovesS =
+  the field declaration (Defs.lean 179), one device-instance assignment
+  (N2Carriers.lean 118, `:= fun _ _ _ => 0`), one comment — NO law reads
+  it; and `RS1Meas.βmeas`'s h_ent is its OWN independent ℕ ARGUMENT
+  (Interfaces: the W2_xrb conclusion asserts βmeas's h_ent-INDEPENDENCE),
+  not a read of `MeasuredSide.hent`. DISPOSITION: value upgraded (the
+  faithful half of Codex-6 adopted); the binding rule stands — MovesT's
+  wave-4 re-keying of βmeas's h_ent argument must bind to the Hgt-indexed
+  carriers (ιDom/ιshH/entEvtH), never to `hent`; any future MovesS law
+  reading `hent` re-opens this line item (SEAM FLAG SF-1);
 - `markedVal` := the μ̂ totals (MuHat-wrapped at exit).
 moves_ref: V.1(iii) + the A-1 granularity record. deps: V7-4a, Defs 2.D/2.F,
 V3-4. sketch: field defs. hyp_fields: as in the V7-4a header.
@@ -2657,22 +3225,38 @@ the measured ℝ-values, REV-3 count-polynomial wiring (F-4/F-5).**
   (x-free; count × weight-only component sums);
 - `rowVal o q₀ := Σ_{c ∈ cells o} μcell c q₀` (for split routes this IS the
   J cell-sum — MovesS's own comment — via §2.H's roster_tie);
-- `kstep k τ β q₀ := Σ_{γ : length-k kcol templates τ→β}
+- `kstep 0 τ β q₀ := if τ = β then 1 else 0` — THE k = 0 CASE (NEW at
+  REV 4, Fable N-3: `Template` has no length-0 constructor, so the rev-3
+  template-sum def gave kstep 0 ≡ 0, falsifying the frozen `LedgerIV.hmc`
+  at k = 0: kstep 1 = Σ_γ kstep 0 · kstep 1 forced kstep 1 ≡ 0, false at
+  s_blk2's o_double row T_dbl(2) = 1. The Kronecker δ is the empty path's
+  value — ∏T over no steps = 1, the empty height sum = 1 — and the frozen
+  law at k = 0 collapses correctly: Σ_γ δ_{τγ}·kstep 1 γ β = kstep 1 τ β ✓.
+  The built device instance documents the requirement:
+  `MovesS/N2Carriers.lean` 101–105, "kstep 0 = 1 and the HMC scalar law
+  kstep (k+1) = kstep k · kstep 1 holds"; kstep := (…)^k);
+- `kstep (k+1) τ β q₀ := Σ_{γ : length-(k+1) kcol templates τ→β}
   ((pathProdPoly C γ).eval q₀ : ℝ) · Σ_j evalAt (X.s.Gc γ j)` — THE COUNT
   FACTOR RESTORED (F-4/Codex-11: rev 2 dropped ∏T; kstep_one then demanded
-  T ≡ 1). THE ANTI-SMUGGLE PIN STANDS: kstep is the measured k-step
-  TEMPLATE mass (∏T × the unfactored template height sum), NOT the
-  matrix-power recursion — LedgerIV.hmc stays V5-5's conditional content.
+  T ≡ 1). THE ANTI-SMUGGLE PIN STANDS: kstep at k ≥ 1 is the measured
+  k-step TEMPLATE mass (∏T × the unfactored template height sum), NOT the
+  matrix-power recursion — LedgerIV.hmc stays V5-5's conditional content
+  (the k ≥ 1 recursion given hHMC: regroup length-(k+1) templates as
+  prefix∘last and factor by V4-12(a); the k = 0 instance is the δ-collapse
+  above, hypothesis-free).
 moves_ref: "K_e(q)_{(s,α),(s′,β)} := Σ Σ T·G" (V.1(iv)) + S.0's kstep row.
 deps: V7-4a/b, V2-5 (pathProdPoly), Defs 2.G/2.H. sketch: field defs.
 hyp_fields: as in the V7-4a header (X, cp explicit).
 
-**V7-5 `ratBurdens_inst` · `V7_rb.lean` · HARD — LEGS RE-KEYED (C23); leg
+**V7-5a/b/c `ratBurdens_inst` · `V7_rbA/B/C.lean` · 3 × medium — REAL UNIT
+IDs at REV 4 (Codex-16: the ⌿ split promoted — V7-5a = legs (a)+(b)
+tgP/jP, `V7_rbA.lean`; V7-5b = leg (c) ιP, `V7_rbB.lean`; V7-5c = leg (d)
+cellP + act_iff + the assembly, `V7_rbC.lean`); LEGS RE-KEYED (C23); leg
 (d) REVERTED at REV 3 (F-5).**
 `MovesS.RatBurdens T M`, theorem-under-hypotheses — GIVEN the open faces,
 the burdens structure is inhabited: `theorem ratBurdens_exists
-(hVA : ValA …) (X : XHD …) (hcell : CellPolyPack …) (hEU : EntU …)
-(hEC : EntCount …) (hA : AffEnt n) :
+(hVA : ValA …) (X : XHD …) (hTie : MDomTie …) (hcell : CellPolyPack …)
+(hEU : EntU …) (hEC : EntCount …) (hA : AffEnt n) :
 Nonempty (MovesS.RatBurdens T M)` with the legs:
 (a) `tgP` := ValA's count polynomials × the XHDs/XHDsC geometric values —
 the G-BEARING FACE IS A PREMISE (C23), and via V5-8's cell_refine the
@@ -2697,9 +3281,17 @@ IS sizeP.eval — the G4 pattern; cellInst/cellLvl wired at V7-4a);
 `act_iff` ✓ ← `act_size` (activity IS state-size nonvanishing; with cellP
 constant in c the ∀-c iff collapses to act_size — and at q₀ = 2 the root
 stays active while the m_H3 DIGIT cell is empty, contradicting NOTHING).
+THE COLLAPSE'S NONEMPTINESS STEP, DISPLAYED (REV 4, Fable G-1: the ⟸
+direction "∀ c, cellP.eval ≠ 0 → active" is vacuous at an empty cell type
+unless `Cell e τ` is inhabited — rev 3 used the step silently): the roster
+lemma `cell_ne_inst : ∀ e τ, Nonempty (M.Cell e τ)` — pick a zc history
+(zc_ne), apply the REV-3 productivity `out_ne` (a realized continuing or
+terminal fresh assignment exists), and classify it (`cellOfA`/`cellOfAT`
+through `moveOf_bij`/`moveOfT_bij`): the assignment's digit cell inhabits
+`Σ o, DCellO (dataOf τ o)` — one display, part of V7-5c's roster.
 The rev-2 `ActIff` premise is DELETED (subsumed by act_size); CofinAct
 rides where MovesS's R45/R50 keying needs it.
-⌿ split: (a) tgP/jP legs; (b) ιP leg; (c) cellP + act_iff. moves_ref: the
+*(Legacy ID note: "V7-5" = the a/b/c suite.)* moves_ref: the
 V.0 downstream line "[3] RESUM consumes K_e and ι_e from this note's clauses
 only" + CL-6/CL-18/INIT-RAT ownership rows + MovesS R45/R50 ("EACH CELL SIZE
 one polynomial of degree ≤ W_state(s)"; cellInst = "instance events whose
@@ -2708,29 +3300,42 @@ sketch: assemble PolyGeoms; interp fields from the units' eval conclusions.
 hyp_fields: (iv)-POLY beyond gate blocks (CL-13/CL-6) + (J-RAT)'s cell pack +
 INIT-RAT's set — the STATED premises; nothing discharged silently.
 
-**V7-6a `ledgerIV_counting` · `V7_livA.lean` · medium — SPLIT (Codex-19);
-THE COUNTING SUITE, now derivable from typed fields (F-3/Codex-10's four
-refuted legs, each with its REV-3 supplier):**
-GIVEN V + X (with the dC face) + cp:
+**V7-6a1 `ledgerIV_cells` · `V7_livA1.lean` · medium — RE-SPLIT at REV 4
+(Fable G-2: rev 3's V7-6a derived SIX fields against the ≤ 4-lemma roster
+rule; now TWO units of three, each an enumerated roster). THE CELL SUITE:**
+GIVEN V + X (with the dC face) + cp + `hMD : MarkDisj V` (REV 4, Codex-3:
+the within-cell disjointness meas_card's biUnion-card step uses is NO
+LONGER a carrier law — it rides as the DISPLAYED premise; at the n = 3
+gates it holds by decide via emult ≤ 1 (V4-8's census), beyond them it is
+open exactly where PART-2's surplus lives):
 - `meas_card` (gwt·|Box| = |cellEvt| eventually): gwt = P_c·g by V7-4c's
-  DEF; |cellEvt| = Σ_a |evtOf a| (V.evt_disj over AStep → card of the
-  biUnion); each |evtOf a| = massOf·|Box| eventually (V.evt_card — the
-  typed field that rev 2 lacked); massOf = g (X.w.w_eq); P_c.eval = cntc on
-  the domain (cp.count + X.dC.no_strayC realizedness) — assemble;
+  DEF; |cellEvt| = Σ_a |evtOf a| (hMD within the cell — the displayed
+  premise — since cross-cell/height needs nothing here); each |evtOf a| =
+  massOf·|Box| eventually (V.evt_card); massOf = g (X.w.w_eq, zc-guarded);
+  P_c.eval = cntc on the domain (cp.count + X.dC.no_strayC realizedness) —
+  assemble;
 - `xhd_no_stray`: h ∈ HDom → cntc > 0 (X.dC.no_strayC) → cellEvt nonempty
   for N ≥ stabLvl (evt_card with massOf = g > 0);
 - `xhd_no_orphan`: h ∉ HDom → cntc = 0 (X.dC.no_orphanC contrapositive) →
-  the filter is empty → cellEvt = ∅ at EVERY N (definitional);
-- `d4r0` (cross-(c,h) disjointness incl. h ≠ h′): V.evt_disj over AStep —
-  cross-assignment (same h, different cells: cellOfA discriminates),
-  cross-HEIGHT, cross-move, and terminal cases are ALL instances of the one
-  Σ-carrier law (rev 2's same-(mv,h) evt_disj could not reach h ≠ h′);
+  the filter is empty → cellEvt = ∅ at EVERY N (definitional).
+moves_ref: the CL-5 nine-input ledger's counting faces (S.0). deps: Defs
+2.F/2.G, V7-4a/b/c. sketch: as listed, field by field. hyp_fields: XHD
+(w + dC faces) + CellPolyPack + MarkDisj — displayed.
+
+**V7-6a2 `ledgerIV_counts` · `V7_livA2.lean` · medium — the other half of
+the G-2 re-split. THE DISJOINTNESS/CENSUS SUITE:** GIVEN V + X + cp:
+- `d4r0` (cross-(c,h) disjointness incl. h ≠ h′, one x): `evt_disj_cell`
+  at DISTINCT DIGIT-CELL KEYS — cross-cell (same h: the cellOfA key
+  differs), cross-HEIGHT, cross-outcome, terminal included, are ALL
+  distinct-key instances (REV 4: the frozen d4r0 quantifies (c, h) ≠
+  (c′, h′) — a KEY difference, never a within-cell mark pair, so the
+  re-keyed law supplies it exactly; no cross-mark claim is consumed);
 - `init_count` (ιshH·|Box| = |entEvtH| eventually): V.ent_card + V.box_card
   + the §2.G ιshH DEF — gate B: (1/4)·512 = 128 ✓ (F-1's number);
 - `ent_count_card` ← rfl (entCount IS the census card BY DEF, §2.F).
-moves_ref: the CL-5 nine-input ledger's counting faces (S.0). deps: Defs
-2.F/2.G, V7-4a/b/c. sketch: as listed, field by field. hyp_fields: XHD
-(w + dC faces) + CellPolyPack — displayed.
+moves_ref: as V7-6a1. deps: Defs 2.F/2.G, V7-4a/b/c. sketch: field by
+field. hyp_fields: XHD (w + dC faces) + CellPolyPack — displayed.
+*(Legacy ID note: "V7-6a" = a1 + a2.)*
 
 **V7-6b `ledgerIV_sums` · `V7_livB.lean` · medium — SPLIT (Codex-19); THE
 SUM/VALUE SUITE:** GIVEN V + X + cp + (ENT-U):
@@ -2756,39 +3361,62 @@ ENT-COUNT + (ENT-U), every LedgerIV field is supplied: the V7-6a/b suites +
 - `part1` ← V4-6; `rep_indep` ← V4-9 (rowVal is x-free BY DEF; the law is
   exactly (iv)-REP's content);
 - `hmc` ← V5-5's (COMP-Σ) factorization GIVEN the open kernel (hHMC
-  explicit — no unconditional instance until (v) closes);
+  explicit — no unconditional instance until (v) closes; REV 4 RESTORES
+  THE TAG'S CONTENT: with XHDd process-keyed, `hmc_theorem`-style
+  discharges no longer exist — Fable N-1's collapse is repaired at the
+  source — and the k = 0 leg is V7-4c's δ-collapse, hypothesis-free);
 - `act_target` ← V4-1 (through hVA's tbl_count/tgt_supported at base
   points + u_T across the domain).
 moves_ref: the CL-5 nine-input ledger's [1v] faces (S.0, cited; each face's
-home display quoted at its field). deps: V7-6a/b, V4-*, V3-*, V7-4a/b/c.
+home display quoted at its field). deps: V7-6a1/a2/b, V4-*, V3-*, V7-4a/b/c.
 sketch: assemble. hyp_fields: XHD + CellPolyPack + ValA + HMC + PART-1
 legs + ENT-COUNT + (ENT-U) — the ledger's own tags, verbatim, nothing
 silent.
 
 **V7-7 `seam_rekey_stmts` · `V7_seam.lean` · easy (statement units) —
-ONE COHERENT PACKAGE (C26/C27).**
-The §W4-SYNC re-keyed statements this corpus OWNS, as named defs consumable
-by MovesS's contract: `def xhdStmt : Prop := Nonempty (XHD n S_cts V_cts)` —
-ONE Prop, the FULL bundle at the V7-4 instance. THE RE-KEYING (C27 repair):
-ALL FOUR of `XRBPackage.xhd_w/xhd_u/xhd_d/xhd_s` are re-keyed to THIS ONE
-Prop (each field := `xhdStmt`) — any single field then yields one COHERENT
-package (same weights, same domains, same sums; the s-face bound to the
-SAME w/d BY THE BUNDLE'S TYPE), and four independent incompatible witnesses
-are impossible by construction. Four unrelated `Nonempty` fragments no
-longer exist. `def cts_counts_stmt : Prop := ValA … ∧ EntCount …` (re-keying
-`Wsh17Package.cts_counts` — S-8's [1v] leg); PLUS the S-8 DEMANDS honored AS
-A TYPE (Codex-17: rev 2 asserted "the re-keyed Wsh17Package gains it"
-without displaying any type — a standalone Prop is not a package premise):
+ONE SHARED PACKAGE PARAMETER (REV 4, Codex-10: rev 3 re-keyed all four
+`XRBPackage.xhd_w/xhd_u/xhd_d/xhd_s` fields to the ONE full-bundle Prop —
+"the field named xhd_w now assumes xhd_u, all domain faces, all sum faces,
+and entrance exactness": each separately-owned premise was silently
+STRENGTHENED to the bundle. The audit's own remedy is adopted: "coherence
+should be obtained by projections from one shared package parameter").**
+THE XRB RE-KEY, shared-parameter form: the wave-4 instantiation of
+`W2_xrb`'s obligation is stated over ONE typed variable
+`X : XHD n S_cts TE_cts V_cts`; the four field NAMES become PROJECTION
+ALIASES — `xhd_w ↦ X.w`, `xhd_u ↦ X.u`, `xhd_d ↦ X.d` (+ dC/dEnt faces),
+`xhd_s ↦ X.s` (+ sC/sEnt faces) — so (i) coherence is BY SHARING (same
+weights, same domains, same sums — C27's demand still met: four unrelated
+incompatible witnesses are impossible), and (ii) NO premise is
+strengthened: the S.1 proof may consume exactly the faces its ledger line
+names, per-face accounting preserved (Codex-10's demand). `xhdStmt :=
+Nonempty (XHD n S_cts TE_cts V_cts)` SURVIVES ONLY as V1-5's [1v]-FULL
+discharge-event Prop — it is NO LONGER any field's re-key target.
+`def cts_counts_stmt : Prop := ValA … ∧ EntCount …` (re-keying
+`Wsh17Package.cts_counts` — S-8's [1v] leg); PLUS the S-8 demands honored
+AS A TYPE, at REV 4 with the FULL FROZEN FIELD ROSTER (Codex-11: rev 3's
+two-field structure "is not a re-keyed Wsh17Package and cannot supply
+W17ii's premise type" — the frozen package has `c15_volumes`/`cts_counts`/
+`sib_count`, and comments do not put fields in a type; Fable SF-2's
+ownership record was HONEST and is kept — the owner-side fields now ride
+as PARAMETERS, present in the type, inhabited by their owners):
 ```lean
-/-- the re-keyed Wsh17 package, DISPLAYED (the seam-contract pin's REV-3
-form; field names verbatim from MovesS's Wsh17Package, plus the demanded
-xhd_s face): -/
-structure Wsh17PackageV : Prop where
-  cts_counts : cts_counts_stmt          -- S-8's [1v] leg (ValA ∧ EntCount)
-  wsh_xhd_s  : xhdStmt                  -- the DEMANDED xhd_s face, a FIELD
-  -- (the package's remaining fields are [3t]/[3]-owned pins, carried by
-  --  NAME from MovesS's Wsh17Package — tree/shape vocabulary MovesV does
-  --  not restate; the re-keying instruction in §4.3 binds them.)
+/-- the re-keyed Wsh17 package, DISPLAYED — REV 4: the frozen three-field
+roster complete; the [§C/HC-2]- and [3t]-owned legs are Prop PARAMETERS
+(the owners bind them at wave 4; MovesV pins its own two legs' content),
+plus S-8's demanded xhd_s face as the shared-parameter projection: -/
+structure Wsh17PackageV (c15V sibC : Prop)
+    (X : XHD n S_cts TE_cts V_cts) : Prop where
+  c15_volumes : c15V                    -- owner §C/HC-2 (frozen field 1)
+  cts_counts  : cts_counts_stmt         -- S-8's [1v] leg (frozen field 2)
+  sib_count   : sibC                    -- owner [3t]/CL-10 (frozen field 3)
+  -- S-8's DEMANDED xhd_s face is DELIVERED BY THE PARAMETER X (its
+  -- s/sC/sEnt projections — the shared-instance form, per Codex-10's
+  -- remedy; a separate Nonempty field would be either free-floating or
+  -- trivially witnessed by X.s, both defects).
+  -- (the empty-menu fence stays OWNER-SIDE OPEN — SF-2 below; the field
+  --  NAMES are verbatim from MovesS's frozen Wsh17Package — tree/shape
+  --  vocabulary MovesV does not restate; §4.3's re-keying instruction
+  --  binds the owner parameters at wave 4.)
 ```
 THE EMPTY-MENU LEG, HONESTLY SCOPED (Codex-17's second horn: rev 2 routed
 `F.Sh.Nonempty` "through S-5" while listing S-5 as NOT re-keyed — a
@@ -2797,8 +3425,9 @@ contradiction, and the owner-side `W7_cutWD` still carries the obsolete
 fence closed. SEAM FLAG SF-2 (new, recorded in §4.3): W17ii's
 nonemptiness leg awaits [3t]'s `tree_ne` + the W7_cutWD
 first-entrance-ancestor retype — OWNER-SIDE OPEN; MovesV delivers exactly
-its two legs (cts_counts, wsh_xhd_s) as fields of the DISPLAYED
-`Wsh17PackageV` and flags the rest. moves_ref: MovesS §W4-SYNC S-2/S-8/S-9 +
+its two legs (the `cts_counts` field + the shared-parameter s-face) in the
+DISPLAYED full-roster `Wsh17PackageV` and flags the rest.
+moves_ref: MovesS §W4-SYNC S-2/S-8/S-9 +
 this note's V.0 package. deps: V7-4a/b/c, V2-4, V3-9a.
 sketch: defs + one structure. hyp_fields: none (names for open obligations —
 their TYPES pin their content, per doctrine; inhabitation stays with the
@@ -2821,7 +3450,8 @@ no "from 2.E" pointers remain.
 | `DegCons T` | [MovesV: V2-9 (gate rosters, decide) + the CL-11 full-roster burden field for uncomputed skeletons — carried, not discharged] |
 | `KmatHyp T e` (a PROP: kcol members size e) | [MovesV: V7-3b PROVES it at the gate instance by decide; general = the TYPED `StageLawBurden.kmat_all` (V7-3d — Codex-20; no prose burden). (C25 repair stands: it is a proposition, and no MovesS theorem derives it.)] |
 | `SCSData T` (W/D/ℓ/g/μsel/W'/D'/flankCount/flankWidth/resFactors/selIdx/memberOf + 12 laws) | [SPLIT (C25 repair): DATA fields ← V7-3c from MovesSp species stage fields (s.D, s.w, s.W, s.sel, s.lam) through the roster wiring; LAWS decided at the gate rosters (V7-3c) AND, beyond them, carried as the TYPED `StageLawBurden` (V7-3d — Codex-20: a closed hypothesis structure with all twelve law fields + kmat_all + degcons_all, a `CtsmLedger` field; no prose burden survives)] |
-| `MeasuredSide T` (all fields) | [MovesV: V7-4a/b/c from `CtsMeasured` (§2.F) + the XHD package + `CellPolyPack` as data + MovesD boxes; `Hgt` carrier = Σ D, Hpt D ("MovesV instantiates the carrier at wave 4" — DONE here); entrance side = EntIx with the CENSUS wiring (entCount/entInst = the ε-instance census, ιshH = census·q^{−A} — F-1/F-2); cellLvl/cellInst = the STATE census stLvl/stInst (F-5); gwt/μcell/rowVal/kstep = count-polynomial × weight-only sums, kstep with ∏T (F-4); `hent` per the RECORDED adjudication + seam flag SF-1 (V7-4b — round-2 disagreement on file, resolved on Fable's source verification)] |
+| `MeasuredSide T` (all fields) | [MovesV: V7-4a/b/c from `CtsMeasured` (§2.F) + the XHD package + `CellPolyPack` as data + MovesD boxes; `Hgt` carrier = Σ D, Hpt D ("MovesV instantiates the carrier at wave 4" — DONE here); entrance side = EntIx with the CENSUS wiring (entCount/entInst = the ε-instance census, ιshH = census·q^{−A} — F-1/F-2); cellLvl/cellInst = the STATE census stLvl/stInst (F-5); gwt/μcell/rowVal/kstep = count-polynomial × weight-only sums, kstep with ∏T (F-4) AND the REV-4 k = 0 Kronecker-δ case (N-3); `hent` = the INJECTIVE `hentCode` of the base instantiation (REV 4, Codex-6) + seam flag SF-1 (V7-4b — the round-2/3 disagreement and its computed-evidence resolution on file)] |
+| `MeasuredSide`/`TableShape` MECHANICAL INSTANCE FIELDS, named per Codex-17 (`fin`, `deq`, `deqV`, `finV`, `finO`, `finC`, `finB`, `finE`, `decA`, `boxpos`, `rep_ne`) | [MovesV: V7-3a (TableShape side: Fintype/DecidableEq from the §2.C Fintype fields + `Skeleton`'s SP2-finite catalogue; `finO` ← `BlockData.finO`) and V7-4a/b (measured side: `finB/boxpos` ← V's box fields; `finC` ← `finDO` + finite outcomes; `finE` ← V3-4 × list length; `decA` ← `act_size` + polynomial-eval decidability at ℚ points; `rep_ne` ← `zc_ne`) — each an EXPLICIT instance line in the unit's roster, none silently assumed] |
 | `RatBurdens T M`: `tgP/tg_ok/tg_interp/tg_degT/tg_degS` | [MovesV: V7-5(a) from ValA (V2-4) × the XHDs/XHDsC geometric faces — CL-6 (iv)-POLY, GIVEN the table-build coverage AND the [2b] height-sum face (C23: rowVal is resummed; counts alone cannot interpolate it)] |
 | `RatBurdens.jP/j_ok/j_interp/j_degT/j_degS` | [MovesV: V7-5(b) from V5-7b — **(J-RAT)/CL-18, THE PLAN-SYNC DELIVERABLE recorded owner-side**; per-(τ,o) incl. split routes (C8); height-sum face tagged [2b]] |
 | `RatBurdens.ιP/ι_ok/ι_interp/ι_countS_one/ι_count/ι_degT/ι_degS` | [MovesV: V7-5(c) from V3-9c(a)'s PER-COMPONENT PolyGeoms (the C23 type fix) + V3-9a (ENT-COUNT); GIVEN XHD-shallow + (ENT-U) + AffEnt] |
@@ -2834,7 +3464,7 @@ no "from 2.E" pointers remain.
 | field | supplier |
 |---|---|
 | `RS1Meas.βmeas/β_bdd/βfull` | [owner [3t] → MovesT: measured subtree values; MovesV supplies NO per-f or subtree object — the [3t] fence; h_ent binding per seam flag SF-1] |
-| `RS1Bundle.xrb` (W-2) | [owner [3]: the S.1 theorem; its `XRBPackage.xhd_w/xhd_u/xhd_d/xhd_s` premise fields RE-KEYED to the ONE coherent `xhdStmt` — V7-7 (C27)] |
+| `RS1Bundle.xrb` (W-2) | [owner [3]: the S.1 theorem; its `XRBPackage.xhd_w/xhd_u/xhd_d/xhd_s` premise fields RE-KEYED to the FOUR FACE PROJECTIONS of ONE SHARED package parameter `X : XHD n S_cts TE_cts V_cts` — V7-7 (REV 4, Codex-10: coherence by sharing, per-face accounting preserved; the rev-3 all-fields-=-full-bundle form is STRUCK)] |
 | `RS1Bundle.recursion_meas` (W-3) | [owner [3t]/[3]: the RS1GivenPackage route; MovesV contributes the PCI leg's (iv)-REP statement (V4-9) as the re-key target for `pci`'s REP conjunct] |
 | `RS1Bundle.nsNull/rexact` | [owner [3t] §T.2 — CLOSED there; tag displayed] |
 | `RS4Chain.L` | [MovesV: V7-6c (conditional instance)] |
@@ -2849,24 +3479,33 @@ no "from 2.E" pointers remain.
 
 ### 4.3 The seam entries RE-KEYED by this blueprint (count: 6)
 
-1. **S-2 (`W2_xrb` package fields)** — the four `xhd_*` Prop placeholders in
-   `XRBPackage` re-keyed to THE ONE Prop `xhdStmt := Nonempty (XHD n S V)`
-   at the V7-4 instance (V7-7; C27: one coherent package — same weights,
-   domains, sums — never four unrelated existentials).
-   `jc_inv`/`sib`/`tb_cap`/`vp`/`rel2_*` stay with their owners
-   ([2b]/[3t]/[2r]).
+1. **S-2 (`W2_xrb` package fields)** — REV 4 (Codex-10): the four `xhd_*`
+   Prop placeholders in `XRBPackage` re-keyed to the FOUR FACE PROJECTIONS
+   of ONE SHARED parameter `X : XHD n S_cts TE_cts V_cts` (xhd_w ↦ X.w,
+   xhd_u ↦ X.u, xhd_d ↦ X.d + dC/dEnt, xhd_s ↦ X.s + sC/sEnt) — coherence
+   BY SHARING (C27's demand kept: no four unrelated existentials), no
+   premise strengthened (each alias grants exactly its face; the S.1 proof's
+   per-face ledger accounting survives). The rev-3 every-field-=-`xhdStmt`
+   re-key is STRUCK; `xhdStmt` remains only as V1-5's [1v]-FULL
+   discharge-event Prop. `jc_inv`/`sib`/`tb_cap`/`vp`/`rel2_*` stay with
+   their owners ([2b]/[3t]/[2r]).
 2. **S-8 (`W17ii` + `Wsh17Package`)** — the `cts_counts` field re-keyed to
-   `cts_counts_stmt := ValA ∧ EntCount` (V7-7); the DEMANDED `xhd_s` face is
-   DELIVERED as a FIELD of the DISPLAYED `Wsh17PackageV` (V7-7 — Codex-17:
-   a type, not a floating Prop). THE EMPTY-MENU LEG IS **OWNER-SIDE OPEN**
+   `cts_counts_stmt := ValA ∧ EntCount` (V7-7); REV 4 (Codex-11): the
+   re-keyed package `Wsh17PackageV` now carries the frozen package's FULL
+   three-field roster (`c15_volumes`/`cts_counts`/`sib_count`) — the two
+   owner legs as Prop PARAMETERS (present in the type; [§C/HC-2] and
+   [3t]/CL-10 inhabit them at wave 4) — and S-8's demanded `xhd_s` face
+   rides as the SHARED package parameter's projection (never a free
+   Nonempty). THE EMPTY-MENU LEG IS **OWNER-SIDE OPEN**
    (SEAM FLAG SF-2, replacing rev 2's contradictory S-5 routing claim):
    W17ii's vacuity fence stays open until [3t] types `TreeIface.tree_ne` AND
    retypes `W7_cutWD`'s obsolete `isDeepSplit → ¬ isEntrance` clause to the
-   first-entrance-ancestor form; MovesV claims only its two delivered legs.
+   first-entrance-ancestor form; MovesV claims only its delivered legs.
 3. **S-9 (packages as registries)** — the [1v]/[2b]-XHD names in the
    registries now point at ONE typed bundle with content-pinning fields
    (doctrine satisfied: degenerate instances violate typed laws — chainCount
-   definitional, non-vacuity fields, exactness over real counts).
+   definitional, non-vacuity fields, exactness over the process-side
+   realization with the one-way count supply — REV 4).
 4. **W-6 (wild-pool read-off, AVAgree)** — cited per consumption site: V4-3
    is the [1v]-side citation form.
 5. **W-11 (instantiation of every §2 structure by the REAL CTS objects)** —
@@ -2902,28 +3541,29 @@ V6 depends only on DefsGate + 2.A) → V3 → V4 → V5 → V7. The gate layer V
 is deliberately early-buildable: it is the corpus's non-vacuity anchor (the
 sealed numbers re-derived in-kernel before any measured clause elaborates).
 
-**Difficulty census: 82 units = 33 easy / 43 medium / 6 hard.**
-Per layer: V0[4: 2e/2m] V1[10: 5e/5m] V2[10: 6e/4m] V3[11: 4e/5m/2h]
-V4[12: 4e/6m/2h] V5[10: 3e/6m/1h] V6[10: 5e/5m] V7[15: 4e/10m/1h].
-Delta vs rev 2 (71 = 31/35/5), all Codex-19/REV-3 driven: V1-8 → V1-8a/b/c
-(3 medium); V7-2 → V7-2a (easy) + V7-2b (medium); V7-3 → V7-3a/c/d (medium)
-+ V7-3b (easy); V7-4 (hard) → V7-4a/b/c (3 medium — the split de-escalates:
-the wiring is now fully specified); V7-6 → V7-6a/b/c (3 medium); NEW V5-8
-(`cell_refine`, medium — the derived count-bearing refinement); V3-3
-re-graded medium → HARD (the (d) reconstruction bridge is the corpus's real
-E-phase risk, hatch recorded); V4-12 re-graded medium → HARD (the restored
-⟹ leg's generating-series separation).
-HARD (escalation-risk set, pre-declared): V3-3 (reconstruction; split by
-leg), V3-5 (instantiation bijection; split (a)/(b)/(c)), V4-6 (PART-1's
-countable route; split (i)/(ii)/(iii)), V4-12 (the iff's ⟹ leg; split
-(b-i)/(b-ii)), V5-2 (COMP-h grouping induction; split (a)/(b)/(c)), V7-5
-(RatBurdens assembly; split (a)/(b)/(c)). WATCH (medium with known teeth):
-V0-4 (double geometric sum in Qq), V2-6 (cyclic power-image cardinality),
-V5-8 (the Fubini rearrangement over the (c,h) double sum), V6-1c/V6-3b
-(the F4/F8/F9 table fields — decide feasibility over 9³·9 tuples is fine,
-but the Field-instance decides need `Decidable` instances written with
-care), V6-4c (the CoprimeLiftPack — Mathlib Hensel archaeology;
-published-axiom fallback per campaign §4, flag before declaring).
+**Difficulty census: 95 units = 32 easy / 59 medium / 4 hard.**
+Per layer: V0[4: 2e/2m] V1[10: 5e/5m] V2[10: 6e/4m] V3[17: 4e/11m/2h]
+V4[14: 3e/10m/1h] V5[12: 3e/8m/1h] V6[10: 5e/5m] V7[18: 4e/14m].
+Delta vs rev 3 (82 = 33/43/6), all REV-4 driven: the pre-approved splits
+PROMOTED to real unit IDs (Codex-16) — V3-3 → V3-3a/b/c/d (m/m/m/h),
+V3-5 → V3-5a/b/c (h/m/m), V4-6 → V4-6a/b/c (m/h/m), V5-2 → V5-2a/b/c
+(m/h/m), V7-5 → V7-5a/b/c (3 medium — the split de-escalates the
+assembly); V3-8 → V3-8a/b (Codex-7's premise split, 2 medium); V7-6a →
+V7-6a1/a2 (Fable G-2's roster rule, 2 medium); V4-11 re-graded easy →
+medium (it now BUILDS the coupled process-side toy); V4-12 re-graded
+HARD → medium (the ∀-E generating-series separation is GONE with the
+quantifier fix — the remaining legs are a HasSum Fubini + two norm_num
+toys). HARD (escalation-risk set, pre-declared): V3-3d (the
+reconstruction bridge — the corpus's real E-phase risk, hatch recorded),
+V3-5a (injectivity through it), V4-6b (the null-remainder limit),
+V5-2b (the COMP-h grouping induction step). WATCH (medium with known
+teeth): V0-4 (double geometric sum in Qq), V2-6 (cyclic power-image
+cardinality), V5-8 (the Fubini rearrangement over the (c,h) double sum),
+V6-1c/V6-3b (the F4/F8/F9 table fields — decide feasibility over 9³·9
+tuples is fine, but the Field-instance decides need `Decidable` instances
+written with care), V6-4c (the CoprimeLiftPack — Mathlib Hensel
+archaeology; published-axiom fallback per campaign §4, flag before
+declaring), V4-11 (the coupled-toy decide budget).
 
 **THE DESIGN-FREEDOM INVENTORY — COMPLETE, ALL FIVE SLOTS, ALL RESOLVED
 (A-5 repair; per campaign §3(ii) each resolution is recorded WITH the audit
@@ -2959,6 +3599,19 @@ round, and no slot remains open into E-phase):**
    (Refinement's assign_cover) → RESOLVED: mechanical ▸-wrappers, zero
    design content, one line each at E-phase (recorded so the inventory
    stays COMPLETE).
+9. (NEW at REV 4) the process-side carriers (N-1) → RESOLVED: `TmplEvents`
+   is FREE DATA at composite templates BY DESIGN — the freedom is the
+   kernel's openness, not a slot to fill; its four [tie] fields
+   (tevt_last_iff ×2, real_marks, marks_chains) pin everything the note
+   makes definitional, and NOTHING more may be added without re-proving
+   the §2.G underivability audit (any composite-recursion tie re-proves
+   HMC — the rev-3 lesson, now a standing fence).
+10. (NEW at REV 4) `shapeRank`'s enumeration order (Codex-4) → RESOLVED:
+   lex order on the eligible (g, μ) menu, with the recorded
+   tighten-at-MovesD hatch (§2.D) if MovesD's Fin m̄ collapse enumerates
+   differently.
+11. (NEW at REV 4) `zig`'s orientation (Codex-15) → RESOLVED: pinned at
+   E-phase (`Denumerable.eqv ℤ` vs its `.symm` — one token, recorded).
 
 **Statement-fence inventory (changes needing sign-off):** none — every
 structure above is new (additive); MovesS/MovesSp/MovesD are imported, never
@@ -2979,7 +3632,9 @@ V1-8b/c — and the count factors live in the [1v] burdens, so no package
 field can silently decide INIT-RAT/(J-RAT) (Codex-8/9); the counting ties:
 realized by V1-8c's literal census data (ent_card/evt_card/box_card/
 stInst_card all checked on the toy); HMC: the false-instance/true-instance
-pair V4-11 + V4-12(c)'s single-system factorization-failure fence;
+pair V4-11 + V1-8b (REV 4: BOTH exist again — the false one couples the
+free composite tevt, the ⊇ direction) + V4-12(c)'s fixed-system
+factorization-failure fence + V4-12(b′)'s sum-level coincidence record;
 templates: terminal-final BY CONSTRUCTOR (+ the T-twin fields throughout —
 Codex-2); J: route-keyed roster with the GATE-NONZERO lemma (V5-7a — the
 F-6 emptiness adversary dies) + the not-marked-T·G fence V5-7c; ε:
@@ -2991,17 +3646,19 @@ re-derived (V6-1a..V6-4a) including the m_H3 = 0 falsifier, at all nine
 census points, + the F-1 counting check 128 = (1/4)·512 (ent_card at gate
 B).
 
-**Honest-perimeter recap (what a corpus record may claim when all 82 build):**
+**Honest-perimeter recap (what a corpus record may claim when all 95 build):**
 CTS-M's clauses machine-checked EACH GIVEN EXACTLY its V.1-ledger set
 (V7-2b, conclusions displayed at V7-2a); (U-A) proved given the typed §C
 pack; the V-n3 displays re-derived in-kernel at all nine census points
 (V6-4c's threshold conditional on the typed CoprimeLiftPack premise); the
 MovesS seam supplied per §4 — with XHD (all faces incl. dC)/(XHD-u)/
 (ENT-U)/HMC/ENT-COUNT/INIT-RAT-premises/(J-RAT)-cell-pack/(ii-c)/
-CL-13-coverage/ContTwo/StageLawBurden all OPEN, riding as typed arguments —
-and the W17ii vacuity fence OWNER-SIDE OPEN (SF-2). NOTHING here is "the
-density R_σ": every mass is μ̂-typed or counting-native; the marked→per-f
-conversion stays [3t]'s.
+CL-13-coverage/ContTwo/StageLawBurden/MDomTie/MarkDisj/MarkFiberTie all
+OPEN, riding as typed arguments — and the W17ii vacuity fence OWNER-SIDE OPEN (SF-2).
+CLAUSE (v)'s record in particular: HMC typed, linked, probed by units both
+ways (V4-11/V1-8b), and PROVED BY NOTHING — the REV-4 restoration. NOTHING
+here is "the density R_σ": every mass is μ̂-typed or counting-native; the
+marked→per-f conversion stays [3t]'s.
 
 ## §6 DISPOSITION TABLES
 
@@ -3056,10 +3713,16 @@ section/unit of REV 2.
 
 ### §6.2 DISPOSITION TABLE (round 2 → REV 3)
 
+(HISTORICAL at REV 4 — where round 3 re-adjudicated a rev-3 "REPAIRED" row,
+the governing row is now in §6.3: X-14's ∀-weight iff → Y-8; the F-3/X-10
+AStep disjointness → Y-3; X-5's selRank pin → Y-4; X-4's count layer →
+N-2/Y-1; the C2/A-2 chainCount-exactness keying → N-1; X-17's Wsh17 type →
+Y-11; X-7's hent half → Y-6; C27's one-Prop re-key → Y-10.)
+
 Codex round-2 findings 1–20 (`MOVESV_AUDIT_CODEX2_2026-07-28.md`; cited as
 X-1..X-20), Fable round-2 findings F-1–F-6 / G-1–G-4
 (`MOVESV_AUDIT_FABLE2_2026-07-28.md`). "Fixed at" names the governing
-section/unit of THIS revision. The gate numbers the audits supplied are the
+section/unit of REV 3. The gate numbers the audits supplied are the
 acceptance tests and are checked at the named sites.
 
 | # | finding (compressed) | disposition | fixed at |
@@ -3103,5 +3766,52 @@ the m_H3 falsifier, the two-history discipline, the A-4 char-free
 multiplicity), and the §4 field lists verified verbatim against the built
 MovesS sources.
 
-*(End of MOVESV blueprint REV 3. Next per campaign §3: Codex/Fable semantic
-audit of this revision + Defs; REJECT loops until ACCEPT; then E-phase.)*
+### §6.3 DISPOSITION TABLE (round 3 → REV 4)
+
+Codex round-3 findings 1–17 (`MOVESV_AUDIT_CODEX3_2026-07-28.md`; cited as
+Y-1..Y-17: 13 critical + 4 gap), Fable round-3 findings N-1/N-2/N-3 +
+G-1/G-2 (`MOVESV_AUDIT_FABLE3_2026-07-28.md`; that audit also re-ran all
+six round-2 F-refutations — ALL DEAD — and verified the byte-stability of
+the round-2 clean cores, which is what certified Y-1/N-2 and N-1 as
+INHERITED defects). "Fixed at" names the governing section/unit of THIS
+revision. Where a Codex finding met a Fable verified-clean row, the row
+carries the TWO-VERDICT COMPARISON with the computed evidence.
+
+| # | finding (compressed) | disposition | fixed at |
+|---|---|---|---|
+| N-1 = the HMC collapse | XHDd's chainCount-keyed exactness PROVED the open kernel (4-line proof); V4-11/V4-12(c) unsatisfiable; (v)-conditionality defeated | REPAIRED PER THE ORCHESTRATOR ADJUDICATION (campaign ledger, N-1/HMC entry — the note-side flag was adjudicated NOTE-INTACT, blueprint over-commitment): table side (chainCount, G) stays recursive-by-definition; process side H(γ) DEFINED from realized marked events (`TmplEvents`/`TReal`, the COMP vocabulary MOVES 8225–8232 quoted); XHDd exactness re-keyed to TReal; HMC = the typed link, quoted verbatim (MOVES 8198–8204), underivability audited in §2.G (one-way count supply only; no composite ties); V4-11 re-keyed process-side (coupled toy, satisfiable); V4-12(c) satisfiable; every (v)-tag restored (V5-5's hHMC undischargeable; V7-6c note) | §2.G (TmplEvents/TReal/XHDd/HMC/HMCAug), V1-3, V4-11, V4-12, V7-6c, §0 |
+| N-2 = Y-1 (CONVERGENT: both auditors, same defect) | pool-free Hist/Assign/cntraw/cntc force constant count polynomials (T21: eval 2 = 2 ≠ 6 = eval 3); valA_gate FALSE; CellPolyPack/ValA/valB/tgt_supported/cellEvt-cluster unsatisfiable; XHDu's cross-prime horn | REPAIRED: the history layer is POOL-INDEXED (`Hist : ℚ → Cell → Type`; Assign/cntraw/cntc/massOf/chainCount/evtOf/cellEvt ride the history's pool — the census carriers' box-side move extended one layer down, as the round-3 hint prescribed); XHDu compares SAME-POOL histories only (the two-horn closure); the T21 2-vs-6 acceptance check DISPLAYED at V2-4, the (X−1)² 1-vs-4 check at §2.H | §2.B, §2.F, §2.G, §2.H, V2-4, V2-5 |
+| N-3 | kstep has no k = 0 case: template-sum gives kstep 0 ≡ 0, falsifying the frozen LedgerIV.hmc at k = 0 | REPAIRED: `kstep 0 τ β q₀ := if τ = β then 1 else 0` (Kronecker δ — empty path: ∏T = 1, empty height sum = 1); the frozen ∀-k law's k = 0 instance is the δ-collapse, hypothesis-free; the built-instance cite (N2Carriers 101–105) displayed | V7-4c |
+| Y-2 | continuing/terminal keyed to Letter; V.6.3's m₂ has terminal o_split/o_inert AND continuing o_double — unrepresentable | REPAIRED: outcomes moved into `BlockData` (`Outc : Letter → Type`); `cont`/`tgtSk`/`tgt_menu`/`tcell`/`T`/`vlabOf`/`TargetIx`/`MoveData.hc`/`TermData.ht` all re-keyed per (letter, OUTCOME) — m₂'s three outcomes type as one letter, two TermData + one MoveData | §2.C |
+| Y-3 | evt_disj claims ordinary-box disjointness across continuation marks; the note allows equal f-projections and offspring mass > 1 | REPAIRED: `evt_disj_cell` — disjointness EXACTLY at distinct DIGIT-CELL KEYS (letter, outcome, cellOfA-class, height; terminal included); cross-mark pairs excluded (nothing claimed); the within-cell sum meas_card needs is the NAMED displayed burden `MarkDisj` (decide at the n = 3 gates via emult ≤ 1; open beyond — exactly PART-2's surplus territory); d4r0's supply re-derived (the frozen field is (c,h)-keyed — never cross-mark); V4-10's equal-projection witness now jointly satisfiable with the carrier | §2.F, V7-6a1/a2, V4-10 |
+| Y-4 | selRec entries are bare bounded naturals — no tie to the selected continuation or MovesD.selRank | REPAIRED: `hrank` FIELD (entry = `shapeRank` of `takenGm`, the continuation the prefix actually takes — successor read's (g,μ) / entry selection at the last); value-level identification stays the E7/E8 cite (MovesD Defs 522-523's Fin m̄ collapse, quoted); enumeration-order hatch recorded | §2.D |
+| Y-5 | mdom untied to XHDd's length-1 domain; u_T transport broken (V2-5/V4-5/V5-8/tg_interp) | REPAIRED: `MDomTie` (mdom_eq/mdomT_eq) — a displayed coherence structure, EXPLICIT premise of every base-point transport; base realizability derived (mdom_eq + no_stray + mark facts) | §2.G, V2-5, V5-8, V7-5a |
+| Y-6 | hent supplied by a lossy scalar (Σ of base coordinates) | PARTIALLY ADOPTED + TWO-VERDICT RECORD: the VALUE is upgraded to the INJECTIVE `hentCode` (Nat.pair-fold over retained (h_r, zig(γ_r)) — no identification of distinct heights); the STRUCTURAL half is owner-side and stays SEAM FLAG SF-1 — Fable round-3 §B held SF-1 HONEST on computed evidence, re-verified at REV 4 by fresh grep: `hent` in built MovesS = Defs.lean 179 (declaration) + N2Carriers.lean 118 (device `:= 0`) + one comment, NO law reads it; RS1Meas.βmeas's h_ent is its OWN ℕ argument (its h_ent-INDEPENDENCE is W2_xrb's CONCLUSION), not a `MeasuredSide.hent` read. Codex's faithful-supply demand adopted; its "expressly use" premise corrected by the grep | V7-4b, §4.3 |
+| Y-7 | ENT-AGG strengthened by an (ENT-U) premise; the note gives convergence from XHD-s (shallow) alone | REPAIRED: V3-8 SPLIT — V3-8a (the note-exact aggregation: convergence from the NEW shallow mass-summability face `XHDsEnt.mass_summable`, summability only so INIT-RAT is decided by nothing; exactly-once structure proved; NO (ENT-U)) + V3-8b (the ιval identification, where (ENT-U) enters — the note's own INIT-RAT line lists it) | §2.G (mass_summable), V3-8a/b |
+| Y-8 | V4-12's iff quantifies over EVERY positive-affine E-family; the note fixes the actual XHD weight system | REPAIRED AT THE NOTE'S EXACT QUANTIFIER (the round-3 directive: match exactly): (a) the IF leg proved at the FIXED system (`Factorizes X D`, ∀-template — supplies V5-5); (b) the ONLY-IF leg carried as the NAMED process-scoped statement `UpgradeOnlyIf`, CONSUMED BY NOTHING, its interface-derivability recorded OPEN-UNCLAIMED, with (b′) the machine-checked SUM-LEVEL coincidence (the E-multiset toy {(0,0),(1,0),(0,1),(2,0)} vs {0,1}², sums (1+q₀⁻¹)² both — displayed arithmetic; the naive full-instance lift dies against marks_chains, computed and recorded); (c) the failure fence at the false-HMC toy (¬HMC ∧ ¬Factorizes). The ∀-E quantifier and the generating-series ⟹ leg are GONE; V4-12 de-escalates HARD → medium. TWO-VERDICT NOTE: Fable round-3 §B independently found rev 3's iff OVERTAKEN by N-1 and its adjudication line wrong — both verdicts land in this restatement | V4-12, §0 |
+| Y-9 | tgt_supported lacks the active-source premise (stronger than (ii-a)) | REPAIRED: the ValA FIELD now carries `activeState q₀ (src)` + zc guards (the note: "for every source active at q₀ …"; inactive-source rows stay formal junk at both layers); V4-1's derivation re-checked under the guard; `ent_supported` keeps no source guard (the entrance leg has no source state — note text quoted) | V2-4(c), V4-1 |
+| Y-10 | XRB re-key strengthens each premise to the full bundle | REPAIRED BY THE AUDIT'S OWN REMEDY: ONE SHARED package parameter `X : XHD …`; the four field names = FACE PROJECTIONS (xhd_w ↦ X.w, …) — coherence by sharing (C27 kept), per-face accounting preserved, no premise strengthened; `xhdStmt` survives only as V1-5's discharge Prop | V7-7, §4.3-1, §4.2 |
+| Y-11 | Wsh17PackageV drops c15_volumes/sib_count (comments ≠ fields) | REPAIRED: full frozen three-field roster IN THE TYPE — owner legs as Prop PARAMETERS (c15V : §C/HC-2, sibC : [3t]/CL-10; inhabitation owner-side), cts_counts MovesV's, the xhd_s face as the shared parameter's projection; SF-2 (Fable-verified HONEST) unchanged | V7-7, §4.3-2 |
+| Y-12 | XHD-w/u quantify over non-realizable histories (no zc premises) | REPAIRED: `S.zc` guards on w_eq/wT_eq and all six XHDu fields (the C15Pack.mass_factors pattern, uniform); XHDd/XHDdC exactness zc-guarded in the same sweep | §2.B, §2.G |
+| Y-13 | V6-2b's moves_ref still splices "= 6t+3u+1" | REPAIRED: the splice DELETED from the quotation; the derived form lives only in the statement body, marked ours | V6-2b |
+| Y-14 (gap) | placeholder checklist materially open (gProd `…`, twin comments, F4 `…laws`, F8/F9 undisplayed, StageLawBurden ellipses, …) | LARGELY REPAIRED: gProd's recursion displayed; cellEvtT/cntcT displayed; the F4 instance skeleton displayed with per-law decide (no `…laws`); F8/F9 add/mul tables PASTED (computed this revision); StageLawBurden's TWELVE LAW FIELDS TRANSCRIBED IN FULL against the verbatim MovesS.SCSData statements (V7-3d); CellIdx moved into Defs; §2.J re-inventoried. REMAINING (recorded, not hidden): the `*_Stmt` defs of V7-2a stay transcription-rule-bound, and the cast/menu helpers stay recorded one-liners — each in §5's inventory with zero design content | §2.D/2.F/2.G/2.I/2.J, V7-3d |
+| Y-15 (gap) | declaration order / Lean-plausibility (CellIdx, Realizable, zig orientation, ringV instance) | REPAIRED: `BlockData.CellIdx` a Defs def before TargetIx; `Realizable` moved before XHDdEnt; `rel_eq` displays the `letI := ringV q₀` install; zig's orientation pinned as a recorded E-phase token (inventory slot 11) | §2.C, §2.D, §2.G |
+| Y-16 (gap) | "pre-approved split" without unit IDs/files conceals multi-lemma units | REPAIRED for the five named suites: V3-3a/b/c/d, V3-5a/b/c, V4-6a/b/c, V5-2a/b/c, V7-5a/b/c — real IDs, own files, own grades (census 95 = 32/59/4); V7-1/V7-2a REMAIN single structure-declaration units BY DESIGN (one structure = one display; V7-2a's `*_Stmt` fields are rule-bound transcriptions, not lemmas) — recorded as the residual disagreement, with the rationale displayed | §3, §5 |
+| Y-17 (gap) | seam table not field-complete (fin/deq/finV/finO/finC/decA/nonemptiness carriers unmapped) | REPAIRED: an explicit MECHANICAL-INSTANCE-FIELDS row added to §4.1 naming every such field with its supplier unit and derivation source; StageLawBurden's role unchanged (its law fields are V7-3d's, not instance fields) | §4.1 |
+| G-1 (Fable) | V7-5(d)'s act_iff collapse silently needs Nonempty (Cell e τ) | REPAIRED: the `cell_ne_inst` roster lemma DISPLAYED (zc_ne → out_ne productivity → cellOfA/cellOfAT through the bijections) — part of V7-5c | V7-5c |
+| G-2 (Fable) | V7-6a bundles six supply legs against the ≤ 4-lemma roster rule | REPAIRED: split into V7-6a1 (cell suite: meas_card + two exactness legs) and V7-6a2 (d4r0 + init_count + ent_count_card), each an enumerated ≤ 3-lemma roster | V7-6a1/a2 |
+
+ROUND-3 CROSS-CHECKS HONORED: Fable's §A re-ran all six round-2
+F-refutations against rev 3 and found them DEAD (F-1's 128 = (1/4)·512,
+F-2's degree ledger, F-3's typed suite, F-4's (q−1)² identity, F-5's
+revert, F-6's route roster) — REV 4 leaves those wirings intact except
+where the N-1/N-2/Y re-keys pass through them (each such touch is a row
+above); Codex's round-2 disposition census (17 REPAIRED) is superseded row
+by row by this table where it disagreed, with the convergent finding (Y-1
+= N-2) repaired once. The A2 numerical core and gate-B arithmetic were
+re-confirmed by BOTH round-3 auditors and are UNTOUCHED at REV 4.
+
+*(End of MOVESV blueprint REV 4. Next per campaign §3 + the audit-budget
+policy: fresh-Fable intermediate audit of this revision + Defs; Codex
+reserved for the final confirmation pass; REJECT loops until ACCEPT; then
+E-phase.)*
