@@ -22,7 +22,12 @@ core: the explicit carrier
   `Rc f := Σ_{j minimizing childW} C(⟨digPrime z̄ (B_j), mem⟩)·T(j·s′ − t′·σ.w B_j)`
 
 (choice-packaged against `ChildResData`'s pins — `hS5′` is the single-slot case
-DEFINITIONALLY: `mfun ≡ 0` is CORRECT per §10 Key Finding 2's first bullet — the
+DEFINITIONALLY: `mfun ≡ 0` is CORRECT per §10 Key Finding 2's first bullet, whose
+WARRANT DISPLAY is D.7(v)'s D-map definition, MOVES 2364–2367: "D(x) := R(x)
+mod ψ ∈ F′" — reduction mod ψ IS evaluation at the root z̄ (F′ = F[z]/(ψ) ≅ F(z̄)),
+i.e. `digPrime` itself, so the child digit is DEFINED as the raw parent-residual
+evaluation and no alignment twist exists; the D.7(vi)–(vii) excerpt alone does not
+state this (VPRIME_CONFIRM gap 2, closed 2026-07-28) — the
 strip mismatch was hS6a's transcription, never the pin; `hRPhi` the slot-1 case)
 satisfies the FULL `ChildResLaws`:
 
@@ -49,7 +54,8 @@ load-bearing here.  "hRmul via D7's cmul law + L3_DIV" reads, post-design:
 via L3_DIV; D7 certifies.
 
 moves_ref: D.6 Lemma DIV (MOVES 2299–2322), D.7(i)–(iii) (2331–2352),
-D.7(vi)–(vii) normalization (2392–2418). deps: V0 (shape only), S2, S3, L3_DIV,
+D.7(v) D-map definition = the `mfun ≡ 0` warrant (2364–2367; injectivity
+2388–2390), D.7(vi)–(vii) normalization (2392–2418). deps: V0 (shape only), S2, S3, L3_DIV,
 L3_liftMonic, L3_digPrime_nonzero, L4_TRANSii/iii, th.  **NOT dependent on V5**
 (the carrier + laws never mention hS6a).  UNBLOCKS: S9w → S9r (already reduced),
 the S9a census's carrier legs; kills the S9w cone's sorryAx.
@@ -669,7 +675,9 @@ private lemma v8Rc_phi (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = 
   norm_num
 
 /-- the S5′ pin: single-slot coefficients carry the parent digit at position
-`−t′·σ.w B` (the `mfun ≡ 0` normalization — DEFINITIONAL for the explicit carrier). -/
+`−t′·σ.w B` (the `mfun ≡ 0` normalization — DEFINITIONAL for the explicit carrier;
+warrant: D.7(v)'s D-map definition `D(x) := R(x) mod ψ`, MOVES 2364–2367 — the
+child digit IS the raw z̄-evaluation `digPrime` of the parent residual). -/
 private lemma v8Rc_S5' (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g)
     (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (zbar : Fˣ)
     (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0)

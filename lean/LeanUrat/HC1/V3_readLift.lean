@@ -925,7 +925,12 @@ end V3Kernel
 
 /-- Unit V3: the recorded read-pair lift is the REGRADE's standard lift — equal
 (†)-weights of all present slots (the D.5 EQUAL WEIGHTS display at wV), the D.5
-residual display `RV(Φ̂) = T(−t★h★g)·ψ`, and K1 at (Φ̂, wV). -/
+residual display `RV(Φ̂) = T(−t★h★g)·ψ`, and K1 at (Φ̂, wV).
+
+The first conjunct is the D.5 arithmetic in ARBITRARY-FAMILY form (any `tt`
+satisfying the weight premise); the form TIED TO `hlift`'s own witness family,
+with D.5's leading-slot equation, is the addendum `V3_equalWeights_lift` below
+(VPRIME_CONFIRM gap 7, closed 2026-07-28). -/
 theorem V3_readLift {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (σ : Stage p F) (hσ : StageCoreL σ)
     (estar hstar : ℕ) (sstar tstar : ℤ)
@@ -1069,6 +1074,40 @@ theorem V3_readLift {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     · exact hSN_B j₀ hj₀SN
     · rw [hwf]; exact hj₀eq
 
+/-- **V3 addendum (VPRIME_CONFIRM gap 7, closed 2026-07-28): the EQUAL-WEIGHTS
+display TIED TO THE LIFT WITNESS.** `V3_readLift`'s first conjunct states the
+D.5 arithmetic for an ARBITRARY weight-conforming family; this corollary
+instantiates it at the witness family `tt` CONTAINED IN `hlift` (the
+`IsReadLift` destructuring — its weight clause `σ.w (tt k) = h★·(g−k)` is
+exactly the premise), and adds the LEADING-SLOT equation of D.5's display
+(MOVES 2268–2269: "EQUAL WEIGHTS: each present slot has w(t_k) + ek·h =
+eh(g−k) + ekh = ehg, and the leading slot 0 + eg·h = ehg", transposed to wV):
+the recorded lift's leading slot is `σ.Φ^{e★g}` with coefficient literally `1`,
+of parent weight `σ.w 1 = 0`. -/
+theorem V3_equalWeights_lift {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (σ : Stage p F) (estar hstar : ℕ)
+    (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p])
+    (hlift : IsReadLift σ ψ g estar hstar Φhat) :
+    ∃ tt : ℕ → Polynomial ℤ_[p],
+      Φhat = σ.Φ ^ (estar * g) + ∑ k ∈ Finset.range g, tt k * σ.Φ ^ (estar * k) ∧
+      (∀ k, k < g → ψ.coeff k ≠ 0 →
+        (estar : ℤ) * σ.w (tt k) + ((estar : ℤ) * (k : ℤ)) * (hstar : ℤ)
+          = (estar : ℤ) * (hstar : ℤ) * (g : ℤ)) ∧
+      (estar : ℤ) * σ.w (1 : Polynomial ℤ_[p]) + ((estar : ℤ) * (g : ℤ)) * (hstar : ℤ)
+        = (estar : ℤ) * (hstar : ℤ) * (g : ℤ) := by
+  obtain ⟨tt, htt0, httk, hΦhat⟩ := hlift
+  have hw1 : σ.w 1 = 0 := by
+    have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+    rw [mul_one] at h
+    omega
+  refine ⟨tt, hΦhat, ?_, ?_⟩
+  · intro k hk hc
+    rw [(httk k hk hc).2.2.1]
+    ring
+  · rw [hw1]
+    ring
+
 end LeanUrat.HC1
 
 #print axioms LeanUrat.HC1.V3_readLift
+#print axioms LeanUrat.HC1.V3_equalWeights_lift

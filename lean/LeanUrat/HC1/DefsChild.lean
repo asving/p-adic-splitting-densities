@@ -72,7 +72,11 @@ structure ChildResData (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (e' h' : �
   hRPhi : Rc Φhat = LaurentPolynomial.T s'
   /-- **the S5′ PINNED shape** (S9r's lemma; the D.7(vi) normalization — the K1
   `VertexPin` clause of the assembled stage): position `−t′·σ.w B`, scalar's
-  F-image = the parent ψ-digit exactly (`mfun ≡ 0`, no frame twist) -/
+  F-image = the parent ψ-digit exactly (`mfun ≡ 0`, no frame twist — WARRANT:
+  D.7(v)'s D-map definition `D(x) := R(x) mod ψ ∈ F′`, MOVES 2364–2367;
+  reduction mod ψ IS evaluation at the root z̄, i.e. `digPrime`, so the child
+  digit is DEFINED as the raw parent-residual evaluation; the D.7(vi)–(vii)
+  excerpt alone does not state this — VPRIME_CONFIRM gap 2, closed 2026-07-28) -/
   hS5' : ∀ B, B ≠ 0 → inC Φhat B →
       ∃ c' : (↥(σ.nextField zbar))ˣ,
         Rc B = LaurentPolynomial.C ((c' : ↥(σ.nextField zbar))) *

@@ -23,7 +23,10 @@ statement, not an obstruction:
   the minimizing-slot choice (`L4_TRANSviii_a` conjunct 1 forward + choice)
   fixes THE base b(ν) per weight, of the displayed SHAPE
   `(b : F) = (b̃ : F)·z̄^m` (a parent unit times a fixed z̄-monomial class —
-  D.7(viii)'s realizer display, MOVES 2423–2435).
+  D.7(viii)'s realizer display, MOVES 2423–2435). The PUBLIC statement of
+  V6(b) exposes `(γ, j, m)` but not λ/window/`m = λ` — a recorded reduction
+  (VPRIME_CONFIRM gap 9); the full display + the in-proof identities are
+  documented on the theorem's own docstring below.
 
 moves_ref: D.7(viii)'s 𝒜′ + realizer display (MOVES 2423–2435); the S9a
 header's twisted-orbit display.  deps: V0; (b) consumes
@@ -162,7 +165,29 @@ theorem V6_regradeOrbits {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
 /-- Unit V6(b): DESCENT orbit base points — every child weight ν ∈ 𝒜′ decomposes
 through a minimizing slot `(γ, j)` (the TRANSviii_a conjunct-1 window), and the
 choice of slot fixes ONE coset base `b(ν)` of the displayed z̄-monomial shape
-`(b : F) = (b̃ : F)·z̄^m`, whose F_Qˣ-coset is realized in the carrier `D.Rc`. -/
+`(b : F) = (b̃ : F)·z̄^m`, whose F_Qˣ-coset is realized in the carrier `D.Rc`.
+
+**The λ-WINDOW/TWIST DISPLAY (blueprint §10.1/§10 Key Finding 2; restored at
+documentation level 2026-07-28, closing VPRIME_CONFIRM gap 9).** In parent-scale
+coordinates `w̃ := σ.wPrev C` (so `γ = σ.w C = σ.e·w̃` by `hStretch`, and
+`ν = σ.e·w̃ + j·σ.h`), the slots at child weight ν are parametrized by the
+Bézout line
+
+  `(w̃, j) = (s·ν − λ·h, t·ν + λ·e)`,   `twist = λ`,
+
+λ ranging over the g CONSECUTIVE integer values forced by the window
+`0 ≤ j < e·g` (j ≡ t·ν mod e; λ steps by 1 as j steps by e), and the base
+exponent produced by this proof is EXACTLY the twist: the proof sets
+`m := s·j − t·w̃`, and on the line `m = s·(t·ν + λ·e) − t·(s·ν − λ·h) =
+λ·(e·s + h·t) = λ` (the Stage Bézout `hbez`).
+
+RECORDED PUBLIC-STATEMENT REDUCTION (deliberate; fence-checked NOT a genuine
+weakening): the theorem below exposes only `(γ, j, m)` — it does not name λ,
+the window bounds, or the equalities `w̃ = s·ν − λ·h`, `j = t·ν + λ·e`,
+`m = λ` (all live inside the proof, `m` at `hmdef`). No consumer needs the
+λ-form: V7's strip discharge was reproved σ′-free WITHOUT consuming V6(b),
+and the S9a/S9b assemblies ride V7. If a future consumer needs λ exposed,
+restate ADDITIVELY (a new corollary), not by touching this accepted statement. -/
 theorem V6_descentOrbits {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ}
     {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ}

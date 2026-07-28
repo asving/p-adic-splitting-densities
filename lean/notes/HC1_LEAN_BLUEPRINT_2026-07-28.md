@@ -1754,7 +1754,21 @@ re-pin of `hS5'`/`VertexPin` can rescue it:
   parent z-class evaluates to the SCALAR z̄ under the frame change
   (D-injectivity on degree-0, D.7(v); the parent pinning identity
   z = V^{−h}Y^{e} pushes to Π dig′(ũ)^{−h·b_i}·dig′(Φ)^{e} = z̄ in F′), so
-  the "alignment function" of §9.5 is the ZERO function; and
+  the "alignment function" of §9.5 is the ZERO function. THE WARRANT DISPLAY
+  (recorded 2026-07-28 mechanical-closer round, closing VPRIME_CONFIRM gap 2 —
+  the D.7(vi)–(vii) excerpt 2392–2418 alone does NOT state this; the pin
+  lives one clause EARLIER): **D.7(v)'s own D-map definition, MOVES
+  2364–2367** — "Define D on each coefficient piece gr^Ĉ_δ by D(x) := R(x)
+  mod ψ ∈ F′ — ADDITIVE per piece, multiplicative across pieces (Lemma
+  DIV(iii)), injective on each piece (width < g)". Reduction mod ψ IS
+  evaluation at the root z̄ under F′ = F[z]/(ψ) ≅ F(z̄) — i.e. the Lean
+  `digPrime` (`Moves/Defs.lean`: `eval₂ σ.K.subtype z̄ (σ.R B)`). The child
+  digit map is DEFINED as the raw evaluation of the parent residual, so
+  there is no alignment twist to normalize away; degree-0 injectivity
+  (MOVES 2388–2390) + the pinning identity (D.7(vi) PINNING, MOVES
+  2395–2399) then push the parent z-class to the scalar z̄ as displayed
+  above. NOT the polOM normalization (that is HC2's D.10 lift apparatus);
+  the warrant is the D.7(v) definition itself; and
 * any OTHER multiplicative renormalization is a linear twist mfun = m₁·id
   (additivity mod ord(z̄) forces linearity), and the strip windows contain
   only g consecutive twist values λ (slots at weight ν are
@@ -2168,3 +2182,72 @@ is ADDITIVE on it. Every per-slot digit claim in every law leg then reduces to
 
 UNBLOCKED: S9w → S9r (rides conjunct (i)); the S9a census's carrier legs.
 The S9w cone's sorryAx is DEAD.
+
+## 10.7 CONFIRMATION + CLOSER RECORD (2026-07-28, mechanical-closer round):
+## the Codex VPRIME gaps closed; S9b restated with the guard and PROVED
+
+### (A) Codex adversarial confirmation (`lean/notes/VPRIME_CONFIRM_CODEX_2026-07-28.md`)
+
+Codex verified the applied V′ kernel (the V5 `Stage.hS6a` coset restate +
+ripple, and the V0–V9 statements) against the note displays and this section's
+text. Verdict: **ACCEPT — no critical findings** (coset quantifier order
+∃ b before ∀ c confirmed; V0–V2/V4/V6(a)/V7/V8/V9 statement fidelity
+confirmed; ripple confirmed). Three recorded gaps, ALL CLOSED same day:
+
+* **Gap 2 (the `mfun ≡ 0` warrant).** The D.7(vi)–(vii) excerpt (MOVES
+  2392–2418) cited at the normalization does not itself state the
+  frame-change identity behind `mfun ≡ 0`. CLOSED: the REAL WARRANT is
+  D.7(v)'s D-map DEFINITION display, **MOVES 2364–2367** — "Define D on each
+  coefficient piece gr^Ĉ_δ by D(x) := R(x) mod ψ ∈ F′" — reduction mod ψ IS
+  evaluation at the root z̄ under F′ = F[z]/(ψ) ≅ F(z̄), i.e. Lean's
+  `digPrime`; the child digit map is DEFINED as the raw parent-residual
+  evaluation, so no alignment twist exists to normalize away (injectivity on
+  degree-0 MOVES 2388–2390; the pinning identity z = V^{−h}Y^{e} MOVES
+  2395–2399 pushes the parent z-class to the scalar z̄). NOT the polOM
+  normalization (that is HC2's D.10 lift apparatus). Recorded at: Key
+  Finding 2's first bullet (§10 above), `V8_childResidual.lean` (header +
+  moves_ref + `v8Rc_S5'`), `DefsChild.lean` (`ChildResData.hS5'`).
+* **Gap 7 (V3's EQUAL-WEIGHTS conjunct not tied to the lift witness; leading
+  slot absent).** CLOSED ADDITIVELY (statement fence intact — `V3_readLift`
+  byte-unchanged): NEW `V3_equalWeights_lift` (PROVED, Lean-core)
+  destructures `hlift` and states the D.5 display AT ITS WITNESS FAMILY —
+  every present slot `e★·σ.w(tt k) + (e★k)·h★ = e★h★g` — PLUS the D.5
+  leading-slot equation `e★·σ.w(1) + (e★g)·h★ = e★h★g` (the leading slot is
+  `σ.Φ^{e★g}`, coefficient literally 1, `σ.w 1 = 0`; MOVES 2268–2269:
+  "EQUAL WEIGHTS: each present slot has w(t_k) + ek·h = eh(g−k) + ekh = ehg,
+  and the leading slot 0 + eg·h = ehg").
+* **Gap 9 (V6(b) omits the λ-window/twist display).** CLOSED AT
+  DOCUMENTATION LEVEL (fence-checked NOT a genuine weakening: V7's strip
+  discharge was reproved σ′-free WITHOUT consuming V6(b), and S9a/S9b ride
+  V7 — no consumer needs the λ-form): `V6_descentOrbits`' docstring now
+  carries the full display — parent-scale slots at child weight ν are
+  `(w̃, j) = (s·ν − λ·h, t·ν + λ·e)`, twist = λ, λ over the g consecutive
+  values forced by `0 ≤ j < e·g`; the proof's base exponent `m := s·j − t·w̃`
+  equals λ on the line (Bézout `e·s + h·t = 1`). The public-statement
+  reduction (only `(γ, j, m)` exposed) is recorded as deliberate; any future
+  exposure of λ is fenced to an ADDITIVE corollary.
+
+### (B) S9b restated with the increment guard + PROVED (the S9a precedent verbatim)
+
+`S9b_childWeightSet` = S9a's ∃ strengthened by the conjunct
+`σ'.weightSet = childWeightSet σ Φ̂`; the unguarded form is refuted at the
+`σ.e * g = 1` corner by exactly S9a's kernel argument (any S9b witness
+witnesses the refuted S9a shape). Executed, mirroring the §9.5 S9a record:
+
+* STATEMENT: gains `hEG : 1 < σ.e * g` (MOVES 3755–3757 increment guard;
+  the corner is the RECENTERING species 3766–3767, S10's territory). No
+  consumers import S9b yet (ripple-free).
+* KERNEL (in-file, PROVED Lean-core): `S9b_ungated_corner_refuted` —
+  delegates to `S9a_ungated_corner_refuted` by dropping the weightSet
+  conjunct. Corner-exclusion arithmetic: `S9a_corner_fails_guard` cited
+  as-is (statement-independent).
+* PROOF (PROVED, footprint {propext, Classical.choice, Quot.sound}, zero
+  sorry): the S9a_final construction re-run verbatim — Bézout split, S9w
+  lawful carrier, S2/S3/S5 plumbing, in-file hwult, L4_TRANSviii_b +
+  carrier pin above threshold, `V7_stripDischarge` below (σ′-free; the
+  E-phase "via the TRANSviii finals" billing superseded exactly as at
+  S9a_final — TRANSviii_a is circular here) — and the fourth conjunct
+  closes by `rfl` (the literal already pins `weightSet := childWeightSet`,
+  S9a's own `hWS` field). The §9.9/S9a-record seam "S9b's '(S6a′) via the
+  TRANSviii finals' billing inherits the same seam" is thereby CLOSED.
+* NEXT in the assembly chain: S9c/S9d → S9 (statements already staged).
