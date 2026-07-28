@@ -169,11 +169,23 @@ structure Stage (p : ℕ) [Fact p.Prime] (F : Type u) [Field F] [Finite F] where
   -- `−t·(parent weight)`, so the pair-valued 𝒜 is determined — DEF-6 note).
   weightSet : Set ℤ
   hWS : ∀ B, B ≠ 0 → inC Φ B → wPrev B ∈ weightSet
-  /-- (S6a) EXACTNESS + BASIC REALIZERS: every parent-scale coefficient weight `ν ∈ weightSet` is
-  realized, with any scalar `c` in the CONSTANT base orbit group `O = F_Qˣ` (via `FQ`). -/
-  hS6a : ∀ ν : ℤ, ν ∈ weightSet → ∀ c : (↥K)ˣ, ((c : ↥K) : F) ∈ FQ →
+  /-- (S6a) EXACTNESS + BASIC REALIZERS — **the FIXED-POINT COSET form** (V5 sign-off,
+  2026-07-28; blueprint §10 Key Finding 2). The note's axiom is the ORBIT-GROUP-AT-ITS-
+  FIXED-POINT statement, D.2 (S6a) rev D⁶/pass-14 finding 1 (MOVES 1964–1971): "every index
+  is realized by an explicit single-slot element whose digit is c·(the index's FORCED
+  MONOMIAL CLASS) with c ranging over the CONSTANT orbit group O := F_Qˣ" — and D.7(viii)'s
+  child realizers likewise have "dig′ … c·(a fixed z̄-monomial class): the O-orbit with
+  O = F_Qˣ CONSTANT" (MOVES 2431–2435). So each weight `ν ∈ weightSet` carries ONE base
+  point `b` (the forced class, ∃-quantified BEFORE the orbit scalar; free in `Kˣ` — the
+  weakest faithful form: depth-2 classes are z̄-monomial but depth ≥ 3 classes are general
+  unit products, and no consumer reads the base's shape, MOVES 1971–1981 "exactness
+  consumes no scalar range"), and the realized digit scalars are the COSET `F_Qˣ·b`.
+  The previous untwisted transcription (`b` hard-coded to 1) was machine-refuted on the
+  below-threshold strip (S9a census, F₉/F₃ numerics) and admits no re-pin repair —
+  restate-after-refutation, same discipline as the S9a guard event. -/
+  hS6a : ∀ ν : ℤ, ν ∈ weightSet → ∃ b : (↥K)ˣ, ∀ c : (↥K)ˣ, ((c : ↥K) : F) ∈ FQ →
            ∃ B, B ≠ 0 ∧ inC Φ B ∧ wPrev B = ν ∧
-             R B = LaurentPolynomial.C (c : ↥K) * LaurentPolynomial.T (- t * ν)
+             R B = LaurentPolynomial.C ((c * b : (↥K)ˣ) : ↥K) * LaurentPolynomial.T (- t * ν)
   /-- (S6b) FULL SCALARS ABOVE THE KEY WEIGHT: at every parent-scale coefficient weight STRICTLY
   ABOVE the current key's parent weight `wPrev Φ` (DEF-8 threshold), ANY digit scalar in the
   CURRENT field's unit group `Kˣ` (DEF-7) is realizable. -/

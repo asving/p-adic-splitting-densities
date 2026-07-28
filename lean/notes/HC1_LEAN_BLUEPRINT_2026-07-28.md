@@ -1990,3 +1990,181 @@ estimate ≈ 0.8. The failure mode that would falsify the DESIGN (not just
 stall a proof): a ReadFrame law that secretly needs hS6b — Finding 3's
 audit says none does, and V4's fence (no TRANSPORT leg) is chosen to keep
 it that way.
+
+## 10.4 EXECUTION RECORD (2026-07-28, V′-kernel applier — Asvin's
+definition-change authority per the task charge; acceptance = proofs run
+through + full perimeter green)
+
+**V5 EXECUTED FIRST (the sign-off event).** `Stage.hS6a` restated to the
+fixed-point coset form in `Moves/Defs.lean` — `∃ b : (↥K)ˣ` BEFORE
+`∀ c : (↥K)ˣ, (c:F) ∈ FQ`, conclusion scalar `C((c·b : ↥K))` — with the
+field docstring quoting the two note displays verbatim (D.2 (S6a) rev
+D⁶/pass-14, MOVES 1964–1971 "orbit group at its FIXED POINT … O := F_Qˣ
+CONSTANT"; D.7(viii) MOVES 2431–2435 "c·(a fixed z̄-monomial class)") and
+recording the machine-refutation of the old untwisted form (§9.9's S9a
+strip record). RIPPLE CENSUS EXECUTED (grep `hS6a` corpus-wide at
+execution; 15 files touched, every proof run through green):
+
+* constructors — `T1_baseStage` (b := 1, `rw [mul_one]`); `S1_transHypGate`
+  σpin (b := 1, `k0_unit_eq_one (c * 1)`); `S10_recStage` (transport with
+  the SAME b, per the census prediction); `U17b_galois` `stageMap`
+  (b ↦ its `resAut` image; `apply_symm_apply` on the c-factor only);
+  `U28_gateSep`/`U30_gatePol`/`U31_gateReadsOf` gate stages (b := 1, the
+  trivial-subfield unit lemmas at `c * 1`); `S9a_stageLiteral` — `hS6a'`
+  restated to the coset form (above-threshold leg b := 1 through the
+  UNCHANGED `L4_TRANSviii_b`; the strip `sorry` STAYS, now billed as V7's
+  obligation — header adjudication paragraph updated: RESOLVED, neither
+  §9.9 queued option; `mfun ≡ 0` is the note's V′ normalization, the
+  mismatch was hS6a's own transcription).
+* consumers — `L4_TRANSviii_a_R5{,_final}`: CONCLUSION RESTATED per the
+  census spec — `∃ m : ℤ … (d:F) = c·z̄^m` weakens to
+  `∃ d₀ : (↥σ'.K)ˣ … (d:F) = c·(d₀:F)`, ∃-before-∀c UNCHANGED; proof
+  repaired as drafted (the parent coset base `b` folds through
+  `L2_strideRule`; `d₀ :=` the `d` of the `c = 1` instance; both files
+  PROVED, sorry-free). `L5_realRecursion_R3` (two-line: obtain base, apply
+  at c = 1). `T4_slotMinHt`/`T7_alphabetSpan`/`C2_TYPa` (base-stage
+  `digLift` realizers: `IsBaseStage`'s `K = FQ` absorbs the base —
+  c := y·b⁻¹, `inv_mul_cancel_right`).
+* NOT touched (census verified): R6 (no hS6a in code — the §10.1 census
+  row was conservative), S9b/S8 (import TRANSviii_a but consume only its
+  file, statements sorry/proved unchanged), every `{ σ with … }` clone
+  (field rides through).
+
+**PERIMETER: 532 modules GREEN** (all of Moves/MovesC/MovesD/MovesGr/
+MovesRBase/MovesS/MovesSp/MovesU/MovesX/HC1/HC2). The ONLY two exclusions,
+`MovesGr/L2_degZero_subring_v2` + `MovesGr/L4_genuine_imp_stageCoreL_v2`,
+are PRE-EXISTING failures — machine-verified by rebuilding them against
+HEAD's (pre-V5) `Defs.lean`: identical DirectSum-instance errors, no olean
+in the build cache (never green in this workspace state), content
+unrelated to `hS6a`. Recorded here so nobody bills them to V5.
+`AxChk_baseline` does not cover the Moves/HC perimeter (OM-only); the
+footprint protocol is the per-file `#print axioms` tails, all as expected
+(repaired proved units Lean-core; sorried units sorryAx).
+
+**V0–V9 ELABORATED** (`lean/LeanUrat/HC1/DefsV.lean` + `V*_*.lean`, all
+ADDITIVE, zero axioms, 13 E-phase sorries):
+
+* V0 `DefsV.lean` — `ReadPair`/`ReadResData`/`ReadResLaws`/`ReadFrame`,
+  sorry-free. ONE recorded deviation from the §10.1 text: `ReadFrame.hS6a`
+  is transcribed in the CURRENT (= post-V5 COSET) `Stage.hS6a` form, not
+  the pre-V5 untwisted form the parenthetical named — the field mirrors
+  the Stage field at the regraded frame (weights over
+  `childWeightSet σ σ.Φ`, wVPrev = σ.w); V6(a) fills it by base transport
+  (scalars preserved ⇒ the parent's coset bases ride).
+* V1–V4, V6, V7, V9 — statements per §10.1 (V1 Q-ascent with the
+  displayed gap `h★ − e★·σ.h`; V2 + the `V2_readFrame` packaging
+  corollary; V3 with the D.5 EQUAL-WEIGHTS display as an explicit
+  conjunct; V4 (BOX)+(VERTEX)+vertex-digit, TRANSPORT leg fenced OUT as
+  specified; V6(a)/(b) with the descent base's z̄-monomial SHAPE
+  displayed; V7 = EXACTLY S9a's hS6a′ obligation shape over any lawful
+  carrier; V9 = `K1_readVertexPin_nonrec`'s statement VERBATIM + the
+  steepness lemma at reads with a predecessor — the ROOT read's steepness
+  is P-phase, from the recorded side data).
+* V8 — `ExplicitDescentCarrier` (the (†) formula as a Prop on
+  `ChildResData`, classical filter) + V8a/V8b/V8c sorried + the capstone
+  `V8_childResidual` ASSEMBLED (proved from V8b+V8c; byte-shape = S9w's
+  statement, so `S9w_residualLaws` closes by `exact` once V8b/V8c land).
+* The SideReads-(iii) seam: FENCED as charged — V9's header carries the
+  §10.1 ⚠ block; `SideReads` untouched; any RV-vocabulary restatement is
+  a named FUTURE sign-off item.
+
+POST-EVENT FRONTIER: the V-kernel P-phase (V1→V2→V3→V4→V9; V6→V7; V8),
+then the staged one-line closures (S9w ← V8, S9a strip ← V7,
+`K1_readVertexPin_nonrec` ← V9). MANIFEST re-synced (69 units; record key
+`vkernel_2026-07-28`).
+
+## 10.5 ESCALATION RECORD (2026-07-28, S9w_final — Fable escalation round)
+
+First prover's verdict CONFIRMED: S9w is not wiring; the hardness is V8b.
+Landed this round (all Lean-core, `#print axioms` in-file; V8 cone + S9r/S9a
+consumers rebuilt green):
+
+* **V8c_wStrict PROVED** — the childW strict law: S9a's in-file hwult pattern
+  (slotwise development addition, parent ultrametric per slot) + childW
+  NEGATION-INVARIANCE (slotwise, from `σ.w(−B) = σ.w B` for any multiplicative
+  integer valuation) + the reverse inequality via `f = (f+g′) + (−g′)`.
+  `f + g′ ≠ 0` is DERIVED (g′ = −f would tie the values against strict <).
+* **S9w_residualLaws WIRED** — own sorry killed; closes by
+  `exact V8_childResidual σ hσ th s' t' hbez' ht'0` (byte-identical statement,
+  per the staged plan). Its sorryAx now flows through V8b ALONE (V8a is off
+  the capstone path: the capstone assembles from V8b + V8c only).
+* **Three V8b atoms PROVED** (in `V8_childResidual.lean`):
+  - `V8_tiedPos_inj` — tied-slot position injectivity (the hRne crux):
+    childW-tie + equal child positions ⟹ j₁ = j₂, by the Bézout collapse
+    d = d·(e′s′ + h′t′) = 0 (a one-line `linear_combination` certificate:
+    (j₂−j₁)·hbez′ + e′·hpos + t′·htie).
+  - `V8_eval₂_mem_nextField` — z̄-evaluation of any ↥K-Laurent polynomial
+    lands in K′ (`LaurentPolynomial.induction_on`; T ±1 steps via z̄, z̄⁻¹ ∈ K′).
+  - `V8_digitUnit` — dig′(B) realized as a K′-UNIT for B ≠ 0 with
+    natDegree < e·g·deg Φ (atom 2 + `L3_digPrime_nonzero`).
+
+**EXACT REMAINING OBSTRUCTION (V8a + V8b, the honest §9.5 core).** All are
+now carrier-construction work; no missing engine was found:
+1. DEFINE the explicit carrier (classical choice on the Fact-A development;
+   sum over the min-slot filter of `C(digitUnit)·T(j·s′ − t′·σ.w B_j)`), with
+   the pins: hRPhi = the slot-1 development of Φ̂ itself (needs `σ.R 1 = 1`,
+   the S10 `R_one` pattern, + childW Φ̂ = h′) and hS5′ = the single-slot
+   development (atom 3 verbatim; degree bound from `inC Φ̂` + L3_liftMonic).
+2. hRne: atoms 1+3 + the Finsupp fact that a sum of `C c·T n` over DISTINCT
+   positions with c ≠ 0 is ≠ 0 (coefficient extraction at a witness position;
+   `LaurentPolynomial.single_eq_C_mul_T` + `Finsupp.single_apply`).
+3. hRadd/hRlt/hRneg/w_jump: slotwise transport through Fact B on the summed
+   development (the S9a hwult skeleton, upgraded to carry residuals): per
+   tied slot the 5-way split (f-only / g-only / tie-no-jump via σ.hRadd +
+   `map_add` under eval₂ / tie-jump = digit cancellation / untied via σ.hRlt),
+   then re-index the min-slot filters (they partition by atom 1).
+4. hRmul (THE block): per-pair monic division `B_j·B″_k = Q_jk·Φ̂ + R_jk` —
+   `L3_DIV` (ON DISK, proved) gives R_jk ≠ 0 + exact weight + digit product;
+   Q-terms strictly deeper by th.hiaug (h′ > e′·w(Φ̂); the L3_DIV 2-slot K1
+   pattern gives the D.7(i) weight bound); regroup the double sum into the
+   product's development (Fact B pins it); tied (j,k) pairs land at ONE
+   position (atom 1 applied to the pair sums) and sum as the Laurent
+   convolution coefficient (`AddMonoidAlgebra.single_mul_single`); a vanishing
+   convolution coefficient is the SAME zero on both sides (D.1(b) δ-calculus).
+   childW multiplicativity is ON DISK (`S5_childValuation`, Lean-core).
+Estimate unchanged from §10.3 (the risk is Laurent/Finsupp grind, not
+mathematics); sized as its own dedicated unit, NOT a one-session close.
+
+## 10.6 SECOND ESCALATION RECORD (2026-07-28, V8b hRmul core — Fable round 2):
+## V8 PROVED IN FULL — S9w SORRY-FREE
+
+The §10.1 V8 unit is CLOSED: **V8a, V8b, V8c all proved, zero sorry; every
+theorem in `V8_childResidual.lean` (capstone included) has footprint
+{propext, Classical.choice, Quot.sound}; `S9w_residualLaws` + `childR_laws`
+now Lean-core; full cone rebuilt green.**
+
+The one genuinely new device (everything else was assembly of on-disk engines):
+the private **graded-residue calculus** `v8gr σ ω x := if x ≠ 0 ∧ σ.w x = ω
+then σ.R x else 0` with domain `v8Deep σ ω x := x = 0 ∨ ω ≤ σ.w x`. The single
+lemma `v8gr_add` packages ALL FIVE D.1(b) tie laws (parent hRadd/hRlt +
+StageCore w_strict/w_jump/R_neg) as: `v8Deep` is closed under `+` and `v8gr ω`
+is ADDITIVE on it. Every per-slot digit claim in every law leg then reduces to
+"compute `v8gr` of the slot sum termwise, evaluate at z̄, cite D.3(d)".
+
+* Carrier: `v8Rc` = the (†) tied-slot sum on THE development (Fact A choice,
+  Fact B independence spec `v8Rc_eq`); hRne by position injectivity
+  (`e′·pos(j) = j − t′·m`, the ATOM-1 Bézout collapse) + Finsupp coefficient
+  extraction at one tied position; pins hRPhi/hS5′ by direct evaluation of the
+  2-slot/1-slot developments (`dig′(1) = 1` from idempotence in F).
+* hRadd/w_jump/hRlt: per-slot `v8gr` case trees at the tie level ω_j (the
+  slot-value ↔ parent-weight converters cancel e′ > 0); cancelling digit pairs
+  are exactly the non-tied sum slots (D.3(d) forbids a tied slot with zero
+  digit); hRlt consumes V8c's strict law (V8c MOVED above V8a/V8b in-file).
+* hRmul (the §9.5 core): `L4_TRANSiii`'s convolution development
+  `Cdev m = H.coeff m %ₘ Φ̂ + Q_{m−1}` re-derived IN-FILE at digit level (those
+  helpers are private); `childW`-multiplicativity CITED from `L4_TRANSiii`;
+  per-diagonal, `hgrC : v8gr ω (Cdev m) = Σ_{tied pairs (j,k), j+k=m}
+  R((B_j·B″_k) %ₘ Φ̂)` — remainder weights exact by `L3_DIV`, carried quotients
+  strictly deep by (I-aug) (the generalized hdeepQ at arbitrary ω with
+  e′ω + m·h′ = M); evaluation at z̄ + `L3_DIV`'s digit product turns `hgrC`
+  into "digit of `Cdev m` = the convolution coefficient Σ dig′(B_j)·dig′(B″_k)";
+  the Laurent product regroups by `Finset.sum_mul_sum → sum_product' →
+  sum_fiberwise_of_maps_to`, fiberwise-constant positions/weight-sums by the
+  tie arithmetic. A VANISHING convolution coefficient is the SAME zero on both
+  sides: the sum slot cannot be tied (its digit would be 0, against D.3(d)) —
+  the D.1(b) δ-calculus exactly as §10 displayed it.
+* Statement fence: V8a/V8b/V8c/V8_childResidual/`ExplicitDescentCarrier`
+  signatures byte-identical; V8c's proof untouched (block moved verbatim).
+
+UNBLOCKED: S9w → S9r (rides conjunct (i)); the S9a census's carrier legs.
+The S9w cone's sorryAx is DEAD.

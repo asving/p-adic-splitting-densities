@@ -42,14 +42,11 @@ All closed (2026-07-27, ported back from `L4_TRANSviii_a_R5_final.lean`):
 * **Conjunct 1, ⟸**: the single-slot element `B := C·Φ^j` has
   `σ'.wPrev B = σ.w B = σ.w C + j·h = γ + j·h` (`child_wPrev`, `w_mul_keyPow`) and lies in `C_Φ̂`
   by the degree bound `deg C + j·deg Φ < e·g·deg Φ = deg Φ̂`.
-* **Conjunct 2 (∃ m BEFORE ∀ c)**: fix `ν := σ.wPrev C₀` (so `γ = e·ν` by `hStretch`) and the
-  frame function `mfun` from `htrans.child_dig_frame`, and set
-  `m := (−t·ν + s·j) + mfun (γ + j·h)` — c-INDEPENDENT. For each orbit scalar `c` (transferred
-  to `(↥σ.K)ˣ` through `σ'.FQ = σ.FQ ≤ σ.K`), the (S6a) realizer `C` at `(ν, c)` gives
-  `B := C·Φ^j` with `σ.R B = C(c)·T(−t·ν + s·j)` (`L2_strideRule`), so
-  `dig'(B) = c·z̄^{−t·ν+s·j}` (`eval₂_C_mul_T` — the orbit scalar enters LINEARLY), and
-  `child_dig_frame` yields the child digit `d` with `(d:F) = dig'(B)·z̄^{mfun(γ+j·h)}
-  = c·z̄^m` at the forced position `−t'·(γ+j·h)`; the weights are `child_wPrev`/`hStretch'`.
+* **Conjunct 2 (∃ d₀ BEFORE ∀ c — RESTATED to the V5 COSET form, 2026-07-28, in step with
+  the _final file)**: the former `(d:F) = c·z̄^m` weakens to `(d:F) = c·(d₀:F)` with ONE fixed
+  child base unit `d₀` per index, matching the restated coset (S6a) (MOVES 1964–1971,
+  2431–2435). See the _final file's header for the full proof note; `d₀ :=` the `d` of the
+  `c = 1` instance.
 -/
 
 set_option linter.style.longLine false
@@ -144,7 +141,7 @@ private lemma dev_exists_bounded {R : Type*} [CommRing R] (Φ : Polynomial R) (h
       rw [e1]
       linear_combination hdiv
 
-theorem L4_TRANSviii_a {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hcore : StageCoreL σ) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hΦdeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree) (e' h' : ℕ) (zbar : Fˣ) (htrans : TransitionCoreL σ σ' Φhat e' h' zbar) : (∀ W' : ℤ, (∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = W') ↔ (∃ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) ∧ j < σ.e * g ∧ W' = γ + (j : ℤ) * σ.h)) ∧ (∀ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) → j < σ.e * g → ∃ m : ℤ, ∀ c : (↥σ'.K)ˣ, ((c : ↥σ'.K) : F) ∈ σ'.FQ → ∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = γ + (j : ℤ) * σ.h ∧ σ'.w B = (σ'.e : ℤ) * (γ + (j : ℤ) * σ.h) ∧ ∃ d : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C (d : ↥σ'.K) * LaurentPolynomial.T (- σ'.t * (γ + (j : ℤ) * σ.h)) ∧ ((d : ↥σ'.K) : F) = ((c : ↥σ'.K) : F) * ((zbar ^ m : Fˣ) : F)) := by
+theorem L4_TRANSviii_a {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hcore : StageCoreL σ) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hΦdeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree) (e' h' : ℕ) (zbar : Fˣ) (htrans : TransitionCoreL σ σ' Φhat e' h' zbar) : (∀ W' : ℤ, (∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = W') ↔ (∃ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) ∧ j < σ.e * g ∧ W' = γ + (j : ℤ) * σ.h)) ∧ (∀ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) → j < σ.e * g → ∃ d₀ : (↥σ'.K)ˣ, ∀ c : (↥σ'.K)ˣ, ((c : ↥σ'.K) : F) ∈ σ'.FQ → ∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = γ + (j : ℤ) * σ.h ∧ σ'.w B = (σ'.e : ℤ) * (γ + (j : ℤ) * σ.h) ∧ ∃ d : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C (d : ↥σ'.K) * LaurentPolynomial.T (- σ'.t * (γ + (j : ℤ) * σ.h)) ∧ ((d : ↥σ'.K) : F) = ((c : ↥σ'.K) : F) * ((d₀ : ↥σ'.K) : F)) := by
   have hΦ : σ.Φ ≠ 0 := σ.hmonic.ne_zero
   have hd1 : 1 ≤ σ.Φ.natDegree := σ.hdeg
   -- degree bound for single-slot elements `C·Φ^j`, `j < e·g`: they lie in `C_Φ̂`
@@ -191,16 +188,66 @@ theorem L4_TRANSviii_a {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       refine ⟨C * σ.Φ ^ j, mul_ne_zero hC hΦj, hslot C j hC hCc hj, ?_⟩
       rw [htrans.base.child_wPrev, w_mul_keyPow σ C hC j, hCw]
       exact hW.symm
-  · -- Conjunct 2: single-slot realizers, ONE fixed z̄-monomial class per index (∃ m BEFORE ∀ c).
+  · -- Conjunct 2: single-slot realizers, ONE fixed COSET BASE per index (∃ d₀ BEFORE ∀ c —
+    -- the V5 coset form; blueprint §10 Key Finding 2).
     rintro γ j ⟨C₀, hC₀0, hC₀c, hC₀w⟩ hj
     -- the parent-scale weight ν of the index: γ = e·ν (hStretch), ν ∈ 𝒲 (hWS)
     have hν : σ.wPrev C₀ ∈ σ.weightSet := σ.hWS C₀ hC₀0 hC₀c
     have hγ : γ = (σ.e : ℤ) * σ.wPrev C₀ := by
       rw [← hC₀w]; exact σ.hStretch C₀ hC₀0 hC₀c
-    -- the frame function, fixed BEFORE the orbit scalar varies (child_dig_frame)
+    -- the frame function AND the parent coset base, both fixed BEFORE the orbit scalar varies
     obtain ⟨mfun, hmf⟩ := htrans.child_dig_frame
-    -- the c-INDEPENDENT frame exponent of the index (γ, j)
-    refine ⟨(- σ.t * σ.wPrev C₀ + σ.s * (j : ℤ)) + mfun (γ + (j : ℤ) * σ.h), ?_⟩
+    obtain ⟨b, hb⟩ := σ.hS6a (σ.wPrev C₀) hν
+    -- the generic single-slot realizer, for ANY parent-FQ orbit scalar c₁
+    have hreal : ∀ c₁ : (↥σ.K)ˣ, ((c₁ : ↥σ.K) : F) ∈ σ.FQ →
+        ∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ'.wPrev B = γ + (j : ℤ) * σ.h ∧
+          σ'.w B = (σ'.e : ℤ) * (γ + (j : ℤ) * σ.h) ∧
+          ∃ d : (↥σ'.K)ˣ,
+            σ'.R B = LaurentPolynomial.C (d : ↥σ'.K) *
+              LaurentPolynomial.T (- σ'.t * (γ + (j : ℤ) * σ.h)) ∧
+            ((d : ↥σ'.K) : F)
+              = ((c₁ : ↥σ.K) : F) * (((b : ↥σ.K) : F) *
+                ((zbar ^ (- σ.t * σ.wPrev C₀ + σ.s * (j : ℤ)
+                    + mfun (γ + (j : ℤ) * σ.h)) : Fˣ) : F)) := by
+      intro c₁ hc₁FQ
+      -- the (S6a) coset realizer at (ν, c₁)
+      obtain ⟨C, hC0, hCc, hCν, hCR⟩ := hb c₁ hc₁FQ
+      have hCw : σ.w C = γ := by
+        rw [σ.hStretch C hC0 hCc, hCν]; exact hγ.symm
+      -- the single-slot realizer B := C·Φ^j and its weights
+      have hB0 : C * σ.Φ ^ j ≠ 0 := mul_ne_zero hC0 (pow_ne_zero j hΦ)
+      have hBinC : inC Φhat (C * σ.Φ ^ j) := hslot C j hC0 hCc hj
+      have hwB : σ.w (C * σ.Φ ^ j) = γ + (j : ℤ) * σ.h := by
+        rw [w_mul_keyPow σ C hC0 j, hCw]
+      have hwPrevB : σ'.wPrev (C * σ.Φ ^ j) = γ + (j : ℤ) * σ.h := by
+        rw [htrans.base.child_wPrev]; exact hwB
+      refine ⟨C * σ.Φ ^ j, hB0, hBinC, hwPrevB, ?_, ?_⟩
+      · -- σ'.w B = e'·(γ + j·h), via the child's own stretch law
+        have hBc' : inC σ'.Φ (C * σ.Φ ^ j) := by
+          rw [htrans.base.child_key]; exact hBinC
+        rw [σ'.hStretch _ hB0 hBc', hwPrevB]
+      · -- the child digit: position −t'·(γ+j·h), scalar d with (d:F) = c₁·(b·z̄^m)
+        obtain ⟨d, hdR, hdF⟩ := hmf (C * σ.Φ ^ j) hB0 hBinC
+        rw [hwB] at hdR hdF
+        refine ⟨d, hdR, ?_⟩
+        -- the parent residual of the slot element: R(B) = C(c₁·b)·T(−t·ν + s·j) (stride rule)
+        have hRB : σ.R (C * σ.Φ ^ j)
+            = LaurentPolynomial.C ((c₁ * b : (↥σ.K)ˣ) : ↥σ.K)
+              * LaurentPolynomial.T (- σ.t * σ.wPrev C₀ + σ.s * (j : ℤ)) := by
+          rw [L2_strideRule σ C hC0 hCc j, hCR, mul_assoc, ← LaurentPolynomial.T_add]
+        -- the parent digit: dig'(B) = (c₁·b)·z̄^{−t·ν+s·j} — the orbit scalar enters LINEARLY
+        have hdig : σ.digPrime zbar (C * σ.Φ ^ j)
+            = (((c₁ * b : (↥σ.K)ˣ) : ↥σ.K) : F)
+              * ((zbar ^ (- σ.t * σ.wPrev C₀ + σ.s * (j : ℤ)) : Fˣ) : F) := by
+          show LaurentPolynomial.eval₂ σ.K.subtype zbar (σ.R (C * σ.Φ ^ j)) = _
+          rw [hRB, LaurentPolynomial.eval₂_C_mul_T]
+          rfl
+        rw [hdF, hdig, mul_assoc, ← Units.val_mul, ← zpow_add, Units.val_mul,
+          MulMemClass.coe_mul, mul_assoc]
+    -- the c-INDEPENDENT child coset base d₀ := the d of the c = 1 instance
+    have h1FQ : (((1 : (↥σ.K)ˣ) : ↥σ.K) : F) ∈ σ.FQ := by simp
+    obtain ⟨B₁, hB₁0, hB₁inC, hB₁w, hB₁w', d₀, hd₀R, hd₀F⟩ := hreal 1 h1FQ
+    refine ⟨d₀, ?_⟩
     intro c hcFQ
     -- transfer the orbit scalar c through σ'.FQ = σ.FQ ≤ σ.K
     have hx0 : ((c : ↥σ'.K) : F) ≠ 0 :=
@@ -211,38 +258,11 @@ theorem L4_TRANSviii_a {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       simp [Subtype.ext_iff, hx0]
     set c₁ : (↥σ.K)ˣ := Units.mk0 ⟨((c : ↥σ'.K) : F), hxK⟩ hc₁0 with hc₁
     have hc₁FQ : ((c₁ : ↥σ.K) : F) ∈ σ.FQ := hxFQ
-    -- the (S6a) basic realizer at (ν, c)
-    obtain ⟨C, hC0, hCc, hCν, hCR⟩ := σ.hS6a (σ.wPrev C₀) hν c₁ hc₁FQ
-    have hCw : σ.w C = γ := by
-      rw [σ.hStretch C hC0 hCc, hCν]; exact hγ.symm
-    -- the single-slot realizer B := C·Φ^j and its weights
-    have hB0 : C * σ.Φ ^ j ≠ 0 := mul_ne_zero hC0 (pow_ne_zero j hΦ)
-    have hBinC : inC Φhat (C * σ.Φ ^ j) := hslot C j hC0 hCc hj
-    have hwB : σ.w (C * σ.Φ ^ j) = γ + (j : ℤ) * σ.h := by
-      rw [w_mul_keyPow σ C hC0 j, hCw]
-    have hwPrevB : σ'.wPrev (C * σ.Φ ^ j) = γ + (j : ℤ) * σ.h := by
-      rw [htrans.base.child_wPrev]; exact hwB
-    refine ⟨C * σ.Φ ^ j, hB0, hBinC, hwPrevB, ?_, ?_⟩
-    · -- σ'.w B = e'·(γ + j·h), via the child's own stretch law
-      have hBc' : inC σ'.Φ (C * σ.Φ ^ j) := by
-        rw [htrans.base.child_key]; exact hBinC
-      rw [σ'.hStretch _ hB0 hBc', hwPrevB]
-    · -- the child digit: position −t'·(γ+j·h), scalar d = c·z̄^m
-      obtain ⟨d, hdR, hdF⟩ := hmf (C * σ.Φ ^ j) hB0 hBinC
-      rw [hwB] at hdR hdF
-      refine ⟨d, hdR, ?_⟩
-      -- the parent residual of the slot element: R(B) = C(c₁)·T(−t·ν + s·j) (stride rule)
-      have hRB : σ.R (C * σ.Φ ^ j)
-          = LaurentPolynomial.C (c₁ : ↥σ.K)
-            * LaurentPolynomial.T (- σ.t * σ.wPrev C₀ + σ.s * (j : ℤ)) := by
-        rw [L2_strideRule σ C hC0 hCc j, hCR, mul_assoc, ← LaurentPolynomial.T_add]
-      -- the parent digit: dig'(B) = c·z̄^{−t·ν+s·j} — the orbit scalar enters LINEARLY
-      have hdig : σ.digPrime zbar (C * σ.Φ ^ j)
-          = ((c : ↥σ'.K) : F)
-            * ((zbar ^ (- σ.t * σ.wPrev C₀ + σ.s * (j : ℤ)) : Fˣ) : F) := by
-        show LaurentPolynomial.eval₂ σ.K.subtype zbar (σ.R (C * σ.Φ ^ j)) = _
-        rw [hRB, LaurentPolynomial.eval₂_C_mul_T]
-        rfl
-      rw [hdF, hdig, mul_assoc, ← Units.val_mul, ← zpow_add]
+    obtain ⟨B, hB0, hBinC, hBw, hBw', d, hdR, hdF⟩ := hreal c₁ hc₁FQ
+    refine ⟨B, hB0, hBinC, hBw, hBw', d, hdR, ?_⟩
+    -- (d:F) = c₁·(b·z̄^m) = c·(d₀:F), since (d₀:F) = 1·(b·z̄^m) and (c₁:F) = (c:F)
+    have hc₁c : ((c₁ : ↥σ.K) : F) = ((c : ↥σ'.K) : F) := by rw [hc₁]; rfl
+    rw [hdF, hd₀F, hc₁c]
+    simp
 
 end LeanUrat.Moves

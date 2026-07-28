@@ -374,7 +374,14 @@ private lemma t4_digLift_spec (T : Tower p F) (v : ↥(T.stg 0).FQ) (hv : v ≠ 
     have hmem : (((Units.mk0 x hxne : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K) : F) ∈ (T.stg 0).FQ := by
       rw [Units.val_mk0]
       exact v.2
-    obtain ⟨B, hB0, hBinC, hBw, hBR⟩ := (T.stg 0).hS6a 0 h0mem (Units.mk0 x hxne) hmem
+    -- V5 coset form: at the base stage K = FQ, so the coset base b is absorbed by c := x·b⁻¹
+    obtain ⟨b, hb⟩ := (T.stg 0).hS6a 0 h0mem
+    have hKFQ : (T.stg 0).K = (T.stg 0).FQ := T.base.1.2.2
+    have hbinv : (((Units.mk0 x hxne * b⁻¹ : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K) : F)
+        ∈ (T.stg 0).FQ :=
+      (le_of_eq hKFQ) ((Units.mk0 x hxne * b⁻¹ : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K).2
+    obtain ⟨B, hB0, hBinC, hBw, hBR⟩ := hb (Units.mk0 x hxne * b⁻¹) hbinv
+    rw [inv_mul_cancel_right] at hBR
     refine ⟨B, hB0, hBinC, hBw, ?_⟩
     rw [hBR, Units.val_mk0]
     norm_num

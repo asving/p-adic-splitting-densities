@@ -330,7 +330,14 @@ private lemma digLift_ne (T : Tower p F) {y : ↥(T.stg 0).FQ} (hy : y ≠ 0) :
     fun h => hyF (congrArg Subtype.val h)
   have hmem : (((Units.mk0 _ hk₀ne : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K) : F) ∈ (T.stg 0).FQ :=
     y.2
-  obtain ⟨B, hB0, hBC, hBw, hBR⟩ := (T.stg 0).hS6a 0 h0mem (Units.mk0 _ hk₀ne) hmem
+  -- V5 coset form: at the base stage K = FQ, so the coset base b is absorbed by c := y·b⁻¹
+  obtain ⟨b, hb⟩ := (T.stg 0).hS6a 0 h0mem
+  have hKFQ : (T.stg 0).K = (T.stg 0).FQ := T.base.1.2.2
+  have hbinv : (((Units.mk0 _ hk₀ne * b⁻¹ : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K) : F)
+      ∈ (T.stg 0).FQ :=
+    (le_of_eq hKFQ) ((Units.mk0 _ hk₀ne * b⁻¹ : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K).2
+  obtain ⟨B, hB0, hBC, hBw, hBR⟩ := hb (Units.mk0 _ hk₀ne * b⁻¹) hbinv
+  rw [inv_mul_cancel_right] at hBR
   have hex : ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC (T.stg 0).Φ B ∧ (T.stg 0).wPrev B = 0 ∧
       (T.stg 0).R B = LaurentPolynomial.C (⟨(y : F), (T.stg 0).hFQ_le y.2⟩ : ↥(T.stg 0).K)
         * LaurentPolynomial.T 0 := by

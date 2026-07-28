@@ -631,10 +631,10 @@ private noncomputable def sigma0 : Stage 3 F9 where
   hWS := fun B hB _ => by
     simp only [Set.mem_setOf_eq]
     positivity
-  hS6a := fun ν hν c _ => by
-    obtain ⟨B, hB1, hB2, hB3, hB4⟩ := base_realizer ν hν c
+  hS6a := fun ν hν => ⟨1, fun c _ => by
+    obtain ⟨B, hB1, hB2, hB3, hB4⟩ := base_realizer ν hν (c * 1)
     refine ⟨B, hB1, hB2, hB3, ?_⟩
-    rw [hB4, show (-0 : ℤ) * ν = 0 by ring]
+    rw [hB4, show (-0 : ℤ) * ν = 0 by ring]⟩
   hS6b := fun ν a hν => by
     have hν' : ((bwN (Polynomial.X : Polynomial ℤ_[3]) : ℤ)) < ν := hν
     rw [bwN_X] at hν'

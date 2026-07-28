@@ -546,8 +546,10 @@ theorem S10_recStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       weightSet := σ.weightSet
       hWS := fun B hB hin => σ.hWS B hB ((hinC B).mp hin)
       hS6a := by
-        intro ν hν c hcF
-        obtain ⟨B, hB, hin, hw, hR⟩ := σ.hS6a ν hν c hcF
+        intro ν hν
+        obtain ⟨b, hb⟩ := σ.hS6a ν hν
+        refine ⟨b, fun c hcF => ?_⟩
+        obtain ⟨B, hB, hin, hw, hR⟩ := hb c hcF
         exact ⟨B, hB, (hinC B).mpr hin, hw,
           by show shiftL cc (σ.R B) = _; rw [hRfix B hin]; exact hR⟩
       hS6b := by

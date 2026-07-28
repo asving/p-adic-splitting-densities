@@ -18,6 +18,7 @@ line's vertex value reads); `hNd` guards the junk truncation `B j = 0` for `j �
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.K1_vertexPin
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -43,7 +44,7 @@ theorem NA_transport_root {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
       (((H.nodes[i+1]'hi1).σ.w (B ((H.nodes[i]'(by omega)).μ)) : ℚ))
         = (H.strFrame (i+1) : ℚ) *
           (H.nodes[i]'(by omega)).line.at
-            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth) := by
-  sorry
+            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth) :=
+  K1_NA_transport_root h i hi1 hsp B Nd hdev hNd
 
 end LeanUrat.MovesJ

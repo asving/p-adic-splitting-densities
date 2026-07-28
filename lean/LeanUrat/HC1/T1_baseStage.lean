@@ -1629,7 +1629,9 @@ private noncomputable def baseSt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] 
     conv_rhs => rw [hBc]
     rw [T1B.gaussVal_C hb0]
     positivity
-  hS6a := fun ν hν c _ => T1B.realize res e h s t he ν (Set.mem_Ici.mp hν) c
+  hS6a := fun ν hν => ⟨1, fun c _ => by
+    rw [mul_one]
+    exact T1B.realize res e h s t he ν (Set.mem_Ici.mp hν) c⟩
   hS6b := fun ν a hν => T1B.realize res e h s t he ν
     (by rw [T1B.gaussVal_X] at hν; omega) a
 

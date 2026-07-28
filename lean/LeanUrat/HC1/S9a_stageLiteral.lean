@@ -10,6 +10,7 @@ import LeanUrat.HC1.S2_childW
 import LeanUrat.HC1.S3_childK1
 import LeanUrat.HC1.S5_childValuation
 import LeanUrat.HC1.S9w_residualLaws
+import LeanUrat.HC1.V7_stripDischarge
 import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L4_TRANSii
 import LeanUrat.Moves.L4_TRANSviii_b_R4
@@ -52,6 +53,13 @@ dropped the guard in transcription; the statement gains the hypothesis
 increment value). The refutation corner now fails the hypotheses:
 `S9a_corner_fails_guard` (`σ.e * g = 1 → ¬ 1 < σ.e * g`).
 
+**RESIDUAL OBLIGATION — DISCHARGED (S9a_final escalation, 2026-07-28): the strip
+leg now closes by `V7_stripDischarge` (proved, core axioms only; the planned
+V6(b)+TRANSviii_a route was found CIRCULAR — TRANSviii_a consumes a full child
+Stage — and V7 was reproved σ′-free from the parent (S6a) coset realizers +
+the carrier's hS5' pin; see V7's header). This file is now `sorry`-free; the
+paragraph below is the historical census record.**
+
 **RESIDUAL OBLIGATION (census re-run 2026-07-28, this file's single `sorry`).**
 Under the guard the construction census closes EXCEPT the (S6a′) BELOW-THRESHOLD
 STRIP: the Stage field `hS6a` at child weights `ν ≤ σ.w Φ̂` (above the threshold
@@ -73,11 +81,18 @@ fails at `(ν, c) = (2, 1)` for EVERY stage carrying the raw pin. The note's own
 coordinate (MOVES 2395–2418), where the transported orbit lands untwisted; the
 K1 faithfulness flag (K1_vertexPin header) anticipated exactly this: "if S9's
 construction realizes a different explicit exponent, the bridges re-instantiate
-at the corrected pin". Adjudication queued: either `VertexPin`/`hS5'` re-pin to
-the alignment function (blueprint §9.5's "mfun := THE alignment function"), or
-the child `hS6a` obligation is scoped to the above-threshold range at increment
-children. difficulty: HARD (assembly; the known type wall). hyp: hEG (the
-adjudicated note guard).
+at the corrected pin".
+
+**ADJUDICATION RESOLVED (V5 sign-off, 2026-07-28 — blueprint §10 Key Finding 2):**
+neither queued option. `mfun ≡ 0` IS the note's V′ normalization (the raw pin is
+CORRECT), and the mismatch was `Stage.hS6a`'s own over-transcription: the note's
+(S6a) is the orbit group AT ITS FIXED POINT (MOVES 1964–1971; D.7(viii)'s
+realizers 2431–2435), i.e. the digit coset `F_Qˣ·b(ν)` with ONE base per weight —
+not the untwisted `F_Qˣ`. `Stage.hS6a` restated to the coset form (∃ b before
+∀ c); this file's `hS6a'` follows it. The strip sorry is now the V7 discharge
+(V6(b)'s minimizing-slot base + `L4_TRANSviii_a` conjunct 2), no longer a
+normalization mismatch. difficulty: HARD (assembly; the known type wall).
+hyp: hEG (the adjudicated note guard).
 -/
 
 set_option linter.style.longLine false
@@ -273,21 +288,29 @@ theorem S9a_stageLiteral {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       rw [hc'F, hdig]
     refine ⟨B, hB0, hBc, hBw, ?_⟩
     rw [hc'R, hcs, hBw]
-  -- ## (S6a′): the constant-orbit realizers.  Above the threshold: hS6b′.
-  -- Below (the strip): THE RESIDUAL OBLIGATION — see the header (the raw-pin
-  -- twisted orbit vs the untwisted F_Q orbit; adjudication queued).
-  have hS6a' : ∀ ν ∈ childWeightSet σ Φhat, ∀ c : (↥(σ.nextField zbar))ˣ,
+  -- ## (S6a′): the coset-orbit realizers (V5 fixed-point coset form, blueprint §10
+  -- Key Finding 2).  Above the threshold: hS6b′ with base b = 1 (exact scalars).
+  -- Below (the strip): V7's obligation — V6(b)'s minimizing-slot base +
+  -- TRANSviii_a conjunct 2 verbatim (the fenced V′-kernel discharge).
+  have hS6a' : ∀ ν ∈ childWeightSet σ Φhat, ∃ b : (↥(σ.nextField zbar))ˣ,
+      ∀ c : (↥(σ.nextField zbar))ˣ,
       ((c : ↥(σ.nextField zbar)) : F) ∈ σ.FQ →
       ∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ.w B = ν ∧
-        hexD.choose.Rc B = LaurentPolynomial.C ((c : ↥(σ.nextField zbar))) *
-          LaurentPolynomial.T (- t' * ν) := by
-    intro ν hν c hcFQ
+        hexD.choose.Rc B
+          = LaurentPolynomial.C ((c * b : (↥(σ.nextField zbar))ˣ) : ↥(σ.nextField zbar)) *
+            LaurentPolynomial.T (- t' * ν) := by
+    intro ν hν
     rcases lt_or_ge (σ.w Φhat) ν with hgt | hle
-    · exact hS6b' ν c hgt
-    · -- BELOW-THRESHOLD STRIP (ν ≤ σ.w Φ̂): not derivable from the raw D.7(vi)
-      -- pin — the realizable digit set at ν is the twisted orbit
-      -- ⋃ D(w̃)·z̄^{j·s − t·w̃}; hS6a demands the untwisted F_Qˣ.  EXACT RESIDUAL.
-      sorry
+    · exact ⟨1, fun c _ => by rw [mul_one]; exact hS6b' ν c hgt⟩
+    · -- BELOW-THRESHOLD STRIP (ν ≤ σ.w Φ̂): the V7 discharge — PROVED (S9a_final
+      -- escalation, 2026-07-28). NOT the planned "V6(b) + TRANSviii_a conjunct 2
+      -- verbatim" (that route is CIRCULAR: TRANSviii_a consumes a full child Stage σ'
+      -- whose hS6a field IS this obligation). V7's executed proof is σ'-free: the
+      -- parent (S6a) coset realizer ridden up the K1 minimizing slot (L2_strideRule,
+      -- digit linear in the orbit scalar), pinned into Rc through the carrier's own
+      -- hS5' (raw digPrime, mfun ≡ 0). Same kernel in Moves-lemma form:
+      -- `Moves.L4_TRANSviii_c` (threshold-free).
+      exact V7_stripDischarge σ hσ th s' t' hbez' ht'0 hexD.choose hexD.choose_spec ν hν
   -- ## The literal
   refine ⟨{
       e := e', h := h', s := s', t := t',

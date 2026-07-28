@@ -670,10 +670,11 @@ noncomputable def bStage : Stage 2 F4 where
     rw [hBC]
     exact bw_const_nonneg hb
   hS6a := by
-    intro ν hν c _
+    intro ν hν
+    refine ⟨1, fun c _ => ?_⟩
     refine ⟨C (2 ^ ν.toNat), C_ne_zero.mpr (pow_ne_zero _ two_ne_zero'), inC_C, ?_, ?_⟩
     · rw [bw_C2pow, Int.toNat_of_nonneg hν]
-    · rw [bR_C2pow, K2_unit_eq_one c, map_one, neg_zero, zero_mul,
+    · rw [bR_C2pow, K2_unit_eq_one (c * 1), map_one, neg_zero, zero_mul,
         LaurentPolynomial.T_zero, one_mul]
   hS6b := by
     intro ν a hν

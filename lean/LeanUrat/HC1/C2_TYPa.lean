@@ -165,8 +165,15 @@ private lemma digLift_spec (T : Tower p F) (y : ↥(T.stg 0).FQ) (hy : y ≠ 0) 
     have hkne : (⟨(y : F), (T.stg 0).hFQ_le y.2⟩ : ↥(T.stg 0).K) ≠ 0 := by
       intro h
       exact hyF (congrArg Subtype.val h)
-    obtain ⟨B, hB0, hBC, hBw, hBR⟩ := (T.stg 0).hS6a 0 h0mem
-      (Units.mk0 (⟨(y : F), (T.stg 0).hFQ_le y.2⟩ : ↥(T.stg 0).K) hkne) y.2
+    -- V5 coset form: at the base stage K = FQ, so the coset base b is absorbed by c := y·b⁻¹
+    obtain ⟨b, hb⟩ := (T.stg 0).hS6a 0 h0mem
+    have hKFQ : (T.stg 0).K = (T.stg 0).FQ := T.base.1.2.2
+    set cy : (↥(T.stg 0).K)ˣ :=
+      Units.mk0 (⟨(y : F), (T.stg 0).hFQ_le y.2⟩ : ↥(T.stg 0).K) hkne with hcy
+    have hbinv : (((cy * b⁻¹ : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K) : F) ∈ (T.stg 0).FQ :=
+      (le_of_eq hKFQ) ((cy * b⁻¹ : (↥(T.stg 0).K)ˣ) : ↥(T.stg 0).K).2
+    obtain ⟨B, hB0, hBC, hBw, hBR⟩ := hb (cy * b⁻¹) hbinv
+    rw [inv_mul_cancel_right, hcy] at hBR
     refine ⟨B, hB0, hBC, hBw, ?_⟩
     simpa using hBR
   rw [Tower.digLift, dif_pos hex]

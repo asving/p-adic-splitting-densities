@@ -17,6 +17,7 @@ v_p-scale, so NO stretch factor appears here (contrast U22-E1).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.K1_vertexPin
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -38,6 +39,14 @@ theorem SAE_vertexEq_endpoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fi
     (H.nodes[i+1]'hi1).ustar
       = (H.nodes[i]'(by omega)).line.at
           ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth) := by
-  sorry
+  -- U22-E2_final (V-prime endgame): the F-4 u*-tie reduction is complete and machine-checked
+  -- in `K1_SAE_vertexEq_endpoint` (K1_vertexPin.lean): SideReads(ii) top-endpoint equality
+  -- `e'·σ'.w(B μ) + μ·h' = gam'` + the γ-tie (adjacency) give `σ'.w(B μ) = STR_{i+1}·u*'`,
+  -- and the K1 kernel pins the SAME quantity to `STR_{i+1}·line_i.at(μ·childWidth)`; cancel
+  -- `STR_{i+1} > 0` and `Node.line`/`Node.ustar` absolute scale leaves the fenced ℚ-form.
+  -- The sole residual behind this `exact` is the consolidated non-recentering kernel
+  -- `K1_readVertexPin_nonrec` (the read-side carry-algebra vertex pin) — a SEPARATE `_final`
+  -- unit; U22-E2 carries no independent obligation.
+  exact K1_SAE_vertexEq_endpoint h i hi1 hadj
 
 end LeanUrat.MovesJ

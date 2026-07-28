@@ -274,7 +274,10 @@ private noncomputable def stageMap (φ : F ≃+* F) (σ : Stage p F) : Stage p F
       exact ⟨Units.map ((resAut φ σ.K : ↥σ.K ≃+* ↥σ.K) : ↥σ.K →+* ↥σ.K).toMonoidHom c,
         by rw [hc, lmap_C_mul_T]; rfl⟩
     hS6a := by
-      intro ν hν c hcF
+      intro ν hν
+      obtain ⟨b, hb⟩ := σ.hS6a ν hν
+      refine ⟨Units.map ((resAut φ σ.K : ↥σ.K ≃+* ↥σ.K) : ↥σ.K →+* ↥σ.K).toMonoidHom b,
+        fun c hcF => ?_⟩
       set c₀ : (↥σ.K)ˣ :=
         Units.map (((resAut φ σ.K).symm : ↥σ.K ≃+* ↥σ.K) : ↥σ.K →+* ↥σ.K).toMonoidHom c
         with hc₀
@@ -282,12 +285,16 @@ private noncomputable def stageMap (φ : F ≃+* F) (σ : Stage p F) : Stage p F
         have h1 : ((c₀ : ↥σ.K) : F) = φ.symm ((c : ↥σ.K) : F) := rfl
         rw [h1]
         exact mem_map_self φ.symm σ.FQ hcF
-      obtain ⟨B, hB0, hBC, hBw, hBR⟩ := σ.hS6a ν hν c₀ hmem
+      obtain ⟨B, hB0, hBC, hBw, hBR⟩ := hb c₀ hmem
       refine ⟨B, hB0, hBC, hBw, ?_⟩
       rw [hBR, lmap_C_mul_T]
       have h2 : ((resAut φ σ.K : ↥σ.K ≃+* ↥σ.K) : ↥σ.K →+* ↥σ.K)
-            ((c₀ : (↥σ.K)ˣ) : ↥σ.K) = ((c : (↥σ.K)ˣ) : ↥σ.K) :=
-        (resAut φ σ.K).apply_symm_apply _
+            ((c₀ * b : (↥σ.K)ˣ) : ↥σ.K)
+          = ((c * Units.map ((resAut φ σ.K : ↥σ.K ≃+* ↥σ.K) : ↥σ.K →+* ↥σ.K).toMonoidHom b :
+              (↥σ.K)ˣ) : ↥σ.K) := by
+        rw [Units.val_mul, Units.val_mul, map_mul]
+        congr 1
+        exact (resAut φ σ.K).apply_symm_apply _
       rw [h2]
     hS6b := by
       intro ν a hν

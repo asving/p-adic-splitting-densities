@@ -250,7 +250,8 @@ theorem L5_realRecursion {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
     have key : (σ.e : ℤ) * ν = W - (j : ℤ) * σ.h := hνeq
     have h1FQ : ((((1 : (↥σ.K)ˣ)) : ↥σ.K) : F) ∈ σ.FQ := by
       simpa using σ.FQ.one_mem
-    obtain ⟨b, hbne, hbc, hbw, _hbR⟩ := σ.hS6a ν hν 1 h1FQ
+    obtain ⟨b₀, hb₀⟩ := σ.hS6a ν hν
+    obtain ⟨b, hbne, hbc, hbw, _hbR⟩ := hb₀ 1 h1FQ
     refine ⟨b * σ.Φ ^ j, mul_ne_zero hbne (pow_ne_zero j hΦ), ?_, ?_⟩
     · show (b * σ.Φ ^ j).degree < Φhat.degree
       have hne : b * σ.Φ ^ j ≠ 0 := mul_ne_zero hbne (pow_ne_zero j hΦ)

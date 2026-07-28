@@ -520,12 +520,12 @@ private noncomputable def σ₀ : Stage 2 (ZMod 2) where
   weightSet := {ν : ℤ | ∃ B : Polynomial ℤ_[2], B ≠ 0 ∧ inC (X : Polynomial ℤ_[2]) B ∧ wZ B = ν}
   hWS := fun B hB hBc => ⟨B, hB, hBc, rfl⟩
   hS6a := by
-    rintro ν ⟨B, hB, hBc, hBw⟩ c hcF
-    refine ⟨B, hB, hBc, hBw, ?_⟩
+    rintro ν ⟨B, hB, hBc, hBw⟩
+    refine ⟨1, fun c _ => ⟨B, hB, hBc, hBw, ?_⟩⟩
     have hb : B = C (B.coeff 0) :=
       Polynomial.eq_C_of_degree_le_zero (deg_le_zero_of_lt_X hBc)
     have hb0 : B.coeff 0 ≠ 0 := fun h => hB (by rw [hb, h, Polynomial.C_0])
-    have hc1 : (c : ↥KK) = 1 := subK_eq_one c.ne_zero
+    have hc1 : ((c * 1 : (↥KK)ˣ) : ↥KK) = 1 := subK_eq_one (c * 1).ne_zero
     rw [hb, Rmap_C hb0, hc1]
     simp [LaurentPolynomial.T_zero]
   hS6b := by

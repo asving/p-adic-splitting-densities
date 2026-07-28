@@ -16,6 +16,7 @@ is absolute v_p-scale — the transport equation is stated multiplied through by
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.K1_vertexPin
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -42,6 +43,12 @@ theorem NA_transport_increment {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [F
         = (H.strFrame (i+1) : ℚ) *
           (H.nodes[i]'(by omega)).line.at
             ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth) := by
-  sorry
+  -- U20b_final discharge (blueprint §10 V9: "U20a/U20b/U22-E2 close by the staged
+  -- one-line consumers"): the increment leg has no independent Lean-core route; it is
+  -- the byte-identical fenced statement of `K1_NA_transport_increment`, the one-line
+  -- consumer of the read-indexed D.8 vertex-pin kernel `K1_readVertexPin`.
+  exact K1_NA_transport_increment h i hi1 hsp B Nd hdev hNd
 
 end LeanUrat.MovesJ
+
+#print axioms LeanUrat.MovesJ.NA_transport_increment

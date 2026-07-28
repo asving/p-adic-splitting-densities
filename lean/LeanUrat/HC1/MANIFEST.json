@@ -7,7 +7,8 @@
   "lean/LeanUrat/HC1/DefsTower.lean",
   "lean/LeanUrat/HC1/DefsCar.lean",
   "lean/LeanUrat/HC1/DefsSpine.lean",
-  "lean/LeanUrat/HC1/DefsChild.lean"
+  "lean/LeanUrat/HC1/DefsChild.lean",
+  "lean/LeanUrat/HC1/DefsV.lean"
  ],
  "defs_sorry_free": true,
  "preamble": "Every unit file begins: `import Mathlib` then the HC1 Defs module(s) it needs (`LeanUrat.HC1.DefsD` / `DefsTower` / `DefsCar` / `DefsSpine`) then the cited PROVED Moves/MovesGr/MovesC unit files; then `set_option linter.style.longLine false`, `set_option linter.style.header false`, `set_option linter.unusedSectionVars false`, `set_option maxHeartbeats 800000`; then `namespace LeanUrat.HC1` and `open Polynomial LeanUrat.Moves` (plus `open scoped Classical` where Pi.single/filters need decidability). Statements elaborate under that preamble (verified per-file by `lake env lean`, MOVESGR §6 double-elaboration discipline: statements regenerated verbatim from this manifest must re-elaborate). `sorry` is the only allowed escape — ZERO new axioms; any GMN/Denef import in a cone is stop-the-line.",
@@ -287,8 +288,8 @@
    "id": "HC1.S9w_residualLaws",
    "file": "lean/LeanUrat/HC1/S9w_residualLaws.lean",
    "difficulty": "hard",
-   "sorries": 1,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — RESTORED SHAPE (remediation round, same day; the Codex S9 rejection repair): S9w's OWN theorem = (∃ D : ChildResData, ChildResLaws D) ∧ w_strict — the §9.5 hard new-algebra block, one sorry, hardness honestly homed HERE (the E-phase draft had bundled the laws as ChildResData fields, relocating the hardness into S9r). The former nine projections survive as the PROVED Lean-core corollary childR_laws (explicitly labeled NOT the unit's content).",
+   "sorries": 0,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — RESTORED SHAPE (remediation round, same day; the Codex S9 rejection repair): S9w's OWN theorem = (∃ D : ChildResData, ChildResLaws D) ∧ w_strict — the §9.5 hard new-algebra block, one sorry, hardness honestly homed HERE (the E-phase draft had bundled the laws as ChildResData fields, relocating the hardness into S9r). The former nine projections survive as the PROVED Lean-core corollary childR_laws (explicitly labeled NOT the unit's content). — WIRED (escalation round 2026-07-28, S9w_final): own sorry KILLED, closes by `exact V8_childResidual` per the §10 staged plan; conjunct (ii) w_strict is PROVED Lean-core (V8c); conjunct (i) inherits sorryAx from V8b ONLY (the carrier-construction block) until it lands. CLOSED (2026-07-28 second escalation): V8b/V8a proved; S9w rides V8_childResidual by exact — sorry-free, Lean-core.",
    "statement": "theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : (∃ D : ChildResData σ Φhat e' h' zbar s' t', ChildResLaws D) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f)"
   },
   {
@@ -466,7 +467,65 @@
    "difficulty": "medium",
    "sorries": 1,
    "statement": "theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : ∃ K : CarrierPackR p, (∀ γ : ℚ, K.G.Gr γ = T.grQ γ) ∧ LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K"
+  },
+  {
+   "id": "HC1.V1_readWPack",
+   "file": "lean/LeanUrat/HC1/V1_readWPack.lean",
+   "difficulty": "medium",
+   "sorries": 0,
+   "statement": "theorem V1_readWPack (σ) (hσ : StageCoreL σ) (e★ h★ : ℕ) (s★ t★ : ℤ) (hrp : ReadPair σ e★ h★ s★ t★) : (slot-min pack for childW σ σ.Φ e★ h★ — S2 instance at Φhat := σ.Φ) ∧ hwmul ∧ hwult ∧ (Q-ASCENT: for B·B″ = Q·σ.Φ + R_dev monic division, Q-slot (†)-value ≥ R_dev-slot + (h★ − e★·σ.h))"
+  },
+  {
+   "id": "HC1.V2_readResidual",
+   "file": "lean/LeanUrat/HC1/V2_readResidual.lean",
+   "difficulty": "medium-hard",
+   "sorries": 2,
+   "statement": "theorem V2_readResidual … : (∃ D : ReadResData σ e★ h★ s★ t★, ReadResLaws D) ∧ (wV strict law — the S9w-(ii) mirror); theorem V2_readFrame … : Nonempty (ReadFrame σ e★ h★ s★ t★)  [THE V′ FRAME CHANGE UNIT]"
+  },
+  {
+   "id": "HC1.V3_readLift",
+   "file": "lean/LeanUrat/HC1/V3_readLift.lean",
+   "difficulty": "medium",
+   "sorries": 1,
+   "statement": "theorem V3_readLift … (V : ReadFrame) (hlift : IsReadLift σ ψ g e★ h★ Φ̂) : (D.5 EQUAL WEIGHTS display at wV) ∧ childW σ σ.Φ e★ h★ Φ̂ = e★·h★·g ∧ V.D.Rv Φ̂ = T(−t★·h★·g)·ψ ∧ K1At (childW σ σ.Φ e★ h★) Φ̂ (e★·h★·g)"
+  },
+  {
+   "id": "HC1.V4_readLanding",
+   "file": "lean/LeanUrat/HC1/V4_readLanding.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "statement": "theorem V4_readLanding … (hanch : HasAnchorK (V.D.Rv f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (hdev : IsDevelopment Φ̂ f B N) : (VERTEX: B μ ≠ 0 ∧ wV(B μ) + μ·e★h★g = wV f) ∧ (BOX: strict above for m < μ) ∧ (vertex digit with the explicit unit z̄^{μ·t★·h★·g})  [TRANSPORT leg FENCED OUT per §10.1]"
+  },
+  {
+   "id": "HC1.V6_alignedOrbits",
+   "file": "lean/LeanUrat/HC1/V6_alignedOrbits.lean",
+   "difficulty": "short",
+   "sorries": 2,
+   "statement": "theorem V6_regradeOrbits … : ReadFrame.hS6a fill (regrade orbits = parent coset orbits re-positioned, scalars preserved); theorem V6_descentOrbits … : ∀ ν ∈ 𝒜′, (TRANSviii_a conjunct-1 window decomposition) ∧ ∃ base b(ν) of the displayed z̄-monomial shape whose F_Qˣ-coset is realized in D.Rc"
+  },
+  {
+   "id": "HC1.V7_stripDischarge",
+   "file": "lean/LeanUrat/HC1/V7_stripDischarge.lean",
+   "difficulty": "short",
+   "sorries": 1,
+   "statement": "theorem V7_stripDischarge … (D : ChildResData …) (hD : ChildResLaws D) : ∀ ν ∈ childWeightSet σ Φ̂, ∃ b, ∀ c ∈ F_Qˣ, ∃ B ≠ 0 ∈ C_Φ̂, σ.w B = ν ∧ D.Rc B = C(c·b)·T(−t′·ν)  [EXACTLY S9a's hS6a′ obligation shape; gated on V5 — EXECUTED]"
+  },
+  {
+   "id": "HC1.V8_childResidual",
+   "file": "lean/LeanUrat/HC1/V8_childResidual.lean",
+   "difficulty": "hard",
+   "sorries": 0,
+   "statement": "def ExplicitDescentCarrier (Prop on ChildResData: Rc f = Σ_{j minimizing} C(dig′ B_j)·T(j·s′ − t′·σ.w B_j)); theorem V8a_carrierAdditive (∃ explicit carrier + additive legs); theorem V8b_carrierLaws (∃ explicit carrier + full ChildResLaws); theorem V8c_wStrict; theorem V8_childResidual = S9w's exact statement shape, ASSEMBLED from V8b+V8c (no own sorry)  [NOT dependent on V5]",
+   "rev": "PROVED IN FULL (2026-07-28, second escalation — the V8b hRmul core): V8a + V8b + V8c ALL Lean-core, zero sorry; capstone V8_childResidual footprint = {propext, Classical.choice, Quot.sound}. Construction: explicit carrier v8Rc ((†) on the Fact-A/B development) + the private graded-residue calculus v8gr (parent hRadd/hRlt + StageCore w_strict/w_jump/R_neg as ONE additive map on the zero-or-deep domain). hRmul = L4_TRANSiii's convolution development Cdev re-derived at digit level + L3_DIV per-pair remainders + (I-aug) depth for carried quotients + the v8gr slot computation + Finset.sum_fiberwise convolution regroup; vanishing convolution coefficients are the same zero on both sides via D.3(d) digit-nonvanishing (the D.1(b) delta-calculus). V8c (first escalation) MOVED above V8a/V8b: its strict law feeds V8b's hRlt leg. UNBLOCKED: S9w_residualLaws now sorry-free (wired exact); S9r follows."
+  },
+  {
+   "id": "HC1.V9_K1nonrec",
+   "file": "lean/LeanUrat/HC1/V9_K1nonrec.lean",
+   "difficulty": "medium",
+   "sorries": 2,
+   "statement": "theorem V9_readSteepness (HistoryCoherent, 1 ≤ i, non-recentering) : ν_i.e·σ_i.h < ν_i.h; theorem V9_K1nonrec : K1_readVertexPin_nonrec's statement VERBATIM via the ReadFrame chain  [SideReads-(iii) seam FENCED — U31-gated; any restatement is a NEW sign-off item]"
   }
  ],
- "signoff_2026-07-28": "F-1..F-6 EXECUTED (one event): F-1 T10(2)+C1(ii) → floorS step floor (lineStep/floorS defs in DefsCar); F-2 Tower.hcharF : CharP F p + C6_cardK_bridge PROVED in C6's file (C6 statement unchanged per §9.2); F-3 S7 → proved shape (scratch transplant, PROVED Lean-core; leg (c) homed to S9d); F-4 S8 → proved (I-aug) leg (PROVED; twist certificate retained in header; TvecUnitLaw homed to S9d); F-5 MoveWitness + core' : StageCoreL (both constructors), 9-file arity ripple (eBirthAux, T3, T4, T6, T7, C2, S13, S11), S11 PROVED (Part 1 = projection), S11a_coreTransport NEW+PROVED; F-6 S17 → ScratchS17 form (+hzsol +hcore), PROVED Lean-core, §4.6 dep-sorry pair out of HC1's cone. S9 DECOMPOSITION: DefsChild.lean (ChildResData choice-spec + childR + childWeightSet) + S9r/S9w/S9a/S9b/S9c (sorry statements) + S9d PROVED (consumes K1 bridges + S7 legs)."
+ "signoff_2026-07-28": "F-1..F-6 EXECUTED (one event): F-1 T10(2)+C1(ii) → floorS step floor (lineStep/floorS defs in DefsCar); F-2 Tower.hcharF : CharP F p + C6_cardK_bridge PROVED in C6's file (C6 statement unchanged per §9.2); F-3 S7 → proved shape (scratch transplant, PROVED Lean-core; leg (c) homed to S9d); F-4 S8 → proved (I-aug) leg (PROVED; twist certificate retained in header; TvecUnitLaw homed to S9d); F-5 MoveWitness + core' : StageCoreL (both constructors), 9-file arity ripple (eBirthAux, T3, T4, T6, T7, C2, S13, S11), S11 PROVED (Part 1 = projection), S11a_coreTransport NEW+PROVED; F-6 S17 → ScratchS17 form (+hzsol +hcore), PROVED Lean-core, §4.6 dep-sorry pair out of HC1's cone. S9 DECOMPOSITION: DefsChild.lean (ChildResData choice-spec + childR + childWeightSet) + S9r/S9w/S9a/S9b/S9c (sorry statements) + S9d PROVED (consumes K1 bridges + S7 legs).",
+ "vkernel_2026-07-28": "V′-KERNEL APPLIED (blueprint §10, V-prime applier): V5 SIGN-OFF EXECUTED FIRST (definition-change authority): Stage.hS6a RESTATED to the FIXED-POINT COSET form (∃ b : Kˣ before ∀ c : FQˣ; digit scalar C(c·b); docstring quotes MOVES 1964–1971 + 2431–2435) in Moves/Defs.lean. Ripple (all green, proofs run through): constructors T1_baseStage (b := 1), S1_transHypGate σpin (b := 1), S10_recStage (transport, SAME b), U17b stageMap (b ↦ resAut-image), U28/U30/U31 gate stages (b := 1), S9a hS6a′ restated to coset form (above-threshold leg b := 1 via L4_TRANSviii_b; strip sorry now = V7's obligation); consumers L5_realRecursion_R3 (two-line), T4/T7/C2 base-stage digLift (K = FQ absorbs the base: c := y·b⁻¹), L4_TRANSviii_a_R5{,_final} CONCLUSION RESTATED (∃ m : ℤ / c·z̄^m → ∃ d₀ : (↥σ′.K)ˣ / c·(d₀:F), ∃-before-∀c unchanged; proof repaired: parent coset base b folded through L2_strideRule, d₀ := the d of the c = 1 instance; PROVED, Lean-core). FULL PERIMETER RECOMPILED GREEN: 532 modules (Moves/MovesC/MovesD/MovesGr/MovesRBase/MovesS/MovesSp/MovesU/MovesX/HC1/HC2); the ONLY exclusions are MovesGr/L2_degZero_subring_v2 + L4_genuine_imp_stageCoreL_v2, PRE-EXISTING failures (machine-verified identical failure against HEAD's pre-V5 Defs.lean; DirectSum instance mismatches, no olean in cache — outside the maintained perimeter, unrelated to hS6a). V0–V9 ELABORATED: DefsV.lean (ReadPair/ReadResData/ReadResLaws/ReadFrame — sorry-free; ReadFrame.hS6a transcribed in the post-V5 coset form, deviation from the pre-V5 §10.1 parenthetical recorded in the file header) + 8 unit files, 13 E-phase sorries, all lake-green, footprints [propext, sorryAx, Classical.choice, Quot.sound] as expected. SideReads-(iii) seam stays FENCED (V9 header carries the §10.1 ⚠ block verbatim; SideReads untouched)."
 }

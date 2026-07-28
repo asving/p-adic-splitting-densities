@@ -751,14 +751,14 @@ private noncomputable def σpin : Stage 2 F4 where
       exact gaussVal_C hc
     rw [Set.mem_setOf_eq, this]
     exact Int.natCast_nonneg _
-  hS6a := fun ν hν c _ => by
+  hS6a := fun ν hν => ⟨1, fun c _ => by
     rw [Set.mem_setOf_eq] at hν
     refine ⟨C ((2 : ℤ_[2]) ^ ν.toNat), by rw [Polynomial.C_ne_zero]; exact two_pow_ne_zero _,
       inC_X_C _, ?_, ?_⟩
     · rw [gaussVal_C (two_pow_ne_zero _), val_two_pow, Int.toNat_of_nonneg hν]
-    · rw [k0_unit_eq_one c, map_one, neg_zero, zero_mul,
+    · rw [k0_unit_eq_one (c * 1), map_one, neg_zero, zero_mul,
         LaurentPolynomial.T_zero, one_mul]
-      exact RS1_C (two_pow_ne_zero _)
+      exact RS1_C (two_pow_ne_zero _)⟩
   hS6b := fun ν a hν => by
     have hν0 : 0 ≤ ν := by
       have hX : gaussVal (X : Polynomial ℤ_[2]) = 0 := gaussVal_X
