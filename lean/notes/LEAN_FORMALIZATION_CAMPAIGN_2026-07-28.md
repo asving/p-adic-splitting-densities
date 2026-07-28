@@ -317,3 +317,51 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   this is their independent check); (2) wave-4 round-6 audits return to FULL
   DUAL (Codex + Fable) rather than Fable-interim-only. MovesSp confirmed
   already dual-accepted (rev 5, 0/0 + 0/0) — nothing owed there.
+  RATIFICATION BATCH RESULTS + ADJUDICATION (2026-07-28): MovesD REJECT 5/1,
+  MovesS REJECT 5/0 — on ALREADY-PROVED corpora, so statement-level findings,
+  each adjudicated by orchestrator direct note reads:
+  - MovesD D1 (gamTie's STR factor vs L3's "γ_r = e_r·u*_r + j*_r·h_r"):
+    OVERRULED. §C C.0 marks γ "(augmented scale)" (3461); C.1.0(c) + the
+    Scale declaration (3598-3645) define stage = STR × absolute; the frozen
+    MovesC Node records ustar ABSOLUTE + gam STAGE (the Codex#7 c.1 pushback
+    record anticipated exactly this re-flag); lineS/kappaS carry the STR in
+    the compensating spots — the shape universes correspond bijectively.
+    The ratifier had ONLY §D4-R in context. Repair anyway: a machine-checked
+    scale-coherence lemma (SW2) so the convention is checkable.
+  - MovesD D3 (PrefIdx image + zbar normalization): core OVERRULED — the
+    REV-4 η-granularity design is faithful (the note's η carries digits+ψ;
+    zbar is a PRESENTATION choice the note's η never records, so the literal
+    history set would OVERCOUNT conjugates; PresentNorm (ii) IS the typed
+    anti-collapse law, (i) the totality, both = the open HC-2 dictionary
+    pin). Residue ACCEPTED: an abstract-count theorem (image count = the
+    policy-free Galois-quotient count under hnorm) to replace the rfl-only
+    card_classes as the visible content.
+  - MovesD D2 (POL-PIN comment-only), D4 (∅-shape event/mult unwired — the
+    note's S(∅,⊤) = FULL BOX vs Lean's ∅; option-level objects exist but
+    Presented.event/mult lack the dispatch), D5 (NP-ID = W4-4 "ledger pin,
+    no Lean object" while D4R4_all quantifies over the NPband range), D6
+    (classifier-side sealed-gate numbers untyped): ALL ACCEPTED — each is
+    the campaign's own typed-fields doctrine applied back at us.
+  - MovesS: ALL FIVE ACCEPTED. S1: the corpus HAS the (ii-c) gate (AVAgree,
+    verbatim-faithful) and the all-active bundle carries it totally, but
+    legs_reg types only E0/ACT at consumed pools — the note requires the
+    agreement to pass BEFORE read-off at every non-all-active pool (12204-
+    12218); typed field legs_read added. S2: deltaFactors collects halted
+    members' δ (the note evaluates β only at block-state members; halted =
+    factor 1) — SILENT STRENGTHENING; filter to Member.continuing. S3: the
+    J-RAT per-cell TYPE must exist even though tables stay owner [1v] (the
+    ratifier UPHELD the un-builtness adjudication, demanded the granularity).
+    S4: wsh17_pin : Prop is the vacuous-tag defect verbatim — retype to
+    W17ii's statable core. S5: PolyGeom's countT/countS have no value laws
+    (absorbable into geom) — typed PolyGeomLaws added as premise-variants.
+  - THE THREE PRIOR ADJUDICATIONS under independent re-judgment: (a) junk-
+    block discipline UPHELD ("not itself a defect", the ratifier's words);
+    (c) J-RAT upheld-with-sharpening; (b) consumed-legs re-raised in a
+    SHARPER, correct form (the halted-member scope) — accepted. The
+    adjudication process survives its first decorrelated audit with one
+    genuine sharpening.
+  REPAIR EXECUTION: two Fable repair agents (wf_acc27000-fcc), charges at
+  MOVESD/MOVESS_RATIFY_REPAIR_CHARGE_2026-07-28.md; acceptance = proofs
+  re-run green + ONE consolidated Codex confirm on the applied diffs (the
+  definition-change authority's gate); then the W4-SYNC interface-delta note
+  feeds the wave-4 round-6 audit charge.
