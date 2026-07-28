@@ -277,6 +277,22 @@ noncomputable def floorC (c : T.Coord) : ℚ :=
 factor interior. -/
 def interiorB (b : ℕ) : Prop := T.blockEdge (b + 1) ≤ rl.interiorEnd T.K
 
+/-- **F-1 (sign-off event 2026-07-28, blueprint §9.1):** read m's staircase at a base
+index (MovesC `Node.lineStep` convention): the line evaluated at the left edge of b's
+frame-m fine slot. -/
+noncomputable def lineStep (m b : ℕ) : ℚ :=
+  (rl.line m).at ((b / T.frameWidth (m + 1)) * T.frameWidth (m + 1))
+
+/-- **F-1: THE HISTORY STEP-FLOOR at a coordinate** (the note's F_i, LST(ii) MOVES
+3743–3745 "F_i(b) = old_i(slot(b)): ht-constant on each current block"; MovesC
+`History.floorH`'s shape over the tower's reads). T10 conjunct 2 / C1 leg (ii) are
+stated on THIS floor — the raw-line max `floorC` was machine-refuted there
+(`ScratchT10.T10_conjunct2_refuted`: on a slope-K > 0 line the raw value strictly
+descends across the block); `floorC` STAYS for the DOM-side consumers. -/
+noncomputable def floorS (c : T.Coord) : ℚ :=
+  Finset.sup' (Finset.range (T.K + 1)) (by simp)
+    (fun m => rl.lineStep m (T.baseIdx c))
+
 end TowerRealizable
 
 end LeanUrat.HC1

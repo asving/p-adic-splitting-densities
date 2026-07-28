@@ -17,6 +17,11 @@ moves_ref: MOVES 3728–3777 (Lemma LST, all legs). deps: T3, T4, T5, T10. The
 conjunction (i-a) T3, (i-b) T4, (i-c) T5, (ii) T10, (iii) the floor-set emptiness —
 arithmetic from (i)+(ii). difficulty: medium (assembly + (iii)).
 hyp: `TowerRealizable` (via T10) — §5's open kernel, carried as `rl`.
+
+**F-1 RESTATEMENT (sign-off event 2026-07-28, blueprint §9.1):** leg (ii) restated
+on the STEP floor `floorS` alongside T10's conjunct 2 (the raw-line `floorC` form
+was machine-refuted — `ScratchT10`); the other four legs untouched. The proof cites
+T10 verbatim, as before.
 -/
 
 set_option linter.style.longLine false
@@ -46,8 +51,8 @@ theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       (∀ c, T.blk c = b → T.ht c < γ' → x c = 0) →
       (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) →
       T.inGr γ' (T.slotCoeff b x) = T.inGr γ' (T.slotCoeff b y)) ∧
-    -- (ii): the staircase floor on factor-interior blocks (T10's form)
-    (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorC c = rl.floorB b) ∧
+    -- (ii): the staircase STEP floor on factor-interior blocks (T10's F-1 form)
+    (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b) ∧
     -- (iii): level sets strictly above the floor avoid the floor set
     (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' →
       T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅) := by

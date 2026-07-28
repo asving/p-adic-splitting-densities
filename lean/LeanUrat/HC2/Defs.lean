@@ -70,6 +70,15 @@ Elaboration deviations (each recorded in `MANIFEST.json` "deviations"):
   condition ("fresh supports UNPINNED on the prior state", D5 zcSeed docstring). The
   LITERAL-zero (ZC-a) content moves where the note keeps it (conditional): the pending
   Θ-normalization zcSeed law (U9b/U9c records; D5-fence sign-off item).
+* N-QUEUE SIGN-OFF ROUND (2026-07-28, Asvin definition-change authority; Codex confirms
+  after — see MANIFEST "nqueue_2026-07-28"): (N-4) `SideReads` gains the ADDITIVE clause
+  (vi) VERTEX READ-OFF (§9 F-3; U31 gate re-run queued for the fleet phase); (N-2)
+  `D10Eligible` addendum (§9 F-1); (N-5) `RootD4` addendum (§9 F-6); (K3)
+  `AdjacentReads` addendum (the U18 conditional-refutation repair); (K2)
+  `SeedFreshUnpinned` addendum (the bare-recursion disposition); (D5 fence) `ZCSeedLaws`
+  gains the two pre-assigned laws `theta_norm` + `root_shape` (the U9b/U9c residue —
+  NOTE root_shape's faithful weakening recorded at the field). Every addition is
+  hypothesis-side or additive; no axiom, no weakening.
 Flagged for semantic-guardian review throughout (the trust boundary).
 -/
 
@@ -226,7 +235,11 @@ NEGOTIATING DEFINITION for MovesD's W4-1 `eligible` seam — MovesT re-keys to T
     the landing key is realized: `LandingKey ν Φnext`;
 (v) LIFTS + ROOT NORMALIZATION [the U24 E-phase decision] — the node carries the polOM
     lift and the canonical residue root (runs are normalized by definition, §D4-R's
-    "the classifier is run with ONE lift rule" + rev-6 canonRoot pinning). -/
+    "the classifier is run with ONE lift rule" + rev-6 canonRoot pinning);
+(vi) VERTEX READ-OFF [N-4 sign-off, 2026-07-28 — §9 F-3]: the recorded transported vertex
+    value is f's actual vertex digit in the designated next key's development (the
+    layer-2 terminal seam's minimal additive repair; the wave-4 seam registry copies this
+    clause into MovesT's `eligible` re-key). -/
 def SideReads {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (ν : Node p F) (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ)
     (Φnext : Polynomial ℤ_[p]) : Prop :=
@@ -249,7 +262,19 @@ def SideReads {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   -- (iv) DESCENT WITNESS (the fold: LandingKey at the designated next key)
   LandingKey ν Φnext ∧
   -- (v) LIFTS + ROOT NORMALIZATION
-  (ν.lift = (polOM p F).liftOf ν ∧ ((ν.zbar : Fˣ) : F) = canonRoot ν)
+  (ν.lift = (polOM p F).liftOf ν ∧ ((ν.zbar : Fˣ) : F) = canonRoot ν) ∧
+  -- (vi) VERTEX READ-OFF [N-4 SIGN-OFF, 2026-07-28 — §9 F-3's minimal ADDITIVE repair of
+  -- the layer-2 TERMINAL seam]: at the read's window vertex — slot μ of f's development
+  -- in the DESIGNATED NEXT key — f's actual frame-i residual digit IS the recorded
+  -- transported vertex value (D.8's (VERTEX) normalization `T(μ·m̂ − a)`/`z̄^{−μm̂}` is
+  -- folded into `Node.vtx`), stated in the `σ.digPrime zbar (B μ)` vocabulary of
+  -- `L5_landVertexDigit`. Additive-only: U19/U23/U24 remain projections; U21 is a
+  -- DERIVATION from this clause (never (HV) itself). NON-VACUITY: U31's gate re-run with
+  -- this clause is MANDATORY (fleet phase) — if the concrete witness cannot discharge it,
+  -- the clause is over-strengthened and the design returns to F-3 (the GAP-4 mechanism).
+  (∀ (Bh : ℕ → Polynomial ℤ_[p]) (Nh : ℕ),
+      IsDevelopment Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) Bh Nh →
+      ν.σ.digPrime ν.zbar (Bh ν.μ) = ν.vtx)
 
 /-- "History H is a classifier run on f" (Wall A; the W4-1 seam): H is a coherent recorded
 tower, and per read i, f's development in frame i's key realizes the recorded side/digit
@@ -321,6 +346,31 @@ structure ZCSeedLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       ∀ d : Fin m → ZMod p,
         ∃ (x' : Fin m → ZMod p) (f' : Polynomial ℤ_[p]), pres i x' f' ∧
           (∀ c ∉ S, x' c = x c) ∧ (∀ c ∈ S, x' c = d c)
+  /-- Θ-NORMALIZATION [N-QUEUE SIGN-OFF LAW, 2026-07-28 — the D5-fence residue the
+  U9b/U9c records landed exactly where the blueprint's residue rule predicted]: the move
+  map `Θ_i` carries NO correction at frame-(i+1) VALUATION CONTENT — coordinates whose
+  height sits at-or-below the step floor are `Θ_i`-LITERAL. This is §C C.1.5(2)'s
+  normalized re-presentation ("No carries occur in valuation content", MOVES 3984–3988)
+  — CONDITIONAL note content, hence a named seed law (HC-1's to discharge), never the
+  unconditional `IsFreshAttach` spec (the DC-3 lesson). Consumer: U9c's strip solves
+  (post-DC-3 a chosen-system strip solve is `−corr`; literal zero ⟺ the correction
+  vanishes); U10c's steps consume the same law at i > 0. -/
+  theta_norm : ∀ (i : ℕ), i < H.nodes.length →
+      ∀ c : Fin m,
+        ((H.htH (i+1) (coordOf c) : ℚ) : WithBot ℚ) ≤ H.floorH (i+1) (coordOf c).2 →
+        ∀ x : Fin m → ZMod p, Theta i x c = x c
+  /-- ROOT-SHAPE [N-QUEUE SIGN-OFF LAW, 2026-07-28 — the U9c obstruction-(ii) repair,
+  §9 F-6's sibling]: the ROOT read's factor interior carries NO exact-valuation (value)
+  coordinate — the blueprint sketch's "value pins sit at the rim by the root band's
+  shape" (§B2-DEF D.4's root case), given its Lean carrier as a seed law. NOTE the form:
+  the escalation record's draft `μ·childWidth ≤ s0·Dwidth` is FALSE at the U27/U31 gate
+  node (`s0 = 0` with span slots crossing the interior but every interior LEVEL SET
+  EMPTY); the value-coordinate-free form below is the faithful weakening — it is what
+  U9c's value-pin exclusion actually consumes, and it HOLDS at the gate (heights 0,
+  slot valuations ≥ 1). Consumer: U9c (interior pins are then STRIP pins). -/
+  root_shape : ∀ (h0 : 0 < H.nodes.length) (c : Fin m),
+      (coordOf c).2 < (H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth →
+      ¬ IsValueCoord H coordOf 0 (H.nodes[0]'h0) c
 
 /-- The graded-presentation SEED (D5, rev-2 PRUNED per audit GAP-5): exactly the fields of
 `JetSetup` that MovesC's honest boundary defers to the unbuilt graded ring (§B2-DEF R4.5
@@ -611,7 +661,43 @@ noncomputable def mkSigma {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
         pinTransportSystem (mkSigma H n N S vOf i) (S.Theta i) (mkFresh H n N S vOf i hi)
       else mkSigma H n N S vOf i
 
-/-! ## Addenda (elaboration helpers, MovesD-poolProj pattern) -/
+/-! ## Addenda (elaboration helpers, MovesD-poolProj pattern; N-queue Defs addenda) -/
+
+/-- [N-2 ADDENDUM, 2026-07-28 — §9 F-1's completed eligibility narrowing] The COMPLETE
+D.10 eligibility of a recentering node (MOVES 2583–2671): unramified frame, nonzero
+recorded center, the (S6b)/(I-aug) threshold. Necessity of all three + joint sufficiency
+are machine-checked in U25 (`recenterLiftSpec_forces_frame_e_one`,
+`recenterLiftSpec_forces_center_ne_zero`, `recenterLiftSpec_of_eligible`). Carried by
+U25's final-read guard (interior recenterings close from coherence); under `ReadsOf`,
+clause (iv)'s final `LandingKey` discharges it outright — runs need no extra hypothesis. -/
+def D10Eligible {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (ν : Node p F) : Prop :=
+  ν.σ.e = 1 ∧ ν.center ≠ 0 ∧ ν.σ.wPrev ν.σ.Φ < (ν.σ.h : ℤ)
+
+/-- [N-5 ADDENDUM, 2026-07-28 — §9 F-6's designed minimal addition] §B2-DEF D.4's ROOT
+clause, as a named history hypothesis: nonnegative root intercept datum (`ustar ≥ 0`) and
+"every side slope ≥ 1" (at the root `Dwidth = 1`, `STR = 1` give `slope = h/e`, so
+`1 ≤ slope` IS D.4's clause). U11 is REFUTABLE without it (`ustar := −5` junk shapes
+inhabit the Lean shape universe — `ShapeWF` carries no height law); HC-1's seed
+constructions sit over the decided cluster strata, where D.4's root clause is the note's
+own standing hypothesis — the content lives there. Carried by U11/U13/U15. -/
+def RootD4 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : History p F) : Prop :=
+  ∀ h0 : 0 < H.nodes.length,
+    0 ≤ (H.nodes[0]'h0).ustar ∧ 1 ≤ (H.nodes[0]'h0).line.slope
+
+/-- [K3 ADDENDUM, 2026-07-28] READ ADJACENCY along a history: every consecutive read's
+window reaches its parent's standing vertex (`s0 + wSide = μ`, the U21 (HV) hypothesis
+form). U18's uniqueness is CONDITIONALLY REFUTED without it
+(`lean/scratch_U18_unique_false.lean`: a last-node NON-ADJACENT recentering has (HV)
+vacuous and `canonRoot` trivial — ψ = X − C center has a singleton root set — so a
+Frobenius-moved center yields same-class distinct η-data); adjacency is exactly what the
+refutation witness's `hnonadj` violates. -/
+def AdjacentReads {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : History p F) : Prop :=
+  ∀ (i : ℕ) (hi1 : i + 1 < H.nodes.length),
+    (H.nodes[i+1]'hi1).s0 + (H.nodes[i+1]'hi1).wSide
+      = (H.nodes[i]'(by omega : i < H.nodes.length)).μ
 
 /-- [U14 addendum] The fresh band on RAW coordinates (the `inFreshBand` formula off the
 chart — NP-ID's ⊆-direction carrier: band levels, not box positions, are what `NPband`
@@ -621,6 +707,21 @@ def inFreshBandC {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   c.2 < H.prevRim n i ∧
   H.floorH i c.2 < ((H.htH i c : ℚ) : WithBot ℚ) ∧
   H.htH i c ≤ ν.slotVal (ν.fineSlot c.2)
+
+/-- [K2 ADDENDUM, 2026-07-28 — the mkSigma-recursion disposition] The blueprint's
+pre-named PER-STEP CONDITION (D5 zcSeed docstring: "fresh clauses cut freshly = their
+supports are UNPINNED on the prior state"), named as a hypothesis object per the U25
+pattern: read `i`'s fresh supports carry no pin of the prior state. FREE at i = 0
+(nothing is pinned before the root read — `U7.mkSigma_recursion_zero`); its per-step
+discharge at i > 0 is U10's (ZC)+DOM geometry (U9's at the root). Carried by U7's
+restated `mkSigma_recursion` and threaded through U13/U15/U16; the BARE ∀-i recursion
+was refuted-as-underivable on junk histories (U7's POST-DC-3 record) and is RETIRED. -/
+def SeedFreshUnpinned {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : History p F) (n N : ℕ) {keys : ℕ → Polynomial ℤ_[p]}
+    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N)) : Prop :=
+  ∀ (i : ℕ) (hi : i < H.nodes.length) (c : Fin (n * N)),
+    (mkSigma H n N S vOf i).pinned c = true →
+    ¬ ∃ cl ∈ (mkFresh H n N S vOf i hi).clauses, c ∈ cl.support
 
 /-- [Gate addendum] The ambient field of the p = 2 order-0 gates (U27/U31): GF(4) — big
 enough for the n = 2 inert read's residue growth. -/

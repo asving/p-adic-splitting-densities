@@ -144,7 +144,7 @@ private lemma stage_wC_nonneg (T : Tower p F) (c : ℤ_[p]) (hc : c ≠ 0) :
     intro i _
     positivity
   | succ i ih =>
-    rcases T.move i with ⟨ψ, g, Φhat, e', h', zbar, hyp, core⟩ | ⟨cc, tt, core⟩
+    rcases T.move i with ⟨ψ, g, Φhat, e', h', zbar, hyp, core, -⟩ | ⟨cc, tt, core, -⟩
     · rw [(T.stg i.succ).hStretch (Polynomial.C c) hCcne (hinC _),
           core.base.child_wPrev (Polynomial.C c)]
       exact mul_nonneg (Nat.cast_nonneg _) ih

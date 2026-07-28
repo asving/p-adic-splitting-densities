@@ -31,6 +31,22 @@ namespace LeanUrat.HC1
 open Polynomial LeanUrat.Moves
 open scoped Classical
 
+/-- **The card-K bridge (F-2, sign-off event 2026-07-28, blueprint §9.2):** every
+stage residue field of a tower has p-power cardinality, `Nat.card ↥K = p^d` with
+`d = [K : F_p] ≥ 1` — the bridge C6's conjuncts 2–3 consume. Underivable before the
+F-2 char pin `Tower.hcharF : CharP F p` (round-2 fleet kernel: `Stage p F` carries
+no characteristic tie, so `Nat.card K` was a power of char F, junk off char p); the
+pin records the note's own setting (F_{k+1}/F_p extensions, MOVES 2148–2165). -/
+theorem C6_cardK_bridge {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (T : Tower p F) (k : Fin (T.K + 1)) :
+    ∃ d : ℕ, 1 ≤ d ∧ Nat.card ↥(T.stg k).K = p ^ d := by
+  haveI : CharP F p := T.hcharF
+  haveI : Fintype ↥(T.stg k).K := Fintype.ofFinite _
+  haveI : CharP ↥(T.stg k).K p :=
+    RingHom.charP (T.stg k).K.subtype (T.stg k).K.subtype.injective p
+  obtain ⟨n, -, hn⟩ := FiniteField.card ↥(T.stg k).K p
+  exact ⟨(n : ℕ), n.2, by rw [Nat.card_eq_fintype_card, hn]⟩
+
 /-- Unit C6: `#𝔸 = p^aDim`; on nonempty level sets, fullness (𝔸 = the full value
 field F_{K+1} = the top stage's K, in cardinality) holds EXACTLY WHEN every slot
 height is attainable, and is STRICTLY SMALLER when some slot height is
@@ -48,4 +64,5 @@ theorem C6_alphabetCard {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
 
 end LeanUrat.HC1
 
+#print axioms LeanUrat.HC1.C6_cardK_bridge
 #print axioms LeanUrat.HC1.C6_alphabetCard

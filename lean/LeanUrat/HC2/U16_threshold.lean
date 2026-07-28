@@ -2,7 +2,9 @@
 Unit U16.threshold_of_seeds  (HC-2 campaign, E-phase — blueprint §5 Layer C)
 moves_ref: MovesD §2 Threshold/TW row (`Threshold.jets` = presentations at EVERY level
 ≥ NP; TW constructs `Threshold` from PRESENT-EXIST).
-deps: U15.  difficulty: easy.  hypothesis_fields: hseed, hnorm.
+deps: U15.  difficulty: easy.  hypothesis_fields: hseed, hnorm, hd4 (N-5), hunp (K2).
+N-QUEUE RESTATEMENT (2026-07-28): threads U15's new `hd4`/`hunp` binders (N-5/K2 —
+see U15's header for the records); SEED-EXIST itself byte-unchanged.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -23,11 +25,15 @@ theorem threshold_of_seeds {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
     (hseed : ∀ (i : PrefIdx n (polOM p F) P) (N : ℕ), P.NP (polOM p F) ≤ N →
        ∃ keys : ℕ → Polynomial ℤ_[p], KeysLawful (reprOf i) keys ∧
          Nonempty (PresentSeed p F (reprOf i) n N keys))
-    (hnorm : PresentNorm n (polOM p F) P) :
+    (hnorm : PresentNorm n (polOM p F) P)
+    (hd4 : ∀ i : PrefIdx n (polOM p F) P, RootD4 (reprOf i))
+    (hunp : ∀ (i : PrefIdx n (polOM p F) P) (N : ℕ) (keys : ℕ → Polynomial ℤ_[p])
+       (S : PresentSeed p F (reprOf i) n N keys) (vOf : VOf p (n * N)),
+       SeedFreshUnpinned (reprOf i) n N S vOf) :
     Nonempty (Threshold p F n (polOM p F) P) := by
   -- U16 = MovesD.TW ∘ U15: `present_exist_of_seeds hseed hnorm` supplies PRESENT-EXIST
   -- (the `hex` argument), from which `TW_threshold_witness` builds the threshold by
   -- choice on L12's exact range (blueprint §5 Layer C, deps U15 + MovesD TW row).
-  exact TW_threshold_witness (present_exist_of_seeds hseed hnorm)
+  exact TW_threshold_witness (present_exist_of_seeds hseed hnorm hd4 hunp)
 
 end LeanUrat.MovesJ

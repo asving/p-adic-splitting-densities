@@ -7,6 +7,15 @@ composition; U17b-3 data transport. The E-phase renderings below are the elabora
 typeable carriers (flagged in MANIFEST; prover refinement authorized — a full Node/Stage
 transport definition is NOT authorized in the Defs layer, so U17b-3 is stated in
 ∃-transported form).  hypothesis_fields: none.
+N-3 RESTATEMENT (2026-07-28, sign-off round — §9 F-1's U17c adjudication, route (A)):
+`galois_transport` / `galois_normalize_upTo` / `galois_normalize` each gain the ADDITIVE
+conjunct `((polOM p F).IsCanon H → (polOM p F).IsCanon H')`. Soundness as recorded: the
+transport fixes ℤ_p[X]-side data (`.lift`, `σ.Φ`, `σ.w`) and φ-conjugates residue data
+(K, center, R); `RecenterLiftSpec` is pointwise-iff-invariant
+(`recenterLiftSpec_nodeMap`), so the choice-defined `polOM.liftOf` is unchanged
+node-by-node (`polOM_liftOf_nodeMap`, propext) while the lift field is untouched —
+`IsCanon` transports verbatim (`isCanon_historyMap`). The proved assembly re-threaded;
+still sorry-free. U17c consumes the clause in one line.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -791,11 +800,63 @@ private lemma tower_mem (H : History p F) (hcoh : HistoryCoherent H) :
       subst hrn'
       exact hKle
 
+/-! ### The `IsCanon` transport (N-3 SIGN-OFF, 2026-07-28 — §9 F-1's route (A), the
+minimal missing OUTPUT clause): the transport fixes ℤ_p[X]-side data (`.lift`, `σ.Φ`,
+`σ.w`) and φ-conjugates residue data (K, center, R); `RecenterLiftSpec` is then
+pointwise-iff-invariant, so (propext) the choice-defined `polOM.liftOf` is unchanged
+node-by-node while the lift field is untouched — `IsCanon` transports verbatim. -/
+
+/-- `RecenterLiftSpec` is invariant under the node transport: the ℤ_p-side conjuncts are
+definitionally unchanged (`stageMap` keeps `Φ`, `w`, `inC`), and the residual-digit
+conjunct conjugates both sides by the injective `lmap (resAut φ)`. -/
+private lemma recenterLiftSpec_nodeMap (φ : F ≃+* F) (ν : Node p F)
+    (tL : Polynomial ℤ_[p]) :
+    RecenterLiftSpec (nodeMap φ ν) tL ↔ RecenterLiftSpec ν tL := by
+  constructor
+  · rintro ⟨h1, h2, h3, h4⟩
+    refine ⟨h1, h2, h3, ?_⟩
+    have h4' : lmap ((resAut φ ν.σ.K : ↥ν.σ.K ≃+* ↥ν.σ.K) : ↥ν.σ.K →+* ↥ν.σ.K) (ν.σ.R tL)
+        = LaurentPolynomial.C (resAut φ ν.σ.K ν.center) * LaurentPolynomial.T 0 := h4
+    apply lmap_injective (resAut φ ν.σ.K)
+    rw [h4', lmap_C_mul_T]
+    rfl
+  · rintro ⟨h1, h2, h3, h4⟩
+    refine ⟨h1, h2, h3, ?_⟩
+    have h4' : lmap ((resAut φ ν.σ.K : ↥ν.σ.K ≃+* ↥ν.σ.K) : ↥ν.σ.K →+* ↥ν.σ.K) (ν.σ.R tL)
+        = LaurentPolynomial.C ((resAut φ ν.σ.K) ν.center) * LaurentPolynomial.T 0 := by
+      rw [h4, lmap_C_mul_T]
+      rfl
+    exact h4'
+
+/-- Hence the choice-defined policy output is node-transport-invariant. -/
+private lemma polOM_liftOf_nodeMap (φ : F ≃+* F) (ν : Node p F) :
+    (polOM p F).liftOf (nodeMap φ ν) = (polOM p F).liftOf ν := by
+  classical
+  have hpred : RecenterLiftSpec (nodeMap φ ν) = RecenterLiftSpec ν := by
+    funext tL
+    exact propext (recenterLiftSpec_nodeMap φ ν tL)
+  show (if h : ∃ tL, RecenterLiftSpec (nodeMap φ ν) tL then h.choose else 0)
+      = (if h : ∃ tL, RecenterLiftSpec ν tL then h.choose else 0)
+  rw [hpred]
+
+/-- `IsCanon` transports along the history transport (the lift field is untouched by
+`nodeMap`; the policy output is invariant). -/
+private lemma isCanon_historyMap (φ : F ≃+* F) (H : History p F)
+    (hc : (polOM p F).IsCanon H) : (polOM p F).IsCanon (historyMap φ H) := by
+  intro r hr
+  have hr' : r < H.nodes.length := by simpa using hr
+  rw [historyMap_getElem φ H r hr hr']
+  show (nodeMap φ (H.nodes[r]'hr')).lift = (polOM p F).liftOf (nodeMap φ (H.nodes[r]'hr'))
+  have hlift : (nodeMap φ (H.nodes[r]'hr')).lift = (H.nodes[r]'hr').lift := rfl
+  rw [hlift, polOM_liftOf_nodeMap]
+  exact hc r hr'
+
 end TransportInfra
 
 /-- U17b-3 — data transport: an ambient automorphism transports a coherent realizable
 history to a coherent realizable history with φ-conjugated η-data and φ-mapped roots
-(a ring-iso commutes with every clause in Node's Prop fields — mechanical but long). -/
+(a ring-iso commutes with every clause in Node's Prop fields — mechanical but long).
+N-3 (2026-07-28): gains the additive `IsCanon`-transport clause (last conjunct). -/
 theorem galois_transport (φ : F ≃+* F) (H : History p F)
     (hcoh : HistoryCoherent H) (hreal : Realizable H) :
     ∃ H' : History p F,
@@ -807,15 +868,19 @@ theorem galois_transport (φ : F ≃+* F) (H : History p F)
           ((etaData P H' r).1 = fun k => φ ((etaData P H r).1 k)) ∧
           ((etaData P H' r).2 = fun k => φ ((etaData P H r).2 k))) ∧
       (∀ (r : ℕ) (hr : r < H'.nodes.length) (hr' : r < H.nodes.length),
-        (((H'.nodes[r]'hr).zbar : Fˣ) : F) = φ (((H.nodes[r]'hr').zbar : Fˣ) : F)) :=
+        (((H'.nodes[r]'hr).zbar : Fˣ) : F) = φ (((H.nodes[r]'hr').zbar : Fˣ) : F)) ∧
+      ((polOM p F).IsCanon H → (polOM p F).IsCanon H') :=
   ⟨historyMap φ H, historyCoherent_historyMap φ H hcoh, realizable_historyMap φ H hreal,
     historyMap_length φ H, fun P hm => matchesHist_historyMap φ P H hm,
     fun P _ r => etaData_historyMap φ P H r,
-    fun r hr hr' => zbar_historyMap φ H r hr hr'⟩
+    fun r hr hr' => zbar_historyMap φ H r hr hr',
+    fun hc => isCanon_historyMap φ H hc⟩
 
 /-- U17b-2 — tower composition: normalize the roots of the first `i` reads (induction
 carrier; the automorphism group of a finite field is cyclic, extension over the recorded
-subfield tower is elementary Galois theory of finite fields). -/
+subfield tower is elementary Galois theory of finite fields).
+N-3 (2026-07-28): gains the additive `IsCanon`-transport clause (last conjunct; threads
+the induction — base identity, step `isCanon_historyMap`). -/
 theorem galois_normalize_upTo {n : ℕ} {P : Shape n} (H : History p F)
     (hm : (P : ShapePrefix).MatchesHist H) (hcoh : HistoryCoherent H)
     (hreal : Realizable H) (hbox : InBox n H) (i : ℕ) :
@@ -824,19 +889,21 @@ theorem galois_normalize_upTo {n : ℕ} {P : Shape n} (H : History p F)
       EtaGalEq (etaData (P : ShapePrefix) H) (etaData (P : ShapePrefix) H') ∧
       HistoryCoherent H' ∧ Realizable H' ∧ InBox n H' ∧
       (∀ (r : ℕ) (hr : r < H'.nodes.length), r < i →
-        (((H'.nodes[r]'hr).zbar : Fˣ) : F) = canonRoot (H'.nodes[r]'hr)) := by
+        (((H'.nodes[r]'hr).zbar : Fˣ) : F) = canonRoot (H'.nodes[r]'hr)) ∧
+      ((polOM p F).IsCanon H → (polOM p F).IsCanon H') := by
   induction i with
   | zero =>
     exact ⟨H, hm, etaGalEq_refl _ _, hcoh, hreal, hbox,
-      fun r _ hri => absurd hri (Nat.not_lt_zero r)⟩
+      fun r _ hri => absurd hri (Nat.not_lt_zero r), fun hc => hc⟩
   | succ i ih =>
-    obtain ⟨H₁, hm₁, hEta₁, hcoh₁, hreal₁, hbox₁, hnorm₁⟩ := ih
+    obtain ⟨H₁, hm₁, hEta₁, hcoh₁, hreal₁, hbox₁, hnorm₁, hcanon₁⟩ := ih
     by_cases hi : i < H₁.nodes.length
     · -- normalize read i via a root swap fixing its frame subfield pointwise
       obtain ⟨φ, hfix, hswap⟩ := galois_root_swap (H₁.nodes[i]'hi)
       refine ⟨historyMap φ H₁, matchesHist_historyMap φ _ H₁ hm₁,
         etaGalEq_step φ _ H H₁ hEta₁, historyCoherent_historyMap φ H₁ hcoh₁,
-        realizable_historyMap φ H₁ hreal₁, inBox_historyMap φ n H₁ hbox₁, ?_⟩
+        realizable_historyMap φ H₁ hreal₁, inBox_historyMap φ n H₁ hbox₁, ?_,
+        fun hc => isCanon_historyMap φ H₁ (hcanon₁ hc)⟩
       intro r hr hri
       have hr₁ : r < H₁.nodes.length := by simpa using hr
       rw [historyMap_getElem φ H₁ r hr hr₁]
@@ -854,11 +921,13 @@ theorem galois_normalize_upTo {n : ℕ} {P : Shape n} (H : History p F)
         rw [nodeMap_zbar_coe, canonRoot_nodeMap_of_fix φ _ hfix]
         exact hswap
     · -- i beyond the history: nothing new to normalize
-      refine ⟨H₁, hm₁, hEta₁, hcoh₁, hreal₁, hbox₁, fun r hr hri => hnorm₁ r hr ?_⟩
+      refine ⟨H₁, hm₁, hEta₁, hcoh₁, hreal₁, hbox₁, fun r hr hri => hnorm₁ r hr ?_, hcanon₁⟩
       omega
 
 /-- U17b assembled — GALOIS NORMALIZATION: every matched coherent realizable in-box
-history has a fully root-normalized Galois class-mate. -/
+history has a fully root-normalized Galois class-mate.
+N-3 (2026-07-28): gains the additive `IsCanon`-transport clause (last conjunct) — the
+missing OUTPUT clause U17c's escalation record identified; consumption there is one line. -/
 theorem galois_normalize {n : ℕ} {P : Shape n} (H : History p F)
     (hm : (P : ShapePrefix).MatchesHist H) (hcoh : HistoryCoherent H)
     (hreal : Realizable H) (hbox : InBox n H) :
@@ -872,13 +941,14 @@ theorem galois_normalize {n : ℕ} {P : Shape n} (H : History p F)
         ((etaData (P : ShapePrefix) H' r).2
             = fun k => φ ((etaData (P : ShapePrefix) H r).2 k))) ∧
       EtaGalEq (etaData (P : ShapePrefix) H) (etaData (P : ShapePrefix) H') ∧
-      HistoryCoherent H' ∧ Realizable H' ∧ InBox n H' := by
+      HistoryCoherent H' ∧ Realizable H' ∧ InBox n H' ∧
+      ((polOM p F).IsCanon H → (polOM p F).IsCanon H') := by
   -- Normalize every read (`i := #reads`); the Galois witness of `EtaGalEq` is the `φ` sought.
-  obtain ⟨H', hM', hEta, hcoh', hreal', hbox', hnorm⟩ :=
+  obtain ⟨H', hM', hEta, hcoh', hreal', hbox', hnorm, hcanon⟩ :=
     galois_normalize_upTo H hm hcoh hreal hbox ((P : ShapePrefix).reads.length)
   obtain ⟨hlen', hmatch'⟩ := hM'
   obtain ⟨φ, hφ⟩ := hEta
   exact ⟨φ, H', ⟨hlen', hmatch'⟩,
-    (fun r hr => hnorm r hr (hlen' ▸ hr)), hφ, ⟨φ, hφ⟩, hcoh', hreal', hbox'⟩
+    (fun r hr => hnorm r hr (hlen' ▸ hr)), hφ, ⟨φ, hφ⟩, hcoh', hreal', hbox', hcanon⟩
 
 end LeanUrat.MovesJ

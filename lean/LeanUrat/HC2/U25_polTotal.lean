@@ -13,6 +13,13 @@ excludes, this unit's hypothesis must name the eligibility predicate (statement-
 hypothesis NARROWING, needs sign-off + a note-line citation — MOVES 2583–2671). The U30
 gate is the day-one tripwire for exactly this risk.
 hypothesis_fields: none (target), or the named eligibility predicate (fallback).
+N-2 RESTATEMENT (2026-07-28, sign-off round — §9 F-1 executed): `polOM_total` and
+`polOM_liftOf_spec` gain the GUARDED hypothesis
+`helig : i + 1 = H.nodes.length → D10Eligible (H.nodes[i]'hi)` (Defs N-2 addendum: the
+complete D.10 eligibility triple {σ.e = 1, center ≠ 0, wPrev Φ < h}; MOVES 2583–2671).
+The blueprint's pre-declared fallback (`σ.e = 1` alone) was INSUFFICIENT (escalation
+necessity 2); necessity of all three legs + joint sufficiency are the machine-checked
+lemmas below. Unit now SORRY-FREE (interior from coherence; final from the guard).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -84,16 +91,24 @@ private theorem recenterLiftSpec_of_eligible {p : ℕ} [Fact p.Prime] {F : Type*
   · rw [hBR, ν.σ.he1t he1]
     simp
 
-/-- POL-TOTALITY (L1 kernel-(a)): at every recentering node of a coherent realizable
-history, a `RecenterLiftSpec` realizer exists.
+/-- POL-TOTALITY (L1 kernel-(a); RESTATED AT N-2, 2026-07-28 — §9 F-1's pre-analyzed
+eligibility narrowing, sign-off executed): at every recentering node of a coherent
+realizable history, a `RecenterLiftSpec` realizer exists — under the GUARDED hypothesis
+`helig` naming the complete D.10 eligibility (`D10Eligible`, Defs N-2 addendum; MOVES
+2583–2671) at the FINAL read only.
 
-INTERIOR nodes (`i+1 < len`) close cleanly: coherence's `IsRecenteringCore.base` is literally
-`RecenterLiftSpec ν ν.lift`. The FINAL recentering node is the genuine obstruction — see the
-`sorry` comment below and `recenterLiftSpec_forces_frame_e_one`. -/
+INTERIOR nodes (`i+1 < len`) close from coherence: `IsRecenteringCore.base` is literally
+`RecenterLiftSpec ν ν.lift` — the guard is interior-invisible. The FINAL recentering node
+was the machine-checked obstruction (the escalation records preserved below the proof);
+`recenterLiftSpec_of_eligible` closes it from the guard. RUN-SIDE DISCHARGE (so the guard
+is never mistaken for dead weight): under `ReadsOf`, clause (iv)'s final `LandingKey`
+contains `RecenterLiftSpec ν ν.lift` at a final recentering — runs supply the realizer
+outright and `D10Eligible` follows from the necessity lemmas. -/
 theorem polOM_total {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {H : History p F} (hcoh : HistoryCoherent H) (hreal : Realizable H)
     (i : ℕ) (hi : i < H.nodes.length)
-    (hrec : (H.nodes[i]'hi).species = ReadSpecies.recentering) :
+    (hrec : (H.nodes[i]'hi).species = ReadSpecies.recentering)
+    (helig : i + 1 = H.nodes.length → D10Eligible (H.nodes[i]'hi)) :
     ∃ tL : Polynomial ℤ_[p], RecenterLiftSpec (H.nodes[i]'hi) tL := by
   obtain ⟨_hroot, _hslope, _hgam, htrans⟩ := hcoh
   by_cases hlast : i + 1 < H.nodes.length
@@ -103,54 +118,43 @@ theorem polOM_total {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     have hrc := (htrans i hlast).1 hrec
     obtain ⟨_, _, _, hinC, hne, hw, hR, _⟩ := hrc.base
     exact ⟨(H.nodes[i]'hi).lift, hinC, hne, hw, hR⟩
-  · -- FINAL recentering node (`i = len - 1`): THE OBSTRUCTION (unprovable from `hcoh`/`hreal`).
-    --
-    -- `recenterLiftSpec_forces_frame_e_one` shows any realizer forces `ν.σ.e = 1` (D.10
-    -- eligibility). Coherence supplies `ν.σ.e = 1` ONLY through the recentering branch of its
-    -- transition conjunct, which is guarded by `i+1 < len` (`htrans`, unavailable here). The
-    -- transition INTO this node (coherence at `i-1`) sets `ν.σ.e` via `TransitionData.child_e`
-    -- to the PREDECESSOR's read index; when the predecessor is an increment with `e ≥ 2`
-    -- (a legal, coherent, realizable configuration) `ν.σ.e = 2 ≠ 1`, so NO `tL` satisfies the
-    -- spec (necessity above). `hreal`/`TransitionAdmissible` constrain lines & pattern-lead
-    -- digits only, never `ν.σ.e`; the node fields give `ν.e = 1` (read), never `ν.σ.e = 1`
-    -- (frame). Interior copies of this configuration are coherence-INFEASIBLE (the `i`-indexed
-    -- recentering branch would force `ν.σ.e = 1`, clashing with the inherited `2`); ONLY the
-    -- final node escapes that clash — the identical last-node freedom refuted at `U1.keys_exist`
-    -- (Codex-confirmed there). RESOLUTION = the blueprint's pre-declared FALLBACK: narrow the
-    -- hypothesis to the eligibility predicate `(H.nodes[i]'hi).σ.e = 1` (a statement-fence
-    -- NARROWING needing designer sign-off + note-line cite, MOVES 2583–2671).
-    --
-    -- ESCALATION PASS (second prover), obstruction SHARPENED — the `σ.e = 1` narrowing alone
-    -- is NOT enough; the final-recentering case is unprovable in EVERY frame:
-    --  (O1) frame eligibility `ν.σ.e = 1` — necessity machine-checked above; unavailable when
-    --       the predecessor is a root/increment with read `e ≥ 2` (`TransitionData.child_e`;
-    --       `hspecInc` needs only `e·g > 1`). A RECENTERING predecessor does supply it
-    --       (`IsRecentering`'s `σ'.e = 1` conjunct) — but (O2)/(O3) still block:
-    --  (O2) `ν.center ≠ 0` — NEW necessity, machine-checked
-    --       (`recenterLiftSpec_forces_center_ne_zero`): the final node's `center` is an
-    --       unconstrained record field (interior nodes get `cc ≠ 0` from `IsRecentering` at
-    --       their own index; no clause exists at the final index).
-    --  (O3) the (S6b)/(I-aug) threshold `ν.σ.wPrev ν.σ.Φ < ν.σ.h` — the ONLY realizer source
-    --       in `Stage` is `hS6b`, gated by this inequality; it lives in `StageCore.prevIaug`,
-    --       which `HistoryCoherent` does not carry for the final frame.
-    -- CONVERSELY the three conditions SUFFICE (`recenterLiftSpec_of_eligible`, machine-checked):
-    -- under the sign-off narrowing {σ.e = 1, center ≠ 0, wPrev Φ < h} this branch closes as
-    --   `exact recenterLiftSpec_of_eligible _ he1 hcen hthr`
-    -- and the whole unit is sorry-free. That triple (not `σ.e = 1` alone) is the complete
-    -- D.10 eligibility the fallback must name.
-    sorry
+  · -- FINAL recentering node: the D10Eligible guard fires; joint sufficiency is
+    -- `recenterLiftSpec_of_eligible` (machine-checked above). The pre-restatement
+    -- obstruction records (both escalation passes) are preserved verbatim below.
+    obtain ⟨he1, hcen, hthr⟩ := helig (by omega)
+    exact recenterLiftSpec_of_eligible _ he1 hcen hthr
 
-/-- Hence `polOM.liftOf` itself satisfies the spec at such nodes (choice reading): once a
-realizer exists (`polOM_total`), `polOM.liftOf` unfolds to `Classical.choose` of that
-existence, whose spec is the goal. Inherits `polOM_total`'s final-node obstruction. -/
+/- PRE-RESTATEMENT ESCALATION RECORDS (historical; the N-2 guard resolves them):
+   FIRST PASS — `recenterLiftSpec_forces_frame_e_one` shows any realizer forces `ν.σ.e = 1`
+   (D.10 eligibility). Coherence supplies `ν.σ.e = 1` ONLY through the recentering branch of
+   its transition conjunct, guarded by `i+1 < len` (unavailable at the final read); the
+   transition INTO the node sets `ν.σ.e` via `TransitionData.child_e` to the PREDECESSOR's
+   read index — an `e = 2` increment predecessor is legal, coherent, realizable, and kills
+   every realizer (necessity). Interior copies of the configuration are coherence-INFEASIBLE;
+   ONLY the final node escapes — the identical last-node freedom refuted at U1 (N-1).
+   SECOND PASS (obstruction SHARPENED — `σ.e = 1` alone is NOT enough):
+    (O1) frame eligibility `ν.σ.e = 1` — necessity machine-checked; unavailable when the
+         predecessor is a root/increment with read `e ≥ 2`.
+    (O2) `ν.center ≠ 0` — necessity machine-checked (`recenterLiftSpec_forces_center_ne_zero`);
+         the final node's `center` is an unconstrained record field.
+    (O3) the (S6b)/(I-aug) threshold `ν.σ.wPrev ν.σ.Φ < ν.σ.h` — the ONLY realizer source in
+         `Stage` is `hS6b`, gated by this inequality (`StageCore.prevIaug`, which
+         `HistoryCoherent` does not carry for the final frame).
+   The triple {σ.e = 1, center ≠ 0, wPrev Φ < h} = `D10Eligible` is the complete D.10
+   eligibility; necessity of each leg + joint sufficiency machine-checked in this file. -/
+
+/-- Hence `polOM.liftOf` itself satisfies the spec at such nodes (choice reading; carries
+the N-2 `helig` guard through): once a realizer exists (`polOM_total`), `polOM.liftOf`
+unfolds to `Classical.choose` of that existence, whose spec is the goal. -/
 theorem polOM_liftOf_spec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {H : History p F} (hcoh : HistoryCoherent H) (hreal : Realizable H)
     (i : ℕ) (hi : i < H.nodes.length)
-    (hrec : (H.nodes[i]'hi).species = ReadSpecies.recentering) :
+    (hrec : (H.nodes[i]'hi).species = ReadSpecies.recentering)
+    (helig : i + 1 = H.nodes.length → D10Eligible (H.nodes[i]'hi)) :
     RecenterLiftSpec (H.nodes[i]'hi) ((polOM p F).liftOf (H.nodes[i]'hi)) := by
   classical
   have hex : ∃ tL : Polynomial ℤ_[p], RecenterLiftSpec (H.nodes[i]'hi) tL :=
-    polOM_total hcoh hreal i hi hrec
+    polOM_total hcoh hreal i hi hrec helig
   have hlift : (polOM p F).liftOf (H.nodes[i]'hi) = hex.choose := by
     simp only [polOM]
     exact dif_pos hex

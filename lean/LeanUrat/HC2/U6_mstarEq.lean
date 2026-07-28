@@ -17,6 +17,9 @@ The four ingredients are sourced as follows:
 * every band coord is covered     — IMPORTED as `mkFresh_cover` (U4), the one genuinely deep
   half (the roster's (γ)-crossing self-truncation).
 RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
+N-6 THREADING (2026-07-28): gains `hcoh`/`hreal` binders, threaded to the N-6-restated
+`mkFresh_cover` (whose value case now needs them — the no-straddle repair); proof
+otherwise byte-unchanged, still closes.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -86,6 +89,7 @@ private lemma sum_codim_eq_card_unionSupp {p m : ℕ} (L : List (LevelClause p m
 theorem mkFresh_mstar {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (H : History p F) (n N : ℕ) {keys : ℕ → Polynomial ℤ_[p]}
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (hcoh : HistoryCoherent H) (hreal : Realizable H)
     (i : ℕ) (hi : i < H.nodes.length) :
     (mkFresh H n N S vOf i hi).mstar
       = Nat.card {c : Fin (n * N) //
@@ -159,7 +163,7 @@ theorem mkFresh_mstar {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     · rintro ⟨cl, hcl, hc⟩
       exact ⟨Finset.mem_univ c, hband cl hcl c hc⟩
     · rintro ⟨-, hQ⟩
-      exact mkFresh_cover H n N S vOf i hi c hQ
+      exact mkFresh_cover H n N S vOf hcoh hreal i hi c hQ
   -- assemble.
   calc (mkFresh H n N S vOf i hi).mstar
       = ((mkFreshClauses H n N S vOf i hi).map LevelClause.codim).sum := rfl

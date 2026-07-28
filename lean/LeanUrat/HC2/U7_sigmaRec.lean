@@ -31,11 +31,13 @@ overlap read-i's band with earlier fresh supports, and a conflicting transported
 equation makes `Θ*(Σ_i) ∩ fresh` non-representable as a digit system with the spec's
 pins (cardinality/emptiness mismatch) — the junk branch then falsifies the iff. This is
 NOT the dead countermodel's bug: it is the statement quantifying over histories/seeds
-the note's C.1.5 (conditional on (ZC) + realizability) never claims. Statement kept
-byte-identical per the fence; DISPOSITION → sign-off queue: either U7 gains the
-`hunpinned` hypothesis (the U25 hypothesis-narrowing pattern; its per-step discharge is
-exactly U10's (ZC)+DOM geometry, U9's at the root), or U13/U9/U10 consume
-`mkSigma_recursion_of_unpinned`/`_zero` directly and U7-as-stated is retired.
+the note's C.1.5 (conditional on (ZC) + realizability) never claims.
+K2 SIGN-OFF EXECUTED (2026-07-28, definition-change authority — the disposition ruled):
+`mkSigma_recursion` RESTATED with the named hypothesis `hunp : SeedFreshUnpinned` (Defs
+K2 addendum; the U25 hypothesis-add pattern) and PROVED (one line from
+`mkSigma_recursion_of_unpinned`); the bare ∀-i form is RETIRED. Consumers re-keyed:
+U13 gains the `hunp` binder and threads it into the frozen `JetSetup.recursion` field;
+U15/U16 thread the corresponding per-class form. UNIT NOW SORRY-FREE.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -368,28 +370,29 @@ theorem mkSigma_recursion_zero {n N : ℕ} {H : History p F} {keys : ℕ → Pol
   rw [show (mkSigma H n N S vOf 0).pinned c = false from rfl] at hc
   exact Bool.noConfusion hc
 
-/-- THE STRATUM RECURSION (`JetSetup.recursion`'s type at `mkStratum`): the constructed
-chain satisfies `Σ_{i+1} = Θ_i*(Σ_i ∩ stratum(ν_i))` solution-setwise. -/
+/-- THE STRATUM RECURSION (`JetSetup.recursion`'s type at `mkStratum`), RESTATED AT THE
+K2 SIGN-OFF (2026-07-28) with the named per-step hypothesis `SeedFreshUnpinned` (Defs K2
+addendum) — the hypothesis addition per the U25 pattern: the constructed chain satisfies
+`Σ_{i+1} = Θ_i*(Σ_i ∩ stratum(ν_i))` solution-setwise whenever the fresh supports are
+unpinned on the prior state.
+K2 DISPOSITION RECORD: the former BARE ∀-i form (hypothesis_fields: none) was
+refuted-as-underivable — at i > 0 a junk history can overlap read-i's band with earlier
+fresh supports, where a conflicting transported equation makes the spec's solution set
+non-representable at the spec's pins; the statement quantified over histories/seeds the
+note's C.1.5 (conditional on (ZC) + realizability) never claims. It is RETIRED; its
+consumers are re-keyed: U13 threads `hunp` (this theorem partially applied fills the
+frozen `JetSetup.recursion` field), U9b consumes `freshAttach_exists` directly, U10's
+steps consume `mkSigma_recursion_of_unpinned` (the per-step discharge of `hunp` at i > 0
+is exactly U10's (ZC)+DOM geometry; free at i = 0 — `mkSigma_recursion_zero`). -/
 theorem mkSigma_recursion {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (H : History p F) (n N : ℕ) {keys : ℕ → Polynomial ℤ_[p]}
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (hunp : SeedFreshUnpinned H n N S vOf)
     (i : ℕ) (hi : i < H.nodes.length) :
     ∀ x : Fin (n * N) → ZMod p,
       (mkSigma H n N S vOf (i+1)).IsSolution x ↔
         ((mkSigma H n N S vOf i).IsSolution (S.Theta i x) ∧
-          mkStratum H n N S vOf i (S.Theta i x)) := by
-  -- POST-DC-3 RECORD (2026-07-28, K2 kernel round — supersedes the two earlier
-  -- stop-the-line records; the machine refutation of this statement is DEAD, see the
-  -- header). The route is `mkSigma_recursion_of_unpinned` above; what is missing for
-  -- the BARE ∀-i form is exactly its `hunpinned` leg — the blueprint's own pre-named
-  -- per-step condition ("fresh supports UNPINNED on the prior state", D5 zcSeed
-  -- docstring), free at i = 0 (`mkSigma_recursion_zero`, PROVED) but underivable at
-  -- i > 0 from a raw (H, S): junk histories can overlap read-i's band with earlier
-  -- fresh supports, where a conflicting transported equation makes the spec's solution
-  -- set non-representable at the spec's pins. Statement byte-unchanged per the fence;
-  -- DISPOSITION → sign-off queue (hypothesis addition, the U25 pattern — its per-step
-  -- discharge is U10's (ZC)+DOM geometry — or consumer re-keying to the two proved
-  -- lemmas above). Sorry stands pending the ruling.
-  sorry
+          mkStratum H n N S vOf i (S.Theta i x)) :=
+  mkSigma_recursion_of_unpinned S vOf i hi (hunp i hi)
 
 end LeanUrat.MovesJ

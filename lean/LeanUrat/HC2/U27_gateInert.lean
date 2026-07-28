@@ -146,7 +146,7 @@ private lemma zc_floor (_hj : 0 < U31.H₀.nodes.length) (j : Fin (2 * 1)) :
 /-- The key tower: the recorded landing key `fq = X² + 2X + 4` at every index. -/
 noncomputable def keys₀ : ℕ → Polynomial ℤ_[2] := fun _ => U31.fq
 
-private lemma landing_ν₀ : LandingKey U31.ν₀ U31.fq := U31.sideReads_ν₀.2.2.2.1
+private lemma landing_ν₀ : LandingKey U31.ν₀ U31.fq := U31.landingKey_ν₀
 
 lemma keysLawful₀ : KeysLawful U31.H₀ keys₀ := by
   constructor
@@ -483,6 +483,22 @@ noncomputable def seed : PresentSeed 2 F4 U31.H₀ 2 1 keys₀ where
       intro i hi S hS x f hpres d
       exact ⟨x, f, hpres, fun c _ => rfl,
         fun c hc => absurd (valueSupport_empty i hi S hS ▸ hc) (Finset.notMem_empty c)⟩
+    · -- theta_norm (D5-fence law, 2026-07-28): the gate's Θ is the identity — no
+      -- corrections anywhere, the law is definitional.
+      intro i hi c hdown x
+      rfl
+    · -- root_shape (D5-fence law, 2026-07-28): the gate's box carries NO value
+      -- coordinate at all (heights 0, slot valuations 2 − j ≥ 1 on the window) — the
+      -- `valueSupport_empty` arithmetic, run at a single coordinate.
+      intro h0 c hint hvc
+      obtain ⟨-, hht⟩ := hvc
+      rw [htH0_eq, (base_lvl c).1] at hht
+      rw [show (U31.H₀.nodes[0]'h0) = U31.ν₀ from rfl] at hht
+      rw [fineSlot_eq, slotVal_eq] at hht
+      have h2 : (boxChart 2 1 c).2 ≤ 1 := by have := (boxChart_lt 2 1 c).2; omega
+      have h3 : ((boxChart 2 1 c).2 : ℚ) = 2 := by push_cast at hht ⊢; linarith
+      have h4 : (boxChart 2 1 c).2 = 2 := by exact_mod_cast h3
+      omega
 
 /-! ### §5 — the gate jet setup (U28's p = 3 pattern, ported to p = 2) -/
 

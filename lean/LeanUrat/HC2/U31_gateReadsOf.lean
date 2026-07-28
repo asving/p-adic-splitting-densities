@@ -28,6 +28,16 @@ VISIBILITY NOTE (2026-07-28, U27 restate+prove round): a dozen helper lemmas
 `coherent_H₀`, `sideReads_ν₀`, `fq_monic`, `fq_natDegree`) were de-privatized — statements
 byte-unchanged — so U27's concrete seed/JetSetup construction can reuse this file's
 concrete history `H₀`/`ν₀`, its landing-key witness, and the base-stage valuation facts.
+
+N-4 GATE STATUS (2026-07-28, sign-off round): `SideReads` gained the ADDITIVE clause
+(vi) VERTEX READ-OFF (Defs; §9 F-3). Per F-3(c) the gate RE-RUN with the clause is
+MANDATORY and is QUEUED FOR THE FLEET PHASE — `sideReads_ν₀`'s clause-(vi) leg carries
+the queued sorry (expected discharge sketched at the sorry: uniqueness of `fq`-adic
+developments gives `Bh 1 = 1`, and `vtx ν₀ = 1`); until it lands, `readsOf_fq`/
+`gate_readsOf_inert2` are CONDITIONAL on that leg (footprint gains sorryAx — a RECORDED
+temporary regression of this gate, the designed adjudication of the new clause). The
+landing-key leg was EXTRACTED to the standalone PROVED `landingKey_ν₀` so U27's
+consumption (its `landing_ν₀`) stays sorry-free.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -974,8 +984,57 @@ private lemma Bdev_w : bw (Bdev 0) = 2 ∧ bw (Bdev 1) = 1 ∧ bw (Bdev 2) = 0 :
   · show bw (C 2) = 1; exact bw_C2
   · show bw 1 = 0; exact bw_one
 
+/-- The landing-key witness at ν₀, STANDALONE (extracted at N-4, statement and proof
+byte-unchanged from the former clause-(iv) bullet, so U27's consumption stays sorry-free
+while the clause-(vi) gate re-run is queued). -/
+lemma landingKey_ν₀ : LandingKey ν₀ fq := by
+  constructor
+  · intro h
+    exact ReadSpecies.noConfusion h
+  · intro _
+    refine ⟨fun k => if k = 0 then C 4 else if k = 1 then C 2 else 0, ?_, ?_, ?_⟩
+    · intro k hk
+      match k with
+      | 0 =>
+          have hk' : ψ₂.coeff 0 = 0 := hk
+          rw [ψ₂_coeff_zero] at hk'
+          exact absurd hk' one_ne_zero
+      | 1 =>
+          have hk' : ψ₂.coeff 1 = 0 := hk
+          rw [ψ₂_coeff_one] at hk'
+          exact absurd hk' one_ne_zero
+      | (n+2) => rfl
+    · intro k hk hne
+      have hk2 : k < 2 := hk
+      interval_cases k
+      · refine ⟨?_, inC_C, ?_, ?_⟩
+        · show (C (4:ℤ_[2])) ≠ 0
+          exact C_ne_zero.mpr (by norm_num)
+        · show bw (C 4) = ((1 : ℕ) : ℤ) * (((2 : ℕ) : ℤ) - ((0 : ℕ) : ℤ))
+          rw [bw_C4]; norm_num
+        · have hgoal : bR (C 4) = (LaurentPolynomial.C (ψ₂.coeff 0)) *
+              (LaurentPolynomial.T (- (0 : ℤ) * bw (C 4)) : LaurentPolynomial ↥K2) := by
+            rw [bR_C4, ψ₂_coeff_zero, map_one, neg_zero, zero_mul,
+              LaurentPolynomial.T_zero, one_mul]
+          exact hgoal
+      · refine ⟨?_, inC_C, ?_, ?_⟩
+        · show (C (2:ℤ_[2])) ≠ 0
+          exact C_ne_zero.mpr two_ne_zero'
+        · show bw (C 2) = ((1 : ℕ) : ℤ) * (((2 : ℕ) : ℤ) - ((1 : ℕ) : ℤ))
+          rw [bw_C2]; norm_num
+        · have hgoal : bR (C 2) = (LaurentPolynomial.C (ψ₂.coeff 1)) *
+              (LaurentPolynomial.T (- (0 : ℤ) * bw (C 2)) : LaurentPolynomial ↥K2) := by
+            rw [bR_C2, ψ₂_coeff_one, map_one, neg_zero, zero_mul,
+              LaurentPolynomial.T_zero, one_mul]
+          exact hgoal
+    · show fq = X ^ (1 * 2) + ∑ k ∈ Finset.range 2,
+        (if k = 0 then C 4 else if k = 1 then C 2 else 0) * X ^ (1 * k)
+      rw [Finset.sum_range_succ, Finset.sum_range_one]
+      norm_num [fq]
+      ring
+
 lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
-  refine ⟨⟨?_, ?_⟩, ?_, ⟨?_, ?_⟩, ?_, ?_, ?_⟩
+  refine ⟨⟨?_, ?_⟩, ?_, ⟨?_, ?_⟩, ?_, ⟨?_, ?_⟩, ?_⟩
   · -- (i) lower bound
     intro j hj hBj
     show (2 : ℤ) ≤ ((1 : ℕ) : ℤ) * bw (Bdev j) + (j : ℤ) * ((1 : ℕ) : ℤ)
@@ -1050,51 +1109,8 @@ lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
       have h1 := Polynomial.natDegree_le_of_dvd hdvd ψ₂_ne_zero
       rw [Polynomial.natDegree_pow, ψ₂_natDegree] at h1
       omega
-  · -- (iv) landing key
-    constructor
-    · intro h
-      exact ReadSpecies.noConfusion h
-    · intro _
-      refine ⟨fun k => if k = 0 then C 4 else if k = 1 then C 2 else 0, ?_, ?_, ?_⟩
-      · intro k hk
-        match k with
-        | 0 =>
-            have hk' : ψ₂.coeff 0 = 0 := hk
-            rw [ψ₂_coeff_zero] at hk'
-            exact absurd hk' one_ne_zero
-        | 1 =>
-            have hk' : ψ₂.coeff 1 = 0 := hk
-            rw [ψ₂_coeff_one] at hk'
-            exact absurd hk' one_ne_zero
-        | (n+2) => rfl
-      · intro k hk hne
-        have hk2 : k < 2 := hk
-        interval_cases k
-        · refine ⟨?_, inC_C, ?_, ?_⟩
-          · show (C (4:ℤ_[2])) ≠ 0
-            exact C_ne_zero.mpr (by norm_num)
-          · show bw (C 4) = ((1 : ℕ) : ℤ) * (((2 : ℕ) : ℤ) - ((0 : ℕ) : ℤ))
-            rw [bw_C4]; norm_num
-          · have hgoal : bR (C 4) = (LaurentPolynomial.C (ψ₂.coeff 0)) *
-                (LaurentPolynomial.T (- (0 : ℤ) * bw (C 4)) : LaurentPolynomial ↥K2) := by
-              rw [bR_C4, ψ₂_coeff_zero, map_one, neg_zero, zero_mul,
-                LaurentPolynomial.T_zero, one_mul]
-            exact hgoal
-        · refine ⟨?_, inC_C, ?_, ?_⟩
-          · show (C (2:ℤ_[2])) ≠ 0
-            exact C_ne_zero.mpr two_ne_zero'
-          · show bw (C 2) = ((1 : ℕ) : ℤ) * (((2 : ℕ) : ℤ) - ((1 : ℕ) : ℤ))
-            rw [bw_C2]; norm_num
-          · have hgoal : bR (C 2) = (LaurentPolynomial.C (ψ₂.coeff 1)) *
-                (LaurentPolynomial.T (- (0 : ℤ) * bw (C 2)) : LaurentPolynomial ↥K2) := by
-              rw [bR_C2, ψ₂_coeff_one, map_one, neg_zero, zero_mul,
-                LaurentPolynomial.T_zero, one_mul]
-            exact hgoal
-      · show fq = X ^ (1 * 2) + ∑ k ∈ Finset.range 2,
-          (if k = 0 then C 4 else if k = 1 then C 2 else 0) * X ^ (1 * k)
-        rw [Finset.sum_range_succ, Finset.sum_range_one]
-        norm_num [fq]
-        ring
+  · -- (iv) landing key (extracted standalone at N-4 — see `landingKey_ν₀`)
+    exact landingKey_ν₀
   · -- (v) polOM lift
     have hno : ¬ ∃ tL, RecenterLiftSpec ν₀ tL := by
       rintro ⟨tL, _, htne, _, hR⟩
@@ -1112,6 +1128,15 @@ lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
   · -- (v) canonical root
     show r₀ = canonRoot ν₀
     exact canonRoot_ν₀.symm
+  · -- (vi) VERTEX READ-OFF [N-4 GATE RE-RUN, QUEUED-FLEET (blueprint §9 F-3(c): the
+    -- re-run with clause (vi) is MANDATORY — this sorry IS that queued re-run, the
+    -- designed non-vacuity adjudication of the new clause)]. Expected discharge at the
+    -- gate: developments of `fq` at the key `fq` have `Bh 1 = 1` (Fact-A/B uniqueness of
+    -- Φ-adic expansions at deg Bh j < 2), so `digPrime zbar (Bh 1) = eval (bR 1) = 1`;
+    -- and `vtx ν₀ = z̄^(a − μ·m̂)·vtxPoly(z̄) = z̄⁰·((ψ₂ /ₘ ψ₂¹) %ₘ ψ₂)(z̄) = 1`
+    -- (a = 0, t = 0 ⟹ m̂ = 0; 1 %ₘ ψ₂ = 1 at deg ψ₂ = 2). If the witness CANNOT
+    -- discharge this, the clause is over-strengthened and the design returns to F-3.
+    sorry
 
 /-! ### fq is monic quadratic -/
 

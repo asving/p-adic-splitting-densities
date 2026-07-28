@@ -1606,3 +1606,37 @@ Census: 48 → **53** units (+U20a/b/c per F-2, +U22-E1/E2 per F-4; `D10Eligible
 note round (N-1…N-6, one sitting), the DC-2 defs repair, then the next fleet
 wave on the §9 queue; the acceptance-pass perimeter (§3 + gap sites +
 ratification records) unchanged; the Codex leg batched post-reset per §7.5.
+
+## 10. §9 NOTE ROUND — EXECUTED (2026-07-28, Asvin definition-change authority;
+Codex confirmation deferred to the post-reset batch)
+
+All six N-items + the K2/K3/D5-fence residues APPLIED in one sitting; full HC2
+tree lake-build GREEN (8653 jobs); census 28 → **19 sorried declarations across
+14 unit files** (closed: U1, U7, U17c-own, U25; opened by design: U31's mandated
+clause-(vi) gate re-run). Ledger (full records: MANIFEST `nqueue_2026-07-28` +
+per-file REV notes):
+* **N-1** U1 re-keyed to `keys_exist_of_run` (ReadsOf route) — PROVED, Lean-core
+  footprint; hcoh-keyed form retired; negation-witness fleet duty queued.
+* **N-2** `D10Eligible` addendum; U25's two theorems guarded + PROVED sorry-free.
+* **N-3** the `IsCanon`-transport clause threaded through U17b's three theorems
+  (still sorry-free); U17c's own sorry closed in one line (footprint conditional
+  on the open U17a, as designed).
+* **N-4** SideReads clause (vi) landed (additive; `digPrime`/`vtx` vocabulary);
+  U21 re-scoped to a derivation (statement byte-unchanged); U31 gate re-run
+  queued-fleet (gate temporarily sorryAx-conditional — recorded; U27's clean
+  footprint preserved via the extracted `landingKey_ν₀`).
+* **N-5** `RootD4` addendum; U11 (+hd4, queued), U13 (+hd4, STILL CLOSES),
+  U15/U16 (∀-class form; SEED-EXIST display byte-unchanged).
+* **N-6** U4 option (i): +hcoh/hreal, obstruction closed by the new named
+  `levelSet_no_straddle` (the round's one new sorried lemma); U6 threads.
+* **K3** U18 + `AdjacentReads` guards (per the scratch refutation);
+  `presentNorm_polOM` carries `OmUniqHyp` (caveat recorded: itself conditionally
+  refuted — wave-4 decides the final uniqueness form).
+* **K2** `SeedFreshUnpinned` addendum; `mkSigma_recursion` restated + PROVED;
+  bare form retired; U13/U15/U16 thread.
+* **D5-fence** `ZCSeedLaws` + `theta_norm` + `root_shape` — NOTE root_shape
+  landed as the value-coordinate-free FAITHFUL WEAKENING of the U9c record's
+  draft (`μ·childWidth ≤ s0·Dwidth` is FALSE at the gate node); both proved at
+  the U27 seed; U9c's countermodel closed by hypothesis, proof route in-file.
+Next: the fleet wave on the remaining 19 (priority: U31 gate re-run first — the
+clause-(vi) non-vacuity adjudication), then the Codex ratification batch.

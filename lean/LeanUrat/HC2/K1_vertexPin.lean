@@ -224,7 +224,7 @@ theorem K1_SAE_vertexEq_endpoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] 
   obtain ⟨hfmon, hfdeg, hcoh, hruns⟩ := h'
   obtain ⟨-, -, hgamtie, -⟩ := hcoh
   obtain ⟨B, Nd, Φnext, hdev, -, hside⟩ := hruns (i+1) hi1
-  obtain ⟨-, hdig, -, -, -⟩ := hside
+  obtain ⟨-, hdig, -, -, -, -⟩ := hside
   set νp : Node p F := H.nodes[i]'hi with hνp
   set ν' : Node p F := H.nodes[i+1]'hi1 with hν'
   -- the kernel at the (upward-extended) recorded development

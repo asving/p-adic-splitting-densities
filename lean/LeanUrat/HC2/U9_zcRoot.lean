@@ -29,6 +29,20 @@ C.1.5 "No carries occur in valuation content" residue, landing as a named seed l
 per D5's fence exactly as the blueprint's residue rule predicted; the dead
 countermodel's badSeed now witnesses U9c-as-stated false pending that law). Both U9c
 legs remain designer sign-off items (N-queue).
+D5-FENCE SIGN-OFF EXECUTED (2026-07-28, the queue round): `ZCSeedLaws` GAINS the two
+pre-assigned NAMED FIELDS (Defs; additive) —
+  `theta_norm` (Θ-normalization: Θ_i-literality at frame-(i+1) valuation content, the
+   C.1.5(2) residue) and
+  `root_shape` (value-interior exclusion at the root — NOTE the FAITHFUL WEAKENING:
+   the record above drafted `μ·childWidth ≤ s0·Dwidth`, which is FALSE at the U27/U31
+   gate node (s0 = 0, span slots crossing the interior, yet every interior LEVEL SET
+   empty); the landed field is the no-interior-VALUE-COORDINATE form — exactly what the
+   value-pin exclusion below consumes, and true at the gate).
+Both proved at U27's concrete seed (Θ = id ⟹ theta_norm definitional; heights 0 vs slot
+valuations ≥ 1 ⟹ root_shape). The badSeed countermodel of U9c-as-stated is CLOSED BY
+HYPOTHESIS (its constant unitriangular shift violates `theta_norm`). U9c's PROOF (strip
+pins via spec clause (3) + theta_norm; value pins excluded by root_shape via U9a's
+downset bound) is QUEUED for the fleet round — see the route at the sorry.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -469,25 +483,18 @@ theorem zc_root_interior_zero {n N : ℕ} {H : History p F} {keys : ℕ → Poly
       (mkSigma H n N S vOf 1).pinned j = true →
       ∀ f : (j' : Fin (n * N)) → j' < j → ZMod p,
         (mkSigma H n N S vOf 1).solve j f = 0 := by
-  -- STOP-THE-LINE (escalation, 2026-07-28) — UNPROVABLE AS STATED; two independent gaps.
-  -- (i) It engages only under the U9b existence obstruction above (the no-witness branch
-  --     is vacuously fine, but provability of the witness branch is what the unit needs).
-  -- (ii) Even granted the witness: an interior coordinate pinned by a VALUE clause has
-  --     `solve` UNCONSTRAINED by `IsFreshAttach` (clauses (3)/(4) pin only singleton
-  --     zero-sat strips and transported zeros); on solution prefixes the exact-solution
-  --     clause forces it to the unique `φ`-preimage digit of the emitted `vOf i j T` —
-  --     the free R4.B.2 parameter, universally quantified here, generically ≠ 0. And
-  --     interior value coordinates are NOT excluded: nothing places the root's span
-  --     slots at/beyond the rim — `s0 ≥ μ·e·g` is underivable (hcoh/hreal/hbox allow
-  --     `s0 = 0`, while `hOrd` gives `wSide ≥ μ·e·g`, so span slots cross the whole
-  --     interior; an on-lattice interior line value then yields a nonempty level set,
-  --     rostered in `valueSlots`, giving a genuinely value-pinned interior coordinate).
-  --     The blueprint sketch's "value pins sit at the rim by the root band's shape" has
-  --     NO Lean carrier — a RootD4-class Defs gap (§9 F-6's sibling). REPAIR (note-round
-  --     gate): a root-shape law `μ·childWidth ≤ s0 · Dwidth` (equivalently: interior
-  --     fine slots are never root span slots) as a Defs addendum or zcSeed law; with it
-  --     plus the U9b Θ-normalization law, every interior pin is a strip pin and clause
-  --     (3) closes this goal.
+  -- HISTORICAL STOP-THE-LINE (escalation, 2026-07-28; both gaps now REPAIRED at the
+  -- D5-fence sign-off — see the header):
+  -- (i) witness existence — DISCHARGED at DC-3 (`freshAttach_exists`, free at i = 0).
+  -- (ii) interior VALUE pins unconstrained + not excluded — REPAIRED by the two new
+  --     `ZCSeedLaws` fields: `S.zcSeed.root_shape` excludes interior value coordinates
+  --     (every value-clause support member IS an `IsValueCoord`), so every interior pin
+  --     is a STRIP pin; `S.zcSeed.theta_norm` (at the U9a downset bound
+  --     `zc_root_downset_mp`, which puts the pinned interior coordinate at-or-below the
+  --     step floor) makes `Θ 0` literal there, so spec clause (3)'s Θ-composed zero IS
+  --     the literal zero: extend the solution prefix `f` by `x j := solve j f`, apply
+  --     clause (3) at the strip clause through `j`, and rewrite `Θ x j = x j`.
+  -- PROOF QUEUED (fleet round; the route above is the assigned prover's spec).
   sorry
 
 /-- U9 assembled — the i = 0 instance of `JetSetup.zc` for the constructed chain. -/

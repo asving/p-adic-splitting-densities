@@ -40,6 +40,15 @@ slots.  FIX (statement/Defs-fence — needs human SIGN-OFF, NOT applied here): e
 SAE strict span-entry keeps node-i's line strictly above the floor across span slots — this is
 hard-core content), or (ii) redesign `levelSet`/`IsValueSupport`/`valueSlots` to be band-aware
 (intersect the level set with the band), which then also touches U3/U5/U6.
+
+*** N-6 SIGN-OFF EXECUTED (2026-07-28 — §9 F-7's ruling: OPTION (i), the RECOMMENDED
+route; option (ii) rejected as non-minimal — it re-opens proved U3/U5/U6 + Defs). ***
+`mkFresh_cover` GAINS `hcoh : HistoryCoherent H` + `hreal : Realizable H`; the roster
+goal is discharged by the NEW named geometric lemma `levelSet_no_straddle` (below,
+sorried — the (SAE)/C.1.5 line-dominance content, the U10 wave's family; QUEUED for the
+fleet). U4's own theorem body is now complete modulo that named lemma; the countermodel
+above is closed by hypothesis (its adversarial `floorH` needs an incoherent H).
+Consumer update: U13 threads `hcoh hreal` (it holds both).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -52,11 +61,31 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesJ
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
+/-- THE GEOMETRIC NO-STRADDLE LEMMA (N-6 option (i), 2026-07-28): under coherence +
+realizability, a span slot's exact-valuation level set cannot STRADDLE the floor — if
+one member is in-band, every member is. Content: the (SAE) strict span-entry / C.1.5
+line-dominance keeps node-i's line strictly above the accumulated floor across the whole
+window, so the per-base floor variation of the earlier staircases cannot cross a level
+set sitting AT `slotVal j` (the U10 wave's family; the root case i = 0 is clean —
+`floorH 0 = ⊥`). QUEUED-FLEET; the U4 countermodel's adversarial `floorH` is
+coherence-infeasible. -/
+theorem levelSet_no_straddle {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : History p F) (n N : ℕ)
+    (hcoh : HistoryCoherent H) (hreal : Realizable H)
+    (i : ℕ) (hi : i < H.nodes.length) (j : ℕ) (c c' : Fin (n * N))
+    (hc : c ∈ levelSet H n N i (H.nodes[i]'hi) j)
+    (hband : inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c)
+    (hc' : c' ∈ levelSet H n N i (H.nodes[i]'hi) j) :
+    inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c' := by
+  sorry
+
 /-- Every band coordinate is covered by some constructed clause's support (verbatim
-`JetSetup.fresh_cover`'s field type at `mkFresh`). -/
+`JetSetup.fresh_cover`'s field type at `mkFresh`; N-6 RESTATEMENT: under
+coherence + realizability — the sign-off's option (i)). -/
 theorem mkFresh_cover {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (H : History p F) (n N : ℕ) {keys : ℕ → Polynomial ℤ_[p]}
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (hcoh : HistoryCoherent H) (hreal : Realizable H)
     (i : ℕ) (hi : i < H.nodes.length) :
     ∀ c : Fin (n * N), inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c →
       ∃ cl ∈ (mkFresh H n N S vOf i hi).clauses, c ∈ cl.support := by
@@ -79,13 +108,11 @@ theorem mkFresh_cover {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       rw [Finset.mem_filter, Finset.mem_range]
       refine ⟨?_, hspan, ⟨c, hc_level⟩, ?_⟩
       · have := hspan.2; omega
-      · -- ROSTER: the WHOLE level set of slot `j` must be in-band.
-        -- *** OBSTRUCTION — see the header OBSTRUCTION note. NOT PROVABLE from U4's
-        -- hypotheses: `H.floorH` (earlier-node `line` data) is unlinked to `ν.slotVal`/`htH`
-        -- absent `HistoryCoherent`/`Realizable`, so `levelSet j` can contain an out-of-band
-        -- sibling of the in-band `c`. Dual-confirmed FALSE-as-stated (Codex, 2026-07-27).
-        -- Discharging this requires a statement/Defs change (sign-off), not a proof. ***
-        sorry
+      · -- ROSTER: the WHOLE level set of slot `j` is in-band — the N-6 no-straddle
+        -- lemma fired at the in-band member `c` (the former dual-confirmed obstruction,
+        -- closed by the option-(i) hypothesis addition; see the header record).
+        intro c' hc'
+        exact levelSet_no_straddle H n N hcoh hreal i hi j c c' hc_level hband hc'
     -- the value clause at slot j
     set vcl := valueClause H n N S vOf i hi j (valueSlots_spanSlot hj_val) with hvcl
     have hcard : Nat.card (Fin (levelSet H n N i ν j).card → ZMod p)

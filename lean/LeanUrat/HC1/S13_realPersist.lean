@@ -129,7 +129,7 @@ theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
         exact ⟨T.base.2.core.prevIaug, T.base.2.core.wPrev_mul, T.base.2.core.wPrev_ult⟩
     | succ i IH =>
         cases T.move i with
-        | inc ψ g Φhat e' h' zbar hyp core =>
+        | inc ψ g Φhat e' h' zbar hyp core _ =>
             have hkey := core.base.child_key
             have hce := core.base.child_e
             have hch := core.base.child_h
@@ -144,7 +144,7 @@ theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
             · intro f g hf hg hfg
               rw [hcw (f + g), hcw f, hcw g]
               exact (T.stg i.castSucc).hwult f g hf hg hfg
-        | recenter cc tt core =>
+        | recenter cc tt core _ =>
             obtain ⟨IHiaug, IHmul, IHult⟩ := IH
             obtain ⟨he1, he1', _, htin, httne, hwtt, _, hΦ', hwf, hwpf, _, _, _, _⟩ :=
               core.base

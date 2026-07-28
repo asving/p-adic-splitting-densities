@@ -107,12 +107,12 @@ private lemma deg_mono_step (T : Tower p F) (m : ℕ) (hm : m < T.K) :
   set k : Fin T.K := ⟨m, hm⟩ with hk
   show (T.stg k.castSucc).Φ.natDegree ≤ (T.stg k.succ).Φ.natDegree
   cases T.move k with
-  | inc ψ g Φhat e' h' zbar hyp core =>
+  | inc ψ g Φhat e' h' zbar hyp core _ =>
     have hkey := core.base.child_key
     have hdeg := (L3_liftMonic (T.stg k.castSucc) ψ g hyp.hg Φhat hyp.hlift).2
     rw [hkey, hdeg]
     exact Nat.le_mul_of_pos_left _ (Nat.mul_pos (T.stg k.castSucc).he hyp.hg)
-  | recenter cc tt core =>
+  | recenter cc tt core _ =>
     obtain ⟨_, _, _, htt, _, _, _, hΦ', _, _, _, _, _, _⟩ := core.base
     rw [hΦ']
     have hne1 : (T.stg k.castSucc).Φ - tt ≠ 0 := by rw [← hΦ']; exact (T.stg k.succ).hmonic.ne_zero
@@ -131,9 +131,9 @@ private lemma stretch_step (T : Tower p F) (m : ℕ) (hm0 : m < T.K + 1) (hm1 : 
   set k : Fin T.K := ⟨m, hm⟩ with hk
   show (T.stg k.succ).w B = ((T.stg k.succ).e : ℤ) * (T.stg k.castSucc).w B
   cases T.move k with
-  | inc ψ g Φhat e' h' zbar hyp core =>
+  | inc ψ g Φhat e' h' zbar hyp core _ =>
     rw [(T.stg k.succ).hStretch B hB hcoef, core.base.child_wPrev B]
-  | recenter cc tt core =>
+  | recenter cc tt core _ =>
     obtain ⟨_, he', _, _, _, _, _, _, hw, _, _, _, _, _⟩ := core.base
     rw [hw B, he']; simp
 

@@ -1534,3 +1534,80 @@ dep-sorries, zero note-round items, the note intact at every point.
 
 END OF FRONTIER SECTION (7 obstructions: 6 repairable-now, 0 needs-note-round,
 1 seam-homed (S7 → the S9d construction seam); sign-off queue F-1..F-6).
+
+## 9.9 EXECUTION RECORD (2026-07-28, queue applier — Asvin's definition-change
+authority db323cc; Codex confirm-after per that marker; acceptance = proofs run
+through)
+
+All six sign-off entries + the S9 decomposition LANDED; every touched file
+`lake env lean` green with `-o` olean refresh in topological order; footprints
+as listed (Lean-core = [propext, Classical.choice, Quot.sound]).
+
+* **F-1 EXECUTED as drafted.** `TowerRealizable.lineStep`/`floorS` added to
+  DefsCar (additive, §9.1's displays verbatim modulo the `rl.` receiver); T10
+  conjunct 2 + C1 leg (ii) restated on `floorS`; conjunct 1/hypotheses/other C1
+  legs untouched; `floorC` stays for DOM-side consumers; `ScratchT10` retained
+  and green. T10's sorry remains open per the §9.1 proof route (fleet work);
+  C1 compiles delegating to T10 verbatim (sorryAx via T10 only).
+* **F-2 EXECUTED; bridge PROVED.** `Tower.hcharF : CharP F p` added (additive
+  field; no Tower literal existed on disk — re-verified by grep at execution).
+  `C6_cardK_bridge` landed in C6's file and is PROVED (Lean-core:
+  `RingHom.charP` at `K.subtype` + `FiniteField.card`), exceeding the "statement"
+  minimum. C6's own statement UNCHANGED per §9.2 (the queue-table gloss "C6
+  restated to consume it" resolved in favor of §9.2's explicit "statement
+  unchanged" clause); C6's open proof consumes the bridge for conjuncts 2–3.
+* **F-3 EXECUTED; S7 PROVED.** Restated to the scratch's proved shape
+  (conjuncts 1–3 + CoeffLocLaw legs (a)/(b)); `scratch_S7_escalation.lean`'s
+  machinery transplanted verbatim into the unit; footprint Lean-core. Leg (c)
+  homed to S9d. The scratch file remains on disk (not part of the build).
+* **F-4 EXECUTED; S8 PROVED.** Restated to the (I-aug) leg (the in-file proof);
+  footprint Lean-core; the dual-audited twist-symmetry certificate retained in
+  the file header verbatim (the independence certificate F-5/S9d rest on).
+* **F-5 EXECUTED; S11 + S11a PROVED.** `MoveWitness` gains
+  `core' : StageCoreL σ'` on BOTH constructors (docstring records the warrant +
+  the minimality certificate); arity ripple fixed at all match sites —
+  DefsTower `eBirthAux`, T3 (×2), T4 (×2), T6 (rcases), T7 (×2), C2 (×2), S13,
+  S11 (statement + both parts) — every touched proved unit re-verified
+  Lean-core (no footprint regression). S11 Part 1 = Fin.induction + `core'`
+  projection, Part 2 re-bound: S11_towerSpine now PROVED, Lean-core.
+  `S11a_coreTransport` CREATED **and PROVED** (Lean-core): the seven non-twist
+  legs from `StageCoreL σ` + `TransitionCoreL` + `TransHyp` alone (the §9.6
+  sketches re-derived in-file: child_wPrev transport, reps append legs,
+  bare-Stage w_strict via the w(−1) = 0 trick, R_neg via `child_dig_frame` at
+  B = ±1 pinning z̄^{mfun 0} = 1, prevIaug via hiaug + threshold).
+* **F-6 EXECUTED; S17 PROVED.** Restated to the `ScratchS17` form (+`hzsol`,
+  +`hcore` — the adjudication's safe landing; the post-F-5 discharge of `hcore`
+  via `(S11_towerSpine T).1 k.castSucc |>.core` is RECORDED as available but
+  NOT taken in this event); proof transplanted; footprint Lean-core. Import
+  hygiene deviation: the unused `L6_measureExact_R4` import dropped,
+  `L2_P6ii_R3` imported directly — the §4.6 dep-sorry pair leaves HC1's cone
+  entirely (MANIFEST dep_sorries row emptied). `ScratchS17` retained.
+* **S9 DECOMPOSITION CREATED (typing rendering recorded).** §9.5 displays no
+  Lean statements, so the units were typed per the corpus's E-phase precedents,
+  every content pin from §9.5 preserved:
+  - `DefsChild.lean` (additive): `ChildResData` = the choice SPEC of childR
+    (fields = §9.5's own law lists verbatim: hR0/hRne/hRadd/hRlt/hRmul at
+    (childW, ·), the S5′ PINNED shape (= the K1 VertexPin clause), hRΦ = z^{s′},
+    + the two Rc-involving tie laws w_jump/R_neg); `childR` by choice against it
+    (the childW/`Tower.side` precedent, junk fallback); `childWeightSet` = 𝒜′.
+    The S9r/S9w seam = the structure boundary (recorded in the header).
+  - `S9r_childR` = `Nonempty ChildResData` (sorry — the hard construction
+    block); `S9w_residualLaws` = the law pack of the DEFINED childR: nine
+    projections PROVED through the choice + the childW-only w_strict as the one
+    genuine open leg (sorry).
+  - `S9a`/`S9b`/`S9c` = cumulative-∃ statements over the constructed child with
+    the construction RECORDED F-frame-wise (TransitionData / TransitionCoreL +
+    `VertexPin` + the childW tie [+ weightSet = 𝒜′ at S9b; + StageCore at
+    S9c]) — the ↥K/↥K′ cast wall stays inside S9a's proof, where §9.5 put it
+    (all three sorry).
+  - `S9d_pinVerify` **PROVED** (Lean-core): TvecUnitLaw σ′ ∧ CoeffLocLaw σ′
+    from the pin — `K1_tvecUnitLaw_of_pin` + S7's transplanted legs (a)/(b) +
+    `K1_coeffLocC_of_pin`; plus `S9d_stageCoreL` closing `StageCoreL σ′` given
+    S9c's StageCore. The §9.3/§9.4 seam is DISCHARGED at the statement level;
+    its non-vacuity obligation rides S9c's construction (K1 faithfulness flag).
+  - S9's own statement UNCHANGED (per §9.8: no sign-off entry needed).
+* **POST-EVENT STATE (as §9.8 predicted):** the frontier = the construction
+  block S9r + S9w(w_strict) + S9a/S9b/S9c assemblies + T10's floorS proof +
+  S16's fleet backlog + the open E-phase sorries unaffected by this event;
+  ZERO dep-sorries in any HC1 cone; the note intact at every point. MANIFEST
+  re-synced (61 units; sign-off record key `signoff_2026-07-28`).

@@ -1,24 +1,25 @@
 {
  "campaign": "HC1 — the §B2-DEF tower induction hard core (wave 5, E-phase elaboration)",
- "blueprint": "lean/notes/HC1_LEAN_BLUEPRINT_2026-07-28.md (REV 2, accepted; DEVIATIONS appendix added at E-phase 2026-07-28)",
+ "blueprint": "lean/notes/HC1_LEAN_BLUEPRINT_2026-07-28.md (REV 2, accepted; DEVIATIONS appendix added at E-phase 2026-07-28) + §9 sign-off queue F-1..F-6 EXECUTED 2026-07-28 (queue applier; §9.9 execution record)",
  "moves_source": "lean/notes/MOVES_2026-07-24.md §B2-DEF 1849-2745 + §C displays 3644-3831 + pass-7 carry spec 1502-1530",
  "defs": [
   "lean/LeanUrat/HC1/DefsD.lean",
   "lean/LeanUrat/HC1/DefsTower.lean",
   "lean/LeanUrat/HC1/DefsCar.lean",
-  "lean/LeanUrat/HC1/DefsSpine.lean"
+  "lean/LeanUrat/HC1/DefsSpine.lean",
+  "lean/LeanUrat/HC1/DefsChild.lean"
  ],
  "defs_sorry_free": true,
  "preamble": "Every unit file begins: `import Mathlib` then the HC1 Defs module(s) it needs (`LeanUrat.HC1.DefsD` / `DefsTower` / `DefsCar` / `DefsSpine`) then the cited PROVED Moves/MovesGr/MovesC unit files; then `set_option linter.style.longLine false`, `set_option linter.style.header false`, `set_option linter.unusedSectionVars false`, `set_option maxHeartbeats 800000`; then `namespace LeanUrat.HC1` and `open Polynomial LeanUrat.Moves` (plus `open scoped Classical` where Pi.single/filters need decidability). Statements elaborate under that preamble (verified per-file by `lake env lean`, MOVESGR §6 double-elaboration discipline: statements regenerated verbatim from this manifest must re-elaborate). `sorry` is the only allowed escape — ZERO new axioms; any GMN/Denef import in a cone is stop-the-line.",
  "build": "cd lean && lake env lean -o .lake/build/lib/lean/LeanUrat/HC1/<f>.olean LeanUrat/HC1/<f>.lean, topological order per Defs chain; NEVER bare `lake build`. Every unit file ends with `#print axioms <thm>` (expected: propext, sorryAx, Classical.choice, Quot.sound until proved; then Lean-core only).",
  "decide_gates": "G1-G5 carry typed statements with sorry bodies at E-phase; the fleet closes them by decide/norm_num/construction — NO sorry allowed at acceptance for the G layer.",
- "dep_sorries": {
-  "S17": "Moves L6_measureExact_R4 (:143/:189 — §4.6, the sole surviving tail entry; sign-off spec in blueprint §4.6)"
- },
+ "dep_sorries": {},
  "hypothesis_ledger": {
   "TowerRealizable": "Type-valued open kernel (blueprint §5 + Deviation D-3): carries the per-read lines/windows + slope/vertex ties + steeper/vertex-entry/window conditions; consumers T10, C1, C4, R6; never discharged inside HC1",
   "hexact": "anchor exactness per stratum, threaded on S16/S17 verbatim from L5_landTwoSided_repair",
-  "REL1": "R-layer statement defs (LSTStmt'/TYPStmt'/DOMStmt'/SecB1Stmt'/EQ2lawIfREL1') are the typed open kernel; consumers hypothesize, never assert"
+  "REL1": "R-layer statement defs (LSTStmt'/TYPStmt'/DOMStmt'/SecB1Stmt'/EQ2lawIfREL1') are the typed open kernel; consumers hypothesize, never assert",
+  "hzsol_hcore": "S17's F-6 pair (blueprint §9.7): hzsol = the zero-code jet-chart datum (§4.6(b)'s +hzsol spec); hcore = StageCore at the level stage, carried explicitly (post-F-5 dischargeable from the tower via (S11_towerSpine T).1 k.castSucc |>.core — recorded, not taken)",
+  "VertexPin": "the K1 named-hypothesis Prop (D.7(vi) pinned normalization, mfun ≡ 0); non-vacuity obligation sits with S9c's construction; consumers S9a-S9d via the K1 bridges"
  },
  "blocked": [],
  "units": [
@@ -147,7 +148,8 @@
    "file": "lean/LeanUrat/HC1/T10_floorStaircase.lean",
    "difficulty": "medium",
    "sorries": 1,
-   "statement": "theorem T10_floorStaircase {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) (hb : rl.interiorB b) : rl.floorB b = (rl.line T.K).at (T.blockEdge b) ∧ (∀ c : T.Coord, T.blk c = b → rl.floorC c = rl.floorB b)"
+   "statement": "theorem T10_floorStaircase {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) (hb : rl.interiorB b) : rl.floorB b = (rl.line T.K).at (T.blockEdge b) ∧ (∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b)",
+   "rev": "F-1 (2026-07-28): conjunct 2 restated on the STEP floor floorS (raw-line floorC form machine-refuted, ScratchT10 retained); floorC stays for DOM-side consumers; proof route in header (DOM engine + one divisibility lemma) — fleet work."
   },
   {
    "id": "HC1.T11_attainDichotomy",
@@ -167,8 +169,9 @@
    "id": "HC1.C1_LST",
    "file": "lean/LeanUrat/HC1/C1_LST.lean",
    "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : -- (i-a): ht is the K1-chain weight of the basis monomial (T3's form) (∀ c : T.Coord, c.MonoNZ → (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c) ∧ -- (i-b): the iterated slot minimum (T4's form) (∀ (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ), (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → T.slotCoeff b y ≠ 0 → ∃ c₀, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c, y c ≠ 0 → T.ht c₀ ≤ T.ht c) ∧ -- (i-c): in_γ' is a function of exactly the level set (T5's form) (∀ (b : ℕ) (γ' : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ), (Function.support x).Finite → (Function.support y).Finite → (∀ c ∈ T.levelSet b γ', x c = y c) → (∀ c, T.blk c = b → T.ht c < γ' → x c = 0) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b x) = T.inGr γ' (T.slotCoeff b y)) ∧ -- (ii): the staircase floor on factor-interior blocks (T10's form) (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorC c = rl.floorB b) ∧ -- (iii): level sets strictly above the floor avoid the floor set (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' → T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅)"
+   "sorries": 0,
+   "statement": "theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : -- (i-a): ht is the K1-chain weight of the basis monomial (T3's form) (∀ c : T.Coord, c.MonoNZ → (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c) ∧ -- (i-b): the iterated slot minimum (T4's form) (∀ (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ), (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → T.slotCoeff b y ≠ 0 → ∃ c₀, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c, y c ≠ 0 → T.ht c₀ ≤ T.ht c) ∧ -- (i-c): in_γ' is a function of exactly the level set (T5's form) (∀ (b : ℕ) (γ' : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ), (Function.support x).Finite → (Function.support y).Finite → (∀ c ∈ T.levelSet b γ', x c = y c) → (∀ c, T.blk c = b → T.ht c < γ' → x c = 0) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b x) = T.inGr γ' (T.slotCoeff b y)) ∧ -- (ii): the staircase STEP floor on factor-interior blocks (T10's F-1 form) (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b) ∧ -- (iii): level sets strictly above the floor avoid the floor set (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' → T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅)",
+   "rev": "F-1 (2026-07-28): leg (ii) restated on floorS alongside T10; other legs untouched; proof cites T10 verbatim (sorryAx via T10 only)."
   },
   {
    "id": "HC1.C2_TYPa",
@@ -203,7 +206,8 @@
    "file": "lean/LeanUrat/HC1/C6_alphabetCard.lean",
    "difficulty": "medium",
    "sorries": 1,
-   "statement": "theorem C6_alphabetCard {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (hne : (T.levelSet b γ).Nonempty) : Nat.card ↥(T.alphabet b γ) = p ^ T.aDim b γ ∧ (Nat.card ↥(T.alphabet b γ) = Nat.card ↥(T.stg (Fin.last T.K)).K ↔ ∀ c : ↥(T.levelSet b γ), ∃ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) ≠ 0) ∧ ((∃ c : ↥(T.levelSet b γ), ∀ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) = 0) → T.aDim b γ < Nat.log p (Nat.card ↥(T.stg (Fin.last T.K)).K))"
+   "statement": "theorem C6_alphabetCard {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (hne : (T.levelSet b γ).Nonempty) : Nat.card ↥(T.alphabet b γ) = p ^ T.aDim b γ ∧ (Nat.card ↥(T.alphabet b γ) = Nat.card ↥(T.stg (Fin.last T.K)).K ↔ ∀ c : ↥(T.levelSet b γ), ∃ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) ≠ 0) ∧ ((∃ c : ↥(T.levelSet b γ), ∀ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) = 0) → T.aDim b γ < Nat.log p (Nat.card ↥(T.stg (Fin.last T.K)).K))",
+   "rev": "F-2 (2026-07-28): Tower gains hcharF : CharP F p (DefsTower, additive); C6_cardK_bridge PROVED in this file (RingHom.charP + FiniteField.card; Lean-core); C6's own statement UNCHANGED per §9.2 — its proof (open) consumes the bridge for conjuncts 2-3."
   },
   {
    "id": "HC1.S1_transHypGate",
@@ -251,22 +255,73 @@
    "id": "HC1.S7_childPin",
    "file": "lean/LeanUrat/HC1/S7_childPin.lean",
    "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S7_childPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : ((e' : ℤ) * σ'.s + (h' : ℤ) * σ'.t = 1 ∧ (e' = 1 → σ'.t = 0)) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → ∃ c' : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C ((c' : ↥σ'.K)) * LaurentPolynomial.T (- σ'.t * σ.w B)) ∧ CoeffLocLaw σ'"
+   "sorries": 0,
+   "statement": "theorem S7_childPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : ((e' : ℤ) * σ'.s + (h' : ℤ) * σ'.t = 1 ∧ (e' = 1 → σ'.t = 0)) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → ∃ c' : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C ((c' : ↥σ'.K)) * LaurentPolynomial.T (- σ'.t * σ.w B)) ∧ (∀ ℓ : LaurentPolynomial ↥σ'.K, LaurentPolynomial.C ℓ ∈ σ'.coeffLocSR → ∃ d : ↥σ'.K, ℓ = LaurentPolynomial.C d) ∧ (∀ d : ↥σ'.K, LaurentPolynomial.C (LaurentPolynomial.C d) ∈ σ'.coeffLocSR)",
+   "rev": "F-3 (2026-07-28): RESTATED to the escalation scratch's proved shape (conjuncts 1-3 + CoeffLocLaw legs (a)/(b)); PROVED (scratch transplanted verbatim; Lean-core). Leg (c) — the z'-pin — homed to S9d (by construction, via K1_coeffLocC_of_pin)."
   },
   {
    "id": "HC1.S8_childS6",
    "file": "lean/LeanUrat/HC1/S8_childS6.lean",
    "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S8_childS6 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : TvecUnitLaw σ' ∧ ((σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ))"
+   "sorries": 0,
+   "statement": "theorem S8_childS6 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : (σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ)",
+   "rev": "F-4 (2026-07-28): RESTATED to the proved (I-aug) leg; PROVED (Lean-core). TvecUnitLaw conjunct homed to S9d (the note pins the twist — D.7(vi) quoted in header; the dual-audited twist-symmetry certificate retained in header)."
   },
   {
    "id": "HC1.S9_transStage",
    "file": "lean/LeanUrat/HC1/S9_transStage.lean",
    "difficulty": "hard",
    "sorries": 1,
-   "statement": "theorem S9_transStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ' ∧ σ'.K = σ.nextField zbar ∧ σ'.e = e' ∧ σ'.h = h'"
+   "statement": "theorem S9_transStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ' ∧ σ'.K = σ.nextField zbar ∧ σ'.e = e' ∧ σ'.h = h'",
+   "rev": "S9 DECOMPOSITION (2026-07-28, §9.5): statement UNCHANGED; the pre-approved split S9r/S9w/S9a/S9b/S9c/S9d landed as units (S9d PROVED); S9 = ⟨literal, S9c, S9a-S9d⟩ once the construction block (S9r + S9w + S9a-c) closes."
+  },
+  {
+   "id": "HC1.S9r_childR",
+   "file": "lean/LeanUrat/HC1/S9r_childR.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): inhabitation of ChildResData (DefsChild) — the D.7(vi)-normalized child residual with the pinned S5' shape + the residual/tie laws. THE hard construction block (with S9w's w_strict leg).",
+   "statement": "theorem S9r_childR {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : Nonempty (ChildResData σ Φhat e' h' zbar s' t')"
+  },
+  {
+   "id": "HC1.S9w_residualLaws",
+   "file": "lean/LeanUrat/HC1/S9w_residualLaws.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the (childW, childR) law pack. Nine ChildResData projections PROVED through the choice; the childW-only w_strict tie law is the genuine open leg (S2 development plumbing).",
+   "statement": "theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hne : Nonempty (ChildResData σ Φhat e' h' zbar s' t')) : (childR σ Φhat e' h' zbar s' t' 0 = 0) ∧ (∀ f, f ≠ 0 → childR σ Φhat e' h' zbar s' t' f ≠ 0) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childR σ Φhat e' h' zbar s' t' (f * g') = childR σ Φhat e' h' zbar s' t' f * childR σ Φhat e' h' zbar s' t' g') ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → childW σ Φhat e' h' f = childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f → childR σ Φhat e' h' zbar s' t' (f + g') = childR σ Φhat e' h' zbar s' t' f + childR σ Φhat e' h' zbar s' t' g') ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childR σ Φhat e' h' zbar s' t' (f + g') = childR σ Φhat e' h' zbar s' t' f) ∧ (childR σ Φhat e' h' zbar s' t' Φhat = LaurentPolynomial.T s') ∧ (∀ B, B ≠ 0 → inC Φhat B → ∃ c' : (↥(σ.nextField zbar))ˣ, childR σ Φhat e' h' zbar s' t' B = LaurentPolynomial.C ((c' : ↥(σ.nextField zbar))) * LaurentPolynomial.T (- t' * σ.w B) ∧ ((c' : ↥(σ.nextField zbar)) : F) = σ.digPrime zbar B) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → childW σ Φhat e' h' f = childW σ Φhat e' h' g' → childW σ Φhat e' h' f < childW σ Φhat e' h' (f + g') → childR σ Φhat e' h' zbar s' t' f + childR σ Φhat e' h' zbar s' t' g' = 0) ∧ (∀ f, childR σ Φhat e' h' zbar s' t' (-f) = - childR σ Φhat e' h' zbar s' t' f) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f)"
+  },
+  {
+   "id": "HC1.S9a_stageLiteral",
+   "file": "lean/LeanUrat/HC1/S9a_stageLiteral.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the child Stage literal ∃ with construction recorded (TransitionData + VertexPin + childW tie); the ↥K/↥K' cast wall lives inside this proof.",
+   "statement": "theorem S9a_stageLiteral {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionData σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f)"
+  },
+  {
+   "id": "HC1.S9b_childWeightSet",
+   "file": "lean/LeanUrat/HC1/S9b_childWeightSet.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative over S9a + weightSet pinned to 𝒜' (childWeightSet); (S6a')/(S6b') via the TRANSviii finals inside the construction.",
+   "statement": "theorem S9b_childWeightSet {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionData σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ σ'.weightSet = childWeightSet σ Φhat"
+  },
+  {
+   "id": "HC1.S9c_coreAssembly",
+   "file": "lean/LeanUrat/HC1/S9c_coreAssembly.lean",
+   "difficulty": "hard",
+   "sorries": 1,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative + full TransitionCoreL (child_dig_frame = the pin via VertexPin.to_child_dig_frame, mfun := 0, no ∃-slack) + StageCore (non-twist legs via S11a; w_jump via ChildResData; SlotDecomp/CoeffFieldLawCore via L4_TRANSvii_R4 + S6).",
+   "statement": "theorem S9c_coreAssembly {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ StageCore σ'"
+  },
+  {
+   "id": "HC1.S9d_pinVerify",
+   "file": "lean/LeanUrat/HC1/S9d_pinVerify.lean",
+   "difficulty": "medium",
+   "sorries": 0,
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the pin-verification unit consuming K1 — TvecUnitLaw σ' (K1_tvecUnitLaw_of_pin) + CoeffLocLaw σ' ((a)/(b) from restated S7, (c) from K1_coeffLocC_of_pin); + S9d_stageCoreL closing StageCoreL given S9c's StageCore. PROVED (Lean-core). Discharges the §9.3/§9.4 seam.",
+   "statement": "theorem S9d_pinVerify {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) (pin : VertexPin σ σ' Φhat zbar) (hΦin : inC Φhat σ.Φ) : TvecUnitLaw σ' ∧ CoeffLocLaw σ'"
   },
   {
    "id": "HC1.S10_recStage",
@@ -279,8 +334,17 @@
    "id": "HC1.S11_towerSpine",
    "file": "lean/LeanUrat/HC1/S11_towerSpine.lean",
    "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S11_towerSpine {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ k : Fin (T.K + 1), StageCoreL (T.stg k)) ∧ (∀ k : Fin T.K, match T.move k with | .inc _ _ _ e' h' zbar _ _ => (T.stg k.succ).K = (T.stg k.castSucc).nextField zbar ∧ (T.stg k.succ).e = e' ∧ (T.stg k.succ).h = h' | .recenter _ _ _ => (T.stg k.succ).e = 1 ∧ (T.stg k.succ).K = (T.stg k.castSucc).K)"
+   "sorries": 0,
+   "statement": "theorem S11_towerSpine {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ k : Fin (T.K + 1), StageCoreL (T.stg k)) ∧ (∀ k : Fin T.K, match T.move k with | .inc _ _ _ e' h' zbar _ _ _ => (T.stg k.succ).K = (T.stg k.castSucc).nextField zbar ∧ (T.stg k.succ).e = e' ∧ (T.stg k.succ).h = h' | .recenter _ _ _ _ => (T.stg k.succ).e = 1 ∧ (T.stg k.succ).K = (T.stg k.castSucc).K)",
+   "rev": "F-5 (2026-07-28): MoveWitness enriched with core' : StageCoreL σ' (both constructors; DefsTower); Part 1 PROVED by Fin.induction + projection; Part 2 re-bound; PROVED (Lean-core). The route-failure + sign-twist countermodel verdicts retained in header as the independence certificate; S11a_coreTransport certifies minimality."
+  },
+  {
+   "id": "HC1.S11a_coreTransport",
+   "file": "lean/LeanUrat/HC1/S11a_coreTransport.lean",
+   "difficulty": "medium",
+   "sorries": 0,
+   "rev": "NEW at F-5(b) (2026-07-28): the minimality certificate — the seven non-twist StageCore legs {wPrev_mul, wPrev_ult, reps_nonempty, p_is_rep, w_strict, R_neg, prevIaug} transport from StageCoreL σ + TransitionCoreL + TransHyp alone (the S11 escalation's verified partial transport, re-derived in-file). PROVED (Lean-core).",
+   "statement": "theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : (∀ f g, f ≠ 0 → g ≠ 0 → σ'.wPrev (f * g) = σ'.wPrev f + σ'.wPrev g) ∧ (∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → min (σ'.wPrev f) (σ'.wPrev g) ≤ σ'.wPrev (f + g)) ∧ σ'.reps ≠ [] ∧ (Polynomial.C (p : ℤ_[p])) ∈ σ'.reps ∧ (∀ f g, f ≠ 0 → g ≠ 0 → σ'.w f < σ'.w g → σ'.w (f + g) = σ'.w f) ∧ (∀ f, σ'.R (-f) = - σ'.R f) ∧ ((σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ))"
   },
   {
    "id": "HC1.S12_iaugPersist",
@@ -322,8 +386,9 @@
    "id": "HC1.S17_levelMeasureExact",
    "file": "lean/LeanUrat/HC1/S17_levelMeasureExact.lean",
    "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem S17_levelMeasureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (D ktot N : ℕ) (hD : D = Φhat.natDegree * lm.N) (hN : 1 ≤ N) (hkN : ktot ≤ D * N) (strat : (Fin (D * N) → ZMod p) → Prop) (code : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (hcode : ∀ x, ∃ f : Polynomial ℤ_[p], f.natDegree < D ∧ code f = x) (hstrat : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (strat (code f) ↔ (f ≠ 0 ∧ StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f))) (hz : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ strat (code f)) (Θ : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (hΘ : LeanUrat.MovesC.IsUnitriangular fun x => Θ x) (E : DigitSystem (D * N) (ZMod p)) (hEk : E.numPinned = ktot) (hcyl : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B lm.N → (E.IsSolution (Θ (code f)) ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N)) : Nat.card {x : Fin (D * N) → ZMod p // strat x} * p ^ ktot = p ^ (D * N)"
+   "sorries": 0,
+   "statement": "theorem S17_levelMeasureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hcore : StageCore (T.stg k.castSucc)) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (D ktot N : ℕ) (hD : D = Φhat.natDegree * lm.N) (hN : 1 ≤ N) (hkN : ktot ≤ D * N) (strat : (Fin (D * N) → ZMod p) → Prop) (code : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (hcode : ∀ x, ∃ f : Polynomial ℤ_[p], f.natDegree < D ∧ code f = x) (hstrat : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (strat (code f) ↔ (f ≠ 0 ∧ StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f))) (hz : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ strat (code f)) (Θ : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (hΘ : LeanUrat.MovesC.IsUnitriangular fun x => Θ x) (E : DigitSystem (D * N) (ZMod p)) (hEk : E.numPinned = ktot) (hzsol : ¬ E.IsSolution (Θ (code 0))) (hcyl : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B lm.N → (E.IsSolution (Θ (code f)) ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N)) : Nat.card {x : Fin (D * N) → ZMod p // strat x} * p ^ ktot = p ^ (D * N)",
+   "rev": "F-6 (2026-07-28): RESTATED to the ScratchS17 sufficiency-certificate form (+hzsol, +hcore — the safe landing; post-F-5 hcore discharge recorded as available, not taken); PROVED (transplant; Lean-core). Consumes L5_landTwoSided (repair) + L0_FactA_exists + L2_P6ii; NEVER consumes L6_measureExact_R4 — the §4.6 dep-sorry pair leaves HC1's cone (dep_sorries row emptied)."
   },
   {
    "id": "HC1.G1_divGate",
@@ -402,5 +467,6 @@
    "sorries": 1,
    "statement": "theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : ∃ K : CarrierPackR p, (∀ γ : ℚ, K.G.Gr γ = T.grQ γ) ∧ LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K"
   }
- ]
+ ],
+ "signoff_2026-07-28": "F-1..F-6 EXECUTED (one event): F-1 T10(2)+C1(ii) → floorS step floor (lineStep/floorS defs in DefsCar); F-2 Tower.hcharF : CharP F p + C6_cardK_bridge PROVED in C6's file (C6 statement unchanged per §9.2); F-3 S7 → proved shape (scratch transplant, PROVED Lean-core; leg (c) homed to S9d); F-4 S8 → proved (I-aug) leg (PROVED; twist certificate retained in header; TvecUnitLaw homed to S9d); F-5 MoveWitness + core' : StageCoreL (both constructors), 9-file arity ripple (eBirthAux, T3, T4, T6, T7, C2, S13, S11), S11 PROVED (Part 1 = projection), S11a_coreTransport NEW+PROVED; F-6 S17 → ScratchS17 form (+hzsol +hcore), PROVED Lean-core, §4.6 dep-sorry pair out of HC1's cone. S9 DECOMPOSITION: DefsChild.lean (ChildResData choice-spec + childR + childWeightSet) + S9r/S9w/S9a/S9b/S9c (sorry statements) + S9d PROVED (consumes K1 bridges + S7 legs)."
 }

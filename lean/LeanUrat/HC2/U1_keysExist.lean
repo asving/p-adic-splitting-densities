@@ -1,10 +1,35 @@
 /-
-Unit U1.keys_exist  (HC-2 campaign, E-phase — blueprint §5 Layer A)
+Unit U1.keys_exist_of_run  (HC-2 campaign — blueprint §5 Layer A, RE-KEYED at N-1)
 moves_ref: MovesC `JetSetup.keys_mid`/`landing` docstrings ("ALL reads incl. the FINAL one
-obey the recorded-data landing law").
-deps: Moves L3_liftExists (proof SHAPE only), IsRecenteringCore, U1b (final-read landing),
-D8 `isNodeLift_iff`.  difficulty: medium.  hypothesis_fields: none.
+obey the recorded-data landing law"); D4's clause (iv) ("the landing key is realized at
+EVERY read, incl. the final one — the designated final key").
+deps: D4 `ReadsOf`/`SideReads` (clause (iv) + the interior `Φnext` pin), D5 `KeysLawful`.
+difficulty: easy (post-re-key).  hypothesis_fields: none beyond the run predicate.
 F10 GUARD: L3's lift is at the STAGE pair and must NEVER be conflated with the node pair.
+
+N-1 RE-KEY RECORD (2026-07-28, sign-off round — §9 F-1's adjudication executed):
+the former `keys_exist : HistoryCoherent H → ∃ keys, KeysLawful H keys` is REFUTED as
+stated and RETIRED — LAST-READ RECORD FREEDOM:
+  * Recentering leg: `HistoryCoherent`'s only `.lift` access is the parent-side
+    `IsRecenteringCore` clause under the `i+1 < len` guard; the last node's `lift` is a
+    free record field — the `{ν with lift := 0}` record update preserves coherence and
+    `root_iff` while making `ν.lift ≠ 0` false for EVERY key choice (key-independent;
+    Codex-confirmed, fresh context).
+  * Increment leg: the final `IsNodeLift` witness needs U1b's D.5 side conditions
+    (`hdvd`/`hthr`), which `hcoh` ties to the final read pair by NOTHING (e.g. σ.e = 2,
+    h' = 1, g = 1 leaves the required weight odd) — the blueprint U1b NAMED RISK realized.
+  * `StageTransHyp` does NOT rescue it (F-1 adjudication): the counterexample is H-side;
+    `StageTransHyp` is H-independent and TRUE in the intended model, so conditionalizing
+    would produce a FALSE conditional, not an honest one.
+THE CERTIFIED ROUTE (this file): D4's clause (iv) records `LandingKey ν Φnext` at every
+read INCLUDING the final one, and the interior `Φnext`-pinning clause gives `KeysLawful`'s
+conjunct 1 — the run predicate is the honest carrier of final-read lawfulness (a named
+`FinalReadLawful` shadow definition was REJECTED). Consumers unaffected: U13/U15 consume
+keys through `hseed`'s `∃ keys, KeysLawful` (SEED-EXIST rev-2 form), never through U1;
+this unit's surviving role is run-side (MovesT wave-4 + HC-1 run constructions).
+FLEET DUTY (queued, not this round): land the compiled negation witness of the retired
+`hcoh`-keyed form beside this unit (the `U27_OBSTRUCTION` pattern) so the refutation is
+durable — it needs a concrete 2-node coherent history (HC-1 S9-adjacent construction).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -17,73 +42,28 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesJ
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
-/-- A lawful key tower exists for every coherent history: interior keys are the recorded
-child keys (coherence's `IsNodeLift`/`IsRecenteringCore` clauses ARE the landing law
-there); the FINAL key is `Φ − lift` at a recentering, else U1b's read-pair lift. -/
-theorem keys_exist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    {H : History p F} (hcoh : HistoryCoherent H) :
-    ∃ keys : ℕ → Polynomial ℤ_[p],
-      (∀ (i : ℕ) (hi : i + 1 < H.nodes.length), keys i = (H.nodes[i+1]'hi).σ.Φ) ∧
-      (∀ (i : ℕ) (hi : i < H.nodes.length), LandingKey (H.nodes[i]'hi) (keys i)) := by
+/-- A lawful key tower exists for every classifier RUN (N-1 re-key): D4's clause (iv)
+records the landing law at every read — the final one included — and the interior
+`Φnext` pin makes the designated keys the recorded child keys. -/
+theorem keys_exist_of_run {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
+    (h : ReadsOf p F n f H) :
+    ∃ keys : ℕ → Polynomial ℤ_[p], KeysLawful H keys := by
   classical
-  obtain ⟨_hroot, _hslope, _hgam, htrans⟩ := hcoh
-  refine ⟨fun i => if h : i + 1 < H.nodes.length then (H.nodes[i+1]'h).σ.Φ else 0, ?_, ?_⟩
-  · -- interior key law: keys i is the child Φ by definition
-    intro i hi
+  obtain ⟨-, -, -, hreads⟩ := h
+  -- the designated key of read i: the run's own `Φnext` witness (junk 0 beyond the run)
+  refine ⟨fun i => if hi : i < H.nodes.length then
+      ((hreads i hi).choose_spec.choose_spec).choose else 0, ?_, ?_⟩
+  · -- conjunct 1 (interior keys = recorded child keys): the `Φnext` pin
+    intro i hi1
+    have hi : i < H.nodes.length := by omega
+    have hpin := ((hreads i hi).choose_spec.choose_spec).choose_spec.2.1
     simp only [dif_pos hi]
-  · -- landing law
+    exact hpin hi1
+  · -- conjunct 2 (landing at EVERY read): SideReads clause (iv)
     intro i hi
-    by_cases hlast : i + 1 < H.nodes.length
-    · -- INTERIOR node: keys i = (nodes[i+1]).σ.Φ; landing comes straight from coherence
-      simp only [dif_pos hlast]
-      have hstep := htrans i hlast
-      refine ⟨?_, ?_⟩
-      · -- recentering branch: extract the realizer clauses from IsRecenteringCore.base
-        intro hrec
-        have hrc := hstep.1 hrec
-        obtain ⟨_, _, _, hinC, hne, hw, hR, hΦ, _⟩ := hrc.base
-        exact ⟨hinC, hne, hw, hR, hΦ⟩
-      · -- non-recentering branch: coherence records IsNodeLift at the child key
-        intro hnrec
-        exact (hstep.2.1 hnrec).1
-    · -- FINAL node (index `len-1`): THE OBSTRUCTION.
-      -- `HistoryCoherent H` places NO constraint on the last node's landing data:
-      --   * (recentering) `LandingKey` demands `RecenterLiftSpec ν ν.lift`, i.e.
-      --     `inC σ.Φ lift ∧ lift ≠ 0 ∧ w lift = w Φ ∧ R lift = C center · T 0`.
-      --     `ν.lift` is a FREE `Node` field; coherence mentions any node's `.lift` ONLY
-      --     inside `htrans`, guarded by `i+1 < len` — unavailable here (`hlast`). No key
-      --     choice repairs this: the four conjuncts never mention `Φtop = keys i`.
-      --     (Record-updating a final recentering node's `lift` to `0` keeps H coherent
-      --     yet forces `0 ≠ 0` — a genuine refutation, not merely a missing lemma.)
-      --   * (increment) `LandingKey` demands `IsNodeLift ν (keys i)`, whose realizers need
-      --     `StageCoreL ν.σ` + D.5 thresholds (the `nodeLift_exists`/`L3_liftExists`
-      --     hypotheses). `TransitionCoreL` carries no `StageCoreL`; coherence yields
-      --     `StageCoreL` for no stage in the tower.
-      -- Codex-confirmed (fresh context, decorrelated). Unprovable from `hcoh` alone:
-      -- the statement needs a FINAL-NODE landing hypothesis (or `keys` as a `PresentSeed`
-      -- parameter carrying `KeysLawful`, the rev-2 D5 route).
-      --
-      -- ESCALATION VERDICT (Fable, independent re-derivation from the Defs — CONFIRMS):
-      --   * Recentering leg: `HistoryCoherent`'s only `.lift` access is the parent-side
-      --     `IsRecenteringCore` clause under the `i+1 < len` guard; NO `Node` Prop field
-      --     mentions `lift`, so the last node's `lift` is a free record field — the
-      --     `{ν with lift := 0}` record update preserves coherence and `root_iff` while
-      --     making `ν.lift ≠ 0` false for EVERY key. Key-independent; no route exists.
-      --   * Increment leg SHARPENED: `Stage.hS6b` (a Stage FIELD, no `StageCoreL` needed)
-      --     + U1b `nodeLift_exists` (PROVED, sorry-free) DO supply the final `IsNodeLift`
-      --     witness — but only under U1b's named D.5 side conditions
-      --     `hdvd : σ.e ∣ h'·(g−k)` (hStretch confines C-weights to `σ.e·ℤ`) and
-      --     `hthr : σ.e·wPrev Φ < h'·(g−k)`; `hcoh` ties the FINAL node's read pair
-      --     `(e', h')` to its frame σ by NOTHING (e.g. σ.e = 2, h' = 1, g = 1 leaves the
-      --     required weight odd). Exactly the blueprint U1b NAMED RISK, realized.
-      --   * CERTIFIED REPAIR ROUTE (scratch-verified against this corpus, ~15 lines):
-      --     `ReadsOf p F n f H → ∃ keys, KeysLawful H keys` PROVES — D4's clause (iv)
-      --     records `LandingKey ν Φnext` at EVERY read incl. the final one, and the
-      --     interior `Φnext`-pinning clause gives conjunct 1 (`choose` + project
-      --     `.2.2.2.1`). The D4-fold deviation note ("the designated final key stays
-      --     existential at the last read") is exactly the missing datum. Statement-fence:
-      --     re-keying U1 to `ReadsOf` (or to D5's `KeysLawful` seed route) needs sign-off.
-      simp only [dif_neg hlast]
-      sorry
+    have hland := ((hreads i hi).choose_spec.choose_spec).choose_spec.2.2.2.2.2.1
+    simp only [dif_pos hi]
+    exact hland
 
 end LeanUrat.MovesJ

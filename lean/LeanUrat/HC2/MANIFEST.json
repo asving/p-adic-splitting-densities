@@ -31,18 +31,34 @@
   "F-2/F-4 PRE-SPLITS LANDED (2026-07-28; census 48 → 53; no fence event — new sub-lemmas under byte-unchanged assembled statements, the U9/U10 precedent): U20 pre-split into U20a `NA_transport_root` / U20b `NA_transport_increment` / U20c `NA_transport_recentering` (one cross-frame vertex-value transport per PARENT species; assembled readsOf_NA = species trichotomy + transports + SideReads(i) strict-above at the off-span vertex) and U22 endpoint-split into U22-E1 `SAE_spanStrict_endpoint` / U22-E2 `SAE_vertexEq_endpoint` (assembled readsOf_SAE = the F-4 proven reduction + E1 + E2; reduction proof lands first). Sub-lemma statements prover-refinable (E-phase best-faith renderings of F-2/F-4's semantic specs: transport/strict-entry equations stated in stage scale ×STR_{i+1} with `B j ≠ 0` guards; E2 as the u*-tie); the assembled statements are normative."
  ],
  "blocked": [],
- "statement_fence": "MovesC/Defs.lean, MovesD/Defs.lean, Moves/Defs*.lean FROZEN — zero edits made. HC-2 adds files only. Pre-declared flex points still open: U11 InBox strength; U25 eligibility narrowing; U1b side conditions (used, sign-off pending).",
+ "nqueue_2026-07-28": {
+  "charge": "The §9 note-round queue (N-1..N-6) + the K2/DC-3 residue items, EXECUTED under Asvin's definition-change authority (Codex confirmation deferred to the post-reset batch; acceptance = proofs run through). Every touched file lake-build green (full HC2 tree, 8653 jobs); gate footprints re-verified.",
+  "items": [
+   "N-1 U1 RE-KEYED: `keys_exist` (hcoh-keyed, refuted — last-read record freedom) RETIRED; `keys_exist_of_run : ReadsOf → ∃ keys, KeysLawful` PROVED (Lean-core footprint). Fleet duty queued: the compiled negation witness of the retired form (U27_OBSTRUCTION pattern; needs a concrete 2-node history).",
+   "N-2 U25 CLOSED: `D10Eligible` Defs addendum (the complete D.10 triple; MOVES 2583–2671); `polOM_total`/`polOM_liftOf_spec` gain the guarded `helig : i+1 = len → D10Eligible` and are PROVED sorry-free (interior from coherence, final from `recenterLiftSpec_of_eligible`).",
+   "N-3 U17b/U17c CLOSED: `galois_transport`/`galois_normalize_upTo`/`galois_normalize` gain the additive `IsCanon`-transport clause (new lemmas `recenterLiftSpec_nodeMap`/`polOM_liftOf_nodeMap`/`isCanon_historyMap`; assembly re-threaded, still sorry-free). U17c's `presentNorm_total` sorry CLOSED (one-line consumption); its footprint still carries sorryAx through the OPEN U17a (`lift_swap`).",
+   "N-4 SideReads CLAUSE (vi) LANDED (additive; the layer-2 terminal seam / F-3): the vertex read-off in `σ.digPrime zbar (Bh μ) = ν.vtx` vocabulary at the designated next key's development. Projection fallout fixed (U24 index bump, U20c/K1 obtain arity). U31 GATE RE-RUN QUEUED-FLEET: `sideReads_ν₀`'s clause-(vi) leg carries the mandated re-run sorry (F-3(c)) — `gate_readsOf_inert2` TEMPORARILY sorryAx-conditional (recorded regression, the designed adjudication); the landing-key leg extracted to the standalone PROVED `landingKey_ν₀` so U27's `gate_order0_inert` KEEPS its Lean-core-only footprint (re-verified). U21 restated as a DERIVATION (statement byte-unchanged; route in-file).",
+   "N-5 RootD4 LANDED: Defs addendum (§B2-DEF D.4's root clause; F-6 — U11's refutability record); U11 gains `hd4` (proof queued), U13 gains `hd4` and STILL CLOSES (re-verified in-build), U15/U16 gain the ∀-class form.",
+   "N-6 U4 RESTATED (option (i), recommended route): gains `hcoh`/`hreal`; the roster obstruction closed by the NEW named `levelSet_no_straddle` (sorried — the (SAE)/C.1.5 line-dominance content, queued-fleet). U6 threads the binders (consequential; still closes). U13's fc/me legs thread.",
+   "K3 U18 RESTATED: gains `AdjacentReads H`/`AdjacentReads H'` (Defs addendum), dictated by the conditional refutation scratch_U18_unique_false.lean (non-adjacent last recentering: (HV) vacuous + canonRoot trivial). `presentNorm_polOM` (U17c) re-keyed to carry `huniq : OmUniqHyp` per the P-3 disposition — WITH the recorded caveat that OmUniqHyp-as-typed is itself conditionally refuted (same scratch); wave-4 negotiation decides the final uniqueness form.",
+   "K2 mkSigma_recursion DISPOSED: `SeedFreshUnpinned` Defs addendum (the pre-named per-step condition); `mkSigma_recursion` RESTATED with `hunp` and PROVED (bare ∀-i form retired as refuted-underivable); U13 gains `hunp` and threads it into the frozen `JetSetup.recursion` field; U15/U16 carry the ∀-seed form (SEED-EXIST display byte-unchanged; wave-4 decides folding).",
+   "D5-FENCE U9c LAWS LANDED: `ZCSeedLaws` gains `theta_norm` (Θ-literality at valuation content; C.1.5(2)) + `root_shape` (no interior VALUE coordinates at the root — NOTE the faithful WEAKENING of the U9c record's draft `μ·childWidth ≤ s0·Dwidth`, which is FALSE at the gate node; recorded at the field). Both PROVED at U27's concrete seed (gate footprint stays clean); U9c's badSeed countermodel closed by hypothesis; U9c proof route recorded in-file, queued-fleet."
+  ],
+  "footprints_verified": "gate_order0_inert [propext, Classical.choice, Quot.sound] (CLEAN, unchanged); mkSigma_recursion/polOM_total/polOM_liftOf_spec/keys_exist_of_run/galois_normalize CLEAN; gate_readsOf_inert2 + presentNorm_total/presentNorm_polOM sorryAx-conditional (recorded above).",
+  "codex_confirmation": "DEFERRED to the post-reset batch (budget rule); this round rides on Asvin's direct authority grant."
+ },
+ "statement_fence": "MovesC/Defs.lean, MovesD/Defs.lean, Moves/Defs*.lean FROZEN — zero edits made. HC-2 adds files only. Pre-declared flex points: U11 InBox strength RESOLVED (N-5 RootD4); U25 eligibility narrowing RESOLVED (N-2 D10Eligible); U1b side conditions (used, sign-off pending).",
  "counts": {
-  "files": 40,
+  "files": 41,
   "defs_files": 1,
-  "unit_files": 38,
+  "unit_files": 39,
   "manifest": 1,
   "blueprint_units_covered": 53,
-  "sorried_declarations": 28,
+  "sorried_declarations": 19,
   "defs_sorries": 0,
   "blocked": 0,
   "axioms": 0,
-  "resync": "2026-07-28 (F-7 fixer round, post DC-2 + F-2/F-4 splits): 28 sorried declarations across 20 unit files (U1 1, U4 1, U7 1, U9 4, U10 5, U11 1, U17a 1, U17b 2, U17c 1, U18 1, U20 1, U20a 1, U20b 1, U20c 1, U21 1, U22 1, U22E1 1, U22E2 1, U25 1, U26 1); Defs sorries all discharged in earlier rounds; U27/U28/U31 gates PROVED (0); census 48 → 53 per blueprint §9 F-2/F-4"
+  "resync": "2026-07-28 (N-QUEUE SIGN-OFF ROUND, post K1/K2 kernel rounds — see nqueue_2026-07-28): 19 sorried declarations across 14 unit files (K1_vertexPin 1, U4 1 [levelSet_no_straddle], U9 2 [U9c + zc_root], U10 5, U11 1, U17a 1, U18 1, U20a 1, U20b 1, U21 1, U22E1 1, U22E2 1, U26 1, U31 1 [the mandated clause-(vi) gate re-run]); CLOSED this round: U1, U7, U17c(own), U25 (−5 net; U31 +1 by design); U27/U28 gates PROVED with clean footprints (U27 re-verified post seed-law addition); file count 41 = 39 units + Defs + MANIFEST (K1_vertexPin counted as a unit file since the K1 round)"
  },
  "units": [
   {
@@ -77,12 +93,26 @@
   {
    "id": "D4.SideReads+ReadsOf",
    "file": "Defs.lean",
-   "sorries": 0
+   "sorries": 0,
+   "note": "N-4 (2026-07-28): SideReads gains the additive clause (vi) VERTEX READ-OFF (digPrime/vtx vocabulary at the designated next key); U31 re-run queued."
   },
   {
    "id": "D5.KeysLawful+ZCSeedLaws+PresentSeed",
    "file": "Defs.lean",
-   "sorries": 0
+   "sorries": 0,
+   "note": "D5-fence sign-off (2026-07-28): ZCSeedLaws gains theta_norm + root_shape (the U9c pre-assigned laws; root_shape in the faithful value-coordinate-free weakening — field docstring records why)."
+  },
+  {
+   "id": "Addenda.D10Eligible+RootD4+AdjacentReads+SeedFreshUnpinned",
+   "file": "Defs.lean",
+   "sorries": 0,
+   "note": "N-queue Defs addenda (2026-07-28): N-2 / N-5 / K3 / K2 hypothesis objects — all hypothesis-side, no axioms."
+  },
+  {
+   "id": "K1.vertexPin",
+   "file": "K1_vertexPin.lean",
+   "sorries": 1,
+   "note": "the K1 kernel bridge (read-indexed D.8 vertex pin); N-4 fallout: obtain arity bumped for clause (vi)."
   },
   {
    "id": "D6.mkFresh",
@@ -97,58 +127,64 @@
    "note": "+ pinTransportSystem_spec glue"
   },
   {
-   "id": "U1.keys_exist",
+   "id": "U1.keys_exist_of_run",
    "file": "U1_keysExist.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "N-1 RE-KEY (2026-07-28): hcoh-keyed form refuted+retired; ReadsOf-keyed form PROVED, Lean-core footprint. Fleet duty: compiled negation witness of the retired form."
   },
   {
    "id": "U1b.nodeLift_exists",
    "file": "U1b_nodeLift.lean",
-   "sorries": 1,
-   "note": "hdvd/hthr fallback hypotheses — sign-off pending"
+   "sorries": 0,
+   "note": "hdvd/hthr fallback hypotheses — sign-off pending [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U2.mkFresh_disj",
    "file": "U2_freshDisj.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "[sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U3.mkFresh_band",
    "file": "U3_freshBand.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "[sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U4.mkFresh_cover",
    "file": "U4_freshCover.lean",
-   "sorries": 1
+   "sorries": 1,
+   "note": "N-6 RESTATED (option (i)): gains hcoh/hreal; theorem body complete; the 1 sorry is the NEW named levelSet_no_straddle ((SAE)/C.1.5 line-dominance, queued-fleet)."
   },
   {
    "id": "U5.mkFresh_assembled",
    "file": "U5_freshAssembled.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "[sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U6.mkFresh_mstar",
    "file": "U6_mstarEq.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "PROVED (pre-N-queue round); N-6 threading: gains hcoh/hreal (consequential — its cover leg consumes the restated U4); still closes."
   },
   {
    "id": "U7.mkSigma_init_rec",
    "file": "U7_sigmaRec.lean",
-   "sorries": 1,
-   "note": "mkSigma_init PROVED (rfl). DC-3 (2026-07-28, K2): the post-DC-2 machine refutation of mkSigma_recursion (scratch_U7_recursion_false.lean) fired on IsFreshAttach clauses (1)+(3) — an E-phase Defs deviation (untransported literal zeros), NOT the blueprint display; clauses (3)/(4) repaired to Θ-composed zeros, refutation DEAD. NEW PROVED: clause_assign (count at codim=|support| ⇒ per-coordinate assignment), freshAttach_exists (the pin-attachment constructor, under the blueprint's pre-named 'fresh supports UNPINNED on prior state'), mkSigma_recursion_of_unpinned, mkSigma_recursion_zero (i = 0 UNCONDITIONAL — subsumes the dead countermodel's site; the DC-3 compiled closure record). mkSigma_recursion's BARE ∀-i form stays sorried: its missing leg is exactly hunpinned (underivable from raw (H,S) — junk band overlap), DISPOSITION → sign-off queue (hypothesis addition per the U25 pattern, or consumer re-keying to _of_unpinned/_zero)."
+   "sorries": 0,
+   "note": "mkSigma_init PROVED (rfl). DC-3 (2026-07-28, K2): the post-DC-2 machine refutation of mkSigma_recursion (scratch_U7_recursion_false.lean) fired on IsFreshAttach clauses (1)+(3) — an E-phase Defs deviation (untransported literal zeros), NOT the blueprint display; clauses (3)/(4) repaired to Θ-composed zeros, refutation DEAD. NEW PROVED: clause_assign (count at codim=|support| ⇒ per-coordinate assignment), freshAttach_exists (the pin-attachment constructor, under the blueprint's pre-named 'fresh supports UNPINNED on prior state'), mkSigma_recursion_of_unpinned, mkSigma_recursion_zero (i = 0 UNCONDITIONAL — subsumes the dead countermodel's site; the DC-3 compiled closure record). mkSigma_recursion's BARE ∀-i form stays sorried: its missing leg is exactly hunpinned (underivable from raw (H,S) — junk band overlap), DISPOSITION → sign-off queue (hypothesis addition per the U25 pattern, or consumer re-keying to _of_unpinned/_zero). K2 SIGN-OFF EXECUTED (2026-07-28): mkSigma_recursion RESTATED with hunp : SeedFreshUnpinned (Defs addendum) and PROVED; bare form retired; U13/U15/U16 thread. UNIT SORRY-FREE."
   },
   {
    "id": "U8.mkStratum_inh",
    "file": "U8_inhImplied.lean",
-   "sorries": 1,
-   "note": "carries the §2.1 RATIFIED deviation display"
+   "sorries": 0,
+   "note": "carries the §2.1 RATIFIED deviation display [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U9a-c+U9.zc_root",
    "file": "U9_zcRoot.lean",
-   "sorries": 3,
-   "note": "ESCALATION 2026-07-28: U9a (zc_root_downset_mp) PROVED, axioms clean {propext, Classical.choice, Quot.sound} (case split on the IsFreshAttach witness; root floor bridge kappa0 = slope, ustar cancels, U11 not consumed). U9b/U9c/zc_root STOP unprovable-as-stated, in-file records: (1) IsFreshAttach clauses (1)+(3) force S.Theta 0's corrections to vanish at strip coordinates on the fresh locus - not seed-derivable, witness existence fails on junk Theta, pinTransportSystem degenerates (SAME obstruction re-blocks U7.mkSigma_recursion despite DC-2; F-7 ruling overlooked clause (3)); repair = Theta-normalization zcSeed law (D5 fence) or weaken clauses (3)/(4) to Theta-composed zeros. (2) U9c additionally: interior VALUE coordinates not excluded (s0 >= mu*e*g underivable; hOrd gives wSide >= mu*e*g so span slots cross the interior) and their solve is spec-unconstrained/forced to vOf digits; repair = RootD4-class root-shape law mu*childWidth <= s0*Dwidth. Designer sign-off required. POST-DC-3 (2026-07-28, K2): the witness-existence obstruction is DISCHARGED — clauses (3)/(4) now Θ-composed, and U7.freshAttach_exists proves the ∃ at i = 0 for EVERY seed (mkSigma_recursion_zero). U9b's route re-opens (recorded backwards-run of the U9a machinery). U9c still needs BOTH pending sign-off laws: the Θ-normalization zcSeed law (literal zeros; the dead countermodel's badSeed now refutes U9c-as-stated instead — the residue landed exactly where the blueprint's D5 fence said it must) AND the root-shape law (value-interior exclusion)."
+   "sorries": 2,
+   "note": "ESCALATION 2026-07-28: U9a (zc_root_downset_mp) PROVED, axioms clean {propext, Classical.choice, Quot.sound} (case split on the IsFreshAttach witness; root floor bridge kappa0 = slope, ustar cancels, U11 not consumed). U9b/U9c/zc_root STOP unprovable-as-stated, in-file records: (1) IsFreshAttach clauses (1)+(3) force S.Theta 0's corrections to vanish at strip coordinates on the fresh locus - not seed-derivable, witness existence fails on junk Theta, pinTransportSystem degenerates (SAME obstruction re-blocks U7.mkSigma_recursion despite DC-2; F-7 ruling overlooked clause (3)); repair = Theta-normalization zcSeed law (D5 fence) or weaken clauses (3)/(4) to Theta-composed zeros. (2) U9c additionally: interior VALUE coordinates not excluded (s0 >= mu*e*g underivable; hOrd gives wSide >= mu*e*g so span slots cross the interior) and their solve is spec-unconstrained/forced to vOf digits; repair = RootD4-class root-shape law mu*childWidth <= s0*Dwidth. Designer sign-off required. POST-DC-3 (2026-07-28, K2): the witness-existence obstruction is DISCHARGED — clauses (3)/(4) now Θ-composed, and U7.freshAttach_exists proves the ∃ at i = 0 for EVERY seed (mkSigma_recursion_zero). U9b's route re-opens (recorded backwards-run of the U9a machinery). U9c still needs BOTH pending sign-off laws: the Θ-normalization zcSeed law (literal zeros; the dead countermodel's badSeed now refutes U9c-as-stated instead — the residue landed exactly where the blueprint's D5 fence said it must) AND the root-shape law (value-interior exclusion). D5-FENCE SIGN-OFF EXECUTED (2026-07-28): both laws LANDED as ZCSeedLaws fields (theta_norm + root_shape — the latter in the value-coordinate-free FAITHFUL WEAKENING, the record's μ·childWidth ≤ s0·Dwidth draft being false at the gate); proved at U27's seed; badSeed closed by hypothesis; U9b (zc_root_downset_mpr) PROVED earlier in the K2 round; remaining 2 sorries = U9c (route in-file, queued-fleet) + zc_root assembly."
   },
   {
    "id": "U10a-d+U10.zc_step",
@@ -159,29 +195,32 @@
   {
    "id": "U11.root_height_of_inBox",
    "file": "U11_rootHeight.lean",
-   "sorries": 1
+   "sorries": 1,
+   "note": "N-5 RESTATED: gains hd4 : RootD4 H (the pre-declared flex point FIRED — refutable without it); derivation route in-file, proof queued-fleet."
   },
   {
    "id": "U13.jetSetup_of_seed",
    "file": "U13_assembly.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "PROVED (assembly); N-queue: gains hd4 (N-5) + hunp (K2), threads hcoh/hreal into U4/U6 (N-6); re-verified closing."
   },
   {
    "id": "U14.NP_fits(+box form)",
    "file": "U14_npFits.lean",
-   "sorries": 2,
-   "note": "NP-ID ⊆ direction (W4-4 pointer)"
+   "sorries": 0,
+   "note": "NP-ID ⊆ direction (W4-4 pointer) [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U15.present_exist_of_seeds",
    "file": "U15_presentExist.lean",
-   "sorries": 1,
-   "note": "hseed = SEED-EXIST verbatim (HC-1 seam)"
+   "sorries": 0,
+   "note": "PROVED; hseed = SEED-EXIST verbatim (HC-1 seam, byte-UNCHANGED at the N-queue round); gains hd4 (N-5, ∀-class) + hunp (K2, ∀-seed) as separate named binders — wave-4 decides folding."
   },
   {
    "id": "U16.threshold_of_seeds",
    "file": "U16_threshold.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "PROVED; threads U15's hd4/hunp (N-queue)."
   },
   {
    "id": "U17a.lift_swap",
@@ -192,31 +231,32 @@
   {
    "id": "U17b-1..3+U17b.galois_normalize",
    "file": "U17b_galois.lean",
-   "sorries": 4
+   "sorries": 0,
+   "note": "PROVED (all three sub-units + assembly); N-3: additive IsCanon-transport clause threaded through all three theorems (recenterLiftSpec_nodeMap/polOM_liftOf_nodeMap/isCanon_historyMap); still sorry-free."
   },
   {
    "id": "U17c.presentNorm_total(+polOM assembly)",
    "file": "U17c_total.lean",
-   "sorries": 2,
-   "note": "carries StageTransHyp"
+   "sorries": 0,
+   "note": "carries StageTransHyp; N-3: own sorry CLOSED (one-line clause consumption); footprint sorryAx-conditional through the OPEN U17a. presentNorm_polOM re-keyed to carry huniq : OmUniqHyp (K3 consequence; caveat recorded — OmUniqHyp itself conditionally refuted)."
   },
   {
    "id": "U18.presentNorm_unique",
    "file": "U18_unique.lean",
    "sorries": 1,
-   "note": "proof-first; OmUniqHyp fallback recorded; hbr-drop standing probe cited"
+   "note": "K3 RESTATED: gains AdjacentReads H/H' (the conditional-refutation repair); proof-first stands under the guard; hbr-drop standing probe cited; OmUniqHyp caveat recorded at U17c."
   },
   {
    "id": "U19.readsOf_coherent",
    "file": "U19_runCoherent.lean",
-   "sorries": 1,
-   "note": "projection under the D4-records route"
+   "sorries": 0,
+   "note": "projection under the D4-records route [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U20.readsOf_NA",
    "file": "U20_NA.lean",
-   "sorries": 1,
-   "note": "RESTATED-AS-ASSEMBLY per §9 F-2 (statement byte-unchanged): species trichotomy + U20a/b/c transports + SideReads(i)"
+   "sorries": 0,
+   "note": "RESTATED-AS-ASSEMBLY per §9 F-2 (statement byte-unchanged): species trichotomy + U20a/b/c transports + SideReads(i) [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U20a.NA_transport_root",
@@ -233,20 +273,20 @@
   {
    "id": "U20c.NA_transport_recentering",
    "file": "U20c_NAtransportRecentering.lean",
-   "sorries": 1,
-   "note": "NEW per §9 F-2 — vertex-value transport, RECENTERING parent (IsRecenteringCore + L5_recLiftIndep_R4); statement prover-refinable"
+   "sorries": 0,
+   "note": "NEW per §9 F-2 — vertex-value transport, RECENTERING parent (IsRecenteringCore + L5_recLiftIndep_R4); statement prover-refinable [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U21.readsOf_HV",
    "file": "U21_HV.lean",
    "sorries": 1,
-   "note": "escalation risk: D.8 exponent bookkeeping; N-4 gated (SideReads clause (vi) sign-off) per §9 F-3"
+   "note": "N-4 EXECUTED: SideReads clause (vi) landed (Defs); U21 now a DERIVATION (statement byte-unchanged; route in-file); medium-hard bookkeeping, queued-fleet."
   },
   {
    "id": "U22.readsOf_SAE",
    "file": "U22_SAE.lean",
-   "sorries": 1,
-   "note": "F-EMPTY record cited; RESTATED-AS-REDUCTION per §9 F-4 (statement byte-unchanged): proven reduction + E1 + E2, reduction proof lands first"
+   "sorries": 0,
+   "note": "F-EMPTY record cited; RESTATED-AS-REDUCTION per §9 F-4 (statement byte-unchanged): proven reduction + E1 + E2, reduction proof lands first [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U22-E1.SAE_spanStrict_endpoint",
@@ -263,19 +303,20 @@
   {
    "id": "U23.readsOf_realizable",
    "file": "U23_runRealizable.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "[sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U24.readsOf_canonical",
    "file": "U24_runCanon.lean",
-   "sorries": 1,
-   "note": "projection (SideReads(v) baked)"
+   "sorries": 0,
+   "note": "PROVED (projection, SideReads(v) baked); N-4 fallout: projection indices bumped past the new clause (vi)."
   },
   {
    "id": "U25.polOM_total(+liftOf_spec)",
    "file": "U25_polTotal.lean",
-   "sorries": 2,
-   "note": "escalation risk #1; eligibility-narrowing flex point"
+   "sorries": 0,
+   "note": "N-2 CLOSED: both theorems gain the guarded helig (D10Eligible at the final read) and are PROVED from the in-file machine-checked necessity/sufficiency lemmas."
   },
   {
    "id": "U26.class_fiber_welldef",
@@ -287,30 +328,31 @@
    "id": "U27.gate_order0_inert",
    "file": "U27_gateInert.lean",
    "sorries": 0,
-   "note": "PROVED 2026-07-28, RESTATED AT THE COVERAGE FLOOR N := 1 — the pre-restatement ∀ N ≥ 1 form was machine-refuted at N = 2 (lean/U27_OBSTRUCTION_negation.lean: root_height + the band's inclusive upper edge force totalPins ≥ 4 at every N ≥ 2); N₀(H₀,⊤) = 1 + largest constrained level = 1 + 0 per the (ZC-c)/C.2 proviso the DC-1 guard implements. Proof: U31's concrete history/landing key + a concrete seed (literal baseDigit chart; the GUARDED downsets_literal proved outright — the DC-1 inhabitation smoke test) + a concrete JetSetup (U28's gate pattern ported to p = 2). totalPins = 2 and the 1/4 tie at the floor box; #print axioms = Lean core only"
+   "note": "N-QUEUE (2026-07-28): seed gains the two new ZCSeedLaws proofs (theta_norm definitional at Θ = id; root_shape by the valueSupport_empty arithmetic); landing_ν₀ re-keyed to U31.landingKey_ν₀; FOOTPRINT RE-VERIFIED Lean-core only. PROVED 2026-07-28, RESTATED AT THE COVERAGE FLOOR N := 1 — the pre-restatement ∀ N ≥ 1 form was machine-refuted at N = 2 (lean/U27_OBSTRUCTION_negation.lean: root_height + the band's inclusive upper edge force totalPins ≥ 4 at every N ≥ 2); N₀(H₀,⊤) = 1 + largest constrained level = 1 + 0 per the (ZC-c)/C.2 proviso the DC-1 guard implements. Proof: U31's concrete history/landing key + a concrete seed (literal baseDigit chart; the GUARDED downsets_literal proved outright — the DC-1 inhabitation smoke test) + a concrete JetSetup (U28's gate pattern ported to p = 2). totalPins = 2 and the 1/4 tie at the floor box; #print axioms = Lean core only"
   },
   {
    "id": "U28.gate_order0_sep",
    "file": "U28_gateSep.lean",
-   "sorries": 1
+   "sorries": 0,
+   "note": "[sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U29.gate_NP",
    "file": "U29_gateNP.lean",
-   "sorries": 2,
-   "note": "gate_NP_value PROVED (PhatStar_NPband re-export)"
+   "sorries": 0,
+   "note": "gate_NP_value PROVED (PhatStar_NPband re-export) [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U30.gate_polOM",
    "file": "U30_gatePol.lean",
-   "sorries": 1,
-   "note": "U25's day-one tripwire; FIRST P-block"
+   "sorries": 0,
+   "note": "U25's day-one tripwire; FIRST P-block [sorries resync 2026-07-28 N-queue round]"
   },
   {
    "id": "U31.gate_readsOf_inert2",
    "file": "U31_gateReadsOf.lean",
-   "sorries": 0,
-   "note": "ReadsOf non-vacuity anchor (GAP-4); PROVED (escalation round). 2026-07-28: a dozen helper lemmas de-privatized (statements byte-unchanged) so U27 reuses the concrete H₀/ν₀/fq, the landing-key witness, and the base-stage valuation facts"
+   "sorries": 1,
+   "note": "ReadsOf non-vacuity anchor (GAP-4); PROVED (escalation round). 2026-07-28: a dozen helper lemmas de-privatized (statements byte-unchanged) so U27 reuses the concrete H₀/ν₀/fq, the landing-key witness, and the base-stage valuation facts. N-4 (2026-07-28): sideReads_ν₀'s clause-(vi) leg = the MANDATED gate re-run (F-3(c)), queued-fleet — gate temporarily sorryAx-conditional (recorded regression, the designed adjudication of the new clause); landing-key leg extracted to the standalone PROVED landingKey_ν₀ (U27's consumption stays clean)."
   }
  ]
 }

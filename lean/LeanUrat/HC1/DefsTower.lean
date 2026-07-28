@@ -54,13 +54,26 @@ structure TransHyp (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
 /-- One tower move: an increment with its full interface + transition record, or a
 recentering with the RECORDING form (the recTRANSRS fence, D4(iii)). E-phase rename:
 the blueprint's constructor `rec` collides with the auto-generated recursor and is
-`recenter` here (Deviation D-1). -/
+`recenter` here (Deviation D-1).
+
+**F-5 ENRICHMENT (sign-off event 2026-07-28, blueprint §9.6):** each constructor
+carries the child core `core' : StageCoreL σ'`. The note's move IS a stage-producing
+construction (MOVES 2464–2465: "The stage axioms (S1′)–(S5′), (S6a′), (S6b′) all
+hold"); the S11 escalation countermodel (sign-twist, in-file at `S11_towerSpine`)
+machine-certified that the twist-class legs {w_jump, TvecLaw, TvecUnitLaw,
+CoeffLocLaw, SlotDecomp, CoeffFieldLawCore} are INDEPENDENT of the previously
+recorded witnesses, so a `Tower` recording less than stage-hood under-records the
+note. S9/S10 (statements unchanged) prove enriched witnesses EXIST for every legal
+read — inhabitation is unweakened; `S11a_coreTransport` certifies the enrichment is
+MINIMAL (every non-twist leg was already derivable). -/
 inductive MoveWitness (σ σ' : Stage p F) : Type u
   | inc (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ)
       (hyp : TransHyp σ ψ g Φhat e' h' zbar)
-      (core : TransitionCoreL σ σ' Φhat e' h' zbar) : MoveWitness σ σ'
+      (core : TransitionCoreL σ σ' Φhat e' h' zbar)
+      (core' : StageCoreL σ') : MoveWitness σ σ'
   | recenter (cc : ↥σ.K) (tt : Polynomial ℤ_[p])
-      (core : IsRecenteringCore σ σ' cc tt) : MoveWitness σ σ'
+      (core : IsRecenteringCore σ σ' cc tt)
+      (core' : StageCoreL σ') : MoveWitness σ σ'
 
 /-- The faithful D.2 base pin (the baseStage fence, D4(i)/D5): parent valuation =
 the Gauss valuation, reps = [C p] (U = {π}, representative p — MOVES 1999–2001),
@@ -77,6 +90,14 @@ structure Tower (p : ℕ) [Fact p.Prime] (F : Type u) [Field F] [Finite F] where
   stg : Fin (K + 1) → Stage p F
   base : IsBaseStage (stg 0) ∧ StageCoreL (stg 0)
   move : ∀ k : Fin K, MoveWitness (stg k.castSucc) (stg k.succ)
+  /-- **CHAR PIN (F-2, frontier adjudication 2026-07-28, blueprint §9.2):** the ambient
+  residue field has characteristic p — intrinsic to the note's setting (the F_{k+1}/F_p
+  extensions of MOVES 2148–2165 are residue fields of extensions of ℚ_p); the card-K
+  bridge `Nat.card ↥K = p^[K:F_p]` (C6's conjuncts 2–3) is underivable without it
+  (round-2 fleet kernel, commit 2f388c8). Excludes only note-rejected char ≠ p
+  instantiations; every planned gate instance (T2/S1/G2: `GaloisField 2 2` at p = 2)
+  satisfies it by instance. -/
+  hcharF : CharP F p
 
 namespace Tower
 
@@ -91,8 +112,8 @@ def eBirthAux : ℕ → ℕ
   | k + 1 =>
     if h : k < T.K then
       match T.move ⟨k, h⟩ with
-      | .inc _ _ _ e' _ _ _ _ => e'
-      | .recenter _ _ _ => eBirthAux k
+      | .inc _ _ _ e' _ _ _ _ _ => e'
+      | .recenter _ _ _ _ => eBirthAux k
     else eBirthAux k
 
 /-- e_birth per level (D6): `eBirthAux` read at the tower index. -/

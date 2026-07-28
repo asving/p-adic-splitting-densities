@@ -378,7 +378,7 @@ theorem NA_transport_recentering {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] 
   have hcore := hrec hsp
   obtain ⟨he1σ, he1σ', hccne, htc, htne, htw, htdig, hΦ', hw', -, -, -, -, -⟩ := hcore.base
   obtain ⟨B', Nd', Φnext, hdev', -, hside⟩ := hruns i hi
-  obtain ⟨-, hdig, ⟨hanch, hord⟩, -, -⟩ := hside
+  obtain ⟨-, hdig, ⟨hanch, hord⟩, -, -, -⟩ := hside
   set ν : Node p F := H.nodes[i]'hi with hν
   set ν' : Node p F := H.nodes[i+1]'hi1 with hν'
   -- node-level recentering data
