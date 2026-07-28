@@ -1101,7 +1101,19 @@ one fixed rational function, and U-28 consumes Rval through `rs1_equates` + the 
 interpolation `wsh_interp`/blockSolve chain. No conclusion is a field beyond the
 note's displayed GIVENs, each tagged CL-4/CL-8/CL-10/CL-17/CL-5/CL-1/CL-9 above.)*
 
-### §W4-SYNC — THE SEAM CONTRACT (REV 10; replaces §2.E as a build target)
+#
+### RATIFICATION ADDENDA (2026-07-28, the deferred Codex pass — 2 NEW seam demands)
+
+- W1_RS1SH: the shown typed form is CIRCULAR (assumes what it delivers) — the
+  re-keying must derive RS.1-SH from the MovesT tree assembly, not restate it.
+- W1m_marked: the shown form OMITS the nine-input ledger the note's marked
+  identification inherits — the re-keying carries all nine as typed premises.
+(The other five ratification observations were already tracked as S-3/S-5/S-6/
+S-7/S-8 DEMANDS — cross-confirmed. Core caveat on record: N2Act's inactive
+branch is vacuous ON THE ALL-ACTIVE n=2 DEVICE ONLY; general act_target
+unaffected; disclosed.)
+
+## §W4-SYNC — THE SEAM CONTRACT (REV 10; replaces §2.E as a build target)
 
 **NOT LEAN UNITS. NOT BUILT AT E-PHASE.** The typed forms below (carried from
 REV 9) are each entry's CURRENT PIN — the contract MovesT/MovesV re-key when
