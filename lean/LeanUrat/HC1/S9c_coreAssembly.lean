@@ -20,9 +20,11 @@ FULL round-5 transition record (`TransitionCoreL` — its `child_dig_frame` is t
 pin's own clause via `VertexPin.to_child_dig_frame`, with `mfun := 0`, no
 ∃-slack) and `StageCore` (the seven non-twist legs are `S11a_coreTransport`'s
 transport — consumed here to shrink the per-field work; the residual construction
-facts are w_jump (`ChildResData.hWjump`), TvecLaw (the transported-vector product
-law of the literal), SlotDecomp and CoeffFieldLawCore (transports via
-`L4_TRANSvii_R4` + S6, per §9.5)). difficulty: HARD (assembly). hyp: none.
+facts are w_jump (the `ChildResLaws` w_jump conjunct, via S9w's lawful carrier —
+re-threaded at the 2026-07-28 unbundle; formerly a `ChildResData` field), TvecLaw
+(the transported-vector product law of the literal), SlotDecomp and
+CoeffFieldLawCore (transports via `L4_TRANSvii_R4` + S6, per §9.5)).
+difficulty: HARD (assembly). hyp: none.
 -/
 
 set_option linter.style.longLine false

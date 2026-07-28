@@ -280,7 +280,7 @@
    "file": "lean/LeanUrat/HC1/S9r_childR.lean",
    "difficulty": "hard",
    "sorries": 1,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): inhabitation of ChildResData (DefsChild) — the D.7(vi)-normalized child residual with the pinned S5' shape + the residual/tie laws. THE hard construction block (with S9w's w_strict leg).",
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — UNBUNDLED (remediation round, same day): ChildResData is now the CARRIER ONLY (Rc + the D.3(b) key pin + the S5' pinned shape — §9.5's S9r billing), so this unit is the construction SEED; the law pack moved to ChildResLaws (DefsChild) and its lawful-carrier existence is S9w's own theorem. Once S9w lands, S9r follows from its first conjunct.",
    "statement": "theorem S9r_childR {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : Nonempty (ChildResData σ Φhat e' h' zbar s' t')"
   },
   {
@@ -288,8 +288,8 @@
    "file": "lean/LeanUrat/HC1/S9w_residualLaws.lean",
    "difficulty": "hard",
    "sorries": 1,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the (childW, childR) law pack. Nine ChildResData projections PROVED through the choice; the childW-only w_strict tie law is the genuine open leg (S2 development plumbing).",
-   "statement": "theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hne : Nonempty (ChildResData σ Φhat e' h' zbar s' t')) : (childR σ Φhat e' h' zbar s' t' 0 = 0) ∧ (∀ f, f ≠ 0 → childR σ Φhat e' h' zbar s' t' f ≠ 0) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childR σ Φhat e' h' zbar s' t' (f * g') = childR σ Φhat e' h' zbar s' t' f * childR σ Φhat e' h' zbar s' t' g') ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → childW σ Φhat e' h' f = childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f → childR σ Φhat e' h' zbar s' t' (f + g') = childR σ Φhat e' h' zbar s' t' f + childR σ Φhat e' h' zbar s' t' g') ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childR σ Φhat e' h' zbar s' t' (f + g') = childR σ Φhat e' h' zbar s' t' f) ∧ (childR σ Φhat e' h' zbar s' t' Φhat = LaurentPolynomial.T s') ∧ (∀ B, B ≠ 0 → inC Φhat B → ∃ c' : (↥(σ.nextField zbar))ˣ, childR σ Φhat e' h' zbar s' t' B = LaurentPolynomial.C ((c' : ↥(σ.nextField zbar))) * LaurentPolynomial.T (- t' * σ.w B) ∧ ((c' : ↥(σ.nextField zbar)) : F) = σ.digPrime zbar B) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → f + g' ≠ 0 → childW σ Φhat e' h' f = childW σ Φhat e' h' g' → childW σ Φhat e' h' f < childW σ Φhat e' h' (f + g') → childR σ Φhat e' h' zbar s' t' f + childR σ Φhat e' h' zbar s' t' g' = 0) ∧ (∀ f, childR σ Φhat e' h' zbar s' t' (-f) = - childR σ Φhat e' h' zbar s' t' f) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f)"
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — RESTORED SHAPE (remediation round, same day; the Codex S9 rejection repair): S9w's OWN theorem = (∃ D : ChildResData, ChildResLaws D) ∧ w_strict — the §9.5 hard new-algebra block, one sorry, hardness honestly homed HERE (the E-phase draft had bundled the laws as ChildResData fields, relocating the hardness into S9r). The former nine projections survive as the PROVED Lean-core corollary childR_laws (explicitly labeled NOT the unit's content).",
+   "statement": "theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : (∃ D : ChildResData σ Φhat e' h' zbar s' t', ChildResLaws D) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f)"
   },
   {
    "id": "HC1.S9a_stageLiteral",
@@ -312,7 +312,7 @@
    "file": "lean/LeanUrat/HC1/S9c_coreAssembly.lean",
    "difficulty": "hard",
    "sorries": 1,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative + full TransitionCoreL (child_dig_frame = the pin via VertexPin.to_child_dig_frame, mfun := 0, no ∃-slack) + StageCore (non-twist legs via S11a; w_jump via ChildResData; SlotDecomp/CoeffFieldLawCore via L4_TRANSvii_R4 + S6).",
+   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative + full TransitionCoreL (child_dig_frame = the pin via VertexPin.to_child_dig_frame, mfun := 0, no ∃-slack) + StageCore (non-twist legs via S11a; w_jump via the ChildResLaws conjunct (2026-07-28 unbundle; formerly a ChildResData field); SlotDecomp/CoeffFieldLawCore via L4_TRANSvii_R4 + S6).",
    "statement": "theorem S9c_coreAssembly {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ StageCore σ'"
   },
   {

@@ -29,18 +29,20 @@ VISIBILITY NOTE (2026-07-28, U27 restate+prove round): a dozen helper lemmas
 byte-unchanged — so U27's concrete seed/JetSetup construction can reuse this file's
 concrete history `H₀`/`ν₀`, its landing-key witness, and the base-stage valuation facts.
 
-N-4 GATE STATUS (2026-07-28, sign-off round): `SideReads` gained the ADDITIVE clause
-(vi) VERTEX READ-OFF (Defs; §9 F-3). Per F-3(c) the gate RE-RUN with the clause is
-MANDATORY and is QUEUED FOR THE FLEET PHASE — `sideReads_ν₀`'s clause-(vi) leg carries
-the queued sorry (expected discharge sketched at the sorry: uniqueness of `fq`-adic
-developments gives `Bh 1 = 1`, and `vtx ν₀ = 1`); until it lands, `readsOf_fq`/
-`gate_readsOf_inert2` are CONDITIONAL on that leg (footprint gains sorryAx — a RECORDED
-temporary regression of this gate, the designed adjudication of the new clause). The
-landing-key leg was EXTRACTED to the standalone PROVED `landingKey_ν₀` so U27's
-consumption (its `landing_ν₀`) stays sorry-free.
+N-4 GATE STATUS (2026-07-28, sign-off round → REMEDIATION ROUND same day): `SideReads`
+gained the ADDITIVE clause (vi) VERTEX READ-OFF (Defs; §9 F-3). Per F-3(c) the gate
+RE-RUN with the clause is MANDATORY — it was QUEUED at the sign-off sitting and is now
+EXECUTED (this file, remediation round): `sideReads_ν₀`'s clause-(vi) leg is PROVED along
+exactly the queued sketch (Fact-B uniqueness of `fq`-adic developments gives `Bh 1 = 1`;
+`vtx ν₀ = 1`), via `L0_FactB_unique`. The gate is again sorry-free and Lean-core:
+`readsOf_fq`/`gate_readsOf_inert2` are UNCONDITIONAL — the clause-(vi) transcription is
+NOT over-strengthened at the concrete witness (the GAP-4 adjudication passed). The
+landing-key leg had been EXTRACTED to the standalone PROVED `landingKey_ν₀` so U27's
+consumption (its `landing_ν₀`) stayed sorry-free throughout.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.Moves.L0_FactB_unique
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -274,6 +276,17 @@ noncomputable def fq : Polynomial ℤ_[2] := X ^ 2 + C 2 * X + C 4
 
 /-- Its normal cofactor upstairs: `X² + X + 1` over ℤ₂. -/
 noncomputable def q₁ : Polynomial ℤ_[2] := X ^ 2 + X + 1
+
+/-! ### fq is monic quadratic (hoisted above `sideReads_ν₀` at the N-4 gate re-run, which
+consumes both through Fact-B; statements byte-unchanged) -/
+
+lemma fq_monic : fq.Monic := by
+  unfold fq
+  monicity!
+
+lemma fq_natDegree : fq.natDegree = 2 := by
+  unfold fq
+  compute_degree!
 
 private lemma map_ρ_q₁ : q₁.map ρ = X ^ 2 + X + 1 := by
   rw [q₁, Polynomial.map_add, Polynomial.map_add, Polynomial.map_pow, Polynomial.map_X,
@@ -1128,25 +1141,72 @@ lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
   · -- (v) canonical root
     show r₀ = canonRoot ν₀
     exact canonRoot_ν₀.symm
-  · -- (vi) VERTEX READ-OFF [N-4 GATE RE-RUN, QUEUED-FLEET (blueprint §9 F-3(c): the
-    -- re-run with clause (vi) is MANDATORY — this sorry IS that queued re-run, the
-    -- designed non-vacuity adjudication of the new clause)]. Expected discharge at the
-    -- gate: developments of `fq` at the key `fq` have `Bh 1 = 1` (Fact-A/B uniqueness of
-    -- Φ-adic expansions at deg Bh j < 2), so `digPrime zbar (Bh 1) = eval (bR 1) = 1`;
-    -- and `vtx ν₀ = z̄^(a − μ·m̂)·vtxPoly(z̄) = z̄⁰·((ψ₂ /ₘ ψ₂¹) %ₘ ψ₂)(z̄) = 1`
-    -- (a = 0, t = 0 ⟹ m̂ = 0; 1 %ₘ ψ₂ = 1 at deg ψ₂ = 2). If the witness CANNOT
-    -- discharge this, the clause is over-strengthened and the design returns to F-3.
-    sorry
-
-/-! ### fq is monic quadratic -/
-
-lemma fq_monic : fq.Monic := by
-  unfold fq
-  monicity!
-
-lemma fq_natDegree : fq.natDegree = 2 := by
-  unfold fq
-  compute_degree!
+  · -- (vi) VERTEX READ-OFF [N-4 GATE RE-RUN, EXECUTED 2026-07-28 remediation round —
+    -- blueprint §9 F-3(c)'s MANDATORY re-proof, discharged exactly along the queued
+    -- sketch: Fact-B uniqueness of Φ-adic developments at the key `fq` gives `Bh 1 = 1`,
+    -- so `digPrime zbar (Bh 1) = eval₂ (bR 1) = 1`; and `vtx ν₀ = z̄^(a − μ·m̂)·vtxPoly(z̄)
+    -- = z̄⁰·((ψ₂ /ₘ ψ₂¹) %ₘ ψ₂)(z̄) = 1` (a = 0, t = 0 ⟹ m̂ = 0; 1 %ₘ ψ₂ = 1 at
+    -- deg ψ₂ = 2). The concrete witness DISCHARGES the clause: NOT over-strengthened.
+    intro Bh Nh hdev
+    -- the recorded window sum IS fq, so Bh is a development of fq at the key fq
+    have hdev' : IsDevelopment fq fq Bh Nh := by
+      have hdev2 : IsDevelopment fq
+          (∑ j ∈ Finset.range 3, Bdev j * (X : Polynomial ℤ_[2]) ^ j) Bh Nh := hdev
+      rwa [← Bdev_dev.2.2] at hdev2
+    have hfq_deg : fq.degree = 2 := by
+      rw [Polynomial.degree_eq_natDegree fq_monic.ne_zero, fq_natDegree]
+      rfl
+    -- the canonical development: fq = 0·fq⁰ + 1·fq¹
+    have hcanon : IsDevelopment fq fq (fun j => if j = 1 then 1 else 0) 2 := by
+      refine ⟨?_, ?_, ?_⟩
+      · intro j
+        by_cases hj : j = 1
+        · simp only [hj, if_pos]
+          rw [hfq_deg]
+          exact lt_of_le_of_lt degree_one_le (by norm_num)
+        · simp only [if_neg hj]
+          rw [degree_zero, hfq_deg]
+          decide
+      · intro j hj
+        have hj1 : j ≠ 1 := by omega
+        simp [hj1]
+      · rw [Finset.sum_range_succ, Finset.sum_range_one]
+        norm_num
+    -- Fact B (`L0_FactB_unique`): the vertex slot of ANY development is the canonical one
+    have hBh1 : Bh 1 = 1 := by
+      have h := L0_FactB_unique fq fq_monic fq hdev' hcanon 1
+      simpa using h
+    -- the transported vertex value is 1
+    have hψ₂_deg : ψ₂.degree = 2 := by
+      rw [Polynomial.degree_eq_natDegree ψ₂_ne_zero, ψ₂_natDegree]
+      rfl
+    have hvp : ν₀.vtxPoly = 1 := by
+      have hdiv : ψ₂ /ₘ ψ₂ = 1 := by
+        have h := Polynomial.mul_divByMonic_cancel_left (1 : Polynomial ↥K2) ψ₂_monic
+        rwa [mul_one] at h
+      have hmod : (1 : Polynomial ↥K2) %ₘ ψ₂ = 1 := by
+        refine (Polynomial.modByMonic_eq_self_iff ψ₂_monic).mpr ?_
+        rw [Polynomial.degree_one, hψ₂_deg]
+        decide
+      have h0 : ν₀.vtxPoly = (ψ₂ /ₘ ψ₂ ^ 1) %ₘ ψ₂ := rfl
+      rw [h0, pow_one, hdiv, hmod]
+      rfl
+    have hexp : ν₀.a - (ν₀.μ : ℤ) * ν₀.mhat = 0 := by
+      have hmh : ν₀.mhat = 0 := by
+        show -ν₀.t * (ν₀.h : ℤ) * (ν₀.g : ℤ) = 0
+        have ht : ν₀.t = 0 := rfl
+        rw [ht]
+        ring
+      have ha : ν₀.a = 0 := rfl
+      rw [ha, hmh, mul_zero, sub_zero]
+    have hvtx : ν₀.vtx = 1 := by
+      unfold Node.vtx
+      rw [hvp, Polynomial.eval₂_one, mul_one, hexp, zpow_zero, Units.val_one]
+    show ν₀.σ.digPrime ν₀.zbar (Bh 1) = ν₀.vtx
+    rw [hBh1, hvtx]
+    show LaurentPolynomial.eval₂ K2.subtype ν₀.zbar (bR 1) = 1
+    rw [bR_one]
+    exact map_one _
 
 /-! ### ReadsOf -/
 

@@ -17,11 +17,15 @@ child Stage whose construction is RECORDED: `TransitionData` (the K/e/h/reps/
 threshold/slot-min records), the K1 `VertexPin` (σ'.R agrees with the
 D.7(vi)-normalized `childR` on C_Φ̂ — the F-frame recording of the residual tie;
 the ↥K/↥K′ cast wall stays inside this unit's proof, per the blueprint's own
-escalation surface), and the childW valuation tie. Consumes S9r's data (the
-literal sets `w := childW`, `R := (cast of) childR`, `K := σ.nextField z̄`,
-`reps := σ.reps ++ [σ.Φ]`, Tvec := the transported vector). SUPPLIED legs per the
-§9.5 re-census: w-laws from S5/S4/S2/S3, hStretch definitional at j = 0 slots,
-arithmetic from th + the (vii) Bézout split, hmonic/hdeg from `L3_liftMonic`.
+escalation surface), and the childW valuation tie. Consumes the S9 residual
+block's data (the literal sets `w := childW`, `R := (cast of) childR`,
+`K := σ.nextField z̄`, `reps := σ.reps ++ [σ.Φ]`, Tvec := the transported
+vector) — post the 2026-07-28 unbundle, `childR`'s pins + law pack come through
+S9w (`S9w_residualLaws` for the lawful carrier, `childR_laws` for the
+choice-projected `(childW, childR)` form; S9r supplies the carrier seed).
+SUPPLIED legs per the §9.5 re-census: w-laws from S5/S4/S2/S3, hStretch
+definitional at j = 0 slots, arithmetic from th + the (vii) Bézout split,
+hmonic/hdeg from `L3_liftMonic`.
 difficulty: HARD (assembly; the known type wall). hyp: none.
 -/
 

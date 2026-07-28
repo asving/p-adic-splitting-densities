@@ -53,7 +53,19 @@ as typed. Per the blueprint's P-3 disposition the consumer carries the NAMED HYP
 `OmUniqHyp` (never an axiom) — NOTE the standing caveat: `OmUniqHyp` as typed is itself
 CONDITIONALLY REFUTED by the same scratch witness (`omUniqHyp_refuted_by_witness`); at
 witness-admitting shapes this hypothesis is unsatisfiable, and the wave-4 negotiation
-(MovesD dictionary vs. the adjacency-restated U18) decides the final uniqueness form. -/
+(MovesD dictionary vs. the adjacency-restated U18) decides the final uniqueness form.
+
+K3 SCOPE RECORD (2026-07-28, remediation round — the Codex-rejection repair): because
+`huniq` may be unsatisfiable at witness-admitting shapes, this theorem's conclusion is
+POSSIBLY-VACUOUS THERE and must not be consumed as an unconditional `hnorm` discharger.
+Grep-verified this round: NO declaration in the corpus consumes `presentNorm_polOM`
+(its only occurrences are this definition and cross-reference comments in U15/U18);
+every downstream consumer (U15 `present_exist_of_seeds`, U16 `threshold_of_seeds`,
+MovesD `D4R2'`/`D4R2'_full`/`CD_eq`/`card_classes`, `D15.hwd`) carries
+`hnorm : PresentNorm …` as an EXPLICIT hypothesis binder instead. STANDING FENCE until
+the wave-4 adjacency decision replaces `OmUniqHyp`: any new consumption of this theorem
+must thread `huniq : OmUniqHyp` explicitly (never discharge it silently) — at wave-4 the
+final uniqueness form replaces the premise and this record retires. -/
 theorem presentNorm_polOM {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {P : Shape n} (hst : StageTransHyp p F)
     (huniq : OmUniqHyp n (polOM p F) P) :

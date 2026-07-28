@@ -1611,3 +1611,33 @@ as listed (Lean-core = [propext, Classical.choice, Quot.sound]).
   S16's fleet backlog + the open E-phase sorries unaffected by this event;
   ZERO dep-sorries in any HC1 cone; the note intact at every point. MANIFEST
   re-synced (61 units; sign-off record key `signoff_2026-07-28`).
+
+* **S9 DECOMPOSITION UNBUNDLED (2026-07-28 remediation round — the Codex
+  batch-confirmation S9 rejection repair; grounded finding: the E-phase typing
+  above bundled §9.5's S9w law list as `ChildResData` FIELDS, relocating S9w's
+  billed hardness into S9r's inhabitation sorry and reducing S9w to cosmetic
+  projections).** Restored shape, all files `lake build` green:
+  - `ChildResData` (DefsChild) = the CHOICE-SPEC CARRIER ONLY: `Rc` + the two
+    D.7(vi) normalization pins (`hRPhi = z^{s′}`, the S5′ pinned shape) —
+    exactly §9.5's S9r billing ("`childR` definition + the S5′ shape lemma").
+  - `ChildResLaws` (DefsChild, NEW): the §9.5 S9w law list as a `Prop` ON a
+    carrier (hR0/hRne/hRmul/hRadd/hRlt + w_jump/R_neg) — no longer fields.
+  - `S9w_residualLaws` RESTATED as the HARD unit's OWN theorem: (i) a carrier
+    satisfying the FULL `ChildResLaws` pack EXISTS (takes th + (s′,t′) + hbez′ +
+    ht′0, like S9r), ∧ (ii) the childW-only w_strict tie (one sorry — the §9.5
+    "one genuinely new algebra block", now honestly homed). Its former
+    proved content survives as the clearly-labeled PROJECTION corollary
+    `childR_laws` (PROVED, Lean-core): given S9w's ∃, the defined `childR`
+    carries pins + laws through the choice.
+  - `childR` re-keyed to choose against carrier + `ChildResLaws` — the SAME
+    witness class as the pre-unbundle bundled structure (zero denotation
+    drift).
+  - `S9r_childR` statement text unchanged (`Nonempty ChildResData`), semantics
+    now the carrier SEED (weaker); once S9w lands it follows from S9w's first
+    conjunct — kept as the named §9.5 seed unit.
+  - Consumers re-threaded (docstrings): S9a (childR laws via S9w/childR_laws),
+    S9c (w_jump via the `ChildResLaws` conjunct, formerly `ChildResData.hWjump`);
+    no S9a–S9d STATEMENT touches ChildResData/childR, so all statements are
+    byte-unchanged. Footprints: childR_laws Lean-core; S9r/S9w/S9a/S9b/S9c/S9
+    sorryAx as expected (banked sorries unchanged in count: S9w still exactly
+    one).

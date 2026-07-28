@@ -494,8 +494,83 @@ theorem zc_root_interior_zero {n N : ℕ} {H : History p F} {keys : ℕ → Poly
   --     step floor) makes `Θ 0` literal there, so spec clause (3)'s Θ-composed zero IS
   --     the literal zero: extend the solution prefix `f` by `x j := solve j f`, apply
   --     clause (3) at the strip clause through `j`, and rewrite `Θ x j = x j`.
-  -- PROOF QUEUED (fleet round; the route above is the assigned prover's spec).
-  sorry
+  -- PROOF (D5-fence sign-off route, executed): root_shape ⟹ the interior pin is a STRIP pin;
+  -- clause (3) of the fresh-attach spec gives the Θ-composed zero; theta_norm (at the U9a
+  -- downset bound `zc_root_downset_mp`) makes it literal.
+  classical
+  intro j hj hpin f
+  have hsig : mkSigma H n N S vOf 1
+      = pinTransportSystem (mkSigma H n N S vOf 0) (S.Theta 0) (mkFresh H n N S vOf 0 h0) := by
+    show (if hi : 0 < H.nodes.length then
+        pinTransportSystem (mkSigma H n N S vOf 0) (S.Theta 0) (mkFresh H n N S vOf 0 hi)
+      else mkSigma H n N S vOf 0) = _
+    rw [dif_pos h0]
+  have hasg : ∀ cl ∈ (mkFresh H n N S vOf 0 h0).clauses, ∃ u : Fin (n * N) → ZMod p,
+      ∀ x, cl.sat x ↔ ∀ c ∈ cl.support, x c = u c :=
+    fun cl hcl => clause_assign cl (mkFresh_codim S vOf 0 h0 cl hcl)
+  have hunpinned : ∀ c : Fin (n * N), (mkSigma H n N S vOf 0).pinned c = true →
+      ¬ ∃ cl ∈ (mkFresh H n N S vOf 0 h0).clauses, c ∈ cl.support := by
+    intro c hc
+    rw [show (mkSigma H n N S vOf 0).pinned c = false from rfl] at hc
+    exact Bool.noConfusion hc
+  have hEx : ∃ D' : Locus p (n * N),
+      IsFreshAttach (mkSigma H n N S vOf 0) (S.Theta 0) (mkFresh H n N S vOf 0 h0) D' :=
+    freshAttach_exists (mkSigma H n N S vOf 0) (S.Theta_uni 0)
+      (mkFresh H n N S vOf 0 h0) hasg hunpinned
+  have spec := pinTransportSystem_spec (mkSigma H n N S vOf 0) (S.Theta 0)
+    (mkFresh H n N S vOf 0 h0) hEx
+  -- the Θ-normalization bound (U9a): the pinned interior coordinate is at-or-below the step floor
+  have hbound : ((H.htH 1 (boxChart n N j) : ℚ) : WithBot ℚ) ≤ H.floorH 1 (boxChart n N j).2 :=
+    zc_root_downset_mp S vOf hcoh hreal hbox hN h0 j hj hpin
+  have hpin1 : (pinTransportSystem (mkSigma H n N S vOf 0) (S.Theta 0)
+      (mkFresh H n N S vOf 0 h0)).pinned j = true := by rw [← hsig]; exact hpin
+  -- j's covering fresh clause is a STRIP clause (root_shape excludes the value case)
+  have hstrip3 : ∃ cl ∈ (mkFresh H n N S vOf 0 h0).clauses,
+      cl.support = {j} ∧ ∀ y : Fin (n * N) → ZMod p, cl.sat y ↔ y j = 0 := by
+    rcases (spec.2.1 j).mp hpin1 with htop | ⟨cl, hclmem, hjsup⟩
+    · rw [show (mkSigma H n N S vOf 0).pinned j = false from rfl] at htop
+      exact Bool.noConfusion htop
+    · rcases List.mem_append.mp hclmem with hstrip | hval
+      · obtain ⟨c, hcmem, rfl⟩ := List.mem_map.mp hstrip
+        have hjc : j = c :=
+          Finset.mem_singleton.mp ((C1_stripClause (p := p) c).choose_spec.1 ▸ hjsup)
+        subst hjc
+        exact ⟨(C1_stripClause (p := p) j).choose, hclmem,
+          (C1_stripClause (p := p) j).choose_spec.1,
+          (C1_stripClause (p := p) j).choose_spec.2.2⟩
+      · exfalso
+        obtain ⟨jh, hjhmem, rfl⟩ := List.mem_map.mp hval
+        rw [valueClause_support S vOf 0 h0 jh.1 (valueSlots_spanSlot jh.2)] at hjsup
+        unfold levelSet at hjsup
+        obtain ⟨-, hfs, hhtv⟩ := Finset.mem_filter.mp hjsup
+        exact S.zcSeed.root_shape h0 j hj
+          ⟨by rw [hfs]; exact valueSlots_spanSlot jh.2, by rw [hfs]; exact hhtv⟩
+  -- fire clause (3) on a solution prefix extending `f`, then rewrite Θ literal via theta_norm
+  rw [hsig]
+  obtain ⟨cl, hclmem, hclsupp, hclsat⟩ := hstrip3
+  set D' := pinTransportSystem (mkSigma H n N S vOf 0) (S.Theta 0)
+    (mkFresh H n N S vOf 0 h0) with hD'
+  set v := D'.solve j f with hvdef
+  set x : Fin (n * N) → ZMod p :=
+    fun j' => if h : j' < j then f j' h else if j' = j then v else 0 with hxdef
+  have hxlt : ∀ (j'' : Fin (n * N)) (h : j'' < j), x j'' = f j'' h := by
+    intro j'' h
+    simp only [hxdef]
+    exact dif_pos h
+  have hxj : x j = v := by
+    have hstep : x j = if j = j then v else 0 := by
+      simp only [hxdef]; exact dif_neg (lt_irrefl j)
+    rw [hstep, if_pos rfl]
+  have harg : (fun (j'' : Fin (n * N)) (_ : j'' < j) => x j'') = f := by
+    funext j'' h
+    exact hxlt j'' h
+  have hx : x j = D'.solve j (fun j' _ => x j') := by
+    rw [hxj, harg]
+  have hΘ0 : S.Theta 0 x j = 0 :=
+    spec.2.2.1 j ⟨cl, hclmem, hclsupp, hclsat⟩ x hx
+  have hΘlit : S.Theta 0 x j = x j := S.zcSeed.theta_norm 0 h0 j hbound x
+  rw [hΘlit, hxj] at hΘ0
+  exact hΘ0
 
 /-- U9 assembled — the i = 0 instance of `JetSetup.zc` for the constructed chain. -/
 theorem zc_root {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
@@ -504,9 +579,32 @@ theorem zc_root {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]
     (h0 : 0 < H.nodes.length) :
     ZCData (mkSigma H n N S vOf 1) (boxChart n N) (H.htH 1) (H.floorH 1)
       ((H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth) := by
-  -- STOP-THE-LINE (escalation, 2026-07-28): trivial packaging of U9a/b/c
-  -- (`downset_exact := fun j hj => ⟨mp j hj, mpr j hj⟩`, `interior_zero := U9c`),
-  -- blocked by the U9b and U9c records above.
-  sorry
+  -- Trivial packaging of U9a/U9b/U9c (all three now proved).
+  refine ⟨fun j hj => ⟨?_, ?_⟩, fun j hj hpin f => ?_⟩
+  · exact zc_root_downset_mp S vOf hcoh hreal hbox hN h0 j hj
+  · exact zc_root_downset_mpr S vOf hcoh hreal hbox hN h0 j hj
+  · exact zc_root_interior_zero S vOf hcoh hreal hbox hN h0 j hj hpin f
+
+theorem u9c_probe_tail {m : ℕ} (D' : Locus p m) (Θ : (Fin m → ZMod p) → (Fin m → ZMod p))
+    (j : Fin m) (f : (j' : Fin m) → j' < j → ZMod p)
+    (hclause3 : ∀ x : Fin m → ZMod p, x j = D'.solve j (fun j' _ => x j') → Θ x j = 0)
+    (hthetalit : ∀ x : Fin m → ZMod p, Θ x j = x j) :
+    D'.solve j f = 0 := by
+  set v := D'.solve j f with hvdef
+  set x : Fin m → ZMod p :=
+    fun j' => if h : j' < j then f j' h else if j' = j then v else 0 with hxdef
+  have hxlt : ∀ (j'' : Fin m) (h : j'' < j), x j'' = f j'' h := by
+    intro j'' h; simp only [hxdef]; exact dif_pos h
+  have hxj : x j = v := by
+    have hstep : x j = if j = j then v else 0 := by simp only [hxdef]; exact dif_neg (lt_irrefl j)
+    rw [hstep, if_pos rfl]
+  have harg : (fun (j'' : Fin m) (_ : j'' < j) => x j'') = f := by funext j'' h; exact hxlt j'' h
+  have hx : x j = D'.solve j (fun j' _ => x j') := by rw [hxj, harg]
+  have hΘ0 := hclause3 x hx
+  have hΘlit := hthetalit x
+  rw [hΘlit, hxj] at hΘ0
+  exact hΘ0
+
+#print axioms u9c_probe_tail
 
 end LeanUrat.MovesJ

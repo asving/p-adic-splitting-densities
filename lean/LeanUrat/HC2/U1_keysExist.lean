@@ -27,9 +27,14 @@ conjunct 1 — the run predicate is the honest carrier of final-read lawfulness 
 `FinalReadLawful` shadow definition was REJECTED). Consumers unaffected: U13/U15 consume
 keys through `hseed`'s `∃ keys, KeysLawful` (SEED-EXIST rev-2 form), never through U1;
 this unit's surviving role is run-side (MovesT wave-4 + HC-1 run constructions).
-FLEET DUTY (queued, not this round): land the compiled negation witness of the retired
-`hcoh`-keyed form beside this unit (the `U27_OBSTRUCTION` pattern) so the refutation is
-durable — it needs a concrete 2-node coherent history (HC-1 S9-adjacent construction).
+NEGATION WITNESS (LANDED 2026-07-28, remediation round): `U1_negWitness.lean` beside this
+unit (the `U27_OBSTRUCTION` pattern) compiles the retired-form refutation — the
+`{ν with lift := 0}` surgery (`U1neg.zeroLast`), its coherence preservation
+(`zeroLast_coherent`), the key-independent landing failure (`zeroLast_no_keys`), and the
+verbatim retired sentence's falsity given any recentering-ended coherent history
+(`retiredKeysExist_false_of_witness`); Lean-core axioms. The inhabitation input (a
+concrete 2-node coherent history) remains the HC-1 S9-adjacent child-stage construction
+(wave 4) — recorded in that file's honesty perimeter, same kernel as K1_vertexPin's sorry.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

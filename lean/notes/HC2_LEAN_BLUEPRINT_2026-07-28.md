@@ -1631,7 +1631,15 @@ per-file REV notes):
   `levelSet_no_straddle` (the round's one new sorried lemma); U6 threads.
 * **K3** U18 + `AdjacentReads` guards (per the scratch refutation);
   `presentNorm_polOM` carries `OmUniqHyp` (caveat recorded: itself conditionally
-  refuted — wave-4 decides the final uniqueness form).
+  refuted — wave-4 decides the final uniqueness form). SCOPE RECORD (remediation
+  round, same day — the Codex-rejection repair): `presentNorm_polOM`'s conclusion is
+  possibly-vacuous at witness-admitting shapes (its `huniq` premise unsatisfiable
+  there, `omUniqHyp_refuted_by_witness`), so it is FENCED: grep-verified that NO
+  declaration consumes it (only its own definition + comments); every downstream
+  consumer (U15/U16, MovesD D4R2'/CD_eq/card_classes, D15.hwd) carries
+  `hnorm : PresentNorm` as an explicit hypothesis binder instead; any new
+  consumption must thread `huniq : OmUniqHyp` explicitly until the wave-4 adjacency
+  decision replaces the premise (full record in the U17c docstring).
 * **K2** `SeedFreshUnpinned` addendum; `mkSigma_recursion` restated + PROVED;
   bare form retired; U13/U15/U16 thread.
 * **D5-fence** `ZCSeedLaws` + `theta_norm` + `root_shape` — NOTE root_shape
