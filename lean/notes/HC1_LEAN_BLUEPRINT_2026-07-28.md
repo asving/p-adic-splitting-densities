@@ -2251,3 +2251,69 @@ witnesses the refuted S9a shape). Executed, mirroring the §9.5 S9a record:
   S9a's own `hWS` field). The §9.9/S9a-record seam "S9b's '(S6a′) via the
   TRANSviii finals' billing inherits the same seam" is thereby CLOSED.
 * NEXT in the assembly chain: S9c/S9d → S9 (statements already staged).
+
+## 10.8 V10 RECORD (2026-07-28, the (TRANSPORT) transcription round — Fable):
+## the forced-window clause transcribed; THE INCONSISTENCY FINDING; V9 wired
+
+The REV-3 adjudication's dedicated follow-on unit landed:
+`HC1/V10_transportWindow.lean` (zero sorry, zero axioms; §B2-DEF D.8-(TRANSPORT)
+UPWARD FORCED-WINDOW, MOVES 2520–2528, quoted verbatim in the header).  The
+§10.1 fence ("(TRANSPORT) not needed") is hereby corrected — but what the
+transcription PROVED is not transport mathematics:
+
+**THE FINDING (machine-checked, Lean-core).** Transcribing "wherever both sides
+are actual data" forces the recorded transition as the actual-data carrier, and
+the recorded transition is INCONSISTENT at every steep read:
+
+* `V10_forcedKeyWeight` — at a recorded non-recentering read-lift transition
+  (`TransitionData` keyed at the READ pair on the READ lift, HistoryCoherent's
+  round-3 form) with steepness and `ν.e·ν.g ≥ 2`, the child-stage laws force
+  `ν.h = ν.e²·ν.g·σ.h` (hence `ν.e = 1`, `ν.t = 0`, `ν.s = 1`).  Pivot:
+  `Φ^{e★g} = Φ̂ − τ` weighed by `σ′.hwmul + σ′.hStretch` vs `child_slotmin`;
+  the READ lift is read-equal-weight, NOT frame-equal-weight, so the τ-slot is
+  strictly deep and the key slot must carry the value.  (S9's frame-pair
+  standard-lift transitions pass the same computation consistently — the bug is
+  specific to the read-pair keying.)
+* `V10_readTransition_incompatible` — adding the recorded ties `σ′.s = ν.s`,
+  `σ′.t = ν.t`: `σ′.R Φ̂ = T 1` (hRΦ) vs `σ′.R Φ̂ = C(c^g)·T 0`
+  (hRlt/hRmul/hS5′) — **False**.  So `ReadsOf` admits NO non-recentering read
+  with `e·g ≥ 2` and a recorded successor: the K1 kernel's hard perimeter is
+  EMPTY, and U20a/U20b/U22-E2 are vacuous at their intended reads.  U31's gate
+  is single-node and never probed a 2-node instance — the census gap.
+* `V10_transportWindow` — the charged statement (bottom-window law at the
+  vertex over the V2_readFrame carrier + V4 landing data + the recorded
+  transition, `e★g ≥ 2`): PROVED VACUOUSLY through the incompatibility, with
+  the vacuity disclosed in the docstring, the V9 REV-4 block, and the HC2
+  obstruction item 6.  Boundary caveats `t★ = 1` / `h★ − e★σ.h = 1`: EMPTY
+  (`t★ = 0` forced) — handled per the display by emptiness, recorded.
+
+**Consumption executed.** `V9_K1nonrec` now closes at every leg except the R3c
+corner `i = 0 ∧ e·g = 1` (its ONE remaining sorry; corner records are
+consistent — no V10 collapse at equal key degrees — and the honest g = 1
+landing needs StageCore-grade tie laws or the fenced SideReads(iii), which at
+single-side reads is where the fence's own text calls the rendering faithful).
+`HC2.K1_readVertexPin_nonrec := HC1.V9_K1nonrec` WIRED (statement-verbatim;
+import direction reversed via a private `v9_strFrame_pos`).  Downstream probe
+(stale-olean discipline: full `lake build` green, 8579 jobs): V10's three
+theorems Lean-core; V9_K1nonrec, K1_readVertexPin{,_nonrec},
+K1_NA_transport_{root,increment}, K1_SAE_vertexEq_endpoint, U20a, U20b, U22E2,
+readsOf_NA, readsOf_SAE all carry sorryAx — sources: V9's corner sorry (+
+U22E1's own pre-existing sorry on the readsOf_SAE leg).  Downstream
+Lean-core-clean count: 0 of 10 (unchanged in kind from before the wire; the
+obstruction perimeter shrank from {R3a, R3b, R3c} to {R3c corner}).
+
+**Countermodel disposition (charged confirmation).** The r3b countermodel
+SATISFIES the forced key-weight equation (2 = 1²·2·1) and DIES at the position
+clash (s★ = 1 ≠ 0) — no lawful σ′ exists over its data, so it cannot extend to
+`ReadsOf`; SideReads(iii) is consumed NOWHERE on the new route (the ⚠ fence is
+respected).  Numeric mirror: `verification/v10_transition_check.py` (4 checks,
+runs green; check 4 re-runs the r3b script under sympy).
+
+**NAMED SIGN-OFF ITEM (not silently changed): the HistoryCoherent child-keying
+repair.** The faithful child of a READ lift weighs `Φ̂ ↦ e★·(e★h★g)` — the
+regraded side value (the (†) frame's own key weight, Key Finding 1) — not
+`ν.h`.  Candidate repair: key `TransitionCoreL`/`TransitionData` in
+HistoryCoherent at `(ν.e, ν.e·ν.h·ν.g)`-slotmin (or thread the regrade pack
+explicitly); every HC2 consumer of `child_h`/γ-tie arithmetic must be
+re-audited.  A 2-node ReadsOf gate (increment read + successor) is MANDATORY
+with the repair — the missing census instrument this finding exposes.

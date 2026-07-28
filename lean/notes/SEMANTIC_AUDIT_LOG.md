@@ -1203,3 +1203,45 @@ preconditions for class-3 (deg φ ≥ 2) work were discharged, then the first Le
    the honest irreducible key x²+1 mod 3). Honest scope in-module: counting only, NO
    type/leaf claim (phase 2 = W8b leaf master + re-scope #7). Census: 734 lines green,
    capstones unchanged, DevBijection prints added.
+
+---
+
+## 2026-07-28 — V10 round: HistoryCoherent's read-pair child keying is UNSATISFIABLE
+## at steep reads (machine-checked inconsistency; flagged faithfulness bug)
+
+**Finding class: definition-faithfulness (the trust boundary's home turf) — an
+over-constrained recorded semantics, caught by a transcription unit, proved in Lean.**
+
+While transcribing §B2-DEF D.8-(TRANSPORT)'s upward FORCED-WINDOW clause (MOVES
+2520–2528) at the ReadFrame (`HC1/V10_transportWindow.lean`), the "actual data"
+proviso forced the recorded transition into the hypothesis set — and the recorded
+transition refuted itself:
+
+* `MovesC.HistoryCoherent` (round-3 form, audit F10) keys `TransitionCoreL` at the
+  READ pair `(ν.e, ν.h)` on the READ lift (`IsNodeLift`, weights `σ.w(t_k) =
+  ν.h·(g−k)`).  `TransitionData.child_slotmin` then pins `σ′.w` as the
+  `(ν.e, ν.h)`-slot-min over Φ̂-developments, while the child's own `Stage` laws
+  (`hwmul` + `hStretch` on `Φ ∈ C_{Φ̂}`) pin `σ′.w(Φ^{e★g}) = e★g·e★σ.h`.  The read
+  lift is READ-equal-weight, not frame-equal-weight, so its τ-slot is strictly deep
+  under steepness and the two pins force `ν.h = ν.e²·ν.g·σ.h` — then coprimality
+  gives `ν.e = 1, ν.t = 0, ν.s = 1`, and `σ′.R Φ̂ = T(σ′.s) = T 1` (hRΦ + the
+  recorded tie) collides with `σ′.R Φ̂ = C(c^g)·T 0` (hRlt/hRmul/hS5′):
+  **`V10_readTransition_incompatible : … → False`, Lean-core.**
+* Blast radius: `ReadsOf` admits NO non-recentering read with `ν.e·ν.g ≥ 2` and a
+  recorded successor ⟹ the HC2 K1 kernel and U20a/U20b/U22-E2 are VACUOUS at their
+  intended steep perimeter; `V9_K1nonrec` closes there by exfalso (loudly disclosed
+  in-file — never cite as transport).  NOT affected: S9/S10's constructed
+  transitions (frame-pair standard lifts — the same computation is consistent),
+  the V′ ReadFrame engine V1–V8, all single-node gates.
+* Why unseen: U31's non-vacuity gate is SINGLE-node; no 2-node ReadsOf instance
+  was ever constructed.  Census gap recorded; a 2-node increment gate is MANDATORY
+  with the repair.
+* DISPOSITION: named sign-off item (per the statement fence, nothing silently
+  changed): re-key the recorded child at the regraded side value
+  (`Φ̂ ↦ e★·(e★·h★·g)`, the (†)-frame key weight of blueprint §10 Key Finding 1),
+  then re-audit every consumer of `child_h`/the γ-tie arithmetic.  The r3b
+  countermodel is disposed by the same finding (no lawful σ′ over its data;
+  SideReads(iii) consumed nowhere).  Residual open leg of the K1 cone: the R3c
+  corner `i = 0 ∧ e·g = 1` (consistent records; needs StageCore-grade tie laws or
+  the fenced (iii)).  Mirrors: V9 REV-4 block, HC2 obstruction item 6, blueprint
+  §10.8, PROJECT_STATE 2026-07-28h, `verification/v10_transition_check.py`.

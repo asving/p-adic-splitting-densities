@@ -111,8 +111,8 @@
   {
    "id": "K1.vertexPin",
    "file": "K1_vertexPin.lean",
-   "sorries": 1,
-   "note": "the K1 kernel bridge (read-indexed D.8 vertex pin); N-4 fallout: obtain arity bumped for clause (vi)."
+   "sorries": 0,
+   "note": "the K1 kernel bridge (read-indexed D.8 vertex pin); N-4 fallout: obtain arity bumped for clause (vi). REV 4 (2026-07-28, V10 round): K1_readVertexPin_nonrec WIRED := HC1.V9_K1nonrec (statement-verbatim; own sorry deleted — the residual sorry now lives in V9's R3c corner and flows through the wire, so the cone's sorryAx is unchanged in kind but its perimeter shrank to i=0 ∧ e·g=1). ⚠ READ OBSTRUCTION ITEM 6 BEFORE CONSUMING: the e·g ≥ 2 legs close via HC1.V10_readTransition_incompatible — the recorded transition is CONTRADICTORY there (HistoryCoherent read-pair keying = flagged FAITHFULNESS BUG, named sign-off item), so K1/U20a/U20b/U22-E2 are VACUOUS at their intended steep perimeter; never cite as machine-checked transport."
   },
   {
    "id": "D6.mkFresh",

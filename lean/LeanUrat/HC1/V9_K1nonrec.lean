@@ -7,7 +7,8 @@ import Mathlib
 import LeanUrat.HC1.DefsV
 import LeanUrat.HC1.S2_childW
 import LeanUrat.HC1.V4_readLanding
-import LeanUrat.HC2.K1_vertexPin
+import LeanUrat.HC1.V10_transportWindow
+import LeanUrat.HC2.Defs
 
 /-!
 # HC1.V9_K1nonrec — HC2's K1 kernel residual via the ReadFrame (blueprint §10, V9)
@@ -60,6 +61,29 @@ the one remaining hard core, B2-FINAL's carry composition), R3c (the root
 `e·g = 1` corner).  PROVED this round, supporting step (i)/(v):
 `V9_transSteepness`, `V9_readPair`, `V9_wvGeStretch`.
 
+**REV-4 NOTE (V10 transcription round, 2026-07-28)**: the (TRANSPORT)-upward
+transcription (`V10_transportWindow.lean`) LANDED — and its finding SUPERSEDES the
+REV-3 route.  Transcribing the forced-window clause against the recorded transition
+(the only *actual-data* carrier in scope) proves, Lean-core
+(`V10_forcedKeyWeight` / `V10_readTransition_incompatible`): **the recorded
+non-recentering read transition is CONTRADICTORY whenever `ν.e·ν.g ≥ 2`** — the
+child-stage laws force `ν.h = ν.e²·ν.g·σ.h` (hence `ν.e = 1, ν.t = 0, ν.s = 1`),
+and then `σ′.R Φ̂ = T 1` (hRΦ + the recorded `σ′.s = ν.s` tie) clashes with
+`σ′.R Φ̂ = C(c^g)·T 0` (hRlt/hRmul/hS5′ through the read lift).  Consequences:
+(a) R3a/R3b are MOOT at every read this kernel's hard legs concerned — the
+    perimeter is EMPTY, and `V9_K1nonrec` closes there BY CONTRADICTION (below);
+    this is loudly NOT transport mathematics — see V10's header;
+(b) the ONE remaining leg is the R3c corner `i = 0 ∧ ν.e·ν.g = 1` (records
+    consistent there; the honest g = 1 landing needs the parent's D.1(b) tie laws
+    (StageCore-grade, unrecorded) or SideReads(iii) — the fenced seam, which at
+    single-side reads is exactly where it would be faithful).  The corner `sorry`
+    below is the kernel's entire remaining obligation;
+(c) `HistoryCoherent`'s round-3 keying of `TransitionCoreL` at the READ pair on the
+    READ lift is a FAITHFULNESS BUG (genuine steep increments cannot be recorded:
+    the faithful child weighs `Φ̂ ↦ e★·(e★h★g)`, the regraded side value, not `h★`)
+    — a NAMED SIGN-OFF ITEM, not silently changed.  U31's gate (single-node) never
+    probed a 2-node instance, which is why this went unseen.
+
 **REV-3 NOTE (carry-bridge escalation round, 2026-07-28)**: R3b adjudicated.  The
 reduction is PROVED in-file, Lean-core (`V9_wvEqStretch_of_bottomSlot` /
 `V9_bottomSlot_of_wvEqStretch` + the seed `V9_steepSide_frameDescent`): R3b ⟺ the
@@ -106,6 +130,17 @@ private lemma w_neg_helper (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠
   have h := σ.hwmul (-1) x (by norm_num) hx
   rw [neg_one_mul] at h
   rw [h, hn1, zero_add]
+
+/-- The accumulated stretch is positive (every read has `1 ≤ e`) — private copy of
+the HC2 `K1Helpers` lemma (the import was reversed at REV-4: HC2/K1_vertexPin now
+consumes THIS file, per the recorded delegation). -/
+private lemma v9_strFrame_pos (H : History p F) (i : ℕ) : 0 < H.strFrame i := by
+  unfold History.strFrame
+  rw [Nat.pos_iff_ne_zero]
+  intro h0
+  rw [List.prod_eq_zero_iff] at h0
+  obtain ⟨ν, -, hν0⟩ := List.mem_map.mp h0
+  exact absurd hν0.symm (by have := ν.he; omega)
 
 /-- `strFrame` recursion: `STR_{k+1} = STR_k · e_k`. -/
 private lemma v9_strFrame_succ (H : History p F) (k : ℕ) (hk : k < H.nodes.length) :
@@ -203,7 +238,7 @@ private lemma v9_readSteep_all (H : History p F) (hcoh : HistoryCoherent H) :
     have hgjpos : (0 : ℚ) < (νj.g : ℚ) := by exact_mod_cast νj.hg
     have hDjpos : (0 : ℚ) < (νj.Dwidth : ℚ) := by
       have := νj.σ.hdeg; rw [νj.hDwidth]; exact_mod_cast this
-    have hSjpos : (0 : ℚ) < (H.strFrame j : ℚ) := by exact_mod_cast strFrame_pos H j
+    have hSjpos : (0 : ℚ) < (H.strFrame j : ℚ) := by exact_mod_cast v9_strFrame_pos H j
     have hhipos : (0 : ℚ) < (νi.h : ℚ) := by exact_mod_cast νi.hh
     -- slope positivity of `j`
     have hsjpos : (0 : ℚ) < νj.line.slope := by
@@ -758,8 +793,87 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   -- ν.gam − μ·e·h·g` + `V9_wvGeStretch` give ≤, R3b gives ≥ → `σ'.hStretch` converts
   -- to `σ'.w(B μ)` → γ-tie + slope law + `hLineU` + `hDweq` give the fenced ℚ-form
   -- (`K1_SAE_vertexEq_endpoint`'s arithmetic pattern, proved in HC2).
+  --
+  -- ── REV 4 (V10 transcription round, 2026-07-28): THE MAP ABOVE IS SUPERSEDED. ────
+  -- `V10_readTransition_incompatible` (PROVED, Lean-core) shows the recorded
+  -- non-recentering transition is CONTRADICTORY at `ν.e·ν.g ≥ 2`, so every leg the
+  -- map was built for closes by exfalso below — NOT by transport mathematics (the
+  -- header REV-4 note and V10's ⚠⚠ header carry the full disclosure).  At
+  -- `ν.e·ν.g = 1` with `i ≥ 1` the species inventory closes the goal (a
+  -- non-recentering non-root read is an increment, and increments have `e·g > 1`).
+  -- THE ONE REMAINING LEG: the R3c corner `i = 0 ∧ ν.e·ν.g = 1` (root read,
+  -- recentering-shaped, all keys linear by `hroot`).  Its records are CONSISTENT
+  -- (no V10-style collapse: `Φ ∉ C_{Φ̂}` at equal degrees, so the forcing never
+  -- starts), and the honest g = 1 landing needs machinery `ReadsOf` does not
+  -- record: EITHER the parent frame's D.1(b) tie laws (w_jump/w_strict at
+  -- StageCore grade — underivable from bare `Stage`, per the quarantined
+  -- pathological-stage findings) to assemble the Taylor-transport digit sum
+  -- `D_μ(X^{s0}·Ranch at z̄) ≠ 0`, OR SideReads(iii)'s `σ.R f` anchor — the
+  -- ⚠-fenced U31 seam (which at SINGLE-side reads is exactly where the fence's own
+  -- text says the rendering is faithful).  Bare-derivable at the corner (recorded
+  -- here for the eventual close): `σ.w(B_m) ≥ gam − m·h★` for ALL m (Taylor lower
+  -- bound; needs only `σ.w(int) ≥ 0` from hwult on repeated 1s), and
+  -- `min_m (σ.w(B_m) + m·h★) = gam` attained (two-sided Taylor).  Missing: the
+  -- attainment AT m = μ.  `B μ ≠ 0` alone is free from SideReads(vi) + `hOrd`
+  -- (`ν.vtx ≠ 0`).  This corner sorry is the kernel's ENTIRE remaining obligation.
   -- ══════════════════════════════════════════════════════════════════════════════════
-  sorry
+  classical
+  have hilen : i < H.nodes.length := by omega
+  by_cases hEG : 2 ≤ (H.nodes[i]'hilen).e * (H.nodes[i]'hilen).g
+  · -- NON-CORNER: the recorded transition data are contradictory (V10 finding 2)
+    exfalso
+    obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
+    obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans i hi1
+    obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
+    have hsteep := V9_transSteepness h.2.2.1 i hi1 hsp hEG
+    -- `ψ.coeff 0 ≠ 0` from irreducibility + monicity + the unit root
+    have hψ0 : (H.nodes[i]'hilen).ψ.coeff 0 ≠ 0 := by
+      intro h0
+      obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
+      rcases (H.nodes[i]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
+      · exact Polynomial.not_isUnit_X hX
+      · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
+        have hψX : (H.nodes[i]'hilen).ψ = Polynomial.C c * Polynomial.X := by
+          rw [hu, ← hc.2]; ring
+        have hlc : c = 1 := by
+          have hm := (H.nodes[i]'hilen).hψmonic
+          rw [hψX] at hm
+          have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
+            rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
+              Polynomial.leadingCoeff_X, mul_one]
+          rw [Polynomial.Monic, hlead] at hm
+          exact hm
+        have hzb := (H.nodes[i]'hilen).hzbarRoot
+        rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
+        exact Units.ne_zero _ hzb
+    -- the P2 pin from the canonical Bézout window
+    have he1t : (H.nodes[i]'hilen).e = 1 → (H.nodes[i]'hilen).t = 0 := by
+      intro he1
+      have hc := (H.nodes[i]'hilen).hbezCanon
+      rw [he1] at hc
+      push_cast at hc
+      omega
+    exact V10_readTransition_incompatible (H.nodes[i]'hilen).σ (H.nodes[i+1]'hi1).σ
+      (H.nodes[i]'hilen).e (H.nodes[i]'hilen).h (H.nodes[i]'hilen).s
+      (H.nodes[i]'hilen).t (H.nodes[i]'hilen).g (H.nodes[i]'hilen).ψ
+      ((H.nodes[i+1]'hi1).σ.Φ) hsteep hEG (H.nodes[i]'hilen).hcop
+      (H.nodes[i]'hilen).hbez he1t hψ0 hliftraw htcoreraw.base.child_key
+      htcoreraw.base.child_e htcoreraw.base.child_wPrev
+      htcoreraw.base.child_slotmin hseq hteq
+  · -- `ν.e·ν.g = 1`
+    rcases Nat.eq_zero_or_pos i with hi0 | hi1'
+    · -- THE R3c CORNER `i = 0 ∧ ν.e·ν.g = 1`: the kernel's one remaining leg
+      -- (full obstruction record in the REV-4 block above).
+      sorry
+    · -- `i ≥ 1`: a non-recentering non-root read is an increment; `hspecInc`
+      -- forces `1 < e·g` against the case hypothesis.
+      cases hspec : (H.nodes[i]'hilen).species with
+      | root =>
+          exact absurd ((H.root_iff i hilen).mp hspec) (by omega)
+      | increment =>
+          exact absurd ((H.nodes[i]'hilen).hspecInc hspec) (by omega)
+      | recentering =>
+          exact absurd hspec hsp
 
 end LeanUrat.HC1
 

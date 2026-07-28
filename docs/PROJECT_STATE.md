@@ -787,3 +787,49 @@ recorded in the REV-3 block). R3c (the root e·g = 1 corner) unchanged. Full
 records: `HC1/V9_K1nonrec.lean` REV-3 block (at the sorry) and
 `HC2/K1_vertexPin.lean` obstruction item 5. Both files compile; footprints
 verified (new theorems Lean-core; sorries unchanged: exactly the two kernels).
+
+## UPDATE (2026-07-28h): V10 (TRANSPORT) transcription — the recorded read-transition
+## is INCONSISTENT at steep reads (machine-checked); K1 kernel wired; R3c corner remains
+
+The REV-3 follow-on unit landed: `lean/LeanUrat/HC1/V10_transportWindow.lean`
+(zero sorry, Lean-core; the §B2-DEF D.8-(TRANSPORT) UPWARD FORCED-WINDOW display,
+MOVES 2520–2528, quoted verbatim).  Its machine-checked content is NOT transport
+mathematics but an INCONSISTENCY FINDING about the recorded semantics:
+
+* `V10_forcedKeyWeight` + `V10_readTransition_incompatible` (both Lean-core,
+  zero axioms beyond core): HistoryCoherent's round-3 keying of `TransitionCoreL`
+  at the READ pair `(ν.e, ν.h)` on the READ lift contradicts the child stage's own
+  laws whenever `ν.e·ν.g ≥ 2` — first `ν.h = ν.e²·ν.g·σ.h` is FORCED
+  (`Φ^{e★g} = Φ̂ − τ` weighed by hwmul+hStretch vs child_slotmin; the read lift is
+  read-equal-weight, not frame-equal-weight), then `σ′.R Φ̂ = T 1` (hRΦ + the
+  recorded `σ′.s` tie) clashes with `C(c^g)·T 0` (hRlt/hRmul/hS5′).  CONSEQUENCE:
+  `ReadsOf` records NO steep increment with a successor — the K1 kernel
+  (U20a/U20b/U22-E2's supplier) is VACUOUS at its intended hard perimeter.  This is
+  a flagged FAITHFULNESS BUG in HistoryCoherent (named sign-off item: re-key the
+  child at the regraded side value `Φ̂ ↦ e★·(e★h★g)`; add a 2-node ReadsOf gate —
+  U31's single-node gate never probed this).  S9's frame-pair transitions are
+  UNAFFECTED (the same computation is consistent there).
+* `V9_K1nonrec` is now proved at every leg except the R3c corner
+  `i = 0 ∧ ν.e·ν.g = 1` — the ONE remaining sorry of the K1 cone.  Corner records
+  are consistent; the honest g = 1 landing needs StageCore-grade tie laws (w_jump,
+  unrecorded by ReadsOf) or SideReads(iii) (the U31-fenced seam — faithful at
+  single-side reads per the fence's own text).  Full record: V9's REV-4 block.
+* `HC2.K1_readVertexPin_nonrec := HC1.V9_K1nonrec` WIRED (statement-verbatim, the
+  recorded delegation; import direction reversed).  Downstream footprints after a
+  full green `lake build` (8579 jobs): V10's three theorems Lean-core;
+  K1_readVertexPin{,_nonrec}/K1_NA_transport_*/K1_SAE_vertexEq_endpoint/U20a/U20b/
+  U22E2/readsOf_NA/readsOf_SAE = sorryAx via the corner (readsOf_SAE also via
+  U22E1's own sorry) — downstream Lean-core-clean: 0/10, unchanged in kind; the
+  obstruction perimeter shrank from {R3a, R3b, R3c} to {R3c corner}.
+* R3b DISPOSITION: closed by emptiness of its perimeter (the reduction lemmas
+  `V9_wvEqStretch_of_bottomSlot`/`V9_bottomSlot_of_wvEqStretch` remain the
+  interface for the eventual honest transport after the keying repair).  The r3b
+  countermodel cannot extend to `ReadsOf` (satisfies the forced key-weight
+  equation, dies at the position clash); SideReads(iii) consumed NOWHERE
+  (⚠ fence respected).  Numeric mirror: `verification/v10_transition_check.py`.
+
+⚠ HONESTY: never describe the K1 kernel/U20a/U20b/U22-E2 as machine-checked
+transport results — at present their `e·g ≥ 2` content is vacuous-by-inconsistency
+and their corner content is open.  The V10 unit's own docstring carries the same
+disclosure.  Records updated: HC1/HC2 MANIFESTs, HC1 blueprint §10.8,
+`notes/SEMANTIC_AUDIT_LOG.md`.

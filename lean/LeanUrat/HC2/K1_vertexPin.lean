@@ -14,9 +14,10 @@ STRUCTURE (what is proved here / what is the one named residual):
 * `K1_readVertexPin` — THE UNIFIED KERNEL (species-generic). Proof = species dichotomy:
   - RECENTERING parent: PROVED — consumed verbatim from the landed `NA_transport_recentering`
     (U20c, the g = 1 `IsStandardLift` route through `L5_landVertex`).
-  - ROOT/INCREMENT parent: `K1_readVertexPin_nonrec` — the ONE remaining sorry, with the
-    full obstruction record at its declaration (why no on-disk asset closes it; the exact
-    carry-algebra design it needs).
+  - ROOT/INCREMENT parent: `K1_readVertexPin_nonrec` — WIRED (REV 4) to
+    `HC1.V9_K1nonrec`; the `e·g ≥ 2` legs close by the V10 inconsistency finding
+    (obstruction item 6 below — read it before consuming), and the ONE remaining
+    sorry is V9's R3c corner (`i = 0 ∧ e·g = 1`), flowing through the wire.
 * `K1_NA_transport_root` / `K1_NA_transport_increment` — U20a's/U20b's fenced statements
   VERBATIM (byte-identical conclusions and binders), one-line consumers of the kernel:
   the assigned provers can close the unit files by `exact` against these.
@@ -32,6 +33,7 @@ deps: D4 (`SideReads`/`ReadsOf`), `HistoryCoherent` (γ-tie, width chain), U20c'
 import Mathlib
 import LeanUrat.HC2.Defs
 import LeanUrat.HC2.U20c_NAtransportRecentering
+import LeanUrat.HC1.V9_K1nonrec
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -137,13 +139,38 @@ end K1Helpers
        fenced OUT of V4 by HC-1 blueprint §10.1 ("not needed"): that fencing is WRONG
        for this kernel.  Dedicated unit = the (TRANSPORT) transcription at the
        ReadFrame; the kernel then closes through V9's reduction lemmas.
+
+    6. REV 4 (2026-07-28, V10 transcription round) — WIRED + THE FINDING.  The
+       (TRANSPORT) transcription landed (`HC1/V10_transportWindow.lean`), and
+       `K1_readVertexPin_nonrec` now closes by `exact` against `HC1.V9_K1nonrec`
+       (the recorded delegation; the helper import direction was reversed).  BUT the
+       transcription's machine-checked content is an INCONSISTENCY, not transport:
+       `V10_readTransition_incompatible` (Lean-core) proves the recorded
+       non-recentering transition — `TransitionCoreL` keyed at the READ pair
+       `(ν.e, ν.h)` on the READ lift, plus the child's own Stage laws and the
+       `σ′.s/σ′.t` ties — is CONTRADICTORY whenever `ν.e·ν.g ≥ 2`.  So this kernel's
+       hard legs (root/increment with `e·g ≥ 2`, and every non-recentering read at
+       `i ≥ 1`) hold VACUOUSLY: `ReadsOf` admits NO such instances.  The r3b
+       countermodel is disposed of by the same finding (its would-be σ′ cannot
+       satisfy `hRΦ`/`hRlt`/`hS5` with `σ′.s = 1, σ′.t = 0`) — and SideReads(iii)
+       is NOT consumed anywhere on the new route.  Remaining `sorry` (in V9, flows
+       here): ONLY the R3c corner `i = 0 ∧ ν.e·ν.g = 1`, whose records are
+       consistent and whose honest g = 1 landing needs StageCore-grade tie laws or
+       the fenced (iii) — full record at V9's REV-4 block.  ⚠ The `HistoryCoherent`
+       keying itself is a flagged FAITHFULNESS BUG (named sign-off item): genuine
+       steep increments are unrecordable, so U20a/U20b/U22-E2 are currently vacuous
+       at their intended perimeter.  Never cite this wiring as machine-checked
+       transport mathematics.
     ═══════════════════════════════════════════════════════════════════════════════════ -/
 
 /-- **The K1 kernel residual** (read-indexed D.8 vertex law, NON-RECENTERING parent):
 at consecutive reads of a run whose parent read `i` is a root or increment read, the
 parent's line value at the standing vertex base is realized as the frame-(i+1) actual
 slot weight of f's development at the vertex slot, and that vertex coefficient is
-nonzero. QUEUED-HARD: the carry-algebra unit per the obstruction record above. -/
+nonzero.  WIRED (REV 4) to `HC1.V9_K1nonrec` per the recorded delegation — read
+obstruction item 6 above before consuming: the `e·g ≥ 2` legs close by the V10
+INCONSISTENCY finding (vacuous perimeter), and the R3c corner is the one remaining
+`sorry` (it flows through V9). -/
 theorem K1_readVertexPin_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)
@@ -155,8 +182,8 @@ theorem K1_readVertexPin_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [
       (((H.nodes[i+1]'hi1).σ.w (B ((H.nodes[i]'(by omega)).μ)) : ℚ))
         = (H.strFrame (i+1) : ℚ) *
           (H.nodes[i]'(by omega)).line.at
-            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth) := by
-  sorry
+            ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth) :=
+  LeanUrat.HC1.V9_K1nonrec h i hi1 hsp B Nd hdev hNd
 
 /-- **THE READ-INDEXED D.8 VERTEX PIN** (the K1 kernel, species-generic): at consecutive
 reads (i, i+1) of a run — ANY parent species — the parent's line value at the standing
