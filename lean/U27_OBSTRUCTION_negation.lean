@@ -19,9 +19,22 @@ Mechanism (all forced by REQUIRED JetSetup fields, no freedom anywhere):
 The defect is a CONFLICT OF TWO JetSetup FIELDS at g·N ≥ 4: `root_height` (line ≥ 1 on the
 factor interior) versus `inFreshBand`'s INCLUSIVE upper edge `htH ≤ slotVal` counted by
 `mstar_eq` — together they swallow level 1 whenever it exists. Only N = 1 escapes.
+
+ADJUDICATED + RESOLVED (2026-07-28, U27 restate+prove round): this artifact is now the
+HISTORICAL witness against the PRE-RESTATEMENT `∀ N ≥ 1` form. The adjudication read the
+defect through the DC-1 lesson: the recorded gate equations (totalPins = 2, the 1/4 tie)
+are BOX-SIZE-DEPENDENT and belong to the (ZC-c)/C.2 coverage floor
+`N(H₀,⊤) = 1 + the largest constrained level = 1` — exactly the "Only N = 1 escapes" of
+the mechanism above (at N = 1 the forced band count is 2, MATCHING the recorded value, so
+the mechanism produces no contradiction there). The unit was RESTATED at N := 1
+(`LeanUrat/HC2/U27_gateInert.lean`) and PROVED sorry-free; `U27_restated_body_true` at the
+bottom of this file re-exports that proof against the restated body VERBATIM — the
+machine-checked demonstration that this refutation FAILS against (and by consistency can
+never be adapted to) the restated form.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.U27_gateInert
 
 set_option linter.all false
 set_option maxHeartbeats 1000000
@@ -109,5 +122,24 @@ theorem gate_order0_inert_statement_false :
 
 #print axioms U27_false_at_N2
 #print axioms gate_order0_inert_statement_false
+
+/-- VERIFICATION THAT THE REFUTATION FAILS AGAINST THE RESTATED FORM (2026-07-28): the
+restated unit's ∃-body — `N := 1` at the coverage floor, every other conjunct verbatim —
+is TRUE, by the constructive proof of the restated `gate_order0_inert`. By consistency,
+no adaptation of `U27_false_at_N2`'s mechanism refutes it: at N = 1 the forced band count
+is 2 (only level 0 exists), which IS the recorded `totalPins`. -/
+theorem U27_restated_body_true :
+    ∃ (H₀ : History 2 F4) (keys : ℕ → Polynomial ℤ_[2]),
+      KeysLawful H₀ keys ∧
+      H₀.nodes.length = 1 ∧
+      (∀ h0 : 0 < H₀.nodes.length,
+        (H₀.nodes[0]'h0).species = ReadSpecies.root ∧
+        (H₀.nodes[0]'h0).g = 2 ∧ (H₀.nodes[0]'h0).μ = 1) ∧
+      ∃ (S : PresentSeed 2 F4 H₀ 2 1 keys) (J : JetSetup H₀ 2 1 (2 * 1)),
+        totalPins J (topLocus 2 (2 * 1)) = 2 ∧
+        Nat.card (J.SHZ (topLocus 2 (2 * 1))) * 2 ^ 2 = 2 ^ (2 * 1) :=
+  gate_order0_inert
+
+#print axioms U27_restated_body_true
 
 end LeanUrat.MovesJ

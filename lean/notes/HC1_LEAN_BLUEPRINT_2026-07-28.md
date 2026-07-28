@@ -446,6 +446,33 @@ consumed Moves unit that still carries a sorry (§4 ledger).
   identity; split the z-positions by e_b; the quotient/alignment exponent is exactly
   `carryExp`; assemble via D2. difficulty: medium. hyp: the (S5)-shape of the three
   digits (from `StageCoreL`, rides as hypothesis).
+  **REV (2026-07-28, D7 ADJUDICATION — orchestrator, from the note MOVES
+  1385–1400):** the E-phase form carried the three (S5)-shapes as bare
+  `IsMonomialUnit` hypotheses — DIG-multiplicativity stated against the WRONG
+  target: the three anchors ride as free choice-data tied only through DIV's
+  field-level identity dig′(R_dev) = dig′(B)·dig′(B″), against which the stated
+  equation is UNDERDETERMINED — it holds iff `e_b ∣ d ∧ z̄^{d − d/e_b} = 1` for
+  the free anchor discrepancy d := (kB + kB″) − kR (the prover's re-derived
+  condition; the pass-6/7 counterexample that forced the twist, MOVES 1388; in
+  particular this sketch's "split the z-positions" step and the Fable-audit gloss
+  "position additivity from the exact remainder weight" are NOT available from
+  bare shapes — nothing ties choice-extracted positions to weights on `C_Φ̂`).
+  The note's law (1390–1396) is the homomorphism into the TWISTED group
+  (ℤ/e) ⋉_{z̄} F_{r+1}ˣ, and its proof line (1400) inputs "the ψ_r-adic division
+  identity … applied to the ALIGNED absolute residuals (the z-offsets now
+  included on both sides …), plus the anchor addition". RESTATED accordingly:
+  the monomial hypotheses carry explicit scalars/offsets `(cB, kB)`,
+  `(cB″, kB″)`, `cR`, and h5R is pinned at the ADDED anchor `kB + kB″` (the
+  anchor addition as hypothesis; in consumption = the (P6) absolute bookkeeping,
+  position additivity from DIV's exact remainder weight at weight-pinned
+  positions). Conclusion UNCHANGED: `digD R_dev = cmul zbar (digD B) (digD B″)`
+  with `cmul` the DefsD cocycle product (checked: `(x⋆y) τ = Σ_ρ x ρ · y (τ−ρ) ·
+  z̄^{carryExp ρ (τ−ρ)}`). PROVED same day: `L3_DIV` forces the scalar law
+  `c_R = c·c″` at the added anchor; the alignment-quotient carry identity
+  `⌊(k+k′)/e⌋ = ⌊k/e⌋ + ⌊k′/e⌋ + carryExp` supplies the twist exponent; D2's
+  generator law inlined against `cmul` directly (dodging the `CarryRingPack`
+  dependence, keeping the unit sorry-free). Axioms: Lean core only
+  ([propext, Classical.choice, Quot.sound]). MANIFEST statement re-synced.
 * **HC1.D8_digD_recenter** — a recentering PRESERVES the 𝒟-typing: if
   `IsRecenteringCore σ σ' cc tt` then for every coefficient B (`inC σ.Φ B`),
   `σ'.digD zbar e_b B = σ.digD zbar e_b B` — coefficients' birth cosets ride through

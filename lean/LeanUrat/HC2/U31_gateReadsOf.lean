@@ -22,6 +22,12 @@ quadratic IN STAGE COORDINATES, f = X² + 2X + 4 (= 4·g(X/2) for g = X² + X + 
 standard inert quadratic at p = 2: its roots −1 ± √−3 generate the unramified quadratic
 extension of ℚ₂). Its root read has side (e,h) = (1,1) on slots 0..2, γ = 2, residual
 pattern (1,1,1), R_anch = ψ = z² + z + 1 irreducible of degree g = 2 with ord_ψ = μ = 1.
+
+VISIBILITY NOTE (2026-07-28, U27 restate+prove round): a dozen helper lemmas
+(`ρ_eq_zero_iff`, `θ_C`, `bw_eq`, `is_const`, `NF_const`, `bw_const_nonneg`, `dev_coeff`,
+`coherent_H₀`, `sideReads_ν₀`, `fq_monic`, `fq_natDegree`) were de-privatized — statements
+byte-unchanged — so U27's concrete seed/JetSetup construction can reuse this file's
+concrete history `H₀`/`ν₀`, its landing-key witness, and the base-stage valuation facts.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -57,7 +63,7 @@ noncomputable def ρ : ℤ_[2] →+* ↥K2 := ρ₁.comp PadicInt.toZMod
 
 private lemma ρ₁_injective : Function.Injective ρ₁ := ρ₁.injective
 
-private lemma ρ_eq_zero_iff (x : ℤ_[2]) : ρ x = 0 ↔ (2 : ℤ_[2]) ∣ x := by
+lemma ρ_eq_zero_iff (x : ℤ_[2]) : ρ x = 0 ↔ (2 : ℤ_[2]) ∣ x := by
   have h1 : ρ x = ρ₁ (PadicInt.toZMod x) := rfl
   rw [h1, map_eq_zero_iff ρ₁ ρ₁_injective, ← RingHom.mem_ker, PadicInt.ker_toZMod,
     PadicInt.maximalIdeal_eq_span_p, Ideal.mem_span_singleton]
@@ -92,7 +98,7 @@ noncomputable def θ : Polynomial ℤ_[2] →+* Polynomial ℤ_[2] := eval₂Rin
 
 private lemma θ_apply (f : Polynomial ℤ_[2]) : θ f = eval₂ C (C 2 * X) f := rfl
 
-private lemma θ_C (b : ℤ_[2]) : θ (C b) = C b := by
+lemma θ_C (b : ℤ_[2]) : θ (C b) = C b := by
   rw [θ_apply, eval₂_C]
 
 private lemma θ_X : θ X = C 2 * X := by
@@ -216,7 +222,7 @@ noncomputable def bw (f : Polynomial ℤ_[2]) : ℤ := wA (θ f)
 /-- The stage residual `R f = [f]·T^{−w f}`, realized as the reduced normal cofactor of θf. -/
 noncomputable def bR (f : Polynomial ℤ_[2]) : LaurentPolynomial ↥K2 := RA (θ f)
 
-private lemma bw_eq {f : Polynomial ℤ_[2]} {m : ℕ} {Q : Polynomial ℤ_[2]}
+lemma bw_eq {f : Polynomial ℤ_[2]} {m : ℕ} {Q : Polynomial ℤ_[2]}
     (h : NF (θ f) m Q) : bw f = m := wA_eq h
 
 private lemma bR_eq {f : Polynomial ℤ_[2]} {m : ℕ} {Q : Polynomial ℤ_[2]}
@@ -411,7 +417,7 @@ private lemma bR_C2pow (n : ℕ) : bR (C (2 ^ n)) = 1 := by
   rw [bR_eq (NF_θ_C2pow n), toLaurent_map_one]
 
 /-- Constants: development-slot polynomials at Φ = X. -/
-private lemma is_const {B : Polynomial ℤ_[2]} (h : B.degree < (X : Polynomial ℤ_[2]).degree) :
+lemma is_const {B : Polynomial ℤ_[2]} (h : B.degree < (X : Polynomial ℤ_[2]).degree) :
     B = C (B.coeff 0) := by
   by_cases hB : B = 0
   · rw [hB]; simp
@@ -421,7 +427,7 @@ private lemma is_const {B : Polynomial ℤ_[2]} (h : B.degree < (X : Polynomial 
     exact Polynomial.eq_C_of_natDegree_le_zero (by omega)
 
 /-- Normal form of a nonzero constant: `C b = (C 2)^m · C u` with `ρ u ≠ 0`. -/
-private lemma NF_const {b : ℤ_[2]} (hb : b ≠ 0) :
+lemma NF_const {b : ℤ_[2]} (hb : b ≠ 0) :
     ∃ (m : ℕ) (u : ℤ_[2]), NF (C b) m (C u) ∧ ρ u ≠ 0 := by
   obtain ⟨m, Q, hQ⟩ := NF_exists (C_ne_zero.mpr hb)
   have hQ0 : Q ≠ 0 := by
@@ -447,7 +453,7 @@ private lemma bR_const {b : ℤ_[2]} (hb : b ≠ 0) : bR (C b) = 1 := by
   have : ρ u = 1 := K2_ne_zero_eq_one hu
   rw [this, Polynomial.toLaurent_C, map_one]
 
-private lemma bw_const_nonneg {b : ℤ_[2]} (hb : b ≠ 0) : 0 ≤ bw (C b) := by
+lemma bw_const_nonneg {b : ℤ_[2]} (hb : b ≠ 0) : 0 ≤ bw (C b) := by
   obtain ⟨m, u, hNF, _⟩ := NF_const hb
   have hNFθ : NF (θ (C b)) m (C u) := by rw [θ_C]; exact hNF
   rw [bw_eq hNFθ]
@@ -455,7 +461,7 @@ private lemma bw_const_nonneg {b : ℤ_[2]} (hb : b ≠ 0) : 0 ≤ bw (C b) := b
 
 /-! ### Development coefficients at Φ = X, and the K1 law -/
 
-private lemma dev_coeff {f : Polynomial ℤ_[2]} {B : ℕ → Polynomial ℤ_[2]} {N : ℕ}
+lemma dev_coeff {f : Polynomial ℤ_[2]} {B : ℕ → Polynomial ℤ_[2]} {N : ℕ}
     (hd : IsDevelopment (X : Polynomial ℤ_[2]) f B N) :
     ∀ j, f.coeff j = if j < N then (B j).coeff 0 else 0 := by
   obtain ⟨hdeg, hz, hsum⟩ := hd
@@ -906,7 +912,7 @@ noncomputable def H₀ : History 2 F4 where
     subst hj0
     exact iff_of_true rfl rfl
 
-private lemma coherent_H₀ : HistoryCoherent H₀ := by
+lemma coherent_H₀ : HistoryCoherent H₀ := by
   refine ⟨?_, ?_, ?_, ?_⟩
   · intro hj
     show (X : Polynomial ℤ_[2]).natDegree = 1
@@ -968,7 +974,7 @@ private lemma Bdev_w : bw (Bdev 0) = 2 ∧ bw (Bdev 1) = 1 ∧ bw (Bdev 2) = 0 :
   · show bw (C 2) = 1; exact bw_C2
   · show bw 1 = 0; exact bw_one
 
-private lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
+lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
   refine ⟨⟨?_, ?_⟩, ?_, ⟨?_, ?_⟩, ?_, ?_, ?_⟩
   · -- (i) lower bound
     intro j hj hBj
@@ -1109,11 +1115,11 @@ private lemma sideReads_ν₀ : SideReads ν₀ Bdev 3 fq := by
 
 /-! ### fq is monic quadratic -/
 
-private lemma fq_monic : fq.Monic := by
+lemma fq_monic : fq.Monic := by
   unfold fq
   monicity!
 
-private lemma fq_natDegree : fq.natDegree = 2 := by
+lemma fq_natDegree : fq.natDegree = 2 := by
   unfold fq
   compute_degree!
 

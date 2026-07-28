@@ -1124,6 +1124,35 @@ the number pinned in the docstring (census stop-the-line discipline).
 difficulty: medium. hypothesis_fields: none — THIS UNIT MUST BE AXIOM- AND
 SEED-HYPOTHESIS-FREE (the seed is constructed concretely; that is the point).
 
+> **REV — COVERAGE-FLOOR RESTATEMENT + PROOF (2026-07-28, adjudicated).** The
+> E-phase rendering quantified the gate over ALL `N ≥ 1`; that sentence is FALSE
+> and was machine-refuted at `N = 2` (`lean/U27_OBSTRUCTION_negation.lean`, every
+> conjunct verbatim: `root_height` forces line ≥ 1 at both bases, coherence
+> forces `Dwidth = 1`, and `inFreshBand`'s inclusive upper edge swallows the
+> level-1 coordinates whenever they exist — `totalPins` is forced to 4 at
+> `N = 2` and to ≥ 4 at every `N ≥ 2`). The adjudication: the recorded equations
+> (`totalPins = 2`, the 1/4 tie) are BOX-SIZE-DEPENDENT, and the correct
+> quantifier is the note's own (ZC-c)/C.2 proviso — the DC-1 guard's content —
+> `N ≥ 1 + the largest constrained level`, evaluated AT the floor: for the
+> order-0 inert history every constrained level of `T(H₀,⊤)` is 0 (the two
+> cluster-zero strips), so `N₀ = 1` and the gate is stated at `N := 1` exactly
+> (all other conjuncts byte-identical; proviso quoted in the docstring). The
+> spec's "numeric form at N = 2 or 3" sentence above is superseded: at those
+> boxes the floor-box equations do not hold, by the refutation. PROVED the same
+> round, sorry-free, Lean-core axioms only: H₀/keys = U31's concrete history +
+> landing key `fq`; the seed is the literal `baseDigit` chart with the GUARDED
+> `downsets_literal` proved outright (the DC-1 inhabitation smoke test the Defs
+> repair deferred — the guard derives `j < 2 ∧ β ≤ 1` at positive thresholds,
+> where the law is "slot divisibility ↔ the level-0 digit vanishes"); the jet
+> setup is U28's gate builder ported to p = 2 (fresh = two level-0 zero strips,
+> state chain `topLocus → zeroSys`, `Θ = id`, block-locality of `fq ≡ X² mod 2`).
+> `jetSetup_of_seed` was NOT fired (its U4/U7/U9/U10/U11 deps still carry
+> sorries); the JetSetup is constructed directly — U13's route remains the
+> general-history deliverable. The refutation artifact stays as the historical
+> witness against the old form and now re-exports the restated proof
+> (`U27_restated_body_true`) as the compiled demonstration that its mechanism
+> fails against the restated form.
+
 **U28 `gate_order0_sep`** · `MovesJ/U28_gateSep.lean` · same at q′ = 3: the split
 and inert root histories yield DIFFERENT masses (σ-separation through the
 bridge; the V2 gate's mirror: split 1/9 ≠ inert 1/3 at the tame prime 3 — here
