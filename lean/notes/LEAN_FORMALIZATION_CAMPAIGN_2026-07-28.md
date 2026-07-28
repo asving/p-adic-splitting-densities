@@ -187,6 +187,12 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   Journey: 6/11 -> 2/4 -> split (5/8 vs 0/0) -> adjudicated 1/1 + 0/1 -> 0/0
   dual. THE NOTE ERRATUM (R6 row) now confirmed by four independent auditor
   passes. E-phase launched. ***
+  S13 ADJUDICATION (2026-07-28, orchestrator direct read): the note's D.9(d)
+  (MOVES 2573-2581) scopes any-scalar realizability to e_read = 1 READS
+  ("At any e_read = 1 read... any digit scalar is realizable"), persisting
+  along histories; HC-1's S13 conjunct 3 dropped the scope — BLUEPRINT
+  OVER-STRENGTH (type i), the note intact. S13 restated with the e_read = 1
+  scope; the XE-precedent applies (statement repair post-refutation).
   PHASE-2 CLOSURE DISPOSITIONS (2026-07-28, orchestrator):
   - MovesS: rev 13 = closure by ADJUDICATION — Fable 0-crit three consecutive
     computation-verified rounds; Codex's residual scope criticals OVERRULED by
