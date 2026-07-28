@@ -716,3 +716,24 @@ QUEUED NEXT WAVE: the S13 adjudication; the HC-2 seed-chain re-fleet;
 D7/S10/S11 re-attempts; the post-Aug-02 Codex ratification batch; wave 4
 (MovesT/MovesV — unlocks all 22 seam-contract entries); MovesR unparking via
 HC-1's R-layer.
+
+## UPDATE (2026-07-28e): THE HARD CORES AT THREE KERNELS
+
+Under Asvin's definition-change authority (Codex-confirmed batches; acceptance =
+proofs run through), the campaign closed the hard cores to THREE remaining
+mathematical items, each with a machine-checked obstruction record:
+(1) THE CARRY BRIDGE at non-recentering reads — one identity appearing as both
+HC2.K1_readVertexPin_nonrec and HC1.V9.R3b; the V-prime kernel (§10, Codex 0-crit)
+proved everything around it (V1-V4, V6-V8 incl. the one-step OM residual
+homomorphism, S9a/S9b guarded+proved per the note's e·g>1 display, the coset hS6a
+restatement acceptance-passed across a 15-file ripple);
+(2) U21's HV gap (a certified-structural interface item);
+(3) S9c's core assembly.
+Everything else in HC1+HC2 is PROVED with Lean-core footprints. Adjudication
+tally for the whole campaign: EVERY kernel refutation traced to blueprint or
+elaboration over-strength; the note survived all of them (latest: U18's
+EtaGalEq keying traced to a blueprint-rev origin — the note counts the
+witnesses as distinct etas; S9a/S9b's corner = the note's own e·g>1 guard;
+hS6a = the note's coset display). U18 proved under the faithful transport form.
+The wave-4 (MovesT/MovesV) and seam re-keying program is unchanged and fully
+recorded. 550+ commits, all local.
