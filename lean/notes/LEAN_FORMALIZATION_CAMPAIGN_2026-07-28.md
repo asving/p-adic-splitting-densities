@@ -659,3 +659,41 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   (checked at ZMod 3: 6 ≠ 9, and classCount(1,1)=9=TH12.eval 3 nails the
   swap). All five = the statement fence WORKING: provers stopped, refuted,
   and reported instead of weakening.
+  ESCALATION FLEET RESULTS (2026-07-30). PROVED: C7 ns_null IN FULL
+  (Lean-core; the honest vanish-frame bridge via C0_pinTransport — the
+  T-C ladder C5/C6/C7 closes; E12 treeN_ns un-gates pending E8); C2's
+  capIrr_uniform (via D7, pending its repair) + the FULL SHZ
+  digit-locality kernel (Lean-core; one off-by-one residual); BOTH V1
+  witnesses (xhdds_realized + measured_faces_realized — full-bundle
+  satisfiability at n=1, the ∅-census device + the dim-0 toolbox);
+  ent_agg_conv; G1 items 3/4/7/8 (the p=3 gate via de-privatized U28
+  sigma0 — visibility-only, recorded). REFUTED with compiled witnesses:
+  spWord_exists (the width-1 continuation hole: (G6) forbids the
+  SpFitsRead-pinned selection at W=1 — V3_spwordA_negWitness.lean).
+  G1 TERMINAL STATE (37/41): the 4 remaining sorries ALL key to ASVIN Q1
+  (task #44) — mem_realizable A/B hit the machine-checked excluded corner
+  (HC1.S9a_ungated_corner_refuted; the blueprint G1b row needs
+  re-adjudication against the V10 finding); the F4 K-card pair needs the
+  card-4 stage = the same 2-node gate. No proof-phase fix exists.
+  THE ROUND-3 STATEMENT-REPAIR ADJUDICATIONS (countermodels on file):
+  (1) Defs bug, TWO independent finders: transportedLevels biUnions
+  range(len+1) but fresh len is unconstrained junk — fix: range len.
+  (2) E8/E5 need the root-cell-uniformity law (cellOf constancy of
+  T.child none on root cells) as a CellData/TreeModel law; E6 needs
+  SpectatorFor (freshCoords H) {Σsol} as a ledger field — then both
+  provable per the agents' plans. (3) F3 restated ON the decided set
+  (the note's own scoping, MOVES 7597-7603; the undecided-mass-0 is
+  X.3-conditional and separate) + the VTree-uniqueness lemma. (4) D7:
+  np_id gains NPband ≤ N (L12's range, dropped); np_id_pin gains the
+  per-class jet-existence premise (Wall B, fenced — typed). (5) C2
+  residual: the hagree window becomes INCLUSIVE (≤ cap — the note's
+  level-N residue classes, MOVES 7178-80; minimal blast radius).
+  (6) spWord_exists: the width-conditional selection law (options to the
+  writer, blueprint-cited). (7) part1_null: restore the exactness
+  equality field DEV D15 dropped. (8) comp_h_one/step: μhatN gains its
+  counting law (V5-1's own "with their counting laws"). (9) comp_agg:
+  the lands-leakage law (non-landing εT contribute 0).
+  NOTE: escalation agents committed locally (2e1e525/07e315a/3cd4e63)
+  against the no-git rule — benign, clean, well-labeled; rule restated
+  in future charges. V7_ctsm transiently red from the concurrent
+  stmt-repair workflow — rebuild after it lands.
