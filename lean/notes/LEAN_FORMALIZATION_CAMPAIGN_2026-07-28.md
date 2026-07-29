@@ -747,3 +747,38 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   translation in the project — + MovesX + MovesSp). ~36 concurrent
   pieces; T/V ratifications and the instantiation units queue behind
   wave A's E8 re-key.
+  WAVE A COMPLETE + THE E0 SEAL (2026-07-30). treeExp PROVED — the T-spine
+  assembled: the E8 per-site re-key executed per the adjudication (the F1
+  all-sites ledger displayed correct: head 5^18, leaves 5^8 each at
+  DISTINCT strata, total 5^22), E10 perShape_law + E11 treeN UN-GATED;
+  the whole spine's sorryAx = E5's hnostray ONLY, itself now a
+  machine-checked THEOREM of the refined (U)+(R) D4R0K interface pair
+  (per-point per-track uniqueness + repeated-only exhaustiveness — a
+  chart-independent candidate law, owner HC-2/D4R0K). ALSO PROVED: D2,
+  D11 COMPLETE (RepNorm premise), V2_valB (VAL(b): chainCount =
+  pathProdPoly.eval — the counting bridge), V4_hmcaug in full (the real
+  HMC→HMCAug identity-refinement cover legs), V4_part2 (WITHOUT the
+  hypothesis its own comment claimed necessary — the agent refuted the
+  comment via moveOf_bij finiteness), V4_meas (degenerate witness
+  CAVEAT flagged), V7_ctsm 2/3 (+ six pre-existing red field bodies
+  repaired).
+  *** THE E0 PROBE SEAL: 140 PASS / 0 FINDING (verification/
+  probe_results_2026-07-30.txt). The closed-class refuter finds NO closed
+  stochastic class at any (p,n) tested (p ≤ 7, n ≤ 3); in-class masses
+  κ₂(p), κ₃(p) all < 1; A^k·1 = κ^k exactly, strictly decreasing, k ≤ 8;
+  the 13 sealed T_k fractions match; the 50 first-read stratum counts
+  exact by independent census; R_σ re-derived bottom-up = the sealed
+  forms symbolically + at 4 primes. E0 SURVIVES ITS DESIGNATED
+  FALSIFIERS — computationally sealed at the tested range, still open
+  as a theorem (per-pool, all pools). ***
+  NEW REFUTATIONS (adjudicated → wave A2, wf_08983b12-e06): G2's toy
+  singleton-menu bug (mirror F1's ∀-VTrees form); the spword family
+  order-0/self-loop-free scoping (3 compiled witnesses — the cross-read
+  species law, h=0 + anchor congruence, the junk-[] collision; MIRRORS
+  the capstone's order-0 perimeter); instbij self-loop-free scoping (the
+  depth-slot zip truncation, Codex-confirmed); ctsm hmark (an emult≡0
+  model refutes hmark-free); pgLaws count-tie premises (scount_val
+  REFUTABLE via the scaling freedom — the ValA tbl_count tie typed as
+  premises). E1 BLOCKED honestly: RepPrefixClosed ⟺ etaData injectivity
+  on PrefSet (HC-2 η-granularity, open at order ≥ 2) — the D11 premises
+  stay owner-typed, correctly.
