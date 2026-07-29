@@ -65,32 +65,52 @@ noncomputable def tCountV {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   else 0
 
 /-- THE SUPPLY (theorem-under-burdens): GIVEN ValA + (XHD-u) + MDomTie +
-hEmptyT and the instance wiring, the built `PolyGeomLaws` is inhabited. -/
+hEmptyT + the ADJUDICATED count-tie premises and the instance wiring, the
+built `PolyGeomLaws` is inhabited.
+
+ADJ-4 (the wave-A2 record in
+`lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`: "pgLaws count-tie
+premises (scount_val REFUTABLE via the scaling freedom — the ValA tbl_count
+tie typed as premises)").  At arbitrary-RB generality nothing ties RB.tgP's
+countT/countS factors to anything (prover fleet batch 2 + B6 re-verified):
+(1) `tcount_val` needs countT INTEGER-VALUED at pools — RatBurdens pins only
+the PRODUCT via tg_interp + degrees, so no choice of tCount can close it;
+(2) `scount_val` is REFUTABLE — rescale countS ↦ 2·countS, geom ↦ geom/2:
+val, degrees, and all RatBurdens laws survive while the cell-census equality
+breaks.  The adjudicated repair types the V-side COUNT SEMANTICS as premises
+of THIS statement, per the blueprint's §2.F warrant: "the COUNT SEMANTICS is
+ValA's field content (§2.F note + V2-4 — the rev-1 `tbl_count` field moved
+there, resolving design-freedom slot (3))" (MOVESV_LEAN_BLUEPRINT REV 9,
+CTS-T block):
+- `hTCount` — the T-count integer-valuedness law: countT.eval ∈ ℕ at every
+  pool (the ValA.tbl_count/hEmptyT semantics read at the built burden);
+- `hSCount` — the cell-census tie: countS.eval = the outcome fiber's
+  cell-instance census sum at active states (killing the scaling freedom).
+The identification of these premises against the BUILT V7-5a burden stays
+theorem-under-burdens on the instance side, never self-supplied here. -/
 theorem polygeom_count_laws {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {T : MovesS.TableShape n}
     {M : MovesS.MeasuredSide T} (RB : MovesS.RatBurdens T M)
     {TE : TmplEvents n S} {D : XHDd n S TE}
     (hVA : ValA n C S V) (U : XHDu n S) (hTie : MDomTie V TE D)
-    (hE : HEmptyT V) :
+    (hE : HEmptyT V)
+    (hTCount : ∀ (e : ℕ) (τ : T.State e) (o : T.Out e τ), ∀ q₀ ∈ M.Pools,
+      ∃ k : ℕ, (RB.tgP e τ o).countT.eval q₀ = (k : ℚ))
+    (hSCount : ∀ (e : ℕ) (τ : T.State e) (o : T.Out e τ), ∀ q₀ ∈ M.Pools,
+      M.activeState q₀ e τ →
+      (RB.tgP e τ o).countS.eval q₀
+        = ∑ c ∈ M.cells e τ o,
+            ((M.cellInst e τ c q₀ (M.cellLvl e τ c)).card : ℚ)) :
     Nonempty (MovesS.PolyGeomLaws T M RB) := by
   refine ⟨{
     tCount := fun e τ o q₀ => ((RB.tgP e τ o).countT.eval q₀).num.toNat
     tcount_val := ?_
-    scount_val := ?_
+    scount_val := hSCount
     tcount_deg := fun e τ o => (RB.tgP e τ o).degT_le.trans_eq (RB.tg_degT e τ o)
     scount_deg := fun e τ o => (RB.tgP e τ o).degS_le.trans_eq (RB.tg_degS e τ o) }⟩
-  -- BLOCKED (statement gap, both fields; prover fleet batch 2 + B6 re-verified):
-  -- the goal `Nonempty (PolyGeomLaws T M RB)` quantifies over an ARBITRARY RB,
-  -- but every hypothesis (hVA/U/hTie/hE) mentions only V/C/S/TE/D — nothing ties
-  -- RB.tgP's countT/countS to anything.  (1) tcount_val needs countT integer-
-  -- valued at pools (RatBurdens pins only the PRODUCT via tg_interp + degrees);
-  -- no choice of tCount can close it.  (2) scount_val is tCount-free and
-  -- REFUTABLE: rescale countS ↦ 2·countS, geom ↦ geom/2 — val, degrees, and all
-  -- RatBurdens laws survive, the cell-census equality breaks.  Repair requires
-  -- adjudication: wiring hypotheses pinning RB.tgP's factors (e.g. countT.eval
-  -- ∈ ℕ at pools via ValA.tbl_count + hEmptyT at the BUILT V7-5a burden, and
-  -- countS = Σ cellP over the outcome fiber), or restating at that instance.
-  · sorry
-  · sorry
+  intro e τ o q₀ hq
+  obtain ⟨k, hk⟩ := hTCount e τ o q₀ hq
+  rw [hk]
+  simp
 
 end LeanUrat.MovesV

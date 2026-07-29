@@ -6,11 +6,17 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesT.Defs
 import LeanUrat.MovesT.G1_toyGate
+import LeanUrat.MovesT.F1_oneF
 
 /-! # T-G2 `toy_oneF_gate` — T-n3 Layer C's ONE-F face (MOVES 7745–7752): the
 ∃!-partition shape + a below-halt excess instance > 0 (the gap EXHIBITED, not just
 typed). REV 9 (Fable-8 GAP-2): `toyBelowHaltExcess`'s roster matched TO THE GLOSS —
-BOTH one-node extensions OF tA2a; expected gate value 2. -/
+BOTH one-node extensions OF tA2a; expected gate value 2.
+
+ADJ-1 [G2] (2026-07-29): the REV-9 menu-pinned `toy_oneF` (∃! over
+`toyTrees = {toyTreeA}`) was REFUTED as stated and is RESTATED to mirror T-F1
+`oneF` — existence quantified over ALL VTrees. Refutation + warrant in
+`toy_oneF`'s docstring; now PROVED. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -22,6 +28,9 @@ namespace LeanUrat.MovesT
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
 open Classical in
+/-- the REV-9 pinned menu — RETAINED FOR THE RECORD only. As a ONE-F menu it was
+REFUTED (ADJ-1 [G2]): `ToyDecided` holds off the all-zero stratum where no menu
+member fibers (see `toy_oneF`'s docstring). No statement consumes it. -/
 noncomputable def toyTrees : Finset (VTree 2 (ZMod 2)) := {toyTreeA}
 
 def toyFiber (Tr : VTree 2 (ZMod 2)) (x : Box 2 9) : Prop :=
@@ -38,23 +47,31 @@ noncomputable def toyBelowHaltExcess (x : Box 2 9) : ℕ :=
      H = tA2a.snoc toyLeafB toyLeafB_nonroot) ∧
     toyMemA (some tA1) x ∧ ¬ PreHalt H}
 
+/-- T-G2's ONE-F face, RESTATED per ADJ-1 [G2] (2026-07-29) to MIRROR T-F1 `oneF`
+verbatim at the toy scale: existence quantified over ALL `VTree 2 (ZMod 2)` (the
+`OneFStmt` / T-F1 form — "(ONE-F) … f HAS exactly one tree", MOVES 7579–7589,
+uniqueness-up-to-`VTree.ext`), NOT over the pinned menu `toyTrees = {toyTreeA}`.
+
+REFUTATION OF THE REV-9 FORM (`∃! t, t ∈ toyTrees ∧ toyFiber t x`, adjudicated
+FALSE — the record): by G1's `fiberA_iff`, `toyFiber toyTreeA x` forces the
+all-zero digit stratum x0 = … = x5 = 0, but `ToyDecided x = ∃ Tr, Tr.fiberAt …`
+is satisfiable OFF that stratum — for any x with `redPoly toyχ x` irreducible
+(e.g. x0 = x1 = 1 ⇒ X² + X + 1), the EMPTY-CHAINS VTree with
+`henV := henPayload toyχ x` (a single `henVerdict 2`) satisfies every fiberAt
+clause (chains = ∅ ⇒ (i)/(ii)/(iv)/(vi) hold; (iii) by construction; (v)
+typemult product-sum = 1·2 = 2 = n), so `ToyDecided x` holds yet NO member of
+the menu fibers x. The real `F1_oneF.oneF` never pins a menu; at the mirrored
+form the empty-chains VTree is a legitimate witness for the off-stratum x, and
+the on-stratum x keep `toyTreeA` — the toy now demonstrates the real statement
+at the toy scale.
+
+PROOF: fire T-F1 `oneF` at the toy instance (toyModel, toyχ) — the deciding
+witness of `ToyDecided x` is the tree, and uniqueness-up-to-ext is T-E9's
+`tree_fiber_disjoint`, exactly as in F1. -/
 theorem toy_oneF : ∀ x, ToyDecided x →
-    ∃! t, t ∈ toyTrees ∧ toyFiber t x := by
-  intro x _hdec
-  refine ⟨toyTreeA, ⟨⟨show toyTreeA ∈ ({toyTreeA} : Finset (VTree 2 (ZMod 2))) from
-    Finset.mem_singleton_self _, ?_⟩, ?_⟩⟩
-  · -- BLOCKED (statement appears FALSE): goal is `toyFiber toyTreeA x`, i.e.
-    -- `toyTreeA.fiberAt toyModel toyχ x`, which (by G1's `fiberA_iff`) forces the
-    -- all-zero digit stratum x0=…=x5=0. But `ToyDecided x = ∃ Tr, Tr.fiberAt` is
-    -- satisfiable OFF that stratum: for any x with `redPoly toyχ x` irreducible
-    -- (e.g. x0=x1=1 ⇒ X²+X+1), the empty-chains tree with `henV := henPayload toyχ x`
-    -- (a single `henVerdict 2`) satisfies every fiberAt clause (chains=∅ ⇒ (i)/(ii)/(iv)/(vi)
-    -- hold; (iii) by construction; (v) typemult product-sum = 1·2 = 2 = n). Then
-    -- ToyDecided x holds yet NO member of `toyTrees = {toyTreeA}` fibers x. See notes.
-    sorry
-  · rintro y ⟨hy, -⟩
-    exact Finset.mem_singleton.mp (show y ∈ ({toyTreeA} : Finset (VTree 2 (ZMod 2)))
-      from hy)
+    ∃ Tr : VTree 2 (ZMod 2), toyFiber Tr x ∧
+      ∀ Tr' : VTree 2 (ZMod 2), toyFiber Tr' x → VTree.ext Tr Tr' :=
+  fun x hdec => oneF toyModel toyχ x hdec
 
 /-- the dictionary gap EXHIBITED (expected witness value 2 — the REV-9 recomputed
 gate). -/

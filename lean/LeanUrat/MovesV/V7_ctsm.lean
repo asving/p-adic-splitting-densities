@@ -11,9 +11,21 @@ set_option linter.style.header false
 namespace LeanUrat.MovesV
 open LeanUrat.MovesS (evalAt)
 
+/-- THEOREM CTS-M.  `hmark` is ADJUDICATED (ADJ-4; the wave-A2 record in
+`lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`: "ctsm hmark (an
+emult≡0 model refutes hmark-free)"): `Part2_Stmt` is REFUTABLE without it —
+in a model with `emult ≡ 0` at a continuing cell of positive mass,
+`markWeight = 0` there while surplus's ℕ-subtraction truncates
+((0 - 1 : ℕ) = 0), so that cell contributes 0 to markedRow AND 0 to
+surplusRow and the pointwise identity markedRow + terminalRow
+= 1 + surplusRow fails; no hmark-free proof exists.  It therefore rides as
+a ctsM hypothesis mirroring hb/hc/hd (NOT a CtsmLedger field), consumed
+exactly at the producer `part2_row` (V4-7). -/
 theorem ctsM {n : ℕ} (L : CtsmLedger n)
     (hb : P1CtblAdd L.V L.X.w) (hc : P1NullRem L.V L.X.w)
-    (hd : P1FixedHeightExact L.V L.X.w) :
+    (hd : P1FixedHeightExact L.V L.X.w)
+    (hmark : ∀ (τ : L.S.Cell) (c : DCellAll L.V τ),
+      c.isLeft → 1 ≤ markWeight L.V c) :
     CtsmConclusions L :=
   { syntax_partition := fun s q₀ _ => meet_finite_uniform (L.C.bd s) q₀
     val_a := L.hVA
@@ -43,13 +55,11 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
     part1 := by
       intro τ q₀ x hzc hq hact
       exact part1 L.X.w hb hc hd x hzc hq hact
-    -- BLOCKED (ledger gap): Part2_Stmt is REFUTABLE at this generality — the
-    -- producer part2_row (V4_part2, now sorry-free) still needs
-    -- hmark : ∀ c, c.isLeft → 1 ≤ markWeight V c, and an emult ≡ 0 model
-    -- breaks the pointwise identity (surplus's ℕ-subtraction truncates), so
-    -- no hmark-free proof exists. Not a CtsmLedger field and not a ctsM
-    -- hypothesis; adjudication required (mirror hb/hc/hd or add the law).
-    part2 := sorry
+    -- (PART-2): closed under the ADJ-4 `hmark` hypothesis (see the theorem
+    -- docstring; the emult ≡ 0 refuting model kills every hmark-free route).
+    part2 := by
+      intro τ q₀ x hzc hq hact
+      exact part2_row L.X.w hb hc hd x hzc hq hact (hmark τ)
     surplus_n3 := by
       intro hn h2 e he τ o
       subst hn

@@ -9,7 +9,7 @@
  },
  "units_total": 100,
  "units_landed": 100,
- "sorried_declarations": 81,
+ "sorried_declarations": 7,
  "banked_sorry": "V7_w17ii.lean w17ii_wave4 clause (ii) — the ONE [3t]-owned banked sorry (C14); every other sorry is an E-phase statement body awaiting the prover pass",
  "conditionality_banner": "per blueprint §0: XHD faces/(ENT-U)/ENT-COUNT/INIT-RAT premises/(J-RAT) pack/(ii-c)/ContTwo/StageLawBurden/MDomTie/MarkFiberTie/HMC ride as typed hypothesis structures/arguments; HMC open kernel (no unit proves it, none assumes it); HMCAug consumed by nothing (verdict (A): separation obligation withdrawn, V4-11 leg (iii) carries NO proof obligation); MovesS.XRBPackage NOT BUILT (V7-7's xrbPackageOf gated on wave-4 co-build)",
  "units": {
@@ -147,15 +147,15 @@
   ],
   "V3-5a": [
    "V3_instbijA.lean",
-   "HARD: sorry-stmt"
+   "PROVED (ADJ-3 2026-07-31: SELF-LOOP-FREE scope hypothesis word.filter (SelfLoopLetter n) = [] added per the Codex-confirmed depth-slot zip truncation; mechanism lemmas expandRuns_eq_of_selfLoopFree / shapeOfSlots?_slots / writeHeights?_pairSlots / pairSlots_inj_of_selfLoopFree all Lean-core; inst_bij_inj's sorryAx flows ONLY through V3-3d writeHeights_total inside the writeHeights def)"
   ],
   "V3-5b": [
    "V3_instbijB.lean",
-   "sorry-stmt"
+   "sorry-stmt (ADJ-3 2026-07-31: SELF-LOOP-FREE scoped — unscoped form NOT ONTO on self-loop templates; 1 residue sorry = the inverse-construction fold: SpFitsRead<->ReadFits clause bridge + readFits_unique pinning + the V3-3a width-law seam — the spword-family/ADJ-2 dependency, not yet landed)"
   ],
   "V3-5c": [
    "V3_instbijC.lean",
-   "sorry-stmt"
+   "sorry-stmt (ADJ-3 2026-07-31: SELF-LOOP-FREE scoped, consumes scoped A+B; 1 residue sorry = hround template? roundtrip: fitting-word existence + spWord choice-pinning = V3-3d spWord_faithful's re-keyed content, ADJ-2-owned)"
   ],
   "V3-6": [
    "V3_iota.lean",
@@ -343,7 +343,7 @@
   ],
   "V7-2b": [
    "V7_ctsm.lean",
-   "capstone ctsM sorry-stmt"
+   "capstone ctsM PROVED (ADJ-4, 2026-07-29): the adjudicated hmark hypothesis added mirroring hb/hc/hd (an emult≡0 model refutes hmark-free — ℕ-subtraction truncation in surplusRow); part2 leg closed via part2_row (V4-7); module sorry-free"
   ],
   "V7-3a": [
    "V7_ts.lean",
@@ -411,7 +411,7 @@
   ],
   "V7-9": [
    "V7_pgLaws.lean",
-   "repD DISPLAYED (N-5); HEmptyT displayed; tCountV with the THREE dispatches DISPLAYED; PolyGeomLaws supply sorry-stmt"
+   "repD DISPLAYED (N-5); HEmptyT displayed; tCountV with the THREE dispatches DISPLAYED; polygeom_count_laws PROVED (ADJ-4, 2026-07-29) under the adjudicated V-side count-tie premises hTCount (countT integer-valuedness at pools) + hSCount (countS = outcome-fiber cell-instance census at active states; scount_val REFUTABLE via the countS/geom scaling freedom without it); §2.F warrant: 'the COUNT SEMANTICS is ValA's field content'; module sorry-free"
   ]
  },
  "deviations": [
@@ -440,6 +440,9 @@
   "D21 (V3-3a, ADJUDICATED STATEMENT REPAIR 2026-07-30): spWord_exists/spWord_fits gain the width->=2 continuation hypotheses (2 <= n and 2 <= mu_r for every continued read) - the negWitness form; the SpFitsRead-conditional alternative was REJECTED because the negWitness extends to 3-read prefixes ([R0,R1,R1]: continuation past a forced window-1 letter breaks the SuccStep chain regardless of the selection clause), so it leaves the theorem refutable. RIPPLE: template_total's fits leg is a recorded sorry (EntShapeV width law = open sign-off item). RESIDUAL (reported, NOT repaired - beyond the adjudicated menu): the species-chain hole - ShapeWF has no cross-read species law, so a WF prefix whose read r+1 is increment-tagged after an e=g=1 read fits no species word even under the width hypotheses; needs its own adjudication (hypothesis clause vs ShapeWF clause).",
   "D22 (V4-6a, ADJUDICATED STATEMENT REPAIR 2026-07-30): P1FixedHeightExact.fh_exact restored (the blueprint V4 PART-1 row's leg (d) exactness, dropped by D15): below-H fixed-height blocks + the H-strip (leg (c)'s identical tail display) sum to 1 at every truncation H. part1_null and part1 PROVED Lean-core. NOTE: at the headline typing the H=0 corner already pins the total, so leg (c) goes unused in the assembly - the legs' full field-by-field typing (D15) remains the prover's V4 task.",
   "D23 (V5-2, ADJUDICATED STATEMENT REPAIR 2026-07-30): CompCarrier.muhatN_law added - the muHatN counting law in C.1.5 conditional-chain VALUE form (muHatN = iotaN x pathProdPoly.eval x gProd at stabilized levels), quantified over every XHD-w face X. FLAGGED for the V7-4a instance-discharge pass: (i) the law is stated at theorem strength (the composite marked-event carrier does not exist at this layer by D16, so no card-form tie is statable here; the per-mark fiber decomposition = instance duty); (ii) the forall-X quantifier is unguarded in h (matching comp_h_one's unguarded surface) - off the XHD-d domain the weight exponent is unpinned by w_eq, so instance discharge needs the domain-span pinning or a dom guard on comp_h_one (statement change, sign-off). comp_h_one/comp_h_step/comp_h (incl. lastT)/comp_hsum all Lean-core, #print axioms verified.",
-  "D24 (V5-6, ADJUDICATED STATEMENT REPAIR 2026-07-30): the lands-leakage closed by the ADD-THE-LAW form - CompCarrier.iotaN_lands (non-landing templates' instantiations carry zero entrance mass at every level), keyed at writeHeights? membership. The re-key-the-sum alternative was rejected as less faithful to the blueprint V5-6 row's all-templates display. comp_agg PROVED via iotaEps_iotashH_bridge + hEU + semilin_sum_exact; footprint = writeHeights_total only."
+  "D24 (V5-6, ADJUDICATED STATEMENT REPAIR 2026-07-30): the lands-leakage closed by the ADD-THE-LAW form - CompCarrier.iotaN_lands (non-landing templates' instantiations carry zero entrance mass at every level), keyed at writeHeights? membership. The re-key-the-sum alternative was rejected as less faithful to the blueprint V5-6 row's all-templates display. comp_agg PROVED via iotaEps_iotashH_bridge + hEU + semilin_sum_exact; footprint = writeHeights_total only.",
+  "D25 (V7-2b, ADJUDICATED STATEMENT REPAIR 2026-07-29, ADJ-4): ctsM gains hmark (∀ τ c, c.isLeft → 1 ≤ markWeight L.V c) mirroring hb/hc/hd — Part2_Stmt is REFUTABLE hmark-free (the emult ≡ 0 model: markWeight = 0 on a positive-mass continuing cell contributes 0 to markedRow AND 0 to surplusRow since (0 - 1 : ℕ) = 0, breaking markedRow + terminalRow = 1 + surplusRow pointwise; wave-A2 adjudication record in LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md). part2 := part2_row; NOT a CtsmLedger field. ctsM now sorry-free.",
+  "D26 (V7-9, ADJUDICATED STATEMENT REPAIR 2026-07-29, ADJ-4): polygeom_count_laws gains the V-side count-tie premises — hTCount (∃ k : ℕ, countT.eval q₀ = k at every pool; the integer-valuedness law tcount_val needs, since RatBurdens pins only the PRODUCT via tg_interp) and hSCount (countS.eval = Σ over the outcome's cell fiber of the cellInst census at active states; without it scount_val is REFUTABLE by countS ↦ 2·countS, geom ↦ geom/2). Warrant: blueprint §2.F / CTS-T block, 'the COUNT SEMANTICS is ValA's field content (§2.F note + V2-4 …)'; wave-A2 record in LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md ('the ValA tbl_count tie typed as premises'). Both fields proved; module sorry-free. MovesV sorried census after this pass: 8 declarations (V3_instbijA/B/C, V3_spwordA, V3_spwordB, V3_spwordD writeHeights_total + writeHeights, V7_w17ii banked).",
+  "ADJ-3 (2026-07-31, V3-5a/b/c INSTBIJ SELF-LOOP-FREE SCOPING): the three inst_bij statements gain the hypothesis `εT.word.filter (SelfLoopLetter n) = []` (equivalently: no self-loop letters / all depth slots 0). Warrant (Codex-confirmed, wave-A refutation queue; LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md): shapeOfSlots? folds over (expandRuns word depthSlots).zip pairSlots and pairSlots has length word.length, so the zip TRUNCATES past word.length — depth slots are ignored once any self-loop depth >= 1; unscoped A FALSE (depth-slot collisions), unscoped B NOT ONTO on self-loop templates; MIRRORS the capstone's order-0 perimeter. At depth 0 the expansion is the identity and the zip is EXACT. V3-5a PROVED under the scope; V3-5b/c each keep 1 exact-residue sorry (the spword-family seam, ADJ-2/B3-owned)."
  ]
 }

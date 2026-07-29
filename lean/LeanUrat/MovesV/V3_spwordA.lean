@@ -1,62 +1,251 @@
 /-  MovesV unit V3-3a `spword_exists` (RE-KEYED REV 9, N-3) — the dite PASSES
     on WF prefixes.
     STATEMENT REPAIR 2026-07-30 (adjudicated; machine-verified refutation
-    `V3_spwordA_negWitness.lean`): `spWord_exists`/`spWord_fits` gain THE
-    WIDTH-≥-2 CONTINUATION HYPOTHESES (`hn` + `hcont`) — the negWitness showed
-    the unconditional form FALSE: `SpFitsRead` pins EVERY letter's selection
-    `sel = some (R.g, R.μ)` while MovesSp's Coherent (G6) terminal rule
-    (`sel = none ↔ W = 1`) forbids a selection on any letter whose inherited
-    window is 1; the second letter's window is `μ₀` by the stage law, and the
-    root letter's window is `n`.  Of the two adjudicated forms (width-
-    conditional `SpFitsRead` selection clause vs. the continuation hypothesis)
-    the HYPOTHESIS form is landed: (i) it keeps `SpWordFits`/`SpFitsRead`
-    (§2.D Defs layer) and every downstream consumer's statement intact, and
-    (ii) the negWitness itself extends to THREE-read WF prefixes ([R0,R1,R1]:
-    a read after a μ = 1 read breaks the `SuccStep` chain at the interior
-    letter regardless of the selection clause's conditioning), so the
-    conditional-clause form alone would stay refutable.  Blueprint row
-    (MOVESV_LEAN_BLUEPRINT_2026-07-28.md V3-3a): "existence of the fitting
-    species word on WF prefixes (fold of the stage laws along `P.reads`: each
-    read's stage fields seed a catalogue member, `SuccStep` from the `ShapeWF`
-    stage clauses via the D.5/D.7/D.8 output laws)" — the fold needs every
-    seeded letter selection-bearing, i.e. every inherited window ≥ 2:
-    `2 ≤ n` (the root letter's window, `RootStage`) and `2 ≤ μ_r` for every
-    CONTINUED read (letter r+1's window, D.8's `W' = μ`).  The negWitness
-    (which refutes the OLD unconditional ∀-sentence, restated inline there)
-    stays on file untouched.  Consumption note: `template_total`
-    (V3_spwordB) consumed the unconditional form; `EntShapeV` carries no
-    width law, so its `hfits` leg is now an explicit open sorry — SIGN-OFF
-    ITEM recorded there and in the MANIFEST. -/
+    `V3_spwordA_negWitness.lean`): `spWord_exists`/`spWord_fits` gained THE
+    WIDTH-≥-2 CONTINUATION HYPOTHESES (`hn` + `hcont`) — (G6) forbids a
+    selection at window 1; see the negWitness header for the full record.
+    ADJ-2 STATEMENT REPAIR (adjudicated; machine-verified refutation
+    `SpWordNeg2.spWord_exists_false'` in `V3_spword_negWitness2.lean`): even
+    width-scoped the sentence was FALSE — THE SPECIES/TAG OFF-BY-ONE:
+    `SpFitsRead`'s species clause ties read i's OWN move class to letter i's
+    POSITION class (StageLaws' tag law), and `ShapeWF` carries no cross-read
+    species law.  ADJUDICATED SCOPE: the ORDER-0 / SELF-LOOP-FREE stratum —
+    `spWord_exists`/`spWord_fits` gain the NAMED typed hypothesis
+    `SpeciesCoherent P` (the cross-read species-coherence law, below), the
+    exact law the negWitness exploits the absence of.  This mirrors the
+    capstone perimeter (the order-0 decided stratum).  PROVED on the scoped
+    stratum (the explicit letter construction `bWord`): the fold of the stage
+    laws along `P.reads` — each read's stage fields seed a catalogue member,
+    `SuccStep` from the `ShapeWF` stage clauses (blueprint row V3-3a).  The
+    negWitnesses stay on file untouched as the refutation record for the
+    unscoped forms.  Phase B: discharging `SpeciesCoherent` from the engine's
+    D.7/D.8 output laws (deeper `typeOf`-keyed strata) re-opens the unscoped
+    family.  Consumption note: `template_total` (V3_spwordB) consumed the
+    unconditional form; `EntShapeV` carries no width/species law, so its
+    `hfits` leg stays an explicit open sorry — SIGN-OFF ITEM recorded there
+    and in the MANIFEST. -/
 import LeanUrat.MovesV.Defs
 
 set_option linter.style.longLine false
 set_option linter.style.header false
+set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesV
 
-theorem spWord_exists (n : ℕ) (P : MovesD.ShapePrefix)
-    (hWF : MovesD.ShapeWF n P) (hn : 2 ≤ n)
-    (hcont : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
-      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ) :
-    ∃ ws, SpWordFits n P ws := by
-  -- [PROVER PASS B3 2026-07-29: REFUTED AS STATED, width hypotheses included —
-  --  machine-verified witness `SpWordNeg2.spWord_exists_false'` in
-  --  `V3_spword_negWitness2.lean`.  THE SPECIES/TAG OFF-BY-ONE: SpFitsRead's
-  --  species clause ties read i's OWN move class (hspecInc/hspecRec +
-  --  species_iff force increment iff its own e·g ≥ 2) to letter i's POSITION
-  --  class (StageLaws' tag law: postInc iff the PARENT's e·g_sel ≥ 2); ShapeWF
-  --  carries no cross-read species law, so the classes can disagree (witness
-  --  P4 = [root move e·g = 1, μ = 2; increment read e = 2] at n = 3).
-  --  SIGN-OFF ITEM: repair = cross-read species clause in ShapeWF, or re-key
-  --  SpFitsRead's species clause to the parent read's move class.]
-  sorry
+/-- ORDER-0 SCOPE (ADJ-2): the CROSS-READ SPECIES-COHERENCE law — read r+1's
+recorded move class matches its POSITION class under `MovesSp.StageLaws`' tag
+law, quoted: "`(s'.tag = .postInc ↔ 2 ≤ s.e * g) ∧ (s'.tag = .postRec ↔
+(s.e = 1 ∧ g = 1))`" — i.e. the read AFTER read r is increment-species exactly
+when read r's selected move is proper (2 ≤ e_r·g_r).  `ShapeWF` does not carry
+this law (the `SpWordNeg2` off-by-one witness); on the order-0 stratum it is a
+named hypothesis.  Phase B discharges it from the engine's D.7/D.8 output
+laws. -/
+def SpeciesCoherent (P : MovesD.ShapePrefix) : Prop :=
+  ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+    ((P.reads[r+1]'hr).species = MovesC.ReadSpecies.increment ↔
+      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).e
+          * (P.reads[r]'(Nat.lt_of_succ_lt hr)).g)
 
-theorem spWord_fits (n : ℕ) (P : MovesD.ShapePrefix)
-    (hWF : MovesD.ShapeWF n P) (hn : 2 ≤ n)
+/-! ### the letter construction (proof apparatus, all `private`) -/
+
+/-- the fitted residual partition: the selected pair + (1,1)-filler. -/
+private def lamOf (R : MovesD.ShapeRead) : Multiset (ℕ × ℕ) :=
+  (R.g, R.μ) ::ₘ Multiset.replicate (R.len - R.g * R.μ) (1, 1)
+
+/-- singleton flank composition of a span. -/
+private def flankOf (m : ℕ) : List ℕ := if m = 0 then [] else [m]
+
+private theorem flankOf_comp (m : ℕ) : MovesSp.IsComposition (flankOf m) m := by
+  by_cases h : m = 0
+  · simp [flankOf, h, MovesSp.IsComposition]
+  · refine ⟨?_, ?_⟩ <;> simp [flankOf, h] <;> omega
+
+/-- the species letter presented by read `R` at position `i`, with the
+inherited stage degree `D` and window `W` fed externally. -/
+private def letterOf (n i D W : ℕ) (R : MovesD.ShapeRead) : MovesSp.Species :=
+  { tag := if i = 0 then MovesSp.Tag.root
+      else if R.species = MovesC.ReadSpecies.increment then .postInc
+      else .postRec,
+    D := D, w := R.w, W := W, e := R.e, s0 := R.s0, ell := R.len,
+    a := R.s0 / R.e, d := R.len + 1,
+    slots := Finset.Icc (R.s0 / R.e) (R.s0 / R.e + R.len),
+    lam := lamOf R, sel := some (R.g, R.μ),
+    lflank := flankOf R.s0, rflank := flankOf (W - (R.s0 + R.wSide)) }
+
+/-- the letter's Coherent + Budget certificate, from the read-level facts. -/
+private theorem letterOf_ok (n i D W : ℕ) (R : MovesD.ShapeRead)
+    (hD : 1 ≤ D) (hW2 : 2 ≤ W) (hn : 2 ≤ n)
+    (hbox : R.s0 + R.wSide ≤ W) (hgmu : R.g * R.μ ≤ R.len)
+    (hedvd : R.e ∣ R.wSide) (hWD : W * D ≤ n) (hwD : R.w ≤ D) :
+    MovesSp.Coherent (letterOf n i D W R)
+      ∧ MovesSp.Budget n (letterOf n i D W R) := by
+  -- raw-term facts (every clause is assembled by defeq below)
+  have hlw : R.e * (R.wSide / R.e) = R.wSide := Nat.mul_div_cancel' hedvd
+  have hgm1 : 1 ≤ R.g * R.μ := Nat.mul_pos R.hg R.hμ
+  have hgmu' : R.g * R.μ ≤ R.wSide / R.e := hgmu
+  have hlen1 : 1 ≤ R.wSide / R.e := le_trans hgm1 hgmu'
+  have hlel : R.wSide / R.e ≤ R.e * (R.wSide / R.e) :=
+    Nat.le_mul_of_pos_left _ R.he
+  have heel : R.e ≤ R.e * (R.wSide / R.e) := Nat.le_mul_of_pos_right _ hlen1
+  have hWn : W ≤ n := le_trans (Nat.le_mul_of_pos_right _ hD) hWD
+  have hgle : R.g ≤ R.g * R.μ := Nat.le_mul_of_pos_right _ R.hμ
+  have hmle : R.μ ≤ R.g * R.μ := Nat.le_mul_of_pos_left _ R.hg
+  have hlamsum : ((lamOf R).map fun gm => gm.1 * gm.2).sum = R.len := by
+    unfold lamOf
+    rw [Multiset.map_cons, Multiset.map_replicate, Multiset.sum_cons,
+      Multiset.sum_replicate, smul_eq_mul]
+    show R.g * R.μ + (R.len - R.g * R.μ) * (1 * 1) = R.len
+    have : R.g * R.μ ≤ R.len := hgmu
+    omega
+  have hlammem : ∀ gm ∈ lamOf R, 1 ≤ gm.1 ∧ 1 ≤ gm.2 := by
+    intro gm hgm
+    rcases Multiset.mem_cons.mp hgm with h | h
+    · subst h; exact ⟨R.hg, R.hμ⟩
+    · rw [Multiset.eq_of_mem_replicate h]; exact ⟨le_refl 1, le_refl 1⟩
+  have hG1mid : R.s0 + R.e * (R.wSide / R.e)
+      + (flankOf (W - (R.s0 + R.wSide))).sum = W := by
+    have h1 := (flankOf_comp (W - (R.s0 + R.wSide))).2
+    omega
+  have hselmem : ∀ gm : ℕ × ℕ, (some (R.g, R.μ) : Option (ℕ × ℕ)) = some gm →
+      gm ∈ lamOf R := by
+    intro gm hgm
+    rw [← Option.some.inj hgm]
+    exact Multiset.mem_cons_self _ _
+  have hG6 : (some (R.g, R.μ) : Option (ℕ × ℕ)) = none ↔ W = 1 :=
+    iff_of_false (by simp) (by omega)
+  have hW1 : 1 ≤ W := by omega
+  have hDn : D ≤ n := le_trans (Nat.le_mul_of_pos_left D hW1) hWD
+  have hwn : R.w ≤ n := le_trans hwD hDn
+  have hbox' : R.s0 + R.e * (R.wSide / R.e) ≤ W := by omega
+  have haell : R.s0 / R.e + R.wSide / R.e ≤ W := by
+    have h1 : R.s0 / R.e ≤ R.s0 := Nat.div_le_self _ _
+    have h2 : R.wSide / R.e ≤ R.wSide := Nat.div_le_self _ _
+    omega
+  have hdw : R.wSide / R.e + 1 ≤ R.e * (R.wSide / R.e) + 1 := by omega
+  have hWdiv : W ≤ n / D := (Nat.le_div_iff_mul_le hD).mpr hWD
+  have hb4 : ∀ gm : ℕ × ℕ, (some (R.g, R.μ) : Option (ℕ × ℕ)) = some gm →
+      gm.1 * gm.2 ≤ R.wSide / R.e := by
+    intro gm hgm
+    rw [← Option.some.inj hgm]
+    exact hgmu'
+  have hen : R.e ≤ n := by omega
+  have helln : R.wSide / R.e ≤ n := by omega
+  have hs0n : R.s0 ≤ n := by omega
+  have hdn : R.wSide / R.e + 1 ≤ n + 1 := by omega
+  have hlamcap : ∀ gm ∈ lamOf R, gm.1 ≤ n ∧ gm.2 ≤ n := by
+    intro gm hgm
+    rcases Multiset.mem_cons.mp hgm with h | h
+    · subst h
+      refine ⟨?_, ?_⟩ <;> · show _ ≤ n; omega
+    · rw [Multiset.eq_of_mem_replicate h]
+      exact ⟨by omega, by omega⟩
+  have hanchor : R.s0 / R.e ≤ (W - R.e * (R.wSide / R.e)) / R.e :=
+    Nat.div_le_div_right (by omega)
+  exact ⟨⟨⟨hD, R.hw, hW1, R.he, hlen1, hlammem⟩,
+      ⟨flankOf_comp _, hG1mid, (flankOf_comp _).1⟩, rfl, ⟨rfl, rfl⟩,
+      ⟨hlamsum, hselmem⟩, hG6⟩,
+    ⟨hDn, hwn, ⟨hbox', haell, hdw, hWdiv⟩, hb4,
+      ⟨hen, helln, hs0n, hdn, hWn, hlamcap, heel, hanchor⟩⟩⟩
+
+/-- the accumulated stage degree D_i = ∏_{m<i} e_m·g_m (D.5's output law). -/
+private def bD (P : MovesD.ShapePrefix) (i : ℕ) : ℕ :=
+  ((P.reads.take i).map (fun R => R.e * R.g)).prod
+
+/-- the inherited window W_i (n at the root, μ_{i-1} after — D.8's output law). -/
+private def bW (n : ℕ) (P : MovesD.ShapePrefix) : ℕ → ℕ
+  | 0 => n
+  | i + 1 => ((P.reads[i]?).map MovesD.ShapeRead.μ).getD 1
+
+private theorem bD_zero (P : MovesD.ShapePrefix) : bD P 0 = 1 := rfl
+
+private theorem bD_pos (P : MovesD.ShapePrefix) (i : ℕ) : 1 ≤ bD P i := by
+  have h : 0 < ((P.reads.take i).map (fun R => R.e * R.g)).prod := by
+    apply List.prod_pos
+    intro a ha
+    obtain ⟨R, -, hR⟩ := List.mem_map.mp ha
+    rw [← hR]
+    exact Nat.mul_pos R.he R.hg
+  exact h
+
+private theorem bD_succ (P : MovesD.ShapePrefix) (i : ℕ)
+    (hi : i < P.reads.length) :
+    bD P (i + 1) = bD P i * ((P.reads[i]'hi).e * (P.reads[i]'hi).g) := by
+  unfold bD
+  rw [List.take_succ, List.getElem?_eq_getElem hi, Option.toList_some,
+    List.map_append, List.prod_append, List.map_singleton,
+    List.prod_singleton]
+
+private theorem bW_succ (n : ℕ) (P : MovesD.ShapePrefix) (i : ℕ)
+    (hi : i < P.reads.length) : bW n P (i + 1) = (P.reads[i]'hi).μ := by
+  have h0 : bW n P (i + 1) = ((P.reads[i]?).map MovesD.ShapeRead.μ).getD 1 := rfl
+  rw [h0, List.getElem?_eq_getElem hi]
+  rfl
+
+private theorem bW_two {n : ℕ} {P : MovesD.ShapePrefix}
+    (hn : 2 ≤ n)
     (hcont : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
-      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ) :
-    SpWordFits n P (spWord n P) := by
-  rw [spWord, dif_pos (spWord_exists n P hWF hn hcont)]
-  exact (spWord_exists n P hWF hn hcont).choose_spec
+      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ)
+    (i : ℕ) (hi : i < P.reads.length) : 2 ≤ bW n P i := by
+  cases i with
+  | zero => exact hn
+  | succ j =>
+    rw [bW_succ n P j (Nat.lt_of_succ_lt hi)]
+    exact hcont j hi
+
+private theorem bW_box {n : ℕ} {P : MovesD.ShapePrefix}
+    (hWF : MovesD.ShapeWF n P) (i : ℕ) (hi : i < P.reads.length) :
+    (P.reads[i]'hi).s0 + (P.reads[i]'hi).wSide ≤ bW n P i := by
+  cases i with
+  | zero => exact hWF.root_box hi
+  | succ j =>
+    rw [bW_succ n P j (Nat.lt_of_succ_lt hi)]
+    exact hWF.window j hi
+
+private theorem bWD_le {n : ℕ} {P : MovesD.ShapePrefix}
+    (hWF : MovesD.ShapeWF n P) :
+    ∀ i, i < P.reads.length → bW n P i * bD P i ≤ n := by
+  intro i
+  induction i with
+  | zero =>
+    intro _
+    rw [bD_zero]
+    show n * 1 ≤ n
+    omega
+  | succ j ih =>
+    intro hj1
+    have hj : j < P.reads.length := Nat.lt_of_succ_lt hj1
+    rw [bW_succ n P j hj, bD_succ P j hj]
+    have hlw : (P.reads[j]'hj).e * ((P.reads[j]'hj).wSide / (P.reads[j]'hj).e)
+        = (P.reads[j]'hj).wSide := Nat.mul_div_cancel' (hWF.edvd j hj)
+    have hkey : (P.reads[j]'hj).e * (P.reads[j]'hj).g * (P.reads[j]'hj).μ
+        ≤ bW n P j := by
+      have h1 : (P.reads[j]'hj).e * ((P.reads[j]'hj).g * (P.reads[j]'hj).μ)
+          ≤ (P.reads[j]'hj).e * ((P.reads[j]'hj).wSide / (P.reads[j]'hj).e) :=
+        Nat.mul_le_mul_left _ (hWF.gmu j hj)
+      have h2 := bW_box hWF j hj
+      calc (P.reads[j]'hj).e * (P.reads[j]'hj).g * (P.reads[j]'hj).μ
+          = (P.reads[j]'hj).e * ((P.reads[j]'hj).g * (P.reads[j]'hj).μ) := by ring
+        _ ≤ (P.reads[j]'hj).wSide := by omega
+        _ ≤ bW n P j := by omega
+    calc (P.reads[j]'hj).μ * (bD P j * ((P.reads[j]'hj).e * (P.reads[j]'hj).g))
+        = ((P.reads[j]'hj).e * (P.reads[j]'hj).g * (P.reads[j]'hj).μ) * bD P j := by
+          ring
+      _ ≤ bW n P j * bD P j := Nat.mul_le_mul_right _ hkey
+      _ ≤ n := ih hj
+
+private theorem bw_le_bD {n : ℕ} {P : MovesD.ShapePrefix}
+    (hWF : MovesD.ShapeWF n P) :
+    ∀ i, ∀ hi : i < P.reads.length, (P.reads[i]'hi).w ≤ bD P i := by
+  intro i
+  induction i with
+  | zero => intro hi; rw [bD_zero, hWF.w0 hi]
+  | succ j ih =>
+    intro hj1
+    have hj : j < P.reads.length := Nat.lt_of_succ_lt hj1
+    rw [hWF.wchain j hj1, bD_succ P j hj]
+    calc (P.reads[j]'hj).w * (P.reads[j]'hj).g
+        ≤ bD P j * (P.reads[j]'hj).g := Nat.mul_le_mul_right _ (ih hj)
+      _ ≤ bD P j * ((P.reads[j]'hj).e * (P.reads[j]'hj).g) :=
+          Nat.mul_le_mul_left _ (Nat.le_mul_of_pos_left _ (P.reads[j]'hj).he)
 
 end LeanUrat.MovesV

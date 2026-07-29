@@ -484,3 +484,41 @@ box B (quartic psi^2-cylinder 2^26, N=10) done 5s; count histogram {1: 60424192,
 
 OVERALL: 15 checks, 0 FINDING(s); wall 29s
 TRACK-probe scope reminder: candidate-refuter only; TRACK-COUNT and its charging derivation remain OPEN (CL-7) regardless.
+
+
+##### x_n3_probes.py (PROBE-5: X-n3 layers + STALL-probe) #####
+run 2026-07-29 15:01:21; spec MOVES SS X-EXHAUST X.5 + X.1b; long log /tmp/x_n3_census.out
+[PASS] XV0: M-n3 catalogue has 53 letters (C_T(3) = 53, one union-bound term per letter)  53
+[PASS] XV5: quartic discriminant formula == sympy mod 2^64 (20 random)  
+[PASS] XV6: reading-B witness f=(209,42,234) has v3(disc)=4 in-box  v=4
+[PASS] XV1 p=3: squarefree-reduction count = (p^3-p^2)*p^(3N-3)  9565938
+[PASS] XV2 p=3: root-read letter tallies == case_mn3_results.json (20 R-letters)  23575536 row-hits
+[PASS] XV3 p=3: Q2/Q3 letter tallies >= depth-2 census (full-depth walker sees at least the depth-2 reads)  
+[PASS] XV4 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0  {}
+[PASS] X3B p=3: per-sigma decided + undecided == S7 integers, N=1..5 (30 values)  exact
+[PASS] X3A p=3: mu(Undec(N)) monotone nonincreasing (Thm 2.1 N-stability)  [0.33333, 0.08642, 0.02881, 0.00960, 0.00310]
+[PASS] X1A p=3: prefix sweep v_p(disc) >= 2*CUM, reading A (mu>=2 engine-descending nodes), read-exact f  violations 0; censored-skipped 26244
+[FINDING] X1B p=3: prefix sweep reading B (+ mu*g=1 selection nodes carrying the T1 side value)  violations 201204, witness f=(c2,c1,c0)=(2, 204, 234) vd=4 2CUM=6 at letter Q2[e1 l2 a0 fl[]|[] lam[(2, 1)] sel(2, 1)] h=2
+[PASS] X2A p=3: STALL ratio max #rec/v_p(disc) <= 2 over read-exact f (sealed s(3)=2)  max 1/3 at f=(c2,c1,c0)=(2, 204, 45) (nrec=1, vd=3); censored-f ratio floor 2/5 (vd>=5 there)
+[PASS] X2B p=3: per-letter teeth mu(exists node (L, h_r>=h)) <= p^-(h-h0(L)), h0 census-anchored, 40 letters  violating (L,h) pairs 0; tightest ('R[e1 l3 a0 fl[]|[] lam[(3, 1)] sel(3, 1)]', 0, 0, 4257360) at 0.2967 of bound
+[PASS] X2C p=3: (3b) legs in-box (DERIVED Lemma 3.3 restatement)  D=5: 0.02332 <= 0.66667
+[PASS] X3C p=3: env*(N) > 1 at N=4..8 (sealed toothless-envelope arithmetic, display-shape only)  N=4: 23.67; N=5: 16.20; N=6: 11.89; N=7: 9.40; N=8: 7.96
+[PASS] XV1 p=2: squarefree-reduction count = (p^3-p^2)*p^(3N-3)  8388608
+[PASS] XV2 p=2: root-read letter tallies == case_mn3_results.json (16 R-letters)  26066816 row-hits
+[PASS] XV3 p=2: Q2/Q3 letter tallies >= depth-2 census (full-depth walker sees at least the depth-2 reads)  
+[PASS] XV4 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0  {}
+[PASS] X3B p=2: per-sigma decided + undecided == S7 integers, N=1..8 (48 values)  exact
+[PASS] X3A p=2: mu(Undec(N)) monotone nonincreasing (Thm 2.1 N-stability)  [0.50000, 0.18750, 0.09375, 0.04688, 0.02148, 0.01074, 0.00537, 0.00262]
+[PASS] X1A p=2: prefix sweep v_p(disc) >= 2*CUM, reading A (mu>=2 engine-descending nodes), read-exact f  violations 0; censored-skipped 21504
+[FINDING] X1B p=2: prefix sweep reading B (+ mu*g=1 selection nodes carrying the T1 side value)  violations 155648, witness f=(c2,c1,c0)=(0, 253, 82) vd=6 2CUM=10 at letter Q2[e1 l2 a0 fl[]|[] lam[(2, 1)] sel(2, 1)] h=3
+[PASS] X2A p=2: STALL ratio max #rec/v_p(disc) <= 2 over read-exact f (sealed s(3)=2)  max 1/3 at f=(c2,c1,c0)=(0, 229, 102) (nrec=2, vd=6); censored-f ratio floor 3/8 (vd>=8 there)
+[PASS] X2B p=2: per-letter teeth mu(exists node (L, h_r>=h)) <= p^-(h-h0(L)), h0 census-anchored, 37 letters  violating (L,h) pairs 0; tightest ('R[e1 l1 a0 fl[]|[2] lam[(1, 1)] sel(1, 1)]', 2, 1, 2387456) at 0.2846 of bound
+[PASS] X2C p=2: (3b) legs in-box (DERIVED Lemma 3.3 restatement)  D=2: 0.50000 <= 1.00000; D=4: 0.18750 <= 0.50000; D=6: 0.04688 <= 0.25000; D=8: 0.01953 <= 0.12500
+[PASS] X3C p=2: env*(N) > 1 at N=4..8 (sealed toothless-envelope arithmetic, display-shape only)  N=4: 28.50; N=5: 19.74; N=6: 14.25; N=7: 10.37; N=8: 7.62
+[PASS] X2D-val: live-cylinder counts == brute force at levels 1..3  mu = ['1/3', '5/27', '11/81']
+[PASS] X2D-x: deep-thin mu{v3>=5} == in-box census value  17/729
+[PASS] X2D: (3b) legs p=3 at D=5,7,9 (deep-thin exact)  D=5: mu=0.023320 <= 0.66667 (live 4131); D=7: mu=0.002591 <= 0.22222 (live 37179); D=9: mu=0.000593 <= 0.07407 (live 688905)
+[PASS] Q1: nu1 RS cell mass (single side slope 3, R1 double root) == 3 * 2^20 (the three state-probe S_r cells)  3145728
+[PASS] Q2: quartic RS max consecutive run + main-chain ratio (measured; s(3)=2 is a CUBIC-box seal -- observation here)  max run 2, run hist {1: 3047424, 2: 147456}, max ratio 1/10 at box idx (788706, 2, 20); post-split T4 sub-chains unwalked (main-chain lower bound)
+ANALYTIC REMARK: X1B's violations = the chain-then-split double-charge (window reads of one cluster re-count the same pair differences; GMN per-order normalization subtracts this, the raw-table CUM does not); the same mechanism refutes reading A beyond box precision (f=(x-36)(x-117)(x-18) at p=3: v3(disc)=16 < 18=2*CUM, exact) -- X1A PASS is box-limited support for the COUNT form of (X.1a) only.  Adjudicate at (X1a-ALIGN)/(ALIGN-rec), never patch the seal.
+X-N3 VERDICT: 30/32 PASS, 2 FINDING
