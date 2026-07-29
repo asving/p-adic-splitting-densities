@@ -47,7 +47,7 @@ theorem iotaEps_iotashH_bridge {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   set ε := writeHeights εT h with hε
   set L := (ε.template?).elim 0 V.entLvl with hL
   have hsome : writeHeights? εT h = some ε :=
-    (Option.some_get (writeHeights_total εT h)).symm
+    (Option.some_get (writeHeights_total_unscoped εT h)).symm
   have hq1 : (1 : ℚ) < q₀ := S.pools_gt_one q₀ (V.pools_sub hq)
   have hq0 : (0 : ℝ) < (q₀ : ℝ) := by exact_mod_cast lt_trans one_pos hq1
   -- the three counting laws at the defining level
@@ -108,7 +108,7 @@ theorem comp_agg {n : ℕ} {C : CtsFamily n} {S : StepSys n}
         V.instCensus εT h β₀ q₀ = V.entCensus (writeHeights εT h) β₀ q₀ := by
       intro h
       have hsome : writeHeights? εT h = some (writeHeights εT h) :=
-        (Option.some_get (writeHeights_total εT h)).symm
+        (Option.some_get (writeHeights_total_unscoped εT h)).symm
       unfold CtsMeasured.instCensus
       rw [hsome]
       simp
@@ -163,7 +163,7 @@ theorem comp_agg {n : ℕ} {C : CtsFamily n} {S : StepSys n}
           iotaEps cc (writeHeights εT hh.1) β₀ q₀ = 0 := by
         intro hh
         exact cc.ιN_lands εT hh.1 β₀ hq hl (writeHeights εT hh.1)
-          (Option.get_mem (writeHeights_total εT hh.1)) _
+          (Option.get_mem (writeHeights_total_unscoped εT hh.1)) _
       rw [tsum_congr hz]
       exact tsum_zero
   -- ── the finite ε̊-aggregate re-indexes to the entLands-filtered EntIx

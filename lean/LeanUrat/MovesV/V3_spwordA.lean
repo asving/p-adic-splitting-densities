@@ -58,11 +58,18 @@ private def flankOf (m : ℕ) : List ℕ := if m = 0 then [] else [m]
 private theorem flankOf_comp (m : ℕ) : MovesSp.IsComposition (flankOf m) m := by
   by_cases h : m = 0
   · simp [flankOf, h, MovesSp.IsComposition]
-  · refine ⟨?_, ?_⟩ <;> simp [flankOf, h] <;> omega
+  · constructor
+    · intro x hx
+      rw [flankOf, if_neg h] at hx
+      have hxm : x = m := by simpa using hx
+      omega
+    · simp [flankOf, h]
 
 /-- the species letter presented by read `R` at position `i`, with the
-inherited stage degree `D` and window `W` fed externally. -/
+inherited stage degree `D` and window `W` fed externally (`n` rides along for
+uniform signatures across the indexed lemmas). -/
 private def letterOf (n i D W : ℕ) (R : MovesD.ShapeRead) : MovesSp.Species :=
+  letI _ := n
   { tag := if i = 0 then MovesSp.Tag.root
       else if R.species = MovesC.ReadSpecies.increment then .postInc
       else .postRec,
@@ -171,7 +178,7 @@ private theorem bD_succ (P : MovesD.ShapePrefix) (i : ℕ)
     (hi : i < P.reads.length) :
     bD P (i + 1) = bD P i * ((P.reads[i]'hi).e * (P.reads[i]'hi).g) := by
   unfold bD
-  rw [List.take_succ, List.getElem?_eq_getElem hi, Option.toList_some,
+  rw [List.take_add_one, List.getElem?_eq_getElem hi, Option.toList_some,
     List.map_append, List.prod_append, List.map_singleton,
     List.prod_singleton]
 
@@ -247,5 +254,214 @@ private theorem bw_le_bD {n : ℕ} {P : MovesD.ShapePrefix}
         ≤ bD P j * (P.reads[j]'hj).g := Nat.mul_le_mul_right _ (ih hj)
       _ ≤ bD P j * ((P.reads[j]'hj).e * (P.reads[j]'hj).g) :=
           Nat.mul_le_mul_left _ (Nat.le_mul_of_pos_left _ (P.reads[j]'hj).he)
+
+private theorem letterOf_fits {n : ℕ} {P : MovesD.ShapePrefix}
+    (hWF : MovesD.ShapeWF n P) (i : ℕ) (hi : i < P.reads.length) :
+    SpFitsRead n i (letterOf n i (bD P i) (bW n P i) (P.reads[i]'hi))
+      (P.reads[i]'hi) := by
+  have hmt : monicTopOf n (letterOf n i (bD P i) (bW n P i) (P.reads[i]'hi))
+      = decide ((P.reads[i]'hi).s0 + (P.reads[i]'hi).wSide = n) := by
+    have hlw : (P.reads[i]'hi).e * ((P.reads[i]'hi).wSide / (P.reads[i]'hi).e)
+        = (P.reads[i]'hi).wSide := Nat.mul_div_cancel' (hWF.edvd i hi)
+    unfold monicTopOf
+    show decide ((P.reads[i]'hi).s0
+        + (P.reads[i]'hi).e * ((P.reads[i]'hi).wSide / (P.reads[i]'hi).e) = n)
+      = decide ((P.reads[i]'hi).s0 + (P.reads[i]'hi).wSide = n)
+    rw [hlw]
+  have hspecies : (P.reads[i]'hi).species
+      = (if i = 0 then MovesC.ReadSpecies.root
+         else speciesTagOf (letterOf n i (bD P i) (bW n P i) (P.reads[i]'hi))) := by
+    by_cases h0 : i = 0
+    · subst h0
+      rw [if_pos rfl]
+      exact (hWF.species_iff 0 hi).mpr rfl
+    · rw [if_neg h0]
+      unfold speciesTagOf letterOf
+      by_cases hsp : (P.reads[i]'hi).species = MovesC.ReadSpecies.increment
+      · simp only [if_neg h0, if_pos hsp]
+        exact hsp
+      · have hR : (P.reads[i]'hi).species = MovesC.ReadSpecies.recentering := by
+          cases hR2 : (P.reads[i]'hi).species with
+          | root => exact absurd ((hWF.species_iff i hi).mp hR2) h0
+          | increment => exact absurd hR2 hsp
+          | recentering => rfl
+        rw [if_neg h0, if_neg hsp]
+        exact hR
+  have hmonic : (P.reads[i]'hi).monicTop
+      = (decide (i = 0)
+          && monicTopOf n (letterOf n i (bD P i) (bW n P i) (P.reads[i]'hi))) := by
+    have htie := hWF.monic i hi
+    by_cases h0 : i = 0
+    · subst h0
+      rw [hmt, decide_eq_true rfl, Bool.true_and]
+      by_cases hc : (P.reads[0]'hi).s0 + (P.reads[0]'hi).wSide = n
+      · rw [decide_eq_true hc]
+        exact htie.mpr ⟨rfl, hc⟩
+      · rw [decide_eq_false hc]
+        cases hmt2 : (P.reads[0]'hi).monicTop with
+        | false => rfl
+        | true => exact absurd (htie.mp hmt2).2 hc
+    · rw [decide_eq_false h0, Bool.false_and]
+      cases hmt2 : (P.reads[i]'hi).monicTop with
+      | false => rfl
+      | true => exact absurd (htie.mp hmt2).1 h0
+  have hlmem : ((P.reads[i]'hi).g, (P.reads[i]'hi).μ) ∈ lamOf (P.reads[i]'hi) :=
+    Multiset.mem_cons_self _ _
+  exact ⟨rfl, rfl, rfl, rfl, rfl, hlmem, rfl, rfl, rfl, hspecies, hmonic⟩
+
+private theorem letterOf_stage {n : ℕ} {P : MovesD.ShapePrefix}
+    (hWF : MovesD.ShapeWF n P) (hspec : SpeciesCoherent P)
+    (i : ℕ) (hi1 : i + 1 < P.reads.length) :
+    MovesSp.StageLaws
+      (letterOf n i (bD P i) (bW n P i) (P.reads[i]'(Nat.lt_of_succ_lt hi1)))
+      (letterOf n (i+1) (bD P (i+1)) (bW n P (i+1)) (P.reads[i+1]'hi1)) := by
+  have hi : i < P.reads.length := Nat.lt_of_succ_lt hi1
+  unfold MovesSp.StageLaws
+  show _ ∧ _ ∧ _ ∧ _ ∧ _
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩
+  · -- D′ = e·g·D
+    show bD P (i+1) = (P.reads[i]'hi).e * (P.reads[i]'hi).g * bD P i
+    rw [bD_succ P i hi]
+    ring
+  · -- w′ = g·w
+    show (P.reads[i+1]'hi1).w = (P.reads[i]'hi).g * (P.reads[i]'hi).w
+    rw [hWF.wchain i hi1]
+    exact Nat.mul_comm _ _
+  · -- W′ = μ
+    exact bW_succ n P i hi
+  · -- tag′ = POST-INC iff e·g ≥ 2 (the cross-read species-coherence law)
+    show (if i + 1 = 0 then MovesSp.Tag.root
+        else if (P.reads[i+1]'hi1).species = MovesC.ReadSpecies.increment
+        then MovesSp.Tag.postInc else MovesSp.Tag.postRec) = MovesSp.Tag.postInc
+      ↔ 2 ≤ (P.reads[i]'hi).e * (P.reads[i]'hi).g
+    rw [if_neg (Nat.succ_ne_zero i)]
+    by_cases hsp : (P.reads[i+1]'hi1).species = MovesC.ReadSpecies.increment
+    · rw [if_pos hsp]
+      exact iff_of_true rfl ((hspec i hi1).mp hsp)
+    · rw [if_neg hsp]
+      exact iff_of_false (by simp) (fun h2 => hsp ((hspec i hi1).mpr h2))
+  · -- tag′ = POST-REC iff e = g = 1
+    show (if i + 1 = 0 then MovesSp.Tag.root
+        else if (P.reads[i+1]'hi1).species = MovesC.ReadSpecies.increment
+        then MovesSp.Tag.postInc else MovesSp.Tag.postRec) = MovesSp.Tag.postRec
+      ↔ ((P.reads[i]'hi).e = 1 ∧ (P.reads[i]'hi).g = 1)
+    rw [if_neg (Nat.succ_ne_zero i)]
+    have hegpos : 1 ≤ (P.reads[i]'hi).e * (P.reads[i]'hi).g :=
+      Nat.mul_pos (P.reads[i]'hi).he (P.reads[i]'hi).hg
+    by_cases hsp : (P.reads[i+1]'hi1).species = MovesC.ReadSpecies.increment
+    · rw [if_pos hsp]
+      refine iff_of_false (by simp) ?_
+      rintro ⟨he1, hg1⟩
+      have h2 := (hspec i hi1).mp hsp
+      rw [he1, hg1] at h2
+      omega
+    · rw [if_neg hsp]
+      refine iff_of_true rfl ?_
+      have h1 : ¬ 2 ≤ (P.reads[i]'hi).e * (P.reads[i]'hi).g :=
+        fun h2 => hsp ((hspec i hi1).mpr h2)
+      have hle1 : (P.reads[i]'hi).e ≤ (P.reads[i]'hi).e * (P.reads[i]'hi).g :=
+        Nat.le_mul_of_pos_right _ (P.reads[i]'hi).hg
+      have hlg1 : (P.reads[i]'hi).g ≤ (P.reads[i]'hi).e * (P.reads[i]'hi).g :=
+        Nat.le_mul_of_pos_left _ (P.reads[i]'hi).he
+      have hee := (P.reads[i]'hi).he
+      have hgg := (P.reads[i]'hi).hg
+      exact ⟨by omega, by omega⟩
+
+private theorem letterOf_cat {n : ℕ} {P : MovesD.ShapePrefix}
+    (hWF : MovesD.ShapeWF n P) (hn : 2 ≤ n)
+    (hcont : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ)
+    (hspec : SpeciesCoherent P) :
+    ∀ i (hi : i < P.reads.length),
+      MovesSp.InCatalogue n
+        (letterOf n i (bD P i) (bW n P i) (P.reads[i]'hi)) := by
+  intro i
+  induction i with
+  | zero =>
+    intro hi
+    obtain ⟨hcoh, hbud⟩ := letterOf_ok n 0 (bD P 0) (bW n P 0) (P.reads[0]'hi)
+      (bD_pos P 0) (bW_two hn hcont 0 hi) hn (bW_box hWF 0 hi)
+      (hWF.gmu 0 hi) (hWF.edvd 0 hi) (bWD_le hWF 0 hi) (bw_le_bD hWF 0 hi)
+    have hroot : MovesSp.RootStage n
+        (letterOf n 0 (bD P 0) (bW n P 0) (P.reads[0]'hi)) := by
+      refine ⟨?_, bD_zero P, hWF.w0 hi, rfl⟩
+      show (if 0 = 0 then MovesSp.Tag.root
+          else if (P.reads[0]'hi).species = MovesC.ReadSpecies.increment
+          then MovesSp.Tag.postInc else MovesSp.Tag.postRec) = MovesSp.Tag.root
+      rw [if_pos rfl]
+    exact MovesSp.InCatalogue.root ⟨hroot, hcoh, hbud⟩
+  | succ j ih =>
+    intro hj1
+    have hj : j < P.reads.length := Nat.lt_of_succ_lt hj1
+    obtain ⟨hcoh, hbud⟩ := letterOf_ok n (j+1) (bD P (j+1)) (bW n P (j+1))
+      (P.reads[j+1]'hj1) (bD_pos P (j+1)) (bW_two hn hcont (j+1) hj1) hn
+      (bW_box hWF (j+1) hj1) (hWF.gmu (j+1) hj1) (hWF.edvd (j+1) hj1)
+      (bWD_le hWF (j+1) hj1) (bw_le_bD hWF (j+1) hj1)
+    exact MovesSp.InCatalogue.step (ih hj)
+      ⟨letterOf_stage hWF hspec j hj1, hcoh, hbud⟩
+
+/-- the fitted species word — the ∃-witness of `spWord_exists`. -/
+private def bWord (n : ℕ) (P : MovesD.ShapePrefix) : List MovesSp.Species :=
+  List.ofFn (fun i : Fin P.reads.length =>
+    letterOf n i (bD P i) (bW n P i) (P.reads[i]'i.isLt))
+
+/-- ORDER-0 SCOPE (ADJ-2; supersedes the pass-B3 refutation note): the fitting
+species word EXISTS on the scoped stratum — width hypotheses (`hn`/`hcont`,
+2026-07-30 repair) + the cross-read species-coherence law (`hspec`, ADJ-2).
+Unscoped forms: REFUTED, `V3_spwordA_negWitness.lean` (width) and
+`V3_spword_negWitness2.lean` (species off-by-one) — the negWitnesses are the
+standing record.  Phase B pointer: discharging `SpeciesCoherent` from the
+engine's D.7/D.8 output laws re-opens the full family. -/
+theorem spWord_exists (n : ℕ) (P : MovesD.ShapePrefix)
+    (hWF : MovesD.ShapeWF n P) (hn : 2 ≤ n)
+    (hcont : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ)
+    (hspec : SpeciesCoherent P) :
+    ∃ ws, SpWordFits n P ws := by
+  have hlen : (bWord n P).length = P.reads.length := by
+    simp [bWord]
+  refine ⟨bWord n P, hlen, ?_, ?_, ?_⟩
+  · -- per-index fit clauses
+    intro i hw hp
+    have hg1 : (bWord n P).get ⟨i, hw⟩
+        = letterOf n i (bD P i) (bW n P i) (P.reads[i]'hp) := by
+      simp [bWord, List.get_eq_getElem]
+    rw [hg1, List.get_eq_getElem]
+    exact letterOf_fits hWF i hp
+  · -- catalogue membership
+    intro s hs
+    simp only [bWord, List.mem_ofFn] at hs
+    obtain ⟨i, rfl⟩ := hs
+    exact letterOf_cat hWF hn hcont hspec i i.isLt
+  · -- the SuccStep chain
+    apply List.isChain_iff_getElem.mpr
+    intro i hi
+    have hi1 : i + 1 < P.reads.length := by
+      rw [hlen] at hi
+      exact hi
+    have hi0 : i < P.reads.length := Nat.lt_of_succ_lt hi1
+    have hg1 : (bWord n P)[i]'(by omega)
+        = letterOf n i (bD P i) (bW n P i) (P.reads[i]'hi0) := by
+      simp [bWord]
+    have hg2 : (bWord n P)[i+1]'(by rw [hlen]; exact hi1)
+        = letterOf n (i+1) (bD P (i+1)) (bW n P (i+1)) (P.reads[i+1]'hi1) := by
+      simp [bWord]
+    rw [hg1, hg2]
+    obtain ⟨hcoh, hbud⟩ := letterOf_ok n (i+1) (bD P (i+1)) (bW n P (i+1))
+      (P.reads[i+1]'hi1) (bD_pos P (i+1)) (bW_two hn hcont (i+1) hi1) hn
+      (bW_box hWF (i+1) hi1) (hWF.gmu (i+1) hi1) (hWF.edvd (i+1) hi1)
+      (bWD_le hWF (i+1) hi1) (bw_le_bD hWF (i+1) hi1)
+    exact ⟨letterOf_stage hWF hspec i hi1, hcoh, hbud⟩
+
+/-- ORDER-0 SCOPE (ADJ-2): `spWord` fits, on the same scoped stratum as
+`spWord_exists` (whose hypotheses it threads). -/
+theorem spWord_fits (n : ℕ) (P : MovesD.ShapePrefix)
+    (hWF : MovesD.ShapeWF n P) (hn : 2 ≤ n)
+    (hcont : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
+      2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ)
+    (hspec : SpeciesCoherent P) :
+    SpWordFits n P (spWord n P) := by
+  rw [spWord, dif_pos (spWord_exists n P hWF hn hcont hspec)]
+  exact (spWord_exists n P hWF hn hcont hspec).choose_spec
 
 end LeanUrat.MovesV

@@ -45,9 +45,11 @@ theorem inst_bij_surj {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     --  (sel.isSome from SpFitsRead clause 5) to pin the fold's choice to
     --  R_i; (3) the WF+EntTiesAt dite passes from ε's own fields; EntShapeV
     --  ext closes.  Legs (1)-(2) are the V3-3d/spword-family dependency —
-    --  ADJ-2 (B3: spwordD writeHeights_total admissible-domain rescope +
-    --  spWord_faithful re-key) owns the vocabulary; not yet landed, so this
-    --  stays the honest open core of V3-5b.]
+    --  ADJ-2 (the spwordD writeHeights_total admissible-domain rescope +
+    --  spWord_faithful re-key) LANDED 2026-07-31: the scoped forms are
+    --  proved (order-0 stratum; consumers ride the recorded shim
+    --  writeHeights_total_unscoped), but the multi-letter leg-(1)/(2)
+    --  bridge is Phase B, so this stays the honest open core of V3-5b.]
     sorry
   refine ⟨h, ?_, hwh⟩
   -- Membership: ε realizes the template at h (Realizable = hR), so the XHD-d
@@ -56,7 +58,7 @@ theorem inst_bij_surj {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   -- instRealizable εT h β₀ := ∃ ε' ∈ writeHeights? εT h, Realizable V ε' β₀.
   have hsome : writeHeights? εT h = some ε := by
     rw [← hwh]
-    exact (Option.some_get (writeHeights_total εT h)).symm
+    exact (Option.some_get (writeHeights_total_unscoped εT h)).symm
   exact ⟨ε, hsome, hR⟩
 
 end LeanUrat.MovesV

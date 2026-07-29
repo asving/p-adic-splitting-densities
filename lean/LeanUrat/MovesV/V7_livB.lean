@@ -37,7 +37,7 @@ theorem ledgerIV_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     intro εT h
     unfold CtsMeasured.instCensus
     have hsome : writeHeights? εT h = some (writeHeights εT h) :=
-      (Option.some_get (writeHeights_total εT h)).symm
+      (Option.some_get (writeHeights_total_unscoped εT h)).symm
     rw [hsome]; simp
   -- (ENT-U): the census is constant on the component, so the fibre mass is
   -- entCount · (weight-only Gent sum).

@@ -29,7 +29,7 @@ private theorem initRat_instCensus_eq {n : ℕ} {C : CtsFamily n} {S : StepSys n
     (β₀ : S.Cell) (q₀ : ℚ) :
     V.instCensus εT h β₀ q₀ = V.entCensus (writeHeights εT h) β₀ q₀ := by
   have hs : writeHeights? εT h = some (writeHeights εT h) :=
-    (Option.some_get (writeHeights_total εT h)).symm
+    (Option.some_get (writeHeights_total_unscoped εT h)).symm
   unfold CtsMeasured.instCensus
   rw [hs]; rfl
 

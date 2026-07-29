@@ -153,7 +153,7 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
               = L.V.entCensus (writeHeights εT h) β₀ q₀ := by
           intro h
           have hsome : writeHeights? εT h = some (writeHeights εT h) :=
-            (Option.some_get (writeHeights_total εT h)).symm
+            (Option.some_get (writeHeights_total_unscoped εT h)).symm
           unfold CtsMeasured.instCensus
           rw [hsome]
           simp
@@ -210,7 +210,7 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
               iotaEps L.cc (writeHeights εT hh.1) β₀ q₀ = 0 := by
             intro hh
             exact L.cc.ιN_lands εT hh.1 β₀ hq hl (writeHeights εT hh.1)
-              (Option.get_mem (writeHeights_total εT hh.1)) _
+              (Option.get_mem (writeHeights_total_unscoped εT hh.1)) _
           rw [tsum_congr hz]
           exact tsum_zero
       -- ── the finite ε̊-aggregate re-indexes to the entLands-filtered EntIx

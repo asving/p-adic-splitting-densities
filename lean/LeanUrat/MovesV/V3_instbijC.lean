@@ -47,7 +47,7 @@ theorem inst_bij_eq {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     intro h hMem
     obtain ⟨ε, hεmem, hεR⟩ := DE.no_strayE εT h β₀ hl hMem
     have hmem2 : writeHeights εT h ∈ writeHeights? εT h :=
-      Option.get_mem (writeHeights_total εT h)
+      Option.get_mem (writeHeights_total_unscoped εT h)
     obtain rfl := Option.mem_unique hεmem hmem2
     exact hεR
   refine ⟨Equiv.ofBijective
