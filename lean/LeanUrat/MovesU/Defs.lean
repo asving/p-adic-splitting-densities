@@ -193,7 +193,15 @@ noncomputable def RegData.entryList {p : ℕ} (D : RegData p) (e : D.Block) :
     ACT active value ((ii-c) agreement); PLUS the EVALUABILITY clause (ruling (D),
     rev-2 critical 4): the literal R_σ(p) is DEFINED — "UNDER (REG-p), the literal
     evaluation R_σ(p) of the fixed element of ℚ(q) is DEFINED and IS the active
-    value". Neither implies nor is implied by E0/CL-1 or ACT/CL-5 (D5). Never
+    value"; PLUS (RETYPE 2026-07-30, ratification CRITICAL 5 / SQ.4's charge SQ.4)
+    the ACTIVE-VALUE AGREEMENT clause for S.R itself: the literal evaluation IS the
+    ACT active value — "both readings coincide under (REG-p)", now a conjunct.
+    HONEST-PREMISE RECORD (CRITICAL 5, resolved per the verdict's "or make it the
+    honest premise"): the note derives R_σ(p)-definedness from the (r1)/(r2) schema
+    through the typed assembly relations; those relations are not yet formalized, so
+    the `DefinedAt (S.R σ)` clause and the agreement clause ride HERE as the honest
+    explicitly-carried strengthening of the displayed schema — disclosed, never
+    silent. Neither implies nor is implied by E0/CL-1 or ACT/CL-5 (D5). Never
     vacuous: Pool ∋ p^1, Block nonempty, every index family nonempty-pinned. -/
 def RegP {n p : ℕ} (S : SolveData n) (D : RegData p) : Prop :=
   (∀ q₀ ∈ D.Pool, ∀ e : D.Block,
@@ -202,15 +210,18 @@ def RegP {n p : ℕ} (S : SolveData n) (D : RegData p) : Prop :=
      (Matrix.det (1 - D.K e)).eval (RingHom.id ℚ) (q₀ : ℚ) ≠ 0) ∧
     ∀ g ∈ D.entryList e,
       DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = D.act g q₀) ∧
-  (∀ σ : SplittingType n, DefinedAt (S.R σ) (p : ℚ))
+  ((∀ σ : SplittingType n, DefinedAt (S.R σ) (p : ℚ)) ∧
+   (∀ σ : SplittingType n,
+     (S.R σ).eval (RingHom.id ℚ) (p : ℚ) = D.act (S.R σ) p))
 
 /-- HYPOTHESIS STRUCTURE (MovesD/[3t] interface; F2 repair): the tree-fiber series.
     `Tree σ` = the complete finite realizable canonical trees of verdict-type σ (owner
     MovesD); `thr` = TREE-N's decision threshold; `mem_slice_iff` CHARACTERIZES the
     slice as the thr ≤ N slice (no arbitrary Finset family). The Finset TYPE of
     `thrSlice` is CL-7's finiteness riding the instantiation (D4 — TRACK-COUNT + D(n)
-    + genuine-increment, OPEN upstream, named in KernelStatements). The tie to the
-    classifier's counts is the ledger's `finiteness_stack` IDENTITY (TREE-N):
+    + genuine-increment, OPEN upstream, fenced in `UpstreamKernelStatements`; the
+    conclusion form is the ledger's typed `cl7_bound`). The tie to the
+    classifier's counts is the DERIVED `TreeSeam.finiteness_stack` IDENTITY (TREE-N):
     an empty `Tree σ` forces decided_σ ≡ 0 — nothing degenerate satisfiable (D4). -/
 structure FiberSeries (n p : ℕ) (X : ClassifierSpec n p) where
   Tree : SplittingType n → Type

@@ -48,7 +48,13 @@ theorem RegP.det_ne_zero (h : RegP S D) {q₀ : ℕ} (hq : q₀ ∈ D.Pool) (e :
 /-- Ruling (D)'s EVALUABILITY accessor: under (REG-p) the literal R_σ(p) is DEFINED. -/
 theorem RegP.R_defined (h : RegP S D) (σ : SplittingType n) :
     DefinedAt (S.R σ) (p : ℚ) :=
-  h.2 σ
+  h.2.1 σ
+
+/-- The RETYPE's SQ.4 ACTIVE-VALUE AGREEMENT accessor (ratification CRITICAL 5):
+    under (REG-p) the literal evaluation of R_σ at p IS its ACT active value. -/
+theorem RegP.R_agree (h : RegP S D) (σ : SplittingType n) :
+    (S.R σ).eval (RingHom.id ℚ) (p : ℚ) = D.act (S.R σ) p :=
+  h.2.2 σ
 
 /-- (r2) at the K_e family: each matrix entry. -/
 theorem RegP.K_agree (h : RegP S D) {q₀ : ℕ} (hq : q₀ ∈ D.Pool) (e : D.Block)

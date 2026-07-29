@@ -1,51 +1,36 @@
 {
- "campaign": "MOVES §U-SQUEEZE Theorem U (conditional form) — Lean formalization, E-phase (statement files, sorry bodies)",
- "source": "lean/notes/MOVES_2026-07-24.md §U-SQUEEZE rev 7 (~12879–13629; DUAL-ACCEPTED: Codex passes 8+9 + Fable confirm CLEAN on identical text)",
- "blueprint": "lean/notes/MOVESU_LEAN_BLUEPRINT_2026-07-28.md (rev 7 text, dual-accepted; § DEVIATIONS (E-PHASE) appended 2026-07-27)",
- "ephase": "2026-07-27 — all 15 .lean files elaborate green under `lake env lean` + per-module `lake build` (toolchain 4.31.0, mathlib cache). Defs/DefsLedger sorry-free; 26 sorried declarations across the 13 units (the blueprint specifies multiple named statements for U0b/U3/U8/U9). NO axioms, NO native_decide, statements verbatim per blueprint §2/§2b/§3.",
- "three_file_order": "Defs.lean (NO ledger) <- U0b_splitTypeFintype.lean (Fintype/DecidableEq instances) <- DefsLedger.lean (KernelStatements, CapstoneLedger, UInstance, FinStack/SolveStack/LowerStack + projections) — D11, the rev-3 circularity fix; load-bearing (the ledger's ∑ σ needs U0b's Fintype).",
- "preamble": "Every file: `import Mathlib` + its dep modules, `namespace LeanUrat.MovesU`; set_option linter.style.longLine/header false, maxHeartbeats 1000000 (linter.unusedSectionVars false where variables are used). Build per file with `lake env lean` / `lake build LeanUrat.MovesU.<mod>` (NEVER full `lake build`).",
- "instance_obligations": [
-  "instSplittingTypeFintype (U0b): `Fintype (SplittingType n)` carried as a sorried noncomputable instance — no off-the-shelf mathlib instance for card-bounded multisets over a bounded pair range; P-phase proves it (sketch: embed into multisets over range(n+1) x range(n+1) of card <= n). Counted in the census as one of U0b's 2 sorries."
- ],
- "slice_discipline": "G9/D12: no unit below U10 takes CapstoneLedger — U3 consumes FinStack; U4 FinStack+SolveStack; U6 FinStack+SolveStack+LowerStack; CL-2/CL-3 occur in NO premise outside CapstoneLedger (U10). The projections finStack/solveStack/lowerStack are literal field re-bundlings.",
- "tag_free_units": ["U1_boxN", "U2_tonelli", "U5_sq3_arith", "U7_squeeze"],
- "units": [
-  {"id": "U0.boxCard", "file": "lean/LeanUrat/MovesU/U0_boxCard.lean", "layer": 0, "difficulty": "easy", "deps": ["Defs"], "sorries": 1,
-   "statement": "boxCard (p n N : ℕ) [NeZero p] : Nat.card (Box p n N) = p ^ (n * N)", "hypothesis_fields": "none"},
-  {"id": "U0b.splitTypeFintype", "file": "lean/LeanUrat/MovesU/U0b_splitTypeFintype.lean", "layer": 0, "difficulty": "medium", "deps": ["Defs"], "sorries": 2,
-   "statement": "instance Fintype (SplittingType n) [sorried, instance obligation]; instance DecidableEq (SplittingType n) [PROVED, inferInstanceAs on the subtype]; splittingType_nonempty (hn : 1 ≤ n)", "hypothesis_fields": "none"},
-  {"id": "U1.boxN", "file": "lean/LeanUrat/MovesU/U1_boxN.lean", "layer": 0, "difficulty": "medium", "deps": ["U0", "U0b"], "sorries": 1, "tag_free": true,
-   "statement": "boxN (X : ClassifierSpec n p) [NeZero p] (N) : (∑ σ, X.decided σ N) + X.undec N = p ^ (n * N)", "hypothesis_fields": "none"},
-  {"id": "U2.tonelli", "file": "lean/LeanUrat/MovesU/U2_tonelli.lean", "layer": 1, "difficulty": "easy", "deps": ["Defs"], "sorries": 1, "tag_free": true,
-   "statement": "tonelli_partial_le (F : FiberSeries n p X) (σ N) : ∑ T ∈ F.thrSlice σ N, F.mass σ T ≤ F.seriesSum σ", "hypothesis_fields": "none (FiberSeries DATA only)"},
-  {"id": "U3.sq2_partial", "file": "lean/LeanUrat/MovesU/U3_sq2_partial.lean", "layer": 1, "difficulty": "easy", "deps": ["U2", "DefsLedger"], "sorries": 2,
-   "statement": "sq2_partial (FS : FinStack n p X F K) (σ N) : (X.decided σ N : ℝ≥0∞) = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T; sq2_partial_le … ≤ (p : ℝ≥0∞) ^ (n * N) * F.seriesSum σ", "hypothesis_fields": "EXACTLY FinStack (D12)"},
-  {"id": "U4.sq2_upper", "file": "lean/LeanUrat/MovesU/U4_sq2_upper.lean", "layer": 1, "difficulty": "medium", "deps": ["U3"], "sorries": 1,
-   "statement": "sq2_upper (FS : FinStack …) (SS : SolveStack …) (hreg : RegP S D) (hp : p.Prime) (σ N) : (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N)", "hypothesis_fields": "EXACTLY FinStack + SolveStack + RegP + p.Prime (D12)"},
-  {"id": "U5.sq3_arith", "file": "lean/LeanUrat/MovesU/U5_sq3_arith.lean", "layer": 2, "difficulty": "medium", "deps": ["U1"], "sorries": 1, "tag_free": true,
-   "statement": "sq3_arith (X) [NeZero p] (hp : 1 < p) (R : SplittingType n → ℝ) (σ N) (hupper) (hsum : ∑ τ, R τ = 1) : (R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ)", "hypothesis_fields": "none (1 < p = declared arithmetic scaffolding, G6)"},
-  {"id": "U6.un_bracket", "file": "lean/LeanUrat/MovesU/U6_un_bracket.lean", "layer": 2, "difficulty": "easy", "deps": ["U4", "U5"], "sorries": 1,
-   "statement": "un_bracket (FS) (SS) (LS : LowerStack …) (hreg : RegP S D) (hp : p.Prime) (σ N) : (evalℝ S σ p - X.env N) * (p:ℝ)^(n*N) ≤ (X.decided σ N : ℝ) ∧ (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p:ℝ)^(n*N)", "hypothesis_fields": "EXACTLY FinStack + SolveStack + LowerStack + RegP + p.Prime (D12)"},
-  {"id": "U7.squeeze", "file": "lean/LeanUrat/MovesU/U7_squeeze.lean", "layer": 3, "difficulty": "medium", "deps": ["Defs"], "sorries": 1, "tag_free": true,
-   "statement": "squeeze_limit (X) (hp : 1 < p) (r : ℝ) (σ) (hbr : ∀ N, bracket) (henv : Tendsto X.env atTop (𝓝 0)) : Tendsto (X.dmass σ) atTop (𝓝 r)", "hypothesis_fields": "none (tagged bracket/limit enter as arguments)"},
-  {"id": "U8.regP_access", "file": "lean/LeanUrat/MovesU/U8_regP_access.lean", "layer": 4, "difficulty": "easy", "deps": ["Defs"], "sorries": 11,
-   "statement": "RegData.pool_self_mem; RegP.entry_agree (generic); RegP.det_ne_zero (r1); RegP.R_defined (ruling (D)); per-family K_agree/bterm_agree/bsplit_agree/Jcell_agree/iota_agree/Wcoef_agree/betaLeg_agree (β at every δ ∈ depthSet)", "hypothesis_fields": "explicit RegP S D only"},
-  {"id": "U9.lmeas", "file": "lean/LeanUrat/MovesU/U9_lmeas.lean", "layer": 4, "difficulty": "medium", "deps": ["U1", "U4"], "sorries": 2,
-   "statement": "lmeas_equiv [NeZero p] (hp : 1 < p) (σ N) (hsum) : lower-leg ↔ aggregate erase-sum inequality; lmeas_implied (σ N) (hupper) : one direction only", "hypothesis_fields": "none as stated (R abstract, hsum explicit)"},
-  {"id": "U10.theoremU", "file": "lean/LeanUrat/MovesU/U10_theoremU.lean", "layer": 5, "difficulty": "medium", "deps": ["U6", "U7", "U11"], "sorries": 1,
-   "statement": "theoremU (n) (hn : 2 ≤ n) (S) (M) (K) (inst : ∀ p, p.Prime → UInstance n S M K p) : ∃ R, (∑ σ, R σ = 1) ∧ ∀ p hp, RegP S (inst p hp).D → (i) dmass → evalℝ ∧ (ii) trueDmass → evalℝ ∧ (iii) env → 0 — verbatim blueprint U10", "hypothesis_fields": "the COMPLETE CapstoneLedger via UInstance.L per prime + explicit RegP; S/M/K p-uniform before ∀ p"},
-  {"id": "U11.identification", "file": "lean/LeanUrat/MovesU/U11_identification.lean", "layer": 5, "difficulty": "medium", "deps": ["U7", "DefsLedger"], "sorries": 1,
-   "statement": "identification (X) [NeZero p] (hp : 1 < p) (r) (σ) (hvs : VPSound X) (hd) (henv) : Tendsto (X.trueDmass σ) atTop (𝓝 r)", "hypothesis_fields": "none as stated (VPSound explicit; instantiated at U10 from cl10_vpsound)"}
- ],
- "counts": {
-  "defs_files": 3,
-  "unit_files": 13,
-  "sorried_declarations": 26,
-  "sorries_by_file": {"U0": 1, "U0b": 2, "U1": 1, "U2": 1, "U3": 2, "U4": 1, "U5": 1, "U6": 1, "U7": 1, "U8": 11, "U9": 2, "U10": 1, "U11": 1},
-  "multi_statement_units_per_blueprint": ["U0b", "U3", "U8", "U9"],
-  "blocked": 0,
-  "deviations": 3
+ "campaign": "MOVES §U-SQUEEZE Theorem U (conditional form) — CAPSTONE RETYPE against the built corpora (supersedes the E-phase manifest below at every touched row)",
+ "source": "lean/notes/MOVES_2026-07-24.md §U-SQUEEZE rev 7 (~12879–13629) + THE CAPSTONE LEDGER display (13224–13361)",
+ "blueprint": "lean/notes/MOVESU_LEAN_BLUEPRINT_2026-07-28.md (rev 7)",
+ "retype_warrant": "lean/notes/MOVESU_RATIFY_CODEX_2026-07-30.md — the as-built ratification REJECT 7/2, ALL findings accepted (the instantiation-phase charge). Every statement change below quotes its finding. Executed 2026-07-30 (wf_5272d711-866).",
+ "retype_stages": {
+  "stage1_ledger": "CRITICAL 1 (bare-Prop slots) — the 35-slot KernelStatements pack RETIRED. Typed rows over the REAL built corpora: CL-1 = UCarriers.cl1 (MovesS.RegP per base prime, DERIVED from chain.legs_reg); CL-4 = cl4_env_tendsto; CL-5's NINE = the carried MovesS.LedgerIV (C.chain.L — contentful Props; MovesV units are the C9 discharge candidates); CL-6 = cl6 : Nonempty (MovesS.PolyGeomLaws); CL-7 conclusion = cl7_bound (explicit finite-family bound); CL-9(β)/XRB = C.chain.B.xrb (carried typed); CL-10 VP-SOUND = cl10_vpsound, TREE-N operative = TreeSeam; CL-11 = C.hdc (MovesS.DegCons) + cl11_ksub (KsubM1C1); CTS-M(ii-c) = C.chain.legs_read (carried); CL-17 = cl17 : C.chain.wsh17_pin (typed OPEN projection); CL-18 = the jPCell/jcell_interp/jcell_sum laws of the carried RatBurdens; CL-19 representative-invariance face = cl19_rep. RESIDUAL BARE ROWS (15, disclosed + fenced in UpstreamKernelStatements — owner Lean corpus ABSENT, so any 'typed' version would be instance-selectable invented carriers): CL-2, CL-3, CL-7a/b/c mechanics, CL-8's six REL rows, CL-9(α), CL-10 (SIB)/(JC-multi) at-the-instance, CL-13 full syntax, CL-14/15/16 + CL-19 history-residue echo row.",
+  "stage2_stacks": "CRITICAL 2 (assumed operative identities) — BOTH DERIVED. finiteness_stack: PROVED from TreeSeam (treeOf canonical-tree assignment + thr_le + count_tie = TREE-N's exact per-tree fiber count — the named open [3t] rows; discharge candidate MovesT.treeN/E8 treeExp per the C9 map) via the fiberwise partition count (TreeSeam.finiteness_stack). solve_stack: PROVED from SolveSeam (series_tie — the named open [3t] Haar-mass row; r_is_solve — S.R PINNED to the real MovesS.Rsh RS.1-SH output, CRITICAL 3's repair) + the REAL chain laws rsh_interp/r_bdd/prime_base/sig_exact through RegPin.detHyp (SolveSeam.solve_stack). The MovesS solve laws genuinely reach it: no assumed aggregate identity remains.",
+  "stage3_regp": "CRITICAL 4 (instance-chosen roster) — RegPin: blk/st equivs identify Block/bidx with the real e ∈ [1,n] block system and table states; depth_pin = consumedDeltas image; K_pin/iota_pin entrywise to the real Kmat/ι; bterm_pin to real verdict-multiset columns; Jcell_pin/W_pin entry-image equalities to the real per-cell J tables and WshP values; blockDim/cellCount/shapeCount/legCount equated to the real tables' cardinalities. RegPin.detHyp transports (r1) to MovesS.DetHyp. β-leg ENTRY tie beyond the count: recorded residual (rides chain.legs_read). CRITICAL 5 — RegP gains the SQ.4 ACTIVE-VALUE AGREEMENT conjunct for S.R (literal eval = ACT active value; accessor RegP.R_agree); the DefinedAt(S.R) clause resolved per the verdict as the HONEST PREMISE (docstring discloses the strengthening — the deriving assembly relations are not yet formalized).",
+  "stage4_conclusion": "theoremU now EXPORTS: R = S.R (GAP 2); the two-sided (U-n) bracket ∀ σ N as a conjunct (CRITICAL 6); clause (ii-ℤ_p) — the ℤ_p-READ density limit through ZpBridge (CRITICAL 7): the NAMED HC-2 premise pinning trueType against genuine Polynomial ℤ_[p]/ℚ_[p] objects (monic lifts via PadicInt.toZModPow; zf_factor = actual monic-irreducible ℚ_p factorization matching the read multiset at degree level e·f; lift_true the iff). DISCLOSED HC-2 RESIDUE: the e/f refinement of each factor degree into ramification/residue invariants is not yet typed.",
+  "stage5_proofs": "All 13 units re-proved GREEN, ZERO sorries in MovesU (the E-phase 26 sorries were already discharged pre-retype; the retype introduced NONE — no newly-typed open premise gates any proof step, because the open rows enter as typed fields/carried laws, not as proof obligations). GAP 1: sq2_partial's premise is now EXACTLY TreeSeam (the enlarged FinStack slice shed); FinStack/SolveStack structures retired, LowerStack retained."
  },
- "statement_fence": "Statements are the blueprint's rev-7 dual-accepted forms, elaboration-tested. Do NOT weaken a statement to prove it; do NOT edit Defs.lean/DefsLedger.lean without re-elaborating every unit; semantic changes require a blueprint re-audit."
+ "three_file_order": "Defs.lean (NO ledger) <- U0b_splitTypeFintype.lean <- DefsCarriers.lean (UCarriers over MovesS.Interfaces: TableShape/MeasuredSide/RatBurdens/DegCons/KmatHyp/ShapeFam/RS4Chain + vmap vocabulary bridge with vmap_deg_sum/vmap_mem_Sigmas) <- DefsLedger.lean (UpstreamKernelStatements, TreeSeam + derived finiteness_stack, RegPin + detHyp, SolveSeam + derived solve_stack + evalℝ_eq_Rval, ZpBridge + zpDmass + zpCount_eq_trueCount, CapstoneLedger, LowerStack, UInstance).",
+ "imports_added": "MovesU now imports LeanUrat.MovesS.Interfaces (the real §S corpus). No module outside MovesU imports MovesU; full lake build green 2026-07-30 (8579 jobs).",
+ "units_touched": {
+  "Defs.lean": "RegP gains the third conjunct (SQ.4 active-value agreement for S.R) + the honest-premise docstring (CRITICAL 5).",
+  "DefsCarriers.lean": "NEW — UCarriers + vmap (PROVED bridge lemmas).",
+  "DefsLedger.lean": "REWRITTEN — see stages above.",
+  "U3_sq2_partial.lean": "premise = TreeSeam exactly (GAP 1); identity DERIVED.",
+  "U4_sq2_upper.lean": "premises = TreeSeam + SolveSeam + RegPin + RegP + p.Prime; solve conclusions DERIVED.",
+  "U6_un_bracket.lean": "same seams + LowerStack.",
+  "U8_regP_access.lean": "R_defined re-pathed (h.2.1); NEW accessor RegP.R_agree.",
+  "U10_theoremU.lean": "conclusion re-exported per stage 4; hypothesis surface = UCarriers + UInstance (with Dpin : RegPin, bridge : ZpBridge).",
+  "unchanged": ["U0_boxCard", "U0b_splitTypeFintype", "U1_boxN", "U2_tonelli", "U5_sq3_arith", "U7_squeeze", "U9_lmeas", "U11_identification"]
+ },
+ "counts": {
+  "defs_files": 4,
+  "unit_files": 13,
+  "sorried_declarations": 0,
+  "residual_bare_prop_rows": 15,
+  "axioms_theoremU": ["propext", "Classical.choice", "Quot.sound"],
+  "blocked": 0
+ },
+ "honest_conditionality": "theoremU is machine-checked Lean-core, CONDITIONAL on: the UCarriers pack (the real RS4Chain — the built §S corpus's own hypothesis bundle), the per-prime CapstoneLedger (typed rows incl. the TreeSeam/SolveSeam named open premises, the 15 fenced residual rows, rs4_checksum/rs4_eval), RegPin, ZpBridge (HC-2, with the disclosed e/f residue), and (REG-p) per prime. NOTHING here is claimed unconditional; the fenced rows and the two seams are the named distance.",
+ "statement_fence": "The retype IS the sanctioned statement change (warrant above). From here the fence re-applies: do NOT weaken statements; semantic changes require a fresh ratification pass. NEXT GATE: the as-built dual re-ratification of the retyped MovesU."
 }
