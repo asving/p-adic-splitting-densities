@@ -11,6 +11,6 @@ namespace LeanUrat.MovesV
 theorem scs_data_supply {n : ℕ} (T : MovesS.TableShape n)
     (hW : ∀ e (τ : T.State e) (o : T.Out e τ), 1 ≤ e) :
     Nonempty (MovesS.SCSData T) ∨ True := by
-  sorry
+  exact Or.inr trivial
 
 end LeanUrat.MovesV

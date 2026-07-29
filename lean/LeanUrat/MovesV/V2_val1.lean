@@ -27,7 +27,17 @@ theorem val1_fiber_count {F : Type*} [Field F] [Fintype F] (p : F × F) :
     (Finset.univ.filter
         (fun t : Fˣ × Fˣ => (((t.1 : F), (t.2 : F)) : F × F) = p)).card
       = if p.1 ≠ 0 ∧ p.2 ≠ 0 then 1 else 0 := by
-  sorry
+  split_ifs with h
+  · obtain ⟨h1, h2⟩ := h
+    rw [Finset.card_eq_one]
+    refine ⟨(Units.mk0 p.1 h1, Units.mk0 p.2 h2), ?_⟩
+    ext t
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_singleton,
+      Prod.ext_iff, Units.ext_iff, Units.val_mk0]
+  · rw [Finset.card_eq_zero, Finset.filter_eq_empty_iff]
+    intro t _ ht
+    obtain ⟨e1, e2⟩ := Prod.ext_iff.mp ht
+    exact h ⟨e1 ▸ t.1.ne_zero, e2 ▸ t.2.ne_zero⟩
 
 open Classical in
 /-- the origin is no cell's member and carries fiber count 0. -/
@@ -35,6 +45,7 @@ theorem val1_origin {F : Type*} [Field F] [Fintype F] :
     (Finset.univ.filter
         (fun t : Fˣ × Fˣ => (((t.1 : F), (t.2 : F)) : F × F) = (0, 0))).card
       = 0 := by
-  sorry
+  have := val1_fiber_count (F := F) (0, 0)
+  simpa using this
 
 end LeanUrat.MovesV

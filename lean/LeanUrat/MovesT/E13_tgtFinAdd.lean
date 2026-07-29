@@ -28,6 +28,20 @@ theorem tgt_finadd (𝒯 : Finset (VTree p F)) (T : TreeModel p F n N m pol)
     (hpair : ∀ Tr ∈ 𝒯, ∀ Tr' ∈ 𝒯, Tr ≠ Tr' → ¬ VTree.ext Tr Tr') :
     Nat.card ↥(⋃ Tr ∈ 𝒯, {x | VTree.fiberAt Tr T χ x})
       = ∑ Tr ∈ 𝒯, Nat.card ↥{x | VTree.fiberAt Tr T χ x} := by
-  sorry
+  classical
+  -- Disjointness: a shared fiber member forces `VTree.ext` via T-E9, contradicting `hpair`.
+  have hdisj : (↑𝒯 : Set (VTree p F)).PairwiseDisjoint
+      (fun Tr => {x | VTree.fiberAt Tr T χ x}) := by
+    intro Tr hTr Tr' hTr' hne
+    simp only [Function.onFun, Set.disjoint_left, Set.mem_setOf_eq]
+    intro x hx hx'
+    exact hpair Tr hTr Tr' hTr' hne (tree_fiber_disjoint Tr Tr' T χ x hx hx')
+  -- Recast all `Nat.card ↥_` as `Set.ncard`, then count the finite disjoint union.
+  simp only [Nat.card_coe_set_eq]
+  have hbu : (⋃ Tr ∈ 𝒯, {x | VTree.fiberAt Tr T χ x})
+      = (⋃ Tr ∈ (↑𝒯 : Set (VTree p F)), {x | VTree.fiberAt Tr T χ x}) :=
+    (Finset.set_biUnion_coe 𝒯 _).symm
+  rw [hbu, Set.Finite.ncard_biUnion 𝒯.finite_toSet (fun Tr _ => Set.toFinite _) hdisj,
+    finsum_mem_coe_finset]
 
 end LeanUrat.MovesT

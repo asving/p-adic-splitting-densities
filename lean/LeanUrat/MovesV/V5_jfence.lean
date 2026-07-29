@@ -40,6 +40,14 @@ theorem j_marked_strict {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     Jval J cp XsC d q₀
       < ∑ c ∈ J.bcells d.s d.m d.o d.α,
           (V.emult c : ℝ) * μcellVal cp XsC d c q₀ := by
-  sorry
+  rw [j_marked_split J cp XsC d q₀ hroster]
+  apply lt_add_of_pos_right
+  apply Finset.sum_pos'
+  · intro c hc
+    exact mul_nonneg (Nat.cast_nonneg _) (hnn c hc)
+  · refine ⟨c₀, hc₀, ?_⟩
+    apply mul_pos _ hpos
+    rw [Nat.cast_pos]
+    omega
 
 end LeanUrat.MovesV

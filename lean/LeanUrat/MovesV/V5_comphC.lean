@@ -31,6 +31,9 @@ theorem comp_h {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       cc.μhatN ε β₀ γ h q₀ N
         = cc.ιN ε β₀ q₀ N * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
             * gProd X γ h q₀ := by
-  sorry
+  cases γ with
+  | last mv => exact comp_h_one cc P X U ε β₀ mv h hq
+  | lastT mv => sorry
+  | cons mv γ => exact comp_h_step cc P X U hTie ε β₀ mv γ h hmem hq
 
 end LeanUrat.MovesV

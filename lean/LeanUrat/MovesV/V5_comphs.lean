@@ -26,6 +26,37 @@ theorem comp_hsum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     HasSum (fun h : {h // (D.dom γ).Mem h} => μhatVal cc ε β₀ γ h.1 q₀)
       (iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
         * gcVal Xs γ q₀) := by
-  sorry
+  classical
+  have hqS : q₀ ∈ S.Pools := V.toCtsCells.pools_sub hq
+  have hpos : (0 : ℝ) ≤ (q₀ : ℝ) := by
+    have h1 : (1 : ℝ) < (q₀ : ℝ) := by exact_mod_cast S.pools_gt_one q₀ hqS
+    linarith
+  have hkey : HasSum (fun h : {h // (D.dom γ).Mem h} => gProd X γ h.1 q₀)
+      (gcVal Xs γ q₀) := by
+    have H := semilin_sum_exact (D.dom γ) (fun h => gProd X γ h q₀)
+      (fun h => gProd_nonneg X γ h q₀ hpos)
+      (fun j => ((evalAt q₀ ⟨Xs.Gc γ j, Xs.Gc_ok γ j q₀ hqS⟩ : ℚ) : ℝ))
+      (fun j => Xs.Gc_hasSum γ j q₀ hqS)
+    have hval : (∑ j, ((evalAt q₀ ⟨Xs.Gc γ j, Xs.Gc_ok γ j q₀ hqS⟩ : ℚ) : ℝ))
+        = gcVal Xs γ q₀ := by
+      unfold gcVal
+      refine Finset.sum_congr rfl (fun j _ => ?_)
+      rw [dif_pos (Xs.Gc_ok γ j q₀ hqS)]
+    rw [hval] at H
+    exact H
+  have hmul := hkey.mul_left
+    (iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ))
+  have hfun : (fun h : {h // (D.dom γ).Mem h} => μhatVal cc ε β₀ γ h.1 q₀)
+      = (fun h : {h // (D.dom γ).Mem h} =>
+          iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
+            * gProd X γ h.1 q₀) := by
+    funext h
+    have hcomp := comp_h cc P X U hTie ε β₀ γ h.1 h.2 hq
+      (compLvl V TE ε γ) (le_refl _)
+    rw [μhatVal, hcomp]
+    have hiota : cc.ιN ε β₀ q₀ (compLvl V TE ε γ) = iotaEps cc ε β₀ q₀ := by
+      sorry
+    rw [hiota]
+  rw [hfun]; exact hmul
 
 end LeanUrat.MovesV

@@ -73,6 +73,13 @@ theorem polygeom_count_laws {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hVA : ValA n C S V) (U : XHDu n S) (hTie : MDomTie V TE D)
     (hE : HEmptyT V) :
     Nonempty (MovesS.PolyGeomLaws T M RB) := by
-  sorry
+  refine ⟨{
+    tCount := fun e τ o q₀ => ((RB.tgP e τ o).countT.eval q₀).num.toNat
+    tcount_val := ?_
+    scount_val := ?_
+    tcount_deg := fun e τ o => (RB.tgP e τ o).degT_le.trans_eq (RB.tg_degT e τ o)
+    scount_deg := fun e τ o => (RB.tgP e τ o).degS_le.trans_eq (RB.tg_degS e τ o) }⟩
+  · sorry
+  · sorry
 
 end LeanUrat.MovesV

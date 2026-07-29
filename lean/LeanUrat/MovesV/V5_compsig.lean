@@ -7,6 +7,7 @@ set_option linter.style.longLine false
 set_option linter.style.header false
 
 namespace LeanUrat.MovesV
+open LeanUrat.MovesS (OKat evalAt)
 
 /-- ∏ᵢ Tᵢ.eval·ΣGᵢ over the template's step decomposition. -/
 noncomputable def stepProdVal {n : ℕ} {C : CtsFamily n} {S : StepSys n}
@@ -30,6 +31,44 @@ theorem comp_sigma {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
         * gcVal Xs γ q₀
       = iotaEps cc ε β₀ q₀ * stepProdVal V Xs γ q₀ := by
-  sorry
+  classical
+  have hqS : q₀ ∈ S.Pools := V.pools_sub hq
+  have hq0 : (0 : ℝ) ≤ (q₀ : ℝ) := by
+    have h1 := S.pools_gt_one q₀ hqS
+    exact_mod_cast le_of_lt (lt_trans one_pos h1)
+  -- gcVal is the TOTAL gProd sum over the domain (V0-3 partition + Gc_hasSum).
+  have hgc : ∀ {ρ} (δ : Template n S ρ),
+      HasSum (fun h : {h // (D.dom δ).Mem h} => gProd X δ h.1 q₀)
+        (gcVal Xs δ q₀) := by
+    intro ρ δ
+    have hval : gcVal Xs δ q₀
+        = ∑ j, ((evalAt q₀ ⟨Xs.Gc δ j, Xs.Gc_ok δ j q₀ hqS⟩ : ℚ) : ℝ) := by
+      unfold gcVal
+      refine Finset.sum_congr rfl (fun j _ => ?_)
+      rw [dif_pos (Xs.Gc_ok δ j q₀ hqS)]
+    rw [hval]
+    exact semilin_sum_exact (D.dom δ) (fun h => gProd X δ h q₀)
+      (fun h => gProd_nonneg X δ h q₀ hq0)
+      (fun j => ((evalAt q₀ ⟨Xs.Gc δ j, Xs.Gc_ok δ j q₀ hqS⟩ : ℚ) : ℝ))
+      (fun j => Xs.Gc_hasSum δ j q₀ hqS)
+  -- HMC upgrades to the factorization identity (V4-12(a)).
+  have hFact : Factorizes X D := comp_upgrade X D Xs hHMC
+  -- pathProd·gcVal collapses to the stepwise product, by induction along γ.
+  have key : ∀ {ρ} (δ : Template n S ρ),
+      (((pathProdPoly V δ).eval q₀ : ℚ) : ℝ) * gcVal Xs δ q₀
+        = stepProdVal V Xs δ q₀ := by
+    intro ρ δ
+    induction δ with
+    | last mv => simp only [stepProdVal, pathProdPoly]
+    | lastT mv => simp only [stepProdVal, pathProdPoly]
+    | cons mv δ ih =>
+      have hcons : gcVal Xs (.cons mv δ) q₀
+          = gcVal Xs (.last mv) q₀ * gcVal Xs δ q₀ :=
+        hFact mv δ q₀ hqS _ _ _ (hgc (.cons mv δ)) (hgc (.last mv)) (hgc δ)
+      simp only [stepProdVal, pathProdPoly, Polynomial.eval_mul, hcons]
+      push_cast
+      rw [← ih]
+      ring
+  rw [mul_assoc, key γ]
 
 end LeanUrat.MovesV

@@ -26,6 +26,7 @@ theorem count_shadow_deg {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     {V : CtsMeasured n C S} (hEC : EntCount V) (ε : EntShapeV n)
     (β₀ : S.Cell) (hR : Realizable V ε β₀) {α} (γ : Template n S α) :
     (cshadowPoly hEC ε β₀ hR γ).natDegree ≤ ε.Went + Wtmpl V γ := by
-  sorry
+  refine Polynomial.natDegree_mul_le.trans ?_
+  exact Nat.add_le_add (hEC ε β₀ hR).choose_spec.1 (pathProd_deg V γ)
 
 end LeanUrat.MovesV

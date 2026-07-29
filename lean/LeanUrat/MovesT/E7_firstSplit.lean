@@ -39,6 +39,21 @@ theorem fiber_first_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
       = Nat.card ↥(entEvent T χ d.es)
         * ∏ ν ∈ CA.branchSetOf d.c,
             Nat.card ↥(cellEventE T CA χ d.es d.c ∩ d.S ν)) := by
-  sorry
+  -- (A): apply (SIB) at (es, c, S); then identify the scope∩ent count via `hdecomp`.
+  have hA := hsib d.es d.c d.S d.hbr d.hS
+  rw [d.hdecomp]
+  refine ⟨hA, ?_⟩
+  -- (B): multiply (A) by card(cell)·p^jointExp and consume `hcharge`.
+  set X := Nat.card ↥(cellEventE T CA χ d.es d.c ∩ ⋂ ν ∈ CA.branchSetOf d.c, d.S ν)
+  set C := Nat.card ↥(cellEventE T CA χ d.es d.c)
+  set P := ∏ ν ∈ CA.branchSetOf d.c, Nat.card ↥(cellEventE T CA χ d.es d.c ∩ d.S ν)
+  set Sg := Nat.card ↥(entEvent T χ d.es)
+  have hb : (CA.branchSetOf d.c).card = ((CA.branchSetOf d.c).card - 1) + 1 := by
+    have := d.hbr; omega
+  rw [hb, pow_succ]
+  have hrw : X * p ^ d.jointExp * (C ^ ((CA.branchSetOf d.c).card - 1) * C)
+      = (X * C ^ ((CA.branchSetOf d.c).card - 1)) * (C * p ^ d.jointExp) := by ring
+  rw [hrw, hA, hcharge]
+  exact mul_comm P Sg
 
 end LeanUrat.MovesT

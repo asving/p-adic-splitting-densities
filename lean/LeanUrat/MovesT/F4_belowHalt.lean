@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesD.D2a_finite
 
 /-! # T-F4 `belowHalt_decomp` — the note's EXACT below-halt decomposition (MOVES
 7606–7611), REV 8 (Codex-7 #5 = Fable-7 CRIT-2): the `hne` premise joins (the built
@@ -32,7 +33,13 @@ theorem belowHalt_decomp {P : Shape n} (S : Presented p F n N m pol P)
     S.mult x
       = Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i ∧ PreHalt (reprOf i)}
       + Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i ∧ ¬ PreHalt (reprOf i)} := by
-  sorry
+  classical
+  haveI : Fintype (PrefIdx n pol P) := Fintype.ofFinite _
+  rw [S.mult_of_ne hne]
+  simp only [Nat.card_eq_fintype_card, Fintype.card_subtype]
+  rw [← Finset.filter_filter (fun i => x ∈ S.fiber i) (fun i => PreHalt (reprOf i)),
+      ← Finset.filter_filter (fun i => x ∈ S.fiber i) (fun i => ¬ PreHalt (reprOf i))]
+  exact (Finset.card_filter_add_card_filter_not (fun i => PreHalt (reprOf i))).symm
 
 /-- the ∅-shape display (REV 8): `mult x = 1` is the built
 `Presented.mult_empty_shape` VERBATIM; the `PrefIdx` emptiness is why the two-count
@@ -53,6 +60,7 @@ theorem belowHalt_excess {P : Shape n} (S : Presented p F n N m pol P)
     (hne : (P : ShapePrefix).reads ≠ []) :
     Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i ∧ PreHalt (reprOf i)}
       ≤ S.mult x := by
-  sorry
+  rw [belowHalt_decomp S T χ x hne]
+  exact Nat.le_add_right _ _
 
 end LeanUrat.MovesT

@@ -74,6 +74,8 @@ theorem part1_ctbl {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hq : q₀ ∈ V.Pools) (hact : V.activeState q₀ τ) :
     ∃ v : ℝ, v ≤ 1 ∧ HasSum (fun ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D =>
       μcellH V X x ch.1 ch.2) v := by
-  sorry
+  exact ⟨∑' ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D, μcellH V X x ch.1 ch.2,
+    (hb.ctbl_add x hzc hq hact).tsum_le_of_sum_le (hd.fh_bound x hzc hq hact),
+    (hb.ctbl_add x hzc hq hact).hasSum⟩
 
 end LeanUrat.MovesV

@@ -14,6 +14,9 @@ theorem part1 {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hq : q₀ ∈ V.Pools) (hact : V.activeState q₀ τ) :
     HasSum (fun ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D =>
       μcellH V X x ch.1 ch.2) 1 := by
-  sorry
+  obtain ⟨v, hv_le, hv_sum⟩ := part1_ctbl X hb hd x hzc hq hact
+  have hv_ge : 1 ≤ v := part1_null X hb hc hd x hzc hq hact v hv_sum
+  have hv1 : v = 1 := le_antisymm hv_le hv_ge
+  exact hv1 ▸ hv_sum
 
 end LeanUrat.MovesV

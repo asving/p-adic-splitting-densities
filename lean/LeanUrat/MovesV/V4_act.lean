@@ -14,7 +14,11 @@ theorem no_entry {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hact : V.activeState q₀ (V.toStepCells.symm d.src))
     (hin : ¬ V.activeState q₀ (V.toStepCells.symm d.tgt)) :
     ((C.T d.s d.m d.o d.α d.tix).eval q₀ : ℚ) = 0 := by
-  sorry
+  obtain ⟨x, hzc⟩ := S.zc_ne q₀ (V.pools_sub hq) (V.toStepCells.symm d.src)
+  have hpos : 0 < (V.mdom d).comps.length := List.length_pos_of_ne_nil hne
+  rw [hVA.tbl_count d x hzc hq ⟨0, hpos⟩,
+    hVA.tgt_supported d x hzc (((V.mdom d).comps.get ⟨0, hpos⟩).base) hq hact hin]
+  simp
 
 theorem iota_supp {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     {V : CtsMeasured n C S} (XsEnt : XHDsEnt n S V) (hVA : ValA n C S V)

@@ -40,7 +40,26 @@ theorem rootOnly_childless_rejected (T : TreeModel p F n N m pol)
     (hrep : ∃ ψ, ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly χ x) ∧
       2 ≤ Multiset.count ψ (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x)))
     (Tr : VTree p F) (hchains : Tr.chains = ∅) : ¬ Tr.fiberAt T χ x := by
-  sorry
+  intro hfib
+  obtain ⟨-, -, -, -, -, hvi⟩ := hfib
+  -- chains = ∅ ⇒ the head chains are empty ⇒ clause (vi)'s LHS is the empty multiset
+  have hchainsFin : Tr.hfin.toFinset = ∅ := by
+    rw [Set.Finite.toFinset_eq_empty]; exact hchains
+  have hheads : Tr.heads = ∅ := by
+    simp only [VTree.heads, hchainsFin, Finset.filter_empty]
+  rw [hheads, Finset.empty_val, Multiset.map_zero] at hvi
+  -- so clause (vi)'s RHS multiset (over the repeated factors) is empty
+  have hRHS := hvi.symm
+  rw [Multiset.map_eq_zero, Finset.val_eq_zero] at hRHS
+  -- but hrep exhibits a repeated factor ψ, contradicting the empty filtered finset
+  obtain ⟨ψ, hmem, hcount⟩ := hrep
+  have hψ : ψ ∈ ((UniqueFactorizationMonoid.normalizedFactors (redPoly χ x)).toFinset.filter
+      (fun ψ => 2 ≤ Multiset.count ψ
+        (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x)))) := by
+    rw [Finset.mem_filter, Multiset.mem_toFinset]
+    exact ⟨hmem, hcount⟩
+  rw [hRHS] at hψ
+  simp only [Finset.notMem_empty] at hψ
 
 theorem no_childless_vacuity (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T)

@@ -66,7 +66,23 @@ theorem chain_resolved {n} {S : StepSys n} (U : XHDu n S) {α}
     (γ : Template n S α) {q₀} (hq : q₀ ∈ S.Pools)
     (x x' : S.Hist q₀ α) (hzc : S.zc x) (hzc' : S.zc x') (h : Hpt γ.D) :
     chainCount S γ x h = chainCount S γ x' h := by
-  sorry
+  induction γ with
+  | last m => exact U.u_R_cnt m x x' h hq hzc hzc'
+  | lastT m => exact U.u_R_cntT m x x' h hq hzc hzc'
+  | cons m γ ih =>
+    obtain ⟨z, hz⟩ := S.zc_ne q₀ hq _
+    have key : ∀ (y : S.Hist q₀ _) (hy : S.zc y),
+        chainCount S (.cons m γ) y h
+          = S.cntraw m y (Hpt.take h) • chainCount S γ z (Hpt.drop h) := by
+      intro y hy
+      have hconst : ∀ a : S.Assign m y (Hpt.take h),
+          chainCount S γ (S.ext m y (Hpt.take h) a) (Hpt.drop h)
+            = chainCount S γ z (Hpt.drop h) :=
+        fun a => ih (S.ext m y (Hpt.take h) a) z
+          (S.ext_zc m y (Hpt.take h) a hy) hz (Hpt.drop h)
+      simp only [chainCount, hconst, Finset.sum_const, Finset.card_univ,
+        StepSys.cntraw]
+    rw [key x hzc, key x' hzc', U.u_R_cnt m x x' (Hpt.take h) hq hzc hzc']
 
 /-- (b) VAL(b): the linked count EQUALS the path product, GIVEN ValA +
 (XHD-u) + XHD-d + MDomTie. -/
@@ -82,6 +98,11 @@ theorem valB {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
 theorem pathProd_deg {n} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {α} (γ : Template n S α) :
     (pathProdPoly V γ).natDegree ≤ Wtmpl V γ := by
-  sorry
+  induction γ with
+  | last mv => exact C.T_deg _ _ _ _ _
+  | lastT mv => exact C.T_deg _ _ _ _ _
+  | cons mv γ ih =>
+    refine (Polynomial.natDegree_mul_le).trans ?_
+    exact Nat.add_le_add (C.T_deg _ _ _ _ _) ih
 
 end LeanUrat.MovesV

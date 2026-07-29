@@ -30,6 +30,43 @@ theorem ledgerIV_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     {q₀ : ℚ} (hq : q₀ ∈ V.Pools) :
     HasSum (fun h : {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h} =>
         ιshH V i.1.1 h.1 β₀ q₀) (iotaShV V X.sEnt i q₀) := by
-  sorry
+  classical
+  -- instCensus at any point IS the total-writeHeights census.
+  have hIC : ∀ (εT : EntTemplate n) (h : Hpt εT.entDim),
+      V.instCensus εT h β₀ q₀ = V.entCensus (writeHeights εT h) β₀ q₀ := by
+    intro εT h
+    unfold CtsMeasured.instCensus
+    have hsome : writeHeights? εT h = some (writeHeights εT h) :=
+      (Option.some_get (writeHeights_total εT h)).symm
+    rw [hsome]; simp
+  -- (ENT-U): the census is constant on the component, so the fibre mass is
+  -- entCount · (weight-only Gent sum).
+  obtain ⟨P, _, hP⟩ := hEU β₀ i
+  have hconst : ∀ x : {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h},
+      (V.instCensus i.1.1 x.1 β₀ q₀ : ℝ) = (V.entCount i q₀ : ℝ) := by
+    intro x
+    have e1 := hP x.1 x.2 q₀ hq
+    have e2 := hP _ (linset_base_mem ((V.entDom i.1.1).comps.get i.1.2)) q₀ hq
+    have hqq : (V.entCensus (writeHeights i.1.1 x.1) β₀ q₀ : ℚ)
+        = (V.entCensus (writeHeights i.1.1
+            ((V.entDom i.1.1).comps.get i.1.2).base) β₀ q₀ : ℚ) :=
+      e1.symm.trans e2
+    rw [hIC i.1.1 x.1,
+      show V.entCount i q₀
+          = V.instCensus i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base β₀ q₀ from rfl,
+      hIC i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base]
+    exact_mod_cast hqq
+  have hfun : (fun x : {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h} =>
+        ιshH V i.1.1 x.1 β₀ q₀)
+      = (fun x => (V.entCount i q₀ : ℝ)
+          * (q₀ : ℝ) ^ (-((instA i.1.1 x.1 : ℕ) : ℤ))) := by
+    funext x; unfold ιshH; rw [hconst x]
+  have hval : iotaShV V X.sEnt i q₀
+      = (V.entCount i q₀ : ℝ)
+        * ((LeanUrat.MovesS.evalAt q₀
+            ⟨X.sEnt.Gent β₀ i, X.sEnt.Gent_ok β₀ i q₀ hq⟩ : ℚ) : ℝ) := by
+    unfold iotaShV; rw [dif_pos hq]
+  rw [hfun, hval]
+  exact (X.sEnt.Gent_hasSum β₀ i q₀ hq).mul_left (V.entCount i q₀ : ℝ)
 
 end LeanUrat.MovesV

@@ -30,6 +30,37 @@ theorem ent_agg_finite {n : ℕ} (ε : EntShapeV n) {p : ℕ} {F : Type*}
     (cs : List (EntranceCut n ε p F pol)) (hd : CutsDisj cs) {N m : ℕ}
     (S : MovesD.Presented p F n N m pol ε.Phat) :
     iotaCount ε (unionCut cs) S = (cs.map (fun c => iotaCount ε c S)).sum := by
-  sorry
+  induction cs with
+  | nil =>
+    change (∑ᶠ i ∈ {i | (unionCut ([] : List (EntranceCut n ε p F pol))).lands i},
+        Nat.card ↥(S.fiber i)) = 0
+    have hset : {i | (unionCut ([] : List (EntranceCut n ε p F pol))).lands i}
+        = (∅ : Set (MovesD.PrefIdx n pol ε.Phat)) := by
+      ext i; simp [unionCut]
+    rw [hset, finsum_mem_empty]
+  | cons c cs' ih =>
+    obtain ⟨hhead, htail⟩ := List.pairwise_cons.mp hd
+    have hset : {i | (unionCut (c :: cs')).lands i}
+        = {i | c.lands i} ∪ {i | (unionCut cs').lands i} := by
+      ext i
+      simp only [Set.mem_setOf_eq, Set.mem_union]
+      constructor
+      · rintro ⟨c'', hc'', hlands⟩
+        rcases List.mem_cons.mp hc'' with rfl | hmem
+        · exact Or.inl hlands
+        · exact Or.inr ⟨c'', hmem, hlands⟩
+      · rintro (h | ⟨c'', hc'', hlands⟩)
+        · exact ⟨c, List.mem_cons.mpr (Or.inl rfl), h⟩
+        · exact ⟨c'', List.mem_cons.mpr (Or.inr hc''), hlands⟩
+    have hdisj : Disjoint {i | c.lands i} {i | (unionCut cs').lands i} := by
+      rw [Set.disjoint_left]
+      rintro i hci ⟨c'', hc'', hlands⟩
+      exact hhead c'' hc'' i ⟨hci, hlands⟩
+    change (∑ᶠ i ∈ {i | (unionCut (c :: cs')).lands i}, Nat.card ↥(S.fiber i))
+        = ((c :: cs').map (fun c => iotaCount ε c S)).sum
+    rw [hset, finsum_mem_union hdisj (Set.toFinite _) (Set.toFinite _),
+      List.map_cons, List.sum_cons]
+    congr 1
+    exact ih htail
 
 end LeanUrat.MovesV

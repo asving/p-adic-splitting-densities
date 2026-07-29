@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesT.E8_treeExp
 
 /-! # T-E11 `treeN` [hard] — TREE-N finite-level stability (MOVES 7559–7574): for
 every N ≥ thr(T), the fiber is an exact union of level-N residue classes. X.3-FREE
@@ -37,6 +38,11 @@ theorem treeN (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
       JCmultiAt T CA χ (L.parentSt H) (L.cellAt H) (L.splitAt H hH.1 h2)) :
     Nat.card ↥{x : Box p (n * N) | Tr.fiberAt T χ x} * p ^ AofTr Tr L
       = p ^ (n * N) := by
-  sorry
+  -- T-E11 is T-E8 (`treeExp`) at the working level m := n·N; `thr`(via `hthr`) only
+  -- guarantees we are above the stability threshold, and `AofTr Tr L` unfolds to
+  -- `treeExp`'s exponent `n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H` (Defs §2.10).
+  change Nat.card ↥{x : Box p (n * N) | Tr.fiberAt T χ x}
+      * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H) = p ^ (n * N)
+  exact treeExp Tr T CA χ hχ hrc trackOf hred hsib hreal L sc hjcm hdet
 
 end LeanUrat.MovesT

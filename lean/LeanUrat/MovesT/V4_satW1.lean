@@ -22,13 +22,19 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 theorem sat_iff_W1 {n : ℕ} (s s' : MovesSp.Species)
     (hstep : MovesSp.StageLaws s s') (g μ : ℕ) (hsel : s.sel = some (g, μ)) :
     (μ = 1) ↔ (s'.W = 1) := by
-  sorry
+  simp only [MovesSp.StageLaws, hsel] at hstep
+  obtain ⟨_, _, hW, _, _⟩ := hstep
+  rw [hW]
 
 /-- warrant: (G6) "selection = ⊥ iff W = 1". -/
 theorem sat_iff_selNone {n : ℕ} (s s' : MovesSp.Species)
     (hstep : MovesSp.StageLaws s s') (hcoh : MovesSp.Coherent s')
     (g μ : ℕ) (hsel : s.sel = some (g, μ)) :
     (μ = 1) ↔ s'.sel = none := by
-  sorry
+  simp only [MovesSp.StageLaws, hsel] at hstep
+  obtain ⟨_, _, hW, _, _⟩ := hstep
+  obtain ⟨_, _, _, _, _, hG6⟩ := hcoh
+  rw [hW] at hG6
+  exact hG6.symm
 
 end LeanUrat.MovesT

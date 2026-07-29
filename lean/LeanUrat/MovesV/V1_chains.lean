@@ -21,12 +21,31 @@ noncomputable instance chainsFintype {n} (S : StepSys n) :
 theorem chains_card {n} (S : StepSys n) :
     ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D),
     Fintype.card (Chains S γ x h) = chainCount S γ x h := by
-  sorry
+  intro α γ
+  induction γ with
+  | last m => intro q₀ x h; rfl
+  | lastT m => intro q₀ x h; rfl
+  | cons m γ ih =>
+    intro q₀ x h
+    letI : Fintype (S.Assign m x (Hpt.take h)) := S.finA m x (Hpt.take h)
+    letI : ∀ a : S.Assign m x (Hpt.take h),
+        Fintype (Chains S γ (S.ext m x (Hpt.take h) a) (Hpt.drop h)) :=
+      fun a => chainsFintype S γ (S.ext m x (Hpt.take h) a) (Hpt.drop h)
+    have hcard :
+        Fintype.card (Chains S (Template.cons m γ) x h)
+          = ∑ a : S.Assign m x (Hpt.take h),
+              Fintype.card (Chains S γ (S.ext m x (Hpt.take h) a) (Hpt.drop h)) :=
+      Fintype.card_sigma
+    rw [hcard, chainCount]
+    exact Finset.sum_congr rfl
+      (fun a _ => ih (S.ext m x (Hpt.take h) a) (Hpt.drop h))
 
 theorem tgam_eq_chains {n} {S : StepSys n} (TE : TmplEvents n S) {α}
     (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D)
     (hq : q₀ ∈ S.Pools) (hzc : S.zc x) :
     Tgam TE γ x h = Nat.card {c : Chains S γ x h // RealizesC TE γ x h c} := by
-  sorry
+  have hinj := TE.tmark_inj γ x h hq hzc
+  rw [Tgam, ← Fintype.card_coe, ← Nat.card_eq_fintype_card]
+  exact Nat.card_congr (Equiv.ofInjective (TE.tmark γ x h) hinj)
 
 end LeanUrat.MovesV

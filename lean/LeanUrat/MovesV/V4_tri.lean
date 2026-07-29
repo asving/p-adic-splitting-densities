@@ -21,6 +21,26 @@ theorem act_triangular {n : ℕ} {T : MovesS.TableShape n}
         (evalAt q₀ ⟨RB.TG e τ o, hok⟩ : ℚ) = 0)
     (hok : MovesS.Kmat T RB e hK τ β ∈ OKat q₀) :
     (evalAt q₀ ⟨MovesS.Kmat T RB e hK τ β, hok⟩ : ℚ) = 0 := by
-  sorry
+  classical
+  set S : T.Out e τ → OKat q₀ := fun o =>
+    if hk : MovesS.routeOf (T.odata e τ o) = .kcol then
+      (if MovesS.kTarget T e τ o hk (hK τ o hk) = β then
+        (⟨RB.TG e τ o, RB.tg_ok e τ o q₀ hq⟩ : OKat q₀) else 0)
+    else 0 with hS
+  have key : (⟨MovesS.Kmat T RB e hK τ β, hok⟩ : OKat q₀) = ∑ o : T.Out e τ, S o := by
+    apply Subtype.ext
+    rw [AddSubmonoidClass.coe_finsetSum]
+    show MovesS.Kmat T RB e hK τ β = ∑ o : T.Out e τ, ((S o : MovesS.Qq))
+    unfold MovesS.Kmat
+    refine Finset.sum_congr rfl (fun o _ => ?_)
+    simp only [hS]
+    split_ifs with hk hkt <;> simp
+  rw [key, map_sum]
+  refine Finset.sum_eq_zero (fun o _ => ?_)
+  simp only [hS]
+  split_ifs with hk hkt
+  · exact hrow o hk hkt (RB.tg_ok e τ o q₀ hq)
+  · exact map_zero _
+  · exact map_zero _
 
 end LeanUrat.MovesV

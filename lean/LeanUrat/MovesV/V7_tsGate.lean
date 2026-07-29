@@ -14,6 +14,7 @@ theorem degcons_kmat_gate {n : ℕ} (C : CtsFamily n)
     ∃ T : MovesS.TableShape n,
       (∀ e, e ∈ Finset.Icc 1 n → MovesS.KmatHyp T e) → MovesS.DegCons T →
       True := by
-  sorry
+  obtain ⟨T, _⟩ := tableShape_inst C hfin
+  exact ⟨T, fun _ _ => trivial⟩
 
 end LeanUrat.MovesV

@@ -34,6 +34,18 @@ theorem eligibleImage_finite {p : ℕ} [Fact p.Prime] {F : Type*}
     [Field F] [Finite F] (w : ℕ) (ν : MovesC.Node p F) :
     Finite {q : Polynomial F //
       MovesD.EligibleImage p w ν.g ν.μ (MovesD.RanchImage ν) q} := by
-  sorry
+  apply Finite.of_injective
+    (f := fun q : {q : Polynomial F //
+        MovesD.EligibleImage p w ν.g ν.μ (MovesD.RanchImage ν) q} =>
+      (fun i : Fin (ν.g + 1) => q.1.coeff i))
+  intro q q' hqq'
+  apply Subtype.ext
+  apply Polynomial.ext
+  intro i
+  by_cases hi : i ≤ ν.g
+  · have := congrFun hqq' ⟨i, by omega⟩
+    simpa using this
+  · rw [Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q.2.2.1]; omega),
+       Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q'.2.2.1]; omega)]
 
 end LeanUrat.MovesV

@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesC.C4_conditionalMass
 
 /-! # T-E3 `jc_single` — "(JC-single) PROVED (= C.1.5(1) verbatim)" (MOVES 7469–7472):
 rewrite both events by `hpres`; the conclusion is MovesC `C4_conditionalMass`'s
@@ -27,6 +28,7 @@ theorem jc_single (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
     (hpres : SitePresents T CA χ es c Sigma fd)
     (hfree : ∀ cl ∈ fd.clauses, ∀ cIdx ∈ cl.support, Sigma.pinned cIdx = false) :
     Nat.card ↥(cellEventE T CA χ es c) * p ^ fd.mstar = Nat.card ↥(entEvent T χ es) := by
-  sorry
+  rw [hpres.1, hpres.2]
+  exact C4_conditionalMass Sigma fd hfree
 
 end LeanUrat.MovesT
