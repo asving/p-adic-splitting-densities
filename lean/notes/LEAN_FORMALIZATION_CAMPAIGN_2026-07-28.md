@@ -887,3 +887,9 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   fix. On clean verdicts the DONE CRITERION is met: every sorry fenced,
   the ledger typed and mapped, the ratifications clean, the census
   Lean-core + the two trusted axioms.
+  METHODOLOGY RULE #2 (2026-07-31, from the MovesGr red diagnosis): `lake
+  env lean` is NOT a faithful proxy for `lake build` in this repo — the
+  lakefile's maxSynthPendingDepth=3 applies only under lake build, so
+  instance-diamond resolutions can differ. GREEN RECORDS MUST COME FROM
+  LAKE BUILD. (Joins rule #1: the out-of-root-graph enumerated sweep.)
+  MovesGr: 30/30 green; the 11 pre-existing fenced obligations unchanged.
