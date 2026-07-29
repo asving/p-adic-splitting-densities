@@ -909,3 +909,28 @@ alignment class (machine-certified mistyping; ScratchC6.lean the certificate)
 inconsistency finding and the C6 mistyping certificate are the campaign's
 standing interface findings of record. Wave 4 (MovesT/MovesV) is the next
 program phase; MovesR unparks behind HC-1's now-real carriers.
+
+## UPDATE (2026-07-29a): RATIFICATION PASSES ON THE PROVED CORPORA + WAVE-4 ROUND 6
+
+The Codex budget window rolled over early (15% used), so the deferred
+fresh-context RATIFICATION passes over the AS-BUILT MovesS/MovesD statements
+ran ahead of schedule. Outcome: 10 criticals + 1 gap across both — on
+statements, not proofs. Orchestrator adjudication by direct note reads:
+**two overruled** (the γ-tie STR factor is the documented stage-vs-absolute
+scale convention, C.1.0(c); the PrefIdx "image quotient" is the deliberate
+η-granularity design with PresentNorm as the typed dictionary), **eight
+accepted** — nearly all instances of the campaign's own doctrine (ledger pins
+as comments instead of typed fields; one literal vacuous `Prop` tag; the
+∅-shape event unwired; a silently strengthened pool burden). The three prior
+MovesS adjudications survived independent re-judgment (one sharpened). All
+repairs are APPLIED and green (7 new files, zero sorry, Lean-core; the N2
+sealed gate stays proved; statement fence git-diff-verified): notably
+`RS4Chain.wsh17_pin` is now a projection-def = the typed `W17ii` production
+core, W4-4/W4-5 are typed Lean objects (`NPIDPin`, `OffsetPPin`), and the
+classifier-side sealed-gate numbers are typed obligations
+(`G2_gatesClassifier`). Interface deltas: `lean/notes/W4_SYNC_DELTAS_2026-07-29.md`.
+Wave 4: REV 6 of both blueprints landed (MovesT's joint-unsatisfiability fix
+verified by full 2⁹ enumeration; MovesV's SelRankTie replaced by a
+definitional SelMatches; HMC stays open, its record line honestly scoped).
+IN FLIGHT: the consolidated Codex confirm on the repair diff + full-dual
+round-6 audits. Ledger: `lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`.
