@@ -40,6 +40,33 @@ theorem tbcap_hen_cells (χ : Fin n → Fin m) (hχ : Function.Injective χ)
     (v₀ : Multiset Vd) :
     ∃ G : Finset (Fin n → ZMod p),
       {x : Box p m | henPayload χ x = v₀} = ⋃ g ∈ G, rootCell χ g := by
-  sorry
+  classical
+  haveI : NeZero p := ⟨(Fact.out (p := p.Prime)).pos.ne'⟩
+  -- a total extension of a level-0 datum `g` to a box, agreeing with `g` on the χ-image
+  set E : (Fin n → ZMod p) → Box p m :=
+    (fun g j => if h : ∃ b, χ b = j then g h.choose else 0) with hE
+  have hE_eq : ∀ (g : Fin n → ZMod p) (b : Fin n), E g (χ b) = g b := by
+    intro g b
+    have hcond : ∃ b', χ b' = χ b := ⟨b, rfl⟩
+    simp only [hE]
+    rw [dif_pos hcond]
+    exact congrArg g (hχ hcond.choose_spec)
+  refine ⟨Finset.univ.filter (fun g => henPayload χ (E g) = v₀), ?_⟩
+  ext x
+  constructor
+  · intro hx
+    rw [Set.mem_setOf_eq] at hx
+    refine Set.mem_iUnion₂.mpr ⟨fun b => x (χ b), ?_, ?_⟩
+    · rw [Finset.mem_filter]
+      refine ⟨Finset.mem_univ _, ?_⟩
+      rw [tbcap_hen χ hχ (E (fun b => x (χ b))) x (fun b => hE_eq (fun b => x (χ b)) b)]
+      exact hx
+    · intro b; rfl
+  · intro hx
+    obtain ⟨g, hg, hcell⟩ := Set.mem_iUnion₂.mp hx
+    rw [Finset.mem_filter] at hg
+    have hcell' : ∀ b, x (χ b) = g b := hcell
+    rw [Set.mem_setOf_eq, ← hg.2]
+    exact tbcap_hen χ hχ x (E g) (fun b => by rw [hcell', hE_eq])
 
 end LeanUrat.MovesT

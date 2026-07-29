@@ -5,6 +5,8 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesC.C6_thmC_b
+import LeanUrat.MovesD.D0a_topLocus
 
 /-! # T-C6 `ns_price` — "(ii) Theorem C(b) with Z = Z_M prices the lump exactly"
 (MOVES 7225–7227): two `C6_thmC_b` instances share boxMass; cross-multiply. REV 9
@@ -24,6 +26,17 @@ theorem ns_price {H : History p F} (J : JetSetup H n N m) (M : ℕ) (hM : M₀ J
     (Z : Locus p m) (hZ : AdmissibleZ (J.Sigma H.nodes.length) Z)
     (hlump : IsLumpLocus J M Z) :
     Nat.card ↥(J.SHZ Z) * p ^ pinCount Z = Nat.card ↥(J.SHZ (topLocus p m)) := by
-  sorry
+  -- Two instances of Theorem C(b) share the box mass `p^m`; cross-multiply.
+  have hb := C6_thmC_b J Z hZ
+  have htop := C6_thmC_b J (topLocus p m) (topLocus_admissible (J.Sigma H.nodes.length))
+  unfold totalPins at hb htop
+  rw [topLocus_numPinned, Nat.add_zero] at htop
+  set S := (Finset.range H.nodes.length).sum (fun i => (J.fresh i).mstar) with hS
+  -- `pinCount` counts pinned coordinates, i.e. `numPinned`.
+  have hpc : pinCount Z = Z.numPinned := rfl
+  have hp : 0 < p := (Fact.out : p.Prime).pos
+  refine Nat.eq_of_mul_eq_mul_right (pow_pos hp S) ?_
+  rw [hpc, htop, ← hb, pow_add]
+  ring
 
 end LeanUrat.MovesT

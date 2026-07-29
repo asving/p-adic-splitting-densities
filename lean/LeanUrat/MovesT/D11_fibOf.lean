@@ -43,7 +43,23 @@ noncomputable def fibOf (hrep : PrefixCoherentRepr n pol)
     if h : ∃ av, av ∈ ct.leafV ∧ reprOf av.1.2 = H then some h.choose.2 else none
   hleaf := by sorry
   nsLeaf := fun H => ∃ a ∈ ct.nsMark, reprOf a.2 = H
-  hns_leaf := by sorry
+  hns_leaf := by
+    have hspec : ∀ {Q : Shape n} (i : PrefIdx n pol Q),
+        reprOf i ∈ PrefSet n pol Q ∧ etaData (Q : ShapePrefix) (reprOf i) = i.1 :=
+      fun i => i.2.choose_spec
+    intro H hH
+    obtain ⟨a, ha, rfl⟩ := hH
+    obtain ⟨v, hv⟩ := ct.hns a ha
+    obtain ⟨ha_addr, hmax⟩ := ct.hkeys.2 (a, v) hv
+    refine ⟨Set.mem_image_of_mem _ (Finset.mem_coe.mpr ha_addr), ?_⟩
+    intro H'' hmem hpre
+    obtain ⟨b, hb, hbeq⟩ := hmem
+    by_cases hEq : reprOf a.2 = reprOf b.2
+    · rw [← hbeq]; exact hEq.symm
+    · exact (hmax b (Finset.mem_coe.mp hb)
+        ⟨reprOf a.2, reprOf b.2, (hspec a.2).1, (hspec b.2).1,
+          (hspec a.2).2, (hspec b.2).2,
+          by rw [show reprOf b.snd = H'' from hbeq]; exact hpre, hEq⟩).elim
 
 theorem fibOf_fiber_disjoint (hrep : PrefixCoherentRepr n pol)
     (hri : ReprInj n pol) {P : Shape n}
