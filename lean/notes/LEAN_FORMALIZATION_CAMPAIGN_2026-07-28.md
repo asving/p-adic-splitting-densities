@@ -714,3 +714,21 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   supplied) + the D11 adjudicated closure clauses. After: the wave-4
   as-built DUAL RATIFICATION (Codex + Fable over both corpora vs the
   note + blueprints) is the next gate; then the seam re-keys.
+  THE UNIFORMITY COMPLETION DIRECTIVE (2026-07-30, /goal): complete the
+  formalization — the blueprint is UNIFORMITY_COMPLETION_BLUEPRINT_2026-
+  07-30.md (waves A-D, the piece ledger, the fenced list, the done
+  criterion = every remaining sorry on the fenced list + the CL ledger
+  fully mapped + both as-built ratifications clean). THE E8 ADJUDICATION
+  EXECUTED (task #54): per-site cell keying per TREE-EXP 7440-60 —
+  sibling child sites are DISTINCT sites carrying their own joint cells;
+  the REV-6 F1 record is correct under per-site keying. WAVE A LAUNCHED
+  (wf_8da4fbbc-53b, 13 pieces): the E8 re-key+assembly chain [fable],
+  E5 hnostray [fable], D2/G2/V2/V3-instbij/V4-hmcaug/V4-meas/V4-part2
+  [opus], D11 partition + spword family + ctsm/pgLaws [fable], the
+  PresentNorm discharge attempt [opus], and THE E0 PROBE LAYERS [python]:
+  the closed-class refuter (a finding refutes E0 outright), the decay
+  census, the RESUM-n3 seal. Wave B queued: the 7 MovesS seam units, the
+  MovesD W4-1 absorption, THE CL-1..19 INSTANTIATION LEDGER (Theorem U's
+  discharge map), the B2-DEF backlog. Wave C: the dual as-built
+  ratifications + the statement-change confirm. Wave D: HC-1 carriers +
+  MovesR.
