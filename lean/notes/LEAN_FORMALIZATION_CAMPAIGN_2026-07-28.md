@@ -782,3 +782,20 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   premises). E1 BLOCKED honestly: RepPrefixClosed ⟺ etaData injectivity
   on PrefSet (HC-2 η-granularity, open at order ≥ 2) — the D11 premises
   stay owner-typed, correctly.
+  WAVE B RATIFICATIONS + THE CAPSTONE RETYPE LAUNCHED (2026-07-30).
+  Ratified: the Rs2Unique L-binder (two independent derivations of
+  necessity), the W4-1 structural half in MovesD (the branch-set conjunct
+  re-keys to MovesT.ChildCover — no parallel semantics), the
+  L6_measureExact hzsolN/hzsolM premises (pre-recorded in the repair
+  manifest). THE KERNEL-CHECK SCOREBOARD: E0 sealed (140/0), L1/D4R.0-K(a)
+  sealed (40378/40378), STATE/TRACK sealed (15/15, first TRACK run),
+  X-n3 30/32 with the X1B READING FINDING (task #58 — the probe pinned
+  the wrong reading; adjudication at X1a-ALIGN, touches CL-2).
+  THE MOVESU RETYPE IN FLIGHT (wf_5272d711-866): the five-stage capstone
+  charge — the 35 bare-Prop slots become real typed content over the
+  built corpora per the C9 map; the finiteness/solve shortcut stacks
+  DERIVED where E8/treeN and the MovesS solve laws reach; RegP re-keyed
+  to the real block system; theoremU exports the (U-n) bracket + R = S.R
+  + the typed Z_p bridge. Also in flight: wave A2 (the adjudicated
+  scopings). MovesSp instantiation COMPLETE (SP8: the real-TreeModel
+  CanTreeModel, the n=2 non-vacuity witness, the strong verdict pin).
