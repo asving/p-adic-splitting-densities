@@ -26,18 +26,20 @@ theorem ledgerIV_xhd_sum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
 
 theorem ledgerIV_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
-    (X : XHD n S TE V) (hEU : EntU V) (β₀ : S.Cell) (i : V.EntIx β₀)
+    (X : XHD n S TE V) (hdom : EntDomOrder0 V) (hEU : EntU V)
+    (β₀ : S.Cell) (i : V.EntIx β₀)
     {q₀ : ℚ} (hq : q₀ ∈ V.Pools) :
     HasSum (fun h : {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h} =>
         ιshH V i.1.1 h.1 β₀ q₀) (iotaShV V X.sEnt i q₀) := by
   classical
-  -- instCensus at any point IS the total-writeHeights census.
-  have hIC : ∀ (εT : EntTemplate n) (h : Hpt εT.entDim),
-      V.instCensus εT h β₀ q₀ = V.entCensus (writeHeights εT h) β₀ q₀ := by
-    intro εT h
+  -- instCensus IS the scoped-writeHeights census at perimeter points (M1).
+  have hIC : ∀ (εT : EntTemplate n) (h : Hpt εT.entDim)
+      (hs : Order0Perimeter εT h),
+      V.instCensus εT h β₀ q₀ = V.entCensus (writeHeights εT h hs) β₀ q₀ := by
+    intro εT h hs
     unfold CtsMeasured.instCensus
-    have hsome : writeHeights? εT h = some (writeHeights εT h) :=
-      (Option.some_get (writeHeights_total_unscoped εT h)).symm
+    have hsome : writeHeights? εT h = some (writeHeights εT h hs) :=
+      (Option.some_get (writeHeights_total_of_perimeter εT h hs)).symm
     rw [hsome]; simp
   -- (ENT-U): the census is constant on the component, so the fibre mass is
   -- entCount · (weight-only Gent sum).
@@ -45,16 +47,21 @@ theorem ledgerIV_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   have hconst : ∀ x : {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h},
       (V.instCensus i.1.1 x.1 β₀ q₀ : ℝ) = (V.entCount i q₀ : ℝ) := by
     intro x
-    have e1 := hP x.1 x.2 q₀ hq
-    have e2 := hP _ (linset_base_mem ((V.entDom i.1.1).comps.get i.1.2)) q₀ hq
-    have hqq : (V.entCensus (writeHeights i.1.1 x.1) β₀ q₀ : ℚ)
+    have hsx : Order0Perimeter i.1.1 x.1 := hdom.comp i.1.1 i.1.2 x.2
+    have hsb : Order0Perimeter i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base :=
+      hdom.comp i.1.1 i.1.2
+        (linset_base_mem ((V.entDom i.1.1).comps.get i.1.2))
+    have e1 := hP x.1 x.2 hsx q₀ hq
+    have e2 := hP _ (linset_base_mem ((V.entDom i.1.1).comps.get i.1.2))
+      hsb q₀ hq
+    have hqq : (V.entCensus (writeHeights i.1.1 x.1 hsx) β₀ q₀ : ℚ)
         = (V.entCensus (writeHeights i.1.1
-            ((V.entDom i.1.1).comps.get i.1.2).base) β₀ q₀ : ℚ) :=
+            ((V.entDom i.1.1).comps.get i.1.2).base hsb) β₀ q₀ : ℚ) :=
       e1.symm.trans e2
-    rw [hIC i.1.1 x.1,
+    rw [hIC i.1.1 x.1 hsx,
       show V.entCount i q₀
           = V.instCensus i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base β₀ q₀ from rfl,
-      hIC i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base]
+      hIC i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base hsb]
     exact_mod_cast hqq
   have hfun : (fun x : {h // ((V.entDom i.1.1).comps.get i.1.2).Mem h} =>
         ιshH V i.1.1 x.1 β₀ q₀)

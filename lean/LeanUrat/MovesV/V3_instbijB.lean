@@ -23,9 +23,10 @@
     letters are GIVEN by hT's fitting word, not constructed); the hSLF
     collapse identity rides the SP4 self-loop characterization
     (`SuccStep s s` forces a self-loop letter, which would survive collapse
-    into εT.word against hSLF).  Conditionality unchanged: `writeHeights` =
-    the recorded ADJ-2 shim `writeHeights_total_unscoped` (V3-3d), the ONE
-    sorryAx dependency. -/
+    into εT.word against hSLF).  M1 SOUNDNESS REPAIR (2026-07-29): the false
+    shim is DELETED; the statement gains the threaded domain-scoping
+    hypothesis `hdom` (the order-0 perimeter family) and returns the
+    perimeter-certified `writeHeights` value — sorry-free. -/
 import LeanUrat.MovesV.V3_instbijA
 import LeanUrat.MovesV.V3_tfin
 import LeanUrat.MovesSp.SP4_selfloopChar
@@ -297,13 +298,15 @@ private theorem exists_slotPoint {n : ℕ} (εT : EntTemplate n)
 theorem inst_bij_surj {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) (DE : XHDdEnt n S V)
     (εT : EntTemplate n) (hSLF : εT.word.filter (SelfLoopLetter n) = [])
+    (hdom : ∀ h : Hpt εT.entDim, (V.entDom εT).Mem h → Order0Perimeter εT h)
     (β₀ : S.Cell) (ε : EntShapeV n)
     (hT : ε.template? = some εT) (hR : Realizable V ε β₀) :
-    ∃ h : Hpt εT.entDim, (V.entDom εT).Mem h ∧ writeHeights εT h = ε := by
+    ∃ (h : Hpt εT.entDim) (hm : (V.entDom εT).Mem h),
+      writeHeights εT h (hdom h hm) = ε := by
   -- The inverse construction: extract the height/depth slots from ε and show
   -- that writing them back into the template's slots recovers ε (template-
   -- matching through readOfLetter, uniqueness by V3-3d's readFits_unique).
-  obtain ⟨h, hwh⟩ : ∃ h : Hpt εT.entDim, writeHeights εT h = ε := by
+  obtain ⟨h, hsome⟩ : ∃ h : Hpt εT.entDim, writeHeights? εT h = some ε := by
     obtain ⟨hword, hgsel, hmusel, hselRec⟩ := template?_fields hT
     -- (1) hT's non-junk fitting word, pinned to εT.word by hSLF
     have hfitEx : ∃ ws, SpWordFits n (ε.Phat : MovesD.ShapePrefix) ws := by
@@ -355,18 +358,15 @@ theorem inst_bij_surj {n : ℕ} {C : CtsFamily n} {S : StepSys n}
           ∃ hWF : ShapeWFOf n (ε.Phat : MovesD.ShapePrefix),
             EntTiesAt ⟨(ε.Phat : MovesD.ShapePrefix), hWF⟩ εT)]
       exact congrArg some (entShapeV_eq rfl hgsel hmusel hselRec)
-    have hmem2 : writeHeights εT hp ∈ writeHeights? εT hp :=
-      Option.get_mem (writeHeights_total_unscoped εT hp)
-    rw [hsome] at hmem2
-    exact ⟨hp, Eq.symm (by simpa using hmem2)⟩
-  refine ⟨h, ?_, hwh⟩
+    exact ⟨hp, hsome⟩
   -- Membership: ε realizes the template at h (Realizable = hR), so the XHD-d
   -- entrance face's no_orphanE places h in the semilinear domain.
-  apply DE.no_orphanE εT h β₀
-  -- instRealizable εT h β₀ := ∃ ε' ∈ writeHeights? εT h, Realizable V ε' β₀.
-  have hsome : writeHeights? εT h = some ε := by
-    rw [← hwh]
-    exact (Option.some_get (writeHeights_total_unscoped εT h)).symm
-  exact ⟨ε, hsome, hR⟩
+  -- (instRealizable εT h β₀ := ∃ ε' ∈ writeHeights? εT h, Realizable V ε' β₀.)
+  have hm : (V.entDom εT).Mem h :=
+    DE.no_orphanE εT h β₀ ⟨ε, hsome, hR⟩
+  -- the perimeter-certified value collapses onto ε through hsome.
+  exact ⟨h, hm, Option.some_injective _
+    ((Option.some_get
+      (writeHeights_total_of_perimeter εT h (hdom h hm))).trans hsome)⟩
 
 end LeanUrat.MovesV

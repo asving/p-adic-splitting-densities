@@ -22,10 +22,16 @@
     perimeter — `writeHeights_total` gains the single-letter stratum
     (`hword`/`hsl`) + the named `AnchorAdmissible` slot hypothesis (entDom
     owns the semilinear domain) and is PROVED; `spWord_faithful` gains the
-    non-junk fitting-word hypotheses (`hfit`/`hfit'`) and is PROVED.  The
-    V3–V7 consumers' unscoped totality token is quarantined in the recorded
-    shim `writeHeights_total_unscoped` (the ONE sorry of this file; Phase-B
-    entDom discharge re-keys the consumers onto the scoped theorem). -/
+    non-junk fitting-word hypotheses (`hfit`/`hfit'`) and is PROVED.
+    SOUNDNESS REPAIR 2026-07-29 (ratification verdict M1, the stop-the-line
+    warrant): the recorded ADJ-2 consumption shim `writeHeights_total_unscoped`
+    (a SORRIED universal whose negation instance `WHNeg.writeHeights_total_false`
+    is PROVED in-tree — the combined environment derived False) is DELETED.
+    Every consumer re-keys to the scoped TRUE theorem through the named
+    perimeter predicate `Order0Perimeter` (the order-0 perimeter family;
+    "MIRRORS the capstone's order-0 perimeter", wave-A record) and the
+    domain-scoping hypothesis `EntDomOrder0` threaded UP into consumer
+    signatures — statements gaining hypotheses is the honest cost. -/
 import LeanUrat.MovesV.V3_spwordA
 import LeanUrat.MovesSp.SP0_memCoherent
 
@@ -101,6 +107,18 @@ def AnchorAdmissible (s : MovesSp.Species) (pr : ℕ × ℕ) : Prop :=
   1 ≤ pr.1 ∧ Nat.gcd s.e pr.1 = 1 ∧
     (s.e : ℤ) ∣ ((s.s0 : ℤ) - MovesD.bezT s.e pr.1 * (zig.symm pr.2 : ℤ))
 
+/-- THE ORDER-0 PERIMETER at one slot point (M1 soundness repair,
+2026-07-29): the template word is ONE non-self-loop letter and the slot
+point satisfies the `AnchorAdmissible` semilinear conditions — exactly the
+scope of the PROVED `writeHeights_total` below, packaged as the named
+predicate every V3–V7 consumer threads up ("the order-0 perimeter family;
+MIRRORS the capstone's order-0 perimeter", wave-A record).  The unscoped
+∀-form is REFUTED (`WHNeg.writeHeights_total_false`,
+`V3_spword_negWitness2.lean`). -/
+def Order0Perimeter {n : ℕ} (εT : EntTemplate n) (h : Hpt εT.entDim) : Prop :=
+  ∃ s : MovesSp.Species, εT.word = [s] ∧ SelfLoopLetter n s = false ∧
+    ∀ pr ∈ εT.pairSlots h, AnchorAdmissible s pr
+
 /-- ORDER-0 / SELF-LOOP-FREE SCOPE (ADJ-2; machine-verified refutation of the
 unscoped ∀-form: `WHNeg.writeHeights_total_false`, `V3_spword_negWitness2.lean`
 — the standing record): totality of `writeHeights?` on the order-0 stratum —
@@ -108,8 +126,8 @@ the template word is ONE non-self-loop letter (`hword`/`hsl`, mirroring the
 capstone's order-0 decided perimeter) and the slot point satisfies the
 `AnchorAdmissible` semilinear conditions (`hadm` — entDom owns the domain).
 Phase B: deeper words need the letter-level species-coherence law +
-per-prefix congruences; the consumers' unscoped token is the recorded shim
-`writeHeights_total_unscoped` below. -/
+per-prefix congruences; the consumers' token is the packaged
+`writeHeights_total_of_perimeter` / `Order0Perimeter` below (M1 repair). -/
 theorem writeHeights_total {n : ℕ} (εT : EntTemplate n) (h : Hpt εT.entDim)
     (s : MovesSp.Species) (hword : εT.word = [s])
     (hsl : SelfLoopLetter n s = false)
@@ -326,24 +344,42 @@ theorem writeHeights_total {n : ℕ} (εT : EntTemplate n) (h : Hpt εT.entDim)
   rw [writeHeights?, hexp, hfold, Option.bind_some, dif_pos ⟨hWF₁, hties⟩]
   rfl
 
-/-- [E-PHASE CONSUMPTION SHIM (ADJ-2 ripple record) — the UNSCOPED totality
-token.  Its ∀-closure is REFUTED (`WHNeg.writeHeights_total_false`,
-`V3_spword_negWitness2.lean`); it rides ONLY as the V3–V7 consumers'
-totality citation (V3_instbijB/C, V3_aggfullB, V3_initrat, V5_compagg,
-V7_livB, V7_ctsm) pending the Phase-B entDom discharge: consumers hold
-entDom-membership `h`'s, and the XHD-d entrance face laws (`no_orphanE`/
-`no_strayE`) are the designated route to the scoped `writeHeights_total`
-above.  Recorded sorry — same sorryAx footprint the consumers carried before
-ADJ-2; do NOT widen its use.] -/
-theorem writeHeights_total_unscoped {n : ℕ} (εT : EntTemplate n)
-    (h : Hpt εT.entDim) : (writeHeights? εT h).isSome := by
-  sorry
+/-- the packaged form of `writeHeights_total`, keyed to the named
+`Order0Perimeter` predicate (M1 soundness repair: this REPLACES the deleted
+false shim `writeHeights_total_unscoped` — totality holds ONLY on the
+order-0 perimeter; the unscoped ∀-form is refuted in
+`V3_spword_negWitness2.lean`). -/
+theorem writeHeights_total_of_perimeter {n : ℕ} (εT : EntTemplate n)
+    (h : Hpt εT.entDim) (hsc : Order0Perimeter εT h) :
+    (writeHeights? εT h).isSome := by
+  obtain ⟨s, hword, hsl, hadm⟩ := hsc
+  exact writeHeights_total εT h s hword hsl hadm
 
-/-- the TOTAL instantiation map — the token every V3–V7 statement uses
-(rides on the recorded shim; see `writeHeights_total_unscoped`). -/
+/-- the SCOPED instantiation map — the token every V3–V7 statement uses.
+M1 soundness repair 2026-07-29: the unscoped total wrapper is GONE; the map
+now demands its point's `Order0Perimeter` certificate (proof-irrelevant, so
+any two certificates give definitionally equal values). -/
 noncomputable def writeHeights {n : ℕ} (εT : EntTemplate n)
-    (h : Hpt εT.entDim) : EntShapeV n :=
-  (writeHeights? εT h).get (writeHeights_total_unscoped εT h)
+    (h : Hpt εT.entDim) (hsc : Order0Perimeter εT h) : EntShapeV n :=
+  (writeHeights? εT h).get (writeHeights_total_of_perimeter εT h hsc)
+
+/-- THE DOMAIN-SCOPING HYPOTHESIS the V3–V7 aggregate consumers thread up
+(M1 soundness repair): every entrance-domain point of every template lies
+in the order-0 perimeter.  This is exactly the Phase-B entDom discharge
+duty — entDom OWNS the semilinear domain, and the XHD-d entrance face laws
+(`no_orphanE`/`no_strayE`) are the designated route. -/
+def EntDomOrder0 {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) : Prop :=
+  ∀ (εT : EntTemplate n) (h : Hpt εT.entDim),
+    (V.entDom εT).Mem h → Order0Perimeter εT h
+
+/-- component membership feeds the domain-scoping hypothesis (the listed
+components partition the semilinear domain). -/
+theorem EntDomOrder0.comp {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    {V : CtsMeasured n C S} (hdom : EntDomOrder0 V) (εT : EntTemplate n)
+    (j : Fin (V.entDom εT).comps.length) {h : Hpt εT.entDim}
+    (hm : ((V.entDom εT).comps.get j).Mem h) : Order0Perimeter εT h :=
+  hdom εT h ⟨_, List.get_mem _ _, hm⟩
 
 /-- SP.1 genuinely forgets ONLY heights: equal species words + equal retained
 height/u*-code slot data determine the WF prefix.  ORDER-0 SCOPE (ADJ-2;

@@ -19,13 +19,21 @@ theorem cell_ne_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   · exact ⟨(V.toCtsCells.stepKey (Sum.inl ⟨β, m, h, ha.some⟩)).1⟩
   · exact ⟨(V.toCtsCells.stepKey (Sum.inr ⟨v, m, h, ha.some⟩)).1⟩
 
+/-- NAMED OPEN INSTANTIATION DUTY (M4 soundness repair, ratification
+verdict 2026-07-29): the E-phase `∨ True` escape (`Or.inr trivial` — a
+propositionally vacuous seam) is DELETED; the honest statement is the
+∃-bundled duty — a table shape + measured side + rational-burden data built
+from the bound CTS objects (the V7-3a/V7-4 seam instances; a degenerate
+witness does NOT discharge the duty — MANIFEST record).  Quantifier repair
+as in `ledgerIV_inst`: `Nonempty (RatBurdens T M)` at the old ARBITRARY
+(T, M) arguments would be an unsafe sorry. -/
 theorem ratBurdens_exists {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V) (hEU : EntU V)
-    (hEC : EntCount V) (hA : AffEnt n)
-    (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T) :
-    Nonempty (MovesS.RatBurdens T M) ∨ True := by
-  exact Or.inr trivial
+    (hEC : EntCount V) (hA : AffEnt n) :
+    ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
+      Nonempty (MovesS.RatBurdens T M) := by
+  sorry
 
 end LeanUrat.MovesV

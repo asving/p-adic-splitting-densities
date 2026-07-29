@@ -11,9 +11,9 @@ namespace LeanUrat.MovesV
 theorem ratBurdens_iota {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
-    (β₀ : S.Cell) (i : V.EntIx β₀) :
+    (hdom : EntDomOrder0 V) (β₀ : S.Cell) (i : V.EntIx β₀) :
     ∃ P : MovesS.PolyGeom, P.countS = 1 ∧ P.geom = X.sEnt.Gent β₀ i := by
-  obtain ⟨P, h1, h2, _, _⟩ := initRat_comp V X.sEnt hEU hEC hA β₀ i
+  obtain ⟨P, h1, h2, _, _⟩ := initRat_comp V X.sEnt hEU hEC hA hdom β₀ i
   exact ⟨P, h1, h2⟩
 
 end LeanUrat.MovesV

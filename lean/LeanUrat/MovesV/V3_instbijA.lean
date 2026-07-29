@@ -21,11 +21,12 @@
     retained pair `(R.h, zig R.gam)` to `pairSlots[r]` (`ReadFits` clauses 7–8
     + `zig.apply_symm_apply`), so the slot point is recovered from the shape.
 
-    CONDITIONALITY: consumes `writeHeights` = V3-3d's total wrapper, which
-    rides the recorded ADJ-2 shim `writeHeights_total_unscoped` (the scoped
-    `writeHeights_total` is PROVED on the order-0 stratum; the unscoped
-    ∀-form stays refuted); sorryAx flows through that one dependency — the
-    injectivity mechanics here are otherwise closed. -/
+    M1 SOUNDNESS REPAIR (ratification verdict, 2026-07-29): the false shim
+    `writeHeights_total_unscoped` is DELETED; `writeHeights` is the SCOPED
+    map keyed to `Order0Perimeter` (the order-0 perimeter family), so
+    injectivity is stated at perimeter-certified points — statements gaining
+    hypotheses is the honest cost.  The proof is otherwise unchanged and
+    sorry-free. -/
 import LeanUrat.MovesV.V3_spwordD
 
 set_option linter.style.longLine false
@@ -156,14 +157,15 @@ theorem pairSlots_inj_of_selfLoopFree {n : ℕ} {εT : EntTemplate n}
 SELF-LOOP-FREE templates (see the file header for the adjudication record;
 V3-3d's `spWord_faithful` route is NOT used — the exact zip replaces it). -/
 theorem inst_bij_inj {n : ℕ} (εT : EntTemplate n)
-    (hSLF : εT.word.filter (SelfLoopLetter n) = []) :
-    Function.Injective (writeHeights εT) := by
-  intro h₁ h₂ heq
-  have hs₁ : writeHeights? εT h₁ = some (writeHeights εT h₂) := by
+    (hSLF : εT.word.filter (SelfLoopLetter n) = [])
+    {h₁ h₂ : Hpt εT.entDim}
+    (hp₁ : Order0Perimeter εT h₁) (hp₂ : Order0Perimeter εT h₂)
+    (heq : writeHeights εT h₁ hp₁ = writeHeights εT h₂ hp₂) : h₁ = h₂ := by
+  have hs₁ : writeHeights? εT h₁ = some (writeHeights εT h₂ hp₂) := by
     rw [← heq]
-    exact (Option.some_get (writeHeights_total_unscoped εT h₁)).symm
-  have hs₂ : writeHeights? εT h₂ = some (writeHeights εT h₂) :=
-    (Option.some_get (writeHeights_total_unscoped εT h₂)).symm
+    exact (Option.some_get (writeHeights_total_of_perimeter εT h₁ hp₁)).symm
+  have hs₂ : writeHeights? εT h₂ = some (writeHeights εT h₂ hp₂) :=
+    (Option.some_get (writeHeights_total_of_perimeter εT h₂ hp₂)).symm
   exact pairSlots_inj_of_selfLoopFree hSLF
     ((writeHeights?_pairSlots hSLF hs₁).symm.trans
       (writeHeights?_pairSlots hSLF hs₂))

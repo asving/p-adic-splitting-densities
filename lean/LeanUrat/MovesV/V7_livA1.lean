@@ -16,6 +16,7 @@ theorem ledgerIV_cells {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hq : q₀ ∈ V.Pools) (c : V.DCellO d.s d.m d.o d.α)
     (h : Hpt (S.dim (V.moveOf d))) (hmem : (V.cdom d c).Mem h) :
     ∃ N₀, ∀ N ≥ N₀, (V.cellEvt d x c h N).Nonempty := by
+  classical
   refine ⟨V.stabLvl (V.moveOf d), fun N hN => ?_⟩
   -- h ∈ HDom ⇒ the cell-refined count is positive, so the assignment filter is nonempty.
   have hcnt : 0 < V.cntc d x c h := X.dC.no_strayC d c h hmem hq x hzc
@@ -54,6 +55,7 @@ theorem ledgerIV_orphan {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hq : q₀ ∈ V.Pools) (c : V.DCellO d.s d.m d.o d.α)
     (h : Hpt (S.dim (V.moveOf d))) (hout : ¬ (V.cdom d c).Mem h) (N : ℕ) :
     V.cellEvt d x c h N = ∅ := by
+  classical
   -- h ∉ HDom ⇒ (contrapositive of no_orphanC) the cell-refined count is zero,
   -- so the assignment filter is empty and the biUnion collapses.
   have hnp : ¬ (0 < V.cntc d x c h) := fun hp =>

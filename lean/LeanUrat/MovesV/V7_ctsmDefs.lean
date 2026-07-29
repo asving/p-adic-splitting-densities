@@ -128,14 +128,47 @@ def CompSigma_Stmt (L : CtsmLedger n) : Prop :=
       = iotaEps L.cc ε β₀ q₀ * stepProdVal L.V L.X.s γ q₀
 
 def CompAgg_Stmt (L : CtsmLedger n) : Prop :=
-  HMC L.TE L.D → ∀ (β₀ : L.S.Cell) {α} (γ : Template n L.S α) {q₀ : ℚ},
+  HMC L.TE L.D → ∀ hdom : EntDomOrder0 L.V,
+    ∀ (β₀ : L.S.Cell) {α} (γ : Template n L.S α) {q₀ : ℚ},
     q₀ ∈ L.V.Pools →
-    aggMass L.cc L.X.s β₀ γ q₀
+    aggMass L.cc L.X.s hdom β₀ γ q₀
       = iotaValV L.V L.X.sEnt β₀ q₀ * stepProdVal L.V L.X.s γ q₀
 
+/-- the [3]-owned ESCAPE(E0) premise, ledger-typed (blueprint V7-2a
+NAME→HOME: "the [3]-owned ESCAPE(E0) premise … a def whose body cites the
+named MovesS object"): at every pool a per-block `MovesS.PoolHyp` package
+exists — its `e0` field IS `MovesS.EscapeE0` at the evaluated active
+kernel. -/
+def EscapeE0Rec (L : CtsmLedger n) : Prop :=
+  ∀ (e : ℕ) (he : e ∈ Finset.Icc 1 n) (q₀ : ℚ), q₀ ∈ L.M.Pools →
+    Nonempty (MovesS.PoolHyp L.T L.M L.RB e (L.hK e he) q₀)
+
+/-- the ρ(A) < 1-at-pools / Neumann-convergence conclusion, ledger-typed
+(blueprint V7-2a NAME→HOME; the named MovesS objects are
+`MovesS.pow_entry_tendsto` / `MovesS.e0_inv_nonneg`, U-23c/U-23d — "the
+Neumann series converges, and (I − A(q₀))⁻¹ ≥ 0"): at every pool package
+the active-kernel powers vanish entrywise and the Neumann inverse is
+entrywise nonnegative. -/
+def NeumannRec (L : CtsmLedger n) : Prop :=
+  ∀ (e : ℕ) (he : e ∈ Finset.Icc 1 n) (q₀ : ℚ), q₀ ∈ L.M.Pools →
+    ∀ (P : MovesS.PoolHyp L.T L.M L.RB e (L.hK e he) q₀) (i j : P.Act),
+      Filter.Tendsto (fun k => (P.A ^ k) i j) Filter.atTop (nhds 0)
+      ∧ 0 ≤ (1 - P.A)⁻¹ i j
+
+/-- M3 STATEMENT REPAIR (ratification verdict, 2026-07-29): the E-phase
+`→ True` conclusion (discharged by `trivial`, proving none of the note's
+solve content) is REPLACED by the blueprint V7-2a display — the (vi) solve
+sentence: GIVEN ESCAPE(E0), (ii-c) active-value agreement, HMC, ENT-COUNT
+and INIT-RAT, the frozen determinant hypothesis `MovesS.DetHyp` holds and
+the Neumann conclusion follows.  The factored solve is HMC-conditional
+(MOVES 8005 + 8222–8224); the (RB, hK) quantifiers are the ledger's OWN
+`L.RB`/`L.hK`, never a ∀-closure.  Consumed by `ctsM` as an explicit
+hypothesis (the honest perimeter cost — a sorried universal here could be
+FALSE for adversarial ledgers, the exact M1 failure mode). -/
 def SolveCond_Stmt (L : CtsmLedger n) : Prop :=
-  ActiveValueAgree L.T L.M L.RB L.hK → HMC L.TE L.D → EntCount L.V →
-  InitRat_Stmt L → MovesS.DetHyp L.T L.RB L.hK → True
+  EscapeE0Rec L → ActiveValueAgree L.T L.M L.RB L.hK → HMC L.TE L.D →
+  EntCount L.V → InitRat_Stmt L →
+  MovesS.DetHyp L.T L.RB L.hK ∧ NeumannRec L
 
 /-- the conclusions record — (v) has NO field (the kernel stays a LEDGER
 line; every consumer above takes HMC as an antecedent). -/

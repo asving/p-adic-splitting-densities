@@ -20,12 +20,20 @@ in a model with `emult ≡ 0` at a continuing cell of positive mass,
 surplusRow and the pointwise identity markedRow + terminalRow
 = 1 + surplusRow fails; no hmark-free proof exists.  It therefore rides as
 a ctsM hypothesis mirroring hb/hc/hd (NOT a CtsmLedger field), consumed
-exactly at the producer `part2_row` (V4-7). -/
+exactly at the producer `part2_row` (V4-7).
+M1/M3 SOUNDNESS REPAIR (ratification verdict, 2026-07-29): `hdom` is the
+threaded order-0 perimeter family (`EntDomOrder0` — the false totality shim
+is deleted; every `writeHeights` consumer demands the perimeter
+certificate), and `hsolve` is the restated (vi) solve sentence (the E-phase
+`→ True` escape is gone) — both ride as explicit ctsM hypotheses mirroring
+hmark; statements gaining hypotheses is the honest cost. -/
 theorem ctsM {n : ℕ} (L : CtsmLedger n)
     (hb : P1CtblAdd L.V L.X.w) (hc : P1NullRem L.V L.X.w)
     (hd : P1FixedHeightExact L.V L.X.w)
     (hmark : ∀ (τ : L.S.Cell) (c : DCellAll L.V τ),
-      c.isLeft → 1 ≤ markWeight L.V c) :
+      c.isLeft → 1 ≤ markWeight L.V c)
+    (hdom : EntDomOrder0 L.V)
+    (hsolve : SolveCond_Stmt L) :
     CtsmConclusions L :=
   { syntax_partition := fun s q₀ _ => meet_finite_uniform (L.C.bd s) q₀
     val_a := L.hVA
@@ -47,10 +55,10 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
       exact @ent_agg_finite n ε p F fp ff fin pol cs hd' N m Pr
     ent_agg_full := fun β₀ q₀ hq =>
       ⟨ent_agg_conv L.V L.X.sEnt L.X.dEnt β₀ q₀ hq,
-       fun hEU => ent_agg_ival L.V L.X.sEnt L.X.dEnt hEU β₀ q₀ hq⟩
+       fun hEU => ent_agg_ival L.V L.X.sEnt L.X.dEnt hdom hEU β₀ q₀ hq⟩
     ent_count_named := id
     init_rat := fun β₀ i =>
-      match initRat_comp L.V L.X.sEnt L.hEU L.hEC L.hAff β₀ i with
+      match initRat_comp L.V L.X.sEnt L.hEU L.hEC L.hAff hdom β₀ i with
       | ⟨P, hS, hgeom, _, hval⟩ => ⟨P, hS, hgeom, hval⟩
     part1 := by
       intro τ q₀ x hzc hq hact
@@ -131,7 +139,7 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
     -- binds hobs (∀ s, ObsCheck), which the ledger lacks, but its proof
     -- consumes only cc/X.s/X.sEnt/hEU (+ the bridge theorem, hobs-free).
     comp_agg := by
-      intro _hHMC β₀ α γ q₀ hq
+      intro _hHMC hdomS β₀ α γ q₀ hq
       classical
       letI : Finite (EntTemplate n) := template_finite n
       letI : Fintype (EntTemplate n) := Fintype.ofFinite _
@@ -148,12 +156,12 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
             (iotaShV L.V L.X.sEnt ⟨⟨εT, j⟩, hl⟩ q₀) := by
         intro εT hl j
         set i : L.V.EntIx β₀ := ⟨⟨εT, j⟩, hl⟩ with hi
-        have hIC : ∀ (h : Hpt εT.entDim),
+        have hIC : ∀ (h : Hpt εT.entDim) (hs : Order0Perimeter εT h),
             L.V.instCensus εT h β₀ q₀
-              = L.V.entCensus (writeHeights εT h) β₀ q₀ := by
-          intro h
-          have hsome : writeHeights? εT h = some (writeHeights εT h) :=
-            (Option.some_get (writeHeights_total_unscoped εT h)).symm
+              = L.V.entCensus (writeHeights εT h hs) β₀ q₀ := by
+          intro h hs
+          have hsome : writeHeights? εT h = some (writeHeights εT h hs) :=
+            (Option.some_get (writeHeights_total_of_perimeter εT h hs)).symm
           unfold CtsMeasured.instCensus
           rw [hsome]
           simp
@@ -161,16 +169,20 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
         have hconst : ∀ x : {h // ((L.V.entDom εT).comps.get j).Mem h},
             (L.V.instCensus εT x.1 β₀ q₀ : ℝ) = (L.V.entCount i q₀ : ℝ) := by
           intro x
-          have e1 := hP' x.1 x.2 q₀ hq
-          have e2 := hP' _ (linset_base_mem ((L.V.entDom εT).comps.get j)) q₀ hq
-          have hqq : (L.V.entCensus (writeHeights εT x.1) β₀ q₀ : ℚ)
+          have hsx : Order0Perimeter εT x.1 := hdomS.comp εT j x.2
+          have hsb : Order0Perimeter εT ((L.V.entDom εT).comps.get j).base :=
+            hdomS.comp εT j (linset_base_mem ((L.V.entDom εT).comps.get j))
+          have e1 := hP' x.1 x.2 hsx q₀ hq
+          have e2 := hP' _ (linset_base_mem ((L.V.entDom εT).comps.get j))
+            hsb q₀ hq
+          have hqq : (L.V.entCensus (writeHeights εT x.1 hsx) β₀ q₀ : ℚ)
               = (L.V.entCensus (writeHeights εT
-                  ((L.V.entDom εT).comps.get j).base) β₀ q₀ : ℚ) :=
+                  ((L.V.entDom εT).comps.get j).base hsb) β₀ q₀ : ℚ) :=
             e1.symm.trans e2
-          rw [hIC x.1,
+          rw [hIC x.1 hsx,
             show L.V.entCount i q₀
                 = L.V.instCensus εT ((L.V.entDom εT).comps.get j).base β₀ q₀ from rfl,
-            hIC ((L.V.entDom εT).comps.get j).base]
+            hIC ((L.V.entDom εT).comps.get j).base hsb]
           exact_mod_cast hqq
         have hfun : (fun x : {h // ((L.V.entDom εT).comps.get j).Mem h} =>
               ιshH L.V εT x.1 β₀ q₀)
@@ -188,16 +200,17 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
       --    (bridge + V0-3), non-landing templates give 0 (the ADJUDICATED law)
       have hinner : ∀ εT : EntTemplate n,
           (∑' hh : {h // (L.V.entDom εT).Mem h},
-            iotaEps L.cc (writeHeights εT hh.1) β₀ q₀)
+            iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀)
           = if hl : L.V.entLands εT β₀
             then ∑ j, iotaShV L.V L.X.sEnt ⟨⟨εT, j⟩, hl⟩ q₀ else 0 := by
         intro εT
         by_cases hl : L.V.entLands εT β₀
         · rw [dif_pos hl]
           have hbr : ∀ hh : {h // (L.V.entDom εT).Mem h},
-              iotaEps L.cc (writeHeights εT hh.1) β₀ q₀
+              iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀
                 = ιshH L.V εT hh.1 β₀ q₀ :=
-            fun hh => iotaEps_iotashH_bridge L.cc εT hh.1 β₀ hq
+            fun hh => iotaEps_iotashH_bridge L.cc εT hh.1
+              (hdomS εT hh.1 hh.2) β₀ hq
           rw [tsum_congr hbr]
           have hng : ∀ h : Hpt εT.entDim, 0 ≤ ιshH L.V εT h β₀ q₀ := fun h =>
             mul_nonneg (Nat.cast_nonneg _) (zpow_nonneg hq0.le _)
@@ -207,10 +220,13 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
             (fun j => hfiber εT hl j)).tsum_eq
         · rw [dif_neg hl]
           have hz : ∀ hh : {h // (L.V.entDom εT).Mem h},
-              iotaEps L.cc (writeHeights εT hh.1) β₀ q₀ = 0 := by
+              iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀
+                = 0 := by
             intro hh
-            exact L.cc.ιN_lands εT hh.1 β₀ hq hl (writeHeights εT hh.1)
-              (Option.get_mem (writeHeights_total_unscoped εT hh.1)) _
+            exact L.cc.ιN_lands εT hh.1 β₀ hq hl
+              (writeHeights εT hh.1 (hdomS εT hh.1 hh.2))
+              (Option.get_mem (writeHeights_total_of_perimeter εT hh.1
+                (hdomS εT hh.1 hh.2))) _
           rw [tsum_congr hz]
           exact tsum_zero
       -- ── the finite ε̊-aggregate re-indexes to the entLands-filtered EntIx
@@ -218,7 +234,7 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
           Fin (L.V.entDom εT).comps.length // L.V.entLands p.1 β₀} :=
         Fintype.ofFinite _
       have hKEY : (∑' εT : EntTemplate n, ∑' hh : {h // (L.V.entDom εT).Mem h},
-          iotaEps L.cc (writeHeights εT hh.1) β₀ q₀)
+          iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀)
             = iotaValV L.V L.X.sEnt β₀ q₀ := by
         rw [tsum_congr hinner, tsum_fintype]
         set G : (Σ εT : EntTemplate n, Fin (L.V.entDom εT).comps.length) → ℝ :=
@@ -274,14 +290,16 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
           rw [dif_pos i.2]
         rw [h4, h5, h6, h7, h8]
       -- ── assemble: pull the constant continuation factor, apply the key
-      have hpull : aggMass L.cc L.X.s β₀ γ q₀
+      have hpull : aggMass L.cc L.X.s hdomS β₀ γ q₀
           = (∑' εT : EntTemplate n, ∑' hh : {h // (L.V.entDom εT).Mem h},
-              iotaEps L.cc (writeHeights εT hh.1) β₀ q₀)
+              iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀)
             * stepProdVal L.V L.X.s γ q₀ := by
         unfold aggMass
         rw [← tsum_mul_right]
         exact tsum_congr fun εT => tsum_mul_right
       rw [hpull, hKEY]
-    solve_conditional := fun _ _ _ _ _ => trivial }
+    -- (vi) the solve sentence: restated with the note's actual conclusion
+    -- (M3 repair) and supplied as the explicit `hsolve` hypothesis.
+    solve_conditional := hsolve }
 
 end LeanUrat.MovesV
