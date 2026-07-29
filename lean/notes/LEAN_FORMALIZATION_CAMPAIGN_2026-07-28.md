@@ -525,3 +525,33 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   decide-checkable Lean (the strongest possible verification of the
   separation), and the dual ratification runs on AS-BUILT statements per
   the MovesS/MovesD precedent. No further full markdown audit rounds.
+  REV 9 LANDED (both) + THE HMCAUG ESCALATION (2026-07-29). T REV 9: the
+  NsBridge split executed with two APPROVED writer-initiative scopes
+  (NsGrowth over Realizable+ScaleFaithful towers — the bare form was
+  refutable, C7-3 genre pre-empted; NsPricing without an idle JetTower
+  premise — the tautology lesson applied prospectively); IsLumpLocus zero
+  clause; mechanical a-i; §9 E-phase handoff. V REV 9 (after a 529 re-run):
+  the census-level ¬HMC toy EXECUTED (decide-checkable; zc-cannot-carry-
+  branch-memory recorded) but the writer WITHDREW the HMCAug separation
+  leg with a forcing-chain derivation: assign_cover + tgam_last bar
+  one-step census suppression in ANY refined system, so no refinement of
+  a census-coupled toy factors — HMCAug ⟺ HMC against the standing
+  interface. NO false check entered the blueprint (the writer withdrew
+  rather than faked — the discipline holding under pressure).
+  ORCHESTRATOR ANALYSIS: all three coupling mechanisms are barred
+  structurally (zc by ext_zc; enriched-history by XHD-u's representative
+  uniformity — a genuine coupling through the realizing f breaks the
+  note's OWN package at the tail step; census by the forcing chain). The
+  note never exhibits a package-satisfying coupled instance either — it
+  PRICES the possibility (the wall channel). PROPOSED RESOLUTION: the
+  separation-witness obligation was misconceived; the interface's real
+  duties (HMC unprovable — sweeps clean; package typed faithfully;
+  carrier-level ¬HMC witnessed) are all met. ALTERNATIVE under
+  adversarial review (the focused Codex adjudication, /tmp/leanadj_hmcaug):
+  HMCAug as typed may over-demand by requiring the refined system's full
+  two-sided exactness; the note-faithful weaker form may be the PIECEWISE-
+  PRODUCT shape of the coarse domain (dom γ = ⋃_b ∏ per-state factors —
+  satisfiable at the toy, strictly weaker than HMC, no refined exactness
+  premises to trigger the chain). AWAITING the verdict; the E-phase
+  transition proceeds regardless (the escalation gates only the HMCAug
+  statement's final type, one unit).
