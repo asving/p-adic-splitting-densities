@@ -1124,8 +1124,11 @@ structure VerdictModelT (T : TreeModel p F n N m pol)
   capIrr : ∀ {P : Shape n}, PrefIdx n pol P → ℕ
   capIrr_law : CapIrrLaw p F n pol capIrr
 
-/-- the WITHDRAWN uniform cap-envelope locality — DISPLAYED at REV 4 (falsifier-only
-vocabulary; T-D4 exhibits its failure). -/
+/-- the WITHDRAWN uniform cap-envelope locality — DISPLAYED at REV 4.
+[STATEMENT REPAIR 2026-07-29: the planned T-D4 falsifier is REFUTED — this Prop
+HOLDS for every `T`, `CA` at finite `m` (cap := `sup(levelOf) + 1` trivializes
+the premise); T-D4 now proves `capEnvelope_cellLocal_holds`. Withdrawn because
+CONTENT-FREE, not because refutable.] -/
 def CapEnvelopeCellLocal (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) : Prop :=
   ∃ cap : ℕ, ∀ (es : EntSt p F n) (x x' : Box p m),

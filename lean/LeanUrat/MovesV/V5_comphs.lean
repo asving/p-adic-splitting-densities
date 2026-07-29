@@ -1,5 +1,16 @@
 /-  MovesV unit V5-4 `comp_hsum` — (COMP-hΣ) GIVEN XHD-d/s, NO HMC: the
-    unfactored per-template series, via V0-3 over the listed components. -/
+    unfactored per-template series, via V0-3 over the listed components.
+    STATEMENT REPAIR 2026-07-29 (adjudicated; machine-verified refutation from
+    the prover fleet): the E-phase RHS hardcoded `iotaEps` = ιN at the entrance
+    level, where the value law (V5-2c `comp_h`, stabilized at `compLvl`) forces
+    ιN AT `compLvl V TE ε γ` — the statement was off by exactly
+    q₀^(−n·(compLvl − entLvl)). RHS re-keyed to
+    `cc.ιN ε β₀ q₀ (compLvl V TE ε γ)` (localized fix; V5-5 `comp_sigma` is
+    internally consistent and untouched). Blueprint row
+    (MOVESV_LEAN_BLUEPRINT_2026-07-28.md V5-4): "(COMP-hΣ), GIVEN XHD-d/s, NO
+    HMC: HasSum (fun h : {h // (dom γ).Mem h} => μ̂(ε, γ, h) q₀)
+    (ι_{e,ε,β₀} q₀ * Σ_{h∈H(γ)} ∏ (T·g(h_i)))" — the ι symbol is read at the
+    stabilized composite level, exactly as `comp_h`'s display fixes it. -/
 import LeanUrat.MovesV.V5_comphC
 import LeanUrat.MovesV.V0_partition
 import LeanUrat.MovesV.V1_xhds
@@ -24,7 +35,8 @@ theorem comp_hsum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (Xs : XHDs n S X D) (hTie : MarkFiberTie TE) (ε : EntShapeV n)
     (β₀ : S.Cell) {α} (γ : Template n S α) {q₀ : ℚ} (hq : q₀ ∈ V.Pools) :
     HasSum (fun h : {h // (D.dom γ).Mem h} => μhatVal cc ε β₀ γ h.1 q₀)
-      (iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
+      (cc.ιN ε β₀ q₀ (compLvl V TE ε γ)
+        * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
         * gcVal Xs γ q₀) := by
   classical
   have hqS : q₀ ∈ S.Pools := V.toCtsCells.pools_sub hq
@@ -45,18 +57,17 @@ theorem comp_hsum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     rw [hval] at H
     exact H
   have hmul := hkey.mul_left
-    (iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ))
+    (cc.ιN ε β₀ q₀ (compLvl V TE ε γ)
+      * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ))
   have hfun : (fun h : {h // (D.dom γ).Mem h} => μhatVal cc ε β₀ γ h.1 q₀)
       = (fun h : {h // (D.dom γ).Mem h} =>
-          iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
+          cc.ιN ε β₀ q₀ (compLvl V TE ε γ)
+            * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
             * gProd X γ h.1 q₀) := by
     funext h
     have hcomp := comp_h cc P X U hTie ε β₀ γ h.1 h.2 hq
       (compLvl V TE ε γ) (le_refl _)
     rw [μhatVal, hcomp]
-    have hiota : cc.ιN ε β₀ q₀ (compLvl V TE ε γ) = iotaEps cc ε β₀ q₀ := by
-      sorry
-    rw [hiota]
   rw [hfun]; exact hmul
 
 end LeanUrat.MovesV

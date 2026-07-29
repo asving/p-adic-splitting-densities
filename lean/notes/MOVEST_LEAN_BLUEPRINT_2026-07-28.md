@@ -4321,11 +4321,24 @@ theorem cellLevel_local_sound (T : TreeModel p F n N m pol) (CA : …)
     CA.cellOf (embE o) x = CA.cellOf (embE o) x'
 theorem capEnvelope_cellLocal_false : ∃ …, ¬ CapEnvelopeCellLocal …
 ```
+[BRACKET-CORRECTION 2026-07-29 (adjudicated statement repair; machine-verified
+refutation from the prover fleet): the falsifier row is UNPROVABLE — over finite
+`Fin m` the uniform cap `sup(levelOf) + 1` always exists and collapses the
+envelope's premise to `x = x'`, so `CapEnvelopeCellLocal T CA` HOLDS for every
+`T`, `CA` at every fixed finite `m` (the existential-`m` restatement is equally
+false). The unit is FLIPPED to the positive lemma
+`capEnvelope_cellLocal_holds (T) (CA) : CapEnvelopeCellLocal T CA` (PROVED,
+D4_cellLevel.lean). The W4-2(b)(ii) record is sharpened, not weakened: the
+withdrawn uniform-cap form is CONTENT-FREE at finite m — locality with one cap
+above every level says nothing — which is exactly why the per-state
+`cellLevel`/`siteLevel` law is the faithful replacement. The 2-coordinate toy
+falsifier sketch below is RETIRED.]
 moves_ref: MovesD §2.5 W4-2(b)(ii) — the withdrawn cap-envelope `cell_local`
 replaced at the per-state level (`siteLevel` NOW DEFINED, §2.5 — rev 2, Fable
 GAP-2). deps: Defs §2.5/2.9, Gates toy. sketch: soundness is CA.cell_local
 rewritten; the falsifier is a 2-coordinate toy witness (surrogate + bridge) — the
-(b)/(c) conflation exhibited, closing Codex#7 c.6 BOTH directions.
+(b)/(c) conflation exhibited, closing Codex#7 c.6 BOTH directions. [RETIRED per
+the bracket-correction above.]
 hypothesis_fields: none.
 
 **T-D5 `MovesT.d4rcyl_canonical` · `D5_d4rcyl.lean` · medium — REV 2 (Fable CRIT-4,
