@@ -169,7 +169,15 @@ theorem OffsetPPin.no_pin_of_wrong_weight {pol : CanonPolicy p F} (ν : Node p F
 
 /-- `CD_canonical` — the D2a class-count identity, SPECIALIZED to a pinned policy: the
 recorded consumer of W4-5. Content = `CD_eq`; the pin binder records that the note's C is
-C at THE canonical policy (note 4646: "The classifier is run with ONE lift rule"). -/
+C at THE canonical policy (note 4646: "The classifier is run with ONE lift rule").
+CANONICAL-UP-TO-THE-RESIDUE (confirm-3 adjudication, 2026-07-29): `OffsetPPin` pins
+center-realizer COMPATIBILITY — the maximal content statable in exported `Node`/`Stage`
+vocabulary (confirm-3: "the strongest faithful projection currently expressible"; the
+per-slot recursive law needs the lower-stage expansion/realizer data). A pinned `pol`
+is therefore "the note's policy" ONLY jointly with the W4-5 discharge duty (owner HC-1:
+export the lower-stage realizer vocabulary + the (S6b') slot-selection law). Until that
+discharge, a (w,R)-equal non-canonical center realizer can also carry this pin — the
+NAMED open boundary, not a silent claim. -/
 theorem CD_canonical {n : ℕ} {pol : CanonPolicy p F} {P : Shape n}
     (pin : OffsetPPin pol) (hnorm : PresentNorm n pol P)
     (hne : (P : ShapePrefix).reads ≠ []) :

@@ -67,3 +67,15 @@ blueprint↔corpus references against THIS state, not the pre-repair one.
     the next MovesD ratification/contract pass absorbs the covering clause into
     the W4-1 contract text (its own §2.5 row); until then the MovesT §5 W4-1 row
     carries the change with this entry as the cross-corpus pointer.
+
+11. W4-5 FINAL BOUNDARY (confirm-3, 2026-07-29): `OffsetPPin` is typed to the
+    expressible maximum — support progression, determinism, non-vacuity, AND the D.10
+    center-realizer value/weight pin (`digits_prescribed`; the IsEmpty theorems
+    `no_pin_of_wrong_value`/`no_pin_of_wrong_weight` kill every wrong-observable
+    policy by type). Codex confirm-3 concedes this is "the strongest faithful
+    projection currently expressible" in exported Node/Stage vocabulary. The NAMED
+    residue = the (S6b') sub-residual slot selection (which (w,R)-equal center
+    realizer): the W4-5 DISCHARGE DUTY, owner HC-1 — export the lower-stage
+    expansion/realizer data + the per-slot recursive law. `CD_canonical` is
+    canonical-UP-TO this residue (docstring says so explicitly). D11a's uniform
+    incidence face: `mult_sum_opt` CONFIRMED faithful to L5.
