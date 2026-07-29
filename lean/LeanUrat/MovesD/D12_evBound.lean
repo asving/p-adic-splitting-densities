@@ -47,7 +47,7 @@ theorem D4R1_EV (hne : (P : ShapePrefix).reads ≠ []) (N : ℕ)
       ≤ (∑ x : Box p m, S.mult x) * p ^ ((P : ShapePrefix).A' n) :=
         Nat.mul_le_mul_right _ hsum
     _ = (∑ᶠ i : PrefIdx n pol P, Nat.card ↥(S.fiber i)) * p ^ ((P : ShapePrefix).A' n) := by
-        rw [mult_sum]
+        rw [mult_sum S hne]
     _ = Nat.card (PrefIdx n pol P) * p ^ (n * N) := D4R1_SUM hne N hA S
 
 end LeanUrat.MovesD

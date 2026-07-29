@@ -40,7 +40,7 @@ theorem D4R1_EV_iff (hne : (P : ShapePrefix).reads ≠ []) (N : ℕ)
   -- D11a (mult_sum): Σ_x mult x = Σᶠ_i #fiber i.  Combine into the multiplicity form.
   have key : (∑ x : Box p m, S.mult x) * p ^ ((P : ShapePrefix).A' n)
       = Nat.card (PrefIdx n pol P) * p ^ (n * N) := by
-    rw [mult_sum S]; exact hsum
+    rw [mult_sum S hne]; exact hsum
   -- The count-equality is equivalent to card(event) = Σ_x mult x (cancel p^{A'}).
   have hEQ : (Nat.card ↥S.event * p ^ ((P : ShapePrefix).A' n)
         = Nat.card (PrefIdx n pol P) * p ^ (n * N))

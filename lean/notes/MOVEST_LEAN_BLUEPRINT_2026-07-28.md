@@ -1,4 +1,4 @@
-# MovesT LEAN BLUEPRINT (2026-07-28) — §T-ASSEMBLY: the branch-to-tree mass assembly — **REV 6**
+# MovesT LEAN BLUEPRINT (2026-07-28) — §T-ASSEMBLY: the branch-to-tree mass assembly — **REV 7**
 
 CORPUS: `lean/LeanUrat/MovesT/` (namespace `LeanUrat.MovesT`). WAVE 4.
 GROUND TRUTH: `lean/notes/MOVES_2026-07-24.md` §T-ASSEMBLY, **rev 7** (body lines
@@ -38,69 +38,95 @@ fresh counter-computations against four of the five rev-5 mechanisms (a
 childless TOWER bypassing `ScaleFaithful` entirely; the `trackOf := 0` OmSat
 vacuity; the `hdict` two-verdict dispute; a literal `Realizes ∧ ¬Realizes`
 contradiction in the henflip gate) plus the `SibCount` finiteness
-strengthening. THIS REVISION (rev 6) repairs the UNION of the round-5 verdicts
-(Codex-5's 6/6 + Fable-5's 1/2 = 15 rows); the disposition table is §7
-(round-5; the round-4 table is retired to the rev-5 file history). The
-structural changes every reader should load first:
- (i) **the o = none seam is RE-SCOPED** (Fable-5 CRIT-1, the fix shape executed
-   verbatim): `CellAssign.child_cell` is SCOPED to some-states (§2.9) — the
-   o = none iff was jointly unsatisfiable with `RootCellsOf` + the built
-   `mem_single` at every positive-exponent one-side head window, F1's own 10-pin
-   head window included (§0 record 13, with the F1 satisfiability RECOMPUTED
-   after the fix); the ⊆ face survives as `child_root_sub` (eligibility, never
-   event-forcing); the root's ALL-AND-ONLY law is per-track — `RedCellPartition`
-   at `.red` entrances, whose cells DO read window digits; T-E5 gains
-   `trackOf`/`hred` and its bridge step (2) re-routes through them; T-D1/D2/D3's
-   o = none consumptions are restated at some-states; the toy `child(none)`
-   tables PIN the head read's window digits (the rev-5 mem_single refutation at
-   x* = (0,0,1,0,…) now dies on BOTH carriers — recomputed, census integers
-   unchanged);
- (ii) **`KBTotTower` gains the covering display's LEVEL-0 leg** (Codex-5 #1):
-   `root_total` — "At level 0, m_i = 1 gives τ-hen and m_i ≥ 2 opens the window
-   — total" (7113–7115) — plus the chart family `χat`; the childless TOWER
-   (mem-some empty everywhere, every `scale_grow` antecedent false) died NOWHERE
-   in rev 5 and now fails `root_total` at the zero member (§0 record 14);
- (iii) **the (SIB) kernel carries the note's own quantifier** (Codex-5 #3):
-   `Tsub.Finite` joins the S-clause of `SibCount`/`SibCountShallow`/T-S1/T-S3/
-   `SplitSiteData.hS`/PCI — the note prices "a PRESCRIBED FINITE SUBTREE T_j"
-   (7287–7289), and rev 5 silently strengthened the central open hypothesis to
-   arbitrary subtrees;
- (iv) **`ClusterFactorOf` pins the track value itself** (Codex-5 #4): monic ∧
-   irreducible ∧ degree ∣ cluster degree on `trackOf` at H's head — `trackOf :=
-   0`/junk made the track-power clause witness-free and `OmSat` vacuous (§0
-   record 15);
- (v) **the henflip gate is REVERSED** (Codex-5 #6): carrier A's own henV IS ∅,
-   so rev 5's `withHenV ∅` was the identity — the gate pair asserted
-   `Realizes ∧ ¬ Realizes`; the flip now inserts a SPURIOUS hen verdict
-   (∅ → {(1,1)}), same clause-(iii) regression channel (§0 record 16);
- (vi) **T-E10's `hdict` carries its TWO-VERDICT comparison row** (Codex-5 #5 vs
-   Fable-5 §1(4), the note's own per-clause sentence 7537–7540 on the row —
-   HELD: owner presented-face data, not fresh conclusion content), and
-   `shapeExp` is DISPLAYED with its defining clause (gap #12) so the premise is
-   checkable; the E10a/E10b split is pre-approved (the bundling half);
- (vii) **the remaining undisplayed accessors are DISPLAYED**: `hScale`/`hRes`
-   (gap #7 — bodies + the note's defining clauses, §2.5a) and `belowEnt` (gap
-   #9 — with `trackOf` threaded through `SubtreeFiber`/`TreeScaffold`, so the
-   `.red` scope central to the T-E7/E8 repair is actually pinned);
- (viii) **`fibOf` gains representative-key injectivity** (gap #10): the NAMED
-   premise `ReprInj` (§2.10, owner HC-2/PresentNorm) — `hkeys` gives uniqueness
-   by ADDRESS, not by representative history;
- (ix) **the toy node tables are extended** (gap #11 part; Fable-5 GAP-1):
-   Dwidth column pinned (= 1 throughout, making `IrrHalts`/`childWidth`
-   arithmetic table-computable); carrier B's h/slopes pinned LAWFUL at 2/3
-   (head 1) — rev 5's 0/1 violated the table's own `HistLawful` consistency
-   clause (slope 0 contradicts `hh : 1 ≤ h`; slope 1 fails the strict chain);
- (x) **the §2.2 ShapeWF roster enumerates all 12 clauses** (Fable-5 GAP-2):
-   `root_box` added, sourced to `HistLawful`'s root-box clause (the L3 bound).
-
+strengthening. **Rev 6 DUAL-REJECTED** — Codex 8 crit / 6 gap
+(`MOVEST_AUDIT_CODEX6_2026-07-29.md`) + Fable 2 crit / 3 gap
+(`MOVEST_AUDIT_FABLE6_2026-07-29.md`); the round-6 verdicts CONVERGED for the
+first time on a headline row (Codex-6 #1 = Fable-6 GAP-1: `root_total`'s untied
+∃) and split on the rest: Fable-6 walked the entire §7 table as textually real
+(15/15 rows present) but found the rev-6 toys' `cellOf .red` guards and
+`cellLevel := 3` decide-FALSE (two criticals in the closed-form tables), while
+Codex-6 re-verified only 8 of the 11 claimed F repairs, rejected BOTH standing
+BDY holds (W4-1; ns_bridge), and landed the OmSat degree-(> n) escape, the
+non-closed accessors (`windowBlockHts`/`slot0Block`/`bandFresh`), the toy DATA
+fields, and the stale post-ratification seam names. THIS REVISION (rev 7)
+repairs the ORCHESTRATOR-ADJUDICATED round-6 union
+(`MOVEST_REV7_CHARGE_2026-07-29.md` — the rulings bind; W4-1's hold is
+OVERTURNED at the fifth round, hdict's hold STANDS); the disposition table is
+§7 (round-6; the round-5 table is retired to the rev-6 file history). Rev-6's
+structural-change list (the o = none re-scope (i)–(x)) is retired with it; the
+REV-7 changes every reader should load first:
+ (i) **the W4-1 interface gains the (c2) covering clause `child_cover`**
+   (ruling 1, the 5th-round OVERTURN of the four-round BDY hold): the note's
+   covering case-analysis lives AT this layer (7112–7119), so `CellAssign`
+   carries the per-track root covering — a repeated reduction factor forces a
+   realized root child IN that track's `.red` branch set (D4R.0-K(a)'s
+   L1-totality warrant); the constant-false-child/unit-cell model is now FALSE
+   at the W4-1 interface ITSELF (`constFalse_childCover_false`, T-D2). This is
+   a CONTRACT CHANGE, recorded for the MovesD-side W4-SYNC (§5 W4-1 row +
+   `W4_SYNC_DELTAS_2026-07-29.md` entry 10). The toys do NOT instantiate
+   `child_cover` (they are deliberately partial — one realized branch per
+   track); it is a canonical-instance law, hypothesis-fielded where consumed;
+ (ii) **`root_total` is PER-TRACK** (ruling 2 — Codex-6 #1 = Fable-6 GAP-1,
+   converged): ∀ ψ repeated, ∃ ν with `trackOf ν = ψ` carrying the child;
+   `KBTotTower` gains the `trackOf` parameter ("one track per root cluster" —
+   the untied ∃ let one child witness every repeated factor); the childless
+   tower still dies at the zero member;
+ (iii) **the toy `winC` guards pin the reduction coords** (Fable-6 CRIT-1, fix
+   verbatim): `x0 = 0 ∧ x1 = 0` joins BOTH carriers' `.red` guards —
+   `child_cell_red` was decide-FALSE at g ≠ toyG (witness g = (1,0),
+   x = (1,0,0,…)); `cellLevel := 4` (Fable-6 CRIT-2 — at 3, coords 4/5 sat at
+   level 3 outside `cell_local`'s premise while `.st` cells read them); all
+   census integers recomputed unchanged (§T-G1);
+ (iv) **`OmSat`'s track value is REALIZED** (Codex-6 #3): `ClusterFactorOf`
+   ties `trackOf` at H's head to membership in the realized f̄-factor multiset
+   (`normalizedFactors (f.map toZMod)` at the `ReadsOf`-realized f) — the
+   monic-irreducible-degree-(> n) escape (∣ fails on every cluster degree ≤ n,
+   witness-free again) dies at the membership conjunct;
+ (v) **every load-bearing accessor is CLOSED** (Codex-6 #4/#7):
+   `windowBlockHts`/`hScale`/`hRes` defined over the built `History.htH`/
+   `History.floorH`/`Node.μ·Dwidth` (§2.5a); `bandFresh`/`shapeExp` and T-D7's
+   `bandLevels` defined over the built `ShapePrefix.bandS`/`NPband`/`Nshape`
+   (§2.5) — no E-phase name-binding remains in the principal non-vacuity
+   mechanism or in `hdict`'s checkability chain;
+ (vi) **`ns_bridge` is the TYPED seam `NsBridgeStmt`** (Codex-6 #5, hold
+   REJECTED): the note's μ-sentence is now the slot's TYPE — an abstract
+   cap-mass field (antitone, continuity-from-above, finite-level read-off)
+   forcing `μclass = 0`; `ns_bridge := True` is no longer an instantiation
+   (§2.10, T-D12); owner unchanged (MovesS wave 5 / [2b]);
+ (vii) **the toy node tables pin EVERY data field** (Codex-6 #6): species/σ/
+   e/h/s/t/g/μ/a/s0/wSide/Dwidth/line/ustar/gam/zbar/center/lift/ψ/pat/Ranch
+   all pinned (§T-G1's full-roster table); no "E-phase-bound junk" survives in
+   any DATA position — the one non-literal pin (σ := the level-0 stage) carries
+   its displayed read-surface obligation (`card ↥σ.K = 2`);
+ (viii) **the seam ledger is re-keyed to the post-ratification corpora**
+   (Codex-6 #8 + g2–g6 = Fable-6 GAP-2/GAP-3, per
+   `W4_SYNC_DELTAS_2026-07-29.md`): W4-4 → the built `NPIDPin`/`NthrSup`/
+   `noteNP`/`D4R4_all_noteRange` (T-D7 re-keyed, imports by name); the W4-5 row
+   ADDED (`OffsetPPin`/`CD_canonical`, consumer duty adjudicated); S-8 →
+   `wsh17_pin` the projection-def = `W17ii` (duty = PROVE, owner MovesV);
+   S-10 → `RS4Chain.legs_read` + the `deltaFactors` continuing-members
+   narrowing; T-F4/the CONSUMES roster keyed to `Presented.event`/`mult` under
+   the IN-FLIGHT ∅-shape redefinition (eventO/multO deleted); census 19 → 20;
+ (ix) **the F1 joint WITNESS is a disclosed E-phase obligation** (Codex-6 g1):
+   the 5^18 identity is cardinal compatibility, not existence — the
+   CellAssign/ledger/scaffold witness at the F1 ten-pin window is now §6's
+   obligation row, never silently claimed.
 CONSUMES (all built, sorry-free cores):
 * `LeanUrat.MovesD` — `Box`, `topLocus`, `ShapeRead`/`ShapePrefix`/`ShapeWF`/`Shape`,
-  `CanonPolicy`, `PrefSet`/`PrefIdx`/`reprOf`, `Presented` (`fiber`/`event`/`mult`),
+  `CanonPolicy`, `PrefSet`/`PrefIdx`/`reprOf`, `Presented` (`fiber`/`event`/`mult` —
+  REV 7 (Codex-6 #8, W4-SYNC delta 8): keyed to the IN-FLIGHT MovesD repair-round-2
+  contract, where the ∅-shape dispatch (reads = [] ↦ univ/1) moves INSIDE
+  `event`/`mult` and `eventO`/`multO` are DELETED; every MovesT consumer reads
+  `event`/`mult` under the NEW semantics, and the D14c laws' content
+  (`A'(∅) = 0`, univ/1 at the empty shape) rides the redefined names),
   `Threshold`, `TreeModel` (STRUCTURAL fields only: mem/child/root_mem/mem_single/
   mem_snoc/mem_realizable), the pinned Props `D4R_CYL`, `ClassFiberWelldef`,
   `History.snoc`/`History.IsPrefixOf`, the mass laws (D10 `D4R1_SUM` style:
   division-free `Nat.card · * p^A = p^(nN)` identities), SW1 `ShapeWF_of_matches`,
-  the D4R.4/L12 threshold apparatus (`Nshape`, `NPband`, `Shape.NP`, D4R4all).
+  the D4R.4/L12 threshold apparatus — REV 7 (Codex-6 g2, W4-SYNC delta 6): the
+  BUILT `ShapePrefix.bandS`/`NPband`/`Nshape`, `Shape.NP`, and the typed NP-ID
+  family `NPIDPin`/`NthrSup`/`noteNP`/`D4R4_all_noteRange` (NPv_npid.lean),
+  imported BY NAME (the rev-4 rule); the pre-repair "D4R4all" pointer is retired.
 * `LeanUrat.MovesSp` — `Species`, `StageLaws`, `Coherent` (G1–G6), `CatalogueWord`
   (confirming-letter convention W = 1), `CanTreeModel` (typing only).
 * `LeanUrat.MovesC` — `History`/`Node`/`JetSetup`/`Locus`/`AdmissibleZ`/`SHZ`/
@@ -147,10 +173,10 @@ silently, none is strengthened.
 | **(SIB-STEP)** | 7382–7388 stacked-vector form | `SibStep` (Defs §2.6), def only, typed over `JointStage` | OPEN; the (SIB-STEP)⟹(SIB) filtration lemma (7388–7391) is a recorded wave-5 obligation, NOT a unit (the note itself lists it inside the open kernel, §T.5(1)) |
 | **(JC-multi)** | 7473–7483: multi-side joint cell = side product, priced AT THE ENTRANCE STATE | `JCmultiAt T CA χ es c ss` (Defs §2.5) — PER-SITE, tied to the site's cell/ENTRANCE events (rev 2: Fable CRIT-2; rev 3: the entrance carrier + the clause-partitioned `sideExp`, Codex-2 #8/#9) | OPEN, census-untested; hypothesis `hjcm` quantified over the TREE'S OWN multi-side sites ONLY (rev 2: Codex 12–13 — single-side trees consume nothing) on T-E7/E8/E10/E11 |
 | **(HEN-LIFT)** | 7254–7261 declared statement | `HenLift` (Defs §2.7, now fully typed) | VP-SOUND citation obligation; discharge should PREFER Mathlib's Hensel (campaign §4) — until then a hypothesis field, never consumed by a mass unit |
-| **(OM-SAT)** | 7262–7273 declared statement | `OmSat` (Defs §2.7) — REV 5 (Codex-4 #7): the factor-assignment carrier `ClusterFactorOf` is DISPLAYED (monic + cluster-degree tie + track tie via `trackOf` + divides a `ReadsOf`-realized monic degree-n f), so the `False`-reading vacuity is dead; the rev-4 "consumed by nothing" language is RETRACTED — `VPPinned.om_sat` consumes it. REV 6 (Codex-5 #4): the TRACK VALUE ITSELF is pinned — monic ∧ irreducible ∧ degree ∣ cluster degree on `trackOf` at H's head; `trackOf := 0`/junk made the track-power clause witness-free and `OmSat` VACUOUS (§0 record 15) | VP-SOUND citation obligation (GMN/Montes cite; axiomatization would need the faithfulness-entry process). Hypothesis field only |
+| **(OM-SAT)** | 7262–7273 declared statement | `OmSat` (Defs §2.7) — REV 5 (Codex-4 #7): the factor-assignment carrier `ClusterFactorOf` is DISPLAYED (monic + cluster-degree tie + track tie via `trackOf` + divides a `ReadsOf`-realized monic degree-n f), so the `False`-reading vacuity is dead; the rev-4 "consumed by nothing" language is RETRACTED — `VPPinned.om_sat` consumes it. REV 6 (Codex-5 #4): the TRACK VALUE ITSELF is pinned — monic ∧ irreducible ∧ degree ∣ cluster degree on `trackOf` at H's head; `trackOf := 0`/junk made the track-power clause witness-free and `OmSat` VACUOUS (§0 record 15). REV 7 (Codex-6 #3): the track value is tied to the REALIZED factorization — membership in `normalizedFactors (f.map toZMod)` at the `ReadsOf`-realized f; rev 6's abstract lawfulness still admitted a degree-(> n) monic irreducible `trackOf` (divides NO cluster degree ≤ n — witness-free, vacuous again, §0 record 19) | VP-SOUND citation obligation (GMN/Montes cite; axiomatization would need the faithfulness-entry process). Hypothesis field only |
 | **X.3 / CL-4** | 7041–7048: density form of (TGT) only | NOT typed here | this corpus states ONLY finite/normalized-count forms (TREE-EXP/TREE-N are X.3-FREE, 7046–7048); no unit consumes X.3 |
 | **XRB, [2r] REL.2(a)/(b)/(d), PCI** | §T.5(5) 7644–7652; PCI 7406–7413 | `PCI` typed (Defs §2.6); REL.2 legs stay owner-tagged Prop PARAMETERS in the §5 packages | proved nowhere here (the note: "this note states the interface and proves nothing about it") |
-| **KB-TOT** | (c2) covering 7112–7119 consumes Theorem B totality (D4R.0-K(a)+(b), note-DISCHARGED) | `KBTot` (Defs §2.4) — REV 3 (Codex-2 #2): the per-child SATURATE-OR-CONTINUE law (rev 2's `BranchDichotomy`, kept as the (a)-leg) PLUS the (b)-leg `ns_lumps`: every realized state carries a B(iii) lump family with the slot-0 ladder. REV 4 (Fable-3 CRIT-2 = Codex-3 #3): the ladder is CAPPED at `Mlev J N`. REV 5 (Codex-4 #1): `ns_lumps` gains `ScaleFaithful J N` — the jet's `Mlev`/`M₀` are PINNED to the level's own (H, N)-determined values (defining clauses = the note's ladder display, quoted §2.5a), killing the free `Mlev = M₀` jet choice; and the LEVEL FAMILY is pinned in the displayed closure `KBTotTower` (per-level `KBTot` along the presented tower + the Scale GAP `Mlev − M₀` growing), which is what `VPPinned.covering` now consumes — the childless/constant degeneracy fails the consumed object INTERNALLY. Per-level `KBTot` is HONESTLY a per-level FACE (a scale-degenerate level cannot reject childlessness at fixed level — disclosed residue, §2.4). REV 6 (Codex-5 #1): `KBTotTower` gains the covering display's LEVEL-0 leg `root_total` ("At level 0, m_i = 1 gives τ-hen and m_i ≥ 2 opens the window — total", 7113–7115) + the chart family `χat` — the childless TOWER (mem-some empty everywhere, every `scale_grow` antecedent false) inhabited rev 5's closure without touching `ScaleFaithful`, and now fails `root_total` at the zero member (§0 record 14) | Lean owner HC-2/D4R0K; hypothesis `hdi : KBTot T` on T-V6, T-D3 (per-level content only); `KBTotTower` on `VPPinned` (§2.10); fixed-level inhabitation: T-C5 discharges the capped `slot0` at every presented jet |
+| **KB-TOT** | (c2) covering 7112–7119 consumes Theorem B totality (D4R.0-K(a)+(b), note-DISCHARGED) | `KBTot` (Defs §2.4) — REV 3 (Codex-2 #2): the per-child SATURATE-OR-CONTINUE law (rev 2's `BranchDichotomy`, kept as the (a)-leg) PLUS the (b)-leg `ns_lumps`: every realized state carries a B(iii) lump family with the slot-0 ladder. REV 4 (Fable-3 CRIT-2 = Codex-3 #3): the ladder is CAPPED at `Mlev J N`. REV 5 (Codex-4 #1): `ns_lumps` gains `ScaleFaithful J N` — the jet's `Mlev`/`M₀` are PINNED to the level's own (H, N)-determined values (defining clauses = the note's ladder display, quoted §2.5a), killing the free `Mlev = M₀` jet choice; and the LEVEL FAMILY is pinned in the displayed closure `KBTotTower` (per-level `KBTot` along the presented tower + the Scale GAP `Mlev − M₀` growing), which is what `VPPinned.covering` now consumes — the childless/constant degeneracy fails the consumed object INTERNALLY. Per-level `KBTot` is HONESTLY a per-level FACE (a scale-degenerate level cannot reject childlessness at fixed level — disclosed residue, §2.4). REV 6 (Codex-5 #1): `KBTotTower` gains the covering display's LEVEL-0 leg `root_total` ("At level 0, m_i = 1 gives τ-hen and m_i ≥ 2 opens the window — total", 7113–7115) + the chart family `χat` — the childless TOWER (mem-some empty everywhere, every `scale_grow` antecedent false) inhabited rev 5's closure without touching `ScaleFaithful`, and now fails `root_total` at the zero member (§0 record 14). REV 7 (ruling 2 — Codex-6 #1 = Fable-6 GAP-1, converged): `root_total` is PER-TRACK — ∀ ψ repeated, ∃ ν with `trackOf ν = ψ` carrying the child ("one track per root cluster"; the rev-6 untied ∃ let one child witness every repeated factor); `KBTotTower` gains the shared `trackOf` parameter, and the childless-tower refutation stays dead (auditor-verified) | Lean owner HC-2/D4R0K; hypothesis `hdi : KBTot T` on T-V6, T-D3 (per-level content only); `KBTotTower` on `VPPinned` (§2.10); the W4-1-layer covering companion is `ChildCover` (§2.9, REV 7 ruling 1); fixed-level inhabitation: T-C5 discharges the capped `slot0` at every presented jet |
 | **RUN-KEY** | the HC-2 bridge surface: per-history jet-locus ↔ tree membership, per jet | `RunKey T P` — NAMED typed Prop (Defs §2.9; rev 2: no longer an inline unnamed premise, and the ∀-jet quantifier sits OUTSIDE the iff — Fable CRIT-4/Codex 22) | hypothesis on T-D5/T-D6; owner HC-2 |
 | **ETA-LOC** | tree membership is η-class data (§C L4 semantic content) | `EtaLoc T P` — NAMED typed Prop (Defs §2.9) | hypothesis on T-D6, T-F2 (rev 2: Fable GAP-5); owner HC-2 |
 | **CHAIN-LOC / InBox** | realized chains carry in-box reads (the L3 setting) | `InBoxOfMem T n` (Defs §2.9) | hypothesis on T-F2 (rev 2: Fable GAP-5); owner HC-2 |
@@ -169,7 +195,7 @@ Two REFUTATION RECORDS carried from the note (never re-claim):
 * Raw-count limit **FALSE** (7237–7240): only NORMALIZED (ns) bounds are stated
   (T-C8, T-E12); no unit claims the raw count tends to 0.
 
-SIXTEEN IN-CORPUS REFUTATION RECORDS (the audit rounds' constructive finds, carried
+NINETEEN IN-CORPUS REFUTATION RECORDS (the audit rounds' constructive finds, carried
 so the E-phase never regresses). GATE LEDGER, scoped honestly (REV 4, Fable-3
 GAP-3; REV 5, Fable-4 GAP-1 — the gates are now named to their CARRIERS): records
 1/3/4/6 live on toy carrier A (`toy_sib`, `toy_e5_instance`,
@@ -186,9 +212,13 @@ canonicalization of `ClassTree.leafV` — each is caught by the E-phase
 statement/satisfiability review, per §6's audit charge). REV-6 RECORDS: 13's
 protection is the some-state SCOPE in `child_cell`'s own type PLUS carrier A's
 G1a `mem_single` decide obligations at the corrected tables; 14: `root_total`
-sits in `KBTotTower`'s type; 15: the track-lawfulness conjuncts sit in
-`ClusterFactorOf`'s type; 16 lives on carrier A (the REVERSED flip gate
-coexisting with `toy_fiber_ne` at build):
+sits in `KBTotTower`'s type (REV 7: PER-TRACK, with `trackOf` in the tower's
+signature); 15: the track-lawfulness conjuncts sit in `ClusterFactorOf`'s type;
+16 lives on carrier A (the REVERSED flip gate coexisting with `toy_fiber_ne` at
+build). REV-7 RECORDS: 17/18 live on BOTH toy carriers (the corrected winC
+guards' and cellLevel-4's G1a decide obligations — `child_cell_red` and
+`cell_local` now decide TRUE, re-run displayed at T-G1); 19's protection is the
+realized-membership conjunct in `ClusterFactorOf`'s type:
 * rev 1's `SibCount` (free Σc) is FALSE for every intended model — at the note's own
   F1 cell, Σc := (S₁ Δ S₂) ∩ cell gives 0 ≠ 62,500² (Fable CRIT-1). The rev-2 form
   pins Σc := the cell event.
@@ -280,11 +310,14 @@ coexisting with `toy_fiber_ne` at build):
   the refutation is DEAD; the
   census integers are unchanged (fiber = the same {x0…x5 = 0} stratum:
   N(fiberA) = 8 = 2^{9−6}, toyA = 6, toy_e5's 2³·(2⁷)¹·2² = 2¹² = 2⁹·2³); and
-  at F1 the joint row is SATISFIABLE: stateEvent(head) = the 14-pin stratum,
-  entEvent(.red g X) = the 4-pin reduction cell, and on 5²² boxes
-  5^{22−14} · 5^{10} = 5^{18} = card(rootCell) ✓ — (JC-single) at the 10-pin
-  head window, with the .amb cell no longer forced to decide window digits
-  (record 13; type-level + carrier gates).
+  at F1 the joint row is CARDINALLY CONSISTENT (REV 7, Codex-6 g1 — the rev-6
+  "SATISFIABLE" wording is DOWNGRADED: numerical compatibility ≠ existence):
+  stateEvent(head) = the 14-pin stratum, entEvent(.red g X) = the 4-pin
+  reduction cell, and on 5²² boxes 5^{22−14} · 5^{10} = 5^{18} = card(rootCell)
+  ✓ — (JC-single) arithmetic at the 10-pin head window, with the .amb cell no
+  longer forced to decide window digits; the concrete
+  CellAssign/ledger/scaffold WITNESS is the §6 E-phase obligation row, owed,
+  not claimed (record 13; type-level + carrier gates).
 * rev 5's `KBTotTower` admits a CHILDLESS TOWER (Codex-5 #1): root-only models
   at every level (mem none = ⊤, mem some = ⊥, child = ∅) make `dichotomy`/
   `ns_lumps` vacuous and every `scale_grow` antecedent FALSE — the closure held
@@ -316,6 +349,28 @@ coexisting with `toy_fiber_ne` at build):
   on every realized member, so the flipped fiber is empty: the same
   clause-(iii) regression channel as record #4, in the direction the carrier
   admits (record 16; the gate PAIR must coexist at build).
+* rev 6's toy `cellOf .red` guards read NEITHER g NOR the reduction coords
+  x0/x1 (Fable-6 CRIT-1): at g = (1,0), x = (1,0,0,…,0) ∈ rootCell χ g, carrier
+  A's cell was winC (only ψ = X ∧ x2…x5 = 0 checked), so tAν₁ was eligible
+  while `toyChildA none tAν₁ x` demands x0 = 0 — `child_cell_red` (∀ χ g)
+  decide-FALSE on BOTH carriers, `toyCA`/`toyCAB` uninstantiable as displayed,
+  and the rev-6 "hred is instantiable" walk-through unreal at any g ≠ toyG.
+  The rev-7 guards pin x0 = 0 ∧ x1 = 0 on both carriers; violation counts
+  24 → 0 (A) and 192 → 0 (B); cellEventE at the true entrance and every census
+  integer unchanged (arithmetic displayed at T-G1) (record 17; carrier gates).
+* rev 6's `cellLevel := fun _ => 3` made `cell_local` decide-FALSE on both
+  carriers (Fable-6 CRIT-2): levelIdx (n = 2) puts coords 4/5 at level 3, so
+  the premise constrained only c ∈ {0…3} while the .st cells read x4/x5 —
+  witness x = 0⃗ vs x' = 0⃗-except-x'4 = 1 (premise satisfied, splitC ≠ junk).
+  The rev-7 value 4 covers levelIdx c < 4 ⟺ c < 6 = every read coordinate;
+  no census integer moves (record 18; carrier gates).
+* rev 6's `ClusterFactorOf` lawfulness was still ABSTRACT (Codex-6 #3): a
+  monic irreducible `trackOf` of degree > n divides NO cluster degree
+  (1 ≤ deg fη ≤ n), so the divisibility conjunct made `ClusterFactorOf`
+  witness-free and `OmSat` vacuous AGAIN — the same channel as record 15 one
+  degree up. The rev-7 conjunct ties the head's track value into
+  `normalizedFactors (f.map toZMod)` at the `ReadsOf`-realized f — the
+  REALIZED roster, not a degree bound (record 19; type-level).
 
 ---
 
@@ -636,26 +691,39 @@ total" (7113–7115) — a repeated reduction factor OPENS the window, i.e. a
 realized root child exists (the m_i ≥ 2 half; the m_i = 1 half is `henPayload`'s
 business, priced at T-C1, no child demanded). The structure accordingly gains
 the chart family `χat` (the same family `VPPinned` already carries) to state the
-reduction. This closure is the object `VPPinned.covering` consumes (§2.10): the
-childless tower now FAILS `root_total` at the zero member (f̄ = xⁿ, X repeated,
-n ≥ 2) — and root children feed `mem_single` → realized states → `scale_grow`'s
-antecedent, so the deep-level machinery engages; the childless/constant model
-BELOW a realized history fails as at REV 5 (`ScaleFaithful` + the per-level
-falsifier). The scale-degenerate fixed-level residue of `KBTot` is thereby
-closed inside the consumed Prop, not by external commentary. Owner HC-2/D4R0K;
-NEVER proved here. -/
+reduction. REV 7 (ruling 2 — Codex-6 #1 = Fable-6 GAP-1, the round's CONVERGED
+finding): the rev-6 leg concluded only ∃ SOME root child from ∃ SOME repeated
+factor — one unrelated child could witness EVERY repeated factor (a model with
+f̄ = ψ₁²ψ₂² realizing only ψ₁'s track child inhabited the closure while the
+note's display is PER LIVE TRACK: "fix f and a live track … m_i ≥ 2 opens the
+window — total", and "one track per root cluster", 7069–7071). The leg is now
+PER-TRACK — ∀ ψ repeated, ∃ ν with `trackOf ν = ψ` carrying the child — so the
+structure gains the shared `trackOf` accessor (the SAME parameter
+`RedCellPartition`/`ClusterFactorOf`/`VPPinned` read). This closure is the
+object `VPPinned.covering` consumes (§2.10): the childless tower STILL fails
+`root_total` at the zero member (f̄ = xⁿ, X repeated, n ≥ 2 — no ν at all, a
+fortiori none on track X; the record-14 refutation stays dead, verified by the
+round-6 auditor) — and root children feed `mem_single` → realized states →
+`scale_grow`'s antecedent, so the deep-level machinery engages; the
+childless/constant model BELOW a realized history fails as at REV 5
+(`ScaleFaithful` + the per-level falsifier). The scale-degenerate fixed-level
+residue of `KBTot` is thereby closed inside the consumed Prop, not by external
+commentary. Owner HC-2/D4R0K; NEVER proved here. -/
 structure KBTotTower (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
-    (χat : ∀ N', Fin n → Fin (n * N')) : Prop where
+    (χat : ∀ N', Fin n → Fin (n * N'))
+    (trackOf : Node p F → Polynomial (ZMod p)) : Prop where  -- REV 7 (ruling 2)
   perLevel : ∀ N' h, KBTot (Tat N' h)
-  root_total : ∀ N' (h : N₀ ≤ N') (x : Box p (n * N')),   -- REV 6 (Codex-5 #1):
-    (∃ ψ : Polynomial (ZMod p),                            -- the LEVEL-0 leg —
-      ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x) ∧
+  root_total : ∀ N' (h : N₀ ≤ N') (x : Box p (n * N')),   -- REV 6 (Codex-5 #1);
+    ∀ ψ : Polynomial (ZMod p),                             -- REV 7 (ruling 2):
+      ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x) →
       2 ≤ Multiset.count ψ
-        (UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x))) →
-    ∃ ν : Node p F, (Tat N' h).child none ν x
-    -- "m_i ≥ 2 opens the window — total" (7113–7115): a window-opening input
-    -- has a realized root child at every level; the childless tower dies HERE
+        (UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x)) →
+    ∃ ν : Node p F, trackOf ν = ψ ∧ (Tat N' h).child none ν x
+    -- "m_i ≥ 2 opens the window — total" (7113–7115), PER LIVE TRACK: every
+    -- window-opening track has a realized root child OF THAT TRACK at every
+    -- level; the childless tower dies HERE, and the one-child-for-all-tracks
+    -- model (Codex-6 #1's witness) now fails at the second repeated factor
   scale_grow : ∀ (H : History p F),
     (∀ N' h, ∃ x, (Tat N' h).mem (some H) x) →      -- states realized ALONG the tower
     ∃ Jat : ∀ N' (h : N₀ ≤ N'), JetSetup H n N' (n * N'),
@@ -1078,11 +1146,20 @@ per-clause warrant, "(JC-single): §C C.3 with u* ∈ P̂ per §D4-R L3; (JC-mul
 shape-determined GIVEN its side-product form" (7537–7540); the multi-side case
 reads the side-product form the §2.5 clause partition ties to the same mstar,
 which is exactly what `hjcm`'s sites carry. -/
+noncomputable def bandFresh (R : ShapePrefix) (n : ℕ) : Finset (ℕ × ℕ) :=
+  -- REV 7 (Codex-6 #7): CLOSED over the BUILT MovesD band apparatus — no E-phase
+  -- name-binding remains. The fresh coordinates (level, base) of R's LAST read's
+  -- band system: `ShapePrefix.bandS` is the built per-read band predicate
+  -- (MovesD/Defs 227–229), `Nshape` the built a-priori level bound (every band
+  -- level sits below it, L12) — the same summand `ShapePrefix.A` counts at
+  -- r = last.
+  (Finset.range R.Nshape ×ˢ Finset.range n).filter
+    (fun c => R.bandS n (R.reads.length - 1) c)
+
 noncomputable def shapeExp (R : ShapePrefix) (n : ℕ) : ℕ := (bandFresh R n).card
--- [`bandFresh R n : Finset (Fin (bandDim R n))` := the fresh coordinates of R's
---  last read's band system — E-phase binds the NAME to the mstar_eq/fresh_band
---  apparatus (the W4-4 roster); the body (a card) and the mstar clause above are
---  NORMATIVE — a binding failing either is a MANIFEST deviation.]
+-- the body (a card of the CLOSED `bandFresh`) and the mstar clause above are
+-- NORMATIVE; `hdict` (T-E10) is now checkable against a fully displayed chain
+-- (Codex-6 #7's demand: `bandFresh` gated `hdict`'s checkability).
 ```
 
 ### 2.5a the (ns) lump family (REV 2, Codex 38/39 — the B(iii) carrier, non-circular)
@@ -1099,30 +1176,43 @@ def Mlev (J : JetSetup H n N m) (N' : ℕ) : ℕ := scaleTop J N'
 --  off J's chart (7205–7207); E-phase binds `scaleTop` to the Scale accessor.
 --  HOISTED from T-C7 at REV 4; T-C7 consumes it unchanged.]
 
-/-- the level's own SCALE value, H-SIDE, DISPLAYED — REV 6 (Codex-5 gap #7: rev 5
-left `hScale`/`hRes` as bracket promises inside the principal non-vacuity
-mechanism). Body = the note's defining clause verbatim: "M(N) := the largest
-window height with base level < N — the Scale map" (7205–7207): the sup of H's
-window-block heights whose base level sits below the cap. -/
-noncomputable def hScale (H : History p F) (N' : ℕ) : ℕ :=
-  ((windowBlockHts H).filter (fun bh => bh.2 < N')).sup (fun bh => bh.1)
--- [`windowBlockHts H : Finset (ℕ × ℕ)` := the (height, base level) roster of H's
---  window blocks — H-SIDE (ZC) data, the SAME accessor family as `History.floorH`
---  (T-C5's vocabulary) and the §2.5a chart accessors; E-phase binds the NAME
---  only — the BODY (filter-sup) and the quoted clause are NORMATIVE, a binding
---  failing either is a MANIFEST deviation, never silent.]
+/-- H's window-block (height, base level) roster — REV 7 (Codex-6 #4: rev 6's
+"E-phase binds the NAME" left the principal non-vacuity mechanism resting on
+undefined accessors; both are now CLOSED over the BUILT MovesC history chart).
+The entrance window's interior is base index b < μ·D of H's LAST read (the
+(ns-null) display's own convention, 7218); each interior block carries one
+coordinate per level ℓ, whose absolute height is the built `History.htH`
+(MovesC/Defs: ht(ℓ, b) = ℓ + Σ_{r} innerslot_r(b)·κ_r). Entries: (⌈height⌉₊, ℓ)
+over ℓ < N', b < μ·D. -/
+noncomputable def windowBlockHts (H : History p F) (N' : ℕ) : Finset (ℕ × ℕ) :=
+  ((Finset.range N' ×ˢ
+      Finset.range ((H.nodes.getLast?).elim 0 fun ν => ν.μ * ν.Dwidth)).image
+    (fun c => (⌈H.htH H.nodes.length c⌉₊, c.1)))
 
-/-- the ENTRANCE RESOLUTION, H-SIDE, DISPLAYED — REV 6 (same finding): the floor
-value at the window's slot-0 interior block. Defining clauses, verbatim: "for
-each cap M ≥ M₀ (the entrance resolution)" (7213); "heights ≤ F(b) are already
-zeroed by Σ's downset: inherited, not fresh" (7220–7222) — so the fresh ladder
-starts strictly above the slot-0 floor: "slot 0's block b₀ (base index 0 < μ·D —
-the window interior is never empty) has one coordinate per level, heights
-unit-spaced, so |Z_M| ≥ ⌊M − M₀⌋" (7227–7229). -/
-noncomputable def hRes (H : History p F) : ℕ := H.floorH (slot0Block H)
--- [`slot0Block H` := H's window-interior block at base index 0; `History.floorH`
---  the built floor-staircase accessor (T-C5's bracket names it) — same normative
---  posture as `windowBlockHts`: names bind at E-phase, body + clauses normative.]
+/-- the level's own SCALE value, H-SIDE, CLOSED — REV 6 (Codex-5 gap #7) body;
+REV 7 (Codex-6 #4) closure. Body = the note's defining clause verbatim: "M(N) :=
+the largest window height with base level < N — the Scale map" (7205–7207): the
+sup of H's window-block heights whose base level sits below the cap. -/
+noncomputable def hScale (H : History p F) (N' : ℕ) : ℕ :=
+  ((windowBlockHts H N').filter (fun bh => bh.2 < N')).sup (fun bh => bh.1)
+-- the roster is already level-capped, so the filter is definitionally total on
+-- it — kept because the quoted clause's "base level < N" is the normative shape
+
+/-- the ENTRANCE RESOLUTION, H-SIDE, CLOSED — REV 6 (same finding) body; REV 7
+(Codex-6 #4) closure: the slot-0 block is BASE INDEX 0 ("slot 0's block b₀ (base
+index 0 < μ·D — the window interior is never empty)"), and the floor value is
+the BUILT cumulative staircase `History.floorH` at H's full prefix — no
+`slot0Block` name remains to bind. Defining clauses, verbatim: "for each cap
+M ≥ M₀ (the entrance resolution)" (7216–7217 — REV 7 cite fix, was mis-cited
+7213); "heights ≤ F(b) are already zeroed by Σ's downset: inherited, not fresh"
+(7220–7222) — so the fresh ladder starts strictly above the slot-0 floor:
+"… one coordinate per level, heights unit-spaced, so |Z_M| ≥ ⌊M − M₀⌋"
+(7227–7229). -/
+noncomputable def hRes (H : History p F) : ℕ :=
+  ⌈(H.floorH H.nodes.length 0).unbot' 0⌉₊
+-- `floorH` returns `WithBot ℚ`; `unbot' 0` is exact on every nonempty history
+-- (`H.nonempty` — ⊥ occurs only at prefix length 0), and ⌈·⌉₊ is the height-grid
+-- reading (heights unit-spaced per level, the ladder's own convention)
 
 /-- SCALE FAITHFULNESS of a jet — NEW at REV 5 (Codex-4 #1: the degenerate `KBTot`
 model CHOSE `Mlev J N = M₀ J` as free jet data). The cap accessors read off J's
@@ -1448,11 +1538,18 @@ poisoning the intended instance). REV 6 (Codex-5 #4): the TRACK VALUE ITSELF is
 pinned — rev 5 imposed no lawfulness on `trackOf`, and `trackOf ν := 0` made
 the track-power clause witness-free (natDegree 0 = 0, ℕ-division exponent 0,
 RHS = 1 against a monic positive-degree reduction), so `OmSat` held VACUOUSLY
-(§0 record 15); the head's track value is now monic ∧ IRREDUCIBLE (the L1
-frame factor is a normalized factor of a monic reduction — the same roster
-`RedCellPartition`'s first conjunct demands membership in) with its degree
-DIVIDING the positive cluster degree, so the power exponent is ≥ 1 and pinned.
-Every clause is displayed; the one-clause-pointer absorption channel is dead. -/
+(§0 record 15); the head's track value is now monic ∧ IRREDUCIBLE with its
+degree DIVIDING the positive cluster degree, so the power exponent is ≥ 1 and
+pinned. REV 7 (Codex-6 #3): rev 6's abstract lawfulness still admitted a
+DEGREE-(> n) monic irreducible `trackOf` — its degree divides NO cluster degree
+(1 ≤ deg fη ≤ n), so `ClusterFactorOf` was witness-free and `OmSat` vacuous
+AGAIN; the track value is now tied to the REALIZED factorization itself —
+membership in `normalizedFactors (f.map toZMod)` at the very `ReadsOf`-realized
+f (the same roster genre as `RedCellPartition`'s first conjunct, now at the
+realized polynomial, not an abstract degree). Every genuine head track
+satisfies it (the L1 frame factor IS a factor of its own f̄); every unrelated
+assignment — degree > n, or a factor of a DIFFERENT reduction — fails the
+membership conjunct. Every clause is displayed. -/
 def ClusterFactorOf (n : ℕ) (trackOf : Node p F → Polynomial (ZMod p))
     (H : History p F) (fη : Polynomial ℤ_[p]) : Prop :=
   ∃ hne : H.nodes ≠ [],
@@ -1466,10 +1563,14 @@ def ClusterFactorOf (n : ℕ) (trackOf : Node p F → Polynomial (ZMod p))
       = trackOf (H.nodes.head hne)
           ^ (fη.natDegree / (trackOf (H.nodes.head hne)).natDegree) ∧
     ∃ f : Polynomial ℤ_[p], f.Monic ∧ f.natDegree = n ∧ fη ∣ f ∧
-      LeanUrat.HC2.ReadsOf p F n f H
--- consequence, recorded (not a clause): irreducible ⟹ deg ψ ≥ 1, so with
--- deg ψ ∣ deg fη ≥ 1 the exponent is ≥ 1, and ψ divides the realized f's own
--- reduction (fη ∣ f + the power clause) — the intended L1 factor roster.
+      LeanUrat.HC2.ReadsOf p F n f H ∧
+      trackOf (H.nodes.head hne)                            -- REV 7 (Codex-6 #3):
+        ∈ (UniqueFactorizationMonoid.normalizedFactors      -- the REALIZED head-
+            (f.map PadicInt.toZMod)).toFinset               -- track membership tie
+-- consequence, recorded (not a clause): the membership bounds deg ψ ≤ n and
+-- forces ψ into the realized f̄'s own factor roster; with deg ψ ∣ deg fη ≥ 1 the
+-- exponent is ≥ 1, and fη ∣ f + the power clause make ψ the realized cluster's
+-- track — the degree-(> n) and wrong-reduction escapes both die here.
 
 /-- (OM-SAT) (7262–7273): the Ore–Montes certificate — a saturated branch's cluster
 factor is irreducible with e = E, f = F. REV 2 (Codex 37): typed over a named
@@ -1623,6 +1724,40 @@ def RedCellPartition (T : TreeModel p F n N m pol)
 -- realized root child sits in its OWN track's reduction-cell branch set — a
 -- member of x's factor roster — and in NO other; the rev-4 wrong-factor
 -- assignment now fails the middle conjunct
+
+/-- **the (c2) COVERING clause AT THE W4-1 INTERFACE** — NEW at REV 7 (ruling 1,
+the FIFTH-round adjudication OVERTURNING the four-round W4-1 BDY hold): the
+note's covering case-analysis lives AT this layer — "fix f and a live track. At
+level 0, m_i = 1 gives τ-hen and m_i ≥ 2 opens the window — total" (7112–7119),
+the continuation existing by L1 totality (D4R.0-K(a), note-DISCHARGED). At a
+realized window-opening read (a repeated reduction factor ψ), a root child
+EXISTS carrying that track's data: it sits in the track-ψ reduction cell's OWN
+branch set. `RedCellPartition` above is the all-and-only SORTING law
+(conditional on children/members existing); THIS is its nonemptiness/covering
+companion — together they are the W4-1 contract's (b)-union at this layer. The
+constant-false-`child`/`Cell := Unit`/empty-`branchSetOf` model (the instance
+the contract text forbids, pressed at rounds 3–6) is now FALSE at the W4-1
+interface ITSELF: at f̄ = xⁿ (n ≥ 2) the ∃ fails — the in-corpus theorem
+`constFalse_childCover_false` (T-D2) displays it, no `HistoryCoherent` fence
+crossed. CONTRACT CHANGE, recorded for the MovesD-side W4-SYNC (§5 W4-1 row;
+`W4_SYNC_DELTAS_2026-07-29.md` entry 10). Owner HC-2/D4R0K (L1 totality) —
+NEVER proved here; hypothesis `hccov` beside `hred` where a unit consumes the
+root's full covering (`hcov` is TAKEN — T-E5's head-chain field and T-D10's
+`ClassCover` binder). The TOYS do NOT instantiate it (deliberately partial —
+one realized branch per track; their gates never premise it). -/
+def ChildCover (T : TreeModel p F n N m pol)
+    (CA : CellAssign p F n N m pol T) (χ : Fin n → Fin m)
+    (trackOf : Node p F → Polynomial (ZMod p)) : Prop :=
+  ∀ (g : Fin n → ZMod p) (x : Box p m), x ∈ rootCell χ g →
+    ∀ ψ : Polynomial (ZMod p),
+      ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly χ x) →
+      2 ≤ Multiset.count ψ
+        (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x)) →
+      ∃ ν : Node p F, trackOf ν = ψ ∧ T.child none ν x ∧
+        ν ∈ CA.branchSetOf (CA.cellOf (.red g ψ) x)
+-- per-track, same quantifier shape as `KBTotTower.root_total` (§2.4 — its
+-- tower form drops the CA conjunct); the branch-set conjunct is what makes
+-- this a W4-1-LAYER law rather than a bare tree law
 
 /-- RUN-KEY, NAMED (REV 2 — Fable CRIT-4 + Codex 22): the HC-2 bridge surface — for
 every class representative and EVERY jet, the jet's top stratum is exactly tree
@@ -1871,6 +2006,35 @@ def NsAmendedPair (pol : CanonPolicy p F) : Prop :=
         (Nat.card ↥(nsTruncAt Jat Lat N'.1) : ℝ) / (Nat.card ↥(stateTruncAt Jat N'.1)))
       Filter.atTop (nhds 0))
 
+/-- **the (ns-null) PROFINITE BRIDGE, TYPED** — NEW at REV 7 (Codex-6 #5, the
+BDY hold REJECTED: a bare `ns_bridge : Prop` parameter admitted `True`,
+silently weakening the note's conclusion "μ((τ-ns) class │ Σ) = 0 by
+continuity from above" (7210–7231)). The slot's TYPE is now the note's
+sentence, stated over an ABSTRACT cap-mass field in the corpus's own carriers:
+`μcap M` = the conditional mass μ(Σ ∩ L_M │ Σ) of the cap-M lump, `μclass` =
+the class's conditional mass — both ABSTRACT reals the owner supplies —
+carrying exactly the three laws the note's ∎ uses: (i) antitone in the cap
+(nested lumps); (ii) CONTINUITY FROM ABOVE — the class = ∩_M (Σ ∩ L_M), its
+mass THE limit of the cap masses (the genuinely profinite step); (iii) each cap
+mass is READ OFF the finite levels — the ε-limit of the truncated lump/state
+proportions this corpus already carries (`NsLumpFamily.L`, `stateTruncAt`).
+Conclusion: μclass = 0. The corpus PROVES nothing about it (the per-cap decay
+that closes it is the C(b) pricing at the profinite μ — owner MovesS wave 5 /
+[2b]); but `True` is no longer an instantiation: the statement IS the type. -/
+def NsBridgeStmt (pol : CanonPolicy p F) : Prop :=
+  ∀ (H : History p F) (N₀ : ℕ)
+    (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
+    (Jat : ∀ N' (h : N₀ ≤ N'), JetSetup H n N' (n * N'))
+    (Lat : ∀ N' h, NsLumpFamily (Tat N' h) (Jat N' h))
+    (μcap : ℕ → ℝ) (μclass : ℝ),
+    Antitone μcap →
+    Filter.Tendsto μcap Filter.atTop (nhds μclass) →
+    (∀ (M : ℕ) (ε : ℝ), 0 < ε → ∃ N₁, ∀ N' (h : N₀ ≤ N'), N₁ ≤ N' →
+      |μcap M
+        - (Nat.card ↥{x | x ∈ stateTruncAt Jat N' ∧ x ∈ (Lat N' h).L M} : ℝ)
+            / (Nat.card ↥(stateTruncAt Jat N'))| < ε) →
+    μclass = 0
+
 /-- VP pinned (`vp`): (c1)/(c3-a) = inhabited cell-data verdict models; (c2) = the
 KB-TOT bundle; VP-SOUND's two cites as the REMAINDER — exactly D4R.0-K(c)'s residual
 "{VP-SOUND's cites}" (7634–7635). A structure of four named legs, not a name.
@@ -1887,9 +2051,10 @@ structure VPPinned (pol : CanonPolicy p F) {N₀ : ℕ}
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p)) : Prop where
   model : ∀ N' h, Nonempty (VerdictModelT (Tat N' h) (CAat N' h) (χat N'))
-  covering : KBTotTower pol Tat χat
-    -- REV 6 (Codex-5 #1): the tower reads the chart family — its new
-    -- `root_total` leg states the level-0 covering clause through `redPoly ∘ χat`
+  covering : KBTotTower pol Tat χat trackOf
+    -- REV 6 (Codex-5 #1): the tower reads the chart family — its `root_total`
+    -- leg states the level-0 covering clause through `redPoly ∘ χat`; REV 7
+    -- (ruling 2): the tower reads `trackOf` too — `root_total` is PER-TRACK
   hen_lift : HenLift p
   om_sat : OmSat p F n trackOf
 
@@ -3251,7 +3416,16 @@ theorem belowHalt_decomp {P : Shape n} (S : Presented p F n N m pol P)
 "The unrestricted total … is ≥ this, WITH EXCESS EXACTLY THE BELOW-HALT MARKS —
 §D4-R bookkeeping that NO consumer may convert to a per-f quantity without first
 restricting to Pref^τ. Conversion then runs through TREE-EXP's fiber expansion
-ONLY." deps: Defs §2.8, MovesD (Presented.mult = the mark count). sketch: classical
+ONLY." deps: Defs §2.8, MovesD (Presented.mult = the mark count — REV 7, Codex-6
+#8/W4-SYNC delta 8: keyed to the IN-FLIGHT MovesD repair-round-2 redefinition,
+where `mult` itself carries the ∅-shape dispatch (reads = [] ↦ 1) and
+`multO`/`eventO` are DELETED; rev 6's citation of the old always-summed `mult`
+was materially wrong at the empty shape). EMPTY-SHAPE LEG, recorded as an
+E-phase CHECK (not assumed): at reads = [], the new `mult x = 1` and the index
+sum runs over the ∅-shape's single root class with `PreHalt` vacuous at the
+empty read list — the decomposition must compute 1 = 1 + 0 there; if the
+in-flight semantics land differently, this unit's statement is re-keyed at the
+MANIFEST, never silently. sketch: classical
 partition of the finite index subtype by `PreHalt (reprOf i)`. THE FENCE rides in
 the docstring: the conversion ban (the pass-8 critical-1 channel, closed by
 display). hypothesis_fields: none.
@@ -3322,6 +3496,22 @@ theorem cellOf_nonconstant (T : TreeModel p F n N m pol)
 -- branch distinctions are at states/tracks, so nothing intended is lost)
 theorem eligible_nonvacuity_toy : ∃ (T : TreeModel …toy…) (CA : CellAssign …)
     (o ν x), eligibleT T CA o ν x ∧ RejectsRootOnlyChildless T CA
+theorem constFalse_childCover_false :          -- NEW at REV 7 (ruling 1): the
+    ∀ (T : TreeModel p F n N m pol)            -- W4-1-LAYER falsification, in-
+      (CA : CellAssign p F n N m pol T)        -- corpus, fence-free
+      (χ : Fin n → Fin m) (trackOf : Node p F → Polynomial (ZMod p)),
+    (∀ ν x, ¬ T.child none ν x) →
+    (∃ (g : Fin n → ZMod p) (x : Box p m), x ∈ rootCell χ g ∧
+      ∃ ψ, ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly χ x) ∧
+        2 ≤ Multiset.count ψ
+          (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x))) →
+    ¬ ChildCover T CA χ trackOf
+-- the constant-false-child model (a fortiori `Cell := Unit` with every
+-- branchSetOf empty) FAILS the W4-1 interface's covering clause on every
+-- window-opening input — one line from the ∃ in `ChildCover`; the
+-- window-opening supply (f̄ = xⁿ, n ≥ 2) is the same input family
+-- `rootOnly_childless_rejected` already uses. No `HistoryCoherent`, no
+-- `ReadsOf`: the falsification lives entirely at the interface.
 ```
 [`RejectsRootOnlyChildless` := on the toy realizable input, the root-only childless
 tree FAILS `fiberAt` — now a corollary of the GENERAL first theorem at the toy's
@@ -3360,12 +3550,20 @@ the childless instance lives at `WallAReconciled` (fenced Q1, §2.9); in-corpus 
 degeneracy is rejected at the TREE level (this unit, via fiberAt (v)/(vi)) and at
 the LEDGER level (`KBTot` along towers, §2.4) — three layers, each named, none
 overclaimed. REV-6 EXTENSION (Codex-5 #2 pressed the vacuity a FOURTH time): the
-in-corpus rejection perimeter NARROWS by one more layer — `KBTotTower.root_total`
-(§2.4, the covering display's own level-0 clause) now rejects every childless
-MODEL inside the consumed vp seam value at any window-opening input — but the
-W4-1-LAYER law (branch sets = L2's all-and-only roster) remains exactly the
-fenced `WallAReconciled`, and the (b)-demand AT THAT LAYER stays UNMET IN-CORPUS;
-the §5 W4-1 row carries the fourth-round comparison verbatim.
+in-corpus rejection perimeter NARROWED by one more layer (`KBTotTower.root_total`
+inside the consumed vp value) while the (b)-demand AT the W4-1 layer stayed
+recorded as unmet. **REV-7 OVERTURN (ruling 1 — the FIFTH round; verifiers split,
+orchestrator direct read decides):** the boundary declaration is WITHDRAWN. The
+note's covering case-analysis (c2) lives AT this layer (7112–7119), and its
+m_i ≥ 2 clause is fence-free (L1 totality, D4R.0-K(a) — no `HistoryCoherent`
+content): the W4-1 contract type gains the per-track covering clause
+`ChildCover` (§2.9), and THIS unit's `constFalse_childCover_false` is the
+in-corpus falsification of the forbidden constant-false-child/unit-cell model at
+the interface itself. What remains fenced is ONLY the all-and-only ROSTER law
+(branch sets = L2's full next-node enumeration — `WallAReconciled`, genuinely
+`ReadsOf`-keyed); the EXISTENCE half never needed the fence, which is exactly
+what four rounds of hold missed. The §5 W4-1 row carries the five-round
+comparison; the contract change is recorded for the MovesD-side W4-SYNC.
 hypothesis_fields: none (concrete instances).
 
 **T-D3 `MovesT.verdictModel_inst` · `D3_verdictModel.lean` · hard [split D3a/D3b] —
@@ -3459,22 +3657,44 @@ same-H face AND the cross-representative face both from the two named Props (rev
 (Codex 24): the ∀-jet quantifier is the CONTRACT'S — no `hJ : J = S.jet i`
 weakening.**
 ```lean
+noncomputable def bandLevels (R : ShapePrefix) (n : ℕ) : Finset (ℕ × ℕ) :=
+  -- REV 7 (Codex-6 g2 = Fable-6 GAP-2, the REV-4 import-by-name rule): CLOSED
+  -- over the BUILT MovesD band vocabulary — the (level, base) grid below the
+  -- built `NPband` where SOME read's built `bandS` fires
+  (Finset.range ((R.NPband n)) ×ˢ Finset.range n).filter
+    (fun c => ∃ r < R.reads.length, R.bandS n r c)
 theorem np_id {P : Shape n} (i : PrefIdx n pol P)
     (J : JetSetup (reprOf i) n N m) :
     transportedLevels J (topLocus p m) = bandLevels (P : ShapePrefix) n
+theorem np_id_pin {P : Shape n}                -- NEW at REV 7: the BUILT pin
+    (Nthr : PrefIdx n pol P → ℕ)               -- supplied — W4-4's as-built
+    (hNthr : ∀ (i : PrefIdx n pol P) (J : JetSetup (reprOf i) n N m),
+      Nthr i = 1 + (transportedLevels J (topLocus p m)).sup Prod.fst) :
+    NPIDPin n pol P Nthr
 ```
-[`transportedLevels` := the level set of J's pinned equations at Z = ⊤;
-`bandLevels` := the levels below NPband where `bandS` fires — E-phase types both
-Finsets against MovesC's `totalPins` support and MovesD's `bandS`. The statement is
-W4-4(a) VERBATIM: "∀ (i : PrefIdx n pol P) (J : JetSetup (reprOf i) n N m), (the
-level set of J's pinned equations at Z = ⊤) = (the bandS levels below NPband)".]
+[`transportedLevels J Z` := the (level, base) support of J's pinned equations at
+Z — MovesT's OWN Finset over MovesC's fresh apparatus (`J.fresh i`, `totalPins`'s
+summand supports; it exists in NO built corpus, so it is honestly this corpus's
+def); `bandLevels` is now CLOSED over the built `bandS`/`NPband` (above — rev 6's
+E-phase bracket RE-BRACKETED built content, Codex-6 g2). `np_id` is W4-4(a)
+VERBATIM; `np_id_pin` is the AS-BUILT consumption target: MovesD now ships the
+typed `NPIDPin n pol P Nthr` (NPband = NthrSup on the inhabited branch,
+NPv_npid.lean 51–53) with `noteNP`/`NthrSup` and the conclusion
+`D4R4_all_noteRange (hpin : NPIDPin …)` — the SUM ∧ EV identity on L12's own
+range `noteNP ≤ N`. `hNthr` instantiates L12's `N(η_i, ⊤)` = 1 + the largest
+transported base level (the C-cutoff's own formula) — jet-free by `np_id`.]
 moves_ref: MovesD §2.5 W4-4(a)/(c) "NP-ID becomes a wave-4 theorem from mstar_eq +
-fresh_band/fresh_cover + D8/D4b over the MovesT-presented classes." deps:
-MovesD.D8_bandShape, MovesD.D4b_chartCount, MovesC (mstar/fresh apparatus), T-V8.
-sketch: D7a (⊆): every pinned equation sits in a fresh band at its read
-(fresh_band/mstar_eq — per-J theorems, so the ∀-J form is the natural strength);
-D7b (⊇): every band level is hit (fresh_cover + D8). Landing this unit DELETES
-D4R4_all's conditionality pointer (their manifest row); T-C2's NPband corollary
+fresh_band/fresh_cover + D8/D4b over the MovesT-presented classes" + W4-SYNC
+delta 6 (the built types). deps: MovesD.D8_bandShape, MovesD.D4b_chartCount,
+MovesD.NPv_npid (`NPIDPin`/`NthrSup`/`noteNP`/`D4R4_all_noteRange` — BY NAME),
+MovesC (mstar/fresh apparatus), T-V8. sketch: D7a (⊆): every pinned equation sits
+in a fresh band at its read (fresh_band/mstar_eq — per-J theorems, so the ∀-J
+form is the natural strength); D7b (⊇): every band level is hit (fresh_cover +
+D8); `np_id_pin` from np_id: all classes' transported level sets coincide with
+`bandLevels`, so `NthrSup Nthr = 1 + max band level = NPband` (the D8 band-
+ceiling identity). REV 7: the stale "landing DELETES D4R4_all's conditionality
+pointer" claim is RETIRED — the pointer is already deleted corpus-side; landing
+now SUPPLIES `hpin` to the built `D4R4_all_noteRange`. T-C2's NPband corollary
 consumes D7a EXPLICITLY (rev 2). hypothesis_fields: none beyond the class binders
 (the jet is UNIVERSALLY quantified — the contract's own strength).
 
@@ -3668,13 +3888,11 @@ def xrbOfMovesT (T : TreeModel p F n N m pol)
     (CAat : ∀ N' h, CellAssign p F n N' (n * N') pol (Tat N' h))
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p))
-    (ns_bridge : Prop)
-    -- REV 5 (Codex-4 #6, the fold half of the third-round adjudication — §5 S-2/
-    -- §7 row 6): the finite→profinite bridge ("continuity from above" closing the
-    -- note's (ns-null) display, 7210–7231) is NOT stateable in this measure-free
-    -- corpus, but it must not be a silent docstring rider either — it is now an
-    -- EXPLICIT owner-tagged Prop slot, exactly the genre of xhd_*/rel2_*; owner:
-    -- the measure-side re-audit (MovesS wave 5 / the [2b] measure vocabulary)
+    -- REV 7 (Codex-6 #5, the round-5/6 BDY hold REJECTED): the `(ns_bridge :
+    -- Prop)` binder is DELETED — the bridge slot's value is the TYPED seam
+    -- `NsBridgeStmt pol` (§2.10), the note's μ-sentence AS the type; the owner
+    -- (MovesS wave 5 / [2b]) now discharges the STATEMENT, not an arbitrary
+    -- Prop of its choosing; `ns_bridge := True` is no longer expressible
     (xhd_w xhd_u xhd_d xhd_s jc_inv rel2_a rel2_b rel2_d : Prop) : XRBPackage := {
   sib := SibCount T CA χ,
   jc_multi := (∀ (Tr : VTree p F) (L : SiteLedger Tr T CA χ),
@@ -3682,16 +3900,14 @@ def xrbOfMovesT (T : TreeModel p F n N m pol)
       JCmultiAt T CA χ (L.parentSt H) (L.cellAt H) (L.splitAt H ‹_› h2)),
   tb_cap := TBCapPinned pol m ∧ NsAmendedPair pol,
   vp := VPPinned pol Tat CAat χat trackOf,
-  ns_null := NsAmendedPair pol ∧ ns_bridge,
-    -- the (ns) pair AT ITS FINITE FACE (the corpus's own value) ∧ the bridge SLOT
-    -- (owner-tagged parameter — REV 5: the missing content is TYPED, never
-    -- silently dropped; the rider still rides at every consumption).
-    -- REV 6 (Codex-5 gap #8, re-pressed — HELD, the standing F* residual): the
-    -- slot's INTENDED VALUE, quoted for the owner: "μ(Σ ∩ L_M) → 0, and the
-    -- class = ∩_M (Σ ∩ L_M) gives μ((τ-ns) class │ Σ) = 0 by continuity from
-    -- above" (7210–7231) — a μ-statement this measure-free corpus cannot state;
-    -- an owner instantiating `ns_bridge := True` fails ITS re-audit, not this
-    -- corpus's (the §5 S-2 row's third-round comparison carries the routing)
+  ns_null := NsAmendedPair pol ∧ NsBridgeStmt pol,
+    -- the (ns) pair AT ITS FINITE FACE (the corpus's own value) ∧ the TYPED
+    -- bridge (REV 7, Codex-6 #5 — the round-6 hold rejection executed: the
+    -- note's μ-sentence "μ(Σ ∩ L_M) → 0, and the class = ∩_M (Σ ∩ L_M) gives
+    -- μ((τ-ns) class │ Σ) = 0 by continuity from above" (7210–7231) is now the
+    -- slot's TYPE, `NsBridgeStmt` (§2.10), over the abstract cap-mass field;
+    -- the corpus still PROVES nothing about it — owner MovesS wave 5 / [2b],
+    -- the §5 S-2 row carries the four-round history)
   xhd_w := xhd_w, xhd_u := xhd_u, xhd_d := xhd_d, xhd_s := xhd_s,
   jc_inv := jc_inv, rel2_a := rel2_a, rel2_b := rel2_b, rel2_d := rel2_d }
 def wsh17OfMovesT (T : TreeModel p F n N m pol)
@@ -3880,7 +4096,21 @@ x* = (0,0,1,0,…,0) now fails BOTH sides — the §0-record-13 refutation is de
 with `child_cell` scoped away from o = none (§2.9), nothing forces the .amb
 cell to decide those digits, and the census integers are UNCHANGED (the fiber
 was already the {x0…x5 = 0} stratum: 8 = 2^{9−6}, toyA = 6, toy_e5's
-2³·(2⁷)¹·2² = 2¹² = 2⁹·2³). TABLE-CONSISTENCY NOTE (REV 5, recorded — found while replacing the
+2³·(2⁷)¹·2² = 2¹² = 2⁹·2³). REV-7 RE-RUN (Fable-6 CRIT-1/CRIT-2, the writer's
+own recomputation displayed): `child_cell_red` at the OLD winC guard — carrier
+A's winC event was the 2⁵ = 32-member {x2…x5 = 0} stratum, of which only the
+2³ = 8-member {x0…x5 = 0} stratum carries the child: 32 − 8 = 24 violating
+members (witness g = (1,0), x = (1,0,0,…) among them); NEW guard: winC event =
+the 8-member stratum EXACTLY — 0 violations. Carrier B: old winC = {x2 = 0} =
+2⁸ = 256 members vs child's 2⁶ = 64: 256 − 64 = 192 violations; new winC =
+{x0 = x1 = x2 = 0} = 64 — 0 violations. `cellEventE` at the true entrance
+UNCHANGED on both (A: {x0 = x1 = 0} ∩ old-winC = 2⁷⁻⁴ = 8 = new-winC; B:
+{x0 = x1 = 0} ∩ {x2 = 0} = 2⁶ = 64 = new-winC). `cell_local` at cellLevel 4:
+levelIdx c < 4 ⟺ c < 6 ⊇ every read coordinate (A reads x0…x5, B reads
+x0…x4) — the rev-6 witness pair (0⃗, 0⃗-except-x4) now differs INSIDE the
+premise, refutation dead. Census re-verified: 8 = 2^{9−6} ✓, toyA = 2 +
+(4+0+0) = 6 ✓, 2³·2⁷·2² = 2¹² = 2⁹·2³ ✓, carrier-B JC-multi 2⁴·2² = 2⁶ ✓ —
+neither fix touches any counted event. TABLE-CONSISTENCY NOTE (REV 5, recorded — found while replacing the
 rev-4 ellipses with real tables, Codex-4 #13): rev 4's wording ("fresh digit {4}
 resp. {5}" per sibling) is NOT table-realizable — sibling leaf chains entering
 one one-side split from the same immediate parent cannot give BOTH
@@ -3922,26 +4152,45 @@ carrier-B leg): `toyChildB (none)` pins the head's fresh digit {2} too —
 mem_single an equality of the same 2⁶ stratum.
 
 ```lean
--- CLOSED-FORM TABLES (REV 5 — no `…` in any defining equation; the NODE VALUES
--- tAν₁/tAνa/tAνb/tBν₁/tBνc/tBνd are named constants whose ledger data are pinned
--- in the table below and whose remaining Node fields are E-phase-bound junk
--- consistent with `HistLawful` — a value that cannot satisfy them is a build
--- failure, the day-one duty):
+-- CLOSED-FORM TABLES (REV 5 — no `…` in any defining equation; REV 7, Codex-6
+-- #6: EVERY Node DATA field is now PINNED — the rev-6 "remaining Node fields
+-- are E-phase-bound junk consistent with HistLawful" clause is DELETED: junk in
+-- DATA positions could feed NodeExtends/HistLawful/shapes/tracks/ledgers):
 --   carrier A: tA1 := ⟨[tAν₁]⟩, tA2a := tA1.snoc tAνa, tA2b := tA1.snoc tAνb
 --   carrier B: tB1 := ⟨[tBν₁]⟩, tB2c := tB1.snoc tBνc, tB2d := tB1.snoc tBνd
---   node table (e, g, μ, Dwidth, sides, freshDigits) — REV 6 (Codex-5 gap #11):
---     the Dwidth column is PINNED (= 1 throughout: root Φ-degree 1 forces the
---     head; the Dwidth chain forces the children — childWidth = e·g·Dwidth = 1
---     everywhere, so `IrrHalts` is table-computable: leaves 1·1 = 1·1 ✓ fire,
---     heads 1 ≠ 1·2 ✓ don't):
---     tAν₁ ↦ (1,1,2,1,1,{2,3,4,5});
---     tAνa/tAνb ↦ (1,1,1,1,1,∅) (leaf reads at the joint cell — mstar 0;
---       carrier A pins NO h/slope — any lawful junk with leaf slopes strictly
---       above the head's works, Fable-5's slope-clean ruling);
---     tBν₁ ↦ (1,1,2,1,1,{2}) with h = 1, line slope 1;
---     tBνc/tBνd ↦ (1,1,1,1,2,{3})/(1,1,1,1,2,{4}) with h = 2/3, line slopes
---       2/3 (REV 6, Fable-5 GAP-1 — the lawful two-side hull; rev 5's 0/1
---       violated `hh : 1 ≤ h` resp. the strict slope chain)
+--   CORE COLUMNS (e, g, μ, Dwidth, sides, freshDigits) — REV 6 (Codex-5 gap
+--     #11): Dwidth = 1 throughout (childWidth = e·g·Dwidth = 1 everywhere, so
+--     `IrrHalts` is table-computable: leaves 1·1 = 1·1 ✓ fire, heads
+--     1 ≠ 1·2 ✓ don't):
+--     tAν₁ ↦ (1,1,2,1,1,{2,3,4,5});  tAνa/tAνb ↦ (1,1,1,1,1,∅) (leaf reads at
+--       the joint cell — mstar 0);
+--     tBν₁ ↦ (1,1,2,1,1,{2});  tBνc/tBνd ↦ (1,1,1,1,2,{3})/(1,1,1,1,2,{4})
+--   h / line.slope — REV 7: pinned on BOTH carriers (rev 6 left carrier A
+--     "lawful junk"): heads h = 1, slope 1; leaves h = 2/3, slope 2/3 (the
+--     REV-6 carrier-B values, mirrored onto A — ties exact at
+--     e = STR = Dwidth = 1, strict chain 1 < 2, 1 < 3, StrictMono 2 < 3);
+--   species — heads `.root`, leaves `.increment` (History.root_iff's own pin;
+--     readOf's `IsRootSpecies`/monicTop guard reads exactly this);
+--   σ — the level-0 stage of polTriv's run (K = ZMod 2); the DISPLAYED
+--     READ-SURFACE OBLIGATION (the one non-literal pin, per the charge): the
+--     only σ-datum any consumed obligation reads is `Nat.card ↥σ.K = 2`
+--     (readOf's w = max(factorization 2 2, 1) = 1 — the w-chain seed), a G1a
+--     decide clause; no consumed statement (fiberAt/IrrHalts/shapeOfH/
+--     NodeExtends/ledgers) reads any other σ-component — roster-audited at
+--     readOf's own field list;
+--   (s, t) — Bézout e·s + h·t = 1 at e = 1: (1, 0) throughout (1·1 + h·0 = 1 ✓
+--     for every h);   a — 0 throughout (no recentering offset);
+--   (s0, wSide) — heads (0, 2) (the root read spans the monic box, s0 + wSide
+--     = n = 2, monicTop TRUE with pat top digit 1 — record 9's honest value);
+--     leaves (0, 1) (non-root, monicTop false by species);
+--   ustar / gam — heads u* = 1, γ = e·u* + j*·h = 1 at j* = 0; leaves
+--     u* = 2/3, γ = 2/3 (slope-tie-consistent at STR = 1, j* = 0);
+--   zbar = 1, center = 0, lift = Polynomial.X, ψ = Polynomial.X (the track
+--     factor — the E-phase `trackOf` binding reads THIS field: trackOf = X on
+--     every toy node), pat = fun _ => 1, Ranch = 0 — canonical constants,
+--     PINNED so nothing is left free (no cannot-affect claim needed where a
+--     value is displayed); Node's own proof fields (he/hh/hcop) check at the
+--     pinned values: e = 1, h ∈ {1,2,3}, gcd(1,h) = 1 ✓
 --   trees: toyTreeA := ⟨chains {tA1, tA2a, tA2b}, henV = ∅, leafV/nsLeaf = the
 --     τ-rule values at the node table (both leaves τ-irr, no ns mark)⟩;
 --     toyTreeB := ⟨chains {tB1, tB2c, tB2d}, likewise⟩ — the VTree proof fields
@@ -3968,11 +4217,20 @@ def toyModel : TreeModel 2 (ZMod 2) 2 3 9 polTriv :=
     -- over the tables above — closed-form, enumerable]
 def toyCellA : EntSt 2 (ZMod 2) 2 → Box 2 9 → ToyCell
   | .amb, x => if x 0 = 0 ∧ x 1 = 0 then .rootC else .junk
-  | .red _ ψ, x => if ψ = Polynomial.X ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+  | .red _ ψ, x => if ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0
+      ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
       then .winC else .junk
       -- REV 6: the ψ-GUARD — the anchored `RedCellPartition` demands ν in NO
       -- other track's branch set (its uniqueness conjunct); winC now answers
-      -- only the true track ψ = X (the repeated factor of f̄ = x²)
+      -- only the true track ψ = X (the repeated factor of f̄ = x²).
+      -- REV 7 (Fable-6 CRIT-1, fix verbatim): the REDUCTION COORDS x0 = x1 = 0
+      -- join the guard — rev 6 read NEITHER g NOR x0/x1, so at g = (1,0),
+      -- x = (1,0,0,…) the cell was winC with tAν₁ eligible while
+      -- toyChildA none tAν₁ x demands x0 = 0: `child_cell_red` (∀ χ g) was
+      -- decide-FALSE (§0 record 17). With the pin, x ∈ rootCell χ g ∧
+      -- cellOf (.red g ψ) x = winC forces g = toyG — the ∀-g leg is vacuous
+      -- off the true track and exact on it; cellEventE at the true entrance
+      -- (.red toyG X) is UNCHANGED (its members already had x0 = x1 = 0)
   | .st H, x => if H = tA1 ∧ toyMemA (some tA1) x then .splitC else .junk
 def toyBranchA : ToyCell → Finset (Node 2 (ZMod 2))
   | .rootC => {tAν₁}                 -- the root's one window child (REV 6: the
@@ -3982,20 +4240,35 @@ def toyBranchA : ToyCell → Finset (Node 2 (ZMod 2))
   | .junk => ∅                       -- leaves/junk: childless
 def toyCA : CellAssign 2 (ZMod 2) 2 3 9 polTriv toyModel :=
   { Cell := ToyCell, cellOf := toyCellA, branchSetOf := toyBranchA,
-    cellLevel := fun _ => 3, levelOf := levelIdx, … }   -- [the remaining fields
-    -- are PROOF fields (cell_local/child_cell/child_root_sub/child_cell_red/
-    -- hCellFin): G1a decide obligations over the closed-form tables — every
-    -- DATA field is displayed above; only proofs sit under the `…`.
+    cellLevel := fun _ => 4, levelOf := levelIdx, … }   -- [REV 7 (Fable-6
+    -- CRIT-2): cellLevel 4 — at rev 6's 3, coords 4/5 sit at level 3 (levelIdx,
+    -- n = 2: coords 2ℓ−2, 2ℓ−1 at level ℓ), so `cell_local`'s premise
+    -- constrained only c ∈ {0…3} while toyCellA reads x4/x5 at .red/.st —
+    -- decide-FALSE at x = 0⃗ vs x' = 0⃗-except-x'4 = 1 (§0 record 18); at 4 the
+    -- premise covers levelIdx c < 4 ⟺ c < 6 = EVERY read coordinate, and no
+    -- census integer moves (cellLevel enters only cell_local's premise).
+    -- The remaining fields are PROOF fields (cell_local/child_cell/
+    -- child_root_sub/child_cell_red/hCellFin): G1a decide obligations over the
+    -- closed-form tables — every DATA field is displayed above; only proofs
+    -- sit under the `…`.
     -- child_cell walk-through, REV 6 (the SCOPED law, §2.9): at o = some tA1,
     -- .splitC on the state, {tAνa, tAνb} = toyChildA's roster ✓; at
     -- o = some tA2a/tA2b, .junk, ∅ = childless ✓. ROOT LAYER (no iff):
     -- `child_root_sub` — child(none, tAν₁, x) pins x0…x5, and there
     -- cellOf .amb x = .rootC with branch set {tAν₁} ∋ tAν₁ ✓ (the ⊆ face only:
     -- rootC's branch set does NOT force the window digits — the rev-5 clash is
-    -- gone); `RedCellPartition` — trackOf tAν₁ = X ∈ x's factor roster ✓,
-    -- the ψ-guarded winC answers only ψ = X (middle + uniqueness conjuncts ✓),
-    -- and the ⊆ face: x ∈ rootCell ∧ x2…x5 = 0 → child(none, tAν₁, x) holds ON
-    -- THE NOSE against the REV-6 toyChildA ✓ — hred is instantiable]
+    -- gone); `RedCellPartition`, RE-WALKED AT ALL g (REV 7 — the rev-6
+    -- walk-through checked only g = toyG, Fable-6 CRIT-1's charge): FIRST
+    -- CONJUNCT at g = toyG — trackOf tAν₁ = X ∈ x's factor roster ✓, winC
+    -- answers only ψ = X (middle ✓), and UNIQUENESS: child(none, tAν₁, x) pins
+    -- x0…x5 = 0, so for ANY ψ with tAν₁ ∈ branchSet(cellOf (.red toyG ψ) x)
+    -- the REV-7 guard forces ψ = X = trackOf tAν₁ ✓; at g ≠ toyG — the
+    -- antecedent x ∈ rootCell χ g contradicts toyChildA's x0 = x1 = 0 pin, so
+    -- no realized child exists and the conjunct is VACUOUS ✓. SECOND CONJUNCT
+    -- (⊆ face) at ALL g: the guard's x0 = x1 = 0 with x ∈ rootCell χ g forces
+    -- g = toyG, and then x0…x5 = 0 → child(none, tAν₁, x) ON THE NOSE ✓; at
+    -- g ≠ toyG the branch set is ∅ (guard fails) — vacuous ✓. hred is
+    -- instantiable, now at EVERY g]
 def toyMemB : Option (History 2 (ZMod 2)) → Box 2 9 → Prop
   | none, _ => True
   | some H, x =>
@@ -4012,8 +4285,11 @@ def toyChildB : Option (History 2 (ZMod 2)) → Node 2 (ZMod 2) → Box 2 9 → 
       toyMemB (some tB1) x ∧ x 3 = 0 ∧ x 4 = 0   -- children live on the joint cell
 def toyCellB : EntSt 2 (ZMod 2) 2 → Box 2 9 → ToyCell
   | .amb, x => if x 0 = 0 ∧ x 1 = 0 then .rootC else .junk
-  | .red _ ψ, x => if ψ = Polynomial.X ∧ x 2 = 0 then .winC else .junk
-      -- REV 6: the ψ-guard, as on carrier A
+  | .red _ ψ, x => if ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0
+      then .winC else .junk
+      -- REV 6: the ψ-guard, as on carrier A; REV 7 (Fable-6 CRIT-1): the
+      -- reduction coords x0 = x1 = 0 join, same witness/same fix as carrier A —
+      -- cellEventE at (.red toyG X) unchanged (the 2⁶ stratum)
   | .st H, x => if H = tB1 ∧ x 3 = 0 ∧ x 4 = 0 then .splitC else .junk
 def toyBranchB : ToyCell → Finset (Node 2 (ZMod 2))
   | .rootC => {tBν₁}
@@ -4024,7 +4300,10 @@ def toyModelB : TreeModel 2 (ZMod 2) 2 3 9 polTriv :=
   { mem := toyMemB, child := toyChildB, … }               -- [proof fields: G1a]
 def toyCAB : CellAssign 2 (ZMod 2) 2 3 9 polTriv toyModelB :=
   { Cell := ToyCell, cellOf := toyCellB, branchSetOf := toyBranchB,
-    cellLevel := fun _ => 3, levelOf := levelIdx, … }     -- [proof fields: G1a]
+    cellLevel := fun _ => 4, levelOf := levelIdx, … }     -- [proof fields: G1a;
+    -- REV 7 (Fable-6 CRIT-2): cellLevel 4, as on carrier A — toyCellB's .st
+    -- guard reads x3/x4 and rev 6's 3 left x4 (level 3) outside cell_local's
+    -- premise; levelIdx c < 4 ⟺ c < 6 covers every read coordinate]
 
 theorem toy_gate : (Nat.card ↥{x | toyTreeA.fiberAt toyModel toyχ x}) * 2 ^ 6
     = 2 ^ 9                                   -- carrier A; via G1a decide + G1b
@@ -4194,14 +4473,22 @@ criterion ("re-keyed against the real corpora and re-audited" — MovesS §W4-SY
 preamble) sits with the owner; **NOT-OURS** where the contract's own text assigns
 the leg elsewhere (quoted per row). NO row counts as done that isn't.
 
-COUNT: **19 seam entries** = 4 (MovesD W4-1…4) + 11 (MovesS S-1…S-11) + 2 (MovesS
-ratification addenda) + 2 (HC-2 Walls A/B); PLUS 2 fenced Q1/Q2 queue-item DESIGNS
-(§4 — not seam entries, not discharge targets). Total rows below: 21. Status tally
-over the 19 — ROW-FAITHFUL (REV 3, Codex-2 #25/Fable-2 GAP-1: rev 2's tally line
+COUNT: **20 seam entries** = 5 (MovesD W4-1…5 — REV 7, Codex-6 g3 = Fable-6
+GAP-3: the ratification repairs SHIPPED W4-5, so the rev-6 "19" and "(4
+entries)" were stale) + 11 (MovesS S-1…S-11) + 2 (MovesS ratification addenda)
++ 2 (HC-2 Walls A/B); PLUS 2 fenced Q1/Q2 queue-item DESIGNS (§4 — not seam
+entries, not discharge targets). Total rows below: 22. Status tally over the 20
+— ROW-FAITHFUL (REV 3, Codex-2 #25/Fable-2 GAP-1: rev 2's tally line
 contradicted its own table on S-4 and the NOT-OURS count):
 **1 DISCHARGED (W4-4) · 4 REDUCED (W4-1, W4-2, W4-3, Wall A) · 12 SUPPLIED/PARTIAL
-(S-1, both addenda, S-2, S-3, S-5, S-6, S-7, S-8, S-9, S-10, S-11) · 2 NOT-OURS
-(S-4, Wall B).** Check: 1+4+12+2 = 19 ✓ (re-counted from the rows below).
+(S-1, both addenda, S-2, S-3, S-5, S-6, S-7, S-8, S-9, S-10, S-11) · 3 NOT-OURS
+(S-4, W4-5, Wall B).** Check: 1+4+12+3 = 20 ✓ (re-counted from the rows below).
+REV-7 STATUS NOTE: W4-1 stays REDUCED but its residue CHANGES CONTENT (the
+five-round overturn — the covering half is now in-corpus via
+`ChildCover`/`constFalse_childCover_false`; only the all-and-only roster law
+remains fenced); W4-4 stays DISCHARGED with the obligation RE-KEYED to the
+built `NPIDPin` target; W4-5 enters as NOT-OURS with its consumer-duty
+adjudication on the row.
 REV-3 STATUS MOVES, each with its reason: S-9 DISCHARGED→SUPPLIED (Codex-2 #18 —
 values now in-corpus, but the DONE criterion's re-audit is the owner's); Wall A
 SUPPLIED→REDUCED (Codex-2 #19 — the pin now binds the BUILT `HC2.ReadsOf`, the
@@ -4209,14 +4496,16 @@ instance residue is HC-2's); S-3 NOT-OURS→SUPPLIED (Codex-2 #20, pushback REVE
 — the `hxrb` premise is stated over the imported real `βmeas`, §2.10/T-D15); S-4
 counted NOT-OURS as its own row always said.
 
-**(A) MovesD blueprint §2.5 (4 entries):**
+**(A) MovesD blueprint §2.5 + the ratification-repair addendum (5 entries —
+REV 7):**
 
 | entry | contract text honored | MovesT units | status + residual (owner per the contract's own clause) |
 |---|---|---|---|
-| **W4-1** `eligible`/`child_iff` | (c): "`eligible` becomes a DEFINED predicate over MovesT's cell/branch-set vocabulary; `child_iff` then a THEOREM-obligation of HC-2"; (b): "NO `eligible := child` vacuity … the root-only childless tree must not satisfy the law for realizable inputs", cell data never f-data | Defs §2.9 (`CellAssign`, `eligibleT`, `WallAReconciled`) + T-D1 + T-D2 — REV 3 (Codex-2 #16): the (b)-demand is the GENERAL theorem `rootOnly_childless_rejected` (every window-opening input, every model, every CA — through fiberAt's clauses (v)/(vi)) | **REDUCED**, with the THIRD-ROUND COMPARISON on the row (REV 5). Round-4 verdicts: **Codex-4 #5** — "the contract's own text … is not satisfied by moving the actual falsification to the unconsumed, fenced `WallAReconciled` Prop — tree-level `fiberAt` rejection and tower-level ledger rejection are different layers from the W4-1 layer itself"; **Fable-4 §1(4)** — "SUPPORTED: the contract's (b)-union text is quoted exactly … its corpus face IS `WallAReconciled` … and that face IS fenced (the built `ReadsOf` carries `HistoryCoherent`) … Nothing overclaimed." The texts, on the row: contract (b): "the root-only childless tree must not satisfy the law for realizable inputs"; the charge's else-branch: "apply the note-supported law if one exists, else record the declared boundary". ADJUDICATION ON THE TEXT ALONE — **HELD** (BDY): Codex-4's layer-separation point is CORRECT and is exactly what the boundary declaration SAYS — the row never claimed the tree/ledger rejections operate at the W4-1 layer; it claims the W4-1-layer law (`WallAReconciled`) is fenced and NAMES the in-corpus rejections at their own layers. The (b)-demand at the W4-1 layer is therefore honestly UNMET IN-CORPUS — that unmet demand is this row's REDUCED residue, owner HC-2, discharged when Q1 lands (task #44); recording it is the charge's else-branch, not a license. What would FOLD this row: any in-corpus statement of the (b)-falsification not passing through `HistoryCoherent` — none exists (L2 totality IS the fenced surface). `child_iff` for the CANONICAL instance stays HC-2's by (c)'s own text. **FOURTH-ROUND ENTRY (REV 6, Codex-5 #2)** — the verdict re-pressed the vacuity: "constant-false `T.child`, `CA.Cell := Unit`, and every `branchSetOf` empty satisfies the theorem identically — exactly the instance the W4-1 contract text forbids … declaring the requirement a boundary does not make the proposed Lean interface faithful." HELD, same license (the charge's else-branch; the contract's (c) text still assigns the canonical `child_iff` to HC-2), with two REV-6 movements RECORDED on the row: (a) the o = none leg of `eligibleT_iff_child` is GONE — not under this row's pressure but by §0 record 13's joint unsatisfiability (Fable-5 CRIT-1); the displayed eligible/child tie is now three-layered (the some-state iff; the `child_root_sub` ⊆ face; the track-anchored `RedCellPartition`), and the row's boundary language covers exactly the remaining all-and-only root demand; (b) the childless MODEL now dies in-corpus one layer closer to W4-1 — `KBTotTower.root_total` (§2.4, the covering display's own level-0 totality) rejects every childless tower inside the consumed vp value — but the W4-1-LAYER law (branch sets = L2's all-and-only roster) remains exactly the fenced `WallAReconciled`, so the (b)-demand AT THAT LAYER stays UNMET IN-CORPUS: the row's REDUCED residue, owner HC-2, unchanged. What would fold: unchanged (an unfenced in-corpus statement of L2 totality — none exists) |
+| **W4-1** `eligible`/`child_iff` | (c): "`eligible` becomes a DEFINED predicate over MovesT's cell/branch-set vocabulary; `child_iff` then a THEOREM-obligation of HC-2"; (b): "NO `eligible := child` vacuity … the root-only childless tree must not satisfy the law for realizable inputs", cell data never f-data | Defs §2.9 (`CellAssign`, `eligibleT`, `WallAReconciled`) + T-D1 + T-D2 — REV 3 (Codex-2 #16): the (b)-demand is the GENERAL theorem `rootOnly_childless_rejected` (every window-opening input, every model, every CA — through fiberAt's clauses (v)/(vi)) | **REDUCED**, with the THIRD-ROUND COMPARISON on the row (REV 5). Round-4 verdicts: **Codex-4 #5** — "the contract's own text … is not satisfied by moving the actual falsification to the unconsumed, fenced `WallAReconciled` Prop — tree-level `fiberAt` rejection and tower-level ledger rejection are different layers from the W4-1 layer itself"; **Fable-4 §1(4)** — "SUPPORTED: the contract's (b)-union text is quoted exactly … its corpus face IS `WallAReconciled` … and that face IS fenced (the built `ReadsOf` carries `HistoryCoherent`) … Nothing overclaimed." The texts, on the row: contract (b): "the root-only childless tree must not satisfy the law for realizable inputs"; the charge's else-branch: "apply the note-supported law if one exists, else record the declared boundary". ADJUDICATION ON THE TEXT ALONE — **HELD** (BDY): Codex-4's layer-separation point is CORRECT and is exactly what the boundary declaration SAYS — the row never claimed the tree/ledger rejections operate at the W4-1 layer; it claims the W4-1-layer law (`WallAReconciled`) is fenced and NAMES the in-corpus rejections at their own layers. The (b)-demand at the W4-1 layer is therefore honestly UNMET IN-CORPUS — that unmet demand is this row's REDUCED residue, owner HC-2, discharged when Q1 lands (task #44); recording it is the charge's else-branch, not a license. What would FOLD this row: any in-corpus statement of the (b)-falsification not passing through `HistoryCoherent` — none exists (L2 totality IS the fenced surface). `child_iff` for the CANONICAL instance stays HC-2's by (c)'s own text. **FOURTH-ROUND ENTRY (REV 6, Codex-5 #2)** — the verdict re-pressed the vacuity: "constant-false `T.child`, `CA.Cell := Unit`, and every `branchSetOf` empty satisfies the theorem identically — exactly the instance the W4-1 contract text forbids … declaring the requirement a boundary does not make the proposed Lean interface faithful." HELD, same license (the charge's else-branch; the contract's (c) text still assigns the canonical `child_iff` to HC-2), with two REV-6 movements RECORDED on the row: (a) the o = none leg of `eligibleT_iff_child` is GONE — not under this row's pressure but by §0 record 13's joint unsatisfiability (Fable-5 CRIT-1); the displayed eligible/child tie is now three-layered (the some-state iff; the `child_root_sub` ⊆ face; the track-anchored `RedCellPartition`), and the row's boundary language covers exactly the remaining all-and-only root demand; (b) the childless MODEL now dies in-corpus one layer closer to W4-1 — `KBTotTower.root_total` (§2.4, the covering display's own level-0 totality) rejects every childless tower inside the consumed vp value — but the W4-1-LAYER law (branch sets = L2's all-and-only roster) remains exactly the fenced `WallAReconciled`, so the (b)-demand AT THAT LAYER stays UNMET IN-CORPUS: the row's REDUCED residue, owner HC-2, unchanged. What would fold: unchanged (an unfenced in-corpus statement of L2 totality — none exists). **FIFTH-ROUND ENTRY (REV 7, ruling 1 — Codex-6 #2; verifiers SPLIT (Fable-6 licensed the hold, Codex-6 rejected it), ORCHESTRATOR DIRECT READ DECIDES: the hold is OVERTURNED.** The direct read: the note's covering case-analysis (c2) lives AT this layer (7112–7119, "fix f and a live track. At level 0, m_i = 1 gives τ-hen and m_i ≥ 2 opens the window — total"), and its EXISTENCE half is fence-free — the continuation exists by L1 totality (D4R.0-K(a), note-DISCHARGED), no `HistoryCoherent` content required; four rounds of hold conflated the existence half with the all-and-only ROSTER half (which alone is `ReadsOf`-keyed). EXECUTED: the W4-1 contract type gains the per-track covering clause `ChildCover` (§2.9 — at a realized window-opening read with an eligible μ ≥ 2 track, a child EXISTS carrying that track's data, in that track's `.red` branch set), and the forbidden constant-false-child/unit-cell model is now FALSE at the W4-1 interface ITSELF (`constFalse_childCover_false`, T-D2 — in-corpus, fence-free). CONTRACT CHANGE recorded for the MovesD-side W4-SYNC (`W4_SYNC_DELTAS_2026-07-29.md` entry 10): MovesD's W4-1 text gains the covering clause; the MovesD-side re-audit consumes it at the next ratification pass. Status stays REDUCED — the residue NARROWS to exactly the all-and-only roster law (`WallAReconciled`, fenced Q1, owner HC-2) plus `ChildCover`'s own canonical-instance discharge (owner HC-2/D4R0K, hypothesis `hccov` where consumed); the toys do not instantiate `ChildCover` (partial by design — disclosed at §2.9) |
 | **W4-2** VerdictModel ENTIRE | (a)'s FULL field roster → §2.9's `VerdictModelT` + crosswalk (every rev-8 field accounted); (b)(i) no degenerate satisfiability → `vdAt_nontrivial` (T-V7) + `cellOf_nonconstant` (T-D2) + toy gates; (b)(ii) `cell_local` replaced at the per-state level (T-D4 sound + falsifier); cross-level cap uniformity → `CapIrrLaw` quantified over ALL presented N (§2.9, DISPLAYED) discharged by T-C2's `tbcap_irr_family` via `capIrr_uniform` (Codex-2 #5 closed); (c) re-derived from VP-1/VP-2 + TB-CAP | T-D3 (`vModelOf` + the in-corpus `vdict_cell_of_child_cell`) + T-D4 + T-V5/V6/V7 + T-C1/C2 — REV 3 (Codex-2 #17): the three undisplayed packages are GONE — `VdictCellData` retired (an in-corpus LEMMA), `CapIrrLaw`/`CapData` displayed §2.9, `KBTot` displayed §2.4 with its falsifier | **REDUCED**: structure, vdict values, halt_iff, both caps, both locality laws are in-corpus theorems/defs over DISPLAYED types; residuals NAMED and typed: `hdi : KBTot` (HC-2/D4R0K), the canonical CA itself (HC-2); ns stays cap-FREE (the ADMITTED (b)(ii) amendment, refutation record §0) |
 | **W4-3** D15's `D4R_CYL` + `ClassFiberWelldef` | (b): "its proof needs kernel (a)/(b) apparatus + Thm C(a) — wave-4"; (c): "become wave-4 THEOREMS over the MovesT tree; D15 builds then" | T-D5 + T-D6, from the NAMED `RunKey`/`EtaLoc` (rev 2: ∀-jet outside the iff — the rev-1 quantifier error is dead); consumed downstream by T-F2/F3, T-D11 | **REDUCED**: both Props are theorems here FROM RunKey + EtaLoc; those two bridge Props are HC-2's Wall-A surface (owner recorded, §0). D15 builds once HC-2 lands them |
-| **W4-4** NP-ID | (a)'s typed form stated VERBATIM (∀ i, ∀ J — rev 2, Codex 24: no `S.jet` weakening); (c): "becomes a wave-4 theorem from mstar_eq + fresh_band/fresh_cover + D8/D4b" | T-D7 (`np_id`, split D7a/D7b) | **DISCHARGED** (statement = the contract's (a), in-corpus provable from the built MovesD/MovesC apparatus); landing deletes D4R4_all's conditionality pointer; T-C2's NPband corollary consumes D7a explicitly |
+| **W4-4** NP-ID | (a)'s typed form stated VERBATIM (∀ i, ∀ J — rev 2, Codex 24: no `S.jet` weakening); (c): "becomes a wave-4 theorem from mstar_eq + fresh_band/fresh_cover + D8/D4b" — **REV 7 (Codex-6 g2 = Fable-6 GAP-2, W4-SYNC delta 6): the contract side is now TYPED corpus-side** — MovesD ships `NPIDPin` (NPband = NthrSup, NPv_npid.lean 51–53), `NthrSup`, `noteNP` (L12's piecewise threshold verbatim) and `D4R4_all_noteRange` (the SUM ∧ EV conclusion on L12's own range `noteNP ≤ N`, premised on `hpin : NPIDPin`) | T-D7 (`np_id` + REV 7 `np_id_pin`, split D7a/D7b) | **DISCHARGED**, RE-KEYED (REV 7): the obligation is now `np_id_pin : NPIDPin n pol P Nthr` at the tree-instantiated family (Nthr i = L12's N(η_i, ⊤) = 1 + the largest transported base level), derived from the per-class `np_id`; the built names import BY NAME (`bandLevels` re-defined CLOSED over the built `bandS`/`NPband` — rev 6's bracket RE-BRACKETED built content, the REV-4 rule); the stale "landing deletes D4R4_all's conditionality pointer" sentence is RETIRED (the pointer is already gone corpus-side — landing supplies `hpin` to `D4R4_all_noteRange`); T-C2's NPband corollary consumes D7a explicitly |
+| **W4-5** POL-PIN (NEW row, REV 7 — Codex-6 g3 = Fable-6 GAP-3, W4-SYNC delta 7: the entry EXISTS corpus-side, the rev-6 census pre-dated it) | MovesD ships `OffsetPPin` (Type-valued; `Realizes` predicate field + laws `total`, `realizes_ne_zero`; non-vacuity witness `OffsetPPin.lift_ne_zero`) + `CD_canonical` (the D2a class count at a pinned policy) — being STRENGTHENED in MovesD repair round 2 with support/determinism laws (in flight, noted) | — (no MovesT unit) | **NOT-OURS**, with the wave-4 CONSUMER DUTY ADJUDICATED (the round-6 open question "polTriv vs `lift_ne_zero`"): MovesT's statements are policy-GENERIC (every unit binds `pol : CanonPolicy` as a parameter and never reads `pol.liftOf` or evaluates `CD`), and the toy carriers' `polTriv` is GATE-LOCAL — their gates never evaluate `CD` or any lift, so no `OffsetPPin polTriv` instance is owed (the gates' non-vacuity is carried by their own decide obligations, not by `lift_ne_zero`). DUTY RECORDED: any FUTURE MovesT/wave-5 re-key that routes `CD`/class-count values through this corpus must premise the strengthened `OffsetPPin pol` BY NAME — a rider, not a present obligation; MovesV's CD-consuming units own the present duty (their blueprint's business) |
 
 **(B) MovesS blueprint §W4-SYNC (11 entries + 2 addenda).** The DONE criterion is
 the contract's own: "a seam entry is DONE only when re-keyed against the real
@@ -4228,15 +4517,15 @@ MovesT's side vs the owner's remainder.
 | **S-1** W1_RS1SH (+S-1e, S-1m) | the [3t] premise row's REAL statements; the ACTUAL `RS1GivenPackage` declared verbatim + instantiated (rev 2, Codex 25) | T-D12 | **SUPPLIED**: fields re-keyed; the RS.1 derivations + the re-audit are MovesS wave 5 (Codex 26 honored: NOT counted done) |
 | — **addendum (W1 circularity)** | the enabling half: TREE-EXP/TREE-N/ONE-F exported as SEPARATE named theorems (T-E8/E11/F1) — non-circular derivation inputs now exist | T-E8, T-E11, T-F1 + T-D12 | **SUPPLIED / OPEN-AT-OWNER**: the addendum's demand — "the re-keying must DERIVE RS.1-SH from the MovesT tree assembly, not restate it" — is an act of MovesS's re-key; unrepairable from this side (Codex 27 recorded, not claimed fixed) |
 | — **addendum (W1m nine-input ledger)** | the premise row TYPED incl. the ledger slot: `w1mObligation` (rev 2, Codex 28) | T-D12 | **SUPPLIED** — REV 4 (Codex-3 #18's pattern): the ledger slot IS the imported `MovesS.LedgerIV T' M`, no longer a Prop parameter awaiting a re-key |
-| **S-2** W2_xrb | XRBPackage declared verbatim; [3t] fields := MovesT statements — **with the ns_null FINITE-FACE RIDER quoted at the field** (rev 2, Fable GAP-4): T-C7 is the truncated-ratio limit, NOT the profinite μ-claim; MovesS's re-audit must consume the finite face or add its own bridge | T-D12 | **SUPPLIED** — with the THIRD-ROUND COMPARISON on the row (REV 5). Round-4 verdicts: **Codex-4 #6** — "the note's `(ns-null)` display concludes the conditional measure identity μ((τ-ns) class │ Σ) = 0 … the finite-level limit is an ingredient, not the displayed conclusion. A self-imposed 'measure-free corpus' doctrine cannot alter what the frozen note or the contract field means; the missing bridge should remain an explicit hypothesis or gap"; **Fable-4 §1(4)** — "SUPPORTED: the note's (ns-null) display 7210–7231 is the finite-level mechanism … closed by 'continuity from above' — the profinite step — and the corpus's standing doctrine … genuinely cannot state it; the rider rides … bindingly, and the contract's own DONE criterion routes the bridge decision to MovesS." The note's text, on the row: "μ(Σ ∩ L_M) → 0, and the class = ∩_M (Σ ∩ L_M) gives μ((τ-ns) class │ Σ) = 0 by continuity from above" (7210–7231). ADJUDICATION ON THE TEXT ALONE — **PART-HELD, PART-FOLDED**: HELD, the doctrine half — the displayed conclusion IS a μ-statement and a measure-free corpus genuinely cannot state it; no restatement can manufacture the μ-API. FOLDED, the packaging half — Codex-4's own remedy sentence ("should remain an explicit hypothesis or gap") is EXECUTED: the profinite bridge is now the EXPLICIT owner-tagged Prop slot `ns_bridge` on `xrbOfMovesT` (T-D12 — `ns_null := NsAmendedPair pol ∧ ns_bridge`), the exact genre of xhd_*/rel2_* (owner: the measure-side re-audit, MovesS wave 5/[2b]); the missing content is TYPED in the package, never only a docstring rider — and the rider still rides. The finite precursor's own defect (Codex-4 #2) is separately fixed (gap-form `hMgrow`, rev 5). REV 6 (Codex-5 gap #8): the gap RE-PRESSES this row's own disclosed F* residual — the finding's text itself concedes "this echoes the rev-5 table's own disclosed F* residual … rather than adding new information"; HELD, with the slot's intended value now ALSO quoted AT the slot (T-D12), so an owner instantiating `ns_bridge := True` fails its own re-audit, not this corpus's. xhd_*/jc_inv ([2b], MovesV), rel2_* ([2r]) stay parameters with owner tags |
+| **S-2** W2_xrb | XRBPackage declared verbatim; [3t] fields := MovesT statements — **with the ns_null FINITE-FACE RIDER quoted at the field** (rev 2, Fable GAP-4): T-C7 is the truncated-ratio limit, NOT the profinite μ-claim; MovesS's re-audit must consume the finite face or add its own bridge | T-D12 | **SUPPLIED** — with the THIRD-ROUND COMPARISON on the row (REV 5). Round-4 verdicts: **Codex-4 #6** — "the note's `(ns-null)` display concludes the conditional measure identity μ((τ-ns) class │ Σ) = 0 … the finite-level limit is an ingredient, not the displayed conclusion. A self-imposed 'measure-free corpus' doctrine cannot alter what the frozen note or the contract field means; the missing bridge should remain an explicit hypothesis or gap"; **Fable-4 §1(4)** — "SUPPORTED: the note's (ns-null) display 7210–7231 is the finite-level mechanism … closed by 'continuity from above' — the profinite step — and the corpus's standing doctrine … genuinely cannot state it; the rider rides … bindingly, and the contract's own DONE criterion routes the bridge decision to MovesS." The note's text, on the row: "μ(Σ ∩ L_M) → 0, and the class = ∩_M (Σ ∩ L_M) gives μ((τ-ns) class │ Σ) = 0 by continuity from above" (7210–7231). ADJUDICATION ON THE TEXT ALONE — **PART-HELD, PART-FOLDED**: HELD, the doctrine half — the displayed conclusion IS a μ-statement and a measure-free corpus genuinely cannot state it; no restatement can manufacture the μ-API. FOLDED, the packaging half — Codex-4's own remedy sentence ("should remain an explicit hypothesis or gap") is EXECUTED: the profinite bridge is now the EXPLICIT owner-tagged Prop slot `ns_bridge` on `xrbOfMovesT` (T-D12 — `ns_null := NsAmendedPair pol ∧ ns_bridge`), the exact genre of xhd_*/rel2_* (owner: the measure-side re-audit, MovesS wave 5/[2b]); the missing content is TYPED in the package, never only a docstring rider — and the rider still rides. The finite precursor's own defect (Codex-4 #2) is separately fixed (gap-form `hMgrow`, rev 5). REV 6 (Codex-5 gap #8): the gap RE-PRESSES this row's own disclosed F* residual — the finding's text itself concedes "this echoes the rev-5 table's own disclosed F* residual … rather than adding new information"; HELD, with the slot's intended value now ALSO quoted AT the slot (T-D12), so an owner instantiating `ns_bridge := True` fails its own re-audit, not this corpus's. **FOURTH-ROUND ENTRY (REV 7, Codex-6 #5 — the hold is REJECTED and the rejection EXECUTED):** "a comment quoting the intended measure statement does not constrain the field; `ns_bridge := True` remains a valid instantiation … this directly violates the charge's typed-field requirement" — correct: quoting-at-the-slot was routing, not typing. The `(ns_bridge : Prop)` binder is DELETED; the slot's value is the NAMED TYPED SEAM `NsBridgeStmt pol` (§2.10) — the note's μ-sentence AS the type, over an abstract cap-mass field (antitone ∧ continuity-from-above ∧ finite-level read-off ⟹ μclass = 0) in the corpus's own carriers (`NsLumpFamily.L`, `stateTruncAt`). The corpus still PROVES nothing about it (the per-cap decay is the C(b) pricing at the profinite μ — owner MovesS wave 5/[2b], unchanged); what changed is that the owner now discharges THE STATEMENT. The doctrine half of the third-round adjudication survives intact: the μ-API itself is not manufactured — the field quantifies over abstract reals, not a measure. xhd_*/jc_inv ([2b], MovesV), rel2_* ([2r]) stay parameters with owner tags |
 | **S-3** W3_recursion | the RE-KEYED W3 obligation with the `hxrb` premise as the contract prescribes | §2.10 (`hxrbStmt`, `w3Rekeyed`) + T-D15 | **SUPPLIED** — REV 3, the rev-2 pushback REVERSED (Codex-2 #20 ruling accepted, sided with the text): the preamble assigns the re-key HERE ("the contract MovesT/MovesV re-key when their vocabulary exists") and S-3 prescribes the premise shape ("re-keyed form: `(hxrb : ∀ …, B₀.βmeas … = B₀.βmeas …) → …`"); rev 2's "βmeas is not stateable in this corpus" was FALSE — MovesS is BUILT and `RS1Meas.βmeas`/`evalRe` import (`LeanUrat/MovesS/Interfaces.lean` 35–46, `EvalReDef.lean`); `hxrbStmt` states the equality over the imported objects, `w3Rekeyed` the full obligation. REV 4 (Codex-3 #18 — the round-3 ruling "PARTIALLY JUSTIFIED, the repair incomplete" accepted): `w3Rekeyed` now premises the REAL imported `MovesS.LedgerIV T' M` (Defs.lean 210 — build-check on record above §0), never a bare `ledger_iv : Prop`; Fable-3's computed verification of `hxrbStmt`/the `recursion_meas` conclusion shape stands. Owner remainder (quoted honestly): DERIVING the recursion conclusion is MovesS wave-5's RS.1 work |
 | **S-4** W4_x3 | recorded posture only: MovesT is X.3-free (§0) | — | **NOT-OURS** ([5]/MovesX's package; consumed-item pin unchanged) |
 | **S-5** W7_cutWD + TreeIface | the CARRIER: VTree + the four order laws (refl/trans/antisymm/total) | T-D8, T-D13 | **PARTIAL** (rev 2, Codex 30): the load-bearing re-keyed clause — "∀ t ν, TI.isDeepSplit t ν → ∃ ν', TI.isEntrance t ν' ∧ TI.onPath t ν' ν" — needs `isEntrance`/`isDeepSplit` (CTS/[1v] vocabulary, MovesV); quoted so the residual is checkable |
 | **S-6** W8_bdy + ReadLedger | the contract's carrier DECLARED VERBATIM (`ReadLedgerT`), a ledger VALUE CONSTRUCTED from the tree (`readLedgerOf` — charges := the tree's read masses p^{−siteExp}), its (BDY)-split identities THEOREMS at the constructed value (`readLedgerOf_bdy` = the contract's `W8_bdy` conjunction), and the chained mass identity telescoping to the ROOT CELL entrance (`chain_charge`, rev-3 EntSt form) | Defs §2.5 + T-D14 | **PARTIAL** — REV 3 (Codex-2 #21: carrier + instance + root-aware charge). REV 4 (Codex-3 #16/#17, both fixed): the ledger's `.st` entrances are the IMMEDIATE parents (`hparent`, §2.5 — the telescope can no longer skip/duplicate conditioning states) and the (BDY) indexing follows the contract's inclusive convention (L = the LAST READ INDEX; the phantom terminal read is dead, `readLedgerOf`). Residuals quoted with owners: fe's semantic pin needs `isEntrance` (MovesV/[1v]); the WshVal/βmeas feeds are MovesS's consumption; multi-side chains' mass identities ride T-E7/E8 under the hjcm tag |
 | **S-7** W10_convergence + FiberIface | fibOf keying, countability, disjointness, ONE-F partition + the NONEMPTINESS CARRIER `Realizes` and the toy witness `toy_fiber_ne` (rev 2, Codex 32) | T-D9, T-D10, T-D11 (+T-E9, T-F1, T-G1) | **PARTIAL**: "βmeas = 0 must not trivialize (fiber nonemptiness where βmeas > 0)" is a LAW over MovesS's measured side — consumed there against `Realizes`; general realizability is genuinely open (no fake theorem) |
-| **S-8** W17ii + Wsh17Package | the actual `Wsh17Package` declared; `sib_count := SibCountShallow T CA χ` — a DEFINED statement (§2.6), not a name | T-D12 | **PARTIAL** (Codex 33): the empty-menu exclusion (`F.Sh.Nonempty`) and the xhd_s face are MovesS/[2b]-side tie-demands — quoted, owners recorded; c15_volumes (§C/MovesC cite) and cts_counts ([1v]) stay parameters |
-| **S-9** packages as registries | every [3t]-owned Prop field is a §2.10 DEF with a DISPLAYED BODY over consumed corpus objects (`TreeExpFin`/`TreeExpNs`/`TreeNStmt`/`OneFStmt`/`TBCapPinned`/`NsAmendedPair`/`VPPinned`/`SibCount`/`PCI`/`SibCountShallow`) — no prose placeholder, no undefined Prop (Codex-2 #18 closed); declaration site warranted by the preamble quotes (§2.10) | Defs §2.10 + T-D12 | **SUPPLIED** — REV 3 re-tag (down from rev 2's DISCHARGED, per Codex-2 #18's DONE-criterion point): the values are in-corpus, but "re-keyed against the real corpora AND RE-AUDITED" is the contract's DONE bar, and the re-audit of MovesS's consumption is wave-5/owner-side; non-[3t] fields keep owner tags as parameters (the contract's own roster). REV 4: Fable-3's two field-level caveats are CLOSED — `pci`'s `SubtreeTransport` is displayed (§2.6) and `vp`/`tb_cap`'s satisfiability poisoning died with the `Mlev` cap. REV 5 (Codex-4 #1/#6): `vp` is TOWER-KEYED (`VPPinned pol Tat CAat χat trackOf`, covering := `KBTotTower` — the fixed-level degeneracy is closed inside the consumed value) and `ns_null` carries the explicit `ns_bridge` owner slot (the S-2 row's fold). REV 6: `vp`'s tower additionally carries `root_total`/χat (Codex-5 #1 — §0 record 14) and `sib` carries the note's PRESCRIBED-FINITE-subtree quantifier (Codex-5 #3) |
-| **S-10** RS4Chain provenance | the DISCHARGE provenance objects exist as named theorems: TREE-EXP (T-E8), ONE-F (T-F1) | T-E8, T-F1 | **PARTIAL** (Codex 33): "RE-KEYING REPLACES (R46) the device-satisfied instances … by production-derived ones" — the replacement ACT is MovesS's; the CUT-WD leg is S-5's residual (MovesV) |
+| **S-8** W17ii + Wsh17Package | the actual `Wsh17Package` declared; `sib_count := SibCountShallow T CA χ` — a DEFINED statement (§2.6), not a name. **REV 7 (Codex-6 g4 = Fable-6 GAP-2 tail, W4-SYNC delta 2): the corpus-side pin RETYPED** — `RS4Chain.wsh17_pin` is NO LONGER a supplied `Prop` field; it is a projection-NAMED DEF equal to `W17ii` at the chain's own carriers (MovesS/Interfaces.lean 187 — WshP evaluates to WshVal ∧ WshVal is the shDom height-sum of shWeightH) | T-D12 | **PARTIAL** (Codex 33), accounting REFRESHED (REV 7): the duty is no longer "instantiate the pin with W17ii's statement" — wave 4 must PROVE `W17ii` for its instance or carry it as an explicit sorry-gated obligation WITH THIS TYPE (the `h17 : C.wsh17_pin` binder is byte-identical but now contentful); that duty sits with MovesV's U-28-facing units (delta 2's own consequence clause), NOT with this corpus's `sib_count` value, which is unchanged. The empty-menu exclusion and xhd_s face stay MovesS/[2b]-side; c15_volumes and cts_counts stay parameters |
+| **S-9** packages as registries | every [3t]-owned Prop field is a §2.10 DEF with a DISPLAYED BODY over consumed corpus objects (`TreeExpFin`/`TreeExpNs`/`TreeNStmt`/`OneFStmt`/`TBCapPinned`/`NsAmendedPair`/`VPPinned`/`SibCount`/`PCI`/`SibCountShallow`) — no prose placeholder, no undefined Prop (Codex-2 #18 closed); declaration site warranted by the preamble quotes (§2.10) | Defs §2.10 + T-D12 | **SUPPLIED** — REV 3 re-tag (down from rev 2's DISCHARGED, per Codex-2 #18's DONE-criterion point): the values are in-corpus, but "re-keyed against the real corpora AND RE-AUDITED" is the contract's DONE bar, and the re-audit of MovesS's consumption is wave-5/owner-side; non-[3t] fields keep owner tags as parameters (the contract's own roster). REV 4: Fable-3's two field-level caveats are CLOSED — `pci`'s `SubtreeTransport` is displayed (§2.6) and `vp`/`tb_cap`'s satisfiability poisoning died with the `Mlev` cap. REV 5 (Codex-4 #1/#6): `vp` is TOWER-KEYED (`VPPinned pol Tat CAat χat trackOf`, covering := `KBTotTower` — the fixed-level degeneracy is closed inside the consumed value) and `ns_null` carries the explicit `ns_bridge` owner slot (the S-2 row's fold). REV 6: `vp`'s tower additionally carries `root_total`/χat (Codex-5 #1 — §0 record 14) and `sib` carries the note's PRESCRIBED-FINITE-subtree quantifier (Codex-5 #3). REV 7: `vp`'s tower is PER-TRACK (`KBTotTower … trackOf`, ruling 2) and `ns_null`'s bridge conjunct is the TYPED `NsBridgeStmt pol` (Codex-6 #5 — no Prop parameter remains in any [3t]-owned field value) |
+| **S-10** RS4Chain provenance | the DISCHARGE provenance objects exist as named theorems: TREE-EXP (T-E8), ONE-F (T-F1). **REV 7 (Codex-6 g5/g6, W4-SYNC deltas 1/4): the consumed chain's OWN roster changed** — (i) `RS4Chain.legs_read` is a NEW FIELD (for every base prime pool and every consumed δ whose pool p^δ is NOT all-active, `LegAgree` — the note (ii-c) read-off gate, MOVES 12204–12218): wave-4 instances must SUPPLY it, so any future MovesT-fed instance carries that burden on its premise row (provenance recorded — no current MovesT unit builds an RS4Chain instance); (ii) `deltaFactors` is NARROWED to `Member.continuing` split members (halted = factor 1), so `RegP`/`legs_reg`/`legs_read` quantify over FEWER pools — any provenance sentence inherited from the old all-split-member collection is retired with this row's refresh | T-E8, T-F1 | **PARTIAL** (Codex 33): "RE-KEYING REPLACES (R46) the device-satisfied instances … by production-derived ones" — the replacement ACT is MovesS's; the CUT-WD leg is S-5's residual (MovesV) |
 | **S-11** n2_treeiface | the carrier-core constructor | T-D13 | **PARTIAL** (Codex 30): "the gate's TreeIface instance + W7 check, built when TreeIface is re-keyed" — the full instance + W7 check wait on MovesV's entrance semantics |
 
 **(C) HC-2 Wall A / Wall B seam notes (2 entries):**
@@ -4300,7 +4589,22 @@ the `ClusterFactorOf` track-lawfulness clauses, the displayed
 `hScale`/`hRes`/`belowEnt`/`shapeExp`, `ReprInj`, the `trackOf` parameter on
 `SubtreeFiber`/`TreeScaffold`) and in-unit statement/table edits (T-D1/D2/D3
 some-state forms, T-E5's `hred` re-route, T-D11's `hri`, the toy window pins +
-ψ-guards + Dwidth/slope columns, the reversed henflip gate). Zero axioms; zero
+ψ-guards + Dwidth/slope columns, the reversed henflip gate). REV-7 DELTA: NO
+unit-count change (55 stands) — the round-6 repairs are Defs-layer objects
+(`ChildCover`, `NsBridgeStmt`, the CLOSED `windowBlockHts`/`hScale`/`hRes`/
+`bandFresh`/`bandLevels`, the per-track `root_total` + `KBTotTower`'s `trackOf`
+parameter, the `ClusterFactorOf` realized-membership conjunct) and in-unit
+statement/table edits (T-D2's `constFalse_childCover_false`, T-D7's
+`np_id_pin`, the toy winC x0/x1 guards + cellLevel 4 + the full-roster node
+table, T-F4's in-flight event/mult keying, the §5 re-keys). E-PHASE OBLIGATION
+ROW (REV 7, Codex-6 g1 — disclosed, never claimed): the F1 ten-pin joint
+WITNESS — construct the concrete `CellAssign`/`SiteLedger`/`TreeScaffold`
+instance at the note's F1 head window (5²² box, 14-pin state, 10-pin window,
+4-pin reduction cell) and machine-check the joint row it inhabits; the §0
+record-13 arithmetic (5^{22−14}·5^{10} = 5^{18} = card(rootCell), 0 < 5⁸ <
+5^{18}) is CARDINAL COMPATIBILITY ONLY — numerical compatibility ≠ existence,
+and "the joint row is SATISFIABLE" is hereby DOWNGRADED to "cardinally
+consistent; witness owed at E-phase". Zero axioms; zero
 `sorry` in the
 accepted scope; every hypothesis field named in §0 or §5. `#print axioms` per
 proved unit = Lean core only.
@@ -4335,16 +4639,21 @@ manifest's honesty block):
   INTERNALLY by `KBTotTower`, which is what `VPPinned.covering` consumes — the
   per-level `KBTot` alone remains, disclosed, a per-level FACE), the honest
   finite-level transcription of the note's profinite ladder;
-* no in-corpus statement of the (ns-null) PROFINITE bridge — the finite face is
-  the corpus's value; the bridge is the TYPED owner-tagged slot `ns_bridge`
-  (T-D12, REV 5 — explicit in the package, discharged by the measure-side
-  re-audit, never claimed here);
-* no W4-1-LAYER falsification of the childless instance inside the fence — the
-  declared boundary at T-D2/§5 W4-1 (the layer's law is the fenced
-  `WallAReconciled`; in-corpus rejection is tree-level + ledger-level + — REV 6
-  — MODEL-level via `KBTotTower.root_total`; REV 5/6: the (b)-demand at that
-  layer is recorded as UNMET IN-CORPUS, the row's residue, held again at the
-  FOURTH round on the charge's else-branch);
+* no in-corpus PROOF of the (ns-null) PROFINITE bridge — the finite face is
+  the corpus's value; the bridge is now STATED as the typed seam `NsBridgeStmt`
+  (§2.10, REV 7 — the note's μ-sentence as the type, over an abstract cap-mass
+  field) and discharged by the measure-side re-audit (MovesS wave 5/[2b]),
+  never proved here;
+* no ALL-AND-ONLY W4-1 roster law inside the fence — REV 7 (ruling 1): the
+  COVERING half of (c2) IS now at the W4-1 interface (`ChildCover`, §2.9, with
+  the in-corpus falsifier `constFalse_childCover_false` at T-D2); what remains
+  fenced is exactly the roster half (branch sets = L2's full next-node
+  enumeration — `WallAReconciled`, Q1), plus `ChildCover`'s canonical-instance
+  discharge (owner HC-2/D4R0K); the toys do not instantiate `ChildCover`
+  (partial by design, disclosed at §2.9);
+* no F1 joint WITNESS yet — the record-13 arithmetic is cardinal compatibility;
+  the concrete CellAssign/ledger/scaffold instance at the F1 head window is the
+  §6 E-phase obligation row (REV 7, Codex-6 g1);
 * no ALL-AND-ONLY root-children law at the .amb cell — the root layer carries
   ONLY the ⊆ face (`child_root_sub`, eligibility) and the PER-TRACK law
   (`RedCellPartition` at `.red` entrances); the o = none iff is REFUTED, not
@@ -4397,74 +4706,100 @@ where realization supplies them (the trackOf class); tower closures must
 include the BASE/level-0 leg of the note's covering display, not only the
 deep-level faces (the childless-tower class); pinned toy constants must be
 walked against the table's OWN consistency clause before pinning (the
-slope-0/1 class).
+slope-0/1 class). REV-7 ADDITIONS: every ∃-witness in a covering/totality law
+carries the note's own PER-CASE tie (∀ case, ∃ witness OF THAT CASE — the
+untied-∃ class, root_total); toy guard functions must READ every datum their
+law's ∀-quantifiers range over (walk-throughs at the pinned instance alone are
+the g = toyG class); locality levels must COVER the guards' read-coordinate
+roster, checked coordinate-by-coordinate (the cellLevel class); a lawfulness
+clause on a shared accessor must tie it to the REALIZED object, not to an
+abstract invariant a junk value can also satisfy (the degree-(> n) class);
+load-bearing accessors are CLOSED defs at blueprint time — an E-phase
+name-binding inside a non-vacuity mechanism or a checkability chain is itself
+a finding (the windowBlockHts/bandFresh class); every claimed-fixed §7 row
+must be textually REAL in this file (round 6 burned six claimed-fixed rows;
+the disposition table is audited row-against-text before any re-submission);
+seam rows are re-judged against the AS-BUILT corpora at every round
+(`W4_SYNC_DELTAS` is part of the audit input).
 
 ---
 
-## §7 REV-6 DISPOSITION TABLE (the full union of both round-5 verdicts)
+## §7 REV-7 DISPOSITION TABLE (the full round-6 union, orchestrator-adjudicated)
 
 Legend: **F** = fixed (statement-level repair) · **F*** = fixed with a SCOPED
-residual or a part-held adjudication, quoted on the row · **BDY** = held on the
-row's standing comparison after this round's re-press (the charge's "apply the
-note-supported law if one exists, else record the boundary"). The round-4 table
-is retired with the rev-5 file history (as the round-3 table was with rev-4's).
-Each row quotes the finding's operative words. Rows 2 and 8 are RE-PRESSES of
-standing adjudication rows — their full multi-round comparisons live at the §5
-rows (W4-1 now carries FOUR rounds; S-2 three), summarized here. Row 5 is the
-round's genuine TWO-VERDICT dispute (Codex-5 vs Fable-5 on the same object) —
-its comparison row lives at T-E10's `AofTr_shape_const`, held on the note's
-text per the orchestration ruling.
+residual, quoted on the row · **RULED** = disposed by a binding orchestrator
+ruling (`MOVEST_REV7_CHARGE_2026-07-29.md` — verifiers split, direct read
+decided; not relitigated here). The round-5 table is retired with the rev-6
+file history. Each row quotes the finding's operative words, and — the round-6
+lesson (six §7 rows were claimed fixed whose repairs were not real) — every
+"where" entry below names the exact in-file object; the audit charge (§6) now
+demands row-against-text verification before any re-submission. NO row this
+round is a boundary hold: both standing BDY rows were adjudicated (W4-1
+OVERTURNED and executed; ns_bridge REJECTED and executed); the one hold that
+STANDS (hdict, ruling 3) was not a round-6 finding row and is recorded after
+the tables.
 
-**Codex-5 criticals 1–6** (each row opens with the finding's operative quote):
+**Codex-6 criticals 1–8** (each row opens with the finding's operative quote):
 
 | # | finding (quoted core) | disp. | where / adjudication |
 |---|---|---|---|
-| 1 | "take every `Tat N' h` to be root-only … every `mem (some H) x` false … every child relation empty. Then `KBTot.dichotomy` and `KBTot.ns_lumps` are vacuous … and for every fixed nonempty `H` the antecedent of `scale_grow` is false, so `KBTotTower` holds without ever invoking `ScaleFaithful` … it does not enforce the root-to-track existence part of `(c2)`" | **F** | the missing leg is the covering display's own LEVEL-0 clause, now the field `KBTotTower.root_total` (§2.4): "At level 0, m_i = 1 gives τ-hen and m_i ≥ 2 opens the window — total" (7113–7115) — every box member with a repeated reduction factor has a realized root child; the structure gains the chart family `χat` to state the reduction, and `VPPinned.covering` consumes the χat-keyed tower (§2.10). The childless tower dies at the zero member (f̄ = xⁿ, n ≥ 2); its root children feed `mem_single` → realized states → `scale_grow`'s antecedent, engaging the REV-5 deep-level machinery. §0 record 14 |
-| 2 | "constant-false `T.child`, `CA.Cell := Unit`, and every `branchSetOf` empty satisfies the theorem identically — exactly the instance the W4-1 contract text forbids … declaring the requirement a boundary does not make the proposed Lean interface faithful" | **BDY** | FOURTH-ROUND ENTRY at the §5 W4-1 row (this round's quote + the standing three rounds). HELD on the charge's else-branch and the contract's own (c) text ("`child_iff` then a THEOREM-obligation of HC-2"), with two REV-6 movements recorded on the row: the o = none leg of `eligibleT_iff_child` is GONE (killed by §0 record 13, Fable-5 CRIT-1 — the displayed tie is now some-state iff + `child_root_sub` ⊆ face + `RedCellPartition`), and the childless MODEL now dies one layer closer to W4-1 (`KBTotTower.root_total`, in the consumed vp value). The (b)-demand AT the W4-1 layer stays UNMET IN-CORPUS — the row's REDUCED residue, owner HC-2, fenced Q1; the only in-corpus falsification route still passes through `HistoryCoherent` |
-| 3 | "`Tsub : Set (History p F)` carries no finiteness hypothesis, so `SibCount` demands the product law for continuation events representing arbitrary, potentially infinite subtrees, where the note quantifies only over 'a PRESCRIBED FINITE SUBTREE `T_j`' — the central open hypothesis has been silently strengthened" | **F** | `Tsub.Finite` joins the S-clause of `SibCount`/`SibCountShallow` (§2.6, with the note's quantifier quoted at the def), T-S1's `hS`, T-S3's inner clause, `SplitSiteData.hS` (T-E7), and PCI's transported subtrees — the kernel is the note's, no stronger; every in-corpus witness is a subset of a finite chain set (`Tr.hfin`), so all consumptions discharge the new conjunct. §0 (SIB) row updated |
-| 4 | "no irreducibility, monicity, or positive-degree law is imposed on `trackOf` itself. Choosing `trackOf ν := 0` makes the displayed right side `0` or `1` against a monic positive-degree `fη`, so `ClusterFactorOf` has no witnesses and `OmSat` holds vacuously — the declared OM-SAT citation … is not pinned" | **F** | `ClusterFactorOf` (§2.7) gains the track value's OWN lawfulness clauses: `(trackOf head).Monic ∧ Irreducible (trackOf head) ∧ (trackOf head).natDegree ∣ fη.natDegree ∧ 1 ≤ fη.natDegree` — junk assignments (0, units, wrong degrees) fail displayed conjuncts, the power exponent is pinned ≥ 1, and every genuine level-0 factor satisfies them (normalizedFactors of a monic reduction — the same roster `RedCellPartition` demands). §0 record 15; OM-SAT §0 row updated |
-| 5 | "the note derives site-volume shape dependence from `(JC-root)`, C.3/L3 for `(JC-single)`, and the side-product form for `(JC-multi)` — it does not name an additional open 'dictionary law' … `AofTr_shape_const` derives constancy only by assuming essentially the missing conclusion-content premise in pointwise form — structurally the same defect as the deleted `hfin`/`hA`" | **F*** | the round's TWO-VERDICT dispute — Fable-5 §1(4) verified the opposite: "`hdict` is an HONEST named owner hypothesis whose warrant is the note's own conditional … the same genre as `presents`/`state_cell`." COMPARISON ROW written at T-E10's `AofTr_shape_const` with the note's sentence in place ("Each site's jvol is shape-determined ((JC-root): the fixed n; (JC-single): §C C.3 with u* ∈ P̂ per §D4-R L3; (JC-multi): shape-determined GIVEN its side-product form)", 7537–7540) — **HELD** on the text: the note DOES state per-site shape-determination as its own clause with warrants in CITED corpora ((JC-single) note-PROVED via §C C.3/L3 — presented-face content, owner HC-2/MovesD; (JC-multi) conditional on exactly `hjcm`); `hdict` is that clause's pointwise transcription, not fresh conclusion content — the conclusion (class constancy) stays DERIVED. FOLDED, the checkability half: `shapeExp` is now DISPLAYED (§2.5) so the premise can be checked against its definition (gap #12's channel). Residual quoted: `hdict`'s canonical discharge is the shape-side theory's (§6 honesty block, standing since REV 5) |
-| 6 | "`toyTreeA` is defined with `henV = ∅`, yet the unit states both `toy_fiber_ne …` and `toy_henflip_unrealizable : ¬ Realizes … (toyTreeA.withHenV ∅)`. Since `toyTreeA.henV` is already `∅` … the two theorems assert `Realizes toyTreeA` and `¬ Realizes toyTreeA` simultaneously" | **F** | the flip is REVERSED (T-G1): `toy_henflip_unrealizable : ¬ Realizes toyModel toyχ (toyTreeA.withHenV {henVerdict 1 le_rfl})` — a SPURIOUS hen verdict is inserted; fiberAt clause (iii) (henV = henPayload = ∅ on realized members) empties the flipped fiber, preserving record #4's regression channel in the direction the carrier admits; the gate PAIR must coexist at build. (The parent-ordered guess "same fix as CRIT-1" is recorded as NOT the repair — the contradiction was the identity update, independent of the child_cell scoping.) §0 record 16 |
+| 1 | "the witness is not tied to the repeated factor ψ or to `trackOf ν = ψ`. One unrelated child can witness every repeated factor. The note says 'one track per root cluster' and, for each m_i ≥ 2, that track opens its window" (= Fable-6 GAP-1, the round's CONVERGED finding) | **F** (ruling 2) | `KBTotTower.root_total` is PER-TRACK (§2.4): ∀ ψ repeated, ∃ ν, `trackOf ν = ψ` ∧ child — the tower gains the shared `trackOf` parameter, `VPPinned.covering` consumes `KBTotTower pol Tat χat trackOf` (§2.10), §0 KB-TOT row updated. The f̄ = ψ₁²ψ₂²-one-track model now fails at the second factor; the childless tower stays dead at the zero member (auditor-verified before the ruling bound it) |
+| 2 | "the constant-false-child/unit-cell model still satisfies `eligibleT_iff_child`. Moving rejection to `KBTotTower` does not make the W4-1 interface itself false on the contract-rejected instance. The note also supplies a covering law … the fourth-round hold fails" | **F** (ruling 1 — the hold OVERTURNED at the FIFTH round and the rejection EXECUTED) | the W4-1 contract type gains the per-track covering clause `ChildCover` (§2.9 — (c2)'s L1-totality warrant, D4R.0-K(a), quoted at the def); the forbidden model is now FALSE at the W4-1 interface ITSELF via the in-corpus, fence-free `constFalse_childCover_false` (T-D2); the T-D2 boundary declaration is WITHDRAWN (the four-round hold conflated the fence-free EXISTENCE half of (c2) with the genuinely `ReadsOf`-keyed ROSTER half); §5 W4-1 row carries the five-round comparison; CONTRACT CHANGE recorded for the MovesD-side W4-SYNC (`W4_SYNC_DELTAS_2026-07-29.md` entry 10). Residue narrowed, still REDUCED: the roster law (`WallAReconciled`) + `ChildCover`'s canonical discharge, both owner HC-2 |
+| 3 | "choose a monic irreducible polynomial of degree greater than n; then its degree cannot divide the positive degree of a factor of a degree-n polynomial, so `ClusterFactorOf` has no witnesses and `OmSat` is again vacuous. `VPPinned` carries no `RedCellPartition` tie for its `trackOf`" | **F** | `ClusterFactorOf` (§2.7) gains the REALIZED-membership conjunct: `trackOf (head) ∈ (normalizedFactors (f.map toZMod)).toFinset` at the very `ReadsOf`-realized f inside the existing ∃-f block — the track is a factor of its OWN realized reduction (degree ≤ n follows; the degree-(> n) and wrong-reduction escapes both fail the conjunct; every genuine head track satisfies it). §0 record 19 (new); OM-SAT §0 row updated |
+| 4 | "their bodies depend on new, undefined accessors … `windowBlockHts H` … E-phase binds the NAME only … `slot0Block H` … these accessors determine the principal non-vacuity mechanism" | **F** | both CLOSED (§2.5a): `windowBlockHts H N'` := the image Finset over the entrance window's interior blocks (b < μ·D of H's LAST read, `Node.μ * Node.Dwidth` at `getLast?`) × levels ℓ < N' of (⌈`History.htH`⌉₊, ℓ) — the BUILT MovesC chart accessors; `hRes H` := ⌈(`H.floorH H.nodes.length 0`).unbot' 0⌉₊ — the built cumulative floor at slot 0 (base index 0), no `slot0Block` name remains; `hScale` keeps its filter-sup body over the now-closed roster. No E-phase binding remains in `ScaleFaithful`'s chain |
+| 5 | "`ns_bridge := True` remains a valid instantiation, silently weakening the note's conclusion 'μ((τ-ns) class │ Σ) = 0 by continuity from above' … this directly violates the charge's typed-field requirement" | **F** (the standing BDY hold REJECTED and executed) | the `(ns_bridge : Prop)` binder is DELETED from `xrbOfMovesT` (T-D12); the bridge is the NAMED TYPED SEAM `NsBridgeStmt pol` (§2.10) — the note's μ-sentence AS the type over an abstract cap-mass field in the corpus's own carriers (antitone ∧ continuity-from-above ∧ finite-level read-off against `NsLumpFamily.L`/`stateTruncAt` ⟹ μclass = 0); still proved NOWHERE here (owner MovesS wave 5/[2b] — the per-cap decay is C(b) at the profinite μ); §5 S-2 row carries the fourth-round entry |
+| 6 | "the blueprint still says 'remaining Node fields are E-phase-bound junk consistent with HistLawful'. Those are data … and can affect NodeExtends, history construction, shapes, track identity and ledger obligations" | **F** | the T-G1 node table is FULL-ROSTER (every MovesC `Node` data field pinned: species/σ/e/h/s/t/g/μ/a/s0/wSide/Dwidth/line/ustar/gam/zbar/center/lift/ψ/pat/Ranch — concrete values per node, incl. carrier A's h/slopes, previously "lawful junk"); the junk clause is DELETED; the one non-literal pin (σ := the level-0 stage) carries its DISPLAYED read-surface obligation (`card ↥σ.K = 2` — the only σ-datum any consumed obligation reads, roster-audited at `readOf`'s field list), per the charge's display-the-proof-obligation rule |
+| 7 | "`def shapeExp … := (bandFresh R n).card` — but `bandFresh` is itself only promised for E-phase binding. Consequently `hdict` still cannot be checked against a typed definition" | **F** | `bandFresh` is CLOSED (§2.5): the (level, base) grid `(range R.Nshape ×ˢ range n).filter (R.bandS n (R.reads.length − 1))` — the BUILT MovesD `bandS`/`Nshape` at the LAST read (the same summand the built `ShapePrefix.A` counts); `shapeExp` is its card; `hdict`'s checkability chain (T-E10) is fully displayed. Ruling 3 recorded below: the hdict HOLD itself stands, and this row was its implementation blocker — now cleared |
+| 8 | "the current MovesD corpus requires `Presented.eventO`/`multO`, with reads = [] ↦ univ/1. This changes statement content for the empty shape … uniform dictionary/event consumers must be re-keyed" | **F** (per ruling 11's in-flight form) | the CONSUMES roster and T-F4 are keyed to `Presented.event`/`mult` under the IN-FLIGHT MovesD repair-round-2 contract (the ∅-shape dispatch moves INSIDE `event`/`mult`; `eventO`/`multO` DELETED — so consumers key the ORIGINAL names with the NEW semantics, not the transitional O-names); T-F4 records the empty-shape leg as an E-phase CHECK (1 = 1 + 0 at the ∅-shape's root class) with a MANIFEST re-key hatch if the in-flight semantics land differently |
 
-**Codex-5 gaps 7–12:**
-
-| # | finding (quoted core) | disp. | where |
-|---|---|---|---|
-| 7 | "`ScaleFaithful` … depends on two undisplayed future values (`hScale`, `hRes`); a bracketed 'E-phase-bound' promise does not pin them, leaving the principal rev-5 non-vacuity mechanism underspecified" | **F** | both DISPLAYED (§2.5a, ahead of `ScaleFaithful`): `hScale H N'` := the filter-sup of H's window-block (height, base level) roster below the cap — body = the note's clause verbatim ("M(N) := the largest window height with base level < N — the Scale map", 7205–7207); `hRes H` := the slot-0 floor, with its three defining clauses quoted (7213/7220–7222/7227–7229); accessor NAMES E-phase-bind, the bodies + clauses are normative with the MANIFEST-deviation hatch |
-| 8 | "`ns_bridge : Prop` … gives no typed finite-to-profinite assertion … and can be instantiated with `True` … (this echoes the rev-5 table's own disclosed F* residual on this row rather than adding new information)" | **BDY** | HELD — the finding's own text concedes it re-presses the disclosed S-2 F* residual; the slot is an owner-tagged parameter BY DESIGN (the xhd_*/rel2_* genre — executing Codex-4 #6's own remedy sentence), and a measure-free corpus cannot type the μ-conclusion. Small fold executed: the slot's INTENDED VALUE is now quoted AT the slot (T-D12 — the note's μ-sentence, 7210–7231), so `ns_bridge := True` fails the OWNER's re-audit; §5 S-2 row extended |
-| 9 | "neither `SubtreeFiber` nor the undisplayed `belowEnt` receives `trackOf` as a parameter, so the `.red` scope central to the T-E7/E8 repair is not actually pinned" | **F** | `belowEnt` is a DISPLAYED def taking `trackOf` (T-E7 — the `.red` case is `trackOf (head) = ψ`, per-track as promised); `SubtreeFiber` gains the parameter; `TreeScaffold` is typed over `trackOf` and `hscope` reads `belowEnt trackOf`; consumer signatures updated (T-E8/E10/E11, §2.10's `TreeExpFin`/`TreeNStmt` — the scaffold binder moved after `trackOf`) |
-| 10 | "T-D11's `leafV := fun H => (the unique ct.leafV entry at H's address …)` is well-defined only given injectivity of `a ↦ reprOf a.2` on class addresses; `ClassTree.hkeys` gives uniqueness by class address, not representative-history uniqueness" | **F** | the NAMED premise `ReprInj n pol` (§2.10 — distinct addresses, distinct representative histories; owner HC-2/PresentNorm with the semantic warrant recorded) joins `fibOf`/`fibOf_fiber_disjoint`/`fibOf_partition` as `hri`; T-D11's per-address lookups cite it where they read "H's address" |
-| 11 | "T-G1's carriers still retain non-closed-form fields … that feed `childWidth`, `IrrHalts`, `HistLawful`, and `fiberAt`, not merely proof arguments; … this also reads as a hidden multi-lemma unit (largely a restatement of the rev-5 table's own disclosed boundary on this row)" | **F*** | part FOLDED: the node table gains the columns those consumers read — Dwidth pinned (= 1 throughout; `childWidth` = 1 and the `IrrHalts` equations become table-computable: leaves 1·1 = 1·1 fire, heads 1 ≠ 2 don't) and carrier B's h/slopes pinned LAWFUL (1/2/3 — with Fable-5 GAP-1's repair); carrier A's h/slope stay lawful-junk per Fable-5's own slope-clean ruling. Part HELD (the finding's own parenthetical): structure-literal PROOF fields and residual Node payload remain G1a decide obligations — the gate architecture's disclosed boundary, unchanged since the rev-5 row; the multi-lemma texture is the pre-approved G1a/G1b split's business |
-| 12 | "T-E10 bundles three substantial prerequisites … ahead of `perShape_law` inside one nominal unit, and its `shapeExp (shapeOfH H n)` has no displayed definition (only an 'E-phase-bound' promise), preventing a check that `hdict` (finding 5) actually expresses the note's per-site exponent" | **F** | both halves: `shapeExp` is DISPLAYED (§2.5 — the band-fresh count of the last read over the W4-4 `mstar_eq`/`fresh_band` apparatus, with the normative per-site mstar clause and the note's 7537–7540 warrant at the def), unblocking the finding-5 check; and the E10a/E10b split is PRE-APPROVED (§6 census — E10a the rigidity trio, E10b `perShape_law`), so the bundling is a declared split, not a hidden multi-lemma unit |
-
-**Fable-5 critical & gaps:**
+**Codex-6 gaps g1–g6:**
 
 | # | finding (quoted core) | disp. | where |
 |---|---|---|---|
-| C-1 | "{`child_cell` at o = none + `RootCellsOf` + `mem_single`} and {`state_cell` + `presents` at a one-side HEAD chain with positive fresh exponent} are JOINTLY UNSATISFIABLE, for EVERY model — so TREE-EXP/TREE-N/per-shape's premise rows are uninstantiable at exactly the note's census-shaped instances … the bracket's claim that the structural proof fields 'are G1a decide obligations over the tables above' is wrong — decide REFUTES this one" | **F** | the finding's own FIX SHAPE, executed in full: (i) `child_cell` SCOPED to some-states (§2.9), with the ⊆ face kept as `child_root_sub` (eligibility, never event-forcing); (ii) the root all-and-only law routed through the track-anchored `RedCellPartition` (already built; T-E5 gains `trackOf`/`hred` and its bridge step (2) is re-routed; T-D1/D2/D3's o = none consumptions restated at some-states, with `vModelOf` pinning `vdict none := none`); (iii) the toy `child(none)` tables PIN the head window digits (+ ψ-guards on the `.red` cells so `RedCellPartition`'s uniqueness conjunct decides); (iv) the W4-1 row absorbs the scoping (row 2 above). RE-RUNS, computed (full 2⁹ enumeration): the mem_single refutation DIES on both carriers — violation counts 120 → 0 (A) and 64 → 0 (B), x* failing both sides; census integers unchanged (8 = 2^{9−6}, toyA = 6, 2⁴·2² = 2⁶ all re-verified); and the F1 head window is jointly SATISFIABLE post-fix (5^{22−14}·5^{10} = 5^{18} ✓, the rev-5 clash confirmed as 0 < 5⁸ < 5^{18} — a nonempty proper subset of one cell can never be a union of cells). §0 record 13; T-E8's joint-satisfiability record added |
-| G-1 | "the pinned hull slopes 0/1 violate the table's own `HistLawful`-consistency clause … slope(tBνc) = h ≥ 1 — the pinned slope 0 is IMPOSSIBLE (h = 0 contradicts `hh`); and slope 1 fails the chain" | **F** | the finding's own fix values: carrier B pins h/slope = 1/1 (head), 2/2 and 3/3 (children) — the slope tie exact at e = STR = Dwidth = 1, the strict chain 1 < 2 / 1 < 3, `hullSlope` 2/3 StrictMono, `hside_read` verbatim; the 2⁴·2² = 2⁶ gate arithmetic is slope-independent and unchanged; carrier A left slope-free per the same ruling. T-G1 header + node table + `toySplitB` bracket updated |
-| G-2 | "the ShapeWF sourcing roster claims 'all 12 real clauses' but enumerates 11 — `root_box` is absent from the display … a roster whose entire raison d'être is exhaustiveness … must enumerate all twelve" | **F** | the one-line fix executed at §2.2 (root_box ← `HistLawful`'s root-box clause s0 + wSide ≤ n, the L3 bound, with T-V8's "InBox is subsumed" line cited as its consumption) and mirrored in T-V8's sketch roster — the "all 12" claim is now verifiable by count |
+| g1 | "the cardinal equation is consistent, but no actual F1 `CellAssign`/ledger/scaffold witness is supplied … 'the joint row is SATISFIABLE' is stronger than what was established" | **F** | the claim is DOWNGRADED everywhere it appears ("cardinally consistent; witness owed at E-phase" — §0 record 13's tail language superseded by §6) and the witness is a DISCLOSED §6 E-PHASE OBLIGATION ROW (construct the concrete instance at the F1 ten-pin window and machine-check the joint row); nothing silently claimed |
+| g2 | "the blueprint still targets the old `D4R4all`/derived-NP-ID story. Current MovesD exposes `NPIDPin`, `NthrSup`, `noteNP`, and `D4R4_all_noteRange`" (= Fable-6 GAP-2) | **F** | T-D7 re-keyed: NEW conclusion `np_id_pin : NPIDPin n pol P Nthr` at the tree family (Nthr i = L12's N(η_i,⊤)), built names imported BY NAME; `bandLevels` re-defined CLOSED over the built `bandS`/`NPband` (rev 6 re-bracketed built content — the REV-4 rule); the stale "landing deletes D4R4_all's conditionality pointer" sentence RETIRED (landing supplies `hpin` to `D4R4_all_noteRange`); §5 W4-4 row + CONSUMES roster re-keyed |
+| g3 | "current MovesD has `OffsetPPin` and `CD_canonical`. The claim 'MovesD blueprint §2.5 (4 entries)' and the 19-entry seam census are stale; there are now five MovesD seam entries" (= Fable-6 GAP-3's count leg) | **F** | the W4-5 row is ADDED (§5 — `OffsetPPin`/`CD_canonical`, the in-flight round-2 strengthening noted), census recounted 19 → 20 (1 D + 4 R + 12 S/P + 3 N = 20 ✓, rows 22 with the two Q-fence designs); the wave-4 CONSUMER DUTY is ADJUDICATED on the row: MovesT is policy-generic and CD-free, the toys' polTriv is gate-local (no `OffsetPPin polTriv` owed); a rider binds any future CD-routing re-key to premise the strengthened `OffsetPPin` by name |
+| g4 | "`RS4Chain.wsh17_pin` is now a definition equal to `W17ii`, not a supplied Prop field. Any relevant instance must prove or explicitly carry the actual `W17ii` type" | **F** | §5 S-8 row refreshed: the duty is re-stated as PROVE `W17ii` (or carry it sorry-gated at THIS type) — landing on MovesV's U-28-facing units per W4-SYNC delta 2's own consequence clause; MovesT's `sib_count` value unchanged |
+| g5 | "current `RS4Chain` instances require `legs_read : LegAgree` for consumed non-all-active pools. The S-10 provenance row does not mention this requirement" | **F** | §5 S-10 row refreshed: `legs_read` recorded as a NEW supply burden on any wave-4 instance (no current MovesT unit builds one — the provenance rider is on the row) |
+| g6 | "`deltaFactors` now includes only continuing split members. Any S-10/RS4 provenance statement inherited from the old all-split-member collection needs re-audit" | **F** | §5 S-10 row refreshed: the narrowing recorded (`RegP`/`legs_reg`/`legs_read` quantify over FEWER pools); no MovesT statement quoted the old collection (checked — the corpus's only RS4 references are the S-10 provenance sentences, now refreshed) |
 
-DISPOSITION TALLY: 15 round-5 union entries → **11 F** (Codex-5 #1/3/4/6/7/9/
-10/12 + Fable-5 C-1/G-1/G-2) · **2 F*** (Codex-5 #5 — the hdict two-verdict
-row held on the note's text with the shapeExp display folded in; #11 — table
-columns folded in, the proof-field boundary held as the row's own disclosed
-residual) · **2 BDY** (Codex-5 #2 — the W4-1 vacuity held at its FOURTH round
-on the charge's else-branch, with the o = none scoping and the root_total
-narrowing recorded on the §5 row; #8 — the ns_bridge re-press held as the
-standing S-2 F* residual, the intended value now quoted at the slot).
-Cross-audit structure of this round, recorded: as at round 4, the residues
-were DISJOINT — Fable-5 cleared the entire round-4 union (both headline
-mechanisms walked at built signatures, the 15-row table quote-faithful) and
-found the one three-way interface clash the closed-form toys made computable;
-Codex-5's six criticals landed on four rev-5 mechanisms + one standing row +
-one fresh structural point, with its six gaps split 3 fresh / 3 re-presses (by
-its own disposition's weighting). Every disposition above moves TOWARD a
-quoted display, a built signature, or a computed instance: the new clauses
-(`root_total`, `Tsub.Finite`, the track-lawfulness conjuncts, the toy window
-pins) are the note's own quantifiers/clauses restored, the new premise
-(`ReprInj`) is a silently-consumed well-definedness fact now named to its
-owner, and the two scope changes (`child_cell` some-states; the reversed
-henflip) REMOVE statements that were REFUTED — nothing was weakened to become
-provable (the o = none iff was not weakened but replaced by the note's own
-per-track law, `RedCellPartition`, which is STRONGER at the `.red` layer).
+**Fable-6 criticals & gaps:**
+
+| # | finding (quoted core) | disp. | where |
+|---|---|---|---|
+| C-1 | "the displayed toy `cellOf .red` guards read NEITHER g NOR the reduction coords x0/x1, so `child_cell_red` (∀ χ g) is FALSE on BOTH carriers — decide REFUTES it. Witness … g = (1,0), x = (1,0,0,…) … the walk-through checked only g = toyG" | **F** | the auditor's fix shape executed VERBATIM (T-G1): `x 0 = 0 ∧ x 1 = 0` joins BOTH winC guards; the toyCA walk-through RE-WALKS `RedCellPartition` at ALL g (uniqueness at g = toyG through the strengthened guard; vacuity at g ≠ toyG through the rootCell/pin contradiction — displayed at the bracket); RE-RUN displayed at the carrier-A header: violations 24 → 0 (A, from the 2⁵ vs 2³ strata) and 192 → 0 (B, 2⁸ vs 2⁶), cellEventE at the true entrance unchanged (8 resp. 64), census integers re-verified (8 = 2^{9−6}, toyA = 6, 2¹² = 2⁹·2³, 2⁴·2² = 2⁶). §0 record 17 |
+| C-2 | "`cellLevel := fun _ => 3` makes `cell_local` decide-FALSE (coords 4,5 sit at level 3; toyCell reads x4/x5)" | **F** | `cellLevel := fun _ => 4` on BOTH carriers (T-G1, the auditor's fix: levelIdx c < 4 ⟺ c < 6 covers every read coordinate); the rev-6 witness pair (0⃗ vs 0⃗-except-x4) now differs inside the premise; no census integer moves. §0 record 18 |
+| G-1 | "the Lean leg concludes only ∃ SOME root child from ∃ SOME repeated factor … the faithful form ties the child to its track via the available `trackOf`" | **F** | = Codex-6 #1 (converged; ruling 2) — see crit row 1: the per-track `root_total` with `KBTotTower`'s `trackOf` parameter |
+| G-2 | "MovesD now SHIPS typed `NPIDPin`+`NthrSup`+`noteNP`+`D4R4_all_noteRange`; T-D7's E-phase-bracketed `transportedLevels`/`bandLevels` and the W4-4 row … violate the blueprint's own REV-4 rule" | **F** | = Codex-6 g2 — see gap row g2 (T-D7 re-key + closed `bandLevels`; `transportedLevels` stays this corpus's OWN def, honestly — it exists in no built corpus, disclosed at the unit) |
+| G-3 | "the CONSUMES roster and T-F4's `S.mult` predate `Presented.eventO/multO` + the D14c empty-shape dispatch … the §5 count '4 (MovesD W4-1…4)' predates the now-existing W4-5 … Minor: hRes cite '(7213)' sits at note 7216–7217" | **F** | all three legs: (i) = Codex-6 #8 under ruling 11's in-flight form (CONSUMES + T-F4 keyed to the redefined `event`/`mult`); (ii) = Codex-6 g3 (the W4-5 row + the 20-count + the polTriv/`lift_ne_zero` duty adjudication the finding asked for); (iii) the hRes cite is FIXED to 7216–7217 (§2.5a and this file's every echo of the old 7213) |
+
+STANDING-RULING RECORD (ruling 3, not a repair row): the **hdict HOLD STANDS**
+— both round-6 verdicts license it on the note's own sentence (7537–7540; the
+T-E10 comparison row is unchanged), and Codex-6's own held-item judgment reads
+"a pointwise owner field is legitimate; summed constancy is still derived";
+its sole implementation blocker (the undefined `bandFresh`/`shapeExp` chain,
+Codex-6 #7) is cleared this revision, so the hold now rests on a fully
+displayed premise.
+
+DISPOSITION TALLY: 19 round-6 union entries (Codex-6: 8 crit + 6 gap;
+Fable-6: 2 crit + 3 gap) → **19 F**, of which 2 are RULED-then-executed
+(Codex-6 #1 = Fable-6 G-1 by ruling 2; Codex-6 #2 by ruling 1, the five-round
+BDY hold overturned) and 3 are convergence cross-references (Fable-6
+G-1/G-2/G-3 land inside Codex-6 #1/g2/{#8, g3} + the cite fix). Zero F*, zero
+BDY: for the first time in the campaign no boundary hold survives the round —
+the two standing holds were adjudicated away (one overturned into the
+`ChildCover` contract change, one rejected into the typed `NsBridgeStmt`), and
+the one hold that stands (hdict, ruling 3) was never a round-6 row.
+Cross-audit structure, recorded: the round-6 verdicts CONVERGED on root_total
+(the first shared headline row of the campaign) and split elsewhere — Fable-6
+inside the closed-form toys (the two decide-refutations rev 6's own closure
+made computable), Codex-6 on typing discipline (closed defs, typed seams,
+pinned data) and the post-ratification seam ledger. Every disposition above
+moves TOWARD a quoted display, a built signature, or a computed instance: the
+new clauses (`ChildCover`, the per-track tie, the realized-membership
+conjunct, the winC/cellLevel pins) are the note's own quantifiers/clauses
+restored at their layers; the new defs (`windowBlockHts`/`hRes`/`bandFresh`/
+`bandLevels`/`NsBridgeStmt`) replace names with closed bodies over BUILT
+vocabulary; the seam re-keys import as-built types by name; and the one
+downgrade (F1 "satisfiable" → "cardinally consistent, witness owed") weakens a
+CLAIM, never a statement — nothing was made provable by weakening.

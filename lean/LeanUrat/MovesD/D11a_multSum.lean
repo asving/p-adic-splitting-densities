@@ -27,15 +27,22 @@ groups it by the box coordinate `x` (each `mult x` is the number of classes whos
 contains `x`), the right-hand side by the class index `i` (each `#fiber(i)`). Both index
 types are finite (`Box p m` is a Fintype; `PrefIdx` is `Finite` via D2a), so each
 `Nat.card` is a filtered-cardinality, hence a sum of `{0,1}`-indicators, and the identity
-is `Finset.sum_comm`. -/
-theorem mult_sum (S : Presented p F n N m pol P) :
+is `Finset.sum_comm`.
+
+[D4″ 2026-07-29 — FORCED hypothesis addition, recorded deviation]: `Presented.mult` now
+carries the note's ∅ dispatch (reads = [] ↦ 1, L5/L12), under which this incidence
+identity holds only on NONEMPTY shapes (at reads = [] the LHS is #Box ≠ 0 = RHS, PrefIdx
+being empty by `Pref_empty_shape`); `hne` added. Both consumers (D12, D13) already carry
+it. -/
+theorem mult_sum (S : Presented p F n N m pol P)
+    (hne : (P : ShapePrefix).reads ≠ []) :
     ∑ x : Box p m, S.mult x = ∑ᶠ i : PrefIdx n pol P, Nat.card ↥(S.fiber i) := by
   classical
   haveI : Fintype (PrefIdx n pol P) := Fintype.ofFinite _
   have hL : ∀ x : Box p m, S.mult x
       = ∑ i : PrefIdx n pol P, (if x ∈ S.fiber i then 1 else 0) := by
     intro x
-    rw [Presented.mult, Nat.card_eq_fintype_card, Fintype.card_subtype, Finset.card_filter]
+    rw [S.mult_of_ne hne, Nat.card_eq_fintype_card, Fintype.card_subtype, Finset.card_filter]
   have hR : ∀ i : PrefIdx n pol P, Nat.card ↥(S.fiber i)
       = ∑ x : Box p m, (if x ∈ S.fiber i then 1 else 0) := by
     intro i

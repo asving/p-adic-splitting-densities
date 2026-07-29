@@ -38,11 +38,32 @@ blueprint↔corpus references against THIS state, not the pre-repair one.
    range). Seam rows citing "NP-ID: ledger pin, no Lean object" are stale.
 7. W4-5 (POL-PIN) EXISTS: `OffsetPPin` (Type-valued; `Realizes` predicate field + laws
    `total`, `realizes_ne_zero`; non-vacuity witness `lift_ne_zero`) + `CD_canonical`.
-8. Empty-shape dispatch: `Presented.eventO`/`multO` (reads = [] ↦ univ/1) + D14c laws
-   (`eventO_empty_shape`, `eventO_eq_event`, `multO_eq_mult`, `eventO_empty_law`;
-   A'(∅) = 0 verified). Uniform-event consumers should key on eventO/multO.
+8. Empty-shape dispatch [SUPERSEDED at repair round 2, 2026-07-29]: the dispatch is now
+   wired INTO the designated objects — `Presented.event`/`mult` themselves carry the
+   reads = [] ↦ univ/1 branch; `eventO`/`multO` are DELETED (no parallel semantics).
+   Unfolding lemmas: `event_of_ne`/`mult_of_ne` (reads ≠ []) and `event_empty_shape`/
+   `mult_empty_shape`. FORCED statement change: D11a `mult_sum` gained an `hne` premise
+   (the incidence identity is false at reads = [] under the dispatch — LHS counts the
+   full box, RHS sums over empty PrefIdx); D12/D13 already carried hne. Consumers key
+   on `event`/`mult` directly.
 9. New: `card_classes_abs` (PrefIdx count = the policy-free Galois-quotient count under
    `hnorm`), `SW2_scaleCoherence` (`lineS_at_jstar`, `gamTie_stage_form` — the D1 ruling
    seal), `G2_gatesClassifier` (`PhatStarShape : Shape 3`; typed gate Props `Gate_CD_q2`
    (=3), `Gate_CD_q3` (=48), `Gate_multOne`, four sealed event counts 384/3072/3888/104976
    at MOVES 5344–5372; FC8/FC9 NOT typed — census stratum vocabulary, documented).
+
+## MovesT-side CONTRACT CHANGE, recorded FOR the MovesD-side W4-SYNC (2026-07-29,
+## MovesT REV 7 ruling 1 — the W4-1 five-round adjudication)
+
+10. W4-1 (`eligible`/`child_iff`) GAINS the (c2) per-track COVERING clause, by
+    orchestrator ruling (MovesT REV-7 charge, ruling 1; the fourth-round BDY hold
+    OVERTURNED): at a realized window-opening read (a repeated reduction factor ψ,
+    m_i ≥ 2), a root child EXISTS carrying that track's data, in the track-ψ
+    reduction cell's own branch set — warrant (c2)'s L1 totality (D4R.0-K(a),
+    MOVES 7112–7119), fence-free (no `HistoryCoherent` content). MovesT-side
+    value: `ChildCover` (MovesT blueprint §2.9) + the in-corpus falsifier
+    `constFalse_childCover_false` (T-D2) — the constant-false-child/unit-cell
+    model is now FALSE at the W4-1 interface itself. DUTY ON THE MovesD SIDE:
+    the next MovesD ratification/contract pass absorbs the covering clause into
+    the W4-1 contract text (its own §2.5 row); until then the MovesT §5 W4-1 row
+    carries the change with this entry as the cross-corpus pointer.

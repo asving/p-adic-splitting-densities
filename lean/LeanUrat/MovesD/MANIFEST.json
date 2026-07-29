@@ -41,109 +41,626 @@
   "seam_roster": "Defs.lean SEAM DECLARATION updated: W4-4 now TYPED at NPIDPin; W4-5 (POL-PIN) added."
  },
  "statement_fence": "No statement weakening; hypothesis_fields exactly per blueprint §4 (E9 hypothesis-free per REV 9; hnorm on CD_eq/card_classes/D4R2'/D4R2'_full; hmt0+hw0 on SW1; hne/hA on the mass laws; hN/hm on the empty units; T/hex on D4R4_all/TW).",
- "counts": {"files": 51, "defs_files": 1, "unit_files": 49, "core_units": 48, "addendum_units": 1, "sorries": 74, "blocked": 0},
+ "counts": {
+  "files": 51,
+  "defs_files": 1,
+  "unit_files": 49,
+  "core_units": 48,
+  "addendum_units": 1,
+  "sorries": 74,
+  "blocked": 0
+ },
  "units": [
-  {"id": "D0a.topLocus_laws", "file": "lean/LeanUrat/MovesD/D0a_topLocus.lean", "wave": "A", "deps": ["Defs"], "sorries": 3,
-   "statement": "topLocus_sol (x : Box p m) : (topLocus p m).IsSolution x; topLocus_numPinned : (topLocus p m).numPinned = 0; topLocus_admissible (Sf : Locus p m) : AdmissibleZ Sf (topLocus p m)", "hypothesis_fields": "none"},
-  {"id": "D0b.thmC_top", "file": "lean/LeanUrat/MovesD/D0b_thmCtop.lean", "wave": "A", "deps": ["C6_thmC_b", "D0a"], "sorries": 2,
-   "statement": "totalPins_top (J : JetSetup H n N m) : totalPins J top = Σ_{i<len} (J.fresh i).mstar; thmC_top (J) : Nat.card (J.SHZ top) * p ^ totalPins J top = p ^ (n*N)", "hypothesis_fields": "none (J a binder; existence = Presented.jet, HC-2)"},
-  {"id": "D0c.fiber_pos", "file": "lean/LeanUrat/MovesD/D0c_fiberPos.lean", "wave": "A", "deps": ["D0b"], "sorries": 1,
-   "statement": "fiber_pos (S : Presented p F n N m pol P) (i : PrefIdx n pol P) : (S.fiber i).Nonempty", "hypothesis_fields": "none"},
-  {"id": "E1.digit_in_pool", "file": "lean/LeanUrat/MovesD/E1_digitPool.lean", "wave": "A", "deps": ["Defs"], "sorries": 1, "aux": true,
-   "statement": "digit_in_pool (hM : R.Matches ν) (k : ℕ) : ν.sideDigit k ∈ pool p R.w F", "hypothesis_fields": "none"},
-  {"id": "E2.pool_card_le", "file": "lean/LeanUrat/MovesD/E2_poolCard.lean", "wave": "A", "deps": ["Defs"], "sorries": 1, "aux": true,
-   "statement": "pool_card_le (hp : 2 ≤ p) (hw : 1 ≤ w) : Nat.card ↥(pool p w F) ≤ p ^ w", "hypothesis_fields": "none"},
-  {"id": "E3.frameField_eq_pool", "file": "lean/LeanUrat/MovesD/E3_frameField.lean", "wave": "A", "deps": ["E1", "E2"], "sorries": 1, "aux": true,
-   "statement": "frameField_eq_pool (hM : R.Matches ν) : Set.range (coe : ↥ν.σ.K → F) = pool p R.w F", "hypothesis_fields": "none"},
-  {"id": "E4.Ranch_deg", "file": "lean/LeanUrat/MovesD/E4_ranchDeg.lean", "wave": "A", "deps": ["MovesC"], "sorries": 1, "aux": true,
-   "statement": "Ranch_deg (ν : Node p F) : ν.Ranch.natDegree = ν.wSide / ν.e", "hypothesis_fields": "none"},
-  {"id": "E5.gmu_le_len", "file": "lean/LeanUrat/MovesD/E5_gmuLe.lean", "wave": "A", "deps": ["E4"], "sorries": 1, "aux": true,
-   "statement": "gmu_le_len (ν : Node p F) : ν.g * ν.μ ≤ ν.wSide / ν.e", "hypothesis_fields": "none"},
-  {"id": "E6.eligible_card_le", "file": "lean/LeanUrat/MovesD/E6_eligibleCard.lean", "wave": "B", "deps": ["E4"], "sorries": 1, "aux": true,
-   "statement": "eligible_card_le (ν) : Nat.card {q : Polynomial ↥ν.σ.K // Monic ∧ Irreducible ∧ deg = g ∧ OrdPsiPoly q Ranch μ} ≤ (wSide/e)/(g*μ)", "hypothesis_fields": "none"},
-  {"id": "E7.selRank_lt", "file": "lean/LeanUrat/MovesD/E7_rankLt.lean", "wave": "B", "deps": ["E3", "E6"], "sorries": 1, "aux": true,
-   "statement": "selRank_lt (hM : R.Matches ν) : selRank R.w ν < R.mbar", "hypothesis_fields": "none"},
-  {"id": "E8.rank_inj", "file": "lean/LeanUrat/MovesD/E8_rankInj.lean", "wave": "B", "deps": ["E3", "E6"], "sorries": 1, "aux": true,
-   "statement": "rank_inj (hM) (hM') (hg : ν.g = ν'.g) (hμ) (hR : RanchImage ν = RanchImage ν') (hs : selRank R.w ν = selRank R.w ν') : ψImage ν = ψImage ν'", "hypothesis_fields": "none"},
-  {"id": "E9.encIdx_inj", "file": "lean/LeanUrat/MovesD/E9_encInj.lean", "wave": "B", "deps": ["E1", "E3", "E4", "E7", "E8", "Defs"], "sorries": 2,
-   "statement": "encIdx_inj : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F ↑P); encTargetP_empty (hP : ↑P.reads = []) : Nat.card (EncTargetP p F ↑P) = 1", "hypothesis_fields": "none [REV 9 — hnorm removed as unused]"},
-  {"id": "E10.fieldTower_card", "file": "lean/LeanUrat/MovesD/E10_towerCard.lean", "wave": "B", "deps": ["Mathlib"], "sorries": 1, "aux": true,
-   "statement": "fieldTower_card {K : Subfield F} [Finite ↥K] (hirr) (hmon) (hdeg : ψ.natDegree = g) (hz : eval₂ K.subtype z ψ = 0) : Nat.card ↥(Subfield.closure (↑K ∪ {z})) = (Nat.card ↥K) ^ g", "hypothesis_fields": "none"},
-  {"id": "D1c.encTargetP_card", "file": "lean/LeanUrat/MovesD/D1c_encCard.lean", "wave": "B", "deps": ["E2"], "sorries": 1, "aux": true,
-   "statement": "encTargetP_card (hp : 2 ≤ p) : Nat.card (EncTargetP p F ↑P) ≤ ↑P.Mfac * p ^ ↑P.W", "hypothesis_fields": "none"},
-  {"id": "D2a.L8_finite_C", "file": "lean/LeanUrat/MovesD/D2a_finite.lean", "wave": "B", "deps": ["Defs"], "sorries": 2,
-   "statement": "instance instPrefIdxFinite : Finite (PrefIdx n pol P); CD_eq (hnorm : PresentNorm n pol P) (hne : ↑P.reads ≠ []) : P.CD pol = Nat.card (PrefIdx n pol P)", "hypothesis_fields": "hnorm on CD_eq (HC-2, §2 ledger); the Finite instance hypothesis-free"},
-  {"id": "F1.enum", "file": "lean/LeanUrat/MovesD/F1_enum.lean", "wave": "B", "deps": ["Defs"], "sorries": 3,
-   "statement": "reprOf_mem (i) : reprOf i ∈ PrefSet n pol P; etaData_reprOf (i) : etaData ↑P (reprOf i) = i.1; card_classes (hnorm) : Nat.card (PrefIdx n pol P) = Nat.card ↥(etaData ↑P '' PrefSet n pol P)", "hypothesis_fields": "hnorm on card_classes only"},
-  {"id": "F3.emptyBridge", "file": "lean/LeanUrat/MovesD/F3_emptyBridge.lean", "wave": "B", "deps": ["Defs", "D2a", "F1"], "sorries": 3,
-   "statement": "PrefOpt_empty (hP : ↑P.reads = []) : PrefOpt n pol P = {Option.none}; PrefOpt_nonempty (hne) : PrefOpt n pol P = Option.some '' PrefSet n pol P; CD_correspondence : P.CD pol = Nat.card ↥(etaDataO ↑P '' PrefOpt n pol P)", "hypothesis_fields": "none"},
-  {"id": "SW1.ShapeWF_of_matches", "file": "lean/LeanUrat/MovesD/SW1_shapeWF.lean", "wave": "B", "deps": ["E4", "E5", "E10"], "sorries": 1,
-   "statement": "ShapeWF_of_matches {Q : ShapePrefix} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt0 : root monicTop ↔ s0+wSide = n) (hw0 : Nat.card ↥(root σ.K) = p) : ShapeWF n Q", "hypothesis_fields": "hmt0 (ENC-MONIC), hw0 (ROOT-POOL) — both §2-ledgered"},
-  {"id": "W1'.wellformed_of_wf", "file": "lean/LeanUrat/MovesD/W1_wellformed.lean", "wave": "B", "deps": ["Defs"], "sorries": 1,
-   "statement": "wellformed_of_wf (P : Shape n) : ↑P.Wellformed n", "hypothesis_fields": "none"},
-  {"id": "W2.Mfac_le", "file": "lean/LeanUrat/MovesD/W2_MfacLe.lean", "wave": "B", "deps": ["W1'"], "sorries": 1,
-   "statement": "Mfac_le (P : Shape n) : ↑P.Mfac ≤ n ^ ↑P.reads.length", "hypothesis_fields": "NONE"},
-  {"id": "W3.D4R2'_full", "file": "lean/LeanUrat/MovesD/W3_coarseBound.lean", "wave": "B", "deps": ["D3a", "W2"], "sorries": 1,
-   "statement": "D4R2'_full (hnorm) : P.CD pol ≤ ↑P.Mfac * p ^ ↑P.W ∧ ↑P.Mfac ≤ n ^ ↑P.reads.length", "hypothesis_fields": "hnorm"},
-  {"id": "NPu.threshold", "file": "lean/LeanUrat/MovesD/NPu_threshold.lean", "wave": "C", "deps": ["Defs", "L9s"], "sorries": 3,
-   "statement": "NP_pos : 1 ≤ P.NP pol; NP_le_Nshape : P.NP pol ≤ ↑P.Nshape; NP_stab [Nonempty (PrefIdx n pol P)] : ∀ N, P.NP pol ≤ N → ↑P.A n N = ↑P.A' n", "hypothesis_fields": "none (NP_stab scoped to the inhabited branch)"},
-  {"id": "D3a.D4R2'", "file": "lean/LeanUrat/MovesD/D3a_poolBound.lean", "wave": "B", "deps": ["E9", "D1c", "D2a", "F3"], "sorries": 1,
-   "statement": "D4R2' (hnorm) : P.CD pol ≤ ↑P.Mfac * p ^ ↑P.W", "hypothesis_fields": "hnorm (HC-2); the injection itself proved (E9)"},
-  {"id": "D3b.D4R2_cor", "file": "lean/LeanUrat/MovesD/D3b_corD4R2.lean", "wave": "D", "deps": ["D12", "D3a", "D2a"], "sorries": 1,
-   "statement": "D4R2_cor (hne) (N) (hA : ↑P.A n N = ↑P.A' n) (S) : Nat.card ↥S.event * p ^ ↑P.A' n ≤ ↑P.Mfac * p ^ (↑P.W + n*N)", "hypothesis_fields": "hne, hA (discharged by L9s/NP_stab)"},
-  {"id": "D4a.chart_bij", "file": "lean/LeanUrat/MovesD/D4a_chartBij.lean", "wave": "C", "deps": ["MovesC.Defs"], "sorries": 1, "aux": true,
-   "statement": "chart_bij (J : JetSetup H n N m) : Function.Injective J.coordOf ∧ ∀ c ∈ range N ×ˢ range n, ∃ j, J.coordOf j = c", "hypothesis_fields": "none"},
-  {"id": "D4b.chart_count", "file": "lean/LeanUrat/MovesD/D4b_chartCount.lean", "wave": "C", "deps": ["D4a"], "sorries": 1, "aux": true,
-   "statement": "chart_count (J) (φ : Coord → Prop) [DecidablePred φ] : Nat.card {c // φ (J.coordOf c)} = ((range N ×ˢ range n).filter φ).card", "hypothesis_fields": "none"},
-  {"id": "D5a.Dwidth_pos", "file": "lean/LeanUrat/MovesD/D5a_dwidthPos.lean", "wave": "A", "deps": ["MovesC.Defs"], "sorries": 1, "aux": true,
-   "statement": "Dwidth_pos (hcoh : HistoryCoherent H) (r) (hr) : 0 < (H.nodes[r]'hr).Dwidth", "hypothesis_fields": "none"},
-  {"id": "D5b.line_shape", "file": "lean/LeanUrat/MovesD/D5b_lineShape.lean", "wave": "C", "deps": ["D5a", "D6a"], "sorries": 1,
-   "statement": "line_shape (hcoh) (hP : ↑P.MatchesHist H) (r) (hr) : (H.nodes[r]'hr).line = ↑P.lineS r", "hypothesis_fields": "none"},
-  {"id": "D6a.strFrame_shape", "file": "lean/LeanUrat/MovesD/D6a_strShape.lean", "wave": "A", "deps": ["Defs"], "sorries": 1,
-   "statement": "strFrame_shape (hP : ↑P.MatchesHist H) : ∀ i, H.strFrame i = ↑P.strS i", "hypothesis_fields": "none"},
-  {"id": "D6b.kappaH_shape", "file": "lean/LeanUrat/MovesD/D6b_kappaShape.lean", "wave": "C", "deps": ["D6a"], "sorries": 1,
-   "statement": "kappaH_shape (hP) : ∀ r, H.kappaH r = ↑P.kappaS r", "hypothesis_fields": "none"},
-  {"id": "D6c.innerslot_shape", "file": "lean/LeanUrat/MovesD/D6c_innerslotShape.lean", "wave": "A", "deps": ["Defs"], "sorries": 1,
-   "statement": "innerslot_shape (hP) : ∀ r b, H.innerslotH r b = ↑P.innerslotS r b", "hypothesis_fields": "none"},
-  {"id": "D6d.htH_shape", "file": "lean/LeanUrat/MovesD/D6d_htShape.lean", "wave": "C", "deps": ["D6b", "D6c"], "sorries": 1,
-   "statement": "htH_shape (hP) : ∀ i c, H.htH i c = ↑P.htS i c", "hypothesis_fields": "none"},
-  {"id": "D6e.prevRim_shape", "file": "lean/LeanUrat/MovesD/D6e_prevRimShape.lean", "wave": "A", "deps": ["Defs"], "sorries": 1,
-   "statement": "prevRim_shape (hP) : ∀ i, H.prevRim n i = ↑P.prevRimS n i", "hypothesis_fields": "none"},
-  {"id": "D7a.staircase_shape", "file": "lean/LeanUrat/MovesD/D7a_staircaseShape.lean", "wave": "C", "deps": ["D5b"], "sorries": 1,
-   "statement": "staircase_shape (hcoh) (hP) (r) (hr) (hr') : ∀ b, (H.nodes[r]'hr).staircase b = (↑P.reads[r]'hr').staircaseS (↑P.lineS r) b", "hypothesis_fields": "none"},
-  {"id": "D7b.floorH_shape", "file": "lean/LeanUrat/MovesD/D7b_floorShape.lean", "wave": "C", "deps": ["D7a"], "sorries": 1,
-   "statement": "floorH_shape (hcoh) (hP) : ∀ i b, H.floorH i b = ↑P.floorS i b", "hypothesis_fields": "none"},
-  {"id": "D7c.slotVal_shape", "file": "lean/LeanUrat/MovesD/D7c_slotValShape.lean", "wave": "C", "deps": ["D5b"], "sorries": 1,
-   "statement": "slotVal_shape (hcoh) (hP) (r) (hr) (hr') : ∀ b, (H.nodes[r]'hr).slotVal (fineSlot b) = (↑P.lineS r).at ((b / Dwidth) * Dwidth)", "hypothesis_fields": "none"},
-  {"id": "D8.band_shape", "file": "lean/LeanUrat/MovesD/D8_bandShape.lean", "wave": "C", "deps": ["D6d", "D6e", "D7b", "D7c"], "sorries": 1,
-   "statement": "band_shape {J : JetSetup H n N m} (hP) (r) (hr) (c : Fin m) : inFreshBand H n J.coordOf r (H.nodes[r]'hr) c ↔ ↑P.bandS n r (J.coordOf c)", "hypothesis_fields": "none (coherence via J.coherent)"},
-  {"id": "D9.L9_A", "file": "lean/LeanUrat/MovesD/D9_L9.lean", "wave": "C", "deps": ["D0b", "D8", "D4b", "F1", "MovesC.mstar_eq"], "sorries": 1,
-   "statement": "L9_A (S : Presented p F n N m pol P) (i : PrefIdx n pol P) : totalPins (S.jet i) (topLocus p m) = ↑P.A n N", "hypothesis_fields": "S.jet only"},
-  {"id": "L9s.A_stable", "file": "lean/LeanUrat/MovesD/L9s_Astable.lean", "wave": "C", "deps": ["Defs"], "sorries": 1, "aux": true,
-   "statement": "A_stable (hN : ↑P.Nshape ≤ N) : ↑P.A n N = ↑P.A' n", "hypothesis_fields": "none"},
-  {"id": "D10.D4R1_SUM", "file": "lean/LeanUrat/MovesD/D10_sumLaw.lean", "wave": "D", "deps": ["D0b", "D9", "L9s", "D2a"], "sorries": 1,
-   "statement": "D4R1_SUM (hne) (N) (hA : ↑P.A n N = ↑P.A' n) (S) : (∑ᶠ i, Nat.card ↥(S.fiber i)) * p ^ ↑P.A' n = Nat.card (PrefIdx n pol P) * p ^ (n*N)", "hypothesis_fields": "S.jet only; NO disjointness consumed"},
-  {"id": "D11a.mult_sum", "file": "lean/LeanUrat/MovesD/D11a_multSum.lean", "wave": "D", "deps": ["D2a"], "sorries": 1,
-   "statement": "mult_sum (S) : ∑ x : Box p m, S.mult x = ∑ᶠ i, Nat.card ↥(S.fiber i)", "hypothesis_fields": "none"},
-  {"id": "D11b.event_iff_mult", "file": "lean/LeanUrat/MovesD/D11b_eventMult.lean", "wave": "D", "deps": ["Defs"], "sorries": 1,
-   "statement": "event_iff_mult (S) (x) : x ∈ S.event ↔ 1 ≤ S.mult x", "hypothesis_fields": "none"},
-  {"id": "D12.D4R1_EV", "file": "lean/LeanUrat/MovesD/D12_evBound.lean", "wave": "D", "deps": ["D10", "D11a", "D11b"], "sorries": 1,
-   "statement": "D4R1_EV (hne) (N) (hA) (S) : Nat.card ↥S.event * p ^ ↑P.A' n ≤ Nat.card (PrefIdx n pol P) * p ^ (n*N)", "hypothesis_fields": "as D10"},
-  {"id": "D13.D4R1_EV_iff", "file": "lean/LeanUrat/MovesD/D13_evIff.lean", "wave": "D", "deps": ["D10", "D11a", "D11b"], "sorries": 1,
-   "statement": "D4R1_EV_iff (hne) (N) (hA) (S) : (count-equality) ↔ (∀ x ∈ S.event, S.mult x = 1)", "hypothesis_fields": "as D10; pointwise on the event"},
-  {"id": "D4R4_all(+TW)", "file": "lean/LeanUrat/MovesD/D4R4all_wrapper.lean", "wave": "D", "deps": ["D10", "D12", "D2a", "NPu"], "sorries": 2,
+  {
+   "id": "D0a.topLocus_laws",
+   "file": "lean/LeanUrat/MovesD/D0a_topLocus.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 3,
+   "statement": "topLocus_sol (x : Box p m) : (topLocus p m).IsSolution x; topLocus_numPinned : (topLocus p m).numPinned = 0; topLocus_admissible (Sf : Locus p m) : AdmissibleZ Sf (topLocus p m)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D0b.thmC_top",
+   "file": "lean/LeanUrat/MovesD/D0b_thmCtop.lean",
+   "wave": "A",
+   "deps": [
+    "C6_thmC_b",
+    "D0a"
+   ],
+   "sorries": 2,
+   "statement": "totalPins_top (J : JetSetup H n N m) : totalPins J top = Σ_{i<len} (J.fresh i).mstar; thmC_top (J) : Nat.card (J.SHZ top) * p ^ totalPins J top = p ^ (n*N)",
+   "hypothesis_fields": "none (J a binder; existence = Presented.jet, HC-2)"
+  },
+  {
+   "id": "D0c.fiber_pos",
+   "file": "lean/LeanUrat/MovesD/D0c_fiberPos.lean",
+   "wave": "A",
+   "deps": [
+    "D0b"
+   ],
+   "sorries": 1,
+   "statement": "fiber_pos (S : Presented p F n N m pol P) (i : PrefIdx n pol P) : (S.fiber i).Nonempty",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E1.digit_in_pool",
+   "file": "lean/LeanUrat/MovesD/E1_digitPool.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "digit_in_pool (hM : R.Matches ν) (k : ℕ) : ν.sideDigit k ∈ pool p R.w F",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E2.pool_card_le",
+   "file": "lean/LeanUrat/MovesD/E2_poolCard.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "pool_card_le (hp : 2 ≤ p) (hw : 1 ≤ w) : Nat.card ↥(pool p w F) ≤ p ^ w",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E3.frameField_eq_pool",
+   "file": "lean/LeanUrat/MovesD/E3_frameField.lean",
+   "wave": "A",
+   "deps": [
+    "E1",
+    "E2"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "frameField_eq_pool (hM : R.Matches ν) : Set.range (coe : ↥ν.σ.K → F) = pool p R.w F",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E4.Ranch_deg",
+   "file": "lean/LeanUrat/MovesD/E4_ranchDeg.lean",
+   "wave": "A",
+   "deps": [
+    "MovesC"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "Ranch_deg (ν : Node p F) : ν.Ranch.natDegree = ν.wSide / ν.e",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E5.gmu_le_len",
+   "file": "lean/LeanUrat/MovesD/E5_gmuLe.lean",
+   "wave": "A",
+   "deps": [
+    "E4"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "gmu_le_len (ν : Node p F) : ν.g * ν.μ ≤ ν.wSide / ν.e",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E6.eligible_card_le",
+   "file": "lean/LeanUrat/MovesD/E6_eligibleCard.lean",
+   "wave": "B",
+   "deps": [
+    "E4"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "eligible_card_le (ν) : Nat.card {q : Polynomial ↥ν.σ.K // Monic ∧ Irreducible ∧ deg = g ∧ OrdPsiPoly q Ranch μ} ≤ (wSide/e)/(g*μ)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E7.selRank_lt",
+   "file": "lean/LeanUrat/MovesD/E7_rankLt.lean",
+   "wave": "B",
+   "deps": [
+    "E3",
+    "E6"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "selRank_lt (hM : R.Matches ν) : selRank R.w ν < R.mbar",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E8.rank_inj",
+   "file": "lean/LeanUrat/MovesD/E8_rankInj.lean",
+   "wave": "B",
+   "deps": [
+    "E3",
+    "E6"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "rank_inj (hM) (hM') (hg : ν.g = ν'.g) (hμ) (hR : RanchImage ν = RanchImage ν') (hs : selRank R.w ν = selRank R.w ν') : ψImage ν = ψImage ν'",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "E9.encIdx_inj",
+   "file": "lean/LeanUrat/MovesD/E9_encInj.lean",
+   "wave": "B",
+   "deps": [
+    "E1",
+    "E3",
+    "E4",
+    "E7",
+    "E8",
+    "Defs"
+   ],
+   "sorries": 2,
+   "statement": "encIdx_inj : Function.Injective (encIdx : PrefIdx n pol P → EncTargetP p F ↑P); encTargetP_empty (hP : ↑P.reads = []) : Nat.card (EncTargetP p F ↑P) = 1",
+   "hypothesis_fields": "none [REV 9 — hnorm removed as unused]"
+  },
+  {
+   "id": "E10.fieldTower_card",
+   "file": "lean/LeanUrat/MovesD/E10_towerCard.lean",
+   "wave": "B",
+   "deps": [
+    "Mathlib"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "fieldTower_card {K : Subfield F} [Finite ↥K] (hirr) (hmon) (hdeg : ψ.natDegree = g) (hz : eval₂ K.subtype z ψ = 0) : Nat.card ↥(Subfield.closure (↑K ∪ {z})) = (Nat.card ↥K) ^ g",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D1c.encTargetP_card",
+   "file": "lean/LeanUrat/MovesD/D1c_encCard.lean",
+   "wave": "B",
+   "deps": [
+    "E2"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "encTargetP_card (hp : 2 ≤ p) : Nat.card (EncTargetP p F ↑P) ≤ ↑P.Mfac * p ^ ↑P.W",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D2a.L8_finite_C",
+   "file": "lean/LeanUrat/MovesD/D2a_finite.lean",
+   "wave": "B",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 2,
+   "statement": "instance instPrefIdxFinite : Finite (PrefIdx n pol P); CD_eq (hnorm : PresentNorm n pol P) (hne : ↑P.reads ≠ []) : P.CD pol = Nat.card (PrefIdx n pol P)",
+   "hypothesis_fields": "hnorm on CD_eq (HC-2, §2 ledger); the Finite instance hypothesis-free"
+  },
+  {
+   "id": "F1.enum",
+   "file": "lean/LeanUrat/MovesD/F1_enum.lean",
+   "wave": "B",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 3,
+   "statement": "reprOf_mem (i) : reprOf i ∈ PrefSet n pol P; etaData_reprOf (i) : etaData ↑P (reprOf i) = i.1; card_classes (hnorm) : Nat.card (PrefIdx n pol P) = Nat.card ↥(etaData ↑P '' PrefSet n pol P)",
+   "hypothesis_fields": "hnorm on card_classes only"
+  },
+  {
+   "id": "F3.emptyBridge",
+   "file": "lean/LeanUrat/MovesD/F3_emptyBridge.lean",
+   "wave": "B",
+   "deps": [
+    "Defs",
+    "D2a",
+    "F1"
+   ],
+   "sorries": 3,
+   "statement": "PrefOpt_empty (hP : ↑P.reads = []) : PrefOpt n pol P = {Option.none}; PrefOpt_nonempty (hne) : PrefOpt n pol P = Option.some '' PrefSet n pol P; CD_correspondence : P.CD pol = Nat.card ↥(etaDataO ↑P '' PrefOpt n pol P)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "SW1.ShapeWF_of_matches",
+   "file": "lean/LeanUrat/MovesD/SW1_shapeWF.lean",
+   "wave": "B",
+   "deps": [
+    "E4",
+    "E5",
+    "E10"
+   ],
+   "sorries": 1,
+   "statement": "ShapeWF_of_matches {Q : ShapePrefix} (hM : Q.MatchesHist H) (hcoh : HistoryCoherent H) (hbox : InBox n H) (hmt0 : root monicTop ↔ s0+wSide = n) (hw0 : Nat.card ↥(root σ.K) = p) : ShapeWF n Q",
+   "hypothesis_fields": "hmt0 (ENC-MONIC), hw0 (ROOT-POOL) — both §2-ledgered"
+  },
+  {
+   "id": "W1'.wellformed_of_wf",
+   "file": "lean/LeanUrat/MovesD/W1_wellformed.lean",
+   "wave": "B",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "statement": "wellformed_of_wf (P : Shape n) : ↑P.Wellformed n",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "W2.Mfac_le",
+   "file": "lean/LeanUrat/MovesD/W2_MfacLe.lean",
+   "wave": "B",
+   "deps": [
+    "W1'"
+   ],
+   "sorries": 1,
+   "statement": "Mfac_le (P : Shape n) : ↑P.Mfac ≤ n ^ ↑P.reads.length",
+   "hypothesis_fields": "NONE"
+  },
+  {
+   "id": "W3.D4R2'_full",
+   "file": "lean/LeanUrat/MovesD/W3_coarseBound.lean",
+   "wave": "B",
+   "deps": [
+    "D3a",
+    "W2"
+   ],
+   "sorries": 1,
+   "statement": "D4R2'_full (hnorm) : P.CD pol ≤ ↑P.Mfac * p ^ ↑P.W ∧ ↑P.Mfac ≤ n ^ ↑P.reads.length",
+   "hypothesis_fields": "hnorm"
+  },
+  {
+   "id": "NPu.threshold",
+   "file": "lean/LeanUrat/MovesD/NPu_threshold.lean",
+   "wave": "C",
+   "deps": [
+    "Defs",
+    "L9s"
+   ],
+   "sorries": 3,
+   "statement": "NP_pos : 1 ≤ P.NP pol; NP_le_Nshape : P.NP pol ≤ ↑P.Nshape; NP_stab [Nonempty (PrefIdx n pol P)] : ∀ N, P.NP pol ≤ N → ↑P.A n N = ↑P.A' n",
+   "hypothesis_fields": "none (NP_stab scoped to the inhabited branch)"
+  },
+  {
+   "id": "D3a.D4R2'",
+   "file": "lean/LeanUrat/MovesD/D3a_poolBound.lean",
+   "wave": "B",
+   "deps": [
+    "E9",
+    "D1c",
+    "D2a",
+    "F3"
+   ],
+   "sorries": 1,
+   "statement": "D4R2' (hnorm) : P.CD pol ≤ ↑P.Mfac * p ^ ↑P.W",
+   "hypothesis_fields": "hnorm (HC-2); the injection itself proved (E9)"
+  },
+  {
+   "id": "D3b.D4R2_cor",
+   "file": "lean/LeanUrat/MovesD/D3b_corD4R2.lean",
+   "wave": "D",
+   "deps": [
+    "D12",
+    "D3a",
+    "D2a"
+   ],
+   "sorries": 1,
+   "statement": "D4R2_cor (hne) (N) (hA : ↑P.A n N = ↑P.A' n) (S) : Nat.card ↥S.event * p ^ ↑P.A' n ≤ ↑P.Mfac * p ^ (↑P.W + n*N)",
+   "hypothesis_fields": "hne, hA (discharged by L9s/NP_stab)"
+  },
+  {
+   "id": "D4a.chart_bij",
+   "file": "lean/LeanUrat/MovesD/D4a_chartBij.lean",
+   "wave": "C",
+   "deps": [
+    "MovesC.Defs"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "chart_bij (J : JetSetup H n N m) : Function.Injective J.coordOf ∧ ∀ c ∈ range N ×ˢ range n, ∃ j, J.coordOf j = c",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D4b.chart_count",
+   "file": "lean/LeanUrat/MovesD/D4b_chartCount.lean",
+   "wave": "C",
+   "deps": [
+    "D4a"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "chart_count (J) (φ : Coord → Prop) [DecidablePred φ] : Nat.card {c // φ (J.coordOf c)} = ((range N ×ˢ range n).filter φ).card",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D5a.Dwidth_pos",
+   "file": "lean/LeanUrat/MovesD/D5a_dwidthPos.lean",
+   "wave": "A",
+   "deps": [
+    "MovesC.Defs"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "Dwidth_pos (hcoh : HistoryCoherent H) (r) (hr) : 0 < (H.nodes[r]'hr).Dwidth",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D5b.line_shape",
+   "file": "lean/LeanUrat/MovesD/D5b_lineShape.lean",
+   "wave": "C",
+   "deps": [
+    "D5a",
+    "D6a"
+   ],
+   "sorries": 1,
+   "statement": "line_shape (hcoh) (hP : ↑P.MatchesHist H) (r) (hr) : (H.nodes[r]'hr).line = ↑P.lineS r",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D6a.strFrame_shape",
+   "file": "lean/LeanUrat/MovesD/D6a_strShape.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "statement": "strFrame_shape (hP : ↑P.MatchesHist H) : ∀ i, H.strFrame i = ↑P.strS i",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D6b.kappaH_shape",
+   "file": "lean/LeanUrat/MovesD/D6b_kappaShape.lean",
+   "wave": "C",
+   "deps": [
+    "D6a"
+   ],
+   "sorries": 1,
+   "statement": "kappaH_shape (hP) : ∀ r, H.kappaH r = ↑P.kappaS r",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D6c.innerslot_shape",
+   "file": "lean/LeanUrat/MovesD/D6c_innerslotShape.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "statement": "innerslot_shape (hP) : ∀ r b, H.innerslotH r b = ↑P.innerslotS r b",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D6d.htH_shape",
+   "file": "lean/LeanUrat/MovesD/D6d_htShape.lean",
+   "wave": "C",
+   "deps": [
+    "D6b",
+    "D6c"
+   ],
+   "sorries": 1,
+   "statement": "htH_shape (hP) : ∀ i c, H.htH i c = ↑P.htS i c",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D6e.prevRim_shape",
+   "file": "lean/LeanUrat/MovesD/D6e_prevRimShape.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "statement": "prevRim_shape (hP) : ∀ i, H.prevRim n i = ↑P.prevRimS n i",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D7a.staircase_shape",
+   "file": "lean/LeanUrat/MovesD/D7a_staircaseShape.lean",
+   "wave": "C",
+   "deps": [
+    "D5b"
+   ],
+   "sorries": 1,
+   "statement": "staircase_shape (hcoh) (hP) (r) (hr) (hr') : ∀ b, (H.nodes[r]'hr).staircase b = (↑P.reads[r]'hr').staircaseS (↑P.lineS r) b",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D7b.floorH_shape",
+   "file": "lean/LeanUrat/MovesD/D7b_floorShape.lean",
+   "wave": "C",
+   "deps": [
+    "D7a"
+   ],
+   "sorries": 1,
+   "statement": "floorH_shape (hcoh) (hP) : ∀ i b, H.floorH i b = ↑P.floorS i b",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D7c.slotVal_shape",
+   "file": "lean/LeanUrat/MovesD/D7c_slotValShape.lean",
+   "wave": "C",
+   "deps": [
+    "D5b"
+   ],
+   "sorries": 1,
+   "statement": "slotVal_shape (hcoh) (hP) (r) (hr) (hr') : ∀ b, (H.nodes[r]'hr).slotVal (fineSlot b) = (↑P.lineS r).at ((b / Dwidth) * Dwidth)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D8.band_shape",
+   "file": "lean/LeanUrat/MovesD/D8_bandShape.lean",
+   "wave": "C",
+   "deps": [
+    "D6d",
+    "D6e",
+    "D7b",
+    "D7c"
+   ],
+   "sorries": 1,
+   "statement": "band_shape {J : JetSetup H n N m} (hP) (r) (hr) (c : Fin m) : inFreshBand H n J.coordOf r (H.nodes[r]'hr) c ↔ ↑P.bandS n r (J.coordOf c)",
+   "hypothesis_fields": "none (coherence via J.coherent)"
+  },
+  {
+   "id": "D9.L9_A",
+   "file": "lean/LeanUrat/MovesD/D9_L9.lean",
+   "wave": "C",
+   "deps": [
+    "D0b",
+    "D8",
+    "D4b",
+    "F1",
+    "MovesC.mstar_eq"
+   ],
+   "sorries": 1,
+   "statement": "L9_A (S : Presented p F n N m pol P) (i : PrefIdx n pol P) : totalPins (S.jet i) (topLocus p m) = ↑P.A n N",
+   "hypothesis_fields": "S.jet only"
+  },
+  {
+   "id": "L9s.A_stable",
+   "file": "lean/LeanUrat/MovesD/L9s_Astable.lean",
+   "wave": "C",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "aux": true,
+   "statement": "A_stable (hN : ↑P.Nshape ≤ N) : ↑P.A n N = ↑P.A' n",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D10.D4R1_SUM",
+   "file": "lean/LeanUrat/MovesD/D10_sumLaw.lean",
+   "wave": "D",
+   "deps": [
+    "D0b",
+    "D9",
+    "L9s",
+    "D2a"
+   ],
+   "sorries": 1,
+   "statement": "D4R1_SUM (hne) (N) (hA : ↑P.A n N = ↑P.A' n) (S) : (∑ᶠ i, Nat.card ↥(S.fiber i)) * p ^ ↑P.A' n = Nat.card (PrefIdx n pol P) * p ^ (n*N)",
+   "hypothesis_fields": "S.jet only; NO disjointness consumed"
+  },
+  {
+   "id": "D11a.mult_sum",
+   "file": "lean/LeanUrat/MovesD/D11a_multSum.lean",
+   "wave": "D",
+   "deps": [
+    "D2a"
+   ],
+   "sorries": 1,
+   "statement": "mult_sum (S) : ∑ x : Box p m, S.mult x = ∑ᶠ i, Nat.card ↥(S.fiber i)",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D11b.event_iff_mult",
+   "file": "lean/LeanUrat/MovesD/D11b_eventMult.lean",
+   "wave": "D",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 1,
+   "statement": "event_iff_mult (S) (x) : x ∈ S.event ↔ 1 ≤ S.mult x",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D12.D4R1_EV",
+   "file": "lean/LeanUrat/MovesD/D12_evBound.lean",
+   "wave": "D",
+   "deps": [
+    "D10",
+    "D11a",
+    "D11b"
+   ],
+   "sorries": 1,
+   "statement": "D4R1_EV (hne) (N) (hA) (S) : Nat.card ↥S.event * p ^ ↑P.A' n ≤ Nat.card (PrefIdx n pol P) * p ^ (n*N)",
+   "hypothesis_fields": "as D10"
+  },
+  {
+   "id": "D13.D4R1_EV_iff",
+   "file": "lean/LeanUrat/MovesD/D13_evIff.lean",
+   "wave": "D",
+   "deps": [
+    "D10",
+    "D11a",
+    "D11b"
+   ],
+   "sorries": 1,
+   "statement": "D4R1_EV_iff (hne) (N) (hA) (S) : (count-equality) ↔ (∀ x ∈ S.event, S.mult x = 1)",
+   "hypothesis_fields": "as D10; pointwise on the event"
+  },
+  {
+   "id": "D4R4_all(+TW)",
+   "file": "lean/LeanUrat/MovesD/D4R4all_wrapper.lean",
+   "wave": "D",
+   "deps": [
+    "D10",
+    "D12",
+    "D2a",
+    "NPu"
+   ],
+   "sorries": 2,
    "statement": "D4R4_all (hne) (T : Threshold p F n pol P) : ∀ N (hNP : P.NP pol ≤ N), SUM-equality ∧ EV-bound with constants P.CD pol and ↑P.A' n; TW_threshold_witness (hex : ∀ N ≥ NP, Nonempty (Presented …)) : Nonempty (Threshold p F n pol P)",
    "hypothesis_fields": "T (sole field: jets — L12 presentations, HC-2); hex (PRESENT-EXIST, at NP) only in TW",
-   "conditionality_pointer": "NP-ID (§2.5 W4-4): the range's L12-exactness (NPband = max-η N(η,⊤) on the inhabited branch) is the SEAM pin — wave-4 theorem from mstar_eq + fresh_band/fresh_cover + D8/D4b over MovesT"},
-  {"id": "D14a.emptyShape_law", "file": "lean/LeanUrat/MovesD/D14a_emptyShape.lean", "wave": "A", "deps": ["Defs"], "sorries": 3,
-   "statement": "Pref_empty_shape (hP : ↑P.reads = []) : PrefSet n pol P = ∅ ∧ P.CD pol = 1; A'_nil (hP) : ∀ n', ↑P.A' n' = 0; emptyShape_law (hm : m = n*N) (hN : 1 ≤ N) (hP) : Nat.card ↥(emptyFiber p m) * p ^ ↑P.A' n = P.CD pol * p ^ (n*N)", "hypothesis_fields": "hm, hN explicit (L12's N(∅) := 1 convention; no jet available)"},
-  {"id": "D14b.D4R4_emptyPref", "file": "lean/LeanUrat/MovesD/D14b_emptyPref.lean", "wave": "D", "deps": ["Defs", "D2a"], "sorries": 1,
-   "statement": "D4R4_emptyPref (hne) (hemp : IsEmpty (PrefIdx n pol P)) (hN) (hm) (S) : S.event = ∅ ∧ P.CD pol = 0 ∧ 0 = 0 law", "hypothesis_fields": "hN, hm explicit"},
-  {"id": "T1a.tree_prefix_closed", "file": "lean/LeanUrat/MovesD/T1a_prefixClosed.lean", "wave": "D", "deps": ["Defs"], "sorries": 2,
-   "statement": "tree_prefix_closed (T : TreeModel p F n N m pol) : ∀ H H' x, H.IsPrefixOf H' → T.mem (some H') x → T.mem (some H) x; tree_root_of_mem (T) : ∀ H x, T.mem (some H) x → T.mem none x", "hypothesis_fields": "none"},
-  {"id": "G1.gateBlock", "file": "lean/LeanUrat/MovesD/G1_gates.lean", "wave": "A", "deps": ["Defs"], "sorries": 11, "addendum": true,
-   "statement": "defs readStar0/readStar1/PhatStar, read0Phat0/Phat0, advI/advII/advVI (concrete records, Prop fields by decide — PROVED); PhatStar_wf : ShapeWF 3 PhatStar; Phat0_wf : ShapeWF 4 Phat0; PhatStar_W = 7; PhatStar_Mfac = 1; PhatStar_Nshape = 5; PhatStar_A' 3 = 11; PhatStar_NPband 3 = 5; Phat0_A' 4 = 14; advI/advII/advVI_not_wf : ¬ShapeWF", "hypothesis_fields": "none"},
-  {"id": "D15.tree_bridge", "file": null, "wave": "SEAM-4", "deps": ["W4-3"], "sorries": 0, "seam": true,
-   "statement": "NOT BUILT (blueprint §2.5 W4-3): mult_eq_tree/event_iff_tree with hcyl : D4R_CYL, hwd : ClassFiberWelldef — builds in wave 4 with MovesT", "hypothesis_fields": "hcyl, hwd (deferred pinned Props, declared in Defs)"}
- ]
+   "conditionality_pointer": "NP-ID (§2.5 W4-4): the range's L12-exactness (NPband = max-η N(η,⊤) on the inhabited branch) is the SEAM pin — wave-4 theorem from mstar_eq + fresh_band/fresh_cover + D8/D4b over MovesT"
+  },
+  {
+   "id": "D14a.emptyShape_law",
+   "file": "lean/LeanUrat/MovesD/D14a_emptyShape.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 3,
+   "statement": "Pref_empty_shape (hP : ↑P.reads = []) : PrefSet n pol P = ∅ ∧ P.CD pol = 1; A'_nil (hP) : ∀ n', ↑P.A' n' = 0; emptyShape_law (hm : m = n*N) (hN : 1 ≤ N) (hP) : Nat.card ↥(emptyFiber p m) * p ^ ↑P.A' n = P.CD pol * p ^ (n*N)",
+   "hypothesis_fields": "hm, hN explicit (L12's N(∅) := 1 convention; no jet available)"
+  },
+  {
+   "id": "D14b.D4R4_emptyPref",
+   "file": "lean/LeanUrat/MovesD/D14b_emptyPref.lean",
+   "wave": "D",
+   "deps": [
+    "Defs",
+    "D2a"
+   ],
+   "sorries": 1,
+   "statement": "D4R4_emptyPref (hne) (hemp : IsEmpty (PrefIdx n pol P)) (hN) (hm) (S) : S.event = ∅ ∧ P.CD pol = 0 ∧ 0 = 0 law",
+   "hypothesis_fields": "hN, hm explicit"
+  },
+  {
+   "id": "T1a.tree_prefix_closed",
+   "file": "lean/LeanUrat/MovesD/T1a_prefixClosed.lean",
+   "wave": "D",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 2,
+   "statement": "tree_prefix_closed (T : TreeModel p F n N m pol) : ∀ H H' x, H.IsPrefixOf H' → T.mem (some H') x → T.mem (some H) x; tree_root_of_mem (T) : ∀ H x, T.mem (some H) x → T.mem none x",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "G1.gateBlock",
+   "file": "lean/LeanUrat/MovesD/G1_gates.lean",
+   "wave": "A",
+   "deps": [
+    "Defs"
+   ],
+   "sorries": 11,
+   "addendum": true,
+   "statement": "defs readStar0/readStar1/PhatStar, read0Phat0/Phat0, advI/advII/advVI (concrete records, Prop fields by decide — PROVED); PhatStar_wf : ShapeWF 3 PhatStar; Phat0_wf : ShapeWF 4 Phat0; PhatStar_W = 7; PhatStar_Mfac = 1; PhatStar_Nshape = 5; PhatStar_A' 3 = 11; PhatStar_NPband 3 = 5; Phat0_A' 4 = 14; advI/advII/advVI_not_wf : ¬ShapeWF",
+   "hypothesis_fields": "none"
+  },
+  {
+   "id": "D15.tree_bridge",
+   "file": null,
+   "wave": "SEAM-4",
+   "deps": [
+    "W4-3"
+   ],
+   "sorries": 0,
+   "seam": true,
+   "statement": "NOT BUILT (blueprint §2.5 W4-3): mult_eq_tree/event_iff_tree with hcyl : D4R_CYL, hwd : ClassFiberWelldef — builds in wave 4 with MovesT",
+   "hypothesis_fields": "hcyl, hwd (deferred pinned Props, declared in Defs)"
+  }
+ ],
+ "ratification_repairs_2026-07-29_round2": {
+  "D2_polpin_strengthened": "PolPin.lean OffsetPPin gains support_forced (realizer support in ONE stride-e length-g progression anchored in the forced class j0 = bezT(e,h)*gam mod e — note 4648-4650's h^{-1}*(target) in corpus vocabulary; target = Node.gam, documented) + realizes_unique (L1 determinism: the digits are functions of node data). Non-vacuity re-verified: OffsetPPin.not_realizes_bare_ne_zero — Realizes := (t ≠ 0) fails realizes_unique at EVERY node (1 vs X). Residual seam content of Realizes narrowed to w(t) = nu + prescribed digit VALUES (§B2-DEF/HC-1).",
+  "D4_empty_event_wired": "The reads = [] dispatch is wired INTO Presented.event/Presented.mult themselves (Defs.lean, mirroring Shape.CD: univ/1 on the empty shape, iUnion/incidence-count otherwise). eventO/multO DELETED — one semantics. Unfolding laws in Defs.lean: event_of_ne/mult_of_ne + event_empty_shape/mult_empty_shape; D14c restated on the designated objects (event_mult_empty_shape, event_empty_law). Consumer proofs patched: D11b (case split, statement unchanged), D12/D13 (pass hne to mult_sum), D14b, D4R4all_wrapper (event_of_ne before iUnion_of_empty). FORCED statement change (deviation, recorded in-file): D11a mult_sum gains hne — at reads = [] the incidence identity is FALSE under the note's mult_∅ ≡ 1 (LHS #Box, RHS 0 over empty PrefIdx); both consumers (D12, D13) already carry hne. No event/mult consumers outside MovesD (grepped 2026-07-29: none)."
+ }
 }

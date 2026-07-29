@@ -417,6 +417,17 @@ structure PolyGeomLaws (T : TableShape n) (M : MeasuredSide T)
     M.activeState q₀ e τ →
     (RB.tgP e τ o).countS.eval q₀
       = ∑ c ∈ M.cells e τ o, ((M.cellInst e τ c q₀ (M.cellLvl e τ c)).card : ℚ)
+  /-- [S5″, 2026-07-29] CL-6 DEGREE LAW, T-count leg: "T is one polynomial of degree
+  ≤ W_loc(m)" (MOVES 12129–12132) — the count polynomial itself, not just its recorded
+  bound, obeys the W carrier. Derivable from `RB`'s `degT_le` + `tg_degT` at the tg
+  carrier (so instantiation is free), carried HERE so the value laws and the degree
+  laws travel as ONE CL-6 package. -/
+  tcount_deg : ∀ e (τ : T.State e) (o : T.Out e τ),
+    (RB.tgP e τ o).countT.natDegree ≤ T.Wloc e τ o
+  /-- [S5″, 2026-07-29] CL-6 DEGREE LAW, cell-count leg: "each cell size one polynomial
+  of degree ≤ W_state(s)" (MOVES 12129–12132). Derivable from `degS_le` + `tg_degS`. -/
+  scount_deg : ∀ e (τ : T.State e) (o : T.Out e τ),
+    (RB.tgP e τ o).countS.natDegree ≤ T.Wstate e τ
 
 variable {M : MeasuredSide T}
 

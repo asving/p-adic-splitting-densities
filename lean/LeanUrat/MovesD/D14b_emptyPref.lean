@@ -28,7 +28,9 @@ theorem D4R4_emptyPref (hne : (P : ShapePrefix).reads ≠ [])
     S.event = ∅ ∧ P.CD pol = 0 ∧
       Nat.card ↥S.event * p ^ ((P : ShapePrefix).A' n) = P.CD pol * p ^ (n * N) := by
   haveI := hemp
-  have hev : S.event = ∅ := Set.iUnion_of_empty _
+  have hev : S.event = ∅ := by
+    rw [S.event_of_ne hne]
+    exact Set.iUnion_of_empty _
   have hCD : P.CD pol = 0 := by
     unfold Shape.CD
     rw [if_neg hne]

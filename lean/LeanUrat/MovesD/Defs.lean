@@ -494,31 +494,49 @@ variable {n N m : ℕ} {pol : CanonPolicy p F} {P : Shape n}
 def Presented.fiber (S : Presented p F n N m pol P) (i : PrefIdx n pol P) :
     Set (Box p m) := (S.jet i).SHZ (topLocus p m)
 
-/-- The event S(P̂,⊤) — the (multiplicity-weighted-cover) union of the class fibers. -/
-def Presented.event (S : Presented p F n N m pol P) : Set (Box p m) := ⋃ i, S.fiber i
+open Classical in
+/-- [RATIFICATION REPAIR D4″, 2026-07-29 — the ∅ dispatch wired INTO the note-designated
+object; the round-1 parallel `eventO` is DELETED] **The event S(P̂,⊤)** — L5 (note
+~4788–4800): the EMPTY prefix η = ∅ is INCLUDED, "S(∅,⊤) = the box (§C C.0's EMPTY
+HISTORY clause T(∅, Z) := Z, at Z = ⊤: no constraint, vol 1) — this empty case is the
+base of L6's induction". The Lean `PrefIdx` is History-indexed and the History type has
+no empty chain (F3's displayed deviation), so the bare iUnion is ∅ at `reads = []`; THIS
+definition therefore dispatches on `reads = []` exactly as `Shape.CD` does: FULL BOX on
+the empty shape, the (multiplicity-weighted-cover) union of the class fibers otherwise
+(`event_empty_shape` / `event_of_ne` below). ONE semantics — no parallel object. -/
+def Presented.event (S : Presented p F n N m pol P) : Set (Box p m) :=
+  if (P : ShapePrefix).reads = [] then Set.univ else ⋃ i, S.fiber i
 
-/-- The multiplicity mult_P̂(f) = #{classes whose fiber contains f}. -/
+open Classical in
+/-- [RATIFICATION REPAIR D4″, 2026-07-29 — dispatch wired in; `multO` DELETED] **The
+multiplicity mult_P̂(f)** — L5/L6/L12: "Pref(∅) = {∅}", so mult_∅(f) =
+#{η ∈ {∅} : η ∈ T_can(f)} ≡ 1 (the root's presence is L2's law, `TreeModel.root_mem`);
+on every nonempty shape it is #{classes whose fiber contains f}. Same `reads = []`
+dispatch as `Shape.CD`/`event` (`mult_empty_shape` / `mult_of_ne` below). -/
 noncomputable def Presented.mult (S : Presented p F n N m pol P) (x : Box p m) : ℕ :=
-  Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i}
+  if (P : ShapePrefix).reads = [] then 1
+  else Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i}
 
-open Classical in
-/-- [RATIFICATION REPAIR D4, 2026-07-28] **The ∅-COMPLETE event** — L5 (note ~4796): the
-EMPTY prefix η = ∅ is INCLUDED, "S(∅,⊤) = the box (§C C.0's EMPTY HISTORY clause
-T(∅, Z) := Z, at Z = ⊤: no constraint)" — the base of L6. `Presented.event` is
-PrefIdx-indexed and the History type has no empty chain (F3's displayed deviation), so at
-`reads = []` it returns ∅; THIS object dispatches on `reads = []` exactly as `Shape.CD`
-does, returning the FULL BOX there and agreeing with `event` on every nonempty shape
-(unit D14c). -/
-def Presented.eventO (S : Presented p F n N m pol P) : Set (Box p m) :=
-  if (P : ShapePrefix).reads = [] then Set.univ else S.event
+/-- Unfolding law (nonempty shape): `event` is the union of the class fibers. -/
+theorem Presented.event_of_ne (S : Presented p F n N m pol P)
+    (hne : (P : ShapePrefix).reads ≠ []) : S.event = ⋃ i, S.fiber i := by
+  rw [Presented.event, if_neg hne]
 
-open Classical in
-/-- [RATIFICATION REPAIR D4, 2026-07-28] **The ∅-COMPLETE multiplicity** — L5/L6/L12:
-"Pref(∅) = {∅}", so mult_∅(f) = #{η ∈ {∅} : η ∈ T_can(f)} ≡ 1 (the root's presence is
-L2's law, `TreeModel.root_mem`). Same `reads = []` dispatch as `Shape.CD`/`eventO`;
-agrees with `mult` on every nonempty shape (unit D14c). -/
-noncomputable def Presented.multO (S : Presented p F n N m pol P) (x : Box p m) : ℕ :=
-  if (P : ShapePrefix).reads = [] then 1 else S.mult x
+/-- Unfolding law (nonempty shape): `mult` is the incidence count. -/
+theorem Presented.mult_of_ne (S : Presented p F n N m pol P)
+    (hne : (P : ShapePrefix).reads ≠ []) (x : Box p m) :
+    S.mult x = Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i} := by
+  rw [Presented.mult, if_neg hne]
+
+/-- L5's empty base on the designated object: S(∅,⊤) = the FULL BOX. -/
+theorem Presented.event_empty_shape (S : Presented p F n N m pol P)
+    (hP : (P : ShapePrefix).reads = []) : S.event = Set.univ := by
+  rw [Presented.event, if_pos hP]
+
+/-- L5/L12's empty base on the designated object: mult_∅ ≡ 1 (Pref(∅) = {∅}). -/
+theorem Presented.mult_empty_shape (S : Presented p F n N m pol P)
+    (hP : (P : ShapePrefix).reads = []) (x : Box p m) : S.mult x = 1 := by
+  rw [Presented.mult, if_pos hP]
 
 end
 

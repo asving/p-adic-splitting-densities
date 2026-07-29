@@ -62,7 +62,8 @@ theorem D4R4_all (hne : (P : ShapePrefix).reads ≠ []) (T : Threshold p F n pol
     have hsum0 : (∑ᶠ i : PrefIdx n pol P, Nat.card ↥((T.jets N hNP).fiber i)) = 0 :=
       finsum_of_isEmpty _
     have hev0 : (T.jets N hNP).event = ∅ := by
-      simp only [Presented.event, Set.iUnion_of_empty]
+      rw [(T.jets N hNP).event_of_ne hne]
+      exact Set.iUnion_of_empty _
     refine ⟨?_, ?_⟩
     · rw [hsum0, hCD0]; ring
     · rw [hCD0, hev0]; simp

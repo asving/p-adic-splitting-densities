@@ -10,17 +10,21 @@ j₀ ≡ h⁻¹·(target) mod e, slots j₀, …, j₀+(g−1)e, prescribed digi
 note carry these lifts and no others." (note 4646–4651) + L1 (canonical-choice totality,
 kernel part (a)): "the offset-P formula returns a realizer t with w(t) = ν and the
 prescribed class … No node exists where the policy is partial." (note 4653–4667).
-SEAM RESIDUE (documented, per the charge): the CONTENT of "t IS the (S6b) offset-P-lift
-realizer at ν" needs weight and residue-reduction vocabulary (§B2-DEF/HC-1: w(t) = ν, the
-prescribed residual class, the forced slot class j₀) — NOT constructible from
-MovesD+MovesC exports. It is carried as the abstract predicate FIELD `Realizes`
-(mirroring `TreeModel`'s mem/child style), accompanied by the two here-statable laws so
-the pin is non-vacuous NOW: L1 TOTALITY at every recentering node, and GENUINENESS
-(realizers carry the finite weight w(t) = ν, so they are nonzero — the zero polynomial
-has no weight). The HC-1 wave instantiates `Realizes` with the (S6b) formula and
-discharges both laws; owner = HC-1/§B2-DEF (POL-PIN, §2 ledger).
-deps: Defs, D2a (CD_eq, for the pinned specialization).
-sketch: structure + two one-line consequences.  difficulty: easy.
+SEAM RESIDUE (documented, per the charge; NARROWED at D2″ 2026-07-29): the remaining
+§B2-DEF/HC-1 content of "t IS the (S6b) offset-P-lift realizer at ν" is the weight
+w(t) = ν and the prescribed digit VALUES — NOT constructible from MovesD+MovesC exports;
+carried as the abstract predicate FIELD `Realizes` (mirroring `TreeModel`'s mem/child
+style). FOUR here-statable laws make the pin non-vacuous and exclude the under-typed
+instantiations (Codex confirm 2026-07-29: "Realizes := t ≠ 0" obtained a pin): L1
+TOTALITY at every recentering node; GENUINENESS (finite weight ⇒ nonzero); the SUPPORT
+LAW (monomial support in ONE stride-e, length-g progression anchored in the forced class
+j₀ ≡ bezT(e,h)·γ mod e — note 4648–4650's j₀ ≡ h⁻¹·(target) mod e in corpus vocabulary);
+DETERMINISM (the digits are functions of the node data — ONE realizer per node).
+`Realizes := (t ≠ 0)` now FAILS determinism at every node (`not_realizes_bare_ne_zero`).
+The HC-1 wave instantiates `Realizes` with the (S6b) formula and discharges all four
+laws; owner = HC-1/§B2-DEF (POL-PIN, §2 ledger).
+deps: Defs (bezT), D2a (CD_eq, for the pinned specialization).
+sketch: structure + one-line consequences + the negative witness.  difficulty: easy.
 hypothesis_fields: none (the pin itself is the new hypothesis object).
 -/
 import Mathlib
@@ -58,6 +62,26 @@ structure OffsetPPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   /-- Realizers are GENUINE (note 4658: "a realizer t with w(t) = ν" — finite weight, so
   nonzero; the zero polynomial has no weight). -/
   realizes_ne_zero : ∀ (ν : Node p F) (t : Polynomial ℤ_[p]), Realizes ν t → t ≠ 0
+  /-- **SUPPORT LAW** [D2″, 2026-07-29]: the (S6b) OFFSET-P-LIFT is "the sum anchored at
+  the forced slot class j₀ ≡ h⁻¹·(target) mod e, slots j₀, …, j₀+(g−1)e, prescribed
+  digits" (note 4648–4650) — a realizer's monomial support lies in ONE arithmetic
+  progression of stride e and length g, anchored in the FORCED congruence class mod e.
+  The class, in MovesD/MovesC vocabulary: h⁻¹ mod e IS `bezT ν.e ν.h` (Node.hbez
+  `e·s + h·t = 1` gives h·t ≡ 1 mod e; `hbezCanon` pins t ∈ [0,e) — rev 14's t^B, a
+  function of (e,h) only), and the TARGET is the node's recorded total side weight
+  `ν.gam` (γ, D.3(c)'s stride argument — the same γ the shape-side `anchorTie`
+  normalizes by: e·a = s0 − bezT·γ). SEAM RESIDUE (documented): that the prescribed
+  digit VALUES sit in those slots and that w(t) = ν — §B2-DEF/HC-1 vocabulary — stays
+  inside `Realizes`; the SLOT GEOMETRY is pinned HERE. -/
+  support_forced : ∀ (ν : Node p F) (t : Polynomial ℤ_[p]), Realizes ν t →
+    ∃ j₀ : ℕ, (j₀ : ℤ) % (ν.e : ℤ) = (bezT ν.e ν.h * ν.gam) % (ν.e : ℤ) ∧
+      ∀ j ∈ t.support, ∃ k : ℕ, k < ν.g ∧ j = j₀ + k * ν.e
+  /-- **DETERMINISM** [D2″, 2026-07-29]: "the digits t_k are FUNCTIONS of the node data …
+  the policy is deterministic" (note 4653–4667, L1) — at each node the offset-P formula
+  returns THE realizer, not a realizer. This is the law that kills the under-typed
+  `Realizes ν t := t ≠ 0` instantiation (`not_realizes_bare_ne_zero` below). -/
+  realizes_unique : ∀ (ν : Node p F) (t t' : Polynomial ℤ_[p]),
+    Realizes ν t → Realizes ν t' → t = t'
 
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
@@ -68,6 +92,23 @@ already excluded `Canon := fun _ => False`; this excludes `liftOf := fun _ => 0`
 theorem OffsetPPin.lift_ne_zero {pol : CanonPolicy p F} (pin : OffsetPPin pol)
     (ν : Node p F) (hν : ν.species = ReadSpecies.recentering) : pol.liftOf ν ≠ 0 :=
   pin.realizes_ne_zero ν (pol.liftOf ν) (pin.total ν hν)
+
+/-- **NON-VACUITY RE-VERIFICATION** [D2″]: the Codex-confirm instantiation
+`Realizes ν t := t ≠ 0` ("any policy producing nonzero recentering lifts can obtain an
+OffsetPPin") now FAILS the laws: at EVERY node, no pin's `Realizes` fiber is the bare
+nonzero predicate — `realizes_unique` would force `1 = X` in ℤ_[p][X] (both are nonzero,
+i.e. both would "realize"). The support law independently over-constrains it: `1 + X^e`
+is nonzero with support {0, e} in two stride-e slots of the same class only if the
+progression admits both, and `realizes_unique` still separates it from `1`. -/
+theorem OffsetPPin.not_realizes_bare_ne_zero {pol : CanonPolicy p F}
+    (pin : OffsetPPin pol) (ν : Node p F) :
+    pin.Realizes ν ≠ fun t : Polynomial ℤ_[p] => t ≠ 0 := by
+  intro h
+  have h1 : pin.Realizes ν 1 := by rw [h]; exact one_ne_zero
+  have hX : pin.Realizes ν Polynomial.X := by rw [h]; exact Polynomial.X_ne_zero
+  have heq := pin.realizes_unique ν 1 Polynomial.X h1 hX
+  have hdeg := congrArg Polynomial.natDegree heq
+  simp [Polynomial.natDegree_one, Polynomial.natDegree_X] at hdeg
 
 /-- `CD_canonical` — the D2a class-count identity, SPECIALIZED to a pinned policy: the
 recorded consumer of W4-5. Content = `CD_eq`; the pin binder records that the note's C is
