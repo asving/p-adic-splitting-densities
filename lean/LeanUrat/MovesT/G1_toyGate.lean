@@ -1316,6 +1316,7 @@ private lemma cellA_red_winC_iff (x : Box 2 9) :
 private lemma cellA_st_tA1_splitC_iff (x : Box 2 9) :
     toyCellA (.st tA1) x = ToyCell.splitC ↔
       (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  classical
   by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
   · rw [show toyCellA (.st tA1) x = ToyCell.splitC from
       if_pos ⟨rfl, Or.inl rfl, hd⟩]
@@ -1324,20 +1325,62 @@ private lemma cellA_st_tA1_splitC_iff (x : Box 2 9) :
       if_neg (fun hc => hd hc.2.2)]
     exact iff_of_false (by simp) hd
 
+/- [E8 ADJUDICATION 2026-07-30, per-site cell keying: the toy presents/state_cell
+helpers are RE-KEYED to the site's OWN event (`siteCellEvent es ν`, ν the site's last
+node) — the toy events are UNCHANGED as sets (the toys are the e* = 0 degenerate
+form: sibling leaf events coincide), so every censused integer survives verbatim. -/
+
+private lemma lastNode_tA1 : tA1.lastNode = toyHead := rfl
+
+private lemma lastNode_tA2a : tA2a.lastNode = toyLeafA := by
+  simp [History.lastNode, tA2a, History.snoc]
+
+private lemma lastNode_tA2b : tA2b.lastNode = toyLeafB := by
+  simp [History.lastNode, tA2b, History.snoc]
+
+/-- the head node's branch stratum at the `.red` entrance is the 6-pin window
+stratum (per-site keyed form of the former `cellA_red_winC_iff` consumption). -/
+private lemma branchA_red_toyHead_iff (x : Box 2 9) :
+    toyHead ∈ toyBranchA (toyCellA (.red toyG Polynomial.X) x) ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.winC from if_pos ⟨rfl, hd⟩]
+    exact iff_of_true (Finset.mem_singleton_self _) hd
+  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.junk from by
+      simp only [toyCellA]; rw [if_neg (fun hc => hd hc.2), if_neg hd]]
+    exact iff_of_false (by simp [toyBranchA]) hd
+
+/-- a leaf node's branch stratum at the `.st tA1` entrance is the 6-pin stratum. -/
+private lemma branchA_st_leaf_iff (ν : Node 2 (ZMod 2))
+    (hν : ν = toyLeafA ∨ ν = toyLeafB) (x : Box 2 9) :
+    ν ∈ toyBranchA (toyCellA (.st tA1) x) ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  classical
+  by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+  · rw [show toyCellA (.st tA1) x = ToyCell.splitC from
+      if_pos ⟨rfl, Or.inl rfl, hd⟩]
+    refine iff_of_true ?_ hd
+    rcases hν with rfl | rfl
+    · exact Finset.mem_insert_self _ _
+    · exact Finset.mem_insert_of_mem (Finset.mem_singleton_self _)
+  · rw [show toyCellA (.st tA1) x = ToyCell.junk from
+      if_neg (fun hc => hd hc.2.2)]
+    exact iff_of_false (by simp [toyBranchA]) hd
+
 private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
-    (EntSt.red toyG Polynomial.X) ToyCell.winC rootLocus windowFresh := by
+    (EntSt.red toyG Polynomial.X) toyHead rootLocus windowFresh := by
   constructor
   · ext x
     constructor
     · rintro ⟨hroot, hcell⟩
-      have hd := (cellA_red_winC_iff x).mp hcell
+      have hd := (branchA_red_toyHead_iff x).mp hcell
       exact ⟨(rootLocus_iff x).mpr ⟨hd.1, hd.2.1⟩,
         (windowFresh_iff x).mpr
           ⟨hd.2.2.1, hd.2.2.2.1, hd.2.2.2.2.1, hd.2.2.2.2.2⟩⟩
     · rintro ⟨hsol, hsat⟩
       have h01 := (rootLocus_iff x).mp hsol
       have h25 := (windowFresh_iff x).mp hsat
-      exact ⟨(rootCell_iff x).mpr h01, (cellA_red_winC_iff x).mpr
+      exact ⟨(rootCell_iff x).mpr h01, (branchA_red_toyHead_iff x).mpr
         ⟨h01.1, h01.2, h25.1, h25.2.1, h25.2.2.1, h25.2.2.2⟩⟩
   · ext x
     constructor
@@ -1346,17 +1389,18 @@ private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
     · intro h
       exact (rootCell_iff x).mpr ((rootLocus_iff x).mp h)
 
-private lemma presents_split : SitePresents toyModel toyCA toyχ
-    (EntSt.st tA1) ToyCell.splitC stateLocus emptyFresh := by
+private lemma presents_split (ν : Node 2 (ZMod 2))
+    (hν : ν = toyLeafA ∨ ν = toyLeafB) : SitePresents toyModel toyCA toyχ
+    (EntSt.st tA1) ν stateLocus emptyFresh := by
   constructor
   · ext x
     constructor
     · rintro ⟨hst, hcell⟩
-      exact ⟨(stateLocus_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell),
+      exact ⟨(stateLocus_iff x).mpr ((branchA_st_leaf_iff ν hν x).mp hcell),
         fun cl hcl => by simp [emptyFresh] at hcl⟩
     · rintro ⟨hsol, -⟩
       have hd := (stateLocus_iff x).mp hsol
-      exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
+      exact ⟨(memA_tA1_iff x).mpr hd, (branchA_st_leaf_iff ν hν x).mpr hd⟩
   · ext x
     constructor
     · intro h
@@ -1365,34 +1409,38 @@ private lemma presents_split : SitePresents toyModel toyCA toyχ
       exact (memA_tA1_iff x).mpr ((stateLocus_iff x).mp h)
 
 private lemma state_cell_tA1 : stateEvent toyModel (some tA1)
-    = cellEventE toyModel toyCA toyχ (EntSt.red toyG Polynomial.X) ToyCell.winC := by
+    = siteCellEvent toyModel toyCA toyχ (EntSt.red toyG Polynomial.X) toyHead := by
   ext x
   constructor
   · intro h
     have hd := (memA_tA1_iff x).mp h
-    exact ⟨(rootCell_iff x).mpr ⟨hd.1, hd.2.1⟩, (cellA_red_winC_iff x).mpr hd⟩
+    exact ⟨(rootCell_iff x).mpr ⟨hd.1, hd.2.1⟩, (branchA_red_toyHead_iff x).mpr hd⟩
   · rintro ⟨-, hcell⟩
-    exact (memA_tA1_iff x).mpr ((cellA_red_winC_iff x).mp hcell)
+    exact (memA_tA1_iff x).mpr ((branchA_red_toyHead_iff x).mp hcell)
 
 private lemma state_cell_tA2a : stateEvent toyModel (some tA2a)
-    = cellEventE toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
+    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) toyLeafA := by
   ext x
   constructor
   · intro h
     have hd := (memA_tA2a_iff x).mp h
-    exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
+    exact ⟨(memA_tA1_iff x).mpr hd,
+      (branchA_st_leaf_iff toyLeafA (Or.inl rfl) x).mpr hd⟩
   · rintro ⟨-, hcell⟩
-    exact (memA_tA2a_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
+    exact (memA_tA2a_iff x).mpr
+      ((branchA_st_leaf_iff toyLeafA (Or.inl rfl) x).mp hcell)
 
 private lemma state_cell_tA2b : stateEvent toyModel (some tA2b)
-    = cellEventE toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
+    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) toyLeafB := by
   ext x
   constructor
   · intro h
     have hd := (memA_tA2b_iff x).mp h
-    exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
+    exact ⟨(memA_tA1_iff x).mpr hd,
+      (branchA_st_leaf_iff toyLeafB (Or.inr rfl) x).mpr hd⟩
   · rintro ⟨-, hcell⟩
-    exact (memA_tA2b_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
+    exact (memA_tA2b_iff x).mpr
+      ((branchA_st_leaf_iff toyLeafB (Or.inr rfl) x).mp hcell)
 
 end ToyLedgerHelpers
 
@@ -1418,24 +1466,24 @@ noncomputable def toyLedgerA : SiteLedger toyTreeA toyModel toyCA toyχ := by
       presents := by
         intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
-        · rw [if_pos rfl, if_pos rfl, if_pos rfl]
+        · rw [if_pos rfl, if_pos rfl, lastNode_tA1]
           exact presents_tA1
         · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a),
-            if_neg (Ne.symm tA1_ne_tA2a)]
-          exact presents_split
+            lastNode_tA2a]
+          exact presents_split toyLeafA (Or.inl rfl)
         · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b),
-            if_neg (Ne.symm tA1_ne_tA2b)]
-          exact presents_split
+            lastNode_tA2b]
+          exact presents_split toyLeafB (Or.inr rfl)
       sides := fun _ => 1
       hsides := fun _ _ => le_rfl
       state_cell := by
-        intro H hH h1
+        intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
-        · rw [if_pos rfl, if_pos rfl]
+        · rw [if_pos rfl, lastNode_tA1]
           exact state_cell_tA1
-        · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a)]
+        · rw [if_neg (Ne.symm tA1_ne_tA2a), lastNode_tA2a]
           exact state_cell_tA2a
-        · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b)]
+        · rw [if_neg (Ne.symm tA1_ne_tA2b), lastNode_tA2b]
           exact state_cell_tA2b
       splitAt := fun H hH h2 => absurd h2 (by omega)
       hsplit_k := fun H hH h2 => absurd h2 (by omega)
@@ -2109,20 +2157,34 @@ private lemma card_entB : Nat.card ↥(entEvent toyModelB toyχ (.st tB1)) = 64 
   norm_num at hmass
   exact hmass
 
+/-- [E8 ADJUDICATION 2026-07-30] the site node's branch stratum at `.st tB1` — the
+per-site keyed event carries the SAME censused integers (16 on the {x0…x4} joint
+stratum: the site's own 2-side window pins x3, x4 inside the 64-count entrance). -/
+private lemma branchB_st_leaf_iff (x : Box 2 9) :
+    toyLeafA ∈ toyBranchB (toyCellB (.st tB1) x) ↔ (x 3 = 0 ∧ x 4 = 0) := by
+  classical
+  by_cases hd : x 3 = 0 ∧ x 4 = 0
+  · rw [show toyCellB (.st tB1) x = ToyCell.splitC from
+      (cellB_st_tB1_splitC_iff x).mpr hd]
+    exact iff_of_true (Finset.mem_insert_self _ _) hd
+  · rw [show toyCellB (.st tB1) x = ToyCell.junk from
+      if_neg (fun hc => hd ⟨hc.2.1, hc.2.2⟩)]
+    exact iff_of_false (by simp [toyBranchB]) hd
+
 private lemma card_cellB :
-    Nat.card ↥(cellEventE toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC) = 16 := by
-  have hs : cellEventE toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC
+    Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) toyLeafA) = 16 := by
+  have hs : siteCellEvent toyModelB toyCAB toyχ (.st tB1) toyLeafA
       = {x : Box 2 9 | cellLocusB.IsSolution x} := by
     ext x
     constructor
     · rintro ⟨hent, hcell⟩
       have h012 := (memB_tB1_iff x).mp hent
-      have h34 := (cellB_st_tB1_splitC_iff x).mp hcell
+      have h34 := (branchB_st_leaf_iff x).mp hcell
       exact (cellLocusB_iff x).mpr ⟨h012.1, h012.2.1, h012.2.2, h34.1, h34.2⟩
     · intro h
       obtain ⟨h0, h1, h2, h3, h4⟩ := (cellLocusB_iff x).mp h
       exact ⟨(memB_tB1_iff x).mpr ⟨h0, h1, h2⟩,
-        (cellB_st_tB1_splitC_iff x).mpr ⟨h3, h4⟩⟩
+        (branchB_st_leaf_iff x).mpr ⟨h3, h4⟩⟩
   rw [hs]
   have hmass : cellLocusB.mass = 2 ^ (9 - cellLocusB.numPinned) :=
     LeanUrat.MovesC.C0_digitSystemMass cellLocusB
@@ -2140,12 +2202,15 @@ private lemma sideExpB_sum : (∑ j : Fin 2, toySplitB.sideExp j) = 2 := by
 end ToyJcHelpers
 
 /-- record 2's gate — CARRIER B: the two-side JC-multi identity at the split site,
-`2⁴·2² = 2⁶` on the enumerated events (entEvent = the {x0,x1,x2} stratum = 64,
-cellEventE = the joint {x0…x4} stratum = 16, sideExp 1 + 1 off the item-3 `toyFdB`
-re-pin). -/
+`2⁴·2² = 2⁶` on the enumerated events (entEvent = the {x0,x1,x2} stratum = 64, the
+SITE's own event = the {x0…x4} stratum = 16, sideExp 1 + 1 off the item-3 `toyFdB`
+re-pin). RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying):
+`JCmultiAt` now prices the site's OWN event (`siteCellEvent es ν`, ν the multi-side
+site's node = `tB2c.lastNode = toyLeafA`) — the toy's censused integers are UNCHANGED
+(the site is an only child at its entrance, where the old and new keyings coincide). -/
 theorem toy_jcmulti_site :
-    JCmultiAt toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC toySplitB := by
-  show Nat.card ↥(cellEventE toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC)
+    JCmultiAt toyModelB toyCAB toyχ (.st tB1) toyLeafA toySplitB := by
+  show Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) toyLeafA)
       * 2 ^ (∑ j : Fin 2, toySplitB.sideExp j)
     = Nat.card ↥(entEvent toyModelB toyχ (.st tB1))
   rw [card_cellB, card_entB, sideExpB_sum]
@@ -2153,17 +2218,16 @@ theorem toy_jcmulti_site :
 
 /-- record 6's gate — CARRIER A: the one-side state↔cell tie at the leaf site.
 STATEMENT REPAIR (pin-repair pass, 2026-07-30, charge item 4): the E-phase cell
-transcribed the SITE as `(EntSt.red toyG X)` — false (a `.red` state's cell is never
-`splitC`, `cellA_red_ne_splitC`, so that event is ∅ while `stateEvent tA2a` isn't).
-The blueprint's displayed statement (MOVEST blueprint §T-G1, `toy_state_cell`
-bracket) is `cellEventE toyModel toyCA toyχ (toyLedgerA.parentSt tA2a)
-(toyLedgerA.cellAt tA2a)`; at the built ledger `parentSt tA2a` evaluates by
-`if_neg (tA2a ≠ tA1)` to `EntSt.st tA1` and `cellAt tA2a` to `.splitC` — the
-`.st tA1` form below, per the charge. -/
+transcribed the SITE as `(EntSt.red toyG X)` — false; repaired to `.st tA1` per the
+charge. RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying): the tie
+now equates the state event with the SITE's OWN event (`siteCellEvent (parentSt)
+(lastNode)`; `tA2a.lastNode = toyLeafA`) — the toy set is UNCHANGED (the {x0…x5}
+stratum; the toys are the e* = 0 degenerate form where sibling events coincide, which
+under per-site keying is merely a coincidence of DIFFERENT sites' strata, no longer a
+forced collapse). -/
 theorem toy_state_cell :
     stateEvent toyModel (some tA2a)
-      = cellEventE toyModel toyCA toyχ (EntSt.st tA1)
-          ToyCell.splitC :=
+      = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) toyLeafA :=
   state_cell_tA2a
 
 /-- records 5+7's gate — the SEPARATE 𝔽₄-type carrier (§0 record #7's two-node

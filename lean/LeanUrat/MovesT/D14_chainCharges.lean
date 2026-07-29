@@ -104,7 +104,7 @@ private theorem chain_charge_aux (Tr : VTree p F) (T : TreeModel p F n N m pol)
     have hsides1 : L.sides H = 1 := hone H hselfmem
     have hspec : SpectatorFor (L.freshCoords H) (Set.univ : Set (Box p m)) := by
       intro x x' _; simp
-    have hstep := fiber_seg_step T CA Tr χ L H hH hsides1 Set.univ hspec
+    have hstep := fiber_seg_step T CA Tr χ L H hH Set.univ hspec
     rw [Set.inter_univ, Set.inter_univ] at hstep
     rcases Nat.lt_or_ge H.nodes.length 2 with hlt | hge
     · have hlen1 : H.nodes.length = 1 := by

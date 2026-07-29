@@ -73,12 +73,45 @@ theorem part2_row {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     · split_ifs
       · simp
       · simpa using hμnn ch
-  -- GAP: summability of the marked/surplus row. Holds in the real instance
-  -- because `emult ≤ branching degree ≤ n` (bounded); NOT derivable from the
-  -- abstract hypotheses here (emult is an arbitrary ℕ-valued field). See notes.
+  -- Summability of the marked/surplus row. The surplus is supported only on the
+  -- CONTINUING (`.inl`) cells; there `markWeight = emult`. The continuing digit-cell
+  -- carrier is FINITE — `moveOf_bij` identifies its base `{d // src = τ}` with the
+  -- Fintype `Σ β, Move τ β`, and `DCellO` is a Fintype (`finDO`) — so `emult` is
+  -- BOUNDED by its sup `K`, and the surplus is dominated by `K · μcellH` (summable).
   have hsurp_sum : Summable (fun ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D =>
       ((markWeight V ch.1 - 1 : ℕ) : ℝ) * μcellH V X x ch.1 ch.2) := by
-    sorry
+    classical
+    -- the continuing-cell base `{d // src = τ}` is finite (via `moveOf_bij`).
+    haveI : Fintype S.Cell := S.finC
+    haveI : ∀ β, Fintype (S.Move τ β) := S.finM τ
+    haveI hfinSub : Finite {d : MoveData n C //
+        V.toCtsCells.toStepCells.symm d.src = τ} :=
+      Finite.of_equiv _ (Equiv.ofBijective _ (V.toCtsCells.moveOf_bij τ)).symm
+    haveI : Fintype {d : MoveData n C //
+        V.toCtsCells.toStepCells.symm d.src = τ} := Fintype.ofFinite _
+    haveI : ∀ d : {d : MoveData n C // V.toCtsCells.toStepCells.symm d.src = τ},
+        Fintype (V.DCellO d.1.s d.1.m d.1.o d.1.α) := fun d => V.finDO _ _ _ _
+    haveI : Fintype (Σ d : {d : MoveData n C //
+        V.toCtsCells.toStepCells.symm d.src = τ},
+        V.DCellO d.1.s d.1.m d.1.o d.1.α) := by infer_instance
+    -- the uniform bound `K` on `emult` over the (finite) continuing cells.
+    obtain ⟨K, hK⟩ : ∃ K : ℕ, ∀ c : DCellAll V τ, markWeight V c ≤ K := by
+      obtain ⟨K, hKub⟩ := (Set.finite_range (fun a : (Σ d : {d : MoveData n C //
+          V.toCtsCells.toStepCells.symm d.src = τ},
+          V.DCellO d.1.s d.1.m d.1.o d.1.α) => V.emult a.2)).bddAbove
+      refine ⟨K, ?_⟩
+      rintro (⟨d, cc⟩ | ⟨v, d, cc⟩)
+      · simp only [markWeight]
+        exact hKub (Set.mem_range_self (⟨d, cc⟩ : (Σ d : {d : MoveData n C //
+          V.toCtsCells.toStepCells.symm d.src = τ},
+          V.DCellO d.1.s d.1.m d.1.o d.1.α)))
+      · simp only [markWeight]; exact Nat.zero_le _
+    refine Summable.of_nonneg_of_le (fun ch => ?_) (fun ch => ?_)
+      (hμsum.mul_left (K : ℝ))
+    · exact mul_nonneg (Nat.cast_nonneg _) (hμnn ch)
+    · have hb : ((markWeight V ch.1 - 1 : ℕ) : ℝ) ≤ (K : ℝ) :=
+        Nat.cast_le.mpr (le_trans (Nat.sub_le _ 1) (hK ch.1))
+      exact mul_le_mul_of_nonneg_right hb (hμnn ch)
   -- per-summand identity: marked + terminal = raw + surplus.
   have hpt : ∀ ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D,
       (markWeight V ch.1 : ℝ) * μcellH V X x ch.1 ch.2

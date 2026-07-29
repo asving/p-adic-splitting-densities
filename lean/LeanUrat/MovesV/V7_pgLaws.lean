@@ -79,6 +79,17 @@ theorem polygeom_count_laws {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     scount_val := ?_
     tcount_deg := fun e τ o => (RB.tgP e τ o).degT_le.trans_eq (RB.tg_degT e τ o)
     scount_deg := fun e τ o => (RB.tgP e τ o).degS_le.trans_eq (RB.tg_degS e τ o) }⟩
+  -- BLOCKED (statement gap, both fields; prover fleet batch 2 + B6 re-verified):
+  -- the goal `Nonempty (PolyGeomLaws T M RB)` quantifies over an ARBITRARY RB,
+  -- but every hypothesis (hVA/U/hTie/hE) mentions only V/C/S/TE/D — nothing ties
+  -- RB.tgP's countT/countS to anything.  (1) tcount_val needs countT integer-
+  -- valued at pools (RatBurdens pins only the PRODUCT via tg_interp + degrees);
+  -- no choice of tCount can close it.  (2) scount_val is tCount-free and
+  -- REFUTABLE: rescale countS ↦ 2·countS, geom ↦ geom/2 — val, degrees, and all
+  -- RatBurdens laws survive, the cell-census equality breaks.  Repair requires
+  -- adjudication: wiring hypotheses pinning RB.tgP's factors (e.g. countT.eval
+  -- ∈ ℕ at pools via ValA.tbl_count + hEmptyT at the BUILT V7-5a burden, and
+  -- countS = Σ cellP over the outcome fiber), or restating at that instance.
   · sorry
   · sorry
 

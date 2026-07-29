@@ -106,22 +106,30 @@ theorem AofTr_shape_const (Tr₀ Tr : VTree p F) (T : TreeModel p F n N m pol)
   · intro a ha
     rw [hshape ⟨a, Tr.hfin.mem_toFinset.mp ha⟩]
 
-/-- E10b: the per-shape law. -/
+/-- E10b: the per-shape law. RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site
+cell keying — same row changes as `treeExp`): `CA` is the FULL `CellAssign` (T-E8's
+root step consumes T-E5's interface), `hjcm` keys the per-site `JCmultiAt`, and the
+site-level (SIB) row `hsibT` (`SibCountAt` per class member) joins the premise row. -/
 theorem perShape_law (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
-    (CA : CellData p F n N m pol T) (χ : Fin n → Fin m)
-    (hχ : Function.Injective χ) (hrc : RootCellsOf T CA χ)
-    (trackOf : Node p F → Polynomial (ZMod p))
-    (hred : RedCellPartition T CA χ trackOf)
-    (hsib : SibCount T CA χ)
+    (χ : Fin n → Fin m) (trackOf : Node p F → Polynomial (ZMod p))
+    (CA : CellAssign p F n N m pol T χ trackOf)
+    (hχ : Function.Injective χ) (hrc : RootCellsOf T CA.toCellData χ)
+    (hred : RedCellPartition T CA.toCellData χ trackOf)
+    (hsib : SibCount T CA.toCellData χ)
     (hns₀ : NsFree Tr₀) (hreal₀ : Realizes T χ Tr₀)
-    (L₀ : SiteLedger Tr₀ T CA χ)
-    (Lat : ∀ Tr ∈ shapeClass Tr₀ T χ, SiteLedger Tr T CA χ)
-    (scat : ∀ Tr h, TreeScaffold Tr T CA χ (Lat Tr h) trackOf)
+    (L₀ : SiteLedger Tr₀ T CA.toCellData χ)
+    (Lat : ∀ Tr ∈ shapeClass Tr₀ T χ, SiteLedger Tr T CA.toCellData χ)
+    (scat : ∀ Tr h, TreeScaffold Tr T CA.toCellData χ (Lat Tr h) trackOf)
     (hjcm : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ),
-      ∀ H (hH : H ∈ multiSites Tr T CA χ (Lat Tr h))
+      ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ (Lat Tr h))
         (h2 : 2 ≤ (Lat Tr h).sides H),
-        JCmultiAt T CA χ ((Lat Tr h).parentSt H) ((Lat Tr h).cellAt H)
+        JCmultiAt T CA.toCellData χ ((Lat Tr h).parentSt H) H.lastNode
           ((Lat Tr h).splitAt H hH.1 h2))
+    (hsibT : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ),
+      ∀ H (hH : H ∈ Tr.chains),
+        2 ≤ (CA.toCellData.branchSetOf ((Lat Tr h).cellAt H)).card →
+        SibCountAt T CA.toCellData H ((Lat Tr h).cellAt H)
+          ((scat Tr h).splitFrame H hH).S)
     (hdict : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ), ∀ H ∈ Tr.chains,
       (Lat Tr h).siteExp H = shapeExp (shapeOfH H n) n)
     (hdict₀ : ∀ H ∈ Tr₀.chains, L₀.siteExp H = shapeExp (shapeOfH H n) n) :
@@ -140,10 +148,11 @@ theorem perShape_law (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
     have heq : ShapeEquiv n Tr Tr₀ := hmem.1
     have hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H := hmem.2.1
     have hreal : Realizes T χ Tr := hmem.2.2
-    have hE8 := treeExp Tr T CA χ hχ hrc trackOf hred hsib hreal (Lat Tr hmem)
-      (scat Tr hmem) (hjcm Tr hmem) hdet
+    have hE8 := treeExp Tr T χ trackOf CA hχ hrc hred hsib hreal (Lat Tr hmem)
+      (scat Tr hmem) (hjcm Tr hmem) (hsibT Tr hmem) hdet
     have hA : AofTr Tr (Lat Tr hmem) = AofTr Tr₀ L₀ :=
-      AofTr_shape_const Tr₀ Tr T CA χ heq L₀ (Lat Tr hmem) (hdict Tr hmem) hdict₀
+      AofTr_shape_const Tr₀ Tr T CA.toCellData χ heq L₀ (Lat Tr hmem)
+        (hdict Tr hmem) hdict₀
     rw [← hA]
     exact hE8
   rw [Finset.sum_mul, Finset.sum_congr rfl key, Finset.sum_const, hcard, smul_eq_mul]

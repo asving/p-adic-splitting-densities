@@ -1,0 +1,486 @@
+E0 PROBE RESULTS -- run 2026-07-30 (charge P1-P3)
+scripts: escape_probe_a.py / escape_probe_b.py / resum_n3_seal.py
+kernel source: MOVES_2026-07-24.md \SS S-RESUM S1 + V.6 rosters = MovesV/DefsGate.lean
+
+##### escape_probe_a.py #####
+========================================================================
+0. Symbolic guards: the resummed rows are honest probability rows
+========================================================================
+[PASS] m_w2 summand: a = (q-1)/q, ratio = q^-3 (geometric)  
+[PASS] m_w2 geometric resummation a/(1-r) = (q-1)q^2/(q^3-1)  
+[PASS] blk2 row sum = 1 identically  
+[PASS] blk3 row sum = 1 identically  
+[PASS] root vector sum = 1 identically  
+[PASS] kappa_2 = 1/(q^2+q+1)  
+[PASS] det(I-K_2) = q(q+1)/(q^2+q+1)  
+[PASS] det(I-K_3) = (q^6-q)/(q^6-1)  
+========================================================================
+1. Sealed pool values (RESUM-n3 S3/S4) + tame extensions p = 5, 7
+========================================================================
+[PASS] q0=2: (K_2, det, K_3, det, J) match sealed  (Fraction(1, 7), Fraction(6, 7), Fraction(1, 63), Fraction(62, 63), Fraction(8, 441))
+[PASS] q0=3: (K_2, det, K_3, det, J) match sealed  (Fraction(1, 13), Fraction(12, 13), Fraction(1, 364), Fraction(363, 364), Fraction(27, 4732))
+[PASS] q0=4: (K_2, det, K_3, det, J) match sealed  (Fraction(1, 21), Fraction(20, 21), Fraction(1, 1365), Fraction(1364, 1365), Fraction(64, 28665))
+       q0=5 (recorded): K_2=1/31, K_3=1/3906, J=125/121086
+       q0=7 (recorded): K_2=1/57, K_3=1/19608, J=343/1117656
+========================================================================
+2. Active-cell scan vs the sealed S3 entry-vanishing list
+========================================================================
+[PASS] p=2: vanishing cells == sealed list  dead=['A.3dist', 'A.dblsimple', 'C_even.dist', 'D_even.dist', 'm2.o_split', 'root.m_H3']
+[PASS] p=3: vanishing cells == sealed list  dead=['A.3dist']
+[PASS] p=5: vanishing cells == sealed list  dead=[]
+[PASS] p=7: vanishing cells == sealed list  dead=[]
+========================================================================
+3. THE REFUTER: SCC scan + closed-class test, per (p, n)
+========================================================================
+   p=2 n=2 SCC ['blk2']: in-class row mass {'blk2': '1/7'} -> open (row deficit > 0)
+[PASS] p=2 n=2: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/7 < 1; exits: blk2: term=6/7, split=0
+   p=2 n=3 SCC ['blk2']: in-class row mass {'blk2': '1/7'} -> open (row deficit > 0)
+   p=2 n=3 SCC ['blk3']: in-class row mass {'blk3': '1/63'} -> open (row deficit > 0)
+[PASS] p=2 n=3: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/7 < 1; exits: blk2: term=6/7, split=0; blk3: term=142/147, split=8/441
+   p=3 n=2 SCC ['blk2']: in-class row mass {'blk2': '1/13'} -> open (row deficit > 0)
+[PASS] p=3 n=2: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/13 < 1; exits: blk2: term=12/13, split=0
+   p=3 n=3 SCC ['blk2']: in-class row mass {'blk2': '1/13'} -> open (row deficit > 0)
+   p=3 n=3 SCC ['blk3']: in-class row mass {'blk3': '1/364'} -> open (row deficit > 0)
+[PASS] p=3 n=3: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/13 < 1; exits: blk2: term=12/13, split=0; blk3: term=1173/1183, split=27/4732
+   p=5 n=2 SCC ['blk2']: in-class row mass {'blk2': '1/31'} -> open (row deficit > 0)
+[PASS] p=5 n=2: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/31 < 1; exits: blk2: term=30/31, split=0
+   p=5 n=3 SCC ['blk2']: in-class row mass {'blk2': '1/31'} -> open (row deficit > 0)
+   p=5 n=3 SCC ['blk3']: in-class row mass {'blk3': '1/3906'} -> open (row deficit > 0)
+[PASS] p=5 n=3: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/31 < 1; exits: blk2: term=30/31, split=0; blk3: term=20155/20181, split=125/121086
+   p=7 n=2 SCC ['blk2']: in-class row mass {'blk2': '1/57'} -> open (row deficit > 0)
+[PASS] p=7 n=2: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/57 < 1; exits: blk2: term=56/57, split=0
+   p=7 n=3 SCC ['blk2']: in-class row mass {'blk2': '1/57'} -> open (row deficit > 0)
+   p=7 n=3 SCC ['blk3']: in-class row mass {'blk3': '1/19608'} -> open (row deficit > 0)
+[PASS] p=7 n=3: NO closed class (E0 not refuted at this pool)  max A-row mass rho(A) <= 1/57 < 1; exits: blk2: term=56/57, split=0; blk3: term=139657/139707, split=343/1117656
+========================================================================
+ESCAPE-PROBE-A VERDICT: ALL PASS -- no closed class at any tested pool; E0 UNREFUTED (and still OPEN: per-pool q0 = p^delta quantifier untouched)
+EXIT=0 for escape_probe_a
+
+##### escape_probe_b.py #####
+========================================================================
+B1. Exact kernel decay A^k 1 vs kappa^k (p in {2,3,5,7}, n in {2,3}, k<=8)
+========================================================================
+[PASS] p=2 n=2: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/5764801'}
+[PASS] p=2 n=2: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=2 n=3: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/5764801', 'blk3': '1/248155780267521'}
+[PASS] p=2 n=3: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=3 n=2: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/815730721'}
+[PASS] p=3 n=2: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=3 n=3: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/815730721', 'blk3': '1/308184696497866080256'}
+[PASS] p=3 n=3: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=5 n=2: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/852891037441'}
+[PASS] p=5 n=2: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=5 n=3: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/852891037441', 'blk3': '1/54182359265112786485056962816'}
+[PASS] p=5 n=3: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=7 n=2: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/111429157112001'}
+[PASS] p=7 n=2: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+[PASS] p=7 n=3: A^k 1 == kappa^k per type, strictly decreasing, k=1..8  k=8: {'blk2': '1/111429157112001', 'blk3': '1/21850751900245681510943223831330816'}
+[PASS] p=7 n=3: no stabilization (kappa^8 < kappa^4 * kappa^2)  
+========================================================================
+B2. Sealed depth partials T_k (RESUM-n3 S4) re-derived from the recursions
+========================================================================
+[PASS] p=2: T_k == sealed, k=1..8  T_8=18381903272153/18381909649446
+[PASS] p=2: T_k increasing, 1 - T_k -> 0  
+[PASS] p=3: T_k == sealed, k=1..5  T_5=171161719679/171163102656
+[PASS] p=3: T_k increasing, 1 - T_k -> 0  
+========================================================================
+B3. Independent blk2 digit census (exact boxes): strata + kappa_2^k bracket
+========================================================================
+[PASS] p=2 blk2 M=10: all 21 in-precision first-read stratum counts exact  
+[PASS] p=2 blk2: bracket still_k/tot <= kappa_2^k <= (still_k+unres_k)/tot, k=1..8  k=1: 37440/262144 <= 1/7 <= 37472/262144
+[PASS] p=2 blk2: census still_k strictly decreasing to 0-or-unresolved  
+       p=2 still_k: [37440, 5312, 704, 64, 0, 0, 0, 0],  unres_k: [32, 160, 352, 480, 512, 512, 512, 512]
+[PASS] p=3 blk2 M=7: all 14 in-precision first-read stratum counts exact  
+[PASS] p=3 blk2: bracket still_k/tot <= kappa_2^k <= (still_k+unres_k)/tot, k=1..8  k=1: 40878/531441 <= 1/13 <= 40905/531441
+[PASS] p=3 blk2: census still_k strictly decreasing to 0-or-unresolved  
+       p=3 still_k: [40878, 3132, 216, 0, 0, 0, 0, 0],  unres_k: [27, 189, 513, 729, 729, 729, 729, 729]
+========================================================================
+B4. Independent blk3 digit census: stratum-A cells + kappa_3^k bracket
+========================================================================
+[PASS] p=2 blk3 M=7: all 10 in-precision stratum-A cell counts exact  L=1 census row [0, 4096, 8192, 0, 4096]
+[PASS] p=2 blk3: bracket still_k/tot <= kappa_3^k <= (still_k+unres_k)/tot, k=1..8  k=1: 4160/262144 <= 1/63 <= 4192/262144
+       p=2 still_k: [4160, 64, 0, 0, 0, 0, 0, 0],  unres_k: [32, 96, 128, 128, 128, 128, 128, 128]
+[PASS] p=3 blk3 M=5: all 5 in-precision stratum-A cell counts exact  L=1 census row [0, 4374, 5832, 1458, 1458]
+[PASS] p=3 blk3: bracket still_k/tot <= kappa_3^k <= (still_k+unres_k)/tot, k=1..8  k=1: 1458/531441 <= 1/364 <= 1539/531441
+       p=3 still_k: [1458, 0, 0, 0, 0, 0, 0, 0],  unres_k: [81, 243, 243, 243, 243, 243, 243, 243]
+========================================================================
+ESCAPE-PROBE-B VERDICT: ALL PASS -- every sealed finite-depth prediction confirmed; every still-in-block row decays (consistency class only: this cannot prove E0, which stays OPEN per-pool).
+EXIT=0 for escape_probe_b
+
+##### resum_n3_seal.py #####
+========================================================================
+R1. The MOVESS n = 2 gate instance (kcol q^-3)
+========================================================================
+[PASS] part1: kcol + term(1,1)^2 + term(1,2) = 1  
+[PASS] det(1-K) = (q-1)(q^2+q+1)/q^3  
+[PASS] beta_(1,2) = (q+1)/(q^2+q+1)  
+[PASS] beta_(1,1)^2 = q^2/(q^2+q+1)  
+[PASS] beta sum = 1  
+[PASS] q=2: (kcol, beta_(1,2), beta_(1,1)^2) = ('1/8', '3/7', '4/7')  got ('1/8', '3/7', '4/7'); E0 entry 1/8 < 1: True
+[PASS] q=3: (kcol, beta_(1,2), beta_(1,1)^2) = ('1/27', '4/13', '9/13')  got ('1/27', '4/13', '9/13'); E0 entry 1/27 < 1: True
+[PASS] q=4: (kcol, beta_(1,2), beta_(1,1)^2) = ('1/64', '5/21', '16/21')  got ('1/64', '5/21', '16/21'); E0 entry 1/64 < 1: True
+[PASS] q=5: (kcol, beta_(1,2), beta_(1,1)^2) = ('1/125', '6/31', '25/31')  got ('1/125', '6/31', '25/31'); E0 entry 1/125 < 1: True
+========================================================================
+R2. RESUM-n3 kernel/det/J pool table (S1/S3)
+========================================================================
+[PASS] K_2 = 1/(q^2+q+1); det(I-K_2) = (q^2+q)/(q^2+q+1)  
+[PASS] det(I-K_3) = (q^6-q)/(q^6-1)  
+[PASS] q0=2: (K_2, det, K_3, det, J) sealed  
+[PASS] q0=3: (K_2, det, K_3, det, J) sealed  
+[PASS] q0=4: (K_2, det, K_3, det, J) sealed  
+========================================================================
+R3. The five R_sigma re-derived bottom-up from the S1 strata
+========================================================================
+[PASS] beta_2 = (1/(2(q+1)), 1/(2(q+1)), q/(q+1)); sum 1  
+[PASS] odd-p complete-the-square law: beta_2(ram) = P(v(delta) odd) = q/(q+1)  
+[PASS] blk3 mass checksum: sum t3 + J + kappa_3 = 1  
+[PASS] beta_3 checksum: sum = 1  
+[PASS] P5 = q^5+2q^4+2q^3+2q^2+2q+1 = (q+1) P4  
+[PASS] R_111 == sealed closed form  q**3*(q**2 - q + 1)/(6*(q + 1)*(q**4 + q**3 + q**2 + q + 1))
+[PASS] R_112 == sealed closed form  q**3*(q**2 + q + 1)/(2*(q + 1)*(q**4 + q**3 + q**2 + q + 1))
+[PASS] R_13 == sealed closed form  q**3*(q + 1)/(3*(q**4 + q**3 + q**2 + q + 1))
+[PASS] R_1121 == sealed closed form  q*(q**3 + q + 1)/((q + 1)*(q**4 + q**3 + q**2 + q + 1))
+[PASS] R_31 == sealed closed form  (q**2 + 1)/(q**4 + q**3 + q**2 + q + 1)
+[PASS] checksum: Sum R_sigma = 1 identically  
+[PASS] moment cross-check (Kac-Rice): 3 R_111 + R_112 + R_1121 = q/(q+1)  
+[PASS] q -> oo limits = (1/6, 1/2, 1/3, 0, 0)  
+[PASS] q=2: four-prime row sealed; sum = 1  
+[PASS] q=3: four-prime row sealed; sum = 1  
+[PASS] q=5: four-prime row sealed; sum = 1  
+[PASS] q=7: four-prime row sealed; sum = 1  
+========================================================================
+R4. Gate SQUEEZE-n3 -- the statable arithmetic (S7 corrected integers)
+    [NOT the gate seal; the gate's own census must be PARI-exhaustive]
+========================================================================
+[PASS] p=2 N=1: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 4
+[PASS] p=2 N=1: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=2: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 12
+[PASS] p=2 N=2: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=3: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 48
+[PASS] p=2 N=3: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=4: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 192
+[PASS] p=2 N=4: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=5: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 704
+[PASS] p=2 N=5: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=6: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 2816
+[PASS] p=2 N=6: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=7: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 11264
+[PASS] p=2 N=7: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=2 N=8: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 44032
+[PASS] p=2 N=8: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=3 N=1: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 9
+[PASS] p=3 N=1: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=3 N=2: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 63
+[PASS] p=3 N=2: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=3 N=3: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 567
+[PASS] p=3 N=3: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=3 N=4: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 5103
+[PASS] p=3 N=4: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+[PASS] p=3 N=5: checksum row Sum decided + undecided = p^3N; total sealed  undecided = 44469
+[PASS] p=3 N=5: monotone-from-below decided_sigma <= R_sigma p^3N (all 5)  
+   -- the 25 gate bracket pairs (upper leg EXACT; any overshoot falsifies SQ.2):
+[PASS] gate (2,4) sigma=111: decided 128 <= floor(R p^3N) = 176  
+[PASS] gate (2,4) sigma=112: decided 1184 <= floor(R p^3N) = 1233  
+[PASS] gate (2,4) sigma=13: decided 1056 <= floor(R p^3N) = 1057  
+[PASS] gate (2,4) sigma=1121: decided 896 <= floor(R p^3N) = 968  
+[PASS] gate (2,4) sigma=31: decided 640 <= floor(R p^3N) = 660  
+[PASS] gate (2,4): (L-meas) aggregate legs (all 5 sigma)  
+[PASS] gate (2,6) sigma=111: decided 10496 <= floor(R p^3N) = 11275  
+[PASS] gate (2,6) sigma=112: decided 78080 <= floor(R p^3N) = 78925  
+[PASS] gate (2,6) sigma=13: decided 67584 <= floor(R p^3N) = 67650  
+[PASS] gate (2,6) sigma=1121: decided 60928 <= floor(R p^3N) = 62012  
+[PASS] gate (2,6) sigma=31: decided 42240 <= floor(R p^3N) = 42281  
+[PASS] gate (2,6): (L-meas) aggregate legs (all 5 sigma)  
+[PASS] gate (2,8) sigma=111: decided 708608 <= floor(R p^3N) = 721600  
+[PASS] gate (2,8) sigma=112: decided 5038080 <= floor(R p^3N) = 5051204  
+[PASS] gate (2,8) sigma=13: decided 4329472 <= floor(R p^3N) = 4329604  
+[PASS] gate (2,8) sigma=1121: decided 3951616 <= floor(R p^3N) = 3968803  
+[PASS] gate (2,8) sigma=31: decided 2705408 <= floor(R p^3N) = 2706002  
+[PASS] gate (2,8): (L-meas) aggregate legs (all 5 sigma)  
+[PASS] gate (3,4) sigma=111: decided 32886 <= floor(R p^3N) = 34587  
+[PASS] gate (3,4) sigma=112: decided 190998 <= floor(R p^3N) = 192702  
+[PASS] gate (3,4) sigma=13: decided 158112 <= floor(R p^3N) = 158114  
+[PASS] gate (3,4) sigma=1121: decided 100602 <= floor(R p^3N) = 102115  
+[PASS] gate (3,4) sigma=31: decided 43740 <= floor(R p^3N) = 43920  
+[PASS] gate (3,4): (L-meas) aggregate legs (all 5 sigma)  
+[PASS] gate (3,5) sigma=111: decided 927288 <= floor(R p^3N) = 933864  
+[PASS] gate (3,5) sigma=112: decided 5196312 <= floor(R p^3N) = 5202961  
+[PASS] gate (3,5) sigma=13: decided 4269024 <= floor(R p^3N) = 4269096  
+[PASS] gate (3,5) sigma=1121: decided 2726460 <= floor(R p^3N) = 2757124  
+[PASS] gate (3,5) sigma=31: decided 1185354 <= floor(R p^3N) = 1185860  
+[PASS] gate (3,5): (L-meas) aggregate legs (all 5 sigma)  
+   -- (L-thy) leg: env*(N) > 1 at every census N (SX.5(iii)) -- TOOTHLESS at
+      census range; displayed for shape only, NO check run, nothing claimed.
+========================================================================
+RESUM-N3-SEAL VERDICT: ALL PASS -- every sealed number re-verified; the
+SQUEEZE-n3 statable arithmetic holds on the S7 integers. (Conditionality
+unchanged: E0/X.3/the nine CL-5 inputs remain OPEN; brackets SUPPORT,
+never prove -- plan SS7 gate-epistemics.)
+EXIT=0 for resum_n3_seal
+
+
+
+##### l1_boundary_enum.py ##### (PROBE-6, appended run 2026-07-29)
+charge: D4R.0-K part (a) BOUNDARY ENUMERATION -- L1 offset-P totality at the
+boundary cases (minimal eligible nu, g = 1 single slot, a > 0 anchors).
+kernel source: MOVES_2026-07-24.md L1 (4653-4671) + SSB2-DEF (S6b') (2436-2455)
++ pass-11 finding 1 (2893-2900). Formula-level totality gate: SUPPORT only,
+L1 stays OPEN (the every-realizable-prefix quantifier is not enumerable).
+========================================================================
+1. STAGE-2 GRID (recursion bottoms at the base), p in {2,3,5}
+========================================================================
+[PASS] p=2 (e,h,g)=(1,1,1) psi=[1, 1]: 2 cases, W in [2,3], |F'^x|=1
+[PASS] p=2 (e,h,g)=(2,1,1) psi=[1, 1]: 4 cases, W in [3,6], |F'^x|=1
+[PASS] p=2 (e,h,g)=(3,1,1) psi=[1, 1]: 6 cases, W in [4,9], |F'^x|=1
+[PASS] p=2 (e,h,g)=(2,3,1) psi=[1, 1]: 4 cases, W in [7,10], |F'^x|=1
+[PASS] p=2 (e,h,g)=(1,1,2) psi=[1, 1, 1]: 6 cases, W in [3,4], |F'^x|=3
+[PASS] p=2 (e,h,g)=(2,1,2) psi=[1, 1, 1]: 12 cases, W in [5,8], |F'^x|=3
+[PASS] p=2 (e,h,g)=(3,2,2) psi=[1, 1, 1]: 18 cases, W in [13,18], |F'^x|=3
+[PASS] p=2 (e,h,g)=(2,1,3) psi=[1, 0, 1, 1]: 28 cases, W in [7,10], |F'^x|=7
+[PASS] p=2 (e,h,g)=(2,1,3) psi=[1, 1, 0, 1]: 28 cases, W in [7,10], |F'^x|=7
+[PASS] p=3 (e,h,g)=(1,1,1) psi=[1, 1]: 4 cases, W in [2,3], |F'^x|=2
+[PASS] p=3 (e,h,g)=(1,1,1) psi=[2, 1]: 4 cases, W in [2,3], |F'^x|=2
+[PASS] p=3 (e,h,g)=(2,1,1) psi=[1, 1]: 8 cases, W in [3,6], |F'^x|=2
+[PASS] p=3 (e,h,g)=(2,1,1) psi=[2, 1]: 8 cases, W in [3,6], |F'^x|=2
+[PASS] p=3 (e,h,g)=(3,1,1) psi=[1, 1]: 12 cases, W in [4,9], |F'^x|=2
+[PASS] p=3 (e,h,g)=(3,1,1) psi=[2, 1]: 12 cases, W in [4,9], |F'^x|=2
+[PASS] p=3 (e,h,g)=(2,3,1) psi=[1, 1]: 8 cases, W in [7,10], |F'^x|=2
+[PASS] p=3 (e,h,g)=(2,3,1) psi=[2, 1]: 8 cases, W in [7,10], |F'^x|=2
+[PASS] p=3 (e,h,g)=(1,1,2) psi=[1, 0, 1]: 16 cases, W in [3,4], |F'^x|=8
+[PASS] p=3 (e,h,g)=(1,1,2) psi=[2, 1, 1]: 16 cases, W in [3,4], |F'^x|=8
+[PASS] p=3 (e,h,g)=(1,1,2) psi=[2, 2, 1]: 16 cases, W in [3,4], |F'^x|=8
+[PASS] p=3 (e,h,g)=(2,1,2) psi=[1, 0, 1]: 32 cases, W in [5,8], |F'^x|=8
+[PASS] p=3 (e,h,g)=(2,1,2) psi=[2, 1, 1]: 32 cases, W in [5,8], |F'^x|=8
+[PASS] p=3 (e,h,g)=(2,1,2) psi=[2, 2, 1]: 32 cases, W in [5,8], |F'^x|=8
+[PASS] p=3 (e,h,g)=(3,2,2) psi=[1, 0, 1]: 48 cases, W in [13,18], |F'^x|=8
+[PASS] p=3 (e,h,g)=(3,2,2) psi=[2, 1, 1]: 48 cases, W in [13,18], |F'^x|=8
+[PASS] p=3 (e,h,g)=(3,2,2) psi=[2, 2, 1]: 48 cases, W in [13,18], |F'^x|=8
+[PASS] p=3 (e,h,g)=(2,1,3) psi=[1, 0, 2, 1]: 104 cases, W in [7,10], |F'^x|=26
+[PASS] p=3 (e,h,g)=(2,1,3) psi=[1, 1, 2, 1]: 104 cases, W in [7,10], |F'^x|=26
+[PASS] p=3 (e,h,g)=(2,1,3) psi=[1, 2, 0, 1]: 104 cases, W in [7,10], |F'^x|=26
+[PASS] p=3 (e,h,g)=(2,1,3) psi=[1, 2, 1, 1]: 104 cases, W in [7,10], |F'^x|=26
+[PASS] p=5 (e,h,g)=(1,1,1) psi=[1, 1]: 8 cases, W in [2,3], |F'^x|=4
+[PASS] p=5 (e,h,g)=(1,1,1) psi=[2, 1]: 8 cases, W in [2,3], |F'^x|=4
+[PASS] p=5 (e,h,g)=(1,1,1) psi=[3, 1]: 8 cases, W in [2,3], |F'^x|=4
+[PASS] p=5 (e,h,g)=(1,1,1) psi=[4, 1]: 8 cases, W in [2,3], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,1,1) psi=[1, 1]: 16 cases, W in [3,6], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,1,1) psi=[2, 1]: 16 cases, W in [3,6], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,1,1) psi=[3, 1]: 16 cases, W in [3,6], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,1,1) psi=[4, 1]: 16 cases, W in [3,6], |F'^x|=4
+[PASS] p=5 (e,h,g)=(3,1,1) psi=[1, 1]: 24 cases, W in [4,9], |F'^x|=4
+[PASS] p=5 (e,h,g)=(3,1,1) psi=[2, 1]: 24 cases, W in [4,9], |F'^x|=4
+[PASS] p=5 (e,h,g)=(3,1,1) psi=[3, 1]: 24 cases, W in [4,9], |F'^x|=4
+[PASS] p=5 (e,h,g)=(3,1,1) psi=[4, 1]: 24 cases, W in [4,9], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,3,1) psi=[1, 1]: 16 cases, W in [7,10], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,3,1) psi=[2, 1]: 16 cases, W in [7,10], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,3,1) psi=[3, 1]: 16 cases, W in [7,10], |F'^x|=4
+[PASS] p=5 (e,h,g)=(2,3,1) psi=[4, 1]: 16 cases, W in [7,10], |F'^x|=4
+[PASS] p=5 (e,h,g)=(1,1,2) psi=[1, 1, 1]: 48 cases, W in [3,4], |F'^x|=24
+[PASS] p=5 (e,h,g)=(1,1,2) psi=[1, 4, 1]: 48 cases, W in [3,4], |F'^x|=24
+[PASS] p=5 (e,h,g)=(1,1,2) psi=[2, 0, 1]: 48 cases, W in [3,4], |F'^x|=24
+[PASS] p=5 (e,h,g)=(1,1,2) psi=[2, 1, 1]: 48 cases, W in [3,4], |F'^x|=24
+[PASS] p=5 (e,h,g)=(2,1,2) psi=[1, 1, 1]: 96 cases, W in [5,8], |F'^x|=24
+[PASS] p=5 (e,h,g)=(2,1,2) psi=[1, 4, 1]: 96 cases, W in [5,8], |F'^x|=24
+[PASS] p=5 (e,h,g)=(2,1,2) psi=[2, 0, 1]: 96 cases, W in [5,8], |F'^x|=24
+[PASS] p=5 (e,h,g)=(2,1,2) psi=[2, 1, 1]: 96 cases, W in [5,8], |F'^x|=24
+[PASS] p=5 (e,h,g)=(3,2,2) psi=[1, 1, 1]: 144 cases, W in [13,18], |F'^x|=24
+[PASS] p=5 (e,h,g)=(3,2,2) psi=[1, 4, 1]: 144 cases, W in [13,18], |F'^x|=24
+[PASS] p=5 (e,h,g)=(3,2,2) psi=[2, 0, 1]: 144 cases, W in [13,18], |F'^x|=24
+[PASS] p=5 (e,h,g)=(3,2,2) psi=[2, 1, 1]: 144 cases, W in [13,18], |F'^x|=24
+[PASS] p=5 (e,h,g)=(2,1,3) psi=[1, 0, 1, 1]: 496 cases, W in [7,10], |F'^x|=124
+[PASS] p=5 (e,h,g)=(2,1,3) psi=[1, 0, 2, 1]: 496 cases, W in [7,10], |F'^x|=124
+[PASS] p=5 (e,h,g)=(2,1,3) psi=[1, 1, 0, 1]: 496 cases, W in [7,10], |F'^x|=124
+[PASS] p=5 (e,h,g)=(2,1,3) psi=[1, 1, 3, 1]: 496 cases, W in [7,10], |F'^x|=124
+========================================================================
+2. STAGE-3 GRID (one genuine recursion step), p in {2,3,5}
+========================================================================
+[PASS] p=2 S1=(2,1,1) psi1=[1, 1] S2=(2,5,1) psi2=[(1,), (1,)]: 4 cases, W3 in [11,14], |F3^x|=1
+[PASS] p=2 S1=(2,1,1) psi1=[1, 1] S2=(1,3,2) psi2=[(1,), (1,), (1,)]: 6 cases, W3 in [7,8], |F3^x|=3
+[PASS] p=2 S1=(2,1,1) psi1=[1, 1] S2=(2,5,2) psi2=[(1,), (1,), (1,)]: 12 cases, W3 in [21,24], |F3^x|=3
+[PASS] p=2 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,1) psi2=[(0, 1), (1, 0)]: 12 cases, W3 in [11,14], |F3^x|=3
+[PASS] p=2 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,1) psi2=[(1, 0), (1, 0)]: 12 cases, W3 in [11,14], |F3^x|=3
+[PASS] p=2 S1=(1,1,2) psi1=[1, 1, 1] S2=(1,3,2) psi2=[(0, 1), (0, 1), (1, 0)]: 30 cases, W3 in [7,8], |F3^x|=15
+[PASS] p=2 S1=(1,1,2) psi1=[1, 1, 1] S2=(1,3,2) psi2=[(0, 1), (1, 0), (1, 0)]: 30 cases, W3 in [7,8], |F3^x|=15
+[PASS] p=2 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 60 cases, W3 in [21,24], |F3^x|=15
+[PASS] p=2 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,2) psi2=[(0, 1), (1, 0), (1, 0)]: 60 cases, W3 in [21,24], |F3^x|=15
+[PASS] p=2 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,1) psi2=[(0, 1), (1, 0)]: 12 cases, W3 in [19,22], |F3^x|=3
+[PASS] p=2 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,1) psi2=[(1, 0), (1, 0)]: 12 cases, W3 in [19,22], |F3^x|=3
+[PASS] p=2 S1=(2,1,2) psi1=[1, 1, 1] S2=(1,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 30 cases, W3 in [11,12], |F3^x|=15
+[PASS] p=2 S1=(2,1,2) psi1=[1, 1, 1] S2=(1,5,2) psi2=[(0, 1), (1, 0), (1, 0)]: 30 cases, W3 in [11,12], |F3^x|=15
+[PASS] p=2 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,2) psi2=[(0, 1), (0, 1), (1, 0)]: 60 cases, W3 in [37,40], |F3^x|=15
+[PASS] p=2 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,2) psi2=[(0, 1), (1, 0), (1, 0)]: 60 cases, W3 in [37,40], |F3^x|=15
+[PASS] p=3 S1=(2,1,1) psi1=[1, 1] S2=(2,5,1) psi2=[(1,), (1,)]: 8 cases, W3 in [11,14], |F3^x|=2
+[PASS] p=3 S1=(2,1,1) psi1=[1, 1] S2=(2,5,1) psi2=[(2,), (1,)]: 8 cases, W3 in [11,14], |F3^x|=2
+[PASS] p=3 S1=(2,1,1) psi1=[1, 1] S2=(1,3,2) psi2=[(1,), (0,), (1,)]: 16 cases, W3 in [7,8], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[1, 1] S2=(1,3,2) psi2=[(2,), (1,), (1,)]: 16 cases, W3 in [7,8], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[1, 1] S2=(2,5,2) psi2=[(1,), (0,), (1,)]: 32 cases, W3 in [21,24], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[1, 1] S2=(2,5,2) psi2=[(2,), (1,), (1,)]: 32 cases, W3 in [21,24], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[2, 1] S2=(2,5,1) psi2=[(1,), (1,)]: 8 cases, W3 in [11,14], |F3^x|=2
+[PASS] p=3 S1=(2,1,1) psi1=[2, 1] S2=(2,5,1) psi2=[(2,), (1,)]: 8 cases, W3 in [11,14], |F3^x|=2
+[PASS] p=3 S1=(2,1,1) psi1=[2, 1] S2=(1,3,2) psi2=[(1,), (0,), (1,)]: 16 cases, W3 in [7,8], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[2, 1] S2=(1,3,2) psi2=[(2,), (1,), (1,)]: 16 cases, W3 in [7,8], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[2, 1] S2=(2,5,2) psi2=[(1,), (0,), (1,)]: 32 cases, W3 in [21,24], |F3^x|=8
+[PASS] p=3 S1=(2,1,1) psi1=[2, 1] S2=(2,5,2) psi2=[(2,), (1,), (1,)]: 32 cases, W3 in [21,24], |F3^x|=8
+[PASS] p=3 S1=(1,1,2) psi1=[1, 0, 1] S2=(2,5,1) psi2=[(0, 1), (1, 0)]: 32 cases, W3 in [11,14], |F3^x|=8
+[PASS] p=3 S1=(1,1,2) psi1=[1, 0, 1] S2=(2,5,1) psi2=[(0, 2), (1, 0)]: 32 cases, W3 in [11,14], |F3^x|=8
+[PASS] p=3 S1=(1,1,2) psi1=[1, 0, 1] S2=(1,3,2) psi2=[(0, 1), (0, 1), (1, 0)]: 160 cases, W3 in [7,8], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[1, 0, 1] S2=(1,3,2) psi2=[(0, 1), (0, 2), (1, 0)]: 160 cases, W3 in [7,8], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[1, 0, 1] S2=(2,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 320 cases, W3 in [21,24], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[1, 0, 1] S2=(2,5,2) psi2=[(0, 1), (0, 2), (1, 0)]: 320 cases, W3 in [21,24], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[2, 1, 1] S2=(2,5,1) psi2=[(0, 1), (1, 0)]: 32 cases, W3 in [11,14], |F3^x|=8
+[PASS] p=3 S1=(1,1,2) psi1=[2, 1, 1] S2=(2,5,1) psi2=[(0, 2), (1, 0)]: 32 cases, W3 in [11,14], |F3^x|=8
+[PASS] p=3 S1=(1,1,2) psi1=[2, 1, 1] S2=(1,3,2) psi2=[(0, 1), (0, 0), (1, 0)]: 160 cases, W3 in [7,8], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[2, 1, 1] S2=(1,3,2) psi2=[(0, 1), (0, 1), (1, 0)]: 160 cases, W3 in [7,8], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[2, 1, 1] S2=(2,5,2) psi2=[(0, 1), (0, 0), (1, 0)]: 320 cases, W3 in [21,24], |F3^x|=80
+[PASS] p=3 S1=(1,1,2) psi1=[2, 1, 1] S2=(2,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 320 cases, W3 in [21,24], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[1, 0, 1] S2=(2,9,1) psi2=[(0, 1), (1, 0)]: 32 cases, W3 in [19,22], |F3^x|=8
+[PASS] p=3 S1=(2,1,2) psi1=[1, 0, 1] S2=(2,9,1) psi2=[(0, 2), (1, 0)]: 32 cases, W3 in [19,22], |F3^x|=8
+[PASS] p=3 S1=(2,1,2) psi1=[1, 0, 1] S2=(1,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 160 cases, W3 in [11,12], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[1, 0, 1] S2=(1,5,2) psi2=[(0, 1), (0, 2), (1, 0)]: 160 cases, W3 in [11,12], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[1, 0, 1] S2=(2,9,2) psi2=[(0, 1), (0, 1), (1, 0)]: 320 cases, W3 in [37,40], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[1, 0, 1] S2=(2,9,2) psi2=[(0, 1), (0, 2), (1, 0)]: 320 cases, W3 in [37,40], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[2, 1, 1] S2=(2,9,1) psi2=[(0, 1), (1, 0)]: 32 cases, W3 in [19,22], |F3^x|=8
+[PASS] p=3 S1=(2,1,2) psi1=[2, 1, 1] S2=(2,9,1) psi2=[(0, 2), (1, 0)]: 32 cases, W3 in [19,22], |F3^x|=8
+[PASS] p=3 S1=(2,1,2) psi1=[2, 1, 1] S2=(1,5,2) psi2=[(0, 1), (0, 0), (1, 0)]: 160 cases, W3 in [11,12], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[2, 1, 1] S2=(1,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 160 cases, W3 in [11,12], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[2, 1, 1] S2=(2,9,2) psi2=[(0, 1), (0, 0), (1, 0)]: 320 cases, W3 in [37,40], |F3^x|=80
+[PASS] p=3 S1=(2,1,2) psi1=[2, 1, 1] S2=(2,9,2) psi2=[(0, 1), (0, 1), (1, 0)]: 320 cases, W3 in [37,40], |F3^x|=80
+[PASS] p=5 S1=(2,1,1) psi1=[1, 1] S2=(2,5,1) psi2=[(1,), (1,)]: 16 cases, W3 in [11,14], |F3^x|=4
+[PASS] p=5 S1=(2,1,1) psi1=[1, 1] S2=(2,5,1) psi2=[(2,), (1,)]: 16 cases, W3 in [11,14], |F3^x|=4
+[PASS] p=5 S1=(2,1,1) psi1=[1, 1] S2=(1,3,2) psi2=[(1,), (1,), (1,)]: 48 cases, W3 in [7,8], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[1, 1] S2=(1,3,2) psi2=[(1,), (4,), (1,)]: 48 cases, W3 in [7,8], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[1, 1] S2=(2,5,2) psi2=[(1,), (1,), (1,)]: 96 cases, W3 in [21,24], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[1, 1] S2=(2,5,2) psi2=[(1,), (4,), (1,)]: 96 cases, W3 in [21,24], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[2, 1] S2=(2,5,1) psi2=[(1,), (1,)]: 16 cases, W3 in [11,14], |F3^x|=4
+[PASS] p=5 S1=(2,1,1) psi1=[2, 1] S2=(2,5,1) psi2=[(2,), (1,)]: 16 cases, W3 in [11,14], |F3^x|=4
+[PASS] p=5 S1=(2,1,1) psi1=[2, 1] S2=(1,3,2) psi2=[(1,), (1,), (1,)]: 48 cases, W3 in [7,8], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[2, 1] S2=(1,3,2) psi2=[(1,), (4,), (1,)]: 48 cases, W3 in [7,8], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[2, 1] S2=(2,5,2) psi2=[(1,), (1,), (1,)]: 96 cases, W3 in [21,24], |F3^x|=24
+[PASS] p=5 S1=(2,1,1) psi1=[2, 1] S2=(2,5,2) psi2=[(1,), (4,), (1,)]: 96 cases, W3 in [21,24], |F3^x|=24
+[PASS] p=5 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,1) psi2=[(0, 1), (1, 0)]: 96 cases, W3 in [11,14], |F3^x|=24
+[PASS] p=5 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,1) psi2=[(0, 2), (1, 0)]: 96 cases, W3 in [11,14], |F3^x|=24
+[PASS] p=5 S1=(1,1,2) psi1=[1, 1, 1] S2=(1,3,2) psi2=[(0, 1), (0, 2), (1, 0)]: 1248 cases, W3 in [7,8], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 1, 1] S2=(1,3,2) psi2=[(0, 1), (0, 3), (1, 0)]: 1248 cases, W3 in [7,8], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,2) psi2=[(0, 1), (0, 2), (1, 0)]: 2496 cases, W3 in [21,24], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 1, 1] S2=(2,5,2) psi2=[(0, 1), (0, 3), (1, 0)]: 2496 cases, W3 in [21,24], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 4, 1] S2=(2,5,1) psi2=[(0, 1), (1, 0)]: 96 cases, W3 in [11,14], |F3^x|=24
+[PASS] p=5 S1=(1,1,2) psi1=[1, 4, 1] S2=(2,5,1) psi2=[(0, 2), (1, 0)]: 96 cases, W3 in [11,14], |F3^x|=24
+[PASS] p=5 S1=(1,1,2) psi1=[1, 4, 1] S2=(1,3,2) psi2=[(0, 1), (0, 1), (1, 0)]: 1248 cases, W3 in [7,8], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 4, 1] S2=(1,3,2) psi2=[(0, 1), (0, 4), (1, 0)]: 1248 cases, W3 in [7,8], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 4, 1] S2=(2,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 2496 cases, W3 in [21,24], |F3^x|=624
+[PASS] p=5 S1=(1,1,2) psi1=[1, 4, 1] S2=(2,5,2) psi2=[(0, 1), (0, 4), (1, 0)]: 2496 cases, W3 in [21,24], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,1) psi2=[(0, 1), (1, 0)]: 96 cases, W3 in [19,22], |F3^x|=24
+[PASS] p=5 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,1) psi2=[(0, 2), (1, 0)]: 96 cases, W3 in [19,22], |F3^x|=24
+[PASS] p=5 S1=(2,1,2) psi1=[1, 1, 1] S2=(1,5,2) psi2=[(0, 1), (0, 2), (1, 0)]: 1248 cases, W3 in [11,12], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 1, 1] S2=(1,5,2) psi2=[(0, 1), (0, 3), (1, 0)]: 1248 cases, W3 in [11,12], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,2) psi2=[(0, 1), (0, 2), (1, 0)]: 2496 cases, W3 in [37,40], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 1, 1] S2=(2,9,2) psi2=[(0, 1), (0, 3), (1, 0)]: 2496 cases, W3 in [37,40], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 4, 1] S2=(2,9,1) psi2=[(0, 1), (1, 0)]: 96 cases, W3 in [19,22], |F3^x|=24
+[PASS] p=5 S1=(2,1,2) psi1=[1, 4, 1] S2=(2,9,1) psi2=[(0, 2), (1, 0)]: 96 cases, W3 in [19,22], |F3^x|=24
+[PASS] p=5 S1=(2,1,2) psi1=[1, 4, 1] S2=(1,5,2) psi2=[(0, 1), (0, 1), (1, 0)]: 1248 cases, W3 in [11,12], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 4, 1] S2=(1,5,2) psi2=[(0, 1), (0, 4), (1, 0)]: 1248 cases, W3 in [11,12], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 4, 1] S2=(2,9,2) psi2=[(0, 1), (0, 1), (1, 0)]: 2496 cases, W3 in [37,40], |F3^x|=624
+[PASS] p=5 S1=(2,1,2) psi1=[1, 4, 1] S2=(2,9,2) psi2=[(0, 1), (0, 4), (1, 0)]: 2496 cases, W3 in [37,40], |F3^x|=624
+========================================================================
+3. NEGATIVE CONTROLS (the gate has teeth)
+========================================================================
+[PASS] NC1: corrupted slot class j0+1 leaves the zero class at every summand (p=3,(e,h,g)=(2,1,2),W=5)
+[PASS] NC2: independent reader distinguishes classes (read (0, 1) = tau != tau')
+[PASS] NC3: (I-aug) violation (h2=3 < e2*e1h1g1=4) trips the recursion guard
+========================================================================
+4. TALLIES (the named L1 boundary cases, all enumerated)
+========================================================================
+  total realizer cases:              40378
+  (min-nu) minimal eligible W cases: 13006
+  (g=1) single-slot cases:           1508
+  (j0>0) offset genuinely engaged:   14366
+  (a>0) anchored targets checked:    80756  (tau = zbar^a u, a in {1,2})
+  trivial unit group (p=2, g=1):     16
+
+VERDICT: L1 BOUNDARY ENUMERATION PASSES — the offset-P realizer exists
+with the prescribed weight and class at EVERY enumerated boundary case
+(minimal eligible nu, every forced slot class incl. j0 > 0, g = 1
+single slot at both stages, a > 0 anchored targets, one genuine
+recursion step through stage-2 (S6b), all classes covered at every
+eligible weight). SUPPORT for kernel D4R.0-K part (a); L1 stays OPEN
+(finite enumeration cannot discharge the every-realizable-prefix
+quantifier).
+EXIT=0 for l1_boundary_enum
+
+
+##### state_track_probes.py #####
+########################################################################
+# state_track_probes.py run 2026-07-29 14:24:02 — PROBE-4 (STATE-probe-2 + TRACK-probe)
+########################################################################
+========================================================================
+CENSUS 1: STATE-probe-2 (sealed gate case_stateprobe2_gate.py re-run; seal: CASE_STATEPROBE2_SEALED_PREDICTIONS.md)
+========================================================================
+gate exit=2, wall 0s
+[FINDING] SP2-gate-ran  stderr tail: Installed 1 package in 29ms
+error: Querying Python at `/data/.cache/uv/archive-v0/X9WY4qkjzdeoIkodD3H30/bin/python3` failed with exit status exit status: 127
+
+[stderr]
+/data/.cache/uv/archive-v0/X9WY4qkjzdeoIkodD3H30/bin/python3: error while loading shared libraries: $ORIGIN/../lib/libpython3.11.so.1.0: DST not allowed in SUID/SGID programs
+
+
+========================================================================
+CENSUS 2: TRACK-probe ((TRK-RULE) counts on the STALL-probe boxes; candidate-refuter for L(3)=9, L(4)=16)
+========================================================================
+box A (cubic 2^24, N=8) done 1s; count histogram {0: 4194304, 1: 7072768, 2: 4859264, 3: 650880}
+  leaf row: {'111': 650880, '12': 5032320, '1c': 2705408, '1r1': 3927040, '3': 4329472, 'UND': 132096}
+  max-count witness (a2,a1,a0,t1,t2,t3,leaf): (0, 1, 2, 1, 2, 0, '111')
+[PASS] TP-A1 box partition checksum (sum = 2^24)  total=16777216
+[PASS] TP-A2 candidate L(3)=9 unrefuted (max track count <= 9)  max=3 (report-only max incl. base frame: 4)
+[PASS] TP-A3 zero (t3) ladder restarts / strict-climb breaks (D.10)  breaks=0
+[PASS] TP-A4 oracle consistency (decided leaves == padic_types.cubic_type_monic, 200k sample)  compared=198486 mismatches=0
+box B (quartic psi^2-cylinder 2^26, N=10) done 5s; count histogram {1: 60424192, 2: 6684672}
+  leaf row: {'DEEP': 65536, 'INERT': 6684672, 'RAM': 53673984, 'SPLIT': 3342336, 'TS': 3342336}
+  first-read row: {'DEEP': 4096, 'INERT': 6389760, 'RAM': 51130368, 'RS1(r=1)': 1048576, 'RS1(r=2)': 1048576, 'RS1(r=3)': 1048576, 'RS2(r=1)': 16384, 'RS2(r=2)': 16384, 'RS2(r=3)': 16384, 'SPLIT': 3194880, 'TS': 3194880}
+  max-count witness (a0,a1,a2,a3,t1,t2,t3,leaf): (16, 0, 4, 64, 1, 1, 0, 'TS')
+[PASS] TP-B1 cylinder checksum (sum = 2^26)  total=67108864
+[PASS] TP-B2 candidate L(4)=16 unrefuted (max track count <= 16)  max=2 (report-only max incl. base frame: 3)
+[PASS] TP-B3 zero (t3) ladder restarts / strict-climb breaks (D.10)  breaks=0
+[PASS] TP-B4 first-read RS1(r) entry masses = 2^20 each (state_probe |S_r| tie)  {'RS1(r=1)': 1048576, 'RS1(r=3)': 1048576, 'RS1(r=2)': 1048576}
+
+OVERALL: 9 checks, 1 FINDING(s); wall 9s
+TRACK-probe scope reminder: candidate-refuter only; TRACK-COUNT and its charging derivation remain OPEN (CL-7) regardless.
+
+
+##### state_track_probes.py #####
+########################################################################
+# state_track_probes.py run 2026-07-29 14:26:28 — PROBE-4 (STATE-probe-2 + TRACK-probe)
+########################################################################
+========================================================================
+CENSUS 1: STATE-probe-2 (sealed gate case_stateprobe2_gate.py re-run; seal: CASE_STATEPROBE2_SEALED_PREDICTIONS.md)
+========================================================================
+gate exit=0, wall 21s
+[PASS] SP2-arith (closed-form division == literal polydiv + reconstruction, 500/box)  unit_test_fails=[]
+[PASS] SP2-P1 REP identity (same-type laws identical; the vtx-VARYING 6-way group + type-A 3-way + h'=2 pair)  differing cells=0
+[PASS] SP2-P2 sealed per-tau rows (uniform 2^17 x 1024 / 2^19 x 256)  off-uniform cells=0
+[PASS] SP2-P3 sizes 2^27 + floors + vtx transport, 0 exceptions  floor_viol=0 vtx_viol=0
+[PASS] SP2-P4 nu1 root-box dictionary + named-bucket row (incl. RS1(r) = 2^21 entry masses)  bad=0
+[PASS] SP2-P5 loop-position invariance (h'=1 marginal == h'=2 word, floor-aligned)  differing cells=0
+  [report-only] SP2-P6 cross-type differing cells: 0 (NON-falsifying); Galois relabel layer: 0
+[PASS] SP2-VERDICT (sealed rule §3)  PASS
+
+========================================================================
+CENSUS 2: TRACK-probe ((TRK-RULE) counts on the STALL-probe boxes; candidate-refuter for L(3)=9, L(4)=16)
+========================================================================
+box A (cubic 2^24, N=8) done 1s; count histogram {0: 4194304, 1: 7072768, 2: 4859264, 3: 650880}
+  leaf row: {'111': 650880, '12': 5032320, '1c': 2705408, '1r1': 3927040, '3': 4329472, 'UND': 132096}
+  max-count witness (a2,a1,a0,t1,t2,t3,leaf): (8, 1, 22, 1, 2, 0, '111')
+[PASS] TP-A1 box partition checksum (sum = 2^24)  total=16777216
+[PASS] TP-A2 candidate L(3)=9 unrefuted (max track count <= 9)  max=3 (report-only max incl. base frame: 4)
+[PASS] TP-A3 zero (t3) ladder restarts / strict-climb breaks (D.10)  breaks=0
+[PASS] TP-A4 oracle consistency (decided leaves == padic_types.cubic_type_monic, 200k sample)  compared=198486 mismatches=0
+box B (quartic psi^2-cylinder 2^26, N=10) done 5s; count histogram {1: 60424192, 2: 6684672}
+  leaf row: {'DEEP': 65536, 'INERT': 6684672, 'RAM': 53673984, 'SPLIT': 3342336, 'TS': 3342336}
+  first-read row: {'DEEP': 4096, 'INERT': 6389760, 'RAM': 51130368, 'RS1(r=1)': 1048576, 'RS1(r=2)': 1048576, 'RS1(r=3)': 1048576, 'RS2(r=1)': 16384, 'RS2(r=2)': 16384, 'RS2(r=3)': 16384, 'SPLIT': 3194880, 'TS': 3194880}
+  max-count witness (a0,a1,a2,a3,t1,t2,t3,leaf): (16, 0, 4, 112, 1, 1, 0, 'TS')
+[PASS] TP-B1 cylinder checksum (sum = 2^26)  total=67108864
+[PASS] TP-B2 candidate L(4)=16 unrefuted (max track count <= 16)  max=2 (report-only max incl. base frame: 3)
+[PASS] TP-B3 zero (t3) ladder restarts / strict-climb breaks (D.10)  breaks=0
+[PASS] TP-B4 first-read RS1(r) entry masses = 2^20 each (state_probe |S_r| tie)  {'RS1(r=1)': 1048576, 'RS1(r=3)': 1048576, 'RS1(r=2)': 1048576}
+
+OVERALL: 15 checks, 0 FINDING(s); wall 29s
+TRACK-probe scope reminder: candidate-refuter only; TRACK-COUNT and its charging derivation remain OPEN (CL-7) regardless.

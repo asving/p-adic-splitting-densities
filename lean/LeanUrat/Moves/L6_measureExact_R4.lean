@@ -21,13 +21,25 @@ Counting endpoint: a stratum cut by `k` unitriangular digit equations has cardin
 the transport stratum ↔ digit-solution set at each level, the `p^{D·n−k}` count (L2.P6ii),
 the ratio arithmetic, AND the exact-length-`Nslots` development of every nonzero `f` with
 `natDegree f < D = natDegree Φ̂ · Nslots` (Fact A + a degree-bound truncation, inlined below).
-REMAINING GAPS (each an explicit `sorry`):
+REMAINING GAP (one explicit `sorry`):
 * `L5_landTwoSided_missing` — the dep `L5.landTwoSided` has no file on disk: the descend
   stratum (`StratumData`) is exactly the landing cylinder (`LandingCylinder`) of the
   exact-length development.  Inlined as a private placeholder with the precise statement.
-* the zero-coordinate leg: no supplied hypothesis pins `E.IsSolution` at `Θ (code 0)` when
-  `0` is the only degree-`< D` preimage of that coordinate point — a genuine faithfulness
-  hypothesis on the presentation that the fenced statement omits (flagged in round 3).
+  MISSING-DEP bridge, out of one-unit scope (MANIFEST_REPAIR.json:86); note the recorded
+  ANOMALY there: this placeholder is stated over `DefsCore.LandingCylinder`/`StratumData`
+  whereas the real `L5_landTwoSided` proves the `DefsL.LandingCylinderL` form — a future
+  bridge unit must reconcile the two cylinder objects (or re-point `measureExact`).
+
+CLOSED (was the round-3 zero-coordinate FLAG): the leg where `E.IsSolution` at `Θ (code 0)`
+was unpinned — no hypothesis ruled out the digit system accepting the zero polynomial's
+coordinate, and a model making it true would break the count by one.  Discharged by the
+SCOPING-AUTHORITY amendment adding the named typed hypotheses `hzsolN`/`hzsolM`
+(`∀ f, f.natDegree < D → f = 0 → ¬ E.IsSolution (Θ (code f))`) to `L6_measureExact`, a
+genuine presentation-faithfulness hypothesis symmetric to the pre-existing `hzN`/`hzM` on
+the stratum side.  Warrant + exact statement: `MANIFEST_REPAIR.json:80`; the fence change is
+pre-recorded for semantic audit at `MANIFEST_REPAIR.json:158`
+(`fence_changes_needing_audit`: "L6.measureExact (+hzsolN/hzsolM)").  FLAGGED for orchestrator
+ratification (semantic-guardian audit pass still owed).
 -/
 
 set_option linter.style.longLine false
@@ -142,7 +154,7 @@ private lemma L5_landTwoSided_missing {p : ℕ} [Fact p.Prime] {F : Type*} [Fiel
     StratumData σ ψ μ a Cdig Nslots f ↔ LandingCylinder σ ψ g μ a Cdig B Nslots := by
   sorry
 
-theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (a : ℤ) (Cdig : ℕ → Polynomial ↥σ.K) (Nslots : ℕ) (hμN : μ < Nslots) (D k : ℕ) (hD : D = Φhat.natDegree * Nslots) (N M : ℕ) (hN : 1 ≤ N) (hM : 1 ≤ M) (hkN : k ≤ D * N) (hkM : k ≤ D * M) (stratN : (Fin (D * N) → ZMod p) → Prop) (stratM : (Fin (D * M) → ZMod p) → Prop) (codeN : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (codeM : Polynomial ℤ_[p] → (Fin (D * M) → ZMod p)) (hcodeN : ∀ x, ∃ f, f.natDegree < D ∧ codeN f = x) (hcodeM : ∀ x, ∃ f, f.natDegree < D ∧ codeM f = x) (hstratN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratN (codeN f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (hstratM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratM (codeM f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (ΘN : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (ΘM : (Fin (D * M) → ZMod p) ≃ (Fin (D * M) → ZMod p)) (EN : DigitSystem (D * N) (ZMod p)) (EM : DigitSystem (D * M) (ZMod p)) (hENk : EN.numPinned = k) (hEMk : EM.numPinned = k) (hcylN : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EN.IsSolution (ΘN (codeN f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hcylM : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EM.IsSolution (ΘM (codeM f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hzN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratN (codeN f)) (hzM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratM (codeM f)) : (Nat.card {x // stratN x} : ℚ) / (p : ℚ) ^ (D * N) = (Nat.card {x // stratM x} : ℚ) / (p : ℚ) ^ (D * M) := by
+theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hcore : StageCore σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hgpos : 1 ≤ g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (a : ℤ) (Cdig : ℕ → Polynomial ↥σ.K) (Nslots : ℕ) (hμN : μ < Nslots) (D k : ℕ) (hD : D = Φhat.natDegree * Nslots) (N M : ℕ) (hN : 1 ≤ N) (hM : 1 ≤ M) (hkN : k ≤ D * N) (hkM : k ≤ D * M) (stratN : (Fin (D * N) → ZMod p) → Prop) (stratM : (Fin (D * M) → ZMod p) → Prop) (codeN : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (codeM : Polynomial ℤ_[p] → (Fin (D * M) → ZMod p)) (hcodeN : ∀ x, ∃ f, f.natDegree < D ∧ codeN f = x) (hcodeM : ∀ x, ∃ f, f.natDegree < D ∧ codeM f = x) (hstratN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratN (codeN f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (hstratM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (stratM (codeM f) ↔ (f ≠ 0 ∧ StratumData σ ψ μ a Cdig Nslots f))) (ΘN : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (ΘM : (Fin (D * M) → ZMod p) ≃ (Fin (D * M) → ZMod p)) (EN : DigitSystem (D * N) (ZMod p)) (EM : DigitSystem (D * M) (ZMod p)) (hENk : EN.numPinned = k) (hEMk : EM.numPinned = k) (hcylN : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EN.IsSolution (ΘN (codeN f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hcylM : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B Nslots → (EM.IsSolution (ΘM (codeM f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) (hzN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratN (codeN f)) (hzM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ stratM (codeM f)) (hzsolN : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ EN.IsSolution (ΘN (codeN f))) (hzsolM : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ EM.IsSolution (ΘM (codeM f))) : (Nat.card {x // stratN x} : ℚ) / (p : ℚ) ^ (D * N) = (Nat.card {x // stratM x} : ℚ) / (p : ℚ) ^ (D * M) := by
   classical
   haveI : NeZero p := ⟨(Fact.out (p := p.Prime)).pos.ne'⟩
   have hz : Nat.card (ZMod p) = p := by
@@ -161,9 +173,10 @@ theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
       (∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 →
         IsDevelopment Φhat f B Nslots →
           (E.IsSolution (Θ (code f)) ↔ LandingCylinder σ ψ g μ a Cdig B Nslots)) →
+      (∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ E.IsSolution (Θ (code f))) →
       E.numPinned = k →
       Nat.card {x // strat x} = p ^ (D * n - k) := by
-    intro n strat code Θ E hcode hstrat hcyl hEk
+    intro n strat code Θ E hcode hstrat hcyl hzsol hEk
     -- `D ≥ 1` (the coordinate space is inhabited and surjected onto), so `natDegree Φ̂ ≥ 1`
     obtain ⟨f₀, hf₀, -⟩ := hcode (fun _ => 0)
     have hΦd1 : 1 ≤ Φhat.natDegree := by
@@ -181,12 +194,13 @@ theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
         constructor
         · rintro ⟨hne, _⟩
           exact absurd rfl hne
-        · intro _
-          exfalso
-          -- FLAG (genuine gap in the fenced statement, carried from round 3): no supplied
-          -- hypothesis pins `E.IsSolution` at `Θ (code 0)` when `0` is the only
-          -- degree-`< D` preimage; a model making it true breaks the count by one.
-          sorry
+        · intro hsol
+          -- CLOSED (was the round-3 FLAG): the zero-coordinate leg is discharged by the
+          -- presentation-faithfulness hypothesis `hzsol` — the digit system rejects the
+          -- zero polynomial's coordinate `Θ (code 0)`, symmetric to `hzN`/`hzM` on the
+          -- stratum side.  Threaded from `L6_measureExact`'s new `hzsolN`/`hzsolM`
+          -- (MANIFEST_REPAIR.json:80,158 fence_changes_needing_audit: "+hzsolN/hzsolM").
+          exact absurd hsol (hzsol 0 hfdeg rfl)
       · -- exact-length development: Fact A + the degree-bound truncation (PROVED)
         obtain ⟨B, N', hdev'⟩ := L0_FactA_exists Φhat hΦmon hΦd1 f
         have hdev : IsDevelopment Φhat f B Nslots :=
@@ -200,8 +214,8 @@ theorem L6_measureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
           exact ⟨hf0, hlts.mpr ((hcyl f B hfdeg hf0 hdev).mp hsol)⟩
     have e : {x // strat x} ≃ {x // E.IsSolution x} := Equiv.subtypeEquiv Θ hiff
     rw [Nat.card_congr e, LeanUrat.Moves.L2_P6ii (D * n) E, hEk, hz]
-  have cardN := hcard N stratN codeN ΘN EN hcodeN hstratN hcylN hENk
-  have cardM := hcard M stratM codeM ΘM EM hcodeM hstratM hcylM hEMk
+  have cardN := hcard N stratN codeN ΘN EN hcodeN hstratN hcylN hzsolN hENk
+  have cardM := hcard M stratM codeM ΘM EM hcodeM hstratM hcylM hzsolM hEMk
   rw [cardN, cardM]
   have hp0 : (p : ℚ) ≠ 0 := by exact_mod_cast (Fact.out (p := p.Prime)).pos.ne'
   have key : ∀ m : ℕ, k ≤ m → ((p ^ (m - k) : ℕ) : ℚ) / (p : ℚ) ^ m = 1 / (p : ℚ) ^ k := by

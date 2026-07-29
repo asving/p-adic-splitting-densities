@@ -39,6 +39,16 @@ theorem spWord_exists (n : ℕ) (P : MovesD.ShapePrefix)
     (hcont : ∀ (r : ℕ) (hr : r + 1 < P.reads.length),
       2 ≤ (P.reads[r]'(Nat.lt_of_succ_lt hr)).μ) :
     ∃ ws, SpWordFits n P ws := by
+  -- [PROVER PASS B3 2026-07-29: REFUTED AS STATED, width hypotheses included —
+  --  machine-verified witness `SpWordNeg2.spWord_exists_false'` in
+  --  `V3_spword_negWitness2.lean`.  THE SPECIES/TAG OFF-BY-ONE: SpFitsRead's
+  --  species clause ties read i's OWN move class (hspecInc/hspecRec +
+  --  species_iff force increment iff its own e·g ≥ 2) to letter i's POSITION
+  --  class (StageLaws' tag law: postInc iff the PARENT's e·g_sel ≥ 2); ShapeWF
+  --  carries no cross-read species law, so the classes can disagree (witness
+  --  P4 = [root move e·g = 1, μ = 2; increment read e = 2] at n = 3).
+  --  SIGN-OFF ITEM: repair = cross-read species clause in ShapeWF, or re-key
+  --  SpFitsRead's species clause to the parent read's move class.]
   sorry
 
 theorem spWord_fits (n : ℕ) (P : MovesD.ShapePrefix)

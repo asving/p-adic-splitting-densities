@@ -16,6 +16,6 @@ theorem n2_rexact :
     (∀ e (he : e ∈ Finset.Icc 1 2) (h_ent : ℕ) (τ : n2T.State e)
       (σ' : Multiset n2T.VType) (q₀ : ℚ), q₀ ∈ n2M.Pools →
       n2B.βfull e he h_ent τ σ' q₀ = n2B.βmeas e he h_ent τ σ' q₀) :=
-  sorry
+  ⟨trivial, n2B.rexact trivial⟩
 
 end LeanUrat.MovesS

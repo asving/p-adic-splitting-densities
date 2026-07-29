@@ -148,14 +148,136 @@ private lemma n2tgP_degBoundS (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) :
   simp only [n2tgP, tgTop, tgLow, pgK, pgSpl, pgIn, pgOne, pgZero]
   split_ifs <;> rfl
 
+/-! ### The interpolation laws (seam discharge 2026-07-29, SEAM-4): the owning
+n2M inputs — rowVal (n2_events fill) · ιsh (n2_ent_flow fill) · entCount — are
+FILLED in N2Carriers.lean, so the three owned proof fields (`tg_interp`,
+`ι_interp`, `ι_count`) are now provable in place; the owner units n2_interp_tg /
+n2_interp_iota project them from the instance. -/
+
+/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
+whenever `q.eval x ≠ 0` (local copy of PowSubstOK's private lemma, as in
+N2Rsh.lean). -/
+private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
+    RatFunc.eval (RingHom.id ℚ) x
+        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+      = p.eval x / q.eval x := by
+  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
+  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
+  have hdvd : (algebraMap (Polynomial ℚ) Qq p
+      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
+    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
+  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
+      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+    rw [Polynomial.eval₂_id]
+    obtain ⟨c, hc⟩ := hdvd
+    intro hz
+    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
+  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
+      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+    rw [RatFunc.denom_algebraMap]; simp
+  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
+    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
+    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
+    div_mul_cancel₀ _ hqne
+  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
+  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
+  rw [eq_div_iff hq]
+  exact key
+
+/-- `evalAt` of a `pgDiv` presentation with regular denominator. -/
+private lemma evalAt_pgDiv {q₀ : ℚ} {num den : Polynomial ℚ} {qp : ℕ}
+    {hdvd : den ∣ Polynomial.X ^ qp} (hden : den.eval q₀ ≠ 0)
+    (hok : (pgDiv num den qp hdvd).val ∈ OKat q₀) :
+    (evalAt q₀ ⟨(pgDiv num den qp hdvd).val, hok⟩ : ℚ)
+      = num.eval q₀ / den.eval q₀ := by
+  show RatFunc.eval (RingHom.id ℚ) q₀ (pgDiv num den qp hdvd).val
+      = num.eval q₀ / den.eval q₀
+  rw [pgDiv_val]
+  exact eval_algebraMap_div q₀ num den hden
+
+/-- `evalAt` of an OK element with value 1 (the ι presentations). -/
+private lemma evalAt_of_val_one {q₀ : ℚ} {g : Qq} (hg : g ∈ OKat q₀) (h1 : g = 1) :
+    (evalAt q₀ ⟨g, hg⟩ : ℚ) = 1 := by
+  have hsub : (⟨g, hg⟩ : OKat q₀) = 1 := Subtype.ext h1
+  rw [hsub, map_one]
+
+/-- tg/j interpolation at every pool (owner unit `n2_interp_tg`): the evaluated
+presentation is the measured row of N2Carriers' `rowVal` fill. -/
+private lemma n2tgP_interp (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) (q₀ : ℚ)
+    (h : q₀ ∈ n2M.Pools) (hok : (n2tgP e τ o).val ∈ OKat q₀) :
+    ((evalAt q₀ ⟨(n2tgP e τ o).val, hok⟩ : ℚ) : ℝ) = n2M.rowVal e τ o q₀ := by
+  have hne : q₀ ≠ 0 := pools_ne_zero h
+  have hneR : (q₀ : ℝ) ≠ 0 := by exact_mod_cast hne
+  by_cases he : e = 2
+  · subst he
+    rcases o with ⟨v, hv⟩
+    interval_cases v
+    · -- o_K: q₀⁻³
+      have hval := evalAt_pgDiv (num := 1) (den := Polynomial.X ^ 3) (qp := 3)
+        (hdvd := dvd_rfl) (q₀ := q₀) (by simp [hne]) hok
+      refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
+      show (((1 : Polynomial ℚ).eval q₀ / (Polynomial.X ^ 3 : Polynomial ℚ).eval q₀ : ℚ) : ℝ)
+          = ((q₀ : ℝ))⁻¹ ^ 3
+      rw [Polynomial.eval_one, Polynomial.eval_pow, Polynomial.eval_X]
+      push_cast
+      rw [one_div, inv_pow]
+    · -- o_spl: 1 − q₀⁻¹
+      have hval := evalAt_pgDiv (num := Polynomial.X - 1) (den := Polynomial.X) (qp := 1)
+        (hdvd := ⟨1, by ring⟩) (q₀ := q₀) (by simpa using hne) hok
+      refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
+      show (((Polynomial.X - 1 : Polynomial ℚ).eval q₀
+            / (Polynomial.X : Polynomial ℚ).eval q₀ : ℚ) : ℝ)
+          = 1 - ((q₀ : ℝ))⁻¹
+      rw [Polynomial.eval_sub, Polynomial.eval_one, Polynomial.eval_X]
+      push_cast
+      rw [sub_div, div_self hneR, one_div]
+    · -- o_in: q₀⁻¹ − q₀⁻³
+      have hval := evalAt_pgDiv (num := Polynomial.X ^ 2 - 1) (den := Polynomial.X ^ 3)
+        (qp := 3) (hdvd := dvd_rfl) (q₀ := q₀) (by simp [hne]) hok
+      refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
+      show (((Polynomial.X ^ 2 - 1 : Polynomial ℚ).eval q₀
+            / (Polynomial.X ^ 3 : Polynomial ℚ).eval q₀ : ℚ) : ℝ)
+          = ((q₀ : ℝ))⁻¹ - ((q₀ : ℝ))⁻¹ ^ 3
+      rw [Polynomial.eval_sub, Polynomial.eval_one, Polynomial.eval_pow,
+        Polynomial.eval_pow, Polynomial.eval_X]
+      push_cast
+      field_simp
+  · -- e ≠ 2: the (1, 0, 0) padding row against rowVal's terminal-head fill
+    rcases o with ⟨v, hv⟩
+    have htg : n2tgP e τ ⟨v, hv⟩ = tgLow ⟨v, hv⟩ := if_neg he
+    have hok' : (tgLow ⟨v, hv⟩).val ∈ OKat q₀ := htg ▸ hok
+    have hsub : (⟨(n2tgP e τ ⟨v, hv⟩).val, hok⟩ : OKat q₀)
+        = ⟨(tgLow ⟨v, hv⟩).val, hok'⟩ := Subtype.ext (congrArg PolyGeom.val htg)
+    have hrow : n2M.rowVal e τ ⟨v, hv⟩ q₀ = if v = 0 then (1 : ℝ) else 0 := if_neg he
+    rw [hsub, hrow]
+    interval_cases v
+    · rw [if_pos rfl]
+      have hval := evalAt_pgDiv (num := 1) (den := 1) (qp := 0)
+        (hdvd := one_dvd _) (q₀ := q₀) (by simp) hok'
+      refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
+      simp
+    · rw [if_neg one_ne_zero]
+      have hval := evalAt_pgDiv (num := 0) (den := 1) (qp := 0)
+        (hdvd := one_dvd _) (q₀ := q₀) (by simp) hok'
+      refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
+      simp
+    · rw [if_neg (by omega : ¬(2 = 0))]
+      have hval := evalAt_pgDiv (num := 0) (den := 1) (qp := 0)
+        (hdvd := one_dvd _) (q₀ := q₀) (by simp) hok'
+      refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
+      simp
+
 /-! ### The instance -/
 
-/- The five `sorry` fields below are OWNED BY OTHER UNITS (the `n2M` assembly
-pattern): `tg_interp` by n2_interp_tg, `ι_interp`/`ι_count` by n2_interp_iota,
-`cellP_count`/`act_iff` by n2_activity.  Each is a constraint on an `n2M` field
-that is still `sorry` in N2Carriers.lean (rowVal · ιsh · entCount ·
-cellInst/cellLvl · activeState respectively), so no proof can exist here until
-n2_events/n2_ent_flow/n2_carriers land their fills. -/
+/- SEAM DISCHARGE 2026-07-29 (SEAM-4): the last three owned fields (`tg_interp`
+by n2_interp_tg; `ι_interp`/`ι_count` by n2_interp_iota) are FILLED — their n2M
+inputs (rowVal · ιsh · entCount) landed with N2Carriers.lean, and the owner unit
+theorems project these fields.  `cellP_count`/`act_iff` (owner n2_activity) were
+filled at the same seam discharge — see the comment at those fields.  n2RB is
+now sorry-free. -/
 noncomputable def n2RB : RatBurdens n2T n2M where
   tgP := n2tgP
   jP := n2tgP
@@ -163,11 +285,22 @@ noncomputable def n2RB : RatBurdens n2T n2M where
   tg_ok := fun e τ o q₀ hq => n2tgP_ok e τ o q₀ hq
   j_ok := fun e τ o q₀ hq => n2tgP_ok e τ o q₀ hq
   ι_ok := fun e τ ε q₀ _ => by rw [n2ιP_val]; exact one_mem _
-  tg_interp := sorry -- OWNED: n2_interp_tg (blocked on n2M.rowVal)
+  -- tg_interp: OWNED by n2_interp_tg — FILLED (seam discharge 2026-07-29): rowVal
+  -- landed with n2_events' fill in N2Carriers.lean; the evaluation is n2tgP_interp.
+  tg_interp := fun e τ o q₀ h _ => n2tgP_interp e τ o q₀ h (n2tgP_ok e τ o q₀ h)
   j_interp := fun e τ o q₀ h hsplit => absurd hsplit (n2_route_ne_split e τ o)
-  ι_interp := sorry -- OWNED: n2_interp_iota (blocked on n2M.ιsh)
+  -- ι_interp/ι_count: OWNED by n2_interp_iota — FILLED (seam discharge 2026-07-29):
+  -- ιsh ≡ 1 and entCount ≡ 1 landed with n2_ent_flow's fill in N2Carriers.lean; the
+  -- ι presentation has val 1 (n2ιP_val) and countT = 1, so both laws evaluate.
+  ι_interp := fun e τ ε q₀ h => by
+    have h1 : ∀ hok : (n2ιP e τ ε).val ∈ OKat q₀,
+        ((evalAt q₀ ⟨(n2ιP e τ ε).val, hok⟩ : ℚ) : ℝ) = 1 := fun hok => by
+      rw [evalAt_of_val_one hok (n2ιP_val e τ ε)]; exact Rat.cast_one
+    exact h1 _
   ι_countS_one := fun _ _ _ => rfl
-  ι_count := sorry -- OWNED: n2_interp_iota (blocked on n2M.entCount)
+  ι_count := fun e τ ε q₀ h => by
+    show ((1 : Polynomial ℚ).eval q₀ : ℚ) = ((1 : ℕ) : ℚ)
+    rw [Polynomial.eval_one, Nat.cast_one]
   tg_degT := fun e τ o => n2tgP_degBoundT e τ o
   tg_degS := fun e τ o => n2tgP_degBoundS e τ o
   j_degT := fun e τ o => n2tgP_degBoundT e τ o
@@ -177,8 +310,20 @@ noncomputable def n2RB : RatBurdens n2T n2M where
   cellP := fun _ _ _ => 1
   cellP_deg := fun e τ c => by simp
   cellP_nonzero := fun _ _ _ _ => one_ne_zero
-  cellP_count := sorry -- OWNED: n2_activity (blocked on n2M.cellInst/cellLvl)
-  act_iff := sorry -- OWNED: n2_activity (blocked on n2M.activeState)
+  -- cellP_count/act_iff: OWNED by n2_activity — FILLED (seam discharge, 2026-07-29):
+  -- the n2M inputs (cellInst = singleton, cellLvl = 0, activeState ≡ True) landed
+  -- with n2_carriers/n2_ent_flow, so both laws evaluate: eval 1 = 1 = card {·},
+  -- and activity ↔ (1 ≠ 0) is trivially two-sided.
+  cellP_count := fun e τ c q₀ _ _ => by
+    show ((1 : Polynomial ℚ).eval q₀ : ℚ)
+      = ((n2M.cellInst e τ c q₀ (n2M.cellLvl e τ c)).card : ℚ)
+    rw [Polynomial.eval_one,
+      show (n2M.cellInst e τ c q₀ (n2M.cellLvl e τ c)).card = 1 from rfl,
+      Nat.cast_one]
+  act_iff := fun q₀ _ e _ τ =>
+    iff_of_true trivial fun c => by
+      show (1 : Polynomial ℚ).eval q₀ ≠ 0
+      rw [Polynomial.eval_one]; exact one_ne_zero
   -- (J-RAT) per-cell tables (ratification 2026-07-28 finding 3): the n = 2 table
   -- has NO split outcome at any layer (n2_route_ne_split), so both laws are
   -- guard-vacuous; the per-cell presentation data is the constant 1-presentation.

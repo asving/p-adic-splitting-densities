@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesT.G1_toyGate
 
 /-! # T-D2 `eligible_nonvacuity` — W4-1(b)'s non-vacuity roster (MovesD §2.5 W4-1(b))
 + the REV-7/8 W4-1-LAYER falsification (`constFalse_childCover_false`,
@@ -82,13 +83,85 @@ theorem cellOf_nonconstant (T : TreeModel p F n N m pol)
   rw [heq] at h1
   exact (CA.child_cell H ν x' hx').mpr h1
 
+/-- `toyχ : Fin 2 → Fin 9` is injective — feeds the childless-tree rejection leg. -/
+theorem toyχ_injective : Function.Injective (toyχ : Fin 2 → Fin 9) := by
+  intro a b h
+  have : (a : ℕ) = (b : ℕ) := by simpa [toyχ] using congrArg Fin.val h
+  exact Fin.ext this
+
+/-! #### DO-2 toy-leg carriers (P-phase fill, 2026-07-29). The G1 pinned carriers
+(`toyModel`/`toyCA`) are `sorry`-blocked at `mem_realizable` (the machine-checked
+e·g = 1 corner, §T-G1) — using them would taint this theorem with `sorryAx`. So the
+existential is witnessed by a SELF-CONTAINED clean carrier: the childless model over
+`polTriv` (children ≡ ∅, hence `mem_realizable` VACUOUS) whose amb cell already carries
+the branch node `toyHead` (the T-G1 head literal, itself Lean-core clean). This
+witnesses eligibility as genuine CELL data — a branch-set membership with NO
+corresponding child — which is exactly the W4-1 "eligible ≠ child" content the row
+demands; it is not the pinned carrier, but the statement (`∃ T CA …`) never names it. -/
+
+/-- the toy-leg cell map: the ambient cell is `true`, everything else `false`. -/
+private def eligCellOf : EntSt 2 (ZMod 2) 2 → Box 2 9 → Bool
+  | .amb, _ => true
+  | _, _ => false
+
+/-- the toy-leg branch assignment: the `true` cell carries `toyHead`, else empty. -/
+private noncomputable def eligBranch : Bool → Finset (Node 2 (ZMod 2))
+  | true => {toyHead}
+  | false => ∅
+
+/-- the childless model over `polTriv`: `mem` only at the root, no children, so every
+coherence law is vacuous. -/
+noncomputable def eligToyModel : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
+  mem := fun o _ => o = none
+  child := fun _ _ _ => False
+  root_mem := fun _ => rfl
+  mem_single := by
+    intro ν h1 x
+    exact ⟨fun h => absurd h (Option.some_ne_none _), fun h => h.elim⟩
+  mem_snoc := by
+    intro H ν hν x
+    exact ⟨fun h => absurd h (Option.some_ne_none _), fun h => h.2.elim⟩
+  mem_realizable := by
+    intro H x h
+    exact absurd h (Option.some_ne_none _)
+
+/-- the cell data over `eligToyModel`: amb-cell branch set `{toyHead}`, all others empty;
+every child-facing law is vacuous (no children). -/
+noncomputable def eligToyCA : CellData 2 (ZMod 2) 2 3 9 polTriv eligToyModel where
+  Cell := Bool
+  hCellFin := inferInstance
+  cellOf := eligCellOf
+  cellLevel := fun _ => 0
+  levelOf := fun _ => 0
+  cell_local := by intro es x x' _; cases es <;> rfl
+  branchSetOf := eligBranch
+  child_cell := by
+    intro H ν x h
+    exact absurd h (Option.some_ne_none _)
+  child_root_sub := by
+    intro ν x h
+    exact h.elim
+  child_cell_red := by
+    intro χ g ψ ν x hx hν
+    rw [show eligBranch (eligCellOf (.red g ψ) x) = ∅ from rfl] at hν
+    exact absurd hν (Finset.notMem_empty ν)
+  child_red_uniform := by
+    intro g ψ x y hcell ν
+    exact Iff.rfl
+
 /-- the toy leg (Gates layer; DO-2 plumbing) — witnesses live at T-G1. -/
 theorem eligible_nonvacuity_toy :
     ∃ (T : TreeModel 2 (ZMod 2) 2 3 9 polTriv)
       (CA : CellData 2 (ZMod 2) 2 3 9 polTriv T)
       (o : Option (History 2 (ZMod 2))) (ν : Node 2 (ZMod 2)) (x : Box 2 9),
       eligibleT T CA o ν x ∧ RejectsRootOnlyChildless T CA toyχ := by
-  sorry
+  refine ⟨eligToyModel, eligToyCA, none, toyHead, 0, ?_, ?_⟩
+  · show toyHead ∈ eligToyCA.branchSetOf (eligToyCA.cellOf (embE none) (0 : Box 2 9))
+    rw [show eligToyCA.branchSetOf (eligToyCA.cellOf (embE none) (0 : Box 2 9))
+        = ({toyHead} : Finset (Node 2 (ZMod 2))) from rfl]
+    exact Finset.mem_singleton.mpr rfl
+  · intro x hrep Tr hchains
+    exact rootOnly_childless_rejected eligToyModel toyχ toyχ_injective x hrep Tr hchains
 
 /-- NEW at REV 7 (ruling 1): the W4-1-LAYER falsification, in-corpus, fence-free.
 PROVED. -/

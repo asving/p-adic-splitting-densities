@@ -14,14 +14,21 @@ Defs carriers. `rootSplit_exists` (REV 4, Codex-3 #10) CONSTRUCTS the decomposit
 from the tree's own structure — PROVED (E-phase prove-now set); only the shared
 root-cell datum `hg` stays a hypothesis, owner-tagged.
 
-STATUS 2026-07-30 (the assembly-spine escalation): `fiber_root_split` is PROVED
-MODULO ONE fenced residual (`hnostray` inside the proof — head-roster completeness
-of realized root children on the decomposed set). Everything else of the blueprint's
-five-step decomposition chain is machine-checked: the fiber/track-event set
-decomposition (both inclusions, all six `fiberAt` clauses reconstructed), the (SIB)
-application at the `.amb` cell (= the root cell via `RootCellsOf`), the head-roster
-product split, the t ≤ 1 direct legs, and the T-E2 conversion. The residual's
-countermodel shape and owner tag are recorded at the `hnostray` site. -/
+STATUS 2026-07-30 (the assembly-spine escalation), REFINED at the hnostray-reduction
+pass: `fiber_root_split` is PROVED MODULO ONE fenced residual — no longer `hnostray`
+itself but its exact D4R0K core `hD4R0K`, the (U)∧(R) pair (per-point per-track
+UNIQUENESS of realized root children + REPEATED-ONLY track EXHAUSTIVENESS, both over
+root-cell points; the (c2) covering case analysis, MOVES 7112–7119). `hnostray`
+(head-roster completeness on the decomposed set) is NOW A THEOREM of (U)∧(R): the
+roster is track-complete by fiberAt (vi) counting at the witness (|heads| = |repeated
+factors|, injective track map, surjective by cardinality), heads are realized at
+every decomposed point, and (U) pins any stray to the head sharing its track.
+Everything else of the blueprint's five-step decomposition chain is machine-checked:
+the fiber/track-event set decomposition (both inclusions, all six `fiberAt` clauses
+reconstructed), the (SIB) application at the `.amb` cell (= the root cell via
+`RootCellsOf`), the head-roster product split, the t ≤ 1 direct legs, and the T-E2
+conversion. The residual's countermodel shape, owner tag (HC-2/D4R0K), and candidate
+interface-law shape are recorded at the `hD4R0K` site. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -166,6 +173,15 @@ private lemma mem_oneNode_iff (T : TreeModel p F n N m pol) (ν : Node p F)
     simpa using (show ν.species = ReadSpecies.root from h)
   exact T.mem_single ν h1 x
 
+/-- histories are their node lists (the two proof fields are propositional). -/
+private lemma history_eq_of_nodes_eq {H H' : History p F}
+    (h : H.nodes = H'.nodes) : H = H' := by
+  obtain ⟨n1, hne1, hri1⟩ := H
+  obtain ⟨n2, hne2, hri2⟩ := H'
+  change n1 = n2 at h
+  subst h
+  rfl
+
 /-- a realized nonempty history's HEAD is a realized root child. -/
 private lemma child_of_mem (T : TreeModel p F n N m pol) (H : History p F)
     (hne : H.nodes ≠ []) (x : Box p m) (hmem : T.mem (some H) x) :
@@ -298,26 +314,142 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
       refine hx.2.2.2.1 H' (htsub i hH') ?_
       intro hmaxc
       exact hnmax (hmax_down i H' hmaxc)
-  -- ==== THE FENCED RESIDUAL: head-roster completeness on the decomposed set ====
-  -- [ADJUDICATION RECORD 2026-07-30. The adjudicated `child_red_uniform` law kills
-  --  the SAME-CELL strays (a child realized at one point of a root reduction cell
-  --  now holds at every point of that cell, so a stray's whole `.red`-cell drops
-  --  out of the fiber). What no displayed law pins is a stray root child realized
-  --  on a `.red`-cell DISJOINT from the fiber's own cells but inside the same
-  --  root cell {f̄ = g} — at such a point y, every trackEvent condition can hold
-  --  while `oneNode ν` gives y an extra pruned chain, so y ∈ R ∩ ⋂ᵢ Sᵢ ∖ fiber
-  --  and the displayed count breaks. Canonically this is dead — realized root
-  --  children are exactly the first window reads on the reduction's repeated
-  --  tracks ((c2) covering, MOVES 7112–7119, m_i = 1 ⇒ τ-hen carries NO child —
-  --  and the fiber's roster is track-complete by `fiberAt` (vi)) — so this resi-
-  --  dual is PRESENTED-FACE content, same owner genre as `presents`/`state_cell`:
-  --  owner HC-2/D4R0K. Discharge shape: the canonical `T.child none ν ·` event is
-  --  the ν-cell stratum inside its track's window, and window structure is track
-  --  data of the reduction datum g.]
+  -- ==== THE FENCED RESIDUAL, REDUCED TO ITS D4R0K CORE ====
+  -- [ADJUDICATION RECORD 2026-07-30; REFINED at the hnostray-reduction pass. The
+  --  adjudicated `child_red_uniform` law kills the SAME-CELL strays; the recorded
+  --  countermodel shape is a stray root child realized on a `.red`-cell DISJOINT
+  --  from the fiber's own cells but inside the same root cell {f̄ = g} — at such a
+  --  point y, every trackEvent condition can hold while `oneNode ν` gives y an
+  --  extra pruned chain, so y ∈ R ∩ ⋂ᵢ Sᵢ ∖ fiber and the displayed count breaks.
+  --  THIS PASS reduces the residual to its exact D4R0K core — the (c2) covering
+  --  case analysis (MOVES 7112–7119: realized root children are EXACTLY the first
+  --  window reads on the reduction's REPEATED tracks; m_i = 1 ⇒ τ-hen carries NO
+  --  child), displayed as the pair
+  --    (U) per-point per-track UNIQUENESS: two realized root children at one
+  --        root-cell point sharing a track are equal ("THE first window read");
+  --    (R) REPEATED-ONLY EXHAUSTIVENESS: a realized root child's track is a
+  --        repeated (count ≥ 2) factor of the point's reduction.
+  --  Everything downstream of (U)∧(R) is machine-checked below: |heads| =
+  --  |repeated factors| (fiberAt (vi) at x₀, card level), heads = the roster as a
+  --  Finset image, i ↦ trackOf(headOf i) injective into the repeated roster by
+  --  (U)+(R) at x₀ hence SURJECTIVE by cardinality, heads realized at every
+  --  decomposed point (trackEvent clause (1) on the one-node chain), and (U) at y
+  --  pins any stray to the head sharing its track. Owner of (U)∧(R): HC-2/D4R0K
+  --  (presented-face genre, same owner row as `presents`/`state_cell`). Discharge
+  --  shape: the canonical `T.child none ν ·` event is the ν-cell stratum inside
+  --  its track's window, and window structure is track data of the reduction
+  --  datum g. NOTE for adjudication: (U)∧(R) is a candidate `CellData`/interface
+  --  law pair, quantified over root-cell points only — strictly weaker than any
+  --  per-cell table and independent of the cell chart.]
+  have hD4R0K :
+      (∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
+          T.child none ν' y → trackOf ν = trackOf ν' → ν = ν') ∧
+      (∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
+          2 ≤ Multiset.count (trackOf ν)
+            (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y))) := by
+    sorry
+  obtain ⟨hTrkUniq, hTrkRep⟩ := hD4R0K
+  -- ==== roster TRACK-COMPLETENESS, machine-checked from (U)∧(R) + fiberAt (vi) ====
+  -- |heads| = |repeated factors| (fiberAt clause (vi) at x₀, card level)
+  have hcard6 : Tr.heads.card
+      = ((UniqueFactorizationMonoid.normalizedFactors (redPoly χ x₀)).toFinset.filter
+          (fun ψ => 2 ≤ Multiset.count ψ
+            (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x₀)))).card := by
+    have h6 := congrArg Multiset.card hx₀.2.2.2.2.2
+    rw [Multiset.card_map, Multiset.card_map] at h6
+    exact h6
+  -- the heads ARE the roster, as a Finset image
+  have hheads_eq : Tr.heads
+      = Finset.image (fun i => oneNode (htracks.headOf i) (hcr i)) Finset.univ := by
+    ext H
+    simp only [VTree.heads, Finset.mem_image, Finset.mem_univ, true_and,
+      Finset.mem_filter, Set.Finite.mem_toFinset]
+    constructor
+    · rintro ⟨hHc, hlen1⟩
+      obtain ⟨i, hHi⟩ := hmem_track H hHc
+      have hhd := htracks.hhead i H hHi
+      have hne : H.nodes ≠ [] := Tr.hne_nodes H hHc
+      have hnodes : H.nodes = [htracks.headOf i] := by
+        cases hn : H.nodes with
+        | nil => exact absurd hn hne
+        | cons a l =>
+          cases l with
+          | nil =>
+            rw [hn] at hhd
+            simp only [List.head?_cons, Option.some.injEq] at hhd
+            rw [hhd]
+          | cons b l' =>
+            rw [hn] at hlen1
+            simp only [List.length_cons] at hlen1
+            omega
+      exact ⟨i, history_eq_of_nodes_eq hnodes.symm⟩
+    · rintro ⟨i, rfl⟩
+      exact ⟨hheadchain i, rfl⟩
+  have hheads_card : Tr.heads.card = htracks.t := by
+    have hinj1 : Function.Injective
+        (fun i : Fin htracks.t => oneNode (htracks.headOf i) (hcr i)) := by
+      intro i j hij
+      have h2 : ([htracks.headOf i] : List (Node p F)) = [htracks.headOf j] :=
+        congrArg History.nodes hij
+      exact htracks.hinj (by simpa using h2)
+    rw [hheads_eq, Finset.card_image_of_injective _ hinj1, Finset.card_univ,
+      Fintype.card_fin]
+  -- the roster tracks land in the repeated-factor roster ((R) at x₀) ...
+  have hτmem : ∀ i : Fin htracks.t,
+      trackOf (htracks.headOf i)
+        ∈ (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x₀)).toFinset.filter
+            (fun ψ => 2 ≤ Multiset.count ψ
+              (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x₀))) := by
+    intro i
+    have hrep := hTrkRep x₀ hx₀R _ (hchild_head x₀ hx₀ i)
+    exact Finset.mem_filter.mpr
+      ⟨Multiset.mem_toFinset.mpr (Multiset.count_pos.mp (by omega)), hrep⟩
+  -- ... injectively ((U) at x₀), hence SURJECTIVELY (the two card ties)
+  have hτsurj : ∀ ψ ∈ (UniqueFactorizationMonoid.normalizedFactors
+        (redPoly χ x₀)).toFinset.filter
+          (fun ψ' => 2 ≤ Multiset.count ψ'
+            (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x₀))),
+      ∃ i : Fin htracks.t, trackOf (htracks.headOf i) = ψ := by
+    intro ψ hψ
+    have hsurj := Finset.surj_on_of_inj_on_of_card_le
+      (s := (Finset.univ : Finset (Fin htracks.t)))
+      (fun i _ => trackOf (htracks.headOf i))
+      (fun i _ => hτmem i)
+      (fun i j _ _ hij => htracks.hinj (hTrkUniq x₀ hx₀R _ _ (hchild_head x₀ hx₀ i)
+        (hchild_head x₀ hx₀ j) hij))
+      (by
+        rw [Finset.card_univ, Fintype.card_fin, ← hheads_card]
+        exact le_of_eq hcard6.symm)
+    obtain ⟨i, -, hi⟩ := hsurj ψ hψ
+    exact ⟨i, hi.symm⟩
+  -- ==== head-roster completeness on the decomposed set, NOW A THEOREM of (U)∧(R) ====
   have hnostray : ∀ y ∈ rootCell χ g,
       (∀ i, y ∈ trackEvent Tr T htracks i (hcr i)) →
       ∀ ν : Node p F, T.child none ν y → ∃ i, htracks.headOf i = ν := by
-    sorry
+    intro y hyR hyT ν hchild
+    -- the stray's track is a repeated factor of the SHARED reduction ((R) at y)
+    have hredeq : redPoly χ y = redPoly χ x₀ := by
+      unfold redPoly
+      congr 1
+      refine Finset.sum_congr rfl (fun b _ => ?_)
+      rw [hyR b, hx₀R b]
+    have hrep := hTrkRep y hyR ν hchild
+    rw [hredeq] at hrep
+    have hmemF : trackOf ν ∈ (UniqueFactorizationMonoid.normalizedFactors
+        (redPoly χ x₀)).toFinset.filter
+          (fun ψ' => 2 ≤ Multiset.count ψ'
+            (UniqueFactorizationMonoid.normalizedFactors (redPoly χ x₀))) :=
+      Finset.mem_filter.mpr
+        ⟨Multiset.mem_toFinset.mpr (Multiset.count_pos.mp (by omega)), hrep⟩
+    obtain ⟨j, hj⟩ := hτsurj _ hmemF
+    -- head j is realized at y (trackEvent clause (1) on the one-node chain)
+    have hHj : oneNode (htracks.headOf j) (hcr j) ∈ htracks.trackChains j :=
+      htrack_of_head j _ (hheadchain j) rfl
+    have hmemj := ((hyT j).1 _).mp hHj
+    have hchj : T.child none (htracks.headOf j) y :=
+      (mem_oneNode_iff T _ (hcr j) y).mp hmemj.2.1
+    -- (U) at y pins the stray to head j
+    exact ⟨j, hTrkUniq y hyR _ _ hchj hchild hj⟩
   -- ==== (⊇) decomposed points are fiber points ====
   have hconv : ∀ y ∈ rootCell χ g,
       (∀ i, y ∈ trackEvent Tr T htracks i (hcr i)) → Tr.fiberAt T χ y := by

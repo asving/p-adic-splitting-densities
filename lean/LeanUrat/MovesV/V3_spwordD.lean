@@ -80,6 +80,14 @@ theorem readFits_unique (n : ℕ) (P : MovesD.ShapePrefix)
 
 theorem writeHeights_total {n : ℕ} (εT : EntTemplate n) (h : Hpt εT.entDim) :
     (writeHeights? εT h).isSome := by
+  -- [PROVER PASS B3 2026-07-29: REFUTED AS STATED — machine-verified witness
+  --  `WHNeg.writeHeights_total_false` in `V3_spword_negWitness2.lean`: at the
+  --  zero slot point the first readOfLetter? dite demands R.h = 0, against
+  --  ShapeRead.hh (1 ≤ h).  Pointwise-positive h is NOT a sufficient repair:
+  --  ReadFits' anchor clause needs bezT·γ ≡ s0 (mod e) per e ≥ 2 letter — a
+  --  semilinear congruence on the u*-slots (the entDom domain's job).
+  --  SIGN-OFF ITEM: restrict the ∀ h to the template's admissible slot
+  --  domain.]
   sorry
 
 /-- the TOTAL instantiation map — the token every V3–V7 statement uses. -/
@@ -95,6 +103,15 @@ theorem spWord_faithful {n : ℕ} (P P' : MovesD.Shape n)
     (hs : (P : MovesD.ShapePrefix).reads.map (fun R => (R.h, zig R.gam))
         = (P' : MovesD.ShapePrefix).reads.map (fun R => (R.h, zig R.gam))) :
     P = P' := by
+  -- [PROVER PASS B3 2026-07-29: REFUTED AS STATED — machine-verified witness
+  --  `SpFaithNeg.spWord_faithful_false` (+ `_with_width`) in
+  --  `V3_spword_negWitness2.lean`: on any fitting-word-free prefix spWord is
+  --  the junk [], so hw is vacuously satisfiable between DISTINCT shapes
+  --  (witness pair P4/P4', s0 shifted, same (h, zig γ) lists, both width-
+  --  compliant).  On the non-junk class the content stands: SpFitsRead + hs
+  --  pin all fields except (a, Dwidth, ustar), which anchorTie/dchain/gamTie
+  --  determine.  SIGN-OFF ITEM: needs V3-3a's species repair first (so
+  --  spWord ≠ [] on the hypothesis class), or re-key hw to fitting words.]
   sorry
 
 end LeanUrat.MovesV

@@ -101,9 +101,11 @@ def xrbOfMovesT (T : TreeModel p F n N m pol)
       CellAssign p F n N' (n * N') pol (Tat N' h) (χat N') trackOf)
     (xhd_w xhd_u xhd_d xhd_s jc_inv rel2_a rel2_b rel2_d : Prop) : XRBPackage :=
   { sib := SibCount T CA.toCellData χ,
+    -- [E8 ADJUDICATION 2026-07-30: per-site keying — the JC-multi row prices the
+    --  site's OWN event, keyed by its node (`H.lastNode`).]
     jc_multi := (∀ (Tr : VTree p F) (L : SiteLedger Tr T CA.toCellData χ),
       ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ L) (h2 : 2 ≤ L.sides H),
-        JCmultiAt T CA.toCellData χ (L.parentSt H) (L.cellAt H)
+        JCmultiAt T CA.toCellData χ (L.parentSt H) H.lastNode
           (L.splitAt H hH.1 h2)),
     tb_cap := TBCapPinned (n := n) pol m ∧ NsAmendedPair (n := n) pol,
     vp := VPPinned pol Tat χat trackOf CAat,

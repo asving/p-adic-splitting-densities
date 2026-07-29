@@ -39,22 +39,33 @@ theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.r
     exact DirectSum.of_eq_of_ne _ _ _ (by
       have : S.deg 1 = 0 := by simp [SideVal.deg, S.w_one]
       rw [this]; exact hγ)
-  -- GAP (flagged for human review, NOT an axiom): the three additive-closure fields below
-  -- are NOT derivable from `GradedRingStr S`. That structure ties only `ring`'s MULTIPLICATION
-  -- to the grading (`mul_of`) and the unit (`one_def`); it asserts NOTHING relating `ring`'s
-  -- `AddCommGroup`/`Zero` to the canonical `DirectSum` additive structure used by `x γ`.
-  -- Machine-confirmed (2026-07-26): `(a + b) γ` / `(0 : S.Gr) γ` / `(-a) γ` use `Rg.ring`'s
-  -- `HAdd`/`Zero`/`Neg`, a DISTINCT instance from the DirectSum one, so `DirectSum.add_apply`
-  -- /`zero_apply`/`neg_apply` do not apply and the components are opaque. Fixable only by
-  -- strengthening `GradedRingStr` (e.g. a field `ring`'s additive structure = DirectSum's,
-  -- discharged definitionally by the intended `ring := DirectSum.commRing` in
-  -- `L1_gradedRingStr_exists`) — a statement change requiring sign-off. Multiplication and
-  -- unit closure (above) and the membership iff ARE fully proved.
+  -- Additive closure (add / zero / neg). RESOLVED 2026-07-29 via the `add_def` field of
+  -- `GradedRingStr`, which SUPERSEDES the STALE 2026-07-26 GAP note that used to sit here (that
+  -- note claimed no field related `ring`'s additive structure to DirectSum's; `add_def` is
+  -- exactly such a field and is now present in the structure — machine-verified, not dated):
+  -- `Rg.add_def x y γ : (x + y) γ = x γ + y γ` ties `Rg.ring`'s addition to the
+  -- componentwise DirectSum addition on each degree. Zero is derived from `add_def 0 0` by the
+  -- group law `left_eq_add`; neg is derived by feeding the additive-inverse witness
+  -- `add_neg_cancel a` into a `b`-quantified helper (this sidesteps a non-defeq `Neg`-instance
+  -- diamond in the opaque `Rg.ring`: bare `-a` resolves via the `AddCommGroup` path while the
+  -- goal's `-a` uses the `AddGroupWithOne` path). No statement change, no new axiom.
+  -- FLAGGED FOR ORCHESTRATOR RATIFICATION: the prior GAP note claimed these three legs needed a
+  -- `GradedRingStr` strengthening plus sign-off; that strengthening (`add_def`) is already a
+  -- field of the structure, so the legs are now honest theorems with nothing outstanding.
   · intro a b ha hb γ hγ
-    sorry
+    rw [Rg.add_def a b γ, ha γ hγ, hb γ hγ, add_zero]
   · intro γ hγ
-    sorry
+    have h := Rg.add_def 0 0 γ
+    simp only [add_zero] at h
+    exact left_eq_add.mp h
   · intro a ha γ hγ
-    sorry
+    have hz : (0 : S.Gr) γ = 0 := by
+      have h := Rg.add_def 0 0 γ; simp only [add_zero] at h; exact left_eq_add.mp h
+    have key : ∀ (b : S.Gr), a + b = 0 → b γ = 0 := by
+      intro b hab
+      have h := Rg.add_def a b γ
+      rw [hab, hz, ha γ hγ, zero_add] at h
+      exact h.symm
+    exact key _ (add_neg_cancel a)
 
 end LeanUrat.MovesGr

@@ -1,0 +1,143 @@
+{
+ "sp2_verdict": "PASS",
+ "track_probe": {
+  "histA": {
+   "1": 7072768,
+   "2": 4859264,
+   "0": 4194304,
+   "3": 650880
+  },
+  "leafA": {
+   "UND": 132096,
+   "12": 5032320,
+   "1c": 2705408,
+   "1r1": 3927040,
+   "3": 4329472,
+   "111": 650880
+  },
+  "maxA": 3,
+  "breaksA": 0,
+  "argmaxA": [
+   8,
+   1,
+   22,
+   1,
+   2,
+   0,
+   "111"
+  ],
+  "histB": {
+   "2": 6684672,
+   "1": 60424192
+  },
+  "leafB": {
+   "TS": 3342336,
+   "RAM": 53673984,
+   "INERT": 6684672,
+   "SPLIT": 3342336,
+   "DEEP": 65536
+  },
+  "firstB": {
+   "TS": 3194880,
+   "RAM": 51130368,
+   "INERT": 6389760,
+   "SPLIT": 3194880,
+   "RS1(r=1)": 1048576,
+   "DEEP": 4096,
+   "RS2(r=1)": 16384,
+   "RS1(r=3)": 1048576,
+   "RS1(r=2)": 1048576,
+   "RS2(r=3)": 16384,
+   "RS2(r=2)": 16384
+  },
+  "maxB": 2,
+  "breaksB": 0,
+  "argmaxB": [
+   16,
+   0,
+   4,
+   112,
+   1,
+   1,
+   0,
+   "TS"
+  ]
+ },
+ "checks": [
+  {
+   "name": "SP2-arith (closed-form division == literal polydiv + reconstruction, 500/box)",
+   "ok": true,
+   "detail": "unit_test_fails=[]"
+  },
+  {
+   "name": "SP2-P1 REP identity (same-type laws identical; the vtx-VARYING 6-way group + type-A 3-way + h'=2 pair)",
+   "ok": true,
+   "detail": "differing cells=0"
+  },
+  {
+   "name": "SP2-P2 sealed per-tau rows (uniform 2^17 x 1024 / 2^19 x 256)",
+   "ok": true,
+   "detail": "off-uniform cells=0"
+  },
+  {
+   "name": "SP2-P3 sizes 2^27 + floors + vtx transport, 0 exceptions",
+   "ok": true,
+   "detail": "floor_viol=0 vtx_viol=0"
+  },
+  {
+   "name": "SP2-P4 nu1 root-box dictionary + named-bucket row (incl. RS1(r) = 2^21 entry masses)",
+   "ok": true,
+   "detail": "bad=0"
+  },
+  {
+   "name": "SP2-P5 loop-position invariance (h'=1 marginal == h'=2 word, floor-aligned)",
+   "ok": true,
+   "detail": "differing cells=0"
+  },
+  {
+   "name": "SP2-VERDICT (sealed rule \u00a73)",
+   "ok": true,
+   "detail": "PASS"
+  },
+  {
+   "name": "TP-A1 box partition checksum (sum = 2^24)",
+   "ok": true,
+   "detail": "total=16777216"
+  },
+  {
+   "name": "TP-A2 candidate L(3)=9 unrefuted (max track count <= 9)",
+   "ok": true,
+   "detail": "max=3 (report-only max incl. base frame: 4)"
+  },
+  {
+   "name": "TP-A3 zero (t3) ladder restarts / strict-climb breaks (D.10)",
+   "ok": true,
+   "detail": "breaks=0"
+  },
+  {
+   "name": "TP-A4 oracle consistency (decided leaves == padic_types.cubic_type_monic, 200k sample)",
+   "ok": true,
+   "detail": "compared=198486 mismatches=0"
+  },
+  {
+   "name": "TP-B1 cylinder checksum (sum = 2^26)",
+   "ok": true,
+   "detail": "total=67108864"
+  },
+  {
+   "name": "TP-B2 candidate L(4)=16 unrefuted (max track count <= 16)",
+   "ok": true,
+   "detail": "max=2 (report-only max incl. base frame: 3)"
+  },
+  {
+   "name": "TP-B3 zero (t3) ladder restarts / strict-climb breaks (D.10)",
+   "ok": true,
+   "detail": "breaks=0"
+  },
+  {
+   "name": "TP-B4 first-read RS1(r) entry masses = 2^20 each (state_probe |S_r| tie)",
+   "ok": true,
+   "detail": "{'RS1(r=1)': 1048576, 'RS1(r=3)': 1048576, 'RS1(r=2)': 1048576}"
+  }
+ ]
+}

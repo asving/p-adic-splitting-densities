@@ -21,7 +21,9 @@ SEAM DECLARATION [REV 9, §2.5 W4-SYNC — NOT BUILT AT E-PHASE]:
 * `TreeModel`'s semantic layer (`eligible`/`child_iff` — W4-1) is ABSENT below: only the
   STRUCTURAL counting fields (mem/child/root_mem/mem_single/mem_snoc/mem_realizable) are
   declared, per the §2.5 core-side declaration ("the mass laws never touch `eligible`,
-  `vdict`, `Cell`, or `D4R_CYL`").
+  `vdict`, `Cell`, or `D4R_CYL`"). [W4-SYNC delta 10, 2026-07-29]: the §2.5 W4-1 row now
+  carries the (c2) per-track COVERING clause (MovesT REV-7 ruling 1; MOVES 7112–7119),
+  frozen at the structural typed form `W41ChildCover` — re-keys as `MovesT.ChildCover`.
 * `VerdictModel` (W4-2 — the ENTIRE structure) is NOT DECLARED; its rev-8 typed form is
   frozen in the blueprint's §2.5 contract as the negotiating position (rev-8 `cell_local`
   WITHDRAWN per Codex#7 c.6). It re-keys and builds in wave 4 with MovesT.
@@ -611,7 +613,11 @@ node; THE ROOT'S PRESENCE IS A LAW (`root_mem`), and NO law forces `some`-chains
 (ns) case)]. ==== SEAM (W4-SYNC W4-1; NOT built at E-phase) ====: L2's ALL-AND-ONLY law
 (`eligible` + `child_iff`) is ABSENT here — its typed form is frozen as the §2.5 W4-1
 negotiating position (tie-demand union + re-keying charge there). The E-phase core
-consumes ONLY the structural counting fields below. -/
+consumes ONLY the structural counting fields below. [W4-SYNC delta 10, 2026-07-29 — MovesT
+REV-7 ruling 1]: this §2.5 W4-1 row now ABSORBS the (c2) per-track COVERING clause (a
+window-opening repeated reduction factor forces a root child carrying that track's data;
+MOVES 7112–7119); its MovesD-side frozen typed form is `W41ChildCover` below, re-keying in
+wave 4 as `MovesT.ChildCover`. -/
 structure TreeModel (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
     (n N m : ℕ) (pol : CanonPolicy p F) where
   mem : Option (History p F) → Box p m → Prop
@@ -642,6 +648,31 @@ NOTHING in the core. -/
 def D4R_CYL {n N m : ℕ} {pol : CanonPolicy p F} {P : Shape n}
     (S : Presented p F n N m pol P) (T : TreeModel p F n N m pol) : Prop :=
   ∀ (i : PrefIdx n pol P) (x : Box p m), x ∈ S.fiber i ↔ T.mem (some (reprOf i)) x
+
+/-- **the (c2) per-track COVERING clause AT THE W4-1 INTERFACE — MovesD-side frozen typed
+form** [W4-SYNC delta 10, `lean/notes/W4_SYNC_DELTAS_2026-07-29.md`: MovesT REV-7 ruling 1,
+the W4-1 five-round adjudication (the fourth-round BDY hold OVERTURNED); warrant (c2)'s L1
+totality D4R.0-K(a), MOVES 7112–7119]. Absorbs into MovesD's §2.5 W4-1 row the orchestrator
+ruling that W4-1 (`eligible`/`child_iff`) GAINS a covering duty: at a realized window-opening
+read (a reduction factor `ψ` REPEATED in the level-0 reduction `redOf x`, multiplicity
+m_i ≥ 2), a root child EXISTS carrying that track's data — `T.child none ν x` with
+`trackOf ν = ψ`. This is the STRUCTURAL half expressible over MovesD's `TreeModel`; the
+semantic-layer placement ("… in the track-`ψ` reduction cell's own branch set") re-keys in
+wave 4 as `MovesT.ChildCover` over `CellData`/`branchSetOf`/`cellOf` (with `redOf := redPoly χ`
+at the designated chart). Fence-free (no `HistoryCoherent` content). Owner HC-2/D4R.0-K (L1
+totality) — NEVER proved here; consumed by NOTHING in the E-phase core (a frozen negotiating
+position alongside `D4R_CYL`/`ClassFiberWelldef`). The in-corpus falsifier is MovesT-side
+(`constFalse_childCover_false`, T-D2): the constant-false-child / unit-cell model is FALSE at
+this interface. -/
+def W41ChildCover {n N m : ℕ} {pol : CanonPolicy p F}
+    (T : TreeModel p F n N m pol)
+    (redOf : Box p m → Polynomial (ZMod p))
+    (trackOf : Node p F → Polynomial (ZMod p)) : Prop :=
+  ∀ (x : Box p m) (ψ : Polynomial (ZMod p)),
+    ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redOf x) →
+    2 ≤ Multiset.count ψ
+      (UniqueFactorizationMonoid.normalizedFactors (redOf x)) →
+    ∃ ν : Node p F, trackOf ν = ψ ∧ T.child none ν x
 
 end
 

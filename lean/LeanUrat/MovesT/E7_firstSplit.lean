@@ -6,12 +6,19 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesT.Defs
 
-/-! # T-E7 `fiber_first_split` [hard] — FIRST SPLIT (MOVES 7503–7515): (A) the SIB
-product at the cell event through `hdecomp`; (B) the charge-composed display with
-`hcharge` CONSUMED. The frame prices its OWN `scope` (REV 5, Codex-4 #3);
-`belowEnt`/`SubtreeFiber`/`SplitSiteData` are Defs carriers (REV 6, Codex-5 gap #9).
-`hcharge` is discharged by T-E3 at one-side sites and rides as `JCmultiAt` (hjcm) at
-multi-side sites. -/
+/-! # T-E7 `fiber_first_split` [hard] — FIRST SPLIT (MOVES 7503–7515): the SIB
+product at the SITE's conditioning event through `hdecomp`. The frame prices its OWN
+`scope` (REV 5, Codex-4 #3); `belowEnt`/`SubtreeFiber`/`SplitSiteData` are Defs
+carriers (REV 6, Codex-5 gap #9).
+
+RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying): the frame now
+sits AT the split site (`d.es` = the site's own state), its conditioning event is
+`entEvent d.es` = the note's Σ_c, and the (SIB) input is the SITE-LEVEL count row
+(`SibCountAt`-shaped, TREE-EXP's `hsibT` — the global entrance-cell `SibCount`
+cannot reach the site conditioning under per-site keying: its `.st`-instances
+condition on the strictly finer CHILDREN-JOINT cell). The former (B) leg (the
+charge-composed display, `hcharge` from T-E3/`hjcm`) is retired here — under
+per-site keying each site's own charge is T-E6's, composed in the T-E8 assembly. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -27,33 +34,15 @@ variable {n N m : ℕ} {pol : CanonPolicy p F}
 
 theorem fiber_first_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) (χ : Fin n → Fin m)
-    (hsib : SibCount T CA χ) (d : SplitSiteData Tr T CA χ)
-    (hcharge : Nat.card ↥(cellEventE T CA χ d.es d.c) * p ^ d.jointExp
-      = Nat.card ↥(entEvent T χ d.es)) :
-    (Nat.card ↥(d.scope ∩ entEvent T χ d.es)
-        * (Nat.card ↥(cellEventE T CA χ d.es d.c)) ^ ((CA.branchSetOf d.c).card - 1)
+    (d : SplitSiteData Tr T CA χ)
+    (hsibAt : Nat.card ↥(entEvent T χ d.es ∩ ⋂ ν ∈ CA.branchSetOf d.c, d.S ν)
+        * (Nat.card ↥(entEvent T χ d.es)) ^ ((CA.branchSetOf d.c).card - 1)
+      = ∏ ν ∈ CA.branchSetOf d.c, Nat.card ↥(entEvent T χ d.es ∩ d.S ν)) :
+    Nat.card ↥(d.scope ∩ entEvent T χ d.es)
+        * (Nat.card ↥(entEvent T χ d.es)) ^ ((CA.branchSetOf d.c).card - 1)
       = ∏ ν ∈ CA.branchSetOf d.c,
-          Nat.card ↥(cellEventE T CA χ d.es d.c ∩ d.S ν)) ∧
-    (Nat.card ↥(d.scope ∩ entEvent T χ d.es) * p ^ d.jointExp
-        * (Nat.card ↥(cellEventE T CA χ d.es d.c)) ^ (CA.branchSetOf d.c).card
-      = Nat.card ↥(entEvent T χ d.es)
-        * ∏ ν ∈ CA.branchSetOf d.c,
-            Nat.card ↥(cellEventE T CA χ d.es d.c ∩ d.S ν)) := by
-  -- (A): apply (SIB) at (es, c, S); then identify the scope∩ent count via `hdecomp`.
-  have hA := hsib d.es d.c d.S d.hbr d.hS
+          Nat.card ↥(entEvent T χ d.es ∩ d.S ν) := by
   rw [d.hdecomp]
-  refine ⟨hA, ?_⟩
-  -- (B): multiply (A) by card(cell)·p^jointExp and consume `hcharge`.
-  set X := Nat.card ↥(cellEventE T CA χ d.es d.c ∩ ⋂ ν ∈ CA.branchSetOf d.c, d.S ν)
-  set C := Nat.card ↥(cellEventE T CA χ d.es d.c)
-  set P := ∏ ν ∈ CA.branchSetOf d.c, Nat.card ↥(cellEventE T CA χ d.es d.c ∩ d.S ν)
-  set Sg := Nat.card ↥(entEvent T χ d.es)
-  have hb : (CA.branchSetOf d.c).card = ((CA.branchSetOf d.c).card - 1) + 1 := by
-    have := d.hbr; omega
-  rw [hb, pow_succ]
-  have hrw : X * p ^ d.jointExp * (C ^ ((CA.branchSetOf d.c).card - 1) * C)
-      = (X * C ^ ((CA.branchSetOf d.c).card - 1)) * (C * p ^ d.jointExp) := by ring
-  rw [hrw, hA, hcharge]
-  exact mul_comm P Sg
+  exact hsibAt
 
 end LeanUrat.MovesT

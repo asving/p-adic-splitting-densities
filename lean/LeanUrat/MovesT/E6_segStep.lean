@@ -142,16 +142,20 @@ theorem spectator_conditional_mass {m : ℕ} (Sigma : Locus p m) (fd : FreshData
 
 end SpectatorKernel
 
+/-- RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying): the former
+`hone : L.sides H = 1` hypothesis is DROPPED — the re-keyed `state_cell` is
+side-count-free (the guard was the crutch for the retired entrance-keyed form), so
+the per-site charge holds at EVERY site; the proof is the same rewrite chain into
+the spectator kernel. -/
 theorem fiber_seg_step (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) (Tr : VTree p F) (χ : Fin n → Fin m)
     (L : SiteLedger Tr T CA χ) (H : History p F) (hH : H ∈ Tr.chains)
-    (hone : L.sides H = 1)
     (E : Set (Box p m)) (hspec : SpectatorFor (L.freshCoords H) E) :
     Nat.card ↥(stateEvent T (some H) ∩ E) * p ^ L.siteExp H
       = Nat.card ↥(entEvent T χ (L.parentSt H) ∩ E) := by
   classical
   obtain ⟨hcell_eq, hent_eq⟩ := L.presents H hH
-  rw [L.state_cell H hH hone, hcell_eq, hent_eq]
+  rw [L.state_cell H hH, hcell_eq, hent_eq]
   exact spectator_conditional_mass (L.sys H).1 (L.sys H).2 (L.freshCoords H) E
     (L.hfresh H hH) (L.spectator_sol H hH) hspec
 

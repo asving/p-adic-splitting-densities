@@ -19,6 +19,8 @@ theorem n2_activity :
       q₀ ∈ n2M.Pools →
       (n2M.cellInst e τ c q₀ (n2M.cellLvl e τ c)).card = 1) ∧
     (∀ (q₀ : ℚ) e (τ : n2T.State e), n2M.activeState q₀ e τ) :=
-  sorry
+  -- cellP ≡ 1 by the n2RB fill; cellInst is the singleton {0} at every (c, q₀, N)
+  -- and activeState ≡ True by the n2M fill (N2Carriers.lean, R45 all-active).
+  ⟨fun _ _ _ => rfl, fun _ _ _ _ _ => rfl, fun _ _ _ => trivial⟩
 
 end LeanUrat.MovesS

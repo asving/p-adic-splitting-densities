@@ -11,11 +11,11 @@
   "S4_wsh17_pin": "RETYPED with a signature-preserving deviation from the charge's literal field retype (wsh17_pin : W17ii ... would make U-28's premise h17 : C.wsh17_pin ill-typed — a proof is not a type): the FIELD is deleted and wsh17_pin is now a PROJECTION-NAMED DEF = W17ii at the chain's own carriers (W17ii = the CL-17(ii) production core, MOVES 12095-12099: presentation evaluates to WshVal AND WshVal IS the shDom height sum of shWeightH; C.1.5-volumes x CTS/[1]-counts factorization = MovesV seam residue, recorded). U-28's signature byte-identical; no instance can weaken the burden. n2 gate: n2Wsh17Device is definitionally the new C.wsh17_pin; n2_rsh's discharge compiles UNCHANGED.",
   "S4c_h17_placement": "Investigated: h17 is genuinely unused by rs4_rational_step's PROOF (the checksum identity needs only interpolation at primes); it is the note's conditionality tag (MOVES 12095-12099 'the capstone may not be accepted while it is open') on the checksum's acceptance — correctly placed at U-28, now contentful via the retype. No statement surgery.",
   "S5_polygeom_laws": "Defs.lean gains PolyGeomLaws (countS pinned to the cellInst/cellLvl cell-count carrier aggregated over the outcome fiber; countT pinned to a carried N-valued T-table count carrier tCount — its event-side identification is the MovesV seam, recorded in the docstring; no bare Props). NEW unit CountLaws.lean: ksub_eval_counted / ksub_pool_counted — the CL-6-facing variants carrying PolyGeomLaws as a typed premise, existing statements untouched. [SUPERSEDED at top-level S5_polygeom_laws_round2, 2026-07-29: variants renamed *_countFactored with consuming conclusions; PolyGeomLaws gains tcount_deg/scount_deg.]",
-  "axioms": "All additions [propext, Classical.choice, Quot.sound]. Pre-existing seam sorryAx in n2_pools_all/n2_readoff/n2_rsh footprints (via n2RB/n2M owned-elsewhere sorried fields) verified PRE-EXISTING at HEAD — not a regression.",
+  "axioms": "All additions [propext, Classical.choice, Quot.sound]. Pre-existing seam sorryAx in n2_pools_all/n2_readoff/n2_rsh footprints (via n2RB/n2M owned-elsewhere sorried fields) verified PRE-EXISTING at HEAD — not a regression. [RESOLVED 2026-07-29 SEAM-4: n2RB fully filled — n2_pools_all/n2_readoff/n2_rsh re-checked, Lean-core only.]",
   "w4_sync_interface_deltas": "For the wave-4 blueprints citing RS4Chain: (1) NEW FIELD RS4Chain.legs_read (obligation at every instance); (2) FIELD RS4Chain.wsh17_pin REMOVED — now a def, instances no longer supply it, consumers prove it (wave 4 re-key: prove W17ii from the real carriers instead of instantiating the field); (3) RatBurdens gains jPCell/jcell_ok/jcell_interp/jcell_sum (obligations at every instance); (4) deltaFactors semantics narrowed to continuing members (RegP/legs_reg/legs_read range over FEWER pools — instances get easier); (5) NEW consumable interfaces: LegAgree, W17ii, PolyGeomLaws, ReadOffBundle.legAgree_forall/ofLegAgree, ksub_eval_counted / ksub_pool_counted [SUPERSEDED at S5_polygeom_laws_round2: renamed *_countFactored, conclusions consume hPGL]."
  },
  "scope_fence": "THE CORE ONLY (§2.A–2.D + the 95 §3 units). NOTHING from §W4-SYNC is built (11 seam entries incl. ex-U-29d6 n2_treeiface have NO files until MovesT/MovesV re-key them). The gate (S5) is the R44 INTERNAL CONSISTENCY INSTANCE — schema consistency, NEVER intended-CTS inhabitation (that is the W-11 wave-4 process gate).",
- "conditionality": "U-28 (rs4_rational_step) takes h17 : C.wsh17_pin — the CL-17(ii) inheritance (R57); its acceptance record may NOT be marked unconditional while the seam pin W17ii (S-8) is open. U-24b is conditional on the ReadOffBundle hread (the per-pool (ii-c) burden, provenance W-6). RS1Bundle's xrb/recursion_meas are the pinned W-2/W-3 obligations, never proved here.",
+ "conditionality": "U-28 (rs4_rational_step) takes h17 : C.wsh17_pin — the CL-17(ii) inheritance (R57); its acceptance record may NOT be marked unconditional while the seam pin W17ii (S-8) is open. U-24b is conditional on the ReadOffBundle hread (the per-pool (ii-c) burden, provenance W-6) AND (since the 2026-07-29 W4-SYNC discharge) on the scoped binder L : LedgerIV T M — see units/U-24b scoped_hypothesis_2026-07-29; PENDING ORCHESTRATOR RATIFICATION. RS1Bundle's xrb/recursion_meas are the pinned W-2/W-3 obligations, never proved here.",
  "preamble": "Every file: `import Mathlib` via LeanUrat.MovesS.Defs + its dep modules, `namespace LeanUrat.MovesS`; set_option linter.style.longLine/header/unusedVariables false, maxHeartbeats 1000000. Build per module `lake build LeanUrat.MovesS.<mod>` or `lake env lean` (NEVER full `lake build`).",
  "instance_obligations": [
   "decompFintype (U-11): Fintype {g : Fin m -> Multiset V // Sum g j = sigma'} — sorried noncomputable instance (no off-the-shelf mathlib instance); P-phase sketch: induct on m, sub-multisets of sigma'.",
@@ -345,8 +345,9 @@
    "id": "U-24b",
    "file": "Rs2Unique.lean",
    "difficulty": "medium",
-   "sorries": 1,
-   "statement": "rs2_unique_interp: any OK interpolant on infinite S in allActivePools equals blockSolve (hread : ReadOffBundle, OPEN W-6)"
+   "sorries": 0,
+   "statement": "rs2_unique_interp: any OK interpolant on infinite S in allActivePools equals blockSolve (hread : ReadOffBundle, OPEN W-6)",
+   "scoped_hypothesis_2026-07-29": "W4-SYNC discharge: binder L : LedgerIV T M ADDED under seam scoping authority (PENDING ORCHESTRATOR RATIFICATION). Warrant: the blueprint's own dep/sketch line (deps U-24a1/U-24a2 both carry L; sketch 'U-24a2 across S') — the displayed Codex#4-8 binder list omitted L, leaving the goal unprovable as stated (betameas = active-solve needs L.kstep_one/L.act_target subsystem closure; U-24a1). Proof: interp_read_off across S at h_ent = 0 (all-active gives tau in Act via act_spec) + interp_unique per coordinate. Lean-core axioms only."
   },
   {
    "id": "U-25",
@@ -422,8 +423,9 @@
    "id": "n2_polygeom_data",
    "file": "N2PolyGeom.lean",
    "difficulty": "medium",
-   "sorries": 2,
-   "statement": "n2RB : RatBurdens + qX (REAL) + the three R30-corrected presentations (qpow 3/1/3)"
+   "sorries": 0,
+   "statement": "n2RB : RatBurdens + qX (REAL) + the three R30-corrected presentations (qpow 3/1/3)",
+   "seam4_discharge_2026-07-29": "n2RB's last three owned fields FILLED (tg_interp by n2_interp_tg; iota_interp/iota_count by n2_interp_iota): their n2M inputs (rowVal/iotash/entCount) landed with N2Carriers' fills, so the owned constraints became provable in place. New private helpers: eval_algebraMap_div (local copy of PowSubstOK's lemma, as in N2Rsh) + evalAt_pgDiv (evalAt of a pgDiv presentation = num.eval/den.eval at regular denominators) + evalAt_of_val_one + n2tgP_interp (12-way case split: e = 2 gives the three R26 rows q0^-3 / 1-q0^-1 / q0^-1-q0^-3; e /= 2 gives the (1,0,0) padding row). NO statement changes; n2RB and the whole MovesS corpus now ZERO sorry tokens; footprints re-verified Lean-core (n2_interp_tg, n2_interp_iota, n2_activity, n2_rexact, rs2_unique_interp, n2RB, n2_pools_all, n2_readoff, n2_rsh)."
   },
   {
    "id": "n2_ok",

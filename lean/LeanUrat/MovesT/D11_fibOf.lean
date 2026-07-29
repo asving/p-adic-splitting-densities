@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesT.Defs
 import LeanUrat.MovesT.E9_fiberDisjoint
+import LeanUrat.MovesT.F0_preHalt
 import LeanUrat.MovesT.F1_oneF
 
 /-! # T-D11 `fibOf_keying` — the class-tree → VTree keying (S-7), REV 3/5/6: `fibOf`'s
@@ -28,8 +29,11 @@ registers leafV ⇒ maximal (typed below: `LeafReg`, per-tree — its ∀-`Class
 closure is refutable by an addrs-only tree with empty `leafV`). Both ride the
 `fibOf` hypothesis row; owner HC-2 (PresentNorm), the family of `hrep`/`hri`.
 With them `hclosed`/`hleaf` are PROVED; `fibOf_fiber_disjoint` is PROVED (the
-`hri` address read-off + `hkeys.1` key-injectivity + T-E9); `fibOf_partition`
-stays BLOCKED on the rep-normalization law recorded at its sorry site. -/
+`hri` address read-off + `hkeys.1` key-injectivity + T-E9); `fibOf_partition` is
+PROVED under the ADJUDICATED third premise `hnorm : RepNorm T` (A6 finisher round,
+2026-07-29) — the rep-normalization law formerly recorded at its sorry site, typed
+below next to `RepPrefixClosed`/`LeafReg` (owner HC-2, the same PresentNorm family)
+— via the T-F1 `oneF` witness + the `fiberAt_of_ext` ext-invariance transfer. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -67,6 +71,22 @@ def LeafReg (ct : ClassTree n (F := F) pol) : Prop :=
       (reprOf a.2) →
     ∃ v : Vd, (a, v) ∈ ct.leafV
 
+/-- REP NORMALIZATION AT REALIZED CHAINS — ADJUDICATED premise (iii) (A6 finisher
+round, 2026-07-29; warrant = the necessity analysis formerly recorded at
+`fibOf_partition`'s sorry site, its displayed missing lemma VERBATIM: "the
+canonical-choice normalization law at realized chains; equivalently: strengthen
+`ClassCover`'s classification clause by the conjunct `reprOf i = H`" — carried
+here as the typed premise, the E-DEV-9 pattern): a realized chain classified into
+class `i` IS `i`'s canonical representative. Necessity (the recorded analysis):
+`fiberAt`'s clause (i) is a set-level GRAPH equality and `fibOf`'s `chains` is BY
+CONSTRUCTION a `reprOf`-image, so with `reprOf i ≠ H` for a single realized pruned
+chain no witness `ct` exists. Owner HC-2 (PresentNorm), the family of
+`hrep`/`hri` — typed here, never proved here. -/
+def RepNorm (T : TreeModel p F n N m pol) : Prop :=
+  ∀ (H : History p F), (∃ y, T.mem (some H) y) →
+    ∀ {P : Shape n} (i : PrefIdx n pol P), H ∈ PrefSet n pol P →
+      SameClass i H → reprOf i = H
+
 /-- the two `reprOf` defining clauses (PrefSet membership + `SameClass` of the
 representative), as `hns_leaf`'s local `hspec` but shared by `hclosed`/`hleaf`. -/
 private theorem reprOf_spec {Q : Shape n} (i : PrefIdx n pol Q) :
@@ -99,6 +119,19 @@ private theorem classTree_ext {ct ct' : ClassTree n (F := F) pol}
   obtain rfl : M = M' := h3
   obtain rfl : R = R' := h4
   rfl
+
+/-- `ClassPrefixOf` is IRREFLEXIVE at a fixed shape: both witnesses match the SAME
+shape `P` (equal `nodes` lengths through `MatchesHist`), so the strict pair
+`H'.IsPrefixOf H ∧ H' ≠ H` is impossible. Closes the `a' = a` leg of the
+constructed `MaximalAddr` in `fibOf_partition`. -/
+private theorem classPrefixOf_irrefl {P : Shape n} (i : PrefIdx n pol P) :
+    ¬ ClassPrefixOf i i := by
+  rintro ⟨H', H, h1, h2, -, -, hpre, hne⟩
+  have hm1 : (P : ShapePrefix).MatchesHist H' := h1.1
+  have hm2 : (P : ShapePrefix).MatchesHist H := h2.1
+  obtain ⟨hlen1, -⟩ := hm1
+  obtain ⟨hlen2, -⟩ := hm2
+  exact hne (history_ext (List.IsPrefix.eq_of_length hpre (hlen1.trans hlen2.symm)))
 
 open Classical in
 /-- the per-address representative tree of a class tree. -/
@@ -268,35 +301,204 @@ theorem fibOf_fiber_disjoint (hrep : PrefixCoherentRepr n pol)
   refine ⟨hnext, Set.disjoint_left.mpr fun x hx hx' => hnext ?_⟩
   exact tree_fiber_disjoint _ _ T χ x hx hx'
 
+/-- `fiberAt` is EXT-INVARIANT — the transfer leg of the adjudicated route: every
+`fiberAt` clause reads only `chains`, `leafV`/`nsLeaf` ON chains (clauses (v)/(vi)
+sum over `hfin.toFinset` = chains), and `henV`. -/
+private theorem fiberAt_of_ext {Tr Tr' : VTree p F} (hext : VTree.ext Tr Tr')
+    {T : TreeModel p F n N m pol} {χ : Fin n → Fin m} {x : Box p m}
+    (hf : Tr'.fiberAt T χ x) : Tr.fiberAt T χ x := by
+  obtain ⟨hchains, hhen, hlocal⟩ := hext
+  obtain ⟨hi, hii, hiii, hiv, hv, hvi⟩ := hf
+  have hmemTr : ∀ H : History p F, H ∈ Tr.chains ↔ H ∈ Tr'.chains :=
+    fun H => by rw [hchains]
+  have hmaxTr : ∀ H : History p F,
+      IsMaximalIn Tr.chains H ↔ IsMaximalIn Tr'.chains H :=
+    fun H => by rw [hchains]
+  have htofin : Tr.hfin.toFinset = Tr'.hfin.toFinset := by
+    ext H
+    rw [Set.Finite.mem_toFinset, Set.Finite.mem_toFinset, hchains]
+  have hlvOn : ∀ H ∈ Tr'.hfin.toFinset, Tr.leafV H = Tr'.leafV H := fun H hH =>
+    (hlocal H (by rw [hchains]; exact Tr'.hfin.mem_toFinset.mp hH)).1
+  have htm : Tr.typemult = Tr'.typemult := by
+    unfold VTree.typemult
+    rw [hhen, htofin]
+    congr 1
+    exact Finset.sum_congr rfl fun H hH => by rw [hlvOn H hH]
+  have hheads : Tr.heads = Tr'.heads := by
+    unfold VTree.heads
+    rw [htofin]
+  have htd : Tr.trackDeg = Tr'.trackDeg := by
+    funext H₀
+    unfold VTree.trackDeg
+    rw [htofin]
+    exact Finset.sum_congr rfl fun H hH => by rw [hlvOn H hH]
+  refine ⟨fun H => (hmemTr H).trans (hi H), ?_, hhen.trans hiii, ?_, ?_, ?_⟩
+  · intro H hH hmax
+    obtain ⟨hlvH, hnsH⟩ := hlocal H hH
+    rw [hlvH, hnsH]
+    exact hii H ((hmemTr H).mp hH) ((hmaxTr H).mp hmax)
+  · intro H hH hnmax
+    exact hiv H ((hmemTr H).mp hH) fun hc => hnmax ((hmaxTr H).mpr hc)
+  · rw [htm]; exact hv
+  · rw [hheads, htd]; exact hvi
+
 theorem fibOf_partition (hrep : PrefixCoherentRepr n pol)
     (hri : ReprInj n pol) (hpr : RepPrefixClosed n pol)
     (T : TreeModel p F n N m pol)
-    (hcov : ClassCover T)
+    (hcov : ClassCover T) (hnorm : RepNorm T)
     (χ : Fin n → Fin m) (x : Box p m)
     (hx : Decided T χ x) :
     ∃ (ct : ClassTree n (F := F) pol) (hreg : LeafReg ct),
       (fibOf hrep hri hpr ct hreg).fiberAt T χ x := by
-  -- BLOCKED (finisher round, 2026-07-29). `fiberAt`'s clause (i) is a set-level
-  -- GRAPH equality (`∀ H, H ∈ chains ↔ (H.nodes ≠ [] ∧ PrunedMem T H x)`), and
-  -- `(fibOf …).chains` is BY CONSTRUCTION a set of canonical representatives (the
-  -- reprOf-image of ct.addrs). So ANY witness ct forces every x-realized pruned
-  -- chain H to literally BE `reprOf` of a class containing it. `ClassCover`
-  -- transports membership/children/halting/verdicts TO the representative but
-  -- never supplies `reprOf i = H` — with `reprOf i ≠ H` for a single realized
-  -- pruned chain, clause (i)'s ⊇ direction fails for every ct. Exact missing
-  -- lemma (owner HC-2 / PresentNorm — the canonical-choice normalization law at
-  -- realized chains; equivalently: strengthen `ClassCover`'s classification
-  -- clause by the conjunct `reprOf i = H`):
-  --   ∀ (H : History p F), (∃ y, T.mem (some H) y) →
-  --     ∀ {P : Shape n} (i : PrefIdx n pol P), H ∈ PrefSet n pol P →
-  --       SameClass i H → reprOf i = H
-  -- With it, at ct := the classes of Tr.chains (Tr = hx's witness, unique up to
-  -- ext by T-F1 `oneF`), chains (fibOf ct) = Tr.chains LITERALLY; key-uniqueness
-  -- of the transported leafV entries and `PrefixClosed`/`MaximalAddr`/`LeafReg`
-  -- all collapse to Tr's own hclosed/hleaf via `hri` + Tr.hfin, and the remaining
-  -- fiberAt clauses (ii)–(vi) transfer along the then-derivable
-  -- `VTree.ext (fibOf ct) Tr` (fiberAt is ext-invariant: every clause reads only
-  -- chains/leafV-on-chains/nsLeaf/henV).
-  sorry
+  -- ADJUDICATED ROUTE (A6 finisher round, 2026-07-29): `hnorm : RepNorm T` is the
+  -- rep-normalization law the necessity analysis recorded here (see `RepNorm`).
+  -- With it: ct := the classes of Tr.chains (Tr = the T-F1 `oneF` witness);
+  -- chains (fibOf ct) = Tr.chains LITERALLY; `PrefixClosed`/`MaximalAddr`/`LeafReg`
+  -- collapse to Tr's own hclosed/hleaf via `hrep`/`hri` + Tr.hfin; the fiberAt
+  -- clauses transfer along `VTree.ext (fibOf ct) Tr` (`fiberAt_of_ext`).
+  classical
+  obtain ⟨Tr, hTr, -⟩ := oneF T χ x hx
+  -- every chain is realized at x (fiberAt clause (i) + PrunedMem)
+  have hmemOf : ∀ H ∈ Tr.chains, T.mem (some H) x :=
+    fun H hH => ((hTr.1 H).mp hH).2.1
+  -- hcov classifies each chain; hnorm NORMALIZES: the chain IS its representative
+  have hAddrEx : ∀ H ∈ Tr.chains,
+      ∃ a : Σ P : Shape n, PrefIdx n pol P, reprOf a.2 = H := by
+    intro H hH
+    obtain ⟨P, i, hPref, hSame, -⟩ := hcov H ⟨x, hmemOf H hH⟩
+    exact ⟨⟨P, i⟩, hnorm H ⟨x, hmemOf H hH⟩ i hPref hSame⟩
+  -- the address set: the classes whose representative is a chain (finite via `hri`)
+  have hAfin : ((fun a : Σ P : Shape n, PrefIdx n pol P => reprOf a.2) ⁻¹'
+      Tr.chains).Finite := by
+    refine Set.Finite.preimage ?_ Tr.hfin
+    intro a _ b _ hab
+    exact addr_inj hri hab
+  have hAmem : ∀ a : Σ P : Shape n, PrefIdx n pol P,
+      (a ∈ hAfin.toFinset ↔ reprOf a.2 ∈ Tr.chains) := fun a => by
+    simp only [Set.Finite.mem_toFinset, Set.mem_preimage]
+  -- the transported leaf entries, with their membership read-off
+  have hLmem : ∀ (a : Σ P : Shape n, PrefIdx n pol P) (v : Vd),
+      ((a, v) ∈ hAfin.toFinset.biUnion
+          (fun b => (Tr.leafV (reprOf b.2)).elim ∅ (fun w => {(b, w)}))
+        ↔ reprOf a.2 ∈ Tr.chains ∧ Tr.leafV (reprOf a.2) = some v) := by
+    intro a v
+    rw [Finset.mem_biUnion]
+    constructor
+    · rintro ⟨b, hb, hmem⟩
+      cases hcase : Tr.leafV (reprOf b.2) with
+      | none =>
+        rw [hcase, Option.elim_none] at hmem
+        exact absurd hmem (Finset.notMem_empty _)
+      | some w =>
+        simp only [hcase, Option.elim_some, Finset.mem_singleton,
+          Prod.mk.injEq] at hmem
+        obtain ⟨rfl, rfl⟩ := hmem
+        exact ⟨(hAmem _).mp hb, hcase⟩
+    · rintro ⟨hchain, hsome⟩
+      refine ⟨a, (hAmem a).mpr hchain, ?_⟩
+      simp only [hsome, Option.elim_some, Finset.mem_singleton]
+  -- the reprOf image of the addresses IS the chain set (hAddrEx supplies ⊇)
+  have hchains_eq :
+      (fun b : Σ P : Shape n, PrefIdx n pol P => reprOf b.2) '' ↑hAfin.toFinset
+        = Tr.chains := by
+    apply Set.Subset.antisymm
+    · rintro H ⟨a, ha, rfl⟩
+      exact (hAmem a).mp (Finset.mem_coe.mp ha)
+    · intro H hH
+      obtain ⟨a, ha⟩ := hAddrEx H hH
+      exact ⟨a, Finset.mem_coe.mpr ((hAmem a).mpr (by rw [ha]; exact hH)), ha⟩
+  -- LeafReg, over the data equations (record-projection-stable form)
+  have hregGen : ∀ ct : ClassTree n (F := F) pol,
+      ct.addrs = hAfin.toFinset →
+      ct.leafV = hAfin.toFinset.biUnion
+        (fun b => (Tr.leafV (reprOf b.2)).elim ∅ (fun w => {(b, w)})) →
+      LeafReg ct := by
+    intro ct hA hL a ha hmaxIn
+    rw [hA] at ha
+    rw [hA, hchains_eq] at hmaxIn
+    have hchain : reprOf a.2 ∈ Tr.chains := (hAmem a).mp ha
+    obtain ⟨v, hv⟩ :=
+      Option.isSome_iff_exists.mp ((Tr.hleaf _).mpr ⟨hchain, hmaxIn⟩)
+    exact ⟨v, by rw [hL]; exact (hLmem a v).mpr ⟨hchain, hv⟩⟩
+  -- the ext tie fibOf(ct) ≈ Tr, over the data equations
+  have hextGen : ∀ (ct : ClassTree n (F := F) pol) (hreg : LeafReg ct),
+      ct.addrs = hAfin.toFinset →
+      ct.leafV = hAfin.toFinset.biUnion
+        (fun b => (Tr.leafV (reprOf b.2)).elim ∅ (fun w => {(b, w)})) →
+      ct.nsMark = hAfin.toFinset.filter (fun b => Tr.nsLeaf (reprOf b.2)) →
+      ct.rootV = Tr.henV →
+      VTree.ext (fibOf hrep hri hpr ct hreg) Tr := by
+    intro ct hreg hA hL hM hR
+    have hcteq : (fibOf hrep hri hpr ct hreg).chains = Tr.chains := by
+      change (fun b : Σ P : Shape n, PrefIdx n pol P => reprOf b.2) '' ↑ct.addrs
+        = Tr.chains
+      rw [hA]; exact hchains_eq
+    refine ⟨hcteq, hR, ?_⟩
+    rintro H ⟨a, ha, rfl⟩
+    have haA : a ∈ hAfin.toFinset := by
+      rw [← hA]; exact Finset.mem_coe.mp ha
+    have hchain : reprOf a.2 ∈ Tr.chains := (hAmem a).mp haA
+    constructor
+    · -- leafV agreement at the representative
+      cases hcase : Tr.leafV (reprOf a.2) with
+      | some v =>
+        exact (fibOf_leafV_some_iff hrep hri hpr ct hreg a v).mpr
+          (by rw [hL]; exact (hLmem a v).mpr ⟨hchain, hcase⟩)
+      | none =>
+        cases hfo : (fibOf hrep hri hpr ct hreg).leafV (reprOf a.2) with
+        | none => rfl
+        | some w =>
+          have hw := (fibOf_leafV_some_iff hrep hri hpr ct hreg a w).mp hfo
+          rw [hL] at hw
+          have hcontra := ((hLmem a w).mp hw).2
+          rw [hcase] at hcontra
+          cases hcontra
+    · -- nsLeaf agreement at the representative
+      constructor
+      · rintro ⟨b, hb, hbe⟩
+        rw [hM] at hb
+        rw [← hbe]
+        exact (Finset.mem_filter.mp hb).2
+      · intro hns
+        exact ⟨a, by rw [hM]; exact Finset.mem_filter.mpr ⟨haA, hns⟩, rfl⟩
+  -- assemble the class tree; its four Prop fields close from the read-offs above
+  refine ⟨⟨hAfin.toFinset, ?_,
+      hAfin.toFinset.biUnion
+        (fun b => (Tr.leafV (reprOf b.2)).elim ∅ (fun w => {(b, w)})),
+      ⟨?_, ?_⟩,
+      hAfin.toFinset.filter (fun b => Tr.nsLeaf (reprOf b.2)),
+      ?_, Tr.henV, Tr.hhen⟩,
+    hregGen _ rfl rfl,
+    fiberAt_of_ext (hextGen _ (hregGen _ rfl rfl) rfl rfl rfl rfl) hTr⟩
+  · -- haddr: PrefixClosed via hrep + Tr.hclosed
+    intro a ha a' hcp
+    have hchain : reprOf a.2 ∈ Tr.chains := (hAmem a).mp ha
+    exact (hAmem a').mpr
+      (Tr.hclosed _ hchain _ (hrep a.2 a'.2 hcp) (reprOf a'.2).nonempty)
+  · -- hkeys.1: key uniqueness via the leafV read-off
+    refine Finset.card_image_iff.mpr ?_
+    intro av ha bv hb h
+    obtain ⟨-, hsa⟩ := (hLmem av.1 av.2).mp (Finset.mem_coe.mp ha)
+    obtain ⟨-, hsb⟩ := (hLmem bv.1 bv.2).mp (Finset.mem_coe.mp hb)
+    rw [Prod.ext_iff]
+    refine ⟨h, Option.some.inj ?_⟩
+    rw [← hsa, ← hsb, h]
+  · -- hkeys.2: registered ⇒ address + MaximalAddr (chain-maximality + irreflexivity)
+    intro av hav
+    obtain ⟨hchain, hsome⟩ := (hLmem av.1 av.2).mp hav
+    refine ⟨(hAmem av.1).mpr hchain, ?_⟩
+    intro a' ha' hcp
+    have hmax : IsMaximalIn Tr.chains (reprOf av.1.2) :=
+      ((Tr.hleaf _).mp (by rw [hsome]; rfl)).2
+    have haa : a' = av.1 :=
+      addr_inj hri (hmax _ ((hAmem a').mp ha') (hrep a'.2 av.1.2 hcp))
+    subst haa
+    exact classPrefixOf_irrefl _ hcp
+  · -- hns: marked ⇒ registered (Tr.hns_leaf + Tr.hleaf)
+    intro a ha
+    obtain ⟨haA, hnsl⟩ := Finset.mem_filter.mp ha
+    have hpair := Tr.hns_leaf _ hnsl
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp ((Tr.hleaf _).mpr hpair)
+    exact ⟨v, (hLmem a v).mpr ⟨hpair.1, hv⟩⟩
 
 end LeanUrat.MovesT
