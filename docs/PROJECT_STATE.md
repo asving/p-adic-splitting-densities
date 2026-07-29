@@ -934,3 +934,27 @@ verified by full 2⁹ enumeration; MovesV's SelRankTie replaced by a
 definitional SelMatches; HMC stays open, its record line honestly scoped).
 IN FLIGHT: the consolidated Codex confirm on the repair diff + full-dual
 round-6 audits. Ledger: `lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md`.
+
+## UPDATE (2026-07-29b): WAVE-4 BLUEPRINT PHASE COMPLETE; E-PHASE LAUNCHED
+
+The MovesT (§T-ASSEMBLY, 55 units) and MovesV (§V-TABLES, 100 units) blueprints
+closed at REV 9 after nine dual-audit rounds (Codex + fresh Fable each round,
+every mathematical-content finding converged or resolved by orchestrator note
+reads). The campaign's deepest design question — whether the interface must
+exhibit a ¬HMC ∧ HMCAug separation witness — closed by focused fresh-context
+adjudication, verdict (A): the obligation is withdrawn; three coupling
+mechanisms are structurally barred (zc by extension-preservation; history-rich
+carriers by the note's own XHD-u representative uniformity; census-level by the
+assign_cover/tgam_last forcing chain), the interface is faithful and unchanged,
+and the recorded limitation — under the exactness + uniformity package the
+purported coupling may have no model — is CONSISTENT with the note, which
+states the HMC-AUG repair conditionally and never exhibits a coupling (R2's
+wall channel is its escape). HMC remains OPEN and unprovable (repeated
+closure sweeps). Along the way the ratification arc on the PROVED MovesS/
+MovesD corpora fully closed (three Codex confirm rounds; every thread
+repaired-and-confirmed, overruled-with-machine-checked-seals, or terminated at
+a NAMED vocabulary boundary with an owner — see W4_SYNC_DELTAS, 11 entries).
+E-phase writers for both corpora are IN FLIGHT (the compiler as closure
+arbiter; the census-level ¬HMC toy becomes decide-checked Lean; dual
+ratification then runs on as-built statements). Ledger:
+lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md.
