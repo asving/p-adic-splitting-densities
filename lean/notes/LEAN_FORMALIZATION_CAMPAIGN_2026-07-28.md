@@ -574,3 +574,19 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   (§9 T / §8 V) carry the decide obligations, instance-plumbing rows, and
   disclosed boundaries; the dual ratification runs on AS-BUILT statements
   (the MovesS/MovesD precedent). ***
+  E-PHASE COMPLETE + THE PROVER FLEET LAUNCHED (2026-07-29/30). Both
+  corpora landed compiling: MovesT 56 modules (Defs 1590 lines sorry-free;
+  80 sorries over 35 units; 20/55 units PROVED OUTRIGHT at E-phase incl.
+  nsNull_of_pricing_growth and both constFalse falsifiers; 17 E-DEVs) and
+  MovesV 103 modules (Defs+DefsGate sorry-free, gcell_denom_sum PROVED;
+  86 sorries; ~35 units proved outright; the in-kernel decides landed —
+  the EA2 seal E=7, the gate-B dyadics 128=(1/4)·512, the field laws by
+  decide; V7-8 = the banked W17ii sorry at the built RS4Chain.wsh17_pin
+  type with clause (i) proved; 18 E-DEVs). Full build green 8579 jobs;
+  zero new axioms; the ONLY sorryAx sources are the E-phase unit sorries.
+  Verified independently: the three Defs "sorry" grep hits are docstring
+  mentions. PROVER FLEET (wf_f1d16620-432): pipeline prove→verify per
+  unit — opus provers, fable on the two heavy heads (G1_toyGate's
+  toyStage; V4_hmc's constructive census-toy build), sonnet
+  statement-fence verifiers (diff-scope + rebuild + axiom check). Batch 1
+  = 10 units (pilot); the remaining ~92 follow on validation.
