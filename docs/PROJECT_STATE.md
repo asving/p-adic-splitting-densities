@@ -1014,3 +1014,52 @@ KBTotTower instance exists in-corpus, negation unconstructible). Full
 enumerated corpus sweep green (9,429 jobs; census integers verbatim; MovesT
 sorry census unchanged at 6 disclosed declarations; zero new axioms). Record:
 MovesT/MANIFEST.json RERATIFY-T-1.
+
+## UPDATE (2026-08-01): THE UNIFORMITY COMPLETION CAMPAIGN — DONE CRITERION MET
+
+The /goal directive ("complete the formalization of the uniformity theorem") is
+achieved in the campaign's own defined terms — the maximal honest completion
+available without new mathematics. THE FINAL STATE, all verified this date:
+
+**THE CAPSTONE.** `LeanUrat.MovesU.theoremU` — the uniformity squeeze: at every
+prime p satisfying the typed regularity gate (REG-p) = (r1) ∧ (r2), the splitting
+density ρ_σ(p) equals the evaluated rational function R_σ(p), exported with the
+two-sided (U-n) bracket, the solve identification R = S.R = MovesS.Rsh, and the
+ℤ_p bridge clause with (e,f) = (ramIdx, resDeg) — `#print axioms` = exactly
+[propext, Classical.choice, Quot.sound]. Its hypothesis surface is FULLY HONEST:
+typed rows over the ratified corpora where owner vocabulary exists; thirteen
+explicit named parameters (the wave-4 boundary, recorded verbatim in the
+docstring) where it does not.
+
+**THE RATIFICATIONS.** All three wave-4 corpora cleared multi-round adversarial
+Codex ratification with full verdict histories: MovesU (round 4, 0 material),
+MovesT (round 4, clean), MovesV (round 5, 0M/1N). MovesX ratified round 1;
+MovesSp core ratified + instantiated (SP8); MovesS 95/95 sorry-free; MovesD
+complete. The corpus-wide sorry census: TEN, every one a named/owned fenced
+item — E5's (U)+(R) D4R0K pair, the TreeNStable row, G1's four (task #44, the
+V10/HistoryCoherent sign-off cluster — two recorded BLOCKED-FALSE at their
+pinned tables), the three Phase-B seam-instantiation duties, the banked W17ii.
+
+**THE KERNEL SEALS.** Every open mathematical kernel's predictions are
+computationally sealed at the tested ranges: E0 (140/0 — no closed class,
+κ < 1, decay exact), L1/D4R.0-K(a) (40,378/40,378 boundary cases),
+STATE/TRACK (15/15), X-n3 (30/32 + the X1B reading adjudicated: the note's
+own (CD)-pinned reading SEALED, the over-broad reading refuted as the note
+itself predicts). The ¬HMC census toy is kernel-checked (the central kernel's
+openness is a machine fact). R_σ re-derived bottom-up = the sealed forms.
+
+**THE OPEN SURFACE (what a full unconditional theorem still needs).** The
+mathematics: E0 (per-pool, all pools), HMC, WEIGHT-CHARGE/X.1b, X.3 general-n,
+the (ALIGN) discharges, VP-SOUND's cites, the Phase-B/HC-2 bridges, htameFE
+(palindromy, out of scope by directive), hExhaust general-n. The formalization:
+the thirteen wave-D parameter rows, the W4-5 slot-selection discharge, task #44
+(ASVIN's sign-off), the two trusted axioms (GMN, Denef–Igusa) eventually proved.
+
+**THE PROCESS LEDGER.** ~20 statement defects caught at proof time with compiled
+countermodels; one soundness event (a sorried universal coexisting with its
+compiled negation) caught by ratification and excised; two false axioms caught
+historically; three standing methodology rules earned: (1) enumerated
+out-of-root-graph sweeps, (2) lake build never lake env lean, (3) no sorried
+universal without a countermodel-construction attempt. The full round-by-round
+record: lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md. ~750 local
+commits, unpushed pending sign-off.
