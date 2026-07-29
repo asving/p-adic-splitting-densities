@@ -20,28 +20,32 @@ theorem cell_ne_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   · exact ⟨(V.toCtsCells.stepKey (Sum.inl ⟨β, m, h, ha.some⟩)).1⟩
   · exact ⟨(V.toCtsCells.stepKey (Sum.inr ⟨v, m, h, ha.some⟩)).1⟩
 
-/-- NAMED OPEN INSTANTIATION DUTY (M4 soundness repair, ratification
-verdict 2026-07-29; WITNESS-PINNED at the final-ratification M-seam repair
-— the verdict: "the existential conclusions do not state that their
-witnesses are the table and measured system constructed from the supplied
-`C`, `V`, or `X`"): the E-phase `∨ True` escape is DELETED; the ∃-duty now
-pins the TABLE side to the CTS carriers (`VType ≃ VLabel n`, per-block
-`State e ≃ StateOf n e` — `tableShape_inst` satisfies them) and the
-measured side's box cardinalities to V's (guarded card tie, as in
-`ledgerIV_inst`).  INSTANTIATION ATTEMPT (recorded): the RatBurdens data
-(countS/geom polynomial packs) must come from `cellPolyPack`'s sizeP/count
-wiring + the V3 initrat `PolyGeom` packs — the V7-4 field-map unit; stays
-the named sorried duty.  Quantifier record as before: `Nonempty (RatBurdens
-T M)` at ARBITRARY (T, M) would be FALSE (the M1 failure mode); hard
-M-side structure ties would risk the same (fence-rule record). -/
+/-- NAMED OPEN INSTANTIATION DUTY (M4 soundness repair; pins RESTATED at
+the ROUND-4 M1 repair, 2026-07-29 — the old record claimed the pins
+"exclude every degenerate unrelated witness"; they did not).
+EXACT PIN INVENTORY (boundary-record rule):
+TIED, table side (option (a), STRENGTHENED): `TablePins C T` — VType/State
+(CellIdx-carrying)/Out equivs, real `Wloc`/`Wstate` bounds, odata rosters
+in (size, δ, status-with-target-skeleton); proved at `tableShape_inst`'s
+compiled witness.  TIED, measured side: ONLY the guarded |Box| card tie at
+V's pools (as in `ledgerIV_inst`).
+NOT TIED (option (b), SCOPED): `M.Pools`, cells, events, masses, rows,
+entrances, marked values, the RatBurdens polynomial data themselves, and
+the witness's identity with `tableShape_inst`'s result — a pin-satisfying
+witness can still carry degenerate measured-side data; the pins CONSTRAIN,
+they do not determine.  FENCE-RULE RECORD: hard M-side structure ties
+could make the ∃ FALSE for adversarial V (the M1 failure mode).
+INSTANTIATION ATTEMPT (recorded): the RatBurdens data (countS/geom
+polynomial packs) must come from `cellPolyPack`'s sizeP/count wiring + the
+V3 initrat `PolyGeom` packs — the V7-4 field-map unit; stays the named
+sorried duty. -/
 theorem ratBurdens_exists {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V) (hEU : EntU V)
     (hEC : EntCount V) (hA : AffEnt n) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
-      Nonempty (T.VType ≃ VLabel n) ∧
-      (∀ e, Nonempty (T.State e ≃ StateOf n e)) ∧
+      TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
         Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
       Nonempty (MovesS.RatBurdens T M) := by

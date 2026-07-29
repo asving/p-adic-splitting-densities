@@ -21,26 +21,36 @@ set_option linter.style.header false
 
 namespace LeanUrat.MovesV
 
-/-- NAMED OPEN INSTANTIATION DUTY (M4; WITNESS-PINNED at the final-
-ratification M-seam repair, 2026-07-29 — the verdict: "the existential
-conclusions do not state that their witnesses are the table and measured
-system constructed from the supplied `C`, `V`, or `X` … the existential
-sorry duties can be witnessed by systems unrelated to the CTS objects
-unless explicit equivalences and field ties are added"): the ∃ now pins
-the TABLE side to the CTS carriers (`VType ≃ VLabel n`, per-block
-`State e ≃ StateOf n e` — satisfied by `tableShape_inst`) and pins the
-measured side's box CARDINALITIES to V's boxes at V's pools (the |Box|
-tie, card-level and GUARDED on V-box nonemptiness — unguarded it would
-collide with `MeasuredSide.boxpos` at an adversarial empty-box V).
-INSTANTIATION ATTEMPT (recorded): the MeasuredSide over V (Box := V.Box,
-cells := the DCellO fibers, cellEvt := V.cellEvt, μcell := μcellH) needs
-the full V7-4 field map (~30 fields) + the LedgerIV suite discharged from
-X/cp/hVA + part1/part2 (the xhd_sum leg IS V0-3 + cp.count; part1 IS the
-supplied `hb`/`hc`/`hd` route) — a dedicated instance unit, not
-completable inline; stays the named sorried duty.  Hard M-side STRUCTURE
-ties (M.Pools = V.Pools, M.Box ≃ V.Box) were NOT baked in (fence-rule
-record: MeasuredSide's own pool/box laws could make them false for
-adversarial V — the M1 failure mode). -/
+/-- NAMED OPEN INSTANTIATION DUTY (M4; pins RESTATED at the ROUND-4 M1
+repair, 2026-07-29 — the verdict: the old record claimed the pins "exclude
+every degenerate unrelated witness", which its clauses did not deliver).
+EXACT PIN INVENTORY (boundary-record rule — what this statement ties, and
+what it does NOT):
+TIED, table side (option (a), STRENGTHENED — `TablePins C T`, V7-3a):
+`VType ≃ VLabel n`; per-block `State e ≃ StateOf n C e` (the carrier now
+CARRIES the CTS `CellIdx`); `Wstate`/`Wloc` transport the REAL CTS degree
+bounds; per-(e,τ) `Out ≃ Σ letter, outcome`; the odata member lists tied
+to the `omem` rosters in (size, δ, status-with-target-skeleton).
+`tableShape_inst` PROVES `TablePins` at its compiled witness.
+TIED, measured side: ONLY the |Box| CARDINALITY at V's pools, guarded on
+V-box nonemptiness (unguarded it would collide with `MeasuredSide.boxpos`
+at an adversarial empty-box V).
+NOT TIED (option (b), SCOPED — this record makes no stronger claim):
+`M.Pools`, `M.Cell`/cells, `M.cellEvt`/events, `M.μcell`/masses, `M.rowVal`
+rows, `M.EntShape`/entrances, marked values, and the witness's identity
+with `tableShape_inst`'s result; on the table side, the target CELL INDEX
+inside a continuing member's status payload.  A witness satisfying the
+pins can still carry degenerate measured-side data (e.g. `Cell := PEmpty`,
+`μcell := 0`) — the pins CONSTRAIN the witness, they do not determine it.
+FENCE-RULE RECORD (why the M-side stays card-level): hard structure ties
+(M.Pools = V.Pools, M.Box ≃ V.Box, mass ties) could make the ∃ FALSE for
+adversarial V against `MeasuredSide`'s own pool/box laws — the M1 failure
+mode; Phase B discharges the duty with the real V7-4 field map (~30
+fields; Box := V.Box, cells := the DCellO fibers, cellEvt := V.cellEvt,
+μcell := μcellH) + the LedgerIV suite from X/cp/hVA + part1/part2 (the
+xhd_sum leg IS V0-3 + cp.count; part1 IS the supplied `hb`/`hc`/`hd`
+route), after which the pins can be strengthened FROM the compiled
+witness. -/
 theorem ledgerIV_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
@@ -49,8 +59,7 @@ theorem ledgerIV_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hd : P1FixedHeightExact V X.w)
     (hEC : EntCount V) (hEU : EntU V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
-      Nonempty (T.VType ≃ VLabel n) ∧
-      (∀ e, Nonempty (T.State e ≃ StateOf n e)) ∧
+      TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
         Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
       Nonempty (MovesS.LedgerIV T M) := by

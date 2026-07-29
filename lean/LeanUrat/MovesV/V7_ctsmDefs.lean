@@ -34,10 +34,16 @@ def Part_Stmt (L : CtsmLedger n) : Prop :=
 
 def ValA_Stmt (L : CtsmLedger n) : Prop := ValA n L.C L.S L.V
 
+/-- (VAL-b), M2 RE-KEY (round-4 ratification verdict, 2026-07-29 — "CTS-M
+still exports only table-side `chainCount`"): the capstone row is now the
+note's REALIZED linked count — `Tgam`-keyed — discharged through the
+ledger's `hRC : RealizationComplete` field (`val_b`, V2-5); the
+`chainCount` product (`val_b_table`) is DEMOTED to the internal table-side
+lemma. -/
 def ValB_Stmt (L : CtsmLedger n) : Prop :=
   ∀ {α} (γ : Template n L.S α) {q₀} (x : L.S.Hist q₀ α),
     L.S.zc x → q₀ ∈ L.V.Pools → ∀ h : Hpt γ.D, (L.D.dom γ).Mem h →
-    (chainCount L.S γ x h : ℚ) = (pathProdPoly L.V γ).eval q₀
+    (Tgam L.TE γ x h : ℚ) = (pathProdPoly L.V γ).eval q₀
 
 def NoEntry_Stmt (L : CtsmLedger n) : Prop :=
   ∀ (d : MoveData n L.C) {q₀ : ℚ}, q₀ ∈ L.V.Pools →

@@ -9,6 +9,7 @@ import LeanUrat.MovesV.V7_stageLaw
 import LeanUrat.MovesV.V5_comphA
 import LeanUrat.MovesV.V3_entu
 import LeanUrat.MovesV.V2_valA
+import LeanUrat.MovesV.V2_valB
 import LeanUrat.MovesV.V4_agree
 
 set_option linter.style.longLine false
@@ -27,6 +28,12 @@ structure CtsmLedger (n : ℕ) where
   J : JCells n C S V
   hTie : MDomTie V TE X.d
   hMark : MarkFiberTie TE
+  -- M2 (round-4 ratification verdict, 2026-07-29): the REALIZATION-
+  -- COMPLETENESS row — tmark surjectivity onto `Chains` (owner XHD/[2b]).
+  -- A LEDGER FIELD (mirroring hMark): the row has content (the coupling toy
+  -- exhibits `0 < chainCount` with `Tgam = 0`, so no unconditional proof
+  -- exists) and the capstone's `ValB_Stmt` is now Tgam-keyed through it.
+  hRC : RealizationComplete TE
   pack : C15Pack n S
   hVA : ValA n C S V
   hEC : EntCount V

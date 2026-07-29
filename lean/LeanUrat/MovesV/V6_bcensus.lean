@@ -1,7 +1,15 @@
 /-  MovesV unit V6-3b `blk2_census` (NINE POINTS C20) — the m₂ outcome census:
     quadratics y² + wy + u over (u, w) ∈ Fˣ × F classified split/inert/double
     (the V6-1c divisibility predicate); the (iv)-REP (D2)-EMPTY face is
-    discharged-by-typing (the count sets don't mention t). -/
+    discharged-by-typing (the count sets don't mention t).
+    SCOPE RECORD (round-4 ratification, boundary-record rule — accuracy over
+    strength): `blk2_census` proves (i) the SPLIT count = Tsplit exactly, and
+    (ii) the rc=0 count = Tinert (the right disjunct) via the three moment
+    identities — it does NOT separately identify the DOUBLE class as its own
+    conjunct (Tdbl is pinned only through the k-moment, 2·split = (q−1)(q−2),
+    and the total); a three-conjunct restatement is open V6 work, not claimed.
+    The nine-point roster and the campaign's "178 exact checks" remain
+    EXTERNAL EVIDENCE — not cited by, and certifying nothing in, this file. -/
 import LeanUrat.MovesV.V6_a1census
 
 set_option linter.style.longLine false

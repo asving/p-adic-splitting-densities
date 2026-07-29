@@ -39,6 +39,12 @@ theorem w17ii_wave4 {n : ℕ} {T : TableShape n} {M : MeasuredSide T}
     -- appears to satisfy every card law while breaking the HasSum; if such
     -- a chain is constructible the statement needs a domain-census guard
     -- (sign-off adjudication, queued).
+    -- ROUND-4 VERDICT RECORD (2026-07-29, N2): the fence adjudicated
+    -- ACCURATE ("honestly disclosed exclusion … accurately fenced banked
+    -- duty") — the clause stays BANKED, counted as zero proved content; the
+    -- infinite-shDom countermodel candidate above remains the standing
+    -- fence-rule record (a full RS4Chain build was not attempted — the
+    -- ~30-field instance cost; the summability-guard adjudication owns it).
     sorry
 
 /-- the pin-level restatement: the chain's `wsh17_pin` at its own carriers. -/

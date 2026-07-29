@@ -33,7 +33,12 @@ carrier keeps only the measure-definition laws cevt/μhatN_card/cevt_fiber);
 the product is the explicit NAMED OPEN ROW `hcomp : CompProduct` and the
 cross-level entrance-mass tie is `hstab : IotaLvlStable`, both ctsM
 hypotheses mirroring hsolve; COMP-Σ now ALSO concludes the marked-event
-HasSum (`comp_sigma_hasSum`). -/
+HasSum (`comp_sigma_hasSum`).
+M2 RE-KEY (round-4 ratification verdict, 2026-07-29): `val_b_chain` now
+discharges the Tgam-keyed `ValB_Stmt` (the note's realized linked count)
+via `val_b` through the ledger's `hRC : RealizationComplete` field —
+CTS-M's exported VAL(b) is no longer the table-side `chainCount` product;
+`val_b_table` is the internal lemma. -/
 theorem ctsM {n : ℕ} (L : CtsmLedger n)
     (hb : P1CtblAdd L.V L.X.w) (hc : P1NullRem L.V L.X.w)
     (hd : P1FixedHeightExact L.V L.X.w)
@@ -48,7 +53,7 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
     val_a := L.hVA
     val_b_chain := by
       intro α γ q₀ x hzc hq h hmem
-      exact val_b_table L.hVA L.X.u L.hTie γ x hzc hq h hmem
+      exact val_b L.hVA L.X.u L.hTie L.hRC γ x hzc hq h hmem
     no_entry := by
       intro d q₀ hq hne hact hin
       exact no_entry L.hVA d hq hne hact hin

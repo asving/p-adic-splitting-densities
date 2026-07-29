@@ -239,13 +239,14 @@ theorem valB_aux {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
     simp only [pathProdPoly, Polynomial.eval_mul, Nat.cast_mul]
     rw [hbase, htail]
 
-/-- (b-table) THE TABLE-SIDE PRODUCT LEMMA (M2 adjudication, final-
-ratification verdict 2026-07-29: "`valB` should be labeled a table-side
-product lemma"): the ASSIGNMENT-CHAIN count `chainCount` equals the path
-product, GIVEN ValA + (XHD-u) + XHD-d + MDomTie.  This is NOT the note's
-VAL(b) — the note's T_γ(x, h) counts chains REALIZING (γ, h), i.e. `Tgam`/
-the `RealizesC` subtype, and only `Tgam ≤ chainCount` (`marks_chains`) is
-unconditional; the bridge is the named `RealizationComplete` row below.
+/-- (b-table) the table-side product lemma — INTERNAL as of the round-4 M2
+re-key (2026-07-29): NOT a capstone export; the capstone's `ValB_Stmt` is
+the Tgam-keyed `val_b` below, and this lemma is its table-side half.  The
+ASSIGNMENT-CHAIN count `chainCount` equals the path product, GIVEN ValA +
+(XHD-u) + XHD-d + MDomTie.  This is NOT the note's VAL(b) — the note's
+T_γ(x, h) counts chains REALIZING (γ, h), i.e. `Tgam`/the `RealizesC`
+subtype, and only `Tgam ≤ chainCount` (`marks_chains`) is unconditional;
+the bridge is the named `RealizationComplete` row below.
 (Old name `valB`; renamed at the M2 repair.) -/
 theorem val_b_table {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
     {TE : TmplEvents n S} {D : XHDd n S TE}
@@ -256,13 +257,18 @@ theorem val_b_table {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S
   valB_aux hVA U hTie γ hq x hzc h
     (mem_chainCount_pos D γ h hmem (V.pools_sub hq) x hzc)
 
-/-- REALIZATION COMPLETENESS (M2, THE NAMED OPEN ROW — owner XHD/[2b]):
-every assignment chain is process-realized by a mark, i.e. the mark reading
-`tmark` is SURJECTIVE onto `Chains` at zc histories over pools.  The premise
-HAS CONTENT: the coupling toy (`coupling_signature`, V4_hmc) exhibits a
-(TmplEvents, point) with `0 < chainCount` and `Tgam = 0`, so no unconditional
-proof exists — Phase B discharges it at the real instance from the entrance
-face's no-stray laws. -/
+/-- REALIZATION COMPLETENESS (M2, THE NAMED OPEN ROW — owner XHD/[2b]; a
+`CtsmLedger` field as of the round-4 re-key): every assignment chain is
+process-realized by a mark, i.e. the mark reading `tmark` is SURJECTIVE
+onto `Chains` at zc histories over pools.  The premise HAS CONTENT: the
+coupling toy (`coupling_signature`, V4_hmc) exhibits a (TmplEvents, point)
+with `0 < chainCount` and `Tgam = 0`, so no unconditional proof exists.
+OWNERSHIP (round-4 verdict fix): the entrance face's no-stray laws do NOT
+discharge this row — no-stray/positivity yields only that at least one
+realized mark exists at each in-domain point (`0 < Tgam`), NOT that `tmark`
+is surjective onto every combinatorial `Chains` element; the Phase-B
+discharge needs a genuine mark-per-chain construction at the real instance
+(owner XHD/[2b]). -/
 def RealizationComplete {n : ℕ} {S : StepSys n} (TE : TmplEvents n S) : Prop :=
   ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D),
     q₀ ∈ S.Pools → S.zc x → Function.Surjective (TE.tmark γ x h)
