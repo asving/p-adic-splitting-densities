@@ -11,7 +11,21 @@ strong induction on Tr.chains' card via the first-split decomposition; every sit
 charged exactly once. The unit prices over the DATA layer; its ∀-closure `TreeExpFin`
 (Defs §2.10) carries the FULL W4-1 interface. JOINT-SATISFIABILITY RECORD (REV 6,
 Fable-5 CRIT-1): with the §2.9 scoping the premise row is jointly satisfiable at F1's
-own shape (§0 record 13). `multiSites`/`TreeScaffold` are Defs carriers. -/
+own shape (§0 record 13). `multiSites`/`TreeScaffold` are Defs carriers.
+
+ESCALATION RECORD 2026-07-30 (the assembly-spine round; statement UNCHANGED): the
+adjudicated `CellData.child_red_uniform` law (root-cell uniformity) and the ledger's
+`spectator_sol` law are LANDED in Defs; T-E6 (`fiber_seg_step`) is now PROVED
+Lean-core (the spectator-relativized C4 kernel) and T-E5 (`fiber_root_split`) is
+proved modulo the single fenced `hnostray` residual (see E5's header). The remaining
+work HERE is the recursion assembly per the blueprint sketch: root step = E5 at
+`sc.root`; unbranched runs = E6 iterated through `state_cell` with the spectator
+events carrying the other branches' pins (both spectator laws now available); splits
+= E7 at `sc.splitFrame` with `hcharge` from E3 (one-side) or `hjcm` (multi-side);
+leaves = factor 1; recursion on the halted-branch roster (`Tr.hfin.toFinset`) with
+`sc.hscope`/`sc.subtree_part` handing each factor to the strictly smaller subtree.
+It inherits E5's `hnostray` genre at the root step. Deferred to a dedicated unit —
+this sorry is the LAST assembly-spine core (E10/E11 gate on it). -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false

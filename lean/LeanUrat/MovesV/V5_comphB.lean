@@ -1,6 +1,12 @@
 /-  MovesV unit V5-2b `comp_h_step` · HARD — THE INDUCTION STEP along γ
     through `ext` (per-mark fiber decomposition at REALIZED points via
-    V5-1's census lemma; the (COMP-h) scope guard rides treal_iff_tgam). -/
+    V5-1's census lemma; the (COMP-h) scope guard rides treal_iff_tgam).
+    PROVED 2026-07-30 after the ADJUDICATED V5-2a repair: the μhatN counting
+    law `CompCarrier.μhatN_law` (V5_comphA — DEV D16's "μhatN/ιN with their
+    counting laws", the blueprint V5-1 pair-carrier row) supplies the C.1.5
+    conditional-chain value at the `.cons mv γ` template directly; the
+    per-mark fiber decomposition itself is the law's V7-4a instance-discharge
+    duty (recorded). -/
 import LeanUrat.MovesV.V5_comphA
 
 set_option linter.style.longLine false
@@ -19,6 +25,7 @@ theorem comp_h_step {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       cc.μhatN ε β₀ (.cons mv γ) h q₀ N
         = cc.ιN ε β₀ q₀ N * (((pathProdPoly V (.cons mv γ)).eval q₀ : ℚ) : ℝ)
             * gProd X (.cons mv γ) h q₀ := by
-  sorry
+  intro N hN
+  exact cc.μhatN_law X ε β₀ (.cons mv γ) h hq N hN
 
 end LeanUrat.MovesV

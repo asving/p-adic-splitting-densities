@@ -36,8 +36,10 @@ private lemma le_foldr_max : ∀ (l : List ℕ) (x : ℕ), x ∈ l → x ≤ l.f
 below the a-priori shape bound `Nshape`. In coordinates: the level `c.1` is `≤` the
 K1-chain height `htS r c` (the offset sum is nonnegative), which the band caps at the
 descending line value `≤` the line's intercept; since `Nshape = 1 + max_r ⌈intercept_r⌉₊`,
-the level is `< Nshape`. -/
-private lemma band_lt_Nshape (P : ShapePrefix) (n r : ℕ) (c : Coord)
+the level is `< Nshape`. [DE-PRIVATIZED 2026-07-29 (visibility-only, no statement
+change): consumed by MovesT T-D7 `np_id` (the adjudicated round-3 repair — the ⊆ leg
+routes fresh_band → band_shape → this bound; recorded in MovesT/MANIFEST.json).] -/
+lemma band_lt_Nshape (P : ShapePrefix) (n r : ℕ) (c : Coord)
     (hr : r < P.reads.length) (hb : P.bandS n r c) : c.1 < P.Nshape := by
   have hget : P.reads[r]? = some (P.reads[r]'hr) := List.getElem?_eq_getElem hr
   set R := P.reads[r]'hr with hR

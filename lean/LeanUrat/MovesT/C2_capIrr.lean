@@ -27,18 +27,9 @@ variable {n N m : ℕ} {pol : CanonPolicy p F}
 unitriangular preimage-locality face, the SHZ digit-locality kernel, and the
 coordOf–levelIdx bridge (the ≺-sorted chart is FORCED level-major). All proved. -/
 
-/-- List-safe union membership: an element of a listed Finset lies in the folded union
-(`transportedLevels`'s REV-9 List-safe fold). -/
-lemma mem_foldr_union {γ : Type*} [DecidableEq γ] {L : List (Finset γ)} {s : Finset γ}
-    (hs : s ∈ L) {c : γ} (hc : c ∈ s) :
-    c ∈ L.foldr (· ∪ ·) ∅ := by
-  induction L with
-  | nil => exact absurd hs List.not_mem_nil
-  | cons t L ih =>
-    rw [List.foldr_cons]
-    rcases List.mem_cons.mp hs with rfl | h
-    · exact Finset.mem_union_left _ hc
-    · exact Finset.mem_union_right _ (ih h)
+/- `mem_foldr_union` MOVED to `D7_npid.lean` (round-3 repair; statement
+byte-identical) — both units read `transportedLevels`' List-safe fold and C2
+imports D7. -/
 
 /-- **the ≺-unitriangular preimage-locality face** (§C.0.5): if two IMAGES of a
 unitriangular move agree on a downward-closed coordinate set, so do the arguments —
@@ -202,9 +193,11 @@ lemma levelIdx_coordOf {H : History p F} (J : JetSetup H n N m) (c : Fin m) :
   rw [coordOf_fst J c]
 
 /-- every consumed fresh-support coordinate is TRANSPORTED at `Z = ⊤` (nothing is
-pinned), so its chart level is bounded by the sup `jetTopLevel` reads. -/
+pinned), so its chart level is bounded by the sup `jetTopLevel` reads. [Round-3
+repair rider: the read bound is `r < H.nodes.length` — `transportedLevels`' fixed
+range (the Defs item-1 repair; `fresh H.nodes.length` is unconstrained junk).] -/
 lemma le_sup_of_transported {H : History p F} (J : JetSetup H n N m)
-    {r : ℕ} (hr : r < H.nodes.length + 1) {cl : LevelClause p m}
+    {r : ℕ} (hr : r < H.nodes.length) {cl : LevelClause p m}
     (hcl : cl ∈ (J.fresh r).clauses) {c : Fin m} (hc : c ∈ cl.support) :
     (J.coordOf c).1 ≤ (transportedLevels J (topLocus p m)).sup Prod.fst := by
   have hmem : J.coordOf c ∈ transportedLevels J (topLocus p m) := by
@@ -218,25 +211,39 @@ lemma le_sup_of_transported {H : History p F} (J : JetSetup H n N m)
   exact Finset.le_sup (f := Prod.fst) hmem
 
 /-- cross-level constancy: via T-D7 (NP-ID), each side's pinned-equation level set =
-`bandLevels (P : ShapePrefix) n` — shape data. -/
+`bandLevels (P : ShapePrefix) n` — shape data. [Round-3 repair ripple (item 4, T-D7):
+`np_id` now carries L12's own range premise, so BOTH levels are premised on it
+(`hNP`/`hNP'`) — the sub-threshold countermodel refutes the unguarded ∀-N,N' form
+(a jet at N < NPband transports a strictly smaller level set).] -/
 theorem capIrr_uniform {P : Shape n} (i : PrefIdx n pol P)
-    {N N' m m' : ℕ} (J : JetSetup (reprOf i) n N m) (J' : JetSetup (reprOf i) n N' m') :
+    {N N' m m' : ℕ}
+    (hNP : (P : ShapePrefix).NPband n ≤ N) (hNP' : (P : ShapePrefix).NPband n ≤ N')
+    (J : JetSetup (reprOf i) n N m) (J' : JetSetup (reprOf i) n N' m') :
     capIrrOf J = capIrrOf J' := by
   -- the blueprint's EXPLICIT T-D7 consumption (NP-ID): both jets' transported level
   -- sets equal the SAME shape-side grid, so the sup — hence the cap — coincides.
-  -- [`np_id` is T-D7's own open core; this unit consumes its STATEMENT by name.]
   unfold capIrrOf jetTopLevel
-  rw [np_id i J, np_id i J']
+  rw [np_id i hNP J, np_id i hNP' J']
 
+/-- [STATEMENT REPAIR, adjudicated round-3 item (5) = the E-phase off-by-one residual,
+option (ii) with minimal blast radius: the hagree window is INCLUSIVE, `levelIdx c ≤
+capIrrOf (S.jet i)`. The note's OWN window includes the level-N residue classes —
+MOVES 7178–7180: "§C C.2 (Z = ∅) cuts S(η′,⊤) at level N(η′,⊤) = 1 + the largest base
+level among T(η′,⊤)'s finitely many equations — an EXACT finite union of
+**level-N(η′,⊤) residue classes**" — and `levelIdx` is 1-INDEXED (⌊c/n⌋ + 1), so the
+level-N(η′,⊤) classes are exactly the coordinates with `levelIdx ≤ capIrrOf`. The
+former strict window stopped one level short (the sup is attained). Window ripple:
+`tbcap_irr_family` / `tbcap_irr_npband` below (the in-file repair note's "ripple =
+CapIrrLaw sites").] -/
 theorem tbcap_irr {P : Shape n} (S : Presented p F n N m pol P)
     (i : PrefIdx n pol P) (hirr : IrrHalts (reprOf i))
     (x x' : Box p m)
-    (hagree : ∀ c : Fin m, levelIdx (n := n) c < capIrrOf (S.jet i) → x c = x' c) :
+    (hagree : ∀ c : Fin m, levelIdx (n := n) c ≤ capIrrOf (S.jet i) → x c = x' c) :
     (x ∈ S.fiber i ↔ x' ∈ S.fiber i) := by
   -- the fiber IS the class locus S(η′,⊤); the kernel `shz_top_local` reduces the
   -- theorem to: every consumed fresh-support coordinate sits under the cap.
   refine shz_top_local (S.jet i)
-    (D := fun c => levelIdx (n := n) c < capIrrOf (S.jet i)) ?_ ?_ hagree
+    (D := fun c => levelIdx (n := n) c ≤ capIrrOf (S.jet i)) ?_ ?_ hagree
   · -- the levelIdx cut is downward closed
     intro c' c hle hc
     unfold levelIdx at hc ⊢
@@ -246,46 +253,49 @@ theorem tbcap_irr {P : Shape n} (S : Presented p F n N m pol P)
     -- the two PROVED halves of the support bound:
     have h1 : ((S.jet i).coordOf c).1
         ≤ (transportedLevels (S.jet i) (topLocus p m)).sup Prod.fst :=
-      le_sup_of_transported (S.jet i) (Nat.lt_succ_of_lt hr) hcl hc
+      le_sup_of_transported (S.jet i) hr hcl hc
     have h2 : levelIdx (n := n) c = ((S.jet i).coordOf c).1 + 1 :=
       levelIdx_coordOf (S.jet i) c
-    have hle : levelIdx (n := n) c ≤ capIrrOf (S.jet i) := by
-      unfold capIrrOf jetTopLevel
-      omega
-    -- OFF-BY-ONE GAP (E-phase finding, 2026-07-29 prover pass — SIGN-OFF ITEM): the
-    -- kernel needs the STRICT bound `levelIdx c < capIrrOf (S.jet i)`, but the
-    -- provable bound is the `hle` above, and it is TIGHT: a support coordinate at
-    -- the top transported level ℓ₀ = sup has levelIdx = ℓ₀ + 1 = capIrrOf exactly
-    -- (the sup is attained). `levelIdx` is 1-INDEXED (⌊c/n⌋ + 1) while
-    -- `jetTopLevel = 1 + sup` reads the 0-indexed chart level, so the hagree window
-    -- `levelIdx < capIrrOf` stops ONE level short of the note's "level-N(η′,⊤)
-    -- residue classes" (digits ℓ₀ < N — MOVES 7178–7180). Statement-fence repair
-    -- options (pick one, ripple = CapIrrLaw sites): (i) `jetTopLevel := 2 + sup`
-    -- (= 1 + largest 1-indexed level, the note read in levelIdx convention);
-    -- (ii) hagree `levelIdx c ≤ capIrrOf`; (iii) `levelIdx := ⌊c/n⌋` (0-indexed).
-    sorry
+    -- the inclusive window is exactly the provable (tight) bound:
+    unfold capIrrOf jetTopLevel
+    omega
 
 /-- the COMPATIBLE FAMILY across all presented N and box sizes (Codex-2 #5 / Codex-3
-#5): one cap per class — from `tbcap_irr` + `capIrr_uniform`. This theorem discharges
-`CapIrrLaw` (§2.9) at cap := capIrrOf J₀, i.e. T-D3's cap datum. -/
+#5): one cap per class — from `tbcap_irr` + T-D7. This theorem discharges
+`CapIrrLaw` (§2.9, its window read inclusively through cap := capIrrOf J₀ + 1) at
+T-D3's cap datum. [Round-3 repair ripple: (a) the window is INCLUSIVE (item 5, the
+tbcap_irr flip above); (b) the REFERENCE jet carries L12's range premise `hNP₀`
+(item 4 — `np_id` at J₀ needs it). The ∀ N' family quantifier is UNCHANGED: a
+presented member at ANY N' consumes only the premise-free ⊆ half (`np_id_sub`), whose
+cap is ≤ the over-threshold reference cap via the filters-agree identity.] -/
 theorem tbcap_irr_family {P : Shape n} (i : PrefIdx n pol P)
     (hirr : IrrHalts (reprOf i))
+    (hNP₀ : (P : ShapePrefix).NPband n ≤ N)
     (J₀ : JetSetup (reprOf i) n N m) :
     ∀ (N' m' : ℕ) (S : Presented p F n N' m' pol P) (x x' : Box p m'),
-      (∀ c : Fin m', levelIdx (n := n) c < capIrrOf J₀ → x c = x' c) →
+      (∀ c : Fin m', levelIdx (n := n) c ≤ capIrrOf J₀ → x c = x' c) →
       (x ∈ S.fiber i ↔ x' ∈ S.fiber i) := by
   intro N' m' S x x' hagree
+  -- the presented jet's cap is bounded by the over-threshold reference cap
+  have hsub : capIrrOf (S.jet i) ≤ capIrrOf J₀ := by
+    have hmono : (transportedLevels (S.jet i) (topLocus p m')).sup Prod.fst
+        ≤ (bandLevels (P : ShapePrefix) n).sup Prod.fst :=
+      Finset.sup_mono (np_id_sub i (S.jet i))
+    unfold capIrrOf jetTopLevel
+    rw [np_id i hNP₀ J₀]
+    omega
   refine tbcap_irr S i hirr x x' ?_
   intro c hc
-  rw [capIrr_uniform i (S.jet i) J₀] at hc
-  exact hagree c hc
+  exact hagree c (le_trans hc hsub)
 
-/-- the NPband corollary — T-D7a's conclusion an EXPLICIT premise `hnp`. -/
+/-- the NPband corollary — T-D7a's conclusion an EXPLICIT premise `hnp`. [Round-3
+repair ripple: the window is INCLUSIVE (`≤ NPband` — the tbcap_irr flip; the tight
+case capIrrOf = NPband is attained at over-threshold jets).] -/
 theorem tbcap_irr_npband {P : Shape n} (S : Presented p F n N m pol P)
     (i : PrefIdx n pol P) (hirr : IrrHalts (reprOf i))
     (hnp : transportedLevels (S.jet i) (topLocus p m) ⊆ bandLevels (P : ShapePrefix) n)
     (x x' : Box p m)
-    (hagree : ∀ c : Fin m, levelIdx (n := n) c < (P : ShapePrefix).NPband n → x c = x' c) :
+    (hagree : ∀ c : Fin m, levelIdx (n := n) c ≤ (P : ShapePrefix).NPband n → x c = x' c) :
     (x ∈ S.fiber i ↔ x' ∈ S.fiber i) := by
   have hbot : (0 : ℕ) < (P : ShapePrefix).NPband n := by
     unfold ShapePrefix.NPband; omega
@@ -301,6 +311,6 @@ theorem tbcap_irr_npband {P : Shape n} (S : Presented p F n N m pol P)
     omega
   refine tbcap_irr S i hirr x x' ?_
   intro c hc
-  exact hagree c (lt_of_lt_of_le hc hbound)
+  exact hagree c (le_trans hc hbound)
 
 end LeanUrat.MovesT

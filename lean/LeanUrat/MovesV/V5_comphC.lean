@@ -33,7 +33,11 @@ theorem comp_h {n : ℕ} {C : CtsFamily n} {S : StepSys n}
             * gProd X γ h q₀ := by
   cases γ with
   | last mv => exact comp_h_one cc P X U ε β₀ mv h hq
-  | lastT mv => sorry
+  | lastT mv =>
+    -- the terminal-move leg — closed 2026-07-30 from the ADJUDICATED μhatN
+    -- counting law (V5_comphA `μhatN_law` at the `.lastT` template; the
+    -- MANIFEST records the open core shed here).
+    exact fun N hN => cc.μhatN_law X ε β₀ (.lastT mv) h hq N hN
   | cons mv γ => exact comp_h_step cc P X U hTie ε β₀ mv γ h hmem hq
 
 end LeanUrat.MovesV

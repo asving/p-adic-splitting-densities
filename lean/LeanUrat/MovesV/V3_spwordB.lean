@@ -13,7 +13,16 @@ namespace LeanUrat.MovesV
 theorem template_total {n : ℕ} (ε : EntShapeV n) : (ε.template?).isSome := by
   -- ε.Phat is a WF shape (Shape n = {P // ShapeWF n P}), so spWord fits.
   have hWF : MovesD.ShapeWF n (ε.Phat : MovesD.ShapePrefix) := ε.Phat.2
-  have hfits := spWord_fits n (ε.Phat : MovesD.ShapePrefix) hWF
+  -- [ADJUDICATED 2026-07-30: `spWord_fits` gained the width-≥-2 continuation
+  --  hypotheses (V3_spwordA / V3_spwordA_negWitness).  `EntShapeV` carries NO
+  --  width law, so this leg cannot cite it any more — and the negWitness's
+  --  two-read prefix P3 extends to an EntShapeV (gsel = musel = 1, selRec =
+  --  []), so `template_total` AS STATED needs the EntShapeV-side width law
+  --  too: OPEN SIGN-OFF ITEM, recorded in the MANIFEST.  Until then the fits
+  --  leg is an explicit honest sorry.]
+  have hfits : SpWordFits n (ε.Phat : MovesD.ShapePrefix)
+      (spWord n (ε.Phat : MovesD.ShapePrefix)) := by
+    sorry
   obtain ⟨hlenW, _hfit, hmem, hch⟩ := hfits
   set sw := spWord n (ε.Phat : MovesD.ShapePrefix) with hsw
   -- sw ≠ [] : its length equals P̂.reads.length, which is nonzero by ε.hne.

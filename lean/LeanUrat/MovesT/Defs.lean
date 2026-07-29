@@ -350,6 +350,20 @@ structure CellData (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
   child_cell_red : ∀ (χ : Fin n → Fin m) (g : Fin n → ZMod p)
       (ψ : Polynomial (ZMod p)) (ν : Node p F) (x : Box p m),
     x ∈ rootCell χ g → ν ∈ branchSetOf (cellOf (.red g ψ) x) → T.child none ν x
+  /-- **the ROOT-CELL-UNIFORMITY law** — ADJUDICATED ADDITION (2026-07-30, the
+  assembly-spine statement-repair round: the E5/E8 countermodels exploited a STRAY
+  `T.child none` child realized at a single point of one root reduction cell, which
+  no displayed law forbade). `T.child none` is `cellOf`-CONSTANT on root cells: two
+  points of ONE root reduction cell (one `cellOf (.red g ψ)` fiber) have the same
+  child-none behavior. WARRANT: the §5 W4-1/ChildCover row + the (c2) covering
+  display (MOVES 7112–7119, "fix f and a live track. At level 0, m_i = 1 gives
+  τ-hen and m_i ≥ 2 opens the window — total"): the level-0 case analysis is
+  PER-TRACK data of the reduction cell, never of the individual box point — the
+  window either opens on the whole cell or on none of it. -/
+  child_red_uniform : ∀ (g : Fin n → ZMod p) (ψ : Polynomial (ZMod p))
+      (x y : Box p m),
+    cellOf (.red g ψ) x = cellOf (.red g ψ) y →
+    ∀ ν : Node p F, T.child none ν x ↔ T.child none ν y
 
 /-- THE CELL EVENT Σ_c — the note's conditioning object (7290–7292), DEFINED. -/
 def cellEvent (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
@@ -591,6 +605,18 @@ structure SiteLedger (Tr : VTree p F) (T : TreeModel p F n N m pol)
   freshCoords : History p F → Finset (Fin m)
   hfresh : ∀ H ∈ Tr.chains, ∀ cl ∈ (sys H).2.clauses, ∀ cIdx ∈ cl.support,
     cIdx ∈ freshCoords H
+  /-- **the SPECTATOR law for the Σ-solve coordinates** — ADJUDICATED ADDITION
+  (2026-07-30, the assembly-spine statement-repair round: the E6 countermodel built a
+  presented `Locus` whose PINNED coordinate was `solve`d VALUE-DEPENDENTLY off a fresh
+  coordinate, so the state locus failed to be a spectator of the site's own fresh
+  coordinates and the relativized (JC-single) count broke). The presented system's
+  solution set `{Σsol}` is `SpectatorFor (freshCoords H)`: membership depends only on
+  the coordinates OUTSIDE the site's fresh roster — the C.1.5 level-separation of the
+  entrance state from the site's fresh digits (the `free` law's set-level companion:
+  `free` frees the CLAUSE supports of Σ's pins; this frees Σ's SOLVED VALUES of the
+  fresh coordinates). Owner HC-2 (presented-face content, same genre as `presents`). -/
+  spectator_sol : ∀ H ∈ Tr.chains,
+    SpectatorFor (freshCoords H) {x : Box p m | (sys H).1.IsSolution x}
   hcard : ∀ H ∈ Tr.chains, (freshCoords H).card = (sys H).2.mstar
 
 /-- the per-site fresh exponent, off the ledger. -/
@@ -690,10 +716,15 @@ def SystemTruncatesTo {H : History p F} {N₁ N₂ m₁ m₂ : ℕ}
 
 /-- the (level, base) support of J's pinned equations at Z (T-D7's own Finset). REV 9
 (Codex-8 crit 4): `FreshData.clauses` is a LIST — the List-safe fold of the mapped
-supports. -/
+supports. [STATEMENT REPAIR 2026-07-29, adjudicated (round-3 item 1, TWO independent
+finders): the read range is `Finset.range H.nodes.length` — every `JetSetup` fresh law
+(`fresh_band`/`fresh_cover`/`mstar_eq`/`fresh_assembled`, MovesC/Defs) guards
+`i < H.nodes.length`, so `fresh H.nodes.length` is unconstrained junk data; the former
+`range (H.nodes.length + 1)` swept it into the support. Cone rebuilt: T-D7 `np_id`,
+T-C2 `le_sup_of_transported`.] -/
 noncomputable def transportedLevels {H : History p F}
     (J : JetSetup H n N m) (Z : Locus p m) : Finset (ℕ × ℕ) :=
-  ((((Finset.range (H.nodes.length + 1)).biUnion (fun r =>
+  ((((Finset.range H.nodes.length).biUnion (fun r =>
       ((J.fresh r).clauses.map (fun cl => cl.support)).foldr (· ∪ ·) ∅)).filter
     (fun j => Z.pinned j = false)).image J.coordOf)
 

@@ -480,11 +480,17 @@ private lemma snoc_eq_tA2b_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
 end ToyPinHelpers
 
 /-- the toy cell alphabet (IP-2: `deriving DecidableEq`). -/
-inductive ToyCell | rootC | winC | splitC | junk
+inductive ToyCell | rootC | winC | splitC | junk | junk2
   deriving DecidableEq
+-- [ADJUDICATED ADDITION 2026-07-30 (`CellData.child_red_uniform`): the `.junk2`
+--  carrier separates the child-carrying reduction region from the childless bulk at
+--  the NON-track `.red` entrances (ψ ≠ X), so `T.child none` stays cellOf-constant
+--  on every root reduction cell while `RedCellPartition`'s uniqueness clause keeps
+--  the non-track branch sets empty. Branch set ∅ — never presented, never consumed.]
 
 instance : Fintype ToyCell :=
-  ⟨⟨{.rootC, .winC, .splitC, .junk}, by decide⟩, fun c => by cases c <;> decide⟩
+  ⟨⟨{.rootC, .winC, .splitC, .junk, .junk2}, by decide⟩,
+    fun c => by cases c <;> decide⟩
 
 /-! ### carrier A tables (REV 6/7 pins: winC guards read ψ AND the reduction coords;
 cellLevel = 4) -/
@@ -563,7 +569,9 @@ noncomputable def toyCellA : EntSt 2 (ZMod 2) 2 → Box 2 9 → ToyCell
   | .amb, x => if x 0 = 0 ∧ x 1 = 0 then .rootC else .junk
   | .red _ ψ, x => if ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0
       ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
-      then .winC else .junk
+      then .winC
+      else if x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+      then .junk2 else .junk
   | .st H, x => if H = tA1 ∧ toyMemA (some tA1) x then .splitC else .junk
 
 open Classical in
@@ -572,6 +580,7 @@ noncomputable def toyBranchA : ToyCell → Finset (Node 2 (ZMod 2))
   | .winC => {toyHead}
   | .splitC => {toyLeafA, toyLeafB}
   | .junk => ∅
+  | .junk2 => ∅
 
 open Classical in
 noncomputable def toyCA : CellData 2 (ZMod 2) 2 3 9 polTriv toyModel where
@@ -636,11 +645,50 @@ noncomputable def toyCA : CellData 2 (ZMod 2) 2 3 9 polTriv toyModel where
       rw [hcell] at hν
       simp only [toyBranchA, Finset.mem_singleton] at hν
       exact ⟨hν, hguard.2⟩
-    · have hcell : toyCellA (.red g ψ) x = ToyCell.junk := by
-        simp only [toyCellA]
-        rw [if_neg hguard]
-      rw [hcell] at hν
-      simp [toyBranchA] at hν
+    · by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+      · have hcell : toyCellA (.red g ψ) x = ToyCell.junk2 := by
+          simp only [toyCellA]
+          rw [if_neg hguard, if_pos hd]
+        rw [hcell] at hν
+        simp [toyBranchA] at hν
+      · have hcell : toyCellA (.red g ψ) x = ToyCell.junk := by
+          simp only [toyCellA]
+          rw [if_neg hguard, if_neg hd]
+        rw [hcell] at hν
+        simp [toyBranchA] at hν
+  child_red_uniform := by
+    intro g ψ x y hcell ν
+    -- [ADJUDICATED 2026-07-30] the `.red` table reads exactly the digit block
+    -- x0–x5, so the child-none region {x0 = … = x5 = 0} is a union of
+    -- `cellOf (.red g ψ)` fibers (winC/junk2 vs junk) — child behavior transports.
+    have key : ∀ z : Box 2 9,
+        (z 0 = 0 ∧ z 1 = 0 ∧ z 2 = 0 ∧ z 3 = 0 ∧ z 4 = 0 ∧ z 5 = 0) ↔
+          toyCellA (.red g ψ) z ≠ ToyCell.junk := by
+      intro z
+      by_cases hd : z 0 = 0 ∧ z 1 = 0 ∧ z 2 = 0 ∧ z 3 = 0 ∧ z 4 = 0 ∧ z 5 = 0
+      · refine iff_of_true hd ?_
+        by_cases hψ : ψ = Polynomial.X
+        · rw [show toyCellA (.red g ψ) z = ToyCell.winC from by
+            simp only [toyCellA]; rw [if_pos ⟨hψ, hd⟩]]
+          decide
+        · rw [show toyCellA (.red g ψ) z = ToyCell.junk2 from by
+            simp only [toyCellA]; rw [if_neg (fun hc => hψ hc.1), if_pos hd]]
+          decide
+      · refine iff_of_false hd ?_
+        rw [show toyCellA (.red g ψ) z = ToyCell.junk from by
+          simp only [toyCellA]; rw [if_neg (fun hc => hd hc.2), if_neg hd]]
+        simp
+    constructor
+    · rintro ⟨hν, hd⟩
+      refine ⟨hν, ?_⟩
+      have hx := (key x).mp hd
+      rw [hcell] at hx
+      exact (key y).mpr hx
+    · rintro ⟨hν, hd⟩
+      refine ⟨hν, ?_⟩
+      have hy := (key y).mp hd
+      rw [← hcell] at hy
+      exact (key x).mpr hy
   -- [REV 8 RE-FENCE (Codex-7 #1): the toys instantiate the DATA layer `CellData`
   --  ONLY — `child_cover` FAILS on both carriers at g = (1,0) (deliberately partial;
   --  disclosed at §2.9/§6 and the §5 W4-1 row)]
@@ -720,7 +768,8 @@ open Classical in
 noncomputable def toyCellB : EntSt 2 (ZMod 2) 2 → Box 2 9 → ToyCell
   | .amb, x => if x 0 = 0 ∧ x 1 = 0 then .rootC else .junk
   | .red _ ψ, x => if ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0
-      then .winC else .junk
+      then .winC
+      else if x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 then .junk2 else .junk
   | .st H, x => if H = tB1 ∧ x 3 = 0 ∧ x 4 = 0 then .splitC else .junk
 
 open Classical in
@@ -729,6 +778,7 @@ noncomputable def toyBranchB : ToyCell → Finset (Node 2 (ZMod 2))
   | .winC => {toyHead}
   | .splitC => {toyLeafA, toyLeafB}
   | .junk => ∅
+  | .junk2 => ∅
 
 open Classical in
 noncomputable def toyCAB : CellData 2 (ZMod 2) 2 3 9 polTriv toyModelB where
@@ -810,11 +860,49 @@ noncomputable def toyCAB : CellData 2 (ZMod 2) 2 3 9 polTriv toyModelB where
       rw [hcell] at hν
       simp only [toyBranchB, Finset.mem_singleton] at hν
       exact ⟨hν, hguard.2⟩
-    · have hcell : toyCellB (.red g ψ) x = ToyCell.junk := by
-        simp only [toyCellB]
-        rw [if_neg hguard]
-      rw [hcell] at hν
-      simp [toyBranchB] at hν
+    · by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0
+      · have hcell : toyCellB (.red g ψ) x = ToyCell.junk2 := by
+          simp only [toyCellB]
+          rw [if_neg hguard, if_pos hd]
+        rw [hcell] at hν
+        simp [toyBranchB] at hν
+      · have hcell : toyCellB (.red g ψ) x = ToyCell.junk := by
+          simp only [toyCellB]
+          rw [if_neg hguard, if_neg hd]
+        rw [hcell] at hν
+        simp [toyBranchB] at hν
+  child_red_uniform := by
+    intro g ψ x y hcell ν
+    -- [ADJUDICATED 2026-07-30] the `.red` table reads exactly the digit block
+    -- x0–x2, so the child-none region {x0 = x1 = x2 = 0} is a union of
+    -- `cellOf (.red g ψ)` fibers (winC/junk2 vs junk) — child behavior transports.
+    have key : ∀ z : Box 2 9,
+        (z 0 = 0 ∧ z 1 = 0 ∧ z 2 = 0) ↔ toyCellB (.red g ψ) z ≠ ToyCell.junk := by
+      intro z
+      by_cases hd : z 0 = 0 ∧ z 1 = 0 ∧ z 2 = 0
+      · refine iff_of_true hd ?_
+        by_cases hψ : ψ = Polynomial.X
+        · rw [show toyCellB (.red g ψ) z = ToyCell.winC from by
+            simp only [toyCellB]; rw [if_pos ⟨hψ, hd⟩]]
+          decide
+        · rw [show toyCellB (.red g ψ) z = ToyCell.junk2 from by
+            simp only [toyCellB]; rw [if_neg (fun hc => hψ hc.1), if_pos hd]]
+          decide
+      · refine iff_of_false hd ?_
+        rw [show toyCellB (.red g ψ) z = ToyCell.junk from by
+          simp only [toyCellB]; rw [if_neg (fun hc => hd hc.2), if_neg hd]]
+        simp
+    constructor
+    · rintro ⟨hν, hd⟩
+      refine ⟨hν, ?_⟩
+      have hx := (key x).mp hd
+      rw [hcell] at hx
+      exact (key y).mpr hx
+    · rintro ⟨hν, hd⟩
+      refine ⟨hν, ?_⟩
+      have hy := (key y).mp hd
+      rw [← hcell] at hy
+      exact (key x).mpr hy
 
 /-! ### the trees, the DO-2 plumbing, and the gate battery (G1a/G1b obligations) -/
 
@@ -1221,8 +1309,8 @@ private lemma cellA_red_winC_iff (x : Box 2 9) :
   by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
   · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.winC from if_pos ⟨rfl, hd⟩]
     exact iff_of_true rfl hd
-  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.junk from
-      if_neg (fun hc => hd hc.2)]
+  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.junk from by
+      simp only [toyCellA]; rw [if_neg (fun hc => hd hc.2), if_neg hd]]
     exact iff_of_false (by simp) hd
 
 private lemma cellA_st_tA1_splitC_iff (x : Box 2 9) :
@@ -1364,6 +1452,24 @@ noncomputable def toyLedgerA : SiteLedger toyTreeA toyModel toyCA toyχ := by
           simp [emptyFresh] at hcl
       freshCoords := fun H =>
         if H = tA1 then ({2, 3, 4, 5} : Finset (Fin 9)) else ∅
+      spectator_sol := by
+        -- [ADJUDICATED 2026-07-30] the presented state loci are spectators of the
+        -- sites' fresh rosters: `rootLocus` pins coords 0–1 (solve ≡ 0), disjoint
+        -- from tA1's fresh {2,3,4,5}; the leaf sites have empty fresh rosters.
+        intro H hH
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;>
+            subst h <;> intro x x' hagree
+        · rw [if_pos rfl] at hagree ⊢
+          simp only [Set.mem_setOf_eq, rootLocus_iff]
+          have h0 := hagree 0 (by decide)
+          have h1 := hagree 1 (by decide)
+          rw [h0, h1]
+        · rw [if_neg (Ne.symm tA1_ne_tA2a)] at hagree
+          have hx : x = x' := funext fun i => hagree i (Finset.notMem_empty i)
+          rw [hx]
+        · rw [if_neg (Ne.symm tA1_ne_tA2b)] at hagree
+          have hx : x = x' := funext fun i => hagree i (Finset.notMem_empty i)
+          rw [hx]
       hfresh := by
         intro H hH cl hcl cIdx hsup
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
@@ -1652,8 +1758,13 @@ private lemma cellA_red_ne_splitC (g : Fin 2 → ZMod 2) (ψ : Polynomial (ZMod 
       ∧ x 4 = 0 ∧ x 5 = 0
   · rw [show toyCellA (.red g ψ) x = ToyCell.winC from if_pos h]
     simp
-  · rw [show toyCellA (.red g ψ) x = ToyCell.junk from if_neg h]
-    simp
+  · by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+    · rw [show toyCellA (.red g ψ) x = ToyCell.junk2 from by
+        simp only [toyCellA]; rw [if_neg h, if_pos hd]]
+      simp
+    · rw [show toyCellA (.red g ψ) x = ToyCell.junk from by
+        simp only [toyCellA]; rw [if_neg h, if_neg hd]]
+      simp
 
 private lemma cellA_st_ne_splitC {H : History 2 (ZMod 2)} (hH : H ≠ tA1)
     (x : Box 2 9) : toyCellA (.st H) x ≠ ToyCell.splitC := by
@@ -1708,6 +1819,10 @@ theorem toy_sib : SibCount toyModel toyCA toyχ := by
     rw [Finset.card_singleton] at h2
     omega
   | junk =>
+    exfalso
+    have h2 : (2 : ℕ) ≤ (∅ : Finset (Node 2 (ZMod 2))).card := hbr
+    simp at h2
+  | junk2 =>
     exfalso
     have h2 : (2 : ℕ) ≤ (∅ : Finset (Node 2 (ZMod 2))).card := hbr
     simp at h2

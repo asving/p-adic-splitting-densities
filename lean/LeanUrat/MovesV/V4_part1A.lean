@@ -58,14 +58,33 @@ structure P1NullRem {n : ℕ} {C : CtsFamily n} {S : StepSys n}
           H ≤ ∑ i, ch.2.2 i}, μcellH V X x ch.1.1 ch.1.2)
       Filter.atTop (nhds 0)
 
-/-- leg (d) FIXED-HEIGHT EXACTNESS (headline form: C.1.5(1)'s conditional
-exactness per fixed-height block; the partial sums are bounded by 1). -/
+/-- leg (d) FIXED-HEIGHT EXACTNESS (C.1.5(1)'s conditional exactness per
+fixed-height block; the partial sums are bounded by 1).
+ADJUDICATED STATEMENT REPAIR 2026-07-30: the E-phase headline form (DEV D15)
+had dropped the EXACTNESS EQUALITY and kept only the upper bounds — the
+prover fleet's countermodel: `μcellH ≡ 0` satisfies all three legs while
+`part1_null`'s `1 ≤ v` fails.  The equality field `fh_exact` is RESTORED per
+the blueprint V4 PART-1 row (MOVESV_LEAN_BLUEPRINT_2026-07-28.md V4-6a/b/c):
+"(d) each fixed-height block sums by C.1.5(1)'s conditional exactness"
+(moves_ref V.3(iv): "together, the per-cell ratios over the whole partition
+sum to 1 … mass 1 is NOT a finite-pool identity") — typed at leg (c)'s own
+strip display: at EVERY truncation height H, the below-H fixed-height blocks
+PLUS the H-strip (the identical `∑'`-tail leg (c) sends to 0) carry exactly
+the unit conditional mass.  `fh_bound` (the monotone assembly bound
+`part1_ctbl` consumes) is kept. -/
 structure P1FixedHeightExact {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) (X : XHDw n S) : Prop where
   fh_bound : ∀ {τ : S.Cell} {q₀ : ℚ} (x : S.Hist q₀ τ), S.zc x →
     q₀ ∈ V.Pools → V.activeState q₀ τ →
     ∀ s : Finset (Σ c : DCellAll V τ, Σ D : ℕ, Hpt D),
       ∑ ch ∈ s, μcellH V X x ch.1 ch.2 ≤ 1
+  fh_exact : ∀ {τ : S.Cell} {q₀ : ℚ} (x : S.Hist q₀ τ), S.zc x →
+    q₀ ∈ V.Pools → V.activeState q₀ τ →
+    ∀ H : ℕ,
+      (∑' ch : {ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D //
+          (∑ i, ch.2.2 i) < H}, μcellH V X x ch.1.1 ch.1.2)
+        + (∑' ch : {ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D //
+            H ≤ ∑ i, ch.2.2 i}, μcellH V X x ch.1.1 ch.1.2) = 1
 
 theorem part1_ctbl {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     {V : CtsMeasured n C S} (X : XHDw n S)
