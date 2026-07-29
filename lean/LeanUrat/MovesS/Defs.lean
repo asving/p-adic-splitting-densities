@@ -374,6 +374,49 @@ structure RatBurdens (T : TableShape n) (M : MeasuredSide T) where
     ((cellP e τ c).eval q₀ : ℚ) = ((M.cellInst e τ c q₀ (M.cellLvl e τ c)).card : ℚ)
   act_iff : ∀ q₀ ∈ M.Pools, ∀ e ∈ Finset.Icc 1 n, ∀ τ : T.State e,
     M.activeState q₀ e τ ↔ ∀ c : M.Cell e τ, (cellP e τ c).eval q₀ ≠ 0
+  -- (J-RAT) PER-CELL tables (ratification 2026-07-28 finding 3).  PLAN-SYNC's
+  -- deliverable is "the PER-CELL rational tables (per branching digit cell of each
+  -- outcome class o at each state τ …) — a deliverable BEYOND PART-1's TOTAL
+  -- cell-partition mass"; the note's J display: "J_{τ,o}(q) := the CELL-LEVEL
+  -- resummed branching mass — the sum, over the branching digit CELLS of outcome
+  -- class o at state τ, of the XHD-resummed conditional cell mass …, EACH CELL
+  -- ONCE" (MOVES 11699–11703).  The measured per-cell carrier EXISTS: `M.Cell`
+  -- with mass `M.μcell` (representative-quantified exactly as `rep_indep`).
+  -- Owner stays [1v]: the tables ride as data/hypotheses, never proved here.
+  jPCell : ∀ e (τ : T.State e), M.Cell e τ → PolyGeom
+  jcell_ok : ∀ e (τ : T.State e) (c : M.Cell e τ) (q₀ : ℚ), q₀ ∈ M.Pools →
+    (jPCell e τ c).val ∈ OKat q₀
+  jcell_interp : ∀ e (τ : T.State e) (c : M.Cell e τ) (x : M.Rep e τ) (q₀ : ℚ)
+    (h : q₀ ∈ M.Pools), routeOf (T.odata e τ (M.cellOut e τ c)) = .split →
+    M.activeState q₀ e τ →
+    ((evalAt q₀ ⟨(jPCell e τ c).val, jcell_ok e τ c q₀ h⟩ : ℚ) : ℝ)
+      = M.μcell e τ x c q₀
+  jcell_sum : ∀ e (τ : T.State e) (o : T.Out e τ), routeOf (T.odata e τ o) = .split →
+    ∑ c ∈ M.cells e τ o, (jPCell e τ c).val = (jP e τ o).val
+
+/-- (iv)-POLY VALUE LAWS (ratification 2026-07-28 finding 5).  CL-6: "T is one
+polynomial of degree ≤ W_loc(m) and each cell size one polynomial of degree
+≤ W_state(s), valued correctly at every prime power — CTS-M(iv)-POLY (CL-6, with
+V.2's EXPONENT-MAP AUDIT)" (MOVES 12129–12132).  `PolyGeom` alone leaves
+`countT`/`countS` arbitrary — only their product is interpolated (`tg_interp`), so
+both could be absorbed into `geom`.  This record pins the VALUES: `countS` against
+the cell-count carrier MeasuredSide DOES have (`cellInst`/`cellLvl`, the
+`cellP_count` carrier), aggregated over the outcome's cell fiber exactly as
+`rep_indep` aggregates masses; `countT` against the T-table count carrier `tCount`
+— carried HERE as ℕ-valued data because MeasuredSide has no per-outcome T-count
+field.  SEAM RESIDUE (recorded, not typed): `tCount`'s event-side identification
+with the CTS/[1] count tables and V.2's exponent-map audit needs §V-TABLES
+vocabulary — the MovesV seam (wave 4).  Consumed by the `_counted` variants
+(CountLaws.lean); never self-supplied. -/
+structure PolyGeomLaws (T : TableShape n) (M : MeasuredSide T)
+    (RB : RatBurdens T M) where
+  tCount : ∀ e (τ : T.State e), T.Out e τ → ℚ → ℕ
+  tcount_val : ∀ e (τ : T.State e) (o : T.Out e τ), ∀ q₀ ∈ M.Pools,
+    (RB.tgP e τ o).countT.eval q₀ = (tCount e τ o q₀ : ℚ)
+  scount_val : ∀ e (τ : T.State e) (o : T.Out e τ), ∀ q₀ ∈ M.Pools,
+    M.activeState q₀ e τ →
+    (RB.tgP e τ o).countS.eval q₀
+      = ∑ c ∈ M.cells e τ o, ((M.cellInst e τ c q₀ (M.cellLvl e τ c)).card : ℚ)
 
 variable {M : MeasuredSide T}
 
@@ -534,13 +577,23 @@ structure Shape (T : TableShape n) where
 structure ShapeFam (T : TableShape n) where
   Sh : Finset (Shape T)
 
-/-- The δ-factor pool: split-leg δ's over the full roster ∪ the shape legs' δ's. -/
+/-- The δ-factor pool: CONSUMED split-leg δ's over the full roster ∪ the shape
+legs' δ's.  CONTINUING members only (ratification 2026-07-28 finding 2 — the
+over-collection was a silent strengthening): the note's E0 quantifier ranges over
+"δ ranging over 1 AND every base-change index a β_{e_j,τ_j}(q^{δ_j}) leg of
+b_e^split or RS.1-SH consumes" (MOVES 12165–12166), and b_e^split's display
+evaluates β ONLY at block-state members — "τ-halted members contribute FACTOR 1
+with σ_j their verdict value … β is evaluated only at block-state members"
+(MOVES 11696–11698).  A halted member's δ indexes NO consumed β leg, so it must
+not enlarge the E0/ACT pool burden; hence the `status.isRight` filter. -/
 noncomputable def deltaFactors (T : TableShape n) (F : ShapeFam T) : Finset ℕ+ :=
   ((Finset.Icc 1 n).biUnion fun e =>
     (Finset.univ : Finset (T.State e)).biUnion fun τ =>
       (Finset.univ : Finset (T.Out e τ)).biUnion fun o =>
         if routeOf (T.odata e τ o) = .split
-        then ((T.odata e τ o).mem.map Member.δ).toFinset else ∅)
+        then (((T.odata e τ o).mem.filter (fun μ => μ.status.isRight)).map
+          Member.δ).toFinset
+        else ∅)
   ∪ F.Sh.biUnion fun Ŝ => Finset.image Ŝ.δOf Finset.univ
 
 /-- MULTIPLICATIVE CLOSURE (R17, DELTA-ABS): all products of AT MOST n factors from

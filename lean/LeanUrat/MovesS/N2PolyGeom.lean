@@ -115,6 +115,10 @@ private lemma n2ιP_val (e : ℕ) (τ : n2T.State e) (ε : n2M.EntShape e τ) :
     (n2ιP e τ ε).val = 1 := by
   simp [n2ιP, PolyGeom.val]
 
+private lemma pgOne_val : pgOne.val = 1 := by
+  unfold pgOne
+  rw [pgDiv_val, map_one, div_one]
+
 /-! ### The route fact (no split outcomes anywhere in the n = 2 table) -/
 
 private lemma n2_route_ne_split (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) :
@@ -175,6 +179,16 @@ noncomputable def n2RB : RatBurdens n2T n2M where
   cellP_nonzero := fun _ _ _ _ => one_ne_zero
   cellP_count := sorry -- OWNED: n2_activity (blocked on n2M.cellInst/cellLvl)
   act_iff := sorry -- OWNED: n2_activity (blocked on n2M.activeState)
+  -- (J-RAT) per-cell tables (ratification 2026-07-28 finding 3): the n = 2 table
+  -- has NO split outcome at any layer (n2_route_ne_split), so both laws are
+  -- guard-vacuous; the per-cell presentation data is the constant 1-presentation.
+  jPCell := fun _ _ _ => pgOne
+  jcell_ok := fun _ _ _ q₀ _ => by
+    show pgOne.val ∈ OKat q₀
+    rw [pgOne_val]; exact one_mem _
+  jcell_interp := fun e τ c _ _ _ hsplit _ =>
+    absurd hsplit (n2_route_ne_split e τ (n2M.cellOut e τ c))
+  jcell_sum := fun e τ o hsplit => absurd hsplit (n2_route_ne_split e τ o)
 
 /-- The symbolic variable q (the RatFunc X). -/
 noncomputable def qX : Qq := algebraMap (Polynomial ℚ) Qq Polynomial.X

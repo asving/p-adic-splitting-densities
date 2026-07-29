@@ -30,6 +30,16 @@
   "D12 F1 `etaData_reprOf` conclusion written `= i.1` (display coercion, as D7).",
   "D13 T1a's 'plus the base' clause split into its own named theorem `tree_root_of_mem`."
  ],
+ "ratification_repairs_2026-07-28": {
+  "source": "Codex ratification pass (5 crit / 1 gap; verdict at lean/notes/MOVESD_RATIFY_CODEX_2026-07-28.md), orchestrator-adjudicated; all additive, statement fence intact, all new decls PROVED Lean-core (no sorry)",
+  "D1_gamTie_STR": "OVERRULED (stage = STR x absolute, C.1.0(c) note 3635-3645; L3's display note 4707 is stage-scale per note 3461). Seal: SW2_scaleCoherence.lean (lineS_at_jstar, gamTie_stage_form) + gamTie docstring ruling.",
+  "D2_polpin": "ACCEPTED as seam typing W4-5: PolPin.lean OffsetPPin (Realizes seam-residue field + L1 totality + realizer-nonzero laws; OffsetPPin.lift_ne_zero non-vacuity witness; CD_canonical pinned specialization). Discharge owner HC-1.",
+  "D3_prefidx": "core OVERRULED (EtaData/PrefIdx/PresentNorm = the faithful REV-4 Fable#2 C1 design); residue ACCEPTED: F2_absCount.lean (etaGalSetoid policy-free Galois setoid on PrefSetAny; card_classes_abs under hnorm — full bijection PROVED, no inequality-half fallback needed).",
+  "D4_empty_event": "ACCEPTED: Defs.lean Presented.eventO/multO (reads = [] dispatch mirroring Shape.CD) + D14c_emptyEvent.lean (eventO_empty_shape, eventO_eq_event, multO_eq_mult, eventO_empty_law; A'(nil) = 0 verified via D14a A'_nil, not forced). Existing D2a/D3b/D12/D13/D14b untouched.",
+  "D5_npid": "ACCEPTED: NPv_npid.lean (NthrSup, NPIDPin — W4-4 typed; noteNP = L12's own piecewise threshold; NP_eq_noteNP, NP_le_of_noteNP_le, noteNP_le_iff, D4R4_all_noteRange on L12's own range). CHARGE DEVIATION recorded in noteNP_le_iff docstring: the charge's bare guarded quantifier is weaker than L12's range on the empty branch (N = 0), so the wrapper quantifies over noteNP <= N verbatim.",
+  "D6_gates_classifier": "ACCEPTED: G2_gatesClassifier.lean (PhatStarShape : Shape 3; Prop-def obligations Gate_CD_q2 = 3, Gate_CD_q3 = 48, Gate_multOne, Gate_eventCount + the four sealed levels 384/3072/3888/104976 — note 5344-5372). NOT typed (documented): FC8/FC9 partition checks (census stratum vocabulary). Owner HC-1/HC-2.",
+  "seam_roster": "Defs.lean SEAM DECLARATION updated: W4-4 now TYPED at NPIDPin; W4-5 (POL-PIN) added."
+ },
  "statement_fence": "No statement weakening; hypothesis_fields exactly per blueprint §4 (E9 hypothesis-free per REV 9; hnorm on CD_eq/card_classes/D4R2'/D4R2'_full; hmt0+hw0 on SW1; hne/hA on the mass laws; hN/hm on the empty units; T/hex on D4R4_all/TW).",
  "counts": {"files": 51, "defs_files": 1, "unit_files": 49, "core_units": 48, "addendum_units": 1, "sorries": 74, "blocked": 0},
  "units": [

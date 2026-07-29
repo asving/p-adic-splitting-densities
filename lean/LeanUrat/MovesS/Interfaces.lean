@@ -60,13 +60,64 @@ structure RS1Bundle (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M
     (σ' : Multiset T.VType) (q₀ : ℚ), q₀ ∈ M.Pools →
     βfull e he h_ent τ σ' q₀ = βmeas e he h_ent τ σ' q₀
 
+/-- CTS-M(ii-c)'s CONSUMED-LEG read-off gate at ONE pool (ratification 2026-07-28
+finding 1).  The note: "At every NON-all-active pool q₀ (the wild pools; finitely
+many per e) the symbolic solve is read on the ACTIVE subsystem: CTS-M(ii-c)'s
+ACTIVE-VALUE AGREEMENT burden (weakened form, REV 7), PER POOL … the sealed check
+that the evaluated object's q₀-value (R_σ(p) at δ = 1; a β_{e_j,τ_j}(p^{δ_j}) leg
+at δ > 1 — after cancellation where needed) equals the active-subsystem solve
+there must pass BEFORE it may be read off; a pole SURVIVING cancellation at a
+wild pool is (ii-c)'s FAIL" (MOVES 12205–12214).  This is EXACTLY
+`ReadOffBundle.read`'s clause at one pool, existentially packaged per block
+(mirroring `RegP`'s `Nonempty (PoolHyp …)`): some per-pool package through which
+every block's symbolic solve passes `AVAgree` against the measured exit vector.
+Junk-block determinants stay census-side: "the junk-block determinants
+det(I − D_{q₀}) are RECORDED (a zero is a FINDING, not by itself a FAIL; a
+blanket det(I − D_{q₀}) ≠ 0 is NOT required)" (MOVES 12208–12210) — accordingly
+NO determinant burden on the inactive block appears here.  Declared HERE rather
+than in Defs.lean (charge S1(a) placement deviation, recorded): `blockSolve` and
+`bhatMeas` live strictly downstream of Defs in the import graph. -/
+def LegAgree (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M)
+    (hdc : DegCons T) (hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e)
+    (hdet : DetHyp T RB hK)
+    (βm : ∀ e, e ∈ Finset.Icc 1 n → ℕ → T.State e → Multiset T.VType → ℚ → ℝ)
+    (q₀ : ℚ) : Prop :=
+  ∀ e (he : e ∈ Finset.Icc 1 n), ∃ P : PoolHyp T M RB e (hK e he) q₀,
+    ∀ (τA : P.Act) (σ' : Multiset T.VType) (h_ent : ℕ),
+      AVAgree P (blockSolve T RB hdc hK hdet e he (↑τA) σ')
+        (bhatMeas P (fun e' he' => βm e' he' h_ent) σ') τA
+
+/-- CL-17 duty (ii)'s statable core in the chain's OWN vocabulary (ratification
+2026-07-28 finding 4; R57).  The note: "CL-17 duty (ii) — that every W_Ŝ is
+PRODUCED by the stated rational machinery (C.1.5 node volumes × CTS/[1] counts ×
+XHD-s shallow height sums, with (SIB)'s COUNT face across shallow splits) —
+remains OPEN here: the machinery is displayed, ENT-COUNT/INIT-RAT are its
+[1v]-side burdens, and the capstone may not be accepted while it is open (CL-17)"
+(MOVES 12095–12099).  Statable with the typed shallow carriers: at every shape
+and pool, (i) the W-presentation evaluates to the W-value, and (ii) the W-value
+IS the height sum of the shallow weights over the shape's height domain — the
+XHD-s shallow-height-sum face of the production law.  SEAM RESIDUE (recorded,
+not typed): the factorization of `shWeightH` itself into C.1.5 node volumes ×
+CTS/[1] counts with (SIB)'s COUNT face needs §V-TABLES vocabulary — the MovesV
+seam (wave 4). -/
+def W17ii (T : TableShape n) (M : MeasuredSide T) (F : ShapeFam T)
+    (WshP : Shape T → PolyGeom) (WshVal : Shape T → ℚ → ℝ)
+    (shDom : Shape T → Set M.Hgt) (shWeightH : Shape T → M.Hgt → ℚ → ℝ) : Prop :=
+  ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools,
+    (∃ hok : (WshP Ŝ).val ∈ OKat q₀,
+      ((evalAt q₀ ⟨(WshP Ŝ).val, hok⟩ : ℚ) : ℝ) = WshVal Ŝ q₀) ∧
+    HasSum (fun h : shDom Ŝ => shWeightH Ŝ (↑h) q₀) (WshVal Ŝ q₀)
+
 /-- RS.4's chain — the FULL displayed inherited set as explicit components (R2-19),
 σ-index = verdict multisets (R2-11).  `pools_e0` is RE-SCOPED to all-active BASE
 pools (R51); `legs_reg` carries CL-1's full per-pool quantifier at EVERY base prime
-(R21); `wsh_ok` is denominator regularity ONLY (R53) — CL-17(ii)'s production burden
-is the seam pin W17ii (S-8), its inheritance the NAMED TYPED field `wsh17_pin`
-(R57): wave 4 instantiates it with W17ii's statement; U-28 takes `h17 : C.wsh17_pin`
-as an explicit premise; NO unconditional marking while it is open. -/
+(R21); `legs_read` adds (ii-c)'s ACTIVE-VALUE AGREEMENT burden at the consumed
+non-all-active pools (ratification 2026-07-28 finding 1); `wsh_ok` is denominator
+regularity ONLY (R53) — CL-17(ii)'s production burden is `W17ii` above, its
+inheritance the projection-def `RS4Chain.wsh17_pin` below (R57, retyped from the
+degenerate bare-`Prop` field at ratification finding 4): U-28 takes
+`h17 : C.wsh17_pin` as an explicit premise; NO unconditional marking while it is
+open. -/
 structure RS4Chain (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M)
     (hdc : DegCons T) (hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e)
     (F : ShapeFam T) where
@@ -79,11 +130,21 @@ structure RS4Chain (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M)
   pools_e0 : ∀ e (he : e ∈ Finset.Icc 1 n), ∀ q₀ ∈ PrimePools ∩ allActivePools M,
     Nonempty (PoolHyp T M RB e (hK e he) q₀)
   legs_reg : ∀ p : ℕ, (p : ℚ) ∈ PrimePools → RegP T M RB p hK F
+  /-- The CONSUMED-LEG read-off gate — the note's PER-POOL weakened (ii-c) at
+  every non-all-active (wild) consumed pool: "the sealed check that the evaluated
+  object's q₀-value … equals the active-subsystem solve there must pass BEFORE it
+  may be read off" (MOVES 12205–12214).  `legs_reg` supplies E0/ACT at the
+  consumed pools; THIS field adds the agreement burden there.  Scope: exactly the
+  non-all-active pools (at all-active pools the gate is `ReadOffBundle`'s duty,
+  U-24b).  Junk-block determinants stay census-side: RECORDED, never required
+  nonzero (MOVES 12208–12210). -/
+  legs_read : ∀ p : ℕ, (p : ℚ) ∈ PrimePools → ∀ δ ∈ consumedDeltas T F,
+    ((p : ℚ) ^ (δ : ℕ)) ∉ allActivePools M → ∀ hdet : DetHyp T RB hK,
+      LegAgree T M RB hdc hK hdet B.βmeas ((p : ℚ) ^ (δ : ℕ))
   Sigmas : Finset (Multiset T.VType)
   sig_exact : ∀ σ, σ ∈ Sigmas ↔ (σ.map fun v => ((T.vdeg v : ℕ))).sum = n
   WshP : Shape T → PolyGeom
   wsh_ok : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools, (WshP Ŝ).val ∈ OKat q₀
-  wsh17_pin : Prop
   WshVal : Shape T → ℚ → ℝ
   wsh_interp : ∀ Ŝ (hŜ : Ŝ ∈ F.Sh), ∀ q₀ (h : q₀ ∈ M.Pools),
     ((evalAt q₀ ⟨(WshP Ŝ).val, wsh_ok Ŝ hŜ q₀ h⟩ : ℚ) : ℝ) = WshVal Ŝ q₀
@@ -113,6 +174,21 @@ structure RS4Chain (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M)
     ∃ hok : Rsh T M RB hdc hK hdet F WshP σ ∈ OKat p,
       ((evalAt p ⟨Rsh T M RB hdc hK hdet F WshP σ, hok⟩ : ℚ) : ℝ) = Rval σ p
 
+/-- CL-17(ii)'s inheritance pin — RETYPED at ratification 2026-07-28 finding 4
+(R57): the old bare FIELD `wsh17_pin : Prop` was degenerately satisfiable
+(`True` worked) and connected to none of `WshP`/`shDom`/`shWeightH`/the height
+sum.  It is now a PROJECTION-NAMED def whose content is `W17ii` at the chain's
+OWN carriers — so U-28's premise `h17 : C.wsh17_pin` stays byte-identical while
+no instance can weaken the burden (it is no longer instance-supplied data).  The
+n = 2 gate's substantive `n2Wsh17Device` is exactly this Prop at the device
+carriers (discharged sorry-free at unit `n2_rsh`).  R57 discipline unchanged:
+the checksum consumes `h17` as an explicit OPEN premise; NO unconditional
+marking while W17ii is open. -/
+def RS4Chain.wsh17_pin {T : TableShape n} {M : MeasuredSide T} {RB : RatBurdens T M}
+    {hdc : DegCons T} {hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e} {F : ShapeFam T}
+    (C : RS4Chain T M RB hdc hK F) : Prop :=
+  W17ii T M F C.WshP C.WshVal C.shDom C.shWeightH
+
 /-- R23: the read-off bundle U-24b consumes — coordinate coverage as TYPED DATA.
 EVERY e ∈ Icc 1 n, EVERY τA : Act (= every τ — the pools are all-active), EVERY σ',
 every h_ent: total coordinate coverage, auditable from the type. -/
@@ -126,5 +202,30 @@ structure ReadOffBundle {T : TableShape n} {M : MeasuredSide T}
     ∀ τA : (pkg q₀ hq e he).Act, ∀ σ' : Multiset T.VType, ∀ h_ent : ℕ,
     AVAgree (pkg q₀ hq e he) (blockSolve T RB hdc hK hdet e he (↑τA) σ')
       (bhatMeas (pkg q₀ hq e he) (fun e' he' => B.βmeas e' he' h_ent) σ') τA
+
+/-- S1's factoring (ratification 2026-07-28 finding 1): a `ReadOffBundle` IS the
+per-pool gate over its scope — `read` restricted to one pool is `LegAgree` there,
+with the bundle's `pkg` witnessing the existential.  Together with
+`ReadOffBundle.ofLegAgree` below this proves `ReadOffBundle`'s burden equal to
+"∀ q₀ ∈ S, LegAgree …" with NO field change. -/
+theorem ReadOffBundle.legAgree_forall {T : TableShape n} {M : MeasuredSide T}
+    {RB : RatBurdens T M} {hdc : DegCons T}
+    {hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e}
+    {S : Set ℚ} {hS : S ⊆ allActivePools M} {B : RS1Bundle T M RB hdc hK}
+    {hdet : DetHyp T RB hK} (R : ReadOffBundle S hS B hdet) :
+    ∀ q₀ ∈ S, LegAgree T M RB hdc hK hdet B.βmeas q₀ :=
+  fun q₀ hq e he =>
+    ⟨R.pkg q₀ hq e he, fun τA σ' h_ent => R.read q₀ hq e he τA σ' h_ent⟩
+
+/-- The converse: choice reassembles the per-pool packages into a bundle. -/
+noncomputable def ReadOffBundle.ofLegAgree {T : TableShape n} {M : MeasuredSide T}
+    {RB : RatBurdens T M} {hdc : DegCons T}
+    {hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e}
+    (S : Set ℚ) (hS : S ⊆ allActivePools M) (B : RS1Bundle T M RB hdc hK)
+    (hdet : DetHyp T RB hK)
+    (h : ∀ q₀ ∈ S, LegAgree T M RB hdc hK hdet B.βmeas q₀) :
+    ReadOffBundle S hS B hdet where
+  pkg := fun q₀ hq e he => (h q₀ hq e he).choose
+  read := fun q₀ hq e he τA σ' h_ent => (h q₀ hq e he).choose_spec τA σ' h_ent
 
 end LeanUrat.MovesS

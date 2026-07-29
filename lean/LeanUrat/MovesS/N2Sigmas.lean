@@ -991,10 +991,12 @@ private lemma n2_rsh_interp : ∀ σ ∈ n2SigmasSet, ∀ p ∈ n2PrimePools,
     rw [if_neg (fun h => n2_sigma_ne_3 h.symm), if_neg (fun h => n2_sigma_ne_2 h.symm)]
     norm_num
 
-/-- The device W17ii height-sum instance (the `wsh17_pin` VALUE at the gate; unit
-`n2_rsh`'s definitional pin per blueprint §3 S5: "wsh17_pin (at the gate := the
-device W17ii height-sum instance …; at wave 4 := W17ii's real statement, R57)").
-This is the §2.E `W17ii` display's CONCLUSION instantiated at the device carriers
+/-- The device W17ii height-sum instance.  Since ratification 2026-07-28 finding 4
+this is no longer a field VALUE: `RS4Chain.wsh17_pin` is a PROJECTION-DEF equal to
+`W17ii` at the chain's carriers, and this Prop is definitionally
+`n2ChainCore.wsh17_pin` (the device carriers below are literals).  Discharged
+sorry-free at unit `n2_rsh` (N2Rsh.lean).
+This is the `W17ii` display's CONCLUSION instantiated at the device carriers
 (`WshP ≡ n2OnePG`, `WshVal ≡ 1`, `shDom ≡ {0}`, `shWeightH ≡ 1` — the literals the
 core's fields reduce to): at every shape and pool, the W-presentation evaluates to
 the W-value AND the height weights over the height class sum to that value.  The
@@ -1031,11 +1033,17 @@ noncomputable def n2ChainCore : RS4Chain n2T n2M n2RB n2hdc n2hK n2F where
   legs_reg := n2_legs_reg
   Sigmas := n2SigmasSet
   sig_exact := n2_sig_exact
+  -- legs_read (ratification 2026-07-28 finding 1): VACUOUS at the gate — every
+  -- consumed pool p^δ lies in n2M.Pools (pools_closed) and every n2 state is
+  -- active at every pool, so NO non-all-active consumed pool exists.
+  legs_read := fun p hp δ _ hnot _ =>
+    absurd ⟨n2M.pools_closed (p : ℚ) (n2_prime_sub hp) δ, fun _ _ _ => trivial⟩ hnot
   -- DEVICE 1-presentation fields (unit n2_wshp_device, R46/R52 — data below at n2OnePG):
   WshP := fun _ => n2OnePG
   wsh_ok := fun _ _ q₀ _ => n2OnePG_val_mem q₀
-  -- OWNED: n2_rsh (the gate's device-W17ii discharge, R57 — value = n2Wsh17Device above):
-  wsh17_pin := n2Wsh17Device
+  -- (wsh17_pin is NO LONGER a field — ratification finding 4: it is the
+  -- projection-def RS4Chain.wsh17_pin = W17ii at these carriers = n2Wsh17Device,
+  -- discharged at unit n2_rsh.)
   WshVal := fun _ _ => 1
   wsh_interp := fun _ _ q₀ _ => by
     show ((evalAt q₀ ⟨n2OnePG.val, n2OnePG_val_mem q₀⟩ : ℚ) : ℝ) = 1

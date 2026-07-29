@@ -28,8 +28,15 @@ SEAM DECLARATION [REV 9, §2.5 W4-SYNC — NOT BUILT AT E-PHASE]:
 * D15 (W4-3, the D4R_CYL consumer side) has NO unit file; the pinned Props `D4R_CYL` and
   `ClassFiberWelldef` are declared below in their §3.4 typed forms — consumed by NOTHING
   in the E-phase core.
-* NP-ID (W4-4) is a ledger pin, no Lean object; D4R4_all's manifest entry carries the
-  conditionality pointer.
+* NP-ID (W4-4): TYPED at `NPIDPin` (unit NPv_npid, ratification repair D5 2026-07-28) —
+  the ledger pin is now a Lean object; `D4R4_all_noteRange` restates D4R4_all on L12's own
+  range through it. The pin's DISCHARGE (NPband = max-η N(η,⊤)) remains wave-4/HC-2.
+* POL-PIN (W4-5, ratification repair D2 2026-07-28): the note's ONE lift rule — the (S6b)
+  OFFSET-P-LIFT realizer (note 4646–4651) — now has the typed consumer-side pin
+  `OffsetPPin` (unit PolPin). Its `Realizes` field is the seam residue (weight/residue
+  reduction = §B2-DEF/HC-1 vocabulary); the here-statable laws (L1 totality + genuine
+  realizers) are typed. Consumers: NO existing theorem changed; `CD_canonical` (PolPin)
+  is the pinned specialization.
 
 E-phase elaboration deviations are catalogued in `MANIFEST.json` ("deviations").
 -/
@@ -144,7 +151,12 @@ history's shape carries it — nothing of the note's universe is lost.
 [REV 7, Codex#5 c.1]: `gamTie` (the γ-tie at the chain stretch — mirrors
 `HistoryCoherent`'s clause verbatim; [REV 9, Codex#7 c.1 PUSHBACK]: the STR factor IS
 MovesC round-4 finding 11 role (ii), stage scale = STR × absolute, C.1.0(c); flagged for
-the ratification pass — the gate has strS = 1 throughout) and `anchorTie` (Node.hAnchor
+the ratification pass — the gate has strS = 1 throughout. RATIFICATION RULING 2026-07-28:
+finding D1 OVERRULED — the note's L3 display "γ_r := e_r·u*_r + j*_r·h_r" (note 4707) is at
+STAGE scale (§C C.0 marks γ_i "(augmented scale)", note 3461) while `ustar` is recorded
+ABSOLUTE (MovesC Node, C.1.0(c) Scale declaration, note 3635–3645: stage = STR × absolute),
+so the STR factor here is the scale conversion, not a deviation; the machine-checked
+coherence seal is unit SW2_scaleCoherence) and `anchorTie` (Node.hAnchor
 at THE canonical Bézout coefficient `bezT`, D.3(c)'s stride anchor). -/
 structure ShapeWF (n : ℕ) (P : ShapePrefix) : Prop where
   species_iff : ∀ (r : ℕ) (hr : r < P.reads.length),
@@ -488,6 +500,25 @@ def Presented.event (S : Presented p F n N m pol P) : Set (Box p m) := ⋃ i, S.
 /-- The multiplicity mult_P̂(f) = #{classes whose fiber contains f}. -/
 noncomputable def Presented.mult (S : Presented p F n N m pol P) (x : Box p m) : ℕ :=
   Nat.card {i : PrefIdx n pol P // x ∈ S.fiber i}
+
+open Classical in
+/-- [RATIFICATION REPAIR D4, 2026-07-28] **The ∅-COMPLETE event** — L5 (note ~4796): the
+EMPTY prefix η = ∅ is INCLUDED, "S(∅,⊤) = the box (§C C.0's EMPTY HISTORY clause
+T(∅, Z) := Z, at Z = ⊤: no constraint)" — the base of L6. `Presented.event` is
+PrefIdx-indexed and the History type has no empty chain (F3's displayed deviation), so at
+`reads = []` it returns ∅; THIS object dispatches on `reads = []` exactly as `Shape.CD`
+does, returning the FULL BOX there and agreeing with `event` on every nonempty shape
+(unit D14c). -/
+def Presented.eventO (S : Presented p F n N m pol P) : Set (Box p m) :=
+  if (P : ShapePrefix).reads = [] then Set.univ else S.event
+
+open Classical in
+/-- [RATIFICATION REPAIR D4, 2026-07-28] **The ∅-COMPLETE multiplicity** — L5/L6/L12:
+"Pref(∅) = {∅}", so mult_∅(f) = #{η ∈ {∅} : η ∈ T_can(f)} ≡ 1 (the root's presence is
+L2's law, `TreeModel.root_mem`). Same `reads = []` dispatch as `Shape.CD`/`eventO`;
+agrees with `mult` on every nonempty shape (unit D14c). -/
+noncomputable def Presented.multO (S : Presented p F n N m pol P) (x : Box p m) : ℕ :=
+  if (P : ShapePrefix).reads = [] then 1 else S.mult x
 
 end
 
