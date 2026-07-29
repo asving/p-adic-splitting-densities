@@ -522,3 +522,17 @@ run 2026-07-29 15:01:21; spec MOVES SS X-EXHAUST X.5 + X.1b; long log /tmp/x_n3_
 [PASS] Q2: quartic RS max consecutive run + main-chain ratio (measured; s(3)=2 is a CUBIC-box seal -- observation here)  max run 2, run hist {1: 3047424, 2: 147456}, max ratio 1/10 at box idx (788706, 2, 20); post-split T4 sub-chains unwalked (main-chain lower bound)
 ANALYTIC REMARK: X1B's violations = the chain-then-split double-charge (window reads of one cluster re-count the same pair differences; GMN per-order normalization subtracts this, the raw-table CUM does not); the same mechanism refutes reading A beyond box precision (f=(x-36)(x-117)(x-18) at p=3: v3(disc)=16 < 18=2*CUM, exact) -- X1A PASS is box-limited support for the COUNT form of (X.1a) only.  Adjudicate at (X1a-ALIGN)/(ALIGN-rec), never patch the seal.
 X-N3 VERDICT: 30/32 PASS, 2 FINDING
+
+=== X1B READING ADJUDICATION (orchestrator, 2026-08-01; tasks 57/58 CLOSED) ===
+The note's (CD) CERTIFIED-DEPTH pin (MOVES 10995-11009) states: d_cert counts
+ONLY nodes with positive per-side bounds (rows T1/T2) AND a DISCHARGED ALIGN
+sub-clause; "At today's discharge state (neither sub-clause displayed)
+d_cert = 0"; a row "0" means NO BOUND CERTIFIED, never actual-gain-zero.
+VERDICT: reading A (the mu>=2 / certified population; 0 violations) IS the
+note's claim — SEALED. The T1-row mu*g=1-selection reading (155,648
+violations) is d_unc territory the note explicitly does NOT certify — the
+refutation confirms the note's own caution, refutes only the over-broad
+reading. NO note error; NO Lean change (MovesX was ratified under the
+certified forms). CL-2 (WEIGHT-CHARGE) is untouched: it remains the OPEN
+kernel over the FULL recentering population (MOVES 11156-11164), consumed
+by X.2/X.3 as displayed.

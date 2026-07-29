@@ -911,3 +911,9 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   4 (the final gate) IN FLIGHT on all three corpora with full verdict
   histories. On RATIFY verdicts the blueprint's DONE CRITERION is met in
   full.
+  X1B ADJUDICATED (2026-08-01, tasks 57/58 CLOSED): the note's (CD) pin
+  decides it — the failing reading counts d_unc nodes the note explicitly
+  never certifies ("d_cert ≡ 0 at today's discharge state"; row-0 = no
+  bound certified, never gain-zero). Reading A = the note's claim, SEALED
+  0-violations; the over-broad reading refuted AS the note's own caution
+  predicts. No note error; no Lean change; CL-2 untouched.
