@@ -818,3 +818,19 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   spword/instbij scopings proved; ctsm/pgLaws sorry-free). The instbij
   closer running. Remaining to the done criterion: these ratifications +
   the V ratification + the X1B adjudication (tasks 57/58) + wave D.
+  THE V RATIFICATION + THE SOUNDNESS EVENT (2026-07-30): REJECT 3N/6M with
+  M1 = a genuine INCONSISTENCY — the ADJ-2 shim (sorried
+  writeHeights_total_unscoped) coexists with its compiled negation
+  witness; False derivable; the ctsm aggregate consumed it unquarantined.
+  The orchestrator APPROVED that shim summary without catching it — the
+  lesson is now a STANDING FENCE RULE: a sorried statement whose negation
+  is proved in-tree must be DELETED or QUARANTINED (the scoped-true form
+  + threaded hypotheses is the honest shape). Also caught: the OR-True
+  escape hatch in three seam-assembly units (V7_livC's ledgerIV_inst
+  "Nonempty ∨ True" proved Or.inr — vacuity that slipped through wave A
+  as "proved"), SolveCond_Stmt reduced to True. The stop-the-line repair
+  is in flight (wf_e8a4bdf1-496). ADJUDICATIONS PENDING: M2 (the VAL(b)
+  Tgam-vs-chainCount conditionality — note read), M3 (is μhatN_law a
+  faithful carrier law or circular?), M6 (the census scope). RATIFIED
+  LOCALLY: the XHDd/Tgam keying, the HMC toy pair, the marked-event laws,
+  the table algebra, StepSys non-vacuity.
