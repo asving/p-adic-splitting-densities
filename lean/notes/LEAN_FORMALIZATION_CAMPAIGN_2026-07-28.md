@@ -492,3 +492,36 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   wf_6ddb1a99-313): per-row verification incl. recomputing the toy
   child_cover failure and the separation four-point check, ≥15
   closure-manifest entries grep-verified per leg, fresh sweeps.
+  ROUND-8 SYNTHESIS + THE REV-9 CLOSING ROUND (2026-07-29). Verdicts:
+  T Codex 6/4 ("the principal REV-8 repairs are mathematically sound" — all
+  required judgments PASS; criticals = the elaboration layer, judged partly
+  against incomplete prompt excerpts since its shell was down) + T Fable
+  0/2 (all rows real; ~80 manifest entries grep-verified, zero misses;
+  FRESH: NsBridgeStmt is now PROVABLE in-corpus — discharge-by-tautology,
+  the inverse-vacuity defect one level up; the owner's real burden — the
+  IDENTIFICATIONS of μcap/Z with the actual conditional masses — is typed
+  nowhere). V Codex 6/3 (counting tie REAL; the zc-based toy violates
+  ext_zc/zc_ne — third witness failure) + V Fable PASS 0/1 (all 12 rows
+  walked; own HMC sweep clean).
+  ORCHESTRATOR STRUCTURAL ANALYSIS (the round's key result): chasing
+  whether ext_zc + XHDd.no_stray + the chain recursion derive HMC's ⊇
+  direction — they DO NOT, failing at exactly one point: composite census
+  positivity needs a composite MARK and marks do not compose (the
+  blueprint's own "combinatorial chains need not be f-realized" gap; the
+  sweeps were right at the census layer). The same analysis PINS the legal
+  coupling mechanism: zc ≡ true everywhere, the coupling lives in the
+  census/event FIELDS (composite tinst/tevt empty at (0,0), per-step full;
+  chainCount = 2 > 0 = Tgam the signature). The zc route is BARRED
+  STRUCTURALLY — zc cannot carry branch memory (ext_zc). Codex's toy
+  objection RIGHT; Fable's walk missed ext_zc; the rev-9 design supersedes
+  both.
+  T rulings: NsBridgeStmt restructured into NsPricing + NsGrowth (open,
+  typed against the REAL cap/locus carriers — the identifications ARE the
+  fields) + nsNull_of_pricing_growth (proved in-corpus); IsLumpLocus gains
+  the literal-zero clause; the mechanical list (a-i).
+  REV 9 = THE CLOSING BLUEPRINT ROUND (wf_290ad266-9c6, charges at
+  WAVE4_REV9_CHARGES_2026-07-29.md): after it, BOTH corpora go to E-PHASE —
+  the compiler becomes the closure arbiter, the census-level toy becomes
+  decide-checkable Lean (the strongest possible verification of the
+  separation), and the dual ratification runs on AS-BUILT statements per
+  the MovesS/MovesD precedent. No further full markdown audit rounds.
