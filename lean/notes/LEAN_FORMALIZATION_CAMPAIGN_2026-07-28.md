@@ -380,3 +380,39 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   audits (Codex detached t6/v6 + two fresh Fable legs, wf_2c438758-07c),
   round-6 duties: per-row disposition verification, recomputation of the
   writer's 2^9/5^18 arithmetic, held-item judgment, seam-sync staleness.
+  ROUND-6 RESULTS + ADJUDICATIONS (2026-07-29). Verdicts: MovesT Codex 8/6 +
+  Fable 2/3; MovesV Codex 15/2 + Fable 2/4 (dispositions verified REAL by
+  Fable on both; Codex's six "not fixed" T-rows = enforcement judgments, the
+  texts exist — the two leg types are complementary, not contradictory).
+  Confirm pass on the repair diff: FLAG 3/1 — 7/10 ratified including both
+  overrules and the S4 projection-def ("fully kills the vacuous-tag
+  defect"); D2/D4/S5 flagged and re-charged (round 2).
+  ORCHESTRATOR RULINGS (direct note reads):
+  - W4-1 BDY hold OVERTURNED at the 5th raise (verifiers split): the (c2)
+    covering case-analysis (7112-7119) lives AT this layer, per LIVE TRACK —
+    the covering clause goes INTO the W4-1 contract type; the constant-
+    false-child model dies at the interface. Same per-track tie fixes
+    root_total (Codex#1 = Fable GAP-1, converged).
+  - V4-11's claimed universal ¬HMCAug REFUTED (Codex C4 verified by direct
+    construction: refine by h₁=0 — each refined domain factors). The
+    coupled toy is the SEPARATION witness: ¬HMC ∧ HMCAug — exactly the
+    note's HMC-AUG design (8213-8221). The blueprint records the
+    separation; HMC → HMCAug gets a real unit.
+  - XHD-d keyed to the note's DIRECT count T_γ (7921-23, 7947-49 verbatim),
+    NOT TReal — the rev-5→6 TReal drift was an object change; the
+    factorization stays (u-T)/HMC content, never definitional.
+  - Marked-space disjointness DERIVABLE from the mark-adjoined carrier
+    ((iv)-MEAS 8185-97): MarkDisj/MarkDisjT stop being open hypotheses.
+  - tcellM_tgt's ∀-member landing tie OVERRULED against Fable's "not
+    over-pinning" (the ∀ i quantifier forces same-skeleton siblings to one
+    map): scoped to the designated member inside omem_sel.
+  - ENT-AGG convergence = GIVEN XHD-s-shallow ONLY (8124-33); the separate
+    EntMassSummable premise struck. SolveCond gains the HMC premise (8005 +
+    8222-24). AVRec scoped to the chain's own RB/hK.
+  - Fable's two decide-refutable toy bugs (winC missing x0/x1 guards;
+    cellLevel=3 vs level-3 coords) charged with the auditor's verified fix
+    shapes.
+  IN FLIGHT (wf_b42da995-3bd): repair round 2 (D2 support/determinism laws
+  vs the t≠0 bypass; D4 dispatch wired INTO event/mult, parallel API
+  deleted; S5 count-factored _counted conclusions + degree laws) + both
+  REV-7 writers (charges at MOVEST/MOVESV_REV7_CHARGE_2026-07-29.md).
