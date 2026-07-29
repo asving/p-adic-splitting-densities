@@ -871,3 +871,19 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   (V3_entu/V3_instbijB, the M1 stop-the-line repair in flight) are
   NOT MovesT-connected (no MovesT imports) and block only the
   V-dependent MovesU tail of the full-corpus build. ***
+  THE SOUNDNESS REPAIR LANDED + THE FINAL TRI-RATIFICATION (2026-07-31).
+  The V emergency resolved with exemplary discipline: the shim DELETED and
+  the named Order0Perimeter threaded through every consumer; the three
+  ∨-True escapes deleted and restated as ∃-bundled duties (the agent
+  correctly identified that arbitrary-carrier Nonempty would be FALSE —
+  an M1 repeat avoided); SolveCond restated with real content as an
+  explicit hypothesis; the False taint GONE (axiom audit clean);
+  MovesV green 8733 jobs, sorryAx confined to 5 disclosed decls.
+  U ROUND 2 + T REPAIRS also landed (theoremU 0-sorry Lean-core with the
+  13 ownerless rows as EXPLICIT signature parameters; the T exact-cell
+  re-key rippled; 57/57 green, 6 fenced sorries).
+  IN FLIGHT: the FINAL TRI-RATIFICATION (U round 3, T round 2, V round 2
+  — each armed with its full prior-verdict history) + the MovesGr red
+  fix. On clean verdicts the DONE CRITERION is met: every sorry fenced,
+  the ledger typed and mapped, the ratifications clean, the census
+  Lean-core + the two trusted axioms.
