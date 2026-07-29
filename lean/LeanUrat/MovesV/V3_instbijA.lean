@@ -21,10 +21,11 @@
     retained pair `(R.h, zig R.gam)` to `pairSlots[r]` (`ReadFits` clauses 7–8
     + `zig.apply_symm_apply`), so the slot point is recovered from the shape.
 
-    CONDITIONALITY: consumes `writeHeights` = V3-3d's total wrapper, whose
-    `writeHeights_total` is REFUTED AS STATED and sorried (ADJ-2 / B3 owns the
-    admissible-slot-domain rescope); sorryAx flows through that one dependency
-    — the injectivity mechanics here are otherwise closed. -/
+    CONDITIONALITY: consumes `writeHeights` = V3-3d's total wrapper, which
+    rides the recorded ADJ-2 shim `writeHeights_total_unscoped` (the scoped
+    `writeHeights_total` is PROVED on the order-0 stratum; the unscoped
+    ∀-form stays refuted); sorryAx flows through that one dependency — the
+    injectivity mechanics here are otherwise closed. -/
 import LeanUrat.MovesV.V3_spwordD
 
 set_option linter.style.longLine false
@@ -160,9 +161,9 @@ theorem inst_bij_inj {n : ℕ} (εT : EntTemplate n)
   intro h₁ h₂ heq
   have hs₁ : writeHeights? εT h₁ = some (writeHeights εT h₂) := by
     rw [← heq]
-    exact (Option.some_get (writeHeights_total εT h₁)).symm
+    exact (Option.some_get (writeHeights_total_unscoped εT h₁)).symm
   have hs₂ : writeHeights? εT h₂ = some (writeHeights εT h₂) :=
-    (Option.some_get (writeHeights_total εT h₂)).symm
+    (Option.some_get (writeHeights_total_unscoped εT h₂)).symm
   exact pairSlots_inj_of_selfLoopFree hSLF
     ((writeHeights?_pairSlots hSLF hs₁).symm.trans
       (writeHeights?_pairSlots hSLF hs₂))
