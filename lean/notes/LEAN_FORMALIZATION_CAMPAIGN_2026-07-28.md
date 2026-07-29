@@ -799,3 +799,22 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   + the typed Z_p bridge. Also in flight: wave A2 (the adjudicated
   scopings). MovesSp instantiation COMPLETE (SP8: the real-TreeModel
   CanTreeModel, the n=2 non-vacuity witness, the strong verdict pin).
+  *** THE CAPSTONE RETYPE LANDED (2026-07-30): theoremU PROVED over the
+  REAL typed ledger, [propext, Classical.choice, Quot.sound] verified by
+  direct #print axioms. The 35 bare Props RETIRED; UCarriers = the actual
+  MovesS corpus; CL-1 DERIVED (RegP from legs_reg); both shortcut stacks
+  DERIVED (r_is_solve : S.R = MovesS.Rsh pins the solve — CRITICAL 3
+  dead); RegP re-keyed to the real block system + SQ.4; theoremU exports
+  R = S.R + the (U-n) bracket + the ZpBridge clause over genuine ℤ_p
+  polynomials (the e/f refinement = the disclosed HC-2 residue); the 15
+  owner-absent rows FENCED as typed statements in
+  UpstreamKernelStatements. All 7 ratification criticals + both gaps
+  discharged. A concurrent-commit sweep was repaired (the 7 working-tree
+  files committed; the module-name build scare was a false alarm —
+  abbreviated names). ***
+  IN FLIGHT: the MovesU RE-RATIFICATION (Codex, the prior verdict
+  included for per-finding verification) + the MovesT as-built
+  ratification. Wave A2 landed (4/4 — G2 fires the real F1_oneF; the
+  spword/instbij scopings proved; ctsm/pgLaws sorry-free). The instbij
+  closer running. Remaining to the done criterion: these ratifications +
+  the V ratification + the X1B adjudication (tasks 57/58) + wave D.
