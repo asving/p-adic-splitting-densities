@@ -623,3 +623,21 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
      statements vs the note+blueprints), the 22+ seam re-keys, MovesR
      unparking. The W17ii banked sorry and the disclosed boundaries
      (F1 witness, G1b transition legs, hRes-Q1) stay OPEN by design.
+  FLEET BATCH 2 LANDED (2026-07-30): 181 agents ran (the workflow pool was
+  not blocked by the session Agent-tool cap); 46 more units proved clean.
+  Wave-4 standing: ~107/155 units proved (52 fleet-clean + ~55 E-phase-
+  outright); global build green. THE OPEN SURFACE, classified from the
+  verifier reports (full detail in the batch-2 task output + journal):
+  (a) TRANSITIVE-sorryAx units — their own content proved, routing through
+  the open cores: E8 treeExp (the tree-expansion spine — consumed by
+  E10/E11), E6 fiber_seg_step (consumed by D14), C7's two (the C5-import
+  swap + the Θ finite→locus bridge), the D11 pack. These are the REAL
+  remaining mathematics of §T-ASSEMBLY's assembly spine.
+  (b) The no-edit blocked list (D4, D7 np_id pair, E5 fiber_root_split,
+  E6, E8, F3 + the V-side equivalents) — re-run/escalate next session.
+  (c) G1's 8 pin defects (charge on record), the banked W17ii, the
+  disclosed boundaries. One agent died on the StructuredOutput cap
+  (pipeline[44]); identify by diffing args vs results.
+  NEXT SESSION: the resumption plan stands (above) — escalation fleet on
+  (a)+(b) heads with fable, the G1 pin charge, then the as-built dual
+  ratification and the seam re-keys.
