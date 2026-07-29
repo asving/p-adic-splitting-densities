@@ -917,3 +917,11 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   bound certified, never gain-zero). Reading A = the note's claim, SEALED
   0-violations; the over-broad reading refuted AS the note's own caution
   predicts. No note error; no Lean change; CL-2 untouched.
+  *** ROUND 4: MOVESU RATIFIED + MOVEST RATIFIED (2026-08-01). The
+  capstone corpus (theoremU) and the assembly corpus both cleared the
+  adversarial gate — zero material defects; the wave-4 boundary records
+  judged ACCURATE (the ratifier applied the record-accuracy rule as
+  charged). MovesV at ONE more round (3M/2N): the seam-pin record
+  honesty, the ValB_Stmt realized-count re-key (the proved val_b moves
+  INTO the capstone), the TH12/TH3c census completion. X1B closed by the
+  (CD)-pin adjudication (the probe sealed the note's own reading). ***
