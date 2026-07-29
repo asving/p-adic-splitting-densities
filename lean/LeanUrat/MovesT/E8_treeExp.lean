@@ -14,20 +14,23 @@ strong induction on the chain cones via the first-split decomposition; every sit
 charged exactly once. The ∀-closure `TreeExpFin` (Defs §2.10) carries the FULL W4-1
 interface.
 
-EXECUTION RECORD 2026-07-30 (THE E8 ADJUDICATION APPLIED — ruling: candidate (1),
-PER-SITE CELL KEYING; UNIFORMITY_COMPLETION_BLUEPRINT_2026-07-30 §THE E8 ADJUDICATION,
-binding): TREE-EXP (MOVES 7440–7460) sites each carry their OWN full joint cell —
-"in general FINER than any single branch's (side,ψ) node stratum" — and the product
-charges "every site exactly once" where sibling CHILD sites are DISTINCT sites with
-distinct digit pins. The E-phase keyed `state_cell` by the SHARED PARENT state's cell
-VALUE — the machine-checked seam (`shared_split_state_forced`, bracketed below).
-Executed re-key: `state_cell`/`SitePresents`/`jc_single`/`JCmultiAt` now price the
-SITE's OWN event (`siteCellEvent es ν` — the site node's branch stratum at its
-entrance); the scaffold's frames sit AT the site (`es = .st H`, conditioning event =
-the note's Σ_c = the site's state event) with the REL.2 glue and covering clauses as
-owner faces (Defs `TreeScaffold`); the (SIB) consumption at this tree's branching
-sites is the `hsibT` row (`SibCountAt` — stateEvent-conditioned, the note's 7290–7292
-object), the global `SibCount` serving the root step through T-E5 unchanged.
+EXECUTION RECORD 2026-07-31 (THE T RATIFICATION REPAIRS APPLIED — REJECT-M verdict,
+`notes/MOVEST_RATIFY_CODEX_2026-07-30.md`; supersedes the 2026-07-30 branch-stratum
+adjudication): the ratifier's central finding — "note: exact site-owned full joint
+cell / Lean: node ∈ branchSetOf(cellOf entrance x). That discrepancy propagates
+into SitePresents, state_cell, JCmultiAt, SibCountAt, and TREE-EXP" — is repaired
+by the EXACT-CELL re-key: `siteCellEvent es c` is now Ψ^{−1}(c) over the entrance
+(MOVES 7448–7449), `c` the site's own full joint cell (`L.cellAt H`);
+`state_cell` is the exact Σ_c SCAFFOLD LAW (owner HC-2; its instance-level
+sibling-forcing obstruction — the bracketed record below — is disclosed at the
+field); `JCmultiAt` prices its side split's own cell; `SibCountAt` carries its
+conditioning cell explicitly (verdict §3 fixed) with the roster keyed by the
+frame's own SPLIT cell; and `hjcm` is CONSUMED at multi-side sites in
+`cone_charge` (verdict §4 fixed — the note declares (JC-multi) OPEN at exactly
+those sites; T-E6's `presents_imply_jcMultiAt` records that the ledger's presented
+faces already imply it, so the OPEN obligation sits inside the owner's
+presented-face discharge). The global `SibCount` serves the root step through
+T-E5 unchanged.
 
 THE F1 ALL-SITES SATISFIABILITY COMPUTATION, RE-RUN UNDER PER-SITE KEYING (the REV-6
 record was REFUTED at the leaf sites under the old keying — E8_BLOCK_CHARGE
@@ -71,15 +74,19 @@ variable {n N m : ℕ} {pol : CanonPolicy p F}
 
 The two lemmas below were PROVED Lean-core on 2026-07-29 against the E-PHASE keying
 of `state_cell` (`stateEvent T (some H) = cellEventE T CA χ (parentSt H) (cellAt H)`,
-guarded `sides H = 1`) and are the machine-checked finding that FORCED this
-adjudication: under that keying, two sibling one-side sites were forced to share
-`cellAt`, have EQUAL state events, and carry EQUAL `siteExp` — refuting the REV-6
-joint-satisfiability record at F1's leaf sites (distinct censused pins) and
-double-charging TREE-EXP's exponent sum. Codex verdict 2026-07-29 (fresh context):
-CLAIM A CONFIRMED, CLAIM C CONFIRMED conditional on the census reading — full charge
-+ verdict archived at `lean/notes/E8_BLOCK_CHARGE_2026-07-29.md`. They are RETIRED —
-not restatable against the re-keyed field (their premise no longer exists) — and
-bracketed verbatim for the record:
+guarded `sides H = 1`): under that keying, two sibling one-side sites are forced to
+share `cellAt`, have EQUAL state events, and carry EQUAL `siteExp` — contradicting
+F1's distinct censused leaf pins. Codex verdict 2026-07-29 (fresh context): CLAIM A
+CONFIRMED, CLAIM C CONFIRMED conditional on the census reading — full charge +
+verdict archived at `lean/notes/E8_BLOCK_CHARGE_2026-07-29.md`. STATUS AFTER THE T
+RATIFICATION (2026-07-31): the exact-cell keying is RESTORED as the note-faithful
+statement form (the ratifier rejected the branch-stratum escape), so this forcing
+is now a MACHINE-CHECKED INSTANCE-LEVEL OBSTRUCTION to discharging the `state_cell`
+scaffold law at co-realized sibling sites with distinct pins — a standing owner
+obligation of the blueprint G1b re-adjudication (task #44 cluster), disclosed at
+`SiteLedger.state_cell`. The pinned G1 toys discharge the law (their sibling leaf
+states coincide by table). Bracketed verbatim for the record (the `sides = 1` guard
+of their premise no longer exists as stated):
 
 ```
 theorem shared_split_state_forced (Tr : VTree p F) (T : TreeModel p F n N m pol)
@@ -219,23 +226,30 @@ private lemma coneF_card_lt (Tr : VTree p F) (H : History p F) (hH : H ∈ Tr.ch
 end AssemblyKit
 
 open Classical in
-/-- **THE CONE CHARGE** — the per-site recursion of the adjudicated assembly: for
+/-- **THE CONE CHARGE** — the per-site recursion of the ratified assembly: for
 every chain H, the count of (H's state ∩ the subtree fiber strictly below H) prices
 `p^{Σ_{H' ∈ cone(H)} siteExp H'}` against H's ENTRANCE event — every site of the cone
 charged exactly once (MOVES 7454–7456). Strong induction on the cone's card: the
-frame's `hdecomp`/`hscope` decompose the subtree fiber over the roster; `hsibT`
-(site-level (SIB), guarded k ≥ 2 — "unbranched segments never consume (JC-multi)",
-7482–7483) factorizes the children; `hglue` (REL.2's identification, 7511–7513) hands
-each realized child's factor to its own strictly smaller cone; `hcover` accounts the
-cone partition; T-E6 charges the site's own read. -/
+frame's `hdecomp`/`hscope` decompose the subtree fiber over the frame's own roster;
+`hsibT` (site-level (SIB) at the exact Σ_c, converted to the state event by the
+`state_cell` scaffold law, guarded k ≥ 2) factorizes the children; `hglue` (REL.2's
+identification, 7511–7513) hands each realized child's factor to its own strictly
+smaller cone; `hcover` accounts the cone partition; the site's own read is charged
+by the `hjcm` row at MULTI-SIDE sites ((JC-multi), the note's declared OPEN
+conditionality, MOVES 7473–7483 — CONSUMED, per the T-ratification verdict §4) and
+by T-E6 at one-side sites ((JC-single) genre, 7469–7472; "unbranched segments never
+consume (JC-multi)", 7482–7483). -/
 private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) (χ : Fin n → Fin m)
     (trackOf : Node p F → Polynomial (ZMod p))
     (L : SiteLedger Tr T CA χ) (sc : TreeScaffold Tr T CA χ L trackOf)
     (hreal : Realizes T χ Tr)
+    (hjcm : ∀ H (hH : H ∈ multiSites Tr T CA χ L) (h2 : 2 ≤ L.sides H),
+      JCmultiAt T CA χ (L.parentSt H) (L.splitAt H hH.1 h2))
     (hsibT : ∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.branchSetOf (L.cellAt H)).card →
-      SibCountAt T CA H (L.cellAt H) (sc.splitFrame H hH).S) :
+      2 ≤ (CA.branchSetOf (sc.splitFrame H hH).c).card →
+      SibCountAt T CA χ (L.parentSt H) (L.cellAt H)
+        (sc.splitFrame H hH).c (sc.splitFrame H hH).S) :
     ∀ (k : ℕ) (H : History p F) (hH : H ∈ Tr.chains), (coneF Tr H).card ≤ k →
       Nat.card ↥(stateEvent T (some H) ∩ SFset Tr T trackOf H)
           * p ^ (∑ H' ∈ coneF Tr H, L.siteExp H')
@@ -248,20 +262,20 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
   obtain ⟨x₀, hx₀⟩ := hreal
   have hx₀st : ∀ K ∈ Tr.chains, x₀ ∈ stateEvent T (some K) :=
     fun K hK => ((hx₀.1 K).mp hK).2.1
-  obtain ⟨hes, hc, hje⟩ := sc.hframe H hH
+  obtain ⟨hes, hje⟩ := sc.hframe H hH
   -- ==== the frame decomposition: state ∩ SF = state ∩ ⋂_{roster} S ν ====
   have hdec : stateEvent T (some H) ∩ SFset Tr T trackOf H
       = stateEvent T (some H)
-        ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν := by
+        ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν := by
     have h0 := (sc.splitFrame H hH).hdecomp
-    rw [hes, hc, sc.hscope H hH] at h0
+    rw [hes, sc.hscope H hH] at h0
     have hent : entEvent T χ (EntSt.st H : EntSt p F n) = stateEvent T (some H) := rfl
     rw [hent] at h0
     calc stateEvent T (some H) ∩ SFset Tr T trackOf H
         = SFset Tr T trackOf H ∩ stateEvent T (some H) := Set.inter_comm _ _
       _ = _ := h0
   -- ==== the realized-children roster J + the per-child choice data ====
-  set J := (CA.branchSetOf (L.cellAt H)).filter
+  set J := (CA.branchSetOf (sc.splitFrame H hH).c).filter
     (fun ν => (sc.splitFrame H hH).S ν ≠ Set.univ) with hJdef
   have hpc : ∀ ν : {ν // ν ∈ J}, ∃ hν : ChildRoot (some H) ν.1,
       childHist (some H) ν.1 hν ∈ Tr.chains ∧
@@ -270,7 +284,7 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
             {H' | H' ∈ Tr.chains ∧ (childHist (some H) ν.1 hν).IsPrefixOf H'}
             Tr.leafV Tr.nsLeaf x} := by
     rintro ⟨ν, hνJ⟩
-    have hνR : ν ∈ CA.branchSetOf (L.cellAt H) := (Finset.mem_filter.mp hνJ).1
+    have hνR : ν ∈ CA.branchSetOf (sc.splitFrame H hH).c := (Finset.mem_filter.mp hνJ).1
     have hne : (sc.splitFrame H hH).S ν ≠ Set.univ := (Finset.mem_filter.mp hνJ).2
     rcases sc.subtree_part H hH ν hνR with h | h
     · exact absurd h hne
@@ -351,20 +365,20 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
     Nat.card_pos_iff.mpr ⟨⟨x₀, hx₀st H hH⟩, inferInstance⟩
   -- ==== (★): the roster factorization prices the strict cone ====
   have hstar : Nat.card ↥(stateEvent T (some H)
-        ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+        ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
       * ∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H')
       = Nat.card ↥(stateEvent T (some H)) := by
-    rcases Nat.lt_or_ge (CA.branchSetOf (L.cellAt H)).card 2 with hk | hk
+    rcases Nat.lt_or_ge (CA.branchSetOf (sc.splitFrame H hH).c).card 2 with hk | hk
     · -- k ≤ 1: no (SIB) consumed
-      by_cases hk0 : (CA.branchSetOf (L.cellAt H)).card = 0
+      by_cases hk0 : (CA.branchSetOf (sc.splitFrame H hH).c).card = 0
       · -- k = 0: empty roster, empty J, trivial intersection
-        have hR : CA.branchSetOf (L.cellAt H) = ∅ := Finset.card_eq_zero.mp hk0
+        have hR : CA.branchSetOf (sc.splitFrame H hH).c = ∅ := Finset.card_eq_zero.mp hk0
         have hJ0 : J = ∅ := by rw [hJdef, hR]; rfl
         have hattach : J.attach = ∅ := by rw [hJ0]; rfl
         rw [hR, hattach]
         simp
       · -- k = 1: singleton roster
-        obtain ⟨ν₀, hR⟩ : ∃ a, CA.branchSetOf (L.cellAt H) = {a} :=
+        obtain ⟨ν₀, hR⟩ : ∃ a, CA.branchSetOf (sc.splitFrame H hH).c = {a} :=
           Finset.card_eq_one.mp (by omega)
         by_cases hν₀J : ν₀ ∈ J
         · have hJ1 : J = {ν₀} := by
@@ -377,7 +391,7 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
               rw [Finset.mem_singleton] at hν
               subst hν
               exact hν₀J
-          have hIcap : (⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+          have hIcap : (⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
               = (sc.splitFrame H hH).S ν₀ := by
             rw [hR]; simp
           rw [hIcap]
@@ -404,33 +418,37 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
             subst h1
             exact (Finset.mem_filter.mp hν).2 hSuniv
           have hattach : J.attach = ∅ := by rw [hJ0]; rfl
-          have hIcap : (⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+          have hIcap : (⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
               = Set.univ := by
             rw [hR]; simp [hSuniv]
           rw [hIcap, hattach]
           simp
-    · -- k ≥ 2: the site-level (SIB) row
+    · -- k ≥ 2: the site-level (SIB) row at the exact Σ_c, converted to the state
+      -- event by the `state_cell` scaffold law (the ratified conditioning-cell tie)
       have hSIB : Nat.card ↥(stateEvent T (some H)
-            ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+            ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
           * (Nat.card ↥(stateEvent T (some H)))
-              ^ ((CA.branchSetOf (L.cellAt H)).card - 1)
-          = ∏ ν ∈ CA.branchSetOf (L.cellAt H),
-              Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν) :=
-        hsibT H hH hk
+              ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1)
+          = ∏ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c,
+              Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν) := by
+        have h := hsibT H hH hk
+        unfold SibCountAt at h
+        rw [← L.state_cell H hH] at h
+        exact h
       -- split the roster product over J and its complement
-      have hJsub : J ⊆ CA.branchSetOf (L.cellAt H) := Finset.filter_subset _ _
-      have hprod : ∏ ν ∈ CA.branchSetOf (L.cellAt H),
+      have hJsub : J ⊆ CA.branchSetOf (sc.splitFrame H hH).c := Finset.filter_subset _ _
+      have hprod : ∏ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c,
           Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν)
           = (∏ ν ∈ J,
               Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν))
             * (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - J.card) := by
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - J.card) := by
         rw [← Finset.prod_sdiff hJsub]
-        have hrest : ∏ ν ∈ CA.branchSetOf (L.cellAt H) \ J,
+        have hrest : ∏ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c \ J,
             Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν)
             = (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - J.card) := by
-          have hstepu : ∀ ν ∈ CA.branchSetOf (L.cellAt H) \ J,
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - J.card) := by
+          have hstepu : ∀ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c \ J,
               Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν)
                 = Nat.card ↥(stateEvent T (some H)) := by
             intro ν hν
@@ -454,22 +472,22 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
           Finset.card_attach]
       -- assemble and cancel B^{k-1}
       refine Nat.eq_of_mul_eq_mul_right
-        (pow_pos hBpos ((CA.branchSetOf (L.cellAt H)).card - 1)) ?_
-      have hcard1 : (CA.branchSetOf (L.cellAt H)).card - J.card + J.card
-          = (CA.branchSetOf (L.cellAt H)).card :=
+        (pow_pos hBpos ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1)) ?_
+      have hcard1 : (CA.branchSetOf (sc.splitFrame H hH).c).card - J.card + J.card
+          = (CA.branchSetOf (sc.splitFrame H hH).c).card :=
         Nat.sub_add_cancel (Finset.card_le_card hJsub)
       calc Nat.card ↥(stateEvent T (some H)
-              ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+              ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
             * (∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H'))
             * (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - 1)
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1)
           = (Nat.card ↥(stateEvent T (some H)
-              ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+              ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
             * (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - 1))
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1))
             * ∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H') := by
               ring
-        _ = (∏ ν ∈ CA.branchSetOf (L.cellAt H),
+        _ = (∏ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c,
               Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν))
             * ∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H') := by
               rw [hSIB]
@@ -477,42 +495,51 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
               Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν))
             * ∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H'))
             * (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - J.card) := by
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - J.card) := by
               rw [hprod]; ring
         _ = (Nat.card ↥(stateEvent T (some H))) ^ J.card
             * (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - J.card) := by
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - J.card) := by
               rw [hJprod]
         _ = (Nat.card ↥(stateEvent T (some H)))
-              ^ ((CA.branchSetOf (L.cellAt H)).card) := by
+              ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card) := by
               rw [← pow_add]
               congr 1
               omega
         _ = Nat.card ↥(stateEvent T (some H))
             * (Nat.card ↥(stateEvent T (some H)))
-                ^ ((CA.branchSetOf (L.cellAt H)).card - 1) := by
-              conv_lhs => rw [show (CA.branchSetOf (L.cellAt H)).card
-                = 1 + ((CA.branchSetOf (L.cellAt H)).card - 1) by omega]
+                ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1) := by
+              conv_lhs => rw [show (CA.branchSetOf (sc.splitFrame H hH).c).card
+                = 1 + ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1) by omega]
               rw [pow_add, pow_one]
-  -- ==== the site's own charge (T-E6 at E = univ) ====
+  -- ==== the site's own charge: `hjcm` CONSUMED at multi-side sites ((JC-multi),
+  -- the note's declared OPEN conditionality, MOVES 7473–7483 — converted by the
+  -- `state_cell` tie + the side-union exponent tie `hsplit_exp`); T-E6 at one-side
+  -- sites ((JC-single) genre; "unbranched segments never consume (JC-multi)") ====
   have hE6 : Nat.card ↥(stateEvent T (some H)) * p ^ L.siteExp H
       = Nat.card ↥(entEvent T χ (L.parentSt H)) := by
-    have hspec : SpectatorFor (L.freshCoords H) (Set.univ : Set (Box p m)) := by
-      intro x x' _; simp
-    have h := fiber_seg_step T CA Tr χ L H hH Set.univ hspec
-    rwa [Set.inter_univ, Set.inter_univ] at h
+    by_cases h2 : 2 ≤ L.sides H
+    · have hj : Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) (L.cellAt H))
+          * p ^ (∑ j : Fin (L.splitAt H hH h2).k, (L.splitAt H hH h2).sideExp j)
+          = Nat.card ↥(entEvent T χ (L.parentSt H)) := hjcm H ⟨hH, h2⟩ h2
+      rw [L.hsplit_exp H hH h2, ← L.state_cell H hH] at hj
+      exact hj
+    · have hspec : SpectatorFor (L.freshCoords H) (Set.univ : Set (Box p m)) := by
+        intro x x' _; simp
+      have h := fiber_seg_step T CA Tr χ L H hH Set.univ hspec
+      rwa [Set.inter_univ, Set.inter_univ] at h
   -- ==== compose ====
   calc Nat.card ↥(stateEvent T (some H) ∩ SFset Tr T trackOf H)
         * p ^ (∑ H' ∈ coneF Tr H, L.siteExp H')
       = Nat.card ↥(stateEvent T (some H)
-          ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+          ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
         * (p ^ L.siteExp H
           * ∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H')) := by
         rw [hdec, hsum, pow_add]
         congr 1
         rw [Finset.prod_pow_eq_pow_sum]
     _ = (Nat.card ↥(stateEvent T (some H)
-          ∩ ⋂ ν ∈ CA.branchSetOf (L.cellAt H), (sc.splitFrame H hH).S ν)
+          ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
         * ∏ ν ∈ J.attach, p ^ (∑ H' ∈ coneF Tr (child ν), L.siteExp H'))
         * p ^ L.siteExp H := by ring
     _ = Nat.card ↥(stateEvent T (some H)) * p ^ L.siteExp H := by rw [hstar]
@@ -532,10 +559,11 @@ theorem treeExp (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (L : SiteLedger Tr T CA.toCellData χ)
     (sc : TreeScaffold Tr T CA.toCellData χ L trackOf)
     (hjcm : ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ L) (h2 : 2 ≤ L.sides H),
-      JCmultiAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.splitAt H hH.1 h2))
+      JCmultiAt T CA.toCellData χ (L.parentSt H) (L.splitAt H hH.1 h2))
     (hsibT : ∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
-      SibCountAt T CA.toCellData H (L.cellAt H) (sc.splitFrame H hH).S)
+      2 ≤ (CA.toCellData.branchSetOf (sc.splitFrame H hH).c).card →
+      SibCountAt T CA.toCellData χ (L.parentSt H) (L.cellAt H)
+        (sc.splitFrame H hH).c (sc.splitFrame H hH).S)
     (hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) :
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H)
@@ -598,7 +626,7 @@ theorem treeExp (Tr : VTree p F) (T : TreeModel p F n N m pol)
       rw [sc.hent_root _ (hheadmem i) hone_len] at hxs
       exact hxs.1
     rw [htev]
-    have hcc := cone_charge Tr T CA.toCellData χ trackOf L sc ⟨x₀, hx₀⟩ hsibT
+    have hcc := cone_charge Tr T CA.toCellData χ trackOf L sc ⟨x₀, hx₀⟩ hjcm hsibT
       (coneF Tr (oneNode (sc.root.headOf i) (sc.hcr i))).card
       (oneNode (sc.root.headOf i) (sc.hcr i)) (hheadmem i) le_rfl
     rw [sc.hent_root _ (hheadmem i) hone_len] at hcc

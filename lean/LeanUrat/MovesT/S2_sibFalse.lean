@@ -215,10 +215,17 @@ noncomputable def sibModel : TreeModel 2 (ZMod 2) 2 1 2 polTriv where
     · rw [hH]; exact laws_t1
     · rw [hH]; exact laws_t2
 
-/-- the toy cell alphabet: `true` is the branching cell (both children); `false` is empty. -/
+/-- the toy cell alphabet: `true` is the branching cell (both children); `false` is empty.
+[RATIFICATION REPAIR 2026-07-31 (verdict §8.1: "`sibCA : CellData ...` ends after
+`child_cell_red` and does not provide the newly mandatory `child_red_uniform` field.
+On the supplied source, that structure literal cannot elaborate."): the `.red` row is
+REFINED to read the `x 0` digit — the ADJ-SPINE-1 genre (G1's `.junk2` refinement):
+a CONSTANT `.red` row cannot satisfy `child_red_uniform` against the `x 0 = 0`-gated
+root-child relation. `true` on the child-carrying slice, `false` off it; the `.red`
+branch set stays honest through `child_cell_red` (roster realized on the slice). -/
 noncomputable def sibCellOf : EntSt 2 (ZMod 2) 2 → Box 2 2 → Bool
   | .amb, _ => true
-  | .red _ _, _ => false
+  | .red _ _, x => decide (x 0 = 0)
   | .st _, _ => false
 
 noncomputable def sibBranch : Bool → Finset (Node 2 (ZMod 2))
@@ -229,9 +236,12 @@ noncomputable def sibCA : CellData 2 (ZMod 2) 2 1 2 polTriv sibModel where
   Cell := Bool
   hCellFin := inferInstance
   cellOf := sibCellOf
-  cellLevel := fun _ => 0
+  cellLevel := fun _ => 1
   levelOf := fun _ => 0
-  cell_local := by intro es x x' h; cases es <;> rfl
+  cell_local := by
+    intro es x x' h
+    have hx : x = x' := funext fun c => h c (by norm_num)
+    rw [hx]
   branchSetOf := sibBranch
   child_cell := by
     intro H ν x hmem
@@ -245,7 +255,27 @@ noncomputable def sibCA : CellData 2 (ZMod 2) 2 1 2 polTriv sibModel where
     exact h.1
   child_cell_red := by
     intro χ g ψ ν x hx hν
-    exact absurd hν (by simp [sibCellOf, sibBranch])
+    show (ν = toyHead ∨ ν = sibNode2) ∧ x 0 = 0
+    by_cases h0 : x 0 = 0
+    · refine ⟨?_, h0⟩
+      rw [show sibCellOf (.red g ψ) x = true from by
+        simp [sibCellOf, h0]] at hν
+      simpa [sibBranch] using hν
+    · rw [show sibCellOf (.red g ψ) x = false from by
+        simp [sibCellOf, h0]] at hν
+      exact absurd hν (by simp [sibBranch])
+  child_red_uniform := by
+    -- [RATIFICATION REPAIR 2026-07-31, the mandatory ADJ-SPINE-1 field: the `.red`
+    --  table reads exactly the `x 0` digit, so the child-none region {x 0 = 0} is a
+    --  union of `cellOf (.red g ψ)` fibers — child behavior transports.]
+    intro g ψ x y hcell ν
+    have hkey : (x 0 = 0) ↔ (y 0 = 0) := by
+      by_cases hx0 : x 0 = 0 <;> by_cases hy0 : y 0 = 0 <;>
+        simp only [sibCellOf, hx0, hy0, decide_true, decide_false] at hcell ⊢ <;>
+        tauto
+    show (ν = toyHead ∨ ν = sibNode2) ∧ x 0 = 0 ↔
+      (ν = toyHead ∨ ν = sibNode2) ∧ y 0 = 0
+    rw [hkey]
 
 /-! ### the identical continuation events -/
 

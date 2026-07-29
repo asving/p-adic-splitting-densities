@@ -41,7 +41,22 @@ item 2). Statement/pin changes, each to the blueprint's displayed intent:
   of the de-privatized HC2/U28 `sigma0`); `toy_v8_monic` PROVED, Lean-core clean.
 * items 1/2 — `mem_realizable` A/B adjudicated BLOCKED-FALSE at the blueprint's own
   tables (the machine-checked e·g = 1 corner, `HC1.S9a_ungated_corner_refuted`);
-  sorries stand with the refutation recorded at each site. -/
+  sorries stand with the refutation recorded at each site.
+
+T RATIFICATION RECORD CORRECTION (2026-07-31; verdict §8.2, quoted: "Two of G1's
+four admissions are not merely 'Q1-gated.' The source itself labels both
+`toyModel.mem_realizable` and `toyModelB.mem_realizable`: 'BLOCKED-FALSE at the
+blueprint's own tables' … Thus the requested description 'G1's four Q1-gated — all
+disclosed' is inaccurate. Two admitted obligations are known false for their pinned
+carriers."). CORRECTED STANDING DESCRIPTION of this file's four admissions:
+* `toyModel.mem_realizable` / `toyModelB.mem_realizable` — **BLOCKED-FALSE at the
+  pinned tables** (NOT merely Q1-gated): no leaf-σ re-pin can discharge them; the
+  fix requires the blueprint-level G1b re-adjudication of the toy tables against
+  the repaired `HistoryCoherent` child keying — task #44's sign-off cluster.
+* `twoNodeKcardH` / `toy_v8_wchain` — OPEN-BLOCKED on a built card-4 `Stage 2 F4`
+  (type-level, the S9c child-stage route) — also task #44's pending 2-node
+  ReadsOf gate sub-project.
+Re-recorded in `MANIFEST.json` (RATIFY-T-2) and the campaign ledger tail. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -1325,10 +1340,15 @@ private lemma cellA_st_tA1_splitC_iff (x : Box 2 9) :
       if_neg (fun hc => hd hc.2.2)]
     exact iff_of_false (by simp) hd
 
-/- [E8 ADJUDICATION 2026-07-30, per-site cell keying: the toy presents/state_cell
-helpers are RE-KEYED to the site's OWN event (`siteCellEvent es ν`, ν the site's last
-node) — the toy events are UNCHANGED as sets (the toys are the e* = 0 degenerate
-form: sibling leaf events coincide), so every censused integer survives verbatim. -/
+/- [T RATIFICATION RE-KEY 2026-07-31 (verdict §1: exact-cell form): the toy
+presents/state_cell helpers now pin the EXACT cell value (`siteCellEvent es c`,
+c the site's own joint cell — winC at the head's `.red` entrance, splitC at the
+leaves' `.st tA1` entrance) instead of the 2026-07-30 branch strata. The toy events
+are UNCHANGED as sets (each roster is realized exactly on its cell's fiber), so
+every censused integer survives verbatim. The toys DISCHARGE the exact `state_cell`
+scaffold law: their sibling leaf states coincide by table (the e* = 0 degenerate
+form), so the F1-genre sibling-forcing obstruction (disclosed at
+`SiteLedger.state_cell`) is not triggered here. -/
 
 private lemma lastNode_tA1 : tA1.lastNode = toyHead := rfl
 
@@ -1338,49 +1358,23 @@ private lemma lastNode_tA2a : tA2a.lastNode = toyLeafA := by
 private lemma lastNode_tA2b : tA2b.lastNode = toyLeafB := by
   simp [History.lastNode, tA2b, History.snoc]
 
-/-- the head node's branch stratum at the `.red` entrance is the 6-pin window
-stratum (per-site keyed form of the former `cellA_red_winC_iff` consumption). -/
-private lemma branchA_red_toyHead_iff (x : Box 2 9) :
-    toyHead ∈ toyBranchA (toyCellA (.red toyG Polynomial.X) x) ↔
-      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
-  by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
-  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.winC from if_pos ⟨rfl, hd⟩]
-    exact iff_of_true (Finset.mem_singleton_self _) hd
-  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.junk from by
-      simp only [toyCellA]; rw [if_neg (fun hc => hd hc.2), if_neg hd]]
-    exact iff_of_false (by simp [toyBranchA]) hd
-
-/-- a leaf node's branch stratum at the `.st tA1` entrance is the 6-pin stratum. -/
-private lemma branchA_st_leaf_iff (ν : Node 2 (ZMod 2))
-    (hν : ν = toyLeafA ∨ ν = toyLeafB) (x : Box 2 9) :
-    ν ∈ toyBranchA (toyCellA (.st tA1) x) ↔
-      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
-  classical
-  by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
-  · rw [show toyCellA (.st tA1) x = ToyCell.splitC from
-      if_pos ⟨rfl, Or.inl rfl, hd⟩]
-    refine iff_of_true ?_ hd
-    rcases hν with rfl | rfl
-    · exact Finset.mem_insert_self _ _
-    · exact Finset.mem_insert_of_mem (Finset.mem_singleton_self _)
-  · rw [show toyCellA (.st tA1) x = ToyCell.junk from
-      if_neg (fun hc => hd hc.2.2)]
-    exact iff_of_false (by simp [toyBranchA]) hd
+-- [the exact-cell strata lemmas `cellA_red_winC_iff`/`cellA_st_tA1_splitC_iff`
+--  already live above (the fiber-helper section) — reused verbatim here.]
 
 private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
-    (EntSt.red toyG Polynomial.X) toyHead rootLocus windowFresh := by
+    (EntSt.red toyG Polynomial.X) ToyCell.winC rootLocus windowFresh := by
   constructor
   · ext x
     constructor
     · rintro ⟨hroot, hcell⟩
-      have hd := (branchA_red_toyHead_iff x).mp hcell
+      have hd := (cellA_red_winC_iff x).mp hcell
       exact ⟨(rootLocus_iff x).mpr ⟨hd.1, hd.2.1⟩,
         (windowFresh_iff x).mpr
           ⟨hd.2.2.1, hd.2.2.2.1, hd.2.2.2.2.1, hd.2.2.2.2.2⟩⟩
     · rintro ⟨hsol, hsat⟩
       have h01 := (rootLocus_iff x).mp hsol
       have h25 := (windowFresh_iff x).mp hsat
-      exact ⟨(rootCell_iff x).mpr h01, (branchA_red_toyHead_iff x).mpr
+      exact ⟨(rootCell_iff x).mpr h01, (cellA_red_winC_iff x).mpr
         ⟨h01.1, h01.2, h25.1, h25.2.1, h25.2.2.1, h25.2.2.2⟩⟩
   · ext x
     constructor
@@ -1389,18 +1383,17 @@ private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
     · intro h
       exact (rootCell_iff x).mpr ((rootLocus_iff x).mp h)
 
-private lemma presents_split (ν : Node 2 (ZMod 2))
-    (hν : ν = toyLeafA ∨ ν = toyLeafB) : SitePresents toyModel toyCA toyχ
-    (EntSt.st tA1) ν stateLocus emptyFresh := by
+private lemma presents_split : SitePresents toyModel toyCA toyχ
+    (EntSt.st tA1) ToyCell.splitC stateLocus emptyFresh := by
   constructor
   · ext x
     constructor
     · rintro ⟨hst, hcell⟩
-      exact ⟨(stateLocus_iff x).mpr ((branchA_st_leaf_iff ν hν x).mp hcell),
+      exact ⟨(stateLocus_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell),
         fun cl hcl => by simp [emptyFresh] at hcl⟩
     · rintro ⟨hsol, -⟩
       have hd := (stateLocus_iff x).mp hsol
-      exact ⟨(memA_tA1_iff x).mpr hd, (branchA_st_leaf_iff ν hν x).mpr hd⟩
+      exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
   · ext x
     constructor
     · intro h
@@ -1409,38 +1402,35 @@ private lemma presents_split (ν : Node 2 (ZMod 2))
       exact (memA_tA1_iff x).mpr ((stateLocus_iff x).mp h)
 
 private lemma state_cell_tA1 : stateEvent toyModel (some tA1)
-    = siteCellEvent toyModel toyCA toyχ (EntSt.red toyG Polynomial.X) toyHead := by
+    = siteCellEvent toyModel toyCA toyχ (EntSt.red toyG Polynomial.X)
+        ToyCell.winC := by
   ext x
   constructor
   · intro h
     have hd := (memA_tA1_iff x).mp h
-    exact ⟨(rootCell_iff x).mpr ⟨hd.1, hd.2.1⟩, (branchA_red_toyHead_iff x).mpr hd⟩
+    exact ⟨(rootCell_iff x).mpr ⟨hd.1, hd.2.1⟩, (cellA_red_winC_iff x).mpr hd⟩
   · rintro ⟨-, hcell⟩
-    exact (memA_tA1_iff x).mpr ((branchA_red_toyHead_iff x).mp hcell)
+    exact (memA_tA1_iff x).mpr ((cellA_red_winC_iff x).mp hcell)
 
 private lemma state_cell_tA2a : stateEvent toyModel (some tA2a)
-    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) toyLeafA := by
+    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
   ext x
   constructor
   · intro h
     have hd := (memA_tA2a_iff x).mp h
-    exact ⟨(memA_tA1_iff x).mpr hd,
-      (branchA_st_leaf_iff toyLeafA (Or.inl rfl) x).mpr hd⟩
+    exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
   · rintro ⟨-, hcell⟩
-    exact (memA_tA2a_iff x).mpr
-      ((branchA_st_leaf_iff toyLeafA (Or.inl rfl) x).mp hcell)
+    exact (memA_tA2a_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
 
 private lemma state_cell_tA2b : stateEvent toyModel (some tA2b)
-    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) toyLeafB := by
+    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
   ext x
   constructor
   · intro h
     have hd := (memA_tA2b_iff x).mp h
-    exact ⟨(memA_tA1_iff x).mpr hd,
-      (branchA_st_leaf_iff toyLeafB (Or.inr rfl) x).mpr hd⟩
+    exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
   · rintro ⟨-, hcell⟩
-    exact (memA_tA2b_iff x).mpr
-      ((branchA_st_leaf_iff toyLeafB (Or.inr rfl) x).mp hcell)
+    exact (memA_tA2b_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
 
 end ToyLedgerHelpers
 
@@ -1464,29 +1454,32 @@ noncomputable def toyLedgerA : SiteLedger toyTreeA toyModel toyCA toyχ := by
         · rw [if_neg (Ne.symm tA1_ne_tA2b)]
           exact ⟨tA1_prefix_tA2b, rfl, Or.inl rfl⟩
       presents := by
+        -- [T RATIFICATION 2026-07-31: the exact-cell keying — the site cell is the
+        --  ledger's `cellAt` value (winC at the head, splitC at the leaves).]
         intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
-        · rw [if_pos rfl, if_pos rfl, lastNode_tA1]
+        · rw [if_pos rfl, if_pos rfl, if_pos rfl]
           exact presents_tA1
         · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a),
-            lastNode_tA2a]
-          exact presents_split toyLeafA (Or.inl rfl)
+            if_neg (Ne.symm tA1_ne_tA2a)]
+          exact presents_split
         · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b),
-            lastNode_tA2b]
-          exact presents_split toyLeafB (Or.inr rfl)
+            if_neg (Ne.symm tA1_ne_tA2b)]
+          exact presents_split
       sides := fun _ => 1
       hsides := fun _ _ => le_rfl
       state_cell := by
         intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
-        · rw [if_pos rfl, lastNode_tA1]
+        · rw [if_pos rfl, if_pos rfl]
           exact state_cell_tA1
-        · rw [if_neg (Ne.symm tA1_ne_tA2a), lastNode_tA2a]
+        · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a)]
           exact state_cell_tA2a
-        · rw [if_neg (Ne.symm tA1_ne_tA2b), lastNode_tA2b]
+        · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b)]
           exact state_cell_tA2b
       splitAt := fun H hH h2 => absurd h2 (by omega)
       hsplit_k := fun H hH h2 => absurd h2 (by omega)
+      hsplit_exp := fun H hH h2 => absurd h2 (by omega)
       free := by
         intro H hH cl hcl cIdx hsup
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
@@ -2157,34 +2150,24 @@ private lemma card_entB : Nat.card ↥(entEvent toyModelB toyχ (.st tB1)) = 64 
   norm_num at hmass
   exact hmass
 
-/-- [E8 ADJUDICATION 2026-07-30] the site node's branch stratum at `.st tB1` — the
-per-site keyed event carries the SAME censused integers (16 on the {x0…x4} joint
-stratum: the site's own 2-side window pins x3, x4 inside the 64-count entrance). -/
-private lemma branchB_st_leaf_iff (x : Box 2 9) :
-    toyLeafA ∈ toyBranchB (toyCellB (.st tB1) x) ↔ (x 3 = 0 ∧ x 4 = 0) := by
-  classical
-  by_cases hd : x 3 = 0 ∧ x 4 = 0
-  · rw [show toyCellB (.st tB1) x = ToyCell.splitC from
-      (cellB_st_tB1_splitC_iff x).mpr hd]
-    exact iff_of_true (Finset.mem_insert_self _ _) hd
-  · rw [show toyCellB (.st tB1) x = ToyCell.junk from
-      if_neg (fun hc => hd ⟨hc.2.1, hc.2.2⟩)]
-    exact iff_of_false (by simp [toyBranchB]) hd
-
+/-- [T RATIFICATION 2026-07-31] the EXACT cell event at `.st tB1` — the exact-cell
+keyed event carries the SAME censused integers (16 on the {x0…x4} joint stratum:
+the site's own 2-side window pins x3, x4 inside the 64-count entrance). -/
 private lemma card_cellB :
-    Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) toyLeafA) = 16 := by
-  have hs : siteCellEvent toyModelB toyCAB toyχ (.st tB1) toyLeafA
+    Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC)
+      = 16 := by
+  have hs : siteCellEvent toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC
       = {x : Box 2 9 | cellLocusB.IsSolution x} := by
     ext x
     constructor
     · rintro ⟨hent, hcell⟩
       have h012 := (memB_tB1_iff x).mp hent
-      have h34 := (branchB_st_leaf_iff x).mp hcell
+      have h34 := (cellB_st_tB1_splitC_iff x).mp hcell
       exact (cellLocusB_iff x).mpr ⟨h012.1, h012.2.1, h012.2.2, h34.1, h34.2⟩
     · intro h
       obtain ⟨h0, h1, h2, h3, h4⟩ := (cellLocusB_iff x).mp h
       exact ⟨(memB_tB1_iff x).mpr ⟨h0, h1, h2⟩,
-        (branchB_st_leaf_iff x).mpr ⟨h3, h4⟩⟩
+        (cellB_st_tB1_splitC_iff x).mpr ⟨h3, h4⟩⟩
   rw [hs]
   have hmass : cellLocusB.mass = 2 ^ (9 - cellLocusB.numPinned) :=
     LeanUrat.MovesC.C0_digitSystemMass cellLocusB
@@ -2204,13 +2187,13 @@ end ToyJcHelpers
 /-- record 2's gate — CARRIER B: the two-side JC-multi identity at the split site,
 `2⁴·2² = 2⁶` on the enumerated events (entEvent = the {x0,x1,x2} stratum = 64, the
 SITE's own event = the {x0…x4} stratum = 16, sideExp 1 + 1 off the item-3 `toyFdB`
-re-pin). RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying):
-`JCmultiAt` now prices the site's OWN event (`siteCellEvent es ν`, ν the multi-side
-site's node = `tB2c.lastNode = toyLeafA`) — the toy's censused integers are UNCHANGED
-(the site is an only child at its entrance, where the old and new keyings coincide). -/
+re-pin). RE-KEYED at the T RATIFICATION (2026-07-31; verdict §2): `JCmultiAt` now
+prices the side split's OWN EXACT cell event (`siteCellEvent (.st tB1) splitC` —
+`toySplitB`'s cell) — the toy's censused integers are UNCHANGED (the {x0…x4}
+stratum IS the exact splitC fiber inside the entrance). -/
 theorem toy_jcmulti_site :
-    JCmultiAt toyModelB toyCAB toyχ (.st tB1) toyLeafA toySplitB := by
-  show Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) toyLeafA)
+    JCmultiAt toyModelB toyCAB toyχ (.st tB1) toySplitB := by
+  show Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC)
       * 2 ^ (∑ j : Fin 2, toySplitB.sideExp j)
     = Nat.card ↥(entEvent toyModelB toyχ (.st tB1))
   rw [card_cellB, card_entB, sideExpB_sum]
@@ -2219,15 +2202,15 @@ theorem toy_jcmulti_site :
 /-- record 6's gate — CARRIER A: the one-side state↔cell tie at the leaf site.
 STATEMENT REPAIR (pin-repair pass, 2026-07-30, charge item 4): the E-phase cell
 transcribed the SITE as `(EntSt.red toyG X)` — false; repaired to `.st tA1` per the
-charge. RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying): the tie
-now equates the state event with the SITE's OWN event (`siteCellEvent (parentSt)
-(lastNode)`; `tA2a.lastNode = toyLeafA`) — the toy set is UNCHANGED (the {x0…x5}
-stratum; the toys are the e* = 0 degenerate form where sibling events coincide, which
-under per-site keying is merely a coincidence of DIFFERENT sites' strata, no longer a
-forced collapse). -/
+charge. RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): the tie is now the
+EXACT Σ_c law — the state event equals the exact splitC fiber over the entrance
+(`siteCellEvent (parentSt tA2a) (cellAt tA2a)` = the {x0…x5} stratum, the toy set
+UNCHANGED). The toys discharge the exact law because their sibling leaf states
+coincide by table (e* = 0 degenerate form) — the F1-genre distinct-pin sibling
+obstruction (disclosed at `SiteLedger.state_cell`) is not triggered. -/
 theorem toy_state_cell :
     stateEvent toyModel (some tA2a)
-      = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) toyLeafA :=
+      = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC :=
   state_cell_tA2a
 
 /-- records 5+7's gate — the SEPARATE 𝔽₄-type carrier (§0 record #7's two-node

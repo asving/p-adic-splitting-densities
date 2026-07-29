@@ -60,8 +60,12 @@ W5-1..n: HC-1 carrier exports (the W4-5 slot-selection discharge; the lower-stag
   realizer vocabulary); MovesR unparking (CInterface re-key + ~14 units).
 
 ### PERMANENTLY FENCED (never fleet targets)
-The banked W17ii (V7_w17ii — note-owned hypothesis [3]); G1's four Q1-gated sorries
-(the V10/HistoryCoherent sign-off cluster, ASVIN); Wall B's jet-existence premise;
+The banked W17ii (V7_w17ii — note-owned hypothesis [3]); G1's four fenced sorries
+[CORRECTED at the T ratification 2026-07-31, verdict §8.2: the two
+`mem_realizable` admissions are BLOCKED-FALSE at the pinned tables — known false
+for their pinned carriers, NOT merely Q1-gated; the other two are type-blocked
+open pins. All four = the V10/HistoryCoherent sign-off cluster + G1b table
+re-adjudication, task #44, ASVIN]; Wall B's jet-existence premise;
 htameFE; hExhaust general-n; E0/HMC/X.3 as theorems (the open mathematics — the
 probes TEST E0, nothing proves it here).
 

@@ -142,11 +142,10 @@ theorem spectator_conditional_mass {m : ℕ} (Sigma : Locus p m) (fd : FreshData
 
 end SpectatorKernel
 
-/-- RE-KEYED at the E8 ADJUDICATION (2026-07-30, per-site cell keying): the former
-`hone : L.sides H = 1` hypothesis is DROPPED — the re-keyed `state_cell` is
-side-count-free (the guard was the crutch for the retired entrance-keyed form), so
-the per-site charge holds at EVERY site; the proof is the same rewrite chain into
-the spectator kernel. -/
+/-- RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): `state_cell` is now the
+EXACT Σ_c tie (`stateEvent T (some H) = siteCellEvent (parentSt H) (cellAt H)`), so
+the same rewrite chain lands in the spectator kernel; the per-site charge holds at
+EVERY site (the former `sides H = 1` guard remains dropped). -/
 theorem fiber_seg_step (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) (Tr : VTree p F) (χ : Fin n → Fin m)
     (L : SiteLedger Tr T CA χ) (H : History p F) (hH : H ∈ Tr.chains)
@@ -158,5 +157,32 @@ theorem fiber_seg_step (T : TreeModel p F n N m pol)
   rw [L.state_cell H hH, hcell_eq, hent_eq]
   exact spectator_conditional_mass (L.sys H).1 (L.sys H).2 (L.freshCoords H) E
     (L.hfresh H hH) (L.spectator_sol H hH) hspec
+
+/-- **THE PRESENTED FACES IMPLY (JC-multi)** — the T RATIFICATION's honesty
+disclosure (2026-07-31; verdict §4: "Multi-side pricing is effectively obtained
+through the stronger `SitePresents`/`FreshData` setup rather than through the
+declared open `(JC-multi)` law"). PROVED: a ledger whose `presents`/`spectator_sol`/
+`free`/`hfresh`/`state_cell`/`hsplit_exp` rows are discharged at a multi-side site
+has ALREADY assumed (JC-multi)-strength content — its per-site `JCmultiAt` instance
+follows from T-E6's spectator kernel plus the exact Σ_c tie and the side-union
+exponent tie. CONSEQUENCE, disclosed: TREE-EXP's `hjcm` premise (consumed at
+multi-side sites in T-E8's `cone_charge`, the note's declared conditionality — the
+note keeps (JC-multi) OPEN, 7476–7483) is derivable from the ledger's presented
+faces via this lemma; the OPEN (JC-multi) obligation therefore sits INSIDE the
+owner's discharge of the presented faces at multi-side sites, not beside it. -/
+theorem presents_imply_jcMultiAt (T : TreeModel p F n N m pol)
+    (CA : CellData p F n N m pol T) (Tr : VTree p F) (χ : Fin n → Fin m)
+    (L : SiteLedger Tr T CA χ) (H : History p F) (hH : H ∈ Tr.chains)
+    (h2 : 2 ≤ L.sides H) :
+    JCmultiAt T CA χ (L.parentSt H) (L.splitAt H hH h2) := by
+  show Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) (L.cellAt H))
+      * p ^ (∑ j : Fin (L.splitAt H hH h2).k, (L.splitAt H hH h2).sideExp j)
+    = Nat.card ↥(entEvent T χ (L.parentSt H))
+  rw [L.hsplit_exp H hH h2, ← L.state_cell H hH]
+  have hspec : SpectatorFor (L.freshCoords H) (Set.univ : Set (Box p m)) := by
+    intro x x' _; simp
+  have h := fiber_seg_step T CA Tr χ L H hH Set.univ hspec
+  rw [Set.inter_univ, Set.inter_univ] at h
+  exact h
 
 end LeanUrat.MovesT

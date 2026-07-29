@@ -99,4 +99,40 @@ theorem UCarriers.cl1 {n : ℕ} (C : UCarriers n) {p : ℕ} (hp : p.Prime) :
     MovesS.RegP C.T C.MS C.RB p C.hK C.Fam :=
   C.chain.legs_reg p ((C.chain.prime_base _).mpr ⟨p, hp, rfl⟩)
 
+/-! ## The real-roster menu rows (ROUND-2 RETYPE, 2026-07-31 — ratification
+CRITICAL 3's menu finding: the surrogate `MenuData` retired; (K-SUB)/CL-13's
+well-formedness face restated over THE table `C.T`). -/
+
+/-- The (K-SUB) m = 1 classification OVER THE REAL ROSTER (was `KsubM1C1` over the
+    surrogate menu): "equal-e CONTINUATION rides EXCLUSIVELY in K_e's (c = 1, m = 1)
+    rows" — an all-members-size-e outcome with a continuation is a single-member
+    single-continuation row. Same-size HALTS (c = 0) stay exempt. (Under DEG-CONS
+    the all-size-e guard is equivalent to the ∃-a-size-e-member reading: member
+    sizes are ≥ 1 and sum to ≤ e.) -/
+def KsubM1C1T {n : ℕ} (T : MovesS.TableShape n) : Prop :=
+  ∀ e ∈ Finset.Icc 1 n, ∀ (τ : T.State e) (o : T.Out e τ),
+    (∀ μ ∈ (T.odata e τ o).mem, μ.size = e) → (T.odata e τ o).c ≠ 0 →
+    (T.odata e τ o).m = 1 ∧ (T.odata e τ o).c = 1
+
+/-- CL-13's menu well-formedness FACE over THE real roster: every outcome has ≥ 1
+    member, ≤ m continuations, and target totality on continuing outcomes (a
+    continuing member with a state exists). -/
+def MenuWFT {n : ℕ} (T : MovesS.TableShape n) : Prop :=
+  ∀ e ∈ Finset.Icc 1 n, ∀ (τ : T.State e) (o : T.Out e τ),
+    1 ≤ (T.odata e τ o).m ∧ (T.odata e τ o).c ≤ (T.odata e τ o).m ∧
+    ((T.odata e τ o).c ≠ 0 → ∃ μ ∈ (T.odata e τ o).mem, μ.status.isRight = true)
+
+/-- At the REAL roster the well-formedness face is STRUCTURAL (hence the old
+    `cl13_wf` ledger row is DISCHARGED, not carried): m ≥ 1 from `hm`, c ≤ m from
+    the filter sublist, and c ≠ 0 exhibits a continuing member. -/
+theorem menuWFT_holds {n : ℕ} (T : MovesS.TableShape n) : MenuWFT T := by
+  intro e _ τ o
+  refine ⟨List.length_pos_iff.mpr (T.odata e τ o).hm, List.length_filter_le _ _, ?_⟩
+  intro hc
+  have hne : ((T.odata e τ o).mem.filter (fun μ => μ.status.isRight)) ≠ [] := by
+    intro h0
+    exact hc (by simp [MovesS.Outcome.c, h0])
+  obtain ⟨μ, hμ⟩ := List.exists_mem_of_ne_nil _ hne
+  exact ⟨μ, (List.mem_filter.mp hμ).1, by simpa using (List.mem_filter.mp hμ).2⟩
+
 end LeanUrat.MovesU

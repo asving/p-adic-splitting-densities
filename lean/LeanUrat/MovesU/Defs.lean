@@ -13,9 +13,9 @@ dual-accepted). NO ledger in this file — the D11 three-file order (Defs ← U0
 DefsLedger) is load-bearing (the rev-3 circularity fix: the ledger's `∑ σ` needs U0b's
 `Fintype (SplittingType n)`). Every structure field is a trust surface for the Codex
 semantic audit (blueprint §4). The hypothesis structures are owner-instantiated later
-(D9: `ClassifierSpec`/`FiberSeries` ← MovesD/HC-2/[3t], `SolveData`/`RegData` ← MovesS,
-`MenuData` ← [2a]/[1v]); nothing here asserts mathematics — this file fixes the
-vocabulary Theorem U's conditional statement is typed in.
+(D9: `ClassifierSpec`/`FiberSeries` ← MovesD/HC-2/[3t], `SolveData`/`RegData` ←
+MovesS); nothing here asserts mathematics — this file fixes the vocabulary
+Theorem U's conditional statement is typed in.
 -/
 
 set_option linter.style.longLine false
@@ -187,40 +187,34 @@ noncomputable def RegData.entryList {p : ℕ} (D : RegData p) (e : D.Block) :
     ∪ (Finset.univ.image D.Wcoef)
     ∪ D.depthSet.biUnion (fun δ => Finset.univ.image (fun l => D.betaLeg e l δ))
 
-/-- (REG-p), the rev-5 SEPARATE named hypothesis: (r1) full determinant (junk blocks
-    included) defined and ≠ 0 at every pool; (r2) every member of the DEFINED E(e)
-    (all seven displayed families, cardinality-pinned) defined at q₀ AND literal =
-    ACT active value ((ii-c) agreement); PLUS the EVALUABILITY clause (ruling (D),
-    rev-2 critical 4): the literal R_σ(p) is DEFINED — "UNDER (REG-p), the literal
-    evaluation R_σ(p) of the fixed element of ℚ(q) is DEFINED and IS the active
-    value"; PLUS (RETYPE 2026-07-30, ratification CRITICAL 5 / SQ.4's charge SQ.4)
-    the ACTIVE-VALUE AGREEMENT clause for S.R itself: the literal evaluation IS the
-    ACT active value — "both readings coincide under (REG-p)", now a conjunct.
-    HONEST-PREMISE RECORD (CRITICAL 5, resolved per the verdict's "or make it the
-    honest premise"): the note derives R_σ(p)-definedness from the (r1)/(r2) schema
-    through the typed assembly relations; those relations are not yet formalized, so
-    the `DefinedAt (S.R σ)` clause and the agreement clause ride HERE as the honest
-    explicitly-carried strengthening of the displayed schema — disclosed, never
-    silent. Neither implies nor is implied by E0/CL-1 or ACT/CL-5 (D5). Never
-    vacuous: Pool ∋ p^1, Block nonempty, every index family nonempty-pinned. -/
-def RegP {n p : ℕ} (S : SolveData n) (D : RegData p) : Prop :=
-  (∀ q₀ ∈ D.Pool, ∀ e : D.Block,
+/-- (REG-p), RESTATED at the ROUND-2 RETYPE (2026-07-31 ratification CRITICAL 4:
+    "`RegP` also retains ∀ σ, DefinedAt (S.R σ) … as independent premises. The note
+    defines (REG-p) by (r1) and (r2) and states definedness/agreement of R_σ(p) as
+    CONSEQUENCES of the typed assembly"): EXACTLY the displayed schema — (r1) full
+    determinant (junk blocks included) defined and ≠ 0 at every pool; (r2) every
+    member of the DEFINED E(e) (all seven displayed families, cardinality-pinned)
+    defined at q₀ AND literal = ACT active value ((ii-c) agreement). The former
+    carried strengthening (the `DefinedAt (S.R σ)`/agreement conjuncts) is KILLED:
+    both are now DERIVED lemmas (`SolveSeam.R_defined`/`SolveSeam.R_agree`,
+    DefsLedger) from the typed assembly — `RegPin.detHyp` + `r_is_solve` + the
+    chain's `rsh_interp` + `RegPin.act_pin`. `S` no longer appears. Never vacuous:
+    Pool ∋ p^1, Block nonempty, every index family nonempty-pinned. -/
+def RegP {p : ℕ} (D : RegData p) : Prop :=
+  ∀ q₀ ∈ D.Pool, ∀ e : D.Block,
     (letI := D.instBi e; letI := D.instBd e;
      DefinedAt (Matrix.det (1 - D.K e)) (q₀ : ℚ) ∧
      (Matrix.det (1 - D.K e)).eval (RingHom.id ℚ) (q₀ : ℚ) ≠ 0) ∧
     ∀ g ∈ D.entryList e,
-      DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = D.act g q₀) ∧
-  ((∀ σ : SplittingType n, DefinedAt (S.R σ) (p : ℚ)) ∧
-   (∀ σ : SplittingType n,
-     (S.R σ).eval (RingHom.id ℚ) (p : ℚ) = D.act (S.R σ) p))
+      DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = D.act g q₀
 
 /-- HYPOTHESIS STRUCTURE (MovesD/[3t] interface; F2 repair): the tree-fiber series.
     `Tree σ` = the complete finite realizable canonical trees of verdict-type σ (owner
     MovesD); `thr` = TREE-N's decision threshold; `mem_slice_iff` CHARACTERIZES the
     slice as the thr ≤ N slice (no arbitrary Finset family). The Finset TYPE of
     `thrSlice` is CL-7's finiteness riding the instantiation (D4 — TRACK-COUNT + D(n)
-    + genuine-increment, OPEN upstream, fenced in `UpstreamKernelStatements`; the
-    conclusion form is the ledger's typed `cl7_bound`). The tie to the
+    + genuine-increment: the typed p-uniform mechanics are `Cl7Kernel`'s rows, the
+    residual recognitions `theoremU`'s explicit `trackRule`/`dnLattice` parameters;
+    the conclusion form is the p-uniform-bounded `UInstance.cl7_slice`). The tie to the
     classifier's counts is the DERIVED `TreeSeam.finiteness_stack` IDENTITY (TREE-N):
     an empty `Tree σ` forces decided_σ ≡ 0 — nothing degenerate satisfiable (D4). -/
 structure FiberSeries (n p : ℕ) (X : ClassifierSpec n p) where
@@ -241,48 +235,12 @@ structure FiberSeries (n p : ℕ) (X : ClassifierSpec n p) where
 noncomputable def FiberSeries.seriesSum {n p : ℕ} {X : ClassifierSpec n p}
     (F : FiberSeries n p X) (σ : SplittingType n) : ℝ≥0∞ := ∑' T : F.Tree σ, F.mass σ T
 
-/-- One menu outcome, minimal concrete vocabulary (ruling (E), rev-2 gap 5):
-    m members, c continuations, whether it stays at equal block size, and its
-    target state (`none` = halt — the (BDY)/empty-continuation reading). -/
-structure MenuEntry (State : Type) where
-  m : ℕ
-  c : ℕ
-  sameSize : Bool
-  target : Option State
-  deriving DecidableEq
-
-/-- The move-menu vocabulary (CL-13/CL-11's MovesU-visible face; owner [1v]/[2a]):
-    the ONE fixed finite state set with per-state outcome menus AS FINSETS — bound at
-    the p-UNIFORM layer (before ∀ p; F3-C2/G4). REV 4 pin (F3-G1): per-state outcome
-    counts are catalogue DATA with a card equation, and menus are not ALL empty
-    (a single empty menu = the halt convention and stays allowed). -/
-structure MenuData where
-  State : Type
-  instState : Fintype State
-  instStateDeq : DecidableEq State
-  instStateNe : Nonempty State
-  menu : State → Finset (MenuEntry State)
-  /-- the catalogue's per-state outcome count -/
-  menuCount : State → ℕ
-  menu_card : ∀ s, (menu s).card = menuCount s
-  /-- kills the all-∅ vacuity dodge (F3-G1) -/
-  menu_not_all_empty : ∃ s, menuCount s ≠ 0
-
-/-- The (K-SUB) m = 1 classification as a REAL Prop over menus. REV 4 (F3-C1):
-    binds same-size CONTINUATIONS ONLY — "equal-e CONTINUATION rides EXCLUSIVELY in
-    K_e's (c = 1, m = 1) rows" (the same-size single-child direction). Same-size
-    HALTS (c = 0, the b_e^{term,fin} leaves) are generic and EXEMPT: without the
-    `o.c ≠ 0` guard the faithful catalogue would falsify the Prop. -/
-def KsubM1C1 (M : MenuData) : Prop :=
-  ∀ s, ∀ o ∈ M.menu s, o.sameSize = true → o.c ≠ 0 → o.m = 1 ∧ o.c = 1
-
-/-- CL-13's menu well-formedness FACE (the typed trace, asserted BESIDE the
-    full-statement slot `ctsmSyntax` in `cl13` — F3-C2): every outcome has ≥ 1
-    member, ≤ m continuations, and PER-ENTRY TARGET TOTALITY on continuing outcomes
-    (honest label — this is NOT the global compatibility of the target-cell maps,
-    which lives in the `ctsmSyntax` slot with the cell predicates and
-    p-independence); the empty menu is the halt convention. -/
-def MenuWF (M : MenuData) : Prop :=
-  ∀ s, ∀ o ∈ M.menu s, 1 ≤ o.m ∧ o.c ≤ o.m ∧ (o.c ≠ 0 → o.target.isSome)
+/- ROUND-2 RETYPE (2026-07-31, ratification CRITICAL 3: "The separate `MenuData M`
+   is also not re-keyed to `C.T` or the real outcome catalogue. Hence cl11_ksub /
+   cl13_wf may hold for a toy menu unrelated to the solve"): the surrogate menu
+   vocabulary `MenuEntry`/`MenuData`/`KsubM1C1`/`MenuWF` is RETIRED. The (K-SUB)
+   m = 1 classification and the well-formedness face are restated DIRECTLY over the
+   real table roster `MovesS.TableShape` — `KsubM1C1T`/`MenuWFT` in DefsCarriers
+   (`MenuWFT` is there PROVED structural: `menuWFT_holds`). -/
 
 end LeanUrat.MovesU

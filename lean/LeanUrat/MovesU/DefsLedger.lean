@@ -6,47 +6,57 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesU.U0b_splitTypeFintype
 import LeanUrat.MovesU.DefsCarriers
+import LeanUrat.MovesS.BlockSolveSpec
+import LeanUrat.MovesX.Defs
+import LeanUrat.MovesRBase.Defs
+import LeanUrat.MovesT.Defs
+import LeanUrat.MovesV.V7_ctsmDefs
 
 /-!
-# MovesU/DefsLedger — THE TYPED CAPSTONE LEDGER (MOVESU RETYPE, 2026-07-30)
+# MovesU/DefsLedger — THE TYPED CAPSTONE LEDGER (ROUND-2 RETYPE, 2026-07-31)
 
-STATEMENT-CHANGE WARRANT: `lean/notes/MOVESU_RATIFY_CODEX_2026-07-30.md` (REJECT 7/2,
-every finding accepted). This file executes the retype's Stages 1–2 against that
-verdict, per the C9 CL-map:
+STATEMENT-CHANGE WARRANT: the round-2 ratification verdict
+(`/tmp/leanratify_u2/verdict.txt`, REJECT 6 CRITICAL / 1 GAP, 2026-07-31). Every
+change below quotes its finding:
 
-* CRITICAL 1 (bare-`Prop` slots): the 35-slot `KernelStatements` pack is RETIRED.
-  Rows whose owner vocabulary is BUILT are now typed over the real carriers:
-  CL-1 = `UCarriers.cl1` (`MovesS.RegP`, derived); CL-4 = `cl4_env_tendsto` (its
-  qualitative form, typed); CL-5's NINE = `C.chain.L : MovesS.LedgerIV` (each of the
-  nine a contentful Prop of the built §S corpus — the MovesV units are the discharge
-  candidates per C9); CL-6 = `cl6 : Nonempty (MovesS.PolyGeomLaws …)` (the value+degree
-  law package); CL-7's conclusion = `cl7_bound` (the finite decided family with an
-  explicit bound — SQ.0's conclusion form); CL-9(β)/XRB = `C.chain.B.xrb` (typed,
-  carried); CL-10's VP-SOUND = `cl10_vpsound : VPSound X`, its TREE-N operative
-  content = `TreeSeam` (below); CL-11 = `C.hdc : MovesS.DegCons` + `cl11_ksub :
-  KsubM1C1 M`; CL-17 = `cl17 : C.chain.wsh17_pin` (the OPEN production burden, typed
-  projection); CL-18 = the `jPCell`/`jcell_interp`/`jcell_sum` law fields of the
-  carried `C.RB : MovesS.RatBurdens`; CL-19's representative-invariance face =
-  `cl19_rep` (typed over the real measured carrier; the h_ent/history face is
-  disclosed residual). CTS-M(ii-c)'s consumed-leg gate = `C.chain.legs_read` (typed,
-  carried).
-  RESIDUAL BARE ROWS (disclosed, fenced — owner corpus ABSENT in Lean, so no
-  non-vacuous typing exists at this seam): `UpstreamKernelStatements` below.
-* CRITICAL 2 (assumed `finiteness_stack`/`solve_stack`): BOTH DERIVED.
-  `TreeSeam.finiteness_stack` proves the TREE-N partition identity from the typed
-  seam rows (the canonical-tree assignment + the per-tree exact count tie — the
-  note's own open premises, named); `SolveSeam.solve_stack` proves finiteness +
-  identification + RS.3 positivity from the REAL solve (`MovesS.Rsh` via
-  `r_is_solve`), the chain's `rsh_interp`/`r_bdd`, and the `RegPin`-transported
-  determinant gate — the MovesS solve laws genuinely reach it.
-* CRITICAL 3: `S.R` is PINNED to the Cramer/RS.1-SH solve output (`r_is_solve`);
-  `FiberSeries`' sum is pinned to the chain's measured `Rval` (`series_tie`, the
-  named open [3t] premise); the classifier's `trueType` is pinned by `ZpBridge`.
-* CRITICAL 4: `RegPin` re-keys `RegData` to the REAL block system (Stage 3).
-* CRITICAL 7: `ZpBridge` — the NAMED HC-2 premise typing `trueType` against genuine
-  ℤ_p objects (monic `Polynomial ℤ_[p]` lifts through `PadicInt.toZModPow`, with the
-  ℚ_p-factorization law at degree level; the finer e/f ramification-residue refinement
-  is the disclosed HC-2 residue, recorded in the docstring).
+* CRITICAL 1 ("the claimed residual typed ledger is literally 15 bare `Prop`
+  slots… One may instantiate every field with `True`"): `UpstreamKernelStatements`
+  is RETIRED. The rows are typed over the BUILT owner corpora —
+  CL-2/CL-3/CL-15 over `MovesX` (`X3aRouteP`, the five X.2 Props, `X1aAlignP`);
+  CL-7's mechanics over the `MovesX.XFamily` carriers (`Cl7Kernel`, with the
+  p-UNIFORM explicit L(n)/D(n)/w*/T(n,N) data — CRITICAL 6 killed jointly);
+  CL-8's typed face over `MovesRBase` (`EQ2law` at carried `AlphabetData`);
+  CL-10's (SIB)/(JC-multi) over `MovesT` AT THE PINNED INSTANCE (`SibJcRows`
+  through `TreePin`); CL-13's syntax face over `MovesV` (`Part_Stmt` at a carried
+  `CtsmLedger` tied to THE table). The genuinely vocabulary-less rows are NO
+  LONGER bundled: each is an EXPLICIT named `Prop` PARAMETER of `theoremU`
+  (visible in the signature) — see U10's docstring for the list and owners.
+* CRITICAL 2 ("canonical trees and the classifier remain abstract surrogates"):
+  `TreePin` — the typed seam (the `r_is_solve` analogue): `F.Tree σ` is carried
+  INTO the built `MovesT.VTree` corpus (`vt`, injective, typemult = σ, thr
+  identified), `X.canonical` is pinned to fibering at a carried realizable tree
+  within threshold (`canonical_pin`), `seam.treeOf` reads THE fibering tree
+  (`treeOf_pin`), and the level-N box is pinned to the MovesT digit box by the
+  base-p digit law (`boxeq_digits`). Discharge candidate: `MovesT.treeN` (E11).
+* CRITICAL 3 ("`RegPin` does not pin the complete operative roster"): `RegPin`
+  gains `act_pin` (ACT = the post-cancellation `evalAt` semantics on its defined
+  locus — `AVAgree`'s own reading), `bsplit_pin`/`betaLeg_pin` (to the real
+  `MovesS.bSplit`/`blockSolve`(`powSubst`) objects), and `bterm_pin` LOSES the
+  per-row ∃σ' freedom (the designated assembled entry over `verdictImage`). The
+  toy-menu channel is closed by RETIRING `MenuData`: (K-SUB)/CL-13's WF face are
+  restated over THE table (`KsubM1C1T`/`MenuWFT`, DefsCarriers).
+* CRITICAL 4 ("`RegP` is still stronger than the note's named schema"): `RegP` is
+  restated as (r1) ∧ (r2) EXACTLY (MovesU/Defs); the former carried
+  definedness/agreement conjuncts for `S.R` are DERIVED (`SolveSeam.R_defined`/
+  `SolveSeam.R_agree`) from the typed assembly (detHyp transport + `r_is_solve` +
+  `rsh_interp` + `act_pin`).
+* CRITICAL 5 ("`ZpBridge` does not encode the (e,f) splitting type"): `zf_factor`
+  now pins each read pair to THE valuation-theoretic invariants — the MovesT
+  REV-9 closed defs `ramIdx`/`resDeg` at the monic factor (ℤ_p coefficients;
+  ℚ_p-irreducible). Remaining HC-2 residue stated at the structure.
+* GAP 1 ("the evaluated checksum is still assumed"): `rs4_eval` is DERIVED
+  (`SolveSeam.rs4_eval`) from `rs4_checksum` + derived definedness via the
+  `evalAt` ring hom; the ledger field and `LowerStack` are retired.
 -/
 
 set_option linter.style.longLine false
@@ -56,69 +66,128 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesU
 open Filter Topology ENNReal LeanUrat
 
-/-! ## The residual bare rows (disclosed and fenced)
+/-! ## The p-uniform kernel carriers (CRITICAL 1's substrate) -/
 
-Every slot below is STILL a bare `Prop` — retained ONLY because its owner vocabulary
-has no Lean corpus at this seam ([5] X-side histories/discs, [2r] REL measures, [2a]
-species catalogue, [1v] cell-predicate syntax), so any "typed" version would carry
-instance-selectable invented carriers — the same defect with extra steps. This is the
-FENCED bare surface (15 rows, down from 35); each row names its owner. Filling a slot
-with `True` remains an instantiation-fidelity violation adjudicated at the owner's
-audit. -/
-structure UpstreamKernelStatements where
-  /-- CL-2 [5]: X.1b WEIGHT-CHARGE — #{recentering nodes of H} ≤ s(n)·v_p(disc f)
-      (MOVES 11153–11160); owner [5], history/disc vocabulary absent. -/
-  weightCharge : Prop
-  /-- CL-3 [5]+[2b]: X.2 PROGRESS — (X2-AFF)/(X2-CAP)/(X2-BRIDGE)/(X2-TAILS) with
-      c₃(n), c₄(n), s(n); owner [5]. -/
-  progressX2 : Prop
-  /-- CL-7a [4]: TRACK-COUNT — ≤ L(n) track-opening events per history (MOVES
-      13040–13048); its CONCLUSION form is typed at `cl7_bound`. -/
-  trackCount : Prop
-  /-- CL-7b [4]: the D(n) common-denominator duty (candidate n!, underived). -/
-  dnDuty : Prop
-  /-- CL-7c [4]: the positive genuine-increment sub-claim. -/
-  genuineIncrement : Prop
-  /-- CL-8 [2r]: REL.1 re-scoped. -/
-  rel1 : Prop
-  /-- CL-8 [2r]: REL.2(a). -/
-  rel2a : Prop
-  /-- CL-8 [2r]: REL.2(b). -/
-  rel2b : Prop
-  /-- CL-8 [2r]: REL.2(d). -/
-  rel2d : Prop
-  /-- CL-8 [2r]: REL.2(e), the β-typing (e1)–(e5) leg (operative trace at this seam:
-      `chain.legs_read`'s AVAgree gate, typed and carried). -/
-  rel2e : Prop
-  /-- CL-8 [2r]: REL.3 over O_δ. -/
-  rel3 : Prop
-  /-- CL-9(α) [3]: RS.0 lumpability ((β) = XRB is TYPED: `chain.B.xrb`, carried). -/
-  rs0Lump : Prop
-  /-- CL-10 [3t]: (SIB)/(SIB-STEP) measure-level joint form + (JC-multi) — the built
-      MovesT Props (`SibCount`/`SibCountAt`/`JCmultiAt`) are per-model laws; their
-      assertion AT the real classifier's tree model is the [3t] seam instantiation,
-      not statable over this file's carriers yet. TREE-N's operative content IS
-      typed: `TreeSeam`. -/
-  sibJcMulti : Prop
-  /-- CL-13 [1v]: the FULL CTS-M(i) statement (displayed cell predicates + globally
-      compatible target-cell maps); the typed faces `MenuWF M`/`KsubM1C1 M` ride in
-      the ledger. -/
-  ctsmSyntax : Prop
-  /-- CL-14 [2a] (CLOSED upstream; echo) + CL-15 [5] X.1a dictionary + CL-16 [1v]/[2b]
-      M4b constancy/equivariance + CL-19's h_ent/history-invariance residue beyond
-      the typed `cl19_rep` face — bundled echo row; owners [2a]/[5]/[1v]/[2b]. -/
-  m1m5X1aM4bJcInv : Prop
+/-- THE UPSTREAM KERNEL CARRIER PACK (p-UNIFORM): the built owner corpora the
+    retyped rows are stated over — never instance-invented vocabulary.
+    `XF`/`XK`: the §X-EXHAUST family and its n-only constants (owner [5], built
+    `MovesX`); `VC`: the §V-TABLES CTS family (owner [1v], built `MovesV`) — the
+    carrier slice CL-13's syntax law `Part_Stmt` reads. FOOTPRINT NOTE (recorded):
+    the FULL `MovesV.CtsmLedger` cannot be carried here — its `hEU : EntU` field
+    type flows the V corpus's Phase-B `sorryAx` (the V3_spwordD
+    `writeHeights_total_unscoped` shim) into every statement mentioning the
+    ledger, and the capstone footprint must stay Lean-core; the syntax row is
+    therefore stated at the clean `CtsFamily` carrier (`CtsmSyntaxRow` below,
+    definitionally `Part_Stmt`'s body — `ctsmSyntaxRow_iff_part`), and the
+    V-ledger's own T-seam tie is the recorded residue of that fence.
+    `Sp`/`AD`: the [2r] species syntax and per-p alphabet carriers (built
+    `MovesRBase`) for CL-8's typed (EQ-2) face. -/
+structure KernelCarriers (n : ℕ) (C : UCarriers n) where
+  XF : MovesX.XFamily n
+  XK : MovesX.XConsts n
+  VC : MovesV.CtsFamily n
+  Sp : MovesRBase.SpeciesSyntax
+  AD : ∀ (p : ℕ) [Fact p.Prime], MovesRBase.AlphabetData p Sp
 
-/-! ## The TREE-N seam (CL-7/CL-10's operative content, typed — Stage 2, fin side) -/
+/-- CL-13's CTS-M(i) SYNTAX law at the `CtsFamily` carrier: every box point of
+    every skeleton's displayed cell-predicate family has a UNIQUE joint address,
+    and the address space is finite — VERBATIM `MovesV.Part_Stmt`'s body (the
+    `CtsmLedger` projection it reads), restated over the clean slice (see the
+    `KernelCarriers` footprint note). -/
+def CtsmSyntaxRow {n : ℕ} (CF : MovesV.CtsFamily n) : Prop :=
+  ∀ (s : MovesV.Skeleton n) (q₀ : ℚ), MovesV.IsPP q₀ →
+    (∀ x : (CF.bd s).Carrier q₀,
+      ∃! a : ∀ g : (CF.bd s).Gen, ((CF.bd s).gen g).idx,
+        ∀ g, ((CF.bd s).gen g).part q₀ x = a g) ∧
+    Finite (∀ g : (CF.bd s).Gen, ((CF.bd s).gen g).idx)
+
+/-- The definitional tie: at a V ledger, `CtsmSyntaxRow` IS `Part_Stmt` (the row
+    quotes the built statement verbatim; only the carrier binder is slimmed). -/
+theorem ctsmSyntaxRow_iff_part {n : ℕ} (L : MovesV.CtsmLedger n) :
+    CtsmSyntaxRow L.C ↔ MovesV.Part_Stmt L :=
+  Iff.rfl
+
+/-- THE TYPED UPSTREAM ROWS (p-UNIFORM; replaces the corresponding retired bare
+    slots — CRITICAL 1). Each row is the BUILT owner Prop at the carried corpus:
+    * `cl2_route` — CL-2, X.1b WEIGHT-CHARGE in its X.3(a) route form
+      (`X1aAlignP ∧ WeightChargeT4P`) ∨ (`X1aAlignP(inc) ∧ WeightChargeFullP`)
+      — the XC3/XC4 discharge carriers' exact hypothesis surface;
+    * `cl3_*` — CL-3, X.2 PROGRESS: (X2-AFF)/(X2-CAP)/the coercivity
+      dichotomy/(X2-TAILS)/(X2-BRIDGE), the XD2–XD4 carriers' Props verbatim;
+    * `cl8_eq2` — CL-8's TYPED [2r] face: the (EQ-2) alphabet law (F_δ-linearity
+      + a_δ = δ·a on δ-stable positions) at the carried `AlphabetData`, per prime.
+      The six REL rows themselves (REL.1, REL.2(a)/(b)/(d)/(e), REL.3) have NO
+      built Lean statements — they ride as `theoremU`'s explicit bare parameters;
+    * `cl13_syntax` — CL-13's CTS-M(i) SYNTAX face: `Part_Stmt`'s law (the
+      displayed-cell-predicate partition with finite address space) at the
+      carried `CtsFamily` (`CtsmSyntaxRow`; `ctsmSyntaxRow_iff_part` is the
+      verbatim tie). The target-cell maps ride the V corpus's own typed carriers;
+    * `cl15_align` — CL-15's operative ALIGN layer at the certified-increment
+      state (the per-species GMN index dictionary itself is a bare parameter). -/
+structure UpstreamTyped (n : ℕ) {C : UCarriers n} (KC : KernelCarriers n C) : Prop where
+  cl2_route : MovesX.X3aRouteP n KC.XF KC.XK
+  cl3_aff : MovesX.X2AffP n KC.XF KC.XK
+  cl3_cap : MovesX.X2CapP n KC.XF KC.XK
+  cl3_progress : MovesX.X2ProgressP n KC.XF KC.XK
+  cl3_tails : MovesX.X2TailsP n KC.XF KC.XK
+  cl3_bridge : MovesX.X2BridgeP n KC.XF
+  cl8_eq2 : ∀ (p : ℕ) [Fact p.Prime], MovesRBase.EQ2law p (KC.AD p)
+  cl13_syntax : CtsmSyntaxRow KC.VC
+  cl15_align : MovesX.X1aAlignP n KC.XF ⟨true, false⟩
+
+/-- CL-7's TYPED KERNEL over the real §X carriers (CRITICAL 1 + CRITICAL 6: "its
+    witness `B` may also depend on `p`, `X`, and `F`… the real CL-7 mechanics
+    remain only the three bare tags"). ALL DATA HERE IS p-UNIFORM — bound BEFORE
+    any prime (binder order enforces the note's "L(n) explicit … uniformly in p,
+    N, and depth" and kills the automatic per-p finite max: one `Tbound` must
+    serve EVERY prime's slice family simultaneously, which no per-instance
+    maximum supplies).
+    * `L`/`Dden`/`wstar`/`Tbound` — TRACK-COUNT's L(n), the D(n) common
+      denominator, the derived key-weight budget w*(N), and SQ.0's conclusion
+      bound T(n, N) (consumed per-p at `UInstance.cl7_slice`);
+    * `track_restarts` — (TRK-RULE)'s (t3) face over the X vocabulary: the
+      ladder-restart (recentering) events of every stratum history number ≤ L.
+      The (t1)/(t2) key/branch recognitions and the (c1) assignment MAP have no
+      X carrier — they ride `theoremU`'s bare `trackRule` parameter;
+    * `zero_gain` — SQ.0(c)'s displayed bound d_zero(H) ≤ L(n)·D(n)·w*(N) on
+      threshold-≤-N branches (d_zero = continuing non-genuine-increment nodes);
+      the weight-lattice duty (all key weights in (1/D(n))·ℤ, candidate D(n) | n!)
+      has no key-weight carrier — bare `dnLattice` parameter;
+    * `genuine_bound` — SQ.0(d)'s genuine-increment CONSEQUENCE: ≤ n·N genuine
+      (T1/T2-increment) nodes on threshold-≤-N branches (the per-node
+      strict-ledger-increment sub-claim itself is part of `dnLattice`'s owner
+      residue, disclosed at U10). -/
+structure Cl7Kernel (n : ℕ) {C : UCarriers n} (KC : KernelCarriers n C) where
+  L : ℕ
+  Dden : ℕ
+  wstar : ℕ → ℕ
+  Tbound : ℕ → ℕ
+  hL : 1 ≤ L
+  hD : 1 ≤ Dden
+  track_restarts : ∀ (p : ℕ) [Fact p.Prime] (f : MovesX.MonicBox n p)
+    (H : MovesX.XHistory n), f ∉ MovesX.discZero n p →
+    (KC.XF.gmn p).inStratum f H →
+    MovesX.countPop H MovesX.Pop.recT1 + MovesX.countPop H MovesX.Pop.t4 ≤ L
+  zero_gain : ∀ (p : ℕ) [Fact p.Prime] (f : MovesX.MonicBox n p)
+    (b : (KC.XF.ctx p).Branch f) (N : ℕ), (KC.XF.ctx p).threshold b ≤ N →
+    MovesX.dTotal ((KC.XF.ctx p).hist b)
+        - MovesX.countPop ((KC.XF.ctx p).hist b) MovesX.Pop.incT12
+      ≤ L * Dden * wstar N
+  genuine_bound : ∀ (p : ℕ) [Fact p.Prime] (f : MovesX.MonicBox n p)
+    (b : (KC.XF.ctx p).Branch f) (N : ℕ), (KC.XF.ctx p).threshold b ≤ N →
+    MovesX.countPop ((KC.XF.ctx p).hist b) MovesX.Pop.incT12 ≤ n * N
+
+/-! ## The TREE-N seam (CL-7/CL-10's operative content, typed) -/
 
 /-- THE TREE-N SEAM (typed rows replacing the ASSUMED `finiteness_stack` field —
-    ratification CRITICAL 2). The note's own open premises, named:
+    round-1 CRITICAL 2). The note's own open premises, named:
     `treeOf` — the canonical-tree assignment of every decided-σ class (T_can^τ's
     verdict-tree read at level N); `thr_le` — decided at N means threshold ≤ N
     (decision stability's read); `count_tie` — TREE-N's EXACT per-tree fiber count:
     μ(fiber T)·p^{nN} = #{decided-σ classes whose canonical tree is T} (the [3t]
     discharge candidate is `MovesT.treeN` — E8's `treeExp` at m = n·N — per the C9
-    map; its instantiation at the real classifier is the remaining [3t] seam).
+    map; its instantiation at the real classifier is the remaining [3t] seam,
+    now PINNED by `TreePin` below — round-2 CRITICAL 2).
     From THESE the partition identity is DERIVED (`finiteness_stack` below). -/
 structure TreeSeam (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n p X) where
   treeOf : ∀ (σ : SplittingType n) (N : ℕ)
@@ -129,7 +198,7 @@ structure TreeSeam (n p : ℕ) (X : ClassifierSpec n p) (F : FiberSeries n p X) 
       = (Nat.card {f : {f : Box p n N // X.canonical N f = some σ} //
           treeOf σ N f = T} : ℝ≥0∞)
 
-/-- The finiteness stack, DERIVED (was an assumed field — ratification CRITICAL 2):
+/-- The finiteness stack, DERIVED (was an assumed field — round-1 CRITICAL 2):
     decided_σ(N) = p^{nN} · Σ_{thr(T) ≤ N} μ(fiber T), by partitioning the decided-σ
     classes along `treeOf` and summing `count_tie` over the slice. -/
 theorem TreeSeam.finiteness_stack {n p : ℕ} [NeZero p] {X : ClassifierSpec n p}
@@ -174,19 +243,132 @@ theorem TreeSeam.finiteness_stack {n p : ℕ} [NeZero p] {X : ClassifierSpec n p
     _ = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T := by
         rw [← Finset.sum_mul, mul_comm]
 
-/-! ## The RegData re-key (Stage 3 — ratification CRITICAL 4) -/
+/-! ## The tree/classifier pin (round-2 CRITICAL 2) -/
 
-/-- THE ROSTER PIN (ratification CRITICAL 4: "(REG-p) quantifies over an
-    instance-chosen surrogate roster"): every `RegData` index family and count is
-    EQUATED to the real §S block system. `blk`/`st` identify the blocks with the
-    working degrees e ∈ [1, n] and the per-block states with the REAL table states;
-    `depth_pin` pins the depth set to the consumed-deltas closure; `K_pin`/`iota_pin`
-    pin the matrix and ι entries to the REAL `Kmat`/ι tables; `bterm_pin` pins each
-    b^{term,fin} entry to a real verdict-multiset column; `Jcell_pin`/`W_pin` pin the
-    per-cell J and W_Ŝ entry IMAGES to the real per-cell tables and shape
-    presentation values; the counts (`blockDim_pin`/`cell_pin`/`shape_pin`/`leg_pin`)
-    equate to the real tables' cardinalities. The β-leg ENTRY tie (beyond the count)
-    rides the [3] leg vocabulary (`chain.legs_read`); recorded residual. -/
+/-- The digit slot (i, k) ↦ i·N + k of the level-N chart (the base-p digit
+    positions of coefficient i). -/
+def digitIdx (n N : ℕ) (i : Fin n) (k : Fin N) : Fin (n * N) :=
+  ⟨(i : ℕ) * N + (k : ℕ), by
+    have h1 : (i : ℕ) + 1 ≤ n := i.isLt
+    calc (i : ℕ) * N + (k : ℕ) < (i : ℕ) * N + N := Nat.add_lt_add_left k.isLt _
+      _ = ((i : ℕ) + 1) * N := by ring
+      _ ≤ n * N := Nat.mul_le_mul_right N h1⟩
+
+section TreePinSection
+variable (n p : ℕ) [Fact p.Prime]
+
+/-- THE TREE/CLASSIFIER PIN (round-2 CRITICAL 2: "Nothing in its type identifies
+    `F.Tree σ` with the owner corpus's complete finite realizable canonical trees,
+    or `treeOf` with T_can^τ … `canonical` remains an abstract classifier"). The
+    typed seam in the `r_is_solve` pattern, carried as the NAMED premise
+    (`UInstance.Tpin`): the abstract tree/classifier vocabulary is identified with
+    the BUILT `MovesT` canonical-tree corpus.
+    * `pol`/`Tm`/`chart` — the canonical policy, the per-level tree model at the
+      working level m = n·N (TREE-N's own level), and the coefficient chart;
+    * `boxeq`+`boxeq_digits` — the level-N coefficient box IS the MovesT digit box,
+      pinned by the base-p digit expansion (no free relabeling survives the law);
+    * `vt` (INJECTIVE) — every abstract tree IS a `MovesT.VTree` (a complete
+      finite canonical tree), of verdict type σ (`vt_typemult`), with the SAME
+      threshold (`vt_thr`), REALIZABLE at every level ≥ its threshold (`vt_real`);
+    * `canonical_pin` — T_can^τ's verdict read: `canonical N f = some σ` IFF the
+      digit class fibers at a carried σ-tree within threshold (`VTree.fiberAt`,
+      the graph-equality fiber of the built corpus);
+    * `treeOf_pin` — the seam's canonical-tree assignment reads THE fibering tree.
+    Discharge candidate for the seam's `count_tie` through this pin:
+    `MovesT.treeN` (T-E11) at `Tm N`/`chart N`, whose (SIB)/(JC-multi) hypothesis
+    rows are typed at THIS instance by `SibJcRows` below. -/
+structure TreePin (X : ClassifierSpec n p) (F : FiberSeries n p X)
+    (seam : TreeSeam n p X F) where
+  pol : MovesD.CanonPolicy p (ZMod p)
+  Tm : ∀ N : ℕ, MovesD.TreeModel p (ZMod p) n N (n * N) pol
+  chart : ∀ N : ℕ, Fin n → Fin (n * N)
+  chart_inj : ∀ N, Function.Injective (chart N)
+  boxeq : ∀ N : ℕ, Box p n N ≃ MovesD.Box p (n * N)
+  boxeq_digits : ∀ (N : ℕ) (f : Box p n N) (i : Fin n),
+    f i = ∑ k : Fin N,
+      ((boxeq N f (digitIdx n N i k)).val : ZMod (p ^ N))
+        * (p : ZMod (p ^ N)) ^ (k : ℕ)
+  vt : ∀ σ : SplittingType n, F.Tree σ → MovesT.VTree p (ZMod p)
+  vt_inj : ∀ σ, Function.Injective (vt σ)
+  vt_typemult : ∀ (σ : SplittingType n) (T : F.Tree σ), (vt σ T).typemult = σ.1
+  vt_thr : ∀ (σ : SplittingType n) (T : F.Tree σ), F.thr σ T = (vt σ T).thr n
+  vt_real : ∀ (σ : SplittingType n) (T : F.Tree σ) (N : ℕ), F.thr σ T ≤ N →
+    MovesT.Realizes (Tm N) (chart N) (vt σ T)
+  canonical_pin : ∀ (N : ℕ) (f : Box p n N) (σ : SplittingType n),
+    X.canonical N f = some σ ↔
+      ∃ T : F.Tree σ, F.thr σ T ≤ N ∧
+        (vt σ T).fiberAt (Tm N) (chart N) (boxeq N f)
+  treeOf_pin : ∀ (σ : SplittingType n) (N : ℕ)
+    (f : {f : Box p n N // X.canonical N f = some σ}),
+    (vt σ (seam.treeOf σ N f)).fiberAt (Tm N) (chart N) (boxeq N f.1)
+
+/-- CL-10's (SIB)/(JC-multi) ROWS AT THE PINNED INSTANCE (round-2 CRITICAL 1's
+    `sibJcMulti` home: "the built MovesT SibCount/JCmultiAt statements
+    at-instance"). Exactly the hypothesis rows `MovesT.treeN` consumes, asserted
+    at the PINNED tree models `TP.Tm N`/`TP.chart N` (never a free model):
+    * `sib` — (SIB)'s COUNT face (`MovesT.SibCount`), the central CL-10 kernel;
+    * `sib_at` — (SIB) at a realized site (`MovesT.SibCountAt`, the 2026-07-31
+      T-ratification exact-cell keying: entrance es, site cell c, split cell
+      cSplit), guarded exactly as `SibCount` guards its prescribed-subtree events
+      (each conditioning set a finite `ContFiber` at the entrance's child root,
+      or ⊤);
+    * `jc_multi` — (JC-multi) at multi-side sites (`MovesT.JCmultiAt`, same
+      re-keyed form: the side split's own cell prices the event). -/
+structure SibJcRows {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {seam : TreeSeam n p X F} (TP : TreePin n p X F seam) : Prop where
+  sib : ∀ (N : ℕ) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
+    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N) trackOf),
+    MovesT.SibCount (TP.Tm N) CA.toCellData (TP.chart N)
+  sib_at : ∀ (N : ℕ) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
+    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N) trackOf)
+    (es : MovesT.EntSt p (ZMod p) n) (c cSplit : CA.toCellData.Cell)
+    (S : MovesC.Node p (ZMod p) → Set (MovesD.Box p (n * N))),
+    2 ≤ (CA.toCellData.branchSetOf cSplit).card →
+    (∀ ν ∈ CA.toCellData.branchSetOf cSplit,
+      (∃ hν Tsub leafSpec nsSpec, Tsub.Finite ∧
+        S ν = {x | MovesT.ContFiber (TP.Tm N) (MovesT.stOf es) ν hν Tsub leafSpec nsSpec x}) ∨
+      S ν = Set.univ) →
+    MovesT.SibCountAt (TP.Tm N) CA.toCellData (TP.chart N) es c cSplit S
+  jc_multi : ∀ (N : ℕ) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
+    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N) trackOf)
+    (es : MovesT.EntSt p (ZMod p) n)
+    (c : CA.toCellData.Cell) (fd : MovesC.FreshData p (n * N))
+    (ss : MovesT.SideSplit (TP.Tm N) CA.toCellData c fd),
+    MovesT.IsMultiSideSite (TP.Tm N) CA.toCellData c ss →
+    MovesT.JCmultiAt (TP.Tm N) CA.toCellData (TP.chart N) es ss
+
+end TreePinSection
+
+/-! ## The RegData re-key (round-2 CRITICAL 3) -/
+
+/-- THE ROSTER PIN (round-1 CRITICAL 4 + round-2 CRITICAL 3): every `RegData`
+    index family, count, AND OPERATION is EQUATED to the real §S block system.
+    `blk`/`st` identify the blocks with the working degrees e ∈ [1, n] and the
+    per-block states with the REAL table states; `depth_pin` pins the depth set to
+    the consumed-deltas closure; `K_pin`/`iota_pin` pin the matrix and ι entries to
+    the REAL `Kmat`/ι tables; `Jcell_pin`/`W_pin` pin the per-cell J and W_Ŝ entry
+    IMAGES to the real per-cell tables and shape presentation values; the counts
+    (`blockDim_pin`/`cell_pin`/`shape_pin`/`leg_pin`) equate to the real tables'
+    cardinalities. ROUND-2 ADDITIONS (each quoting the verdict):
+    * `act_pin` ("the active-value operation remains free data … never related to
+      the real CTS-M active semantics"): on its DEFINED locus (post-cancellation
+      OKat membership — exactly `AVAgree`'s reading, "the evaluated object's
+      q₀-value (after cancellation)"), `D.act` IS the real `evalAt` semantics;
+    * `bterm_pin` ("permits an instance-selected σ' for every row"): the ∃σ' is
+      KILLED — each row is THE designated assembled entry, the σ'-sum over the
+      roster's own displayed support `verdictImage` (b^{term,fin}'s docstring:
+      "any σ'; supported on `verdictImage`");
+    * `bsplit_pin` ("no bsplit_pin"): each split row is pinned to the REAL
+      `MovesS.bSplit` with the REAL `blockSolveLt` legs (the solve's own βlt slot,
+      `blockSolve_spec`), assembled over the chain's EXACT σ-index `Sigmas`.
+      RECORDED RESIDUE: the σ'-RESOLVED per-entry display of the split family
+      (one abstract entry per (state, σ') rather than the Sigmas-assembled row)
+      exceeds the abstract roster's per-state shape — [1v]'s display duty;
+    * `legSt`+`betaLeg_pin` ("no betaLeg_pin"): each β leg is pinned to the real
+      β_{e',τ'}(q^δ) object — `powSubst δ` of the real `blockSolve` at a carried
+      (block, state) label, over `Sigmas`. Same recorded σ'-resolution residue.
+    The former `MenuData` pins are CLOSED BY RETIREMENT: (K-SUB)/WF are restated
+    over `C.T` itself (`KsubM1C1T`/`MenuWFT`, DefsCarriers). -/
 structure RegPin {n : ℕ} (C : UCarriers n) {p : ℕ} (D : RegData p) where
   blk : D.Block ≃ {e : ℕ // e ∈ Finset.Icc 1 n}
   st : ∀ b : D.Block, D.bidx b ≃ C.T.State (blk b).1
@@ -197,8 +379,26 @@ structure RegPin {n : ℕ} (C : UCarriers n) {p : ℕ} (D : RegData p) where
       = MovesS.Kmat C.T C.RB (blk b).1 (C.hK (blk b).1 (blk b).2) (st b i) (st b j)
   iota_pin : ∀ (b : D.Block) (i : D.bidx b),
     D.iota b i = C.RB.ι (blk b).1 (st b i)
-  bterm_pin : ∀ (b : D.Block) (i : D.bidx b), ∃ σ' ∈ C.chain.Sigmas,
-    D.bterm b i = MovesS.bTerm C.T C.RB (blk b).1 σ' (st b i)
+  act_pin : ∀ (g : RatFunc ℚ) (q₀ : ℕ) (hok : g ∈ MovesS.OKat (q₀ : ℚ)),
+    D.act g q₀ = MovesS.evalAt (q₀ : ℚ) ⟨g, hok⟩
+  bterm_pin : ∀ (b : D.Block) (i : D.bidx b),
+    D.bterm b i
+      = ∑ σ' ∈ MovesS.verdictImage C.T (blk b).1 (st b i),
+          MovesS.bTerm C.T C.RB (blk b).1 σ' (st b i)
+  bsplit_pin : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK) (b : D.Block) (i : D.bidx b),
+    D.bsplit b i
+      = ∑ σ' ∈ C.chain.Sigmas,
+          MovesS.bSplit C.T C.RB C.hdc (blk b).1 (blk b).2
+            (MovesS.blockSolveLt C.RB C.hdc C.hK hdet (blk b).1) σ' (st b i)
+  legSt : ∀ b : D.Block,
+    D.legIdx b → (e' : {e' : ℕ // e' ∈ Finset.Icc 1 n}) × C.T.State e'.1
+  betaLeg_pin : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK) (b : D.Block)
+    (l : D.legIdx b) (δ : ℕ) (hδ : 0 < δ), δ ∈ D.depthSet →
+    D.betaLeg b l δ
+      = MovesS.powSubst ⟨δ, hδ⟩
+          (∑ σ' ∈ C.chain.Sigmas,
+            MovesS.blockSolve C.T C.RB C.hdc C.hK hdet
+              (legSt b l).1.1 (legSt b l).1.2 (legSt b l).2 σ')
   blockDim_pin : ∀ b, D.blockDim b = Fintype.card (C.T.State (blk b).1)
   cell_pin : ∀ b, D.cellCount b
     = ∑ τ : C.T.State (blk b).1, ∑ o ∈ MovesS.splitOuts C.T (blk b).1 τ,
@@ -223,8 +423,8 @@ structure RegPin {n : ℕ} (C : UCarriers n) {p : ℕ} (D : RegData p) where
 /-- The determinant gate TRANSPORTS through the pin: (REG-p)'s (r1) — the full
     determinant nonzero at the pool value p — forces the REAL symbolic determinant
     hypothesis `MovesS.DetHyp` (a zero rational function evaluates to zero). -/
-theorem RegPin.detHyp {n : ℕ} {C : UCarriers n} {p : ℕ} {S : SolveData n}
-    {D : RegData p} (P : RegPin C D) (hreg : RegP S D) :
+theorem RegPin.detHyp {n : ℕ} {C : UCarriers n} {p : ℕ}
+    {D : RegData p} (P : RegPin C D) (hreg : RegP D) :
     MovesS.DetHyp C.T C.RB C.hK := by
   have key : ∀ b : D.Block,
       (1 - MovesS.Kmat C.T C.RB (P.blk b).1
@@ -234,7 +434,7 @@ theorem RegPin.detHyp {n : ℕ} {C : UCarriers n} {p : ℕ} {S : SolveData n}
     have hpool : p ∈ D.Pool := by
       rw [D.pool_eq]
       exact Finset.mem_image.mpr ⟨1, D.one_mem_depthSet, pow_one p⟩
-    have h1 := (hreg.1 p hpool b).1.2
+    have h1 := (hreg p hpool b).1.2
     have hmat : (1 - D.K b)
         = (1 - MovesS.Kmat C.T C.RB (P.blk b).1
             (C.hK (P.blk b).1 (P.blk b).2)).submatrix (P.st b) (P.st b) := by
@@ -253,15 +453,13 @@ theorem RegPin.detHyp {n : ℕ} {C : UCarriers n} {p : ℕ} {S : SolveData n}
   rw [Equiv.apply_symm_apply] at h
   exact h
 
-/-! ## The solve seam (Stage 2, solve side — CRITICAL 2/3 and GAP 2's substrate) -/
+/-! ## The solve seam + the DERIVED evaluability/agreement/checksum layer -/
 
-/-- THE SOLVE SEAM (typed rows replacing the ASSUMED `solve_stack` field —
-    ratification CRITICAL 2/CRITICAL 3): `r_is_solve` pins `S.R` to THE real solve
-    output `MovesS.Rsh` (RS.1-SH's shallow convolution over the blockSolve = the
-    Cramer/adjugate route — CRITICAL 3's "S.R is the Cramer/adjugate solution of
-    (R_e)", now a typed equation); `series_tie` pins the tree-fiber series sum to the
-    chain's MEASURED per-σ value `Rval` — the named open [3t] premise (Haar mass of
-    the canonical fibers vs the measured chain). -/
+/-- THE SOLVE SEAM (round-1 CRITICAL 2/3): `r_is_solve` pins `S.R` to THE real
+    solve output `MovesS.Rsh` (RS.1-SH's shallow convolution over the blockSolve =
+    the Cramer/adjugate route — a typed equation); `series_tie` pins the
+    tree-fiber series sum to the chain's MEASURED per-σ value `Rval` — the named
+    open [3t] premise (Haar mass of the canonical fibers vs the measured chain). -/
 structure SolveSeam (n p : ℕ) (C : UCarriers n) {X : ClassifierSpec n p}
     (F : FiberSeries n p X) (S : SolveData n) : Prop where
   series_tie : ∀ σ : SplittingType n,
@@ -269,11 +467,69 @@ structure SolveSeam (n p : ℕ) (C : UCarriers n) {X : ClassifierSpec n p}
   r_is_solve : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK) (σ : SplittingType n),
     S.R σ = MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP (vmap C.T σ)
 
+/-- Ruling (D), now DERIVED (round-2 CRITICAL 4: the former `RegP` conjunct
+    `∀ σ, DefinedAt (S.R σ) p` was "the honest explicitly-carried strengthening";
+    it is KILLED — definedness follows from the typed assembly): (r1) transports
+    to `DetHyp` through the pin, `r_is_solve` pins `S.R σ` to the real `Rsh`, and
+    the chain's `rsh_interp` supplies its `OKat` membership at the prime pool. -/
+theorem SolveSeam.R_defined {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p}
+    {F : FiberSeries n p X} {S : SolveData n} {D : RegData p}
+    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP D) (hp : p.Prime)
+    (σ : SplittingType n) : DefinedAt (S.R σ) (p : ℚ) := by
+  have hdet : MovesS.DetHyp C.T C.RB C.hK := P.detHyp hreg
+  have hpP : ((p : ℚ)) ∈ C.chain.PrimePools :=
+    (C.chain.prime_base _).mpr ⟨p, hp, rfl⟩
+  obtain ⟨hok, -⟩ :=
+    C.chain.rsh_interp (vmap C.T σ) (C.vmap_mem_Sigmas σ) (p : ℚ) hpP hdet
+  rw [DefinedAt, ss.r_is_solve hdet σ]
+  exact MovesS.mem_OKat_iff.mp hok
+
+/-- The SQ.4 ACTIVE-VALUE AGREEMENT for `S.R`, now DERIVED (round-2 CRITICAL 4's
+    second conjunct: "because `D.act` is unpinned, the added agreement is not yet
+    agreement with the note's active value" — `act_pin` pins it, and the agreement
+    follows): the literal evaluation IS the ACT active value at p. -/
+theorem SolveSeam.R_agree {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p}
+    {F : FiberSeries n p X} {S : SolveData n} {D : RegData p}
+    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP D) (hp : p.Prime)
+    (σ : SplittingType n) :
+    (S.R σ).eval (RingHom.id ℚ) (p : ℚ) = D.act (S.R σ) p := by
+  have hok : S.R σ ∈ MovesS.OKat ((p : ℚ)) :=
+    MovesS.mem_OKat_iff.mpr (ss.R_defined P hreg hp σ)
+  rw [P.act_pin (S.R σ) p hok]
+  rfl
+
+/-- RS.4 EVALUATED, now DERIVED (round-2 GAP 1: "the evaluated checksum is still
+    assumed… should be derived from `rs4_checksum` plus defined evaluation"): from
+    the ℚ(q) checksum and the DERIVED definedness, through the `evalAt` ring hom
+    on the regular subring at p. The former ledger field and `LowerStack` are
+    retired. -/
+theorem SolveSeam.rs4_eval {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p}
+    {F : FiberSeries n p X} {S : SolveData n} {D : RegData p}
+    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP D) (hp : p.Prime)
+    (hchk : ∑ σ, S.R σ = 1) :
+    ∑ σ, evalℝ S σ p = 1 := by
+  classical
+  have hok : ∀ σ : SplittingType n, S.R σ ∈ MovesS.OKat ((p : ℚ)) :=
+    fun σ => MovesS.mem_OKat_iff.mpr (ss.R_defined P hreg hp σ)
+  have hsub : (∑ σ : SplittingType n, (⟨S.R σ, hok σ⟩ : MovesS.OKat ((p : ℚ))))
+      = 1 := by
+    apply Subtype.ext
+    rw [AddSubmonoidClass.coe_finsetSum]
+    simpa using hchk
+  have hval : (∑ σ : SplittingType n,
+      MovesS.evalAt ((p : ℚ)) ⟨S.R σ, hok σ⟩) = 1 := by
+    rw [← map_sum, hsub, map_one]
+  calc ∑ σ : SplittingType n, evalℝ S σ p
+      = ((∑ σ : SplittingType n, MovesS.evalAt ((p : ℚ)) ⟨S.R σ, hok σ⟩ : ℚ) : ℝ) := by
+        rw [Rat.cast_sum]
+        exact Finset.sum_congr rfl fun σ _ => rfl
+    _ = 1 := by rw [hval]; norm_num
+
 /-- Under (REG-p), the literal evaluation equals the chain's measured value:
     `evalℝ S σ p = Rval (vmap σ) p` — through `r_is_solve` + `rsh_interp`. -/
 theorem SolveSeam.evalℝ_eq_Rval {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p}
     {F : FiberSeries n p X} {S : SolveData n} {D : RegData p}
-    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP S D) (hp : p.Prime)
+    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP D) (hp : p.Prime)
     (σ : SplittingType n) :
     evalℝ S σ p = C.chain.Rval (vmap C.T σ) (p : ℚ) := by
   have hdet : MovesS.DetHyp C.T C.RB C.hK := P.detHyp hreg
@@ -290,14 +546,14 @@ theorem SolveSeam.evalℝ_eq_Rval {n p : ℕ} {C : UCarriers n} {X : ClassifierS
     rw [ss.r_is_solve hdet σ]
     rfl
 
-/-- The solve stack, DERIVED (was an assumed field — ratification CRITICAL 2): under
-    (REG-p) the extended-value series sum is finite, IS the literal R_σ(p), and
-    R_σ(p) ≥ 0 (RS.3's positivity through the chain's `r_bdd`). The reach is the
-    REAL MovesS solve laws (`rsh_interp` at the prime pool) through the RegPin
-    determinant transport. -/
+/-- The solve stack, DERIVED (round-1 CRITICAL 2): under (REG-p) the
+    extended-value series sum is finite, IS the literal R_σ(p), and R_σ(p) ≥ 0
+    (RS.3's positivity through the chain's `r_bdd`). The reach is the REAL MovesS
+    solve laws (`rsh_interp` at the prime pool) through the RegPin determinant
+    transport. -/
 theorem SolveSeam.solve_stack {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p}
     {F : FiberSeries n p X} {S : SolveData n} {D : RegData p}
-    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP S D) (hp : p.Prime) :
+    (ss : SolveSeam n p C F S) (P : RegPin C D) (hreg : RegP D) (hp : p.Prime) :
     ∀ σ : SplittingType n,
       F.seriesSum σ ≠ ⊤ ∧ F.seriesSum σ = ENNReal.ofReal (evalℝ S σ p) ∧
       0 ≤ evalℝ S σ p := by
@@ -311,7 +567,7 @@ theorem SolveSeam.solve_stack {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec 
   · rw [ss.series_tie σ, heq]
   · rw [heq]; exact hbdd.1
 
-/-! ## The ℤ_p bridge (Stage 4's identification substrate — CRITICAL 7) -/
+/-! ## The ℤ_p bridge (round-2 CRITICAL 5) -/
 
 section ZpBridgeSection
 variable (n p : ℕ) [Fact p.Prime]
@@ -324,25 +580,34 @@ def ZpReads (zf : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)) (N : ℕ)
   ∀ g : Polynomial ℤ_[p], g.Monic → g.natDegree = n →
     g.map (PadicInt.toZModPow N) = f.toPoly → zf g = σ.1
 
-/-- THE NAMED HC-2 ℤ_p BRIDGE (ratification CRITICAL 7: "clause (ii) proves equality
-    with an instance-chosen label density, not the note's splitting density").
-    `trueType` is now pinned against GENUINE ℤ_p objects: `lift_exists` — every
-    level-N box class is the reduction of a monic degree-n `Polynomial ℤ_[p]`;
-    `zf_factor` — the reading `zfType` is realized by an actual monic-irreducible
-    factorization over ℚ_p whose factor degrees are the (e·f)-products of the read
-    multiset (entries positive by `zf_pos`); `lift_true` — `trueType N f = some σ`
-    IFF every lift reads σ. DISCLOSED RESIDUE (HC-2, recorded): the refinement of
-    each factor's degree e·f into its ramification index e and residue degree f
-    (valuation-theoretic invariants of ℚ_p[X]/(h)) is not yet typed — the bridge
-    pins the factorization SHAPE, the owner corpus (HC-2) owes the e/f split. -/
+/-- THE NAMED HC-2 ℤ_p BRIDGE — RETYPED at round 2 (CRITICAL 5: "it determines
+    only the multiset of products e·f … It does not require either coordinate to
+    be the actual ramification index or residue degree… `(1,6)`, `(2,3)`, `(3,2)`,
+    `(6,1)` are indistinguishable"). `zf_factor` now pins BOTH coordinates of
+    every read pair to THE valuation-theoretic invariants: each entry is
+    `(ramIdx h, resDeg h)` at the corresponding monic factor `h` (ℤ_p
+    coefficients, irreducible over ℚ_p) — the MovesT REV-9 CLOSED defs reading
+    `Ideal.ramificationIdx`/`Ideal.inertiaDeg` of the maximal ideals through
+    `AdjoinRoot h`. The degree accounting (`zf_deg`) is retained.
+    REMAINING HC-2 RESIDUE (exact statement): (i) the INSTANCE obligation itself —
+    supplying `lift_exists`/`lift_true`/`zf_factor` at the real classifier (the
+    classifier ↔ ℤ_p-factorization seam); (ii) the §9 IP-1 instance plumbing —
+    `ramIdx`/`resDeg` read their values through `IsLocalRing (AdjoinRoot h)`
+    (junk 0 off it), so the bridge's (e,f) are the true invariants exactly on the
+    locus where IP-1 (`IsLocalRing (AdjoinRoot h)` for monic ℚ_p-irreducible
+    `h` over ℤ_p) holds — an owed instance, no longer an untyped invariant;
+    (iii) `zf_pos`/`zf_deg`, the entry positivity and e·f = deg laws, are carried
+    as bridge laws (true theorems of local field theory, not yet Lean-derived). -/
 structure ZpBridge (X : ClassifierSpec n p) where
   zfType : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)
   zf_pos : ∀ g : Polynomial ℤ_[p], g.Monic → g.natDegree = n →
     ∀ ef ∈ zfType g, 1 ≤ ef.1 ∧ 1 ≤ ef.2
   zf_factor : ∀ g : Polynomial ℤ_[p], g.Monic → g.natDegree = n →
-    ∃ factors : Multiset (Polynomial ℚ_[p]),
-      g.map (PadicInt.Coe.ringHom) = factors.prod ∧
-      (∀ h ∈ factors, h.Monic ∧ Irreducible h) ∧
+    ∃ factors : Multiset (Polynomial ℤ_[p]),
+      g.map (PadicInt.Coe.ringHom)
+          = (factors.map (Polynomial.map PadicInt.Coe.ringHom)).prod ∧
+      (∀ h ∈ factors, h.Monic ∧ Irreducible (h.map PadicInt.Coe.ringHom)) ∧
+      zfType g = factors.map (fun h => (MovesT.ramIdx h, MovesT.resDeg h)) ∧
       (zfType g).map (fun ef => ef.1 * ef.2) = factors.map Polynomial.natDegree
   lift_exists : ∀ (N : ℕ) (f : Box p n N), ∃ g : Polynomial ℤ_[p],
     g.Monic ∧ g.natDegree = n ∧ g.map (PadicInt.toZModPow N) = f.toPoly
@@ -375,104 +640,78 @@ theorem ZpBridge.zpDmass_eq_trueDmass (B : ZpBridge n p X) (σ : SplittingType n
 
 end ZpBridgeSection
 
-/-! ## The capstone ledger (retyped) -/
+/-! ## The capstone ledger (round-2 retype) -/
 
-/-- THE CAPSTONE LEDGER (RETYPED per the 2026-07-30 ratification): the typed rows
-    over the real carriers + the derived-stack seams + the residual-row assertions.
-    The S-side rows CL-1/CL-5/CL-9(β)/(ii-c)/CL-18 are carried TYPED by
-    `C : UCarriers n` (see `DefsCarriers`); CL-11's DEG-CONS is `C.hdc`; (REG-p) is
-    NOT a field (the ONE explicit hypothesis, D5/D8). CL-12 is CLOSED — no slot. -/
+/-- THE CAPSTONE LEDGER (ROUND-2 RETYPE): the per-p typed rows over the real
+    carriers + the seams. The p-UNIFORM rows now live at `UpstreamTyped`/
+    `Cl7Kernel` (CRITICAL 1); the residual vocabulary-less rows are `theoremU`'s
+    explicit parameters — NO bare-`Prop` pack rides here. CL-1/CL-5/CL-9(β)/
+    (ii-c)/CL-18 are carried TYPED by `C : UCarriers n`; CL-11's DEG-CONS is
+    `C.hdc` and its (K-SUB) face is `cl11_ksub` OVER THE REAL ROSTER; the CL-13
+    WF face is DISCHARGED (`menuWFT_holds`), not carried. (REG-p) is NOT a field
+    (the ONE explicit hypothesis, D5/D8). `rs4_eval` is DERIVED
+    (`SolveSeam.rs4_eval`), no longer a field (GAP 1). -/
 structure CapstoneLedger (n p : ℕ) (C : UCarriers n) (X : ClassifierSpec n p)
-    (F : FiberSeries n p X) (S : SolveData n) (D : RegData p) (M : MenuData)
-    (KR : UpstreamKernelStatements) where
-  /-- CL-2 (residual bare row, fenced — see `UpstreamKernelStatements`). -/
-  cl2 : KR.weightCharge
-  /-- CL-3 (residual bare row, fenced). -/
-  cl3 : KR.progressX2
-  /-- CL-7's mechanics rows (residual bare, fenced); the CONCLUSION is `cl7_bound`. -/
-  cl7 : KR.trackCount ∧ KR.dnDuty ∧ KR.genuineIncrement
-  /-- CL-8's six REL rows (residual bare, fenced; (e)'s operative trace is
-      `C.chain.legs_read`, typed and carried). -/
-  cl8 : KR.rel1 ∧ KR.rel2a ∧ KR.rel2b ∧ KR.rel2d ∧ KR.rel2e ∧ KR.rel3
-  /-- CL-9(α) (residual bare row; (β) = XRB is TYPED at `C.chain.B.xrb`). -/
-  cl9 : KR.rs0Lump
-  /-- CL-10's (SIB)/(JC-multi) rows (residual bare, fenced; TREE-N typed at `seam`). -/
-  cl10_sib : KR.sibJcMulti
-  /-- CL-13's full-statement row (residual bare; typed faces below). -/
-  cl13 : KR.ctsmSyntax
-  /-- CL-14/CL-15/CL-16 + CL-19's history residue (residual bare echo row). -/
-  cl14_16 : KR.m1m5X1aM4bJcInv
+    (F : FiberSeries n p X) (S : SolveData n) (D : RegData p) where
   /-- CL-4, TYPED (qualitative form — the note's own operative trace; the a.e.
       ℤ_p reading rides the bridge): env(N) → 0. -/
   cl4_env_tendsto : Tendsto X.env atTop (𝓝 0)
   /-- CL-6, TYPED: the (iv)-POLY value+degree law package over the real carriers
       (`tcount_val`/`scount_val`/`tcount_deg`/`scount_deg`). -/
   cl6 : Nonempty (MovesS.PolyGeomLaws C.T C.MS C.RB)
-  /-- CL-7's CONCLUSION, TYPED over the real slice: the decided family at threshold
-      ≤ N is finite with an explicit bound (SQ.0's conclusion form; the (c1)–(c3)
-      mechanics stay at the fenced rows). -/
-  cl7_bound : ∃ B : ℕ → ℕ, ∀ (σ : SplittingType n) (N : ℕ),
-    (F.thrSlice σ N).card ≤ B N
   /-- CL-10's VP-SOUND leg, TYPED over the concrete box (ruling (B)). -/
   cl10_vpsound : VPSound X
-  /-- CL-11's (K-SUB) m = 1 classification, TYPED (DEG-CONS is `C.hdc`, carried). -/
-  cl11_ksub : KsubM1C1 M
-  /-- CL-13's menu well-formedness FACE, TYPED (the full statement is `cl13`). -/
-  cl13_wf : MenuWF M
+  /-- CL-11's (K-SUB) m = 1 classification, TYPED OVER THE REAL ROSTER (round-2
+      CRITICAL 3's menu finding; DEG-CONS is `C.hdc`, carried). -/
+  cl11_ksub : KsubM1C1T C.T
   /-- CL-17's production burden, TYPED as the chain's OPEN projection (W17ii at the
       chain's own carriers — never instance-suppliable data). -/
   cl17 : C.chain.wsh17_pin
   /-- CL-19's representative-invariance FACE, TYPED over the real measured carrier:
       the per-cell conditional mass is ONE function of the retained state —
-      invariant across representatives (the history/h_ent face is fenced). -/
+      invariant across representatives (the history/h_ent face is the explicit
+      `jcInvHist` parameter of U10). -/
   cl19_rep : ∀ e (τ : C.T.State e) (x x' : C.MS.Rep e τ) (c : C.MS.Cell e τ)
     (q₀ : ℚ), q₀ ∈ C.MS.Pools → C.MS.activeState q₀ e τ →
     C.MS.μcell e τ x c q₀ = C.MS.μcell e τ x' c q₀
   /-- The O3 BASE-PIN DECLARATION (SQ.4's display duty): Teichmüller. -/
   o3_teichmuller : X.baseSection = BaseSection.teichmuller
-  /-- THE TREE-N SEAM (replaces the assumed `finiteness_stack`; CRITICAL 2). -/
+  /-- THE TREE-N SEAM (round-1 CRITICAL 2; its tree/classifier identification is
+      the carried `UInstance.Tpin` — round-2 CRITICAL 2). -/
   seam : TreeSeam n p X F
-  /-- THE SOLVE SEAM (replaces the assumed `solve_stack`; CRITICAL 2/3). -/
+  /-- THE SOLVE SEAM (round-1 CRITICAL 2/3). -/
   ssrc : SolveSeam n p C F S
   /-- RS.4's checksum (§S S.5), the ℚ(q) identity — with `ssrc.r_is_solve` this is
-      now a claim about THE real solve family, not a free `S.R`. -/
+      a claim about THE real solve family; its evaluated form is DERIVED
+      (`SolveSeam.rs4_eval` — round-2 GAP 1). -/
   rs4_checksum : ∑ σ, S.R σ = 1
-  /-- RS.4 EVALUATED at p under (REG-p) (E-phase note: derivable from
-      `rs4_checksum` + (r2)-definedness via RatFunc eval-hom side conditions;
-      carried as a field until that unit lands). -/
-  rs4_eval : RegP S D → ∑ σ, evalℝ S σ p = 1
 
 /-- The derived finiteness stack, at the ledger (projection to `TreeSeam`'s). -/
 theorem CapstoneLedger.finiteness_stack {n p : ℕ} [NeZero p] {C : UCarriers n}
     {X : ClassifierSpec n p} {F : FiberSeries n p X} {S : SolveData n}
-    {D : RegData p} {M : MenuData} {KR : UpstreamKernelStatements}
-    (L : CapstoneLedger n p C X F S D M KR) (σ : SplittingType n) (N : ℕ) :
+    {D : RegData p} (L : CapstoneLedger n p C X F S D)
+    (σ : SplittingType n) (N : ℕ) :
     (X.decided σ N : ℝ≥0∞)
       = (p : ℝ≥0∞) ^ (n * N) * ∑ T ∈ F.thrSlice σ N, F.mass σ T :=
   L.seam.finiteness_stack σ N
 
-/-- (U-n)-LOWER's ADDITIONAL slice (D12): RS.4's checksum forms. -/
-structure LowerStack (n p : ℕ) (S : SolveData n) (D : RegData p) : Prop where
-  rs4_checksum : ∑ σ, S.R σ = 1
-  rs4_eval : RegP S D → ∑ σ, evalℝ S σ p = 1
-
-/-- Field-selection projection (D12/G9), the lower-stack slice. -/
-def CapstoneLedger.lowerStack {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p}
-    {F : FiberSeries n p X} {S : SolveData n} {D : RegData p} {M : MenuData}
-    {KR : UpstreamKernelStatements} (L : CapstoneLedger n p C X F S D M KR) :
-    LowerStack n p S D := ⟨L.rs4_checksum, L.rs4_eval⟩
-
-/-- THE PER-p INSTANTIATION BUNDLE (U10's quantifier shape) over the FIXED p-uniform
-    data (C, S, M, KR). NEW at the retype: `Dpin` — the (REG-p) roster is pinned to
-    the real block system (CRITICAL 4); `bridge` — the NAMED HC-2 ℤ_p premise
-    (CRITICAL 7; never a free function). -/
-structure UInstance (n : ℕ) (C : UCarriers n) (S : SolveData n) (M : MenuData)
-    (KR : UpstreamKernelStatements) (p : ℕ) (hp : p.Prime) where
+/-- THE PER-p INSTANTIATION BUNDLE (U10's quantifier shape) over the FIXED
+    p-uniform data (C, KC, K7, S). ROUND-2 FIELDS: `Tpin` — the tree/classifier
+    identification (CRITICAL 2), the named premise; `sibjc` — CL-10's
+    (SIB)/(JC-multi) rows AT the pinned instance (CRITICAL 1); `cl7_slice` — the
+    decided-family cardinality bound at the p-UNIFORM `K7.Tbound` (CRITICAL 6: the
+    same T(n, N) serves every prime, so no per-instance finite max realizes it). -/
+structure UInstance (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
+    (K7 : Cl7Kernel n KC) (S : SolveData n) (p : ℕ) (hp : p.Prime) where
   X : ClassifierSpec n p
   F : FiberSeries n p X
   D : RegData p
-  L : CapstoneLedger n p C X F S D M KR
+  L : CapstoneLedger n p C X F S D
   Dpin : RegPin C D
   bridge : @ZpBridge n p ⟨hp⟩ X
+  Tpin : @TreePin n p ⟨hp⟩ X F L.seam
+  sibjc : @SibJcRows n p ⟨hp⟩ X F L.seam Tpin
+  cl7_slice : ∀ (σ : SplittingType n) (N : ℕ),
+    (F.thrSlice σ N).card ≤ K7.Tbound N
 
 end LeanUrat.MovesU

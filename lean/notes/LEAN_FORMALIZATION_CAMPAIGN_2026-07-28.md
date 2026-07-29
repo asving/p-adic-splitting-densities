@@ -834,3 +834,40 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   faithful carrier law or circular?), M6 (the census scope). RATIFIED
   LOCALLY: the XHDd/Tgam keying, the HMC toy pair, the marked-event laws,
   the table algebra, StepSys non-vacuity.
+
+  *** T RATIFICATION REPAIRS EXECUTED (2026-07-31, fable; warrant = the
+  as-built REJECT-M verdict, notes/MOVEST_RATIFY_CODEX_2026-07-30.md).
+  (0) S2_sibFalse RED fixed (the mandatory child_red_uniform field +
+  the ADJ-SPINE-1-genre .red table refinement); full MovesT sweep: S2
+  was the only red, 57/57 modules green after. (1) THE CENTRAL RE-KEY:
+  siteCellEvent = the EXACT CELL form {x ∈ entEvent es | cellOf es x
+  = c} (the note's Ψ⁻¹(c_s) over Σ, MOVES 7448-49); ripple executed
+  through SitePresents / SiteLedger.presents / state_cell (now the
+  EXACT Σ_c SCAFFOLD LAW, owner HC-2 — the bracketed E8 sibling
+  forcing re-recorded as its instance-level obstruction at F1-genre
+  co-realized distinct-pin siblings, discharge = G1b/task #44; the
+  pinned toys discharge it, censused integers verbatim) / JCmultiAt
+  (prices its side split's own cell) / SibCountAt (conditioning cell
+  EXPLICIT: es, c, cSplit) / TreeScaffold (frame c = the children-read
+  split cell, the '.c = cellAt' tie dropped — disclosed two-keying
+  deviation) / treeExp / E10 / E11 / D12 / TreeExpFin / TreeNStmt.
+  (2) hjcm HONESTY: cone_charge now CONSUMES hjcm at multi-side sites
+  (via the new SiteLedger.hsplit_exp side-union tie + state_cell);
+  E6's presents_imply_jcMultiAt PROVES the presented faces imply
+  (JC-multi) — conditionality disclosed both ways. (3) TREE-N: treeN's
+  unused hthr REMOVED; the cross-level stability theorem TYPED
+  (TreeNStable) + carried as the NAMED OPEN row treeN_stable (owner
+  HC-2/D4R0K). (4) G1 RECORD CORRECTION, verbatim per verdict §8.2:
+  the two mem_realizable admissions are BLOCKED-FALSE AT THE PINNED
+  TABLES (known false for their pinned carriers — NOT merely
+  Q1-gated); no leaf-σ re-pin can discharge them; the fix requires the
+  blueprint-level G1b re-adjudication of the toy tables — task #44's
+  sign-off cluster (with the two type-blocked pins twoNodeKcardH /
+  toy_v8_wchain). Re-recorded in the G1 header, the MovesT MANIFEST
+  (RATIFY-T-1..5), and the UNIFORMITY blueprint fence list. MovesT
+  sorry census: 6 (G1×4, E5 hnostray, E11 treeN_stable — all fenced/
+  named). MovesU's in-flight SibJcRows rows scratch-elaborate green
+  against the new signatures; the concurrent MovesV V3 reds
+  (V3_entu/V3_instbijB, the M1 stop-the-line repair in flight) are
+  NOT MovesT-connected (no MovesT imports) and block only the
+  V-dependent MovesU tail of the full-corpus build. ***

@@ -9,7 +9,8 @@ RETYPE (ratification CRITICAL 2): the solve identification is no longer an assum
         positivity from the real MovesS solve laws (`rsh_interp`/`r_bdd` through the
         `RegPin`-transported determinant gate). The unit's hypotheses are the typed
         seams + the roster pin + (REG-p) + primality.
-hypothesis_fields: EXACTLY `TreeSeam` + `SolveSeam` + `RegPin`; explicit `RegP S D`,
+hypothesis_fields: EXACTLY `TreeSeam` + `SolveSeam` + `RegPin`; explicit `RegP D`
+        (ROUND-2 CRITICAL 4: the (r1)∧(r2)-exact schema, S-clauses derived),
         `p.Prime` (F9).
 -/
 import Mathlib
@@ -30,7 +31,7 @@ variable {n p : ℕ} {C : UCarriers n} {X : ClassifierSpec n p} {F : FiberSeries
 /-- SQ.2, the fixpoint upper bound: decided_σ(N) ≤ R_σ(p)·p^{nN} — from the DERIVED
     solve stack (real MovesS solve laws) + the DERIVED partial-sum identity. -/
 theorem sq2_upper (seam : TreeSeam n p X F) (ss : SolveSeam n p C F S)
-    (P : RegPin C D) (hreg : RegP S D) (hp : p.Prime) (σ : SplittingType n) (N : ℕ) :
+    (P : RegPin C D) (hreg : RegP D) (hp : p.Prime) (σ : SplittingType n) (N : ℕ) :
     (X.decided σ N : ℝ) ≤ evalℝ S σ p * (p : ℝ) ^ (n * N) := by
   haveI : NeZero p := ⟨hp.pos.ne'⟩
   -- The DERIVED solve stack: finiteness, the literal identification, RS.3 positivity.
