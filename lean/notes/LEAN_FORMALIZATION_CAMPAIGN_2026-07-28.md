@@ -641,3 +641,21 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   NEXT SESSION: the resumption plan stands (above) — escalation fleet on
   (a)+(b) heads with fable, the G1 pin charge, then the as-built dual
   ratification and the seam re-keys.
+  SESSION CONTINUES VIA WORKFLOWS (2026-07-30): the workflow agent pool is
+  exempt from the Agent-tool session cap (batch 2 ran 181 agents after the
+  cap error) — the campaign proceeds this session. IN FLIGHT: (a) the
+  ESCALATION FLEET (wf_c31a99fc-bca, 8 fable agents): the E5→E6→E8
+  assembly-spine chain (one agent, dependency order), F3's Fubini, D7's
+  NPIDPin cites, C2's two cores, C7's bridge + C5-swap, G1's 8 pin
+  repairs, the V1 witness pair (template: the proved V1_witnessA), the
+  V3/V4/V5 chain (aggfullA/spwordA/part1B/compagg/comphA/comphB).
+  (b) the FIVE ADJUDICATED STATEMENT REPAIRS (wf_4ca80e1c-cdd), each with
+  a machine-verified refutation from the fleet: D4's negation unprovable
+  at finite m (the prover COMPILED the positive law — quantify m or flip
+  per the blueprint); readFits_unique needs sel.isSome (g,μ free at
+  sel=none — counterexample on file); rep_row needs the CellPolyPack
+  bridge premise (Bool-fiber counterexample); comp_hsum off by exactly
+  q₀^(−n·Δ) — iotaEps must read compLvl; V6's census mis-keys (2,2)→TH12
+  (checked at ZMod 3: 6 ≠ 9, and classCount(1,1)=9=TH12.eval 3 nails the
+  swap). All five = the statement fence WORKING: provers stopped, refuted,
+  and reported instead of weakening.
