@@ -9,7 +9,7 @@
  "decide_discipline": "DECIDE units (group H + shExample + the two n3rootLetters Bool facts) are typed decide-ready but sorried at E-phase; P-phase closes with kernel decide/rfl. native_decide BANNED (axiom fence: Lean.ofReduceBool outside the allowed set). Perf fence blueprint §1.6: worst hotspot closure_step3 = 53 x 567 succStepB evals; split per stage group on overrun; speciesEnum 3 has 567 candidates, speciesEnum 1 has 6.",
  "conditionality": "Blueprint §0 ledger: group F consumes the OPEN engine interface CanTreeModel (fields = raw per-read laws, owner HC-1/MovesD; hVerdictPin = the D4R.0-K(c) residual, owner [3t] via VP). Everything else is unconditional bookkeeping over N/Z/Multiset. p-independence of SnRaw: by typing. N*3 values: censused data, no realizability theorem.",
  "counts": {
-  "total_units": 67,
+  "total_units": 68,
   "def_files": 3,
   "by_group": {
    "A": 5,
@@ -19,7 +19,8 @@
    "E": 11,
    "F": 12,
    "G": 3,
-   "H": 18
+   "H": 18,
+   "I": 1
   },
   "sorries_total": 88,
   "by_difficulty": {
@@ -820,6 +821,25 @@
    "sorries": 1,
    "statement": "theorem SnRaw1_eq : ∀ s, InCatalogue 1 s ↔ s = confirmingRoot1",
    "hypothesis_fields": "none"
+  },
+  {
+   "id": "Sp.instantiation",
+   "file": "lean/LeanUrat/MovesSp/SP8_instantiation.lean",
+   "group": "I",
+   "difficulty": "medium",
+   "deps": [
+    "Sp.compMember",
+    "Sp.reflCoherent",
+    "Sp.reflBudget",
+    "Sp.reflSucc",
+    "MovesD.TreeModel (built)",
+    "MovesT.G1 toy literals (built)",
+    "MovesT.Vd (built)"
+   ],
+   "sorries": 0,
+   "statement": "structure SpeciesReadout (T : TreeModel p F n N m pol) (x : Box p m); def canTreeModel_ofTreeModel : ... -> CanTreeModel n p f; theorem SP_COMP_ofTreeModel : ... InCatalogue n (R.datumOf o r); noncomputable def toyCanModel : CanTreeModel 2 2 f2 (len 3, transported G1 toy A word); theorem SP_COMP_nonvacuous_at_n2; structure StrongVerdictPin (M : CanTreeModel n p f); theorem StrongVerdictPin.weak; def StrongVerdictResidual; noncomputable def toyStrongPin",
+   "hypothesis_fields": "SpeciesReadout = the ONE named W-7 seam premise (lenOf/datumOf/verdictOf + the CanTreeModel law mirrors, T.mem-guarded); StrongVerdictPin = the D4R.0-K(c) residual in full (tauV/dict/htau/hinf/cap/hcap)"
   }
- ]
+ ],
+ "wave_c_instantiation": "2026-07-30 addendum (adjudicated charges of lean/notes/MOVESSP_RATIFY_CODEX_2026-07-30.md, REJECT 3M/2N -> wave-C instantiation): SP8_instantiation.lean, ADDITIVE (SP_COMP + CanTreeModel untouched), 0 sorries. M1 = SpeciesReadout (the W-7 seam residue as ONE named premise; warrant MovesS/Defs.lean:587) + canTreeModel_ofTreeModel (Branch = the REAL carrier {o // T.mem o x} over the built MovesD.TreeModel; hTotal = the BUILT root_mem law) + SP_COMP_ofTreeModel. M2 = wordHead/wordMid/wordLast (species readout of the built G1 toy A branch, rfl-tied to MovesT.toyHead/toyLeafA) + toyCanModel (len 3) + SP_COMP_nonvacuous_at_n2. M3 = StrongVerdictPin (D4R.0-K(c) c1/c2/c3-b: Vd alphabet + tau rule from cell data + uniform detection cap) + StrongVerdictPin.weak (strong => weak bridge; weak field kept for interface stability) + StrongVerdictResidual (the note-faithful residual record) + toyStrongPin (witness). N1 = CatalogueWord SCOPE docstring (confirming-ending subtype; verdict quoted). N2 (R6 erratum) was already recorded at Sp.n3entrancePatterns."
 }

@@ -242,7 +242,19 @@ structure CanTreeModel (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) where
 F3]: letters in 𝒮ₙ^raw, Out-linked, and FORCED to close at the FIRST confirming
 W = 1 read — the endpoint is a structure law, not an antecedent. (Words ended by
 a V_term edge from a CONTINUING letter, and infinite branches, are catalogued
-prefixwise via `CanTreeModel`, not by this structure.) -/
+prefixwise via `CanTreeModel`, not by this structure.)
+
+SCOPE [ratification N1, `lean/notes/MOVESSP_RATIFY_CODEX_2026-07-30.md`]: this
+datatype is the CONFIRMING-ENDING SUBTYPE of the note's word notion — the
+verdict, quoted: "Its laws require a nonempty word whose last letter has W = 1.
+The note also allows finite words ending at a V_term edge from a continuing
+letter, plus infinite branches prefixwise. Those cases are discussed through
+`CanTreeModel`, but are not instances of the datatype named `CatalogueWord`.
+The τ-word results are therefore correct only for the confirming-ending
+subtype." All in-corpus consumers (`tauWord_spec`, the n = 1 word packaging)
+are confirming-ending; the V_term-ended and infinite cases enter the wave-C
+instantiation through `CanTreeModel.len` / `SpeciesReadout.lenOf`
+(`SP8_instantiation.lean`), never through this structure. -/
 structure CatalogueWord (n : ℕ) where
   word : List Species
   hne : word ≠ []
