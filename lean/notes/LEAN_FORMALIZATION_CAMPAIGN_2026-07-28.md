@@ -365,3 +365,18 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   re-run green + ONE consolidated Codex confirm on the applied diffs (the
   definition-change authority's gate); then the W4-SYNC interface-delta note
   feeds the wave-4 round-6 audit charge.
+  REPAIRS APPLIED + ROUND 6 LAUNCHED (2026-07-29): both ratification-repair
+  agents landed green (full build 8579 jobs; zero sorry in the 7 new files;
+  Lean-core footprints; statement fence git-diff-verified; the N2 sealed
+  gate stays proved). Two agent-caught improvements over the charge: the D5
+  range corrected to L12's piecewise threshold verbatim (the charge's form
+  was weaker on the EMPTY branch — Pref = ∅ still demands N ≥ N(∅) = 1);
+  S4's impossible literal retype resolved as field-deletion + projection-def
+  RS4Chain.wsh17_pin := W17ii (h17 binder byte-identical; no instance can
+  weaken it). Interface deltas recorded in W4_SYNC_DELTAS_2026-07-29.md
+  (9 items) and folded into every round-6 charge. IN FLIGHT: the ONE
+  consolidated Codex confirm on the applied diff (the definition-change
+  authority's gate; /tmp/leanconfirm_rr) + the wave-4 round-6 FULL DUAL
+  audits (Codex detached t6/v6 + two fresh Fable legs, wf_2c438758-07c),
+  round-6 duties: per-row disposition verification, recomputation of the
+  writer's 2^9/5^18 arithmetic, held-item judgment, seam-sync staleness.
