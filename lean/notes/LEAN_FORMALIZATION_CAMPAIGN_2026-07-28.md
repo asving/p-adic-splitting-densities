@@ -697,3 +697,20 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   against the no-git rule — benign, clean, well-labeled; rule restated
   in future charges. V7_ctsm transiently red from the concurrent
   stmt-repair workflow — rebuild after it lands.
+  ROUND 3 LANDED (2026-07-30): C2/D7/F3 PROVED IN FULL Lean-core (the
+  transportedLevels Defs bug fixed; np_id restored to L12's range; the
+  decided-set F3 with vtree_eq_of_fiberAt); E6 PROVED (the new
+  spectator_conditional_mass kernel; CellData.child_red_uniform +
+  SiteLedger.spectator_sol added per the adjudication; the toys refined
+  with .junk2 — the countermodel-genre fix, reported per charge); E5
+  narrowed to ONE owner-tagged sorry (hnostray — head-roster completeness,
+  the (c2) m_i=1 τ-hen leg, owner HC-2/D4R0K); D14 + E12 UN-GATED
+  Lean-core; V side: spWord gains the width-≥-2 hypotheses (the
+  SpFitsRead-conditional alternative stays refutable — the negWitness
+  extends; an EntShapeV width-law sign-off item recorded), part1 Lean-core
+  (fh_exact restored), THE COMP CHAIN FULLY Lean-core (μhatN_law +
+  ιN_lands; comp_h_one/step/comp_h/comp_hsum shed their sorryAx).
+  IN FLIGHT (wf_4a3322a9-04a): the E8 assembly (the recorded plan; E5/E6
+  supplied) + the D11 adjudicated closure clauses. After: the wave-4
+  as-built DUAL RATIFICATION (Codex + Fable over both corpora vs the
+  note + blueprints) is the next gate; then the seam re-keys.
