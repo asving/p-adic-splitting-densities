@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesT.Defs
 import LeanUrat.HC2.U31_gateReadsOf
+import LeanUrat.MovesC.C0_digitSystemMass
 
 /-! # T-G1 `toy_treeExp_gate` [split G1a/G1b] — the two pinned toy carriers (§T-G1's
 REV-8 full-roster tables) + the gate battery (DO-3). GATE ARCHITECTURE (REV 2, Fable
@@ -1306,9 +1307,242 @@ noncomputable def toyVdict :
 
 /-! ### the gate battery (DO-3 — G1a decide surrogates + G1b bridges, all OPEN) -/
 
+/-! #### fiber proof infrastructure (P-phase fill; private helpers only). -/
+section ToyFiberHelpers
+
+private lemma not_irrHalts_tA1 : ¬ IrrHalts tA1 := by
+  rintro ⟨-, h⟩
+  have h2 : (1 : ℕ) = 2 := h
+  omega
+
+private lemma irrHalts_tA2a : IrrHalts tA2a := ⟨tA2a.nonempty, rfl⟩
+
+private lemma irrHalts_tA2b : IrrHalts tA2b := ⟨tA2b.nonempty, rfl⟩
+
+private lemma not_nsHalts_tA1 {x : Box 2 9}
+    (hx : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) :
+    ¬ NsHalts toyModel (some tA1) x := by
+  rintro ⟨-, hnone⟩
+  exact hnone toyLeafA ⟨rfl, Or.inl rfl, ⟨Or.inl rfl, hx⟩⟩
+
+private lemma nsHalts_iff_digits (H : History 2 (ZMod 2)) {x : Box 2 9}
+    (hx : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) :
+    NsHalts toyModel (some H) x ↔ (H = tA2a ∨ H = tA2b) := by
+  constructor
+  · rintro ⟨⟨hmem, -⟩, hnone⟩
+    rcases hmem with h | h | h
+    · exact absurd ⟨h, Or.inl rfl, ⟨Or.inl rfl, hx⟩⟩ (hnone toyLeafA)
+    · exact Or.inl h
+    · exact Or.inr h
+  · intro h
+    refine ⟨⟨?_, hx⟩, ?_⟩
+    · rcases h with h | h
+      · exact Or.inr (Or.inl h)
+      · exact Or.inr (Or.inr h)
+    · rintro ν ⟨h1, -, -⟩
+      rcases h with h2 | h2
+      · exact tA1_ne_tA2a (h1.symm.trans h2)
+      · exact tA1_ne_tA2b (h1.symm.trans h2)
+
+private lemma memA_some_iff {x : Box 2 9}
+    (hx : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0)
+    (H : History 2 (ZMod 2)) :
+    toyMemA (some H) x ↔ (H = tA1 ∨ H = tA2a ∨ H = tA2b) :=
+  ⟨fun h => h.1, fun h => ⟨h, hx⟩⟩
+
+private lemma redPoly_toy {x : Box 2 9} (h0 : x 0 = 0) (h1 : x 1 = 0) :
+    redPoly toyχ x = Polynomial.X ^ 2 := by
+  show Polynomial.X ^ 2
+      + ∑ b : Fin 2, Polynomial.C (x (toyχ b)) * Polynomial.X ^ (b : ℕ)
+    = Polynomial.X ^ 2
+  rw [Fin.sum_univ_two, show x (toyχ 0) = 0 from h0, show x (toyχ 1) = 0 from h1]
+  simp
+
+private lemma nf_toy {x : Box 2 9} (h0 : x 0 = 0) (h1 : x 1 = 0) :
+    UniqueFactorizationMonoid.normalizedFactors (redPoly toyχ x)
+      = 2 • ({Polynomial.X} : Multiset (Polynomial (ZMod 2))) := by
+  rw [redPoly_toy h0 h1, UniqueFactorizationMonoid.normalizedFactors_pow,
+    UniqueFactorizationMonoid.normalizedFactors_irreducible Polynomial.irreducible_X,
+    Polynomial.Monic.normalize_eq_self Polynomial.monic_X]
+
+private lemma henPayload_toy {x : Box 2 9} (h0 : x 0 = 0) (h1 : x 1 = 0) :
+    henPayload toyχ x = 0 := by
+  have hdeg : henDegrees toyχ x = 0 := by
+    unfold henDegrees
+    rw [nf_toy h0 h1, Multiset.toFinset_nsmul _ 2 (by norm_num),
+      Multiset.toFinset_singleton, Finset.filter_singleton, if_neg ?_]
+    · rfl
+    · rw [Multiset.count_nsmul, Multiset.count_singleton_self]
+      omega
+  unfold henPayload
+  rw [hdeg]
+  rfl
+
+open Classical in
+private lemma htfA : toyTreeA.hfin.toFinset
+    = ({tA1, tA2a, tA2b} : Finset (History 2 (ZMod 2))) := by
+  ext H
+  simp only [Set.Finite.mem_toFinset, Finset.mem_insert, Finset.mem_singleton]
+  exact Iff.rfl
+
+open Classical in
+private lemma leafVA_tA1 : toyTreeA.leafV tA1 = none := by
+  show (if tA1 = tA2a then some (irrVerdictOf tA2a)
+    else if tA1 = tA2b then some (irrVerdictOf tA2b) else none) = none
+  rw [if_neg tA1_ne_tA2a, if_neg tA1_ne_tA2b]
+
+open Classical in
+private lemma leafVA_tA2a : toyTreeA.leafV tA2a = some (irrVerdictOf tA2a) := by
+  show (if tA2a = tA2a then some (irrVerdictOf tA2a)
+    else if tA2a = tA2b then some (irrVerdictOf tA2b) else none)
+    = some (irrVerdictOf tA2a)
+  rw [if_pos rfl]
+
+open Classical in
+private lemma leafVA_tA2b : toyTreeA.leafV tA2b = some (irrVerdictOf tA2b) := by
+  show (if tA2b = tA2a then some (irrVerdictOf tA2a)
+    else if tA2b = tA2b then some (irrVerdictOf tA2b) else none)
+    = some (irrVerdictOf tA2b)
+  rw [if_neg (Ne.symm tA2a_ne_tA2b), if_pos rfl]
+
+open Classical in
+private lemma typemultA_sum :
+    (toyTreeA.typemult.map fun ef => ef.1 * ef.2).sum = 2 := by
+  rw [show toyTreeA.typemult = (Multiset.map Subtype.val toyTreeA.henV).sum
+      + ∑ H ∈ toyTreeA.hfin.toFinset, ((toyTreeA.leafV H).elim 0 Subtype.val)
+    from rfl]
+  rw [htfA, Finset.sum_insert (by simp [tA1_ne_tA2a, tA1_ne_tA2b]),
+    Finset.sum_insert (by simp [tA2a_ne_tA2b]), Finset.sum_singleton,
+    leafVA_tA1, leafVA_tA2a, leafVA_tA2b]
+  decide
+
+open Classical in
+private lemma headsA : toyTreeA.heads = ({tA1} : Finset (History 2 (ZMod 2))) := by
+  rw [show toyTreeA.heads
+      = toyTreeA.hfin.toFinset.filter (fun H => H.nodes.length = 1) from rfl,
+    htfA, Finset.filter_insert, if_pos (show tA1.nodes.length = 1 from rfl),
+    Finset.filter_insert, if_neg (show ¬ tA2a.nodes.length = 1 by
+      rw [tA2a_nodes]; simp),
+    Finset.filter_singleton, if_neg (show ¬ tA2b.nodes.length = 1 by
+      rw [tA2b_nodes]; simp)]
+  simp
+
+open Classical in
+private lemma trackDegA_tA1 : toyTreeA.trackDeg tA1 = 2 := by
+  unfold VTree.trackDeg
+  rw [htfA, Finset.sum_insert (by simp [tA1_ne_tA2a, tA1_ne_tA2b]),
+    Finset.sum_insert (by simp [tA2a_ne_tA2b]), Finset.sum_singleton,
+    if_pos (show tA1.IsPrefixOf tA1 from List.prefix_refl _),
+    if_pos tA1_prefix_tA2a, if_pos tA1_prefix_tA2b,
+    leafVA_tA1, leafVA_tA2a, leafVA_tA2b]
+  decide
+
+private lemma trackRHS {x : Box 2 9} (h0 : x 0 = 0) (h1 : x 1 = 0) :
+    ((UniqueFactorizationMonoid.normalizedFactors (redPoly toyχ x)).toFinset.filter
+        (fun ψ => 2 ≤ Multiset.count ψ
+          (UniqueFactorizationMonoid.normalizedFactors (redPoly toyχ x)))).val.map
+      (fun ψ => Multiset.count ψ
+        (UniqueFactorizationMonoid.normalizedFactors (redPoly toyχ x))
+          * ψ.natDegree) = {2} := by
+  rw [nf_toy h0 h1, Multiset.toFinset_nsmul _ 2 (by norm_num),
+    Multiset.toFinset_singleton, Finset.filter_singleton,
+    if_pos (by rw [Multiset.count_nsmul, Multiset.count_singleton_self])]
+  simp [Multiset.count_nsmul, Polynomial.natDegree_X]
+
+private lemma max_tA2a :
+    IsMaximalIn ({tA1, tA2a, tA2b} : Set (History 2 (ZMod 2))) tA2a := by
+  intro H' hH' hpre
+  rcases (show H' = tA1 ∨ H' = tA2a ∨ H' = tA2b from hH') with h | h | h <;> subst h
+  · exact absurd hpre tA2a_not_prefix_tA1
+  · rfl
+  · exact absurd hpre tA2a_not_prefix_tA2b
+
+private lemma max_tA2b :
+    IsMaximalIn ({tA1, tA2a, tA2b} : Set (History 2 (ZMod 2))) tA2b := by
+  intro H' hH' hpre
+  rcases (show H' = tA1 ∨ H' = tA2a ∨ H' = tA2b from hH') with h | h | h <;> subst h
+  · exact absurd hpre tA2b_not_prefix_tA1
+  · exact absurd hpre tA2b_not_prefix_tA2a
+  · rfl
+
+/-- **the carrier-A fiber characterization**: the tree fiber IS the {x0…x5 = 0}
+digit stratum (the census set — N(fiberA) = 8 = 2^{9−6}). -/
+private lemma fiberA_iff (x : Box 2 9) :
+    toyTreeA.fiberAt toyModel toyχ x ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · intro h
+    exact ((h.1 tA1).mp (Or.inl rfl)).2.1.2
+  · intro hx
+    refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+    · -- clause (i)
+      intro H
+      constructor
+      · intro hH
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · exact ⟨tA1.nonempty, ⟨Or.inl rfl, hx⟩,
+            fun H' hp hne hnn => absurd (prefix_of_tA1 hp) hne⟩
+        · refine ⟨tA2a.nonempty, ⟨Or.inr (Or.inl rfl), hx⟩, ?_⟩
+          intro H' hp hne hnn
+          rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hp)
+            with h | h
+          · have hH' : H' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+            subst hH'
+            exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+          · exact absurd (hist_ext (h.trans tA2a_nodes.symm)) hne
+        · refine ⟨tA2b.nonempty, ⟨Or.inr (Or.inr rfl), hx⟩, ?_⟩
+          intro H' hp hne hnn
+          rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hp)
+            with h | h
+          · have hH' : H' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+            subst hH'
+            exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+          · exact absurd (hist_ext (h.trans tA2b_nodes.symm)) hne
+      · rintro ⟨hne, ⟨hmem, -⟩⟩
+        exact hmem.1
+    · -- clause (ii)
+      intro H hH hmax
+      rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+      · exact absurd (hmax tA2a (Or.inr (Or.inl rfl)) tA1_prefix_tA2a).symm
+          tA1_ne_tA2a
+      · exact Or.inl ⟨irrHalts_tA2a, fun hf => hf, leafVA_tA2a⟩
+      · exact Or.inl ⟨irrHalts_tA2b, fun hf => hf, leafVA_tA2b⟩
+    · -- clause (iii)
+      rw [henPayload_toy hx.1 hx.2.1]
+      rfl
+    · -- clause (iv)
+      intro H hH hnmax
+      rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+      · exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+      · exact absurd max_tA2a hnmax
+      · exact absurd max_tA2b hnmax
+    · -- clause (v)
+      exact typemultA_sum
+    · -- clause (vi)
+      rw [trackRHS hx.1 hx.2.1, headsA]
+      simp [trackDegA_tA1]
+
+end ToyFiberHelpers
+
 theorem toy_gate :
     (Nat.card ↥{x | toyTreeA.fiberAt toyModel toyχ x}) * 2 ^ 6 = 2 ^ 9 := by
-  sorry
+  have hset : {x : Box 2 9 | toyTreeA.fiberAt toyModel toyχ x}
+      = {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0} :=
+    Set.ext fiberA_iff
+  rw [hset]
+  have hcard : Nat.card ↥{x : Box 2 9 |
+      x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0} = 8 := by
+    have hs : {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0}
+        = {x : Box 2 9 | stateLocus.IsSolution x} :=
+      Set.ext fun x => (stateLocus_iff x).symm
+    rw [hs]
+    have hmass : stateLocus.mass = 2 ^ (9 - stateLocus.numPinned) :=
+      LeanUrat.MovesC.C0_digitSystemMass stateLocus
+    rw [show stateLocus.numPinned = 6 from by decide] at hmass
+    norm_num at hmass
+    exact hmass
+  rw [hcard]
+  norm_num
 
 theorem toy_sib : SibCount toyModel toyCA toyχ := by
   sorry
@@ -1324,8 +1558,8 @@ theorem toy_vdict_nonconstant : ∃ o x o' x', toyVdict o x ≠ toyVdict o' x' :
   rw [h1, h2]
   simp
 
-theorem toy_fiber_ne : ∃ x, toyTreeA.fiberAt toyModel toyχ x := by
-  sorry
+theorem toy_fiber_ne : ∃ x, toyTreeA.fiberAt toyModel toyχ x :=
+  ⟨fun _ => 0, (fiberA_iff _).mpr ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩⟩
 
 theorem toy_e5_instance :
     Nat.card ↥{x | toyTreeA.fiberAt toyModel toyχ x}
@@ -1338,7 +1572,13 @@ theorem toy_henflip_unrealizable :
     ¬ Realizes toyModel toyχ
       (toyTreeA.withHenV {henVerdict 1 le_rfl}
         (by intro w hw; exact ⟨1, le_rfl, by simpa using Multiset.mem_singleton.mp hw ▸ rfl⟩)) := by
-  sorry
+  rintro ⟨x, hfib⟩
+  have hx := ((hfib.1 tA1).mp (Or.inl rfl)).2.1.2
+  have h3 := hfib.2.2.1
+  rw [henPayload_toy hx.1 hx.2.1] at h3
+  have h3' : ({henVerdict 1 le_rfl} : Multiset Vd) = 0 := h3
+  have hc : (1 : ℕ) = 0 := by simpa using congrArg Multiset.card h3'
+  omega
 
 theorem toy_jcmulti_site :
     JCmultiAt toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC toySplitB := by
