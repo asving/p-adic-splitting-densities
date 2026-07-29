@@ -1544,8 +1544,170 @@ theorem toy_gate :
   rw [hcard]
   norm_num
 
+/-! #### SIB/E5 proof infrastructure (P-phase fill; private helpers only). -/
+section ToySibHelpers
+
+private lemma cellA_amb_ne_splitC (x : Box 2 9) :
+    toyCellA .amb x ≠ ToyCell.splitC := by
+  by_cases h : x 0 = 0 ∧ x 1 = 0
+  · rw [show toyCellA .amb x = ToyCell.rootC from if_pos h]
+    simp
+  · rw [show toyCellA .amb x = ToyCell.junk from if_neg h]
+    simp
+
+private lemma cellA_red_ne_splitC (g : Fin 2 → ZMod 2) (ψ : Polynomial (ZMod 2))
+    (x : Box 2 9) : toyCellA (.red g ψ) x ≠ ToyCell.splitC := by
+  by_cases h : ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0
+      ∧ x 4 = 0 ∧ x 5 = 0
+  · rw [show toyCellA (.red g ψ) x = ToyCell.winC from if_pos h]
+    simp
+  · rw [show toyCellA (.red g ψ) x = ToyCell.junk from if_neg h]
+    simp
+
+private lemma cellA_st_ne_splitC {H : History 2 (ZMod 2)} (hH : H ≠ tA1)
+    (x : Box 2 9) : toyCellA (.st H) x ≠ ToyCell.splitC := by
+  rw [show toyCellA (.st H) x = ToyCell.junk from if_neg (fun hc => hH hc.1)]
+  simp
+
+private lemma ncard_empty : Nat.card ↥(∅ : Set (Box 2 9)) = 0 := Nat.card_of_isEmpty
+
+/-- x-transport of `ContFiber` between two members of the digit stratum (every
+box-dependence of the toy's `ContFiber` factors through the pinned digits). -/
+private lemma contFiber_transport {ν : Node 2 (ZMod 2)}
+    {hν : ChildRoot (some tA1) ν} {Tsub : Set (History 2 (ZMod 2))}
+    {leafSpec : History 2 (ZMod 2) → Option Vd}
+    {nsSpec : History 2 (ZMod 2) → Prop} {x x' : Box 2 9}
+    (hx : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0)
+    (hx' : x' 0 = 0 ∧ x' 1 = 0 ∧ x' 2 = 0 ∧ x' 3 = 0 ∧ x' 4 = 0 ∧ x' 5 = 0)
+    (h : ContFiber toyModel (some tA1) ν hν Tsub leafSpec nsSpec x) :
+    ContFiber toyModel (some tA1) ν hν Tsub leafSpec nsSpec x' := by
+  obtain ⟨h1, h2, h3⟩ := h
+  refine ⟨?_, ?_, ?_⟩
+  · intro H'
+    rw [h1 H']
+    exact and_congr Iff.rfl (and_congr
+      ((memA_some_iff hx H').trans (memA_some_iff hx' H').symm)
+      (forall_congr' fun H'' => imp_congr_right fun _ =>
+        imp_congr_right fun _ => imp_congr_right fun _ =>
+          and_congr Iff.rfl (not_congr
+            ((nsHalts_iff_digits H'' hx).trans (nsHalts_iff_digits H'' hx').symm))))
+  · intro H' hm hmax
+    rcases h2 H' hm hmax with ⟨hi, hn, hl⟩ | ⟨hns, hni, hn, hl⟩
+    · exact Or.inl ⟨hi, hn, hl⟩
+    · exact Or.inr ⟨(nsHalts_iff_digits H' hx').mpr
+        ((nsHalts_iff_digits H' hx).mp hns), hni, hn, hl⟩
+  · intro H' hm hnmax
+    exact ⟨(h3 H' hm hnmax).1, fun hns => (h3 H' hm hnmax).2
+      ((nsHalts_iff_digits H' hx).mpr ((nsHalts_iff_digits H' hx').mp hns))⟩
+
+end ToySibHelpers
+
 theorem toy_sib : SibCount toyModel toyCA toyχ := by
-  sorry
+  classical
+  intro es c S hbr hS
+  cases c with
+  | rootC =>
+    exfalso
+    have h2 : (2 : ℕ) ≤ ({toyHead} : Finset (Node 2 (ZMod 2))).card := hbr
+    rw [Finset.card_singleton] at h2
+    omega
+  | winC =>
+    exfalso
+    have h2 : (2 : ℕ) ≤ ({toyHead} : Finset (Node 2 (ZMod 2))).card := hbr
+    rw [Finset.card_singleton] at h2
+    omega
+  | junk =>
+    exfalso
+    have h2 : (2 : ℕ) ≤ (∅ : Finset (Node 2 (ZMod 2))).card := hbr
+    simp at h2
+  | splitC =>
+    have hmemA : toyLeafA ∈ toyCA.branchSetOf ToyCell.splitC :=
+      Finset.mem_insert_self _ _
+    have hmemB : toyLeafB ∈ toyCA.branchSetOf ToyCell.splitC :=
+      Finset.mem_insert_of_mem (Finset.mem_singleton_self _)
+    have hcard2 : (toyCA.branchSetOf ToyCell.splitC).card = 2 := by
+      have h2 : ({toyLeafA, toyLeafB} : Finset (Node 2 (ZMod 2))).card = 2 := by
+        rw [Finset.card_insert_of_notMem (by simpa using leafA_ne_leafB),
+          Finset.card_singleton]
+      exact h2
+    have hzero := ncard_empty
+    have hEdich : cellEventE toyModel toyCA toyχ es ToyCell.splitC = ∅ ∨
+        (es = .st tA1 ∧ cellEventE toyModel toyCA toyχ es ToyCell.splitC
+          = {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0}) := by
+      cases es with
+      | amb =>
+        left
+        apply Set.eq_empty_iff_forall_notMem.mpr
+        rintro x ⟨-, hcell⟩
+        exact cellA_amb_ne_splitC x hcell
+      | red g ψ =>
+        left
+        apply Set.eq_empty_iff_forall_notMem.mpr
+        rintro x ⟨-, hcell⟩
+        exact cellA_red_ne_splitC g ψ x hcell
+      | st H =>
+        by_cases hH : H = tA1
+        · subst hH
+          right
+          refine ⟨rfl, ?_⟩
+          ext x
+          constructor
+          · rintro ⟨-, hcell⟩
+            exact (cellA_st_tA1_splitC_iff x).mp hcell
+          · intro hx
+            exact ⟨(memA_tA1_iff x).mpr hx, (cellA_st_tA1_splitC_iff x).mpr hx⟩
+        · left
+          apply Set.eq_empty_iff_forall_notMem.mpr
+          rintro x ⟨-, hcell⟩
+          exact cellA_st_ne_splitC hH x hcell
+    rcases hEdich with hE | ⟨hes, hE⟩
+    · rw [hE, Set.empty_inter, hzero, zero_mul]
+      symm
+      apply Finset.prod_eq_zero hmemA
+      rw [Set.empty_inter]
+      exact hzero
+    · subst hes
+      have hdichS : ∀ ν, ν ∈ toyCA.branchSetOf ToyCell.splitC →
+          ({x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0}
+              ∩ S ν
+            = {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0}
+          ∨ {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0}
+              ∩ S ν = ∅) := by
+        intro ν hν
+        rcases hS ν hν with ⟨hνcr, Tsub, ls, ns, hfin, hSν⟩ | hSν
+        · by_cases hne : ({x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0
+              ∧ x 4 = 0 ∧ x 5 = 0} ∩ S ν).Nonempty
+          · left
+            obtain ⟨x₀, hx₀D, hx₀S⟩ := hne
+            apply Set.Subset.antisymm Set.inter_subset_left
+            intro x hx
+            refine ⟨hx, ?_⟩
+            rw [hSν] at hx₀S ⊢
+            exact contFiber_transport hx₀D hx hx₀S
+          · right
+            exact Set.not_nonempty_iff_eq_empty.mp hne
+        · rw [hSν]
+          left
+          exact Set.inter_univ _
+      rw [hE, hcard2]
+      have hbiInter : (⋂ ν ∈ toyCA.branchSetOf ToyCell.splitC, S ν)
+          = S toyLeafA ∩ S toyLeafB := by
+        show (⋂ ν ∈ ({toyLeafA, toyLeafB} : Finset (Node 2 (ZMod 2))), S ν) = _
+        rw [Finset.set_biInter_insert, Finset.set_biInter_singleton]
+      have hprod : (∏ ν ∈ toyCA.branchSetOf ToyCell.splitC,
+            Nat.card ↥({x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0
+              ∧ x 4 = 0 ∧ x 5 = 0} ∩ S ν))
+          = Nat.card ↥({x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0
+              ∧ x 4 = 0 ∧ x 5 = 0} ∩ S toyLeafA)
+            * Nat.card ↥({x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0
+              ∧ x 4 = 0 ∧ x 5 = 0} ∩ S toyLeafB) := by
+        show (∏ ν ∈ ({toyLeafA, toyLeafB} : Finset (Node 2 (ZMod 2))), _) = _
+        rw [Finset.prod_insert (by simpa using leafA_ne_leafB),
+          Finset.prod_singleton]
+      rw [hbiInter, hprod, Set.inter_inter_distrib_left]
+      rcases hdichS toyLeafA hmemA with ha | ha <;>
+        rcases hdichS toyLeafB hmemB with hb | hb <;> rw [ha, hb] <;>
+        simp [hzero, Set.inter_empty, Set.empty_inter, Set.inter_self, pow_one]
 
 theorem toy_vdict_nonconstant : ∃ o x o' x', toyVdict o x ≠ toyVdict o' x' := by
   refine ⟨none, fun _ => 0, some tA2a, fun _ => 0, ?_⟩
@@ -1561,12 +1723,102 @@ theorem toy_vdict_nonconstant : ∃ o x o' x', toyVdict o x ≠ toyVdict o' x' :
 theorem toy_fiber_ne : ∃ x, toyTreeA.fiberAt toyModel toyχ x :=
   ⟨fun _ => 0, (fiberA_iff _).mpr ⟨rfl, rfl, rfl, rfl, rfl, rfl⟩⟩
 
+/-! #### E5 proof infrastructure (P-phase fill; private helpers only). -/
+section ToyE5Helpers
+
+/-- the carrier-A per-track SubFiber characterization: the one-track event IS the
+digit stratum. -/
+private lemma subFiberA_iff (x : Box 2 9) :
+    SubFiber toyModel ({tA1, tA2a, tA2b} : Set (History 2 (ZMod 2))) toyHead toyHcrA
+      toyTreeA.leafV toyTreeA.nsLeaf x ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · intro h
+    exact (((h.1 tA1).mp (Or.inl rfl)).2.1).2
+  · intro hx
+    refine ⟨?_, ?_, ?_⟩
+    · intro H'
+      constructor
+      · intro hH'
+        rcases (show H' = tA1 ∨ H' = tA2a ∨ H' = tA2b from hH') with h | h | h <;>
+          subst h
+        · exact ⟨List.prefix_refl _, ⟨Or.inl rfl, hx⟩,
+            fun H'' hp1 hp2 hne => absurd (prefix_of_tA1 hp2) hne⟩
+        · refine ⟨tA1_prefix_tA2a, ⟨Or.inr (Or.inl rfl), hx⟩, ?_⟩
+          intro H'' hp1 hp2 hne
+          rcases prefix_of_two (show H''.nodes <+: [toyHead, toyLeafA] from hp2)
+            with h | h
+          · have hH'' : H'' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+            subst hH''
+            exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+          · exact absurd (hist_ext (h.trans tA2a_nodes.symm)) hne
+        · refine ⟨tA1_prefix_tA2b, ⟨Or.inr (Or.inr rfl), hx⟩, ?_⟩
+          intro H'' hp1 hp2 hne
+          rcases prefix_of_two (show H''.nodes <+: [toyHead, toyLeafB] from hp2)
+            with h | h
+          · have hH'' : H'' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+            subst hH''
+            exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+          · exact absurd (hist_ext (h.trans tA2b_nodes.symm)) hne
+      · rintro ⟨-, hmem, -⟩
+        exact hmem.1
+    · intro H' hH' hmax
+      rcases (show H' = tA1 ∨ H' = tA2a ∨ H' = tA2b from hH') with h | h | h <;>
+        subst h
+      · exact absurd (hmax tA2a (Or.inr (Or.inl rfl)) tA1_prefix_tA2a).symm
+          tA1_ne_tA2a
+      · exact Or.inl ⟨irrHalts_tA2a, fun hf => hf, leafVA_tA2a⟩
+      · exact Or.inl ⟨irrHalts_tA2b, fun hf => hf, leafVA_tA2b⟩
+    · intro H' hH' hnmax
+      rcases (show H' = tA1 ∨ H' = tA2a ∨ H' = tA2b from hH') with h | h | h <;>
+        subst h
+      · exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+      · exact absurd max_tA2a hnmax
+      · exact absurd max_tA2b hnmax
+
+private lemma card_digits : Nat.card ↥{x : Box 2 9 |
+    x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0} = 8 := by
+  have hs : {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0}
+      = {x : Box 2 9 | stateLocus.IsSolution x} :=
+    Set.ext fun x => (stateLocus_iff x).symm
+  rw [hs]
+  have hmass : stateLocus.mass = 2 ^ (9 - stateLocus.numPinned) :=
+    LeanUrat.MovesC.C0_digitSystemMass stateLocus
+  rw [show stateLocus.numPinned = 6 from by decide] at hmass
+  norm_num at hmass
+  exact hmass
+
+private lemma card_rootCell : Nat.card ↥(rootCell toyχ toyG) = 128 := by
+  have hs : rootCell toyχ toyG = {x : Box 2 9 | rootLocus.IsSolution x} :=
+    Set.ext fun x => (rootCell_iff x).trans (rootLocus_iff x).symm
+  rw [hs]
+  have hmass : rootLocus.mass = 2 ^ (9 - rootLocus.numPinned) :=
+    LeanUrat.MovesC.C0_digitSystemMass rootLocus
+  rw [show rootLocus.numPinned = 2 from by decide] at hmass
+  norm_num at hmass
+  exact hmass
+
+end ToyE5Helpers
+
 theorem toy_e5_instance :
     Nat.card ↥{x | toyTreeA.fiberAt toyModel toyχ x}
         * (Nat.card ↥(rootCell toyχ toyG)) ^ 1 * 2 ^ 2
       = 2 ^ 9 * Nat.card ↥(rootCell toyχ toyG ∩
           trackEvent toyTreeA toyModel toyTracksA ⟨0, Nat.zero_lt_one⟩ toyHcrA) := by
-  sorry
+  have hset : {x : Box 2 9 | toyTreeA.fiberAt toyModel toyχ x}
+      = {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0} :=
+    Set.ext fiberA_iff
+  have htrack : rootCell toyχ toyG
+        ∩ trackEvent toyTreeA toyModel toyTracksA ⟨0, Nat.zero_lt_one⟩ toyHcrA
+      = {x : Box 2 9 | x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0} := by
+    ext x
+    constructor
+    · rintro ⟨-, hsub⟩
+      exact (subFiberA_iff x).mp hsub
+    · intro hx
+      exact ⟨(rootCell_iff x).mpr ⟨hx.1, hx.2.1⟩, (subFiberA_iff x).mpr hx⟩
+  rw [hset, htrack, card_digits, card_rootCell]
+  norm_num
 
 theorem toy_henflip_unrealizable :
     ¬ Realizes toyModel toyχ
