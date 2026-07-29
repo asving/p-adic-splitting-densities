@@ -416,3 +416,20 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   vs the t≠0 bypass; D4 dispatch wired INTO event/mult, parallel API
   deleted; S5 count-factored _counted conclusions + degree laws) + both
   REV-7 writers (charges at MOVEST/MOVESV_REV7_CHARGE_2026-07-29.md).
+  REPAIR ROUND 2 + REV 7 LANDED (2026-07-29): all three agents green. Round-2
+  highlights: OffsetPPin's Realizes := (t≠0) bypass now FALSE BY TYPE
+  (determinism forces 1 = X — the non-vacuity lemma); event/mult carry the
+  ∅ dispatch IN PLACE (eventO/multO deleted); ONE FORCED statement change
+  surfaced and accepted — D11a mult_sum gains hne (the incidence identity is
+  false at reads = [] under the dispatch: #Box vs 0; D12/D13 already carried
+  hne; D11b verified TRUE hne-free and kept). CountFactored trio + CL-6
+  degree laws; the CL-6/RS.2 consumer identified as ksub with the counted
+  route mandatory for count-semantics conclusions. MovesT REV 7: 19/19 F —
+  ChildCover puts the (c2) covering at the W4-1 interface with an in-corpus
+  falsifier (the 5-round BDY saga closes as a contract change, delta entry
+  10); toys decide-clean at ALL g; census 20 seam entries. MovesV REV 7:
+  98 units (+V4-13 hmcaug_of_hmc, +V7-8 w17ii_wave4 at the built type,
+  +V7-9 tbl_count identification) — Tgam direct count, separation witness
+  recorded, marked disjointness derived, selection load-bearing.
+  IN FLIGHT: Codex confirm #2 (the round-2 def changes incl. D11a) + the
+  round-7 full dual audits (Codex t7/v7 detached + Fable wf_a467a7e9-1bf).
