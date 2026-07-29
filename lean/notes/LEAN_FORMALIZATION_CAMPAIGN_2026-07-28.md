@@ -893,3 +893,21 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   instance-diamond resolutions can differ. GREEN RECORDS MUST COME FROM
   LAKE BUILD. (Joins rule #1: the out-of-root-graph enumerated sweep.)
   MovesGr: 30/30 green; the 11 pre-existing fenced obligations unchanged.
+  THE FINAL STATE ACHIEVED, PENDING THE ROUND-4 GATE (2026-07-31/08-01).
+  The census: MovesU 0 sorries (theoremU Lean-core, re-verified
+  post-merge); MovesS/MovesSp/MovesX/MovesD 0; MovesT 6 + MovesV 4 = TEN
+  real sorries, EVERY ONE on the fenced list (E5 hD4R0K, treeN_stable,
+  G1×4 = task #44, the three V seam-instantiation duties, the banked
+  w17ii). The E8 saga CLOSED at its fixpoint: branchCellOf (the
+  member-keyed site read) + branch_cell_joint; f1_two_leaf_discharge
+  MACHINE-CHECKED (distinct pins co-realized jointly satisfiable); the
+  retired forcing quarantined to its shared-map hypothesis. The V fence
+  rule executed properly (the template_total countermodel COMPILED FIRST,
+  then delete-and-scope); val_b_table/val_b split under
+  RealizationComplete; CompCarrier at measure-definition fields with
+  CompProduct the named Phase-B row. U: the chart guard + inhabitability
+  witness; vt_surj; the LegRoster bijection; the 13-parameter wave-4
+  boundary RECORDED VERBATIM in theoremU's docstring. RATIFICATION ROUND
+  4 (the final gate) IN FLIGHT on all three corpora with full verdict
+  histories. On RATIFY verdicts the blueprint's DONE CRITERION is met in
+  full.
