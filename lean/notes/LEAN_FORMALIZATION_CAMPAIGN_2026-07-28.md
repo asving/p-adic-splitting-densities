@@ -555,3 +555,22 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   premises to trigger the chain). AWAITING the verdict; the E-phase
   transition proceeds regardless (the escalation gates only the HMCAug
   statement's final type, one unit).
+  *** THE HMCAUG ESCALATION RESOLVED — VERDICT (A) (2026-07-29, focused
+  fresh-context adjudication, HMCAUG_ESCALATION_ADJUDICATION file): the
+  separation-witness obligation is WITHDRAWN; the interface is FAITHFUL
+  and UNCHANGED. The adjudicator's key line: weakening refined XHD-d
+  "would restore only an artificial separation by disconnecting domains
+  from realizability" — the note's 'restores the factorization' refers to
+  the EXACT domain. The forcing chain stands as the recorded limitation:
+  under the exactness + uniformity package the purported coupling may
+  have no model — consistent with the note (conditional repair; no
+  exhibited coupling; the wall channel the escape). The blueprint's
+  escalation block is stamped RESOLVED in place. ***
+  *** WAVE-4 BLUEPRINT PHASE COMPLETE (2026-07-29): MovesT REV 9 (55
+  units) + MovesV REV 9 (100 units), nine dual-audit rounds, every
+  mathematical-content finding converged or adjudicated with note reads,
+  the last open design question closed by verdict (A). BOTH CORPORA TO
+  E-PHASE: the compiler becomes the closure arbiter; the handoff sections
+  (§9 T / §8 V) carry the decide obligations, instance-plumbing rows, and
+  disclosed boundaries; the dual ratification runs on AS-BUILT statements
+  (the MovesS/MovesD precedent). ***

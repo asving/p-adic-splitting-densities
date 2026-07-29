@@ -4579,9 +4579,20 @@ coarse census at (0,0) = 0 — contradiction. The full forcing chain
 (with the zc_ne'/ext_zc' steps that close the zc'-freedom escape) is
 DISPLAYED ONCE at §2.G's HMCAug record; ¬HMC ∧ HMCAug is UNWITNESSED
 in-corpus and the chain is the recorded ESCALATION ITEM (a sketch that
-HMCAug ⟺ HMC against this interface — pending ratification; no
-¬HMCAug instance is CLAIMED as proved). V4-13 (HMC ⟹ HMCAug) is
-untouched;
+HMCAug ⟺ HMC against this interface — no ¬HMCAug instance is CLAIMED
+as proved). ESCALATION RESOLVED (2026-07-29, focused fresh-context
+adjudication, HMCAUG_ESCALATION_ADJUDICATION_2026-07-29.md — verdict
+(A)): the separation-witness OBLIGATION IS WITHDRAWN; the interface is
+faithful and UNCHANGED (refined two-sided XHD-d is NOT over-commitment
+— weakening it "would restore only an artificial separation by
+disconnecting domains from realizability"); the chain stands as the
+recorded LIMITATION: under the exactness + uniformity package, the
+purported coupling may have NO MODEL — consistent with the note, which
+states the repair conditionally and never exhibits a jointly
+package-satisfying coupling (the wall channel is its escape). The
+interface duties that REMAIN and are met: HMC unprovable (sweeps),
+the package typed faithfully, carrier-level ¬HMC witnessed (decide).
+V4-13 (HMC ⟹ HMCAug) is untouched;
 + the terminal-final signature check: `Template.lastT` instances type
 against `HMC`'s quantifier (the probe's step 2 is a literal instance
 BY TYPE); + the HONESTY REMARK, recorded (from §2.G's underivability
