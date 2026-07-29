@@ -433,3 +433,40 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   recorded, marked disjointness derived, selection load-bearing.
   IN FLIGHT: Codex confirm #2 (the round-2 def changes incl. D11a) + the
   round-7 full dual audits (Codex t7/v7 detached + Fable wf_a467a7e9-1bf).
+  ROUND-7 RESULTS + ADJUDICATIONS (2026-07-29). Verdicts: MovesT Codex 5/1 +
+  Fable 2/2 (CONVERGED on NsBridgeStmt-false — Fable built the in-corpus
+  counter-model μcap ≡ 1 and quoted the note's actual proof structure, the
+  C(b) pricing + |Z_M|→∞ + continuity — and on T-F4's ∅-shape falsity 1=0+0;
+  Fable fresh: the toy γ pins violate the built γ-tie, lawful re-pins
+  computed). MovesV Codex 8/2 + Fable PASS 0/3 (its HMC-closure sweep CLEAN;
+  the Codex criticals are wiring/identity-level and were adjudicated
+  individually — Fable checked content, Codex checked wiring; both right).
+  Confirm-2: FLAG 2/1 — D4 wiring CONFIRMED (D11a's hne = "the honest
+  minimal repair"; the note-faithful option-level incidence queued as an
+  additive theorem); D2 narrowed to the singleton-realizer bypass; S5's
+  enforcement point adjudicated V-side (= V7-9, which round 7 found
+  type-broken — one thread).
+  KEY RE-ADJUDICATION (revises my own round-6 C4 ruling): Codex N2 is right
+  that the h₁-split refinement is INEXPRESSIBLE at the toy as built — the
+  PUnit history carrier cannot retain h₁, and tevt_cover as typed (per
+  refined pair) forces each refined state to reproduce the whole coarse
+  event. The mathematics of the separation stands; the rev-8 fix = the
+  FIBER-UNION cover law + the enriched toy carrier (Hist = the h₁ flag),
+  then the separation witness is re-derived and displayed. This also
+  explains the round-6 verifier split retroactively: the writer's original
+  ¬HMCAug intuition was an artifact of the impoverished carrier, and the
+  round-6 refutation implicitly enriched it. Neither round was sloppy —
+  the OBJECT was underspecified.
+  OTHER RULINGS: ChildCover must be a FIELD of CellAssign (Codex checked
+  the wiring; Fable's content-pass doesn't discharge installation); OmSat
+  needs the TOTALITY direction + record-19 re-attribution to the shared-
+  trackOf protection (Fable's analysis); Tgam must EQUAL the note's chain
+  count by law (marks_chains ≤ is not the identity; the added law must not
+  create a composite decomposition — Fable's clean sweep is the guardrail);
+  entInst gains the typed identification to the lands_sel cut; the
+  prose-as-def class (3rd recurrence) gets a STANDING RULE — the CLOSURE
+  MANIFEST (every identifier in displayed Lean → its displayed decl or
+  built path, grep-verified, tabled in the blueprint).
+  IN FLIGHT (wf_3f2a523d-0d0): REV-8 writers (both corpora) + repair round
+  3 (D2 two-option digit-law design; the additive note-faithful
+  mult_sum_opt; the D11a manifest fix).
