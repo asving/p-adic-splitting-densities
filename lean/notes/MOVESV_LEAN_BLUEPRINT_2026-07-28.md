@@ -1,4 +1,4 @@
-# MOVESV LEAN BLUEPRINT — REV 8 (wave 4)
+# MOVESV LEAN BLUEPRINT — REV 9 (wave 4 — the CLOSING round)
 
 *(2026-07-28, Fable blueprint writer. GROUND TRUTH: the frozen dual-accepted
 §V-TABLES text, `lean/notes/MOVES_2026-07-24.md` lines 7829–9054 (rev 7 —
@@ -356,6 +356,11 @@ disposition table is §6.6. The structural repairs:
    at h₁ ≠ 0; excluding h₂ = 0 at h₁ = 0) that each FACTOR — one round of
    𝒞_n refinement RESTORES the factorization, exactly the note's HMC-AUG
    display. The toy is the SEPARATION WITNESS: ¬HMC ∧ HMCAug at V4-11.
+   [SEPARATION CLAIM WITHDRAWN at REV 9 — the C4 construction relied on
+   the zc-vacuity mechanism Codex-8 N-1 killed (ext_zc/zc_ne); the
+   REV-9 forcing chain (§2.G) shows no refinement of the coupled toy
+   satisfies HMCAug under the standing laws. Bracket-corrected in
+   place, F-GAP-3 convention.]
    Every ¬HMCAug claim is STRUCK corpus-wide; HMCAug's falsifiability is
    OPEN (the note's predicted falsifier: a SECOND surviving coupling —
    R2's wall channel). `HMC → HMCAug` is now the REAL UNIT V4-13 (G1).
@@ -462,7 +467,11 @@ disposition table is §6.7. The structural repairs:
    = the h₁ FLAG, `ext` records it, `zc` reads it) and the separation
    ¬HMC ∧ HMCAug is RE-DERIVED with the check DISPLAYED (h₁ = 0 state's
    tail domain excludes h₂ = 0; h₁ ≠ 0 state's full; each factors; the
-   unrefined domain does not). Fable GAP-2 absorbed (tie roster now
+   unrefined domain does not). [OVERTURNED at REV 9: the enriched toy
+   violates ext_zc/zc_ne (Codex-8 N-1, structural); the replacement
+   census-coupled toy witnesses ¬HMC only, and the separation claim is
+   WITHDRAWN — the §2.G forcing chain. Bracket-corrected in place.]
+   Fable GAP-2 absorbed (tie roster now
    SEVEN, counted everywhere it is named).
 3. **THE CENSUS↔CUT TIE (N3).** `entInst` was free of the selection
    layer. REV 8: §2.E's `CutRealization` (a nonempty census IS the
@@ -493,6 +502,58 @@ disposition table is §6.7. The structural repairs:
    encIdx 574–582, E7 comment 570–573; MovesS DetHyp 561–563).
    Census unchanged: 98 = 32/62/4.
 
+**REVISION RECORD — REV 9 (2026-07-29, the CLOSING round; the rev-9
+charge PART V on file, orchestrator-adjudicated).** Round-8
+verdicts: Codex REJECT 6 N / 3 M (`MOVESV_AUDIT_CODEX8_2026-07-29.md` —
+N1 counting tie PASS; decisive N-1: the REV-8 enriched toy VIOLATES the
+StepSys zc laws) + Fable PASS 0/1 (`MOVESV_AUDIT_FABLE8_2026-07-29.md`,
+GAP-1 = the M.rep manifest violation). After REV 9 both corpora go to
+E-PHASE (the compiler is the closure arbiter; no further full markdown
+audit rounds). The repairs:
+1. **THE COUPLING MECHANISM RE-ADJUDICATED (V1, binding; supersedes the
+   REV-8 N2 ruling).** Codex-8 N-1 is CORRECT and STRUCTURAL: the
+   zc-based toy is BARRED BY THE LAWS — `ext_zc` forces the flag-0
+   history zc (it is an ext-image of the zc source), and `zc_ne` demands
+   a zc witness in the refined flag-0 cell. RECORDED as a structural
+   fact: **zc cannot carry branch memory.** The LEGAL mechanism is the
+   CENSUS-LEVEL COUPLING (zc ≡ true on all cells; the coupling lives
+   entirely in the free composite census/event fields — marks need not
+   compose). V4-11 is REWRITTEN this way; ¬HMC holds at the new toy with
+   the full coarse walk displayed. THE SEPARATION LEG (¬HMC ∧ HMCAug at
+   the toy) is WITHDRAWN: the charge-mandated re-walk of the four-point
+   check + cover laws FAILS — a displayed forcing chain (assign_cover →
+   tmark_last_surj/tgam_last → no_orphan′ → HMC′ → no_stray′ →
+   tinst_cover) shows NO refinement of a census-coupled toy can satisfy
+   HMCAug; the obstruction and its escalation are recorded at §2.G and
+   V4-11(iii). NO false check enters the blueprint.
+2. **THE CENSUS↔FIBER TIE (V2 = Codex-8 N-2).** `CutRealization` gains
+   `toBox` + `encode_fiber`: every counted tag READS as a box point
+   lying in ITS OWN prefix's realized fiber — the tagged-census
+   adversary (arbitrary bijection to a cardinality-matched cut) now
+   fails by type; the kill displayed at §2.E.
+3. **DEFS CLOSURE (V3a/b/d = N-3/N-4/N-6).** `speciesTagOf`/`monicTopOf`/
+   `SelfLoopLetter`/`letterMbar`/`IsBranchingLetter`/`letterMenuCard`/
+   `SpFitsRead`/`SpWordFits`/`spWord` are DISPLAYED §2.D decls (no
+   forward refs; V3-3a re-keyed to the dite-pass theorem); `gcellDenom`
+   has ONE home — a displayed §2.H def with body (+ the Defs-local sum
+   lemma `gcell_denom_sum`), V3-9c a consumer; `JCells.bcells`'s
+   `C.Outc` slip corrected to `(C.bd s).Outc m`.
+4. **V7-9 INHABITS THE BUILT TYPE (V3c = N-5 = Fable GAP-1).** The
+   displayed Classical-choice wrapper `repD` (via `rep_ne`; `M.rep`
+   never existed) + the `e ∈ Icc 1 n` junk-total dispatch + the
+   displayed continuing/terminal (+T twin) dispatch; §7(A) rows added.
+5. **ROSTER + RECORD HYGIENE (V3e/f/g = M-1/M-2/M-3).** V1-3 split into
+   V1-3a/b/c (≤ 4 lemmas each; census 98 → 100 = 34/62/4); the manifest
+   corrected (consumedDeltas → MovesS/Defs.lean:613; real path:line for
+   D4R1_SUM/D0b_thmCtop/D4R4_all; rows for every REV-9 identifier); the
+   `EligibleImage`-subtype finiteness claim is now the TYPED obligation
+   `eligibleImage_finite` (§2.D; `hcard` stays a premise).
+6. **E-PHASE HANDOFF (V4).** New §8: units, decide obligations (the
+   census-level toy is finite — the ¬HMC decide roster listed),
+   instance-plumbing obligations, disclosed open boundaries (V7-8's
+   W17ii sorry-gate, the tCount identification via ValA, the HMCAug
+   escalation item).
+
 ## §0 Charge, status, and the conditionality banner
 
 **WHAT THIS CORPUS IS.** §V-TABLES = assembly note [1v]-COND: ONE fixed
@@ -519,18 +580,35 @@ BY DEFINITION), never an f-event mass and never a density.
   named Prop (body DISPLAYED, §2.G; REV 5, M-2: it takes the ledger's
   `TmplEvents` as a PARAMETER and pins the refined events to it through
   `RefEvents` — the rev-4 ∃-form was derivable from the XHD d-face).
-  SCOPE (REV 6, Fable G-A; RE-SCOPED at REV 7, C4): "SEPARATE" is
-  LEDGER-ROLE bookkeeping (its own named line item, cited separately,
-  assumed nowhere) — NOT logical independence: `HMC ⟹ HMCAug` is now the
-  PROVED-BY-DESIGN unit V4-13 (identity refinement — the vacuous-repair
-  case, inherent to the note's conditional), while V4-11's coupled toy is
-  the SEPARATION WITNESS the other way: ¬HMC ∧ HMCAug hold there (the
-  h₁ = 0 refinement restores the factorization — one 𝒞_n round, exactly
-  the note's HMC-AUG display), so HMCAug is STRICTLY WEAKER than HMC.
-  No ¬HMCAug instance is claimed anywhere (the rev-5/6 "¬HMCAug at the
-  toy" was FALSE — C4); HMCAug's falsifiability is OPEN, its predicted
-  falsifier the note's own "second surviving coupling — R2's wall
-  channel". Consumed by nothing; assumed nowhere.
+  SCOPE (REV 6, Fable G-A; RE-SCOPED at REV 7, C4; RE-SCOPED AGAIN at
+  REV 9): "SEPARATE" is LEDGER-ROLE bookkeeping (its own named line
+  item, cited separately, assumed nowhere) — NOT logical independence:
+  `HMC ⟹ HMCAug` is the PROVED-BY-DESIGN unit V4-13 (identity
+  refinement — the vacuous-repair case, inherent to the note's
+  conditional). THE MECHANISM ADJUDICATION (REV 9, Codex-8 N-1,
+  structural, recorded): the zc-based coupling route is BARRED BY
+  `ext_zc` (a flag-0 history is an ext-image of the zc source, hence
+  zc) and by `zc_ne` (every refined cell needs a zc witness) — **zc
+  cannot carry branch memory**; the LEGAL ¬HMC mechanism is the
+  CENSUS-LEVEL COUPLING (zc ≡ true; the coupling lives in the free
+  composite census/event fields — marks need not compose), V4-11(i).
+  THE SEPARATION CLAIM IS WITHDRAWN at REV 9: the REV-7/8 record
+  "¬HMC ∧ HMCAug at the coupled toy" does NOT survive the
+  charge-mandated re-walk — a displayed forcing chain (§2.G, the
+  HMCAug record) shows NO refinement of a census-coupled toy satisfies
+  HMCAug under the standing laws. Consequences, stated with their
+  status: HMCAug is SATISFIABLE (via V4-13 at V1-8b's true-HMC toy);
+  ¬HMC ∧ HMCAug is UNWITNESSED in-corpus, and the displayed chain is a
+  DERIVATION SKETCH (not machine-checked, dual ratification pending)
+  that it is UNSATISFIABLE against this interface — an ESCALATION ITEM
+  for the orchestrator: either a cover/exactness law over-commits
+  relative to the note's HMC-AUG display and gets re-adjudicated, or
+  the record stands as "HMCAug ⟺ HMC against this interface" and the
+  note's strictly-weaker reading is recorded as unencoded. No ¬HMCAug
+  instance is CLAIMED as proved anywhere; HMCAug's falsifiability
+  stays formally OPEN (the note's predicted falsifier: "a second
+  surviving coupling — R2's wall channel"). Consumed by nothing;
+  assumed nowhere.
 - ENT-COUNT, (ENT-U), INIT-RAT: named burdens of clause (iii) — statements
   typed, INIT-RAT a theorem-under-hypotheses unit (V3-9c).
 - (J-RAT)/CL-18: owner [1v] (with [2b] on the height-sum face) — THE PLAN-SYNC
@@ -837,7 +915,7 @@ noncomputable def XHDw.g {n} {S : StepSys n} (X : XHDw n S) {α β}
 depend on x and its history ONLY through (α, β, m, o, h). (u-T): the count is
 one h-independent value per step ON the one-step domain; the RAW field below
 demands it where both heights are realized, and the domain-conditional form
-is DERIVED (V1-3's exactness + XHDd.no_stray) — no named `u_T_dom` object
+is DERIVED (V1-3a's exactness + XHDd.no_stray) — no named `u_T_dom` object
 exists or is pointed to (A-7 repair). Owner [2b]; NOT §C-derivable (V.0's
 honest split — the fence unit V1-7 exhibits a C15Pack model violating u_R). -/
 structure XHDu (n : ℕ) (S : StepSys n) where
@@ -1326,6 +1404,23 @@ theorem realized_isSlot {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
   -- 2 ≤ census card ≤ m̄ — one line once the row is supplied; the row's
   -- discharge is MovesD-side (E6/E7), recorded at §1's MovesD row
 
+/-- THE FINITENESS OBLIGATION — A TYPED ROW at REV 9 (Codex-8 M-1: the
+REV-8 finiteness record lived only in RealizedBranching's docstring;
+"an infinite subtype makes Nat.card = 0" is the safe direction but not
+an honest-card record). The claim, at exactly the docstring's route
+(EligibleImage pins q MONIC of natDegree = g over the finite
+poolSubfield coefficients of the FINITE F, so the subtype injects into
+degree-bounded coefficient tuples), is now a DISPLAYED E-phase proof
+obligation — `hcard` above STAYS a premise; no consumer discharges it
+silently: -/
+theorem eligibleImage_finite {p : ℕ} [Fact p.Prime] {F : Type*}
+    [Field F] [Finite F] (w : ℕ) (ν : MovesC.Node p F) :
+    Finite {q : Polynomial F //
+      MovesD.EligibleImage p w ν.g ν.μ (MovesD.RanchImage ν) q}
+  -- PROOF = a REAL obligation of V3-1's file (listed at the §8
+  -- handoff; NOT a banked sorry): inject into the degree-bounded
+  -- coefficient tuples (Fin (g+1) → F) through the monic natDegree pin
+
 /-- the i-th slot read's menu card — RESTRUCTURED at REV 7 (Fable GAP-4:
 `MovesD.ShapeRead` is proof-carrying with NO `Inhabited` instance, so the
 rev-5/6 `getD i default` did not elaborate; Option-indexing needs no junk
@@ -1431,6 +1526,89 @@ pool dimension W_ent(ε) := §D4-R's W(P̂) — "height-free, L3 rev 9". -/
 noncomputable def EntShapeV.A (ε : EntShapeV n) : ℕ :=
   (ε.Phat : MovesD.ShapePrefix).A' n
 def EntShapeV.Went (ε : EntShapeV n) : ℕ := (ε.Phat : MovesD.ShapePrefix).W
+
+/-- THE TEMPLATE-SIDE LETTER VOCABULARY — DISPLAYED AT REV 9 (Codex-8
+N-3: `spWord`/`IsBranchingLetter`/`letterMenuCard`/`SelfLoopLetter`/
+`speciesTagOf`/`monicTopOf` were consumed by the Defs-layer `template?`/
+`ReadFits` with no closed decls — `spWord` was still assigned to the
+downstream unit V3-3a, recreating the C11 forward-reference class).
+All six (plus the `letterMbar`/`SpFitsRead`/`SpWordFits` helpers) are
+now Defs-layer closed defs, declared HERE, before every consumer.
+First the two tag projections (the recorded granularity freedom stays:
+if MovesSp's tag granularity proves finer at E-phase the projections
+tighten THERE, recorded never silent): -/
+def speciesTagOf (s : MovesSp.Species) : MovesD.ReadSpecies :=
+  match s.tag with
+  | .root => .root
+  | .postInc => .increment
+  | .postRec => .recentering
+
+/-- the letter's monic reading — keyed to MovesD's OWN monic-slot tie
+(`ShapePrefix.MonicTie`, built MovesD/Defs.lean 134–136: monicTop ↔
+r = 0 ∧ s0 + wSide = n); the r = 0 guard rides at the ReadFits use
+site, so this projection carries the width clause only: -/
+def monicTopOf (n : ℕ) (s : MovesSp.Species) : Bool :=
+  decide (s.s0 + MovesSp.Species.wraw s = n)
+
+/-- a (collapsed) self-loop letter — the SP4 characterization
+(`MovesSp.selfloop_iff`, built SP4_selfloopChar.lean 69–72: on
+catalogue members s ∈ Succ n s ↔ this decidable conjunction; the n
+parameter is kept for signature uniformity with the shape side): -/
+def SelfLoopLetter (n : ℕ) (s : MovesSp.Species) : Bool :=
+  decide (s.tag = .postRec ∧ s.e = 1 ∧ s.sel = some (1, s.W))
+
+/-- the letter-side menu bound m̄ — `ShapeRead.mbar`'s template mirror
+(built MovesD/Defs.lean:104, m̄ = ⌊ℓ/(g·μ)⌋ at the letter's own
+selection; 0 at sel = none — terminal letters carry no menu): -/
+def letterMbar (s : MovesSp.Species) : ℕ :=
+  (s.sel.map (fun gμ => s.ell / (gμ.1 * gμ.2))).getD 0
+
+/-- a branching LETTER — the template-side SLOT layout, mirroring
+`IsBranchSlot` (§2.D above; REV 7 C2's upper-bound reading: every
+letter that CAN branch has a slot; realized branching stays
+value-level, `RealizedBranching`). Bool-valued: the consumers filter. -/
+def IsBranchingLetter (n : ℕ) (s : MovesSp.Species) : Bool :=
+  decide (2 ≤ letterMbar s)
+
+/-- the i-th branching letter's menu card — `branchMenuCard`'s template
+mirror (Option-indexed, no Inhabited junk — the F-GAP-4 idiom): -/
+def letterMenuCard (n : ℕ) (w : List MovesSp.Species) (i : ℕ) : ℕ :=
+  (((w.filter (IsBranchingLetter n))[i]?).map letterMbar).getD 0
+
+/-- the letter one WF read presents — the per-index tie clauses of the
+species-word reconstruction (the ReadFits pattern, letter side): stage
+fields verbatim off the read; the selection = the read's designated
+(g, μ), λ-membered; the census trio (a, d, slots) pinned by (SH-C)/(G3);
+the species/monic tags through the projections above. The UNREAD
+Species fields (D, W, lam beyond membership, flanks) are pinned only
+through the catalogue/SuccStep closure in `SpWordFits` — exactly the
+"fold of the stage laws" the note's SP.1 prescribes: -/
+def SpFitsRead (n : ℕ) (i : ℕ) (s : MovesSp.Species)
+    (R : MovesD.ShapeRead) : Prop :=
+  s.e = R.e ∧ s.s0 = R.s0 ∧ s.ell = R.len ∧ s.w = R.w ∧
+  s.sel = some (R.g, R.μ) ∧ (R.g, R.μ) ∈ s.lam ∧
+  s.a = R.s0 / R.e ∧ s.d = s.ell + 1 ∧
+  s.slots = Finset.Icc s.a (s.a + s.ell) ∧
+  (R.species = if i = 0 then .root else speciesTagOf s) ∧
+  (R.monicTop = (decide (i = 0) && monicTopOf n s))
+
+def SpWordFits (n : ℕ) (P : MovesD.ShapePrefix)
+    (ws : List MovesSp.Species) : Prop :=
+  ws.length = P.reads.length ∧
+  (∀ i (hw : i < ws.length) (hp : i < P.reads.length),
+    SpFitsRead n i (ws.get ⟨i, hw⟩) (P.reads.get ⟨i, hp⟩)) ∧
+  (∀ s ∈ ws, MovesSp.InCatalogue n s) ∧
+  ws.Chain' (MovesSp.SuccStep n)
+
+/-- the species word behind a shape-prefix — CLOSED IN DEFS at REV 9
+(the C11/N-3 pattern: checked classical dite, no forward reference,
+junk [] off the WF class — dead at every consumer through V3-3a's
+dite-pass theorem `spWord_exists` on WF prefixes; uniqueness of the
+CONSUMED fields is V3-3d's faithfulness territory): -/
+open Classical in
+noncomputable def spWord (n : ℕ) (P : MovesD.ShapePrefix) :
+    List MovesSp.Species :=
+  if hc : ∃ ws, SpWordFits n P ws then hc.choose else []
 
 /-- The height-forgetting TEMPLATE ε̊ — "SP.1 applied to P̂, selection data
 kept". REV 2 (C12/A-3 repair): the boundedness is INTRINSIC, not an external
@@ -1573,10 +1751,9 @@ def ReadFits (n : ℕ) (P : MovesD.ShapePrefix) (s : MovesSp.Species)
   ((R.e : ℤ) * R.a = (R.s0 : ℤ) - MovesD.bezT R.e R.h * R.gam) ∧
   R.species = (if P.reads = [] then .root else speciesTagOf s) ∧
   R.monicTop = (decide (P.reads = []) && monicTopOf n s)
-  -- (`speciesTagOf`/`monicTopOf`: Defs-local one-line projections of
-  --  s.tag — the letter's ReadSpecies/monic reading; if MovesSp's tag
-  --  granularity proves finer at E-phase the projection tightens THERE,
-  --  recorded never silent. The WF-bound clauses (species_iff, monic,
+  -- (`speciesTagOf`/`monicTopOf`: the DISPLAYED §2.D projections above
+  --  (REV 9, N-3 — no longer prose); the granularity hatch is recorded
+  --  at their decls. The WF-bound clauses (species_iff, monic,
   --  window, …) are shapeOfSlots?/writeHeights?'s terminal WF dite, not
   --  per-read clauses.)
 
@@ -1726,6 +1903,29 @@ structure CutRealization {n : ℕ} (ε : EntShapeV n) {p F pol}
     -- inst ↔ the accepted set, member for member (the D4R.4 census IS
     -- box-realized at the defining level — F-2's distinction; the
     -- Presented parameter carries the realizing instance data)
+  -- THE FIBER TIE (NEW at REV 9, Codex-8 N-2: rev 8's fields never USED
+  -- Pr — an adversary could pick arbitrary disjoint tags per selRec
+  -- label, a lands_sel-bounded cut of matching cardinality, and an
+  -- arbitrary bijection; ent_sel + ent_cut both passed while the census
+  -- stayed unrelated to the realized fibers). The note's marked-entrance
+  -- mass demands the realization law: EACH COUNTED TAG **IS** A REALIZED
+  -- CONTINUATION POINT OF ITS PREFIX ("each member is one realized
+  -- branch prefix η with its Theorem C(b) mass" — iotaCount's docstring
+  -- above). Typed: the tags READ as defining-level box points, and each
+  -- accepted prefix's tag lies in THAT PREFIX's realized fiber:
+  toBox : B → MovesD.Box p m
+    -- the census-tag box reading (NOT required injective: one f may
+    -- realize several prefixes — "an f entering twice carries two
+    -- marks", mult ≥ 2 is legal and the tags stay distinct in B)
+  encode_fiber : ∀ i, toBox (encode i) ∈ Pr.fiber i
+    -- THE KILL, displayed (the charge's adversary): step-3's arbitrary
+    -- bijection dies BY TYPE — encode i must now carry a witness that
+    -- its tag's box reading realizes prefix i, so (a) every accepted
+    -- prefix has a NONEMPTY realized fiber (no cardinality-only cuts),
+    -- and (b) tags minted independently of the fibers (e.g. re-used
+    -- across selRec labels, or at indices with empty fibers) admit NO
+    -- toBox assignment: a tagged census passes iff it is fiber-realized
+    -- member-by-member, which is exactly D4R.4's census semantics.
 ```
 
 μ̂ FENCE (binding, from MovesS): every aggregate of `iotaCount`-type objects
@@ -2048,7 +2248,10 @@ structure CtsMeasured (n : ℕ) (C : CtsFamily n) (S : StepSys n)
   -- exempts the ∅-census device instances (V1-8c) from minting Presented
   -- data; a MERGED sibling census stays killed — its realization would
   -- need one cut whose SelMatches-matching accepted set covers both
-  -- selRec labels, impossible by E8_rankInj through lands_sel:
+  -- selRec labels, impossible by E8_rankInj through lands_sel. (REV 9,
+  -- N-2: the realization now also carries toBox/encode_fiber — §2.E —
+  -- so the ∃-bound witness ties every census tag to ITS prefix's
+  -- realized fiber; cardinality-matched tag inventions fail by type):
   ent_cut : ∀ (ε : EntShapeV n) (β₀ : S.Cell) (q₀ : ℚ), q₀ ∈ Pools →
     (entInst ε β₀ q₀ ((ε.template?).elim 0 entLvl)).Nonempty →
     ∃ (p : ℕ) (_ : Fact p.Prime) (F : Type) (_ : Field F) (_ : Finite F)
@@ -2226,7 +2429,7 @@ def chainCount {n} (S : StepSys n) :
 chains from x along γ at h — the OBJECTS the note's T_γ counts, closed
 over the step layer (the Σ-recursion `chainCount` is this type's card:
 `chains_card : Fintype.card (Chains S γ x h) = chainCount S γ x h`, a
-V1-3 leg by induction through Fintype.card_sigma; Fintype instances from
+V1-3b leg by induction through Fintype.card_sigma; Fintype instances from
 the StepSys Assign fintypes): -/
 def Chains {n} (S : StepSys n) :
     ∀ {α} (γ : Template n S α) {q₀}, S.Hist q₀ α → Hpt γ.D → Type
@@ -2275,7 +2478,7 @@ structure TmplEvents (n : ℕ) (S : StepSys n) where
   -- one-step T_γ is the fresh-assignment count DEFINITIONALLY), typed as
   -- tmark's length-1 surjectivity(+T). [The rev-7 `marks_chains` bound
   -- is DEMOTED to a DERIVED lemma — census card = card of an injective
-  -- image into Chains ≤ chainCount via chains_card (V1-3); the NAME
+  -- image into Chains ≤ chainCount via chains_card (V1-3b/c); the NAME
   -- survives as that lemma.]
   real_marks : ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h),
     q₀ ∈ S.Pools → S.zc x → (∃ N₀, ∀ N ≥ N₀, (tevt γ x h N).Nonempty) →
@@ -2337,7 +2540,7 @@ def RealizesC {n S} (TE : TmplEvents n S) {α} (γ : Template n S α)
 -- note's chain count BY LAW, no longer merely ≤-bounded; the rev-7
 -- adversary "two realizing chains, singleton tinst" is DEAD: realization
 -- is mark-witnessed and tmark is injective, so a singleton census yields
--- EXACTLY one realized chain). The V1-3 legs (d)–(f), proved from the
+-- EXACTLY one realized chain). The V1-3b/c legs (d)–(f), proved from the
 -- roster above:
 --   (d) `tgam_eq_chains (hq : q₀ ∈ Pools) (hzc : zc x) :
 --        Tgam TE γ x h = Nat.card {c : Chains S γ x h // RealizesC TE γ x h c}`
@@ -2354,7 +2557,7 @@ def RealizesC {n S} (TE : TmplEvents n S) {α} (γ : Template n S α)
 eventual event nonemptiness at x's pool. Its tie to the note's T_γ is
 the LEMMA `treal_iff_tgam (hq : q₀ ∈ S.Pools) (hzc : S.zc x) :
 TReal TE γ x h ↔ 0 < Tgam TE γ x h` — the → leg is `real_marks`, the ←
-leg the REV-7 `marks_realize`; proved at V1-3, cited wherever the event
+leg the REV-7 `marks_realize`; proved at V1-3a, cited wherever the event
 reading is needed (V5-1's guard, the entrance symmetry note). -/
 def TReal {n S} (TE : TmplEvents n S) {α} (γ : Template n S α)
     {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D) : Prop :=
@@ -2382,13 +2585,13 @@ structure XHDd (n : ℕ) (S : StepSys n) (TE : TmplEvents n S) where
     0 < Tgam TE γ x h
   -- COUNT SUPPLY (derived, not a field): membership ⟹ positive TABLE-side
   -- count at every zc representative, via Mem → (no_stray) 0 < Tgam →
-  -- (marks_chains — the REV-8 DERIVED bound, V1-3(f)) 0 < chainCount.
-  -- Stated as unit V1-3's lemma `mem_chainCount_pos`;
+  -- (marks_chains — the REV-8 DERIVED bound, V1-3c(f)) 0 < chainCount.
+  -- Stated as unit V1-3a's lemma `mem_chainCount_pos`;
   -- V2-5/V4-5/V5-8 consume it. The CONVERSE (chainCount > 0 → Tgam > 0)
   -- is NOT derivable at composite templates — combinatorial chains need
   -- not be f-realized ((HMC-AUG)'s coupling) — and that one-way gap is
   -- precisely what keeps HMC below out of theorem-hood. The EVENT
-  -- reading is recovered where needed by `treal_iff_tgam` (V1-3, from
+  -- reading is recovered where needed by `treal_iff_tgam` (V1-3a, from
   -- real_marks + marks_realize) — HMC-safe: no composite recursion, no
   -- count→realization link beyond the census's own card.
 
@@ -2397,7 +2600,7 @@ identifying `mdom d` with `XHDd.dom (.last (moveOf d))`"). [1v] lists its
 one-step domains XHD-free (VAL(a)); when the [2b] package is in scope, the
 lists coincide — a displayed hypothesis of every base-point transport
 (V2-5(b), V4-5, V5-8, V7-5a). Base realizability follows: base ∈ mdom d
-= dom(.last …) → no_stray → 0 < Tgam → count > 0 (V1-3's lemma, via
+= dom(.last …) → no_stray → 0 < Tgam → count > 0 (V1-3a's lemma, via
 marks_chains — REV 7, C6) — u_T's
 transport from tbl_count's base points is licit. -/
 structure MDomTie {n} {S : StepSys n} {C : CtsFamily n}
@@ -2608,7 +2811,7 @@ BY TYPE). THE HMC-CLOSURE SWEEP, RE-RUN AT REV 8 (the N1 charge: the
 counting tie must not close the kernel — displayed, item by item):
 (1) the ONLY new laws are tmark_inj (all templates) and tmark_last_surj
 (+T) (LENGTH 1 only); at (.cons m γ) the census/tmark supply an
-injective map into `Chains` — an UPPER bound (marks_chains, V1-3(f)),
+injective map into `Chains` — an UPPER bound (marks_chains, V1-3c(f)),
 never a decomposition: no law equates tinst at .cons with a sum over
 first assignments, and tevt at .cons stays entirely free;
 (2) ⊇ (no_stray direction): dom(cons) ∋ h gives 0 < Tgam(cons) — a mark
@@ -2625,7 +2828,9 @@ composites: chainCount(cons) remains tied to the census only through
 the one-way (f)-bound;
 (5) treal_iff_tgam still rides real_marks/marks_realize only. VERDICT:
 the four-line proof stays blocked BOTH directions; HMC satisfiable both
-ways (V1-8b true, V4-11's enriched toy false), provable neither. NEVER
+ways (V1-8b true, V4-11's CENSUS-COUPLED toy false — REV 9: zc ≡ true,
+the coupling entirely in the free composite census/event fields),
+provable neither. NEVER
 proved in this corpus; consumed by (COMP-Σ)/V5-5 and V4-12(a). -/
 def HMC {n : ℕ} {S : StepSys n} (TE : TmplEvents n S) (D : XHDd n S TE) : Prop :=
   ∀ {α β} (m : S.Move α β) (γ : Template n S β) (h₁ : Hpt (S.dim m))
@@ -2799,21 +3004,27 @@ structure RefEvents {n : ℕ} {S : StepSys n} (R : Refinement n S)
   -- the h₁-split separation). The coarse event at (α, x) is now the
   -- union over ALL refined (α', x') lying above it: the histFib roster
   -- (outer) × the refined-template roster (inner); each refined state
-  -- carries only ITS piece. (`hb p := congrArg Sigma.fst
-  -- (R.cellEq.apply_symm_apply ⟨α, p.1⟩)` — the fiber cell's projection
-  -- identity, notation local to this display.)
+  -- carries only ITS piece. (REV 9, the V1 cover slip: the fiber cell's
+  -- projection identity `congrArg Sigma.fst (R.cellEq.apply_symm_apply
+  -- ⟨α, p.1⟩)` is now INLINED at both use sites — the rev-8 `(hb p)`
+  -- was an UNBOUND identifier; "notation local to this display" binds
+  -- nothing in Lean.)
   tevt_cover : ∀ {α : S.Cell} {q₀} (x : S.Hist q₀ α)
     (γ : Template n S α) (h : Hpt γ.D) (N : ℕ), q₀ ∈ S.Pools →
     TE.tevt γ x h N
       = ((R.histFib x).toList.flatMap (fun p =>
-          (refTmpls R (R.cellEq.symm ⟨α, p.1⟩) (hb p) γ).map (fun q =>
+          (refTmpls R (R.cellEq.symm ⟨α, p.1⟩)
+            (congrArg Sigma.fst (R.cellEq.apply_symm_apply ⟨α, p.1⟩))
+            γ).map (fun q =>
             (TE'.tevt q.1 p.2 (castHpt q.2.symm h) N).image (boxEq q₀ N)))
         ).foldr (· ∪ ·) ∅
   tinst_cover : ∀ {α : S.Cell} {q₀} (x : S.Hist q₀ α)
     (γ : Template n S α) (h : Hpt γ.D), q₀ ∈ S.Pools →
     (TE.tinst γ x h (TE.tmplLvl γ)).card
       = ((R.histFib x).toList.flatMap (fun p =>
-          (refTmpls R (R.cellEq.symm ⟨α, p.1⟩) (hb p) γ).map (fun q =>
+          (refTmpls R (R.cellEq.symm ⟨α, p.1⟩)
+            (congrArg Sigma.fst (R.cellEq.apply_symm_apply ⟨α, p.1⟩))
+            γ).map (fun q =>
             (TE'.tinst q.1 p.2 (castHpt q.2.symm h)
               (TE'.tmplLvl q.1)).card))
         ).sum
@@ -2842,34 +3053,46 @@ def HMCAug {n : ℕ} (S : StepSys n) (TE : TmplEvents n S) : Prop :=
   --  of HMC TE D, i.e. of the open kernel itself; non-identity
   --  refinements must supply GENUINE boundary/gap data whose refined
   --  domains factor, exactly the note's hypothesis.]
-  -- [THE SEPARATION RECORD — RE-CORRECTED at REV 8 (N2, adjudicated,
-  --  REVISING the round-6 C4 ruling: the h₁-split is mathematically
-  --  sound but was INEXPRESSIBLE at the rev-7 toy — the per-pair
-  --  tevt_cover forced each refined state to reproduce the whole coarse
-  --  event, and PUnit coarse histories cannot retain h₁; worse, with
-  --  uniform assignments assign_cover + the REV-8 length-1 count
-  --  exactness force refined one-step domains FULL, killing the excluded
-  --  tail domain). THE OPERATIVE WITNESS is V4-11's ENRICHED toy S₂
-  --  (coarse Hist at the intermediate cell = the h₁ FLAG, ext records
-  --  it, zc reads it — the flag0 history is NOT a (ZC) representative):
-  --  refine the intermediate cell by the flag (B := Fin 2, histOf reads
-  --  it back); the refined tail domain at the h₁ = 0 state EXCLUDES
-  --  h₂ = 0 (its refined XHDd laws are zc-vacuous there — the choice is
-  --  free and consistent), at the h₁ ≠ 0 state it is FULL (pinned by the
-  --  real zc witnesses); each refined composite domain FACTORS
-  --  ({0}×{h₂≠0} and {h₁≠0}×full) while the unrefined dom(cons) — the
-  --  coupled set — does NOT; the FIBER-UNION covers reassemble the
-  --  coarse events/census exactly (the full check DISPLAYED at
-  --  V4-11(iii)). So the enriched toy is the SEPARATION WITNESS:
-  --  ¬HMC ∧ HMCAug — one round of 𝒞_n refinement RESTORES the
-  --  factorization, EXACTLY the note's HMC-AUG display (MOVES
-  --  8213–8221), and HMCAug is STRICTLY WEAKER than HMC. Its
-  --  non-vacuity as an OPEN Prop: satisfiable (V4-11(iii)); its
-  --  falsifiability UNWITNESSED and OPEN — the note's predicted
-  --  falsifier is a SECOND surviving coupling ("R2's wall channel"),
-  --  not constructed here; and NO ¬HMCAug claim survives anywhere in
-  --  this corpus. Derivability-from-XHD-alone is likewise UNCLAIMED
-  --  either way.]
+  -- [THE SEPARATION RECORD — WITHDRAWN at REV 9 (supersedes the REV-8
+  --  N2 ruling and the round-6 C4 ruling it revised). Codex-8 N-1
+  --  killed the REV-8 witness STRUCTURALLY: `ext_zc` forces the flag-0
+  --  history zc (it is the ext-image of the zc source at h₁ = 0), and
+  --  the refined flag-0 cell has no zc' witness, violating `zc_ne` —
+  --  zc CANNOT carry branch memory. The adjudicated replacement (the
+  --  census-level coupling, V4-11(i): zc ≡ true, coupling in the free
+  --  composite census/event fields) is the LEGAL ¬HMC witness — but the
+  --  charge-mandated re-walk of the four-point check + cover laws FAILS
+  --  for the separation leg, by THE FORCING CHAIN (displayed once,
+  --  here): for ANY (R, RE, D') with HMC RE.TE' D' over the coupled toy
+  --  — (1) tinst_cover at the coarse census 1 off the coupled point
+  --  forces histFib x ≠ ∅, and zc_ne' at the refined source cell (all
+  --  of whose histories project to the toy's single source history x)
+  --  supplies a zc' fiber member x'; (2) at x', h₁ = 0: assign_cover
+  --  gives a refined first move m₁' with a nonempty assignment (the
+  --  coarse fiber is nonempty), tmark_last_surj + tmark_inj (zc' x')
+  --  force its one-step census = cntraw' > 0, no_orphan' puts 0 in
+  --  dom'(.last m₁'); (3) ext_zc' makes the ext-image x'' zc', and the
+  --  same chain at the tail (coarse tail assignments nonempty at the
+  --  coupled point — its CHAINS exist) puts 0 in dom' of the refined
+  --  tail; (4) HMC' then forces (0,0) ∈ dom' of the refined composite;
+  --  (5) no_stray' at x' forces its refined composite census > 0 at
+  --  (0,0); (6) tinst_cover sums that census into the coarse composite
+  --  census at (0,0) — which the coupling sets to 0. CONTRADICTION.
+  --  The chain uses only standing laws (assign_cover, tmark ties,
+  --  no_orphan/no_stray, ext_zc, zc_ne, tinst_cover), at every depth
+  --  (HMC' quantifies all refined templates, so composite tails inherit
+  --  full domains inductively). CONSEQUENCES, with status: (a) V4-11's
+  --  toy witnesses ¬HMC ONLY; ¬HMC ∧ HMCAug is UNWITNESSED in-corpus;
+  --  (b) the chain is a DERIVATION SKETCH (not machine-checked; dual
+  --  ratification pending) that ¬HMC → ¬HMCAug against this interface,
+  --  i.e. with V4-13: HMCAug ⟺ HMC — if it survives, the note's
+  --  "strictly weaker" reading (MOVES 8213–8221) is NOT encoded by
+  --  these carriers and one of the cover/exactness laws over-commits;
+  --  ESCALATED to the orchestrator (E-phase may also probe finite
+  --  fragments by decide). NO ¬HMCAug instance is CLAIMED as proved;
+  --  HMCAug's falsifiability stays formally OPEN (the note's predicted
+  --  falsifier: "R2's wall channel"); satisfiability holds via V4-13
+  --  at V1-8b. Derivability-from-XHD-alone stays UNCLAIMED either way.]
   -- [THE HMC → HMCAug THEOREM — A REAL UNIT at REV 7 (G1): `V4-13
   --  hmcaug_of_hmc` (R := the identity refinement, RE := the transported
   --  TE with Equiv.refl boxes and the singleton-roster covers, D' := D —
@@ -2935,8 +3158,11 @@ structure JCells (n : ℕ) (C : CtsFamily n) (S : StepSys n)
     --  continuing member exists (`cont_iff`); V5-7b's OUTCOME-level
     --  supplier builds its datum from this law — no continuing-target
     --  choice enters the J stack]
-  bcells : ∀ (s : Skeleton n) (m : (C.bd s).Letter) (o : C.Outc s m)
+  bcells : ∀ (s : Skeleton n) (m : (C.bd s).Letter) (o : (C.bd s).Outc m)
     (α : (C.bd s).CellIdx), Finset (V.DCellO s m o α)
+    -- (REV 9, Codex-8 N-6: the rev-8 `C.Outc s m` was a type error —
+    --  CtsFamily has no Outc field; the carrier is BlockData's, read
+    --  through `C.bd s` exactly as `route`/`route_cont` above do)
   roster_tie : ∀ s m o α (c : V.DCellO s m o α),
     c ∈ bcells s m o α ↔ route s m o = .split
     -- ALL cells iff the outcome is split-route; ∅ otherwise. The rev-2
@@ -2982,16 +3208,42 @@ noncomputable def Jval {n C S} {V : CtsMeasured n C S} (J : JCells n C S V)
   ∑ c ∈ J.bcells d.s d.m d.o d.α, μcellVal cp XsC d c q₀
 -- (+T twin JvalT over TermData/GcellT for terminal split bookkeeping rows.)
 
+/-- THE SUMMED-DENOMINATOR CLOSURE — ONE HOME at REV 9 (Codex-8 N-4:
+rev 8 described `gcellDenom` BOTH as a closed §2.H decl and as a V3-9c
+mini-lemma, and displayed neither; if it lived in V3-9c the Defs-layer
+`jcellPG` forward-referenced a downstream unit). BOTH now live HERE,
+Defs-layer: first the sum lemma (Defs-local, E-phase-provable — RatFunc
+denominators: denom(x+y) ∣ denom x · denom y, Finset.sum induction,
+then lcm-into-the-union bookkeeping; the class X^b·∏(1−X^a) is closed
+under these), then the PSigma witness def its choose packages: -/
+theorem gcell_denom_sum {n C S} {V : CtsMeasured n C S} {W TE D Xs}
+    (XsC : XHDsC n S W D V Xs) (d : MoveData n C)
+    (c : V.DCellO d.s d.m d.o d.α) :
+    ∃ (b : ℕ) (as : Finset ℕ+),
+      (∑ j, XsC.Gcell d c j).denom
+        ∣ Polynomial.X ^ b * ∏ a ∈ as, (1 - Polynomial.X ^ (a : ℕ))
+  -- PROOF = a Defs-local obligation (§8 lists it; V3-9c(a)'s slot-5
+  -- add/scalar closure route CONSUMES this lemma — it no longer owns it)
+
+open Classical in
+noncomputable def gcellDenom {n C S} {V : CtsMeasured n C S} {W TE D Xs}
+    (XsC : XHDsC n S W D V Xs) (d : MoveData n C)
+    (c : V.DCellO d.s d.m d.o d.α) :
+    Σ' (b : ℕ) (as : Finset ℕ+),
+      (∑ j, XsC.Gcell d c j).denom
+        ∣ Polynomial.X ^ b * ∏ a ∈ as, (1 - Polynomial.X ^ (a : ℕ)) :=
+  ⟨(gcell_denom_sum XsC d c).choose,
+   (gcell_denom_sum XsC d c).choose_spec.choose,
+   (gcell_denom_sum XsC d c).choose_spec.choose_spec⟩
+
 /-- the per-cell PolyGeom — a CLOSED def at REV 8 (Codex7 N7: rev 7 named
 it in prose), checked field-for-field against the BUILT
 `MovesS.PolyGeom` (Defs.lean 322–333: countT/degBoundT/degT_le/countS/
 degBoundS/degS_le/geom/qpow/geomDenoms/geom_denom_dvd) — the object
 V5-7b's per-cell clauses exhibit and V7-5a leg (b) transports onto the
 built `RatBurdens.jPCell/jcell_ok/jcell_interp/jcell_sum` (built
-MovesS/Defs.lean 386–395, grep-verified at HEAD). `gcellDenom` is the
-V3-9c PolyGeom-closure mini-lemma (slot 5) giving the SUMMED Gcell's
-denominator witness from the per-component `Gcell_denom` clauses
-(Classical.choose — a PSigma witness triple): -/
+MovesS/Defs.lean 386–395, grep-verified at HEAD). `gcellDenom` = the
+DISPLAYED §2.H def just above (REV 9 — its one home): -/
 noncomputable def jcellPG {n C S} {V : CtsMeasured n C S}
     (cp : CellPolyPack n C S V) (XsC : XHDsC n S _ _ V _)
     (d : MoveData n C) (c : V.DCellO d.s d.m d.o d.α) : MovesS.PolyGeom :=
@@ -3295,7 +3547,7 @@ the per-cell (J-RAT) clause §2.H/V5-7b (C15) · `Tgam`-keyed `XHDd` §2.G.
 REV-8 ADDITIONS AND STRIKES, each displayed closed: `Chains`/`RealizesC`
 + the TmplEvents `tmark`/`tmark_inj`/`tmark_last_surj`(+T) roster §2.G
 (N1 — the counting tie; the `marks_chains` FIELD struck, the name now
-V1-3(f)'s derived lemma) · `Refinement.histFib`(+proj/complete) + the
+V1-3c(f)'s derived lemma) · `Refinement.histFib`(+proj/complete) + the
 FIBER-UNION `tevt_cover`/`tinst_cover` §2.G (N2) · `CutRealization` §2.E
 + `CtsMeasured.ent_cut` §2.F (N3) · `MStep`/`markCard`/`mReading`/`mEvt`
 §2.F (N4 — V7-2a's table pointers now REAL Defs-layer decls; MarkDisj/
@@ -3305,16 +3557,23 @@ corrected `d.2.symm ▸ x`) · `ReadFits`/`snocP`/`emptyPrefix`/`ShapeWFOf`/
 `EntTiesAt` §2.D (N6 — all displayed closed; rev 7's "`P.snoc` is
 MovesD's own" corrected: built MovesD exports no snoc) · `realized_isSlot`
 §2.D (M1 — the E6/E7 bridge with the Nat.card finiteness record) ·
-`μcellVal`/`jcellPG`/`gcellDenom` §2.H (N7 — closed against built
-PolyGeom 322–333/jPCell 386–395) · `tCountV` V7-9 (N8 — ℕ-valued total).
+`μcellVal`/`jcellPG` §2.H (N7 — closed against built
+PolyGeom 322–333/jPCell 386–395; `gcellDenom` closed at REV 9, N-4 —
+§2.H one home) · `tCountV` V7-9 (N8 — ℕ-valued total; REV 9 `repD` +
+the displayed dispatches, N-5).
 Residual E-phase freedom: zig's orientation token, `skBlk`'s MovesSp
 projection pointer (slot 13), the Mathlib ratCast-family default fields,
-and `speciesTagOf`/`monicTopOf`'s tag-granularity pointer (§2.D, REV 8 —
-one projection each of MovesSp's `Species.tag`, recorded with their
-tighten-at-MovesSp hatch) — mechanical or Defs-assigned, zero unrecorded
-design content, each in §5's inventory.
+and `speciesTagOf`/`monicTopOf` (§2.D — DISPLAYED closed defs at REV 9,
+N-3, keyed to `MonicTie`/`Species.tag`; the tag-granularity hatch stays
+recorded at their decls) — mechanical or Defs-assigned, zero unrecorded
+design content, each in §5's inventory. (REV 9 adds the §2.D
+template-side letter vocabulary — `SelfLoopLetter`/`letterMbar`/
+`IsBranchingLetter`/`letterMenuCard`/`SpFitsRead`/`SpWordFits`/`spWord`
+— and §2.H's `gcell_denom_sum`/`gcellDenom`: all displayed closed; the
+two Defs-local proof obligations (`gcell_denom_sum`,
+`eligibleImage_finite`) are listed at §8.)
 
-## §3 The unit DAG — 98 units (32 easy / 62 medium / 4 hard)
+## §3 The unit DAG — 100 units (34 easy / 62 medium / 4 hard; REV 9: V1-3 → V1-3a/b/c)
 
 Format per campaign §2: id `MovesV.<name>` · file · statement (against §2
 Defs) · moves_ref (V-TABLES display, ≤ 3 lines) · deps · sketch · difficulty ·
@@ -3368,7 +3627,7 @@ at eval. ⌿ split: (a) the double geometric sum; (b) the Qq clearing identity.
 hyp_fields: none — a PROVED instance. [No half-integral arithmetic exists
 anywhere in this unit: the (h₀,h₂) display is V6-2a/b's chart theorem.]
 
-### Layer V1 — the XHD packages + (U-A) [10]
+### Layer V1 — the XHD packages + (U-A) [12] (REV 9: +V1-3b/c, the M-2 split)
 
 **V1-1 `xhdw_range` · `V1_xhdw.lean` · easy.**
 `theorem xhdw_pos (X : XHDw n S) … : 0 < X.g m h q₀` and `X.g m h q₀ ≤ 1`
@@ -3387,35 +3646,48 @@ moves_ref: "Σ_h T(h)·g(h) = T·Σ_h g(h) is EXACTLY (u-T), else false in
 general" ((iv) STEP). deps: Defs. sketch: `Finset.sum_congr` + `mul_sum`;
 norm_num. hyp_fields: none (the premise is the (u-T) instance, explicit).
 
-**V1-3 `xhdd_exact_supp` · `V1_xhdd.lean` · easy — RE-KEYED at REV 7 (C6:
-XHDd is now keyed to the note's own T_γ = `Tgam`; the REV-4 TReal keying
-had substituted event realization for the note's count).**
+**V1-3a `xhdd_exact_supp` · `V1_xhdd.lean` · easy — RE-KEYED at REV 7
+(C6); SPLIT at REV 9 (Codex-8 M-2: the REV-8 roster had grown to 8
+lemmas against the ≤ 4 rule — the counting-tie legs move to V1-3b/c;
+cross-references of the form "V1-3(d)/(e)/(f)" now read V1-3b(d) /
+V1-3c(e)/(f)).**
 ROSTER (3): (a) `xhdd_exact : (D.dom γ).Mem h ↔ ∀ q₀ ∈ Pools,
 ∀ x : Hist q₀ α, zc x → 0 < Tgam TE γ x h` at pool-inhabited zc histories
 (both directions from no_orphan/no_stray + zc_ne) — the exactness iff at
 the note's own object; (b) `mem_chainCount_pos : (D.dom γ).Mem h →
 ∀ q₀ ∈ Pools, ∀ x, zc x → 0 < chainCount S γ x h` — THE ONE-WAY COUNT
-SUPPLY (no_stray → 0 < Tgam → leg (f)), the lemma V2-5/V4-5/V5-8
+SUPPLY (no_stray → 0 < Tgam → V1-3c(f)), the lemma V2-5/V4-5/V5-8
 consume; its converse is NOT stated (underivable at composites — exactly
 HMC's openness, §2.G); (c) `treal_iff_tgam : q₀ ∈ Pools → zc x →
 (TReal TE γ x h ↔ 0 < Tgam TE γ x h)` — the REV-7 demotion lemma
 (→ real_marks; ← marks_realize), cited wherever the EVENT reading is
-needed (V5-1's guard, the entrance symmetry); THE REV-8 COUNTING-TIE
-LEGS (N1 — statements displayed at §2.G's counting-tie block):
-(d) `tgam_eq_chains` — Tgam = Nat.card {c // RealizesC TE γ x h c}
-(Finset.card_bij on tmark's injective image); (e) `tgam_last`(+T) —
-Tgam (.last m) = cntraw (tmark_last_surj ∘ tmark_inj: a bijection with
-the assignment fiber); (f) `marks_chains` — Tgam ≤ chainCount (the
-DERIVED bound: tmark_inj into Chains + `chains_card : Fintype.card
-(Chains S γ x h) = chainCount S γ x h`, proved here by induction on γ
-through Fintype.card_sigma — the rev-7 FIELD struck).
-moves_ref: "T_γ(x, h) := #{fresh-assignment chains from x realizing
-(γ, h)}" + "(no orphan) T_γ(x, h) > 0 for some representative x ⟹
+needed (V5-1's guard, the entrance symmetry).
+moves_ref: "(no orphan) T_γ(x, h) > 0 for some representative x ⟹
 h ∈ H(γ); (no stray) h ∈ H(γ) ⟹ T_γ(x, h) > 0 for EVERY representative"
-(V.0, MOVES 7921–7923 + 7947–7949 — VERBATIM at Tgam, which is now the
-direct chain-set card BY LAW, leg (d)). deps: Defs 2.G.
-sketch: unfold; chain the TE mark facts; card bijections; induction for
-chains_card. hyp_fields: XHDd + TmplEvents ties (owner [2b] / carrier).
+(V.0, MOVES 7947–7949). deps: Defs 2.G, V1-3b/c (legs (b)/(c) consume
+the tie legs). sketch: unfold; chain the TE mark facts.
+hyp_fields: XHDd + TmplEvents ties (owner [2b] / carrier).
+
+**V1-3b `counting_tie_chains` · `V1_chains.lean` · easy — NEW UNIT at
+REV 9 (the M-2 split; statements displayed at §2.G's counting-tie
+block).**
+ROSTER (2): `chains_card : Fintype.card (Chains S γ x h) = chainCount
+S γ x h` (induction on γ through Fintype.card_sigma — the rev-7 FIELD
+struck at REV 8); (d) `tgam_eq_chains` — Tgam = Nat.card
+{c // RealizesC TE γ x h c} (Finset.card_bij on tmark's injective
+image). moves_ref: "T_γ(x, h) := #{fresh-assignment chains from x
+realizing (γ, h)}" (V.0, MOVES 7921–7923 — VERBATIM at Tgam, the direct
+chain-set card BY LAW). deps: Defs 2.G. sketch: card bijections;
+induction for chains_card. hyp_fields: TmplEvents ties (carrier).
+
+**V1-3c `counting_tie_last` · `V1_lastTie.lean` · easy — NEW UNIT at
+REV 9 (the M-2 split).**
+ROSTER (3): (e) `tgam_last`(+T twin) — Tgam (.last m) = cntraw
+(tmark_last_surj ∘ tmark_inj: a bijection with the assignment fiber);
+(f) `marks_chains` — Tgam ≤ chainCount (the DERIVED bound: tmark_inj
+into Chains + V1-3b's chains_card). moves_ref: the (vi) mark facts
+(MOVES 8225–8232) at length 1 + the T_γ display. deps: V1-3b.
+sketch: card bijections. hyp_fields: TmplEvents ties (carrier).
 
 **V1-4 `xhds_eval_nonneg` · `V1_xhds.lean` · easy.**
 GIVEN XHDw/XHDd/XHDs: each `Gc γ j` evaluates ≥ 0 at pools (limit of a
@@ -3634,7 +3906,7 @@ V2-5 leg): the path product is THE TABLE POLYNOMIALS' product,
 displayed def of this file over `dataOf`; `.tix` = §2.C's datum index —
 REV 5: the SAME object `ValA.tbl_count` now binds, M-1), CONNECTED to ValA
 and evaluated at q₀.
-REV-4 ROUTE (N-1 ripple): realized-ness now comes from V1-3(b)'s
+REV-4 ROUTE (N-1 ripple): realized-ness now comes from V1-3a(b)'s
 `mem_chainCount_pos` (Mem → 0 < Tgam → marks_chains → 0 < chainCount — the ONE-WAY
 supply), whose positivity decomposes stepwise through the recursion; then
 u_T carries each realized cnt_i(hᵢ) to its base point and `tbl_count`
@@ -3646,7 +3918,7 @@ C_γ(q) = ∏ T given ValA's `T_deg` (Σ W_loc arithmetic), NOT a counting
 inequality with no hypotheses. moves_ref: "(b) CHAIN — GIVEN (XHD-u)'s COUNT
 FACE …: the PER-REPRESENTATIVE linked count from one fixed source
 representative EQUALS the PATH PRODUCT C_γ(q) = ∏ T" (Thm VAL).
-deps: Defs, V1-2, V1-3, V2-4 (for (c)). sketch: as per roster.
+deps: Defs, V1-2, V1-3a, V2-4 (for (c)). sketch: as per roster.
 hyp_fields: XHDu + XHDd (owner [2b]) + MDomTie (the [1v]/[2b] coherence tie,
 displayed); "never proved here" — the unit derives the equality FROM them,
 matching "hypothesized in (XHD-u), never proved here (alternative discharge:
@@ -3758,14 +4030,21 @@ quotiented). moves_ref: "h_ent(ε) := the tuple of ε's RETAINED height data —
 deps: Defs. sketch: `List.map` congruence + a two-read discriminating
 instance. hyp_fields: none.
 
-**V3-3a `spword_def` · `V3_spwordA.lean` · medium — REAL UNIT ID at REV 4
-(Codex-16: the pre-approved split is PROMOTED; the parent V3-3 dissolves
-into a/b/c/d, each one display).**
-`def spWord (n) (P : MovesD.ShapePrefix) : List MovesSp.Species` (fold of
-the stage laws along `P.reads`) + its law: consecutive outputs satisfy
-`MovesSp.SuccStep` when the reads satisfy MovesD's `ShapeWF` stage clauses.
-moves_ref: "ε̊ := ε's height-forgetting TEMPLATE (SP.1 applied to P̂,
-selection data kept)" (V.1(iii)). deps: MovesD.Defs, MovesSp.Defs.
+**V3-3a `spword_exists` · `V3_spwordA.lean` · medium — REAL UNIT ID at
+REV 4 (Codex-16); RE-KEYED at REV 9 (Codex-8 N-3: `spWord` itself is now
+the DISPLAYED §2.D dite/choose def over `SpWordFits` — a Defs-layer
+closed decl, no forward reference; THIS unit owns the theorem that the
+dite PASSES).**
+`theorem spWord_exists (n) (P : MovesD.ShapePrefix) (hWF : MovesD.ShapeWF
+n P) : ∃ ws, SpWordFits n P ws` — existence of the fitting species word
+on WF prefixes (fold of the stage laws along `P.reads`: each read's
+stage fields seed a catalogue member, `SuccStep` from the `ShapeWF`
+stage clauses via the D.5/D.7/D.8 output laws) + the corollary
+`spWord_fits (hWF) : SpWordFits n P (spWord n P)` (the dite's choose,
+unfolded) — the none/[] branch is DEAD at every consumer on the WF
+class. moves_ref: "ε̊ := ε's height-forgetting TEMPLATE (SP.1 applied to
+P̂, selection data kept)" (V.1(iii)). deps: Defs 2.D (spWord/SpWordFits),
+MovesD.Defs, MovesSp.Defs.
 sketch: structural recursion over reads; match `ShapeRead` fields to
 `Species` stage fields via the D.5/D.7/D.8 output laws. hyp_fields: the
 ShapeWF certificate (MovesD's, PROVED apparatus) — no open kernel.
@@ -4107,8 +4386,8 @@ g-summand ALREADY conditional (no re-division — no |α| factor exists).
 moves_ref: "UNIFORMITY CONSUMPTION, displayed at the product (rev 2 —
 findings 2–3: T·G is NOT licit from XHD-w/d alone): the height-resolved row
 is Σ_{h} T(h)·g(h) … = T·Σ_h g(h) is EXACTLY (u-T)" (V.1(iv)).
-deps: V1-6, V1-2, V1-1, V1-3, Defs. sketch: pointwise congr to constant
-count (realizedness across the component from V1-3(b)'s
+deps: V1-6, V1-2, V1-1, V1-3a, Defs. sketch: pointwise congr to constant
+count (realizedness across the component from V1-3a(b)'s
 `mem_chainCount_pos` at length 1 — the REV-4 one-way supply; base-point
 valuation through `MDomTie.mdom_eq`); `HasSum.mul_left`; G := the length-1
 XHD-s component value.
@@ -4253,74 +4532,72 @@ listed); the L5 eligibility roster (MovesD-keyed field). NO MarkDisj
 hypothesis exists any more (C8); the within-cell CARD step V7-6a1 needs
 is the carrier [tie] `evt_disj_assign` (§2.F).
 
-**V4-11 `hmc_typing` · `V4_hmc.lean` · medium — RE-KEYED TO THE PROCESS
-SIDE at REV 4 (N-1: the rev-3 spec was UNSATISFIABLE — with count-keyed
-exactness no false-HMC XHDd existed; Fable N-1's four-line proof. With
-`Tgam`-keyed exactness (REV 7, C6 — the census is free at composites) and
-FREE composite events the toy exists again).**
-The HMC/HMCAug Prop shapes compile against NON-degenerate instances, BOTH
-WAYS — over THE ENRICHED TOY S₂ (REV 8, N2 adjudicated: the rev-7
-PUnit-history toy could not EXPRESS the h₁-split — histOf could not
-separate the refined states, and assign_cover + the REV-8 length-1
-count exactness then forced refined one-step domains full). S₂ :=
-V1-8a's pattern with the intermediate cell's history carrier ENRICHED
-to the h₁ FLAG: `Hist q₀ int := Fin 2`, `ext m₁ x h₁ a := if h₁ = 0
-then 0 else 1` (the flag RECORDS h₁), `zc` at int := (· = 1) — the
-flag-0 history is NOT a (ZC) representative (the note's
-representative-uniformity is exactly what the coupling breaks at the
-h₁ = 0 corner; a toy choice of the zc field, displayed); assignments
-UNIFORM (Fin 1 on the listed domains) as at V1-8a. Legs:
-(i) THE FALSE-HMC TOY — a `TmplEvents` on S₂ with a COUPLED composite:
-the 2-step template's `tevt`/`tinst` empty at the product point
-(h₁, h₂) = (0, 0), = the full Fin-1 box/census 1 on the rest of the
-product domain, while both one-step events are realized there — at
-h₂ = 0 the tail is realized FROM the zc representative flag 1 (the ⊇
-direction of the factorization FAILS; all SEVEN TE ties hold by decide
-(REV 8 roster — Fable7 GAP-2's recount): the coupling lives entirely in
-the free composite data, exactly (HMC-AUG)'s "global cone inequality
-couples successive steps"), with the `XHDd` listing dom(cons) = the
-coupled set, one-step domains full: `HMC TE D` is FALSE, by decide;
+**V4-11 `hmc_typing` · `V4_hmc.lean` · medium — REWRITTEN at REV 9 TO
+THE CENSUS-LEVEL COUPLING (the adjudicated mechanism; Codex-8 N-1
+killed the REV-8 enriched toy: `ext_zc` forces the flag-0 history zc,
+`zc_ne` demands a witness in the refined flag-0 cell — zc cannot carry
+branch memory; §0/§2.G record the adjudication).**
+THE COUPLED TOY S₂ (REV 9): V1-8a's pattern extended by an
+intermediate cell int and a 2-step composite `.cons m₁ (.last m₂)`;
+`zc ≡ true` ON ALL CELLS (both systems — every StepSys law holds
+trivially or by decide: ext_zc/zc_ne/out_ne are immediate at zc ≡
+true); `Hist q₀ int := Fin 2` with `Assign m₁ x h₁ := Fin 2` and
+`ext m₁ x h₁ a := a` (the intermediate history records WHICH first
+assignment was taken — both flags inhabited, zc_ne everywhere);
+tail assignments `Fin 1` on the listed domains, at BOTH flags and
+EVERY h₂ (realizability is history-uniform — with zc ≡ true this is
+FORCED by the history-independent dom + no_stray, and the toy honors
+it). The coupling lives ONLY in the census/event fields. Legs:
+(i) THE FALSE-HMC TOY — a `TmplEvents` on S₂ with the COUPLED
+composite: `tevt`/`tinst` at the 2-step template are EMPTY at the
+product point (h₁, h₂) = (0, 0) and census 1/full box on the rest of
+the product domain, while the PER-STEP censuses are FULL (first step
+census 2 = cntraw by tgam_last; tails census 1) — LEGAL precisely
+because marks do not compose (§2.G: "combinatorial chains need not be
+f-realized"); the marks_chains-consistent coupling signature, checked:
+`chainCount S (cons m₁ (.last m₂)) x (0,0) = 2 > 0 = Tgam` (two
+combinatorial chains exist through the two first assignments; neither
+is f-realized at the coupled point — census empty, bound 0 ≤ 2 ✓).
+All SEVEN TE ties hold by decide (tmark on the composite: empty domain
+at (0,0), the evident chain readings elsewhere; length-1 surjectivity
+onto the Fin-2/Fin-1 assignment fibers). `XHDd`: one-step domains FULL
+(censuses forced = cntraw > 0), dom(cons) = the COUPLED SET (the
+product minus (0,0)) — no_orphan/no_stray by decide; `HMC TE D` is
+FALSE at (m₁, .last m₂, 0, 0): both factors Mem, the composite not.
+By decide — the E-phase gate (§8 roster);
 (ii) V1-8b's toy, where HMC is TRUE — the kernel is a REAL hypothesis,
 satisfiable both ways, provable neither;
-(iii) THE SEPARATION WITNESS, RE-DERIVED at REV 8 (the adjudicated
-check, DISPLAYED): refine int by the flag (`B int := Fin 2`, PUnit
-elsewhere; `S'.Hist q₀ (int, b) := PUnit` with `histOf (int, b) _ :=
-b` — the refining statistic IS a function of the refined history now
-that the coarse carrier retains it); `histFib` = the evident singletons;
-`assign_cover` routes the first assignment by its reading (Fin 1 into
-the matching flag-cell, Empty into the other — a bijection with the
-coarse Fin-1 fiber at every h₁); zc' := zc ∘ histOf. THE CHECK:
-· the h₁ = 0 state's tail domain: dom′(γ′₀) := {h₂ ≠ 0} — EXCLUDES
-  h₂ = 0; its XHDd laws are zc′-VACUOUS at (int, 0) (no zc′ history),
-  and its census is chosen [h₂ ≠ 0], consistent with no_orphan′;
-· the h₁ ≠ 0 state's tail domain: FULL — pinned by the real zc′
-  witnesses (census 1 everywhere via the length-1 exactness);
-· EACH refined composite FACTORS: dom′(cons via b = 0) = {0} × {h₂ ≠ 0},
-  dom′(cons via b = 1) = {h₁ ≠ 0} × full — both products of their
-  one-step domains; refined composite censuses 1 exactly there;
-· the UNREFINED domain does NOT factor (the coupled set ≠ full × full);
-· the FIBER-UNION covers reassemble: at (0, h₂ ≠ 0) coarse census
-  1 = 1 + 0 (b = 0 branch); at (h₁ ≠ 0, h₂) 1 = 0 + 1; at (0, 0)
-  0 = 0 + 0 ✓ — no refined state reproduces the whole coarse event
-  (the rev-7 per-pair obstruction is GONE).
-So S₂ exhibits ¬HMC ∧ HMCAug: ONE round of 𝒞_n refinement restores the
-factorization, exactly the note's HMC-AUG display (MOVES 8213–8221),
-and HMCAug is STRICTLY WEAKER than HMC (V4-13 gives the converse
-direction); + the terminal-final signature
-check: `Template.lastT` instances type against `HMC`'s quantifier (the
-probe's step 2 is a literal instance BY TYPE); + the HONESTY REMARK,
-recorded (from §2.G's underivability audit): the ⊆-flavored fragment at
-single-step tails is derivable GIVEN the mark facts + tevt_last_iff — the
-toy therefore couples ⊇, which is the note's open direction.
+(iii) THE SEPARATION LEG — WITHDRAWN at REV 9. The charge-mandated
+re-walk of the four-point check + cover laws FAILS: with zc' ≡ true,
+tgam_last + assign_cover FORCE every refined one-step census =
+cntraw' > 0 (the coarse assignments are nonempty everywhere, and
+assign_cover partitions them onto the refined fibers), hence refined
+one-step domains FULL; any HMC-satisfying refined XHDd then puts
+(0,0) in some refined composite domain, no_stray' forces that
+composite census positive there, and tinst_cover sums it into the
+coarse census at (0,0) = 0 — contradiction. The full forcing chain
+(with the zc_ne'/ext_zc' steps that close the zc'-freedom escape) is
+DISPLAYED ONCE at §2.G's HMCAug record; ¬HMC ∧ HMCAug is UNWITNESSED
+in-corpus and the chain is the recorded ESCALATION ITEM (a sketch that
+HMCAug ⟺ HMC against this interface — pending ratification; no
+¬HMCAug instance is CLAIMED as proved). V4-13 (HMC ⟹ HMCAug) is
+untouched;
++ the terminal-final signature check: `Template.lastT` instances type
+against `HMC`'s quantifier (the probe's step 2 is a literal instance
+BY TYPE); + the HONESTY REMARK, recorded (from §2.G's underivability
+audit): the ⊆-flavored fragment at single-step tails is derivable
+GIVEN the mark facts + tevt_last_iff — the toy therefore couples ⊇,
+which is the note's open direction.
 moves_ref: "(v) HMC — … OPEN KERNEL, displayed hypothesis … TERMINAL-
 FINAL EXTENSION (rev 4 …): templates INCLUDE those whose FINAL step carries a
 terminal outcome" (V.1(v), MOVES 8198–8213) + the HMC-AUG display
 (8213–8221). deps: Defs 2.G, V1-8a/b.
-sketch: two decide-scale toy models + the Fin-2 refinement construction.
-hyp_fields: none proved ABOUT the CTS
+sketch: two decide-scale toy models (leg (i) fully finite — §8 lists
+its decide roster). hyp_fields: none proved ABOUT the CTS
 instance; HMC itself OPEN (V.5(2)) — "until HMC closes, K_e(p)^k is NOT a
-theorem about the process"; NO ¬HMCAug claim (its falsifiability is OPEN
-— the note's predicted falsifier: R2's wall channel).
+theorem about the process"; NO ¬HMCAug claim asserted as proved (leg
+(iii)'s chain is a recorded sketch, escalated; the note's predicted
+falsifier — R2's wall channel — remains unconstructed).
 
 **V4-13 `hmcaug_of_hmc` · `V4_hmcaug.lean` · medium — NEW UNIT at REV 7
 (round-6 G1: the ~30-line theorem was cited as recorded but had no
@@ -4460,9 +4737,9 @@ THE INDUCTION STEP along γ through `ext`: each step contributes cnt·g by
 REV 4: the per-mark fiber decomposition at REALIZED points rides V5-1's
 census lemma (the (COMP-h) scope guard: h ∈ H(γ), supplied by no_stray →
 0 < Tgam → `treal_iff_tgam` → TReal — REV 7, C6); the count positivity
-along the chain from V1-3(b). NO unguarded
+along the chain from V1-3a(b). NO unguarded
 composite recursion is consumed (none exists — §2.G).
-deps: V5-2a, V5-1, V1-3, V2-5. hyp_fields: as V5-2a + XHD-d (the scope
+deps: V5-2a, V5-1, V1-3a, V2-5. hyp_fields: as V5-2a + XHD-d (the scope
 guard's face).
 
 **V5-2c `comp_h` · `V5_comphC.lean` · medium.**
@@ -4594,7 +4871,8 @@ avoided at the cell layer too). moves_ref: "its ℚ(q)-membership is the NEW
 NAMED burden (J-RAT) (owner [1v]/[2b]: cell-level counts polynomial per the
 (iv)-POLY pattern, XHD-s height sums)" (S.0/CL-18).
 deps: V5-7a, V0-3, V1-4. sketch: per cell: count polynomial (CellPolyPack) ×
-the weight-only XHDsC value; finite cell sum; PolyGeom closure (V3-9c's
+the weight-only XHDsC value; finite cell sum; PolyGeom closure (the §2.H
+`gcell_denom_sum` + V3-9c's add/scalar
 mini-lemmas). hyp_fields: XHD-s cell face ([2b]'s height-sum face) +
 `CellPolyPack` (the per-cell count polynomials — [1v]'s own OPEN face beyond
 the gate blocks; at the gate blocks discharged by V6 data).
@@ -4634,11 +4912,11 @@ REV 4 (eval 2 = 1 vs eval 3 = 4 — the N-2 layer, §2.H). [+T twin over
 GcellT/mdomT.] moves_ref: "by XHD-d's disjointness the finitely many
 component sums ADD EXACTLY to the H(γ)-sum" (XHD-s) + the (iv)-STEP row
 "Σ_h T(h)·g(h) … = T·Σ_h g(h) is EXACTLY (u-T)" (V.1(iv)).
-deps: V2-4, V0-3, V1-2, V1-3, Defs 2.F/2.G/2.H. sketch: Fubini the double
+deps: V2-4, V0-3, V1-2, V1-3a, Defs 2.F/2.G/2.H. sketch: Fubini the double
 (c, h)-sum over nonneg terms (HasSum rearrangement); pointwise
 Σ_{c ∋ h} P_c.eval = Σ_c cntc = cntraw (CellPolyPack.count on the domain +
 XHDdC exactness + the cntc/cntraw partition identity, definitional); then
-cntraw(h) = T.eval across the domain — REV 4 route: u_T + V1-3(b)'s
+cntraw(h) = T.eval across the domain — REV 4 route: u_T + V1-3a(b)'s
 `mem_chainCount_pos` (Mem → count > 0, the one-way supply) + tbl_count at
 base through `MDomTie.mdom_eq` (Codex-5's tie, displayed premise).
 hyp_fields: ValA + (XHD-u) + XHDd + XHDdC + MDomTie + XHD-s (template +
@@ -4802,11 +5080,12 @@ summability derived at V3-8a); ENT-COUNT
 named; INIT-RAT ← XHD shallow +
 (ENT-U) + AffEnt; (iv) ← computed tables / + (XHD-u) / + PART-1's four legs /
 measured ← XHD-w + (U-A) + (XHD-u) / resummed ← XHD-d/s (+ cell face); (v)
-OPEN + (HMC-AUG) separate [REV 6, Fable G-A scope; RE-SCOPED REV 7, C4:
-"separate" = ledger-ROLE (its own named line item, never assumed, never
-conflated) — NOT logical independence: HMC ⟹ HMCAug is the REAL UNIT
-V4-13, and V4-11's coupled toy is the SEPARATION witness the other way
-(¬HMC ∧ HMCAug — no ¬HMCAug claim survives anywhere); the ledger carries
+OPEN + (HMC-AUG) separate [REV 6, Fable G-A scope; RE-SCOPED REV 7, C4;
+RE-SCOPED REV 9: "separate" = ledger-ROLE (its own named line item,
+never assumed, never conflated) — NOT logical independence: HMC ⟹
+HMCAug is the REAL UNIT V4-13; the REV-7/8 "SEPARATION witness the
+other way" is WITHDRAWN (§0/§2.G — the census-coupled toy witnesses
+¬HMC only; no ¬HMCAug claim asserted as proved); the ledger carries
 NO HMC-typed conclusion field — every
 displayed consumer (V7-2a's CompSigma/CompAgg/SolveCond Stmt's, V7-6c's
 hmc leg)
@@ -5687,15 +5966,37 @@ TOTAL field, and empty-mdom outcomes had no supply).** Supplies
 fields `tCount` 413, `tcount_val` 414–415, `scount_val` 416–420,
 `tcount_deg` 425–426, `scount_deg` 429–430 — all grep-verified at HEAD.
 The built type: `tCount : ∀ e (τ : T.State e), T.Out e τ → ℚ → ℕ` —
-ℕ-VALUED, TOTAL over ℚ. THE DEF (a card by construction):
+ℕ-VALUED, TOTAL over ℚ. THE REPRESENTATIVE WRAPPER, displayed (REV 9,
+Codex-8 N-5 = Fable-8 GAP-1: built `MeasuredSide` has only the Type
+field `Rep` and `rep_ne : … → Nonempty (Rep e τ)`; the rev-8 `M.rep`
+named NOTHING — this is slot 12's recorded choice step, now a decl):
+`noncomputable def repD (M : MovesS.MeasuredSide T) (e : ℕ)
+  (he : e ∈ Finset.Icc 1 n) (τ : T.State e) : M.Rep e τ :=
+  (M.rep_ne e he τ).some`
+(at the V7-4a instance `Rep e τ` IS the per-pool zc-history family, so
+`(repD M e he τ) q₀ hq` is the ⟨history, zc⟩ pair — `.1` below; its
+choice is content-free: tcount_val is rep-independent via u_R/ValA).
+THE DEF (a card by construction; TOTAL by three explicit dispatches —
+pool dite, the `e ∈ Icc 1 n` junk-total dite guarding rep_ne's premise,
+and the DISPLAYED continuing/terminal dispatch):
 `tCountV e τ o q₀ := if hq : q₀ ∈ M.Pools then
-  (match (V.mdom (dOf o)).comps with
-   | [] => 0                          -- THE EMPTY-mdom OUTCOME, explicit
-   | comp :: _ => S.cntraw (V.moveOf (dOf o)) ((M.rep e τ) q₀ hq).1
-       comp.base)                     -- cntraw = Fintype.card (Assign …)
+  if he : e ∈ Finset.Icc 1 n then
+    if hco : (C.bd (skOf τ)).cont (mOf o) (oOf o) then
+      (match (V.mdom (dOf o hco)).comps with
+       | [] => 0                      -- THE EMPTY-mdom OUTCOME, explicit
+       | comp :: _ => S.cntraw (V.moveOf (dOf o hco))
+           (((repD M e he τ) q₀ hq).1) comp.base)
+    else                              -- THE +T TWIN ROUTE, displayed:
+      (match (V.mdomT (dTOf o hco)).comps with
+       | [] => 0
+       | comp :: _ => S.cntrawT (V.moveOfT (dTOf o hco))
+           (((repD M e he τ) q₀ hq).1) comp.base)
+  else 0                              -- e ∉ [1, n]: junk-total, NO law
  else 0`                              -- OFF-POOL: value 0, NO law claimed
-(`rep` = the V7-4a per-pool representative family — zc carried; the +T
-twin over cntrawT/mdomT for terminal outcomes). THE LAWS:
+(`dOf`/`dTOf` = V7-4a's outcome→MoveData/TermData one-liners, the cont
+dispatch keyed by `route_cont`'s vocabulary; every built law is
+`∀ q₀ ∈ M.Pools` AND instantiated at e ∈ Icc 1 n — grep-verified — so
+neither junk branch is ever read). THE LAWS:
 · `tcount_val` (AT POOLS): tgP's countT is ValA's table polynomial
   (V7-5a leg (a)), and `ValA.tbl_count` supplies `(C.T … d.tix).eval q₀
   = cntraw` exactly AT the mdom base point at the zc representative —
@@ -5866,10 +6167,11 @@ V6 depends only on DefsGate + 2.A) → V3 → V4 → V5 → V7. The gate layer V
 is deliberately early-buildable: it is the corpus's non-vacuity anchor (the
 sealed numbers re-derived in-kernel before any measured clause elaborates).
 
-**Difficulty census: 98 units = 32 easy / 62 medium / 4 hard (REV 7:
+**Difficulty census: 100 units = 34 easy / 62 medium / 4 hard (REV 7:
 +V4-13 `hmcaug_of_hmc` (G1), +V7-8 `w17ii_wave4` (C14), +V7-9
-`polygeom_count_laws` (GAP-2) — all medium).**
-Per layer: V0[4: 2e/2m] V1[10: 5e/5m] V2[10: 6e/4m] V3[17: 4e/11m/2h]
+`polygeom_count_laws` (GAP-2) — all medium; REV 9: +V1-3b/c, the
+Codex-8 M-2 roster split — both easy).**
+Per layer: V0[4: 2e/2m] V1[12: 7e/5m] V2[10: 6e/4m] V3[17: 4e/11m/2h]
 V4[15: 3e/11m/1h] V5[12: 3e/8m/1h] V6[10: 5e/5m] V7[20: 4e/16m].
 Delta vs rev 3 (82 = 33/43/6), all REV-4 driven: the pre-approved splits
 PROMOTED to real unit IDs (Codex-16) — V3-3 → V3-3a/b/c/d (m/m/m/h),
@@ -5912,9 +6214,9 @@ round, and no slot remains open into E-phase):**
    the TABLE-side recursion is the separate def `chainCount` (through
    `StepSys.ext`); XHDd's EXACTNESS laws quantify over `Tgam` (the
    note's T_γ verbatim — at REV 8 (N1) Tgam EQUALS the direct chain-set
-   card BY LAW, V1-3(d) `tgam_eq_chains` through the `tmark` reading —
+   card BY LAW, V1-3b(d) `tgam_eq_chains` through the `tmark` reading —
    NEVER over `chainCount`, whose tie enters one-way only via the
-   DERIVED `marks_chains` bound (V1-3(f)) feeding V1-3(b)'s
+   DERIVED `marks_chains` bound (V1-3c(f)) feeding V1-3a(b)'s
    `mem_chainCount_pos`); the
    factorization T_γ = ∏ T_step is (u-T)/HMC CONTENT, never
    definitional; any E-phase re-key of exactness to `chainCount` (or any
@@ -5930,7 +6232,9 @@ round, and no slot remains open into E-phase):**
    consumed by V4-1 under the restored active-source guard (C15).
 5. V3-9c's PolyGeom-closure vs OKat-landing route → RESOLVED: the CLOSURE
    route — PolyGeom add/scalar mini-lemmas local to MovesV (no MovesS edit);
-   V3-9c(b)/V5-7b consume them.
+   V3-9c(b)/V5-7b consume them. [REV 9, N-4: the summed-Gcell denominator
+   witness (`gcell_denom_sum` + `gcellDenom`) is HOMED at §2.H — Defs-layer,
+   one home; V3-9c consumes, no longer owns.]
 6. (NEW at REV 3) the u*-slot ℕ-encoding (G-3) → RESOLVED: the slot carries
    zig(gam_r) (`Denumerable.eqv ℤ`); u* is the DISPLAYED gamTie inversion
    (§2.D); recorded with its tighten-at-MovesD hatch.
@@ -6002,7 +6306,7 @@ instance; XHD-w: positive weights are typed data (V0-1) + range lemma V1-1 +
 V1-8a's witness; XHD-u (incl. T-twins): the rectangularity FALSITY witness
 (V1-2(b)) + the (U-A)-does-not-imply-(u-R) fence V1-7 + V1-8a; XHD-d:
 two-sided exactness against the note's OWN T_γ — the process-side mark
-census `Tgam` (V1-3 — the REV-7/C6 slot-2 rule; the recursive
+census `Tgam` (V1-3a/b/c — the REV-7/C6 slot-2 rule; the recursive
 `chainCount` enters ONE-WAY only, via
 `mem_chainCount_pos`; degenerate domains violate no_stray outright)
 [REV 6, Codex5-32's "against the DEFINED counts" strike stands — Tgam is
@@ -6016,13 +6320,15 @@ V1-8b/c — and the count factors live in the [1v] burdens, so no package
 field can silently decide INIT-RAT/(J-RAT) (Codex-8/9); the counting ties:
 realized by V1-8c's literal census data (ent_card/evt_card/box_card/
 stInst_card all checked on the toy); HMC: the false-instance/true-instance
-pair V4-11 + V1-8b (REV 4: BOTH exist again — the false one couples the
-free composite tevt, the ⊇ direction) + V4-12(c)'s fixed-system
+pair V4-11 + V1-8b (REV 9: the false one is the CENSUS-COUPLED toy —
+zc ≡ true, the coupling in the free composite census/event fields, the
+⊇ direction) + V4-12(c)'s fixed-system
 factorization-failure fence + V4-12(b′)'s sum-level coincidence record;
-HMCAug (REV 7, C4): satisfiable non-trivially BOTH relative directions —
-TRUE at the ¬HMC coupled toy (V4-11(iii), the SEPARATION witness) and
-implied by HMC (V4-13); falsifiability OPEN, no ¬HMCAug instance claimed
-(the note's predicted falsifier: R2's wall channel);
+HMCAug (RE-SCOPED at REV 9): satisfiable (implied by HMC at V1-8b —
+V4-13); the REV-7/8 separation witness (¬HMC ∧ HMCAug at the coupled
+toy) is WITHDRAWN — the §2.G forcing chain; no ¬HMCAug instance claimed
+AS PROVED (the chain is a recorded derivation sketch, escalated; the
+note's predicted falsifier: R2's wall channel);
 templates: terminal-final BY CONSTRUCTOR (+ the T-twin fields throughout —
 Codex-2); J: route-keyed roster with the GATE-NONZERO lemma (V5-7a — the
 F-6 emptiness adversary dies) + the not-marked-T·G fence V5-7c; ε:
@@ -6034,7 +6340,7 @@ re-derived (V6-1a..V6-4a) including the m_H3 = 0 falsifier, at all nine
 census points, + the F-1 counting check 128 = (1/4)·512 (ent_card at gate
 B).
 
-**Honest-perimeter recap (what a corpus record may claim when all 98 build):**
+**Honest-perimeter recap (what a corpus record may claim when all 100 build):**
 CTS-M's clauses machine-checked EACH GIVEN EXACTLY its V.1-ledger set
 (V7-2b, conclusions displayed at V7-2a); (U-A) proved given the typed §C
 pack; the V-n3 displays re-derived in-kernel at all nine census points
@@ -6053,13 +6359,18 @@ the ONE banked open leg (C14 — no unconditional marking while it lives).
 CLAUSE (v)'s record in particular: HMC typed, linked, probed by units both
 ways (V4-11/V1-8b), and PROVED BY NOTHING — the REV-4 restoration,
 completed at REV 5 for (HMC-AUG) at the TYPE level (the TE-pinned
-RefEvents form — the rev-4 ∃-form was derivable, M-2) and CORRECTED at
-REV 7 at the RECORD level (C4: V4-11's coupled toy is the SEPARATION
-witness — ¬HMC ∧ HMCAug, one refinement round restoring factorization
-per the note's own display; `HMC ⟹ HMCAug` is the REAL unit V4-13,
-unavoidable for any faithful encoding of the note's conditional; NO
-¬HMCAug claim survives; HMCAug's falsifiability OPEN — R2's wall channel
-the note's predicted falsifier; all harmless while (v) is open). NOTHING
+RefEvents form — the rev-4 ∃-form was derivable, M-2), CORRECTED at
+REV 7 at the RECORD level (C4), and RE-CORRECTED at REV 9: the coupled
+toy is the CENSUS-LEVEL ¬HMC witness (zc ≡ true — the zc route is
+BARRED by ext_zc/zc_ne, Codex-8 N-1, a structural record); the
+REV-7/8 SEPARATION claim (¬HMC ∧ HMCAug at the toy) is WITHDRAWN — the
+§2.G forcing chain shows no refinement of a census-coupled toy
+satisfies HMCAug under the standing laws (a derivation SKETCH that
+HMCAug ⟺ HMC against this interface, ESCALATED, not machine-checked);
+`HMC ⟹ HMCAug` is the REAL unit V4-13, unavoidable for any faithful
+encoding of the note's conditional; NO ¬HMCAug claim asserted as
+proved; HMCAug's falsifiability formally OPEN — R2's wall channel the
+note's predicted falsifier; all harmless while (v) is open. NOTHING
 here is "the density R_σ": every mass is μ̂-typed or counting-native; the
 marked→per-f conversion stays [3t]'s.
 
@@ -6302,7 +6613,7 @@ revision.
 | Codex5-22 (crit) | a split outcome's designated `tgtSk` need not be any roster member's target (`cont_iff` gives only ∃-continuing-member) — `MoveData.tgt`, V7-3a's continuing statuses, and V5-7b's constructed datum can select a successor absent from the DEG-CONS roster | REPAIRED: the BlockData law `omem_sel` (∃ mu ∈ omem, mu.status = Sum.inr (tgtSk m o h) — the designated (D4) target IS a continuing member); `omem_kcol` demoted to the DISPLAYED derived length-1 corollary; V7-3a's odata and V7-6b's kstep_one supply re-cited through `omem_sel` + `omem_size` + `tcellM_tgt` | §2.C, V7-3a, V7-6b |
 | Codex5-23 (crit) | `SelRankTie` ties `MovesD.selRank % m̄` to a rank of (g, μ) PAIRS — but the m̄-menu is the ψ-menu at the read's own (g, μ), so the tie is unsatisfiable with `E8_rankInj` or collapses distinct (side, ψ) selections; V3-1/V5-1 fail post-split label fidelity | REPAIRED — THE RECORDED §2.D HATCH FIRED: `hrank`/`takenGm`/`eligMenu`/`shapeRank` STRUCK (no shape-level (g, μ) enumeration survives); `selRec` = genuine SELECTION DATA (menu-bounded, `hmenu`); the value tie is the DEF `SelMatches` (entry r = `selRank w ν_r % m̄_r` at the r-th branching read's realized node — MovesD's own E9 encoding component, built Defs.lean 528–533, quoted); V3-1(b)/V5-1 consume it DEFINITIONALLY, (side, ψ)-faithful via E7 (< m̄: the collapse is the identity on members) + E8_rankInj; slot 10 OVERTAKEN | §2.D (SelMatches), V3-1, V3-3b, V5-1, §5 slot 10 |
 | Codex5-21 (crit) + prior-4 | `evt_disj_cell`'s dependent key still carries (s, m, o, α), so different continuation outcomes get ordinary-box disjointness — claimed contrary to the note's equal-f-projection permission, making the d4r0 supply "too strong" | NARROWING FINISHED + ADJUDICATED: `stepKey` re-landed in the SOURCE-CELL Σ-carrier `CellOf αc` — literally the frozen `Cell e τ = Σ o, DCellO` shape, so V7-6a2's d4r0 supply is DEFINITIONAL; the MARKS RECORD displayed: continuation-mark multiplicity is `emult`-carried and marked-space-only (a mark is NOT an AStep element — two marks over one assignment are ONE AStep point, so no cross-mark pair is even expressible), while distinct (m, o) at one source are distinct COLLISION-PATTERN f-strata (outcome = f-data), exactly the cross-cell disjointness the FROZEN `d4r0` itself demands over its Σ-outcome Cell type (built Defs.lean 221–223). The auditor disagreement (Codex5-21 vs the Fable-5 F-3 re-walk "suite derivable field-by-field") is adjudicated against the frozen law's own quantifier: any weaker carrier law could not supply it, and no stronger claim than the frozen consumer's is made | §2.F (CellOf/stepKey), V7-6a2 |
-| Codex5-24 (crit) | `RefEvents` does not kill the cooked HMCAug witness: a union-cover equation gives no per-template identification; `refTmpls` may contain multiple refined templates; the TE′ = TE reduction claimed invalid | ADJUDICATED DEAD against the round-5 Fable fresh-instance walk (§A.2, identical text, computed): at the IDENTITY refinement `refTmpls` reduces to the SINGLETON roster (exactly one surviving (β′, m′) per step, through the displayed filterMap — moveProj = id there), so the fold over one term forces TE′ = TE up to boxEq; and non-identity cooking dies at V4-11's coupled toy, where ¬HMCAug is PROVABLE for EVERY refinement (assign_cover partitions each nonempty coarse fiber; tevt_cover forces every refined composite event empty at the coupled point; no_stray fails) [the ¬HMCAug leg of this adjudication OVERTURNED at REV 7, C4 — the refined DOMAINS may exclude the coupled point per refined cell, so no_stray need not fail; the toy is in fact the ¬HMC ∧ HMCAug SEPARATION witness; the singleton-roster/boxEq reduction half STANDS]. The reduction note is now displayed at the def site. The finding's SOUND half — the "NOT a consequence of HMC" record line — is repaired under G-A (the type unchanged) | §2.G (the displayed singleton-roster note), + the G-A row |
+| Codex5-24 (crit) | `RefEvents` does not kill the cooked HMCAug witness: a union-cover equation gives no per-template identification; `refTmpls` may contain multiple refined templates; the TE′ = TE reduction claimed invalid | ADJUDICATED DEAD against the round-5 Fable fresh-instance walk (§A.2, identical text, computed): at the IDENTITY refinement `refTmpls` reduces to the SINGLETON roster (exactly one surviving (β′, m′) per step, through the displayed filterMap — moveProj = id there), so the fold over one term forces TE′ = TE up to boxEq; and non-identity cooking dies at V4-11's coupled toy, where ¬HMCAug is PROVABLE for EVERY refinement (assign_cover partitions each nonempty coarse fiber; tevt_cover forces every refined composite event empty at the coupled point; no_stray fails) [the ¬HMCAug leg of this adjudication OVERTURNED at REV 7, C4 — the refined DOMAINS may exclude the coupled point per refined cell, so no_stray need not fail; the toy is in fact the ¬HMC ∧ HMCAug SEPARATION witness; the singleton-roster/boxEq reduction half STANDS] [REV 9: the separation-witness clause of THAT correction is itself WITHDRAWN — Codex-8 N-1 + the §2.G forcing chain; see §6.8. The original finding's "¬HMCAug provable at the coupled toy" reading is, per the REV-9 sketch, likely CORRECT after all — recorded there, pending ratification]. The reduction note is now displayed at the def site. The finding's SOUND half — the "NOT a consequence of HMC" record line — is repaired under G-A (the type unchanged) | §2.G (the displayed singleton-roster note), + the G-A row |
 | Codex5-25 (crit) | `xrbPackageOf`'s target `MovesS.XRBPackage` is absent from the built E-phase source (Interfaces.lean: §W4-SYNC "NOT built at E-phase"); the four face-law `*_Stmt` bodies schematic | REPAIRED: PROVENANCE corrected — the contract type is frozen at the MOVESS WAVE-4 BLUEPRINT (13 Prop fields; the adapter's roster matches it EXACTLY, per the Fable-5 Codex-11 row check); V7-7 gains the explicit co-build dep (the S-2 re-key is a SEAM-PHASE deliverable; `XHDFrame`/`gProdF`/the four Stmt defs build now, MovesS-free); the four bodies CLOSED — XhdW/XhdD's template legs written out verbatim at F, the law-only faces via EXACT `Nonempty` (XHDu/XHDdC/XHDdEnt carry no data), XhdS's three sum-face triples displayed over `gProdF` | V7-7, §4.2, §4.3-1 |
 | Codex5-26 (gap) | the off-pool-∅ branch asserted FORCED by the unguarded `xhd_no_orphan`; the law constrains off-pool only at h ∉ HDom | REPAIRED at all three sites (the REV-5 record, V7-4a's branch roster, slot 12): FORCED at h ∉ HDom; PERMITTED-AND-CHOSEN at h ∈ HDom (the guarded laws read same-pool components only; d4r0's off-pool instances hold trivially at ∅) — the design stands, the wording overclaimed | REV-5 record, V7-4a, §5 slot 12 |
 | Codex5-27 (gap) | V7-2a's `*_Stmt` bodies are English transcription promises, not Lean terms — quantifiers/hypotheses unauditable | REPAIRED: ALL 24 bodies are now Lean expressions with displayed quantifiers, guards, and premise references; every free name bound by the displayed NAME→HOME table (each a def declared in its home unit's file, upstream of V7-2a in the build order); the two [3]-vocabulary items (EscapeE0Rec/NeumannRec) are V7-2a's own MovesS-citing record defs | V7-2a |
@@ -6345,7 +6656,7 @@ ORCHESTRATOR-ADJUDICATED (bind; rev7 charge on file): C4, C6, C8, C3.
 
 | # | finding (compressed) | disposition | fixed at |
 |---|---|---|---|
-| C4 (crit, ADJUDICATED) + G1 | the rev-5/6 claim "¬HMCAug provable at V4-11's coupled toy for EVERY refinement" is FALSE — refine by whether h₁ = 0: each refined domain FACTORS (Codex's construction, orchestrator-verified); and the cited ~30-line HMC → HMCAug theorem had no unit | REPAIRED: the toy is the SEPARATION WITNESS (¬HMC ∧ HMCAug — one 𝒞_n refinement round restores the factorization, the note's own HMC-AUG display); V4-11 gains leg (iii) (the Fin-2 h₁-reading refinement, displayed); EVERY ¬HMCAug claim STRUCK (header, §0, §2.G, §5; the §6.5 rows and the REV-6 record line bracket-corrected in place); HMCAug's falsifiability recorded OPEN (predicted falsifier: R2's wall channel); derivability-from-XHD-alone now UNCLAIMED either way; `HMC → HMCAug` allocated as the REAL unit V4-13 (identity refinement + singleton-roster covers) | §2.G, V4-11(iii), V4-13, §0, §5 |
+| C4 (crit, ADJUDICATED) + G1 | the rev-5/6 claim "¬HMCAug provable at V4-11's coupled toy for EVERY refinement" is FALSE — refine by whether h₁ = 0: each refined domain FACTORS (Codex's construction, orchestrator-verified); and the cited ~30-line HMC → HMCAug theorem had no unit | REPAIRED: the toy is the SEPARATION WITNESS (¬HMC ∧ HMCAug — one 𝒞_n refinement round restores the factorization, the note's own HMC-AUG display) [the SEPARATION half OVERTURNED at REV 9: C4's construction rode the zc-vacuity mechanism Codex-8 N-1 killed (ext_zc/zc_ne); the withdrawal + forcing chain are §2.G/§6.8 — the V4-13 half STANDS]; V4-11 gains leg (iii) (the Fin-2 h₁-reading refinement, displayed); EVERY ¬HMCAug claim STRUCK (header, §0, §2.G, §5; the §6.5 rows and the REV-6 record line bracket-corrected in place); HMCAug's falsifiability recorded OPEN (predicted falsifier: R2's wall channel); derivability-from-XHD-alone now UNCLAIMED either way; `HMC → HMCAug` allocated as the REAL unit V4-13 (identity refinement + singleton-roster covers) | §2.G, V4-11(iii), V4-13, §0, §5 |
 | C6 (crit, ADJUDICATED) | XHD-d's object was changed: the note DEFINES T_γ directly (MOVES 7921–7923) and states no-orphan/no-stray with T_γ verbatim (7947–7949); rev 6 keyed exactness to `TReal` (event nonemptiness) | REPAIRED: the typed DIRECT-COUNT def `Tgam TE γ x h := (tinst … tmplLvl).card` (the mark census IS the chain count; NOT the recursive product — chainCount stays table-side, the factorization stays (u-T)/HMC content); `XHDd` keyed to `0 < Tgam` two-sidedly VERBATIM; `TReal` DEMOTED derived with `treal_iff_tgam` (V1-3(c), via the new third mark [tie] `marks_realize`); XhdD_Stmt re-keyed; HMC openness VERIFIED preserved (no census recursion at composites; the §2.G audit re-run at the def site) | §2.G (Tgam/XHDd/marks_realize), V1-3, V7-7, §5 slot 2 |
 | C8 (crit, ADJUDICATED) | `MarkDisj`/`MarkDisjT` were OPEN hypotheses on LedgerIV for content the note makes typed/definitional marked-event structure ((iv)-MEAS: the mark is ADJOINED and the summands disjoint IN THE MARKED SPACE) | REPAIRED: V4-10's marked Σ-carrier gains the READING LAW (a mark determines its (m, o, β, height-class) summand — definitional on the carrier); `MarkDisj`/`MarkDisjT` are now V4-10's DERIVED marked-space lemmas (the ruling's naming); the within-cell CARD step V7-6a1 needs is the new CtsMeasured [tie] `evt_disj_assign`(+T) (C.1.5 assignment semantics — the old defs conflated assignments with marks); the hypothesis defs, the LedgerIV premises, and the V7-1/§5 fields all REMOVED; f-event disjointness stays NOT claimed | §2.F, V4-10, V7-6a1, V7-1, §5 |
 | C3 (crit, ADJUDICATED — overruling rev 6) | `tcellM_tgt`'s ∀ i forced EVERY same-skeleton roster member to the designated tcell — unsupported for multi-continuing outcomes | REPAIRED: the ∀-form STRUCK; `tcellM_sel` (CtsFamily): ∃ roster position with the designated target skeleton whose tcellM = tcell — the [tie] survives for THAT member; omem_sel its projection; V7-3a/V7-6b re-cited; n = 3 unaffected (single-continuing) | §2.C, V7-3a, V7-6b |
@@ -6386,7 +6697,7 @@ this revision's governing section/unit.
 | # | finding (compressed) | disposition | fixed at |
 |---|---|---|---|
 | N1 (crit, ADJUDICATED) | `Tgam` only ≤-bounded the note's chain count (`marks_chains` one-way): two realizing chains + a singleton `tinst` passed all three mark facts and both XHDd laws — T_γ not verbatim | REPAIRED: the closed chain carrier `Chains` (+ `chains_card` = chainCount, V1-3(f)-adjacent); the TmplEvents MARK-READING `tmark` + [tie]s `tmark_inj`/`tmark_last_surj`(+T); `RealizesC` (realization = mark-witnessed, the (vi) display typed); the COUNTING TIE displayed — `tgam_eq_chains` (Tgam = Nat.card of the realized chain set, V1-3(d)) and `tgam_last` (= cntraw at length 1, V1-3(e)); `marks_chains` DEMOTED to the derived V1-3(f); NO composite decomposition added (tmark injective-only at .cons); the HMC-closure sweep RE-RUN AND DISPLAYED at the HMC def site (constraint honored: four-line proof blocked both directions, V1-8b/V4-11 bracket preserved) | §2.G (Chains/tmark/RealizesC/counting tie/sweep), V1-3(d–f), V1-8b, §5 slots 2/9 |
-| N2 (crit, ADJUDICATED — revises round-6 C4) | the h₁-split separation inexpressible at the toy as built: per-pair `tevt_cover` forces each refined state to reproduce the WHOLE coarse event; PUnit histories cannot retain h₁ | REPAIRED, two coordinated parts: (a) `tevt_cover`/`tinst_cover` REWRITTEN to the FIBER-UNION form over the new `Refinement.histFib`(+proj/complete) roster — coarse event at (α, x) = union over ALL refined (α′, x′) above it; identity-refinement anti-cook reduction re-walked (histFib singleton ⟹ TE′ = TE unchanged); (b) V4-11 constructs the ENRICHED toy S₂ (int-cell Hist = the h₁ flag; ext records it; zc reads it — flag 0 not a (ZC) representative, displayed choice), separation ¬HMC ∧ HMCAug RE-DERIVED with the full check DISPLAYED (excluded {h₂≠0} tail domain at the h₁=0 state / full at h₁≠0 / both composites factor / the unrefined coupled set does not / covers reassemble 1=1+0, 1=0+1, 0=0+0); V4-13's identity-refinement sketch updated | §2.G (Refinement/RefEvents/HMCAug records), V4-11(i)(iii), V4-13 |
+| N2 (crit, ADJUDICATED — revises round-6 C4) | the h₁-split separation inexpressible at the toy as built: per-pair `tevt_cover` forces each refined state to reproduce the WHOLE coarse event; PUnit histories cannot retain h₁ | REPAIRED, two coordinated parts: (a) `tevt_cover`/`tinst_cover` REWRITTEN to the FIBER-UNION form over the new `Refinement.histFib`(+proj/complete) roster — coarse event at (α, x) = union over ALL refined (α′, x′) above it; identity-refinement anti-cook reduction re-walked (histFib singleton ⟹ TE′ = TE unchanged); (b) V4-11 constructs the ENRICHED toy S₂ (int-cell Hist = the h₁ flag; ext records it; zc reads it — flag 0 not a (ZC) representative, displayed choice), separation ¬HMC ∧ HMCAug RE-DERIVED with the full check DISPLAYED (excluded {h₂≠0} tail domain at the h₁=0 state / full at h₁≠0 / both composites factor / the unrefined coupled set does not / covers reassemble 1=1+0, 1=0+1, 0=0+0); V4-13's identity-refinement sketch updated [part (b) OVERTURNED at REV 9 — Codex-8 N-1: the enriched toy violates ext_zc/zc_ne; replaced by the census-coupled toy (¬HMC only) and the separation withdrawal, §6.8; part (a)'s fiber-union covers STAND (modulo the hb binding fix)] | §2.G (Refinement/RefEvents/HMCAug records), V4-11(i)(iii), V4-13 |
 | N3 (crit) | `entInst`/`entEvt` free fields — `ent_sel`'s sibling disjointness never ties the census to a lands_sel-bounded cut; selection-ignoring tags pass | REPAIRED: §2.E `CutRealization` (census = box-realization of an EntranceCut's accepted set — SelMatches inherited BY TYPE via lands_sel) + the CtsMeasured law `ent_cut` (every NONEMPTY census at a pool has a realization, instance data pinned |F| = q₀; ∅-guard exempts device toys); V3-6/V7-4b now consumers of a typed law | §2.E, §2.F, V1-8c |
 | N4 (crit) | the markReading law absent from the displayed conclusion surface — Meas_Stmt had only point disjointness + EqualProjInstance; MStep/mEvt only table pointers | REPAIRED: `MStep`/`markCard`/`mReading`/`mEvt` DISPLAYED §2.F defs; V4-10 displays the DERIVATIONS (markReading rfl-congruence; MarkDisj by reading; MarkDisj_pt by point; MarkDisjT the terminal corollary; f-fence kept); `Meas_Stmt` gains the reading-law conjunct and re-keys to `MStep L.V` | §2.F, V4-10, V7-2a (Meas_Stmt + name table) |
 | N5 (crit) | `stepKey`'s dependent transport ill-typed: needs `d.2.symm ▸ x`, both branches; castAssignKey bodies undisplayed | REPAIRED: transports corrected both branches; `castAssignKey`/`castAssignKeyT` bodies DISPLAYED (cases d.2; cases hfd — the invFun surjectivity Sigma identity supplied via `Function.invFun_eq`) | §2.F |
@@ -6406,6 +6717,35 @@ the REV-8 sweep at §2.G re-verifies closure under the N1 additions; the
 N2 rewrite touches no swept law's direction. Census unchanged:
 98 = 32/62/4.
 
+### §6.8 DISPOSITION TABLE (round 8 → REV 9 — the CLOSING round)
+
+Codex round-8 verdict (`MOVESV_AUDIT_CODEX8_2026-07-29.md`, REJECT
+6 N / 3 M; §6.7 rows: N1/N4/N5/M2/F-GAP-2/F-GAP-3 PASS, N2/N3/N6/N7/N8/
+M1/F-GAP-1 FAIL) + Fable round-8 verdict
+(`MOVESV_AUDIT_FABLE8_2026-07-29.md`, PASS 0 crit / 1 gap — all 12 §6.7
+rows verified REAL; 25+ manifest rows re-verified at HEAD; its GAP-1 =
+Codex N-5). Orchestrator synthesis (the rev-9 charge PART V, on file): the
+V1 census-coupling adjudication BINDS and supersedes the REV-8 N2
+ruling; both corpora go to E-PHASE after this revision.
+
+| # | finding (compressed) | disposition | fixed at |
+|---|---|---|---|
+| N-1 (crit, ADJUDICATED — the coupling mechanism) | the REV-8 enriched toy violates StepSys's own zc laws: `ext_zc` forces the flag-0 history zc (ext-image of the zc source); the refined flag-0 cell (PUnit, zc' ∘ histOf ≡ false) has no `zc_ne` witness — third witness failure | REPAIRED PER THE ADJUDICATION: V4-11 REWRITTEN to the CENSUS-LEVEL COUPLING — zc ≡ true on all cells (every zc law trivial); coupling ONLY in the free composite census/event fields (tinst/tevt empty at (h₁,h₂) = (0,0), per-step censuses full); the marks_chains-consistent signature chainCount(0,0) = 2 > 0 = Tgam displayed; ¬HMC by decide. THE SEPARATION LEG (iii) WITHDRAWN: the charge-mandated re-walk FAILS — the §2.G forcing chain (assign_cover → tmark_last_surj/tgam_last → no_orphan′ → HMC′ → no_stray′ → tinst_cover, with zc_ne′/ext_zc′ closing the zc′-freedom escape) shows NO refinement of a census-coupled toy satisfies HMCAug; recorded as a derivation SKETCH (HMCAug ⟺ HMC against this interface, with V4-13) + an ESCALATION item; every separation claim bracket-corrected (§0, §2.G, V4-11, §5 ×2, §6.5/§6.6/§6.7 rows, REV-7/8 records); NO false check enters. The unbound `(hb p)` in both cover laws INLINED (congrArg Sigma.fst (cellEq.apply_symm_apply ⟨α, p.1⟩)); the mechanism adjudication recorded at §0 (zc cannot carry branch memory) | §0, §2.G (covers + HMCAug record), V4-11, §5, §6.5–6.7 brackets |
+| N-2 (crit) | `CutRealization` never uses `Pr` — encode untied to the realized fibers; a selection-ignoring tagged census (arbitrary disjoint tags + cardinality-matched cut + arbitrary bijection) passes by type | REPAIRED: the fields `toBox : B → MovesD.Box p m` + `encode_fiber : ∀ i, toBox (encode i) ∈ Pr.fiber i` — each counted tag IS a realized continuation point of its prefix (the note's marked-entrance realization law); toBox deliberately NOT injective (mult ≥ 2 legal); the adversary kill DISPLAYED at the field; ent_cut's comment re-keyed | §2.E, §2.F (ent_cut comment) |
+| N-3 (crit) | the Defs layer unclosed: `spWord`/`IsBranchingLetter`/`letterMenuCard`/`SelfLoopLetter` consumed by `template?`, `speciesTagOf`/`monicTopOf` by `ReadFits` — no closed decls; spWord still owned by downstream V3-3a (forward ref) | REPAIRED: all six DISPLAYED §2.D closed defs (+ `letterMbar`/`SpFitsRead`/`SpWordFits`), declared BEFORE every consumer — the mbar/branchMenuCard mirrors, the SP4 self-loop characterization, the MonicTie-keyed monic bit, and spWord as the checked dite/choose over SpWordFits (the C11 house pattern); V3-3a RE-KEYED to the dite-pass theorem `spWord_exists` + corollary `spWord_fits` | §2.D, V3-3a, §2.J |
+| N-4 (crit) | `gcellDenom` a placeholder with two contradictory homes (§2.H decl vs V3-9c mini-lemma) — neither displayed; jcellPG forward-references it | REPAIRED: ONE home — §2.H displays BOTH the Defs-local sum lemma `gcell_denom_sum` (statement; proof a listed §8 obligation) and the PSigma def `gcellDenom` (choose-triple body); V3-9c/V5-7b re-pointed as consumers; slot 5 updated | §2.H, §5 slot 5, V5-7b |
+| N-5 (crit; = Fable-8 GAP-1) | V7-9's `tCountV` consumes nonexistent `M.rep` (built MeasuredSide has only `Rep` + `rep_ne`); continuing/terminal dispatch prose-only; no manifest row | REPAIRED: the displayed Classical-choice wrapper `repD M e he τ := (M.rep_ne e he τ).some` (slot 12's recorded step, now a decl); tCountV TOTAL by three displayed dispatches (pool dite; `e ∈ Icc 1 n` junk-total dite; the cont/terminal dite with the +T twin branch over cntrawT/mdomT); §7(A) rows added | V7-9, §7 |
+| N-6 (crit) | fresh §2.H type error: `JCells.bcells` declared `(o : C.Outc s m)` — CtsFamily has no Outc | REPAIRED: `(o : (C.bd s).Outc m)` (the route/route_cont carrier), correction comment displayed | §2.H |
+| M-1 (gap) | the EligibleImage-subtype finiteness only a docstring — no typed `Finite` row; "honest card" unsupported | REPAIRED: the TYPED obligation `eligibleImage_finite` displayed at §2.D (proof = a listed §8 obligation, owner V3-1's file); `hcard` STAYS a premise of realized_isSlot | §2.D, §8 |
+| M-2 (gap) | V1-3 owns ≥ 8 lemmas against the ≤ 4-lemma unit rule; census 98 stale | REPAIRED: split V1-3a (exactness/count-supply/treal, 3) / V1-3b (chains_card + tgam_eq_chains, 2) / V1-3c (tgam_last(+T) + marks_chains, 3); census 100 = 34/62/4 propagated (§3 header, layer V1, §5, honest perimeter) | V1-3a/b/c, §3, §5 |
+| M-3 (gap) | manifest inaccuracies: consumedDeltas mis-homed; D4R1_SUM/D0b/D4R4_all rows without real path:line; six §2.D identifiers claimed displayed but absent; M.rep unmapped | REPAIRED: consumedDeltas → MovesS/Defs.lean:613; D4R1_SUM → MovesD/D10_sumLaw.lean:32, D0b_thmCtop (`thmC_top`) → MovesD/D0b_thmCtop.lean:37, D4R4_all → MovesD/D4R4all_wrapper.lean:37 (all grep-verified at HEAD d162af4); rows for every REV-9 identifier (§2.D letter vocabulary, §2.E toBox/encode_fiber, §2.H gcell_denom_sum/gcellDenom, V7-9 repD, §2.D eligibleImage_finite); stamp refreshed | §7 |
+
+FABLE-8 STANDING CHECKS CARRIED: all twelve §6.7 rows verified REAL on
+identical text; the 25+ manifest spot-checks at HEAD; the HMC-closure
+sweep re-armed (the REV-9 toy touches only V4-11's instance data and
+the §2.G records — no swept law's direction changes; the cover-law fix
+binds an identifier, alters no semantics). Census: 100 = 34/62/4.
+
 ## §7 THE CLOSURE MANIFEST (NEW at REV 8 — STANDING RULE)
 
 **The rule (binding on every future revision):** EVERY identifier
@@ -6415,8 +6755,11 @@ document) or (b) a built-source `path:line` — and every (b) entry is
 GREP-VERIFIED against HEAD when the revision is written. This kills the
 recurring prose-as-def class (round-7 N6/N7; round-6 C10/C11/C12) and
 the stale-cite class (GAP-1, F-GAP-3) at once: an identifier with no row
-is a defect BY RULE. Verification stamp for every (b) row below:
-2026-07-29, repo HEAD commit 596967d, `grep -n` on the cited file.
+is a defect BY RULE. Verification stamps: rows below were grep-verified
+2026-07-29 at HEAD 596967d (REV 8, all rows; Fable-8 re-verified 25+ at
+fb98295) and the REV-9 TOUCHED/CORRECTED rows (consumedDeltas,
+D4R1_SUM/D0b_thmCtop/D4R4_all, MeasuredSide.Rep/rep_ne, MonicTie,
+selfloop_iff, ShapeRead.len/mbar) re-verified at HEAD d162af4.
 
 **(A) In-corpus displayed decls (home = the section displaying the
 closed decl; consumed corpus-wide):**
@@ -6426,22 +6769,25 @@ closed decl; consumed corpus-wide):**
 | §2.A | `Hpt`, `Hpt.take`/`drop`/`append`, `SemilinPart` (+ `.comps`/`.Mem`/`.base`), `AffineE`, `IsPP` |
 | §2.B | `StepSys` (+ Cell/Move/MoveT/dim/dimT/Hist/Assign/AssignT/massOf(+T)/cntraw(+T)/ext/zc/zc_ne/cell_ne/out_ne/Pools/pools_ne), `C15Pack`, `XHDw`, `XHDu`, `VLabel` |
 | §2.C | `Skeleton`, `CtsFamily`, `BlockData` (+ Letter/Outc/cont/omem/omem_ne/omem_size/omem_sel/tcellM/tcellM_sel/sizeP/gen/Carrier/evalObs/CellIdx), `MoveData`/`TermData` (+ `.tix`/`.src`/`.tgt`), `TargetIx`, `skBlk`, `OMember` |
-| §2.D | `EntShapeV` (+ hent/hentCode/A/Went/template?), `EligPair`, `IsBranchSlot`, `RealizedBranching`, `realized_isSlot` (REV 8), `branchMenuCard`, `branchingRead?`, `bIdx`, `nodeAt`, `SelMatches`, `zig`, `EntTemplate` (+ entDim/pairSlots/depthSlots), `expandRuns`, `snocP`/`emptyPrefix`/`ReadFits` (REV 8), `readOfLetter?`, `shapeOfSlots?`, `ShapeWFOf`/`EntTiesAt` (REV 8), `writeHeights?`, `instA`, `instHentCode`, `IsBranchingLetter`/`letterMenuCard`/`SelfLoopLetter`/`spWord` (§2.D's template-side defs), `speciesTagOf`/`monicTopOf` (REV 8, tag projections — recorded freedom) |
-| §2.E | `EntranceCut` (+ lands_sel), `iotaCount`, `CutRealization` (REV 8) |
+| §2.D | `EntShapeV` (+ hent/hentCode/A/Went/template?), `EligPair`, `IsBranchSlot`, `RealizedBranching`, `realized_isSlot` (REV 8), `branchMenuCard`, `branchingRead?`, `bIdx`, `nodeAt`, `SelMatches`, `zig`, `EntTemplate` (+ entDim/pairSlots/depthSlots), `expandRuns`, `snocP`/`emptyPrefix`/`ReadFits` (REV 8), `readOfLetter?`, `shapeOfSlots?`, `ShapeWFOf`/`EntTiesAt` (REV 8), `writeHeights?`, `instA`, `instHentCode`, `speciesTagOf`/`monicTopOf`/`SelfLoopLetter`/`letterMbar`/`IsBranchingLetter`/`letterMenuCard`/`SpFitsRead`/`SpWordFits`/`spWord` (REV 9 — the template-side letter vocabulary, DISPLAYED closed defs before every consumer), `eligibleImage_finite` (REV 9 — typed obligation, proof at §8's list) |
+| §2.E | `EntranceCut` (+ lands_sel), `iotaCount`, `CutRealization` (REV 8; REV 9 + `toBox`/`encode_fiber` — the census↔fiber tie) |
 | §2.F | `CtsCells` (+ toStepCells/Box/moveOf(+T)/moveOf_bij(+T)/DCellO/cellOfA(+T)/emult/evtOf(+T)), `AStep`, `CtsCells.CellOf`/`stepKey`/`evtOfStep`, `castAssignKey`/`castAssignKeyT` (REV 8, bodies), `CtsMeasured` (+ evt_disj_cell/evt_card(+T)/evt_disj_assign(+T)/stabLvl(+T)/cdom(+T)/mdom(+T)/activeState/act_size/stLvl/stInst/stInst_card/entDom/entLands/entEvt/entLvl/entInst/ent_card/ent_sel/ent_cut(REV 8)), `cellEvt`(+T), `cntc`(+T), `entCensus`, `instCensus`, `instRealizable`, `EntIx`, `entCount`, `markCard`/`MStep`/`mReading`/`mEvt` (REV 8) |
 | §2.G | `Template` (+ `.D`), `chainCount`, `Chains` (REV 8), `TmplEvents` (+ tevt/tinst/tmplLvl/tmark(REV 8) + the seven ties), `Tgam`, `RealizesC` (REV 8), `TReal`, `XHDd`, `MDomTie`, `gProd`, `XHDs`, `XHDdC`, `XHDsC`, `XHDsEnt`, `Realizable`, `XHDdEnt`, `ιshH`, `XHD`, `HMC`, `castMove`/`castHpt`/`castAssign`/`castMoveT`, `Refinement` (+ histFib/histFib_proj/histFib_complete — REV 8), `refTmpls`, `RefEvents`, `HMCAug`, `AffEnt`, `ObsCheck`, `CofinAct` |
-| §2.H | `RouteTag`, `JCells`, `μcellVal` (REV 8, closed), `Jval`, `jcellPG`/`gcellDenom` (REV 8, closed), `CellPolyPack` |
+| §2.H | `RouteTag`, `JCells`, `μcellVal` (REV 8, closed), `Jval`, `jcellPG` (REV 8, closed), `gcell_denom_sum`/`gcellDenom` (REV 9 — ONE home, statement + choose-triple body; the lemma's proof at §8's list), `CellPolyPack` |
 | §2.I | the DefsGate data (`A2chart`/`A2dom`/`EA2`, `F4`/`F8`/`F9` + inverses, `CoprimeLiftPack`, `reduce2`, the gate rosters `TH3`/`TH12`/…) |
 | V2-5 | `pathProdPoly`, `tblOf`, `dataOf`/`dataOfT` (V7-4a one-liners) |
 | V3-3d | `writeHeights` (the TOTAL unit-layer def, downstream of `writeHeights_total`), `spWord_faithful` |
-| V3-9c | the PolyGeom-closure mini-lemmas (slot 5; `gcellDenom`'s supplier) |
+| V3-9c | the PolyGeom add/scalar closure mini-lemmas (slot 5; REV 9 — CONSUMES §2.H's `gcell_denom_sum`, no longer its home) |
 | V7-2a | the 30 statement names of the NAME→HOME table (each a def in its home unit's file; `MStep`/`mReading`/`mEvt` re-homed §2.F at REV 8) + `EscapeE0Rec`/`NeumannRec` |
 | V7-3c/d | the `*Of` stage-data suppliers (WOf/DOf/ℓOf/gOf/μselOf/W'Of/D'Of/flankCountOf/flankWidthOf/resFactorsOf/selIdxOf/memberOfOf), `tableShapeOf`, `StageLawBurden` |
 | V7-7 | `XHDFrame`, `gProdF`, `XhdW_Stmt`/`XhdU_Stmt`/`XhdD_Stmt`/`XhdS_Stmt`, `xrbPackageOf`, `frameOf`, `cts_counts_stmt`, `Wsh17PackageV` |
-| V7-9 | `tCountV`, `hEmptyT` (REV 8) |
+| V7-9 | `tCountV`, `hEmptyT` (REV 8), `repD` (REV 9 — the rep_ne Classical-choice wrapper; `M.rep` never existed) |
+| V3-3a | `spWord_exists`/`spWord_fits` (REV 9 — the §2.D dite-pass theorems) |
 
 **(B) Built-source identifiers (path:line, all under `lean/LeanUrat/`;
-every line grep-verified 2026-07-29 at HEAD 596967d):**
+every line grep-verified 2026-07-29 — at HEAD 596967d for the REV-8
+rows, at HEAD d162af4 for the rows REV 9 touched or added, per the
+stamp note above):**
 
 | identifier | built home |
 |---|---|
@@ -6458,7 +6804,9 @@ every line grep-verified 2026-07-29 at HEAD 596967d):**
 | `MovesD.EncTargetP` / `encIdx` / the E7 mod-collapse comment | MovesD/Defs.lean:547–549 / 574–582 / 570–573 |
 | `MovesD.RanchImage` / `EligibleImage` / `selRank` | MovesD/Defs.lean:276 / 297–300 / 308–310 |
 | E5 `gmu_le_len` / E6 `eligible_card_le` / E7 `selRank_lt` / E8 `rank_inj` | MovesD/E5_gmuLe.lean:22 / E6_eligibleCard.lean:55 / E7_rankLt.lean:48–49 / E8_rankInj.lean:187 |
-| `D4R1_SUM` / `D0b_thmCtop` / `D4R4_all` | MovesD/D10_sumLaw.lean:32 / D0b_thmCtop.lean / D10_sumLaw.lean (packaging; see file headers) |
+| `D4R1_SUM` / `D0b_thmCtop` (`thmC_top`) / `D4R4_all` | MovesD/D10_sumLaw.lean:32 / MovesD/D0b_thmCtop.lean:37 / MovesD/D4R4all_wrapper.lean:37 (REV 9, M-3 — real path:line each, grep-verified at d162af4) |
+| `MovesD.ShapePrefix.MonicTie` (monicTopOf's key) | MovesD/Defs.lean:134–136 |
+| `MovesSp.selfloop_iff` (SelfLoopLetter's key) | MovesSp/SP4_selfloopChar.lean:69–72 |
 | `MovesC.Node` / `History.snoc` | MovesC/Defs.lean:361 / MovesD/Defs.lean:585 |
 | `MovesS.Qq` / `OKat` / `evalAt` / `PolyGeom` / `PolyGeom.val` / `MuHat` | MovesS/Defs.lean:23 / 275 / 305 / 322–333 / 335 / 570 |
 | `MovesS.TableShape` / `routeOf` / `DegCons` / `MeasuredSide` | MovesS/Defs.lean:66 / 57 / 139 / 149 |
@@ -6467,7 +6815,9 @@ every line grep-verified 2026-07-29 at HEAD 596967d):**
 | `MovesS.RatBurdens` (jPCell/jcell_ok/jcell_interp/jcell_sum 386–395; cellP_count 374; ι_count 361–362) | MovesS/Defs.lean:342+ |
 | `MovesS.PolyGeomLaws` (tCount 413, tcount_val 414–415, scount_val 416–420, tcount_deg 425–426, scount_deg 429–430) | MovesS/Defs.lean:411–430 |
 | `MovesS.KmatHyp` / `Kmat` / `AVAgree` / `DetHyp` / `SCSData` | MovesS/Defs.lean:502 / 507 / 555–558 / 561–563 / 97–139 |
-| `MovesS.LegAgree` / `W17ii` / `legs_read` / `RS4Chain.wsh17_pin` / `consumedDeltas` | MovesS/Interfaces.lean:80–88 / 103–109 / 141–143 / 187–190 / (LegAgree's row context 139–143) |
+| `MovesS.LegAgree` / `W17ii` / `legs_read` / `RS4Chain.wsh17_pin` | MovesS/Interfaces.lean:80–88 / 103–109 / 141–143 / 187–190 |
+| `consumedDeltas` | MovesS/Defs.lean:613 (REV 9, M-3 — the DECL's home; Interfaces.lean:141 is a CONSUMPTION site, not the home) |
+| `MeasuredSide.rep_ne` (repD's key) | MovesS/Defs.lean:164 |
 | `MovesSp.Species` (+ `.tag`/`.sel`/`.e`/`.s0`/`.ell`/`.lam`) / `.wraw` | MovesSp/Defs.lean:37–55 / 59 |
 | `MovesSp.SuccStep` / `InCatalogue` / `collapseRuns` / `EntranceShape` | MovesSp/Defs.lean:119 / 124–125 / 265 / 278 |
 | the N2 device kstep comment (V7-4c's cite) | MovesS/N2Carriers.lean:100–105 (hent := 0 at 118) |
@@ -6479,12 +6829,80 @@ every line grep-verified 2026-07-29 at HEAD 596967d):**
 | `MovesS.XRBPackage` | NOT BUILT — blueprint-frozen contract (MOVESS blueprint, 13 Prop fields); `xrbPackageOf` gated on the wave-4 co-build (V7-7, G2's standing row) |
 | `W17ii` at the chain carriers | built type (above); the PROOF is V7-8's banked sorry |
 | Mathlib/core vocabulary (Finset, Fintype, Nat.card, Nat.pair, Denumerable.eqv, Polynomial, RatFunc, HasSum, Function.invFun/`invFun_eq`, Equiv, ZMod, List.*, Classical) | Mathlib at the pinned toolchain (lean/lean-toolchain; cache-verified builds) — one blanket row, per the rule's spirit (project identifiers are the defect class) |
-| `speciesTagOf`/`monicTopOf` (§2.D), `skBlk`'s projection pointer | recorded E-phase freedoms (§2.J residual list; §5 slots) — each a one-token projection with its tighten-at-source hatch |
+| `speciesTagOf`/`monicTopOf` (§2.D — DISPLAYED at REV 9), `skBlk`'s projection pointer | the tag-granularity/tighten-at-source hatches stay RECORDED at the decls (§2.J residual list; §5 slots); the defs themselves are closed |
+| `gcell_denom_sum` (§2.H) + `eligibleImage_finite` (§2.D) | displayed STATEMENTS whose proofs are the two Defs-local E-phase obligations, listed at §8 — not banked sorries, not silent |
+| the HMCAug forcing chain (§2.G record) | a derivation SKETCH, escalated to the orchestrator — CONSUMED BY NOTHING, CLAIMED AS PROVED NOWHERE |
 
-*(End of MOVESV blueprint REV 8. Next per campaign §3 + the audit-budget
-policy: dual round-8 audit of this revision (Fable fresh instance + Codex
-per-item, BOTH against the post-ratification corpora at HEAD, §7's
-manifest in hand), REJECT loops until ACCEPT; then E-phase —
-build order Defs → DefsGate → V0 → V1 → {V2, V6} → V3 → V4 → V5 → V7,
-with V7-7's xrbPackageOf leg gated on the MovesS wave-4 co-build and
-V7-8's W17ii sorry the one banked open leg.)*
+## §8 E-PHASE HANDOFF (NEW at REV 9 — the closing charge's V4)
+
+Per the round-8 orchestrator synthesis: no further full markdown audit
+rounds; the COMPILER is the closure arbiter, the toys become
+decide-checkable Lean, and the dual ratification runs on the AS-BUILT
+statements (the MovesS/MovesD precedent).
+
+**(1) Units.** 100 = 34 easy / 62 medium / 4 hard (§3; §5 census).
+Build order: Defs → DefsGate → V0 → V1 → {V2, V6} → V3 → V4 → V5 → V7.
+HARD set unchanged: V3-3d, V3-5a, V4-6b, V5-2b. WATCH list §5.
+
+**(2) Decide obligations (the toy gates — finite, in-kernel).**
+- V4-11(i), the CENSUS-COUPLED toy S₂ (fully finite): all StepSys laws
+  at zc ≡ true (ext_zc/zc_ne/out_ne/cell_ne/pools_ne trivial or
+  decide); the SEVEN TmplEvents ties on the toy data; the coupling
+  signature `chainCount (cons m₁ (.last m₂)) x (0,0) = 2 ∧
+  Tgam TE (cons …) x (0,0) = 0`; XHDd no_orphan/no_stray on the coupled
+  set; the gate `¬ HMC TE D` — each `by decide` (V4-11's decide budget,
+  §5 WATCH).
+- V1-8a/b/c witness stack: unchanged decide rosters (incl. ent_cut's
+  ∅-guard exemption and, NEW, the vacuity of `encode_fiber` at the ∅
+  census).
+- V6 gate layer: the nine census points via F4/F8/F9 (V6-1c/V6-3b);
+  the V-n3 displays (V6-1a..V6-4b); m_H3 = 0; gate B's 128 = (1/4)·512.
+- NO decide check is claimed for HMCAug at the toy (an ∃ over all
+  refinements — not decide-shaped); the §2.G forcing chain is the
+  recorded escalation item, and E-phase MAY probe its finite fragments
+  (e.g. the forced-full refined one-step domains) by decide.
+
+**(3) Instance-plumbing obligations (typed, listed, owner-tagged).**
+- `gcell_denom_sum` (§2.H, Defs-local): RatFunc denominator-of-sum
+  bookkeeping (denom_add_dvd + Finset induction + lcm-into-union).
+- `eligibleImage_finite` (§2.D, owner V3-1's file): inject the monic
+  degree-g census subtype into (Fin (g+1) → F).
+- `repD` consumption (V7-9): at the V7-4a instance `Rep e τ` unfolds to
+  the per-pool zc-history family (slot 12) — the `.1`/`.2` reads must
+  elaborate at that instance; tcount_val's rep-independence via
+  u_R/ValA.
+- V7-4a's dite pair (slot 15's dimension branch; slot 12's off-pool ∅).
+- The F4/F8/F9 `Decidable` instances (§5 WATCH) + the ratCast default
+  fields (slot 14).
+- V6-4c's `CoprimeLiftPack` (typed premise; Mathlib Hensel archaeology
+  or published-axiom fallback per campaign §4 — flag before declaring).
+
+**(4) Disclosed open boundaries (what E-phase does NOT close).**
+- V7-8's W17ii sorry-gate: the ONE banked sorry (C14) — the [3t]-owned
+  per-shape assembly half; no unconditional marking while it lives.
+- The tCount identification via ValA (V7-9's recorded duty): tCountV =
+  the realized event counts THROUGH tbl_count (base points) + u_T
+  across domains (MDomTie) + evt_card — theorem-under-burdens, never
+  self-supplied; `hEmptyT` a displayed [1v] table-build clause.
+- The open hypothesis set (riding as typed arguments, §5 honest
+  perimeter): XHD all faces, (XHD-u), (ENT-U), ENT-COUNT, INIT-RAT
+  premises, (J-RAT) cell pack, (ii-c), CL-13-coverage, ContTwo,
+  StageLawBurden, MDomTie, MarkFiberTie, HMC.
+- THE HMCAUG ESCALATION ITEM (REV 9): the §2.G forcing chain — a
+  derivation sketch that ¬HMC → ¬HMCAug against this interface (with
+  V4-13: HMCAug ⟺ HMC). Pending orchestrator adjudication: either a
+  cover/exactness law is re-keyed for refined systems (fresh audit) or
+  the record stands and the note's strictly-weaker HMC-AUG reading is
+  recorded as unencoded. Until adjudicated: HMCAug consumed by nothing,
+  assumed nowhere, claimed neither way beyond V4-13.
+- `MovesS.XRBPackage` NOT BUILT: `xrbPackageOf` + the S-2 re-key are
+  seam-phase deliverables gated on the wave-4 co-build (V7-7).
+- V3-3d (the reconstruction bridge) is the pre-declared E-phase RISK;
+  its escalation hatch is recorded at §2.D.
+
+*(End of MOVESV blueprint REV 9 — the closing revision. Next per the
+round-8 orchestrator synthesis: E-PHASE (this §8 in hand; the compiler
+arbitrates closure; the dual ratification runs on the AS-BUILT
+statements), with V7-7's xrbPackageOf leg gated on the MovesS wave-4
+co-build, V7-8's W17ii sorry the one banked open leg, and the HMCAug
+escalation item on the orchestrator's queue.)*
