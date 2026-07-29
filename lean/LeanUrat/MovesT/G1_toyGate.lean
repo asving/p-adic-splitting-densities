@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.HC2.U31_gateReadsOf
 
 /-! # T-G1 `toy_treeExp_gate` [split G1a/G1b] — the two pinned toy carriers (§T-G1's
 REV-8 full-roster tables) + the gate battery (DO-3). GATE ARCHITECTURE (REV 2, Fable
@@ -33,13 +34,153 @@ namespace LeanUrat.MovesT
 
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
+/-! #### toyStage proof infrastructure (P-phase fill, 2026-07-29): TRANSPORT of the
+BUILT `LeanUrat.MovesJ.U31.bStage : Stage 2 F4` (the HC2/U31 (1,1)-diagonal Gauss
+stage at Φ = X — the 600-line precedent the docstring below cites) along the
+coefficient-field isomorphism `↥K2 ≃+* ↥(⊤ : Subfield (ZMod 2))`. The w-side laws
+(hwmul/hwult/hvalgrp/hK1/hStretch/hWS) copy VERBATIM — the valuation `bw` is
+unchanged; the R-side laws push through the induced Laurent-ring isomorphism `ΛT`.
+Helper defs/lemmas only; no blueprint statement is touched. -/
+section ToyStageTransport
+
+open LeanUrat.MovesJ.U31 in
+private lemma ρ₁_bij : Function.Bijective (ρ₁ : ZMod 2 →+* ↥K2) := by
+  refine ⟨ρ₁.injective, fun x => ?_⟩
+  obtain ⟨z, hz⟩ := RingHom.mem_fieldRange.mp x.2
+  exact ⟨z, Subtype.ext hz⟩
+
+open LeanUrat.MovesJ.U31 in
+/-- the two-element coefficient isomorphism `↥K2 ≃+* ↥(⊤ : Subfield (ZMod 2))`. -/
+private noncomputable def κT : ↥K2 ≃+* ↥(⊤ : Subfield (ZMod 2)) :=
+  (RingEquiv.ofBijective ρ₁ ρ₁_bij).symm.trans Subfield.topEquiv.symm
+
+open LeanUrat.MovesJ.U31 in
+/-- the induced Laurent-polynomial ring isomorphism. -/
+private noncomputable def ΛT :
+    LaurentPolynomial ↥K2 ≃+* LaurentPolynomial ↥(⊤ : Subfield (ZMod 2)) :=
+  AddMonoidAlgebra.mapRingEquiv ℤ κT
+
+private lemma ΛT_apply (x : LaurentPolynomial ↥LeanUrat.MovesJ.U31.K2) :
+    ΛT x = AddMonoidAlgebra.mapRingHom ℤ (κT : ↥LeanUrat.MovesJ.U31.K2 →+* _) x := by
+  rw [show (AddMonoidAlgebra.mapRingHom ℤ (κT : ↥LeanUrat.MovesJ.U31.K2 →+* _))
+      = ΛT.toRingHom from (AddMonoidAlgebra.toRingHom_mapRingEquiv κT).symm]
+  rfl
+
+private lemma ΛT_C_T (c : ↥LeanUrat.MovesJ.U31.K2) (k : ℤ) :
+    ΛT (LaurentPolynomial.C c * LaurentPolynomial.T k)
+      = LaurentPolynomial.C (κT c) * LaurentPolynomial.T k := by
+  rw [← LaurentPolynomial.single_eq_C_mul_T, ← LaurentPolynomial.single_eq_C_mul_T,
+    ΛT_apply, AddMonoidAlgebra.mapRingHom_single]
+  rfl
+
+private lemma ΛT_T (k : ℤ) :
+    ΛT (LaurentPolynomial.T k) = LaurentPolynomial.T k := by
+  have h := ΛT_C_T 1 k
+  rw [map_one] at h
+  simpa using h
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+/-- `bStage`'s residual laws, restated at the `bw`/`bR`/`K2` phrasing (term-level
+defeq — `bStage`'s fields ARE these values). -/
+private lemma bR0' : bR 0 = 0 := bStage.hR0
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bRne' : ∀ f, f ≠ 0 → bR f ≠ 0 := bStage.hRne
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bRmul' : ∀ f g, f ≠ 0 → g ≠ 0 → bR (f * g) = bR f * bR g := bStage.hRmul
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bRadd' : ∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → bw f = bw g →
+    bw (f + g) = bw f → bR (f + g) = bR f + bR g := bStage.hRadd
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bRlt' : ∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → bw f < bw g →
+    bR (f + g) = bR f := bStage.hRlt
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bRX' : bR Polynomial.X = LaurentPolynomial.T 1 := bStage.hRΦ
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bS5' : ∀ B, B ≠ 0 → inC Polynomial.X B →
+    ∃ c : (↥K2)ˣ, bR B = LaurentPolynomial.C (c : ↥K2)
+      * LaurentPolynomial.T (-(0 : ℤ) * bw B) := bStage.hS5
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bS6a' : ∀ ν : ℤ, ν ∈ bStage.weightSet →
+    ∃ b : (↥K2)ˣ, ∀ c : (↥K2)ˣ, ((c : ↥K2) : F4) ∈ K2 →
+      ∃ B, B ≠ 0 ∧ inC Polynomial.X B ∧ bw B = ν ∧
+        bR B = LaurentPolynomial.C ((c * b : (↥K2)ˣ) : ↥K2)
+          * LaurentPolynomial.T (-(0 : ℤ) * ν) := bStage.hS6a
+
+open LeanUrat.MovesJ LeanUrat.MovesJ.U31 in
+private lemma bS6b' : ∀ (ν : ℤ) (a : (↥K2)ˣ), bw Polynomial.X < ν →
+    ∃ B, B ≠ 0 ∧ inC Polynomial.X B ∧ bw B = ν ∧
+      bR B = LaurentPolynomial.C (a : ↥K2)
+        * LaurentPolynomial.T (-(0 : ℤ) * ν) := bStage.hS6b
+
+end ToyStageTransport
+
 /-- the level-0 stage of `polTriv`'s run over K = ZMod 2 — OPEN construction
 obligation (the `bStage` precedent: Gauss valuation + residual apparatus, HC2/U31).
 The §T-G1 read-surface obligation is `card ↥toyStage.K = 2` (`toyStage_card` below). -/
-noncomputable def toyStage : Stage 2 (ZMod 2) := sorry
+noncomputable def toyStage : Stage 2 (ZMod 2) :=
+  open LeanUrat.MovesJ.U31 in
+  { e := 1, h := 1, s := 1, t := 0,
+    he := le_refl 1, hh := le_refl 1, hcop := by norm_num, hbez := by norm_num,
+    he1t := fun _ => rfl,
+    Φ := Polynomial.X,
+    hmonic := monic_X,
+    hdeg := le_of_eq natDegree_X.symm,
+    w := bw, wPrev := bw,
+    K := ⊤, FQ := ⊤, hFQ_le := le_rfl,
+    R := fun f => ΛT (bR f),
+    hwmul := bStage.hwmul,
+    hwult := bStage.hwult,
+    hvalgrp := bStage.hvalgrp,
+    hwΦ := bStage.hwΦ,
+    hStretch := bStage.hStretch,
+    hR0 := by rw [bR0', map_zero],
+    hRne := fun f hf h0 =>
+      bRne' f hf (ΛT.injective (h0.trans (map_zero ΛT).symm)),
+    hRmul := fun f g hf hg => by rw [bRmul' f g hf hg, map_mul],
+    hRadd := fun f g hf hg hfg hw hw' => by rw [bRadd' f g hf hg hfg hw hw', map_add],
+    hRlt := fun f g hf hg hfg hlt => by rw [bRlt' f g hf hg hfg hlt],
+    hRΦ := by rw [bRX', ΛT_T],
+    hK1 := bStage.hK1,
+    hS5 := fun B hB hin => by
+      obtain ⟨c, hc⟩ := bS5' B hB hin
+      refine ⟨Units.map (κT : ↥K2 →+* _).toMonoidHom c, ?_⟩
+      rw [hc, ΛT_C_T]
+      rfl,
+    reps := [], hreps := by simp,
+    Tvec := [], hTvec := rfl,
+    weightSet := bStage.weightSet,
+    hWS := bStage.hWS,
+    hS6a := fun ν hν => by
+      obtain ⟨b, hb⟩ := bS6a' ν hν
+      refine ⟨Units.map (κT : ↥K2 →+* _).toMonoidHom b, fun c _hc => ?_⟩
+      obtain ⟨B, hB, hin, hw, hR⟩ :=
+        hb (Units.map (κT.symm : ↥(⊤ : Subfield (ZMod 2)) →+* ↥K2).toMonoidHom c)
+          (SetLike.coe_mem _)
+      refine ⟨B, hB, hin, hw, ?_⟩
+      rw [hR, ΛT_C_T]
+      congr 2
+      rw [Units.val_mul, map_mul]
+      congr 1
+      exact κT.apply_symm_apply _,
+    hS6b := fun ν a hν => by
+      obtain ⟨B, hB, hin, hw, hR⟩ :=
+        bS6b' ν (Units.map (κT.symm : ↥(⊤ : Subfield (ZMod 2)) →+* ↥K2).toMonoidHom a) hν
+      refine ⟨B, hB, hin, hw, ?_⟩
+      rw [hR, ΛT_C_T]
+      congr 2
+      exact κT.apply_symm_apply _ }
 
 /-- the ONE non-literal pin's displayed read-surface obligation (§T-G1). -/
-theorem toyStage_card : Nat.card ↥toyStage.K = 2 := by sorry
+theorem toyStage_card : Nat.card ↥toyStage.K = 2 := by
+  rw [show toyStage.K = (⊤ : Subfield (ZMod 2)) from rfl,
+    Nat.card_congr Subfield.topEquiv.toEquiv, Nat.card_zmod]
 
 /-- the char-2 identity in the stage's residue field (a subfield of ZMod 2). -/
 theorem toyK_two_eq_zero : (2 : ↥toyStage.K) = 0 := by
@@ -90,7 +231,9 @@ noncomputable def toyHead : Node 2 (ZMod 2) :=
     he := le_refl 1, hh := le_refl 1, hcop := by norm_num,
     hbez := by norm_num, hbezCanon := by norm_num,
     hg := le_refl 1, hμ := by norm_num, hEdvd := one_dvd 2,
-    hDwidth := by sorry,
+    hDwidth := by
+      rw [show toyStage.Φ = (Polynomial.X : Polynomial ℤ_[2]) from rfl,
+        Polynomial.natDegree_X],
     hψmonic := monic_X_sub_C 1, hψdeg := natDegree_X_sub_C 1,
     hψirr := irreducible_X_sub_C 1,
     hRanch := by
@@ -132,7 +275,9 @@ noncomputable def toyLeafA : Node 2 (ZMod 2) :=
     he := le_refl 1, hh := by norm_num, hcop := by norm_num,
     hbez := by norm_num, hbezCanon := by norm_num,
     hg := le_refl 1, hμ := le_refl 1, hEdvd := one_dvd 1,
-    hDwidth := by sorry,
+    hDwidth := by
+      rw [show toyStage.Φ = (Polynomial.X : Polynomial ℤ_[2]) from rfl,
+        Polynomial.natDegree_X],
     hψmonic := monic_X_sub_C 1, hψdeg := natDegree_X_sub_C 1,
     hψirr := irreducible_X_sub_C 1,
     hRanch := by
@@ -174,7 +319,9 @@ noncomputable def toyLeafB : Node 2 (ZMod 2) :=
     he := le_refl 1, hh := by norm_num, hcop := by norm_num,
     hbez := by norm_num, hbezCanon := by norm_num,
     hg := le_refl 1, hμ := le_refl 1, hEdvd := one_dvd 1,
-    hDwidth := by sorry,
+    hDwidth := by
+      rw [show toyStage.Φ = (Polynomial.X : Polynomial ℤ_[2]) from rfl,
+        Polynomial.natDegree_X],
     hψmonic := monic_X_sub_C 1, hψdeg := natDegree_X_sub_C 1,
     hψirr := irreducible_X_sub_C 1,
     hRanch := by
