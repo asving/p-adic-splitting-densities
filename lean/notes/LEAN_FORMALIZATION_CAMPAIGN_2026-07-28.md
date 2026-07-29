@@ -470,3 +470,25 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   IN FLIGHT (wf_3f2a523d-0d0): REV-8 writers (both corpora) + repair round
   3 (D2 two-option digit-law design; the additive note-faithful
   mult_sum_opt; the D11a manifest fix).
+  REV 8 COMPLETE ON BOTH CORPORA + ROUND 8 LAUNCHED (2026-07-29). The T
+  writer's first attempt died on an API 500 mid-write (partial edits
+  REVERTED — clean provenance over salvage); the re-run landed. REV-8
+  discoveries beyond the charges (the closure-manifest rule paying off
+  immediately): (T) the toys CANNOT satisfy child_cover — computed, so the
+  W4-1 installation became the honest two-tier CellData/CellAssign split
+  (gates stay toy-witnessed at CellData; the five consumers demand the
+  full CellAssign where the constant-false model is IsEmpty; the
+  consumers-without-toys boundary disclosed); rev-7's ψ=X toy pin was
+  UNSATISFIABLE in the built Node for three independent reasons (fixed
+  with the ψ=X−C1 lawful package + a 22-field proof walk); ramIdx/resDeg
+  had been E-phase names since REV 4 — now closed over Mathlib's
+  ramificationIdx/inertiaDeg. (V) the manifest caught a false rev-7 claim
+  (no ShapePrefix.snoc in built MovesD). CONFIRM-3: the D2 thread CLOSED
+  at the vocabulary boundary — Codex itself concedes the residual-level
+  pin is the expressible maximum; the (S6b') slot selection is the NAMED
+  W4-5 discharge duty (owner HC-1); CD_canonical carries the
+  canonical-up-to-residue scope in its docstring; mult_sum_opt CONFIRMED.
+  Round 8 dual audits IN FLIGHT (Codex t8/v8 detached + Fable
+  wf_6ddb1a99-313): per-row verification incl. recomputing the toy
+  child_cover failure and the separation four-point check, ≥15
+  closure-manifest entries grep-verified per leg, fresh sweeps.
