@@ -1,0 +1,437 @@
+{
+ "corpus": "MovesV — MOVES §V-TABLES (CTS state space, tables, CTS-M)",
+ "blueprint": "lean/notes/MOVESV_LEAN_BLUEPRINT_2026-07-28.md (REV 9)",
+ "phase": "E-PHASE (statements + sorry bodies; Defs sorry-free)",
+ "date": "2026-07-29",
+ "defs_layer": {
+  "Defs.lean": "sections 2.A-2.H, GREEN, zero sorry, zero axioms (incl. PROVED gcell_denom_sum, omem_kcol, realized_isSlot, refTmpls, coverFn transports)",
+  "DefsGate.lean": "section 2.I, GREEN, zero sorry (F4/F8/F9 kernel-decided; A2 chart/domain/weight; rosters; CoprimeLiftPack; censusQ nine points)"
+ },
+ "units_total": 100,
+ "units_landed": 100,
+ "sorried_declarations": 86,
+ "banked_sorry": "V7_w17ii.lean w17ii_wave4 clause (ii) — the ONE [3t]-owned banked sorry (C14); every other sorry is an E-phase statement body awaiting the prover pass",
+ "conditionality_banner": "per blueprint §0: XHD faces/(ENT-U)/ENT-COUNT/INIT-RAT premises/(J-RAT) pack/(ii-c)/ContTwo/StageLawBurden/MDomTie/MarkFiberTie/HMC ride as typed hypothesis structures/arguments; HMC open kernel (no unit proves it, none assumes it); HMCAug consumed by nothing (verdict (A): separation obligation withdrawn, V4-11 leg (iii) carries NO proof obligation); MovesS.XRBPackage NOT BUILT (V7-7's xrbPackageOf gated on wave-4 co-build)",
+ "units": {
+  "V0-1": [
+   "V0_affine.lean",
+   "PROVED"
+  ],
+  "V0-2": [
+   "V0_linset.lean",
+   "PROVED"
+  ],
+  "V0-3": [
+   "V0_partition.lean",
+   "sorry-stmt"
+  ],
+  "V0-4": [
+   "V0_xhds_witness.lean",
+   "sorry-stmt (EA2_seal decided)"
+  ],
+  "V1-1": [
+   "V1_xhdw.lean",
+   "PROVED"
+  ],
+  "V1-2": [
+   "V1_xhdu.lean",
+   "PROVED (incl. the else-false witness)"
+  ],
+  "V1-3a": [
+   "V1_xhdd.lean",
+   "PROVED (xhdd_exact, treal_iff_tgam outright; mem_chainCount_pos modulo V1-3c)"
+  ],
+  "V1-3b": [
+   "V1_chains.lean",
+   "chainsFintype instance PROVED; chains_card/tgam_eq_chains sorry-stmt"
+  ],
+  "V1-3c": [
+   "V1_lastTie.lean",
+   "sorry-stmt"
+  ],
+  "V1-4": [
+   "V1_xhds.lean",
+   "PROVED (gProd_nonneg + eval nonneg)"
+  ],
+  "V1-5": [
+   "V1_discharge.lean",
+   "PROVED"
+  ],
+  "V1-6": [
+   "V1_UA.lean",
+   "PROVED (+T twin)"
+  ],
+  "V1-7": [
+   "V1_fence.lean",
+   "sorry-stmt"
+  ],
+  "V1-8a": [
+   "V1_witnessA.lean",
+   "sorry-stmt (∃-form)"
+  ],
+  "V1-8b": [
+   "V1_witnessB.lean",
+   "sorry-stmt (∃-form)"
+  ],
+  "V1-8c": [
+   "V1_witnessC.lean",
+   "sorry-stmt (∃-form)"
+  ],
+  "V2-1": [
+   "V2_skeleton.lean",
+   "(a) PROVED; (b) sorry-stmt"
+  ],
+  "V2-2": [
+   "V2_cells.lean",
+   "PROVED (Fintype instance + deleted_empty)"
+  ],
+  "V2-3": [
+   "V2_meet.lean",
+   "PROVED"
+  ],
+  "V2-4": [
+   "V2_valA.lean",
+   "structure landed (statement unit; gate deferred to V6)"
+  ],
+  "V2-5": [
+   "V2_valB.lean",
+   "dataOf/tblOf/pathProdPoly/Wtmpl defs landed; 3 lemmas sorry-stmt"
+  ],
+  "V2-6": [
+   "V2_audit.lean",
+   "sorry-stmt + AuditedEntry carrier"
+  ],
+  "V2-7": [
+   "V2_val1.lean",
+   "cells partition PROVED; fiber counts sorry-stmt"
+  ],
+  "V2-8": [
+   "V2_anchor.lean",
+   "PROVED"
+  ],
+  "V2-9": [
+   "V2_degcons.lean",
+   "degcons_of_roster PROVED; gate decide deferred (omem rosters)"
+  ],
+  "V2-10": [
+   "V2_bounds.lean",
+   "sorry-stmt"
+  ],
+  "V3-1": [
+   "V3_eps.lean",
+   "(a)+(b) PROVED; eligibleImage_finite (§8 obligation) sorry-stmt"
+  ],
+  "V3-2": [
+   "V3_hent.lean",
+   "PROVED"
+  ],
+  "V3-3a": [
+   "V3_spwordA.lean",
+   "spWord_fits PROVED modulo spWord_exists (sorry)"
+  ],
+  "V3-3b": [
+   "V3_spwordB.lean",
+   "template_total sorry; total template DECLARED"
+  ],
+  "V3-3c": [
+   "V3_spwordC.lean",
+   "sorry-stmt"
+  ],
+  "V3-3d": [
+   "V3_spwordD.lean",
+   "HARD: 3 sorry-stmt; total writeHeights DECLARED"
+  ],
+  "V3-4": [
+   "V3_tfin.lean",
+   "sorry-stmt"
+  ],
+  "V3-5a": [
+   "V3_instbijA.lean",
+   "HARD: sorry-stmt"
+  ],
+  "V3-5b": [
+   "V3_instbijB.lean",
+   "sorry-stmt"
+  ],
+  "V3-5c": [
+   "V3_instbijC.lean",
+   "sorry-stmt"
+  ],
+  "V3-6": [
+   "V3_iota.lean",
+   "(a)/(b) sorry-stmt; (c) iota_d10_tie PROVED (direct MovesD.D4R1_SUM cite)"
+  ],
+  "V3-7": [
+   "V3_aggfin.lean",
+   "CutsDisj/unionCut defs PROVED-landed; agg lemma sorry-stmt"
+  ],
+  "V3-8a": [
+   "V3_aggfullA.lean",
+   "sorry-stmt"
+  ],
+  "V3-8b": [
+   "V3_aggfullB.lean",
+   "iotaShV/iotaValV defs landed; sorry-stmt"
+  ],
+  "V3-9a": [
+   "V3_entcount.lean",
+   "EntCount def landed (statement unit)"
+  ],
+  "V3-9b": [
+   "V3_entu.lean",
+   "EntU def landed; corollary PROVED"
+  ],
+  "V3-9c": [
+   "V3_initrat.lean",
+   "sorry-stmt"
+  ],
+  "V4-1": [
+   "V4_act.lean",
+   "no_entry sorry-stmt; iota_supp PROVED"
+  ],
+  "V4-2": [
+   "V4_tri.lean",
+   "sorry-stmt (row-vanishing premise form)"
+  ],
+  "V4-3": [
+   "V4_agree.lean",
+   "ActiveValueAgree def landed"
+  ],
+  "V4-4": [
+   "V4_krow.lean",
+   "PROVED (rfl — entry factors through (tau,beta))"
+  ],
+  "V4-5": [
+   "V4_step.lean",
+   "sorry-stmt"
+  ],
+  "V4-6a": [
+   "V4_part1A.lean",
+   "DCellAll/cdomAllMem/muCellH defs + leg carriers landed; sorry-stmt"
+  ],
+  "V4-6b": [
+   "V4_part1B.lean",
+   "HARD: sorry-stmt"
+  ],
+  "V4-6c": [
+   "V4_part1C.lean",
+   "sorry-stmt"
+  ],
+  "V4-7": [
+   "V4_part2.lean",
+   "markedRow/terminalRow/surplusRow defs landed; sorry-stmt"
+  ],
+  "V4-8": [
+   "V4_n3surplus.lean",
+   "ContTwo def landed; general lemma sorry-stmt; gate decide deferred"
+  ],
+  "V4-9": [
+   "V4_rep.lean",
+   "measuredRow def landed; sorry-stmt"
+  ],
+  "V4-10": [
+   "V4_meas.lean",
+   "(a) markReading PROVED; (b)/(b')/(d) sorry-stmt; (c) PROVED from (b')"
+  ],
+  "V4-11": [
+   "V4_hmc.lean",
+   "NOT-HMC GATE: sorry-stmt (see deviations D11); terminal-final typing example PROVED"
+  ],
+  "V4-12": [
+   "V4_naming.lean",
+   "Factorizes/UpgradeOnlyIf defs landed; (b') sum_not_membership PROVED (machine-checked coincidence); (a)/(c) sorry-stmt"
+  ],
+  "V4-13": [
+   "V4_hmcaug.lean",
+   "sorry-stmt"
+  ],
+  "V5-1": [
+   "V5_event.lean",
+   "MarkFiberTie def landed; census lemma PROVED (projection)"
+  ],
+  "V5-2a": [
+   "V5_comphA.lean",
+   "CompCarrier/compLvl landed; sorry-stmt"
+  ],
+  "V5-2b": [
+   "V5_comphB.lean",
+   "HARD: sorry-stmt"
+  ],
+  "V5-2c": [
+   "V5_comphC.lean",
+   "muHatVal/iotaEps defs landed; sorry-stmt"
+  ],
+  "V5-3": [
+   "V5_shadow.lean",
+   "entCountPolyC/cshadowPoly defs landed; sorry-stmt"
+  ],
+  "V5-4": [
+   "V5_comphs.lean",
+   "gcVal def landed; sorry-stmt"
+  ],
+  "V5-5": [
+   "V5_compsig.lean",
+   "stepProdVal def landed; sorry-stmt"
+  ],
+  "V5-6": [
+   "V5_compagg.lean",
+   "aggMass def landed; sorry-stmt"
+  ],
+  "V5-7a": [
+   "V5_jdef.lean",
+   "PROVED (jval_once rfl + jval_out)"
+  ],
+  "V5-7b": [
+   "V5_jrat.lean",
+   "sorry-stmt (incl. per-cell clause + symbolic fiber sum)"
+  ],
+  "V5-7c": [
+   "V5_jfence.lean",
+   "j_marked_split PROVED; strict-excess sorry-stmt"
+  ],
+  "V5-8": [
+   "V5_cellrefine.lean",
+   "gcellVal def landed; sorry-stmt"
+  ],
+  "V6-1a": [
+   "V6_a1poly.lean",
+   "PROVED (PART-1 polynomial identity + degrees)"
+  ],
+  "V6-1b": [
+   "V6_a1eval.lean",
+   "PROVED (m_H3 row all nine + falsifier + universal sum row; partial other rows)"
+  ],
+  "V6-1c": [
+   "V6_a1census.lean",
+   "char-free classifier defs landed; census sorry-stmt (decide budget not spent — D11)"
+  ],
+  "V6-2a": [
+   "V6_a2dom.lean",
+   "(c) PROVED; (a)/(b) sorry-stmt"
+  ],
+  "V6-2b": [
+   "V6_a2wt.lean",
+   "PROVED (chart eval, sealed point (4,1)/E=7, division-free 2E = 3(h0+h2)-1, TA2 evals)"
+  ],
+  "V6-3a": [
+   "V6_bpoly.lean",
+   "PROVED (PART-1 + degrees + Tw2/Tvv ties)"
+  ],
+  "V6-3b": [
+   "V6_bcensus.lean",
+   "classifier defs landed; census sorry-stmt"
+  ],
+  "V6-4a": [
+   "V6_gateB.lean",
+   "PROVED (all four rosters: mass 1/32, shadow 16/128, ledger, Ient≠|beta0| fence)"
+  ],
+  "V6-4b": [
+   "V6_gate2h.lean",
+   "PROVED (ZMod-2 coincidence + inventory displays)"
+  ],
+  "V6-4c": [
+   "V6_gateN.lean",
+   "multiplier PROVED + hOf-spec projection PROVED; hensel rides as typed CoprimeLiftPack premise"
+  ],
+  "V7-1": [
+   "V7_ledger.lean",
+   "CtsmLedger record landed"
+  ],
+  "V7-2a": [
+   "V7_ctsmDefs.lean",
+   "20 *_Stmt defs + CtsmConclusions landed (see D14)"
+  ],
+  "V7-2b": [
+   "V7_ctsm.lean",
+   "capstone ctsM sorry-stmt"
+  ],
+  "V7-3a": [
+   "V7_ts.lean",
+   "sorry-stmt (existence form — D13)"
+  ],
+  "V7-3b": [
+   "V7_tsGate.lean",
+   "sorry-stmt"
+  ],
+  "V7-3c": [
+   "V7_scsData.lean",
+   "sorry-stmt"
+  ],
+  "V7-3d": [
+   "V7_stageLaw.lean",
+   "StageLawBurden type landed (abstract-T form)"
+  ],
+  "V7-4a": [
+   "V7_msA.lean",
+   "sorry-stmt (existence form — D13)"
+  ],
+  "V7-4b": [
+   "V7_msB.lean",
+   "sorry-stmt"
+  ],
+  "V7-4c": [
+   "V7_msC.lean",
+   "sorry-stmt (k=0 Kronecker clause in statement)"
+  ],
+  "V7-5a": [
+   "V7_rbA.lean",
+   "per-cell countS=1 clause PROVED (rfl); rest at V7-5c"
+  ],
+  "V7-5b": [
+   "V7_rbB.lean",
+   "PROVED conditional on V3-9c's initRat_comp"
+  ],
+  "V7-5c": [
+   "V7_rbC.lean",
+   "cell_ne_inst + assembly sorry-stmt"
+  ],
+  "V7-6a1": [
+   "V7_livA1.lean",
+   "sorry-stmt"
+  ],
+  "V7-6a2": [
+   "V7_livA2.lean",
+   "ent_count_card PROVED (rfl); gate number 128=(1/4)*512 PROVED; d4r0 PROVED (carrier cite)"
+  ],
+  "V7-6b": [
+   "V7_livB.lean",
+   "xhd_sum PROVED (HasSum.mul_left); comp_once sorry-stmt"
+  ],
+  "V7-6c": [
+   "V7_livC.lean",
+   "sorry-stmt"
+  ],
+  "V7-7": [
+   "V7_seam.lean",
+   "XHDFrame/gProdF/XhdW_Stmt/XhdU_Stmt/XhdD_Stmt/XhdS_Stmt/frameOf/cts_counts_stmt/Wsh17PackageV ALL LANDED (MovesS-free, per §8: xrbPackageOf gated on the MovesS wave-4 XRBPackage co-build)"
+  ],
+  "V7-8": [
+   "V7_w17ii.lean",
+   "THE W17ii SORRY-GATE at the BUILT type: clause (i) PROVED (wsh_ok/wsh_interp); clause (ii) = THE ONE BANKED [3t] SORRY (C14); wsh17_pin projection PROVED"
+  ],
+  "V7-9": [
+   "V7_pgLaws.lean",
+   "repD DISPLAYED (N-5); HEmptyT displayed; tCountV with the THREE dispatches DISPLAYED; PolyGeomLaws supply sorry-stmt"
+  ]
+ },
+ "deviations": [
+  "D1 (Defs §2.B/§2.C): mixed bare+parenthesized binders illegal in Lean 4 — out_ne/∃-binders bracketed; omem_kcol proof re-routed around a dependent-rewrite motive (content identical).",
+  "D2 (Defs §2.F): the blueprint's in-structure `d.2 ▸` transports fail motive computation — replaced by the NAMED cast wrappers castMove/castMoveT (the §2.G helpers HOISTED before CtsCells); the subtype predicates' `d.1.s` (a blueprint typo inside binders) corrected to `d.s`.",
+  "D3 (Defs §2.F ent_sel): the sibling census read at ε's OWN defining level (the ε'-level literal was type-heterogeneous; siblings share the template level by design).",
+  "D4 (Defs §2.F ent_cut): instance-carrying existentials written @-explicitly (Fact/Field/Finite bound as named witnesses).",
+  "D5 (Defs §2.G Refinement): split into RefinementCore + Refinement; assign_cover/assign_coverT stated via the CLOSED CoverDom/coverFn (the blueprint's inline castHpt pseudo-display realized as the coverDim equality chain); histFib_proj in cast form, histFib_complete in the blueprint-sanctioned ∃/HEq form; assignOf's height transport via castHpt (uniform).",
+  "D6 (Defs §2.D): ε̊ (combining ring) is not a valid Lean identifier — renamed εT throughout; zig marked noncomputable abbrev.",
+  "D7 (Defs §2.H): gcell_denom_sum PROVED here (via RatFunc.denom_dvd common-denominator route + sup/biUnion class bound) — the §8-listed Defs-local obligation is DISCHARGED; eligibleImage_finite stated in V3_eps.lean per §8 (owner V3-1's file), sorry-typed.",
+  "D8 (DefsGate): field tables in ![...] vec-notation (nested List.get does not elaborate); Field instances via Field.ofMinimalAxioms with per-law `by decide` (the pinned Mathlib demands the smul/qsmul recursor fields otherwise); speciesTagOf lands in MovesC.ReadSpecies (its true home; blueprint wrote MovesD.ReadSpecies).",
+  "D9 (DefsGate): the gate letters' OUTCOME-MEMBER ROSTERS (omem list literals) are DEFERRED to the V6/V2-9 prover pass — they need concrete catalogue Skeleton members (prose-specified in the blueprint, not displayed code); dependent gate decide legs (V2-9(a), V4-8(a), V5-7a's nonzero check, V7-3b/c gate decides) ride the same deferral.",
+  "D10 (units, global): per the E-phase charge, units land as STATEMENTS + sorry bodies; 86 sorried declarations (census above), Defs/DefsGate ZERO sorry. Proved-outright units incl. V0-1/2, V1-1/2/3a/4/5/6, V2-2/3/8, V3-1(a,b)/2/6(c)/9b, V4-1(iota_supp)/4/10(a)/12(b'), V5-1/7a/7c(split), V6-1a/1b/2b/3a/4a/4b/4c(multiplier), V7-5a/5b/6a2/6b(xhd_sum)/7/8(clause i).",
+  "D11 (decide roster): LANDED in-kernel: EA2 seal (E=7 at (4,1)), gate-B dyadics (1/4, 1/32, 16/128, 128=(1/4)*512), the ZMod-2 two-history coincidence, the V4-12(b') sum-level coincidence (list-inequality by decide), the terminal-final HMC-quantifier typing example, F4/F8/F9 finite-field laws (all by decide over the tables). NOT YET machine-checked: V4-11(i)'s census-coupled ¬HMC toy (hmc_false_witness/coupling_signature sorry-typed: the domain-exactness legs quantify over infinite Hpt and are NOT decide-shaped — the toy needs a short constructive build, top of the prover queue), V1-8a/b/c witness stack, the V6-1c/V6-3b nine-point censuses (classifiers landed char-free; kernel budget not spent).",
+  "D12 (V2-5/V5 NAME→HOME): pathProdPoly/tblOf/Wtmpl are V-keyed (an abstract move's datum is recovered through moveOf_bij; the blueprint's `pathProdPoly C γ` notation cannot read moves from C alone); chain_resolved stated as representative-independence (the per-step hProd product presentation deferred to the prover).",
+  "D13 (V7-3/V7-4/V7-5c/V7-6a1/6c): the seam INSTANCE constructions land as existence-with-clauses sorry-statements (theorem-under-data), not as instance defs — the field-by-field builds (tableShapeOf's odata casts, the per-pool Rep family, the double-dite cellEvt, kstep) are prover duties; §8(3)'s instance-plumbing obligations recorded open except gcell_denom_sum (PROVED) and repD (DISPLAYED).",
+  "D14 (V7-2a): 20 of the 24 *_Stmt bodies transcribed at the built unit-level objects; Tri/StepRow/CountShadow/CompHSum fold into the unit files' own statements (V4_tri/V4_step/V5_shadow/V5_comphs) rather than ledger-level defs; SolveCond_Stmt's Neumann leg reduced to the DetHyp conjunct (NeumannRec needs the [3]-owned spectral vocabulary).",
+  "D15 (V4-6/V4-7): PART-1's four legs land in HEADLINE structure form (P1CtblAdd/P1NullRem/P1FixedHeightExact over the displayed muCellH carrier; leg (a) totality is carried BY TYPE by cellOfA) — full field-by-field typing is the prover's first V4 task.",
+  "D16 (V5-2): the composite marked-event VALUES ride the typed data pack CompCarrier (muHatN/iotaN + the |Box| normalization law) — the entrance-extended-history event carrier is V7-4a's instance duty.",
+  "D17 (V3-3d): spWord_faithful stated at the uncollapsed word + (h, zig gam) slot lists (the collapsed+depth-slot form is recoverable; escalation hatch per §2.D stands).",
+  "D18 (V4-3): ActiveValueAgree lands as the all-active per-pool package existence shape (4 parameters, matching V7-2a's AVRec_Stmt consumption); the AVAgree clause binds at the ledger's own solve objects in the prover pass."
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "campaign": "MOVES §T-ASSEMBLY (branch-to-tree mass assembly) — wave-4 Lean E-phase",
+ "source": "lean/notes/MOVEST_LEAN_BLUEPRINT_2026-07-28.md REV 9 (CLOSING; ground truth MOVES_2026-07-24.md §T-ASSEMBLY rev 7, dual-accepted 2026-07-27)",
+ "ephase": "2026-07-29 (Fable). Defs.lean GREEN with ZERO sorry/axioms (1590 lines, every §2 displayed def in the §2.5 normative declaration order, §2.11 closure supplements hoisted). All 55 §3 units compile (lake build of all 56 modules green, 8672 jobs); statements elaborated verbatim modulo the recorded deviations. 80 declarations carry sorry (statement bodies + G1b obligations); the prove-now set is discharged as itemized below. No axioms anywhere in the corpus; every fully-proved capstone checked to the Lean-core footprint {propext, Classical.choice, Quot.sound} (spot: nsNull_of_pricing_growth, preHalt_prunedMem, rootSplit_exists, vtree_pathOrder, ns_lump).",
+ "preamble": "Every unit file: `import Mathlib`, `import LeanUrat.MovesT.Defs` (+ named intra-corpus deps), `open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD`, `namespace LeanUrat.MovesT`; linter.style.longLine/unusedVariables/unusedSectionVars false, maxHeartbeats 1000000. Build per file with `lake env lean` or `lake build LeanUrat.MovesT.<Unit>` (MovesT is OUTSIDE the root import graph, like OM/RealInstance).",
+ "section_binder": "{p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] {n N m : ℕ} {pol : CanonPolicy p F}",
+ "consumed": "MovesD.Defs + MovesD.NPv_npid (D7 only), MovesSp.Defs, MovesS.Interfaces + MovesS.EvalReDef (transitively MovesS.Defs — LedgerIV), HC2.Defs (ReadsOf) — all BUILT, imported by name; frozen corpora untouched",
+ "prove_now_discharged": {
+  "T-V1 vd_deg_hen": "PROVED",
+  "T-V2 vd_deg_ns": "PROVED",
+  "T-C3 ns_lump": "PROVED (antitone + intersection identity from vanish/interior_mono/tie)",
+  "T-C4 ns_ladder": "PROVED (p>1 squeeze, Lean-core)",
+  "T-C8 ns_tree_bound": "PROVED (fiberAt leaf clause)",
+  "T-F0 preHalt_prunedMem": "PROVED IN FULL incl. the mem_of_prefix snoc-iteration helper and history_ext",
+  "T-D8 vtree_pathOrder": "PROVED (all four order laws)",
+  "rootSplit_exists (T-E5)": "PROVED (head-grouping construction: partition/roster/injectivity/nonemptiness/coverage from Tr's own structure)",
+  "nsNull_of_pricing_growth (Defs §2.10)": "PROVED IN DEFS (the T1 pure-analysis leg; zero sorry)",
+  "constFalse_childCover_false / constFalse_no_cellAssign (T-D2)": "BOTH PROVED (the installed W4-1-layer rejection, fence-free)",
+  "T-D12 package defs": "ALL DEFINITIONAL, ZERO SORRY (XRBPackage/RS1GivenPackage/Wsh17Package + rs1GivenOfMovesT/RS1GivenHolds/xrbOfMovesT/wsh17OfMovesT/w1mObligation)",
+  "gates T-G1/T-G2": "PARTIAL — see decide_obligations"
+ },
+ "bonus_proved": "T-V5 tau_disjoint; T-V6 tau_total (both halves from the KBTot bundle); V8.acc_pos; C1.tbcap_hen + redPoly_congr (locality face); S1 sibCount_pair_form; S3 sib_root_instance; E1 jcRoot_partition; E4 jcMulti_branching; F1 oneF (via E9's statement); F4.belowHalt_empty_shape (mult_empty_shape BY NAME + PrefIdx emptiness); D1 all three eligibleT theorems; D2 no_childless_vacuity + cellOf_nonconstant; D3 vdict_cell_of_child_cell + vModelOf's data fields incl. vdict_irr/vdict_ns/rootVdict_law; D4 cellLevel_local_sound; D5 d4rcyl_canonical; D6 cfw_canonical (RunKey+EtaLoc chain); D9 all four Countable instances; D13 treeIfaceCore all five law fields; D14 readLedgerOf_bdy (rfl-level (BDY) split); D15 w3_rekey_typed (rfl); G1 toy literals' proof fields (see decide_obligations)",
+ "decide_obligations": {
+  "DO-1": "PARTIAL — the six HISTORY pins land as structure literals via THREE distinct Node literals (toyHead = tAν₁ = tBν₁, toyLeafA = tAνa = tBνc, toyLeafB = tAνb = tBνd: the REV-8 tables' data columns coincide across carriers — recorded). Every DATA field is the table literal; proof fields PROVED per literal EXCEPT hDwidth (needs the σ pin): he/hh/hcop/hbez/hbezCanon/hg/hμ/hEdvd/hψmonic/hψdeg/hψirr/hRanch/hpat0/hpatTop/hAnchor/hLineU/hOrd (the full ψ-order walk via the char-2 identities toyK_*)/hzbarRoot/hspecInc/hspecRec/hspecRecCenter all green. OPEN: toyStage (the level-0 Stage 2 (ZMod 2) — the bStage precedent HC2/U31 is a ~600-line Gauss-valuation sub-project; single sorry) + toyStage_card (the §T-G1 read-surface obligation) + hDwidth×3. Histories tA1/tA2a/tA2b/tB1/tB2c/tB2d built via oneNode/snoc with proved species facts.",
+  "DO-2": "PARTIAL — RejectsRootOnlyChildless is the displayed decl (D2, with the χ parameter made explicit); toySplitB/toyTracksA (t=1 data fields explicit, hinj proved)/toyLedgerA/toyVdict (closed τ-emission body)/polTriv (COMPLETE, see IP-4)/toyHcrA (proved rfl) landed; toySplitB/toyLedgerA bodies + toyTracksA laws sorried (G1b).",
+  "DO-3": "OPEN — the gate battery (toy_gate, toy_sib, toy_e5_instance, toy_jcmulti_site, toy_state_cell, toy_henflip_unrealizable (REV-9 hv argument supplied in the statement), toy_v8_wchain/toy_v8_monic (record histories sorried), toy_oneF, toy_belowHalt_pos (REV-9 roster, expected value 2), toy_vdict_nonconstant, toy_fiber_ne) is STATED and sorried: per the gate architecture no decide fires on Set/History-quantified Props — the finite surrogates + hand bridges are the next dedicated unit of work. DAY-ONE duty carried in G1's header."
+ },
+ "instance_plumbing": {
+  "IP-1": "NOT DISCHARGED — `IsLocalRing (AdjoinRoot g)` for monic irreducible g over ℤ_p not attempted beyond the honest dite/junk-total `ramIdx`/`resDeg` displayed in Defs §2.7 (landed exactly as the blueprint displays; Ideal.ramificationIdx/inertiaDeg elaborate projection-style in the pinned Mathlib — see deviations). The real-branch dispatch stays a §9 obligation row.",
+  "IP-2": "DISCHARGED where needed — ToyCell derives DecidableEq + a hand Fintype instance; Node/History comparisons in the toy tables go through `open Classical in` (recorded), never a fake derive.",
+  "IP-3": "NO List.toFinset used anywhere — the displayed List fold forms stand (SideSplit.hpartition membership set; transportedLevels foldr); no DecidableEq (LevelClause p m) demanded.",
+  "IP-4": "DISCHARGED IN FULL — the built CanonPolicy carries exactly {liftOf, blind} (MovesD/Defs 345); polTriv := {liftOf := fun _ => X, blind := fun _ _ => rfl} is total, NO residual field, no deviation needed."
+ },
+ "boundaries_carried": "B-1 (F1 ten-pin joint witness: no instantiating toy for the five full-CellAssign consumers — nothing here claims one); B-2 (G1b: mem_realizable's transition legs sorried + disclosed in toyModel/toyModelB comments); B-3 (hRes exactness scoped to lawful histories — docstring carried in Defs); B-4 (open seam legs NsPricing/NsGrowth stated as OPEN defs, never proved; SIB/JC-multi/HistLawful/KBTot family/HC-2 faces all hypothesis-only, none in the proof set)",
+ "deviations": [
+  "E-DEV-1 (Defs.EntSt): the entrance carrier takes the instance binders [Fact p.Prime] [Field F] [Finite F] — the .st constructor stores a History; blueprint signature had none.",
+  "E-DEV-2 (Defs.readOf): the built ShapeRead demands hDw (1 ≤ Dwidth); the value carries the THIRD junk guard Dwidth := max ν.Dwidth 1, dead on the lawful domain (root Φ-degree 1 + the Dwidth chain), same genre as the two displayed guards. junkRead supplies the blueprint's `default` (Inhabited ShapeRead).",
+  "E-DEV-3 (Defs.stateTruncAt/nsTruncAt): junk-total dite on N₀ ≤ N' — the blueprint's `Jat N' _` needs the tower bound; every consumer quantifies ∀ N' h, so the ∅ junk branch is never read on the lawful domain.",
+  "E-DEV-4 (Defs ReadsOf name): the built name is LeanUrat.MovesJ.ReadsOf — HC2/Defs.lean declares namespace LeanUrat.MovesJ; the blueprint's LeanUrat.HC2.ReadsOf does not exist. Same definition site (HC2/Defs.lean:283), imported by name.",
+  "E-DEV-5 (Defs.ramIdx/resDeg): Ideal.ramificationIdx and Ideal.inertiaDeg are projection-style in the pinned Mathlib (no algebraMap argument; inertiaDeg over the AdjoinRoot Algebra instance) — the blueprint's displayed extra argument dropped; dite dispatch byte-faithful otherwise.",
+  "E-DEV-6 (Defs.levelIdx): the implicit n is not inferable from the argument; use sites pass it by name (levelIdx (n := n) c).",
+  "E-DEV-7 (Defs classical plumbing): stripAbove (decide on Node inequality), trackDeg (IsPrefixOf ite), chainReads (chain-membership ite), bandFresh/bandLevels (bandS filter), M₀ (pinnedOnState filter), ClassTree (Finset.image needs DecidableEq on the sigma address type) — all via `open Classical in`, recorded; Node/History/EtaData carry no DecidableEq.",
+  "E-DEV-8 (Defs.WithBot): the blueprint's `.unbot' 0` is `WithBot.unbotD 0` in the pinned Mathlib.",
+  "E-DEV-9 (D11.fibOf): the carrier lives in D11_fibOf.lean, NOT Defs.lean — its hclosed/hleaf/hns_leaf proof fields genuinely require hrep/hri content and carry the unit's sorries; the zero-sorry Defs rule forces the hoist reversal. leafV's unique-entry lookup lands as a classical choice on the ∃-form.",
+  "E-DEV-10 (D12/D15): the blueprint's binder name Π' is a reserved token; renamed Pi'.",
+  "E-DEV-11 (Defs.TreeIfaceCore): Tree/TNode fields are Type* — the blueprint's Type cannot host ↥𝒯 over the standing F : Type* binder.",
+  "E-DEV-12 (D13.treeIfaceCore): TNode := Option (the family's chain carrier) with the root as `none` — 'Node := chains+root' per the blueprint's own sketch; a bare chain carrier cannot satisfy path_refl ∧ finN ∧ node_ne simultaneously (empty-chain trees). All five law fields PROVED at this carrier.",
+  "E-DEV-13 (S2): the falsifier's chart is the size-2 identity toyχ2 — the blueprint reuses the name toyχ whose T-G1 type is Fin 2 → Fin 9 (box size 9); the S2 statement's box is size 2.",
+  "E-DEV-14 (G1): the six node pins reduce to three literals (data columns coincide across carriers — tAν₁ = tBν₁ etc., recorded as abbrevs); tB1/tB2c/tB2d are the same History values as tA1/tA2a/tA2b (the CARRIERS differ in their models toyModel/toyModelB, not in the node data).",
+  "E-DEV-15 (D2.RejectsRootOnlyChildless): the bracket-note predicate is declared with the chart χ explicit (the fiberAt rejection is χ-keyed); D2's toy ∃-statement instantiates it at toyχ.",
+  "E-DEV-16 (V3): the hzip inner binders are type-annotated (s : MovesSp.Species etc.) — bare binders could not elaborate s.sel.",
+  "E-DEV-17 (E8/E10/E11/D12.xrbOfMovesT hjcm rows): the multiSites membership hypothesis is named (hH : H ∈ multiSites …) and the splitAt chain-membership argument is hH.1 — the blueprint's ‹H ∈ Tr.chains› anonymous-hypothesis form, made explicit."
+ ],
+ "counts": {
+  "files": 56,
+  "defs_lines": 1590,
+  "units": 55,
+  "units_by_layer": {"V": 9, "C": 8, "S": 3, "E": 13, "F": 5, "D": 15, "G": 2},
+  "sorry_declarations": 80,
+  "sorry_free_units": ["C3", "C4", "C8", "D1", "D5", "D6", "D8", "D9", "D13", "D15", "E1", "E4", "F0", "F1", "S1", "S3", "V1", "V2", "V5", "V6"],
+  "defs_sorries": 0,
+  "axioms_added": 0
+ },
+ "statement_fence": "Statements are the blueprint's §3 displays verbatim modulo the deviations above. Do NOT weaken a statement to prove it; do NOT edit MovesT/Defs.lean without re-elaborating the full unit fan (all 55 files import it)."
+}
