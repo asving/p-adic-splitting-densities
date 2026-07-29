@@ -23,6 +23,16 @@ interface DOES determine is machine-checked below. Classification of the 13 obli
   bridge lemmas below). The former odd-p arithmetic detour (`R_neg_odd`/`w_jump_odd`,
   retained below for the record) is superseded by the uniform `R_neg_model`/`w_jump_model`;
   `slot`.1 is `slot_decomp_model` (the additive γ-graded evaluation `EV`).
+RED-MODULE REPAIR 2026-07-29 (census-gap discovery): this module was recorded proved but
+was red at HEAD — two `Gr`-level instance-diamond breaks (non-defeq projection paths into
+the opaque `Rg.ring` on the `Gr` abbrev, poisonous under the lakefile's
+`maxSynthPendingDepth = 3`, which `lake build` applies but `lake env lean` does not — the
+verification discrepancy that let the red record pass) in `of_neg_ring` and `R_neg_model`'s
+`hIF`/`map_neg` step. `of_neg_ring` (consumer-less after the repair) was dropped;
+`R_neg_model` was re-routed through the additive γ-graded evaluation `EV` (see the lemma
+docstrings). Statements unchanged; the sorried-obligation classification below is
+unchanged.
+
 * **`sorry`, UNDERIVABLE from the interface (free-field independence; v2 classification,
   unchanged — the unit is audited FAITHLESS-overreaching, #21)** — `wPrev_mul`,
   `wPrev_ult`, `prevIaug` (σ.wPrev is free off the coefficient space — perturbing it at `Φ^2`
@@ -222,14 +232,15 @@ private lemma of_zero_ring (S : SideVal p) (Rg : GradedRingStr S) (γ : ℤ) :
   rw [add_zero] at h1
   exact add_right_cancel (h1.trans (zero_add _).symm)
 
-/-- ring negation = componentwise negation on `of`-classes (uniqueness of inverses). -/
-private lemma of_neg_ring (S : SideVal p) (Rg : GradedRingStr S) (γ : ℤ) (x : S.grPiece γ) :
-    DirectSum.of (fun δ => S.grPiece δ) γ (-x)
-      = (letI := Rg.ring; - DirectSum.of (fun δ => S.grPiece δ) γ x) := by
-  letI := Rg.ring
-  have h1 := of_add_of S Rg γ x (-x)
-  rw [add_neg_cancel, of_zero_ring S Rg γ] at h1
-  exact (neg_eq_of_add_eq_zero_right h1).symm
+/- (RED-MODULE REPAIR 2026-07-29: the v2 draft had `of_neg_ring` here — "ring negation =
+componentwise negation on `of`-classes", proved by a Gr-level
+`neg_eq_of_add_eq_zero_right`. Under the build options (`maxSynthPendingDepth = 3`,
+applied by `lake build` but NOT by `lake env lean` — the discrepancy that let this module
+be recorded green while red) EVERY Gr-level generic group-lemma application resolves its
+class query through an instance path non-defeq to the `+` pinned in `of_add_of`/`add_def`,
+so no proof body of that statement built. Its sole consumer was `R_neg_model`'s `hIF`
+step, which is now re-routed through `EV` (below) and never needs a Gr-level negation;
+the lemma is dropped rather than repaired.) -/
 
 /-- index/representative transport for `of ∘ mk`. -/
 private lemma of_mk_congr (S : SideVal p) {γ γ' : ℤ} (h : γ = γ')
@@ -248,43 +259,6 @@ private lemma initialForm_eq_of_mk (σ : Stage p F) (M : GenuineStageModel σ)
   have hdeg : γ = M.S.deg g := by rw [deg_eq_w σ M hg0, hwg]
   unfold SideVal.initialForm SideVal.mkPiece
   exact of_mk_congr M.S hdeg rfl hmem (M.S.coe_deg_le g)
-
-/-- **`R_neg`, ALL p** — the graded route: `[−f] = −[f]` transports through `Θ ∘ ι`. -/
-private lemma R_neg_model (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) :
-    σ.R (-f) = - σ.R f := by
-  by_cases hf : f = 0
-  · subst hf; rw [neg_zero, σ.hR0, neg_zero]
-  · letI := M.Rg.ring; letI := M.Loring; letI := M.alg
-    have hnf : (-f) ≠ 0 := neg_ne_zero.mpr hf
-    have hw : σ.w (-f) = σ.w f := w_neg_stage σ M hf
-    have hmem_f : ((σ.w f : ℤ) : WithTop ℤ) ≤ M.S.w f := by
-      rw [M.hSw f hf]
-    have hmem_nf : ((σ.w f : ℤ) : WithTop ℤ) ≤ M.S.w (-f) := by
-      rw [M.hSw (-f) hnf]; exact_mod_cast hw.ge
-    have hIF : M.S.initialForm (-f) = - M.S.initialForm f := by
-      rw [← initialForm_eq_of_mk σ M hnf hw hmem_nf,
-        ← initialForm_eq_of_mk σ M hf rfl hmem_f]
-      have hq : (Submodule.Quotient.mk (⟨-f, hmem_nf⟩ : M.S.ge (σ.w f)) : M.S.grPiece (σ.w f))
-          = - Submodule.Quotient.mk (⟨f, hmem_f⟩ : M.S.ge (σ.w f)) :=
-        map_neg ((M.S.gtIn (σ.w f)).mkQ) ⟨f, hmem_f⟩
-      rw [hq, of_neg_ring M.S M.Rg]
-    have hres : σ.grRes (-f) = - σ.grRes f := by
-      rw [grRes_eq_genuine σ M (-f) hnf, grRes_eq_genuine σ M f hf, hIF, map_neg, map_neg]
-    have h2 : LaurentPolynomial.C (σ.R (-f)) = LaurentPolynomial.C (- σ.R f) := by
-      rw [map_neg, ← Stage.grRes_mul_T_neg σ (-f), ← Stage.grRes_mul_T_neg σ f, hres, hw]
-      ring
-    exact laurC_inj h2
-
-/-- **`w_jump`, ALL p** — via `g = -f + (f+g)`, `hRlt`, and `R_neg_model`. -/
-private lemma w_jump_model (σ : Stage p F) (M : GenuineStageModel σ)
-    {f g : Polynomial ℤ_[p]} (hf : f ≠ 0) (hg : g ≠ 0) (hfg : f + g ≠ 0)
-    (_hww : σ.w f = σ.w g) (hjump : σ.w f < σ.w (f + g)) : σ.R f + σ.R g = 0 := by
-  have hlt : σ.w (-f) < σ.w (f + g) := by rw [w_neg_stage σ M hf]; exact hjump
-  have h := σ.hRlt (-f) (f + g) (neg_ne_zero.mpr hf) hfg
-    (by rw [neg_add_cancel_left]; exact hg) hlt
-  rw [neg_add_cancel_left] at h
-  rw [h, R_neg_model σ M f]
-  ring
 
 /-- the γ-graded evaluation `A_{≥γ} → L₀[T^{±1}]`, `u ↦ Θ(ι(of γ [u]))`. -/
 private noncomputable def EV (σ : Stage p F) (M : GenuineStageModel σ) (γ : ℤ)
@@ -333,6 +307,48 @@ private lemma EV_val (σ : Stage p F) (M : GenuineStageModel σ) (γ : ℤ)
     rw [initialForm_eq_of_mk σ M h0 (hgw h0) hmem, ← grRes_eq_genuine σ M g h0]
     unfold Stage.grRes
     rw [hgw h0]
+
+/-- **`R_neg`, ALL p** — RED-MODULE REPAIR 2026-07-29: re-routed through the additive
+γ-graded evaluation `EV` (all cancellation now happens in the honest Laurent ring and at
+the submodule level, never at a `Gr`-level `-`; the original `hIF`/`map_neg` route pushed
+the DirectSum negation through the `Rg.ring`-keyed `algebraMap` — the same non-defeq
+instance diamond as `of_neg_ring`'s, and it never compiled). The content is unchanged:
+`EV(f) + EV(−f) = EV(f + (−f)) = EV(0) = 0`, `EV_val` evaluates both terms, and
+`T`-cancellation + `C`-injectivity conclude `R(−f) = −R(f)`. -/
+private lemma R_neg_model (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) :
+    σ.R (-f) = - σ.R f := by
+  by_cases hf : f = 0
+  · subst hf; rw [neg_zero, σ.hR0, neg_zero]
+  · have hnf : (-f) ≠ 0 := neg_ne_zero.mpr hf
+    have hw : σ.w (-f) = σ.w f := w_neg_stage σ M hf
+    have hmem_f : ((σ.w f : ℤ) : WithTop ℤ) ≤ M.S.w f := by
+      rw [M.hSw f hf]
+    have hmem_nf : ((σ.w f : ℤ) : WithTop ℤ) ≤ M.S.w (-f) := by
+      rw [M.hSw (-f) hnf]; exact_mod_cast hw.ge
+    have hsum : (⟨f, hmem_f⟩ : M.S.ge (σ.w f)) + ⟨-f, hmem_nf⟩ = 0 :=
+      Subtype.ext (by simp)
+    have h1 := EV_add σ M (σ.w f) ⟨f, hmem_f⟩ ⟨-f, hmem_nf⟩
+    rw [hsum, EV_zero σ M, EV_val σ M (σ.w f) hmem_f (fun _ => rfl),
+      EV_val σ M (σ.w f) hmem_nf (fun _ => hw)] at h1
+    -- h1 : 0 = C (R f) * T γ + C (R (-f)) * T γ
+    have h2 := congrArg (fun t => t * LaurentPolynomial.T (-(σ.w f))) h1
+    simp only [zero_mul, add_mul] at h2
+    rw [mul_assoc, ← LaurentPolynomial.T_add, add_neg_cancel, LaurentPolynomial.T_zero, mul_one,
+      mul_assoc, ← LaurentPolynomial.T_add, add_neg_cancel, LaurentPolynomial.T_zero,
+      mul_one] at h2
+    -- h2 : 0 = C (R f) + C (R (-f))
+    exact laurC_inj ((eq_neg_of_add_eq_zero_right h2.symm).trans (map_neg _ _).symm)
+
+/-- **`w_jump`, ALL p** — via `g = -f + (f+g)`, `hRlt`, and `R_neg_model`. -/
+private lemma w_jump_model (σ : Stage p F) (M : GenuineStageModel σ)
+    {f g : Polynomial ℤ_[p]} (hf : f ≠ 0) (hg : g ≠ 0) (hfg : f + g ≠ 0)
+    (_hww : σ.w f = σ.w g) (hjump : σ.w f < σ.w (f + g)) : σ.R f + σ.R g = 0 := by
+  have hlt : σ.w (-f) < σ.w (f + g) := by rw [w_neg_stage σ M hf]; exact hjump
+  have h := σ.hRlt (-f) (f + g) (neg_ne_zero.mpr hf) hfg
+    (by rw [neg_add_cancel_left]; exact hg) hlt
+  rw [neg_add_cancel_left] at h
+  rw [h, R_neg_model σ M f]
+  ring
 
 /-- **`slot`.1 (decomposition), ALL p** — the graded route: `EV` is additive from `A_{≥γ}`
 and computes `C (R ·) · T γ` termwise, so `R` decomposes across equal-weight slots. -/

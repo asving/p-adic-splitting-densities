@@ -17,6 +17,13 @@ fix was the §8.1 blueprint proposal, OPTION (a) SIGNED OFF by Asvin 2026-07-28:
 
 STATUS NOW: FULLY PROVED. `hadd` is exactly `Rg.add_def` composed with additivity of
 `DirectSum.of` (the one-line term below); everything else was already machine-checked.
+
+RED-MODULE REPAIR 2026-07-29: the 2026-07-27 "fully proved" record was made against
+`lake env lean` (which does not apply the lakefile's `maxSynthPendingDepth = 3`); under
+`lake build` the Gr-level `hneg` derivation and the neg leg hit a non-defeq instance
+diamond and the module was red (census-gap discovery). The neg leg is now the
+componentwise `add_def` argument of L2_degZero_subring.lean (the proved v1 rewrite);
+statement byte-identical, now green under `lake build` itself.
 -/
 import Mathlib
 import LeanUrat.Moves.Defs
@@ -62,13 +69,13 @@ theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.r
     have h1 := hadd 0 0
     rw [add_zero] at h1
     exact add_right_cancel (h1.trans (zero_add _).symm)
-  -- Derived: ring negation of a degree-0 `of`-element (uniqueness of additive inverses).
-  have hneg : ∀ a : S.grPiece 0,
-      -(DirectSum.of (fun γ => S.grPiece γ) 0 a) = DirectSum.of (fun γ => S.grPiece γ) 0 (-a) := by
-    intro a
-    have h1 := hadd a (-a)
-    rw [add_neg_cancel, hzero] at h1
-    exact neg_eq_of_add_eq_zero_right h1
+  -- (The v2 draft derived a Gr-level `hneg` here via `neg_eq_of_add_eq_zero_right`. RED-MODULE
+  -- REPAIR 2026-07-29: under the build options (`maxSynthPendingDepth = 3`, applied by
+  -- `lake build` but NOT by `lake env lean` — the discrepancy that let this module be
+  -- recorded green while red) that Gr-level lemma application resolves its
+  -- `SubtractionMonoid` through an instance path non-defeq to `hadd`'s `+`, so it never
+  -- built. The neg leg below now derives everything componentwise from `add_def`; the
+  -- Gr-level `hneg` is dropped.)
   refine ⟨{ carrier := {x | ∀ γ ≠ (0:ℤ), x γ = 0}
             mul_mem' := ?_
             one_mem' := ?_
@@ -93,9 +100,21 @@ theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.r
   -- zero: via the derived `hzero`.
   · intro γ hγ
     rw [← hzero, DirectSum.of_eq_of_ne _ _ _ hγ]
-  -- neg: via the derived `hneg`.
+  -- neg: componentwise via `add_def` fed the inverse witness (RED-MODULE REPAIR 2026-07-29:
+  -- the original `rw [hdecomp a ha, hneg (a 0), …]` never built — the goal's `-a` resolves
+  -- its `Neg` through an instance path not syntactically the one in `hneg`, so both `hneg`'s
+  -- own derivation and the rewrite motive fail under the build options (the same non-defeq
+  -- instance diamond documented in L2_degZero_subring.lean's proved leg, which this port
+  -- follows verbatim).
   · intro a ha γ hγ
-    rw [hdecomp a ha, hneg (a 0), DirectSum.of_eq_of_ne _ _ _ hγ]
+    have hz : (0 : S.Gr) γ = 0 := by
+      have h := Rg.add_def 0 0 γ; simp only [add_zero] at h; exact left_eq_add.mp h
+    have key : ∀ (b : S.Gr), a + b = 0 → b γ = 0 := by
+      intro b hab
+      have h := Rg.add_def a b γ
+      rw [hab, hz, ha γ hγ, zero_add] at h
+      exact h.symm
+    exact key _ (add_neg_cancel a)
 
 end LeanUrat.MovesGr
 
