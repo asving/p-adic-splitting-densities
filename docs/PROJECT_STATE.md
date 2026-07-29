@@ -958,3 +958,36 @@ E-phase writers for both corpora are IN FLIGHT (the compiler as closure
 arbiter; the census-level ¬HMC toy becomes decide-checked Lean; dual
 ratification then runs on as-built statements). Ledger:
 lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md.
+
+## UPDATE (2026-07-30a): WAVE-4 PROVING CAMPAIGN — THE CONVERGED STATE
+
+Three fleet rounds + three adjudicated-repair rounds after E-phase: ~140 of the
+155 wave-4 units are PROVED (Lean-core; zero new axioms; the trusted-base
+census clean throughout). Machine-checked highlights: the ¬HMC census toy
+(V4_hmc — the campaign's central open kernel now has a kernel-checked openness
+witness); both V1 full-bundle satisfiability witnesses; the complete T-C
+ladder (cap/ns pricing/nullity); the composition chain (comp_h/comp_hsum)
+fully Lean-core; rootTable_census proved for EVERY finite field (stronger
+than the nine sealed points); D11's fiber disjointness. Fifteen
+statement-level defects were caught by the fence at proof time — every one
+refuted with a compiled countermodel or machine-verified analysis, adjudicated
+with note/blueprint reads, repaired, and re-proved.
+THE IRREDUCIBLE REMAINDER (all named, owned, analyzed at their sorry sites):
+- E8 treeExp — BLOCKED at a machine-checked seam (Codex-verified): the premise
+  row forces sibling one-side split sites to share cells/exponents,
+  double-charging Σ siteExp and REFUTING the REV-6 F1 joint-satisfiability
+  record at the LEAF sites (the rev-6 enumeration checked only the head).
+  Three adjudication candidates on record (E8 header + MANIFEST ADJ-SPINE-4 +
+  lean/notes/E8_BLOCK_CHARGE_2026-07-29.md). E10 perShape_law/E11 treeN gate
+  on it. NEXT SESSION'S FIRST ITEM: the TREE-EXP note read + adjudication.
+- E5 hnostray (head-roster completeness — the (c2) m_i=1 τ-hen leg, owner
+  HC-2/D4R0K); D11 fibOf_partition (the rep-normalization law, owner
+  HC-2/PresentNorm); G1's four (ASVIN Q1 — the V10/HistoryCoherent sign-off
+  cluster, now also carrying the F4 card-4 stage); np_id_pin's jet-existence
+  (Wall B, fenced); the banked W17ii (V7-8); spWord's EntShapeV width-law
+  sign-off item; the disclosed boundaries (F1 witness, hRes-Q1).
+AFTER THE E8 ADJUDICATION: the as-built dual ratification (Codex + Fable over
+both corpora), then the 22+ seam re-keys (MovesS's 7 gated units, MovesD's
+seam rows), MovesR unparking. Ledger:
+lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md (the full round-by-round
+record); the sorry sites themselves carry the exact missing-lemma statements.
