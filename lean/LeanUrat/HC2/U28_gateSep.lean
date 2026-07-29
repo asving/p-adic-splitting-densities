@@ -321,8 +321,10 @@ private instance fact_prime_three : Fact (Nat.Prime 3) := ⟨by norm_num⟩
 /-- The prime-field embedding `𝔽₃ → F9`. -/
 private noncomputable def kap : ZMod 3 →+* F9 := ZMod.castHom dvd_rfl F9
 
-/-- The base residue field: the prime subfield of `F9`, as a `Subfield`. -/
-private noncomputable def Kb : Subfield F9 := kap.fieldRange
+/-- The base residue field: the prime subfield of `F9`, as a `Subfield`.
+[De-privatized 2026-07-30 for the MovesT p=3 gate (G1 pin-repair charge item 7/8);
+visibility-only change, recorded.] -/
+noncomputable def Kb : Subfield F9 := kap.fieldRange
 
 /-- The corestriction `𝔽₃ ≃ Kb` (as a ring hom; bijectivity below). -/
 private noncomputable def rhoK : ZMod 3 →+* ↥Kb where
@@ -549,8 +551,11 @@ private lemma base_K1 : K1At (fun f => (bwN f : ℤ)) Polynomial.X
     omega
 
 /-- THE BASE STAGE `σ₀ : Stage 3 F9`: key `X`, index `(1,1)`, canonical Bézout `(1,0)`,
-residue field the prime subfield, `w = bwN`, `R = bres`. -/
-private noncomputable def sigma0 : Stage 3 F9 where
+residue field the prime subfield, `w = bwN`, `R = bres`.
+[De-privatized 2026-07-30 for the MovesT p=3 gate (G1 pin-repair charge item 7/8);
+visibility-only change, recorded — the MovesT gate transports this stage's laws to
+`Stage 3 (ZMod 3)` along `rhoE`.] -/
+noncomputable def sigma0 : Stage 3 F9 where
   e := 1
   h := 1
   s := 1
@@ -677,8 +682,10 @@ private noncomputable def sqrtm1 : F9ˣ := exists_sqrt_neg_one.choose
 
 private lemma sqrtm1_sq : ((sqrtm1 : F9ˣ) : F9)^2 = -1 := exists_sqrt_neg_one.choose_spec
 
-/-- The prime-field equiv `𝔽₃ ≃+* Kb`. -/
-private noncomputable def rhoE : ZMod 3 ≃+* ↥Kb :=
+/-- The prime-field equiv `𝔽₃ ≃+* Kb`.
+[De-privatized 2026-07-30 for the MovesT p=3 gate (G1 pin-repair charge item 7/8);
+visibility-only change, recorded.] -/
+noncomputable def rhoE : ZMod 3 ≃+* ↥Kb :=
   RingEquiv.ofBijective rhoK ⟨rhoK_inj, rhoK_surj⟩
 
 /-- `z² + 1` is irreducible over `ZMod 3` (no roots; the two-coefficient criterion). -/
