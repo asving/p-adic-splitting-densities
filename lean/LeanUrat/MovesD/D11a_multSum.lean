@@ -3,7 +3,8 @@ Unit D11a.mult_sum  (MovesD campaign, E-phase)
 moves_ref: (double counting — the multiplicity sum equals the fiber-count sum).
 deps: D2a.
 sketch: Fintype double counting on the incidence set.  difficulty: medium.
-hypothesis_fields: none.
+hypothesis_fields: mult_sum carries hne (reads ≠ []) since D4″ 2026-07-29 (the ∅-dispatch
+deviation, recorded below); mult_sum_opt (R3-B) is the uniform all-shapes form, none.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
@@ -50,5 +51,28 @@ theorem mult_sum (S : Presented p F n N m pol P)
   rw [finsum_eq_sum_of_fintype]
   simp only [hL, hR]
   exact Finset.sum_comm
+
+open Classical in
+/-- [R3-B, 2026-07-29 — confirm-2's queued option-level form] **The note-faithful UNIFORM
+incidence law, over ALL shapes.** L5 includes the EMPTY prefix η = ∅ as a first-class
+member (note ~4788–4800: "INCLUDING the EMPTY prefix η = ∅ (k = −1) … S(∅,⊤) = the box
+(§C C.0's EMPTY HISTORY clause T(∅, Z) := Z, at Z = ⊤ …) — this empty case is the base of
+L6's induction"), and Pref(∅) = {∅} (L12/F3), so on the EMPTY shape the note's incidence
+identity reads Σ_x mult_∅(x) = #Box — the count THROUGH the unique ∅-class fiber
+`emptyFiber = univ` — not zero. The RHS here is therefore OPTION-LEVEL: full-box
+cardinality on the empty shape (the `none`/∅ class of `PrefOpt`, whose fiber is
+`emptyFiber`), the `PrefIdx`-indexed fiber-count sum otherwise. `mult_sum` above (with
+`hne`) is the PrefIdx-indexed FACE of this law — honest but empty-blind, because the Lean
+`PrefIdx` cannot carry the ∅ class itself (the History type has no empty chain — F3's
+displayed deviation, `Pref_empty_shape`). -/
+theorem mult_sum_opt (S : Presented p F n N m pol P) :
+    ∑ x : Box p m, S.mult x
+      = if (P : ShapePrefix).reads = [] then Nat.card (Box p m)
+        else ∑ᶠ i : PrefIdx n pol P, Nat.card ↥(S.fiber i) := by
+  by_cases hP : (P : ShapePrefix).reads = []
+  · rw [if_pos hP]
+    simp [S.mult_empty_shape hP, Nat.card_eq_fintype_card]
+  · rw [if_neg hP]
+    exact mult_sum S hP
 
 end LeanUrat.MovesD

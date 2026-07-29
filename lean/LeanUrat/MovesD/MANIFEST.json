@@ -545,8 +545,8 @@
     "D2a"
    ],
    "sorries": 1,
-   "statement": "mult_sum (S) : ∑ x : Box p m, S.mult x = ∑ᶠ i, Nat.card ↥(S.fiber i)",
-   "hypothesis_fields": "none"
+   "statement": "mult_sum (S) (hne : reads ≠ []) : ∑ x : Box p m, S.mult x = ∑ᶠ i, Nat.card ↥(S.fiber i); mult_sum_opt (S) [R3-B, uniform]: ∑ x, S.mult x = if reads = [] then Nat.card (Box p m) else ∑ᶠ i, Nat.card ↥(S.fiber i)",
+   "hypothesis_fields": "mult_sum: hne (reads ≠ []) — FORCED at D4″ 2026-07-29 (∅-dispatch deviation; at reads = [] the PrefIdx-indexed identity is false: LHS #Box, RHS 0). mult_sum_opt: none (the note-faithful all-shapes form; empty branch = #Box through the unique ∅-class fiber, L5 note ~4788–4800)"
   },
   {
    "id": "D11b.event_iff_mult",
@@ -659,6 +659,10 @@
    "hypothesis_fields": "hcyl, hwd (deferred pinned Props, declared in Defs)"
   }
  ],
+ "ratification_repairs_2026-07-29_round3": {
+  "R3A_digit_value_law": "OPTION 1 EXECUTED (PolPin.lean). OffsetPPin gains digits_prescribed [D2‴]: at a recentering, Realizes ν t → inC ν.σ.Φ t ∧ σ.w t = σ.w σ.Φ ∧ σ.R t = C(ν.center)·T(0) — the D.10/IsRecentering/LandingKey center-realizer clauses, i.e. the digit VALUE and WEIGHT typed in Stage-carrier vocabulary (σ.w, σ.R, center, Φ are node data; the charge's per-X-coefficient form is NOT node-data-expressible — the slot digits t_k are lower-stage recursive realizers). Confirm-2's singleton-realizer bypass (arbitrary nonzero forced-class monomial with Realizes := (t = liftOf ν)) is excluded BY TYPE: no_pin_of_wrong_value / no_pin_of_wrong_weight prove IsEmpty (OffsetPPin pol) from ONE wrong-valued recentering lift; lift_center_realizer extracts the center-realizer datum LandingKey/HistoryCoherent consume. STRICTLY SMALLER NAMED RESIDUE (stays in Realizes, owner HC-1/§B2-DEF): the (S6b′) SUB-RESIDUAL SLOT SELECTION — which (w,R)-equal center realizer, i.e. the prescribed lower-stage digits t_k realizing P_k (note 2446–2455's mutual recursion); the Stage exports only the top graded residual, so this piece is genuinely carry-algebra (HC-1) vocabulary.",
+  "R3B_uniform_incidence": "D11a gains mult_sum_opt (ADDITIVE): the note-faithful uniform incidence over ALL shapes with the OPTION-LEVEL RHS — if reads = [] then Nat.card (Box p m) (the unique ∅-class fiber = emptyFiber = univ, L5 note ~4788–4800) else the PrefIdx-indexed fiber-count sum. Proof: empty branch mult ≡ 1 (mult_empty_shape) + card univ; nonempty branch = mult_sum with hne. The stale D11a manifest entry fixed (statement + hypothesis_fields now record hne). Axiom check 2026-07-29: all PolPin + D11a decls Lean-core {propext, Classical.choice, Quot.sound}; D12/D13 consumers green."
+ },
  "ratification_repairs_2026-07-29_round2": {
   "D2_polpin_strengthened": "PolPin.lean OffsetPPin gains support_forced (realizer support in ONE stride-e length-g progression anchored in the forced class j0 = bezT(e,h)*gam mod e — note 4648-4650's h^{-1}*(target) in corpus vocabulary; target = Node.gam, documented) + realizes_unique (L1 determinism: the digits are functions of node data). Non-vacuity re-verified: OffsetPPin.not_realizes_bare_ne_zero — Realizes := (t ≠ 0) fails realizes_unique at EVERY node (1 vs X). Residual seam content of Realizes narrowed to w(t) = nu + prescribed digit VALUES (§B2-DEF/HC-1).",
   "D4_empty_event_wired": "The reads = [] dispatch is wired INTO Presented.event/Presented.mult themselves (Defs.lean, mirroring Shape.CD: univ/1 on the empty shape, iUnion/incidence-count otherwise). eventO/multO DELETED — one semantics. Unfolding laws in Defs.lean: event_of_ne/mult_of_ne + event_empty_shape/mult_empty_shape; D14c restated on the designated objects (event_mult_empty_shape, event_empty_law). Consumer proofs patched: D11b (case split, statement unchanged), D12/D13 (pass hne to mult_sum), D14b, D4R4all_wrapper (event_of_ne before iUnion_of_empty). FORCED statement change (deviation, recorded in-file): D11a mult_sum gains hne — at reads = [] the incidence identity is FALSE under the note's mult_∅ ≡ 1 (LHS #Box, RHS 0 over empty PrefIdx); both consumers (D12, D13) already carry hne. No event/mult consumers outside MovesD (grepped 2026-07-29: none)."
