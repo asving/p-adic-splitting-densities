@@ -590,3 +590,36 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   toyStage; V4_hmc's constructive census-toy build), sonnet
   statement-fence verifiers (diff-scope + rebuild + axiom check). Batch 1
   = 10 units (pilot); the remaining ~92 follow on validation.
+  SESSION BOUNDARY (2026-07-30): the session's 200-subagent cap is reached
+  mid-fleet. STATE AT THE BOUNDARY: batch 1 = 6/10 units proved clean
+  (fence-verified), incl. V4_hmc — THE ¬HMC CENSUS TOY IS MACHINE-CHECKED;
+  G1 at 33/41 with 8 statement-blocked pin defects precisely diagnosed
+  (the fix charge is written below); C2/C7/D11 partials with honest
+  hard-core blockers. Batch 2 (91 units, wf_7d693db2-462, args at
+  WAVE4_FLEET_BATCH2_UNITS.json minus V7_w17ii THE BANKED SORRY — never
+  fill it) launched; only its first concurrent wave got agent slots — the
+  nulls are unattempted units, NOT failures; re-run the same script
+  (workflows/scripts/wave4-prover-fleet-wf_f1d16620-432.js) with the
+  unattempted remainder next session.
+  RESUMPTION PLAN (next session, fresh agent budget):
+  1. Re-run the fleet on batch 2's unattempted units (diff the batch-2
+     result's provedClean/partial/blocked lists against the args).
+  2. The G1 pin-repair charge (one fable agent): the 8 items with the
+     previous prover's diagnoses — (1,2) the distinct leaf transition
+     stage per the blueprint's G1b row; (3) real fd clauses for the 64
+     count; (4) the statement's cell → (.st tA1) per the blueprint;
+     (5,6) restate the K-card pair over the blueprint's documented field
+     (GF(4)) or refute-at-F honestly; (7,8) de-privatize HC2/U28.sigma0
+     (visibility-only, campaign-owned, record) and pin the p=3 stage.
+  3. The hard-core escalation queue (dedicated fable agents, one each):
+     C2's capIrr_uniform (needs the NP-ID/T-D7 cross-level transport
+     bridge) + tbcap_irr (SHZ digit-locality: coordOf↔levelIdx + fresh-
+     clause support bounds); C7's hsub (the Θ-transport finite→locus
+     bridge); D11's four (FIRST adjudicate the hclosed/hleaf
+     underspecification — the missing 'prefixes-of-reps-are-reps' clause
+     may be a D11-package interface gap: check the blueprint's D11
+     hypothesis rows before proving).
+  4. Then: the as-built dual ratification (Codex + Fable, full corpus
+     statements vs the note+blueprints), the 22+ seam re-keys, MovesR
+     unparking. The W17ii banked sorry and the disclosed boundaries
+     (F1 witness, G1b transition legs, hRes-Q1) stay OPEN by design.
