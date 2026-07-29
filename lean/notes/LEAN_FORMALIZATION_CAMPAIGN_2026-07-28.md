@@ -732,3 +732,18 @@ X-tail), Hensel (Mathlib has it — prefer the library). The campaign kernels
   discharge map), the B2-DEF backlog. Wave C: the dual as-built
   ratifications + the statement-change confirm. Wave D: HC-1 carriers +
   MovesR.
+  MAXIMUM PARALLELIZATION AUTHORIZED (2026-07-30, Asvin: up to ~200 agents;
+  scoping authority — statements may gain NAMED warranted hypotheses,
+  flagged for ratification; each little lemma its own agent). IN FLIGHT
+  SIMULTANEOUSLY: wave A (wf_8da4fbbc-53b, 13 pieces: the E8 chain, all
+  T/V small sorries, the PresentNorm discharge, the E0 probes) + wave B
+  (wf_f58b612c-e07, 20 pieces: the MovesS seam quartet vs built T/V, the
+  MovesD W4-1 absorption, THE CL-1..19 EXTRACTION for the instantiation
+  ledger, the six B2-DEF backlog pieces + sweeper, HC1 R6 vs built
+  carriers, HC2 U10 fence-aware, the two MovesGr legs, the MovesR
+  unparking extraction, three more probe layers incl. the D4R.0-K L1
+  boundary enumeration) + THREE DETACHED CODEX AS-BUILT RATIFICATIONS
+  (MovesU — the Theorem U statement-fidelity pass, the most load-bearing
+  translation in the project — + MovesX + MovesSp). ~36 concurrent
+  pieces; T/V ratifications and the instantiation units queue behind
+  wave A's E8 re-key.
