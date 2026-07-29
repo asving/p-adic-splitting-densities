@@ -373,6 +373,94 @@ noncomputable def tB1 : History 2 (ZMod 2) := tA1
 noncomputable def tB2c : History 2 (ZMod 2) := tA2a
 noncomputable def tB2d : History 2 (ZMod 2) := tA2b
 
+/-! #### pin-distinctness / snoc-decomposition proof infrastructure (P-phase fill;
+private helpers only — no blueprint statement touched). -/
+section ToyPinHelpers
+
+private lemma hist_ext {H H' : History 2 (ZMod 2)} (h : H.nodes = H'.nodes) :
+    H = H' := by
+  obtain ⟨n, hne, hri⟩ := H
+  obtain ⟨n', hne', hri'⟩ := H'
+  subst h
+  rfl
+
+private lemma head_ne_leafA : toyHead ≠ toyLeafA := fun h => by
+  have h2 : ReadSpecies.root = ReadSpecies.recentering := congrArg Node.species h
+  exact absurd h2 (by decide)
+
+private lemma head_ne_leafB : toyHead ≠ toyLeafB := fun h => by
+  have h2 : ReadSpecies.root = ReadSpecies.recentering := congrArg Node.species h
+  exact absurd h2 (by decide)
+
+private lemma leafA_ne_leafB : toyLeafA ≠ toyLeafB := fun h => by
+  have h2 : (2 : ℕ) = 3 := congrArg Node.h h
+  omega
+
+private lemma tA1_nodes : tA1.nodes = [toyHead] := rfl
+private lemma tA2a_nodes : tA2a.nodes = [toyHead, toyLeafA] := rfl
+private lemma tA2b_nodes : tA2b.nodes = [toyHead, toyLeafB] := rfl
+
+private lemma tA1_ne_tA2a : tA1 ≠ tA2a := fun h => by
+  have h2 : (1 : ℕ) = 2 :=
+    congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) h
+  omega
+
+private lemma tA1_ne_tA2b : tA1 ≠ tA2b := fun h => by
+  have h2 : (1 : ℕ) = 2 :=
+    congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) h
+  omega
+
+private lemma tA2a_ne_tA2b : tA2a ≠ tA2b := fun h => by
+  have h2 : ([toyHead, toyLeafA] : List (Node 2 (ZMod 2)))
+      = [toyHead, toyLeafB] := congrArg History.nodes h
+  simp only [List.cons.injEq, and_true, true_and] at h2
+  exact leafA_ne_leafB h2
+
+private lemma snoc_ne_tA1 (H : History 2 (ZMod 2)) (ν : Node 2 (ZMod 2))
+    (hν : ν.species ≠ ReadSpecies.root) : H.snoc ν hν ≠ tA1 := fun h => by
+  have h2 : H.nodes.length + 1 = 1 := by
+    have := congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) h
+    simpa [History.snoc, tA1_nodes] using this
+  have h3 : H.nodes = [] := List.length_eq_zero_iff.mp (by omega)
+  exact H.nonempty h3
+
+private lemma snoc_eq_two {H : History 2 (ZMod 2)} {ν a b : Node 2 (ZMod 2)}
+    {hν : ν.species ≠ ReadSpecies.root}
+    (h : (H.snoc ν hν).nodes = [a, b]) : H.nodes = [a] ∧ ν = b := by
+  have h1 : H.nodes ++ [ν] = [a] ++ [b] := h
+  have h2 := List.append_inj' h1 rfl
+  exact ⟨h2.1, by simpa using h2.2⟩
+
+private lemma snoc_eq_tA2a_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
+    {hν : ν.species ≠ ReadSpecies.root} :
+    H.snoc ν hν = tA2a ↔ (H = tA1 ∧ ν = toyLeafA) := by
+  constructor
+  · intro h
+    obtain ⟨hH, hν'⟩ := snoc_eq_two
+      (show (H.snoc ν hν).nodes = [toyHead, toyLeafA] from congrArg History.nodes h)
+    exact ⟨hist_ext (hH.trans tA1_nodes.symm), hν'⟩
+  · rintro ⟨h1, h2⟩
+    refine hist_ext ?_
+    show H.nodes ++ [ν] = tA2a.nodes
+    rw [congrArg History.nodes h1, h2]
+    rfl
+
+private lemma snoc_eq_tA2b_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
+    {hν : ν.species ≠ ReadSpecies.root} :
+    H.snoc ν hν = tA2b ↔ (H = tA1 ∧ ν = toyLeafB) := by
+  constructor
+  · intro h
+    obtain ⟨hH, hν'⟩ := snoc_eq_two
+      (show (H.snoc ν hν).nodes = [toyHead, toyLeafB] from congrArg History.nodes h)
+    exact ⟨hist_ext (hH.trans tA1_nodes.symm), hν'⟩
+  · rintro ⟨h1, h2⟩
+    refine hist_ext ?_
+    show H.nodes ++ [ν] = tA2b.nodes
+    rw [congrArg History.nodes h1, h2]
+    rfl
+
+end ToyPinHelpers
+
 /-- the toy cell alphabet (IP-2: `deriving DecidableEq`). -/
 inductive ToyCell | rootC | winC | splitC | junk
   deriving DecidableEq
@@ -401,8 +489,37 @@ noncomputable def toyModel : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
   mem := toyMemA
   child := toyChildA
   root_mem := fun _ => trivial
-  mem_single := by sorry
-  mem_snoc := by sorry
+  mem_single := by
+    intro ν h1 x
+    constructor
+    · rintro ⟨hH | hH | hH, hd⟩
+      · have hν : ν = toyHead := by
+          have h2 : [ν] = [toyHead] := congrArg History.nodes hH
+          simpa using h2
+        exact ⟨hν, hd⟩
+      · exfalso
+        have h2 : (1 : ℕ) = 2 :=
+          congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
+        omega
+      · exfalso
+        have h2 : (1 : ℕ) = 2 :=
+          congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
+        omega
+    · rintro ⟨hν, hd⟩
+      exact ⟨Or.inl (hist_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl)), hd⟩
+  mem_snoc := by
+    intro H ν hν x
+    constructor
+    · rintro ⟨hH | hH | hH, hd⟩
+      · exact absurd hH (snoc_ne_tA1 H ν hν)
+      · obtain ⟨h1, h2⟩ := snoc_eq_tA2a_iff.mp hH
+        exact ⟨⟨Or.inl h1, hd⟩, h1, Or.inl h2, ⟨Or.inl rfl, hd⟩⟩
+      · obtain ⟨h1, h2⟩ := snoc_eq_tA2b_iff.mp hH
+        exact ⟨⟨Or.inl h1, hd⟩, h1, Or.inr h2, ⟨Or.inl rfl, hd⟩⟩
+    · rintro ⟨⟨-, hd⟩, h1, hν2, -⟩
+      rcases hν2 with h2 | h2
+      · exact ⟨Or.inr (Or.inl (snoc_eq_tA2a_iff.mpr ⟨h1, h2⟩)), hd⟩
+      · exact ⟨Or.inr (Or.inr (snoc_eq_tA2b_iff.mpr ⟨h1, h2⟩)), hd⟩
   mem_realizable := by sorry
   -- [G1b split (REV 8, Codex-7 #4d): `mem_realizable`'s node-level legs are walked
   --  lawful at the tables; the TRANSITION legs are the DISCLOSED §6 obligation row]
@@ -429,11 +546,67 @@ noncomputable def toyCA : CellData 2 (ZMod 2) 2 3 9 polTriv toyModel where
   cellOf := toyCellA
   cellLevel := fun _ => 4
   levelOf := levelIdx (n := 2)
-  cell_local := by sorry
+  cell_local := by
+    intro es x x' h
+    have h0 := h 0 (by decide); have h1 := h 1 (by decide)
+    have h2 := h 2 (by decide); have h3 := h 3 (by decide)
+    have h4 := h 4 (by decide); have h5 := h 5 (by decide)
+    cases es <;> simp only [toyCellA, toyMemA, h0, h1, h2, h3, h4, h5]
   branchSetOf := toyBranchA
-  child_cell := by sorry
-  child_root_sub := by sorry
-  child_cell_red := by sorry
+  child_cell := by
+    intro H ν x hmem
+    obtain ⟨hH, hd⟩ := hmem
+    rcases hH with h1 | h1 | h1
+    · subst h1
+      have hcell : toyCellA (.st tA1) x = ToyCell.splitC := by
+        simp only [toyCellA]
+        rw [if_pos ⟨trivial, Or.inl rfl, hd⟩]
+      rw [hcell]
+      simp only [toyBranchA, Finset.mem_insert, Finset.mem_singleton]
+      constructor
+      · rintro ⟨-, hν, -⟩
+        exact hν
+      · intro hν
+        exact ⟨rfl, hν, Or.inl rfl, hd⟩
+    · subst h1
+      have hcell : toyCellA (.st tA2a) x = ToyCell.junk := by
+        simp only [toyCellA]
+        rw [if_neg (fun hc => tA1_ne_tA2a hc.1.symm)]
+      rw [hcell]
+      simp only [toyBranchA, Finset.notMem_empty, iff_false]
+      rintro ⟨hc, -, -⟩
+      exact tA1_ne_tA2a hc.symm
+    · subst h1
+      have hcell : toyCellA (.st tA2b) x = ToyCell.junk := by
+        simp only [toyCellA]
+        rw [if_neg (fun hc => tA1_ne_tA2b hc.1.symm)]
+      rw [hcell]
+      simp only [toyBranchA, Finset.notMem_empty, iff_false]
+      rintro ⟨hc, -, -⟩
+      exact tA1_ne_tA2b hc.symm
+  child_root_sub := by
+    rintro ν x ⟨hν, hd⟩
+    subst hν
+    have hcell : toyCellA .amb x = ToyCell.rootC := by
+      simp only [toyCellA]
+      rw [if_pos ⟨hd.1, hd.2.1⟩]
+    rw [hcell]
+    simp [toyBranchA]
+  child_cell_red := by
+    intro χ g ψ ν x hx hν
+    by_cases hguard : ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0
+        ∧ x 4 = 0 ∧ x 5 = 0
+    · have hcell : toyCellA (.red g ψ) x = ToyCell.winC := by
+        simp only [toyCellA]
+        rw [if_pos hguard]
+      rw [hcell] at hν
+      simp only [toyBranchA, Finset.mem_singleton] at hν
+      exact ⟨hν, hguard.2⟩
+    · have hcell : toyCellA (.red g ψ) x = ToyCell.junk := by
+        simp only [toyCellA]
+        rw [if_neg hguard]
+      rw [hcell] at hν
+      simp [toyBranchA] at hν
   -- [REV 8 RE-FENCE (Codex-7 #1): the toys instantiate the DATA layer `CellData`
   --  ONLY — `child_cover` FAILS on both carriers at g = (1,0) (deliberately partial;
   --  disclosed at §2.9/§6 and the §5 W4-1 row)]
@@ -460,8 +633,49 @@ noncomputable def toyModelB : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
   mem := toyMemB
   child := toyChildB
   root_mem := fun _ => trivial
-  mem_single := by sorry
-  mem_snoc := by sorry
+  mem_single := by
+    intro ν h1 x
+    constructor
+    · rintro (⟨hH, hd⟩ | ⟨hH, hd⟩)
+      · have hν : ν = toyHead := by
+          have h2 : [ν] = [toyHead] := congrArg History.nodes hH
+          simpa using h2
+        exact ⟨hν, hd⟩
+      · exfalso
+        rcases hH with hH | hH
+        · have h2 : (1 : ℕ) = 2 :=
+            congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
+          omega
+        · have h2 : (1 : ℕ) = 2 :=
+            congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
+          omega
+    · rintro ⟨hν, hd⟩
+      exact Or.inl ⟨hist_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl), hd⟩
+  mem_snoc := by
+    intro H ν hν x
+    constructor
+    · rintro (⟨hH, -⟩ | ⟨hH, hx0, hx1, hx2, hx3, hx4⟩)
+      · exact absurd hH (snoc_ne_tA1 H ν hν)
+      · rcases hH with hH | hH
+        · obtain ⟨h1, h2⟩ := snoc_eq_tA2a_iff.mp hH
+          exact ⟨Or.inl ⟨h1, hx0, hx1, hx2⟩,
+            h1, Or.inl h2, Or.inl ⟨rfl, hx0, hx1, hx2⟩, hx3, hx4⟩
+        · obtain ⟨h1, h2⟩ := snoc_eq_tA2b_iff.mp hH
+          exact ⟨Or.inl ⟨h1, hx0, hx1, hx2⟩,
+            h1, Or.inr h2, Or.inl ⟨rfl, hx0, hx1, hx2⟩, hx3, hx4⟩
+    · rintro ⟨hm, h1, hν2, -, hx3, hx4⟩
+      have hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 := by
+        rcases hm with ⟨-, hd⟩ | ⟨habs, -⟩
+        · exact hd
+        · exfalso
+          rcases habs with habs | habs
+          · exact tA1_ne_tA2a (h1.symm.trans habs)
+          · exact tA1_ne_tA2b (h1.symm.trans habs)
+      rcases hν2 with h2 | h2
+      · exact Or.inr ⟨Or.inl (snoc_eq_tA2a_iff.mpr ⟨h1, h2⟩),
+          hd.1, hd.2.1, hd.2.2, hx3, hx4⟩
+      · exact Or.inr ⟨Or.inr (snoc_eq_tA2b_iff.mpr ⟨h1, h2⟩),
+          hd.1, hd.2.1, hd.2.2, hx3, hx4⟩
   mem_realizable := by sorry
 
 open Classical in
@@ -485,11 +699,84 @@ noncomputable def toyCAB : CellData 2 (ZMod 2) 2 3 9 polTriv toyModelB where
   cellOf := toyCellB
   cellLevel := fun _ => 4
   levelOf := levelIdx (n := 2)
-  cell_local := by sorry
+  cell_local := by
+    intro es x x' h
+    have h0 := h 0 (by decide); have h1 := h 1 (by decide)
+    have h2 := h 2 (by decide); have h3 := h 3 (by decide)
+    have h4 := h 4 (by decide)
+    cases es <;> simp only [toyCellB, h0, h1, h2, h3, h4]
   branchSetOf := toyBranchB
-  child_cell := by sorry
-  child_root_sub := by sorry
-  child_cell_red := by sorry
+  child_cell := by
+    intro H ν x hmem
+    have hHcase : H = tB1 ∨ H = tB2c ∨ H = tB2d := by
+      rcases hmem with ⟨h1, -⟩ | ⟨h1, -⟩
+      · exact Or.inl h1
+      · exact Or.inr h1
+    rcases hHcase with h1 | h1 | h1
+    · subst h1
+      have hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 := by
+        rcases hmem with ⟨-, hd⟩ | ⟨habs, -⟩
+        · exact hd
+        · exfalso
+          rcases habs with habs | habs
+          · exact tA1_ne_tA2a habs
+          · exact tA1_ne_tA2b habs
+      by_cases hg : x 3 = 0 ∧ x 4 = 0
+      · have hcell : toyCellB (.st tB1) x = ToyCell.splitC := by
+          simp only [toyCellB]
+          rw [if_pos ⟨trivial, hg.1, hg.2⟩]
+        rw [hcell]
+        simp only [toyBranchB, Finset.mem_insert, Finset.mem_singleton]
+        constructor
+        · rintro ⟨-, hν, -⟩
+          exact hν
+        · intro hν
+          exact ⟨rfl, hν, Or.inl ⟨rfl, hd⟩, hg.1, hg.2⟩
+      · have hcell : toyCellB (.st tB1) x = ToyCell.junk := by
+          simp only [toyCellB]
+          rw [if_neg (fun hc => hg ⟨hc.2.1, hc.2.2⟩)]
+        rw [hcell]
+        simp only [toyBranchB, Finset.notMem_empty, iff_false]
+        rintro ⟨-, -, -, hx3, hx4⟩
+        exact hg ⟨hx3, hx4⟩
+    · subst h1
+      have hcell : toyCellB (.st tB2c) x = ToyCell.junk := by
+        simp only [toyCellB]
+        rw [if_neg (fun hc => tA1_ne_tA2a hc.1.symm)]
+      rw [hcell]
+      simp only [toyBranchB, Finset.notMem_empty, iff_false]
+      rintro ⟨hc, -⟩
+      exact tA1_ne_tA2a hc.symm
+    · subst h1
+      have hcell : toyCellB (.st tB2d) x = ToyCell.junk := by
+        simp only [toyCellB]
+        rw [if_neg (fun hc => tA1_ne_tA2b hc.1.symm)]
+      rw [hcell]
+      simp only [toyBranchB, Finset.notMem_empty, iff_false]
+      rintro ⟨hc, -⟩
+      exact tA1_ne_tA2b hc.symm
+  child_root_sub := by
+    rintro ν x ⟨hν, hx0, hx1, hx2⟩
+    subst hν
+    have hcell : toyCellB .amb x = ToyCell.rootC := by
+      simp only [toyCellB]
+      rw [if_pos ⟨hx0, hx1⟩]
+    rw [hcell]
+    simp [toyBranchB]
+  child_cell_red := by
+    intro χ g ψ ν x hx hν
+    by_cases hguard : ψ = Polynomial.X ∧ x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0
+    · have hcell : toyCellB (.red g ψ) x = ToyCell.winC := by
+        simp only [toyCellB]
+        rw [if_pos hguard]
+      rw [hcell] at hν
+      simp only [toyBranchB, Finset.mem_singleton] at hν
+      exact ⟨hν, hguard.2⟩
+    · have hcell : toyCellB (.red g ψ) x = ToyCell.junk := by
+        simp only [toyCellB]
+        rw [if_neg hguard]
+      rw [hcell] at hν
+      simp [toyBranchB] at hν
 
 /-! ### the trees, the DO-2 plumbing, and the gate battery (G1a/G1b obligations) -/
 
