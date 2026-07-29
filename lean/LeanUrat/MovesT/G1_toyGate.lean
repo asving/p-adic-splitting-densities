@@ -780,18 +780,201 @@ noncomputable def toyCAB : CellData 2 (ZMod 2) 2 3 9 polTriv toyModelB where
 
 /-! ### the trees, the DO-2 plumbing, and the gate battery (G1a/G1b obligations) -/
 
+/-! #### tree/ledger proof infrastructure (P-phase fill; private helpers only). -/
+section ToyTreeHelpers
+
+private lemma tA1_prefix_tA2a : tA1.IsPrefixOf tA2a := ⟨[toyLeafA], rfl⟩
+private lemma tA1_prefix_tA2b : tA1.IsPrefixOf tA2b := ⟨[toyLeafB], rfl⟩
+
+private lemma tA2a_not_prefix_tA2b : ¬ tA2a.IsPrefixOf tA2b := fun h =>
+  tA2a_ne_tA2b (hist_ext (h.eq_of_length rfl))
+
+private lemma tA2b_not_prefix_tA2a : ¬ tA2b.IsPrefixOf tA2a := fun h =>
+  tA2a_ne_tA2b (hist_ext (h.eq_of_length rfl)).symm
+
+private lemma tA2a_not_prefix_tA1 : ¬ tA2a.IsPrefixOf tA1 := fun h => by
+  have h2 : (2 : ℕ) ≤ 1 := h.length_le
+  omega
+
+private lemma tA2b_not_prefix_tA1 : ¬ tA2b.IsPrefixOf tA1 := fun h => by
+  have h2 : (2 : ℕ) ≤ 1 := h.length_le
+  omega
+
+private lemma prefix_of_tA1 {H' : History 2 (ZMod 2)} (h : H'.IsPrefixOf tA1) :
+    H' = tA1 := by
+  have hlen : H'.nodes.length ≤ 1 := by
+    have h2 := h.length_le
+    rwa [tA1_nodes, List.length_singleton] at h2
+  have hpos : H'.nodes ≠ [] := H'.nonempty
+  have hpos' : 0 < H'.nodes.length := List.length_pos_iff.mpr hpos
+  exact hist_ext (h.eq_of_length (by rw [tA1_nodes, List.length_singleton]; omega))
+
+private lemma prefix_of_two {H' : History 2 (ZMod 2)} {a b : Node 2 (ZMod 2)}
+    (h : H'.nodes <+: [a, b]) : H'.nodes = [a] ∨ H'.nodes = [a, b] := by
+  have hlen : H'.nodes.length ≤ 2 := by simpa using h.length_le
+  have hpos : 0 < H'.nodes.length := List.length_pos_iff.mpr H'.nonempty
+  have heq := List.prefix_iff_eq_take.mp h
+  have h12 : H'.nodes.length = 1 ∨ H'.nodes.length = 2 := by omega
+  rcases h12 with h1 | h1
+  · left; rw [heq, h1]; rfl
+  · right; rw [heq, h1]; rfl
+
+/-- the {x0, x1} reduction locus (the root-cell system). -/
+private noncomputable def rootLocus : Locus 2 9 :=
+  ⟨fun c => decide ((c : ℕ) < 2), fun _ _ => 0⟩
+
+/-- the {x0…x5} state locus (carrier A's one-node state system). -/
+private noncomputable def stateLocus : Locus 2 9 :=
+  ⟨fun c => decide ((c : ℕ) < 6), fun _ _ => 0⟩
+
+/-- the codim-1 zero clause at coordinate `i`. -/
+private noncomputable def zeroClause (i : Fin 9) : LevelClause 2 9 where
+  support := {i}
+  codim := 1
+  sat := fun x => x i = 0
+  dep := fun x y h => by rw [h i (Finset.mem_singleton_self i)]
+  count := by
+    have h1 : Nat.card {y : Fin 9 → ZMod 2 //
+        y i = 0 ∧ ∀ c ∉ ({i} : Finset (Fin 9)), y c = 0} = 1 := by
+      rw [Nat.card_eq_one_iff_unique]
+      constructor
+      · constructor
+        intro a b
+        apply Subtype.ext; funext c
+        by_cases hc : c = i
+        · subst hc; rw [a.2.1, b.2.1]
+        · rw [a.2.2 c (by simp [hc]), b.2.2 c (by simp [hc])]
+      · exact ⟨⟨fun _ => 0, rfl, fun _ _ => rfl⟩⟩
+    rw [h1, one_mul, Finset.card_singleton]
+
+/-- the head's {x2…x5} 4-clause window system. -/
+private noncomputable def windowFresh : FreshData 2 9 where
+  clauses := [zeroClause 2, zeroClause 3, zeroClause 4, zeroClause 5]
+  disj := by
+    have hd : ∀ i j : Fin 9, i ≠ j →
+        Disjoint (zeroClause i).support (zeroClause j).support := by
+      intro i j hij
+      simpa [zeroClause] using hij
+    refine List.Pairwise.cons ?_ (List.Pairwise.cons ?_
+      (List.Pairwise.cons ?_ (List.pairwise_singleton _ _)))
+    all_goals
+      intro cl hcl
+      simp only [List.mem_cons, List.mem_singleton, List.not_mem_nil, or_false] at hcl
+    · rcases hcl with h | h | h <;> subst h <;> exact hd _ _ (by decide)
+    · rcases hcl with h | h <;> subst h <;> exact hd _ _ (by decide)
+    · subst hcl; exact hd _ _ (by decide)
+
+/-- the leaves' empty fresh system (mstar 0). -/
+private noncomputable def emptyFresh : FreshData 2 9 := ⟨[], List.Pairwise.nil⟩
+
+private lemma rootLocus_iff (x : Box 2 9) :
+    rootLocus.IsSolution x ↔ (x 0 = 0 ∧ x 1 = 0) := by
+  constructor
+  · intro h
+    exact ⟨h 0 rfl, h 1 rfl⟩
+  · rintro ⟨h0, h1⟩ i hi
+    fin_cases i
+    · exact h0
+    · exact h1
+    all_goals exact absurd hi (by decide)
+
+private lemma stateLocus_iff (x : Box 2 9) :
+    stateLocus.IsSolution x ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · intro h
+    exact ⟨h 0 rfl, h 1 rfl, h 2 rfl, h 3 rfl, h 4 rfl, h 5 rfl⟩
+  · rintro ⟨h0, h1, h2, h3, h4, h5⟩ i hi
+    fin_cases i
+    · exact h0
+    · exact h1
+    · exact h2
+    · exact h3
+    · exact h4
+    · exact h5
+    all_goals exact absurd hi (by decide)
+
+private lemma windowFresh_iff (x : Box 2 9) :
+    windowFresh.sat x ↔ (x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · intro h
+    exact ⟨h (zeroClause 2) (by simp [windowFresh]),
+      h (zeroClause 3) (by simp [windowFresh]),
+      h (zeroClause 4) (by simp [windowFresh]),
+      h (zeroClause 5) (by simp [windowFresh])⟩
+  · rintro ⟨h2, h3, h4, h5⟩ cl hcl
+    simp only [windowFresh, List.mem_cons, List.mem_singleton,
+      List.not_mem_nil, or_false] at hcl
+    rcases hcl with h | h | h | h <;> subst h
+    · exact h2
+    · exact h3
+    · exact h4
+    · exact h5
+
+private lemma rootCell_iff (x : Box 2 9) :
+    x ∈ rootCell toyχ toyG ↔ (x 0 = 0 ∧ x 1 = 0) := by
+  constructor
+  · intro h
+    exact ⟨h 0, h 1⟩
+  · rintro ⟨h0, h1⟩ b
+    fin_cases b
+    · exact h0
+    · exact h1
+
+end ToyTreeHelpers
+
 open Classical in
 noncomputable def toyTreeA : VTree 2 (ZMod 2) where
   chains := {tA1, tA2a, tA2b}
   hfin := ((Set.finite_singleton tA2b).insert tA2a).insert tA1
   hne_nodes := fun H _ => H.nonempty
-  hclosed := by sorry
+  hclosed := by
+    intro H hH H' hpre hne
+    simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH ⊢
+    rcases hH with h | h | h <;> subst h
+    · exact Or.inl (prefix_of_tA1 hpre)
+    · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hpre) with h | h
+      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inl (hist_ext (h.trans tA2a_nodes.symm)))
+    · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hpre) with h | h
+      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inr (hist_ext (h.trans tA2b_nodes.symm)))
   henV := ∅
   hhen := by simp
   leafV := fun H =>
     if H = tA2a then some (irrVerdictOf tA2a)
     else if H = tA2b then some (irrVerdictOf tA2b) else none
-  hleaf := by sorry
+  hleaf := by
+    intro H
+    constructor
+    · intro hsome
+      by_cases h2a : H = tA2a
+      · subst h2a
+        refine ⟨Or.inr (Or.inl rfl), ?_⟩
+        intro H' hH' hpre
+        simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH'
+        rcases hH' with h | h | h <;> subst h
+        · exact absurd hpre tA2a_not_prefix_tA1
+        · rfl
+        · exact absurd hpre tA2a_not_prefix_tA2b
+      · by_cases h2b : H = tA2b
+        · subst h2b
+          refine ⟨Or.inr (Or.inr rfl), ?_⟩
+          intro H' hH' hpre
+          simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH'
+          rcases hH' with h | h | h <;> subst h
+          · exact absurd hpre tA2b_not_prefix_tA1
+          · exact absurd hpre tA2b_not_prefix_tA2a
+          · rfl
+        · rw [if_neg h2a, if_neg h2b] at hsome
+          exact absurd hsome (by simp)
+    · rintro ⟨hmem, hmax⟩
+      simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hmem
+      rcases hmem with h | h | h <;> subst h
+      · exact absurd (hmax tA2a (Or.inr (Or.inl rfl)) tA1_prefix_tA2a).symm
+          tA1_ne_tA2a
+      · rw [if_pos rfl]; rfl
+      · rw [if_neg (Ne.symm tA2a_ne_tA2b), if_pos rfl]; rfl
   nsLeaf := fun _ => False
   hns_leaf := by simp
 
@@ -800,13 +983,53 @@ noncomputable def toyTreeB : VTree 2 (ZMod 2) where
   chains := {tB1, tB2c, tB2d}
   hfin := ((Set.finite_singleton tB2d).insert tB2c).insert tB1
   hne_nodes := fun H _ => H.nonempty
-  hclosed := by sorry
+  hclosed := by
+    intro H hH H' hpre hne
+    simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH ⊢
+    rcases hH with h | h | h <;> subst h
+    · exact Or.inl (prefix_of_tA1 hpre)
+    · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hpre) with h | h
+      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inl (hist_ext (h.trans tA2a_nodes.symm)))
+    · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hpre) with h | h
+      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inr (hist_ext (h.trans tA2b_nodes.symm)))
   henV := ∅
   hhen := by simp
   leafV := fun H =>
     if H = tB2c then some (irrVerdictOf tB2c)
     else if H = tB2d then some (irrVerdictOf tB2d) else none
-  hleaf := by sorry
+  hleaf := by
+    intro H
+    constructor
+    · intro hsome
+      by_cases h2a : H = tB2c
+      · subst h2a
+        refine ⟨Or.inr (Or.inl rfl), ?_⟩
+        intro H' hH' hpre
+        simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH'
+        rcases hH' with h | h | h <;> subst h
+        · exact absurd hpre tA2a_not_prefix_tA1
+        · rfl
+        · exact absurd hpre tA2a_not_prefix_tA2b
+      · by_cases h2b : H = tB2d
+        · subst h2b
+          refine ⟨Or.inr (Or.inr rfl), ?_⟩
+          intro H' hH' hpre
+          simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH'
+          rcases hH' with h | h | h <;> subst h
+          · exact absurd hpre tA2b_not_prefix_tA1
+          · exact absurd hpre tA2b_not_prefix_tA2a
+          · rfl
+        · rw [if_neg h2a, if_neg h2b] at hsome
+          exact absurd hsome (by simp)
+    · rintro ⟨hmem, hmax⟩
+      simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hmem
+      rcases hmem with h | h | h <;> subst h
+      · exact absurd (hmax tB2c (Or.inr (Or.inl rfl)) tA1_prefix_tA2a).symm
+          tA1_ne_tA2a
+      · rw [if_pos rfl]; rfl
+      · rw [if_neg (show tB2d ≠ tB2c from Ne.symm tA2a_ne_tA2b), if_pos rfl]; rfl
   nsLeaf := fun _ => False
   hns_leaf := by simp
 
@@ -814,7 +1037,50 @@ noncomputable def toyTreeB : VTree 2 (ZMod 2) where
 noncomputable def toySplitB : SideSplit toyModelB toyCAB ToyCell.splitC
     ((⟨fun _ => false, fun _ _ => 0⟩ : Locus 2 9),
       (⟨[], List.Pairwise.nil⟩ : FreshData 2 9)).2 := by
-  sorry
+  classical
+  exact
+    { k := 2
+      sideOf := fun ν => if ν = toyLeafB then (1 : Fin 2) else 0
+      side_ne := by
+        intro j
+        fin_cases j
+        · exact ⟨toyLeafA, Finset.mem_insert_self _ _, if_neg leafA_ne_leafB⟩
+        · exact ⟨toyLeafB, Finset.mem_insert_of_mem (Finset.mem_singleton_self _),
+            if_pos rfl⟩
+      clausesOf := fun _ => ∅
+      hpartition := by
+        constructor
+        · ext cl
+          simp only [Set.mem_iUnion, Finset.coe_empty, Set.mem_empty_iff_false,
+            exists_false, Set.mem_setOf_eq, false_iff]
+          exact List.not_mem_nil
+        · intro i j hij
+          simp [Function.onFun]
+      sideSpan := fun j => if j = 0 then ({3} : Finset (Fin 9)) else {4}
+      hspan_disj := by
+        have h : ∀ i j : Fin 2, i ≠ j →
+            Disjoint (if i = 0 then ({3} : Finset (Fin 9)) else {4})
+              (if j = 0 then ({3} : Finset (Fin 9)) else {4}) := by decide
+        exact fun i j hij => h i j hij
+      hsupport := by
+        intro j cl hcl
+        exact absurd hcl (Finset.notMem_empty cl)
+      hullSlope := fun j => if j = 0 then (2 : ℚ) else 3
+      hslope := by
+        have h : ∀ i j : Fin 2, i < j →
+            (if i = 0 then (2 : ℚ) else 3) < (if j = 0 then (2 : ℚ) else 3) := by
+          decide
+        exact fun i j hij => h i j hij
+      hside_read := by
+        intro ν hν
+        have hν' : ν = toyLeafA ∨ ν = toyLeafB := by
+          have h2 : ν ∈ ({toyLeafA, toyLeafB} : Finset (Node 2 (ZMod 2))) := hν
+          simpa using h2
+        rcases hν' with h | h <;> subst h
+        · rw [if_neg leafA_ne_leafB, if_pos rfl]
+          rfl
+        · rw [if_pos rfl, if_neg (by decide)]
+          rfl }
 
 noncomputable def toyHcrA : ChildRoot none toyHead := toyHead_root
 
@@ -822,17 +1088,210 @@ noncomputable def toyHcrA : ChildRoot none toyHead := toyHead_root
 noncomputable def toyTracksA : RootSplitData toyTreeA toyG where
   t := 1
   trackChains := fun _ => {tA1, tA2a, tA2b}
-  hpart := by sorry
+  hpart := by
+    constructor
+    · exact Set.iUnion_const _
+    · intro i j hij
+      exact absurd (Subsingleton.elim i j) hij
   headOf := fun _ => toyHead
-  hhead := by sorry
+  hhead := by
+    intro i H hH
+    simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hH
+    rcases hH with h | h | h <;> subst h <;> rfl
   hinj := fun i j _ => Subsingleton.elim i j
   hne := fun _ => ⟨tA1, by simp⟩
-  hcov := by sorry
+  hcov := fun _ => ⟨toyHead_root, Set.mem_insert _ _⟩
+
+/-! #### ledger proof infrastructure (P-phase fill; private helpers only). -/
+section ToyLedgerHelpers
+
+private lemma memA_tA1_iff (x : Box 2 9) : toyMemA (some tA1) x ↔
+    (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · rintro ⟨-, hd⟩; exact hd
+  · intro hd; exact ⟨Or.inl rfl, hd⟩
+
+private lemma memA_tA2a_iff (x : Box 2 9) : toyMemA (some tA2a) x ↔
+    (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · rintro ⟨-, hd⟩; exact hd
+  · intro hd; exact ⟨Or.inr (Or.inl rfl), hd⟩
+
+private lemma memA_tA2b_iff (x : Box 2 9) : toyMemA (some tA2b) x ↔
+    (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  constructor
+  · rintro ⟨-, hd⟩; exact hd
+  · intro hd; exact ⟨Or.inr (Or.inr rfl), hd⟩
+
+private lemma cellA_red_winC_iff (x : Box 2 9) :
+    toyCellA (.red toyG Polynomial.X) x = ToyCell.winC ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.winC from if_pos ⟨rfl, hd⟩]
+    exact iff_of_true rfl hd
+  · rw [show toyCellA (.red toyG Polynomial.X) x = ToyCell.junk from
+      if_neg (fun hc => hd hc.2)]
+    exact iff_of_false (by simp) hd
+
+private lemma cellA_st_tA1_splitC_iff (x : Box 2 9) :
+    toyCellA (.st tA1) x = ToyCell.splitC ↔
+      (x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0) := by
+  by_cases hd : x 0 = 0 ∧ x 1 = 0 ∧ x 2 = 0 ∧ x 3 = 0 ∧ x 4 = 0 ∧ x 5 = 0
+  · rw [show toyCellA (.st tA1) x = ToyCell.splitC from
+      if_pos ⟨rfl, Or.inl rfl, hd⟩]
+    exact iff_of_true rfl hd
+  · rw [show toyCellA (.st tA1) x = ToyCell.junk from
+      if_neg (fun hc => hd hc.2.2)]
+    exact iff_of_false (by simp) hd
+
+private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
+    (EntSt.red toyG Polynomial.X) ToyCell.winC rootLocus windowFresh := by
+  constructor
+  · ext x
+    constructor
+    · rintro ⟨hroot, hcell⟩
+      have hd := (cellA_red_winC_iff x).mp hcell
+      exact ⟨(rootLocus_iff x).mpr ⟨hd.1, hd.2.1⟩,
+        (windowFresh_iff x).mpr
+          ⟨hd.2.2.1, hd.2.2.2.1, hd.2.2.2.2.1, hd.2.2.2.2.2⟩⟩
+    · rintro ⟨hsol, hsat⟩
+      have h01 := (rootLocus_iff x).mp hsol
+      have h25 := (windowFresh_iff x).mp hsat
+      exact ⟨(rootCell_iff x).mpr h01, (cellA_red_winC_iff x).mpr
+        ⟨h01.1, h01.2, h25.1, h25.2.1, h25.2.2.1, h25.2.2.2⟩⟩
+  · ext x
+    constructor
+    · intro h
+      exact (rootLocus_iff x).mpr ((rootCell_iff x).mp h)
+    · intro h
+      exact (rootCell_iff x).mpr ((rootLocus_iff x).mp h)
+
+private lemma presents_split : SitePresents toyModel toyCA toyχ
+    (EntSt.st tA1) ToyCell.splitC stateLocus emptyFresh := by
+  constructor
+  · ext x
+    constructor
+    · rintro ⟨hst, hcell⟩
+      exact ⟨(stateLocus_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell),
+        fun cl hcl => by simp [emptyFresh] at hcl⟩
+    · rintro ⟨hsol, -⟩
+      have hd := (stateLocus_iff x).mp hsol
+      exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
+  · ext x
+    constructor
+    · intro h
+      exact (stateLocus_iff x).mpr ((memA_tA1_iff x).mp h)
+    · intro h
+      exact (memA_tA1_iff x).mpr ((stateLocus_iff x).mp h)
+
+private lemma state_cell_tA1 : stateEvent toyModel (some tA1)
+    = cellEventE toyModel toyCA toyχ (EntSt.red toyG Polynomial.X) ToyCell.winC := by
+  ext x
+  constructor
+  · intro h
+    have hd := (memA_tA1_iff x).mp h
+    exact ⟨(rootCell_iff x).mpr ⟨hd.1, hd.2.1⟩, (cellA_red_winC_iff x).mpr hd⟩
+  · rintro ⟨-, hcell⟩
+    exact (memA_tA1_iff x).mpr ((cellA_red_winC_iff x).mp hcell)
+
+private lemma state_cell_tA2a : stateEvent toyModel (some tA2a)
+    = cellEventE toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
+  ext x
+  constructor
+  · intro h
+    have hd := (memA_tA2a_iff x).mp h
+    exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
+  · rintro ⟨-, hcell⟩
+    exact (memA_tA2a_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
+
+private lemma state_cell_tA2b : stateEvent toyModel (some tA2b)
+    = cellEventE toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
+  ext x
+  constructor
+  · intro h
+    have hd := (memA_tA2b_iff x).mp h
+    exact ⟨(memA_tA1_iff x).mpr hd, (cellA_st_tA1_splitC_iff x).mpr hd⟩
+  · rintro ⟨-, hcell⟩
+    exact (memA_tA2b_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
+
+end ToyLedgerHelpers
 
 /-- DO-2: the carrier-A site ledger (head ↦ the {x2…x5} 4-clause window system;
 leaves ↦ mstar 0). -/
 noncomputable def toyLedgerA : SiteLedger toyTreeA toyModel toyCA toyχ := by
-  sorry
+  classical
+  exact
+    { sys := fun H =>
+        if H = tA1 then (rootLocus, windowFresh) else (stateLocus, emptyFresh)
+      cellAt := fun H => if H = tA1 then ToyCell.winC else ToyCell.splitC
+      parentSt := fun H =>
+        if H = tA1 then EntSt.red toyG Polynomial.X else EntSt.st tA1
+      hparent := by
+        intro H hH
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · rw [if_pos rfl]
+          exact rfl
+        · rw [if_neg (Ne.symm tA1_ne_tA2a)]
+          exact ⟨tA1_prefix_tA2a, rfl, Or.inl rfl⟩
+        · rw [if_neg (Ne.symm tA1_ne_tA2b)]
+          exact ⟨tA1_prefix_tA2b, rfl, Or.inl rfl⟩
+      presents := by
+        intro H hH
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · rw [if_pos rfl, if_pos rfl, if_pos rfl]
+          exact presents_tA1
+        · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a),
+            if_neg (Ne.symm tA1_ne_tA2a)]
+          exact presents_split
+        · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b),
+            if_neg (Ne.symm tA1_ne_tA2b)]
+          exact presents_split
+      sides := fun _ => 1
+      hsides := fun _ _ => le_rfl
+      state_cell := by
+        intro H hH h1
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · rw [if_pos rfl, if_pos rfl]
+          exact state_cell_tA1
+        · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a)]
+          exact state_cell_tA2a
+        · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b)]
+          exact state_cell_tA2b
+      splitAt := fun H hH h2 => absurd h2 (by omega)
+      hsplit_k := fun H hH h2 => absurd h2 (by omega)
+      free := by
+        intro H hH cl hcl cIdx hsup
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · rw [if_pos rfl] at hcl ⊢
+          simp only [windowFresh, List.mem_cons, List.not_mem_nil, or_false] at hcl
+          rcases hcl with h | h | h | h <;> subst h <;>
+            (have hc := Finset.mem_singleton.mp hsup; subst hc; rfl)
+        · rw [if_neg (Ne.symm tA1_ne_tA2a)] at hcl
+          simp [emptyFresh] at hcl
+        · rw [if_neg (Ne.symm tA1_ne_tA2b)] at hcl
+          simp [emptyFresh] at hcl
+      freshCoords := fun H =>
+        if H = tA1 then ({2, 3, 4, 5} : Finset (Fin 9)) else ∅
+      hfresh := by
+        intro H hH cl hcl cIdx hsup
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · rw [if_pos rfl] at hcl ⊢
+          simp only [windowFresh, List.mem_cons, List.not_mem_nil, or_false] at hcl
+          rcases hcl with h | h | h | h <;> subst h <;>
+            (have hc := Finset.mem_singleton.mp hsup; subst hc; decide)
+        · rw [if_neg (Ne.symm tA1_ne_tA2a)] at hcl
+          simp [emptyFresh] at hcl
+        · rw [if_neg (Ne.symm tA1_ne_tA2b)] at hcl
+          simp [emptyFresh] at hcl
+      hcard := by
+        intro H hH
+        rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
+        · rw [if_pos rfl, if_pos rfl]
+          rfl
+        · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a)]
+          rfl
+        · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b)]
+          rfl }
 
 open Classical in
 /-- DO-2: the τ-emission verdict map on carrier A. -/
@@ -855,7 +1314,15 @@ theorem toy_sib : SibCount toyModel toyCA toyχ := by
   sorry
 
 theorem toy_vdict_nonconstant : ∃ o x o' x', toyVdict o x ≠ toyVdict o' x' := by
-  sorry
+  refine ⟨none, fun _ => 0, some tA2a, fun _ => 0, ?_⟩
+  have h1 : toyVdict none (fun _ => 0) = none := rfl
+  have h2 : toyVdict (some tA2a) (fun _ => 0) = some (irrVerdictOf tA2a) := by
+    classical
+    show (if toyMemA (some tA2a) (fun _ => 0) ∧ (tA2a = tA2a ∨ tA2a = tA2b)
+        then some (irrVerdictOf tA2a) else none) = some (irrVerdictOf tA2a)
+    rw [if_pos ⟨⟨Or.inr (Or.inl rfl), rfl, rfl, rfl, rfl, rfl, rfl⟩, Or.inl rfl⟩]
+  rw [h1, h2]
+  simp
 
 theorem toy_fiber_ne : ∃ x, toyTreeA.fiberAt toyModel toyχ x := by
   sorry
