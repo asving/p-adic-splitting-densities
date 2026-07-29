@@ -28,6 +28,17 @@ theorem w17ii_wave4 {n : ℕ} {T : TableShape n} {M : MeasuredSide T}
   · -- clause (ii): WshVal IS the shDom height-sum of shWeightH — the
     -- [3t]-owned per-shape assembly half (V7-4b's per-ε̊ ingredients over
     -- the shape layer).  THE ONE BANKED SORRY (C14).
+    -- FENCE-RULE RECORD (final-ratification V repairs, 2026-07-29): negation
+    -- attempted at the in-corpus witness `n2Chain` (N2Sigmas) — clause (ii)
+    -- HOLDS there (shDom = {0}, shWeightH ≡ 1, WshVal ≡ 1: singleton HasSum),
+    -- so no compiled countermodel exists.  PLAUSIBILITY FLAG for the [3t]
+    -- owner: the chain laws tie shWeightH/WshVal to level censuses
+    -- (shweight_card/wshval_card/shevt_grouping) but nothing forces
+    -- summability over an INFINITE shDom — a from-scratch chain with
+    -- shDom infinite, shWeightH ≡ 1, visH ≡ ∅ (so shEvt = ∅, WshVal → 0)
+    -- appears to satisfy every card law while breaking the HasSum; if such
+    -- a chain is constructible the statement needs a domain-census guard
+    -- (sign-off adjudication, queued).
     sorry
 
 /-- the pin-level restatement: the chain's `wsh17_pin` at its own carriers. -/

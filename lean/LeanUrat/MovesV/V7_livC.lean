@@ -14,15 +14,33 @@
     M1 failure mode — the ∃-form is the strongest sorry-safe statement. -/
 import LeanUrat.MovesV.V7_livB
 import LeanUrat.MovesV.V4_part1C
+import LeanUrat.MovesV.V7_ts
 
 set_option linter.style.longLine false
 set_option linter.style.header false
 
 namespace LeanUrat.MovesV
 
-/-- NAMED OPEN INSTANTIATION DUTY (M4): a table shape and measured side
-carrying the full `MovesS.LedgerIV` law suite, to be built from the bound
-CTS system (V7-3a/V7-4 seam instances). -/
+/-- NAMED OPEN INSTANTIATION DUTY (M4; WITNESS-PINNED at the final-
+ratification M-seam repair, 2026-07-29 — the verdict: "the existential
+conclusions do not state that their witnesses are the table and measured
+system constructed from the supplied `C`, `V`, or `X` … the existential
+sorry duties can be witnessed by systems unrelated to the CTS objects
+unless explicit equivalences and field ties are added"): the ∃ now pins
+the TABLE side to the CTS carriers (`VType ≃ VLabel n`, per-block
+`State e ≃ StateOf n e` — satisfied by `tableShape_inst`) and pins the
+measured side's box CARDINALITIES to V's boxes at V's pools (the |Box|
+tie, card-level and GUARDED on V-box nonemptiness — unguarded it would
+collide with `MeasuredSide.boxpos` at an adversarial empty-box V).
+INSTANTIATION ATTEMPT (recorded): the MeasuredSide over V (Box := V.Box,
+cells := the DCellO fibers, cellEvt := V.cellEvt, μcell := μcellH) needs
+the full V7-4 field map (~30 fields) + the LedgerIV suite discharged from
+X/cp/hVA + part1/part2 (the xhd_sum leg IS V0-3 + cp.count; part1 IS the
+supplied `hb`/`hc`/`hd` route) — a dedicated instance unit, not
+completable inline; stays the named sorried duty.  Hard M-side STRUCTURE
+ties (M.Pools = V.Pools, M.Box ≃ V.Box) were NOT baked in (fence-rule
+record: MeasuredSide's own pool/box laws could make them false for
+adversarial V — the M1 failure mode). -/
 theorem ledgerIV_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
@@ -31,6 +49,10 @@ theorem ledgerIV_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hd : P1FixedHeightExact V X.w)
     (hEC : EntCount V) (hEU : EntU V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
+      Nonempty (T.VType ≃ VLabel n) ∧
+      (∀ e, Nonempty (T.State e ≃ StateOf n e)) ∧
+      (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
+        Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
       Nonempty (MovesS.LedgerIV T M) := by
   sorry
 

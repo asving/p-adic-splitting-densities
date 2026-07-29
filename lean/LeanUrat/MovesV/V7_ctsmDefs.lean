@@ -120,12 +120,18 @@ def CompH_Stmt (L : CtsmLedger n) : Prop :=
       = L.cc.ιN ε β₀ q₀ N * (((pathProdPoly L.V γ).eval q₀ : ℚ) : ℝ)
           * gProd L.X.w γ h q₀
 
+/-- (COMP-Σ), M3-REPAIRED (final-ratification verdict 2026-07-29): the
+algebraic collapse AND the note's MARKED-EVENT HasSum identity — the
+stabilized marked-event values sum over H(γ) to ι_ε × the stepwise
+product (`comp_sigma_hasSum`, V5_compsig). -/
 def CompSigma_Stmt (L : CtsmLedger n) : Prop :=
   HMC L.TE L.D → ∀ (ε : EntShapeV n) (β₀ : L.S.Cell) {α}
     (γ : Template n L.S α) {q₀ : ℚ}, q₀ ∈ L.V.Pools →
-    iotaEps L.cc ε β₀ q₀ * (((pathProdPoly L.V γ).eval q₀ : ℚ) : ℝ)
+    (iotaEps L.cc ε β₀ q₀ * (((pathProdPoly L.V γ).eval q₀ : ℚ) : ℝ)
         * gcVal L.X.s γ q₀
-      = iotaEps L.cc ε β₀ q₀ * stepProdVal L.V L.X.s γ q₀
+      = iotaEps L.cc ε β₀ q₀ * stepProdVal L.V L.X.s γ q₀) ∧
+    HasSum (fun h : {h // (L.D.dom γ).Mem h} => μhatVal L.cc ε β₀ γ h.1 q₀)
+      (iotaEps L.cc ε β₀ q₀ * stepProdVal L.V L.X.s γ q₀)
 
 def CompAgg_Stmt (L : CtsmLedger n) : Prop :=
   HMC L.TE L.D → ∀ hdom : EntDomOrder0 L.V,

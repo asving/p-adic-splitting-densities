@@ -341,6 +341,11 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
   --  datum g. NOTE for adjudication: (U)∧(R) is a candidate `CellData`/interface
   --  law pair, quantified over root-cell points only — strictly weaker than any
   --  per-cell table and independent of the cell chart.]
+  -- [FENCE-RULE RECORD 2026-08-01 (negation-attempt duty): no countermodel is
+  --  constructible from in-corpus witnesses — this `have` sits under the FULL
+  --  `CellAssign` premise row (child_cover included) and NO `CellAssign` instance
+  --  exists in the corpus (G1's toys deliberately stop at the `CellData` layer:
+  --  child_cover FAILS on both carriers at g = (1,0)); honest-open stands.]
   have hD4R0K :
       (∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
           T.child none ν' y → trackOf ν = trackOf ν' → ν = ν') ∧

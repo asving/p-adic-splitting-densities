@@ -276,6 +276,11 @@ noncomputable def sibCA : CellData 2 (ZMod 2) 2 1 2 polTriv sibModel where
     show (ν = toyHead ∨ ν = sibNode2) ∧ x 0 = 0 ↔
       (ν = toyHead ∨ ν = sibNode2) ∧ y 0 = 0
     rw [hkey]
+  -- [T RE-RATIFICATION 2026-08-01, the site-entrance keying: the falsifier's
+  --  member-keyed site read is the degenerate diagonal (this unit's gate lives on
+  --  the global `SibCount`, which is `cellOf`-keyed and untouched).]
+  branchCellOf := fun es _ν => sibCellOf es
+  branch_cell_joint := fun _es _ν _x _y h => h
 
 /-! ### the identical continuation events -/
 

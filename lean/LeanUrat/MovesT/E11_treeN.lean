@@ -48,11 +48,11 @@ theorem treeN (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
     (L : SiteLedger Tr T CA.toCellData χ)
     (sc : TreeScaffold Tr T CA.toCellData χ L trackOf)
     (hjcm : ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ L) (h2 : 2 ≤ L.sides H),
-      JCmultiAt T CA.toCellData χ (L.parentSt H) (L.splitAt H hH.1 h2))
+      JCmultiAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.splitAt H hH.1 h2))
     (hsibT : ∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.toCellData.branchSetOf (sc.splitFrame H hH).c).card →
-      SibCountAt T CA.toCellData χ (L.parentSt H) (L.cellAt H)
-        (sc.splitFrame H hH).c (sc.splitFrame H hH).S) :
+      2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
+      SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
+        (sc.splitFrame H hH).S) :
     Nat.card ↥{x : Box p (n * N) | Tr.fiberAt T χ x} * p ^ AofTr Tr L
       = p ^ (n * N) := by
   -- T-E11 is T-E8 (`treeExp`) at the working level m := n·N; `AofTr Tr L` unfolds
@@ -61,24 +61,10 @@ theorem treeN (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
       * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H) = p ^ (n * N)
   exact treeExp Tr T χ trackOf CA hχ hrc hred hsib hreal L sc hjcm hsibT hdet
 
-/-- **TREE-N's CROSS-LEVEL STABILITY, TYPED** — the note's displayed theorem (MOVES
-7559–7574), added at the T RATIFICATION (2026-07-31; verdict §5: "The note states
-that a fixed finite tree fiber becomes an exact union of level-N residue classes
-for every N ≥ thr(T) … Lean's `treeN` proves only [a] mass identity at one finite
-level, not finite-level stability"). Over a pinned level tower of models/charts:
-for every N above the tree's threshold `thr(T)` and every working level N' ≥ N,
-the tree fiber reads ONLY the level-<N digit block — "the fiber is a FINITE
-intersection of finite-level digit-cell conditions … hence an exact union of
-level-N residue classes" (7566–7570). Under the standard layout (m = n·N',
-coordinate c at level ⌊c/n⌋ + 1) the level-<N block is the first n·N coordinates. -/
-def TreeNStable {N₀ : ℕ}
-    (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
-    (χat : ∀ N', Fin n → Fin (n * N')) (Tr : VTree p F) : Prop :=
-  ∀ N : ℕ, Tr.thr n ≤ N →
-    ∀ (N' : ℕ) (h' : N₀ ≤ N'), N ≤ N' →
-      ∀ x x' : Box p (n * N'),
-        (∀ c : Fin (n * N'), (c : ℕ) < n * N → x c = x' c) →
-        (Tr.fiberAt (Tat N' h') (χat N') x ↔ Tr.fiberAt (Tat N' h') (χat N') x')
+/- [2026-08-01 INTEGRATION NOTE: the `TreeNStable` DEF is HOISTED to Defs §2.10
+(verbatim), so the ∀-closure `TreeNStableStmt` can ride `RS1GivenPackage.tree_n`
+(the re-ratification integration finding: "the stability statement exists but is
+not carried by the advertised RS.1 package"). The open theorem row stays HERE.] -/
 
 /-- **T-E11b `treeN_stable` — NAMED OPEN ROW** (T RATIFICATION 2026-07-31, verdict
 §5's demanded statement; the mass face `treeN` above is PROVED, this stability face
@@ -92,7 +78,12 @@ the row is carried as an honest `sorry` with this owner tag, NOT silently absorb
 HONESTY NOTE: the premise ROSTER is itself part of the open content — the owner's
 discharge may require strengthening it with the D4R.4 exact-realization face; the
 row asserts the note's claim at the note's declared inputs, and NOTHING downstream
-consumes it (the (†-AGG) input-vii seam cites the STATEMENT). -/
+consumes it (the (†-AGG) input-vii seam cites the STATEMENT). FENCE-RULE RECORD
+(2026-08-01, the negation-attempt duty on sorried universals): NO `KBTotTower`
+instance exists anywhere in the corpus (grep: the only occurrence is the
+`VPPinned.covering` field declaration — the toys are single-level carriers, no
+`Tat` tower), so the premise row is uninhabitable from in-corpus witnesses and no
+countermodel is constructible; honest-open stands. -/
 theorem treeN_stable (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
@@ -103,5 +94,12 @@ theorem treeN_stable (pol : CanonPolicy p F) {N₀ : ℕ}
     (hreal : ∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr) :
     TreeNStable Tat χat Tr := by
   sorry
+
+/-- the ∀-closure of `treeN_stable` — the value `RS1GivenPackage.tree_n` carries as
+its second conjunct (2026-08-01 integration). Rides `treeN_stable`'s single honest
+`sorry`; no second admission. -/
+theorem treeN_stable_stmt (pol : CanonPolicy p F) : TreeNStableStmt (n := n) pol :=
+  fun Tat χat trackOf hcov Tr hdet hreal =>
+    treeN_stable pol Tat χat trackOf hcov Tr hdet hreal
 
 end LeanUrat.MovesT

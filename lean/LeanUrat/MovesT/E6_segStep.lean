@@ -142,8 +142,9 @@ theorem spectator_conditional_mass {m : ℕ} (Sigma : Locus p m) (fd : FreshData
 
 end SpectatorKernel
 
-/-- RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): `state_cell` is now the
-EXACT Σ_c tie (`stateEvent T (some H) = siteCellEvent (parentSt H) (cellAt H)`), so
+/-- RE-KEYED at the T RE-RATIFICATION (2026-08-01, the site-entrance keying):
+`state_cell` is the exact Σ_c tie under the site's OWN read map
+(`stateEvent T (some H) = siteCellEvent (parentSt H) H.lastNode (cellAt H)`), so
 the same rewrite chain lands in the spectator kernel; the per-site charge holds at
 EVERY site (the former `sides H = 1` guard remains dropped). -/
 theorem fiber_seg_step (T : TreeModel p F n N m pol)
@@ -174,8 +175,8 @@ theorem presents_imply_jcMultiAt (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) (Tr : VTree p F) (χ : Fin n → Fin m)
     (L : SiteLedger Tr T CA χ) (H : History p F) (hH : H ∈ Tr.chains)
     (h2 : 2 ≤ L.sides H) :
-    JCmultiAt T CA χ (L.parentSt H) (L.splitAt H hH h2) := by
-  show Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) (L.cellAt H))
+    JCmultiAt T CA χ (L.parentSt H) H.lastNode (L.splitAt H hH h2) := by
+  show Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) H.lastNode (L.cellAt H))
       * p ^ (∑ j : Fin (L.splitAt H hH h2).k, (L.splitAt H hH h2).sideExp j)
     = Nat.card ↥(entEvent T χ (L.parentSt H))
   rw [L.hsplit_exp H hH h2, ← L.state_cell H hH]

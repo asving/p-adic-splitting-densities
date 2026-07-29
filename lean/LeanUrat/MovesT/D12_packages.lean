@@ -62,7 +62,13 @@ structure Wsh17Package where
   sib_count : Prop
 
 /-- the RS.1 GIVEN package at the MovesT values (REV 5: the vp leg TOWER-KEYED;
-REV 8: the FULL W4-1 interface rides). -/
+REV 8: the FULL W4-1 interface rides). RE-KEYED at the T RE-RATIFICATION
+(2026-08-01; verdict integration note: "`RS1GivenPackage.tree_n` remains
+`TreeNStmt`, which contains only the single-level mass identity, not
+`TreeNStable`. Thus the stability statement exists but is not carried by the
+advertised RS.1 package"): `tree_n` now carries BOTH legs — the mass identity
+(`TreeNStmt`, T-E11's proved face) ∧ the cross-level stability ∀-closure
+(`TreeNStableStmt`, T-E11b's honest open row). -/
 def rs1GivenOfMovesT (T : TreeModel p F n N m pol)
     (χ : Fin n → Fin m) (trackOf : Node p F → Polynomial (ZMod p))
     (CA : CellAssign p F n N m pol T χ trackOf)
@@ -73,7 +79,7 @@ def rs1GivenOfMovesT (T : TreeModel p F n N m pol)
     (rel2_a rel2_b rel2_c rel2_d rel2_e : Prop) : RS1GivenPackage :=
   { tree_exp_fin := TreeExpFin T χ trackOf CA,
     tree_exp_ns := TreeExpNs (n := n) pol,
-    tree_n := TreeNStmt (n := n) pol,
+    tree_n := TreeNStmt (n := n) pol ∧ TreeNStableStmt (n := n) pol,
     one_f := OneFStmt T χ,
     sib := SibCount T CA.toCellData χ,
     tb_cap := TBCapPinned (n := n) pol m ∧ NsAmendedPair (n := n) pol,
@@ -101,12 +107,13 @@ def xrbOfMovesT (T : TreeModel p F n N m pol)
       CellAssign p F n N' (n * N') pol (Tat N' h) (χat N') trackOf)
     (xhd_w xhd_u xhd_d xhd_s jc_inv rel2_a rel2_b rel2_d : Prop) : XRBPackage :=
   { sib := SibCount T CA.toCellData χ,
-    -- [T RATIFICATION 2026-07-31: exact-cell keying — the JC-multi row prices the
-    --  site's EXACT cell event (`siteCellEvent (parentSt H) (cellAt H)`, the side
-    --  split's own cell), per verdict §2.]
+    -- [T RE-RATIFICATION 2026-08-01: the site-entrance keying — the JC-multi row
+    --  prices the site's exact cell event under its OWN read map
+    --  (`siteCellEvent (parentSt H) H.lastNode (cellAt H)`, the side split's own
+    --  cell).]
     jc_multi := (∀ (Tr : VTree p F) (L : SiteLedger Tr T CA.toCellData χ),
       ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ L) (h2 : 2 ≤ L.sides H),
-        JCmultiAt T CA.toCellData χ (L.parentSt H)
+        JCmultiAt T CA.toCellData χ (L.parentSt H) H.lastNode
           (L.splitAt H hH.1 h2)),
     tb_cap := TBCapPinned (n := n) pol m ∧ NsAmendedPair (n := n) pol,
     vp := VPPinned pol Tat χat trackOf CAat,

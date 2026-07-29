@@ -14,49 +14,56 @@ strong induction on the chain cones via the first-split decomposition; every sit
 charged exactly once. The ∀-closure `TreeExpFin` (Defs §2.10) carries the FULL W4-1
 interface.
 
-EXECUTION RECORD 2026-07-31 (THE T RATIFICATION REPAIRS APPLIED — REJECT-M verdict,
-`notes/MOVEST_RATIFY_CODEX_2026-07-30.md`; supersedes the 2026-07-30 branch-stratum
-adjudication): the ratifier's central finding — "note: exact site-owned full joint
-cell / Lean: node ∈ branchSetOf(cellOf entrance x). That discrepancy propagates
-into SitePresents, state_cell, JCmultiAt, SibCountAt, and TREE-EXP" — is repaired
-by the EXACT-CELL re-key: `siteCellEvent es c` is now Ψ^{−1}(c) over the entrance
-(MOVES 7448–7449), `c` the site's own full joint cell (`L.cellAt H`);
-`state_cell` is the exact Σ_c SCAFFOLD LAW (owner HC-2; its instance-level
-sibling-forcing obstruction — the bracketed record below — is disclosed at the
-field); `JCmultiAt` prices its side split's own cell; `SibCountAt` carries its
-conditioning cell explicitly (verdict §3 fixed) with the roster keyed by the
-frame's own SPLIT cell; and `hjcm` is CONSUMED at multi-side sites in
-`cone_charge` (verdict §4 fixed — the note declares (JC-multi) OPEN at exactly
-those sites; T-E6's `presents_imply_jcMultiAt` records that the ledger's presented
-faces already imply it, so the OPEN obligation sits inside the owner's
-presented-face discharge). The global `SibCount` serves the root step through
-T-E5 unchanged.
+EXECUTION RECORD 2026-08-01 (THE T RE-RATIFICATION REPAIRS APPLIED — REJECT-M
+verdict, `/tmp/finalratify_t/verdict.txt`; supersedes the 2026-07-31 exact-cell
+round): the verdict's central finding — "`siteCellEvent` is keyed only by `es` and
+`c` … For two co-realized sibling sites with the same `parentSt`, `state_cell`
+forces their exact cells—and hence state events—to coincide whenever they share a
+fiber witness … the carrier still lacks the site/branch/frame index needed to
+represent distinct sibling reads" — is repaired by THE SITE-ENTRANCE KEYING
+(adjudicated fix: the branch taken is part of the child site's entrance datum —
+the note's recursion has each child recurse FROM the joint cell WITH its member
+index, MOVES 7503–7515): `CellData` gains the member-keyed site read
+`branchCellOf es ν` (with the joint-factoring law `branch_cell_joint`), and
+`siteCellEvent es ν c` is Ψ_s^{−1}(c) over the entrance with Ψ_s the SITE's own
+read map (MOVES 7448–7449) — sibling sites key different maps, so distinct pins
+no longer collide (`f1_two_leaf_discharge` below, the displayed check). The
+verdict's second material finding — the `SibCountAt` c/cSplit two-keying ("an
+arbitrary split-cell roster can be attached to an unrelated exact conditioning
+cell") — is repaired by the ONE-CELL form: conditioning and roster both key the
+site's own `L.cellAt H`, tied to the scaffold frame by the new
+`TreeScaffold.hframe_cell`. `hjcm` stays CONSUMED at multi-side sites in
+`cone_charge` (T-E6's `presents_imply_jcMultiAt` records that the ledger's
+presented faces already imply it). The global `SibCount` serves the root step
+through T-E5 unchanged.
 
-THE F1 ALL-SITES SATISFIABILITY COMPUTATION, RE-RUN UNDER PER-SITE KEYING (the REV-6
-record was REFUTED at the leaf sites under the old keying — E8_BLOCK_CHARGE
-2026-07-29, Codex CLAIM C CONFIRMED; it is CORRECT per-site). Censused integers
-(CASE_SIB P2/P3, MOVES 7516–7528; B22 slice of 5²² boxes, n = 4):
+THE F1 ALL-SITES SATISFIABILITY COMPUTATION, RE-RUN UNDER THE SITE-ENTRANCE
+KEYING. Censused integers VERBATIM (CASE_SIB P2/P3, MOVES 7516–7528; B22 slice of
+5²² boxes, n = 4):
 * head site H₀ (10-pin window read): stateEvent(H₀) = the 14-pin Σ_c, N = 5⁸;
   entrance = the 4-pin reduction cell, N = 5¹⁸. Per-site row: 5⁸ · 5¹⁰ = 5¹⁸ ✓.
 * leaf site b₁ (RAM read, ONE fresh digit): stateEvent(b₁) = Σ_c ∩ S₁, N = 5⁷ =
   78,125; entrance = stateEvent(H₀) = 5⁸. Row: 5⁷ · 5¹ = 5⁸ ✓.
 * leaf site b₂: N(Σ_c ∩ S₂) = 5⁷; row: 5⁷ · 5¹ = 5⁸ ✓ — S₁ ≠ S₂ (distinct pins,
-  neither contains the other) is now CONSISTENT: the two rows pin membership in
-  DIFFERENT sites' branch strata (b₁ vs b₂ in the parent joint read's roster), not
-  two values of one cell function — the forcing is structurally dead.
+  neither contains the other) is CONSISTENT under the re-key: S₁ is the exact
+  fiber of Ψ_{b₁} = `branchCellOf (.st H₀) b₁` (b₁'s own RAM-digit read) at
+  cellAt(b₁), S₂ the exact fiber of the DIFFERENT map Ψ_{b₂} at cellAt(b₂) — two
+  fibers of two reads, not two values of one cell function; both factor through
+  the parent's joint (d₁, d₂) read (`branch_cell_joint`). The forcing is
+  structurally dead — the displayed check is `f1_two_leaf_discharge` below.
 * site-level (SIB) at H₀ (the hsibT row): N(S₁∩S₂∩Σ_c)·N(Σ_c) = 5⁶·5⁸ = 5⁷·5⁷ =
   N(S₁∩Σ_c)·N(S₂∩Σ_c) ✓ (P3's censused identity, EXACT).
 * the whole tree: fiber = Σ_c ∩ S₁ ∩ S₂, N = 5⁶; exponent n + Σ siteExp =
   4 + (10 + 1 + 1) = 16; 5⁶ · 5¹⁶ = 5²² ✓ — every site charged exactly once.
 
-STATEMENT RE-KEY RECORD (adjudication-warranted; R5 ratification queued): `CA` is now
-the FULL `CellAssign` (T-E5's interface — the root step fires E5, which consumes it;
-REV-8's data-layer pricing is preserved through `CA.toCellData` at every site-layer
-position); `hjcm` keys the per-site `JCmultiAt`; `hsibT` added (see above); `hdet`
-kept (the (NS) exclusion, 7457–7461). PROOF STATUS: assembled below — root = T-E5
-(inherits the fenced `hnostray` sorryAx, disclosed in E5's header), unbranched/leaf/
-split steps = T-E6 + the frame clauses + `hsibT` via the cone recursion
-(`cone_charge`). -/
+STATEMENT RE-KEY RECORD (adjudication-warranted): `CA` is the FULL `CellAssign`
+(T-E5's interface — the root step fires E5, which consumes it); `hjcm` keys the
+per-site `JCmultiAt` at the site's own node `H.lastNode`; `hsibT` carries the
+ONE-CELL `SibCountAt` at `(parentSt H, H.lastNode, cellAt H)`; `hdet` kept (the
+(NS) exclusion, 7457–7461). PROOF STATUS: assembled below — root = T-E5 (inherits
+the fenced `hnostray` sorryAx, disclosed in E5's header), unbranched/leaf/split
+steps = T-E6 + the frame clauses (incl. the new `hframe_cell` one-cell tie) +
+`hsibT` via the cone recursion (`cone_charge`). -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -79,14 +86,15 @@ share `cellAt`, have EQUAL state events, and carry EQUAL `siteExp` — contradic
 F1's distinct censused leaf pins. Codex verdict 2026-07-29 (fresh context): CLAIM A
 CONFIRMED, CLAIM C CONFIRMED conditional on the census reading — full charge +
 verdict archived at `lean/notes/E8_BLOCK_CHARGE_2026-07-29.md`. STATUS AFTER THE T
-RATIFICATION (2026-07-31): the exact-cell keying is RESTORED as the note-faithful
-statement form (the ratifier rejected the branch-stratum escape), so this forcing
-is now a MACHINE-CHECKED INSTANCE-LEVEL OBSTRUCTION to discharging the `state_cell`
-scaffold law at co-realized sibling sites with distinct pins — a standing owner
-obligation of the blueprint G1b re-adjudication (task #44 cluster), disclosed at
-`SiteLedger.state_cell`. The pinned G1 toys discharge the law (their sibling leaf
-states coincide by table). Bracketed verbatim for the record (the `sides = 1` guard
-of their premise no longer exists as stated):
+RE-RATIFICATION (2026-08-01, the site-entrance keying): the forcing is
+STRUCTURALLY DEAD — the 2026-07-31 exact-cell keying (Ψ shared across siblings)
+that made it a machine-checked instance-level obstruction is superseded: sibling
+sites now key DIFFERENT read maps (`branchCellOf es ν₁` vs `branchCellOf es ν₂`),
+so the forcing proofs below no longer typecheck (their pivot — "cellOf es is a
+function" applied to BOTH siblings' cells — has no analogue), and the F1 two-leaf
+configuration is exhibited SATISFIABLE at the event level by
+`f1_two_leaf_discharge` below. Bracketed verbatim for the record (statement forms
+of the RETIRED keyings; not restatable in the current vocabulary):
 
 ```
 theorem shared_split_state_forced (Tr : VTree p F) (T : TreeModel p F n N m pol)
@@ -109,6 +117,56 @@ theorem shared_split_siteExp_forced (Tr : VTree p F) (T : TreeModel p F n N m po
 -- proof: T-E6 at both siblings with E = univ, cancellation, pow-injectivity.
 ```
 -/
+
+section F1TwoLeafDischarge
+
+/-! ## The F1 two-leaf discharge — THE DISPLAYED CHECK (2026-08-01 re-ratification
+repair): under the site-entrance keying, the F1 configuration (two co-realized
+sibling leaf sites with DISTINCT pins v₁ = 1, v₂ = 2 — CASE_SIB P2/P3, MOVES
+7516–7528) is satisfiable at the event level. The two leaf digits (the census's
+d₁/d₂) are modeled as the two coordinates of a `ZMod 5` pair-slice; each site's
+read map is ITS OWN coordinate projection — the `branchCellOf es νⱼ` genre —
+and both factor through the parent's joint (d₁, d₂) read (`branch_cell_joint`'s
+shape). Distinct pins now give DISTINCT, OVERLAPPING exact-fiber events — exactly
+what the retired shared-map keying refuted (`shared_read_forces` below is the
+retired forcing's abstract content, confined to the shared-map hypothesis the
+re-key removed). -/
+
+private def f1rd₁ (x : Fin 2 → ZMod 5) : ZMod 5 := x 0
+private def f1rd₂ (x : Fin 2 → ZMod 5) : ZMod 5 := x 1
+private def f1joint (x : Fin 2 → ZMod 5) : ZMod 5 × ZMod 5 := (x 0, x 1)
+
+/-- **distinct pins ⟹ distinct entrance events, coherently co-realized** — the F1
+check: (i) the two sites' exact-fiber events at the censused pins v₁ = 1, v₂ = 2
+are DISTINCT; (ii) they SHARE a fiber witness (co-realization — the point with
+d₁ = 1, d₂ = 2, the censused 5⁶-slice's genre); (iii) each site read factors
+through the parent's joint read (the `branch_cell_joint` law's shape). Under the
+retired keying (one read map for both siblings), (i) ∧ (ii) was REFUTABLE
+(`shared_read_forces`); under the site-entrance keying all three hold at once. -/
+theorem f1_two_leaf_discharge :
+    ({x | f1rd₁ x = 1} ≠ {x : Fin 2 → ZMod 5 | f1rd₂ x = 2}) ∧
+    (∃ x : Fin 2 → ZMod 5, f1rd₁ x = 1 ∧ f1rd₂ x = 2) ∧
+    (∀ x y, f1joint x = f1joint y → f1rd₁ x = f1rd₁ y ∧ f1rd₂ x = f1rd₂ y) := by
+  refine ⟨?_, ⟨![1, 2], rfl, rfl⟩, ?_⟩
+  · intro h
+    have h1 : (![1, 0] : Fin 2 → ZMod 5) ∈ {x | f1rd₁ x = 1} := rfl
+    rw [h] at h1
+    have h0 : (0 : ZMod 5) = 2 := h1
+    exact absurd h0 (by decide)
+  · intro x y h
+    exact ⟨congrArg Prod.fst h, congrArg Prod.snd h⟩
+
+/-- the retired forcing's abstract content, quarantined to its real hypothesis:
+ONE shared read map's exact fibers sharing a witness are forced equal (this is
+the whole engine of `shared_split_state_forced`). The site-entrance keying denies
+the hypothesis at sibling sites — Ψ_{b₁} ≠ Ψ_{b₂} — so nothing forces
+`stateEvent(b₁) = stateEvent(b₂)`. -/
+theorem shared_read_forces {α β : Type*} (rd : α → β) (c₁ c₂ : β) (x : α)
+    (h₁ : rd x = c₁) (h₂ : rd x = c₂) :
+    c₁ = c₂ ∧ {y | rd y = c₁} = {y | rd y = c₂} :=
+  ⟨h₁.symm.trans h₂, by rw [h₁.symm.trans h₂]⟩
+
+end F1TwoLeafDischarge
 
 section AssemblyKit
 
@@ -245,11 +303,11 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (L : SiteLedger Tr T CA χ) (sc : TreeScaffold Tr T CA χ L trackOf)
     (hreal : Realizes T χ Tr)
     (hjcm : ∀ H (hH : H ∈ multiSites Tr T CA χ L) (h2 : 2 ≤ L.sides H),
-      JCmultiAt T CA χ (L.parentSt H) (L.splitAt H hH.1 h2))
+      JCmultiAt T CA χ (L.parentSt H) H.lastNode (L.splitAt H hH.1 h2))
     (hsibT : ∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.branchSetOf (sc.splitFrame H hH).c).card →
-      SibCountAt T CA χ (L.parentSt H) (L.cellAt H)
-        (sc.splitFrame H hH).c (sc.splitFrame H hH).S) :
+      2 ≤ (CA.branchSetOf (L.cellAt H)).card →
+      SibCountAt T CA χ (L.parentSt H) H.lastNode (L.cellAt H)
+        (sc.splitFrame H hH).S) :
     ∀ (k : ℕ) (H : History p F) (hH : H ∈ Tr.chains), (coneF Tr H).card ≤ k →
       Nat.card ↥(stateEvent T (some H) ∩ SFset Tr T trackOf H)
           * p ^ (∑ H' ∈ coneF Tr H, L.siteExp H')
@@ -423,17 +481,21 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
             rw [hR]; simp [hSuniv]
           rw [hIcap, hattach]
           simp
-    · -- k ≥ 2: the site-level (SIB) row at the exact Σ_c, converted to the state
-      -- event by the `state_cell` scaffold law (the ratified conditioning-cell tie)
+    · -- k ≥ 2: the ONE-CELL site-level (SIB) row at the exact Σ_c under the site's
+      -- own read map, converted to the state event by the `state_cell` scaffold law;
+      -- the roster cell is the SAME cell via the scaffold's `hframe_cell` tie
+      -- (the 2026-08-01 c/cSplit unification)
       have hSIB : Nat.card ↥(stateEvent T (some H)
             ∩ ⋂ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c, (sc.splitFrame H hH).S ν)
           * (Nat.card ↥(stateEvent T (some H)))
               ^ ((CA.branchSetOf (sc.splitFrame H hH).c).card - 1)
           = ∏ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c,
               Nat.card ↥(stateEvent T (some H) ∩ (sc.splitFrame H hH).S ν) := by
-        have h := hsibT H hH hk
+        have hfc := sc.hframe_cell H hH
+        have hk' : 2 ≤ (CA.branchSetOf (L.cellAt H)).card := hfc ▸ hk
+        have h := hsibT H hH hk'
         unfold SibCountAt at h
-        rw [← L.state_cell H hH] at h
+        rw [← L.state_cell H hH, ← hfc] at h
         exact h
       -- split the roster product over J and its complement
       have hJsub : J ⊆ CA.branchSetOf (sc.splitFrame H hH).c := Finset.filter_subset _ _
@@ -519,7 +581,7 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
   have hE6 : Nat.card ↥(stateEvent T (some H)) * p ^ L.siteExp H
       = Nat.card ↥(entEvent T χ (L.parentSt H)) := by
     by_cases h2 : 2 ≤ L.sides H
-    · have hj : Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) (L.cellAt H))
+    · have hj : Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) H.lastNode (L.cellAt H))
           * p ^ (∑ j : Fin (L.splitAt H hH h2).k, (L.splitAt H hH h2).sideExp j)
           = Nat.card ↥(entEvent T χ (L.parentSt H)) := hjcm H ⟨hH, h2⟩ h2
       rw [L.hsplit_exp H hH h2, ← L.state_cell H hH] at hj
@@ -559,11 +621,11 @@ theorem treeExp (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (L : SiteLedger Tr T CA.toCellData χ)
     (sc : TreeScaffold Tr T CA.toCellData χ L trackOf)
     (hjcm : ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ L) (h2 : 2 ≤ L.sides H),
-      JCmultiAt T CA.toCellData χ (L.parentSt H) (L.splitAt H hH.1 h2))
+      JCmultiAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.splitAt H hH.1 h2))
     (hsibT : ∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.toCellData.branchSetOf (sc.splitFrame H hH).c).card →
-      SibCountAt T CA.toCellData χ (L.parentSt H) (L.cellAt H)
-        (sc.splitFrame H hH).c (sc.splitFrame H hH).S)
+      2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
+      SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
+        (sc.splitFrame H hH).S)
     (hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) :
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H)

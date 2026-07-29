@@ -22,6 +22,15 @@ ROUND-2 deltas (each per a verdict finding):
   * GAP 1: the evaluated checksum is DERIVED (`SolveSeam.rs4_eval`).
 hypothesis_fields: the COMPLETE retyped ledger via `UInstance` at every prime +
         explicit `RegP` per adjudicated p. At a p failing (REG-p): NO CLAIM (D8).
+ROUND-3 deltas (warrant /tmp/finalratify_u/verdict.txt, REJECT 4/0):
+  * CRITICAL 1: `TreePin.chart` guarded to positive levels (the N = 0
+    uninhabitability killed; witness `chartWitness`).
+  * CRITICAL 3: `TreePin.vt_surj` — the completeness direction onto the
+    realizable complete canonical `MovesT.VTree` corpus.
+  * CRITICAL 4: `RegPin.legEquiv`/`legSt_pin` — the β-leg labels biject onto
+    the REAL consumed roster (`LegRoster`), targets read by `legTarget`.
+  * CRITICAL 2 (ADJUDICATED — record only): the WAVE-4 BOUNDARY paragraph in
+    the docstring below.
 -/
 import Mathlib
 import LeanUrat.MovesU.U6_un_bracket
@@ -69,7 +78,18 @@ open Filter Topology
     * `m4bConst` — CL-16, M4b height-translation constancy + M4b-T equivariance
       (owner [1v]/[2b]);
     * `jcInvHist` — CL-19's h_ent/history-invariance residue beyond the typed
-      `cl19_rep` face (owner [2b]). -/
+      `cl19_rep` face (owner [2b]).
+
+    THE WAVE-4 BOUNDARY RECORD (round-3 CRITICAL 2, ADJUDICATED —
+    /tmp/finalratify_u/verdict.txt: "A caller can instantiate every one with
+    `True` and provide `True.intro` … Visibility is not semantic pinning"): the
+    13 explicit `Prop` parameters above are the WAVE-4 BOUNDARY — the owner
+    vocabulary for these rows is ABSENT from the built corpus, and wave-D
+    discharges them by building their carriers. These 13 premises are UNPINNED
+    (True-instantiable) pending the wave-D carriers; the conditionality claim
+    of record must say so: any statement of Theorem U's conditionality MUST
+    list these 13 rows as UNPINNED named assumptions (no typed mathematical
+    obligation is imposed by them yet), NEVER as discharged or typed rows. -/
 theorem theoremU (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n) (KC : KernelCarriers n C)
     (K7 : Cl7Kernel n KC) (S : SolveData n)
     (KT : UpstreamTyped n KC)

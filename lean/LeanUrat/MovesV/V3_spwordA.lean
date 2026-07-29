@@ -20,10 +20,11 @@
     negWitnesses stay on file untouched as the refutation record for the
     unscoped forms.  Phase B: discharging `SpeciesCoherent` from the engine's
     D.7/D.8 output laws (deeper `typeOf`-keyed strata) re-opens the unscoped
-    family.  Consumption note: `template_total` (V3_spwordB) consumed the
-    unconditional form; `EntShapeV` carries no width/species law, so its
-    `hfits` leg stays an explicit open sorry — SIGN-OFF ITEM recorded there
-    and in the MANIFEST. -/
+    family.  Consumption note (M1 repair, 2026-07-29): the old
+    `template_total` consumed the unconditional form and was SEMANTICALLY
+    FALSE (compiled negation: `TTNeg.template_total_false`,
+    V3_spword_negWitness3) — it is DELETED; V3_spwordB now supplies the
+    scoped `template_total_of_perimeter` under `SpWordPerimeter`. -/
 import LeanUrat.MovesV.Defs
 
 set_option linter.style.longLine false

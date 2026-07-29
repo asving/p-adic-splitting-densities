@@ -704,6 +704,12 @@ noncomputable def toyCA : CellData 2 (ZMod 2) 2 3 9 polTriv toyModel where
       have hy := (key y).mp hd
       rw [← hcell] at hy
       exact (key x).mpr hy
+  -- [T RE-RATIFICATION 2026-08-01, the site-entrance keying: the toy's member-keyed
+  --  site read is the DEGENERATE DIAGONAL — every branch's read is the entrance's
+  --  joint read itself (the toys' sibling leaf states coincide by table, so no
+  --  branch separation is needed); the joint-factoring law is then the identity.]
+  branchCellOf := fun es _ν => toyCellA es
+  branch_cell_joint := fun _es _ν _x _y h => h
   -- [REV 8 RE-FENCE (Codex-7 #1): the toys instantiate the DATA layer `CellData`
   --  ONLY — `child_cover` FAILS on both carriers at g = (1,0) (deliberately partial;
   --  disclosed at §2.9/§6 and the §5 W4-1 row)]
@@ -918,6 +924,9 @@ noncomputable def toyCAB : CellData 2 (ZMod 2) 2 3 9 polTriv toyModelB where
       have hy := (key y).mp hd
       rw [← hcell] at hy
       exact (key x).mpr hy
+  -- [T RE-RATIFICATION 2026-08-01: degenerate diagonal site read, as on carrier A.]
+  branchCellOf := fun es _ν => toyCellB es
+  branch_cell_joint := fun _es _ν _x _y h => h
 
 /-! ### the trees, the DO-2 plumbing, and the gate battery (G1a/G1b obligations) -/
 
@@ -1340,15 +1349,15 @@ private lemma cellA_st_tA1_splitC_iff (x : Box 2 9) :
       if_neg (fun hc => hd hc.2.2)]
     exact iff_of_false (by simp) hd
 
-/- [T RATIFICATION RE-KEY 2026-07-31 (verdict §1: exact-cell form): the toy
-presents/state_cell helpers now pin the EXACT cell value (`siteCellEvent es c`,
-c the site's own joint cell — winC at the head's `.red` entrance, splitC at the
-leaves' `.st tA1` entrance) instead of the 2026-07-30 branch strata. The toy events
-are UNCHANGED as sets (each roster is realized exactly on its cell's fiber), so
-every censused integer survives verbatim. The toys DISCHARGE the exact `state_cell`
-scaffold law: their sibling leaf states coincide by table (the e* = 0 degenerate
-form), so the F1-genre sibling-forcing obstruction (disclosed at
-`SiteLedger.state_cell`) is not triggered here. -/
+/- [T RE-RATIFICATION RE-KEY 2026-08-01 (the site-entrance keying): the toy
+presents/state_cell helpers pin the exact cell value at the SITE-KEYED event
+(`siteCellEvent es ν c` — ν the site's own branch node). The toys' member-keyed
+read is the degenerate diagonal (`branchCellOf es ν := toyCellA es`), so the
+helpers are stated GENERICALLY in ν (the read ignores it) and the toy events are
+UNCHANGED as sets — every censused integer survives verbatim. The toys DISCHARGE
+the site-keyed `state_cell` law; the F1-genre configuration (sibling separation
+through genuinely distinct reads) is displayed at T-E8's
+`f1_two_leaf_discharge`. -/
 
 private lemma lastNode_tA1 : tA1.lastNode = toyHead := rfl
 
@@ -1361,8 +1370,8 @@ private lemma lastNode_tA2b : tA2b.lastNode = toyLeafB := by
 -- [the exact-cell strata lemmas `cellA_red_winC_iff`/`cellA_st_tA1_splitC_iff`
 --  already live above (the fiber-helper section) — reused verbatim here.]
 
-private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
-    (EntSt.red toyG Polynomial.X) ToyCell.winC rootLocus windowFresh := by
+private lemma presents_tA1 (ν : Node 2 (ZMod 2)) : SitePresents toyModel toyCA toyχ
+    (EntSt.red toyG Polynomial.X) ν ToyCell.winC rootLocus windowFresh := by
   constructor
   · ext x
     constructor
@@ -1383,8 +1392,8 @@ private lemma presents_tA1 : SitePresents toyModel toyCA toyχ
     · intro h
       exact (rootCell_iff x).mpr ((rootLocus_iff x).mp h)
 
-private lemma presents_split : SitePresents toyModel toyCA toyχ
-    (EntSt.st tA1) ToyCell.splitC stateLocus emptyFresh := by
+private lemma presents_split (ν : Node 2 (ZMod 2)) : SitePresents toyModel toyCA toyχ
+    (EntSt.st tA1) ν ToyCell.splitC stateLocus emptyFresh := by
   constructor
   · ext x
     constructor
@@ -1401,8 +1410,8 @@ private lemma presents_split : SitePresents toyModel toyCA toyχ
     · intro h
       exact (memA_tA1_iff x).mpr ((stateLocus_iff x).mp h)
 
-private lemma state_cell_tA1 : stateEvent toyModel (some tA1)
-    = siteCellEvent toyModel toyCA toyχ (EntSt.red toyG Polynomial.X)
+private lemma state_cell_tA1 (ν : Node 2 (ZMod 2)) : stateEvent toyModel (some tA1)
+    = siteCellEvent toyModel toyCA toyχ (EntSt.red toyG Polynomial.X) ν
         ToyCell.winC := by
   ext x
   constructor
@@ -1412,8 +1421,8 @@ private lemma state_cell_tA1 : stateEvent toyModel (some tA1)
   · rintro ⟨-, hcell⟩
     exact (memA_tA1_iff x).mpr ((cellA_red_winC_iff x).mp hcell)
 
-private lemma state_cell_tA2a : stateEvent toyModel (some tA2a)
-    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
+private lemma state_cell_tA2a (ν : Node 2 (ZMod 2)) : stateEvent toyModel (some tA2a)
+    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ν ToyCell.splitC := by
   ext x
   constructor
   · intro h
@@ -1422,8 +1431,8 @@ private lemma state_cell_tA2a : stateEvent toyModel (some tA2a)
   · rintro ⟨-, hcell⟩
     exact (memA_tA2a_iff x).mpr ((cellA_st_tA1_splitC_iff x).mp hcell)
 
-private lemma state_cell_tA2b : stateEvent toyModel (some tA2b)
-    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC := by
+private lemma state_cell_tA2b (ν : Node 2 (ZMod 2)) : stateEvent toyModel (some tA2b)
+    = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ν ToyCell.splitC := by
   ext x
   constructor
   · intro h
@@ -1459,24 +1468,24 @@ noncomputable def toyLedgerA : SiteLedger toyTreeA toyModel toyCA toyχ := by
         intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
         · rw [if_pos rfl, if_pos rfl, if_pos rfl]
-          exact presents_tA1
+          exact presents_tA1 _
         · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a),
             if_neg (Ne.symm tA1_ne_tA2a)]
-          exact presents_split
+          exact presents_split _
         · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b),
             if_neg (Ne.symm tA1_ne_tA2b)]
-          exact presents_split
+          exact presents_split _
       sides := fun _ => 1
       hsides := fun _ _ => le_rfl
       state_cell := by
         intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
         · rw [if_pos rfl, if_pos rfl]
-          exact state_cell_tA1
+          exact state_cell_tA1 _
         · rw [if_neg (Ne.symm tA1_ne_tA2a), if_neg (Ne.symm tA1_ne_tA2a)]
-          exact state_cell_tA2a
+          exact state_cell_tA2a _
         · rw [if_neg (Ne.symm tA1_ne_tA2b), if_neg (Ne.symm tA1_ne_tA2b)]
-          exact state_cell_tA2b
+          exact state_cell_tA2b _
       splitAt := fun H hH h2 => absurd h2 (by omega)
       hsplit_k := fun H hH h2 => absurd h2 (by omega)
       hsplit_exp := fun H hH h2 => absurd h2 (by omega)
@@ -2150,13 +2159,14 @@ private lemma card_entB : Nat.card ↥(entEvent toyModelB toyχ (.st tB1)) = 64 
   norm_num at hmass
   exact hmass
 
-/-- [T RATIFICATION 2026-07-31] the EXACT cell event at `.st tB1` — the exact-cell
-keyed event carries the SAME censused integers (16 on the {x0…x4} joint stratum:
+/-- [T RE-RATIFICATION 2026-08-01, site-entrance keyed] the exact cell event at
+`.st tB1` under the toy's degenerate diagonal site read (generic in the ignored
+branch node ν) — the SAME censused integers (16 on the {x0…x4} joint stratum:
 the site's own 2-side window pins x3, x4 inside the 64-count entrance). -/
-private lemma card_cellB :
-    Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC)
+private lemma card_cellB (ν : Node 2 (ZMod 2)) :
+    Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) ν ToyCell.splitC)
       = 16 := by
-  have hs : siteCellEvent toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC
+  have hs : siteCellEvent toyModelB toyCAB toyχ (.st tB1) ν ToyCell.splitC
       = {x : Box 2 9 | cellLocusB.IsSolution x} := by
     ext x
     constructor
@@ -2187,13 +2197,14 @@ end ToyJcHelpers
 /-- record 2's gate — CARRIER B: the two-side JC-multi identity at the split site,
 `2⁴·2² = 2⁶` on the enumerated events (entEvent = the {x0,x1,x2} stratum = 64, the
 SITE's own event = the {x0…x4} stratum = 16, sideExp 1 + 1 off the item-3 `toyFdB`
-re-pin). RE-KEYED at the T RATIFICATION (2026-07-31; verdict §2): `JCmultiAt` now
-prices the side split's OWN EXACT cell event (`siteCellEvent (.st tB1) splitC` —
-`toySplitB`'s cell) — the toy's censused integers are UNCHANGED (the {x0…x4}
-stratum IS the exact splitC fiber inside the entrance). -/
-theorem toy_jcmulti_site :
-    JCmultiAt toyModelB toyCAB toyχ (.st tB1) toySplitB := by
-  show Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) ToyCell.splitC)
+re-pin). RE-KEYED at the T RE-RATIFICATION (2026-08-01, the site-entrance
+keying): `JCmultiAt` prices the side split's own cell event under the site's OWN
+read map; the toy's read is the degenerate diagonal, so the gate holds generically
+in the (ignored) branch node ν and the censused integers are UNCHANGED (the
+{x0…x4} stratum IS the exact splitC fiber inside the entrance). -/
+theorem toy_jcmulti_site (ν : Node 2 (ZMod 2)) :
+    JCmultiAt toyModelB toyCAB toyχ (.st tB1) ν toySplitB := by
+  show Nat.card ↥(siteCellEvent toyModelB toyCAB toyχ (.st tB1) ν ToyCell.splitC)
       * 2 ^ (∑ j : Fin 2, toySplitB.sideExp j)
     = Nat.card ↥(entEvent toyModelB toyχ (.st tB1))
   rw [card_cellB, card_entB, sideExpB_sum]
@@ -2203,15 +2214,17 @@ theorem toy_jcmulti_site :
 STATEMENT REPAIR (pin-repair pass, 2026-07-30, charge item 4): the E-phase cell
 transcribed the SITE as `(EntSt.red toyG X)` — false; repaired to `.st tA1` per the
 charge. RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): the tie is now the
-EXACT Σ_c law — the state event equals the exact splitC fiber over the entrance
-(`siteCellEvent (parentSt tA2a) (cellAt tA2a)` = the {x0…x5} stratum, the toy set
-UNCHANGED). The toys discharge the exact law because their sibling leaf states
-coincide by table (e* = 0 degenerate form) — the F1-genre distinct-pin sibling
-obstruction (disclosed at `SiteLedger.state_cell`) is not triggered. -/
+EXACT Σ_c law; RE-KEYED at the T RE-RATIFICATION (2026-08-01): the fiber is taken
+under the SITE's own read map, keyed by the site's branch node `tA2a.lastNode`
+(`siteCellEvent (parentSt tA2a) tA2a.lastNode (cellAt tA2a)` = the {x0…x5}
+stratum, the toy set UNCHANGED — the toy read is the degenerate diagonal). The
+F1-genre distinct-pin sibling configuration now DISCHARGES structurally — the
+displayed check is T-E8's `f1_two_leaf_discharge`. -/
 theorem toy_state_cell :
     stateEvent toyModel (some tA2a)
-      = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) ToyCell.splitC :=
-  state_cell_tA2a
+      = siteCellEvent toyModel toyCA toyχ (EntSt.st tA1) tA2a.lastNode
+          ToyCell.splitC :=
+  state_cell_tA2a _
 
 /-- records 5+7's gate — the SEPARATE 𝔽₄-type carrier (§0 record #7's two-node
 K-card instance; the history pin is its own OPEN construction, `twoNodeKcardH`).

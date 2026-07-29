@@ -57,6 +57,40 @@ change below quotes its finding:
 * GAP 1 ("the evaluated checksum is still assumed"): `rs4_eval` is DERIVED
   (`SolveSeam.rs4_eval`) from `rs4_checksum` + derived definedness via the
   `evalAt` ring hom; the ledger field and `LowerStack` are retired.
+
+ROUND-3 REPAIRS (warrant: `/tmp/finalratify_u/verdict.txt`, REJECT 4 CRITICAL /
+0 GAP). Every change quotes its finding:
+
+* CRITICAL 1 ("`chart : ∀ N : ℕ, Fin n → Fin (n * N)` … For `N = 0`, this
+  demands `Fin n → Fin 0` … no `TreePin` can exist, hence no `UInstance` can
+  exist, hence `inst` is an inconsistent premise"): `chart` is RESTRICTED TO
+  POSITIVE LEVELS (`∀ N, 0 < N → Fin n → Fin (n * N)`); the guard threads
+  through every consumer (`chart_inj`/`vt_real`/`vt_surj`/`canonical_pin`/
+  `treeOf_pin`/all three `SibJcRows` rows). Non-vacuity of the repaired slice is
+  PROVED (`chartWitness`/`chartWitness_inj`: the digit chart i ↦ (i, 0)).
+  RECORDED RESIDUE: the pin says nothing at N = 0 (there the level-0 box is the
+  single class and TREE-N's working level m = n·N degenerates to 0).
+* CRITICAL 3 ("There is no converse completeness/surjectivity statement saying
+  that every complete finite realizable canonical `MovesT.VTree` of type `σ` is
+  represented by some `T : F.Tree σ` … an instance may choose a proper
+  subfamily"): `TreePin.vt_surj` — the COMPLETENESS direction: every
+  `MovesT.VTree` (complete finite canonical by construction) of typemult σ.1,
+  threshold ≤ N, REALIZED at the pinned level-N model/chart, is in `vt σ`'s
+  image. With `canonical_pin`, `X.canonical` now recognizes the COMPLETE
+  realizable corpus — the selected-subfamily bypass dies, and `seam.count_tie`
+  is a claim about the full family.
+* CRITICAL 4 ("Nothing makes `legSt` injective, surjective, or keyed to the
+  actual source outcome/member/continuation roster … duplication can remove
+  required real β-values from `(r2)`"): `LegRoster` — THE real consumed β-leg
+  roster type (state × split outcome × continuing member position, exactly the
+  population `leg_pin` counts) with `legTarget` reading each member's REAL
+  (e', τ') (size ∈ [1, n] by the carried DEG-CONS); `RegPin.legEquiv` (a
+  BIJECTION of the abstract labels onto the roster — injectivity + coverage)
+  and `RegPin.legSt_pin` (`legSt` IS the real target through it). The
+  duplication/omission bypass dies.
+* CRITICAL 2 is ADJUDICATED, record only (see U10's docstring): the 13 explicit
+  `Prop` parameters are the WAVE-4 BOUNDARY — UNPINNED (True-instantiable)
+  pending the wave-D carriers.
 -/
 
 set_option linter.style.longLine false
@@ -254,6 +288,19 @@ def digitIdx (n N : ℕ) (i : Fin n) (k : Fin N) : Fin (n * N) :=
       _ = ((i : ℕ) + 1) * N := by ring
       _ ≤ n * N := Nat.mul_le_mul_right N h1⟩
 
+/-- NON-VACUITY WITNESS for the guarded chart slice (round-3 CRITICAL 1: "no
+    `TreePin` can exist"): at every POSITIVE level the digit chart i ↦ (i, 0)
+    inhabits `chart`'s repaired type. -/
+def chartWitness (n N : ℕ) (hN : 0 < N) : Fin n → Fin (n * N) :=
+  fun i => digitIdx n N i ⟨0, hN⟩
+
+/-- …and injectively (`chart_inj`'s slice is inhabitable too). -/
+theorem chartWitness_inj (n N : ℕ) (hN : 0 < N) :
+    Function.Injective (chartWitness n N hN) := by
+  intro i j hij
+  have h : (i : ℕ) * N + 0 = (j : ℕ) * N + 0 := congrArg Fin.val hij
+  exact Fin.ext (Nat.eq_of_mul_eq_mul_right hN (by simpa using h))
+
 section TreePinSection
 variable (n p : ℕ) [Fact p.Prime]
 
@@ -264,25 +311,37 @@ variable (n p : ℕ) [Fact p.Prime]
     (`UInstance.Tpin`): the abstract tree/classifier vocabulary is identified with
     the BUILT `MovesT` canonical-tree corpus.
     * `pol`/`Tm`/`chart` — the canonical policy, the per-level tree model at the
-      working level m = n·N (TREE-N's own level), and the coefficient chart;
+      working level m = n·N (TREE-N's own level), and the coefficient chart. THE
+      CHART IS GUARDED TO POSITIVE LEVELS (round-3 CRITICAL 1: "For `N = 0`,
+      this demands `Fin n → Fin 0` … no `TreePin` can exist"); non-vacuity of
+      the guarded slice is PROVED at `chartWitness`/`chartWitness_inj`, and the
+      pin is silent at N = 0 (recorded residue: the level-0 box is one class);
     * `boxeq`+`boxeq_digits` — the level-N coefficient box IS the MovesT digit box,
       pinned by the base-p digit expansion (no free relabeling survives the law);
     * `vt` (INJECTIVE) — every abstract tree IS a `MovesT.VTree` (a complete
       finite canonical tree), of verdict type σ (`vt_typemult`), with the SAME
       threshold (`vt_thr`), REALIZABLE at every level ≥ its threshold (`vt_real`);
+    * `vt_surj` — THE COMPLETENESS DIRECTION (round-3 CRITICAL 3: "no converse
+      completeness/surjectivity statement saying that every complete finite
+      realizable canonical `MovesT.VTree` of type `σ` is represented by some
+      `T : F.Tree σ`"): every `MovesT.VTree` (complete finite canonical BY
+      CONSTRUCTION — its `chains`/`hfin`/`hclosed`/`hleaf` fields) of typemult
+      σ.1 and threshold ≤ N that is REALIZED at the pinned level-N model/chart
+      lies in `vt σ`'s image — no proper-subfamily instance survives, so
+      `canonical_pin` + `seam.count_tie` speak about the COMPLETE corpus;
     * `canonical_pin` — T_can^τ's verdict read: `canonical N f = some σ` IFF the
       digit class fibers at a carried σ-tree within threshold (`VTree.fiberAt`,
       the graph-equality fiber of the built corpus);
     * `treeOf_pin` — the seam's canonical-tree assignment reads THE fibering tree.
     Discharge candidate for the seam's `count_tie` through this pin:
-    `MovesT.treeN` (T-E11) at `Tm N`/`chart N`, whose (SIB)/(JC-multi) hypothesis
-    rows are typed at THIS instance by `SibJcRows` below. -/
+    `MovesT.treeN` (T-E11) at `Tm N`/`chart N hN`, whose (SIB)/(JC-multi)
+    hypothesis rows are typed at THIS instance by `SibJcRows` below. -/
 structure TreePin (X : ClassifierSpec n p) (F : FiberSeries n p X)
     (seam : TreeSeam n p X F) where
   pol : MovesD.CanonPolicy p (ZMod p)
   Tm : ∀ N : ℕ, MovesD.TreeModel p (ZMod p) n N (n * N) pol
-  chart : ∀ N : ℕ, Fin n → Fin (n * N)
-  chart_inj : ∀ N, Function.Injective (chart N)
+  chart : ∀ N : ℕ, 0 < N → Fin n → Fin (n * N)
+  chart_inj : ∀ (N : ℕ) (hN : 0 < N), Function.Injective (chart N hN)
   boxeq : ∀ N : ℕ, Box p n N ≃ MovesD.Box p (n * N)
   boxeq_digits : ∀ (N : ℕ) (f : Box p n N) (i : Fin n),
     f i = ∑ k : Fin N,
@@ -292,54 +351,87 @@ structure TreePin (X : ClassifierSpec n p) (F : FiberSeries n p X)
   vt_inj : ∀ σ, Function.Injective (vt σ)
   vt_typemult : ∀ (σ : SplittingType n) (T : F.Tree σ), (vt σ T).typemult = σ.1
   vt_thr : ∀ (σ : SplittingType n) (T : F.Tree σ), F.thr σ T = (vt σ T).thr n
-  vt_real : ∀ (σ : SplittingType n) (T : F.Tree σ) (N : ℕ), F.thr σ T ≤ N →
-    MovesT.Realizes (Tm N) (chart N) (vt σ T)
-  canonical_pin : ∀ (N : ℕ) (f : Box p n N) (σ : SplittingType n),
+  vt_real : ∀ (σ : SplittingType n) (T : F.Tree σ) (N : ℕ) (hN : 0 < N),
+    F.thr σ T ≤ N → MovesT.Realizes (Tm N) (chart N hN) (vt σ T)
+  vt_surj : ∀ (σ : SplittingType n) (V : MovesT.VTree p (ZMod p)) (N : ℕ)
+    (hN : 0 < N), V.typemult = σ.1 → V.thr n ≤ N →
+    MovesT.Realizes (Tm N) (chart N hN) V →
+    ∃ T : F.Tree σ, vt σ T = V
+  canonical_pin : ∀ (N : ℕ) (hN : 0 < N) (f : Box p n N) (σ : SplittingType n),
     X.canonical N f = some σ ↔
       ∃ T : F.Tree σ, F.thr σ T ≤ N ∧
-        (vt σ T).fiberAt (Tm N) (chart N) (boxeq N f)
-  treeOf_pin : ∀ (σ : SplittingType n) (N : ℕ)
+        (vt σ T).fiberAt (Tm N) (chart N hN) (boxeq N f)
+  treeOf_pin : ∀ (σ : SplittingType n) (N : ℕ) (hN : 0 < N)
     (f : {f : Box p n N // X.canonical N f = some σ}),
-    (vt σ (seam.treeOf σ N f)).fiberAt (Tm N) (chart N) (boxeq N f.1)
+    (vt σ (seam.treeOf σ N f)).fiberAt (Tm N) (chart N hN) (boxeq N f.1)
 
 /-- CL-10's (SIB)/(JC-multi) ROWS AT THE PINNED INSTANCE (round-2 CRITICAL 1's
     `sibJcMulti` home: "the built MovesT SibCount/JCmultiAt statements
     at-instance"). Exactly the hypothesis rows `MovesT.treeN` consumes, asserted
     at the PINNED tree models `TP.Tm N`/`TP.chart N` (never a free model):
     * `sib` — (SIB)'s COUNT face (`MovesT.SibCount`), the central CL-10 kernel;
-    * `sib_at` — (SIB) at a realized site (`MovesT.SibCountAt`, the 2026-07-31
-      T-ratification exact-cell keying: entrance es, site cell c, split cell
-      cSplit), guarded exactly as `SibCount` guards its prescribed-subtree events
-      (each conditioning set a finite `ContFiber` at the entrance's child root,
-      or ⊤);
+    * `sib_at` — (SIB) at a realized site (`MovesT.SibCountAt`, the 2026-08-01
+      SITE-ENTRANCE keying: entrance es, the site's own branch node ν, ONE site
+      cell c — conditioning and roster; the 2026-07-31 c/cSplit two-keying is
+      retired per the re-ratification verdict), guarded exactly as `SibCount`
+      guards its prescribed-subtree events (each conditioning set a finite
+      `ContFiber` at the entrance's child root, or ⊤);
     * `jc_multi` — (JC-multi) at multi-side sites (`MovesT.JCmultiAt`, same
-      re-keyed form: the side split's own cell prices the event). -/
+      re-keyed form: the side split's own cell under the site's own read map
+      prices the event). -/
 structure SibJcRows {X : ClassifierSpec n p} {F : FiberSeries n p X}
     {seam : TreeSeam n p X F} (TP : TreePin n p X F seam) : Prop where
-  sib : ∀ (N : ℕ) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
-    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N) trackOf),
-    MovesT.SibCount (TP.Tm N) CA.toCellData (TP.chart N)
-  sib_at : ∀ (N : ℕ) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
-    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N) trackOf)
-    (es : MovesT.EntSt p (ZMod p) n) (c cSplit : CA.toCellData.Cell)
+  sib : ∀ (N : ℕ) (hN : 0 < N) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
+    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N hN) trackOf),
+    MovesT.SibCount (TP.Tm N) CA.toCellData (TP.chart N hN)
+  sib_at : ∀ (N : ℕ) (hN : 0 < N) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
+    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N hN) trackOf)
+    (es : MovesT.EntSt p (ZMod p) n) (ν₀ : MovesC.Node p (ZMod p))
+    (c : CA.toCellData.Cell)
     (S : MovesC.Node p (ZMod p) → Set (MovesD.Box p (n * N))),
-    2 ≤ (CA.toCellData.branchSetOf cSplit).card →
-    (∀ ν ∈ CA.toCellData.branchSetOf cSplit,
+    2 ≤ (CA.toCellData.branchSetOf c).card →
+    (∀ ν ∈ CA.toCellData.branchSetOf c,
       (∃ hν Tsub leafSpec nsSpec, Tsub.Finite ∧
         S ν = {x | MovesT.ContFiber (TP.Tm N) (MovesT.stOf es) ν hν Tsub leafSpec nsSpec x}) ∨
       S ν = Set.univ) →
-    MovesT.SibCountAt (TP.Tm N) CA.toCellData (TP.chart N) es c cSplit S
-  jc_multi : ∀ (N : ℕ) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
-    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N) trackOf)
-    (es : MovesT.EntSt p (ZMod p) n)
+    MovesT.SibCountAt (TP.Tm N) CA.toCellData (TP.chart N hN) es ν₀ c S
+  jc_multi : ∀ (N : ℕ) (hN : 0 < N) (trackOf : MovesC.Node p (ZMod p) → Polynomial (ZMod p))
+    (CA : MovesT.CellAssign p (ZMod p) n N (n * N) TP.pol (TP.Tm N) (TP.chart N hN) trackOf)
+    (es : MovesT.EntSt p (ZMod p) n) (ν₀ : MovesC.Node p (ZMod p))
     (c : CA.toCellData.Cell) (fd : MovesC.FreshData p (n * N))
     (ss : MovesT.SideSplit (TP.Tm N) CA.toCellData c fd),
     MovesT.IsMultiSideSite (TP.Tm N) CA.toCellData c ss →
-    MovesT.JCmultiAt (TP.Tm N) CA.toCellData (TP.chart N) es ss
+    MovesT.JCmultiAt (TP.Tm N) CA.toCellData (TP.chart N hN) es ν₀ ss
 
 end TreePinSection
 
 /-! ## The RegData re-key (round-2 CRITICAL 3) -/
+
+/-- THE REAL CONSUMED β-LEG ROSTER of block e (round-3 CRITICAL 4: "Nothing makes
+    `legSt` injective, surjective, or keyed to the actual source
+    outcome/member/continuation roster"): one label per CONTINUING MEMBER of each
+    SPLIT outcome of each state of the block — EXACTLY the population `leg_pin`
+    counts (`Outcome.c` continuing members per split row). -/
+def LegRoster {n : ℕ} (T : MovesS.TableShape n) (e : ℕ) : Type :=
+  Σ (τ : T.State e) (o : {o : T.Out e τ // o ∈ MovesS.splitOuts T e τ}),
+    {i : Fin (T.odata e τ o.1).mem.length // ((T.odata e τ o.1).mem.get i).continuing}
+
+/-- The REAL target (e', τ') of a roster leg: the continuing member's size and
+    state (`Member.size`/`Member.status`). Membership e' ∈ [1, n] rides the
+    carried DEG-CONS (`size_pos` + `size_sum` at the source block). -/
+noncomputable def legTarget {n : ℕ} (C : UCarriers n) (e : ℕ)
+    (he : e ∈ Finset.Icc 1 n) (l : LegRoster C.T e) :
+    (e' : {e' : ℕ // e' ∈ Finset.Icc 1 n}) × C.T.State e'.1 :=
+  let μ := (C.T.odata e l.1 l.2.1.1).mem.get l.2.2.1
+  ⟨⟨μ.size, by
+      have hmem : μ ∈ (C.T.odata e l.1 l.2.1.1).mem := List.get_mem _ _
+      have h1 : 1 ≤ μ.size := C.hdc.size_pos e l.1 l.2.1.1 μ hmem
+      have h2 : μ.size ≤ ((C.T.odata e l.1 l.2.1.1).mem.map MovesS.Member.size).sum :=
+        List.le_sum_of_mem (List.mem_map_of_mem hmem)
+      exact Finset.mem_Icc.mpr
+        ⟨h1, le_trans (le_trans h2 (C.hdc.size_sum e he l.1 l.2.1.1))
+          (Finset.mem_Icc.mp he).2⟩⟩,
+    μ.status.getRight l.2.2.2⟩
 
 /-- THE ROSTER PIN (round-1 CRITICAL 4 + round-2 CRITICAL 3): every `RegData`
     index family, count, AND OPERATION is EQUATED to the real §S block system.
@@ -367,6 +459,14 @@ end TreePinSection
     * `legSt`+`betaLeg_pin` ("no betaLeg_pin"): each β leg is pinned to the real
       β_{e',τ'}(q^δ) object — `powSubst δ` of the real `blockSolve` at a carried
       (block, state) label, over `Sigmas`. Same recorded σ'-resolution residue.
+    ROUND-3 ADDITION (CRITICAL 4: "`leg_pin` fixes only the number of abstract
+    labels … Multiple abstract labels may map to the same real block/state while
+    another consumed β-leg is omitted"): `legEquiv` — the abstract leg labels
+    BIJECT onto the REAL consumed roster `LegRoster` (injectivity + coverage:
+    every continuing member of every split outcome carries exactly one label) —
+    and `legSt_pin` — `legSt` reads each label's REAL (e', τ') target through
+    `legTarget`. With `betaLeg_pin`, every real consumed β value now rides
+    `entryList`, hence `(r2)`; the surrogate-roster bypass dies.
     The former `MenuData` pins are CLOSED BY RETIREMENT: (K-SUB)/WF are restated
     over `C.T` itself (`KsubM1C1T`/`MenuWFT`, DefsCarriers). -/
 structure RegPin {n : ℕ} (C : UCarriers n) {p : ℕ} (D : RegData p) where
@@ -392,6 +492,9 @@ structure RegPin {n : ℕ} (C : UCarriers n) {p : ℕ} (D : RegData p) where
             (MovesS.blockSolveLt C.RB C.hdc C.hK hdet (blk b).1) σ' (st b i)
   legSt : ∀ b : D.Block,
     D.legIdx b → (e' : {e' : ℕ // e' ∈ Finset.Icc 1 n}) × C.T.State e'.1
+  legEquiv : ∀ b : D.Block, D.legIdx b ≃ LegRoster C.T (blk b).1
+  legSt_pin : ∀ (b : D.Block) (l : D.legIdx b),
+    legSt b l = legTarget C (blk b).1 (blk b).2 (legEquiv b l)
   betaLeg_pin : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK) (b : D.Block)
     (l : D.legIdx b) (δ : ℕ) (hδ : 0 < δ), δ ∈ D.depthSet →
     D.betaLeg b l δ

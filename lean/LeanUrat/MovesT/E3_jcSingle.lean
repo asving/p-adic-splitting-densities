@@ -22,17 +22,17 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 variable {n N m : ℕ} {pol : CanonPolicy p F}
 
-/-- RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): (JC-single) prices the
-site's EXACT cell event (`siteCellEvent es c` — the note's Ψ^{−1}(c_s) over Σ,
-MOVES 7448–7449 & 7469–7472), matching the re-keyed `SitePresents`; the 2026-07-30
-branch-stratum keying (by the site node ν) is superseded. Proof unchanged: rewrite
-both events by `hpres`, C4 verbatim. -/
+/-- RE-KEYED at the T RE-RATIFICATION (2026-08-01, the site-entrance keying):
+(JC-single) prices the site's exact cell event under its OWN read map
+(`siteCellEvent es ν c` — the note's Ψ_s^{−1}(c_s) over Σ, MOVES 7448–7449 &
+7469–7472), matching the re-keyed `SitePresents`. Proof unchanged: rewrite both
+events by `hpres`, C4 verbatim. -/
 theorem jc_single (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
-    (χ : Fin n → Fin m) (es : EntSt p F n) (c : CA.Cell)
+    (χ : Fin n → Fin m) (es : EntSt p F n) (ν : Node p F) (c : CA.Cell)
     (Sigma : Locus p m) (fd : FreshData p m)
-    (hpres : SitePresents T CA χ es c Sigma fd)
+    (hpres : SitePresents T CA χ es ν c Sigma fd)
     (hfree : ∀ cl ∈ fd.clauses, ∀ cIdx ∈ cl.support, Sigma.pinned cIdx = false) :
-    Nat.card ↥(siteCellEvent T CA χ es c) * p ^ fd.mstar
+    Nat.card ↥(siteCellEvent T CA χ es ν c) * p ^ fd.mstar
       = Nat.card ↥(entEvent T χ es) := by
   rw [hpres.1, hpres.2]
   exact C4_conditionalMass Sigma fd hfree

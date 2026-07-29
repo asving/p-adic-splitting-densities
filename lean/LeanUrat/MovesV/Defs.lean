@@ -512,7 +512,9 @@ structure EntTemplate (n : ℕ) where
 
 open Classical in
 /-- ε's template, Option-valued — RESTRUCTURED at REV 7 (C11): the WF
-conjunction CHECKED here; V3-3b's deliverable is `template_total`. -/
+conjunction CHECKED here; V3-3b's deliverable is the SCOPED
+`template_total_of_perimeter` (M1 repair — the unscoped totality is refuted
+at `TTNeg.template_total_false`, V3_spword_negWitness3). -/
 noncomputable def EntShapeV.template? {n : ℕ} (ε : EntShapeV n) :
     Option (EntTemplate n) :=
   let w := MovesSp.collapseRuns (spWord n (ε.Phat : MovesD.ShapePrefix))

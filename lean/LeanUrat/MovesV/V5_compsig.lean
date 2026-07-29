@@ -71,4 +71,27 @@ theorem comp_sigma {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       ring
   rw [mul_assoc, key γ]
 
+/-- (COMP-Σ), MARKED-EVENT HasSum FORM (M3 adjudication, final-ratification
+verdict 2026-07-29: "CompSigma_Stmt contains only the algebraic equality …
+and no marked-event HasSum" — the capstone's COMP-Σ leg now states the
+note's series identity): the stabilized marked-event values μ̂(ε, γ, h) SUM
+over H(γ) to ι_ε × the stepwise product.  Derived from `comp_hsum` (the
+unfactored series) + the `IotaLvlStable` row (the cross-level ιN tie) + the
+HMC-conditional algebraic collapse (`comp_sigma`). -/
+theorem comp_sigma_hasSum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    {V : CtsMeasured n C S} {TE : TmplEvents n S} {D : XHDd n S TE}
+    (cc : CompCarrier V TE) (P : C15Pack n S) (X : XHDw n S) (U : XHDu n S)
+    (hcp : CompProduct cc X) (hstab : IotaLvlStable cc)
+    (Xs : XHDs n S X D) (hTie : MarkFiberTie TE) (hHMC : HMC TE D)
+    (ε : EntShapeV n) (β₀ : S.Cell) {α} (γ : Template n S α) {q₀ : ℚ}
+    (hq : q₀ ∈ V.Pools) :
+    HasSum (fun h : {h // (D.dom γ).Mem h} => μhatVal cc ε β₀ γ h.1 q₀)
+      (iotaEps cc ε β₀ q₀ * stepProdVal V Xs γ q₀) := by
+  have hsum := comp_hsum cc P X U hcp Xs hTie ε β₀ γ hq
+  have hlvl : cc.ιN ε β₀ q₀ (compLvl V TE ε γ)
+      = iotaEps cc ε β₀ q₀ :=
+    hstab ε β₀ q₀ hq (compLvl V TE ε γ) (le_max_left _ _)
+  rw [hlvl, comp_sigma cc P X U Xs hTie hHMC ε β₀ γ hq] at hsum
+  exact hsum
+
 end LeanUrat.MovesV

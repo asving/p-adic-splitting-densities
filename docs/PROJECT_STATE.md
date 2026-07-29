@@ -991,3 +991,26 @@ both corpora), then the 22+ seam re-keys (MovesS's 7 gated units, MovesD's
 seam rows), MovesR unparking. Ledger:
 lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md (the full round-by-round
 record); the sorry sites themselves carry the exact missing-lemma statements.
+
+## UPDATE (2026-08-01): MOVEST T RE-RATIFICATION REPAIRS — THE SITE-ENTRANCE KEYING
+
+The second T ratification (Codex, REJECT-M) found the exact-cell re-key still
+structurally unable to represent distinct co-realized sibling reads (one read
+map Ψ shared across siblings forced equal cells/state events at a shared fiber
+witness), plus a c/cSplit two-keying in `SibCountAt` deviating from the note's
+single Σ_c. ADJUDICATED FIX EXECUTED (task #62): `CellData` gains the
+MEMBER-KEYED SITE READ `branchCellOf es ν` + the joint-factoring law
+`branch_cell_joint`; `siteCellEvent`/`SitePresents`/`JCmultiAt`/`SibCountAt`/
+`state_cell` re-keyed at the site's own branch node (`H.lastNode`) — the branch
+taken is part of the child site's entrance datum (the note's member-index
+recursion, MOVES 7503–7515). `SibCountAt` is now ONE-CELL (conditioning =
+roster cell), tied to the scaffold by the new `TreeScaffold.hframe_cell`. The
+old sibling forcing is machine-checked DEAD: E8's `f1_two_leaf_discharge`
+displays the F1 two-leaf configuration satisfiable (distinct pins, co-realized,
+joint-factoring), with `shared_read_forces` quarantining the retired forcing to
+its shared-map hypothesis. `RS1GivenPackage.tree_n` now carries the TREE-N
+stability leg (`TreeNStableStmt`; T-E11b's honest sorry, fence-rule record: no
+KBTotTower instance exists in-corpus, negation unconstructible). Full
+enumerated corpus sweep green (9,429 jobs; census integers verbatim; MovesT
+sorry census unchanged at 6 disclosed declarations; zero new axioms). Record:
+MovesT/MANIFEST.json RERATIFY-T-1.

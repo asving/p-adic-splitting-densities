@@ -1,8 +1,12 @@
-/-  MovesV unit V2-5 `val_b_chain` (RESTATED C2/C9) — VAL(b) GIVEN (XHD-u)'s
-    count face over the DEFINED chainCount.  `dataOf`/`tblOf`/`pathProdPoly`
-    are DISPLAYED here (V-keyed: an abstract move's datum is recovered through
-    `moveOf_bij` — recorded deviation: the blueprint's `pathProdPoly C γ`
-    notation reads the family through V's bijections). -/
+/-  MovesV unit V2-5 `val_b_chain` (RESTATED C2/C9; M2-ADJUDICATED at the
+    final-ratification repair, 2026-07-29) — the TABLE-SIDE product lemma
+    `val_b_table` (chainCount = path product; formerly misnamed `valB`),
+    PLUS the note's VAL(b) `val_b` (Tgam-keyed) behind the NAMED
+    `RealizationComplete` row (owner XHD/[2b]; content witnessed by the
+    coupling toy).  `dataOf`/`tblOf`/`pathProdPoly` are DISPLAYED here
+    (V-keyed: an abstract move's datum is recovered through `moveOf_bij` —
+    recorded deviation: the blueprint's `pathProdPoly C γ` notation reads
+    the family through V's bijections). -/
 import LeanUrat.MovesV.V1_xhdd
 import LeanUrat.MovesV.V2_valA
 
@@ -235,9 +239,15 @@ theorem valB_aux {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
     simp only [pathProdPoly, Polynomial.eval_mul, Nat.cast_mul]
     rw [hbase, htail]
 
-/-- (b) VAL(b): the linked count EQUALS the path product, GIVEN ValA +
-(XHD-u) + XHD-d + MDomTie. -/
-theorem valB {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
+/-- (b-table) THE TABLE-SIDE PRODUCT LEMMA (M2 adjudication, final-
+ratification verdict 2026-07-29: "`valB` should be labeled a table-side
+product lemma"): the ASSIGNMENT-CHAIN count `chainCount` equals the path
+product, GIVEN ValA + (XHD-u) + XHD-d + MDomTie.  This is NOT the note's
+VAL(b) — the note's T_γ(x, h) counts chains REALIZING (γ, h), i.e. `Tgam`/
+the `RealizesC` subtype, and only `Tgam ≤ chainCount` (`marks_chains`) is
+unconditional; the bridge is the named `RealizationComplete` row below.
+(Old name `valB`; renamed at the M2 repair.) -/
+theorem val_b_table {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
     {TE : TmplEvents n S} {D : XHDd n S TE}
     (hVA : ValA n C S V) (U : XHDu n S) (hTie : MDomTie V TE D)
     {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (hzc : S.zc x)
@@ -245,6 +255,43 @@ theorem valB {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
     (chainCount S γ x h : ℚ) = (pathProdPoly V γ).eval q₀ :=
   valB_aux hVA U hTie γ hq x hzc h
     (mem_chainCount_pos D γ h hmem (V.pools_sub hq) x hzc)
+
+/-- REALIZATION COMPLETENESS (M2, THE NAMED OPEN ROW — owner XHD/[2b]):
+every assignment chain is process-realized by a mark, i.e. the mark reading
+`tmark` is SURJECTIVE onto `Chains` at zc histories over pools.  The premise
+HAS CONTENT: the coupling toy (`coupling_signature`, V4_hmc) exhibits a
+(TmplEvents, point) with `0 < chainCount` and `Tgam = 0`, so no unconditional
+proof exists — Phase B discharges it at the real instance from the entrance
+face's no-stray laws. -/
+def RealizationComplete {n : ℕ} {S : StepSys n} (TE : TmplEvents n S) : Prop :=
+  ∀ {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D),
+    q₀ ∈ S.Pools → S.zc x → Function.Surjective (TE.tmark γ x h)
+
+/-- under REALIZATION COMPLETENESS the two counts coincide (tmark bijective:
+`tmark_inj` + the row). -/
+theorem tgam_eq_chainCount_of_complete {n} {S : StepSys n}
+    (TE : TmplEvents n S) (hRC : RealizationComplete TE) {α}
+    (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (h : Hpt γ.D)
+    (hq : q₀ ∈ S.Pools) (hzc : S.zc x) :
+    Tgam TE γ x h = chainCount S γ x h := by
+  have hinj := TE.tmark_inj γ x h hq hzc
+  have hsurj := hRC γ x h hq hzc
+  rw [Tgam, ← chains_card S γ x h,
+    ← Fintype.card_coe (TE.tinst γ x h (TE.tmplLvl γ))]
+  exact Fintype.card_congr (Equiv.ofBijective (TE.tmark γ x h) ⟨hinj, hsurj⟩)
+
+/-- (b) THE NOTE'S VAL(b), Tgam-keyed (M2 adjudication): the REALIZED count
+T_γ = `Tgam` equals the path product — the table-side lemma THROUGH the
+`RealizationComplete` premise. -/
+theorem val_b {n} {C : CtsFamily n} {S : StepSys n} {V : CtsMeasured n C S}
+    {TE : TmplEvents n S} {D : XHDd n S TE}
+    (hVA : ValA n C S V) (U : XHDu n S) (hTie : MDomTie V TE D)
+    (hRC : RealizationComplete TE)
+    {α} (γ : Template n S α) {q₀} (x : S.Hist q₀ α) (hzc : S.zc x)
+    (hq : q₀ ∈ V.Pools) (h : Hpt γ.D) (hmem : (D.dom γ).Mem h) :
+    (Tgam TE γ x h : ℚ) = (pathProdPoly V γ).eval q₀ := by
+  rw [tgam_eq_chainCount_of_complete TE hRC γ x h (V.pools_sub hq) hzc]
+  exact val_b_table hVA U hTie γ x hzc hq h hmem
 
 /-- (c) the degree bound (RE-SCOPED C9): a POLYNOMIAL-degree statement. -/
 theorem pathProd_deg {n} {C : CtsFamily n} {S : StepSys n}

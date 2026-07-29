@@ -26,20 +26,29 @@ threaded order-0 perimeter family (`EntDomOrder0` — the false totality shim
 is deleted; every `writeHeights` consumer demands the perimeter
 certificate), and `hsolve` is the restated (vi) solve sentence (the E-phase
 `→ True` escape is gone) — both ride as explicit ctsM hypotheses mirroring
-hmark; statements gaining hypotheses is the honest cost. -/
+hmark; statements gaining hypotheses is the honest cost.
+M3 RETYPE (final-ratification verdict, 2026-07-29): the COMP-h product no
+longer rides inside the carrier (`CompCarrier.μhatN_law` DELETED — the
+carrier keeps only the measure-definition laws cevt/μhatN_card/cevt_fiber);
+the product is the explicit NAMED OPEN ROW `hcomp : CompProduct` and the
+cross-level entrance-mass tie is `hstab : IotaLvlStable`, both ctsM
+hypotheses mirroring hsolve; COMP-Σ now ALSO concludes the marked-event
+HasSum (`comp_sigma_hasSum`). -/
 theorem ctsM {n : ℕ} (L : CtsmLedger n)
     (hb : P1CtblAdd L.V L.X.w) (hc : P1NullRem L.V L.X.w)
     (hd : P1FixedHeightExact L.V L.X.w)
     (hmark : ∀ (τ : L.S.Cell) (c : DCellAll L.V τ),
       c.isLeft → 1 ≤ markWeight L.V c)
     (hdom : EntDomOrder0 L.V)
+    (hcomp : CompProduct L.cc L.X.w)
+    (hstab : IotaLvlStable L.cc)
     (hsolve : SolveCond_Stmt L) :
     CtsmConclusions L :=
   { syntax_partition := fun s q₀ _ => meet_finite_uniform (L.C.bd s) q₀
     val_a := L.hVA
     val_b_chain := by
       intro α γ q₀ x hzc hq h hmem
-      exact valB L.hVA L.X.u L.hTie γ x hzc hq h hmem
+      exact val_b_table L.hVA L.X.u L.hTie γ x hzc hq h hmem
     no_entry := by
       intro d q₀ hq hne hact hin
       exact no_entry L.hVA d hq hne hact hin
@@ -131,10 +140,12 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
        equalProj_instance⟩
     comp_h := by
       intro ε β₀ α γ h hmem q₀ hq
-      exact comp_h L.cc L.pack L.X.w L.X.u L.hMark ε β₀ γ h hmem hq
+      exact comp_h L.cc L.pack L.X.w L.X.u hcomp L.hMark ε β₀ γ h hmem hq
     comp_sigma := by
       intro hHMC ε β₀ α γ q₀ hq
-      exact comp_sigma L.cc L.pack L.X.w L.X.u L.X.s L.hMark hHMC ε β₀ γ hq
+      exact ⟨comp_sigma L.cc L.pack L.X.w L.X.u L.X.s L.hMark hHMC ε β₀ γ hq,
+        comp_sigma_hasSum L.cc L.pack L.X.w L.X.u hcomp hstab L.X.s L.hMark
+          hHMC ε β₀ γ hq⟩
     -- (COMP-AGG): V5_compagg.comp_agg's proof inlined — the producer also
     -- binds hobs (∀ s, ObsCheck), which the ledger lacks, but its proof
     -- consumes only cc/X.s/X.sEnt/hEU (+ the bridge theorem, hobs-free).

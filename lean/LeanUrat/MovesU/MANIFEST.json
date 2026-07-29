@@ -4,6 +4,14 @@
  "blueprint": "lean/notes/MOVESU_LEAN_BLUEPRINT_2026-07-28.md (rev 7)",
  "retype_warrant_round1": "lean/notes/MOVESU_RATIFY_CODEX_2026-07-30.md — REJECT 7/2, all accepted (executed 2026-07-30).",
  "retype_warrant_round2": "/tmp/leanratify_u2/verdict.txt — the round-2 as-built ratification REJECT 6 CRITICAL / 1 GAP (2026-07-31). Every statement change below quotes its finding. Executed 2026-07-31 (fable, U RETYPE ROUND 2).",
+ "retype_warrant_round3": "/tmp/finalratify_u/verdict.txt — the round-3 ratification REJECT 4 CRITICAL / 0 GAP. Executed (fable, U REPAIRS round 3).",
+ "round3_findings_executed": {
+  "critical1_chart_n0": "TreePin.chart : ∀ N, Fin n → Fin (n*N) was UNINHABITABLE at N = 0 (Fin n → Fin 0 with 2 ≤ n), making UInstance and hence theoremU's inst premise inconsistent (vacuous capstone). REPAIR: chart guarded to positive levels (∀ N, 0 < N → Fin n → Fin (n*N)); guard threaded through chart_inj/vt_real/vt_surj/canonical_pin/treeOf_pin and all three SibJcRows rows. Non-vacuity of the guarded slice PROVED: chartWitness (digit chart i ↦ (i,0)) + chartWitness_inj. RECORDED RESIDUE: the pin is silent at N = 0 (single-class box; m = n·N degenerates).",
+  "critical2_wave4_boundary": "ADJUDICATED, record only: the 13 explicit Prop parameters are the WAVE-4 BOUNDARY (owner vocabulary absent; wave-D discharges them). Boundary record written verbatim into theoremU's docstring: the 13 premises are UNPINNED (True-instantiable) pending the wave-D carriers; the conditionality claim of record must say so.",
+  "critical3_vt_surj": "TreePin gains the COMPLETENESS direction vt_surj: every MovesT.VTree (complete finite canonical by construction) of typemult σ.1 and threshold ≤ N, REALIZED at the pinned level-N model/chart, lies in vt σ's image. The selected-subfamily bypass dies: canonical_pin + seam.count_tie now speak about the complete realizable canonical-tree corpus, not an injectively embedded selected family.",
+  "critical4_leg_roster": "RegPin gains legEquiv (D.legIdx b ≃ LegRoster C.T (blk b).1 — the REAL consumed roster: state × split outcome × continuing member position, exactly leg_pin's population) and legSt_pin (legSt = legTarget through the bijection — each label's REAL (e',τ') = the member's size/status, with e' ∈ [1,n] by the carried DEG-CONS). Injectivity + coverage: no duplicated labels, no omitted consumed β leg; every real β value reaches entryList hence (r2)."
+ },
+ "round3_footprint": "theoremU/chartWitness_inj/legTarget: [propext, Classical.choice, Quot.sound] (verified post-repair). MovesU sorried declarations: 0.",
  "round2_findings_executed": {
   "critical1_bare_rows": "UpstreamKernelStatements (15 bare Prop slots) RETIRED. Typed homes per the C9 map: CL-2 = UpstreamTyped.cl2_route (MovesX.X3aRouteP — the XC3/XC4 discharge surface: X1aAlignP + WeightChargeT4P/FullP routes); CL-3 = cl3_aff/cl3_cap/cl3_progress/cl3_tails/cl3_bridge (the five MovesX X.2 Props, XD2–XD4 carriers); CL-7a/b/c mechanics = Cl7Kernel over the MovesX.XFamily carriers (p-UNIFORM by binder order: explicit L(n)/D(n)/w*(N)/T(n,N) data + track_restarts (the (t3)/TRK-RULE recentering face: countPop recT1 + t4 ≤ L on every stratum history) + zero_gain (d_zero = dTotal − #incT12 ≤ L·D·w*(N) on threshold-≤N branches) + genuine_bound (#incT12 ≤ n·N)); CL-8's typed face = cl8_eq2 (MovesRBase.EQ2law at carried SpeciesSyntax/AlphabetData, per prime); CL-10 (SIB)/(JC-multi) = SibJcRows AT THE PINNED INSTANCE (MovesT.SibCount/SibCountAt/JCmultiAt at TreePin's Tm N/chart N, the exact hypothesis rows MovesT.treeN consumes); CL-13 syntax = cl13_syntax (CtsmSyntaxRow at carried MovesV.CtsFamily — VERBATIM Part_Stmt's body, tie lemma ctsmSyntaxRow_iff_part); CL-15's ALIGN face = cl15_align (MovesX.X1aAlignP ⟨true,false⟩). CL-14/CL-15-dictionary/CL-16/CL-19-history UNBUNDLED. RESIDUAL BARE ROWS — now EXPLICIT NAMED theoremU PARAMETERS, visible in the signature, never a bundled tag (13): rel1 rel2a rel2b rel2d rel2e rel3 (CL-8, owner [2r]); rs0Lump (CL-9(α), owner [3]); trackRule (CL-7a's (t1)/(t2) recognitions + the (c1) assignment map, owner [4]); dnLattice (CL-7b's key-weight lattice + per-node strict-increment sub-claim, owner [4]); m1m5Echo (CL-14 echo, owner [2a]); x1aDict (CL-15's dictionary beyond ALIGN, owner [5]); m4bConst (CL-16, owner [1v]/[2b]); jcInvHist (CL-19's h_ent/history residue, owner [2b]).",
   "critical2_tree_pin": "TreePin — the r_is_solve-analogue typed seam, carried as UInstance.Tpin: pol/Tm/chart (per-level MovesD.TreeModel at m = n·N, injective chart), boxeq PINNED by the base-p digit law (boxeq_digits via digitIdx — no free relabeling), vt : F.Tree σ → MovesT.VTree (INJECTIVE; typemult = σ.1; F.thr = VTree.thr n; realizable at every level ≥ thr), canonical_pin (canonical N f = some σ ↔ fibers at a carried σ-tree within threshold, via VTree.fiberAt), treeOf_pin (the seam's assignment reads THE fibering tree). Discharge candidate for count_tie through the pin: MovesT.treeN (T-E11), whose (SIB)/(JC-multi) rows are SibJcRows at this instance.",
@@ -14,7 +22,7 @@
   "gap1_rs4_eval": "SolveSeam.rs4_eval DERIVED from rs4_checksum + derived definedness via the evalAt ring hom (map_sum/map_one on the OKat subring). The CapstoneLedger.rs4_eval field and LowerStack are RETIRED; un_bracket consumes the checksum + the derivation."
  },
  "footprint_fence_note": "The full MovesV.CtsmLedger could NOT be carried in KernelCarriers: its hEU : EntU field type flows the V corpus's Phase-B sorryAx (V3_spwordD writeHeights_total_unscoped shim) into every statement mentioning the ledger. cl13_syntax is therefore stated at the clean CtsFamily slice (CtsmSyntaxRow, verbatim Part_Stmt body — ctsmSyntaxRow_iff_part); the V-ledger T-seam tie is the recorded residue of that fence. theoremU's footprint is Lean-core: [propext, Classical.choice, Quot.sound], verified 2026-07-31.",
- "concurrency_note": "Executed concurrently with the MovesT T-ratification repair batch (task #60, 2026-07-31): SibJcRows consumes the RE-KEYED MovesT.SibCountAt (χ/es/c/cSplit exact-cell form) and JCmultiAt (ν dropped; the side split's own cell prices the event) — adapted mid-flight after that batch landed its Defs re-key.",
+ "concurrency_note": "Executed concurrently with the MovesT T-ratification repair batch (task #60, 2026-07-31): SibJcRows consumes the RE-KEYED MovesT.SibCountAt (χ/es/c/cSplit exact-cell form) and JCmultiAt (ν dropped; the side split's own cell prices the event) — adapted mid-flight after that batch landed its Defs re-key. RE-ADAPTED 2026-08-01 (the T re-ratification's SITE-ENTRANCE keying, task #62): SibJcRows.sib_at now consumes the ONE-CELL MovesT.SibCountAt (es, site branch node nu0, ONE cell c keying both conditioning and roster; the 07-31 c/cSplit pair is retired) and SibJcRows.jc_multi the nu0-keyed MovesT.JCmultiAt.",
  "three_file_order": "Defs.lean (RegP = (r1)∧(r2); menus retired) <- U0b_splitTypeFintype.lean <- DefsCarriers.lean (UCarriers + vmap + KsubM1C1T/MenuWFT/menuWFT_holds) <- DefsLedger.lean (KernelCarriers, CtsmSyntaxRow, UpstreamTyped, Cl7Kernel, TreeSeam + derived finiteness_stack, digitIdx + TreePin + SibJcRows, RegPin + detHyp, SolveSeam + derived R_defined/R_agree/rs4_eval/evalℝ_eq_Rval/solve_stack, ZpBridge + zpDmass laws, CapstoneLedger, UInstance).",
  "imports_added": "DefsLedger now imports LeanUrat.MovesS.BlockSolveSpec, LeanUrat.MovesX.Defs, LeanUrat.MovesRBase.Defs, LeanUrat.MovesT.Defs, LeanUrat.MovesV.V7_ctsmDefs. No module outside MovesU imports MovesU.",
  "units_touched_round2": {
@@ -25,7 +33,17 @@
   "U6_un_bracket.lean": "LowerStack argument replaced by the ℚ(q) checksum; consumes SolveSeam.rs4_eval (GAP 1).",
   "U8_regP_access.lean": "accessor paths updated to the (r1)∧(r2) schema; R_defined/R_agree retired (moved derived to DefsLedger).",
   "U10_theoremU.lean": "hypothesis surface = UCarriers + KernelCarriers + Cl7Kernel + UpstreamTyped + the 13 explicit bare parameters + UInstance (with Tpin/sibjc/cl7_slice); M/KR parameters deleted; conclusion unchanged in shape.",
-  "unchanged": ["U0_boxCard", "U0b_splitTypeFintype", "U1_boxN", "U2_tonelli", "U3_sq2_partial", "U5_sq3_arith", "U7_squeeze", "U9_lmeas", "U11_identification"]
+  "unchanged": [
+   "U0_boxCard",
+   "U0b_splitTypeFintype",
+   "U1_boxN",
+   "U2_tonelli",
+   "U3_sq2_partial",
+   "U5_sq3_arith",
+   "U7_squeeze",
+   "U9_lmeas",
+   "U11_identification"
+  ]
  },
  "counts": {
   "defs_files": 4,
@@ -33,7 +51,11 @@
   "sorried_declarations": 0,
   "residual_bare_prop_rows": 13,
   "residual_bare_prop_form": "explicit named theoremU parameters (visible in the signature), never a bundled structure",
-  "axioms_theoremU": ["propext", "Classical.choice", "Quot.sound"],
+  "axioms_theoremU": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
   "blocked": 0
  },
  "honest_conditionality": "theoremU is machine-checked Lean-core, CONDITIONAL on: the UCarriers pack (the built §S corpus's own hypothesis bundle), the KernelCarriers pack + UpstreamTyped rows (the built MovesX/MovesRBase/MovesV owner statements), Cl7Kernel (the p-uniform CL-7 data + typed mechanics faces), the 13 explicit bare rows (named above with owners), and per prime: the CapstoneLedger (typed rows + the TreeSeam/SolveSeam named open premises + rs4_checksum), RegPin (with the round-2 act/bterm/bsplit/betaLeg pins), TreePin + SibJcRows, ZpBridge (with the stated HC-2 residue), cl7_slice, and (REG-p). NOTHING here is claimed unconditional; the named rows and seams are the distance.",

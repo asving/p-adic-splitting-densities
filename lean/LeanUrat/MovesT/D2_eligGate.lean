@@ -148,6 +148,10 @@ noncomputable def eligToyCA : CellData 2 (ZMod 2) 2 3 9 polTriv eligToyModel whe
   child_red_uniform := by
     intro g ψ x y hcell ν
     exact Iff.rfl
+  -- [T RE-RATIFICATION 2026-08-01, the site-entrance keying: degenerate diagonal
+  --  site read (this leg's content is `eligibleT`, which is `cellOf`-keyed).]
+  branchCellOf := fun es _ν => eligCellOf es
+  branch_cell_joint := fun _es _ν _x _y h => h
 
 /-- the toy leg (Gates layer; DO-2 plumbing) — witnesses live at T-G1. -/
 theorem eligible_nonvacuity_toy :

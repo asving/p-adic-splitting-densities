@@ -106,11 +106,11 @@ theorem AofTr_shape_const (Tr₀ Tr : VTree p F) (T : TreeModel p F n N m pol)
   · intro a ha
     rw [hshape ⟨a, Tr.hfin.mem_toFinset.mp ha⟩]
 
-/-- E10b: the per-shape law. RE-KEYED at the T RATIFICATION (2026-07-31 — same row
-changes as `treeExp`): `CA` is the FULL `CellAssign` (T-E8's root step consumes
-T-E5's interface), `hjcm` keys the per-site exact-cell `JCmultiAt` (consumed at
-multi-side sites), and the site-level (SIB) row `hsibT` (`SibCountAt` per class
-member, conditioning cell explicit) joins the premise row. -/
+/-- E10b: the per-shape law. RE-KEYED at the T RE-RATIFICATION (2026-08-01 — same
+row changes as `treeExp`): `hjcm` keys the per-site `JCmultiAt` at the site's own
+node `H.lastNode` (the site-entrance keying), and the site-level (SIB) row `hsibT`
+is the ONE-CELL `SibCountAt` per class member (conditioning = roster cell =
+`cellAt H`, the c/cSplit unification). -/
 theorem perShape_law (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
     (χ : Fin n → Fin m) (trackOf : Node p F → Polynomial (ZMod p))
     (CA : CellAssign p F n N m pol T χ trackOf)
@@ -124,13 +124,13 @@ theorem perShape_law (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
     (hjcm : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ),
       ∀ H (hH : H ∈ multiSites Tr T CA.toCellData χ (Lat Tr h))
         (h2 : 2 ≤ (Lat Tr h).sides H),
-        JCmultiAt T CA.toCellData χ ((Lat Tr h).parentSt H)
+        JCmultiAt T CA.toCellData χ ((Lat Tr h).parentSt H) H.lastNode
           ((Lat Tr h).splitAt H hH.1 h2))
     (hsibT : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ),
       ∀ H (hH : H ∈ Tr.chains),
-        2 ≤ (CA.toCellData.branchSetOf ((scat Tr h).splitFrame H hH).c).card →
-        SibCountAt T CA.toCellData χ ((Lat Tr h).parentSt H) ((Lat Tr h).cellAt H)
-          ((scat Tr h).splitFrame H hH).c ((scat Tr h).splitFrame H hH).S)
+        2 ≤ (CA.toCellData.branchSetOf ((Lat Tr h).cellAt H)).card →
+        SibCountAt T CA.toCellData χ ((Lat Tr h).parentSt H) H.lastNode
+          ((Lat Tr h).cellAt H) ((scat Tr h).splitFrame H hH).S)
     (hdict : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ), ∀ H ∈ Tr.chains,
       (Lat Tr h).siteExp H = shapeExp (shapeOfH H n) n)
     (hdict₀ : ∀ H ∈ Tr₀.chains, L₀.siteExp H = shapeExp (shapeOfH H n) n) :

@@ -364,6 +364,28 @@ structure CellData (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
       (x y : Box p m),
     cellOf (.red g ψ) x = cellOf (.red g ψ) y →
     ∀ ν : Node p F, T.child none ν x ↔ T.child none ν y
+  /-- **THE MEMBER-KEYED SITE READ** — THE SITE-ENTRANCE KEYING (2026-08-01, the
+  T re-ratification REJECT-M repair; verdict: "for two co-realized sibling sites
+  with the same `parentSt`, `state_cell` … forces their exact cells—and hence
+  state events—to coincide whenever they share a fiber witness … the carrier
+  still lacks the site/branch/frame index needed to represent distinct sibling
+  reads"). ADJUDICATED FIX (orchestrator): the branch taken is part of the child
+  site's entrance datum — the note's TREE-EXP recursion has each child recurse
+  FROM the joint cell WITH its member index (MOVES 7503–7515; the (SIB)
+  conditioning is Σ_c THEN the branch). `branchCellOf es ν` is the site read map
+  Ψ_s of the site whose entrance is `es` and whose own branch node is ν — the
+  note's per-site Ψ in jvol(c_s │ Σ) = μ(Ψ^{−1}(c_s) │ Σ) (7448–7449). Sibling
+  sites ν ≠ ν' key DIFFERENT read maps on the SAME entrance event: distinct site
+  cells no longer force equal (or disjoint) state events. -/
+  branchCellOf : EntSt p F n → Node p F → Box p m → Cell
+  /-- the site read is JOINT-CELL DATA: it factors through the entrance-keyed
+  joint read `cellOf es` — the member-index projection of the joint children
+  read ("[the joint cell is] in general FINER than any single branch's
+  (side, ψ) node stratum", MOVES 7447–7448). This law is what keeps the re-keyed
+  site cell event EXACT (a union of exact joint-read fibers selected by the
+  site's own cell value), never free data. -/
+  branch_cell_joint : ∀ (es : EntSt p F n) (ν : Node p F) (x y : Box p m),
+    cellOf es x = cellOf es y → branchCellOf es ν x = branchCellOf es ν y
 
 /-- THE CELL EVENT Σ_c — the note's conditioning object (7290–7292), DEFINED. -/
 def cellEvent (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
@@ -380,24 +402,26 @@ the E8-adjudication vocabulary, 2026-07-30). -/
 def _root_.LeanUrat.MovesC.History.lastNode (H : History p F) : Node p F :=
   H.nodes.getLast H.nonempty
 
-/-- **THE PER-SITE CELL EVENT, EXACT-CELL FORM** — RE-KEYED at the T RATIFICATION
-(2026-07-31; verdict §1, REJECT-M finding: the branch-stratum form `ν ∈ branchSetOf
-(cellOf es ·)` "is the event that a node belongs to the branch set of whatever cell
-x realizes. It is generally a union of cells containing ν; it does not identify one
-exact full joint cell" — "weaker and differently keyed than the note"). TREE-EXP
-(MOVES 7440–7448): "each site s carrying in T its full JOINT CELL c_s, the complete
-realized stratum datum of that read … Write jvol(c_s │ Σ) := μ(Ψ^{−1}(c_s) │ Σ),
-the site's conditional joint-cell mass at its entrance state." The event IS the
-exact fiber Ψ^{−1}(c) over the entrance event: `es` keys the entrance Σ, `c` is the
-site's OWN full joint cell — a VALUE of the entrance-keyed joint read, supplied per
-site by the ledger/scaffold (`SiteLedger.cellAt`). On the diagonal this is exactly
-`cellEventE` — the shape the global `SibCount` already conditions on. The retired
-branch-stratum keying (the 2026-07-30 E8 adjudication) is superseded; its motivating
-seam (the sibling shared-cell forcing, `E8_BLOCK_CHARGE_2026-07-29.md`) now lives at
-the INSTANCE layer of the `state_cell` tie — see that field's disclosure. -/
+/-- **THE PER-SITE CELL EVENT, SITE-ENTRANCE-KEYED EXACT-CELL FORM** — RE-KEYED at
+the T RE-RATIFICATION (2026-08-01; verdict, material finding: "`siteCellEvent` is
+keyed only by `es` and `c` … For two co-realized sibling sites with the same
+`parentSt`, `state_cell` forces their exact cells—and hence state events—to
+coincide whenever they share a fiber witness … the carrier still lacks the
+site/branch/frame index needed to represent distinct sibling reads"). THE FIX:
+the event gains the site's own BRANCH NODE ν as an argument — the entrance datum
+of a site is (entrance state, member index), per the note's TREE-EXP recursion
+(each child recurses from the joint cell WITH its member index, MOVES 7503–7515).
+The event is the exact fiber Ψ_s^{−1}(c) over the entrance event, Ψ_s :=
+`CA.branchCellOf es ν` the SITE's own read map (MOVES 7448–7449: "Write
+jvol(c_s │ Σ) := μ(Ψ^{−1}(c_s) │ Σ)" — the note's Ψ is per-site, never shared
+across siblings), `c` the site's own full joint cell (`SiteLedger.cellAt`).
+The 2026-07-31 form (Ψ keyed by the entrance alone) is superseded; its sibling
+shared-cell forcing is now structurally dead — see `f1_two_leaf_discharge`
+(T-E8) for the displayed check. -/
 def siteCellEvent (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
-    (χ : Fin n → Fin m) (es : EntSt p F n) (c : CA.Cell) : Set (Box p m) :=
-  {x | x ∈ entEvent T χ es ∧ CA.cellOf es x = c}
+    (χ : Fin n → Fin m) (es : EntSt p F n) (ν : Node p F) (c : CA.Cell) :
+    Set (Box p m) :=
+  {x | x ∈ entEvent T χ es ∧ CA.branchCellOf es ν x = c}
 
 /-- W4-1's re-keyed `eligible` — a DEFINED predicate over the cell/branch-set
 vocabulary (cell data BY CONSTRUCTION; T-D1). -/
@@ -548,14 +572,14 @@ def VTree.withHenV (Tr : VTree p F) (v : Multiset Vd)
 
 /-- REV 2/3: the jet-site tie, NAMED — the site's cell event IS the transported
 system's stratum, over the ENTRANCE carrier. Owner of instances: HC-2.
-RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): the presented face equates
-the site's EXACT cell event (`siteCellEvent es c`, `c` the site's own full joint
-cell) with the presented stratum — the note's Ψ^{−1}(c_s) over Σ. The 2026-07-30
-branch-stratum keying (by the site node ν) is superseded. -/
+RE-KEYED at the T RE-RATIFICATION (2026-08-01, the site-entrance keying): the
+presented face equates the site's exact cell event (`siteCellEvent es ν c` — ν
+the site's own branch node, c its own full joint cell) with the presented
+stratum — the note's Ψ_s^{−1}(c_s) over Σ. -/
 def SitePresents (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
-    (χ : Fin n → Fin m) (es : EntSt p F n) (c : CA.Cell)
+    (χ : Fin n → Fin m) (es : EntSt p F n) (ν : Node p F) (c : CA.Cell)
     (Sigma : Locus p m) (fd : FreshData p m) : Prop :=
-  siteCellEvent T CA χ es c = {x | Sigma.IsSolution x ∧ fd.sat x}
+  siteCellEvent T CA χ es ν c = {x | Sigma.IsSolution x ∧ fd.sat x}
   ∧ entEvent T χ es = {x | Sigma.IsSolution x}
 
 /-- REV 2: the level-separation premise for spectator events, EXPLICIT. -/
@@ -593,18 +617,17 @@ def IsMultiSideSite (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T
 
 /-- **(JC-multi), PER-SITE** — REV 2/3: the display 7473–7483 division-free, cell and
 entrance events the DEFINED conditioning objects. OPEN obligation; NEVER proved here.
-RE-KEYED at the T RATIFICATION (2026-07-31; verdict §2: "`ss : SideSplit T CA c fd`
-takes an implicit cell c … but prices [an event that] does not mention c. There is
-no premise tying the side decomposition of c to the cell(s) represented by
-[the branch stratum]"): the priced event is now the EXACT cell event of the side
-split's OWN cell c — "at a site whose window hull has k ≥ 2 sides … the CLAIMED
-mass is the side product jvol(c_s │ Σ) = ∏_sides vol_nom(E_fresh(ν_side))" (MOVES
-7473–7483): c_s the SITE's joint cell (the `SideSplit`'s c), its side systems the
-site's OWN presented `fd`'s clauses. -/
+RE-KEYED at the T RE-RATIFICATION (2026-08-01, the site-entrance keying): the
+priced event is the site's exact cell event under its OWN read map — `es` the
+entrance, `ν` the site's own branch node, `c` the side split's own cell — "at a
+site whose window hull has k ≥ 2 sides … the CLAIMED mass is the side product
+jvol(c_s │ Σ) = ∏_sides vol_nom(E_fresh(ν_side))" (MOVES 7473–7483): c_s the
+SITE's joint cell (the `SideSplit`'s c), its side systems the site's OWN
+presented `fd`'s clauses. -/
 def JCmultiAt (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
-    (χ : Fin n → Fin m) (es : EntSt p F n) {c : CA.Cell}
+    (χ : Fin n → Fin m) (es : EntSt p F n) (ν : Node p F) {c : CA.Cell}
     {fd : FreshData p m} (ss : SideSplit T CA c fd) : Prop :=
-  Nat.card ↥(siteCellEvent T CA χ es c) * p ^ (∑ j : Fin ss.k, ss.sideExp j)
+  Nat.card ↥(siteCellEvent T CA χ es ν c) * p ^ (∑ j : Fin ss.k, ss.sideExp j)
     = Nat.card ↥(entEvent T χ es)
 
 /-- the per-site B(iii)/Scale level: level 1 at the root (7564), the shape-side band
@@ -620,45 +643,46 @@ Q2); `hsplit_k` ties the exhibited decomposition to the hull-side count (REV 5).
 structure SiteLedger (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (CA : CellData p F n N m pol T) (χ : Fin n → Fin m) where
   sys : History p F → Locus p m × FreshData p m
-  /-- RE-KEYED at the T RATIFICATION (2026-07-31; verdict §§1–3): `cellAt H` is the
-  site's OWN FULL JOINT CELL c_s (MOVES 7443–7448) — a VALUE of the ENTRANCE-keyed
-  joint read `cellOf (parentSt H)`, the note's complete realized stratum datum of
+  /-- `cellAt H` is the site's OWN FULL JOINT CELL c_s (MOVES 7443–7448) — a VALUE
+  of the site's own read map `branchCellOf (parentSt H) H.lastNode` (THE
+  SITE-ENTRANCE KEYING, 2026-08-01), the note's complete realized stratum datum of
   the site's read. It keys the site's exact cell event (`presents`/`state_cell`
-  below), its side split (`splitAt`), and the JC charges. It does NOT key the
-  scaffold's split frames (the frame's `c` is the CHILDREN-read joint cell, `.st H`
-  genre — see `TreeScaffold`): the note's single D4R.0 datum splits in this corpus
-  across the two entrance keyings, disclosed at the `TreeScaffold` docstring. -/
+  below), its side split (`splitAt`), the JC charges, AND the scaffold's split
+  frames (`TreeScaffold.hframe_cell` — the note's single per-site cell datum, the
+  2026-07-31 c/cSplit two-keying REMOVED per the re-ratification verdict: "an
+  arbitrary split-cell roster can be attached to an unrelated exact conditioning
+  cell … statement mismatch / under-connected scaffold; M"). -/
   cellAt : History p F → CA.Cell
   parentSt : History p F → EntSt p F n
   hparent : ∀ H ∈ Tr.chains, match parentSt H with
     | .amb => False
     | .red _ _ => H.nodes.length = 1
     | .st H' => H'.IsPrefixOf H ∧ H'.nodes.length + 1 = H.nodes.length ∧ H' ∈ Tr.chains
-  /-- RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): the presented face
-  equates the site's EXACT cell event Ψ^{−1}(c_s) ∩ Σ with the transported system's
-  stratum. The 2026-07-30 branch-stratum keying (`H.lastNode`) is superseded. -/
+  /-- the presented face equates the site's exact cell event Ψ_s^{−1}(c_s) ∩ Σ with
+  the transported system's stratum — Ψ_s the site's own read map (site-entrance
+  keyed by `H.lastNode`, 2026-08-01). -/
   presents : ∀ H ∈ Tr.chains,
-    SitePresents T CA χ (parentSt H) (cellAt H) (sys H).1 (sys H).2
+    SitePresents T CA χ (parentSt H) H.lastNode (cellAt H) (sys H).1 (sys H).2
   sides : History p F → ℕ
   hsides : ∀ H ∈ Tr.chains, 1 ≤ sides H
-  /-- **the STATE↔CELL tie — the EXACT Σ_c law** — RE-KEYED at the T RATIFICATION
-  (2026-07-31; verdict §§1/3: "No law says ν ∈ branchSetOf c → c = c_site or
-  otherwise makes the node determine the full cell" / "It contains no assertion
-  that stateEvent T (some H) is the note's exact Σ_c"). THE SCAFFOLD LAW, asserted
-  where the note asserts it: "each conditional on the state left by the recursion
-  above it" (MOVES 7454–7456) with jvol(c_s │ Σ) = μ(Ψ^{−1}(c_s) │ Σ) (7448–7449) —
-  the state a site's read leaves IS the EXACT fiber of its own joint cell c_s over
-  its entrance. Owner of instances: HC-2 (presented-face genre). INSTANCE-LEVEL
-  DISCLOSURE (carried from the bracketed E8 seam, `shared_split_state_forced`):
-  at CO-REALIZED sibling sites with DISTINCT censused pins (F1's leaf pair), the
-  shared entrance-keyed `cellOf` forces equal cells hence equal state events —
-  the canonical branching instantiation of this law is therefore a STANDING
-  OBLIGATION of the blueprint G1b re-adjudication (task #44 cluster), NOT
-  discharged here; the pinned G1 toys satisfy it (their sibling leaf states
-  coincide by table). The former `sides H = 1` guard remains dropped. -/
+  /-- **the STATE↔CELL tie — the EXACT Σ_c law, SITE-ENTRANCE KEYED** (2026-08-01,
+  the re-ratification repair). THE SCAFFOLD LAW, asserted where the note asserts
+  it: "each conditional on the state left by the recursion above it" (MOVES
+  7454–7456) with jvol(c_s │ Σ) = μ(Ψ_s^{−1}(c_s) │ Σ) (7448–7449) — the state a
+  site's read leaves IS the exact fiber of its own joint cell c_s under its OWN
+  read map Ψ_s = `branchCellOf (parentSt H) H.lastNode`. Owner of instances: HC-2
+  (presented-face genre). THE FORMER OBSTRUCTION IS DEAD: under the 2026-07-31
+  keying (Ψ shared across siblings) co-realized sibling sites with distinct pins
+  were FORCED to equal state events (`shared_split_state_forced`, bracketed at
+  T-E8) — the re-ratification verdict's central finding. Sibling sites now key
+  DIFFERENT read maps (ν₁ ≠ ν₂), so distinct cells at a shared fiber witness are
+  representable; the F1 two-leaf configuration discharges — the displayed check is
+  `f1_two_leaf_discharge` (T-E8). The pinned G1 toys discharge the law with the
+  degenerate diagonal read (`branchCellOf es ν := cellOf es`; their sibling leaf
+  states coincide by table). The former `sides H = 1` guard remains dropped. -/
   state_cell : ∀ H ∈ Tr.chains,
     stateEvent T (some H)
-      = siteCellEvent T CA χ (parentSt H) (cellAt H)
+      = siteCellEvent T CA χ (parentSt H) H.lastNode (cellAt H)
   splitAt : ∀ H ∈ Tr.chains, 2 ≤ sides H → SideSplit T CA (cellAt H) (sys H).2
   hsplit_k : ∀ H (hH : H ∈ Tr.chains) (h2 : 2 ≤ sides H),
     (splitAt H hH h2).k = sides H
@@ -983,29 +1007,31 @@ def SibCountShallow (T : TreeModel p F n N m pol)
         * (Nat.card ↥(cellEventE T CA χ es c)) ^ ((CA.branchSetOf c).card - 1)
       = ∏ ν ∈ CA.branchSetOf c, Nat.card ↥(cellEventE T CA χ es c ∩ S ν)
 
-/-- **(SIB) AT A REALIZED SITE, the count face** — RE-KEYED at the T RATIFICATION
-(2026-07-31; verdict §3: the old form "contains no assertion that
-`stateEvent T (some H)` is the note's exact Σ_c, or even that every member of the
-state realizes c" — "the conditioning-cell connection is absent"). The note's (SIB)
-conditions at a branching site on the EXACT cell event — "Let η be a realized
-prefix with state cylinder Σ, c a digit cell of Σ with branch set {b₁, …, b_m} …
-conditionally on the cell event Σ_c" (MOVES 7283–7292). The conditioning event now
-CARRIES ITS CELL EXPLICITLY: `siteCellEvent es c` — the exact Σ_c of the site's own
-joint cell at its entrance (the `cellEventE` shape the global `SibCount` already
-uses); the ledger's `state_cell` law ties it to the state event the recursion
-decomposes. The product roster is keyed by the SPLIT cell `cSplit` (the
-CHILDREN-read joint cell, the scaffold frame's own `c` — the corpus's `.st H`-genre
-face of the note's single D4R.0 datum, disclosed at `TreeScaffold`). OPEN
-obligation (the (SIB) kernel, CL-10 genre); NEVER proved here — consumed as
-TREE-EXP's `hsibT` row at THIS tree's branching sites; the root instances (T-E5's
-`.amb` application) stay on `SibCount`. F1-censused at the head site (CASE_SIB P3,
-MOVES 7516–7528: 78,125² = 15,625 · 390,625 over the 14-pin Σ_c). -/
+/-- **(SIB) AT A REALIZED SITE, the count face — ONE CELL** — RE-KEYED at the T
+RE-RATIFICATION (2026-08-01; verdict, material finding: "The note uses one cell
+`c` both for `Σ_c` and for its branch set. Lean now defines `SibCountAt … (c
+cSplit : CA.Cell)` … There is deliberately no equality between them … an
+arbitrary split-cell roster can be attached to an unrelated exact conditioning
+cell — statement mismatch / under-connected scaffold; M"). The 2026-07-31
+c/cSplit two-keying is REMOVED: the note's (SIB) has ONE cell — "Let η be a
+realized prefix with state cylinder Σ, c a digit cell of Σ with branch set
+{b₁, …, b_m} … conditionally on the cell event Σ_c" (MOVES 7283–7292) — so the
+conditioning event AND the product roster both key the SAME cell `c`, the site's
+own joint cell (`SiteLedger.cellAt`, tied to the scaffold frame by
+`TreeScaffold.hframe_cell`). The conditioning event is the site's exact cell
+event under its own read map (`ν` the site's branch node — the site-entrance
+keying); the ledger's `state_cell` law ties it to the state event the recursion
+decomposes. OPEN obligation (the (SIB) kernel, CL-10 genre); NEVER proved here —
+consumed as TREE-EXP's `hsibT` row at THIS tree's branching sites; the root
+instances (T-E5's `.amb` application) stay on `SibCount`. F1-censused at the head
+site (CASE_SIB P3, MOVES 7516–7528: 78,125² = 15,625 · 390,625 over the 14-pin
+Σ_c). -/
 def SibCountAt (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
-    (χ : Fin n → Fin m) (es : EntSt p F n) (c cSplit : CA.Cell)
+    (χ : Fin n → Fin m) (es : EntSt p F n) (ν₀ : Node p F) (c : CA.Cell)
     (S : Node p F → Set (Box p m)) : Prop :=
-  Nat.card ↥(siteCellEvent T CA χ es c ∩ ⋂ ν ∈ CA.branchSetOf cSplit, S ν)
-      * (Nat.card ↥(siteCellEvent T CA χ es c)) ^ ((CA.branchSetOf cSplit).card - 1)
-    = ∏ ν ∈ CA.branchSetOf cSplit, Nat.card ↥(siteCellEvent T CA χ es c ∩ S ν)
+  Nat.card ↥(siteCellEvent T CA χ es ν₀ c ∩ ⋂ ν ∈ CA.branchSetOf c, S ν)
+      * (Nat.card ↥(siteCellEvent T CA χ es ν₀ c)) ^ ((CA.branchSetOf c).card - 1)
+    = ∏ ν ∈ CA.branchSetOf c, Nat.card ↥(siteCellEvent T CA χ es ν₀ c ∩ S ν)
 
 /-- (SIB-STEP)'s stage carrier (7382–7388) — def ONLY, consumed by NOTHING in wave 4. -/
 structure JointStage (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
@@ -1365,18 +1391,20 @@ def multiSites (Tr : VTree p F) (T : TreeModel p F n N m pol)
 `hframe`, the REV-5 scope tie `hscope`, and the REV-6 `trackOf` threading. Owner of
 instances: HC-2's presented faces.
 
-RE-KEYED at the T RATIFICATION (2026-07-31; verdict §§3–4): the frame's cell `c` is
-its OWN datum — the SPLIT cell (the CHILDREN-read joint cell at `.st H`, the D4R.0
-element individuating H's children; its `branchSetOf` is the roster the recursion
-partitions) — and is NO LONGER tied to the ledger's `cellAt H` (the site's OWN cell
-at its ENTRANCE, which keys the exact Σ_c tie `state_cell`): the note's single
-per-site joint-cell datum factors in this corpus across the two entrance keyings —
-DISCLOSED DEVIATION, recorded in MANIFEST. Frames stay UNIFORM over the tree's
-chains and sit AT THE SITE (`hframe`: `es = .st H`; `jointExp = siteExp H` ties the
-frame to the site's own charge). `subtree_part` pins each realized child's
-prescribed subtree EXTENSIONALLY to the tree's own child cone (the per-chain
-accounting needs the cone partition). Three clauses are owner faces of the note's
-own proof steps (MOVES 7503–7515):
+RE-KEYED at the T RE-RATIFICATION (2026-08-01): the frame's cell `c` IS the
+ledger's `cellAt H` — the NEW tie `hframe_cell` below. The 2026-07-31 "DISCLOSED
+DEVIATION" (the note's single per-site joint-cell datum split across two entrance
+keyings — conditioning cell `cellAt H` vs roster cell `(splitFrame H hH).c`) is
+REMOVED per the verdict's material finding ("an arbitrary split-cell roster can
+be attached to an unrelated exact conditioning cell … statement mismatch /
+under-connected scaffold; M"): the note has ONE cell per site — its branch set is
+the roster the recursion partitions AND the cell (SIB) conditions on (MOVES
+7283–7292, 7503–7510). Frames stay UNIFORM over the tree's chains and sit AT THE
+SITE (`hframe`: `es = .st H`; `jointExp = siteExp H` ties the frame to the site's
+own charge). `subtree_part` pins each realized child's prescribed subtree
+EXTENSIONALLY to the tree's own child cone (the per-chain accounting needs the
+cone partition). Three clauses are owner faces of the note's own proof steps
+(MOVES 7503–7515):
 * `hcover` — "the segment ends at a site whose joint cell c has branch set
   {b₁,…,b_m} … carrying in T the member-indexed subtrees" — every strict extension
   of a chain passes through a roster child with a prescribed (non-univ) subtree;
@@ -1399,6 +1427,10 @@ structure TreeScaffold (Tr : VTree p F) (T : TreeModel p F n N m pol)
   hframe : ∀ H (hH : H ∈ Tr.chains),
     (splitFrame H hH).es = EntSt.st H ∧
     (splitFrame H hH).jointExp = L.siteExp H
+  /-- **the ONE-CELL tie** — NEW at the T RE-RATIFICATION (2026-08-01): the frame's
+  cell is the site's OWN joint cell (the ledger's `cellAt H`) — the note's single
+  D4R.0 datum, closing the c/cSplit two-keying the verdict rejected. -/
+  hframe_cell : ∀ H (hH : H ∈ Tr.chains), (splitFrame H hH).c = L.cellAt H
   hscope : ∀ H (hH : H ∈ Tr.chains),
     (splitFrame H hH).scope
     = {x | SubtreeFiber T trackOf (EntSt.st H)
@@ -1516,12 +1548,13 @@ structure TreeIfaceCore where
 
 /-- TREE-EXP (finite face), ∀-closed — the value of `RS1GivenPackage.tree_exp_fin`.
 REV 8: the FULL `CellAssign`; the site vocabulary reads `CA.toCellData` EXPLICITLY.
-RE-KEYED at the T RATIFICATION (2026-07-31; verdict §§1–4): the `hjcm` row prices
-the site's EXACT cell event (per-site `JCmultiAt`, the split's own c), and the
-(SIB) consumption at THIS tree's branching sites rides as the re-keyed `SibCountAt`
-row — conditioning cell `L.cellAt H` (the exact Σ_c, tied to the state by
-`state_cell`), roster cell the frame's own split cell (the global `SibCount` row
-stays — the root step's cross-track application). -/
+RE-KEYED at the T RE-RATIFICATION (2026-08-01, the site-entrance keying + the
+one-cell tie): the `hjcm` row prices the site's exact cell event under its own
+read map (per-site `JCmultiAt` at `H.lastNode`), and the (SIB) consumption at
+THIS tree's branching sites rides as the ONE-CELL `SibCountAt` row — conditioning
+AND roster cell both `L.cellAt H` (= the frame's cell by `hframe_cell`), the
+exact Σ_c tied to the state by `state_cell`. The global `SibCount` row stays —
+the root step's cross-track application. -/
 def TreeExpFin (T : TreeModel p F n N m pol) (χ : Fin n → Fin m)
     (trackOf : Node p F → Polynomial (ZMod p))
     (CA : CellAssign p F n N m pol T χ trackOf) : Prop :=
@@ -1533,20 +1566,23 @@ def TreeExpFin (T : TreeModel p F n N m pol) (χ : Fin n → Fin m)
     ∀ (sc : TreeScaffold Tr T CA.toCellData χ L trackOf),
     (∀ H (hH : H ∈ Tr.chains) (h2 : 2 ≤ L.sides H),
       JCmultiAt T CA.toCellData χ
-        (L.parentSt H) (L.splitAt H hH h2)) →
+        (L.parentSt H) H.lastNode (L.splitAt H hH h2)) →
     (∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.toCellData.branchSetOf (sc.splitFrame H hH).c).card →
-      SibCountAt T CA.toCellData χ (L.parentSt H) (L.cellAt H)
-        (sc.splitFrame H hH).c (sc.splitFrame H hH).S) →
+      2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
+      SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
+        (sc.splitFrame H hH).S) →
     (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) →
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H) = p ^ m
 
-/-- TREE-N, ∀-closed (`RS1GivenPackage.tree_n`) — T-E11's statement. RE-KEYED at the
-T RATIFICATION (2026-07-31): same row changes as `TreeExpFin`. The `Tr.thr n ≤ N'`
-row is the SEAM's declared threshold gate (the contract shape); the mass identity
-itself is proved threshold-free (T-E11's `treeN`), and the note's CROSS-LEVEL
-stability content lives in T-E11's `TreeNStable`/`treeN_stable` row (verdict §5). -/
+/-- TREE-N, ∀-closed (`RS1GivenPackage.tree_n`, mass leg) — T-E11's statement.
+RE-KEYED at the T RE-RATIFICATION (2026-08-01): same row changes as `TreeExpFin`.
+The `Tr.thr n ≤ N'` row is the SEAM's declared threshold gate (the contract
+shape); the mass identity itself is proved threshold-free (T-E11's `treeN`), and
+the note's CROSS-LEVEL stability content is the SEPARATE seam leg
+`TreeNStableStmt` below — CARRIED BY `RS1GivenPackage.tree_n` since 2026-08-01
+(the re-ratification integration note: "the stability statement exists but is not
+carried by the advertised RS.1 package"). -/
 def TreeNStmt (pol : CanonPolicy p F) : Prop :=
   ∀ (N' : ℕ) (T : TreeModel p F n N' (n * N') pol)
     (χ : Fin n → Fin (n * N')) (trackOf : Node p F → Polynomial (ZMod p))
@@ -1559,13 +1595,46 @@ def TreeNStmt (pol : CanonPolicy p F) : Prop :=
     (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) →
     (∀ H (hH : H ∈ Tr.chains) (h2 : 2 ≤ L.sides H),
       JCmultiAt T CA.toCellData χ
-        (L.parentSt H) (L.splitAt H hH h2)) →
+        (L.parentSt H) H.lastNode (L.splitAt H hH h2)) →
     (∀ H (hH : H ∈ Tr.chains),
-      2 ≤ (CA.toCellData.branchSetOf (sc.splitFrame H hH).c).card →
-      SibCountAt T CA.toCellData χ (L.parentSt H) (L.cellAt H)
-        (sc.splitFrame H hH).c (sc.splitFrame H hH).S) →
+      2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
+      SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
+        (sc.splitFrame H hH).S) →
     Tr.thr n ≤ N' →
     Nat.card ↥{x : Box p (n * N') | Tr.fiberAt T χ x} * p ^ AofTr Tr L = p ^ (n * N')
+
+/-- **TREE-N's CROSS-LEVEL STABILITY, TYPED** — the note's displayed theorem (MOVES
+7559–7574; verdict §5 of the 2026-07-31 ratification demanded the statement; the
+2026-08-01 re-ratification demanded its INTEGRATION into the RS.1 package). Over a
+pinned level tower of models/charts: for every N above the tree's threshold
+`thr(T)` and every working level N' ≥ N, the tree fiber reads ONLY the level-<N
+digit block — "the fiber is a FINITE intersection of finite-level digit-cell
+conditions … hence an exact union of level-N residue classes" (7566–7570). Under
+the standard layout (m = n·N', coordinate c at level ⌊c/n⌋ + 1) the level-<N block
+is the first n·N coordinates. [Hoisted from T-E11 at the 2026-08-01 integration —
+the ∀-closure `TreeNStableStmt` below is the `RS1GivenPackage.tree_n` rider.] -/
+def TreeNStable {N₀ : ℕ}
+    (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
+    (χat : ∀ N', Fin n → Fin (n * N')) (Tr : VTree p F) : Prop :=
+  ∀ N : ℕ, Tr.thr n ≤ N →
+    ∀ (N' : ℕ) (h' : N₀ ≤ N'), N ≤ N' →
+      ∀ x x' : Box p (n * N'),
+        (∀ c : Fin (n * N'), (c : ℕ) < n * N → x c = x' c) →
+        (Tr.fiberAt (Tat N' h') (χat N') x ↔ Tr.fiberAt (Tat N' h') (χat N') x')
+
+/-- TREE-N's stability leg, ∀-closed — the second conjunct of
+`RS1GivenPackage.tree_n` (2026-08-01 integration; the premise row = T-E11b
+`treeN_stable`'s own, the note's declared inputs). OPEN — owner HC-2/D4R0K
+(T-E11b carries the honest `sorry` with the owner tag). -/
+def TreeNStableStmt (pol : CanonPolicy p F) : Prop :=
+  ∀ {N₀ : ℕ} (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
+    (χat : ∀ N', Fin n → Fin (n * N'))
+    (trackOf : Node p F → Polynomial (ZMod p)),
+    KBTotTower pol Tat χat trackOf →
+    ∀ Tr : VTree p F,
+      (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) →
+      (∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr) →
+      TreeNStable Tat χat Tr
 
 /-- TREE-EXP's (ns) face, ∀-closed (`tree_exp_ns`) — T-E12's statement, finite-face
 rider binding (§5 S-2). -/
