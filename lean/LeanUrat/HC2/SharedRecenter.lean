@@ -3,9 +3,10 @@ LeanUrat.HC2.SharedRecenter  (HC-2 campaign — shared recentering-parent machin
 
 The RECENTERING-parent helper block consumed by BOTH U20c
 (`NA_transport_recentering`, U20c_NAtransportRecentering.lean) and U22-E1
-(`SAE_spanStrict_endpoint`, U22E1_spanStrict.lean): hoisted verbatim from the two
-byte-identical file-private copies (dedup pass, 2026-07-30; lemma statements unchanged,
-`private` dropped).  Contents:
+(`SAE_spanStrict_endpoint`, U22E1_spanStrict.lean): hoisted from the two
+byte-identical file-private copies (dedup pass, 2026-07-30).  All lemmas below are
+verbatim hoists (statements unchanged, `private` dropped) EXCEPT `recentering_scaffold`,
+which is a NEW bundling lemma — see its docstring for the ratification record.  Contents:
 * `Stage` weight/residual arithmetic from the bare axioms (`w_one` … `R_neg`,
   `w_sum_ge`), Laurent coefficient-extraction seams (`CT_apply`/`sum_apply'`/`C_inj`);
 * `decomp_machine` — the distinct-position residual-sum machine (nonzero terms of one
@@ -348,7 +349,16 @@ and `σ.w f = γ` (the distinct-position residual-sum machine pins `s0` and `s0 
 `w`-minimizing slots of the recorded development, then SideReads(ii) at both pattern
 endpoints closes the two linear equations); and the ℚ-scale LINE LAW at every base slot
 `k`: `STR_{i+1} · line.at(k·childWidth) = γ − k·h` (slope law + γ-tie + `hLineU`, with
-`STR_{i+1} = STR_i` and `childWidth = Dwidth` at a recentering). -/
+`STR_{i+1} = STR_i` and `childWidth = Dwidth` at a recentering).
+
+NEW STATEMENT, RATIFIED (2026-07-30, golf Phase 4): this lemma is NOT a verbatim hoist —
+it bundles the shared inline derivations of the two pre-golf consumers (e9d2430) into one
+named conclusion.  Codex equivalence pass (per-conjunct table on record, campaign notes
+PHASE 4): conjuncts 1-10 are verbatim-equivalent to inline facts derived in BOTH pre-golf
+files with matching quantifier scope; conjunct 11 (the `∀ k` line law) is a PROVED
+GENERALIZATION — the pre-golf files held only the `k = μ` (U20c) and fixed-`j` (U22-E1)
+instances; the general affine form is machine-checked here, Lean-core.  Ratified by the
+orchestrator as a sanctioned addition on that record. -/
 lemma recentering_scaffold {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)

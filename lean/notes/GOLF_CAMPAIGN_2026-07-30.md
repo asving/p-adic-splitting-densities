@@ -479,3 +479,37 @@ Error-spotting synthesis (see the PHASE 2 ERROR-SPOTTING SYNTHESIS section above
 A:39 / B:86 / C:49 / D:40 / E:1. Class-A queue candidates to fold into the repair
 queue after Phase 4: A2-A4, A7-A10, A16-A21, A23-A25 (the rest are no-queue:
 disclosed conditionality, tracked items, or repo-prep R2/R3 class).
+
+## PHASE 4 CODEX SAMPLE-RATIFICATION RECORD (2026-07-30)
+
+Bundle: the 13 largest substantive golf diffs (e9d2430..49ffe85) — the three dedup
+specialist jobs (HC2 SharedRecenter hoist; MovesV comp_agg/rep_row trim + ctsM dedup;
+MovesC C6_thmC_b/C5_massCodim re-keys) + 8 ordinary large diffs (MovesD/G1_gates,
+MovesSp/SP6_menuMap + SP2_encodeInj, MovesV/V6_a1census, MovesT/V8_shapeOf,
+Moves/L2_keyResidualPow, + the U20c/U22E1 consumer sides). Charge: golf-fence audit,
+quote-and-classify, fix nothing.
+
+PASS 1 VERDICT: REJECT (1 CRITICAL / 0 GAP). Twelve of thirteen items CLEAN (including
+the sanctioned dead-decl trim and both re-keys). The CRITICAL: SharedRecenter.lean's
+`recentering_scaffold` is NOT a verbatim hoist — a NEW public lemma bundling the shared
+inline material; the corpus declaration surface changed without sign-off. (The Phase-3
+HC1/HC2 fresh-context verifier had passed it; Codex, decorrelated, caught it.)
+
+PASS 2 (dedicated equivalence audit, per-conjunct): VERDICT NOT-EQUIVALENT —
+conjuncts 1-10 verbatim-equivalent to inline facts derived in BOTH pre-golf files
+(quantifier scope matching; the ∀-g transport law was already universal pre-golf);
+conjunct 11 (the ∀-k ℚ-scale line law) is a STRENGTHENING: pre-golf U20c held only the
+k = μ instance, U22-E1 only its fixed-j instance. Hypotheses aligned; consumer goals
+unchanged (conjunct 11 consumed by specialization at μ / j).
+
+ADJUDICATION (orchestrator): RATIFIED as a sanctioned addition. Grounds: (i) the lemma
+replaces no fenced statement and weakens nothing — the danger class for new statements
+is unreviewed content, and the statement is now reviewed conjunct-by-conjunct on record;
+(ii) conjunct 11 is machine-checked Lean-core at HEAD — a proved generalization of an
+affine line law (slope + intercept pin all k), not a transcription risk; (iii) the
+campaign's standing scoping precedent (named, warranted, flagged additions ratified by
+the orchestrator). Records: the lemma docstring, HC2/MANIFEST.json deviations (final
+entry), this section. Codex artifacts: /tmp/codex_golf_p4/codex_run.jsonl +
+codex_scaffold.jsonl (session-local).
+
+PHASE 4 OUTCOME: ACCEPT (12/13 clean on pass 1; the 13th ratified via pass 2 + record).
