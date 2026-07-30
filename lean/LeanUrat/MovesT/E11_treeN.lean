@@ -86,7 +86,21 @@ consumes it (the (†-AGG) input-vii seam cites the STATEMENT). FENCE-RULE RECOR
 instance exists anywhere in the corpus (grep: the only occurrence is the
 `VPPinned.covering` field declaration — the toys are single-level carriers, no
 `Tat` tower), so the premise row is uninhabitable from in-corpus witnesses and no
-countermodel is constructible; honest-open stands. -/
+countermodel is constructible; honest-open stands.
+SYN-C2 FENCE-RECORD UPDATE (2026-07-30, C2/N2 ratification,
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` "SYNTHESIS PASS 1
+ADJUDICATIONS"): the open mathematics behind this sorry is now typed ONCE as
+**the one open kernel row `MovesT.ReadLocality`** (MovesT/ReadLocality.lean;
+chart_pin + cross-level child locality; owner HC-2/D4R0K unchanged).  Its
+derived surfaces: `StableInputs` (TV_B2.lean, `stableInputs_of_readLocality`,
+PROVED), `TransferRow` (MovesU/BridgeD5_transferRow.lean,
+`transferRow_of_readLocality` at the dressed bridge tower — the (†6) bridge
+sibling formerly cited here as an independent row), and THIS row's own
+discharge path: TV-B7's hoisted restatement carries `ReadLocality` as the
+named hypothesis and closes through TV-B6's composition chain, so supplying
+ReadLocality once (the HC-2/D4R0K discharge, or the N3 construction probe)
+retires all three faces together.  This sorry stays until the B7 execution
+lands the hoisted row in place; statement byte-identical. -/
 theorem treeN_stable (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))

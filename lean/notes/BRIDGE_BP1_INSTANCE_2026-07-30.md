@@ -1113,3 +1113,180 @@ ZpBridge law into a new NAMED kernel row is a fence event needing adjudication
 stand); no new statement-fence event was surfaced (finding 2's hn is an
 existing binder; all other fixes are blueprint-internal).
 
+---------------------------------------------------------------------------
+## DESIGN ADDENDUM D-TM (2026-07-30) — the general TreeModel construction
+### (MovesD designer round; resolves R7 / the IB-D1 finding)
+
+CHARGE (BridgeD1_treeModelWire.lean, IB-D1 verdict): "no (n, N)-generic real
+(pol, Tm) exists in-corpus — the only concrete `MovesD.TreeModel`s are n = 2
+toys over `polTriv`, with toy-semantic mem/child; the general constructor is a
+MovesD designer round". This addendum IS that round: the construction at unit
+granularity + the landed E-phase skeleton `lean/LeanUrat/MovesD/TreeCan.lean`
+(new module, builds green, 13 honest sorries keyed to the unit ids below).
+UNIT IDS: IB-D20/D21 stay RESERVED for the count_tie discharge chain (§4, Q7 —
+no collision); the designer round is IB-D22..IB-D30.
+
+### D-TM.1 The construction (three factors, each residue NAMED)
+
+(†12) **THE CANONICAL DECODE** `canDec p n N : MovesD.Box p (n·N) → ℤ_p[X]`,
+      `X^n + Σ_{i<n} C(canCoeff i)·X^i` with `canCoeff i = Σ_{k<N} digit(i·N+k)·p^k`
+      — slot i·N + k carries coefficient i's k-th base-p digit: the
+      COEFFICIENT-MAJOR `digitIdx` layout ((†3), DefsLedger.lean:289), so the
+      level-0 slot chart `canChart n N hN : i ↦ i·N` IS `chartWitness`'s shape and
+      `canDec_red` ties the mod-p reduction to `MovesT.redPoly (canChart …) x`
+      (stated import-free in MovesD; the redPoly re-key is one line at the D27
+      wire). CONSEQUENCE: IB-D2's chart-semantics question is answered BY
+      CONSTRUCTION — the model reads coefficient i's digits at slots digitIdx i k
+      because `canDec` is DEFINED that way. Laws: `canDec_monic`,
+      `canDec_natDegree` (unconditional — n = 0 degenerates to the monic 1),
+      `canDec_red` (0 < N). Same layout as `lift_exists`'s display (†11d).
+
+(†13) **T_can MEMBERSHIP** `memCan n pol dec H x :=
+      MovesJ.ReadsOf p F n (dec x) H ∧ Realizable H ∧ pol.IsCanonPres H`.
+      The clause roster (THE central design decision, flagged Q9):
+      * `ReadsOf` (HC2/Defs:285, the f-explicit Wall-A run predicate) supplies
+        Monic/degree-n of the lift, `HistoryCoherent` (its 3rd conjunct), and the
+        per-read development/`SideReads` chain — "H is a run of the classifier on
+        dec x".
+      * `Realizable` (transition admissibility) + `pol.IsCanonPres` (L1 canonical
+        lifts + canonical residue roots) make the tree the CANONICAL-presentation
+        tree — matching `PrefSet`'s roster minus `MatchesHist` (shape-keying is
+        Pref's job, not the tree's) and minus `InBox`.
+      * `InBox` is NOT baked in: IB-D25a PROBES its derivation from the run's
+        root development on the degree-n lift; a blocked probe re-adjudicates the
+        roster (add the conjunct) — derivation-over-fiat, per countermodel-first.
+      * `mem none := True` (the full box) — L2's root law, forced by `root_mem`.
+
+(†14) **THE MODEL** `canTreeModel p F n N m pol dec : TreeModel p F n N m pol`:
+      mem = (†13) on some-chains, True at none; child DEFINED as run-extension —
+      `child none ν x := ∃ h : ν.species = root, memCan (rootHist ν h) x`,
+      `child (some H) ν x := ∃ hν : ν.species ≠ root, memCan (H.snoc ν hν) x`.
+      Law provability (all checked at design time):
+      * `root_mem` — definitional (match reduces to True).
+      * `mem_single` — the field's `⟨[ν], h1.1, h1.2⟩` equals `rootHist ν h` by
+        DEFINITIONAL proof irrelevance of History's Prop fields; h1.2-at-0 gives
+        the species leg. (IB-D24a)
+      * `mem_snoc` — backward: proof-irrelevant projection of the ∃; forward: the
+        ONE load-bearing law `memCan_snoc_mono` (IB-D23). (IB-D24b)
+      * `mem_realizable` — projection: HistoryCoherent off ReadsOf's 3rd conjunct
+        + the two carried conjuncts. (IB-D24c)
+      SEAM REVERSAL (design consequence, record for the W4-1 ledger row): at this
+      model the all-and-only face is DEFINITIONAL — `canTreeModel_child_some_iff`
+      is the `WallAReconciled`-genre display with `dec := canDec` — while the
+      COVERING duties (`W41ChildCover`/`ChildCover`, the (c2) row) become genuine
+      ReadsOf-TOTALITY claims (a window-opening x admits a realized root run),
+      owner HC-2/D4R.0-K exactly as the ledger already assigns. Nothing moves
+      ownership; the definitional side just stops being open.
+
+(†15) **THE POL-PIN POLICY** `canPolicy p : CanonPolicy p (ZMod p)` +
+      `canPolicy_pin p : OffsetPPin (canPolicy p)` — the note's ONE (S6b)
+      OFFSET-P-LIFT rule (note 4646–4651; W4-5). HONEST DATA SORRIES, owner
+      HC-1/§B2-DEF (PolPin.lean: the (S6b′) formula needs the lower-stage
+      realizer vocabulary MovesC/MovesD do not export). ACCEPTANCE RULE: a filled
+      `canPolicy` WITHOUT `canPolicy_pin` is not acceptance — the pin is what
+      excludes the under-typed instantiations (`not_realizes_bare_ne_zero`, the
+      bypass kills). The model being (pol, dec)-PARAMETRIC confines this residue:
+      every policy-quantified MovesT consumer is unaffected; only canonicity-
+      demanding consumers block.
+
+(†16) **THE WIRE** (IB-D27, a MovesU edit — outside the designer round's
+      new-modules-only scope): `bridgePol p := canPolicy p`;
+      `bridgeTm p n N := canTreeModelN p n N (canPolicy p)`
+      (`canTreeModelN` = the m := n·N, dec := canDec specialization, landed).
+      This kills BridgeD1's `bridgeTm` sorry outright and re-keys its `bridgePol`
+      sorry to the pin-carrying (†15) pair — the residual conditionality of the
+      whole Tm chain is then EXACTLY {canPolicy, canPolicy_pin} + the IB-D22/23/24
+      unit proofs, each named.
+
+### D-TM.2 Unit split (IB-D22..IB-D30; skeleton statements landed in TreeCan.lean)
+
+- **IB-D22** `canChart`/`canCoeff`/`canDec` defs [LANDED, real] + `canDec_monic`/
+  `canDec_natDegree`/`canDec_red` [sorried]. Deps: —. Sketch: leading-coeff of
+  X^n + (deg < n) sum; map through C/X; `PadicInt.toZMod` kills p^k (k ≥ 1) and
+  roundtrips digit 0 (`ZMod.natCast_val`). R, ~30.
+- **IB-D23** `memCan_snoc_mono` [sorried]. Deps: —. Sketch: snoc-nodes =
+  nodes ++ [ν]; `Realizable`/`IsCanonPres` restrict via `getElem_append_left`;
+  `HistoryCoherent` restricts with `strFrame` take-stability; ReadsOf's per-read
+  witnesses (B, Nd, Φnext) REUSED VERBATIM — truncation only vacates the
+  `∀ hi1 : i+1 < len` Φnext guard at the new last read. COUNTERMODEL GATE: none
+  (restriction + reuse); a non-prefix-stable clause ⇒ BLOCKED report ⇒
+  adjudicated fallback = explicit prefix-closure scoping of memCan (fence event,
+  Q9 — memCan is NEW, no ratified file changes). H, ~40.
+- **IB-D24** the three field discharges (D24a mem_single / D24b mem_snoc /
+  D24c mem_realizable) [sorried in the landed `canTreeModel`]. Deps: D23.
+  Sketch: (†14)'s roster; D24a needs only `hist_ext`-style proof irrelevance
+  (T1a's private lemma — hoist or replay). R, ~30 total.
+- **IB-D25** (a) `canTreeModel_inBox` PROBE [sorried]: derive `InBoxOfMem`'s
+  statement from the run's root development (`SideReads` root clause on the
+  degree-n lift); BLOCKED ⇒ Q9 re-adjudication (add InBox to the roster), never
+  a weakened statement. (b) display gates [sorried]: `child_some_iff` /
+  `child_root_iff` / `child_none_not_root` (+ `mem_some_iff`, ALREADY PROVED
+  `Iff.rfl` at the skeleton — the defeq pin holds). ADJ/R, ~25.
+- **IB-D26** `canPolicy` + `canPolicy_pin` [sorried data, owner HC-1] — see
+  (†15). NOT dischargeable this campaign; tracked as the named policy residue.
+  The unit's only in-campaign duty: keep the pair adjacent so no consumer takes
+  the policy without the pin.
+- **IB-D27** the MovesU wire (†16): re-point `bridgePol`/`bridgeTm` in
+  BridgeD1_treeModelWire.lean + the one-line `canDec_red` ↔ `redPoly` re-key.
+  Deps: D22, D24, D26 (data only — the wire compiles against the sorried defs).
+  R, ~10.
+- **IB-D28** LAYOUT ADJUDICATION (memo unit): the corpus carries TWO digit
+  layouts — coefficient-major `digitIdx` (slot i·N+k; (†3), chartWitness,
+  boxeq_digits, and now canDec) vs level-major `MovesT.levelIdx` (level(c) =
+  ⌊c/n⌋+1; MovesT/Defs:1250 — consumed by `CapIrrLaw` and by `TreeNStable`'s
+  "the level-<N block is the first n·N coordinates" reading). Under
+  coefficient-major, the level-<N block is NOT an initial segment. Deliverable:
+  consumer enumeration + either (i) confirmation that every levelIdx consumer is
+  chart-mediated at the bridge (expected: CapIrrLaw/TreeNStable are open rows
+  whose bridge instances are stated through TransferRow, not raw levelIdx), or
+  (ii) the reconciliation permutation of Fin (n·N) as a typed statement for
+  adjudication (Q10). ADJ, memo+~10.
+- **IB-D29** `CanTreeInhab` NON-VACUITY ROW (statement-only): ∃ x H,
+  `(canTreeModelN p n N pol).mem (some H) x` at a designated small instance —
+  needs a genuine ReadsOf run witness (HC2 run vocabulary, `keys_exist_of_run`
+  genre). OWNER HC-2. This is the wave-2-doctrine gate for every D-group unit
+  that consumes `Realizes` at the bridge model: without it the model could be
+  some-empty and the D-group vacuous — the row makes that visible, not silent.
+  ADJ, statement-only.
+- **IB-D30** the Wall-A display `canTreeModel_child_some_iff` [sorried]: child =
+  run-extension, the `WallAReconciled` face definitional at the canonical model.
+  Deps: D24 (proof-irrelevance collapse only). R, ~10.
+
+### D-TM.3 Risk-ledger updates
+
+- **R7 → RESOLVED-BY-DESIGN**: the general constructor exists (landed skeleton);
+  residual = the IB-D22/23/24 proofs + the NAMED policy pair (IB-D26, HC-1).
+  IB-D1's `bridgeTm` data sorry dies at the D27 wire.
+- **R10 (new)**: a `ReadsOf` clause could fail prefix-stability ⇒ IB-D23 BLOCKED
+  ⇒ mem_snoc unprovable as constructed. Design-time check says no (restriction +
+  witness reuse — D-TM.2's sketch); fallback pre-scoped: prefix-closure guard on
+  memCan (fence event on a NEW def only).
+- **R11 (new)**: the two-layout tension (IB-D28). Bites only levelIdx-keyed open
+  rows at the bridge model; no construction-path unit reads levelIdx.
+- **R12 (new)**: policy-sorry leakage — a prover "discharging" a canonicity-
+  demanding unit by unfolding the sorried `canPolicy` would be vacuous-by-sorry.
+  Guard: units needing THE policy must take `OffsetPPin pol` as a BINDER (the
+  W4-5 consumption pattern, `CD_canonical`'s shape), never unfold `canPolicy`.
+
+### D-TM.4 Orchestrator questions (this addendum's fence events)
+
+- **Q9 (memCan roster — THE design ratification):** ratify (†13): mem none :=
+  True; some-clause = ReadsOf(dec x) ∧ Realizable ∧ IsCanonPres; InBox by
+  derivation probe (IB-D25a) with add-the-conjunct as the pre-approved blocked
+  fallback; MatchesHist deliberately absent (shape-keying stays in PrefSet).
+- **Q10 (layout):** ratify coefficient-major `digitIdx` as THE bridge layout
+  (already forced by the ratified TreePin.boxeq_digits + chartWitness); IB-D28's
+  memo to confirm no ratified levelIdx consumer breaks at the bridge model.
+- **Q11 (policy placement):** the (†15) sorries live in MovesD/TreeCan.lean
+  (adjacent to their pin obligation); when HC-1 exports the (S6b′) realizer
+  vocabulary, does the filled policy land HERE or in an HC1 module re-exported?
+  Also: does the D27 wire land NOW (against sorried defs — compiles, kills the
+  bridgeTm sorry, keeps the policy pair visible) or after D22–D24 prove out?
+  Recommendation: wire now — conditionality strictly shrinks and stays named.
+
+FILE MAP: `lean/LeanUrat/MovesD/TreeCan.lean` (NEW module; `lake build
+LeanUrat.MovesD.TreeCan` green 2026-07-30, "Build completed successfully
+(8569 jobs)", 13 sorries = the census in its header — 11 declarations).
+No existing file touched; MovesD/MANIFEST.json entry + the D27 wire are
+follow-on edits (Q11).
+

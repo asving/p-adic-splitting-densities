@@ -22,9 +22,10 @@ after TV-A4's ripple lands in place,
       green record);
 (ii)  the boundary DOCUMENTATION (U10's docstring + PROJECT_STATE) is updated
       to NAME the new premise rows — `TrackUniqOn`/`TrackRepOn` (TV-A1, the
-      wave-4 parameter genre, owner HC-2/D4R0K) and the `StableInputs` row
-      from TV-B7 (owner HC-2/D4R0K, MOVES 7566–7570) — an existing-file edit,
-      execution phase;
+      wave-4 parameter genre, owner HC-2/D4R0K) and the `ReadLocality` row
+      from TV-B7 (owner HC-2/D4R0K, MOVES 7566–7570; SYN-C2: the ONE
+      level-locality kernel, MovesT/ReadLocality.lean — `StableInputs` is its
+      derived bundle, TV_B2.lean) — an existing-file edit, execution phase;
 (iii) the consumer-grep transcript is attached (below, and re-run post-A4).
 
 E-PHASE GREP TRANSCRIPT (run at HEAD 2026-07-30, recorded per the unit spec):
@@ -46,9 +47,9 @@ THE COMPILED PIN (this file's build-time content): the definition below forces
 (i) rides every `lake build` from now on. It adds NO axiom surface (a
 definitional re-reference; `#print axioms` of the pin = theoremU's own).
 
-deps: A4 (execution ordering), B7 (the StableInputs row named in (ii)); the
-E-phase transcript above has no deps. difficulty: routine-opus, ~20 lines +
-records. -/
+deps: A4 (execution ordering), B7 (the ReadLocality row named in (ii) —
+SYN-C2 retype record there); the E-phase transcript above has no deps.
+difficulty: routine-opus, ~20 lines + records. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false

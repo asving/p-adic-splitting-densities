@@ -134,12 +134,20 @@ structure BridgePre (n : ℕ) (C : UCarriers n) : Prop where
     the D-group constructions consume as arguments (file header, dependency
     order; NOT consumed by `mkUInstance`, whose binders already carry the
     constructions' outputs).
-    * `transfer` — (†6) THE TRANSFER ROW (IB-D5's ratification-flagged
-      structure): TREE-N's decision/realization stability across levels (the
-      note's Thm 2.1 face).  OWNER: HC-2/D4R0K + TREE-N.  FENCED SIBLING:
-      `MovesT.treeN_stable` (MovesT/E11_treeN.lean:90, a fenced sorry) — cited,
-      NEVER consumed.  Consumers: IB-D8 (canonical_stable), IB-D15 (vt_real),
-      IB-D16 (vt_surj), treeOf coherence.
+    * `transfer` — (†6) THE TRANSFER ROW (IB-D5's structure): TREE-N's
+      decision/realization stability across levels (the note's Thm 2.1 face).
+      OWNER: HC-2/D4R0K + TREE-N.  Consumers: IB-D8 (canonical_stable),
+      IB-D15 (vt_real), IB-D16 (vt_surj), treeOf coherence.
+      SYN-C2 RECORD (2026-07-30, C2/N2 ratification): `TransferRow` is a
+      DERIVED surface, no longer a kernel — THE kernel is
+      `MovesT.ReadLocality` at the dressed bridge tower
+      (`BridgeReadLocality`, BridgeD5_transferRow.lean), and the wiring
+      supplies this field via `transferRow_of_readLocality (boxeq) (hdig)`.
+      The honesty ledger names ReadLocality ONCE; `MovesT.treeN_stable`'s
+      fenced sorry and TV-B2's `StableInputs` are the SAME row's other
+      derived faces (fence record at E11_treeN.lean; derivation
+      `stableInputs_of_readLocality` at TV_B2.lean).  Field type unchanged
+      (byte-identical structure; the demotion is status, not shape).
     * `slice_finite` — ROW DELETED 2026-07-30 (the pre-authorized R6-probe
       consequence: "on probe success this row LEAVES the pack"; N3 gate-class
       execution, `BRIDGE_ADJUDICATIONS_2026-07-30.md` SYNTHESIS PASS 1).  The

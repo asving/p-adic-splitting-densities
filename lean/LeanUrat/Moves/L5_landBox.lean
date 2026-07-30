@@ -9,6 +9,8 @@ import LeanUrat.Moves.L0_GRg
 import LeanUrat.Moves.L2_widthBound
 import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L3_liftResidual
+import LeanUrat.Moves.LaurentOrd
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L5_landBox — the increment landing, BOX side (§B2 D.8, MOVES ~2318-2337)
@@ -19,21 +21,33 @@ slot `j < μ` strictly NON-minimizing:
 
   (BOX)  `w(f) < w(B_j) + j·(e·h·g)`   for `j < μ`.
 
-## Proof structure (self-contained; does NOT route through the open unit `L3.K1`)
+## Proof structure
 
-* `w(Φ̂) = e·h·g` (`w_lift`): Φ̂'s displayed formula IS a Φ-adic development all of whose nonzero
-  slots have slot-weight `e·h·g`; the stage's own K1 axiom (`σ.hK1`) pins the attained minimum.
+* `w(Φ̂) = e·h·g` (`ResVal.w_Phat`): Φ̂'s displayed formula IS a Φ-adic development all of whose
+  nonzero slots have slot-weight `e·h·g`; the stage's own K1 axiom (`σ.hK1`) pins the attained
+  minimum.
 * Each slot term `B_j·Φ̂^j` (`B_j ≠ 0`) has residual of ψ-order EXACTLY `j` (`ordAt_term`):
   `R(B_j Φ̂^j) = R(B_j)·(z^{−thg}ψ)^j` by `L3_liftResidual`, and `ψ ∤ R(B_j)` at sub-Φ̂ width
-  (`landBox_psiNotDvd`, the faithful inline copy of unit `L2.psiNotDvd`, outside this unit's
-  import list).
+  (`ResVal.psiNotDvd`).
 * The minimizing-slot part of the development sums WITHOUT cancellation (`sum_min_ord`): terms of
   equal weight and pairwise-distinct ψ-orders — if a partial sum cancelled, `hRlt` would force
   `R(x_{j₀}) = R(−1)·R(rest)`, clashing with the distinct orders since `R(−1)² = 1`.  Hence
   `w(f) = min_j (w(B_j) + j·ehg)` and `ord_ψ R(f) =` the least minimizing slot.
 * `ord_ψ R(f) = μ` read off the ANCHORED polynomial (`hanch`/`hord`, transported through
-  `toLaurent` — `pow_dvd_of_toLaurent_pow_dvd`).  So the least minimizing slot is `μ`, and no
-  slot `j < μ` is minimizing: `w(f) < w(B_j) + j·ehg`.  ∎
+  `toLaurent` — `LaurentOrd.pow_dvd_of_toLaurent_pow_dvd`).  So the least minimizing slot is `μ`,
+  and no slot `j < μ` is minimizing: `w(f) < w(B_j) + j·ehg`.  ∎
+
+## SYN-M1 record (2026-07-30, C1 cluster)
+
+The file-private engine copies (w_one … R_pow; OrdAt/ordAt_unique/ordAt_unit_mul/ordAt_add/
+pow_dvd_of_toLaurent_pow_dvd; landBox_psiNotDvd; w_lift) are deleted in favor of
+`Moves/LaurentOrd.lean` + `Moves/ResVal.lean` (SYN-E0 concordance:
+`lean/notes/SYN_E0_CONCORDANCE_2026-07-30.md`). Per-conjunct equivalences: all statements
+identical per the table except (a) `landBox_psiNotDvd` → `ResVal.psiNotDvd` (α-rename only),
+(b) `w_lift` → `ResVal.w_Phat` (binder reorder + the `hg1 : 1 ≤ g` hypothesis, supplied at the
+single call site from `hψ.natDegree_pos`; the unconsumed g = 0 strengthening of `w_lift` is
+retired, SYN-E0 §3 VAR-S). File-specific lemmas (`ordAt_anchor`, `ordAt_term`, `sum_min_ord`,
+`sum_rest`) stay. Public statement `L5_landBox` byte-identical.
 -/
 
 set_option linter.style.longLine false
@@ -44,98 +58,11 @@ set_option maxHeartbeats 1000000
 
 namespace LeanUrat.Moves
 
-open Polynomial
+open Polynomial LaurentOrd ResVal
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-! ## Generic stage-valuation/residual helpers -/
-
-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
-
-private lemma R_one (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul σ.Φ 1 σ.hmonic.ne_zero one_ne_zero
-  rw [mul_one, σ.hRΦ] at h
-  have h2 : LaurentPolynomial.T (-σ.s) * LaurentPolynomial.T σ.s
-      = LaurentPolynomial.T (-σ.s) * (LaurentPolynomial.T σ.s * σ.R 1) := by rw [← h]
-  rw [← mul_assoc, ← LaurentPolynomial.T_add, neg_add_cancel, LaurentPolynomial.T_zero,
-    one_mul] at h2
-  exact h2.symm
-
-private lemma w_neg_one (σ : Stage p F) : σ.w (-1) = 0 := by
-  have h := σ.hwmul (-1) (-1) (neg_ne_zero.mpr one_ne_zero) (neg_ne_zero.mpr one_ne_zero)
-  rw [neg_mul_neg, one_mul, w_one σ] at h
-  omega
-
-private lemma R_neg_one_sq (σ : Stage p F) : σ.R (-1) * σ.R (-1) = 1 := by
-  have h := σ.hRmul (-1) (-1) (neg_ne_zero.mpr one_ne_zero) (neg_ne_zero.mpr one_ne_zero)
-  rw [neg_mul_neg, one_mul, R_one σ] at h
-  exact h.symm
-
-private lemma w_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : σ.w (-f) = σ.w f := by
-  have h := σ.hwmul (-1) f (neg_ne_zero.mpr one_ne_zero) hf
-  rw [neg_one_mul, w_neg_one σ] at h
-  omega
-
-private lemma w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
-  induction n with
-  | zero => simp [w_one σ]
-  | succ n ih =>
-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero n hf) hf, ih]
-    push_cast
-    ring
-
-private lemma R_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.R (f ^ n) = σ.R f ^ n := by
-  induction n with
-  | zero => simp [R_one σ]
-  | succ n ih => rw [pow_succ, σ.hRmul _ _ (pow_ne_zero n hf) hf, ih, pow_succ]
-
 /-! ## ψ-adic order at a fixed exponent, over the Laurent ring -/
-
-/-- `x` has `P`-order exactly `k`. -/
-private def OrdAt {K : Type*} [Field K] (P x : LaurentPolynomial K) (k : ℕ) : Prop :=
-  P ^ k ∣ x ∧ ¬ P ^ (k + 1) ∣ x
-
-private lemma ordAt_unique {K : Type*} [Field K] {P x : LaurentPolynomial K} {k l : ℕ}
-    (hk : OrdAt P x k) (hl : OrdAt P x l) : k = l := by
-  by_contra hne
-  rcases Nat.lt_or_ge k l with h | h
-  · exact hk.2 ((pow_dvd_pow P (by omega)).trans hl.1)
-  · exact hl.2 ((pow_dvd_pow P (by omega)).trans hk.1)
-
-private lemma ordAt_unit_mul {K : Type*} [Field K] {P x c : LaurentPolynomial K}
-    (hc : c * c = 1) {k : ℕ} (h : OrdAt P x k) : OrdAt P (c * x) k := by
-  refine ⟨h.1.mul_left c, fun hd => h.2 ?_⟩
-  have h2 := hd.mul_left c
-  rwa [← mul_assoc, hc, one_mul] at h2
-
-private lemma ordAt_add {K : Type*} [Field K] {P x y : LaurentPolynomial K} {k l : ℕ}
-    (hx : OrdAt P x k) (hy : OrdAt P y l) (hkl : k < l) : OrdAt P (x + y) k := by
-  have hyk : P ^ (k + 1) ∣ y := (pow_dvd_pow P (by omega)).trans hy.1
-  refine ⟨dvd_add hx.1 ((pow_dvd_pow P hkl.le).trans hy.1), fun hd => hx.2 ?_⟩
-  have h2 := dvd_sub hd hyk
-  simpa using h2
-
-/-- Transfer ψ-power divisibility DOWN from the Laurent ring to `K[X]` (clear `X`-denominators,
-use primality of ψ in the UFD `K[X]` and `ψ ∤ X`). -/
-private lemma pow_dvd_of_toLaurent_pow_dvd {K : Type*} [Field K] {ψ q : Polynomial K}
-    (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) {m : ℕ}
-    (h : Polynomial.toLaurent ψ ^ m ∣ Polynomial.toLaurent q) : ψ ^ m ∣ q := by
-  obtain ⟨c, hc⟩ := h
-  obtain ⟨n, f', hf'⟩ := LaurentPolynomial.exists_T_pow c
-  have hkey : q * Polynomial.X ^ n = ψ ^ m * f' := by
-    apply Polynomial.toLaurent_injective
-    rw [map_mul, map_mul, Polynomial.toLaurent_X_pow, map_pow, hc, mul_assoc, ← hf']
-  have hnotdvdX : ¬ (ψ ∣ Polynomial.X) := by
-    intro hdX
-    exact hψz (Polynomial.eq_of_monic_of_associated hmon Polynomial.monic_X
-      (hψ.associated_of_dvd Polynomial.irreducible_X hdX))
-  exact hψ.prime.pow_dvd_of_dvd_mul_right _
-    (fun hdX => hnotdvdX (hψ.prime.dvd_of_dvd_pow hdX)) ⟨f', hkey⟩
 
 /-- ψ-order of an anchored Laurent element: `x = z^a·R_anch` with `ord_ψ(R_anch) = μ` (as
 polynomials) has `OrdAt (ψ) x μ` in the Laurent ring. -/
@@ -157,47 +84,6 @@ private lemma ordAt_anchor (σ : Stage p F) {ψ : Polynomial ↥σ.K}
       one_mul] at h2
     exact hord.2 (pow_dvd_of_toLaurent_pow_dvd hmon hψ hψz h2)
 
-/-! ## Inline copy of unit `L2.psiNotDvd` (outside this unit's import list) -/
-
-/-- **[dep `L2.psiNotDvd`, inline — faithful private copy]** `ψ ∤ R(B)` for `B ≠ 0` of sub-Φ̂
-width: the width window (`L2_widthBound`) anchors `R B = z^a·R_anch` with `deg R_anch < g`
-(`L0_GRg`); a divisor ψ would reflect to `ψ ∣ R_anch·X^n` in `↥K[X]`, forcing `g ≤ deg R_anch`. -/
-private theorem landBox_psiNotDvd (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
-    (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X)
-    (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBdeg : B.natDegree < σ.e * g * σ.Φ.natDegree) :
-    ¬ (Polynomial.toLaurent ψ ∣ σ.R B) := by
-  classical
-  intro hdvd
-  have hgpos : 0 < ψ.natDegree := hψ.natDegree_pos
-  have hg1 : 1 ≤ g := by omega
-  obtain ⟨a, ha⟩ := L2_widthBound σ g hg1 B hB hBdeg
-  obtain ⟨Ranch, hRdeg, hRB⟩ := L0_GRg (σ.hRne B hB) a g ha
-  have hRanch_ne : Ranch ≠ 0 := by
-    intro h
-    rw [h, map_zero, mul_zero] at hRB
-    exact σ.hRne B hB hRB
-  have hdvdR : Polynomial.toLaurent ψ ∣ Polynomial.toLaurent Ranch := by
-    have h := hdvd.mul_left (LaurentPolynomial.T (-a))
-    rwa [hRB, ← mul_assoc, ← LaurentPolynomial.T_add, neg_add_cancel,
-      LaurentPolynomial.T_zero, one_mul] at h
-  obtain ⟨q, hq⟩ := hdvdR
-  obtain ⟨n, f', hf'⟩ := LaurentPolynomial.exists_T_pow q
-  have hkey : Ranch * Polynomial.X ^ n = ψ * f' := by
-    apply Polynomial.toLaurent_injective
-    rw [map_mul, map_mul, Polynomial.toLaurent_X_pow, hq, mul_assoc, ← hf']
-  have hdiv : ψ ∣ Ranch * Polynomial.X ^ n := ⟨f', hkey⟩
-  have hprime : Prime ψ := hψ.prime
-  have hnotdvdX : ¬ (ψ ∣ Polynomial.X) := by
-    intro hdX
-    exact hψz (Polynomial.eq_of_monic_of_associated hmon Polynomial.monic_X
-      (hψ.associated_of_dvd Polynomial.irreducible_X hdX))
-  rcases hprime.dvd_or_dvd hdiv with h1 | h2
-  · have hle := Polynomial.natDegree_le_of_dvd h1 hRanch_ne
-    omega
-  · exact hnotdvdX (hprime.dvd_of_dvd_pow h2)
-
-/-! ## The slot-term ψ-order and the lift weight -/
-
 /-- Each nonzero slot term `B·Φ̂^i` has residual ψ-order exactly `i` (D.3(d) + D.5). -/
 private lemma ordAt_term (σ : Stage p F) {ψ : Polynomial ↥σ.K} {g : ℕ}
     (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X)
@@ -210,7 +96,7 @@ private lemma ordAt_term (σ : Stage p F) {ψ : Polynomial ↥σ.K} {g : ℕ}
   have hBnd : Bi.natDegree < σ.e * g * σ.Φ.natDegree := by
     rw [← hΦd]
     exact Polynomial.natDegree_lt_natDegree hBi hBdeg
-  have hnd := landBox_psiNotDvd σ ψ g hg hmon hψ hψz Bi hBi hBnd
+  have hnd := psiNotDvd σ ψ g hg hmon hψ hψz Bi hBi hBnd
   have hRterm : σ.R (Bi * Φhat ^ i)
       = σ.R Bi * (LaurentPolynomial.T (- σ.t * (σ.h : ℤ) * (g : ℤ))) ^ i
           * (Polynomial.toLaurent ψ) ^ i := by
@@ -233,117 +119,6 @@ private lemma ordAt_term (σ : Stage p F) {ψ : Polynomial ↥σ.K} {g : ℕ}
       show - σ.t * (σ.h : ℤ) * (g : ℤ) + σ.t * (σ.h : ℤ) * (g : ℤ) = 0 by ring,
       LaurentPolynomial.T_zero, one_pow, mul_one] at h2
     exact hnd h2
-
-/-- `w(Φ̂) = e·h·g`: the displayed lift formula is a Φ-adic development all of whose nonzero slot
-weights equal `e·h·g`; the stage's own K1 axiom (S2) pins the attained minimum. -/
-private lemma w_lift (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p])
-    (hΦhatne : Φhat ≠ 0) (hlift : IsStandardLift σ ψ g Φhat) :
-    σ.w Φhat = (σ.e : ℤ) * σ.h * g := by
-  classical
-  obtain ⟨hψmon, hψdeg, tt, htt0, httk, hΦhat⟩ := hlift
-  have hepos : 0 < σ.e := σ.he
-  have hΦdegpos : (0 : WithBot ℕ) < σ.Φ.degree := Polynomial.natDegree_pos_iff_degree_pos.mp σ.hdeg
-  have hbotΦ : (⊥ : WithBot ℕ) < σ.Φ.degree :=
-    bot_lt_iff_ne_bot.mpr (fun h => σ.hmonic.ne_zero (Polynomial.degree_eq_bot.mp h))
-  set B' : ℕ → Polynomial ℤ_[p] := fun i =>
-    if i = σ.e * g then 1 else if σ.e ∣ i ∧ i / σ.e < g then tt (i / σ.e) else 0 with hB'
-  have hB'top : B' (σ.e * g) = 1 := by simp [hB']
-  have hB'mul : ∀ k, k < g → B' (σ.e * k) = tt k := by
-    intro k hk
-    have hne : σ.e * k ≠ σ.e * g := by
-      have := mul_lt_mul_of_pos_left hk hepos
-      omega
-    have hdvd : σ.e ∣ σ.e * k := dvd_mul_right σ.e k
-    have hdiv : σ.e * k / σ.e = k := Nat.mul_div_cancel_left k hepos
-    simp only [hB']
-    rw [if_neg hne, if_pos ⟨hdvd, by rw [hdiv]; exact hk⟩, hdiv]
-  have hB'other : ∀ i, i ≠ σ.e * g → ¬ (σ.e ∣ i ∧ i / σ.e < g) → B' i = 0 := by
-    intro i h1 h2
-    simp only [hB']
-    rw [if_neg h1, if_neg h2]
-  have hdev' : IsDevelopment σ.Φ Φhat B' (σ.e * g + 1) := by
-    refine ⟨?_, ?_, ?_⟩
-    · intro i
-      by_cases h1 : i = σ.e * g
-      · rw [h1, hB'top, Polynomial.degree_one]
-        exact hΦdegpos
-      · by_cases h2 : σ.e ∣ i ∧ i / σ.e < g
-        · obtain ⟨k, hk⟩ := h2.1
-          have hkeq : i / σ.e = k := by rw [hk]; exact Nat.mul_div_cancel_left k hepos
-          have hkg : k < g := by rw [← hkeq]; exact h2.2
-          have hBik : B' i = tt k := by rw [hk]; exact hB'mul k hkg
-          rw [hBik]
-          by_cases h3 : ψ.coeff k = 0
-          · rw [htt0 k h3, Polynomial.degree_zero]
-            exact hbotΦ
-          · exact (httk k hkg h3).2.1
-        · rw [hB'other i h1 h2, Polynomial.degree_zero]
-          exact hbotΦ
-    · intro i hi
-      have h1 : i ≠ σ.e * g := by omega
-      have h2 : ¬ (σ.e ∣ i ∧ i / σ.e < g) := by
-        rintro ⟨⟨k, hk⟩, hdivlt⟩
-        rw [hk, Nat.mul_div_cancel_left k hepos] at hdivlt
-        have := mul_le_mul_of_nonneg_left hdivlt.le (Nat.zero_le σ.e)
-        omega
-      exact hB'other i h1 h2
-    · rw [hΦhat, Finset.sum_range_succ, hB'top, one_mul]
-      have hsum : ∑ i ∈ Finset.range (σ.e * g), B' i * σ.Φ ^ i
-          = ∑ k ∈ Finset.range g, tt k * σ.Φ ^ (σ.e * k) := by
-        have himg : (Finset.range g).image (fun k => σ.e * k) ⊆ Finset.range (σ.e * g) := by
-          intro i hi
-          rw [Finset.mem_image] at hi
-          obtain ⟨k, hk, hik⟩ := hi
-          rw [Finset.mem_range] at hk ⊢
-          rw [← hik]
-          exact mul_lt_mul_of_pos_left hk hepos
-        have hinj : ∀ a ∈ Finset.range g, ∀ b ∈ Finset.range g,
-            σ.e * a = σ.e * b → a = b := by
-          intro a _ b _ hab
-          exact Nat.eq_of_mul_eq_mul_left hepos hab
-        rw [← Finset.sum_subset himg]
-        · rw [Finset.sum_image hinj]
-          refine Finset.sum_congr rfl (fun k hk => ?_)
-          rw [Finset.mem_range] at hk
-          rw [hB'mul k hk]
-        · intro i hiR hiI
-          have h1 : i ≠ σ.e * g := by
-            rw [Finset.mem_range] at hiR
-            omega
-          have h2 : ¬ (σ.e ∣ i ∧ i / σ.e < g) := by
-            rintro ⟨⟨k, hk⟩, hdivlt⟩
-            rw [hk, Nat.mul_div_cancel_left k hepos] at hdivlt
-            apply hiI
-            rw [Finset.mem_image]
-            exact ⟨k, Finset.mem_range.mpr hdivlt, hk.symm⟩
-          rw [hB'other i h1 h2, zero_mul]
-      rw [hsum]
-      exact (add_comm _ _)
-  have hslot := σ.hK1 Φhat B' (σ.e * g + 1) hΦhatne hdev'
-  obtain ⟨i, hiN, hinz, heq⟩ := hslot.2
-  dsimp only at hinz heq
-  rw [σ.hwΦ] at heq
-  by_cases h1 : i = σ.e * g
-  · rw [h1, hB'top, w_one σ] at heq
-    rw [heq]
-    push_cast
-    ring
-  · by_cases h2 : σ.e ∣ i ∧ i / σ.e < g
-    · obtain ⟨k, hk⟩ := h2.1
-      have hkeq : i / σ.e = k := by rw [hk]; exact Nat.mul_div_cancel_left k hepos
-      have hkg : k < g := by rw [← hkeq]; exact h2.2
-      have hBik : B' i = tt k := by rw [hk]; exact hB'mul k hkg
-      rw [hBik] at heq hinz
-      have hcoef : ψ.coeff k ≠ 0 := fun h0 => hinz (htt0 k h0)
-      obtain ⟨httne', hinCk, hwPrevk, _⟩ := httk k hkg hcoef
-      have hwk : σ.w (tt k) = (σ.e : ℤ) * ((σ.h : ℤ) * ((g : ℤ) - (k : ℤ))) := by
-        rw [σ.hStretch (tt k) httne' hinCk, hwPrevk]
-      rw [hwk, hk] at heq
-      rw [heq]
-      push_cast
-      ring
-    · exact absurd (hB'other i h1 h2) hinz
-
 /-! ## The non-cancelling minimal-weight sum -/
 
 /-- Sum of terms of equal stage-weight `m` whose residuals have pairwise-distinct ψ-orders
@@ -457,7 +232,7 @@ theorem L5_landBox {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ
     omega
   obtain ⟨hΦm, hΦd⟩ := L3_liftMonic σ ψ g hg1 Φhat hlift
   have hΦne : Φhat ≠ 0 := hΦm.ne_zero
-  have hwhat : σ.w Φhat = (σ.e : ℤ) * σ.h * g := w_lift σ ψ g Φhat hΦne hlift
+  have hwhat : σ.w Φhat = (σ.e : ℤ) * σ.h * g := w_Phat σ ψ g (by have := hψ.natDegree_pos; omega) Φhat hlift hΦne
   -- the nonzero-slot set
   set S : Finset ℕ := (Finset.range N).filter (fun i => B i ≠ 0) with hSdef
   have hjS : j ∈ S := by
