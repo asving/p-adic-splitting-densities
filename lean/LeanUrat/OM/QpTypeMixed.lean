@@ -233,11 +233,7 @@ theorem mixedGateFiber_valuation {N : ℕ} (hN0 : 0 < N) (hN3 : 3 ≤ N) {f : �
       = PadicLift.zmodValuation p N (PadicInt.toZModPow N (f.coeff i)) := by
     intro i
     simp only [vOf, hfbox, PadicLift.toBox_val, Polynomial.coeff_map]
-  rw [hvOf 0] at hv0
-  rw [hvOf 1] at hv1
-  rw [hvOf 2] at hv2
-  rw [hvOf 3] at hv3
-  rw [hvOf 4] at hv4
+  simp only [hvOf] at hv0 hv1 hv2 hv3 hv4
   obtain ⟨-, hval0⟩ := QpType.valuation_eq_of_zmodValuation_lt p (by omega : 2 < N) hv0
   obtain ⟨-, hval2⟩ := QpType.valuation_eq_of_zmodValuation_lt p (by omega : 1 < N) hv2
   exact ⟨hval0,
@@ -451,16 +447,13 @@ theorem mgv4 : PadicLift.zmodValuation 2 4 (4 : ZMod (2 ^ 4)) = 2 :=
   zmodValuation_eq_of 2 _ (by decide) (by decide) (by decide)
 
 theorem mgu1 : PadicLift.zmodUnitResidue 2 4 (1 : ZMod (2 ^ 4)) = 1 := by
-  have h := zmodUnitResidue_eq 2 (x := (1 : ZMod (2 ^ 4))) (u := 1) (by decide) mgv1 (by decide)
-  simpa using h
+  simpa using zmodUnitResidue_eq 2 (x := (1 : ZMod (2 ^ 4))) (u := 1) (by decide) mgv1 (by decide)
 
 theorem mgu2 : PadicLift.zmodUnitResidue 2 4 (2 : ZMod (2 ^ 4)) = 1 := by
-  have h := zmodUnitResidue_eq 2 (x := (2 : ZMod (2 ^ 4))) (u := 1) (by decide) mgv2 (by decide)
-  simpa using h
+  simpa using zmodUnitResidue_eq 2 (x := (2 : ZMod (2 ^ 4))) (u := 1) (by decide) mgv2 (by decide)
 
 theorem mgu4 : PadicLift.zmodUnitResidue 2 4 (4 : ZMod (2 ^ 4)) = 1 := by
-  have h := zmodUnitResidue_eq 2 (x := (4 : ZMod (2 ^ 4))) (u := 1) (by decide) mgv4 (by decide)
-  simpa using h
+  simpa using zmodUnitResidue_eq 2 (x := (4 : ZMod (2 ^ 4))) (u := 1) (by decide) mgv4 (by decide)
 
 /-- The witness box lies in the mixed-gate cell (digit conditions checked directly on BOTH
 sides). -/

@@ -76,8 +76,8 @@ theorem omChildCount_childShape' (sz : ℕ) (q : ℕ) :
 /-- **`omChildCount` on a `childShape`** (the target statement, at a prime `p`).  Immediate from the
 unconditional `omChildCount_childShape'`. -/
 theorem omChildCount_childShape (sz : ℕ) (p : ℕ) [Fact p.Prime] :
-    OMCountV2.omChildCount (childShape sz) p = 1 / MontesAxiom.countPivot sz p := by
-  exact omChildCount_childShape' sz p
+    OMCountV2.omChildCount (childShape sz) p = 1 / MontesAxiom.countPivot sz p :=
+  omChildCount_childShape' sz p
 
 #print axioms omChildCount_childShape
 
@@ -419,9 +419,7 @@ theorem hnode_oneSideShapeChildful (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ 
       Filter.atTop
       (nhds ((CellCard.shapeCount p shape : ℚ)
               * ((p : ℚ) ^ (L4.newtonExponent (mkPoly s [pr.1, pr.2]) + sideDeg pr))⁻¹)) := by
-  have hp0 : (p : ℚ) ≠ 0 := by
-    have : p ≠ 0 := (Fact.out (p := p.Prime)).ne_zero
-    exact_mod_cast this
+  have hp0 : (p : ℚ) ≠ 0 := by exact_mod_cast (Fact.out (p := p.Prime)).ne_zero
   -- Step A: the `p^{s(N-1)}`-normalized decided-cell limit (μ-agnostic).
   have hbase := hnode_decided_order1 (p := p) hN₀ hP hsh
   -- Step B: multiply by the constant `(p^s)⁻¹`.
@@ -435,8 +433,7 @@ theorem hnode_oneSideShapeChildful (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ 
     refine hmul.congr' ?_
     filter_upwards [Filter.eventually_ge_atTop 1] with N hN
     have hexp : s * N = s * (N - 1) + s := by
-      conv_lhs => rw [show N = (N - 1) + 1 from by omega]
-      rw [Nat.mul_add, Nat.mul_one]
+      rw [← mul_add_one, Nat.sub_add_cancel hN]
     rw [hexp, pow_add]
     field_simp
   -- Step D: identify the limit constant with the RAW value `shapeCount·p^{−V}`.
@@ -467,10 +464,7 @@ theorem hnode_oneSideShapeChildful (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ 
     rw [show CellCard.prodSC p [shape] = CellCard.shapeCount p shape from by
       rw [CellCard.prodSC, List.map_singleton, List.prod_singleton]]
     have hden : (p : ℚ) ^ (s * (N₀ - 1)) * (p : ℚ) ^ s = (p : ℚ) ^ (s * N₀) := by
-      rw [← pow_add]
-      congr 1
-      rw [show s * (N₀ - 1) + s = s * (N₀ - 1) + s * 1 from by rw [Nat.mul_one],
-        ← Nat.mul_add, Nat.sub_add_cancel hN₀]
+      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel hN₀]
     have hnum : (p : ℚ) ^ (s * N₀) = (p : ℚ) ^ V * (p : ℚ) ^ CellCard.freeExp s N₀ P := by
       rw [← pow_add]
       congr 1

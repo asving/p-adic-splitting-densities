@@ -129,9 +129,8 @@ theorem newtonExponent_sideSub_eq_sideCeilSum
       rw [Finset.mem_range] at hi
       show i ≤ pr.2.1 - pr.1.1
       omega
-    have := ceilAt_pair (subPr pr).1 (subPr pr).2 hwsub hile
-    -- (subPr pr).1, (subPr pr).2 as a pair is subPr pr itself.
-    simpa using this
+    -- (subPr pr).1, (subPr pr).2 as a pair is subPr pr itself (structure eta).
+    exact ceilAt_pair (subPr pr).1 (subPr pr).2 hwsub hile
   rw [Finset.sum_congr rfl hstep1]
   -- ceilSide (subPr pr) i = ceilSide pr (pr.1.1 + i)
   rw [Finset.sum_congr rfl (fun i _ => ceilSide_subPr pr i)]

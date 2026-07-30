@@ -68,8 +68,7 @@ theorem omCount_childless_eval (T : ClusterShape) (q : ℕ)
     omCount T q
       = ((configsOf T).map (fun c => mCell c q * ((q : ℚ) ^ volExp c)⁻¹)).sum := by
   rw [omCount]
-  refine congrArg List.sum ?_
-  refine List.map_congr_left fun c hc => ?_
+  refine congrArg List.sum (List.map_congr_left fun c hc => ?_)
   rw [hchild c hc, List.map_nil, List.prod_nil, mul_one]
 
 /-- The single-configuration specialization (the current reader emits exactly one config):
@@ -79,8 +78,8 @@ theorem omCount_childless_single (T : ClusterShape) (q : ℕ)
     omCount T q = mCell (configOf T) q * ((q : ℚ) ^ volExp (configOf T))⁻¹ := by
   rw [omCount_childless_eval T q (by
     intro c hc
-    have : c = configOf T := by simpa [configsOf] using hc
-    rw [this]; exact hchild)]
+    obtain rfl : c = configOf T := by simpa [configsOf] using hc
+    exact hchild)]
   simp [configsOf]
 
 /-! ## 2. `T_c` — the order-1 decided engine `ClusterShape` literal -/

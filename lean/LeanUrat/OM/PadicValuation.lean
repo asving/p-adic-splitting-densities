@@ -50,17 +50,11 @@ theorem coeffVal_facts (f : (PadicInt p)[X]) :
     (∀ x y : PadicInt p, x ≠ 0 → y ≠ 0 → (x * y).valuation = x.valuation + y.valuation) ∧
     (∀ (k : ℕ) (c : PadicInt p), c ≠ 0 →
       ((p : PadicInt p) ^ k * c).valuation = k + c.valuation) ∧
-    (∀ x y : PadicInt p, x + y ≠ 0 → min x.valuation y.valuation ≤ (x + y).valuation) := by
-  refine ⟨?_, ?_, ?_, ?_⟩
-  · intro i hi
-    rw [coeffVal_def]
-    exact valuation_eq_zero_of_isUnit p hi
-  · intro x y hx hy
-    exact PadicInt.valuation_mul hx hy
-  · intro k c hc
-    exact PadicInt.valuation_p_pow_mul k c hc
-  · intro x y hxy
-    exact PadicInt.le_valuation_add hxy
+    (∀ x y : PadicInt p, x + y ≠ 0 → min x.valuation y.valuation ≤ (x + y).valuation) :=
+  ⟨fun _ hi => valuation_eq_zero_of_isUnit p hi,
+   fun _ _ hx hy => PadicInt.valuation_mul hx hy,
+   fun k c hc => PadicInt.valuation_p_pow_mul k c hc,
+   fun _ _ hxy => PadicInt.le_valuation_add hxy⟩
 
 /-- The valuation of the leading coefficient of a monic `f` is `0` (top coefficient is `1`). -/
 theorem coeffVal_natDegree_of_monic {f : (PadicInt p)[X]} (hf : f.Monic) :
@@ -89,11 +83,9 @@ theorem valSupport_facts (f : (PadicInt p)[X]) :
     · rintro ⟨hi, rfl⟩
       exact ⟨i, hi, rfl, rfl⟩
   · intro hf
-    have hne : f.coeff f.natDegree ≠ 0 := by
-      rw [← leadingCoeff, hf.leadingCoeff]; exact one_ne_zero
-    have : (f.natDegree, coeffVal p f f.natDegree) ∈ valSupport p f := by
-      simp only [valSupport, Finset.mem_image, mem_support_iff]
-      exact ⟨f.natDegree, hne, rfl⟩
+    have : (f.natDegree, coeffVal p f f.natDegree) ∈ valSupport p f :=
+      Finset.mem_image_of_mem _
+        (mem_support_iff.2 (hf.coeff_natDegree.trans_ne one_ne_zero))
     rwa [coeffVal_natDegree_of_monic p hf] at this
 
 /-- `valSupport f` is nonempty for monic `f`. -/

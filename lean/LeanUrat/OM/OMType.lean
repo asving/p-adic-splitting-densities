@@ -307,8 +307,8 @@ cluster size: `nodeSizeOf ch.node < clusterSize T`. PROVED from the structural w
 `hNodeSize` (`nodeSizeOf node = childSize`) and `hChildSizeLt` (`childSize < clusterSize T`). This is
 the genuine well-foundedness fact, no longer vacuous. -/
 theorem nodeSizeOf_child_lt (T : OMType) (ch : OMCell.Child T) :
-    nodeSizeOf ch.node < clusterSize T := by
-  rw [ch.hNodeSize]; exact ch.hChildSizeLt
+    nodeSizeOf ch.node < clusterSize T :=
+  ch.hNodeSize.trans_lt ch.hChildSizeLt
 
 /-! ## GAP 2: the shape encoder `shapeOf : OMType → ClusterShape` (`def:shape-of-type`)
 
@@ -344,7 +344,7 @@ noncomputable def shapeOf (T : OMType) : ClusterShape :=
 /-- **The encoded shape reads back the cluster size** (the coupling between `shapeOf` and the
 count-native `nodeSizeOf`/`treeSize`). By construction `encodeTree T` has root tuple
 `(order, clusterSize T, dr)`, so `nodeSizeOf (shapeOf T) = clusterSize T`. -/
-@[simp] theorem nodeSizeOf_shapeOf (T : OMType) : nodeSizeOf (shapeOf T) = clusterSize T := by
+@[simp] theorem nodeSizeOf_shapeOf (T : OMType) : nodeSizeOf (shapeOf T) = clusterSize T :=
   rfl
 
 end LeanUrat.OM.M5

@@ -304,7 +304,7 @@ theorem spine_nodeMeasure_boxSum {q n : ℕ} (p : ℕ) [Fact p.Prime]
   have hstep : ∀ N, M8.nodeTrunc p q classify T (N + 1)
       = nonSelfLoopNorm p q classify cells treeSize T N
         + (M8.selfLoopRatio treeSize T q * ((q : ℚ) ^ n)⁻¹) * M8.nodeTrunc p q classify T N :=
-    fun N => nodeTrunc_step_of_rec p classify cells treeSize (Nat.lt_of_lt_of_le Nat.zero_lt_one (le_of_lt hq)) T N (hrec T N)
+    fun N => nodeTrunc_step_of_rec p classify cells treeSize (Nat.zero_lt_of_lt hq) T N (hrec T N)
   -- (ii) the F3 geometric resummation supplies the limit value `nodeNum / countPivot`:
   have _hresum := nodeNum_selfLoop_resummation (q := q) (by omega) cells treeSize cells_descend T
   -- the SINGLE residual analytic step (box-scale collapse, the `nodeTrunc_tendsto` shape) is `h_spine`;

@@ -168,7 +168,7 @@ private theorem multiSide_factor_zip (P : List (ℕ × ℕ)) (p : ℕ) [Fact p.P
               = (sideCeilSum P pr + sideDeg pr)
                 + ((rest.map (sideCeilSum P)).sum + (rest.map sideDeg).sum) from by ring]
           rw [pow_add, mul_inv]
-          push_cast [Nat.cast_mul]
+          push_cast
           ring
 
 /-- **The closed form of `multiSideValue`** (`ShapesFor` length-match; MenuPath for the
@@ -182,10 +182,8 @@ theorem omCount_multiSide_closed (s N : ℕ) (P : List (ℕ × ℕ)) (hP : MenuP
     multiSideValue s P sh p
       = (CellCard.prodSC p sh : ℚ)
           * ((p : ℚ) ^ (L4.newtonExponent (mkPoly s P) + ((sidePairs P).map sideDeg).sum))⁻¹ := by
-  have hp0 : (p : ℚ) ≠ 0 := by exact_mod_cast (Fact.out (p := p.Prime)).ne_zero
   have hlen : sh.length = (sidePairs P).length := hsh.length_eq
-  rw [multiSideValue]
-  rw [multiSide_factor_zip P p (sidePairs P) sh hlen]
+  rw [multiSideValue, multiSide_factor_zip P p (sidePairs P) sh hlen]
   -- reconcile the truncated per-side ceiling sum with the whole-path Newton exponent.
   rw [sideCeilSum_sum s N P hP]
 
@@ -251,8 +249,7 @@ theorem hnode_multiSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (P : List (ℕ ×
     refine hmul.congr' ?_
     filter_upwards [Filter.eventually_ge_atTop 1] with N hN
     have hexp : s * N = s * (N - 1) + s := by
-      conv_lhs => rw [show N = (N - 1) + 1 from by omega]
-      rw [Nat.mul_add, Nat.mul_one]
+      rw [← mul_add_one, Nat.sub_add_cancel hN]
     rw [hexp, pow_add]
     field_simp
   -- Step D: identify the limit constant with `multiSideValue s P sh p`.
@@ -269,10 +266,7 @@ theorem hnode_multiSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (P : List (ℕ ×
     rw [omCount_multiSide_closed s N₀ P hP sh hsh p, ← hVdef]
     -- combine denominators: p^(s(N₀-1)) · p^s = p^(s·N₀).
     have hden : (p : ℚ) ^ (s * (N₀ - 1)) * (p : ℚ) ^ s = (p : ℚ) ^ (s * N₀) := by
-      rw [← pow_add]
-      congr 1
-      rw [show s * (N₀ - 1) + s = s * (N₀ - 1) + s * 1 from by rw [Nat.mul_one],
-        ← Nat.mul_add, Nat.sub_add_cancel hN₀]
+      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel hN₀]
     -- s·N₀ = V + freeExp, so p^(s·N₀) = p^V · p^(freeExp).
     have hnum : (p : ℚ) ^ (s * N₀) = (p : ℚ) ^ V * (p : ℚ) ^ CellCard.freeExp s N₀ P := by
       rw [← pow_add]; congr 1; omega

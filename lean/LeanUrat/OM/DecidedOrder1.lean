@@ -144,8 +144,7 @@ theorem hnode_decided_order1 {s N₀ : ℕ} (hN₀ : 0 < N₀) {P : List (ℕ ×
       Filter.atTop
       (nhds ((CellCard.prodSC p sh : ℚ) * (p : ℚ) ^ CellCard.freeExp s N₀ P
                 / (p : ℚ) ^ (s * (N₀ - 1)))) := by
-  have hp0 : (p : ℚ) ≠ 0 := by
-    exact_mod_cast hp.out.ne_zero
+  have hp0 : (p : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hp.out.ne_zero
   refine Filter.Tendsto.congr' ?_ tendsto_const_nhds
   filter_upwards [Filter.eventually_ge_atTop N₀] with N hN
   -- MenuPath persists to the deeper level N (only the height bound H ≤ N-1 loosens)
@@ -158,8 +157,7 @@ theorem hnode_decided_order1 {s N₀ : ℕ} (hN₀ : 0 < N₀) {P : List (ℕ ×
   rw [freeExp_eq_add_mul hP hN]
   -- p^(freeExp N₀ + s(N-N₀)) / p^(s(N-1)) = p^(freeExp N₀) / p^(s(N₀-1))
   have hsplit1 : (p : ℚ) ^ (CellCard.freeExp s N₀ P + s * (N - N₀))
-      = (p : ℚ) ^ CellCard.freeExp s N₀ P * (p : ℚ) ^ (s * (N - N₀)) := by
-    rw [pow_add]
+      = (p : ℚ) ^ CellCard.freeExp s N₀ P * (p : ℚ) ^ (s * (N - N₀)) := pow_add _ _ _
   have hexp2 : s * (N - 1) = s * (N₀ - 1) + s * (N - N₀) := by
     rw [← Nat.mul_add]
     congr 1

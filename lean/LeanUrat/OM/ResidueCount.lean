@@ -99,13 +99,11 @@ theorem nonSquarefreeMonicCount (m : ℕ) (hm : 2 ≤ m) :
   -- the two finite-field counts, transported to the subtype forms
   have hmonic_eq :
       Nat.card {R : F[X] // R.Monic ∧ R.natDegree = m} = Q ^ m := by
-    have := card_monicDegree (F := F) m
-    simpa [L3.monicDegree, hQ] using this
+    simpa [L3.monicDegree, hQ] using card_monicDegree (F := F) m
   have hsf_eq :
       Nat.card {R : F[X] // R.Monic ∧ R.natDegree = m ∧ Squarefree R}
         = Q ^ m - Q ^ (m - 1) := by
-    have := card_squarefreeMonicDegree (F := F) m hm
-    simpa [L3.squarefreeMonicDegree, hQ] using this
+    simpa [L3.squarefreeMonicDegree, hQ] using card_squarefreeMonicDegree (F := F) m hm
   -- finiteness propagation across the `Sum` equiv
   have hQpos : 0 < Q := by rw [hQ]; exact Nat.card_pos
   have hfin_monic : Finite {R : F[X] // R.Monic ∧ R.natDegree = m} :=
@@ -125,8 +123,7 @@ theorem nonSquarefreeMonicCount (m : ℕ) (hm : 2 ≤ m) :
     rw [Nat.card_eq_of_bijective e e.bijective, Nat.card_sum]
   rw [hmonic_eq, hsf_eq] at hsum
   -- truncated-subtraction arithmetic: `Q^m - (Q^m - Q^{m-1}) = Q^{m-1}`, using `Q^{m-1} ≤ Q^m`
-  have hpow_le : Q ^ (m - 1) ≤ Q ^ m := by
-    apply Nat.pow_le_pow_right <;> omega
+  have hpow_le : Q ^ (m - 1) ≤ Q ^ m := Nat.pow_le_pow_right hQpos (by omega)
   omega
 
 /-- **The `(q^δ)^{d_S-1}` tie (PROVED).** When the cell's residue field `F` has size `q^δ`

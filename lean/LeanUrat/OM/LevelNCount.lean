@@ -86,8 +86,8 @@ theorem shapeFiber_partition (p : ℕ) [Fact p.Prime] (n : ℕ)
 /-- The stratum count is nonnegative (it is a cast count). This is the
 `MontesData.stratumCount_nonneg` field type. -/
 theorem stratumCount_nonneg (rawCount : ClusterShape → ℕ → ℕ) :
-    ∀ T N, 0 ≤ stratumCount rawCount T N := by
-  intro T N; exact Nat.cast_nonneg _
+    ∀ T N, 0 ≤ stratumCount rawCount T N :=
+  fun _ _ => Nat.cast_nonneg _
 
 /- TOMBSTONE (dead sorried lemma deleted 2026-07-05, hygiene).
 ## The crux: the constant-fiber Hensel-lift lemma (`lem:constant-fiber`)
@@ -122,13 +122,7 @@ supplies the column-product that turns the abstract `hfactor` into a finite coun
 real in-cell `Nat.card`. `[core]`. -/
 theorem coordinateResidue_card_factor {R : Type*} [Finite R] (e : ℕ) (P : Fin e → R → Prop) :
     Nat.card {f : Fin e → R // ∀ i, P i (f i)} = ∏ i : Fin e, Nat.card {x : R // P i x} := by
-  classical
-  let eqv : {f : Fin e → R // ∀ i, P i (f i)} ≃ (∀ i : Fin e, {x : R // P i x}) :=
-    { toFun := fun f i => ⟨f.1 i, f.2 i⟩
-      invFun := fun g => ⟨fun i => (g i).1, fun i => (g i).2⟩
-      left_inv := by intro f; rfl
-      right_inv := by intro g; rfl }
-  rw [Nat.card_congr eqv, Nat.card_pi]
+  rw [Nat.card_congr (Equiv.subtypePiEquivPi), Nat.card_pi]
 
 /-- **The genuine in-cell coordinate-residue count over `ZMod(p^N)`** (`def` for
 `lem:l4-coordinate-residue-indep`, the REAL `cellVol`). For a polygon `pg` of width `e`, the number of
@@ -433,10 +427,7 @@ theorem cellTerm_leaf (rawCount : ClusterShape → ℕ → ℕ) (q N : ℕ) (c :
     (hleaf : IsLeafCell c) :
     cellTerm rawCount q N c
       = L4.bb1Value c.polygon (q ^ N) * ((q : ℚ) ^ c.δ) ^ (c.dS - 1) := by
-  unfold cellTerm
-  rw [IsLeafCell] at hleaf
-  rw [hleaf]
-  simp
+  simp [cellTerm, show c.children = [] from hleaf]
 
 /-- **The level-`N` counting bijection, LEAF CASE — CLOSED** (`thm:levelN-bijection`, order-`0` base
 case). For a leaf cell `c` (no descent children), the per-cell stratum term equals
@@ -494,7 +485,7 @@ theorem leafFiber_geometric (p : ℕ) [Fact p.Prime] (n : ℕ)
   | zero => simp
   | succ m ih =>
     have hle : N₀ ≤ N₀ + m := Nat.le_add_right _ _
-    have hidx : N₀ + (m + 1) = (N₀ + m) + 1 := by ring
+    have hidx : N₀ + (m + 1) = (N₀ + m) + 1 := rfl
     rw [hidx, hstep (N₀ + m) hle, ih, pow_succ]
     ring
 
@@ -509,8 +500,8 @@ per-box measure equals `countCellCoeff` for all `q' > 1`. This is the
 `MontesAxiom.MontesData.boxHaarEquidist` field type (and is `rfl` for the canonical `boxMeasure`). -/
 theorem boxHaarEquidist (boxMeasure : CountCell → ℕ → ℚ)
     (hbox : ∀ c q, boxMeasure c q = countCellCoeff c q) :
-    ∀ (c : CountCell) (q' : ℕ), 1 < q' → boxMeasure c q' = countCellCoeff c q' := by
-  intro c q' _; exact hbox c q'
+    ∀ (c : CountCell) (q' : ℕ), 1 < q' → boxMeasure c q' = countCellCoeff c q' :=
+  fun c q' _ => hbox c q'
 
 /- **`nodeMeasure_boxSum` — NOW COUPLED to the genuine shape-fiber stratum count and `countCellCoeff`**
 (`thm:stratum-limit`(2)). The normalized GENUINE level-`N` stratum measure
@@ -598,8 +589,7 @@ self-loop pivot `countPivot (treeSize T) q` is exactly `1 - r` for `r = selfLoop
 geometric limit `a/(1-r)` of `geometricLimit_of_selfLoop` IS `a / countPivot`. `[core]` -/
 theorem one_sub_selfLoopRatio_eq_countPivot (treeSize : ClusterShape → ℕ) (T : ClusterShape) (q : ℕ) :
     1 - selfLoopRatio treeSize T q = countPivot (treeSize T) q := by
-  unfold selfLoopRatio countPivot
-  by_cases h : 2 ≤ treeSize T <;> simp [h]
+  by_cases h : 2 ≤ treeSize T <;> simp [selfLoopRatio, countPivot, h]
 
 /-! ### The CORRECTED GLUE-1 per-step normalized recurrence (LIMIT_BLUEPRINT §3)
 
@@ -647,9 +637,7 @@ theorem nodeTrunc_step_corrected {n : ℕ} (p : ℕ) [Fact p.Prime] (q : ℕ)
                     stratumCount (shapeFiberCount p n classify) ch (N + 1))).prod)).sum
           / (q : ℚ) ^ (n * (N + 1))
         + selfLoopRatio treeSize T q * nodeTrunc p q classify T N := by
-  have hqne : (q : ℚ) ≠ 0 := by
-    have : (0 : ℚ) < (q : ℚ) := by exact_mod_cast hq
-    exact ne_of_gt this
+  have hqne : (q : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hq.ne'
   unfold nodeTrunc
   rw [hrec, add_div]
   congr 1
@@ -1107,7 +1095,7 @@ core so `q = p`, `r_raw / q^n = 1` and the genuine contraction is the `q^{-w}` s
 theorem selfLoop_ratio_reconcile (treeSize : ClusterShape → ℕ) (T : ClusterShape) (p q n : ℕ)
     (hpq : q = p) (hself : 2 ≤ treeSize T) :
     selfLoopRatio treeSize T q = ((q : ℚ) ^ L5fix.selfLoopExponent (treeSize T))⁻¹ := by
-  unfold selfLoopRatio; simp [hself]
+  simp [selfLoopRatio, hself]
 
 /- ⚠ **FALSE AS STATED — UNSOUND (flagged 2026-06-30; do NOT trust, do NOT route the capstone through it).**
 This axiom is quantified over FREE, UNRELATED `classify`/`cells`/`treeSize` with no hypothesis tying `cells` to
@@ -1393,8 +1381,8 @@ theorem nodeTrunc_limit_denominator_mismatch (treeSize : ClusterShape → ℕ) (
   -- `1 - (q^w)⁻¹` forces `(q^w)⁻¹·q^{-n} = (q^w)⁻¹`, i.e. `q^{-n} = 1`, impossible for `q ≥ 2`, `n ≥ 1`.
   rw [← one_sub_selfLoopRatio_eq_countPivot]
   intro hEq
-  have hsl : selfLoopRatio treeSize T q = ((q : ℚ) ^ L5fix.selfLoopExponent (treeSize T))⁻¹ := by
-    unfold selfLoopRatio; simp [hself]
+  have hsl : selfLoopRatio treeSize T q = ((q : ℚ) ^ L5fix.selfLoopExponent (treeSize T))⁻¹ :=
+    selfLoop_ratio_reconcile treeSize T q q n rfl hself
   have hqpos : (0 : ℚ) < (q : ℚ) := by exact_mod_cast (by omega : 0 < q)
   have hslpos : (0 : ℚ) < selfLoopRatio treeSize T q := by
     rw [hsl]; exact inv_pos.mpr (pow_pos hqpos _)

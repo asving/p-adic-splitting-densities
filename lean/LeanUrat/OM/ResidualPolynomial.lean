@@ -106,10 +106,7 @@ theorem residualPoly_coeff (coeffData : ℕ → kS) (S : NewtonPolygon.Side) (j 
   simp only [residualCoeff, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one,
     mul_zero]
   rw [Finset.sum_ite_eq (Finset.range (residualDeg S + 1)) j (fun t => coeffData t)]
-  simp only [Finset.mem_range]
-  by_cases hj : j ≤ residualDeg S
-  · rw [if_pos (by omega), if_pos hj]
-  · rw [if_neg (by omega), if_neg hj]
+  simp only [Finset.mem_range, Nat.lt_succ_iff]
 
 /-! ### Residual multiplicativity on a shared side (`lem:residual-factorization`, GMN Thm 2.26)
 
@@ -166,10 +163,8 @@ theorem residualPoly_mul (cd cdA cdB : ℕ → kS) (S SA SB : NewtonPolygon.Side
 /-- `natDegree (residualPoly) ≤ residualDeg S` (all terms have degree `≤ d`). -/
 theorem residualPoly_natDegree_le (coeffData : ℕ → kS) (S : NewtonPolygon.Side) :
     (residualPoly coeffData S).natDegree ≤ residualDeg S := by
-  apply Polynomial.natDegree_le_iff_coeff_eq_zero.mpr
-  intro j hj
-  rw [residualPoly_coeff]
-  rw [if_neg (by omega)]
+  refine Polynomial.natDegree_le_iff_coeff_eq_zero.mpr fun j hj => ?_
+  rw [residualPoly_coeff, if_neg (by omega)]
 
 /-- **Endpoint coefficients are units** (`lem:residual-endpoints`). The endpoints of the side are
 vertices of the polygon, so `c_0 ≠ 0` and `c_d ≠ 0` in `k_S`. REVISED: threads the vertex hypotheses
@@ -197,11 +192,9 @@ theorem residualPoly_ne_zero (coeffData : ℕ → kS) (S : NewtonPolygon.Side)
     (hd : coeffData (residualDeg S) ≠ 0) :
     residualPoly coeffData S ≠ 0 := by
   intro hzero
-  apply hd
-  have : (residualPoly coeffData S).coeff (residualDeg S) = coeffData (residualDeg S) := by
-    rw [residualPoly_coeff, if_pos (le_refl _)]
-  rw [hzero, Polynomial.coeff_zero] at this
-  exact this.symm
+  have := residualPoly_coeff coeffData S (residualDeg S)
+  rw [hzero, Polynomial.coeff_zero, if_pos le_rfl] at this
+  exact hd this.symm
 
 /-- **Residual is monic after normalization** (`lem:residual-monic`). The normalized residual
 `c_d⁻¹ • R_S` is monic of degree `d` over `k_S`. REVISED: threads `hd : coeffData (residualDeg S) ≠ 0`
@@ -265,17 +258,11 @@ theorem needsDescent_iff_exists_repeated (coeffData : ℕ → kS) (S : NewtonPol
       -- `ψ^μ ∣ R` via the normalized-factor divisibility criterion
       rw [UniqueFactorizationMonoid.dvd_iff_normalizedFactors_le_normalizedFactors
         (pow_ne_zero _ hirr.ne_zero) hR0,
-        Irreducible.normalizedFactors_pow hirr]
-      rw [hmonic.normalize_eq_self]
-      exact Multiset.le_count_iff_replicate_le.mp (le_refl _)
+        Irreducible.normalizedFactors_pow hirr, hmonic.normalize_eq_self]
+      exact Multiset.le_count_iff_replicate_le.mp le_rfl
   · -- reverse: a repeated irreducible factor forbids squarefreeness
-    rintro ⟨ψ, μ, _hmonic, hirr, hμ, hdvd⟩
-    intro hsq
-    have hψ2 : ψ * ψ ∣ R := by
-      have : ψ ^ 2 ∣ ψ ^ μ := pow_dvd_pow ψ hμ
-      have := this.trans hdvd
-      rwa [pow_two] at this
-    exact hirr.not_isUnit (hsq ψ hψ2)
+    rintro ⟨ψ, μ, _hmonic, hirr, hμ, hdvd⟩ hsq
+    exact hirr.not_isUnit (hsq ψ (pow_two ψ ▸ (pow_dvd_pow ψ hμ).trans hdvd))
 
 /-! ## GAP 1 (`lem:residual-factorization`): the complete coprime residual factorization
 
@@ -340,6 +327,8 @@ theorem residualPoly_factorization (coeffData : ℕ → kS) (S : NewtonPolygon.S
     have hCnR : Polynomial.C R.leadingCoeff * normalize R = R := by
       rw [normalize_apply, Polynomial.coe_normUnit_of_ne_zero hR0,
         mul_left_comm, ← Polynomial.C_mul, mul_inv_cancel₀ hlc, Polynomial.C_1, mul_one]
+    have hfact : R = Polynomial.C R.leadingCoeff * ∏ ψ ∈ facs.toFinset, ψ ^ facs.count ψ := by
+      rw [hprodcount, hprodnorm, hCnR]
     refine ⟨{
       factors := facs.toFinset
       mult := fun ψ => facs.count ψ
@@ -347,11 +336,9 @@ theorem residualPoly_factorization (coeffData : ℕ → kS) (S : NewtonPolygon.S
       factors_irreducible := fun ψ hψ => ((hmem_iff ψ).mp (Multiset.mem_toFinset.mp hψ)).1
       mult_pos := fun ψ hψ =>
         Multiset.one_le_count_iff_mem.mpr (Multiset.mem_toFinset.mp hψ)
-      prod_eq := ?_
+      prod_eq := hfact
       pairwise_coprime := ?_
       degree_budget := ?_ }⟩
-    · -- `R = C R.leadingCoeff * ∏ ψ^mult ψ`
-      rw [hprodcount, hprodnorm, hCnR]
     · -- distinct monic irreducibles are coprime
       intro ψ hψ φ hφ hne
       obtain ⟨hψirr, hψmon, _⟩ := (hmem_iff ψ).mp (Multiset.mem_toFinset.mp hψ)
@@ -361,8 +348,6 @@ theorem residualPoly_factorization (coeffData : ℕ → kS) (S : NewtonPolygon.S
       exact hne (Polynomial.eq_of_monic_of_associated hψmon hφmon
         ((hψirr.dvd_irreducible_iff_associated hφirr).mp hdvd))
     · -- degree budget: take `natDegree` of the factorization identity
-      have hfact : R = Polynomial.C R.leadingCoeff * ∏ ψ ∈ facs.toFinset, ψ ^ facs.count ψ := by
-        rw [hprodcount, hprodnorm, hCnR]
       have key : R.natDegree = ∑ ψ ∈ facs.toFinset, facs.count ψ * ψ.natDegree := by
         rw [hfact, Polynomial.natDegree_C_mul hlc, Polynomial.natDegree_prod]
         · refine Finset.sum_congr rfl (fun ψ hψ => ?_)
@@ -405,6 +390,8 @@ theorem factorize_any (R : kS[X]) : Nonempty (ResidualFactorization R) := by
     have hCnR : Polynomial.C R.leadingCoeff * normalize R = R := by
       rw [normalize_apply, Polynomial.coe_normUnit_of_ne_zero hR0,
         mul_left_comm, ← Polynomial.C_mul, mul_inv_cancel₀ hlc, Polynomial.C_1, mul_one]
+    have hfact : R = Polynomial.C R.leadingCoeff * ∏ ψ ∈ facs.toFinset, ψ ^ facs.count ψ := by
+      rw [hprodcount, hprodnorm, hCnR]
     refine ⟨{
       factors := facs.toFinset
       mult := fun ψ => facs.count ψ
@@ -412,11 +399,9 @@ theorem factorize_any (R : kS[X]) : Nonempty (ResidualFactorization R) := by
       factors_irreducible := fun ψ hψ => ((hmem_iff ψ).mp (Multiset.mem_toFinset.mp hψ)).1
       mult_pos := fun ψ hψ =>
         Multiset.one_le_count_iff_mem.mpr (Multiset.mem_toFinset.mp hψ)
-      prod_eq := ?_
+      prod_eq := hfact
       pairwise_coprime := ?_
       degree_budget := ?_ }⟩
-    · -- `R = C R.leadingCoeff * ∏ ψ^mult ψ`
-      rw [hprodcount, hprodnorm, hCnR]
     · -- distinct monic irreducibles are coprime
       intro ψ hψ φ hφ hne
       obtain ⟨hψirr, hψmon, _⟩ := (hmem_iff ψ).mp (Multiset.mem_toFinset.mp hψ)
@@ -426,8 +411,6 @@ theorem factorize_any (R : kS[X]) : Nonempty (ResidualFactorization R) := by
       exact hne (Polynomial.eq_of_monic_of_associated hψmon hφmon
         ((hψirr.dvd_irreducible_iff_associated hφirr).mp hdvd))
     · -- degree budget: take `natDegree` of the factorization identity
-      have hfact : R = Polynomial.C R.leadingCoeff * ∏ ψ ∈ facs.toFinset, ψ ^ facs.count ψ := by
-        rw [hprodcount, hprodnorm, hCnR]
       have key : R.natDegree = ∑ ψ ∈ facs.toFinset, facs.count ψ * ψ.natDegree := by
         rw [hfact, Polynomial.natDegree_C_mul hlc, Polynomial.natDegree_prod]
         · refine Finset.sum_congr rfl (fun ψ hψ => ?_)

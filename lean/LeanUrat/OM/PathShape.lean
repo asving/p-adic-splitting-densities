@@ -82,8 +82,6 @@ private theorem faceShape_eq (s : ℕ) (pr : (ℕ × ℕ) × (ℕ × ℕ)) (shap
   conv_rhs => rw [← List.map_id shape]
   apply List.map_congr_left
   intro q hq
-  show (q.1, (1 : ℕ)) = id q
-  rw [id]
   exact Prod.ext rfl (hμ q hq).symm
 
 /-- The reader's total residual degree is `Σ q.1` over the shape. -/
@@ -119,8 +117,7 @@ private theorem children_eq (s : ℕ) (pr : (ℕ × ℕ) × (ℕ × ℕ)) (shape
           ({ shape := ch, δ := Order0.nodeDelta (M7.cellsOfShapeWF (oneSideShape s pr shape)),
              D := c.dS } : ChildData))))
       = [] := by
-  rw [cellsOfShapeWF_oneSideShape]
-  rw [List.flatMap_eq_nil_iff]  -- every mapped list is nil
+  rw [cellsOfShapeWF_oneSideShape, List.flatMap_eq_nil_iff]  -- every mapped list is nil
   intro c hc
   rw [List.mem_map] at hc
   obtain ⟨q, _, rfl⟩ := hc
@@ -195,7 +192,7 @@ theorem omCount_oneSideShape_closed (s : ℕ) (pr : (ℕ × ℕ) × (ℕ × ℕ)
     show cellChildren s [shape] = []
     exact cellChildren_singleton_nil s shape hμ
   simp only [List.map_cons, List.map_nil, List.sum_cons, List.sum_nil, add_zero,
-    hchildren, List.map_nil, List.prod_nil, mul_one]
+    hchildren, List.prod_nil, mul_one]
   -- Step 2: `mCell (mkCell s [pr.1,pr.2] [shape]) p = shapeCount p shape`.
   have hlen : ([shape] : List (List (ℕ × ℕ))).length = (sidePairs [pr.1, pr.2]).length := by
     rw [sidePairs_pair]
@@ -344,8 +341,6 @@ theorem mkCell_volExp_add_freeExp (s N : ℕ) (P : List (ℕ × ℕ)) (hP : Menu
     have hp1s : p1.1 ≤ s := chainOK_le hc
     show (p1.1 - (0 : ℕ)) + (s - p1.1) = s
     omega
-  rw [show ((sidePairs P).map (fun pr => pr.2.1 - pr.1.1)) =
-        (List.map (fun pr => pr.2.1 - pr.1.1) (sidePairs P)) from rfl] at hrunsum
   -- assemble.
   calc (∑ i ∈ Finset.range s, ceilAt P i) + ((sidePairs P).map sideDeg).sum
         + ((∑ i ∈ Finset.range s, (N - 1 - ceilAt P i))
@@ -360,8 +355,7 @@ theorem mkCell_volExp_add_freeExp (s N : ℕ) (P : List (ℕ × ℕ)) (hP : Menu
           -- N ≥ 1 from MenuPath (1 ≤ H ≤ N-1 ⟹ N ≥ 2)
           have hN1 : 1 ≤ N := by
             obtain ⟨H, p1, T, _, hH1, hH2, _, _, _⟩ := hP; omega
-          rw [show s * (N - 1) + s = s * (N - 1) + s * 1 from by rw [Nat.mul_one],
-            ← Nat.mul_add, Nat.sub_add_cancel hN1]
+          rw [← mul_add_one, Nat.sub_add_cancel hN1]
 
 #print axioms mkCell_volExp_add_freeExp
 
@@ -383,9 +377,7 @@ theorem hnode_oneSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ × ℕ) 
     (hne : shape ≠ []) (p : ℕ) [Fact p.Prime] :
     Filter.Tendsto (fun N => (stratumCount1 p s N (mkCell s P [shape]) : ℚ) / (p:ℚ)^(s*N))
       Filter.atTop (nhds (omCount (oneSideShape s pr shape) p)) := by
-  have hp0 : (p : ℚ) ≠ 0 := by
-    have : p ≠ 0 := (Fact.out (p := p.Prime)).ne_zero
-    exact_mod_cast this
+  have hp0 : (p : ℚ) ≠ 0 := by exact_mod_cast (Fact.out (p := p.Prime)).ne_zero
   -- the degree condition needed by `omCount_oneSideShape_closed`, derived from `hsh` + `hμ`.
   have hshape_mem : shape ∈ shapesOfDegree (sideDeg pr) := by
     rw [ShapesFor, hsingle] at hsh
@@ -413,8 +405,7 @@ theorem hnode_oneSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ × ℕ) 
     filter_upwards [Filter.eventually_ge_atTop 1] with N hN
     -- p^(s*N) = p^(s*(N-1)) * p^s, so /p^(sN) = (/p^(s(N-1))) * (p^s)⁻¹.
     have hexp : s * N = s * (N - 1) + s := by
-      conv_lhs => rw [show N = (N - 1) + 1 from by omega]
-      rw [Nat.mul_add, Nat.mul_one]
+      rw [← mul_add_one, Nat.sub_add_cancel hN]
     rw [hexp, pow_add]
     field_simp
   -- Step D: identify the limit constant with `omCount (oneSideShape s pr shape) p`.
@@ -453,10 +444,7 @@ theorem hnode_oneSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ × ℕ) 
       rw [CellCard.prodSC, List.map_singleton, List.prod_singleton]]
     -- combine denominators: p^(s(N₀-1)) · p^s = p^(s·N₀).
     have hden : (p : ℚ) ^ (s * (N₀ - 1)) * (p : ℚ) ^ s = (p : ℚ) ^ (s * N₀) := by
-      rw [← pow_add]
-      congr 1
-      rw [show s * (N₀ - 1) + s = s * (N₀ - 1) + s * 1 from by rw [Nat.mul_one],
-        ← Nat.mul_add, Nat.sub_add_cancel hN₀]
+      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel hN₀]
     -- s·N₀ = V + freeExp, so p^(s·N₀) = p^V · p^(freeExp).
     have hnum : (p : ℚ) ^ (s * N₀) = (p : ℚ) ^ V * (p : ℚ) ^ CellCard.freeExp s N₀ P := by
       rw [← pow_add]

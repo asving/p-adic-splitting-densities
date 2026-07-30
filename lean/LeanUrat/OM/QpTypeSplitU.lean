@@ -131,8 +131,7 @@ theorem hensel_lift_at_simple_root {w₀ w₁ : ℤ_[p]} {ρ : ZMod p}
   set a : ℤ_[p] := ((ρ.val : ℕ) : ℤ_[p]) with ha
   have haρ : PadicInt.toZMod a = ρ := toZMod_natCast_val p ρ
   have hFd : Polynomial.derivative F = C 2 * X + C w₁ := by
-    rw [hF]
-    rw [Polynomial.derivative_add, Polynomial.derivative_add, Polynomial.derivative_C,
+    rw [hF, Polynomial.derivative_add, Polynomial.derivative_add, Polynomial.derivative_C,
       Polynomial.derivative_C_mul, Polynomial.derivative_X, Polynomial.derivative_X_pow]
     norm_num
   have hFa : Polynomial.aeval a F = a ^ 2 + w₁ * a + w₀ := by
@@ -154,13 +153,11 @@ theorem hensel_lift_at_simple_root {w₀ w₁ : ℤ_[p]} {ρ : ZMod p}
   obtain ⟨r, hroot', hclose, -, -⟩ := hensels_lemma (F := F) (a := a)
     (by rw [hFa, hFda, hden, one_pow]; exact hnum)
   have he : r ^ 2 + w₁ * r + w₀ = 0 := by
-    have h := hroot'
-    rw [hF] at h
-    simpa [map_add, map_mul, map_pow] using h
+    rw [hF] at hroot'
+    simpa [map_add, map_mul, map_pow] using hroot'
   have hres : PadicInt.toZMod r = ρ := by
-    have hc := hclose
-    rw [hFda, hden] at hc
-    exact (toZMod_eq_of_norm_sub_lt_one p hc).trans haρ
+    rw [hFda, hden] at hclose
+    exact (toZMod_eq_of_norm_sub_lt_one p hclose).trans haρ
   exact ⟨r, he, hres⟩
 
 /-- **The root-generic two-roots Hensel factorization** (the `split_two_roots`
@@ -186,9 +183,7 @@ theorem splitRes_two_roots {w₀ w₁ : ℤ_[p]}
     exact hρτ (by linear_combination -h0)
   obtain ⟨r₁, he₁, hres₁⟩ := hensel_lift_at_simple_root p hρ' hderρ
   obtain ⟨r₂, he₂, hres₂⟩ := hensel_lift_at_simple_root p hτ' hderτ
-  have hne : r₁ ≠ r₂ := by
-    intro h
-    exact hρτ (by rw [← hres₁, h, hres₂])
+  have hne : r₁ ≠ r₂ := fun h => hρτ (by rw [← hres₁, h, hres₂])
   have hsum : w₁ = -(r₁ + r₂) := by
     have hfac : (r₁ - r₂) * (r₁ + r₂ + w₁) = 0 := by
       linear_combination he₁ - he₂
@@ -226,8 +221,7 @@ theorem splitSep_master_hasType (m : ℕ) {b₀ b₁ w₀ w₁ : ℤ_[p]}
       QpType.qpType p F = ChainMenu.splitType2 := by
   obtain ⟨r₁, r₂, hne, hfac⟩ := splitRes_two_roots p hmem
   have hrel := leafInert_rescale p m hb₀ hb₁
-  have hpz : (p : ℤ_[p]) ≠ 0 := by
-    exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
+  have hpz : (p : ℤ_[p]) ≠ 0 := by exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
   have hpne : ((p : ℤ_[p]) ^ m) ≠ 0 := pow_ne_zero _ hpz
   have hhdeg : (X ^ 2 + C w₁ * X + C w₀ : ℤ_[p][X]).natDegree = 2 := by compute_degree!
   have hrel' : (X ^ 2 + C b₁ * X + C b₀ : ℤ_[p][X]).comp (C ((p : ℤ_[p]) ^ m) * X + C 0)
@@ -288,12 +282,9 @@ theorem leafFiberU_split_hasType {m L₀ L₁ : ℕ}
   obtain ⟨w₀, hw₀⟩ := dvd_of_box_dvd p (show 2 * m ≤ L₀ by omega) hd0
   obtain ⟨w₁, hw₁⟩ := dvd_of_box_dvd p (show m ≤ L₁ by omega) hd1
   have hdig0 : digit p L₀ (2 * m) (PadicInt.toZModPow L₀ (g.coeff 0))
-      = PadicInt.toZMod w₀ := by
-    rw [hw₀]
-    exact box_digit_toZMod p (show 2 * m + 1 ≤ L₀ by omega) w₀
-  have hdig1 : digit p L₁ m (PadicInt.toZModPow L₁ (g.coeff 1)) = PadicInt.toZMod w₁ := by
-    rw [hw₁]
-    exact box_digit_toZMod p (show m + 1 ≤ L₁ by omega) w₁
+      = PadicInt.toZMod w₀ := hw₀ ▸ box_digit_toZMod p (show 2 * m + 1 ≤ L₀ by omega) w₀
+  have hdig1 : digit p L₁ m (PadicInt.toZModPow L₁ (g.coeff 1)) = PadicInt.toZMod w₁ :=
+    hw₁ ▸ box_digit_toZMod p (show m + 1 ≤ L₁ by omega) w₁
   rw [hdig0, hdig1] at hmem
   have hgeq : g = X ^ 2 + C (g.coeff 1) * X + C (g.coeff 0) := monic_quadratic_eq p hg hdeg
   rw [hgeq]
@@ -368,12 +359,8 @@ theorem stepDecodeU_general {m mstep L₀ L₁ : ℕ} (_hm : 1 ≤ mstep) (h2m :
   have hgdeg : g.natDegree = 2 := by
     rw [hgdef]
     compute_degree!
-  have hg0 : g.coeff 0 = b₀ := by
-    rw [hgdef]
-    simp
-  have hg1 : g.coeff 1 = b₁ := by
-    rw [hgdef]
-    simp
+  have hg0 : g.coeff 0 = b₀ := by simp [hgdef]
+  have hg1 : g.coeff 1 = b₁ := by simp [hgdef]
   have hrel : f.comp (C ((p : ℤ_[p]) ^ mstep) * X + C ((ĉ : ℤ_[p]) * (p : ℤ_[p]) ^ mstep))
       = C ((p : ℤ_[p]) ^ (2 * mstep)) * g := by
     conv_lhs => rw [monic_quadratic_eq p hf hdeg]
@@ -400,8 +387,7 @@ theorem stepDecodeU_general {m mstep L₀ L₁ : ℕ} (_hm : 1 ≤ mstep) (h2m :
         + 2 * (ĉ : ZMod (p ^ (L₁ - mstep))) = PadicInt.toZModPow (L₁ - mstep) b₁
       rw [hw₁, box_shift_cast p hm1 (le_refl _),
         hb₁, map_add, map_mul, map_natCast, map_ofNat]
-  rw [hdesc] at htail
-  rw [← hg0, ← hg1] at htail
+  rw [hdesc, ← hg0, ← hg1] at htail
   exact ⟨ĉ, g, hg, hgdeg, hrel, htail⟩
 
 /-- **The splitU chain unwind** (the `chainUnwind` transcription at `ChainPairU`): by
@@ -474,8 +460,7 @@ theorem chainFiberU_split_hasType {ms : List ℕ} (hms : ∀ x ∈ ms, 1 ≤ x) 
     omega
   have hL01' : L₀ - 2 * ms.sum ≤ L₁ - ms.sum := by omega
   obtain ⟨Fg, hFg⟩ := leafFiberU_split_hasType p hneed hL01' hg hgdeg hleaf
-  have hpz : (p : ℤ_[p]) ≠ 0 := by
-    exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
+  have hpz : (p : ℤ_[p]) ≠ 0 := by exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
   have hrel' : f.comp (C ((p : ℤ_[p]) ^ ms.sum) * X + C c)
       = C (((p : ℤ_[p]) ^ ms.sum) ^ g.natDegree) * g := by
     rw [hgdeg, ← pow_mul, Nat.mul_comm ms.sum 2]
@@ -572,12 +557,10 @@ theorem w6qSplitUPoly_natDegree : w6qSplitUPoly.natDegree = 2 := by
   compute_degree!
 
 theorem w6qSplitUPoly_coeff_zero : w6qSplitUPoly.coeff 0 = 18 := by
-  unfold w6qSplitUPoly
-  simp
+  simp [w6qSplitUPoly]
 
 theorem w6qSplitUPoly_coeff_one : w6qSplitUPoly.coeff 1 = 9 := by
-  unfold w6qSplitUPoly
-  simp
+  simp [w6qSplitUPoly]
 
 /-- **The witness inhabits the splitU leaf fiber** at `m = 1`, frame `(3, 3)`
 (`leafNeedU 1 = 3 = N`, the minimal readable frame): `v(b₀) = 2` with digit `2`,

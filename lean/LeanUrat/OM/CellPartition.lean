@@ -65,8 +65,7 @@ noncomputable def toSideFace (S : NewtonPolygon.Side) : L4.LatticePolygon :=
 /-- The column-`0` height of the side face is exactly the left endpoint height `v₀` (the edge starts
 at `(i₀, v₀)`, so `sideCeilHeight S 0 = ⌈v₀⌉₊ = v₀`). -/
 theorem sideCeilHeight_zero (S : NewtonPolygon.Side) : sideCeilHeight S 0 = S.v₀ := by
-  unfold sideCeilHeight
-  simp [Int.ceil_natCast, Int.toNat_natCast]
+  simp [sideCeilHeight]
 
 /-- **Per-side face correctness** (`lem:side-to-l4face-spec`). `L4.newtonExponent (toSideFace S)` is
 the per-column closed-exponent sum of the side, and `bb1Value` is the per-cell box term. (Still `rfl`:
@@ -165,9 +164,8 @@ theorem cellsOfShapeWF_descend :
 `cellsOfShapeWF = cellsOfShape`. -/
 theorem cellsOfShapeWF_eq_of_descend (T : ClusterShape)
     (h : ∀ c ∈ cellsOfShape T, ∀ ch ∈ c.children, M5.nodeSizeOf ch < M5.nodeSizeOf T) :
-    cellsOfShapeWF T = cellsOfShape T := by
-  rw [cellsOfShapeWF]
-  exact List.filter_eq_self.mpr (fun c hc => decide_eq_true (h c hc))
+    cellsOfShapeWF T = cellsOfShape T :=
+  List.filter_eq_self.mpr (fun c hc => decide_eq_true (h c hc))
 
 /-- **Faithfulness of the guarded reader on genuine shapes**: on `M5.shapeOf T` the filter keeps
 every cell (the recorded children carry the `hChildSizeLt` descent witness), so `cellsOfShapeWF`
@@ -198,8 +196,7 @@ theorem cells_child_eq_node (decode : ClusterShape → M5.OMType) (T : ClusterSh
   rw [cells, cellsOfType, List.mem_map] at hc
   obtain ⟨c', _hc', rfl⟩ := hc
   -- the children of the image cell are `c'.children.map (·.node)`
-  simp only at hch
-  rw [List.mem_map] at hch
+  simp only [List.mem_map] at hch
   obtain ⟨ch', _hch', rfl⟩ := hch
   exact ⟨ch', rfl⟩
 
