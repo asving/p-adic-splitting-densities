@@ -80,7 +80,27 @@ and `frac_nonneg` closes `frac S = 0`. deps: the carrier above. -/
 theorem nsNull_of_lumpChain {n p : ℕ} [Fact p.Prime] (C : XCtx n p)
     (S : Set (MonicBox n p)) (L : NsLumpChain n p C S) :
     C.frac S = 0 := by
-  sorry
+  have hp1 : (1 : ℚ) < (p : ℚ) := by
+    exact_mod_cast (Fact.out : p.Prime).one_lt
+  refine le_antisymm ?_ (C.frac_nonneg S)
+  by_contra hpos
+  rw [not_le] at hpos
+  -- Archimedean step: pick `k` with `stateMass / frac S < p^k`.
+  obtain ⟨k, hk⟩ := pow_unbounded_of_one_lt (L.stateMass / C.frac S) hp1
+  -- Evaluate the chain at cap `M := M0 + k`, where `zcount M ≥ k` (slot-0 ladder).
+  set M := L.M0 + k with hM
+  have hz : k ≤ L.zcount M := le_trans (by omega : k ≤ M - L.M0) (L.zcount_lb M)
+  have hpow : (p : ℚ) ^ k ≤ (p : ℚ) ^ L.zcount M :=
+    pow_le_pow_right₀ (le_of_lt hp1) hz
+  have hppos : (0 : ℚ) < (p : ℚ) ^ L.zcount M := pow_pos (lt_trans one_pos hp1) _
+  -- The monotone-bound squeeze: `frac S ≤ frac (lump M) ≤ stateMass / p^{zcount M}`.
+  have hchain : C.frac S ≤ L.stateMass / (p : ℚ) ^ L.zcount M :=
+    le_trans (C.frac_mono _ _ (L.mem_lump M)) (L.priced M)
+  have hklt : L.stateMass / C.frac S < (p : ℚ) ^ L.zcount M := lt_of_lt_of_le hk hpow
+  rw [div_lt_iff₀ hpos] at hklt
+  rw [le_div_iff₀ hppos] at hchain
+  rw [mul_comm] at hchain
+  exact lt_irrefl _ (lt_of_lt_of_le hklt hchain)
 
 /-- **KE1b — the fiber-null assembly**: `NsNullP n X` given a lump chain at every
 (NS-c) fiber of every prime's context. This is the ported (ns-null) with its
@@ -92,6 +112,8 @@ theorem nsNullP_of_lumpChains {n : ℕ} (X : XFamily n)
     (hch : ∀ (p : ℕ) [Fact p.Prime] (i : (X.ctx p).nsIdx),
       Nonempty (NsLumpChain n p (X.ctx p) ((X.ctx p).nsFiber i))) :
     NsNullP n X := by
-  sorry
+  intro p hp i
+  obtain ⟨L⟩ := hch p i
+  exact nsNull_of_lumpChain (X.ctx p) _ L
 
 end LeanUrat.MovesX

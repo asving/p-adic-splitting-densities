@@ -50,6 +50,17 @@ namespace LeanUrat.Kernels
 
 open LeanUrat.MovesV
 
+/-- Private computation helper (the analogous `hpt_*` lemmas of
+MovesV/V4_naming.lean are `private` there, hence re-derived): the appended
+point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
+private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
+  intro h0
+  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
+      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
+  simp only [Hpt.append, Fin.append_left] at h1
+  exact one_ne_zero h1
+
 /-- KC1 leg (i) — the ⊇/compose direction fails at the census point (0,0):
 ¬(Mem (h₁ ++ h₂) ← factors) at h₁ = h₂ = 0, m = mv, γ = .last mv (the
 blueprint's displayed form).  This is the SAME coupled point as
@@ -62,7 +73,10 @@ theorem hmcToy_compose_dir_fails_at_zero :
         (HmcToy.XD.dom (.last HmcToy.mv)).Mem (fun _ => 0)) →
        (HmcToy.XD.dom (.cons HmcToy.mv (.last HmcToy.mv))).Mem
           (Hpt.append (fun _ => 0) (fun _ => 0))) := by
-  sorry
+  intro himp
+  have hmem := himp ⟨HmcToy.fullPart_mem 1 _, HmcToy.fullPart_mem 1 _⟩
+  refine HmcToy.nzPart_not_mem (fun k => ?_) hmem
+  simp [Hpt.append, Fin.append, Fin.addCases]
 
 /-- KC1 leg (ii), `.last`-tail genre — the ⊆/projection direction HOLDS
 toy-wide at depth-2 templates with a `.last` tail: both factor domains are
@@ -73,7 +87,7 @@ theorem hmcToy_proj_dir_holds_lastTail
     (h₁ : Hpt (HmcToy.S.dim m)) (h₂ : Hpt (HmcToy.S.dim m₂))
     (hmem : (HmcToy.XD.dom (.cons m (.last m₂))).Mem (Hpt.append h₁ h₂)) :
     (HmcToy.XD.dom (.last m)).Mem h₁ ∧ (HmcToy.XD.dom (.last m₂)).Mem h₂ := by
-  sorry
+  exact ⟨HmcToy.fullPart_mem 1 h₁, HmcToy.fullPart_mem 1 h₂⟩
 
 /-- KC1 leg (ii), `.lastT`-tail genre — same census, terminal-move tail:
 both factor domains are `fullPart 1`; unconditionally true. -/
@@ -83,7 +97,7 @@ theorem hmcToy_proj_dir_holds_lastTTail
     (h₁ : Hpt (HmcToy.S.dim m)) (h₂ : Hpt (HmcToy.S.dimT mT))
     (hmem : (HmcToy.XD.dom (.cons m (.lastT mT))).Mem (Hpt.append h₁ h₂)) :
     (HmcToy.XD.dom (.last m)).Mem h₁ ∧ (HmcToy.XD.dom (.lastT mT)).Mem h₂ := by
-  sorry
+  exact ⟨HmcToy.fullPart_mem 1 h₁, HmcToy.fullPart_mem 1 h₂⟩
 
 /-- KC1 leg (iii) — the refute branch of the blueprint's either/or: the
 ⊆/projection direction FAILS toy-wide once the tail is itself composite
@@ -100,6 +114,9 @@ theorem hmcToy_proj_dir_fails_deep :
       (HmcToy.XD.dom (.cons HmcToy.mv γ)).Mem (Hpt.append h₁ h₂) ∧
       ¬ ((HmcToy.XD.dom (.last HmcToy.mv)).Mem h₁ ∧
          (HmcToy.XD.dom γ).Mem h₂) := by
-  sorry
+  refine ⟨.cons HmcToy.mv (.last HmcToy.mv), (fun _ => 1), (fun _ => 0), ?_, ?_⟩
+  · exact HmcToy.nzPart_mem (append_one_zero_ne_zero Nat.one_pos)
+  · rintro ⟨-, h2mem⟩
+    exact HmcToy.nzPart_not_mem (fun _ => rfl) h2mem
 
 end LeanUrat.Kernels

@@ -55,6 +55,32 @@ set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
+/-!
+BLOCKED RECORD (2026-07-30, cluster BP1-P10-slots — the pre-authorized BLOCKED
+outcome; ESCALATED per the file header's protocol; full analysis in the cluster
+report).  The CI-relative typing attempt, executed and failed on faithfulness:
+* The charge binds the [4]-side consumed-display data (SQ.0–SQ.2 legs) as
+  PARAMETERS — an abstract display pack (a leg type + a value read + an event
+  read over `CI`'s box).  Every quantifier closure of that pack fails:
+  - ∀-CLOSURE is FALSE AT EVERY CI: a junk pack (one leg, value 2 — or any value
+    outside the cylinder-pinned vol range, e.g. 1/3 at qq = 2^δ) makes the
+    certification conclusion `value = CI.C.V.vol event` unsatisfiable, so the
+    slot would be false at the intended instance (an F3-1-class failure).
+  - ∃-CLOSURE (or a pack whose fields carry their own certificates) is a
+    tautology/True-escape — the round-1-rejected "placeholder wearing a
+    specification's clothes", now in carrier-relative dress.
+  - Binding the LEGS to the built [3]-side (MovesS β-reads) instead is not
+    available at this signature: `Slot_rel3` is fenced to `(CI)` alone, with no
+    `UCarriers` binder, and ∀-quantifying junk chains inside re-creates the
+    ∀-closure falseness.
+  The genuinely missing ingredient is the [4]-side SQ.0–SQ.2 display carriers
+  (unbuilt; their Lean shape is exactly what must not be invented here).
+DISPOSITION: body stays an honest sorry; the fallback shape of
+`theoremU_bridged` (12 + rel3-as-visible-binder vs. all-thirteen) is the
+orchestrator's queued adjudication (AUTHORITY UPDATE list; REVISION 2 finding
+10); IB-G13 WAITS on it in this branch.
+-/
+
 namespace LeanUrat.MovesU
 
 open MovesRBase

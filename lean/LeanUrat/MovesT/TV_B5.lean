@@ -59,7 +59,14 @@ theorem tv_b5_nsHalts_transfer (T : TreeModel p F n N m pol)
     (hmem : ∀ H : History p F, T.mem (some H) x ↔ T.mem (some H) x')
     (o : Option (History p F)) :
     NsHalts T o x ↔ NsHalts T o x' := by
-  sorry
+  unfold NsHalts
+  cases o with
+  | none =>
+    exact and_congr (iff_of_true (T.root_mem x) (T.root_mem x'))
+      (forall_congr' fun ν => not_congr (hchild none ν))
+  | some H =>
+    exact and_congr (hmem H)
+      (forall_congr' fun ν => not_congr (hchild (some H) ν))
 
 /-- **TV-B5, PrunedMem transfer** — τ-pruned membership (Defs.lean:238-241)
 transfers: the mem conjunct by `hmem`, each proper-nonempty-prefix duty pair by
@@ -71,7 +78,10 @@ theorem tv_b5_prunedMem_transfer (T : TreeModel p F n N m pol)
     (hmem : ∀ H : History p F, T.mem (some H) x ↔ T.mem (some H) x')
     (H : History p F) :
     PrunedMem T H x ↔ PrunedMem T H x' := by
-  sorry
+  unfold PrunedMem
+  refine and_congr (hmem H) (forall_congr' fun H' => imp_congr Iff.rfl
+    (imp_congr Iff.rfl (imp_congr Iff.rfl (and_congr Iff.rfl
+      (not_congr (tv_b5_nsHalts_transfer T x x' hchild hmem (some H')))))))
 
 /-- **TV-B5, clause-(i) conjunction transfer** — the right-hand side of
 `fiberAt`'s clause (i) (`H.nodes ≠ [] ∧ PrunedMem T H x`) transfers; with the
@@ -84,7 +94,7 @@ theorem tv_b5_clause_i_transfer (T : TreeModel p F n N m pol)
     (hmem : ∀ H : History p F, T.mem (some H) x ↔ T.mem (some H) x')
     (H : History p F) :
     (H.nodes ≠ [] ∧ PrunedMem T H x) ↔ (H.nodes ≠ [] ∧ PrunedMem T H x') := by
-  sorry
+  exact and_congr Iff.rfl (tv_b5_prunedMem_transfer T x x' hchild hmem H)
 
 /-- **TV-B5, clause-(iv) duty transfer** — the non-maximal chain duty pair
 (`¬ IrrHalts H ∧ ¬ NsHalts T (some H) x`; `IrrHalts` x-free) transfers; also
@@ -97,6 +107,7 @@ theorem tv_b5_duty_transfer (T : TreeModel p F n N m pol)
     (H : History p F) :
     (¬ IrrHalts H ∧ ¬ NsHalts T (some H) x)
       ↔ (¬ IrrHalts H ∧ ¬ NsHalts T (some H) x') := by
-  sorry
+  exact and_congr Iff.rfl
+    (not_congr (tv_b5_nsHalts_transfer T x x' hchild hmem (some H)))
 
 end LeanUrat.MovesT

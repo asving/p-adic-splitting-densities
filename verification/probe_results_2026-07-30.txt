@@ -601,3 +601,65 @@ KD1-P3 RECORD (pre-committed interpretation, direction not sealed): GROWING tren
 
 KD1 VERDICT: 11 checks, 0 sealed FINDING(s), 0 validation failure(s); wall 8s
 scope reminder: leg (a) kills named candidates only; leg (b) clean GATES the KD2 prover (statement survives); leg (c) is a trend record for E-1 — (T-const) stays unproven and unassigned.
+
+
+##### kd9_ladder_cap_probe.py (UNIT KD9: ladder/cap gate for KD6+KD7) #####
+########################################################################
+# kd9_ladder_cap_probe.py run 2026-07-30 23:31:28 — UNIT KD9 (BP4-c7 gate for KD6+KD7):
+# leg (i) strict ladder climb / leg (ii) cap fit w_final vs 1 + vdisc
+# seals P1-P2 of 2026-07-30 in force (see module docstring)
+########################################################################
+box A (cubic 2^24, N=8) done 1s; walked 8388608 + squarefree 8388608; recentering members 735744
+[PASS] KD9-V1 box A checksum (walked + squarefree = 2^24, squarefree = 2^23)  walked=8388608 sf=8388608
+[PASS] KD9-V2 box A recentering histogram ties the KD1 run (fresh walk, same box)  kd9 {1: 642624, 2: 83968, 3: 9152} vs kd1 {'1': 642624, '2': 83968, '3': 9152}
+[PASS] KD9-V3 box A engine anomalies == 0  anom=0
+box B (quartic psi^2-cylinder 2^26, N=10) done 5s; recentering members 3194880; disc==0 among counted 25; deep 65536
+[PASS] KD9-V4 box B checksum (sum = 2^26)  total=67108864
+[PASS] KD9-V5 box B recentering histogram ties the KD1 run  kd9 {1: 3047424, 2: 147456} vs kd1 {'1': 3047424, '2': 147456}
+[PASS] KD9-V6 box B engine anomalies == 0  anom=0
+[PASS] KD9-P1 leg (i) strict key-weight climb: ZERO recenterings with zero ladder gain in either box  witnesses: box A 0, box B 0
+  [report-only] ladder lattice row: min positive gain box A = 1 (max gain denominator 1), box B = 2; all gains in 1·ℤ at these boxes (D(n)-lattice satisfied with D = 1 here)
+  [report-only] w_init conventions: box A 0 (key creation), box B 4 (nu0 consumed side value); KD6-carrier instance caveat: the typed climb law also charges the key-creation node — an engine instance needs a shifted functional (header note).
+KD9-P2 leg (ii) cap fit — w_final vs 1 + vdisc (fit population: >= 1 recentering; conventions in header):
+  box A rows {vd: (n, max_wf, max_ratio)} exact: {4: (262144, '1', '1/5'), 5: (131072, '1', '1/6'), 6: (98304, '2', '2/7'), 7: (49152, '2', '1/4'), 8: (195072, '3', '1/3')}
+  box A censored >=8 row: n=0, max_wf=None (floor ratio - at vd=8)
+  box B rows: {20: (2359296, '6', '2/7'), 22: (589824, '6', '6/23'), 24: (184320, '8', '8/25'), 26: (46080, '8', '8/27'), 28: (11520, '8', '8/29'), 30: (2880, '8', '8/31'), 32: (706, '8', '8/33'), 34: (185, '8', '8/35'), 36: (36, '8', '8/37'), 38: (5, '8', '8/39'), 40: (2, '6', '6/41'), 42: (1, '8', '8/43')}
+  empirical minimal c: box A 1/3 at (16, 5, 6, '3', 8); box B 8/25 at (1312804, 8, 24)
+  trend rule (header): support >= 1000, max-ratio non-decr + last > first  =>  GROWING
+  box A max-ratio trend: NON-MONOTONE  [(4, '1/5'), (5, '1/6'), (6, '2/7'), (7, '1/4'), (8, '1/3')]
+  box B max-ratio trend: NON-MONOTONE  [(20, '2/7'), (22, '6/23'), (24, '8/25'), (26, '8/27'), (28, '8/29'), (30, '8/31')]
+[PASS] KD9-P2 leg (ii) cap fit: NO super-linear growth of w_final against 1 + vdisc on either box (constant-c(n) candidates survive)  trends: box A NON-MONOTONE, box B NON-MONOTONE; minimal c: A 1/3, B 8/25
+
+KD9 VERDICT: 8 checks, 0 sealed FINDING(s), 0 validation failure(s); wall 6s
+scope reminder (sealed fence): candidate-stress + growth detection only; the existential X-side statements are never probe-decidable.  P1+P2 clean GATES the KD6/KD7 provers.
+
+
+##### kd9_ladder_cap_probe.py (UNIT KD9: ladder/cap gate for KD6+KD7) #####
+########################################################################
+# kd9_ladder_cap_probe.py run 2026-07-30 23:32:41 — UNIT KD9 (BP4-c7 gate for KD6+KD7):
+# leg (i) strict ladder climb / leg (ii) cap fit w_final vs 1 + vdisc
+# seals P1-P2 of 2026-07-30 in force (see module docstring)
+########################################################################
+box A (cubic 2^24, N=8) done 1s; walked 8388608 + squarefree 8388608; recentering members 735744
+[PASS] KD9-V1 box A checksum (walked + squarefree = 2^24, squarefree = 2^23)  walked=8388608 sf=8388608
+[PASS] KD9-V2 box A recentering histogram ties the KD1 run (fresh walk, same box)  kd9 {1: 642624, 2: 83968, 3: 9152} vs kd1 {'1': 642624, '2': 83968, '3': 9152}
+[PASS] KD9-V3 box A engine anomalies == 0  anom=0
+box B (quartic psi^2-cylinder 2^26, N=10) done 5s; recentering members 3194880; disc==0 among counted 25; deep 65536
+[PASS] KD9-V4 box B checksum (sum = 2^26)  total=67108864
+[PASS] KD9-V5 box B recentering histogram ties the KD1 run  kd9 {1: 3047424, 2: 147456} vs kd1 {'1': 3047424, '2': 147456}
+[PASS] KD9-V6 box B engine anomalies == 0  anom=0
+[PASS] KD9-P1 leg (i) strict key-weight climb: ZERO recenterings with zero ladder gain in either box  witnesses: box A 0, box B 0
+  [report-only] ladder lattice row: min positive gain box A = 1 (max gain denominator 1), box B = 2; all gains in 1·ℤ at these boxes (D(n)-lattice satisfied with D = 1 here)
+  [report-only] w_init conventions: box A 0 (key creation), box B 4 (nu0 consumed side value); KD6-carrier instance caveat: the typed climb law also charges the key-creation node — an engine instance needs a shifted functional (header note).
+KD9-P2 leg (ii) cap fit — w_final vs 1 + vdisc (fit population: >= 1 recentering; conventions in header):
+  box A rows {vd: (n, max_wf, max_ratio)} exact: {4: (262144, '1', '1/5'), 5: (131072, '1', '1/6'), 6: (98304, '2', '2/7'), 7: (49152, '2', '1/4')}
+  box A censored >=8 row: n=195072, max_wf=3 (floor ratio 1/3 at vd=8)
+  box B rows: {20: (2359296, '6', '2/7'), 22: (589824, '6', '6/23'), 24: (184320, '8', '8/25'), 26: (46080, '8', '8/27'), 28: (11520, '8', '8/29'), 30: (2880, '8', '8/31'), 32: (706, '8', '8/33'), 34: (185, '8', '8/35'), 36: (36, '8', '8/37'), 38: (5, '8', '8/39'), 40: (2, '6', '6/41'), 42: (1, '8', '8/43')}
+  empirical minimal c: box A 2/7 at (24, 5, 14, '2', 6); box B 8/25 at (1312804, 8, 24)
+  trend rule (header): support >= 1000, max-ratio non-decr + last > first  =>  GROWING
+  box A max-ratio trend: NON-MONOTONE  [(4, '1/5'), (5, '1/6'), (6, '2/7'), (7, '1/4')]
+  box B max-ratio trend: NON-MONOTONE  [(20, '2/7'), (22, '6/23'), (24, '8/25'), (26, '8/27'), (28, '8/29'), (30, '8/31')]
+[PASS] KD9-P2 leg (ii) cap fit: NO super-linear growth of w_final against 1 + vdisc on either box (constant-c(n) candidates survive)  trends: box A NON-MONOTONE, box B NON-MONOTONE; minimal c: A 2/7, B 8/25
+
+KD9 VERDICT: 8 checks, 0 sealed FINDING(s), 0 validation failure(s); wall 6s
+scope reminder (sealed fence): candidate-stress + growth detection only; the existential X-side statements are never probe-decidable.  P1+P2 clean GATES the KD6/KD7 provers.

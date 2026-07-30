@@ -76,6 +76,52 @@ noncomputable def digitsToBox (p n N : ℕ) [Fact p.Prime]
   fun i => ∑ k : Fin N,
     ((d (digitIdx n N i k)).val : ZMod (p ^ N)) * (p : ZMod (p ^ N)) ^ (k : ℕ)
 
+/-- Proof-layer helper (consumed by IB-A12's (†3c) as well): the forward read at
+    the (i,k) `digitIdx` slot IS the k-th base-p digit of coefficient i —
+    the index arithmetic `(i·N + k)/N = i`, `(i·N + k)%N = k` made explicit. -/
+theorem boxToDigits_digitIdx (p n N : ℕ) [Fact p.Prime] (hN : 0 < N)
+    (f : Box p n N) (i : Fin n) (k : Fin N) :
+    boxToDigits p n N hN f (digitIdx n N i k)
+      = ((((f i).val / p ^ (k : ℕ)) % p : ℕ) : ZMod p) := by
+  have hdiv : ((digitIdx n N i k : ℕ)) / N = (i : ℕ) := by
+    change ((i : ℕ) * N + (k : ℕ)) / N = (i : ℕ)
+    rw [mul_comm, Nat.mul_add_div hN, Nat.div_eq_of_lt k.isLt, add_zero]
+  have hmod : ((digitIdx n N i k : ℕ)) % N = (k : ℕ) := by
+    change ((i : ℕ) * N + (k : ℕ)) % N = (k : ℕ)
+    rw [mul_comm, Nat.mul_add_mod, Nat.mod_eq_of_lt k.isLt]
+  have harg : (⟨(digitIdx n N i k : ℕ) / N,
+      (Nat.div_lt_iff_lt_mul hN).mpr (digitIdx n N i k).isLt⟩ : Fin n) = i :=
+    Fin.ext hdiv
+  unfold boxToDigits
+  rw [hmod, harg]
+
+/-- Proof-layer helper: the (†3) left-inverse law — reconstruction after digit
+    read is the identity (composite (a), IB-A10, read in `ZMod (p^N)`). -/
+theorem digitsToBox_boxToDigits (p n N : ℕ) [Fact p.Prime] (hN : 0 < N)
+    (f : Box p n N) : digitsToBox p n N (boxToDigits p n N hN f) = f := by
+  have hp : p.Prime := Fact.out
+  haveI : NeZero p := ⟨hp.ne_zero⟩
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero N hp.ne_zero⟩
+  funext i
+  have hv : (f i).val < p ^ N := ZMod.val_lt _
+  have hterm : ∀ k : Fin N,
+      (((boxToDigits p n N hN f (digitIdx n N i k)).val : ℕ) : ZMod (p ^ N))
+          * (p : ZMod (p ^ N)) ^ (k : ℕ)
+        = ((((f i).val / p ^ (k : ℕ) % p) * p ^ (k : ℕ) : ℕ) : ZMod (p ^ N)) := by
+    intro k
+    rw [boxToDigits_digitIdx p n N hN f i k, ZMod.val_natCast,
+        Nat.mod_mod_of_dvd _ dvd_rfl]
+    push_cast
+    ring
+  calc digitsToBox p n N (boxToDigits p n N hN f) i
+      = ∑ k : Fin N, ((((f i).val / p ^ (k : ℕ) % p) * p ^ (k : ℕ) : ℕ) : ZMod (p ^ N)) :=
+        Finset.sum_congr rfl fun k _ => hterm k
+    _ = (((f i).val : ℕ) : ZMod (p ^ N)) := by
+        rw [Fin.sum_univ_eq_sum_range
+              (fun k => ((((f i).val / p ^ k % p) * p ^ k : ℕ) : ZMod (p ^ N))) N,
+            ← Nat.cast_sum, digitSum_eq p N (f i).val hv]
+    _ = f i := by simp [ZMod.natCast_val, ZMod.cast_id]
+
 /-- IB-A11a — (†3) THE DIGIT DICTIONARY: the level-N coefficient box IS the
     MovesD digit box at m = n·N, by base-p digits through the `digitIdx` layout.
     Guarded to 0 < N (same discipline as (†2)/`TreePin.chart`). -/
@@ -83,8 +129,20 @@ noncomputable def boxEquivD (p n N : ℕ) [Fact p.Prime] (hN : 0 < N) :
     Box p n N ≃ MovesD.Box p (n * N) where
   toFun := boxToDigits p n N hN
   invFun := digitsToBox p n N
-  left_inv := sorry
-  right_inv := sorry
+  left_inv := digitsToBox_boxToDigits p n N hN
+  right_inv := by
+    intro d
+    have hp : p.Prime := Fact.out
+    haveI : NeZero p := ⟨hp.ne_zero⟩
+    haveI : NeZero (p ^ N) := ⟨pow_ne_zero N hp.ne_zero⟩
+    have hcard : Fintype.card (Box p n N) = Fintype.card (MovesD.Box p (n * N)) := by
+      rw [Fintype.card_fun, Fintype.card_fun, ZMod.card, ZMod.card,
+          Fintype.card_fin, Fintype.card_fin, ← pow_mul, Nat.mul_comm N n]
+    have hbij : Function.Bijective (boxToDigits p n N hN) :=
+      (Fintype.bijective_iff_injective_and_card _).mpr
+        ⟨Function.LeftInverse.injective (digitsToBox_boxToDigits p n N hN), hcard⟩
+    obtain ⟨f, rfl⟩ := hbij.surjective d
+    rw [digitsToBox_boxToDigits p n N hN f]
 
 /-- IB-A11b — LAW (†3b), the `TreePin.boxeq_digits` field shape at
     `boxeq := boxEquivD`: every coefficient is the base-p digit sum of its own
@@ -94,6 +152,6 @@ theorem boxEquivD_digits (p n N : ℕ) [Fact p.Prime] (hN : 0 < N)
     f i = ∑ k : Fin N,
       ((boxEquivD p n N hN f (digitIdx n N i k)).val : ZMod (p ^ N))
         * (p : ZMod (p ^ N)) ^ (k : ℕ) :=
-  sorry
+  (congrFun (digitsToBox_boxToDigits p n N hN f) i).symm
 
 end LeanUrat.MovesU

@@ -1,0 +1,209 @@
+{
+ "checks": [
+  {
+   "name": "KD9-V1 box A checksum (walked + squarefree = 2^24, squarefree = 2^23)",
+   "ok": true,
+   "detail": "walked=8388608 sf=8388608"
+  },
+  {
+   "name": "KD9-V2 box A recentering histogram ties the KD1 run (fresh walk, same box)",
+   "ok": true,
+   "detail": "kd9 {1: 642624, 2: 83968, 3: 9152} vs kd1 {'1': 642624, '2': 83968, '3': 9152}"
+  },
+  {
+   "name": "KD9-V3 box A engine anomalies == 0",
+   "ok": true,
+   "detail": "anom=0"
+  },
+  {
+   "name": "KD9-V4 box B checksum (sum = 2^26)",
+   "ok": true,
+   "detail": "total=67108864"
+  },
+  {
+   "name": "KD9-V5 box B recentering histogram ties the KD1 run",
+   "ok": true,
+   "detail": "kd9 {1: 3047424, 2: 147456} vs kd1 {'1': 3047424, '2': 147456}"
+  },
+  {
+   "name": "KD9-V6 box B engine anomalies == 0",
+   "ok": true,
+   "detail": "anom=0"
+  },
+  {
+   "name": "KD9-P1 leg (i) strict key-weight climb: ZERO recenterings with zero ladder gain in either box",
+   "ok": true,
+   "detail": "witnesses: box A 0, box B 0"
+  },
+  {
+   "name": "KD9-P2 leg (ii) cap fit: NO super-linear growth of w_final against 1 + vdisc on either box (constant-c(n) candidates survive)",
+   "ok": true,
+   "detail": "trends: box A NON-MONOTONE, box B NON-MONOTONE; minimal c: A 2/7, B 8/25"
+  }
+ ],
+ "boxA": {
+  "walked": 8388608,
+  "squarefree": 8388608,
+  "nrec_hist": {
+   "1": 642624,
+   "2": 83968,
+   "3": 9152
+  },
+  "min_gain": "1",
+  "max_gain_den": 1,
+  "tab_vd_n_maxwf": {
+   "4": [
+    262144,
+    "1"
+   ],
+   "5": [
+    131072,
+    "1"
+   ],
+   "6": [
+    98304,
+    "2"
+   ],
+   "7": [
+    49152,
+    "2"
+   ]
+  },
+  "censored_row": [
+   195072,
+   "3"
+  ],
+  "deep": 132096,
+  "zero_gain_witnesses": [],
+  "max_ratio": [
+   "2/7",
+   [
+    24,
+    5,
+    14,
+    "2",
+    6
+   ]
+  ],
+  "trend": [
+   "NON-MONOTONE",
+   [
+    [
+     4,
+     "1/5"
+    ],
+    [
+     5,
+     "1/6"
+    ],
+    [
+     6,
+     "2/7"
+    ],
+    [
+     7,
+     "1/4"
+    ]
+   ]
+  ]
+ },
+ "boxB": {
+  "total": 67108864,
+  "runhist": {
+   "1": 3047424,
+   "2": 147456
+  },
+  "min_gain": "2",
+  "tab_vd_n_maxwf": {
+   "20": [
+    2359296,
+    "6"
+   ],
+   "24": [
+    184320,
+    "8"
+   ],
+   "26": [
+    46080,
+    "8"
+   ],
+   "28": [
+    11520,
+    "8"
+   ],
+   "22": [
+    589824,
+    "6"
+   ],
+   "30": [
+    2880,
+    "8"
+   ],
+   "32": [
+    706,
+    "8"
+   ],
+   "36": [
+    36,
+    "8"
+   ],
+   "34": [
+    185,
+    "8"
+   ],
+   "38": [
+    5,
+    "8"
+   ],
+   "40": [
+    2,
+    "6"
+   ],
+   "42": [
+    1,
+    "8"
+   ]
+  },
+  "disc_zero_members": 25,
+  "deep": 65536,
+  "zero_gain_witnesses": [],
+  "max_ratio": [
+   "8/25",
+   [
+    1312804,
+    8,
+    24
+   ]
+  ],
+  "trend": [
+   "NON-MONOTONE",
+   [
+    [
+     20,
+     "2/7"
+    ],
+    [
+     22,
+     "6/23"
+    ],
+    [
+     24,
+     "8/25"
+    ],
+    [
+     26,
+     "8/27"
+    ],
+    [
+     28,
+     "8/29"
+    ],
+    [
+     30,
+     "8/31"
+    ]
+   ]
+  ]
+ },
+ "seals": "P1-P2 sealed 2026-07-30 pre-run; see module docstring"
+}

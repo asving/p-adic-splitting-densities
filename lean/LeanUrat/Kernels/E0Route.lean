@@ -55,7 +55,7 @@ variable {ι : Type*} [Fintype ι] [DecidableEq ι]
 deps: —.  Sketch: pow_zero + one_mulVec + Rat.cast_one. -/
 theorem blockMass_zero (A : Matrix ι ι ℚ) (τ : ι) :
     blockMass A 0 τ = 1 := by
-  sorry
+  simp [blockMass, Matrix.one_mulVec]
 
 /-- KA4a (law, as a LEMMA not a field): the one-step recursion
 blockMass A (k+1) τ = Σ_β (A τ β : ℝ) · blockMass A k β.
@@ -63,7 +63,13 @@ deps: —.  Sketch: pow_succ'/mulVec_mulVec unfolding + Rat.cast push (the
 sum-of-products commutes with the ring hom ℚ → ℝ). -/
 theorem blockMass_step (A : Matrix ι ι ℚ) (k : ℕ) (τ : ι) :
     blockMass A (k + 1) τ = ∑ β, (A τ β : ℝ) * blockMass A k β := by
-  sorry
+  have h : (A ^ (k + 1)) *ᵥ (fun _ => (1 : ℚ))
+      = A *ᵥ ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) := by
+    rw [Matrix.mulVec_mulVec, ← pow_succ']
+  simp only [blockMass, h]
+  simp only [Matrix.mulVec, dotProduct]
+  push_cast
+  rfl
 
 /-- KA4a (law, as a LEMMA not a field): blockMass is antitone in k under
 nonneg + substochastic.  deps: KA2a (`pow_mulVec_one_antitone`), cast
@@ -71,7 +77,10 @@ monotonicity.  Sketch: `Rat.cast_le` transports the ℚ-side antitonicity. -/
 theorem blockMass_antitone {A : Matrix ι ι ℚ} (hnn : ∀ i j, 0 ≤ A i j)
     (hsub : SubStochastic A) (τ : ι) :
     Antitone (fun k => blockMass A k τ) := by
-  sorry
+  intro k l hkl
+  have h := pow_mulVec_one_antitone hnn hsub hkl τ
+  simp only [blockMass]
+  exact_mod_cast h
 
 /-- KA4a (the Prop, REV 2 F7): BLOCK DRAIN — at every state the infimum of
 the still-in-block mass sequence is 0 (ℝ-valued ciInf of a bounded-below
@@ -94,14 +103,33 @@ deps: —.  Sketch: induction on k via blockMass_zero/blockMass_step +
 Fin.sum_univ_one + norm_num. -/
 theorem n2PoolMatrix_blockMass (k : ℕ) (τ : Fin 1) :
     blockMass n2PoolMatrix k τ = (1 / 8 : ℝ) ^ k := by
-  sorry
+  induction k generalizing τ with
+  | zero => simp [blockMass_zero]
+  | succ k ih =>
+    rw [blockMass_step, Fin.sum_univ_one, ih 0]
+    have hτ : τ = 0 := Fin.eq_zero τ
+    subst hτ
+    norm_num [n2PoolMatrix, pow_succ']
 
 /-- KA4a (NON-VACUITY gate): BlockDrain holds at the N2 pool matrix.
 deps: n2PoolMatrix_blockMass.  Sketch: ⨅ k, (1/8)^k = 0 in ℝ
 (geometric decay: antitone, bounded below by 0, tends to 0; `ciInf` of a
 sequence tending to its greatest lower bound). -/
 theorem n2PoolMatrix_blockDrain : BlockDrain n2PoolMatrix := by
-  sorry
+  intro τ
+  have hiInf : (⨅ k, blockMass n2PoolMatrix k τ) = ⨅ k, (1 / 8 : ℝ) ^ k :=
+    iInf_congr (fun k => n2PoolMatrix_blockMass k τ)
+  rw [hiInf]
+  have hanti : Antitone (fun k : ℕ => (1 / 8 : ℝ) ^ k) := fun a b hab =>
+    pow_le_pow_of_le_one (by norm_num) (by norm_num) hab
+  have hbdd : BddBelow (Set.range fun k : ℕ => (1 / 8 : ℝ) ^ k) := by
+    refine ⟨0, ?_⟩
+    rintro x ⟨k, rfl⟩
+    positivity
+  have h1 := tendsto_atTop_ciInf hanti hbdd
+  have h2 : Filter.Tendsto (fun k : ℕ => (1 / 8 : ℝ) ^ k) Filter.atTop (nhds 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+  exact tendsto_nhds_unique h1 h2
 
 /-! ## KA4b — drain implies escape -/
 
@@ -114,6 +142,34 @@ ESCAPE(E0).  deps: KA4a.  Sketch: per-τ blockMass antitone
 theorem escape_of_drain {A : Matrix ι ι ℚ} (hnn : ∀ i j, 0 ≤ A i j)
     (hsub : SubStochastic A) (hdrain : BlockDrain A) :
     MovesS.EscapeE0 A := by
-  sorry
+  refine ⟨hnn, ?_⟩
+  rw [tendsto_pi_nhds]
+  intro τ
+  -- nonnegativity of the ℚ-valued mass vector, by induction via `mulVec_nonneg`.
+  have hnonneg : ∀ k (i : ι), (0 : ℚ) ≤ ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) i := by
+    intro k
+    induction k with
+    | zero => intro i; simp [Matrix.one_mulVec]
+    | succ k ih =>
+      have h : (A ^ (k + 1)) *ᵥ (fun _ => (1 : ℚ))
+          = A *ᵥ ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) := by
+        rw [Matrix.mulVec_mulVec, ← pow_succ']
+      rw [h]
+      exact mulVec_nonneg hnn ih
+  -- ℝ-side: the antitone bounded-below block mass tends to its infimum, which drains to 0.
+  have hanti := blockMass_antitone hnn hsub τ
+  have hbdd : BddBelow (Set.range fun k => blockMass A k τ) := by
+    refine ⟨0, ?_⟩
+    rintro x ⟨k, rfl⟩
+    simp only [blockMass]
+    exact_mod_cast hnonneg k τ
+  have h1 := tendsto_atTop_ciInf hanti hbdd
+  rw [hdrain τ] at h1
+  -- pull the limit back along the inducing `Rat.cast : ℚ → ℝ`.
+  have h2 : Filter.Tendsto (fun k => ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) τ)
+      Filter.atTop (nhds (0 : ℚ)) := by
+    rw [Rat.isEmbedding_coe_real.tendsto_nhds_iff]
+    simpa [Function.comp_def, blockMass] using h1
+  simpa using h2
 
 end LeanUrat.Kernels

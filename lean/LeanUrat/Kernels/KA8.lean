@@ -73,6 +73,13 @@ theorem RegP_of_baseAndTransport {n : ℕ} (T : MovesS.TableShape n)
       Nonempty (MovesS.PoolHyp T M RB e (hK e he) ((p : ℚ) ^ (1 : ℕ))))
     (tr : PoolTransport T M RB p hK F) :
     MovesS.RegP T M RB p hK F := by
-  sorry
+  intro e he δ hδ
+  rcases eq_or_lt_of_le (Nat.one_le_iff_ne_zero.mpr (PNat.ne_zero δ)) with h1 | h1
+  · -- δ = 1: the base pool p¹.
+    have hδ1 : ((δ : ℕ) : ℕ) = (1 : ℕ) := h1.symm
+    have := hbase e he
+    simpa [← hδ1] using this
+  · -- 1 < δ: the named transport carries the base package to p^δ.
+    exact tr.transport e he δ hδ h1 (hbase e he)
 
 end LeanUrat.Kernels

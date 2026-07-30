@@ -61,6 +61,6 @@ theorem detHyp_of_escape_infinite {T : TableShape n} {M : MeasuredSide T}
     (hact : ∀ e (he : e ∈ Finset.Icc 1 n), ∀ q₀ ∈ PP ∩ allActivePools M,
       Nonempty (PoolHyp T M RB e (hK e he) q₀)) :
     DetHyp T RB hK := by
-  sorry
+  exact rs3_det_symbolic RB hdc hK PP hsub hbase hact
 
 end LeanUrat.Kernels

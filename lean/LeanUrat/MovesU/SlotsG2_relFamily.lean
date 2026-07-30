@@ -84,9 +84,51 @@ set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
+/-!
+H-PHASE RESOLUTIONS FOR `Slot_rel1` (2026-07-30, cluster BP1-P10-slots; the
+re-typing executes the recorded resumption charge against the parked draft's
+`CStatements` (MOVESR_LEAN_BLUEPRINT_2026-07-28.md 631–647) with the
+MOVESR_AUDIT_FABLE3 repairs; every resolution FLAGGED for the Q5 Codex audit):
+* (r-F3-1, CRITICAL repair) TYP conjunct 1: the jet-additivity clause
+  (`jet H (f+g) i = jet H f i + jet H g i`) is DELETED — group-theoretically
+  impossible (O_δ has p^N-torsion; an additive jet factors through mod p) and not
+  the note's claim.  REPLACED by the note's own additive object, the
+  LEVEL-SET-DIGITS → GRADED-PIECE COMPOSITE (MOVES 3801–07, 9401–04): on
+  L_γ(B)-supported digit assignments, `y ↦ CI.G.inγ γ (CI.slotCoeff H B y)` is
+  additive in the digit tuple.  The worked δ = 1 pattern is
+  `HC1.Tower.typComposite` (DefsCar.lean:194).
+* (r-F3-2, CRITICAL repair) TYP conjunct 2: the alphabet is priced on the
+  SLOT-IMAGE SPAN in the graded piece (`AddSubgroup.closure` of the
+  single-coordinate composite images), NEVER on `Set.range (jet H · i)` — the
+  audit's own displayed faithful form, verbatim (the F₉ a = 2 instance is the
+  check).  δ = 1 pattern: `HC1.Tower.alphabet` (DefsCar.lean:200).
+* (r-F3-3, CRITICAL repair) LST clause (ii): `floorB` is PINNED by the staircase
+  equation `floorB H B = (lines H (top read)).at (blockEdge H B)` on
+  factor-interior blocks (guard = the display's "there", MOVES 3650–51/3717–22),
+  through the G1 carrier's R-3 `blockEdge` field; the constancy clause
+  (`floorC = floorB` on the interior) is kept.  δ = 1 pattern:
+  `HC1.TowerRealizable.floorB` (DefsCar.lean:266).
+* (r-G3-1) SecB1's Coeff-LEVEL slotCoeff additivity is DROPPED (in the engine
+  ring, unit lifts are not additive — the audit's gap; the HC1 worked instance's
+  `slotCoeff` is a Teichmüller-style expansion, NOT additive at Coeff level).
+  The note's additivity is carried at the graded-piece level by the (r-F3-1)
+  composite clause; SecB1 keeps the stage-carrier laws.
+* (r-G3-2) The (i-b)/(i-c) quantification over all `B : ℕ` is kept with the
+  draft's recorded convention (off-window blocks ride the `w 0 = ⊤`/`slotCoeff 0`
+  convention) — recorded, not silently scoped.
+* (r-G3-3) DOM is typed via its INPUT package `MovesC.DomData` (steeper chain +
+  vertex entry), per the parked draft + the D8 declaration; `interiorEnd` as one
+  bound for all i ≤ kIdx is benign (interiors nest) — recorded.
+NON-VACUITY (IB-G11a's duty): FALSE at a degenerate CI violating e.g. the C.1
+pricing (vol of a locus ≠ the per-pinned-digit product) or the (r-F3-2) span
+cardinality.
+-/
+
 namespace LeanUrat.MovesU
 
 open MovesRBase
+
+open scoped Classical
 
 /-- IB-G2 slot 1/5 — **`Slot_rel1`** (CL-8 REL.1, owner [2r]): the O_δ-re-based
 theory's full ledger clause at the CInterface carrier `CI` — the re-typed
@@ -95,7 +137,91 @@ p^N-torsion re-typings (i)–(iii) and the FF2 counting clause (iv)).  H-phase
 fills the displayed Prop; Codex audit before any consumer (Q5). -/
 def Slot_rel1 {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax} {AD : AlphabetData p Sp}
     {δ : ℕ+} {n : ℕ} (CI : CInterface p Sp AD δ n) : Prop :=
-  sorry
+  -- §A re-based: base tower shape over F_δ:
+  (∀ H, (CI.tower H).BaseLaws) ∧
+  -- §B1 re-based (r-G3-1: stage-carrier laws only; the additive law rides the
+  -- graded-piece composite clause below):
+  (∀ H, (CI.tower H).StageCarrierLaws) ∧
+  -- §B2-DEF re-based: the D.0 climb over the new base:
+  (∀ H, (CI.tower H).ClimbLaws) ∧
+  -- Theorem C(a): classifier locus = jet-preimage of the digit-system locus:
+  (∀ H Z, CI.SHZ H Z
+      = (fun f => CI.jet H f) ⁻¹' {x | (CI.digitLocus H Z).IsSolution x}) ∧
+  -- Theorem C(b) = (REL.1-b), LHS the DEFINED count (FF2):
+  (∀ (H : CI.C.Hist) (Z : CI.C.Locus H) (N : ℕ), CI.C.Nmin H Z ≤ N →
+    (CInterface.count p CI H Z N : ℚ) = (qq p δ : ℚ) ^ (n * N) *
+      ((∏ i ∈ Finset.range (CI.C.kIdx H + 1), CI.C.V.vol (CI.C.freshEvent H i)) *
+        CI.C.V.vol (CI.C.locusEvent H Z))) ∧
+  -- C.0.5 + PIN-WELLDEF: unitriangular transports; pin statistics frame-invariant
+  -- (cardinality AND status AND the aDim ledger weights):
+  (∀ H (F F' : CI.Frame H), MovesC.IsUnitriangular (CI.T H F F') ∧
+    ∀ Z, (CI.pinnedIn H F Z).card = (CI.pinnedIn H F' Z).card ∧
+      Multiset.map (CI.pinStatus H F Z) Finset.univ.val
+        = Multiset.map (CI.pinStatus H F' Z) Finset.univ.val ∧
+      (CI.pinnedIn H F Z).val.map (CI.aDim H)
+        = (CI.pinnedIn H F' Z).val.map (CI.aDim H)) ∧
+  -- C.1: locus mass = the per-pinned-digit product of attainable-alphabet inverses:
+  (∀ H (F : CI.Frame H) Z, CI.C.V.vol (CI.C.locusEvent H Z)
+      = ∏ i ∈ CI.pinnedIn H F Z, ((p : ℚ) ^ (CI.aDim H i))⁻¹) ∧
+  -- C.1.5's (ZC) invariant:
+  (∀ H F F' Z, CI.zcStat H F Z = CI.zcStat H F' Z) ∧
+  -- Lemma LST (i-a)/(i-b)/(i-c) + (ii) with the r-F3-3 staircase pin + (iii):
+  (∀ H : CI.C.Hist,
+    (∀ i, CI.G.w (CI.mono H i) = ((CI.ht H i : ℚ) : WithTop ℚ)) ∧
+    (∀ (B : ℕ) (x : Fin (CI.mOf H) → ↥(Fsub p δ)),
+      CI.G.w (CI.slotCoeff H B x) = (Finset.univ.filter fun i =>
+        CI.blkOf H i = B ∧ x i ≠ 0).inf fun i => ((CI.ht H i : ℚ) : WithTop ℚ)) ∧
+    (∀ (γ : ℚ) (B : ℕ) (x y : Fin (CI.mOf H) → ↥(Fsub p δ)),
+      (∀ i, CI.blkOf H i = B → CI.ht H i = γ → x i = y i) →
+      CI.G.inγ γ (CI.slotCoeff H B x) = CI.G.inγ γ (CI.slotCoeff H B y)) ∧
+    (∀ B : ℕ, CI.interiorB H B →
+      CI.floorB H B = (CI.lines H (CI.C.kIdx H)).at (CI.blockEdge H B)) ∧
+    (∀ i, CI.interiorB H (CI.blkOf H i) → CI.floorC H i = CI.floorB H (CI.blkOf H i)) ∧
+    (∀ B, CI.interiorB H B →
+      CI.floorSet H B = {i | CI.blkOf H i = B ∧ CI.ht H i ≤ CI.floorB H B} ∧
+      ∀ (γ' : ℚ), CI.floorB H B < γ' →
+        ∀ i, CI.blkOf H i = B → CI.ht H i = γ' → i ∉ CI.floorSet H B)) ∧
+  -- Lemma TYP, RE-TYPED (r-F3-1: the level-set-digits → graded-piece composite is
+  -- additive in the digit tuple):
+  (∀ (H : CI.C.Hist) (B : ℕ) (γ : ℚ) (x y : Fin (CI.mOf H) → ↥(Fsub p δ)),
+    (∀ i, x i ≠ 0 → CI.blkOf H i = B ∧ CI.ht H i = γ) →
+    (∀ i, y i ≠ 0 → CI.blkOf H i = B ∧ CI.ht H i = γ) →
+    CI.G.inγ γ (CI.slotCoeff H B (x + y))
+      = CI.G.inγ γ (CI.slotCoeff H B x) + CI.G.inγ γ (CI.slotCoeff H B y)) ∧
+  -- Lemma TYP graded leg, RE-TYPED (r-F3-2: the alphabet = the slot-image SPAN in
+  -- the graded piece, priced at p^{a_δ}):
+  (∀ (H : CI.C.Hist) (i : Fin (CI.mOf H)),
+    Nat.card ↥(AddSubgroup.closure (Set.range fun y : ↥(Fsub p δ) =>
+      CI.G.inγ (CI.ht H i) (CI.slotCoeff H (CI.blkOf H i) (Pi.single i y))))
+      = p ^ CI.aDim H i) ∧
+  -- Lemma DOM (r-G3-3: the displayed input package, base-free):
+  (∀ H, ∀ i ≤ CI.C.kIdx H, MovesC.DomData (CI.lines H) i (CI.interiorEnd H))
+
+/-!
+BLOCKED RECORD — `Slot_rel2a`/`Slot_rel2b`/`Slot_rel2d`/`Slot_rel2e`
+(2026-07-30, cluster BP1-P10-slots; honest sorries per the bounded-repair rule;
+full analysis in the cluster report).  The H-phase attempt found NO faithful
+CI-relative closure of the branch-site (`Setting`-shaped) binder:
+* ∀-CLOSURE over abstract sites+packages is FALSE AT EVERY CI — a junk site
+  (Dirac-valued `condMass` at a point of a genuine event algebra, constant Θ)
+  satisfies every law of the parked REL2a1–a6 bundle, and REL.2(b)'s pricing
+  fails against ANY cylinder-pinned `BoxVol` (two disjoint cylinders cannot both
+  be priced by a two-valued conditional).  A slot false at the intended instance
+  is an F3-1-class faithfulness failure.
+* ∃-CLOSURE is True-instantiable at EVERY CI with a genuine `BoxVol` — the
+  identity site (Cont := CI's box, condMass := CI.C.V.vol, Θ := id) satisfies
+  (a1)–(a6) + (b) outright, killing the wave-2 falsifier duty entirely.
+* The middle road (sites tied to an AMBIENT CInterface with `Slot_rel1`
+  conditionality) still leaves Θ/the trees/the β-tables pinned by NOTHING built:
+  the recentering vocabulary, prescribed-subtree carriers, and [3]-table exports
+  the parked draft binds (`Setting`/`REL2d`/`tableConv`/`consumed`) have no
+  in-corpus carriers, and re-inventing them here is a G1-scale carrier-layer
+  design event — exactly the fence-scale move Q5's audit gate exists to catch.
+DISPOSITION: the four bodies stay honest sorries; the site-carrier layer (or a
+ratified alternative closure) is an orchestrator adjudication — surfaced, never
+improvised (the rel3 escalation path's sibling; REVISION 2 finding 10's logic
+applies to the whole REL.2 family).
+-/
 
 /-- IB-G2 slot 2/5 — **`Slot_rel2a`** (CL-8 REL.2(a), owner [2r]): the branch
 continuation-map package, six sub-deliverables (a1)–(a6) — all six or nothing

@@ -65,7 +65,21 @@ theorem bridgeChart_reads_digit0 {p : ℕ} [Fact p.Prime] (n N : ℕ) (hN : 0 < 
       f i = ∑ k : Fin N, ((boxeq f (digitIdx n N i k)).val : ZMod (p ^ N))
         * (p : ZMod (p ^ N)) ^ (k : ℕ))
     (f : Box p n N) (i : Fin n) :
-    boxeq f (bridgeChart n N hN i) = ((f i).val : ZMod p) := sorry
+    boxeq f (bridgeChart n N hN i) = ((f i).val : ZMod p) := by
+  haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero N (Fact.out : p.Prime).ne_zero⟩
+  -- push the digit law through the mod-p reduction ZMod (p^N) →+* ZMod p:
+  -- every k ≥ 1 term carries a factor (p : ZMod p) = 0, so only digit 0 survives
+  have hcast := congrArg (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p)) (hdig f i)
+  rw [map_sum] at hcast
+  simp only [map_mul, map_pow, map_natCast, ZMod.natCast_self] at hcast
+  rw [Finset.sum_eq_single (⟨0, hN⟩ : Fin N)
+    (fun k _ hk => by
+      rw [zero_pow (by simpa [Fin.ext_iff] using hk), mul_zero])
+    (fun h => absurd (Finset.mem_univ _) h)] at hcast
+  rw [show ((⟨0, hN⟩ : Fin N) : ℕ) = 0 from rfl, pow_zero, mul_one,
+    ZMod.natCast_val, ZMod.cast_id] at hcast
+  exact hcast.symm.trans (by rw [ZMod.castHom_apply, ZMod.natCast_val])
 
 /-- THE SEMANTIC PIN, read level (the check the charge asks for, compiled): at
     the pinned chart, the model's level-0 reduction of the digit image of f IS
@@ -79,6 +93,10 @@ theorem redPoly_bridgeChart {p : ℕ} [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
         * (p : ZMod (p ^ N)) ^ (k : ℕ))
     (f : Box p n N) :
     MovesT.redPoly (bridgeChart n N hN) (boxeq f)
-      = X ^ n + ∑ i : Fin n, C (((f i).val : ZMod p)) * X ^ (i : ℕ) := sorry
+      = X ^ n + ∑ i : Fin n, C (((f i).val : ZMod p)) * X ^ (i : ℕ) := by
+  unfold MovesT.redPoly
+  congr 1
+  exact Finset.sum_congr rfl fun b _ => by
+    rw [bridgeChart_reads_digit0 n N hN boxeq hdig f b]
 
 end LeanUrat.MovesU

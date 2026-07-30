@@ -46,6 +46,7 @@ theorem hmc_of_domProj_markCompose {n : ℕ} {S : StepSys n}
     (TE : TmplEvents n S) (D : XHDd n S TE)
     (hproj : DomProj TE D) (hcomp : MarkCompose TE D) :
     HMC TE D := by
-  sorry
+  intro α β m γ h₁ h₂
+  exact ⟨hproj m γ h₁ h₂, hcomp m γ h₁ h₂⟩
 
 end LeanUrat.Kernels

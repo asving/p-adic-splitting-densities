@@ -44,6 +44,17 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
+/-- histories are their node lists (the two proof fields are propositional) — the
+E5 `history_eq_of_nodes_eq`/G1 `hist_ext` content, re-derived locally (both
+in-corpus twins are `private`; docstring note). -/
+private lemma history_ext {H H' : History p F}
+    (h : H.nodes = H'.nodes) : H = H' := by
+  obtain ⟨n1, hne1, hri1⟩ := H
+  obtain ⟨n2, hne2, hri2⟩ := H'
+  change n1 = n2 at h
+  subst h
+  rfl
+
 /-- **TV-B8 `History.snoc_induction`** — the last-node decomposition eliminator
 (blueprint §3.B display, verbatim): a motive holding at every one-node history
 and preserved by `snoc` extension holds at every history. The `oneNode` case's
@@ -56,6 +67,47 @@ theorem _root_.LeanUrat.MovesC.History.snoc_induction
     (hsnoc : ∀ (H₀ : History p F) (ν : Node p F)
       (hν : ν.species ≠ ReadSpecies.root), motive H₀ → motive (H₀.snoc ν hν))
     (H : History p F) : motive H := by
-  sorry
+  suffices haux : ∀ (l : List (Node p F)) (H : History p F), H.nodes = l → motive H from
+    haux H.nodes H rfl
+  intro l
+  induction l using List.reverseRecOn with
+  | nil =>
+    intro H hH
+    exact absurd hH H.nonempty
+  | append_singleton l' ν ih =>
+    intro H hH
+    obtain ⟨ns, hne0, hri0⟩ := H
+    change ns = l' ++ [ν] at hH
+    subst hH
+    rcases eq_or_ne l' [] with rfl | hl'
+    · -- singleton case: the node is root-species by `root_iff` at j = 0
+      have hroot : ν.species = ReadSpecies.root := by
+        have h0 := (hri0 0 (by simp)).mpr rfl
+        simpa using h0
+      have heq : (⟨[] ++ [ν], hne0, hri0⟩ : History p F) = oneNode ν hroot :=
+        history_ext rfl
+      rw [heq]
+      exact hone ν hroot
+    · -- ≥ 2-node case: the LAST node has species ≠ root (index ≠ 0)
+      have hlen : 0 < l'.length := List.length_pos_iff.mpr hl'
+      have hri' : ∀ (j : ℕ) (hj : j < l'.length),
+          (l'[j]'hj).species = ReadSpecies.root ↔ j = 0 := by
+        intro j hj
+        have hj2 : j < (l' ++ [ν]).length := by
+          simp only [List.length_append, List.length_singleton]; omega
+        have h := hri0 j hj2
+        rwa [List.getElem_append_left hj] at h
+      have hν : ν.species ≠ ReadSpecies.root := by
+        have hj2 : l'.length < (l' ++ [ν]).length := by simp
+        have h := hri0 l'.length hj2
+        have hv : (l' ++ [ν])[l'.length]'hj2 = ν := by simp
+        rw [hv] at h
+        intro hsp
+        have h0 := h.mp hsp
+        omega
+      have heq : (⟨l' ++ [ν], hne0, hri0⟩ : History p F)
+          = History.snoc ⟨l', hl', hri'⟩ ν hν := history_ext rfl
+      rw [heq]
+      exact hsnoc ⟨l', hl', hri'⟩ ν hν (ih ⟨l', hl', hri'⟩ rfl)
 
 end LeanUrat.MovesT

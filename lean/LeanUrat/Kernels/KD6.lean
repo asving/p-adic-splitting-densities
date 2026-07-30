@@ -66,6 +66,18 @@ structure KeyWeightData (n : ℕ) where
       MovesX.popOf? ν = some MovesX.Pop.t4 →
     w H + 1 / (D : ℚ) ≤ w (H ++ [ν])
 
+/-- `countPop` splits off a single appended node: the count grows by the
+node's indicator.  (Private helper for the KD6 telescoping induction.) -/
+private theorem countPop_append_singleton {n : ℕ} (H : MovesX.XHistory n)
+    (ν : MovesX.XNode n) (c : MovesX.Pop) :
+    MovesX.countPop (H ++ [ν]) c =
+      MovesX.countPop H c + (if MovesX.popOf? ν = some c then 1 else 0) := by
+  simp only [MovesX.countPop, List.filter_append, List.length_append,
+    List.filter_singleton]
+  by_cases h : MovesX.popOf? ν = some c
+  · simp [h]
+  · simp [h]
+
 /-- KD6 (HEAD — the ladder lemma): the recentering-population count is
 bounded by D times the total key-weight climb:
 #recT1(H) + #t4(H) ≤ D·(w_final − w_init).  deps: the carrier laws only.
@@ -78,6 +90,45 @@ theorem kd6_ladder_count_le {n : ℕ} (KW : KeyWeightData n)
     ((MovesX.countPop H MovesX.Pop.recT1 +
         MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ) ≤
       (KW.D : ℚ) * (KW.w H - KW.w []) := by
-  sorry
+  have hD : (0 : ℚ) ≤ (KW.D : ℚ) := Nat.cast_nonneg _
+  have hDne : (KW.D : ℚ) ≠ 0 := by
+    exact_mod_cast Nat.pos_iff_ne_zero.mp KW.D_pos
+  induction H using List.reverseRecOn with
+  | nil => simp [MovesX.countPop]
+  | append_singleton H ν ih =>
+    rw [countPop_append_singleton, countPop_append_singleton]
+    by_cases hpop : MovesX.popOf? ν = some MovesX.Pop.recT1 ∨
+        MovesX.popOf? ν = some MovesX.Pop.t4
+    · -- recentering-population node: count +1, weight climbs by ≥ 1/D
+      have hclimb := KW.climb H ν hpop
+      have hcnt : MovesX.countPop H MovesX.Pop.recT1 +
+            (if MovesX.popOf? ν = some MovesX.Pop.recT1 then 1 else 0) +
+          (MovesX.countPop H MovesX.Pop.t4 +
+            (if MovesX.popOf? ν = some MovesX.Pop.t4 then 1 else 0)) =
+          (MovesX.countPop H MovesX.Pop.recT1 +
+            MovesX.countPop H MovesX.Pop.t4) + 1 := by
+        rcases hpop with h | h <;> simp [h] <;> omega
+      rw [hcnt]
+      push_cast
+      calc ((MovesX.countPop H MovesX.Pop.recT1 +
+              MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ) + 1
+          ≤ (KW.D : ℚ) * (KW.w H - KW.w []) + 1 := by linarith [ih]
+        _ = (KW.D : ℚ) * (KW.w H + 1 / (KW.D : ℚ) - KW.w []) := by
+            field_simp
+        _ ≤ (KW.D : ℚ) * (KW.w (H ++ [ν]) - KW.w []) := by
+            apply mul_le_mul_of_nonneg_left _ hD
+            linarith [hclimb]
+    · -- any other node: count unchanged, weight does not decrease
+      push_neg at hpop
+      rw [if_neg hpop.1, if_neg hpop.2]
+      have hmono := KW.mono H ν
+      calc ((MovesX.countPop H MovesX.Pop.recT1 + 0 +
+              (MovesX.countPop H MovesX.Pop.t4 + 0) : ℕ) : ℚ)
+          = ((MovesX.countPop H MovesX.Pop.recT1 +
+              MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ) := by push_cast; ring
+        _ ≤ (KW.D : ℚ) * (KW.w H - KW.w []) := ih
+        _ ≤ (KW.D : ℚ) * (KW.w (H ++ [ν]) - KW.w []) := by
+            apply mul_le_mul_of_nonneg_left _ hD
+            linarith [hmono]
 
 end LeanUrat.Kernels

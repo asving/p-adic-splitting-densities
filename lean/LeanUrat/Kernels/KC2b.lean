@@ -47,6 +47,18 @@ namespace LeanUrat.Kernels
 
 open LeanUrat.MovesV
 
+/-- Fin-append splitter identity (private re-derivation; the original
+`hpt_take_append` is `private` in MovesV/V4_naming.lean, hence not
+importable). -/
+private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+    Hpt.take (Hpt.append h₁ h₂) = h₁ := by
+  funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
+
+/-- Fin-append splitter identity (private re-derivation, as above). -/
+private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+    Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
+  funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
+
 /-- KC2b — `DomProj`, the ⊆/projection leg of HMC as a NAMED law (⚑ Q4
 named-law ratification): a realized composite history realizes its steps —
 composite domain membership at an appended height point projects to the two
@@ -81,7 +93,32 @@ theorem domProj_lastTail_of_laws {n : ℕ} {S : StepSys n}
     (h₁ : Hpt (S.dim m)) (h₂ : Hpt (S.dim m₂))
     (hmem : (D.dom (.cons m (.last m₂))).Mem (Hpt.append h₁ h₂)) :
     (D.dom (.last m)).Mem h₁ ∧ (D.dom (.last m₂)).Mem h₂ := by
-  sorry
+  -- pool + zc history supply
+  obtain ⟨q₀, hq₀⟩ := S.pools_ne
+  obtain ⟨x, hzc⟩ := S.zc_ne q₀ hq₀ α
+  -- `no_stray` at the composite: census positivity at the appended point
+  have hpos : 0 < Tgam TE (.cons m (.last m₂)) x (Hpt.append h₁ h₂) :=
+    D.no_stray _ _ hmem hq₀ x hzc
+  obtain ⟨b, hb⟩ := Finset.card_pos.mp hpos
+  -- a mark's chain is a Σ-pair: head assignment at `take`, tail chain at `drop`
+  have hchain : Σ a : S.Assign m x (Hpt.take (Hpt.append h₁ h₂)),
+      Chains S (.last m₂) (S.ext m x (Hpt.take (Hpt.append h₁ h₂)) a)
+        (Hpt.drop (Hpt.append h₁ h₂)) :=
+    TE.tmark (.cons m (.last m₂)) x (Hpt.append h₁ h₂) ⟨b, hb⟩
+  obtain ⟨a, c⟩ := hchain
+  have hzc' : S.zc (S.ext m x (Hpt.take (Hpt.append h₁ h₂)) a) :=
+    S.ext_zc m x _ a hzc
+  constructor
+  · -- head leg: `tmark_last_surj` converts the assignment into census positivity
+    rw [← hpt_take_append h₁ h₂]
+    obtain ⟨b₁, -⟩ := TE.tmark_last_surj m x (Hpt.take (Hpt.append h₁ h₂)) hq₀ hzc a
+    exact D.no_orphan _ x _ hq₀ hzc (Finset.card_pos.mpr ⟨b₁.1, b₁.2⟩)
+  · -- tail leg: same route at the extended (zc, by `ext_zc`) history
+    rw [← hpt_drop_append h₁ h₂]
+    obtain ⟨b₂, -⟩ := TE.tmark_last_surj m₂
+      (S.ext m x (Hpt.take (Hpt.append h₁ h₂)) a)
+      (Hpt.drop (Hpt.append h₁ h₂)) hq₀ hzc' c
+    exact D.no_orphan _ _ _ hq₀ hzc' (Finset.card_pos.mpr ⟨b₂.1, b₂.2⟩)
 
 /-- KC2b [ATTEMPT] — the scoped derivation, `.lastT`-tail leg: same route
 with `tmark_lastT_surj` on the terminal tail. -/
@@ -91,6 +128,26 @@ theorem domProj_lastTTail_of_laws {n : ℕ} {S : StepSys n}
     (h₁ : Hpt (S.dim m)) (h₂ : Hpt (S.dimT mT))
     (hmem : (D.dom (.cons m (.lastT mT))).Mem (Hpt.append h₁ h₂)) :
     (D.dom (.last m)).Mem h₁ ∧ (D.dom (.lastT mT)).Mem h₂ := by
-  sorry
+  obtain ⟨q₀, hq₀⟩ := S.pools_ne
+  obtain ⟨x, hzc⟩ := S.zc_ne q₀ hq₀ α
+  have hpos : 0 < Tgam TE (.cons m (.lastT mT)) x (Hpt.append h₁ h₂) :=
+    D.no_stray _ _ hmem hq₀ x hzc
+  obtain ⟨b, hb⟩ := Finset.card_pos.mp hpos
+  have hchain : Σ a : S.Assign m x (Hpt.take (Hpt.append h₁ h₂)),
+      Chains S (.lastT mT) (S.ext m x (Hpt.take (Hpt.append h₁ h₂)) a)
+        (Hpt.drop (Hpt.append h₁ h₂)) :=
+    TE.tmark (.cons m (.lastT mT)) x (Hpt.append h₁ h₂) ⟨b, hb⟩
+  obtain ⟨a, c⟩ := hchain
+  have hzc' : S.zc (S.ext m x (Hpt.take (Hpt.append h₁ h₂)) a) :=
+    S.ext_zc m x _ a hzc
+  constructor
+  · rw [← hpt_take_append h₁ h₂]
+    obtain ⟨b₁, -⟩ := TE.tmark_last_surj m x (Hpt.take (Hpt.append h₁ h₂)) hq₀ hzc a
+    exact D.no_orphan _ x _ hq₀ hzc (Finset.card_pos.mpr ⟨b₁.1, b₁.2⟩)
+  · rw [← hpt_drop_append h₁ h₂]
+    obtain ⟨b₂, -⟩ := TE.tmark_lastT_surj mT
+      (S.ext m x (Hpt.take (Hpt.append h₁ h₂)) a)
+      (Hpt.drop (Hpt.append h₁ h₂)) hq₀ hzc' c
+    exact D.no_orphan _ _ _ hq₀ hzc' (Finset.card_pos.mpr ⟨b₂.1, b₂.2⟩)
 
 end LeanUrat.Kernels

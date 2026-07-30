@@ -212,7 +212,8 @@ theorem rs4_checksum_bridge {n : ℕ} (C : UCarriers n)
   have htrans : ∑ σ : SplittingType n, (bridgeSolve C hdet).R σ
       = ∑ s ∈ C.chain.Sigmas,
           MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s :=
-    sum_vmap_eq_sum_Sigmas C _
+    sum_vmap_eq_sum_Sigmas C
+      (MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP)
   -- (iii) g := (Σ R) − 1 is OKat-regular and evaluates to 0 at every prime
   have hg : (∑ σ : SplittingType n, (bridgeSolve C hdet).R σ) - 1 = 0 := by
     apply eq_zero_of_evalAt_primes_zero

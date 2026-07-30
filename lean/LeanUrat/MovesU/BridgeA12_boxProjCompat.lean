@@ -61,8 +61,9 @@ open Polynomial
 theorem boxProj_toPoly (p n : ℕ) [Fact p.Prime] {N N' : ℕ} (h : N ≤ N')
     (f : Box p n N') :
     Box.toPoly (boxProj p n h f)
-      = (Box.toPoly f).map (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ N))) :=
-  sorry
+      = (Box.toPoly f).map (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ N))) := by
+  simp only [Box.toPoly, boxProj, Polynomial.map_add, Polynomial.map_pow,
+    Polynomial.map_X, Polynomial.map_sum, Polynomial.map_mul, Polynomial.map_C]
 
 /-- IB-A12(a), (†2) form — the same law read through `boxPolyEquiv` on both
     levels (toFun is `Box.toPoly` definitionally). -/
@@ -70,8 +71,10 @@ theorem boxPolyEquiv_boxProj (p n : ℕ) [Fact p.Prime] {N N' : ℕ} (h : N ≤ 
     (hN : 0 < N) (hN' : 0 < N') (f : Box p n N') :
     (boxPolyEquiv p n N hN (boxProj p n h f)).1
       = (boxPolyEquiv p n N' hN' f).1.map
-          (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ N))) :=
-  sorry
+          (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ N))) := by
+  change Box.toPoly (boxProj p n h f)
+      = (Box.toPoly f).map (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ N)))
+  exact boxProj_toPoly p n h f
 
 /-- IB-A12(b), (†3) form — level reduction is digit truncation: below the cut
     (k < N) the (i,k) slot read of the reduced box equals the (i,k) slot read
@@ -80,7 +83,19 @@ theorem boxEquivD_boxProj (p n : ℕ) [Fact p.Prime] {N N' : ℕ} (h : N ≤ N')
     (hN : 0 < N) (hN' : 0 < N') (f : Box p n N') (i : Fin n) (k : Fin N) :
     boxEquivD p n N hN (boxProj p n h f) (digitIdx n N i k)
       = boxEquivD p n N' hN' f
-          (digitIdx n N' i ⟨(k : ℕ), lt_of_lt_of_le k.isLt h⟩) :=
-  sorry
+          (digitIdx n N' i ⟨(k : ℕ), lt_of_lt_of_le k.isLt h⟩) := by
+  have hp : p.Prime := Fact.out
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero N hp.ne_zero⟩
+  haveI : NeZero (p ^ N') := ⟨pow_ne_zero N' hp.ne_zero⟩
+  change boxToDigits p n N hN (boxProj p n h f) (digitIdx n N i k)
+      = boxToDigits p n N' hN' f (digitIdx n N' i ⟨(k : ℕ), lt_of_lt_of_le k.isLt h⟩)
+  rw [boxToDigits_digitIdx p n N hN (boxProj p n h f) i k,
+      boxToDigits_digitIdx p n N' hN' f i ⟨(k : ℕ), lt_of_lt_of_le k.isLt h⟩]
+  have hval : (boxProj p n h f i).val = (f i).val % p ^ N := by
+    change (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ N)) (f i)).val = (f i).val % p ^ N
+    rw [ZMod.castHom_apply, ← ZMod.natCast_val, ZMod.val_natCast]
+  rw [hval, ← Nat.mod_mul_right_div_self ((f i).val % p ^ N) (p ^ (k : ℕ)) p,
+      ← Nat.mod_mul_right_div_self (f i).val (p ^ (k : ℕ)) p,
+      Nat.mod_mod_of_dvd _ (by rw [← pow_succ]; exact pow_dvd_pow p k.isLt)]
 
 end LeanUrat.MovesU

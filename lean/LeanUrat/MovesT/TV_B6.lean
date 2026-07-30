@@ -4,6 +4,9 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import LeanUrat.MovesT.TV_B2
+import LeanUrat.MovesT.TV_B3
+import LeanUrat.MovesT.TV_B4
+import LeanUrat.MovesT.TV_B5
 
 /-! # TV-B6 — `treeN_stable_of_inputs`: the six-clause fiberAt transfer assembled
 
@@ -66,6 +69,42 @@ theorem treeN_stable_of_inputs {N₀ : ℕ}
     (χat : ∀ N', Fin n → Fin (n * N')) (Tr : VTree p F)
     (SI : StableInputs Tat χat Tr) :
     TreeNStable Tat χat Tr := by
-  sorry
+  intro N hN N' h' hNN' x x' hagree
+  -- the pointwise child transfer at (x, x') (S-child specialized)
+  have hchild : ∀ (o : Option (History p F)) (ν : Node p F),
+      (Tat N' h').child o ν x ↔ (Tat N' h').child o ν x' :=
+    fun o ν => SI.child_cyl N hN N' h' hNN' o ν x x' hagree
+  -- the mem transfer at every history (TV-B3 core)
+  have hmem : ∀ H : History p F,
+      (Tat N' h').mem (some H) x ↔ (Tat N' h').mem (some H) x' :=
+    tv_b3_mem_transfer_of_child_transfer (Tat N' h') x x' hchild
+  -- 1 ≤ N from the threshold (`VTree.thr … = … ⊔ 1`, Defs.lean:734)
+  have hN1 : 1 ≤ N := le_trans le_sup_right hN
+  -- the chart-read transfers (TV-B4 at chart_pin)
+  have hhen : henPayload (χat N') x = henPayload (χat N') x' :=
+    tv_b4_henPayload_cyl N' (χat N') (SI.chart_pin N' h') hN1 x x' hagree
+  have hfac : UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x)
+      = UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x') :=
+    tv_b4_factors_cyl N' (χat N') (SI.chart_pin N' h') hN1 x x' hagree
+  -- the six-clause assembly (E5 hconv template)
+  unfold VTree.fiberAt
+  refine and_congr ?_ (and_congr ?_ (and_congr ?_ (and_congr ?_
+    (and_congr Iff.rfl ?_))))
+  · -- clause (i): chains ↔ nonempty ∧ PrunedMem (TV-B5)
+    exact forall_congr' fun H => iff_congr Iff.rfl
+      (tv_b5_clause_i_transfer (Tat N' h') x x' hchild hmem H)
+  · -- clause (ii): per maximal chain, the leaf dichotomy (τ-irr leg x-free;
+    -- τ-ns leg via TV-B5's NsHalts transfer)
+    exact forall_congr' fun H => imp_congr Iff.rfl (imp_congr Iff.rfl
+      (or_congr Iff.rfl (and_congr
+        (tv_b5_nsHalts_transfer (Tat N' h') x x' hchild hmem (some H))
+        Iff.rfl)))
+  · -- clause (iii): the hen payload (TV-B4)
+    rw [hhen]
+  · -- clause (iv): per non-maximal chain, the duty pair (TV-B5)
+    exact forall_congr' fun H => imp_congr Iff.rfl (imp_congr Iff.rfl
+      (tv_b5_duty_transfer (Tat N' h') x x' hchild hmem H))
+  · -- clause (vi): the factor roster (TV-B4); clause (v) was x-free (Iff.rfl)
+    rw [hfac]
 
 end LeanUrat.MovesT

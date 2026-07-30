@@ -45,7 +45,30 @@ namespace LeanUrat.MovesU
 /-- IB-A10 — (†3a): base-p digit reconstruction below p^N,
     `Σ_{k<N} ((v / p^k) % p) · p^k = v`. -/
 theorem digitSum_eq (p N v : ℕ) (hv : v < p ^ N) :
-    ∑ k ∈ Finset.range N, ((v / p ^ k) % p) * p ^ k = v :=
-  sorry
+    ∑ k ∈ Finset.range N, ((v / p ^ k) % p) * p ^ k = v := by
+  induction N generalizing v with
+  | zero =>
+    have hv0 : v = 0 := Nat.lt_one_iff.mp (by simpa using hv)
+    simp [hv0]
+  | succ N ih =>
+    rcases Nat.eq_zero_or_pos p with hp | hp
+    · subst hp
+      simp at hv
+    · have hv' : v / p < p ^ N := by
+        rw [Nat.div_lt_iff_lt_mul hp]
+        exact lt_of_lt_of_eq hv (pow_succ p N)
+      have hstep : ∀ k, v / p ^ (k + 1) = (v / p) / p ^ k := fun k => by
+        rw [Nat.div_div_eq_div_mul, ← pow_succ']
+      calc ∑ k ∈ Finset.range (N + 1), ((v / p ^ k) % p) * p ^ k
+          = (∑ k ∈ Finset.range N, ((v / p ^ (k + 1)) % p) * p ^ (k + 1))
+              + ((v / p ^ 0) % p) * p ^ 0 := Finset.sum_range_succ' _ N
+        _ = (∑ k ∈ Finset.range N, (((v / p) / p ^ k) % p) * p ^ k) * p + v % p := by
+            rw [Finset.sum_mul]
+            congr 1
+            · exact Finset.sum_congr rfl fun k _ => by
+                rw [hstep k, pow_succ, ← mul_assoc]
+            · simp
+        _ = (v / p) * p + v % p := by rw [ih (v / p) hv']
+        _ = v := by rw [mul_comm, Nat.div_add_mod]
 
 end LeanUrat.MovesU

@@ -51,8 +51,8 @@ theorem measuredOf_entShape {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hfin : Finite (Skeleton n)) :
     ∀ (e : ℕ) (τ : (ctsTable C hfin).State e),
       (measuredOf V X cp hfin).EntShape e τ
-        = V.EntIx (V.toStepCells.symm τ.1) := by
-  sorry
+        = V.EntIx (V.toStepCells.symm τ.1) :=
+  fun _ _ => rfl
 
 /-- TV-E2 CO-DESIGN PIN [activity]: `activeState := V.activeState ∘
 toStepCells.symm` (decA classical), read through the literal table's state
@@ -63,8 +63,8 @@ theorem measuredOf_activeState {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hfin : Finite (Skeleton n)) :
     ∀ (q₀ : ℚ) (e : ℕ) (τ : (ctsTable C hfin).State e),
       (measuredOf V X cp hfin).activeState q₀ e τ
-        ↔ V.activeState q₀ (V.toStepCells.symm τ.1) := by
-  sorry
+        ↔ V.activeState q₀ (V.toStepCells.symm τ.1) :=
+  fun _ _ _ => Iff.rfl
 
 /-- TV-E2 CO-DESIGN PIN [kstep, case 0]: the Kronecker delta — FORCED by
 `hmc` at k = 0 ("it reads kstep 1 = Σ_γ kstep 0 τ γ · kstep 1 γ β — so
@@ -76,28 +76,38 @@ theorem measuredOf_kstep_zero {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hfin : Finite (Skeleton n)) :
     ∀ (e : ℕ) (τ β : (ctsTable C hfin).State e) (q₀ : ℚ),
       (measuredOf V X cp hfin).kstep 0 e τ β q₀
-        = if τ = β then 1 else 0 := by
-  sorry
+        = if τ = β then 1 else 0 :=
+  fun _ _ _ _ => rfl
 
-/-- TV-E2 CO-DESIGN PIN [kstep, case 1]: kstep_one's RHS, transcribed
-verbatim from `MovesS.LedgerIV.kstep_one` (MovesS/Defs:238-242) — the sum
-of rowVal over the β-targeting kcol outcomes.  ADJUSTABLE ONLY per the
-TV-E5a probe outcome (finding 4: the activity-guarded fallback relocates
-the same no_entry/rowVal bridge; if the E5a probe records a gap, do NOT
-flip definitions — escalate, risk R5). -/
+/-- TV-E2 CO-DESIGN PIN [kstep, case 1]: kstep_one's RHS — ADJUSTED to the
+TARGET-ACTIVITY-GUARDED display per this pin's own adjustability clause.
+[PIN ADJUSTMENT RECORD, prover phase 2026-07-30: the TV-E5a probe PROVED
+the no_entry/rowVal bridge (no vocabulary gap — `measuredOf_act_bridge`),
+so per the TV-E5a header's charge ("the inactive-SOURCE case of act_target
+… is the residual the E5b prover resolves via the kstep-1 co-design pin")
+the definition takes the guard `V.activeState q₀ (toStepCells.symm β.1)`:
+act_target becomes rfl-genre and the relocated bridge (kstep_one's
+inactive-β case, finding 4) closes by the PROVED probe at kstep_one's own
+source-activity guard.  The unguarded display was NOT provable as
+act_target's discharge: at an inactive SOURCE no CtsMeasured law kills the
+β-targeting counts (tgt_supported and no_entry are source-guarded) — the
+guard is the unique reading under which ALL of LedgerIV groups (6)-(7)
+close from the row's premises.  LedgerIV-facing statements untouched.] -/
 theorem measuredOf_kstep_one_def {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V)
     (hfin : Finite (Skeleton n)) :
     ∀ (e : ℕ) (τ β : (ctsTable C hfin).State e) (q₀ : ℚ),
       (measuredOf V X cp hfin).kstep 1 e τ β q₀
-        = ∑ o ∈ {o : (ctsTable C hfin).Out e τ |
-              MovesS.routeOf ((ctsTable C hfin).odata e τ o) = .kcol ∧
-              ∃ μ ∈ ((ctsTable C hfin).odata e τ o).mem,
-                ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
-            }.toFinset,
-            (measuredOf V X cp hfin).rowVal e τ o q₀ := by
-  sorry
+        = if V.activeState q₀ (V.toStepCells.symm β.1) then
+            ∑ o ∈ {o : (ctsTable C hfin).Out e τ |
+                MovesS.routeOf ((ctsTable C hfin).odata e τ o) = .kcol ∧
+                ∃ μ ∈ ((ctsTable C hfin).odata e τ o).mem,
+                  ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
+              }.toFinset,
+              (measuredOf V X cp hfin).rowVal e τ o q₀
+          else 0 :=
+  fun _ _ _ _ => rfl
 
 /-- TV-E2 CO-DESIGN PIN [kstep, case k+2]: the γ-sum recursion (the γ-sum is
 finite via `T.fin`; equality via `T.deq` — §3.E REV 2 display, transcribed). -/
@@ -109,8 +119,8 @@ theorem measuredOf_kstep_succ {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (measuredOf V X cp hfin).kstep (k + 2) e τ β q₀
         = ∑ γ : (ctsTable C hfin).State e,
             (measuredOf V X cp hfin).kstep (k + 1) e τ γ q₀
-              * (measuredOf V X cp hfin).kstep 1 e γ β q₀ := by
-  sorry
+              * (measuredOf V X cp hfin).kstep 1 e γ β q₀ :=
+  fun _ _ _ _ _ => rfl
 
 /-- TV-E2 CO-DESIGN PIN [ιval]: the state-level entrance value is the V-side
 EntIx aggregate `iotaValV` at the state's own CTS cell (the cast-free member
@@ -122,7 +132,7 @@ theorem measuredOf_ival {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hfin : Finite (Skeleton n)) :
     ∀ (e : ℕ) (τ : (ctsTable C hfin).State e) (q₀ : ℚ),
       (measuredOf V X cp hfin).ιval e τ q₀
-        = iotaValV V X.sEnt (V.toStepCells.symm τ.1) q₀ := by
-  sorry
+        = iotaValV V X.sEnt (V.toStepCells.symm τ.1) q₀ :=
+  fun _ _ _ => rfl
 
 end LeanUrat.MovesV

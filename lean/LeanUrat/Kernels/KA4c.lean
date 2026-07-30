@@ -94,7 +94,30 @@ structure DrainIdent (n p : ℕ) [Fact p.Prime] (C : MovesX.XCtx n p)
 theorem ka4c_nsFiberUnion_null {n p : ℕ} [Fact p.Prime] (C : MovesX.XCtx n p)
     (hnull : ∀ i, C.frac (C.nsFiber i) = 0) :
     C.frac (⋃ i, C.nsFiber i) = 0 := by
-  sorry
+  haveI : Countable C.nsIdx := C.nsCountable
+  rcases isEmpty_or_nonempty C.nsIdx with hE | hNE
+  · /- ⚑ BLOCKED CORNER (sharpened obstruction record, owner: BP4 orchestrator).
+    With `nsIdx` EMPTY the union is `∅` and the goal is `frac ∅ = 0` from NO
+    hypotheses (`hnull` is vacuous) — underivable at the XCtx interface: the
+    frac laws (univ/nonneg/mono/union_le/iUnion_null/inter_tendsto) all admit
+    the countermodel `frac ≡ 1` (iUnion_null vacuous since no set has frac 0),
+    whose only reality-tie is `vdisc_le_tail` at the degenerate n.  The corpus
+    precedent (XG3.lean:31) derives `frac ∅ = 0` by `frac_mono` into the null
+    `discZero` via XF10's `discZeroNull` — which REQUIRES `2 ≤ n`, a hypothesis
+    this fenced statement does not carry.  Missing law, either of:
+    (i) a `frac_empty : frac ∅ = 0` XCtx field / derived lemma, or
+    (ii) `2 ≤ n` on this statement (then import XF10 and anchor on discZero), or
+    (iii) `Nonempty C.nsIdx` on this statement.
+    The consumers are UNAFFECTED: `blockDrain_of_drainIdent` takes the union
+    nullity as a hypothesis, and `escape_of_x3drain` (below) inlines the glue
+    anchored on its own null `InfTree` leg — both fully proved. -/
+    sorry
+  · obtain ⟨e, he⟩ : ∃ e : ℕ → C.nsIdx, Function.Surjective e :=
+      exists_surjective_nat _
+    have hunion : (⋃ i, C.nsFiber i) = ⋃ k, C.nsFiber (e k) :=
+      (he.iUnion_comp _).symm
+    rw [hunion]
+    exact C.frac_iUnion_null _ (fun k => hnull (e k))
 
 /-! ## KA4c — the seam theorems -/
 
@@ -113,7 +136,49 @@ theorem blockDrain_of_drainIdent {n p : ℕ} [Fact p.Prime]
     (hInf : C.frac (MovesX.InfTree C) = 0)
     (hns : C.frac (⋃ i, C.nsFiber i) = 0) :
     BlockDrain A := by
-  sorry
+  intro τ
+  -- The never-exit event is null: embed in `InfTree ∪ ⋃ nsFiber` and squeeze.
+  have hnull : C.frac (⋂ k, ID.stillIn τ k) = 0 := by
+    refine le_antisymm ?_ (C.frac_nonneg _)
+    calc C.frac (⋂ k, ID.stillIn τ k)
+        ≤ C.frac (MovesX.InfTree C ∪ ⋃ i, C.nsFiber i) :=
+          C.frac_mono _ _ (ID.neverExit_subset τ)
+      _ ≤ C.frac (MovesX.InfTree C) + C.frac (⋃ i, C.nsFiber i) :=
+          C.frac_union_le _ _
+      _ = 0 := by rw [hInf, hns]; ring
+  -- The ℚ-valued still-in content tends to 0 along the nested family.
+  have htend : Filter.Tendsto (fun k => C.frac (ID.stillIn τ k))
+      Filter.atTop (nhds (0 : ℚ)) := by
+    have h := ID.mass_tendsto τ
+    rwa [hnull] at h
+  -- Cast to ℝ along the continuous `Rat.cast`.
+  have htendR : Filter.Tendsto (fun k => (C.frac (ID.stillIn τ k) : ℝ))
+      Filter.atTop (nhds (0 : ℝ)) := by
+    have h := (Rat.continuous_coe_real.tendsto (0 : ℚ)).comp htend
+    simpa [Function.comp_def] using h
+  -- Divide by the positive entry content via `mass_eq`.
+  have hcpos : (0 : ℝ) < (C.frac (ID.stillIn τ 0) : ℝ) := by
+    exact_mod_cast ID.entry_pos τ
+  have hbm : Filter.Tendsto (fun k => blockMass A k τ) Filter.atTop
+      (nhds (0 : ℝ)) := by
+    have h := htendR.const_mul ((C.frac (ID.stillIn τ 0) : ℝ))⁻¹
+    rw [mul_zero] at h
+    refine h.congr (fun k => ?_)
+    rw [ID.mass_eq τ k, inv_mul_cancel_left₀ hcpos.ne']
+  -- blockMass is nonneg (mass_eq + frac_nonneg + entry_pos).
+  have hbmnn : ∀ k, (0 : ℝ) ≤ blockMass A k τ := by
+    intro k
+    have h0 : (0 : ℝ) ≤ (C.frac (ID.stillIn τ 0) : ℝ) * blockMass A k τ := by
+      rw [← ID.mass_eq τ k]
+      exact_mod_cast C.frac_nonneg _
+    nlinarith [hcpos, h0]
+  -- The ℝ-ciInf of a nonneg sequence tending to 0 is 0.
+  refine le_antisymm ?_ (le_ciInf hbmnn)
+  have hbdd : BddBelow (Set.range fun k => blockMass A k τ) := by
+    refine ⟨0, ?_⟩
+    rintro x ⟨k, rfl⟩
+    exact hbmnn k
+  exact ge_of_tendsto' hbm (fun k => ciInf_le hbdd k)
 
 /-- KA4c (THE note-shaped seam, the CL-4 consumer edge — "X.3-drain ⟹
 per-pool escape", MOVES 12180-12187): at any prime p and any pool matrix A
@@ -131,6 +196,29 @@ theorem escape_of_x3drain {n : ℕ} (X : MovesX.XFamily n) (p : ℕ)
     (hInf : (X.ctx p).frac (MovesX.InfTree (X.ctx p)) = 0)
     (hns : MovesX.NsNullP n X) :
     MovesS.EscapeE0 A := by
-  sorry
+  -- The ns-union is null: Option-reindex the countable union, anchoring the
+  -- `none` bucket on the NULL InfTree leg (dodges the `frac ∅` corner — the
+  -- Option index is nonempty regardless of `nsIdx`).
+  have hns' : (X.ctx p).frac (⋃ i, (X.ctx p).nsFiber i) = 0 := by
+    haveI : Countable (X.ctx p).nsIdx := (X.ctx p).nsCountable
+    obtain ⟨e, he⟩ :
+        ∃ e : ℕ → Option (X.ctx p).nsIdx, Function.Surjective e :=
+      exists_surjective_nat _
+    set g : Option (X.ctx p).nsIdx → Set (MovesX.MonicBox n p) :=
+      fun o => o.elim (MovesX.InfTree (X.ctx p)) (X.ctx p).nsFiber with hg
+    have hgnull : ∀ o, (X.ctx p).frac (g o) = 0 := by
+      intro o
+      cases o with
+      | none => simpa [hg] using hInf
+      | some i => simpa [hg] using hns p i
+    have hcover : (⋃ i, (X.ctx p).nsFiber i) ⊆ ⋃ k, g (e k) := by
+      rw [he.iUnion_comp g]
+      exact Set.iUnion_subset (fun i => Set.subset_iUnion g (some i))
+    refine le_antisymm ?_ ((X.ctx p).frac_nonneg _)
+    calc (X.ctx p).frac (⋃ i, (X.ctx p).nsFiber i)
+        ≤ (X.ctx p).frac (⋃ k, g (e k)) := (X.ctx p).frac_mono _ _ hcover
+      _ = 0 := (X.ctx p).frac_iUnion_null _ (fun k => hgnull (e k))
+  -- Drain, then KA4b.
+  exact escape_of_drain hnn hsub (blockDrain_of_drainIdent ID hInf hns')
 
 end LeanUrat.Kernels

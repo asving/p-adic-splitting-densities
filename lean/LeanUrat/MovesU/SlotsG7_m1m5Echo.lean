@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesU.DefsCarriers
+import LeanUrat.MovesSp.Defs
 
 /-!
 # IB-G7 — Slot_m1m5Echo FORMULATION SKELETON (bridge BP1, §3.8)
@@ -61,6 +62,34 @@ set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
+/-!
+H-PHASE RESOLUTIONS (2026-07-30, cluster BP1-P10-slots; FLAGGED for the Q5 Codex
+audit):
+* (h1) THE TIE CARRIER is an ∃-bound letter assignment on the carried roster:
+  `letterOf e τ o : MovesSp.Species` per outcome of `C.T` — the instance's
+  realized species letters, with `MovesSp.InCatalogue n` as the "no private menu"
+  clause (the [2a] catalogue is the inductive closure `SnRaw`, built).
+* (h2) "THE (e, δ)-READ THAT `clusterLaw` CONSUMES IS THE LETTER'S OWN STAGE
+  TUPLE — no re-keyed echo": the M1 cluster-law key at a branch member is the
+  member's own base-change factor `Member.δ` (CONVENTION DELTA-ABS, the same
+  convention `M1.clusterLaw`'s base-change identity `L_e^{(δ)}(q) = L_e^{(1)}(q^δ)`
+  reads).  The pin is stated as TWO-SIDED agreement of the letter's residual
+  partition first components (`Species.lam.map Prod.fst` — the residual (g)-reads)
+  with the outcome's own member δ-reads, plus the selection pin (h3).  The
+  MULTIPLICITY components of `lam` are deliberately NOT pinned (no built member
+  datum prices them; pinning them would invent content — the round-1 sin).
+  `M1.clusterLaw` itself is cited, not restated: its base-change/reciprocal
+  identities are definitional theorems (M1.lean:59/65), so restating them here
+  would add a vacuous conjunct; the slot pins the KEYS the seam consumes.
+* (h3) SELECTION = the designated continuing member's own read: the letter's
+  `sel` is populated exactly when the outcome continues, and any selected `(g, m)`
+  has `g` = a continuing member's own δ — never a re-keyed value.
+NON-VACUITY (IB-G11c's duty, follow-up file): FALSE at a degenerate instance
+whose roster carries a member with a base-change factor no degree-n catalogue
+letter realizes (e.g. δ beyond the catalogue's budget) — the letters miss the
+catalogue, exactly the file-header example.
+-/
+
 namespace LeanUrat.MovesU
 
 /-- IB-G7 — **`Slot_m1m5Echo`** (CL-14, the [2a] M1+M5 catalogue echo row; closed
@@ -70,6 +99,20 @@ keying (see the file header for the formulation target and raw material:
 notes/M1_bridge.md, `LeanUrat.M1`, `LeanUrat.MovesSp.InCatalogue`/SP8).  H-phase
 fills the displayed Prop; Codex audit before any consumer (Q5). -/
 def Slot_m1m5Echo (n : ℕ) (C : UCarriers n) : Prop :=
-  sorry
+  ∃ letterOf : ∀ (e : ℕ) (τ : C.T.State e), C.T.Out e τ → MovesSp.Species,
+    ∀ e, e ∈ Finset.Icc 1 n → ∀ (τ : C.T.State e) (o : C.T.Out e τ),
+      -- (h1) no private menu — the realized letter is in the [2a] catalogue:
+      MovesSp.InCatalogue n (letterOf e τ o) ∧
+      -- (h2) the letter's residual (g)-reads are the roster's own base-change
+      -- factors (two-sided agreement — the (e, δ)-keys the M1 seam consumes):
+      (∀ μ ∈ (C.T.odata e τ o).mem,
+        (μ.δ : ℕ) ∈ (letterOf e τ o).lam.map Prod.fst) ∧
+      (∀ g ∈ (letterOf e τ o).lam.map Prod.fst,
+        ∃ μ ∈ (C.T.odata e τ o).mem, (μ.δ : ℕ) = g) ∧
+      -- (h3) selection ↔ continuation, at a continuing member's own read:
+      ((letterOf e τ o).sel.isSome = true ↔ (C.T.odata e τ o).c ≠ 0) ∧
+      (∀ g m : ℕ, (letterOf e τ o).sel = some (g, m) →
+        ∃ μ ∈ (C.T.odata e τ o).mem,
+          μ.status.isRight = true ∧ (μ.δ : ℕ) = g)
 
 end LeanUrat.MovesU

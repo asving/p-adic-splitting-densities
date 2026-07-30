@@ -51,6 +51,17 @@ def MarkCompose {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
     (D.dom (.last m)).Mem h₁ ∧ (D.dom γ).Mem h₂ →
       (D.dom (.cons m γ)).Mem (Hpt.append h₁ h₂)
 
+/-- Private computation helper (the analogous `hpt_*` lemmas of
+MovesV/V4_naming.lean are `private` there, hence re-derived): the appended
+point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
+private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
+  intro h0
+  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
+      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
+  simp only [Hpt.append, Fin.append_left] at h1
+  exact one_ne_zero h1
+
 /-- KC2a — [CM-first GATE for KC2b; runs BEFORE the KC2b prover, REV 2 F5]
 the DomProj countermodel attempt.  SEALED PREDICTION (stated before the
 construction runs): `dom` is FREE DATA in `XHDd` (MovesV/Defs.lean:1060),
@@ -76,7 +87,15 @@ theorem domProj_countermodel :
       (h₁ : Hpt (S.dim m)) (h₂ : Hpt γ.D),
       (D.dom (.cons m γ)).Mem (Hpt.append h₁ h₂) ∧
         ¬ ((D.dom (.last m)).Mem h₁ ∧ (D.dom γ).Mem h₂) := by
-  sorry
+  -- The witness is `HmcToy` ITSELF at a deep tail (γ composite): the composite
+  -- domain `nzPart 3` contains the appended point (1,0,0) (first coordinate
+  -- nonzero) while the TAIL factor domain `nzPart 2` misses h₂ = 0.  Gate
+  -- outcome: witness CONSTRUCTIBLE ⟹ DomProj is a genuinely new named law (⚑).
+  refine ⟨1, HmcToy.S, HmcToy.TE, HmcToy.XD, HmcToy.c0, HmcToy.c0, HmcToy.mv,
+    .cons HmcToy.mv (.last HmcToy.mv), (fun _ => 1), (fun _ => 0), ?_, ?_⟩
+  · exact HmcToy.nzPart_mem (append_one_zero_ne_zero Nat.one_pos)
+  · rintro ⟨-, h2mem⟩
+    exact HmcToy.nzPart_not_mem (fun _ => rfl) h2mem
 
 /-- KC4 — [CM-first twin, the KC5 content guard] `markCompose_fails_at_toy`:
 ¬MarkCompose at the census-coupled toy `HmcToy` (V4_hmc.lean).  REQUIRED —
@@ -93,6 +112,10 @@ deps: KC3.  Sketch: decide-adjacent — instantiate at the zero heights;
 `Hpt.append` of zeros (simp [Hpt.append, Fin.append, Fin.addCases]) for the
 refutation. -/
 theorem markCompose_fails_at_toy : ¬ MarkCompose HmcToy.TE HmcToy.XD := by
-  sorry
+  intro hMC
+  have hmem := hMC HmcToy.mv (.last HmcToy.mv) (fun _ => 0) (fun _ => 0)
+    ⟨HmcToy.fullPart_mem 1 _, HmcToy.fullPart_mem 1 _⟩
+  refine HmcToy.nzPart_not_mem (fun k => ?_) hmem
+  simp [Hpt.append, Fin.append, Fin.addCases]
 
 end LeanUrat.Kernels

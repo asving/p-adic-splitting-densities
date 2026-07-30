@@ -46,14 +46,15 @@ each open residue is NAMED (never a monolithic sorry):
   on these two; the wire `bridgeTm := canTreeModelN p n N (canPolicy p)` is IB-D27
   (a MovesU edit, outside this new-modules-only round).
 
-E-PHASE STATUS: defs are real; unit lemmas carry `sorry` bodies keyed to the addendum's
-ids. SORRY CENSUS (13): `canDec_monic`/`canDec_natDegree`/`canDec_red` (IB-D22);
-`memCan_snoc_mono` (IB-D23); `canTreeModel.mem_single`/`.mem_snoc`/`.mem_realizable`
-(IB-D24a/b/c); `canTreeModel_child_some_iff`/`canTreeModel_child_root_iff`/
-`canTreeModel_child_none_not_root` (IB-D25b/D30); `canTreeModel_inBox` (IB-D25a, PROBE —
-blocked outcome re-adjudicates memCan's roster, Q9); `canPolicy`/`canPolicy_pin`
-(IB-D26, owner HC-1 — NOT dischargeable this campaign without the (S6b′) lower-stage
-realizer export).
+PROVER STATUS (BP1-P8, 2026-07-30): IB-D22/D23/D24/D25/D30 are PROVED — the E-phase
+sorries are discharged. IB-D23's design-time check held exactly as sketched (every
+`memCan` clause restricted or reused verbatim; no prefix-stability failure — R10 dead);
+the IB-D25a PROBE **derived** `InBox` from the run's root development (degree-1 root key
+per `HistoryCoherent`, top pattern digit `hpatTop` occupies development slot s0+wSide,
+occupied slots of a degree-1 development are ≤ natDegree = n) — Q9's roster stands, NO
+`InBox` conjunct needed. SORRY CENSUS (2): `canPolicy`/`canPolicy_pin` (IB-D26, owner
+HC-1 — NOT dischargeable this campaign without the (S6b′) lower-stage realizer export;
+R12 guard: no unit unfolds them, canonicity-demanding consumers bind `OffsetPPin pol`).
 -/
 
 set_option linter.style.longLine false
@@ -92,16 +93,31 @@ noncomputable def canDec (p : ℕ) [Fact p.Prime] (n N : ℕ)
     (x : Box p (n * N)) : Polynomial ℤ_[p] :=
   Polynomial.X ^ n + ∑ i ∈ Finset.range n, Polynomial.C (canCoeff p N x i) * Polynomial.X ^ i
 
+/-- The tail sum of `canDec` has degree `< n` (each term `C c · X^i` has degree `≤ i < n`;
+at n = 0 the sum is 0 of degree ⊥ < 0). Shared engine of the two IB-D22 degree laws. -/
+private theorem canDec_sum_degree_lt (p : ℕ) [Fact p.Prime] (n N : ℕ) (x : Box p (n * N)) :
+    (∑ i ∈ Finset.range n, Polynomial.C (canCoeff p N x i) * Polynomial.X ^ i).degree
+      < (n : WithBot ℕ) := by
+  refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
+  refine (Finset.sup_lt_iff (WithBot.bot_lt_coe n)).mpr fun i hi => ?_
+  refine lt_of_le_of_lt (Polynomial.degree_C_mul_X_pow_le _ _) ?_
+  exact WithBot.coe_lt_coe.mpr (Finset.mem_range.mp hi)
+
 /-- IB-D22 law 1: the decode is monic (leading slot is the bare X^n; the sum has
 degree < n — unconditional, n = 0 gives the monic constant 1). -/
 theorem canDec_monic (p : ℕ) [Fact p.Prime] (n N : ℕ) (x : Box p (n * N)) :
     (canDec p n N x).Monic := by
-  sorry
+  exact Polynomial.monic_X_pow_add (canDec_sum_degree_lt p n N x)
 
 /-- IB-D22 law 2: the decode has the box's degree. -/
 theorem canDec_natDegree (p : ℕ) [Fact p.Prime] (n N : ℕ) (x : Box p (n * N)) :
     (canDec p n N x).natDegree = n := by
-  sorry
+  have hd : (canDec p n N x).degree = (n : WithBot ℕ) := by
+    unfold canDec
+    rw [Polynomial.degree_add_eq_left_of_degree_lt
+      (by rw [Polynomial.degree_X_pow]; exact canDec_sum_degree_lt p n N x),
+      Polynomial.degree_X_pow]
+  exact Polynomial.natDegree_eq_of_degree_eq_some hd
 
 /-- IB-D22 law 3 — **the chart tie** (answers IB-D2 by construction): at 0 < N the
 mod-p reduction of the decode is the level-0 read at the slot chart — literally
@@ -113,7 +129,37 @@ theorem canDec_red (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N) (x : Box p 
     (canDec p n N x).map (PadicInt.toZMod) =
       Polynomial.X ^ n
         + ∑ b : Fin n, Polynomial.C (x (canChart n N hN b)) * Polynomial.X ^ (b : ℕ) := by
-  sorry
+  haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
+  unfold canDec
+  rw [Polynomial.map_add, Polynomial.map_pow, Polynomial.map_X]
+  congr 1
+  calc (∑ i ∈ Finset.range n,
+          Polynomial.C (canCoeff p N x i) * Polynomial.X ^ i).map PadicInt.toZMod
+      = ∑ i ∈ Finset.range n,
+          (Polynomial.C (canCoeff p N x i) * Polynomial.X ^ i).map PadicInt.toZMod := by
+        simp [Polynomial.map_sum]
+    _ = ∑ b : Fin n,
+          (Polynomial.C (canCoeff p N x (b : ℕ)) * Polynomial.X ^ (b : ℕ)).map PadicInt.toZMod :=
+        Finset.sum_range _
+    _ = ∑ b : Fin n, Polynomial.C (x (canChart n N hN b)) * Polynomial.X ^ (b : ℕ) := by
+        refine Finset.sum_congr rfl fun b _ => ?_
+        rw [Polynomial.map_mul, Polynomial.map_C, Polynomial.map_pow, Polynomial.map_X]
+        congr 2
+        -- the digit read: toZMod kills every p^k-term with k ≥ 1 and returns digit 0
+        unfold canCoeff
+        rw [map_sum, Finset.sum_eq_single 0
+          (fun k _ hk => by
+            rw [map_mul, map_pow, map_natCast, ZMod.natCast_self, zero_pow hk, mul_zero])
+          (fun h => absurd (Finset.mem_range.mpr hN) h)]
+        have hb : (b : ℕ) * N + 0 < n * N := by
+          have h1 : (b : ℕ) + 1 ≤ n := b.isLt
+          have h2 : ((b : ℕ) + 1) * N ≤ n * N := Nat.mul_le_mul_right N h1
+          have h3 : (b : ℕ) * N + N ≤ n * N := by rw [← Nat.succ_mul]; exact h2
+          omega
+        rw [dif_pos hb, pow_zero, mul_one, map_natCast]
+        have hidx : (⟨(b : ℕ) * N + 0, hb⟩ : Fin (n * N)) = canChart n N hN b := by
+          apply Fin.ext; simp [canChart]
+        rw [hidx, ZMod.natCast_val, ZMod.cast_id]
 
 /-! ## (†13) IB-D23 — T_can(f)'s membership semantics + the load-bearing prefix law -/
 
@@ -140,6 +186,100 @@ def rootHist (ν : Node p F) (h : ν.species = ReadSpecies.root) : History p F :
     subst hj0
     simpa using h⟩
 
+/-! ### IB-D23 snoc-restriction engine (private): every `memCan` clause is a
+∀-restriction or a verbatim witness-reuse under truncation. The three list-level
+facts (`snoc` length / getElem / strFrame) are stated once and consumed by the four
+clause-restriction lemmas below. -/
+
+private theorem snoc_length (H : History p F) (ν : Node p F)
+    (hν : ν.species ≠ ReadSpecies.root) :
+    (H.snoc ν hν).nodes.length = H.nodes.length + 1 := by
+  change (H.nodes ++ [ν]).length = H.nodes.length + 1
+  simp
+
+/-- Snoc-nodes restriction: below the truncation point the snoc reads the original nodes. -/
+private theorem snoc_getElem (H : History p F) (ν : Node p F)
+    (hν : ν.species ≠ ReadSpecies.root) {i : ℕ} (hi : i < H.nodes.length)
+    {hi' : i < (H.snoc ν hν).nodes.length} :
+    (H.snoc ν hν).nodes[i]'hi' = H.nodes[i]'hi := by
+  change (H.nodes ++ [ν])[i]'hi' = H.nodes[i]'hi
+  exact List.getElem_append_left hi
+
+/-- `strFrame` take-stability: the accumulated stretch below the truncation point is
+computed from the original nodes (`take i` never sees the appended node). -/
+private theorem snoc_strFrame (H : History p F) (ν : Node p F)
+    (hν : ν.species ≠ ReadSpecies.root) {i : ℕ} (hi : i ≤ H.nodes.length) :
+    (H.snoc ν hν).strFrame i = H.strFrame i := by
+  change (((H.nodes ++ [ν]).take i).map Node.e).prod = ((H.nodes.take i).map Node.e).prod
+  rw [List.take_append, Nat.sub_eq_zero_of_le hi, List.take_zero, List.append_nil]
+
+/-- `HistoryCoherent` restricts along the snoc-peel: clauses 1–3 are per-node
+(`strFrame` take-stable), clause 4 is per-adjacent-pair — all indices stay below the
+truncation point. -/
+private theorem historyCoherent_of_snoc {H : History p F} {ν : Node p F}
+    {hν : ν.species ≠ ReadSpecies.root}
+    (hc : HistoryCoherent (H.snoc ν hν)) : HistoryCoherent H := by
+  obtain ⟨h1, h2, h3, h4⟩ := hc
+  refine ⟨fun hj => ?_, fun i hi => ?_, fun i hi => ?_, fun i hi => ?_⟩
+  · have hj' : 0 < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := h1 hj'
+    rwa [snoc_getElem H ν hν hj] at this
+  · have hi' : i < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := h2 i hi'
+    rwa [snoc_getElem H ν hν hi, snoc_strFrame H ν hν hi.le] at this
+  · have hi' : i < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := h3 i hi'
+    rwa [snoc_getElem H ν hν hi, snoc_strFrame H ν hν hi.le] at this
+  · have hi' : i + 1 < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := h4 i hi'
+    rwa [snoc_getElem H ν hν (show i < H.nodes.length by omega),
+      snoc_getElem H ν hν hi] at this
+
+/-- `Realizable` restricts (per-adjacent-pair ∀). -/
+private theorem realizable_of_snoc {H : History p F} {ν : Node p F}
+    {hν : ν.species ≠ ReadSpecies.root}
+    (hr : Realizable (H.snoc ν hν)) : Realizable H := by
+  intro i hi
+  have hi' : i + 1 < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+  have := hr i hi'
+  rwa [snoc_getElem H ν hν (show i < H.nodes.length by omega),
+    snoc_getElem H ν hν hi] at this
+
+/-- `IsCanonPres` restricts (both conjuncts are per-node ∀s). -/
+private theorem isCanonPres_of_snoc {pol : CanonPolicy p F} {H : History p F}
+    {ν : Node p F} {hν : ν.species ≠ ReadSpecies.root}
+    (hp : pol.IsCanonPres (H.snoc ν hν)) : pol.IsCanonPres H := by
+  obtain ⟨hlift, hroot⟩ := hp
+  constructor
+  · intro r hr
+    have hr' : r < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := hlift r hr'
+    rwa [snoc_getElem H ν hν hr] at this
+  · intro r hr
+    have hr' : r < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := hroot r hr'
+    rwa [snoc_getElem H ν hν hr] at this
+
+/-- `ReadsOf` restricts: Monic/natDegree are H-free; `HistoryCoherent` restricts; the
+per-read development witnesses (B, Nd, Φnext) are REUSED VERBATIM — truncation only
+vacates the `∀ hi1 : i+1 < length` Φnext guard at the new last read. -/
+private theorem readsOf_of_snoc {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
+    {ν : Node p F} {hν : ν.species ≠ ReadSpecies.root}
+    (hro : LeanUrat.MovesJ.ReadsOf p F n f (H.snoc ν hν)) :
+    LeanUrat.MovesJ.ReadsOf p F n f H := by
+  obtain ⟨hmon, hdeg, hcoh, hrun⟩ := hro
+  refine ⟨hmon, hdeg, historyCoherent_of_snoc hcoh, ?_⟩
+  intro i hi
+  have hi' : i < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+  obtain ⟨B, Nd, Φnext, hdev, hkey, hside⟩ := hrun i hi'
+  refine ⟨B, Nd, Φnext, ?_, ?_, ?_⟩
+  · rwa [snoc_getElem H ν hν hi] at hdev
+  · intro hi1
+    have hi1' : i + 1 < (H.snoc ν hν).nodes.length := by rw [snoc_length]; omega
+    have := hkey hi1'
+    rwa [snoc_getElem H ν hν hi1] at this
+  · rwa [snoc_getElem H ν hν hi] at hside
+
 /-- **IB-D23 — the load-bearing prefix law** feeding `mem_snoc`: membership descends
 along the snoc-peel. Every `memCan` clause is a ∀-restriction or a witness-reuse under
 truncation: `Realizable`/`IsCanonPres` quantify per node/adjacent pair
@@ -154,7 +294,8 @@ theorem memCan_snoc_mono {n : ℕ} {pol : CanonPolicy p F}
     {dec : Box p m → Polynomial ℤ_[p]} (H : History p F) (ν : Node p F)
     (hν : ν.species ≠ ReadSpecies.root) (x : Box p m) :
     memCan n pol dec (H.snoc ν hν) x → memCan n pol dec H x := by
-  sorry
+  rintro ⟨hro, hreal, hpres⟩
+  exact ⟨readsOf_of_snoc hro, realizable_of_snoc hreal, isCanonPres_of_snoc hpres⟩
 
 end
 
@@ -187,13 +328,26 @@ noncomputable def canTreeModel (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [F
   root_mem := fun _ => trivial
   mem_single := by
     -- IB-D24a: `⟨[ν], h1.1, h1.2⟩ = rootHist ν (h1.2-at-0)` by proof irrelevance.
-    sorry
+    intro ν h1 x
+    have hroot : ν.species = ReadSpecies.root := by
+      simpa using (h1.2 0 (by simp)).mpr rfl
+    constructor
+    · intro hm
+      exact ⟨hroot, hm⟩
+    · rintro ⟨h, hm⟩
+      exact hm
   mem_snoc := by
     -- IB-D24b: backward = proof-irrelevant projection; forward = `memCan_snoc_mono`.
-    sorry
+    intro H ν hν x
+    constructor
+    · intro hm
+      exact ⟨memCan_snoc_mono H ν hν x hm, hν, hm⟩
+    · rintro ⟨-, hν', hm⟩
+      exact hm
   mem_realizable := by
     -- IB-D24c: `⟨hm.1.2.2.1, hm.2.1, hm.2.2⟩` — HistoryCoherent off ReadsOf.
-    sorry
+    rintro H x ⟨hro, hreal, hpres⟩
+    exact ⟨hro.2.2.1, hreal, hpres⟩
 
 /-- The canonical model at the working level m = n·N with the canonical decode — the
 shape `bridgeTm` wires to (IB-D27: `bridgeTm p n N := canTreeModelN p n N (canPolicy p)`). -/
@@ -216,7 +370,11 @@ theorem canTreeModel_child_some_iff (H : History p F) (ν : Node p F)
     (hν : ν.species ≠ ReadSpecies.root) (x : Box p m) :
     (canTreeModel p F n N m pol dec).child (some H) ν x ↔
       memCan n pol dec (H.snoc ν hν) x := by
-  sorry
+  constructor
+  · rintro ⟨hν', hm⟩
+    exact hm
+  · intro hm
+    exact ⟨hν, hm⟩
 
 /-- IB-D25b — root-child display: a root child is a realized one-node run at a
 root-species node. -/
@@ -224,14 +382,69 @@ theorem canTreeModel_child_root_iff (ν : Node p F)
     (h : ν.species = ReadSpecies.root) (x : Box p m) :
     (canTreeModel p F n N m pol dec).child none ν x ↔
       memCan n pol dec (rootHist ν h) x := by
-  sorry
+  constructor
+  · rintro ⟨h', hm⟩
+    exact hm
+  · intro hm
+    exact ⟨h, hm⟩
 
 /-- IB-D25b — non-root nodes are never root children (matches `MovesT.ChildRoot`'s
 `none` leg). -/
 theorem canTreeModel_child_none_not_root (ν : Node p F)
     (hν : ν.species ≠ ReadSpecies.root) (x : Box p m) :
     ¬ (canTreeModel p F n N m pol dec).child none ν x := by
-  sorry
+  rintro ⟨h, -⟩
+  exact hν h
+
+/-- Private degree engine for the IB-D25a probe: in a degree-1 key every nonzero
+development slot sits at index ≤ the developed polynomial's natDegree (all slot
+coefficients are constants, so the nonzero terms have pairwise-distinct degrees =
+their indices; the maximal one carries the degree). -/
+private theorem slot_le_natDegree_of_isDevelopment {Φ f : Polynomial ℤ_[p]}
+    {B : ℕ → Polynomial ℤ_[p]} {Nd : ℕ} (hΦ : Φ.natDegree = 1)
+    (hdev : IsDevelopment Φ f B Nd) {j : ℕ} (hB : B j ≠ 0) : j ≤ f.natDegree := by
+  classical
+  obtain ⟨hdegB, hzero, hsum⟩ := hdev
+  have hΦne : Φ ≠ 0 := fun h => by simp [h] at hΦ
+  have hΦdeg : Φ.degree = ((1 : ℕ) : WithBot ℕ) := by
+    rw [Polynomial.degree_eq_natDegree hΦne, hΦ]
+  set S : Finset ℕ := (Finset.range Nd).filter (fun i => B i ≠ 0) with hSdef
+  have hjS : j ∈ S := by
+    refine Finset.mem_filter.mpr ⟨Finset.mem_range.mpr ?_, hB⟩
+    by_contra hge
+    exact hB (hzero j (le_of_not_gt hge))
+  have hSne : S.Nonempty := ⟨j, hjS⟩
+  set J := S.max' hSne with hJdef
+  have hJS : J ∈ S := S.max'_mem hSne
+  -- each carried term has degree exactly its slot index
+  have hterm : ∀ i ∈ S, (B i * Φ ^ i).degree = (i : WithBot ℕ) := by
+    intro i hi
+    have hBi : B i ≠ 0 := (Finset.mem_filter.mp hi).2
+    have hBn0 : (B i).natDegree = 0 := by
+      have := (Polynomial.natDegree_lt_iff_degree_lt hBi).mpr (hΦdeg ▸ hdegB i)
+      omega
+    have htne : B i * Φ ^ i ≠ 0 := mul_ne_zero hBi (pow_ne_zero _ hΦne)
+    have hnat : (B i * Φ ^ i).natDegree = i := by
+      rw [Polynomial.natDegree_mul hBi (pow_ne_zero _ hΦne), hBn0,
+        Polynomial.natDegree_pow, hΦ, zero_add, mul_one]
+    rw [Polynomial.degree_eq_natDegree htne, hnat]
+  -- f is the S-restricted sum, whose degree is the maximal slot index
+  have hfS : f = ∑ i ∈ S, B i * Φ ^ i := by
+    rw [hsum, hSdef]
+    exact (Finset.sum_filter_of_ne fun i _ hne => left_ne_zero_of_mul hne).symm
+  have hrest : (∑ i ∈ S.erase J, B i * Φ ^ i).degree < (B J * Φ ^ J).degree := by
+    rw [hterm J hJS]
+    refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
+    refine (Finset.sup_lt_iff (WithBot.bot_lt_coe J)).mpr fun i hi => ?_
+    rw [hterm i (Finset.mem_of_mem_erase hi)]
+    exact WithBot.coe_lt_coe.mpr (lt_of_le_of_ne (S.le_max' i (Finset.mem_of_mem_erase hi))
+      (Finset.ne_of_mem_erase hi))
+  have hdegf : f.degree = (J : WithBot ℕ) := by
+    rw [hfS, ← Finset.add_sum_erase S _ hJS,
+      Polynomial.degree_add_eq_left_of_degree_lt hrest, hterm J hJS]
+  have hnatf : f.natDegree = J := Polynomial.natDegree_eq_of_degree_eq_some hdegf
+  rw [hnatf]
+  exact S.le_max' j hjS
 
 /-- IB-D25a — **PROBE** (countermodel-first; Q9's evidence): realized chains are
 in-box — `MovesT.InBoxOfMem`'s statement at the canonical model, attempted from the
@@ -240,7 +453,23 @@ BLOCKED outcome re-adjudicates `memCan`'s roster (add the `InBox` conjunct) rath
 than weakening this statement. -/
 theorem canTreeModel_inBox (H : History p F) (x : Box p m) :
     (canTreeModel p F n N m pol dec).mem (some H) x → InBox n H := by
-  sorry
+  rintro ⟨⟨hmon, hdeg, hcoh, hrun⟩, -, -⟩
+  intro hj
+  obtain ⟨B, Nd, Φnext, hdev, hkey, hside⟩ := hrun 0 hj
+  -- the root key is degree-1 (HistoryCoherent's root-frame clause)
+  have hΦ1 : ((H.nodes[0]'hj).σ.Φ).natDegree = 1 := hcoh.1 hj
+  -- the top pattern digit is nonzero, so the development slot s0 + wSide is occupied
+  have htop := hside.2.1 ((H.nodes[0]'hj).wSide / (H.nodes[0]'hj).e) (le_refl _)
+    (H.nodes[0]'hj).hpatTop
+  have hslot : (H.nodes[0]'hj).s0
+        + (H.nodes[0]'hj).e * ((H.nodes[0]'hj).wSide / (H.nodes[0]'hj).e)
+      = (H.nodes[0]'hj).s0 + (H.nodes[0]'hj).wSide := by
+    rw [Nat.mul_div_cancel' (H.nodes[0]'hj).hEdvd]
+  have hBne : B ((H.nodes[0]'hj).s0 + (H.nodes[0]'hj).wSide) ≠ 0 := by
+    rw [← hslot]; exact htop.1
+  -- an occupied slot of a degree-1 development is bounded by the lift's degree n
+  have := slot_le_natDegree_of_isDevelopment hΦ1 hdev hBne
+  rwa [hdeg] at this
 
 end
 

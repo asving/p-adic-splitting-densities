@@ -33,9 +33,9 @@ as-built §S corpus — the E-phase half of the attempt; the prover re-runs it):
 * `C.MS.boxpos`, `Sigmas`/`sig_exact`, `KsubM1C1T`/`MenuWFT`: box points /
   verdict multisets / τ-quantified laws — no State-existence content.
 EXPECTED OUTCOME therefore: BLOCKED — no field of the carried pack forces
-`Nonempty (State e)`.  The `sorry` below is the DERIVATION ATTEMPT the prover
-owes (bounded repair, ≤ 3 routes beyond the audit), NOT an assertion of
-derivability.  ON BLOCKED: the exact missing statement is `HStateNe n C`,
+`Nonempty (State e)`.  The E-phase skeleton's `sorry` was the DERIVATION
+ATTEMPT the prover owed (bounded repair, ≤ 3 routes beyond the audit), NOT an
+assertion of derivability.  ON BLOCKED: the exact missing statement is `HStateNe n C`,
 already ratified (Q3) as the `BridgePre.hStateNe` named premise (warrant: the
 note's block table always contains the entrance state of block e — §S-RESUM's
 roster is per-block nonempty by construction; MOVES ledger rows CL-5/CL-1
@@ -43,6 +43,33 @@ quantify over it); the prover then reports BLOCKED, this theorem is REMOVED in
 the same commit that lands `BridgePre` (IB-F1) consuming the premise, and the
 outcome goes to the campaign ledger.  The prover must NOT weaken the statement
 or True-ify (statement fence).
+
+DERIVATION ATTEMPT EXECUTED (prover, 2026-07-30) — OUTCOME: BLOCKED.
+Three routes probed beyond the recorded audit, all closed by reading the
+as-built sources (never memory):
+* ROUTE 1 — `C.chain.pools_e0` → `PoolHyp` (MovesS/Defs.lean:533): full field
+  read.  `Act : Finset (T.State e)` with the iff `act_spec` — over an EMPTY
+  `State e` the choice `Act = ∅` satisfies all seven fields: `act_spec`/
+  `entry_ok`/`A_eval`/`inactive_vanish` quantify over members of `Act` or
+  `State e` (vacuous), and `e0 : EscapeE0 A` (Defs.lean:524) holds at the
+  empty-index matrix (`nonneg` vacuous; `escape` in the singleton function
+  space `Act → ℚ`).  `Nonempty (PoolHyp …)` therefore forces NO state.
+* ROUTE 2 — `C.chain.B : RS1Bundle` (Interfaces.lean:48): `βmeas`(via
+  `RS1Meas`)/`xrb`/`recursion_meas`/`rexact` are all τ-INDEXED families or
+  laws over a GIVEN τ; `nsNull` is a bare instance-supplied `Prop` (its own
+  disclosure docstring).  No existential in `State e`.
+* ROUTE 3 — `UCarriers.cl1` = `chain.legs_reg` at a base prime →
+  `MovesS.RegP` (Defs.lean:618): definitionally `∀ e he, ∀ δ ∈
+  consumedDeltas, Nonempty (PoolHyp …)` — reduces verbatim to ROUTE 1.
+`LedgerIV` re-verified en passant (every field `xhd_sum` … `init_agg`
+quantifies over a given τ).  Semantic reason the block is structural: a
+`TableShape` with `State e := Empty` everywhere satisfies every carried
+pack law vacuously, so `HStateNe` is not a consequence of `UCarriers` —
+it is genuine per-instance content, exactly the Q3-ratified
+`BridgePre.hStateNe` premise (landed, BridgeKernels.lean:127-129).
+DISPOSITION EXECUTED: `bridge_hStateNe_derivation` DELETED per the recorded
+on-blocked instruction; `HStateNe` (the shared sentence) remains — consumers:
+`BridgePre.hStateNe` (IB-F1), `bridgeRegData`'s `hne` binder (IB-B8).
 -/
 
 set_option linter.style.longLine false
@@ -58,11 +85,10 @@ namespace LeanUrat.MovesU
 def HStateNe (n : ℕ) (C : UCarriers n) : Prop :=
   ∀ e ∈ Finset.Icc 1 n, Nonempty (C.T.State e)
 
-/-- IB-B2 — THE DERIVATION ATTEMPT (expected BLOCKED; see the file header for
-    the executed interface audit and the on-blocked disposition).  If any chain
-    route closes this, `BridgePre` drops the `hStateNe` row and IB-F1 re-plans;
-    if not, DELETE this declaration when IB-F1 lands the ratified premise. -/
-theorem bridge_hStateNe_derivation {n : ℕ} (C : UCarriers n) : HStateNe n C :=
-  sorry
+-- IB-B2 outcome record: `bridge_hStateNe_derivation` (the derivation attempt)
+-- was DELETED per the recorded on-blocked disposition — see the file header's
+-- DERIVATION ATTEMPT EXECUTED record for the three probed routes and the
+-- structural countermodel sketch.  The ratified premise `BridgePre.hStateNe`
+-- (BridgeKernels.lean) carries this sentence from here on.
 
 end LeanUrat.MovesU

@@ -52,6 +52,34 @@ set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
+/-!
+H-PHASE RESOLUTIONS (2026-07-30, cluster BP1-P10-slots; against SQ.0(c2)/(d),
+MOVES_2026-07-24.md 12947–12961, and the D(n) duty 12962–12964; FLAGGED for the
+Q5 Codex audit):
+* (h1) THE KEY-WEIGHT CARRIER is ∃-bound per stratum branch (`w : positions → ℚ`)
+  with the note's three displayed duties as its LAWS: (lattice) `w·Dden ∈ ℤ`;
+  (budget keying) `0 ≤ w ≤ w*(N)` on threshold-≤-N branches — the SAME weights
+  `K7.zero_gain`'s budget `L·D(n)·w*(N)` prices; (climb, = SQ.0(c2)) each
+  zero-gain move strictly increases ITS OWN track's weight by ≥ 1/D(n) (D.10's
+  strict climb).  The climb needs a track handle, so a track labelling rides in
+  the ∃ with the zero-gain moves confined to ≤ K7.L tracks — the (c1)-count face
+  duplicated BY NECESSITY ((c1)/(c2) are one display; the opening-recognition
+  side lives at `Slot_trackRule`, the CL-7a/CL-7b split).  Jointly these force
+  d_zero ≤ L·(D(n)·w*(N) + 1) — the zero_gain aggregate's mechanism, per track.
+* (h2) (denominator) `K7.Dden ∣ n!` — the note's "candidate D(n) | n!, underived"
+  duty, stated at K7's own p-uniform constant.
+* (h3) (strict increment) THE PREFIX LEDGER: SQ.0(d)'s A(η) is ∃-bound as
+  `A : Fin (len+1) → ℕ` with A(root) = 0, monotone along the history, STRICTLY
+  increasing at every genuine (T1/T2-increment, `Pop.incT12`) node, and
+  A(full history) ≤ n·N — the FLAGGED-OPEN sub-claim "every genuine node strictly
+  increments the ledger" plus Theorem C's forcing A ≤ nN.  This ∃ IMPLIES the
+  typed aggregate `K7.genuine_bound` (#genuine ≤ A(end) ≤ n·N), never
+  contradicts it — the header's consistency duty.
+NON-VACUITY (IB-G11b's duty): FALSE at any degenerate K7 with `Dden ∤ n!`
+(conjunct (h2); such K7 exist — the aggregate proof fields are vacuously
+dischargeable at an empty-strata instance with junk constants).
+-/
+
 namespace LeanUrat.MovesU
 
 /-- IB-G6 — **`Slot_dnLattice`** (CL-7b lattice + strict increment, owner [4]):
@@ -61,6 +89,41 @@ newly-designed key-weight carrier bound inside the Prop (see the file header).
 H-phase fills the displayed Prop; Codex audit before any consumer (Q5). -/
 def Slot_dnLattice (n : ℕ) {C : UCarriers n} (KC : KernelCarriers n C)
     (K7 : Cl7Kernel n KC) : Prop :=
-  sorry
+  -- (h2) the D(n) denominator duty:
+  K7.Dden ∣ Nat.factorial n ∧
+  -- per stratum branch at decision threshold ≤ N:
+  ∀ (p : ℕ) [Fact p.Prime] (f : MovesX.MonicBox n p)
+    (b : (KC.XF.ctx p).Branch f) (N : ℕ),
+    f ∉ MovesX.discZero n p → (KC.XF.ctx p).threshold b ≤ N →
+    ∃ (w : Fin ((KC.XF.ctx p).hist b).length → ℚ)       -- key weights (h1)
+      (trk : Fin ((KC.XF.ctx p).hist b).length → ℕ)     -- track labels (h1)
+      (A : Fin ((KC.XF.ctx p).hist b).length.succ → ℕ), -- prefix ledger (h3)
+      -- (h1)(lattice) every key weight in (1/Dden)·ℤ:
+      (∀ i, ∃ z : ℤ, w i * (K7.Dden : ℚ) = (z : ℚ)) ∧
+      -- (h1)(budget keying) the SAME weights w*(N) prices:
+      (∀ i, 0 ≤ w i ∧ w i ≤ (K7.wstar N : ℚ)) ∧
+      -- (h1)(climb, SQ.0(c2)) zero-gain moves strictly climb their own track
+      -- by ≥ 1/D(n):
+      (∀ i j : Fin ((KC.XF.ctx p).hist b).length, i < j → trk i = trk j →
+        ((((KC.XF.ctx p).hist b).get i).continuing = true ∧
+          MovesX.popOf? (((KC.XF.ctx p).hist b).get i)
+            ≠ some MovesX.Pop.incT12) →
+        ((((KC.XF.ctx p).hist b).get j).continuing = true ∧
+          MovesX.popOf? (((KC.XF.ctx p).hist b).get j)
+            ≠ some MovesX.Pop.incT12) →
+        w i + 1 / (K7.Dden : ℚ) ≤ w j) ∧
+      -- (h1)(c1-count face) the zero-gain moves ride ≤ L(n) tracks:
+      {t : ℕ | ∃ i : Fin ((KC.XF.ctx p).hist b).length,
+          ((((KC.XF.ctx p).hist b).get i).continuing = true ∧
+            MovesX.popOf? (((KC.XF.ctx p).hist b).get i)
+              ≠ some MovesX.Pop.incT12) ∧ trk i = t}.ncard ≤ K7.L ∧
+      -- (h3)(strict increment) the prefix ledger: root 0, monotone, strict at
+      -- every genuine node, and bounded by SQ.0(d)'s n·N:
+      A 0 = 0 ∧
+      (∀ i : Fin ((KC.XF.ctx p).hist b).length, A i.castSucc ≤ A i.succ) ∧
+      (∀ i : Fin ((KC.XF.ctx p).hist b).length,
+        MovesX.popOf? (((KC.XF.ctx p).hist b).get i)
+          = some MovesX.Pop.incT12 → A i.castSucc < A i.succ) ∧
+      A (Fin.last _) ≤ n * N
 
 end LeanUrat.MovesU

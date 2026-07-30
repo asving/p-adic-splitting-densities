@@ -62,8 +62,27 @@ open Polynomial
     0 < N, p prime) ring `ZMod (p^N)`. -/
 theorem boxToPoly_mem_monicBox (p n N : ℕ) [Fact p.Prime] (hN : 0 < N)
     (f : Box p n N) :
-    (Box.toPoly f).Monic ∧ (Box.toPoly f).natDegree = n :=
-  sorry
+    (Box.toPoly f).Monic ∧ (Box.toPoly f).natDegree = n := by
+  haveI : Fact (1 < p ^ N) := ⟨Nat.one_lt_pow hN.ne' (Fact.out : p.Prime).one_lt⟩
+  have hdlt : (∑ i : Fin n, C (f i) * X ^ (i : ℕ)).degree
+      < (X ^ n : (ZMod (p ^ N))[X]).degree := by
+    rw [degree_X_pow]
+    refine lt_of_le_of_lt (degree_sum_le _ _) ?_
+    refine (Finset.sup_lt_iff (WithBot.bot_lt_coe n)).mpr fun i _ => ?_
+    exact lt_of_le_of_lt (degree_C_mul_X_pow_le _ _) (WithBot.coe_lt_coe.mpr i.isLt)
+  constructor
+  · exact (monic_X_pow n).add_of_left hdlt
+  · exact natDegree_eq_of_degree_eq_some
+      ((degree_add_eq_left_of_degree_lt hdlt).trans (degree_X_pow n))
+
+/-- Proof-layer helper for the two inverse laws (guard-free): below the head,
+    the polynomial read's coefficients are the box coordinates —
+    `(Box.toPoly f).coeff i = f i` for `i < n`. -/
+theorem boxToPoly_coeff_lt (p n N : ℕ) (f : Box p n N) (i : Fin n) :
+    (Box.toPoly f).coeff (i : ℕ) = f i := by
+  simp only [Box.toPoly, coeff_add, coeff_X_pow, if_neg (Nat.ne_of_lt i.isLt),
+    finsetSum_coeff, coeff_C_mul, mul_ite, mul_one, mul_zero, zero_add,
+    Fin.val_eq_val, Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 /-- IB-A9b — (†2) THE LEVEL-N DICTIONARY: the coefficient box IS the monic
     polynomial box, `f ↦ Box.toPoly f` forward, coefficient read backward.
@@ -72,7 +91,22 @@ noncomputable def boxPolyEquiv (p n N : ℕ) [Fact p.Prime] (hN : 0 < N) :
     Box p n N ≃ OM.QuotientBox.monicBox p N n where
   toFun f := ⟨Box.toPoly f, boxToPoly_mem_monicBox p n N hN f⟩
   invFun g := fun i => g.1.coeff (i : ℕ)
-  left_inv := sorry
-  right_inv := sorry
+  left_inv := fun f => funext fun i => boxToPoly_coeff_lt p n N f i
+  right_inv := fun g => Subtype.ext (by
+    change Box.toPoly (fun i : Fin n => g.1.coeff (i : ℕ)) = g.1
+    have hmb := boxToPoly_mem_monicBox p n N hN (fun i : Fin n => g.1.coeff (i : ℕ))
+    ext k
+    rcases lt_trichotomy k n with hk | hk | hk
+    · exact boxToPoly_coeff_lt p n N _ ⟨k, hk⟩
+    · rw [hk]
+      have h1 : (Box.toPoly fun i : Fin n => g.1.coeff (i : ℕ)).coeff n = 1 := by
+        have h := hmb.1.coeff_natDegree
+        rwa [hmb.2] at h
+      have h2 : g.1.coeff n = 1 := by
+        have h := g.2.1.coeff_natDegree
+        rwa [g.2.2] at h
+      rw [h1, h2]
+    · rw [coeff_eq_zero_of_natDegree_lt (by rw [hmb.2]; exact hk),
+          coeff_eq_zero_of_natDegree_lt (by rw [g.2.2]; exact hk)])
 
 end LeanUrat.MovesU

@@ -5,6 +5,8 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesU.BridgeB8_regData
+import LeanUrat.MovesS.EvalDet
+import LeanUrat.MovesS.E0DetNeZero
 
 /-!
 # BridgeRosterPins — the roster pins + the RegP transport (bridge campaign BP1, cluster BP1-c5)
@@ -142,8 +144,22 @@ theorem bridge_Jcell_pin {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
          (Finset.univ : Finset (C.T.State b.1)).biUnion fun τ =>
            (MovesS.splitOuts C.T b.1 τ).biUnion fun o =>
              (C.MS.cells b.1 τ o).image fun c =>
-               (C.RB.jPCell b.1 τ c).val) :=
-  sorry
+               (C.RB.jPCell b.1 τ c).val) := by
+  classical
+  letI := (bridgeRegData hn C hne p).instJ b
+  ext x
+  constructor
+  · intro hx
+    obtain ⟨j, -, rfl⟩ := Finset.mem_image.mp hx
+    obtain ⟨τ, o, c⟩ := j
+    refine Finset.mem_biUnion.mpr ⟨τ, Finset.mem_univ _, ?_⟩
+    refine Finset.mem_biUnion.mpr ⟨o.1, o.2, ?_⟩
+    exact Finset.mem_image_of_mem _ c.2
+  · intro hx
+    obtain ⟨τ, -, hx⟩ := Finset.mem_biUnion.mp hx
+    obtain ⟨o, ho, hx⟩ := Finset.mem_biUnion.mp hx
+    obtain ⟨c, hc, rfl⟩ := Finset.mem_image.mp hx
+    exact Finset.mem_image.mpr ⟨⟨τ, ⟨o, ho⟩, ⟨c, hc⟩⟩, Finset.mem_univ _, rfl⟩
 
 /-! ## IB-B12 — the W-image pin at the roster (†4c) -/
 
@@ -161,8 +177,16 @@ theorem bridge_W_pin {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
      letI := Classical.decEq (RatFunc ℚ)
      Finset.univ.image (bridgeRegData hn C hne p).Wcoef)
       = (letI := Classical.decEq (RatFunc ℚ)
-         C.Fam.Sh.image fun Ŝ => (C.chain.WshP Ŝ).val) :=
-  sorry
+         C.Fam.Sh.image fun Ŝ => (C.chain.WshP Ŝ).val) := by
+  classical
+  letI := (bridgeRegData hn C hne p).instW
+  ext x
+  simp only [Finset.mem_image, Finset.mem_univ, true_and]
+  constructor
+  · rintro ⟨Ŝ, rfl⟩
+    exact ⟨Ŝ.1, Ŝ.2, rfl⟩
+  · rintro ⟨Ŝ, hŜ, rfl⟩
+    exact ⟨⟨Ŝ, hŜ⟩, rfl⟩
 
 /-! ## IB-B13 — the dite-field pins at the roster (†4c tail) -/
 
@@ -262,8 +286,13 @@ theorem bridgeRegData_pool_mem {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
     `Finset.mem_union` disjunct + `mem_image` of `(i₀, i₀)`. -/
 theorem bridgeRegData_entryList_nonempty {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
     (hne : HStateNe n C) (p : ℕ) (b : {e : ℕ // e ∈ Finset.Icc 1 n}) :
-    ((bridgeRegData hn C hne p).entryList b).Nonempty :=
-  sorry
+    ((bridgeRegData hn C hne p).entryList b).Nonempty := by
+  obtain ⟨i₀⟩ := hne b.1 b.2
+  refine ⟨(bridgeRegData hn C hne p).K b i₀ i₀, ?_⟩
+  unfold RegData.entryList
+  simp only [Finset.mem_union, Finset.mem_image, Finset.mem_biUnion, Finset.mem_univ,
+    true_and]
+  exact Or.inl (Or.inl (Or.inl (Or.inl (Or.inl (Or.inl ⟨(i₀, i₀), rfl⟩)))))
 
 /-! ## IB-B15a — (r2)-transport on the active locus (†4e) -/
 
@@ -311,8 +340,74 @@ theorem bridge_r1_on_activeLocus {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
     (hne : HStateNe n C) (p : ℕ) (hp : p.Prime) :
     ∀ q₀ ∈ bridgeActiveLocus hn C hne p,
       ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
-        RegPAtR1 (bridgeRegData hn C hne p) q₀ b :=
-  sorry
+        RegPAtR1 (bridgeRegData hn C hne p) q₀ b := by
+  classical
+  intro q₀ hq₀ b
+  -- Unpack the locus: pool membership + all-activity of the ℚ-cast.
+  obtain ⟨hpool, hact⟩ := Finset.mem_filter.mp hq₀
+  -- q₀ = p ^ δ with δ the ℕ-image of a consumed d ∈ consumedDeltas.
+  have hpool' : q₀ ∈ ((MovesS.consumedDeltas C.T C.Fam).image
+      (fun d : ℕ+ => (d : ℕ))).image (p ^ ·) := hpool
+  obtain ⟨δ, hδmem, rfl⟩ := Finset.mem_image.mp hpool'
+  obtain ⟨d, hd, rfl⟩ := Finset.mem_image.mp hδmem
+  -- The E0/ACT package at the consumed pool (cl1 = legs_reg at the base prime).
+  obtain ⟨P⟩ := C.cl1 hp b.1 b.2 d hd
+  have hcast : ((p ^ (d : ℕ) : ℕ) : ℚ) = (p : ℚ) ^ (d : ℕ) := by push_cast; ring
+  -- All states of the block are active at the pool value.
+  have hallτ : ∀ τ : C.T.State b.1, C.MS.activeState ((p : ℚ) ^ (d : ℕ)) b.1 τ := by
+    rw [hcast] at hact
+    simp only [MovesS.allActivePools, Set.mem_setOf_eq] at hact
+    exact fun τ => hact.2 b.1 b.2 τ
+  have hAct : ∀ τ : C.T.State b.1, τ ∈ P.Act := fun τ => (P.act_spec τ).mpr (hallτ τ)
+  have hEntry : ∀ τ β : C.T.State b.1,
+      MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2) τ β ∈ MovesS.OKat ((p : ℚ) ^ (d : ℕ)) :=
+    fun τ β => P.entry_ok τ β (hAct τ) (hAct β)
+  -- The kernel lifted to the evaluation-regular subring at the pool value.
+  set K' : Matrix (C.T.State b.1) (C.T.State b.1) (MovesS.OKat ((p : ℚ) ^ (d : ℕ))) :=
+    Matrix.of (fun τ β =>
+      (⟨MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2) τ β, hEntry τ β⟩ :
+        MovesS.OKat ((p : ℚ) ^ (d : ℕ)))) with hK'
+  have hval : (((1 - K').det : MovesS.OKat ((p : ℚ) ^ (d : ℕ))) : MovesS.Qq)
+      = (1 - MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2)).det := by
+    have hmd := RingHom.map_det (Subring.subtype (MovesS.OKat ((p : ℚ) ^ (d : ℕ)))) (1 - K')
+    rw [map_sub, map_one] at hmd
+    have hKK : (Subring.subtype (MovesS.OKat ((p : ℚ) ^ (d : ℕ)))).mapMatrix K'
+        = MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2) := by
+      ext τ β
+      simp only [RingHom.mapMatrix_apply, Matrix.map_apply, hK', Matrix.of_apply,
+        Subring.coe_subtype]
+    rw [hKK] at hmd
+    exact hmd
+  have hmem : (1 - MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2)).det
+      ∈ MovesS.OKat ((p : ℚ) ^ (d : ℕ)) := hval ▸ ((1 - K').det).2
+  -- The evaluated determinant is the active-block determinant, nonzero by E0.
+  have hED : MovesS.evalAt ((p : ℚ) ^ (d : ℕ)) ((1 - K').det)
+      = ((1 - K').map (MovesS.evalAt ((p : ℚ) ^ (d : ℕ)))).det :=
+    MovesS.eval_det (1 - K')
+  set ε : (↥P.Act) ≃ C.T.State b.1 := Equiv.subtypeUnivEquiv hAct with hεdef
+  have hBsub : ((1 - K').map (MovesS.evalAt ((p : ℚ) ^ (d : ℕ)))).submatrix ε ε
+      = 1 - P.A := by
+    ext i j
+    simp only [Matrix.submatrix_apply, Matrix.map_apply, Matrix.sub_apply, map_sub]
+    congr 1
+    · rw [Matrix.one_apply, Matrix.one_apply]
+      by_cases h : i = j
+      · subst h; rw [if_pos rfl, if_pos rfl, map_one]
+      · have hne' : ε i ≠ ε j := fun hc => h (ε.injective hc)
+        rw [if_neg hne', if_neg h, map_zero]
+    · rw [P.A_eval, hεdef]
+      simp only [Equiv.subtypeUnivEquiv_apply, hK', Matrix.of_apply]
+  have hdet_ne : MovesS.evalAt ((p : ℚ) ^ (d : ℕ))
+      ⟨(1 - MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2)).det, hmem⟩ ≠ 0 := by
+    have hsub : (⟨(1 - MovesS.Kmat C.T C.RB b.1 (C.hK b.1 b.2)).det, hmem⟩ :
+        MovesS.OKat ((p : ℚ) ^ (d : ℕ))) = (1 - K').det :=
+      Subtype.ext hval.symm
+    rw [hsub, hED, ← Matrix.det_submatrix_equiv_self ε, hBsub]
+    exact MovesS.e0_det_ne_zero P.e0
+  -- Close the two clauses (DefinedAt = OKat membership; .eval = evalAt, both defeq).
+  unfold RegPAtR1
+  rw [hcast]
+  exact ⟨hmem, hdet_ne⟩
 
 /-! ## IB-B16 — the junk-block gap RECORD (†4e; doc-only, NO proof obligations)
 
@@ -343,6 +438,28 @@ without one, so this record produces the exact quantifier diff instead).
 Consequence for the capstone: (REG-p) stays `theoremU`'s explicit per-p
 hypothesis (D8: at a p failing (REG-p), no claim); the bridge does NOT
 discharge it, and any future discharge claim must name this record.
+
+RESIDUAL INDEX, AS-BUILT UPDATE (2026-07-30, prover BP1-P4; recorded per the
+cluster charge "update the residual index if B15a/b's typed residuals change
+shape" — they did):
+* IB-B15b LANDED TOTAL on the locus: the (r1) uncovered-pair set ON
+  `bridgeActiveLocus` is EMPTY (the cl1 `PoolHyp` at every consumed δ + the
+  `rs3_det_symbolic` subring/submatrix calc + `e0_det_ne_zero` close every
+  (q₀, b)); its typed residual is exactly `bridgeResidualPool` — unchanged.
+* IB-B15a BLOCKED (suspect-false as stated; countermodel gate queued by the
+  orchestrator): ON the locus the (r2) burden splits BY ENTRY FAMILY — the
+  five static families (K/bterm/Jcell/iota/Wcoef) are chain-warranted
+  (`tg_ok`/`j_ok`/`jcell_ok`/`ι_ok`/`wsh_ok` + OKat subring closure), but the
+  two dite families (`bsplit`/`betaLeg` under `DetHyp`) EXCEED the chain even
+  ON the locus: their definedness at q₀ = p^δ₀ needs `blockSolve` ∈ OKat at
+  the DESCENT pools p^(δ₀·δ·∏δμ), where (i) the exponent leaves the ≤ n-factor
+  `consumedDeltas` closure (no cl1/legs_read package), (ii) no all-activity
+  warrant exists (no full-det route), and (iii) at wild descent pools
+  `legs_read`'s `LegAgree` covers ACTIVE coordinates only while a leg's target
+  state may be inactive — the note's own junk discipline (MOVES 12208–12210)
+  read one level down.  So the AS-BUILT residual index of the (r2) face is
+  `bridgeResidualPool` ∪ {the (q₀, b) dite-family entries at descent pools},
+  a strictly larger index than the (†4e) display anticipated.
 NO THEOREM IS STATED HERE (doc-only unit): the three defs below are display
 vocabulary, and the ↔ above is recorded prose, deliberately unproved. -/
 

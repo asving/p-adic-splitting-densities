@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Mathlib
+import LeanUrat.MovesU.BridgeB1_consumedDeltasSeed
 import LeanUrat.MovesU.BridgeB2_stateNe
 import LeanUrat.MovesU.BridgeB3_act
 import LeanUrat.MovesU.BridgeB4_legRosterFintype
@@ -32,9 +33,9 @@ vacuous, so `hn` is LOAD-BEARING); `hne : HStateNe n C` (IB-B2's factored
 sentence = the Q3-ratified `BridgePre.hStateNe` premise) feeds
 `instBiNe`/`blockDim_pos`.
 
-DEPS: IB-B1 (`one_mem_consumedDeltas` — ANOTHER CLUSTER's unit; its (†4a)
-obligation is carried here as the file's one deliberate `sorry`, to be wired
-when IB-B1 lands), IB-B2 (`HStateNe`), IB-B3 (`bridgeAct`), IB-B4
+DEPS: IB-B1 (`one_mem_consumedDeltas` — LANDED and wired: the (†4a) field is
+its seed membership lifted through `Finset.mem_image`; the former deliberate
+`sorry` is discharged), IB-B2 (`HStateNe`), IB-B3 (`bridgeAct`), IB-B4
 (`legRosterFintype`), IB-B5 (`card_legRoster`), IB-B6 (`BridgeJIdx` family),
 IB-B7 (`BridgeWIdx` family), IB-B9 (`bridgeBsplit`/`bridgeBetaLeg`).
 CONSUMERS: IB-B10..B17, IB-F4 (`mkUInstance`).
@@ -63,9 +64,9 @@ noncomputable def bridgeRegData {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
   let ds : Finset ℕ :=
     (MovesS.consumedDeltas C.T C.Fam).image (fun d : ℕ+ => (d : ℕ))
   { depthSet := ds
-    -- (†4a): `1 ∈ consumedDeltas` is IB-B1's lemma (another cluster's unit);
-    -- carried as this file's one deliberate placeholder until IB-B1 lands.
-    one_mem_depthSet := sorry
+    -- (†4a): IB-B1's seed lemma, lifted through the image (`(1 : ℕ+) ↦ 1`).
+    one_mem_depthSet :=
+      Finset.mem_image.mpr ⟨1, one_mem_consumedDeltas C, rfl⟩
     Pool := ds.image (p ^ ·)
     pool_eq := rfl
     Block := {e : ℕ // e ∈ Finset.Icc 1 n}

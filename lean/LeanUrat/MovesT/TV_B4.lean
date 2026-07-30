@@ -59,7 +59,9 @@ equal level-0 reductions (the E5 `hredeq` computation, `Finset.sum_congr`). -/
 theorem tv_b4_redPoly_transfer (χ : Fin n → Fin m) (x x' : Box p m)
     (hchart : ∀ b : Fin n, x (χ b) = x' (χ b)) :
     redPoly χ x = redPoly χ x' := by
-  sorry
+  unfold redPoly
+  congr 1
+  exact Finset.sum_congr rfl fun b _ => by rw [hchart b]
 
 /-- **TV-B4, redPoly cylinder transfer** — under (S-chart) (`chart_pin`'s shape
 at one level: the chart lands in the level-1 block), level-<n·N agreement with
@@ -69,7 +71,9 @@ theorem tv_b4_redPoly_cyl (N' : ℕ) (χ : Fin n → Fin (n * N'))
     (hN : 1 ≤ N) (x x' : Box p (n * N'))
     (hagree : ∀ c : Fin (n * N'), (c : ℕ) < n * N → x c = x' c) :
     redPoly χ x = redPoly χ x' := by
-  sorry
+  refine tv_b4_redPoly_transfer χ x x' fun b => ?_
+  exact hagree (χ b)
+    (lt_of_lt_of_le (hpin b) (le_mul_of_one_le_right (Nat.zero_le n) hN))
 
 /-- **TV-B4, henPayload cylinder transfer** — `fiberAt` clause (iii)'s input:
 the (τ-hen) payload is level-<n·N determined under (S-chart). -/
@@ -78,7 +82,8 @@ theorem tv_b4_henPayload_cyl (N' : ℕ) (χ : Fin n → Fin (n * N'))
     (hN : 1 ≤ N) (x x' : Box p (n * N'))
     (hagree : ∀ c : Fin (n * N'), (c : ℕ) < n * N → x c = x' c) :
     henPayload χ x = henPayload χ x' := by
-  sorry
+  unfold henPayload henDegrees
+  rw [tv_b4_redPoly_cyl N' χ hpin hN x x' hagree]
 
 /-- **TV-B4, factor-roster cylinder transfer** — `fiberAt` clause (vi)'s input:
 the normalized-factor multiset of the reduction (hence its repeated-track
@@ -89,6 +94,6 @@ theorem tv_b4_factors_cyl (N' : ℕ) (χ : Fin n → Fin (n * N'))
     (hagree : ∀ c : Fin (n * N'), (c : ℕ) < n * N → x c = x' c) :
     UniqueFactorizationMonoid.normalizedFactors (redPoly χ x)
       = UniqueFactorizationMonoid.normalizedFactors (redPoly χ x') := by
-  sorry
+  rw [tv_b4_redPoly_cyl N' χ hpin hN x x' hagree]
 
 end LeanUrat.MovesT

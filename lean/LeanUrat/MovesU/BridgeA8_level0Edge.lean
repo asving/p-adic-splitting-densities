@@ -50,12 +50,19 @@ namespace LeanUrat.MovesU
     the trivial ring `ZMod (p ^ 0)` is EMPTY for n ≥ 1 (every polynomial is 0,
     natDegree 0 ≠ n). -/
 theorem monicBox_empty_of_level0 (p n : ℕ) (hn : 1 ≤ n) :
-    IsEmpty (OM.QuotientBox.monicBox p 0 n) :=
-  sorry
+    IsEmpty (OM.QuotientBox.monicBox p 0 n) := by
+  constructor
+  rintro ⟨f, hmon, hdeg⟩
+  haveI : Subsingleton (ZMod (p ^ 0)) := ZMod.subsingleton_iff.mpr (pow_zero _)
+  have hf : f = 0 := Polynomial.ext fun k => Subsingleton.elim _ _
+  rw [hf, Polynomial.natDegree_zero] at hdeg
+  omega
 
 /-- IB-A8(b) — (†2)'s level-0 edge, coefficient side: the level-0 coefficient box
     is a singleton (all points equal in `Fin n → ZMod (p ^ 0)`). -/
-theorem box0_unique (p n : ℕ) (f g : Box p n 0) : f = g :=
-  sorry
+theorem box0_unique (p n : ℕ) (f g : Box p n 0) : f = g := by
+  haveI : Subsingleton (ZMod (p ^ 0)) := ZMod.subsingleton_iff.mpr (pow_zero _)
+  funext i
+  exact Subsingleton.elim _ _
 
 end LeanUrat.MovesU

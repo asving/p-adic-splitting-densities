@@ -19,8 +19,94 @@ import LeanUrat.MovesV.V7_livC
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedVariables false
+set_option linter.style.openClassical false
 
 namespace LeanUrat.MovesV
+open scoped Classical
+
+/-- [E4 helper] the per-(cell, height) counting law on the all-outcomes key:
+on the listed domain, the x-free cp weight COUNTS its double-dite event,
+eventually (evt_card/evt_cardT at N ≥ stabLvl through the per-assignment
+disjointness — the (iv)-MEAS aggregation). -/
+theorem evtAll_card {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {TE : TmplEvents n S}
+    (X : XHD n S TE V) (cp : CellPolyPack n C S V)
+    {αc : S.Cell} {q₀ : ℚ} (hq : q₀ ∈ V.Pools)
+    (x : S.Hist q₀ αc) (hzc : S.zc x)
+    (ca : DCellAll V αc) (H : Σ D : ℕ, Hpt D) (hmem : cdomAllMem V ca H) :
+    ∃ N₀, ∀ N ≥ N₀,
+      gwtAll V X.w cp ca H q₀ * ((@Fintype.card _ (V.finB q₀ N) : ℕ) : ℝ)
+        = ((evtAll V x N ca H).card : ℝ) := by
+  classical
+  obtain ⟨D, h⟩ := H
+  cases ca with
+  | inl dc =>
+      obtain ⟨⟨d, hd⟩, c⟩ := dc
+      subst hd
+      obtain ⟨e, hmm⟩ := hmem
+      refine ⟨V.stabLvl (V.moveOf d), fun N hN => ?_⟩
+      simp only [gwtAll, evtAll, dif_pos e]
+      rw [eq_of_heq (cast_heq _ x)]
+      -- the biUnion card is the assignment-fiber sum (per-assignment disjointness)
+      letI := S.finA (V.moveOf d) x (castHpt e h)
+      have hcard : (V.cellEvt d x c (castHpt e h) N).card
+          = ∑ a ∈ Finset.univ.filter
+              (fun a : S.Assign (V.moveOf d) x (castHpt e h) =>
+                V.cellOfA d x (castHpt e h) a = c),
+              (V.evtOf (V.moveOf d) x (castHpt e h) a N).card := by
+        unfold CtsMeasured.cellEvt
+        exact Finset.card_biUnion
+          (fun a _ b _ hab => V.evt_disj_assign _ x _ a b hab N)
+      rw [hcard]
+      push_cast
+      rw [Finset.sum_congr rfl (fun a _ =>
+        V.evt_card (V.moveOf d) x (castHpt e h) a hq hzc N hN)]
+      rw [Finset.sum_congr rfl (fun a _ => by
+        rw [X.w.w_eq (V.moveOf d) x (castHpt e h) a (V.pools_sub hq) hzc])]
+      rw [Finset.sum_const, nsmul_eq_mul]
+      have hcnt : ((cp.P d.s d.m d.o d.α c).eval q₀ : ℚ)
+          = (V.cntc d x c (castHpt e h) : ℚ) :=
+        cp.count d c x hzc hq (castHpt e h) hmm
+      have hcnt' : (((cp.P d.s d.m d.o d.α c).eval q₀ : ℚ) : ℝ)
+          = ((Finset.univ.filter
+              (fun a : S.Assign (V.moveOf d) x (castHpt e h) =>
+                V.cellOfA d x (castHpt e h) a = c)).card : ℝ) := by
+        rw [hcnt]; norm_cast
+      rw [hcnt']
+      ring
+  | inr vdc =>
+      obtain ⟨v, ⟨d, hd⟩, c⟩ := vdc
+      subst hd
+      obtain ⟨e, hmm⟩ := hmem
+      refine ⟨V.stabLvlT (V.moveOfT d), fun N hN => ?_⟩
+      simp only [gwtAll, evtAll, dif_pos e]
+      rw [eq_of_heq (cast_heq _ x)]
+      letI := S.finAT (V.moveOfT d) x (castHpt e h)
+      have hcard : (V.cellEvtT d x c (castHpt e h) N).card
+          = ∑ a ∈ Finset.univ.filter
+              (fun a : S.AssignT (V.moveOfT d) x (castHpt e h) =>
+                V.cellOfAT d x (castHpt e h) a = c),
+              (V.evtOfT (V.moveOfT d) x (castHpt e h) a N).card := by
+        unfold CtsMeasured.cellEvtT
+        exact Finset.card_biUnion
+          (fun a _ b _ hab => V.evt_disj_assignT _ x _ a b hab N)
+      rw [hcard]
+      push_cast
+      rw [Finset.sum_congr rfl (fun a _ =>
+        V.evt_cardT (V.moveOfT d) x (castHpt e h) a hq hzc N hN)]
+      rw [Finset.sum_congr rfl (fun a _ => by
+        rw [X.w.wT_eq (V.moveOfT d) x (castHpt e h) a (V.pools_sub hq) hzc])]
+      rw [Finset.sum_const, nsmul_eq_mul]
+      have hcnt : ((cp.P d.s d.m d.o d.α c).eval q₀ : ℚ)
+          = (V.cntcT d x c (castHpt e h) : ℚ) :=
+        cp.countT d c x hzc hq (castHpt e h) hmm
+      have hcnt' : (((cp.P d.s d.m d.o d.α c).eval q₀ : ℚ) : ℝ)
+          = ((Finset.univ.filter
+              (fun a : S.AssignT (V.moveOfT d) x (castHpt e h) =>
+                V.cellOfAT d x (castHpt e h) a = c)).card : ℝ) := by
+        rw [hcnt]; norm_cast
+      rw [hcnt']
+      ring
 
 /-- TV-E4(a) [LedgerIV group (3), part1]: the guarded unit-mass cell
 partition (verbatim `MovesS.LedgerIV.part1` at measuredOf). -/
@@ -57,7 +143,12 @@ theorem measuredOf_rep_indep {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (measuredOf V X cp hfin).rowVal e τ o q₀
         = ∑ c ∈ (measuredOf V X cp hfin).cells e τ o,
             (measuredOf V X cp hfin).μcell e τ x c q₀ := by
-  sorry
+  intro e τ o x q₀ hq hact
+  -- rowVal IS the cell-fiber μcell sum by definition (μcell x-free); the two
+  -- Set.toFinset instances agree up to Finset.sum_congr.
+  show rowValOf V X.w cp hfin τ o q₀ = _
+  unfold rowValOf MovesS.MeasuredSide.cells
+  exact Finset.sum_congr (Set.toFinset_congr rfl) (fun _ _ => rfl)
 
 /-- TV-E4(c) [LedgerIV group (5), meas_card]: counting-native measurement —
 the fixed-height weight times |Box| is eventually the event cardinality
@@ -80,6 +171,16 @@ theorem measuredOf_meas_card {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (measuredOf V X cp hfin).gwt e τ c h q₀
           * (Fintype.card ((measuredOf V X cp hfin).Box q₀ N) : ℝ)
         = (((measuredOf V X cp hfin).cellEvt e τ x c h q₀ N).card : ℝ) := by
-  sorry
+  intro e τ x c h hmem q₀ hq hact
+  obtain ⟨N₀, hN⟩ := evtAll_card V X cp hq (x q₀ hq).1 (x q₀ hq).2
+    (toCellAll V hfin τ c) h hmem
+  refine ⟨N₀, fun N hNN => ?_⟩
+  have hev : (measuredOf V X cp hfin).cellEvt e τ x c h q₀ N
+      = evtAll V ((x q₀ hq).1) N (toCellAll V hfin τ c) h := by
+    show (if hq' : q₀ ∈ V.Pools then
+        evtAll V ((x q₀ hq').1) N (toCellAll V hfin τ c) h else ∅) = _
+    rw [dif_pos (show q₀ ∈ V.Pools from hq)]
+  rw [hev]
+  exact hN N hNN
 
 end LeanUrat.MovesV

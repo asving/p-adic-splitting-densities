@@ -40,6 +40,6 @@ theorem x3aRoute_of_weightCharge_align {n : ℕ} (X : MovesX.XFamily n)
     (halign : MovesX.X1aAlignP n X ⟨true, false⟩)
     (hwc : MovesX.WeightChargeFullP n X K) :
     MovesX.X3aRouteP n X K := by
-  sorry
+  exact Or.inr ⟨halign, hwc⟩
 
 end LeanUrat.Kernels

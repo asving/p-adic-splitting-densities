@@ -63,6 +63,34 @@ set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
+/-!
+H-PHASE RESOLUTIONS (2026-07-30, cluster BP1-P10-slots; FLAGGED for the Q5 Codex
+audit):
+* (h1) THE DICTIONARY CARRIER is ∃-bound per stratum history: a species-letter
+  assignment `letterOf : positions → KC.Sp.Letter` PLUS an index-share map
+  `share : positions → ℕ`.  The letter is PINNED to the node's OWN stage tuple
+  through the built grammar anchor `SpeciesSyntax.shape` (letters are "DEFINED BY
+  stage tuples (e, h, g, μ)"): at a continuing node with selection `(g, μ)`, the
+  assigned letter's shape IS `(e, h, g, μ)` — the node's own read, never a
+  re-key.  This constrains `KC.Sp` to realize every stratum stage tuple — content
+  strictly beyond the aggregate ALIGN face.
+* (h2) LETTER-BY-LETTER PRICING: every certified charge (the `dCert ⟨true, false⟩`
+  population `cl15_align` counts — certified increments) carries a POSITIVE index
+  share, and the shares sum within the GMN index `(KC.XF.gmn p).ind f`.  The ∃
+  therefore IMPLIES the ALIGN face `dCert ⟨true, false⟩ H ≤ ind f` (each certified
+  node contributes ≥ 1 to the sum) — "beyond ALIGN" with ALIGN recoverable, never
+  contradicted.
+* (h3) THE AXIOM CITE stays statement-side, per the file header: this Prop TYPES
+  the dictionary against `GMNIndex.ind`; the index's discriminant surface
+  (`GMNIndex.p2`: `2·ind f ≤ vdisc f`) is the carried structure law, and the
+  read-set-restricted GMN face is the DECLARED axiom
+  `LeanUrat.OM.omReadValuation_lt_of_certLevel_fkeyed` (AX-INDEX) — cited here,
+  consumed by no proof in this file.
+NON-VACUITY (IB-G11c's duty, follow-up file): FALSE at a degenerate instance
+whose `gmn` assigns index 0 while a stratum history carries a certified charge
+(zero shares ∧ positive-charge duty clash — the file-header example).
+-/
+
 namespace LeanUrat.MovesU
 
 /-- IB-G8 — **`Slot_x1aDict`** (CL-15's per-species GMN index dictionary beyond
@@ -73,6 +101,16 @@ ALIGN charges letter-by-letter (see the file header for the formulation target
 and the axiom-cite discipline).  H-phase fills the displayed Prop; Codex audit
 before any consumer (Q5). -/
 def Slot_x1aDict (n : ℕ) {C : UCarriers n} (KC : KernelCarriers n C) : Prop :=
-  sorry
+  ∀ (p : ℕ) [Fact p.Prime] (f : MovesX.MonicBox n p) (H : MovesX.XHistory n),
+    f ∉ MovesX.discZero n p → (KC.XF.gmn p).inStratum f H →
+    ∃ (letterOf : Fin H.length → KC.Sp.Letter) (share : Fin H.length → ℕ),
+      -- (h1) the dictionary keys each node by its OWN stage tuple:
+      (∀ (i : Fin H.length) (g μ : ℕ), (H.get i).sel = some (g, μ) →
+        KC.Sp.shape (letterOf i) = ((H.get i).e, (H.get i).h, g, μ)) ∧
+      -- (h2) every certified ALIGN charge carries a positive per-letter share:
+      (∀ i : Fin H.length,
+        MovesX.certified ⟨true, false⟩ (H.get i) = true → 1 ≤ share i) ∧
+      -- (h2) the shares decompose within the GMN index:
+      ∑ i : Fin H.length, share i ≤ (KC.XF.gmn p).ind f
 
 end LeanUrat.MovesU

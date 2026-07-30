@@ -82,6 +82,62 @@ noncomputable def WindowModel.residual {F : Type*} [Field F]
     (W : WindowModel F) (d : W.Digit) : Polynomial F :=
   (X : Polynomial F) ^ W.a * W.cofactor d
 
+/-! ## Witness layer (prover helpers): a monic squarefree coprime-to-z target
+of EVERY cofactor degree exists over a finite field.  Degrees 0/1 are explicit
+(`1`, `X + 1`); degree ≥ 2 takes the minimal polynomial of a primitive element
+of the degree-m finite-field extension `FiniteField.Extension` — a monic
+IRREDUCIBLE of exact degree m, squarefree and coprime to z since its degree
+is ≥ 2.  (The blueprint's "an irreducible of degree e − a with nonzero
+constant term"; Mathlib has no off-the-shelf irreducible-of-every-degree
+statement, so it is derived here.) -/
+
+/-- Prover helper: over a finite field there is a monic irreducible of every
+positive degree — primitive element of `FiniteField.Extension F p m`. -/
+theorem ka6b2_exists_monic_irreducible (F : Type*) [Field F] [Fintype F]
+    (m : ℕ) (hm : 0 < m) :
+    ∃ c : Polynomial F, c.Monic ∧ c.natDegree = m ∧ Irreducible c := by
+  haveI : Finite F := Finite.of_fintype F
+  haveI hFact : Fact (ringChar F).Prime := ⟨CharP.char_is_prime F (ringChar F)⟩
+  haveI : NeZero m := ⟨hm.ne'⟩
+  obtain ⟨α, hα⟩ :=
+    Field.exists_primitive_element_of_finite_bot F
+      (FiniteField.Extension F (ringChar F) m)
+  have hint : IsIntegral F α := IsIntegral.of_finite F α
+  refine ⟨minpoly F α, minpoly.monic hint, ?_, minpoly.irreducible hint⟩
+  have h1 := IntermediateField.adjoin.finrank hint
+  rw [hα] at h1
+  rw [← h1, IntermediateField.finrank_top']
+  exact FiniteField.finrank_extension F (ringChar F) m
+
+/-- Prover helper: a monic squarefree polynomial of EVERY degree m, coprime
+to z (`¬ X ∣ ·`), over a finite field. -/
+theorem ka6b2_exists_monic_squarefree_not_X_dvd (F : Type*) [Field F]
+    [Fintype F] (m : ℕ) :
+    ∃ c : Polynomial F,
+      c.Monic ∧ c.natDegree = m ∧ Squarefree c ∧ ¬ (X : Polynomial F) ∣ c := by
+  match m with
+  | 0 =>
+    refine ⟨1, monic_one, natDegree_one, squarefree_one, fun h => ?_⟩
+    exact Polynomial.not_isUnit_X (isUnit_of_dvd_one h)
+  | 1 =>
+    refine ⟨X + C 1, monic_X_add_C 1, natDegree_X_add_C 1,
+      (separable_X_add_C 1).squarefree, fun h => ?_⟩
+    rw [Polynomial.X_dvd_iff] at h
+    simp at h
+  | (m + 2) =>
+    obtain ⟨c, hmon, hdeg, hirr⟩ :=
+      ka6b2_exists_monic_irreducible F (m + 2) (by omega)
+    refine ⟨c, hmon, hdeg, hirr.squarefree, fun hdvd => ?_⟩
+    obtain ⟨d, hd⟩ := hdvd
+    rcases hirr.isUnit_or_isUnit hd with h | h
+    · exact Polynomial.not_isUnit_X h
+    · have hd0 : d.natDegree = 0 := Polynomial.natDegree_eq_zero_of_isUnit h
+      have hX0 : (X : Polynomial F) ≠ 0 := Polynomial.X_ne_zero
+      have hdne : d ≠ 0 := h.ne_zero
+      have : c.natDegree = 1 := by
+        rw [hd, Polynomial.natDegree_mul hX0 hdne, Polynomial.natDegree_X, hd0]
+      omega
+
 /-! ## The a ≤ 1 head (the squarefree-residual exit mechanism) -/
 
 /-- KA6b2 (HEAD, a ≤ 1): at every state with anchor pin a ≤ 1 and every pool
@@ -99,7 +155,21 @@ closes. -/
 theorem ka6b2_squarefree_exit_of_anchor_le_one (F : Type*) [Field F]
     [Fintype F] (W : WindowModel F) (ha : W.a ≤ 1) :
     ∃ d : W.Digit, Squarefree (W.residual d) := by
-  sorry
+  rcases Nat.le_one_iff_eq_zero_or_eq_one.mp ha with h0 | h1
+  · -- a = 0: the residual IS the cofactor; hit a squarefree monic of degree e.
+    obtain ⟨c, hmon, hdeg, hsf, _⟩ :=
+      ka6b2_exists_monic_squarefree_not_X_dvd F W.e
+    obtain ⟨d, hd⟩ := W.free_surj c hmon (by rw [hdeg, h0, Nat.sub_zero])
+    refine ⟨d, ?_⟩
+    simp only [WindowModel.residual, h0, pow_zero, one_mul, hd]
+    exact hsf
+  · -- a = 1: target z·(squarefree cofactor coprime to z), `ka6b1_X_mul_squarefree`.
+    obtain ⟨c, hmon, hdeg, hsf, hnd⟩ :=
+      ka6b2_exists_monic_squarefree_not_X_dvd F (W.e - 1)
+    obtain ⟨d, hd⟩ := W.free_surj c hmon (by rw [hdeg, h1])
+    refine ⟨d, ?_⟩
+    simp only [WindowModel.residual, h1, pow_one, hd]
+    exact ka6b1_X_mul_squarefree hsf hnd
 
 /-! ## The a ≥ 2 leg (the cofactor-criterion candidate) -/
 
@@ -120,6 +190,9 @@ theorem ka6b2_cofactor_exit (F : Type*) [Field F] [Fintype F]
     (W : WindowModel F) :
     ∃ d : W.Digit,
       Squarefree (W.cofactor d) ∧ ¬ (X : Polynomial F) ∣ W.cofactor d := by
-  sorry
+  obtain ⟨c, hmon, hdeg, hsf, hnd⟩ :=
+    ka6b2_exists_monic_squarefree_not_X_dvd F (W.e - W.a)
+  obtain ⟨d, hd⟩ := W.free_surj c hmon hdeg
+  exact ⟨d, hd ▸ hsf, hd ▸ hnd⟩
 
 end LeanUrat.Kernels

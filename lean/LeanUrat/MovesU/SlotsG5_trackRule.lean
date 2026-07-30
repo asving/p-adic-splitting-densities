@@ -52,6 +52,40 @@ set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
+/-!
+H-PHASE RESOLUTIONS (2026-07-30, cluster BP1-P10-slots; against the (TRK-RULE)
+display, MOVES_2026-07-24.md 12988–13004, and SQ.0(c1) 12943–12947; FLAGGED for
+the Q5 Codex audit):
+* (h1) THE THREE RECOGNITIONS, per (TRK-RULE) "recognized per node from
+  move-species cell data alone":
+  - (t3) LADDER RESTART is PINNED to the SAME `MovesX.Pop` counters as
+    `K7.track_restarts` (`popOf? = some .recT1 ∨ popOf? = some .t4`) — the charge's
+    "no private re-count" clause, satisfied by definition;
+  - (t2) BRANCH OPENING is PINNED to the carried tree (`KC.XF.ctx p`): one opening
+    per (ancestor c of b, member d ∈ children c NOT an ancestor of b) — the
+    display's "each member beyond the designated continuing one opens its own
+    track", the designated member being the one on b's own path.  An explicit
+    `Set.Finite` conjunct keeps an infinite sibling family from slipping under the
+    budget via `Set.ncard`'s junk value 0;
+  - (t1) KEY CREATION has NO carrier (the §B2-DEF carry-algebra key vocabulary is
+    unbuilt) — it is the ONE ∃-bound recognition, a per-node predicate
+    (`XNode n → Prop`, so it reads node data alone); declaring openings is priced
+    against the SAME `K7.L` budget, so the freedom cannot inflate the track count.
+* (h2) (c1) THE ASSIGNMENT MAP: every zero-gain move (continuing, not a genuine
+  T1/T2 increment — SQ.0(c)'s d_zero population) is assigned an opening event of
+  its own history AT OR BEFORE it ("the open ladder its D.10 increment extends";
+  openings on this branch's history are the (t1)/(t3) events — (t2) events open
+  the OTHER members' tracks).  The monotone-climb duty of the assigned ladder is
+  (c2) = `Slot_dnLattice`'s conjunct, not restated here (CL-7a/CL-7b split).
+* (h3) BUDGET: #(t1) + #(t2) + #(t3) ≤ K7.L per stratum history — (TRK-RULE)'s
+  probe count against TRACK-COUNT's L(n), the SAME constant `track_restarts`
+  bounds its (t3) face by.
+NON-VACUITY (IB-G11b's duty): FALSE at a degenerate instance whose carried tree
+is too bushy — a stratum branch with more than `K7.L` non-designated siblings
+(the PINNED (t2) count alone breaks the budget, while `track_restarts` stays
+satisfiable: it bounds only the (t3) counters).
+-/
+
 namespace LeanUrat.MovesU
 
 /-- IB-G5 — **`Slot_trackRule`** (CL-7a (t1)/(t2)+(c1), owner [4]): the key/branch
@@ -61,6 +95,41 @@ the file header for the formulation target).  H-phase fills the displayed Prop;
 Codex audit before any consumer (Q5). -/
 def Slot_trackRule (n : ℕ) {C : UCarriers n} (KC : KernelCarriers n C)
     (K7 : Cl7Kernel n KC) : Prop :=
-  sorry
+  ∀ (p : ℕ) [Fact p.Prime] (f : MovesX.MonicBox n p)
+    (b : (KC.XF.ctx p).Branch f),
+    f ∉ MovesX.discZero n p →
+    (KC.XF.gmn p).inStratum f ((KC.XF.ctx p).hist b) →
+    -- (h1)(t2): the branch-opening events are the carried tree's own data —
+    -- finitely many non-designated members over the ancestors of b:
+    {cd : (KC.XF.ctx p).Branch f × (KC.XF.ctx p).Branch f |
+        MovesX.isPrefixB (KC.XF.ctx p) cd.1 b ∧
+        cd.2 ∈ (KC.XF.ctx p).children cd.1 ∧
+        ¬ MovesX.isPrefixB (KC.XF.ctx p) cd.2 b}.Finite ∧
+    -- (h1)(t1): the ONE designed recognition — a per-node key-creation predicate:
+    ∃ (keyRec : MovesX.XNode n → Prop)
+    -- (h2)(c1): the assignment map on this history's positions:
+      (trackOf : Fin ((KC.XF.ctx p).hist b).length →
+        Fin ((KC.XF.ctx p).hist b).length),
+      -- (h3) the (TRK-RULE) probe count within TRACK-COUNT's budget:
+      {i : Fin ((KC.XF.ctx p).hist b).length |
+          keyRec (((KC.XF.ctx p).hist b).get i)}.ncard
+        + {cd : (KC.XF.ctx p).Branch f × (KC.XF.ctx p).Branch f |
+            MovesX.isPrefixB (KC.XF.ctx p) cd.1 b ∧
+            cd.2 ∈ (KC.XF.ctx p).children cd.1 ∧
+            ¬ MovesX.isPrefixB (KC.XF.ctx p) cd.2 b}.ncard
+        + {i : Fin ((KC.XF.ctx p).hist b).length |
+            MovesX.popOf? (((KC.XF.ctx p).hist b).get i) = some MovesX.Pop.recT1 ∨
+            MovesX.popOf? (((KC.XF.ctx p).hist b).get i) = some MovesX.Pop.t4}.ncard
+        ≤ K7.L ∧
+      -- (h2) totality of (c1) on the zero-gain moves, charged to an OPEN ladder:
+      ∀ i : Fin ((KC.XF.ctx p).hist b).length,
+        (((KC.XF.ctx p).hist b).get i).continuing = true →
+        MovesX.popOf? (((KC.XF.ctx p).hist b).get i) ≠ some MovesX.Pop.incT12 →
+        (trackOf i : ℕ) ≤ (i : ℕ) ∧
+        (keyRec (((KC.XF.ctx p).hist b).get (trackOf i)) ∨
+          MovesX.popOf? (((KC.XF.ctx p).hist b).get (trackOf i))
+            = some MovesX.Pop.recT1 ∨
+          MovesX.popOf? (((KC.XF.ctx p).hist b).get (trackOf i))
+            = some MovesX.Pop.t4)
 
 end LeanUrat.MovesU
