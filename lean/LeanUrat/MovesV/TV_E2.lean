@@ -35,6 +35,7 @@ import LeanUrat.MovesV.V3_aggfullB
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedVariables false
+set_option linter.style.openClassical false
 
 namespace LeanUrat.MovesV
 open scoped Classical
