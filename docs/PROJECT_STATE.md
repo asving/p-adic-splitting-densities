@@ -1131,3 +1131,17 @@ Commits: e9d2430 (pre-golf fence) -> ed51944 (fleet) -> 49ffe85 (Phase 3) -> 5b2
   corpus's one live-file sorry). The exact post-R1 census at HEAD is enumerated in §2
   ("The one banked `sorry`", recounted 2026-07-30). Capstone footprints: byte-identical
   to baseline.
+
+## UPDATE (2026-07-30c): PUBLIC ARTIFACTS LIVE
+
+Hosted at asving.github.io/uniformity/ (site commit 2f440be), publication entry beside
+the Chebotarev paper: (1) paper.html — the expository paper "One Function for Every
+Prime" (authored by Claude Fable 5; three Codex critique rounds, 108 -> 143-sweep -> 9
+items, converged; constraints held: no variable names, no credence markers beyond
+proved/conjecture classification); (2) index.html — the expandable map: 315 selected
+declarations across 9 stages/16 corpus groups, each with math translation + verbatim
+Lean statement + status badge; story spine and card layer both Codex-reviewed (40-item
+review folded; 196 card edits, lean fields hash-verified unchanged). Sources archived
+in docs/public/graph_build/. The map's amber panel and the paper's section-2 table are
+the public statements of the honest boundary — kept in sync with the verify-2 census
+(46 marked unproved statements, scoped by corpus).
