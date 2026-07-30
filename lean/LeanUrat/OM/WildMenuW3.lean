@@ -84,9 +84,8 @@ admissible. Route: `n = F·e`, `gcd(F·k, F·e) = F·gcd(k, e) = F`. -/
 theorem gcd_admissible {n : ℕ} {σ : FactorizationType} {k : ℕ}
     (h : WildMenu.constERam n σ) (hk : Nat.gcd k (n / WildMenu.fSum σ) = 1) :
     Nat.gcd (WildMenu.fSum σ * k) n = WildMenu.fSum σ := by
+  have hfpos : 0 < WildMenu.fSum σ := WildMenu.constERam_fSum_pos h
   obtain ⟨e, he2, hne, hall, hprod⟩ := h
-  have hfpos : 0 < WildMenu.fSum σ :=
-    WildMenu.constERam_fSum_pos ⟨e, he2, hne, hall, hprod⟩
   rw [WildMenu.constERam_e_eq he2 hprod hfpos] at hk
   rw [← hprod, Nat.mul_comm e (WildMenu.fSum σ), Nat.gcd_mul_left, hk, Nat.mul_one]
 
@@ -284,10 +283,9 @@ payload do not see `pr`). Mirrors `WildMenu.typeOfW_ramShape` with `pr` generic.
 theorem typeOfW_Tselfloop_wShape {n : ℕ} {σ : FactorizationType} (h : WildMenu.constERam n σ)
     (pr : (ℕ × ℕ) × (ℕ × ℕ)) :
     WildMenu.typeOfW n (ClassifierBridgeFiber.Tselfloop n pr (WildMenu.wShape σ)) = some σ := by
+  have hfpos := WildMenu.constERam_fSum_pos h
+  have hflt := WildMenu.constERam_fSum_lt h
   obtain ⟨e, he2, hne, hall, hprod⟩ := h
-  have hc' : WildMenu.constERam n σ := ⟨e, he2, hne, hall, hprod⟩
-  have hfpos := WildMenu.constERam_fSum_pos hc'
-  have hflt := WildMenu.constERam_fSum_lt hc'
   set T := ClassifierBridgeFiber.Tselfloop n pr (WildMenu.wShape σ) with hTdef
   have htree : T.tree = [((0 : ℕ), n, WildMenu.fSum σ)] := tree_Tselfloop_wShape n σ pr
   have hdr : WildMenu.headDr T = WildMenu.fSum σ := by rw [WildMenu.headDr, htree]; rfl
@@ -431,8 +429,8 @@ theorem sum_stratumCount_le_box_W3 (n K N : ℕ) (hN : 0 < N) :
       = ((∑ T ∈ S, M9.rawCount n T N : ℕ) : ℚ) := by
         rw [Nat.cast_sum]
         rfl
-    _ ≤ ((M9.realP ^ (n * N) : ℕ) : ℚ) := by exact_mod_cast key
-    _ = (M9.realP : ℚ) ^ (n * N) := by push_cast; ring
+    _ ≤ ((M9.realP ^ (n * N) : ℕ) : ℚ) := Nat.cast_le.mpr key
+    _ = (M9.realP : ℚ) ^ (n * N) := Nat.cast_pow _ _
 
 /-! ## 6. The per-leg level behavior (small-N vanishing, closed form, constancy) -/
 
@@ -473,7 +471,7 @@ theorem stratumCount_ramShapeAt_smallN {n : ℕ} {σ : FactorizationType}
     rw [show M9.rawCount n (ramShapeAt n σ k) N
         = Nat.card {f : QuotientBox.monicBox M9.realP N n //
             M9.realClassify n N f = ramShapeAt n σ k} from rfl, Nat.card_of_isEmpty]
-    norm_num
+    exact Nat.cast_zero
 
 /-- **The k-leg stratum count closed form** at every level `N ≥ F·k + 1`: the banked count
 identity `stratumCount_selfloop_R` (H-generic) composed with the order-1 closed form. Mirrors

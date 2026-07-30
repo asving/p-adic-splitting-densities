@@ -107,8 +107,7 @@ theorem xqMultiplicity (s q : ℕ) (hq : 0 < q) (hs : 1 ≤ s) (k : ℕ) :
   rw [← mul_pow]
   congr 1
   -- `q * (q ^ (w+1))⁻¹ = (q ^ w)⁻¹`
-  rw [inv_eq_one_div, inv_eq_one_div, mul_one_div,
-    div_eq_div_iff (pow_ne_zero _ hqQ) (pow_ne_zero _ hqQ), one_mul, ← pow_succ']
+  rw [pow_succ', mul_inv, mul_inv_cancel_left₀ hqQ]
 
 /-- The two ratios at the minimal instance `p = q = 2, s = 2`: `slBoxRatio = q^{−3} = 1/8`,
 `slExposedRatio = q^{−2} = 1/4`.  (The re-gate `box_selfloop_ratio_s2 = 1/8`,
@@ -140,8 +139,7 @@ theorem slExposedRatio_lt_one {s q : ℕ} (hq : 2 ≤ q) (hs : 2 ≤ s) :
   have hqQ : (1 : ℚ) < (q : ℚ) := by exact_mod_cast hq
   have hpow : (1 : ℚ) < (q : ℚ) ^ (L5fix.selfLoopExponent s) :=
     one_lt_pow₀ hqQ (by omega)
-  rw [inv_lt_one_iff₀]
-  right; exact hpow
+  exact inv_lt_one_of_one_lt₀ hpow
 
 /-- **`countPivot`'s ratio IS `slExposedRatio`**: `countPivot s q = 1 − slExposedRatio s q` for
 `s ≥ 2`.  (`MontesAxiom.countPivot s q = 1 − q^{−selfLoopExponent s}` at `s ≥ 2`.) -/

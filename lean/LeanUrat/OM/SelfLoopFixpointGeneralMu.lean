@@ -161,8 +161,7 @@ theorem selfLoopFixpoint_general_closure {μ q : ℕ} (hq : 2 ≤ q) (hμ : 2 �
         = depth0 + slExposedRatio μ q * selfLoopFixpointValue depth0 μ q
       ∧ ∀ b : ℚ, b = depth0 + slExposedRatio μ q * b →
           b = selfLoopFixpointValue depth0 μ q :=
-  ⟨selfLoopFixpoint_eq hq hμ depth0,
-   fun b hb => selfLoopFixpoint_unique hq hμ depth0 b hb⟩
+  ⟨selfLoopFixpoint_eq hq hμ depth0, selfLoopFixpoint_unique hq hμ depth0⟩
 
 /-- **The general-`μ` closed form** `b_μ = EFFSEED_μ · (countPivot μ q)⁻¹`.  The definitional content
 of the diagonal block: the self-loop density is the seed times the inverse pivot (the geometric

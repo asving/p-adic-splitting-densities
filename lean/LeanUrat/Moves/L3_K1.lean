@@ -89,9 +89,7 @@ private lemma w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n 
 private lemma R_one (σ : Stage p F) : σ.R (1 : Polynomial ℤ_[p]) = 1 := by
   have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
   rw [mul_one] at h
-  have hne : σ.R (1 : Polynomial ℤ_[p]) ≠ 0 := σ.hRne 1 one_ne_zero
-  have key : σ.R (1 : Polynomial ℤ_[p]) * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
-  exact (mul_left_cancel₀ hne key).symm
+  exact (mul_eq_left₀ (σ.hRne 1 one_ne_zero)).mp h.symm
 
 /-- `R(−1)² = 1`.  (Only THIS is needed downstream — never the sign of `R(−1)`.) -/
 private lemma R_negone_sq (σ : Stage p F) : σ.R (-1 : Polynomial ℤ_[p]) * σ.R (-1) = 1 := by
@@ -110,9 +108,7 @@ private lemma R_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
 private lemma R_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
     σ.R (f ^ n) = (σ.R f) ^ n := by
   induction n with
-  | zero =>
-    rw [pow_zero, pow_zero]
-    exact R_one σ
+  | zero => rw [pow_zero, pow_zero, R_one σ]
   | succ k ih =>
     have hfk : f ^ k ≠ 0 := pow_ne_zero k hf
     rw [pow_succ, σ.hRmul (f ^ k) f hfk hf, ih, ← pow_succ]
@@ -126,9 +122,8 @@ private lemma w_sum_ge (σ : Stage p F)
   revert hm hsum
   induction S using Finset.induction with
   | empty =>
-    intro hm hsum
-    simp only [Finset.sum_empty] at hsum
-    exact absurd rfl hsum
+    intro _ hsum
+    exact absurd Finset.sum_empty hsum
   | insert i T hiT ih =>
     intro hm hsum
     rw [Finset.sum_insert hiT] at hsum ⊢
@@ -141,9 +136,7 @@ private lemma w_sum_ge (σ : Stage p F)
       · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
         have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
           ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        have hult := σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum
-        calc m ≤ min (σ.w (a i)) (σ.w (∑ j ∈ T, a j)) := le_min h1 h2
-          _ ≤ σ.w (a i + ∑ j ∈ T, a j) := hult
+        exact (le_min h1 h2).trans (σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum)
 
 end Helpers
 
@@ -158,10 +151,7 @@ private theorem GRf_priv {K : Type*} [Field K] (ψ : Polynomial K) (hψ : Irredu
   have hmmem : m ∈ S := S.min'_mem hne
   have hmle : ∀ j ∈ S, m ≤ j := fun j hj => S.min'_le j hj
   have hψ0 : ψ ≠ 0 := hψ.ne_zero
-  have hP0 : P ≠ 0 := by
-    rw [hP]
-    intro h
-    exact hψ0 (Polynomial.toLaurent_injective (by rw [map_zero]; exact h))
+  have hP0 : P ≠ 0 := Polynomial.toLaurent_ne_zero.mpr hψ0
   have hfact : (∑ j ∈ S, c j * P ^ j) = P ^ m * (∑ j ∈ S, c j * P ^ (j - m)) := by
     rw [Finset.mul_sum]
     refine Finset.sum_congr rfl (fun j hj => ?_)
@@ -300,15 +290,13 @@ private lemma w_Phat (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 :
     · rw [hΦhat, hsum]; ring
   have hSMA := σ.hK1 Φhat B (σ.e * g + 1) hΦne hDev
   obtain ⟨-, j₀, hj₀N, hj₀nz, hj₀eq⟩ := hSMA
-  have hj₀nz' : B j₀ ≠ 0 := hj₀nz
   have hsumnz : (∑ k ∈ Finset.range (g + 1), if j₀ = σ.e * k then cc k else 0) ≠ 0 := by
-    simpa only [hBdef] using hj₀nz'
+    simpa only [hBdef] using hj₀nz
   obtain ⟨k₀, hk₀mem, hk₀ne⟩ := Finset.exists_ne_zero_of_sum_ne_zero hsumnz
   rw [Finset.mem_range] at hk₀mem
   have hcond : j₀ = σ.e * k₀ := by
     by_contra h
-    rw [if_neg h] at hk₀ne
-    exact hk₀ne rfl
+    exact hk₀ne (if_neg h)
   rw [if_pos hcond] at hk₀ne
   have hBval : B j₀ = cc k₀ := by
     simp only [hBdef]
@@ -316,8 +304,7 @@ private lemma w_Phat (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 :
     · rw [if_pos hcond]
     · intro k _ hkne
       exact if_neg (fun hh => hkne (Nat.eq_of_mul_eq_mul_left σ.he (hh.symm.trans hcond)))
-    · intro h
-      exact absurd (Finset.mem_range.mpr (by omega : k₀ < g + 1)) h
+    · exact fun h => absurd (Finset.mem_range.mpr hk₀mem) h
   rw [hj₀eq]
   change σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
   rw [hBval, hcond, σ.hwΦ]
@@ -425,7 +412,7 @@ private lemma minsum_facts (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
         σ.R (∑ j ∈ S', B j * Φhat ^ j) = ∑ j ∈ S', σ.R (B j * Φhat ^ j) := by
   intro S'
   induction S' using Finset.induction with
-  | empty => intro _ _ h; exact absurd h (by simp)
+  | empty => exact fun _ _ h => absurd h Finset.not_nonempty_empty
   | insert i T hiT ih =>
     intro hB' hw' _
     have hBi : B i ≠ 0 := hB' i (Finset.mem_insert_self i T)
@@ -449,8 +436,7 @@ private lemma minsum_facts (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
           (hRsT.symm.trans hR1)
       have hwge : m ≤ σ.w (B i * Φhat ^ i + ∑ j ∈ T, B j * Φhat ^ j) := by
         have h1 := σ.hwult _ _ hai hsTne hsne
-        rw [hwi, hwsT, min_self] at h1
-        exact h1
+        rwa [hwi, hwsT, min_self] at h1
       rcases eq_or_lt_of_le hwge with hweq | hwlt
       · -- weight stays at m: hRadd gives residual additivity
         refine ⟨hsne, hweq.symm, ?_⟩
@@ -462,8 +448,7 @@ private lemma minsum_facts (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
             = B i * Φhat ^ i := by ring
         have hlt' : σ.w (-(∑ j ∈ T, B j * Φhat ^ j))
             < σ.w (B i * Φhat ^ i + ∑ j ∈ T, B j * Φhat ^ j) := by
-          rw [w_neg σ _ hsTne, hwsT]
-          exact hwlt
+          rwa [w_neg σ _ hsTne, hwsT]
         have hRlt := σ.hRlt _ _ hnegne hsne (by rw [haux]; exact hai) hlt'
         rw [haux, R_neg σ _ hsTne, hRsT] at hRlt
         have hfinal : (∑ j ∈ T, σ.R (B j * Φhat ^ j)) = σ.R (-1) * σ.R (B i * Φhat ^ i) := by
@@ -490,7 +475,7 @@ theorem L3_K1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : St
     intro j
     rw [hSNdef, Finset.mem_filter, Finset.mem_range]
   have hSNne : SN.Nonempty := by
-    have hfs : (∑ j ∈ Finset.range N, B j * Φhat ^ j) ≠ 0 := by rw [← hsum]; exact hf
+    have hfs : (∑ j ∈ Finset.range N, B j * Φhat ^ j) ≠ 0 := hsum ▸ hf
     obtain ⟨j, hjr, hjne⟩ := Finset.exists_ne_zero_of_sum_ne_zero hfs
     refine ⟨j, (hSNmem j).mpr ⟨Finset.mem_range.mp hjr, fun hBj => hjne ?_⟩⟩
     rw [hBj, zero_mul]
@@ -546,8 +531,8 @@ theorem L3_K1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : St
         have h2 : ¬ (σ.w (B j) + (j : ℤ) * ((σ.e : ℤ) * σ.h * g) = m) := ((hSrestMem j).mp hj).2
         rw [hwa j hBj]
         omega
-      have hfne' : (∑ j ∈ Smin, B j * Φhat ^ j) + (∑ j ∈ Srest, B j * Φhat ^ j) ≠ 0 := by
-        rw [← hfd]; exact hf
+      have hfne' : (∑ j ∈ Smin, B j * Φhat ^ j) + (∑ j ∈ Srest, B j * Φhat ^ j) ≠ 0 :=
+        hfd ▸ hf
       have hge : m ≤ σ.w f := by
         rw [hfd]
         have h1 := σ.hwult _ _ hminNe hrne hfne'
@@ -558,8 +543,7 @@ theorem L3_K1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : St
       have hnegne : -(∑ j ∈ Srest, B j * Φhat ^ j) ≠ 0 := neg_ne_zero.mpr hrne
       have hfmin_eq : (∑ j ∈ Smin, B j * Φhat ^ j) = f + -(∑ j ∈ Srest, B j * Φhat ^ j) := by
         rw [hfd]; ring
-      have hminne' : f + -(∑ j ∈ Srest, B j * Φhat ^ j) ≠ 0 := by
-        rw [← hfmin_eq]; exact hminNe
+      have hminne' : f + -(∑ j ∈ Srest, B j * Φhat ^ j) ≠ 0 := hfmin_eq ▸ hminNe
       have h1 := σ.hwult f _ hf hnegne hminne'
       rw [← hfmin_eq, hminW, w_neg σ _ hrne] at h1
       have h3 : m < min (σ.w f) (σ.w (∑ j ∈ Srest, B j * Φhat ^ j)) := lt_min hgt (by omega)

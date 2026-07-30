@@ -22,15 +22,13 @@ theorem C2_DOM_floorForm {lines : ℕ → Line} {i interiorEnd : ℕ} (dom : Dom
       have hvert : (lines m).at interiorEnd ≤ (lines i).at interiorEnd :=
         dom.vertex_entry m (le_of_lt hlt)
       simp only [Line.at] at hvert ⊢
-      have hbq : (b : ℚ) ≤ (interiorEnd : ℚ) := by exact_mod_cast hb
+      have hbq : (b : ℚ) ≤ (interiorEnd : ℚ) := Nat.cast_le.mpr hb
       nlinarith [mul_nonneg (le_of_lt (sub_pos.mpr hsteep)) (sub_nonneg.mpr hbq)]
   unfold floorOf
   apply le_antisymm
   · -- sup' ≤ (lines i).at b : every term of the family is dominated.
-    apply Finset.sup'_le
-    intro m hm
-    rw [Finset.mem_range] at hm
-    exact dom_le m (Nat.lt_succ_iff.mp hm)
+    exact Finset.sup'_le _ _ fun m hm =>
+      dom_le m (Nat.lt_succ_iff.mp (Finset.mem_range.mp hm))
   · -- (lines i).at b ≤ sup' : the value is attained at m = i.
     exact Finset.le_sup' (fun m => (lines m).at b) (Finset.self_mem_range_succ i)
 

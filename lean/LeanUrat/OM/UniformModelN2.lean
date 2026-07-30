@@ -277,20 +277,14 @@ theorem transStallCountP_eq_pair (c : ℕ) (ms : List ℕ) (N : ℕ) :
 /-! ## 4. The model counts (general-`p` W6 §G, four families) -/
 
 /-- The three degree-2 types are pairwise distinct. -/
-theorem ram_ne_inert : ramType2 ≠ inertType2 := by
-  intro h
-  have := congrArg (fun σ => σ.data) h
-  exact absurd this (by decide)
+theorem ram_ne_inert : ramType2 ≠ inertType2 := fun h =>
+  absurd (congrArg (fun σ => σ.data) h) (by decide)
 
-theorem ram_ne_split : ramType2 ≠ splitType2 := by
-  intro h
-  have := congrArg (fun σ => σ.data) h
-  exact absurd this (by decide)
+theorem ram_ne_split : ramType2 ≠ splitType2 := fun h =>
+  absurd (congrArg (fun σ => σ.data) h) (by decide)
 
-theorem inert_ne_split : inertType2 ≠ splitType2 := by
-  intro h
-  have := congrArg (fun σ => σ.data) h
-  exact absurd this (by decide)
+theorem inert_ne_split : inertType2 ≠ splitType2 := fun h =>
+  absurd (congrArg (fun σ => σ.data) h) (by decide)
 
 /-- The order-0 contribution, keyed by type (blueprint §1.1 order-0 cells; ram gets none). -/
 noncomputable def ord0Count (σ : FactorizationType) (N : ℕ) : ℚ :=
@@ -360,11 +354,9 @@ theorem chainCountUTot_nonneg (N : ℕ) : 0 ≤ chainCountUTot p N :=
 
 theorem chainCountP_nonneg (σ : FactorizationType) (N : ℕ) : 0 ≤ chainCountP p σ N := by
   unfold chainCountP
-  have h1 := chainCountMain_nonneg p σ N
   split
-  · have h2 := chainCountUTot_nonneg p N
-    linarith
-  · linarith
+  · exact add_nonneg (chainCountMain_nonneg p σ N) (chainCountUTot_nonneg p N)
+  · exact add_nonneg (chainCountMain_nonneg p σ N) le_rfl
 
 theorem decidedCountP_nonneg (σ : FactorizationType) (N : ℕ) : 0 ≤ decidedCountP p σ N :=
   add_nonneg (ord0Count_nonneg p σ N) (chainCountP_nonneg p σ N)

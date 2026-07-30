@@ -122,36 +122,15 @@ STRICTLY smaller instance — the recursion is well-founded. PROVED. -/
 theorem nested_block_lt {s : ℕ} (P : Finpartition (range s)) (hP : 2 ≤ P.parts.card)
     {B : Finset ℕ} (hB : B ∈ P.parts) : B.card < s := by
   classical
-  -- B ⊆ range s, so B.card ≤ s. If B.card = s then B = range s, forcing P.parts = {range s}, so
-  -- parts.card = 1, contradicting hP.
-  have hsub : B ⊆ range s := by
-    have := P.le hB
-    simpa using this
-  have hle : B.card ≤ s := by simpa using Finset.card_le_card hsub
-  rcases lt_or_eq_of_le hle with h | h
-  · exact h
-  · exfalso
-    -- B.card = s = (range s).card and B ⊆ range s ⇒ B = range s.
-    have hcard : B.card = (range s).card := by simpa using h
-    have hBeq : B = range s := Finset.eq_of_subset_of_card_le hsub (by rw [hcard])
-    -- Every other part C ≠ B is disjoint from B = range s but ⊆ range s, hence empty — but parts are
-    -- nonempty (`nonempty_of_mem_parts`). So parts ⊆ {B}, hence card ≤ 1, contradicting hP.
-    have honly : ∀ C ∈ P.parts, C = B := by
-      intro C hC
-      by_contra hCB
-      have hdisj : Disjoint C B := P.disjoint hC hB hCB
-      have hCsub : C ⊆ range s := by have := P.le hC; simpa using this
-      have hCempty : C = ∅ := by
-        rw [hBeq] at hdisj
-        -- `Disjoint C (range s)` and `C ⊆ range s` ⇒ `Disjoint C C` ⇒ `C = ∅`.
-        have : Disjoint C C := hdisj.mono_right hCsub
-        exact (Finset.disjoint_self_iff_empty C).mp this
-      exact (P.nonempty_of_mem_parts hC).ne_empty hCempty
-    have hsubsingle : P.parts ⊆ {B} := fun C hC => by simp [honly C hC]
-    have : P.parts.card ≤ 1 := by
-      calc P.parts.card ≤ ({B} : Finset (Finset ℕ)).card := Finset.card_le_card hsubsingle
-        _ = 1 := Finset.card_singleton B
-    omega
+  -- Pick a SECOND part C ≠ B (parts.card ≥ 2). C is nonempty and disjoint from B, so any of its
+  -- elements lies in range s but outside B — witnessing B ⊊ range s, whence B.card < s.
+  obtain ⟨C, hC, hCB⟩ := Finset.exists_mem_ne hP B
+  obtain ⟨x, hxC⟩ := P.nonempty_of_mem_parts hC
+  have hxB : x ∉ B := Finset.disjoint_left.mp (P.disjoint hC hB hCB) hxC
+  have hCsub : C ⊆ range s := by simpa using P.le hC
+  have hsub : B ⊆ range s := by simpa using P.le hB
+  have hlt : B ⊂ range s := (Finset.ssubset_iff_of_subset hsub).mpr ⟨x, hCsub hxC, hxB⟩
+  simpa using Finset.card_lt_card hlt
 
 /-! ### The `s = 2` special case (a single geometric series) and the closed forms (`cor:closed`) -/
 
@@ -177,9 +156,7 @@ theorem s2_collapse_value (q : ℕ) (hq : 2 ≤ q) :
   have hpivot : (1 : ℚ) - ((q : ℚ) ^ 2)⁻¹ ≠ 0 := by
     have h2 : ((q : ℚ) ^ 2)⁻¹ < 1 := by
       rw [inv_lt_one_iff₀]; right; nlinarith [hgt, hqpos]
-    have h3 : (0 : ℚ) < (q : ℚ) ^ 2 := by positivity
-    have : (0 : ℚ) < ((q : ℚ) ^ 2)⁻¹ := by positivity
-    linarith
+    exact sub_ne_zero.mpr h2.ne'
   unfold closedI2
   rw [div_div, div_eq_div_iff (mul_ne_zero hq0 hpivot) hq1]
   field_simp
@@ -238,7 +215,7 @@ theorem nestedRHS_two (I : ℕ → ℕ → ℚ) (q : ℕ) (hI1 : I 1 q = 1) (hq 
     rw [h1]
     have h2 : (1 : ℕ) ≤ q := by omega
     push_cast [Nat.cast_sub h2]; ring
-  have hch : (1 : ℕ) + Nat.choose 1 2 = 1 := by decide
+  have hch : (1 : ℕ) + Nat.choose 1 2 = 1 := rfl
   rw [hch, hdf]; field_simp
 
 set_option maxRecDepth 8000 in
@@ -291,7 +268,7 @@ theorem nested_reproduces_I2 (I : ℕ → ℕ → ℚ) (hI : SatisfiesNested I) 
   have hbase : I 1 q = 1 := hI1 q
   have heq : I 2 q * (1 - ((q : ℚ) ^ L5fix.selfLoopExponent 2)⁻¹) = ((q : ℚ) - 1) / q := by
     rw [hrec 2 q le_rfl hq]; exact nestedRHS_two I q hbase hq
-  have hexp : L5fix.selfLoopExponent 2 = 2 := by unfold L5fix.selfLoopExponent; decide
+  have hexp : L5fix.selfLoopExponent 2 = 2 := rfl
   rw [hexp] at heq
   have hpivot : (1 : ℚ) - ((q : ℚ) ^ 2)⁻¹ ≠ 0 := by
     have h := L5fix.selfLoop_geometric 2 q le_rfl hq
@@ -334,7 +311,7 @@ theorem nested_reproduces_I3 (I : ℕ → ℕ → ℚ) (hI : SatisfiesNested I) 
       + 3 * (((q : ℚ) * ((q : ℚ) - 1)) * (((q : ℚ) ^ 3)⁻¹ * ((q : ℚ) / ((q : ℚ) + 1)))
           * (((q : ℚ))⁻¹)) := by
     rw [hrec 3 q (by norm_num) hq, nestedRHS_three I q hbase hq, hdf3, hdf2, hI2]
-  have hexp : L5fix.selfLoopExponent 3 = 5 := by unfold L5fix.selfLoopExponent; decide
+  have hexp : L5fix.selfLoopExponent 3 = 5 := rfl
   rw [hexp] at heq
   have hpivot : (1 : ℚ) - ((q : ℚ) ^ 5)⁻¹ ≠ 0 := by
     have h := L5fix.selfLoop_geometric 3 q (by norm_num) hq
@@ -377,17 +354,11 @@ the COUNTING limit `lim_N V_N` of `lem:collapse` — the level-`N` finite geomet
 rational value — NOT just the algebraic identity. PROVED (`r^{N+1} → 0` for `|r| < 1`). -/
 theorem geometricLimit_of_selfLoop (a r : ℚ) (hr0 : 0 < r) (hr1 : r < 1) :
     Filter.Tendsto (geomTrunc a r) Filter.atTop (nhds (a / (1 - r))) := by
-  have hrne : r ≠ 1 := ne_of_lt hr1
-  have hpow : Filter.Tendsto (fun N => r ^ (N + 1)) Filter.atTop (nhds 0) := by
-    have h := tendsto_pow_atTop_nhds_zero_of_lt_one (le_of_lt hr0) hr1
-    exact h.comp (Filter.tendsto_add_atTop_nat 1)
+  have hpow : Filter.Tendsto (fun N => r ^ (N + 1)) Filter.atTop (nhds 0) :=
+    (tendsto_pow_atTop_nhds_zero_of_lt_one hr0.le hr1).comp (Filter.tendsto_add_atTop_nat 1)
   have hnum : Filter.Tendsto (fun N => a * (1 - r ^ (N + 1))) Filter.atTop (nhds (a * (1 - 0))) :=
     tendsto_const_nhds.mul (tendsto_const_nhds.sub hpow)
-  have hdiv : Filter.Tendsto (fun N => a * (1 - r ^ (N + 1)) / (1 - r)) Filter.atTop
-      (nhds (a * (1 - 0) / (1 - r))) :=
-    hnum.div_const _
-  have heq : a * (1 - 0) / (1 - r) = a / (1 - r) := by ring
-  rw [heq] at hdiv
-  exact hdiv
+  unfold geomTrunc
+  simpa using hnum.div_const (1 - r)
 
 end LeanUrat.NestedCollapse

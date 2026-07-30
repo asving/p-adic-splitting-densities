@@ -112,15 +112,13 @@ theorem L3_liftWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] 
   -- Lemma K1 at the current key gives the attained slot-minimum.
   have hSMA := σ.hK1 Φhat B (σ.e * g + 1) hΦne hDev
   obtain ⟨-, j₀, hj₀N, hj₀nz, hj₀eq⟩ := hSMA
-  have hj₀nz' : B j₀ ≠ 0 := hj₀nz
   have hsumnz : (∑ k ∈ Finset.range (g + 1), if j₀ = σ.e * k then cc k else 0) ≠ 0 := by
-    simpa only [hBdef] using hj₀nz'
+    simpa only [hBdef] using hj₀nz
   obtain ⟨k₀, hk₀mem, hk₀ne⟩ := Finset.exists_ne_zero_of_sum_ne_zero hsumnz
   rw [Finset.mem_range] at hk₀mem
   have hcond : j₀ = σ.e * k₀ := by
     by_contra h
-    rw [if_neg h] at hk₀ne
-    exact hk₀ne rfl
+    exact hk₀ne (if_neg h)
   rw [if_pos hcond] at hk₀ne
   have hBval : B j₀ = cc k₀ := by
     simp only [hBdef]
@@ -128,8 +126,7 @@ theorem L3_liftWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] 
     · rw [if_pos hcond]
     · intro k _ hkne
       exact if_neg (fun hh => hkne (Nat.eq_of_mul_eq_mul_left σ.he (hh.symm.trans hcond)))
-    · intro h
-      exact absurd (Finset.mem_range.mpr (by omega : k₀ < g + 1)) h
+    · exact fun h => absurd (Finset.mem_range.mpr hk₀mem) h
   rw [hj₀eq]
   change σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
   rw [hBval, hcond, σ.hwΦ]

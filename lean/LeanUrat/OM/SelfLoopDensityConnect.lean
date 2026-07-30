@@ -158,11 +158,9 @@ theorem stratumCount1_selfLoop_ratio (s N : ℕ) (hs : 0 < s) (hsN : s < N) :
   have hidxQ : (StratumOrder1.stratumCount1 p s N (Drainage.selfLoopCell s) : ℚ)
         * (p : ℚ) ^ (L5fix.selfLoopExponent s + 1)
       = ((p : ℚ) - 1) * (p : ℚ) ^ (s * (N - 1)) := by
-    have h : ((StratumOrder1.stratumCount1 p s N (Drainage.selfLoopCell s)
-          * p ^ (L5fix.selfLoopExponent s + 1) : ℕ) : ℚ)
-        = (((p - 1) * p ^ (s * (N - 1)) : ℕ) : ℚ) := by exact_mod_cast congrArg (Nat.cast) hidx
+    have h := congrArg (Nat.cast (R := ℚ)) hidx
     push_cast [Nat.cast_sub hp.out.one_le] at h ⊢
-    linarith [h]
+    linarith
   unfold SelfLoopResum.slBoxRatio
   rw [← hidxQ, mul_assoc, mul_inv_cancel₀ hpow, mul_one]
 
@@ -255,9 +253,8 @@ census. -/
 theorem hnode_selfloop_box_order1 {s q : ℕ} (hq : 2 ≤ q) (hs : 2 ≤ s) (depth0 : ℚ) :
     Tendsto (fun d => ∑ k ∈ Finset.range d, (q : ℚ) ^ k * floorTowerMass s q depth0 k) atTop
       (nhds (depth0 * (MontesAxiom.countPivot s q)⁻¹)) := by
-  have h := SelfLoopIterate.hnode_selfloop_order1 (s := s) (q := q) hq hs depth0
-  refine h.congr fun d => ?_
-  exact (floorAgg_eq_aggSelfLoopBoxTower s q (by omega) (by omega) depth0 d).symm
+  exact (SelfLoopIterate.hnode_selfloop_order1 hq hs depth0).congr fun d =>
+    (floorAgg_eq_aggSelfLoopBoxTower s q (by omega) (by omega) depth0 d).symm
 
 /-- **`hnode_selfloop_box_child_q2` (the engine tie, child-normalized).**  At the minimal instance
 `p = q = 2, s = 2` with the child depth-0 census `depth0 = (q−1)/q = 1/2`, the FLOOR box `h_node`

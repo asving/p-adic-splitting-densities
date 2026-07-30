@@ -437,7 +437,8 @@ namespace RescaleC1
 
 /-- The first values of `w`: `w 2 = 2`, `w 3 = 5`, `w 4 = 9` (blueprint `eq:rfactor`). PROVED. -/
 theorem w_values (C : RescaleC1) : C.w 2 = 2 ∧ C.w 3 = 5 ∧ C.w 4 = 9 := by
-  rw [C.hw]; refine ⟨?_, ?_, ?_⟩ <;> (unfold L5fix.selfLoopExponent; norm_num)
+  rw [C.hw]
+  exact ⟨rfl, rfl, rfl⟩
 
 /-- **C1 self-loop pivot positivity.** For `s ≥ 2`, `q ≥ 2`, the self-loop pivot `1 − r(s,q) > 0`. -/
 theorem pivot_pos (C : RescaleC1) (s q : ℕ) (hs : 2 ≤ s) (hq : 2 ≤ q) :
@@ -459,29 +460,7 @@ theorem selfLoopExponent_eq_blockExponent_sub_one (s : ℕ) :
   rw [Nat.choose_two_right]
   -- goal: s * (s + 1) / 2 - 1 = (s + s * (s - 1) / 2) - 1
   have hkey : s * (s + 1) / 2 = s + s * (s - 1) / 2 := by
-    rcases Nat.eq_zero_or_pos s with hs | hs
-    · subst hs; rfl
-    · -- for s ≥ 1: s*(s-1) = s*s - s, and s + s*(s-1)/2 = (2s + s*(s-1))/2 = s*(s+1)/2
-      have h1 : s * (s - 1) = s * s - s := by
-        rw [Nat.mul_sub_one]
-      have hs1 : 1 ≤ s := hs
-      -- multiply-free: show 2 * (s + s*(s-1)/2) = 2 * (s*(s+1)/2) via divisibility
-      have hdvd1 : 2 ∣ s * (s - 1) := by
-        have := Nat.even_mul_pred_self s
-        exact (even_iff_two_dvd).mp this
-      have hdvd2 : 2 ∣ s * (s + 1) := by
-        have := Nat.even_mul_succ_self s
-        exact (even_iff_two_dvd).mp this
-      have e1 : 2 * (s + s * (s - 1) / 2) = 2 * s + s * (s - 1) := by
-        rw [Nat.mul_add, Nat.mul_div_cancel' hdvd1]
-      have e2 : 2 * (s * (s + 1) / 2) = s * (s + 1) := Nat.mul_div_cancel' hdvd2
-      have e3 : 2 * s + s * (s - 1) = s * (s + 1) := by
-        rw [h1]
-        have : s ≤ s * s := Nat.le_mul_of_pos_left s hs
-        cases s with
-        | zero => rfl
-        | succ k => ring_nf; omega
-      omega
+    simpa [mul_comm, add_comm] using Nat.triangle_succ s
   rw [hkey]
 
 end RescaleC1

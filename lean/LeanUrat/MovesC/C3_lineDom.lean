@@ -41,8 +41,7 @@ theorem C3_lineDom (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realiza
   -- ψ^μ ∣ Ranch and Ranch ≠ 0 ⇒ μ·g = deg ψ^μ ≤ deg Ranch ≤ wSide/e; scale by e (e ∣ wSide) and D.
   have widthConfine : ∀ (ν : Node p F), ν.μ * ν.childWidth ≤ ν.wSide * ν.Dwidth := by
     intro ν
-    have hRne : ν.Ranch ≠ 0 := by
-      intro h0; apply ν.hOrd.2; rw [h0]; exact dvd_zero _
+    have hRne : ν.Ranch ≠ 0 := fun h0 => ν.hOrd.2 (by rw [h0]; exact dvd_zero _)
     have hdvd : (ν.ψ ^ ν.μ).natDegree ≤ ν.Ranch.natDegree :=
       Polynomial.natDegree_le_of_dvd ν.hOrd.1 hRne
     have hdegpow : (ν.ψ ^ ν.μ).natDegree = ν.μ * ν.g := by
@@ -73,13 +72,12 @@ theorem C3_lineDom (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realiza
     induction I with
     | zero =>
       intro hI J hJI c hc
-      have hJ0 : J = 0 := Nat.le_zero.mp hJI
-      subst hJ0
-      exact le_refl _
+      obtain rfl := Nat.le_zero.mp hJI
+      exact le_rfl
     | succ k ih =>
       intro hI J hJI c hc
-      rcases eq_or_lt_of_le hJI with heq | hlt
-      · subst heq; exact le_refl _
+      rcases eq_or_lt_of_le hJI with rfl | hlt
+      · exact le_rfl
       · have hJk : J ≤ k := Nat.lt_succ_iff.mp hlt
         have hstepk := hstep k hI
         have hE := hstepk.2.2.2.2.1        -- window: s0'+wSide' ≤ μ_k
@@ -102,9 +100,8 @@ theorem C3_lineDom (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realiza
             exact (hta.2.2.1 ((H.nodes[k+1]'hI).s0 + (H.nodes[k+1]'hI).wSide)
               (Nat.le_add_right _ _) (le_refl _) hlt').le
           · -- adjacent: (SAE) vertex-equality clause
-            have hveq := hta.2.2.2 heq'
             rw [heq']
-            exact le_of_eq hveq.symm
+            exact (hta.2.2.2 heq').symm.le
         -- the interior nests inside node k's interior, so the IH applies at k
         have hck : c < (H.nodes[k]'(by omega)).μ * (H.nodes[k]'(by omega)).childWidth :=
           lt_of_lt_of_le hcB (Nat.mul_le_mul hE le_rfl)

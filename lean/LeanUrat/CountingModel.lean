@@ -206,10 +206,8 @@ theorem decidedMeasure_le_one (σ : FactorizationType) (N : ℕ) : M.decidedMeas
       div_nonneg (M.undecidedCount_nonneg N) (le_of_lt (M.qpow_pos (n * N)))
     have hsplit : (∑ τ ∈ M.typeMenu, M.decidedMeasure τ N)
         = M.decidedMeasure σ N + (∑ τ ∈ M.typeMenu \ {σ}, M.decidedMeasure τ N) := by
-      rw [← Finset.sum_singleton (fun τ => M.decidedMeasure τ N) σ,
-        ← Finset.sum_union (by simp [Finset.disjoint_sdiff])]
-      congr 1
-      rw [Finset.union_comm, Finset.sdiff_union_of_subset (by simpa using hσ)]
+      rw [Finset.sdiff_singleton_eq_erase]
+      exact (Finset.add_sum_erase _ _ hσ).symm
     rw [hsplit] at hsum
     linarith
   · -- off the menu the decided count is 0, so the measure is 0 ≤ 1.
@@ -282,7 +280,7 @@ def upperTailBound : Prop :=
 /-- **Every `CountingModel` satisfies `upperTailBound`** — it is precisely the structural field
 `upper_tail` (re-expressed through `decidedMeasure`/`undecided`). PROVED. -/
 theorem upperTailBound_holds : M.upperTailBound :=
-  fun σ N K hNK => M.upper_tail σ N K hNK
+  M.upper_tail
 
 /-- **The upper bracket, PROVED from `upperTailBound`.** If the per-level tail bound holds, then
 taking `K → ∞` (`density_isLimit`) gives `countingDensity σ ≤ decidedMeasure σ N + undecided N`. So
@@ -321,10 +319,8 @@ theorem decidedMeasure_lt_box_of_other_mass (σ : FactorizationType) (N : ℕ)
   · have hsum := M.decidedMeasure_sum_add_undecided N
     have hsplit : (∑ τ ∈ M.typeMenu, M.decidedMeasure τ N)
         = M.decidedMeasure σ N + (∑ τ ∈ M.typeMenu \ {σ}, M.decidedMeasure τ N) := by
-      rw [← Finset.sum_singleton (fun τ => M.decidedMeasure τ N) σ,
-        ← Finset.sum_union (by simp [Finset.disjoint_sdiff])]
-      congr 1
-      rw [Finset.union_comm, Finset.sdiff_union_of_subset (by simpa using hσ)]
+      rw [Finset.sdiff_singleton_eq_erase]
+      exact (Finset.add_sum_erase _ _ hσ).symm
     rw [hsplit] at hsum
     linarith
   · -- off menu σ has measure 0, and the gap forces 0 < 1.

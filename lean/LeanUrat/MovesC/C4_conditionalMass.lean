@@ -76,9 +76,7 @@ lemma clause_count [Fact p.Prime] (cl : LevelClause p m) :
   rw [Nat.card_congr (clauseCountEquiv cl)]
   exact cl.count
 
-lemma card_zmod [Fact p.Prime] : Nat.card (ZMod p) = p := by
-  haveI : NeZero p := ⟨(Fact.out (p := p.Prime)).pos.ne'⟩
-  rw [Nat.card_eq_fintype_card, ZMod.card]
+lemma card_zmod [Fact p.Prime] : Nat.card (ZMod p) = p := Nat.card_zmod p
 
 lemma clausesCountList [Fact p.Prime] (L : List (LevelClause p m))
     (hdisj : L.Pairwise (fun c₁ c₂ => Disjoint c₁.support c₂.support)) :
@@ -88,7 +86,7 @@ lemma clausesCountList [Fact p.Prime] (L : List (LevelClause p m))
   | nil =>
     simp only [List.map_nil, List.sum_nil, pow_zero, mul_one]
     rw [Nat.card_congr (Equiv.subtypeUnivEquiv (fun x => by simp)),
-      Nat.card_fun, card_zmod, Nat.card_eq_fintype_card, Fintype.card_fin]
+      Nat.card_fun, card_zmod, Nat.card_fin]
   | cons cl rest IH =>
     obtain ⟨hcl_disj, hrest_disj⟩ := List.pairwise_cons.mp hdisj
     have IH' := IH hrest_disj
@@ -118,7 +116,7 @@ lemma clausesCountList [Fact p.Prime] (L : List (LevelClause p m))
         (fun _ : {c // c ∈ cl.support} → ZMod p => True) Q
       have hAtriv : Nat.card {_a : {c // c ∈ cl.support} → ZMod p // True} = p ^ cl.support.card := by
         rw [Nat.card_congr (Equiv.subtypeUnivEquiv (fun _ => trivial)), Nat.card_fun, card_zmod,
-          Nat.card_eq_fintype_card, Fintype.card_coe]
+          Nat.card_eq_finsetCard]
       rw [hAtriv] at hjoint
       rw [← hjoint]
       exact Nat.card_congr (Equiv.subtypeEquivRight (fun x => by rw [hQrest x, true_and]))
@@ -201,8 +199,7 @@ theorem C4_conditionalMass {m : ℕ} (Sigma : Locus p m) (fd : FreshData p m) (h
   have hpartition : Nat.card {c // Sigma.pinned c = false}
       + Nat.card {c // ¬ (Sigma.pinned c = false)} = m := by
     have h := Nat.card_congr (Equiv.sumCompl (fun c => Sigma.pinned c = false))
-    rw [Nat.card_sum, Nat.card_eq_fintype_card (α := Fin m), Fintype.card_fin] at h
-    exact h
+    rwa [Nat.card_sum, Nat.card_fin] at h
   -- Assemble
   rw [step1, hmass]
   have hpos : 0 < p ^ Nat.card {c // ¬ (Sigma.pinned c = false)} :=

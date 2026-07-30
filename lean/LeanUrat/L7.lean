@@ -52,17 +52,11 @@ theorem eval_reflect_eq (f : Polynomial ℚ) (x : ℚ) (hx : x ≠ 0) (N : ℕ) 
   have key := Polynomial.eval₂_reflect_mul_pow (RingHom.id ℚ) x⁻¹ N f hf
   rw [eval₂_id, eval₂_id, invOf_eq_inv, inv_inv] at key
   -- key : (reflect N f).eval x * (x⁻¹) ^ N = f.eval x⁻¹
-  have hxpow : (x⁻¹ : ℚ) ^ N * x ^ N = 1 := by
-    rw [← mul_pow, inv_mul_cancel₀ hx, one_pow]
-  calc (Polynomial.reflect N f).eval x
-      = (Polynomial.reflect N f).eval x * ((x⁻¹) ^ N * x ^ N) := by rw [hxpow, mul_one]
-    _ = ((Polynomial.reflect N f).eval x * (x⁻¹) ^ N) * x ^ N := by ring
-    _ = f.eval x⁻¹ * x ^ N := by rw [key]
+  rw [← key, mul_assoc, ← mul_pow, inv_mul_cancel₀ hx, one_pow, mul_one]
 
 /-- The reflection of a nonzero polynomial is nonzero (`Polynomial.reflect_eq_zero_iff`). -/
-theorem reflect_ne (f : Polynomial ℚ) (hf : f ≠ 0) (N : ℕ) : Polynomial.reflect N f ≠ 0 := by
-  intro h
-  exact hf (Polynomial.reflect_eq_zero_iff.mp h)
+theorem reflect_ne (f : Polynomial ℚ) (hf : f ≠ 0) (N : ℕ) : Polynomial.reflect N f ≠ 0 :=
+  mt Polynomial.reflect_eq_zero_iff.mp hf
 
 /-- **Palindromy transfer (the L7 packaging lemma).** If `num/den` and `tnum/tden` agree in `ℚ(t)`
 (the cross-multiplied `num * tden = tnum * den`), with `den ≠ 0`, `tden ≠ 0`, and `tnum/tden`
@@ -98,13 +92,10 @@ theorem isPalindromic_of_agree
   set B : Set ℚ := {(0 : ℚ)} ∪ {x | den.IsRoot x} ∪ {x | tden.IsRoot x}
       ∪ {x | (Polynomial.reflect N den).IsRoot x} ∪ {x | (Polynomial.reflect N tden).IsRoot x}
       with hBdef
-  have hBfin : B.Finite := by
-    refine Set.Finite.union (Set.Finite.union (Set.Finite.union (Set.Finite.union ?_ ?_) ?_) ?_) ?_
-    · exact Set.finite_singleton 0
-    · exact Polynomial.finite_setOf_isRoot hden
-    · exact Polynomial.finite_setOf_isRoot htden
-    · exact Polynomial.finite_setOf_isRoot hrden
-    · exact Polynomial.finite_setOf_isRoot hrtden
+  have hBfin : B.Finite :=
+    ((((Set.finite_singleton 0).union (Polynomial.finite_setOf_isRoot hden)).union
+        (Polynomial.finite_setOf_isRoot htden)).union
+      (Polynomial.finite_setOf_isRoot hrden)).union (Polynomial.finite_setOf_isRoot hrtden)
   -- The target polynomial identity (cross-multiplied palindromy of `num/den`).
   have hpoly : (Polynomial.reflect N num) * den = num * (Polynomial.reflect N den) := by
     have hsub : (Polynomial.reflect N num) * den - num * (Polynomial.reflect N den) = 0 := by
@@ -119,16 +110,10 @@ theorem isPalindromic_of_agree
       have hxne : x ≠ 0 := hx0
       have hxinv : x⁻¹ ≠ 0 := inv_ne_zero hxne
       -- Inverse-evaluation nonvanishing from reflect nonvanishing.
-      have hdenxinv : den.eval x⁻¹ ≠ 0 := by
-        have := eval_reflect_eq den x hxne N hNden
-        intro h0
-        apply hrdenx
-        rw [this, h0, zero_mul]
-      have htdenxinv : tden.eval x⁻¹ ≠ 0 := by
-        have := eval_reflect_eq tden x hxne N hNtden
-        intro h0
-        apply hrtdenx
-        rw [this, h0, zero_mul]
+      have hdenxinv : den.eval x⁻¹ ≠ 0 := fun h0 =>
+        hrdenx (by rw [eval_reflect_eq den x hxne N hNden, h0, zero_mul])
+      have htdenxinv : tden.eval x⁻¹ ≠ 0 := fun h0 =>
+        hrtdenx (by rw [eval_reflect_eq tden x hxne N hNtden, h0, zero_mul])
       -- Cross-multiplied agreement at `x` and at `x⁻¹` (from `hagree` as a polynomial identity).
       have hag_x : num.eval x * tden.eval x = tnum.eval x * den.eval x := by
         have := congrArg (Polynomial.eval x) hagree
@@ -192,9 +177,8 @@ theorem ratfunc_agree_of_infinite
     have h2 := hden₂ a ha
     have heq := hagree a ha
     -- clear denominators: num₁·den₂ = num₂·den₁ at a
-    have : num₁.eval a * den₂.eval a = num₂.eval a * den₁.eval a := by
-      field_simp at heq
-      linarith [heq]
+    have : num₁.eval a * den₂.eval a = num₂.eval a * den₁.eval a :=
+      (div_eq_div_iff h1 h2).mp heq
     simp only [Set.mem_setOf_eq, Polynomial.IsRoot, Polynomial.eval_sub,
       Polynomial.eval_mul]
     rw [this]; ring
@@ -225,13 +209,9 @@ theorem tame_to_all_primes
   set Sℕ : Set ℕ := {m : ℕ | m.Prime ∧ n < m} with hSℕ
   -- `Sℕ` is infinite: `{m | m.Prime}` is infinite, and `Sℕ` differs from it by removing
   -- the finitely many primes `≤ n` (those `m ≤ n`, a subset of `{0,…,n}`).
-  have hSℕ_inf : Sℕ.Infinite := by
-    have hsub : {m : ℕ | m.Prime} \ {m : ℕ | m ≤ n} ⊆ Sℕ := by
-      intro m hm
-      exact ⟨hm.1, not_le.mp hm.2⟩
-    apply Set.Infinite.mono hsub
-    apply Set.Infinite.sdiff Nat.infinite_setOf_prime
-    exact Set.finite_Iic n |>.subset (fun m hm => hm)
+  have hSℕ_inf : Sℕ.Infinite :=
+    (Nat.infinite_setOf_prime.sdiff ((Set.finite_Iic n).subset fun m hm => hm)).mono
+      fun m hm => ⟨hm.1, not_le.mp hm.2⟩
   -- Cast `Sℕ` into `ℚ`; the cast `ℕ → ℚ` is injective so the image is still infinite.
   set Tprime : Set ℚ := (Nat.cast : ℕ → ℚ) '' Sℕ with hTprime
   have hTprime_inf : Tprime.Infinite :=

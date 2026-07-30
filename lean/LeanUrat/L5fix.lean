@@ -43,11 +43,10 @@ real pole at `q ≥ 2`). -/
 theorem selfLoop_geometric (e q : ℕ) (he : 2 ≤ e) (hq : 2 ≤ q) :
     (0 : ℚ) < 1 - ((q : ℚ) ^ selfLoopExponent e)⁻¹ := by
   have hexp : 1 ≤ selfLoopExponent e := by
-    have h6 : 6 ≤ e * (e + 1) := by nlinarith
+    have h6 : 6 ≤ e * (e + 1) := Nat.mul_le_mul he (by omega : 3 ≤ e + 1)
     unfold selfLoopExponent; omega
   have hgt : (1 : ℚ) < (q : ℚ) ^ selfLoopExponent e :=
     one_lt_pow₀ (by exact_mod_cast (by omega : 1 < q)) (by omega)
-  have : ((q : ℚ) ^ selfLoopExponent e)⁻¹ < 1 := by simpa using inv_lt_one_of_one_lt₀ hgt
-  linarith
+  exact sub_pos.mpr (inv_lt_one_of_one_lt₀ hgt)
 
 end LeanUrat.L5fix

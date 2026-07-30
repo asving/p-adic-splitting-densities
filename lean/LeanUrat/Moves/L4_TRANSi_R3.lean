@@ -67,9 +67,8 @@ private lemma wsum_ge' {p : ℕ} [Fact p.Prime] {ι : Type*} (W : Polynomial ℤ
   revert hm hsum
   induction S using Finset.induction with
   | empty =>
-    intro hm hsum
-    simp only [Finset.sum_empty] at hsum
-    exact absurd rfl hsum
+    intro _ hsum
+    exact absurd Finset.sum_empty hsum
   | insert i T hiT ih =>
     intro hm hsum
     rw [Finset.sum_insert hiT] at hsum ⊢
@@ -82,24 +81,19 @@ private lemma wsum_ge' {p : ℕ} [Fact p.Prime] {ι : Type*} (W : Polynomial ℤ
       · have h1 : c ≤ W (a i) := hm i (Finset.mem_insert_self i T) hai
         have h2 : c ≤ W (∑ j ∈ T, a j) :=
           ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        have hu := hult (a i) (∑ j ∈ T, a j) hai hsT hsum
-        calc c ≤ min (W (a i)) (W (∑ j ∈ T, a j)) := le_min h1 h2
-          _ ≤ W (a i + ∑ j ∈ T, a j) := hu
+        exact le_trans (le_min h1 h2) (hult (a i) (∑ j ∈ T, a j) hai hsT hsum)
 
 /-- **Lift-free core of `L4_TRANSi`** (submultiplicativity `w' f + w' g ≤ w'(f·g)`): all
 the lift structure is used only through the abstract exact-remainder DIV hypothesis
 `hDIVw`.  Reused at the SAME KEY (regrade instance) by HC1.V1. -/
 theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hd1 : 1 ≤ Φhat.natDegree) (e' h' : ℕ) (w' : Polynomial ℤ_[p] → ℤ) (hw' : IsSlotMinWeight w' Φhat e' h' σ.w) (hiaug : IAug σ Φhat e' h') (hDIVw : ∀ (B B'' : Polynomial ℤ_[p]), B ≠ 0 → B'' ≠ 0 → B.degree < Φhat.degree → B''.degree < Φhat.degree → (B * B'') %ₘ Φhat ≠ 0 ∧ σ.w ((B * B'') %ₘ Φhat) = σ.w B + σ.w B'') (f gg : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : gg ≠ 0) (hfg : f * gg ≠ 0) : w' f + w' gg ≤ w' (f * gg) := by
   classical
-  have hΦmon : Φhat.Monic := hmon
   have hΦne : Φhat ≠ 0 := hmon.ne_zero
-  have hΦd1 : 1 ≤ Φhat.natDegree := hd1
-  have hbot : (⊥ : WithBot ℕ) < Φhat.degree := by
-    rw [bot_lt_iff_ne_bot]
-    intro hb; exact hΦne (Polynomial.degree_eq_bot.mp hb)
+  have hbot : (⊥ : WithBot ℕ) < Φhat.degree :=
+    bot_lt_iff_ne_bot.mpr (Polynomial.degree_ne_bot.mpr hΦne)
   -- ── (1) developments of f and gg (Fact A) and their slot lower bounds
-  obtain ⟨B, N, hBdev⟩ := L0_FactA_exists Φhat hΦmon hΦd1 f
-  obtain ⟨B'', M, hB''dev⟩ := L0_FactA_exists Φhat hΦmon hΦd1 gg
+  obtain ⟨B, N, hBdev⟩ := L0_FactA_exists Φhat hmon hd1 f
+  obtain ⟨B'', M, hB''dev⟩ := L0_FactA_exists Φhat hmon hd1 gg
   have hbf := (hw' f B N hf hBdev).1
   have hbg := (hw' gg B'' M hg hB''dev).1
   -- ── (2) division facts for pairwise products: exact remainder weight (L3_DIV) …
@@ -147,7 +141,7 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       · refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
         rw [Finset.sup_lt_iff hbot]
         intro x hx
-        exact Polynomial.degree_modByMonic_lt _ hΦmon
+        exact Polynomial.degree_modByMonic_lt _ hmon
       · refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
         rw [Finset.sup_lt_iff hbot]
         intro x hx
@@ -161,7 +155,7 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
             Polynomial.natDegree_lt_natDegree hB1 (hBdev.1 x.1)
           have hd2 : (B'' x.2).natDegree < Φhat.natDegree :=
             Polynomial.natDegree_lt_natDegree hB2 (hB''dev.1 x.2)
-          have hqd := Polynomial.natDegree_divByMonic (B x.1 * B'' x.2) hΦmon
+          have hqd := Polynomial.natDegree_divByMonic (B x.1 * B'' x.2) hmon
           have hprodd : (B x.1 * B'' x.2).natDegree ≤ (B x.1).natDegree + (B'' x.2).natDegree :=
             Polynomial.natDegree_mul_le
           have hlt : ((B x.1 * B'' x.2) /ₘ Φhat).natDegree < Φhat.natDegree := by omega
@@ -245,15 +239,8 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   have hultW : ∀ f₁ g₁ : Polynomial ℤ_[p], f₁ ≠ 0 → g₁ ≠ 0 → f₁ + g₁ ≠ 0 →
       min ((e' : ℤ) * σ.w f₁) ((e' : ℤ) * σ.w g₁) ≤ (e' : ℤ) * σ.w (f₁ + g₁) := by
     intro f₁ g₁ h1 h2 h3
-    have h := σ.hwult f₁ g₁ h1 h2 h3
-    have he' : (0 : ℤ) ≤ (e' : ℤ) := Int.natCast_nonneg e'
-    rcases le_total (σ.w f₁) (σ.w g₁) with hle | hle
-    · rw [min_eq_left hle] at h
-      calc min ((e' : ℤ) * σ.w f₁) ((e' : ℤ) * σ.w g₁) ≤ (e' : ℤ) * σ.w f₁ := min_le_left _ _
-        _ ≤ (e' : ℤ) * σ.w (f₁ + g₁) := mul_le_mul_of_nonneg_left h he'
-    · rw [min_eq_right hle] at h
-      calc min ((e' : ℤ) * σ.w f₁) ((e' : ℤ) * σ.w g₁) ≤ (e' : ℤ) * σ.w g₁ := min_le_right _ _
-        _ ≤ (e' : ℤ) * σ.w (f₁ + g₁) := mul_le_mul_of_nonneg_left h he'
+    rw [← mul_min_of_nonneg _ _ (Int.natCast_nonneg e')]
+    exact mul_le_mul_of_nonneg_left (σ.hwult f₁ g₁ h1 h2 h3) (Int.natCast_nonneg e')
   have hslot : ∀ m : ℕ, C m ≠ 0 →
       w' f + w' gg ≤ (e' : ℤ) * σ.w (C m) + (m : ℤ) * (h' : ℤ) := by
     intro m hCm
@@ -283,10 +270,7 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
         obtain ⟨hRne, hRw⟩ := hDIV x hBj hBk
         have b1 := hbf x.1 hx1 hBj
         have b2 := hbg x.2 hx2 hBk
-        rw [hRw]
-        have hexp : (e' : ℤ) * (σ.w (B x.1) + σ.w (B'' x.2))
-            = (e' : ℤ) * σ.w (B x.1) + (e' : ℤ) * σ.w (B'' x.2) := by ring
-        rw [hexp, ← h1]
+        rw [hRw, mul_add, ← h1]
         push_cast
         linarith
       · by_cases h2 : x.1 + x.2 + 1 = m
@@ -300,13 +284,8 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
           have b1 := hbf x.1 hx1 hBj
           have b2 := hbg x.2 hx2 hBk
           have hIA : (h' : ℤ) > (e' : ℤ) * σ.w Φhat := hiaug
-          have hmul : (e' : ℤ) * σ.w (B x.1) + (e' : ℤ) * σ.w (B'' x.2)
-              ≤ (e' : ℤ) * σ.w ((B x.1 * B'' x.2) /ₘ Φhat) + (e' : ℤ) * σ.w Φhat := by
-            calc (e' : ℤ) * σ.w (B x.1) + (e' : ℤ) * σ.w (B'' x.2)
-                = (e' : ℤ) * (σ.w (B x.1) + σ.w (B'' x.2)) := by ring
-              _ ≤ (e' : ℤ) * (σ.w ((B x.1 * B'' x.2) /ₘ Φhat) + σ.w Φhat) :=
-                  mul_le_mul_of_nonneg_left hq (Int.natCast_nonneg e')
-              _ = (e' : ℤ) * σ.w ((B x.1 * B'' x.2) /ₘ Φhat) + (e' : ℤ) * σ.w Φhat := by ring
+          have hmul := mul_le_mul_of_nonneg_left hq (Int.natCast_nonneg e')
+          rw [mul_add, mul_add] at hmul
           rw [← h2]
           push_cast
           linarith
@@ -329,13 +308,9 @@ theorem L4_TRANSi {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ 
   have hψdeg : ψ.natDegree = g := hlift.2.1
   have hg1 : 1 ≤ g := by
     by_contra hcon
-    have hg0 : g = 0 := by omega
-    have h0 : ψ.natDegree = 0 := by rw [hψdeg, hg0]
-    obtain ⟨x, hx⟩ := Polynomial.natDegree_eq_zero.mp h0
-    have h2 : (Polynomial.C x).leadingCoeff = 1 := by rw [hx]; exact hψmon
-    rw [Polynomial.leadingCoeff_C] at h2
-    have hψ1 : ψ = 1 := by rw [← hx, h2, map_one]
-    exact hψ.not_isUnit (by rw [hψ1]; exact isUnit_one)
+    have h0 : ψ.natDegree = 0 := by rw [hψdeg]; omega
+    have hψ1 : ψ = 1 := (Polynomial.Monic.natDegree_eq_zero hψmon).mp h0
+    exact hψ.not_isUnit (hψ1 ▸ isUnit_one)
   obtain ⟨hΦmon, hΦdeg⟩ := L3_liftMonic σ ψ g hg1 Φhat hlift
   have hdegpos : 0 < σ.e * g * σ.Φ.natDegree := Nat.mul_pos (Nat.mul_pos σ.he hg1) σ.hdeg
   have hd1 : 1 ≤ Φhat.natDegree := by rw [hΦdeg]; exact hdegpos
@@ -353,8 +328,7 @@ theorem L4_TRANSi {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ 
       · rw [← hΦdeg]
         exact Polynomial.natDegree_lt_natDegree hz (Polynomial.degree_modByMonic_lt _ hΦmon)
     have hdiv : B * B'' = ((B * B'') /ₘ Φhat) * Φhat + (B * B'') %ₘ Φhat := by
-      conv_lhs => rw [← Polynomial.modByMonic_add_div (B * B'') Φhat]
-      ring
+      linear_combination -Polynomial.modByMonic_add_div (B * B'') Φhat
     have hd := L3_DIV σ ψ g hψdeg hψ hψz Φhat hlift zbar hzbar B B'' hB hB'' hBd' hB''d'
       ((B * B'') %ₘ Φhat) ((B * B'') /ₘ Φhat) hdiv hRd'
     exact ⟨hd.1, hd.2.1⟩

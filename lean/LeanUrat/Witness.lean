@@ -229,8 +229,7 @@ theorem countCellCoeff_trivCell (q : ℕ) : countCellCoeff trivCell q = 1 := by
   simp [countCellCoeff, trivCell, L4.bb1Value, L4.newtonVertexCount, L4.newtonExponent]
 
 /-- `countPivot 0 q = 1` (a leaf node, `0 < 2`). -/
-theorem countPivot_zero (q : ℕ) : countPivot 0 q = 1 := by
-  simp [countPivot]
+theorem countPivot_zero (q : ℕ) : countPivot 0 q = 1 := rfl
 
 /-- `clusterCount` of the witness equals `1` on `trivShape`, `0` elsewhere (matching `stratumCount`).
 PROVED from `clusterCount_rec` + `countCellCoeff_trivCell`. -/
@@ -338,7 +337,7 @@ bundle discharges `goal_theorem_montes`'s `htameFE` hypothesis by a PROOF, keepi
 non-vacuity instance tame-axiom-free. -/
 theorem trivF_tame : TameFunctionalEquation trivF 0 trivType := by
   refine ⟨1, 1, one_ne_zero, fun q' _ _ => ?_, fun x _ _ _ => by simp⟩
-  show (∑ T ∈ trivD2.shapesOf trivType, trivD2.C T q') = _
+  change (∑ T ∈ trivD2.shapesOf trivType, trivD2.C T q') = _
   rw [trivD2_sum_C_eq_one q']
   simp
 

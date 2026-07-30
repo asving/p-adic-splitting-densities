@@ -72,8 +72,8 @@ private lemma wiii_sum_ge (σ : Stage p F) {ι : Type*} (S : Finset ι)
   revert hm hsum
   induction S using Finset.induction with
   | empty =>
-    intro hm hsum
-    simp at hsum
+    intro _ hsum
+    exact absurd Finset.sum_empty hsum
   | insert i T hiT ih =>
     intro hm hsum
     rw [Finset.sum_insert hiT] at hsum ⊢
@@ -184,15 +184,11 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
   have hgsum : gg = ∑ k ∈ Finset.range Ng, Bg k * Φhat ^ k := hdevg.2.2
   have hNf1 : 1 ≤ Nf := by
     by_contra hcon
-    have h0 : Nf = 0 := by omega
-    rw [h0] at hfsum
-    simp only [Finset.range_zero, Finset.sum_empty] at hfsum
+    rw [show Nf = 0 by omega, Finset.range_zero, Finset.sum_empty] at hfsum
     exact hf hfsum
   have hNg1 : 1 ≤ Ng := by
     by_contra hcon
-    have h0 : Ng = 0 := by omega
-    rw [h0] at hgsum
-    simp only [Finset.range_zero, Finset.sum_empty] at hgsum
+    rw [show Ng = 0 by omega, Finset.range_zero, Finset.sum_empty] at hgsum
     exact hg hgsum
   -- ===== slot-min data for f and gg =====
   obtain ⟨hminf, jat, hjatNf, hjatnz, hjateq⟩ := hw' f Bf Nf hf hdevf
@@ -205,11 +201,9 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
     exact ⟨hjatNf, hjatnz, hjateq⟩⟩
   set j₀ := sf.max' hsfne with hj₀def
   have hj₀mem : j₀ ∈ sf := sf.max'_mem hsfne
-  have hj₀all : j₀ < Nf ∧ Bf j₀ ≠ 0 ∧ w' f = (e' : ℤ) * σ.w (Bf j₀) + (j₀ : ℤ) * (h' : ℤ) := by
-    have h := hj₀mem
-    simp only [hsf, Finset.mem_filter, Finset.mem_range] at h
-    exact ⟨h.1, h.2.1, h.2.2⟩
-  obtain ⟨hj₀Nf, hj₀nz, hj₀eq⟩ := hj₀all
+  obtain ⟨hj₀Nf, hj₀nz, hj₀eq⟩ : j₀ < Nf ∧ Bf j₀ ≠ 0
+      ∧ w' f = (e' : ℤ) * σ.w (Bf j₀) + (j₀ : ℤ) * (h' : ℤ) := by
+    simpa only [hsf, Finset.mem_filter, Finset.mem_range] using hj₀mem
   have hstrictf : ∀ j, j < Nf → Bf j ≠ 0 → j₀ < j →
       w' f < (e' : ℤ) * σ.w (Bf j) + (j : ℤ) * (h' : ℤ) := by
     intro j hjN hjnz hgt
@@ -227,11 +221,9 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
     exact ⟨hkatNg, hkatnz, hkateq⟩⟩
   set k₀ := sg.max' hsgne with hk₀def
   have hk₀mem : k₀ ∈ sg := sg.max'_mem hsgne
-  have hk₀all : k₀ < Ng ∧ Bg k₀ ≠ 0 ∧ w' gg = (e' : ℤ) * σ.w (Bg k₀) + (k₀ : ℤ) * (h' : ℤ) := by
-    have h := hk₀mem
-    simp only [hsg, Finset.mem_filter, Finset.mem_range] at h
-    exact ⟨h.1, h.2.1, h.2.2⟩
-  obtain ⟨hk₀Ng, hk₀nz, hk₀eq⟩ := hk₀all
+  obtain ⟨hk₀Ng, hk₀nz, hk₀eq⟩ : k₀ < Ng ∧ Bg k₀ ≠ 0
+      ∧ w' gg = (e' : ℤ) * σ.w (Bg k₀) + (k₀ : ℤ) * (h' : ℤ) := by
+    simpa only [hsg, Finset.mem_filter, Finset.mem_range] using hk₀mem
   have hstrictg : ∀ k, k < Ng → Bg k ≠ 0 → k₀ < k →
       w' gg < (e' : ℤ) * σ.w (Bg k) + (k : ℤ) * (h' : ℤ) := by
     intro k hkN hknz hgt
@@ -250,35 +242,19 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
   have hFFc : ∀ m, FF.coeff m = Bf m := by
     intro m
     rw [hFFdef, Polynomial.finsetSum_coeff]
+    simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero,
+      Finset.sum_ite_eq, Finset.mem_range]
     by_cases hm : m < Nf
-    · rw [Finset.sum_eq_single m]
-      · simp
-      · intro j hj hjm
-        simp [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, Ne.symm hjm]
-      · intro hnot
-        exact absurd (Finset.mem_range.mpr hm) hnot
-    · rw [hBfz m (not_lt.mp hm)]
-      apply Finset.sum_eq_zero
-      intro j hj
-      have hmj : m ≠ j := by
-        have := Finset.mem_range.mp hj; omega
-      simp [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, hmj]
+    · rw [if_pos hm]
+    · rw [if_neg hm, hBfz m (not_lt.mp hm)]
   have hGGc : ∀ m, GG.coeff m = Bg m := by
     intro m
     rw [hGGdef, Polynomial.finsetSum_coeff]
+    simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero,
+      Finset.sum_ite_eq, Finset.mem_range]
     by_cases hm : m < Ng
-    · rw [Finset.sum_eq_single m]
-      · simp
-      · intro k hk hkm
-        simp [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, Ne.symm hkm]
-      · intro hnot
-        exact absurd (Finset.mem_range.mpr hm) hnot
-    · rw [hBgz m (not_lt.mp hm)]
-      apply Finset.sum_eq_zero
-      intro k hk
-      have hmk : m ≠ k := by
-        have := Finset.mem_range.mp hk; omega
-      simp [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, hmk]
+    · rw [if_pos hm]
+    · rw [if_neg hm, hBgz m (not_lt.mp hm)]
   have hFFeval : Polynomial.eval Φhat FF = f := by
     rw [hFFdef, Polynomial.eval_finsetSum]
     simp only [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow, Polynomial.eval_X]
@@ -379,10 +355,8 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       intro m
       rw [hCdev_eq m]
       by_cases hm : m = 0
-      · simp only [if_pos hm]
-        rw [add_zero, add_zero]
-      · simp only [if_neg hm]
-        rw [add_mul]
+      · simp only [if_pos hm, add_zero]
+      · simp only [if_neg hm, add_mul]
     have hshift : (∑ m ∈ Finset.range (Nf + Ng),
           (if m = 0 then 0 else (H.coeff (m - 1) /ₘ Φhat) * Φhat ^ m))
         = ∑ m ∈ Finset.range (Nf + Ng), (H.coeff m /ₘ Φhat) * Φhat ^ (m + 1) := by
@@ -452,15 +426,9 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
         = ((j₀ : ℤ) + (k₀ : ℤ)) * (h' : ℤ) := by
       have hc : (jk.1 : ℤ) + (jk.2 : ℤ) = (j₀ : ℤ) + (k₀ : ℤ) := by exact_mod_cast hdiag
       rw [← add_mul, hc]
-    have hexp : (e' : ℤ) * (σ.w (Bf jk.1) + σ.w (Bg jk.2))
-        = (e' : ℤ) * σ.w (Bf jk.1) + (e' : ℤ) * σ.w (Bg jk.2) := by ring
     have hlt : (e' : ℤ) * β < (e' : ℤ) * (σ.w (Bf jk.1) + σ.w (Bg jk.2)) := by
       linarith
-    have hepos : (0 : ℤ) < (e' : ℤ) := by
-      rcases Nat.eq_zero_or_pos e' with he0 | hp
-      · exfalso; rw [he0] at hlt; simp at hlt
-      · exact_mod_cast hp
-    exact lt_of_mul_lt_mul_left hlt hepos.le
+    exact lt_of_mul_lt_mul_left hlt (Int.natCast_nonneg e')
   -- deep bound for the carried quotient from diagonal j₀ + k₀ − 1 (uses (I-aug))
   have hdeepQ : ∀ m', m' + 1 = j₀ + k₀ →
       (H.coeff m' /ₘ Φhat = 0 ∨ β < σ.w (H.coeff m' /ₘ Φhat)) := by
@@ -490,8 +458,6 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
         have hc : (jk.1 : ℤ) + (jk.2 : ℤ) + 1 = (j₀ : ℤ) + (k₀ : ℤ) := by
           exact_mod_cast (by omega : jk.1 + jk.2 + 1 = j₀ + k₀)
         rw [← hc]; ring
-      have hexp : (e' : ℤ) * (σ.w (Bf jk.1) + σ.w (Bg jk.2))
-          = (e' : ℤ) * σ.w (Bf jk.1) + (e' : ℤ) * σ.w (Bg jk.2) := by ring
       have hkey : (e' : ℤ) * β + (h' : ℤ) ≤ (e' : ℤ) * (σ.w (Bf jk.1) + σ.w (Bg jk.2)) := by
         linarith
       rw [hwP]
@@ -499,7 +465,6 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       have hle : σ.w (Bf jk.1) + σ.w (Bg jk.2) ≤ β + σ.w Φhat := by omega
       have hmul : (e' : ℤ) * (σ.w (Bf jk.1) + σ.w (Bg jk.2)) ≤ (e' : ℤ) * (β + σ.w Φhat) :=
         mul_le_mul_of_nonneg_left hle (Int.natCast_nonneg e')
-      have hexp2 : (e' : ℤ) * (β + σ.w Φhat) = (e' : ℤ) * β + (e' : ℤ) * σ.w Φhat := by ring
       linarith
     have hconvm' : H.coeff m' ≠ 0 := by
       intro h0; rw [h0, Polynomial.zero_divByMonic] at hy; exact hy rfl
@@ -610,8 +575,7 @@ theorem L4_TRANSiii {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (�
       · rw [← hΦd]
         exact Polynomial.natDegree_lt_natDegree hz (Polynomial.degree_modByMonic_lt _ hmon)
     have hdiv : B * B'' = ((B * B'') /ₘ Φhat) * Φhat + (B * B'') %ₘ Φhat := by
-      conv_lhs => rw [← Polynomial.modByMonic_add_div (B * B'') Φhat]
-      ring
+      linear_combination -Polynomial.modByMonic_add_div (B * B'') Φhat
     have hd := L3_DIV σ ψ g hψdeg hψ hψz Φhat hlift zbar hzbar B B'' hB hB'' hBd' hB''d'
       ((B * B'') %ₘ Φhat) ((B * B'') /ₘ Φhat) hdiv hRd'
     exact ⟨hd.1, hd.2.1⟩

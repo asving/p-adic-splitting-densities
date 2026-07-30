@@ -382,9 +382,6 @@ private theorem liftWeight_local (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g :
       · rw [htt0 k hcoef, Polynomial.degree_zero]; exact hΦdegbot
       · obtain ⟨-, hinC, -, -⟩ := httk k hklt hcoef
         exact hinC
-  have hw1 : σ.w 1 = 0 := by
-    have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-    rw [mul_one] at h; omega
   have hsum : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
       = (∑ k ∈ Finset.range g, tt k * σ.Φ ^ (σ.e * k)) + σ.Φ ^ (σ.e * g) := by
     have step1 : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
@@ -428,9 +425,8 @@ private theorem liftWeight_local (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g :
     · rw [hΦhat, hsum]; ring
   have hSMA := σ.hK1 Φhat B (σ.e * g + 1) hΦne hDev
   obtain ⟨-, j₀, hj₀N, hj₀nz, hj₀eq⟩ := hSMA
-  have hj₀nz' : B j₀ ≠ 0 := hj₀nz
   have hsumnz : (∑ k ∈ Finset.range (g + 1), if j₀ = σ.e * k then cc k else 0) ≠ 0 := by
-    simpa only [hBdef] using hj₀nz'
+    simpa only [hBdef] using hj₀nz
   obtain ⟨k₀, hk₀mem, hk₀ne⟩ := Finset.exists_ne_zero_of_sum_ne_zero hsumnz
   rw [Finset.mem_range] at hk₀mem
   have hcond : j₀ = σ.e * k₀ := by
@@ -450,7 +446,7 @@ private theorem liftWeight_local (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g :
   show σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
   rw [hBval, hcond, σ.hwΦ]
   by_cases hk₀g : k₀ = g
-  · rw [hk₀g, hccg, hw1]
+  · rw [hk₀g, hccg, w_one' σ]
     push_cast; ring
   · have hk₀lt : k₀ < g := lt_of_le_of_ne (by omega) hk₀g
     have httne : tt k₀ ≠ 0 := by rw [hcck k₀ hk₀lt] at hk₀ne; exact hk₀ne
@@ -542,10 +538,7 @@ theorem L5_landVertex {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] 
     have hjsupp : j ∈ (Finset.range N).filter (fun j => B j ≠ 0) := hMsub hjM
     have hTsupp : ∀ l ∈ T, l ∈ (Finset.range N).filter (fun j => B j ≠ 0) :=
       fun l hl => hMsub (hTM hl)
-    have hune : u ≠ 0 := by
-      rintro rfl
-      rw [zero_mul] at hu2
-      exact zero_ne_one hu2
+    have hune : u ≠ 0 := left_ne_zero_of_mul_eq_one hu2
     have hRHS : u * ∑ l ∈ T, σ.R (B l * Φhat ^ l)
         = ∑ l ∈ T, (u * (σ.R (B l) * (LaurentPolynomial.T (- σ.t * (σ.h : ℤ) * (g : ℤ))) ^ l)) *
             (Polynomial.toLaurent ψ) ^ l := by

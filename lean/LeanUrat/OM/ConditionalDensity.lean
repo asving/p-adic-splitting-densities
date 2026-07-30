@@ -128,7 +128,7 @@ theorem density_eq_engine_conditional (n : ℕ) (σ : FactorizationType) (M : Fi
     · exact hSelfLoop T hsl                 -- wild self-loop shape: THE honest hypothesis
     · exact hTame T hT hsl                  -- non-self-loop shape: UNCONDITIONAL discharge
   -- Feed the S1 assembly skeleton (unconditional).
-  exact montes_allorders_of_hnode n σ M (fun T hT => h_node T hT)
+  exact montes_allorders_of_hnode n σ M h_node
 
 /-! ## 3. THE FULLY-UNCONDITIONAL TAME CASE (p > n ⟹ NO self-loop shapes ⟹ no hypothesis).
 
@@ -201,8 +201,7 @@ theorem selfLoop_engine_is_fixpoint {μ q : ℕ} (hq : 2 ≤ q) (hμ : 2 ≤ μ)
         = depth0 + slExposedRatio μ q * selfLoopFixpointValue depth0 μ q
       ∧ ∀ b : ℚ, b = depth0 + slExposedRatio μ q * b →
           b = selfLoopFixpointValue depth0 μ q :=
-  ⟨selfLoopFixpoint_eq hq hμ depth0,
-   fun b hb => selfLoopFixpoint_unique hq hμ depth0 b hb⟩
+  ⟨selfLoopFixpoint_eq hq hμ depth0, selfLoopFixpoint_unique hq hμ depth0⟩
 
 end
 

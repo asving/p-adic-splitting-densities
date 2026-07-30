@@ -35,21 +35,17 @@ def projPointCount (n q : ℕ) : ℕ := ∑ i ∈ Finset.range (n + 1), q ^ i
 /-- `(q - 1)·|P^n(F_q)| = q^{n+1} - 1` (PROVED, over `ℚ`). -/
 theorem projPointCount_mul (n q : ℕ) :
     ((q : ℚ) - 1) * (projPointCount n q : ℚ) = (q : ℚ) ^ (n + 1) - 1 := by
-  unfold projPointCount
-  push_cast
-  rw [mul_comm]
-  exact geom_sum_mul (q : ℚ) (n + 1)
+  push_cast [projPointCount]
+  exact mul_geom_sum (q : ℚ) (n + 1)
 
 /-- `|P^n(F_q)| > 0` (PROVED): the bridge denominator never vanishes at prime powers. -/
-theorem projPointCount_pos (n q : ℕ) : 0 < projPointCount n q := by
-  unfold projPointCount
-  apply Finset.sum_pos'
-  · intro i _; exact Nat.zero_le _
-  · exact ⟨0, Finset.mem_range.mpr (Nat.succ_pos n), by simp⟩
+theorem projPointCount_pos (n q : ℕ) : 0 < projPointCount n q :=
+  Finset.sum_pos' (fun _ _ => Nat.zero_le _)
+    ⟨0, Finset.mem_range.mpr n.succ_pos, Nat.one_pos⟩
 
 /-- `|P^n(F_1)| = n + 1` (PROVED): the `q → 1` degeneration `(q^{n+1}-1)/(q-1) → n+1`. -/
 theorem projPointCount_one (n : ℕ) : projPointCount n 1 = n + 1 := by
-  unfold projPointCount; simp
+  simp [projPointCount]
 
 /-- The intrinsic cluster law `L_e^{(δ)}(q)[σ] := α(e, σ; (q^δ)⁻¹)` — the monic density family `α`
 read at the reciprocal of the base-changed residue size (`notes/M1_bridge.md §2.1`, paper

@@ -83,8 +83,7 @@ theorem isRationalFn_listSum (L : List (ℕ → ℚ)) (h : ∀ f ∈ L, IsRation
   | cons a L ih =>
     have ha : IsRationalFn a := h a List.mem_cons_self
     have hL : ∀ f ∈ L, IsRationalFn f := fun f hf => h f (List.mem_cons_of_mem a hf)
-    have := isRationalFn_add ha (ih hL)
-    simpa [List.map_cons, List.sum_cons] using this
+    simpa [List.map_cons, List.sum_cons] using isRationalFn_add ha (ih hL)
 
 /-- Finite list-product of rational functions. -/
 theorem isRationalFn_listProd (L : List (ℕ → ℚ)) (h : ∀ f ∈ L, IsRationalFn f) :
@@ -94,8 +93,7 @@ theorem isRationalFn_listProd (L : List (ℕ → ℚ)) (h : ∀ f ∈ L, IsRatio
   | cons a L ih =>
     have ha : IsRationalFn a := h a List.mem_cons_self
     have hL : ∀ f ∈ L, IsRationalFn f := fun f hf => h f (List.mem_cons_of_mem a hf)
-    have := isRationalFn_mul ha (ih hL)
-    simpa [List.map_cons, List.prod_cons] using this
+    simpa [List.map_cons, List.prod_cons] using isRationalFn_mul ha (ih hL)
 
 /-- Quotient of rational functions, when the denominator is pole-free on `q > 1`.
 The representing fraction is `(nf * dg) / (df * ng)`; pole-freeness of `df * ng` at `q > 1`

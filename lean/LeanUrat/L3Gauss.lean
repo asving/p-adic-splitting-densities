@@ -97,9 +97,8 @@ theorem exists_aeval_eq_zero_of_natDegree_dvd
   obtain ⟨φ⟩ := FiniteField.nonempty_algHom_of_finrank_dvd (F := F) (K := AdjoinRoot f) (L := L) hdvd'
   refine ⟨φ (AdjoinRoot.root f), ?_⟩
   -- `aeval (φ (root f)) f = φ (aeval (root f) f) = φ 0 = 0`.
-  have hroot : (Polynomial.aeval (AdjoinRoot.root f) f) = 0 := by
-    rw [AdjoinRoot.aeval_eq, AdjoinRoot.mk_self]
-  rw [Polynomial.aeval_algHom_apply φ (AdjoinRoot.root f) f, hroot, map_zero]
+  rw [Polynomial.aeval_algHom_apply φ (AdjoinRoot.root f) f, AdjoinRoot.aeval_eq,
+    AdjoinRoot.mk_self, map_zero]
 
 /-- The minimal polynomial over `F` of an element `x` of a finite extension `L` is monic
 irreducible of degree dividing `finrank F L`. -/
@@ -119,17 +118,12 @@ theorem minpoly_fiber_eq_rootSet
     {L : Type*} [Field L] [Algebra F L] [Finite L] {f : F[X]}
     (hf : Irreducible f) (hmonic : f.Monic) :
     {x : L | minpoly F x = f} = f.rootSet L := by
-  haveI : Module.Finite F L := inferInstance
   ext x
   simp only [Set.mem_setOf_eq, Polynomial.mem_rootSet, hf.ne_zero, ne_eq, not_false_eq_true,
     true_and]
-  constructor
-  · intro h
-    -- `minpoly F x = f` ⇒ `aeval x f = aeval x (minpoly F x) = 0`.
-    rw [← h]; exact minpoly.aeval F x
-  · intro h
-    -- `aeval x f = 0`, `f` monic irreducible ⇒ `f = minpoly F x`.
-    exact (minpoly.eq_of_irreducible_of_monic hf h hmonic).symm
+  -- forward: `minpoly F x = f` ⇒ `aeval x f = 0`; backward: monic irreducible root ⇒ minpoly.
+  exact ⟨fun h => h ▸ minpoly.aeval F x,
+    fun h => (minpoly.eq_of_irreducible_of_monic hf h hmonic).symm⟩
 
 /-- **Each monic irreducible of degree `e ∣ d = finrank F L` has exactly `e` roots in `L`.**
 Combining separability (finite fields are perfect, so every irreducible is separable) with the fact
@@ -191,9 +185,7 @@ theorem sum_e_mul_card_eq_pow (d : ℕ) (hd : 1 ≤ d) :
         = (minpoly F x₀).rootSet L := by
       ext y
       simp only [Finset.coe_filter, Finset.mem_univ, true_and, Set.mem_setOf_eq]
-      have := minpoly_fiber_eq_rootSet (F := F) (L := L) hgi.1 hgi.2.1
-      rw [Set.ext_iff] at this
-      simpa using this y
+      simpa using Set.ext_iff.mp (minpoly_fiber_eq_rootSet (F := F) (L := L) hgi.1 hgi.2.1) y
     -- Transport cardinalities: `#filter = ncard(↑filter) = ncard(rootSet) = Nat.card rootSet`.
     have hcard := card_rootSet_eq_of_natDegree_dvd (F := F) (L := L) hgi.1 hgi.2.1
       (by rw [hfinrankL]; exact hgi.2.2)

@@ -258,7 +258,6 @@ noncomputable def msWP (D K : ℕ) (a r : ℚ) : ℚ :=
 theorem msWP_zero (K : ℕ) (a r : ℚ) : msWP 0 K a r = 1 := by
   unfold msWP
   show ∑ ms ∈ ({[]} : Finset (List ℕ)), a ^ ms.length * r ^ ms.sum = 1
-  rw [Finset.sum_singleton]
   simp
 
 /-- The depth recurrence `msWP (D+1) = 1 + (Σ_{m≤K} a·r^m) · msWP D` (the menu recursion
@@ -300,12 +299,10 @@ variable (p : ℕ) [hp : Fact p.Prime]
 theorem pQ_two : (2 : ℚ) ≤ (p : ℚ) := by exact_mod_cast hp.out.two_le
 
 theorem pQ_pos : (0 : ℚ) < (p : ℚ) := by
-  have := pQ_two p
-  linarith
+  linarith [pQ_two p]
 
 theorem pQ_one_lt : (1 : ℚ) < (p : ℚ) := by
-  have := pQ_two p
-  linarith
+  linarith [pQ_two p]
 
 theorem pQ_ne : ((p : ℚ)) ≠ 0 := ne_of_gt (pQ_pos p)
 
@@ -314,8 +311,7 @@ theorem pQ_pow_pos (k : ℕ) : (0 : ℚ) < (p : ℚ) ^ k := pow_pos (pQ_pos p) k
 theorem pQ_pow_ne (k : ℕ) : ((p : ℚ) ^ k) ≠ 0 := ne_of_gt (pQ_pow_pos p k)
 
 theorem pQ_sub_one_nonneg : (0 : ℚ) ≤ (p : ℚ) - 1 := by
-  have := pQ_two p
-  linarith
+  linarith [pQ_two p]
 
 theorem pQ_sub_one_cast : ((p - 1 : ℕ) : ℚ) = (p : ℚ) - 1 := by
   rw [Nat.cast_sub hp.out.one_le, Nat.cast_one]
@@ -325,26 +321,19 @@ theorem pQ_sub_two_cast : ((p - 2 : ℕ) : ℚ) = (p : ℚ) - 2 := by
   norm_num
 
 theorem pQ_cube_sub_one_pos : (0 : ℚ) < (p : ℚ) ^ 3 - 1 := by
-  have h := pQ_two p
-  have h8 : (2 : ℚ) ^ 3 ≤ (p : ℚ) ^ 3 := pow_le_pow_left₀ (by norm_num) h 3
-  norm_num at h8
-  linarith
+  nlinarith [pQ_two p, sq_nonneg ((p : ℚ) - 1)]
 
 theorem pQ_sq_sub_one_pos : (0 : ℚ) < (p : ℚ) ^ 2 - 1 := by
-  have h := pQ_two p
-  nlinarith
+  nlinarith [pQ_two p]
 
 theorem pQ_sq_add_pos : (0 : ℚ) < (p : ℚ) ^ 2 + p := by
-  have h := pQ_two p
-  nlinarith
+  nlinarith [pQ_two p]
 
 theorem pQ_sq_add_add_pos : (0 : ℚ) < (p : ℚ) ^ 2 + p + 1 := by
-  have h := pQ_two p
-  nlinarith
+  nlinarith [pQ_two p]
 
 theorem pQ_add_one_pos : (0 : ℚ) < (p : ℚ) + 1 := by
-  have h := pQ_two p
-  linarith
+  linarith [pQ_two p]
 
 /-! ## §A. The folded-weight lemma bank (blueprint §1.3, named lemmas FIRST)
 
@@ -363,15 +352,7 @@ theorem sum_Icc_pinv (K : ℕ) :
   | zero => simp
   | succ K ih =>
       rw [Finset.sum_Icc_succ_top (by omega : 1 ≤ K + 1), mul_add, ih]
-      have hkey : ((p : ℚ) - 1) * (((p : ℚ))⁻¹) ^ (K + 1)
-          = (((p : ℚ))⁻¹) ^ K - (((p : ℚ))⁻¹) ^ (K + 1) := by
-        have hc : (p : ℚ) * ((p : ℚ))⁻¹ = 1 := mul_inv_cancel₀ (pQ_ne p)
-        calc ((p : ℚ) - 1) * (((p : ℚ))⁻¹) ^ (K + 1)
-            = ((p : ℚ) * ((p : ℚ))⁻¹) * (((p : ℚ))⁻¹) ^ K - (((p : ℚ))⁻¹) ^ (K + 1) := by
-              rw [pow_succ]
-              ring
-          _ = (((p : ℚ))⁻¹) ^ K - (((p : ℚ))⁻¹) ^ (K + 1) := by rw [hc, one_mul]
-      linarith
+      linear_combination (((p : ℚ))⁻¹) ^ K * mul_inv_cancel₀ (pQ_ne p)
 
 /-- Exact finite geometric sum against `1/p²`, cleared-denominator form. -/
 theorem sum_Icc_pinv_sq (K : ℕ) :
@@ -381,16 +362,7 @@ theorem sum_Icc_pinv_sq (K : ℕ) :
   | zero => simp
   | succ K ih =>
       rw [Finset.sum_Icc_succ_top (by omega : 1 ≤ K + 1), mul_add, ih]
-      have hkey : ((p : ℚ) ^ 2 - 1) * (((p : ℚ) ^ 2)⁻¹) ^ (K + 1)
-          = (((p : ℚ) ^ 2)⁻¹) ^ K - (((p : ℚ) ^ 2)⁻¹) ^ (K + 1) := by
-        have hc : (p : ℚ) ^ 2 * ((p : ℚ) ^ 2)⁻¹ = 1 := mul_inv_cancel₀ (pQ_pow_ne p 2)
-        calc ((p : ℚ) ^ 2 - 1) * (((p : ℚ) ^ 2)⁻¹) ^ (K + 1)
-            = ((p : ℚ) ^ 2 * ((p : ℚ) ^ 2)⁻¹) * (((p : ℚ) ^ 2)⁻¹) ^ K
-                - (((p : ℚ) ^ 2)⁻¹) ^ (K + 1) := by
-              rw [pow_succ]
-              ring
-          _ = (((p : ℚ) ^ 2)⁻¹) ^ K - (((p : ℚ) ^ 2)⁻¹) ^ (K + 1) := by rw [hc, one_mul]
-      linarith
+      linear_combination (((p : ℚ) ^ 2)⁻¹) ^ K * mul_inv_cancel₀ (pQ_pow_ne p 2)
 
 /-- Exact finite geometric sum against `1/p³`, cleared-denominator form. -/
 theorem sum_Icc_pinv_cube (K : ℕ) :
@@ -400,16 +372,7 @@ theorem sum_Icc_pinv_cube (K : ℕ) :
   | zero => simp
   | succ K ih =>
       rw [Finset.sum_Icc_succ_top (by omega : 1 ≤ K + 1), mul_add, ih]
-      have hkey : ((p : ℚ) ^ 3 - 1) * (((p : ℚ) ^ 3)⁻¹) ^ (K + 1)
-          = (((p : ℚ) ^ 3)⁻¹) ^ K - (((p : ℚ) ^ 3)⁻¹) ^ (K + 1) := by
-        have hc : (p : ℚ) ^ 3 * ((p : ℚ) ^ 3)⁻¹ = 1 := mul_inv_cancel₀ (pQ_pow_ne p 3)
-        calc ((p : ℚ) ^ 3 - 1) * (((p : ℚ) ^ 3)⁻¹) ^ (K + 1)
-            = ((p : ℚ) ^ 3 * ((p : ℚ) ^ 3)⁻¹) * (((p : ℚ) ^ 3)⁻¹) ^ K
-                - (((p : ℚ) ^ 3)⁻¹) ^ (K + 1) := by
-              rw [pow_succ]
-              ring
-          _ = (((p : ℚ) ^ 3)⁻¹) ^ K - (((p : ℚ) ^ 3)⁻¹) ^ (K + 1) := by rw [hc, one_mul]
-      linarith
+      linear_combination (((p : ℚ) ^ 3)⁻¹) ^ K * mul_inv_cancel₀ (pQ_pow_ne p 3)
 
 /-- **The blueprint §1.3 single-step weight bound**: `w_1(q) = (q−1)/q² ≤ 1/2` for every
 prime `q` (`⟺ (q−1)² + 1 > 0`). -/
@@ -421,20 +384,9 @@ theorem w_step_le_half : ((p : ℚ) - 1) / (p : ℚ) ^ 2 ≤ 1 / 2 := by
 `Σ_{m=1}^{K} (q−1)·q^{−2m} ≤ 1/(q+1)`. -/
 theorem w_sum_le (K : ℕ) :
     ∑ m ∈ Finset.Icc 1 K, ((p : ℚ) - 1) * (((p : ℚ) ^ 2)⁻¹) ^ m ≤ 1 / ((p : ℚ) + 1) := by
-  rw [← Finset.mul_sum]
-  have hgeo := sum_Icc_pinv_sq p K
-  have hpos := pQ_sq_sub_one_pos p
+  rw [← Finset.mul_sum, le_div_iff₀ (pQ_add_one_pos p)]
   have hy : (0 : ℚ) ≤ (((p : ℚ) ^ 2)⁻¹) ^ K := by positivity
-  have hS : ∑ m ∈ Finset.Icc 1 K, (((p : ℚ) ^ 2)⁻¹) ^ m ≤ 1 / ((p : ℚ) ^ 2 - 1) := by
-    rw [le_div_iff₀ hpos, mul_comm]
-    linarith
-  have hfac : ((p : ℚ) - 1) / ((p : ℚ) ^ 2 - 1) = 1 / ((p : ℚ) + 1) := by
-    rw [div_eq_div_iff (ne_of_gt hpos) (ne_of_gt (pQ_add_one_pos p))]
-    ring
-  calc ((p : ℚ) - 1) * ∑ m ∈ Finset.Icc 1 K, (((p : ℚ) ^ 2)⁻¹) ^ m
-      ≤ ((p : ℚ) - 1) * (1 / ((p : ℚ) ^ 2 - 1)) :=
-        mul_le_mul_of_nonneg_left hS (pQ_sub_one_nonneg p)
-    _ = 1 / ((p : ℚ) + 1) := by rw [mul_one_div, hfac]
+  linarith [sum_Icc_pinv_sq p K, hy]
 
 /-- **`w_sum_le_third` (blueprint §1.3)**: the per-step domination closes below `1/3`
 uniformly on `q ≥ 2` — `Σ_m (q−1)·q^{−2m} ≤ 1/(q+1) ≤ 1/3`. -/
@@ -442,8 +394,7 @@ theorem w_sum_le_third (K : ℕ) :
     ∑ m ∈ Finset.Icc 1 K, ((p : ℚ) - 1) * (((p : ℚ) ^ 2)⁻¹) ^ m ≤ 1 / 3 := by
   refine le_trans (w_sum_le p K) ?_
   rw [div_le_div_iff₀ (pQ_add_one_pos p) (by norm_num : (0 : ℚ) < 3)]
-  have := pQ_two p
-  linarith
+  linarith [pQ_two p]
 
 /-- **`w_dom` (blueprint §1.3)**: the folded weight is dominated by W6's `q = 2` weight,
 `(q−1)·q^{−2m} ≤ (1/2)^m` for every `m ≥ 1` — the `q`-monotonicity that makes every W6
@@ -519,11 +470,9 @@ theorem fix_sum_nonneg (K : ℕ) :
 `Σ_{m=1}^{K} (q^{−3})^m ≤ 1/(q³−1)`. -/
 theorem sum_pcube_inv_le (K : ℕ) :
     ∑ m ∈ Finset.Icc 1 K, (((p : ℚ) ^ 3)⁻¹) ^ m ≤ 1 / ((p : ℚ) ^ 3 - 1) := by
-  have hgeo := sum_Icc_pinv_cube p K
-  have hpos := pQ_cube_sub_one_pos p
   have hy : (0 : ℚ) ≤ (((p : ℚ) ^ 3)⁻¹) ^ K := by positivity
-  rw [le_div_iff₀ hpos, mul_comm]
-  linarith
+  rw [le_div_iff₀ (pQ_cube_sub_one_pos p)]
+  linarith [sum_Icc_pinv_cube p K, hy]
 
 theorem sum_pcube_inv_nonneg (K : ℕ) :
     0 ≤ ∑ m ∈ Finset.Icc 1 K, (((p : ℚ) ^ 3)⁻¹) ^ m :=
@@ -900,17 +849,9 @@ theorem sum_uLeaf_nonneg (K : ℕ) : 0 ≤ ∑ m ∈ Finset.Icc 1 K, uLeafC m p 
 /-! ### The order-0 exact values -/
 
 theorem ord0Count_zero (σ : FactorizationType) : ord0Count p σ 0 = 0 := by
-  unfold ord0Count
-  have h1 : Nat.card {a : pairBoxP p 0 // Ord0SplitCell p 0 a} = 0 := by
-    haveI : IsEmpty {a : pairBoxP p 0 // Ord0SplitCell p 0 a} :=
-      ⟨fun x => ord0Split_zero_empty p x.1 x.2⟩
-    exact Nat.card_of_isEmpty
-  have h2 : Nat.card {a : pairBoxP p 0 // Ord0InertCell p 0 a} = 0 := by
-    haveI : IsEmpty {a : pairBoxP p 0 // Ord0InertCell p 0 a} :=
-      ⟨fun x => ord0Inert_zero_empty p x.1 x.2⟩
-    exact Nat.card_of_isEmpty
-  rw [h1, h2]
-  split_ifs <;> simp
+  have h := decidedCountP_zero p σ
+  unfold decidedCountP at h
+  linarith [ord0Count_nonneg p σ 0, chainCountP_nonneg p σ 0]
 
 /-- The normalized order-0 pool weight per keyed type: `(q²−q)/2 · q^{−2} = (q−1)/(2q)` for
 split/inert, `0` for everything else (blueprint §1.1: order-0 leaves contribute `(q−1)/(2q)`
@@ -1954,8 +1895,7 @@ theorem montes_uniform_n2 (σ : FactorizationType) (hσ : σ.degree = 2) :
           (fun N => (M7 p).decidedCount σ N / (p : ℚ) ^ (2 * N)
             + (M7 p).undecidedCount N / (p : ℚ) ^ (2 * N))
           atTop (nhds ((M7 p).countingDensity σ)) := by
-        have hadd := hlim.add hEx
-        simpa using hadd
+        simpa using hlim.add hEx
       refine ge_of_tendsto hlim2 ?_
       filter_upwards [eventually_ge_atTop 1] with N hN
       exact (hd N hN).2

@@ -35,7 +35,7 @@ def treeDistanceWeight (m : ℕ) : ℕ := m * (m + 1) / 2 - 1
 `w(3) = 5` ⇒ the `q^5 - 1` denominator `(q-1)·Φ` seen at `n = 3`). -/
 theorem treeDistanceWeight_values :
     treeDistanceWeight 2 = 2 ∧ treeDistanceWeight 3 = 5 ∧
-    treeDistanceWeight 4 = 9 ∧ treeDistanceWeight 5 = 14 := by
-  refine ⟨?_, ?_, ?_, ?_⟩ <;> decide
+    treeDistanceWeight 4 = 9 ∧ treeDistanceWeight 5 = 14 :=
+  ⟨rfl, rfl, rfl, rfl⟩
 
 end LeanUrat.R1

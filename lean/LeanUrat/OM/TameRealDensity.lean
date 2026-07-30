@@ -151,23 +151,15 @@ theorem hnode_selfloop_general (p : ℕ) [Fact p.Prime] (n N₀ : ℕ) (hN₀ : 
   rw [← ClassifierBridgeFiber.omCount_selfloop_eq_oneSideShape n H shape hne p] at hbase
   -- `P = [(0,H),(n,0)]` and `1 ≤ H` from the level-`N₀` menu path.
   obtain ⟨H', hPeq, hpreq, hH1', _⟩ := ClassifierBridgeFiber.menuPath_single_side hP hsingle
-  have hHH' : H' = H := by
-    have heq : (((0, H'), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) = (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) := by
-      have h1 : sidePairs P = [(((0, H'), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ))] := by
-        rw [hPeq]; rfl
-      rw [hsingle] at h1
-      exact (List.cons.injEq _ _ _ _ ▸ h1).1.symm
-    have := congrArg (fun pr => pr.1.2) heq
-    simpa using this
+  have hHH' : H' = H := by simpa using hpreq.symm
   subst H'
-  have hH1 : 1 ≤ H := hH1'
   -- rewrite the SEQUENCE by the count identity, EVENTUALLY (for `N ≥ H+1`, so `1 ≤ H ≤ N-1`).
   refine hbase.congr' ?_
   filter_upwards [Filter.eventually_ge_atTop (H + 1)] with N hNge
   have hNpos : 0 < N := by omega
   have hPN : MenuPath n N P := by
     rw [hPeq]
-    exact ⟨H, ((n : ℕ), (0 : ℕ)), [], rfl, hH1, by omega, hn, by omega,
+    exact ⟨H, ((n : ℕ), (0 : ℕ)), [], rfl, hH1', by omega, hn, by omega,
       ChainOK.nil rfl rfl⟩
   rw [stratumCount_selfloop_general p n N hNpos hn P hPN
     (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) hsingle shape hsh hμ hne]
@@ -213,8 +205,7 @@ theorem montes_order1_selfloop_density_general_prime (p : ℕ) [Fact p.Prime] (n
     Order0.isRationalFn_finsetSum M (fun T q' => omCount T q') hrat
   refine ⟨num, den, hden, hall, ?_⟩
   -- (3) the value tie at the general prime `p`: sum of the per-shape general-prime limits.
-  have hp2 : (2 : ℕ) ≤ p := (Fact.out (p := p.Prime)).two_le
-  have hq : 1 < p := by omega
+  have hq : 1 < p := (Fact.out (p := p.Prime)).one_lt
   have h_node : ∀ T ∈ M,
       Filter.Tendsto
         (fun N => (Nat.card {f : QuotientBox.monicBox p N n // B.classify p n N f = T} : ℚ)
@@ -240,9 +231,7 @@ theorem montes_order1_selfloop_density_general_prime (p : ℕ) [Fact p.Prime] (n
             / (p : ℚ) ^ (n * N) := by
     funext N
     rw [Finset.sum_div]
-  rw [hpush]
-  have hval := (hall p hq).2
-  rw [← hval]
+  rw [hpush, ← (hall p hq).2]
   exact hsum
 
 /-! ## 3. The PRIMARY deliverable: the honest real order-1 single-slope density theorem
@@ -401,8 +390,7 @@ theorem montes_order1_tame_certified_density_pos :
   rw [hval]
   -- the value = ∑_{T ∈ {Tselfloop …}} omCount T realP = omCount (Tselfloop …) realP > 0.
   rw [Finset.sum_singleton]
-  have := gate_omCount_pos M9.realP
-  simpa [gatePr] using this
+  simpa [gatePr] using gate_omCount_pos M9.realP
 
 /-- **Non-vacuity of the general-prime order-1 density (the gate at an ARBITRARY prime).** At the
 CONCRETE self-loop `n = 2, P = [(0,1),(2,0)], shape = [(1,1)]`, the general-prime certified value is
@@ -422,8 +410,7 @@ theorem montes_order1_selfloop_density_general_prime_pos (p : ℕ) [Fact p.Prime
       (by intro q hq; simp only [gateShape, List.mem_singleton] at hq; subst hq; rfl)
       (by simp [gateShape])
   refine ⟨num, den, hden, hall, ?_⟩
-  have hp2 : (2 : ℕ) ≤ p := (Fact.out (p := p.Prime)).two_le
-  have hq : 1 < p := by omega
+  have hq : 1 < p := (Fact.out (p := p.Prime)).one_lt
   have hval := (hall p hq).2
   rw [← hval, Finset.sum_singleton]
   exact gate_omCount_pos p
@@ -596,7 +583,6 @@ theorem montes_tame_realDensity_certified_value_pos :
     (0 : ℚ) < ∑ T ∈ tameMenu 2 (Order0.unramType 2 (Nat.Partition.indiscrete 2)) 1 gateShape,
         omCount T M9.realP := by
   classical
-  have hp2 : (2 : ℕ) ≤ M9.realP := (Fact.out (p := (M9.realP).Prime)).two_le
   -- the order-1 self-loop term is strictly positive.
   have hpos : (0 : ℚ) < omCount (ClassifierBridgeFiber.Tselfloop 2 gatePr gateShape) M9.realP :=
     gate_omCount_pos M9.realP
@@ -618,9 +604,8 @@ theorem montes_tame_realDensity_certified_value_pos :
       < omCount (ClassifierBridgeFiber.Tselfloop 2 gatePr gateShape) M9.realP := hpos
     _ ≤ ∑ T ∈ tameMenu 2 (Order0.unramType 2 (Nat.Partition.indiscrete 2)) 1 gateShape,
           omCount T M9.realP := by
-        apply Finset.single_le_sum (f := fun T => omCount T M9.realP)
-        · exact hnonneg
-        · exact selfloop_mem_tameMenu
+        exact Finset.single_le_sum (f := fun T => omCount T M9.realP) hnonneg
+          selfloop_mem_tameMenu
 
 end LeanUrat.OM.TameRealDensity
 

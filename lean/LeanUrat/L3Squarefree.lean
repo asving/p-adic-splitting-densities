@@ -49,25 +49,17 @@ variable {F : Type*} [Field F] [Finite F]
 /-! ## 1. Monic polynomials over a field: normalized factors are exactly the monic factorization -/
 
 /-- For a monic polynomial over a field, the product of its `normalizedFactors` is the polynomial
-itself (not merely up to associates): both are monic and associated, hence equal. -/
+itself (not merely up to associates): the product is `normalize p`, which is `p` since `p` is
+monic. -/
 theorem prod_normalizedFactors_of_monic [DecidableEq F] {p : F[X]} (hp : p.Monic) (hp0 : p ≠ 0) :
-    (normalizedFactors p).prod = p := by
-  have hassoc : Associated (normalizedFactors p).prod p :=
-    UniqueFactorizationMonoid.prod_normalizedFactors hp0
-  have hmonprod : ((normalizedFactors p).prod).Monic := by
-    have heq : ((normalizedFactors p).prod) = normalize p :=
-      UniqueFactorizationMonoid.prod_normalizedFactors_eq hp0
-    rw [heq, hp.normalize_eq_self]; exact hp
-  exact eq_of_monic_of_associated hmonprod hp hassoc
+    (normalizedFactors p).prod = p :=
+  (prod_normalizedFactors_eq hp0).trans hp.normalize_eq_self
 
 /-! ## 2. Existence: every monic `R` factors as `A · B²` with `A` squarefree monic, `B` monic -/
 
 /-- A monic irreducible polynomial has positive `natDegree`. -/
-theorem natDegree_pos_of_irreducible {g : F[X]} (hg : Irreducible g) : 0 < g.natDegree := by
-  refine Nat.pos_of_ne_zero fun h0 => hg.not_isUnit ?_
-  -- natDegree 0 ⇒ g = C c, a unit or zero; irreducible rules both out
-  exact Polynomial.isUnit_iff_degree_eq_zero.mpr
-    (by rw [Polynomial.degree_eq_natDegree hg.ne_zero, h0]; rfl)
+theorem natDegree_pos_of_irreducible {g : F[X]} (hg : Irreducible g) : 0 < g.natDegree :=
+  hg.natDegree_pos
 
 /-- **Decomposition existence.** Every monic `R` of degree `n` over `F` can be written as
 `R = A * B^2` with `A` squarefree, `A` monic, `B` monic. By strong induction on `natDegree R`:
@@ -228,14 +220,12 @@ noncomputable def assemble (n : ℕ) : PairIdx F n → monicDegree F n :=
 theorem assemble_bijective (n : ℕ) : Function.Bijective (assemble (F := F) n) := by
   constructor
   · rintro ⟨j₁, ⟨A₁, hA₁⟩, ⟨B₁, hB₁⟩⟩ ⟨j₂, ⟨A₂, hA₂⟩, ⟨B₂, hB₂⟩⟩ heq
-    have hA₁' : A₁.Monic ∧ A₁.natDegree = n - 2 * (j₁ : ℕ) ∧ Squarefree A₁ := hA₁
-    have hA₂' : A₂.Monic ∧ A₂.natDegree = n - 2 * (j₂ : ℕ) ∧ Squarefree A₂ := hA₂
-    have hB₁' : B₁.Monic ∧ B₁.natDegree = (j₁ : ℕ) := hB₁
-    have hB₂' : B₂.Monic ∧ B₂.natDegree = (j₂ : ℕ) := hB₂
-    obtain ⟨hA₁m, hA₁d, hA₁sf⟩ := hA₁'
-    obtain ⟨hA₂m, hA₂d, hA₂sf⟩ := hA₂'
-    obtain ⟨hB₁m, hB₁d⟩ := hB₁'
-    obtain ⟨hB₂m, hB₂d⟩ := hB₂'
+    obtain ⟨hA₁m, hA₁d, hA₁sf⟩ :
+        A₁.Monic ∧ A₁.natDegree = n - 2 * (j₁ : ℕ) ∧ Squarefree A₁ := hA₁
+    obtain ⟨hA₂m, hA₂d, hA₂sf⟩ :
+        A₂.Monic ∧ A₂.natDegree = n - 2 * (j₂ : ℕ) ∧ Squarefree A₂ := hA₂
+    obtain ⟨hB₁m, hB₁d⟩ : B₁.Monic ∧ B₁.natDegree = (j₁ : ℕ) := hB₁
+    obtain ⟨hB₂m, hB₂d⟩ : B₂.Monic ∧ B₂.natDegree = (j₂ : ℕ) := hB₂
     have hval : A₁ * B₁ ^ 2 = A₂ * B₂ ^ 2 := congrArg Subtype.val heq
     obtain ⟨hAeq, hBeq⟩ := sqfree_sq_decomp_unique hA₁m hA₁sf hB₁m hA₂m hA₂sf hB₂m hval
     have hjeq : (j₁ : ℕ) = (j₂ : ℕ) := by rw [← hB₁d, ← hB₂d, hBeq]
@@ -245,8 +235,7 @@ theorem assemble_bijective (n : ℕ) : Function.Bijective (assemble (F := F) n) 
     subst hBeq
     rfl
   · rintro ⟨R, hR⟩
-    have hR' : R.Monic ∧ R.natDegree = n := hR
-    obtain ⟨hRm, hRd⟩ := hR'
+    obtain ⟨hRm, hRd⟩ : R.Monic ∧ R.natDegree = n := hR
     obtain ⟨A, B, hAm, hAsf, hBm, hRfac⟩ := exists_sqfree_sq_decomp R hRm
     have hB2m : (B ^ 2).Monic := hBm.pow 2
     have hdeg : R.natDegree = A.natDegree + (B ^ 2).natDegree := hRfac ▸ hAm.natDegree_mul hB2m
@@ -319,8 +308,7 @@ cycle; the proved theorem lives here and `L3.card_squarefreeMonicDegree` should 
 `exact L3Squarefree.card_squarefreeMonicDegree m hm` in a later integration pass that moves the
 statement out of `L3`). -/
 theorem card_squarefreeMonicDegree (m : ℕ) (hm : 2 ≤ m) :
-    Nat.card (squarefreeMonicDegree F m) = Nat.card F ^ m - Nat.card F ^ (m - 1) := by
-  have h := S_recursion (F := F) m hm
-  omega
+    Nat.card (squarefreeMonicDegree F m) = Nat.card F ^ m - Nat.card F ^ (m - 1) :=
+  eq_tsub_of_add_eq (S_recursion (F := F) m hm)
 
 end LeanUrat.L3Squarefree

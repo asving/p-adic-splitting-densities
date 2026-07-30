@@ -111,9 +111,7 @@ theorem decodePath_multiSideLit (n : ℕ) (P : List (ℕ × ℕ)) (sh : List (Li
     decodePath (multiSideLit n P sh) = P := by
   show (P.map (fun v => ((0 : ℕ), v.1, v.2))).map (fun t => (t.2.1, t.2.2)) = P
   rw [List.map_map]
-  induction P with
-  | nil => rfl
-  | cons v P ih => rw [List.map_cons, ih]; rfl
+  exact List.map_id P
 
 /-- Decode the per-side shapes off the δ-tagged cells; parts read back as `(dS, 1)` (the
 all-μ=1 regime of this wave). -/
@@ -175,8 +173,7 @@ theorem decode_aux :
   induction prs with
   | nil =>
       intro shs j₀ hlen _
-      have : shs = [] := List.length_eq_zero_iff.mp hlen
-      subst this
+      obtain rfl := List.length_eq_zero_iff.mp hlen
       rfl
   | cons pr prs ih =>
       intro shs j₀ hlen hμ
@@ -235,8 +232,7 @@ theorem decodeShapes_multiSideLit {n : ℕ} {P : List (ℕ × ℕ)} {sh : List (
   rw [decodePath_multiSideLit]
   have hcells : (multiSideLit n P sh).cells = cellsAux 0 (sidePairs P) sh := rfl
   rw [hcells]
-  have h := decode_aux (sidePairs P) sh 0 hlen (fun s hs q hq => hμ s hs q hq)
-  refine Eq.trans ?_ h
+  refine Eq.trans ?_ (decode_aux (sidePairs P) sh 0 hlen hμ)
   refine List.map_congr_left fun j _ => ?_
   congr 1
   refine List.filter_congr fun c _ => ?_
@@ -447,9 +443,7 @@ theorem sum_filter_fst (s : Multiset (ℕ × ℕ)) :
   rw [Finset.sum_congr rfl hcnt, Finset.sum_ite_eq]
   by_cases hmem : pr ∈ s
   · rw [if_pos (Multiset.mem_toFinset.mpr (Multiset.mem_map_of_mem _ hmem))]
-  · have h0 : s.count pr = 0 := Multiset.count_eq_zero_of_notMem hmem
-    rw [h0]
-    simp
+  · rw [Multiset.count_eq_zero_of_notMem hmem, ite_self]
 
 /-- Push a `Multiset.map`+`sum` through a `Finset.sum` of multisets. -/
 theorem multiset_map_sum_sum {ι β : Type*} [DecidableEq ι] (s : Finset ι)
@@ -543,9 +537,7 @@ theorem shapeOf_pairwise (σ : FactorizationType) (e : ℕ) :
   rw [shapeOf]
   refine List.Pairwise.map _ ?_ (Multiset.pairwise_sort _ (· ≤ ·))
   intro a b hab
-  rcases Nat.lt_or_ge a b with hlt | hge
-  · exact Or.inl hlt
-  · exact Or.inr ⟨show a = b by omega, le_refl 1⟩
+  exact hab.lt_or_eq.imp id fun heq => ⟨heq, le_refl 1⟩
 
 /-- The canonical group shape is a genuine residual shape of degree `F_e`. -/
 theorem shapeOf_mem_shapesOfDegree {n : ℕ} {σ : FactorizationType} (h : mixedOK n σ)
@@ -1089,11 +1081,8 @@ theorem classify_Tselfloop_v0 {n N H : ℕ} (hn : 0 < n) (hN : 0 < N)
   have hlt : PadicLift.zmodValuation M9.realP N ((f.1).coeff 0) < N :=
     PadicLift.zmodValuation_lt M9.realP hN hne0
   have hv' : H = PadicLift.zmodValuation M9.realP N ((f.1).coeff 0) := hv
-  constructor
-  · show PadicLift.zmodValuation M9.realP N ((f.1).coeff 0) = H
-    omega
-  · show PadicLift.zmodValuation M9.realP N ((f.1).coeff 0) < N
-    omega
+  have hvOf : vOf M9.realP f 0 = PadicLift.zmodValuation M9.realP N ((f.1).coeff 0) := rfl
+  omega
 
 /-- The faces of a menu cell are one per (side, shape) pair. -/
 theorem faces_length_mkCell (s : ℕ) (P : List (ℕ × ℕ)) (sh : List (List (ℕ × ℕ))) :
@@ -1380,8 +1369,8 @@ theorem sum_stratumCount4_le_box (n K N : ℕ) (hn : 0 < n) (hN : 0 < N) :
       = ((∑ T ∈ S, Nat.card {f : QuotientBox.monicBox M9.realP N n // Fiber4 n N T f} : ℕ) : ℚ) := by
         rw [Nat.cast_sum]
         exact Finset.sum_congr rfl fun T _ => stratumCount4_eq_card n N T
-    _ ≤ ((M9.realP ^ (n * N) : ℕ) : ℚ) := by exact_mod_cast key
-    _ = (M9.realP : ℚ) ^ (n * N) := by push_cast; ring
+    _ ≤ ((M9.realP ^ (n * N) : ℕ) : ℚ) := Nat.cast_le.mpr key
+    _ = (M9.realP : ℚ) ^ (n * N) := Nat.cast_pow _ _
 
 /-! ### Small-N vanishing, level constancy, monotonicity (the counting-model feeds) -/
 
@@ -1418,8 +1407,7 @@ theorem stratumCount4_mixed_smallN {n N : ℕ} {σ : FactorizationType} (hσ : m
     omega
   show ((Nat.card {f : QuotientBox.monicBox M9.realP N n //
       classify1 M9.realP f = some (mkCell n (mixedPath σ) (mixedSh σ))} : ℕ) : ℚ) = 0
-  rw [Nat.card_of_isEmpty]
-  norm_num
+  rw [Nat.card_of_isEmpty, Nat.cast_zero]
 
 /-- The mixed-leg closed form at every level above the threshold (via
 `stratumCount1_eq_closed`). -/

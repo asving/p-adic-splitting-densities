@@ -32,9 +32,8 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 omit [Fact p.Prime] in
 private lemma numPinned_le' {m : ℕ} (D : Locus p m) : D.numPinned ≤ m := by
   rw [DigitSystem.numPinned]
-  calc (Finset.univ.filter (fun i => D.pinned i)).card
-      ≤ Finset.univ.card := Finset.card_filter_le _ _
-    _ = m := by rw [Finset.card_univ, Fintype.card_fin]
+  exact (Finset.card_filter_le _ _).trans_eq
+    (Finset.card_univ.trans (Fintype.card_fin m))
 
 theorem C6_thmC_b {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (Z : Locus p m) (hZ : AdmissibleZ (J.Sigma H.nodes.length) Z) : Nat.card (J.SHZ Z) * p ^ totalPins J Z = boxMass p m := by
   -- (iii): the classifier locus count equals the final joint-locus count
@@ -42,9 +41,9 @@ theorem C6_thmC_b {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (Z : Lo
   -- admissible Z peels a factor p^{|pins Z|} off the final state mass
   have htrans := C6_transportedAdmissible (J.Sigma H.nodes.length) Z hZ
   -- the final state mass is p^{m − Σ m*}
-  have hcodim := C5_massCodim J H.nodes.length (le_refl _)
+  have hcodim := C5_massCodim J H.nodes.length le_rfl
   -- and its pin count is exactly Σ m*, hence Σ m* ≤ m
-  have hrec := C5_massRec J H.nodes.length (le_refl _)
+  have hrec := C5_massRec J H.nodes.length le_rfl
   have hSm : (Finset.range H.nodes.length).sum (fun i => (J.fresh i).mstar) ≤ m := by
     have hle := numPinned_le' (J.Sigma H.nodes.length)
     rwa [hrec] at hle

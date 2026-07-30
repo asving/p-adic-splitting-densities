@@ -77,9 +77,8 @@ section MonicCount
 Proved from the `Fin m`-indexed basis of `degreeLT F m`. -/
 theorem card_degreeLT (m : ℕ) :
     Nat.card (degreeLT F m) = Nat.card F ^ m := by
-  have hbasis : Module.finrank F (degreeLT F m) = m := by
-    rw [Module.finrank_eq_card_basis (degreeLT.basis F m), Fintype.card_fin]
-  rw [Module.natCard_eq_pow_finrank (K := F) (V := degreeLT F m), hbasis]
+  rw [Module.natCard_eq_pow_finrank (K := F) (V := degreeLT F m),
+    Module.finrank_eq_card_basis (degreeLT.basis F m), Fintype.card_fin]
 
 /-- The set of monic polynomials of degree exactly `m`. -/
 def monicDegree (F : Type*) [Field F] (m : ℕ) : Set F[X] :=

@@ -105,8 +105,7 @@ theorem isRationalFn_finsetSum {α : Type*} (s : Finset α) (f : α → ℕ → 
       have hfa : IsRationalFn (f a) := h a (Finset.mem_insert_self a s)
       have hs : IsRationalFn (fun q => ∑ b ∈ s, f b q) :=
         ih (fun b hb => h b (Finset.mem_insert_of_mem hb))
-      have := isRationalFn_add hfa hs
-      simpa [Finset.sum_insert ha] using this
+      simpa [Finset.sum_insert ha] using isRationalFn_add hfa hs
 
 namespace MontesDataV2
 

@@ -71,9 +71,7 @@ theorem density_rational (F : DensityFoundation) (Br : OMBridge F) (n : ℕ) (σ
     ∃ num den : Polynomial ℚ, den ≠ 0 ∧ ∀ q : ℕ, 1 < q →
       den.eval (q : ℚ) ≠ 0 ∧ F.density n σ q = num.eval (q : ℚ) / den.eval (q : ℚ) := by
   obtain ⟨num, den, hden, hsum⟩ := sum_clusterVol_rational F Br (F.shapes n σ)
-  refine ⟨num, den, hden, fun q hq => ?_⟩
-  obtain ⟨hdenq, heq⟩ := hsum q hq
-  refine ⟨hdenq, ?_⟩
-  rw [F.decomposition n σ hσ q hq, heq]
+  refine ⟨num, den, hden, fun q hq => ⟨(hsum q hq).1, ?_⟩⟩
+  rw [F.decomposition n σ hσ q hq, (hsum q hq).2]
 
 end LeanUrat.L6M4
