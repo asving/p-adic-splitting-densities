@@ -61,6 +61,71 @@ counting-identity spec).
 
 difficulty: hard-fable. hyp: none. PERMITTED OUTCOME: BLOCKED + mechanism-survey
 report in lieu of a proof of the probe existential.
+
+## PROBE REPORT (gate executed 2026-07-30) — outcome (b): NO OBSTRUCTION FOUND;
+## the probe existential is believed FALSE for EVERY tower term; display (4) SURVIVES
+
+**Verdict: STALLED-STATEMENT-SURVIVES.** The countermodel attempt terminated with a
+math-level proof that no legal `Tower` admits the R-3 deficiency, plus a sealed numeric
+sweep (`verification/cl04_addr_equidistribution_probe.py`, predictions sealed in header
+before first run; 43,427 slot data incl. the gcd-defect strata, exit 0). The `sorry`
+below stays banked as the open probe slot — its disposition (delete / quarantine-with-
+record on R-b ratification) is CL-02's, per the fence discipline. NOTHING negation-
+shaped is landed (the fenced `C6_alphabetCard` sorry is live; no-coexistence ruling).
+
+**Mechanism reduction.** For any tower, block, height with nonempty level set:
+* each digit line `y ↦ typComposite b γ (Pi.single c y)` is an ADDITIVE map with
+  subgroup image of card ≤ |F_Q| (additivity: digLift residual sums via `hRadd`, weight
+  jumps kill only the `y' = −y` diagonal via `w_jump`); so card 𝔸 ≤ |F_Q|^N with
+  N := #(level set) = #(aligned ∧ attainable addresses) — the coordinate ↔ address
+  bijection `(l, s) ↔ s, l = γ − Σ s_r·κ_r`;
+* card F_{K+1} = |F_Q|^{∏ g}: `TransitionData.child_field : σ'.K = σ.nextField zbar`
+  with `TransHyp.hirr ψ` + `hroot` pins each increment's residue growth to EXACTLY g
+  (z̄'s minimal polynomial is ψ); `IsRecentering` keeps K; base pin `K = FQ`;
+* the lines are full and jointly independent (line fullness: weight-detection at the
+  piece index, exactly `C6_attain_automatic`'s display (0) applied to digit
+  differences; joint independence: distinct level-set coordinates have distinct
+  BOUNDED slot vectors, and iterated key developments are slot-min ORTHOGONAL —
+  `hK1`/`K1At` at each stage's own key, descended to the top scale through `hStretch`/
+  the ScratchC6 `stretch_chain` — so no cross-slot cancellation can raise the weight),
+  giving card 𝔸 = |F_Q|^N exactly.
+Hence (4)'s ⟸ leg fails at an all-attainable class IFF that class holds FEWER than
+∏ g aligned addresses, and the whole probe reduces to slot combinatorics.
+
+**The equidistribution theorem (CI-1, the counting identity's core — kills the
+countermodel).** For every legal slot datum (stages r = 0..K storing (e_r, h_r) with
+`Stage.hcop : gcd e_r h_r = 1`, `he`/`hh`; increments with `slotBound k = e_k·g_{k+1}`
+— forced by `child_key` + `IsStandardLift`'s degree, L3_liftMonic; recenterings with
+`slotBound = 1`, `e = 1` forced by `IsRecentering`), writing d_r := e_0···e_r:
+
+    for EVERY class ρ ∈ ℚ/ℤ:  #{s : inner slots, Σ_r s_r·h_r/d_r ≡ ρ (mod ℤ)}
+      = ∏ g   if ρ ∈ ⟨1/d_{K−1}⟩,   0 otherwise.
+
+Proof (elementary, uses ONLY hcop — no I-aug/steeper-chain): peel slot 0. The walk
+`s₀·h₀/e₀ mod ℤ`, s₀ < e₀·g₁, covers the subgroup ⟨1/e₀⟩ uniformly g₁ times
+(gcd(h₀,e₀) = 1); conditioning on the tail reduces the fiber count to the SAME problem
+mod ⟨1/e₀⟩ for the shifted tower (multiply by e₀), and induction closes. So every
+achieved class of block b holds EXACTLY ∏ g = [F_{K+1} : F_Q] aligned addresses: the
+digit-line deficiency (|F_Q| per line) is EXACTLY compensated by the address count —
+the note's shallow heuristic `#aligned·[F_Q:F_p] = [F_{K+1}:F_p]` is a theorem, and
+(4) needs NO extra "digit lines full" conjunct on its RHS.
+
+**What CL-05 must prove (the ⟸-leg spec, all from existing stage laws + CI-1):**
+* CI-1 (above; new Lean content, elementary induction on slots);
+* CI-2 line structure: each level-set digit line is an injective additive hom image,
+  card = |F_Q| (`hRadd`/`w_jump`/weight detection; ScratchC6 toolkit);
+* CI-3 joint independence: `aDim b γ = N·[F_Q:F_p]` via slot-min orthogonality
+  (`hK1` + `hStretch` recursion; T8's step lemma is the shape);
+* CI-4 card bridge: `Nat.card F_{K+1} = |F_Q|^{∏g}` (child_field/hirr/hroot chain +
+  `C6_cardK_bridge`'s char pin).
+Assembly: all aligned attainable ⟹ N = ∏g (CI-1) ⟹ card 𝔸 = |F_Q|^{∏g} = card F_{K+1};
+⟹-leg contrapositive: an unattainable aligned address drops N' < ∏g ⟹
+card 𝔸 ≤ |F_Q|^{N'} < card F_{K+1} (needs only CI-1 + the CI-2 upper bound).
+
+**Fence consequence (Q-1/CL-02).** R-b's display (4) survives its countermodel-first
+gate with the counting identity now specified from existing laws; per the /goal
+decision rule this supports ratifying R-b (it alone keeps the MOVES 2160–2165
+dichotomy formal). CL-05's launch condition (this report) is satisfied.
 -/
 
 set_option linter.style.longLine false
