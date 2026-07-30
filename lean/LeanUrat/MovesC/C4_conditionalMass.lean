@@ -47,7 +47,7 @@ lemma card_joint (pred : Fin m → Prop) [DecidablePred pred]
       (fun x => Iff.rfl)).trans Equiv.subtypeProdEquivProd
   rw [Nat.card_congr step, Nat.card_prod]
 
-private lemma putOn_restrict_zero (S : Finset (Fin m)) (y : Fin m → ZMod p)
+lemma putOn_restrict_zero (S : Finset (Fin m)) (y : Fin m → ZMod p)
     (hz : ∀ c ∉ S, y c = 0) : putOn (· ∈ S) (fun c => y c.1) (fun _ => 0) = y := by
   funext c
   rw [putOn_apply]
@@ -55,12 +55,12 @@ private lemma putOn_restrict_zero (S : Finset (Fin m)) (y : Fin m → ZMod p)
   · rfl
   · rename_i h; exact (hz c h).symm
 
-private lemma restrict_putOn (S : Finset (Fin m)) (a : {c // c ∈ S} → ZMod p) :
+lemma restrict_putOn (S : Finset (Fin m)) (a : {c // c ∈ S} → ZMod p) :
     (fun c : {c // c ∈ S} => putOn (· ∈ S) a (fun _ => 0) c.1) = a := by
   funext c
   rw [putOn_apply, dif_pos c.2]
 
-private def clauseCountEquiv (cl : LevelClause p m) :
+def clauseCountEquiv (cl : LevelClause p m) :
     {a : {c // c ∈ cl.support} → ZMod p // cl.sat (putOn (· ∈ cl.support) a (fun _ => 0))}
       ≃ {y : Fin m → ZMod p // cl.sat y ∧ ∀ c ∉ cl.support, y c = 0} where
   toFun a := ⟨putOn (· ∈ cl.support) a.1 (fun _ => 0), a.2, by
@@ -70,7 +70,7 @@ private def clauseCountEquiv (cl : LevelClause p m) :
   left_inv a := by ext1; exact restrict_putOn cl.support a.1
   right_inv y := by ext1; exact putOn_restrict_zero cl.support y.1 y.2.2
 
-private lemma clause_count [Fact p.Prime] (cl : LevelClause p m) :
+lemma clause_count [Fact p.Prime] (cl : LevelClause p m) :
     Nat.card {a : {c // c ∈ cl.support} → ZMod p // cl.sat (putOn (· ∈ cl.support) a (fun _ => 0))}
       * p ^ cl.codim = p ^ cl.support.card := by
   rw [Nat.card_congr (clauseCountEquiv cl)]
@@ -80,7 +80,7 @@ lemma card_zmod [Fact p.Prime] : Nat.card (ZMod p) = p := by
   haveI : NeZero p := ⟨(Fact.out (p := p.Prime)).pos.ne'⟩
   rw [Nat.card_eq_fintype_card, ZMod.card]
 
-private lemma clausesCountList [Fact p.Prime] (L : List (LevelClause p m))
+lemma clausesCountList [Fact p.Prime] (L : List (LevelClause p m))
     (hdisj : L.Pairwise (fun c₁ c₂ => Disjoint c₁.support c₂.support)) :
     Nat.card {x : Fin m → ZMod p // ∀ cl ∈ L, cl.sat x} * p ^ (L.map LevelClause.codim).sum
       = p ^ m := by
