@@ -52,6 +52,13 @@ fold-in: `L3_liftWeight.olean` on disk, full build green), the import remains un
 historical reasons, and the duplication is tracked as Class-D).
 -/
 
+/-! ## SYN-M3 record (2026-07-30, C1 cluster)
+The file-private engine block (byte-identical to `L5_landVertex`'s — golf Moves#7's
+mirrored-edits drift risk RETIRED) is deleted in favor of `Moves/LaurentOrd.lean` +
+`Moves/ResVal.lean`; same per-conjunct equivalences as SYN-M2 (see `L5_landVertex.lean`
+header + `lean/notes/SYN_E0_CONCORDANCE_2026-07-30.md`). File-specific
+`vertexCongruence` stays. Public statement `L5_landVertexDigit` byte-identical. -/
+
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false

@@ -13,6 +13,7 @@ import LeanUrat.Moves.L5_recSubst_R4
 import LeanUrat.Moves.L5_recLiftIndep_R4
 import LeanUrat.Moves.L5_recRSland_R4
 import LeanUrat.Moves.L5_recVV_R4
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.S10_recStage — the D.10/TRANS-RS capstone
@@ -52,19 +53,6 @@ section Helpers
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- `R 1 = 1`. -/
-private lemma R_one (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
-
-/-- `R (g^j) = (R g)^j` for `g ≠ 0`. -/
-private lemma R_pow (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :
-    σ.R (g ^ j) = (σ.R g) ^ j := by
-  induction j with
-  | zero => rw [pow_zero, pow_zero, R_one]
-  | succ n ih => rw [pow_succ, σ.hRmul (g ^ n) g (pow_ne_zero n hg) hg, ih, pow_succ]
-
 /-- Any multiplicative integer valuation sends `1` to `0`. -/
 private lemma val_one (w : Polynomial ℤ_[p] → ℤ)
     (hmul : ∀ f g : Polynomial ℤ_[p], f ≠ 0 → g ≠ 0 → w (f * g) = w f + w g) : w 1 = 0 := by
@@ -82,14 +70,12 @@ private lemma val_neg (w : Polynomial ℤ_[p] → ℤ)
   have h2 := hmul (-1) f hn1 hf
   rwa [neg_one_mul, hw1, zero_add] at h2
 
-/-- `w (g^j) = j·(w g)` for `g ≠ 0`. -/
-private lemma w_pow (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :
-    σ.w (g ^ j) = (j : ℤ) * σ.w g := by
-  induction j with
-  | zero => rw [pow_zero, val_one σ.w σ.hwmul]; simp
-  | succ n ih =>
-    rw [pow_succ, σ.hwmul (g ^ n) g (pow_ne_zero n hg) hg, ih]
-    push_cast; ring
+/-! SYN-M8 record (2026-07-30, C1 cluster): `R_one`/`R_pow`/`w_pow` deleted (call sites →
+`Moves.ResVal.R_one/R_pow/w_pow`, statement-identical); this file's `w_sum_ge` KEEPS its
+richer signature (subsum-nonvanishing hypothesis) but its induction body is replaced by a
+one-line specialization of the shared `ult_sum_ge` (equivalence: `hm`'s nonzero guard is
+discarded, `hsum := hsub S ⊆-refl hne` — hypotheses only consumed, conclusion identical).
+`val_one`/`val_neg` (bare-w forms, also applied at `σ.wPrev`) stay. -/
 
 /-- `(T s)^j = T (j·s)` in any Laurent ring. -/
 private lemma T_pow_s {R : Type*} [CommRing R] (s : ℤ) (j : ℕ) :
@@ -152,26 +138,8 @@ private lemma subsum_ne_zero {R : Type*} [CommRing R] [Nontrivial R] (Φ : Polyn
 private lemma w_sum_ge (σ : Stage p F) (T : ℕ → Polynomial ℤ_[p]) (γ' : ℤ) (S : Finset ℕ)
     (h0 : ∀ j ∈ S, T j ≠ 0) (hw : ∀ j ∈ S, γ' ≤ σ.w (T j))
     (hsub : ∀ S' ⊆ S, S'.Nonempty → (∑ j ∈ S', T j) ≠ 0) (hne : S.Nonempty) :
-    γ' ≤ σ.w (∑ j ∈ S, T j) := by
-  classical
-  revert h0 hw hsub hne
-  refine Finset.induction_on S ?_ ?_
-  · intro _ _ _ hne; exact absurd hne (by simp)
-  · intro a S' ha ih h0 hw hsub _
-    rw [Finset.sum_insert ha]
-    have hTa0 : T a ≠ 0 := h0 a (Finset.mem_insert_self a S')
-    have hwa : γ' ≤ σ.w (T a) := hw a (Finset.mem_insert_self a S')
-    rcases S'.eq_empty_or_nonempty with hE | hE
-    · subst hE; rw [Finset.sum_empty, add_zero]; exact hwa
-    · have hP0 : (∑ j ∈ S', T j) ≠ 0 := hsub S' (Finset.subset_insert a S') hE
-      have hPw : γ' ≤ σ.w (∑ j ∈ S', T j) :=
-        ih (fun j hj => h0 j (Finset.mem_insert_of_mem hj))
-          (fun j hj => hw j (Finset.mem_insert_of_mem hj))
-          (fun S'' h'' => hsub S'' (h''.trans (Finset.subset_insert a S'))) hE
-      have htot : T a + ∑ j ∈ S', T j ≠ 0 := by
-        have h := hsub (insert a S') (Finset.Subset.refl _) ⟨a, Finset.mem_insert_self a S'⟩
-        rwa [Finset.sum_insert ha] at h
-      exact le_trans (le_min hwa hPw) (σ.hwult (T a) (∑ j ∈ S', T j) hTa0 hP0 htot)
+    γ' ≤ σ.w (∑ j ∈ S, T j) :=
+  ult_sum_ge σ.w σ.hwult S T γ' (fun j hj _ => hw j hj) (hsub S (Finset.Subset.refl S) hne)
 
 /-- The graded trichotomy engine (see `L5_recSubst_R4`, where it is private). -/
 private lemma graded_sum (σ : Stage p F)
@@ -293,7 +261,7 @@ private lemma res_poly {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     exact ⟨(Finset.mem_filter.mp h1.1).2, h1.2⟩
   have hTw : ∀ j, B j ≠ 0 → σ.w (B j * σ.Φ ^ j) = σ.w (B j) + (j : ℤ) * σ.w σ.Φ := by
     intro j hBj
-    rw [σ.hwmul (B j) (σ.Φ ^ j) hBj (pow_ne_zero _ hΦne), w_pow σ σ.Φ hΦne]
+    rw [σ.hwmul (B j) (σ.Φ ^ j) hBj (pow_ne_zero _ hΦne), ResVal.w_pow σ σ.Φ hΦne]
   have hT0M : ∀ j ∈ M, B j * σ.Φ ^ j ≠ 0 := fun j hj =>
     mul_ne_zero (hMmem j hj).1 (pow_ne_zero _ hΦne)
   have hTwM : ∀ j ∈ M, σ.w (B j * σ.Φ ^ j) = σ.w f := fun j hj => by
@@ -359,7 +327,7 @@ private lemma res_poly {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   have hcC : σ.R (B j) = LaurentPolynomial.C (c : ↥σ.K) := by
     rw [hc, ht0, neg_zero, zero_mul, LaurentPolynomial.T_zero, mul_one]
   refine ⟨Polynomial.C (c : ↥σ.K) * Polynomial.X ^ j, ?_⟩
-  rw [σ.hRmul (B j) (σ.Φ ^ j) hBj (pow_ne_zero _ hΦne), R_pow σ σ.Φ hΦne, σ.hRΦ, hs1,
+  rw [σ.hRmul (B j) (σ.Φ ^ j) hBj (pow_ne_zero _ hΦne), ResVal.R_pow σ σ.Φ hΦne, σ.hRΦ, hs1,
     hcC, T_pow_s, mul_one, map_mul, Polynomial.toLaurent_C, Polynomial.toLaurent_X_pow]
 
 /-- The residual of a product of nonzero coefficients is a nonzero `K`-constant (`t = 0`). -/
@@ -367,7 +335,7 @@ private lemma coeff_prod_R (σ : Stage p F) (ht0 : σ.t = 0) (l : List (Polynomi
     (hl : ∀ u ∈ l, u ≠ 0 ∧ inC σ.Φ u) :
     ∃ d : ↥σ.K, d ≠ 0 ∧ σ.R l.prod = LaurentPolynomial.C d := by
   induction l with
-  | nil => exact ⟨1, one_ne_zero, by rw [List.prod_nil, R_one, map_one]⟩
+  | nil => exact ⟨1, one_ne_zero, by rw [List.prod_nil, ResVal.R_one, map_one]⟩
   | cons a rest ih =>
     obtain ⟨d, hd, hR⟩ := ih (fun u hu => hl u (List.mem_cons_of_mem a hu))
     obtain ⟨ha1, ha2⟩ := hl a List.mem_cons_self
@@ -388,7 +356,7 @@ private lemma unitMonProd_R (σ : Stage p F) (ht0 : σ.t = 0) (hs1 : σ.s = 1)
   have hlne : l.prod ≠ 0 := list_prod_ne_zero l (fun u hu => (hl u hu).1)
   have hΦne : σ.Φ ≠ 0 := σ.hmonic.ne_zero
   refine ⟨d, hd, ?_⟩
-  rw [σ.hRmul _ _ hlne (pow_ne_zero j hΦne), hR, R_pow σ σ.Φ hΦne j, σ.hRΦ, hs1,
+  rw [σ.hRmul _ _ hlne (pow_ne_zero j hΦne), hR, ResVal.R_pow σ σ.Φ hΦne j, σ.hRΦ, hs1,
     T_pow_s, mul_one]
 
 /-- Inverting the substitution: `P(z + c̃) = 0` forces `P = 0`. -/
@@ -681,7 +649,7 @@ theorem S10_recStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
           mul_ne_zero hlne' (pow_ne_zero _ hΦ'ne), ?_, hRe₂, hRe₂', by omega⟩
         show σ.w (l.prod * (σ.Φ - tt) ^ j) = σ.w (l'.prod * (σ.Φ - tt) ^ j')
         rw [σ.hwmul _ _ hlne (pow_ne_zero _ hΦ'ne), σ.hwmul _ _ hlne' (pow_ne_zero _ hΦ'ne),
-          w_pow σ _ hΦ'ne, w_pow σ _ hΦ'ne, hwΦ', ← w_pow σ _ hΦne, ← w_pow σ _ hΦne,
+          ResVal.w_pow σ _ hΦ'ne, ResVal.w_pow σ _ hΦ'ne, hwΦ', ← ResVal.w_pow σ _ hΦne, ← ResVal.w_pow σ _ hΦne,
           ← σ.hwmul _ _ hlne (pow_ne_zero _ hΦne), ← σ.hwmul _ _ hlne' (pow_ne_zero _ hΦne),
           ← hfeq, ← hgeq]
         exact hwfg

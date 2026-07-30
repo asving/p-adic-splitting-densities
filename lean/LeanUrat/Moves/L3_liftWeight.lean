@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.Moves.Defs
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L3_liftWeight — EQUAL WEIGHTS: `w(Φ̂) = e·h·g` (§B2-DEF D.5, DEF-9)
@@ -33,111 +34,11 @@ namespace LeanUrat.Moves
 
 open Polynomial
 
-theorem L3_liftWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 : 1 ≤ g) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0) : σ.w Φhat = (σ.e : ℤ) * σ.h * g := by
-  obtain ⟨hψmon, hψdeg, tt, htt0, httk, hΦhat⟩ := hlift
-  -- The coefficient of the k-th displayed slot: t_k for k<g, 1 for k=g.
-  set cc : ℕ → Polynomial ℤ_[p] := fun k => if k = g then 1 else tt k with hccdef
-  -- The Φ-adic development of Φ̂: B j = Σ_{k≤g} [j = e·k]·c_k.
-  set B : ℕ → Polynomial ℤ_[p] :=
-    (fun j => ∑ k ∈ Finset.range (g + 1), if j = σ.e * k then cc k else 0) with hBdef
-  -- Basic facts about cc.
-  have hccg : cc g = 1 := by simp [hccdef]
-  have hcck : ∀ k, k < g → cc k = tt k := by
-    intro k hk; simp only [hccdef]; rw [if_neg (by omega : k ≠ g)]
-  -- Degree facts about Φ.
-  have hΦ0 : σ.Φ ≠ 0 := σ.hmonic.ne_zero
-  have hΦdegbot : (⊥ : WithBot ℕ) < σ.Φ.degree :=
-    bot_lt_iff_ne_bot.mpr (fun h => hΦ0 (Polynomial.degree_eq_bot.mp h))
-  have hΦdeg0 : (0 : WithBot ℕ) < σ.Φ.degree := by
-    rw [Polynomial.degree_eq_natDegree hΦ0]
-    exact_mod_cast lt_of_lt_of_le Nat.zero_lt_one σ.hdeg
-  -- Every displayed coefficient sits in the coefficient space C.
-  have hccdeg : ∀ k, k ≤ g → (cc k).degree < σ.Φ.degree := by
-    intro k hk
-    by_cases hkg : k = g
-    · rw [hkg, hccg, Polynomial.degree_one]; exact hΦdeg0
-    · have hklt : k < g := lt_of_le_of_ne hk hkg
-      rw [hcck k hklt]
-      by_cases hcoef : ψ.coeff k = 0
-      · rw [htt0 k hcoef, Polynomial.degree_zero]; exact hΦdegbot
-      · obtain ⟨-, hinC, -, -⟩ := httk k hklt hcoef
-        exact hinC
-  -- w 1 = 0.
-  have hw1 : σ.w 1 = 0 := by
-    have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-    rw [mul_one] at h; omega
-  -- The development sum equals Φ̂'s displayed form.
-  have hsum : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
-      = (∑ k ∈ Finset.range g, tt k * σ.Φ ^ (σ.e * k)) + σ.Φ ^ (σ.e * g) := by
-    have step1 : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
-        = ∑ k ∈ Finset.range (g + 1), cc k * σ.Φ ^ (σ.e * k) := by
-      simp only [hBdef, Finset.sum_mul]
-      rw [Finset.sum_comm]
-      apply Finset.sum_congr rfl
-      intro k hk
-      rw [Finset.mem_range] at hk
-      have hmem : σ.e * k ∈ Finset.range (σ.e * g + 1) := by
-        rw [Finset.mem_range]
-        have : σ.e * k ≤ σ.e * g := Nat.mul_le_mul (le_refl σ.e) (by omega)
-        omega
-      simp only [ite_mul, zero_mul]
-      rw [Finset.sum_ite_eq', if_pos hmem]
-    rw [step1, Finset.sum_range_succ, hccg, one_mul]
-    congr 1
-    apply Finset.sum_congr rfl
-    intro k hk
-    rw [hcck k (Finset.mem_range.mp hk)]
-  -- The development.
-  have hDev : IsDevelopment σ.Φ Φhat B (σ.e * g + 1) := by
-    refine ⟨?_, ?_, ?_⟩
-    · intro j
-      simp only [hBdef]
-      refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
-      rw [Finset.sup_lt_iff hΦdegbot]
-      intro k hk
-      rw [Finset.mem_range] at hk
-      by_cases hjk : j = σ.e * k
-      · rw [if_pos hjk]; exact hccdeg k (by omega)
-      · rw [if_neg hjk, Polynomial.degree_zero]; exact hΦdegbot
-    · intro j hj
-      simp only [hBdef]
-      apply Finset.sum_eq_zero
-      intro k hk
-      rw [Finset.mem_range] at hk
-      apply if_neg
-      intro hjk
-      have hkg : σ.e * k ≤ σ.e * g := Nat.mul_le_mul (le_refl σ.e) (by omega)
-      omega
-    · rw [hΦhat, hsum]; ring
-  -- Lemma K1 at the current key gives the attained slot-minimum.
-  have hSMA := σ.hK1 Φhat B (σ.e * g + 1) hΦne hDev
-  obtain ⟨-, j₀, hj₀N, hj₀nz, hj₀eq⟩ := hSMA
-  have hsumnz : (∑ k ∈ Finset.range (g + 1), if j₀ = σ.e * k then cc k else 0) ≠ 0 := by
-    simpa only [hBdef] using hj₀nz
-  obtain ⟨k₀, hk₀mem, hk₀ne⟩ := Finset.exists_ne_zero_of_sum_ne_zero hsumnz
-  rw [Finset.mem_range] at hk₀mem
-  have hcond : j₀ = σ.e * k₀ := by
-    by_contra h
-    exact hk₀ne (if_neg h)
-  rw [if_pos hcond] at hk₀ne
-  have hBval : B j₀ = cc k₀ := by
-    simp only [hBdef]
-    rw [Finset.sum_eq_single k₀]
-    · rw [if_pos hcond]
-    · intro k _ hkne
-      exact if_neg (fun hh => hkne (Nat.eq_of_mul_eq_mul_left σ.he (hh.symm.trans hcond)))
-    · exact fun h => absurd (Finset.mem_range.mpr hk₀mem) h
-  rw [hj₀eq]
-  change σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
-  rw [hBval, hcond, σ.hwΦ]
-  by_cases hk₀g : k₀ = g
-  · rw [hk₀g, hccg, hw1]
-    push_cast; ring
-  · have hk₀lt : k₀ < g := lt_of_le_of_ne (by omega) hk₀g
-    have httne : tt k₀ ≠ 0 := by rw [hcck k₀ hk₀lt] at hk₀ne; exact hk₀ne
-    have hcoefne : ψ.coeff k₀ ≠ 0 := fun hc => httne (htt0 k₀ hc)
-    obtain ⟨-, hinC, hwprev, -⟩ := httk k₀ hk₀lt hcoefne
-    rw [hcck k₀ hk₀lt, σ.hStretch (tt k₀) httne hinC, hwprev]
-    push_cast; ring
+/-- SYN-M5 record (2026-07-30, C1 cluster): this theorem was a verbatim duplicate of
+`L3_K1`'s private `w_Phat` (golf Moves#4); the shared proof now lives at
+`Moves/ResVal.lean` (`ResVal.w_Phat`, statement-identical) and this unit delegates.
+Public statement byte-identical. -/
+theorem L3_liftWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 : 1 ≤ g) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0) : σ.w Φhat = (σ.e : ℤ) * σ.h * g :=
+  ResVal.w_Phat σ ψ g hg1 Φhat hlift hΦne
 
 end LeanUrat.Moves

@@ -884,3 +884,25 @@ NOT executed: both need de-privatize+import (new public names + import-DAG edits
 the MovesD pair proves the same facts by DIFFERENT mechanisms, so a survivor must
 be chosen) — that is a real sweep unit with the Codex-equivalence discipline, not
 a quick fold-in; remains queued.
+
+## CLASS-D CLOSURES via SYN C1 (2026-07-30 late; record: SYN_C1_EXECUTION_2026-07-30.md)
+
+The C1 ResVal engine cluster (Moves/LaurentOrd.lean + Moves/ResVal.lean +
+HC1/V34_readKernel.lean, migrations SYN-M1..M9) closes the following ledger items:
+- Moves#4 (L3_liftWeight ≡ L3_K1.w_Phat verbatim dup): CLOSED — single source
+  `ResVal.w_Phat`; L3_liftWeight now delegates; the stale ".olean not built"
+  historical rationales removed from the L3_K1 / L5_landVertex{Digit} headers.
+- Moves#5 (L4_TRANSi/L4_TRANSiii shared helper dups w_one/w_neg/sum_ge): CLOSED —
+  T1's `wsum_ge'` was the weakest-assumption copy and is the verbatim source of the
+  shared `ult_sum_ge`. (The unused-binder hygiene sub-items of Moves#5 are separate
+  and unaffected.)
+- Moves#7 (L5_landVertex ↔ L5_landVertexDigit byte-identical block, "edits must be
+  mirrored" STANDING DRIFT RISK): CLOSED — block deleted from both files; SYN-E0
+  verified the pair was still byte-identical at closure (no drift had occurred).
+- HC1#99 (V4_readLanding:45–832 verbatim copy of V3's file-private kernel): CLOSED —
+  hoisted once to HC1/V34_readKernel.lean at `ReadFrame.pack`.
+- HC1#100 (V7/V8/V9 micro-copies): CLOSED for V8/V9 (+V10/S10, same sweep); V7's
+  `v7_w_mul_keyPow`/`v7_dev_exists_bounded` are compound statements, not
+  statement-level dups of the engine — left in place with record.
+All public statements byte-identical (scripted HEAD-vs-worktree signature check);
+AxChk census byte-identical to the golf2 baseline; full build green.

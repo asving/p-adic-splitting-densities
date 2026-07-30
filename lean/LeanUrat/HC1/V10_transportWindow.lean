@@ -8,6 +8,7 @@ import LeanUrat.HC1.DefsV
 import LeanUrat.HC1.S2_childW
 import LeanUrat.HC1.V4_readLanding
 import LeanUrat.HC2.Defs
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.V10_transportWindow — §B2-DEF D.8-(TRANSPORT), UPWARD leg, the FORCED-WINDOW
@@ -107,67 +108,14 @@ namespace LeanUrat.HC1
 
 open Polynomial LeanUrat.Moves LeanUrat.MovesJ
 
+/-! SYN-M8 record (2026-07-30, C1 cluster): the five `v10_*` engine privates deleted;
+call sites re-pointed at `Moves.ResVal.w_one/w_neg/w_pow/w_sum_ge/R_pow`. One call-site
+equivalence: `v10_R_pow` carried a redundant `1 ≤ n` guard (curried); `ResVal.R_pow`
+holds for all `n` — the guard argument `(by omega)` is dropped at the two call sites
+(PROVED strengthening consumed, not a weakening). -/
 section V10Helpers
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-
-/-- `w 1 = 0` (the V9 helper pattern). -/
-private lemma v10_w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; omega
-
-/-- `w (-x) = w x` (the V9 helper pattern). -/
-private lemma v10_w_neg (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
-    σ.w (-x) = σ.w x := by
-  have hn1 : σ.w (-1) = 0 := by
-    have h := σ.hwmul (-1) (-1) (by norm_num) (by norm_num)
-    rw [neg_mul_neg, one_mul, v10_w_one σ] at h; omega
-  have h := σ.hwmul (-1) x (by norm_num) hx
-  rw [neg_one_mul] at h
-  rw [h, hn1, zero_add]
-
-/-- `w (x^n) = n·w x` (the V9 helper pattern). -/
-private lemma v10_w_pow (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
-  induction n with
-  | zero => rw [pow_zero, v10_w_one σ]; push_cast; ring
-  | succ k ih =>
-      rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hx) hx, ih]
-      push_cast; ring
-
-/-- Finite-sum ultrametric lower bound (the V9 helper pattern). -/
-private lemma v10_w_sum_ge (σ : Stage p F) (S : Finset ℕ) (f : ℕ → Polynomial ℤ_[p])
-    (c : ℤ) :
-    (∀ k ∈ S, f k ≠ 0 → c ≤ σ.w (f k)) → (∑ k ∈ S, f k) ≠ 0 →
-    c ≤ σ.w (∑ k ∈ S, f k) := by
-  classical
-  induction S using Finset.induction_on with
-  | empty => intro _ hne; simp at hne
-  | @insert a S' ha ih =>
-      intro hterm hne
-      rw [Finset.sum_insert ha] at hne ⊢
-      by_cases hfa : f a = 0
-      · rw [hfa, zero_add] at hne ⊢
-        exact ih (fun k hk hk0 => hterm k (Finset.mem_insert_of_mem hk) hk0) hne
-      · by_cases hS' : (∑ k ∈ S', f k) = 0
-        · rw [hS', add_zero]
-          exact hterm a (Finset.mem_insert_self a S') hfa
-        · have h1 := hterm a (Finset.mem_insert_self a S') hfa
-          have h2 := ih (fun k hk hk0 => hterm k (Finset.mem_insert_of_mem hk) hk0) hS'
-          have h3 := σ.hwult (f a) (∑ k ∈ S', f k) hfa hS' hne
-          omega
-
-/-- `R (x^n) = (R x)^n` for `n ≥ 1` (iterated `hRmul`; pure `Stage` fact). -/
-private lemma v10_R_pow (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
-    ∀ n : ℕ, 1 ≤ n → σ.R (x ^ n) = (σ.R x) ^ n := by
-  intro n
-  induction n with
-  | zero => omega
-  | succ k ih =>
-      intro _
-      rcases Nat.eq_zero_or_pos k with hk0 | hk1
-      · subst hk0; simp
-      · rw [pow_succ, σ.hRmul _ _ (pow_ne_zero k hx) hx, ih hk1, pow_succ]
 
 end V10Helpers
 
@@ -248,7 +196,7 @@ theorem V10_forcedKeyWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fini
   have hwPhi' : σ'.w σ.Φ = (E : ℤ) * (σ.h : ℤ) := by
     rw [σ'.hStretch σ.Φ hΦne hinC, hcw, σ.hwΦ, hce]
   have hwpowval : σ'.w (σ.Φ ^ (E * G)) = ((E * G : ℕ) : ℤ) * ((E : ℤ) * (σ.h : ℤ)) := by
-    rw [v10_w_pow σ' σ.Φ hΦne (E * G), hwPhi']
+    rw [ResVal.w_pow σ' σ.Φ hΦne (E * G), hwPhi']
   -- (2) the child_slotmin value of `Φ^{E·G}` through the 2-slot development `Φ̂ − τ`
   set B2 : ℕ → Polynomial ℤ_[p] := fun j => if j = 0 then -τ else if j = 1 then 1 else 0
     with hB2
@@ -276,13 +224,13 @@ theorem V10_forcedKeyWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fini
   -- the τ-slot weight bound: `σ.w τ ≥ h★ + E(G−1)σ.h` (read-lift weights + steepness)
   have hτbound : τ ≠ 0 → (hstar : ℤ) + (E : ℤ) * ((G : ℤ) - 1) * (σ.h : ℤ) ≤ σ.w τ := by
     intro hτne
-    refine v10_w_sum_ge σ (Finset.range G) _ _ ?_ (by rw [← hτdef]; exact hτne)
+    refine ResVal.w_sum_ge σ (Finset.range G) _ _ ?_ (by rw [← hτdef]; exact hτne)
     intro k hk htkne
     have hkG : k < G := Finset.mem_range.mp hk
     have htk : tt k ≠ 0 := fun h0 => htkne (by rw [h0, zero_mul])
     have hψk : ψ.coeff k ≠ 0 := fun h0 => htk (htt0 k h0)
     obtain ⟨-, -, htkw, -⟩ := httk k hkG hψk
-    rw [σ.hwmul _ _ htk (pow_ne_zero _ hΦne), htkw, v10_w_pow σ σ.Φ hΦne (E * k), σ.hwΦ]
+    rw [σ.hwmul _ _ htk (pow_ne_zero _ hΦne), htkw, ResVal.w_pow σ σ.Φ hΦne (E * k), σ.hwΦ]
     have hk0 : (0 : ℤ) ≤ (k : ℤ) := Int.natCast_nonneg k
     have hkg1 : (k : ℤ) ≤ (G : ℤ) - 1 := by
       have : (k : ℤ) < (G : ℤ) := by exact_mod_cast hkG
@@ -303,7 +251,7 @@ theorem V10_forcedKeyWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fini
     have hval : σ'.w (σ.Φ ^ (E * G)) = (E : ℤ) * σ.w τ := by
       have hthis : σ'.w (σ.Φ ^ (E * G))
           = (E : ℤ) * σ.w (B2 0) + ((0 : ℕ) : ℤ) * (hstar : ℤ) := hj₀eq
-      rw [hB20, v10_w_neg σ τ hτne] at hthis
+      rw [hB20, ResVal.w_neg σ τ hτne] at hthis
       rw [hthis]
       push_cast; ring
     rw [hwpowval] at hval
@@ -323,7 +271,7 @@ theorem V10_forcedKeyWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fini
       rw [hB21] at hthis
       rw [hthis]
       push_cast; ring
-    rw [hwpowval, v10_w_one σ] at hval
+    rw [hwpowval, ResVal.w_one σ] at hval
     push_cast at hval ⊢
     linarith [hval]
 
@@ -420,7 +368,7 @@ theorem V10_readTransition_incompatible {p : ℕ} [Fact p.Prime] {F : Type*} [Fi
   have hwPhi' : σ'.w σ.Φ = (σ.h : ℤ) := by
     rw [σ'.hStretch σ.Φ hΦne hinCΦ, hcw, σ.hwΦ, hce, hE1]; push_cast; ring
   have hwpowg : σ'.w (σ.Φ ^ (estar * g)) = (g : ℤ) * (σ.h : ℤ) := by
-    rw [v10_w_pow σ' σ.Φ hΦne (estar * g), hwPhi', hE1]; push_cast; ring
+    rw [ResVal.w_pow σ' σ.Φ hΦne (estar * g), hwPhi', hE1]; push_cast; ring
   -- the S5′ digit of `Φ` at the forced position `−t★·σ.w Φ = 0`
   obtain ⟨cΦ, hcΦ⟩ := σ'.hS5 σ.Φ hΦne hinCΦ
   have hRΦ0 : σ'.R σ.Φ = LaurentPolynomial.C (cΦ : ↥σ'.K) := by
@@ -429,7 +377,7 @@ theorem V10_readTransition_incompatible {p : ℕ} [Fact p.Prime] {F : Type*} [Fi
   -- `σ′.R (Φ^{e★g}) = C(cΦ^{e★g})`
   have hRpow : σ'.R (σ.Φ ^ (estar * g))
       = LaurentPolynomial.C ((cΦ : ↥σ'.K) ^ (estar * g)) := by
-    rw [v10_R_pow σ' σ.Φ hΦne (estar * g) (by omega), hRΦ0, ← map_pow]
+    rw [ResVal.R_pow σ' σ.Φ hΦne (estar * g), hRΦ0, ← map_pow]
   -- `σ′.R Φ̂ = C(cΦ^{e★g})`, by `hRlt` through the deep τ-slot (or directly at τ = 0)
   have hRhat : σ'.R Φhat = LaurentPolynomial.C ((cΦ : ↥σ'.K) ^ (estar * g)) := by
     by_cases hτ0 : τ = 0
@@ -442,14 +390,14 @@ theorem V10_readTransition_incompatible {p : ℕ} [Fact p.Prime] {F : Type*} [Fi
         rw [σ'.hStretch τ hτ0 hinCτ, hcw, hce, hE1]; push_cast; ring
       -- the τ weight bound at `e★ = 1`: `σ.w τ ≥ h★ + (g−1)σ.h > h★`
       have hτbound : (hstar : ℤ) + ((g : ℤ) - 1) * (σ.h : ℤ) ≤ σ.w τ := by
-        refine v10_w_sum_ge σ (Finset.range g) _ _ ?_ (by rw [← hτdef]; exact hτ0)
+        refine ResVal.w_sum_ge σ (Finset.range g) _ _ ?_ (by rw [← hτdef]; exact hτ0)
         intro k hk htkne
         have hkG : k < g := Finset.mem_range.mp hk
         have htk : tt k ≠ 0 := fun h0 => htkne (by rw [h0, zero_mul])
         have hψk : ψ.coeff k ≠ 0 := fun h0 => htk (htt0 k h0)
         obtain ⟨-, -, htkw, -⟩ := httk k hkG hψk
         rw [σ.hwmul _ _ htk (pow_ne_zero _ hΦne), htkw,
-          v10_w_pow σ σ.Φ hΦne (estar * k), σ.hwΦ, hE1]
+          ResVal.w_pow σ σ.Φ hΦne (estar * k), σ.hwΦ, hE1]
         have hkg1 : (k : ℤ) ≤ (g : ℤ) - 1 := by
           have : (k : ℤ) < (g : ℤ) := by exact_mod_cast hkG
           omega

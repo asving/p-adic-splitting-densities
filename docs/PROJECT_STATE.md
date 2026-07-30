@@ -1145,3 +1145,25 @@ review folded; 196 card edits, lean fields hash-verified unchanged). Sources arc
 in docs/public/graph_build/. The map's amber panel and the paper's section-2 table are
 the public statements of the honest boundary — kept in sync with the verify-2 census
 (46 marked unproved statements, scoped by corpus).
+
+## UPDATE (2026-07-30d): SYN C1 EXECUTED — the (w,R) residual-valuation engine is ONE module
+
+The synthesis-pass-1 C1 cluster (ratified in BRIDGE_ADJUDICATIONS, sequenced after the
+BP5 quarantines) landed in full: the ~15-lemma no-cancellation kernel that had been
+re-derived as `private` blocks in ≥ 9 files is now proved ONCE — `Moves/LaurentOrd.lean`
+(the pure-Laurent ψ-order toolkit) + `Moves/ResVal.lean` (`ResValPack` = the SYN-E0 law
+census {hwmul, hwult, hRne, hRmul, hRadd, hRlt}; the arithmetic nine; `ult_sum_ge`; the
+Finset residual-sum machine + its monomial instance; the deep Stage engine psiNotDvd/
+w_Phat/cslot/key_no_cancel/minsum_facts) + `HC1/V34_readKernel.lean` (`ReadFrame.pack`,
+the second carrier, hosting the formerly-duplicated V3/V4 kernel once). Migrations
+SYN-M1..M9: L3_K1 563→160, landBox 581→~350, landVertex 707→~320, landVertexDigit
+817→~420, landTwoSided 970→~630, L3_liftWeight→delegation, TRANSi/iii, V3 1113→256,
+V4 1221→428, V8/V9/V10/S10 micro-copies, SharedRecenter re-exported. Net ≈ −2,600
+lines of private proof text (~1,640 shared lines added, single-sourced); golf
+Moves#4/#5/#7 + HC1#99/#100 drift risks CLOSED. Verification: SYN-E0 concordance gate
+PASSED (statement-level, no semantic divergence — SYN_E0_CONCORDANCE_2026-07-30.md);
+every public statement byte-identical (scripted signature diff); full build green;
+AxChk census byte-identical to the golf2 baseline, 0 sorryAx. Forward wiring
+(SYN_C1_EXECUTION_2026-07-30.md): BP2 HK-02/HK-52/HK-11a consume the future σV
+`RegradeOf.pack` instead of a 10th copy (SYN-F1); BP4 KB5's noninterference input is
+an instance of the shared machine (SYN-F2).

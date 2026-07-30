@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.HC1.DefsV
 import LeanUrat.HC1.S2_childW
 import LeanUrat.HC1.V4_readLanding
+import LeanUrat.Moves.ResVal
 import LeanUrat.HC1.V10_transportWindow
 import LeanUrat.HC2.Defs
 
@@ -139,24 +140,14 @@ namespace LeanUrat.HC1
 
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesJ
 
+/-! SYN-M8 record (2026-07-30, C1 cluster): `w_one_helper`/`w_neg_helper`/`w_pow_helper`/
+`w_sum_ge_helper`/`v9c_R_pow` deleted; call sites re-pointed at
+`Moves.ResVal.w_one/w_neg/w_pow/w_sum_ge/R_pow` (statement-identical, SYN-E0 table).
+`v9c_C_inj` (CommRing-general, weaker assumptions than the shared Field version) and
+`w_strict_helper` (V9-specific) stay. -/
 section V9SteepHelpers
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-
-/-- `w 1 = 0`. -/
-private lemma w_one_helper (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; omega
-
-/-- `w (-x) = w x`. -/
-private lemma w_neg_helper (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
-    σ.w (-x) = σ.w x := by
-  have hn1 : σ.w (-1) = 0 := by
-    have h := σ.hwmul (-1) (-1) (by norm_num) (by norm_num)
-    rw [neg_mul_neg, one_mul, w_one_helper σ] at h; omega
-  have h := σ.hwmul (-1) x (by norm_num) hx
-  rw [neg_one_mul] at h
-  rw [h, hn1, zero_add]
 
 /-- The accumulated stretch is positive (every read has `1 ≤ e`) — private copy of
 the HC2 `K1Helpers` lemma (the import was reversed at REV-4: HC2/K1_vertexPin now
@@ -201,7 +192,7 @@ private lemma v9_recenter_h_eq {σ σ' : Stage p F} {cc : ↥σ.K} {tt : Polynom
     have hge : (σ.h : ℤ) ≤ σ.w (σ.Φ - tt) := by
       have hult := σ.hwult σ.Φ (-tt) hΦne (neg_ne_zero.mpr htne)
         (by rw [← sub_eq_add_neg]; exact hsubne)
-      rw [w_neg_helper σ tt htne, hwtt, hwΦh, min_self, ← sub_eq_add_neg] at hult
+      rw [ResVal.w_neg σ tt htne, hwtt, hwΦh, min_self, ← sub_eq_add_neg] at hult
       exact hult
     rcases lt_or_eq_of_le hge with hlt | heq
     · exfalso
@@ -338,15 +329,6 @@ private lemma v9_readSteep_all (H : History p F) (hcoh : HistoryCoherent H) :
       rw [hhj, ← hSLi]
       nlinarith [mul_lt_mul_of_pos_left hkeyslope hQ]
 
-/-- `w (x^n) = n·w x` (iterated `hwmul`; pure `Stage` fact). -/
-private lemma w_pow_helper (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
-  induction n with
-  | zero => rw [pow_zero, w_one_helper σ]; push_cast; ring
-  | succ k ih =>
-      rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hx) hx, ih]
-      push_cast; ring
-
 /-- The STRICT ultrametric law, DERIVED from `hwmul`/`hwult` alone (no `StageCore` needed):
 `w f < w g → w (f + g) = w f` — the two-sided min trick on `f = (f + g) + (−g)`. -/
 private lemma w_strict_helper (σ : Stage p F) (f g : Polynomial ℤ_[p])
@@ -355,31 +337,8 @@ private lemma w_strict_helper (σ : Stage p F) (f g : Polynomial ℤ_[p])
   have h1 := σ.hwult f g hf hg hfg
   have hsum : (f + g) + (-g) = f := by ring
   have h2 := σ.hwult (f + g) (-g) hfg (neg_ne_zero.mpr hg) (by rw [hsum]; exact hf)
-  rw [hsum, w_neg_helper σ g hg] at h2
+  rw [hsum, ResVal.w_neg σ g hg] at h2
   omega
-
-/-- Finite-sum ultrametric lower bound: if every nonzero summand has `w ≥ c` and the sum
-is nonzero, then `w (Σ) ≥ c`. -/
-private lemma w_sum_ge_helper (σ : Stage p F) (S : Finset ℕ) (f : ℕ → Polynomial ℤ_[p])
-    (c : ℤ) :
-    (∀ k ∈ S, f k ≠ 0 → c ≤ σ.w (f k)) → (∑ k ∈ S, f k) ≠ 0 →
-    c ≤ σ.w (∑ k ∈ S, f k) := by
-  classical
-  induction S using Finset.induction_on with
-  | empty => intro _ hne; simp at hne
-  | @insert a S' ha ih =>
-      intro hterm hne
-      rw [Finset.sum_insert ha] at hne ⊢
-      by_cases hfa : f a = 0
-      · rw [hfa, zero_add] at hne ⊢
-        exact ih (fun k hk hk0 => hterm k (Finset.mem_insert_of_mem hk) hk0) hne
-      · by_cases hS' : (∑ k ∈ S', f k) = 0
-        · rw [hS', add_zero]
-          exact hterm a (Finset.mem_insert_self a S') hfa
-        · have h1 := hterm a (Finset.mem_insert_self a S') hfa
-          have h2 := ih (fun k hk hk0 => hterm k (Finset.mem_insert_of_mem hk) hk0) hS'
-          have h3 := σ.hwult (f a) (∑ k ∈ S', f k) hfa hS' hne
-          omega
 
 end V9SteepHelpers
 
@@ -486,7 +445,7 @@ theorem V9_transSteepness {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
       exact_mod_cast hlt
     rw [σ'.hStretch σ.Φ hΦne hinC, hcw, σ.hwΦ, hce]
   have hwpow : σ'.w (σ.Φ ^ (E * G)) = ((E * G : ℕ) : ℤ) * ((E : ℤ) * (σ.h : ℤ)) := by
-    rw [w_pow_helper σ' σ.Φ hΦne (E * G), hwparent]
+    rw [ResVal.w_pow σ' σ.Φ hΦne (E * G), hwparent]
   -- the common contradiction, once σ'.w (Φ^{eg}) = ν.h is pinned
   have hfinal : σ'.w (σ.Φ ^ (E * G)) = (ν.h : ℤ) → False := by
     intro hkey
@@ -508,14 +467,14 @@ theorem V9_transSteepness {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
       show τ.degree < σ'.Φ.degree
       rw [hΦ'deg]; exact hτdeg
     have hwτbound : (G : ℤ) * (ν.h : ℤ) ≤ σ.w τ := by
-      refine w_sum_ge_helper σ (Finset.range G) _ _ ?_ (by rw [← hτdef]; exact hτ0)
+      refine ResVal.w_sum_ge σ (Finset.range G) _ _ ?_ (by rw [← hτdef]; exact hτ0)
       intro k hk htkne
       have hkG : k < G := Finset.mem_range.mp hk
       have htk : tt k ≠ 0 := fun h0 => htkne (by rw [h0, zero_mul])
       have hψk : ν.ψ.coeff k ≠ 0 := fun h0 => htk (htt0 k h0)
       obtain ⟨-, -, htkw, -⟩ := httk k hkG hψk
       rw [σ.hwmul _ _ htk (pow_ne_zero _ hΦne), htkw,
-        w_pow_helper σ σ.Φ hΦne (E * k), σ.hwΦ]
+        ResVal.w_pow σ σ.Φ hΦne (E * k), σ.hwΦ]
       have hk0 : (0 : ℤ) ≤ (k : ℤ) := Int.natCast_nonneg k
       have hkh : (k : ℤ) * (ν.h : ℤ) ≤ (k : ℤ) * ((E : ℤ) * (σ.h : ℤ)) :=
         mul_le_mul_of_nonneg_left hcon hk0
@@ -536,7 +495,7 @@ theorem V9_transSteepness {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
       have hsum : σ'.Φ + (-τ) = σ.Φ ^ (E * G) := by rw [hPhi]; ring
       have hne' : σ'.Φ + (-τ) ≠ 0 := by rw [hsum]; exact hpowne
       have hlt : σ'.w σ'.Φ < σ'.w (-τ) := by
-        rw [w_neg_helper σ' τ hτ0, hwPhi']; exact hwτbig
+        rw [ResVal.w_neg σ' τ hτ0, hwPhi']; exact hwτbig
       have hs := w_strict_helper σ' σ'.Φ (-τ) hΦ'ne (neg_ne_zero.mpr hτ0) hne' hlt
       rw [hsum, hwPhi'] at hs
       exact hs
@@ -710,7 +669,7 @@ private lemma v9c_w_natCast_nonneg (σ : Stage p F) : ∀ n : ℕ, n ≠ 0 →
     intro _
     rcases Nat.eq_zero_or_pos m with hm | hm
     · subst hm
-      simpa using (w_one_helper σ).ge
+      simpa using (ResVal.w_one σ).ge
     · have hmne : (Polynomial.C ((m : ℕ) : ℤ_[p])) ≠ 0 := by
         rw [ne_eq, Polynomial.C_eq_zero]
         exact_mod_cast Nat.pos_iff_ne_zero.mp hm
@@ -722,7 +681,7 @@ private lemma v9c_w_natCast_nonneg (σ : Stage p F) : ∀ n : ℕ, n ≠ 0 →
         push_cast; rw [map_add, map_one]
       have hult := σ.hwult (Polynomial.C ((m : ℕ) : ℤ_[p])) 1 hmne one_ne_zero
         (by rw [← hsum]; exact hsne)
-      rw [w_one_helper σ] at hult
+      rw [ResVal.w_one σ] at hult
       have ihm := ih (Nat.pos_iff_ne_zero.mp hm)
       rw [hsum]
       omega
@@ -789,17 +748,6 @@ private lemma v9c_C_inj {K : Type*} [CommRing K] {a b : K}
     Polynomial.toLaurent_injective
       (by rw [Polynomial.toLaurent_C, Polynomial.toLaurent_C]; exact h)
   exact Polynomial.C_injective h2
-
-/-- `R (g^n) = (R g)^n`. -/
-private lemma v9c_R_pow (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (n : ℕ) :
-    σ.R (g ^ n) = (σ.R g) ^ n := by
-  induction n with
-  | zero =>
-      rw [pow_zero, pow_zero]
-      have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-      rw [mul_one] at h
-      exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
-  | succ k ih => rw [pow_succ, σ.hRmul _ g (pow_ne_zero k hg) hg, ih, pow_succ]
 
 /-- Shift a range sum past an all-zero prefix. -/
 private lemma v9c_sum_shift {M : Type*} [AddCommMonoid M] (g : ℕ → M) (s0 : ℕ) :
@@ -957,7 +905,7 @@ private lemma v9c_slotmin (σ σ' : Stage p F) (hstar : ℕ)
   have hDlb : ∀ i, D i ≠ 0 → mstar - (i : ℤ) * (hstar : ℤ) ≤ σ.w (D i) := by
     intro i hDine
     simp only [hDdef]
-    refine w_sum_ge_helper σ (S.filter (fun j => i ≤ j)) _ _ ?_ hDine
+    refine ResVal.w_sum_ge σ (S.filter (fun j => i ≤ j)) _ _ ?_ hDine
     intro j hj hterm_ne
     obtain ⟨hjS, hij⟩ := Finset.mem_filter.mp hj
     have hchne : ((j.choose i : ℕ) : Polynomial ℤ_[p]) ≠ 0 := by
@@ -967,8 +915,8 @@ private lemma v9c_slotmin (σ σ' : Stage p F) (hstar : ℕ)
       pow_ne_zero _ (neg_ne_zero.mpr ht₀ne)
     have hCCne : CC j ≠ 0 := hne j hjS
     rw [σ.hwmul _ _ hchne (mul_ne_zero hpowne hCCne),
-      σ.hwmul _ _ hpowne hCCne, w_pow_helper σ _ (neg_ne_zero.mpr ht₀ne),
-      w_neg_helper σ t₀ ht₀ne, ht₀w]
+      σ.hwmul _ _ hpowne hCCne, ResVal.w_pow σ _ (neg_ne_zero.mpr ht₀ne),
+      ResVal.w_neg σ t₀ ht₀ne, ht₀w]
     have hch0 : 0 ≤ σ.w ((j.choose i : ℕ) : Polynomial ℤ_[p]) := by
       rw [← Polynomial.C_eq_natCast]
       exact v9c_w_natCast_nonneg σ (j.choose i)
@@ -1025,8 +973,8 @@ private lemma v9c_slotmin (σ σ' : Stage p F) (hstar : ℕ)
       pow_ne_zero _ (neg_ne_zero.mpr ht₀ne)
     have hCCne : CC j ≠ 0 := hne j hjS
     rw [σ.hwmul _ _ hchne (mul_ne_zero hpowne hCCne),
-      σ.hwmul _ _ hpowne hCCne, w_pow_helper σ _ (neg_ne_zero.mpr ht₀ne),
-      w_neg_helper σ t₀ ht₀ne, ht₀w]
+      σ.hwmul _ _ hpowne hCCne, ResVal.w_pow σ _ (neg_ne_zero.mpr ht₀ne),
+      ResVal.w_neg σ t₀ ht₀ne, ht₀w]
     have hch0 : 0 ≤ σ.w ((j.choose jstar : ℕ) : Polynomial ℤ_[p]) := by
       rw [← Polynomial.C_eq_natCast]
       exact v9c_w_natCast_nonneg σ (j.choose jstar)
@@ -1047,7 +995,7 @@ private lemma v9c_slotmin (σ σ' : Stage p F) (hstar : ℕ)
       exact ⟨hne jstar hjstarS, rfl⟩
     · have hwT : σ.w (CC jstar) + 1 ≤ σ.w T := by
         rw [hTdef]
-        exact w_sum_ge_helper σ _ _ _ (fun j hj hne' => htail_ge j hj hne') (by rw [← hTdef]; exact hTne)
+        exact ResVal.w_sum_ge σ _ _ _ (fun j hj hne' => htail_ge j hj hne') (by rw [← hTdef]; exact hTne)
       have hDne : D jstar ≠ 0 := by
         rw [hDjstar]
         intro h0
@@ -1056,7 +1004,7 @@ private lemma v9c_slotmin (σ σ' : Stage p F) (hstar : ℕ)
           simpa [add_sub_cancel_right, sub_eq_neg_self] using
             (add_eq_zero_iff_eq_neg.mp h0)
         have hwEq : σ.w (CC jstar) = σ.w T := by
-          rw [hCC, w_neg_helper σ T hTne]
+          rw [hCC, ResVal.w_neg σ T hTne]
         omega
       constructor
       · exact hDne
@@ -1470,7 +1418,7 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
       have hsub : σ'.Φ + (-t₀) = σ.Φ := by rw [hkey]; ring
       have hult := σ'.hwult σ'.Φ (-t₀) hΦ'ne (neg_ne_zero.mpr ht₀ne)
         (by rw [hsub]; exact hΦne)
-      rw [hsub, w_neg_helper σ' t₀ ht₀ne, hwt₀', hwΦ', min_self] at hult
+      rw [hsub, ResVal.w_neg σ' t₀ ht₀ne, hwt₀', hwΦ', min_self] at hult
       exact hult
     rcases lt_or_eq_of_le hge with hlt | heq
     · exfalso
@@ -1633,7 +1581,7 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
     have hmne := hMne0 m hm
     have hne' : B m * σ'.Φ ^ m ≠ 0 := mul_ne_zero hmne (pow_ne_zero _ hΦ'ne)
     refine ⟨hne', ?_⟩
-    rw [σ'.hwmul _ _ hmne (pow_ne_zero _ hΦ'ne), w_pow_helper σ' _ hΦ'ne, hwΦ',
+    rw [σ'.hwmul _ _ hmne (pow_ne_zero _ hΦ'ne), ResVal.w_pow σ' _ hΦ'ne, hwΦ',
       hwconst (B m) hmne (hdev.1 m)]
     linarith [hMw m hm]
   have hMsub : ∀ J ⊆ M, J.Nonempty →
@@ -1699,7 +1647,7 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
   have hRterm : ∀ m ∈ M, σ'.R (B m * σ'.Φ ^ m)
       = Polynomial.toLaurent (Polynomial.C (bbM m) * Polynomial.X ^ m) := by
     intro m hm
-    rw [σ'.hRmul _ _ (hMne0 m hm) (pow_ne_zero _ hΦ'ne), v9c_R_pow σ' _ hΦ'ne,
+    rw [σ'.hRmul _ _ (hMne0 m hm) (pow_ne_zero _ hΦ'ne), ResVal.R_pow σ' _ hΦ'ne,
       hRΦ'key, hbbM m hm, map_mul, Polynomial.toLaurent_C, Polynomial.toLaurent_X_pow,
       LaurentPolynomial.T_pow, mul_one]
   have hLHS : σ'.R f = Polynomial.toLaurent
@@ -1714,7 +1662,7 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
     obtain ⟨-, hjne⟩ := Finset.mem_filter.mp hjS
     have hne' : B₀ j * σ.Φ ^ j ≠ 0 := mul_ne_zero hjne (pow_ne_zero _ hΦne)
     refine ⟨hne', ?_⟩
-    rw [σ'.hwmul _ _ hjne (pow_ne_zero _ hΦne), w_pow_helper σ' _ hΦne, hwΦpar,
+    rw [σ'.hwmul _ _ hjne (pow_ne_zero _ hΦne), ResVal.w_pow σ' _ hΦne, hwΦpar,
       hwconst (B₀ j) hjne (hconstOfP _ (hdev₀.1 j))]
     linarith [hjeq]
   have hEne0 : ∀ j ∈ E, B₀ j ≠ 0 := fun j hj => by
@@ -1783,7 +1731,7 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
     intro k hk
     obtain ⟨h1, -, -⟩ := hSide k hk
     obtain ⟨-, hbkR, -⟩ := hbb k hk
-    rw [σ'.hRmul _ _ h1 (pow_ne_zero _ hΦne), v9c_R_pow σ' _ hΦne, hRΦpar, hbkR,
+    rw [σ'.hRmul _ _ h1 (pow_ne_zero _ hΦne), ResVal.R_pow σ' _ hΦne, hRΦpar, hbkR,
       map_mul, map_pow, map_sub, Polynomial.toLaurent_C, Polynomial.toLaurent_X,
       Polynomial.toLaurent_C]
   have hRHS : σ'.R f = Polynomial.toLaurent
@@ -1893,18 +1841,18 @@ private theorem v9c_corner (σ σ' : Stage p F) (hstar : ℕ)
         _ = 0 := add_zero 0
         _ < 1 := by exact_mod_cast Nat.zero_lt_one
     have hwXk : σ.w (B₀ (s0 + k) * t₀ ^ k) = σ.w (B₀ (s0 + 0)) := by
-      rw [σ.hwmul _ _ h1 ht₀kne, w_pow_helper σ _ ht₀ne, ht₀w, hw1, hw10]
+      rw [σ.hwmul _ _ h1 ht₀kne, ResVal.w_pow σ _ ht₀ne, ht₀w, hw1, hw10]
       push_cast
       ring
     obtain ⟨cX, hcXne, hcXR, hcXF⟩ := hdigE (B₀ (s0 + k) * t₀ ^ k) hXkne hXkC
     have hcXval : cX = bb k * (dt : ↥σ'.K) ^ k := by
       apply v9c_C_inj
-      rw [← hcXR, σ'.hRmul _ _ h1 ht₀kne, v9c_R_pow σ' _ ht₀ne, hbkR, hdtR0,
+      rw [← hcXR, σ'.hRmul _ _ h1 ht₀kne, ResVal.R_pow σ' _ ht₀ne, hbkR, hdtR0,
         ← map_pow, ← map_mul]
     have hdigXk : σ.digPrime zbar (B₀ (s0 + k) * t₀ ^ k)
         = σ.digPrime zbar (B₀ (s0 + k)) * (σ.digPrime zbar t₀) ^ k := by
       unfold Stage.digPrime
-      rw [σ.hRmul _ _ h1 ht₀kne, v9c_R_pow σ _ ht₀ne, map_mul, map_pow]
+      rw [σ.hRmul _ _ h1 ht₀kne, ResVal.R_pow σ _ ht₀ne, map_mul, map_pow]
     have hdig1 : σ.digPrime zbar (B₀ (s0 + k))
         = ((pat k : ↥σ.K) : F)
           * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F) := by
@@ -2166,7 +2114,7 @@ private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
       have hsub : σ'.Φ + (-t₀) = σ.Φ := by rw [hkey]; ring
       have hult := σ'.hwult σ'.Φ (-t₀) hΦ'ne (neg_ne_zero.mpr ht₀ne)
         (by rw [hsub]; exact hΦne)
-      rw [hsub, w_neg_helper σ' t₀ ht₀ne, hwt₀', hwΦ', min_self] at hult
+      rw [hsub, ResVal.w_neg σ' t₀ ht₀ne, hwt₀', hwΦ', min_self] at hult
       exact hult
     rcases lt_or_eq_of_le hge with hlt | heq
     · exfalso
@@ -2335,7 +2283,7 @@ private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
     have hmne := hMne0 m hm
     have hne' : B m * σ'.Φ ^ m ≠ 0 := mul_ne_zero hmne (pow_ne_zero _ hΦ'ne)
     refine ⟨hne', ?_⟩
-    rw [σ'.hwmul _ _ hmne (pow_ne_zero _ hΦ'ne), w_pow_helper σ' _ hΦ'ne, hwΦ',
+    rw [σ'.hwmul _ _ hmne (pow_ne_zero _ hΦ'ne), ResVal.w_pow σ' _ hΦ'ne, hwΦ',
       hwconst (B m) hmne (hdev.1 m)]
     linarith [hMw m hm]
   have hMsub : ∀ J ⊆ M, J.Nonempty →
@@ -2384,7 +2332,7 @@ private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
   have hRterm : ∀ m ∈ M, σ'.R (B m * σ'.Φ ^ m)
       = Polynomial.toLaurent (Polynomial.C (bbM m) * Polynomial.X ^ m) := by
     intro m hm
-    rw [σ'.hRmul _ _ (hMne0 m hm) (pow_ne_zero _ hΦ'ne), v9c_R_pow σ' _ hΦ'ne,
+    rw [σ'.hRmul _ _ (hMne0 m hm) (pow_ne_zero _ hΦ'ne), ResVal.R_pow σ' _ hΦ'ne,
       hRΦ'key, hbbM m hm, map_mul, Polynomial.toLaurent_C, Polynomial.toLaurent_X_pow,
       LaurentPolynomial.T_pow, mul_one]
   have hLHS : σ'.R f = Polynomial.toLaurent
@@ -2399,7 +2347,7 @@ private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
     obtain ⟨-, hjne⟩ := Finset.mem_filter.mp hjS
     have hne' : B₀ j * σ.Φ ^ j ≠ 0 := mul_ne_zero hjne (pow_ne_zero _ hΦne)
     refine ⟨hne', ?_⟩
-    rw [σ'.hwmul _ _ hjne (pow_ne_zero _ hΦne), w_pow_helper σ' _ hΦne, hwΦpar,
+    rw [σ'.hwmul _ _ hjne (pow_ne_zero _ hΦne), ResVal.w_pow σ' _ hΦne, hwΦpar,
       hwconst (B₀ j) hjne (hconstOfP _ (hdev₀.1 j))]
     linarith [hjeq]
   have hEne0 : ∀ j ∈ E, B₀ j ≠ 0 := fun j hj => by
@@ -2468,7 +2416,7 @@ private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
     intro k hk
     obtain ⟨h1, -, -⟩ := hSide k hk
     obtain ⟨-, hbkR, -⟩ := hbb k hk
-    rw [σ'.hRmul _ _ h1 (pow_ne_zero _ hΦne), v9c_R_pow σ' _ hΦne, hRΦpar, hbkR,
+    rw [σ'.hRmul _ _ h1 (pow_ne_zero _ hΦne), ResVal.R_pow σ' _ hΦne, hRΦpar, hbkR,
       map_mul, map_pow, map_sub, Polynomial.toLaurent_C, Polynomial.toLaurent_X,
       Polynomial.toLaurent_C]
   have hRHS : σ'.R f = Polynomial.toLaurent
@@ -2583,18 +2531,18 @@ private theorem v9c_cornerBox (σ σ' : Stage p F) (hstar : ℕ)
         _ = 0 := add_zero 0
         _ < 1 := by exact_mod_cast Nat.zero_lt_one
     have hwXk : σ.w (B₀ (s0 + k) * t₀ ^ k) = σ.w (B₀ (s0 + 0)) := by
-      rw [σ.hwmul _ _ h1 ht₀kne, w_pow_helper σ _ ht₀ne, ht₀w, hw1, hw10]
+      rw [σ.hwmul _ _ h1 ht₀kne, ResVal.w_pow σ _ ht₀ne, ht₀w, hw1, hw10]
       push_cast
       ring
     obtain ⟨cX, hcXne, hcXR, hcXF⟩ := hdigE (B₀ (s0 + k) * t₀ ^ k) hXkne hXkC
     have hcXval : cX = bb k * (dt : ↥σ'.K) ^ k := by
       apply v9c_C_inj
-      rw [← hcXR, σ'.hRmul _ _ h1 ht₀kne, v9c_R_pow σ' _ ht₀ne, hbkR, hdtR0,
+      rw [← hcXR, σ'.hRmul _ _ h1 ht₀kne, ResVal.R_pow σ' _ ht₀ne, hbkR, hdtR0,
         ← map_pow, ← map_mul]
     have hdigXk : σ.digPrime zbar (B₀ (s0 + k) * t₀ ^ k)
         = σ.digPrime zbar (B₀ (s0 + k)) * (σ.digPrime zbar t₀) ^ k := by
       unfold Stage.digPrime
-      rw [σ.hRmul _ _ h1 ht₀kne, v9c_R_pow σ _ ht₀ne, map_mul, map_pow]
+      rw [σ.hRmul _ _ h1 ht₀kne, ResVal.R_pow σ _ ht₀ne, map_mul, map_pow]
     have hdig1 : σ.digPrime zbar (B₀ (s0 + k))
         = ((pat k : ↥σ.K) : F)
           * ((zbar ^ (- σ.t * σ.wPrev (B₀ (s0 + k))) : Fˣ) : F) := by

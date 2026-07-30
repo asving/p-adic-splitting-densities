@@ -17,6 +17,8 @@ import LeanUrat.Moves.L0_FactB_unique
 import LeanUrat.Moves.L3_liftResidual
 import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L0_GRg
+import LeanUrat.Moves.LaurentOrd
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L5_landTwoSided — the increment landing, two-sided (D.8, MOVES ~2316-2371)
@@ -64,6 +66,18 @@ repair (applied) supplies exactly this clause as the theorem hypothesis
 everything, in BOTH directions, is proved below.
 -/
 
+/-! ## SYN-M4 record (2026-07-30, C1 cluster)
+The cribbed-from-L3_K1 private block (w_one … R_pow, w_sum_ge, GRf_priv, psiNotDvd,
+cslot, key_no_cancel, minsum_facts — all statement-identical to the L3_K1 originals per
+`lean/notes/SYN_E0_CONCORDANCE_2026-07-30.md`) and `poly_dvd_of_laurent_dvd` are deleted
+in favor of `Moves/LaurentOrd.lean` + `Moves/ResVal.lean`. Two call-site equivalences:
+(a) `w_Phat_priv` → `ResVal.w_Phat` drops the unused `hg hψ hψz hmon hDeg` extras
+(SYN-E0 §3 VAR-H; `hg1` supplied from the in-scope derivation); (b)
+`poly_dvd_of_laurent_dvd` now resolves to the LaurentOrd wrapper (binder-order variant
+of `toLaurent_pow_dvd_transfer`). File-specific lemmas (IsMinSlot, resSum, ordSum,
+ord_of_pattern, pattern_of_ord, chain_telescope, FwdData) stay. Public statement
+`L5_landTwoSided` byte-identical. -/
+
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedVariables false
@@ -72,335 +86,11 @@ set_option maxHeartbeats 1000000
 
 namespace LeanUrat.Moves
 
-open Polynomial
-
-/-! ## Cribbed private helpers (verbatim from `L3_K1.lean`, where they are `private`) -/
-
-section Helpers
-
-variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-
-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
-
-private lemma w_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : σ.w (-f) = σ.w f := by
-  have hm1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by
-    have h := σ.hwmul (-1) (-1) (neg_ne_zero.mpr one_ne_zero) (neg_ne_zero.mpr one_ne_zero)
-    rw [neg_mul_neg, one_mul, w_one σ] at h
-    omega
-  have h := σ.hwmul (-1) f (neg_ne_zero.mpr one_ne_zero) hf
-  rw [neg_one_mul] at h
-  rw [h, hm1, zero_add]
-
-private lemma w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
-  induction n with
-  | zero => rw [pow_zero, w_one σ, Nat.cast_zero, zero_mul]
-  | succ k ih =>
-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hf) hf, ih]
-    push_cast
-    ring
-
-private lemma R_one (σ : Stage p F) : σ.R (1 : Polynomial ℤ_[p]) = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  have hne : σ.R (1 : Polynomial ℤ_[p]) ≠ 0 := σ.hRne 1 one_ne_zero
-  have key : σ.R (1 : Polynomial ℤ_[p]) * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
-  exact (mul_left_cancel₀ hne key).symm
-
-private lemma R_negone_sq (σ : Stage p F) : σ.R (-1 : Polynomial ℤ_[p]) * σ.R (-1) = 1 := by
-  have h := σ.hRmul (-1) (-1) (neg_ne_zero.mpr one_ne_zero) (neg_ne_zero.mpr one_ne_zero)
-  rw [neg_mul_neg, one_mul, R_one σ] at h
-  exact h.symm
-
-private lemma R_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    σ.R (-f) = σ.R (-1) * σ.R f := by
-  have h := σ.hRmul (-1) f (neg_ne_zero.mpr one_ne_zero) hf
-  rw [neg_one_mul] at h
-  exact h
-
-private lemma R_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.R (f ^ n) = (σ.R f) ^ n := by
-  induction n with
-  | zero =>
-    rw [pow_zero, pow_zero]
-    exact R_one σ
-  | succ k ih =>
-    have hfk : f ^ k ≠ 0 := pow_ne_zero k hf
-    rw [pow_succ, σ.hRmul (f ^ k) f hfk hf, ih, ← pow_succ]
-
-private lemma w_sum_ge (σ : Stage p F)
-    (S : Finset ℕ) (a : ℕ → Polynomial ℤ_[p]) (m : ℤ)
-    (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
-    m ≤ σ.w (∑ j ∈ S, a j) := by
-  revert hm hsum
-  induction S using Finset.induction with
-  | empty =>
-    intro hm hsum
-    simp only [Finset.sum_empty] at hsum
-    exact absurd rfl hsum
-  | insert i T hiT ih =>
-    intro hm hsum
-    rw [Finset.sum_insert hiT] at hsum ⊢
-    by_cases hai : a i = 0
-    · rw [hai, zero_add] at hsum ⊢
-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
-    · by_cases hsT : (∑ j ∈ T, a j) = 0
-      · rw [hsT, add_zero] at hsum ⊢
-        exact hm i (Finset.mem_insert_self i T) hai
-      · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
-        have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        have hult := σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum
-        calc m ≤ min (σ.w (a i)) (σ.w (∑ j ∈ T, a j)) := le_min h1 h2
-          _ ≤ σ.w (a i + ∑ j ∈ T, a j) := hult
-
-end Helpers
-
-private theorem GRf_priv {K : Type*} [Field K] (ψ : Polynomial K) (hψ : Irreducible ψ)
-    (hψz : ψ ≠ Polynomial.X) (c : ℕ → LaurentPolynomial K) (S : Finset ℕ) (hne : S.Nonempty)
-    (hc : ∀ j ∈ S, c j ≠ 0 ∧ ¬ (Polynomial.toLaurent ψ ∣ c j)) :
-    (∑ j ∈ S, c j * (Polynomial.toLaurent ψ) ^ j) ≠ 0 := by
-  set P := Polynomial.toLaurent ψ with hP
-  set m := S.min' hne with hm
-  have hmmem : m ∈ S := S.min'_mem hne
-  have hmle : ∀ j ∈ S, m ≤ j := fun j hj => S.min'_le j hj
-  have hψ0 : ψ ≠ 0 := hψ.ne_zero
-  have hP0 : P ≠ 0 := by
-    rw [hP]
-    intro h
-    exact hψ0 (Polynomial.toLaurent_injective (by rw [map_zero]; exact h))
-  have hfact : (∑ j ∈ S, c j * P ^ j) = P ^ m * (∑ j ∈ S, c j * P ^ (j - m)) := by
-    rw [Finset.mul_sum]
-    refine Finset.sum_congr rfl (fun j hj => ?_)
-    have hpow : P ^ j = P ^ m * P ^ (j - m) := by
-      rw [← pow_add]; congr 1; have := hmle j hj; omega
-    rw [hpow]; ring
-  have hrest : P ∣ (∑ j ∈ S.erase m, c j * P ^ (j - m)) := by
-    refine Finset.dvd_sum (fun j hj => ?_)
-    rw [Finset.mem_erase] at hj
-    obtain ⟨hjm, hjS⟩ := hj
-    have hlt : m < j := lt_of_le_of_ne (hmle j hjS) (Ne.symm hjm)
-    exact (dvd_pow_self P (by omega : j - m ≠ 0)).mul_left (c j)
-  have hsplit : (∑ j ∈ S, c j * P ^ (j - m))
-      = c m * P ^ (m - m) + (∑ j ∈ S.erase m, c j * P ^ (j - m)) :=
-    (Finset.add_sum_erase S (fun j => c j * P ^ (j - m)) hmmem).symm
-  have hcofdvd : ¬ P ∣ (∑ j ∈ S, c j * P ^ (j - m)) := by
-    intro hdvd
-    rw [hsplit] at hdvd
-    have hdvd2 : P ∣ c m * P ^ (m - m) := (dvd_add_left hrest).mp hdvd
-    rw [Nat.sub_self, pow_zero, mul_one] at hdvd2
-    exact (hc m hmmem).2 hdvd2
-  have hcof0 : (∑ j ∈ S, c j * P ^ (j - m)) ≠ 0 := fun h => hcofdvd (h ▸ dvd_zero P)
-  rw [hfact]
-  exact mul_ne_zero (pow_ne_zero m hP0) hcof0
+open Polynomial LaurentOrd ResVal
 
 section Core
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-
-private theorem psiNotDvd (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g)
-    (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (B : Polynomial ℤ_[p])
-    (hB : B ≠ 0) (hBdeg : B.natDegree < σ.e * g * σ.Φ.natDegree) :
-    ¬ (Polynomial.toLaurent ψ ∣ σ.R B) := by
-  classical
-  intro hdvd
-  have hgpos : 0 < ψ.natDegree := hψ.natDegree_pos
-  have hg1 : 1 ≤ g := by omega
-  obtain ⟨a, ha⟩ := L2_widthBound σ g hg1 B hB hBdeg
-  obtain ⟨Ranch, hRdeg, hRB⟩ := L0_GRg (σ.hRne B hB) a g ha
-  have hRanch_ne : Ranch ≠ 0 := by
-    intro h
-    rw [h, map_zero, mul_zero] at hRB
-    exact σ.hRne B hB hRB
-  have hdvdR : Polynomial.toLaurent ψ ∣ Polynomial.toLaurent Ranch := by
-    have h := hdvd.mul_left (LaurentPolynomial.T (-a))
-    rwa [hRB, ← mul_assoc, ← LaurentPolynomial.T_add, neg_add_cancel,
-      LaurentPolynomial.T_zero, one_mul] at h
-  obtain ⟨q, hq⟩ := hdvdR
-  obtain ⟨n, f', hf'⟩ := LaurentPolynomial.exists_T_pow q
-  have hkey : Ranch * Polynomial.X ^ n = ψ * f' := by
-    apply Polynomial.toLaurent_injective
-    rw [map_mul, map_mul, Polynomial.toLaurent_X_pow, hq, mul_assoc, ← hf']
-  have hdiv : ψ ∣ Ranch * Polynomial.X ^ n := ⟨f', hkey⟩
-  have hprime : Prime ψ := hψ.prime
-  have hnotdvdX : ¬ (ψ ∣ Polynomial.X) := by
-    intro hdX
-    exact hψz (Polynomial.eq_of_monic_of_associated hmon Polynomial.monic_X
-      (hψ.associated_of_dvd Polynomial.irreducible_X hdX))
-  rcases hprime.dvd_or_dvd hdiv with h1 | h2
-  · have hle := Polynomial.natDegree_le_of_dvd h1 hRanch_ne
-    omega
-  · exact hnotdvdX (hprime.dvd_of_dvd_pow h2)
-
-private noncomputable def cslot (σ : Stage p F) (g : ℕ) (B : ℕ → Polynomial ℤ_[p]) (j : ℕ) :
-    LaurentPolynomial ↥σ.K :=
-  σ.R (B j) * LaurentPolynomial.T ((j : ℤ) * (-σ.t * (σ.h : ℤ) * (g : ℤ)))
-
-private lemma key_no_cancel (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
-    (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X)
-    (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0)
-    (hDeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree)
-    (B : ℕ → Polynomial ℤ_[p]) (hdeg : ∀ j, (B j).degree < Φhat.degree)
-    (i : ℕ) (T : Finset ℕ) (hiT : i ∉ T) (hBi : B i ≠ 0) (hBT : ∀ j ∈ T, B j ≠ 0) :
-    (∑ j ∈ T, σ.R (B j * Φhat ^ j)) ≠ σ.R (-1) * σ.R (B i * Φhat ^ i) := by
-  intro heq
-  have hTne0 : ∀ n : ℤ, (LaurentPolynomial.T n : LaurentPolynomial ↥σ.K) ≠ 0 :=
-    fun n => (LaurentPolynomial.isUnit_T n).ne_zero
-  have hRhat := L3_liftResidual σ ψ g Φhat hlift
-  have hRa : ∀ j, B j ≠ 0 →
-      σ.R (B j * Φhat ^ j) = cslot σ g B j * Polynomial.toLaurent ψ ^ j := by
-    intro j hBj
-    unfold cslot
-    rw [σ.hRmul _ _ hBj (pow_ne_zero j hΦne), R_pow σ Φhat hΦne j, hRhat, mul_pow,
-      LaurentPolynomial.T_pow, ← mul_assoc]
-  have hBdeg' : ∀ j, B j ≠ 0 → (B j).natDegree < σ.e * g * σ.Φ.natDegree := by
-    intro j hBj
-    have h := Polynomial.natDegree_lt_natDegree hBj (hdeg j)
-    rwa [hDeg] at h
-  have hc0 : ∀ j, B j ≠ 0 → cslot σ g B j ≠ 0 := by
-    intro j hBj
-    unfold cslot
-    exact mul_ne_zero (σ.hRne _ hBj) (hTne0 _)
-  have hcnd : ∀ j, B j ≠ 0 → ¬ (Polynomial.toLaurent ψ ∣ cslot σ g B j) := by
-    intro j hBj hdvd
-    unfold cslot at hdvd
-    have h2 := hdvd.mul_right (LaurentPolynomial.T (-((j : ℤ) * (-σ.t * (σ.h : ℤ) * (g : ℤ)))))
-    rw [mul_assoc, ← LaurentPolynomial.T_add, add_neg_cancel, LaurentPolynomial.T_zero,
-      mul_one] at h2
-    exact psiNotDvd σ ψ g hg hmon hψ hψz (B j) hBj (hBdeg' j hBj) h2
-  have hRm1 : σ.R (-1 : Polynomial ℤ_[p]) ≠ 0 := σ.hRne _ (neg_ne_zero.mpr one_ne_zero)
-  have hc' : ∀ j ∈ insert i T,
-      (if j = i then -(σ.R (-1) * cslot σ g B i) else cslot σ g B j) ≠ 0 ∧
-      ¬ (Polynomial.toLaurent ψ ∣
-        (if j = i then -(σ.R (-1) * cslot σ g B i) else cslot σ g B j)) := by
-    intro j hj
-    rcases Finset.mem_insert.mp hj with rfl | hjT
-    · rw [if_pos rfl]
-      refine ⟨neg_ne_zero.mpr (mul_ne_zero hRm1 (hc0 j hBi)), ?_⟩
-      intro hdvd
-      rw [dvd_neg] at hdvd
-      have h2 := hdvd.mul_left (σ.R (-1))
-      rw [← mul_assoc, R_negone_sq σ, one_mul] at h2
-      exact hcnd j hBi h2
-    · have hne : j ≠ i := by rintro rfl; exact hiT hjT
-      rw [if_neg hne]
-      exact ⟨hc0 j (hBT j hjT), hcnd j (hBT j hjT)⟩
-  have hsum0 : (∑ j ∈ insert i T,
-      (if j = i then -(σ.R (-1) * cslot σ g B i) else cslot σ g B j)
-        * Polynomial.toLaurent ψ ^ j) = 0 := by
-    rw [Finset.sum_insert hiT, if_pos rfl]
-    have hrest : (∑ j ∈ T,
-        (if j = i then -(σ.R (-1) * cslot σ g B i) else cslot σ g B j)
-          * Polynomial.toLaurent ψ ^ j)
-        = ∑ j ∈ T, σ.R (B j * Φhat ^ j) := by
-      refine Finset.sum_congr rfl (fun j hj => ?_)
-      have hne : j ≠ i := by rintro rfl; exact hiT hj
-      rw [if_neg hne, ← hRa j (hBT j hj)]
-    rw [hrest, heq, hRa i hBi]
-    ring
-  exact GRf_priv ψ hψ hψz
-    (fun j => if j = i then -(σ.R (-1) * cslot σ g B i) else cslot σ g B j)
-    (insert i T) ⟨i, Finset.mem_insert_self i T⟩ hc' hsum0
-
-private lemma minsum_facts (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
-    (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X)
-    (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0)
-    (hDeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree)
-    (B : ℕ → Polynomial ℤ_[p]) (hdeg : ∀ j, (B j).degree < Φhat.degree) (m : ℤ) :
-    ∀ S' : Finset ℕ, (∀ j ∈ S', B j ≠ 0) → (∀ j ∈ S', σ.w (B j * Φhat ^ j) = m) →
-      S'.Nonempty →
-      (∑ j ∈ S', B j * Φhat ^ j) ≠ 0 ∧ σ.w (∑ j ∈ S', B j * Φhat ^ j) = m ∧
-        σ.R (∑ j ∈ S', B j * Φhat ^ j) = ∑ j ∈ S', σ.R (B j * Φhat ^ j) := by
-  intro S'
-  induction S' using Finset.induction with
-  | empty => intro _ _ h; exact absurd h (by simp)
-  | insert i T hiT ih =>
-    intro hB' hw' _
-    have hBi : B i ≠ 0 := hB' i (Finset.mem_insert_self i T)
-    have hwi : σ.w (B i * Φhat ^ i) = m := hw' i (Finset.mem_insert_self i T)
-    have hai : B i * Φhat ^ i ≠ 0 := mul_ne_zero hBi (pow_ne_zero i hΦne)
-    have hBT : ∀ j ∈ T, B j ≠ 0 := fun j hj => hB' j (Finset.mem_insert_of_mem hj)
-    have hwT : ∀ j ∈ T, σ.w (B j * Φhat ^ j) = m := fun j hj => hw' j (Finset.mem_insert_of_mem hj)
-    rcases T.eq_empty_or_nonempty with rfl | hTne
-    · simp only [Finset.sum_insert (Finset.notMem_empty i), Finset.sum_empty, add_zero]
-      exact ⟨hai, hwi, trivial⟩
-    · obtain ⟨hsTne, hwsT, hRsT⟩ := ih hBT hwT hTne
-      rw [Finset.sum_insert hiT, Finset.sum_insert hiT]
-      have hsne : B i * Φhat ^ i + (∑ j ∈ T, B j * Φhat ^ j) ≠ 0 := by
-        intro h0
-        have hsTeq : (∑ j ∈ T, B j * Φhat ^ j) = -(B i * Φhat ^ i) :=
-          eq_neg_of_add_eq_zero_right h0
-        have hR1 : σ.R (∑ j ∈ T, B j * Φhat ^ j) = σ.R (-1) * σ.R (B i * Φhat ^ i) := by
-          rw [hsTeq, R_neg σ _ hai]
-        exact key_no_cancel σ ψ g hg hmon hψ hψz Φhat hlift hΦne hDeg B hdeg i T hiT hBi hBT
-          (hRsT.symm.trans hR1)
-      have hwge : m ≤ σ.w (B i * Φhat ^ i + ∑ j ∈ T, B j * Φhat ^ j) := by
-        have h1 := σ.hwult _ _ hai hsTne hsne
-        rw [hwi, hwsT, min_self] at h1
-        exact h1
-      rcases eq_or_lt_of_le hwge with hweq | hwlt
-      · refine ⟨hsne, hweq.symm, ?_⟩
-        rw [σ.hRadd _ _ hai hsTne hsne (by rw [hwi, hwsT]) (by rw [hwi]; exact hweq.symm), hRsT]
-      · exfalso
-        have hnegne : -(∑ j ∈ T, B j * Φhat ^ j) ≠ 0 := neg_ne_zero.mpr hsTne
-        have haux : -(∑ j ∈ T, B j * Φhat ^ j) + (B i * Φhat ^ i + ∑ j ∈ T, B j * Φhat ^ j)
-            = B i * Φhat ^ i := by ring
-        have hlt' : σ.w (-(∑ j ∈ T, B j * Φhat ^ j))
-            < σ.w (B i * Φhat ^ i + ∑ j ∈ T, B j * Φhat ^ j) := by
-          rw [w_neg σ _ hsTne, hwsT]
-          exact hwlt
-        have hRlt := σ.hRlt _ _ hnegne hsne (by rw [haux]; exact hai) hlt'
-        rw [haux, R_neg σ _ hsTne, hRsT] at hRlt
-        have hfinal : (∑ j ∈ T, σ.R (B j * Φhat ^ j)) = σ.R (-1) * σ.R (B i * Φhat ^ i) := by
-          rw [hRlt, ← mul_assoc, R_negone_sq σ, one_mul]
-        exact key_no_cancel σ ψ g hg hmon hψ hψz Φhat hlift hΦne hDeg B hdeg i T hiT hBi hBT
-          hfinal
-
-/-! ## `w(Φ̂) = e·h·g`, extracted from `L3_K1` applied to the trivial development `Φ̂ = 1·Φ̂¹` -/
-
-private lemma w_Phat_priv (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
-    (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (hmon : ψ.Monic)
-    (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0)
-    (hDeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree) :
-    σ.w Φhat = (σ.e : ℤ) * σ.h * g := by
-  classical
-  have hg1 : 1 ≤ g := by have := hψ.natDegree_pos; omega
-  have hndpos : 0 < Φhat.natDegree := by
-    rw [hDeg]
-    exact Nat.mul_pos (Nat.mul_pos σ.he hg1) σ.hdeg
-  have hdegpos : (0 : WithBot ℕ) < Φhat.degree :=
-    Polynomial.natDegree_pos_iff_degree_pos.mp hndpos
-  have hbot : (⊥ : WithBot ℕ) < Φhat.degree := lt_of_le_of_lt bot_le hdegpos
-  have hdev : IsDevelopment Φhat Φhat (fun j => if j = 1 then 1 else 0) 2 := by
-    refine ⟨?_, ?_, ?_⟩
-    · intro j
-      by_cases hj : j = 1
-      · subst hj
-        simp only [reduceIte]
-        rw [Polynomial.degree_one]
-        exact hdegpos
-      · simp only [if_neg hj]
-        rw [Polynomial.degree_zero]
-        exact hbot
-    · intro j hj
-      simp only [if_neg (by omega : ¬ j = 1)]
-    · rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.range_zero, Finset.sum_empty]
-      simp
-  obtain ⟨_, j₀, hj₀2, hj₀nz, hj₀eq⟩ :=
-    L3_K1 σ ψ g hg hψ hψz hmon Φhat hlift Φhat (fun j => if j = 1 then 1 else 0) 2 hΦne hdev
-  simp only [] at hj₀nz hj₀eq
-  have hj₀1 : j₀ = 1 := by
-    by_contra h
-    exact hj₀nz (by simp only [if_neg h])
-  subst hj₀1
-  simp only [reduceIte] at hj₀eq
-  rw [w_one σ] at hj₀eq
-  rw [hj₀eq]
-  push_cast
-  ring
 
 /-! ## The minimizing-slot predicate and the residual sum identity (★★) -/
 
@@ -424,7 +114,7 @@ private lemma resSum (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
   have hΦne : Φhat ≠ 0 := hMon.ne_zero
   have hRhat := L3_liftResidual σ ψ g Φhat hlift
   have hwhat : σ.w Φhat = (σ.e : ℤ) * σ.h * g :=
-    w_Phat_priv σ ψ g hg hψ hψz hmon Φhat hlift hΦne hDeg
+    w_Phat σ ψ g hg1 Φhat hlift hΦne
   have hwa : ∀ j, B j ≠ 0 →
       σ.w (B j * Φhat ^ j) = σ.w (B j) + (j : ℤ) * ((σ.e : ℤ) * σ.h * g) := by
     intro j hBj
@@ -488,37 +178,6 @@ private lemma resSum (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ)
 end Core
 
 /-! ## Laurent → polynomial divisibility transfer, and the ψ-order of a slot-term sum -/
-
-private lemma poly_dvd_of_laurent_dvd {K : Type*} [Field K] (ψ : Polynomial K)
-    (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (hmon : ψ.Monic) (Q : Polynomial K) (k : ℕ)
-    (hdvd : Polynomial.toLaurent ψ ^ k ∣ Polynomial.toLaurent Q) : ψ ^ k ∣ Q := by
-  obtain ⟨q, hq⟩ := hdvd
-  obtain ⟨n, f', hf'⟩ := LaurentPolynomial.exists_T_pow q
-  have hkey : Q * Polynomial.X ^ n = ψ ^ k * f' := by
-    apply Polynomial.toLaurent_injective
-    rw [map_mul, map_mul, Polynomial.toLaurent_X_pow, map_pow, hq, mul_assoc, ← hf']
-  have hnotdvdX : ¬ (ψ ∣ Polynomial.X) := by
-    intro hdX
-    exact hψz (Polynomial.eq_of_monic_of_associated hmon Polynomial.monic_X
-      (hψ.associated_of_dvd Polynomial.irreducible_X hdX))
-  have hnotXn : ¬ (ψ ∣ Polynomial.X ^ n) := fun h => hnotdvdX (hψ.prime.dvd_of_dvd_pow h)
-  clear hq
-  induction k generalizing Q with
-  | zero => exact one_dvd Q
-  | succ k ih =>
-    have hdvd1 : ψ ∣ Q * Polynomial.X ^ n := by
-      rw [hkey]
-      exact (dvd_pow_self ψ (Nat.succ_ne_zero k)).mul_right f'
-    have hdvdQ : ψ ∣ Q := (hψ.prime.dvd_or_dvd hdvd1).resolve_right hnotXn
-    obtain ⟨Q', hQ'⟩ := hdvdQ
-    have hkey' : Q' * Polynomial.X ^ n = ψ ^ k * f' := by
-      have h2 : ψ * (Q' * Polynomial.X ^ n) = ψ * (ψ ^ k * f') := by
-        rw [← mul_assoc, ← hQ', hkey, pow_succ]
-        ring
-      exact mul_left_cancel₀ hψ.ne_zero h2
-    have hres := ih Q' hkey'
-    rw [hQ', show ψ ^ (k + 1) = ψ * ψ ^ k from by ring]
-    exact mul_dvd_mul_left ψ hres
 
 private lemma ordSum {K : Type*} [Field K] (ψ : Polynomial K) (hψ : Irreducible ψ)
     (hψz : ψ ≠ Polynomial.X) (hmon : ψ.Monic) (Ranch : Polynomial K) (S : Finset ℕ)

@@ -4,9 +4,14 @@ LeanUrat.HC2.SharedRecenter  (HC-2 campaign — shared recentering-parent machin
 The RECENTERING-parent helper block consumed by BOTH U20c
 (`NA_transport_recentering`, U20c_NAtransportRecentering.lean) and U22-E1
 (`SAE_spanStrict_endpoint`, U22E1_spanStrict.lean): hoisted from the two
-byte-identical file-private copies (dedup pass, 2026-07-30).  All lemmas below are
-verbatim hoists (statements unchanged, `private` dropped) EXCEPT `recentering_scaffold`,
-which is a NEW bundling lemma — see its docstring for the ratification record.  Contents:
+byte-identical file-private copies (dedup pass, 2026-07-30).  SYN-M9 (C1 cluster, same
+day): the engine lemmas below are now RE-EXPORTS of `Moves/ResVal.lean` (statements
+byte-identical; single proof source; concordance
+`lean/notes/SYN_E0_CONCORDANCE_2026-07-30.md`); `decomp_machine` is derived from the
+pack machine `ResValPack.residual_sum_machine` at `Stage.pack`.  `eps_const`/`R_neg_tt`/
+`recenter_lift_standard`/`recentering_scaffold` are SharedRecenter-specific and keep
+their proofs.  `recentering_scaffold` is a NEW bundling lemma — see its docstring for
+the ratification record.  Contents:
 * `Stage` weight/residual arithmetic from the bare axioms (`w_one` … `R_neg`,
   `w_sum_ge`), Laurent coefficient-extraction seams (`CT_apply`/`sum_apply'`/`C_inj`);
 * `decomp_machine` — the distinct-position residual-sum machine (nonzero terms of one
@@ -24,6 +29,7 @@ Exposure is namespace-fenced: everything lives under
 import Mathlib
 import LeanUrat.HC2.Defs
 import LeanUrat.Moves.L2_strideRule
+import LeanUrat.Moves.ResVal
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -37,98 +43,45 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- `w 1 = 0`. -/
-lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
+lemma w_one (σ : Stage p F) : σ.w 1 = 0 := ResVal.w_one σ
 
 /-- `w (-1) = 0`. -/
-lemma w_neg_one (σ : Stage p F) : σ.w (-1) = 0 := by
-  have h := σ.hwmul (-1) (-1) (by norm_num) (by norm_num)
-  rw [neg_mul_neg, one_mul, w_one σ] at h
-  omega
+lemma w_neg_one (σ : Stage p F) : σ.w (-1) = 0 := ResVal.w_neg_one σ
 
 /-- `w (-x) = w x`. -/
 lemma w_neg (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
-    σ.w (-x) = σ.w x := by
-  have h := σ.hwmul (-1) x (by norm_num) hx
-  rw [neg_one_mul] at h
-  rw [h, w_neg_one σ, zero_add]
+    σ.w (-x) = σ.w x := ResVal.w_neg σ x hx
 
 /-- `w (x^n) = n·w x`. -/
 lemma w_pow (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
-  induction n with
-  | zero => simpa [pow_zero] using w_one σ
-  | succ k ih =>
-    rw [pow_succ, σ.hwmul _ x (pow_ne_zero k hx) hx, ih]
-    push_cast; ring
+    σ.w (x ^ n) = (n : ℤ) * σ.w x := ResVal.w_pow σ x hx n
 
 /-- `R 1 = 1`. -/
-lemma R_one (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
-  exact (mul_left_cancel₀ hne (by rw [mul_one]; exact h)).symm
+lemma R_one (σ : Stage p F) : σ.R 1 = 1 := ResVal.R_one σ
 
 /-- `R (-x) = R (-1) · R x`. -/
 lemma R_neg (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
-    σ.R (-x) = σ.R (-1) * σ.R x := by
-  have h := σ.hRmul (-1) x (by norm_num) hx
-  rwa [neg_one_mul] at h
+    σ.R (-x) = σ.R (-1) * σ.R x := ResVal.R_neg σ x hx
 
 /-- Ultrametric finite-sum lower bound (mirror of the `L5_landVertex` private lemma). -/
 lemma w_sum_ge (σ : Stage p F) (S : Finset ℕ) (a : ℕ → Polynomial ℤ_[p]) (m : ℤ)
     (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
-    m ≤ σ.w (∑ j ∈ S, a j) := by
-  classical
-  revert hm hsum
-  induction S using Finset.induction with
-  | empty =>
-    intro hm hsum
-    simp only [Finset.sum_empty] at hsum
-    exact absurd rfl hsum
-  | insert i T hiT ih =>
-    intro hm hsum
-    rw [Finset.sum_insert hiT] at hsum ⊢
-    by_cases hai : a i = 0
-    · rw [hai, zero_add] at hsum ⊢
-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
-    · by_cases hsT : (∑ j ∈ T, a j) = 0
-      · rw [hsT, add_zero] at hsum ⊢
-        exact hm i (Finset.mem_insert_self i T) hai
-      · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
-        have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        have hult := σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum
-        exact le_trans (le_min h1 h2) hult
+    m ≤ σ.w (∑ j ∈ S, a j) := ResVal.w_sum_ge σ S a m hm hsum
 
 /-- Coefficient extraction on a monomial `C c · T n` (the Finsupp seam, crossed by
 `exact`-defeq only). -/
 lemma CT_apply {K : Type*} [Field K] (c : K) (n q : ℤ) :
     (LaurentPolynomial.C c * LaurentPolynomial.T n : LaurentPolynomial K) q
-      = if n = q then c else 0 := by
-  have h1 : LaurentPolynomial.C c * LaurentPolynomial.T n
-      = (Finsupp.single n c : LaurentPolynomial K) :=
-    (LaurentPolynomial.single_eq_C_mul_T c n).symm
-  have h0 := congrArg (fun t : ℤ →₀ K => t q) h1
-  exact h0.trans Finsupp.single_apply
+      = if n = q then c else 0 := ResVal.CT_apply c n q
 
 /-- Coefficient extraction commutes with finite sums (Finsupp seam). -/
 lemma sum_apply' {K : Type*} [Field K] (T : Finset ℕ) (g : ℕ → LaurentPolynomial K)
-    (q : ℤ) : (∑ l ∈ T, g l) q = ∑ l ∈ T, (g l) q :=
-  Finsupp.finset_sum_apply T g q
+    (q : ℤ) : (∑ l ∈ T, g l) q = ∑ l ∈ T, (g l) q := ResVal.sum_apply' T g q
 
 /-- `C` is injective (coefficient at 0). -/
 lemma C_inj {K : Type*} [Field K] {x y : K}
-    (h : (LaurentPolynomial.C x : LaurentPolynomial K) = LaurentPolynomial.C y) : x = y := by
-  have hCT : ∀ z : K, (LaurentPolynomial.C z : LaurentPolynomial K)
-      = LaurentPolynomial.C z * LaurentPolynomial.T 0 := by
-    intro z
-    rw [LaurentPolynomial.T_zero, mul_one]
-  have h0 : (LaurentPolynomial.C x : LaurentPolynomial K) (0 : ℤ)
-      = (LaurentPolynomial.C y : LaurentPolynomial K) (0 : ℤ) := by rw [h]
-  rwa [hCT x, hCT y, CT_apply, CT_apply, if_pos rfl, if_pos rfl] at h0
+    (h : (LaurentPolynomial.C x : LaurentPolynomial K) = LaurentPolynomial.C y) : x = y :=
+  ResVal.C_inj h
 
 /-- **The distinct-position residual-sum machine**: nonzero terms of one common weight `m`
 whose residuals are monomials at pairwise-distinct positions sum without cancellation —
@@ -145,56 +98,8 @@ lemma decomp_machine (σ : Stage p F) (d : ↥σ.K)
     ∀ T ⊆ S, T.Nonempty →
       (∑ j ∈ T, a j) ≠ 0 ∧ σ.w (∑ j ∈ T, a j) = m ∧
         σ.R (∑ j ∈ T, a j)
-          = ∑ j ∈ T, LaurentPolynomial.C (c j) * LaurentPolynomial.T (pos j) := by
-  classical
-  intro T
-  induction T using Finset.induction with
-  | empty =>
-    intro _ hne
-    exact absurd hne (by simp)
-  | insert j T hjT ih =>
-    intro hsub _
-    have hjS : j ∈ S := hsub (Finset.mem_insert_self j T)
-    have hTsub : T ⊆ S := fun x hx => hsub (Finset.mem_insert_of_mem hx)
-    have haj : a j ≠ 0 := h0 j hjS
-    have hwj : σ.w (a j) = m := hw j hjS
-    rcases T.eq_empty_or_nonempty with rfl | hTne
-    · refine ⟨by simpa using haj, by simpa using hwj, by simp [hR j hjS]⟩
-    · obtain ⟨hT0, hTw, hTR⟩ := ih hTsub hTne
-      -- the flip exclusion: `R(a j) = R(-1)·R(Σ_T)` is impossible at distinct positions
-      have hkey : σ.R (a j) ≠ σ.R (-1) * σ.R (∑ l ∈ T, a l) := by
-        intro hflip
-        have h2 : (σ.R (a j)) (pos j) = c j := by
-          rw [hR j hjS, CT_apply, if_pos rfl]
-        have hsingles : σ.R (-1) * σ.R (∑ l ∈ T, a l)
-            = ∑ l ∈ T, LaurentPolynomial.C (d * c l) * LaurentPolynomial.T (pos l) := by
-          rw [hd, hTR, Finset.mul_sum]
-          refine Finset.sum_congr rfl (fun l hl => ?_)
-          rw [← mul_assoc, ← map_mul]
-        have h3 : (σ.R (a j)) (pos j) = 0 := by
-          rw [hflip, hsingles, sum_apply']
-          refine Finset.sum_eq_zero (fun l hl => ?_)
-          rw [CT_apply, if_neg (fun hpe => hjT ((hinj l (hTsub hl) j hjS hpe) ▸ hl))]
-        exact hc j hjS (h2.symm.trans h3)
-      have hsum_ne : a j + ∑ l ∈ T, a l ≠ 0 := by
-        intro h0'
-        have hxe : a j = -(∑ l ∈ T, a l) := eq_neg_of_add_eq_zero_left h0'
-        exact hkey (by rw [hxe, R_neg σ _ hT0])
-      have hwge : m ≤ σ.w (a j + ∑ l ∈ T, a l) := by
-        have h := σ.hwult (a j) _ haj hT0 hsum_ne
-        rwa [hwj, hTw, min_self] at h
-      have hwsum : σ.w (a j + ∑ l ∈ T, a l) = m := by
-        by_contra hne'
-        have hlt : m < σ.w (a j + ∑ l ∈ T, a l) := lt_of_le_of_ne hwge (Ne.symm hne')
-        have hnT : -(∑ l ∈ T, a l) ≠ 0 := neg_ne_zero.mpr hT0
-        have heq : -(∑ l ∈ T, a l) + (a j + ∑ l ∈ T, a l) = a j := by ring
-        have hR' := σ.hRlt (-(∑ l ∈ T, a l)) (a j + ∑ l ∈ T, a l) hnT hsum_ne
-          (by rw [heq]; exact haj) (by rw [w_neg σ _ hT0, hTw]; exact hlt)
-        rw [heq] at hR'
-        exact hkey (by rw [hR', R_neg σ _ hT0])
-      have hRadd := σ.hRadd (a j) _ haj hT0 hsum_ne (by rw [hwj, hTw]) (by rw [hwsum, hwj])
-      refine ⟨by rwa [Finset.sum_insert hjT], by rwa [Finset.sum_insert hjT], ?_⟩
-      rw [Finset.sum_insert hjT, Finset.sum_insert hjT, hRadd, hR j hjS, hTR]
+          = ∑ j ∈ T, LaurentPolynomial.C (c j) * LaurentPolynomial.T (pos j) :=
+  σ.pack.decomp_machine d hd m a pos c S h0 hw hR hc hinj
 
 /-- `R(-1)` is a CONSTANT `C d` with `d² = 1`, read off the S5 digit of the negated
 recentering lift (bare `Stage`, no `StageCore.R_neg`). -/

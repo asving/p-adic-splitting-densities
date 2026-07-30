@@ -12,6 +12,7 @@ import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L3_digPrime_nonzero
 import LeanUrat.Moves.L4_TRANSii
 import LeanUrat.Moves.L4_TRANSiii_R3
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.V8_childResidual — S9w-(i) via the explicit descent carrier (blueprint §10, V8)
@@ -191,47 +192,12 @@ developments); digits landing in `K′` (`v8cdig`); and the explicit carrier
 `v8Rc` (the (†) formula) with its development-independence spec `v8Rc_eq`
 (Fact B) and the position-injectivity nonvanishing `v8dsum_ne`. -/
 
+/-! SYN-M8 record (2026-07-30, C1 cluster): `v8w_one`/`v8w_neg`/`v8sum_w_ge` deleted;
+call sites re-pointed at `Moves.ResVal.w_one/w_neg` and `ult_sum_ge σ.w σ.hwult`
+(the ι-generic bare form; statement-identical specialization, SYN-E0 §3 VAR-G). -/
 section V8Infra
 
 variable (σ : Stage p F)
-
-private lemma v8w_one : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; omega
-
-private lemma v8w_neg (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : σ.w (-f) = σ.w f := by
-  have hne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
-  have hneg1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by
-    have h := σ.hwmul (-1) (-1) hne hne
-    rw [neg_mul_neg, one_mul] at h
-    have h1 := v8w_one σ
-    omega
-  have h := σ.hwmul (-1) f hne hf
-  rw [neg_one_mul] at h
-  omega
-
-/-- ultrametric finite-sum lower bound (zeros allowed among the summands). -/
-private lemma v8sum_w_ge {ι : Type*} (S : Finset ι) (a : ι → Polynomial ℤ_[p]) (m : ℤ)
-    (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
-    m ≤ σ.w (∑ j ∈ S, a j) := by
-  classical
-  revert hm hsum
-  induction S using Finset.induction with
-  | empty => intro hm hsum; simp at hsum
-  | insert i T hiT ih =>
-    intro hm hsum
-    rw [Finset.sum_insert hiT] at hsum ⊢
-    by_cases hai : a i = 0
-    · rw [hai, zero_add] at hsum ⊢
-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
-    · by_cases hsT : (∑ j ∈ T, a j) = 0
-      · rw [hsT, add_zero] at hsum ⊢
-        exact hm i (Finset.mem_insert_self i T) hai
-      · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
-        have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        exact le_trans (le_min h1 h2) (σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum)
-
 /-- "zero, or `w`-deep at least `ω`" — the domain of the level-`ω` graded residue. -/
 private def v8Deep (ω : ℤ) (x : Polynomial ℤ_[p]) : Prop := x = 0 ∨ ω ≤ σ.w x
 
@@ -274,9 +240,9 @@ private lemma v8gr_add (hσ : StageCore σ) {ω : ℤ} {x y : Polynomial ℤ_[p]
     refine ⟨Or.inl hxy0, ?_⟩
     rw [hxy0, v8gr_zero]
     rcases eq_or_ne (σ.w x) ω with hwx | hwx
-    · have hwy : σ.w y = ω := by rw [hyx, v8w_neg σ x hx0]; exact hwx
+    · have hwy : σ.w y = ω := by rw [hyx, ResVal.w_neg σ x hx0]; exact hwx
       rw [v8gr_eq σ hx0 hwx, v8gr_eq σ hy0 hwy, hyx, hσ.R_neg, add_neg_cancel]
-    · have hwy : σ.w y ≠ ω := by rw [hyx, v8w_neg σ x hx0]; exact hwx
+    · have hwy : σ.w y ≠ ω := by rw [hyx, ResVal.w_neg σ x hx0]; exact hwx
       rw [v8gr_deep σ hwx, v8gr_deep σ hwy, add_zero]
   have hult := σ.hwult x y hx0 hy0 hxy0
   have hDeep : v8Deep σ ω (x + y) := Or.inr (le_trans (le_min hxw hyw) hult)
@@ -591,7 +557,7 @@ private lemma v8cw_key {Φhat : Polynomial ℤ_[p]} (hmon : Φhat.Monic)
       show (if 0 = 1 then (1 : Polynomial ℤ_[p]) else 0) = 0
       rw [if_neg (by omega : (0 : ℕ) ≠ 1)]
     · show (h' : ℤ) ≤ (e' : ℤ) * σ.w (if 1 = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
-      rw [if_pos rfl, v8w_one σ]
+      rw [if_pos rfl, ResVal.w_one σ]
       push_cast
       omega
   · refine ⟨1, by omega, ?_, ?_⟩
@@ -599,7 +565,7 @@ private lemma v8cw_key {Φhat : Polynomial ℤ_[p]} (hmon : Φhat.Monic)
       rw [if_pos rfl]
       exact one_ne_zero
     · show (h' : ℤ) = (e' : ℤ) * σ.w (if 1 = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
-      rw [if_pos rfl, v8w_one σ]
+      rw [if_pos rfl, ResVal.w_one σ]
       push_cast
       omega
 
@@ -619,8 +585,8 @@ private lemma v8cw_neg {Φhat : Polynomial ℤ_[p]} (hmon : Φhat.Monic)
     constructor
     · intro j hj hnz
       have h := hlo j hj (show -(B j) ≠ 0 from neg_ne_zero.mpr hnz)
-      simpa only [v8w_neg σ (B j) hnz] using h
-    · exact ⟨jj, hjj, hjjB, by simpa only [v8w_neg σ (B jj) hjjB] using hjje⟩
+      simpa only [ResVal.w_neg σ (B j) hnz] using h
+    · exact ⟨jj, hjj, hjjB, by simpa only [ResVal.w_neg σ (B jj) hjjB] using hjje⟩
   exact v8slotMin_unique hattn' hatt
 
 /-- `dig′(1) = 1` (idempotent nonzero element of the field `F`). -/
@@ -658,7 +624,7 @@ private lemma v8Rc_phi (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = 
   have h1cond : (if (1 : ℕ) = 1 then (1 : Polynomial ℤ_[p]) else 0) ≠ 0 ∧
       (e' : ℤ) * σ.w (if (1 : ℕ) = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
         = childW σ Φhat e' h' Φhat := by
-    rw [if_pos rfl, v8cw_key σ hmon hd1 e' h' hSMW, v8w_one σ]
+    rw [if_pos rfl, v8cw_key σ hmon hd1 e' h' hSMW, ResVal.w_one σ]
     refine ⟨one_ne_zero, ?_⟩
     push_cast
     omega
@@ -670,7 +636,7 @@ private lemma v8Rc_phi (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = 
     apply Subtype.ext
     rw [v8cdig_coe, v8dig_one σ ψ g hg hψ hψz hg1 zbar hzbar]
     rfl
-  rw [hcd1, map_one, one_mul, v8w_one σ]
+  rw [hcd1, map_one, one_mul, ResVal.w_one σ]
   norm_num
 
 /-- the S5′ pin: single-slot coefficients carry the parent digit at position
@@ -768,7 +734,7 @@ private lemma v8Rc_negLaw (hσ : StageCore σ) (zbar : Fˣ)
       rintro ⟨h0, -⟩
       exact h0 hBj
     rw [if_neg hn1, if_neg hn2, neg_zero]
-  · have hwn := v8w_neg σ (B j) hBj
+  · have hwn := ResVal.w_neg σ (B j) hBj
     have hdig : σ.digPrime zbar (-(B j)) = - σ.digPrime zbar (B j) := by
       simp only [Stage.digPrime]
       rw [hσ.R_neg, map_neg]
@@ -1533,7 +1499,7 @@ private lemma v8Rc_mulLaw (hσ : StageCore σ)
     have hconv_ne : H.coeff m' ≠ 0 := fun h0 => hy (by rw [h0, Polynomial.zero_divByMonic])
     have hwconv : ω + σ.w Φhat + 1 ≤ σ.w (H.coeff m') := by
       rw [hHcoeff m']
-      refine v8sum_w_ge σ _ _ _ (fun jk hjk hne0 => (hbound jk hjk).resolve_left hne0)
+      refine ult_sum_ge σ.w σ.hwult _ _ _ (fun jk hjk hne0 => (hbound jk hjk).resolve_left hne0)
         (by rw [← hHcoeff m']; exact hconv_ne)
     have hyΦ : Φhat * (H.coeff m' /ₘ Φhat) = H.coeff m' + -(H.coeff m' %ₘ Φhat) := by
       have hmd := Polynomial.modByMonic_add_div (H.coeff m') Φhat
@@ -1549,7 +1515,7 @@ private lemma v8Rc_mulLaw (hσ : StageCore σ)
             rw [hHcoeff m']
             exact v8sum_modByMonic hmon _ _
           rw [hremsum]
-          refine v8sum_w_ge σ _ _ _ ?_ (by rw [← hremsum]; exact hrz)
+          refine ult_sum_ge σ.w σ.hwult _ _ _ ?_ (by rw [← hremsum]; exact hrz)
           intro jk hjk hne0
           have hPne : Bf jk.1 * Bg jk.2 ≠ 0 := by
             intro h0; rw [h0, Polynomial.zero_modByMonic] at hne0; exact hne0 rfl
@@ -1564,7 +1530,7 @@ private lemma v8Rc_mulLaw (hσ : StageCore σ)
         have hsumne : H.coeff m' + -(H.coeff m' %ₘ Φhat) ≠ 0 := by
           rw [← hyΦ]; exact hΦyne
         have hult := σ.hwult _ _ hconv_ne hnegne hsumne
-        rw [v8w_neg σ _ hrz] at hult
+        rw [ResVal.w_neg σ _ hrz] at hult
         exact le_trans (le_min hwconv hrw) hult
     have hmulw := σ.hwmul Φhat (H.coeff m' /ₘ Φhat) hΦne hy
     rw [hmulw] at hwΦy

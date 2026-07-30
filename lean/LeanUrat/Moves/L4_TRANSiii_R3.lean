@@ -5,6 +5,7 @@ import LeanUrat.Moves.L0_FactA_exists
 import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L3_DIV
 import LeanUrat.Moves.L4_TRANSi_R3
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L4_TRANSiii — D.7(iii): `w'` is a valuation (multiplicativity)  [ROUND 3]
@@ -30,13 +31,20 @@ disk).  `L3.K1`-transcendence is NOT needed on this route: development slots sep
 minimizing diagonals, and the extremal choice makes the minimizing pair unique in its slot.
 -/
 
+/-! ## SYN-M6 record (2026-07-30, C1 cluster)
+Private `wiii_one`/`wiii_neg`/`wiii_sum_ge` deleted; call sites re-pointed at
+`ResVal.w_neg` and `ult_sum_ge σ.w σ.hwult` (the Stage specialization of the shared
+bare form — SYN-E0 §3 VAR-G record). File-specific `wiii_deep_or`/`wiii_sum_deep`/
+`wiii_dominant`/`wiii_add_modByMonic`/`wiii_sum_modByMonic` stay. Publics
+`TRANSiii_le_core`/`L4_TRANSiii` byte-identical. -/
+
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedVariables false
 set_option linter.unusedSectionVars false
 set_option maxHeartbeats 1000000
 
-open Polynomial LeanUrat.Moves
+open Polynomial LeanUrat.Moves LeanUrat.Moves.ResVal
 
 namespace LeanUrat.Moves
 
@@ -44,51 +52,6 @@ section TRANSiiiHelpers
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- `w 1 = 0`: from `w(1·1) = w 1 + w 1`. -/
-private lemma wiii_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
-
-/-- `w(−f) = w(f)` for `f ≠ 0`. -/
-private lemma wiii_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    σ.w (-f) = σ.w f := by
-  have hne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
-  have hneg1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by
-    have h := σ.hwmul (-1) (-1) hne hne
-    rw [neg_mul_neg, one_mul] at h
-    have h1 := wiii_one σ
-    omega
-  have h := σ.hwmul (-1) f hne hf
-  rw [neg_one_mul] at h
-  omega
-
-/-- Ultrametric finite-sum lower bound (zeros allowed among the summands). -/
-private lemma wiii_sum_ge (σ : Stage p F) {ι : Type*} (S : Finset ι)
-    (a : ι → Polynomial ℤ_[p]) (m : ℤ)
-    (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
-    m ≤ σ.w (∑ j ∈ S, a j) := by
-  classical
-  revert hm hsum
-  induction S using Finset.induction with
-  | empty =>
-    intro _ hsum
-    exact absurd Finset.sum_empty hsum
-  | insert i T hiT ih =>
-    intro hm hsum
-    rw [Finset.sum_insert hiT] at hsum ⊢
-    by_cases hai : a i = 0
-    · rw [hai, zero_add] at hsum ⊢
-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
-    · by_cases hsT : (∑ j ∈ T, a j) = 0
-      · rw [hsT, add_zero] at hsum ⊢
-        exact hm i (Finset.mem_insert_self i T) hai
-      · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
-        have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        exact le_trans (le_min h1 h2) (σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum)
-
-/-- Two "zero or w-deeper than `b`" elements add to a "zero or w-deeper than `b`" element. -/
 private lemma wiii_deep_or (σ : Stage p F) {x y : Polynomial ℤ_[p]} {b : ℤ}
     (hx : x = 0 ∨ b < σ.w x) (hy : y = 0 ∨ b < σ.w y) :
     x + y = 0 ∨ b < σ.w (x + y) := by
@@ -129,14 +92,14 @@ private lemma wiii_dominant (σ : Stage p F) {x y : Polynomial ℤ_[p]}
     have hxy : x + y ≠ 0 := by
       intro h
       have hyx : y = -x := eq_neg_of_add_eq_zero_right h
-      rw [hyx, wiii_neg σ x hx] at hyw
+      rw [hyx, w_neg σ x hx] at hyw
       omega
     refine ⟨hxy, le_antisymm ?_ ?_⟩
     · by_contra hcon
       have hcon' : σ.w x < σ.w (x + y) := not_le.mp hcon
       have hns : x + y + -y ≠ 0 := by rw [add_neg_cancel_right]; exact hx
       have h2 := σ.hwult (x + y) (-y) hxy (neg_ne_zero.mpr hy0) hns
-      rw [add_neg_cancel_right, wiii_neg σ y hy0] at h2
+      rw [add_neg_cancel_right, w_neg σ y hy0] at h2
       exact absurd h2 (not_le.mpr (lt_min hcon' hyw))
     · calc σ.w x = min (σ.w x) (σ.w y) := (min_eq_left hyw.le).symm
         _ ≤ σ.w (x + y) := σ.hwult x y hx hy0 hxy
@@ -470,7 +433,7 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       intro h0; rw [h0, Polynomial.zero_divByMonic] at hy; exact hy rfl
     have hwconv : β + σ.w Φhat + 1 ≤ σ.w (H.coeff m') := by
       rw [hHcoeff m']
-      refine wiii_sum_ge σ _ _ _ (fun jk hjk hne0 => (hbound jk hjk).resolve_left hne0) ?_
+      refine ult_sum_ge σ.w σ.hwult _ _ _ (fun jk hjk hne0 => (hbound jk hjk).resolve_left hne0) ?_
       rw [← hHcoeff m']; exact hconvm'
     have hyΦ : Φhat * (H.coeff m' /ₘ Φhat) = H.coeff m' + -(H.coeff m' %ₘ Φhat) := by
       linear_combination Polynomial.modByMonic_add_div (H.coeff m') Φhat
@@ -485,7 +448,7 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
             rw [hHcoeff m']
             exact wiii_sum_modByMonic hmon _ _
           rw [hremsum]
-          refine wiii_sum_ge σ _ _ _ ?_ (by rw [← hremsum]; exact hrz)
+          refine ult_sum_ge σ.w σ.hwult _ _ _ ?_ (by rw [← hremsum]; exact hrz)
           intro jk hjk hne0
           have hPne : Bf jk.1 * Bg jk.2 ≠ 0 := by
             intro h0; rw [h0, Polynomial.zero_modByMonic] at hne0; exact hne0 rfl
@@ -501,7 +464,7 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
         have hnegne : -(H.coeff m' %ₘ Φhat) ≠ 0 := neg_ne_zero.mpr hrz
         have hsumne : H.coeff m' + -(H.coeff m' %ₘ Φhat) ≠ 0 := hyΦ ▸ hΦyne
         have hult := σ.hwult _ _ hconvm' hnegne hsumne
-        rw [wiii_neg σ _ hrz] at hult
+        rw [w_neg σ _ hrz] at hult
         exact le_trans (le_min hwconv hrw) hult
     have hmulw := σ.hwmul Φhat (H.coeff m' /ₘ Φhat) hΦne hy
     rw [hmulw] at hwΦy

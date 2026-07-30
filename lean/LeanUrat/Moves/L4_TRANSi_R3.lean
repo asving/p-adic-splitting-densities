@@ -9,6 +9,7 @@ import LeanUrat.Moves.DefsT
 import LeanUrat.Moves.L0_FactA_exists
 import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L3_DIV
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L4_TRANSi_R3 — D.7(i): submultiplicativity of `w'` at the level of `A`
@@ -26,62 +27,21 @@ Deps: `L3.DIV` (on disk, imported).  `L0_FactA_exists` and `L3_liftMonic` are on
 units used for development existence and the lift's monicity/degree.
 -/
 
+/-! ## SYN-M6 record (2026-07-30, C1 cluster)
+Private `w_one'`/`w_neg'`/`wsum_ge'` deleted; call sites re-pointed at
+`ResVal.w_neg` and `ult_sum_ge` (`Moves/ResVal.lean`) — `wsum_ge'` was the
+weakest-assumption bare-(W, hult) copy on disk and is the VERBATIM source of the shared
+`ult_sum_ge` (SYN-E0 §3 VAR-G). Publics `TRANSi_ge_core`/`L4_TRANSi` byte-identical. -/
+
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
 set_option linter.unusedVariables false
 set_option maxHeartbeats 1000000
 
-open Polynomial
+open Polynomial LeanUrat.Moves.ResVal
 
 namespace LeanUrat.Moves
-
-/-- `w(1) = 0` for the stage valuation. -/
-private lemma w_one' {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) :
-    σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  linarith
-
-/-- `w(−f) = w(f)` for the stage valuation. -/
-private lemma w_neg' {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F)
-    (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : σ.w (-f) = σ.w f := by
-  have hm1ne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
-  have hm1 : σ.w (-1) = 0 := by
-    have h := σ.hwmul (-1) (-1) hm1ne hm1ne
-    rw [neg_mul_neg, one_mul] at h
-    have h1 := w_one' σ
-    linarith
-  have h2 := σ.hwmul (-1) f hm1ne hf
-  rw [neg_one_mul] at h2
-  rw [h2, hm1, zero_add]
-
-/-- Ultrametric finite-sum lower bound for any `ℤ`-valued weight `W` with the ultrametric
-law: a common lower bound on the nonzero summands bounds the (nonzero) sum. -/
-private lemma wsum_ge' {p : ℕ} [Fact p.Prime] {ι : Type*} (W : Polynomial ℤ_[p] → ℤ)
-    (hult : ∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → min (W f) (W g) ≤ W (f + g))
-    (S : Finset ι) (a : ι → Polynomial ℤ_[p]) (c : ℤ)
-    (hm : ∀ j ∈ S, a j ≠ 0 → c ≤ W (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
-    c ≤ W (∑ j ∈ S, a j) := by
-  classical
-  revert hm hsum
-  induction S using Finset.induction with
-  | empty =>
-    intro _ hsum
-    exact absurd Finset.sum_empty hsum
-  | insert i T hiT ih =>
-    intro hm hsum
-    rw [Finset.sum_insert hiT] at hsum ⊢
-    by_cases hai : a i = 0
-    · rw [hai, zero_add] at hsum ⊢
-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
-    · by_cases hsT : (∑ j ∈ T, a j) = 0
-      · rw [hsT, add_zero] at hsum ⊢
-        exact hm i (Finset.mem_insert_self i T) hai
-      · have h1 : c ≤ W (a i) := hm i (Finset.mem_insert_self i T) hai
-        have h2 : c ≤ W (∑ j ∈ T, a j) :=
-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        exact le_trans (le_min h1 h2) (hult (a i) (∑ j ∈ T, a j) hai hsT hsum)
 
 /-- **Lift-free core of `L4_TRANSi`** (submultiplicativity `w' f + w' g ≤ w'(f·g)`): all
 the lift structure is used only through the abstract exact-remainder DIV hypothesis
@@ -114,7 +74,7 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       linear_combination Polynomial.modByMonic_add_div (B x.1 * B'' x.2) Φhat
     have hsumne : B x.1 * B'' x.2 + -((B x.1 * B'' x.2) %ₘ Φhat) ≠ 0 := heq2 ▸ hQΦne
     have hult := σ.hwult _ _ hprodne (neg_ne_zero.mpr hRne) hsumne
-    rw [← heq2, σ.hwmul _ _ hQne hΦne, w_neg' σ _ hRne, hRw,
+    rw [← heq2, σ.hwmul _ _ hQne hΦne, w_neg σ _ hRne, hRw,
       σ.hwmul _ _ hBj hBk, min_self] at hult
     exact hult
   -- ── (3) the collected Φ̂-development of f·gg
@@ -293,7 +253,7 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
           exact absurd rfl hax
     have hkey : w' f + w' gg - (m : ℤ) * (h' : ℤ) ≤ (e' : ℤ) * σ.w (C m) := by
       rw [hsingle] at hCm ⊢
-      exact wsum_ge' (fun q => (e' : ℤ) * σ.w q) hultW _ _ _ hper hCm
+      exact ult_sum_ge (fun q => (e' : ℤ) * σ.w q) hultW _ _ _ hper hCm
     linarith
   -- ── (5) conclude via the attained minimum of the C-development of f·gg
   obtain ⟨m₀, hm₀lt, hCne, heq⟩ := (hw' (f * gg) C (N + M) hfg hCdev).2
