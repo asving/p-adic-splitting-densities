@@ -26,6 +26,7 @@ import LeanUrat.MovesV.V7_rbB
 
 set_option linter.style.longLine false
 set_option linter.style.header false
+set_option linter.unusedVariables false
 
 namespace LeanUrat.MovesV
 

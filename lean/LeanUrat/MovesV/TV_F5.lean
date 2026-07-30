@@ -47,8 +47,33 @@ theorem ratBurdens_of_seam {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hco : SeamCoherent V X cp J hEU hEC hA hdom K)
     (hdeg : SeamDegreeLaws V X cp J hEU hEC hA hdom K)
     (hcell : SeamCellLaws cp K) :
-    Nonempty (MovesS.RatBurdens T M) := by
-  sorry
+    Nonempty (MovesS.RatBurdens T M) :=
+  ⟨{ tgP := seamTgP V X cp K
+     jP := seamJP V X cp J K
+     ιP := seamIotaP V X hEU hEC hA hdom K
+     tg_ok := hco.tg_ok
+     j_ok := hco.j_ok
+     ι_ok := hco.iota_ok
+     tg_interp := hco.tg_val
+     j_interp := hco.j_val
+     ι_interp := hco.iota_val
+     ι_countS_one := seamIotaP_countS_one V X hEU hEC hA hdom K
+     ι_count := hco.iota_count
+     tg_degT := hdeg.tg_degT
+     tg_degS := hdeg.tg_degS
+     j_degT := hdeg.j_degT
+     j_degS := hdeg.j_degS
+     ι_degT := hdeg.ι_degT
+     ι_degS := hdeg.ι_degS
+     cellP := seamCellP cp K
+     cellP_deg := hcell.cell_deg
+     cellP_nonzero := hcell.cell_nonzero
+     cellP_count := hcell.cell_count
+     act_iff := hcell.cell_act_iff
+     jPCell := seamJPCell X cp K
+     jcell_ok := hco.jcell_ok
+     jcell_interp := hco.jcell_val
+     jcell_sum := hco.jcell_sum }⟩
 
 /-- TV-F5 ASSEMBLY: the `ratBurdens_exists` producer — statement
 byte-identical to the named open duty at MovesV/V7_rbC.lean:42-51 (premise
