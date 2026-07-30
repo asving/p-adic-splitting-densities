@@ -20,7 +20,7 @@ theorem x1aChain {n : ℕ} (X : XFamily n) (st : AlignState) (AL : X1aAlignP n X
   refine ⟨?_, ?_⟩
   · -- First inclusion: stratum(H) ⊆ Desc_{d_cert(H)}, definitional (witness H itself).
     intro f H hf
-    exact ⟨H, hf, le_refl _⟩
+    exact ⟨H, hf, le_rfl⟩
   · -- Second inclusion: Desc_d ⊆ { 2·d ≤ v_p(disc f) }, via (X1a-ALIGN) transport + (P2).
     intro f d hf hdisc
     obtain ⟨H, hStrat, hd⟩ := hf

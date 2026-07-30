@@ -27,10 +27,9 @@ theorem Fsub_card (m : ℕ+) : Nat.card ↥(Fsub p m) = p ^ (m : ℕ) := by
   have hm0 : (m : ℕ) ≠ 0 := m.pos.ne'
   have hq1 : 1 < p ^ (m : ℕ) := Nat.one_lt_pow hm0 hp1
   set P : (Kbar p)[X] := X ^ (p ^ (m : ℕ)) - X with hP
-  have hPne : P ≠ 0 := by
-    rw [hP]; exact FiniteField.X_pow_card_sub_X_ne_zero (Kbar p) hq1
-  have hdeg : P.natDegree = p ^ (m : ℕ) := by
-    rw [hP]; exact FiniteField.X_pow_card_sub_X_natDegree_eq (Kbar p) hq1
+  have hPne : P ≠ 0 := hP ▸ FiniteField.X_pow_card_sub_X_ne_zero (Kbar p) hq1
+  have hdeg : P.natDegree = p ^ (m : ℕ) :=
+    hP ▸ FiniteField.X_pow_card_sub_X_natDegree_eq (Kbar p) hq1
   have hchar : ((p ^ (m : ℕ) : ℕ) : Kbar p) = 0 := by
     push_cast
     rw [CharP.cast_eq_zero (Kbar p) p, zero_pow hm0]

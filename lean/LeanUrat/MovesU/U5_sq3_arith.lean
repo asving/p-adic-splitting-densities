@@ -30,9 +30,7 @@ theorem sq3_arith {n p : ℕ} (X : ClassifierSpec n p) [NeZero p] (hp : 1 < p)
     (hsum : ∑ τ, R τ = 1) :
     (R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ) := by
   -- Notation: P := p^{nN} (strictly positive, hence nonzero).
-  have hp0 : (0 : ℝ) < (p : ℝ) := by
-    have : 0 < p := lt_trans Nat.zero_lt_one hp
-    exact_mod_cast this
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast Nat.zero_lt_one.trans hp
   have hP : (0 : ℝ) < (p : ℝ) ^ (n * N) := pow_pos hp0 _
   have hPne : (p : ℝ) ^ (n * N) ≠ 0 := ne_of_gt hP
   -- (BOX-N) from U1, cast to ℝ.

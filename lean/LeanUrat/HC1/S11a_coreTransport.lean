@@ -61,8 +61,7 @@ private lemma w_neg' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
 private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
   have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
   rw [mul_one] at h
-  have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
-  exact (mul_left_cancel₀ hne (by rw [mul_one]; exact h)).symm
+  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
 
 /-- The w_strict tie law holds for EVERY stage from the bare (S1) laws (the
 escalation's "valuation trick"): if the sum vanished, `w g = w (−f) = w f` would
@@ -172,8 +171,7 @@ theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ)
       unfold Stage.digPrime
       rw [hσ.core.R_neg 1, R_one' σ, map_neg, map_one]
     have hc₂F' : ((c₂ : ↥σ'.K) : F) = -1 := by
-      rw [hwm1, hdigm1F, hzm0, mul_one] at hc₂F
-      exact hc₂F
+      rwa [hwm1, hdigm1F, hzm0, mul_one] at hc₂F
     have hc₂val : (c₂ : ↥σ'.K) = -1 := by
       have hcast : ((c₂ : ↥σ'.K) : F) = ((-1 : ↥σ'.K) : F) := by
         rw [hc₂F']

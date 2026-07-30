@@ -36,10 +36,7 @@ theorem rs3_det_symbolic {T : TableShape n} {M : MeasuredSide T}
   have hPPinf : PP.Infinite := by
     have hPP_eq : PP = (Nat.cast : ℕ → ℚ) '' {p : ℕ | p.Prime} := by
       ext q
-      simp only [hbase q, Set.mem_image, Set.mem_setOf_eq]
-      constructor
-      · rintro ⟨p, hp, rfl⟩; exact ⟨p, hp, rfl⟩
-      · rintro ⟨p, hp, rfl⟩; exact ⟨p, hp, rfl⟩
+      simp only [hbase q, Set.mem_image, Set.mem_setOf_eq, eq_comm]
     rw [hPP_eq]
     exact Nat.infinite_setOf_prime.image (Set.injOn_of_injective Nat.cast_injective)
   -- Only finitely many base primes fail to be all-active (U-22c).

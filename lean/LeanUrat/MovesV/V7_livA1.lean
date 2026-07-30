@@ -26,8 +26,7 @@ theorem ledgerIV_cells {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   -- q₀ > 0 (pools are prime powers > 1).
   have hq0 : (0 : ℝ) < (q₀ : ℝ) := by
     have h1 : (1 : ℚ) < q₀ := S.pools_gt_one q₀ (V.pools_sub hq)
-    have : (0 : ℚ) < q₀ := lt_trans one_pos h1
-    exact_mod_cast this
+    exact_mod_cast lt_trans one_pos h1
   -- the per-assignment mass is a positive power of q₀.
   have hmass : 0 < S.massOf (V.moveOf d) x h a₀ := by
     rw [X.w.w_eq (V.moveOf d) x h a₀ (V.pools_sub hq) hzc]
@@ -60,7 +59,7 @@ theorem ledgerIV_orphan {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   -- so the assignment filter is empty and the biUnion collapses.
   have hnp : ¬ (0 < V.cntc d x c h) := fun hp =>
     hout (X.dC.no_orphanC d x c h hq hzc hp)
-  have hz : V.cntc d x c h = 0 := Nat.le_zero.mp (not_lt.mp hnp)
+  have hz : V.cntc d x c h = 0 := Nat.eq_zero_of_not_pos hnp
   unfold CtsMeasured.cntc at hz
   have hfilt := Finset.card_eq_zero.mp hz
   unfold CtsMeasured.cellEvt

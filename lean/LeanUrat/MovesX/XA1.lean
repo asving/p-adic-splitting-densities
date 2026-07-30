@@ -22,7 +22,6 @@ theorem rowTotal {n : ℕ} (ν : XNode n) :
   have he := ν.epos
   have hh := ν.hpos
   unfold rowOf
-  split_ifs with h1 h2 h3 h4 <;>
-    refine ⟨?_, ?_, ?_, ?_, ?_⟩ <;> simp_all <;> omega
+  split_ifs with h1 h2 h3 h4 <;> simp_all <;> omega
 
 end LeanUrat.MovesX

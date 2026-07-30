@@ -14,11 +14,10 @@ namespace LeanUrat.MovesC
 variable {p : ℕ}
 
 theorem C1_stripClause {m : ℕ} (c : Fin m) : ∃ cl : LevelClause p m, cl.support = {c} ∧ cl.codim = 1 ∧ ∀ x : Fin m → ZMod p, cl.sat x ↔ x c = 0 := by
-  refine ⟨⟨{c}, 1, fun x => x c = 0, ?_, ?_⟩, ?_, ?_, ?_⟩
+  refine ⟨⟨{c}, 1, fun x => x c = 0, ?_, ?_⟩, rfl, rfl, fun _ => Iff.rfl⟩
   · -- dep: sat reads only the support coordinate c
     intro x y h
-    have hxy : x c = y c := h c (Finset.mem_singleton_self c)
-    rw [hxy]
+    rw [h c (Finset.mem_singleton_self c)]
   · -- count: #{y | y c = 0 ∧ y ≡ 0 off {c}} · p^1 = p^|{c}|; the set is the singleton {0}
     have hcard :
         Nat.card {y : Fin m → ZMod p // y c = 0 ∧ ∀ c' ∉ ({c} : Finset (Fin m)), y c' = 0} = 1 := by
@@ -33,12 +32,5 @@ theorem C1_stripClause {m : ℕ} (c : Fin m) : ∃ cl : LevelClause p m, cl.supp
             · exact hy2 i (by simp [hi]) }
       exact Nat.card_unique
     rw [hcard, Finset.card_singleton, one_mul]
-  · -- cl.support = {c}
-    rfl
-  · -- cl.codim = 1
-    rfl
-  · -- cl.sat x ↔ x c = 0
-    intro x
-    exact Iff.rfl
 
 end LeanUrat.MovesC

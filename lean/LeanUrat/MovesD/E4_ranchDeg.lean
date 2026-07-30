@@ -38,8 +38,7 @@ private lemma natDegree_C_pat_sum {K : Type*} [Semiring K] (n : ℕ) (a : ℕ �
     calc (C (a i) * X ^ i).natDegree ≤ i := natDegree_C_mul_X_pow_le (a i) i
       _ ≤ n := by omega
   · apply le_natDegree_of_ne_zero
-    rw [coeff_C_pat_sum]
-    exact ha
+    rwa [coeff_C_pat_sum]
 
 /-- deg R_anch = ℓ_r = wSide/e, from the node Props alone. -/
 theorem Ranch_deg (ν : Node p F) : ν.Ranch.natDegree = ν.wSide / ν.e := by

@@ -23,11 +23,11 @@
   ],
   "V0-3": [
    "V0_partition.lean",
-   "sorry-stmt"
+   "PROVED (semilin_sum_exact: component HasSums add exactly to the H-sum via disjoint indicator cover; zero sorry as-built 2026-07-30)"
   ],
   "V0-4": [
    "V0_xhds_witness.lean",
-   "sorry-stmt (EA2_seal decided)"
+   "PROVED (EA2_seal decided; xhds_instance_A2 full HasSum via A2equiv reindex + double geometric series; zero sorry as-built 2026-07-30)"
   ],
   "V1-1": [
    "V1_xhdw.lean",
@@ -131,7 +131,7 @@
   ],
   "V3-3b": [
    "V3_spwordB.lean",
-   "template_total: the fits leg is now an EXPLICIT sorried have (2 sorries total) - EntShapeV carries no width law, and the negWitness P3 extends to an EntShapeV (gsel=musel=1, selRec=[]), so template_total AS STATED needs the EntShapeV-side width law: OPEN SIGN-OFF ITEM; c1-c3 derivations kept; total template DECLARED"
+   "STATUS AS-BUILT (per the FINAL-RATIFICATION M1 deviation record below; refreshed 2026-07-30): the unscoped template_total was DELETED (semantically FALSE - countermodel TTNeg.template_total_false in V3_spword_negWitness3.lean). The scoped-true form is template_total_of_perimeter under the named SpWordPerimeter predicate, PROVED sorry-free; EntShapeV.template demands the SpWordPerimeter certificate. c1-c3 derivation helpers kept."
   ],
   "V3-3c": [
    "V3_spwordC.lean",
@@ -227,7 +227,7 @@
   ],
   "V4-9": [
    "V4_rep.lean",
-   "rep_row PROVED, Lean-core (STATEMENT REPAIR 2026-07-29: + premises cp : CellPolyPack (adjudicated, the x-free count bridge) and DC : XHDdC (off-domain leg, no_orphanC contrapositive — recorded deviation D21))"
+   "rep_row PROVED, Lean-core (STATEMENT REPAIR 2026-07-29: + premises cp : CellPolyPack (adjudicated, the x-free count bridge) and DC : XHDdC (off-domain leg, no_orphanC contrapositive — recorded deviation D21)) | HYPOTHESIS-TRIMMED AT GOLF (2026-07-30, dead-decl rule, zero consumers, orchestrator-ratified): unused E-phase binders P : C15Pack / U : XHDu / hobs (ObsCheck) removed from rep_row (proof consumes only cp + DC); ctsM (V7-2b) rep leg now calls this producer instead of inlining the body"
   ],
   "V4-10": [
    "V4_meas.lean",
@@ -275,7 +275,7 @@
   ],
   "V5-6": [
    "V5_compagg.lean",
-   "aggMass def landed; comp_agg PROVED 2026-07-30 via the adjudicated iotaN_lands law + the iotaEps-iotashH bridge (NEW named lemma iotaEps_iotashH_bridge: iotaN_card + ent_card + box_card at the defining level) + hEU fiber constancy + V0-3 semilin_sum_exact + the finite EntIx re-index; sorryAx footprint = writeHeights_total ONLY (V3-3d open core, consumed by comp_agg's own statement through writeHeights - same footprint as ent_agg_ival)"
+   "aggMass def landed; comp_agg PROVED 2026-07-30 via the adjudicated iotaN_lands law + the iotaEps-iotashH bridge (NEW named lemma iotaEps_iotashH_bridge: iotaN_card + ent_card + box_card at the defining level) + hEU fiber constancy + V0-3 semilin_sum_exact + the finite EntIx re-index; sorryAx footprint = writeHeights_total ONLY (V3-3d open core, consumed by comp_agg's own statement through writeHeights - same footprint as ent_agg_ival) | HYPOTHESIS-TRIMMED AT GOLF (2026-07-30, dead-decl rule, zero consumers, orchestrator-ratified): unused E-phase binders P : C15Pack / U : XHDu / DE : XHDdEnt / hTie : MarkFiberTie / hHMC : HMC / hobs (ObsCheck) removed from comp_agg (proof consumes only cc/Xs/XsEnt/hdom/hEU + the bridge); ctsM (V7-2b) comp_agg leg now calls this producer instead of inlining the body; NOTE the sorryAx-footprint clause earlier in this entry is SUPERSEDED by the M1 repair (shim deleted) — comp_agg verified Lean-core clean 2026-07-30"
   ],
   "V5-7a": [
    "V5_jdef.lean",
@@ -343,7 +343,7 @@
   ],
   "V7-2b": [
    "V7_ctsm.lean",
-   "capstone ctsM PROVED (ADJ-4, 2026-07-29): the adjudicated hmark hypothesis added mirroring hb/hc/hd (an emult≡0 model refutes hmark-free — ℕ-subtraction truncation in surplusRow); part2 leg closed via part2_row (V4-7); module sorry-free"
+   "capstone ctsM PROVED (ADJ-4, 2026-07-29): the adjudicated hmark hypothesis added mirroring hb/hc/hd (an emult≡0 model refutes hmark-free — ℕ-subtraction truncation in surplusRow); part2 leg closed via part2_row (V4-7); module sorry-free | DEDUP AT GOLF (2026-07-30): the rep and comp_agg legs no longer inline the producers' bodies — they call rep_row (V4-9) and comp_agg (V5-6) post hypothesis-trim; ctsM statement byte-identical, footprint re-verified Lean-core"
   ],
   "V7-3a": [
    "V7_ts.lean",

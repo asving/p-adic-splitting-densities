@@ -33,10 +33,7 @@ theorem L6_moveReduceCommute {p : ℕ} [Fact p.Prime] (Φhat f : Polynomial ℤ_
   refine ⟨?_, ?_, ?_⟩
   · -- clause 1: degree bounds survive — monic key keeps its degree, digits can only drop
     intro j
-    have hd : (Φhat.map φ).degree = Φhat.degree := by
-      apply Polynomial.degree_map_eq_of_leadingCoeff_ne_zero
-      rw [hmon.leadingCoeff, map_one]
-      exact one_ne_zero
+    have hd : (Φhat.map φ).degree = Φhat.degree := hmon.degree_map φ
     calc ((B j).map φ).degree ≤ (B j).degree := Polynomial.degree_map_le
       _ < Φhat.degree := hBdeg j
       _ = (Φhat.map φ).degree := hd.symm

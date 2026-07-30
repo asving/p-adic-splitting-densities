@@ -160,10 +160,7 @@ theorem eligible_nonvacuity_toy :
       (o : Option (History 2 (ZMod 2))) (ν : Node 2 (ZMod 2)) (x : Box 2 9),
       eligibleT T CA o ν x ∧ RejectsRootOnlyChildless T CA toyχ := by
   refine ⟨eligToyModel, eligToyCA, none, toyHead, 0, ?_, ?_⟩
-  · show toyHead ∈ eligToyCA.branchSetOf (eligToyCA.cellOf (embE none) (0 : Box 2 9))
-    rw [show eligToyCA.branchSetOf (eligToyCA.cellOf (embE none) (0 : Box 2 9))
-        = ({toyHead} : Finset (Node 2 (ZMod 2))) from rfl]
-    exact Finset.mem_singleton.mpr rfl
+  · exact Finset.mem_singleton.mpr rfl
   · intro x hrep Tr hchains
     exact rootOnly_childless_rejected eligToyModel toyχ toyχ_injective x hrep Tr hchains
 

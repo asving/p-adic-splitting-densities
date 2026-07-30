@@ -33,8 +33,7 @@ private theorem reads_len_le (P : Shape n) :
     intro hr
     have hb := P.2.root_box hr
     calc ((P : ShapePrefix).reads[0]'hr).len
-        ≤ ((P : ShapePrefix).reads[0]'hr).wSide := by
-          simp only [ShapeRead.len]; exact Nat.div_le_self _ _
+        ≤ ((P : ShapePrefix).reads[0]'hr).wSide := Nat.div_le_self _ _
       _ ≤ ((P : ShapePrefix).reads[0]'hr).s0 + ((P : ShapePrefix).reads[0]'hr).wSide := by omega
       _ ≤ n := hb
   | succ r ih =>
@@ -45,8 +44,7 @@ private theorem reads_len_le (P : Shape n) :
     have hgmu := P.2.gmu r hr'
     have hg := ((P : ShapePrefix).reads[r]'hr').hg
     calc ((P : ShapePrefix).reads[r+1]'hr).len
-        ≤ ((P : ShapePrefix).reads[r+1]'hr).wSide := by
-          simp only [ShapeRead.len]; exact Nat.div_le_self _ _
+        ≤ ((P : ShapePrefix).reads[r+1]'hr).wSide := Nat.div_le_self _ _
       _ ≤ ((P : ShapePrefix).reads[r+1]'hr).s0 + ((P : ShapePrefix).reads[r+1]'hr).wSide := by omega
       _ ≤ ((P : ShapePrefix).reads[r]'hr').μ := hwin
       _ ≤ ((P : ShapePrefix).reads[r]'hr').g * ((P : ShapePrefix).reads[r]'hr').μ :=
@@ -64,7 +62,7 @@ theorem Mfac_le (P : Shape n) :
         intro x hx
         simp only [List.mem_map] at hx
         obtain ⟨R, hR, rfl⟩ := hx
-        calc R.mbar ≤ R.len := by simp only [ShapeRead.mbar]; exact Nat.div_le_self _ _
+        calc R.mbar ≤ R.len := Nat.div_le_self _ _
           _ ≤ n := by
               rw [List.mem_iff_getElem] at hR
               obtain ⟨i, hi, rfl⟩ := hR

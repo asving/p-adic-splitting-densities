@@ -38,7 +38,7 @@ theorem out_finite (n : ℕ) (hn : 1 ≤ n) (s : Species)
     rw [Set.ncard_univ, Nat.card_eq_fintype_card]
     decide
   refine ⟨hA.union hB, ?_⟩
-  show (Out n s).ncard ≤ (SnRaw n).ncard + 3
+  change (Out n s).ncard ≤ (SnRaw n).ncard + 3
   calc (Out n s).ncard
       ≤ ((Sum.inl : Species → Species ⊕ Verdict) '' Succ n s).ncard
           + ((Sum.inr : Verdict → Species ⊕ Verdict) '' (Set.univ : Set Verdict)).ncard :=

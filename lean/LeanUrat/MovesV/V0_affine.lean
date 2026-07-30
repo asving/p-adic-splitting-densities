@@ -21,7 +21,7 @@ theorem affine_strictMono {D : ℕ} (E : AffineE D) (h : Hpt D) (i : Fin D) :
     · simp [Function.update_of_ne hx]
   · exact ⟨i, Finset.mem_univ i, by
       simp only [Function.update_self]
-      exact Nat.mul_lt_mul_of_le_of_lt (le_refl _) hab (E.pos i)⟩
+      exact Nat.mul_lt_mul_of_le_of_lt le_rfl hab (E.pos i)⟩
 
 theorem affine_ge_const {D : ℕ} (E : AffineE D) (h : Hpt D) :
     E.const ≤ E.eval h :=

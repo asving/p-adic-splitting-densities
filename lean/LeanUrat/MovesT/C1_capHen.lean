@@ -7,8 +7,9 @@ import Mathlib
 import LeanUrat.MovesT.Defs
 
 /-! # T-C1 `tbcap_hen` — CAP N_V = 1, uniform per class (MOVES 7155–7159): the class
-IS a finite union of level-0 cells. PROVED-IN-NOTE status: unconditional. The locality
-face is PROVED here; the finite-union face carries the E-phase sorry. -/
+IS a finite union of level-0 cells. PROVED-IN-NOTE status: unconditional. Both faces are
+PROVED here sorry-free: the locality face (`tbcap_hen`) and the finite-union face
+(`tbcap_hen_cells`, the explicit `rootCell`-union construction). -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false

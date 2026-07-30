@@ -60,8 +60,9 @@ theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f) := by
   -- The blueprint §10's staged closure (V′ kernel): the statement is byte-identical
   -- to the V8 capstone.  Conjunct (ii) [w_strict] is PROVED (V8c, Lean-core);
-  -- conjunct (i) rides on V8b's carrier construction (the remaining hard block —
-  -- this unit inherits V8b's sorryAx until it lands; wired 2026-07-28 escalation).
+  -- conjunct (i) rides on V8b's carrier construction (the hard block) — PROVED in
+  -- full at the 2026-07-28 V8b hRmul escalation, so this unit is now sorry-free /
+  -- Lean-core (footprint {propext, Classical.choice, Quot.sound}).
   exact V8_childResidual σ hσ th s' t' hbez' ht'0
 
 /-- PROJECTION COROLLARY (PROVED; explicitly NOT this unit's hard content — that

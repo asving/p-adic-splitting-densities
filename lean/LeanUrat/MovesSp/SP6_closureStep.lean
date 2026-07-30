@@ -60,7 +60,7 @@ private theorem compEnumF_eq : ∀ f n, n ≤ f → compEnum n = compEnumF f n :
       funext k
       rw [ih (m - k) (by omega)]
 
-private theorem compEnum_eqF (n : ℕ) : compEnum n = compEnumF n n := compEnumF_eq n n (le_refl n)
+private theorem compEnum_eqF (n : ℕ) : compEnum n = compEnumF n n := compEnumF_eq n n le_rfl
 
 private def lamEnumAuxF (bound : ℕ) : ℕ → ℕ → ℕ → List (List (ℕ × ℕ))
   | _, 0, _ => [[]]
@@ -96,7 +96,7 @@ private theorem lamEnumAuxF_eq : ∀ f bound w lo, w ≤ f →
 
 private theorem lamEnumAux_eqF (bound w lo : ℕ) :
     lamEnumAux bound w lo = lamEnumAuxF bound w w lo :=
-  lamEnumAuxF_eq w bound w lo (le_refl w)
+  lamEnumAuxF_eq w bound w lo le_rfl
 
 set_option maxHeartbeats 4000000 in
 set_option maxRecDepth 100000 in

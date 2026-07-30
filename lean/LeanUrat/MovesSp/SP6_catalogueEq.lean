@@ -24,8 +24,7 @@ namespace LeanUrat.MovesSp
 catalogue members. -/
 private theorem groupR_subset_catalogue {s : Species} (h : s ∈ groupR) :
     s ∈ catalogue3 := by
-  unfold catalogue3
-  simp only [List.mem_append]
+  simp only [catalogue3, List.mem_append]
   tauto
 
 theorem SnRaw3_eq : ∀ s, InCatalogue 3 s ↔ s ∈ catalogue3 := by

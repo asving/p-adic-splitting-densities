@@ -31,7 +31,7 @@ theorem C3_widthConfine (ν : Node p F) : ν.μ * ν.childWidth ≤ ν.wSide * �
     apply Polynomial.natDegree_sum_le_of_forall_le
     intro k hk
     rw [Finset.mem_range] at hk
-    exact le_trans (Polynomial.natDegree_C_mul_X_pow_le (ν.pat k) k) (by omega)
+    exact (Polynomial.natDegree_C_mul_X_pow_le (ν.pat k) k).trans (by omega)
   -- (ψ^μ).natDegree = μ·g.
   have hpow : (ν.ψ ^ ν.μ).natDegree = ν.μ * ν.g := by
     rw [Polynomial.natDegree_pow, ν.hψdeg]
@@ -40,16 +40,16 @@ theorem C3_widthConfine (ν : Node p F) : ν.μ * ν.childWidth ≤ ν.wSide * �
     have h1 : (ν.ψ ^ ν.μ).natDegree ≤ ν.Ranch.natDegree :=
       Polynomial.natDegree_le_of_dvd ν.hOrd.1 hRne
     rw [hpow] at h1
-    exact le_trans h1 hdegR
+    exact h1.trans hdegR
   -- Multiply by e, cancel using hEdvd (e·(wSide/e) = wSide).
   have hcancel : ν.e * (ν.wSide / ν.e) = ν.wSide := Nat.mul_div_cancel' ν.hEdvd
   have hkey : ν.e * (ν.μ * ν.g) ≤ ν.wSide := by
-    calc ν.e * (ν.μ * ν.g) ≤ ν.e * (ν.wSide / ν.e) := Nat.mul_le_mul (le_refl ν.e) hle
+    calc ν.e * (ν.μ * ν.g) ≤ ν.e * (ν.wSide / ν.e) := Nat.mul_le_mul le_rfl hle
       _ = ν.wSide := hcancel
   -- Finish: multiply by Dwidth (childWidth = e·g·Dwidth definitionally).
   show ν.μ * (ν.e * ν.g * ν.Dwidth) ≤ ν.wSide * ν.Dwidth
   calc ν.μ * (ν.e * ν.g * ν.Dwidth)
       = (ν.e * (ν.μ * ν.g)) * ν.Dwidth := by ring
-    _ ≤ ν.wSide * ν.Dwidth := Nat.mul_le_mul hkey (le_refl ν.Dwidth)
+    _ ≤ ν.wSide * ν.Dwidth := Nat.mul_le_mul hkey le_rfl
 
 end LeanUrat.MovesC

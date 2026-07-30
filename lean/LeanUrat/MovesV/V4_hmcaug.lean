@@ -40,8 +40,8 @@ noncomputable def idRefinementCore {n : ℕ} (S : StepSys n) : RefinementCore n 
 
 @[simp] lemma idRefCore_histFib_toList {n : ℕ} (S : StepSys n) {α : S.Cell} {q₀ : ℚ}
     (x : S.Hist q₀ α) :
-    ((idRefinementCore S).histFib x).toList = [⟨PUnit.unit, x⟩] := by
-  rw [idRefCore_histFib]; exact Finset.toList_singleton _
+    ((idRefinementCore S).histFib x).toList = [⟨PUnit.unit, x⟩] :=
+  Finset.toList_singleton _
 
 @[simp] lemma idRefCore_cellEq_symm {n : ℕ} (S : StepSys n) (α : S.Cell) (b : PUnit) :
     (idRefinementCore S).cellEq.symm ⟨α, b⟩ = α := rfl

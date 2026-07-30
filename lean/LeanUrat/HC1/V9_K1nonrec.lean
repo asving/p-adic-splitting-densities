@@ -221,10 +221,8 @@ private lemma v9_recenter_h_eq {σ σ' : Stage p F} {cc : ↥σ.K} {tt : Polynom
     · exact heq.symm
   have hres : σ.w (σ.Φ - tt) = (σ'.h : ℤ) := by
     have h := σ'.hwΦ
-    rw [hΦ', hw' (σ.Φ - tt)] at h
-    exact h
-  rw [hres] at hkey
-  exact hkey
+    rwa [hΦ', hw' (σ.Φ - tt)] at h
+  rwa [hres] at hkey
 
 /-- **The read steepness, for EVERY read with a predecessor** (the (I-aug) at the read scale):
 `e_i·σ_i.h < h_i` for all `1 ≤ i < len`, whatever the species of `i` — a strong induction over

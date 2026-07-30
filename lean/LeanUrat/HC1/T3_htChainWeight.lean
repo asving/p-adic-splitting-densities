@@ -233,8 +233,7 @@ theorem T3_htChainWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
   have hCpval : (T.stg (Fin.last T.K)).w (C (p : ℤ_[p])) = (T.strTop : ℤ) := by
     have h0 := stretch_chain T (C (p : ℤ_[p])) hCp0 0 h0lt
       (fun mm _ => degC_lt (T.stg mm)) T.K (Nat.zero_le _) (Nat.lt_succ_self _)
-    rw [hw0] at h0
-    rw [hstrAux1] at h0
+    rw [hw0, hstrAux1] at h0
     have he0 : (0 : ℤ) < ((T.stg ⟨0, h0lt⟩).e : ℤ) := by exact_mod_cast (T.stg ⟨0, h0lt⟩).he
     have h0' : ((T.stg ⟨0, h0lt⟩).e : ℤ)
           * (T.stg ⟨T.K, Nat.lt_succ_self T.K⟩).w (C (p : ℤ_[p]))

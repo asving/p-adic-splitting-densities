@@ -23,7 +23,6 @@ theorem xhds_eval_nonneg {n} {S : StepSys n} {TE : TmplEvents n S}
     (0 : ℝ) ≤ ((evalAt q₀ ⟨Xs.Gc γ j, Xs.Gc_ok γ j q₀ hq⟩ : ℚ) : ℝ) := by
   have h1 : (1 : ℝ) < (q₀ : ℝ) := by exact_mod_cast S.pools_gt_one q₀ hq
   refine HasSum.nonneg ?_ (Xs.Gc_hasSum γ j q₀ hq)
-  intro h
-  exact gProd_nonneg X γ h.1 q₀ (by linarith)
+  exact fun h => gProd_nonneg X γ h.1 q₀ (by linarith)
 
 end LeanUrat.MovesV

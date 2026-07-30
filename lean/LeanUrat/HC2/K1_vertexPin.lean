@@ -16,8 +16,9 @@ STRUCTURE (what is proved here / what is the one named residual):
     (U20c, the g = 1 `IsStandardLift` route through `L5_landVertex`).
   - ROOT/INCREMENT parent: `K1_readVertexPin_nonrec` — WIRED (REV 4) to
     `HC1.V9_K1nonrec`; the `e·g ≥ 2` legs close by the V10 inconsistency finding
-    (obstruction item 6 below — read it before consuming), and the ONE remaining
-    sorry is V9's R3c corner (`i = 0 ∧ e·g = 1`), flowing through the wire.
+    (obstruction item 6 below — read it before consuming), and the R3c corner
+    (`i = 0 ∧ e·g = 1`) is now CLOSED in V9 (sorry-free, Lean-core), so the kernel
+    carries no `sorry` — read item 6's ⚠ vacuity/faithfulness caveat first.
 * `K1_NA_transport_root` / `K1_NA_transport_increment` — U20a's/U20b's fenced statements
   VERBATIM (byte-identical conclusions and binders), one-line consumers of the kernel:
   the assigned provers can close the unit files by `exact` against these.
@@ -153,10 +154,11 @@ end K1Helpers
        `i ≥ 1`) hold VACUOUSLY: `ReadsOf` admits NO such instances.  The r3b
        countermodel is disposed of by the same finding (its would-be σ′ cannot
        satisfy `hRΦ`/`hRlt`/`hS5` with `σ′.s = 1, σ′.t = 0`) — and SideReads(iii)
-       is NOT consumed anywhere on the new route.  Remaining `sorry` (in V9, flows
-       here): ONLY the R3c corner `i = 0 ∧ ν.e·ν.g = 1`, whose records are
-       consistent and whose honest g = 1 landing needs StageCore-grade tie laws or
-       the fenced (iii) — full record at V9's REV-4 block.  ⚠ The `HistoryCoherent`
+       is NOT consumed anywhere on the new route.  The R3c corner
+       `i = 0 ∧ ν.e·ν.g = 1` (records consistent; the honest g = 1 landing needed
+       StageCore-grade tie laws or the fenced (iii)) is now CLOSED in V9 (sorry-free,
+       Lean-core; full record at V9's REV-4 block), so the kernel carries no `sorry`.
+       ⚠ The `HistoryCoherent`
        keying itself is a flagged FAITHFULNESS BUG (named sign-off item): genuine
        steep increments are unrecordable, so U20a/U20b/U22-E2 are currently vacuous
        at their intended perimeter.  Never cite this wiring as machine-checked
@@ -169,8 +171,8 @@ parent's line value at the standing vertex base is realized as the frame-(i+1) a
 slot weight of f's development at the vertex slot, and that vertex coefficient is
 nonzero.  WIRED (REV 4) to `HC1.V9_K1nonrec` per the recorded delegation — read
 obstruction item 6 above before consuming: the `e·g ≥ 2` legs close by the V10
-INCONSISTENCY finding (vacuous perimeter), and the R3c corner is the one remaining
-`sorry` (it flows through V9). -/
+INCONSISTENCY finding (vacuous perimeter), and the R3c corner is now CLOSED in V9
+(sorry-free, Lean-core), so this kernel carries no `sorry`. -/
 theorem K1_readVertexPin_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)

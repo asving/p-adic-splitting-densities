@@ -64,9 +64,8 @@ private theorem TYP_fiberCount {m : ℕ} {S : Finset (Fin m)} {α : Type*} [AddC
     rw [hz, hs]
   -- Lagrange + first isomorphism theorem: `#W = #α · #(ker ψ)`
   have hLag : Nat.card W = Nat.card α * Nat.card ψ.ker := by
-    rw [AddSubgroup.card_eq_card_quotient_mul_card_addSubgroup ψ.ker]
-    congr 1
-    exact Nat.card_congr (QuotientAddGroup.quotientKerEquivOfSurjective ψ hψsurj).toEquiv
+    rw [AddSubgroup.card_eq_card_quotient_mul_card_addSubgroup ψ.ker,
+      Nat.card_congr (QuotientAddGroup.quotientKerEquivOfSurjective ψ hψsurj).toEquiv]
   -- the fiber over `v` is equinumerous with the kernel
   have hfib : Nat.card {y : Fin m → ZMod p // T.φ y = v ∧ ∀ c ∉ S, y c = 0}
       = Nat.card ψ.ker := by
@@ -81,9 +80,7 @@ private theorem TYP_fiberCount {m : ℕ} {S : Finset (Fin m)} {α : Type*} [AddC
         left_inv := fun _ => rfl
         right_inv := fun _ => rfl }
     rw [Nat.card_congr e2, Nat.card_congr (AddMonoidHom.fiberEquivKerOfSurjective hψsurj v)]
-  rw [hfib]
-  have key : p ^ S.card = Nat.card α * Nat.card ψ.ker := by rw [← hWcard, hLag]
-  rw [key, mul_comm]
+  rw [hfib, ← hWcard, hLag, mul_comm]
 
 theorem C1_TYP_toClause {m : ℕ} {S : Finset (Fin m)} {α : Type*} [AddCommGroup α] [Fintype α] (T : TypObject p m S α) (v : α) (a : ℕ) (hcard : Nat.card α = p ^ a) : ∃ cl : LevelClause p m, cl.support = S ∧ cl.codim = a ∧ ∀ x : Fin m → ZMod p, cl.sat x ↔ T.φ x = v := by
   refine ⟨{ support := S, codim := a, sat := fun x => T.φ x = v, dep := ?_, count := ?_ }, rfl, rfl, fun x => Iff.rfl⟩

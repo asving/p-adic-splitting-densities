@@ -203,8 +203,7 @@ private lemma wTop_cone (T : Tower p F) (B : Polynomial ℤ_[p]) (hB : B ≠ 0)
     rw [hstg0, (T.stg 0).hStretch B hB hdeg, T.base.1.1 B hB]
   have hstrAux1 : T.strAux (0 + 1) = (T.stg ⟨0, h0lt⟩).e := by
     have h := strAux_succ T 0 h0lt
-    rw [show T.strAux 0 = (1 : ℕ) from rfl, one_mul] at h
-    exact h
+    rwa [show T.strAux 0 = (1 : ℕ) from rfl, one_mul] at h
   rw [hw0, hstrAux1] at h0
   have he0 : (0 : ℤ) < ((T.stg ⟨0, h0lt⟩).e : ℤ) := by
     have := (T.stg ⟨0, h0lt⟩).he; exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one this
@@ -491,8 +490,7 @@ private lemma line_closed (T : Tower p F) (b : ℕ) (γ : ℚ) (c : ↥(T.levelS
     rw [sideW T hprod₁] at h
     have hint : (T.stg (Fin.last T.K)).w (T.digLift y₁ * T.mono ↑c)
         = ⌊(T.strTop : ℚ) * γ⌋ := by exact_mod_cast h
-    rw [(T.stg (Fin.last T.K)).hwmul _ _ hf₁ne hμne, hwK₁, zero_add] at hint
-    exact hint
+    rwa [(T.stg (Fin.last T.K)).hwmul _ _ hf₁ne hμne, hwK₁, zero_add] at hint
   -- the sum of the two classes
   have hge₁ : ((⌊(T.strTop : ℚ) * γ⌋ : ℤ) : WithTop ℤ)
       ≤ T.side.w (T.digLift y₁ * T.mono ↑c) := le_of_eq hw₁.symm
@@ -534,8 +532,7 @@ private lemma line_closed (T : Tower p F) (b : ℕ) (γ : ℚ) (c : ↥(T.levelS
     -- base weight of the sum is ≥ 0
     have hw12ge : 0 ≤ (T.stg 0).w (T.digLift y₁ + T.digLift y₂) := by
       have h := (T.stg 0).hwult _ _ hf₁ne hf₂ne hg₁₂ne
-      rw [hw0₁, hw0₂, min_self] at h
-      exact h
+      rwa [hw0₁, hw0₂, min_self] at h
     -- it must be EXACTLY 0, else the top weight exceeds m
     have hw12 : (T.stg 0).w (T.digLift y₁ + T.digLift y₂) = 0 := by
       by_contra hne0
@@ -579,15 +576,13 @@ private lemma line_closed (T : Tower p F) (b : ℕ) (γ : ℚ) (c : ↥(T.levelS
     -- the carry dies in the piece
     by_cases hcarry : T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂) = 0
     · -- no carry at all: the lifts agree on the nose
-      have hgeq : T.digLift y₁ + T.digLift y₂ = T.digLift (y₁ + y₂) := by
-        have := sub_eq_zero.mp hcarry; exact this
+      have hgeq : T.digLift y₁ + T.digLift y₂ = T.digLift (y₁ + y₂) := sub_eq_zero.mp hcarry
       rw [slot_eval, hgeq]
     · -- carry ≠ 0: it has base weight ≥ 1, so its top weight exceeds m
       have hcw0 : 0 ≤ (T.stg 0).w (T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂)) := by
         have hnegne : -(T.digLift (y₁ + y₂)) ≠ 0 := neg_ne_zero.mpr hf₁₂ne
         have h := (T.stg 0).hwult _ _ hg₁₂ne hnegne (by rwa [← sub_eq_add_neg])
-        rw [stage0_w_neg T _ hf₁₂ne, hw12, hw0₁₂, min_self, ← sub_eq_add_neg] at h
-        exact h
+        rwa [stage0_w_neg T _ hf₁₂ne, hw12, hw0₁₂, min_self, ← sub_eq_add_neg] at h
       have hadd_sub : T.digLift (y₁ + y₂)
           + (T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂))
           = T.digLift y₁ + T.digLift y₂ := by ring

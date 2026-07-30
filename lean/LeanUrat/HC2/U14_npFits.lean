@@ -70,7 +70,7 @@ private lemma boxInv {n : ℕ} (P : Shape n) :
     have s1 : (((P : ShapePrefix).reads[k+1]'hr).s0 + ((P : ShapePrefix).reads[k+1]'hr).wSide)
           * ((P : ShapePrefix).reads[k]'hk).childWidthS
         ≤ ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS :=
-      Nat.mul_le_mul hwin (le_refl _)
+      Nat.mul_le_mul hwin le_rfl
     -- μ_k * childWidthS_k ≤ wSide_k * Dwidth_k
     have s2 : ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS
         ≤ ((P : ShapePrefix).reads[k]'hk).wSide * ((P : ShapePrefix).reads[k]'hk).Dwidth := by
@@ -84,15 +84,15 @@ private lemma boxInv {n : ℕ} (P : Shape n) :
         calc ((P : ShapePrefix).reads[k]'hk).e
                 * (((P : ShapePrefix).reads[k]'hk).g * ((P : ShapePrefix).reads[k]'hk).μ)
               ≤ ((P : ShapePrefix).reads[k]'hk).e * ((P : ShapePrefix).reads[k]'hk).len :=
-                Nat.mul_le_mul (le_refl _) hgmu
+                Nat.mul_le_mul le_rfl hgmu
           _ = ((P : ShapePrefix).reads[k]'hk).wSide := hlen
       rw [e1]
-      exact Nat.mul_le_mul e2 (le_refl _)
+      exact Nat.mul_le_mul e2 le_rfl
     -- wSide_k * Dwidth_k ≤ (s0_k + wSide_k) * Dwidth_k
     have s3 : ((P : ShapePrefix).reads[k]'hk).wSide * ((P : ShapePrefix).reads[k]'hk).Dwidth
         ≤ (((P : ShapePrefix).reads[k]'hk).s0 + ((P : ShapePrefix).reads[k]'hk).wSide)
             * ((P : ShapePrefix).reads[k]'hk).Dwidth :=
-      Nat.mul_le_mul (Nat.le_add_left _ _) (le_refl _)
+      Nat.mul_le_mul (Nat.le_add_left _ _) le_rfl
     exact le_trans s1 (le_trans s2 (le_trans s3 ihk))
 
 /-- The rim threshold `μ_k · childWidthS_k` fits the box. -/
@@ -121,15 +121,15 @@ private lemma muWidth_le {n : ℕ} (P : Shape n) (k : ℕ)
     calc ((P : ShapePrefix).reads[k]'hk).e
             * (((P : ShapePrefix).reads[k]'hk).g * ((P : ShapePrefix).reads[k]'hk).μ)
           ≤ ((P : ShapePrefix).reads[k]'hk).e * ((P : ShapePrefix).reads[k]'hk).len :=
-            Nat.mul_le_mul (le_refl _) hgmu
+            Nat.mul_le_mul le_rfl hgmu
       _ = ((P : ShapePrefix).reads[k]'hk).wSide := hlen
   have s2 : ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS
       ≤ ((P : ShapePrefix).reads[k]'hk).wSide * ((P : ShapePrefix).reads[k]'hk).Dwidth := by
-    rw [e1]; exact Nat.mul_le_mul e2 (le_refl _)
+    rw [e1]; exact Nat.mul_le_mul e2 le_rfl
   have s3 : ((P : ShapePrefix).reads[k]'hk).wSide * ((P : ShapePrefix).reads[k]'hk).Dwidth
       ≤ (((P : ShapePrefix).reads[k]'hk).s0 + ((P : ShapePrefix).reads[k]'hk).wSide)
           * ((P : ShapePrefix).reads[k]'hk).Dwidth :=
-    Nat.mul_le_mul (Nat.le_add_left _ _) (le_refl _)
+    Nat.mul_le_mul (Nat.le_add_left _ _) le_rfl
   exact le_trans s2 (le_trans s3 hbox)
 
 /-- Every rim threshold sits inside the degree-`n` box (`prevRimS n i ≤ n`). -/

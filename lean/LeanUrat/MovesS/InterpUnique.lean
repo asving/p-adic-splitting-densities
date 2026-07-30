@@ -23,14 +23,12 @@ theorem interp_unique (S : Set ℚ) (hS : S.Infinite) (f g : Qq)
   refine ratfunc_eval_infinite _ S hS ?_ ?_
   · -- denominator regular on `S`: `f - g ∈ OKat x`
     intro x hx
-    have hmem : f - g ∈ OKat x := (OKat x).sub_mem (hf x hx) (hg x hx)
-    exact mem_OKat_iff.mp hmem
+    exact mem_OKat_iff.mp ((OKat x).sub_mem (hf x hx) (hg x hx))
   · -- the value `(f - g)(x) = 0`, via the ring hom `evalAt x`
     intro x hx
     have hmem : f - g ∈ OKat x := (OKat x).sub_mem (hf x hx) (hg x hx)
-    have hsplit : (⟨f - g, hmem⟩ : OKat x) = ⟨f, hf x hx⟩ - ⟨g, hg x hx⟩ := by
-      apply Subtype.ext
-      simp
+    have hsplit : (⟨f - g, hmem⟩ : OKat x) = ⟨f, hf x hx⟩ - ⟨g, hg x hx⟩ :=
+      Subtype.ext (by simp)
     have key : evalAt x ⟨f - g, hmem⟩ = 0 := by
       rw [hsplit, map_sub, h x hx, sub_self]
     exact key

@@ -256,9 +256,7 @@ private lemma w_Phat (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 :
       · rw [htt0 k hcoef, Polynomial.degree_zero]; exact hΦdegbot
       · obtain ⟨-, hinC, -, -⟩ := httk k hklt hcoef
         exact hinC
-  have hw1 : σ.w 1 = 0 := by
-    have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-    rw [one_mul] at h; omega
+  have hw1 : σ.w 1 = 0 := w_one σ
   have hsum : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
       = (∑ k ∈ Finset.range g, tt k * σ.Φ ^ (σ.e * k)) + σ.Φ ^ (σ.e * g) := by
     have step1 : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
@@ -321,7 +319,7 @@ private lemma w_Phat (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 :
     · intro h
       exact absurd (Finset.mem_range.mpr (by omega : k₀ < g + 1)) h
   rw [hj₀eq]
-  show σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
+  change σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
   rw [hBval, hcond, σ.hwΦ]
   by_cases hk₀g : k₀ = g
   · rw [hk₀g, hccg, hw1]

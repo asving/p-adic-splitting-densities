@@ -20,7 +20,7 @@ variable (p : ℕ) [hp : Fact p.Prime]
     relation `k` times: `x ^ a ^ (k+1) = (x ^ a ^ k) ^ a = x ^ a = x`). -/
 private lemma pow_pow_eq_self {M : Type*} [Monoid M] {x : M} {a : ℕ} (hx : x ^ a = x) :
     ∀ k : ℕ, x ^ (a ^ k) = x
-  | 0 => by simp
+  | 0 => by rw [pow_zero, pow_one]
   | k + 1 => by rw [pow_succ, pow_mul, pow_pow_eq_self hx k, hx]
 
 /-- U2: `F_d ≤ F_m` for `d ∣ m` — the subfield-lattice nesting. -/

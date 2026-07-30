@@ -18,8 +18,7 @@ theorem pow_entry_tendsto {ι : Type*} [Fintype ι] [DecidableEq ι]
   -- Upper bound: the i-th coordinate of `(A^k) *ᵥ 1`, which escapes to 0.
   have hesc : Filter.Tendsto (fun k => ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) i)
       Filter.atTop (nhds 0) := by
-    have := (tendsto_pi_nhds.mp h.escape) i
-    simpa using this
+    simpa using (tendsto_pi_nhds.mp h.escape) i
   -- Squeeze `(A^k) i j` between the constant `0` and that escaping coordinate.
   refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hesc ?_ ?_
   · intro k

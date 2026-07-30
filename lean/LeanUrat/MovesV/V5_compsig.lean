@@ -91,7 +91,6 @@ theorem comp_sigma_hasSum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   have hlvl : cc.ιN ε β₀ q₀ (compLvl V TE ε γ)
       = iotaEps cc ε β₀ q₀ :=
     hstab ε β₀ q₀ hq (compLvl V TE ε γ) (le_max_left _ _)
-  rw [hlvl, comp_sigma cc P X U Xs hTie hHMC ε β₀ γ hq] at hsum
-  exact hsum
+  rwa [hlvl, comp_sigma cc P X U Xs hTie hHMC ε β₀ γ hq] at hsum
 
 end LeanUrat.MovesV

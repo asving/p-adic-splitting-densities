@@ -32,9 +32,7 @@ private lemma rank_lt_of_high {n : ℕ} {s s' : Species}
     rankNat n s < rankNat n s' := by
   have hlow : (n - s.W) * 2 + fullBit s < 2 * n := by omega
   have key : ((s.D - 1) * 3 + tagord s.tag + 1) * n
-      ≤ ((s'.D - 1) * 3 + tagord s'.tag) * n := by
-    have h1 : (s.D - 1) * 3 + tagord s.tag + 1 ≤ (s'.D - 1) * 3 + tagord s'.tag := by omega
-    exact Nat.mul_le_mul h1 (le_refl n)
+      ≤ ((s'.D - 1) * 3 + tagord s'.tag) * n := Nat.mul_le_mul (by omega) le_rfl
   unfold rankNat
   nlinarith [hlow, key, Nat.zero_le (n - s'.W), Nat.zero_le (fullBit s')]
 

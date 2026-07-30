@@ -156,7 +156,7 @@ private noncomputable instance gcmonI : GradedMonoid.GCommMonoid (fun γ => S.gr
 
 private noncomputable instance gsrI : DirectSum.GSemiring (fun γ => S.grPiece γ) where
   natCast n := n • (GradedMonoid.GOne.one : S.grPiece 0)
-  natCast_zero := by simp
+  natCast_zero := zero_nsmul _
   natCast_succ n := succ_nsmul _ n
 
 private noncomputable instance gcsrI : DirectSum.GCommSemiring (fun γ => S.grPiece γ) where

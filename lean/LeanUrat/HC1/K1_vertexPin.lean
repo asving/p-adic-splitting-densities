@@ -108,9 +108,8 @@ theorem K1_frameVertexDigit (σ : Stage p F) {ψ : Polynomial ↥σ.K} {g : ℕ}
           LaurentPolynomial.eval₂ σ.K.subtype zbar q := by
   have hzbar : Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0 := by
     have h := th.hroot
-    rw [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
+    rwa [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
       RingHom.id_comp] at h
-    exact h
   exact L5_landVertexDigit σ ψ g th.hdeg th.hmonic th.hirr th.hne_z Φhat th.hlift
     zbar hzbar f hf μ a Ranch hanch hord B N hdev
 
@@ -246,7 +245,7 @@ private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
   have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
   rw [mul_one] at h
   have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
-  exact (mul_left_cancel₀ hne (by rw [mul_one]; exact h)).symm
+  exact (mul_left_cancel₀ hne (by rwa [mul_one])).symm
 
 private lemma R_pow' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
     σ.R (x ^ n) = σ.R x ^ n := by
@@ -615,7 +614,7 @@ theorem K1_tvecUnitLaw_of_pin (σ σ' : Stage p F) (hσ : StageCoreL σ)
     (pin : VertexPin σ σ' Φhat zbar) (hΦin : inC Φhat σ.Φ) :
     TvecUnitLaw σ' := by
   classical
-  obtain ⟨hC, hA, hB⟩ := parent_tvec_identities σ hσ
+  obtain ⟨hC, _, _⟩ := parent_tvec_identities σ hσ
   -- entry facts for the child T-vector
   have hmem' : ∀ x ∈ σ'.Tvec, x.1 ≠ 0 ∧ inC Φhat x.1 := by
     intro x hx
@@ -759,7 +758,7 @@ theorem K1_coeffLocC_of_pin (σ σ' : Stage p F) (hσ : StageCoreL σ)
       σ'.lvecWeight zv = 0 ∧ IsLVecVal σ' zv u ∧
       (u : LTwo ↥σ'.K) = LaurentPolynomial.C (zvar ↥σ'.K) := by
   classical
-  obtain ⟨hC, hA, hB⟩ := parent_tvec_identities σ hσ
+  obtain ⟨hC, _, _⟩ := parent_tvec_identities σ hσ
   have hlenT : σ.Tvec.length = σ.reps.length := by
     have h := congrArg List.length σ.hTvec
     rwa [List.length_map] at h

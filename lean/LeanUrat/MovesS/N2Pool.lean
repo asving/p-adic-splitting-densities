@@ -139,6 +139,6 @@ noncomputable def n2P2 : PoolHyp n2T n2M n2RB 2 (n2hK 2 (by decide)) 2 where
 
 theorem n2_pool :
     (∀ τA βA : n2P2.Act, n2P2.A τA βA = 1 / 8) ∧ n2P2.Act = Finset.univ :=
-  ⟨fun τA βA => n2A_val (n2hK 2 (by decide)) τA βA, rfl⟩
+  ⟨n2A_val (n2hK 2 (by decide)), rfl⟩
 
 end LeanUrat.MovesS

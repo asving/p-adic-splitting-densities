@@ -168,9 +168,8 @@ theorem V8_digitUnit (σ : Stage p F)
       ((c' : ↥(σ.nextField zbar)) : F) = σ.digPrime zbar B := by
   have hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0 := by
     have h := th.hroot
-    rw [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
+    rwa [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
       RingHom.id_comp] at h
-    exact h
   have hmem : σ.digPrime zbar B ∈ σ.nextField zbar :=
     V8_eval₂_mem_nextField σ zbar (σ.R B)
   have hne : σ.digPrime zbar B ≠ 0 :=
@@ -1894,8 +1893,7 @@ theorem V8c_wStrict (σ : Stage p F) (hσ : StageCoreL σ)
     intro B hB
     have hn1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
     have h2 := σ.hwmul (-1) B hn1 hB
-    rw [neg_one_mul, hwneg1, zero_add] at h2
-    exact h2
+    rwa [neg_one_mul, hwneg1, zero_add] at h2
   -- ## childW negation invariance (slotwise: the negated development has the same slot data)
   have hwnegC : ∀ x : Polynomial ℤ_[p], x ≠ 0 →
       childW σ Φhat e' h' (-x) = childW σ Φhat e' h' x := by
@@ -2051,9 +2049,8 @@ theorem V8a_carrierAdditive (σ : Stage p F) (hσ : StageCoreL σ)
   classical
   have hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0 := by
     have h := th.hroot
-    rw [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
+    rwa [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
       RingHom.id_comp] at h
-    exact h
   obtain ⟨hmonΦ, hΦdeg⟩ := L3_liftMonic σ ψ g th.hg Φhat th.hlift
   have hd1 : 1 ≤ Φhat.natDegree := by
     rw [hΦdeg]
@@ -2092,9 +2089,8 @@ theorem V8b_carrierLaws (σ : Stage p F) (hσ : StageCoreL σ)
   classical
   have hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0 := by
     have h := th.hroot
-    rw [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
+    rwa [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
       RingHom.id_comp] at h
-    exact h
   obtain ⟨hmonΦ, hΦdeg⟩ := L3_liftMonic σ ψ g th.hg Φhat th.hlift
   have hd1 : 1 ≤ Φhat.natDegree := by
     rw [hΦdeg]

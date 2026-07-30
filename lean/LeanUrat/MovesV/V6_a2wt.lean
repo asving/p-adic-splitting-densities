@@ -29,6 +29,6 @@ theorem A2_display_identity (h : Hpt 2) :
 
 /-- (c) TA2 = (X−1)² evaluations + the one-letter PART-1 row. -/
 theorem TA2_evals : TA2.eval 2 = 1 ∧ TA2.eval 3 = 4 ∧ TA2.eval 13 = 144 := by
-  refine ⟨?_, ?_, ?_⟩ <;> (simp [TA2]; try norm_num)
+  refine ⟨?_, ?_, ?_⟩ <;> norm_num [TA2]
 
 end LeanUrat.MovesV

@@ -60,8 +60,7 @@ theorem e0_inv_nonneg {ι : Type*} [Fintype ι] [DecidableEq ι]
           = (fun k => (1 - A)⁻¹ i j - ((1 - A)⁻¹ * A ^ k) i j) := by
         funext k; rw [key k, Matrix.sub_apply]
       rw [heq2]
-      have := hT.const_sub ((1 - A)⁻¹ i j)
-      simpa only [sub_zero] using this
+      simpa only [sub_zero] using hT.const_sub ((1 - A)⁻¹ i j)
     exact ge_of_tendsto' hg_lim hg_nonneg
   · -- Non-invertible case: the inverse is the zero matrix by convention.
     rw [Matrix.nonsing_inv_apply_not_isUnit (1 - A) hu, Matrix.zero_apply]

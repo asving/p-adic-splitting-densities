@@ -15,7 +15,7 @@ corpus, grep-confirmed corpus-wide at F-6). GAINS `hd4 : RootD4 H` (Defs N-5 add
 conjuncts suffice): root `Dwidth = 1` (hroot + hDwidth) and `STR = 1` give `slope = h/e`,
 so `1 ≤ slope` IS D.4's "every side slope ≥ 1"; every interior base `b < μ·childWidth`
 sits at least one step left of the vertex base, whence `line.at b ≥ ustar + slope ≥ 1`
-by `hLineU`. Proof queued for the fleet round; the Shape-side alternative was REJECTED
+by `hLineU`. Proof LANDED below (in-body sorry-free); the Shape-side alternative was REJECTED
 (frozen MovesD Defs; silent shape-universe shrink).
 -/
 import Mathlib

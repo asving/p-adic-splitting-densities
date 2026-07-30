@@ -35,8 +35,7 @@ theorem ksub_regroup {T : TableShape n} {M : MeasuredSide T} (RB : RatBurdens T 
       = ∑ o : T.Out e τ, (if routeOf (T.odata e τ o) = .kcol then RB.TG e τ o else 0) := by
     simp only [Kmat]
     rw [Finset.sum_comm]
-    apply Finset.sum_congr rfl
-    intro o _
+    refine Finset.sum_congr rfl (fun o _ => ?_)
     by_cases hk : routeOf (T.odata e τ o) = .kcol
     · rw [if_pos hk,
         Finset.sum_congr rfl (fun β (_ : β ∈ (Finset.univ : Finset (T.State e))) => dif_pos hk),
@@ -50,8 +49,7 @@ theorem ksub_regroup {T : TableShape n} {M : MeasuredSide T} (RB : RatBurdens T 
       = ∑ o : T.Out e τ, (if routeOf (T.odata e τ o) = .termFin then RB.TG e τ o else 0) := by
     simp only [bTerm]
     rw [Finset.sum_comm]
-    apply Finset.sum_congr rfl
-    intro o _
+    refine Finset.sum_congr rfl (fun o _ => ?_)
     by_cases ht : routeOf (T.odata e τ o) = .termFin
     · have hmem : (T.odata e τ o).verdicts ∈ verdictImage T e τ := by
         rw [verdictImage]
@@ -74,8 +72,7 @@ theorem ksub_regroup {T : TableShape n} {M : MeasuredSide T} (RB : RatBurdens T 
     simp only [splitOuts, Set.toFinset_setOf, Finset.sum_filter]
   -- Combine: route dispatch is exhaustive and exclusive, so per outcome the summands agree.
   rw [h1, h2, h3, ← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
-  apply Finset.sum_congr rfl
-  intro o _
+  refine Finset.sum_congr rfl (fun o _ => ?_)
   simp only [routedMass]
   cases hr : routeOf (T.odata e τ o) <;> simp
 

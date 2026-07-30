@@ -94,8 +94,7 @@ private theorem n2_bTerm12 :
     exact absurd hv (by intro h; simpa using congrArg Multiset.card h)
   have c2 : routeOf (n2T.odata 2 n2τ (2 : Fin 3)) = .termFin ∧
       (n2T.odata 2 n2τ (2 : Fin 3)).verdicts = {n2v12} := ⟨h2, v2⟩
-  rw [if_neg c0, if_neg c1, if_pos c2, t2]
-  simp
+  rw [if_neg c0, if_neg c1, if_pos c2, t2, zero_add, zero_add]
 
 /-- b_2^{term,fin}({(1,1),(1,1)}) = 1 − q⁻¹. -/
 private theorem n2_bTerm11 :
@@ -121,8 +120,7 @@ private theorem n2_bTerm11 :
       (n2T.odata 2 n2τ (2 : Fin 3)).verdicts = {n2v11, n2v11}) := by
     rw [v2]; rintro ⟨_, hv⟩
     exact absurd hv (by intro h; simpa using congrArg Multiset.card h)
-  rw [if_neg c0, if_pos c1, if_neg c2, t1]
-  simp
+  rw [if_neg c0, if_pos c1, if_neg c2, t1, zero_add, add_zero]
 
 /-- The split exit vector vanishes at block 2 (no split outcomes). -/
 private theorem n2_bSplit_zero (he : 2 ∈ Finset.Icc 1 2)

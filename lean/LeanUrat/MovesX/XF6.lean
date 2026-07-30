@@ -52,9 +52,8 @@ private lemma xf6_ultra {p : ℕ} [Fact p.Prime] {g : Polynomial ℚ_[p]} (V : V
     rw [h1, V.ext]
     exact_mod_cast (PadicInt.norm_le_one ((k : ℤ_[p])))
   have hmax := IsUltrametricDist.norm_add_le_max (e.symm x) (- e.symm y)
-  rw [show e.symm x + - e.symm y = e.symm (x - y) by rw [← sub_eq_add_neg, ← map_sub],
+  rwa [show e.symm x + - e.symm y = e.symm (x - y) by rw [← sub_eq_add_neg, ← map_sub],
       norm_neg, hnorm, hnorm, hnorm] at hmax
-  exact hmax
 
 /-- The tail `∑ᵢ C(aᵢ)Xⁱ` of `polyOfCoeffs` has degree `< n`. -/
 private lemma xf6_deglt (n : ℕ) (hn : 1 ≤ n) {p : ℕ} [Fact p.Prime] (a : Fin n → ℤ_[p]) :

@@ -87,11 +87,11 @@ private theorem okat_inv {q₀ : ℚ} {f : Qq} (hf : f ∈ OKat q₀)
     exact hne (by rw [show (⟨(0 : Qq), hf⟩ : OKat q₀) = 0 from Subtype.ext rfl]
                   exact map_zero _)
   have hdmem : algebraMap (Polynomial ℚ) Qq f.denom ∈ OKat q₀ := by
-    rw [mem_OKat_iff, RatFunc.denom_algebraMap]
-    simp
+    rw [mem_OKat_iff, RatFunc.denom_algebraMap, Polynomial.eval_one]
+    exact one_ne_zero
   have hnmem : algebraMap (Polynomial ℚ) Qq f.num ∈ OKat q₀ := by
-    rw [mem_OKat_iff, RatFunc.denom_algebraMap]
-    simp
+    rw [mem_OKat_iff, RatFunc.denom_algebraMap, Polynomial.eval_one]
+    exact one_ne_zero
   have hd0 : algebraMap (Polynomial ℚ) Qq f.denom ≠ 0 :=
     RatFunc.algebraMap_ne_zero (RatFunc.denom_ne_zero f)
   have hmul : f * algebraMap (Polynomial ℚ) Qq f.denom

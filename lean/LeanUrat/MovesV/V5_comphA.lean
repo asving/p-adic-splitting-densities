@@ -127,7 +127,7 @@ theorem comp_h_one {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       cc.μhatN ε β₀ (.last mv) h q₀ N
         = cc.ιN ε β₀ q₀ N * (((tblOf V mv).eval q₀ : ℚ) : ℝ) * X.g mv h q₀ := by
   intro N hN
-  simpa [pathProdPoly, gProd, XHDw.g] using
+  simpa only [pathProdPoly, gProd, XHDw.g] using
     hcp ε β₀ (.last mv) h hq N hN
 
 end LeanUrat.MovesV

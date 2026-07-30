@@ -155,8 +155,8 @@ theorem chain_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
       L.parentSt H₁ = .red g ψ) :
     Nat.card ↥(stateEvent T (some H))
         * p ^ ((chainReads Tr H).map (L.siteExp ·)).sum
-      = Nat.card ↥(rootCell χ g) := by
-  exact chain_charge_aux Tr T CA χ L g ψ H.nodes.length H rfl hH hone hent
+      = Nat.card ↥(rootCell χ g) :=
+  chain_charge_aux Tr T CA χ L g ψ H.nodes.length H rfl hH hone hent
 
 /-- H's own read is a member, so the last-read index is well-defined on chains. -/
 theorem chainReads_ne (Tr : VTree p F) (H : History p F) (hH : H ∈ Tr.chains) :

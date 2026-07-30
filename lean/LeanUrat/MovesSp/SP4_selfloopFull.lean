@@ -31,9 +31,8 @@ theorem selfloop_isFull {n : ℕ} {s : Species} (hc : Coherent s)
     have hgmem : (g, μ) ∈ s.lam := hselmem (g, μ) hsel
     have hg1 : 1 ≤ g := (hlampos (g, μ) hgmem).1
     -- D = (e·g)·D with D ≥ 1 forces e·g = 1, hence e = 1 and g = 1.
-    have hk : s.e * g = 1 := by
-      have h1 : s.e * g * s.D = 1 * s.D := by rw [one_mul]; exact hDeq.symm
-      exact Nat.eq_of_mul_eq_mul_right hD1 h1
+    have hk : s.e * g = 1 :=
+      Nat.eq_of_mul_eq_mul_right hD1 (by rw [one_mul, ← hDeq])
     have he' : s.e = 1 := Nat.eq_one_of_mul_eq_one_right hk
     have hg' : g = 1 := Nat.eq_one_of_mul_eq_one_left hk
     refine ⟨?_, htagRec.mpr ⟨he', hg'⟩⟩

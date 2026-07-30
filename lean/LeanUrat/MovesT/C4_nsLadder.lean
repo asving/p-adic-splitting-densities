@@ -24,9 +24,7 @@ theorem ns_ladder {ι : Type*} [Preorder ι] (Zcard lower : ι → ℕ)
     (hlad : ∀ k, lower k ≤ Zcard k)
     (hgrow : Filter.Tendsto lower Filter.atTop Filter.atTop) :
     Filter.Tendsto (fun k => (p : ℝ) ^ (-(Zcard k : ℤ))) Filter.atTop (nhds 0) := by
-  have hp : (1 : ℝ) < (p : ℝ) := by
-    have := (Fact.out : p.Prime).two_le
-    exact_mod_cast Nat.lt_of_lt_of_le Nat.one_lt_two this
+  have hp : (1 : ℝ) < (p : ℝ) := by exact_mod_cast (Fact.out : p.Prime).one_lt
   have hZ : Filter.Tendsto Zcard Filter.atTop Filter.atTop :=
     Filter.tendsto_atTop_mono hlad hgrow
   have hpow : Filter.Tendsto (fun j : ℕ => (p : ℝ) ^ j) Filter.atTop Filter.atTop :=

@@ -55,8 +55,7 @@ theorem comp_hsum {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       unfold gcVal
       refine Finset.sum_congr rfl (fun j _ => ?_)
       rw [dif_pos (Xs.Gc_ok γ j q₀ hqS)]
-    rw [hval] at H
-    exact H
+    rwa [hval] at H
   have hmul := hkey.mul_left
     (cc.ιN ε β₀ q₀ (compLvl V TE ε γ)
       * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ))

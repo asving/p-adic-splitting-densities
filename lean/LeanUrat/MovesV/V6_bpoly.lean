@@ -20,10 +20,9 @@ theorem blk2_degrees : Tsplit.natDegree ≤ 2 ∧ Tinert.natDegree ≤ 2 ∧
     simp only [Tsplit, Tinert, Tdbl, Tw2, Tvv] <;> compute_degree <;> norm_num
 
 theorem tw2_tvv : Tw2 = Tdbl ∧ Tvv = Tdbl ^ 2 := by
-  constructor
-  · rfl
-  · apply Polynomial.funext
-    intro x
-    simp [Tvv, Tdbl]
+  refine ⟨rfl, ?_⟩
+  apply Polynomial.funext
+  intro x
+  simp [Tvv, Tdbl]
 
 end LeanUrat.MovesV

@@ -27,10 +27,7 @@ theorem readsOf_realizable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
   -- `TransitionAdmissible` is the (NA)∧(HV)∧(SAE₁)∧(SAE₂) four-tuple.  Assemble it from
   -- U20 (NA), U21 (HV), U22 (SAE, both conjuncts) over the standing pair (blueprint §5 D).
   intro i hi
-  refine ⟨fun hna => ?_, fun hadj => ?_, ?_, ?_⟩
-  · exact readsOf_NA h i hi hna
-  · exact readsOf_HV h i hi hadj
-  · exact (readsOf_SAE h i hi).1
-  · exact (readsOf_SAE h i hi).2
+  exact ⟨readsOf_NA h i hi, readsOf_HV h i hi,
+    (readsOf_SAE h i hi).1, (readsOf_SAE h i hi).2⟩
 
 end LeanUrat.MovesJ

@@ -26,14 +26,10 @@ noncomputable def witS : StepSys 1 where
   Pools := {(2 : ℚ)}
   pools_ne := ⟨2, rfl⟩
   pools_pp := by
-    intro q₀ hq
-    rw [Set.mem_singleton_iff] at hq
-    subst hq
+    rintro q₀ rfl
     exact ⟨2, 1, Nat.prime_two, one_pos, by norm_num⟩
   pools_gt_one := by
-    intro q₀ hq
-    rw [Set.mem_singleton_iff] at hq
-    subst hq
+    rintro q₀ rfl
     norm_num
   Hist := fun _ _ => Unit
   hist_ne := fun _ _ _ => ⟨()⟩

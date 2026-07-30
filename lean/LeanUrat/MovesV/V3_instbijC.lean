@@ -65,9 +65,7 @@ private theorem writeHeights?_fields {n : ℕ} {εT : EntTemplate n}
   rw [writeHeights?] at hw
   cases hP : shapeOfSlots? n (expandRuns n εT.word (εT.depthSlots h))
       (εT.pairSlots h) with
-  | none =>
-    rw [hP] at hw
-    simp at hw
+  | none => simp [hP] at hw
   | some P =>
     rw [hP] at hw
     simp only [Option.bind_some] at hw

@@ -22,7 +22,6 @@ theorem C3_vtxPolyNe {K : Type*} [Field K] (ψ Ranch : Polynomial K) (μ : ℕ) 
     rw [hmod0, zero_add] at h
     exact h.symm
   -- hzero : (Ranch /ₘ ψ^μ) %ₘ ψ = 0 ⇒ ψ ∣ (Ranch /ₘ ψ^μ).
-  have hdvd : ψ ∣ (Ranch /ₘ ψ ^ μ) := (modByMonic_eq_zero_iff_dvd hmonic).mp hzero
-  obtain ⟨e, he⟩ := hdvd
+  obtain ⟨e, he⟩ := (modByMonic_eq_zero_iff_dvd hmonic).mp hzero
   -- Then ψ^{μ+1} ∣ Ranch, contradicting hord.2.
   exact hord.2 ⟨e, by rw [hRanch, he, pow_succ]; ring⟩

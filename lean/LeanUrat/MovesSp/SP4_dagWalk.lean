@@ -36,12 +36,9 @@ it is `Nodup`, and its `toFinset` embeds into `range B`. -/
 private theorem length_le_of_chain'_lt {B : ℕ} {L : List ℕ}
     (hchain : L.IsChain (· < ·)) (hbound : ∀ x ∈ L, x < B) : L.length ≤ B := by
   have hpair : L.Pairwise (· < ·) := List.isChain_iff_pairwise.mp hchain
-  have hnodup : L.Nodup := hpair.imp (fun h => Nat.ne_of_lt h)
-  have hsub : L.toFinset ⊆ Finset.range B := by
-    intro x hx
-    rw [List.mem_toFinset] at hx
-    rw [Finset.mem_range]
-    exact hbound x hx
+  have hnodup : L.Nodup := hpair.imp Nat.ne_of_lt
+  have hsub : L.toFinset ⊆ Finset.range B :=
+    fun x hx => Finset.mem_range.mpr (hbound x (List.mem_toFinset.mp hx))
   calc L.length = L.toFinset.card := (List.toFinset_card_of_nodup hnodup).symm
     _ ≤ (Finset.range B).card := Finset.card_le_card hsub
     _ = B := Finset.card_range B

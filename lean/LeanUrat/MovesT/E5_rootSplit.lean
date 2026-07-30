@@ -85,21 +85,15 @@ theorem rootSplit_exists (Tr : VTree p F) (T : TreeModel p F n N m pol)
       rintro H ⟨_, hHi⟩ ⟨_, hHj⟩
       apply hij
       have hv : ((e.symm i : { x // x ∈ HFin }) : Node p F)
-          = ((e.symm j : { x // x ∈ HFin }) : Node p F) := by
-        have := hHi.symm.trans hHj
-        exact Option.some.inj this
-      have : e.symm i = e.symm j := Subtype.ext hv
-      exact e.symm.injective this
+          = ((e.symm j : { x // x ∈ HFin }) : Node p F) :=
+        Option.some.inj (hHi.symm.trans hHj)
+      exact e.symm.injective (Subtype.ext hv)
   · intro i H hH
     exact hH.2
   · intro i j hij
-    have : e.symm i = e.symm j := Subtype.ext hij
-    exact e.symm.injective this
+    exact e.symm.injective (Subtype.ext hij)
   · intro i
-    have hmem : ((e.symm i : { x // x ∈ HFin }) : Node p F) ∈ Heads :=
-      hfinH.mem_toFinset.mp (e.symm i).2
-    obtain ⟨H, hH, hhd⟩ := hmem
-    exact ⟨H, hH, hhd⟩
+    exact hfinH.mem_toFinset.mp (e.symm i).2
   · intro i
     have hmem : ((e.symm i : { x // x ∈ HFin }) : Node p F) ∈ Heads :=
       hfinH.mem_toFinset.mp (e.symm i).2

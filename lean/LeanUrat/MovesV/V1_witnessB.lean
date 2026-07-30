@@ -170,8 +170,7 @@ noncomputable def witXs : XHDs 1 witS witXHDw witD where
     rw [witS_gProd_one γ (fun _ => 0) q₀] at key
     have hval : ((evalAt q₀ ⟨(1 : Qq), one_mem _⟩ : ℚ) : ℝ) = 1 := by
       rw [evalAt_one]; norm_num
-    rw [show ((evalAt q₀ ⟨(1 : Qq), one_mem _⟩ : ℚ) : ℝ) = 1 from hval]
-    exact key
+    rw [hval]; exact key
 
 theorem xhdds_realized :
     ∃ (S : StepSys 1) (TE : TmplEvents 1 S) (D : XHDd 1 S TE)

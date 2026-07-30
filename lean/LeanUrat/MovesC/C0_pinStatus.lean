@@ -54,7 +54,7 @@ private theorem mkSol_agree_below {m : ℕ} {α : Type*} (D : DigitSystem m α) 
       have harg : (fun (k : Fin m) (_ : k < i) => mkSol D f1 k)
           = (fun (k : Fin m) (_ : k < i) => mkSol D f2 k) := by
         funext k hk
-        exact mkSol_agree_below D f1 f2 j hf k (lt_trans hk hi)
+        exact mkSol_agree_below D f1 f2 j hf k (hk.trans hi)
       rw [harg]
     · rw [if_neg hp, if_neg hp]
       exact hf i hi
@@ -82,7 +82,7 @@ private theorem pinnedIffDet {m : ℕ} {α : Type*} [Nontrivial α] (D : DigitSy
     have hagf : ∀ i : Fin m, i < j →
         (fun _ : Fin m => a) i = (fun i => if i = j then b else a) i := by
       intro i hi
-      simp only [if_neg (ne_of_lt hi)]
+      simp only [if_neg hi.ne]
     have hx : D.IsSolution (mkSol D (fun _ => a)) := mkSol_isSol D _
     have hy : D.IsSolution (mkSol D (fun i => if i = j then b else a)) := mkSol_isSol D _
     have hag := mkSol_agree_below D (fun _ => a) (fun i => if i = j then b else a) j hagf
@@ -101,8 +101,8 @@ theorem C0_pinStatus {m : ℕ} (D D' : Locus p m) (h : ∀ x, D.IsSolution x ↔
   have key : D.pinned j = true ↔ D'.pinned j = true := by
     rw [pinnedIffDet D j, pinnedIffDet D' j]
     constructor
-    · intro hd x y hx hy hag; exact hd x y ((h x).mpr hx) ((h y).mpr hy) hag
-    · intro hd x y hx hy hag; exact hd x y ((h x).mp hx) ((h y).mp hy) hag
+    · exact fun hd x y hx hy hag => hd x y ((h x).mpr hx) ((h y).mpr hy) hag
+    · exact fun hd x y hx hy hag => hd x y ((h x).mp hx) ((h y).mp hy) hag
   cases hD : D.pinned j <;> cases hD' : D'.pinned j <;> simp_all
 
 end LeanUrat.MovesC

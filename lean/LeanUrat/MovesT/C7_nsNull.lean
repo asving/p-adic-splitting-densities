@@ -173,8 +173,7 @@ theorem ns_null {H : History p F} (N₀ : ℕ)
   have hDR : (D : ℝ) = (a : ℝ) * (p : ℝ) ^ P := by
     rw [← hprice]; push_cast; ring
   have hDpos' : (0 : ℝ) < D := by exact_mod_cast hDpos
-  have hp0 : (0 : ℝ) < (p : ℝ) := by
-    have := (Fact.out : p.Prime).pos; exact_mod_cast this
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast (Fact.out : p.Prime).pos
   have hpPpos : (0 : ℝ) < (p : ℝ) ^ P := pow_pos hp0 P
   have hpPne : ((p : ℝ) ^ P) ≠ 0 := ne_of_gt hpPpos
   have ha0 : 0 < a := by

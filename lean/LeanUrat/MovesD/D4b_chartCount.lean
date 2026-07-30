@@ -31,7 +31,7 @@ theorem chart_count {H : History p F} (J : JetSetup H n N m) (φ : Coord → Pro
     intro a ha
     simp only [Finset.mem_filter, Finset.mem_univ, true_and] at ha
     simp only [Finset.mem_filter, Finset.mem_product, Finset.mem_range]
-    exact ⟨⟨(J.coordOf_lt a).1, (J.coordOf_lt a).2⟩, ha⟩
+    exact ⟨J.coordOf_lt a, ha⟩
   · -- injectivity of the chart
     intro a₁ _ a₂ _ h
     exact hinj h

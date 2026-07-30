@@ -120,8 +120,7 @@ theorem cell_refine {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     intro j _
     rw [dif_pos (Xs.Gc_ok (.last (V.moveOf d)) j q₀ hqS)]
     congr 1
-    have h := htbl j
-    exact_mod_cast h.symm
+    exact_mod_cast (htbl j).symm
   rw [hRval] at hRfull
   -- LHS: per-cell weight-only HasSum over the cell face
   have hgc : ∀ c : V.DCellO d.s d.m d.o d.α,
@@ -138,7 +137,7 @@ theorem cell_refine {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       apply Finset.sum_congr rfl
       intro j _
       rw [dif_pos (XsC.Gcell_ok d c j q₀ hqS)]
-    rw [hval] at h0; exact h0
+    rwa [hval] at h0
   -- cdom ⊆ dom(.last (moveOf d))
   have hsub : ∀ (c : V.DCellO d.s d.m d.o d.α) h, (V.cdom d c).Mem h →
       (D.dom (.last (V.moveOf d))).Mem h := by

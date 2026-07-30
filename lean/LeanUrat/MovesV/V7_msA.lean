@@ -18,7 +18,6 @@ theorem measured_cells_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     ∃ M : MovesS.MeasuredSide T,
       M.Pools = V.Pools ∧
       (∀ e (he : e ∈ Finset.Icc 1 n) (τ : T.State e), Nonempty (M.Rep e τ)) := by
-  classical
   refine ⟨{
     Pools := V.Pools
     pools_prime_pow := V.pools_pp

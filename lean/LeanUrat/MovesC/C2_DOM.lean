@@ -9,7 +9,7 @@ import LeanUrat.MovesC.Defs
 namespace LeanUrat.MovesC
 
 theorem C2_DOM {lines : ℕ → Line} {i interiorEnd : ℕ} (dom : DomData lines i interiorEnd) (b : ℕ) (hb : b ≤ interiorEnd) (m : ℕ) (hm : m ≤ i) : (lines m).at b ≤ (lines i).at b := by
-  rcases lt_or_eq_of_le hm with hlt | heq
+  rcases hm.lt_or_eq with hlt | rfl
   · -- m < i : the steepness chain plus the vertex-entry endpoint feed the affine induction.
     have hs := dom.steeper m hlt
     have hv := dom.vertex_entry m hm
@@ -17,7 +17,6 @@ theorem C2_DOM {lines : ℕ → Line} {i interiorEnd : ℕ} (dom : DomData lines
     simp only [Line.at] at hv ⊢
     nlinarith [mul_nonneg (le_of_lt (sub_pos.mpr hs)) (sub_nonneg.mpr hbq)]
   · -- m = i : the goal is reflexive.
-    subst heq
-    exact le_refl _
+    exact le_rfl
 
 end LeanUrat.MovesC

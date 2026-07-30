@@ -6,7 +6,7 @@ core accepted by adjudicated closure) §2.A–§2.C + the §2.D Defs-part (MuHat
 Shape/ShapeFam/consumedDeltas/RegP).  Declaration order = spec.  The skeleton defs the
 blueprint displays with `sorry` bodies (OKat/evalAt, kTarget, Kmat, bTerm,
 consumedDeltas) are FILLED here per the E-phase discipline (Defs sorry-free); their
-LAW units (U-19, U-16a3, …) stay sorried in their own files.  Nothing in this file
+LAW units (U-19, U-16a3, …) live in their own files.  Nothing in this file
 asserts mathematics — it fixes the vocabulary §S-RESUM's statements are typed in.
 -/
 import Mathlib

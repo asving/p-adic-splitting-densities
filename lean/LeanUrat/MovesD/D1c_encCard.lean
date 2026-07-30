@@ -24,7 +24,6 @@ nonzero polynomial `X^{p^w} − X`, whose degree is at most `p^w`. (Self-contain
 unit E2 so this unit is sorry-free independently of E2's discharge.) -/
 private lemma pool_card_le' {w : ℕ} (hp : 2 ≤ p) (hw : 1 ≤ w) :
     Nat.card ↥(pool p w F) ≤ p ^ w := by
-  classical
   set q := p ^ w with hqdef
   have hq2 : 1 < q := by
     have hpq : p ≤ q := Nat.le_self_pow (by omega) p
@@ -60,7 +59,6 @@ private lemma pool_card_le' {w : ℕ} (hp : 2 ≤ p) (hw : 1 ≤ w) :
 theorem encTargetP_card {P : Shape n} (hp : 2 ≤ p) :
     Nat.card (EncTargetP p F (P : ShapePrefix))
       ≤ (P : ShapePrefix).Mfac * p ^ (P : ShapePrefix).W := by
-  classical
   set Q := (P : ShapePrefix) with hQ
   -- Split the encoding target's cardinality into a product over the reads.
   have hLHS : Nat.card (EncTargetP p F Q)

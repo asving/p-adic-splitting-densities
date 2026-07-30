@@ -198,16 +198,14 @@ theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
     have hlt : (T.stg k).wPrev (T.stg k).Φ < ν := by linarith
     obtain ⟨B, hBne, hBc, hBw, _⟩ := (T.stg k).hS6b ν 1 hlt
     have hmem := (T.stg k).hWS B hBne hBc
-    rw [hBw] at hmem
-    exact hmem
+    rwa [hBw] at hmem
   · -- conjunct 3: at `e = 1`, every side value above the key weight is in the weight set
     -- and realizable with any digit scalar at position 0 (`L5_realConclusion`)
     intro he1 ν hν
     refine ⟨?_, ?_⟩
     · obtain ⟨B, hBne, hBc, hBw, _⟩ := (T.stg k).hS6b ν 1 hν
       have hmem := (T.stg k).hWS B hBne hBc
-      rw [hBw] at hmem
-      exact hmem
+      rwa [hBw] at hmem
     · intro c
       exact L5_realConclusion (T.stg k) he1 ν hν c
 

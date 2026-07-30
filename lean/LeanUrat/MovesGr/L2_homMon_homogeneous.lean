@@ -29,8 +29,7 @@ theorem L2_homMon_homogeneous (σ : Stage p F) (M : GenuineStageModel σ) : letI
       rcases hg with hg | hg
       · rcases hg with ⟨ũ, _, rfl⟩
         exact ⟨_, _, rfl⟩
-      · simp only [Set.mem_singleton_iff] at hg
-        subst hg
+      · obtain rfl := hg
         exact ⟨_, _, rfl⟩
   | one => exact ⟨M.S.deg 1, M.S.mkPiece 1, M.Rg.one_def⟩
   | mul a b _ _ iha ihb =>

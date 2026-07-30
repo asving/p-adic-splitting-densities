@@ -69,9 +69,7 @@ private lemma v7_dev_exists_bounded {R : Type*} [CommRing R] (Φ : Polynomial R)
       ∃ B : ℕ → Polynomial R, IsDevelopment Φ f B M := by
   have hRnt : Nontrivial R := by
     rcases subsingleton_or_nontrivial R with h | h
-    · exfalso
-      have hz : Φ = 0 := Subsingleton.elim _ _
-      rw [hz] at hd; simp at hd
+    · rw [Subsingleton.elim Φ (0 : Polynomial R)] at hd; simp at hd
     · exact h
   have hΦ0 : Φ ≠ 0 := hΦ.ne_zero
   have hΦbot : (⊥ : WithBot ℕ) < Φ.degree :=
@@ -154,9 +152,8 @@ theorem V7_stripDischarge {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
   -- z̄ a root in the `eval₂` coordinate `L4_TRANSviii_b` expects
   have hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0 := by
     have h := th.hroot
-    rw [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
+    rwa [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self,
       RingHom.id_comp] at h
-    exact h
   -- single-slot elements `C·Φ^j`, `j < e·g`, land in `C_Φ̂` (degree bound)
   have hslot : ∀ (C : Polynomial ℤ_[p]) (j : ℕ), C ≠ 0 → inC σ.Φ C → j < σ.e * g →
       inC Φhat (C * σ.Φ ^ j) := by

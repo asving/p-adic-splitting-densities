@@ -30,7 +30,7 @@ theorem innerslot_shape {H : History p F} (hP : (P : ShapePrefix).MatchesHist H)
     obtain ⟨_, he, _, hg, _, _, _, _, hD, _, _, _, _⟩ := hmatch r hr
     simp only [Option.elim, Node.childWidth, ShapeRead.childWidthS]
     rw [he, hg, hD]
-  · have hr2 : (P : ShapePrefix).reads.length ≤ r := by rw [← hlen]; exact not_lt.mp hr
+  · have hr2 : (P : ShapePrefix).reads.length ≤ r := hlen ▸ not_lt.mp hr
     rw [List.getElem?_eq_none (not_lt.mp hr), List.getElem?_eq_none hr2]
     rfl
 

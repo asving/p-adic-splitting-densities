@@ -367,12 +367,6 @@ theorem n2_polygeom_data :
     (n2RB.tgP 2 n2τ n2oSpl).qpow = 1 ∧
     (n2RB.tgP 2 n2τ n2oIn).qpow = 3 ∧
     (n2RB.tgP 2 n2τ n2oK).geomDenoms = ∅ := by
-  refine ⟨?_, ?_, ?_, rfl, rfl, rfl, rfl⟩
-  · show pgK.val = qX⁻¹ ^ 3
-    exact pgK_val
-  · show pgSpl.val = 1 - qX⁻¹
-    exact pgSpl_val
-  · show pgIn.val = qX⁻¹ - qX⁻¹ ^ 3
-    exact pgIn_val
+  exact ⟨pgK_val, pgSpl_val, pgIn_val, rfl, rfl, rfl, rfl⟩
 
 end LeanUrat.MovesS

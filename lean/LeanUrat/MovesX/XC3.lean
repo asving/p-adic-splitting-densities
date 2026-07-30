@@ -36,7 +36,7 @@ theorem x1bReduction {n : ℕ} (X : XFamily n) (K : XConsts n)
   have hdesc := hchain.1 f H hf
   have hsec := hchain.2 f (dCert ⟨true, false⟩ H) hdesc hd
   -- hence 2·I ≤ v.
-  have h1 : 2 * countPop H .incT12 ≤ vdisc f := by rw [hmono] at hsec; exact hsec
+  have h1 : 2 * countPop H .incT12 ≤ vdisc f := hmono ▸ hsec
   -- clear the nonlinear coefficient: (2s+1)·v = 2·(s·v) + v.
   have hexp : (2 * K.s + 1) * vdisc f = 2 * (K.s * vdisc f) + vdisc f := by ring
   -- 2·d_total = 2·I + 2·(R+T4) + 2·T3 ≤ v + 2·(s·v) + 2·log = (2s+1)·v + 2·log.

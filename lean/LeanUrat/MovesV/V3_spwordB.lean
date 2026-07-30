@@ -193,9 +193,7 @@ theorem template_total_of_perimeter {n : ℕ} (ε : EntShapeV n)
         rw [letterMbar, hsel, hell]
         rfl
       refine ⟨?_, hmbar⟩
-      rw [IsBranchingLetter]
-      rw [decide_eq_decide]
-      rw [hmbar]
+      rw [IsBranchingLetter, decide_eq_decide, hmbar]
       exact Iff.rfl
     -- the filtered-menu list tie
     have hmap : (sw.filter (IsBranchingLetter n)).map letterMbar

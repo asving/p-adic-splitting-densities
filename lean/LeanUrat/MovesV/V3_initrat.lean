@@ -14,14 +14,14 @@ open LeanUrat.MovesS (Qq OKat evalAt PolyGeom)
 /-- `algebraMap` of a polynomial is always regular at every base point. -/
 private theorem initRat_okat_alg (q₀ : ℚ) (p : Polynomial ℚ) :
     algebraMap (Polynomial ℚ) Qq p ∈ OKat q₀ := by
-  rw [MovesS.mem_OKat_iff, RatFunc.denom_algebraMap]; simp
+  simp [MovesS.mem_OKat_iff, RatFunc.denom_algebraMap]
 
 /-- and `evalAt` of it is ordinary polynomial evaluation. -/
 private theorem initRat_evalAt_alg (q₀ : ℚ) (p : Polynomial ℚ)
     (h : algebraMap (Polynomial ℚ) Qq p ∈ OKat q₀) :
     evalAt q₀ ⟨algebraMap (Polynomial ℚ) Qq p, h⟩ = p.eval q₀ := by
   change RatFunc.eval (RingHom.id ℚ) q₀ (algebraMap (Polynomial ℚ) Qq p) = p.eval q₀
-  rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+  simp [RatFunc.eval_algebraMap, Polynomial.eval₂_id]
 
 /-- `instCensus` collapses to `entCensus` of the scoped instantiation (M1
 repair: needs the point's `Order0Perimeter` certificate). -/

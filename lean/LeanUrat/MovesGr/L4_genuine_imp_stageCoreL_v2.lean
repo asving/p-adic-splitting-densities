@@ -73,8 +73,7 @@ private lemma initialForm_add_lt (S : SideVal p) (Rg : GradedRingStr S)
 /-- `C` is injective on any Laurent-polynomial ring (coefficient extraction at 0). -/
 private lemma laurC_inj {R : Type*} [CommSemiring R] {x y : R}
     (h : LaurentPolynomial.C x = LaurentPolynomial.C y) : x = y := by
-  have h0 := congrArg (fun q => q 0) h
-  simpa using h0
+  simpa using congrArg (fun q => q 0) h
 
 /-- The stage valuation of `1` is `0` (σ-only: `hwmul 1 1`). -/
 private lemma w_one_stage (σ : Stage p F) : σ.w 1 = 0 := by

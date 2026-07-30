@@ -35,7 +35,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 /-- `w 1 = 0` (from multiplicativity). -/
 private lemma w_one_eq_zero (σ : Stage p F) : σ.w 1 = 0 := by
   have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  simp only [mul_one] at h
+  rw [mul_one] at h
   linarith
 
 /-- `w(Φ^m) = m · w Φ = m · h`. -/
@@ -111,7 +111,7 @@ theorem L5_realDomination {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
   have hlw : (σ.e : ℤ) * σ.h * g ≤ σ.w Φhat := liftWeight_ge σ ψ g Φhat hlift hΦne
   have hI : (h' : ℤ) > (e' : ℤ) * σ.w Φhat := hiaug
   have hg1 : (1 : ℤ) ≤ (g : ℤ) := by exact_mod_cast hg
-  have he'nn : (0 : ℤ) ≤ (e' : ℤ) := by positivity
+  have he'nn : (0 : ℤ) ≤ (e' : ℤ) := Nat.cast_nonneg e'
   have ehnn : (0 : ℤ) ≤ (σ.e : ℤ) * σ.h := by positivity
   -- `f' = e·fr + (e−1)·h  <  e·h`
   have expand : ((σ.e : ℤ) - 1) * (σ.h : ℤ) = (σ.e : ℤ) * (σ.h : ℤ) - (σ.h : ℤ) := by ring

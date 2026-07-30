@@ -23,7 +23,7 @@ theorem relExt_eq (m δ' : ℕ+) : relExt p m δ' = O p (m * δ') := rfl
 /-- U4(ii): iterated base change composes by index multiplication (`mul_assoc`). -/
 theorem relExt_relExt (m δ' δ'' : ℕ+) :
     relExt p (m * δ') δ'' = relExt p m (δ' * δ'') := by
-  unfold relExt; rw [mul_assoc]
+  rw [relExt_eq, relExt_eq, mul_assoc]
 
 /-- U4(iii): the base sits inside its own base change (via U3). -/
 theorem O_le_relExt (m δ' : ℕ+) : O p m ≤ relExt p m δ' := O_le p ⟨δ', rfl⟩

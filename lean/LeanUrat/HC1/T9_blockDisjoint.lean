@@ -160,9 +160,9 @@ theorem T9_blockDisjoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       have hr2 : r + 1 < T.K + 1 := by omega
       simp only [hccdef, hDdef, dif_pos hr, dif_pos hr1, dif_pos hr2]
       have hcs : (⟨r, hr⟩ : Fin T.K).castSucc = (⟨r, hr1⟩ : Fin (T.K + 1)) := by
-        apply Fin.ext; simp
+        rfl
       have hsc : (⟨r, hr⟩ : Fin T.K).succ = (⟨r + 1, hr2⟩ : Fin (T.K + 1)) := by
-        apply Fin.ext; simp
+        rfl
       unfold Tower.slotBound
       rw [hcs, hsc]
       exact Nat.div_mul_le_self _ _
@@ -196,7 +196,7 @@ theorem T9_blockDisjoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       have hr1 : r < T.K + 1 := Nat.lt_succ_of_lt hr
       simp only [hccdef, dif_pos hr, dif_pos hr1]
       have hcs : (⟨r, hr⟩ : Fin T.K).castSucc = (⟨r, hr1⟩ : Fin (T.K + 1)) := by
-        apply Fin.ext; simp
+        rfl
       have := c.slot_lt ⟨r, hr⟩
       rwa [hcs] at this
     have haC' : ∀ r, r < T.K →
@@ -205,7 +205,7 @@ theorem T9_blockDisjoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       have hr1 : r < T.K + 1 := Nat.lt_succ_of_lt hr
       simp only [hccdef, dif_pos hr, dif_pos hr1]
       have hcs : (⟨r, hr⟩ : Fin T.K).castSucc = (⟨r, hr1⟩ : Fin (T.K + 1)) := by
-        apply Fin.ext; simp
+        rfl
       have := c'.slot_lt ⟨r, hr⟩
       rwa [hcs] at this
     rw [hconv c, hconv c'] at hbase

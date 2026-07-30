@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesU.U0b_splitTypeFintype
 import LeanUrat.MovesU.DefsCarriers
+import LeanUrat.MovesU.U8_regP_access
 import LeanUrat.MovesS.BlockSolveSpec
 import LeanUrat.MovesX.Defs
 import LeanUrat.MovesRBase.Defs
@@ -534,9 +535,7 @@ theorem RegPin.detHyp {n : ℕ} {C : UCarriers n} {p : ℕ}
         (C.hK (P.blk b).1 (P.blk b).2)).det ≠ 0 := by
     intro b
     letI := D.instBi b; letI := D.instBd b
-    have hpool : p ∈ D.Pool := by
-      rw [D.pool_eq]
-      exact Finset.mem_image.mpr ⟨1, D.one_mem_depthSet, pow_one p⟩
+    have hpool : p ∈ D.Pool := D.pool_self_mem
     have h1 := (hreg p hpool b).1.2
     have hmat : (1 - D.K b)
         = (1 - MovesS.Kmat C.T C.RB (P.blk b).1
@@ -691,7 +690,7 @@ def ZpReads (zf : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)) (N : ℕ)
     `(ramIdx h, resDeg h)` at the corresponding monic factor `h` (ℤ_p
     coefficients, irreducible over ℚ_p) — the MovesT REV-9 CLOSED defs reading
     `Ideal.ramificationIdx`/`Ideal.inertiaDeg` of the maximal ideals through
-    `AdjoinRoot h`. The degree accounting (`zf_deg`) is retained.
+    `AdjoinRoot h`. The degree accounting is retained as `zf_factor`'s final conjunct.
     REMAINING HC-2 RESIDUE (exact statement): (i) the INSTANCE obligation itself —
     supplying `lift_exists`/`lift_true`/`zf_factor` at the real classifier (the
     classifier ↔ ℤ_p-factorization seam); (ii) the §9 IP-1 instance plumbing —
@@ -699,8 +698,9 @@ def ZpReads (zf : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)) (N : ℕ)
     (junk 0 off it), so the bridge's (e,f) are the true invariants exactly on the
     locus where IP-1 (`IsLocalRing (AdjoinRoot h)` for monic ℚ_p-irreducible
     `h` over ℤ_p) holds — an owed instance, no longer an untyped invariant;
-    (iii) `zf_pos`/`zf_deg`, the entry positivity and e·f = deg laws, are carried
-    as bridge laws (true theorems of local field theory, not yet Lean-derived). -/
+    (iii) `zf_pos` and `zf_factor`'s degree conjunct, the entry positivity and
+    e·f = deg laws, are carried as bridge laws (true theorems of local field
+    theory, not yet Lean-derived). -/
 structure ZpBridge (X : ClassifierSpec n p) where
   zfType : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)
   zf_pos : ∀ g : Polynomial ℤ_[p], g.Monic → g.natDegree = n →

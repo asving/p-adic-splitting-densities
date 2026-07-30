@@ -22,6 +22,6 @@ variable (p : ℕ) [hp : Fact p.Prime]
 
 /-- U5: `q_{mδ′} = q_m^{δ′}` — the β-argument bookkeeping under composition. -/
 theorem qq_mul (m δ' : ℕ+) : qq p (m * δ') = qq p m ^ (δ' : ℕ) := by
-  simp only [qq, PNat.mul_coe, pow_mul]
+  rw [qq, qq, PNat.mul_coe, pow_mul]
 
 end MovesRBase

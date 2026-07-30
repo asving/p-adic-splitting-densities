@@ -30,11 +30,10 @@ theorem fiber_pos (S : Presented p F n N m pol P) (i : PrefIdx n pol P) :
     simp [topLocus] at h
   have hkey := C6_thmC_b (S.jet i) (topLocus p m) hZ
   have hbox : 0 < boxMass p m := pow_pos (Fact.out : p.Prime).pos m
-  have hcard : 0 < Nat.card ((S.jet i).SHZ (topLocus p m)) := by
-    rcases Nat.eq_zero_or_pos (Nat.card ((S.jet i).SHZ (topLocus p m))) with h | h
-    · rw [h, zero_mul] at hkey
+  have hcard : 0 < Nat.card ((S.jet i).SHZ (topLocus p m)) :=
+    Nat.pos_of_ne_zero fun h => by
+      rw [h, zero_mul] at hkey
       omega
-    · exact h
   exact Set.nonempty_coe_sort.mp (Nat.card_pos_iff.mp hcard).1
 
 end LeanUrat.MovesD

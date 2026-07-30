@@ -103,9 +103,8 @@ theorem card_classes_abs (hnorm : PresentNorm n pol P) :
       obtain ⟨i, hi⟩ := hnorm.1 H.1 H.2
       refine ⟨i, Quotient.sound ?_⟩
       change EtaGalEq (etaData (P : ShapePrefix) (reprOf i)) (etaData (P : ShapePrefix) H.1)
-      have : EtaGalEq (etaData (P : ShapePrefix) H.1) (etaData (P : ShapePrefix) (reprOf i)) := by
-        rw [etaData_reprOf i]; exact hi
-      exact this.symm
+      refine EtaGalEq.symm ?_
+      rw [etaData_reprOf i]; exact hi
 
 end
 

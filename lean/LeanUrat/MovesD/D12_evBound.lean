@@ -35,11 +35,8 @@ theorem D4R1_EV (hne : (P : ShapePrefix).reads ≠ []) (N : ℕ)
     rw [Nat.card_coe_set_eq, Set.ncard_eq_toFinset_card']
     calc S.event.toFinset.card
         = ∑ _x ∈ S.event.toFinset, 1 := by rw [Finset.card_eq_sum_ones]
-      _ ≤ ∑ x ∈ S.event.toFinset, S.mult x := by
-          apply Finset.sum_le_sum
-          intro x hx
-          rw [Set.mem_toFinset] at hx
-          exact (event_iff_mult S x).mp hx
+      _ ≤ ∑ x ∈ S.event.toFinset, S.mult x :=
+          Finset.sum_le_sum fun x hx => (event_iff_mult S x).mp (Set.mem_toFinset.mp hx)
       _ ≤ ∑ x : Box p m, S.mult x :=
           Finset.sum_le_sum_of_subset (Finset.subset_univ _)
   -- Multiply the union bound by p^{A′} and close with D11a (double counting) + D10 (SUM).

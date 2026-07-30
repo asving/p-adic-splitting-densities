@@ -555,7 +555,7 @@ open Classical in
 identity on pool members (E1's territory — every counted digit), junk 1 otherwise
 (1 ∈ pool always: 1^(p^w) = 1). -/
 noncomputable def poolProj (p w : ℕ) (F : Type*) [Field F] (x : F) : ↥(pool p w F) :=
-  if h : x ∈ pool p w F then ⟨x, h⟩ else ⟨1, by simp [pool]⟩
+  if h : x ∈ pool p w F then ⟨x, h⟩ else ⟨1, one_pow _⟩
 
 /-- [E9 Defs addendum — elaboration helper] every read of a SHAPE has m̄ ≥ 1: the
 certificate's `gmu` (g·μ ≤ ℓ) with g, μ ≥ 1. Powers `encIdx`'s total selection index. -/

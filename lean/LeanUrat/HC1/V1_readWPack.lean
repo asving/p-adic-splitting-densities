@@ -256,9 +256,9 @@ theorem V1_readWPack {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     obtain ⟨Bf, Nf, hdevf⟩ := L0_FactA_exists σ.Φ σ.hmonic σ.hdeg f
     obtain ⟨Bg, Ng, hdevg⟩ := L0_FactA_exists σ.Φ σ.hmonic σ.hdeg g
     have hsub_f : Finset.range Nf ⊆ Finset.range (max Nf Ng) :=
-      fun x hx => Finset.mem_range.mpr (lt_of_lt_of_le (Finset.mem_range.mp hx) (le_max_left Nf Ng))
+      Finset.range_subset_range.mpr (le_max_left Nf Ng)
     have hsub_g : Finset.range Ng ⊆ Finset.range (max Nf Ng) :=
-      fun x hx => Finset.mem_range.mpr (lt_of_lt_of_le (Finset.mem_range.mp hx) (le_max_right Nf Ng))
+      Finset.range_subset_range.mpr (le_max_right Nf Ng)
     have hfsum : f = ∑ j ∈ Finset.range (max Nf Ng), Bf j * σ.Φ ^ j :=
       hdevf.2.2.trans (Finset.sum_subset hsub_f
         (fun j _ hj => by rw [hdevf.2.1 j (not_lt.mp (Finset.mem_range.not.mp hj)), zero_mul]))

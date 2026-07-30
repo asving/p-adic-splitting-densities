@@ -25,8 +25,7 @@ theorem ent_agg_conv {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   -- pool positivity
   have hq1 : (1 : ℚ) < q₀ := S.pools_gt_one q₀ (V.pools_sub hq)
   have hq0 : (0 : ℝ) ≤ (q₀ : ℝ) := by
-    have : (0 : ℚ) ≤ q₀ := le_of_lt (lt_trans one_pos hq1)
-    exact_mod_cast this
+    exact_mod_cast le_of_lt (lt_trans one_pos hq1)
   have hq1' : (1 : ℝ) ≤ (q₀ : ℝ) := by exact_mod_cast le_of_lt hq1
   -- the uniform defining-level bound M (finitely many templates)
   set M : ℕ := Finset.univ.sup (fun εT : EntTemplate n => V.entLvl εT) with hM

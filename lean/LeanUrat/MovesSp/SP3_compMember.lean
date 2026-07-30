@@ -35,8 +35,7 @@ theorem SP_COMP (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p])
   | zero =>
     -- r = 0: `hRoot` hands RootStage + Coherent + Budget = RootAdmissible.
     intro hr
-    obtain ⟨hstage, hcoh, hbudget⟩ := M.hRoot η (by exact_mod_cast hr)
-    exact InCatalogue.root ⟨hstage, hcoh, hbudget⟩
+    exact InCatalogue.root (M.hRoot η (by exact_mod_cast hr))
   | succ r ih =>
     -- r + 1: assemble SuccStep from hStage (StageLaws) + hCoh (Coherent ∧ Budget),
     -- then close by InCatalogue.step against the IH at the r-prefix.
@@ -45,6 +44,6 @@ theorem SP_COMP (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p])
       lt_of_le_of_lt (by exact_mod_cast Nat.le_succ r) hr
     have hcohbud := M.hCoh η (r + 1) hr
     exact InCatalogue.step (ih hr')
-      ⟨M.hStage η r (by exact_mod_cast hr), hcohbud.1, hcohbud.2⟩
+      ⟨M.hStage η r (by exact_mod_cast hr), hcohbud⟩
 
 end LeanUrat.MovesSp

@@ -21,8 +21,7 @@ noncomputable def powSubstAux (δ : ℕ+) : Polynomial ℚ →+* Qq :=
   (algebraMap (Polynomial ℚ) Qq).comp (Polynomial.expand ℚ (δ : ℕ)).toRingHom
 
 theorem powSubstAux_injective (δ : ℕ+) : Function.Injective (powSubstAux δ) := by
-  refine (IsFractionRing.injective (Polynomial ℚ) Qq).comp ?_
-  exact Polynomial.expand_injective δ.pos
+  exact (IsFractionRing.injective (Polynomial ℚ) Qq).comp (Polynomial.expand_injective δ.pos)
 
 noncomputable def powSubst (δ : ℕ+) : Qq →+* Qq :=
   IsFractionRing.lift (powSubstAux_injective δ)

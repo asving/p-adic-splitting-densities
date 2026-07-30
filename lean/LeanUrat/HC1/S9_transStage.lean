@@ -90,12 +90,9 @@ theorem S9_transStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   obtain ⟨hmonΦ, hdegΦ⟩ := L3_liftMonic σ ψ g th.hg Φhat th.hlift
   have hΦnatlt : σ.Φ.natDegree < Φhat.natDegree := by
     rw [hdegΦ]
-    calc σ.Φ.natDegree = 1 * σ.Φ.natDegree := (one_mul _).symm
-      _ < (σ.e * g) * σ.Φ.natDegree := by
-          have h0 : 0 < σ.Φ.natDegree := σ.hdeg
-          exact Nat.mul_lt_mul_of_lt_of_le hEG (le_refl _) h0
+    exact lt_mul_of_one_lt_left σ.hdeg hEG
   have hΦin : inC Φhat σ.Φ := by
-    show σ.Φ.degree < Φhat.degree
+    change σ.Φ.degree < Φhat.degree
     rw [Polynomial.degree_eq_natDegree σ.hmonic.ne_zero,
       Polynomial.degree_eq_natDegree hmonΦ.ne_zero]
     exact_mod_cast hΦnatlt

@@ -14,11 +14,8 @@ set_option maxHeartbeats 1000000
 
 theorem t1Witness {n : ℕ} (ν : XNode n) (h1 : rowOf ν = .T1) :
     (ν.s0 + ν.e, ν.u0 + (ν.ell - 1) * ν.h) ∈ ν.region ∧ 1 ≤ ν.region.card := by
-  -- From `rowOf ν = .T1` the row classifier forces `2 ≤ ν.ell`.
-  have hell : 2 ≤ ν.ell := by
-    unfold rowOf at h1
-    split_ifs at h1 with h_sel h_ell
-    all_goals simp_all
+  -- From `rowOf ν = .T1` the row classifier (XA.1) forces `2 ≤ ν.ell`.
+  have hell : 2 ≤ ν.ell := ((rowTotal ν).2.1.mp h1).2
   have epos := ν.epos
   have hpos := ν.hpos
   -- Write `ν.ell = m + 1` with `m ≥ 1` to eliminate the `ℓ - 1` subtraction.

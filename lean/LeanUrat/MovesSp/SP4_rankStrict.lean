@@ -31,8 +31,7 @@ theorem rank_strict {n} {s s'} (hin : InCatalogue n s)
     have he : 1 ≤ s.e := hcs.1.2.2.2.1
     have hmem : (g, μ) ∈ s.lam := hcs.2.2.2.2.1.2 (g, μ) hsel
     have hg1 : 1 ≤ g := (hcs.1.2.2.2.2.2 (g, μ) hmem).1
-    have heg1 : 1 ≤ s.e * g :=
-      Nat.one_le_iff_ne_zero.mpr (Nat.mul_ne_zero (by omega) (by omega))
+    have heg1 : 1 ≤ s.e * g := Nat.mul_pos he hg1
     by_cases hge2 : 2 ≤ s.e * g
     · -- e·g ≥ 2: D strictly increases, so the rank rises via the first lex coordinate
       have hD : s.D < s'.D :=

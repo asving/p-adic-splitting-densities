@@ -178,9 +178,6 @@ noncomputable def fibOf (hrep : PrefixCoherentRepr n pol)
       rfl
   nsLeaf := fun H => ∃ a ∈ ct.nsMark, reprOf a.2 = H
   hns_leaf := by
-    have hspec : ∀ {Q : Shape n} (i : PrefIdx n pol Q),
-        reprOf i ∈ PrefSet n pol Q ∧ etaData (Q : ShapePrefix) (reprOf i) = i.1 :=
-      fun i => i.2.choose_spec
     intro H hH
     obtain ⟨a, ha, rfl⟩ := hH
     obtain ⟨v, hv⟩ := ct.hns a ha
@@ -191,8 +188,8 @@ noncomputable def fibOf (hrep : PrefixCoherentRepr n pol)
     by_cases hEq : reprOf a.2 = reprOf b.2
     · rw [← hbeq]; exact hEq.symm
     · exact (hmax b (Finset.mem_coe.mp hb)
-        ⟨reprOf a.2, reprOf b.2, (hspec a.2).1, (hspec b.2).1,
-          (hspec a.2).2, (hspec b.2).2,
+        ⟨reprOf a.2, reprOf b.2, (reprOf_spec a.2).1, (reprOf_spec b.2).1,
+          (reprOf_spec a.2).2, (reprOf_spec b.2).2,
           by rw [show reprOf b.snd = H'' from hbeq]; exact hpre, hEq⟩).elim
 
 /-- the `fibOf` leaf lookup, characterized: `some v` at a representative iff the

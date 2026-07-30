@@ -23,8 +23,6 @@ theorem ratfunc_eval_infinite (f : Qq) (S : Set ℚ) (hS : S.Infinite)
   have hv := hval x hx
   have hd := hden x hx
   rw [RatFunc.eval, Polynomial.eval₂_id, Polynomial.eval₂_id, div_eq_zero_iff] at hv
-  rcases hv with h | h
-  · exact h
-  · exact absurd h hd
+  exact hv.resolve_right hd
 
 end LeanUrat.MovesS

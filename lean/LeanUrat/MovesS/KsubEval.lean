@@ -38,9 +38,8 @@ theorem ksub_eval {T : TableShape n} {M : MeasuredSide T} (RB : RatBurdens T M)
   -- rewrite the OKat-element ⟨Σ, hok⟩ as a subring sum, then push evalAt through it
   have hsum : (⟨∑ o : T.Out e τ, routedMass RB e τ o, sum_mem (fun o _ => hmem o)⟩ :
         OKat q₀)
-      = ∑ o : T.Out e τ, (⟨routedMass RB e τ o, hmem o⟩ : OKat q₀) := by
-    apply Subtype.ext
-    simp only [AddSubmonoidClass.coe_finsetSum]
+      = ∑ o : T.Out e τ, (⟨routedMass RB e τ o, hmem o⟩ : OKat q₀) :=
+    Subtype.ext (by simp only [AddSubmonoidClass.coe_finsetSum])
   rw [hsum, map_sum]
   -- per-outcome: the evaluated burden, cast to ℝ, is the measured row value
   have per_o : ∀ o : T.Out e τ,

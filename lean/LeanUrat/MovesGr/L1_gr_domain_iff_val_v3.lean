@@ -244,7 +244,7 @@ theorem L1_gr_domain_iff_val (S : SideVal p) (Rg : GradedRingStr S) : (letI := R
           have hcz : (letI := Rg.ring; a * b) (γa + γb) = 0 := by
             have h1 : (letI := Rg.ring; a * b) = (letI := Rg.ring; (0 : S.Gr)) := hab
             rw [h1, hzz]
-            simp
+            rfl
           exact hne2 (hcomp.symm.trans hcz) }
     exact NoZeroDivisors.to_isDomain _
 

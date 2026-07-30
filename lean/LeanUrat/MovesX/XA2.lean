@@ -25,6 +25,6 @@ theorem selForce {n : ℕ} (ν : XNode n) (g μ : ℕ) (hs : ν.sel = some (g, �
         _ ≤ ν.ell := hbound
   refine ⟨hell, ?_⟩
   have hne : ν.sel ≠ none := by rw [hs]; exact Option.some_ne_none _
-  simp only [rowOf, if_neg hne, if_pos hell]
+  exact (rowTotal ν).2.1.mpr ⟨hne, hell⟩
 
 end LeanUrat.MovesX

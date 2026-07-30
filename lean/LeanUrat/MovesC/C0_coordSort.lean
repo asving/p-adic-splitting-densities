@@ -25,8 +25,8 @@ theorem C0_coordSort (n N : ℕ) (hn : 0 < n) : ∃ f : Fin (n * N) → Coord, (
     have hrb := Nat.mod_lt b hn
     constructor
     · intro hab
-      have hdle : a / n ≤ b / n := Nat.div_le_div_right (le_of_lt hab)
-      rcases lt_or_eq_of_le hdle with hlt | heq
+      have hdle : a / n ≤ b / n := Nat.div_le_div_right hab.le
+      rcases hdle.lt_or_eq with hlt | heq
       · exact Or.inl hlt
       · rw [heq] at hma
         exact Or.inr ⟨heq, by omega⟩

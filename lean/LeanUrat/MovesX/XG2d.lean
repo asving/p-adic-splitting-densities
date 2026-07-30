@@ -36,8 +36,7 @@ private lemma len_le_filter_succ {α : Type*} (H : List α) (P : α → Bool)
     have hgd : H.dropLast[i] = H[i]'hi' := List.getElem_dropLast hi
     have hbnd : (i : ℕ) + 1 < H.length := by rw [List.length_dropLast] at hi; omega
     have hc : P (H[i]'hi') = true := by
-      have := hlast ⟨i, hi'⟩ hbnd
-      simpa [List.get_eq_getElem] using this
+      simpa [List.get_eq_getElem] using hlast ⟨i, hi'⟩ hbnd
     rw [← hget, hgd]; exact hc
   have hsub : List.Sublist ((H.dropLast).filter P) (H.filter P) :=
     (List.dropLast_sublist H).filter P

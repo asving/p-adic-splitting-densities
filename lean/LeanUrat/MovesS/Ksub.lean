@@ -31,9 +31,7 @@ theorem ksub {T : TableShape n} {M : MeasuredSide T} (RB : RatBurdens T M)
     intro x hx
     obtain ⟨hxpool, hxact⟩ := hx
     obtain ⟨hok, -⟩ := ksub_eval RB L hdc he τ hK x hxpool (hxact e he τ)
-    have hmem : (∑ o : T.Out e τ, routedMass RB e τ o) - 1 ∈ OKat x :=
-      (OKat x).sub_mem hok (OKat x).one_mem
-    exact mem_OKat_iff.mp hmem
+    exact mem_OKat_iff.mp ((OKat x).sub_mem hok (OKat x).one_mem)
   · -- the value `(S - 1)(x) = 0`, via the ring hom `evalAt x`
     intro x hx
     obtain ⟨hxpool, hxact⟩ := hx
@@ -41,9 +39,8 @@ theorem ksub {T : TableShape n} {M : MeasuredSide T} (RB : RatBurdens T M)
     have hmem : (∑ o : T.Out e τ, routedMass RB e τ o) - 1 ∈ OKat x :=
       (OKat x).sub_mem hok (OKat x).one_mem
     have hsplit : (⟨(∑ o : T.Out e τ, routedMass RB e τ o) - 1, hmem⟩ : OKat x)
-        = ⟨∑ o : T.Out e τ, routedMass RB e τ o, hok⟩ - 1 := by
-      apply Subtype.ext
-      simp
+        = ⟨∑ o : T.Out e τ, routedMass RB e τ o, hok⟩ - 1 :=
+      Subtype.ext (by simp)
     have key : evalAt x ⟨(∑ o : T.Out e τ, routedMass RB e τ o) - 1, hmem⟩ = 0 := by
       rw [hsplit, map_sub, map_one, heval, sub_self]
     exact key

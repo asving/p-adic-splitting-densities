@@ -25,7 +25,7 @@ private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval 
     RatFunc.eval (RingHom.id ℚ) x
         (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
       = p.eval x / q.eval x := by
-  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
+  have hq0 : q ≠ 0 := fun h0 => hq (by simp [h0])
   have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
   have hdvd : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
     (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
@@ -123,8 +123,8 @@ theorem xhds_instance_A2 (q₀ : ℚ) (hpp : IsPP q₀) (hq : 1 < q₀)
   intro p
   simp only [A2equiv, Equiv.coe_fn_mk, Function.comp]
   have hev : EA2.eval ![1 + p.1, p.2] = 7 + 6 * p.1 + 3 * p.2 := by
-    simp only [EA2, AffineE.eval, Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.head_cons]; ring
+    simp only [EA2, AffineE.eval, Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one]
+    ring
   rw [hev, ← zpow_natCast (r ^ (-6 : ℤ)) p.1, ← zpow_natCast (r ^ (-3 : ℤ)) p.2,
     ← zpow_mul, ← zpow_mul, ← zpow_add₀ hr0', ← zpow_add₀ hr0']
   congr 1; push_cast; ring

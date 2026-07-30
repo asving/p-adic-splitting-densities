@@ -84,8 +84,8 @@ theorem encIdx_inj :
     intro m hm
     by_cases hmd : m < R.d
     · have key : poolProj p R.w F (νi.sideDigit m) = poolProj p R.w F (νj.sideDigit m) := by
-        have h := congrFun (congrArg Prod.fst (congrFun hEq r)) ⟨m, hmd⟩
-        simpa only [encIdx, hsi, hsj, Option.elim_some] using h
+        simpa only [encIdx, hsi, hsj, Option.elim_some] using
+          congrFun (congrArg Prod.fst (congrFun hEq r)) ⟨m, hmd⟩
       exact hpp R.w _ _ (digit_in_pool hMi m) (digit_in_pool hMj m) key
     · have hmono : R.monicTop = true := by
         cases hb : R.monicTop with
@@ -100,8 +100,8 @@ theorem encIdx_inj :
   -- selection-rank agreement
   have hsel : selRank R.w νi = selRank R.w νj := by
     have h2 : selRank R.w νi % R.mbar = selRank R.w νj % R.mbar := by
-      have h := congrArg Fin.val (congrArg Prod.snd (congrFun hEq r))
-      simpa only [encIdx, hsi, hsj, Option.elim_some] using h
+      simpa only [encIdx, hsi, hsj, Option.elim_some] using
+        congrArg Fin.val (congrArg Prod.snd (congrFun hEq r))
     rwa [Nat.mod_eq_of_lt (selRank_lt hMi), Nat.mod_eq_of_lt (selRank_lt hMj)] at h2
   -- ψ-image agreement via E8
   have hψ : ψImage νi = ψImage νj := by

@@ -40,10 +40,10 @@ theorem C3_steeperChain (H : History p F) (hcoh : HistoryCoherent H) (i j : ℕ)
       rcases lt_or_eq_of_le (Nat.lt_succ_iff.mp hij) with h | h
       · -- i < j : IH gives slope_i < slope_j, then one consecutive step to slope_{j+1}.
         have hjlt : j < H.nodes.length := by omega
-        exact lt_trans (ih hjlt i hi h) (steeper j hjlt hj)
+        exact (ih hjlt i hi h).trans (steeper j hjlt hj)
       · -- i = j : the goal IS the consecutive-steeper clause at k = i.
         subst h
         exact steeper _ hi hj
-  exact key j hj i (lt_trans hij hj) hij
+  exact key j hj i (hij.trans hj) hij
 
 end LeanUrat.MovesC

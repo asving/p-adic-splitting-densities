@@ -28,9 +28,7 @@ theorem C0_unitriBij {m : ℕ} {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} 
         -- The correction argument agrees, by the inductive hypothesis on earlier coordinates.
         have hcorr : (fun (j : Fin m) (_ : j < i) => x j) = (fun j _ => y j) := by
           funext j hj
-          have hjv : j.val < i.val := hj
-          have hjn : j.val < n := by omega
-          exact ih j hjn
+          exact ih j (by omega)
         have e1 : Θ x i = x i + C i (fun j _ => y j) := by rw [hC i x, hcorr]
         have e2 : Θ y i = y i + C i (fun j _ => y j) := hC i y
         have hcancel : x i + C i (fun j _ => y j) = y i + C i (fun j _ => y j) := by
@@ -56,7 +54,6 @@ theorem C0_unitriBij {m : ℕ} {Θ : (Fin m → ZMod p) → (Fin m → ZMod p)} 
           -- The correction argument for x' agrees with x (all earlier coords are < n).
           have corrAgree : (fun (j : Fin m) (_ : j < i) => x' j) = (fun j _ => x j) := by
             funext j hj
-            have hjv : j.val < i.val := hj
             have hjn : j.val < n := by omega
             simp only [hx'def]
             rw [if_neg (ne_of_lt hjn)]

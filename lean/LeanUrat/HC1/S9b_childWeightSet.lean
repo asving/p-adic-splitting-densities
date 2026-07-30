@@ -104,10 +104,7 @@ theorem S9b_childWeightSet {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
     exact Nat.mul_pos (by omega : 0 < σ.e * g) σ.hdeg
   have hΦnatlt : σ.Φ.natDegree < Φhat.natDegree := by
     rw [hdegΦ]
-    calc σ.Φ.natDegree = 1 * σ.Φ.natDegree := (one_mul _).symm
-      _ < (σ.e * g) * σ.Φ.natDegree := by
-          have h0 : 0 < σ.Φ.natDegree := σ.hdeg
-          exact Nat.mul_lt_mul_of_lt_of_le hEG (le_refl _) h0
+    exact lt_mul_of_one_lt_left σ.hdeg hEG
   have hΦlt : σ.Φ.degree < Φhat.degree := by
     rw [Polynomial.degree_eq_natDegree σ.hmonic.ne_zero,
       Polynomial.degree_eq_natDegree hΦne]

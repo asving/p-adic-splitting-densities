@@ -39,13 +39,11 @@ theorem selfloop_succStep_iff {n : ℕ} {s : Species}
       -- g ≥ 1 from (G4)-membership + WellTyped positivity.
       have _hg1 : 1 ≤ g := (hlampos (g, μ) (hselmem (g, μ) hsel)).1
       -- s.D = (s.e * g) * s.D with s.D ≥ 1 forces s.e * g = 1.
-      have heg : s.e * g = 1 := by
-        have hpos : 0 < s.D := hDpos
-        have : s.e * g * s.D = 1 * s.D := by rw [one_mul]; exact hD.symm
-        exact Nat.eq_of_mul_eq_mul_right hpos this
+      have heg : s.e * g = 1 :=
+        Nat.eq_of_mul_eq_mul_right hDpos (by rw [one_mul, ← hD])
       -- both factors are 1.
       have he1 : s.e = 1 := Nat.eq_one_of_mul_eq_one_right heg
-      have hg1' : g = 1 := by rw [he1, one_mul] at heg; exact heg
+      have hg1' : g = 1 := Nat.eq_one_of_mul_eq_one_left heg
       -- tag = postRec from the (G5) tag-iff at e = g = 1; W = μ closes the selection.
       refine ⟨hRec.mpr ⟨he1, hg1'⟩, he1, ?_⟩
       rw [hg1', hW]

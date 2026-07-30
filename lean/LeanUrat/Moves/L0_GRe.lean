@@ -12,9 +12,7 @@ theorem L0_GRe {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : S
     -- goal: σ.R 1 = 1
     have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
     rw [mul_one] at h
-    have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
-    have heq : σ.R 1 * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
-    exact (mul_left_cancel₀ hne heq).symm
+    exact (mul_right_eq_self₀.mp h.symm).resolve_right (σ.hRne 1 one_ne_zero)
   | succ k ih =>
     have hfk : f ^ k ≠ 0 := pow_ne_zero k hf
     rw [pow_succ, σ.hRmul (f ^ k) f hfk hf, ih, ← pow_succ]

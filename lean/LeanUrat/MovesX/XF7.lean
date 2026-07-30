@@ -353,9 +353,8 @@ theorem tailCountBound (p n D : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) :
       push_cast [Nat.cast_sub this]
       ring
     have hfiberQ : (tailCount p n D : ℚ) ≤ ((n : ℚ) - 1) * (p : ℚ) ^ (n * D - t.toNat) := by
-      have := hfiber
       have h2' : (tailCount p n D : ℚ) ≤ ((n - 1 : ℕ) : ℚ) * (p : ℚ) ^ (n * D - t.toNat) := by
-        exact_mod_cast this
+        exact_mod_cast hfiber
       rwa [hn1nat] at h2'
     -- p^t = p^(t.toNat)
     have hpt_eq : (p : ℚ) ^ t = (p : ℚ) ^ (t.toNat) := by

@@ -92,9 +92,7 @@ private lemma wQ_gt_imp_side_gt (T : Tower p F) (γ : ℚ) (f : Polynomial ℤ_[
     have hsp : (0 : ℚ) < (T.strTop : ℚ) := by exact_mod_cast hpos
     unfold Tower.wQ at hgt
     rw [← hm] at hgt ⊢
-    rw [WithTop.map_coe] at hgt
-    rw [WithTop.coe_lt_coe] at hgt
-    rw [lt_div_iff₀ hsp] at hgt
+    rw [WithTop.map_coe, WithTop.coe_lt_coe, lt_div_iff₀ hsp] at hgt
     rw [WithTop.coe_lt_coe]
     have hfloor : (⌊(T.strTop : ℚ) * γ⌋ : ℚ) ≤ (T.strTop : ℚ) * γ := Int.floor_le _
     have hlt : (⌊(T.strTop : ℚ) * γ⌋ : ℚ) < (m : ℚ) := by

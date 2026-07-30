@@ -15,13 +15,8 @@ set_option maxHeartbeats 1000000
 theorem t2Witness {n : ℕ} (ν : XNode n) (h2 : rowOf ν = .T2) :
     (ν.s0 + 1, ν.u0 + 1) ∈ ν.region ∧ 2 ≤ (ν.e - 1) * (ν.h - 1) ∧
     2 ∣ (ν.e - 1) * (ν.h - 1) := by
-  have hep := ν.ellpos
-  -- Extract the T2 characterization directly from `rowOf`.
-  have hfacts : ν.ell = 1 ∧ 2 ≤ ν.e ∧ 2 ≤ ν.h := by
-    unfold rowOf at h2
-    split_ifs at h2 with c1 c2 c3 c4
-    exact ⟨by omega, c3, c4⟩
-  obtain ⟨hell, he, hh⟩ := hfacts
+  -- Extract the T2 characterization directly from the row classifier (XA.1).
+  obtain ⟨hell, he, hh⟩ := ((rowTotal ν).2.2.1.mp h2).2
   -- Coprimality of `e, h` (both ≥ 2) forces at least one of them odd.
   have hodd : ¬ 2 ∣ ν.e ∨ ¬ 2 ∣ ν.h := by
     rw [← not_and_or]

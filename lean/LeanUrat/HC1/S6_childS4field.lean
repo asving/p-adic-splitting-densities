@@ -59,8 +59,7 @@ theorem S6_childS4field {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
   -- `z̄` is a root of `ψ` in the polynomial `eval₂` form the Moves engine expects
   have hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0 := by
     have h := th.hroot
-    rw [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self, RingHom.id_comp] at h
-    exact h
+    rwa [Polynomial.aeval_def, Polynomial.eval₂_map, Algebra.algebraMap_self, RingHom.id_comp] at h
   refine ⟨?_, ?_, ?_⟩
   · -- (1) SURJECTIVITY onto `F′`: `L4_TRANSv` at any nonzero target (`hcore` from the spine)
     intro x hx hx0

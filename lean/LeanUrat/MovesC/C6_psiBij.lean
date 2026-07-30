@@ -20,9 +20,8 @@ theorem C6_psiBij {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (k : �
     -- `Psi 0 = seg 0 0 = id`.
     exact Function.bijective_id
   | succ k ih =>
-    -- `Psi (k+1) = seg 0 (k+1) = Psi k ∘ Θ_k` (the `if 0 ≤ k` guard reduces to the `then` branch).
-    have hstep : J.Psi (k + 1) = J.Psi k ∘ J.Theta k := rfl
-    rw [hstep]
+    -- `Psi (k+1) = seg 0 (k+1) = Psi k ∘ Θ_k` (the `if 0 ≤ k` guard reduces to the `then`
+    -- branch), so the goal is defeq to the composite and `exact` closes it directly.
     exact ih.comp (C0_unitriBij (J.Theta_uni k))
 
 end LeanUrat.MovesC

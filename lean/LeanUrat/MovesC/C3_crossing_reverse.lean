@@ -12,6 +12,6 @@ namespace LeanUrat.MovesC
 theorem C3_crossing_reverse {old new : Line} (hsteep : old.slope < new.slope) (jstar : ℕ) (hend : new.at jstar ≤ old.at jstar) (b : ℕ) (hb : jstar ≤ b) : new.at b ≤ old.at b := by
   simp only [Line.at] at hend ⊢
   have hbcast : (jstar : ℚ) ≤ (b : ℚ) := by exact_mod_cast hb
-  nlinarith [mul_nonneg (le_of_lt (sub_pos.mpr hsteep)) (sub_nonneg.mpr hbcast)]
+  nlinarith [mul_nonneg (sub_pos.mpr hsteep).le (sub_nonneg.mpr hbcast)]
 
 end LeanUrat.MovesC

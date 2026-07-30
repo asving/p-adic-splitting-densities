@@ -1744,8 +1744,7 @@ theorem nsNull_of_pricing_growth (μcap : ℕ → ℝ) (μclass : ℝ) (Z : ℕ 
     (hcont : Filter.Tendsto μcap Filter.atTop (nhds μclass)) :
     μclass = 0 := by
   have hp : (1 : ℝ) < (p : ℝ) := by
-    have := (Fact.out : p.Prime).two_le
-    exact_mod_cast Nat.lt_of_lt_of_le Nat.one_lt_two this
+    exact_mod_cast (Fact.out : p.Prime).one_lt
   have hpow : Filter.Tendsto (fun k : ℕ => (p : ℝ) ^ k) Filter.atTop Filter.atTop :=
     tendsto_pow_atTop_atTop_of_one_lt hp
   have hZ : Filter.Tendsto (fun M : ℕ => (p : ℝ) ^ (Z M)) Filter.atTop Filter.atTop :=

@@ -89,7 +89,7 @@ theorem C1_TYP_fiberCount {m : ℕ} {S : Finset (Fin m)} {α : Type*} [AddCommGr
   -- assemble via Lagrange.
   calc Nat.card {y : Fin m → ZMod p // T.φ y = v ∧ ∀ c ∉ S, y c = 0} * Nat.card α
       = Nat.card ↥(g.ker) * Nat.card α := by rw [hset, hfib]
-    _ = Nat.card (↥V ⧸ g.ker) * Nat.card ↥(g.ker) := by rw [hquot]; ring
+    _ = Nat.card (↥V ⧸ g.ker) * Nat.card ↥(g.ker) := by rw [hquot, mul_comm]
     _ = Nat.card ↥V := (AddSubgroup.card_eq_card_quotient_mul_card_addSubgroup g.ker).symm
     _ = p ^ S.card := hV
 

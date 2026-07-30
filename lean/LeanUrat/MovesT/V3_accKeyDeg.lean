@@ -98,6 +98,6 @@ theorem accEF_keyDeg {n : ℕ} (l : List MovesSp.Species) (sels : List (ℕ × �
       = (l.map fun t => t.e).prod * (l.map fun t => (t.sel.getD (0, 0)).1).prod := by rw [hsg]
     _ = (l.map fun t => t.e * (t.sel.getD (0, 0)).1).prod := (List.prod_map_mul).symm
     _ = s.e * (s.sel.getD (0, 0)).1 * s.D := htel
-    _ = s.e * g * s.D := by rw [hssel]; simp
+    _ = s.e * g * s.D := by simp [hssel]
 
 end LeanUrat.MovesT

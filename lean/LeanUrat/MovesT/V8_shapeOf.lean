@@ -113,44 +113,44 @@ theorem shapeOfH_matches (H : History p F) (n : ℕ) (hlaw : HistLawful p n H) :
         anchorTie := ?_ }
     · -- species_iff
       intro r hr
-      have hr0 : r < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr0 : r < H.nodes.length := hlenR ▸ hr
       rw [hget r hr0 hr]
       exact H.root_iff r hr0
     · -- root_box
       intro h0
-      have h0' : 0 < H.nodes.length := by rw [hlenR] at h0; exact h0
+      have h0' : 0 < H.nodes.length := hlenR ▸ h0
       rw [hget 0 h0' h0]
       exact hrootbox h0'
     · -- window
       intro r hr
-      have hr1 : r + 1 < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr1 : r + 1 < H.nodes.length := hlenR ▸ hr
       have hr0 : r < H.nodes.length := by omega
       rw [hget (r + 1) hr1 hr, hget r hr0 (by omega)]
       obtain ⟨hwin, _, _, _⟩ := hchain r hr1
       exact hwin
     · -- gmu
       intro r hr
-      have hr0 : r < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr0 : r < H.nodes.length := hlenR ▸ hr
       rw [hget r hr0 hr]
       simp only [readOf, ShapeRead.len]
       obtain ⟨_, _, hgmu⟩ := hae r hr0
       exact hgmu
     · -- edvd
       intro r hr
-      have hr0 : r < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr0 : r < H.nodes.length := hlenR ▸ hr
       rw [hget r hr0 hr]
       obtain ⟨_, hedvd, _⟩ := hae r hr0
       exact hedvd
     · -- dchain0
       intro h0
-      have h0' : 0 < H.nodes.length := by rw [hlenR] at h0; exact h0
+      have h0' : 0 < H.nodes.length := hlenR ▸ h0
       rw [hget 0 h0' h0]
       simp only [readOf]
       rw [(H.nodes[0]'h0').hDwidth, hrootdeg h0']
       exact max_self 1
     · -- dchain
       intro r hr
-      have hr1 : r + 1 < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr1 : r + 1 < H.nodes.length := hlenR ▸ hr
       have hr0 : r < H.nodes.length := by omega
       rw [hget (r + 1) hr1 hr, hget r hr0 (by omega)]
       simp only [readOf, ShapeRead.childWidthS]
@@ -160,7 +160,7 @@ theorem shapeOfH_matches (H : History p F) (n : ℕ) (hlaw : HistLawful p n H) :
       simp only [Node.childWidth]
     · -- monic (MonicTie)
       intro r hr
-      have hr0 : r < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr0 : r < H.nodes.length := hlenR ▸ hr
       rw [hget r hr0 hr]
       simp only [readOf, decide_eq_true_eq]
       constructor
@@ -169,14 +169,14 @@ theorem shapeOfH_matches (H : History p F) (n : ℕ) (hlaw : HistLawful p n H) :
         exact ⟨hr00, hn, (H.root_iff r hr0).mpr hr00⟩
     · -- w0
       intro h0
-      have h0' : 0 < H.nodes.length := by rw [hlenR] at h0; exact h0
+      have h0' : 0 < H.nodes.length := hlenR ▸ h0
       rw [hget 0 h0' h0]
       simp only [readOf]
       rw [max_eq_left (hguard 0 h0'), hw0card h0']
       exact Nat.Prime.factorization_self Fact.out
     · -- wchain
       intro r hr
-      have hr1 : r + 1 < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr1 : r + 1 < H.nodes.length := hlenR ▸ hr
       have hr0 : r < H.nodes.length := by omega
       rw [hget (r + 1) hr1 hr, hget r hr0 (by omega)]
       simp only [readOf]
@@ -186,14 +186,14 @@ theorem shapeOfH_matches (H : History p F) (n : ℕ) (hlaw : HistLawful p n H) :
       exact Nat.mul_comm _ _
     · -- gamTie
       intro r hr
-      have hr0 : r < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr0 : r < H.nodes.length := hlenR ▸ hr
       rw [hget r hr0 hr]
       simp only [readOf]
       rw [← hstr r]
       exact hgam r hr0
     · -- anchorTie
       intro r hr
-      have hr0 : r < H.nodes.length := by rw [hlenR] at hr; exact hr
+      have hr0 : r < H.nodes.length := hlenR ▸ hr
       rw [hget r hr0 hr]
       simp only [readOf]
       obtain ⟨hanch, _, _⟩ := hae r hr0

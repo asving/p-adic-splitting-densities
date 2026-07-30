@@ -34,7 +34,7 @@ theorem nodeLift_exists {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
     ∃ Φhat, IsReadLift σ ψ g e' h' Φhat := by
   classical
   -- The stride `e = σ.e` is positive (`he`).
-  have he_pos : (0 : ℤ) < (σ.e : ℤ) := by have h := σ.he; omega
+  have he_pos : (0 : ℤ) < (σ.e : ℤ) := by exact_mod_cast σ.he
   -- The (S6b) realizer at slot `k` is taken at the PARENT weight `ν_k = h'·(g−k)/σ.e`
   -- (exact by `hdvd`), so its CURRENT weight is `σ.e·ν_k = h'·(g−k)` via `hStretch` — the
   -- read pair's own weight (D8), NOT the frame-creating pair's `σ.h·(g−k)` (the F10 trap).

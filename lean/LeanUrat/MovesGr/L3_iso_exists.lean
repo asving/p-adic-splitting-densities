@@ -12,7 +12,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 set_option linter.style.longLine false
 set_option linter.style.header false
 
-theorem L3_iso_exists (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; Nonempty (M.Lo ≃+* LExt ↥σ.K) := by
-  exact ⟨M.Θ⟩
+theorem L3_iso_exists (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; Nonempty (M.Lo ≃+* LExt ↥σ.K) :=
+  ⟨M.Θ⟩
 
 #print axioms L3_iso_exists

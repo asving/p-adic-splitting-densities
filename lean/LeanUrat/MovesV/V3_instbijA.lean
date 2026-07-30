@@ -78,7 +78,7 @@ private theorem foldlM_readOfLetter_slots {n : ℕ} :
   | sp :: l, P₀, P, h => by
     rw [List.foldlM_cons] at h
     cases hstep : readOfLetter? n P₀ sp.1 sp.2.1 sp.2.2 with
-    | none => rw [hstep] at h; simp at h
+    | none => simp [hstep] at h
     | some P₁ =>
       rw [hstep] at h
       rw [foldlM_readOfLetter_slots l P₁ P h, readOfLetter?_slots hstep]
@@ -108,7 +108,7 @@ theorem writeHeights?_pairSlots {n : ℕ} {εT : EntTemplate n}
   rw [writeHeights?] at hw
   cases hP : shapeOfSlots? n (expandRuns n εT.word (εT.depthSlots h))
       (εT.pairSlots h) with
-  | none => rw [hP] at hw; simp at hw
+  | none => simp [hP] at hw
   | some P =>
     rw [hP] at hw
     simp only [Option.bind_some] at hw

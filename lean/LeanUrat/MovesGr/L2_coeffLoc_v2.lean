@@ -19,15 +19,11 @@ private lemma tUnit_val (R : Type*) [CommRing R] (a : ℤ) :
     ((tUnit R a : (LaurentPolynomial R)ˣ) : LaurentPolynomial R) = LaurentPolynomial.T a := rfl
 
 private lemma tUnit_mul (R : Type*) [CommRing R] (a b : ℤ) :
-    tUnit R a * tUnit R b = tUnit R (a + b) := by
-  apply Units.ext
-  show LaurentPolynomial.T a * LaurentPolynomial.T b = LaurentPolynomial.T (a + b)
-  rw [LaurentPolynomial.T_add]
+    tUnit R a * tUnit R b = tUnit R (a + b) :=
+  Units.ext (LaurentPolynomial.T_add _ _).symm
 
-private lemma tUnit_zero (R : Type*) [CommRing R] : tUnit R 0 = 1 := by
-  apply Units.ext
-  show LaurentPolynomial.T 0 = 1
-  rw [LaurentPolynomial.T_zero]
+private lemma tUnit_zero (R : Type*) [CommRing R] : tUnit R 0 = 1 :=
+  Units.ext LaurentPolynomial.T_zero
 
 private lemma tUnit_inv (R : Type*) [CommRing R] (a : ℤ) :
     (tUnit R a)⁻¹ = tUnit R (-a) := by

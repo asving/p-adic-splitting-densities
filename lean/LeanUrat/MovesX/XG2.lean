@@ -30,10 +30,9 @@ theorem koenigFinite {n p : ℕ} [Fact p.Prime] (C : XCtx n p) (f : MonicBox n p
   -- an infinite subtree has a child whose subtree is again infinite, so we can descend
   -- forever, contradicting `hbranch`.
   by_contra hfin
-  rw [not_finite_iff_infinite] at hfin
-  haveI : Infinite (C.Branch f) := hfin
+  haveI : Infinite (C.Branch f) := not_finite_iff_infinite.mp hfin
   -- `r c d` : `d` is the parent of `c`; `Sub b` : the descendants of `b` (incl. `b`).
-  set r : C.Branch f → C.Branch f → Prop := fun c d => C.parent c = some d with hr
+  set r : C.Branch f → C.Branch f → Prop := fun c d => C.parent c = some d
   set Sub : C.Branch f → Set (C.Branch f) := fun b => { c | Relation.ReflTransGen r c b }
     with hSub
   -- An infinite subtree has a child whose subtree is infinite.

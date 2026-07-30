@@ -92,9 +92,8 @@ private lemma joint_numPinned {Sigma Z : Locus p m} (hZ : AdmissibleZ Sigma Z) :
 
 theorem C6_transportedAdmissible {m : ℕ} (Sigma Z : Locus p m) (hZ : AdmissibleZ Sigma Z) : Nat.card {x : Fin m → ZMod p // Sigma.IsSolution x ∧ Z.IsSolution x} * p ^ Z.numPinned = Sigma.mass := by
   have hcard : Nat.card {x : Fin m → ZMod p // Sigma.IsSolution x ∧ Z.IsSolution x}
-      = (joint Sigma Z).mass := by
-    unfold Locus.mass
-    exact Nat.card_congr (Equiv.subtypeEquivRight (fun x => (joint_isSol hZ x).symm))
+      = (joint Sigma Z).mass :=
+    Nat.card_congr (Equiv.subtypeEquivRight (fun x => (joint_isSol hZ x).symm))
   rw [hcard, massForm, massForm, joint_numPinned hZ]
   have hle : Sigma.numPinned + Z.numPinned ≤ m := by
     have := numPinned_le (joint Sigma Z)

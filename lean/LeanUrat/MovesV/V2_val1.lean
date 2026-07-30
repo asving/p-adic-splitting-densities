@@ -45,7 +45,6 @@ theorem val1_origin {F : Type*} [Field F] [Fintype F] :
     (Finset.univ.filter
         (fun t : Fˣ × Fˣ => (((t.1 : F), (t.2 : F)) : F × F) = (0, 0))).card
       = 0 := by
-  have := val1_fiber_count (F := F) (0, 0)
-  simpa using this
+  simpa using val1_fiber_count (F := F) (0, 0)
 
 end LeanUrat.MovesV

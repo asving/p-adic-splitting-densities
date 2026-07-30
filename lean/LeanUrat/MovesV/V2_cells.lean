@@ -12,7 +12,6 @@ noncomputable instance BlockData.cellIdxFintype {n : ℕ} {s : Skeleton n}
   classical
   haveI := B.finG
   haveI := fun g => (B.gen g).finI
-  haveI : Fintype (∀ g : B.Gen, (B.gen g).idx) := by infer_instance
   exact Subtype.fintype _
 
 open Classical in

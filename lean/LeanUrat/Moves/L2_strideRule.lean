@@ -13,8 +13,8 @@ import LeanUrat.Moves.Defs
 
 `R` is multiplicative on nonzero factors (`hRmul`), so `R(B·Φ^j) = R(B)·R(Φ^j)`; the key
 residual power `R(Φ^j) = T(s·j)` follows from `hRΦ : R Φ = T s` by induction, using that
-`T : ℤ → L₀` is a monoid hom (`T_add`, `T_zero`). `L2.keyResidualPow` is not yet on disk,
-so it is reproved here as the private lemma `R_keyPow`.
+`T : ℤ → L₀` is a monoid hom (`T_add`, `T_zero`). `L2.keyResidualPow` (the standalone form of
+this identity) is not imported here, so it is reproved as the private lemma `R_keyPow`.
 -/
 
 set_option linter.style.longLine false
@@ -30,9 +30,8 @@ private lemma R_one {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (σ : Stage p F) : σ.R 1 = 1 := by
   have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
   rw [mul_one] at h
-  have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
-  have he : σ.R 1 * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
-  exact (mul_left_cancel₀ hne he).symm
+  have he : σ.R 1 * 1 = σ.R 1 * σ.R 1 := by rw [mul_one, ← h]
+  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) he).symm
 
 /-- `R(Φ^j) = z^{js} = T(s·j)` (D.3(b) power form; the not-yet-on-disk `L2.keyResidualPow`). -/
 private lemma R_keyPow {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]

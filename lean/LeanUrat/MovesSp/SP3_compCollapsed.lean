@@ -45,7 +45,7 @@ theorem SP_COMP_collapsed (n p : ℕ) (hn : 1 ≤ n) [Fact p.Prime]
     have hlt : ((i + 1 : ℕ) : ℕ∞) < M.len η :=
       lt_of_lt_of_le (by exact_mod_cast h) hm
     have hcohbud := M.hCoh η (i + 1) (by exact_mod_cast hlt)
-    exact ⟨M.hStage η i (by exact_mod_cast hlt), hcohbud.1, hcohbud.2⟩
+    exact ⟨M.hStage η i (by exact_mod_cast hlt), hcohbud⟩
   -- (3) collapseRuns of that chain is a CollapsedWalk; dagWalk bounds it by 6n².
   exact SP_DAG_walk hn (collapseRuns_collapsedWalk hmem hch)
 

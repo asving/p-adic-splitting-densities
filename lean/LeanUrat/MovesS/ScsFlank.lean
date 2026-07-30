@@ -48,8 +48,7 @@ theorem scs_flank {T : TableShape n} (S : SCSData T) {e : ℕ}
       Multiset.card_eq_zero.mp herase
     have hce := Multiset.cons_erase (S.sel_mem e τ o)
     rw [hz] at hce
-    rw [← hce]
-    rfl
+    exact hce.symm
   -- flankCount = 0 ⟹ flankWidth = 0 ⟹ window_comp collapses to W = e·ℓ.
   have part3 : S.W e τ o = e * S.ℓ e τ o := by
     have hfw : S.flankWidth e τ o = 0 := S.flank_zero e τ o part1

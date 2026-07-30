@@ -1,5 +1,5 @@
 {
- "campaign": "MOVES SectionX-EXHAUST - Lean formalization (MovesX corpus, E-PHASE: stated units, all bodies sorry)",
+ "campaign": "MOVES SectionX-EXHAUST - Lean formalization (MovesX corpus, PROVED: all theorem-bearing units proved, 0 sorries corpus-wide; XE.1a-h are def-witness units with no proof obligation)",
  "source": "lean/notes/MOVES_2026-07-24.md SectionX-EXHAUST rev 8 (DUAL-ACCEPTED)",
  "blueprint": "lean/notes/MOVESX_LEAN_BLUEPRINT_2026-07-28.md (rev 4, dual-accepted at 0/0; DEVIATIONS section appended at E-phase)",
  "defs": {
@@ -11,9 +11,9 @@
  "preamble": "Every unit file: import LeanUrat.MovesX.Defs (+ earlier units per deps); namespace LeanUrat.MovesX; set_option linter.style.longLine/header false, linter.unusedVariables false, maxHeartbeats 1000000. Build per module with lake build LeanUrat.MovesX.<id> (NEVER whole-project lake build).",
  "statement_fence": "Statements are the blueprint Section3 verbatim (rev 4). Do NOT weaken a statement to prove it; do NOT edit MovesX/Defs.lean without re-running the elaboration sample. EXCEPTION (2026-07-27): XE.2/XE.3 restated post-refutation per blueprint §7 — the §3 rev-4+restatement text is the new frozen form.",
  "sorry_census": {
-  "total": 44,
-  "sorry_bearing_units": 40,
-  "extra": "XA.7b carries its 2 blueprint example anchors (+2); XD.1 is a 3-declaration unit per its spec (+2); XE.1a-h are def-witness units (kernel defs live in Defs Section D) with NO proof obligation (0 sorries each)"
+  "total": 0,
+  "sorry_bearing_units": 0,
+  "extra": "AS-BUILT 2026-07-30: all theorem-bearing units PROVED, 0 sorry in any body (grep-verified corpus-wide; every module builds green individually). Historical E-phase target was 44 sorries across 40 units. XA.7b carries 2 blueprint example anchors (now proved examples); XD.1 is a 3-declaration unit; XE.1a-h are def-witness units (kernel defs live in Defs Section D) with NO proof obligation (0 sorries each, status kept 'stated')."
  },
  "units": [
   {
@@ -22,8 +22,8 @@
    "decls": [
     "rowTotal"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "Defs"
@@ -36,8 +36,8 @@
    "decls": [
     "selForce"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "XA.1"
@@ -50,8 +50,8 @@
    "decls": [
     "t1Witness"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "XA.1"
@@ -64,8 +64,8 @@
    "decls": [
     "t1Arith"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [],
    "statement_sha256": "468437b2f1431e52f9fffda0d38d27df764d941a93e189de0f071268b92b17ce"
@@ -76,8 +76,8 @@
    "decls": [
     "t2Witness"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XA.1"
@@ -90,8 +90,8 @@
    "decls": [
     "lat1"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "Defs"
@@ -104,8 +104,8 @@
    "decls": [
     "latSlice"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "Defs"
@@ -120,8 +120,8 @@
     "example (anchor l=1)",
     "example (anchor e=h=l=1)"
    ],
-   "sorries": 3,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XA.6",
@@ -135,8 +135,8 @@
    "decls": [
     "t34Zero"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "XA.1",
@@ -150,8 +150,8 @@
    "decls": [
     "ind2Region"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XA.3",
@@ -170,8 +170,8 @@
    "decls": [
     "dCertZero"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "Defs"
@@ -184,8 +184,8 @@
    "decls": [
     "dCertMono"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "Defs"
@@ -198,8 +198,8 @@
    "decls": [
     "fourPop"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XA.1"
@@ -212,8 +212,8 @@
    "decls": [
     "t3Charge"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XA.1"
@@ -226,8 +226,8 @@
    "decls": [
     "x1aChain"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "Defs"
@@ -240,8 +240,8 @@
    "decls": [
     "x1aTrivial"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "XB.1"
@@ -254,8 +254,8 @@
    "decls": [
     "x1bReduction"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XB.2",
@@ -271,8 +271,8 @@
    "decls": [
     "x1bReductionT4"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XB.2",
@@ -290,8 +290,8 @@
     "capTotal",
     "maxHNil"
    ],
-   "sorries": 3,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "Defs"
@@ -304,8 +304,8 @@
    "decls": [
     "x2hypCount"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "Defs"
@@ -318,8 +318,8 @@
    "decls": [
     "x2hypDichotomy"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [],
    "statement_sha256": "42113ed51f2f3af550b06a3d533460b47851e7a46254e47150233543851525bc"
@@ -330,8 +330,8 @@
    "decls": [
     "x2hypAssembled"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XD.1",
@@ -458,8 +458,8 @@
    "decls": [
     "envelopeExp"
    ],
-   "sorries": 1,
-   "status": "restated-post-refutation+D9-rebind",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XC.3",
@@ -478,8 +478,8 @@
    "decls": [
     "envelopeSqrt"
    ],
-   "sorries": 1,
-   "status": "restated-post-refutation+D9-rebind",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XC.3",
@@ -499,8 +499,8 @@
    "decls": [
     "discCylinder"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "Defs"
@@ -513,8 +513,8 @@
    "decls": [
     "discResBridge"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "Defs"
@@ -527,8 +527,8 @@
    "decls": [
     "valExtOf (noncomputable def)"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "Defs"
@@ -541,8 +541,8 @@
    "decls": [
     "resRootSum"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "Defs"
@@ -555,8 +555,8 @@
    "decls": [
     "pigeonMax"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [],
    "statement_sha256": "d92e613b1ed34ecfbd8e1c7c3552927b66ba654e2f5961c2e846bd584a30a40b"
@@ -567,8 +567,8 @@
    "decls": [
     "ballCover"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XF.2",
@@ -584,8 +584,8 @@
    "decls": [
     "tailCountBound"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XF.1",
@@ -600,8 +600,8 @@
    "decls": [
     "tailZero"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XF.7"
@@ -614,8 +614,8 @@
    "decls": [
     "discZeroNull"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XF.8"
@@ -628,8 +628,8 @@
    "decls": [
     "branchLenBound"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "easy",
    "deps": [
     "XC.3",
@@ -643,8 +643,8 @@
    "decls": [
     "koenigFinite"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "Defs"
@@ -657,8 +657,8 @@
    "decls": [
     "detectJoin"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "Defs"
@@ -671,8 +671,8 @@
    "decls": [
     "interTrichotomy"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "medium",
    "deps": [
     "XG.2b"
@@ -685,8 +685,8 @@
    "decls": [
     "treeFinite"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XG.1",
@@ -700,8 +700,8 @@
    "decls": [
     "x3Density"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XG.2c",
@@ -717,8 +717,8 @@
    "decls": [
     "x3Series"
    ],
-   "sorries": 1,
-   "status": "stated",
+   "sorries": 0,
+   "status": "proved",
    "difficulty": "hard",
    "deps": [
     "XG.3",
@@ -729,7 +729,8 @@
  ],
  "counts": {
   "total_units": 48,
-  "stated": 48,
+  "proved": 40,
+  "def_witness_stated": 8,
   "blocked": 0,
   "by_difficulty": {
    "easy": 19,

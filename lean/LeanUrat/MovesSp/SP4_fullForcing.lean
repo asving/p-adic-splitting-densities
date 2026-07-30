@@ -42,9 +42,7 @@ theorem full_forces {n} {s : Species} (hc : Coherent s)
   have hle : s.e * s.W ≤ s.W := by omega
   have hge : s.W ≤ s.e * s.W := Nat.le_mul_of_pos_left s.W he
   have heW : s.e * s.W = s.W := le_antisymm hle hge
-  have he_eq : s.e = 1 := by
-    have hmul : s.e * s.W = 1 * s.W := by rw [heW, one_mul]
-    exact Nat.eq_of_mul_eq_mul_right hW hmul
+  have he_eq : s.e = 1 := Nat.eq_of_mul_eq_mul_right hW (by rw [heW, one_mul])
   have hs0 : s.s0 = 0 := by omega
   -- The λ-multiset: (1,W) is a member, and it carries all the sum ℓ = W.
   have hmem : (1, s.W) ∈ s.lam := hG4sel (1, s.W) hf'
@@ -53,7 +51,6 @@ theorem full_forces {n} {s : Species} (hc : Coherent s)
   have hrsum : (Multiset.map (fun gm : ℕ × ℕ => gm.1 * gm.2) r).sum = 0 := by
     have h := hG4sum
     rw [hr, hell_eq, Multiset.map_cons, Multiset.sum_cons] at h
-    have h2 : 1 * s.W + (Multiset.map (fun gm : ℕ × ℕ => gm.1 * gm.2) r).sum = s.W := h
     omega
   have hr0 : r = 0 := by
     by_contra hne

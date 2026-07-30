@@ -85,9 +85,7 @@ lemma canonRoot_toyHead : canonRoot toyHead = ((toyHead.zbar : (ZMod 2)ˣ) : ZMo
 
 lemma canonRoot_sibNode2 : canonRoot sibNode2 = ((sibNode2.zbar : (ZMod 2)ˣ) : ZMod 2) := by
   have e1 : canonRoot sibNode2 = canonRoot toyHead := by unfold canonRoot ψImage; rfl
-  have e2 : ((sibNode2.zbar : (ZMod 2)ˣ) : ZMod 2) = ((toyHead.zbar : (ZMod 2)ˣ) : ZMod 2) := by
-    rfl
-  rw [e1, e2]; exact canonRoot_toyHead
+  rw [e1]; exact canonRoot_toyHead
 
 lemma laws_t1 : HistoryCoherent t1 ∧ Realizable t1 ∧ polTriv.IsCanonPres t1 := by
   have hn : t1.nodes = [toyHead] := t1_nodes
@@ -315,7 +313,7 @@ lemma contfib_set (ν : Node 2 (ZMod 2)) (hr : ChildRoot none ν)
     have hcontra := (hcf.1 (childHist none ν hr)).mpr
       ⟨List.prefix_refl _, hmemself, fun H'' hp1 hp2 h3 =>
         absurd (histext ((hp1.sublist.antisymm hp2.sublist))).symm h3⟩
-    simpa using hcontra
+    simp at hcontra
 
 /-! ### the gate -/
 

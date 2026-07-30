@@ -64,7 +64,7 @@ theorem treeN_ns (Tr : VTree p F) (H : History p F)
     exact Nat.card_pos
   -- Real casts.
   have hp0 : (0 : ℝ) < (p : ℝ) := by
-    have := (Fact.out : p.Prime).pos; exact_mod_cast this
+    exact_mod_cast (Fact.out : p.Prime).pos
   have hpPpos : (0 : ℝ) < (p : ℝ) ^ (n * N'.1) := pow_pos hp0 _
   have hDposR : (0 : ℝ) < (Nat.card ↥(stateTruncAt Jat N'.1) : ℝ) := by exact_mod_cast hDpos
   have hfbR : (Nat.card ↥{x : Box p (n * N'.1) | Tr.fiberAt (Tat N'.1 N'.2) (χat N'.1) x} : ℝ)

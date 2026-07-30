@@ -17,7 +17,6 @@ theorem measured_values_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     ∃ M : MovesS.MeasuredSide T,
       (∀ e (τ β : T.State e) (q₀ : ℚ),
         M.kstep 0 e τ β q₀ = if τ = β then 1 else 0) := by
-  classical
   refine ⟨{
     Pools := V.Pools
     pools_prime_pow := V.pools_pp

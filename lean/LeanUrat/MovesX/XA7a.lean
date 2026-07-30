@@ -71,8 +71,7 @@ private lemma fiber_card (s0 u0 e h ell k : ℕ) (he : 1 ≤ e) (hh : 1 ≤ h) (
   set Fk := Finset.filter (fun q : ℕ × ℕ => (q.1 - s0 - 1) / e = k) (p1Region s0 u0 e h ell) with hFk
   have hkexp : (k + 1) * e = k * e + e := by ring
   have hle : (k + 1) * e ≤ e * ell := by
-    have h' : (k + 1) * e ≤ ell * e := Nat.mul_le_mul_right e (by omega)
-    rw [Nat.mul_comm e ell]; exact h'
+    rw [Nat.mul_comm e ell]; exact Nat.mul_le_mul_right e (by omega)
   -- rectangle: the low points of the column, triangle constraint automatic
   have hStepB : Finset.filter (fun q => q.2 ≤ u0 + (ell - 1 - k) * h) Fk
       = Finset.Ioc (s0 + k * e) (s0 + (k + 1) * e) ×ˢ Finset.Ioc u0 (u0 + (ell - 1 - k) * h) := by
@@ -84,8 +83,7 @@ private lemma fiber_card (s0 u0 e h ell k : ℕ) (he : 1 ≤ e) (hh : 1 ≤ h) (
     · rintro ⟨⟨hxlo, hxhi⟩, hylo, hyhi⟩
       have hx1 : s0 < q.1 := by omega
       have hle2 : (ell - 1 - k) * h ≤ h * ell := by
-        have h' : (ell - 1 - k) * h ≤ ell * h := Nat.mul_le_mul_right h (by omega)
-        rw [Nat.mul_comm h ell]; exact h'
+        rw [Nat.mul_comm h ell]; exact Nat.mul_le_mul_right h (by omega)
       have hid : h * ((k + 1) * e) + e * ((ell - 1 - k) * h) = e * h * ell := by
         have hsum : (k + 1) + (ell - 1 - k) = ell := by omega
         calc h * ((k + 1) * e) + e * ((ell - 1 - k) * h)

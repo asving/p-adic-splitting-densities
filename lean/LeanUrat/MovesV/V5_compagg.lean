@@ -87,13 +87,18 @@ theorem iotaEps_iotashH_bridge {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     _ = ((V.entEvt ε β₀ q₀ L).card : ℝ) * (q₀ : ℝ) ^ (ε.A : ℕ) := by rw [hcard]
     _ = ((V.entInst ε β₀ q₀ L).card : ℝ) * (q₀ : ℝ) ^ (n * L) := hentR
 
+/-- (COMP-AGG).  HYPOTHESIS-TRIMMED AT GOLF (2026-07-30, dead-decl rule, zero
+consumers): the E-phase binders `P : C15Pack`, `U : XHDu`, `DE : XHDdEnt`,
+`hTie : MarkFiberTie`, `hHMC : HMC`, and `hobs : ∀ s, ObsCheck (C.bd s)` were
+verified unused — the proof consumes only `cc`/`Xs`/`XsEnt`/`hdom`/`hEU` (plus
+the hobs-free bridge theorem above).  ctsM (V7-2b) now consumes this producer
+directly instead of inlining the body; its `CompAgg_Stmt` clause keeps HMC as
+the (unused) antecedent. -/
 theorem comp_agg {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     {V : CtsMeasured n C S} {TE : TmplEvents n S} {D : XHDd n S TE}
-    (cc : CompCarrier V TE) (P : C15Pack n S) (X : XHDw n S) (U : XHDu n S)
-    (Xs : XHDs n S X D) (XsEnt : XHDsEnt n S V) (DE : XHDdEnt n S V)
-    (hTie : MarkFiberTie TE) (hHMC : HMC TE D) (hdom : EntDomOrder0 V)
-    (hEU : EntU V)
-    (hobs : ∀ s : Skeleton n, ObsCheck (C.bd s))
+    (cc : CompCarrier V TE) (X : XHDw n S)
+    (Xs : XHDs n S X D) (XsEnt : XHDsEnt n S V)
+    (hdom : EntDomOrder0 V) (hEU : EntU V)
     (β₀ : S.Cell) {α} (γ : Template n S α) {q₀ : ℚ} (hq : q₀ ∈ V.Pools) :
     aggMass cc Xs hdom β₀ γ q₀
       = iotaValV V XsEnt β₀ q₀ * stepProdVal V Xs γ q₀ := by

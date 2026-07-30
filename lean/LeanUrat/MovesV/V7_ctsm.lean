@@ -86,59 +86,11 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
       intro hn h2 e he τ o
       subst hn
       exact surplus_zero L.T L.stage_laws.degcons_all h2 e he τ o
-    -- (iv)-REP: rep_row's proof inlined — the producer (V4_rep) also binds
-    -- hobs/P/U, which the ledger lacks, but its proof consumes only cp + X.dC.
+    -- (iv)-REP: the producer rep_row (V4-9), hypothesis-trimmed at golf
+    -- 2026-07-30 — its live premises are exactly the ledger's cp + X.dC.
     rep := by
       intro τ q₀ hq x x' hzc hzc'
-      classical
-      unfold measuredRow
-      refine tsum_congr (fun ch => ?_)
-      obtain ⟨c, D, h⟩ := ch
-      cases c with
-      | inl dc =>
-        obtain ⟨⟨d, hd⟩, c⟩ := dc
-        subst hd
-        simp only [μcellH]
-        split
-        · next e =>
-          rw [eq_of_heq (cast_heq _ x), eq_of_heq (cast_heq _ x')]
-          have hcnt : L.V.cntc d x c (castHpt e h)
-              = L.V.cntc d x' c (castHpt e h) := by
-            by_cases hmem : (L.V.cdom d c).Mem (castHpt e h)
-            · have hq1 := L.cp.count d c x hzc hq (castHpt e h) hmem
-              have hq2 := L.cp.count d c x' hzc' hq (castHpt e h) hmem
-              exact_mod_cast hq1.symm.trans hq2
-            · have hz : L.V.cntc d x c (castHpt e h) = 0 :=
-                Nat.eq_zero_of_not_pos
-                  (fun hpos => hmem (L.X.dC.no_orphanC d x c _ hq hzc hpos))
-              have hz' : L.V.cntc d x' c (castHpt e h) = 0 :=
-                Nat.eq_zero_of_not_pos
-                  (fun hpos => hmem (L.X.dC.no_orphanC d x' c _ hq hzc' hpos))
-              rw [hz, hz']
-          rw [hcnt]
-        · rfl
-      | inr vdc =>
-        obtain ⟨v, ⟨d, hd⟩, c⟩ := vdc
-        subst hd
-        simp only [μcellH]
-        split
-        · next e =>
-          rw [eq_of_heq (cast_heq _ x), eq_of_heq (cast_heq _ x')]
-          have hcnt : L.V.cntcT d x c (castHpt e h)
-              = L.V.cntcT d x' c (castHpt e h) := by
-            by_cases hmem : (L.V.cdomT d c).Mem (castHpt e h)
-            · have hq1 := L.cp.countT d c x hzc hq (castHpt e h) hmem
-              have hq2 := L.cp.countT d c x' hzc' hq (castHpt e h) hmem
-              exact_mod_cast hq1.symm.trans hq2
-            · have hz : L.V.cntcT d x c (castHpt e h) = 0 :=
-                Nat.eq_zero_of_not_pos
-                  (fun hpos => hmem (L.X.dC.no_orphanCT d x c _ hq hzc hpos))
-              have hz' : L.V.cntcT d x' c (castHpt e h) = 0 :=
-                Nat.eq_zero_of_not_pos
-                  (fun hpos => hmem (L.X.dC.no_orphanCT d x' c _ hq hzc' hpos))
-              rw [hz, hz']
-          rw [hcnt]
-        · rfl
+      exact rep_row L.X.w L.cp L.X.dC hq x x' hzc hzc'
     meas :=
       ⟨fun x N mp mp' h => MarkDisj L.V mp mp' h N,
        fun x N mp mp' h => MarkDisj_pt L.V mp mp' h N,
@@ -151,169 +103,13 @@ theorem ctsM {n : ℕ} (L : CtsmLedger n)
       exact ⟨comp_sigma L.cc L.pack L.X.w L.X.u L.X.s L.hMark hHMC ε β₀ γ hq,
         comp_sigma_hasSum L.cc L.pack L.X.w L.X.u hcomp hstab L.X.s L.hMark
           hHMC ε β₀ γ hq⟩
-    -- (COMP-AGG): V5_compagg.comp_agg's proof inlined — the producer also
-    -- binds hobs (∀ s, ObsCheck), which the ledger lacks, but its proof
-    -- consumes only cc/X.s/X.sEnt/hEU (+ the bridge theorem, hobs-free).
+    -- (COMP-AGG): the producer V5_compagg.comp_agg (V5-6), hypothesis-trimmed
+    -- at golf 2026-07-30 — its live premises are the ledger's
+    -- cc/X.w/X.s/X.sEnt/hEU + the clause's threaded hdomS (the HMC antecedent
+    -- stays unused, as in the producer).
     comp_agg := by
       intro _hHMC hdomS β₀ α γ q₀ hq
-      classical
-      letI : Finite (EntTemplate n) := template_finite n
-      letI : Fintype (EntTemplate n) := Fintype.ofFinite _
-      letI : Finite (L.V.EntIx β₀) := by
-        unfold CtsMeasured.EntIx; exact Subtype.finite
-      letI : Fintype (L.V.EntIx β₀) := Fintype.ofFinite _
-      have hq1 : (1 : ℚ) < q₀ := L.S.pools_gt_one q₀ (L.V.pools_sub hq)
-      have hq0 : (0 : ℝ) < (q₀ : ℝ) := by exact_mod_cast lt_trans one_pos hq1
-      -- ── the (ENT-U) fiber leg: per landing (εT, j) the component sums to ιsh
-      have hfiber : ∀ (εT : EntTemplate n) (hl : L.V.entLands εT β₀)
-          (j : Fin (L.V.entDom εT).comps.length),
-          HasSum (fun x : {h // ((L.V.entDom εT).comps.get j).Mem h} =>
-              ιshH L.V εT x.1 β₀ q₀)
-            (iotaShV L.V L.X.sEnt ⟨⟨εT, j⟩, hl⟩ q₀) := by
-        intro εT hl j
-        set i : L.V.EntIx β₀ := ⟨⟨εT, j⟩, hl⟩ with hi
-        have hIC : ∀ (h : Hpt εT.entDim) (hs : Order0Perimeter εT h),
-            L.V.instCensus εT h β₀ q₀
-              = L.V.entCensus (writeHeights εT h hs) β₀ q₀ := by
-          intro h hs
-          have hsome : writeHeights? εT h = some (writeHeights εT h hs) :=
-            (Option.some_get (writeHeights_total_of_perimeter εT h hs)).symm
-          unfold CtsMeasured.instCensus
-          rw [hsome]
-          simp
-        obtain ⟨P', _, hP'⟩ := L.hEU β₀ i
-        have hconst : ∀ x : {h // ((L.V.entDom εT).comps.get j).Mem h},
-            (L.V.instCensus εT x.1 β₀ q₀ : ℝ) = (L.V.entCount i q₀ : ℝ) := by
-          intro x
-          have hsx : Order0Perimeter εT x.1 := hdomS.comp εT j x.2
-          have hsb : Order0Perimeter εT ((L.V.entDom εT).comps.get j).base :=
-            hdomS.comp εT j (linset_base_mem ((L.V.entDom εT).comps.get j))
-          have e1 := hP' x.1 x.2 hsx q₀ hq
-          have e2 := hP' _ (linset_base_mem ((L.V.entDom εT).comps.get j))
-            hsb q₀ hq
-          have hqq : (L.V.entCensus (writeHeights εT x.1 hsx) β₀ q₀ : ℚ)
-              = (L.V.entCensus (writeHeights εT
-                  ((L.V.entDom εT).comps.get j).base hsb) β₀ q₀ : ℚ) :=
-            e1.symm.trans e2
-          rw [hIC x.1 hsx,
-            show L.V.entCount i q₀
-                = L.V.instCensus εT ((L.V.entDom εT).comps.get j).base β₀ q₀ from rfl,
-            hIC ((L.V.entDom εT).comps.get j).base hsb]
-          exact_mod_cast hqq
-        have hfun : (fun x : {h // ((L.V.entDom εT).comps.get j).Mem h} =>
-              ιshH L.V εT x.1 β₀ q₀)
-            = (fun x => (L.V.entCount i q₀ : ℝ)
-                * (q₀ : ℝ) ^ (-((instA εT x.1 : ℕ) : ℤ))) := by
-          funext x; unfold ιshH; rw [hconst x]
-        have hval : iotaShV L.V L.X.sEnt i q₀
-            = (L.V.entCount i q₀ : ℝ)
-              * ((evalAt q₀
-                  ⟨L.X.sEnt.Gent β₀ i, L.X.sEnt.Gent_ok β₀ i q₀ hq⟩ : ℚ) : ℝ) := by
-          unfold iotaShV; rw [dif_pos hq]
-        rw [hfun, hval]
-        exact (L.X.sEnt.Gent_hasSum β₀ i q₀ hq).mul_left (L.V.entCount i q₀ : ℝ)
-      -- ── the per-ε̊ inner sum: landing templates give the component ιsh sums
-      --    (bridge + V0-3), non-landing templates give 0 (the ADJUDICATED law)
-      have hinner : ∀ εT : EntTemplate n,
-          (∑' hh : {h // (L.V.entDom εT).Mem h},
-            iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀)
-          = if hl : L.V.entLands εT β₀
-            then ∑ j, iotaShV L.V L.X.sEnt ⟨⟨εT, j⟩, hl⟩ q₀ else 0 := by
-        intro εT
-        by_cases hl : L.V.entLands εT β₀
-        · rw [dif_pos hl]
-          have hbr : ∀ hh : {h // (L.V.entDom εT).Mem h},
-              iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀
-                = ιshH L.V εT hh.1 β₀ q₀ :=
-            fun hh => iotaEps_iotashH_bridge L.cc εT hh.1
-              (hdomS εT hh.1 hh.2) β₀ hq
-          rw [tsum_congr hbr]
-          have hng : ∀ h : Hpt εT.entDim, 0 ≤ ιshH L.V εT h β₀ q₀ := fun h =>
-            mul_nonneg (Nat.cast_nonneg _) (zpow_nonneg hq0.le _)
-          exact (semilin_sum_exact (L.V.entDom εT)
-            (fun h => ιshH L.V εT h β₀ q₀) hng
-            (fun j => iotaShV L.V L.X.sEnt ⟨⟨εT, j⟩, hl⟩ q₀)
-            (fun j => hfiber εT hl j)).tsum_eq
-        · rw [dif_neg hl]
-          have hz : ∀ hh : {h // (L.V.entDom εT).Mem h},
-              iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀
-                = 0 := by
-            intro hh
-            exact L.cc.ιN_lands εT hh.1 β₀ hq hl
-              (writeHeights εT hh.1 (hdomS εT hh.1 hh.2))
-              (Option.get_mem (writeHeights_total_of_perimeter εT hh.1
-                (hdomS εT hh.1 hh.2))) _
-          rw [tsum_congr hz]
-          exact tsum_zero
-      -- ── the finite ε̊-aggregate re-indexes to the entLands-filtered EntIx
-      letI : Fintype {p : Σ εT : EntTemplate n,
-          Fin (L.V.entDom εT).comps.length // L.V.entLands p.1 β₀} :=
-        Fintype.ofFinite _
-      have hKEY : (∑' εT : EntTemplate n, ∑' hh : {h // (L.V.entDom εT).Mem h},
-          iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀)
-            = iotaValV L.V L.X.sEnt β₀ q₀ := by
-        rw [tsum_congr hinner, tsum_fintype]
-        set G : (Σ εT : EntTemplate n, Fin (L.V.entDom εT).comps.length) → ℝ :=
-          fun p => if hl : L.V.entLands p.1 β₀
-            then iotaShV L.V L.X.sEnt ⟨p, hl⟩ q₀ else 0 with hG
-        have h4 : (∑ εT : EntTemplate n, if hl : L.V.entLands εT β₀
-              then ∑ j, iotaShV L.V L.X.sEnt ⟨⟨εT, j⟩, hl⟩ q₀ else 0)
-            = ∑ εT : EntTemplate n, ∑ j, G ⟨εT, j⟩ := by
-          refine Finset.sum_congr rfl fun εT _ => ?_
-          by_cases hl : L.V.entLands εT β₀
-          · rw [dif_pos hl]
-            refine Finset.sum_congr rfl fun j _ => ?_
-            simp only [hG]
-            rw [dif_pos hl]
-          · rw [dif_neg hl]
-            symm
-            refine Finset.sum_eq_zero fun j _ => ?_
-            simp only [hG]
-            rw [dif_neg hl]
-        have h5 : (∑ εT : EntTemplate n, ∑ j, G ⟨εT, j⟩)
-            = ∑ p : (Σ εT : EntTemplate n,
-                Fin (L.V.entDom εT).comps.length), G p := by
-          rw [← Finset.univ_sigma_univ, Finset.sum_sigma]
-        have h6 : (∑ p : (Σ εT : EntTemplate n,
-              Fin (L.V.entDom εT).comps.length), G p)
-            = ∑ p ∈ Finset.univ.filter
-                (fun p : (Σ εT : EntTemplate n,
-                  Fin (L.V.entDom εT).comps.length) =>
-                  L.V.entLands p.1 β₀), G p := by
-          symm
-          refine Finset.sum_filter_of_ne fun p _ hne => ?_
-          by_contra hnl
-          exact hne (by simp only [hG]; rw [dif_neg hnl])
-        have h7 : (∑ p ∈ Finset.univ.filter
-              (fun p : (Σ εT : EntTemplate n,
-                Fin (L.V.entDom εT).comps.length) =>
-                L.V.entLands p.1 β₀), G p)
-            = ∑ i : {p : Σ εT : EntTemplate n,
-                Fin (L.V.entDom εT).comps.length // L.V.entLands p.1 β₀}, G i.1 :=
-          Finset.sum_subtype
-            (Finset.univ.filter
-              (fun p : (Σ εT : EntTemplate n,
-                Fin (L.V.entDom εT).comps.length) =>
-                L.V.entLands p.1 β₀))
-            (fun x => by simp only [Finset.mem_filter, Finset.mem_univ, true_and])
-            G
-        have h8 : (∑ i : {p : Σ εT : EntTemplate n,
-              Fin (L.V.entDom εT).comps.length // L.V.entLands p.1 β₀}, G i.1)
-            = iotaValV L.V L.X.sEnt β₀ q₀ := by
-          unfold iotaValV
-          refine Finset.sum_congr rfl (fun i _ => ?_)
-          simp only [hG]
-          rw [dif_pos i.2]
-        rw [h4, h5, h6, h7, h8]
-      -- ── assemble: pull the constant continuation factor, apply the key
-      have hpull : aggMass L.cc L.X.s hdomS β₀ γ q₀
-          = (∑' εT : EntTemplate n, ∑' hh : {h // (L.V.entDom εT).Mem h},
-              iotaEps L.cc (writeHeights εT hh.1 (hdomS εT hh.1 hh.2)) β₀ q₀)
-            * stepProdVal L.V L.X.s γ q₀ := by
-        unfold aggMass
-        rw [← tsum_mul_right]
-        exact tsum_congr fun εT => tsum_mul_right
-      rw [hpull, hKEY]
+      exact comp_agg L.cc L.X.w L.X.s L.X.sEnt hdomS L.hEU β₀ γ hq
     -- (vi) the solve sentence: restated with the note's actual conclusion
     -- (M3 repair) and supplied as the explicit `hsolve` hypothesis.
     solve_conditional := hsolve }

@@ -12,7 +12,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 set_option linter.style.longLine false
 set_option linter.style.header false
 
-theorem L4_grRes_eq_genuine (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : letI := M.Rg.ring; letI := M.Loring; letI := M.alg; σ.grRes f = M.Θ (algebraMap M.S.Gr M.Lo (M.S.initialForm f)) := by
-  exact (M.discharge f hf).symm
+theorem L4_grRes_eq_genuine (σ : Stage p F) (M : GenuineStageModel σ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : letI := M.Rg.ring; letI := M.Loring; letI := M.alg; σ.grRes f = M.Θ (algebraMap M.S.Gr M.Lo (M.S.initialForm f)) :=
+  (M.discharge f hf).symm
 
 #print axioms L4_grRes_eq_genuine

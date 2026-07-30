@@ -131,7 +131,7 @@ theorem L3_liftWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] 
     · intro h
       exact absurd (Finset.mem_range.mpr (by omega : k₀ < g + 1)) h
   rw [hj₀eq]
-  show σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
+  change σ.w (B j₀) + (↑j₀ : ℤ) * σ.w σ.Φ = (σ.e : ℤ) * σ.h * g
   rw [hBval, hcond, σ.hwΦ]
   by_cases hk₀g : k₀ = g
   · rw [hk₀g, hccg, hw1]

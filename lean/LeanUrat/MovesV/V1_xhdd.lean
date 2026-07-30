@@ -13,8 +13,7 @@ theorem xhdd_exact {n} {S : StepSys n} {TE : TmplEvents n S} (D : XHDd n S TE)
     (D.dom γ).Mem h ↔
       ∀ q₀ ∈ S.Pools, ∀ x : S.Hist q₀ α, S.zc x → 0 < Tgam TE γ x h := by
   constructor
-  · intro hm q₀ hq x hzc
-    exact D.no_stray γ h hm hq x hzc
+  · exact fun hm q₀ hq x hzc => D.no_stray γ h hm hq x hzc
   · intro hall
     obtain ⟨q₀, hq⟩ := S.pools_ne
     obtain ⟨x, hzc⟩ := S.zc_ne q₀ hq α

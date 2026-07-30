@@ -184,9 +184,7 @@ private lemma wTop_cone (T : Tower p F) (B : Polynomial ℤ_[p]) (hB : B ≠ 0)
   have hw0 : (T.stg ⟨0, h0lt⟩).w B = ((T.stg ⟨0, h0lt⟩).e : ℤ) * gaussVal B := by
     rw [hstg0, (T.stg 0).hStretch B hB hdeg, T.base.1.1 B hB]
   have hstrAux1 : T.strAux (0 + 1) = (T.stg ⟨0, h0lt⟩).e := by
-    have h := strAux_succ T 0 h0lt
-    rw [show T.strAux 0 = (1 : ℕ) from rfl, one_mul] at h
-    exact h
+    rw [strAux_succ T 0 h0lt, show T.strAux 0 = (1 : ℕ) from rfl, one_mul]
   rw [hw0, hstrAux1] at h0
   have he0 : (0 : ℤ) < ((T.stg ⟨0, h0lt⟩).e : ℤ) := by
     have := (T.stg ⟨0, h0lt⟩).he; exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one this

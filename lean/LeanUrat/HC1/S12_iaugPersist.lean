@@ -70,12 +70,8 @@ theorem S12_iaugPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
     -- The step bound at this `j`.
     have hstep := L2_iaugStep (T.stg k) ψ g hψ Φhat hlift f hf μ a Ranch hanch hord B N hdev j hj hjnz
     -- Positivity facts.
-    have hΔ : (0 : ℤ) < (μ : ℤ) - (j : ℤ) := by
-      have : (j : ℤ) < (μ : ℤ) := by exact_mod_cast hj
-      linarith
-    have he'pos : (0 : ℤ) < (e' : ℤ) := by
-      have : 0 < e' := he'
-      exact_mod_cast this
+    have hΔ : (0 : ℤ) < (μ : ℤ) - (j : ℤ) := by omega
+    have he'pos : (0 : ℤ) < (e' : ℤ) := by exact_mod_cast he'
     -- Multiply the step bound by `e' > 0`, then use the chord to rewrite the right side.
     have key : (e' : ℤ) * ((T.stg k).e * (T.stg k).h * g) * ((μ : ℤ) - (j : ℤ))
         < (h' : ℤ) * ((μ : ℤ) - (j : ℤ)) := by

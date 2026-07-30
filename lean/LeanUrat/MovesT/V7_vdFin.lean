@@ -89,7 +89,6 @@ theorem vdAt_nontrivial (d : ℕ) (hd : 2 ≤ d) : 1 < Nat.card (VdAt d) := by
     have hpair : ((1, d) : ℕ × ℕ) = (d, 1) := Multiset.singleton_inj.mp hm
     have : (1 : ℕ) = d := (Prod.ext_iff.mp hpair).1
     omega
-  have : Nontrivial (VdAt d) := ⟨v1, v2, hne⟩
-  exact Finite.one_lt_card_iff_nontrivial.mpr this
+  exact Finite.one_lt_card_iff_nontrivial.mpr ⟨v1, v2, hne⟩
 
 end LeanUrat.MovesT

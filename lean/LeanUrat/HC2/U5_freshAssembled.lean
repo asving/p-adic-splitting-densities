@@ -42,13 +42,12 @@ private lemma valueClause_spec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [F
         ⟨j, hsp, fun c => Iff.intro (fun hc => (Finset.mem_filter.mp hc).2)
           (fun hc => Finset.mem_filter.mpr ⟨Finset.mem_univ c, hc⟩)⟩).φ x
         = vOf i j (levelSet H n N i (H.nodes[i]'hi) j) := by
-  have h := (C1_TYP_toClause
+  exact (C1_TYP_toClause
     (S.typObj i hi (levelSet H n N i (H.nodes[i]'hi) j)
       ⟨j, hsp, fun c => Iff.intro (fun hc => (Finset.mem_filter.mp hc).2)
         (fun hc => Finset.mem_filter.mpr ⟨Finset.mem_univ c, hc⟩)⟩)
     (vOf i j (levelSet H n N i (H.nodes[i]'hi) j))
     (levelSet H n N i (H.nodes[i]'hi) j).card (card_fin_fun' p _)).choose_spec
-  exact h
 
 /-- The VALUE branch of `fresh_assembled` for a single rostered value clause: its support IS a
 recorded span slot's exact-valuation level set (`IsValueSupport`), its codimension equals the

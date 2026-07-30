@@ -211,8 +211,8 @@ descend polynomial `ψ` — a genuine degree-`g` extension inside `F` (D.6/D.7(v
 def nextField (σ : Stage p F) (zbar : Fˣ) : Subfield F :=
   Subfield.closure (↑σ.K ∪ {(zbar : F)})
 
-lemma le_nextField (σ : Stage p F) (zbar : Fˣ) : σ.K ≤ σ.nextField zbar := by
-  intro x hx; exact Subfield.subset_closure (Or.inl hx)
+lemma le_nextField (σ : Stage p F) (zbar : Fˣ) : σ.K ≤ σ.nextField zbar :=
+  fun _ hx => Subfield.subset_closure (Or.inl hx)
 
 end Stage
 

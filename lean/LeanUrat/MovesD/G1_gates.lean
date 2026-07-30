@@ -244,20 +244,12 @@ private theorem PhatStar_bandS1_iff :
 theorem PhatStar_A' : PhatStar.A' 3 = 11 := by
   classical
   have key0 : (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => PhatStar.bandS 3 0 c)
-            = (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => c.1 + c.2 ≤ 3) := by
-    ext c
-    simp only [Finset.mem_filter]
-    constructor
-    · exact fun h => ⟨h.1, (PhatStar_bandS0_iff c h.1).mp h.2⟩
-    · exact fun h => ⟨h.1, (PhatStar_bandS0_iff c h.1).mpr h.2⟩
+            = (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => c.1 + c.2 ≤ 3) :=
+    Finset.filter_congr PhatStar_bandS0_iff
   have key1 : (Finset.range 5 ×ˢ Finset.range 3).filter (fun c => PhatStar.bandS 3 1 c)
             = (Finset.range 5 ×ˢ Finset.range 3).filter
-                (fun c => (c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3)) := by
-    ext c
-    simp only [Finset.mem_filter]
-    constructor
-    · exact fun h => ⟨h.1, (PhatStar_bandS1_iff c h.1).mp h.2⟩
-    · exact fun h => ⟨h.1, (PhatStar_bandS1_iff c h.1).mpr h.2⟩
+                (fun c => (c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3)) :=
+    Finset.filter_congr PhatStar_bandS1_iff
   unfold ShapePrefix.A'
   rw [PhatStar_Nshape]
   unfold ShapePrefix.A
@@ -286,12 +278,8 @@ theorem PhatStar_NPband : PhatStar.NPband 3 = 5 := by
   have keyNP : (Finset.range 5 ×ˢ Finset.range 3).filter
         (fun c => ∃ r < PhatStar.reads.length, PhatStar.bandS 3 r c)
       = (Finset.range 5 ×ˢ Finset.range 3).filter
-        (fun c => (c.1 + c.2 ≤ 3) ∨ ((c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3))) := by
-    ext c
-    simp only [Finset.mem_filter]
-    constructor
-    · exact fun h => ⟨h.1, (hpred c h.1).mp h.2⟩
-    · exact fun h => ⟨h.1, (hpred c h.1).mpr h.2⟩
+        (fun c => (c.1 + c.2 ≤ 3) ∨ ((c.2 = 0 ∧ c.1 = 4) ∨ (c.2 = 1 ∧ c.1 = 3))) :=
+    Finset.filter_congr hpred
   unfold ShapePrefix.NPband
   rw [PhatStar_Nshape, keyNP]
   decide
@@ -324,12 +312,8 @@ private theorem Phat0_bandS0_iff :
 theorem Phat0_A' : Phat0.A' 4 = 14 := by
   classical
   have key0 : (Finset.range 5 ×ˢ Finset.range 4).filter (fun c => Phat0.bandS 4 0 c)
-            = (Finset.range 5 ×ˢ Finset.range 4).filter (fun c => c.1 + c.2 ≤ 4) := by
-    ext c
-    simp only [Finset.mem_filter]
-    constructor
-    · exact fun h => ⟨h.1, (Phat0_bandS0_iff c h.1).mp h.2⟩
-    · exact fun h => ⟨h.1, (Phat0_bandS0_iff c h.1).mpr h.2⟩
+            = (Finset.range 5 ×ˢ Finset.range 4).filter (fun c => c.1 + c.2 ≤ 4) :=
+    Finset.filter_congr Phat0_bandS0_iff
   unfold ShapePrefix.A'
   rw [Phat0_Nshape]
   unfold ShapePrefix.A

@@ -1,7 +1,7 @@
 /-
 Unit XE.3 envelopeSqrt — the √N fallback  [RESTATED-POST-REFUTATION 2026-07-27: the
 previous ∀N conclusion was kernel-certified FALSE (notes/XE3_REFUTATION_2026-07-27.lean;
-adjudication in blueprint §7). ∃ N₀ before ∀ N ≥ N₀, as in XE.2; D9 REBIND as in XE.2 (constants before ∀ X). Body sorry.]
+adjudication in blueprint §7). ∃ N₀ before ∀ N ≥ N₀, as in XE.2; D9 REBIND as in XE.2 (constants before ∀ X). Body PROVED.]
 moves_ref: "Given (X2-HYP) + (X2-AFF) + (X2-CAP) + (X2-BRIDGE) PLUS the same two leg
 tags …: env(N) ≤ c₃′(n)·p^{−c₄′(n)·√N} — subexponential, enough for X.3's qualitative
 form, NOT for SQUEEZE's constants". Same signature as XE.2 MINUS `PR` (X2ProgressP);

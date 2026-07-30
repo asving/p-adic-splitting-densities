@@ -102,8 +102,7 @@ theorem ent_agg_ival {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   have hnn : ∀ p, 0 ≤ f p := by
     intro p
     have hpos : (0 : ℝ) ≤ (q₀ : ℝ) := by
-      have h1 : (1 : ℚ) < q₀ := S.pools_gt_one q₀ (V.pools_sub hq)
-      exact_mod_cast le_of_lt (lt_trans one_pos h1)
+      exact_mod_cast le_of_lt (lt_trans one_pos (S.pools_gt_one q₀ (V.pools_sub hq)))
     show 0 ≤ ιshH V p.1.1.1 p.2.1 β₀ q₀
     unfold ιshH
     exact mul_nonneg (Nat.cast_nonneg _) (zpow_nonneg hpos _)

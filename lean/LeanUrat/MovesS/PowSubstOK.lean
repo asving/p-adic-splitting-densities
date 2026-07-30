@@ -39,7 +39,7 @@ private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval 
     RatFunc.eval (RingHom.id ℚ) x
         (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
       = p.eval x / q.eval x := by
-  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
+  have hq0 : q ≠ 0 := fun h0 => hq (by simp [h0])
   have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
   have hdvd : (algebraMap (Polynomial ℚ) Qq p
       / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
@@ -75,8 +75,8 @@ theorem powSubst_OKat (δ : ℕ+) (q₀ : ℚ) (f : Qq) (h : f ∈ OKat (q₀ ^ 
     rw [map_div₀, powSubst_algebraMap, powSubst_algebraMap]
   have hDe : (f.denom.comp (X ^ (δ : ℕ))).eval q₀ = f.denom.eval (q₀ ^ (δ : ℕ)) := by
     rw [Polynomial.eval_comp, Polynomial.eval_pow, Polynomial.eval_X]
-  have hDe' : (f.denom.comp (X ^ (δ : ℕ))).eval q₀ ≠ 0 := by rw [hDe]; exact h
-  have hDne : f.denom.comp (X ^ (δ : ℕ)) ≠ 0 := fun h0 => hDe' (by rw [h0]; simp)
+  have hDe' : (f.denom.comp (X ^ (δ : ℕ))).eval q₀ ≠ 0 := hDe ▸ h
+  have hDne : f.denom.comp (X ^ (δ : ℕ)) ≠ 0 := fun h0 => hDe' (by simp [h0])
   have hdvd : (powSubst δ f).denom ∣ f.denom.comp (X ^ (δ : ℕ)) := by
     rw [hf]
     exact (RatFunc.denom_dvd hDne).mpr ⟨f.num.comp (X ^ (δ : ℕ)), rfl⟩

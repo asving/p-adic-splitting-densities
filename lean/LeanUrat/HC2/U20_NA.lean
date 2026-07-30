@@ -67,7 +67,7 @@ theorem readsOf_NA {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   set Nd2 := max Nd ((H.nodes[i]'hi0).μ + 1) with hNd2def
   have hdev' : IsDevelopment (H.nodes[i+1]'hi1).σ.Φ f B Nd2 := by
     refine ⟨hdev.1, ?_, ?_⟩
-    · intro j hj; refine hdev.2.1 j ?_; omega
+    · exact fun j hj => hdev.2.1 j (by omega)
     · rw [hdev.2.2]
       refine Finset.sum_subset (fun x hx => ?_) ?_
       · rw [Finset.mem_range] at hx ⊢; omega
@@ -86,8 +86,8 @@ theorem readsOf_NA {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     · exact NA_transport_recentering h i hi1 hspv B Nd2 hdev' hNd'
   obtain ⟨hBμ_ne, htrans⟩ := htransfull
   -- recover μ < Nd (original) from the transported nonvanishing of the vertex coefficient
-  have hμNd : (H.nodes[i]'hi0).μ < Nd := by
-    by_contra hc; rw [not_lt] at hc; exact hBμ_ne (hdev.2.1 _ hc)
+  have hμNd : (H.nodes[i]'hi0).μ < Nd :=
+    not_le.mp (fun hc => hBμ_ne (hdev.2.1 _ hc))
   -- SideReads(i+1) clause (i): the read functional at the OFF-SPAN vertex slot is STRICT
   have hle := hSR.1.1 ((H.nodes[i]'hi0).μ) hμNd hBμ_ne
   have hstrict : (H.nodes[i+1]'hi1).gam

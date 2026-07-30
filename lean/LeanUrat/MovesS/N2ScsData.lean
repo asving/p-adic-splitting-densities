@@ -75,7 +75,7 @@ noncomputable def n2SCS : SCSData n2T where
     intro e τ o hk
     rcases eq_or_ne e 2 with he | he
     · subst he
-      revert hk; revert o; revert τ
+      revert τ o hk
       simp only [Member.continuing]
       decide
     · rw [n2odata_const he] at hk
@@ -87,7 +87,7 @@ noncomputable def n2SCS : SCSData n2T where
     intro e τ o i hcont hi
     rcases eq_or_ne e 2 with he | he
     · subst he
-      revert hi; revert hcont; revert i; revert o; revert τ
+      revert τ o i hcont hi
       simp only [Member.continuing]
       decide
     · exfalso

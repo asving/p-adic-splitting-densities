@@ -32,14 +32,7 @@ private theorem discr_monic_eq_resultant {R : Type*} [CommRing R] (f : R[X]) (hf
   have hsq : ((-1 : R) ^ (f.natDegree * (f.natDegree - 1) / 2)) *
       ((-1 : R) ^ (f.natDegree * (f.natDegree - 1) / 2)) = 1 := by
     rw [← pow_add, ← two_mul, pow_mul]; simp
-  calc f.discr
-      = 1 * f.discr := (one_mul _).symm
-    _ = ((-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
-          (-1) ^ (f.natDegree * (f.natDegree - 1) / 2)) * f.discr := by rw [hsq]
-    _ = (-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
-          ((-1) ^ (f.natDegree * (f.natDegree - 1) / 2) * f.discr) := by ring
-    _ = (-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
-          resultant f f.derivative f.natDegree (f.natDegree - 1) := by rw [← h]
+  rw [h, ← mul_assoc, hsq, one_mul]
 
 /-- Discriminant naturality for monic polynomials: `discr` commutes with any ring hom. -/
 private theorem discr_map_monic {R S : Type*} [CommRing R] [CommRing S] (φ : R →+* S)

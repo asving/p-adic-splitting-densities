@@ -14,9 +14,8 @@ namespace LeanUrat.MovesS
 theorem n2_ok : ∀ e (τ : n2T.State e) (q₀ : ℚ), q₀ ∈ n2M.Pools →
     (∀ o : n2T.Out e τ,
       (n2RB.tgP e τ o).val ∈ OKat q₀ ∧ (n2RB.jP e τ o).val ∈ OKat q₀) ∧
-    (∀ ε : n2M.EntShape e τ, (n2RB.ιP e τ ε).val ∈ OKat q₀) := by
-  intro e τ q₀ hq
-  exact ⟨fun o => ⟨n2RB.tg_ok e τ o q₀ hq, n2RB.j_ok e τ o q₀ hq⟩,
+    (∀ ε : n2M.EntShape e τ, (n2RB.ιP e τ ε).val ∈ OKat q₀) :=
+  fun e τ q₀ hq => ⟨fun o => ⟨n2RB.tg_ok e τ o q₀ hq, n2RB.j_ok e τ o q₀ hq⟩,
     fun ε => n2RB.ι_ok e τ ε q₀ hq⟩
 
 end LeanUrat.MovesS

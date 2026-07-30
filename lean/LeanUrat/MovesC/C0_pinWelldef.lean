@@ -38,8 +38,7 @@ private lemma extendC_eq (f : {i : Fin n // D.pinned i = false} → α) (i : Fin
 private lemma extendC_isSolution (f : {i : Fin n // D.pinned i = false} → α) :
     D.IsSolution (extendC D f) := by
   intro i hi
-  rw [extendC_eq]
-  rw [dif_neg (by simp [hi])]
+  rw [extendC_eq, dif_neg (by simp [hi])]
 
 private lemma extendC_restrict (f : {i : Fin n // D.pinned i = false} → α)
     (i : {i : Fin n // D.pinned i = false}) : extendC D f i.val = f i := by
@@ -55,10 +54,7 @@ private lemma restrict_extendC (x : Fin n → α) (hx : D.IsSolution x) :
     by_cases h : D.pinned i = false
     · rw [dif_pos h]
     · rw [dif_neg h]
-      have hpin : D.pinned i = true := by
-        cases hp : D.pinned i with
-        | false => exact absurd hp h
-        | true => rfl
+      have hpin : D.pinned i = true := Bool.eq_true_of_not_eq_false h
       rw [hx i hpin]
       congr 1
       ext j hj

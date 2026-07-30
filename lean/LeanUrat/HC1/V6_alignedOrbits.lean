@@ -260,8 +260,7 @@ theorem V6_descentOrbits {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
   have hbval_mem : ((bσ : ↥σ.K) : F) * (zbar : F) ^ m ∈ σ.nextField zbar :=
     mul_mem hbσ_mem (Subfield.zpow_mem (σ.nextField zbar) hz_mem m)
   have hbσF_ne : ((bσ : ↥σ.K) : F) ≠ 0 := by
-    have : (bσ : ↥σ.K) ≠ 0 := bσ.ne_zero
-    simp only [ne_eq, ZeroMemClass.coe_eq_zero]; exact this
+    simpa only [ne_eq, ZeroMemClass.coe_eq_zero] using bσ.ne_zero
   have hbval_ne : (⟨((bσ : ↥σ.K) : F) * (zbar : F) ^ m, hbval_mem⟩ : ↥(σ.nextField zbar)) ≠ 0 := by
     simp only [ne_eq, Subtype.ext_iff]
     exact mul_ne_zero hbσF_ne (zpow_ne_zero m zbar.ne_zero)
@@ -279,8 +278,7 @@ theorem V6_descentOrbits {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
     -- pull the coset scalar `c ∈ F_Q` back to a unit of `K` (F_Q ≤ K)
     have hcF_mem : ((c : ↥(σ.nextField zbar)) : F) ∈ σ.K := σ.hFQ_le hcFQ
     have hcF_ne : ((c : ↥(σ.nextField zbar)) : F) ≠ 0 := by
-      have : (c : ↥(σ.nextField zbar)) ≠ 0 := c.ne_zero
-      simp only [ne_eq, ZeroMemClass.coe_eq_zero]; exact this
+      simpa only [ne_eq, ZeroMemClass.coe_eq_zero] using c.ne_zero
     set cσ : (↥σ.K)ˣ :=
       Units.mk0 (⟨((c : ↥(σ.nextField zbar)) : F), hcF_mem⟩ : ↥σ.K)
         (by simp only [ne_eq, Subtype.ext_iff]; exact hcF_ne) with hcσdef

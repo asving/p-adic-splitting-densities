@@ -30,8 +30,6 @@ theorem O_le {d m : ℕ+} (h : d ∣ m) : O p d ≤ O p m := by
   rw [O, RingHom.mem_range]
   refine ⟨WittVector.map (Subfield.inclusion (Fsub_le p h)) y, ?_⟩
   rw [map_comp]
-  have hfe : (Subfield.subtype (Fsub p m)).comp (Subfield.inclusion (Fsub_le p h))
-      = Subfield.subtype (Fsub p d) := rfl
-  rw [hfe]
+  rfl
 
 end MovesRBase

@@ -73,9 +73,9 @@ theorem identification {n p : ℕ} (X : ClassifierSpec n p) [NeZero p] (hp : 1 <
       simp only [Sum.inr.injEq, Subtype.mk.injEq] at hab
       exact hab
     · rw [dif_pos ha, dif_neg hb] at hab
-      simp at hab
+      nomatch hab
     · rw [dif_neg ha, dif_pos hb] at hab
-      simp at hab
+      nomatch hab
     · rw [dif_neg ha, dif_neg hb] at hab
       simp only [Sum.inl.injEq, Subtype.mk.injEq] at hab
       exact hab

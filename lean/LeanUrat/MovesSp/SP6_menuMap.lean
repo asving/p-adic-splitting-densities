@@ -12,26 +12,22 @@ SuccStep → (Coherent ∧ Budget) → enum → closure → catalogue → local 
 off-catalogue SuccStep edge can exist, which is exactly the sealed exactness.
 difficulty: medium (perf, moderate).
 
-PROOF STATUS (this session):
+PROOF STATUS (as built, P-phase complete — this unit is now sorry-free):
   * `menu3_local` : PROVED, `by decide`, axiom-clean (self-contained, only DefsN3;
     catalogue3/succStepB/menuMap3 are all structural, no well-founded recursion, so
     the kernel reduces the Bool table over the 53×53 grid).
-  * `menu3_exact_global` : fully WIRED and machine-checked EXCEPT for one isolated
-    open step, `catalogue3_succ_closed` below. Both ↔-directions, the `succStepB`/
-    `SuccStep` reflection (`succStepB_iff`, from Sp.reflSucc), the `menu3_local`
-    read-off, and `menuMap3_subset` are real; the ONLY gap is the SuccStep-closure
-    of `catalogue3`.
-  * `catalogue3_succ_closed` : OPEN. This is the enumeration-completeness spine
-    (blueprint deps Sp.speciesEnumComplete + Sp.n3closureStep, or equivalently
-    Sp.n3catalogueEq's SnRaw3_eq) — a coherent+budget SuccStep target of a catalogue
-    member is again a catalogue member. It is NOT dischargeable inside this
-    menu-wiring unit: it needs completeness at the (postRec,1,1,2)/(postRec,1,1,3)
-    stages (the full λ-multiset enumeration = lamEnumComplete content, medium-hard),
-    and the `decide` route (closure_step3) is kernel-stuck because `speciesEnum` is
-    well-founded-recursive (`compEnum`/`lamEnumAux` via `decreasing_by`), so its
-    `Decidable` instance does not reduce. Owner: SP2_speciesEnum / SP6_closureStep /
-    SP6_catalogueEq. When any of those lands, replace the `sorry` with a one-line
-    cite (`InCatalogue.step` + SnRaw3_eq, or speciesEnum_complete + closure_step3).
+  * `menu3_exact_global` : PROVED in full — both ↔-directions machine-checked. The
+    `succStepB`/`SuccStep` reflection (`succStepB_iff`, from Sp.reflSucc), the
+    `menu3_local` read-off, `menuMap3_subset`, and the SuccStep-closure of
+    `catalogue3` (`catalogue3_succ_closed`) are all real; no gap remains.
+  * `catalogue3_succ_closed` : PROVED (below). This is the enumeration-completeness
+    spine — a coherent+budget SuccStep target of a catalogue member is again a
+    catalogue member — now discharged by the one-line cite anticipated in the
+    original plan: `(SnRaw3_eq s').mp (InCatalogue.step ((SnRaw3_eq s).mpr hs) hstep)`,
+    routing through `SnRaw3_eq` (Sp.n3catalogueEq, SP6_catalogueEq) and the abstract
+    `InCatalogue.step`. The old kernel-stuck `decide` route (closure_step3, blocked
+    because `speciesEnum`'s well-founded recursion does not reduce) is no longer on
+    the path.
 -/
 import LeanUrat.MovesSp.DefsN3
 import LeanUrat.MovesSp.SP0_reflSucc
@@ -70,12 +66,12 @@ theorem menuMap3_subset (s s' : Species) (h : s' ∈ menuMap3 s) : s' ∈ catalo
         | exact hg3 _ h
         | simp at h
 
-/-- OPEN (owner: Sp.speciesEnumComplete + Sp.n3closureStep, or Sp.n3catalogueEq):
+/-- PROVED (via Sp.n3catalogueEq's `SnRaw3_eq` + the abstract `InCatalogue.step`):
 `catalogue3` is closed under `SuccStep` at n = 3 — a coherent, budget-admissible
 successor of a catalogue member is again a catalogue member. This is the
-enumeration-completeness content (the medium-hard spine lemma), not dischargeable
-inside this menu-wiring unit; see the header note. Isolated here so the rest of
-`menu3_exact_global` is fully machine-checked and only this step remains. -/
+enumeration-completeness content (the spine lemma), discharged here by the one-line
+cite anticipated in the header note, so `menu3_exact_global` is fully machine-checked
+with no remaining gap. -/
 private theorem catalogue3_succ_closed (s : Species) (hs : s ∈ catalogue3)
     (s' : Species) (hstep : SuccStep 3 s s') : s' ∈ catalogue3 :=
   (SnRaw3_eq s').mp (InCatalogue.step ((SnRaw3_eq s).mpr hs) hstep)

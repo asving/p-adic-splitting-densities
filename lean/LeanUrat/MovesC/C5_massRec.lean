@@ -30,8 +30,7 @@ theorem C5_massRec {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (k : �
       -- `Σ_0` is the full box: nothing pinned, so `numPinned = 0 = Σ_{range 0}`.
       simp only [Finset.range_zero, Finset.sum_empty]
       unfold DigitSystem.numPinned
-      have hinit : ∀ i, (J.Sigma 0).pinned i = false := J.init
-      simp [hinit]
+      simp [J.init]
   | succ k ih =>
       intro hk
       have hk' : k ≤ H.nodes.length := Nat.le_of_succ_le hk

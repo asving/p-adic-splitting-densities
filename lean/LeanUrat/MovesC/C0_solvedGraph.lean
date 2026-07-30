@@ -38,8 +38,7 @@ private lemma solvedExtend_eq (f : {i : Fin n // D.pinned i = false} → α) (i 
 private lemma solvedExtend_isSolution (f : {i : Fin n // D.pinned i = false} → α) :
     D.IsSolution (solvedExtend D f) := by
   intro i hi
-  rw [solvedExtend_eq]
-  rw [dif_neg (by simp [hi])]
+  rw [solvedExtend_eq, dif_neg (by simp [hi])]
 
 /-- A free assignment, extended and then restricted to the free coordinates, returns itself. -/
 private lemma solvedExtend_restrict (f : {i : Fin n // D.pinned i = false} → α)
@@ -58,10 +57,7 @@ private lemma restrict_solvedExtend (x : Fin n → α) (hx : D.IsSolution x) :
     by_cases h : D.pinned i = false
     · rw [dif_pos h]
     · rw [dif_neg h]
-      have hpin : D.pinned i = true := by
-        cases hp : D.pinned i with
-        | false => exact absurd hp h
-        | true => rfl
+      have hpin : D.pinned i = true := Bool.eq_true_of_not_eq_false h
       rw [hx i hpin]
       congr 1
       ext j hj

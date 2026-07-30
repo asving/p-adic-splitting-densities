@@ -166,7 +166,7 @@ theorem S17_scratch_with_hcore_hzsol {p : ℕ} [Fact p.Prime] {F : Type*} [Field
   obtain ⟨f₀, hf₀, -⟩ := hcode (fun _ => 0)
   have hΦd1 : 1 ≤ Φhat.natDegree := by
     rcases Nat.eq_zero_or_pos Φhat.natDegree with h | h
-    · exfalso; rw [h, zero_mul] at hD; omega
+    · rw [h, zero_mul] at hD; omega
     · exact h
   -- the pointwise transport iff (the L6 hcard skeleton, both legs now supplied)
   have hiff : ∀ x, strat x ↔ E.IsSolution (Θ x) := by

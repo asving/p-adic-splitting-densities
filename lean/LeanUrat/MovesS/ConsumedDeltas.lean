@@ -55,7 +55,7 @@ theorem nested_delta_mem (T : TableShape n) (F : ShapeFam T) (l : List ℕ+)
     (hlen : l.length ≤ n) (hfac : ∀ δ ∈ l, δ ∈ deltaFactors T F) :
     l.prod ∈ consumedDeltas T F := by
   unfold consumedDeltas
-  set D := deltaFactors T F with hD
+  set D := deltaFactors T F
   obtain ⟨d, hd⟩ := Nat.exists_eq_add_of_le hlen
   rw [hd, Nat.add_comm, Function.iterate_add_apply]
   exact infl_iterate D _ d (prod_mem_iterate D l hfac)

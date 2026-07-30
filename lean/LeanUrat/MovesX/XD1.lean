@@ -1,5 +1,5 @@
 /-
-Unit XD.1 nsFreeDec (+ capTotal, maxHNil)  [E-phase: stated, bodies sorry]
+Unit XD.1 nsFreeDec (+ capTotal, maxHNil)  [PROVED]
 moves_ref: DOMAIN CONVENTIONS (predicate exclusion; cap 0-convention; max h(∅) = 0).
 deps: Defs. difficulty: EASY. Three declarations per the blueprint's unit spec.
 -/

@@ -52,8 +52,7 @@ theorem G1_divGate :
           aeval (AdjoinRoot.root (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)))
               (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)) = 0 := by
         rw [AdjoinRoot.aeval_eq, AdjoinRoot.mk_self]
-      simp only [map_add, map_pow, Polynomial.aeval_X, map_one] at hz
-      exact hz
+      simpa only [map_add, map_pow, Polynomial.aeval_X, map_one] using hz
     -- Characteristic two: `(2 : AdjoinRoot f) = algebraMap (2 : ZMod 2) = algebraMap 0 = 0`.
     have h2 : (2 : AdjoinRoot (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2))) = 0 := by
       rw [← map_ofNat

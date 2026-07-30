@@ -185,8 +185,8 @@ theorem ksub_pool {T : TableShape n} {M : MeasuredSide T} {RB : RatBurdens T M}
     · exact le_refl 0
   · -- Sub-stochastic row sum.
     have e1 : ∑ βA : P.Act, Aℝ P τA βA = ∑ β : T.State e, F β := by
-      rw [Finset.sum_congr rfl (fun βA (_ : βA ∈ Finset.univ) => hAeq_active βA)]
-      rw [Finset.sum_coe_sort P.Act F]
+      rw [Finset.sum_congr rfl (fun βA (_ : βA ∈ Finset.univ) => hAeq_active βA),
+        Finset.sum_coe_sort P.Act F]
       exact Finset.sum_subset (Finset.subset_univ P.Act) (fun β _ hβ => hFvanish β hβ)
     have e2 : ∑ β : T.State e, F β
         = ∑ o : T.Out e τA.1, (if routeOf (T.odata e τA.1 o) = .kcol

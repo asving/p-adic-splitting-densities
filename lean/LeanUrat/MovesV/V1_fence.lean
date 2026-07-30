@@ -25,10 +25,10 @@ private def fenceS : StepSys 1 where
   Pools := {2}
   pools_ne := ⟨2, rfl⟩
   pools_pp := by
-    rintro q₀ hq; rw [Set.mem_singleton_iff] at hq
-    exact ⟨2, 1, Nat.prime_two, one_pos, by rw [hq]; norm_num⟩
+    rintro q₀ rfl
+    exact ⟨2, 1, Nat.prime_two, one_pos, by norm_num⟩
   pools_gt_one := by
-    rintro q₀ hq; rw [Set.mem_singleton_iff] at hq; rw [hq]; norm_num
+    rintro q₀ rfl; norm_num
   Hist _ _ := Fin 2
   hist_ne _ _ _ := ⟨0⟩
   zc := fun _ => True

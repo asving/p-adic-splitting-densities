@@ -295,14 +295,14 @@ def TE : TmplEvents 1 S where
   tevt_last_iff := by
     intro α β m q₀ x h _ _
     constructor
-    · intro _; exact Nat.zero_lt_two
+    · exact fun _ => Nat.zero_lt_two
     · intro _
       exact ⟨0, fun N _ =>
         ⟨0, Finset.mem_filter.mpr ⟨Finset.mem_univ _, Nat.zero_lt_two⟩⟩⟩
   tevt_lastT_iff := by
     intro α v m q₀ x h _ _
     constructor
-    · intro _; exact Nat.zero_lt_two
+    · exact fun _ => Nat.zero_lt_two
     · intro _
       exact ⟨0, fun N _ =>
         ⟨0, Finset.mem_filter.mpr ⟨Finset.mem_univ _, Nat.zero_lt_two⟩⟩⟩
@@ -353,8 +353,8 @@ def XD : XHDd 1 S TE where
   no_stray := by
     intro α γ h hm q₀ _ x _
     cases γ with
-    | last m => refine tin_card_pos ?_; exact Nat.zero_lt_two
-    | lastT m => refine tin_card_pos ?_; exact Nat.zero_lt_two
+    | last m => exact tin_card_pos Nat.zero_lt_two
+    | lastT m => exact tin_card_pos Nat.zero_lt_two
     | cons m γ' =>
       have hne : h ≠ 0 := fun h0 => nzPart_not_mem (fun _ => rfl) (h0 ▸ hm)
       refine tin_card_pos ?_

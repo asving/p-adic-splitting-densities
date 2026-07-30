@@ -870,8 +870,7 @@ theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       rw [hstg0, (T.stg 0).hStretch _ hdne hdinC, hdw, mul_zero]
     have hwtop0 : (T.stg (Fin.last T.K)).w (T.digLift (y c)) = 0 := by
       have h := t4_transport_zero T _ hdne hdinC hw0 T.K (Nat.lt_succ_self T.K)
-      rw [hlast] at h
-      exact h
+      rwa [hlast] at h
     have hmononz : c.MonoNZ := by
       unfold Tower.Coord.MonoNZ Tower.mono
       exact mul_ne_zero

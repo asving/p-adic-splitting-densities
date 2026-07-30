@@ -32,9 +32,7 @@ theorem L0_GRf {K : Type*} [Field K] (ψ : Polynomial K) (hψ : Irreducible ψ) 
   have hψ0 : ψ ≠ 0 := hψ.ne_zero
   -- `P = toLaurent ψ ≠ 0` via injectivity of `toLaurent`.
   have hP0 : P ≠ 0 := by
-    rw [hP]
-    intro h
-    exact hψ0 (Polynomial.toLaurent_injective (by rw [map_zero]; exact h))
+    rw [hP]; exact (map_ne_zero_iff _ Polynomial.toLaurent_injective).mpr hψ0
   -- Factor out `P^m` (every `j ∈ S` has `j ≥ m`).
   have hfact : (∑ j ∈ S, c j * P ^ j) = P ^ m * (∑ j ∈ S, c j * P ^ (j - m)) := by
     rw [Finset.mul_sum]

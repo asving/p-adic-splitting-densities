@@ -52,10 +52,7 @@ noncomputable def trivSideVal (p : ℕ) [Fact p.Prime] : SideVal p where
   w_add f g := by
     by_cases hfg : f + g = 0
     · simp [hfg]
-    · have hor : f ≠ 0 ∨ g ≠ 0 := by
-        by_contra hcon
-        push Not at hcon
-        exact hfg (by simp [hcon.1, hcon.2])
+    · have hor : f ≠ 0 ∨ g ≠ 0 := not_and_or.mp fun hcon => hfg (by simp [hcon.1, hcon.2])
       rcases hor with hf | hg
       · exact le_trans (min_le_left _ _) (by simp [if_neg hf, if_neg hfg])
       · exact le_trans (min_le_right _ _) (by simp [if_neg hg, if_neg hfg])

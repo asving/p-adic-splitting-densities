@@ -96,8 +96,7 @@ private lemma finite_eligible (w g μ : ℕ) (Rq : Polynomial F) :
   apply Polynomial.ext
   intro i
   by_cases hi : i ≤ g
-  · have := congrFun hqq' ⟨i, by omega⟩
-    simpa using this
+  · simpa using congrFun hqq' ⟨i, by omega⟩
   · rw [Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q.2.2.1]; omega),
        Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q'.2.2.1]; omega)]
 
@@ -118,8 +117,7 @@ private lemma poolSubfield_eq {R : ShapeRead} {ν : Node p F} (hM : R.Matches ν
         rw [← Nat.card_eq_fintype_card]; exact hcard
       have hpow : (⟨x, hx⟩ : ↥ν.σ.K) ^ (p ^ R.w) = ⟨x, hx⟩ := by
         rw [← hcard']; exact FiniteField.pow_card _
-      have hpush := congrArg (fun z : ↥ν.σ.K => (z : F)) hpow
-      simpa using hpush
+      simpa using congrArg (fun z : ↥ν.σ.K => (z : F)) hpow
     -- the pool is finite of size `≤ p^w` (roots of `X^{p^w} - X`)
     have hp2 : 2 ≤ p := (Fact.out : p.Prime).two_le
     have hq2 : 2 ≤ p ^ R.w := by
@@ -179,8 +177,7 @@ private lemma psi_mem {R : ShapeRead} {ν : Node p F} (hM : R.Matches ν) :
     intro hc
     exact hnd ((Polynomial.map_dvd_map ν.σ.K.subtype ν.σ.K.subtype.injective
       (ν.hψmonic.pow (ν.μ + 1))).mp hc)
-  · have hPool : poolSubfield p R.w F = ν.σ.K := poolSubfield_eq hM
-    rw [hPool]
+  · rw [poolSubfield_eq hM]
     exact ⟨ν.ψ, ν.hψirr, rfl⟩
 
 /-- On one eligible set, equal rank forces equal ψ-image. -/
@@ -211,13 +208,12 @@ theorem rank_inj {R : ShapeRead} {ν ν' : Node p F} (hM : R.Matches ν) (hM' : 
   have key : (⟨ψImage ν, hmem⟩ :
         {q : Polynomial F // EligibleImage p R.w ν.g ν.μ (RanchImage ν) q})
       = ⟨ψImage ν', hmem'⟩ := by
-    refine rank_count_inj
+    exact rank_count_inj
       (fun x y => lexLt (fieldEnum F) x.1 y.1)
       (fun x => lexLt_irrefl _ _)
       (fun x y z => lexLt_trans _)
       (fun x y hxy => lexLt_trichot _ (fun heq => hxy (Subtype.ext heq)))
-      ?_
-    exact hs
+      hs
   exact congrArg Subtype.val key
 
 end LeanUrat.MovesD

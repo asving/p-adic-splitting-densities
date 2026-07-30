@@ -43,7 +43,7 @@ private lemma escapeE0_subsingleton {ι : Type*} [Fintype ι] [DecidableEq ι]
   have hmv : ∀ k, ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) i = (A i i) ^ k := by
     intro k
     have h1 : ((A ^ k) *ᵥ (fun _ => (1 : ℚ))) i = ∑ j, (A ^ k) i j := by
-      simp [Matrix.mulVec, dotProduct]
+      simp only [Matrix.mulVec, dotProduct, mul_one]
     rw [h1, Fintype.sum_subsingleton _ i, hdiag k]
   simp only [Pi.zero_apply]
   refine Filter.Tendsto.congr (fun k => (hmv k).symm) ?_

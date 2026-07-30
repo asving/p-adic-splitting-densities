@@ -2,14 +2,13 @@
 Unit U12  (MovesR base layer)  [EQ2law_card]
 moves_ref: "(EQ-2)'s displayed consequence '|𝔸_δ| = q_δ^a = |𝔸|^δ' on the pinned
 domain" — PROVABLE from `card_eq` + hypothesized `EQ2law` by `pow_mul`.
-deps: Defs (U1 + the U9–U11 supporting vocabulary), U5. difficulty: easy.
+deps: Defs (U1 + the U9–U11 supporting vocabulary). difficulty: easy.
 sketch: consumes h's DIMENSION conjunct only: `Nat.card (alpha δ x) = p ^ aDim δ x
 = p ^ (δ · aDim 1 x) = (p^δ)^{aDim 1 x} = qq p δ ^ aDim 1 x`, and
 `= (p ^ aDim 1 x)^δ = Nat.card (alpha 1 x) ^ δ` (pow arithmetic; `card_eq` at δ, 1).
 -/
 import Mathlib
 import LeanUrat.MovesRBase.Defs
-import LeanUrat.MovesRBase.U5_qq_mul
 
 set_option linter.style.longLine false
 set_option linter.style.header false

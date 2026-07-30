@@ -1036,21 +1036,10 @@ theorem census_partition (F : Type*) [Field F] [Fintype F] [DecidableEq F] :
     classCount F (0, 0) + classCount F (1, 1) + classCount F (2, 2)
       + classCount F (3, 1) + classCount F (1, 3) = Fintype.card F ^ 3 := by
   classical
+  -- `classCount` is definitionally this filter's card, so each fiber count IS it
   have hcc : ∀ pr : ℕ × ℕ, (Finset.univ.filter
       (fun a : F × F × F => rootProfile a.1 a.2.1 a.2.2 = pr)).card
-        = classCount F pr := by
-    intro pr
-    unfold classCount
-    refine Finset.card_bij (fun a _ => a) ?_ ?_ ?_
-    · intro a ha
-      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at ha ⊢
-      exact ha
-    · intro a _ b _ h
-      exact h
-    · intro b hb
-      refine ⟨b, ?_, rfl⟩
-      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hb ⊢
-      exact hb
+        = classCount F pr := fun _ => rfl
   have H := Finset.card_eq_sum_card_fiberwise
     (s := (Finset.univ : Finset (F × F × F)))
     (t := ({((0 : ℕ), (0 : ℕ)), (1, 1), (2, 2), (3, 1), (1, 3)}

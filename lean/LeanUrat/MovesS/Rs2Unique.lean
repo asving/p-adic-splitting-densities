@@ -9,8 +9,10 @@ coordinate's identification set is ALL of S; the conclusion's family and
 per-pool (ii-c) burden, OPEN — provenance W-6).  deps: U-24a1, U-24a2, U-18b, U-27.
 
 W4-SYNC DISCHARGE (2026-07-29): SCOPED HYPOTHESIS `L : LedgerIV T M` ADDED under
-seam scoping authority — see the theorem docstring for the warrant; flagged for
-orchestrator ratification; recorded in MANIFEST.json (units U-24b + conditionality).
+seam scoping authority — see the theorem docstring for the warrant; RATIFIED at the
+"WAVE B RATIFICATIONS" entry of notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md
+(2026-07-30; commit 745cb05 "WAVE B COMPLETE"): two independent derivations of the
+binder's necessity.  Recorded in MANIFEST.json (units U-24b + conditionality).
 -/
 import LeanUrat.MovesS.ReadOff
 import LeanUrat.MovesS.InterpUnique
@@ -39,8 +41,9 @@ SUBSYSTEM CLOSURE)").  Without `L` the identification `βmeas = active-subsystem
 solve` behind `AVAgree`'s RHS is not available (the measured kernel `M.kstep` and
 the evaluated symbolic kernel `Aℝ P` are tied only by `L.kstep_one`/`L.act_target`),
 so the goal is unprovable as stated.  NOT a weakening to vacuity: `L` is the same
-ledger every solve consumer in §2.D already carries (RS4Chain.L).  FLAGGED FOR
-ORCHESTRATOR RATIFICATION. -/
+ledger every solve consumer in §2.D already carries (RS4Chain.L).  RATIFIED by the
+orchestrator on two independent derivations of necessity — the "WAVE B RATIFICATIONS"
+entry, notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md (2026-07-30; commit 745cb05). -/
 theorem rs2_unique_interp {T : TableShape n} {M : MeasuredSide T}
     {RB : RatBurdens T M} {hdc : DegCons T}
     {hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e}

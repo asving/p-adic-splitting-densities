@@ -36,6 +36,6 @@ theorem ns_lump (T : TreeModel p F n N m pol) {H : History p F}
     · rintro ⟨hm, hnc⟩
       exact ⟨hm, Set.mem_iInter.mpr ((Lf.tie x hm).mp hnc)⟩
     · rintro ⟨hm, hL⟩
-      exact ⟨hm, (Lf.tie x hm).mpr (fun M => Set.mem_iInter.mp hL M)⟩
+      exact ⟨hm, (Lf.tie x hm).mpr (Set.mem_iInter.mp hL)⟩
 
 end LeanUrat.MovesT

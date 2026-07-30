@@ -508,8 +508,7 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       refine wiii_sum_ge σ _ _ _ (fun jk hjk hne0 => (hbound jk hjk).resolve_left hne0) ?_
       rw [← hHcoeff m']; exact hconvm'
     have hyΦ : Φhat * (H.coeff m' /ₘ Φhat) = H.coeff m' + -(H.coeff m' %ₘ Φhat) := by
-      have hmd := Polynomial.modByMonic_add_div (H.coeff m') Φhat
-      linear_combination hmd
+      linear_combination Polynomial.modByMonic_add_div (H.coeff m') Φhat
     have hΦyne : Φhat * (H.coeff m' /ₘ Φhat) ≠ 0 := mul_ne_zero hΦne hy
     have hwΦy : β + σ.w Φhat + 1 ≤ σ.w (Φhat * (H.coeff m' /ₘ Φhat)) := by
       rw [hyΦ]
@@ -535,8 +534,7 @@ theorem TRANSiii_le_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
           rw [σ.hwmul _ _ hBfne hBgne] at hb
           exact hb
         have hnegne : -(H.coeff m' %ₘ Φhat) ≠ 0 := neg_ne_zero.mpr hrz
-        have hsumne : H.coeff m' + -(H.coeff m' %ₘ Φhat) ≠ 0 := by
-          rw [← hyΦ]; exact hΦyne
+        have hsumne : H.coeff m' + -(H.coeff m' %ₘ Φhat) ≠ 0 := hyΦ ▸ hΦyne
         have hult := σ.hwult _ _ hconvm' hnegne hsumne
         rw [wiii_neg σ _ hrz] at hult
         exact le_trans (le_min hwconv hrw) hult

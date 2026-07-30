@@ -25,9 +25,7 @@ private lemma seg_self {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (i
     J.seg i i = id := by
   cases i with
   | zero => rfl
-  | succ j =>
-    have : ¬ (j + 1 ≤ j) := by omega
-    simp [JetSetup.seg, this]
+  | succ j => simp only [JetSetup.seg, if_neg (Nat.not_succ_le_self j)]
 
 theorem C6_transportedSystem {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (k : ℕ) (hk : k ≤ H.nodes.length) (x : Fin m → ZMod p) : (J.Sigma k).IsSolution x ↔ ∀ (i : ℕ) (hi : i < k), (J.fresh i).sat (J.seg i k x) := by
   have main : ∀ k, k ≤ H.nodes.length → ∀ (x : Fin m → ZMod p),
@@ -44,12 +42,12 @@ theorem C6_transportedSystem {n N m : ℕ} {H : History p F} (J : JetSetup H n N
     | succ k ih =>
       intro hk x
       have hklen : k < H.nodes.length := hk
-      have hkle : k ≤ H.nodes.length := le_of_lt hklen
+      have hkle : k ≤ H.nodes.length := hklen.le
       have segstep : ∀ i, i ≤ k → J.seg i (k + 1) x = J.seg i k (J.Theta k x) := by
         intro i hi
         simp [JetSetup.seg, hi]
       have segk : J.seg k (k + 1) x = J.Theta k x := by
-        rw [segstep k (le_refl k), seg_self J k, Function.id_def]
+        rw [segstep k le_rfl, seg_self J k, Function.id_def]
       rw [J.recursion k hklen x]
       constructor
       · rintro ⟨hsol, hstr⟩
@@ -58,10 +56,9 @@ theorem C6_transportedSystem {n N m : ℕ} {H : History p F} (J : JetSetup H n N
         have hIH := (ih hkle (J.Theta k x)).mp hsol
         intro i hi
         rcases Nat.lt_or_ge i k with hlt | hge
-        · rw [segstep i (le_of_lt hlt)]
+        · rw [segstep i hlt.le]
           exact hIH i hlt
-        · have heq : i = k := by omega
-          subst heq
+        · obtain rfl : i = k := by omega
           rw [segk]
           exact hfreshk
       · intro hall
@@ -71,7 +68,7 @@ theorem C6_transportedSystem {n N m : ℕ} {H : History p F} (J : JetSetup H n N
         have hIHrhs : ∀ i (hi : i < k), (J.fresh i).sat (J.seg i k (J.Theta k x)) := by
           intro i hi
           have h := hall i (by omega)
-          rwa [segstep i (le_of_lt hi)] at h
+          rwa [segstep i hi.le] at h
         have hsol : (J.Sigma k).IsSolution (J.Theta k x) := (ih hkle (J.Theta k x)).mpr hIHrhs
         have hstr : J.stratum k (J.Theta k x) :=
           (J.inh_implied k hklen (J.Theta k x) hsol).mpr hfreshk

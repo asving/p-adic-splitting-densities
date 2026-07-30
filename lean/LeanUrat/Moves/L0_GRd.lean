@@ -21,6 +21,4 @@ open LeanUrat.Moves
 theorem L0_GRd {K F : Type*} [Field K] [Field F] (φ : K →+* F) (zbar : Fˣ) {x : LaurentPolynomial K} (hx : IsMonomialUnit x) : LaurentPolynomial.eval₂ φ zbar x ≠ 0 := by
   obtain ⟨c, k, rfl⟩ := hx
   rw [LaurentPolynomial.eval₂_C_mul_T]
-  refine mul_ne_zero ?_ ?_
-  · exact (map_ne_zero_iff φ φ.injective).mpr (Units.ne_zero c)
-  · exact (zbar ^ k).ne_zero
+  exact mul_ne_zero ((map_ne_zero_iff φ φ.injective).mpr c.ne_zero) (zbar ^ k).ne_zero

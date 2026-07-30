@@ -30,9 +30,7 @@ theorem squeeze_limit {n p : ℕ} (X : ClassifierSpec n p) (hp : 1 < p) (r : ℝ
       (X.decided σ N : ℝ) ≤ r * (p : ℝ) ^ (n * N))
     (henv : Tendsto X.env atTop (𝓝 0)) :
     Tendsto (X.dmass σ) atTop (𝓝 r) := by
-  have hp0 : (0 : ℝ) < (p : ℝ) := by
-    have : (0 : ℕ) < p := lt_trans Nat.zero_lt_one hp
-    exact_mod_cast this
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast Nat.zero_lt_one.trans hp
   have hlower : ∀ N, r - X.env N ≤ X.dmass σ N := by
     intro N
     have hP : (0 : ℝ) < (p : ℝ) ^ (n * N) := pow_pos hp0 _
@@ -44,8 +42,7 @@ theorem squeeze_limit {n p : ℕ} (X : ClassifierSpec n p) (hp : 1 < p) (r : ℝ
     rw [ClassifierSpec.dmass, div_le_iff₀ hP]
     exact (hbr N).2
   have hg : Tendsto (fun N => r - X.env N) atTop (𝓝 r) := by
-    have h := henv.const_sub r
-    simpa using h
+    simpa using henv.const_sub r
   exact tendsto_of_tendsto_of_tendsto_of_le_of_le hg tendsto_const_nhds hlower hupper
 
 end LeanUrat.MovesU

@@ -90,9 +90,7 @@ theorem D4_carryAdjoinRoot {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : F�
     intro τ
     have h := P.add_def 0 0 τ
     simp only [add_zero] at h
-    have h2 : (0 : CarryAlg F e) τ + 0 = (0 : CarryAlg F e) τ + (0 : CarryAlg F e) τ := by
-      rw [add_zero]; exact h
-    exact (add_left_cancel h2).symm
+    exact left_eq_add.mp h
   -- the generator u and its powers
   set U : CarryAlg F e := dOf (1 : ZMod e) ((zbar : F) ^ (1 / e)) with hU
   have hpow : ∀ n : ℕ, U ^ n = dOf (↑n) ((zbar : F) ^ (n / e)) := by

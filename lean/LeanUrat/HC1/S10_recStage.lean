@@ -80,7 +80,7 @@ private lemma val_neg (w : Polynomial ℤ_[p] → ℤ)
   rw [neg_one_mul, neg_neg, val_one w hmul] at key
   have hw1 : w (-1 : Polynomial ℤ_[p]) = 0 := by linarith
   have h2 := hmul (-1) f hn1 hf
-  rw [neg_one_mul, hw1, zero_add] at h2; exact h2
+  rwa [neg_one_mul, hw1, zero_add] at h2
 
 /-- `w (g^j) = j·(w g)` for `g ≠ 0`. -/
 private lemma w_pow (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :

@@ -46,9 +46,8 @@ theorem C4_stepMass {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (i : 
   -- Rewrite `mass(Σ_{i+1})` as the pulled-back joint count.
   have hmass : (J.Sigma (i+1)).mass
       = Nat.card {x : Fin m → ZMod p //
-          (J.Sigma i).IsSolution (J.Theta i x) ∧ (J.fresh i).sat (J.Theta i x)} := by
-    unfold Locus.mass
-    exact Nat.card_congr (Equiv.subtypeEquivRight hA)
+          (J.Sigma i).IsSolution (J.Theta i x) ∧ (J.fresh i).sat (J.Theta i x)} :=
+    Nat.card_congr (Equiv.subtypeEquivRight hA)
   -- Transport the joint count along the bijection `Θ_i` (side condition is `Iff.rfl`, since
   -- `Equiv.ofBijective (J.Theta i) hbij` applied is defeq `J.Theta i`).
   have htrans : Nat.card {x : Fin m → ZMod p //

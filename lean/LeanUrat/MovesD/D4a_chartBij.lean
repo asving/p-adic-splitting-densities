@@ -26,9 +26,7 @@ theorem chart_bij {H : History p F} (J : JetSetup H n N m) :
   -- `CoordPrec` is irreflexive: no coordinate precedes itself.
   have hirr : ∀ c : Coord, ¬ CoordPrec c c := by
     intro c hc
-    rcases hc with h | ⟨-, h⟩
-    · exact lt_irrefl _ h
-    · exact lt_irrefl _ h
+    rcases hc with h | ⟨-, h⟩ <;> exact lt_irrefl _ h
   -- Injectivity: distinct indices are ≺-ordered, so equal charts are impossible.
   have hinj : Function.Injective J.coordOf := by
     intro j j' h
@@ -55,10 +53,9 @@ theorem chart_bij {H : History p F} (J : JetSetup H n N m) :
     rw [Finset.card_product, Finset.card_range, Finset.card_range, J.hm]
     ring
   have heq : Finset.univ.image J.coordOf = Finset.range N ×ˢ Finset.range n :=
-    Finset.eq_of_subset_of_card_le hsub (le_of_eq (by rw [hcard_grid, hcard_img]))
+    Finset.eq_of_subset_of_card_le hsub (hcard_grid.trans hcard_img.symm).le
   have hmem : c ∈ Finset.univ.image J.coordOf := by rw [heq]; exact hc
   simp only [Finset.mem_image, Finset.mem_univ, true_and] at hmem
-  obtain ⟨j, hj⟩ := hmem
-  exact ⟨j, hj⟩
+  exact hmem
 
 end LeanUrat.MovesD

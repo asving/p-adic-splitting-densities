@@ -34,9 +34,7 @@ theorem lmeas_equiv [NeZero p] (hp : 1 < p) (σ : SplittingType n) (N : ℕ)
     ((R σ - X.env N) * (p : ℝ) ^ (n * N) ≤ (X.decided σ N : ℝ)) ↔
       (∑ τ ∈ Finset.univ.erase σ, X.dmass τ N ≤ ∑ τ ∈ Finset.univ.erase σ, R τ) := by
   -- positivity of the box size p^{nN}
-  have hp0 : (0 : ℝ) < (p : ℝ) := by
-    have : 0 < p := by omega
-    exact_mod_cast this
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast (show 0 < p by omega)
   have hP : (0 : ℝ) < (p : ℝ) ^ (n * N) := pow_pos hp0 _
   have hPne : (p : ℝ) ^ (n * N) ≠ 0 := ne_of_gt hP
   -- (BOX-N), cast to ℝ, then split the decided sum off σ
@@ -69,8 +67,6 @@ theorem lmeas_equiv [NeZero p] (hp : 1 < p) (σ : SplittingType n) (N : ℕ)
 theorem lmeas_implied (σ : SplittingType n) (N : ℕ)
     (hupper : ∀ τ, τ ≠ σ → X.dmass τ N ≤ R τ) :
     ∑ τ ∈ Finset.univ.erase σ, X.dmass τ N ≤ ∑ τ ∈ Finset.univ.erase σ, R τ := by
-  refine Finset.sum_le_sum ?_
-  intro τ hτ
-  exact hupper τ (Finset.ne_of_mem_erase hτ)
+  exact Finset.sum_le_sum fun τ hτ => hupper τ (Finset.ne_of_mem_erase hτ)
 
 end LeanUrat.MovesU

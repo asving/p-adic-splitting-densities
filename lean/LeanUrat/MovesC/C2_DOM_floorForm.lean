@@ -17,14 +17,13 @@ theorem C2_DOM_floorForm {lines : ℕ → Line} {i interiorEnd : ℕ} (dom : Dom
   have dom_le : ∀ m, m ≤ i → (lines m).at b ≤ (lines i).at b := by
     intro m hm
     rcases eq_or_lt_of_le hm with rfl | hlt
-    · exact le_refl _
+    · exact le_rfl
     · have hsteep : (lines m).slope < (lines i).slope := dom.steeper m hlt
       have hvert : (lines m).at interiorEnd ≤ (lines i).at interiorEnd :=
         dom.vertex_entry m (le_of_lt hlt)
       simp only [Line.at] at hvert ⊢
       have hbq : (b : ℚ) ≤ (interiorEnd : ℚ) := by exact_mod_cast hb
-      nlinarith [hsteep, hvert, hbq,
-        mul_nonneg (le_of_lt (sub_pos.mpr hsteep)) (sub_nonneg.mpr hbq)]
+      nlinarith [mul_nonneg (le_of_lt (sub_pos.mpr hsteep)) (sub_nonneg.mpr hbq)]
   unfold floorOf
   apply le_antisymm
   · -- sup' ≤ (lines i).at b : every term of the family is dominated.

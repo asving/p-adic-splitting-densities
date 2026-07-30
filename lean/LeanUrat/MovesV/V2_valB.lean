@@ -307,7 +307,6 @@ theorem pathProd_deg {n} {C : CtsFamily n} {S : StepSys n}
   | last mv => exact C.T_deg _ _ _ _ _
   | lastT mv => exact C.T_deg _ _ _ _ _
   | cons mv γ ih =>
-    refine (Polynomial.natDegree_mul_le).trans ?_
-    exact Nat.add_le_add (C.T_deg _ _ _ _ _) ih
+    exact Polynomial.natDegree_mul_le.trans (Nat.add_le_add (C.T_deg _ _ _ _ _) ih)
 
 end LeanUrat.MovesV

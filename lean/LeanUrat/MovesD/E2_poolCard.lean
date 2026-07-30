@@ -23,14 +23,11 @@ theorem pool_card_le {w : ℕ} (hp : 2 ≤ p) (hw : 1 ≤ w) :
   classical
   -- The pool is the root set of `P = X^(p^w) - X`, a nonzero polynomial of degree `p^w`.
   set P : Polynomial F := Polynomial.X ^ (p ^ w) - Polynomial.X with hP
-  have hpw : 2 ≤ p ^ w := by
-    calc 2 ≤ p := hp
-      _ = p ^ 1 := (pow_one p).symm
-      _ ≤ p ^ w := Nat.pow_le_pow_right (by omega) hw
+  have hpw : 2 ≤ p ^ w := Nat.one_lt_pow (by omega) (by omega)
   -- `P.coeff (p^w) = 1`, hence `P ≠ 0`.
   have hcoeff : P.coeff (p ^ w) = 1 := by
-    rw [hP, Polynomial.coeff_sub, Polynomial.coeff_X_pow, Polynomial.coeff_X]
-    rw [if_pos rfl, if_neg (by omega : ¬ (1 = p ^ w))]
+    rw [hP, Polynomial.coeff_sub, Polynomial.coeff_X_pow, Polynomial.coeff_X,
+      if_pos rfl, if_neg (by omega : ¬ (1 = p ^ w))]
     ring
   have hP0 : P ≠ 0 := by
     intro h

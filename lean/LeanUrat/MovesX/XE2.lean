@@ -6,7 +6,7 @@ adjudication in blueprint §7). The conclusion now binds ∃ N₀ (an (n,K)-func
 BEFORE p) with the claim over N ≥ N₀ only — the note's honest domain of content (the
 (N−1−c_cap) numerator; X.5(iii) no-teeth regime). The refutation countermodel (point
 mass at X²+X, root-only tree, Undec N = ∅ for N ≥ 2) now SATISFIES the statement via
-N₀ ≥ 2. Body sorry; fleet re-proves. D9 REBIND (audit, accepted findings 2/4): N₀, c3, c4 are
+N₀ ≥ 2. Body PROVED (fleet). D9 REBIND (audit, accepted findings 2/4): N₀, c3, c4 are
 now bound BEFORE ∀ X — quantified over exactly (n, K); the tags move inside as
 implications, so the constants cannot depend on any XFamily data. Disclosed: R is
 redundant given AL ∧ WC (route a2) — kept, per the tag list.]

@@ -59,8 +59,7 @@ abbrev F4 : Type := GaloisField 2 2
 /-! ### A. The prime subfield ⊥ of F₄: elements are 0 or 1 -/
 
 private lemma two_eq_zero_F4 : (2 : F4) = 0 := by
-  have := CharP.cast_eq_zero F4 2
-  exact_mod_cast this
+  exact_mod_cast CharP.cast_eq_zero F4 2
 
 private lemma mem_bot_cases {x : F4} (hx : x ∈ (⊥ : Subfield F4)) : x = 0 ∨ x = 1 := by
   rw [← Subfield.closure_empty] at hx
@@ -180,8 +179,7 @@ private lemma extract_content {f : Polynomial ℤ_[2]} (hf : f ≠ 0) :
     omega
 
 private lemma val_two : ((2 : ℤ_[2])).valuation = 1 := by
-  have := PadicInt.valuation_p (p := 2)
-  exact_mod_cast this
+  exact_mod_cast PadicInt.valuation_p (p := 2)
 
 private lemma val_two_pow (n : ℕ) : ((2 : ℤ_[2]) ^ n).valuation = n := by
   rw [PadicInt.valuation_pow, val_two, mul_one]
@@ -299,8 +297,7 @@ private lemma wS1_C {c : ℤ_[2]} (hc : c ≠ 0) : wS1 (C c) = (c.valuation : �
   rw [Polynomial.C_comp, gaussVal_C hc]
 
 private lemma wS1_one : wS1 1 = 0 := by
-  have := wS1_C (c := 1) one_ne_zero
-  simpa using this
+  simpa using wS1_C (c := 1) one_ne_zero
 
 private lemma wS1_X : wS1 X = 1 := by
   have hs : (X : Polynomial ℤ_[2]).support = {1} := Polynomial.support_X
@@ -359,8 +356,7 @@ private lemma wS1_strict {f g : Polynomial ℤ_[2]} (hf : f ≠ 0) (hg : g ≠ 0
     · exact absurd h (not_le_of_gt hgt)
     · exact absurd h (not_le_of_gt hlt)
   · have := wS1_ult hf hg hfg
-    rw [min_eq_left (le_of_lt hlt)] at this
-    exact this
+    rwa [min_eq_left (le_of_lt hlt)] at this
 
 /-! ### D. Exact division by the content and the residual map `RS1` -/
 
@@ -574,9 +570,8 @@ private lemma RS1_neg (f : Polynomial ℤ_[2]) : RS1 (-f) = - RS1 f := by
 private lemma inC_X_eq_C {B : Polynomial ℤ_[2]} (hB : inC X B) : B = C (B.coeff 0) := by
   apply Polynomial.eq_C_of_degree_le_zero
   have h1 : B.degree < (1 : WithBot ℕ) := by
-    have := hB
-    unfold inC at this
-    rwa [Polynomial.degree_X] at this
+    unfold inC at hB
+    rwa [Polynomial.degree_X] at hB
   exact Nat.WithBot.lt_one_iff_le_zero.mp h1
 
 private lemma inC_X_C (c : ℤ_[2]) : inC (X : Polynomial ℤ_[2]) (C c) := by

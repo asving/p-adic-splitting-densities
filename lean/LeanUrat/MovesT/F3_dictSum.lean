@@ -126,7 +126,7 @@ theorem preHalt_dict_sum {P : Shape n} (S : Presented p F n N m pol P)
     intro Tr hTr x hfib
     rw [← preHalt_dict_ptwise S T χ hcyl hwd heta hib hph Tr x hfib (hsep Tr hTr),
       Nat.card_eq_fintype_card]
-    exact (Fintype.card_of_subtype _ (fun _ => by simp only [Finset.mem_filter, Finset.mem_univ, true_and, Set.mem_setOf_eq])).symm
+    exact (Fintype.card_of_subtype _ (fun _ => by simp only [Finset.mem_filter, Finset.mem_univ, true_and])).symm
   -- STEP 1 (hpart.2 + uniqueness): each class's decided set splits along 𝒯
   have hsplit : ∀ i : PrefIdx n pol P,
       Nat.card ↥{x | x ∈ S.fiber i ∧ PreHalt (reprOf i) ∧ Decided T χ x}

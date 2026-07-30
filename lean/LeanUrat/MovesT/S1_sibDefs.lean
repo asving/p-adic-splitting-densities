@@ -33,8 +33,6 @@ theorem sibCount_pair_form (T : TreeModel p F n N m pol)
     Nat.card ↥(cellEventE T CA χ es c ∩ ⋂ ν ∈ CA.branchSetOf c, S ν)
         * Nat.card ↥(cellEventE T CA χ es c)
       = ∏ ν ∈ CA.branchSetOf c, Nat.card ↥(cellEventE T CA χ es c ∩ S ν) := by
-  have h2 : 2 ≤ (CA.branchSetOf c).card := by omega
-  have hk := h es c S h2 hS
-  simpa [hcard] using hk
+  simpa [hcard] using h es c S hcard.ge hS
 
 end LeanUrat.MovesT

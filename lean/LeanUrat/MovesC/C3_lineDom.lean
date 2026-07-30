@@ -56,15 +56,15 @@ theorem C3_lineDom (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realiza
       rw [Polynomial.natDegree_X_pow]
       omega
     have hμg : ν.μ * ν.g ≤ ν.wSide / ν.e := by
-      rw [← hdegpow]; exact le_trans hdvd hdegR
+      rw [← hdegpow]; exact hdvd.trans hdegR
     have hediv : ν.e * (ν.wSide / ν.e) = ν.wSide := Nat.mul_div_cancel' ν.hEdvd
     have hμeg : ν.μ * ν.e * ν.g ≤ ν.wSide := by
       calc ν.μ * ν.e * ν.g = ν.e * (ν.μ * ν.g) := by ring
-        _ ≤ ν.e * (ν.wSide / ν.e) := Nat.mul_le_mul (le_refl _) hμg
+        _ ≤ ν.e * (ν.wSide / ν.e) := Nat.mul_le_mul le_rfl hμg
         _ = ν.wSide := hediv
     show ν.μ * (ν.e * ν.g * ν.Dwidth) ≤ ν.wSide * ν.Dwidth
     calc ν.μ * (ν.e * ν.g * ν.Dwidth) = (ν.μ * ν.e * ν.g) * ν.Dwidth := by ring
-      _ ≤ ν.wSide * ν.Dwidth := Nat.mul_le_mul hμeg (le_refl _)
+      _ ≤ ν.wSide * ν.Dwidth := Nat.mul_le_mul hμeg le_rfl
   -- MAIN: DOM on the recorded lines, by induction on the top index.
   have key : ∀ (I : ℕ) (hI : I < H.nodes.length) (J : ℕ) (hJI : J ≤ I) (c : ℕ)
       (hc : c < (H.nodes[I]'hI).μ * (H.nodes[I]'hI).childWidth),
@@ -91,7 +91,7 @@ theorem C3_lineDom (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realiza
           calc c < (H.nodes[k+1]'hI).μ * (H.nodes[k+1]'hI).childWidth := hc
             _ ≤ (H.nodes[k+1]'hI).wSide * (H.nodes[k+1]'hI).Dwidth := widthConfine _
             _ ≤ ((H.nodes[k+1]'hI).s0 + (H.nodes[k+1]'hI).wSide) * (H.nodes[k]'(by omega)).childWidth := by
-                rw [hF]; exact Nat.mul_le_mul (Nat.le_add_left _ _) (le_refl _)
+                rw [hF]; exact Nat.mul_le_mul (Nat.le_add_left _ _) le_rfl
         -- the affine step: parent line ≤ current line on the interior
         have hstepline : (H.nodes[k]'(by omega)).line.at c ≤ (H.nodes[k+1]'hI).line.at c := by
           refine crossing (H.nodes[k]'(by omega)).line (H.nodes[k+1]'hI).line
@@ -107,8 +107,8 @@ theorem C3_lineDom (H : History p F) (hcoh : HistoryCoherent H) (hreal : Realiza
             exact le_of_eq hveq.symm
         -- the interior nests inside node k's interior, so the IH applies at k
         have hck : c < (H.nodes[k]'(by omega)).μ * (H.nodes[k]'(by omega)).childWidth :=
-          lt_of_lt_of_le hcB (Nat.mul_le_mul hE (le_refl _))
-        exact le_trans (ih (by omega) J hJk c hck) hstepline
+          lt_of_lt_of_le hcB (Nat.mul_le_mul hE le_rfl)
+        exact (ih (by omega) J hJk c hck).trans hstepline
   exact key i hi j hij b hb
 
 end LeanUrat.MovesC

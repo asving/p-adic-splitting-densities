@@ -67,6 +67,6 @@ theorem dCertMono {n : ℕ} (H : XHistory n) :
     rw [show (certified ⟨true, true⟩ : XNode n → Bool)
           = (fun ν => decide (popOf? ν = some Pop.incT12) ||
                       decide (popOf? ν = some Pop.recT1)) from funext cert_tt]
-    exact len_filter_or _ _ H (fun a => pop_excl a)
+    exact len_filter_or _ _ H pop_excl
 
 end LeanUrat.MovesX

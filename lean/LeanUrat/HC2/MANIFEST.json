@@ -54,18 +54,18 @@
   "unit_files": 40,
   "manifest": 1,
   "blueprint_units_covered": 53,
-  "sorried_declarations": 18,
+  "sorried_declarations": 9,
   "defs_sorries": 0,
   "blocked": 0,
   "axioms": 0,
-  "resync": "2026-07-28 (N-QUEUE SIGN-OFF ROUND + same-day REMEDIATION — see nqueue_2026-07-28): 18 sorried declarations across 13 unit files (K1_vertexPin 1, U4 1 [levelSet_no_straddle], U9 2 [U9c + zc_root], U10 5, U11 1, U17a 1, U18 1, U20a 1, U20b 1, U21 1, U22E1 1, U22E2 1, U26 1); CLOSED this round: U1, U7, U17c(own), U25, and U31's mandated clause-(vi) gate re-run (opened by design at sign-off, EXECUTED at the remediation round — gate footprint re-verified Lean-core); U27/U28 gates PROVED with clean footprints (U27 re-verified post seed-law addition); file count 42 = 40 units + Defs + MANIFEST (K1_vertexPin counted as a unit file since the K1 round; U1_negWitness.lean added at the remediation round, 0 sorries)"
+  "resync": "2026-07-30 (GOLF pass HC2#101, MANIFEST refresh to as-built truth): 9 bare `sorry` bodies remain, across 5 files — U10 5 (zc_step_transport/freshExact/interiorZero/confine + the assembled zc_step), U4 1 (levelSet_no_straddle), U17a 1 (lift_swap), U21 1 (readsOf_HV), U26 1 (class_fiber_welldef). CLOSED IN-BODY since the 2026-07-28 resync below (per-file bare-sorry grep, definitive): D1.boxChart 2 (boxChart_sorted/boxChart_lt), D6 1 (mkFreshClauses_disj), U9 2 (U9c + zc_root), U11 1 (root_height_of_inBox), U18 1 (presentNorm_unique), U20a 1, U20b 1, U22E1 1, U22E2 1, and K1_vertexPin's delegated residual (V9_K1nonrec's R3c corner CLOSED — K1_readVertexPin/_nonrec/K1_SAE_vertexEq_endpoint verified Lean-core = {propext, Classical.choice, Quot.sound}). CONVENTION: 'sorries' counts bare `sorry` BODIES in-file, NOT sorryAx footprints — units importing U10.zc_step etc. stay sorryAx-conditional downstream. PRIOR RECORD — 2026-07-28 (N-QUEUE SIGN-OFF ROUND + same-day REMEDIATION — see nqueue_2026-07-28): 18 sorried declarations across 13 unit files (K1_vertexPin 1, U4 1 [levelSet_no_straddle], U9 2 [U9c + zc_root], U10 5, U11 1, U17a 1, U18 1, U20a 1, U20b 1, U21 1, U22E1 1, U22E2 1, U26 1); CLOSED this round: U1, U7, U17c(own), U25, and U31's mandated clause-(vi) gate re-run (opened by design at sign-off, EXECUTED at the remediation round — gate footprint re-verified Lean-core); U27/U28 gates PROVED with clean footprints (U27 re-verified post seed-law addition); file count 42 = 40 units + Defs + MANIFEST (K1_vertexPin counted as a unit file since the K1 round; U1_negWitness.lean added at the remediation round, 0 sorries)"
  },
  "units": [
   {
    "id": "D1.boxChart",
    "file": "Defs.lean",
-   "sorries": 2,
-   "note": "def + sorried boxChart_sorted/boxChart_lt"
+   "sorries": 0,
+   "note": "def + boxChart_sorted/boxChart_lt PROVED in-body (the D1 P-phase duty landed; 0 bare `sorry`) [2026-07-30 GOLF-refresh HC2#101]"
   },
   {
    "id": "D3.RecenterLiftSpec",
@@ -112,13 +112,13 @@
    "id": "K1.vertexPin",
    "file": "K1_vertexPin.lean",
    "sorries": 0,
-   "note": "the K1 kernel bridge (read-indexed D.8 vertex pin); N-4 fallout: obtain arity bumped for clause (vi). REV 4 (2026-07-28, V10 round): K1_readVertexPin_nonrec WIRED := HC1.V9_K1nonrec (statement-verbatim; own sorry deleted — the residual sorry now lives in V9's R3c corner and flows through the wire, so the cone's sorryAx is unchanged in kind but its perimeter shrank to i=0 ∧ e·g=1). ⚠ READ OBSTRUCTION ITEM 6 BEFORE CONSUMING: the e·g ≥ 2 legs close via HC1.V10_readTransition_incompatible — the recorded transition is CONTRADICTORY there (HistoryCoherent read-pair keying = flagged FAITHFULNESS BUG, named sign-off item), so K1/U20a/U20b/U22-E2 are VACUOUS at their intended steep perimeter; never cite as machine-checked transport."
+   "note": "the K1 kernel bridge (read-indexed D.8 vertex pin); N-4 fallout: obtain arity bumped for clause (vi). REV 4 (2026-07-28, V10 round): K1_readVertexPin_nonrec WIRED := HC1.V9_K1nonrec (statement-verbatim). R3c CORNER CLOSED [2026-07-30 GOLF-refresh HC2#101]: V9_K1nonrec is now 0-bare-`sorry`; #print axioms K1_readVertexPin / _nonrec / K1_SAE_vertexEq_endpoint = {propext, Classical.choice, Quot.sound} (Lean-core — the former R3c i=0 ∧ e·g=1 residual is gone). ⚠ READ OBSTRUCTION ITEM 6 BEFORE CONSUMING: the e·g ≥ 2 legs close via HC1.V10_readTransition_incompatible — the recorded transition is CONTRADICTORY there (HistoryCoherent read-pair keying = flagged FAITHFULNESS BUG, named sign-off item), so K1/U20a/U20b/U22-E2 are VACUOUS at their intended steep perimeter; never cite as machine-checked transport."
   },
   {
    "id": "D6.mkFresh",
    "file": "Defs.lean",
-   "sorries": 1,
-   "note": "mkFreshClauses_disj forward lemma = U2 content"
+   "sorries": 0,
+   "note": "mkFreshClauses_disj forward lemma (= U2 content) PROVED in-body (0 bare `sorry`) [2026-07-30 GOLF-refresh HC2#101]"
   },
   {
    "id": "D7.pinTransportSystem+mkStratum+mkSigma",
@@ -189,8 +189,8 @@
   {
    "id": "U9a-c+U9.zc_root",
    "file": "U9_zcRoot.lean",
-   "sorries": 2,
-   "note": "ESCALATION 2026-07-28: U9a (zc_root_downset_mp) PROVED, axioms clean {propext, Classical.choice, Quot.sound} (case split on the IsFreshAttach witness; root floor bridge kappa0 = slope, ustar cancels, U11 not consumed). U9b/U9c/zc_root STOP unprovable-as-stated, in-file records: (1) IsFreshAttach clauses (1)+(3) force S.Theta 0's corrections to vanish at strip coordinates on the fresh locus - not seed-derivable, witness existence fails on junk Theta, pinTransportSystem degenerates (SAME obstruction re-blocks U7.mkSigma_recursion despite DC-2; F-7 ruling overlooked clause (3)); repair = Theta-normalization zcSeed law (D5 fence) or weaken clauses (3)/(4) to Theta-composed zeros. (2) U9c additionally: interior VALUE coordinates not excluded (s0 >= mu*e*g underivable; hOrd gives wSide >= mu*e*g so span slots cross the interior) and their solve is spec-unconstrained/forced to vOf digits; repair = RootD4-class root-shape law mu*childWidth <= s0*Dwidth. Designer sign-off required. POST-DC-3 (2026-07-28, K2): the witness-existence obstruction is DISCHARGED — clauses (3)/(4) now Θ-composed, and U7.freshAttach_exists proves the ∃ at i = 0 for EVERY seed (mkSigma_recursion_zero). U9b's route re-opens (recorded backwards-run of the U9a machinery). U9c still needs BOTH pending sign-off laws: the Θ-normalization zcSeed law (literal zeros; the dead countermodel's badSeed now refutes U9c-as-stated instead — the residue landed exactly where the blueprint's D5 fence said it must) AND the root-shape law (value-interior exclusion). D5-FENCE SIGN-OFF EXECUTED (2026-07-28): both laws LANDED as ZCSeedLaws fields (theta_norm + root_shape — the latter in the value-coordinate-free FAITHFUL WEAKENING, the record's μ·childWidth ≤ s0·Dwidth draft being false at the gate); proved at U27's seed; badSeed closed by hypothesis; U9b (zc_root_downset_mpr) PROVED earlier in the K2 round; remaining 2 sorries = U9c (route in-file, queued-fleet) + zc_root assembly."
+   "sorries": 0,
+   "note": "ESCALATION 2026-07-28: U9a (zc_root_downset_mp) PROVED, axioms clean {propext, Classical.choice, Quot.sound} (case split on the IsFreshAttach witness; root floor bridge kappa0 = slope, ustar cancels, U11 not consumed). U9b/U9c/zc_root STOP unprovable-as-stated, in-file records: (1) IsFreshAttach clauses (1)+(3) force S.Theta 0's corrections to vanish at strip coordinates on the fresh locus - not seed-derivable, witness existence fails on junk Theta, pinTransportSystem degenerates (SAME obstruction re-blocks U7.mkSigma_recursion despite DC-2; F-7 ruling overlooked clause (3)); repair = Theta-normalization zcSeed law (D5 fence) or weaken clauses (3)/(4) to Theta-composed zeros. (2) U9c additionally: interior VALUE coordinates not excluded (s0 >= mu*e*g underivable; hOrd gives wSide >= mu*e*g so span slots cross the interior) and their solve is spec-unconstrained/forced to vOf digits; repair = RootD4-class root-shape law mu*childWidth <= s0*Dwidth. Designer sign-off required. POST-DC-3 (2026-07-28, K2): the witness-existence obstruction is DISCHARGED — clauses (3)/(4) now Θ-composed, and U7.freshAttach_exists proves the ∃ at i = 0 for EVERY seed (mkSigma_recursion_zero). U9b's route re-opens (recorded backwards-run of the U9a machinery). U9c still needs BOTH pending sign-off laws: the Θ-normalization zcSeed law (literal zeros; the dead countermodel's badSeed now refutes U9c-as-stated instead — the residue landed exactly where the blueprint's D5 fence said it must) AND the root-shape law (value-interior exclusion). D5-FENCE SIGN-OFF EXECUTED (2026-07-28): both laws LANDED as ZCSeedLaws fields (theta_norm + root_shape — the latter in the value-coordinate-free FAITHFUL WEAKENING, the record's μ·childWidth ≤ s0·Dwidth draft being false at the gate); proved at U27's seed; badSeed closed by hypothesis; U9b (zc_root_downset_mpr) PROVED earlier in the K2 round; remaining 2 sorries = U9c (route in-file, queued-fleet) + zc_root assembly. POST-REFRESH (2026-07-30, GOLF HC2#101): U9_zcRoot.lean now has 0 bare `sorry` in-body — U9c + zc_root closed since this note (definitive per-file grep)."
   },
   {
    "id": "U10a-d+U10.zc_step",
@@ -201,8 +201,8 @@
   {
    "id": "U11.root_height_of_inBox",
    "file": "U11_rootHeight.lean",
-   "sorries": 1,
-   "note": "N-5 RESTATED: gains hd4 : RootD4 H (the pre-declared flex point FIRED — refutable without it); derivation route in-file, proof queued-fleet."
+   "sorries": 0,
+   "note": "N-5 RESTATED: gains hd4 : RootD4 H (the pre-declared flex point FIRED — refutable without it); derivation route in-file; root_height_of_inBox PROVED in-body (0 bare `sorry`) [2026-07-30 GOLF-refresh HC2#101]."
   },
   {
    "id": "U13.jetSetup_of_seed",
@@ -249,8 +249,8 @@
   {
    "id": "U18.presentNorm_unique",
    "file": "U18_unique.lean",
-   "sorries": 1,
-   "note": "K3 RESTATED: gains AdjacentReads H/H' (the conditional-refutation repair); proof-first stands under the guard; hbr-drop standing probe cited; OmUniqHyp caveat recorded at U17c."
+   "sorries": 0,
+   "note": "K3 RESTATED: gains AdjacentReads H/H' (the conditional-refutation repair); proof-first stands under the guard; hbr-drop standing probe cited; OmUniqHyp caveat recorded at U17c. [2026-07-30 GOLF-refresh HC2#101: 0 bare `sorry` in-body]"
   },
   {
    "id": "U19.readsOf_coherent",
@@ -267,14 +267,14 @@
   {
    "id": "U20a.NA_transport_root",
    "file": "U20a_NAtransportRoot.lean",
-   "sorries": 1,
-   "note": "NEW per §9 F-2 — vertex-value transport, ROOT parent; statement prover-refinable"
+   "sorries": 0,
+   "note": "NEW per §9 F-2 — vertex-value transport, ROOT parent; statement prover-refinable [2026-07-30 GOLF-refresh HC2#101: 0 bare `sorry` in-body]"
   },
   {
    "id": "U20b.NA_transport_increment",
    "file": "U20b_NAtransportIncrement.lean",
-   "sorries": 1,
-   "note": "NEW per §9 F-2 — vertex-value transport, INCREMENT parent (IsNodeLift/TransitionCoreL + LandingCylinderL); statement prover-refinable"
+   "sorries": 0,
+   "note": "NEW per §9 F-2 — vertex-value transport, INCREMENT parent (IsNodeLift/TransitionCoreL + LandingCylinderL); statement prover-refinable [2026-07-30 GOLF-refresh HC2#101: 0 bare `sorry` in-body]"
   },
   {
    "id": "U20c.NA_transport_recentering",
@@ -297,14 +297,14 @@
   {
    "id": "U22-E1.SAE_spanStrict_endpoint",
    "file": "U22E1_spanStrict.lean",
-   "sorries": 1,
-   "note": "NEW per §9 F-4 — strict span-entry endpoint ((ZC)-zeroed strips content); statement prover-refinable"
+   "sorries": 0,
+   "note": "NEW per §9 F-4 — strict span-entry endpoint ((ZC)-zeroed strips content); statement prover-refinable [2026-07-30 GOLF-refresh HC2#101: 0 bare `sorry` in-body]"
   },
   {
    "id": "U22-E2.SAE_vertexEq_endpoint",
    "file": "U22E2_vertexEq.lean",
-   "sorries": 1,
-   "note": "NEW per §9 F-4 — adjacent-vertex equality endpoint (the u*-tie); statement prover-refinable"
+   "sorries": 0,
+   "note": "NEW per §9 F-4 — adjacent-vertex equality endpoint (the u*-tie); statement prover-refinable [2026-07-30 GOLF-refresh HC2#101: 0 bare `sorry` in-body]"
   },
   {
    "id": "U23.readsOf_realizable",

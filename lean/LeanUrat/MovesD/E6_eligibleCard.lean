@@ -27,13 +27,13 @@ private lemma ranch_coeff_eq (ν : Node p F) (N : ℕ) :
   rw [ν.hRanch, Polynomial.finsetSum_coeff]
   simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero]
   rw [Finset.sum_ite_eq (Finset.range (ν.wSide / ν.e + 1)) N (fun k => ν.pat k)]
-  simp [Finset.mem_range]
+  simp only [Finset.mem_range, Nat.lt_succ_iff]
 
 /-- `Ranch ≠ 0`: its top pattern coefficient `pat (ℓ)` is nonzero (`hpatTop`). -/
 private lemma ranch_ne_zero (ν : Node p F) : ν.Ranch ≠ 0 := by
   intro h
   have hc := ranch_coeff_eq ν (ν.wSide / ν.e)
-  rw [if_pos (le_refl _), h, Polynomial.coeff_zero] at hc
+  rw [if_pos le_rfl, h, Polynomial.coeff_zero] at hc
   exact ν.hpatTop hc.symm
 
 /-- `deg Ranch ≤ ℓ = wSide/e`: no pattern coefficient sits beyond the window. -/

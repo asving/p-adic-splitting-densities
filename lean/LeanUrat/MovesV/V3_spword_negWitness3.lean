@@ -63,7 +63,7 @@ def eps3 : EntShapeV 3 where
 `spWordFits_impossible`). -/
 theorem eps3_spWord_nil :
     spWord 3 (eps3.Phat : MovesD.ShapePrefix) = [] := by
-  show spWord 3 P3 = []
+  change spWord 3 P3 = []
   unfold spWord
   rw [dif_neg spWordFits_impossible]
 

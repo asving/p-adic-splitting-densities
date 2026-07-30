@@ -62,9 +62,7 @@ private lemma development_truncate {p : ℕ} [Fact p.Prime] (Φ : Polynomial ℤ
   have hzL : ∀ j, L ≤ j → B j = 0 := by
     intro j hjL
     by_contra hBj
-    have hjN' : j < N' := by
-      by_contra hge
-      exact hBj (hBzero j (by omega))
+    have hjN' : j < N' := not_le.mp fun hge => hBj (hBzero j hge)
     set s : Finset ℕ := (Finset.range N').filter (fun i => B i ≠ 0) with hs
     have hjs : j ∈ s := by
       simp only [hs, Finset.mem_filter, Finset.mem_range]

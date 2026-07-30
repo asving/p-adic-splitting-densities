@@ -56,12 +56,8 @@ theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     -- (iii): level sets strictly above the floor avoid the floor set
     (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' →
       T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅) := by
-  refine ⟨fun c hc => T3_htChainWeight T c hc,
-          fun b y hfin hsupp hne => T4_slotMinHt T b y hfin hsupp hne,
-          fun b γ' x y hxfin hyfin hagree hxlow hylow =>
-            T5_levelSetInGamma T b γ' x y hxfin hyfin hagree hxlow hylow,
-          fun b hb c hbc => (T10_floorStaircase T rl b hb).2 c hbc,
-          ?_⟩
+  refine ⟨T3_htChainWeight T, T4_slotMinHt T, T5_levelSetInGamma T,
+          fun b hb => (T10_floorStaircase T rl b hb).2, ?_⟩
   -- (iii): a coordinate in the level set has height exactly γ' > floorB b, so it
   -- cannot also lie in the floor set (height ≤ floorB b).  Pure arithmetic.
   intro b γ' _hint hlt

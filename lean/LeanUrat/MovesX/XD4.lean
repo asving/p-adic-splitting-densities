@@ -42,8 +42,7 @@ theorem x2hypAssembled {n : ℕ} (X : XFamily n) (K : XConsts n)
   -- (XD.2) x2hypCount: Σh ≤ (d_total + 1)·max h
   have hcount : (sumH ((X.ctx p).hist b) : ℚ) ≤
       ((dTotal ((X.ctx p).hist b) : ℚ) + 1) * (maxH ((X.ctx p).hist b) : ℚ) := by
-    have h := x2hypCount ((X.ctx p).hist b) ((X.ctx p).wf b)
-    exact_mod_cast h
+    exact_mod_cast x2hypCount ((X.ctx p).hist b) ((X.ctx p).wf b)
   have hc0cc : (0 : ℚ) ≤ K.c0 + K.ccap := add_nonneg K.c0nonneg K.ccapnonneg
   have d1nn : (0 : ℚ) ≤ (dTotal ((X.ctx p).hist b) : ℚ) + 1 := by positivity
   have mnn : (0 : ℚ) ≤ (maxH ((X.ctx p).hist b) : ℚ) := by positivity

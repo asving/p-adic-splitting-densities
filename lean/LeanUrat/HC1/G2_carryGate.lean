@@ -38,8 +38,7 @@ private lemma G2_dOf_mul_dOf {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : 
   · rw [Pi.single_eq_same]
     by_cases hτ : τ = ρ + σ
     · subst hτ
-      have hsub : ρ + σ - ρ = σ := by ring
-      rw [hsub, Pi.single_eq_same, Pi.single_eq_same]
+      rw [add_sub_cancel_left, Pi.single_eq_same, Pi.single_eq_same]
     · rw [Pi.single_eq_of_ne hτ, Pi.single_eq_of_ne, mul_zero, zero_mul]
       intro hcontra
       exact hτ (by rw [← hcontra]; ring)
@@ -80,9 +79,7 @@ theorem G2_carryGate :
       have := pow_card_eq_one (x := g)
       rwa [hcu] at this
     have hy3 : y ^ 3 = 1 := by
-      have : ((g ^ 3 : (GaloisField 2 2)ˣ) : GaloisField 2 2)
-          = ((1 : (GaloisField 2 2)ˣ) : GaloisField 2 2) := by rw [hg3]
-      simpa [hy] using this
+      rw [hy, ← Units.val_pow_eq_pow_val, hg3, Units.val_one]
     have hy1 : y ≠ 1 := by
       intro h; apply hg; apply Units.ext; simpa [hy] using h
     have hfac : (y - 1) * (y ^ 2 + y + 1) = 0 := by linear_combination hy3

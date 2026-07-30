@@ -28,9 +28,8 @@ theorem L0_FactA_exists {R : Type*} [CommRing R] (Φ : Polynomial R) (hΦ : Φ.M
     ∃ (B : ℕ → Polynomial R) (N : ℕ), IsDevelopment Φ f B N := by
   have hRnt : Nontrivial R := by
     rcases subsingleton_or_nontrivial R with h | h
-    · exfalso
-      have hz : Φ = 0 := Subsingleton.elim _ _
-      rw [hz] at hd; simp at hd
+    · have hz : Φ = 0 := Subsingleton.elim _ _
+      simp [hz] at hd
     · exact h
   have hΦ0 : Φ ≠ 0 := hΦ.ne_zero
   have hΦbot : (⊥ : WithBot ℕ) < Φ.degree :=
@@ -40,7 +39,7 @@ theorem L0_FactA_exists {R : Type*} [CommRing R] (Φ : Polynomial R) (hΦ : Φ.M
     exact H (f.natDegree + 1) f (Nat.lt_succ_self _)
   intro n
   induction n with
-  | zero => intro g hg; exact absurd hg (Nat.not_lt_zero _)
+  | zero => exact fun g hg => absurd hg (Nat.not_lt_zero _)
   | succ n IH =>
     intro g hg
     have hdiv : g %ₘ Φ + Φ * (g /ₘ Φ) = g := Polynomial.modByMonic_add_div g Φ
@@ -84,7 +83,7 @@ theorem L0_FactA_exists {R : Type*} [CommRing R] (Φ : Polynomial R) (hΦ : Φ.M
         rw [hB'sum, Finset.sum_mul]
         apply Finset.sum_congr rfl
         intro k _
-        rw [pow_succ]; ring
+        ring
       rw [e1]
       linear_combination hdiv
 

@@ -194,13 +194,11 @@ private lemma lmap_C_mul_T {K L : Type*} [CommSemiring K] [CommSemiring L] (χ :
 
 private lemma lmap_C {K L : Type*} [CommSemiring K] [CommSemiring L] (χ : K →+* L) (r : K) :
     lmap χ (LaurentPolynomial.C r) = LaurentPolynomial.C (χ r) := by
-  have h := lmap_C_mul_T χ r 0
-  simpa [LaurentPolynomial.T_zero] using h
+  simpa [LaurentPolynomial.T_zero] using lmap_C_mul_T χ r 0
 
 private lemma lmap_T {K L : Type*} [CommSemiring K] [CommSemiring L] (χ : K →+* L) (n : ℤ) :
     lmap χ (LaurentPolynomial.T n) = LaurentPolynomial.T n := by
-  have h := lmap_C_mul_T χ 1 n
-  simpa using h
+  simpa using lmap_C_mul_T χ 1 n
 
 private lemma lmap_injective {K L : Type*} [CommSemiring K] [CommSemiring L] (χ : K ≃+* L) :
     Function.Injective (lmap (χ : K →+* L)) := by

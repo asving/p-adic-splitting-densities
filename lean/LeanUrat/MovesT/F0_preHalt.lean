@@ -74,17 +74,13 @@ theorem mem_of_prefix (T : TreeModel p F n N m pol) (x : Box p m) :
         simp [hHl]
       rw [hgt] at this
       intro hcon
-      have := this.mp hcon
-      have : l' = [] := List.length_eq_zero_iff.mp this
-      exact hl'ne this
+      exact hl'ne (List.length_eq_zero_iff.mp (this.mp hcon))
     -- H = Hl.snoc a
     have hHeq : H = Hl.snoc a hspec := by
       apply history_ext
       show H.nodes = Hl.nodes ++ [a]
       rw [hHl]
-    have hmem' : T.mem (some Hl) x := by
-      have := (T.mem_snoc Hl a hspec x).mp (hHeq ▸ hmem)
-      exact this.1
+    have hmem' : T.mem (some Hl) x := ((T.mem_snoc Hl a hspec x).mp (hHeq ▸ hmem)).1
     exact ih Hl rfl hmem' H' hpre'
 
 theorem preHalt_prunedMem (T : TreeModel p F n N m pol) (H : History p F)
@@ -114,9 +110,7 @@ theorem preHalt_prunedMem (T : TreeModel p F n N m pol) (H : History p F)
     have hspec : ν'.species ≠ ReadSpecies.root := by
       have := H.root_iff H'.nodes.length hklt
       intro hcon
-      have h0 := this.mp hcon
-      have : H'.nodes = [] := List.length_eq_zero_iff.mp h0
-      exact hnn this
+      exact hnn (List.length_eq_zero_iff.mp (this.mp hcon))
     -- the snoc extension is the (k+1)-prefix of H, hence realized at x
     have hpre2 : (H'.snoc ν' hspec).IsPrefixOf H := by
       show (H'.snoc ν' hspec).nodes <+: H.nodes

@@ -19,8 +19,7 @@ theorem gateB_mass : gateB_iota = 2 * (1/2 : ℚ) ^ 3 ∧ gateB_T = 1 ∧
 theorem gateB_shadow_check : Ient.eval 2 * gateB_T = 2 ∧
     (2 : ℚ) ^ (3 * 3 - 5 : ℕ) = 16 ∧ (2 : ℚ) ^ (3 * 4 - 5 : ℕ) = 128 := by
   refine ⟨?_, ?_, ?_⟩
-  · simp [Ient, gateB_T]
-    norm_num
+  · norm_num [Ient, gateB_T]
   · norm_num
   · norm_num
 

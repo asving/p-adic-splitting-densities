@@ -46,8 +46,8 @@ theorem ktri {T : TableShape n} (hdc : DegCons T) {e : ℕ}
     length_le_sum_size t (fun ν hν =>
       hpos ν (List.mem_append_right _ (List.mem_cons_of_mem _ hν)))
   -- expand the sum over the split
-  simp only [List.map_append, List.map_cons, List.sum_append, List.sum_cons] at hsum
-  simp only [List.length_append, List.length_cons] at hlen
+  simp only [List.map_append, List.map_cons, List.sum_append, List.sum_cons,
+    List.length_append, List.length_cons] at hsum hlen
   omega
 
 end LeanUrat.MovesS

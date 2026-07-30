@@ -43,7 +43,7 @@ theorem D2_carryGrading {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ}
       · have hne : τ - ρ ≠ σ := by
           intro h
           rw [sub_eq_iff_eq_add] at h
-          exact hτ (by rw [h]; exact add_comm σ ρ)
+          exact hτ (h.trans (add_comm σ ρ))
         rw [Pi.single_eq_of_ne hne, Pi.single_eq_of_ne hτ, mul_zero, zero_mul]
     · intro b _ hb
       rw [Pi.single_eq_of_ne hb, zero_mul, zero_mul]

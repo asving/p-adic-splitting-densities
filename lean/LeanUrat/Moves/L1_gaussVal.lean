@@ -77,8 +77,6 @@ theorem L1_gaussVal_mul {p : ℕ} [Fact p.Prime] (f g : Polynomial ℤ_[p]) (hf 
   have hmul := emultiplicity_mul (a := f) (b := g) hprime
   rw [emult_eq hfg, emult_eq hf, emult_eq hg] at hmul
   have hnat : natGV (f * g) = natGV f + natGV g := by exact_mod_cast hmul
-  rw [gaussVal_eq_cast (f * g), gaussVal_eq_cast f, gaussVal_eq_cast g, hnat]
-  push_cast
-  ring
+  rw [gaussVal_eq_cast (f * g), gaussVal_eq_cast f, gaussVal_eq_cast g, hnat, Nat.cast_add]
 
 end LeanUrat.Moves

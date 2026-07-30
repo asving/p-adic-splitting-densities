@@ -48,6 +48,6 @@ theorem SnRaw1_eq : ∀ s, InCatalogue 1 s ↔ s = confirmingRoot1 := by
     | @step s s' hIn hSucc _ih =>
       exfalso
       exact stageLaws_terminal s s' (by rw [_ih]; rfl) hSucc.1
-  · intro h; subst h; exact InCatalogue.root rootAdmissible_confirmingRoot1
+  · rintro rfl; exact InCatalogue.root rootAdmissible_confirmingRoot1
 
 end LeanUrat.MovesSp

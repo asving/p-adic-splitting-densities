@@ -40,7 +40,7 @@ private lemma dev_coeffs_zero {R : Type*} [CommRing R] [Nontrivial R] {Φ : Poly
         = (∑ j ∈ Finset.range M, C (j + 1) * Φ ^ j) * Φ := by
       rw [Finset.sum_mul]
       refine Finset.sum_congr rfl (fun j _ => ?_)
-      rw [pow_succ]; ring
+      ring
     rw [hshift] at hsum
     set g := ∑ j ∈ Finset.range M, C (j + 1) * Φ ^ j with hg
     -- hsum : g * Φ + C 0 = 0

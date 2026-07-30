@@ -107,8 +107,8 @@ private theorem splitBijOn {D E : Type*} [AddCommGroup D] [AddCommGroup E]
   refine ⟨A_sub.toAddSubgroup, ⟨?_, hInj, ?_⟩, ?_, ?_⟩
   · -- MapsTo
     intro x hx
-    have : φ x ∈ (↑G : Set E) := by rw [← hImg]; exact ⟨x, hx, rfl⟩
-    exact this
+    rw [← hImg]
+    exact ⟨x, hx, rfl⟩
   · -- SurjOn
     intro y hy
     rw [← hImg] at hy

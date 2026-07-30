@@ -239,9 +239,7 @@ theorem S5_childValuation {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
     have he'G : (e' : ℤ) ∈ G := by
       rcases eq_or_lt_of_le σ.he with he1 | he2
       · -- σ.e = 1
-        have hcast : (σ.e : ℤ) = 1 := by exact_mod_cast he1.symm
-        rw [hcast, mul_one] at hee
-        exact hee
+        rwa [show (σ.e : ℤ) = 1 by exact_mod_cast he1.symm, mul_one] at hee
       · -- σ.e ≥ 2: σ.Φ is a coefficient of Φ̂, giving `e′·h ∈ G`
         have hΦcoeff : inC Φhat σ.Φ := by
           show σ.Φ.degree < Φhat.degree
@@ -275,9 +273,7 @@ theorem S5_childValuation {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
     -- a subgroup of ℤ containing `1` is `⊤`
     rw [AddSubgroup.eq_top_iff']
     intro z
-    have hz : z = z • (1 : ℤ) := by rw [zsmul_eq_mul, Int.cast_id, mul_one]
-    rw [hz]
-    exact zsmul_mem hone z
+    simpa using zsmul_mem hone z
 
 end LeanUrat.HC1
 

@@ -105,8 +105,7 @@ theorem spectator_conditional_mass {m : ℕ} (Sigma : Locus p m) (fd : FreshData
     · rintro ⟨hsl, hEx⟩
       exact ⟨trivial, (hQ_dep x).mp ⟨hsl, hEx⟩⟩
     · rintro ⟨-, hQb⟩
-      obtain ⟨hsl, hEx⟩ := (hQ_dep x).mpr hQb
-      exact ⟨hsl, hEx⟩
+      exact (hQ_dep x).mpr hQb
   -- the fresh-block price: |P-block| · p^{m*} = p^{|fresh|} (C4's whole-box law,
   -- factored through the block split)
   have c3 : Nat.card {a // P a} * p ^ fd.mstar = p ^ fresh.card := by

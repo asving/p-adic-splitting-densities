@@ -47,8 +47,7 @@ theorem tailZero (p n : ℕ) [Fact p.Prime] (h2 : 2 ≤ n) :
     houter.comp hinner
   have hupper : Filter.Tendsto (fun D => ((n : ℚ) - 1) * (p : ℚ) ^ (-tailExp p n D))
       Filter.atTop (nhds 0) := by
-    have h := hcomp.const_mul ((n : ℚ) - 1)
-    simpa using h
+    simpa using hcomp.const_mul ((n : ℚ) - 1)
   -- squeeze `0 ≤ tailCount / p^(nD) ≤ (n-1)·p^(-tailExp)` (upper bound from XF.7)
   refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds hupper ?_ ?_
   · intro D; positivity

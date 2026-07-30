@@ -119,8 +119,7 @@ theorem L3_DIV {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : S
   have hK1 := L3_K1 σ ψ g hg hψ hψz hlift.1 Φhat hlift
   have hmin := hK1 (B * B'') _ 2 hBB hdev
   have hle : σ.w (B * B'') ≤ σ.w Rdev := by
-    have h := hmin.1 0 (by omega) (by simpa using hRdev)
-    simpa using h
+    simpa using hmin.1 0 (by omega) (by simpa using hRdev)
   refine ⟨hRdev, ?_⟩
   by_cases hQ : Q = 0
   · -- trivial branch: B·B'' = R_dev

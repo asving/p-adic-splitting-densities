@@ -65,8 +65,7 @@ theorem degcons_kmat_gate {n : ℕ} (C : CtsFamily n)
               cases hμ : μ.status <;> simp [hμ])
         _ = _ := h2
         _ = ((C.bd ((hst e) τ).1.1).omem (ho o).1 (ho o).2).map
-              (fun mu => mu.status.isRight) :=
-            List.map_congr_left (fun mu _ => rfl)
+              (fun mu => mu.status.isRight) := rfl
   refine ⟨T, ⟨hv, hst, hws, hOT⟩, ⟨?_, ?_⟩, ?_⟩
   · -- DegCons.size_pos via the size-list tie
     intro e τ o μ hμ

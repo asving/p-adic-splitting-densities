@@ -2,7 +2,7 @@
 Unit U-18 `rsh_def` (medium) — the shallow convolution and THE symbolic R_σ.
 moves_ref: "R_σ = Σ_{Ŝ} W_Ŝ(q) · Σ_{σ = σ₀(Ŝ) ⊎ …} ∏ β_{e_i,τ_i}(σ_i)(q^{δ_i})".
 Takes `WshP ·` as the W_Ŝ presentation (PolyGeom.val).  The decomposition Fintype
-instance is a sorried instance obligation (same class as U-11's).
+instance is a filled instance obligation (same class as U-11's; E-phase, sorry-free).
 -/
 import LeanUrat.MovesS.Defs
 import LeanUrat.MovesS.DecompFintype
@@ -18,7 +18,7 @@ namespace LeanUrat.MovesS
 
 variable {n : ℕ}
 
-/-- Sorried instance obligation (U-11's class, shifted base point σ₀). -/
+/-- Filled instance obligation, sorry-free (U-11's class, shifted base point σ₀). -/
 noncomputable instance shDecompFintype {T : TableShape n} (Ŝ : Shape T)
     (σ : Multiset T.VType) :
     Fintype {g : Fin Ŝ.k → Multiset T.VType // σ = Ŝ.σ0 + ∑ i, g i} := by

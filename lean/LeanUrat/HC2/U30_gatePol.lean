@@ -7,7 +7,7 @@ pins p = 2 + species + the explicit-witness form). If even the witness instance 
 against `RecenterLiftSpec`, the scale-bookkeeping risk fires at day one, not at
 escalation.  deps: D2, D3; Moves L1_base* (the base-stage construction).
 difficulty: medium.  hypothesis_fields: none (axiom-free by construction).
-RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Now sorry-free and Lean-core as-built (the fleet round completed; stale sorry-note corrected 2026-07-30).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

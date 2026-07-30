@@ -32,9 +32,9 @@ theorem iota_supp {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   have hc : V.entCount i q₀ = 0 := by
     unfold CtsMeasured.entCount CtsMeasured.instCensus
     cases hwh : writeHeights? i.1.1 ((V.entDom i.1.1).comps.get i.1.2).base with
-    | none => simp [hwh]
+    | none => simp
     | some ε =>
-        simp only [hwh, Option.map_some, Option.getD_some]
+        simp only [Option.map_some, Option.getD_some]
         exact hVA.ent_supported ε β₀ q₀ hq hin
   rw [hc]
   simp

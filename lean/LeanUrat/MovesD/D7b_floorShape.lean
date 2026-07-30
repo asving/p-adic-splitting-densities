@@ -46,8 +46,7 @@ theorem floorH_shape {H : History p F} (hcoh : HistoryCoherent H)
       · have hk' : k < (P : ShapePrefix).reads.length := hlen ▸ hk
         rw [List.getElem?_eq_getElem hk, List.getElem?_eq_getElem hk']
         simp only [Option.toList_some, List.map_cons, List.map_nil, List.foldr_cons,
-          List.foldr_nil, Option.elim_some]
-        rw [max_eq_left bot_le]
+          List.foldr_nil, Option.elim_some, max_eq_left bot_le]
         exact staircase_shape hcoh hP k hk hk' b
       · have hk2 : H.nodes.length ≤ k := by omega
         have hk' : (P : ShapePrefix).reads.length ≤ k := by omega

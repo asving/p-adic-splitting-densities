@@ -27,10 +27,10 @@ theorem L6_moveAffineBij {R : Type*} [CommRing R] (Φ : Polynomial R) (hmon : Φ
   obtain ⟨_, hgz, hgsum⟩ := hg
   rw [hfsum, hgsum]
   -- Extend both sums to the common range `max Nf Ng`; the extra terms vanish (B j = 0 past N).
-  have hsubf : Finset.range Nf ⊆ Finset.range (max Nf Ng) := by
-    intro x hx; simp only [Finset.mem_range] at hx ⊢; omega
-  have hsubg : Finset.range Ng ⊆ Finset.range (max Nf Ng) := by
-    intro x hx; simp only [Finset.mem_range] at hx ⊢; omega
+  have hsubf : Finset.range Nf ⊆ Finset.range (max Nf Ng) :=
+    Finset.range_subset_range.mpr (le_max_left Nf Ng)
+  have hsubg : Finset.range Ng ⊆ Finset.range (max Nf Ng) :=
+    Finset.range_subset_range.mpr (le_max_right Nf Ng)
   have hMf : ∑ j ∈ Finset.range Nf, Bf j * Φ ^ j
       = ∑ j ∈ Finset.range (max Nf Ng), Bf j * Φ ^ j := by
     apply Finset.sum_subset hsubf

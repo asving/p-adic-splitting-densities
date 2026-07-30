@@ -12,7 +12,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 set_option linter.style.longLine false
 set_option linter.style.header false
 
-theorem L3_Tunit_deg1 (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; M.Θ (M.Tunit : M.Lo) = (locT ↥σ.K : LTwo ↥σ.K) := by
-  exact M.hT
+theorem L3_Tunit_deg1 (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; M.Θ (M.Tunit : M.Lo) = (locT ↥σ.K : LTwo ↥σ.K) :=
+  M.hT
 
 #print axioms L3_Tunit_deg1

@@ -3,7 +3,7 @@ Unit U-16b `blockSolve` (medium) — the triangular bottom-up solve.
 moves_ref: "blocks solve bottom-up, each b_e^split leg already solved"; body
 `(1 - Kmat T RB e (hK e he))⁻¹ *ᵥ (bTerm T RB e σ' + bSplit T RB hdc e he βlt σ')`
 by strong recursion on e ∈ Icc 1 n (σ′ UNRESTRICTED per R2-10).
-Sorried def (E-phase); the defining equation is U-17a's statement.
+Filled def (E-phase, WF recursion on `e`); the defining equation is U-17a's statement.
 -/
 import LeanUrat.MovesS.Defs
 import LeanUrat.MovesS.BSplitDef

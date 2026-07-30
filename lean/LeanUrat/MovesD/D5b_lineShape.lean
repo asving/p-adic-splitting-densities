@@ -91,7 +91,7 @@ theorem line_shape {H : History p F} (hcoh : HistoryCoherent H)
     have hLU := (H.nodes[r]'hr).hLineU
     simp only [Line.at] at hLU
     rw [hnat, hMustar, hslope] at hLU
-    linarith [hLU]
+    linarith
   -- assemble: reduce `lineS r` and fold both fields back into `ν.line`
   have hlineS_explicit : (P : ShapePrefix).lineS r
       = ⟨((P : ShapePrefix).reads[r]'hr').ustar

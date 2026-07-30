@@ -28,9 +28,8 @@ theorem e0_det_ne_zero {ι : Type*} [Fintype ι] [DecidableEq ι]
     intro hdet
     obtain ⟨v, hv0, hvker⟩ := Matrix.exists_mulVec_eq_zero_iff.2 hdet
     have hAv : A *ᵥ v = v := by
-      have h1 := hvker
-      rw [Matrix.sub_mulVec, Matrix.one_mulVec] at h1
-      exact (sub_eq_zero.1 h1).symm
+      rw [Matrix.sub_mulVec, Matrix.one_mulVec] at hvker
+      exact (sub_eq_zero.1 hvker).symm
     have hAvk : ∀ k : ℕ, (A ^ k) *ᵥ v = v := pow_fixed_vector hAv
     have hvzero : ∀ i, v i = 0 := by
       intro i

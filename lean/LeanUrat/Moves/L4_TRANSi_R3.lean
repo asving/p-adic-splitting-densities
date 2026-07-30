@@ -118,8 +118,7 @@ theorem TRANSi_ge_core {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     have heq2 : ((B x.1 * B'' x.2) /ₘ Φhat) * Φhat =
         B x.1 * B'' x.2 + -((B x.1 * B'' x.2) %ₘ Φhat) := by
       linear_combination Polynomial.modByMonic_add_div (B x.1 * B'' x.2) Φhat
-    have hsumne : B x.1 * B'' x.2 + -((B x.1 * B'' x.2) %ₘ Φhat) ≠ 0 := by
-      rw [← heq2]; exact hQΦne
+    have hsumne : B x.1 * B'' x.2 + -((B x.1 * B'' x.2) %ₘ Φhat) ≠ 0 := heq2 ▸ hQΦne
     have hult := σ.hwult _ _ hprodne (neg_ne_zero.mpr hRne) hsumne
     rw [← heq2, σ.hwmul _ _ hQne hΦne, w_neg' σ _ hRne, hRw,
       σ.hwmul _ _ hBj hBk, min_self] at hult

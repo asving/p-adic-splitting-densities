@@ -31,10 +31,16 @@ noncomputable def measuredRow {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (x : S.Hist q₀ τ) : ℝ :=
   ∑' ch : Σ c : DCellAll V τ, Σ D : ℕ, Hpt D, μcellH V X x ch.1 ch.2
 
+/-- (iv)-REP, the row-level clause.  HYPOTHESIS-TRIMMED AT GOLF (2026-07-30,
+dead-decl rule, zero consumers): the E-phase binders `P : C15Pack`,
+`U : XHDu`, and `hobs : ∀ s, ObsCheck (C.bd s)` were verified unused — the
+adjudicated repair route runs entirely through `cp.count`/`cp.countT` (the
+x-free polynomial bridge) and `DC.no_orphanC`/`no_orphanCT` (the off-domain
+leg).  ctsM (V7-2b) now consumes this producer directly instead of inlining
+the body. -/
 theorem rep_row {n : ℕ} {C : CtsFamily n} {S : StepSys n}
-    {V : CtsMeasured n C S} (X : XHDw n S) (P : C15Pack n S) (U : XHDu n S)
-    (cp : CellPolyPack n C S V) (DC : XHDdC n S V)
-    (hobs : ∀ s : Skeleton n, ObsCheck (C.bd s)) {τ : S.Cell} {q₀ : ℚ}
+    {V : CtsMeasured n C S} (X : XHDw n S)
+    (cp : CellPolyPack n C S V) (DC : XHDdC n S V) {τ : S.Cell} {q₀ : ℚ}
     (hq : q₀ ∈ V.Pools) (x x' : S.Hist q₀ τ) (hzc : S.zc x) (hzc' : S.zc x') :
     measuredRow V X x = measuredRow V X x' := by
   classical

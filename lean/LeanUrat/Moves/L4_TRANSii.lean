@@ -28,17 +28,17 @@ theorem L4_TRANSii {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ
   have hBc' : B.degree < Φhat.degree := hBc
   have hΦne : Φhat.degree ≠ ⊥ := fun h => not_lt_bot (h ▸ hBc')
   set Bdev : ℕ → Polynomial ℤ_[p] := fun j => if j = 0 then B else 0 with hBdefn
-  have hB0 : Bdev 0 = B := by rw [hBdefn]; simp
+  have hB0 : Bdev 0 = B := by simp [hBdefn]
   have hdev : IsDevelopment Φhat B Bdev 1 := by
     refine ⟨?_, ?_, ?_⟩
     · intro j
       by_cases hj : j = 0
       · subst hj; rw [hB0]; exact hBc'
-      · have hz : Bdev j = 0 := by rw [hBdefn]; simp [hj]
+      · have hz : Bdev j = 0 := by simp [hBdefn, hj]
         rw [hz, degree_zero]; exact bot_lt_iff_ne_bot.mpr hΦne
     · intro j hj
       have : j ≠ 0 := by omega
-      rw [hBdefn]; simp [this]
+      simp [hBdefn, this]
     · rw [Finset.sum_range_one, hB0, pow_zero, mul_one]
   obtain ⟨j, hj1, _, hjeq⟩ := (hw' B Bdev 1 hB hdev).2
   have hj0 : j = 0 := Nat.lt_one_iff.mp hj1

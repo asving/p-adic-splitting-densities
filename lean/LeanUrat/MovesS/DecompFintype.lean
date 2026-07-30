@@ -2,7 +2,7 @@
 Unit U-11 `decompFintype` (medium) — Fintype on multiset decompositions.
 moves_ref: the b_e^split convolution index "σ′ = σ₁ ⊎ … ⊎ σ_m" is a finite sum.
 sketch: induct on m; each g 0 ≤ σ' ranges over finitely many sub-multisets.
-Sorried instance (E-phase); counted in the census.
+Filled instance (E-phase, sorry-free); counted in the census.
 -/
 import LeanUrat.MovesS.Defs
 
@@ -25,9 +25,7 @@ noncomputable instance decompFintype {V : Type*} [DecidableEq V] (m : ℕ)
           (Finset.single_le_sum (fun i _ => Multiset.zero_le (g.1 i)) (Finset.mem_univ j))
           g.2⟩)
     intro g g' h
-    apply Subtype.ext
-    funext j
-    exact Subtype.ext_iff.mp (congrFun h j)
+    exact Subtype.ext (funext fun j => Subtype.ext_iff.mp (congrFun h j))
   -- Pass the finiteness witness explicitly: an implicit `Fintype.ofFinite _` would let
   -- instance resolution wander to a different `Finite` path in the import graph.
   exact @Fintype.ofFinite _ hfin

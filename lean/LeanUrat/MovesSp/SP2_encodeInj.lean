@@ -10,8 +10,8 @@ crudeness"). difficulty: medium-hard (split candidate: scalar-block recovery vs
 flank/λ blocks if > ~40 lines). Needs `hn : 1 ≤ n` ("n + 2 ≥ 3 for every n ≥ 1" —
 the tag entry).
 
-[P-PHASE NOTE] Self-contained: rather than cite the (still-open) deps `compCuts_inj`
-and `lamMatrix_inj`, the flanks are encoded POSITIONALLY (part `j` at slot `j`; the
+[P-PHASE NOTE] Self-contained: rather than cite the deps `compCuts_inj`
+and `lamMatrix_inj` (both since proved but left dead/unused), the flanks are encoded POSITIONALLY (part `j` at slot `j`; the
 positive-part list is then recovered by an induction, no cut-set injectivity needed)
 and `λ` by its `{1..n}²` multiplicity matrix (recovered inline by `Multiset.ext`).
 Footprint is Lean-core only (no `sorry`, no `native_decide`, no extra axiom).
@@ -78,7 +78,7 @@ private theorem list_pos_getD_ext :
       have h0 := h 0
       simp only [List.getD_cons_zero] at h0
       have htail : ∀ j, as.getD j 0 = bs.getD j 0 := by
-        intro j; have := h (j + 1); simpa using this
+        intro j; simpa using h (j + 1)
       have := ih bs (fun x hx => hl x (by simp [hx])) (fun x hx => hl' x (by simp [hx])) htail
       subst h0; subst this; rfl
 
@@ -122,8 +122,7 @@ private theorem multiset_grid_ext (n : ℕ) (lam lam' : Multiset (ℕ × ℕ))
   intro x
   by_cases hx : 1 ≤ x.1 ∧ x.1 ≤ n ∧ 1 ≤ x.2 ∧ x.2 ≤ n
   · obtain ⟨h1, h2, h3, h4⟩ := hx
-    have := hgrid x.1 x.2 h1 h2 h3 h4
-    simpa using this
+    simpa using hgrid x.1 x.2 h1 h2 h3 h4
   · rw [Multiset.count_eq_zero.mpr, Multiset.count_eq_zero.mpr]
     · intro hmem; exact hx (hsup' x hmem)
     · intro hmem; exact hx (hsup x hmem)
@@ -147,8 +146,8 @@ private theorem grid_cover (n g μ : ℕ) (hg1 : 1 ≤ g) (hgn : g ≤ n) (hμ1 
 private theorem append_inj {a b : ℕ} {X : Type*} {u u' : Fin a → X} {v v' : Fin b → X}
     (H : Fin.append u v = Fin.append u' v') : u = u' ∧ v = v' := by
   refine ⟨?_, ?_⟩
-  · funext i; have := congrFun H (Fin.castAdd b i); simpa [Fin.append_left] using this
-  · funext i; have := congrFun H (Fin.natAdd a i); simpa [Fin.append_right] using this
+  · funext i; simpa [Fin.append_left] using congrFun H (Fin.castAdd b i)
+  · funext i; simpa [Fin.append_right] using congrFun H (Fin.natAdd a i)
 
 /-- Structure extensionality for `Species` (from all 14 field equalities). -/
 private theorem species_ext {s s' : Species}
@@ -219,8 +218,7 @@ theorem encode_inj {n hn} {s s' : Species} (hs : Coherent s ∧ Budget n s)
   simp only [encode] at h
   have hba : bigAppend n s = bigAppend n s' := by
     funext i
-    have := congrFun h (Fin.cast (encode_dim n).symm i)
-    simpa [Fin.cast_cast] using this
+    simpa [Fin.cast_cast] using congrFun h (Fin.cast (encode_dim n).symm i)
   simp only [bigAppend] at hba
   -- peel off the five blocks
   obtain ⟨hsc, hr1⟩ := append_inj hba
@@ -230,20 +228,20 @@ theorem encode_inj {n hn} {s s' : Species} (hs : Coherent s ∧ Budget n s)
   simp only [scalars] at hsc
   -- scalar recoveries
   have e0 : fld n (tagord s.tag) = fld n (tagord s'.tag) := by
-    have := congrFun hsc 0; simpa using this
+    simpa using congrFun hsc 0
   have hTag : s.tag = s'.tag :=
     tagord_inj (fld_inj (by have := tagord_le s.tag; omega) (by have := tagord_le s'.tag; omega) e0)
-  have eD : fld n s.D = fld n s'.D := by have := congrFun hsc 1; simpa using this
+  have eD : fld n s.D = fld n s'.D := by simpa using congrFun hsc 1
   have hD : s.D = s'.D := fld_inj (by omega) (by omega) eD
-  have ew : fld n s.w = fld n s'.w := by have := congrFun hsc 2; simpa using this
+  have ew : fld n s.w = fld n s'.w := by simpa using congrFun hsc 2
   have hw : s.w = s'.w := fld_inj (by omega) (by omega) ew
-  have eW : fld n s.W = fld n s'.W := by have := congrFun hsc 3; simpa using this
+  have eW : fld n s.W = fld n s'.W := by simpa using congrFun hsc 3
   have hW : s.W = s'.W := fld_inj (by omega) (by omega) eW
-  have ee : fld n s.e = fld n s'.e := by have := congrFun hsc 4; simpa using this
+  have ee : fld n s.e = fld n s'.e := by simpa using congrFun hsc 4
   have he : s.e = s'.e := fld_inj (by omega) (by omega) ee
-  have es0 : fld n s.s0 = fld n s'.s0 := by have := congrFun hsc 5; simpa using this
+  have es0 : fld n s.s0 = fld n s'.s0 := by simpa using congrFun hsc 5
   have hs0 : s.s0 = s'.s0 := fld_inj (by omega) (by omega) es0
-  have eell : fld n s.ell = fld n s'.ell := by have := congrFun hsc 6; simpa using this
+  have eell : fld n s.ell = fld n s'.ell := by simpa using congrFun hsc 6
   have hell : s.ell = s'.ell := fld_inj (by omega) (by omega) eell
   -- selection recovery
   have hSFn : selFst s.sel ≤ n := by
@@ -263,10 +261,10 @@ theorem encode_inj {n hn} {s s' : Species} (hs : Coherent s ∧ Budget n s)
     | none => simp [selSnd]
     | some p => simp only [selSnd]; exact (hLamBd' p (hSelMem' p hsel)).2
   have eSF : fld n (selFst s.sel) = fld n (selFst s'.sel) := by
-    have := congrFun hsc 7; simpa using this
+    simpa using congrFun hsc 7
   have hSF : selFst s.sel = selFst s'.sel := fld_inj (by omega) (by omega) eSF
   have eSS : fld n (selSnd s.sel) = fld n (selSnd s'.sel) := by
-    have := congrFun hsc 8; simpa using this
+    simpa using congrFun hsc 8
   have hSS : selSnd s.sel = selSnd s'.sel := fld_inj (by omega) (by omega) eSS
   have hSel : s.sel = s'.sel := by
     cases hsel : s.sel with
@@ -303,7 +301,7 @@ theorem encode_inj {n hn} {s s' : Species} (hs : Coherent s ∧ Budget n s)
     refine list_pos_getD_ext s.lflank s'.lflank hLfPos hLfPos' (fun j => ?_)
     by_cases hj : j < n
     · have hfe : fld n (s.lflank.getD j 0) = fld n (s'.lflank.getD j 0) := by
-        have := congrFun hLf ⟨j, hj⟩; simpa [flankV] using this
+        simpa [flankV] using congrFun hLf ⟨j, hj⟩
       have b1 : s.lflank.getD j 0 < n + 2 := by
         have := getD_le_sum s.lflank j; rw [hLfSum] at this; omega
       have b2 : s'.lflank.getD j 0 < n + 2 := by
@@ -315,7 +313,7 @@ theorem encode_inj {n hn} {s s' : Species} (hs : Coherent s ∧ Budget n s)
     refine list_pos_getD_ext s.rflank s'.rflank hRfPos hRfPos' (fun j => ?_)
     by_cases hj : j < n
     · have hfe : fld n (s.rflank.getD j 0) = fld n (s'.rflank.getD j 0) := by
-        have := congrFun hRf ⟨j, hj⟩; simpa [flankV] using this
+        simpa [flankV] using congrFun hRf ⟨j, hj⟩
       have b1 : s.rflank.getD j 0 < n + 2 := by
         have := getD_le_sum s.rflank j; omega
       have b2 : s'.rflank.getD j 0 < n + 2 := by

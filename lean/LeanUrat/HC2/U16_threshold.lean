@@ -30,10 +30,10 @@ theorem threshold_of_seeds {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
     (hunp : ∀ (i : PrefIdx n (polOM p F) P) (N : ℕ) (keys : ℕ → Polynomial ℤ_[p])
        (S : PresentSeed p F (reprOf i) n N keys) (vOf : VOf p (n * N)),
        SeedFreshUnpinned (reprOf i) n N S vOf) :
-    Nonempty (Threshold p F n (polOM p F) P) := by
+    Nonempty (Threshold p F n (polOM p F) P) :=
   -- U16 = MovesD.TW ∘ U15: `present_exist_of_seeds hseed hnorm` supplies PRESENT-EXIST
   -- (the `hex` argument), from which `TW_threshold_witness` builds the threshold by
   -- choice on L12's exact range (blueprint §5 Layer C, deps U15 + MovesD TW row).
-  exact TW_threshold_witness (present_exist_of_seeds hseed hnorm hd4 hunp)
+  TW_threshold_witness (present_exist_of_seeds hseed hnorm hd4 hunp)
 
 end LeanUrat.MovesJ

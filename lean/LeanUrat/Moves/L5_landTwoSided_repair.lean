@@ -46,7 +46,7 @@ the `minsum_facts` no-cancellation engine cribbed from `L3_K1`, where it is priv
   `z^{−a}R(f)` by `resSum`; `ordSum` gives `ord_ψ Ranch = μ`, and `pattern_of_ord`
   (Fact A on `Ranch/ψ^μ` + Fact B uniqueness) recovers the pattern clauses.
 
-## HONEST GAP (one `sorry`): anchor exactness is NOT encoded in the cylinder
+## CLOSED GAP (round-6 repair): anchor exactness supplied via the `hexact` hypothesis
 
 The reverse direction needs `Ranch.coeff 0 ≠ 0` (the `HasAnchorK` exactness clause,
 i.e. `a = ord_z R(f)`), and NO clause of `LandingCylinderL` forces it: the cylinder
@@ -57,10 +57,11 @@ room (`⌊(deg Ranch₀ + Δ)/g⌋ < N`), the SHIFTED data `a := a₀ − Δ` (�
 the canonical ψ-development of `z^Δ·Ranch₀`, satisfies every cylinder clause (the
 m₀-clauses are `a`-free; the chain runs on the shifted anchored total) while
 `StratumData` fails exactly at `Ranch.coeff 0 ≠ 0`. D.8's prose pins `a := ord_z R(f)`
-as part of the STRATUM's data; the round-5 cylinder dropped that pin. The single
-`sorry` below marks precisely this clause — proposed round-6 repair: add an
-anchor-exactness clause to `LandingCylinderL` (e.g. `¬ X ∣ Σ_j Cdig j · ψ^j`).
-Everything else, in BOTH directions, is proved below.
+as part of the STRATUM's data; the round-5 cylinder dropped that pin. The round-6
+repair (applied) supplies exactly this clause as the theorem hypothesis
+`hexact : ¬ X ∣ Σ_j Cdig j · ψ^j`, which is `Ranch.coeff 0 ≠ 0` via
+`Polynomial.X_dvd_iff` (see the reverse-direction closing step). There is NO `sorry`:
+everything, in BOTH directions, is proved below.
 -/
 
 set_option linter.style.longLine false
@@ -868,7 +869,7 @@ theorem L5_landTwoSided {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
         refine ⟨carryFwd σ g ψ B N a (σ.w f) Cdig, ⟨?_, ?_⟩, ?_⟩
         · -- carry 0 = 0
           unfold carryFwd
-          simp only [Nat.sub_zero, Nat.zero_add, zero_add]
+          simp only [Nat.sub_zero, zero_add]
           calc ∑ i ∈ Finset.range N,
               (Polynomial.toLaurent (Cdig i) - cLfwd σ g B N a (σ.w f) i)
                 * Polynomial.toLaurent ψ ^ i

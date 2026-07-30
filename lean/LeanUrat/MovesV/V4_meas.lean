@@ -27,7 +27,7 @@ theorem MarkDisj {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   simp only [CtsMeasured.mEvt, Finset.mem_image, Prod.mk.injEq] at hmem hmem'
   obtain ⟨b1, hb1, hbb1, htt1⟩ := hmem
   obtain ⟨b2, hb2, hbb2, htt2⟩ := hmem'
-  subst hbb1; subst hbb2
+  subst hbb1 hbb2
   have hkey : V.toCtsCells.stepKey mp.1 ≠ V.toCtsCells.stepKey mp'.1 := by
     intro hk
     exact h (by simp only [CtsMeasured.mReading, hk, htt1, htt2])
@@ -100,7 +100,7 @@ theorem MarkDisj_pt {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     simp only [CtsMeasured.mEvt, Finset.mem_image, Prod.mk.injEq] at hmem hmem'
     obtain ⟨b1, hb1, hbb1, _⟩ := hmem
     obtain ⟨b2, hb2, hbb2, _⟩ := hmem'
-    subst hbb1; subst hbb2
+    subst hbb1 hbb2
     exact (Finset.disjoint_left.1 hstep) hb1 hb2
   · exact MarkDisj V ⟨p, i⟩ ⟨p', i'⟩ hr N
 

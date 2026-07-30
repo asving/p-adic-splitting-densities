@@ -623,7 +623,6 @@ private lemma n2_ledger_meas_card : ∀ e (τ : n2T.State e) (x : n2M.Rep e τ)
         rw [Nat.cast_sub hle]
         push_cast
         field_simp
-        try ring
       · have hbb : max 1 (((m : ℚ)).num.toNat ^ 2) ≤ max 1 (((m : ℚ)).num.toNat ^ 3) := by
           rw [hQm, hb2, hb3]
           exact Nat.pow_le_pow_right (by omega) (by omega)
@@ -633,7 +632,6 @@ private lemma n2_ledger_meas_card : ∀ e (τ : n2T.State e) (x : n2M.Rep e τ)
         rw [Nat.cast_sub hle]
         push_cast
         field_simp
-        try ring
   · rw [n2M_gwt_ne he, n2M_cellEvt_ne he, one_mul, Finset.card_univ]
 
 /-- Reduction of the roster at blocks ≠ 2 to the canonical level-0 outcome

@@ -30,9 +30,7 @@ theorem speciesEnum_complete {n : ℕ} {s : Species} (hc : Coherent s)
   obtain ⟨W0, rfl⟩ : ∃ W0, W = W0 + 1 := ⟨W - 1, by omega⟩
   obtain ⟨e0, rfl⟩ : ∃ e0, e = e0 + 1 := ⟨e - 1, by omega⟩
   obtain ⟨ell0, rfl⟩ : ∃ ell0, ell = ell0 + 1 := ⟨ell - 1, by omega⟩
-  subst hG2
-  subst hslots
-  subst hd
+  subst hG2 hslots hd
   -- (G4) + (B5): `lam` is realized by a canonical sorted list `lamL` in the enum's aux list.
   have hlam_mem : lam ∈ lamEnum n (ell0 + 1) := (lamEnum_complete hlampos hlambd).mp hG4sum
   simp only [lamEnum, List.map_id', List.mem_flatMap, List.mem_singleton,

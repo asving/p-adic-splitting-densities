@@ -495,8 +495,7 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
         have hk' : 2 ≤ (CA.branchSetOf (L.cellAt H)).card := hfc ▸ hk
         have h := hsibT H hH hk'
         unfold SibCountAt at h
-        rw [← L.state_cell H hH, ← hfc] at h
-        exact h
+        rwa [← L.state_cell H hH, ← hfc] at h
       -- split the roster product over J and its complement
       have hJsub : J ⊆ CA.branchSetOf (sc.splitFrame H hH).c := Finset.filter_subset _ _
       have hprod : ∏ ν ∈ CA.branchSetOf (sc.splitFrame H hH).c,
@@ -584,8 +583,7 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
     · have hj : Nat.card ↥(siteCellEvent T CA χ (L.parentSt H) H.lastNode (L.cellAt H))
           * p ^ (∑ j : Fin (L.splitAt H hH h2).k, (L.splitAt H hH h2).sideExp j)
           = Nat.card ↥(entEvent T χ (L.parentSt H)) := hjcm H ⟨hH, h2⟩ h2
-      rw [L.hsplit_exp H hH h2, ← L.state_cell H hH] at hj
-      exact hj
+      rwa [L.hsplit_exp H hH h2, ← L.state_cell H hH] at hj
     · have hspec : SpectatorFor (L.freshCoords H) (Set.univ : Set (Box p m)) := by
         intro x x' _; simp
       have h := fiber_seg_step T CA Tr χ L H hH Set.univ hspec
@@ -684,15 +682,13 @@ theorem treeExp (Tr : VTree p F) (T : TreeModel p F n N m pol)
       apply Set.inter_eq_right.mpr
       intro x hx
       have hxs := hx.1
-      rw [L.state_cell _ (hheadmem i)] at hxs
-      rw [sc.hent_root _ (hheadmem i) hone_len] at hxs
+      rw [L.state_cell _ (hheadmem i), sc.hent_root _ (hheadmem i) hone_len] at hxs
       exact hxs.1
     rw [htev]
     have hcc := cone_charge Tr T CA.toCellData χ trackOf L sc ⟨x₀, hx₀⟩ hjcm hsibT
       (coneF Tr (oneNode (sc.root.headOf i) (sc.hcr i))).card
       (oneNode (sc.root.headOf i) (sc.hcr i)) (hheadmem i) le_rfl
-    rw [sc.hent_root _ (hheadmem i) hone_len] at hcc
-    exact hcc
+    rwa [sc.hent_root _ (hheadmem i) hone_len] at hcc
   -- ==== the chain sum splits over the head cones ====
   have hdisjT : ∀ i ∈ (Finset.univ : Finset (Fin sc.root.t)), ∀ j ∈ Finset.univ,
       i ≠ j →

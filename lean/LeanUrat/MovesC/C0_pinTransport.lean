@@ -46,7 +46,7 @@ theorem C0_pinTransport {m : ℕ} (D : Locus p m) {Θ : (Fin m → ZMod p) → (
       funext j hj
       apply key j
       intro k hk
-      have hki : k < i := lt_of_le_of_lt hk hj
+      have hki : k < i := hk.trans_lt hj
       simp only [dif_pos hki]
     -- corr on the full assignment is exactly (Θ x)_i − x_i.
     have correq : ∀ i : Fin m, corr i (fun j _ => x j) = Θ x i - x i := by
