@@ -52,6 +52,7 @@ Consumer update: U13 threads `hcoh hreal` (it holds both).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.SharedZC
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -59,7 +60,7 @@ set_option linter.unusedSectionVars false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesJ
-open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD SharedZC
 
 /-- THE GEOMETRIC NO-STRADDLE LEMMA (N-6 option (i), 2026-07-28): under coherence +
 realizability, a span slot's exact-valuation level set cannot STRADDLE the floor — if
@@ -115,10 +116,10 @@ theorem mkFresh_cover {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
         exact levelSet_no_straddle H n N hcoh hreal i hi j c c' hc_level hband hc'
     -- the value clause at slot j
     set vcl := valueClause H n N S vOf i hi j (valueSlots_spanSlot hj_val) with hvcl
+    -- C4 hoist (2026-07-30): the digit-alphabet count consumed from `SharedZC.card_fin_fun'`
+    -- (formerly an inline re-proof; a `Prop` arg to `C1_TYP_toClause`, proof-irrelevant).
     have hcard : Nat.card (Fin (levelSet H n N i ν j).card → ZMod p)
-        = p ^ (levelSet H n N i ν j).card := by
-      haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
-      simp [Nat.card_eq_fintype_card, ZMod.card]
+        = p ^ (levelSet H n N i ν j).card := card_fin_fun' _
     have hsupp : vcl.support = levelSet H n N i ν j := by
       rw [hvcl]
       unfold valueClause

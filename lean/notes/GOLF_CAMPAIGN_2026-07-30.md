@@ -556,7 +556,7 @@ STILL STANDING (25):
 - MovesGr/L4_genuine_imp_stageCoreL_v2.lean: R_neg_odd/w_jump_odd (~:158-177) documented-superseded dead code. (MovesGr#86)
 - HC1: mono_unit_eq byte-identical in D7_digD_mul (:64-74) + D8_digD_recenter (:28-38); the u_rho*u_sigma cocycle law re-proved in D2/D4/D6/D7 (documented import isolation). (HC1#90)
 - HC1: the childW slot-min-weight lemma re-proved privately in S2/S3/S4/S5 (4 copies). (HC1#95)
-- HC1 S9a/S9b/S9c: ~180-line near-verbatim shared construction x3 (Bezout split -> hwult tower -> Stage literal); a shared private builder would collapse the repeat. (HC1#96)
+- HC1 S9a/S9b/S9c: ~180-line near-verbatim shared construction x3 (Bezout split -> hwult tower -> Stage literal); a shared private builder would collapse the repeat. (HC1#96) — CLOSED 2026-07-30 by the C4 hoist (SYNTHESIS_PASS1 C4b): HC1/S9_builder.lean (one 5-conjunct builder = the union of the three ratified Exists-bodies; per-conjunct record in its header); S9a/b/c mains now projections, statements byte-identical; net -1,073 lines across the trio; all green, Lean-core.
 - HC1 Scratch kernels: ScratchT10 <-> T10_floorStaircase numeric kernel; ScratchC6 <-> T7 toolkit; ScratchS17 <-> L6 development_truncate — documented verbatim copies. (HC1#97)
 - HC1 T3/T4/T5/T7: ~8 near-identical private lemmas each (strAux_succ/pos, stretch_step/chain, gaussVal_C_p, deg_le...) — documented DAG-acyclicity choice. (HC1#98)
 - HC1/V4_readLanding.lean:45-832: ~19 private lemmas verbatim-duplicate V3's file-private kernel (documented; drift risk). (HC1#99)
@@ -564,7 +564,7 @@ STILL STANDING (25):
 - HC1: DefsChild.ChildResLaws (:93) ~ DefsV.ReadResLaws (:92) near-identical 7-conjunct packs differing only in key P (intentional parallel; shared abstraction = statement change). (HC1#91)
 - HC1/S1_transHypGate.lean:~1035 coeffLocLaw_pin re-derives Theta-pin_CT inline. (HC1#94)
 - HC1/S9d: re-elaborates S7_childPin and S9d_pinVerify twice each (redundant, harmless). (HC1#96)
-- HC2: U7 <-> U9 verbatim private dups (clause_assign, card_fin_fun', valueClause_codim, mkFresh_codim); the card_fin_fun proof also in U4/U5/U6. (HC2#106)
+- HC2: U7 <-> U9 verbatim private dups (clause_assign, card_fin_fun', valueClause_codim, mkFresh_codim); the card_fin_fun proof also in U4/U5/U6. (HC2#106) — CLOSED 2026-07-30 by the C4 hoist (SYNTHESIS_PASS1 C4a): HC2/SharedZC.lean (verbatim, from U7 the original; namespace-fenced, SharedRecenter protocol); U7/U9 copies deleted, U4/U5/U6 card_fin_fun copies re-pointed (U5's p-explicit signature = the one recorded non-verbatim adaptation); statements byte-identical; all green, before BP2 Block Z.
 - HC2/U9_zcRoot.lean:588 u9c_probe_tail (public) + :608 #print axioms — leftover scratch duplicating zc_root_interior_zero's tail. (HC2#106)
 - HC2/U14_npFits.lean: boxInv(succ) + muWidth_le duplicate ~20 lines of arithmetic verbatim. (HC2#101)
 - HC2 U20c/U22E1 300-line helper block + ~215-line proof scaffold: HOISTED to HC2/SharedRecenter.lean (recentering_scaffold; net -449 lines; mains byte-identical, Lean-core) — DONE. (HC2 dedup specialist)

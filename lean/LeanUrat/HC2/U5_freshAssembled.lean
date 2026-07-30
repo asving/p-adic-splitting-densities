@@ -8,6 +8,7 @@ RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedL
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.SharedZC
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -15,16 +16,16 @@ set_option linter.unusedSectionVars false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesJ
-open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD SharedZC
 
-/-- Local re-proof of `Defs.card_fin_fun` (that one is `private`): the digit alphabet
-`Fin k → ZMod p` has `Nat.card = p ^ k`. Only used to feed `C1_TYP_toClause`'s `hcard`
+/- C4 HOIST RECORD (2026-07-30, SYNTHESIS_PASS1 + golf HC2#106): the file-private
+`card_fin_fun'` (the digit-alphabet count `Nat.card (Fin k → ZMod p) = p ^ k`, a local
+re-proof of Defs' private `card_fin_fun`) is DELETED; its one use below consumes
+`SharedZC.card_fin_fun'` instead.  NON-VERBATIM NOTE: this file's copy had `p` EXPLICIT
+(`card_fin_fun' p k`); the hoisted U7/U9-form has `p` implicit, so the use site adapts
+from `(card_fin_fun' p _)` to `(card_fin_fun' _)`.  It feeds `C1_TYP_toClause`'s `hcard`
 argument, which is a `Prop` — so by proof irrelevance the resulting `.choose` coincides
-(definitionally) with the one baked into `valueClause`. -/
-private lemma card_fin_fun' (p k : ℕ) [Fact p.Prime] :
-    Nat.card (Fin k → ZMod p) = p ^ k := by
-  haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
-  simp [Nat.card_eq_fintype_card, ZMod.card]
+(definitionally) with the one baked into `valueClause`, exactly as before. -/
 
 /-- The three `Exists.choose_spec` facts of `valueClause`, stated syntactically about
 `valueClause` (so downstream `rw`s can fire). The `C1_TYP_toClause` term differs from the one
@@ -47,7 +48,7 @@ private lemma valueClause_spec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [F
       ⟨j, hsp, fun c => Iff.intro (fun hc => (Finset.mem_filter.mp hc).2)
         (fun hc => Finset.mem_filter.mpr ⟨Finset.mem_univ c, hc⟩)⟩)
     (vOf i j (levelSet H n N i (H.nodes[i]'hi) j))
-    (levelSet H n N i (H.nodes[i]'hi) j).card (card_fin_fun' p _)).choose_spec
+    (levelSet H n N i (H.nodes[i]'hi) j).card (card_fin_fun' _)).choose_spec
 
 /-- The VALUE branch of `fresh_assembled` for a single rostered value clause: its support IS a
 recorded span slot's exact-valuation level set (`IsValueSupport`), its codimension equals the

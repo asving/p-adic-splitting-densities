@@ -46,6 +46,7 @@ downset bound) is QUEUED for the fleet round — see the route at the sorry.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.SharedZC
 import LeanUrat.HC2.U7_sigmaRec
 import LeanUrat.MovesC.C2_floorH_succ
 import LeanUrat.MovesC.C2_floorH_root
@@ -56,7 +57,7 @@ set_option linter.unusedSectionVars false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesJ
-open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD SharedZC
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
@@ -223,75 +224,16 @@ theorem zc_root_downset_mp {n N : ℕ} {H : History p F} {keys : ℕ → Polynom
 
 /-! ### The ⊇ helpers (the backwards U9a route, unlocked by DC-3)
 
-`clause_assign`/`valueClause_codim`/`mkFresh_codim` replicate the U7 per-coordinate
-assignment machinery (private there; the `card_fin_fun` replication is the U9a precedent
-above): every fresh clause of `mkFresh` pins its whole support (`codim = |support|` ⟹
-`LevelClause.count` leaves one supported satisfier). They feed `freshAttach_exists`'s
-`hasg` leg, so the DC-3 fresh-attach witness EXISTS at the root (`hunpinned` is free at
-i = 0 — nothing is pinned before the root read). `floor_ht_gives_slot` is the CONVERSE of
+`clause_assign`/`valueClause_codim`/`mkFresh_codim` — the U7 per-coordinate assignment
+machinery, formerly REPLICATED here as file-private byte-identical copies — are now
+consumed from `LeanUrat.HC2.SharedZC` (C4 HOIST RECORD, 2026-07-30, SYNTHESIS_PASS1 +
+golf HC2#106: verbatim hoist, this file's copies deleted): every fresh clause of
+`mkFresh` pins its whole support (`codim = |support|` ⟹ `LevelClause.count` leaves one
+supported satisfier). They feed `freshAttach_exists`'s `hasg` leg, so the DC-3
+fresh-attach witness EXISTS at the root (`hunpinned` is free at i = 0 — nothing is
+pinned before the root read). `floor_ht_gives_slot` is the CONVERSE of
 `root_ht_le_floor`: the same root floor bridge run backwards (the reduction is by
 equalities, so `htH 1 ≤ floorH 1` ⟺ the band's upper-edge bound `htH 0 = c.1 ≤ slotVal`). -/
-
-private lemma clause_assign {m : ℕ} (cl : LevelClause p m)
-    (hcodim : cl.codim = cl.support.card) :
-    ∃ u : Fin m → ZMod p, ∀ x : Fin m → ZMod p,
-      cl.sat x ↔ ∀ c ∈ cl.support, x c = u c := by
-  classical
-  have hp : 0 < p := (Fact.out : p.Prime).pos
-  have hcount := cl.count
-  rw [hcodim] at hcount
-  have hone : Nat.card {y : Fin m → ZMod p // cl.sat y ∧ ∀ c ∉ cl.support, y c = 0} = 1 :=
-    Nat.eq_of_mul_eq_mul_right (pow_pos hp _) (by rw [hcount, one_mul])
-  obtain ⟨y₀, hy₀⟩ := Nat.card_eq_one_iff_exists.mp hone
-  refine ⟨y₀.1, fun x => ⟨fun hx c hc => ?_, fun hx => ?_⟩⟩
-  · have hres : cl.sat (fun c' => if c' ∈ cl.support then x c' else 0) := by
-      refine (cl.dep x _ ?_).mp hx
-      intro c' hc'
-      rw [if_pos hc']
-    have hz : (⟨fun c' => if c' ∈ cl.support then x c' else 0, hres,
-        fun c' hc' => if_neg hc'⟩ :
-        {y : Fin m → ZMod p // cl.sat y ∧ ∀ c ∉ cl.support, y c = 0}) = y₀ := hy₀ _
-    have hzc : (if c ∈ cl.support then x c else 0) = y₀.1 c :=
-      congrFun (congrArg Subtype.val hz) c
-    rw [if_pos hc] at hzc
-    exact hzc
-  · exact (cl.dep x y₀.1 fun c hc => hx c hc).mpr y₀.2.1
-
-private lemma card_fin_fun' (k : ℕ) : Nat.card (Fin k → ZMod p) = p ^ k := by
-  haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
-  simp [Nat.card_eq_fintype_card, ZMod.card]
-
-private lemma valueClause_codim {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
-    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
-    (i : ℕ) (hi : i < H.nodes.length) (j : ℕ) (hsp : (H.nodes[i]'hi).spanSlot j) :
-    (valueClause H n N S vOf i hi j hsp).codim
-      = (valueClause H n N S vOf i hi j hsp).support.card := by
-  classical
-  have h := (C1_TYP_toClause
-    (S.typObj i hi (levelSet H n N i (H.nodes[i]'hi) j)
-      ⟨j, hsp, fun c => Iff.intro
-        (fun hc => (Finset.mem_filter.mp hc).2)
-        (fun hc => Finset.mem_filter.mpr ⟨Finset.mem_univ c, hc⟩)⟩)
-    (vOf i j (levelSet H n N i (H.nodes[i]'hi) j))
-    (levelSet H n N i (H.nodes[i]'hi) j).card
-    (card_fin_fun' _)).choose_spec
-  exact h.2.1.trans (congrArg Finset.card h.1).symm
-
-private lemma mkFresh_codim {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
-    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
-    (i : ℕ) (hi : i < H.nodes.length) :
-    ∀ cl ∈ (mkFresh H n N S vOf i hi).clauses, cl.codim = cl.support.card := by
-  intro cl hcl
-  have hcl' : cl ∈ ((stripSet H n N i (H.nodes[i]'hi)).toList.map
-        (fun c => (C1_stripClause (p := p) c).choose))
-      ++ ((valueSlots H n N i (H.nodes[i]'hi)).attach.toList.map
-        (fun jh => valueClause H n N S vOf i hi jh.1 (valueSlots_spanSlot jh.2))) := hcl
-  rcases List.mem_append.mp hcl' with hstrip | hval
-  · obtain ⟨c, -, rfl⟩ := List.mem_map.mp hstrip
-    have h := (C1_stripClause (p := p) c).choose_spec
-    rw [h.2.1, h.1, Finset.card_singleton]
-  · obtain ⟨jh, -, rfl⟩ := List.mem_map.mp hval
-    exact valueClause_codim S vOf i hi jh.1 (valueSlots_spanSlot jh.2)
 
 /-- The root floor bridge run BACKWARDS (the converse of `root_ht_le_floor`): at an
 interior coordinate, `htH 1 ≤ floorH 1` FORCES the band's upper-edge bound

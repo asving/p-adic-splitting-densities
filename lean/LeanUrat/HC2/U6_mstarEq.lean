@@ -23,6 +23,7 @@ otherwise byte-unchanged, still closes.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.SharedZC
 import LeanUrat.HC2.U4_freshCover
 
 set_option linter.style.longLine false
@@ -31,7 +32,7 @@ set_option linter.unusedSectionVars false
 set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesJ
-open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD SharedZC
 
 /-! ### Private counting helpers (address-free list of level-clause supports) -/
 
@@ -95,12 +96,10 @@ theorem mkFresh_mstar {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       = Nat.card {c : Fin (n * N) //
           inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c} := by
   classical
-  -- the digit-alphabet count (the private `card_fin_fun`'s content, re-proved so it can be
-  -- supplied by name as `C1_TYP_toClause`'s proof-arg — the value determines the And-nav).
-  have hcardfun : ∀ k : ℕ, Nat.card (Fin k → ZMod p) = p ^ k := by
-    intro k
-    haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
-    simp [Nat.card_eq_fintype_card, ZMod.card]
+  -- the digit-alphabet count, supplied by name as `C1_TYP_toClause`'s proof-arg (the value
+  -- determines the And-nav) — C4 hoist (2026-07-30): consumed from `SharedZC.card_fin_fun'`
+  -- (formerly an inline re-proof; `Prop` arg, proof-irrelevant).
+  have hcardfun : ∀ k : ℕ, Nat.card (Fin k → ZMod p) = p ^ k := fun k => card_fin_fun' k
   -- value-clause data: codim and support read off `C1_TYP_toClause`'s spec.
   have hvc : ∀ (j : ℕ) (hsp : (H.nodes[i]'hi).spanSlot j),
       (valueClause H n N S vOf i hi j hsp).codim
