@@ -1,0 +1,1081 @@
+'LeanUrat.Goal.goal_theorem' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.AX_cellRecursion,
+ PadicMeasure.clusterMeasure,
+ PadicMeasure.descend_size_lt,
+ PadicMeasure.omCells]
+'LeanUrat.clusterVolume_rational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.AX_cellRecursion,
+ PadicMeasure.clusterMeasure,
+ PadicMeasure.descend_size_lt,
+ PadicMeasure.omCells]
+'LeanUrat.Witness.trivF_tame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.montes_order0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.montes_order0_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.h_node0_proved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.gate_rootCount_inert2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.montes_order0_certified_value_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.classify_eq_sepShape_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.rootCount_isRational_of_leaf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Order0.cellsOfShapeWF_sepShape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Necklace.dvd_necklaceSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Necklace.necklaceSum_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Necklace.necklaceQ_eq_natCast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Development.developEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Development.develop_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Development.developEquiv_card_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.card_ker_mulVec_of_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.fiber_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.image_index' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.mulVec_fiber_card_of_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.mulVec_bijective_iff_isUnit_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.card_range_mul_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.LinearFiber.card_ker_mul_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HenselCount.sylvesterMulVec_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HenselCount.resultant_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HenselCount.fiber_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HenselCount.image_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SparseResultant.resultant_expand' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SparseResultant.det_eq_pow_mul_unit_of_dominant_transversal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SparseResultant.resultant_sparseTwist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SparseResultant.resultant_sparseTwist_isUnit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SparseResultant.resultant_sparseTwist_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FineCellResultant.vResultant_eq_prod_roots_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FineCellResultant.vResultant_eq_prod_cross_pairs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.FineCellResultant.finecell_vResultant_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FineCellResultant.finecell_vResultant_const_cross' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RphiRing.card_Rphi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRing.digitEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRing.card_span_theta_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRing.card_residueField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRing.isUnit_iff_vphi_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OMCountV2.omCount_sepShape_eq_rootCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OMCountV2.omCount_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OMCountV2.omDensityV2_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OMCountV2.isRationalFn_compQpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OMCountV2.omCount_eq_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.cell_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.cell_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.classify1_eq_some_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.classify1_eq_none_of_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.residual_endpoint_units' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellCard.cell_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellCard.cell_card_raw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellCard.cell_card_mCell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ShapeCountTie.shapeCount_eq_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ShapeCountTie.card_shapeSet_prod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ShapeCountTie.choicePoly_eval_prod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ShapeCountTie.shapeCount_tie_general_of_singleDegree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ShapeCountTie.single_degree_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ShapeCountTie.shapeCount_tie_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ShapeCountTie.cell_card_mCell_uncond' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShape.cellsOfShapeWF_oneSideShape' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.PathShape.configsOf_oneSideShape' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.PathShape.omCount_oneSideShape_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShape.mkCell_volExp_add_freeExp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShape.hnode_oneSideShape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridge.omCount_selfloop_eq_oneSideShape' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridge.stratumCount_selfloop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridge.hnode_selfloop_over_Bclassify' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShapeChildful.omChildCount_childShape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShapeChildful.cellsOfShapeWF_oneSideShapeChildful' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.PathShapeChildful.omCount_oneSideShapeChildful_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.PathShapeChildful.hnode_oneSideShapeChildful' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShapeChildful.omCount_eq_limit_mul_pivot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber.npVertices_eq_selfloop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber.rootSide_eq_of_inCell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber.rootResidual_eq_residualOf' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber.classify_eq_selfloop_of_inCell' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber.omCount_selfloop_eq_oneSideShape' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.PathShapeMultiSide.sideCeilSum_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShapeMultiSide.omCount_multiSide_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShapeMultiSide.hnode_multiSideShape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber2.rootSide_eq_of_classify' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber2.sideAbove_of_npVertices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber2.classify_eq_selfloop_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber2.stratumCount_selfloop_R' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber2.hnode_selfloop_over_Bclassify_R' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeFiber2.montes_order1_selfloop_density' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.PathShapeMultiSideTree.omCount_sideSubShape_eq_sideFactor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.PathShapeMultiSideTree.multiSideValue_eq_prod_omCount' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.PathShapeMultiSideTree.hnode_multiSideProduct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.PathShapeMultiSideTree.prod_omCount_eq_blockCardinality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeChildful.classifyAux_of_single_descent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeChildful.classify_eq_childful_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeChildful.omCount_TselfloopChildful_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeChildful.stratumCount_childful_R' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide.classify_multiSide_firstSide_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide.inCell_multiSide_imp_classify_firstSide' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide.hnode_multiSideProduct_reexport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide.prod_omCount_eq_blockCardinality_reexport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide2.omDensityMultiSide_stratum_product' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide2.omDensityMultiSide_of_sides_of_image_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide2.gate_omDensityMultiSide_instance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ClassifierBridgeMultiSide2.gate_omDensityMultiSide_fiberCard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusK.census_step_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusK.censusEquivQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusK.census_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusK.census_depth_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusK.selfLoopChain_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusK.gate_census_base_2_5_2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusFiltration.selfLoopCell_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusFiltration.selfLoopChain_le_floorChain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusFiltration.selfLoop_floor_ratio_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusFiltration.selfLoopCensus_filtration_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusFiltration.selfLoopCensus_filtration_step_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.selfLoopCell_verdict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.cellB1_verdict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.census_step_equiv_verdict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.census_base_verdict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.selfLoopCensusVerdict_step' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.gate_verdict_nonvacuous_depth2_2_5_2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopCensusVerdict.gate_census_base_verdict_2_5_2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.stratumCount1_selfLoop_eq_fiber' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.stratumCount1_selfLoop_index' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.stratumCount1_selfLoop_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.floorAgg_eq_aggSelfLoopBoxTower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.hnode_selfloop_box_order1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.hnode_selfloop_box_child_q2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopDensityConnect.not_uniformCosetDensity_general' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_eq_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.selfLoopFixpoint_omChild_q2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.stratumCount1_seed_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.stratumCount1_hnode_fixpoint_q2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpoint.stratumCount1_hnode_fixpoint_q2_value' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.slExposedRatio_3_q2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.countPivot_3_q2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.EFFSEED3_q2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.EFFSEED3_decomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpointValue_mu3_q2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_eq_mu3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_unique_mu3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_general_closure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.selfLoopFixpoint_general_value' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.omChildCount_shape3Half_q2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopFixpointGeneralMu.omChildCount_shape3Half_crossfeed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ConditionalDensity.density_eq_engine_conditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ConditionalDensity.density_eq_engine_tame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ConditionalDensity.hNodeLimit_unramified' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ConditionalDensity.selfLoop_engine_is_fixpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellCard.card_readableBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellCard.consistency_s2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquiv.restartEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquiv.inCellAt_iff_pattern' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquiv.card_restart_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquiv.card_freshPattern' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquiv.crosscheck_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.BlockProduct.pair_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.BlockProduct.pair_card_pattern' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.BlockProduct.blocks_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.BlockProduct.mul_image_saturated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.BlockProduct.caseB_hres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.BlockProduct.gateB_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.classify_separable_leaf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.clusterSize_fChildCtx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.classifyFirstDescent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.cells_fChildCtx_ne_nil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Development.develop_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.childResidual_reduce_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.classifyGenuineAux_head_dr_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.classifyGenuine_root_eq_classify' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.treeSize_classifyGenuine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.B.fChildCtx_reduce_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedHensel.graded_ker_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedHensel.pair_card_graded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedHensel.gate_margin_graded_B' does not depend on any axioms
+'LeanUrat.OM.GradedHensel.caseB_law_graded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedHensel.caseB_matches_gateB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedHensel.blocks_card_graded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HNode1.h_node1_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HNode1.h_node1_single_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HNode1.h_node1_selfLoop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HNode1.selfLoop_cost_tie' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HNode1.h_node1_census' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.HNode1.h_node1_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Drainage.card_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Drainage.card_selfLoopFiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Drainage.card_undecided1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Drainage.undecidedDensity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.Drainage.tendsto_tailDensity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopTower.two_level_census' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopTower.second_level_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopTower.read2_eq_none_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopTower.pattern_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopTower.gate_iterated_selfLoop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.inCellMulti_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.imageSet_subset_concatCell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.cell_sideAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.fiber_node_identity_of_image_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.gate_fiber_B_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.M4.residualPoly_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.residualOf_mul_of_conv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.zmodValuation_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.zmodUnitResidue_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.zmodValuation_sum_unique_min' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.zmodUnitResidue_sum_common_min' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.cellOf_wf' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.ProductTheorem.vertex_valuation_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_imageSet_le_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.coeff_mul_pow_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.antidiag_split_class' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.on_side_conv_of_cofactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.CellMenu.polyShape_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.polyShape_residualOf_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.sideMatch_shape_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.offBlock_unit_on_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.product_matches_two_distinct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_single_free' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_two_distinct_free' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_inCellMulti_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.image_card_eq_pow_freeExp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.inCellMulti_eq_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.gate_node_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.gate_node_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.cell_card_raw_fixed_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_fiber_single' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_caseC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.gate_node_C_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.product_matches_klist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_klist_free' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_imageSet_le_fiber_klist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.product_matches_klist_k3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.product_matches_sameside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.imageSet_subset_inCellMulti_sameside_free' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_multiside' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.ProductTheorem.node_identity_fixedpin_multiside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.card_inCellMulti_fixedpin_caseA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ProductTheorem.gate_node_A_multiside_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRingGenH.isLocalRing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRingGenH.maximalIdeal_eq_span_theta_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRingGenH.card_residueField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiRingGenH.vL_eq_vphi_of_h_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiGenHCount.vL_theta_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiGenHCount.vL_natCast_p_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiGenHCount.card_filtIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RphiGenHCount.card_filtIdeal_h_one_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquivGenH.restartEquivGenH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquivGenH.inCellAtGenH_iff_pattern' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquivGenH.card_restartGenH_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RestartEquivGenH.card_restartGenH_fiber_h_one_collapse' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RestartEquivGenH.gate_H' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartGenH.two_level_census_genH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartGenH.card_two_level_genH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartGenH.card_two_level_genH_h_one_collapse' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TowerRestartGenH.gate_DG_order2_compounded_W13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerBase.card_filtIdeal_gen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerBase.instTowerBase_RphiGenH' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.instTowerBase_ZMod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.instTowerBase_level1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.reduction_gate_2323_N5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartAbstract.restartEquivAbstract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartAbstract.card_restartAbstract_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartAbstract.card_freshPatternAbstract_ZMod_eq_perdigit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TowerRestartAbstract.card_freshPatternAbstract_child' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TowerRestartAbstract.gate_reduce_H' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TowerRestartAbstract.instTowerBase_Oring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevelopTower.developTower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevelopTower.restartEquivTower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevelopTower.card_restartTower_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevelopTower.r_level_census_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevelopTower.card_r_level_census' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevelopTower.gate_Oring_restart_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MontesAllOrders.montes_allorders_of_hnode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MontesAllOrders.montes_allorders_of_hnode_specializes' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.StratumOrder1.stratumCount1_eq_cellCard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.StratumOrder1.stratumCount1_eq_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.StratumOrder1.stratumCount1_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopResum.xqMultiplicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopResum.aggSelfLoopTower_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopResum.tendsto_aggSelfLoopTower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopResum.countPivot_eq_one_sub_slExposedRatio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.SelfLoopResum.resum_omCount_root_q2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopIterate.boxMass_xq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopIterate.aggSelfLoopBoxTower_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopIterate.hnode_selfloop_order1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SelfLoopIterate.hnode_selfloop_limit_child_q2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOrder1.stratumCount1_decided_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOrder1.hnode_decided_order1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOrder1.gate_density_S2C1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.omCount_childless_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.omCount_childless_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.configsOf_decidedTc' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.configOf_decidedTc_childless' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.mCell_decidedConfig' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.volExp_decidedConfig' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.omCount_decidedTc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.decided_omCount_tie_S2C1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.decided_omCount_tie_S3C1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DecidedOmCountTie.hnode_decided_order1_omCount_S2C1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.FDescentCensus.galoisField_card_eq_q_pow_f' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FDescentCensus.residualCensus_f_eq_q_pow_f' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FDescentCensus.shapeCensus_f_eq_q_pow_f' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FDescentCensus.conjugateBlock_orbit_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UnramifiedBase.card_Oring_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UnramifiedBase.isLocalRing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UnramifiedBase.maximalIdeal_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UnramifiedBase.card_residueField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UnramifiedBase.card_span_p_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedCertificates.caseA_law_graded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedCertificates.caseA_matches_gateA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedCertificates.h_node1_at_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedCertificates.caseC_law_graded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedCertificates.caseC_matches_gateC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.GradedCertificates.h_node1_at_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.clusterMeasure_isRational_of_AX' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.AX_cellRecursion,
+ PadicMeasure.clusterMeasure,
+ PadicMeasure.descend_size_lt,
+ PadicMeasure.omCells]
+'LeanUrat.PadicMeasure.clusterMeasureModel_rec' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.descend_size_lt,
+ PadicMeasure.omCells]
+'LeanUrat.PadicMeasure.T_BB3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.residualCountFn_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.cellCoeff_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.bb1_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.omPivot_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.natCard_Fr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.PadicMeasure.descend_children_of_factors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.omCells]
+'LeanUrat.PadicMeasure.cell_stratum_of_residual' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.omCells]
+'LeanUrat.OMInduction.clusterVol_isRational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.RatFn.isRationalFn_listSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.RatFn.isRationalFn_div' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.RatFn.isRationalFn_qpow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L7.isPalindromic_of_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L7.tame_to_all_primes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L7.ratfunc_agree_of_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L7.eval_reflect_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L3.card_monicDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L3.irreducible_separable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L3Squarefree.card_squarefreeMonicDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L3Gauss.gauss_necklace_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L3Gauss.sum_e_mul_card_eq_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L4.cellVolume_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L4.cellVolume_pIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L5fix.selfLoop_geometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.L6M4.density_rational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.AX_cellRecursion,
+ PadicMeasure.clusterMeasure,
+ PadicMeasure.descend_size_lt,
+ PadicMeasure.omCells]
+'LeanUrat.L6M4.sum_clusterVol_rational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.AX_cellRecursion,
+ PadicMeasure.clusterMeasure,
+ PadicMeasure.descend_size_lt,
+ PadicMeasure.omCells]
+'LeanUrat.M1.projPointCount_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.M1.clusterLaw_baseChange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.R1.treeDistanceWeight_values' does not depend on any axioms
+'LeanUrat.NestedCollapse.nested_reproduces_I2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.NestedCollapse.nested_reproduces_I3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.NestedCollapse.nested_block_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.NestedCollapse.geometricLimit_of_selfLoop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MontesAxiom.RescaleC1.selfLoopExponent_eq_blockExponent_sub_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.CountingModel.CountingModel.density_le_decided_add_undecided' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.CountingModel.CountingModel.decided_le_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.CountingModel.countingDensity_is_squeezed_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Witness.montes_full_instance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Witness.montes_bundle_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Witness.DensityFoundation_nonempty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ PadicMeasure.clusterMeasure]
+'LeanUrat.OM.TameRealDensity.stratumCount_selfloop_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TameRealDensity.hnode_selfloop_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TameRealDensity.montes_order1_selfloop_density_general_prime' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TameRealDensity.montes_order1_tame_realDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.TameRealDensity.montes_order1_tame_certified_density_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TameRealDensity.montes_order1_selfloop_density_general_prime_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TameRealDensity.montes_tame_realDensity_of_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.TameRealDensity.montes_tame_realDensity_certified_value_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.MontesV2.goal_theorem_montes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MontesV2.goal_theorem_via_montes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_value_inert2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_countingDensity_inert2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_split_q3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_inert_q3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_sigma_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.omMenu_ramified_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_ramified_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_ramified_vs_inert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2Gates.gate_v2_htameFE_nontrivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenu.eq_of_mem_omMenuW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenu.omMenuW_ram_of_constE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuPrep.sum_stratumCount_le_box_W' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuPrep.normSum_omMenuW_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.omCount_Tselfloop_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.constERam_ramType2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.omMenuW_ramType2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w1_omCount_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w1_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w1_nonvacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w1_countingDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w2_inert_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w2_ram_vs_inert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w2_sigmaA_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w2_sigmaB_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceWGates.gate_w2_wild_sigma_separation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.menuFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gate_mem_omMenuW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.gateFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gateFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.isUnit_add_of_mem_maximalIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.ef_of_eisenstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.eOf_of_eisenstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.fOf_of_eisenstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.efOf_of_eisenstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.gate_ef_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.gate_eOf_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.isEisensteinAt_X_add_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.eisWitnessData' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.eisWitness_ef' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.efOf_mem_qpType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeEisenstein.qpType_singleton_forces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuW3.gcd_admissible' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.WildMenuW3.omMenuW3_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuW3.ramShapeAt_injective_k' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuW3.eq_of_mem_omMenuW3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuW3.sum_stratumCount_le_box_W3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.WildMenuW3.normSum_omMenuW3_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.admissibleK_two_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.gate_w3_menu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.gate_w3_omCount_H3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.gate_w3_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.gate_w3_countingDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.gate_w3_one_countingDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3Gates.gate_w3_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.sidePairs_h3Path' does not depend on any axioms
+'LeanUrat.OM.QpTypeH3.menuPath_h3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.shapesFor_h3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.ramShapeAt_h3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.h3_mem_omMenuW3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.mem_maximalIdeal_pow_of_le_zmodValuation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.QpTypeH3.wildH3_irreducible'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.wildH3_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.wildH3Fiber_valuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.wildH3Fiber_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.h3Poly_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.h3Poly_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.toBox_h3Poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.h3box_inCell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.h3Fiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.not_pow_succ_dvd_unit_mul_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.ef_of_wildH3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeH3.gate_h3_ef_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.menuFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gateFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.multiSideLit_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.typeOf4_multiSideLit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.omMenu4_of_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.omMenu4_eq_of_not_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.eq_of_mem_omMenu4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.fiber4_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.sum_stratumCount4_le_box' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.normSum_omMenu4_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.MultiSlopeMenu.stratum_tendsto_C4_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_w4_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.mixedOK_sigma5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_menu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_side_e2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_side_e3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_volume_reconciliation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_countingDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_e5_countingDensity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4Gates.gate_w4_separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf4_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf4_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.sidePairs_mixedGatePath' does not depend on any axioms
+'LeanUrat.OM.QpTypeMixed.menuPath_mixedGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.shapesFor_mixedGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateLit_eq_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateLit_mem_omMenu4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.headOrd_mixedGateLit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.decodePath_mixedGateLit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.decodeShapes_mixedGateLit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateFiber_valuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGate_no_root'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGate_no_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGate_no_linear_factor'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateFiber_no_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateFiber_no_linear_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGatePoly_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGatePoly_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.toBox_mixedGatePoly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateBox_inCell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.mixedGateFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.natDegree_pos_of_irreducible_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeMixed.ef_mul_eq_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.menuFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gateFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gate_mem_omMenuW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.gateFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_w4_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.chainLit_injective' depends on axioms: [propext]
+'LeanUrat.OM.ChainMenu.typeOf5_chainLit' depends on axioms: [propext, Quot.sound]
+'LeanUrat.OM.ChainMenu.two_mul_card_noRootPairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.descendPair_eq_stratumPairEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.card_chainPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.card_chainCell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.chainPair_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.fiber5_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.sum_stratumCount5_le_box' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.normSum_omMenu5_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.stratum_tendsto_C5_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.omMenu5_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu.eq_of_mem_omMenu5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_w5_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_caseC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_depth2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_ram3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_inert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_ledger_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_count_at_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_menu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_D0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_D1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5Gates.gate_w5_window_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_w4_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.affLift_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.affLift_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.qpType_translate_rescale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.dvd_of_box_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.box_shift_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.chainGateFiber_decode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.chainGate_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.chainGate_ef_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.chainGateFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChain.chainGate_mem_omMenu5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf5_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf5_notChain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.chainGateFiber5_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w4' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w3' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.menuFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gateFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gate_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.chainGate_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_w4_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_w5_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SeriesAssembly.montes_unconditional_n2_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.stepDecode_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafRam_master_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafRam_master_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafInert_master_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafInert_master_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafSplit_master_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafFiber_ram_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafFiber_inert_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeLeafMasters.leafFiber_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.chainUnwind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.chainFiber_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.chainFiber_ram_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.chainFiber_inert_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.transBox_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.transChain_fiber_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.transChainFiber_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.transChainFiber_ram_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.transChainFiber_inert_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.sepSplitCell_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeChainAll.sepInertCell_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu6.chainShapes0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu6.omMenu6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu6.omMenu5_subset_omMenu6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu6.mem_omMenu6_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu6.mem_omMenu6_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithful.sepInert_classify_glue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithful.fullFiber_split_hasType_axfree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cInertPair_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cSplitPair_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cTransFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cDeepFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cTrans_index_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cSplit_index_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cInert_mem_omMenu6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cInertFiber5_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.w6cSplitTransFiber_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_inert_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_split_hasType_axfree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_deep_forced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w5' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithful.sepInertCell_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithful.transChain_menuFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithful.fullFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_trans_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithfulGates.montes_n2_full_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_w4_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_w5_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.hensel_lift_at_simple_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.splitRes_two_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.splitSep_master_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.leafSplitU_master_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.ord0Split_master_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.leafFiberU_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.ord0SplitCell_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.stepDecodeU_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.chainUnwindU' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.chainFiberU_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.transBoxP_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.transChainFiberU_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.w6qSplitUPair_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.w6qSplitU_not_irreducible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.gate_w6q_splitU_hasType_axfree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu7.splitULit' does not depend on any axioms
+'LeanUrat.OM.ChainMenu7.headOrd_splitULit' does not depend on any axioms
+'LeanUrat.OM.ChainMenu7.decodeMsU_splitULit' depends on axioms: [propext]
+'LeanUrat.OM.ChainMenu7.decodeMU_splitULit' depends on axioms: [propext]
+'LeanUrat.OM.ChainMenu7.splitULit_injective' depends on axioms: [propext]
+'LeanUrat.OM.ChainMenu7.headOrd_ne_three_of_mem_omMenu6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu7.omMenu7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu7.omMenu6_subset_omMenu7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu7.mem_omMenu7_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.ChainMenu7.ChainCellU' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf7_splitU' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.fiberOf7_not_splitU' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.w6qSplitU_mem_omMenu7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.w6qSplitUFiber7_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w6' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.om_leaf_faithful_w5' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.OmLeafFaithful.gate_w6q_splitU_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithful.transChain_menuFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithful.fullFiber_hasType' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_axiom_coherent' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ OM.OmLeafFaithful.om_leaf_faithful]
+'LeanUrat.OM.FullFaithful.fullFiber_split_hasType_axfree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.FullFaithfulGates.gate_w6c_split_hasType_axfree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.SeriesAssembly.montes_unconditional_n2_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w_exhaustive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_unconditional_w3_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW3.montes_w3_one_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_unconditional_w4_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW4.montes_w4_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_unconditional_w5_exhaustive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanUrat.OM.RealInstanceW5.montes_w5_recovers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.montes_uniform_n2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.hExhaustP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.undecided_envelopeP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.uniformDecided_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.gate_uniform_p2_ram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.gate_uniform_p3_ram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.gate_uniform_p3_inert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.gate_uniform_checksum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformCapstone.gate_wild_included' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformModelN2.cluster_coveringP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.UniformModelN2.decidedCountP_two_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.QpTypeSplitU.transChainFiberU_split_hasType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevBijection.dev_division_padic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevBijection.develop_eq_devMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevBijection.card_caseE_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevBijection.caseE_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevBijection.gate_caseE_p2_N2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DevBijection.gate_caseE_p3_N2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DescendBijection.descend_division_padic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DescendBijection.descend_bijection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DescendBijection.descendTower_bijection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DescendBijection.joint_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.DescendBijection.gate_caseF_144' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit=0

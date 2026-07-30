@@ -154,8 +154,6 @@ instance (L k : ℕ) (d : ZMod p) : DecidablePred (CoordCond p L k d) := fun _ =
 `resp (x/p^k) = digit k x` on the `p^k`-divisible locus. -/
 theorem resp_shiftEquiv {L k : ℕ} (hk : k ≤ L) (x : {x : ZMod (p ^ L) // p ^ k ∣ x.val}) :
     resp p (L - k) (shiftEquiv p hk x) = digit p L k x.1 := by
-  haveI : NeZero (p ^ L) := QuotientBox.instNeZeroPow p L
-  haveI : NeZero (p ^ (L - k)) := QuotientBox.instNeZeroPow p (L - k)
   show resp p (L - k) ((x.1.val / p ^ k : ℕ) : ZMod (p ^ (L - k))) = digit p L k x.1
   have hdivlt : x.1.val / p ^ k < p ^ (L - k) := by
     apply Nat.div_lt_of_lt_mul
@@ -230,7 +228,6 @@ def affineEquiv (M₀ M₁ : ℕ) (hM : M₀ ≤ M₁) (ĉ : ℕ) :
 /-- `resp` intertwines the level drop: `resp (castHom x) = resp x` (for `0 < M₀`). -/
 theorem resp_castHom {M₀ M₁ : ℕ} (hM₀ : 0 < M₀) (hM : M₀ ≤ M₁) (x : ZMod (p ^ M₁)) :
     resp p M₀ (ZMod.castHom (pow_dvd_pow p hM) (ZMod (p ^ M₀)) x) = resp p M₁ x := by
-  haveI : NeZero (p ^ M₁) := QuotientBox.instNeZeroPow p M₁
   rw [ZMod.castHom_apply, ← ZMod.natCast_val x, resp_natCast p M₀ hM₀]
   rfl
 
@@ -250,7 +247,7 @@ theorem affine_cond_iff (M₀ M₁ : ℕ) (hM₀ : 0 < M₀) (hM : M₀ ≤ M₁
     (resp p M₀ x.1 = ((c : ZMod p)) ^ 2 ∧ resp p M₁ x.2 = -(2 * (c : ZMod p))) ↔
       (ClusterPair p M₀ M₁ (affineEquiv p M₀ M₁ hM ((c : ZMod p)).val x)) := by
   have hM₁ : 0 < M₁ := lt_of_lt_of_le hM₀ hM
-  set cres : ZMod p := (c : ZMod p) with hcdef
+  set cres : ZMod p := (c : ZMod p)
   have hcv : ((cres.val : ℕ) : ZMod p) = cres := ZMod.natCast_rightInverse cres
   have himg : affineEquiv p M₀ M₁ hM cres.val x =
       (x.1 + (cres.val : ZMod (p ^ M₀)) * (ZMod.castHom (pow_dvd_pow p hM) (ZMod (p ^ M₀)) x.2)

@@ -1,0 +1,78 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Mathlib
+import LeanUrat.MovesU.Defs
+import LeanUrat.OM.QuotientBox
+
+/-!
+# IB-A9 — (†2) `boxPolyEquiv : Box p n N ≃ monicBox p N n` at positive levels
+
+E-phase skeleton per `lean/notes/BRIDGE_BP1_INSTANCE_2026-07-30.md` §3.2 (†2) /
+§4 group A (IB-A9, pre-approved split A9a/A9b).
+
+INFORMAL STATEMENT: for 0 < N the coefficient box `Box p n N = Fin n → ZMod (p^N)`
+IS the monic degree-n polynomial box `QuotientBox.monicBox p N n`, via
+`f ↦ Box.toPoly f = X^n + Σ_i C (f i) X^i` forward and coefficient read
+`g ↦ fun i => g.coeff i` backward.  AT N = 0 THE EQUIV IS FALSE (IB-A8,
+`BridgeA8_level0Edge.lean`: the monic box is empty, the coefficient box a
+singleton) — hence the `0 < N` guard, the same guard discipline as
+`TreePin.chart` (round-3 CRITICAL 1).
+
+DEPS: IB-A8 (edge documentation only — no import-level dependency on its
+statements).
+
+PROOF SKETCH (blueprint §3.2):
+* A9a `boxToPoly_mem_monicBox`: nontriviality of `ZMod (p^N)` from p prime,
+  N ≥ 1 (`Fact (1 < p ^ N)` via `Nat.one_lt_pow`); the sum `Σ_i C (f i) X^i` has
+  degree < n (each summand degree ≤ i < n), so `(monic_X_pow n).add_of_left` +
+  `degree_add_eq_left_of_degree_lt` give Monic and natDegree = n — replay
+  `OM.QuotientBox.card_monicBox`'s `hdeg` block (QuotientBox.lean:44–51) at the
+  explicit-sum presentation.
+* A9b `left_inv`: coefficient extraction — for i < n,
+  `(Box.toPoly f).coeff i = f i` (`coeff_X_pow` kills the X^n head at i ≠ n;
+  `Polynomial.finset_sum_coeff` + `coeff_C_mul` + `coeff_X_pow` isolate the i-th
+  summand).
+* A9b `right_inv`: for g monic of natDegree n, `X^n + Σ_i C (g.coeff i) X^i = g`
+  by `Polynomial.ext`: above n both sides vanish (`coeff_eq_zero_of_natDegree_lt`),
+  at n the head reads `g.Monic.leadingCoeff`, below n the sum reproduces
+  `g.coeff i`.
+
+TRANSCRIPTION RESOLUTIONS (recorded): (i) the forward and backward maps are
+PINNED IN THE DEFINITION (toFun := `Box.toPoly`, invFun := coefficient read) so
+the (†2) spec "f ↦ Box.toPoly f" survives the skeleton — only the side proofs
+and the two inverse laws are sorried; (ii) A9a is packaged as ONE conjunctive
+lemma `boxToPoly_mem_monicBox` ("toPoly lands in monicBox"), exactly the
+subtype witness the record literal consumes; (iii) `[Fact p.Prime]` is carried
+(nontriviality of `ZMod (p^N)` needs p^N > 1; it also serves `monicBox`'s
+section context).
+-/
+
+set_option linter.style.longLine false
+set_option linter.style.header false
+set_option maxHeartbeats 1000000
+
+namespace LeanUrat.MovesU
+open Polynomial
+
+/-- IB-A9a — `Box.toPoly` lands in the monic degree-n box at positive levels:
+    `X^n + Σ_i C (f i) X^i` is monic of natDegree n over the (nontrivial for
+    0 < N, p prime) ring `ZMod (p^N)`. -/
+theorem boxToPoly_mem_monicBox (p n N : ℕ) [Fact p.Prime] (hN : 0 < N)
+    (f : Box p n N) :
+    (Box.toPoly f).Monic ∧ (Box.toPoly f).natDegree = n :=
+  sorry
+
+/-- IB-A9b — (†2) THE LEVEL-N DICTIONARY: the coefficient box IS the monic
+    polynomial box, `f ↦ Box.toPoly f` forward, coefficient read backward.
+    Guarded to 0 < N (IB-A8: FALSE at N = 0). -/
+noncomputable def boxPolyEquiv (p n N : ℕ) [Fact p.Prime] (hN : 0 < N) :
+    Box p n N ≃ OM.QuotientBox.monicBox p N n where
+  toFun f := ⟨Box.toPoly f, boxToPoly_mem_monicBox p n N hN f⟩
+  invFun g := fun i => g.1.coeff (i : ℕ)
+  left_inv := sorry
+  right_inv := sorry
+
+end LeanUrat.MovesU

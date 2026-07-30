@@ -120,7 +120,7 @@ noncomputable def childDigitData (p : ℕ) [Fact p.Prime] {n : ℕ} (N : ℕ)
 theorem childDigitData_vanish_ge (N : ℕ) (f : QuotientBox.monicBox p N n)
     (ψ : (ZMod p)[X]) (μ : ℕ) (t : ℕ) (ht : μ ≤ t) :
     childDigitData p N f ψ μ t = 0 := by
-  rw [childDigitData, dif_neg (by omega)]
+  rw [childDigitData, dif_neg (not_lt.mpr ht)]
 
 /-- `childDigitData` on the digit budget: for `t < μ` it is exactly the develop-digit residue the
 reader consumes (unfolding the `dif_pos`). -/
@@ -147,11 +147,10 @@ theorem childResidual_eq_range_sum (N : ℕ) (f : QuotientBox.monicBox p N n)
     (ψ : (ZMod p)[X]) (μ : ℕ) :
     B.childResidual p N f ψ μ =
       ∑ t ∈ Finset.range μ, Polynomial.C (childDigitData p N f ψ μ t) * Polynomial.X ^ t := by
-  rw [B.childResidual]
   -- Re-index the RHS `Finset.range μ` sum back to a `Fin μ` sum (`Finset.sum_range`), then match
   -- termwise. Going range→Fin (not Fin→range) avoids the `((↑i : ℕ) : Fin μ) = i` round-trip: on the
   -- `Fin` side the digit index is `⟨↑i, _⟩`, which is `i` by `Fin.eta`.
-  rw [Finset.sum_range (fun t => Polynomial.C (childDigitData p N f ψ μ t) * Polynomial.X ^ t)]
+  rw [B.childResidual, Finset.sum_range]
   refine Finset.sum_congr rfl (fun i _ => ?_)
   -- on `i : Fin μ`, `childDigitData ↑i = reader ⟨↑i, i.isLt⟩ = reader i` (the `Fin.mk` collapses to `i`
   -- definitionally, so the `rw` closes the goal outright).
@@ -175,11 +174,10 @@ theorem childResidual_eq_residualPoly (N : ℕ) (f : QuotientBox.monicBox p N n)
     (hdeg : M4.residualDeg S + 1 = μ) :
     B.childResidual p N f ψ μ =
       M4.residualPoly (childDigitData p N f ψ μ) S := by
-  rw [childResidual_eq_range_sum N f ψ μ, M4.residualPoly]
-  -- `residualPoly`'s range is `range (residualDeg S + 1) = range μ`; `residualCoeff = pass-through`.
-  rw [hdeg]
-  refine Finset.sum_congr rfl (fun t _ => ?_)
-  rw [M4.residualCoeff]
+  -- `residualPoly`'s range is `range (residualDeg S + 1) = range μ`; `residualCoeff` is a
+  -- definitional pass-through, so after the range rewrite the two sums match by `rfl`.
+  rw [childResidual_eq_range_sum N f ψ μ, M4.residualPoly, hdeg]
+  rfl
 
 /-! ## Theorem 3 — the coefficient reader
 
@@ -195,7 +193,6 @@ theorem childResidual_coeff (N : ℕ) (f : QuotientBox.monicBox p N n)
     (ψ : (ZMod p)[X]) (μ : ℕ) (j : ℕ) :
     (B.childResidual p N f ψ μ).coeff j =
       if j < μ then childDigitData p N f ψ μ j else 0 := by
-  classical
   rw [childResidual_eq_range_sum N f ψ μ, Polynomial.finsetSum_coeff]
   simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero]
   rw [Finset.sum_ite_eq (Finset.range μ) j (fun t => childDigitData p N f ψ μ t)]

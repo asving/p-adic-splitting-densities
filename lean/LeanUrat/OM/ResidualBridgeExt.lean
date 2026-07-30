@@ -132,7 +132,7 @@ theorem childDigitDataExt_vanish_ge (hgm : g.Monic) (hN : 0 < N)
     (Φ : (UnramifiedBase.Oring p N g)[X]) (μ : ℕ) (h : (UnramifiedBase.Oring p N g)[X])
     (t : ℕ) (ht : μ ≤ t) :
     childDigitDataExt p N g hgm hN Φ μ h t = 0 := by
-  rw [childDigitDataExt, dif_neg (by omega)]
+  rw [childDigitDataExt, dif_neg (not_lt.mpr ht)]
 
 /-- `childDigitDataExt` on the digit budget: for `t < μ` it is exactly the develop-digit residue the
 reader consumes (unfolding the `dif_pos`). -/
@@ -162,12 +162,10 @@ theorem childResidualExt_eq_range_sum (hgm : g.Monic) (hN : 0 < N)
     ChildResidualExt.childResidualExt p N g hgm hN Φ μ h =
       ∑ t ∈ Finset.range μ,
         Polynomial.C (childDigitDataExt p N g hgm hN Φ μ h t) * Polynomial.X ^ t := by
-  rw [ChildResidualExt.childResidualExt]
   -- Re-index the RHS `Finset.range μ` sum back to a `Fin μ` sum (`Finset.sum_range`), then match
   -- termwise. Going range→Fin (not Fin→range) avoids the `((↑i : ℕ) : Fin μ) = i` round-trip: on the
   -- `Fin` side the digit index is `⟨↑i, _⟩`, which is `i` by `Fin.eta`.
-  rw [Finset.sum_range
-    (fun t => Polynomial.C (childDigitDataExt p N g hgm hN Φ μ h t) * Polynomial.X ^ t)]
+  rw [ChildResidualExt.childResidualExt, Finset.sum_range]
   refine Finset.sum_congr rfl (fun i _ => ?_)
   -- on `i : Fin μ`, `childDigitDataExt ↑i = reader ⟨↑i, i.isLt⟩ = reader i` (the `Fin.mk` collapses
   -- to `i` definitionally, so the `rw` closes the goal outright).
@@ -204,11 +202,10 @@ theorem childResidualExt_eq_residualPoly (hgm : g.Monic) (hN : 0 < N)
     (S : NewtonPolygon.Side) (hdeg : M4.residualDeg S + 1 = μ) :
     ChildResidualExt.childResidualExt p N g hgm hN Φ μ h =
       M4.residualPoly (childDigitDataExt p N g hgm hN Φ μ h) S := by
-  rw [childResidualExt_eq_range_sum p N g hgm hN Φ μ h, M4.residualPoly]
-  -- `residualPoly`'s range is `range (residualDeg S + 1) = range μ`; `residualCoeff = pass-through`.
-  rw [hdeg]
-  refine Finset.sum_congr rfl (fun t _ => ?_)
-  rw [M4.residualCoeff]
+  -- `residualPoly`'s range is `range (residualDeg S + 1) = range μ`; `residualCoeff` is a
+  -- definitional pass-through, so after the range rewrite the two sums match by `rfl`.
+  rw [childResidualExt_eq_range_sum p N g hgm hN Φ μ h, M4.residualPoly, hdeg]
+  rfl
 
 /-! ## Theorem 3 — the coefficient reader
 
@@ -224,7 +221,6 @@ theorem childResidualExt_coeff (hgm : g.Monic) (hN : 0 < N)
     (Φ : (UnramifiedBase.Oring p N g)[X]) (μ : ℕ) (h : (UnramifiedBase.Oring p N g)[X]) (j : ℕ) :
     (ChildResidualExt.childResidualExt p N g hgm hN Φ μ h).coeff j =
       if j < μ then childDigitDataExt p N g hgm hN Φ μ h j else 0 := by
-  classical
   rw [childResidualExt_eq_range_sum p N g hgm hN Φ μ h, Polynomial.finsetSum_coeff]
   simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero]
   rw [Finset.sum_ite_eq (Finset.range μ) j (fun t => childDigitDataExt p N g hgm hN Φ μ h t)]
