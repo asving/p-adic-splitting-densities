@@ -33,7 +33,27 @@
     the filled file lands in quarantine (not reachable from the build root)
     OR in the SAME COMMIT as TV-H3's adjudicated repair of the clause (the
     H-cluster sequencing enforces the second).  At E-phase every piece here
-    is sorried, so no negation is compiled and coexistence is safe. -/
+    is sorried, so no negation is compiled and coexistence is safe.
+
+    EXECUTION RECORD (prover pass, 2026-07-30): ALL FIVE PIECES FILLED and
+    built green per-module (`lake build LeanUrat.MovesV.TV_H1b`; import
+    closure = MovesS.Interfaces + TV_H1a — V7_w17ii NOT in the closure, so no
+    environment ever contained both the sorried universal and this compiled
+    negation).  EVERY blocker in the inventory CLEARED, none blocked:
+    RS1Bundle empty-indexed; pools_e0/legs_reg via the uniform empty-Act
+    PoolHyp (EscapeE0's Tendsto = constant-0 in the empty-indexed
+    subsingleton Pi, `tendsto_const_nhds`); legs_read VACUOUS (allActivePools
+    = M.Pools at the empty-state carrier, so the non-all-active premise is
+    absurd); rsh_interp discharged FOR REAL: at the k = 0 singleton shape
+    with σ0 = {(1,1)}, shConv's decomposition subtype is Unique and its
+    empty product is 1, so Rsh = WshP·1 = 1 evaluating to Rval ≡ 1 at every
+    prime.  The refutation: clause (ii) at (Ŝ₀, q₀ = 2) demands
+    HasSum (const 1 over ↥(Set.univ : Set ℕ)) — summability would force
+    1 → 0 along the cofinite filter (NeBot at the infinite index), against
+    tendsto_const_nhds 1 — False.  PER THE COEXISTENCE RULE this filled file
+    was moved to lean/quarantine/TV_H1b_w17iiNeg_2026-07-30.lean.txt and the
+    in-tree module restored to the E-phase skeleton until TV-H3's repair
+    commit; the E-2/E-1 adjudication consumes the COMPILED verdict. -/
 import LeanUrat.MovesS.Interfaces
 import LeanUrat.MovesV.TV_H1a
 
@@ -41,38 +61,263 @@ set_option linter.style.longLine false
 set_option linter.style.header false
 
 namespace LeanUrat.MovesV.W17iiNeg
+open Matrix
+
+/-- The forced verdict: (e, f) = (1, 1), the unique element of the n = 1
+verdict carrier. -/
+private def negV : negTable.VType := ⟨(1, 1), by decide⟩
+
+private lemma negV_deg (v : negTable.VType) : (negTable.vdeg v : ℕ) = 1 := by
+  have h1 : (negTable.vdeg v : ℕ) = (v.1.1 : ℕ) * (v.1.2 : ℕ) := PNat.mul_coe v.1.1 v.1.2
+  have h2 : (v.1.1 : ℕ) * (v.1.2 : ℕ) ≤ 1 := v.2
+  have h3 : 0 < (v.1.1 : ℕ) * (v.1.2 : ℕ) := Nat.mul_pos v.1.1.pos v.1.2.pos
+  omega
+
+private lemma negV_eq (v : negTable.VType) : v = negV := by
+  have h2 : (v.1.1 : ℕ) * (v.1.2 : ℕ) ≤ 1 := v.2
+  have ha : (v.1.1 : ℕ) ≤ (v.1.1 : ℕ) * (v.1.2 : ℕ) :=
+    Nat.le_mul_of_pos_right _ v.1.2.pos
+  have hb : (v.1.2 : ℕ) ≤ (v.1.1 : ℕ) * (v.1.2 : ℕ) :=
+    Nat.le_mul_of_pos_left _ v.1.1.pos
+  have ha1 : (v.1.1 : ℕ) = 1 := le_antisymm (ha.trans h2) v.1.1.pos
+  have hb1 : (v.1.2 : ℕ) = 1 := le_antisymm (hb.trans h2) v.1.2.pos
+  exact Subtype.ext (Prod.ext (PNat.coe_injective (by rw [ha1, PNat.one_coe]))
+    (PNat.coe_injective (by rw [hb1, PNat.one_coe])))
+
+/-- The trivial 1-presentation (the N2Sigmas `n2OnePG` idiom, local copy):
+countT = countS = 1, geom = 1, qpow = 0 — value 1, regular and evaluating to 1
+at every pool. -/
+private noncomputable def negOnePG : MovesS.PolyGeom where
+  countT := 1
+  degBoundT := 0
+  degT_le := by simp
+  countS := 1
+  degBoundS := 0
+  degS_le := by simp
+  geom := 1
+  qpow := 0
+  geomDenoms := ∅
+  geom_denom_dvd := by
+    have h1 : (1 : MovesS.Qq).denom = 1 := by
+      rw [show (1 : MovesS.Qq) = algebraMap (Polynomial ℚ) MovesS.Qq 1 by simp]
+      exact RatFunc.denom_algebraMap _
+    simp [h1]
+
+private lemma negOnePG_val : negOnePG.val = 1 := by
+  simp [negOnePG, MovesS.PolyGeom.val]
+
+private lemma negOnePG_val_mem (q₀ : ℚ) : negOnePG.val ∈ MovesS.OKat q₀ := by
+  rw [negOnePG_val]; exact one_mem _
+
+private lemma negOnePG_evalAt (q₀ : ℚ) (h : negOnePG.val ∈ MovesS.OKat q₀) :
+    MovesS.evalAt q₀ ⟨negOnePG.val, h⟩ = 1 := by
+  have hval : (⟨negOnePG.val, h⟩ : MovesS.OKat q₀) = 1 :=
+    Subtype.ext (by simp [negOnePG_val])
+  rw [hval, map_one]
+
+/-- The k = 0 shape: no legs, σ0 = the forced verdict singleton {(1,1)}. -/
+private def negShape : MovesS.Shape negTable where
+  k := 0
+  eOf := Fin.elim0
+  eIcc := fun i => i.elim0
+  τOf := fun i => i.elim0
+  δOf := Fin.elim0
+  σ0 := {negV}
 
 /-- TV-H1b piece 1: the shape family — a singleton k = 0 shape (empty block
 states admit no deeper τOf), σ0 := the forced verdict multiset. -/
 noncomputable def negShapeFam : MovesS.ShapeFam negTable :=
-  sorry
+  ⟨{negShape}⟩
 
 /-- TV-H1b pin: the family is nonempty (required — W17ii is vacuously TRUE
 over an empty family, and the refutation instantiates at a member). -/
-theorem negShapeFam_ne : negShapeFam.Sh.Nonempty := by
-  sorry
+theorem negShapeFam_ne : negShapeFam.Sh.Nonempty :=
+  ⟨negShape, Finset.mem_singleton_self _⟩
+
+/-- The empty-Act per-pool package at ANY pool of the degenerate carrier
+(pools_e0 and legs_reg both feed from this; the EscapeE0 Tendsto is the
+constant map in the empty-indexed subsingleton Pi space). -/
+private noncomputable def negPoolHyp (e : ℕ) (he : e ∈ Finset.Icc 1 1) (q₀ : ℚ)
+    (hq : q₀ ∈ negMS.Pools) :
+    MovesS.PoolHyp negTable negMS negRB e (negKmatHyp e he) q₀ where
+  pool_mem := hq
+  Act := ∅
+  act_spec := fun τ => τ.elim0
+  entry_ok := fun τ => τ.elim0
+  A := 0
+  A_eval := fun τ => τ.1.elim0
+  inactive_vanish := fun τ => τ.elim0
+  e0 := by
+    refine ⟨fun i => i.1.elim0, ?_⟩
+    haveI : IsEmpty (↥(∅ : Finset (negTable.State e))) := ⟨fun x => x.1.elim0⟩
+    have heq : ∀ k : ℕ,
+        ((0 : Matrix (↥(∅ : Finset (negTable.State e)))
+            (↥(∅ : Finset (negTable.State e))) ℚ) ^ k) *ᵥ (fun _ => (1 : ℚ))
+          = (0 : ↥(∅ : Finset (negTable.State e)) → ℚ) :=
+      fun _ => Subsingleton.elim _ _
+    simp only [heq]
+    exact tendsto_const_nhds
+
+/-- The (vacuous) ledger at the empty-state carrier. -/
+private theorem negLedger : MovesS.LedgerIV negTable negMS where
+  xhd_sum := fun _ τ => τ.elim0
+  xhd_no_stray := fun _ τ => τ.elim0
+  xhd_no_orphan := fun _ τ => τ.elim0
+  d4r0 := fun _ τ => τ.elim0
+  part1 := fun _ _ τ => τ.elim0
+  rep_indep := fun _ τ => τ.elim0
+  meas_card := fun _ τ => τ.elim0
+  kstep_one := fun _ τ => τ.elim0
+  hmc := fun _ _ τ => τ.elim0
+  act_target := fun _ τ => τ.elim0
+  init_agg := fun _ τ => τ.elim0
+  init_count := fun _ τ => τ.elim0
+  ent_count_card := fun _ τ => τ.elim0
+  comp_once := fun _ τ => τ.elim0
+
+/-- The (vacuous) RS1 bundle: every β law is empty-indexed; nsNull := True
+per the A10 disclosure pattern. -/
+private noncomputable def negBundle :
+    MovesS.RS1Bundle negTable negMS negRB negDegCons negKmatHyp where
+  βmeas := fun _ _ _ τ => τ.elim0
+  β_bdd := fun _ _ _ τ => τ.elim0
+  βfull := fun _ _ _ τ => τ.elim0
+  xrb := fun _ _ _ _ τ => τ.elim0
+  recursion_meas := fun _ _ τ => τ.elim0
+  nsNull := True
+  rexact := fun _ _ _ _ τ => τ.elim0
+
+/-- sig_exact at n = 1: a verdict multiset has degree-sum 1 iff it is the
+singleton {(1,1)} (every verdict has degree 1, so the degree sum is the card;
+the carrier is a subsingleton). -/
+private lemma negSig_exact (σ : Multiset negTable.VType) :
+    σ ∈ ({({negV} : Multiset negTable.VType)} :
+        Finset (Multiset negTable.VType)) ↔
+      (σ.map fun v => ((negTable.vdeg v : ℕ))).sum = 1 := by
+  constructor
+  · intro hσ
+    rw [Finset.mem_singleton] at hσ
+    subst hσ
+    rw [Multiset.map_singleton, Multiset.sum_singleton]
+    exact negV_deg negV
+  · intro hσ
+    have hmap : σ.map (fun v => ((negTable.vdeg v : ℕ))) = σ.map (fun _ => 1) :=
+      Multiset.map_congr rfl (fun v _ => negV_deg v)
+    rw [hmap, Multiset.map_const', Multiset.sum_replicate, smul_eq_mul, mul_one] at hσ
+    obtain ⟨v, rfl⟩ := Multiset.card_eq_one.mp hσ
+    rw [negV_eq v]
+    exact Finset.mem_singleton_self _
+
+/-- THE rsh_interp computation (the recorded plausible blocker, CLEARED for
+real): at the k = 0 singleton shape the decomposition subtype of `shConv` is
+Unique (no legs: σ must equal σ0) and the leg product is empty, so
+Rsh = (WshP Ŝ₀).val · 1 = 1. -/
+private lemma negRsh_one (hdet : MovesS.DetHyp negTable negRB negKmatHyp)
+    (σ : Multiset negTable.VType)
+    (hσ : σ ∈ ({({negV} : Multiset negTable.VType)} :
+      Finset (Multiset negTable.VType))) :
+    MovesS.Rsh negTable negMS negRB negDegCons negKmatHyp hdet negShapeFam
+      (fun _ => negOnePG) σ = 1 := by
+  rw [Finset.mem_singleton] at hσ
+  subst hσ
+  unfold MovesS.Rsh
+  rw [show negShapeFam.Sh = {negShape} from rfl, Finset.sum_singleton]
+  show negOnePG.val * MovesS.shConv negTable negMS negRB negDegCons negKmatHyp
+    hdet negShape {negV} = 1
+  rw [negOnePG_val, one_mul]
+  unfold MovesS.shConv
+  haveI : Unique {g : Fin negShape.k → Multiset negTable.VType //
+      ({negV} : Multiset negTable.VType) = negShape.σ0 + ∑ i, g i} := by
+    refine ⟨⟨fun i => i.elim0, ?_⟩, fun g => Subtype.ext (funext fun i => i.elim0)⟩
+    show ({negV} : Multiset negTable.VType)
+      = ({negV} : Multiset negTable.VType) + ∑ i : Fin 0, Fin.elim0 i
+    rw [Fin.sum_univ_zero, add_zero]
+  rw [Fintype.sum_unique]
+  exact Fin.prod_univ_zero _
 
 /-- TV-H1b piece 2: THE COUNTERMODEL CHAIN — the ~30-field RS4Chain build
 over TV-H1a's carriers per the blocker inventory in the file header; shallow
 carriers per the sealed prediction: shDom := Set.univ (Hgt = ℕ, infinite),
 shWeightH ≡ 1, shEvtH := univ, visH := a singleton, shEvt = univ. -/
 noncomputable def negChain :
-    MovesS.RS4Chain negTable negMS negRB negDegCons negKmatHyp negShapeFam :=
-  sorry
+    MovesS.RS4Chain negTable negMS negRB negDegCons negKmatHyp negShapeFam where
+  L := negLedger
+  B := negBundle
+  hns := trivial
+  PrimePools := {q₀ : ℚ | ∃ p : ℕ, p.Prime ∧ q₀ = (p : ℚ)}
+  prime_sub := by
+    rintro q₀ ⟨p, hp, rfl⟩
+    exact ⟨p, hp, 1, by rw [PNat.one_coe, pow_one]⟩
+  prime_base := fun _ => Iff.rfl
+  pools_e0 := fun e he q₀ hq => ⟨negPoolHyp e he q₀ hq.2.1⟩
+  legs_reg := by
+    rintro p ⟨p', hp', hpq⟩ e he δ _
+    exact ⟨negPoolHyp e he _ ⟨p', hp', δ, by rw [hpq]⟩⟩
+  legs_read := by
+    rintro p ⟨p', hp', hpq⟩ δ _ hna _
+    exact absurd ⟨⟨p', hp', δ, by rw [hpq]⟩, fun e _ τ => τ.elim0⟩ hna
+  Sigmas := {({negV} : Multiset negTable.VType)}
+  sig_exact := negSig_exact
+  WshP := fun _ => negOnePG
+  wsh_ok := fun _ _ q₀ _ => negOnePG_val_mem q₀
+  wsh_interp := by
+    intro Ŝ hŜ q₀ hq
+    show ((MovesS.evalAt q₀ ⟨negOnePG.val, negOnePG_val_mem q₀⟩ : ℚ) : ℝ) = 1
+    rw [negOnePG_evalAt q₀ (negOnePG_val_mem q₀)]
+    exact Rat.cast_one
+  wshval_bdd := fun _ _ _ _ => ⟨zero_le_one, le_refl 1⟩
+  WshVal := fun _ _ => 1
+  shDom := fun _ => Set.univ
+  shEvtH := fun _ _ _ _ => Finset.univ
+  visH := fun _ _ _ => {0}
+  shEvt := fun _ _ _ => Finset.univ
+  shWeightH := fun _ _ _ => 1
+  shevt_grouping := by
+    intro Ŝ q₀ N
+    rw [Finset.singleton_biUnion]
+  shDom_ne := fun _ _ => ⟨0, Set.mem_univ 0⟩
+  sh_realized := by
+    intro Ŝ _ q₀ _
+    refine ⟨0, fun N _ => ?_⟩
+    haveI := negMS.boxpos q₀ N
+    exact Finset.univ_nonempty
+  shweight_card := by
+    intro Ŝ _ h _ q₀ _
+    exact ⟨0, fun N _ => by rw [one_mul, Finset.card_univ]⟩
+  wshval_card := by
+    intro Ŝ _ q₀ _
+    exact ⟨0, fun N _ => by rw [one_mul, Finset.card_univ]⟩
+  Rval := fun _ _ => 1
+  r_bdd := fun _ _ _ => ⟨zero_le_one, le_refl 1⟩
+  decidedTotal := fun _ => 1
+  x3_total := fun _ _ => rfl
+  rs1_equates := fun p _ => by rw [Finset.sum_singleton]
+  rsh_interp := by
+    intro σ hσ p hp hdet
+    have hR := negRsh_one hdet σ hσ
+    have hok : MovesS.Rsh negTable negMS negRB negDegCons negKmatHyp hdet
+        negShapeFam (fun _ => negOnePG) σ ∈ MovesS.OKat p := by
+      rw [hR]; exact one_mem _
+    refine ⟨hok, ?_⟩
+    have hsub : (⟨MovesS.Rsh negTable negMS negRB negDegCons negKmatHyp hdet
+        negShapeFam (fun _ => negOnePG) σ, hok⟩ : MovesS.OKat p) = 1 :=
+      Subtype.ext (by rw [hR]; rfl)
+    rw [hsub, map_one]
+    exact Rat.cast_one
 
 /-- TV-H1b pin: the countermodel's shDom is INFINITE at every family member
 (the clause-(ii) refutation's first leg). -/
 theorem negChain_shDom_infinite :
-    ∀ Ŝ ∈ negShapeFam.Sh, (negChain.shDom Ŝ).Infinite := by
-  sorry
+    ∀ Ŝ ∈ negShapeFam.Sh, (negChain.shDom Ŝ).Infinite :=
+  fun _ _ => Set.infinite_univ
 
 /-- TV-H1b pin: the countermodel's shallow weight is CONSTANT 1 (the
 clause-(ii) refutation's second leg: constant 1 over an infinite domain has
 no HasSum at any value). -/
 theorem negChain_weight_one :
     ∀ (Ŝ : MovesS.Shape negTable) (h : negMS.Hgt) (q₀ : ℚ),
-      negChain.shWeightH Ŝ h q₀ = 1 := by
-  sorry
+      negChain.shWeightH Ŝ h q₀ = 1 :=
+  fun _ _ _ => rfl
 
 /-- TV-H1b DELIVERABLE (the sealed prediction): clause (ii) of the banked
 W17ii FAILS at the countermodel chain — `¬ negChain.wsh17_pin`.  Proof
@@ -82,6 +327,22 @@ negChain_weight_one, impossible over the infinite index negChain_shDom_infinite
 (a constant nonzero function on an infinite type is not summable).
 QUARANTINE RULE binding at fill time — see the file header. -/
 theorem w17ii_false : ¬ negChain.wsh17_pin := by
-  sorry
+  intro hpin
+  have h2 : (2 : ℚ) ∈ negMS.Pools :=
+    ⟨2, Nat.prime_two, 1, by rw [PNat.one_coe, pow_one]; norm_num⟩
+  have hmem : negShape ∈ negShapeFam.Sh := Finset.mem_singleton_self _
+  have hsum := (hpin negShape hmem 2 h2).2
+  have hfun : (fun h : (negChain.shDom negShape) =>
+      negChain.shWeightH negShape (↑h) 2) = fun _ => (1 : ℝ) :=
+    funext fun h => negChain_weight_one negShape (↑h) 2
+  rw [hfun] at hsum
+  haveI : Infinite (negChain.shDom negShape) :=
+    Set.infinite_coe_iff.mpr (negChain_shDom_infinite negShape hmem)
+  haveI : Filter.NeBot (Filter.cofinite : Filter (negChain.shDom negShape)) :=
+    Filter.cofinite_neBot
+  have hzero := hsum.summable.tendsto_cofinite_zero
+  have hone : Filter.Tendsto (fun _ : (negChain.shDom negShape) => (1 : ℝ))
+      Filter.cofinite (nhds 1) := tendsto_const_nhds
+  exact one_ne_zero (tendsto_nhds_unique hone hzero)
 
 end LeanUrat.MovesV.W17iiNeg
