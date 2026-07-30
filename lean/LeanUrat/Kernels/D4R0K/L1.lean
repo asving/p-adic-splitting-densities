@@ -191,7 +191,16 @@ e·⊤ + jh = ⊤ (e ≥ 1 from `e_pos`), and the inf of the constant-⊤ family
 is ⊤. -/
 theorem wt_realZero (p : ℕ) (S : ℕ → StageData) (r : ℕ) :
     wt p S r (realZero S r) = (⊤ : ℕ∞) := by
-  sorry
+  induction r with
+  | zero => simp [realZero, wt, wtBase]
+  | succ r ih =>
+    rw [wt_succ]
+    refine le_antisymm le_top (Finset.le_inf fun j _ => ?_)
+    have hj : slotWt p S r (realZero S (r + 1)) j = ⊤ := by
+      change ((S r).e : ℕ∞) * wt p S r (realZero S r)
+          + (((j : ℕ) * (S r).h : ℕ) : ℕ∞) = ⊤
+      rw [ih, ENat.mul_top (by exact_mod_cast (S r).e_pos.ne'), top_add]
+    rw [hj]
 
 /-- KB4 — weight of a slot summand: w(t_k·Φ^j) = e·w(t_k) + j·h, the
 parent-scale weight law of the development (blueprint §4 KB4; the note's
@@ -206,7 +215,25 @@ theorem wt_slotSummand (p : ℕ) (S : ℕ → StageData) (r : ℕ)
     (j : Fin ((S r).e * (S r).g)) (tk : RealCarrier S r) :
     wt p S (r + 1) (slotSummand S r j tk)
       = ((S r).e : ℕ∞) * wt p S r tk + (((j : ℕ) * (S r).h : ℕ) : ℕ∞) := by
-  sorry
+  rw [wt_succ]
+  have hj : slotWt p S r (slotSummand S r j tk) j
+      = ((S r).e : ℕ∞) * wt p S r tk + (((j : ℕ) * (S r).h : ℕ) : ℕ∞) := by
+    change ((S r).e : ℕ∞) * wt p S r (slotSummand S r j tk j)
+        + (((j : ℕ) * (S r).h : ℕ) : ℕ∞) = _
+    rw [show slotSummand S r j tk j = tk from if_pos rfl]
+  refine le_antisymm ?_ (Finset.le_inf fun i _ => ?_)
+  · rw [← hj]
+    exact Finset.inf_le (Finset.mem_univ j)
+  · by_cases hij : i = j
+    · subst hij
+      rw [hj]
+    · have hi : slotWt p S r (slotSummand S r j tk) i = ⊤ := by
+        change ((S r).e : ℕ∞) * wt p S r (slotSummand S r j tk i)
+            + (((i : ℕ) * (S r).h : ℕ) : ℕ∞) = ⊤
+        rw [show slotSummand S r j tk i = realZero S r from if_neg hij, wt_realZero,
+          ENat.mul_top (by exact_mod_cast (S r).e_pos.ne'), top_add]
+      rw [hi]
+      exact le_top
 
 /-! ## KB5 — leading-form nonvanishing / weight exactness + read recovery
 (pre-approved split KB5a/KB5b; REV 2, F1: the TRUE mechanism is positional —
@@ -242,7 +269,21 @@ theorem slotAssemble_designated (S : ℕ → StageData) (r W : ℕ)
     (d : Fin ((S r).g) → RealCarrier S r) (k : Fin ((S r).g))
     (hlt : slot (S r) W (k : ℕ) < (S r).e * (S r).g) :
     slotAssemble S r W d ⟨slot (S r) W (k : ℕ), hlt⟩ = d k := by
-  sorry
+  have he : 0 < (S r).e := (S r).e_pos
+  have hsub : slot (S r) W (k : ℕ) - j0 (S r) W = (S r).e * (k : ℕ) := by
+    simp [slot]
+  have hguard : j0 (S r) W ≤ slot (S r) W (k : ℕ) ∧
+      (S r).e ∣ (slot (S r) W (k : ℕ) - j0 (S r) W) ∧
+      (slot (S r) W (k : ℕ) - j0 (S r) W) / (S r).e < (S r).g := by
+    refine ⟨Nat.le_add_right _ _, ?_, ?_⟩
+    · rw [hsub]; exact dvd_mul_right _ _
+    · rw [hsub, Nat.mul_div_cancel_left _ he]; exact k.isLt
+  change dite _ (fun hk => d ⟨_, hk.2.2⟩) _ = d k
+  rw [dif_pos hguard]
+  congr 1
+  apply Fin.ext
+  change (slot (S r) W (k : ℕ) - j0 (S r) W) / (S r).e = (k : ℕ)
+  rw [hsub, Nat.mul_div_cancel_left _ he]
 
 /-- KB5 (mechanism, support): the assembly vanishes off the designated slots
 (the transcribable residue of KB8a's degree invariant, resolution R1).
@@ -252,7 +293,15 @@ theorem slotAssemble_support (S : ℕ → StageData) (r W : ℕ)
     (d : Fin ((S r).g) → RealCarrier S r) (j : Fin ((S r).e * (S r).g))
     (hj : ∀ k : Fin ((S r).g), (j : ℕ) ≠ slot (S r) W (k : ℕ)) :
     slotAssemble S r W d j = realZero S r := by
-  sorry
+  have hne : ¬(j0 (S r) W ≤ (j : ℕ) ∧ (S r).e ∣ ((j : ℕ) - j0 (S r) W) ∧
+      ((j : ℕ) - j0 (S r) W) / (S r).e < (S r).g) := by
+    rintro ⟨h1, h2, h3⟩
+    refine hj ⟨((j : ℕ) - j0 (S r) W) / (S r).e, h3⟩ ?_
+    have hc := Nat.mul_div_cancel' h2
+    change (j : ℕ) = j0 (S r) W + (S r).e * (((j : ℕ) - j0 (S r) W) / (S r).e)
+    omega
+  change dite _ (fun hk => d ⟨_, hk.2.2⟩) _ = realZero S r
+  rw [dif_neg hne]
 
 /-- KB5a — min ≥ W (the lower half of weight exactness): if every prescribed
 digit weighs at least its required parent-parent-scale weight u_k, the
@@ -266,7 +315,42 @@ theorem slotAssemble_wt_ge (p : ℕ) (S : ℕ → StageData) (r : ℕ) {W : ℕ}
     (hW : (S r).thr < W) (d : Fin ((S r).g) → RealCarrier S r)
     (hd : ∀ k : Fin ((S r).g), ((uk (S r) W (k : ℕ) : ℕ) : ℕ∞) ≤ wt p S r (d k)) :
     (W : ℕ∞) ≤ wt p S (r + 1) (slotAssemble S r W d) := by
-  sorry
+  have hfin : ∀ k : Fin ((S r).g), slot (S r) W (k : ℕ) < (S r).e * (S r).g := by
+    intro k
+    have h1 := slot_le (S r) W k.isLt
+    have h2 : 0 < (S r).e * (S r).g := Nat.mul_pos (S r).e_pos (S r).g_pos
+    omega
+  rw [wt_succ]
+  refine Finset.le_inf fun j _ => ?_
+  by_cases hdes : ∃ k : Fin ((S r).g), (j : ℕ) = slot (S r) W (k : ℕ)
+  · obtain ⟨k, hk⟩ := hdes
+    have hjk : j = ⟨slot (S r) W (k : ℕ), hfin k⟩ := Fin.ext hk
+    subst hjk
+    have hval : slotAssemble S r W d ⟨slot (S r) W (k : ℕ), hfin k⟩ = d k :=
+      slotAssemble_designated S r W d k _
+    have hle : slot (S r) W (k : ℕ) * (S r).h ≤ W := (slot_mul_h_lt (S r) hW k.isLt).le
+    have hspec := uk_spec (S r) W (k : ℕ) hle
+    calc (W : ℕ∞)
+        = ((S r).e : ℕ∞) * ((uk (S r) W (k : ℕ) : ℕ) : ℕ∞)
+          + ((slot (S r) W (k : ℕ) * (S r).h : ℕ) : ℕ∞) := by
+          exact_mod_cast hspec.symm
+      _ ≤ ((S r).e : ℕ∞) * wt p S r (d k)
+          + ((slot (S r) W (k : ℕ) * (S r).h : ℕ) : ℕ∞) :=
+          add_le_add (mul_le_mul_right (hd k) _) le_rfl
+      _ = slotWt p S r (slotAssemble S r W d)
+            ⟨slot (S r) W (k : ℕ), hfin k⟩ := by
+          change _ = ((S r).e : ℕ∞) * wt p S r
+              (slotAssemble S r W d ⟨slot (S r) W (k : ℕ), hfin k⟩)
+            + ((slot (S r) W (k : ℕ) * (S r).h : ℕ) : ℕ∞)
+          rw [hval]
+  · push_neg at hdes
+    have hz := slotAssemble_support S r W d j hdes
+    have htop : slotWt p S r (slotAssemble S r W d) j = ⊤ := by
+      change ((S r).e : ℕ∞) * wt p S r (slotAssemble S r W d j)
+          + (((j : ℕ) * (S r).h : ℕ) : ℕ∞) = ⊤
+      rw [hz, wt_realZero, ENat.mul_top (by exact_mod_cast (S r).e_pos.ne'), top_add]
+    rw [htop]
+    exact le_top
 
 /-- KB5b — read = τ ∧ weight = W exactly (the leading-form nonvanishing,
 REV 2 F1 mechanism): digits of exact weight u_k and prescribed reads τ_k at
@@ -293,7 +377,125 @@ theorem slotAssemble_total (p : ℕ) (S : ℕ → StageData) (r : ℕ) {W : ℕ}
     (hτ : ∃ k, τ k ≠ resZero p S r) :
     wt p S (r + 1) (slotAssemble S r W d) = (W : ℕ∞) ∧
       digRead p S (r + 1) (slotAssemble S r W d) = τ := by
-  sorry
+  have he : 0 < (S r).e := (S r).e_pos
+  have heE : ((S r).e : ℕ∞) ≠ 0 := by exact_mod_cast he.ne'
+  have hfin : ∀ k : Fin ((S r).g), slot (S r) W (k : ℕ) < (S r).e * (S r).g := by
+    intro k
+    have h1 := slot_le (S r) W k.isLt
+    have h2 : 0 < (S r).e * (S r).g := Nat.mul_pos (S r).e_pos (S r).g_pos
+    omega
+  have hdes : ∀ k : Fin ((S r).g),
+      slotAssemble S r W d ⟨slot (S r) W (k : ℕ), hfin k⟩ = d k :=
+    fun k => slotAssemble_designated S r W d k (hfin k)
+  have hle : ∀ k : Fin ((S r).g), slot (S r) W (k : ℕ) * (S r).h ≤ W :=
+    fun k => (slot_mul_h_lt (S r) hW k.isLt).le
+  -- per-slot weight at a designated slot with nonzero class: exactly W
+  have hswt_des : ∀ k : Fin ((S r).g), τ k ≠ resZero p S r →
+      slotWt p S r (slotAssemble S r W d) ⟨slot (S r) W (k : ℕ), hfin k⟩ = (W : ℕ∞) := by
+    intro k hk
+    change ((S r).e : ℕ∞) * wt p S r
+        (slotAssemble S r W d ⟨slot (S r) W (k : ℕ), hfin k⟩)
+      + ((slot (S r) W (k : ℕ) * (S r).h : ℕ) : ℕ∞) = (W : ℕ∞)
+    rw [hdes k, hwt k hk]
+    exact_mod_cast uk_spec (S r) W (k : ℕ) (hle k)
+  -- per-slot weight at a designated slot with zero class: ⊤
+  have hswt_zero : ∀ k : Fin ((S r).g), τ k = resZero p S r →
+      slotWt p S r (slotAssemble S r W d) ⟨slot (S r) W (k : ℕ), hfin k⟩ = ⊤ := by
+    intro k hk
+    change ((S r).e : ℕ∞) * wt p S r
+        (slotAssemble S r W d ⟨slot (S r) W (k : ℕ), hfin k⟩)
+      + ((slot (S r) W (k : ℕ) * (S r).h : ℕ) : ℕ∞) = ⊤
+    rw [hdes k, hz k hk, wt_realZero, ENat.mul_top heE, top_add]
+  -- per-slot weight off the designated slots: ⊤
+  have hswt_off : ∀ j : Fin ((S r).e * (S r).g),
+      (∀ k : Fin ((S r).g), (j : ℕ) ≠ slot (S r) W (k : ℕ)) →
+      slotWt p S r (slotAssemble S r W d) j = ⊤ := by
+    intro j hj
+    change ((S r).e : ℕ∞) * wt p S r (slotAssemble S r W d j)
+        + (((j : ℕ) * (S r).h : ℕ) : ℕ∞) = ⊤
+    rw [slotAssemble_support S r W d j hj, wt_realZero, ENat.mul_top heE, top_add]
+  obtain ⟨k₀, hk₀⟩ := hτ
+  -- the weight conjunct
+  have hwt_t : wt p S (r + 1) (slotAssemble S r W d) = (W : ℕ∞) := by
+    refine le_antisymm ?_ ?_
+    · rw [wt_succ]
+      refine le_trans
+        (Finset.inf_le (Finset.mem_univ ⟨slot (S r) W (k₀ : ℕ), hfin k₀⟩)) ?_
+      rw [hswt_des k₀ hk₀]
+    · refine slotAssemble_wt_ge p S r hW d fun k => ?_
+      by_cases hk : τ k = resZero p S r
+      · rw [hz k hk, wt_realZero]
+        exact le_top
+      · rw [hwt k hk]
+  -- the minimizing-slot characterization
+  have hmem : ∀ j : Fin ((S r).e * (S r).g),
+      j ∈ minSlots p S r (slotAssemble S r W d) ↔
+        ∃ k : Fin ((S r).g), (j : ℕ) = slot (S r) W (k : ℕ) ∧ τ k ≠ resZero p S r := by
+    intro j
+    rw [minSlots, Finset.mem_filter]
+    simp only [Finset.mem_univ, true_and]
+    rw [hwt_t]
+    constructor
+    · intro hj
+      by_cases hdes' : ∃ k : Fin ((S r).g), (j : ℕ) = slot (S r) W (k : ℕ)
+      · obtain ⟨k, hk⟩ := hdes'
+        refine ⟨k, hk, fun hzk => ?_⟩
+        rw [Fin.ext hk (b := ⟨slot (S r) W (k : ℕ), hfin k⟩), hswt_zero k hzk] at hj
+        exact ENat.top_ne_coe W hj
+      · push_neg at hdes'
+        rw [hswt_off j hdes'] at hj
+        exact absurd hj (ENat.top_ne_coe W)
+    · rintro ⟨k, hk, hkne⟩
+      rw [Fin.ext hk (b := ⟨slot (S r) W (k : ℕ), hfin k⟩)]
+      exact hswt_des k hkne
+  -- the reader's slot class is j₀
+  have hne : (minSlots p S r (slotAssemble S r W d)).Nonempty :=
+    ⟨⟨slot (S r) W (k₀ : ℕ), hfin k₀⟩, (hmem _).mpr ⟨k₀, rfl, hk₀⟩⟩
+  have hj0read : j0read p S r (slotAssemble S r W d) = j0 (S r) W := by
+    rw [j0read, dif_pos hne]
+    obtain ⟨k, hk, -⟩ :=
+      (hmem _).mp ((minSlots p S r (slotAssemble S r W d)).min'_mem hne)
+    rw [hk]
+    change (j0 (S r) W + (S r).e * (k : ℕ)) % (S r).e = j0 (S r) W
+    rw [Nat.add_mul_mod_self_left]
+    exact Nat.mod_eq_of_lt (j0_lt (S r) W)
+  -- slot positions are separated: k ↦ j₀ + e·k is injective (REV 2 F1)
+  have hslot_inj : ∀ k k' : Fin ((S r).g),
+      slot (S r) W (k : ℕ) = slot (S r) W (k' : ℕ) → k = k' := by
+    intro k k' hkk
+    have : (S r).e * (k : ℕ) = (S r).e * (k' : ℕ) := by
+      have h1 : j0 (S r) W + (S r).e * (k : ℕ) = j0 (S r) W + (S r).e * (k' : ℕ) := hkk
+      omega
+    exact Fin.ext (Nat.eq_of_mul_eq_mul_left he this)
+  -- the read conjunct
+  have hread : digRead p S (r + 1) (slotAssemble S r W d) = τ := by
+    funext k
+    have hdig : digRead p S (r + 1) (slotAssemble S r W d) k =
+        if hj : j0read p S r (slotAssemble S r W d) + (S r).e * (k : ℕ)
+            < (S r).e * (S r).g then
+          if (⟨j0read p S r (slotAssemble S r W d) + (S r).e * (k : ℕ), hj⟩ :
+              Fin ((S r).e * (S r).g)) ∈ minSlots p S r (slotAssemble S r W d) then
+            digRead p S r (slotAssemble S r W d
+              ⟨j0read p S r (slotAssemble S r W d) + (S r).e * (k : ℕ), hj⟩)
+          else resZero p S r
+        else resZero p S r := rfl
+    rw [hdig]
+    simp only [hj0read]
+    have hlt' : j0 (S r) W + (S r).e * (k : ℕ) < (S r).e * (S r).g := hfin k
+    rw [dif_pos hlt']
+    by_cases hk : τ k = resZero p S r
+    · rw [if_neg]
+      · exact hk.symm
+      · rw [hmem]
+        rintro ⟨k', hk', hk'ne⟩
+        have hkk : k = k' := hslot_inj k k' hk'
+        exact hk'ne (hkk ▸ hk)
+    · rw [if_pos ((hmem _).mpr ⟨k, rfl, hk⟩)]
+      have hval : slotAssemble S r W d ⟨j0 (S r) W + (S r).e * (k : ℕ), hlt'⟩ = d k :=
+        hdes k
+      rw [hval]
+      exact hrd k hk
+  exact ⟨hwt_t, hread⟩
 
 /-! ## KB6 — the class map (over the KB1b `ExtCarrier` layer)
 Per resolution R4 (the script's m = 0 CONVENTION), the class map τ ↦ P is the
@@ -313,13 +515,37 @@ noncomputable def pow (a : E.Carrier) : ℕ → E.Carrier
   | 0 => E.one
   | n + 1 => E.mul (pow a n) a
 
+/-- Prover helper (KB6): the coefficient formula for a `Fin`-indexed
+`Σ C(f i)·X^i` sum — serves `ofPoly_toPoly` and the ψpoly facts below. -/
+private theorem sum_C_mul_X_pow_coeff {n : ℕ} (f : Fin n → B) (m : ℕ) :
+    (∑ i : Fin n, C (f i) * X ^ (i : ℕ)).coeff m
+      = if h : m < n then f ⟨m, h⟩ else 0 := by
+  rw [Polynomial.finsetSum_coeff]
+  simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow]
+  by_cases h : m < n
+  · rw [dif_pos h, Finset.sum_eq_single (⟨m, h⟩ : Fin n)]
+    · simp
+    · intro i _ hi
+      have hmi : m ≠ (i : ℕ) := fun hmi => hi (Fin.ext (by simp [← hmi]))
+      simp [hmi]
+    · simp
+  · rw [dif_neg h]
+    refine Finset.sum_eq_zero fun i _ => ?_
+    have hmi : m ≠ (i : ℕ) := fun hmi => h (hmi ▸ i.isLt)
+    simp [hmi]
+
 /-- KB6 (representative degree). The tuple's polynomial transcription has
 degree < g — half of representative uniqueness.
 deps: KB1b.  Sketch: `Polynomial.degree_sum_le` + `degree_C_mul_X_pow_le`
 over i < g. -/
 theorem toPoly_degree_lt (v : E.Carrier) :
     (E.toPoly v).degree < (E.g : WithBot ℕ) := by
-  sorry
+  rw [toPoly]
+  refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
+  rw [Finset.sup_lt_iff (by exact_mod_cast WithBot.bot_lt_coe E.g)]
+  intro i _
+  exact lt_of_le_of_lt (Polynomial.degree_C_mul_X_pow_le _ _)
+    (by exact_mod_cast i.isLt)
 
 /-- KB6 (representative uniqueness, round-trip form). Reading the tuple's own
 polynomial back yields the tuple: the deg < g representative determines and is
@@ -327,7 +553,9 @@ determined by its coefficient tuple.
 deps: KB1b.  Sketch: `coeff` of a sum of monomials of pairwise-distinct
 degrees (`Polynomial.coeff_C_mul`, `coeff_X_pow`, `Finset.sum_eq_single`). -/
 theorem ofPoly_toPoly (v : E.Carrier) : E.ofPoly (E.toPoly v) = v := by
-  sorry
+  funext i
+  change (E.toPoly v).coeff (i : ℕ) = v i
+  rw [toPoly, sum_C_mul_X_pow_coeff, dif_pos i.isLt]
 
 /-- KB6 (representative uniqueness, injective form) — assembly from
 `ofPoly_toPoly`; no independent content. -/
@@ -337,7 +565,56 @@ theorem toPoly_injective : Function.Injective E.toPoly := fun v w h => by
 /-- KB6 (z̄ ≠ 0). deps: KB1b.  Sketch: g ≥ 2 branch — the tuple has a 1 at
 index 1; g = 1 branch — z̄ = −ψ₀ ≠ 0 by `ψ_const_ne`. -/
 theorem zbar_ne_zero : E.zbar ≠ E.zero := by
-  sorry
+  intro h
+  by_cases hg : E.g = 1
+  · have h0 := congrFun h ⟨0, E.g_pos⟩
+    rw [zbar, if_pos hg] at h0
+    exact E.ψ_const_ne (neg_eq_zero.mp h0)
+  · have h2 : 1 < E.g := lt_of_le_of_ne E.g_pos (Ne.symm hg)
+    have h1 := congrFun h ⟨1, h2⟩
+    rw [zbar, if_neg hg] at h1
+    exact one_ne_zero h1
+
+/-- Prover helper (KB6): ψpoly's degree is at most g. -/
+private theorem ψpoly_degree_le : E.ψpoly.degree ≤ (E.g : WithBot ℕ) := by
+  rw [ψpoly]
+  refine le_trans (Polynomial.degree_sum_le _ _) ?_
+  rw [Finset.sup_le_iff]
+  intro i _
+  exact le_trans (Polynomial.degree_C_mul_X_pow_le _ _)
+    (by exact_mod_cast Nat.lt_succ_iff.mp i.isLt)
+
+/-- Prover helper (KB6): ψpoly's top coefficient is 1 (the `ψ_monic` field). -/
+private theorem ψpoly_coeff_g : E.ψpoly.coeff E.g = 1 := by
+  rw [ψpoly, sum_C_mul_X_pow_coeff, dif_pos (Nat.lt_succ_self E.g)]
+  exact E.ψ_monic
+
+/-- Prover helper (KB6): ψpoly is monic. -/
+private theorem ψpoly_monic : E.ψpoly.Monic :=
+  Polynomial.monic_of_natDegree_le_of_coeff_eq_one E.g
+    (Polynomial.natDegree_le_iff_degree_le.mpr E.ψpoly_degree_le) E.ψpoly_coeff_g
+
+/-- Prover helper (KB6): ψpoly has degree exactly g. -/
+private theorem ψpoly_degree : E.ψpoly.degree = (E.g : WithBot ℕ) := by
+  refine le_antisymm E.ψpoly_degree_le ?_
+  refine Polynomial.le_degree_of_ne_zero ?_
+  rw [E.ψpoly_coeff_g]
+  exact one_ne_zero
+
+/-- Prover helper (KB6): reducing a `C c·ψ + 1` combination mod ψ yields 1. -/
+private theorem mod_C_mul_ψpoly_add_one (c : B) :
+    (C c * E.ψpoly + 1) %ₘ E.ψpoly = 1 := by
+  rw [Polynomial.add_modByMonic, Polynomial.mul_self_modByMonic E.ψpoly_monic, zero_add]
+  refine (Polynomial.modByMonic_eq_self_iff E.ψpoly_monic).mpr ?_
+  rw [Polynomial.degree_one, E.ψpoly_degree]
+  exact_mod_cast E.g_pos
+
+/-- Prover helper (KB6): `ofPoly` reads the constant polynomial 1 to the
+tuple unit. -/
+private theorem ofPoly_one : E.ofPoly 1 = E.one := by
+  funext i
+  change (1 : Polynomial B).coeff (i : ℕ) = if (i : ℕ) = 0 then 1 else 0
+  rw [Polynomial.coeff_one]
 
 /-- KB6 (z̄ invertible since ψ(0) ≠ 0 — the blueprint's sketch clause).
 deps: KB1b.  Sketch: in B[z]/(ψ) the element z̄ is a unit iff z ∤ ψ, i.e.
@@ -345,7 +622,126 @@ deps: KB1b.  Sketch: in B[z]/(ψ) the element z̄ is a unit iff z ∤ ψ, i.e.
 `carrierField` route, or directly: gcd(z, ψ) = 1 gives a Bézout inverse whose
 deg < g representative is the witness). -/
 theorem zbar_isUnit : ∃ w : E.Carrier, E.mul E.zbar w = E.one := by
-  sorry
+  by_cases hg : E.g = 1
+  · -- z̄ = −ψ₀ is a nonzero constant; its inverse tuple is the witness
+    refine ⟨fun _ => (-(E.ψ 0))⁻¹, ?_⟩
+    have hz : E.toPoly E.zbar = C (-(E.ψ 0)) := by
+      rw [toPoly, Finset.sum_eq_single (⟨0, E.g_pos⟩ : Fin E.g)]
+      · rw [zbar, if_pos hg]
+        simp
+      · intro i _ hi
+        exfalso
+        refine hi (Fin.ext ?_)
+        have := i.isLt
+        omega
+      · intro hmem
+        exact absurd (Finset.mem_univ _) hmem
+    have hw : E.toPoly (fun _ => (-(E.ψ 0))⁻¹) = C ((-(E.ψ 0))⁻¹) := by
+      rw [toPoly, Finset.sum_eq_single (⟨0, E.g_pos⟩ : Fin E.g)]
+      · simp
+      · intro i _ hi
+        exfalso
+        refine hi (Fin.ext ?_)
+        have := i.isLt
+        omega
+      · intro hmem
+        exact absurd (Finset.mem_univ _) hmem
+    have hne : -(E.ψ 0) ≠ 0 := neg_ne_zero.mpr E.ψ_const_ne
+    have h1 : (1 : Polynomial B) %ₘ E.ψpoly = 1 := by
+      have := E.mod_C_mul_ψpoly_add_one 0
+      simpa using this
+    change E.ofPoly ((E.toPoly E.zbar * E.toPoly fun _ => (-(E.ψ 0))⁻¹) %ₘ E.ψpoly)
+        = E.one
+    rw [hz, hw, ← Polynomial.C_mul, mul_inv_cancel₀ hne, Polynomial.C_1, h1]
+    exact E.ofPoly_one
+  · -- g ≥ 2: z̄ = X and the Bézout inverse is −ψ₀⁻¹·(ψ − ψ₀)/X
+    have hg2 : 2 ≤ E.g := by
+      have := E.g_pos
+      omega
+    refine ⟨fun i => -(E.ψ 0)⁻¹ * E.ψ i.succ, ?_⟩
+    have hz : E.toPoly E.zbar = X := by
+      rw [toPoly, Finset.sum_eq_single (⟨1, by omega⟩ : Fin E.g)]
+      · rw [zbar, if_neg hg]
+        simp
+      · intro i _ hi
+        rw [zbar, if_neg hg]
+        have hi1 : (i : ℕ) ≠ 1 := fun h => hi (Fin.ext (by simp [h]))
+        simp [hi1]
+      · intro hmem
+        exact absurd (Finset.mem_univ _) hmem
+    have hkey : C (-(E.ψ 0)⁻¹) * (C (E.ψ 0) * X ^ ((0 : Fin (E.g + 1)) : ℕ))
+        = (-1 : Polynomial B) := by
+      rw [show ((0 : Fin (E.g + 1)) : ℕ) = 0 from rfl, pow_zero, mul_one,
+        ← Polynomial.C_mul, neg_mul, inv_mul_cancel₀ E.ψ_const_ne]
+      simp
+    have hw : X * E.toPoly (fun i => -(E.ψ 0)⁻¹ * E.ψ i.succ)
+        = C (-(E.ψ 0)⁻¹) * E.ψpoly + 1 := by
+      rw [toPoly, ψpoly, Fin.sum_univ_succ, Finset.mul_sum, mul_add, Finset.mul_sum]
+      have hterm : ∀ i : Fin E.g, X * (C (-(E.ψ 0)⁻¹ * E.ψ i.succ) * X ^ (i : ℕ))
+          = C (-(E.ψ 0)⁻¹) * (C (E.ψ i.succ) * X ^ ((i.succ : Fin (E.g + 1)) : ℕ)) := by
+        intro i
+        rw [Fin.val_succ, Polynomial.C_mul, pow_succ]
+        ring
+      simp only [hterm]
+      rw [hkey]
+      ring
+    change E.ofPoly ((E.toPoly E.zbar * E.toPoly fun i => -(E.ψ 0)⁻¹ * E.ψ i.succ)
+        %ₘ E.ψpoly) = E.one
+    rw [hz, hw, E.mod_C_mul_ψpoly_add_one]
+    exact E.ofPoly_one
+
+/-- Prover helper (KB6): `toPoly` reflects zero — the injective form of the
+round trip specialized at 0. -/
+private theorem toPoly_eq_zero_iff (v : E.Carrier) :
+    E.toPoly v = 0 ↔ v = E.zero := by
+  constructor
+  · intro h
+    have hv := E.ofPoly_toPoly v
+    rw [h] at hv
+    rw [← hv]
+    funext i
+    change (0 : Polynomial B).coeff (i : ℕ) = 0
+    simp
+  · intro h
+    rw [h, toPoly]
+    refine Finset.sum_eq_zero fun i _ => ?_
+    change C ((0 : B)) * X ^ (i : ℕ) = 0
+    simp
+
+/-- Prover helper (KB6): the tuple carrier has no zero divisors — the direct
+route through ψ irreducible ⟹ prime in B[X] (avoiding the sorried
+`carrierField` placeholder of Tower.lean): a vanishing product means
+ψ ∣ toPoly a · toPoly b, so ψ (degree g) divides a factor of degree < g,
+forcing that factor — hence its tuple — to vanish. -/
+private theorem carrier_mul_ne_zero (x y : E.Carrier) (hx : x ≠ E.zero)
+    (hy : y ≠ E.zero) : E.mul x y ≠ E.zero := by
+  intro h
+  -- the reduced remainder vanishes identically
+  have hmod : (E.toPoly x * E.toPoly y) %ₘ E.ψpoly = 0 := by
+    have hdeg : ((E.toPoly x * E.toPoly y) %ₘ E.ψpoly).degree < (E.g : WithBot ℕ) := by
+      rw [← E.ψpoly_degree]
+      exact Polynomial.degree_modByMonic_lt _ E.ψpoly_monic
+    ext n
+    rw [Polynomial.coeff_zero]
+    by_cases hn : n < E.g
+    · exact congrFun h ⟨n, hn⟩
+    · exact Polynomial.coeff_eq_zero_of_degree_lt
+        (lt_of_lt_of_le hdeg (by exact_mod_cast Nat.le_of_not_lt hn))
+  have hdvd : E.ψpoly ∣ E.toPoly x * E.toPoly y :=
+    (Polynomial.modByMonic_eq_zero_iff_dvd E.ψpoly_monic).mp hmod
+  have hprime : Prime E.ψpoly :=
+    (UniqueFactorizationMonoid.irreducible_iff_prime.mp E.ψ_irred)
+  have hfactor : (E.ψpoly ∣ E.toPoly x) ∨ (E.ψpoly ∣ E.toPoly y) :=
+    hprime.2.2 _ _ hdvd
+  have hcontra : ∀ v : E.Carrier, v ≠ E.zero → ¬ E.ψpoly ∣ E.toPoly v := by
+    intro v hv hdv
+    have hvne : E.toPoly v ≠ 0 := fun h0 => hv ((E.toPoly_eq_zero_iff v).mp h0)
+    have := Polynomial.degree_le_of_dvd hdv hvne
+    rw [E.ψpoly_degree] at this
+    exact absurd (lt_of_le_of_lt this (E.toPoly_degree_lt v)) (lt_irrefl _)
+  rcases hfactor with hf | hf
+  · exact hcontra x hx hf
+  · exact hcontra y hy hf
 
 /-- KB6 (anchored targets are in F′^× — the coverage clause for the a > 0
 boundary cases of the enumeration): z̄^a·u ≠ 0 for every unit-side u ≠ 0.
@@ -355,7 +751,15 @@ Together with resolution R4 (class map = identity) this closes the
 blueprint's "bijectivity onto F′^× including anchored τ = z̄^a·u". -/
 theorem anchored_ne_zero (a : ℕ) (u : E.Carrier) (hu : u ≠ E.zero) :
     E.mul (E.pow E.zbar a) u ≠ E.zero := by
-  sorry
+  have hp : ∀ n : ℕ, E.pow E.zbar n ≠ E.zero := by
+    intro n
+    induction n with
+    | zero =>
+      intro h
+      have h0 := congrFun h ⟨0, E.g_pos⟩
+      exact one_ne_zero h0
+    | succ n ih => exact E.carrier_mul_ne_zero _ _ ih E.zbar_ne_zero
+  exact E.carrier_mul_ne_zero _ _ (hp a) hu
 
 end ExtCarrier
 
@@ -397,7 +801,18 @@ slot holds `offP r _ resZero = realZero` by IH, off-slots are `realZero`
 outright; funext. -/
 theorem offP_zero_class (p : ℕ) (S : ℕ → StageData) (r W : ℕ) :
     offP p S r W (resZero p S r) = realZero S r := by
-  sorry
+  induction r generalizing W with
+  | zero =>
+    change (ZMod.val (0 : ZMod p) : ℤ) * (p : ℤ) ^ W = 0
+    rw [(ZMod.val_eq_zero (0 : ZMod p)).mpr rfl]
+    simp
+  | succ r ih =>
+    funext j
+    change slotAssemble S r W (fun k => offP p S r (uk (S r) W (k : ℕ)) (resZero p S r)) j
+        = realZero S r
+    simp only [ih]
+    unfold slotAssemble
+    split <;> rfl
 
 /-- KB8a (slots in range — KB2's `slot_le` in the Fin-usable strict form;
 the designated positions exist in the coefficient space).
@@ -405,7 +820,9 @@ deps: KB2 (`slot_le`).  Sketch: slot ≤ eg − 1 < eg (e·g ≥ 1 from
 `e_pos`/`g_pos`); omega. -/
 theorem slot_lt (s : StageData) (W : ℕ) {k : ℕ} (hk : k < s.g) :
     slot s W k < s.e * s.g := by
-  sorry
+  have h1 := slot_le s W hk
+  have h2 : 0 < s.e * s.g := Nat.mul_pos s.e_pos s.g_pos
+  omega
 
 /-- KB8a (eligibility of every recursive call — the L1-ii clause in stream
 form): under (I-aug) at the consecutive pair, every digit's required weight
@@ -427,7 +844,8 @@ theorem offP_designated (p : ℕ) (S : ℕ → StageData) (r W : ℕ)
     (hlt : slot (S r) W (k : ℕ) < (S r).e * (S r).g) :
     offP p S (r + 1) W τ ⟨slot (S r) W (k : ℕ), hlt⟩
       = offP p S r (uk (S r) W (k : ℕ)) (τ k) := by
-  sorry
+  rw [offP_succ]
+  exact slotAssemble_designated S r W _ k hlt
 
 /-- KB8a — THE DEGREE INVARIANT (support half, resolution R1; REV 2 F1's
 explicit KB8a obligation): every stage-r realizer built by `offP` has its
@@ -439,7 +857,8 @@ theorem offP_support (p : ℕ) (S : ℕ → StageData) (r W : ℕ)
     (τ : ResCarrier p S (r + 1)) (j : Fin ((S r).e * (S r).g))
     (hj : ∀ k : Fin ((S r).g), (j : ℕ) ≠ slot (S r) W (k : ℕ)) :
     offP p S (r + 1) W τ j = realZero S r := by
-  sorry
+  rw [offP_succ]
+  exact slotAssemble_support S r W _ j hj
 
 /-! ## KB7 — the base case -/
 
@@ -463,7 +882,34 @@ theorem base_total (p : ℕ) [Fact p.Prime] (S : ℕ → StageData) (W : ℕ)
     (τ : ResCarrier p S 0) (hτ : τ ≠ resZero p S 0) :
     wt p S 0 (offP p S 0 W τ) = (W : ℕ∞) ∧
       digRead p S 0 (offP p S 0 W τ) = τ := by
-  sorry
+  haveI : NeZero p := ⟨(Fact.out : p.Prime).ne_zero⟩
+  have hτ0 : τ ≠ (0 : ZMod p) := hτ
+  have hval : ZMod.val τ ≠ 0 := fun h => hτ0 ((ZMod.val_eq_zero τ).mp h)
+  have hvlt : ZMod.val τ < p := ZMod.val_lt τ
+  have hnd : ¬ p ∣ ZMod.val τ :=
+    Nat.not_dvd_of_pos_of_lt (Nat.pos_of_ne_zero hval) hvlt
+  have hvz : (ZMod.val τ : ℤ) ≠ 0 := Int.natCast_ne_zero.mpr hval
+  have hpW : ((p : ℤ)) ^ W ≠ 0 :=
+    pow_ne_zero _ (Int.natCast_ne_zero.mpr (Fact.out : p.Prime).ne_zero)
+  have hprod : (ZMod.val τ : ℤ) * (p : ℤ) ^ W ≠ 0 := mul_ne_zero hvz hpW
+  have hpv : padicValInt p ((ZMod.val τ : ℤ) * (p : ℤ) ^ W) = W := by
+    rw [padicValInt.mul hvz hpW]
+    have h1 : padicValInt p (ZMod.val τ : ℤ) = 0 := by
+      rw [padicValInt.of_nat]
+      exact padicValNat.eq_zero_of_not_dvd hnd
+    have h2 : padicValInt p ((p : ℤ) ^ W) = W := by
+      rw [show ((p : ℤ)) ^ W = ((p ^ W : ℕ) : ℤ) by push_cast; ring,
+        padicValInt.of_nat]
+      exact padicValNat.prime_pow W
+    rw [h1, h2, zero_add]
+  constructor
+  · change wtBase p ((ZMod.val τ : ℤ) * (p : ℤ) ^ W) = (W : ℕ∞)
+    simp only [wtBase]
+    rw [if_neg hprod, hpv]
+  · change digBase p ((ZMod.val τ : ℤ) * (p : ℤ) ^ W) = τ
+    simp only [digBase]
+    rw [hpv, Int.mul_ediv_cancel _ hpW, Int.cast_natCast, ZMod.natCast_val,
+      ZMod.cast_id]
 
 /-! ## KB8b — `l1_totality`: THE INDUCTION
 (pre-approved split executed NOW per REV 2 F13: exactness leg `l1_exactness`
@@ -471,6 +917,36 @@ and read leg `l1_read` are the two sorried units; `l1_totality` and
 `l1_coverage` are their assemblies.  Each leg's prover may run the mutual
 strong induction internally — the legs are separately true; the IH available
 one stage down is exactly (S6b′)'s CLAIM = the conjunction, blueprint §3.B.) -/
+
+/-- Prover helper (KB8b): the two legs share one induction — (S6b′)'s CLAIM
+is the conjunction, so the IH one stage down must carry both conjuncts
+(blueprint §3.B; the legs project out of this). -/
+private theorem l1_main (p : ℕ) [Fact p.Prime] (S : ℕ → StageData)
+    (hIaug : ∀ i, IAug (S i) (S (i + 1))) :
+    ∀ r : ℕ, ∀ W : ℕ, Eligible S r W → ∀ τ : ResCarrier p S r,
+      τ ≠ resZero p S r →
+      wt p S r (offP p S r W τ) = (W : ℕ∞) ∧
+        digRead p S r (offP p S r W τ) = τ := by
+  intro r
+  induction r with
+  | zero => exact fun W _ τ hτ => base_total p S W τ hτ
+  | succ r ih =>
+    intro W hW τ hτ
+    have hW' : (S r).thr < W := hW
+    have helig : ∀ k : Fin ((S r).g), Eligible S r (uk (S r) W (k : ℕ)) := by
+      cases r with
+      | zero => exact fun _ => trivial
+      | succ r' => exact fun k => offP_calls_eligible S r' (hIaug r') hW' k
+    have hex : ∃ k, τ k ≠ resZero p S r := by
+      by_contra hall
+      push_neg at hall
+      exact hτ (funext fun k => hall k)
+    rw [offP_succ]
+    exact slotAssemble_total p S r hW' τ _
+      (fun k hk => (ih (uk (S r) W (k : ℕ)) (helig k) (τ k) hk).1)
+      (fun k hk => (ih (uk (S r) W (k : ℕ)) (helig k) (τ k) hk).2)
+      (fun k hk => by rw [hk]; exact offP_zero_class p S r _)
+      hex
 
 /-- KB8b (exactness leg): ∀ stage r, ∀ eligible W, ∀ τ ∈ F_r^×,
 wt (offP r W τ) = W — the weight-exactness half of L1 totality (L1-iii).
@@ -489,7 +965,8 @@ theorem l1_exactness (p : ℕ) [Fact p.Prime] (S : ℕ → StageData)
     (hIaug : ∀ i, IAug (S i) (S (i + 1))) :
     ∀ r : ℕ, ∀ W : ℕ, Eligible S r W → ∀ τ : ResCarrier p S r,
       τ ≠ resZero p S r → wt p S r (offP p S r W τ) = (W : ℕ∞) := by
-  sorry
+  intro r W hW τ hτ
+  exact (l1_main p S hIaug r W hW τ hτ).1
 
 /-- KB8b (read leg): ∀ stage r, ∀ eligible W, ∀ τ ∈ F_r^×,
 digRead (offP r W τ) = τ — the class-read half of L1 totality (L1-iv, the
@@ -502,7 +979,8 @@ theorem l1_read (p : ℕ) [Fact p.Prime] (S : ℕ → StageData)
     (hIaug : ∀ i, IAug (S i) (S (i + 1))) :
     ∀ r : ℕ, ∀ W : ℕ, Eligible S r W → ∀ τ : ResCarrier p S r,
       τ ≠ resZero p S r → digRead p S r (offP p S r W τ) = τ := by
-  sorry
+  intro r W hW τ hτ
+  exact (l1_main p S hIaug r W hW τ hτ).2
 
 /-- KB8b — `l1_totality`, THE KERNEL THEOREM (D4R.0-K(a) = L1 totality over
 the transcribed enum model; MOVES 4653-4671): at every stage r, every
