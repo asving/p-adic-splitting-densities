@@ -177,3 +177,260 @@ moving them out of `LeanUrat/` removes them from all sweeps with no list edits.
 supersession pointer, importer census at removal) + full `lake build` + AxChk
 re-run. Quarantined = preserved verbatim, invisible to lake and to greps scoped
 `--include=*.lean`.
+
+---
+
+## 3. THE MATHEMATICS
+
+### 3.1 C6 — the dichotomy is mistyped; the certified collapse; the repair
+
+The fenced statement (C6_alphabetCard.lean:54-62), for a tower T, block b, height
+γ, on nonempty level sets:
+
+    (0)  card 𝔸(b,γ) = p ^ aDim(b,γ)                                 [conjunct 1]
+         ∧ (card 𝔸(b,γ) = card F_{K+1}  ↔
+              ∀ c ∈ levelSet b γ, ∃ y ≠ 0-ish, typComposite(single c y) ≠ 0)
+                                                                      [conjunct 2]
+         ∧ ((∃ c ∈ levelSet b γ, ∀ y, typComposite(single c y) = 0) →
+              aDim(b,γ) < log_p card F_{K+1})                         [conjunct 3]
+
+Here 𝔸(b,γ) = `T.alphabet b γ` (the additive closure of the single-coordinate
+slot images in the graded piece `grQ γ`), and F_{K+1} = the top stage's residue
+field `(T.stg (Fin.last T.K)).K`.
+
+The ScratchC6 walk (2026-07-28, all five certificates PROVED Lean-core) shows the
+attainability condition was typed over the WRONG index set (blueprint Deviation
+D-10): with T3 + T7's digit toolkit, membership in the level set already forces
+attainability —
+
+    (1)  C6_attain_automatic : ∀ c ∈ levelSet b γ, ∀ y ≠ 0,
+           typComposite b γ (Pi.single c y) ≠ 0
+         (proof: w_top(digLift y · mono c) = 0 + strTop·γ, exactly the piece
+          index, so the class is weight-detected nonzero)
+
+so conjunct 2's RHS is a THEOREM (take y = 1), conjunct 3's hypothesis is
+REFUTABLE (both certified), and hence
+
+    (2)  C6_forces_unconditional_fullness : (fenced C6 at (b,γ)) →
+           card 𝔸(b,γ) = card F_{K+1}
+
+— the pre-D¹¹c uniform display that CODEX_CONFIRM_D11B refuted at shallow heights
+(the note's own correction, MOVES 2160-2165: "STRICTLY SMALLER at shallow
+heights"). Math-level shallow instance (ScratchC6 header, not compiled): base
+(e₀,h₀) = (1,1), K₀ = F₂ ⊂ F = F₄, one g = 2 increment (ψ = z²+z+1); at
+(b,γ) = (0,0) the level set is the single coordinate l = 0, slots ≡ 0, so 𝔸 is
+one base-digit line, card ≤ |F₂| = 2 < 4 = |F₄|. The addresses the note's
+condition is really about would need l < 0 — they are NOT coordinates, so the
+per-coordinate ∀ cannot see them.
+
+**Consequence.** C6 as fenced is not provable and is believed FALSE for any tower
+with residual growth. Honest disposition = statement-fence adjudication (Asvin
+queue Q3), with two repair candidates:
+
+**(R-a) minimal honest restatement.** Replace the three conjuncts by conjunct 1
+plus the two certified facts, i.e.
+
+    theorem C6_alphabetCard' … :
+      Nat.card ↥(T.alphabet b γ) = p ^ T.aDim b γ ∧
+      (∀ c : ↥(T.levelSet b γ), ∃ y, T.typComposite b γ (Pi.single c y) ≠ 0)
+
+(conjunct 1 = `C6_conjunct1_closable` = T7; second conjunct =
+`C6_conjunct2_rhs_always`). The note's DICHOTOMY content is then carried by the
+record (the Scratch certificates + the header), not by a false iff. Cheap,
+provable today, loses the MOVES 2160-2165 dichotomy as a formal statement.
+
+**(R-b) faithful address-typed dichotomy.** Re-type the attainability condition
+over ADDRESSES (bounded slot vectors), per ScratchC6's diagnosis ("the correct
+typing quantifies over ALL bounded slot vectors in γ's alignment class; existence
+of the coordinate, i.e. 0 ≤ γ − Σ_r s_r·κ_r, is then the attainability
+condition"). Vocabulary to add (new defs, statement-fence review):
+
+    (3)  Addr T b := { s : Fin (T.K+1) → ℕ //
+                        (∀ r : Fin T.K, s r.castSucc < T.slotBound r) ∧
+                        s (Fin.last T.K) = b }
+         aligned T γ s := ∃ n : ℤ, (γ − Σ_r s_r·κ_r) = n     -- ℤ-alignment
+         attainable T γ s := 0 ≤ γ − Σ_r s_r·κ_r             -- l exists in ℕ
+
+and the repaired conjuncts 2'/3':
+
+    (4)  card 𝔸(b,γ) = card F_{K+1}  ↔  ∀ s : Addr T b, aligned T γ s →
+                                            attainable T γ s
+         (¬ RHS → aDim(b,γ) < log_p card F_{K+1})
+
+MATH RISK: (4) is note-content (the D-10-corrected reading of MOVES 2160-2165);
+its ⟸ leg needs the counting identity "number of aligned attainable addresses at
+(b,γ) × log_p|F_Q| = log_p card F_{K+1} when all aligned addresses attainable" —
+NOT in the corpus, real new mathematics (relates aDim to the address count via
+T8's subgroup A and the F_Q-line dimensions). Countermodel-first applies to (4)
+BEFORE any prover (unit CL-04). If (4) survives probing, its proof is the
+hardest C6 work (unit CL-05); if it fails, fall back to (R-a) with the probe on
+record. Orchestrator picks R-a vs R-b (§6 Q-1) — this blueprint recommends
+attempting R-b's countermodel probe FIRST and letting its outcome inform Q-1.
+
+Also queued at C6: a COMPILED countermodel to the ORIGINAL fenced C6 needs a
+concrete `Tower p F` term (stages + moves + base data for the shallow instance).
+That construction cost is unknown (Tower has heavy per-move certificate fields);
+unit CL-01 is an attempt with explicit permission to return BLOCKED with the
+exact missing-constructor list. The adjudication may proceed on the math-level
+record + certificates (1)-(2) alone (§6 Q-2).
+
+### 3.2 R6 — execute A17, then close via the graded-expansion pack
+
+**The A17 defects (both re-verified accurate at the 2026-07-30 fold-in).**
+
+DEFECT 1 (statement-level, machine-checked): `LSTStmt'` leg (i-b)
+(R1_LSTStmt.lean:61-63) reads
+
+    (5)  ∀ b, window H b → ∀ y : K.Coord → K.Digit, slotCoeff H b y ≠ 0 →
+           ∃ c₀, y c₀ ≠ 0 ∧ K.G.w (slotCoeff H b y) = ht H c₀ ∧
+                 ∀ c, y c ≠ 0 → ht H c₀ ≤ ht H c
+
+— the minimality clause quantifies over ALL coordinates: R1 dropped T4/C1's
+support hypothesis. Kernels 2a+2b (R6 file, PROVED) refute (5) for every
+content-bearing pack whose slotCoeff is blind to off-block digits (the real one
+is, definitionally). REPAIR (fence-gated, the A17 sign-off): reinstate exactly
+T4/C1's hypothesis row in (i-b):
+
+    (6)  VARIANT A (T4-parity):  insert
+           `(Function.support y).Finite → (∀ c, y c ≠ 0 → K.blk H c = b) →`
+         VARIANT B (support-only): insert
+           `(∀ c, y c ≠ 0 → K.blk H c = b) →`
+
+Variant analysis: the graded-expansion pack below satisfies (i-b) under EITHER
+variant — its per-level restrictions are finitely supported automatically
+(`levelSet_finite'`), so `hfin` is not needed for THIS instance. But `hfin` IS
+load-bearing for the direct polynomial pack (T4 requires it; finsum junk-0s at
+infinite support), and C1_LST carries it. Recommendation: VARIANT A, for C-layer
+parity (the R-layer was meant to abstract C1's statement verbatim). Orchestrator
+ratifies (§6 Q-3).
+
+DEFECT 2 (instance-level; NO statement change): `TYPStmt'` conjunct 1 is
+unconditional additivity of `inγ γ' ∘ slotCoeff H b` in the digit tuple. For the
+POLYNOMIAL-Coeff pack (`K.G := T.carrier _`, `slotCoeff := T.slotCoeff`) it is
+REFUTED by cross-strata tuples (weights γ₁ < γ': LHS = 0 ≠ RHS — the R6 header's
+countermodel). The repair is choosing the right INSTANCE (the note's own MOVES
+3795-3807 display), not weakening TYPStmt'. A17 should RECORD this scoping:
+TYPStmt', DOMStmt', SecB1Stmt' texts unchanged.
+
+**The graded-expansion pack (the POSITIVE FINDING, elaborated).** Fix T and
+rl : TowerRealizable T. Define (new defs, HC1-side, review-flagged):
+
+    (7)  LatticeExp T := { B : ∀ γ : ℚ, T.grQ γ //
+                            ∀ γ, B γ ≠ 0 → ∃ n : ℕ, γ = (n : ℚ) / T.strTop }
+         -- AddCommGroup: componentwise (support condition closed under +, −, 0)
+         wE (B) := least γ = n/strTop with B γ ≠ 0 (Nat.find), ⊤ if B = 0
+                                                   : WithTop ℚ
+         evalE γ B := B γ                          -- the class map
+
+    (8)  packE : CarrierPackR p :=
+         { G := { Coeff := LatticeExp T, Gr := T.grQ, w := wE, inγ := evalE,
+                  w_add, inγ_add, inγ_kills, inγ_detects := §CL-08 },
+           Hist := Unit, Coord := T.Coord, Digit := ↥(T.stg 0).FQ,
+           kIdx _ := T.K, ht _ := T.ht, blk _ := T.blk,
+           lvl _ b γ := T.levelSet b γ,
+           slotCoeff _ b y := ⟨fun γ => T.inGr γ (T.slotCoeff b
+                                 (fun c => if c ∈ T.levelSet b γ then y c else 0)),
+                               lattice-support proof (LAT + levelSet-emptiness)⟩,
+           aDim _ := T.aDim, lines _ := rl.line, blockEdge _ := T.blockEdge,
+           interiorEnd _ i := if i ≤ T.K then rl.interiorEnd i else 0,
+           window _ _ := True, mono _ c := monoE c, floorB _ := rl.floorB }
+
+where `monoE c := ⟨fun γ => T.inGr γ (T.mono c), _⟩` (nonzero only at γ = ht c).
+The Gr-pin `∀ γ, packE.G.Gr γ = T.grQ γ` holds by `rfl` — the non-vacuity clause.
+
+Supporting arithmetic (LAT, unit CL-07): every height lies on the nonneg lattice:
+`ht c ≥ 0` directly from the formula (l, slots, κ ≥ 0 as ℕ-casts), and
+`strTop·ht c ∈ ℤ` since `e_r·STR_r = STR_{r+1} ∣ STR_K·e_K = strTop` for every
+r ≤ K (divisibility chain on `strAux`; each κ_r = h_r/(e_r·STR_r)).
+
+**The carrier laws for (7)** (unit CL-08): `w_add` — the least populated level of
+B+B' is ≥ min of the two leasts (componentwise addition); `inγ_add` — evaluation
+is additive UNCONDITIONALLY (stronger than the law); `inγ_kills` — below the
+least populated level every component is 0 (minimality of Nat.find + lattice
+support off-lattice); `inγ_detects` — at wE B the component is nonzero (Nat.find
+spec). All elementary.
+
+**Leg-by-leg discharge of R6's three statement defs at packE:**
+
+(i-a) `wE (monoE c) = ht c`: monoE c has exactly one nonzero component, at
+γ = ht c — detects there via T3 (`w_top(mono c) = strTop·ht c`, MonoNZ discharged
+by `mono_ne`: mono = C(p^l)·∏Φ^s ≠ 0 from `hmonic`), kills elsewhere (γ < ht c:
+mono ∈ gt(⌊strTop γ⌋); γ > ht c: the inGr dif-condition fails). [CL-15]
+
+(i-b) REPAIRED, the transport from T4 — THE RISK STEP. Given y with block-b
+support and E := packE.slotCoeff b y ≠ 0: let γ̂ := wE E (the least populated
+level). At γ̂ the component is `T.inGr γ̂ (T.slotCoeff b (y↾lvl b γ̂))` ≠ 0, so the
+restricted polynomial is ≠ 0; T4 on the restriction (finitely supported —
+levelSet_finite'; all support at height γ̂) yields c₀ with y c₀ ≠ 0 and
+ht c₀ = γ̂. Minimality: for y c ≠ 0 with γ := ht c < γ̂, the component at γ is 0
+(below the least populated level); but by **LVL-DET** below it would be nonzero —
+contradiction; hence no support below γ̂. [CL-14]
+
+    (9)  LVL-DET: for y ≠ 0 supported inside T.levelSet b γ (a finite set),
+           T.inGr γ (T.slotCoeff b ŷ) ≠ 0        (ŷ = the extension by 0)
+
+LVL-DET = NCL + T4 + T6-detects: if the polynomial `slotCoeff b ŷ` is nonzero,
+T4 pins wQ = min-height-of-support = γ EXACTLY (no weight jump possible), and
+`inγ_detects` (T6) gives a nonzero class. So (9) reduces to
+
+    (10) NCL (no-cancellation at a level): y ≠ 0 supported in levelSet b γ ⟹
+           T.slotCoeff b ŷ = Σ_{c ∈ supp} digLift(y c) · mono c ≠ 0
+
+**NCL is the one genuinely new lemma** — the corpus NEVER proves it (T4, C1 take
+`slotCoeff ≠ 0` as hypothesis; T8's BijOn is from a SUBGROUP A, deliberately
+dodging kernel-triviality). Mathematically NCL = uniqueness of the mixed-radix
+p/Φ-adic development with unit digits. Proof plan (units CL-11/12/13):
+reduce mod p^{l_min+1} then mod p, where l_min = the least p-exponent in supp y:
+terms with l > l_min die; the survivors have DISTINCT slot vectors (T9(b):
+(baseIdx, l) injective, and baseIdx ↔ s injective under the slot_lt bounds), so
+over F_p[x] the sum is Σ_c d̄_c · ∏_r Φ̄_r^{s_c(r)} with every d̄_c ≠ 0 (digLift has
+gaussVal 0 ⇒ a unit coefficient survives mod p... see the §5 R-2 caveat),
+deg d̄_c < deg Φ̄₀, Φ̄_r monic of full degree. Positional uniqueness in F_p[x]:
+strong induction peeling the highest slot by Euclidean div/mod against
+Φ̄_r^{max} (quotient-remainder uniqueness with the degree bounds slot_lt). The
+countermodel-first rule BINDS here: NCL is a universal that could conceivably
+fail (unit CL-11 runs first). If NCL is FALSE, (i-b) FAILS at packE (a two-level
+y with a cancelling lower level is a countermodel) and R6 needs a different
+instance or a windowed (i-b) — automatic escalation to adjudication (§5 R-1).
+
+(i-c): definitional at packE — each component of packE.slotCoeff reads y ONLY
+through `y↾lvl b γ`, and the hypothesis row gives x, y equal there. [CL-15]
+
+(ii): `rl.floorB b = (rl.line T.K).at (T.blockEdge b)` is DEFINITIONAL
+(DefsCar.lean:266) with kIdx = T.K. [CL-15]
+
+(iii): pure logic — c ∈ lvl b γ' has ht c = γ' > floorB b, contradicting
+ht c ≤ floorB b (C1's leg-(iii) argument verbatim). [CL-15]
+
+TYP conjunct 1: componentwise at each γ; restriction commutes with +; then
+`inGr γ (slotCoeff b ((x+y)↾lvl)) = … x↾ … + … y↾ …` is EXACTLY C2_TYPa
+conjunct (b) (typComposite additivity) after rewriting the restricted extension
+through `typComposite`. SecB1Stmt' is the SAME lemma (its statement is TYP
+conjunct 1 re-quantified). [CL-16]
+
+TYP conjunct 2: the closure in R2's display, instantiated at packE, is literally
+`T.alphabet b γ'` (same union of single-slot image ranges — an
+extension-vs-subtype-Pi.single rewriting lemma), and `packE.aDim = T.aDim`, so
+the equation is T7's third conjunct `p ^ aDim = card 𝔸` (symm). Empty level set:
+both sides degenerate to card ⊥ = 1 = p^0. Off-lattice γ': singles are 0, closure
+⊥, and T.alphabet is the same object — consistent. [CL-17]
+
+DOM: for i ≤ T.K this is C4_DOM's first conjunct (rl.steeper + rl.vertex_entry
+via MovesC.C2_DOM); for i > T.K the guard `interiorEnd _ i := 0` makes
+`b < 0` impossible — vacuous. [CL-18]
+
+**Assembly** (CL-19): `R6_carrierInstance := ⟨packE, fun γ => rfl, LST-legs,
+TYP-legs, DOM⟩`, killing sorry@145. Zero dep-sorries: T3/T4/T5/T6/T7/C2/C4 all
+PROVED Lean-core at HEAD. The 70-line obstruction record in the proof body is
+HISTORY — move it verbatim into the file header (do not delete; the fold-in
+notes already correct it), keep kernels 2a/2b (they document why A17 was needed).
+
+**R5 vacuity (A17's second half)** (CL-20): `EQ2lawIfREL1' EQ2law :=
+(∀ K : CarrierPackR p, REL1Pack p K) → EQ2law`. The antecedent quantifies over
+ALL packs, so ONE junk pack refutes it and the def is True for every EQ2law.
+Compile the refutation certificate (a pack with two constant lines violating
+DOMStmt' at i=1, m=0, interiorEnd=1 — a ~30-line witness) and record: the def is
+typed-only, currently consumed by NOTHING (grep-verified for `EQ2lawIfREL1'`
+consumers before writing the record); whether to re-scope the antecedent (e.g.
+to Gr-pinned packs or an ∃-form) is a MovesR-unparking design question, NOT
+decided here (§6 Q-4).
