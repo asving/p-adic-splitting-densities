@@ -50,3 +50,25 @@ NEW STANDING DUTY: periodic whole-proof synthesis agent (each major checkpoint):
 read the corpus map + blueprints + PROJECT_STATE, hunt unifying ideas that collapse
 multiple units/corpora into one mechanism, propose consolidations with exact
 statement-level plans; orchestrator adjudicates.
+
+## SYNTHESIS PASS 1 ADJUDICATIONS (2026-07-30 late; report: SYNTHESIS_PASS1_2026-07-30.md)
+C3/N1 RATIFIED-BLOCKING: the Q2 ramIdx/resDeg repair re-points at the EXISTING
+OM/QpType.lean vocabulary (QpFactorization eOf/fOf at the integral-closure DVR);
+IB-E6 re-planned through it; the documented Mathlib wall (integralClosure-DVR-ness
+at wild deg >= 2) rides the Wave-2b axiom = the classical structure theorem for
+complete DVRs (Serre, Local Fields — literature-grade, goal-compatible). BP1 §2.4
+inventory amended. Group E provers DO NOT run until this re-point lands.
+C2/N2 RATIFIED: ONE ReadLocality kernel row (chart_pin + cross-level child locality);
+TransferRow (BridgeD5_transferRow) and StableInputs (TV_B2) become derived lemmas —
+consolidation unit SYN-C2 assigned; theoremU's honesty surface names the kernel once.
+C1+C4 RATIFIED as a cluster, sequenced AFTER the BP5 hygiene quarantines:
+Moves/LaurentOrd.lean + Moves/ResVal.lean with ResValPack per the 15-unit plan
+(SYN-E0 concordance gate first; SharedRecenter Phase-4 protocol: verbatim-hoist-
+then-parameterize + Codex per-conjunct equivalence); C4 completes the family
+(HC2/SharedZC before Block Z; the HC1 S9 shared builder before HK-15/16, TV-D6).
+C5/C6 RATIFIED immediately: Kernels/E0Matrix extends (never shadows) the proved
+MovesS matrix layer; IB-C3b via MovesS.ratfunc_eval_infinite corollary.
+N3 two upside probes ADDED to the gate class: slice_finite pigeonhole;
+ReadLocality-provable-from-SP8-construction (would discharge all three C2 faces).
+N6/N7/N8 folded into BP5 execution. Routine prover mass HELD until gates + C1/C2
+land (many routine units are supplied or deleted by the consolidations).
