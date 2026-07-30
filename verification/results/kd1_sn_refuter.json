@@ -1,0 +1,350 @@
+{
+ "checks": [
+  {
+   "name": "KD1-V8 disc4_int == sympy.discriminant (20 random, exact)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "KD1-V1 box A checksum (walked + squarefree = 2^24)",
+   "ok": true,
+   "detail": "walked=8388608 sf=8388608"
+  },
+  {
+   "name": "KD1-V2 box A arithmetic tie: squarefree count = 2^23, every squarefree member has vdisc=0, every walked member has vdisc>=1",
+   "ok": true,
+   "detail": "sf=8388608 sf_bad=0 nsf_bad=0"
+  },
+  {
+   "name": "KD1-V3 box A X2A reproduction: max #rec/vdisc == 1/3 and witness f=(0,229,102) re-walks to nrec=2, vd=6",
+   "ok": true,
+   "detail": "max 1/3 at (4, 13, 10, 2, 6); witness npop=3 nrec=2 vd=6 deep=True; censored floor 3/8 at (4, 5, 2, 3, '>=8')"
+  },
+  {
+   "name": "KD1-V4 box A engine anomalies == 0 (flat h=0 selection / degenerate pair / step cap)",
+   "ok": true,
+   "detail": "anom=0"
+  },
+  {
+   "name": "KD1-V5 box B checksum (sum = 2^26)",
+   "ok": true,
+   "detail": "total=67108864"
+  },
+  {
+   "name": "KD1-V6 box B ground truth: mod-2^10 walker == exact-integer frame walker (200k random) and the PARI-adjudicated witness idx 788706 walks to (nrec=1, SPLIT), vd=20",
+   "ok": true,
+   "detail": "mismatches=0; witness mod-walk (1, 'SPLIT') / exact-walk (1, 'SPLIT') / vd=20 (gp factorpadic 2026-07-30: two distinct unramified deg-2 factors, disc v2=20 \u2014 SPLIT)"
+  },
+  {
+   "name": "KD1-V7 box B first-read RS1(r) masses == 2^20 each (3 cells)",
+   "ok": true,
+   "detail": "{'RS1(r=1)': 1048576, 'RS1(r=3)': 1048576, 'RS1(r=2)': 1048576}"
+  },
+  {
+   "name": "KD1-V4b box B engine anomalies == 0 (step cap)",
+   "ok": true,
+   "detail": "anom=0"
+  },
+  {
+   "name": "KD1-P1 leg (b) REC-DISC refuter: NO f in either box with a counted recentering node (countPop .recT1 + .t4 >= 1) and vdisc f = 0",
+   "ok": true,
+   "detail": "witnesses: box A 0, box B 0; box B min vdisc over counted members = 20 (stratum-conditioned, >= 12 expected)"
+  },
+  {
+   "name": "KD1-P2 leg (a) s(3)-candidate stress: cubic-box max #rec/vdisc <= 2 (sealed candidate s(3)); quartic ratio is exploration-class",
+   "ok": true,
+   "detail": "cubic max 1/3 (censored floor 3/8); quartic max 1/12 at (3414120, 2, 24), max run 2; candidate-stress rule: only the named candidate dies on excess"
+  }
+ ],
+ "boxA": {
+  "walked": 8388608,
+  "squarefree": 8388608,
+  "jointP_vd_npop": {
+   "(8, 1)": 132608,
+   "(2, 1)": 4194304,
+   "(4, 1)": 1310720,
+   "(6, 1)": 294912,
+   "(4, 2)": 262144,
+   "(5, 1)": 655360,
+   "(3, 1)": 1048576,
+   "(8, 2)": 151104,
+   "(8, 3)": 34816,
+   "(8, 4)": 9152,
+   "(6, 2)": 65536,
+   "(5, 2)": 131072,
+   "(7, 1)": 16384,
+   "(7, 3)": 16384,
+   "(6, 3)": 32768,
+   "(7, 2)": 32768
+  },
+  "jointR_vd_nrec": {
+   "(8, 0)": 132608,
+   "(2, 0)": 4194304,
+   "(4, 0)": 1310720,
+   "(6, 0)": 294912,
+   "(4, 1)": 262144,
+   "(5, 0)": 655360,
+   "(3, 0)": 1048576,
+   "(8, 1)": 151104,
+   "(8, 2)": 34816,
+   "(8, 3)": 9152,
+   "(6, 1)": 65536,
+   "(5, 1)": 131072,
+   "(7, 0)": 16384,
+   "(7, 2)": 16384,
+   "(6, 2)": 32768,
+   "(7, 1)": 32768
+  },
+  "deep_vd_npop": {
+   "(8, 1)": 16384,
+   "(4, 2)": 8192,
+   "(4, 1)": 16384,
+   "(5, 1)": 8192,
+   "(2, 1)": 16384,
+   "(8, 3)": 16960,
+   "(8, 2)": 24064,
+   "(8, 4)": 5056,
+   "(6, 2)": 8192,
+   "(6, 3)": 4096,
+   "(6, 1)": 8192
+  },
+  "nrec_hist": {
+   "1": 642624,
+   "2": 83968,
+   "3": 9152
+  },
+  "maxratio": [
+   "1/3",
+   [
+    4,
+    13,
+    10,
+    2,
+    6
+   ]
+  ],
+  "maxratio_censored": [
+   "3/8",
+   [
+    4,
+    5,
+    2,
+    3,
+    ">=8"
+   ]
+  ],
+  "legb_witnesses": [],
+  "rows": {
+   "2": [
+    4194304,
+    1,
+    1.0
+   ],
+   "4": [
+    1572864,
+    2,
+    1.167
+   ],
+   "6": [
+    393216,
+    3,
+    1.333
+   ],
+   "5": [
+    786432,
+    2,
+    1.167
+   ],
+   "3": [
+    1048576,
+    1,
+    1.0
+   ],
+   "7": [
+    65536,
+    3,
+    2.0
+   ]
+  },
+  "censored_row": [
+   327680,
+   4,
+   1.757
+  ],
+  "trend": [
+   "GROWING",
+   [
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     7,
+     3
+    ]
+   ]
+  ]
+ },
+ "boxB": {
+  "total": 67108864,
+  "leafs": {
+   "TS": 3342336,
+   "RAM": 53673984,
+   "INERT": 6684672,
+   "SPLIT": 3342336,
+   "DEEP": 65536
+  },
+  "joint_vd_nrec": {
+   "(20, 1)": 2359296,
+   "(24, 1)": 73728,
+   "(26, 1)": 18432,
+   "(28, 1)": 4608,
+   "(26, 2)": 27648,
+   "(22, 1)": 589824,
+   "(24, 2)": 110592,
+   "(28, 2)": 6912,
+   "(30, 2)": 1728,
+   "(32, 2)": 424,
+   "(30, 1)": 1152,
+   "(32, 1)": 282,
+   "(34, 2)": 115,
+   "(36, 2)": 18,
+   "(36, 1)": 18,
+   "(34, 1)": 70,
+   "(38, 1)": 2,
+   "(38, 2)": 3,
+   "(40, 1)": 2,
+   "(42, 2)": 1
+  },
+  "runhist": {
+   "1": 3047424,
+   "2": 147456
+  },
+  "rs1_first": {
+   "RS1(r=1)": 1048576,
+   "RS1(r=3)": 1048576,
+   "RS1(r=2)": 1048576
+  },
+  "disc_zero_members": 25,
+  "deep": 65536,
+  "min_vdisc_counted": 20,
+  "maxratio": [
+   "1/12",
+   [
+    3414120,
+    2,
+    24
+   ]
+  ],
+  "legb_witnesses": [],
+  "rows": {
+   "20": [
+    2359296,
+    1,
+    1.0
+   ],
+   "24": [
+    184320,
+    2,
+    1.6
+   ],
+   "26": [
+    46080,
+    2,
+    1.6
+   ],
+   "28": [
+    11520,
+    2,
+    1.6
+   ],
+   "22": [
+    589824,
+    1,
+    1.0
+   ],
+   "30": [
+    2880,
+    2,
+    1.6
+   ],
+   "32": [
+    706,
+    2,
+    1.601
+   ],
+   "34": [
+    185,
+    2,
+    1.622
+   ],
+   "36": [
+    36,
+    2,
+    1.5
+   ],
+   "38": [
+    5,
+    2,
+    1.6
+   ],
+   "40": [
+    2,
+    1,
+    1.0
+   ],
+   "42": [
+    1,
+    2,
+    2.0
+   ]
+  },
+  "trend": [
+   "GROWING",
+   [
+    [
+     20,
+     1
+    ],
+    [
+     22,
+     1
+    ],
+    [
+     24,
+     2
+    ],
+    [
+     26,
+     2
+    ],
+    [
+     28,
+     2
+    ],
+    [
+     30,
+     2
+    ]
+   ]
+  ]
+ },
+ "seals": "P1-P3 sealed 2026-07-30 pre-run; see module docstring",
+ "x1_infra_finding": "x_n3_probes.quartic_stall missing-A2 C1-slot bug at RS recentering; published Q2 quartic row contaminated; witness idx 788706 truly (nrec=1, SPLIT), PARI-confirmed; cubic rows unaffected (run_box). Full record in module docstring IMPLEMENTATION NOTES."
+}

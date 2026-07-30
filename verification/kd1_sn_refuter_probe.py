@@ -64,10 +64,32 @@ IMPLEMENTATION NOTES (reuse + deviations, per the DEPS honesty clause):
    digB, F4_SQ); the two walkers below are counter-extended re-derivations
    of its gate-validated track_cubic / track_quartic (TP-A4 oracle tie on
    200k samples; TP-B4 RS1 masses).  x_n3_probes.py is NOT imported (its
-   module level clobbers /tmp/x_n3_census.out); instead its published X2A/Q2
-   verdict rows are REPRODUCED as validation gates V3/V6 (cubic max ratio
-   1/3 with witness f=(c2,c1,c0)=(0,229,102) at nrec=2, vd=6; quartic run
-   hist {1: 3047424, 2: 147456}, max ratio 1/10 at box idx 788706, vd=20).
+   module level clobbers /tmp/x_n3_census.out); its published CUBIC X2A row
+   is REPRODUCED as validation gate V3 (max ratio 1/3 with witness
+   f=(c2,c1,c0)=(0,229,102) at nrec=2, vd=6 — run_box recenters by exact
+   coefficient translation, no frame reduction, so the bug below cannot
+   touch it).
+ - INFRA FINDING DISCOVERED AT IMPLEMENTATION (2026-07-30, pre-run,
+   recorded as row KD1-X1): x_n3_probes.quartic_stall's incremental RS
+   recentering DROPS the A2 fold-in on the C1 slot.  Reducing
+   t^2 + C1 t + C0 mod the new key Phi' = Phi - t requires
+   C1' = C1 + 2t + A2 with A2 = tx^2 + c1x*tx (the x^2 coefficient); the
+   code applies the -A2*k' parts to C0 but never adds A2 to c1c.  Witness:
+   box idx 788706 (a0,a1,a2,a3) = (80,112,12,12).  True frame after the
+   step-0 RS recentering: C1 = (48, 16) => w1 = 4 = h, d1 = 1 => SPLIT
+   (nrec = 1).  Faulty frame: C1 = (0, 16) => w1 = 5, d1 = 0 => spurious
+   second RS, then RAM.  Adjudicated three ways: exact-integer frame walk;
+   dev4-exact re-walk (this file / track_quartic); PARI factorpadic
+   (gp 2.17: f = two DISTINCT unramified deg-2 factors, both = the slope-1
+   psi-cluster shape, disc v2 = 20 — SPLIT, not RAM).  CONSEQUENCE: x_n3's
+   published exploration-class Q2 row (quartic run hist {1: 3047424,
+   2: 147456}, max run 2, max ratio 1/10 at idx (788706, 2, 20)) is
+   CONTAMINATED; this probe emits the corrected quartic record.  The
+   x_n3 cubic rows (incl. the X2A seal target) use run_box — unaffected.
+   The sealed-gate x_n3 artifact is NOT patched (never patch a seal);
+   the record rides here + the campaign ledger.  Validation gate V6 below
+   therefore targets GROUND TRUTH (exact-integer frame agreement on a
+   random sample + the PARI-adjudicated witness), not the dead row.
  - COUNTING CONVENTIONS: leg (a) #rec = slope-h>=1 recenterings (the X2A
    convention — like-for-like with the seal).  Legs (b)/(c) count = ALL
    continuing selection nodes = the operational countPop .recT1 +
@@ -356,6 +378,60 @@ def kd1_quartic(a0, a1, a2, a3):
     return nrec, 'CAP', first, True, 1
 
 
+def kd1_quartic_exact(a0, a1, a2, a3):
+    """Reference walker: SAME reads as kd1_quartic but over exact integers
+    (no mod-2^10 frame; reads censored at NB as in-box).  Ground truth for
+    validation gate V6 — dev4 mod 2^10 must agree everywhere, since every
+    consumed read (weights capped at 10, digits at levels <= 9) is
+    determined by the frame mod 2^10."""
+    def v2e(x):
+        return NB if x == 0 else min((x & -x).bit_length() - 1, NB)
+
+    def wpe(bc, bx):
+        return min(v2e(bc), v2e(bx) + 1, NB)
+
+    def dge(bc, bx, m):
+        # python >> / & are two's-complement = 2-adically exact on negatives
+        return (((bx >> (m - 1)) & 1) << 1) | ((bc >> m) & 1)
+    c1, c0 = 2, 4
+    nrec = 0
+    first = None
+    for _ in range(STEP_CAP):
+        q1 = a3 - c1
+        q0 = a2 - c1 * q1 - c0
+        rx = a1 - c1 * q0 - c0 * q1
+        rc = a0 - c0 * q0
+        b1c, b1x = q0 - c0, q1 - c1
+        w1, w0 = wpe(b1c, b1x), wpe(rc, rx)
+        rs = None
+        if 2 * w1 < w0:
+            lab = 'TS'
+        elif w0 >= NB:
+            lab = 'DEEP'
+        elif w0 & 1:
+            lab = 'RAM'
+        elif w0 < 2:
+            lab = 'DEEP'
+        else:
+            h = w0 >> 1
+            d1 = dge(b1c, b1x, h) if w1 == h else 0
+            d0 = dge(rc, rx, w0)
+            if d1:
+                lab = 'SPLIT' if d0 == F4_SQ[d1] else 'INERT'
+            else:
+                lab = 'RS%d' % ((w0 - 4) >> 1)
+                rs = (F4_SQ[d0], h)
+        if first is None:
+            first = lab if rs is None else '%s(r=%d)' % (lab, rs[0])
+        if rs is None:
+            return nrec, lab, first
+        r, h = rs
+        nrec += 1
+        c0 = c0 - (r & 1) * (1 << h)
+        c1 = c1 - (r >> 1) * (1 << (h - 1))
+    return nrec, 'CAP', first
+
+
 def worker_quartic(u3):
     a3 = 4 * u3
     joint = {}       # (vd, nrec) -> count, over nrec >= 1 members, vd exact
@@ -564,19 +640,50 @@ def main():
          % (time.time() - tB, dict(sorted(leafsB.items())), deepB, disczeroB))
     check('KD1-V5 box B checksum (sum = 2^26)', totalB == 1 << 26,
           'total=%d' % totalB)
+    # V6: ground truth (see header X1 note): (i) mod-2^10 walker == exact-
+    # integer frame walker on a random sample; (ii) the PARI-adjudicated
+    # witness idx 788706 walks to (nrec=1, SPLIT) with exact vd=20.
+    import random
+    rng = random.Random(20260730)
+    mism = 0
+    for _ in range(200000):
+        u0 = rng.randrange(1 << 5)
+        u1 = rng.randrange(1 << 6)
+        u2 = rng.randrange(1 << 7)
+        u3 = rng.randrange(1 << 8)
+        fa = (16 + 32 * u0, 16 * u1, 4 + 8 * u2, 4 * u3)
+        if kd1_quartic(*fa)[:2] != kd1_quartic_exact(*fa)[:2]:
+            mism += 1
     wq = kd1_quartic(80, 112, 12, 12)     # box idx 788706
+    wqe = kd1_quartic_exact(80, 112, 12, 12)
     wqvd = v2_int(disc4_int(12, 12, 112, 80))
-    check('KD1-V6 box B Q2 reproduction: run hist == {1: 3047424, 2: 147456}, '
-          'max ratio == 1/10, witness idx 788706 re-walks to nrec=2, vd=20',
-          (dict(sorted(runhistB.items())) == {1: 3047424, 2: 147456}
-           and maxrB[0] == Fraction(1, 10) and wq[0] == 2 and wqvd == 20),
-          'run hist %s; max %s at %s; witness nrec=%d leaf=%s vd=%d'
-          % (dict(sorted(runhistB.items())), maxrB[0], maxrB[1], wq[0],
-             wq[1], wqvd))
+    check('KD1-V6 box B ground truth: mod-2^10 walker == exact-integer '
+          'frame walker (200k random) and the PARI-adjudicated witness '
+          'idx 788706 walks to (nrec=1, SPLIT), vd=20',
+          mism == 0 and wq[:2] == (1, 'SPLIT') and wqe[:2] == (1, 'SPLIT')
+          and wqvd == 20,
+          'mismatches=%d; witness mod-walk %s / exact-walk %s / vd=%d '
+          '(gp factorpadic 2026-07-30: two distinct unramified deg-2 '
+          'factors, disc v2=20 — SPLIT)' % (mism, wq[:2], wqe[:2], wqvd))
     check('KD1-V7 box B first-read RS1(r) masses == 2^20 each (3 cells)',
           sorted(rs1B.values()) == [1 << 20] * 3, '%s' % rs1B)
     check('KD1-V4b box B engine anomalies == 0 (step cap)', anomB == 0,
           'anom=%d' % anomB)
+    # X1: the infra finding (record-only; header IMPLEMENTATION NOTES has
+    # the full derivation + adjudication chain; not a KD1 seal event)
+    emit('[FINDING] KD1-X1 (INFRA, record-only): '
+         'x_n3_probes.quartic_stall drops the A2 = tx^2 + c1x*tx fold-in '
+         'on the C1 slot at RS recentering (C1\' = C1 + 2t + A2 required); '
+         'its published Q2 quartic row (run hist {1: 3047424, 2: 147456}, '
+         'max ratio 1/10 at idx (788706, 2, 20)) is contaminated — the '
+         'witness truly walks to (nrec=1, SPLIT), PARI-confirmed (two '
+         'unramified deg-2 factors).  Corrected quartic record: run hist '
+         '%s, max run %s, max ratio %s at %s.  x_n3 CUBIC rows (X2A seal) '
+         'use run_box (exact translation) — unaffected, and reproduced by '
+         'V3 above.  The x_n3 artifact is not patched; escalate via the '
+         'campaign ledger.'
+         % (dict(sorted(runhistB.items())),
+            max(runhistB) if runhistB else 0, maxrB[0], maxrB[1]))
 
     # ---------------- leg (b): the REC-DISC refuter (P1) ----------------
     check('KD1-P1 leg (b) REC-DISC refuter: NO f in either box with a '
@@ -670,6 +777,11 @@ def main():
                      'legb_witnesses': legbB[:100],
                      'rows': keystr(rowsB), 'trend': [verdB, seqB]},
             'seals': 'P1-P3 sealed 2026-07-30 pre-run; see module docstring',
+            'x1_infra_finding': 'x_n3_probes.quartic_stall missing-A2 C1-slot '
+                'bug at RS recentering; published Q2 quartic row contaminated; '
+                'witness idx 788706 truly (nrec=1, SPLIT), PARI-confirmed; '
+                'cubic rows unaffected (run_box). Full record in module '
+                'docstring IMPLEMENTATION NOTES.',
         }, fh, indent=1, default=str)
     emit('json -> %s; summary appended -> %s' % (OUTJSON, RESULTS_TXT))
     if nval_bad:
