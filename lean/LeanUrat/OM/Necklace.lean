@@ -88,20 +88,15 @@ theorem necklaceSum_nonneg (d q : ℕ) (hd : 1 ≤ d) : 0 ≤ necklaceSum d q :=
         ≤ ∑ e ∈ d.divisors.erase d, (q : ℤ) ^ e := by
       refine (Finset.abs_sum_le_sum_abs _ _).trans (Finset.sum_le_sum fun e he => ?_)
       rw [abs_mul, abs_of_nonneg (by positivity : (0 : ℤ) ≤ (q : ℤ) ^ e)]
-      calc |moebius (d / e)| * (q : ℤ) ^ e ≤ 1 * (q : ℤ) ^ e := by
-            have := abs_moebius_le_one (n := d / e)
-            have hqe : (0 : ℤ) ≤ (q : ℤ) ^ e := by positivity
-            nlinarith
+      calc |moebius (d / e)| * (q : ℤ) ^ e
+          ≤ 1 * (q : ℤ) ^ e :=
+            mul_le_mul_of_nonneg_right abs_moebius_le_one (by positivity)
         _ = (q : ℤ) ^ e := one_mul _
     have hgeom : ∑ e ∈ d.divisors.erase d, (q : ℤ) ^ e ≤ (q : ℤ) ^ d := by
       have hlt : ∀ e ∈ d.divisors.erase d, e < d := fun e he => by
         obtain ⟨hne, hmem⟩ := Finset.mem_erase.mp he
         exact lt_of_le_of_ne (Nat.le_of_dvd (by omega) (Nat.mem_divisors.mp hmem).1) hne
-      have h := (Nat.geomSum_lt hq hlt).le
-      calc ∑ e ∈ d.divisors.erase d, (q : ℤ) ^ e
-          = ((∑ e ∈ d.divisors.erase d, q ^ e : ℕ) : ℤ) := by push_cast; rfl
-        _ ≤ ((q ^ d : ℕ) : ℤ) := Nat.cast_le.mpr h
-        _ = (q : ℤ) ^ d := by push_cast; rfl
+      exact_mod_cast (Nat.geomSum_lt hq hlt).le
     have hneg := neg_abs_le (∑ e ∈ d.divisors.erase d, moebius (d / e) * (q : ℤ) ^ e)
     linarith
 
@@ -118,12 +113,9 @@ lemma prime_pow_dvd_pow_sub_pow (p : ℕ) (hp : p.Prime) (k t q : ℕ) :
     exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ p).mp h0
   -- Lift to `p^(k+1) ∣ q^(p^(k+1)) - q^(p^k)`.
   have h2 : ((p : ℤ) ^ (k + 1)) ∣ ((q : ℤ) ^ p) ^ p ^ k - (q : ℤ) ^ p ^ k := by
-    have h := dvd_sub_pow_of_dvd_sub h1 k
-    exact_mod_cast h
+    exact_mod_cast dvd_sub_pow_of_dvd_sub h1 k
   have hexp : ((q : ℤ) ^ p) ^ p ^ k = (q : ℤ) ^ p ^ (k + 1) := by
-    rw [← pow_mul]
-    congr 1
-    ring
+    rw [← pow_mul, ← pow_succ']
   rw [hexp] at h2
   -- Push the exponents up by the coprime factor `t` via `x - y ∣ x^t - y^t`.
   have h3 : (q : ℤ) ^ p ^ (k + 1) - (q : ℤ) ^ p ^ k
@@ -225,9 +217,7 @@ theorem dvd_necklaceSum (d q : ℕ) (hd : 1 ≤ d) : (d : ℤ) ∣ necklaceSum d
     have h1 : ∏ p ∈ d.primeFactors, p ^ d.factorization p = d := by
       rw [← Nat.support_factorization]
       exact Nat.prod_factorization_pow_eq_self hd0
-    calc ∏ p ∈ d.primeFactors, (p : ℤ) ^ d.factorization p
-        = ((∏ p ∈ d.primeFactors, p ^ d.factorization p : ℕ) : ℤ) := by push_cast; rfl
-      _ = (d : ℤ) := by rw [h1]
+    exact_mod_cast h1
   rw [← hprod]
   refine Finset.prod_dvd_of_coprime ?_ ?_
   · -- pairwise coprimality of distinct maximal prime powers
@@ -256,11 +246,8 @@ theorem dvd_necklaceSum (d q : ℕ) (hd : 1 ≤ d) : (d : ℤ) ∣ necklaceSum d
 def necklaceQ (d q : ℕ) : ℚ := (necklaceSum d q : ℚ) / d
 
 /-- The necklace count is nonnegative. -/
-theorem necklaceQ_nonneg (d q : ℕ) (hd : 1 ≤ d) : 0 ≤ necklaceQ d q := by
-  have h1 : (0 : ℚ) ≤ ((necklaceSum d q : ℤ) : ℚ) := by
-    exact_mod_cast necklaceSum_nonneg d q hd
-  have h2 : (0 : ℚ) ≤ (d : ℚ) := by positivity
-  exact div_nonneg h1 h2
+theorem necklaceQ_nonneg (d q : ℕ) (hd : 1 ≤ d) : 0 ≤ necklaceQ d q :=
+  div_nonneg (by exact_mod_cast necklaceSum_nonneg d q hd) (by positivity)
 
 /-- The necklace count is a natural number. -/
 theorem necklaceQ_eq_natCast (d q : ℕ) (hd : 1 ≤ d) : ∃ m : ℕ, necklaceQ d q = m := by
@@ -274,7 +261,7 @@ theorem necklaceQ_eq_natCast (d q : ℕ) (hd : 1 ≤ d) : ∃ m : ℕ, necklaceQ
   have hd0' : (d : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
   refine ⟨c.toNat, ?_⟩
   have hcm : ((c.toNat : ℕ) : ℚ) = ((c : ℤ) : ℚ) := by
-    exact_mod_cast congrArg (Int.cast : ℤ → ℚ) (Int.toNat_of_nonneg hc0)
+    exact_mod_cast Int.toNat_of_nonneg hc0
   rw [necklaceQ, hc, Int.cast_mul, Int.cast_natCast, mul_div_cancel_left₀ _ hd0', ← hcm]
 
 end LeanUrat.OM.Necklace

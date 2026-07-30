@@ -309,20 +309,10 @@ private theorem aSA_facts {A : (ZMod (2 ^ 5))[X]} (hA : A ∈ aSA) :
     Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)
   refine ⟨h2, h3, ?_, ?_⟩
   · have h := hdvd 0
-    rw [Polynomial.coeff_sub] at h
-    have hc : (aA₀).coeff 0 = 4 := by
-      simp only [aA₀]; rw [coeff_quad₀]
-    rw [hc] at h
-    have hf : aFloA 0 = 3 := by decide
-    rwa [hf] at h
+    rwa [Polynomial.coeff_sub, show aA₀.coeff 0 = 4 from coeff_quad₀ _ _] at h
   · have h := hdvd 1
-    rw [Polynomial.coeff_sub] at h
-    have hc : (aA₀).coeff 1 = -4 := by
-      simp only [aA₀]; rw [coeff_quad₁]
-    rw [hc] at h
-    have hf : aFloA 1 = 2 := by decide
-    rw [hf] at h
-    rwa [sub_neg_eq_add] at h
+    rwa [Polynomial.coeff_sub, show aA₀.coeff 1 = -4 from coeff_quad₁ _ _,
+      sub_neg_eq_add] at h
 
 /-- Membership facts for the block-B (quartic) coset around center `X⁴ - 4X² + 4`. -/
 private theorem aSB_facts {B : (ZMod (2 ^ 5))[X]} (hB : B ∈ aSB) :
@@ -336,23 +326,18 @@ private theorem aSB_facts {B : (ZMod (2 ^ 5))[X]} (hB : B ∈ aSB) :
     have h := hmon.coeff_natDegree; rw [hdeg] at h; exact h
   have h5 : ∀ i, 5 ≤ i → B.coeff i = 0 := fun i hi =>
     Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)
-  have hc0 : (aB₀).coeff 0 = 4 := by simp only [aB₀]; rw [coeff_quar₀]
-  have hc1 : (aB₀).coeff 1 = 0 := by simp only [aB₀]; rw [coeff_quar₁]
-  have hc2 : (aB₀).coeff 2 = -4 := by simp only [aB₀]; rw [coeff_quar₂]
-  have hc3 : (aB₀).coeff 3 = 0 := by simp only [aB₀]; rw [coeff_quar₃]
   refine ⟨h4, h5, ?_, ?_, ?_, ?_⟩
   · have h := hdvd 0
-    rw [Polynomial.coeff_sub, hc0, show aFloB 0 = 3 from by decide] at h
-    exact h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 0 = 4 from coeff_quar₀ _ _ _ _] at h
   · have h := hdvd 1
-    rw [Polynomial.coeff_sub, hc1, sub_zero, show aFloB 1 = 2 from by decide] at h
-    exact h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 1 = 0 from coeff_quar₁ _ _ _ _,
+      sub_zero] at h
   · have h := hdvd 2
-    rw [Polynomial.coeff_sub, hc2, show aFloB 2 = 2 from by decide] at h
-    rwa [sub_neg_eq_add] at h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 2 = -4 from coeff_quar₂ _ _ _ _,
+      sub_neg_eq_add] at h
   · have h := hdvd 3
-    rw [Polynomial.coeff_sub, hc3, sub_zero, show aFloB 3 = 1 from by decide] at h
-    exact h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 3 = 0 from coeff_quar₃ _ _ _ _,
+      sub_zero] at h
 
 
 /-! ### Scalar divisibility helpers over `ZMod 32` -/

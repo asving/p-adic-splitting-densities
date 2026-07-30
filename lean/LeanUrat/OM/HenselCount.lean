@@ -92,12 +92,10 @@ theorem coeff_polyOf {d : ℕ} (v : Fin d → S) (k : ℕ) :
     (polyOf v).coeff k = if h : k < d then v ⟨k, h⟩ else 0 := by
   rw [polyOf, Polynomial.finsetSum_coeff]
   by_cases h : k < d
-  · rw [dif_pos h, Finset.sum_eq_single (⟨k, h⟩ : Fin d)]
+  · rw [dif_pos h, Finset.sum_eq_single_of_mem (⟨k, h⟩ : Fin d) (Finset.mem_univ _) ?_]
     · rw [Polynomial.coeff_monomial, if_pos rfl]
     · intro j _ hj
       rw [Polynomial.coeff_monomial, if_neg (fun hjk : (j : ℕ) = k => hj (Fin.ext hjk))]
-    · intro habs
-      exact absurd (Finset.mem_univ _) habs
   · rw [dif_neg h]
     refine Finset.sum_eq_zero fun j _ => ?_
     rw [Polynomial.coeff_monomial, if_neg (fun hjk : (j : ℕ) = k => h (hjk ▸ j.isLt))]
@@ -465,8 +463,8 @@ theorem dvd_of_mulVec_dvd {nn : ℕ} (M : Matrix (Fin nn) (Fin nn) (ZMod (p ^ N)
     rw [hxi]
     exact dvd_add (Dvd.dvd.mul_right (pow_dvd_pow _ (min_le_left _ _)) y)
       (Dvd.dvd.mul_right (pow_dvd_pow _ (min_le_right _ _)) z)
-  have hxieq : x i = (u⁻¹ : (ZMod (p ^ N))ˣ) * ((u : ZMod (p ^ N)) * x i) := by
-    rw [← mul_assoc, Units.inv_mul, one_mul]
+  have hxieq : x i = (u⁻¹ : (ZMod (p ^ N))ˣ) * ((u : ZMod (p ^ N)) * x i) :=
+    (Units.inv_mul_cancel_left u (x i)).symm
   rw [hxieq]
   exact Dvd.dvd.mul_left hdvdu _
 
@@ -689,9 +687,7 @@ noncomputable def fiberEquivKer {a b c : ℕ} {A₀ B₀ : (ZMod (p ^ N))[X]} (h
     rintro ⟨x, hx⟩
     apply Subtype.ext
     dsimp only
-    have e1 : A + polyOf (leftPart x) - A = polyOf (leftPart x) := by ring
-    have e2 : B + polyOf (rightPart x) - B = polyOf (rightPart x) := by ring
-    rw [e1, e2]
+    rw [add_sub_cancel_left, add_sub_cancel_left]
     funext i
     induction i using Fin.addCases with
     | left j =>

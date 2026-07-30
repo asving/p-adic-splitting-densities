@@ -82,8 +82,8 @@ first `k` iterated recenter levels. `selfLoopChain 0` is vacuous; `selfLoopChain
 def selfLoopChain (k : ℕ) (g : QuotientBox.monicBox p N μ) : Prop :=
   ∀ i : ℕ, i < k → classify1 p (recenterIter p N μ c hN i g) = some (Drainage.selfLoopCell μ)
 
-theorem selfLoopChain_zero (g : QuotientBox.monicBox p N μ) : selfLoopChain p N μ c hN 0 g := by
-  intro i hi; exact absurd hi (Nat.not_lt_zero i)
+theorem selfLoopChain_zero (g : QuotientBox.monicBox p N μ) : selfLoopChain p N μ c hN 0 g :=
+  fun i hi => absurd hi (Nat.not_lt_zero i)
 
 /-- The chain-`(k+1)` predicate splits as "level-0 reads self-loop" ∧ "the recentered box has a
 depth-`k` chain" — the recursion skeleton `selfLoopChain (k+1) g ↔ classify1 g = SL ∧ selfLoopChain

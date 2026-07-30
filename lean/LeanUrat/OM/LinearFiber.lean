@@ -122,14 +122,8 @@ theorem dvd_of_pval_le {x y : ZMod (p ^ N)} (hx : x ≠ 0) (hle : pval x ≤ pva
   · simp [hy]
   obtain ⟨-, ux, hux⟩ := pval_spec hx
   obtain ⟨-, uy, huy⟩ := pval_spec hy
-  have h1 : x ∣ (p : ZMod (p ^ N)) ^ pval x := by
-    refine ⟨(ux⁻¹ : (ZMod (p ^ N))ˣ), ?_⟩
-    calc (p : ZMod (p ^ N)) ^ pval x
-        = (p : ZMod (p ^ N)) ^ pval x * ((ux : ZMod (p ^ N)) * (ux⁻¹ : (ZMod (p ^ N))ˣ)) := by
-          rw [Units.mul_inv, mul_one]
-      _ = ((p : ZMod (p ^ N)) ^ pval x * (ux : ZMod (p ^ N))) * (ux⁻¹ : (ZMod (p ^ N))ˣ) := by
-          rw [mul_assoc]
-      _ = x * (ux⁻¹ : (ZMod (p ^ N))ˣ) := by rw [← hux]
+  have h1 : x ∣ (p : ZMod (p ^ N)) ^ pval x :=
+    ⟨(ux⁻¹ : (ZMod (p ^ N))ˣ), (Units.eq_mul_inv_iff_mul_eq ux).mpr hux.symm⟩
   have h2 : (p : ZMod (p ^ N)) ^ pval x ∣ (p : ZMod (p ^ N)) ^ pval y := pow_dvd_pow _ hle
   have h3 : (p : ZMod (p ^ N)) ^ pval y ∣ y := ⟨uy, huy⟩
   exact h1.trans (h2.trans h3)
@@ -178,9 +172,7 @@ theorem exists_unit_pow_sub_of_pow_mul_eq {v c : ℕ} (hvc : v ≤ c) (hcN : c <
   have hnil : IsNilpotent ((p : ZMod (p ^ N)) ^ (N - c) * y) := by
     refine ⟨N, ?_⟩
     rw [mul_pow, ← pow_mul]
-    have hle : N ≤ (N - c) * N := by
-      calc N = 1 * N := (one_mul N).symm
-      _ ≤ (N - c) * N := Nat.mul_le_mul_right N (by omega)
+    have hle : N ≤ (N - c) * N := Nat.le_mul_of_pos_left N (by omega)
     have hz : (p : ZMod (p ^ N)) ^ ((N - c) * N) = 0 := by
       rw [← Nat.cast_pow, CharP.cast_eq_zero_iff (ZMod (p ^ N)) (p ^ N)]
       exact pow_dvd_pow p hle
@@ -344,13 +336,11 @@ theorem clearL_mul {n : ℕ} (q : Fin (n + 1) → R) (B : Matrix (Fin (n + 1)) (
   ext i j
   rw [Matrix.sub_apply, Matrix.of_apply]
   congr 1
-  rw [Matrix.mul_apply]
-  rw [Finset.sum_eq_single (0 : Fin (n + 1))]
+  rw [Matrix.mul_apply,
+    Finset.sum_eq_single_of_mem (0 : Fin (n + 1)) (Finset.mem_univ _) ?_]
   · rw [Matrix.vecMulVec_apply, Pi.single_eq_same, mul_one]
   · intro k _ hk
     rw [Matrix.vecMulVec_apply, Pi.single_eq_of_ne hk, mul_zero, zero_mul]
-  · intro habs
-    exact absurd (Finset.mem_univ _) habs
 
 /-- The column-clearing perturbation acts entrywise as `B i j - B i 0 * r j`. -/
 theorem mul_clearR {n : ℕ} (r : Fin (n + 1) → R) (B : Matrix (Fin (n + 1)) (Fin (n + 1)) R) :
@@ -360,13 +350,11 @@ theorem mul_clearR {n : ℕ} (r : Fin (n + 1) → R) (B : Matrix (Fin (n + 1)) (
   ext i j
   rw [Matrix.sub_apply, Matrix.of_apply]
   congr 1
-  rw [Matrix.mul_apply]
-  rw [Finset.sum_eq_single (0 : Fin (n + 1))]
+  rw [Matrix.mul_apply,
+    Finset.sum_eq_single_of_mem (0 : Fin (n + 1)) (Finset.mem_univ _) ?_]
   · rw [Matrix.vecMulVec_apply, Pi.single_eq_same, one_mul]
   · intro k _ hk
     rw [Matrix.vecMulVec_apply, Pi.single_eq_of_ne hk, zero_mul, mul_zero]
-  · intro habs
-    exact absurd (Finset.mem_univ _) habs
 
 /-- The row-clearing perturbation is square-zero when `q 0 = 0`. -/
 theorem vecMulVec_single_sq_left {n : ℕ} {q : Fin (n + 1) → R} (hq : q 0 = 0) :
@@ -445,14 +433,12 @@ theorem card_ker_pivot_block {n : ℕ} (A : Matrix (Fin (n + 1)) (Fin (n + 1)) R
 theorem det_pivot_block {n : ℕ} (A : Matrix (Fin (n + 1)) (Fin (n + 1)) R)
     (hcol : ∀ i, i ≠ 0 → A i 0 = 0) :
     A.det = A 0 0 * (A.submatrix Fin.succ Fin.succ).det := by
-  rw [Matrix.det_succ_column_zero]
-  rw [Finset.sum_eq_single (0 : Fin (n + 1))]
+  rw [Matrix.det_succ_column_zero,
+    Finset.sum_eq_single_of_mem (0 : Fin (n + 1)) (Finset.mem_univ _) ?_]
   · rw [Fin.succAbove_zero]
     simp
   · intro i _ hi
     rw [hcol i hi, mul_zero, zero_mul]
-  · intro habs
-    exact absurd (Finset.mem_univ _) habs
 
 end GenericMoves
 
@@ -478,10 +464,8 @@ theorem card_ker_mulVec_of_det :
       exact not_isUnit_cast_p (by omega) ((isUnit_pow_iff hc0).mp hcu)
     subst hc0
     rw [pow_zero]
-    have hall : ∀ x : Fin 0 → ZMod (p ^ N), M.mulVec x = 0 := by
-      intro x
-      funext i
-      exact i.elim0
+    have hall : ∀ x : Fin 0 → ZMod (p ^ N), M.mulVec x = 0 :=
+      fun _ => funext fun i => i.elim0
     haveI : Nonempty {x : Fin 0 → ZMod (p ^ N) // M.mulVec x = 0} := ⟨⟨0, hall 0⟩⟩
     haveI : Subsingleton {x : Fin 0 → ZMod (p ^ N) // M.mulVec x = 0} :=
       ⟨fun a b => Subtype.ext (Subsingleton.elim a.1 b.1)⟩
@@ -665,10 +649,8 @@ theorem fiber_card (hc : c < N)
   refine
     { toFun := fun x => ⟨x.1 - x₀, ?_⟩
       invFun := fun t => ⟨t.1 + x₀, ?_⟩
-      left_inv := fun x => Subtype.ext (by
-        funext i; simp only [Pi.add_apply, Pi.sub_apply]; ring)
-      right_inv := fun t => Subtype.ext (by
-        funext i; simp only [Pi.add_apply, Pi.sub_apply]; ring) }
+      left_inv := fun x => Subtype.ext (sub_add_cancel x.1 x₀)
+      right_inv := fun t => Subtype.ext (add_sub_cancel_right t.1 x₀) }
   · rw [Matrix.mulVec_sub, x.2, hx₀, sub_self]
   · rw [Matrix.mulVec_add, t.2, hx₀, zero_add]
 

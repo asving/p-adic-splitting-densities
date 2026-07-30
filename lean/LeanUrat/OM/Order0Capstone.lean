@@ -108,8 +108,7 @@ theorem cellsOfShapeWF_sepShape (n : ℕ) (lam : Nat.Partition n) :
 theorem sepShape_leaf (n : ℕ) (lam : Nat.Partition n) :
     ∀ c ∈ M7.cellsOfShapeWF (sepShape n lam), c.children = [] := by
   intro c hc
-  rw [cellsOfShapeWF_sepShape] at hc
-  rw [List.mem_map] at hc
+  rw [cellsOfShapeWF_sepShape, List.mem_map] at hc
   obtain ⟨d, _, rfl⟩ := hc
   rfl
 
@@ -123,11 +122,9 @@ theorem isRationalFn_finsetSum {α : Type*} (s : Finset α) (f : α → ℕ → 
   induction s using Finset.induction_on with
   | empty => simpa using isRationalFn_const 0
   | insert a s ha ih =>
-      have hfa : IsRationalFn (f a) := h a (Finset.mem_insert_self a s)
-      have hs : IsRationalFn (fun q => ∑ b ∈ s, f b q) :=
-        ih (fun b hb => h b (Finset.mem_insert_of_mem hb))
-      have := isRationalFn_add hfa hs
-      simpa [Finset.sum_insert ha] using this
+      simpa [Finset.sum_insert ha] using
+        isRationalFn_add (h a (Finset.mem_insert_self a s))
+          (ih fun b hb => h b (Finset.mem_insert_of_mem hb))
 
 /-! ## The Phase-A capstone -/
 
@@ -181,16 +178,9 @@ theorem montes_order0 (n : ℕ) (σ : FactorizationType)
       Filter.atTop
       (nhds (∑ T ∈ sepShapesOf n σ,
         rootCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T M9.realP)) :=
-    tendsto_finsetSum (sepShapesOf n σ) (fun T hT => h_node0 T hT)
-  have hpush : (fun N => (∑ T ∈ sepShapesOf n σ, M8.stratumCount (M9.rawCount n) T N)
-        / (M9.realP : ℚ) ^ (n * N))
-      = fun N => ∑ T ∈ sepShapesOf n σ,
-          M8.stratumCount (M9.rawCount n) T N / (M9.realP : ℚ) ^ (n * N) := by
-    funext N
-    rw [Finset.sum_div]
-  rw [hpush]
-  have hval := (hall M9.realP hq).2
-  rw [← hval]
+    tendsto_finsetSum (sepShapesOf n σ) h_node0
+  simp only [Finset.sum_div]
+  rw [← (hall M9.realP hq).2]
   exact hsum
 
 end LeanUrat.OM.Order0

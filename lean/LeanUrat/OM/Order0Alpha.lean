@@ -71,9 +71,8 @@ theorem classify_eq_sepShape_iff (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < 
     obtain ⟨hunit, hsq, hpat⟩ := classify_eq_sepShape_only_if p n N hN hn lam f h
     have hmon : ((f.1).map (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p))).Monic :=
       (f.2.1).map _
-    have hdeg : ((f.1).map (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p))).natDegree = n := by
-      rw [Polynomial.Monic.natDegree_map f.2.1]
-      exact f.2.2
+    have hdeg : ((f.1).map (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p))).natDegree = n :=
+      (f.2.1.natDegree_map _).trans f.2.2
     have hX : ¬ (X : (ZMod p)[X]) ∣ (f.1).map (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p)) := by
       intro hdvd
       rw [Polynomial.X_dvd_iff, Polynomial.coeff_map] at hdvd
@@ -99,16 +98,9 @@ theorem buildPoly_coeff_lt {R : Type*} [Semiring R] (n : ℕ) (c : ℕ → R) {k
     (buildPoly n c).coeff k = c k := by
   unfold buildPoly
   rw [Polynomial.coeff_add, Polynomial.coeff_X_pow, Polynomial.finsetSum_coeff]
-  rw [Finset.sum_congr rfl (fun i (_ : i ∈ Finset.range n) => by
-    rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow])]
-  rw [if_neg (by omega : ¬ k = n)]
-  have hite : ∀ i ∈ Finset.range n,
-      c i * (if k = i then (1 : R) else 0) = if k = i then c i else 0 := by
-    intro i _
-    by_cases h : k = i
-    · rw [if_pos h, if_pos h, mul_one]
-    · rw [if_neg h, if_neg h, mul_zero]
-  rw [Finset.sum_congr rfl hite, Finset.sum_ite_eq, if_pos (Finset.mem_range.mpr hk), zero_add]
+  simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero]
+  rw [if_neg (by omega : ¬ k = n), Finset.sum_ite_eq, if_pos (Finset.mem_range.mpr hk),
+    zero_add]
 
 theorem buildPoly_congr {R : Type*} [Semiring R] (n : ℕ) {c c' : ℕ → R}
     (h : ∀ i < n, c i = c' i) : buildPoly n c = buildPoly n c' := by
@@ -135,10 +127,8 @@ theorem buildPoly_natDegree {R : Type*} [Semiring R] [Nontrivial R] (n : ℕ) (c
 theorem buildPoly_map {R S : Type*} [Semiring R] [Semiring S] (φ : R →+* S) (n : ℕ) (c : ℕ → R) :
     (buildPoly n c).map φ = buildPoly n (fun i => φ (c i)) := by
   unfold buildPoly
-  rw [Polynomial.map_add, Polynomial.map_pow, Polynomial.map_X, Polynomial.map_sum]
-  congr 1
-  exact Finset.sum_congr rfl fun i _ => by
-    rw [Polynomial.map_mul, Polynomial.map_C, Polynomial.map_pow, Polynomial.map_X]
+  simp only [Polynomial.map_add, Polynomial.map_pow, Polynomial.map_X, Polynomial.map_sum,
+    Polynomial.map_mul, Polynomial.map_C]
 
 /-- **The monic decomposition**: a monic degree-`n` polynomial IS the build of its low
 coefficients (`as_sum_range'` + the monic leading coefficient). -/
@@ -303,8 +293,7 @@ theorem nodeVolumeExp_sepShape (n : ℕ) (hn : 0 < n) (lam : Nat.Partition n) :
   cases hl : lam.parts.sort (· ≤ ·) with
   | nil =>
       exfalso
-      rw [hl] at hsum
-      simp only [List.sum_nil] at hsum
+      rw [hl, List.sum_nil] at hsum
       omega
   | cons a l =>
       rw [hl] at hsum
@@ -323,9 +312,8 @@ abstract necklace count `Necklace.necklaceQ d q` (both are `(Σ_{e∣d} μ(e)·q
 theorem necklacePoly_eval (d q : ℕ) :
     (necklacePoly d).eval (q : ℚ) = Necklace.necklaceQ d q := by
   unfold necklacePoly Necklace.necklaceQ Necklace.necklaceSum
-  rw [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_finsetSum]
-  rw [Finset.sum_congr rfl (fun e (_ : e ∈ d.divisors) => by
-    rw [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow, Polynomial.eval_X])]
+  simp only [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_finsetSum,
+    Polynomial.eval_pow, Polynomial.eval_X]
   push_cast
   ring
 
@@ -347,11 +335,9 @@ theorem availPoly_eval (F : Type*) [Field F] [Finite F] (d : ℕ) (hd : 1 ≤ d)
 theorem choiceFactor_eval (F : Type*) [Field F] [Finite F] (d k : ℕ) (hd : 1 ≤ d) :
     (Polynomial.C (1 / (Nat.factorial k : ℚ)) * ffPoly (availPoly d) k).eval ((Nat.card F : ℚ))
       = ((avail F d).choose k : ℚ) := by
-  rw [Polynomial.eval_mul, Polynomial.eval_C]
   unfold ffPoly
-  rw [Polynomial.eval_prod]
-  rw [Finset.prod_congr rfl (fun i (_ : i ∈ Finset.range k) => by
-    rw [Polynomial.eval_sub, Polynomial.eval_C, availPoly_eval F d hd])]
+  simp only [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_prod,
+    Polynomial.eval_sub, availPoly_eval F d hd]
   rw [one_div_mul_eq_div]
   exact (cast_choose_eq_prod_range_div _ _).symm
 
@@ -367,8 +353,7 @@ theorem nodeChoicePolyQ_sepShape_eval (F : Type*) [Field F] [Finite F]
   unfold nodeChoicePoly
   rw [dSList_sepShape]
   have htf : (lam.parts.sort (· ≤ ·)).toFinset = lam.parts.toFinset := by
-    apply Finset.ext
-    intro a
+    ext a
     rw [List.mem_toFinset, Multiset.mem_toFinset, Multiset.mem_sort]
   rw [Polynomial.eval_prod, htf]
   refine Finset.prod_congr rfl fun d hd => ?_
@@ -395,10 +380,9 @@ theorem rootCount_sepShape_eval (F : Type*) [Field F] [Finite F] (n : ℕ) (hn :
           (Nat.card F))).prod)).prod = 1 := by
     apply List.prod_eq_one
     intro x hx
-    rw [List.mem_map] at hx
-    obtain ⟨c, hc, rfl⟩ := hx
+    obtain ⟨c, hc, rfl⟩ := List.mem_map.mp hx
     rw [sepShape_leaf n lam c hc]
-    simp
+    rfl
   rw [h1, mul_one, nodeChoicePolyQ_sepShape_eval F n lam, nodeVolumeExp_sepShape n hn lam,
     ← div_eq_mul_inv]
 
@@ -419,9 +403,7 @@ theorem h_node0_proved (n : ℕ) (hn : 0 < n) (σ : FactorizationType) :
   intro T hT
   rw [sepShapesOf, Finset.mem_image] at hT
   obtain ⟨lam, -, rfl⟩ := hT
-  have hP0 : (M9.realP : ℚ) ≠ 0 := by
-    unfold M9.realP
-    norm_num
+  have hP0 : (M9.realP : ℚ) ≠ 0 := by norm_num [M9.realP]
   rw [rootCount_sepShape_eval (ZMod M9.realP) n hn lam M9.realP (Nat.card_zmod M9.realP)]
   refine Filter.Tendsto.congr' ?_ tendsto_const_nhds
   filter_upwards [Filter.eventually_ge_atTop 1] with N hN1
@@ -432,8 +414,7 @@ theorem h_node0_proved (n : ℕ) (hn : 0 < n) (σ : FactorizationType) :
         = (M9.realP : ℚ) ^ ((M + 1 - 1) * n) * (M9.realP : ℚ) ^ n := by
       rw [← pow_add]
       congr 1
-      have hMn : M + 1 - 1 = M := rfl
-      rw [hMn]
+      rw [Nat.add_sub_cancel]
       ring
     rw [hexp]
     push_cast
@@ -557,12 +538,12 @@ theorem montes_order0_certified_value_pos :
   obtain ⟨num, den, hden, hall, hlim⟩ :=
     montes_order0_unconditional 2 (by norm_num) (unramType 2 (Nat.Partition.indiscrete 2))
   refine ⟨num, den, hden, hall, hlim, ?_⟩
-  have hq : (1 : ℕ) < M9.realP := by unfold M9.realP; norm_num
+  have hq : (1 : ℕ) < M9.realP := by norm_num [M9.realP]
   have hval := (hall M9.realP hq).2
   rw [← hval]
   have hpos : (0 : ℚ) < rootCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend
       (sepShape 2 (Nat.Partition.indiscrete 2)) M9.realP := by
-    rw [gate_rootCount_inert2]; norm_num
+    norm_num [gate_rootCount_inert2]
   calc (0 : ℚ)
       < rootCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend
           (sepShape 2 (Nat.Partition.indiscrete 2)) M9.realP := hpos

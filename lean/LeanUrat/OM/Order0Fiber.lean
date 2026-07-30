@@ -79,11 +79,9 @@ theorem classify_head_payload (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 0 < N)
     exact dif_pos hN
   obtain ⟨rest, hu⟩ :=
     classifyAux_head_payload p N n n f (B.rootCtx p N f) (B.clusterSize_rootCtx p N f)
-  have hu2 : B.classify p n N f
-      = ⟨((B.rootCtx p N f).order, M5.clusterSize (B.rootCtx p N f), (B.rootCtx p N f).dr)
-          :: rest, M5.encodeCells (B.rootCtx p N f)⟩ := hu
-  rw [hroot] at hu2
-  exact ⟨rest, hu2⟩
+  refine ⟨rest, ?_⟩
+  rw [← hroot]
+  exact hu
 
 /-! ## 2. Hull-scan geometry: vertices are support dots; face heights are injective at column 0 -/
 
@@ -157,9 +155,8 @@ theorem classify_eq_sepShape_only_if (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 
   obtain ⟨rest, hu⟩ := classify_head_payload p n N hN f
   rw [h] at hu
   have hcells : M5.encodeCells (B.fRootCtx p N hN f)
-      = (lam.parts.sort (· ≤ ·)).map (fun d => (⟨d, 1, flatFace n, []⟩ : ShapeCell)) := by
-    have hc := congrArg ClusterShape.cells hu
-    exact hc.symm
+      = (lam.parts.sort (· ≤ ·)).map (fun d => (⟨d, 1, flatFace n, []⟩ : ShapeCell)) :=
+    (congrArg ClusterShape.cells hu).symm
   -- ── the payload is nonempty (`lam.parts ≠ 0` since `0 < n`) ──
   have hparts_ne : lam.parts ≠ 0 := by
     intro h0

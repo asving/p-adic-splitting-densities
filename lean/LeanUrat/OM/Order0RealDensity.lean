@@ -115,7 +115,7 @@ theorem montes_order0_realDensity (n : ℕ) (hn : 0 < n) (σ : FactorizationType
   refine ⟨num, den, hden, hall, hlim, ?_⟩
   -- The certified value = num(realP)/den(realP) equals the engine per-shape sum, because the
   -- `∀ q'` rational identity holds at `q' = realP > 1`.
-  have hq : 1 < M9.realP := by unfold M9.realP; norm_num
+  have hq : 1 < M9.realP := by norm_num [M9.realP]
   exact ((hall M9.realP hq).2).symm
 
 /-- **Non-vacuity of `montes_order0_realDensity` (re-exported `1/4` gate).** At `n = 2` and the
@@ -239,17 +239,8 @@ theorem montes_order0_density_general_prime (p : ℕ) [Fact p.Prime] (n : ℕ) (
         rootCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend T p)) :=
     tendsto_finsetSum (sepShapesOf n σ)
       (fun T hT => montes_order0_perShape_density_general p n hn σ T hT)
-  have hpush : (fun N => (∑ T ∈ sepShapesOf n σ,
-        (Nat.card {f : QuotientBox.monicBox p N n // B.classify p n N f = T} : ℚ))
-        / (p : ℚ) ^ (n * N))
-      = fun N => ∑ T ∈ sepShapesOf n σ,
-          (Nat.card {f : QuotientBox.monicBox p N n // B.classify p n N f = T} : ℚ)
-            / (p : ℚ) ^ (n * N) := by
-    funext N
-    rw [Finset.sum_div]
-  rw [hpush]
-  have hval := (hall p hq).2
-  rw [← hval]
+  rw [← (hall p hq).2]
+  simp only [Finset.sum_div]
   exact hsum
 
 /-- **Non-vacuity of the general-prime density (the `1/4`-shaped gate at an arbitrary prime).** At
@@ -270,8 +261,7 @@ theorem montes_order0_density_general_prime_pos (p : ℕ) [Fact p.Prime] :
   refine ⟨num, den, hden, hall, ?_⟩
   have hp2 : (2 : ℕ) ≤ p := (Fact.out (p := p.Prime)).two_le
   have hq : 1 < p := by omega
-  have hval := (hall p hq).2
-  rw [← hval]
+  rw [← (hall p hq).2]
   -- the inert term is `#Irr₂(p)/p² > 0`, and every menu term is nonnegative.
   have hpos : (0 : ℚ) < rootCount M7.cellsOfShapeWF M6.treeSize M7.cellsOfShapeWF_descend
       (sepShape 2 (Nat.Partition.indiscrete 2)) p := by

@@ -303,16 +303,13 @@ lemma prod_mem_sepStratum {F : Type*} [Field F] [Finite F] [DecidableEq F]
   set s : Multiset F[X] := ∑ e ∈ P.parts.toFinset, (G e).val with hs_def
   have hdeg : ∀ d ∈ P.parts.toFinset, ∀ ψ ∈ G d, ψ.natDegree = d :=
     fun d hd ψ hψ => (mem_poolFinset.mp (hsub d hd ψ hψ)).1.2.2
-  have hirr : ∀ ψ ∈ s, Irreducible ψ := by
-    intro ψ hψ
+  have hirr : ∀ ψ ∈ s, Irreducible ψ := fun ψ hψ => by
     obtain ⟨d, hd, hmem⟩ := Multiset.mem_sum.mp hψ
     exact (mem_poolFinset.mp (hsub d hd ψ hmem)).1.1
-  have hmon : ∀ ψ ∈ s, ψ.Monic := by
-    intro ψ hψ
+  have hmon : ∀ ψ ∈ s, ψ.Monic := fun ψ hψ => by
     obtain ⟨d, hd, hmem⟩ := Multiset.mem_sum.mp hψ
     exact (mem_poolFinset.mp (hsub d hd ψ hmem)).1.2.1
-  have hneX : ∀ ψ ∈ s, ψ ≠ X := by
-    intro ψ hψ
+  have hneX : ∀ ψ ∈ s, ψ ≠ X := fun ψ hψ => by
     obtain ⟨d, hd, hmem⟩ := Multiset.mem_sum.mp hψ
     exact (mem_poolFinset.mp (hsub d hd ψ hmem)).2
   have hnodup : s.Nodup := nodup_sum_val P.parts.toFinset G hdeg

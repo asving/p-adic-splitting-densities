@@ -137,11 +137,8 @@ theorem nontrivial_Oring (hgm : g.Monic) (hN : 0 < N) (hm : 0 < g.natDegree) :
 
 /-- `(p : Oring)^N = 0` (image of `p^N = 0` in `ZMod (p^N)`). -/
 theorem isNilpotent_natCast_p (hN : 0 < N) : ((p : ℕ) : Oring p N g) ^ N = 0 := by
-  haveI := neZero_pow_base p N hN
-  rw [← Nat.cast_pow, ← map_natCast (algebraMap (ZMod (p ^ N)) (Oring p N g))]
-  have : ((p ^ N : ℕ) : ZMod (p ^ N)) = 0 := by
-    rw [ZMod.natCast_self]
-  rw [this, map_zero]
+  rw [← Nat.cast_pow, ← map_natCast (algebraMap (ZMod (p ^ N)) (Oring p N g)),
+    ZMod.natCast_self, map_zero]
 
 /-! ## Deliverable 2 (part B): the residue field `resField = AdjoinRoot ḡ` -/
 
@@ -153,9 +150,8 @@ theorem monic_gbar (hgm : g.Monic) (hN : 0 < N) : (gbar p N g hN).Monic :=
   hgm.map _
 
 theorem natDegree_gbar (hgm : g.Monic) (hN : 0 < N) :
-    (gbar p N g hN).natDegree = g.natDegree := by
-  rw [gbar]
-  exact hgm.natDegree_map _
+    (gbar p N g hN).natDegree = g.natDegree :=
+  hgm.natDegree_map _
 
 /-- The **residue field** `resField := AdjoinRoot ḡ` — the finite field `F_{p^m}` (residue field of
 `Oring`). It is a genuine `Field` because `ḡ` is irreducible (`hgirr`). -/
@@ -174,7 +170,6 @@ elements. -/
 theorem card_resField (hgm : g.Monic) (hN : 0 < N) (hgirr : Irreducible (gbar p N g hN)) :
     Nat.card (resField p N g hN) = p ^ g.natDegree := by
   haveI : NeZero p := ⟨hp.out.ne_zero⟩
-  haveI : Fact (Irreducible (gbar p N g hN)) := ⟨hgirr⟩
   have hne : (gbar p N g hN) ≠ 0 := (monic_gbar p N g hgm hN).ne_zero
   have hbasis : Nat.card (resField p N g hN)
       = Nat.card (Fin (gbar p N g hN).natDegree → ZMod p) :=
@@ -187,13 +182,8 @@ theorem card_resField (hgm : g.Monic) (hN : 0 < N) (hgirr : Irreducible (gbar p 
 theorem eval₂_g_root_gbar (hgm : g.Monic) (hN : 0 < N) :
     g.eval₂ ((AdjoinRoot.of (gbar p N g hN)).comp (redHom p N hN))
       (AdjoinRoot.root (gbar p N g hN)) = 0 := by
-  rw [← AdjoinRoot.algebraMap_eq]
-  have h1 : g.eval₂ ((algebraMap (ZMod p) (resField p N g hN)).comp (redHom p N hN))
-      (AdjoinRoot.root (gbar p N g hN))
-      = (g.map (redHom p N hN)).eval₂ (algebraMap (ZMod p) (resField p N g hN))
-          (AdjoinRoot.root (gbar p N g hN)) := by
-    rw [Polynomial.eval₂_map]
-  rw [h1, AdjoinRoot.algebraMap_eq, ← gbar, AdjoinRoot.eval₂_root]
+  rw [← AdjoinRoot.algebraMap_eq, ← Polynomial.eval₂_map, AdjoinRoot.algebraMap_eq, ← gbar,
+    AdjoinRoot.eval₂_root]
 
 /-- The residue hom `Oring → resField`, `t ↦ root ḡ`, base `ZMod (p^N) → ZMod p`. -/
 def resHom (hgm : g.Monic) (hN : 0 < N) : Oring p N g →+* resField p N g hN :=
@@ -208,8 +198,8 @@ theorem resHom_natCast_p (hgm : g.Monic) (hN : 0 < N) :
     resHom p N g hgm hN (((p : ℕ) : Oring p N g)) = 0 := by
   haveI := neZero_pow_base p N hN
   rw [resHom, ← map_natCast (algebraMap (ZMod (p ^ N)) (Oring p N g)) p,
-    AdjoinRoot.algebraMap_eq, AdjoinRoot.lift_of, RingHom.comp_apply, map_natCast]
-  simp only [ZMod.natCast_self, map_zero]
+    AdjoinRoot.algebraMap_eq, AdjoinRoot.lift_of, RingHom.comp_apply, map_natCast,
+    ZMod.natCast_self, map_zero]
 
 /-- `resHom (mk g q') = mk ḡ (q' mod p)` — `resHom` intertwines the two quotient maps along
 coefficientwise reduction. -/
@@ -250,8 +240,7 @@ theorem ker_resHom_eq_span_p (hgm : g.Monic) (hN : 0 < N) :
     intro x hx
     rw [RingHom.mem_ker] at hx
     obtain ⟨q', rfl⟩ := AdjoinRoot.mk_surjective x
-    rw [resHom_mk] at hx
-    rw [AdjoinRoot.mk_eq_zero] at hx
+    rw [resHom_mk, AdjoinRoot.mk_eq_zero] at hx
     obtain ⟨s, hs⟩ := hx
     obtain ⟨s', rfl⟩ := Polynomial.map_surjective (redHom p N hN)
       (ZMod.castHom_surjective (dvd_pow_self p hN.ne')) s
@@ -303,8 +292,7 @@ theorem isLocalRing (hgm : g.Monic) (hN : 0 < N) (hm : 0 < g.natDegree)
     isMaximal_span_p p N g hgm hN hgirr, fun J hJ => ?_⟩
   -- any maximal `J` contains the nilradical, hence `span{p}` (nilpotent), so `J = span{p}`.
   have hle : Ideal.span {((p : ℕ) : Oring p N g)} ≤ J := by
-    have hnil := isNilpotent_span_p p N g hN
-    obtain ⟨k, hk⟩ := hnil
+    obtain ⟨k, hk⟩ := isNilpotent_span_p p N g hN
     have hpk : Ideal.span {((p : ℕ) : Oring p N g)} ^ k ≤ J := by rw [hk]; exact bot_le
     exact hJ.isPrime.le_of_pow_le hpk
   exact ((isMaximal_span_p p N g hgm hN hgirr).eq_of_le hJ.ne_top hle).symm

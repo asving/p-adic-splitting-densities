@@ -138,7 +138,7 @@ theorem decidedConfig_childless : decidedConfig.children = [] := rfl
 theorem configOf_decidedTc_childless (s : ℕ) : (configOf (decidedTc s)).children = [] := by
   have h : configOf (decidedTc s) = decidedConfig := by
     simpa [configsOf] using configsOf_decidedTc s
-  rw [h]
+  rw [h, decidedConfig_childless]
 
 /-! ## 3. Evaluating `omCount (decidedTc s)` — the childless collapse applied -/
 

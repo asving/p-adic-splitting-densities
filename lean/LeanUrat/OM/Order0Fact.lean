@@ -38,10 +38,9 @@ variable {kS : Type*} [Field kS] [Finite kS]
 /-- **Any factor's prime power divides `R`** (the `M5.cells` divisibility chain, factored out):
 for `ψ ∈ F.factors`, `ψ ^ F.mult ψ ∣ R` via `prod_eq`. -/
 theorem pow_mult_dvd {R : kS[X]} (F : M4.ResidualFactorization R) {ψ : kS[X]}
-    (hψ : ψ ∈ F.factors) : ψ ^ F.mult ψ ∣ R := by
-  have hdvdprod : ψ ^ F.mult ψ ∣ ∏ φ ∈ F.factors, φ ^ F.mult φ :=
-    Finset.dvd_prod_of_mem (fun φ => φ ^ F.mult φ) hψ
-  exact (hdvdprod.mul_left _).trans (dvd_of_eq F.prod_eq.symm)
+    (hψ : ψ ∈ F.factors) : ψ ^ F.mult ψ ∣ R :=
+  ((Finset.dvd_prod_of_mem (fun φ => φ ^ F.mult φ) hψ).mul_left _).trans
+    (dvd_of_eq F.prod_eq.symm)
 
 /-- **Any factor divides `R`**: `ψ ∣ ψ ^ mult ψ ∣ R` using `mult_pos`. -/
 theorem factor_dvd {R : kS[X]} (F : M4.ResidualFactorization R) {ψ : kS[X]}

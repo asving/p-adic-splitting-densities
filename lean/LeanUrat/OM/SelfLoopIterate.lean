@@ -234,10 +234,9 @@ q^{−(s(s+1)/2−1)}`, NOT the bare box `slBoxRatio`), scaled by the depth-0 ce
 `SelfLoopResum.tendsto_aggSelfLoopTower` (CLOSED) via `Filter.Tendsto.const_mul`. -/
 theorem hnode_selfloop_order1 {s q : ℕ} (hq : 2 ≤ q) (hs : 2 ≤ s) (depth0 : ℚ) :
     Tendsto (fun d => aggSelfLoopBoxTower s q depth0 d) atTop
-      (nhds (depth0 * (MontesAxiom.countPivot s q)⁻¹)) := by
-  have h := (tendsto_aggSelfLoopTower hq hs).const_mul depth0
-  refine h.congr fun d => ?_
-  rw [aggSelfLoopBoxTower_eq]
+      (nhds (depth0 * (MontesAxiom.countPivot s q)⁻¹)) :=
+  ((tendsto_aggSelfLoopTower hq hs).const_mul depth0).congr fun d =>
+    (aggSelfLoopBoxTower_eq s q depth0 d).symm
 
 /-- **THE ENGINE TIE (deliverable 3 gate, child-normalized).**  At the minimal instance `p = q = 2,
 s = 2` with the CHILD depth-0 census `depth0 = (q−1)/q = 1/2`, the `h_node` limit is EXACTLY

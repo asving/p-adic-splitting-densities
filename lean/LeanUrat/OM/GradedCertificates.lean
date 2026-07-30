@@ -373,15 +373,10 @@ theorem imageSet_singleton (b : Block p N) : imageSet [b] = b.coset := by
   rw [imageSet_cons, imageSet_nil]
   ext P
   constructor
-  · rintro ⟨⟨A, B⟩, hmem, rfl⟩
-    rw [Set.mem_prod] at hmem
-    obtain ⟨hA, hB⟩ := hmem
-    rw [Set.mem_singleton_iff] at hB
-    have hB1 : B = 1 := hB
-    have hA1 : A ∈ b.coset := hA
-    show A * B ∈ b.coset
-    rw [hB1, mul_one]
-    exact hA1
+  · rintro ⟨⟨A, B⟩, ⟨hA, rfl⟩, rfl⟩
+    show A * 1 ∈ b.coset
+    rw [mul_one]
+    exact hA
   · intro hP
     exact ⟨(P, 1), Set.mem_prod.mpr ⟨hP, Set.mem_singleton_iff.mpr rfl⟩, mul_one P⟩
 
@@ -501,16 +496,10 @@ private theorem aSA_facts {A : (ZMod (2 ^ 5))[X]} (hA : A ∈ aSA) :
     Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)
   refine ⟨h2, h3, ?_, ?_⟩
   · have h := hdvd 0
-    have he : (A - aA₀).coeff 0 = A.coeff 0 - 4 := by
-      have hc : aA₀.coeff 0 = 4 := coeff_quad₀ _ _
-      rw [Polynomial.coeff_sub, hc]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show aA₀.coeff 0 = 4 from coeff_quad₀ _ _] at h
   · have h := hdvd 1
-    have he : (A - aA₀).coeff 1 = A.coeff 1 + 4 := by
-      have hc : aA₀.coeff 1 = -4 := coeff_quad₁ _ _
-      rw [Polynomial.coeff_sub, hc]
-      ring
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show aA₀.coeff 1 = -4 from coeff_quad₁ _ _,
+      sub_neg_eq_add] at h
 
 /-- Membership facts for the quartic coset. -/
 private theorem aSB_facts {B : (ZMod (2 ^ 5))[X]} (hB : B ∈ aSB) :
@@ -527,26 +516,16 @@ private theorem aSB_facts {B : (ZMod (2 ^ 5))[X]} (hB : B ∈ aSB) :
     Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)
   refine ⟨h4, h5, ?_, ?_, ?_, ?_⟩
   · have h := hdvd 0
-    have he : (B - aB₀).coeff 0 = B.coeff 0 - 4 := by
-      have hc : aB₀.coeff 0 = 4 := coeff_quart₀ _ _ _ _
-      rw [Polynomial.coeff_sub, hc]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 0 = 4 from coeff_quart₀ _ _ _ _] at h
   · have h := hdvd 1
-    have he : (B - aB₀).coeff 1 = B.coeff 1 := by
-      have hc : aB₀.coeff 1 = 0 := coeff_quart₁ _ _ _ _
-      rw [Polynomial.coeff_sub, hc, sub_zero]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 1 = 0 from coeff_quart₁ _ _ _ _,
+      sub_zero] at h
   · have h := hdvd 2
-    have he : (B - aB₀).coeff 2 = B.coeff 2 + 4 := by
-      have hc : aB₀.coeff 2 = -4 := coeff_quart₂ _ _ _ _
-      rw [Polynomial.coeff_sub, hc]
-      ring
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 2 = -4 from coeff_quart₂ _ _ _ _,
+      sub_neg_eq_add] at h
   · have h := hdvd 3
-    have he : (B - aB₀).coeff 3 = B.coeff 3 := by
-      have hc : aB₀.coeff 3 = 0 := coeff_quart₃ _ _ _ _
-      rw [Polynomial.coeff_sub, hc, sub_zero]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show aB₀.coeff 3 = 0 from coeff_quart₃ _ _ _ _,
+      sub_zero] at h
 
 /-- **Case-A pointwise graded upgrade** (W4d2′ TODO 1 at cell A): at EVERY pair of cell
 points the Schur-reduced 4×4 `β`-system carries a scale-2 diagonal-dominance certificate for
@@ -1103,8 +1082,8 @@ noncomputable def blockA₂ : Block 2 5 := ⟨aB₀, 4, aSB⟩
 /-- **The case-A graded chain certificate**: the two-block list carries the full W4d2′
 data — M1/M2/conv margins, the pointwise upgrade and the kernel count at every point. -/
 theorem caseA_chain : GradedChain [blockA₁, blockA₂] 4 := by
-  have h2 : GradedChain [blockA₂] 0 := by
-    have h := GradedChain.cons (p := 2) (N := 5) (l := []) (X := 0) blockA₂ 0
+  have h2 : GradedChain [blockA₂] 0 :=
+    GradedChain.cons (p := 2) (N := 5) (l := []) (X := 0) blockA₂ 0
       aFloB (fun _ => 0) aDepB (fun _ => 0) aDepB aB₀ 1 (by norm_num)
       subset_rfl (patternCell_saturatedAt hM1A₂)
       (imageSet_nil_subset_patternCell (fun _ => 0)) (imageSet_nil_saturatedAt (fun _ => 0))
@@ -1119,8 +1098,7 @@ theorem caseA_chain : GradedChain [blockA₁, blockA₂] 4 := by
         rw [hB1]
         exact polyKer_one_card A 4)
       GradedChain.nil
-    exact h
-  have h1 := GradedChain.cons (p := 2) (N := 5) (l := [blockA₂]) (X := 0) blockA₁ 4
+  exact GradedChain.cons (p := 2) (N := 5) (l := [blockA₂]) (X := 0) blockA₁ 4
     aFloA aFloB aDepA aDepB aQb aA₀ aB₀ (by norm_num)
     subset_rfl (patternCell_saturatedAt hM1A₁)
     (by rw [imageSet_singleton]; exact subset_rfl)
@@ -1133,7 +1111,6 @@ theorem caseA_chain : GradedChain [blockA₁, blockA₂] 4 := by
       rw [imageSet_singleton] at hB
       exact caseA_ker_card A hA B hB)
     h2
-  exact h1
 
 /-- **`h_node1_general` DISCHARGED at gate cell A** (W4d2′ TODO 4, case A): the block-product
 IMAGE `imageSet [blockA₁, blockA₂]` obeys the em-square law `#(imageSet) · 2⁴ = 2^(5+12) = 2¹⁷`
@@ -1148,7 +1125,7 @@ The single-block restart IS fully identified — `RestartEquiv.restartEquiv` is 
 bijection to the classifier fiber. -/
 theorem h_node1_at_A :
     Nat.card (imageSet [blockA₁, blockA₂]) * 2 ^ 4 = 2 ^ 17 := by
-  have h := HNode1.h_node1_general 2 5 caseA_chain
+  exact HNode1.h_node1_general 2 5 caseA_chain
     (fun b => if b.deg = 2 then 5 else 12)
     (by
       intro b hb
@@ -1159,7 +1136,6 @@ theorem h_node1_at_A :
         · subst h2
           exact caseA_card_SB.trans (by decide)
         · simp at h2)
-  exact h
 
 /-- The block-product IMAGE count at cell A, through the chain: `8192` — matches
 `caseA_image_card`.  (Not the classifier multi-block fiber; see `h_node1_at_A` scope note and
@@ -1247,26 +1223,16 @@ private theorem cSA_facts {A : (ZMod (3 ^ 4))[X]} (hA : A ∈ cSA) :
     Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)
   refine ⟨h4, h5, ?_, ?_, ?_, ?_⟩
   · have h := hdvd 0
-    have he : (A - cA₀).coeff 0 = A.coeff 0 - 9 := by
-      have hc : cA₀.coeff 0 = 9 := coeff_quart₀ _ _ _ _
-      rw [Polynomial.coeff_sub, hc]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show cA₀.coeff 0 = 9 from coeff_quart₀ _ _ _ _] at h
   · have h := hdvd 1
-    have he : (A - cA₀).coeff 1 = A.coeff 1 := by
-      have hc : cA₀.coeff 1 = 0 := coeff_quart₁ _ _ _ _
-      rw [Polynomial.coeff_sub, hc, sub_zero]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show cA₀.coeff 1 = 0 from coeff_quart₁ _ _ _ _,
+      sub_zero] at h
   · have h := hdvd 2
-    have he : (A - cA₀).coeff 2 = A.coeff 2 + 6 := by
-      have hc : cA₀.coeff 2 = -6 := coeff_quart₂ _ _ _ _
-      rw [Polynomial.coeff_sub, hc]
-      ring
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show cA₀.coeff 2 = -6 from coeff_quart₂ _ _ _ _,
+      sub_neg_eq_add] at h
   · have h := hdvd 3
-    have he : (A - cA₀).coeff 3 = A.coeff 3 := by
-      have hc : cA₀.coeff 3 = 0 := coeff_quart₃ _ _ _ _
-      rw [Polynomial.coeff_sub, hc, sub_zero]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show cA₀.coeff 3 = 0 from coeff_quart₃ _ _ _ _,
+      sub_zero] at h
 
 /-- Membership facts for the quadratic coset. -/
 private theorem cSB_facts {B : (ZMod (3 ^ 4))[X]} (hB : B ∈ cSB) :
@@ -1281,16 +1247,11 @@ private theorem cSB_facts {B : (ZMod (3 ^ 4))[X]} (hB : B ∈ cSB) :
     Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)
   refine ⟨h2, h3, ?_, ?_⟩
   · have h := hdvd 0
-    have he : (B - cB₀).coeff 0 = B.coeff 0 + 6 := by
-      have hc : cB₀.coeff 0 = -6 := coeff_quad₀ _ _
-      rw [Polynomial.coeff_sub, hc]
-      ring
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show cB₀.coeff 0 = -6 from coeff_quad₀ _ _,
+      sub_neg_eq_add] at h
   · have h := hdvd 1
-    have he : (B - cB₀).coeff 1 = B.coeff 1 := by
-      have hc : cB₀.coeff 1 = 0 := coeff_quad₁ _ _
-      rw [Polynomial.coeff_sub, hc, sub_zero]
-    rwa [he] at h
+    rwa [Polynomial.coeff_sub, show cB₀.coeff 1 = 0 from coeff_quad₁ _ _,
+      sub_zero] at h
 
 /-- **Case-C pointwise graded upgrade** (W4d2′ TODO 1 at cell C): the child block's four
 unit rows eliminate `α`; the Schur-reduced 2×2 `β`-system carries a scale-2 certificate for
@@ -1851,8 +1812,8 @@ noncomputable def blockC₂ : Block 3 4 := ⟨cB₀, 2, cSB⟩
 
 /-- **The case-C graded chain certificate.** -/
 theorem caseC_chain : GradedChain [blockC₁, blockC₂] 4 := by
-  have h2 : GradedChain [blockC₂] 0 := by
-    have h := GradedChain.cons (p := 3) (N := 4) (l := []) (X := 0) blockC₂ 0
+  have h2 : GradedChain [blockC₂] 0 :=
+    GradedChain.cons (p := 3) (N := 4) (l := []) (X := 0) blockC₂ 0
       cFloB (fun _ => 0) cDepB (fun _ => 0) cDepB cB₀ 1 (by norm_num)
       subset_rfl (patternCell_saturatedAt hM1C₂)
       (imageSet_nil_subset_patternCell (fun _ => 0)) (imageSet_nil_saturatedAt (fun _ => 0))
@@ -1867,8 +1828,7 @@ theorem caseC_chain : GradedChain [blockC₁, blockC₂] 4 := by
         rw [hB1]
         exact polyKer_one_card A 2)
       GradedChain.nil
-    exact h
-  have h1 := GradedChain.cons (p := 3) (N := 4) (l := [blockC₂]) (X := 0) blockC₁ 4
+  exact GradedChain.cons (p := 3) (N := 4) (l := [blockC₂]) (X := 0) blockC₁ 4
     cFloA cFloB cDepA cDepB cQb cA₀ cB₀ (by norm_num)
     subset_rfl (patternCell_saturatedAt hM1C₁)
     (by rw [imageSet_singleton]; exact subset_rfl)
@@ -1881,7 +1841,6 @@ theorem caseC_chain : GradedChain [blockC₁, blockC₂] 4 := by
       rw [imageSet_singleton] at hB
       exact caseC_ker_card A hA B hB)
     h2
-  exact h1
 
 /-- **`h_node1_general` DISCHARGED at gate cell C** (W4d2′ TODO 4, case C): the block-product
 IMAGE obeys the em-square law `#(imageSet) · 3⁴ = 3^(8+5) = 3¹³` — case-C hypothesis gate closed
@@ -1890,7 +1849,7 @@ block-product image, not the classifier multi-block fiber; the identification is
 obligation **W4d2-surj** (gate-verified d2-0, not yet formalized). -/
 theorem h_node1_at_C :
     Nat.card (imageSet [blockC₁, blockC₂]) * 3 ^ 4 = 3 ^ 13 := by
-  have h := HNode1.h_node1_general 3 4 caseC_chain
+  exact HNode1.h_node1_general 3 4 caseC_chain
     (fun b => if b.deg = 4 then 8 else 5)
     (by
       intro b hb
@@ -1901,7 +1860,6 @@ theorem h_node1_at_C :
         · subst h2
           exact caseC_card_SB.trans (by decide)
         · simp at h2)
-  exact h
 
 /-- The block-product IMAGE count at cell C, through the chain: `19683` — matches
 `caseC_image_card`.  (Not the classifier multi-block fiber; see `h_node1_at_C` scope note and

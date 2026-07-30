@@ -200,8 +200,7 @@ theorem encodeCells_of_squarefree {n : ℕ} (T : M5.OMType)
       = (lam.parts.sort (· ≤ ·)).map (fun d => (⟨d, T.δ, T.Nr, []⟩ : ShapeCell)) := by
   have hdeg := factors_degreeList_eq_sort T.Rr
     (Classical.choice (M4.factorize_any T.Rr)) lam hfac
-  rw [M5.encodeCells, M5.cells]
-  rw [List.map_map, ← hdeg, List.map_map]
+  rw [M5.encodeCells, M5.cells, List.map_map, ← hdeg, List.map_map]
   apply List.map_congr_left
   rintro ⟨ψ, hψ⟩ hmem
   have h1 : (Classical.choice (M4.factorize_any T.Rr)).mult ψ = 1 :=
