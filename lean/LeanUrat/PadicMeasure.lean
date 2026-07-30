@@ -757,8 +757,13 @@ theorem clusterMeasure_isRational
 /-- **The measure-layer deliverable, packaged.** Instantiating the derived recursion at the actual
 p-adic cluster measure (the `AX_cellRecursion` identity holding for it by definition) yields: the
 per-shape cluster measure is a uniform rational function of `q`. This is `clusterVolume_rational`'s
-content over the abstract `OMShape` — a THEOREM modulo `{AX_cellRecursion, AX_columnMeasure} + GMN`,
-NOT an axiom. The `ClusterShape ↔ OMShape` bridge (D1) and the re-pointing of
+content over the abstract `OMShape` — a THEOREM modulo the cell-recursion HYPOTHESIS `hAX` plus the
+GMN structural interface, NOT an axiom. Compiled `#print axioms` footprint (verified 2026-07-30,
+verify-2 fold-in): `[propext, Classical.choice, Quot.sound, descend_size_lt, omCells]` — the recursion
+enters as the hypothesis `hAX`, so neither `AX_cellRecursion` nor `clusterMeasure` appears; the
+formerly-cited `AX_columnMeasure` was DELETED as false-as-stated (U3, 2026-07-02 — see the tombstone
+above), its content surviving only as `L4.cellVolume_eq`'s `hfactor` hypothesis. The
+`ClusterShape ↔ OMShape` bridge (D1) and the re-pointing of
 `Interface.clusterVolume_rational` are the NEXT agent's plumbing step. -/
 theorem clusterVolume_isRational_of_cellRecursion
     (cm : OMShape → ℕ → ℚ)
@@ -779,8 +784,13 @@ discharges the recursion hypothesis of `clusterMeasure_isRational`, which then c
 cluster volume `clusterMeasure T` is a uniform rational function of `q` for every shape `T`.
 
 This is the measure-layer's headline: per-shape cluster volume rationality is a THEOREM modulo
-`{clusterMeasure (fixed interface object), AX_cellRecursion, AX_columnMeasure (box), GMN-structural}`
-(its `#print axioms` footprint). **Soundness note (2026-06-19 fix):** unlike the earlier version, this
+`{clusterMeasure (fixed interface object), AX_cellRecursion, omCells, descend_size_lt (GMN-structural)}`
+— its compiled `#print axioms` footprint, re-verified 2026-07-30 (verify-2 fold-in):
+`[propext, Classical.choice, Quot.sound, AX_cellRecursion, clusterMeasure, descend_size_lt, omCells]`.
+(An earlier revision of this docstring also listed `AX_columnMeasure`; that axiom was DELETED as
+false-as-stated on 2026-07-02 — U3, see the tombstone above — and its box/shell content enters only as
+`L4.cellVolume_eq`'s `hfactor` hypothesis, so it is NOT part of this theorem's trusted base.)
+**Soundness note (2026-06-19 fix):** unlike the earlier version, this
 is stated about the ONE fixed `clusterMeasure`, not universally quantified over all functions — the
 old `∀ clusterMeasure, …` capstone "pinned nothing" (D-CAPSTONE) and rested on the inconsistent free
 `pivot` axiom (D-INCONS). Here `AX_cellRecursion` is genuinely consumed and is satisfiable (witnessed

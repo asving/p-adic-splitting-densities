@@ -174,7 +174,8 @@
    ],
    "statement": "theorem L2_coeffLoc (σ : Stage p F) (M : GenuineStageModel σ) : CoeffLocLaw σ := sorry",
    "sketch": "S4 (DefsL `CoeffLocLaw`) DERIVED from the genuine model: the coefficient sub-localization at ⟨U⟩ (no Y) has degree-0 part = K and z pinned; transported across `M.Θ`. Replaces the DefsL definitional `coeffLocSR` with the genuine object's image.",
-   "faithfulness": "Discharges audit #5 §2: coeffLoc now has source provenance."
+   "faithfulness": "Discharges audit #5 §2: coeffLoc now has source provenance.",
+   "status_asbuilt_2026-07-30": "PARTIAL (queue item A14, GOLF_CAMPAIGN_2026-07-30.md; status field added 2026-07-30 verify-2 fold-in): the live Fence-A module L2_coeffLoc_v2.lean carries 2 open sorries (the ⊇K and P1 z-pinning conjuncts, lines 161/169 at HEAD), so `CoeffLocLaw σ` is NOT fully established and the sketch must not be read as a completed derivation; `L4_genuine_imp_stageCoreL` (v2) inherits sorryAx through it. Classified FAITHLESS by MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #15. The superseded v1 module (L2_coeffLoc.lean, 3 sorries) declares the same root-level name — quarantine-bound (R2)."
   },
   {
    "id": "L3_Tunit_deg1",
@@ -197,8 +198,8 @@
     "L3_Tunit_deg1"
    ],
    "statement": "theorem L3_iso_exists (σ : Stage p F) (M : GenuineStageModel σ) : letI := M.Loring; Nonempty (M.Lo ≃+* LExt ↥σ.K) := sorry",
-   "sketch": "D.1(e) as a THEOREM: the degree-1 unit induces `Θ : L ≅ L₀[T^{±1}]`, each `L_γ = T^γ·L₀` free rank 1. Witnessed by `M.Θ`; the fan-out CONSTRUCTS such Θ from the graded ring + degree-1 unit + the `L₀≅K[z^{±1}]` fiat `hL0`. The single genuinely-hard localization unit.",
-   "faithfulness": "D.1(e). The `L₀ ≅ K[z^{±1}]` step remains the standing fiat (blueprint gap G-L0)."
+   "sketch": "D.1(e) as a THEOREM: the degree-1 unit induces `Θ : L ≅ L₀[T^{±1}]`, each `L_γ = T^γ·L₀` free rank 1. Witnessed by `M.Θ`; the fan-out CONSTRUCTS such Θ from the graded ring + degree-1 unit + the `L₀≅K[z^{±1}]` codomain fiat (CORRECTED 2026-07-30 verify-2 fold-in: earlier text cited 'the fiat hL0', but `GenuineStageModel` has NO `hL0` field — the fiat is hard-coded in Θ's codomain type `LExt ↥σ.K`, a silent codomain choice; MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §A.2). The single genuinely-hard localization unit.",
+   "faithfulness": "D.1(e). The `L₀ ≅ K[z^{±1}]` step remains the standing fiat (blueprint gap G-L0) — carried by Θ's codomain type, not by any explicit hypothesis field."
   },
   {
    "id": "L3_residual_mul",
@@ -244,7 +245,8 @@
    ],
    "statement": "theorem L4_genuine_imp_stageCoreL (σ : Stage p F) (M : GenuineStageModel σ) : StageCoreL σ := sorry",
    "sketch": "THE BRIDGE: a genuine graded model implies the round-5 DefsL certificate `StageCoreL` (= `StageCore` + `TvecUnitLaw` + `CoeffLocLaw`). `TvecUnitLaw` from `L3_iso_exists`+`L3_Tunit_deg1` (the T-vector product is an identity of the genuine units mapped by Θ); `CoeffLocLaw` from `L2_coeffLoc`; `StageCore` tie laws from `L1_initialForm_add_lt`/`L3_residual_mul`. Every StageCoreL law now has provenance.",
-   "faithfulness": "Discharges audit #5 §7: the theorem interface now carries `GenuineStageModel`."
+   "faithfulness": "Discharges audit #5 §7: the theorem interface now carries `GenuineStageModel`.",
+   "status_asbuilt_2026-07-30": "SORRIED, both versions (queue items A12/A13, GOLF_CAMPAIGN_2026-07-30.md; status field added 2026-07-30 verify-2 fold-in): v1 (L4_genuine_imp_stageCoreL.lean) is a bare `:= sorry` whose grounded header argues the statement is NOT provable from its hypotheses (statement-level under-hypothesization — sign-off pending, A13); v2 (L4_genuine_imp_stageCoreL_v2.lean, same root-level name — collision quarantine-bound, R2) proves all but 11 pinned obligations (sorries at lines 395-422 at HEAD) and inherits sorryAx from L2_coeffLoc_v2's two open conjuncts. Classified FAITHLESS by MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #21 (StageCoreL content absent from `M`)."
   },
   {
    "id": "L4_baseStage_exists",
@@ -257,8 +259,9 @@
     "L4_genuine_imp_stageCoreL"
    ],
    "statement": "theorem L4_baseStage_exists (σ : Stage p F) (hbase : σ.wPrev = fun _ => (0 : ℤ)) : Nonempty (GenuineStageModel σ) ∧ StageCoreL σ := sorry",
-   "sketch": "The deferred `L1.baseStage_exists`, reborn NON-VACUOUS: for the base stage (`wPrev = 0`, the Gauss root) CONSTRUCT a `GenuineStageModel` — `S` from `σ.w`, gr the base graded ring `F[π,y]` (`L1_gradedRingStr_exists`), `L = F[π^{±1},y^{±1}]` (`L2_loc_exists`), `T=π^s y^t`, Θ the base D.1(e) iso — then `StageCoreL` via `L4_genuine_imp_stageCoreL`. (Faithful hypotheses: the full base data of §B2-DEF D.2; `hbase` shown here is the representative pin.)",
-   "faithfulness": "One of the five R5.3-deferred units; the tower's non-vacuity anchor."
+   "sketch": "The deferred `L1.baseStage_exists`, INTENDED as the non-vacuous rebirth ('reborn NON-VACUOUS' in the original text — see held_status_asbuilt_2026-07-30: as RECORDED the hypothesis is unsatisfiable, so the recorded statement is vacuous): for the base stage (`wPrev = 0`, the Gauss root) CONSTRUCT a `GenuineStageModel` — `S` from `σ.w`, gr the base graded ring `F[π,y]` (`L1_gradedRingStr_exists`), `L = F[π^{±1},y^{±1}]` (`L2_loc_exists`), `T=π^s y^t`, Θ the base D.1(e) iso — then `StageCoreL` via `L4_genuine_imp_stageCoreL`. (Faithful hypotheses: the full base data of §B2-DEF D.2; `hbase` shown here is the representative pin.)",
+   "faithfulness": "One of the five R5.3-deferred units; the tower's non-vacuity anchor.",
+   "held_status_asbuilt_2026-07-30": "HELD, FAITHLESS as stated (MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #22; status field added 2026-07-30 verify-2 fold-in — no held/FAITHLESS marker was recorded here before). The corpus's own machine-checked certificate `baseStage_hbase_empty` (HeldUnits_certs.lean, Lean-core) proves the hypothesis `σ.wPrev = fun _ => 0` UNSATISFIABLE (it contradicts `hS6b`), so the recorded statement is provable only VACUOUSLY. Proving it as recorded would be dishonest; it needs the faithful §B2-DEF D.2 base-data restatement."
   },
   {
    "id": "L4_base_nonvacuity_gate",
@@ -269,7 +272,8 @@
    ],
    "statement": "theorem L4_base_nonvacuity_gate : ∃ (σ : Stage 2 (GaloisField 2 2)), Nonempty (GenuineStageModel σ) := sorry",
    "sketch": "The deferred `L1.base_nonvacuity_gate`: a CONCRETE inhabitant — p=2, F=GaloisField 2 2, φ=X²+X+1 (as in `DevBijection.caseEPhi`) — exhibiting a genuine graded model, so `GenuineStageModel` is not empty. `Field`/`Finite` instances resolve from mathlib.",
-   "faithfulness": "The second of the five; concrete witness that the whole bundle is inhabited."
+   "faithfulness": "The second of the five; concrete witness that the whole bundle is inhabited.",
+   "held_status_asbuilt_2026-07-30": "HELD, FAITHLESS as stated (MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #23; status field added 2026-07-30 verify-2 fold-in). The existential does not pin the witness to the D.2 base construction, so as stated it could certify an unrelated stage."
   },
   {
    "id": "L4_TRANSvi",
@@ -281,7 +285,8 @@
    ],
    "statement": "theorem L4_TRANSvi (σ σ' : Stage p F) (M : GenuineStageModel σ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ) (ht : TransitionCoreL σ σ' Φhat e' h' zbar) (M' : GenuineStageModel σ') : CoeffLocLaw σ' ∧ TvecUnitLaw σ' := sorry",
    "sketch": "The deferred `L4.TRANSvi`, now with GENUINE provenance: the child S4 + T-vector product laws follow from the CHILD's graded model `M'` (built by `L4_TRANSstage`) via `L4_genuine_imp_stageCoreL`/`L2_coeffLoc`, no longer inferred from records that do not entail them (audit #5 §5).",
-   "faithfulness": "Third of the five; resolves audit #5's `TRANSvi` overclaim by consuming the child model."
+   "faithfulness": "Third of the five; resolves audit #5's `TRANSvi` overclaim by consuming the child model.",
+   "held_status_asbuilt_2026-07-30": "HELD, FAITHLESS as stated (MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #24; status field added 2026-07-30 verify-2 fold-in). `M'` repairs initial-form provenance but the coefficient-sublocalization and transported-T-vector premises are still missing from `Stage`+`GenuineStageModel`. The interface-supported fragment is machine-checked as `tvec_units_fragment` (HeldUnits_certs.lean, Lean-core); the T-vector PRODUCT law is not derivable (the ℤ-exponents of `σ.Tvec` are unconstrained)."
   },
   {
    "id": "L4_TRANSstage",
@@ -293,7 +298,8 @@
    ],
    "statement": "theorem L4_TRANSstage (σ : Stage p F) (M : GenuineStageModel σ) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (zbar : Fˣ) : ∃ (σ' : Stage p F), TransitionCoreL σ σ' Φhat e' h' zbar ∧ Nonempty (GenuineStageModel σ') := sorry",
    "sketch": "The deferred `L4.TRANSstage`, CONSTRUCTIVE: from the parent genuine model build the CHILD graded model — `w'` the slot-minimum valuation (D.7(i)-(iii)), gr' its associated graded (a genuine domain by D.7(iii)), L' the localization, T'=V'^{s'}Y'^{t'} the transported unit (D.7(vi)-(vii)), Θ' the child iso. `TransitionCoreL` records the transport. The induction step at the genuine objects.",
-   "faithfulness": "Fourth of the five; the tower induction closes at the genuine level."
+   "faithfulness": "Fourth of the five; the tower induction closes at the genuine level.",
+   "held_status_asbuilt_2026-07-30": "HELD, FAITHLESS as stated (MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #25; status field added 2026-07-30 verify-2 fold-in). The statement quantifies over ALL `e'` with none of the standard-lift/positivity/D.3-D.7 hypotheses; the machine-checked certificate `transitionCoreL_e0_false` (HeldUnits_certs.lean, Lean-core) shows `e' = 0` forces False, so as recorded it is provable only if `GenuineStageModel σ` is empty — non-vacuously UNPROVABLE as stated."
   },
   {
    "id": "L5_recTRANSRS",
@@ -305,7 +311,8 @@
    ],
    "statement": "theorem L5_recTRANSRS (σ σ' : Stage p F) (M : GenuineStageModel σ) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecentering σ σ' cc tt) : Nonempty (GenuineStageModel σ') ∧ StageCoreL σ' := sorry",
    "sketch": "The deferred `L5.recTRANSRS`: recentering (e_read=1, z'=z-c̃) transports the genuine model. At e=1 the T-vector is coefficient-pure (`σ.t=0`), gr'/L' share the parent's up to the change of transcendental (D.10), so `GenuineStageModel σ'` is built from `M` and `hrec`; `StageCoreL σ'` via the bridge. The child normalizing unit is LITERALLY the parent's — equality of ACTUAL objects (audit #5's defect).",
-   "faithfulness": "Fifth of the five; the recentered stage is a full genuine stage."
+   "faithfulness": "Fifth of the five; the recentered stage is a full genuine stage.",
+   "held_status_asbuilt_2026-07-30": "HELD, FAITHLESS as stated (MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #26; status field added 2026-07-30 verify-2 fold-in). The machine-checked certificate `recTRANSRS_only_vacuous` (HeldUnits_L5_cert.lean, Lean-core) proves that if the statement were provable as recorded, NO recentering parent has a genuine model (apply it to the reps-stripped clone and hit `reps_nonempty`) — i.e. it can only ever be proved vacuously. `IsRecentering` plus a parent model do not supply the localization/graded-ring transport."
   }
  ]
 }

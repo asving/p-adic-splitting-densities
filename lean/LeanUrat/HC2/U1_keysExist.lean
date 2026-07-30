@@ -34,7 +34,10 @@ unit (the `U27_OBSTRUCTION` pattern) compiles the retired-form refutation — th
 verbatim retired sentence's falsity given any recentering-ended coherent history
 (`retiredKeysExist_false_of_witness`); Lean-core axioms. The inhabitation input (a
 concrete 2-node coherent history) remains the HC-1 S9-adjacent child-stage construction
-(wave 4) — recorded in that file's honesty perimeter, same kernel as K1_vertexPin's sorry.
+(wave 4) — recorded in that file's honesty perimeter. [STALE POINTER CORRECTED
+2026-07-30 verify-2 fold-in: this line formerly ended "same kernel as K1_vertexPin's
+sorry"; the K1 kernel is now sorry-free/Lean-core (re-verified 2026-07-30) — the
+standing blocker is task #44's `HistoryCoherent` keying repair + 2-node `ReadsOf` gate.]
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

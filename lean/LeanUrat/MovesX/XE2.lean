@@ -24,6 +24,17 @@ exponent; TALL LEG: TL. Constants assembled n-only (c₄ from cd, s, n − 1; th
 p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} absorption into c₃ — p-free).
 deps: XC.3, XE.1*, XF.7, XG.2b–d. difficulty: HARD.
 hyp_fields: the FULL tag set, verbatim the note's "CONSUMERS … inherit ALL tags above".
+AS-BUILT (2026-07-30 verify-2 fold-in): the sketch above is the BLUEPRINT route; the
+compiled body does NOT take it. The proof never forms the discZero/ns/InfTree
+null-tagged pieces, never uses NS, and never invokes any XG.2 unit (zero references to
+detectJoin/interTrichotomy/treeFinite in this file or XE3.lean — the XG2b/XG2c/XG2d
+imports are import-only, as are the corresponding MANIFEST deps). BR's clause 2 (the
+null complement) absorbs everything except the witness piece directly; BR's clause-1
+coverage inclusion is destructured (`hcover`, line ~233) but never consumed. discZero
+appears only inside the deep-leg inclusion (line ~267, via XC.3 + XF.7). Load-bearing
+consumption cone as built: Defs, XC.3, XF.7 (XE.1a–h are def-witness,
+elaboration-only). Tags AF/CP/NS/R are unused here (statement-fenced, kept per the
+note's tag list).
 -/
 import LeanUrat.MovesX.Defs
 import LeanUrat.MovesX.XC3

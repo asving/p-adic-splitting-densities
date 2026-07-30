@@ -20,7 +20,9 @@ note below, which is grounded in the actual field lists of `GenuineStageModel` a
 ## Why this is a `sorry` and not a proof (interface underspecification)
 
 `StageCoreL σ` (DefsL) unfolds to `⟨core : StageCore σ, tvec_unit : TvecUnitLaw σ,
-coeff_loc : CoeffLocLaw σ⟩`, and `StageCore σ` (DefsCore) demands, among its 12 fields:
+coeff_loc : CoeffLocLaw σ⟩`, and `StageCore σ` (DefsCore) demands, among its 11 fields
+(count corrected 2026-07-30 verify-2 fold-in; previously mis-stated as 12 — the v2 header
+and its `refine ⟨11 holes⟩` pattern count 11 correctly):
 
 * `reps_nonempty : σ.reps ≠ []`
 * `p_is_rep : Polynomial.C (p : ℤ_[p]) ∈ σ.reps`

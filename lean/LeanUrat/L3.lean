@@ -139,6 +139,10 @@ def squarefreeMonicDegree (F : Type*) [Field F] (m : ℕ) : Set F[X] :=
 The live, sorry-free version is `LeanUrat.L3Squarefree.card_squarefreeMonicDegree` (proved by the
 `A·B²` unique-factorization convolution). That is the one `AxChk` prints and every consumer cites
 (`BB3inf`:147, `MontesAxiom`:259, `PadicMeasure`:549, `OM.ResidueCount`:59, `OM.Discriminant`:274).
+[Consumer list as of 2026-07-05; correction 2026-07-30, verify-2 fold-in: `BB3inf` was RETIRED TO
+QUARANTINE on 2026-07-07 (`quarantine/BB3inf_2026-07-07.lean.txt`) and is no longer a live consumer;
+as-built consumers: `MontesAxiom`:279, `PadicMeasure`:549, `OM.ResidueCount`:59,
+`OM.Discriminant`:274.]
 The `def squarefreeMonicDegree` above is kept — it is the shared statement those consumers use. -/
 
 end Counts
@@ -158,8 +162,10 @@ shared statement `L3Gauss` and other consumers use. -/
 /-! ## 4. Universality (part (b)/(c)): shape counts are polynomials in `Q`
 
 Theorem C of `notes/L3_proof.md §2.2` packages the shape count as `S_λ(Q) = ∏_d C(N_d(Q)+r_d-1, r_d)`,
-a single polynomial in `Q`. Since it is built from `gauss_necklace_count` (Theorem B) by
-multiset-coefficient products, its formalization is downstream of the flagged `sorry` above; the
+a single polynomial in `Q`. It is built from `gauss_necklace_count` (Theorem B) by
+multiset-coefficient products; Theorem B is PROVED sorry-free in `LeanUrat.L3Gauss` (this file carries
+NO open `sorry` — the sorried duplicate that once stood here was deleted 2026-07-05, see the tombstones
+above; wording corrected 2026-07-30, verify-2 fold-in). The
 *universality* claim (a single `S_λ ∈ ℚ[t]` valid for every `Q`) is the polynomial structure
 recorded in the interface `perShapeVolume_rational`. We do not restate it here; the load-bearing
 proved content of L3 is the separability core (§1) and the monic count (§2). -/

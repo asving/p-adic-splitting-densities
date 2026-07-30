@@ -122,8 +122,10 @@ def maxH (H : XHistory n) : ℕ := (H.map (·.h)).foldr max 0
 def sumH (H : XHistory n) : ℕ := (H.map (·.h)).sum
 
 /-- History well-formedness: only the last node may be terminal (`termLast`), and the
-product of increment degrees divides the ambient degree budget (`degProd` — §B2-DEF
-"Π e_i ≤ n along a branch"; ACCEPTED source, planned MovesSp discharge). -/
+product of increment degrees is bounded by the ambient degree budget (`degProd` — §B2-DEF
+"Π e_i ≤ n along a branch"; ACCEPTED source, planned MovesSp discharge; the field is the
+inequality Π e_i ≤ n, NOT a divisibility — prose corrected 2026-07-30 verify-2, so any
+future discharge targets ≤). -/
 structure HistWF (n : ℕ) (H : XHistory n) : Prop where
   termLast : ∀ i : Fin H.length, (i : ℕ) + 1 < H.length → (H.get i).continuing = true
   degProd  : ((H.filter (fun ν => ν.continuing && ν.isIncrement)).map (·.e)).prod ≤ n

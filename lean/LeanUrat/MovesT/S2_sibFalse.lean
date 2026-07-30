@@ -214,7 +214,8 @@ noncomputable def sibModel : TreeModel 2 (ZMod 2) 2 1 2 polTriv where
     · rw [hH]; exact laws_t2
 
 /-- the toy cell alphabet: `true` is the branching cell (both children); `false` is empty.
-[RATIFICATION REPAIR 2026-07-31 (verdict §8.1: "`sibCA : CellData ...` ends after
+[RATIFICATION REPAIR 2026-07-29, date corrected 2026-07-30 — original record
+mis-dated 2026-07-31 (verdict §8.1: "`sibCA : CellData ...` ends after
 `child_cell_red` and does not provide the newly mandatory `child_red_uniform` field.
 On the supplied source, that structure literal cannot elaborate."): the `.red` row is
 REFINED to read the `x 0` digit — the ADJ-SPINE-1 genre (G1's `.junk2` refinement):
@@ -263,7 +264,8 @@ noncomputable def sibCA : CellData 2 (ZMod 2) 2 1 2 polTriv sibModel where
         simp [sibCellOf, h0]] at hν
       exact absurd hν (by simp [sibBranch])
   child_red_uniform := by
-    -- [RATIFICATION REPAIR 2026-07-31, the mandatory ADJ-SPINE-1 field: the `.red`
+    -- [RATIFICATION REPAIR 2026-07-29 (date corrected 2026-07-30; original record
+    --  mis-dated 2026-07-31), the mandatory ADJ-SPINE-1 field: the `.red`
     --  table reads exactly the `x 0` digit, so the child-none region {x 0 = 0} is a
     --  union of `cellOf (.red g ψ)` fibers — child behavior transports.]
     intro g ψ x y hcell ν

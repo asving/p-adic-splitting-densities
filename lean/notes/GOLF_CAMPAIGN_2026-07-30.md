@@ -78,6 +78,13 @@ A6 [no-queue: quarantine at repo-prep] Moves/L5_landTransport_R3.lean +
    L5_landTransport (R3 deprecated, REFUTED-as-stated, sorry@54). (Moves#6)
 A7 [queue] Moves/L4_TRANSv_R3.lean — still imports the deprecated
    L4_TRANSviii_b_R3; needs re-pointing to b_R4. (Moves#6)
+   [STRUCK 2026-07-30, verify-2 fold-in: re-verified FALSE at HEAD. The import
+   was already re-pointed to L4_TRANSviii_b_R4 on 2026-07-26 (commit 4b29f6e,
+   "TRANSv (re-pointed + StageCore ...)"), four days BEFORE this synthesis:
+   L4_TRANSv_R3.lean:10 reads `import LeanUrat.Moves.L4_TRANSviii_b_R4`, its
+   header records the re-point, and a repo-wide grep finds ZERO importers of
+   L4_TRANSviii_b_R3. Mis-reported by the Moves#6 chunk. Do NOT dispatch a
+   fold-in agent against this item.]
 A8 [queue] MovesS/MANIFEST.json:18,~350 + MovesS/Rs2Unique.lean:12,44 —
    golfers flipped "PENDING ORCHESTRATOR RATIFICATION" -> "RATIFIED (wave-B
    ledger)"; the safety classifier flagged the flips as fabricated provenance /
@@ -85,12 +92,33 @@ A8 [queue] MovesS/MANIFEST.json:18,~350 + MovesS/Rs2Unique.lean:12,44 —
    L-binder" (lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md:786) and R4
    above pre-authorized the docstring fix — orchestrator to confirm the flip
    text matches the warrant scope. (fleet logs; MovesS#16/#20/#28)
+   >> A8 CLOSED as GENUINE PROVENANCE (2026-07-30 verify-2 fold-in): the flip
+   text matches the warrant scope on all three coordinates — the ledger entry
+   exists and says what the flip cites ("WAVE B RATIFICATIONS … Ratified: the
+   Rs2Unique L-binder (two independent derivations of necessity)",
+   LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md:785-786), commit 745cb05 ("WAVE B
+   COMPLETE (20/20)") carries the ratification in its message ("RATIFIED
+   scopings: the Rs2Unique L binder (independently re-derived necessary by two
+   agents)"), and repair commit ed51944 records the citation correction. Not
+   fabrication; no further action.
 A9 [queue] MovesS/CountLaws.lean — PolyGeomLaws tcount_deg/scount_deg
    docstrings claim derivability yet both are carried as undischarged fields.
    (MovesS#17)
+   >> A9 CLOSED-BENIGN (2026-07-30 verify-2 fold-in): the derivability claim is
+   TRUE, compiled-confirmed — `(RB.tg_degT e τ o) ▸ (RB.tgP e τ o).degT_le`
+   (and the degS/Wstate analogue) elaborate green against the corpus, so both
+   fields are redundant-but-free obligations, not undischargeable burdens.
+   No faithfulness break; the only open choice is cosmetic (keep the redundant
+   fields for CL-6 package cohesion vs derive as lemmas).
 A10 [queue] MovesS/Interfaces.lean:58 — RS1Bundle.nsNull is a bare
    content-free Prop field (the pattern retyped for wsh17_pin at R57 finding
    4), consumed by rexact and RS4Chain.hns. (MovesS#18)
+   >> A10 RE-VERIFIED STANDING at HEAD (2026-07-30 verify-2 fold-in): the n=2
+   gate discharges it degenerately (N2Beta.lean: nsNull := True, rexact :=
+   fun … => rfl with βfull a copy of the βmeas values), consumed at
+   RexactSolve.lean:24 and Interfaces.lean (hns). Disclosure docstring added
+   at the field site; the retype (wsh17_pin projection-def shape, R57) is a
+   statement change — moved to the SIGN-OFF QUEUE below.
 A11 [no-queue: repair-queue R2] MovesGr/L1_gradedRingStr_exists.lean —
    superseded v1 declares the SAME fully-qualified name
    LeanUrat.MovesGr.L1_gradedRingStr_exists as the held _2 file, with
@@ -101,16 +129,41 @@ A12 [queue for the MANIFEST entry; collision itself = R2] MovesGr/
    define theorem L4_genuine_imp_stageCoreL (v1 bare sorry@68; v2 partial with
    11 pinned sorries); MovesGr/MANIFEST.json records ':= sorry' with no status
    field. (MovesGr#85/#86)
+   >> A12 MANIFEST-SIDE EXECUTED (2026-07-30 verify-2 fold-in):
+   status_asbuilt_2026-07-30 field added to the MANIFEST entry (v1 bare sorry +
+   A13 pointer; v2 11 pinned obligations + sorryAx inheritance; FAITHLESS per
+   semaudit GR §B #21). Same pass extended the status refresh to ALL SEVEN
+   drifted entries (verify-2 MovesGr finding 2): the FIVE held units
+   (L4_baseStage_exists, L4_base_nonvacuity_gate, L4_TRANSvi, L4_TRANSstage,
+   L5_recTRANSRS) previously carried NO held/FAITHLESS marker anywhere in the
+   MANIFEST — each now has a held_status_asbuilt_2026-07-30 field citing its
+   semaudit GR §B classification (#22-#26) and its machine-checked vacuity/
+   unprovability certificate (baseStage_hbase_empty, transitionCoreL_e0_false,
+   recTRANSRS_only_vacuous — all Lean-core; HeldUnits_certs.lean +
+   HeldUnits_L5_cert.lean). The L4_baseStage_exists sketch's 'reborn
+   NON-VACUOUS' claim is corrected in place (the recorded hypothesis is
+   unsatisfiable, so the recorded statement is vacuous). The name collisions
+   themselves remain R2.
 A13 [queue: statement change needs sign-off] MovesGr/
    L4_genuine_imp_stageCoreL.lean:68 — grounded docstring argues the stated
    theorem is NOT provable from its hypotheses (needs a StageCore sigma
    hypothesis; 12 fields unrecoverable from bare Stage/model): statement-level
    under-hypothesization. (MovesGr#85)
+   >> A13 FIELD-COUNT CORRECTION (2026-07-30 verify-2 fold-in): StageCore has
+   11 fields (DefsCore.lean:196-208; v2's refine ⟨11 holes⟩ + 2 confirms), not
+   12 — the v1 docstring slip is fixed in-file; read "12 fields" above as 11
+   when A13 is adjudicated. The not-provable-as-stated diagnosis itself is
+   unaffected.
 A14 [queue: MANIFEST status/deviation entry] MovesGr/L2_coeffLoc_v2.lean — the
    LIVE Fence-A L2_coeffLoc carries 2 open sorries (conjuncts "superset K" and
    P1 z-pinning), so CoeffLocLaw sigma is not fully established and
    L4_genuine_imp_stageCoreL inherits sorryAx, while the MANIFEST sketch reads
    as a completed derivation. (MovesGr#84)
+   >> A14 MANIFEST-SIDE EXECUTED (2026-07-30 verify-2 fold-in):
+   status_asbuilt_2026-07-30 field added to the L2_coeffLoc MANIFEST entry
+   (PARTIAL: 2 open conjunct sorries at v2 lines 161/169 at HEAD; sorryAx
+   inheritance disclosed; FAITHLESS per semaudit GR §B #15). Any statement-
+   level repair still queues here.
 A15 [no-queue: fenced + disclosed] HC2/U17a_liftSwap.lean -> HC2/
    U17c_total.lean — lift_swap is a bare fenced sorry consumed by
    presentNorm_total/presentNorm_polOM, so U17c totality is UNPROVED; and
@@ -120,6 +173,11 @@ A16 [queue: add the caveat] HC2/U22E2_vertexEq.lean — SAE_vertexEq_endpoint is
    vacuous at the intended steep perimeter (K1 non-recentering legs vacuous
    via V10; HistoryCoherent child keying = pending task #44) but its docstring
    carries NO caveat, unlike K1/U20a/U20b. (HC2#104)
+   [EXECUTED 2026-07-30 verify-2 fold-in (HC2 corpus agent): caveat added — and
+   the verify-2 pass found this entry's "unlike K1/U20a/U20b" clause itself
+   inaccurate: U20a/U20b carried NO caveat either (only K1 did). The task-#44
+   vacuity caveat now sits at ALL five sites: U20a, U20b, U22E2, plus the
+   inheriting assemblies U20_NA (readsOf_NA) and U23 (readsOf_realizable).]
 A17 [queue: R-layer statement repair adjudication] HC1/
    R6_carrierInstance.lean — records machine-checked transcription bugs in the
    R-layer statement defs: R1 LSTStmt' leg (i-b) dropped the support
@@ -139,11 +197,21 @@ A20 [queue] MovesV/V4_part1B.lean — part1_null's title ("remainder-null limit
    fh_exact repair (proof uses neither leg (c) nor fh_bound), and the
    hc/P1NullRem leg (c) is threaded part1_null -> part1 -> part2_row/part2_ge
    but consumed NOWHERE. (MovesV#72)
+   [PARTIALLY EXECUTED 2026-07-30 verify-2 fold-in (MovesV corpus agent): the
+   stale title fixed in-file — it now credits the actual route (the 1 ≤ v
+   bound via hd.fh_exact at H = 0). The dead hb/hc threading through the
+   five files is a statement/signature matter — moved to the SIGN-OFF QUEUE
+   below.]
 A21 [queue: orchestrator confirm] MovesV/V4_rep.lean — the blueprint quote
    mandates the hobs (ObsCheck) proviso ("no observable outside the generator
    list") but no proof ever consumed it (now trimmed under the sanctioned
    dead-decl rule); confirm CellPolyPack.count encodes the proviso, else the
    formal row is weaker-premised than the note. (ctsM specialist)
+   [RE-VERIFIED OPEN 2026-07-30 verify-2 fold-in: the queued orchestrator
+   confirmation has still not happened; a PROVISO NOTE was added to rep_row's
+   docstring recording that the hobs proviso is represented NOWHERE in the
+   trimmed declaration and must be restored with the binders if they are
+   ever revived. rep_row axioms at HEAD: Lean-core, matching records.]
 A22 [no-queue: banked + adjudicated] MovesV/V7_w17ii.lean — the file's own
    note flags w17ii_wave4 clause (ii) as possibly FALSE for infinite shDom
    (shWeightH == 1, visH == empty breaks HasSum; no summability guard).
@@ -153,6 +221,24 @@ A23 [queue: date cleanup] MovesT/ (12 files, 37 lines; e.g.
    D12_packages.lean:66/110, E5_rootSplit.lean:338) — "T RE-RATIFICATION
    (2026-08-01)" tags carry a FUTURE date relative to the 2026-07-30 events
    they record. (MovesT#58/#60; grep-confirmed)
+   [2026-07-30 verify-2 fold-in (MovesT agent): A23 SHARPENED — the future-date
+   defect ALSO covered 21 lines across 7 files tagged 2026-07-31 (Defs.lean x8,
+   E11_treeN x3, G1_toyGate x3, S2_sibFalse x2, E8_treeExp x2, E6_segStep x1,
+   MANIFEST.json x2), equally future-dated. Git-verified true dates: the
+   RATIFY-T-1..5 records (mis-dated 2026-07-31) landed 2026-07-29 in commit
+   3728b00 (16:49 UTC); the RERATIFY-T-1 records (mis-dated 2026-08-01,
+   incl. the MANIFEST "2026-08-01 recount" sorry_note) landed 2026-07-29 in
+   commit 00b03aa (17:39 UTC) — event ordering is fixed by the commits, both
+   the same day. The 2026-07-31 set is now CORRECTED IN PLACE, every site
+   marked "[date corrected 2026-07-30; original record mis-dated 2026-07-31]"
+   (greppable); the MANIFEST sorry_note recount date likewise corrected. The
+   2026-08-01 set (A23 proper, the "T RE-RATIFICATION (2026-08-01)" tags)
+   remains QUEUED; whoever executes A23 should use true date 2026-07-29
+   (commit 00b03aa) and the same marker format. In the same fold-in the
+   MANIFEST counts block was refreshed (the stale 32-entry E-phase
+   sorry_free_units list -> the as-built 52/55 census; see
+   sorry_free_units_note there) and F1_oneF.lean's stale "PROVED (modulo
+   T-E9)" caveat retired (tree_fiber_disjoint verified Lean-core at HEAD).]
 A24 [queue: sign-off pending] HC2/U1b_nodeLift.lean:8-11 — hdvd/hthr are a
    hypothesis-NARROWING statement-fence deviation whose sign-off is still
    pending (recorded in HC2/MANIFEST.json). (HC2#103)
@@ -162,10 +248,39 @@ A25 [queue: reviewer decision] MovesSp/SP8_instantiation.lean:348-351 —
    residual non-vacuously satisfiable at n=2" claim true by inhabitation only,
    without exercising the pin's discriminating content (c2 exactly-one across
    distinct verdicts, c3-b cap sensitivity). (MovesSp#40)
+   >> A25 RE-VERIFIED STANDING at HEAD (2026-07-30 verify-2 fold-in): witness
+   unchanged, unrepaired; axioms Lean-core ([propext, Classical.choice,
+   Quot.sound]); htau/hcap are bare `rfl`s that never consult their premises
+   (hcap would hold for ANY cap, including 0). Plain-language disclosure
+   docstring added at the def site; witness strengthening moved to the
+   SIGN-OFF QUEUE below. Reviewer decision still owed.
 A26 [no-queue: pre-flagged, statement-adjacent] Moves/L0_GRd.lean (missing
    corpus namespace) and MovesGr/L1_gr_domain_iff_val.lean + _v2 (sorried,
    superseded, at ROOT namespace) — declarations outside their corpus
    namespace; collision surface at root. (Moves#0; MovesGr#83)
+   >> A26 CENSUS ADDENDUM, MovesGr (2026-07-30 verify-2 fold-in): the root-
+   namespace surface is far broader than the two files listed above. Grep-
+   confirmed at HEAD: only 7 of 30 MovesGr files declare their PUBLIC names
+   inside namespace LeanUrat.MovesGr (Defs, L1_gradedRingStr_exists ×2,
+   L1_gr_domain_iff_val_v3, L2_degZero_subring ×2, L2_homMon_homogeneous;
+   L1_pmul_assoc has the namespace block for private helpers only — its
+   theorem is declared at root via `open ... in`). The other 23 files declare
+   at ROOT: all six L0 units, L1_initialForm_add_lt/_mul, L1_pmul_assoc,
+   L1_gr_domain_iff_val v1/v2, L2_coeffLoc v1/v2, L2_loc_exists, all four L3
+   units, L4_genuine_imp_stageCoreL v1/v2, L4_grRes_eq_genuine, and both
+   HeldUnits cert files. Root-level COLLIDING pairs: L1_gr_domain_iff_val
+   (v1/v2), L2_coeffLoc (v1/v2 — both sorried, DIFFERENT open conjuncts under
+   one name), L4_genuine_imp_stageCoreL (v1/v2). Containment verified: no
+   in-tree module outside MovesGr imports any colliding name (HC1/
+   T6_carrierLaws → unique L0 units only; HC1/S8_childS6 → HeldUnits_certs;
+   AxChk_baseline touches no MovesGr). CONSEQUENCE for repo-prep: quarantining
+   the superseded modules (the R2 five v1s + L1_gr_domain_iff_val_v2) removes
+   only 4 of the 23 root-declaring files (L1_gr_domain_iff_val v1+v2,
+   L2_coeffLoc v1, L4_genuine_imp_stageCoreL v1; the other superseded v1s are
+   in-namespace) — 19 LIVE files still declare at root, and namespacing them
+   is a statement-level (fully-qualified-name) change, to be batched at
+   repo-prep with sign-off. (The verify-2 verdict counted 18 live root files;
+   recount at HEAD says 19 — the difference is immaterial to the disposition.)
 
 Disclosed-vacuity / open-conditionality watch items (documented in-file;
 all no-queue; listed so the certified perimeter stays on record):
@@ -215,6 +330,22 @@ A39 [tracked as task #44] HC1 K1 kernel + HC2 U20a/U20b/U22E2 — sorry-free and
    read-pair keying faithfulness bug; HC1/V9's header self-declares it);
    docstrings warn against citing as machine-checked transport — EXCEPT
    U22E2's (see A16). (HC2#101/#104; HC1#100)
+   [UPDATED 2026-07-30 verify-2 fold-in: the "EXCEPT U22E2's" scoping was
+   inaccurate — U20a/U20b also carried no caveat (only K1's file did). Fixed
+   with A16: the caveat now sits at U20a/U20b/U22E2 and the inheriting
+   assemblies U20_NA/U23. The task-#44 vacuity itself remains OPEN.]
+A40 [added 2026-07-30 verify-2 fold-in; missing from the original synthesis
+   list] MovesGr/Defs.lean GenuineStageModel — the `L₀ ≅ K[z^{±1}]` fiat is
+   HARD-CODED in the codomain type of Θ (`LExt ↥σ.K = LTwo ↥σ.K`): there is
+   NO `hL0` field, though the docstrings (Defs.lean header + structure
+   docstring) and MANIFEST L3_iso_exists sketch claimed "an EXPLICIT
+   hypothesis hL0". Semaudit GR §A.2 diagnosed this 2026-07-26 but the
+   docstrings were never repaired — NOW FIXED (docstrings + MANIFEST state
+   the hard-coding plainly). The FIAT ITSELF stands (blueprint gap G-L0):
+   the degree-zero-subring ≅ K[z^{±1}] identification is neither separately
+   stated nor checked; every MovesGr theorem consuming GenuineStageModel
+   inherits it silently through Θ's codomain. Making it an explicit field is
+   a statement-level change (repo-prep adjudication). (MovesGr verify-2 #1)
 
 ### CLASS B — unused / over-strong hypotheses on FENCED statements
 (INVENTORY ONLY — statement changes need explicit sign-off. Most are masked by
@@ -244,6 +375,7 @@ MovesC (4):
 - C3_crossing: hb0 (s0 <= b) unused; hend0 also derivably unneeded (only hend1+hb1 load-bearing). (MovesC#12)
 - C3_vtxPolyNe: hdeg (0 < psi.natDegree) unused. (MovesC#13)
 - C6_thmC_a: hZ (AdmissibleZ) unused in clauses (i)-(iii) — documented + MANIFEST-pinned. (MovesC#14; C-dedup)
+  [CORRECTION 2026-07-30 verify-2 fold-in: "documented + MANIFEST-pinned" was FALSE at synthesis time — no hZ caveat existed in C6_thmC_a.lean, in MANIFEST.json's C6.thmC_a entry, or in the blueprint (zero 'hZ' matches); the only in-repo occurrence of the claim was this line. Both documentation sites were created 2026-07-30: a file-header caveat in C6_thmC_a.lean and the MANIFEST field unused_hyp_note_2026-07-30. Content of the caveat: hZ is retained for quantifier fidelity with rev-14 C(a)'s fenced statement; C(b) genuinely consumes admissibility via C6_transportedAdmissible.]
 
 MovesS (7):
 - AllActivePrimes.lean allActive_cofinite_primes: hbase unused (finiteness from hsub alone). (MovesS#16)
@@ -264,8 +396,9 @@ MovesSp (8):
 - SP4 outFinite: hs (InCatalogue n s) unused — documented intentional. (MovesSp#36)
 - SP4_selfloopFull:31-32: hgmem and hg1 unused (sister lemma marks _hg1). (MovesSp#37)
 
-MovesX (4):
-- XE2 envelopeExp / XE3 envelopeSqrt: tags AF/CP/NS/R unused — DOCUMENTED statement-fenced ("consumers inherit ALL tags"; XE2 header discloses R redundant given AL+WC). (MovesX#41/#42/#44/#45)
+MovesX (5):
+- XE2 envelopeExp / XE3 envelopeSqrt: unused tags [CORRECTED 2026-07-30 verify-2 fold-in — the original line ("tags AF/CP/NS/R unused" for both) overstated XE3 and understated XE2]: in XE2 tags AF/CP/NS/R are ALL unused AND BR's clause-1 coverage inclusion is dead (`obtain ⟨hcover, hnull⟩ := BR p N` at XE2.lean:233, hcover never referenced again); in XE3 only NS and R are unused — envelopeSqrt CONSUMES AF and CP (`have hdich := x2hypAssembled X K AF CP p f b hfp N hlt`, XE3.lean:338) and discards BR clause 1 (`obtain ⟨_, hnull⟩ := BR p N`, XE3.lean:358). Net: X2BridgeP's first clause (coverage) is consumed NOWHERE in the corpus. DOCUMENTED statement-fenced ("consumers inherit ALL tags"; XE2 header discloses R redundant given AL+WC). (MovesX#41/#42/#44/#45)
+- XB4.lean:64 t3Charge: hn (1 <= n) unused — machine-confirmed removable (lean_minimal_hypotheses: H load-bearing, W load-bearing, hn removable; verify-2 2026-07-30); mathematically redundant given W (each e >= 1 via epos, so W.degProd forces 1 <= n). The dead slot is threaded through four downstream signatures — x1bReduction (XC3), x1bReductionT4 (XC4), branchLenBound (XG1), treeFinite (XG2d) all carry `hn : 1 <= n` solely to feed it — so any future de-noising pass should treat the whole hn thread XB4→XC3/XC4→XG1→XG2d as ONE unit. Statement-fenced: inventory only. (added 2026-07-30 verify-2 fold-in)
 - XF1.lean:90 discCylinder: hn (1 <= n) unused (discr_map_monic covers degree 0). (MovesX#45)
 - XF4.lean resRootSum: h2 (2 <= n) unused. (MovesX#46)
 - XF3.lean valExtOf (def): hg (g != 0) unused (well-formed at g = 0). (MovesX#46)
@@ -308,8 +441,14 @@ MovesV (12):
 - V7_msA.lean: X (XHD) and cp (CellPolyPack) unused by the degenerate witness. (MovesV#77)
 - V7_rbA.lean:14-16: hVA/hTie/M unused. (MovesV#78)
 
-MovesU (1):
+MovesU (1) [+1 correction 2026-07-30 verify-2 fold-in — the unused-hypothesis
+census for the capstone signature is 14, not 13]:
 - U10_theoremU.lean theoremU: the 13 bare-Prop hyps hrel1..hjc unused in the proof body — disclosed wave-4 boundary (round-3 CRIT2). (MovesU#79)
+- U10_theoremU.lean theoremU: hn (2 ≤ n) ALSO unused in the proof body — a 14th
+  unused hypothesis beyond the disclosed 13, masked by the file's
+  linter.unusedVariables false. Statement-fenced fidelity binder (the note's
+  degree-n ≥ 2 quantifier) — inventory only, no action; docstring inventory
+  note added at theoremU 2026-07-30. (verify-2 MovesU)
 
 MovesRBase (1):
 - U5_qq_mul.lean qq_mul: section var hp (Fact p.Prime) unused (pure exponent identity; contrast U6 where hp IS used). (MovesRBase#88)
@@ -375,7 +514,7 @@ STILL STANDING (25):
 - MovesV/V6_gateN.lean:20: gateB_threshold "(sorry-gated derivation)" though the proof is a sorry-free field projection. (MovesV#76)
 - MovesV/V7_stageLaw.lean: StageLawBurden docstring "VERBATIM MovesS.SCSData laws" overclaim (bundles only kmat_all+degcons_all). (MovesV#78)
 - MovesV/MANIFEST.json: header date 2026-07-29 predates the 2026-07-30 deviation records. (MovesV#64)
-- MovesU/MANIFEST.json: three_file_order/imports_added do not record the new DefsLedger -> U8 import edge. (MovesU#79)
+- MovesU/MANIFEST.json: three_file_order/imports_added do not record the new DefsLedger -> U8 import edge. (MovesU#79) [FIXED 2026-07-30 verify-2 fold-in: both MANIFEST fields corrected; the edge is LOAD-BEARING, not incidental — RegPin.detHyp (DefsLedger.lean:538) consumes U8's RegData.pool_self_mem]
 - MovesGr/MANIFEST.json: L2_coeffLoc sketch reads complete (A14); L4_genuine_imp_stageCoreL ':= sorry' no-status drift (A12). (MovesGr#84/#86)
 - HC1/G1_divGate.lean:8-10: present-tense "body left sorry at E-phase" though the body is a complete Lean-core proof. (HC1#91)
 - HC1/S4_childSubmult.lean: copy justified by "the still-open S2 unit" though S2_childW is proved (import-decoupling intent unconfirmed). (HC1#95)
@@ -384,6 +523,7 @@ STILL STANDING (25):
 - HC2/MANIFEST.json: census/layout stale by +1 file (SharedRecenter.lean). (HC2 dedup specialist)
 - HC2/Defs.lean:21: header still describes Defs as carrying sorry bodies (now 0 sorries). (HC2#101)
 - MovesC/C4_conditionalMass.lean: WATCH note "helpers may become private" only half-holds (5 of 10 public+used downstream); route comment numbering skips Step 3. (MovesC#13)
+  [CORRECTION 2026-07-30 verify-2 fold-in: the WATCH-note half of this item is PHANTOM at HEAD — the same-day Phase-3 repair restored C4_conditionalMass.lean byte-identical to e9d2430 (`git diff e9d2430 HEAD -- <file>` is empty) and neither version contains "WATCH" or any private helper (grep count 0). Only the second half still stands: route comments jump Step 1 → 2 → 4 → 5, skipping Step 3 (lines 159/182/196/200).]
 - MovesV/V1_fence.lean docstring: "one continuing move" omits that MoveT is also Fin 1. (MovesV#65)
 - MovesC/Defs.lean ZCData docstring: lists THREE clauses but the struct has TWO fields (consistent — ZC-b unrestricted — but confusing). (MovesC#15)
 
@@ -479,6 +619,9 @@ Error-spotting synthesis (see the PHASE 2 ERROR-SPOTTING SYNTHESIS section above
 A:39 / B:86 / C:49 / D:40 / E:1. Class-A queue candidates to fold into the repair
 queue after Phase 4: A2-A4, A7-A10, A16-A21, A23-A25 (the rest are no-queue:
 disclosed conditionality, tracked items, or repo-prep R2/R3 class).
+[2026-07-30 verify-2 fold-in: A7 STRUCK from this candidate list — re-verified
+FALSE at HEAD (fix pre-dates the synthesis: commit 4b29f6e, 2026-07-26); see the
+annotation at the A7 entry above.]
 
 ## PHASE 4 CODEX SAMPLE-RATIFICATION RECORD (2026-07-30)
 
@@ -565,3 +708,130 @@ hstratN/hstratM at f = 0). ScratchS17 needed no edit (references in comments onl
 Builds: module 8576 green, ScratchS17 8586 green, FULL build 8579 green.
 #print axioms L6_measureExact = [propext, Classical.choice, Quot.sound] — the sorryAx
 taint is GONE; AxChk_baseline census re-run clean. FENCED-SORRY COUNT: 10 → 9.
+
+## SIGN-OFF QUEUE (2026-07-30 verify-2 fold-in — statement-level repairs needing explicit sign-off)
+
+- [MovesS, A10] RS1Bundle.nsNull (Interfaces.lean): retype the bare
+  instance-supplied Prop field to a contentful statement, following the
+  wsh17_pin projection-def shape (R57, ratification finding 4). Evidence: the
+  n=2 gate discharges it degenerately (N2Beta.lean: nsNull := True, rexact :=
+  fun … => rfl, βfull a copy of βmeas), so the rexact law is contentless at
+  the gate. Disclosure docstring added at the field site (2026-07-30).
+
+- [MovesSp, A25] toyStrongPin (SP8_instantiation.lean, M3 wave-C): strengthen
+  the constant witness of `StrongVerdictPin toyCanModel` to one with
+  discriminating content. Evidence (re-verified standing at HEAD, 2026-07-30
+  verify-2): tauV/dict ignore the branch argument, htau/hcap are bare `rfl`s
+  that never consult their premises, and cap := 3 is never read (hcap would
+  hold for ANY cap, including 0) — so the (c2) exactly-one and (c3-b)
+  cap-sensitivity clauses are discharged without being exercised; the pin
+  certifies inhabitation of the interface only. Axioms Lean-core. Reviewer
+  decision owed (MovesSp#40). Disclosure docstring added at the def site
+  (2026-07-30).
+
+- [HC2, verify-2 NIT] gate_order0_inert (U27_gateInert.lean): wave-4
+  statement-level tightening candidate — the gate binds `S : PresentSeed`
+  existentially but NO conjunct references S (the seed half certifies
+  PresentSeed inhabitation only; J = gateJ is hand-built from the same presF,
+  deliberately NOT routed through the sorryAx-conditional jetSetup_of_seed,
+  so the statement does not tie J's presentation to S). Proposed repair: a
+  conjunct tying J to S once jetSetup_of_seed's cone is Lean-core. Statement
+  change — needs sign-off. Disclosure docstring added at the theorem site
+  (2026-07-30 verify-2 fold-in).
+
+- [HC2, A24 — STATUS RE-CONFIRMED, still pending] U1b_nodeLift.lean
+  hdvd/hthr: the hypothesis-narrowing statement-fence deviation on
+  nodeLift_exists still awaits Asvin's sign-off. Re-verified 2026-07-30
+  verify-2: file header, MANIFEST deviations, and statement_fence all agree
+  (no drift); the item needs adjudication, not a code fix. (HC2#103)
+
+- [MovesV, verify-2 GAP] CtsmConclusions.active_value_recorded /
+  .ent_count_named (V7_ctsmDefs.lean): retype the two P → P tautology fields
+  to the blueprint's bare carried Props (AVRec_Stmt L / EntCountNamed_Stmt L)
+  or delete them. Evidence: both are discharged by `id` in ctsM
+  (V7_ctsm.lean) and carry NO content; the blueprint V7-2a display shows the
+  bare Props ("the (ii-c) Prop CARRIED, never concluded"); the deviation was
+  recorded nowhere until now (MANIFEST D27 added 2026-07-30). Retype =
+  statement change on the capstone conclusion record — needs sign-off.
+  Disclosure docstrings added at both field sites (2026-07-30 verify-2
+  fold-in).
+
+- [MovesV, A20 second half] Dead leg-(c) threading: hb (P1CtblAdd; unused in
+  part1_null) and hc (P1NullRem; consumed NOWHERE) ride the signatures
+  part1_null → part1 (V4_part1C) → part2_row/part2_ge (V4_part2) → ctsM
+  (V7_ctsm) + V7_livC — trimming them is a statement/signature change on the
+  capstone path and needs sign-off. The golf-safe half of A20 (the stale
+  V4_part1B header title) was EXECUTED 2026-07-30 (verify-2 fold-in).
+
+- [MovesU, verify-2 RECORD] ZpBridge.zf_factor degree conjunct
+  (DefsLedger.lean): candidate pointwise retype
+  `∀ h ∈ factors, MovesT.ramIdx h * MovesT.resDeg h = h.natDegree`. Evidence:
+  the CARRIED law is only the multiset-aggregate identity
+  `(zfType g).map (fun ef => ef.1 * ef.2) = factors.map Polynomial.natDegree`,
+  which does not pin e·f = deg per factor (a two-factor permutation mismatch,
+  products {2,3} vs degrees {3,2}, satisfies it) — weaker than the "e·f = deg
+  laws" the HC-2 residue record advertised. Premise-side, no soundness break
+  (a weaker carried law only broadens the admissible instance class). SCOPE
+  NOTE added at the structure docstring 2026-07-30; the retype is a statement
+  change on the capstone's bridge premise — needs sign-off.
+
+- [MovesU, verify-2 NIT] CapstoneLedger's dead parameter D : RegData p
+  (DefsLedger.lean): NO field mentions D (fields use only X/C/F/S) — an
+  indexing-only parameter (UInstance supplies the same D to both L and Dpin,
+  so the keying is coherent). Candidate cleanup at the next sanctioned touch:
+  drop the parameter or keep it with the now-documented indexing intent.
+  PARAMETER NOTE added at the structure docstring 2026-07-30; dropping it is
+  a signature change on the central ledger — needs sign-off.
+
+## VERIFY-2 FOLD-IN CORRECTION — Moves pre-golf baseline Group A/B mislabel (2026-07-30)
+
+Correction of record for the FROZEN pre-golf baseline (the baseline file itself is
+deliberately NOT rewritten): `lean/notes/golf_baseline_2026-07-30/Moves_axioms.txt:70`
+— the "GROUP B (deprecated side: ...)" header lists `L5_landVertexDigit`, and the
+name-to-file map reads "B LeanUrat.Moves.L5_landVertexDigit -- L5_landVertexDigit.lean"
+with Group A (canonical) = `L5_landVertexDigit_repair.lean`. This labeling is BACKWARDS
+for this one pair. Consumer evidence pins the NON-repair file as canonical:
+HC1/K1_vertexPin.lean:8 and HC1/S16_levelLanding.lean:11 both read
+`import LeanUrat.Moves.L5_landVertexDigit`. Both members are sorry-free with the
+byte-identical public theorem `L5_landVertexDigit` (both footprints Lean-core), so the
+baseline's AXIOM footprints are unaffected — only the A/B labels for this pair are
+swapped, and no soundness issue exists. Actioned 2026-07-30: a DEPRECATED banner was
+added to `L5_landVertexDigit_repair.lean` (whose header title, formerly a mis-pasted
+"Moves/L5_landVertex", was corrected in the same edit). Consequence for repo-prep: any
+quarantine sweep of deprecated Moves files must quarantine the `_repair` file and must
+NEVER quarantine `L5_landVertexDigit.lean` — following the baseline's Group B list as
+written would delete the module the HC1 K1 kernel imports.
+
+## VERIFY-2 FOLD-IN CORRECTIONS — MovesU records (2026-07-30)
+
+1. FROZEN-BASELINE FILE-COUNT ADDENDUM (the baseline file itself is deliberately
+   NOT rewritten): `lean/notes/golf_baseline_2026-07-30/MovesU_axioms.txt:3`
+   says "17 .lean files: 4 Defs + 13 unit files". As-built (ls, 2026-07-30) the
+   corpus is 16 .lean files: 3 defs-layer (Defs, DefsCarriers, DefsLedger) +
+   13 units (U0, U0b, U1–U11) — 4 + 13 = 17 double-counts one file under any
+   convention for U0b. The baseline's AXIOM content (40/40 decls Lean-core,
+   0 sorries) is unaffected; only the header census line is off by one.
+   MANIFEST.json counts corrected in place (defs_files 4 → 3 + a dated
+   counts_correction field).
+
+2. FUTURE-DATED ROUND-2/ROUND-3 RECORDS CORRECTED (the A23 mis-dating class,
+   previously on record only for MovesT): MANIFEST.json:5/6/7/24/25,
+   U10_theoremU.lean header + wave-4 boundary record, DefsLedger.lean header +
+   SibJcRows docstring, DefsCarriers.lean menu-rows section, Defs.lean RegP +
+   menu-retirement comments all dated the capstone retype rounds
+   2026-07-31 / 2026-08-01. Git proves: round 1 = commit 1456e81 (2026-07-29
+   15:43 UTC), round 2 = commit 3728b00 (2026-07-29 16:49 UTC), round 3 =
+   commit 00b03aa (2026-07-29 17:39 UTC). All sites corrected in place with
+   visible "(date corrected 2026-07-30)" markers.
+
+3. WARRANT CITATIONS RE-POINTED FROM /tmp TO A DURABLE ARCHIVE: the round-2 and
+   round-3 statement-change warrants (the authority for THE capstone's
+   sanctioned retype) were cited only as /tmp/leanratify_u2/verdict.txt and
+   /tmp/finalratify_u/verdict.txt. Both verdicts salvaged VERBATIM (still
+   extant on disk, mtimes Jul 29; round 2 diff-identical to
+   MOVESU_RERATIFY_CODEX_2026-07-30.md, round 3 diff-identical to
+   FINAL_TRIRATIFY_2026-07-31.md '==== finalratify_u ====') into the new
+   durable file `lean/notes/MOVESU_RATIFICATION_ROUNDS_2026-07-30.md`;
+   MANIFEST.json, U10_theoremU.lean, and DefsLedger.lean citations re-pointed
+   there (same provenance-repair class as commit ed51944's Rs2Unique
+   re-point for MovesS).

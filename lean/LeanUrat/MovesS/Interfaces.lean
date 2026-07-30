@@ -55,6 +55,14 @@ structure RS1Bundle (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M
     (σ' : Multiset T.VType) (q₀ : ℚ), q₀ ∈ M.Pools → M.activeState q₀ e τ →
     ∀ h_ent : ℕ, βmeas e he h_ent τ σ' q₀
       = evalRe T M RB hdc e he τ σ' q₀ (fun e' he' => βmeas e' he' h_ent)
+  /-- DISCLOSURE (A10, re-verified STANDING 2026-07-30 verify-2 fold-in): this is
+  a bare INSTANCE-SUPPLIED Prop field — the pattern retyped for `wsh17_pin` at
+  R57 (ratification finding 4) has NOT been applied here.  The n=2 gate
+  discharges it degenerately: `nsNull := True` with `rexact := fun … => rfl`
+  (N2Beta.lean, `βfull` defined as a copy of the `βmeas` values), so at the gate
+  the `rexact` law certifies inhabitation only, NOT discriminating content.
+  Retype is a statement change needing sign-off — see the SIGN-OFF QUEUE in
+  notes/GOLF_CAMPAIGN_2026-07-30.md. -/
   nsNull : Prop
   rexact : nsNull → ∀ e (he : e ∈ Finset.Icc 1 n) (h_ent : ℕ) (τ : T.State e)
     (σ' : Multiset T.VType) (q₀ : ℚ), q₀ ∈ M.Pools →

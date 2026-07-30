@@ -1,5 +1,12 @@
-/-  MovesV unit V4-6b `part1_null` · HARD — the remainder-null limit from leg
-    (c) + the monotone assembly bound.
+/-  MovesV unit V4-6b `part1_null` · HARD — the 1 ≤ v lower bound via the
+    restored leg-(d) `fh_exact` equality at H = 0.
+    [TITLE CORRECTED 2026-07-30 (verify-2 fold-in, A20): the E-phase title
+    credited "the remainder-null limit from leg (c) + the monotone assembly
+    bound", but the proof below consumes ONLY `hd.fh_exact` — neither `hb`
+    (P1CtblAdd) nor `hc` (P1NullRem, leg (c)) is used; the dead leg-(c)
+    threading part1_null → part1 → part2_row/part2_ge → ctsM is a
+    statement-fence matter, queued for sign-off in
+    GOLF_CAMPAIGN_2026-07-30.md.]
     PROVED 2026-07-30 after the ADJUDICATED leg-(d) repair: the restored
     `fh_exact` equality (V4_part1A — the blueprint V4 PART-1 row's "(d) each
     fixed-height block sums by C.1.5(1)'s conditional exactness", dropped by

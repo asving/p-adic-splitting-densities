@@ -15,7 +15,8 @@ charged exactly once. The ∀-closure `TreeExpFin` (Defs §2.10) carries the FUL
 interface.
 
 EXECUTION RECORD 2026-08-01 (THE T RE-RATIFICATION REPAIRS APPLIED — REJECT-M
-verdict, `/tmp/finalratify_t/verdict.txt`; supersedes the 2026-07-31 exact-cell
+verdict, `/tmp/finalratify_t/verdict.txt`; supersedes the 2026-07-29 [date corrected
+2026-07-30; original record mis-dated 2026-07-31] exact-cell
 round): the verdict's central finding — "`siteCellEvent` is keyed only by `es` and
 `c` … For two co-realized sibling sites with the same `parentSt`, `state_cell`
 forces their exact cells—and hence state events—to coincide whenever they share a
@@ -87,7 +88,8 @@ F1's distinct censused leaf pins. Codex verdict 2026-07-29 (fresh context): CLAI
 CONFIRMED, CLAIM C CONFIRMED conditional on the census reading — full charge +
 verdict archived at `lean/notes/E8_BLOCK_CHARGE_2026-07-29.md`. STATUS AFTER THE T
 RE-RATIFICATION (2026-08-01, the site-entrance keying): the forcing is
-STRUCTURALLY DEAD — the 2026-07-31 exact-cell keying (Ψ shared across siblings)
+STRUCTURALLY DEAD — the 2026-07-29 [date corrected 2026-07-30; original record
+mis-dated 2026-07-31] exact-cell keying (Ψ shared across siblings)
 that made it a machine-checked instance-level obstruction is superseded: sibling
 sites now key DIFFERENT read maps (`branchCellOf es ν₁` vs `branchCellOf es ν₂`),
 so the forcing proofs below no longer typecheck (their pivot — "cellOf es is a

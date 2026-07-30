@@ -5,8 +5,10 @@
  "defs": {
   "file": "lean/LeanUrat/MovesX/Defs.lean",
   "sha256": "b28d443d240c689110d6ff3bda565e873abb6267803a0426e4c61dde79ffee33",
+  "sha256_asbuilt_2026-07-30": "cd283f95ee80fe9ef6892cebe20b407bb78eb86e6cee14e144ef0e4aa2f72171",
   "sorries": 0,
-  "note": "compiles green via lake env lean + lake build LeanUrat.MovesX.Defs; no sorry, no axiom; deviations D-1..D-6 recorded in the blueprint"
+  "note": "compiles green via lake env lean + lake build LeanUrat.MovesX.Defs; no sorry, no axiom; deviations D-1..D-6 recorded in the blueprint",
+  "note_asbuilt_2026-07-30": "verify-2 fold-in: HistWF docstring prose corrected — 'divides the ambient degree budget' -> 'is bounded by' (the degProd field is the inequality Π e_i ≤ n, not a divisibility; the planned MovesSp discharge must target ≤). Comment-only edit; no statement/def changed (statement_sha256 pins unaffected). Original sha256 field kept as the pre-edit pin."
  },
  "preamble": "Every unit file: import LeanUrat.MovesX.Defs (+ earlier units per deps); namespace LeanUrat.MovesX; set_option linter.style.longLine/header false, linter.unusedVariables false, maxHeartbeats 1000000. Build per module with lake build LeanUrat.MovesX.<id> (NEVER whole-project lake build).",
  "statement_fence": "Statements are the blueprint Section3 verbatim (rev 4). Do NOT weaken a statement to prove it; do NOT edit MovesX/Defs.lean without re-running the elaboration sample. EXCEPTION (2026-07-27): XE.2/XE.3 restated post-refutation per blueprint §7 — the §3 rev-4+restatement text is the new frozen form.",
@@ -470,7 +472,8 @@
     "XG.2d"
    ],
    "statement_sha256": "aa64246adadc1020fd94eb91a3b7086d644cba080cf4dc443eeaf96753becaea",
-   "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving."
+   "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving.",
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: XG.2b/XG.2c/XG.2d are IMPORT-ONLY (zero references to detectJoin/interTrichotomy/treeFinite in the compiled proof; the header's blueprint sketch route — three null-tagged pieces via NS/XG.2d — is NOT the as-built route; NS tag unused; BR clause-1 coverage inclusion destructured but never consumed). Load-bearing cone as built: Defs, XC.3, XF.7; XE.1a-h are def-witness, elaboration-only. See the AS-BUILT note in XE2.lean's header."
   },
   {
    "id": "XE.3",
@@ -491,7 +494,8 @@
     "XG.2d"
    ],
    "statement_sha256": "a4e98475d925e984865393a3015215daea8cd6adbc57ed5efdef8b4e4614f4a2",
-   "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving."
+   "restated": "2026-07-27: previous ∀N conclusion kernel-certified FALSE (notes/XE2_refutation_witness.lean, notes/XE2_refutation_transcription_check.lean, notes/XE3_REFUTATION_2026-07-27.lean); conclusion now ∃ N₀ (n,K-only, bound before p), claim over N ≥ N₀ — blueprint §7 REFUTATION RECORD. Mini dual audit before re-proving.",
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: XG.2b/XG.2c/XG.2d are IMPORT-ONLY (zero references to detectJoin/interTrichotomy/treeFinite in the compiled proof). Tags NS/R unused; AF/CP ARE consumed (x2hypAssembled, XE3.lean:338); BR clause 1 discarded (⟨_, hnull⟩, XE3.lean:358). Load-bearing cone as built: Defs, XC.3, XD.4, XF.7; XE.1a-h def-witness, elaboration-only. See the AS-BUILT note in XE3.lean's header."
   },
   {
    "id": "XF.1",
@@ -559,7 +563,8 @@
    "status": "proved",
    "difficulty": "easy",
    "deps": [],
-   "statement_sha256": "d92e613b1ed34ecfbd8e1c7c3552927b66ba654e2f5961c2e846bd584a30a40b"
+   "statement_sha256": "d92e613b1ed34ecfbd8e1c7c3552927b66ba654e2f5961c2e846bd584a30a40b",
+   "asbuilt_2026-07-30": "verify-2 fold-in: DEAD BLUEPRINT UNIT — pigeonMax has ZERO consumers corpus-wide (grep over all of LeanUrat/). XF.6 imports XF5 but discharges its pigeonhole with its own private xf6_argmin (multiplicative, over ℝ); pigeonMax (additive, over ℚ) is never called, so this unit's moves_ref duty is rendered in-file by XF.6. Kept as record; deletion/re-point is a repo-prep candidate."
   },
   {
    "id": "XF.6",
@@ -576,7 +581,8 @@
     "XF.5"
    ],
    "statement_sha256": "342f1d54e55d7cbedf059d804c9cc974d3ee5d134985ed27632a5378d4d447b1",
-   "note": "2026-07-27: fleet proof (\"proved pending re-verification\", 328e926) FAILED independent re-verification — (kernel) deterministic timeout at ballCover, reproduced in 2 clean builds + solo (>590s). Restored to sorry (statement verbatim); proof text preserved at lean/notes/XF6_pending_reverify_2026-07-27.lean.txt. Escalation-prover item. 2026-07-27 PERF-REPAIRED (escalation prover): kernel bomb bisected to the (hgeq a0).symm ▸ V ValExt transport (stuck Eq.rec in the type index); replaced by a subst-based resRootSum wrapper over abstract g (+ per-declaration private-lemma split). ballCover PROVED, 0 sorries in file; lake build LeanUrat.MovesX.XF6 green in ~6s; #print axioms ballCover = [propext, Classical.choice, Quot.sound] (core-only, NO sorryAx — XF.4/XF.5 are proved in-file; XF.3 untouched). Statement verbatim (sha unchanged)."
+   "note": "2026-07-27: fleet proof (\"proved pending re-verification\", 328e926) FAILED independent re-verification — (kernel) deterministic timeout at ballCover, reproduced in 2 clean builds + solo (>590s). Restored to sorry (statement verbatim); proof text preserved at lean/notes/XF6_pending_reverify_2026-07-27.lean.txt. Escalation-prover item. 2026-07-27 PERF-REPAIRED (escalation prover): kernel bomb bisected to the (hgeq a0).symm ▸ V ValExt transport (stuck Eq.rec in the type index); replaced by a subst-based resRootSum wrapper over abstract g (+ per-declaration private-lemma split). ballCover PROVED, 0 sorries in file; lake build LeanUrat.MovesX.XF6 green in ~6s; #print axioms ballCover = [propext, Classical.choice, Quot.sound] (core-only, NO sorryAx — XF.4/XF.5 are proved in-file; XF.3 untouched). Statement verbatim (sha unchanged).",
+   "note_asbuilt_2026-07-30": "verify-2 fold-in: the 2026-07-27 note's phrase 'XF.4/XF.5 are proved in-file' is a misphrase — XF.4 and XF.5 are proved in their OWN unit files (XF4.lean, XF5.lean), and XF.5's pigeonMax is not on ballCover's proved path at all (the pigeonhole is discharged by the private in-file xf6_argmin). The deps entry 'XF.5' is import-only. Frozen note kept verbatim; this field is the correction addendum."
   },
   {
    "id": "XF.7",

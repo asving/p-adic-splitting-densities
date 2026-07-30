@@ -1,6 +1,8 @@
 /-  MovesV unit V3-5b `inst_bij_surj` — SURJECTIVITY onto the realizable
     concrete ε with template ε̊, GIVEN the entrance exactness face (XHDdEnt);
-    SCOPED SELF-LOOP-FREE (ADJ-3, 2026-07-31).
+    SCOPED SELF-LOOP-FREE (ADJ-3, 2026-07-29 — date corrected 2026-07-30;
+    original record mis-dated 2026-07-31, a future date; see
+    `V3_instbijA.lean`'s header for the provenance).
 
     STATEMENT REPAIR (adjudicated; Codex-confirmed mechanism — the depth-slot
     zip truncation, quoted in full in `V3_instbijA.lean`'s header): the

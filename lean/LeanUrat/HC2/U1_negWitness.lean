@@ -26,9 +26,13 @@ is unconditional over its hypothesis class; the INHABITATION of that class (a co
 2-node coherent history `[root, recentering]`) is NOT yet compiled: any 2-node coherent
 history requires `TransitionCoreL` at the root read, i.e. a constructed CHILD STAGE
 (`TransitionData.child_slotmin` + digit laws at the child key) — exactly the B2-heart
-carry-algebra kernel that is HC-1's S9 frontier (`S9r_childR`'s open construction) and
-K1_vertexPin's named sorry. The fleet note pre-recorded this dependency ("needs a concrete
-2-node coherent history — HC-1 S9-adjacent construction"); when HC-1's child stage lands
+carry-algebra kernel that is HC-1's S9 frontier. [STALE POINTER CORRECTED 2026-07-30
+verify-2 fold-in: this sentence formerly cited "`S9r_childR`'s open construction" and
+"K1_vertexPin's named sorry" as the blockers; both are now PROVED sorry-free/Lean-core
+(re-verified 2026-07-30). The standing inhabitation blocker is task #44's
+`HistoryCoherent` read-pair keying repair + the 2-node `ReadsOf` gate sub-project —
+NOT a sorry.] The fleet note pre-recorded this dependency ("needs a concrete
+2-node coherent history — HC-1 S9-adjacent construction"); when the 2-node gate lands
 (wave 4), instantiate `retiredKeysExist_false_of_witness` with it to close the last leg.
 The 1-node increment-leg countermodel (F-1's "σ.e = 2, h′ = 1, g = 1 leaves the required
 weight odd") is likewise blocked on a NEW ramified stage build: any legal `Stage` has

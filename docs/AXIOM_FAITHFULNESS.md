@@ -240,3 +240,79 @@ p-adic `K`; (4) strip all "p-independent / arbitrary-DVF / wild=tame" framing fr
 from GMN_citations.md / BB3_infinity.md narrative — p-independence is DERIVED. Plus propagate the
 BB3_infinity.md Thm-2.26 / Def-2.5-2.11 wrong-citation fix (already prescribed in GMN_citations.md §4)
 and confirm Serre/Neukirch printed proposition numbers. No fatal failure; no conclusion-in-disguise.
+
+---
+
+# ADDENDUM (2026-07-30, verify-2 fold-in): entries for the AS-DECLARED Lean axiom set
+
+**Status of the body above:** the 2026-06-17 sections are the FROZEN pre-Lean blueprint gate (Task #10
+deliverable) auditing the PLANNED eight-axiom list. Several of those planned axioms were never declared
+as Lean `axiom`s: AX-GMN-KEY, AX-DEFECT, AX-DIFFERENT, AX-GMN-I/II/IV have no Lean declaration (their
+content became hypotheses, proved lemmas, or interface data); AX-MEASURE survives only as the `hfactor`
+HYPOTHESIS of `L4.cellVolume_eq` (its axiom form `AX_columnMeasure` was declared, found FALSE-AS-STATED,
+and DELETED — U3, `notes/MONTES_AUDIT.md`, 2026-07-02); AX-GMN-III's content survives as the
+`omCells`/`descend`/`descend_size_lt` interface axioms. The verify-2 pass (2026-07-30) found the tree
+declares exactly SEVEN axioms (comment-aware scan): five in `PadicMeasure.lean` (`omCells:268`,
+`descend:272`, `descend_size_lt:278`, `clusterMeasure:405`, `AX_cellRecursion:438` — the first four
+covered above under AX-GMN-III / the C' interface, the fifth being the Denef–Igusa wall) and two with
+NO entry in this doc: `omReadValuation_lt_of_certLevel_fkeyed` (`OM/Classifier.lean:1114`) and
+`om_leaf_faithful` (`OM/OmLeafFaithful.lean:489`). The three entries below close that gap. Primary
+audits (semantic-guardian passes) live in `lean/notes/SEMANTIC_AUDIT_LOG.md`; these entries are the
+faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW.**
+
+### AX-CELLREC = `PadicMeasure.AX_cellRecursion` (+ interface `clusterMeasure`) — **FAITHFUL** *(DRAFT 2026-07-30 — PENDING ASVIN REVIEW)*
+- **Statement (as declared, PadicMeasure.lean:438):**
+  `axiom AX_cellRecursion (T : OMShape) (q : ℕ) (hq : 1 < q) : clusterMeasure T q = ((omCells T).map
+  (fun c => residualCountFn T c.residualDeg q * L4.bb1Value c.polygon q * (c.children.map (fun ch =>
+  clusterMeasure ch.node q)).prod)).sum / omPivot T q` — the Igusa/Denef per-cell decomposition of the
+  ONE fixed opaque cluster measure `clusterMeasure : OMShape → ℕ → ℚ` (itself an axiom asserting only
+  that the symbol denotes a fixed function; no value/rationality content).
+- **Verified core:** Igusa, *Local Zeta Functions* §7.4 / Prop 7.4.1 (p-adic change of variables) +
+  Denef, Invent. Math. 77 (1984) 1–23 (cell decomposition); the eq-(4.1)/(4.2) form of
+  `notes/BB3_infinity.md` §4.2 with multi-child product and per-cell count from the ACTUAL residual.
+  Asserts ONLY the scalar measure-factorization identity — **no rationality/uniformity/p-independence**
+  (those emerge via `OMInduction.clusterVol_isRational`, the cardinal-sin gate above passes).
+- **Scope caveats:** (a) stated about FIXED objects (`clusterMeasure`, concrete `omPivot`) — the
+  2026-06-19 soundness fix; the earlier free-binder form was INCONSISTENT and is gone; (b) consistency
+  is witnessed by the compiled model `clusterMeasureModel` + `clusterMeasureModel_rec`; (c) measure
+  route ONLY — the count-native capstone (`OM.RealInstanceV2.montes_unconditional`) does NOT consume it
+  (its footprint is Lean-core; ground truth `AxChk_baseline.lean`).
+- **Guardian audit:** `notes/SEMANTIC_AUDIT_LOG.md` AXIOMS section, `AX_cellRecursion` entry
+  (2026-07-16 baseline) — CLEAN.
+
+### AX-INDEX = `OM.Classifier.omReadValuation_lt_of_certLevel_fkeyed` — **FAITHFUL (narrowly scoped)** *(DRAFT 2026-07-30 — PENDING ASVIN REVIEW)*
+- **Statement (as declared, OM/Classifier.lean:1114→1126):** for a box `g : monicBox p (N+1) n` with
+  the bulk guard `hbulk : zmodValuation p (N+1) g.discr < N`, the two READ-SET-RESTRICTED guards hold:
+  `GuardSuppR p N hN g ∧ GuardSideR p N hN g` (valuation `< N` at the hull-vertex abscissae and at the
+  side columns up to `residualDeg S` — only what the OM reader touches).
+- **Verified core:** GMN (arXiv:0807.2620v2 §4) Thm 4.18 / Cor 4.19 — the **theorem of the index**,
+  `ind(f) ≤ v_p(disc f)`, specialized to the read-set. The single imported scalar fact, user-authorized
+  as an axiom.
+- **Scope caveats:** (a) f-keyed on the box's OWN discriminant valuation — the `hbulk` hypothesis is
+  load-bearing (drop it and `g = xⁿ + pᴺ` refutes the statement; that counterexample killed the earlier
+  UNIFORM `omReadValuation_lt_of_certLevel`, one of the two false axioms caught and removed);
+  (b) quantified only over the read-set (`hullDots` / side columns), NOT all of `support`; (c) threshold
+  is the box-native `zmodValuation p (N+1) g.discr`, not the retired PadicInt `certLevel`.
+- **Guardian audit:** `notes/SEMANTIC_AUDIT_LOG.md` AXIOMS section, `omReadValuation_lt_of_certLevel_fkeyed`
+  entry (2026-07-16 baseline) — CLEAN.
+
+### AX-LEAF = `OM.OmLeafFaithful.om_leaf_faithful` — **FAITHFUL (menu-fiber-scoped; joint cite)** *(DRAFT 2026-07-30 — PENDING ASVIN REVIEW)*
+- **Statement (as declared, OM/OmLeafFaithful.lean:489; current scope = W6q re-scope 2026-07-22):** for
+  monic `f : ℤ_[p][X]` of degree `n` in a genuine classifier fiber (`fiberOf7`) of a shape
+  `T ∈ ChainMenu7.omMenu7 n D K σ`, there EXISTS a `QpType.QpFactorization p f` with
+  `QpType.qpType p F = σ` — existence of a genuine ℚ_p-factorization realizing the menu type.
+- **Verified core:** GMN Thm 1.15/1.19 + Cor 1.20 (order-1 leaf dichotomy with explicit (e,f); the
+  order-≤1 instances of Thm 3.1/3.7/Cor 3.8) + Def 3.10/eq.(37), **jointly with** the standard
+  local-field structure theory the paper presupposes (integer rings of finite extensions of ℚ_p are
+  DVRs; Serre, *Local Fields* I–II — unprovable at the mathlib pin, so the `LocalFactorData` existence
+  is carried here).
+- **Scope caveats:** (a) menu-fiber-scoped (arising-shape house form) — asserts nothing off the menu
+  fibers; (b) EXISTENCE-ONLY: no uniqueness, and deliberate NON-imports = drainage (false of the
+  truncated classifier), residual equidistribution, any translation-form GMN statement; (c) the menu has
+  been widened by audited re-scopes (W3c/W4c/W5c/W6c/W6q), each with the prior form re-DERIVED as a
+  theorem (`om_leaf_faithful_w6/_w5/_w4/...`) so consumers never widened silently; (d) safety evidence
+  at declaration and at each re-scope: non-vacuity witnesses, mutation probes (`*_MUTATED` variants
+  derive machine-checked `False` against axiom-free anchors), positive coherence gates.
+- **Guardian audit:** `notes/SEMANTIC_AUDIT_LOG.md` 2026-07-21 Wild Wave 2 entry + re-scope audits
+  #4–#7 — ACCEPT (with recorded flags). Consumed only by the faithfulness theorems; the density
+  capstones remain Lean-core-only.

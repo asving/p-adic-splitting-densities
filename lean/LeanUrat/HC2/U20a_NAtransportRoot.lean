@@ -32,7 +32,14 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 whose parent read `i` is the ROOT read, the parent's line value at the standing vertex
 base `μ·childWidth` is realized as the frame-(i+1) actual slot weight of f's development
 at the vertex slot (stage scale: `σ.w = STR ×` absolute), and that vertex coefficient is
-nonzero. -/
+nonzero.
+
+⚠ VACUITY CAVEAT (2026-07-30 verify-2 fold-in; task #44 / A16+A39): this is a one-line
+consumer of the K1 kernel (`K1_readVertexPin`), whose non-recentering legs at
+`e·g ≥ 2` close via the V10 INCONSISTENCY finding — `ReadsOf` admits NO such instances
+(the `HistoryCoherent` read-pair keying is a flagged FAITHFULNESS BUG, pending
+sign-off task #44) — so this transport is currently VACUOUS at its intended steep
+perimeter. Never cite it as machine-checked transport mathematics there. -/
 theorem NA_transport_root {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)

@@ -41,7 +41,14 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
 /-- (NA) for runs: at a non-adjacent consecutive read of a run, the pinned old vertex
 lies STRICTLY ABOVE the extended new line (the (NA) conjunct of
-`TransitionAdmissible`, extracted). -/
+`TransitionAdmissible`, extracted).
+
+⚠ VACUITY CAVEAT (2026-07-30 verify-2 fold-in; task #44 / A16+A39): this assembly
+INHERITS the K1-kernel perimeter through U20a/U20b — the kernel's non-recentering
+legs at `e·g ≥ 2` close via the V10 INCONSISTENCY finding (`ReadsOf` admits NO such
+instances; the `HistoryCoherent` read-pair keying is a flagged FAITHFULNESS BUG,
+pending sign-off task #44), so this theorem is currently VACUOUS at that steep
+perimeter. Never cite it as machine-checked transport mathematics there. -/
 theorem readsOf_NA {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)

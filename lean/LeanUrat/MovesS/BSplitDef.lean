@@ -8,8 +8,10 @@ the verdict-singleton indicator, continuing legs are β at q^δ.
 (kTarget lives in Defs.lean — the E-phase fill of the §2.C skeleton.)
 E-PHASE NOTE (deviation D-2): `legFactor` guards the member-size bound by dite
 (else 0); under DegCons + U-2 (ktri) the guard always holds on split outcomes —
-threading ktri through the DEFINITION would make the statement depend on the
-sorried U-2.
+threading ktri through the DEFINITION would have made the statement depend on
+U-2, which was still sorried at E-phase.  (As-built note, 2026-07-30 verify-2
+fold-in: `ktri` has since been PROVED sorry-free in Ktri.lean; the D-2 shape is
+kept as the historical rationale for the dite guard.)
 -/
 import LeanUrat.MovesS.Defs
 import LeanUrat.MovesS.DecompFintype

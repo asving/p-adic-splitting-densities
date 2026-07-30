@@ -77,7 +77,8 @@ private lemma R_one (σ : Stage p F) : σ.R (1 : Polynomial ℤ_[p]) = 1 := by
   have key : σ.R (1 : Polynomial ℤ_[p]) * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
   exact (mul_left_cancel₀ hne key).symm
 
-/-- `R(f^n) = (R f)^n` (inlined `L0.GRe`: that unit's `.olean` is not on disk). -/
+/-- `R(f^n) = (R f)^n` (inlined `L0.GRe` — historical: that unit's `.olean` was not on disk
+when written; it now builds (2026-07-30), duplication tracked as Class-D). -/
 private lemma R_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
     σ.R (f ^ n) = (σ.R f) ^ n := by
   induction n with

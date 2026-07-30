@@ -43,7 +43,8 @@ item 2). Statement/pin changes, each to the blueprint's displayed intent:
   tables (the machine-checked e·g = 1 corner, `HC1.S9a_ungated_corner_refuted`);
   sorries stand with the refutation recorded at each site.
 
-T RATIFICATION RECORD CORRECTION (2026-07-31; verdict §8.2, quoted: "Two of G1's
+T RATIFICATION RECORD CORRECTION (2026-07-29 [date corrected 2026-07-30; original
+record mis-dated 2026-07-31]; verdict §8.2, quoted: "Two of G1's
 four admissions are not merely 'Q1-gated.' The source itself labels both
 `toyModel.mem_realizable` and `toyModelB.mem_realizable`: 'BLOCKED-FALSE at the
 blueprint's own tables' … Thus the requested description 'G1's four Q1-gated — all
@@ -1463,7 +1464,8 @@ noncomputable def toyLedgerA : SiteLedger toyTreeA toyModel toyCA toyχ := by
         · rw [if_neg (Ne.symm tA1_ne_tA2b)]
           exact ⟨tA1_prefix_tA2b, rfl, Or.inl rfl⟩
       presents := by
-        -- [T RATIFICATION 2026-07-31: the exact-cell keying — the site cell is the
+        -- [T RATIFICATION 2026-07-29 (date corrected 2026-07-30; original record
+        --  mis-dated 2026-07-31): the exact-cell keying — the site cell is the
         --  ledger's `cellAt` value (winC at the head, splitC at the leaves).]
         intro H hH
         rcases (show H = tA1 ∨ H = tA2a ∨ H = tA2b from hH) with h | h | h <;> subst h
@@ -2213,7 +2215,8 @@ theorem toy_jcmulti_site (ν : Node 2 (ZMod 2)) :
 /-- record 6's gate — CARRIER A: the one-side state↔cell tie at the leaf site.
 STATEMENT REPAIR (pin-repair pass, 2026-07-30, charge item 4): the E-phase cell
 transcribed the SITE as `(EntSt.red toyG X)` — false; repaired to `.st tA1` per the
-charge. RE-KEYED at the T RATIFICATION (2026-07-31; verdict §1): the tie is now the
+charge. RE-KEYED at the T RATIFICATION (2026-07-29 [date corrected 2026-07-30;
+original record mis-dated 2026-07-31]; verdict §1): the tie is now the
 EXACT Σ_c law; RE-KEYED at the T RE-RATIFICATION (2026-08-01): the fiber is taken
 under the SITE's own read map, keyed by the site's branch node `tA2a.lastNode`
 (`siteCellEvent (parentSt tA2a) tA2a.lastNode (cellAt tA2a)` = the {x0…x5}

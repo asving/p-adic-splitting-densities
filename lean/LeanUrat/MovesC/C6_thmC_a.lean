@@ -9,6 +9,13 @@ over the recorded moves — no image, no `Sigma`). This unit PROVES:
 
 Deps `C6.psiBij` / `C6.transportedSystem` are re-derived inline here (`unitri_bij`+`seg_bij`
 for (i); `bridge` for the transported-system iff), so this file imports only `Defs`.
+
+UNUSED-HYPOTHESIS CAVEAT (2026-07-30 verify-2 fold-in): the hypothesis
+`hZ : AdmissibleZ (J.Sigma H.nodes.length) Z` is NOT used in the proof of clauses
+(i)–(iii) below — the proof closes via `unitri_bij`/`bridge`/`seg`-folding/image
+congruence without touching admissibility. `hZ` is retained for quantifier fidelity
+with rev-14 Theorem C(a)'s statement (the statement is fenced; do NOT remove it), and
+admissibility IS genuinely consumed on the C(b) side via `C6_transportedAdmissible`.
 -/
 import LeanUrat.MovesC.Defs
 

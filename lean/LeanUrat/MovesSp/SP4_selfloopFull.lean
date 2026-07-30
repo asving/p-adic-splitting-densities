@@ -4,6 +4,11 @@ check: the two loop classes Q2.3▸(1,2) and Q3▸(1,3) are exactly the full POS
 letters at stages (1,1,2) and (1,1,3), per (i)."
 deps: Sp.selfloopChar. sketch: unfold IsFull; direct from the characterization.
 difficulty: easy.
+AS-BUILT (2026-07-30 verify-2 fold-in): the deps/sketch above are the blueprint
+plan, not the built proof — the file imports only Defs and re-derives the full
+self-loop characterization inline; Sp.selfloopChar is neither imported nor
+cited. Inline duplication tracked under the Class-D watch
+(notes/GOLF_CAMPAIGN_2026-07-30.md).
 -/
 import LeanUrat.MovesSp.Defs
 

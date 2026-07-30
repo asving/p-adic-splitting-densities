@@ -15,6 +15,11 @@ the note-quoted n = 1 clause (rev 5 of the note), not an engine kernel.
 [E-phase binder note: the def's (p, f) binders are implicit and hf/hdeg are NOT
 taken — the packaging needs only the interface fields; the theorems carry the
 blueprint's full binder list.]
+AS-BUILT (2026-07-30 verify-2 fold-in): of the deps above, Sp.n1singleton and
+Sp.n1RootConfirming ARE imported (SP6_n1singleton, SP3_n1Root); Sp.compMember is
+NOT — only its r = 0 leg is needed and it is taken inline via `InCatalogue.root`
+(see the in-proof comment). Blueprint-plan vs as-built drift, tracked under the
+Class-D watch (notes/GOLF_CAMPAIGN_2026-07-30.md).
 -/
 import LeanUrat.MovesSp.DefsN3
 import LeanUrat.MovesSp.SP3_n1Root

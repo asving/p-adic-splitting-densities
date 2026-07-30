@@ -3,6 +3,12 @@ Unit XB.4 t3Charge  [PROVED, fleet 2026-07-28]
 moves_ref: "each T3 node multiplies the key degree by e ≥ 2, so #T3 per branch ≤ ⌊log₂ n⌋
 (derived…)"; exponential step proved in-unit, only Πe ≤ n rides (`HistWF.degProd`,
 MovesSp-discharged). deps: XA.1. difficulty: MEDIUM.
+AS-BUILT (2026-07-30 verify-2 fold-in): t3Charge's `hn : 1 ≤ n` is UNUSED in the body
+(machine-confirmed removable via lean_minimal_hypotheses; also mathematically redundant
+given W — each e ≥ 1 via epos, so W.degProd forces 1 ≤ n). Statement-fenced: kept,
+inventory only (Class B, notes/GOLF_CAMPAIGN_2026-07-30.md). Consumers XC3/XC4/XG1/XG2d
+thread hn solely to feed this dead slot — treat the whole thread as one unit in any
+future signed-off de-noising.
 -/
 import LeanUrat.MovesX.Defs
 import LeanUrat.MovesX.XA1

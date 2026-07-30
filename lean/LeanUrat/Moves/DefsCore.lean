@@ -286,7 +286,18 @@ def StratumData (σ : Stage p F) (ψ : Polynomial ↥σ.K) (μ : ℕ) (a : ℤ)
   ∃ Ranch : Polynomial ↥σ.K, HasAnchorK (σ.R f) a Ranch ∧
     IsDevelopment ψ Ranch Cdig n ∧ (∀ j, j < μ → Cdig j = 0) ∧ Cdig μ ≠ 0
 
-/-- **The landing cylinder, with the transported pattern** (D.8 (BOX)/(VERTEX)/(TRANSPORT)):
+/-- **The landing cylinder, with the transported pattern** (D.8 (BOX)/(VERTEX)/(TRANSPORT)).
+
+**DEFECTIVE RENDERING — DEAD CODE (banner added 2026-07-30 verify-2 fold-in).**  This is
+the audit-#4 FAITHLESS form of the landing cylinder: its TRANSPORT clause demands per-slot
+`toLaurent` polynomiality (the locus abandoned at the round-5 redesign) and it LACKS the
+terminal no-overflow clause whose absence breaks the reverse implication.  The CORRECTED
+object is `DefsL.LandingCylinderL` (`DefsL.lean`; defect record at its header).  After the
+signed-off R1 re-point of `L6_measureExact` (2026-07-30, `L6_measureExact_R4.lean`) this
+definition has ZERO code consumers repo-wide (docstring mentions only).  Retained, not
+deleted, for the audit record; do NOT build new consumers on it.
+
+Original docstring:
 conditions on the child development data `B` alone, at the lift weight `w(Φ̂) = e·h·g` and
 normalization `m̂ = −t·h·g`:
 * there is a side line `m₀` = the attained slot minimum, with slot `μ` ON it (VERTEX, `B μ ≠ 0`)

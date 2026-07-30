@@ -13,7 +13,8 @@ import LeanUrat.MovesT.E8_treeExp
 unit prices over the DATA layer; the ∀-closure `TreeNStmt` (Defs §2.10) carries the
 FULL W4-1 interface.
 
-T RATIFICATION REPAIR (2026-07-31; verdict §5: "Lean's `treeN` proves only
+T RATIFICATION REPAIR (2026-07-29 [date corrected 2026-07-30; original record
+mis-dated 2026-07-31]; verdict §5: "Lean's `treeN` proves only
 [the mass identity] for an independently supplied model, assignment, ledger, and
 scaffold at that N. Its `hthr` premise is unused, and there is no cross-level
 identification of the tree fiber or proof of cylinder stability"): (i) the unused
@@ -34,7 +35,8 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 variable {n N : ℕ} {pol : CanonPolicy p F}
 
-/-- RE-KEYED at the T RATIFICATION (2026-07-31 — same row changes as `treeExp`; the
+/-- RE-KEYED at the T RATIFICATION (2026-07-29 [date corrected 2026-07-30; original
+record mis-dated 2026-07-31] — same row changes as `treeExp`; the
 unused `hthr` premise REMOVED per verdict §5, honesty: the mass identity as proved
 is threshold-free — the threshold's real content is `treeN_stable` below). -/
 theorem treeN (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
@@ -66,7 +68,8 @@ theorem treeN (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
 (the re-ratification integration finding: "the stability statement exists but is
 not carried by the advertised RS.1 package"). The open theorem row stays HERE.] -/
 
-/-- **T-E11b `treeN_stable` — NAMED OPEN ROW** (T RATIFICATION 2026-07-31, verdict
+/-- **T-E11b `treeN_stable` — NAMED OPEN ROW** (T RATIFICATION 2026-07-29 [date
+corrected 2026-07-30; original record mis-dated 2026-07-31], verdict
 §5's demanded statement; the mass face `treeN` above is PROVED, this stability face
 is NOT). Premise row = the note's own: T complete finite realizable (per level)
 with all leaves (τ-irr)/(τ-hen), over the pinned tower perimeter (`KBTotTower`).

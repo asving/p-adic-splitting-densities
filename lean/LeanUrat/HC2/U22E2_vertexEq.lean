@@ -30,7 +30,15 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 /-- (SAE) adjacent-vertex equality endpoint (F-4/U22-E2): at consecutive reads of a run
 whose child window REACHES the standing vertex (`s0' + wSide' = μ`), the new side height
 `u*'` equals the standing vertex height — the parent line's value at the vertex base
-`μ·childWidth`. -/
+`μ·childWidth`.
+
+⚠ VACUITY CAVEAT (2026-07-30 verify-2 fold-in; the A16 queued fix; task #44 / A39):
+this is a one-line consumer of the K1 kernel (`K1_SAE_vertexEq_endpoint`, resting on
+`K1_readVertexPin_nonrec`), whose non-recentering legs at `e·g ≥ 2` close via the V10
+INCONSISTENCY finding — `ReadsOf` admits NO such instances (the `HistoryCoherent`
+read-pair keying is a flagged FAITHFULNESS BUG, pending sign-off task #44) — so this
+endpoint is currently VACUOUS at its intended steep perimeter. Never cite it as
+machine-checked transport mathematics there. -/
 theorem SAE_vertexEq_endpoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)

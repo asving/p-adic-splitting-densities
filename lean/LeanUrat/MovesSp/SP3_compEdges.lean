@@ -7,6 +7,11 @@ deps: Sp.compMember. sketch: Succ-membership = InCatalogue (compMember at r + 1)
 the conclusion's Out is defined through InCatalogue, which no field supplies.
 difficulty: easy. hypothesis_fields: the standing group-F list (see
 SP3_compMember.lean).
+AS-BUILT (2026-07-30 verify-2 fold-in): the deps line above is the blueprint
+plan — the file imports only Defs and re-runs the compMember closure induction
+inline (see the in-proof comment); Sp.compMember is neither imported nor cited.
+Inline duplication tracked under the Class-D watch
+(notes/GOLF_CAMPAIGN_2026-07-30.md).
 -/
 import LeanUrat.MovesSp.Defs
 

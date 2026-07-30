@@ -1,6 +1,8 @@
 /-  MovesV unit V3-5c `inst_bij_eq` — THE ASSEMBLED EQUIV + computation law
     (incl. the zig/gamTie roundtrip check); SCOPED SELF-LOOP-FREE (ADJ-3,
-    2026-07-31) + SPWORD-CHOICE-PINNED (ADJ-2 family, closer pass).
+    2026-07-29 — date corrected 2026-07-30; original record mis-dated
+    2026-07-31, a future date; see `V3_instbijA.lean`'s header) +
+    SPWORD-CHOICE-PINNED (ADJ-2 family, closer pass).
 
     STATEMENT REPAIR (adjudicated; Codex-confirmed mechanism — the depth-slot
     zip truncation, quoted in full in `V3_instbijA.lean`'s header): the

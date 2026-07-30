@@ -190,10 +190,28 @@ structure CtsmConclusions (L : CtsmLedger n) : Prop where
   val_b_chain : ValB_Stmt L
   no_entry : NoEntry_Stmt L
   iota_supp : IotaSupp_Stmt L
+  /-- VACUITY DISCLOSURE (2026-07-30 verify-2 fold-in): this field is a
+  P → P TAUTOLOGY — `AVRec_Stmt L → AVRec_Stmt L`, discharged by `id` in
+  `ctsM` (V7_ctsm.lean) — and carries NO content.  The blueprint
+  (MOVESV_LEAN_BLUEPRINT_2026-07-28.md V7-2a display) shows the bare Prop
+  `AVRec_Stmt L` ("the (ii-c) Prop CARRIED, never concluded"); the P → P
+  retype is a transcription deviation now recorded as MANIFEST D27.  What
+  this field certifies: nothing — ActiveValueAgree survives in `ctsM` only
+  as an antecedent inside `SolveCond_Stmt`, never as a carried conclusion.
+  Retype-to-bare-Prop or deletion is queued for sign-off
+  (GOLF_CAMPAIGN_2026-07-30.md SIGN-OFF QUEUE). -/
   active_value_recorded : AVRec_Stmt L → AVRec_Stmt L
   ent_typing : EntTyping_Stmt L
   ent_agg_fin : EntAggFin_Stmt L
   ent_agg_full : EntAggFull_Stmt L
+  /-- VACUITY DISCLOSURE (2026-07-30 verify-2 fold-in): P → P TAUTOLOGY —
+  `EntCountNamed_Stmt L → EntCountNamed_Stmt L`, discharged by `id` in
+  `ctsM` (V7_ctsm.lean); carries NO content.  The blueprint V7-2a display
+  shows the bare carried Prop.  EntCount itself does survive as the
+  ledger field `L.hEC` (and as a `SolveCond_Stmt` antecedent), but THIS
+  field certifies nothing.  Retype-to-bare-Prop or deletion is queued for
+  sign-off (GOLF_CAMPAIGN_2026-07-30.md SIGN-OFF QUEUE); deviation
+  recorded as MANIFEST D27. -/
   ent_count_named : EntCountNamed_Stmt L → EntCountNamed_Stmt L
   init_rat : InitRat_Stmt L
   part1 : Part1_Stmt L

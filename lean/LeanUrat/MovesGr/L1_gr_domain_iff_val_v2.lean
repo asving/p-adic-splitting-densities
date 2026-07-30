@@ -2,12 +2,24 @@
 MovesGr unit `L1_gr_domain_iff_val` (v2; the manifest-path file is an earlier attempt).
 Statement byte-identical to `LeanUrat/MovesGr/MANIFEST.json`.
 
-STATUS: forward direction (IsDomain → valuation) FULLY PROVED — in fact it needs no
-domain hypothesis: `Rg.if_mul` + `Rg.mul_of` + degree-injectivity of `DirectSum.of`
-already force `w (f*g) = w f + w g`. Backward direction: `Nontrivial` proved; ONE
-`sorry` at `NoZeroDivisors S.Gr`.
+>>> SUPERSEDED — DIAGNOSIS OBSOLETE (banner added 2026-07-30 verify-2 fold-in) <<<
+The FALSE-as-stated diagnosis below was INTERFACE-RELATIVE: true of the ORIGINAL
+4-field `GradedRingStr` (which pinned no addition/zero), the interface this file was
+written against. The option-(a) re-key (signed off by Asvin 2026-07-28; MANIFEST
+`rekey_2026-07-28`) added the `add_def` field — `GradedRingStr` now has SIX fields
+(ring, add_def, mul_of, one_def, if_mul, if_add_lt) — and under it the BYTE-IDENTICAL
+statement is FULLY PROVED, Lean-core, in `L1_gr_domain_iff_val_v3.lean`
+(`LeanUrat.MovesGr.L1_gr_domain_iff_val`; `#print axioms` = [propext, Classical.choice,
+Quot.sound], re-verified via scratch + `lake env lean` 2026-07-30). Read every
+present-tense claim below ("UNPROVABLE because it is false as stated", "never pins
+Rg.ring's ADDITION or ZERO", "satisfying ALL four `GradedRingStr` fields") as
+HISTORICAL, about the pre-rekey 4-field interface only: against the current 6-field
+structure they are FALSE, and the counterexample scheme no longer type-checks
+(a transported product ring violates `add_def`). This module is superseded and
+quarantine-bound at repo-prep (queue items A26/R2).
 
-WHY THE `sorry` CANNOT BE DISCHARGED (diagnosis, sharpened from "blocked" to FALSE):
+WHY THE `sorry` CANNOT BE DISCHARGED (HISTORICAL pre-rekey diagnosis — see the
+2026-07-30 banner above; sharpened at the time from "blocked" to FALSE):
 the backward direction of the statement is UNPROVABLE because it is false as stated.
 Since the RHS is unconditional (see above), the statement is equivalent to
   ∀ Rg : GradedRingStr S, IsDomain S.Gr (w.r.t. Rg.ring),
@@ -101,10 +113,13 @@ theorem L1_gr_domain_iff_val (S : SideVal p) (Rg : GradedRingStr S) : (letI := R
     haveI hnzd : NoZeroDivisors S.Gr :=
       { eq_zero_or_eq_zero_of_mul_eq_zero := by
           intro a b hab
-          -- FALSE for arbitrary `Rg`: `GradedRingStr` does not pin `Rg.ring`'s
-          -- addition/zero to the DirectSum's, so `a`, `b` cannot be decomposed
-          -- into homogeneous pieces and `mul_of` cannot reach general products.
-          -- See the header for the transport counterexample (R₀ × R₀ along a
-          -- bijection fixing homogeneous elements) and the Defs-level fix.
+          -- [HISTORICAL, pre-`add_def` interface — see the 2026-07-30 banner; PROVED
+          -- in v3 against the current 6-field `GradedRingStr`.] Was FALSE for
+          -- arbitrary `Rg` of the ORIGINAL 4-field structure: nothing pinned
+          -- `Rg.ring`'s addition/zero to the DirectSum's, so `a`, `b` could not be
+          -- decomposed into homogeneous pieces and `mul_of` could not reach general
+          -- products. See the header for the then-counterexample (R₀ × R₀ along a
+          -- bijection fixing homogeneous elements) and the Defs-level fix (executed
+          -- 2026-07-28 as `add_def`).
           sorry }
     exact NoZeroDivisors.to_isDomain _

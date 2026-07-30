@@ -348,7 +348,19 @@ def StrongVerdictResidual {f : Polynomial ℤ_[p]} (M : CanTreeModel n p f) : Pr
 /-- the witness carries a STRONG pin too (the strong residual is non-vacuously
 satisfiable at n = 2): τ emits the built (τ-irr) alphabet value {(1, 1)} — the
 toy A branch's accumulated (E, F) = (accE, accF) = (1, 1) — at every closing
-read, `.ep` its bare label (choice VP-owned), cap 3 ≥ the word length. -/
+read, `.ep` its bare label (choice VP-owned), cap 3 ≥ the word length.
+
+DISCLOSURE (2026-07-30 verify-2 fold-in; queue item A25 / MovesSp#40): this
+witness is a CONSTANT/degenerate device — `tauV` and `dict` ignore their branch
+argument, `htau`/`hcap` are bare `rfl`s that never consult their premises, and
+`cap := 3` is never actually read (the constant verdict map makes `hcap` hold
+for ANY cap, including 0). What the pin certifies: INHABITATION of the
+`StrongVerdictPin` interface — the strong residual `StrongVerdictResidual` is
+satisfiable at n = 2. What it does NOT certify: any discriminating content of
+the pin — the (c2) exactly-one clause across distinct verdicts and the (c3-b)
+cap-sensitivity clause are discharged without being exercised. Witness
+strengthening is on the sign-off queue (notes/GOLF_CAMPAIGN_2026-07-30.md,
+SIGN-OFF QUEUE). -/
 noncomputable def toyStrongPin : StrongVerdictPin toyCanModel where
   tauV _ := MovesT.irrVerdict 1 1 le_rfl le_rfl
   dict _ := Verdict.ep

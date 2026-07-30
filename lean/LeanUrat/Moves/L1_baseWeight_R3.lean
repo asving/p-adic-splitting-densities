@@ -46,8 +46,11 @@ Direct MacLane base-case argument via the φ-adic development calculus — no gr
   `f·g` has content exactly `v(a_I) + v(b_J)` and weight exactly `w f + w g`.
 
 The added hypotheses are used exactly where the mathematics needs them: `hirred` for the residue
-step, `hh` for the carry, `hmon`/`hd` for the division calculus; `he`, `hcop` are part of the
-faithful D.2 signature (value-group normalization) and are not needed for multiplicativity.
+step, `hh` for the carry, `hmon`/`hd` for the division calculus, and `he` for the value-group
+cancellation (`cancel_mul_succ`, consumed at both branch closers of the `≤` direction); `hcop`
+alone is part of the faithful D.2 signature (value-group normalization) and is NOT consumed by
+the multiplicativity proof.  (Docstring corrected 2026-07-30 verify-2 fold-in, queue item A4:
+the previous text wrongly grouped `he` with `hcop` as unused.)
 -/
 
 set_option linter.style.longLine false

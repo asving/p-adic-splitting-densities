@@ -1,7 +1,7 @@
 {
  "corpus": "MovesV — MOVES §V-TABLES (CTS state space, tables, CTS-M)",
  "blueprint": "lean/notes/MOVESV_LEAN_BLUEPRINT_2026-07-28.md (REV 9)",
- "phase": "E-PHASE (statements + sorry bodies; Defs sorry-free)",
+ "phase": "E-PHASE record (statements + sorry bodies; Defs sorry-free); AS-BUILT 2026-07-30: prover passes complete — 4 sorried declarations remain, all other unit files sorry-free (see census_asbuilt_2026-07-30)",
  "date": "2026-07-29",
  "defs_layer": {
   "Defs.lean": "sections 2.A-2.H, GREEN, zero sorry, zero axioms (incl. PROVED gcell_denom_sum, omem_kcol, realized_isSlot, refTmpls, coverFn transports)",
@@ -11,6 +11,7 @@
  "units_landed": 100,
  "sorried_declarations": 4,
  "banked_sorry": "V7_w17ii.lean w17ii_wave4 clause (ii) — the ONE [3t]-owned banked sorry (C14); every other sorry is an E-phase statement body awaiting the prover pass",
+ "census_asbuilt_2026-07-30": "verify-2 fold-in: exact live-sorry census at HEAD = 4 declarations — V7_livC.lean:66 (ledgerIV_inst), V7_rbC.lean:52 (ratBurdens_exists), V7_scsData.lean:46 (scs_data_supply), V7_w17ii.lean:48 (w17ii_wave4 clause (ii), the banked [3t] sorry). Every other unit file is sorry-free on disk; the units table's 'sorry-stmt' wordings are E-phase records, each now carrying an AS-BUILT correction. Evidence: comment-stripped sorry-token grep at HEAD + golf_baseline_2026-07-30/MovesV_axioms.txt.",
  "conditionality_banner": "per blueprint §0: XHD faces/(ENT-U)/ENT-COUNT/INIT-RAT premises/(J-RAT) pack/(ii-c)/ContTwo/StageLawBurden/MDomTie/MarkFiberTie/HMC ride as typed hypothesis structures/arguments; HMC open kernel (no unit proves it, none assumes it); HMCAug consumed by nothing (verdict (A): separation obligation withdrawn, V4-11 leg (iii) carries NO proof obligation); MovesS.XRBPackage NOT BUILT (V7-7's xrbPackageOf gated on wave-4 co-build)",
  "units": {
   "V0-1": [
@@ -43,11 +44,11 @@
   ],
   "V1-3b": [
    "V1_chains.lean",
-   "chainsFintype instance PROVED; chains_card/tgam_eq_chains sorry-stmt"
+   "chainsFintype instance PROVED; chains_card/tgam_eq_chains sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V1-3c": [
    "V1_lastTie.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V1-4": [
    "V1_xhds.lean",
@@ -63,23 +64,23 @@
   ],
   "V1-7": [
    "V1_fence.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V1-8a": [
    "V1_witnessA.lean",
-   "sorry-stmt (∃-form)"
+   "sorry-stmt (∃-form) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V1-8b": [
    "V1_witnessB.lean",
-   "sorry-stmt (∃-form)"
+   "sorry-stmt (∃-form) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V1-8c": [
    "V1_witnessC.lean",
-   "sorry-stmt (∃-form)"
+   "sorry-stmt (∃-form) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V2-1": [
    "V2_skeleton.lean",
-   "(a) PROVED; (b) sorry-stmt"
+   "(a) PROVED; (b) sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V2-2": [
    "V2_cells.lean",
@@ -95,15 +96,15 @@
   ],
   "V2-5": [
    "V2_valB.lean",
-   "dataOf/tblOf/pathProdPoly/Wtmpl defs landed; 3 lemmas sorry-stmt"
+   "dataOf/tblOf/pathProdPoly/Wtmpl defs landed; 3 lemmas sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V2-6": [
    "V2_audit.lean",
-   "sorry-stmt + AuditedEntry carrier"
+   "sorry-stmt + AuditedEntry carrier — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V2-7": [
    "V2_val1.lean",
-   "cells partition PROVED; fiber counts sorry-stmt"
+   "cells partition PROVED; fiber counts sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V2-8": [
    "V2_anchor.lean",
@@ -115,11 +116,11 @@
   ],
   "V2-10": [
    "V2_bounds.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-1": [
    "V3_eps.lean",
-   "(a)+(b) PROVED; eligibleImage_finite (§8 obligation) sorry-stmt"
+   "(a)+(b) PROVED; eligibleImage_finite (§8 obligation) sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-2": [
    "V3_hent.lean",
@@ -135,7 +136,7 @@
   ],
   "V3-3c": [
    "V3_spwordC.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-3d": [
    "V3_spwordD.lean",
@@ -143,35 +144,35 @@
   ],
   "V3-4": [
    "V3_tfin.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-5a": [
    "V3_instbijA.lean",
-   "PROVED (ADJ-3 2026-07-31: SELF-LOOP-FREE scope hypothesis word.filter (SelfLoopLetter n) = [] added per the Codex-confirmed depth-slot zip truncation; mechanism lemmas expandRuns_eq_of_selfLoopFree / shapeOfSlots?_slots / writeHeights?_pairSlots / pairSlots_inj_of_selfLoopFree all Lean-core; inst_bij_inj's sorryAx flows ONLY through V3-3d writeHeights_total inside the writeHeights def)"
+   "PROVED, SORRY-FREE as-built 2026-07-30 (ADJ-3 2026-07-29 — date corrected 2026-07-30; original record mis-dated 2026-07-31, a future date: SELF-LOOP-FREE scope hypothesis word.filter (SelfLoopLetter n) = [] added per the Codex-confirmed depth-slot zip truncation; mechanism lemmas expandRuns_eq_of_selfLoopFree / shapeOfSlots?_slots / writeHeights?_pairSlots / pairSlots_inj_of_selfLoopFree all Lean-core). CORRECTION 2026-07-30 (verify-2 fold-in): the earlier claim that inst_bij_inj's sorryAx flows through V3-3d writeHeights_total is REFUTED by compiled evidence — #print axioms inst_bij_inj = [propext, Classical.choice, Quot.sound] (golf_baseline_2026-07-30/MovesV_axioms.txt:126; re-checked at HEAD 2026-07-30)."
   ],
   "V3-5b": [
    "V3_instbijB.lean",
-   "sorry-stmt (ADJ-3 2026-07-31: SELF-LOOP-FREE scoped — unscoped form NOT ONTO on self-loop templates; 1 residue sorry = the inverse-construction fold: SpFitsRead<->ReadFits clause bridge + readFits_unique pinning + the V3-3a width-law seam — the spword-family/ADJ-2 dependency, not yet landed)"
+   "PROVED, SORRY-FREE as-built 2026-07-30 — the E-phase 'sorry-stmt' label and its '1 residue sorry' claim are STALE: the residue (the inverse-construction fold: SpFitsRead<->ReadFits clause bridge + readFits_unique pinning + the V3-3a width-law seam) was CLOSED at commit 34447a8 (2026-07-29, B proved with NO statement change); inst_bij_surj = [propext, Classical.choice, Quot.sound] (baseline dump :127). (ADJ-3 2026-07-29 — date corrected 2026-07-30; original mis-dated 2026-07-31: SELF-LOOP-FREE scoped — unscoped form NOT ONTO on self-loop templates.)"
   ],
   "V3-5c": [
    "V3_instbijC.lean",
-   "sorry-stmt (ADJ-3 2026-07-31: SELF-LOOP-FREE scoped, consumes scoped A+B; 1 residue sorry = hround template? roundtrip: fitting-word existence + spWord choice-pinning = V3-3d spWord_faithful's re-keyed content, ADJ-2-owned)"
+   "PROVED, SORRY-FREE as-built 2026-07-30 — the E-phase 'sorry-stmt' label and its '1 residue sorry' claim are STALE: the hround/roundtrip residue was CLOSED at commit 34447a8 (2026-07-29, C proved under SpWordPinned — the RATIFIED scoping; fitting words non-unique, the refuted spWord_faithful re-key); inst_bij_eq = [propext, Classical.choice, Quot.sound] (baseline dump :128). (ADJ-3 2026-07-29 — date corrected 2026-07-30; original mis-dated 2026-07-31: SELF-LOOP-FREE scoped, consumes scoped A+B.)"
   ],
   "V3-6": [
    "V3_iota.lean",
-   "(a)/(b) sorry-stmt; (c) iota_d10_tie PROVED (direct MovesD.D4R1_SUM cite)"
+   "(a)/(b) sorry-stmt; (c) iota_d10_tie PROVED (direct MovesD.D4R1_SUM cite) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-7": [
    "V3_aggfin.lean",
-   "CutsDisj/unionCut defs PROVED-landed; agg lemma sorry-stmt"
+   "CutsDisj/unionCut defs PROVED-landed; agg lemma sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-8a": [
    "V3_aggfullA.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-8b": [
    "V3_aggfullB.lean",
-   "iotaShV/iotaValV defs landed; sorry-stmt"
+   "iotaShV/iotaValV defs landed; sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V3-9a": [
    "V3_entcount.lean",
@@ -183,15 +184,15 @@
   ],
   "V3-9c": [
    "V3_initrat.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-1": [
    "V4_act.lean",
-   "no_entry sorry-stmt; iota_supp PROVED"
+   "no_entry sorry-stmt; iota_supp PROVED — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-2": [
    "V4_tri.lean",
-   "sorry-stmt (row-vanishing premise form)"
+   "sorry-stmt (row-vanishing premise form) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-3": [
    "V4_agree.lean",
@@ -203,7 +204,7 @@
   ],
   "V4-5": [
    "V4_step.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-6a": [
    "V4_part1A.lean",
@@ -219,11 +220,11 @@
   ],
   "V4-7": [
    "V4_part2.lean",
-   "markedRow/terminalRow/surplusRow defs landed; sorry-stmt"
+   "markedRow/terminalRow/surplusRow defs landed; sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-8": [
    "V4_n3surplus.lean",
-   "ContTwo def landed; general lemma sorry-stmt; gate decide deferred"
+   "ContTwo def landed; general lemma sorry-stmt; gate decide deferred — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-9": [
    "V4_rep.lean",
@@ -231,19 +232,19 @@
   ],
   "V4-10": [
    "V4_meas.lean",
-   "(a) markReading PROVED; (b)/(b')/(d) sorry-stmt; (c) PROVED from (b')"
+   "(a) markReading PROVED; (b)/(b')/(d) sorry-stmt; (c) PROVED from (b') — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-11": [
    "V4_hmc.lean",
-   "NOT-HMC GATE: sorry-stmt (see deviations D11); terminal-final typing example PROVED"
+   "NOT-HMC GATE: sorry-stmt (see deviations D11); terminal-final typing example PROVED — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-12": [
    "V4_naming.lean",
-   "Factorizes/UpgradeOnlyIf defs landed; (b') sum_not_membership PROVED (machine-checked coincidence); (a)/(c) sorry-stmt"
+   "Factorizes/UpgradeOnlyIf defs landed; (b') sum_not_membership PROVED (machine-checked coincidence); (a)/(c) sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V4-13": [
    "V4_hmcaug.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V5-1": [
    "V5_event.lean",
@@ -263,7 +264,7 @@
   ],
   "V5-3": [
    "V5_shadow.lean",
-   "entCountPolyC/cshadowPoly defs landed; sorry-stmt"
+   "entCountPolyC/cshadowPoly defs landed; sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V5-4": [
    "V5_comphs.lean",
@@ -271,7 +272,7 @@
   ],
   "V5-5": [
    "V5_compsig.lean",
-   "stepProdVal def landed; sorry-stmt"
+   "stepProdVal def landed; sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V5-6": [
    "V5_compagg.lean",
@@ -283,15 +284,15 @@
   ],
   "V5-7b": [
    "V5_jrat.lean",
-   "sorry-stmt (incl. per-cell clause + symbolic fiber sum)"
+   "sorry-stmt (incl. per-cell clause + symbolic fiber sum) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V5-7c": [
    "V5_jfence.lean",
-   "j_marked_split PROVED; strict-excess sorry-stmt"
+   "j_marked_split PROVED; strict-excess sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V5-8": [
    "V5_cellrefine.lean",
-   "gcellVal def landed; sorry-stmt"
+   "gcellVal def landed; sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V6-1a": [
    "V6_a1poly.lean",
@@ -307,7 +308,7 @@
   ],
   "V6-2a": [
    "V6_a2dom.lean",
-   "(c) PROVED; (a)/(b) sorry-stmt"
+   "(c) PROVED; (a)/(b) sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V6-2b": [
    "V6_a2wt.lean",
@@ -319,7 +320,7 @@
   ],
   "V6-3b": [
    "V6_bcensus.lean",
-   "classifier defs landed; census sorry-stmt"
+   "classifier defs landed; census sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V6-4a": [
    "V6_gateB.lean",
@@ -347,15 +348,15 @@
   ],
   "V7-3a": [
    "V7_ts.lean",
-   "sorry-stmt (existence form — D13)"
+   "sorry-stmt (existence form — D13) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V7-3b": [
    "V7_tsGate.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V7-3c": [
    "V7_scsData.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): 1 live sorry (scs_data_supply, V7_scsData.lean:46); one of MovesV's exactly 4 sorried declarations."
   ],
   "V7-3d": [
    "V7_stageLaw.lean",
@@ -363,15 +364,15 @@
   ],
   "V7-4a": [
    "V7_msA.lean",
-   "sorry-stmt (existence form — D13)"
+   "sorry-stmt (existence form — D13) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free, via the fully degenerate MeasuredSide witnesses (Cell := PEmpty, mucell := 0) — the disclosed A28 perimeter: inhabitation only, does NOT discharge the real duty (see V7_livC's docstring)."
   ],
   "V7-4b": [
    "V7_msB.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free, via the fully degenerate MeasuredSide witnesses (Cell := PEmpty, mucell := 0) — the disclosed A28 perimeter: inhabitation only, does NOT discharge the real duty (see V7_livC's docstring)."
   ],
   "V7-4c": [
    "V7_msC.lean",
-   "sorry-stmt (k=0 Kronecker clause in statement)"
+   "sorry-stmt (k=0 Kronecker clause in statement) — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free, via the fully degenerate MeasuredSide witnesses (Cell := PEmpty, mucell := 0) — the disclosed A28 perimeter: inhabitation only, does NOT discharge the real duty (see V7_livC's docstring)."
   ],
   "V7-5a": [
    "V7_rbA.lean",
@@ -383,11 +384,11 @@
   ],
   "V7-5c": [
    "V7_rbC.lean",
-   "cell_ne_inst + assembly sorry-stmt"
+   "cell_ne_inst + assembly sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): cell_ne_inst PROVED on disk; 1 live sorry remains (ratBurdens_exists, V7_rbC.lean:52)."
   ],
   "V7-6a1": [
    "V7_livA1.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V7-6a2": [
    "V7_livA2.lean",
@@ -395,11 +396,11 @@
   ],
   "V7-6b": [
    "V7_livB.lean",
-   "xhd_sum PROVED (HasSum.mul_left); comp_once sorry-stmt"
+   "xhd_sum PROVED (HasSum.mul_left); comp_once sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): PROVED on disk, file sorry-free; the 'sorry-stmt' wording above is the E-phase record."
   ],
   "V7-6c": [
    "V7_livC.lean",
-   "sorry-stmt"
+   "sorry-stmt — AS-BUILT 2026-07-30 (verify-2 fold-in): 1 live sorry (ledgerIV_inst, V7_livC.lean:66)."
   ],
   "V7-7": [
    "V7_seam.lean",
@@ -443,10 +444,11 @@
   "D24 (V5-6, ADJUDICATED STATEMENT REPAIR 2026-07-30): the lands-leakage closed by the ADD-THE-LAW form - CompCarrier.iotaN_lands (non-landing templates' instantiations carry zero entrance mass at every level), keyed at writeHeights? membership. The re-key-the-sum alternative was rejected as less faithful to the blueprint V5-6 row's all-templates display. comp_agg PROVED via iotaEps_iotashH_bridge + hEU + semilin_sum_exact; footprint = writeHeights_total only.",
   "D25 (V7-2b, ADJUDICATED STATEMENT REPAIR 2026-07-29, ADJ-4): ctsM gains hmark (∀ τ c, c.isLeft → 1 ≤ markWeight L.V c) mirroring hb/hc/hd — Part2_Stmt is REFUTABLE hmark-free (the emult ≡ 0 model: markWeight = 0 on a positive-mass continuing cell contributes 0 to markedRow AND 0 to surplusRow since (0 - 1 : ℕ) = 0, breaking markedRow + terminalRow = 1 + surplusRow pointwise; wave-A2 adjudication record in LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md). part2 := part2_row; NOT a CtsmLedger field. ctsM now sorry-free.",
   "D26 (V7-9, ADJUDICATED STATEMENT REPAIR 2026-07-29, ADJ-4): polygeom_count_laws gains the V-side count-tie premises — hTCount (∃ k : ℕ, countT.eval q₀ = k at every pool; the integer-valuedness law tcount_val needs, since RatBurdens pins only the PRODUCT via tg_interp) and hSCount (countS.eval = Σ over the outcome's cell fiber of the cellInst census at active states; without it scount_val is REFUTABLE by countS ↦ 2·countS, geom ↦ geom/2). Warrant: blueprint §2.F / CTS-T block, 'the COUNT SEMANTICS is ValA's field content (§2.F note + V2-4 …)'; wave-A2 record in LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md ('the ValA tbl_count tie typed as premises'). Both fields proved; module sorry-free. MovesV sorried census after this pass: 8 declarations (V3_instbijA/B/C, V3_spwordA, V3_spwordB, V3_spwordD writeHeights_total + writeHeights, V7_w17ii banked).",
-  "ADJ-3 (2026-07-31, V3-5a/b/c INSTBIJ SELF-LOOP-FREE SCOPING): the three inst_bij statements gain the hypothesis `εT.word.filter (SelfLoopLetter n) = []` (equivalently: no self-loop letters / all depth slots 0). Warrant (Codex-confirmed, wave-A refutation queue; LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md): shapeOfSlots? folds over (expandRuns word depthSlots).zip pairSlots and pairSlots has length word.length, so the zip TRUNCATES past word.length — depth slots are ignored once any self-loop depth >= 1; unscoped A FALSE (depth-slot collisions), unscoped B NOT ONTO on self-loop templates; MIRRORS the capstone's order-0 perimeter. At depth 0 the expansion is the identity and the zip is EXACT. V3-5a PROVED under the scope; V3-5b/c each keep 1 exact-residue sorry (the spword-family seam, ADJ-2/B3-owned).",
+  "ADJ-3 (2026-07-29 — date corrected 2026-07-30, original record mis-dated 2026-07-31, a future date; V3-5a/b/c INSTBIJ SELF-LOOP-FREE SCOPING): the three inst_bij statements gain the hypothesis `εT.word.filter (SelfLoopLetter n) = []` (equivalently: no self-loop letters / all depth slots 0). Warrant (Codex-confirmed, wave-A refutation queue; LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md): shapeOfSlots? folds over (expandRuns word depthSlots).zip pairSlots and pairSlots has length word.length, so the zip TRUNCATES past word.length — depth slots are ignored once any self-loop depth >= 1; unscoped A FALSE (depth-slot collisions), unscoped B NOT ONTO on self-loop templates; MIRRORS the capstone's order-0 perimeter. At depth 0 the expansion is the identity and the zip is EXACT. V3-5a PROVED under the scope; V3-5b/c each keep 1 exact-residue sorry (the spword-family seam, ADJ-2/B3-owned). AS-BUILT ADDENDUM 2026-07-30 (verify-2 fold-in): the residue sorries recorded above were subsequently CLOSED at commit 34447a8 (2026-07-29) — B proved with NO statement change, C proved under SpWordPinned (ratified); all three inst_bij files sorry-free at HEAD, and inst_bij_inj/inst_bij_surj/inst_bij_eq are all Lean-core [propext, Classical.choice, Quot.sound] (golf_baseline_2026-07-30/MovesV_axioms.txt:126-128).",
   "D25 (V3-3a + V3-3d, ADJ-2 ADJUDICATED STATEMENT REPAIRS 2026-07-30 - SPWORD ORDER-0 SCOPING): the three refuted-as-stated spword statements are scoped to the ORDER-0 / SELF-LOOP-FREE stratum with NAMED typed hypotheses matching what the negWitnesses exploit - (a) SpeciesCoherent (cross-read species law, StageLaws tag law) on spWord_exists/spWord_fits; (b) single-letter stratum + AnchorAdmissible (height positivity + coprimality + anchor congruence; the entDom semilinear form, typed as hypothesis) on writeHeights_total; (c) the non-junk fitting-word hypotheses on spWord_faithful. ALL THREE PROVED; negWitnesses untouched as the unscoped record; consumers rode the recorded shim writeHeights_total_unscoped UNTIL THE M1 SOUNDNESS REPAIR (2026-07-29): shim DELETED (False-deriving against the compiled negWitness); consumers re-keyed to Order0Perimeter/EntDomOrder0 threaded hypotheses. Mirrors the capstone's order-0 decided perimeter.",
   "SOUNDNESS REPAIR PASS (ratification verdict REJECT 3N/6M, 2026-07-29): (M1) writeHeights_total_unscoped DELETED - the sorried universal was contradicted by the compiled WHNeg.writeHeights_total_false, so the combined environment derived False; writeHeights re-keyed to the named Order0Perimeter certificate (V3_spwordD), consumers thread Order0Perimeter/EntDomOrder0 hypotheses (V3_instbijA/B/C, EntU in V3_entu, V3_initrat, V3_aggfullB, V5_compagg aggMass+comp_agg, V7_livB, V7_rbB, V7_ctsm ctsM gains hdom) - ctsM and all consumers now Lean-core clean. (M3) SolveCond_Stmt restated per blueprint V7-2a: EscapeE0Rec/NeumannRec declared; conclusion = DetHyp AND NeumannRec (the '-> True' escape deleted); rides as ctsM's explicit hsolve hypothesis (a sorried universal could be false for adversarial ledgers - the M1 failure mode). (M4) the three 'Nonempty (...) OR True' seam assemblies (V7_livC, V7_rbC, V7_scsData) restated as EXISTS-bundled named open instantiation duties with honest sorries (concluding at the old arbitrary (T, M) arguments would be false); a degenerate witness does NOT discharge the duty. template_total (V3_spwordB) kept as honest named-open sorry: grep-verified NO compiled in-tree negation (the negWitness P3 extension to EntShapeV is recorded but never compiled); OPEN SIGN-OFF ITEM stands. Remaining sorried declarations (5): template_total, ledgerIV_inst, ratBurdens_exists, scs_data_supply, w17ii clause (ii). Full-module sweep green 2026-07-29; V7_livA1 pre-existing DecidableEq breakage repaired (classical).",
   "FINAL-RATIFICATION V REPAIRS (verdict REJECT 6M/4N, /tmp/finalratify_v round; executed 2026-07-29): (M1) template_total DELETED-AND-SCOPED - the sorried universal was semantically FALSE (verdict: 'the countermodel is constructible from the checked witness already in the corpus'); the compiled negation record is TTNeg.template_total_false (V3_spword_negWitness3.lean: SpWordNeg.P3 extended to EntShapeV 3 with template? = none); the scoped-true form is template_total_of_perimeter under the named SpWordPerimeter predicate (Order0Perimeter family; PROVED sorry-free), and EntShapeV.template demands the certificate. (M2 adjudicated) valB RENAMED val_b_table (the TABLE-SIDE product lemma: chainCount = pathProdPoly); the note's VAL(b) is the NEW val_b, Tgam-keyed, behind the NAMED RealizationComplete row (tmark surjectivity, owner XHD/[2b]; content witnessed by coupling_signature - 0 < chainCount with Tgam = 0); tgam_eq_chainCount_of_complete bridges. ctsM's val_b_chain leg unchanged (chainCount-keyed by design). (M3 adjudicated) CompCarrier RETYPED: the muhatN_law product FIELD deleted; carrier now holds measure-definition laws only (cevt = the composite marked event; muhatN_card = |Box| normalization; cevt_fiber = the entrance-mark census grouping with per-mark tevt fibers). The product identity is the NAMED OPEN ROW CompProduct (derivation attempt recorded at its docstring: mu-hatN_card + cevt_fiber reduce it to the tevt per-chain decomposition along ext, which has NO corpus law - genuinely Phase-B, owner V7-4a); the cross-level entrance-mass tie is the NAMED OPEN ROW IotaLvlStable (the comp_hsum-at-compLvl vs iotaEps-at-entLvl series disconnect). comp_h_one/step/comp_h/comp_hsum thread hcp; comp_sigma_hasSum NEW (the marked-event HasSum form); CompSigma_Stmt gains the HasSum conjunct; ctsM gains hcomp + hstab hypotheses (mirroring hsolve). (M-seam) the three EXISTS-bundled duties WITNESS-PINNED to the CTS objects: T-side ties (VType equiv VLabel n; per-block State e equiv StateOf n e - tableShape_inst satisfies them) + guarded |Box| card ties on the measured side (guarded on V-box nonemptiness: unguarded ties would collide with MeasuredSide.boxpos/pool laws at adversarial V - fence-rule record). Real-instance attempts recorded at each docstring with the exact obstruction (SCSData: sel_continuing/cluster_child need the true species stage fields; LedgerIV/RatBurdens: the ~30-field V7-4 MeasuredSide map). Remaining sorried declarations (4): ledgerIV_inst, ratBurdens_exists, scs_data_supply (all EXISTS-pinned named duties), w17ii clause (ii) [3t]-banked. Fence-rule sweep run over all four: EXISTS-form negations not witness-constructible.",
-  "ROUND-4 V REPAIRS (verdict REJECT 3M/2N, /tmp/ratify4_v round; executed 2026-07-29): (M1 per-pin dispositions) TABLE SIDE = STRENGTHEN (option a; the vocabulary reaches): StateOf gains the CTS CellIdx component (StateOf n C e = {p : Sigma s, (C.bd s).CellIdx // skBlk p.1 = e} - the block-e slice of toStepCells' codomain; the member's target index built via the NEW memberTgtCell through C.tcellM); tableShape_inst installs the REAL bounds (Wloc := C.Wloc, Wstate := (C.bd s).Wstate; the 0-stubs deleted) and now PROVES the NEW named pin bundle TablePins C T (VType/State/Out equivs + Wstate/Wloc transport + the odata member-list tie in (size, delta, status-with-target-skeleton)); the three duties' pins re-keyed to TablePins. MEASURED SIDE = SCOPE (option b; fence-rule: hard M-structure ties refutable against MeasuredSide's own laws at adversarial V): pins stay the guarded |Box| card tie; every record now carries the EXACT TIE INVENTORY (tied vs NOT tied: M.Pools/cells/events/masses/rows/entrances/marked values, the status payload's cell index, witness identity) - the 'exclude every degenerate unrelated witness' overclaim DELETED everywhere. (M2) CtsmLedger gains the hRC : RealizationComplete field (mirroring hMark); ValB_Stmt RE-KEYED to the Tgam-keyed realized count (the note's VAL(b)); ctsM.val_b_chain discharges it via val_b through L.hRC; val_b_table DEMOTED to the internal table-side lemma; the ownership comment FIXED (no-stray yields positivity only, NOT tmark surjectivity - the Phase-B discharge needs a mark-per-chain construction). ctsM #print axioms re-verified Lean-core (no regression through chains_card/tgam_eq_chainCount_of_complete). (M3) the census SEMANTICALLY COMPLETE: rootTable_census_TH12 ((1,1) = q^2(q-1)/2 via the (root x root-free-quadratic) product bijection over the NEW quadratic root-count partition quad_card: q^2 = quadNRCount + q + C(q,2)), rootTable_census_TH3c ((0,0) = (q^3-q)/3 via profile_mem_five EXHAUSTIVENESS - every profile is one of the five classes; the (1,2)/(2,1) phantoms collapse by the cofactor-root argument - + the census_partition complement Sigma classCount = q^3), and the five-conjunct rootTable_census_complete; all generic-F Lean-core; V6_bcensus gains the honest scope record (split+inert proved, dbl NOT separately identified; the '178 exact checks' roster external-evidence-only, cited nowhere at this layer). (N1) degcons_kmat_gate DE-VACUIFIED: the '-> True'/trivial statement replaced by a REAL derivation - given the C-side roster facts (member positivity, size-sum bound, kcol size law - the deferred gate decide legs, as hypotheses), the TablePins-pinned instance satisfies DegCons AND KmatHyp at every block, transported through the odata tie (routeOf transports: lengths + status sides preserved); PROVED Lean-core. (N2) w17ii fence adjudicated ACCURATE by the verdict (banked, zero proved content); the round-4 record line appended; the infinite-shDom countermodel candidate stands as the fence-rule record (full RS4Chain build not attempted - instance cost; summability-guard adjudication owns it). Remaining sorried declarations (4, unchanged): ledgerIV_inst, ratBurdens_exists, scs_data_supply, w17ii clause (ii). Full 105-module MovesV sweep green + MovesU.DefsLedger consumer green; ctsM/tableShape_inst/degcons_kmat_gate/rootTable_census_complete/census_partition/val_b all [propext, Classical.choice, Quot.sound]."
+  "ROUND-4 V REPAIRS (verdict REJECT 3M/2N, /tmp/ratify4_v round; executed 2026-07-29): (M1 per-pin dispositions) TABLE SIDE = STRENGTHEN (option a; the vocabulary reaches): StateOf gains the CTS CellIdx component (StateOf n C e = {p : Sigma s, (C.bd s).CellIdx // skBlk p.1 = e} - the block-e slice of toStepCells' codomain; the member's target index built via the NEW memberTgtCell through C.tcellM); tableShape_inst installs the REAL bounds (Wloc := C.Wloc, Wstate := (C.bd s).Wstate; the 0-stubs deleted) and now PROVES the NEW named pin bundle TablePins C T (VType/State/Out equivs + Wstate/Wloc transport + the odata member-list tie in (size, delta, status-with-target-skeleton)); the three duties' pins re-keyed to TablePins. MEASURED SIDE = SCOPE (option b; fence-rule: hard M-structure ties refutable against MeasuredSide's own laws at adversarial V): pins stay the guarded |Box| card tie; every record now carries the EXACT TIE INVENTORY (tied vs NOT tied: M.Pools/cells/events/masses/rows/entrances/marked values, the status payload's cell index, witness identity) - the 'exclude every degenerate unrelated witness' overclaim DELETED everywhere. (M2) CtsmLedger gains the hRC : RealizationComplete field (mirroring hMark); ValB_Stmt RE-KEYED to the Tgam-keyed realized count (the note's VAL(b)); ctsM.val_b_chain discharges it via val_b through L.hRC; val_b_table DEMOTED to the internal table-side lemma; the ownership comment FIXED (no-stray yields positivity only, NOT tmark surjectivity - the Phase-B discharge needs a mark-per-chain construction). ctsM #print axioms re-verified Lean-core (no regression through chains_card/tgam_eq_chainCount_of_complete). (M3) the census SEMANTICALLY COMPLETE: rootTable_census_TH12 ((1,1) = q^2(q-1)/2 via the (root x root-free-quadratic) product bijection over the NEW quadratic root-count partition quad_card: q^2 = quadNRCount + q + C(q,2)), rootTable_census_TH3c ((0,0) = (q^3-q)/3 via profile_mem_five EXHAUSTIVENESS - every profile is one of the five classes; the (1,2)/(2,1) phantoms collapse by the cofactor-root argument - + the census_partition complement Sigma classCount = q^3), and the five-conjunct rootTable_census_complete; all generic-F Lean-core; V6_bcensus gains the honest scope record (split+inert proved, dbl NOT separately identified; the '178 exact checks' roster external-evidence-only, cited nowhere at this layer). (N1) degcons_kmat_gate DE-VACUIFIED: the '-> True'/trivial statement replaced by a REAL derivation - given the C-side roster facts (member positivity, size-sum bound, kcol size law - the deferred gate decide legs, as hypotheses), the TablePins-pinned instance satisfies DegCons AND KmatHyp at every block, transported through the odata tie (routeOf transports: lengths + status sides preserved); PROVED Lean-core. (N2) w17ii fence adjudicated ACCURATE by the verdict (banked, zero proved content); the round-4 record line appended; the infinite-shDom countermodel candidate stands as the fence-rule record (full RS4Chain build not attempted - instance cost; summability-guard adjudication owns it). Remaining sorried declarations (4, unchanged): ledgerIV_inst, ratBurdens_exists, scs_data_supply, w17ii clause (ii). Full 105-module MovesV sweep green + MovesU.DefsLedger consumer green; ctsM/tableShape_inst/degcons_kmat_gate/rootTable_census_complete/census_partition/val_b all [propext, Classical.choice, Quot.sound].",
+  "D27 (V7-2a, DEVIATION RECORD ADDED 2026-07-30 verify-2 fold-in): CtsmConclusions.active_value_recorded and CtsmConclusions.ent_count_named are P → P retypes of the blueprint's bare carried Props (AVRec_Stmt L, EntCountNamed_Stmt L — MOVESV_LEAN_BLUEPRINT_2026-07-28.md V7-2a display, 'the (ii-c) Prop CARRIED, never concluded'); both are discharged by `id` in ctsM (V7_ctsm.lean), so the two fields are TAUTOLOGIES carrying NO content (ActiveValueAgree survives in ctsM only as a SolveCond_Stmt antecedent; EntCount survives as the ledger field hEC). The retype predates this record and was previously recorded nowhere (D14 lists V7-2a's other transcription bases only). Retype-to-bare-Prop or deletion queued for sign-off (GOLF_CAMPAIGN_2026-07-30.md SIGN-OFF QUEUE); in-file disclosures added at both field sites."
  ]
 }

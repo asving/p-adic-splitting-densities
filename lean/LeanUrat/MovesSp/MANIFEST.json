@@ -3,7 +3,7 @@
  "source": "lean/notes/MOVES_2026-07-24.md §M-SPECIES (rev-8 text, DUAL-ACCEPTED 2026-07-27: Codex pass 7 + Fable confirm)",
  "blueprint": "lean/notes/MOVESSP_LEAN_BLUEPRINT_2026-07-28.md (rev 5, dual-accepted 0/0; § DEVIATIONS (E-PHASE) appended 2026-07-28)",
  "ephase": "2026-07-28 (E-phase Fable) - all 70 .lean files elaborate green under `lake env lean` (toolchain 4.31.0, mathlib cache; per-module `lake build` oleans). Defs/DefsEnum/DefsN3 sorry-free; 88 sorried obligations across the 67 units = 81 theorems + 2 blueprint-specified def bodies (compCuts, encode) + 5 proof fields of the pinned n1CatalogueWord packaging. NO axioms, NO native_decide (banned corpus-wide), statements verbatim per blueprint §2/§3/§4/§5. Sealed n=3/n=1 data QA'd by compiled #eval before freezing: every §5 decide target evaluates TRUE against DefsN3 (53 letters, closure, menu exactness, loops order [loopQ3, loopQ23], exclusion filters 11/2, entrance rosters incl. the §9 three-member ▸(1,2) roster, n=1 singleton).",
- "pphase": "2026-07-30 (P-phase + golf, as-built): ALL sorry bodies discharged — the corpus is sorry-free (grep-verified: 0 real sorry/admit/sorryAx tokens across 70 files; the only 'sorry' strings are docstring prose) and builds green (`lake build`, 8565 jobs, only style-linter warnings). No axioms beyond Lean core, no native_decide. compCuts/lamMatrix and their _inj lemmas are PROVED but DEAD (SP2_encodeInj encodes flanks positionally, does not cite them). Per-unit 'sorries' and counts.sorries_total refreshed to 0; the ephase field above is retained verbatim as the historical E-phase snapshot.",
+ "pphase": "2026-07-30 (P-phase + golf, as-built): ALL sorry bodies discharged — the corpus is sorry-free (grep-verified: 0 real sorry/admit/sorryAx tokens across 71 files; the only 'sorry' strings are docstring prose) (file count corrected 2026-07-30 verify-2 fold-in: 71 = 68 units + 3 def layers including the wave-C SP8_instantiation.lean; the sentence originally carried the pre-SP8 count of 70 — grep census re-run clean over all 71) and builds green (`lake build`, 8565 jobs, only style-linter warnings). No axioms beyond Lean core, no native_decide. compCuts/lamMatrix and their _inj lemmas are PROVED but DEAD (SP2_encodeInj encodes flanks positionally, does not cite them). Per-unit 'sorries' and counts.sorries_total refreshed to 0; the ephase field above is retained verbatim as the historical E-phase snapshot.",
  "def_layer_order": "Defs.lean (Species/Coherent/Budget/StageLaws/SuccStep/InCatalogue/Sh/rank/CanTreeModel/CatalogueWord/EntranceShape/collapseRuns/Code) <- DefsEnum.lean (compEnum/lamEnumAux/lamEnum/speciesEnum + Bool layer coherentB/budgetB/rootAdmissibleB/succStepB + routing conventions) <- DefsN3.lean (the SEALED 53-letter catalogue in pinned order R++Q3++Q2++Q1++I, named letters, menuMap3, linCount, exclusion lists, Nstar3six, confirmingRoot1).",
  "preamble": "Every unit file: import LeanUrat.MovesSp.<Defs|DefsEnum|DefsN3> ONLY (deps are proof-level; P-phase adds unit imports as needed - the corpus convention, cf. MovesC C6_thmC_a), namespace LeanUrat.MovesSp; set_option linter.style.longLine/header false, maxHeartbeats 1000000. Build per file with `lake env lean` / `lake build LeanUrat.MovesSp.<mod>` (NEVER full `lake build`).",
  "instance_obligations": [],
@@ -103,6 +103,7 @@
    "deps": [
     "Sp.shCongr"
    ],
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: blueprint-plan dep only — the built proof imports Defs alone and closes the divisibility by an inline linear_combination; Sp.shCongr is not cited (Class-D duplication watch).",
    "sorries": 0,
    "statement": "theorem sh_dvd (e h s t γ u0 s0 : ℤ) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) (k : ℤ) : e ∣ (s0 + k * e - t * γ)",
    "hypothesis_fields": "none"
@@ -115,6 +116,7 @@
    "deps": [
     "Sp.shDvd"
    ],
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: blueprint-plan dep only — the built proof imports Defs alone and re-proves the shDvd divisibility inline (the in-proof '(= Sp.shDvd)' comment marks the copy); Sp.shDvd is not cited (Class-D duplication watch).",
    "sorries": 0,
    "statement": "theorem sh_slots (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) (k : ℤ) : Sh t γ e (geoPos e t γ (s0 + k * e)) = s0.fdiv e + k AND theorem sh_anchor (e h s t γ u0 s0 : ℤ) (he : 1 ≤ e) (hbez : e * s + h * t = 1) (hγ : γ = e * u0 + s0 * h) : Sh t γ e (geoPos e t γ s0) = s0.fdiv e",
    "hypothesis_fields": "none"
@@ -317,6 +319,7 @@
    "deps": [
     "Sp.selfloopChar"
    ],
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: blueprint-plan dep only — the built proof imports Defs alone and re-derives the self-loop characterization inline; Sp.selfloopChar is not cited (Class-D duplication watch).",
    "sorries": 0,
    "statement": "theorem selfloop_isFull {n : ℕ} {s : Species} (hc : Coherent s) (hb : Budget n s) (h : SuccStep n s s) : IsFull s ∧ s.tag = .postRec",
    "hypothesis_fields": "none"
@@ -436,6 +439,7 @@
    "deps": [
     "Sp.compMember"
    ],
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: blueprint-plan dep only — the built proof imports Defs alone and re-runs the compMember closure induction inline; Sp.compMember is not cited (Class-D duplication watch).",
    "sorries": 0,
    "statement": "theorem SP_COMP_edges (n p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = n) (M : CanTreeModel n p f) (η : M.Branch) (r : ℕ) (hr : (r + 1 : ℕ∞) < M.len η) : Sum.inl (M.datum η (r + 1)) ∈ Out n (M.datum η r)",
    "hypothesis_fields": "hRoot/hStage/hCoh/hHalt (SP-COMP steps (1)/(2)/(3)/(3')/(5) - §B2-DEF D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner HC-1/MovesD; OPEN) + hVerdictPin (THE D4R.0-K(c) residual - verdict pin, owner [3t] via VP; explicit per F7, visible-not-type-enforced per REV3 G4). FENCE: no field mentions InCatalogue/Succ/Out."
@@ -499,6 +503,7 @@
     "Sp.n1RootConfirming",
     "Sp.compMember"
    ],
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: Sp.n1singleton and Sp.n1RootConfirming are imported and cited (SP6_n1singleton, SP3_n1Root); Sp.compMember is not — only its r = 0 leg is needed, taken inline via InCatalogue.root (Class-D duplication watch).",
    "sorries": 0,
    "statement": "theorem n1_branch_word (p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = 1) (M : CanTreeModel 1 p f) (η : M.Branch) : M.len η = 1 ∧ M.datum η 0 = confirmingRoot1 AND def CanTreeModel.n1CatalogueWord {p : ℕ} [Fact p.Prime] {f : Polynomial ℤ_[p]} (M : CanTreeModel 1 p f) (η : M.Branch) : CatalogueWord 1   [structure def: word := [M.datum eta 0] pinned; 5 proof fields sorried] AND theorem n1_branch_word_eq (p : ℕ) [Fact p.Prime] (f : Polynomial ℤ_[p]) (hf : f.Monic) (hdeg : f.natDegree = 1) (M : CanTreeModel 1 p f) (η : M.Branch) : (M.n1CatalogueWord η).word = [confirmingRoot1]",
    "hypothesis_fields": "hRoot/hStage/hCoh/hHalt (SP-COMP steps (1)/(2)/(3)/(3')/(5) - §B2-DEF D.4/D.5/D.6/D.7/D.8/D.10 + §C DOM via §D4-R L11 + §D4-R L2/L3/L5; owner HC-1/MovesD; OPEN) + hVerdictPin (THE D4R.0-K(c) residual - verdict pin, owner [3t] via VP; explicit per F7, visible-not-type-enforced per REV3 G4). FENCE: no field mentions InCatalogue/Succ/Out. hN1 is the note-quoted n = 1 clause (rev 5), not an engine kernel."
@@ -669,9 +674,9 @@
    "difficulty": "medium (perf, moderate)",
    "deps": [
     "Sp.reflSucc",
-    "Sp.speciesEnumComplete",
-    "Sp.n3closureStep"
+    "Sp.n3catalogueEq"
    ],
+   "deps_asbuilt_2026-07-30": "verify-2 fold-in: deps row corrected to the as-built route — menu3_exact_global routes through succStepB_iff (Sp.reflSucc, import SP0_reflSucc) and SnRaw3_eq (Sp.n3catalogueEq, import SP6_catalogueEq). The formerly listed Sp.speciesEnumComplete and Sp.n3closureStep are now only transitive dependencies (inside Sp.n3catalogueEq): the kernel-stuck closure_step3 decide route is off the path, per the unit's own PROOF STATUS block. Sharpens standing item MovesSp#38 (the unit's top blueprint sketch still narrates the old route).",
    "sorries": 0,
    "statement": "theorem menu3_local : (catalogue3.all fun s => catalogue3.all fun s' => succStepB 3 s s' == (menuMap3 s).contains s') = true AND theorem menu3_exact_global (s : Species) (hs : s ∈ catalogue3) (s' : Species) : SuccStep 3 s s' ↔ s' ∈ menuMap3 s",
    "hypothesis_fields": "none"

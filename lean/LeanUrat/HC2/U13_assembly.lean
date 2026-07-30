@@ -9,7 +9,11 @@ sketch: field-by-field packaging; `coordOf := boxChart n N` with D1's laws,
 `keys := keys` with `hkeys`'s two laws, `coherent := hcoh`, `realizable := hreal`,
 `root_height` from U11, seed fields verbatim, constructed fields with their U-layer laws
 (`fresh i` = `mkFresh` for `i < len`, `emptyFresh` junk beyond).
-RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1).
+[2026-07-30 verify-2 fold-in: the former "Sorries retained for the next fleet round"
+boilerplate here was misleadingly placed and is removed — THIS unit is 0-sorry in-body;
+only its lemma DEPS carry open sorries (`jetSetup_of_seed` footprint = sorryAx through
+the U10 cone, re-verified 2026-07-30), as the N-queue paragraph below already records.]
 N-QUEUE RESTATEMENT (2026-07-28, sign-off round): gains `hd4 : RootD4 H` (N-5 — threads
 to U11's `root_height_of_inBox`) and `hunp : SeedFreshUnpinned H n N S vOf` (K2 —
 threads to the restated `mkSigma_recursion`, whose bare form is retired); the `fc` leg

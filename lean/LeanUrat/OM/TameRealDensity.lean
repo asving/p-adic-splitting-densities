@@ -9,8 +9,21 @@ import LeanUrat.OM.PathShapeMultiSideTree
 import LeanUrat.OM.Order0RealDensity
 
 /-!
-# TameRealDensity — the HONEST order-1 (single-slope) real density theorem (σ-keyed), a certified
-NON-vacuous gate, and the general-prime standalone version (audit gaps #2/#3, order-1)
+# TameRealDensity — the HONEST order-1 (single-slope) real density theorem, a certified
+NON-vacuous gate, and the general-prime standalone version (audit gap #2, order-1)
+
+**σ-keying correction (2026-07-30 verify-2 fold-in).** Earlier revisions of this header labeled the
+order-1 theorems below "σ-keyed". That was FALSE: in `montes_order1_tame_realDensity` the binder
+`σ : FactorizationType` is DEAD (it appears in no clause of the conclusion — the menu is the
+σ-independent singleton `{Tselfloop n pr shape}` — and is threaded only into
+`ClassifierBridgeFiber2.montes_order1_selfloop_density` →
+`MontesAllOrders.montes_allorders_of_hnode`, whose proof consumes only `n`, `M`, `h_node`), and the
+§2 general-prime version does not bind `σ` at all. The certified order-1 density is keyed to
+`(H, P, shape)`, NOT to the factorization type; the genuinely σ-keyed sibling is
+`Order0.montes_order0_realDensity` (menu `sepShapesOf n σ`). Audit gap #3 (σ-decoupling) therefore
+remains OPEN at order 1 — consistent with the §5 note that no σ-determined order-1 enumeration
+exists in-tree. (The dead binder is retained — statement fence; this is a doc-only correction.)
+The §5 conditional assembly's menu `tameMenu` IS genuinely σ-keyed, through its order-0 leg only.
 
 **Purpose (ADDITIVE; nothing existing changes).** Order-0 is banked additively in
 `Order0RealDensity` (`Order0.montes_order0_realDensity` σ-keyed at `realP`,
@@ -40,8 +53,9 @@ general-prime, so a STANDALONE general-prime version generalizes verbatim (like
     for a GENERAL prime `p`: the density function `q' ↦ omCount (Tselfloop …) q'` is a uniform
     rational function, and the general-prime counts at `p` converge to its value at `p`.
 
-* REAL PRIME, σ-keyed (Step 2, the PRIMARY deliverable).
-  * `montes_order1_tame_realDensity` — the σ-keyed order-1 single-slope real density theorem, SAME
+* REAL PRIME (Step 2, the PRIMARY deliverable; keyed to `(H, P, shape)`, NOT σ — see the σ-keying
+  correction above).
+  * `montes_order1_tame_realDensity` — the order-1 single-slope real density theorem, SAME
     shape as `montes_order0_realDensity`: for the singleton self-loop menu `{Tselfloop n pr shape}`,
     the density function is a uniform rational function, the real normalized counts at `realP`
     converge to its value, AND that value equals the engine per-shape sum
@@ -158,7 +172,8 @@ theorem hnode_selfloop_general (p : ℕ) [Fact p.Prime] (n N₀ : ℕ) (hN₀ : 
   rw [stratumCount_selfloop_general p n N hNpos hn P hPN
     (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) hsingle shape hsh hμ hne]
 
-/-! ## 2. General prime: the σ-keyed singleton-self-loop-menu density theorem (gap #2, order-1)
+/-! ## 2. General prime: the singleton-self-loop-menu density theorem (gap #2, order-1; no σ is
+bound here — header corrected 2026-07-30 verify-2 fold-in, see the σ-keying correction at the top)
 
 The general-prime skeleton (a self-contained analogue of `MontesAllOrders.montes_allorders_of_hnode`
 at an arbitrary prime `p`), specialized to the singleton self-loop menu, exactly as
@@ -230,9 +245,20 @@ theorem montes_order1_selfloop_density_general_prime (p : ℕ) [Fact p.Prime] (n
   rw [← hval]
   exact hsum
 
-/-! ## 3. The PRIMARY deliverable: the honest, σ-keyed real order-1 single-slope density theorem -/
+/-! ## 3. The PRIMARY deliverable: the honest real order-1 single-slope density theorem
+(keyed to `(H, P, shape)`, NOT σ — header corrected 2026-07-30 verify-2 fold-in) -/
 
-/-- **`montes_order1_tame_realDensity` — THE real order-1 single-slope density theorem (σ-keyed).**
+/-- **`montes_order1_tame_realDensity` — THE real order-1 single-slope density theorem.**
+
+**σ-keying correction (2026-07-30 verify-2 fold-in).** This docstring previously labeled the
+theorem "σ-keyed"; that was FALSE. The binder `σ : FactorizationType` is DEAD here: it appears in
+no clause of the conclusion (the menu is the σ-independent singleton `{Tselfloop n pr shape}`) and
+is threaded only into `ClassifierBridgeFiber2.montes_order1_selfloop_density` →
+`MontesAllOrders.montes_allorders_of_hnode`, whose proof consumes only `n`, `M`, `h_node`. The
+certified order-1 density is keyed to `(H, P, shape)`. The genuinely σ-keyed statement is the
+order-0 sibling `Order0.montes_order0_realDensity` (menu `sepShapesOf n σ`); audit gap #3
+(σ-decoupling) is NOT closed at order 1 by this theorem. (The dead binder is retained — statement
+fence; doc-only correction.)
 
 For every degree `n > 0`, factorization type `σ`, and a single-side, all-`μ=1`, nonempty self-loop
 menu path `P` (side `((0,H),(n,0))`, residual `shape`), there is a uniform rational function

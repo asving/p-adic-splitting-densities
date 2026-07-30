@@ -12,7 +12,8 @@
  ],
  "blueprint": "lean/notes/MOVESC_LEAN_BLUEPRINT_2026-07-26.md (§ ROUND 3 TRIAGE + § ROUND 3)",
  "defs": "lean/LeanUrat/MovesC/Defs.lean (ROUND-6 retype; COMPILES green via `lake env lean`, no sorry/axiom, 978 lines; olean rebuilt) — imports Moves.{Defs,DefsT,DefsCore,DefsL}",
- "preamble": "Every unit file: `import Mathlib`, `import LeanUrat.Moves.Defs` (+DefsT/DefsCore/DefsL), `import LeanUrat.MovesC.Defs`, then `open Polynomial LeanUrat.Moves`, `namespace LeanUrat.MovesC`; set_option linter.style.longLine/header false, maxHeartbeats 1000000. Build per file with `lake env lean` (NEVER `lake build`).",
+ "preamble": "Every unit file: `import Mathlib`, `import LeanUrat.Moves.Defs` (+DefsT/DefsCore/DefsL), `import LeanUrat.MovesC.Defs`, then `open Polynomial LeanUrat.Moves`, `namespace LeanUrat.MovesC`; set_option linter.style.longLine/header false, maxHeartbeats 1000000. Build per file with `lake env lean` (NEVER `lake build`). [E-phase recipe; see preamble_asbuilt_2026-07-30]",
+ "preamble_asbuilt_2026-07-30": "As-built correction (2026-07-30 verify-2 fold-in): the preamble field above is the E-phase construction recipe, not a per-file description. As built, the shared imports live in MovesC/Defs.lean alone (`import Mathlib` + LeanUrat.Moves.{Defs,DefsT,DefsCore,DefsL}); every unit file imports only `LeanUrat.MovesC.Defs` (8 units additionally import sibling MovesC units; C0_digitSystemMass additionally imports LeanUrat.Moves.L2_P6ii_R3) — NO unit carries a direct `import Mathlib` or `import LeanUrat.Moves.Defs`. All 37 files carry `namespace LeanUrat.MovesC`, but 6 units (C0_coordPrec_trans, C0_moveMass, C2_DOM, C3_crossing, C3_vtxPolyNe, C6_psiBij) carry none of the three set_options, and 15 units have no `open Polynomial LeanUrat.Moves` line (5 of those `open LeanUrat.Moves` only, 10 have no open at all). Cosmetic: C3_vtxPolyNe is the one unit ending without `end LeanUrat.MovesC` (compiles; its name is in the Lean-core axiom baseline). The build instruction stands: per file with `lake env lean` (NEVER `lake build`).",
  "section_binder": "{p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]",
  "note_on_deferral": "boundary_deferred=true means the STATEMENT takes a deferred-interface hypothesis (JetSetup or TypObject) encoding the UNBUILT graded ring (R4.5 items 1&3). ROUND 3: the interface fields are now provenance SENTENCES tying every datum to H.nodes; the deferral is (i) the EXISTENCE of the bundle for a real classifier history (incl. pres_total), and (ii) the two flagged identifications on History.htH (htH = the K1-chain weight of the basis monomial; log_p|alphabet| = level-set size). All other units are provable outright.",
  "statement_fence": "Statements are verbatim below and were elaboration-tested against the round-3 Defs. Do NOT weaken a statement to prove it; do NOT edit MovesC/Defs.lean without re-running the elaboration sample (new shared defs go in MovesC/Defs2.lean).",
@@ -140,13 +141,13 @@
    "id": "C0.pinStatus",
    "file": "lean/LeanUrat/MovesC/C0_pinStatus.lean",
    "layer": 0,
-   "deps": [
-    "C0.digitSystemMass"
-   ],
+   "deps": [],
+   "deps_correction_2026-07-30": "Stale E-phase dep [C0.digitSystemMass] removed (verify-2 fold-in): the as-built unit imports only LeanUrat.MovesC.Defs and consumes C0_digitSystemMass nowhere — neither imported nor reproduced as private helpers (contrast C0.pinWelldef, whose identical dep IS reproduced in-file and disclosed there).",
    "status": "FROZEN",
    "statement": "theorem C0_pinStatus {m : ℕ} (D D' : Locus p m) (h : ∀ x, D.IsSolution x ↔ D'.IsSolution x) : ∀ j : Fin m, D.pinned j = D'.pinned j",
    "moves_ref": "§C.0.5 PIN-WELLDEF, rev-9 scope: cardinality AND per-coordinate free/determined STATUS",
    "sketch": "The projection of the solution set to coordinates ≤ j is the solution set of the truncated system, cardinality p^{(j+1)−#pinned≤j}; hence #pinned≤j is locus-determined for every j. Induction on j.",
+   "sketch_asbuilt_2026-07-30": "The sketch field above is the E-phase counting plan; the as-built proof is counting-free, matching the file header 'Key fact (no counting needed)': private pinnedIffDet — coordinate j is PINNED iff every two solutions agreeing on all ≺-earlier coordinates already agree at j, a property of the solution set alone — plus the mkSol two-solution construction for the converse, which needs only a second alphabet element (Fact p.Prime ⇒ Nontrivial (ZMod p)). Recorded 2026-07-30 verify-2 fold-in.",
    "difficulty": "hard",
    "boundary_deferred": false,
    "elaborated": true
@@ -543,6 +544,7 @@
    "statement": "theorem C6_thmC_a {n N m : ℕ} {H : History p F} (J : JetSetup H n N m) (Z : Locus p m) (hZ : AdmissibleZ (J.Sigma H.nodes.length) Z) : Function.Bijective (J.Psi H.nodes.length) ∧ J.SHZ Z = (J.Psi H.nodes.length) '' {x : Fin m → ZMod p | (J.Sigma H.nodes.length).IsSolution x ∧ Z.IsSolution x} ∧ Nat.card (J.SHZ Z) = Nat.card {x : Fin m → ZMod p // (J.Sigma H.nodes.length).IsSolution x ∧ Z.IsSolution x}",
    "moves_ref": "§C.2 THEOREM C(a), ROUND 3 (audit R2 F35/45/blocker 58): S(H,Z) := JetSetup.SHZ is INDEPENDENTLY defined (the transported system T(H,Z) as the ∃-chain over the recorded moves — no image, no Sigma); the theorem PROVES (i) Ψ_H bijective, (ii) the classifier locus EQUALS the Ψ_H-image of the final joint locus Σ_k ∩ locus(Z), (iii) equal mass",
    "sketch": "(i) C6.psiBij. (ii) ⊇: given a final-locus point x, the chain y i := seg i len x witnesses SHZ (fresh-sat by C6.transportedSystem, terminal Z directly); ⊆: a chain y for x₀ satisfies y 0 = Psi len (y len) (chain equations fold to the seg composite); y len solves Σ_len by C6.transportedSystem (the chain supplies exactly the transported fresh predicates) and Z; so x₀ is in the image. (iii) image count under the injective Psi = source count (Nat.card_congr on the image factorization) + (ii).",
+   "unused_hyp_note_2026-07-30": "hZ (AdmissibleZ) is NOT used in the as-built proof of clauses (i)-(iii); it is retained for quantifier fidelity with rev-14 Theorem C(a)'s fenced statement — do NOT remove it. Admissibility IS genuinely consumed on the C(b) side via C6.transportedAdmissible. Caveat also in the file header (both added 2026-07-30 verify-2 fold-in; the Phase-2 synthesis line claiming this was already documented predated the documentation).",
    "difficulty": "hard",
    "boundary_deferred": true,
    "elaborated": true

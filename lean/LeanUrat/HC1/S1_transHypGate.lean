@@ -27,7 +27,11 @@ GaloisField-root plumbing stalls, the fallback ambient is
 difficulty: medium. hyp: none.
 
 **PROVED (escalation route, 2026-07-28).** T1's existential conclusion exposes
-neither `σ.Φ` nor `σ.K`, and every base-stage constructor on disk is sorried; so
+neither `σ.Φ` nor `σ.K`, and — at the time of this escalation — every base-stage
+constructor on disk was sorried (STATUS CORRECTED 2026-07-30 verify-2 fold-in:
+`T1_baseStage` has since been PROVED, Lean-core footprint, compiled check; the
+in-unit construction below is kept because T1's existential still exposes
+neither `σ.Φ` nor `σ.K`); so
 leg (a) is discharged by constructing the degree-1 base stage IN-UNIT, concretely
 (namespace `S1Work`): `w f := gaussVal (f(2X)) = min_i (v(aᵢ) + i)` (multiplicative
 via the PROVED `L1_gaussVal_mul` through the ring hom `f ↦ f(2X)`), residual
@@ -36,7 +40,8 @@ Stage laws proved; the trivial unit group of K = ⊥ (𝔽₂) collapses every s
 `StageCoreL` is assembled from the PROVED `L2_slotDecomp` plus explicit computation;
 Φ̂ and (I-aug) from the PROVED `L3_liftExists`/`L3_liftWeight`/`L3_liftMonic`; z̄ = a
 generator of F₄ˣ (order 3, so z̄² + z̄ + 1 = 0). Zero axioms beyond Lean core; no
-`native_decide`; T1's (still-open) base theorem is NOT consumed — the axiom
+`native_decide`; T1's base theorem is NOT consumed (it was still open when this
+unit was proved; since PROVED Lean-core — 2026-07-30 verify-2 fold-in) — the axiom
 footprint of both legs is Lean-core only, machine-printed below.
 -/
 

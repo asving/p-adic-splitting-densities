@@ -5,6 +5,11 @@ k = 0 is the anchor identity."
 deps: Sp.shDvd. sketch: fdiv-additivity on the exact divisions (shDvd + the σ
 congruence give both remainders); `Int.add_mul_fdiv_right`, `omega` after
 extracting the two dvd witnesses. difficulty: medium.
+AS-BUILT (2026-07-30 verify-2 fold-in): the deps line above is the blueprint
+plan — the file imports only Defs and re-proves the shDvd divisibility inline
+(the in-proof comment "(= Sp.shDvd)" marks the copy); Sp.shDvd is neither
+imported nor cited. Inline duplication tracked under the Class-D watch
+(notes/GOLF_CAMPAIGN_2026-07-30.md).
 -/
 import LeanUrat.MovesSp.Defs
 

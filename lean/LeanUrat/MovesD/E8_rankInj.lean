@@ -3,7 +3,9 @@ Unit E8.rank_inj  (MovesD campaign, E-phase)  [AUX]
 informal: on ONE eligible set, rank determines the factor (lex through the shared
 `fieldEnum` is a strict total order — the note's "ordered lexicographically by
 coefficient vectors in D.3(e)'s fixed residue bases").
-deps: E3, E6.
+deps (blueprint): E3, E6.  [as-built, 2026-07-30 verify-2 fold-in: imports only Defs;
+E3's subfield identity is re-proved privately below (`poolSubfield_eq`) and E6's
+`eligible_card_le` is not used — rank_inj needs no cardinality bound.]
 sketch: equal Ranch-images + E3's common subfield give literally equal F-side eligible
 sets; two members of a finite set with equal strict-initial-segment counts under a strict
 total order are equal.  difficulty: medium-hard.  hypothesis_fields: none.

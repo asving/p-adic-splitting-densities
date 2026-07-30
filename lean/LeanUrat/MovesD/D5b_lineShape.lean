@@ -3,7 +3,9 @@ Unit D5b.line_shape  (MovesD campaign, E-phase)
 moves_ref: "each line is the slope −h_r/e_r line through (j*_r, u*_r), pinned only WITH
 its height … A is a function of P̂ only because u*_r ∈ P̂" (L9 rev 9 — u* enters HERE,
 through the intercept).
-deps: D5a, D6a.
+deps (blueprint): D5a, D6a.  [as-built, 2026-07-30 verify-2 fold-in: imports only Defs;
+D5a's `Dwidth_pos` is not used (positivity read off `ShapeRead.hDw`/`he` directly) and
+D6a's stretch law is proved inline.]
 sketch: `Line` ext; slope from coherence's slope law (e·STR·D ≠ 0 via he/D5a/strS ≥ 1);
 intercept solved from `hLineU` at the matched right endpoint.  difficulty: medium.
 hypothesis_fields: none.

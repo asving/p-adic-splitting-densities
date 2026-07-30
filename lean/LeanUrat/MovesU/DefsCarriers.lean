@@ -99,7 +99,8 @@ theorem UCarriers.cl1 {n : ℕ} (C : UCarriers n) {p : ℕ} (hp : p.Prime) :
     MovesS.RegP C.T C.MS C.RB p C.hK C.Fam :=
   C.chain.legs_reg p ((C.chain.prime_base _).mpr ⟨p, hp, rfl⟩)
 
-/-! ## The real-roster menu rows (ROUND-2 RETYPE, 2026-07-31 — ratification
+/-! ## The real-roster menu rows (ROUND-2 RETYPE, 2026-07-29, commit 3728b00 —
+date corrected 2026-07-30, original record mis-dated 2026-07-31; ratification
 CRITICAL 3's menu finding: the surrogate `MenuData` retired; (K-SUB)/CL-13's
 well-formedness face restated over THE table `C.T`). -/
 

@@ -2,7 +2,9 @@
 Unit E3.frameField_eq_pool  (MovesD campaign, E-phase)  [AUX]
 informal: the frame field's image in F IS the pool (the unique subfield per order — what
 lets classes of DIFFERENT members share one eligible-factor universe).
-deps: E1, E2.
+deps (blueprint): E1, E2.  [as-built, 2026-07-30 verify-2 fold-in: imports only Defs;
+E1's `digit_in_pool` is not used, and E2's content is inlined (`pool_ncard_le` below),
+so this unit rests only on Defs.]
 sketch: range is a subfield of card p^w inside pool (E1); pool has ≤ p^w elements (E2);
 equal cards force equality.  difficulty: medium.  hypothesis_fields: none.
 -/

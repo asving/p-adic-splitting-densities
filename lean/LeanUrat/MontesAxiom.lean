@@ -89,12 +89,18 @@ is no separate measure claim.
   honestly as the `(q^δ)^{dS-1}` residual count inside `countCellCoeff` (the `T_BB3` value). The
   separate `ResidualEquidistributionC2` re-export is kept as the order-`r` equidistribution statement.
 
-## Status
+## Status (as-built wording corrected 2026-07-30, verify-2 fold-in)
 
-The M1 structure and the C1/C2 inputs are STATEMENTS (the count-multiplicativity hypotheses); the
-DERIVED content (`MontesData.C` rationality, the decomposition identity, `UndecidedVanishes`) is
-PROVED in `Decomposition.lean`/`CountingModel.lean`. No rationality is asserted anywhere in M1/C1/C2.
-The genuine `p`-adic count realizing a `MontesData` is the un-constructed measure foundation.
+HISTORICAL (pre-W4b) framing: the M1 structure and the C1/C2 inputs were STATEMENTS (the
+count-multiplicativity hypotheses); the DERIVED content (`MontesData.C` rationality, the
+decomposition identity, `UndecidedVanishes`) WAS proved in `Decomposition.lean`. That module
+and the `MontesData`
+packaging were RETIRED TO QUARANTINE at W4b, 2026-07-21 (see the retirement note above;
+`quarantine/MontesData_oldSpine_2026-07-21.lean.txt` — `Decomposition.lean` no longer exists in the
+tree). AS BUILT: the live derived content is carried by `MontesV2.MontesDataV2` +
+`MontesV2.goal_theorem_montes` (with `CountingModel.lean` still supplying the live counting-model
+primitives this module consumes). No rationality is asserted anywhere in M1/C1/C2. The genuine
+`p`-adic count realizing the (retired) `MontesData` was the un-constructed measure foundation.
 -/
 
 set_option linter.style.longLine false
@@ -224,10 +230,15 @@ of them are GENUINELY PROVED here (lemmas, NOT fields/axioms):
   pure `List.sum` arithmetic).
 
 The FOURTH piece — that the abstract per-box `p`-adic Haar volume EQUALS this proved
-box-volume×residual-count, and that the node measure is box-additive (the measure exists) — is the
-SINGLE minimal irreducible measure axiom (`MontesData.boxHaarEquidist` + `MontesData.nodeMeasure_boxSum`,
-the box-Haar normalization + C2 residual equidistribution). It is the genuine measure-wall content;
-its RHS factors are the proved lemmas, only the *identification* with the Haar volume is assumed. -/
+box-volume×residual-count, and that the node measure is box-additive (the measure exists) — WAS the
+SINGLE minimal irreducible measure axiom of the retired packaging (`MontesData.boxHaarEquidist` +
+`MontesData.nodeMeasure_boxSum`, the box-Haar normalization + C2 residual equidistribution).
+[Correction 2026-07-30, verify-2 fold-in: those fields belong to the `MontesData` structure RETIRED
+TO QUARANTINE at W4b, 2026-07-21 (`quarantine/MontesData_oldSpine_2026-07-21.lean.txt`) — they no
+longer exist in this module; the description is kept as the historical record of the measure-wall
+content. The live abstract packaging is `MontesV2.MontesDataV2`, which carries the coefficient
+abstractly (`C`/`C_isRational`) with no per-node box-sum field.] Its RHS factors are the proved
+lemmas below, only the *identification* with the Haar volume was assumed. -/
 
 /-- **Box-volume `T_BB1`, re-exposed as a box-wise lemma (PROVED).** For a Newton-box (lattice polygon)
 `pg` and residue size `Q`, the Newton-box counting/Haar volume `cellVol pg Q` — given the cited

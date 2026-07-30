@@ -23,6 +23,14 @@ dichotomy). Choose N₀, c3', c4' as (n,K)-functions. For N ≥ N₀ put
     (the p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} absorption, p-free).
 (3) TALL LEG: X2TailsP gives frac(TallEvent M) ≤ CT·p^{−cT·M} directly.
 (4) √N ABSORPTION: M ≳ √N/(2√A) and D ≳ M give both exponents ≥ c4'·√N for N ≥ N₀.
+
+AS-BUILT (2026-07-30 verify-2 fold-in): as in XE.2, the XG2b/XG2c/XG2d imports are
+import-only (no reference to detectJoin/interTrichotomy/treeFinite in the compiled
+proof; same for the MANIFEST deps XG.2b–d). Tags NS and R are unused here; AF and CP
+ARE consumed (`x2hypAssembled X K AF CP …`, line ~338); BR's clause-1 coverage
+inclusion is discarded (`obtain ⟨_, hnull⟩ := BR p N`, line ~358). Load-bearing
+consumption cone as built: Defs, XC.3, XD.4, XF.7 (XE.1a–h def-witness,
+elaboration-only). Statement-fenced: full tag set kept per the note.
 -/
 import LeanUrat.MovesX.Defs
 import LeanUrat.MovesX.XC3

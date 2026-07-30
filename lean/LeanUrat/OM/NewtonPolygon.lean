@@ -3,14 +3,21 @@ import Mathlib
 /-!
 # M3 (DRAFT SKELETON) — NewtonPolygon: the lower Newton polygon as a lower convex minorant over ℚ
 
-**STATUS: DRAFT SCOUT SKELETON.** This file is the M2-INDEPENDENT core of blueprint module M3
+**STATUS: PROVED, LOAD-BEARING (header corrected 2026-07-30 verify-2 fold-in; the former
+"DRAFT SCOUT SKELETON" label and the claim that M2 "does not yet exist" were stale).** This file is
+the M2-INDEPENDENT core of blueprint module M3
 (`LeanUrat.OM.M3.NewtonPolygon`, blueprint §"M3: the lower Newton polygon",
 `\subsec:m3`/`def:np-support`…`def:side-to-l4face`). It is written so the abstract Newton-polygon
 machinery — the lower convex minorant `npHeight : ℚ → ℚ`, vertices, sides, slopes, and the convexity
-lemma statements — typechecks against **Mathlib alone**, taking the support `Finset (ℕ × ℕ)` as an
-INPUT parameter. The wiring to M2 (`support := M2.valSupport f`) is left as a clearly-marked TODO at
-the bottom; M2 (`LeanUrat.OM.PadicValuation`) does not yet exist, so this file must NOT be built
-against it.
+lemmas — typechecks against **Mathlib alone**, taking the support `Finset (ℕ × ℕ)` as an
+INPUT parameter. As built it is `sorry`-free and a proved dependency of `OM/Classifier.lean`
+(the LEM B.7 hull-invariance chain), hosting the banked-sorry contract's primitives
+`npHeight_eq_pairLine_of_validLine` and `consecutive_chord_valid` plus the machine-checked
+counterexample `npVertices_not_stable_of_hull_preserved`. M2 (`LeanUrat.OM.PadicValuation`,
+namespace `LeanUrat.OM.M2`, `valSupport`) DOES now exist in-repo; the design intent stands
+unchanged — the classifier chain feeds this file the box-native `boxValSupport`, NOT
+`M2.valSupport`, so the M2 wiring note at the bottom is an untaken option, not a missing
+prerequisite.
 
 Design decision recorded from the blueprint (`def:npheight`, "Why not mathlib `convexHull`"):
 mathlib's `convexHull 𝕜 s` (`Mathlib/Analysis/Convex/Hull.lean`,
@@ -833,9 +840,11 @@ theorem npVertices_not_stable_of_hull_preserved :
   rw [npVertices_zeroPair hS, npVertices_zeroSingleton hS'] at h
   exact absurd h (by decide)
 
-/-! ## TODO: M2 wiring (do NOT build against M2 yet)
+/-! ## M2 wiring (untaken by design — note corrected 2026-07-30 verify-2 fold-in)
 
-When `LeanUrat.OM.PadicValuation` (M2) lands, M3 instantiates the abstract support:
+`LeanUrat.OM.PadicValuation` (M2) now exists in-repo, but this file deliberately remains
+M2-independent (the classifier chain uses box-native `boxValSupport`). If M3 were ever
+instantiated against M2, the abstract support wiring would be:
 
 ```
 -- import LeanUrat.OM.PadicValuation

@@ -44,7 +44,10 @@ distinct ψ-orders, `μ` = least minimizing slot, so dividing by `ψ^μ` leaves
 (sorry-free) on disk (2026-07-26 census §5); their residual minimizing-slot engine —
 the residual-sum machine, the ψ-freeness of slot residuals via `L2_widthBound`, and the
 GRf-style ψ-order reading — is carried as private helpers below (`L3_liftWeight`
-reproduced verbatim as `liftWeight_local`, olean not built for the original).
+reproduced verbatim as `liftWeight_local` — historical rationale: the original's `.olean`
+was not yet built when this unit was written; it NOW builds (verified 2026-07-30 verify-2
+fold-in: `L3_liftWeight.olean` on disk, full build green), the import remains un-taken for
+historical reasons, and the duplication is tracked as Class-D).
 -/
 
 set_option linter.style.longLine false
@@ -109,7 +112,8 @@ private lemma R_neg' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
   have h := σ.hRmul (-1) x (by norm_num) hx
   rwa [neg_one_mul] at h
 
-/-- `R(x^n) = R(x)^n` (the `L0.GRe` content, reproved inline: no olean on disk). -/
+/-- `R(x^n) = R(x)^n` (the `L0.GRe` content, reproved inline — historical: `L0_GRe.olean` was
+not on disk when written; it now builds (2026-07-30), duplication tracked as Class-D). -/
 private lemma R_pow' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
     σ.R (f ^ n) = (σ.R f) ^ n := by
   induction n with
@@ -359,7 +363,8 @@ private lemma pow_order_unique {α : Type*} [Monoid α] (Ψ x : α) (n k : ℕ)
   · exact hn2 (dvd_trans (pow_dvd_pow Ψ (by omega)) hk1)
   · exact hk2 (dvd_trans (pow_dvd_pow Ψ (by omega)) hn1)
 
-/-- **[`L3.liftWeight`, verbatim copy — proved on disk, olean not built]** `w(Φ̂) = e·h·g`. -/
+/-- **[`L3.liftWeight`, verbatim copy — historical: its olean was not built when this was
+written; it now builds (2026-07-30), duplication tracked as Class-D]** `w(Φ̂) = e·h·g`. -/
 private theorem liftWeight_local (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 : 1 ≤ g)
     (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0) :
     σ.w Φhat = (σ.e : ℤ) * σ.h * g := by

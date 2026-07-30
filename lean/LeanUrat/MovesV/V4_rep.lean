@@ -37,7 +37,17 @@ dead-decl rule, zero consumers): the E-phase binders `P : C15Pack`,
 adjudicated repair route runs entirely through `cp.count`/`cp.countT` (the
 x-free polynomial bridge) and `DC.no_orphanC`/`no_orphanCT` (the off-domain
 leg).  ctsM (V7-2b) now consumes this producer directly instead of inlining
-the body. -/
+the body.
+PROVISO NOTE (2026-07-30 verify-2 fold-in, A21 re-verified OPEN): the
+blueprint row's `hobs : ObsCheck` proviso ("the row is cell-constant
+PROVIDED the species' evaluation maps mention no observable outside the
+(a)/(b) generator list") is NOT represented anywhere in the trimmed
+declaration — the binder was removed as dead, and no in-file argument ties
+`CellPolyPack.count` to the proviso.  Whether `cp.count` encodes the
+no-outside-observable condition is UNCONFIRMED (queued as A21,
+GOLF_CAMPAIGN_2026-07-30.md); until confirmed, this formal row is
+weaker-premised than the note it transcribes.  If the trimmed binders are
+ever revived, the proviso must be restored with them. -/
 theorem rep_row {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     {V : CtsMeasured n C S} (X : XHDw n S)
     (cp : CellPolyPack n C S V) (DC : XHDdC n S V) {τ : S.Cell} {q₀ : ℚ}

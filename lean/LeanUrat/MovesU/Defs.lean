@@ -187,7 +187,8 @@ noncomputable def RegData.entryList {p : ℕ} (D : RegData p) (e : D.Block) :
     ∪ (Finset.univ.image D.Wcoef)
     ∪ D.depthSet.biUnion (fun δ => Finset.univ.image (fun l => D.betaLeg e l δ))
 
-/-- (REG-p), RESTATED at the ROUND-2 RETYPE (2026-07-31 ratification CRITICAL 4:
+/-- (REG-p), RESTATED at the ROUND-2 RETYPE (2026-07-29, commit 3728b00 — date
+    corrected 2026-07-30, original record mis-dated 2026-07-31; ratification CRITICAL 4:
     "`RegP` also retains ∀ σ, DefinedAt (S.R σ) … as independent premises. The note
     defines (REG-p) by (r1) and (r2) and states definedness/agreement of R_σ(p) as
     CONSEQUENCES of the typed assembly"): EXACTLY the displayed schema — (r1) full
@@ -197,8 +198,14 @@ noncomputable def RegData.entryList {p : ℕ} (D : RegData p) (e : D.Block) :
     carried strengthening (the `DefinedAt (S.R σ)`/agreement conjuncts) is KILLED:
     both are now DERIVED lemmas (`SolveSeam.R_defined`/`SolveSeam.R_agree`,
     DefsLedger) from the typed assembly — `RegPin.detHyp` + `r_is_solve` + the
-    chain's `rsh_interp` + `RegPin.act_pin`. `S` no longer appears. Never vacuous:
-    Pool ∋ p^1, Block nonempty, every index family nonempty-pinned. -/
+    chain's `rsh_interp` + `RegPin.act_pin`. `S` no longer appears. Never vacuous
+    (reason corrected 2026-07-30 verify-2 fold-in): Pool ∋ p^1 (`one_mem_depthSet` +
+    `pool_eq`), Block nonempty (`instNe`), and the K-entry family rides the
+    always-nonempty per-block state index (`instBiNe`), so `entryList` is never
+    empty and both (r1) and (r2) always bind. NOT every index family is
+    nonempty-pinned: per `RegData`'s own docstring (F3-G3), the J/W/leg families
+    are pinned BY EQUATION ONLY and may be empty — `instBiNe`/`blockDim_pos` are
+    the only positivity pins. -/
 def RegP {p : ℕ} (D : RegData p) : Prop :=
   ∀ q₀ ∈ D.Pool, ∀ e : D.Block,
     (letI := D.instBi e; letI := D.instBd e;
@@ -235,7 +242,8 @@ structure FiberSeries (n p : ℕ) (X : ClassifierSpec n p) where
 noncomputable def FiberSeries.seriesSum {n p : ℕ} {X : ClassifierSpec n p}
     (F : FiberSeries n p X) (σ : SplittingType n) : ℝ≥0∞ := ∑' T : F.Tree σ, F.mass σ T
 
-/- ROUND-2 RETYPE (2026-07-31, ratification CRITICAL 3: "The separate `MenuData M`
+/- ROUND-2 RETYPE (2026-07-29, commit 3728b00 — date corrected 2026-07-30, original
+   record mis-dated 2026-07-31; ratification CRITICAL 3: "The separate `MenuData M`
    is also not re-keyed to `C.T` or the real outcome catalogue. Hence cl11_ksub /
    cl13_wf may hold for a toy menu unrelated to the solve"): the surrogate menu
    vocabulary `MenuEntry`/`MenuData`/`KsubM1C1`/`MenuWF` is RETIRED. The (K-SUB)

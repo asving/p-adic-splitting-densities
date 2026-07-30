@@ -10,7 +10,11 @@ import LeanUrat.MovesT.E9_fiberDisjoint
 /-! # T-F1 `oneF` — "(ONE-F) … f HAS exactly one tree" (MOVES 7579–7589), INDEPENDENT
 of TREE-EXP: totality + choice-freeness alone (NO hsib, NO hjcm). Uniqueness IS
 uniqueness-up-to-ext, which T-E9's tuple delivers verbatim. This is `OneFStmt`
-(Defs §2.10) pointwise. PROVED (modulo T-E9's own E-phase discharge). -/
+(Defs §2.10) pointwise. PROVED unconditionally — T-E9's `tree_fiber_disjoint` was
+itself discharged during the E-phase (Lean-core footprint [propext, Classical.choice,
+Quot.sound], re-verified at HEAD 2026-07-30 and in
+notes/golf_baseline_2026-07-30/MovesT_axioms.txt), so the former "modulo T-E9"
+caveat was stale; retired 2026-07-30 (verify-2 fold-in). -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false

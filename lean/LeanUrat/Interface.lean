@@ -296,12 +296,18 @@ structure OMBridge (F : DensityFoundation) where
   clusterVolume_eq_measure :
     ∀ (T : ClusterShape) (q : ℕ), F.clusterVolume T q = PadicMeasure.clusterMeasure (decode T) q
 
-/-! ## 3. The two cited `p`-independence axioms feeding the Goal Theorem
+/-! ## 3. The two cited `p`-independence statements feeding the Goal Theorem — NEITHER is an
+`axiom` any more (section header refreshed 2026-07-30 verify-2 fold-in)
 
 These are the two genuinely-external `p`-independence statements (the "G-A′" import of
 `notes/BB3_infinity.md`, and the tame functional equation H-tame of `notes/HUMAN_PROOF.md §12`).
-They are stated as named axioms with explicit citations so that the assembled Goal Theorem's
-dependence on them is auditable. -/
+They were ORIGINALLY stated as named axioms with explicit citations so that the assembled Goal
+Theorem's dependence on them would be auditable. Both have since left the axiom base, as each
+item's own docstring below records: `clusterVolume_rational` was DE-AXIOMATIZED to a THEOREM
+(2026-06-18, soundness-repaired 2026-06-19, bridge separated 2026-06-20), and
+`TameFunctionalEquation` is a `def`/predicate consumed as an explicit hypothesis by the Goal
+theorems (U1 soundness fix, 2026-07-02). This section contributes ZERO axioms to the trusted
+base. -/
 
 /-- **(G-A′) Per-SHAPE cluster volume is a `p`-independent rational function of `q` — NOW A THEOREM.**
 For every cluster-tree shape `T`, the per-shape cluster volume `C_T(q)` is represented by a single

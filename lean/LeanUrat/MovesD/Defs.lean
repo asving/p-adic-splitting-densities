@@ -13,9 +13,12 @@ E-phase transcription of `lean/notes/MOVESD_LEAN_BLUEPRINT_2026-07-28.md` (REV 9
 split), §3 in the §3.0 NORMATIVE declaration order (groups (1)–(5), `strS` hoisted into
 group (1) per REV 8 / Codex#6 g.4). This corpus CONSUMES MovesC: `History`/`Node`/
 `JetSetup`/`SHZ`/`Realizable`/`HistoryCoherent` and (in the units) `C6_thmC_b`.
-Definitions only — no `sorry`, no axioms; the only proofs are the mechanical constructor
-obligations of `History.snoc` and the blueprint-addendum lemma `Shape.mbar_pos` (powering
-`encIdx`'s totality).
+Definitions only — no `sorry`, no axioms; the proofs here are the mechanical constructor
+obligations of `History.snoc`, the blueprint-addendum lemma `Shape.mbar_pos` (powering
+`encIdx`'s totality), and — since the D4″ ratification repair (2026-07-29) — the four
+unfolding laws `Presented.event_of_ne` / `mult_of_ne` / `event_empty_shape` /
+`mult_empty_shape` for the `reads = []` dispatch. [Inventory corrected 2026-07-30
+verify-2 fold-in: this header previously omitted the D4″ additions.]
 
 SEAM DECLARATION [REV 9, §2.5 W4-SYNC — NOT BUILT AT E-PHASE]:
 * `TreeModel`'s semantic layer (`eligible`/`child_iff` — W4-1) is ABSENT below: only the
@@ -29,10 +32,16 @@ SEAM DECLARATION [REV 9, §2.5 W4-SYNC — NOT BUILT AT E-PHASE]:
   WITHDRAWN per Codex#7 c.6). It re-keys and builds in wave 4 with MovesT.
 * D15 (W4-3, the D4R_CYL consumer side) has NO unit file; the pinned Props `D4R_CYL` and
   `ClassFiberWelldef` are declared below in their §3.4 typed forms — consumed by NOTHING
-  in the E-phase core.
+  in the E-phase core. [2026-07-30 verify-2 fold-in: wave 4 has since delivered conditional
+  discharges of both Props — `MovesT.d4rcyl_canonical` (MovesT/D5_d4rcyl.lean) and
+  `MovesT.cfw_canonical` (MovesT/D6_cfw.lean), each from `RunKey` premises; see the two
+  docstrings below. Still consumed by nothing inside MovesD.]
 * NP-ID (W4-4): TYPED at `NPIDPin` (unit NPv_npid, ratification repair D5 2026-07-28) —
   the ledger pin is now a Lean object; `D4R4_all_noteRange` restates D4R4_all on L12's own
-  range through it. The pin's DISCHARGE (NPband = max-η N(η,⊤)) remains wave-4/HC-2.
+  range through it. The pin's DISCHARGE (NPband = max-η N(η,⊤)) was wave-4/HC-2 territory;
+  [2026-07-30 verify-2 fold-in] wave 4 has since DELIVERED it conditionally in-tree:
+  `MovesT.np_id_pin` (MovesT/D7_npid.lean) proves `NPIDPin` from the hNP L12-range premise
+  + per-class jet existence (`hJex`) + the HC-2 seed identity (`hNthr`).
 * POL-PIN (W4-5, ratification repair D2 2026-07-28): the note's ONE lift rule — the (S6b)
   OFFSET-P-LIFT realizer (note 4646–4651) — now has the typed consumer-side pin
   `OffsetPPin` (unit PolPin). Its `Realizes` field is the seam residue (weight/residue
@@ -642,9 +651,12 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- L6's (D4R-CYL), as the PINNED Prop [REV 3, finding 7]: S(η,⊤) = {f : η ∈ T_can(f)}
 for every enumerated class. Note-PROVED (kernel (a)+(b) dual-verified-discharged + Thm
-C(a)); its LEAN proof is EXPLICITLY DEFERRED to the wave-4/HC-2 tree corpus. [REV 9,
-SEAM W4-3]: the consumer side (D15) is NOT built at E-phase; this def is consumed by
-NOTHING in the core. -/
+C(a)); its LEAN proof was EXPLICITLY DEFERRED to the wave-4/HC-2 tree corpus, and
+[2026-07-30 verify-2 fold-in] wave 4 has since delivered the conditional discharge:
+`MovesT.d4rcyl_canonical` (MovesT/D5_d4rcyl.lean) proves `D4R_CYL S T` from a
+`RunKey T P` premise. [REV 9, SEAM W4-3]: the consumer side (D15) is NOT built at
+E-phase; this def is consumed by NOTHING in the core (still true in-corpus at HEAD,
+2026-07-30). -/
 def D4R_CYL {n N m : ℕ} {pol : CanonPolicy p F} {P : Shape n}
     (S : Presented p F n N m pol P) (T : TreeModel p F n N m pol) : Prop :=
   ∀ (i : PrefIdx n pol P) (x : Box p m), x ∈ S.fiber i ↔ T.mem (some (reprOf i)) x
@@ -678,8 +690,12 @@ end
 
 /-- [REV 5, reconciliation (7)] Representative independence: one η-class, one classifier
 locus, over ALL representatives and ALL jets (§C L4's semantic content). Deferred to the
-wave-4/HC-2 tree corpus together with `D4R_CYL`; [REV 9, SEAM W4-3]: its consumer (D15's
-`hwd`) is NOT built at E-phase — declared, consumed by nothing in the core. -/
+wave-4/HC-2 tree corpus together with `D4R_CYL`; [2026-07-30 verify-2 fold-in] wave 4 has
+since delivered the conditional discharge `MovesT.cfw_canonical` (MovesT/D6_cfw.lean; from
+`RunKey` + `EtaLoc`), while the unconditional polOM form remains a TYPED, still-sorried
+E-phase statement at HC2/U26_fiberWelldef.lean (`class_fiber_welldef`). [REV 9, SEAM
+W4-3]: its consumer (D15's `hwd`) is NOT built at E-phase — declared, consumed by nothing
+in the core. -/
 def ClassFiberWelldef (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]
     (n N m : ℕ) (pol : CanonPolicy p F) (P : Shape n) : Prop :=
   ∀ (H H' : History p F), H ∈ PrefSet n pol P → H' ∈ PrefSet n pol P →

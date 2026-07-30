@@ -2,9 +2,13 @@
 Unit `n2_rsh` (medium; S5 chain batch) — rsh_interp at the explicit values:
 eval β_{(1,2)} = (q₀+1)/(q₀²+q₀+1) etc., with the DEVICE WshP from
 n2_wshp_device (the R44 scope contradiction is GONE: R46).  Also carries the
-gate's discharge of `wsh17_pin` (:= the device W17ii height-sum instance —
-NONTRIVIALLY discharged by n2_sh_laws' shweight_card at the singleton height;
-at wave 4 the field is re-keyed to W17ii's real statement, R57).
+gate's discharge of `wsh17_pin` (:= the device W17ii height-sum instance).
+[Header corrected 2026-07-30 verify-2 fold-in: the as-built clause-1 proof
+discharges the height-sum face DIRECTLY via `hasSum_single` at the singleton
+height (see the P-phase note below) — it does NOT invoke n2_sh_laws'
+shweight_card, whose route the R55 restatement superseded; and since R57
+(ratification finding 4) `wsh17_pin` is a PROJECTION-NAMED DEF on RS4Chain,
+not a field.]
 
 P-phase notes (deviations recorded):
 · `wsh17_pin`'s VALUE is the named Prop `n2Wsh17Device` (N2Sigmas.lean, owned by

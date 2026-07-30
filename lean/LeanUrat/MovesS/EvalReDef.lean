@@ -25,8 +25,10 @@ verdict-halted members contribute the σ_j-singleton indicator (factor 1 / verdi
 convention, §T.4); continuing members contribute the MEASURED value `βhat` of the
 smaller block at the pool `q₀ ^ (δ:ℕ)` (DELTA-ABS base-change).  D-2 guard: the
 member-size bound `size ∈ Icc 1 n` is a `dite` (else 0) — under `DegCons` + U-2 it
-always holds on split outcomes, but threading that in would make the DEFINITION
-depend on the sorried U-2. -/
+always holds on split outcomes, but threading that in would have made the
+DEFINITION depend on U-2, which was still sorried at E-phase (as-built note,
+2026-07-30 verify-2 fold-in: `ktri` is now proved sorry-free in Ktri.lean; the
+guard shape is kept as the historical D-2 rationale). -/
 noncomputable def legFactorMeas (T : TableShape n) (e : ℕ) (τ : T.State e)
     (o : T.Out e τ) (q₀ : ℚ)
     (βhat : ∀ e', e' ∈ Finset.Icc 1 n → T.State e' → Multiset T.VType → ℚ → ℝ)

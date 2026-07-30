@@ -1,6 +1,8 @@
 /-
 Unit U10.theoremU  (MovesU campaign)  [capstone — THE one structure-carrying theorem]
-[ROUND-2 RETYPE 2026-07-31 per /tmp/leanratify_u2/verdict.txt (REJECT 6/1) — the warrant]
+[ROUND-2 RETYPE 2026-07-29, commit 3728b00 (date corrected 2026-07-30; original record
+ mis-dated 2026-07-31) per notes/MOVESU_RATIFICATION_ROUNDS_2026-07-30.md ROUND 2 — the
+ durable archive of /tmp/leanratify_u2/verdict.txt (REJECT 6/1) — the warrant]
 moves_ref: "there is ONE fixed rational function R_σ ∈ ℚ(q) … such that for EVERY
            prime p, WILD primes included: ρ_σ(p) … exists and equals R_σ(p), and
            ρ_σ(p) IS the splitting density of type σ over ℤ_p — the undecided
@@ -22,7 +24,9 @@ ROUND-2 deltas (each per a verdict finding):
   * GAP 1: the evaluated checksum is DERIVED (`SolveSeam.rs4_eval`).
 hypothesis_fields: the COMPLETE retyped ledger via `UInstance` at every prime +
         explicit `RegP` per adjudicated p. At a p failing (REG-p): NO CLAIM (D8).
-ROUND-3 deltas (warrant /tmp/finalratify_u/verdict.txt, REJECT 4/0):
+ROUND-3 deltas (executed 2026-07-29, commit 00b03aa; warrant
+    notes/MOVESU_RATIFICATION_ROUNDS_2026-07-30.md ROUND 3 — the durable archive of
+    /tmp/finalratify_u/verdict.txt, REJECT 4/0):
   * CRITICAL 1: `TreePin.chart` guarded to positive levels (the N = 0
     uninhabitability killed; witness `chartWitness`).
   * CRITICAL 3: `TreePin.vt_surj` — the completeness direction onto the
@@ -81,7 +85,8 @@ open Filter Topology
       `cl19_rep` face (owner [2b]).
 
     THE WAVE-4 BOUNDARY RECORD (round-3 CRITICAL 2, ADJUDICATED —
-    /tmp/finalratify_u/verdict.txt: "A caller can instantiate every one with
+    notes/MOVESU_RATIFICATION_ROUNDS_2026-07-30.md ROUND 3, the durable archive
+    of /tmp/finalratify_u/verdict.txt: "A caller can instantiate every one with
     `True` and provide `True.intro` … Visibility is not semantic pinning"): the
     13 explicit `Prop` parameters above are the WAVE-4 BOUNDARY — the owner
     vocabulary for these rows is ABSENT from the built corpus, and wave-D
@@ -89,7 +94,13 @@ open Filter Topology
     (True-instantiable) pending the wave-D carriers; the conditionality claim
     of record must say so: any statement of Theorem U's conditionality MUST
     list these 13 rows as UNPINNED named assumptions (no typed mathematical
-    obligation is imposed by them yet), NEVER as discharged or typed rows. -/
+    obligation is imposed by them yet), NEVER as discharged or typed rows.
+
+    UNUSED-HYPOTHESIS INVENTORY (2026-07-30 verify-2 fold-in): beyond the 13
+    bare-Prop rows above, the fidelity binder `hn : 2 ≤ n` is ALSO unused by
+    the proof body (masked by this file's `linter.unusedVariables false`) —
+    14 unused hypotheses total. `hn` is statement-fenced: it transcribes the
+    note's degree-n ≥ 2 quantifier and stays in the signature. -/
 theorem theoremU (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n) (KC : KernelCarriers n C)
     (K7 : Cl7Kernel n KC) (S : SolveData n)
     (KT : UpstreamTyped n KC)

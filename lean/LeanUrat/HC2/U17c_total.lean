@@ -2,7 +2,10 @@
 Unit U17c.presentNorm_total  (HC-2 campaign, E-phase — blueprint §5 Layer C)
 moves_ref: MovesD `PresentNorm` clause (i) — TOTALITY.
 deps: U17a + U17b + membership bookkeeping (H' ∈ PrefSet → its class is a PrefIdx
-member); the assembled `presentNorm_polOM` additionally consumes U18.
+member); the assembled `presentNorm_polOM` carries the `huniq : OmUniqHyp` BINDER — it
+does NOT consume U18's theorem (as-built, `presentNorm_unique` is unwired corpus-wide;
+see the U18-ADJUDICATION docstring below). [Corrected 2026-07-30 verify-2 fold-in;
+the original E-phase line read "additionally consumes U18".]
 difficulty: medium.  hypothesis_fields: inherits U17a's stage supplier (`StageTransHyp`).
 -/
 import Mathlib

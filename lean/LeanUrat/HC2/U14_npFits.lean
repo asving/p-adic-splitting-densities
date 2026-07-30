@@ -6,7 +6,10 @@ deps: U3 (supports ⊆ band), MovesD `bandS`/`NPband` (shape-level band replica)
 addendum `inFreshBandC` (the raw-coordinate band mirror).
 difficulty: medium-hard (the htH ↔ bandS arithmetic).
 hypothesis_fields: none beyond PrefSet membership.
-RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1). Sorries retained for the next fleet round.
+RESTATED-POST-DEFS-REPAIR (2026-07-27): statement stands on the REPAIRED ZCSeedLaws.downsets_literal (chart-coverage guard added; box-truncation refuted by scratch_U9_presentSeed_false — blueprint §2.2 DC-1).
+[2026-07-30 verify-2 fold-in: the former "Sorries retained for the next fleet round"
+boilerplate here was STALE and is removed — this file carries 0 sorries and `NP_fits`
+compiles Lean-core ([propext, Classical.choice, Quot.sound], re-verified 2026-07-30).]
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

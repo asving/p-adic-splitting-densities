@@ -74,7 +74,9 @@ Elaboration deviations (each recorded in `MANIFEST.json` "deviations"):
   after — see MANIFEST "nqueue_2026-07-28"): (N-4) `SideReads` gains the ADDITIVE clause
   (vi) VERTEX READ-OFF (§9 F-3; U31 gate re-run queued for the fleet phase); (N-2)
   `D10Eligible` addendum (§9 F-1); (N-5) `RootD4` addendum (§9 F-6); (K3)
-  `AdjacentReads` addendum (the U18 conditional-refutation repair); (K2)
+  `AdjacentReads` addendum (the U18 conditional-refutation repair — NOTE 2026-07-30
+  verify-2 fold-in: the guarded U18 was itself refuted same-round and superseded by
+  the transport-keyed REV 3; the def is now consumer-less — see its docstring); (K2)
   `SeedFreshUnpinned` addendum (the bare-recursion disposition); (D5 fence) `ZCSeedLaws`
   gains the two pre-assigned laws `theta_norm` + `root_shape` (the U9b/U9c residue —
   NOTE root_shape's faithful weakening recorded at the field). Every addition is
@@ -686,13 +688,20 @@ def RootD4 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   ∀ h0 : 0 < H.nodes.length,
     0 ≤ (H.nodes[0]'h0).ustar ∧ 1 ≤ (H.nodes[0]'h0).line.slope
 
-/-- [K3 ADDENDUM, 2026-07-28] READ ADJACENCY along a history: every consecutive read's
-window reaches its parent's standing vertex (`s0 + wSide = μ`, the U21 (HV) hypothesis
-form). U18's uniqueness is CONDITIONALLY REFUTED without it
-(`lean/scratch_U18_unique_false.lean`: a last-node NON-ADJACENT recentering has (HV)
-vacuous and `canonRoot` trivial — ψ = X − C center has a singleton root set — so a
-Frobenius-moved center yields same-class distinct η-data); adjacency is exactly what the
-refutation witness's `hnonadj` violates. -/
+/-- [K3 ADDENDUM, 2026-07-28 — HISTORICAL; DEAD as-built, see below] READ ADJACENCY
+along a history: every consecutive read's window reaches its parent's standing vertex
+(`s0 + wSide = μ`, the U21 (HV) hypothesis form).
+
+AS-BUILT STATUS (2026-07-30 verify-2 fold-in): this def has ZERO consumers in the
+corpus (grep-verified: its only occurrences are this definition, the Defs header K3
+line, and the scratch refutation file). It was introduced as the K3 guard on U18's
+uniqueness after `lean/scratch_U18_unique_false.lean` refuted the unguarded form —
+but the `AdjacentReads`-GUARDED U18 was ITSELF refuted the same round
+(`lean/scratch_U18_adjacent_refuted.lean` compiles green: refuted as insufficient),
+and the as-built `presentNorm_unique` (U18_unique.lean REV 3, U18-ADJUDICATION) is
+keyed by `HistGalTransport` with these guards REMOVED. Do NOT read this def as the
+active uniqueness repair; it is retained as a dead named-hypothesis object pending
+wave-4 disposal. -/
 def AdjacentReads {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (H : History p F) : Prop :=
   ∀ (i : ℕ) (hi1 : i + 1 < H.nodes.length),

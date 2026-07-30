@@ -415,7 +415,8 @@ The event is the exact fiber Ψ_s^{−1}(c) over the entrance event, Ψ_s :=
 `CA.branchCellOf es ν` the SITE's own read map (MOVES 7448–7449: "Write
 jvol(c_s │ Σ) := μ(Ψ^{−1}(c_s) │ Σ)" — the note's Ψ is per-site, never shared
 across siblings), `c` the site's own full joint cell (`SiteLedger.cellAt`).
-The 2026-07-31 form (Ψ keyed by the entrance alone) is superseded; its sibling
+The 2026-07-29 [date corrected 2026-07-30; original record mis-dated 2026-07-31]
+form (Ψ keyed by the entrance alone) is superseded; its sibling
 shared-cell forcing is now structurally dead — see `f1_two_leaf_discharge`
 (T-E8) for the displayed check. -/
 def siteCellEvent (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
@@ -649,7 +650,8 @@ structure SiteLedger (Tr : VTree p F) (T : TreeModel p F n N m pol)
   the site's read. It keys the site's exact cell event (`presents`/`state_cell`
   below), its side split (`splitAt`), the JC charges, AND the scaffold's split
   frames (`TreeScaffold.hframe_cell` — the note's single per-site cell datum, the
-  2026-07-31 c/cSplit two-keying REMOVED per the re-ratification verdict: "an
+  2026-07-29 [date corrected 2026-07-30; original record mis-dated 2026-07-31]
+  c/cSplit two-keying REMOVED per the re-ratification verdict: "an
   arbitrary split-cell roster can be attached to an unrelated exact conditioning
   cell … statement mismatch / under-connected scaffold; M"). -/
   cellAt : History p F → CA.Cell
@@ -671,7 +673,8 @@ structure SiteLedger (Tr : VTree p F) (T : TreeModel p F n N m pol)
   7454–7456) with jvol(c_s │ Σ) = μ(Ψ_s^{−1}(c_s) │ Σ) (7448–7449) — the state a
   site's read leaves IS the exact fiber of its own joint cell c_s under its OWN
   read map Ψ_s = `branchCellOf (parentSt H) H.lastNode`. Owner of instances: HC-2
-  (presented-face genre). THE FORMER OBSTRUCTION IS DEAD: under the 2026-07-31
+  (presented-face genre). THE FORMER OBSTRUCTION IS DEAD: under the 2026-07-29
+  [date corrected 2026-07-30; original record mis-dated 2026-07-31]
   keying (Ψ shared across siblings) co-realized sibling sites with distinct pins
   were FORCED to equal state events (`shared_split_state_forced`, bracketed at
   T-E8) — the re-ratification verdict's central finding. Sibling sites now key
@@ -686,7 +689,8 @@ structure SiteLedger (Tr : VTree p F) (T : TreeModel p F n N m pol)
   splitAt : ∀ H ∈ Tr.chains, 2 ≤ sides H → SideSplit T CA (cellAt H) (sys H).2
   hsplit_k : ∀ H (hH : H ∈ Tr.chains) (h2 : 2 ≤ sides H),
     (splitAt H hH h2).k = sides H
-  /-- **the SIDE-UNION exponent tie** — NEW at the T RATIFICATION (2026-07-31;
+  /-- **the SIDE-UNION exponent tie** — NEW at the T RATIFICATION (2026-07-29
+  [date corrected 2026-07-30; original record mis-dated 2026-07-31];
   verdict §4's consumption demand): "the joint cell's literal system is the union
   of the k per-side systems over DISJOINT slot spans" (MOVES 7476–7479) — the side
   decomposition's total equation count IS the site's own fresh charge, so the
@@ -1012,7 +1016,8 @@ RE-RATIFICATION (2026-08-01; verdict, material finding: "The note uses one cell
 `c` both for `Σ_c` and for its branch set. Lean now defines `SibCountAt … (c
 cSplit : CA.Cell)` … There is deliberately no equality between them … an
 arbitrary split-cell roster can be attached to an unrelated exact conditioning
-cell — statement mismatch / under-connected scaffold; M"). The 2026-07-31
+cell — statement mismatch / under-connected scaffold; M"). The 2026-07-29
+[date corrected 2026-07-30; original record mis-dated 2026-07-31]
 c/cSplit two-keying is REMOVED: the note's (SIB) has ONE cell — "Let η be a
 realized prefix with state cylinder Σ, c a digit cell of Σ with branch set
 {b₁, …, b_m} … conditionally on the cell event Σ_c" (MOVES 7283–7292) — so the
@@ -1359,7 +1364,8 @@ def SubtreeFiber (T : TreeModel p F n N m pol)
   (∀ H' ∈ C, ¬ IsMaximalIn C H' → ¬ IrrHalts H' ∧ ¬ NsHalts T (some H') x)
 
 /-- T-E7's split-site frame (REV 3/5/6): the frame prices its OWN `scope`.
-RE-KEYED at the T RATIFICATION (2026-07-31; verdict §§3–4): the frame sits AT THE
+RE-KEYED at the T RATIFICATION (2026-07-29 [date corrected 2026-07-30; original
+record mis-dated 2026-07-31]; verdict §§3–4): the frame sits AT THE
 SITE (`es = .st H` via `hframe`, so `entEvent es` is the site's state event — tied
 to the note's exact Σ_c by the ledger's `state_cell` law, MOVES 7503–7510: "Charge
 jvol(c │ Σ) … then by (SIB) at c: μ(fiber T │ Σ) = jvol(c │ Σ) · ∏_j μ(S_{T_j} │
@@ -1392,7 +1398,8 @@ def multiSites (Tr : VTree p F) (T : TreeModel p F n N m pol)
 instances: HC-2's presented faces.
 
 RE-KEYED at the T RE-RATIFICATION (2026-08-01): the frame's cell `c` IS the
-ledger's `cellAt H` — the NEW tie `hframe_cell` below. The 2026-07-31 "DISCLOSED
+ledger's `cellAt H` — the NEW tie `hframe_cell` below. The 2026-07-29
+[date corrected 2026-07-30; original record mis-dated 2026-07-31] "DISCLOSED
 DEVIATION" (the note's single per-site joint-cell datum split across two entrance
 keyings — conditioning cell `cellAt H` vs roster cell `(splitFrame H hH).c`) is
 REMOVED per the verdict's material finding ("an arbitrary split-cell roster can
@@ -1604,7 +1611,8 @@ def TreeNStmt (pol : CanonPolicy p F) : Prop :=
     Nat.card ↥{x : Box p (n * N') | Tr.fiberAt T χ x} * p ^ AofTr Tr L = p ^ (n * N')
 
 /-- **TREE-N's CROSS-LEVEL STABILITY, TYPED** — the note's displayed theorem (MOVES
-7559–7574; verdict §5 of the 2026-07-31 ratification demanded the statement; the
+7559–7574; verdict §5 of the 2026-07-29 ratification [date corrected 2026-07-30;
+original record mis-dated 2026-07-31] demanded the statement; the
 2026-08-01 re-ratification demanded its INTEGRATION into the RS.1 package). Over a
 pinned level tower of models/charts: for every N above the tree's threshold
 `thr(T)` and every working level N' ≥ N, the tree fiber reads ONLY the level-<N

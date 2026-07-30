@@ -1,3 +1,16 @@
+# ============================================================================
+# CORRECTION ADDENDUM 2026-07-30 (verify-2 fold-in). The baseline below is FROZEN
+# and has NOT been rewritten; this note corrects its SORRY-CENSUS "NOTE" line's
+# aggregate arithmetic, which is miscounted. Evidence: the file's own per-token
+# itemization (correct; it is the identity record fence checks consume) lists 19
+# lines, of which only L4_genuine_imp_stageCoreL_v2.lean:417
+# (`refine ⟨fun c => ?_, sorry, sorry⟩`) holds TWO tokens; line 415 holds ONE (the
+# trailing `sorry⟩`). True totals: L4_genuine_imp_stageCoreL_v2 = 11 tokens on 10
+# lines (NOT "12 tokens on 11 lines"); grand total = 20 sorry tokens on 19 lines,
+# 7 files (NOT "19 sorry tokens"). Re-verified at HEAD 2026-07-30: identical census
+# (19 lines / 20 tokens / 7 files); the v2 sorries now sit at lines 395-422
+# (shifted -1 by the Phase-2 comment-only golf), token counts unchanged.
+# ============================================================================
 # MovesGr pre-golf baseline — 2026-07-30
 # Corpus: LeanUrat/MovesGr/*.lean (30 files). All oleans present & newer than sources at capture time.
 # Method: two scratch files (name collisions between v1 and v2/v3 modules force a split):

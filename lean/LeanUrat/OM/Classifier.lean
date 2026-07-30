@@ -19,7 +19,17 @@ import LeanUrat.OM.Development
 # B — Classifier: the truncated OM classifier and its certification level
 (blueprint §"B — Classifier", Layer B; PRE-WAVE signature freeze `w78jgpb27`)
 
-**FROZEN SIGNATURE SKELETON (PRE-WAVE).** This module states the Layer-B nodes with their intended
+**AS-BUILT STATUS (corrected 2026-07-30 verify-2 fold-in).** The PRE-WAVE signature skeleton this
+header used to describe has been FILLED by the waves: the module is fully proved except for
+(i) the ONE banked `sorry`, `npVertices_stable_of_hull_preserved` (the repaired hull-invariance
+contract, off the capstone path — see its docstring), and (ii) the declared NAMED CITE axiom
+`omReadValuation_lt_of_certLevel_fkeyed` (GMN `ind(f) ≤ v_p(disc f)`, read-set-restricted).
+Compiled evidence 2026-07-30: the only `sorry` token in the file is that banked lemma's body;
+`certLevel_stabilizes` footprint = `[propext, sorryAx, Classical.choice, Quot.sound,
+omReadValuation_lt_of_certLevel_fkeyed]`. The PRE-WAVE freeze notes below are retained as the
+historical record of the blueprint contract the fill was built against.
+
+HISTORICAL (PRE-WAVE freeze `w78jgpb27`): this module stated the Layer-B nodes with their intended
 signatures and `sorry`/opaque bodies, so the WAVE-0/WAVE-1 parallel fill builds against FIXED,
 CORRECT contracts. It produces the `classify` argument consumed everywhere downstream
 (`M8.shapeFiberCount`, `M8.constantFiber`, `M8.nodeMeasure_boxSum`) and the `decode : ClusterShape →
@@ -45,8 +55,10 @@ Blueprint Layer-B nodes frozen:
 * **reduction-stability spec** `classifyReductionStable` / `classify_reductionStable` — the tower
   ZMod(p^{N+1}) ↠ ZMod(p^N) stability above `certLevel`, consumed by F1.L9 / M8.constantFiber.
 
-RULES (PRE-WAVE): every `sorry` here sits over a TRUE-intended contract (no `sorry` over a false
-statement). Bodies left `sorry`/opaque; everything TYPECHECKS.
+RULES (PRE-WAVE, historical): every `sorry` here was to sit over a TRUE-intended contract (no
+`sorry` over a false statement); bodies left `sorry`/opaque; everything TYPECHECKS. As built
+(2026-07-30) all bodies are filled; the single surviving `sorry` is the banked hull-invariance
+lemma named in the status paragraph above.
 -/
 
 set_option linter.style.longLine false
@@ -1708,9 +1720,18 @@ above `N > v_p(disc g)`; the disc-tail `{v_p(disc) ≥ N}` (measure `≤ C·q^{-
 
 The false-as-stated `sorry` (`omReadValuation_lt_of_certLevel`) is GONE; the single imported scalar
 fact is now the NAMED CITE axiom `omReadValuation_lt_of_certLevel_fkeyed` (GMN Cor 4.19,
-`ind(f) ≤ v_p(disc f)`). Two structural `sorry`s remain (Lean-engineering, NOT the imported scalar
-fact): `boxValSupport_reduce_stable_R` (RISK (a), hull invariance) and `disc_reduce_bulk_mono`
-(RISK (b), discr naturality under `boxReduce`).
+`ind(f) ≤ v_p(disc f)`).
+
+[Sorry census corrected 2026-07-30 verify-2 fold-in — the previous text here claimed TWO structural
+`sorry`s remained (`boxValSupport_reduce_stable_R`, RISK (a), and `disc_reduce_bulk_mono`, RISK (b)).
+As built: `disc_reduce_bulk_mono` is FULLY PROVED (compiled footprint clean core
+`[propext, Classical.choice, Quot.sound]`), and `boxValSupport_reduce_stable_R` is itself proved;
+the ONE structural `sorry` remaining in this module is the banked
+`npVertices_stable_of_hull_preserved` (the repaired hull-invariance contract), which enters this
+lemma's footprint only through `boxValSupport_reduce_stable_R`. Compiled footprint of
+`certLevel_stabilizes` (2026-07-30): `[propext, sorryAx, Classical.choice, Quot.sound,
+omReadValuation_lt_of_certLevel_fkeyed]` — the `sorryAx` comes only from the banked hull lemma,
+off the capstone path.]
 
   certLevel_stabilizes = oneDigit_to_LE_fkeyed                       -- D-tele telescoping (f-keyed)
     ⟸ oneDigitCylinder_fkeyed: classify(N+1) g = classify N (boxReduce g), for g in the BULK
@@ -1791,7 +1812,17 @@ theorem classify_separable_leaf (p : ℕ) [Fact p.Prime] (n N : ℕ) (hN : 1 ≤
 
 /-! ## GLUE-4 — the `undecidedCount` repoint (B+F4 joint glue)
 
-`M9.realM.undecidedCount` is currently `q^{nN}` (the empty-menu placeholder, `RealInstance.lean:233`),
+[Instance reference corrected 2026-07-30 verify-2 fold-in: the `M9.realM` instance this block
+originally targeted (`realM.undecidedCount := q^{nN}`, the empty-menu placeholder, then at
+`RealInstance.lean:233`) was QUARANTINED at the M9 rebase (W4, 2026-07-21;
+`quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`) — `RealInstance.lean` is now a shared-
+primitives module declaring no `realM`/`undecidedCount`. The live instance is
+`RealInstanceV2.realM2`, whose `undecidedCount` is the box-minus-decided count
+`q^{nN} − ∑_σ ∑_T stratumCount` (`RealInstanceV2.lean`): no longer the vacuous `q^{nN}` placeholder,
+but still NOT the genuine classifier-fiber count pinned below — the repoint contract remains open
+Phase-B work.]
+
+HISTORICAL TEXT: `M9.realM.undecidedCount` is currently `q^{nN}` (the empty-menu placeholder),
 for which `undecided ≡ 1` and `h_env` is only vacuously carried. F4's L-TOP2/TOP3 require the GENUINE
 undecided fiber count `#{f : classify N f = undecidedSentinel}`. GLUE-4 pins that repoint contract
 WITHOUT touching `realM`/`realD`/`montes_unconditional` (which stay as-is): it states the genuine
@@ -1808,16 +1839,27 @@ def undecidedSet (p : ℕ) [Fact p.Prime] (N n : ℕ) : Set (QuotientBox.monicBo
   {f | classify p n N f = undecidedSentinel}
 
 /-- **The genuine undecided fiber count** `#{f ∈ monicBox(p,N,n) : classify N f = undecidedSentinel}` —
-the object that must REPLACE `realM.undecidedCount := q^{nN}` (the empty-menu placeholder). -/
+the object that must REPLACE the live instance's `undecidedCount` (historically
+`realM.undecidedCount := q^{nN}`, quarantined 2026-07-21; today `RealInstanceV2.realM2`'s
+box-minus-decided count — reference corrected 2026-07-30). -/
 noncomputable def undecidedFiberCount (p : ℕ) [Fact p.Prime] (N n : ℕ) : ℕ :=
   Nat.card {f : QuotientBox.monicBox p N n // classify p n N f = undecidedSentinel}
 
 /-- **GLUE-4 `undecidedCount_repoint` (B+F4 joint glue).** The genuine undecided DENSITY
 `undecidedFiberCount p N n / q^{nN}` is the object F4's `discZero_geometric_drain` bounds by `C·q^{-N}`;
-the repoint replaces `realM.undecidedCount = q^{nN}` (giving the FALSE `undecided ≡ 1`) by
-`undecidedFiberCount`, after which `h_env : undecided N ≤ C·q^{-N}` is the genuine geometric drain
-(NOT vacuous). The contract pinned here: the genuine undecided density is the F4-bounded quantity.
-Bodies `sorry`; TRUE-intended (the repoint identity + the F4 drain bound it enables, with `q = p`). -/
+the repoint replaces the placeholder `undecidedCount` (historically `realM.undecidedCount = q^{nN}`,
+giving the FALSE `undecided ≡ 1`) by `undecidedFiberCount`, after which
+`h_env : undecided N ≤ C·q^{-N}` is the genuine geometric drain (NOT vacuous). The contract pinned
+here: the genuine undecided density is the F4-bounded quantity.
+
+**DISCLOSURE + docstring correction (2026-07-30 verify-2 fold-in).** This declaration is a
+zero-content P→P restatement: its conclusion is byte-identical to its hypothesis `hdrain` and the
+body is `:= hdrain` — NOT `sorry`, contrary to the earlier text here ("Bodies `sorry`;
+TRUE-intended"); compiled footprint is clean core `[propext, Classical.choice, Quot.sound]`, no
+`sorryAx`. It proves NOTHING about `undecidedFiberCount`: it only pins the intended SHAPE of the
+F4 drain bound as a typechecked contract (with `q = p`), and `hpq`/`hN` are carried but unused.
+It has ZERO consumers in-repo. **DELETION CANDIDATE for repo-prep** — either delete-and-scope or
+retype as an honestly-named contract `Prop` (statement-level change, needs sign-off). -/
 theorem undecidedCount_repoint (p : ℕ) [Fact p.Prime] (N n : ℕ) (q : ℕ) (hpq : q = p) (hN : 0 < N)
     (C : ℚ) (hdrain : (undecidedFiberCount p N n : ℚ) / (q : ℚ) ^ (n * N) ≤ C * ((q : ℚ) ^ N)⁻¹) :
     (undecidedFiberCount p N n : ℚ) / (q : ℚ) ^ (n * N) ≤ C * ((q : ℚ) ^ N)⁻¹ :=

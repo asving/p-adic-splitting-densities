@@ -1,5 +1,8 @@
 /-  MovesV unit V3-5a `inst_bij_inj` · HARD — INJECTIVITY of the instantiation
-    map, SCOPED SELF-LOOP-FREE (ADJ-3, 2026-07-31).
+    map, SCOPED SELF-LOOP-FREE (ADJ-3, 2026-07-29 — date corrected
+    2026-07-30; original record mis-dated 2026-07-31, a future date: the
+    adjudication landed with commit 745cb05 and predates the 2026-07-29
+    closure commit 34447a8).
 
     STATEMENT REPAIR (adjudicated; Codex-confirmed mechanism, wave-A refutation
     queue): the depth-slot truncation — `shapeOfSlots?` folds over

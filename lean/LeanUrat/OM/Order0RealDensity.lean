@@ -10,9 +10,18 @@ import LeanUrat.OM.Order0Alpha
 # Order0RealDensity — the HONEST real order-0 separable density theorem (σ-keyed), + the
 general-prime per-shape density (audit gaps #2/#3, order-0)
 
+**As-built correction (2026-07-30 verify-2 fold-in).** This header predates the W4a retirement
+(2026-07-21): `M9.montes_unconditional` and `M9.shapeMenu`, referred to below, NO LONGER EXIST
+in-tree — they were retired to `quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`. The
+canonical capstone name `montes_unconditional` is now carried by the NON-vacuous, σ-keyed
+`OM.RealInstanceV2.montes_unconditional` (`OM/RealInstanceV2.lean`); do NOT read the "VACUOUS"
+verdict below as applying to it. All references to `M9.montes_unconditional` in this file are
+HISTORICAL (about the retired declaration).
+
 **Purpose (additive; nothing existing changes).** The audit
-(`uniform-rationality/notes/AUDIT_FINDINGS_2026-07-12.md`) records that the SEPARATE all-orders
-capstone `M9.montes_unconditional` is VACUOUS (degenerate `leafOMTypeOfSize`/`shapeMenu` menu,
+(`uniform-rationality/notes/AUDIT_FINDINGS_2026-07-12.md`) records that the then-SEPARATE all-orders
+capstone `M9.montes_unconditional` (since retired, see above) was VACUOUS (degenerate
+`leafOMTypeOfSize`/`shapeMenu` menu,
 `Rr = 0` → empty cells → density ≡ 0), while the GENUINE classify path
 `Order0.montes_order0_unconditional` is NON-vacuous (real order-0 separable density over the σ-keyed
 menu `sepShapesOf n σ`, real `1/4` gate, strictly-positive certified value). This module presents
@@ -47,7 +56,8 @@ gaps.
     same rational function, counts at `p` converge to its value at `p`.
 
   What does NOT generalize additively: the *top-level* real instance (`M9.rawCount`, `M9.realP`,
-  `M9.montes_unconditional`, the Witness/Goal wiring) is hardwired to `realP = 2`; changing it would
+  the Witness/Goal wiring — historically also the since-retired `M9.montes_unconditional`, see the
+  as-built correction above) is hardwired to `realP = 2`; changing it would
   ripple through `RealInstance`/`CountingModel`. The general-prime statements here are STANDALONE
   (they name `p` and `B.classify p n` directly, not `M9.rawCount`/`M9.realP`), so no core def moves.
 
@@ -84,7 +94,9 @@ GENUINELY used — this closes audit gap #3 (σ-decoupling) for the order-0 stra
 
 This is the honest re-presentation of `montes_order0_unconditional`, additionally pinning the
 certified value to the explicit engine per-shape sum (clause 3). NOTHING in the top-level
-Witness/Goal wiring or the vacuous `M9.montes_unconditional` is touched. -/
+Witness/Goal wiring is touched (nor was the old vacuous `M9.montes_unconditional`, which was
+subsequently RETIRED at W4a 2026-07-21 to quarantine — its canonical name is now carried by the
+non-vacuous `OM.RealInstanceV2.montes_unconditional`; correction 2026-07-30 verify-2 fold-in). -/
 theorem montes_order0_realDensity (n : ℕ) (hn : 0 < n) (σ : FactorizationType) :
     ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
       (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧

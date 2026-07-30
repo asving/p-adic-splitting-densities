@@ -141,12 +141,36 @@ this way and removed (a false *uniform* `omReadValuation`, refuted by `g = xⁿ 
 descent citation, refuted by `g = X² + X + pᴺ`), which is why the surviving citations are narrowly
 scoped (read-set-restricted, arising-key-only).
 
-### The one banked `sorry`
+### The one banked `sorry` (scope corrected 2026-07-30, verify-2 fold-in)
 
 `Classifier.npVertices_stable_of_hull_preserved` — a Newton-polygon hull-invariance helper. It is the
-**sole** `sorry` in the repository and is **off the capstone path**: it is consumed only by
+**sole** `sorry` on the OM/root capstone corpus (the `AxChk_baseline` import graph: the root modules +
+`OM/`) and is **off the capstone path**: it is consumed only by
 `boxValSupport_reduce_stable_R` (an off-capstone reduce-stability lemma), never by any capstone. Retained
 as an honest banked contract rather than deleted.
+
+It is NOT the sole `sorry` in the repository: the 2026-07-26/28 campaign corpora (Moves\*/HC\*) carry
+their own disclosed open items. Exact corpus-wide census at HEAD (comment-aware token scan,
+2026-07-30, post-R1; 46 real `sorry` tokens; paths under `lean/LeanUrat/`):
+
+- **OM (1, banked):** `OM/Classifier.lean:1243` (this section's item).
+- **MovesT (6, fenced/disclosed):** `MovesT/E5_rootSplit.lean:349` (the internal D4R0K `have`; golf
+  repair queue R3), `MovesT/E11_treeN.lean:96` (TreeNStable), `MovesT/G1_toyGate.lean:562,782,2245,2248`
+  (task #44 sign-off cluster).
+- **MovesV (4, fenced/disclosed):** `MovesV/V7_livC.lean:66`, `MovesV/V7_rbC.lean:52`,
+  `MovesV/V7_scsData.lean:46` (the three Phase-B seam-instantiation duties), `MovesV/V7_w17ii.lean:48`
+  (the banked W17ii).
+- **HC1 (2, disclosed):** `HC1/C6_alphabetCard.lean:63`, `HC1/R6_carrierInstance.lean:130`.
+- **HC2 (9, disclosed):** `HC2/U10_zcStep.lean:50,71,126,142,161`, `HC2/U17a_liftSwap.lean:38`,
+  `HC2/U21_HV.lean:252`, `HC2/U26_fiberWelldef.lean:26`, `HC2/U4_freshCover.lean:80`.
+- **Moves deprecated R3/R5 files (4, not imported):** `Moves/L4_TRANSviii_b_R3.lean:103`,
+  `Moves/L5_landTransport_R3.lean:54`, `Moves/L5_landTwoSided_R5.lean:964`,
+  `Moves/L6_moveReduceCommute_R3.lean:82`.
+- **MovesGr partial/superseded modules (20; v1 duplicates slated for quarantine, golf repair queue
+  R2):** `MovesGr/L1_gr_domain_iff_val.lean:59`, `MovesGr/L1_gr_domain_iff_val_v2.lean:109`,
+  `MovesGr/L1_gradedRingStr_exists.lean:115`, `MovesGr/L2_coeffLoc.lean:22,27,35`,
+  `MovesGr/L2_coeffLoc_v2.lean:161,169`, `MovesGr/L4_genuine_imp_stageCoreL.lean:68`,
+  `MovesGr/L4_genuine_imp_stageCoreL_v2.lean:395,397,399,401,409,411,414,416(×2),420,422`.
 
 ---
 
@@ -992,7 +1016,8 @@ seam rows), MovesR unparking. Ledger:
 lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md (the full round-by-round
 record); the sorry sites themselves carry the exact missing-lemma statements.
 
-## UPDATE (2026-08-01): MOVEST T RE-RATIFICATION REPAIRS — THE SITE-ENTRANCE KEYING
+## UPDATE (2026-07-29): MOVEST T RE-RATIFICATION REPAIRS — THE SITE-ENTRANCE KEYING
+*(date corrected 2026-07-30; original record mis-dated "2026-08-01" — true date per commit 00b03aa, 2026-07-29)*
 
 The second T ratification (Codex, REJECT-M) found the exact-cell re-key still
 structurally unable to represent distinct co-realized sibling reads (one read
@@ -1015,7 +1040,8 @@ enumerated corpus sweep green (9,429 jobs; census integers verbatim; MovesT
 sorry census unchanged at 6 disclosed declarations; zero new axioms). Record:
 MovesT/MANIFEST.json RERATIFY-T-1.
 
-## UPDATE (2026-08-01): THE UNIFORMITY COMPLETION CAMPAIGN — DONE CRITERION MET
+## UPDATE (2026-07-29): THE UNIFORMITY COMPLETION CAMPAIGN — DONE CRITERION MET
+*(date corrected 2026-07-30; original record mis-dated "2026-08-01" — true date per commit e9d2430, 2026-07-29)*
 
 The /goal directive ("complete the formalization of the uniformity theorem") is
 achieved in the campaign's own defined terms — the maximal honest completion
@@ -1091,11 +1117,17 @@ Commits: e9d2430 (pre-golf fence) -> ed51944 (fleet) -> 49ffe85 (Phase 3) -> 5b2
   unverifiable shorthand cites; repaired to exact provenance (WAVE B RATIFICATIONS
   ledger entry + commit 745cb05). Lesson memorized: dedup audits need an explicit
   new-declaration check; sanctioned exceptions must name exact declarations.
-- REPAIR QUEUE: R4 done (provenance). R1 = QUEUED FOR ASVIN SIGN-OFF (task #65): the
-  believed-false sorried private L5_landTwoSided_missing vs the ratified hexact repair —
-  recommended re-point of L6_measureExact to LandingCylinderL (full decision package in
-  the campaign notes; safety classifier correctly blocked autonomous execution).
+- REPAIR QUEUE: R4 done (provenance). R1 = EXECUTED same day (status corrected 2026-07-30,
+  verify-2 fold-in; the "QUEUED FOR ASVIN SIGN-OFF" state lasted only until the sign-off
+  landed): Asvin granted sign-off, task #65 completed, commit 81c2a63 — L6_measureExact
+  re-pointed to LandingCylinderL with the hexact hypothesis added, the believed-false
+  sorried private L5_landTwoSided_missing DELETED, the successor proved by direct
+  application of the ratified repair; `#print axioms L6_measureExact` = Lean-core (sorryAx
+  gone); full build green (8579). Full record: GOLF_CAMPAIGN_2026-07-30.md "R1 EXECUTED".
   R2 (MovesGr v1 name collisions -> quarantine) + R3 (MovesT E5 internal sorry ->
   hypothesis) deferred to the repo-prep pass.
-- Sorry census: UNCHANGED throughout (the ten fenced sorries; no new sorryAx anywhere).
-  Capstone footprints: byte-identical to baseline.
+- Sorry census: UNCHANGED throughout the golf phases (no new sorryAx anywhere); the
+  same-day R1 execution then deleted the L6_measureExact sorried private (the Moves
+  corpus's one live-file sorry). The exact post-R1 census at HEAD is enumerated in §2
+  ("The one banked `sorry`", recounted 2026-07-30). Capstone footprints: byte-identical
+  to baseline.

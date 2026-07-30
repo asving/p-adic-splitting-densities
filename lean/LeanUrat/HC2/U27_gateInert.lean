@@ -729,7 +729,19 @@ cluster-zero strips), so the floor is `N₀ = 1 + 0 = 1` — and the RECORDED eq
 (`totalPins = 2`, the quarter tie) are the floor-box values: they are box-size-dependent
 and FALSE at every `N ≥ 2` (`root_height` + the band's inclusive upper edge force
 `totalPins ≥ 4` there — machine-refuted for the old `∀ N ≥ 1` form at N = 2 in
-`lean/U27_OBSTRUCTION_negation.lean`). Hence the gate is stated AT `N = 1` exactly. -/
+`lean/U27_OBSTRUCTION_negation.lean`). Hence the gate is stated AT `N = 1` exactly.
+
+SEED-CONJUNCT SCOPE (2026-07-30 verify-2 fold-in): the statement binds
+`S : PresentSeed …` existentially, but NO conjunct references `S` — the seed half of
+the gate certifies only PresentSeed INHABITATION at the gate data. The recorded
+equations are carried by `J` (= `U27.gateJ`), which is HAND-BUILT from the same
+`presF` presentation as the seed rather than obtained from `S` via `jetSetup_of_seed`
+(deliberate: that route is sorryAx-conditional through `U10.zc_step` and would taint
+this gate's Lean-core footprint). So "a CONCRETE seed and a CONCRETE jet setup" is
+literally accurate, but the statement does NOT tie J's presentation to S — a
+joint-realization reading proves slightly less than it suggests. Statement-level
+tightening queued for wave-4 sign-off (see the SIGN-OFF QUEUE in
+`lean/notes/GOLF_CAMPAIGN_2026-07-30.md`). -/
 theorem gate_order0_inert :
     ∃ (H₀ : History 2 F4) (keys : ℕ → Polynomial ℤ_[2]),
       KeysLawful H₀ keys ∧

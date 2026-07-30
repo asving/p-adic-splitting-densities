@@ -159,7 +159,8 @@ theorem fiber_seg_step (T : TreeModel p F n N m pol)
     (L.hfresh H hH) (L.spectator_sol H hH) hspec
 
 /-- **THE PRESENTED FACES IMPLY (JC-multi)** — the T RATIFICATION's honesty
-disclosure (2026-07-31; verdict §4: "Multi-side pricing is effectively obtained
+disclosure (2026-07-29 [date corrected 2026-07-30; original record mis-dated
+2026-07-31]; verdict §4: "Multi-side pricing is effectively obtained
 through the stronger `SitePresents`/`FreshData` setup rather than through the
 declared open `(JC-multi)` law"). PROVED: a ledger whose `presents`/`spectator_sol`/
 `free`/`hfresh`/`state_cell`/`hsplit_exp` rows are discharged at a multi-side site

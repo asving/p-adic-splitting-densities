@@ -40,7 +40,10 @@ form: it is the documented-defective rendering — its TRANSPORT clause demands 
 redesign) and LACKS the terminal no-overflow clause; and the hexact-free statement is
 believed FALSE per the Δ-shift countermodel family recorded in the repair-file header
 (`L5_landTwoSided_repair.lean`, "CLOSED GAP (round-6 repair)").  The
-`DefsCore.LandingCylinder` definition itself is UNTOUCHED for its other consumers.
+`DefsCore.LandingCylinder` definition itself is UNTOUCHED — but note (corrected 2026-07-30
+verify-2 fold-in) that after this re-point it has NO code consumers repo-wide (docstring
+mentions only); it stands as dead code, kept as the documented-defective rendering for the
+audit-#4 record (defective-rendering banner at its definition site, `DefsCore.lean`).
 
 CLOSED (was the round-3 zero-coordinate FLAG): the leg where `E.IsSolution` at `Θ (code 0)`
 was unpinned — no hypothesis ruled out the digit system accepting the zero polynomial's
@@ -52,9 +55,12 @@ DOCSTRING-ACCURACY NOTE (R1, 2026-07-30): only `hzsolN`/`hzsolM` are THREADED th
 proof (at the zero-coordinate leg of `hcard`); the stratum-side `hzN`/`hzM` are NOT
 consumed — at `f = 0` they are derivable from `hstratN`/`hstratM` — and are RETAINED in
 the signature for fence stability, not as load-bearing hypotheses.
-Warrant + exact statement: `MANIFEST_REPAIR.json:80`; the fence change is
-pre-recorded for semantic audit at `MANIFEST_REPAIR.json:158`
-(`fence_changes_needing_audit`: "L6.measureExact (+hzsolN/hzsolM)").  FLAGGED for orchestrator
+Warrant + statement: the MANIFEST_REPAIR.json `L6.measureExact` entry — its frozen
+`statement` field is the PRE-R1 form (LandingCylinder-typed, no `hexact`); the as-built
+form is recorded in the adjacent `statement_asbuilt_2026-07-30` addendum field (citation
+re-pointed 2026-07-30 verify-2 fold-in).  The fence changes are pre-recorded for semantic
+audit in the manifest's `fence_changes_needing_audit` ("L6.measureExact (+hzsolN/hzsolM)"
+and the signed-off R1 re-point entry).  FLAGGED for orchestrator
 ratification (semantic-guardian audit pass still owed).
 -/
 

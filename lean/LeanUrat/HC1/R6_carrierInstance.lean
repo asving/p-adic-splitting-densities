@@ -77,8 +77,21 @@ theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
   -- NOT unblock when C2(b) closes: the R-layer statement defs themselves carry two
   -- quantifier-scope transcription bugs relative to the C-layer forms they were
   -- meant to abstract. Statement repairs are fence-gated (sign-off required), so
-  -- STOP is forced. The pass-1 facts remain true (Gr-pin dischargeable via
-  -- `T.carrier (T6_carrierLaws T).2`; C2(b) open at `C2_TYPa.lean:102`).
+  -- STOP is forced. The pass-1 Gr-pin fact remains true (dischargeable via
+  -- `T.carrier (T6_carrierLaws T).2`).
+  --
+  -- [2026-07-30 verify-2 fold-in — DEPENDENCY STATUS CORRECTION. The pass-2
+  -- record below is kept verbatim as history, but its dependency claims are
+  -- SUPERSEDED at HEAD: `C2_TYPa` (including its conjunct-(b) carry wall,
+  -- closed in-file) and `T4_slotMinHt` are both PROVED, Lean-core footprint
+  -- (compiled `#print axioms` check 2026-07-30; the old pointer "C2(b) open at
+  -- `C2_TYPa.lean:102`" was stale — post-golf, :102 lands in an unrelated
+  -- private lemma). Consequence for the queued A17 statement-repair
+  -- adjudication: every "(dep-sorry)" tag in the POSITIVE FINDING below is
+  -- pass-2-era; the documented post-repair assembly now carries ZERO
+  -- dep-sorries, so post-repair R6 would be fully closable. DEFECT 1 and
+  -- DEFECT 2 themselves re-verified accurate at this fold-in; the :130 sorry
+  -- correctly stands pending the fence-gated statement repairs.]
   --
   -- DEFECT 1 (R1 `LSTStmt'` leg (i-b) — REFUTED for every content-bearing pack;
   -- machine-checked kernels `realSlot_offBlock_blind` + `LSTib_offBlock_pincer`).
@@ -122,6 +135,8 @@ theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
   -- Defect-1 repair, transports from T4 (dep-sorry) via a two-level contradiction.
   -- So post-repair R6 = an assembly carrying the T4 + C2(b) dep-sorries, exactly
   -- the §4.6-style ledger pattern; no new mathematics beyond the C2(b) wall.
+  -- [2026-07-30: T4 + C2(b) both since PROVED Lean-core — see the fold-in note
+  -- above; the post-repair assembly carries zero dep-sorries at HEAD.]
   --
   -- Hence: STOP. Deliverables = the two kernels above + the two repair specs.
   -- Vacuous witnesses (Hist := Empty, window ≡ False, slotCoeff ≡ 0) remain

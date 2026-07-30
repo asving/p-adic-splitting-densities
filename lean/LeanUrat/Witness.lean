@@ -25,8 +25,11 @@ interface is **inhabited** (`DensityFoundation_nonempty`).
 ## HONEST SCOPE — what this does and does NOT establish (GAP-2)
 
 * **It DOES** establish non-vacuity: the `DensityFoundation` hypothesis-bundle is jointly
-  satisfiable (its equational fields — `decomposition`, `clusterVolume_eq_measure`, `density_nonneg` —
-  are mutually consistent), so the `∀ F` theorems are not vacuously quantifying over an empty type,
+  satisfiable (its equational fields — `decomposition`, `density_nonneg` — are mutually consistent;
+  `clusterVolume_eq_measure` is NOT a `DensityFoundation` field — it lives in the SEPARATE
+  `OMBridge` structure since the 2026-06-20 factoring, and is witnessed by `witnessOMBridge` below —
+  header summary corrected 2026-07-30 verify-2 fold-in), so the `∀ F` theorems are not vacuously
+  quantifying over an empty type,
   and the structural OM-bridge fields can be simultaneously met. In particular `goal_theorem` and
   `clusterVolume_rational` have at least one genuine instance to which they apply.
 

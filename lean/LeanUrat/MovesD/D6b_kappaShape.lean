@@ -1,7 +1,8 @@
 /-
 Unit D6b.kappaH_shape  (MovesD campaign, E-phase)
 moves_ref: (L9 — κ_r = h_r/(e_r·STR_r) is shape data).
-deps: D6a.
+deps (blueprint): D6a.  [as-built, 2026-07-30 verify-2 fold-in: imports only Defs;
+D6a's content is inlined — the retained-e lists' nodewise agreement is re-derived here.]
 sketch: getElem?-elim; Matches e/h + D6a.  difficulty: easy.  hypothesis_fields: none.
 -/
 import Mathlib

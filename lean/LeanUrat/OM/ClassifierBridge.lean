@@ -124,7 +124,12 @@ It is a coefficient-level classifier-agreement statement: the genuine order-0 cl
 shown to select EXACTLY the single side `pr` and residual shape `shape` that `InCell` pins via
 vertex-exactness `vOf p f q.1 = q.2`, `SideAbove`, and `polyShape (residualOf p f pr) = shape`.
 Forward needs a Newton-polygon UNIQUENESS lemma (`npSides (boxValSupport f) = [mkSide pr]` from the
-`InCell` vertex/side data) that does not yet exist in-repo; this is the S3 analogue of the order-0
+`InCell` vertex/side data). [Corrected 2026-07-30 verify-2 fold-in: the earlier claim here that this
+lemma "does not yet exist in-repo" is stale — it has since LANDED PROVED downstream:
+`rootSide_eq_of_inCell` (`ClassifierBridgeFiber.lean`, concluding `B.rootSide = some (mkSide pr)`)
+and the full fiber characterization `classify_eq_selfloop_iff` (`ClassifierBridgeFiber2.lean`,
+whose module is no-sorry/axiom/native_decide). Target 1 is therefore no longer an open wall; the
+`hfiber` hypothesis below is retained for modularity.] It is the S3 analogue of the order-0
 `classify_eq_sepShape_iff` (Order0Alpha.lean:64), whose forward half is likewise the whole content.
 
 Given target 1, the rest of the bridge is MECHANICAL and is discharged genuinely below:
@@ -136,8 +141,9 @@ Given target 1, the rest of the bridge is MECHANICAL and is discharged genuinely
   `montes_allorders_of_hnode`'s shape, by transporting `hnode_oneSideShape` along target 2's count
   identity and target 3's `omCount` identity (both proved here; target 3 unconditionally).
 
-We take target 1 as an explicit hypothesis `hfiber` (its precise statement IS the remaining
-obligation; NOT a weakening — targets 2/4's own content is the reduction/transport, and target 3 is
+We take target 1 as an explicit hypothesis `hfiber` (its precise statement was the remaining
+obligation at the time of writing — since discharged downstream, see the correction above; NOT a
+weakening — targets 2/4's own content is the reduction/transport, and target 3 is
 unconditional). -/
 
 /-- **TARGET 2 — the `M8`-typed count identity (given the fiber characterization).**  For a

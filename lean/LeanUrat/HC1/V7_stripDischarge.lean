@@ -16,7 +16,10 @@ V′-KERNEL unit (blueprint §10.1), the (S6a′) coset discharge over an arbitr
 child carrier `D : ChildResData` — for every child weight `ν ∈ 𝒜′` there is ONE coset
 base `b(ν)` whose `F_Qˣ`-coset is realized in `D.Rc` at the forced position `−t′·ν`.
 
-**AXIOM-CLEAN PROOF, pure-σ (no dependency on the sorry-backed V6/S9_transStage).**
+**AXIOM-CLEAN PROOF, pure-σ (no dependency on V6/S9_transStage — those units were
+sorry-backed when this proof landed; STATUS CORRECTED 2026-07-30 verify-2 fold-in:
+`V6_regradeOrbits`, `V6_descentOrbits`, and `S9_transStage` are all since PROVED,
+Lean-core footprints, compiled check. V7's independence from them stands).**
 Because `D.hS5'` pins `D.Rc B`'s scalar's F-image to the PARENT quantity
 `σ.digPrime zbar B`, the whole obligation reduces to the parent digit set at weight `ν`:
 

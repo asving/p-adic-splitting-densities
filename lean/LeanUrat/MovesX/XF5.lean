@@ -3,6 +3,13 @@ Unit XF.5 pigeonMax  [PROVED, fleet 2026-07-28]
 moves_ref: "some θᵢ has v_p(f(θᵢ)) ≥ (D − n·v_p(n))/(n−1)".
 FLAG (blueprint): no sign hypothesis (terms may be negative).
 deps: none (Defs only, for the namespace). difficulty: EASY.
+AS-BUILT (2026-07-30 verify-2 fold-in): DEAD BLUEPRINT UNIT — pigeonMax has ZERO
+consumers corpus-wide (grep over all of LeanUrat/). XF.6 imports this file but
+discharges its pigeonhole with its own private `xf6_argmin` (multiplicative, over ℝ);
+pigeonMax is additive over ℚ and is never called, so this unit's moves_ref duty is
+actually rendered in-file by XF.6, and the MANIFEST's XF.6 deps entry "XF.5" is
+import-only. Kept as a record (like the disclosed MovesSp orphans); deletion or
+re-pointing is a repo-prep candidate.
 -/
 import LeanUrat.MovesX.Defs
 

@@ -10,7 +10,28 @@ import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L2_widthBound
 
 /-!
-# Moves/L5_landVertex — D.8 (VERTEX): the pinned child vertex (MOVES ~2323-2338)
+# Moves/L5_landVertexDigit_repair — DEPRECATED repair vehicle for D.8 (VERTEX digit)
+
+**DEPRECATED (banner added 2026-07-30 verify-2 fold-in).**  The CANONICAL member of this
+pair is `L5_landVertexDigit.lean` (the non-repair file): all live consumers import that
+module (`HC1/K1_vertexPin.lean:8`, `HC1/S16_levelLanding.lean:11` — consumer evidence
+pins canonicity).  Both files declare the byte-identical public theorem
+`L5_landVertexDigit`, sorry-free, footprint Lean-core, so there is no soundness issue —
+but do NOT import both (duplicate name under `namespace LeanUrat.Moves`).  This file is
+retained as the historical repair vehicle: the `vertexCongruence` discharge was proved
+here first and then ported verbatim into the canonical file.  NOTE: the pre-golf
+baseline `lean/notes/golf_baseline_2026-07-30/Moves_axioms.txt` Group A/B headers label
+this pair the OPPOSITE way (this file as canonical Group A); that labeling is WRONG —
+correction of record in `lean/notes/GOLF_CAMPAIGN_2026-07-30.md` (VERIFY-2 FOLD-IN
+CORRECTIONS, 2026-07-30).  Any quarantine sweep must quarantine THIS file, never
+`L5_landVertexDigit.lean`.
+
+(Original header below; its title formerly mis-read "# Moves/L5_landVertex" — a copy-paste
+from the engine file this repair was built on.  Title corrected 2026-07-30.  The prose
+below describes the inherited L5_landVertex ENGINE (the private helpers); this file's
+public theorem is `L5_landVertexDigit`, discharged via `vertexCongruence` further down.)
+
+## Original header — D.8 (VERTEX): the pinned child vertex (MOVES ~2323-2338)
 
 On the descend stratum at `ψ` with multiplicity `μ`, i.e. `f` with `ord_ψ R(f) = μ` (read on the
 `z`-anchored `Ranch`, `R(f) = z^a·Ranch`, `ψ^μ ∥ Ranch`), the `Φ̂`-development of `f` has slot
@@ -35,8 +56,9 @@ The separation hypothesis of the machine is itself discharged by the ψ-order co
 whole argument is self-contained over the `Stage` axioms plus the imported units
 `L3_liftResidual`, `L3_liftMonic`, `L2_widthBound` (manifest-listed dep `L2.psiNotDvd` is
 reproved inline from `L2.widthBound`; the `L3.K1` slot-minimum content is re-derived by the
-machine, so the sorried `L3_K1` unit is NOT imported).  `L3_liftWeight` (proved on disk but
-without a built olean) is reproduced verbatim as a private lemma.
+machine, so the sorried `L3_K1` unit is NOT imported).  `L3_liftWeight` is reproduced verbatim
+as a private lemma — historical rationale: its `.olean` was not yet built when this unit was
+written; it now builds (verified 2026-07-30), duplication tracked as Class-D.
 -/
 
 set_option linter.style.longLine false
@@ -100,7 +122,8 @@ private lemma R_neg' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) :
   have h := σ.hRmul (-1) x (by norm_num) hx
   rwa [neg_one_mul] at h
 
-/-- `R(x^n) = R(x)^n` (the `L0.GRe` content, reproved inline: no olean on disk). -/
+/-- `R(x^n) = R(x)^n` (the `L0.GRe` content, reproved inline — historical: `L0_GRe.olean` was
+not on disk when written; it now builds (2026-07-30), duplication tracked as Class-D). -/
 private lemma R_pow' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
     σ.R (f ^ n) = (σ.R f) ^ n := by
   induction n with
@@ -350,7 +373,8 @@ private lemma pow_order_unique {α : Type*} [Monoid α] (Ψ x : α) (n k : ℕ)
   · exact hn2 (dvd_trans (pow_dvd_pow Ψ (by omega)) hk1)
   · exact hk2 (dvd_trans (pow_dvd_pow Ψ (by omega)) hn1)
 
-/-- **[`L3.liftWeight`, verbatim copy — proved on disk, olean not built]** `w(Φ̂) = e·h·g`. -/
+/-- **[`L3.liftWeight`, verbatim copy — historical: its olean was not built when this was
+written; it now builds (2026-07-30), duplication tracked as Class-D]** `w(Φ̂) = e·h·g`. -/
 private theorem liftWeight_local (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 : 1 ≤ g)
     (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0) :
     σ.w Φhat = (σ.e : ℤ) * σ.h * g := by

@@ -14,10 +14,12 @@ import LeanUrat.MovesT.Defs
 import LeanUrat.MovesV.V7_ctsmDefs
 
 /-!
-# MovesU/DefsLedger — THE TYPED CAPSTONE LEDGER (ROUND-2 RETYPE, 2026-07-31)
+# MovesU/DefsLedger — THE TYPED CAPSTONE LEDGER (ROUND-2 RETYPE, 2026-07-29,
+commit 3728b00 — date corrected 2026-07-30; original record mis-dated 2026-07-31)
 
-STATEMENT-CHANGE WARRANT: the round-2 ratification verdict
-(`/tmp/leanratify_u2/verdict.txt`, REJECT 6 CRITICAL / 1 GAP, 2026-07-31). Every
+STATEMENT-CHANGE WARRANT: the round-2 ratification verdict — durable archive
+`notes/MOVESU_RATIFICATION_ROUNDS_2026-07-30.md` ROUND 2 (verbatim copy of
+`/tmp/leanratify_u2/verdict.txt`; REJECT 6 CRITICAL / 1 GAP, 2026-07-29). Every
 change below quotes its finding:
 
 * CRITICAL 1 ("the claimed residual typed ledger is literally 15 bare `Prop`
@@ -59,8 +61,10 @@ change below quotes its finding:
   (`SolveSeam.rs4_eval`) from `rs4_checksum` + derived definedness via the
   `evalAt` ring hom; the ledger field and `LowerStack` are retired.
 
-ROUND-3 REPAIRS (warrant: `/tmp/finalratify_u/verdict.txt`, REJECT 4 CRITICAL /
-0 GAP). Every change quotes its finding:
+ROUND-3 REPAIRS (executed 2026-07-29, commit 00b03aa; warrant: durable archive
+`notes/MOVESU_RATIFICATION_ROUNDS_2026-07-30.md` ROUND 3, verbatim copy of
+`/tmp/finalratify_u/verdict.txt`, REJECT 4 CRITICAL / 0 GAP). Every change
+quotes its finding:
 
 * CRITICAL 1 ("`chart : ∀ N : ℕ, Fin n → Fin (n * N)` … For `N = 0`, this
   demands `Fin n → Fin 0` … no `TreePin` can exist, hence no `UInstance` can
@@ -371,10 +375,12 @@ structure TreePin (X : ClassifierSpec n p) (F : FiberSeries n p X)
     at-instance"). Exactly the hypothesis rows `MovesT.treeN` consumes, asserted
     at the PINNED tree models `TP.Tm N`/`TP.chart N` (never a free model):
     * `sib` — (SIB)'s COUNT face (`MovesT.SibCount`), the central CL-10 kernel;
-    * `sib_at` — (SIB) at a realized site (`MovesT.SibCountAt`, the 2026-08-01
-      SITE-ENTRANCE keying: entrance es, the site's own branch node ν, ONE site
-      cell c — conditioning and roster; the 2026-07-31 c/cSplit two-keying is
-      retired per the re-ratification verdict), guarded exactly as `SibCount`
+    * `sib_at` — (SIB) at a realized site (`MovesT.SibCountAt`, the SITE-ENTRANCE
+      keying of 2026-07-29, commit 00b03aa (date corrected 2026-07-30; original
+      record mis-dated 2026-08-01): entrance es, the site's own branch node ν,
+      ONE site cell c — conditioning and roster; the earlier same-day c/cSplit
+      two-keying (commit 3728b00; record mis-dated 2026-07-31) is retired per
+      the re-ratification verdict), guarded exactly as `SibCount`
       guards its prescribed-subtree events (each conditioning set a finite
       `ContFiber` at the entrance's child root, or ⊤);
     * `jc_multi` — (JC-multi) at multi-side sites (`MovesT.JCmultiAt`, same
@@ -698,9 +704,20 @@ def ZpReads (zf : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)) (N : ℕ)
     (junk 0 off it), so the bridge's (e,f) are the true invariants exactly on the
     locus where IP-1 (`IsLocalRing (AdjoinRoot h)` for monic ℚ_p-irreducible
     `h` over ℤ_p) holds — an owed instance, no longer an untyped invariant;
-    (iii) `zf_pos` and `zf_factor`'s degree conjunct, the entry positivity and
-    e·f = deg laws, are carried as bridge laws (true theorems of local field
-    theory, not yet Lean-derived). -/
+    (iii) `zf_pos` and `zf_factor`'s degree conjunct are carried as bridge laws
+    (true theorems of local field theory, not yet Lean-derived). SCOPE NOTE
+    (2026-07-30 verify-2 fold-in): the CARRIED degree conjunct is only the
+    MULTISET-AGGREGATE identity `(zfType g).map (fun ef => ef.1 * ef.2) =
+    factors.map Polynomial.natDegree` — with conjunct 3 this equates
+    `factors.map (ramIdx·resDeg)` and `factors.map natDegree` AS MULTISETS,
+    which does NOT pin the pointwise law `ramIdx h * resDeg h = h.natDegree`
+    per factor (a two-factor permutation mismatch, e.g. products {2,3} against
+    degrees {3,2}, satisfies the aggregate). The exact per-factor e·f = deg law
+    is therefore part of the residue to be Lean-derived, NOT what the structure
+    carries; a pointwise retype (∀ h ∈ factors, ramIdx h * resDeg h =
+    h.natDegree) would need a fresh statement-change sign-off (queued in
+    notes/GOLF_CAMPAIGN_2026-07-30.md). Premise-side, so the weaker carried
+    law only broadens the admissible instance class — no soundness break. -/
 structure ZpBridge (X : ClassifierSpec n p) where
   zfType : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)
   zf_pos : ∀ g : Polynomial ℤ_[p], g.Monic → g.natDegree = n →
@@ -753,7 +770,15 @@ end ZpBridgeSection
     `C.hdc` and its (K-SUB) face is `cl11_ksub` OVER THE REAL ROSTER; the CL-13
     WF face is DISCHARGED (`menuWFT_holds`), not carried. (REG-p) is NOT a field
     (the ONE explicit hypothesis, D5/D8). `rs4_eval` is DERIVED
-    (`SolveSeam.rs4_eval`), no longer a field (GAP 1). -/
+    (`SolveSeam.rs4_eval`), no longer a field (GAP 1).
+
+    PARAMETER NOTE (2026-07-30 verify-2 fold-in): the parameter `D : RegData p`
+    is NOT mentioned by any field below (the fields use only X/C/F/S) — it is
+    an INDEXING parameter, not a constraint: it ties the ledger's type to the
+    same roster that `UInstance` supplies to both its `L` and `Dpin` fields, so
+    a `CapstoneLedger` and its `RegPin` are keyed to one `RegData`. Do NOT read
+    the ledger as imposing anything on `D`. Dropping the dead parameter is a
+    statement change (queued in notes/GOLF_CAMPAIGN_2026-07-30.md). -/
 structure CapstoneLedger (n p : ℕ) (C : UCarriers n) (X : ClassifierSpec n p)
     (F : FiberSeries n p X) (S : SolveData n) (D : RegData p) where
   /-- CL-4, TYPED (qualitative form — the note's own operative trace; the a.e.
