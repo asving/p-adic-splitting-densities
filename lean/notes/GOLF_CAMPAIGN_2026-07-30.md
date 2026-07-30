@@ -514,7 +514,7 @@ codex_scaffold.jsonl (session-local).
 
 PHASE 4 OUTCOME: ACCEPT (12/13 clean on pass 1; the 13th ratified via pass 2 + record).
 
-## R1 EXECUTION RECORD (2026-07-30) — QUEUED FOR ASVIN SIGN-OFF, NOT EXECUTED
+## R1 EXECUTION RECORD (2026-07-30) — SIGNED OFF BY ASVIN AND EXECUTED (see below)
 
 Recon (fresh agent, tree untouched): the sorried private `L5_landTwoSided_missing`
 (L6_measureExact_R4.lean:145) concludes over DefsCore.LandingCylinder (DefsCore.lean:299)
@@ -553,3 +553,15 @@ The same review should cover the two orchestrator ratifications made this sessio
 under campaign precedent: (1) the PHASE 4 recentering_scaffold ratification (new
 public lemma, one proved-generalization conjunct — see PHASE 4 record above);
 (2) the wave-B provenance repair on Rs2Unique (prose only).
+
+### R1 EXECUTED (2026-07-30, same day — sign-off: Asvin, "R1 sign-off granted, execute the re-point")
+
+One file changed (L6_measureExact_R4.lean, +44/−23): hexact added after hμN;
+hcylN/hcylM retyped over LandingCylinderL; the sorried DefsCore-typed private DELETED,
+successor L5_landTwoSided_consumed proved by one-term application of the ratified
+repair theorem; header GAP CLOSED + ANOMALY RESOLVED with the full record; hzN/hzM
+docstring accuracy fixed (retained in signature, not consumed — derivable from
+hstratN/hstratM at f = 0). ScratchS17 needed no edit (references in comments only).
+Builds: module 8576 green, ScratchS17 8586 green, FULL build 8579 green.
+#print axioms L6_measureExact = [propext, Classical.choice, Quot.sound] — the sorryAx
+taint is GONE; AxChk_baseline census re-run clean. FENCED-SORRY COUNT: 10 → 9.
