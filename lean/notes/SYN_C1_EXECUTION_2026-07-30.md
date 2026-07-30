@@ -87,3 +87,16 @@ SYN-E0 §6 lists the remaining micro-copy files OUTSIDE the ratified M1–M9 sco
 (L5_landTransport_R4, L5_realDomination_R3, L5_recSubst_R4, L4_TRANSviii_b_R4,
 L2_slotDecomp_R4; HC1 T3/T4/T7/S5/S9c/S11a/V2/K1_vertexPin; HK05 [concurrent
 agent's]). Fold into the BP5 sweep unit (plan N8) with this cluster as the template.
+
+## Codex per-conjunct equivalence pass (Phase-4 protocol) — 5/5 CLEAN
+
+Charge: quote-and-classify over the statement-level packet (pack law transcription;
+ReadFrame.pack conjunct wiring; decomp_machine old/new/re-export triple; call-site
+equivalences H1 w_lift→w_Phat, H2 psiNotDvd hg1-drop, H3 S10 w_sum_ge delegation,
+H4 v10_R_pow guard-drop, H5 wiii_sum_ge→ult_sum_ge; the four verbatim-statement
+claims). Verdicts: 1 CLEAN (exact transcription, hR0 omission intentional and
+recorded), 2 CLEAN (projections .2.1/.2.2.1/.2.2.2.1/.2.2.2.2.1 correct, shapes exact),
+3 CLEAN (re-export statement byte-identical; derivation conclusion identical; unused
+(d,hd) binders statement-level sound), 4 CLEAN (all five call-site claims), 5 CLEAN
+(verbatim claims true). Session 019fb529-7544-7dd1-92c2-82c67710d921, model
+gpt-5.6-sol, output /tmp/c1_codex_out.txt (this summary is the durable record).

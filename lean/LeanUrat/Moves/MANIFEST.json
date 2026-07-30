@@ -47,7 +47,9 @@
     {
       "id": "L0.GRd",
       "file": "lean/LeanUrat/Moves/L0_GRd.lean",
-      "deps": ["L0.GRc"],
+      "deps": [
+        "L0.GRc"
+      ],
       "layer": 0,
       "statement": "theorem L0_GRd {K F : Type*} [Field K] [Field F] (φ : K →+* F) (zbar : Fˣ) {x : LaurentPolynomial K} (hx : IsMonomialUnit x) : LaurentPolynomial.eval₂ φ zbar x ≠ 0",
       "moves_ref": "D.6 dig'(monomial) ∈ F'ˣ; MOVES ~2149-2151",
@@ -117,7 +119,10 @@
     {
       "id": "L1.baseWeight",
       "file": "lean/LeanUrat/Moves/L1_baseWeight.lean",
-      "deps": ["L1.gaussVal", "L0.FactA_exists"],
+      "deps": [
+        "L1.gaussVal",
+        "L0.FactA_exists"
+      ],
       "layer": 1,
       "statement": "theorem L1_baseWeight_valuation {p : ℕ} [Fact p.Prime] (φ : Polynomial ℤ_[p]) (e h : ℕ) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : baseWeight φ e h (f * g) = baseWeight φ e h f + baseWeight φ e h g",
       "moves_ref": "§A.1 / B1.1 the base valuation w = min_i(e·v(aᵢ)+i·h); MOVES ~243, 341-349, 1995-1999",
@@ -127,7 +132,9 @@
     {
       "id": "L1.baseResidual",
       "file": "lean/LeanUrat/Moves/L1_baseResidual.lean",
-      "deps": ["L1.baseWeight"],
+      "deps": [
+        "L1.baseWeight"
+      ],
       "layer": 1,
       "statement": "theorem L1_baseResidual_laws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (K0 : Subfield F) (φ : Polynomial ℤ_[p]) (e h : ℕ) (f g : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : g ≠ 0) : baseResidual K0 φ e h (f * g) = baseResidual K0 φ e h f * baseResidual K0 φ e h g",
       "moves_ref": "§A.1-A.2 / B1.1-B1.2: gr A ≅ F_Q[π,y], R multiplicative; MOVES ~247-279, D.2(S4)(S5)",
@@ -137,7 +144,13 @@
     {
       "id": "L1.baseStage_exists",
       "file": "lean/LeanUrat/Moves/L1_baseStage_exists.lean",
-      "deps": ["L1.gaussVal", "L1.baseWeight", "L1.baseResidual", "L0.FactA_exists", "L0.FactB_unique"],
+      "deps": [
+        "L1.gaussVal",
+        "L1.baseWeight",
+        "L1.baseResidual",
+        "L0.FactA_exists",
+        "L0.FactB_unique"
+      ],
       "layer": 1,
       "statement": "theorem L1_baseStage_exists {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (φ : Polynomial ℤ_[p]) (hmon : φ.Monic) (hdeg : 1 ≤ φ.natDegree) (e h : ℕ) (he : 1 ≤ e) (hh : 1 ≤ h) (hcop : Nat.gcd e h = 1) (hirred : Irreducible (φ.map (PadicInt.toZMod : ℤ_[p] →+* ZMod p))) (K0 : Subfield F) (hcardK0 : Nat.card ↥K0 = p ^ φ.natDegree) : ∃ σ : Stage p F, σ.Φ = φ ∧ σ.e = e ∧ σ.h = h ∧ σ.K = K0 ∧ σ.FQ = K0",
       "moves_ref": "D.2 the base stage (= accepted §A/§B1 re-expressed), all of (S1)-(S6); MOVES ~1995-2014",
@@ -147,7 +160,9 @@
     {
       "id": "L1.base_nonvacuity_gate",
       "file": "lean/LeanUrat/Moves/L1_base_nonvacuity_gate.lean",
-      "deps": ["L1.baseStage_exists"],
+      "deps": [
+        "L1.baseStage_exists"
+      ],
       "layer": 1,
       "statement": "theorem L1_base_gate : ∃ σ : Stage 2 (GaloisField 2 2), σ.Φ = (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial ℤ_[2]) ∧ σ.e = 1 ∧ σ.h = 1",
       "moves_ref": "Non-vacuity gate mirroring the repo gate discipline (DevBijection Case-E φ = x²+x+1 at p=2); MOVES D.12",
@@ -167,7 +182,9 @@
     {
       "id": "L2.keyResidualPow",
       "file": "lean/LeanUrat/Moves/L2_keyResidualPow.lean",
-      "deps": ["L0.GRe"],
+      "deps": [
+        "L0.GRe"
+      ],
       "layer": 2,
       "statement": "theorem L2_keyResidualPow {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (j : ℕ) : σ.R (σ.Φ ^ j) = LaurentPolynomial.T (σ.s * j)",
       "moves_ref": "D.3(b) R(Φ)=z^s literal monomial identity; MOVES ~2027-2039",
@@ -177,7 +194,9 @@
     {
       "id": "L2.strideRule",
       "file": "lean/LeanUrat/Moves/L2_strideRule.lean",
-      "deps": ["L2.keyResidualPow"],
+      "deps": [
+        "L2.keyResidualPow"
+      ],
       "layer": 2,
       "statement": "theorem L2_strideRule {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBc : inC σ.Φ B) (j : ℕ) : σ.R (B * σ.Φ ^ j) = σ.R B * LaurentPolynomial.T (σ.s * j)",
       "moves_ref": "D.3(c) stride rule R(B_j Φ^j) = dig(B_j)·z^{js}; MOVES ~2041-2049",
@@ -187,7 +206,11 @@
     {
       "id": "L2.slotDecomp",
       "file": "lean/LeanUrat/Moves/L2_slotDecomp.lean",
-      "deps": ["L2.strideRule", "L2.anchorCong", "L0.GRb"],
+      "deps": [
+        "L2.strideRule",
+        "L2.anchorCong",
+        "L0.GRb"
+      ],
       "layer": 2,
       "statement": "theorem L2_slotDecomp {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (γ : ℤ) (hzero : ∀ j, N ≤ j → B j = 0) (hpiece : ∀ j, j < N → B j ≠ 0 → σ.w (B j * σ.Φ ^ j) = γ) (hsum : (∑ j ∈ Finset.range N, B j * σ.Φ ^ j) ≠ 0) (hsumw : σ.w (∑ j ∈ Finset.range N, B j * σ.Φ ^ j) = γ) : σ.R (∑ j ∈ Finset.range N, B j * σ.Φ ^ j) = ∑ j ∈ Finset.range N, σ.R (B j * σ.Φ ^ j)",
       "moves_ref": "D.2 (S3) slot decomposition / Y transcendence, DERIVED (audit DEF-1 fix — S3 is now genuine content, not absent); MOVES ~1959-1962, 2057-2063",
@@ -197,7 +220,12 @@
     {
       "id": "L2.widthBound",
       "file": "lean/LeanUrat/Moves/L2_widthBound.lean",
-      "deps": ["L2.anchorCong", "L2.strideRule", "L2.slotDecomp", "L0.GRb"],
+      "deps": [
+        "L2.anchorCong",
+        "L2.strideRule",
+        "L2.slotDecomp",
+        "L0.GRb"
+      ],
       "layer": 2,
       "statement": "theorem L2_widthBound {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (g : ℕ) (hg : 1 ≤ g) (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBdeg : B.natDegree < σ.e * g * σ.Φ.natDegree) : ∃ a : ℤ, ∀ k ∈ (σ.R B).support, a ≤ k ∧ k < a + g",
       "moves_ref": "D.3(d) width bound: R_anch(B) polynomial of degree < g for B ∈ Ĉ; MOVES ~2051-2055",
@@ -207,7 +235,10 @@
     {
       "id": "L2.psiNotDvd",
       "file": "lean/LeanUrat/Moves/L2_psiNotDvd.lean",
-      "deps": ["L2.widthBound", "L0.GRg"],
+      "deps": [
+        "L2.widthBound",
+        "L0.GRg"
+      ],
       "layer": 2,
       "statement": "theorem L2_psiNotDvd {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBdeg : B.natDegree < σ.e * g * σ.Φ.natDegree) : ¬ (Polynomial.toLaurent ψ ∣ σ.R B)",
       "moves_ref": "D.3(d) ψ ∤ R(B) for B ∈ Ĉ∖0; MOVES ~2053-2055",
@@ -247,7 +278,10 @@
     {
       "id": "L2.iaugStep",
       "file": "lean/LeanUrat/Moves/L2_iaugStep.lean",
-      "deps": ["L3.K1", "L5.landBox"],
+      "deps": [
+        "L3.K1",
+        "L5.landBox"
+      ],
       "layer": 2,
       "statement": "theorem L2_iaugStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) (j : ℕ) (hj : j < μ) (hjnz : B j ≠ 0) : (σ.e : ℤ) * σ.h * g * ((μ : ℤ) - j) < σ.w (B j) - σ.w (B μ)",
       "moves_ref": "D.4 (I-aug) after increment: the landing-box chord slope exceeds w(Φ̂)=ehg (in the PARENT w); MOVES ~2085-2094",
@@ -257,7 +291,9 @@
     {
       "id": "L2.iaugRecenter",
       "file": "lean/LeanUrat/Moves/L2_iaugRecenter.lean",
-      "deps": ["L5.recRSland"],
+      "deps": [
+        "L5.recRSland"
+      ],
       "layer": 2,
       "statement": "theorem L2_iaugRecenter {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecentering σ σ' cc tt) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment σ'.Φ f B N) (j : ℕ) (hj : j < μ) (hjnz : B j ≠ 0) (hbox : σ'.w f < σ'.w (B j) + (j : ℤ) * σ'.w σ'.Φ) (hvtx : σ'.w (B μ) + (μ : ℤ) * σ'.w σ'.Φ = σ'.w f) : ((μ : ℤ) - j) * σ'.w σ'.Φ < σ'.w (B j) - σ'.w (B μ)",
       "moves_ref": "D.4 (I-aug) after recentering: the SAME chord inequality in the primed frame (v = v'); MOVES ~2095-2098",
@@ -287,7 +323,10 @@
     {
       "id": "L3.liftWeight",
       "file": "lean/LeanUrat/Moves/L3_liftWeight.lean",
-      "deps": ["L3.K1", "L3.liftMonic"],
+      "deps": [
+        "L3.K1",
+        "L3.liftMonic"
+      ],
       "layer": 3,
       "statement": "theorem L3_liftWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg1 : 1 ≤ g) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦne : Φhat ≠ 0) : σ.w Φhat = (σ.e : ℤ) * σ.h * g",
       "moves_ref": "D.5 EQUAL WEIGHTS: w(Φ̂) = ehg, a THEOREM (DEF-9); MOVES ~2121-2122",
@@ -297,7 +336,10 @@
     {
       "id": "L3.liftResidual",
       "file": "lean/LeanUrat/Moves/L3_liftResidual.lean",
-      "deps": ["L2.slotDecomp", "L0.GRb"],
+      "deps": [
+        "L2.slotDecomp",
+        "L0.GRb"
+      ],
       "layer": 3,
       "statement": "theorem L3_liftResidual {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) : σ.R Φhat = LaurentPolynomial.T (- σ.t * (σ.h : ℤ) * (g : ℤ)) * Polynomial.toLaurent ψ",
       "moves_ref": "D.5 R(Φ̂) = z^{m̂}·ψ(z), m̂ = −thg, a THEOREM proved FROM the displayed formula (DEF-9); MOVES ~2123-2129",
@@ -307,7 +349,12 @@
     {
       "id": "L3.K1",
       "file": "lean/LeanUrat/Moves/L3_K1.lean",
-      "deps": ["L3.liftResidual", "L2.psiNotDvd", "L0.GRf", "L0.GRe"],
+      "deps": [
+        "L3.liftResidual",
+        "L2.psiNotDvd",
+        "L0.GRf",
+        "L0.GRe"
+      ],
       "layer": 3,
       "statement": "theorem L3_K1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (hmon : ψ.Monic) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) : K1At σ.w Φhat ((σ.e : ℤ) * σ.h * g)",
       "moves_ref": "D.5 Lemma K1(Φ̂/w); MOVES ~2131-2142",
@@ -317,7 +364,12 @@
     {
       "id": "L3.digPrime_nonzero",
       "file": "lean/LeanUrat/Moves/L3_digPrime_nonzero.lean",
-      "deps": ["L2.psiNotDvd", "L2.widthBound", "L0.GRg", "L0.GRd"],
+      "deps": [
+        "L2.psiNotDvd",
+        "L2.widthBound",
+        "L0.GRg",
+        "L0.GRd"
+      ],
       "layer": 3,
       "statement": "theorem L3_digPrime_nonzero {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBdeg : B.natDegree < σ.e * g * σ.Φ.natDegree) : σ.digPrime zbar B ≠ 0",
       "moves_ref": "D.6 dig'(B) ∈ F'ˣ (nonzero) for B ∈ Ĉ∖0; MOVES ~2149-2150",
@@ -327,7 +379,11 @@
     {
       "id": "L3.DIV",
       "file": "lean/LeanUrat/Moves/L3_DIV.lean",
-      "deps": ["L3.K1", "L3.digPrime_nonzero", "L3.liftResidual"],
+      "deps": [
+        "L3.K1",
+        "L3.digPrime_nonzero",
+        "L3.liftResidual"
+      ],
       "layer": 3,
       "statement": "theorem L3_DIV {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (B B'' : Polynomial ℤ_[p]) (hB : B ≠ 0) (hB'' : B'' ≠ 0) (hBd : B.natDegree < σ.e * g * σ.Φ.natDegree) (hB''d : B''.natDegree < σ.e * g * σ.Φ.natDegree) (Rdev Q : Polynomial ℤ_[p]) (hdiv : B * B'' = Q * Φhat + Rdev) (hRd : Rdev.natDegree < σ.e * g * σ.Φ.natDegree) : Rdev ≠ 0 ∧ σ.w Rdev = σ.w B + σ.w B'' ∧ σ.digPrime zbar Rdev = σ.digPrime zbar B * σ.digPrime zbar B''",
       "moves_ref": "D.6 Lemma DIV: dig' multiplicative + exact remainder weight; MOVES ~2152-2175",
@@ -337,7 +393,9 @@
     {
       "id": "L4.TRANSi",
       "file": "lean/LeanUrat/Moves/L4_TRANSi.lean",
-      "deps": ["L3.DIV"],
+      "deps": [
+        "L3.DIV"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSi {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (w' : Polynomial ℤ_[p] → ℤ) (hw' : IsSlotMinWeight w' Φhat e' h' σ.w) (hiaug : IAug σ Φhat e' h') (f gg : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : gg ≠ 0) (hfg : f * gg ≠ 0) : w' f + w' gg ≤ w' (f * gg)",
       "moves_ref": "D.7(i) submultiplicativity of w' at the level of A; MOVES ~2184-2190",
@@ -357,7 +415,12 @@
     {
       "id": "L4.TRANSiii",
       "file": "lean/LeanUrat/Moves/L4_TRANSiii.lean",
-      "deps": ["L4.TRANSi", "L4.TRANSii", "L3.DIV", "L3.K1"],
+      "deps": [
+        "L4.TRANSi",
+        "L4.TRANSii",
+        "L3.DIV",
+        "L3.K1"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSiii {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hmon : Φhat.Monic) (e' h' : ℕ) (hcop : Nat.gcd e' h' = 1) (w' : Polynomial ℤ_[p] → ℤ) (hw' : IsSlotMinWeight w' Φhat e' h' σ.w) (hiaug : IAug σ Φhat e' h') (f gg : Polynomial ℤ_[p]) (hf : f ≠ 0) (hg : gg ≠ 0) (hfg : f * gg ≠ 0) : w' (f * gg) = w' f + w' gg",
       "moves_ref": "D.7(iii) w' is a valuation (gr_{w'} a domain); MOVES ~2196-2201",
@@ -367,7 +430,9 @@
     {
       "id": "L4.TRANSiv",
       "file": "lean/LeanUrat/Moves/L4_TRANSiv.lean",
-      "deps": ["L3.digPrime_nonzero"],
+      "deps": [
+        "L3.digPrime_nonzero"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSiv {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (hΦdeg : 0 < σ.Φ.natDegree) : σ.digPrime zbar σ.Φ ≠ 0",
       "moves_ref": "D.7(iv) unit survival: dig'(ũ) ∈ F'ˣ for the outgoing key Φ ∈ U'; MOVES ~2202-2212",
@@ -377,7 +442,10 @@
     {
       "id": "L4.TRANSv",
       "file": "lean/LeanUrat/Moves/L4_TRANSv.lean",
-      "deps": ["L4.TRANSviii_b", "L3.DIV"],
+      "deps": [
+        "L4.TRANSviii_b",
+        "L3.DIV"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSv {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (a : F) (ha : a ∈ σ.nextField zbar) : ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC Φhat B ∧ σ.digPrime zbar B = a",
       "moves_ref": "D.7(v) the degree-0 coefficient field is F' = K⟮z̄⟯ (large-weight surjectivity); MOVES ~2213-2240",
@@ -387,7 +455,9 @@
     {
       "id": "L4.TRANSvi",
       "file": "lean/LeanUrat/Moves/L4_TRANSvi.lean",
-      "deps": ["L4.TRANSstage"],
+      "deps": [
+        "L4.TRANSstage"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSvi {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (hΦ' : σ'.Φ = Φhat) : σ'.R σ'.Φ = LaurentPolynomial.T σ'.s",
       "moves_ref": "D.7(vi) fixed-Y'-exponent lines, z' = V'^{−h'}·Y'^{e'}, L'₀ = F'[z'^{±1}]; MOVES ~2241-2257",
@@ -397,7 +467,9 @@
     {
       "id": "L4.TRANSvii",
       "file": "lean/LeanUrat/Moves/L4_TRANSvii.lean",
-      "deps": ["L4.TRANSstage"],
+      "deps": [
+        "L4.TRANSstage"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSvii {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ' : Stage p F) (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBc : inC σ'.Φ B) : ∃ c : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C (c : ↥σ'.K) * LaurentPolynomial.T (- σ'.t * σ'.wPrev B)",
       "moves_ref": "D.7(vii) T', S5': coefficient digit is a monomial in the new frame at the correct scale; MOVES ~2258-2267",
@@ -407,7 +479,9 @@
     {
       "id": "L4.TRANSviii_a",
       "file": "lean/LeanUrat/Moves/L4_TRANSviii_a.lean",
-      "deps": ["L5.realRecursion"],
+      "deps": [
+        "L5.realRecursion"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSviii_a {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hΦdeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree) (W' : ℤ) : (∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ.w B = W') ↔ (∃ (γ : ℤ) (j : ℕ), (∃ C, C ≠ 0 ∧ inC σ.Φ C ∧ σ.w C = γ) ∧ j < σ.e * g ∧ W' = γ + (j : ℤ) * σ.h)",
       "moves_ref": "D.7(viii) S6a': exactness of the new index set 𝒜' = {γ+jh : γ ∈ 𝒜, 0 ≤ j < eg}; MOVES ~2272-2284",
@@ -417,7 +491,11 @@
     {
       "id": "L4.TRANSviii_b",
       "file": "lean/LeanUrat/Moves/L4_TRANSviii_b.lean",
-      "deps": ["L2.anchorCong", "L3.digPrime_nonzero", "L3.DIV"],
+      "deps": [
+        "L2.anchorCong",
+        "L3.digPrime_nonzero",
+        "L3.DIV"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSviii_b {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (ν : ℤ) (hthr : σ.wPrev σ.Φ < ν) (a : F) (ha : a ∈ σ.nextField zbar) : ∃ B, B ≠ 0 ∧ inC Φhat B ∧ σ.digPrime zbar B = a",
       "moves_ref": "D.7(viii) S6b': the OFFSET P-LIFT — full NEXT-field (K⟮z̄⟯) scalars above the clean threshold wPrev Φ; MOVES ~2285-2311",
@@ -427,7 +505,18 @@
     {
       "id": "L4.TRANSstage",
       "file": "lean/LeanUrat/Moves/L4_TRANSstage.lean",
-      "deps": ["L4.TRANSi", "L4.TRANSii", "L4.TRANSiii", "L4.TRANSiv", "L4.TRANSv", "L4.TRANSviii_a", "L4.TRANSviii_b", "L3.K1", "L3.DIV", "L2.iaugStep"],
+      "deps": [
+        "L4.TRANSi",
+        "L4.TRANSii",
+        "L4.TRANSiii",
+        "L4.TRANSiv",
+        "L4.TRANSv",
+        "L4.TRANSviii_a",
+        "L4.TRANSviii_b",
+        "L3.K1",
+        "L3.DIV",
+        "L2.iaugStep"
+      ],
       "layer": 4,
       "statement": "theorem L4_TRANSstage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hcop' : Nat.gcd e' h' = 1) (hiaug : IAug σ Φhat e' h') : ∃ σ' : Stage p F, σ'.Φ = Φhat ∧ σ'.e = e' ∧ σ'.h = h' ∧ σ'.K = σ.nextField zbar ∧ σ'.FQ = σ.FQ ∧ σ.K ≤ σ'.K ∧ IsSlotMinWeight σ'.w Φhat e' h' σ.w",
       "moves_ref": "D.7 Proposition TRANS — the next stage, CONSTRUCTED with GENUINE residue growth (the induction closes); MOVES ~2177-2314",
@@ -437,7 +526,11 @@
     {
       "id": "L5.landBox",
       "file": "lean/LeanUrat/Moves/L5_landBox.lean",
-      "deps": ["L3.K1", "L3.liftResidual", "L2.psiNotDvd"],
+      "deps": [
+        "L3.K1",
+        "L3.liftResidual",
+        "L2.psiNotDvd"
+      ],
       "layer": 5,
       "statement": "theorem L5_landBox {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) (j : ℕ) (hj : j < μ) (hjnz : B j ≠ 0) : σ.w f < σ.w (B j) + (j : ℤ) * ((σ.e : ℤ) * σ.h * g)",
       "moves_ref": "D.8 (BOX): slots j < μ are non-minimizing; MOVES ~2318-2337",
@@ -447,7 +540,11 @@
     {
       "id": "L5.landVertex",
       "file": "lean/LeanUrat/Moves/L5_landVertex.lean",
-      "deps": ["L3.K1", "L3.liftResidual", "L2.psiNotDvd"],
+      "deps": [
+        "L3.K1",
+        "L3.liftResidual",
+        "L2.psiNotDvd"
+      ],
       "layer": 5,
       "statement": "theorem L5_landVertex {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) : σ.w (B μ) + (μ : ℤ) * ((σ.e : ℤ) * σ.h * g) = σ.w f ∧ B μ ≠ 0",
       "moves_ref": "D.8 (VERTEX): slot μ minimizing, the pinned child vertex; MOVES ~2323-2338",
@@ -457,7 +554,11 @@
     {
       "id": "L5.landVertexDigit",
       "file": "lean/LeanUrat/Moves/L5_landVertexDigit.lean",
-      "deps": ["L5.landVertex", "L3.liftResidual", "L0.GRc"],
+      "deps": [
+        "L5.landVertex",
+        "L3.liftResidual",
+        "L0.GRc"
+      ],
       "layer": 5,
       "statement": "theorem L5_landVertexDigit {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype (zbar : F) ψ = 0) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) : ∃ q : LaurentPolynomial ↥σ.K, σ.R f = (Polynomial.toLaurent ψ) ^ μ * q ∧ ¬ (Polynomial.toLaurent ψ ∣ q) ∧ σ.digPrime zbar (B μ) = ((zbar ^ ((μ : ℤ) * σ.t * (σ.h : ℤ) * (g : ℤ)) : Fˣ) : F) * LaurentPolynomial.eval₂ σ.K.subtype zbar q",
       "moves_ref": "D.8 (VERTEX) explicit digit with the normalization unit z̄^{−μm̂} [pass-10 finding 2]; MOVES ~2323-2338, 2639-2645",
@@ -467,7 +568,11 @@
     {
       "id": "L5.landTransport",
       "file": "lean/LeanUrat/Moves/L5_landTransport.lean",
-      "deps": ["L3.K1", "L3.liftResidual", "L0.GRe"],
+      "deps": [
+        "L3.K1",
+        "L3.liftResidual",
+        "L0.GRe"
+      ],
       "layer": 5,
       "statement": "theorem L5_landTransport {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (f f' : Polynomial ℤ_[p]) (hf : f ≠ 0) (hf' : f' ≠ 0) (B B' : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hd : IsDevelopment Φhat f B N) (hd' : IsDevelopment Φhat f' B' N) (hslot : ∀ j, j < N → σ.R (B j) = σ.R (B' j)) : σ.R f = σ.R f'",
       "moves_ref": "D.8 (TRANSPORT): the triangular bijection is deterministic (slot residuals determine R(f)); MOVES ~2326-2358",
@@ -477,7 +582,11 @@
     {
       "id": "L5.landTwoSided",
       "file": "lean/LeanUrat/Moves/L5_landTwoSided.lean",
-      "deps": ["L5.landBox", "L5.landVertex", "L0.FactB_unique"],
+      "deps": [
+        "L5.landBox",
+        "L5.landVertex",
+        "L0.FactB_unique"
+      ],
       "layer": 5,
       "statement": "theorem L5_landTwoSided {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hmon : ψ.Monic) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (μ : ℕ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) : OrdPsiPoly ψ Ranch μ ↔ ((∀ j, j < μ → B j ≠ 0 → σ.w f < σ.w (B j) + (j : ℤ) * ((σ.e : ℤ) * σ.h * g)) ∧ B μ ≠ 0 ∧ σ.w (B μ) + (μ : ℤ) * ((σ.e : ℤ) * σ.h * g) = σ.w f)",
       "moves_ref": "D.8 two-sided: stratum (ord_ψ = μ on the anchored polynomial) ⟺ landing cylinder (BOX + VERTEX); MOVES ~2359-2371",
@@ -487,7 +596,9 @@
     {
       "id": "L5.realRecursion",
       "file": "lean/LeanUrat/Moves/L5_realRecursion.lean",
-      "deps": ["L2.strideRule"],
+      "deps": [
+        "L2.strideRule"
+      ],
       "layer": 5,
       "statement": "theorem L5_realRecursion {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (hΦdeg : Φhat.natDegree = σ.e * g * σ.Φ.natDegree) (W : ℤ) : (∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC Φhat B ∧ σ.w B = W) ↔ (∃ (j : ℕ), j < σ.e * g ∧ (W - (j : ℤ) * σ.h) ∈ (fun ν => (σ.e : ℤ) * ν) '' σ.weightSet)",
       "moves_ref": "D.9(a) Lemma REAL recursion: 𝒲_Ĉ = ⋃_{0≤j<eg}(𝒲 + j·h); MOVES ~2385-2387",
@@ -497,7 +608,9 @@
     {
       "id": "L5.realCofin",
       "file": "lean/LeanUrat/Moves/L5_realCofin.lean",
-      "deps": ["L5.realRecursion"],
+      "deps": [
+        "L5.realRecursion"
+      ],
       "layer": 5,
       "statement": "theorem L5_realCofin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (g : ℕ) (hg : 1 ≤ g) (fr : ℤ) (hWS : ∀ ν : ℤ, fr ≤ ν → ν ∈ σ.weightSet) (W : ℤ) (hWge : fr ≤ W) : W ∈ σ.weightSet",
       "moves_ref": "D.9(b) cofiniteness: the (parent-scale) weight set is cofinite above f_r; MOVES ~2388-2391",
@@ -507,7 +620,10 @@
     {
       "id": "L5.realDomination",
       "file": "lean/LeanUrat/Moves/L5_realDomination.lean",
-      "deps": ["L2.iaugStep", "L5.realCofin"],
+      "deps": [
+        "L2.iaugStep",
+        "L5.realCofin"
+      ],
       "layer": 5,
       "statement": "theorem L5_realDomination {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (fr : ℤ) (hbase : σ.wPrev σ.Φ ≤ fr) (hnext : ∀ ν : ℤ, fr ≤ ν → ν ∈ σ.weightSet) : (σ.h : ℤ) > (σ.e : ℤ) * fr",
       "moves_ref": "D.9(c) per-stage domination h_r > e_r·f_r; MOVES ~2392-2397",
@@ -527,7 +643,9 @@
     {
       "id": "L5.recSpecies",
       "file": "lean/LeanUrat/Moves/L5_recSpecies.lean",
-      "deps": ["L5.realConclusion"],
+      "deps": [
+        "L5.realConclusion"
+      ],
       "layer": 5,
       "statement": "theorem L5_recSpecies {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hcop : Nat.gcd e' h' = 1) (w' : Polynomial ℤ_[p] → ℤ) (hw' : IsSlotMinWeight w' Φhat e' h' σ.w) : (∃ tt : Polynomial ℤ_[p], inC Φhat tt ∧ tt ≠ 0 ∧ w' tt = w' Φhat) ↔ e' = 1",
       "moves_ref": "D.10 species lemma: recenterings exist exactly at e_read = 1 sides; MOVES ~2410-2413",
@@ -547,7 +665,9 @@
     {
       "id": "L5.recLiftIndep",
       "file": "lean/LeanUrat/Moves/L5_recLiftIndep.lean",
-      "deps": ["L5.recSubst"],
+      "deps": [
+        "L5.recSubst"
+      ],
       "layer": 5,
       "statement": "theorem L5_recLiftIndep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ1 σ2 : Stage p F) (cc : ↥σ.K) (t1 t2 : Polynomial ℤ_[p]) (hrec1 : IsRecentering σ σ1 cc t1) (hrec2 : IsRecentering σ σ2 cc t2) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (zbar : Fˣ) : σ1.digPrime zbar f = σ2.digPrime zbar f",
       "moves_ref": "D.10 lift independence (graded scope): two admissible lifts give the same residuals at the read heights; MOVES ~2433-2445",
@@ -557,7 +677,9 @@
     {
       "id": "L5.recSubst",
       "file": "lean/LeanUrat/Moves/L5_recSubst.lean",
-      "deps": ["L2.P6i"],
+      "deps": [
+        "L2.P6i"
+      ],
       "layer": 5,
       "statement": "theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecentering σ σ' cc tt) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (zbar zbar' : Fˣ) (hshift : (zbar : F) = (zbar' : F) + ((cc : ↥σ.K) : F)) : σ'.digPrime zbar' f = σ.digPrime zbar f",
       "moves_ref": "D.10 the substitution identity R'(f)(z') = R(f)(z' + c̃), evaluation level; MOVES ~2447-2469",
@@ -567,7 +689,10 @@
     {
       "id": "L5.recRSland",
       "file": "lean/LeanUrat/Moves/L5_recRSland.lean",
-      "deps": ["L5.recSubst", "L5.landTwoSided"],
+      "deps": [
+        "L5.recSubst",
+        "L5.landTwoSided"
+      ],
       "layer": 5,
       "statement": "theorem L5_recRSland {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecentering σ σ' cc tt) (μ : ℕ) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (a : ℤ) (Ranch : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a Ranch) (a' : ℤ) (Ranch' : Polynomial ↥σ'.K) (hanch' : HasAnchorK (σ'.R f) a' Ranch') : OrdPsiPoly (Polynomial.X - Polynomial.C cc) Ranch μ ↔ (a' = (μ : ℤ))",
       "moves_ref": "D.10 RS-landing two-sided: ord_{z−c̃} = the primed z'-anchor exponent a' = μ; MOVES ~2471-2476",
@@ -577,7 +702,10 @@
     {
       "id": "L5.recTRANSRS",
       "file": "lean/LeanUrat/Moves/L5_recTRANSRS.lean",
-      "deps": ["L5.recVV", "L5.recSubst"],
+      "deps": [
+        "L5.recVV",
+        "L5.recSubst"
+      ],
       "layer": 5,
       "statement": "theorem L5_recTRANSRS {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (htc : inC σ.Φ tt) (httne : tt ≠ 0) (htw : σ.w tt = σ.w σ.Φ) (htdig : σ.R tt = LaurentPolynomial.C cc * LaurentPolynomial.T (0 : ℤ)) : ∃ σ' : Stage p F, IsRecentering σ σ' cc tt ∧ σ'.Φ = σ.Φ - tt",
       "moves_ref": "D.10 TRANS-RS: the recentered stage is a FULL stage (S1-S6), CONSTRUCTED; MOVES ~2478-2487",
@@ -587,7 +715,9 @@
     {
       "id": "L6.moveReduceCommute",
       "file": "lean/LeanUrat/Moves/L6_moveReduceCommute.lean",
-      "deps": ["L0.FactB_unique"],
+      "deps": [
+        "L0.FactB_unique"
+      ],
       "layer": 6,
       "statement": "theorem L6_moveReduceCommute {p : ℕ} [Fact p.Prime] (Φhat f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]) (N M : ℕ) (hdev : IsDevelopment Φhat f B N) : IsDevelopment (Φhat.map (PadicInt.toZModPow M)) (f.map (PadicInt.toZModPow M)) (fun j => (B j).map (PadicInt.toZModPow M)) N",
       "moves_ref": "§0 Fact A: development commutes with reduction mod p^M; MOVES ~35-46, D.11",
@@ -597,7 +727,10 @@
     {
       "id": "L6.moveAffineBij",
       "file": "lean/LeanUrat/Moves/L6_moveAffineBij.lean",
-      "deps": ["L0.FactA_exists", "L0.FactB_unique"],
+      "deps": [
+        "L0.FactA_exists",
+        "L0.FactB_unique"
+      ],
       "layer": 6,
       "statement": "theorem L6_moveAffineBij {R : Type*} [CommRing R] (Φ : Polynomial R) (hmon : Φ.Monic) (hd : 1 ≤ Φ.natDegree) (f g : Polynomial R) (Bf Bg : ℕ → Polynomial R) (Nf Ng : ℕ) (hf : IsDevelopment Φ f Bf Nf) (hg : IsDevelopment Φ g Bg Ng) (heq : ∀ j, Bf j = Bg j) : f = g",
       "moves_ref": "§0 Fact A/B: the move (development) is an affine unitriangular BIJECTION; MOVES ~29-46",
@@ -607,7 +740,10 @@
     {
       "id": "L6.ledgerCount",
       "file": "lean/LeanUrat/Moves/L6_ledgerCount.lean",
-      "deps": ["L2.P6ii", "L6.moveAffineBij"],
+      "deps": [
+        "L2.P6ii",
+        "L6.moveAffineBij"
+      ],
       "layer": 6,
       "statement": "theorem L6_ledgerCount {p : ℕ} [Fact p.Prime] (n N k : ℕ) (stratum : (Fin n → ZMod (p ^ N)) → Prop) (e : {x // stratum x} ≃ (Fin (n * N - k) → ZMod p)) : Nat.card {x // stratum x} = p ^ (n * N - k)",
       "moves_ref": "D.11 the per-move measure ledger: #stratum = p^{nN}·vol; MOVES ~2489-2519",
@@ -617,12 +753,15 @@
     {
       "id": "L6.measureExact",
       "file": "lean/LeanUrat/Moves/L6_measureExact.lean",
-      "deps": ["L6.ledgerCount"],
+      "deps": [
+        "L6.ledgerCount"
+      ],
       "layer": 6,
       "statement": "theorem L6_measureExact {p : ℕ} [Fact p.Prime] (n k : ℕ) (stratum : (N : ℕ) → (Fin n → ZMod (p ^ N)) → Prop) (hcard : ∀ N, Nat.card {x // stratum N x} = p ^ (n * N - k)) (N M : ℕ) (hN : k ≤ n * N) (hM : k ≤ n * M) : (Nat.card {x // stratum N x} : ℚ) / (p ^ (n * N)) = (Nat.card {x // stratum M x} : ℚ) / (p ^ (n * M))",
       "moves_ref": "D.11 the move is MEASURE-EXACT: the stratum mass is level-independent; MOVES ~2504-2517",
       "sketch": "By hcard (ledgerCount at each level) the mass at level N is p^{nN−k}/p^{nN} = p^{−k}, independent of N. Compute both ratios via hcard + pow_sub (hN, hM for ℕ-subtraction). This is DevBijection.caseE_mass in abstract form.",
       "difficulty": "medium"
     }
-  ]
+  ],
+  "syn_c1_2026-07-30": "SYN C1 (2026-07-30, SYNTHESIS_PASS1 C1, ratified in BRIDGE_ADJUDICATIONS 'C1+C4' cluster, sequenced after the BP5 Moves quarantines; full record lean/notes/SYN_C1_EXECUTION_2026-07-30.md, concordance gate lean/notes/SYN_E0_CONCORDANCE_2026-07-30.md): the (w,R) residual-valuation engine proved ONCE — NEW modules LaurentOrd.lean (pure-Laurent psi-order toolkit) and ResVal.lean (ResValPack{hwmul,hwult,hRne,hRmul,hRadd,hRlt} + ult_sum_ge + arithmetic nine + residual_sum_machine + decomp_machine + Stage.pack + Stage wrappers + deep engine psiNotDvd/w_Phat/cslot/key_no_cancel/minsum_facts, all VERBATIM from L3_K1 = L5_landTwoSided_repair per SYN-E0). Migrations SYN-M1..M6: L5_landBox, L5_landVertex, L5_landVertexDigit (the Moves#7 mirrored pair — drift risk RETIRED), L5_landTwoSided_repair, L3_K1 (563->160), L3_liftWeight (delegation; Moves#4 closed), L4_TRANSi/L4_TRANSiii. All public statements byte-identical (scripted HEAD-vs-worktree signature diff PASS); per-file equivalence records in each header; full build green; AxChk census byte-identical to golf2 baseline, 0 sorryAx. CODEX EQUIVALENCE PASS (Phase-4 protocol): 5/5 items CLEAN (pack law transcription, instance wiring, decomp_machine statement+derivation, all call-site equivalences H1-H5, verbatim-statement claims)."
 }

@@ -1,545 +1,546 @@
 {
- "campaign": "HC1 — the §B2-DEF tower induction hard core (wave 5, E-phase elaboration)",
- "as_built_2026-07-30": "VERIFY-2 FOLD-IN ADDENDUM (2026-07-30). (1) The per-unit 'sorries' integers below are the FROZEN E-phase elaboration snapshot (2026-07-28) — kept verbatim as history; do NOT read them as current status. As-built census at HEAD: HC1 carries exactly TWO proof sorries — C6_alphabetCard.lean:63 (statement machine-argued false; Asvin queue Q3) and R6_carrierInstance.lean:130 (A17 statement-repair adjudication; NOTE its documented post-repair route now carries zero dep-sorries: C2_TYPa and T4_slotMinHt are proved Lean-core). All other units are proved with Lean-core footprints (repo-wide sorry grep + compiled #print axioms checks this date; 107-name census in lean/notes/golf_baseline_2026-07-30/HC1_axioms.txt records 'TOTAL: 2 real sorries'). Example resolutions: T1_baseStage 'sorries': 1 is stale (proved Lean-core); V9_K1nonrec 'sorries': 1 is superseded by its own rev field ('V9_K1nonrec sorry-free, Lean-core'). (2) CENSUS-WORDING CAVEAT: docs/PROJECT_STATE.md's 'corpus-wide sorry census: TEN' enumerates only the MovesT+MovesV fenced items and omits these two HC1 sorries (both separately tracked, so no hidden hole — but the TEN figure is not corpus-wide; a 2026-07-30 corpus-wide recount is in the verify-2 HC1 report).",
- "blueprint": "lean/notes/HC1_LEAN_BLUEPRINT_2026-07-28.md (REV 2, accepted; DEVIATIONS appendix added at E-phase 2026-07-28) + §9 sign-off queue F-1..F-6 EXECUTED 2026-07-28 (queue applier; §9.9 execution record)",
- "moves_source": "lean/notes/MOVES_2026-07-24.md §B2-DEF 1849-2745 + §C displays 3644-3831 + pass-7 carry spec 1502-1530",
- "defs": [
-  "lean/LeanUrat/HC1/DefsD.lean",
-  "lean/LeanUrat/HC1/DefsTower.lean",
-  "lean/LeanUrat/HC1/DefsCar.lean",
-  "lean/LeanUrat/HC1/DefsSpine.lean",
-  "lean/LeanUrat/HC1/DefsChild.lean",
-  "lean/LeanUrat/HC1/DefsV.lean"
- ],
- "defs_sorry_free": true,
- "preamble": "Every unit file begins: `import Mathlib` then the HC1 Defs module(s) it needs (`LeanUrat.HC1.DefsD` / `DefsTower` / `DefsCar` / `DefsSpine`) then the cited PROVED Moves/MovesGr/MovesC unit files; then `set_option linter.style.longLine false`, `set_option linter.style.header false`, `set_option linter.unusedSectionVars false`, `set_option maxHeartbeats 800000`; then `namespace LeanUrat.HC1` and `open Polynomial LeanUrat.Moves` (plus `open scoped Classical` where Pi.single/filters need decidability). Statements elaborate under that preamble (verified per-file by `lake env lean`, MOVESGR §6 double-elaboration discipline: statements regenerated verbatim from this manifest must re-elaborate). `sorry` is the only allowed escape — ZERO new axioms; any GMN/Denef import in a cone is stop-the-line.",
- "build": "cd lean && lake env lean -o .lake/build/lib/lean/LeanUrat/HC1/<f>.olean LeanUrat/HC1/<f>.lean, topological order per Defs chain; NEVER bare `lake build`. Every unit file ends with `#print axioms <thm>` (expected: propext, sorryAx, Classical.choice, Quot.sound until proved; then Lean-core only).",
- "decide_gates": "G1-G5 carry typed statements with sorry bodies at E-phase; the fleet closes them by decide/norm_num/construction — NO sorry allowed at acceptance for the G layer.",
- "dep_sorries": {},
- "hypothesis_ledger": {
-  "TowerRealizable": "Type-valued open kernel (blueprint §5 + Deviation D-3): carries the per-read lines/windows + slope/vertex ties + steeper/vertex-entry/window conditions; consumers T10, C1, C4, R6; never discharged inside HC1",
-  "hexact": "anchor exactness per stratum, threaded on S16/S17 verbatim from L5_landTwoSided_repair",
-  "REL1": "R-layer statement defs (LSTStmt'/TYPStmt'/DOMStmt'/SecB1Stmt'/EQ2lawIfREL1') are the typed open kernel; consumers hypothesize, never assert",
-  "hzsol_hcore": "S17's F-6 pair (blueprint §9.7): hzsol = the zero-code jet-chart datum (§4.6(b)'s +hzsol spec); hcore = StageCore at the level stage, carried explicitly (post-F-5 dischargeable from the tower via (S11_towerSpine T).1 k.castSucc |>.core — recorded, not taken)",
-  "VertexPin": "the K1 named-hypothesis Prop (D.7(vi) pinned normalization, mfun ≡ 0); non-vacuity obligation sits with S9c's construction; consumers S9a-S9d via the K1 bridges"
- },
- "blocked": [],
- "units": [
-  {
-   "id": "HC1.D1_carryRing",
-   "file": "lean/LeanUrat/HC1/D1_carryRing.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem D1_carryRing (F : Type*) [Field F] (e : ℕ) [NeZero e] (zbar : Fˣ) : Nonempty (CarryRingPack F e zbar)"
-  },
-  {
-   "id": "HC1.D2_carryGrading",
-   "file": "lean/LeanUrat/HC1/D2_carryGrading.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem D2_carryGrading {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : (∀ (ρ σ : ZMod e) (c c' : F), (letI := P.ring; dOf ρ c * dOf σ c') = dOf (ρ + σ) (c * c' * (zbar : F) ^ carryExp ρ σ)) ∧ (∀ (x y : CarryAlg F e) (ρ σ : ZMod e), IsHomog x ρ → IsHomog y σ → IsHomog (letI := P.ring; x * y) (ρ + σ))"
-  },
-  {
-   "id": "HC1.D3_carryDomain",
-   "file": "lean/LeanUrat/HC1/D3_carryDomain.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem D3_carryDomain {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) (x y : CarryAlg F e) (ρ σ : ZMod e) (hx : IsHomog x ρ) (hy : IsHomog y σ) (hx0 : x ≠ 0) (hy0 : y ≠ 0) : (letI := P.ring; x * y) ≠ 0"
-  },
-  {
-   "id": "HC1.D4_carryAdjoinRoot",
-   "file": "lean/LeanUrat/HC1/D4_carryAdjoinRoot.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem D4_carryAdjoinRoot {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : ∃ Θ : (letI := P.ring; CarryAlg F e ≃+* AdjoinRoot (Polynomial.X ^ e - Polynomial.C ((zbar : F)))), ∀ (ρ : ZMod e) (c : F), Θ (dOf ρ c) = algebraMap F _ c * AdjoinRoot.root (Polynomial.X ^ e - Polynomial.C ((zbar : F))) ^ ρ.val"
-  },
-  {
-   "id": "HC1.D5_carryE1",
-   "file": "lean/LeanUrat/HC1/D5_carryE1.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem D5_carryE1 {F : Type*} [Field F] {zbar : Fˣ} (P : CarryRingPack F 1 zbar) : ∃ Θ : (letI := P.ring; CarryAlg F 1 ≃+* F), ∀ x : CarryAlg F 1, Θ x = x 0"
-  },
-  {
-   "id": "HC1.D6_carryHomogUnits",
-   "file": "lean/LeanUrat/HC1/D6_carryHomogUnits.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem D6_carryHomogUnits {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : (∀ (ρ : ZMod e) (c : F), c ≠ 0 → (letI := P.ring; dOf ρ c * dOf (-ρ) (c⁻¹ * ((zbar : F) ^ carryExp ρ (-ρ))⁻¹) = 1)) ∧ (∀ (x : CarryAlg F e) (ρ : ZMod e), IsHomog x ρ → x ≠ 0 → (letI := P.ring; IsUnit x))"
-  },
-  {
-   "id": "HC1.D7_digD_mul",
-   "file": "lean/LeanUrat/HC1/D7_digD_mul.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "rev": "D7 ADJUDICATION 2026-07-28 (orchestrator, from MOVES 1385-1400): the E-phase form stated DIG-multiplicativity against the WRONG target — bare IsMonomialUnit hypotheses leave the three anchors as free choice-data tied only through the field-level dig′ identity, against which the law is underdetermined: it holds iff e_b ∣ d ∧ z̄^{d − d/e_b} = 1 for the free anchor discrepancy d = (kB + kB″) − kR (the prover's re-derived counterexample condition; the pass-6/7 counterexample that forced the twist, MOVES 1388). RESTATED per the adjudication as the twisted homomorphism law with the z-offsets explicit on both sides and the anchor addition pinned in h5R (position kB + kB″, MOVES 1400 'plus the anchor addition'; in consumption = the (P6) absolute bookkeeping: position additivity from DIV's exact remainder weight at weight-pinned positions); conclusion unchanged (cmul = the DefsD cocycle product, checked). PROVED 2026-07-28 via L3_DIV (the ψ-adic division identity forces c_R = c·c″ at the added anchor) + the alignment-quotient carry identity ⌊(k+k′)/e⌋ = ⌊k/e⌋ + ⌊k′/e⌋ + carryExp; axioms [propext, Classical.choice, Quot.sound].",
-   "statement": "theorem D7_digD_mul {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0) (e_b : ℕ) [NeZero e_b] (B B'' Rdev Q : Polynomial ℤ_[p]) (hB : B ≠ 0) (hB'' : B'' ≠ 0) (hBd : B.natDegree < σ.e * g * σ.Φ.natDegree) (hB''d : B''.natDegree < σ.e * g * σ.Φ.natDegree) (hdiv : B * B'' = Q * Φhat + Rdev) (hRd : Rdev.natDegree < σ.e * g * σ.Φ.natDegree) (cB cB'' cR : (↥σ.K)ˣ) (kB kB'' : ℤ) (h5B : σ.R B = LaurentPolynomial.C (cB : ↥σ.K) * LaurentPolynomial.T kB) (h5B'' : σ.R B'' = LaurentPolynomial.C (cB'' : ↥σ.K) * LaurentPolynomial.T kB'') (h5R : σ.R Rdev = LaurentPolynomial.C (cR : ↥σ.K) * LaurentPolynomial.T (kB + kB'')) : σ.digD zbar e_b Rdev = cmul zbar (σ.digD zbar e_b B) (σ.digD zbar e_b B'')"
-  },
-  {
-   "id": "HC1.D8_digD_recenter",
-   "file": "lean/LeanUrat/HC1/D8_digD_recenter.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem D8_digD_recenter {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (zbar : Fˣ) (e_b : ℕ) [NeZero e_b] (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBc : inC σ.Φ B) : σ'.digD zbar e_b B = σ.digD zbar e_b B"
-  },
-  {
-   "id": "HC1.T1_baseStage",
-   "file": "lean/LeanUrat/HC1/T1_baseStage.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem T1_baseStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (e h : ℕ) (bdata : BaseReadData p F e h) : ∃ σ : Stage p F, IsBaseStage σ ∧ StageCoreL σ ∧ σ.e = e ∧ σ.h = h"
-  },
-  {
-   "id": "HC1.T2_baseGate",
-   "file": "lean/LeanUrat/HC1/T2_baseGate.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem T2_baseGate : ∃ σ : Stage 2 (GaloisField 2 2), IsBaseStage σ ∧ StageCoreL σ"
-  },
-  {
-   "id": "HC1.T3_htChainWeight",
-   "file": "lean/LeanUrat/HC1/T3_htChainWeight.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem T3_htChainWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (c : T.Coord) (hc : c.MonoNZ) : (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c"
-  },
-  {
-   "id": "HC1.T4_slotMinHt",
-   "file": "lean/LeanUrat/HC1/T4_slotMinHt.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ) (hfin : (Function.support y).Finite) (hsupp : ∀ c, y c ≠ 0 → T.blk c = b) (hne : T.slotCoeff b y ≠ 0) : ∃ c₀ : T.Coord, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c : T.Coord, y c ≠ 0 → T.ht c₀ ≤ T.ht c"
-  },
-  {
-   "id": "HC1.T5_levelSetInGamma",
-   "file": "lean/LeanUrat/HC1/T5_levelSetInGamma.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem T5_levelSetInGamma {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ) (hxfin : (Function.support x).Finite) (hyfin : (Function.support y).Finite) (hagree : ∀ c ∈ T.levelSet b γ, x c = y c) (hxlow : ∀ c, T.blk c = b → T.ht c < γ → x c = 0) (hylow : ∀ c, T.blk c = b → T.ht c < γ → y c = 0) : T.inGr γ (T.slotCoeff b x) = T.inGr γ (T.slotCoeff b y)"
-  },
-  {
-   "id": "HC1.T6_carrierLaws",
-   "file": "lean/LeanUrat/HC1/T6_carrierLaws.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem T6_carrierLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : T.HasSide ∧ T.CarrierLaws"
-  },
-  {
-   "id": "HC1.T7_alphabetSpan",
-   "file": "lean/LeanUrat/HC1/T7_alphabetSpan.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem T7_alphabetSpan {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) : ((T.alphabet b γ : Set (T.grQ γ)) = { x | ∃ (s : Finset ↥(T.levelSet b γ)) (dig : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ), x = ∑ c ∈ s, T.typComposite b γ (Pi.single c (dig c)) }) ∧ Finite ↥(T.alphabet b γ) ∧ p ^ T.aDim b γ = Nat.card ↥(T.alphabet b γ)"
-  },
-  {
-   "id": "HC1.T8_alphabetStep",
-   "file": "lean/LeanUrat/HC1/T8_alphabetStep.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem T8_alphabetStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) : ∃ A : AddSubgroup (↥(T.levelSet b γ) → ↥(T.stg 0).FQ), Set.BijOn (T.typComposite b γ) ↑A ↑(T.alphabet b γ) ∧ (∀ x ∈ A, ∀ y ∈ A, T.typComposite b γ (x + y) = T.typComposite b γ x + T.typComposite b γ y) ∧ p ^ T.aDim b γ = Nat.card ↥A"
-  },
-  {
-   "id": "HC1.T9_blockDisjoint",
-   "file": "lean/LeanUrat/HC1/T9_blockDisjoint.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem T9_blockDisjoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ (b b' : ℕ) (γ γ' : ℚ), (b, γ) ≠ (b', γ') → Disjoint (T.levelSet b γ) (T.levelSet b' γ')) ∧ Function.Injective (fun c : T.Coord => (T.baseIdx c, c.l))"
-  },
-  {
-   "id": "HC1.T10_floorStaircase",
-   "file": "lean/LeanUrat/HC1/T10_floorStaircase.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem T10_floorStaircase {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) (hb : rl.interiorB b) : rl.floorB b = (rl.line T.K).at (T.blockEdge b) ∧ (∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b)",
-   "rev": "F-1 (2026-07-28): conjunct 2 restated on the STEP floor floorS (raw-line floorC form machine-refuted, ScratchT10 retained); floorC stays for DOM-side consumers; proof route in header (DOM engine + one divisibility lemma) — fleet work."
-  },
-  {
-   "id": "HC1.T11_attainDichotomy",
-   "file": "lean/LeanUrat/HC1/T11_attainDichotomy.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem T11_attainDichotomy {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (X : T.grQ γ) : ((∃ y : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ, T.typComposite b γ y = X) ↔ X ∈ T.alphabet b γ) ∧ (X ∉ T.alphabet b γ → {y : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ | T.typComposite b γ y = X} = ∅) ∧ (0 : T.grQ γ) ∈ T.alphabet b γ"
-  },
-  {
-   "id": "HC1.T12_coordFin",
-   "file": "lean/LeanUrat/HC1/T12_coordFin.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem T12_coordFin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (lmax bmax : ℕ) : Set.Finite {c : T.Coord | c.l < lmax ∧ c.slot (Fin.last T.K) < bmax} ∧ (∀ (b : ℕ) (γ : ℚ), {c : T.Coord | T.blk c = b ∧ T.ht c = γ} = T.levelSet b γ)"
-  },
-  {
-   "id": "HC1.C1_LST",
-   "file": "lean/LeanUrat/HC1/C1_LST.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : -- (i-a): ht is the K1-chain weight of the basis monomial (T3's form) (∀ c : T.Coord, c.MonoNZ → (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c) ∧ -- (i-b): the iterated slot minimum (T4's form) (∀ (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ), (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → T.slotCoeff b y ≠ 0 → ∃ c₀, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c, y c ≠ 0 → T.ht c₀ ≤ T.ht c) ∧ -- (i-c): in_γ' is a function of exactly the level set (T5's form) (∀ (b : ℕ) (γ' : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ), (Function.support x).Finite → (Function.support y).Finite → (∀ c ∈ T.levelSet b γ', x c = y c) → (∀ c, T.blk c = b → T.ht c < γ' → x c = 0) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b x) = T.inGr γ' (T.slotCoeff b y)) ∧ -- (ii): the staircase STEP floor on factor-interior blocks (T10's F-1 form) (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b) ∧ -- (iii): level sets strictly above the floor avoid the floor set (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' → T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅)",
-   "rev": "F-1 (2026-07-28): leg (ii) restated on floorS alongside T10; other legs untouched; proof cites T10 verbatim (sorryAx via T10 only)."
-  },
-  {
-   "id": "HC1.C2_TYPa",
-   "file": "lean/LeanUrat/HC1/C2_TYPa.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem C2_TYPa {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) : (∀ y : T.Coord → ↥(T.stg 0).FQ, (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b y) = T.typComposite b γ' (fun c => y c.1)) ∧ (∀ x y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ, T.typComposite b γ' (x + y) = T.typComposite b γ' x + T.typComposite b γ' y)"
-  },
-  {
-   "id": "HC1.C3_TYPb",
-   "file": "lean/LeanUrat/HC1/C3_TYPb.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem C3_TYPb {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) : (Set.range (T.typComposite b γ') = ↑(T.alphabet b γ')) ∧ (∀ X X' : T.grQ γ', X ∈ T.alphabet b γ' → X' ∈ T.alphabet b γ' → Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X} = Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X'}) ∧ (∀ X : T.grQ γ', X ∈ T.alphabet b γ' → Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X} * Nat.card ↥(T.alphabet b γ') = Nat.card (↥(T.levelSet b γ') → ↥(T.stg 0).FQ))"
-  },
-  {
-   "id": "HC1.C4_DOM",
-   "file": "lean/LeanUrat/HC1/C4_DOM.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem C4_DOM {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (i : Fin (T.K + 1)) (m : ℕ) (hm : m < i.val) (b : ℕ) (hb : b < rl.interiorEnd i.val) : (rl.line m).at b ≤ (rl.line i.val).at b ∧ MovesC.floorOf rl.line i.val b = (rl.line i.val).at b"
-  },
-  {
-   "id": "HC1.C5_typToClause",
-   "file": "lean/LeanUrat/HC1/C5_typToClause.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem C5_typToClause {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (m : ℕ) (S : Finset (Fin m)) (enc : (Fin m → ZMod p) →+ (↥(T.levelSet b γ') → ↥(T.stg 0).FQ)) (hdep : ∀ x y : Fin m → ZMod p, (∀ c ∈ S, x c = y c) → enc x = enc y) (hsurj : Function.Surjective enc) (X : T.grQ γ') (hX : X ∈ T.alphabet b γ') : ∃ cl : MovesC.LevelClause p m, cl.support = S ∧ cl.codim = T.aDim b γ' ∧ ∀ x : Fin m → ZMod p, cl.sat x ↔ T.typComposite b γ' (enc x) = X"
-  },
-  {
-   "id": "HC1.C6_alphabetCard",
-   "file": "lean/LeanUrat/HC1/C6_alphabetCard.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem C6_alphabetCard {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (hne : (T.levelSet b γ).Nonempty) : Nat.card ↥(T.alphabet b γ) = p ^ T.aDim b γ ∧ (Nat.card ↥(T.alphabet b γ) = Nat.card ↥(T.stg (Fin.last T.K)).K ↔ ∀ c : ↥(T.levelSet b γ), ∃ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) ≠ 0) ∧ ((∃ c : ↥(T.levelSet b γ), ∀ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) = 0) → T.aDim b γ < Nat.log p (Nat.card ↥(T.stg (Fin.last T.K)).K))",
-   "rev": "F-2 (2026-07-28): Tower gains hcharF : CharP F p (DefsTower, additive); C6_cardK_bridge PROVED in this file (RingHom.charP + FiniteField.card; Lean-core); C6's own statement UNCHANGED per §9.2 — its proof (open) consumes the bridge for conjuncts 2-3."
-  },
-  {
-   "id": "HC1.S1_transHypGate",
-   "file": "lean/LeanUrat/HC1/S1_transHypGate.lean",
-   "difficulty": "medium",
-   "sorries": 2,
-   "statement": "theorem S1_transHypGate_a : ∃ (σ : Stage 2 (GaloisField 2 2)) (Φhat : Polynomial ℤ_[2]) (h' : ℕ) (zbar : (GaloisField 2 2)ˣ), IsBaseStage σ ∧ StageCoreL σ ∧ σ.Φ = Polynomial.X ∧ σ.e = 1 ∧ σ.h = 1 ∧ σ.K = ⊥ ∧ TransHyp σ (Polynomial.X ^ 2 + Polynomial.X + 1) 2 Φhat 1 h' zbar\n\ntheorem S1_transHypGate_b {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (h' : ℕ) (zbar : Fˣ) : ¬ TransHyp σ ψ g Φhat 0 h' zbar"
-  },
-  {
-   "id": "HC1.S2_childW",
-   "file": "lean/LeanUrat/HC1/S2_childW.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem S2_childW {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hdeg : 1 ≤ Φhat.natDegree) (e' h' : ℕ) : (∀ f : Polynomial ℤ_[p], f ≠ 0 → ∃ (B : ℕ → Polynomial ℤ_[p]) (N : ℕ), IsDevelopment Φhat f B N ∧ SlotMinAttained (childW σ Φhat e' h' f) N (fun j => (e' : ℤ) * σ.w (B j) + (j : ℤ) * (h' : ℤ)) (fun j => B j ≠ 0)) ∧ IsSlotMinWeight (childW σ Φhat e' h') Φhat e' h' σ.w"
-  },
-  {
-   "id": "HC1.S3_childK1",
-   "file": "lean/LeanUrat/HC1/S3_childK1.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem S3_childK1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hdeg : 1 ≤ Φhat.natDegree) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hw1 : σ.w 1 = 0) : childW σ Φhat e' h' Φhat = (h' : ℤ) ∧ K1At (childW σ Φhat e' h') Φhat ((h' : ℤ))"
-  },
-  {
-   "id": "HC1.S4_childSubmult",
-   "file": "lean/LeanUrat/HC1/S4_childSubmult.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S4_childSubmult {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (f f' : Polynomial ℤ_[p]) (hf : f ≠ 0) (hf' : f' ≠ 0) : childW σ Φhat e' h' f + childW σ Φhat e' h' f' ≤ childW σ Φhat e' h' (f * f')"
-  },
-  {
-   "id": "HC1.S5_childValuation",
-   "file": "lean/LeanUrat/HC1/S5_childValuation.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S5_childValuation {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : (∀ f f' : Polynomial ℤ_[p], f ≠ 0 → f' ≠ 0 → childW σ Φhat e' h' (f * f') = childW σ Φhat e' h' f + childW σ Φhat e' h' f') ∧ AddSubgroup.closure {n : ℤ | ∃ f f' : Polynomial ℤ_[p], f ≠ 0 ∧ f' ≠ 0 ∧ childW σ Φhat e' h' f - childW σ Φhat e' h' f' = n} = ⊤"
-  },
-  {
-   "id": "HC1.S6_childS4field",
-   "file": "lean/LeanUrat/HC1/S6_childS4field.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem S6_childS4field {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : (∀ x : F, x ∈ σ.nextField zbar → x ≠ 0 → ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC Φhat B ∧ σ.digPrime zbar B = x) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → σ.digPrime zbar B ∈ σ.nextField zbar) ∧ (∀ B B' : Polynomial ℤ_[p], B ≠ 0 → B' ≠ 0 → B - B' ≠ 0 → inC Φhat B → inC Φhat B' → σ.w B = σ.w B' → σ.digPrime zbar B = σ.digPrime zbar B' → σ.w B < σ.w (B - B'))"
-  },
-  {
-   "id": "HC1.S7_childPin",
-   "file": "lean/LeanUrat/HC1/S7_childPin.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem S7_childPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : ((e' : ℤ) * σ'.s + (h' : ℤ) * σ'.t = 1 ∧ (e' = 1 → σ'.t = 0)) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → ∃ c' : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C ((c' : ↥σ'.K)) * LaurentPolynomial.T (- σ'.t * σ.w B)) ∧ (∀ ℓ : LaurentPolynomial ↥σ'.K, LaurentPolynomial.C ℓ ∈ σ'.coeffLocSR → ∃ d : ↥σ'.K, ℓ = LaurentPolynomial.C d) ∧ (∀ d : ↥σ'.K, LaurentPolynomial.C (LaurentPolynomial.C d) ∈ σ'.coeffLocSR)",
-   "rev": "F-3 (2026-07-28): RESTATED to the escalation scratch's proved shape (conjuncts 1-3 + CoeffLocLaw legs (a)/(b)); PROVED (scratch transplanted verbatim; Lean-core). Leg (c) — the z'-pin — homed to S9d (by construction, via K1_coeffLocC_of_pin)."
-  },
-  {
-   "id": "HC1.S8_childS6",
-   "file": "lean/LeanUrat/HC1/S8_childS6.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem S8_childS6 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : (σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ)",
-   "rev": "F-4 (2026-07-28): RESTATED to the proved (I-aug) leg; PROVED (Lean-core). TvecUnitLaw conjunct homed to S9d (the note pins the twist — D.7(vi) quoted in header; the dual-audited twist-symmetry certificate retained in header)."
-  },
-  {
-   "id": "HC1.S9_transStage",
-   "file": "lean/LeanUrat/HC1/S9_transStage.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "statement": "theorem S9_transStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ' ∧ σ'.K = σ.nextField zbar ∧ σ'.e = e' ∧ σ'.h = h'",
-   "rev": "S9 DECOMPOSITION (2026-07-28, §9.5): statement UNCHANGED; the pre-approved split S9r/S9w/S9a/S9b/S9c/S9d landed as units (S9d PROVED); S9 = ⟨literal, S9c, S9a-S9d⟩ once the construction block (S9r + S9w + S9a-c) closes. || RESTATED+PROVED (2026-07-28, S9c specialist): gains the adjudicated increment guard hEG : 1 < σ.e * g (MOVES 3755-3757; unguarded shape refuted by the in-file standalone kernel S9_ungated_corner_refuted — TransitionCoreL.base.child_reps + hreps degree collision at e*g = 1; the corner is the note's RECENTERING species, PROVED S10's). PROVED Lean-core, zero sorry: S9 = <S9c, S9d> per section 9.5 — S9c (guarded) supplies literal + TransitionCoreL + VertexPin + tie + StageCore; S9d_stageCoreL closes StageCoreL (hPhiIn = the guard's degree consequence via L3_liftMonic); K/e/h pins = the record's child_field/child_e/child_h."
-  },
-  {
-   "id": "HC1.S9r_childR",
-   "file": "lean/LeanUrat/HC1/S9r_childR.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — UNBUNDLED (remediation round, same day): ChildResData is now the CARRIER ONLY (Rc + the D.3(b) key pin + the S5' pinned shape — §9.5's S9r billing), so this unit is the construction SEED; the law pack moved to ChildResLaws (DefsChild) and its lawful-carrier existence is S9w's own theorem. Once S9w lands, S9r follows from its first conjunct.",
-   "statement": "theorem S9r_childR {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : Nonempty (ChildResData σ Φhat e' h' zbar s' t')"
-  },
-  {
-   "id": "HC1.S9w_residualLaws",
-   "file": "lean/LeanUrat/HC1/S9w_residualLaws.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — RESTORED SHAPE (remediation round, same day; the Codex S9 rejection repair): S9w's OWN theorem = (∃ D : ChildResData, ChildResLaws D) ∧ w_strict — the §9.5 hard new-algebra block, one sorry, hardness honestly homed HERE (the E-phase draft had bundled the laws as ChildResData fields, relocating the hardness into S9r). The former nine projections survive as the PROVED Lean-core corollary childR_laws (explicitly labeled NOT the unit's content). — WIRED (escalation round 2026-07-28, S9w_final): own sorry KILLED, closes by `exact V8_childResidual` per the §10 staged plan; conjunct (ii) w_strict is PROVED Lean-core (V8c); conjunct (i) inherits sorryAx from V8b ONLY (the carrier-construction block) until it lands. CLOSED (2026-07-28 second escalation): V8b/V8a proved; S9w rides V8_childResidual by exact — sorry-free, Lean-core.",
-   "statement": "theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : (∃ D : ChildResData σ Φhat e' h' zbar s' t', ChildResLaws D) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f)"
-  },
-  {
-   "id": "HC1.S9a_stageLiteral",
-   "file": "lean/LeanUrat/HC1/S9a_stageLiteral.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the child Stage literal ∃ with construction recorded (TransitionData + VertexPin + childW tie); the ↥K/↥K' cast wall lives inside this proof. RESTATED (2026-07-28, adjudicated restate-after-refutation): acceptance-fleet REFUTATION at the σ.e·g = 1 corner (child_reps + hreps force deg σ.Φ < deg Φ̂ = σ.e·g·deg σ.Φ — machine-checked kernel S9a_ungated_corner_refuted, PROVED Lean-core, in-file); ADJUDICATED against the note: the LST increment step carries the explicit e·g > 1 guard (MOVES 3755–3757 'STEP at an INCREMENT ν_{i+1} (stage data (e_{i+1}, h_{i+1}), e·g > 1)'); the corner is the RECENTERING species (MOVES 3766–3767), S10's territory. Statement gains hEG : 1 < σ.e * g; corner now fails the hypotheses (S9a_corner_fails_guard, PROVED). CENSUS RE-RUN under the guard (same day): the full literal ASSEMBLED — Bézout split, hwult (slotwise development addition, in-file), hwmul/hvalgrp (S5), hwΦ/hK1 (S3), hStretch (L4_TRANSii), hreps/hTvec (the guard's degree gap), hWS (weightSet := 𝒜'), hS6b + the above-threshold half of hS6a (L4_TRANSviii_b + the carrier pin), R/laws/hRΦ/hS5/VertexPin (S9w's lawful carrier); TransitionData all-definitional; childW tie rfl. SINGLE RESIDUAL (the file's one sorry): hS6a on the BELOW-THRESHOLD STRIP ν ≤ σ.w Φ̂ — the raw D.7(vi) pin (mfun ≡ 0) pins strip digit sets to the twisted orbit ⋃ D(w̃)·z̄^{j·s−t·w̃} while Stage.hS6a demands the untwisted F_Qˣ; robust two-level counterexample numerics in the file header (parent side (3,2), depth-2 K=𝔽₉/FQ=𝔽₃: fails at (ν,c) = (2,1)); the note's (S6a') lives in the V′-normalized coordinate (MOVES 2395–2418). ADJUDICATION QUEUED: re-pin VertexPin/hS5' to the alignment function (blueprint §9.5 'mfun := THE alignment function'; K1 faithfulness flag anticipated the re-instantiation) or scope the child hS6a obligation above threshold. ADJUDICATION RESOLVED (V5 sign-off, blueprint §10 Key Finding 2: Stage.hS6a restated to the fixed-point coset form; mfun ≡ 0 IS the note's V′ normalization — warrant: D.7(v)'s D-map definition D(x) := R(x) mod ψ, MOVES 2364–2367). STRIP DISCHARGED (S9a_final, 2026-07-28): hS6a' below-threshold leg closes by V7_stripDischarge (σ′-free; the planned V6(b)+TRANSviii_a route was CIRCULAR). File sorry-free; S9a_stageLiteral footprint {propext, Classical.choice, Quot.sound}.",
-   "statement": "theorem S9a_stageLiteral {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionData σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f)"
-  },
-  {
-   "id": "HC1.S9b_childWeightSet",
-   "file": "lean/LeanUrat/HC1/S9b_childWeightSet.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative over S9a + weightSet pinned to 𝒜' (childWeightSet); (S6a')/(S6b') via the TRANSviii finals inside the construction. RESTATED + PROVED (2026-07-28, mechanical-closer round — the S9a precedent + adjudication applied verbatim; blueprint §10.7(B)): statement gains the increment guard hEG : 1 < σ.e * g (MOVES 3755–3757; the e·g = 1 corner is the RECENTERING species 3766–3767, S10's territory). In-file kernel S9b_ungated_corner_refuted (PROVED Lean-core): the unguarded S9b is refuted at the corner — its ∃ contains the refuted S9a shape, so the kernel delegates to S9a_ungated_corner_refuted; corner-exclusion arithmetic cited as-is (S9a_corner_fails_guard, statement-independent). GUARDED PROOF EXECUTED: the S9a_final construction re-run verbatim (Bézout split, S9w lawful carrier, S2/S3/S5 plumbing, in-file hwult, L4_TRANSviii_b + carrier pin above threshold, V7_stripDischarge below — σ′-free; the E-phase 'via the TRANSviii finals' billing superseded exactly as at S9a_final, TRANSviii_a circular), fourth conjunct weightSet = 𝒜′ closes by rfl (the literal already pins weightSet := childWeightSet). Zero sorry; footprint {propext, Classical.choice, Quot.sound}.",
-   "statement": "theorem S9b_childWeightSet {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionData σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ σ'.weightSet = childWeightSet σ Φhat"
-  },
-  {
-   "id": "HC1.S9c_coreAssembly",
-   "file": "lean/LeanUrat/HC1/S9c_coreAssembly.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative + full TransitionCoreL (child_dig_frame = the pin via VertexPin.to_child_dig_frame, mfun := 0, no ∃-slack) + StageCore (non-twist legs via S11a; w_jump via the ChildResLaws conjunct (2026-07-28 unbundle; formerly a ChildResData field); SlotDecomp/CoeffFieldLawCore via L4_TRANSvii_R4 + S6). || RESTATED+PROVED (2026-07-28, S9c specialist): gains the adjudicated increment guard hEG : 1 < σ.e * g (MOVES 3755-3757, the S9a/S9b precedent verbatim; unguarded shape refuted by the in-file machine-checked S9c_ungated_corner_refuted, delegating to S9a's kernel). PROVED Lean-core, zero sorry: the S9a/S9b literal + td/pin/tie as before; TransitionCoreL.child_Tvec = rfl, child_dig_frame = the pin via VertexPin.to_child_dig_frame (mfun := 0); StageCore = S11a's seven non-twist legs + w_jump (ChildResLaws conjunct) + TvecLaw via the NEW in-file bridge tvecLaw_of_tvecUnitLaw from K1_tvecUnitLaw_of_pin (supersedes the 'by construction' route) + SlotDecomp via Moves.L2_slotDecomp + CoeffFieldLawCore via the NEW in-file generic coeffCore_of_stage (all three (S4)-core clauses from bare Stage fields + wPrev_mul: clause 1 = hS6b above threshold; clause 2 = hS5 monomials + hStretch product law; clause 3 = -1 = -(e's'+h't') on the hS6b pair (B1, B2*Phi^e') — supersedes the L4_TRANSvii_R4 + S6 plan, leaner and generic).",
-   "statement": "theorem S9c_coreAssembly {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ StageCore σ'"
-  },
-  {
-   "id": "HC1.S9d_pinVerify",
-   "file": "lean/LeanUrat/HC1/S9d_pinVerify.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the pin-verification unit consuming K1 — TvecUnitLaw σ' (K1_tvecUnitLaw_of_pin) + CoeffLocLaw σ' ((a)/(b) from restated S7, (c) from K1_coeffLocC_of_pin); + S9d_stageCoreL closing StageCoreL given S9c's StageCore. PROVED (Lean-core). Discharges the §9.3/§9.4 seam.",
-   "statement": "theorem S9d_pinVerify {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) (pin : VertexPin σ σ' Φhat zbar) (hΦin : inC Φhat σ.Φ) : TvecUnitLaw σ' ∧ CoeffLocLaw σ'"
-  },
-  {
-   "id": "HC1.S10_recStage",
-   "file": "lean/LeanUrat/HC1/S10_recStage.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem S10_recStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (hlift : ∃ tt : Polynomial ℤ_[p], tt ≠ 0 ∧ inC σ.Φ tt ∧ σ.w tt = σ.w σ.Φ ∧ σ.R tt = LaurentPolynomial.C cc * LaurentPolynomial.T 0) : ∃ (σ' : Stage p F) (tt : Polynomial ℤ_[p]), IsRecenteringCore σ σ' cc tt ∧ StageCoreL σ'"
-  },
-  {
-   "id": "HC1.S11_towerSpine",
-   "file": "lean/LeanUrat/HC1/S11_towerSpine.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem S11_towerSpine {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ k : Fin (T.K + 1), StageCoreL (T.stg k)) ∧ (∀ k : Fin T.K, match T.move k with | .inc _ _ _ e' h' zbar _ _ _ => (T.stg k.succ).K = (T.stg k.castSucc).nextField zbar ∧ (T.stg k.succ).e = e' ∧ (T.stg k.succ).h = h' | .recenter _ _ _ _ => (T.stg k.succ).e = 1 ∧ (T.stg k.succ).K = (T.stg k.castSucc).K)",
-   "rev": "F-5 (2026-07-28): MoveWitness enriched with core' : StageCoreL σ' (both constructors; DefsTower); Part 1 PROVED by Fin.induction + projection; Part 2 re-bound; PROVED (Lean-core). The route-failure + sign-twist countermodel verdicts retained in header as the independence certificate; S11a_coreTransport certifies minimality."
-  },
-  {
-   "id": "HC1.S11a_coreTransport",
-   "file": "lean/LeanUrat/HC1/S11a_coreTransport.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "rev": "NEW at F-5(b) (2026-07-28): the minimality certificate — the seven non-twist StageCore legs {wPrev_mul, wPrev_ult, reps_nonempty, p_is_rep, w_strict, R_neg, prevIaug} transport from StageCoreL σ + TransitionCoreL + TransHyp alone (the S11 escalation's verified partial transport, re-derived in-file). PROVED (Lean-core).",
-   "statement": "theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : (∀ f g, f ≠ 0 → g ≠ 0 → σ'.wPrev (f * g) = σ'.wPrev f + σ'.wPrev g) ∧ (∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → min (σ'.wPrev f) (σ'.wPrev g) ≤ σ'.wPrev (f + g)) ∧ σ'.reps ≠ [] ∧ (Polynomial.C (p : ℤ_[p])) ∈ σ'.reps ∧ (∀ f g, f ≠ 0 → g ≠ 0 → σ'.w f < σ'.w g → σ'.w (f + g) = σ'.w f) ∧ (∀ f, σ'.R (-f) = - σ'.R f) ∧ ((σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ))"
-  },
-  {
-   "id": "HC1.S12_iaugPersist",
-   "file": "lean/LeanUrat/HC1/S12_iaugPersist.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S12_iaugPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) (ψ : Polynomial ↥(T.stg k).K) (g : ℕ) (hψ : Irreducible ψ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k) ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥(T.stg k).K) (hanch : HasAnchorK ((T.stg k).R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) : (∀ j, j < μ → B j ≠ 0 → ((T.stg k).e : ℤ) * (T.stg k).h * g * ((μ : ℤ) - j) < (T.stg k).w (B j) - (T.stg k).w (B μ)) ∧ (∀ (e' h' : ℕ) (j : ℕ), 1 ≤ e' → j < μ → B j ≠ 0 → (h' : ℤ) * ((μ : ℤ) - (j : ℤ)) = (e' : ℤ) * ((T.stg k).w (B j) - (T.stg k).w (B μ)) → IAug (T.stg k) Φhat e' h')"
-  },
-  {
-   "id": "HC1.S13_realPersist",
-   "file": "lean/LeanUrat/HC1/S13_realPersist.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "rev": "S13 ADJUDICATION 2026-07-28 (campaign ledger, orchestrator direct read of D.9(d) MOVES 2573-2581): conjunct 3 restated with the e_read = 1 READ scope — any-scalar realizability only at ν strictly above wPrev Φ (the (S6b)/DEF-8 threshold; the display's side values λ″), membership in weightSet now a conclusion; prior all-of-weightSet form = BLUEPRINT OVER-STRENGTH (type i), the note intact",
-   "statement": "theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) : (∃ ν₀ : ℤ, ∀ ν : ℤ, ν₀ ≤ ν → ν ∈ (T.stg k).weightSet) ∧ (((T.stg k).e : ℤ) * (T.stg k).wPrev (T.stg k).Φ < ((T.stg k).h : ℤ)) ∧ ((T.stg k).e = 1 → ∀ ν : ℤ, (T.stg k).wPrev (T.stg k).Φ < ν → ν ∈ (T.stg k).weightSet ∧ ∀ c : (↥(T.stg k).K)ˣ, ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC (T.stg k).Φ B ∧ (T.stg k).wPrev B = ν ∧ (T.stg k).R B = LaurentPolynomial.C ((c : ↥(T.stg k).K)) * LaurentPolynomial.T 0)"
-  },
-  {
-   "id": "HC1.S14_wellTypedAnchor",
-   "file": "lean/LeanUrat/HC1/S14_wellTypedAnchor.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S14_wellTypedAnchor {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) (he1 : (T.stg k).e = 1) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : ∃ (a : ℤ) (Ranch : Polynomial ↥(T.stg k).K), HasAnchorK ((T.stg k).R f) a Ranch ∧ 0 ≤ a"
-  },
-  {
-   "id": "HC1.S15_anchoredSubst",
-   "file": "lean/LeanUrat/HC1/S15_anchoredSubst.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem S15_anchoredSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (hsub : RecenterSubstCore σ σ' cc) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (a : ℤ) (ha : 0 ≤ a) (μ : ℕ) (hpoly : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a ((Polynomial.X - Polynomial.C cc) ^ μ * hpoly)) (hnd : ¬ (Polynomial.X - Polynomial.C cc) ∣ hpoly) (zbar : Fˣ) (e_b : ℕ) [NeZero e_b] : (∃ Ranch' : Polynomial ↥σ'.K, HasAnchorK (σ'.R f) (μ : ℤ) Ranch' ∧ Ranch'.map σ'.K.subtype = (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F)) ^ a.toNat * (hpoly.map σ.K.subtype).comp (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F))) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC σ.Φ B → σ'.digD zbar e_b B = σ.digD zbar e_b B)"
-  },
-  {
-   "id": "HC1.S16_levelLanding",
-   "file": "lean/LeanUrat/HC1/S16_levelLanding.lean",
-   "difficulty": "medium-hard",
-   "sorries": 1,
-   "statement": "theorem S16_levelLanding {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (B : ℕ → Polynomial ℤ_[p]) (hdev : IsDevelopment Φhat f B lm.N) : StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N"
-  },
-  {
-   "id": "HC1.S17_levelMeasureExact",
-   "file": "lean/LeanUrat/HC1/S17_levelMeasureExact.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "statement": "theorem S17_levelMeasureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hcore : StageCore (T.stg k.castSucc)) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (D ktot N : ℕ) (hD : D = Φhat.natDegree * lm.N) (hN : 1 ≤ N) (hkN : ktot ≤ D * N) (strat : (Fin (D * N) → ZMod p) → Prop) (code : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (hcode : ∀ x, ∃ f : Polynomial ℤ_[p], f.natDegree < D ∧ code f = x) (hstrat : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (strat (code f) ↔ (f ≠ 0 ∧ StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f))) (hz : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ strat (code f)) (Θ : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (hΘ : LeanUrat.MovesC.IsUnitriangular fun x => Θ x) (E : DigitSystem (D * N) (ZMod p)) (hEk : E.numPinned = ktot) (hzsol : ¬ E.IsSolution (Θ (code 0))) (hcyl : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B lm.N → (E.IsSolution (Θ (code f)) ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N)) : Nat.card {x : Fin (D * N) → ZMod p // strat x} * p ^ ktot = p ^ (D * N)",
-   "rev": "F-6 (2026-07-28): RESTATED to the ScratchS17 sufficiency-certificate form (+hzsol, +hcore — the safe landing; post-F-5 hcore discharge recorded as available, not taken); PROVED (transplant; Lean-core). Consumes L5_landTwoSided (repair) + L0_FactA_exists + L2_P6ii; NEVER consumes L6_measureExact_R4 — the §4.6 dep-sorry pair leaves HC1's cone (dep_sorries row emptied)."
-  },
-  {
-   "id": "HC1.G1_divGate",
-   "file": "lean/LeanUrat/HC1/G1_divGate.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem G1_divGate : zbGate ^ 2 = zbGate + 1 ∧ zbGate * zbGate = zbGate + 1"
-  },
-  {
-   "id": "HC1.G2_carryGate",
-   "file": "lean/LeanUrat/HC1/G2_carryGate.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem G2_carryGate : ∃ zbar : (GaloisField 2 2)ˣ, ((zbar : GaloisField 2 2) ^ 2 = (zbar : GaloisField 2 2) + 1) ∧ ∀ P : CarryRingPack (GaloisField 2 2) 2 zbar, (letI := P.ring; dOf (1 : ZMod 2) (1 : GaloisField 2 2) * dOf 1 1 = dOf 0 ((zbar : GaloisField 2 2))) ∧ (∀ c c' : GaloisField 2 2, letI := P.ring; dOf (1 : ZMod 2) c * dOf 0 c' = dOf 1 (c * c')) ∧ (∀ ρ σ τ : ZMod 2, carryExp ρ σ + carryExp (ρ + σ) τ = carryExp σ τ + carryExp ρ (σ + τ))"
-  },
-  {
-   "id": "HC1.G3_caseJGate",
-   "file": "lean/LeanUrat/HC1/G3_caseJGate.lean",
-   "difficulty": "easy-medium",
-   "sorries": 1,
-   "statement": "theorem G3_caseJGate : (caseJP.comp (Polynomial.X + 1) = Polynomial.X ^ 2 * ((Polynomial.X + 1) * ((Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)).comp (Polynomial.X + 1)))) ∧ ((Polynomial.X : Polynomial (ZMod 2)) ^ 2 ∣ caseJP.comp (Polynomial.X + 1)) ∧ (¬ (Polynomial.X : Polynomial (ZMod 2)) ^ 3 ∣ caseJP.comp (Polynomial.X + 1))"
-  },
-  {
-   "id": "HC1.G4_caseKGate",
-   "file": "lean/LeanUrat/HC1/G4_caseKGate.lean",
-   "difficulty": "medium",
-   "sorries": 2,
-   "statement": "theorem G4_caseKGate_i : (Finset.univ.filter caseKBothRise = ({((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((1, 0), (1, 0), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 1), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)), ((0, 1), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter caseKBothRise).card = 8\n\ntheorem G4_caseKGate_ii : (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0) = ({((0, 1), (1, 1), (0, 2)), ((0, 1), (1, 1), (2, 0)), ((0, 1), (1, 2), (1, 2)), ((0, 1), (2, 1), (2, 1)), ((0, 1), (2, 2), (0, 1)), ((0, 1), (2, 2), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 2), (1, 2), (0, 1)), ((0, 2), (1, 2), (2, 0)), ((0, 2), (2, 1), (0, 2)), ((0, 2), (2, 1), (1, 0)), ((0, 2), (2, 2), (2, 2)), ((1, 0), (0, 1), (1, 1)), ((1, 0), (0, 1), (2, 1)), ((1, 0), (0, 2), (1, 2)), ((1, 0), (0, 2), (2, 2)), ((1, 0), (1, 0), (1, 0)), ((1, 0), (2, 0), (2, 0)), ((1, 1), (1, 0), (0, 2)), ((1, 1), (1, 0), (2, 1)), ((1, 1), (1, 2), (1, 0)), ((1, 1), (1, 2), (1, 1)), ((1, 1), (2, 0), (0, 1)), ((1, 1), (2, 0), (1, 2)), ((1, 1), (2, 1), (2, 0)), ((1, 1), (2, 1), (2, 2)), ((1, 2), (1, 0), (0, 1)), ((1, 2), (1, 0), (2, 2)), ((1, 2), (1, 1), (1, 0)), ((1, 2), (1, 1), (1, 2)), ((1, 2), (2, 0), (0, 2)), ((1, 2), (2, 0), (1, 1)), ((1, 2), (2, 2), (2, 0)), ((1, 2), (2, 2), (2, 1)), ((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((2, 0), (1, 0), (1, 1)), ((2, 0), (1, 0), (1, 2)), ((2, 0), (2, 0), (2, 1)), ((2, 0), (2, 0), (2, 2)), ((2, 1), (0, 1), (1, 2)), ((2, 1), (0, 1), (2, 0)), ((2, 1), (0, 2), (1, 0)), ((2, 1), (0, 2), (2, 1)), ((2, 1), (1, 2), (0, 2)), ((2, 1), (1, 2), (2, 2)), ((2, 1), (2, 1), (0, 1)), ((2, 1), (2, 1), (1, 1)), ((2, 2), (0, 1), (1, 0)), ((2, 2), (0, 1), (2, 2)), ((2, 2), (0, 2), (1, 1)), ((2, 2), (0, 2), (2, 0)), ((2, 2), (1, 1), (0, 1)), ((2, 2), (1, 1), (2, 1)), ((2, 2), (2, 2), (0, 2)), ((2, 2), (2, 2), (1, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0) = ({((0, 1), (0, 1), (0, 1)), ((0, 1), (0, 2), (0, 2)), ((0, 1), (1, 0), (1, 0)), ((0, 1), (1, 1), (1, 1)), ((0, 1), (1, 2), (1, 2)), ((0, 1), (2, 0), (2, 0)), ((0, 1), (2, 1), (2, 1)), ((0, 1), (2, 2), (2, 2)), ((0, 2), (0, 1), (0, 1)), ((0, 2), (0, 2), (0, 2)), ((0, 2), (1, 0), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 2), (1, 2), (1, 2)), ((0, 2), (2, 0), (2, 0)), ((0, 2), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2)), ((1, 0), (0, 1), (0, 1)), ((1, 0), (0, 2), (0, 2)), ((1, 0), (1, 0), (1, 0)), ((1, 0), (1, 1), (1, 1)), ((1, 0), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)), ((1, 0), (2, 1), (2, 1)), ((1, 0), (2, 2), (2, 2)), ((1, 1), (0, 1), (0, 1)), ((1, 1), (0, 2), (0, 2)), ((1, 1), (1, 0), (1, 0)), ((1, 1), (1, 1), (1, 1)), ((1, 1), (1, 2), (1, 2)), ((1, 1), (2, 0), (2, 0)), ((1, 1), (2, 1), (2, 1)), ((1, 1), (2, 2), (2, 2)), ((1, 2), (0, 1), (0, 1)), ((1, 2), (0, 2), (0, 2)), ((1, 2), (1, 0), (1, 0)), ((1, 2), (1, 1), (1, 1)), ((1, 2), (1, 2), (1, 2)), ((1, 2), (2, 0), (2, 0)), ((1, 2), (2, 1), (2, 1)), ((1, 2), (2, 2), (2, 2)), ((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((2, 0), (1, 0), (1, 0)), ((2, 0), (1, 1), (1, 1)), ((2, 0), (1, 2), (1, 2)), ((2, 0), (2, 0), (2, 0)), ((2, 0), (2, 1), (2, 1)), ((2, 0), (2, 2), (2, 2)), ((2, 1), (0, 1), (0, 1)), ((2, 1), (0, 2), (0, 2)), ((2, 1), (1, 0), (1, 0)), ((2, 1), (1, 1), (1, 1)), ((2, 1), (1, 2), (1, 2)), ((2, 1), (2, 0), (2, 0)), ((2, 1), (2, 1), (2, 1)), ((2, 1), (2, 2), (2, 2)), ((2, 2), (0, 1), (0, 1)), ((2, 2), (0, 2), (0, 2)), ((2, 2), (1, 0), (1, 0)), ((2, 2), (1, 1), (1, 1)), ((2, 2), (1, 2), (1, 2)), ((2, 2), (2, 0), (2, 0)), ((2, 2), (2, 1), (2, 1)), ((2, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0)).card = 56 ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0)).card = 64 ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0)).card = 8"
-  },
-  {
-   "id": "HC1.G5_spanGate",
-   "file": "lean/LeanUrat/HC1/G5_spanGate.lean",
-   "difficulty": "easy",
-   "sorries": 1,
-   "statement": "theorem G5_spanGate : (AddSubgroup.closure ({x : F9 | ∃ c : ZMod 3, x = (c, 0)} ∪ {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = ⊤) ∧ Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (c, 0)}) = 3 ∧ Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = 3 ∧ Nat.card F9 = 3 ^ 2"
-  },
-  {
-   "id": "HC1.R1_LSTStmt",
-   "file": "lean/LeanUrat/HC1/R1_LSTStmt.lean",
-   "difficulty": "easy",
-   "sorries": 0,
-   "statement": "structure CarrierPackR (p : ℕ) [Fact p.Prime] where\n  G : GradedCarrierR p\n  Hist : Type\n  Coord : Type\n  Digit : Type\n  [digitAdd : AddCommGroup Digit]\n  kIdx : Hist → ℕ\n  ht : Hist → Coord → ℚ\n  blk : Hist → Coord → ℕ\n  lvl : Hist → ℕ → ℚ → Set Coord\n  slotCoeff : Hist → ℕ → (Coord → Digit) → G.Coeff\n  aDim : Hist → ℕ → ℚ → ℕ\n  lines : Hist → ℕ → MovesC.Line\n  blockEdge : Hist → ℕ → ℕ\n  interiorEnd : Hist → ℕ → ℕ\n  window : Hist → ℕ → Prop\n  mono : Hist → Coord → G.Coeff\n  floorB : Hist → ℕ → ℚ\n\ndef LSTStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ H : K.Hist,\n    (∀ c : K.Coord, K.G.w (K.mono H c) = (K.ht H c : WithTop ℚ)) ∧\n    (∀ b : ℕ, K.window H b → ∀ y : K.Coord → K.Digit, K.slotCoeff H b y ≠ 0 →\n      ∃ c₀ : K.Coord, y c₀ ≠ 0 ∧ K.G.w (K.slotCoeff H b y) = (K.ht H c₀ : WithTop ℚ) ∧\n        ∀ c : K.Coord, y c ≠ 0 → K.ht H c₀ ≤ K.ht H c) ∧\n    (∀ b : ℕ, K.window H b → ∀ (γ : ℚ) (x y : K.Coord → K.Digit),\n      (∀ c ∈ K.lvl H b γ, x c = y c) →\n      (∀ c : K.Coord, K.blk H c = b → K.ht H c < γ → x c = 0 ∧ y c = 0) →\n      K.G.inγ γ (K.slotCoeff H b x) = K.G.inγ γ (K.slotCoeff H b y)) ∧\n    (∀ b : ℕ, K.floorB H b = (K.lines H (K.kIdx H)).at (K.blockEdge H b)) ∧\n    (∀ (b : ℕ) (γ' : ℚ), K.floorB H b < γ' →\n      ∀ c ∈ K.lvl H b γ', ¬ (K.blk H c = b ∧ K.ht H c ≤ K.floorB H b))"
-  },
-  {
-   "id": "HC1.R2_TYPStmt",
-   "file": "lean/LeanUrat/HC1/R2_TYPStmt.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "def TYPStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (b : ℕ) (γ' : ℚ),\n    (∀ x y : K.Coord → K.Digit,\n      K.G.inγ γ' (K.slotCoeff H b (x + y))\n        = K.G.inγ γ' (K.slotCoeff H b x) + K.G.inγ γ' (K.slotCoeff H b y)) ∧\n    (Nat.card ↥(AddSubgroup.closure\n        (⋃ c ∈ K.lvl H b γ', Set.range fun y : K.Digit =>\n          K.G.inγ γ' (K.slotCoeff H b (Pi.single c y))))\n      = p ^ K.aDim H b γ')"
-  },
-  {
-   "id": "HC1.R3_DOMStmt",
-   "file": "lean/LeanUrat/HC1/R3_DOMStmt.lean",
-   "difficulty": "easy",
-   "sorries": 0,
-   "statement": "def DOMStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (i m b : ℕ), m < i → b < K.interiorEnd H i →\n    (K.lines H m).at b ≤ (K.lines H i).at b"
-  },
-  {
-   "id": "HC1.R4_SecB1Stmt",
-   "file": "lean/LeanUrat/HC1/R4_SecB1Stmt.lean",
-   "difficulty": "easy",
-   "sorries": 0,
-   "statement": "def SecB1Stmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (b : ℕ) (γ : ℚ) (x y : K.Coord → K.Digit),\n    K.G.inγ γ (K.slotCoeff H b (x + y))\n      = K.G.inγ γ (K.slotCoeff H b x) + K.G.inγ γ (K.slotCoeff H b y)"
-  },
-  {
-   "id": "HC1.R5_EQ2Pass",
-   "file": "lean/LeanUrat/HC1/R5_EQ2Pass.lean",
-   "difficulty": "easy",
-   "sorries": 0,
-   "statement": "def REL1Pack (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K ∧ SecB1Stmt' p K\n\ndef EQ2lawIfREL1' (p : ℕ) [Fact p.Prime] (EQ2law : Prop) : Prop :=\n  (∀ K : CarrierPackR p, REL1Pack p K) → EQ2law"
-  },
-  {
-   "id": "HC1.R6_carrierInstance",
-   "file": "lean/LeanUrat/HC1/R6_carrierInstance.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : ∃ K : CarrierPackR p, (∀ γ : ℚ, K.G.Gr γ = T.grQ γ) ∧ LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K"
-  },
-  {
-   "id": "HC1.V1_readWPack",
-   "file": "lean/LeanUrat/HC1/V1_readWPack.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem V1_readWPack (σ) (hσ : StageCoreL σ) (e★ h★ : ℕ) (s★ t★ : ℤ) (hrp : ReadPair σ e★ h★ s★ t★) : (slot-min pack for childW σ σ.Φ e★ h★ — S2 instance at Φhat := σ.Φ) ∧ hwmul ∧ hwult ∧ (Q-ASCENT: for B·B″ = Q·σ.Φ + R_dev monic division, Q-slot (†)-value ≥ R_dev-slot + (h★ − e★·σ.h))"
-  },
-  {
-   "id": "HC1.V2_readResidual",
-   "file": "lean/LeanUrat/HC1/V2_readResidual.lean",
-   "difficulty": "medium-hard",
-   "sorries": 0,
-   "statement": "theorem V2_readResidual … : (∃ D : ReadResData σ e★ h★ s★ t★, ReadResLaws D) ∧ (wV strict law — the S9w-(ii) mirror); theorem V2_readFrame … : Nonempty (ReadFrame σ e★ h★ s★ t★)  [THE V′ FRAME CHANGE UNIT]",
-   "rev": "PROVED IN FULL (2026-07-28, escalation — the regrade-carrier engine mirror): V2_readResidual + V2_readFrame both Lean-core, zero sorry; footprint = {propext, Classical.choice, Quot.sound}. Construction: the V8 engine mirrored IN-FILE at the same key σ.Φ with the IDENTITY DIGIT v2dig := LaurentPolynomial.eval₂ (RingHom.id ↥σ.K) 1 ∘ σ.R (T = 1 evaluation — a ring hom reading off the hS5 monomial's unit scalar; no field extension, no L3_digPrime_nonzero: hRne is FREE from hS5's unit). The descent engine (IsStandardLift/L3_DIV/L4_TRANSiii — unsatisfiable at the regrade key) is REPLACED by the same-key kernel v2DIV: remainder nonvanishing + exact weight = V1's exposed Q-ascent; the residual product law R((a·b) %ₘ Φ) = R(a)·R(b) by the w(Φ·Q) ≥ w(R_dev) trichotomy — Q = 0 trivial; strict = parent hRlt; the TIE is IMPOSSIBLE (hStretch on a, b, Q ∈ C forces σ.e ∣ σ.h, so σ.e = 1, σ.t = 0, σ.s = 1, and the parent hRadd identity C(c_a·c_b)·T0 = C(c_R)·T0 + C(c_Q)·T1 pins the UNIT c_Q to the vanishing exponent-1 Finsupp coefficient). hRmul = V8's bilinear slot expansion verbatim (Cdev convolution development, per-pair v2DIV remainders, carried quotients strictly deep via ReadPair steepness e★σ.h < h★ = IAug at the same key, the v2gr graded slot computation, the Finset.sum_fiberwise convolution regroup). w_strict = V1's hwult + childW negation-invariance (the V8c assembly block). V2_readFrame = D + laws + V1's hwmul/hwult + S3_childK1 (hwPhi + hK1 at Φhat := σ.Φ) + L4_TRANSii (hStretch) + V6_regradeOrbits (hS6a). Statements verbatim (fence checked against HEAD). Downstream re-verified: V3_readLift + V3_equalWeights_lift still Lean-core; V9's remaining sorryAx cone is V4's (assembly unit, next)."
-  },
-  {
-   "id": "HC1.V3_readLift",
-   "file": "lean/LeanUrat/HC1/V3_readLift.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem V3_readLift … (V : ReadFrame) (hlift : IsReadLift σ ψ g e★ h★ Φ̂) : (D.5 EQUAL WEIGHTS display at wV) ∧ childW σ σ.Φ e★ h★ Φ̂ = e★·h★·g ∧ V.D.Rv Φ̂ = T(−t★·h★·g)·ψ ∧ K1At (childW σ σ.Φ e★ h★) Φ̂ (e★·h★·g)",
-   "rev": "PROVED (2026-07-28 V-kernel P-phase; Lean-core). ADDENDUM (2026-07-28, mechanical-closer round, VPRIME_CONFIRM gap 7 closed additively — V3_readLift byte-unchanged): NEW theorem V3_equalWeights_lift (PROVED Lean-core) ties the D.5 EQUAL-WEIGHTS display to hlift's own witness family and adds the D.5 leading-slot equation e★·σ.w(1) + (e★g)·h★ = e★h★g (MOVES 2268–2269)."
-  },
-  {
-   "id": "HC1.V4_readLanding",
-   "file": "lean/LeanUrat/HC1/V4_readLanding.lean",
-   "difficulty": "hard",
-   "sorries": 1,
-   "statement": "theorem V4_readLanding … (hanch : HasAnchorK (V.D.Rv f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (hdev : IsDevelopment Φ̂ f B N) : (VERTEX: B μ ≠ 0 ∧ wV(B μ) + μ·e★h★g = wV f) ∧ (BOX: strict above for m < μ) ∧ (vertex digit with the explicit unit z̄^{μ·t★·h★·g})  [TRANSPORT leg FENCED OUT per §10.1]"
-  },
-  {
-   "id": "HC1.V6_alignedOrbits",
-   "file": "lean/LeanUrat/HC1/V6_alignedOrbits.lean",
-   "difficulty": "short",
-   "sorries": 0,
-   "statement": "theorem V6_regradeOrbits … : ReadFrame.hS6a fill (regrade orbits = parent coset orbits re-positioned, scalars preserved); theorem V6_descentOrbits … : ∀ ν ∈ 𝒜′, (TRANSviii_a conjunct-1 window decomposition) ∧ ∃ base b(ν) of the displayed z̄-monomial shape whose F_Qˣ-coset is realized in D.Rc",
-   "rev": "PROVED (2026-07-28 V-kernel P-phase; both legs Lean-core). DOC (2026-07-28, mechanical-closer round, VPRIME_CONFIRM gap 9 closed at documentation level — statements untouched, fence-checked not a genuine weakening since V7 was reproved σ′-free without consuming V6(b)): V6_descentOrbits' docstring restores the blueprint §10.1 λ-window/twist display (w̃, j) = (s·ν − λ·h, t·ν + λ·e), twist = λ, with the in-proof identity m := s·j − t·w̃ = λ; the public (γ, j, m)-only statement recorded as a deliberate reduction, any future λ-exposure fenced to an additive corollary."
-  },
-  {
-   "id": "HC1.V7_stripDischarge",
-   "file": "lean/LeanUrat/HC1/V7_stripDischarge.lean",
-   "difficulty": "short",
-   "sorries": 1,
-   "statement": "theorem V7_stripDischarge … (D : ChildResData …) (hD : ChildResLaws D) : ∀ ν ∈ childWeightSet σ Φ̂, ∃ b, ∀ c ∈ F_Qˣ, ∃ B ≠ 0 ∈ C_Φ̂, σ.w B = ν ∧ D.Rc B = C(c·b)·T(−t′·ν)  [EXACTLY S9a's hS6a′ obligation shape; gated on V5 — EXECUTED]"
-  },
-  {
-   "id": "HC1.V8_childResidual",
-   "file": "lean/LeanUrat/HC1/V8_childResidual.lean",
-   "difficulty": "hard",
-   "sorries": 0,
-   "statement": "def ExplicitDescentCarrier (Prop on ChildResData: Rc f = Σ_{j minimizing} C(dig′ B_j)·T(j·s′ − t′·σ.w B_j)); theorem V8a_carrierAdditive (∃ explicit carrier + additive legs); theorem V8b_carrierLaws (∃ explicit carrier + full ChildResLaws); theorem V8c_wStrict; theorem V8_childResidual = S9w's exact statement shape, ASSEMBLED from V8b+V8c (no own sorry)  [NOT dependent on V5]",
-   "rev": "PROVED IN FULL (2026-07-28, second escalation — the V8b hRmul core): V8a + V8b + V8c ALL Lean-core, zero sorry; capstone V8_childResidual footprint = {propext, Classical.choice, Quot.sound}. Construction: explicit carrier v8Rc ((†) on the Fact-A/B development) + the private graded-residue calculus v8gr (parent hRadd/hRlt + StageCore w_strict/w_jump/R_neg as ONE additive map on the zero-or-deep domain). hRmul = L4_TRANSiii's convolution development Cdev re-derived at digit level + L3_DIV per-pair remainders + (I-aug) depth for carried quotients + the v8gr slot computation + Finset.sum_fiberwise convolution regroup; vanishing convolution coefficients are the same zero on both sides via D.3(d) digit-nonvanishing (the D.1(b) delta-calculus). V8c (first escalation) MOVED above V8a/V8b: its strict law feeds V8b's hRlt leg. UNBLOCKED: S9w_residualLaws now sorry-free (wired exact); S9r follows. DOC (2026-07-28, mechanical-closer round, VPRIME_CONFIRM gap 2 closed): the mfun ≡ 0 warrant display recorded — D.7(v)'s D-map definition D(x) := R(x) mod ψ ∈ F′ (MOVES 2364–2367; reduction mod ψ IS z̄-evaluation, i.e. digPrime), cited in the header, moves_ref, v8Rc_S5', and DefsChild.hS5'; the D.7(vi)–(vii) excerpt alone does not state it."
-  },
-  {
-   "id": "HC1.V9_K1nonrec",
-   "file": "lean/LeanUrat/HC1/V9_K1nonrec.lean",
-   "difficulty": "medium",
-   "sorries": 1,
-   "statement": "theorem V9_readSteepness (HistoryCoherent, 1 ≤ i, non-recentering) : ν_i.e·σ_i.h < ν_i.h; theorem V9_K1nonrec : K1_readVertexPin_nonrec's statement VERBATIM via the ReadFrame chain  [SideReads-(iii) seam FENCED — U31-gated; any restatement is a NEW sign-off item]",
-   "rev": "R3b ADJUDICATED (2026-07-28, carry-bridge escalation round): the one remaining sorry = V9_K1nonrec itself, behind R3a (spec'd, unbuilt), R3b (adjudicated NOT closable from the fenced pool), R3c (root corner, unchanged). NEW PROVED Lean-core: V9_wvEqStretch_of_bottomSlot + V9_bottomSlot_of_wvEqStretch (R3b ⟺ the BOTTOM-WINDOW LAW at the vertex coefficient) and V9_steepSide_frameDescent (the on-side frame values strictly descend at steep reads — the (iii)-tension seed). Sympy-verified countermodel f = (X+8)(Φ̂²+8X³) at the (1,1)-Gauss frame, read pair (1,2): SideReads(i)+(ii)+(vi)+hOrd + V1–V4 + hStretch/child_slotmin all hold, kernel conclusion FALSE (σ.w(B₂)=1 < 2) — sole violated clause is SideReads(iii)'s σ.R f rendering (the fenced seam). FINDING: the display R3b needs is §B2-DEF D.8-(TRANSPORT) UPWARD FORCED-WINDOW (MOVES 2521–2528) at the regraded frame; blueprint §10.1's fencing of (TRANSPORT) out of V4 (\"not needed\") is WRONG for V9. Follow-on unit: transcribe D.8-(TRANSPORT) at the ReadFrame; R3b closes via the proved reduction (boundary caveat t★=1 ∧ h★−e★σ.h=1 recorded). Full REV-3 record at the sorry; HC2/K1_vertexPin.lean obstruction item 5 mirrors it. REV 4 (2026-07-28, V10 transcription round): V9_K1nonrec PROVED at every leg EXCEPT the R3c corner i=0 ∧ e·g=1 (the one remaining sorry) — the e·g ≥ 2 legs close by V10_readTransition_incompatible (the recorded transition is CONTRADICTORY there — VACUOUS closure, loudly disclosed), the i ≥ 1 ∧ e·g = 1 legs by the species inventory (hspecInc). Import direction to HC2 reversed (v9_strFrame_pos private copy); HC2.K1_readVertexPin_nonrec WIRED := V9_K1nonrec. Corner obstruction: needs StageCore-grade tie laws (w_jump) or the fenced SideReads(iii) — full record in the REV-4 block. REV 5 (2026-07-28, R3c corner round): THE CORNER IS CLOSED — V9_K1nonrec sorry-free, Lean-core; the REV-4 adjudication superseded (neither StageCore tie laws nor SideReads(iii) consumed). Mechanisms: child_slotmin as the cross-slot jump law at the degree-1 keys + the binomial-transport slot-min v9c_slotmin (recentering-transport K1 without StageCoreL) + child_dig_frame same-weight cross-multiplication (mfun twists cancel) + v9c_taylor_ne (Hasse nonvanishing at the recorded root from hOrd). Downstream Lean-core-clean 10/10: K1_readVertexPin{,_nonrec}, K1_NA_transport_root/increment, K1_SAE_vertexEq_endpoint, U20a/U20b/U20c, readsOf_NA, U22-E2; readsOf_SAE/readsOf_realizable remain sorryAx via U22-E1/U21's own sorries only."
-  },
-  {
-   "id": "HC1.V10_transportWindow",
-   "file": "lean/LeanUrat/HC1/V10_transportWindow.lean",
-   "difficulty": "medium",
-   "sorries": 0,
-   "statement": "theorem V10_forcedKeyWeight (steep read-lift transition, e★g ≥ 2, TransitionData fields) : h★ = e★²·g·σ.h; theorem V10_readTransition_incompatible (+ hcop/hbez/P2-pin + σ'.s/σ'.t ties) : False; theorem V10_transportWindow (over the V2_readFrame carrier + V4 landing data + the recorded transition, e★g ≥ 2) : B μ ≠ 0 ∧ wV(B μ) = e★·σ.w(B μ)  [⚠ PROVED VACUOUSLY — the hypotheses are contradictory; the theorem's real content is the INCONSISTENCY FINDING]",
-   "rev": "LANDED + PROVED Lean-core, zero sorry (2026-07-28, V10 transcription round — the §B2-DEF D.8-(TRANSPORT) UPWARD FORCED-WINDOW clause, MOVES 2520–2528 quoted verbatim in the header). THE FINDING (machine-checked): HistoryCoherent's round-3 keying of TransitionCoreL at the READ pair (ν.e, ν.h) on the READ lift is UNSATISFIABLE with the child's own Stage laws whenever ν.e·ν.g ≥ 2 — σ'.hwmul+hStretch weigh Φ^{e★g} at e★g·e★σ.h while child_slotmin weighs it at min(e★σ.w τ, h★), forcing h★ = e★²gσ.h (⟹ e★=1, t★=0, s★=1), and then σ'.R Φ̂ = T 1 (hRΦ + the σ'.s tie) clashes with C(c^g)·T 0 (hRlt/hRmul/hS5'). Consequences: genuine steep increments are UNRECORDABLE (ReadsOf vacuous at the K1 kernel's hard perimeter — U31's single-node gate never probed this); the r3b countermodel cannot extend to ReadsOf (satisfies the forced equation, dies at the clash) with SideReads(iii) NOT consumed; the boundary caveats t★=1 / h★−e★σ.h=1 are EMPTY (t★=0 forced). NAMED SIGN-OFF ITEM (not silently changed): re-key the recorded child at the regraded side value (Φ̂ ↦ e★·(e★h★g)). Numeric mirror: verification/v10_transition_check.py (4 checks)."
-  }
- ],
- "signoff_2026-07-28": "F-1..F-6 EXECUTED (one event): F-1 T10(2)+C1(ii) → floorS step floor (lineStep/floorS defs in DefsCar); F-2 Tower.hcharF : CharP F p + C6_cardK_bridge PROVED in C6's file (C6 statement unchanged per §9.2); F-3 S7 → proved shape (scratch transplant, PROVED Lean-core; leg (c) homed to S9d); F-4 S8 → proved (I-aug) leg (PROVED; twist certificate retained in header; TvecUnitLaw homed to S9d); F-5 MoveWitness + core' : StageCoreL (both constructors), 9-file arity ripple (eBirthAux, T3, T4, T6, T7, C2, S13, S11), S11 PROVED (Part 1 = projection), S11a_coreTransport NEW+PROVED; F-6 S17 → ScratchS17 form (+hzsol +hcore), PROVED Lean-core, §4.6 dep-sorry pair out of HC1's cone. S9 DECOMPOSITION: DefsChild.lean (ChildResData choice-spec + childR + childWeightSet) + S9r/S9w/S9a/S9b/S9c (sorry statements) + S9d PROVED (consumes K1 bridges + S7 legs).",
- "vkernel_2026-07-28": "V′-KERNEL APPLIED (blueprint §10, V-prime applier): V5 SIGN-OFF EXECUTED FIRST (definition-change authority): Stage.hS6a RESTATED to the FIXED-POINT COSET form (∃ b : Kˣ before ∀ c : FQˣ; digit scalar C(c·b); docstring quotes MOVES 1964–1971 + 2431–2435) in Moves/Defs.lean. Ripple (all green, proofs run through): constructors T1_baseStage (b := 1), S1_transHypGate σpin (b := 1), S10_recStage (transport, SAME b), U17b stageMap (b ↦ resAut-image), U28/U30/U31 gate stages (b := 1), S9a hS6a′ restated to coset form (above-threshold leg b := 1 via L4_TRANSviii_b; strip sorry now = V7's obligation); consumers L5_realRecursion_R3 (two-line), T4/T7/C2 base-stage digLift (K = FQ absorbs the base: c := y·b⁻¹), L4_TRANSviii_a_R5{,_final} CONCLUSION RESTATED (∃ m : ℤ / c·z̄^m → ∃ d₀ : (↥σ′.K)ˣ / c·(d₀:F), ∃-before-∀c unchanged; proof repaired: parent coset base b folded through L2_strideRule, d₀ := the d of the c = 1 instance; PROVED, Lean-core). FULL PERIMETER RECOMPILED GREEN: 532 modules (Moves/MovesC/MovesD/MovesGr/MovesRBase/MovesS/MovesSp/MovesU/MovesX/HC1/HC2); the ONLY exclusions are MovesGr/L2_degZero_subring_v2 + L4_genuine_imp_stageCoreL_v2, PRE-EXISTING failures (machine-verified identical failure against HEAD's pre-V5 Defs.lean; DirectSum instance mismatches, no olean in cache — outside the maintained perimeter, unrelated to hS6a). V0–V9 ELABORATED: DefsV.lean (ReadPair/ReadResData/ReadResLaws/ReadFrame — sorry-free; ReadFrame.hS6a transcribed in the post-V5 coset form, deviation from the pre-V5 §10.1 parenthetical recorded in the file header) + 8 unit files, 13 E-phase sorries, all lake-green, footprints [propext, sorryAx, Classical.choice, Quot.sound] as expected. SideReads-(iii) seam stays FENCED (V9 header carries the §10.1 ⚠ block verbatim; SideReads untouched).",
- "c4_hoist_2026-07-30": "C4 HOIST (SYNTHESIS_PASS1 C4b, ratified in BRIDGE_ADJUDICATIONS 'C1+C4' cluster; golf HC1#96): the ~200-line construction repeated near-verbatim across S9a_stageLiteral/S9b_childWeightSet/S9c_coreAssembly (Bezout split -> S9w lawful carrier -> S2/S3/S5 childW plumbing -> slotwise hwult tower -> TRANSviii_b/V7 realizers -> Stage literal), plus S9c's private bare-Stage/grRes/coeff-core helper block, hoisted into the NEW module S9_builder.lean BEFORE the queued F4-gate consumers (BP2 HK-15/HK-16, BP3 TV-D6). `S9_builder` is the ONE new public assertion (the SharedRecenter recentering_scaffold precedent): its 5-conjunct ExistsBody = exactly the UNION of the three ratified ExistsBodies at the same literal witness and hypotheses (per-conjunct record in the file header; conjunct 4 weightSet closes by the single inserted rfl — the only non-verbatim line of the hoisted body, S9c's otherwise byte-verbatim). S9a/S9b/S9c mains are now projections; all three public statements + the three corner-refutation kernels byte-identical (scripted HEAD-vs-worktree statement diff = clean). S9_builder + S9a/S9b/S9c + downstream S9_transStage rebuilt green, all Lean-core footprints; net -1,073 lines across the trio (S9a 361->162, S9b 306->108, S9c 689->134; builder +654). CODEX PER-CONJUNCT PASS (2026-07-30, the SharedRecenter Phase-4 protocol): statement-level packet (pre/post statements + the one-line body diff + the U5 signature adaptation) -> verdicts CONFIRMED on all conjunct-equivalence claims; the single flag was a packet artifact (the quoted U7 HEAD block over-included pairwise_clause_unique, which is U7-ONLY, never duplicated, deliberately NOT hoisted, and survives in U7 untouched at its original statement — verified context-line-only in the diff)."
+  "campaign": "HC1 — the §B2-DEF tower induction hard core (wave 5, E-phase elaboration)",
+  "as_built_2026-07-30": "VERIFY-2 FOLD-IN ADDENDUM (2026-07-30). (1) The per-unit 'sorries' integers below are the FROZEN E-phase elaboration snapshot (2026-07-28) — kept verbatim as history; do NOT read them as current status. As-built census at HEAD: HC1 carries exactly TWO proof sorries — C6_alphabetCard.lean:63 (statement machine-argued false; Asvin queue Q3) and R6_carrierInstance.lean:130 (A17 statement-repair adjudication; NOTE its documented post-repair route now carries zero dep-sorries: C2_TYPa and T4_slotMinHt are proved Lean-core). All other units are proved with Lean-core footprints (repo-wide sorry grep + compiled #print axioms checks this date; 107-name census in lean/notes/golf_baseline_2026-07-30/HC1_axioms.txt records 'TOTAL: 2 real sorries'). Example resolutions: T1_baseStage 'sorries': 1 is stale (proved Lean-core); V9_K1nonrec 'sorries': 1 is superseded by its own rev field ('V9_K1nonrec sorry-free, Lean-core'). (2) CENSUS-WORDING CAVEAT: docs/PROJECT_STATE.md's 'corpus-wide sorry census: TEN' enumerates only the MovesT+MovesV fenced items and omits these two HC1 sorries (both separately tracked, so no hidden hole — but the TEN figure is not corpus-wide; a 2026-07-30 corpus-wide recount is in the verify-2 HC1 report).",
+  "blueprint": "lean/notes/HC1_LEAN_BLUEPRINT_2026-07-28.md (REV 2, accepted; DEVIATIONS appendix added at E-phase 2026-07-28) + §9 sign-off queue F-1..F-6 EXECUTED 2026-07-28 (queue applier; §9.9 execution record)",
+  "moves_source": "lean/notes/MOVES_2026-07-24.md §B2-DEF 1849-2745 + §C displays 3644-3831 + pass-7 carry spec 1502-1530",
+  "defs": [
+    "lean/LeanUrat/HC1/DefsD.lean",
+    "lean/LeanUrat/HC1/DefsTower.lean",
+    "lean/LeanUrat/HC1/DefsCar.lean",
+    "lean/LeanUrat/HC1/DefsSpine.lean",
+    "lean/LeanUrat/HC1/DefsChild.lean",
+    "lean/LeanUrat/HC1/DefsV.lean"
+  ],
+  "defs_sorry_free": true,
+  "preamble": "Every unit file begins: `import Mathlib` then the HC1 Defs module(s) it needs (`LeanUrat.HC1.DefsD` / `DefsTower` / `DefsCar` / `DefsSpine`) then the cited PROVED Moves/MovesGr/MovesC unit files; then `set_option linter.style.longLine false`, `set_option linter.style.header false`, `set_option linter.unusedSectionVars false`, `set_option maxHeartbeats 800000`; then `namespace LeanUrat.HC1` and `open Polynomial LeanUrat.Moves` (plus `open scoped Classical` where Pi.single/filters need decidability). Statements elaborate under that preamble (verified per-file by `lake env lean`, MOVESGR §6 double-elaboration discipline: statements regenerated verbatim from this manifest must re-elaborate). `sorry` is the only allowed escape — ZERO new axioms; any GMN/Denef import in a cone is stop-the-line.",
+  "build": "cd lean && lake env lean -o .lake/build/lib/lean/LeanUrat/HC1/<f>.olean LeanUrat/HC1/<f>.lean, topological order per Defs chain; NEVER bare `lake build`. Every unit file ends with `#print axioms <thm>` (expected: propext, sorryAx, Classical.choice, Quot.sound until proved; then Lean-core only).",
+  "decide_gates": "G1-G5 carry typed statements with sorry bodies at E-phase; the fleet closes them by decide/norm_num/construction — NO sorry allowed at acceptance for the G layer.",
+  "dep_sorries": {},
+  "hypothesis_ledger": {
+    "TowerRealizable": "Type-valued open kernel (blueprint §5 + Deviation D-3): carries the per-read lines/windows + slope/vertex ties + steeper/vertex-entry/window conditions; consumers T10, C1, C4, R6; never discharged inside HC1",
+    "hexact": "anchor exactness per stratum, threaded on S16/S17 verbatim from L5_landTwoSided_repair",
+    "REL1": "R-layer statement defs (LSTStmt'/TYPStmt'/DOMStmt'/SecB1Stmt'/EQ2lawIfREL1') are the typed open kernel; consumers hypothesize, never assert",
+    "hzsol_hcore": "S17's F-6 pair (blueprint §9.7): hzsol = the zero-code jet-chart datum (§4.6(b)'s +hzsol spec); hcore = StageCore at the level stage, carried explicitly (post-F-5 dischargeable from the tower via (S11_towerSpine T).1 k.castSucc |>.core — recorded, not taken)",
+    "VertexPin": "the K1 named-hypothesis Prop (D.7(vi) pinned normalization, mfun ≡ 0); non-vacuity obligation sits with S9c's construction; consumers S9a-S9d via the K1 bridges"
+  },
+  "blocked": [],
+  "units": [
+    {
+      "id": "HC1.D1_carryRing",
+      "file": "lean/LeanUrat/HC1/D1_carryRing.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem D1_carryRing (F : Type*) [Field F] (e : ℕ) [NeZero e] (zbar : Fˣ) : Nonempty (CarryRingPack F e zbar)"
+    },
+    {
+      "id": "HC1.D2_carryGrading",
+      "file": "lean/LeanUrat/HC1/D2_carryGrading.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem D2_carryGrading {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : (∀ (ρ σ : ZMod e) (c c' : F), (letI := P.ring; dOf ρ c * dOf σ c') = dOf (ρ + σ) (c * c' * (zbar : F) ^ carryExp ρ σ)) ∧ (∀ (x y : CarryAlg F e) (ρ σ : ZMod e), IsHomog x ρ → IsHomog y σ → IsHomog (letI := P.ring; x * y) (ρ + σ))"
+    },
+    {
+      "id": "HC1.D3_carryDomain",
+      "file": "lean/LeanUrat/HC1/D3_carryDomain.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem D3_carryDomain {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) (x y : CarryAlg F e) (ρ σ : ZMod e) (hx : IsHomog x ρ) (hy : IsHomog y σ) (hx0 : x ≠ 0) (hy0 : y ≠ 0) : (letI := P.ring; x * y) ≠ 0"
+    },
+    {
+      "id": "HC1.D4_carryAdjoinRoot",
+      "file": "lean/LeanUrat/HC1/D4_carryAdjoinRoot.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem D4_carryAdjoinRoot {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : ∃ Θ : (letI := P.ring; CarryAlg F e ≃+* AdjoinRoot (Polynomial.X ^ e - Polynomial.C ((zbar : F)))), ∀ (ρ : ZMod e) (c : F), Θ (dOf ρ c) = algebraMap F _ c * AdjoinRoot.root (Polynomial.X ^ e - Polynomial.C ((zbar : F))) ^ ρ.val"
+    },
+    {
+      "id": "HC1.D5_carryE1",
+      "file": "lean/LeanUrat/HC1/D5_carryE1.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem D5_carryE1 {F : Type*} [Field F] {zbar : Fˣ} (P : CarryRingPack F 1 zbar) : ∃ Θ : (letI := P.ring; CarryAlg F 1 ≃+* F), ∀ x : CarryAlg F 1, Θ x = x 0"
+    },
+    {
+      "id": "HC1.D6_carryHomogUnits",
+      "file": "lean/LeanUrat/HC1/D6_carryHomogUnits.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem D6_carryHomogUnits {F : Type*} [Field F] {e : ℕ} [NeZero e] {zbar : Fˣ} (P : CarryRingPack F e zbar) : (∀ (ρ : ZMod e) (c : F), c ≠ 0 → (letI := P.ring; dOf ρ c * dOf (-ρ) (c⁻¹ * ((zbar : F) ^ carryExp ρ (-ρ))⁻¹) = 1)) ∧ (∀ (x : CarryAlg F e) (ρ : ZMod e), IsHomog x ρ → x ≠ 0 → (letI := P.ring; IsUnit x))"
+    },
+    {
+      "id": "HC1.D7_digD_mul",
+      "file": "lean/LeanUrat/HC1/D7_digD_mul.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "rev": "D7 ADJUDICATION 2026-07-28 (orchestrator, from MOVES 1385-1400): the E-phase form stated DIG-multiplicativity against the WRONG target — bare IsMonomialUnit hypotheses leave the three anchors as free choice-data tied only through the field-level dig′ identity, against which the law is underdetermined: it holds iff e_b ∣ d ∧ z̄^{d − d/e_b} = 1 for the free anchor discrepancy d = (kB + kB″) − kR (the prover's re-derived counterexample condition; the pass-6/7 counterexample that forced the twist, MOVES 1388). RESTATED per the adjudication as the twisted homomorphism law with the z-offsets explicit on both sides and the anchor addition pinned in h5R (position kB + kB″, MOVES 1400 'plus the anchor addition'; in consumption = the (P6) absolute bookkeeping: position additivity from DIV's exact remainder weight at weight-pinned positions); conclusion unchanged (cmul = the DefsD cocycle product, checked). PROVED 2026-07-28 via L3_DIV (the ψ-adic division identity forces c_R = c·c″ at the added anchor) + the alignment-quotient carry identity ⌊(k+k′)/e⌋ = ⌊k/e⌋ + ⌊k′/e⌋ + carryExp; axioms [propext, Classical.choice, Quot.sound].",
+      "statement": "theorem D7_digD_mul {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) (ψ : Polynomial ↥σ.K) (g : ℕ) (hg : ψ.natDegree = g) (hψ : Irreducible ψ) (hψz : ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift σ ψ g Φhat) (zbar : Fˣ) (hzbar : Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0) (e_b : ℕ) [NeZero e_b] (B B'' Rdev Q : Polynomial ℤ_[p]) (hB : B ≠ 0) (hB'' : B'' ≠ 0) (hBd : B.natDegree < σ.e * g * σ.Φ.natDegree) (hB''d : B''.natDegree < σ.e * g * σ.Φ.natDegree) (hdiv : B * B'' = Q * Φhat + Rdev) (hRd : Rdev.natDegree < σ.e * g * σ.Φ.natDegree) (cB cB'' cR : (↥σ.K)ˣ) (kB kB'' : ℤ) (h5B : σ.R B = LaurentPolynomial.C (cB : ↥σ.K) * LaurentPolynomial.T kB) (h5B'' : σ.R B'' = LaurentPolynomial.C (cB'' : ↥σ.K) * LaurentPolynomial.T kB'') (h5R : σ.R Rdev = LaurentPolynomial.C (cR : ↥σ.K) * LaurentPolynomial.T (kB + kB'')) : σ.digD zbar e_b Rdev = cmul zbar (σ.digD zbar e_b B) (σ.digD zbar e_b B'')"
+    },
+    {
+      "id": "HC1.D8_digD_recenter",
+      "file": "lean/LeanUrat/HC1/D8_digD_recenter.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem D8_digD_recenter {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (cc : ↥σ.K) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (zbar : Fˣ) (e_b : ℕ) [NeZero e_b] (B : Polynomial ℤ_[p]) (hB : B ≠ 0) (hBc : inC σ.Φ B) : σ'.digD zbar e_b B = σ.digD zbar e_b B"
+    },
+    {
+      "id": "HC1.T1_baseStage",
+      "file": "lean/LeanUrat/HC1/T1_baseStage.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem T1_baseStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (e h : ℕ) (bdata : BaseReadData p F e h) : ∃ σ : Stage p F, IsBaseStage σ ∧ StageCoreL σ ∧ σ.e = e ∧ σ.h = h"
+    },
+    {
+      "id": "HC1.T2_baseGate",
+      "file": "lean/LeanUrat/HC1/T2_baseGate.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem T2_baseGate : ∃ σ : Stage 2 (GaloisField 2 2), IsBaseStage σ ∧ StageCoreL σ"
+    },
+    {
+      "id": "HC1.T3_htChainWeight",
+      "file": "lean/LeanUrat/HC1/T3_htChainWeight.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem T3_htChainWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (c : T.Coord) (hc : c.MonoNZ) : (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c"
+    },
+    {
+      "id": "HC1.T4_slotMinHt",
+      "file": "lean/LeanUrat/HC1/T4_slotMinHt.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ) (hfin : (Function.support y).Finite) (hsupp : ∀ c, y c ≠ 0 → T.blk c = b) (hne : T.slotCoeff b y ≠ 0) : ∃ c₀ : T.Coord, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c : T.Coord, y c ≠ 0 → T.ht c₀ ≤ T.ht c"
+    },
+    {
+      "id": "HC1.T5_levelSetInGamma",
+      "file": "lean/LeanUrat/HC1/T5_levelSetInGamma.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem T5_levelSetInGamma {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ) (hxfin : (Function.support x).Finite) (hyfin : (Function.support y).Finite) (hagree : ∀ c ∈ T.levelSet b γ, x c = y c) (hxlow : ∀ c, T.blk c = b → T.ht c < γ → x c = 0) (hylow : ∀ c, T.blk c = b → T.ht c < γ → y c = 0) : T.inGr γ (T.slotCoeff b x) = T.inGr γ (T.slotCoeff b y)"
+    },
+    {
+      "id": "HC1.T6_carrierLaws",
+      "file": "lean/LeanUrat/HC1/T6_carrierLaws.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem T6_carrierLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : T.HasSide ∧ T.CarrierLaws"
+    },
+    {
+      "id": "HC1.T7_alphabetSpan",
+      "file": "lean/LeanUrat/HC1/T7_alphabetSpan.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem T7_alphabetSpan {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) : ((T.alphabet b γ : Set (T.grQ γ)) = { x | ∃ (s : Finset ↥(T.levelSet b γ)) (dig : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ), x = ∑ c ∈ s, T.typComposite b γ (Pi.single c (dig c)) }) ∧ Finite ↥(T.alphabet b γ) ∧ p ^ T.aDim b γ = Nat.card ↥(T.alphabet b γ)"
+    },
+    {
+      "id": "HC1.T8_alphabetStep",
+      "file": "lean/LeanUrat/HC1/T8_alphabetStep.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem T8_alphabetStep {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) : ∃ A : AddSubgroup (↥(T.levelSet b γ) → ↥(T.stg 0).FQ), Set.BijOn (T.typComposite b γ) ↑A ↑(T.alphabet b γ) ∧ (∀ x ∈ A, ∀ y ∈ A, T.typComposite b γ (x + y) = T.typComposite b γ x + T.typComposite b γ y) ∧ p ^ T.aDim b γ = Nat.card ↥A"
+    },
+    {
+      "id": "HC1.T9_blockDisjoint",
+      "file": "lean/LeanUrat/HC1/T9_blockDisjoint.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem T9_blockDisjoint {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ (b b' : ℕ) (γ γ' : ℚ), (b, γ) ≠ (b', γ') → Disjoint (T.levelSet b γ) (T.levelSet b' γ')) ∧ Function.Injective (fun c : T.Coord => (T.baseIdx c, c.l))"
+    },
+    {
+      "id": "HC1.T10_floorStaircase",
+      "file": "lean/LeanUrat/HC1/T10_floorStaircase.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem T10_floorStaircase {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) (hb : rl.interiorB b) : rl.floorB b = (rl.line T.K).at (T.blockEdge b) ∧ (∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b)",
+      "rev": "F-1 (2026-07-28): conjunct 2 restated on the STEP floor floorS (raw-line floorC form machine-refuted, ScratchT10 retained); floorC stays for DOM-side consumers; proof route in header (DOM engine + one divisibility lemma) — fleet work."
+    },
+    {
+      "id": "HC1.T11_attainDichotomy",
+      "file": "lean/LeanUrat/HC1/T11_attainDichotomy.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem T11_attainDichotomy {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (X : T.grQ γ) : ((∃ y : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ, T.typComposite b γ y = X) ↔ X ∈ T.alphabet b γ) ∧ (X ∉ T.alphabet b γ → {y : ↥(T.levelSet b γ) → ↥(T.stg 0).FQ | T.typComposite b γ y = X} = ∅) ∧ (0 : T.grQ γ) ∈ T.alphabet b γ"
+    },
+    {
+      "id": "HC1.T12_coordFin",
+      "file": "lean/LeanUrat/HC1/T12_coordFin.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem T12_coordFin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (lmax bmax : ℕ) : Set.Finite {c : T.Coord | c.l < lmax ∧ c.slot (Fin.last T.K) < bmax} ∧ (∀ (b : ℕ) (γ : ℚ), {c : T.Coord | T.blk c = b ∧ T.ht c = γ} = T.levelSet b γ)"
+    },
+    {
+      "id": "HC1.C1_LST",
+      "file": "lean/LeanUrat/HC1/C1_LST.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem C1_LST {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : -- (i-a): ht is the K1-chain weight of the basis monomial (T3's form) (∀ c : T.Coord, c.MonoNZ → (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : ℚ) = (T.strTop : ℚ) * T.ht c) ∧ -- (i-b): the iterated slot minimum (T4's form) (∀ (b : ℕ) (y : T.Coord → ↥(T.stg 0).FQ), (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → T.slotCoeff b y ≠ 0 → ∃ c₀, y c₀ ≠ 0 ∧ T.wQ (T.slotCoeff b y) = (T.ht c₀ : WithTop ℚ) ∧ ∀ c, y c ≠ 0 → T.ht c₀ ≤ T.ht c) ∧ -- (i-c): in_γ' is a function of exactly the level set (T5's form) (∀ (b : ℕ) (γ' : ℚ) (x y : T.Coord → ↥(T.stg 0).FQ), (Function.support x).Finite → (Function.support y).Finite → (∀ c ∈ T.levelSet b γ', x c = y c) → (∀ c, T.blk c = b → T.ht c < γ' → x c = 0) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b x) = T.inGr γ' (T.slotCoeff b y)) ∧ -- (ii): the staircase STEP floor on factor-interior blocks (T10's F-1 form) (∀ b, rl.interiorB b → ∀ c : T.Coord, T.blk c = b → rl.floorS c = rl.floorB b) ∧ -- (iii): level sets strictly above the floor avoid the floor set (∀ (b : ℕ) (γ' : ℚ), rl.interiorB b → rl.floorB b < γ' → T.levelSet b γ' ∩ {c | T.blk c = b ∧ T.ht c ≤ rl.floorB b} = ∅)",
+      "rev": "F-1 (2026-07-28): leg (ii) restated on floorS alongside T10; other legs untouched; proof cites T10 verbatim (sorryAx via T10 only)."
+    },
+    {
+      "id": "HC1.C2_TYPa",
+      "file": "lean/LeanUrat/HC1/C2_TYPa.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem C2_TYPa {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) : (∀ y : T.Coord → ↥(T.stg 0).FQ, (Function.support y).Finite → (∀ c, y c ≠ 0 → T.blk c = b) → (∀ c, T.blk c = b → T.ht c < γ' → y c = 0) → T.inGr γ' (T.slotCoeff b y) = T.typComposite b γ' (fun c => y c.1)) ∧ (∀ x y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ, T.typComposite b γ' (x + y) = T.typComposite b γ' x + T.typComposite b γ' y)"
+    },
+    {
+      "id": "HC1.C3_TYPb",
+      "file": "lean/LeanUrat/HC1/C3_TYPb.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem C3_TYPb {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) : (Set.range (T.typComposite b γ') = ↑(T.alphabet b γ')) ∧ (∀ X X' : T.grQ γ', X ∈ T.alphabet b γ' → X' ∈ T.alphabet b γ' → Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X} = Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X'}) ∧ (∀ X : T.grQ γ', X ∈ T.alphabet b γ' → Nat.card {y : ↥(T.levelSet b γ') → ↥(T.stg 0).FQ // T.typComposite b γ' y = X} * Nat.card ↥(T.alphabet b γ') = Nat.card (↥(T.levelSet b γ') → ↥(T.stg 0).FQ))"
+    },
+    {
+      "id": "HC1.C4_DOM",
+      "file": "lean/LeanUrat/HC1/C4_DOM.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem C4_DOM {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) (i : Fin (T.K + 1)) (m : ℕ) (hm : m < i.val) (b : ℕ) (hb : b < rl.interiorEnd i.val) : (rl.line m).at b ≤ (rl.line i.val).at b ∧ MovesC.floorOf rl.line i.val b = (rl.line i.val).at b"
+    },
+    {
+      "id": "HC1.C5_typToClause",
+      "file": "lean/LeanUrat/HC1/C5_typToClause.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem C5_typToClause {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (m : ℕ) (S : Finset (Fin m)) (enc : (Fin m → ZMod p) →+ (↥(T.levelSet b γ') → ↥(T.stg 0).FQ)) (hdep : ∀ x y : Fin m → ZMod p, (∀ c ∈ S, x c = y c) → enc x = enc y) (hsurj : Function.Surjective enc) (X : T.grQ γ') (hX : X ∈ T.alphabet b γ') : ∃ cl : MovesC.LevelClause p m, cl.support = S ∧ cl.codim = T.aDim b γ' ∧ ∀ x : Fin m → ZMod p, cl.sat x ↔ T.typComposite b γ' (enc x) = X"
+    },
+    {
+      "id": "HC1.C6_alphabetCard",
+      "file": "lean/LeanUrat/HC1/C6_alphabetCard.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem C6_alphabetCard {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (b : ℕ) (γ : ℚ) (hne : (T.levelSet b γ).Nonempty) : Nat.card ↥(T.alphabet b γ) = p ^ T.aDim b γ ∧ (Nat.card ↥(T.alphabet b γ) = Nat.card ↥(T.stg (Fin.last T.K)).K ↔ ∀ c : ↥(T.levelSet b γ), ∃ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) ≠ 0) ∧ ((∃ c : ↥(T.levelSet b γ), ∀ y : ↥(T.stg 0).FQ, T.typComposite b γ (Pi.single c y) = 0) → T.aDim b γ < Nat.log p (Nat.card ↥(T.stg (Fin.last T.K)).K))",
+      "rev": "F-2 (2026-07-28): Tower gains hcharF : CharP F p (DefsTower, additive); C6_cardK_bridge PROVED in this file (RingHom.charP + FiniteField.card; Lean-core); C6's own statement UNCHANGED per §9.2 — its proof (open) consumes the bridge for conjuncts 2-3."
+    },
+    {
+      "id": "HC1.S1_transHypGate",
+      "file": "lean/LeanUrat/HC1/S1_transHypGate.lean",
+      "difficulty": "medium",
+      "sorries": 2,
+      "statement": "theorem S1_transHypGate_a : ∃ (σ : Stage 2 (GaloisField 2 2)) (Φhat : Polynomial ℤ_[2]) (h' : ℕ) (zbar : (GaloisField 2 2)ˣ), IsBaseStage σ ∧ StageCoreL σ ∧ σ.Φ = Polynomial.X ∧ σ.e = 1 ∧ σ.h = 1 ∧ σ.K = ⊥ ∧ TransHyp σ (Polynomial.X ^ 2 + Polynomial.X + 1) 2 Φhat 1 h' zbar\n\ntheorem S1_transHypGate_b {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (Φhat : Polynomial ℤ_[p]) (h' : ℕ) (zbar : Fˣ) : ¬ TransHyp σ ψ g Φhat 0 h' zbar"
+    },
+    {
+      "id": "HC1.S2_childW",
+      "file": "lean/LeanUrat/HC1/S2_childW.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem S2_childW {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hdeg : 1 ≤ Φhat.natDegree) (e' h' : ℕ) : (∀ f : Polynomial ℤ_[p], f ≠ 0 → ∃ (B : ℕ → Polynomial ℤ_[p]) (N : ℕ), IsDevelopment Φhat f B N ∧ SlotMinAttained (childW σ Φhat e' h' f) N (fun j => (e' : ℤ) * σ.w (B j) + (j : ℤ) * (h' : ℤ)) (fun j => B j ≠ 0)) ∧ IsSlotMinWeight (childW σ Φhat e' h') Φhat e' h' σ.w"
+    },
+    {
+      "id": "HC1.S3_childK1",
+      "file": "lean/LeanUrat/HC1/S3_childK1.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem S3_childK1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic) (hdeg : 1 ≤ Φhat.natDegree) (e' h' : ℕ) (he' : 1 ≤ e') (hh' : 1 ≤ h') (hw1 : σ.w 1 = 0) : childW σ Φhat e' h' Φhat = (h' : ℤ) ∧ K1At (childW σ Φhat e' h') Φhat ((h' : ℤ))"
+    },
+    {
+      "id": "HC1.S4_childSubmult",
+      "file": "lean/LeanUrat/HC1/S4_childSubmult.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem S4_childSubmult {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (f f' : Polynomial ℤ_[p]) (hf : f ≠ 0) (hf' : f' ≠ 0) : childW σ Φhat e' h' f + childW σ Φhat e' h' f' ≤ childW σ Φhat e' h' (f * f')"
+    },
+    {
+      "id": "HC1.S5_childValuation",
+      "file": "lean/LeanUrat/HC1/S5_childValuation.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem S5_childValuation {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : (∀ f f' : Polynomial ℤ_[p], f ≠ 0 → f' ≠ 0 → childW σ Φhat e' h' (f * f') = childW σ Φhat e' h' f + childW σ Φhat e' h' f') ∧ AddSubgroup.closure {n : ℤ | ∃ f f' : Polynomial ℤ_[p], f ≠ 0 ∧ f' ≠ 0 ∧ childW σ Φhat e' h' f - childW σ Φhat e' h' f' = n} = ⊤"
+    },
+    {
+      "id": "HC1.S6_childS4field",
+      "file": "lean/LeanUrat/HC1/S6_childS4field.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem S6_childS4field {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) : (∀ x : F, x ∈ σ.nextField zbar → x ≠ 0 → ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC Φhat B ∧ σ.digPrime zbar B = x) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → σ.digPrime zbar B ∈ σ.nextField zbar) ∧ (∀ B B' : Polynomial ℤ_[p], B ≠ 0 → B' ≠ 0 → B - B' ≠ 0 → inC Φhat B → inC Φhat B' → σ.w B = σ.w B' → σ.digPrime zbar B = σ.digPrime zbar B' → σ.w B < σ.w (B - B'))"
+    },
+    {
+      "id": "HC1.S7_childPin",
+      "file": "lean/LeanUrat/HC1/S7_childPin.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem S7_childPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : ((e' : ℤ) * σ'.s + (h' : ℤ) * σ'.t = 1 ∧ (e' = 1 → σ'.t = 0)) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC Φhat B → ∃ c' : (↥σ'.K)ˣ, σ'.R B = LaurentPolynomial.C ((c' : ↥σ'.K)) * LaurentPolynomial.T (- σ'.t * σ.w B)) ∧ (∀ ℓ : LaurentPolynomial ↥σ'.K, LaurentPolynomial.C ℓ ∈ σ'.coeffLocSR → ∃ d : ↥σ'.K, ℓ = LaurentPolynomial.C d) ∧ (∀ d : ↥σ'.K, LaurentPolynomial.C (LaurentPolynomial.C d) ∈ σ'.coeffLocSR)",
+      "rev": "F-3 (2026-07-28): RESTATED to the escalation scratch's proved shape (conjuncts 1-3 + CoeffLocLaw legs (a)/(b)); PROVED (scratch transplanted verbatim; Lean-core). Leg (c) — the z'-pin — homed to S9d (by construction, via K1_coeffLocC_of_pin)."
+    },
+    {
+      "id": "HC1.S8_childS6",
+      "file": "lean/LeanUrat/HC1/S8_childS6.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem S8_childS6 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : (σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ)",
+      "rev": "F-4 (2026-07-28): RESTATED to the proved (I-aug) leg; PROVED (Lean-core). TvecUnitLaw conjunct homed to S9d (the note pins the twist — D.7(vi) quoted in header; the dual-audited twist-symmetry certificate retained in header)."
+    },
+    {
+      "id": "HC1.S9_transStage",
+      "file": "lean/LeanUrat/HC1/S9_transStage.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "statement": "theorem S9_transStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ' ∧ σ'.K = σ.nextField zbar ∧ σ'.e = e' ∧ σ'.h = h'",
+      "rev": "S9 DECOMPOSITION (2026-07-28, §9.5): statement UNCHANGED; the pre-approved split S9r/S9w/S9a/S9b/S9c/S9d landed as units (S9d PROVED); S9 = ⟨literal, S9c, S9a-S9d⟩ once the construction block (S9r + S9w + S9a-c) closes. || RESTATED+PROVED (2026-07-28, S9c specialist): gains the adjudicated increment guard hEG : 1 < σ.e * g (MOVES 3755-3757; unguarded shape refuted by the in-file standalone kernel S9_ungated_corner_refuted — TransitionCoreL.base.child_reps + hreps degree collision at e*g = 1; the corner is the note's RECENTERING species, PROVED S10's). PROVED Lean-core, zero sorry: S9 = <S9c, S9d> per section 9.5 — S9c (guarded) supplies literal + TransitionCoreL + VertexPin + tie + StageCore; S9d_stageCoreL closes StageCoreL (hPhiIn = the guard's degree consequence via L3_liftMonic); K/e/h pins = the record's child_field/child_e/child_h."
+    },
+    {
+      "id": "HC1.S9r_childR",
+      "file": "lean/LeanUrat/HC1/S9r_childR.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — UNBUNDLED (remediation round, same day): ChildResData is now the CARRIER ONLY (Rc + the D.3(b) key pin + the S5' pinned shape — §9.5's S9r billing), so this unit is the construction SEED; the law pack moved to ChildResLaws (DefsChild) and its lawful-carrier existence is S9w's own theorem. Once S9w lands, S9r follows from its first conjunct.",
+      "statement": "theorem S9r_childR {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : Nonempty (ChildResData σ Φhat e' h' zbar s' t')"
+    },
+    {
+      "id": "HC1.S9w_residualLaws",
+      "file": "lean/LeanUrat/HC1/S9w_residualLaws.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "rev": "NEW (S9 decomposition, §9.5; 2026-07-28) — RESTORED SHAPE (remediation round, same day; the Codex S9 rejection repair): S9w's OWN theorem = (∃ D : ChildResData, ChildResLaws D) ∧ w_strict — the §9.5 hard new-algebra block, one sorry, hardness honestly homed HERE (the E-phase draft had bundled the laws as ChildResData fields, relocating the hardness into S9r). The former nine projections survive as the PROVED Lean-core corollary childR_laws (explicitly labeled NOT the unit's content). — WIRED (escalation round 2026-07-28, S9w_final): own sorry KILLED, closes by `exact V8_childResidual` per the §10 staged plan; conjunct (ii) w_strict is PROVED Lean-core (V8c); conjunct (i) inherits sorryAx from V8b ONLY (the carrier-construction block) until it lands. CLOSED (2026-07-28 second escalation): V8b/V8a proved; S9w rides V8_childResidual by exact — sorry-free, Lean-core.",
+      "statement": "theorem S9w_residualLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (s' t' : ℤ) (hbez' : (e' : ℤ) * s' + (h' : ℤ) * t' = 1) (ht'0 : e' = 1 → t' = 0) : (∃ D : ChildResData σ Φhat e' h' zbar s' t', ChildResLaws D) ∧ (∀ f g', f ≠ 0 → g' ≠ 0 → childW σ Φhat e' h' f < childW σ Φhat e' h' g' → childW σ Φhat e' h' (f + g') = childW σ Φhat e' h' f)"
+    },
+    {
+      "id": "HC1.S9a_stageLiteral",
+      "file": "lean/LeanUrat/HC1/S9a_stageLiteral.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the child Stage literal ∃ with construction recorded (TransitionData + VertexPin + childW tie); the ↥K/↥K' cast wall lives inside this proof. RESTATED (2026-07-28, adjudicated restate-after-refutation): acceptance-fleet REFUTATION at the σ.e·g = 1 corner (child_reps + hreps force deg σ.Φ < deg Φ̂ = σ.e·g·deg σ.Φ — machine-checked kernel S9a_ungated_corner_refuted, PROVED Lean-core, in-file); ADJUDICATED against the note: the LST increment step carries the explicit e·g > 1 guard (MOVES 3755–3757 'STEP at an INCREMENT ν_{i+1} (stage data (e_{i+1}, h_{i+1}), e·g > 1)'); the corner is the RECENTERING species (MOVES 3766–3767), S10's territory. Statement gains hEG : 1 < σ.e * g; corner now fails the hypotheses (S9a_corner_fails_guard, PROVED). CENSUS RE-RUN under the guard (same day): the full literal ASSEMBLED — Bézout split, hwult (slotwise development addition, in-file), hwmul/hvalgrp (S5), hwΦ/hK1 (S3), hStretch (L4_TRANSii), hreps/hTvec (the guard's degree gap), hWS (weightSet := 𝒜'), hS6b + the above-threshold half of hS6a (L4_TRANSviii_b + the carrier pin), R/laws/hRΦ/hS5/VertexPin (S9w's lawful carrier); TransitionData all-definitional; childW tie rfl. SINGLE RESIDUAL (the file's one sorry): hS6a on the BELOW-THRESHOLD STRIP ν ≤ σ.w Φ̂ — the raw D.7(vi) pin (mfun ≡ 0) pins strip digit sets to the twisted orbit ⋃ D(w̃)·z̄^{j·s−t·w̃} while Stage.hS6a demands the untwisted F_Qˣ; robust two-level counterexample numerics in the file header (parent side (3,2), depth-2 K=𝔽₉/FQ=𝔽₃: fails at (ν,c) = (2,1)); the note's (S6a') lives in the V′-normalized coordinate (MOVES 2395–2418). ADJUDICATION QUEUED: re-pin VertexPin/hS5' to the alignment function (blueprint §9.5 'mfun := THE alignment function'; K1 faithfulness flag anticipated the re-instantiation) or scope the child hS6a obligation above threshold. ADJUDICATION RESOLVED (V5 sign-off, blueprint §10 Key Finding 2: Stage.hS6a restated to the fixed-point coset form; mfun ≡ 0 IS the note's V′ normalization — warrant: D.7(v)'s D-map definition D(x) := R(x) mod ψ, MOVES 2364–2367). STRIP DISCHARGED (S9a_final, 2026-07-28): hS6a' below-threshold leg closes by V7_stripDischarge (σ′-free; the planned V6(b)+TRANSviii_a route was CIRCULAR). File sorry-free; S9a_stageLiteral footprint {propext, Classical.choice, Quot.sound}.",
+      "statement": "theorem S9a_stageLiteral {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionData σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f)"
+    },
+    {
+      "id": "HC1.S9b_childWeightSet",
+      "file": "lean/LeanUrat/HC1/S9b_childWeightSet.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative over S9a + weightSet pinned to 𝒜' (childWeightSet); (S6a')/(S6b') via the TRANSviii finals inside the construction. RESTATED + PROVED (2026-07-28, mechanical-closer round — the S9a precedent + adjudication applied verbatim; blueprint §10.7(B)): statement gains the increment guard hEG : 1 < σ.e * g (MOVES 3755–3757; the e·g = 1 corner is the RECENTERING species 3766–3767, S10's territory). In-file kernel S9b_ungated_corner_refuted (PROVED Lean-core): the unguarded S9b is refuted at the corner — its ∃ contains the refuted S9a shape, so the kernel delegates to S9a_ungated_corner_refuted; corner-exclusion arithmetic cited as-is (S9a_corner_fails_guard, statement-independent). GUARDED PROOF EXECUTED: the S9a_final construction re-run verbatim (Bézout split, S9w lawful carrier, S2/S3/S5 plumbing, in-file hwult, L4_TRANSviii_b + carrier pin above threshold, V7_stripDischarge below — σ′-free; the E-phase 'via the TRANSviii finals' billing superseded exactly as at S9a_final, TRANSviii_a circular), fourth conjunct weightSet = 𝒜′ closes by rfl (the literal already pins weightSet := childWeightSet). Zero sorry; footprint {propext, Classical.choice, Quot.sound}.",
+      "statement": "theorem S9b_childWeightSet {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionData σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ σ'.weightSet = childWeightSet σ Φhat"
+    },
+    {
+      "id": "HC1.S9c_coreAssembly",
+      "file": "lean/LeanUrat/HC1/S9c_coreAssembly.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): cumulative + full TransitionCoreL (child_dig_frame = the pin via VertexPin.to_child_dig_frame, mfun := 0, no ∃-slack) + StageCore (non-twist legs via S11a; w_jump via the ChildResLaws conjunct (2026-07-28 unbundle; formerly a ChildResData field); SlotDecomp/CoeffFieldLawCore via L4_TRANSvii_R4 + S6). || RESTATED+PROVED (2026-07-28, S9c specialist): gains the adjudicated increment guard hEG : 1 < σ.e * g (MOVES 3755-3757, the S9a/S9b precedent verbatim; unguarded shape refuted by the in-file machine-checked S9c_ungated_corner_refuted, delegating to S9a's kernel). PROVED Lean-core, zero sorry: the S9a/S9b literal + td/pin/tie as before; TransitionCoreL.child_Tvec = rfl, child_dig_frame = the pin via VertexPin.to_child_dig_frame (mfun := 0); StageCore = S11a's seven non-twist legs + w_jump (ChildResLaws conjunct) + TvecLaw via the NEW in-file bridge tvecLaw_of_tvecUnitLaw from K1_tvecUnitLaw_of_pin (supersedes the 'by construction' route) + SlotDecomp via Moves.L2_slotDecomp + CoeffFieldLawCore via the NEW in-file generic coeffCore_of_stage (all three (S4)-core clauses from bare Stage fields + wPrev_mul: clause 1 = hS6b above threshold; clause 2 = hS5 monomials + hStretch product law; clause 3 = -1 = -(e's'+h't') on the hS6b pair (B1, B2*Phi^e') — supersedes the L4_TRANSvii_R4 + S6 plan, leaner and generic).",
+      "statement": "theorem S9c_coreAssembly {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (hEG : 1 < σ.e * g) : ∃ σ' : Stage p F, TransitionCoreL σ σ' Φhat e' h' zbar ∧ VertexPin σ σ' Φhat zbar ∧ (∀ f, f ≠ 0 → σ'.w f = childW σ Φhat e' h' f) ∧ StageCore σ'"
+    },
+    {
+      "id": "HC1.S9d_pinVerify",
+      "file": "lean/LeanUrat/HC1/S9d_pinVerify.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "rev": "NEW (S9 decomposition, §9.5; 2026-07-28): the pin-verification unit consuming K1 — TvecUnitLaw σ' (K1_tvecUnitLaw_of_pin) + CoeffLocLaw σ' ((a)/(b) from restated S7, (c) from K1_coeffLocC_of_pin); + S9d_stageCoreL closing StageCoreL given S9c's StageCore. PROVED (Lean-core). Discharges the §9.3/§9.4 seam.",
+      "statement": "theorem S9d_pinVerify {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) (pin : VertexPin σ σ' Φhat zbar) (hΦin : inC Φhat σ.Φ) : TvecUnitLaw σ' ∧ CoeffLocLaw σ'"
+    },
+    {
+      "id": "HC1.S10_recStage",
+      "file": "lean/LeanUrat/HC1/S10_recStage.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem S10_recStage {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ : Stage p F) (hσ : StageCoreL σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (hlift : ∃ tt : Polynomial ℤ_[p], tt ≠ 0 ∧ inC σ.Φ tt ∧ σ.w tt = σ.w σ.Φ ∧ σ.R tt = LaurentPolynomial.C cc * LaurentPolynomial.T 0) : ∃ (σ' : Stage p F) (tt : Polynomial ℤ_[p]), IsRecenteringCore σ σ' cc tt ∧ StageCoreL σ'"
+    },
+    {
+      "id": "HC1.S11_towerSpine",
+      "file": "lean/LeanUrat/HC1/S11_towerSpine.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem S11_towerSpine {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) : (∀ k : Fin (T.K + 1), StageCoreL (T.stg k)) ∧ (∀ k : Fin T.K, match T.move k with | .inc _ _ _ e' h' zbar _ _ _ => (T.stg k.succ).K = (T.stg k.castSucc).nextField zbar ∧ (T.stg k.succ).e = e' ∧ (T.stg k.succ).h = h' | .recenter _ _ _ _ => (T.stg k.succ).e = 1 ∧ (T.stg k.succ).K = (T.stg k.castSucc).K)",
+      "rev": "F-5 (2026-07-28): MoveWitness enriched with core' : StageCoreL σ' (both constructors; DefsTower); Part 1 PROVED by Fin.induction + projection; Part 2 re-bound; PROVED (Lean-core). The route-failure + sign-twist countermodel verdicts retained in header as the independence certificate; S11a_coreTransport certifies minimality."
+    },
+    {
+      "id": "HC1.S11a_coreTransport",
+      "file": "lean/LeanUrat/HC1/S11a_coreTransport.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "rev": "NEW at F-5(b) (2026-07-28): the minimality certificate — the seven non-twist StageCore legs {wPrev_mul, wPrev_ult, reps_nonempty, p_is_rep, w_strict, R_neg, prevIaug} transport from StageCoreL σ + TransitionCoreL + TransHyp alone (the S11 escalation's verified partial transport, re-derived in-file). PROVED (Lean-core).",
+      "statement": "theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ) {ψ : Polynomial ↥σ.K} {g : ℕ} {Φhat : Polynomial ℤ_[p]} {e' h' : ℕ} {zbar : Fˣ} (th : TransHyp σ ψ g Φhat e' h' zbar) (tc : TransitionCoreL σ σ' Φhat e' h' zbar) : (∀ f g, f ≠ 0 → g ≠ 0 → σ'.wPrev (f * g) = σ'.wPrev f + σ'.wPrev g) ∧ (∀ f g, f ≠ 0 → g ≠ 0 → f + g ≠ 0 → min (σ'.wPrev f) (σ'.wPrev g) ≤ σ'.wPrev (f + g)) ∧ σ'.reps ≠ [] ∧ (Polynomial.C (p : ℤ_[p])) ∈ σ'.reps ∧ (∀ f g, f ≠ 0 → g ≠ 0 → σ'.w f < σ'.w g → σ'.w (f + g) = σ'.w f) ∧ (∀ f, σ'.R (-f) = - σ'.R f) ∧ ((σ'.e : ℤ) * σ'.wPrev σ'.Φ < (σ'.h : ℤ))"
+    },
+    {
+      "id": "HC1.S12_iaugPersist",
+      "file": "lean/LeanUrat/HC1/S12_iaugPersist.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem S12_iaugPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) (ψ : Polynomial ↥(T.stg k).K) (g : ℕ) (hψ : Irreducible ψ) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k) ψ g Φhat) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (μ : ℕ) (a : ℤ) (Ranch : Polynomial ↥(T.stg k).K) (hanch : HasAnchorK ((T.stg k).R f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (B : ℕ → Polynomial ℤ_[p]) (N : ℕ) (hdev : IsDevelopment Φhat f B N) : (∀ j, j < μ → B j ≠ 0 → ((T.stg k).e : ℤ) * (T.stg k).h * g * ((μ : ℤ) - j) < (T.stg k).w (B j) - (T.stg k).w (B μ)) ∧ (∀ (e' h' : ℕ) (j : ℕ), 1 ≤ e' → j < μ → B j ≠ 0 → (h' : ℤ) * ((μ : ℤ) - (j : ℤ)) = (e' : ℤ) * ((T.stg k).w (B j) - (T.stg k).w (B μ)) → IAug (T.stg k) Φhat e' h')"
+    },
+    {
+      "id": "HC1.S13_realPersist",
+      "file": "lean/LeanUrat/HC1/S13_realPersist.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "rev": "S13 ADJUDICATION 2026-07-28 (campaign ledger, orchestrator direct read of D.9(d) MOVES 2573-2581): conjunct 3 restated with the e_read = 1 READ scope — any-scalar realizability only at ν strictly above wPrev Φ (the (S6b)/DEF-8 threshold; the display's side values λ″), membership in weightSet now a conclusion; prior all-of-weightSet form = BLUEPRINT OVER-STRENGTH (type i), the note intact",
+      "statement": "theorem S13_realPersist {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) : (∃ ν₀ : ℤ, ∀ ν : ℤ, ν₀ ≤ ν → ν ∈ (T.stg k).weightSet) ∧ (((T.stg k).e : ℤ) * (T.stg k).wPrev (T.stg k).Φ < ((T.stg k).h : ℤ)) ∧ ((T.stg k).e = 1 → ∀ ν : ℤ, (T.stg k).wPrev (T.stg k).Φ < ν → ν ∈ (T.stg k).weightSet ∧ ∀ c : (↥(T.stg k).K)ˣ, ∃ B : Polynomial ℤ_[p], B ≠ 0 ∧ inC (T.stg k).Φ B ∧ (T.stg k).wPrev B = ν ∧ (T.stg k).R B = LaurentPolynomial.C ((c : ↥(T.stg k).K)) * LaurentPolynomial.T 0)"
+    },
+    {
+      "id": "HC1.S14_wellTypedAnchor",
+      "file": "lean/LeanUrat/HC1/S14_wellTypedAnchor.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem S14_wellTypedAnchor {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin (T.K + 1)) (he1 : (T.stg k).e = 1) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : ∃ (a : ℤ) (Ranch : Polynomial ↥(T.stg k).K), HasAnchorK ((T.stg k).R f) a Ranch ∧ 0 ≤ a"
+    },
+    {
+      "id": "HC1.S15_anchoredSubst",
+      "file": "lean/LeanUrat/HC1/S15_anchoredSubst.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem S15_anchoredSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (σ σ' : Stage p F) (hσ : StageCoreL σ) (he1 : σ.e = 1) (cc : ↥σ.K) (hcc : cc ≠ 0) (tt : Polynomial ℤ_[p]) (hrec : IsRecenteringCore σ σ' cc tt) (hsub : RecenterSubstCore σ σ' cc) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (a : ℤ) (ha : 0 ≤ a) (μ : ℕ) (hpoly : Polynomial ↥σ.K) (hanch : HasAnchorK (σ.R f) a ((Polynomial.X - Polynomial.C cc) ^ μ * hpoly)) (hnd : ¬ (Polynomial.X - Polynomial.C cc) ∣ hpoly) (zbar : Fˣ) (e_b : ℕ) [NeZero e_b] : (∃ Ranch' : Polynomial ↥σ'.K, HasAnchorK (σ'.R f) (μ : ℤ) Ranch' ∧ Ranch'.map σ'.K.subtype = (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F)) ^ a.toNat * (hpoly.map σ.K.subtype).comp (Polynomial.X + Polynomial.C ((cc : ↥σ.K) : F))) ∧ (∀ B : Polynomial ℤ_[p], B ≠ 0 → inC σ.Φ B → σ'.digD zbar e_b B = σ.digD zbar e_b B)"
+    },
+    {
+      "id": "HC1.S16_levelLanding",
+      "file": "lean/LeanUrat/HC1/S16_levelLanding.lean",
+      "difficulty": "medium-hard",
+      "sorries": 1,
+      "statement": "theorem S16_levelLanding {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (B : ℕ → Polynomial ℤ_[p]) (hdev : IsDevelopment Φhat f B lm.N) : StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N"
+    },
+    {
+      "id": "HC1.S17_levelMeasureExact",
+      "file": "lean/LeanUrat/HC1/S17_levelMeasureExact.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "statement": "theorem S17_levelMeasureExact {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (k : Fin T.K) (lm : LevelMove T k) (hcore : StageCore (T.stg k.castSucc)) (hg : lm.ψ.natDegree = lm.g) (hgpos : 1 ≤ lm.g) (hmon : lm.ψ.Monic) (hψ : Irreducible lm.ψ) (hψz : lm.ψ ≠ Polynomial.X) (Φhat : Polynomial ℤ_[p]) (hlift : IsStandardLift (T.stg k.castSucc) lm.ψ lm.g Φhat) (hμN : lm.μ < lm.N) (hexact : ¬ Polynomial.X ∣ ∑ j ∈ Finset.range lm.N, lm.Cdig j * lm.ψ ^ j) (D ktot N : ℕ) (hD : D = Φhat.natDegree * lm.N) (hN : 1 ≤ N) (hkN : ktot ≤ D * N) (strat : (Fin (D * N) → ZMod p) → Prop) (code : Polynomial ℤ_[p] → (Fin (D * N) → ZMod p)) (hcode : ∀ x, ∃ f : Polynomial ℤ_[p], f.natDegree < D ∧ code f = x) (hstrat : ∀ f : Polynomial ℤ_[p], f.natDegree < D → (strat (code f) ↔ (f ≠ 0 ∧ StratumData (T.stg k.castSucc) lm.ψ lm.μ lm.a lm.Cdig lm.N f))) (hz : ∀ f : Polynomial ℤ_[p], f.natDegree < D → f = 0 → ¬ strat (code f)) (Θ : (Fin (D * N) → ZMod p) ≃ (Fin (D * N) → ZMod p)) (hΘ : LeanUrat.MovesC.IsUnitriangular fun x => Θ x) (E : DigitSystem (D * N) (ZMod p)) (hEk : E.numPinned = ktot) (hzsol : ¬ E.IsSolution (Θ (code 0))) (hcyl : ∀ (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]), f.natDegree < D → f ≠ 0 → IsDevelopment Φhat f B lm.N → (E.IsSolution (Θ (code f)) ↔ LandingCylinderL (T.stg k.castSucc) lm.ψ lm.g lm.μ lm.a lm.Cdig B lm.N)) : Nat.card {x : Fin (D * N) → ZMod p // strat x} * p ^ ktot = p ^ (D * N)",
+      "rev": "F-6 (2026-07-28): RESTATED to the ScratchS17 sufficiency-certificate form (+hzsol, +hcore — the safe landing; post-F-5 hcore discharge recorded as available, not taken); PROVED (transplant; Lean-core). Consumes L5_landTwoSided (repair) + L0_FactA_exists + L2_P6ii; NEVER consumes L6_measureExact_R4 — the §4.6 dep-sorry pair leaves HC1's cone (dep_sorries row emptied)."
+    },
+    {
+      "id": "HC1.G1_divGate",
+      "file": "lean/LeanUrat/HC1/G1_divGate.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem G1_divGate : zbGate ^ 2 = zbGate + 1 ∧ zbGate * zbGate = zbGate + 1"
+    },
+    {
+      "id": "HC1.G2_carryGate",
+      "file": "lean/LeanUrat/HC1/G2_carryGate.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem G2_carryGate : ∃ zbar : (GaloisField 2 2)ˣ, ((zbar : GaloisField 2 2) ^ 2 = (zbar : GaloisField 2 2) + 1) ∧ ∀ P : CarryRingPack (GaloisField 2 2) 2 zbar, (letI := P.ring; dOf (1 : ZMod 2) (1 : GaloisField 2 2) * dOf 1 1 = dOf 0 ((zbar : GaloisField 2 2))) ∧ (∀ c c' : GaloisField 2 2, letI := P.ring; dOf (1 : ZMod 2) c * dOf 0 c' = dOf 1 (c * c')) ∧ (∀ ρ σ τ : ZMod 2, carryExp ρ σ + carryExp (ρ + σ) τ = carryExp σ τ + carryExp ρ (σ + τ))"
+    },
+    {
+      "id": "HC1.G3_caseJGate",
+      "file": "lean/LeanUrat/HC1/G3_caseJGate.lean",
+      "difficulty": "easy-medium",
+      "sorries": 1,
+      "statement": "theorem G3_caseJGate : (caseJP.comp (Polynomial.X + 1) = Polynomial.X ^ 2 * ((Polynomial.X + 1) * ((Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial (ZMod 2)).comp (Polynomial.X + 1)))) ∧ ((Polynomial.X : Polynomial (ZMod 2)) ^ 2 ∣ caseJP.comp (Polynomial.X + 1)) ∧ (¬ (Polynomial.X : Polynomial (ZMod 2)) ^ 3 ∣ caseJP.comp (Polynomial.X + 1))"
+    },
+    {
+      "id": "HC1.G4_caseKGate",
+      "file": "lean/LeanUrat/HC1/G4_caseKGate.lean",
+      "difficulty": "medium",
+      "sorries": 2,
+      "statement": "theorem G4_caseKGate_i : (Finset.univ.filter caseKBothRise = ({((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((1, 0), (1, 0), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 1), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)), ((0, 1), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter caseKBothRise).card = 8\n\ntheorem G4_caseKGate_ii : (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0) = ({((0, 1), (1, 1), (0, 2)), ((0, 1), (1, 1), (2, 0)), ((0, 1), (1, 2), (1, 2)), ((0, 1), (2, 1), (2, 1)), ((0, 1), (2, 2), (0, 1)), ((0, 1), (2, 2), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 2), (1, 2), (0, 1)), ((0, 2), (1, 2), (2, 0)), ((0, 2), (2, 1), (0, 2)), ((0, 2), (2, 1), (1, 0)), ((0, 2), (2, 2), (2, 2)), ((1, 0), (0, 1), (1, 1)), ((1, 0), (0, 1), (2, 1)), ((1, 0), (0, 2), (1, 2)), ((1, 0), (0, 2), (2, 2)), ((1, 0), (1, 0), (1, 0)), ((1, 0), (2, 0), (2, 0)), ((1, 1), (1, 0), (0, 2)), ((1, 1), (1, 0), (2, 1)), ((1, 1), (1, 2), (1, 0)), ((1, 1), (1, 2), (1, 1)), ((1, 1), (2, 0), (0, 1)), ((1, 1), (2, 0), (1, 2)), ((1, 1), (2, 1), (2, 0)), ((1, 1), (2, 1), (2, 2)), ((1, 2), (1, 0), (0, 1)), ((1, 2), (1, 0), (2, 2)), ((1, 2), (1, 1), (1, 0)), ((1, 2), (1, 1), (1, 2)), ((1, 2), (2, 0), (0, 2)), ((1, 2), (2, 0), (1, 1)), ((1, 2), (2, 2), (2, 0)), ((1, 2), (2, 2), (2, 1)), ((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((2, 0), (1, 0), (1, 1)), ((2, 0), (1, 0), (1, 2)), ((2, 0), (2, 0), (2, 1)), ((2, 0), (2, 0), (2, 2)), ((2, 1), (0, 1), (1, 2)), ((2, 1), (0, 1), (2, 0)), ((2, 1), (0, 2), (1, 0)), ((2, 1), (0, 2), (2, 1)), ((2, 1), (1, 2), (0, 2)), ((2, 1), (1, 2), (2, 2)), ((2, 1), (2, 1), (0, 1)), ((2, 1), (2, 1), (1, 1)), ((2, 2), (0, 1), (1, 0)), ((2, 2), (0, 1), (2, 2)), ((2, 2), (0, 2), (1, 1)), ((2, 2), (0, 2), (2, 0)), ((2, 2), (1, 1), (0, 1)), ((2, 2), (1, 1), (2, 1)), ((2, 2), (2, 2), (0, 2)), ((2, 2), (2, 2), (1, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0) = ({((0, 1), (0, 1), (0, 1)), ((0, 1), (0, 2), (0, 2)), ((0, 1), (1, 0), (1, 0)), ((0, 1), (1, 1), (1, 1)), ((0, 1), (1, 2), (1, 2)), ((0, 1), (2, 0), (2, 0)), ((0, 1), (2, 1), (2, 1)), ((0, 1), (2, 2), (2, 2)), ((0, 2), (0, 1), (0, 1)), ((0, 2), (0, 2), (0, 2)), ((0, 2), (1, 0), (1, 0)), ((0, 2), (1, 1), (1, 1)), ((0, 2), (1, 2), (1, 2)), ((0, 2), (2, 0), (2, 0)), ((0, 2), (2, 1), (2, 1)), ((0, 2), (2, 2), (2, 2)), ((1, 0), (0, 1), (0, 1)), ((1, 0), (0, 2), (0, 2)), ((1, 0), (1, 0), (1, 0)), ((1, 0), (1, 1), (1, 1)), ((1, 0), (1, 2), (1, 2)), ((1, 0), (2, 0), (2, 0)), ((1, 0), (2, 1), (2, 1)), ((1, 0), (2, 2), (2, 2)), ((1, 1), (0, 1), (0, 1)), ((1, 1), (0, 2), (0, 2)), ((1, 1), (1, 0), (1, 0)), ((1, 1), (1, 1), (1, 1)), ((1, 1), (1, 2), (1, 2)), ((1, 1), (2, 0), (2, 0)), ((1, 1), (2, 1), (2, 1)), ((1, 1), (2, 2), (2, 2)), ((1, 2), (0, 1), (0, 1)), ((1, 2), (0, 2), (0, 2)), ((1, 2), (1, 0), (1, 0)), ((1, 2), (1, 1), (1, 1)), ((1, 2), (1, 2), (1, 2)), ((1, 2), (2, 0), (2, 0)), ((1, 2), (2, 1), (2, 1)), ((1, 2), (2, 2), (2, 2)), ((2, 0), (0, 1), (0, 1)), ((2, 0), (0, 2), (0, 2)), ((2, 0), (1, 0), (1, 0)), ((2, 0), (1, 1), (1, 1)), ((2, 0), (1, 2), (1, 2)), ((2, 0), (2, 0), (2, 0)), ((2, 0), (2, 1), (2, 1)), ((2, 0), (2, 2), (2, 2)), ((2, 1), (0, 1), (0, 1)), ((2, 1), (0, 2), (0, 2)), ((2, 1), (1, 0), (1, 0)), ((2, 1), (1, 1), (1, 1)), ((2, 1), (1, 2), (1, 2)), ((2, 1), (2, 0), (2, 0)), ((2, 1), (2, 1), (2, 1)), ((2, 1), (2, 2), (2, 2)), ((2, 2), (0, 1), (0, 1)), ((2, 2), (0, 2), (0, 2)), ((2, 2), (1, 0), (1, 0)), ((2, 2), (1, 1), (1, 1)), ((2, 2), (1, 2), (1, 2)), ((2, 2), (2, 0), (2, 0)), ((2, 2), (2, 1), (2, 1)), ((2, 2), (2, 2), (2, 2))} : Finset (F9 × F9 × F9))) ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0)).card = 56 ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0)).card = 64 ∧ (Finset.univ.filter (fun x : F9 × F9 × F9 => x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ caseKR2 x.1 x.2.1 x.2.2 = 0 ∧ x.2.2 + x.2.2 + x.2.1 = 0)).card = 8"
+    },
+    {
+      "id": "HC1.G5_spanGate",
+      "file": "lean/LeanUrat/HC1/G5_spanGate.lean",
+      "difficulty": "easy",
+      "sorries": 1,
+      "statement": "theorem G5_spanGate : (AddSubgroup.closure ({x : F9 | ∃ c : ZMod 3, x = (c, 0)} ∪ {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = ⊤) ∧ Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (c, 0)}) = 3 ∧ Nat.card ↥(AddSubgroup.closure {x : F9 | ∃ c : ZMod 3, x = (0, c)}) = 3 ∧ Nat.card F9 = 3 ^ 2"
+    },
+    {
+      "id": "HC1.R1_LSTStmt",
+      "file": "lean/LeanUrat/HC1/R1_LSTStmt.lean",
+      "difficulty": "easy",
+      "sorries": 0,
+      "statement": "structure CarrierPackR (p : ℕ) [Fact p.Prime] where\n  G : GradedCarrierR p\n  Hist : Type\n  Coord : Type\n  Digit : Type\n  [digitAdd : AddCommGroup Digit]\n  kIdx : Hist → ℕ\n  ht : Hist → Coord → ℚ\n  blk : Hist → Coord → ℕ\n  lvl : Hist → ℕ → ℚ → Set Coord\n  slotCoeff : Hist → ℕ → (Coord → Digit) → G.Coeff\n  aDim : Hist → ℕ → ℚ → ℕ\n  lines : Hist → ℕ → MovesC.Line\n  blockEdge : Hist → ℕ → ℕ\n  interiorEnd : Hist → ℕ → ℕ\n  window : Hist → ℕ → Prop\n  mono : Hist → Coord → G.Coeff\n  floorB : Hist → ℕ → ℚ\n\ndef LSTStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ H : K.Hist,\n    (∀ c : K.Coord, K.G.w (K.mono H c) = (K.ht H c : WithTop ℚ)) ∧\n    (∀ b : ℕ, K.window H b → ∀ y : K.Coord → K.Digit, K.slotCoeff H b y ≠ 0 →\n      ∃ c₀ : K.Coord, y c₀ ≠ 0 ∧ K.G.w (K.slotCoeff H b y) = (K.ht H c₀ : WithTop ℚ) ∧\n        ∀ c : K.Coord, y c ≠ 0 → K.ht H c₀ ≤ K.ht H c) ∧\n    (∀ b : ℕ, K.window H b → ∀ (γ : ℚ) (x y : K.Coord → K.Digit),\n      (∀ c ∈ K.lvl H b γ, x c = y c) →\n      (∀ c : K.Coord, K.blk H c = b → K.ht H c < γ → x c = 0 ∧ y c = 0) →\n      K.G.inγ γ (K.slotCoeff H b x) = K.G.inγ γ (K.slotCoeff H b y)) ∧\n    (∀ b : ℕ, K.floorB H b = (K.lines H (K.kIdx H)).at (K.blockEdge H b)) ∧\n    (∀ (b : ℕ) (γ' : ℚ), K.floorB H b < γ' →\n      ∀ c ∈ K.lvl H b γ', ¬ (K.blk H c = b ∧ K.ht H c ≤ K.floorB H b))"
+    },
+    {
+      "id": "HC1.R2_TYPStmt",
+      "file": "lean/LeanUrat/HC1/R2_TYPStmt.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "def TYPStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (b : ℕ) (γ' : ℚ),\n    (∀ x y : K.Coord → K.Digit,\n      K.G.inγ γ' (K.slotCoeff H b (x + y))\n        = K.G.inγ γ' (K.slotCoeff H b x) + K.G.inγ γ' (K.slotCoeff H b y)) ∧\n    (Nat.card ↥(AddSubgroup.closure\n        (⋃ c ∈ K.lvl H b γ', Set.range fun y : K.Digit =>\n          K.G.inγ γ' (K.slotCoeff H b (Pi.single c y))))\n      = p ^ K.aDim H b γ')"
+    },
+    {
+      "id": "HC1.R3_DOMStmt",
+      "file": "lean/LeanUrat/HC1/R3_DOMStmt.lean",
+      "difficulty": "easy",
+      "sorries": 0,
+      "statement": "def DOMStmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (i m b : ℕ), m < i → b < K.interiorEnd H i →\n    (K.lines H m).at b ≤ (K.lines H i).at b"
+    },
+    {
+      "id": "HC1.R4_SecB1Stmt",
+      "file": "lean/LeanUrat/HC1/R4_SecB1Stmt.lean",
+      "difficulty": "easy",
+      "sorries": 0,
+      "statement": "def SecB1Stmt' (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  ∀ (H : K.Hist) (b : ℕ) (γ : ℚ) (x y : K.Coord → K.Digit),\n    K.G.inγ γ (K.slotCoeff H b (x + y))\n      = K.G.inγ γ (K.slotCoeff H b x) + K.G.inγ γ (K.slotCoeff H b y)"
+    },
+    {
+      "id": "HC1.R5_EQ2Pass",
+      "file": "lean/LeanUrat/HC1/R5_EQ2Pass.lean",
+      "difficulty": "easy",
+      "sorries": 0,
+      "statement": "def REL1Pack (p : ℕ) [Fact p.Prime] (K : CarrierPackR p) : Prop :=\n  LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K ∧ SecB1Stmt' p K\n\ndef EQ2lawIfREL1' (p : ℕ) [Fact p.Prime] (EQ2law : Prop) : Prop :=\n  (∀ K : CarrierPackR p, REL1Pack p K) → EQ2law"
+    },
+    {
+      "id": "HC1.R6_carrierInstance",
+      "file": "lean/LeanUrat/HC1/R6_carrierInstance.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (T : Tower p F) (rl : TowerRealizable T) : ∃ K : CarrierPackR p, (∀ γ : ℚ, K.G.Gr γ = T.grQ γ) ∧ LSTStmt' p K ∧ TYPStmt' p K ∧ DOMStmt' p K"
+    },
+    {
+      "id": "HC1.V1_readWPack",
+      "file": "lean/LeanUrat/HC1/V1_readWPack.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem V1_readWPack (σ) (hσ : StageCoreL σ) (e★ h★ : ℕ) (s★ t★ : ℤ) (hrp : ReadPair σ e★ h★ s★ t★) : (slot-min pack for childW σ σ.Φ e★ h★ — S2 instance at Φhat := σ.Φ) ∧ hwmul ∧ hwult ∧ (Q-ASCENT: for B·B″ = Q·σ.Φ + R_dev monic division, Q-slot (†)-value ≥ R_dev-slot + (h★ − e★·σ.h))"
+    },
+    {
+      "id": "HC1.V2_readResidual",
+      "file": "lean/LeanUrat/HC1/V2_readResidual.lean",
+      "difficulty": "medium-hard",
+      "sorries": 0,
+      "statement": "theorem V2_readResidual … : (∃ D : ReadResData σ e★ h★ s★ t★, ReadResLaws D) ∧ (wV strict law — the S9w-(ii) mirror); theorem V2_readFrame … : Nonempty (ReadFrame σ e★ h★ s★ t★)  [THE V′ FRAME CHANGE UNIT]",
+      "rev": "PROVED IN FULL (2026-07-28, escalation — the regrade-carrier engine mirror): V2_readResidual + V2_readFrame both Lean-core, zero sorry; footprint = {propext, Classical.choice, Quot.sound}. Construction: the V8 engine mirrored IN-FILE at the same key σ.Φ with the IDENTITY DIGIT v2dig := LaurentPolynomial.eval₂ (RingHom.id ↥σ.K) 1 ∘ σ.R (T = 1 evaluation — a ring hom reading off the hS5 monomial's unit scalar; no field extension, no L3_digPrime_nonzero: hRne is FREE from hS5's unit). The descent engine (IsStandardLift/L3_DIV/L4_TRANSiii — unsatisfiable at the regrade key) is REPLACED by the same-key kernel v2DIV: remainder nonvanishing + exact weight = V1's exposed Q-ascent; the residual product law R((a·b) %ₘ Φ) = R(a)·R(b) by the w(Φ·Q) ≥ w(R_dev) trichotomy — Q = 0 trivial; strict = parent hRlt; the TIE is IMPOSSIBLE (hStretch on a, b, Q ∈ C forces σ.e ∣ σ.h, so σ.e = 1, σ.t = 0, σ.s = 1, and the parent hRadd identity C(c_a·c_b)·T0 = C(c_R)·T0 + C(c_Q)·T1 pins the UNIT c_Q to the vanishing exponent-1 Finsupp coefficient). hRmul = V8's bilinear slot expansion verbatim (Cdev convolution development, per-pair v2DIV remainders, carried quotients strictly deep via ReadPair steepness e★σ.h < h★ = IAug at the same key, the v2gr graded slot computation, the Finset.sum_fiberwise convolution regroup). w_strict = V1's hwult + childW negation-invariance (the V8c assembly block). V2_readFrame = D + laws + V1's hwmul/hwult + S3_childK1 (hwPhi + hK1 at Φhat := σ.Φ) + L4_TRANSii (hStretch) + V6_regradeOrbits (hS6a). Statements verbatim (fence checked against HEAD). Downstream re-verified: V3_readLift + V3_equalWeights_lift still Lean-core; V9's remaining sorryAx cone is V4's (assembly unit, next)."
+    },
+    {
+      "id": "HC1.V3_readLift",
+      "file": "lean/LeanUrat/HC1/V3_readLift.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem V3_readLift … (V : ReadFrame) (hlift : IsReadLift σ ψ g e★ h★ Φ̂) : (D.5 EQUAL WEIGHTS display at wV) ∧ childW σ σ.Φ e★ h★ Φ̂ = e★·h★·g ∧ V.D.Rv Φ̂ = T(−t★·h★·g)·ψ ∧ K1At (childW σ σ.Φ e★ h★) Φ̂ (e★·h★·g)",
+      "rev": "PROVED (2026-07-28 V-kernel P-phase; Lean-core). ADDENDUM (2026-07-28, mechanical-closer round, VPRIME_CONFIRM gap 7 closed additively — V3_readLift byte-unchanged): NEW theorem V3_equalWeights_lift (PROVED Lean-core) ties the D.5 EQUAL-WEIGHTS display to hlift's own witness family and adds the D.5 leading-slot equation e★·σ.w(1) + (e★g)·h★ = e★h★g (MOVES 2268–2269)."
+    },
+    {
+      "id": "HC1.V4_readLanding",
+      "file": "lean/LeanUrat/HC1/V4_readLanding.lean",
+      "difficulty": "hard",
+      "sorries": 1,
+      "statement": "theorem V4_readLanding … (hanch : HasAnchorK (V.D.Rv f) a Ranch) (hord : OrdPsiPoly ψ Ranch μ) (hdev : IsDevelopment Φ̂ f B N) : (VERTEX: B μ ≠ 0 ∧ wV(B μ) + μ·e★h★g = wV f) ∧ (BOX: strict above for m < μ) ∧ (vertex digit with the explicit unit z̄^{μ·t★·h★·g})  [TRANSPORT leg FENCED OUT per §10.1]"
+    },
+    {
+      "id": "HC1.V6_alignedOrbits",
+      "file": "lean/LeanUrat/HC1/V6_alignedOrbits.lean",
+      "difficulty": "short",
+      "sorries": 0,
+      "statement": "theorem V6_regradeOrbits … : ReadFrame.hS6a fill (regrade orbits = parent coset orbits re-positioned, scalars preserved); theorem V6_descentOrbits … : ∀ ν ∈ 𝒜′, (TRANSviii_a conjunct-1 window decomposition) ∧ ∃ base b(ν) of the displayed z̄-monomial shape whose F_Qˣ-coset is realized in D.Rc",
+      "rev": "PROVED (2026-07-28 V-kernel P-phase; both legs Lean-core). DOC (2026-07-28, mechanical-closer round, VPRIME_CONFIRM gap 9 closed at documentation level — statements untouched, fence-checked not a genuine weakening since V7 was reproved σ′-free without consuming V6(b)): V6_descentOrbits' docstring restores the blueprint §10.1 λ-window/twist display (w̃, j) = (s·ν − λ·h, t·ν + λ·e), twist = λ, with the in-proof identity m := s·j − t·w̃ = λ; the public (γ, j, m)-only statement recorded as a deliberate reduction, any future λ-exposure fenced to an additive corollary."
+    },
+    {
+      "id": "HC1.V7_stripDischarge",
+      "file": "lean/LeanUrat/HC1/V7_stripDischarge.lean",
+      "difficulty": "short",
+      "sorries": 1,
+      "statement": "theorem V7_stripDischarge … (D : ChildResData …) (hD : ChildResLaws D) : ∀ ν ∈ childWeightSet σ Φ̂, ∃ b, ∀ c ∈ F_Qˣ, ∃ B ≠ 0 ∈ C_Φ̂, σ.w B = ν ∧ D.Rc B = C(c·b)·T(−t′·ν)  [EXACTLY S9a's hS6a′ obligation shape; gated on V5 — EXECUTED]"
+    },
+    {
+      "id": "HC1.V8_childResidual",
+      "file": "lean/LeanUrat/HC1/V8_childResidual.lean",
+      "difficulty": "hard",
+      "sorries": 0,
+      "statement": "def ExplicitDescentCarrier (Prop on ChildResData: Rc f = Σ_{j minimizing} C(dig′ B_j)·T(j·s′ − t′·σ.w B_j)); theorem V8a_carrierAdditive (∃ explicit carrier + additive legs); theorem V8b_carrierLaws (∃ explicit carrier + full ChildResLaws); theorem V8c_wStrict; theorem V8_childResidual = S9w's exact statement shape, ASSEMBLED from V8b+V8c (no own sorry)  [NOT dependent on V5]",
+      "rev": "PROVED IN FULL (2026-07-28, second escalation — the V8b hRmul core): V8a + V8b + V8c ALL Lean-core, zero sorry; capstone V8_childResidual footprint = {propext, Classical.choice, Quot.sound}. Construction: explicit carrier v8Rc ((†) on the Fact-A/B development) + the private graded-residue calculus v8gr (parent hRadd/hRlt + StageCore w_strict/w_jump/R_neg as ONE additive map on the zero-or-deep domain). hRmul = L4_TRANSiii's convolution development Cdev re-derived at digit level + L3_DIV per-pair remainders + (I-aug) depth for carried quotients + the v8gr slot computation + Finset.sum_fiberwise convolution regroup; vanishing convolution coefficients are the same zero on both sides via D.3(d) digit-nonvanishing (the D.1(b) delta-calculus). V8c (first escalation) MOVED above V8a/V8b: its strict law feeds V8b's hRlt leg. UNBLOCKED: S9w_residualLaws now sorry-free (wired exact); S9r follows. DOC (2026-07-28, mechanical-closer round, VPRIME_CONFIRM gap 2 closed): the mfun ≡ 0 warrant display recorded — D.7(v)'s D-map definition D(x) := R(x) mod ψ ∈ F′ (MOVES 2364–2367; reduction mod ψ IS z̄-evaluation, i.e. digPrime), cited in the header, moves_ref, v8Rc_S5', and DefsChild.hS5'; the D.7(vi)–(vii) excerpt alone does not state it."
+    },
+    {
+      "id": "HC1.V9_K1nonrec",
+      "file": "lean/LeanUrat/HC1/V9_K1nonrec.lean",
+      "difficulty": "medium",
+      "sorries": 1,
+      "statement": "theorem V9_readSteepness (HistoryCoherent, 1 ≤ i, non-recentering) : ν_i.e·σ_i.h < ν_i.h; theorem V9_K1nonrec : K1_readVertexPin_nonrec's statement VERBATIM via the ReadFrame chain  [SideReads-(iii) seam FENCED — U31-gated; any restatement is a NEW sign-off item]",
+      "rev": "R3b ADJUDICATED (2026-07-28, carry-bridge escalation round): the one remaining sorry = V9_K1nonrec itself, behind R3a (spec'd, unbuilt), R3b (adjudicated NOT closable from the fenced pool), R3c (root corner, unchanged). NEW PROVED Lean-core: V9_wvEqStretch_of_bottomSlot + V9_bottomSlot_of_wvEqStretch (R3b ⟺ the BOTTOM-WINDOW LAW at the vertex coefficient) and V9_steepSide_frameDescent (the on-side frame values strictly descend at steep reads — the (iii)-tension seed). Sympy-verified countermodel f = (X+8)(Φ̂²+8X³) at the (1,1)-Gauss frame, read pair (1,2): SideReads(i)+(ii)+(vi)+hOrd + V1–V4 + hStretch/child_slotmin all hold, kernel conclusion FALSE (σ.w(B₂)=1 < 2) — sole violated clause is SideReads(iii)'s σ.R f rendering (the fenced seam). FINDING: the display R3b needs is §B2-DEF D.8-(TRANSPORT) UPWARD FORCED-WINDOW (MOVES 2521–2528) at the regraded frame; blueprint §10.1's fencing of (TRANSPORT) out of V4 (\"not needed\") is WRONG for V9. Follow-on unit: transcribe D.8-(TRANSPORT) at the ReadFrame; R3b closes via the proved reduction (boundary caveat t★=1 ∧ h★−e★σ.h=1 recorded). Full REV-3 record at the sorry; HC2/K1_vertexPin.lean obstruction item 5 mirrors it. REV 4 (2026-07-28, V10 transcription round): V9_K1nonrec PROVED at every leg EXCEPT the R3c corner i=0 ∧ e·g=1 (the one remaining sorry) — the e·g ≥ 2 legs close by V10_readTransition_incompatible (the recorded transition is CONTRADICTORY there — VACUOUS closure, loudly disclosed), the i ≥ 1 ∧ e·g = 1 legs by the species inventory (hspecInc). Import direction to HC2 reversed (v9_strFrame_pos private copy); HC2.K1_readVertexPin_nonrec WIRED := V9_K1nonrec. Corner obstruction: needs StageCore-grade tie laws (w_jump) or the fenced SideReads(iii) — full record in the REV-4 block. REV 5 (2026-07-28, R3c corner round): THE CORNER IS CLOSED — V9_K1nonrec sorry-free, Lean-core; the REV-4 adjudication superseded (neither StageCore tie laws nor SideReads(iii) consumed). Mechanisms: child_slotmin as the cross-slot jump law at the degree-1 keys + the binomial-transport slot-min v9c_slotmin (recentering-transport K1 without StageCoreL) + child_dig_frame same-weight cross-multiplication (mfun twists cancel) + v9c_taylor_ne (Hasse nonvanishing at the recorded root from hOrd). Downstream Lean-core-clean 10/10: K1_readVertexPin{,_nonrec}, K1_NA_transport_root/increment, K1_SAE_vertexEq_endpoint, U20a/U20b/U20c, readsOf_NA, U22-E2; readsOf_SAE/readsOf_realizable remain sorryAx via U22-E1/U21's own sorries only."
+    },
+    {
+      "id": "HC1.V10_transportWindow",
+      "file": "lean/LeanUrat/HC1/V10_transportWindow.lean",
+      "difficulty": "medium",
+      "sorries": 0,
+      "statement": "theorem V10_forcedKeyWeight (steep read-lift transition, e★g ≥ 2, TransitionData fields) : h★ = e★²·g·σ.h; theorem V10_readTransition_incompatible (+ hcop/hbez/P2-pin + σ'.s/σ'.t ties) : False; theorem V10_transportWindow (over the V2_readFrame carrier + V4 landing data + the recorded transition, e★g ≥ 2) : B μ ≠ 0 ∧ wV(B μ) = e★·σ.w(B μ)  [⚠ PROVED VACUOUSLY — the hypotheses are contradictory; the theorem's real content is the INCONSISTENCY FINDING]",
+      "rev": "LANDED + PROVED Lean-core, zero sorry (2026-07-28, V10 transcription round — the §B2-DEF D.8-(TRANSPORT) UPWARD FORCED-WINDOW clause, MOVES 2520–2528 quoted verbatim in the header). THE FINDING (machine-checked): HistoryCoherent's round-3 keying of TransitionCoreL at the READ pair (ν.e, ν.h) on the READ lift is UNSATISFIABLE with the child's own Stage laws whenever ν.e·ν.g ≥ 2 — σ'.hwmul+hStretch weigh Φ^{e★g} at e★g·e★σ.h while child_slotmin weighs it at min(e★σ.w τ, h★), forcing h★ = e★²gσ.h (⟹ e★=1, t★=0, s★=1), and then σ'.R Φ̂ = T 1 (hRΦ + the σ'.s tie) clashes with C(c^g)·T 0 (hRlt/hRmul/hS5'). Consequences: genuine steep increments are UNRECORDABLE (ReadsOf vacuous at the K1 kernel's hard perimeter — U31's single-node gate never probed this); the r3b countermodel cannot extend to ReadsOf (satisfies the forced equation, dies at the clash) with SideReads(iii) NOT consumed; the boundary caveats t★=1 / h★−e★σ.h=1 are EMPTY (t★=0 forced). NAMED SIGN-OFF ITEM (not silently changed): re-key the recorded child at the regraded side value (Φ̂ ↦ e★·(e★h★g)). Numeric mirror: verification/v10_transition_check.py (4 checks)."
+    }
+  ],
+  "signoff_2026-07-28": "F-1..F-6 EXECUTED (one event): F-1 T10(2)+C1(ii) → floorS step floor (lineStep/floorS defs in DefsCar); F-2 Tower.hcharF : CharP F p + C6_cardK_bridge PROVED in C6's file (C6 statement unchanged per §9.2); F-3 S7 → proved shape (scratch transplant, PROVED Lean-core; leg (c) homed to S9d); F-4 S8 → proved (I-aug) leg (PROVED; twist certificate retained in header; TvecUnitLaw homed to S9d); F-5 MoveWitness + core' : StageCoreL (both constructors), 9-file arity ripple (eBirthAux, T3, T4, T6, T7, C2, S13, S11), S11 PROVED (Part 1 = projection), S11a_coreTransport NEW+PROVED; F-6 S17 → ScratchS17 form (+hzsol +hcore), PROVED Lean-core, §4.6 dep-sorry pair out of HC1's cone. S9 DECOMPOSITION: DefsChild.lean (ChildResData choice-spec + childR + childWeightSet) + S9r/S9w/S9a/S9b/S9c (sorry statements) + S9d PROVED (consumes K1 bridges + S7 legs).",
+  "vkernel_2026-07-28": "V′-KERNEL APPLIED (blueprint §10, V-prime applier): V5 SIGN-OFF EXECUTED FIRST (definition-change authority): Stage.hS6a RESTATED to the FIXED-POINT COSET form (∃ b : Kˣ before ∀ c : FQˣ; digit scalar C(c·b); docstring quotes MOVES 1964–1971 + 2431–2435) in Moves/Defs.lean. Ripple (all green, proofs run through): constructors T1_baseStage (b := 1), S1_transHypGate σpin (b := 1), S10_recStage (transport, SAME b), U17b stageMap (b ↦ resAut-image), U28/U30/U31 gate stages (b := 1), S9a hS6a′ restated to coset form (above-threshold leg b := 1 via L4_TRANSviii_b; strip sorry now = V7's obligation); consumers L5_realRecursion_R3 (two-line), T4/T7/C2 base-stage digLift (K = FQ absorbs the base: c := y·b⁻¹), L4_TRANSviii_a_R5{,_final} CONCLUSION RESTATED (∃ m : ℤ / c·z̄^m → ∃ d₀ : (↥σ′.K)ˣ / c·(d₀:F), ∃-before-∀c unchanged; proof repaired: parent coset base b folded through L2_strideRule, d₀ := the d of the c = 1 instance; PROVED, Lean-core). FULL PERIMETER RECOMPILED GREEN: 532 modules (Moves/MovesC/MovesD/MovesGr/MovesRBase/MovesS/MovesSp/MovesU/MovesX/HC1/HC2); the ONLY exclusions are MovesGr/L2_degZero_subring_v2 + L4_genuine_imp_stageCoreL_v2, PRE-EXISTING failures (machine-verified identical failure against HEAD's pre-V5 Defs.lean; DirectSum instance mismatches, no olean in cache — outside the maintained perimeter, unrelated to hS6a). V0–V9 ELABORATED: DefsV.lean (ReadPair/ReadResData/ReadResLaws/ReadFrame — sorry-free; ReadFrame.hS6a transcribed in the post-V5 coset form, deviation from the pre-V5 §10.1 parenthetical recorded in the file header) + 8 unit files, 13 E-phase sorries, all lake-green, footprints [propext, sorryAx, Classical.choice, Quot.sound] as expected. SideReads-(iii) seam stays FENCED (V9 header carries the §10.1 ⚠ block verbatim; SideReads untouched).",
+  "c4_hoist_2026-07-30": "C4 HOIST (SYNTHESIS_PASS1 C4b, ratified in BRIDGE_ADJUDICATIONS 'C1+C4' cluster; golf HC1#96): the ~200-line construction repeated near-verbatim across S9a_stageLiteral/S9b_childWeightSet/S9c_coreAssembly (Bezout split -> S9w lawful carrier -> S2/S3/S5 childW plumbing -> slotwise hwult tower -> TRANSviii_b/V7 realizers -> Stage literal), plus S9c's private bare-Stage/grRes/coeff-core helper block, hoisted into the NEW module S9_builder.lean BEFORE the queued F4-gate consumers (BP2 HK-15/HK-16, BP3 TV-D6). `S9_builder` is the ONE new public assertion (the SharedRecenter recentering_scaffold precedent): its 5-conjunct ExistsBody = exactly the UNION of the three ratified ExistsBodies at the same literal witness and hypotheses (per-conjunct record in the file header; conjunct 4 weightSet closes by the single inserted rfl — the only non-verbatim line of the hoisted body, S9c's otherwise byte-verbatim). S9a/S9b/S9c mains are now projections; all three public statements + the three corner-refutation kernels byte-identical (scripted HEAD-vs-worktree statement diff = clean). S9_builder + S9a/S9b/S9c + downstream S9_transStage rebuilt green, all Lean-core footprints; net -1,073 lines across the trio (S9a 361->162, S9b 306->108, S9c 689->134; builder +654). CODEX PER-CONJUNCT PASS (2026-07-30, the SharedRecenter Phase-4 protocol): statement-level packet (pre/post statements + the one-line body diff + the U5 signature adaptation) -> verdicts CONFIRMED on all conjunct-equivalence claims; the single flag was a packet artifact (the quoted U7 HEAD block over-included pairwise_clause_unique, which is U7-ONLY, never duplicated, deliberately NOT hoisted, and survives in U7 untouched at its original statement — verified context-line-only in the diff).",
+  "syn_c1_2026-07-30": "SYN C1 (2026-07-30, M7+M8 legs; records lean/notes/SYN_C1_EXECUTION_2026-07-30.md + SYN_E0_CONCORDANCE_2026-07-30.md): NEW module V34_readKernel.lean = ReadFrame.pack (the second ResValPack carrier: w := childW sigma sigma.Phi e* h*, R := V.D.Rv, laws = frame fields + ReadResLaws conjuncts 2-5; Codex-verified wiring) + the V3/V4 shared kernel hoisted ONCE (arithmetic six re-based on the pack, statements verbatim — Codex-verified; deep v3_* lemmas verbatim; v3_GRf delegates to Moves.LaurentOrd.GRf_priv). V3_readLift 1113->256, V4_readLanding 1221->428 (the documented 45-832 verbatim copy DEAD — golf HC1#99 closed). M8 micro-sweep: V8 (v8w_one/v8w_neg/v8sum_w_ge), V9 (w_one/w_neg/w_pow/w_sum_ge helpers + v9c_R_pow; v9c_C_inj stays, CommRing-general), V10 (five v10_* incl. the guarded v10_R_pow, guard dropped at call sites — proved strengthening, Codex H4 CLEAN), S10 (R_one/R_pow/w_pow deleted; its richer w_sum_ge kept with a one-line ult_sum_ge body, Codex H3 CLEAN; val_one/val_neg stay, also applied at wPrev) — golf HC1#100 closed (V7's v7_* are compound, not dups; left with record). All public statements byte-identical; consumer cones rebuilt green; AxChk byte-identical."
 }
