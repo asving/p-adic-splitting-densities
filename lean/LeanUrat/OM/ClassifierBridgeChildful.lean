@@ -718,9 +718,8 @@ theorem classify_eq_childful_iff {p : ℕ} [Fact p.Prime] (n N : ℕ) (hN : 0 < 
             have := ClassifierBridgeFiber2.toSideFace_length_eq hface
             rw [hRHSwidth] at this; exact this
           have hlenpos : 0 < Sm.length := by rw [hlen]; exact hn
-          have hv0S : Sm.v₀ = H := by
-            have := ClassifierBridgeFiber2.toSideFace_v0_eq hface hlenpos
-            show Sm.v₀ = H; rw [this]; rfl
+          have hv0S : Sm.v₀ = H :=
+            (ClassifierBridgeFiber2.toSideFace_v0_eq hface hlenpos).trans rfl
           rw [B.rootSide] at hrs'
           have hverts : ∃ v1 rest, NewtonPolygon.npVertices S hS
               = (Sm.i₀, Sm.v₀) :: (Sm.j₀, v1) :: rest ∧ Sm.v₁ = v1 := by

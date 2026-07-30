@@ -137,9 +137,8 @@ theorem decidedConfig_childless : decidedConfig.children = [] := rfl
 
 theorem configOf_decidedTc_childless (s : ℕ) : (configOf (decidedTc s)).children = [] := by
   have h : configOf (decidedTc s) = decidedConfig := by
-    have := configsOf_decidedTc s
-    simpa [configsOf] using this
-  rw [h]; rfl
+    simpa [configsOf] using configsOf_decidedTc s
+  rw [h]
 
 /-! ## 3. Evaluating `omCount (decidedTc s)` — the childless collapse applied -/
 
@@ -170,8 +169,7 @@ theorem omCount_decidedTc (s q : ℕ) :
     omCount (decidedTc s) q = ((q : ℚ) - 1) * ((q : ℚ) ^ 1)⁻¹ := by
   rw [omCount_childless_single (decidedTc s) q (configOf_decidedTc_childless s)]
   have hcfg : configOf (decidedTc s) = decidedConfig := by
-    have := configsOf_decidedTc s
-    simpa [configsOf] using this
+    simpa [configsOf] using configsOf_decidedTc s
   rw [hcfg, mCell_decidedConfig, volExp_decidedConfig]
 
 /-! ## 4. The TIE at the S2C1 / S3C1 decided cells (gate values, `p = 2`) -/
@@ -223,10 +221,7 @@ theorem hnode_decided_order1_omCount_S2C1 :
   -- `hlim`'s nhds constant equals `1/2` (the gate, up to the ↑2 vs 2 ℚ-cast normalization)
   have hconst : (CellCard.prodSC 2 [[(1, 1)]] : ℚ) * ((2 : ℕ) : ℚ) ^ CellCard.freeExp 2 3 [(0, 1), (2, 0)]
       / ((2 : ℕ) : ℚ) ^ (2 * (3 - 1)) = 1 / 2 := by
-    have hgate := DecidedOrder1.gate_density_S2C1
-    push_cast at hgate ⊢
-    convert hgate using 3
-  rw [hconst] at hlim
-  exact hlim
+    exact_mod_cast DecidedOrder1.gate_density_S2C1
+  rwa [hconst] at hlim
 
 end LeanUrat.OM.DecidedOmCountTie

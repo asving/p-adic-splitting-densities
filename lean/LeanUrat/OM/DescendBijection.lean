@@ -215,9 +215,7 @@ theorem descendMap_toZModPow (N m : ℕ) (s t c₁ c₀ : ℤ_[p]) (a : fourTupl
       = descendEquiv p N m (PadicInt.toZModPow N s) (PadicInt.toZModPow N t)
           (PadicInt.toZModPow N c₁) (PadicInt.toZModPow N c₀)
           (fourMap (PadicInt.toZModPow N) a) := by
-  have h := fourMap_descendMap (PadicInt.toZModPow (p := p) N) s t c₁ c₀ ((p : ℤ_[p]) ^ m) a
-  rw [map_pow, map_natCast] at h
-  exact h
+  rw [fourMap_descendMap, map_pow, map_natCast, descendEquiv_apply]
 
 end Box
 
@@ -481,10 +479,8 @@ def descend_bijection (N m : ℕ) (hm : 1 ≤ m) (hN : 2 * m + 1 ≤ N)
 /-- One-coordinate stratum atom: `#{x : CoordCond k d} = p^{N−k−1}` (the banked
 `ChainMenu.card_dvd_digit_eq` in `CoordCond` dress). -/
 theorem card_coordCond {N k : ℕ} (hk : k < N) (d : ZMod p) :
-    Nat.card {x : ZMod (p ^ N) // CoordCond p N k d x} = p ^ (N - k - 1) := by
-  rw [Nat.card_congr (Equiv.subtypeEquivRight
-    (fun x => (Iff.rfl : CoordCond p N k d x ↔ p ^ k ∣ x.val ∧ digit p N k x = d)))]
-  exact card_dvd_digit_eq p hk d
+    Nat.card {x : ZMod (p ^ N) // CoordCond p N k d x} = p ^ (N - k - 1) :=
+  card_dvd_digit_eq p hk d
 
 /-- Pair-of-coordinates stratum atom. -/
 theorem card_coordCond_pair {N k : ℕ} (hk : k < N) (d₁ d₂ : ZMod p) :

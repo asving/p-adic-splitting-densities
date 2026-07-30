@@ -105,7 +105,7 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
     have hxmem : x ∈ Ideal.span {((p : ℕ) : Oring p (N + 1) g') ^ (v + 1)} := by
       rw [Ideal.mem_span_singleton]
       refine ⟨w, ?_⟩
-      rw [← huspec, hw, pow_succ]
+      rw [← huspec, hw]
       ring
     have hle : v + 1 ≤ v := by
       have := (le_pval_iff p (N + 1) g' (by omega : v + 1 ≤ N + 1)).mpr hxmem
@@ -149,7 +149,7 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
       obtain ⟨w, hw⟩ := hmem
       -- `θ u · p^v = θ x = w · p^{v+1} = w · p · p^v`, so `(θ u - w·p)·p^v = 0`.
       have hzero : (θ u - w * ((p : ℕ) : Oring p N g)) * (((p : ℕ) : Oring p N g) ^ v) = 0 := by
-        rw [sub_mul, ← hθx, hw, pow_succ]
+        rw [sub_mul, ← hθx, hw]
         ring
       -- `v < N`, so `θ u - w·p ∈ (p)`, hence `θ u ∈ (p)`, contradiction.
       have hdiffmem : (θ u - w * ((p : ℕ) : Oring p N g)) ∈ Ideal.span {((p : ℕ) : Oring p N g)} :=

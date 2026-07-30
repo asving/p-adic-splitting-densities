@@ -194,13 +194,8 @@ theorem card_subtype_and_compl {α : Type*} [Finite α] (P Q : α → Prop) :
 
 /-- List-map sum over the `toFinset` of a nodup list. -/
 theorem sum_toFinset_eq_map_sum {α : Type*} [DecidableEq α] {l : List α} (hl : l.Nodup)
-    (f : α → ℕ) : ∑ c ∈ l.toFinset, f c = (l.map f).sum := by
-  induction l with
-  | nil => simp
-  | cons a t ih =>
-      rw [List.nodup_cons] at hl
-      rw [List.toFinset_cons, Finset.sum_insert (by simpa using hl.1), List.map_cons,
-        List.sum_cons, ih hl.2]
+    (f : α → ℕ) : ∑ c ∈ l.toFinset, f c = (l.map f).sum :=
+  List.sum_toFinset f hl
 
 end Helpers
 
@@ -407,8 +402,7 @@ theorem ceilSide_pattern (hw : pr.1.1 < pr.2.1) (hh : pr.2.2 < pr.1.2) {t : ℕ}
 
 theorem ceilSide_left (hw : pr.1.1 < pr.2.1) (hh : pr.2.2 < pr.1.2) :
     ceilSide pr pr.1.1 = pr.1.2 := by
-  have h := ceilSide_pattern hw hh (t := 0) (Nat.zero_le _)
-  simpa using h
+  simpa using ceilSide_pattern hw hh (t := 0) (Nat.zero_le _)
 
 theorem ceilSide_right (hw : pr.1.1 < pr.2.1) (hh : pr.2.2 < pr.1.2) :
     ceilSide pr pr.2.1 = pr.2.2 := by
@@ -1145,14 +1139,7 @@ theorem card_patFinset {s : ℕ} {pr : (ℕ × ℕ) × (ℕ × ℕ)} (hw : pr.1.
     rw [Finset.mem_range, Nat.div_lt_iff_lt_mul he0]
     omega
   · intro t ht
-    have ht' := ht
-    rw [Finset.mem_range] at ht'
-    have h1 := pat_pos_lt hw hh ht'
-    rw [mem_patFinset]
-    show pr.1.1 ≤ pr.1.1 + t * sideE pr ∧ pr.1.1 + t * sideE pr < pr.2.1
-        ∧ (pr.1.1 + t * sideE pr - pr.1.1) % sideE pr = 0
-    refine ⟨by omega, by omega, ?_⟩
-    rw [show pr.1.1 + t * sideE pr - pr.1.1 = t * sideE pr from by omega, Nat.mul_mod_left]
+    exact (pat_pos_mem hw hh hs (Finset.mem_range.mp ht)).choose_spec
   · intro i hi
     rw [mem_patFinset] at hi
     obtain ⟨h1, h2, h3⟩ := hi

@@ -214,16 +214,14 @@ theorem degree_linPair_le (a : R × R) : (linPair a).degree ≤ 1 :=
   degree_linear_le
 
 theorem keyPoly_monic (s t : R) : (keyPoly s t).Monic := by
-  have h : keyPoly s t = X ^ 2 + (C s * X + C t) := by rw [keyPoly, add_assoc]
-  rw [h]
+  rw [keyPoly, add_assoc]
   exact monic_X_pow_add (lt_of_le_of_lt degree_linear_le (by exact_mod_cast one_lt_two))
 
 theorem keyPoly_natDegree [Nontrivial R] (s t : R) : (keyPoly s t).natDegree = 2 := by
   have hdlt : (C s * X + C t).degree < (X ^ 2 : R[X]).degree := by
     rw [degree_X_pow]
     exact lt_of_le_of_lt degree_linear_le (by exact_mod_cast one_lt_two)
-  have h : keyPoly s t = X ^ 2 + (C s * X + C t) := by rw [keyPoly, add_assoc]
-  rw [h]
+  rw [keyPoly, add_assoc]
   exact natDegree_eq_of_degree_eq_some
     (by rw [degree_add_eq_left_of_degree_lt hdlt, degree_X_pow])
 
@@ -416,8 +414,7 @@ at `s = t = 1` reduce mod `2^N` to `caseEDevEquiv` of the reduced coefficients. 
 theorem caseEDevEquiv_toZModPow (N : ℕ) (c : fourTuple ℤ_[2]) :
     fourMap (PadicInt.toZModPow N) (devMap 1 1 c)
       = caseEDevEquiv N (fourMap (PadicInt.toZModPow N) c) := by
-  have h := devMap_toZModPow 2 N 1 1 c
-  rwa [map_one] at h
+  rw [devMap_toZModPow, map_one]
 
 /-! ## 6. Gates (deliverable E; blueprint §0 anchor values) -/
 

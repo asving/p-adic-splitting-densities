@@ -92,16 +92,9 @@ theorem montes_allorders_of_hnode (n : ℕ) (σ : FactorizationType) (M : Finset
       (fun N => ∑ T ∈ M, M8.stratumCount (M9.rawCount n) T N / (M9.realP : ℚ) ^ (n * N))
       Filter.atTop
       (nhds (∑ T ∈ M, omCount T M9.realP)) :=
-    tendsto_finsetSum M (fun T hT => h_node T hT)
-  have hpush : (fun N => (∑ T ∈ M, M8.stratumCount (M9.rawCount n) T N)
-        / (M9.realP : ℚ) ^ (n * N))
-      = fun N => ∑ T ∈ M, M8.stratumCount (M9.rawCount n) T N / (M9.realP : ℚ) ^ (n * N) := by
-    funext N
-    rw [Finset.sum_div]
-  rw [hpush]
-  have hval := (hall M9.realP hq).2
-  rw [← hval]
-  exact hsum
+    tendsto_finsetSum M h_node
+  -- push the division into the sum and rewrite the limit by the rational value at `realP`
+  simpa only [Finset.sum_div, (hall M9.realP hq).2] using hsum
 
 /-! ## The soundness gate — the skeleton recovers `montes_order0` -/
 
@@ -131,13 +124,9 @@ theorem montes_allorders_of_hnode_specializes (n : ℕ) (hn : 0 < n) (σ : Facto
         Filter.atTop
         (nhds (omCount T M9.realP)) := by
     intro T hT
-    rw [sepShapesOf, Finset.mem_image] at hT
-    obtain ⟨lam, hlam, rfl⟩ := hT
-    have hmem : sepShape n lam ∈ sepShapesOf n σ := by
-      rw [sepShapesOf, Finset.mem_image]
-      exact ⟨lam, hlam, rfl⟩
+    obtain ⟨lam, -, rfl⟩ := Finset.mem_image.mp (by rwa [sepShapesOf] at hT)
     rw [omCount_sepShape_eq_rootCount]
-    exact h_node0_proved n hn σ (sepShape n lam) hmem
+    exact h_node0_proved n hn σ (sepShape n lam) hT
   obtain ⟨num, den, hden, hall, htie⟩ :=
     montes_allorders_of_hnode n σ (sepShapesOf n σ) h_node
   -- rewrite the `∑ omCount` conclusion back to `∑ rootCount` on the separable menu

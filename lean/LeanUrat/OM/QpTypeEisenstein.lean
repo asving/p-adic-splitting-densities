@@ -62,8 +62,7 @@ theorem isUnit_add_of_mem_maximalIdeal {R : Type*} [CommRing R] [IsLocalRing R] 
   by_contra hu
   have hmem : a + b ∈ maximalIdeal R := (mem_maximalIdeal _).mpr hu
   have hamem : a ∈ maximalIdeal R := by
-    have := Ideal.sub_mem _ hmem hb
-    simpa using this
+    simpa using Ideal.sub_mem _ hmem hb
   exact mem_nonunits_iff.mp ((mem_maximalIdeal a).mp hamem) ha
 
 variable (p : ℕ) [hp : Fact p.Prime]
@@ -305,9 +304,7 @@ theorem qpType_singleton_forces {f : ℤ_[p][X]} (F : QpType.QpFactorization p f
     simpa [QpType.qpType] using hcard
   obtain ⟨g₁, hfac⟩ := List.length_eq_one_iff.mp hlen
   have hg₁ : g₁ = f := by
-    have hprod := F.prod_eq
-    rw [hfac, List.prod_singleton] at hprod
-    exact hprod
+    rw [← F.prod_eq, hfac, List.prod_singleton]
   subst hg₁
   have hmem : g₁ ∈ F.factors := by rw [hfac]; exact List.mem_singleton_self _
   refine ⟨hmem, ?_⟩
@@ -327,9 +324,7 @@ theorem isEisensteinAt_X_add_p :
     (X + C (p : ℤ_[p])).IsEisensteinAt (maximalIdeal ℤ_[p]) := by
   constructor
   · rw [(monic_X_add_C _).leadingCoeff]
-    intro hmem
-    exact (Ideal.IsMaximal.ne_top inferInstance)
-      (Ideal.eq_top_of_isUnit_mem _ hmem isUnit_one)
+    exact (Ideal.ne_top_iff_one _).mp (Ideal.IsMaximal.ne_top inferInstance)
   · intro n hn
     rw [natDegree_X_add_C] at hn
     interval_cases n

@@ -201,18 +201,12 @@ theorem mem_nextCands {s : ℕ} {p q : ℕ × ℕ} :
   rw [List.mem_filter, List.mem_flatMap]
   constructor
   · rintro ⟨⟨j, hj, hq⟩, hdec⟩
-    rw [List.mem_range'] at hj
-    obtain ⟨i, hi, rfl⟩ := hj
-    rw [List.mem_map] at hq
-    obtain ⟨v, hv, rfl⟩ := hq
-    rw [List.mem_range] at hv
-    exact ⟨by omega, by omega, hv, of_decide_eq_true hdec⟩
+    obtain ⟨i, hi, rfl⟩ := List.mem_range'.mp hj
+    obtain ⟨v, hv, rfl⟩ := List.mem_map.mp hq
+    exact ⟨by omega, by omega, List.mem_range.mp hv, of_decide_eq_true hdec⟩
   · rintro ⟨h1, h2, h3, h4⟩
-    refine ⟨⟨q.1, ?_, ?_⟩, decide_eq_true h4⟩
-    · rw [List.mem_range']
-      exact ⟨q.1 - p.1 - 1, by omega, by omega⟩
-    · rw [List.mem_map]
-      exact ⟨q.2, List.mem_range.mpr h3, rfl⟩
+    exact ⟨⟨q.1, List.mem_range'.mpr ⟨q.1 - p.1 - 1, by omega, by omega⟩,
+      List.mem_map.mpr ⟨q.2, List.mem_range.mpr h3, rfl⟩⟩, decide_eq_true h4⟩
 
 /-- All continuations after the edge `p0 → p1`, fuel-based (structural recursion so that the
 enumeration kernel-reduces for the tiny-case count gates). -/
@@ -266,24 +260,18 @@ theorem mem_extendPaths {s : ℕ} :
       · rw [if_neg hs, List.mem_flatMap]
         constructor
         · rintro ⟨p2, hp2, hT⟩
-          rw [List.mem_filter] at hp2
-          obtain ⟨hp2c, hp2s⟩ := hp2
-          rw [List.mem_map] at hT
-          obtain ⟨T', hT', rfl⟩ := hT
+          obtain ⟨hp2c, hp2s⟩ := List.mem_filter.mp hp2
+          obtain ⟨T', hT', rfl⟩ := List.mem_map.mp hT
           rw [mem_nextCands] at hp2c
-          have hrec := (ih (p0 := p1) (p1 := p2) (T := T') (by omega)).mp hT'
-          exact ChainOK.cons hp2c.1 hp2c.2.2.1 (of_decide_eq_true hp2s) hrec
+          exact ChainOK.cons hp2c.1 hp2c.2.2.1 (of_decide_eq_true hp2s)
+            ((ih (p0 := p1) (p1 := p2) (T := T') (by omega)).mp hT')
         · intro hc
           cases hc with
           | nil h1 h2 => exact absurd h1 hs
           | @cons _ _ p2 T' h1 h2 h3 h4 =>
-              refine ⟨p2, ?_, ?_⟩
-              · rw [List.mem_filter, mem_nextCands]
-                refine ⟨⟨h1, chainOK_le h4, h2, ?_⟩, decide_eq_true h3⟩
-                intro h0
-                exact chainOK_zero h4 h0
-              · rw [List.mem_map]
-                exact ⟨T', (ih (by omega)).mpr h4, rfl⟩
+              exact ⟨p2, List.mem_filter.mpr ⟨mem_nextCands.mpr
+                ⟨h1, chainOK_le h4, h2, fun h0 => chainOK_zero h4 h0⟩, decide_eq_true h3⟩,
+                List.mem_map.mpr ⟨T', (ih (by omega)).mpr h4, rfl⟩⟩
 
 /-- **All menu paths of width `s` at level `N`** (vertex-list layer): left height `H ∈ [1, N−1]`
 (F5), then all convex maximal continuations. -/
@@ -299,25 +287,16 @@ theorem mem_menuPaths_iff {s N : ℕ} {P : List (ℕ × ℕ)} :
   rw [List.mem_flatMap]
   constructor
   · rintro ⟨H, hH, hP⟩
-    rw [List.mem_range'] at hH
-    obtain ⟨i, hi, rfl⟩ := hH
-    rw [List.mem_flatMap] at hP
-    obtain ⟨p1, hp1, hP⟩ := hP
-    rw [List.mem_map] at hP
-    obtain ⟨T, hT, rfl⟩ := hP
+    obtain ⟨i, hi, rfl⟩ := List.mem_range'.mp hH
+    obtain ⟨p1, hp1, hP⟩ := List.mem_flatMap.mp hP
+    obtain ⟨T, hT, rfl⟩ := List.mem_map.mp hP
     rw [mem_nextCands] at hp1
-    have hchain := (mem_extendPaths (by omega)).mp hT
-    exact ⟨1 + 1 * i, p1, T, rfl, by omega, by omega, hp1.1, hp1.2.2.1, hchain⟩
+    exact ⟨1 + 1 * i, p1, T, rfl, by omega, by omega, hp1.1, hp1.2.2.1,
+      (mem_extendPaths (by omega)).mp hT⟩
   · rintro ⟨H, p1, T, rfl, hH1, hH2, hp1, hpH, hc⟩
-    refine ⟨H, ?_, ?_⟩
-    · rw [List.mem_range']
-      exact ⟨H - 1, by omega, by omega⟩
-    · rw [List.mem_flatMap]
-      refine ⟨p1, ?_, ?_⟩
-      · rw [mem_nextCands]
-        exact ⟨hp1, chainOK_le hc, hpH, fun h0 => chainOK_zero hc h0⟩
-      · rw [List.mem_map]
-        exact ⟨T, (mem_extendPaths (by omega)).mpr hc, rfl⟩
+    exact ⟨H, List.mem_range'.mpr ⟨H - 1, by omega, by omega⟩, List.mem_flatMap.mpr
+      ⟨p1, mem_nextCands.mpr ⟨hp1, chainOK_le hc, hpH, fun h0 => chainOK_zero hc h0⟩,
+        List.mem_map.mpr ⟨T, (mem_extendPaths (by omega)).mpr hc, rfl⟩⟩⟩
 
 /-! ### Nodup of the enumeration -/
 
@@ -338,11 +317,9 @@ theorem nodup_nextCands (s : ℕ) (p : ℕ × ℕ) : (nextCands s p).Nodup := by
   refine List.Nodup.filter _ ?_
   refine nodup_flatMap_key Prod.fst List.nodup_range' ?_ ?_
   · intro j _
-    have hr : (List.range p.2).Nodup := List.nodup_range
-    exact hr.map (fun a b h => by simpa using h)
+    exact List.nodup_range.map (fun a b h => by simpa using h)
   · intro j _ b hb
-    rw [List.mem_map] at hb
-    obtain ⟨v, _, rfl⟩ := hb
+    obtain ⟨v, _, rfl⟩ := List.mem_map.mp hb
     rfl
 
 theorem nodup_extendPaths (s : ℕ) :
@@ -362,8 +339,7 @@ theorem nodup_extendPaths (s : ℕ) :
         · intro p2 _
           exact (ih p1 p2).map (fun a b h => by simpa using h)
         · intro p2 _ b hb
-          rw [List.mem_map] at hb
-          obtain ⟨T, _, rfl⟩ := hb
+          obtain ⟨T, _, rfl⟩ := List.mem_map.mp hb
           rfl
 
 /-- **The path menu is duplicate-free** (deliverable 1). -/
@@ -375,14 +351,11 @@ theorem nodup_menuPaths (s N : ℕ) : (menuPaths s N).Nodup := by
     · intro p1 _
       exact (nodup_extendPaths s (s + 1) (0, H) p1).map (fun a b h => by simpa using h)
     · intro p1 _ b hb
-      rw [List.mem_map] at hb
-      obtain ⟨T, _, rfl⟩ := hb
+      obtain ⟨T, _, rfl⟩ := List.mem_map.mp hb
       rfl
   · intro H _ b hb
-    rw [List.mem_flatMap] at hb
-    obtain ⟨p1, _, hb⟩ := hb
-    rw [List.mem_map] at hb
-    obtain ⟨T, _, rfl⟩ := hb
+    obtain ⟨p1, _, hb⟩ := List.mem_flatMap.mp hb
+    obtain ⟨T, _, rfl⟩ := List.mem_map.mp hb
     rfl
 
 /-! ## 3. Residual-shape assignments: partitions of the side degree into `(D, μ)` parts -/
@@ -430,8 +403,7 @@ theorem mem_listsLE {α : Type*} :
       · rintro (rfl | ⟨a, ha, t, ht, rfl⟩)
         · simp
         · obtain ⟨h1, h2⟩ := ih.mp ht
-          refine ⟨by simpa using Nat.succ_le_succ h1, ?_⟩
-          intro x hx
+          refine ⟨by simpa using Nat.succ_le_succ h1, fun x hx => ?_⟩
           rcases List.mem_cons.mp hx with rfl | hx'
           · exact ha
           · exact h2 x hx'
@@ -439,9 +411,8 @@ theorem mem_listsLE {α : Type*} :
         cases l with
         | nil => exact Or.inl rfl
         | cons a t =>
-            refine Or.inr ⟨a, hmem a (by simp), t, ih.mpr ⟨by simpa using hlen, ?_⟩, rfl⟩
-            intro x hx
-            exact hmem x (List.mem_cons_of_mem _ hx)
+            exact Or.inr ⟨a, hmem a (by simp), t, ih.mpr ⟨by simpa using hlen,
+              fun x hx => hmem x (List.mem_cons_of_mem _ hx)⟩, rfl⟩
 
 theorem nodup_listsLE {α : Type*} [Inhabited α] :
     ∀ {n : ℕ} {A : List α}, A.Nodup → (listsLE n A).Nodup := by
@@ -454,17 +425,14 @@ theorem nodup_listsLE {α : Type*} [Inhabited α] :
       rw [List.nodup_cons]
       constructor
       · intro h
-        rw [List.mem_flatMap] at h
-        obtain ⟨a, _, h⟩ := h
-        rw [List.mem_map] at h
-        obtain ⟨t, _, h⟩ := h
+        obtain ⟨a, _, h⟩ := List.mem_flatMap.mp h
+        obtain ⟨t, _, h⟩ := List.mem_map.mp h
         exact List.cons_ne_nil a t h
       · refine nodup_flatMap_key (fun L => L.head?.getD default) hA ?_ ?_
         · intro a _
           exact (ih hA).map (fun x y h => by simpa using h)
         · intro a _ b hb
-          rw [List.mem_map] at hb
-          obtain ⟨t, _, rfl⟩ := hb
+          obtain ⟨t, _, rfl⟩ := List.mem_map.mp hb
           rfl
 
 /-- The `(D, μ)` alphabet with `1 ≤ D, μ ≤ d`. -/
@@ -477,30 +445,21 @@ theorem mem_pairAlphabet {d : ℕ} {q : ℕ × ℕ} :
   rw [List.mem_flatMap]
   constructor
   · rintro ⟨D, hD, hq⟩
-    rw [List.mem_range'] at hD
-    obtain ⟨i, hi, rfl⟩ := hD
-    rw [List.mem_map] at hq
-    obtain ⟨μ, hμ, rfl⟩ := hq
-    rw [List.mem_range'] at hμ
-    obtain ⟨k, hk, rfl⟩ := hμ
+    obtain ⟨i, hi, rfl⟩ := List.mem_range'.mp hD
+    obtain ⟨μ, hμ, rfl⟩ := List.mem_map.mp hq
+    obtain ⟨k, hk, rfl⟩ := List.mem_range'.mp hμ
     omega
   · rintro ⟨⟨h1, h2⟩, h3, h4⟩
-    refine ⟨q.1, ?_, ?_⟩
-    · rw [List.mem_range']; exact ⟨q.1 - 1, by omega, by omega⟩
-    · rw [List.mem_map]
-      refine ⟨q.2, ?_, ?_⟩
-      · rw [List.mem_range']; exact ⟨q.2 - 1, by omega, by omega⟩
-      · exact Prod.ext_iff.mpr ⟨rfl, rfl⟩
+    exact ⟨q.1, List.mem_range'.mpr ⟨q.1 - 1, by omega, by omega⟩, List.mem_map.mpr
+      ⟨q.2, List.mem_range'.mpr ⟨q.2 - 1, by omega, by omega⟩, Prod.ext_iff.mpr ⟨rfl, rfl⟩⟩⟩
 
 theorem nodup_pairAlphabet (d : ℕ) : (pairAlphabet d).Nodup := by
   unfold pairAlphabet
   refine nodup_flatMap_key Prod.fst List.nodup_range' ?_ ?_
   · intro D _
-    have hr : (List.range' 1 d).Nodup := List.nodup_range'
-    exact hr.map (fun a b h => by simpa using h)
+    exact List.Nodup.map (fun a b h => by simpa using h) List.nodup_range'
   · intro D _ b hb
-    rw [List.mem_map] at hb
-    obtain ⟨μ, _, rfl⟩ := hb
+    obtain ⟨μ, _, rfl⟩ := List.mem_map.mp hb
     rfl
 
 /-- **All residual shapes of degree `d`**: canonically sorted lists of `(D, μ)` parts with
@@ -522,16 +481,8 @@ theorem nat_le_sum_of_mem : ∀ {L : List ℕ} {x : ℕ}, x ∈ L → x ≤ L.su
         simp only [List.sum_cons]
         omega
 
-theorem length_le_sum_of_one_le : ∀ {L : List ℕ}, (∀ x ∈ L, 1 ≤ x) → L.length ≤ L.sum := by
-  intro L
-  induction L with
-  | nil => intro _; simp
-  | cons a t ih =>
-      intro h
-      have h1 := h a (by simp)
-      have h2 := ih fun x hx => h x (List.mem_cons_of_mem _ hx)
-      simp only [List.length_cons, List.sum_cons]
-      omega
+theorem length_le_sum_of_one_le : ∀ {L : List ℕ}, (∀ x ∈ L, 1 ≤ x) → L.length ≤ L.sum :=
+  fun {L} h => List.length_le_sum_of_one_le L h
 
 theorem mem_shapesOfDegree_iff {d : ℕ} {l : List (ℕ × ℕ)} :
     l ∈ shapesOfDegree d ↔
@@ -546,18 +497,13 @@ theorem mem_shapesOfDegree_iff {d : ℕ} {l : List (ℕ × ℕ)} :
     have := mem_pairAlphabet.mp (hA q hq)
     exact ⟨this.1.1, this.2.1⟩
   · rintro ⟨hpw, hpos, hsum⟩
-    have hbound : ∀ q ∈ l, q.1 * q.2 ≤ d := by
-      intro q hq
-      rw [← hsum]
-      exact nat_le_sum_of_mem (List.mem_map_of_mem hq)
+    have hbound : ∀ q ∈ l, q.1 * q.2 ≤ d := fun q hq =>
+      hsum ▸ nat_le_sum_of_mem (List.mem_map_of_mem hq)
     refine ⟨⟨?_, ?_⟩, hpw, hsum⟩
     · have hlen : (l.map fun q => q.1 * q.2).length ≤ (l.map fun q => q.1 * q.2).sum := by
-        refine length_le_sum_of_one_le ?_
-        intro x hx
-        rw [List.mem_map] at hx
-        obtain ⟨q, hq, rfl⟩ := hx
-        have := hpos q hq
-        exact Nat.one_le_iff_ne_zero.mpr (Nat.mul_ne_zero (by omega) (by omega))
+        refine length_le_sum_of_one_le fun x hx => ?_
+        obtain ⟨q, hq, rfl⟩ := List.mem_map.mp hx
+        exact Nat.mul_pos (hpos q hq).1 (hpos q hq).2
       rw [List.length_map] at hlen
       omega
     · intro q hq
@@ -770,8 +716,7 @@ theorem nodup_piList {α : Type*} [Inhabited α] :
         exact (ih fun l' hl' => h l' (List.mem_cons_of_mem _ hl')).map
           (fun x y hxy => by simpa using hxy)
       · intro a _ b hb
-        rw [List.mem_map] at hb
-        obtain ⟨t, _, rfl⟩ := hb
+        obtain ⟨t, _, rfl⟩ := List.mem_map.mp hb
         rfl
 
 /-- The shape assignments of a path. -/
@@ -784,10 +729,8 @@ theorem mem_shapeAssignments {P : List (ℕ × ℕ)} {sh : List (List (ℕ × �
   rw [mem_piList, List.forall₂_map_right_iff]
 
 theorem nodup_shapeAssignments (P : List (ℕ × ℕ)) : (shapeAssignments P).Nodup := by
-  refine nodup_piList ?_
-  intro l hl
-  rw [List.mem_map] at hl
-  obtain ⟨pr, _, rfl⟩ := hl
+  refine nodup_piList fun l hl => ?_
+  obtain ⟨pr, _, rfl⟩ := List.mem_map.mp hl
   exact nodup_shapesOfDegree _
 
 /-- **THE CELL MENU** (deliverable 2, blueprint §2): all menu paths × all per-side residual-shape
@@ -1328,11 +1271,8 @@ noncomputable def residOf {N s : ℕ} (f : QuotientBox.monicBox p N s) (P : List
 theorem residOf_refines {N s : ℕ} (f : QuotientBox.monicBox p N s) (P : List (ℕ × ℕ)) :
     ResidRefines p f P (residOf p f P) := by
   unfold ResidRefines residOf
-  induction sidePairs P with
-  | nil => exact List.Forall₂.nil
-  | cons pr rest ih =>
-      rw [List.map_cons]
-      exact List.Forall₂.cons rfl ih
+  rw [List.forall₂_map_left_iff]
+  exact List.forall₂_same.mpr fun _ _ => rfl
 
 /-- **`inCellMulti_single` (deliverable 1): the base case is `InCell`.**  Taking the residual pin
 to be `f`'s own tautological residual read (`residOf` — the shape-determined refinement), the
@@ -2279,16 +2219,13 @@ theorem polyShape_pow_linear (a : ZMod p) {k : ℕ} (hk : k ≠ 0) :
   simp [Multiset.count_replicate_self]
 
 theorem polyShape_linear (a : ZMod p) : polyShape p (X + C a) = {(1, 1)} := by
-  have h := polyShape_pow_linear p a (k := 1) one_ne_zero
-  rwa [pow_one] at h
+  simpa using polyShape_pow_linear p a (k := 1) one_ne_zero
 
 theorem polyShape_X_add_one : polyShape p (X + 1) = {(1, 1)} := by
-  have h := polyShape_linear p 1
-  rwa [map_one] at h
+  simpa using polyShape_linear p 1
 
 theorem polyShape_X_add_one_sq : polyShape p ((X + 1) ^ 2) = {(1, 2)} := by
-  have h := polyShape_pow_linear p 1 (k := 2) two_ne_zero
-  rwa [map_one] at h
+  simpa using polyShape_pow_linear p 1 (k := 2) two_ne_zero
 
 /-- Shape of a monic irreducible: `{(deg, 1)}`. -/
 theorem polyShape_irreducible_monic {R : (ZMod p)[X]} (hirr : Irreducible R) (hmon : R.Monic) :

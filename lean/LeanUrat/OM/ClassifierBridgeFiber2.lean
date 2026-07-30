@@ -160,10 +160,8 @@ theorem rootSide_eq_of_classify {p : ℕ} [Fact p.Prime] {n N H : ℕ} (hn0 : 0 
         rw [hRHSwidth] at this; exact this
       have hlenpos : 0 < Sm.length := by rw [hlen]; exact hn0
       -- v₀: Sm.v₀ = H
-      have hv0S : Sm.v₀ = H := by
-        have := toSideFace_v0_eq hface hlenpos
-        show Sm.v₀ = H
-        rw [this]; rfl
+      have hv0S : Sm.v₀ = H :=
+        (toSideFace_v0_eq hface hlenpos).trans rfl
       -- Sm is the first Newton side; unfold npSides.head? = some Sm
       rw [B.rootSide] at hrs
       -- extract npVertices = (i₀,v₀) :: (j₀,v₁) :: rest with Sm = ⟨i₀,j₀,v₀,v₁⟩
@@ -207,8 +205,7 @@ theorem rootSide_eq_of_classify {p : ℕ} [Fact p.Prime] {n N H : ℕ} (hn0 : 0 
       have hv1 : v1 = 0 := by
         -- (Sm.j₀, v1) on hull
         have honhull : ((v1 : ℕ) : ℚ) = NewtonPolygon.npHeight S hS ((Sm.j₀ : ℕ) : ℚ) := by
-          have := NewtonPolygon.npVertices_on_hull S hS hmemR
-          simpa using this
+          simpa using NewtonPolygon.npVertices_on_hull S hS hmemR
         rw [hj0] at honhull
         -- (n, 0) is a support dot (leading coeff), so npHeight n ≤ 0
         have hnmem : (((n : ℕ), (0 : ℕ)) : ℕ × ℕ) ∈ S :=
@@ -441,7 +438,6 @@ theorem chord_validLine_backward {N n H : ℕ} (hn0 : 0 < n) (hN : 0 < N) (hH : 
   have hval0 : NewtonPolygon.pairLine PR₀.1 PR₀.2 ((0 : ℕ) : ℚ) = (H : ℚ) := by
     rw [← hnpH0, NewtonPolygon.npHeight]; exact hPR₀eq.symm
   -- PR₀ endpoints on hull → on chord
-  have hA := PR₀.1; have hB := PR₀.2
   have hAonhull : (PR₀.1.2 : ℚ) = NewtonPolygon.npHeight S hS (PR₀.1.1 : ℚ) :=
     validLine_left_onHull S hS (by rw [Prod.mk.eta] at *; exact hPR₀mem)
   have hAchord : ClassifierBridgeFiber.OnLineℤ ((0 : ℕ), H) ((n : ℕ), (0 : ℕ)) PR₀.1 :=
@@ -617,8 +613,7 @@ theorem rootResidual_natDegree_eq_of_classify {p : ℕ} [Fact p.Prime] {n N : �
   have hhead := List.head_eq_of_cons_eq htree
   -- hhead : (order, clusterSize, dr) = (0, n, sum) ; take third
   have h3 : (B.fRootCtx p N hN f).dr = (shape.map Prod.fst).sum := by
-    have := congrArg (fun t => t.2.2) hhead
-    simpa using this
+    simpa using congrArg (fun t => t.2.2) hhead
   -- fRootCtx.dr = rootResidual.natDegree
   show (B.rootResidual p N hN f).natDegree = (shape.map Prod.fst).sum
   rw [show (B.rootResidual p N hN f).natDegree = (B.fRootCtx p N hN f).dr from rfl, h3]
@@ -705,7 +700,6 @@ theorem polyShape_residual_of_classify {p : ℕ} [Fact p.Prime] {n N : ℕ} (hN 
   set fact := Classical.choice (M4.factorize_any RT) with hfactdef
   have hRTR : RT = R := hRr
   -- (i) factor-degree multiset = shape.map fst
-  have hRrT : RT = R := hRTR
   have hdegDS : (M5.encodeCells (B.fRootCtx p N hN f)).map (fun c => c.dS) = shape.map Prod.fst :=
     factorDS_eq_shape_of_classify hN f pr shape hcl
   have hfacdeg : fact.factors.val.map Polynomial.natDegree = (shape.map Prod.fst : Multiset ℕ) := by
@@ -715,7 +709,8 @@ theorem polyShape_residual_of_classify {p : ℕ} [Fact p.Prime] {n N : ℕ} (hN 
     rw [← hRr]; exact rootResidual_natDegree_eq_of_classify hN f pr shape hcl
   -- (iii) all mult = 1: ∑ mult·deg = natDegree = ∑ deg, mult ≥ 1, deg ≥ 1
   have hbudget : ∑ ψ ∈ fact.factors, fact.mult ψ * ψ.natDegree = R.natDegree := by
-    rw [← hRrT]; exact fact.degree_budget
+    rw [← hRTR]
+    exact fact.degree_budget
   -- ∑ deg (distinct) = shape-sum
   have hsumdeg : ∑ ψ ∈ fact.factors, ψ.natDegree = (shape.map Prod.fst).sum := by
     have h := congrArg Multiset.sum hfacdeg
@@ -787,8 +782,6 @@ theorem polyShape_residual_of_classify {p : ℕ} [Fact p.Prime] {n N : ℕ} (hN 
     rw [← hval]; exact hfacdeg
   -- Compute polyShape over RT, then transport the whole pair to R via hRTR (avoids instance-flavor
   -- mismatch on `normalizedFactors`).
-  -- transport the RT-facts to R (rewrites the type to `Polynomial (ZMod p)` with ZMod instances)
-  have hsq : Squarefree R := hRTR ▸ hsqT
   -- Prove the pair for RT (native flavor, all facts match), then transport the WHOLE pair to R via
   -- hRTR : RT = R (polyShape p _ / Squarefree _ carry ZMod instances fixed by `p`, so `▸` is clean).
   -- align hnfT to the canonical `Polynomial (ZMod p)` NormalizationMonoid flavor that
@@ -919,10 +912,8 @@ theorem hnode_selfloop_over_Bclassify_R (n N₀ : ℕ) (hN₀ : 0 < N₀) (hn : 
         rw [hPeq]; rfl
       rw [hsingle] at h1
       exact (List.cons.injEq _ _ _ _ ▸ h1).1.symm
-    have := congrArg (fun pr => pr.1.2) heq
-    simpa using this
+    simpa using congrArg (fun pr => pr.1.2) heq
   subst H'
-  have hH1 : 1 ≤ H := hH1'
   -- rewrite the SEQUENCE by the count identity, EVENTUALLY (for `N ≥ H+1`, so `1 ≤ H ≤ N-1`).
   refine hbase.congr' ?_
   filter_upwards [Filter.eventually_ge_atTop (H + 1)] with N hNge
@@ -930,7 +921,7 @@ theorem hnode_selfloop_over_Bclassify_R (n N₀ : ℕ) (hN₀ : 0 < N₀) (hn : 
   -- build `MenuPath n N [(0,H),(n,0)]` at level N (self-loop path, `1 ≤ H ≤ N-1`).
   have hPN : MenuPath n N P := by
     rw [hPeq]
-    exact ⟨H, ((n : ℕ), (0 : ℕ)), [], rfl, hH1, by omega, hn, by omega,
+    exact ⟨H, ((n : ℕ), (0 : ℕ)), [], rfl, hH1', by omega, hn, by omega,
       ChainOK.nil rfl rfl⟩
   rw [stratumCount_selfloop_R n N hNpos hn P hPN
     (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) hsingle shape hsh hμ hne]

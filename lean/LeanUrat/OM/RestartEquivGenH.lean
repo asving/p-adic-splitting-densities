@@ -177,7 +177,6 @@ theorem sidePolyR_eq_target_iff (hμ : 0 < μ) (hcop : Nat.Coprime e h)
   have hIdx : ∀ k : ℕ,
       ((0, h * μ), (μ * e, 0)).1.1 + k * CellCard.sideE ((0, h * μ), (μ * e, 0)) = k * e := fun k => by
     rw [sideE_restartGenH e h μ hμ hcop]
-    show 0 + k * e = k * e
     exact Nat.zero_add _
   constructor
   · intro hsp k hk
@@ -240,18 +239,13 @@ theorem cap_splitH (k : ℕ) :
     (μ.choose k : ZMod (p ^ N)) * wnegH p N h c ^ (μ - k)
       = (p : ZMod (p ^ N)) ^ (h * (μ - k)) * RestartEquiv.capU p N μ c k := by
   unfold wnegH RestartEquiv.capU
-  rw [show -((c : ZMod (p ^ N)) * (p : ZMod (p ^ N)) ^ h)
-        = (-(c : ZMod (p ^ N))) * (p : ZMod (p ^ N)) ^ h by ring,
-    mul_pow, ← pow_mul, mul_comm h (μ - k)]
   ring
 
 /-- `wnegH^t = (−c)^t · p^(h·t)` — the unit/`p`-power split of the twist powers. -/
 theorem wnegH_pow_split (t : ℕ) :
     wnegH p N h c ^ t = (-(c : ZMod (p ^ N))) ^ t * (p : ZMod (p ^ N)) ^ (h * t) := by
   unfold wnegH
-  rw [show -((c : ZMod (p ^ N)) * (p : ZMod (p ^ N)) ^ h)
-        = (-(c : ZMod (p ^ N))) * (p : ZMod (p ^ N)) ^ h by ring,
-    mul_pow, ← pow_mul, mul_comm h t]
+  ring
 
 /-- **The triangular coefficient extraction** (general `h`): for `b` of degree `< e` and `r < e`,
 `(b·φ^j).coeff (k·e+r) = b.coeff r · C(j,k) · (−c·p^h)^(j−k)`. -/
@@ -367,9 +361,7 @@ theorem not_e_dvd_hr (hcop : Nat.Coprime e h) {r : ℕ} (hr0 : 0 < r) (hre : r <
     ¬ (e ∣ h * r) := by
   intro hdvd
   -- e ∣ h*r, Coprime e h ⟹ e ∣ r
-  have hdvd' : e ∣ r * h := by rwa [Nat.mul_comm] at hdvd
-  have hdr : e ∣ r := hcop.dvd_of_dvd_mul_right hdvd'
-  have := Nat.le_of_dvd hr0 hdr
+  have := Nat.le_of_dvd hr0 (hcop.dvd_of_dvd_mul_left hdvd)
   omega
 
 /-- The off-vertex diagonal floor (`1 ≤ r < e`, `gcd(e,h)=1`):
@@ -562,9 +554,7 @@ theorem coeffCond_of_slotPatternGenH (hN : 0 < N) (he : 0 < e) (_hh : 0 < h)
       have hfloor := SlotCondGenH.dvd_coeff p N e h (hb j) hr
       have hle := cellFloor_le_dexp_add e h μ he hcop hkj hjμ hr
       exact dvd_trans (pow_dvd_pow _ hle)
-        (dvd_mul_wnegH_pow p N h c (rfl :
-          dexp e h (e * h * (μ - (j:ℕ)) + 1) r + h * ((j:ℕ) - k)
-            = dexp e h (e * h * (μ - (j:ℕ)) + 1) r + h * ((j:ℕ) - k)) hfloor _)
+        (dvd_mul_wnegH_pow p N h c rfl hfloor _)
     · rw [Nat.choose_eq_zero_of_lt (by omega), Nat.cast_zero, mul_zero, zero_mul]
       exact dvd_zero _
   -- strict floor at the vertex (r=0): perturbation valuation ≥ cellFloor+1
@@ -578,9 +568,7 @@ theorem coeffCond_of_slotPatternGenH (hN : 0 < N) (he : 0 < e) (_hh : 0 < h)
       have hfloor := SlotCondGenH.dvd_coeff p N e h (hb j) he
       have hle := cellFloor_zero_lt_dexp_add e h μ he hkj hjμ
       exact dvd_trans (pow_dvd_pow _ hle)
-        (dvd_mul_wnegH_pow p N h c (rfl :
-          dexp e h (e * h * (μ - (j:ℕ)) + 1) 0 + h * ((j:ℕ) - k)
-            = dexp e h (e * h * (μ - (j:ℕ)) + 1) 0 + h * ((j:ℕ) - k)) hfloor _)
+        (dvd_mul_wnegH_pow p N h c rfl hfloor _)
     · rw [Nat.choose_eq_zero_of_lt (by omega), Nat.cast_zero, mul_zero, zero_mul]
       exact dvd_zero _
   constructor
@@ -645,9 +633,7 @@ theorem slotPattern_of_coeffCondGenH (hN : 0 < N) (he : 0 < e) (_hh : 0 < h)
     induction t with
     | zero =>
         intro j hj
-        exfalso
-        have := j.2
-        omega
+        exact absurd j.2 (by omega)
     | succ t ih =>
         intro j hj
         have hjμ : (j : ℕ) < μ := j.2

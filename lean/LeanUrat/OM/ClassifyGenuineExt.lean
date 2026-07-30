@@ -225,12 +225,11 @@ theorem classifyGenuineExtAux_head_dr_pos (hgm : g.Monic) (hN : 0 < N)
   set Φ := LiftKeyExt.liftKeyExt p N g hgm hN Ψ with hΦ
   have hdr : (OrderTwoContextR.fChildCtxExtR p N g r budget hgm hN hgirr Φ μ h).dr
       = (ChildResidualExt.childResidualExt p N g hgm hN Φ μ h).natDegree := by
-    show (if (ChildResidualExt.childResidualExt p N g hgm hN Φ μ h).natDegree ≤ budget
+    change (if (ChildResidualExt.childResidualExt p N g hgm hN Φ μ h).natDegree ≤ budget
             then ChildResidualExt.childResidualExt p N g hgm hN Φ μ h else 0).natDegree
         = (ChildResidualExt.childResidualExt p N g hgm hN Φ μ h).natDegree
     rw [if_pos hle]
-  have hdr0 : (OrderTwoContextR.fChildCtxExtR p N g r budget hgm hN hgirr Φ μ h).dr = 0 :=
-    hhead.2.2.symm
+  have hdr0 := hhead.2.2.symm
   rw [hdr] at hdr0
   omega
 

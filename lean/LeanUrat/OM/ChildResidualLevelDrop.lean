@@ -61,10 +61,9 @@ theorem childResidualExt_reduce_stable_of_cuts
         (h.map (levelDropHom p N g' g hgg))
       = (childResidualExt p (N + 1) g' hgm' h1 Φ μ h).map
           (levelDropResHom p N g' g h1 h2 hgg) := by
-  apply childResidualExt_transport p (N + 1) N g' g hgm' h1 hgm h2
+  exact childResidualExt_transport p (N + 1) N g' g hgm' h1 hgm h2
     (levelDropHom p N g' g hgg) (levelDropResHom p N g' g h1 h2 hgg) Φ hΦ μ h
-  intro t
-  exact resUnitResidue_levelDrop p N g' g hgm' hgm h1 h2 hm' hgirr hgg _ (hcuts t)
+    fun t => resUnitResidue_levelDrop p N g' g hgm' hgm h1 h2 hm' hgirr hgg _ (hcuts t)
 
 end
 

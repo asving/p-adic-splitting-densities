@@ -159,10 +159,9 @@ theorem rootCount_isRational_of_leaf (cells : ClusterShape → List CountCell)
         (c.children.map (fun ch => clusterCount cells treeSize hdesc ch q)).prod)).prod = 1 := by
       apply List.prod_eq_one
       intro x hx
-      rw [List.mem_map] at hx
-      obtain ⟨c, hc, rfl⟩ := hx
+      obtain ⟨c, hc, rfl⟩ := List.mem_map.mp hx
       rw [hleaf c hc]
-      simp
+      rfl
     rw [h1, mul_one]
   rw [heq]
   exact isRationalFn_mul (isRationalFn_polyEval _) (isRationalFn_invQpow _)

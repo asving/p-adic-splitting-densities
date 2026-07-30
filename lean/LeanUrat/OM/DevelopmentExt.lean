@@ -129,9 +129,8 @@ theorem developExt_resHom_natural (hgm : g.Monic) (hN : 0 < N)
     (h : (UnramifiedBase.Oring p N g)[X]) (j : Fin k) :
     (developExt p N g Φ k h j).map (UnramifiedBase.resHom p N g hgm hN)
       = Development.develop (Φ.map (UnramifiedBase.resHom p N g hgm hN)) k
-          (h.map (UnramifiedBase.resHom p N g hgm hN)) j := by
-  rw [developExt_def]
-  exact Development.develop_map (UnramifiedBase.resHom p N g hgm hN) hΦ k h j
+          (h.map (UnramifiedBase.resHom p N g hgm hN)) j :=
+  Development.develop_map (UnramifiedBase.resHom p N g hgm hN) hΦ k h j
 
 -- Footprint check: must be ⊆ [propext, Classical.choice, Quot.sound].
 #print axioms developExt_resHom_natural

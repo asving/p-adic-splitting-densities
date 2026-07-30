@@ -61,13 +61,12 @@ noncomputable def develop (φ : R[X]) : (k : ℕ) → R[X] → Fin k → R[X]
   | k + 1, g => Fin.cons (g %ₘ φ) (develop φ k (g /ₘ φ))
 
 @[simp]
-theorem develop_zero (φ : R[X]) (k : ℕ) (g : R[X]) : develop φ (k + 1) g 0 = g %ₘ φ := by
-  simp only [develop, Fin.cons_zero]
+theorem develop_zero (φ : R[X]) (k : ℕ) (g : R[X]) : develop φ (k + 1) g 0 = g %ₘ φ := rfl
 
 @[simp]
 theorem develop_succ (φ : R[X]) (k : ℕ) (g : R[X]) (j : Fin k) :
-    develop φ (k + 1) g j.succ = develop φ k (g /ₘ φ) j := by
-  simp only [develop, Fin.cons_succ]
+    develop φ (k + 1) g j.succ = develop φ k (g /ₘ φ) j :=
+  rfl
 
 /-- **Naturality of the development under a ring hom** (`develop` commutes with `Polynomial.map`).
 For a ring hom `f : R →+* S` and a *monic* divisor `φ`, mapping the `j`-th φ-adic digit of `g`
@@ -143,7 +142,7 @@ theorem develop_reassemble_degree {φ : R[X]} (hφ : φ.Monic) (k : ℕ) (g : R[
           = g %ₘ φ + φ * ∑ i : Fin k, develop φ k (g /ₘ φ) i * φ ^ (i : ℕ) := by
             rw [Fin.sum_univ_succ, Finset.mul_sum]
             congr 1
-            · rw [develop_zero]; simp
+            · rw [develop_zero, Fin.val_zero, pow_zero, mul_one]
             · exact Finset.sum_congr rfl fun i _ => by
                 rw [develop_succ, Fin.val_succ, pow_succ]; ring
       _ = g %ₘ φ + φ * (g /ₘ φ) := by rw [ih (g /ₘ φ) hdiv]
@@ -173,7 +172,7 @@ theorem develop_unique {φ : R[X]} (hφ : φ.Monic) (k : ℕ) (g : R[X]) (b : Fi
     have hsplit : b 0 + φ * ∑ i : Fin k, b i.succ * φ ^ (i : ℕ) = g := by
       rw [← hsum, Fin.sum_univ_succ, Finset.mul_sum]
       congr 1
-      · simp
+      · rw [Fin.val_zero, pow_zero, mul_one]
       · exact Finset.sum_congr rfl fun i _ => by
           rw [Fin.val_succ, pow_succ]; ring
     obtain ⟨hdiv, hmod⟩ :=

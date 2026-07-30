@@ -507,7 +507,7 @@ noncomputable def trivialQpFactorization : QpFactorization p (X : ℤ_[p][X]) wh
 unramified degree-1 type. -/
 theorem qpType_trivialQpFactorization :
     qpType p (trivialQpFactorization p) = ⟨{((1 : ℕ), (1 : ℕ))}⟩ := by
-  show (⟨([efOf p (trivialFactorData p)] : List (ℕ × ℕ))⟩ : FactorizationType) = _
+  change (⟨([efOf p (trivialFactorData p)] : List (ℕ × ℕ))⟩ : FactorizationType) = _
   rw [efOf_trivialFactorData]
   rfl
 

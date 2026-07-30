@@ -412,8 +412,7 @@ theorem isRationalFn_compQpow (k : ℕ) {f : ℕ → ℚ} (hf : IsRationalFn f) 
   rcases Nat.eq_zero_or_pos k with rfl | hk
   · simpa using isRationalFn_const (f 1)
   · obtain ⟨num, den, hden, h⟩ := hf
-    have hcast : ∀ q : ℕ, ((q ^ k : ℕ) : ℚ) = ((q : ℚ)) ^ k := by
-      intro q; push_cast; ring
+    have hcast : ∀ q : ℕ, ((q ^ k : ℕ) : ℚ) = ((q : ℚ)) ^ k := fun q => Nat.cast_pow q k
     refine ⟨num.comp (Polynomial.X ^ k), den.comp (Polynomial.X ^ k), ?_, fun q hq => ?_⟩
     · -- nonvanishing at 2^k > 1 forces the composed denominator to be nonzero
       intro h0
@@ -495,14 +494,7 @@ theorem omChildCount_isRational (T : ClusterShape) :
 
 /-- **Rationality of the root count** (no pivot, no induction: the children are cluster nodes). -/
 theorem omCount_isRational (T : ClusterShape) : IsRationalFn (fun q => omCount T q) := by
-  have heq : (fun q => omCount T q)
-      = fun q => (((configsOf T).map (fun c =>
-          mCell c q * ((q : ℚ) ^ volExp c)⁻¹
-            * (c.children.map (fun ch =>
-                omChildCount ch.shape (q ^ (ch.δ * ch.D)))).prod)).sum) := by
-    funext q
-    rw [omCount]
-  rw [heq]
+  unfold omCount
   have hsum := isRationalFn_listSum ((configsOf T).map (fun c => fun q : ℕ =>
       mCell c q * ((q : ℚ) ^ volExp c)⁻¹
         * (c.children.map (fun ch => omChildCount ch.shape (q ^ (ch.δ * ch.D)))).prod)) ?_

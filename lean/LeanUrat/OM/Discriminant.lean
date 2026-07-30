@@ -73,14 +73,7 @@ theorem discr_monic_eq_resultant (f : R[X]) (hf : f.Monic) (hpos : 0 < f.natDegr
   have hsq : ((-1 : R) ^ (f.natDegree * (f.natDegree - 1) / 2)) *
       ((-1 : R) ^ (f.natDegree * (f.natDegree - 1) / 2)) = 1 := by
     rw [← pow_add, ← two_mul, pow_mul]; simp
-  calc f.discr
-      = 1 * f.discr := (one_mul _).symm
-    _ = ((-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
-          (-1) ^ (f.natDegree * (f.natDegree - 1) / 2)) * f.discr := by rw [hsq]
-    _ = (-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
-          ((-1) ^ (f.natDegree * (f.natDegree - 1) / 2) * f.discr) := by ring
-    _ = (-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
-          resultant f f.derivative f.natDegree (f.natDegree - 1) := by rw [← h]
+  rw [h, ← mul_assoc, hsq, one_mul]
 
 /-- **L-B1 core — discriminant naturality for monic polynomials.**
 `discr` commutes with any ring hom on monic polynomials. (mathlib has no `discr_map`; this is the
@@ -103,9 +96,7 @@ theorem discr_map_monic (φ : R →+* S) (f : R[X]) (hf : f.Monic) :
         discr_monic_eq_resultant (f.map φ) hmap hpos']
     -- derivative commutes with map; resultant_map_map handles the rest.
     have hder : (f.map φ).derivative = f.derivative.map φ := derivative_map f φ
-    rw [hder, hdeg]
-    rw [resultant_map_map]
-    rw [map_mul, map_pow, map_neg, map_one]
+    rw [hder, hdeg, resultant_map_map, map_mul, map_pow, map_neg, map_one]
   · -- S is trivial: every element of S is equal, so the goal is trivially `0 = 0`-style.
     rw [not_nontrivial_iff_subsingleton] at hS
     exact Subsingleton.elim _ _
@@ -147,10 +138,8 @@ theorem univMonic_coeff_lt (n : ℕ) (i : ℕ) (hi : i < n) :
     (univMonic n).coeff i = MvPolynomial.X ⟨i, hi⟩ := by
   rw [univMonic, coeff_add]
   have hXpow : (Polynomial.X ^ n : (MvPolynomial (Fin n) ℤ)[X]).coeff i = 0 := by
-    rw [coeff_X_pow]; rw [if_neg (by omega)]
-  rw [hXpow, zero_add]
-  rw [finsetSum_coeff]
-  rw [Finset.sum_eq_single (⟨i, hi⟩ : Fin n)]
+    rw [coeff_X_pow, if_neg (by omega)]
+  rw [hXpow, zero_add, finsetSum_coeff, Finset.sum_eq_single (⟨i, hi⟩ : Fin n)]
   · rw [coeff_C_mul, coeff_X_pow, if_pos rfl, mul_one]
   · intro j _ hj
     rw [coeff_C_mul, coeff_X_pow, if_neg, mul_zero]
@@ -220,8 +209,7 @@ theorem disc_is_coeff_polynomial (n : ℕ) (f : R[X]) (hf : f.Monic) (hdeg : f.n
   rw [hnat, Delta]
   -- LHS: coeffEval n a (univMonic n).discr = eval₂ (Int.castRingHom R) a (univMonic n).discr
   -- RHS: eval a ((univMonic n).discr.map (Int.castRingHom R)) = eval₂ (Int.castRingHom R) a _
-  rw [MvPolynomial.eval_map]
-  rw [coeffEval]
+  rw [MvPolynomial.eval_map, coeffEval]
   rfl
 
 /-! ## 3. L-B2 — `Δ_n` is nonzero mod `p` -/

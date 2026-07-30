@@ -177,10 +177,8 @@ theorem coeffReduce_fiber_card (N : ℕ) (a : QuotientBox.ResidueRing p N) :
     Nat.card {x : QuotientBox.ResidueRing p (N + 1) // coeffReduce p N x = a} = p := by
   -- abbreviate the additive hom (as a bare function, via the coercion of the RingHom)
   set g : QuotientBox.ResidueRing p (N + 1) → QuotientBox.ResidueRing p N := ⇑(coeffReduce p N)
-    with hg
   have hsurj : Function.Surjective g := coeffReduce_surjective p N
   have hmap_add : ∀ x y, g (x + y) = g x + g y := fun x y => map_add (coeffReduce p N) x y
-  have hmap_zero : g 0 = 0 := map_zero (coeffReduce p N)
   -- (1) all fibers are equinumerous to the fiber over `g 0 = 0`, via additive translation
   have hfiber_const : ∀ b : QuotientBox.ResidueRing p N,
       Nat.card {x // g x = b} = Nat.card {x // g x = (0 : QuotientBox.ResidueRing p N)} := by
@@ -209,10 +207,9 @@ theorem coeffReduce_fiber_card (N : ℕ) (a : QuotientBox.ResidueRing p N) :
   -- (3) solve `p^{N+1} = p^N · c` for the common fiber size `c = p`
   rw [hcardN1, hcardN, pow_succ] at hsum
   have hpN : 0 < p ^ N := pow_pos hp.out.pos N
-  have hcp : Nat.card {x // g x = (0 : QuotientBox.ResidueRing p N)} = p := by
-    -- `p^N * p = p^N * c`  ⟹  `c = p`
-    exact (Nat.eq_of_mul_eq_mul_left hpN hsum).symm
-  rw [hfiber_const a, hcp]
+  -- `p^N * p = p^N * c`  ⟹  `c = p`
+  rw [hfiber_const a]
+  exact (Nat.eq_of_mul_eq_mul_left hpN hsum).symm
 
 /-- The KEY COMMUTATION: `boxReduce` acts coordinatewise as `coeffReduce` under the trivialization
 `boxCoeffEquiv`. `boxCoeffEquiv (boxReduce f) i = coeffReduce (boxCoeffEquiv f i)`. This is the seam
@@ -293,10 +290,9 @@ theorem boxReduce_fiber_card (N n : ℕ) (hN : 0 < N) (g : QuotientBox.monicBox 
 via `M1.card_monicBox` on both sides + `pow` arithmetic. -/
 theorem card_monicBox_succ_ratio (N n : ℕ) (hN : 0 < N) :
     Nat.card (QuotientBox.monicBox p (N + 1) n) = p ^ n * Nat.card (QuotientBox.monicBox p N n) := by
-  rw [QuotientBox.card_monicBox p (N + 1) n (by omega), QuotientBox.card_monicBox p N n hN]
-  rw [pow_succ p N]
   -- ((p^N * p))^n = p^n * (p^N)^n
-  rw [mul_pow, mul_comm ((p ^ N) ^ n) (p ^ n)]
+  rw [QuotientBox.card_monicBox p (N + 1) n (by omega), QuotientBox.card_monicBox p N n hN,
+    pow_succ p N, mul_pow, mul_comm ((p ^ N) ^ n) (p ^ n)]
 
 /-- (L7) `normCount_box_eq_one`: the box is the TOTAL, with normalized count `≡ 1`. -/
 theorem normCount_box_eq_one (N n : ℕ) (hN : 0 < N) :

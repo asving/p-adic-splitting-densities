@@ -121,16 +121,13 @@ theorem liftKeyExt_natDegree [Nontrivial (UnramifiedBase.Oring p N g)] (hgm : g.
     (Ψ : (UnramifiedBase.resField p N g hN)[X]) :
     (liftKeyExt p N g hgm hN Ψ).natDegree = Ψ.natDegree := by
   rw [liftKeyExt]
-  have htail := liftKeyExt_tail_degree_lt p N g hgm hN Ψ
-  have hpow : (Polynomial.X ^ Ψ.natDegree : (UnramifiedBase.Oring p N g)[X]).degree
-      = (Ψ.natDegree : WithBot ℕ) := by
-    rw [Polynomial.degree_X_pow]
   have hlt : (∑ i ∈ Finset.range Ψ.natDegree,
         Polynomial.C (resSection p N g hgm hN (Ψ.coeff i)) * Polynomial.X ^ i).degree
       < (Polynomial.X ^ Ψ.natDegree : (UnramifiedBase.Oring p N g)[X]).degree := by
-    rw [hpow]; exact htail
+    rw [Polynomial.degree_X_pow]
+    exact liftKeyExt_tail_degree_lt p N g hgm hN Ψ
   refine Polynomial.natDegree_eq_of_degree_eq_some ?_
-  rw [Polynomial.degree_add_eq_left_of_degree_lt hlt, hpow]
+  rw [Polynomial.degree_add_eq_left_of_degree_lt hlt, Polynomial.degree_X_pow]
 
 /-- **`liftKeyExt_reduces`** (the genuine content of Lemma A on the surjInv route): mapping the lift
 down the residue hom `resHom` recovers `Ψ`, for MONIC `Ψ`:

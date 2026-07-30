@@ -270,8 +270,7 @@ theorem wildH3Fiber_valuation {N : ℕ} (hN0 : 0 < N) (hN4 : 4 ≤ N) {f : ℤ_[
     rcases h01 with h01 | h01 <;> rw [h01] at hline <;> norm_num at hline
   -- decode through toBox
   have hvOf : ∀ i, vOf p fbox i
-      = PadicLift.zmodValuation p N (PadicInt.toZModPow N (f.coeff i)) := by
-    intro i
+      = PadicLift.zmodValuation p N (PadicInt.toZModPow N (f.coeff i)) := fun i => by
     simp only [vOf, hfbox, PadicLift.toBox_val, Polynomial.coeff_map]
   rw [hvOf 0] at hv0
   rw [hvOf 1] at hv1
@@ -576,9 +575,7 @@ theorem ef_of_wildH3 {f : ℤ_[p][X]} (hf : f.Monic) (hdeg : f.natDegree = 2)
   -- conclude: E ∣ 2 and E ≠ 1 force E = 2, then f = 1
   have hE2 : E = 2 := by
     have hdvd : E ∣ 2 := ⟨QpType.fOf p D, by rw [← he_val]; exact hef.symm⟩
-    rcases Nat.prime_two.eq_one_or_self_of_dvd E hdvd with h | h
-    · exact absurd h hEne1
-    · exact h
+    exact (Nat.prime_two.eq_one_or_self_of_dvd E hdvd).resolve_left hEne1
   have hff : 2 * QpType.fOf p D = 2 := by
     calc 2 * QpType.fOf p D = QpType.eOf p D * QpType.fOf p D := by rw [he_val, hE2]
       _ = 2 := hef

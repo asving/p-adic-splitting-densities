@@ -247,12 +247,10 @@ theorem menuPath_single_side {n N : ℕ} {P : List (ℕ × ℕ)} {pr : (ℕ × �
   -- sidePairs ((0,H) :: p1 :: T) = ((0,H), p1) :: sidePairs (p1 :: T)
   rw [sidePairs_cons₂] at hsingle
   -- single element ⟹ sidePairs (p1 :: T) = [] ⟹ T = []
-  have hpr : pr = (((0, H), p1) : (ℕ × ℕ) × (ℕ × ℕ)) := by
-    have := List.head_eq_of_cons_eq hsingle
-    exact this.symm
+  have hpr : pr = (((0, H), p1) : (ℕ × ℕ) × (ℕ × ℕ)) :=
+    (List.head_eq_of_cons_eq hsingle).symm
   have hnil : sidePairs (p1 :: T) = [] := by
-    have := List.tail_eq_of_cons_eq hsingle
-    simpa using this
+    simpa using List.tail_eq_of_cons_eq hsingle
   -- sidePairs (p1 :: T) = (p1 :: T).zip T ; = [] ⟹ T = []
   have hT : T = [] := by
     cases T with
@@ -567,9 +565,8 @@ theorem npVertices_eq_selfloop {N n H : ℕ} (hn0 : 0 < n) (hN : 0 < N)
   -- V's head is (0,H) and last is (n,0), using on-hull.
   have hVheadeq : V.head hVne = (((0 : ℕ), H) : ℕ × ℕ) := by
     have habs0 : (V.head hVne).1 = 0 := by
-      have := hheadabs
-      rw [List.head?_map, List.head?_eq_some_head hVne, Option.map_some, Option.some.injEq] at this
-      exact this
+      rw [List.head?_map, List.head?_eq_some_head hVne, Option.map_some, Option.some.injEq] at hheadabs
+      exact hheadabs
     -- on-hull with abscissa 0 ⟹ height = chord 0 = H
     have hmem : V.head hVne ∈ V := List.head_mem hVne
     have hSmem : V.head hVne ∈ S := hVsub _ hmem
@@ -679,8 +676,7 @@ theorem rootResidual_eq_residualOf {N n H : ℕ} (hn0 : 0 < n) (hN : 0 < N)
   have hsd : sideDeg (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) ≤ n := by
     have hdvd : sideDeg (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ)) ∣ n := by
       show Nat.gcd (H - 0) (n - 0) ∣ n
-      have := Nat.gcd_dvd_right (H - 0) (n - 0)
-      simpa using this
+      simpa using Nat.gcd_dvd_right (H - 0) (n - 0)
     exact Nat.le_of_dvd hn0 hdvd
   have hle : (residualOf p f (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ))).natDegree ≤ n := by
     rw [hdeg]; exact hsd
@@ -922,8 +918,7 @@ theorem classify_eq_selfloop_of_inCell (n N : ℕ) (hN : 0 < N) (hn : 0 < n)
     | cons hhead _ => exact hhead.2
   have hpw : (shape : List (ℕ × ℕ)).Pairwise shapeLE := by
     have := hsh'
-    rw [ShapesFor] at this
-    rw [hsingle] at this
+    rw [ShapesFor, hsingle] at this
     cases this with
     | cons hh _ => exact (mem_shapesOfDegree_iff.mp hh).1
   have hsq : Squarefree (residualOf p f (((0, H), (n, 0)) : (ℕ × ℕ) × (ℕ × ℕ))) :=
