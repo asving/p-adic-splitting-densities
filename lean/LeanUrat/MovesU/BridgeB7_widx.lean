@@ -32,17 +32,18 @@ namespace LeanUrat.MovesU
 def BridgeWIdx {n : ℕ} (C : UCarriers n) : Type :=
   {Ŝ : MovesS.Shape C.T // Ŝ ∈ C.Fam.Sh}
 
-/-- IB-B7 (Fintype): the attach/Finset-coe instance.  A NAMED def, not a
-    global instance (IB-B8 wires it into `instW` explicitly). -/
-noncomputable def bridgeWIdxFintype {n : ℕ} (C : UCarriers n) :
+/-- IB-B7 (Fintype): the attach/Finset-coe instance.  A NAMED instance;
+    IB-B8 still wires it into `instW` explicitly. -/
+noncomputable instance bridgeWIdxFintype {n : ℕ} (C : UCarriers n) :
     Fintype (BridgeWIdx C) :=
   FinsetCoe.fintype _
 
 /-- IB-B7 (cardinality law): the label count equals `C.Fam.Sh.card` — EXACTLY
     `RegPin.shape_pin`'s RHS at the tautological roster, so IB-B8's `WIdx_card`
-    field IS this lemma.  Sketch: `Fintype.card_coe`. -/
+    field IS this lemma.  PROVED at E-phase (`Fintype.card_coe` on the
+    definitionally-coe carrier). -/
 theorem card_bridgeWIdx {n : ℕ} (C : UCarriers n) :
-    @Fintype.card (BridgeWIdx C) (bridgeWIdxFintype C) = C.Fam.Sh.card := by
-  sorry
+    @Fintype.card (BridgeWIdx C) (bridgeWIdxFintype C) = C.Fam.Sh.card :=
+  Fintype.card_coe _
 
 end LeanUrat.MovesU

@@ -42,13 +42,14 @@ def BridgeJIdx {n : ℕ} (C : UCarriers n) (e : ℕ) : Type :=
   Σ (τ : C.T.State e) (o : {o : C.T.Out e τ // o ∈ MovesS.splitOuts C.T e τ}),
     {c : C.MS.Cell e τ // c ∈ C.MS.cells e τ o.1}
 
+open Classical in
 /-- IB-B6 (Fintype): finite — states × split outcomes × cells, each level a
     registered (`TableShape.fin`/`finO`, `MeasuredSide.finC`) or Classical
-    instance.  A NAMED def, not a global instance (IB-B8 wires it into
-    `instJ` explicitly). -/
-noncomputable def bridgeJIdxFintype {n : ℕ} (C : UCarriers n) (e : ℕ) :
+    instance.  A NAMED instance; IB-B8 still wires it into `instJ`
+    explicitly. -/
+noncomputable instance bridgeJIdxFintype {n : ℕ} (C : UCarriers n) (e : ℕ) :
     Fintype (BridgeJIdx C e) := by
-  unfold BridgeJIdx; classical; infer_instance
+  unfold BridgeJIdx; infer_instance
 
 /-- IB-B6 (cardinality law, †4d cell case): the label count at
     `bridgeJIdxFintype` equals the roster's branching-cell population — EXACTLY

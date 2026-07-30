@@ -29,3 +29,24 @@ immediately.
 CROSS-AREA: countermodel/probe gates run before their provers everywhere; a compiled
 negation witness must NEVER coexist with the un-repaired sorried universal (the M1
 soundness lesson); every fence event goes in the campaign ledger + the Asvin digest.
+
+## AUTHORITY UPDATE (Asvin /goal directive, 2026-07-30 evening)
+
+Standing goal: complete formalized proof of the uniformity statement conditional ONLY
+on literature statements (EXCLUDING arXiv:2212.00294 as a source — the proof must be
+independent of it; GMN and Denef-Igusa remain admissible cited axioms if needed).
+DECISION RULE: all pending and future adjudications — including the previously
+Asvin-queued sign-offs (HK-06 HistoryCoherent wave + Q5 mfun pin + Q9 U17a re-type,
+BP1 Q2 ramIdx/resDeg repair, BP3 Q6 CtsmConclusions deletion + E-1 shevt_disj,
+rel3 fallback shape) — are decided by whichever option MAKES THE PROOF WORK, with
+compiled gates (countermodels, staged instances) supplying the evidence. The logic
+dictates; records continue as before.
+CONSEQUENCE for the kernel area (BP4): the kernels are now IN SCOPE as mandatory
+proofs, not optional attempts — the goal condition cannot be met while any
+computationally-verified conjecture remains a hypothesis row.
+CONSEQUENCE for htameFE: the functional equation is NOT part of the uniformity
+statement — remains out of the goal's critical path.
+NEW STANDING DUTY: periodic whole-proof synthesis agent (each major checkpoint):
+read the corpus map + blueprints + PROJECT_STATE, hunt unifying ideas that collapse
+multiple units/corpora into one mechanism, propose consolidations with exact
+statement-level plans; orchestrator adjudicates.

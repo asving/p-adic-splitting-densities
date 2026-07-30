@@ -25,9 +25,10 @@ PROOF SKETCH (R, ~20): Sigma-Fintype over the registered `TableShape.fin`/
 (`Finset.attach` face); the continuing-position subtype is decidable via the
 Bool equation `μ.status.isRight = true` (`Member.continuing`,
 MovesS/Defs.lean:37).  Classical decidability where Finset membership on
-`T.Out` lacks a `DecidableEq`.  Kept as NAMED defs, not global instances —
-IB-B8 wires them explicitly into the `bridgeRegData` record (`instL`), per the
-blueprint's assembly-order discipline.
+`T.Out` lacks a `DecidableEq`.  Declared as NAMED instances (linter-preferred
+over class-type defs); IB-B8 still wires them explicitly into the
+`bridgeRegData` record (`instL`), per the blueprint's assembly-order
+discipline.
 -/
 
 set_option linter.style.longLine false
@@ -36,15 +37,16 @@ set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesU
 
+open Classical in
 /-- IB-B4 (Fintype): the real consumed β-leg roster of block e is finite —
     states × split outcomes × continuing member positions, each level a
     registered or Classical instance. -/
-noncomputable def legRosterFintype {n : ℕ} (T : MovesS.TableShape n) (e : ℕ) :
+noncomputable instance legRosterFintype {n : ℕ} (T : MovesS.TableShape n) (e : ℕ) :
     Fintype (LegRoster T e) := by
-  unfold LegRoster; classical; infer_instance
+  unfold LegRoster; infer_instance
 
 /-- IB-B4 (DecidableEq, Classical — blueprint-prescribed). -/
-noncomputable def legRosterDecEq {n : ℕ} (T : MovesS.TableShape n) (e : ℕ) :
+noncomputable instance legRosterDecEq {n : ℕ} (T : MovesS.TableShape n) (e : ℕ) :
     DecidableEq (LegRoster T e) :=
   Classical.decEq _
 
