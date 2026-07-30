@@ -81,6 +81,29 @@ row therefore instantiates at the BLOCK-INTERLEAVE DRESSING:
 pinned digit-0 chart — PROVED) and `bridgeChartStd_pin` (chart_pin's
 non-vacuity at the instance — PROVED).  The N3 probe / HC-2 discharge target
 is `BridgeReadLocality` (one object, one discharge).
+
+CROSS-RECORDS (concurrent-fleet reconciliation, 2026-07-30):
+* `BridgeN3b_readLocality.lean` (the executed N3 probe) COMPILED both halves
+  of this seam independently — LEG 3's
+  `bridgeChart_levelMajor_chart_pin_false` is exactly the "raw pair violates
+  chart_pin" fact above, and its verdict "SYN-C2 must re-key the chart face"
+  is EXECUTED here by re-keying the INSTANTIATION (the dressing), not the
+  row's statement: the abstract row keeps TV-B2's level-major `< n` form
+  because `TreeNStable`/`StableInputs` (ratified/byte-frozen MovesT
+  statements) are level-major — a layout-free or digitIdx-keyed row could not
+  derive them.  LEG 2's interface countermodel
+  (`child_locality_not_interface_derivable`) negates only the
+  interface-GENERIC universal; `transferRow_of_readLocality` below is
+  CONDITIONAL on `BridgeReadLocality`, so no compiled negation coexists with
+  it (the M1 coexistence rule, checked).
+* IB-D28/Q10 (the designer-round layout-adjudication memo, BP1 addendum
+  D-TM): `MovesT.blockInterleave` + the gates here ARE that memo's
+  deliverable option (ii) — "the reconciliation permutation of Fin (n·N) as a
+  typed statement".  The designer wire (IB-D27, `bridgeTm :=
+  canTreeModelN …`) passes through `bridgeTmStd` unchanged (the dressing is
+  parametric in `bridgeTm`), and the N3 discharge path (prove
+  `BridgeReadLocality` FROM the (†13)/(†14) construction) fires at this one
+  object.
 -/
 
 set_option linter.style.longLine false

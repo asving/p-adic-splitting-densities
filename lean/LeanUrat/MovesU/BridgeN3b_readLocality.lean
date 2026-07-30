@@ -77,6 +77,13 @@ predicate that is a level-cylinder BY CONSTRUCTION; the N3 upside then fires
 FROM THE CONSTRUCTION (one proof discharging treeN_stable's inputs +
 `StableInputs` + `TransferRow` simultaneously) — deferred to that round, not
 dead.  Until then the C2 row is carried as the ONE named hypothesis.
+[SYN-C2 EXECUTED, 2026-07-30 (same day, concurrent unit): the LEG-3 re-key
+demand is DISCHARGED by the block-interleave dressing — the row
+(`MovesT.ReadLocality`, level-major, MovesT/ReadLocality.lean) instantiates
+at the bridge through `bridgeTmStd`/`bridgeChartStd`
+(BridgeD5_transferRow.lean, compiled gates), NOT at the raw pins this probe
+refuted; the one named hypothesis is now `BridgeReadLocality`, this probe's
+target.]
 
 No sorries in this file; both artifacts are Lean-core.
 -/
