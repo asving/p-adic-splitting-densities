@@ -8,6 +8,7 @@ import LeanUrat.MovesU.DefsLedger
 import LeanUrat.MovesU.BridgeB2_stateNe
 import LeanUrat.MovesU.BridgeD4_vtLaws
 import LeanUrat.MovesU.BridgeD5_transferRow
+import LeanUrat.MovesU.BridgeD13_sliceFinite
 
 /-!
 # BP1 group F — the hypothesis packs (IB-F1, IB-F2) + the cl7_slice wiring (IB-F6)
@@ -34,8 +35,12 @@ The §3.7 display lists TWELVE rows.  This file compiles the internal split:
     [above the line — construction-feeding rows, `BridgeKernelsCtor`]
       transfer      (†6)  — consumed by IB-D8 (canonical_stable), IB-D15
                             (vt_real), IB-D16 (vt_surj), treeOf coherence
-      slice_finite  (†9)  — consumed by IB-D14 (`bridgeFibers`'s thrSlice
-                            argument, through IB-D13's `sliceFinset`)
+      slice_finite  (†9)  — ROW DELETED 2026-07-30: the R6 pigeonhole probe
+                            LANDED (BridgeD13's `realizes_finite` +
+                            `realizedSelf_slice_finite`, PROVED) — the row is
+                            now THE PROVED THEOREM `bridge_slice_finite`
+                            (below), consumed by IB-D14 (`bridgeFibers`'s
+                            thrSlice argument, through IB-D13's `sliceFinset`)
         ↓  [the D/B/C/E-group constructions: X (D7/D8/D9a/D11), F (D3/D4/D12/
             D13/D14), treeOf/thr_le (D17), Tpin (D18 at A11's dictionary),
             D (B8), Dpin (B10), solve (C1 — landed, `bridgeSolve`),
@@ -72,6 +77,9 @@ TRANSCRIPTION RESOLUTIONS (recorded per the E-phase rules):
    ordering invariant), so the split is compiled as the separate
    construction-side pack `BridgeKernelsCtor`, stated CONCRETELY at IB-D3/D4's
    landed carrier (`bridgeTree`/`bridgeThr`) and IB-D5's landed `TransferRow`.
+   [2026-07-30 UPDATE: `slice_finite` has since LEFT the pack — R6 probe
+   success; it is the PROVED `bridge_slice_finite` below, and `transfer` is
+   the pack's sole remaining row.]
    `BridgeKernelsCtor` is consumed by the D-group constructions, NOT by
    `mkUInstance` (whose binders already carry the constructions' outputs) — so
    `theoremU_fired`'s premise surface stays exact (no unused row).
@@ -122,32 +130,58 @@ structure BridgePre (n : ℕ) (C : UCarriers n) : Prop where
 
 /-! ## IB-F2 — the kernel pack (two layers; the area's honesty ledger) -/
 
-/-- IB-F2 (above the line): the CONSTRUCTION-FEEDING rows — the two open
-    kernels the D-group constructions consume as arguments (file header,
-    dependency order; NOT consumed by `mkUInstance`, whose binders already
-    carry the constructions' outputs).
+/-- IB-F2 (above the line): the CONSTRUCTION-FEEDING rows — the open kernels
+    the D-group constructions consume as arguments (file header, dependency
+    order; NOT consumed by `mkUInstance`, whose binders already carry the
+    constructions' outputs).
     * `transfer` — (†6) THE TRANSFER ROW (IB-D5's ratification-flagged
       structure): TREE-N's decision/realization stability across levels (the
       note's Thm 2.1 face).  OWNER: HC-2/D4R0K + TREE-N.  FENCED SIBLING:
       `MovesT.treeN_stable` (MovesT/E11_treeN.lean:90, a fenced sorry) — cited,
       NEVER consumed.  Consumers: IB-D8 (canonical_stable), IB-D15 (vt_real),
       IB-D16 (vt_surj), treeOf coherence.
-    * `slice_finite` — (†9) CL-7's finiteness at the instance (the typed face
-      of TRACK-COUNT), at IB-D3/D4's landed carrier: every threshold slice of
-      the σ-typed self-realized tree family is finite.  OWNER: [4]/CL-7
-      (TRACK-COUNT itself is PERMANENTLY FENCED —
-      notes/UNIFORMITY_COMPLETION_BLUEPRINT_2026-07-30.md).  R6 UPSIDE
-      (recorded): possibly PROVABLE OUTRIGHT by the BridgeD13 pigeonhole probe
-      (`realizedSelf_slice_finite`); on probe success this row LEAVES the pack
-      and only `slice_bound` (the p-uniformity claim) survives below the line.
-      Consumer: IB-D14 (`bridgeFibers`'s thrSlice argument).
+    * `slice_finite` — ROW DELETED 2026-07-30 (the pre-authorized R6-probe
+      consequence: "on probe success this row LEAVES the pack"; N3 gate-class
+      execution, `BRIDGE_ADJUDICATIONS_2026-07-30.md` SYNTHESIS PASS 1).  The
+      BridgeD13 pigeonhole probe LANDED: (†9) CL-7's finiteness at the
+      instance is now the PROVED theorem `bridge_slice_finite` below (from
+      `realizedSelf_slice_finite`, whose own footprint is Lean-core; see the
+      theorem's footprint disclosure), no longer an open kernel; only
+      `slice_bound` (the p-uniformity claim, OWNER [4]/TRACK-COUNT) survives
+      below the line.  Consumer unchanged: IB-D14 (`bridgeFibers`'s thrSlice
+      argument) now takes the theorem.
     Parametric in the (†3) dictionary `boxeq` per header resolution 3 (wired at
     `Tpin.boxeq` = IB-A11's `boxEquivD`). -/
 structure BridgeKernelsCtor (n p : ℕ) [Fact p.Prime]
     (boxeq : ∀ N : ℕ, Box p n N ≃ MovesD.Box p (n * N)) : Prop where
   transfer : TransferRow n p boxeq
-  slice_finite : ∀ (σ : SplittingType n) (N : ℕ),
-    {T : bridgeTree n p σ | bridgeThr n p σ T ≤ N}.Finite
+
+/-- THE FORMER `slice_finite` ROW, PROVED (R6 probe success, 2026-07-30 — see
+    the `BridgeKernelsCtor` docstring): every threshold slice of the σ-typed
+    self-realized tree family (IB-D3/D4's carrier) is finite.  Derived from
+    BridgeD13's `realizedSelf_slice_finite` (the carrier-free pigeonhole
+    theorem at the pinned `bridgeTm`/`bridgeChart`) by injecting the carrier
+    subtype along `Subtype.val` — the "subtype repackaging D14 performs"
+    anticipated by the probe's header.  Supplies IB-D14's `slice_finite`
+    argument at the final wiring (BridgeMk, intended-wiring display).
+    FOOTPRINT DISCLOSURE (2026-07-30 `#print axioms`): the PROOF is Lean-core
+    (both BridgeD13 probe theorems check at [propext, Classical.choice,
+    Quot.sound]); this theorem's own footprint additionally shows `sorryAx`
+    ONLY because its STATEMENT's carrier `bridgeTree`/`bridgeThr` names the
+    IB-D1 designer data-sorries `bridgePol`/`bridgeTm` (R7, the scheduled
+    designer round) — the same vocabulary conditionality every D-group object
+    at the pinned models carries, not a proof gap. -/
+theorem bridge_slice_finite (n p : ℕ) [Fact p.Prime] (σ : SplittingType n)
+    (N : ℕ) : {T : bridgeTree n p σ | bridgeThr n p σ T ≤ N}.Finite := by
+  have hval : Set.InjOn (fun T : bridgeTree n p σ => T.1)
+      {T : bridgeTree n p σ | bridgeThr n p σ T ≤ N} :=
+    fun T _ T' _ h => Subtype.ext h
+  refine Set.Finite.of_finite_image ?_ hval
+  refine Set.Finite.subset
+    (realizedSelf_slice_finite (fun N' => bridgeTm p n N')
+      (fun N' hN' => bridgeChart n N' hN') N) ?_
+  rintro V ⟨T, hT, rfl⟩
+  exact ⟨hT, T.2.2⟩
 
 /-- IB-F2 (below the line): `BridgeKernels` — THE LEDGER ROWS over the
     constructed objects (bound as parameters per header resolution 1): the
@@ -157,7 +191,8 @@ structure BridgeKernelsCtor (n p : ℕ) [Fact p.Prime]
     over built vocabulary, none True-instantiable (G2).  Everything NOT here
     and not inside a binder's own laws is PROVED outright by the area's units.
     The remaining §3.7 rows live per the file-header dependency order:
-    `transfer`/`slice_finite` in `BridgeKernelsCtor` (construction side),
+    `transfer` in `BridgeKernelsCtor` (construction side; `slice_finite` left
+    the pack 2026-07-30 — R6 probe success, now `bridge_slice_finite` PROVED),
     `count_tie` as the assembled seam's third field (visible in the `seam`
     binder; Q7: named row, discharge chain D20/D21 off the default path). -/
 structure BridgeKernels (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)

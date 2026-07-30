@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesT.F3_dictSum
 
 /-!
 # IB-D13 — thrSlice PLUMBING + THE R6 PIGEONHOLE PROBE (bridge campaign BP1;
@@ -39,6 +40,19 @@ TWO HALVES:
     to the p-uniformity claim `(thrSlice σ N).card ≤ K7.Tbound N`.  ON FAILURE:
     the row stays as blueprinted; nothing downstream moves (upside-only probe,
     "worth one fable-day").
+
+PROBE RESULT (2026-07-30, N3 gate-class execution per
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` SYNTHESIS PASS 1 / N3):
+**SUCCESS** — both halves PROVED outright, exactly by the sealed mechanism
+(`realizes_finite`: choice of one fiber point per realized tree +
+`MovesT.vtree_eq_of_fiberAt` disjointness + `Finite.of_injective` into the
+finite box; `realizedSelf_slice_finite`: finite union over the levels
+L ∈ [1, max N 1]).  No hypothesis consumed beyond the binders; Lean-core
+footprint.  CONSEQUENCE EXECUTED (pre-authorized by this header + the
+BridgeKernels.lean row docstring "on probe success this row LEAVES the pack"):
+`BridgeKernelsCtor.slice_finite` DELETED; its exact statement is now the PROVED
+theorem `bridge_slice_finite` (BridgeKernels.lean), derived from
+`realizedSelf_slice_finite` by subtype injection at the IB-D3 carrier.
 -/
 
 set_option linter.style.longLine false
@@ -78,7 +92,22 @@ theorem sliceFinset_exhausts {α : Type*} (thr : α → ℕ)
 theorem realizes_finite {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n N m : ℕ} {pol : MovesD.CanonPolicy p F}
     (Tm : MovesD.TreeModel p F n N m pol) (χ : Fin n → Fin m) :
-    {V : MovesT.VTree p F | MovesT.Realizes Tm χ V}.Finite := sorry
+    {V : MovesT.VTree p F | MovesT.Realizes Tm χ V}.Finite := by
+  classical
+  -- pick one fiber point per realized tree
+  have hchoice : ∀ V : {V : MovesT.VTree p F | MovesT.Realizes Tm χ V},
+      ∃ x : MovesD.Box p m, MovesT.VTree.fiberAt V.1 Tm χ x := fun V => V.2
+  choose pt hpt using hchoice
+  -- distinct trees have disjoint fibers, so the choice map is injective
+  have hinj : Function.Injective pt := by
+    intro V V' h
+    have hV' : MovesT.VTree.fiberAt V'.1 Tm χ (pt V) := by
+      rw [h]; exact hpt V'
+    exact Subtype.ext (MovesT.vtree_eq_of_fiberAt (hpt V) hV')
+  -- inject into the finite box
+  have : Finite ↥{V : MovesT.VTree p F | MovesT.Realizes Tm χ V} :=
+    Finite.of_injective pt hinj
+  exact Set.toFinite _
 
 /-- R6 PROBE, slice form (the (†5)-carrier shape, carrier-free statement): the
     thr ≤ N trees each realized at their OWN level lvl(V) = max(thr V, 1) form a
@@ -93,6 +122,25 @@ theorem realizedSelf_slice_finite {p : ℕ} [Fact p.Prime] {n : ℕ}
     {V : MovesT.VTree p (ZMod p) | V.thr n ≤ N ∧
       MovesT.Realizes (Tm (max (V.thr n) 1))
         (chart (max (V.thr n) 1) (lt_of_lt_of_le zero_lt_one (le_max_right _ _)))
-        V}.Finite := sorry
+        V}.Finite := by
+  classical
+  -- finite union over the levels L ∈ [1, max N 1] of the per-level realized
+  -- families of `realizes_finite` (the level guard rides as an existential,
+  -- discharged by proof irrelevance at the member's own level)
+  refine Set.Finite.subset (Set.Finite.biUnion (Set.finite_Icc 1 (max N 1))
+      (fun L _ => ?_) :
+      (⋃ L ∈ Set.Icc 1 (max N 1), {V : MovesT.VTree p (ZMod p) |
+        ∃ hL : 0 < L, MovesT.Realizes (Tm L) (chart L hL) V}).Finite) ?_
+  · by_cases hL : 0 < L
+    · refine (realizes_finite (Tm L) (chart L hL)).subset ?_
+      rintro V ⟨hL', hreal⟩
+      exact hreal
+    · refine Set.finite_empty.subset ?_
+      rintro V ⟨hL', -⟩
+      exact absurd hL' hL
+  · rintro V ⟨hthr, hreal⟩
+    exact Set.mem_biUnion
+      (Set.mem_Icc.mpr ⟨le_max_right _ _, max_le_max hthr le_rfl⟩)
+      ⟨lt_of_lt_of_le zero_lt_one (le_max_right _ _), hreal⟩
 
 end LeanUrat.MovesU

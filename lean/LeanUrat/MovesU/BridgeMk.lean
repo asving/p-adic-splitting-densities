@@ -49,7 +49,10 @@ INTENDED FINAL WIRING (the suppliers, per the landed sibling units):
               IB-D7/D8/E11); `hXbase` := rfl (D11's `baseSection :=
               .teichmuller`, display `bridgeClassifierSpec_teichmuller`).
 * `F`      := `bridgeFibers n p X (bridgeTree n p) (bridgeMass-composite)
-              (bridgeThr n p) Ctor.slice_finite` (IB-D14 at IB-D3/D4/D12/D13).
+              (bridgeThr n p) (bridge_slice_finite n p)` (IB-D14 at
+              IB-D3/D4/D12/D13; the former `Ctor.slice_finite` argument is the
+              PROVED theorem since the 2026-07-30 R6 probe success — the row
+              left `BridgeKernelsCtor`).
 * `seam`   := `⟨bridgeTreeOf …, bridgeTreeOf_thr_le …, count_tie⟩` (IB-D17's
               treeOf/thr_le + the [3t] count_tie row as the THIRD FIELD — the
               open kernel rides the seam VISIBLY, per BridgeKernels.lean's
