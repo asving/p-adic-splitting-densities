@@ -119,3 +119,33 @@ move that `HC1/K1_vertexPin.lean:8` and `HC1/S16_levelLanding.lean:11` import
 Census effect: the golf baseline header's caveat "sorryAx only at the ten fenced sites
 + deprecated Moves files" simplifies to the fenced sites alone (dated addendum in
 `notes/GOLF_CAMPAIGN_2026-07-30.md`; the frozen baseline files are NOT rewritten).
+
+## TV_H1b_w17iiNeg_2026-07-30.lean.txt — the COMPILED W17ii clause-(ii) countermodel (soundness quarantine, NOT a dead end)
+
+Quarantined 2026-07-30 by the TV-H1 gate prover under the BINDING coexistence rule
+(`notes/BRIDGE_BP3_TV_2026-07-30.md` §3.G + §4 TV-H1b; adjudications CROSS-AREA rule:
+"a compiled negation witness must NEVER coexist with the un-repaired sorried
+universal" — the M1 soundness lesson). This is the OPPOSITE of the usual quarantine
+genre: the file is CORRECT, GREEN, and load-bearing evidence — it is quarantined only
+because `MovesV/V7_w17ii.lean`'s `w17ii_wave4` (the ONE banked [3t] sorry, C14)
+asserts clause (ii) for EVERY RS4Chain, so this compiled chain + that sorried
+universal in one environment would derive False.
+
+Contents: the filled `MovesV/TV_H1b.lean` — `negShapeFam` (singleton k = 0 shape,
+σ0 = {(1,1)}), `negChain` (the full ~30-field RS4Chain over TV-H1a's in-tree carriers
+with shDom = Set.univ (ℕ), shWeightH ≡ 1, WshVal ≡ 1), the two pins, and
+`w17ii_false : ¬ negChain.wsh17_pin`. Built GREEN per-module
+(`lake build LeanUrat.MovesV.TV_H1b`, 8571 jobs, 2026-07-30); import closure =
+MovesS.Interfaces + MovesV.TV_H1a (V7_w17ii NOT in the closure — no environment ever
+contained both). `#print axioms` on `w17ii_false` and all three pins: exactly
+[propext, Classical.choice, Quot.sound] — zero sorryAx.
+
+CONSEQUENCE: `w17ii_wave4` clause (ii) is FALSE AS STATED (risk R2 confirmed by
+compilation, upgrading the standing PLAUSIBLE fence record of V7_w17ii.lean:33-47).
+The Q4/E-1 adjudication (TV-H2) now runs on compiled evidence. REVIVAL RULE: this
+text re-lands in-tree ONLY in the same commit as TV-H3's adjudicated repair of the
+clause (the H-cluster sequencing); the in-tree `MovesV/TV_H1b.lean` holds the E-phase
+skeleton + the execution record until then. NOTE: the repair will change W17ii's
+statement or RS4Chain's field roster, so at revival the fill needs mechanical
+re-alignment to the repaired vocabulary (the refutation targets the PRE-repair
+clause; its role then is the necessity certificate for the census guard).
