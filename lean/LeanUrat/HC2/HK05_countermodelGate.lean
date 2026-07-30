@@ -98,7 +98,7 @@ set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedSectionVars false
 set_option linter.unusedVariables false
-set_option maxHeartbeats 800000
+set_option linter.style.show false
 
 namespace LeanUrat.MovesJ
 
@@ -180,9 +180,10 @@ private lemma hk05_lift_monic_natDegree (σ : Stage p F) (ψ : Polynomial ↥σ.
   have hpowne : σ.Φ ^ (e * g) ≠ 0 := pow_ne_zero _ hΦne
   have hdegpow : (σ.Φ ^ (e * g)).degree = ((e * g * σ.Φ.natDegree : ℕ) : WithBot ℕ) := by
     rw [Polynomial.degree_eq_natDegree hpowne, Polynomial.natDegree_pow]
+  have hpowmon : (σ.Φ ^ (e * g)).Monic := σ.hmonic.pow _
   have hmon : Φhat.Monic := by
     rw [hPhi]
-    exact (σ.hmonic.pow).add_of_left (by rw [hdegpow]; exact hτdeg)
+    exact hpowmon.add_of_left (by rw [hdegpow]; exact hτdeg)
   refine ⟨hmon, ?_⟩
   have hdeg : Φhat.degree = ((e * g * σ.Φ.natDegree : ℕ) : WithBot ℕ) := by
     rw [hPhi,
@@ -236,7 +237,6 @@ private lemma hk05_recorded (ν : Node p F) (hνe : ν.e = 1) (hνh : ν.h = 3) 
   have hτ : Φhat - ν.σ.Φ ^ 2 = tt 0 + tt 1 * ν.σ.Φ := by
     rw [hPhi]
     simp [Finset.sum_range_succ]
-    ring
   -- τ ≠ 0 (degree separation of the two slots)
   have hτne : Φhat - ν.σ.Φ ^ 2 ≠ 0 := by
     rw [hτ]
@@ -251,7 +251,7 @@ private lemma hk05_recorded (ν : Node p F) (hνe : ν.e = 1) (hνh : ν.h = 3) 
         rw [h2]
         calc ν.σ.Φ.degree = 0 + ν.σ.Φ.degree := (zero_add _).symm
           _ ≤ (tt 1).degree + ν.σ.Φ.degree :=
-              add_le_add_right (Polynomial.zero_le_degree_iff.mpr ht1) _
+              add_le_add (Polynomial.zero_le_degree_iff.mpr ht1) le_rfl
       exact absurd hd0 (not_lt.mpr h3)
   -- σV-weights of the recorded slots (hStretch at σV.e = 1 through σV.wPrev = σ.w)
   have hkΦ : σV.w σV.Φ = 3 := by
@@ -300,14 +300,18 @@ private lemma hk05_recorded (ν : Node p F) (hνe : ν.e = 1) (hνh : ν.h = 3) 
   -- the attained slot value is 6 in EITHER slot (the equal-weight shape)
   have hτval : σV.w (Φhat - ν.σ.Φ ^ 2) = 6 := by
     interval_cases j₀
-    · have hB0 : Bτ 0 = tt 0 := by simp [hBτ]
-      rw [hj₀eq, hB0, hw0, hkΦ]; norm_num
-    · have hB1 : Bτ 1 = tt 1 := by simp [hBτ]
+    · have hval : σV.w (Φhat - ν.σ.Φ ^ 2) = σV.w (Bτ 0) + ((0 : ℕ) : ℤ) * σV.w σV.Φ := hj₀eq
+      have hB0 : Bτ 0 = tt 0 := by simp [hBτ]
+      rw [hB0, hw0, hkΦ] at hval
+      rw [hval]; norm_num
+    · have hval : σV.w (Φhat - ν.σ.Φ ^ 2) = σV.w (Bτ 1) + ((1 : ℕ) : ℤ) * σV.w σV.Φ := hj₀eq
+      have hB1 : Bτ 1 = tt 1 := by simp [hBτ]
       have hc1 : ν.ψ.coeff 1 ≠ 0 := by
         intro hc
         apply hj₀ne
         rw [hB1, htt0 1 hc]
-      rw [hj₀eq, hB1, hw1 hc1, hkΦ]; norm_num
+      rw [hB1, hw1 hc1, hkΦ] at hval
+      rw [hval]; norm_num
   -- degree of τ below the child key's degree
   have hτdeglt : (Φhat - ν.σ.Φ ^ 2).degree < Φhat.degree := by
     have hdegk : ∀ k, k < 2 → (tt k).degree < ν.σ.Φ.degree := by
@@ -440,7 +444,6 @@ theorem hk05_hlift_blocked
     have hτsumV : Φhat - ν.σ.Φ ^ 2 = ttV 0 + ttV 1 * σV.Φ := by
       rw [hPhiV, hVΦ]
       simp [Finset.sum_range_succ]
-      ring
     set BV : ℕ → Polynomial ℤ_[p] := fun j => if j = 0 then ttV 0 else if j = 1 then ttV 1 else 0
       with hBV
     have hdevV : IsDevelopment σV.Φ (Φhat - ν.σ.Φ ^ 2) BV 2 := by
@@ -473,6 +476,7 @@ theorem hk05_hlift_blocked
     obtain ⟨-, j₀, hj₀2, hj₀ne, hj₀eq⟩ := σV.hK1 (Φhat - ν.σ.Φ ^ 2) BV 2 hτne hdevV
     interval_cases j₀
     · -- attained at slot 0: 6 = 2h', so h' = 3, against h' > 6
+      have hval : σV.w (Φhat - ν.σ.Φ ^ 2) = σV.w (BV 0) + ((0 : ℕ) : ℤ) * σV.w σV.Φ := hj₀eq
       have hB0 : BV 0 = ttV 0 := by simp [hBV]
       have httV0ne : ttV 0 ≠ 0 := by rw [← hB0]; exact hj₀ne
       have hc0 : ψV.coeff 0 ≠ 0 := fun hc => httV0ne (httV0 0 hc)
@@ -480,11 +484,11 @@ theorem hk05_hlift_blocked
         have h := (httVk 0 (by norm_num) hc0).2.2.1
         push_cast at h
         linarith [h]
-      rw [hτval] at hj₀eq
-      rw [hB0, hwv0, hkΦ] at hj₀eq
-      push_cast at hj₀eq hIA
+      rw [hτval, hB0, hwv0, hkΦ] at hval
+      push_cast at hval hIA
       linarith
     · -- attained at slot 1: 6 = h' + 3, so h' = 3, against h' > 6
+      have hval : σV.w (Φhat - ν.σ.Φ ^ 2) = σV.w (BV 1) + ((1 : ℕ) : ℤ) * σV.w σV.Φ := hj₀eq
       have hB1 : BV 1 = ttV 1 := by simp [hBV]
       have httV1ne : ttV 1 ≠ 0 := by rw [← hB1]; exact hj₀ne
       have hc1 : ψV.coeff 1 ≠ 0 := fun hc => httV1ne (httV0 1 hc)
@@ -492,15 +496,14 @@ theorem hk05_hlift_blocked
         have h := (httVk 1 (by norm_num) hc1).2.2.1
         push_cast at h
         linarith [h]
-      rw [hτval] at hj₀eq
-      rw [hB1, hwv1, hkΦ] at hj₀eq
-      push_cast at hj₀eq hIA
+      rw [hτval, hB1, hwv1, hkΦ] at hval
+      push_cast at hval hIA
       linarith
   · -- (e', g') = (2, 1): the attempted τ IS the single slot, weight h' = 6, against h' > 12
     subst he2; subst hg1
     have hτV : Φhat - ν.σ.Φ ^ 2 = ttV 0 := by
       rw [hPhiV, hVΦ]
-      simp [Finset.sum_range_one]
+      simp
     have httV0ne : ttV 0 ≠ 0 := by rw [← hτV]; exact hτne
     have hc0 : ψV.coeff 0 ≠ 0 := fun hc => httV0ne (httV0 0 hc)
     have hwv0 : σV.w (ttV 0) = (h' : ℤ) := by
