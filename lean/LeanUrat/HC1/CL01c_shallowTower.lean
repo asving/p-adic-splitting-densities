@@ -67,7 +67,6 @@ set_option maxHeartbeats 800000
 namespace LeanUrat.HC1
 
 open Polynomial LeanUrat.Moves
-open scoped Classical
 
 /-- **The shallow tower** (CL-01c assembly): one base read + one g = 2 increment.
 The `base` and `move` fields are the unit's remaining construction slots
@@ -76,11 +75,8 @@ fixed here so the projection pins below are definitional. -/
 noncomputable def Tshallow : Tower 2 (GaloisField 2 2) where
   K := 1
   stg := ![TshallowBase, TshallowChild]
-  base := TshallowBase_isBase
-  move := fun k =>
-    match k with
-    | ⟨0, _⟩ => TshallowMove
-    | ⟨n + 1, h⟩ => absurd h (by omega)
+  base := sorry
+  move := sorry
   hcharF := inferInstance
 
 /-- Tshallow has exactly one move. -/

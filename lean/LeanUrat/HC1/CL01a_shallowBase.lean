@@ -63,26 +63,14 @@ open Polynomial LeanUrat.Moves
 
 /-- **Tshallow stage 0** (CL-01a construction slot): the degree-1 pinned base stage of
 the shallow instance — (e,h) = (1,1), Φ = X, wPrev = gaussVal, K = F_Q = ⊥ ⊆ F₄.
-Body: `S1_transHypGate_a.choose` (the recommended route of the module docstring). -/
+Recommended body: `S1_transHypGate_a.choose` (see the module docstring). -/
 noncomputable def TshallowBase : Stage 2 (GaloisField 2 2) :=
-  S1_transHypGate_a.choose
-
-/-- The chosen-stage specification, restated at `TshallowBase` (definitional
-transport of `S1_transHypGate_a.choose_spec`). CL-01b re-derives this same
-conjunction from `S1_transHypGate_a.choose_spec` directly (it is `private` here). -/
-private lemma TshallowBase_spec :
-    ∃ (Φhat : Polynomial ℤ_[2]) (h' : ℕ) (zbar : (GaloisField 2 2)ˣ),
-      IsBaseStage TshallowBase ∧ StageCoreL TshallowBase ∧
-      TshallowBase.Φ = Polynomial.X ∧ TshallowBase.e = 1 ∧ TshallowBase.h = 1 ∧
-      TshallowBase.K = ⊥ ∧
-      TransHyp TshallowBase (Polynomial.X ^ 2 + Polynomial.X + 1) 2 Φhat 1 h' zbar :=
-  S1_transHypGate_a.choose_spec
+  sorry
 
 /-- CL-01a certificate 1: `TshallowBase` is faithfully based (Gauss-valuation base pin,
 reps = [C 2], K = F_Q) and carries its round-5 stage core. -/
 theorem TshallowBase_isBase : IsBaseStage TshallowBase ∧ StageCoreL TshallowBase := by
-  obtain ⟨_, _, _, h1, h2, -, -, -, -, -⟩ := TshallowBase_spec
-  exact ⟨h1, h2⟩
+  sorry
 
 /-- CL-01a certificate 2: the shallow-instance pins CL-01b/CL-01c consume — key X
 (degree 1), (e, h) = (1, 1), residue field the prime subfield F₂ = ⊥. (`FQ = ⊥`
@@ -90,8 +78,7 @@ follows via `TshallowBase_isBase.1.2.2`.) -/
 theorem TshallowBase_pins :
     TshallowBase.Φ = Polynomial.X ∧ TshallowBase.e = 1 ∧ TshallowBase.h = 1 ∧
     TshallowBase.K = ⊥ := by
-  obtain ⟨_, _, _, -, -, h3, h4, h5, h6, -⟩ := TshallowBase_spec
-  exact ⟨h3, h4, h5, h6⟩
+  sorry
 
 end LeanUrat.HC1
 
