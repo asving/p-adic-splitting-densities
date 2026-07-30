@@ -19,7 +19,9 @@ PROOF SKETCH (P-phase):
 (iv) `LandingKey ν₀gate fq` — ν₀gate is non-recentering (root): `IsNodeLift ν₀gate fq`
   with the SAME realizer witness as U31's `landingKey_ν₀` (tt₀ = C 4 at weight
   2 = h·(g−0), tt₁ = C 2 at weight 1, positions T 0 at t = 0; fq = X² + tt₁·X + tt₀)
-  — ν₀gate and U31.ν₀ share (σ, ψ, g, e, h, t), so the proof transports verbatim.
+  — ν₀gate and U31.ν₀ share (ψ, g, e, h, t), and their σ's (bStageP after the ratified
+  2026-07-30 re-key vs. U31.bStage) are byte-identical on every field these reads
+  touch (w, R, Φ, K; the wPrev positions are scaled by t = 0), so the proof transports.
 (v) lift = 0 = (polOM 2 F4).liftOf ν₀gate (no `RecenterLiftSpec` realizer exists at the
   base stage — U31's clause-(v) argument verbatim: bR never vanishes on nonzero input);
   canonRoot ν₀gate = canonRoot U31.ν₀ = r₀ (canonRoot reads (σ, ψ) only — same data).

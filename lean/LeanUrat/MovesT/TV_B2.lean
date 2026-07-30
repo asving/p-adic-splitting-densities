@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesT.ReadLocality
 
 /-! # TV-B2 — the TREE-N stability-input bundle `StableInputs`, TYPED
 
@@ -57,7 +58,21 @@ also guards χat. `StableInputs` itself stays well-typed either way and its
 field shapes survive the guard repair verbatim.
 
 deps: none. Consumed by: TV-B3/B4/B5/B6 (the transfer chain), TV-B7 (the
-ratified restatement). difficulty: routine-opus, ~30 lines. -/
+ratified restatement). difficulty: routine-opus, ~30 lines.
+
+SYN-C2 RECORD (2026-07-30, C2/N2 ratification,
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` "SYNTHESIS PASS 1
+ADJUDICATIONS"): `StableInputs` is DEMOTED from kernel row to DERIVED bundle —
+the ONE open kernel row is `MovesT.ReadLocality`
+(MovesT/ReadLocality.lean; owner HC-2/D4R0K unchanged), and
+`stableInputs_of_readLocality` below DERIVES this bundle from it (PROVED:
+`chart_pin` is the row's own guarded field through the unguarded-χat adapter
+`fun N' _ => χat N'` — the chi-at guard-repair coordination record lives in
+ReadLocality's header, resolution 1 — and `child_cyl` is ONE application of
+`child_local` at M = M' = N', the fixed-level face).  The structure's OWN
+statement is byte-identical (TV-B3..B6 consume it unchanged); what changed is
+its STATUS: TV-B7's hoisted rows now carry `ReadLocality`, and TV-A6's
+boundary record names ReadLocality, not this bundle. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -81,8 +96,11 @@ cross-level stability (owner HC-2/D4R0K, MOVES 7566–7570; blueprint §3.B):
   transfer is derived (NsHalts is mem/child-composed; field dropped, recorded
   in the module docstring).
 
-Carried as the NAMED warranted hypothesis of `treeN_stable` per the ratified
-Q2 ruling (option 2) — B7 executes; NEVER proved in this corpus. -/
+[SYN-C2, 2026-07-30: NO LONGER the named hypothesis row — `treeN_stable`'s
+named row is now `ReadLocality` (TV-B7 as retyped carries it), and this bundle
+is DERIVED from that row by `stableInputs_of_readLocality` below (module
+docstring record).  The field shapes are byte-identical to the pre-SYN-C2
+landing.] -/
 structure StableInputs {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N')) (Tr : VTree p F) : Prop where
@@ -92,5 +110,28 @@ structure StableInputs {N₀ : ℕ}
     ∀ (o : Option (History p F)) (ν : Node p F) (x x' : Box p (n * N')),
       (∀ c : Fin (n * N'), (c : ℕ) < n * N → x c = x' c) →
       ((Tat N' h').child o ν x ↔ (Tat N' h').child o ν x')
+
+/-- **SYN-C2 THE DERIVATION (StableInputs leg), PROVED** — the TV-B2 bundle
+follows from the ONE kernel row `ReadLocality` (MovesT/ReadLocality.lean;
+C2/N2 ratification: "TransferRow … and StableInputs (TV_B2) become derived
+lemmas").  `chart_pin` is the row's guarded field read through the
+unguarded-χat adapter `fun N' _ => χat N'` (the Defs carriers are still
+unguarded on disk — ReadLocality header, resolution 1); `child_cyl` is ONE
+application of `child_local` at the fixed-level face M = M' = N' (the
+below-tower-base corner Tr.thr n ≤ N < N₀ included — ReadLocality header,
+resolution 2: N is only the CUTOFF there).  With this lemma the eventual
+HC-2/D4R0K discharge (or the N3 construction probe) supplies ReadLocality
+once and every StableInputs consumer (TV-B3/B4/B5/B6 → `treeN_stable`) is
+fed. -/
+theorem stableInputs_of_readLocality {N₀ : ℕ}
+    (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
+    (χat : ∀ N', Fin n → Fin (n * N')) (Tr : VTree p F)
+    (RL : ReadLocality Tat (fun N' _ => χat N') Tr) :
+    StableInputs Tat χat Tr where
+  chart_pin N' h' b := RL.chart_pin N' h' b
+  child_cyl N hN N' h' hNN' o ν x x' hagree :=
+    RL.child_local N hN N' h' N' h' hNN' hNN' o ν x x'
+      (fun c => hagree (Fin.castLE (Nat.mul_le_mul_left n hNN') c)
+        (by simp))
 
 end LeanUrat.MovesT

@@ -40,10 +40,19 @@ orchestrator/adjudication record):
 (R-3) The gate ROOT node `ν₀gate` is NOT `U31.ν₀` verbatim: fgate's base-development
   coefficient valuations are (3, 2, 1, 2, 0), so the (1,1) root side has total weight
   γ₀ = 3 attained at slots 0–2 (fq's was γ = 2). ν₀gate re-dresses U31's node at
-  (gam, ustar, line) := (3, 1, ⟨3, 1⟩); every other datum (σ = bStage, (e,h) = (1,1),
+  (gam, ustar, line) := (3, 1, ⟨3, 1⟩); every other datum (σ = bStageP, (e,h) = (1,1),
   (s,t) = (1,0), g = 2, μ = 1, a = 0, s0 = 0, wSide = 2, Dwidth = 1, ψ = Ranch = ψ₂,
   pat ≡ 1, zbar = U31.ν₀.zbar, lift = 0) is U31.ν₀'s. γ-tie: 3 = 1·(1·1) + 2·1 ✓;
   hLineU: 3 − 1·2 = 1 ✓; slope law: 1·(1·1·1) = 1 ✓.
+
+(RE-KEY, RATIFIED 2026-07-30): ν₀gate's `σ` field is `bStageP` (HK-13's base-pin
+  re-dress), NOT the literal `U31.bStage` — `StageCoreL U31.bStage` is REFUTABLE
+  (`U31.bStage.reps = []` kills `reps_nonempty`/`p_is_rep`; `wPrev = bw` with `bw X = 1`
+  kills `prevIaug`: `1·1 < 1` is false), so every Block-G unit keys at the re-dress
+  (HK-13 header, orchestrator-ratified). Mechanical `{ν₀ with σ := bStageP}`-style
+  re-dress: bStageP differs from U31.bStage only in (wPrev, reps, Tvec); every field
+  ν₀gate's laws read (w = bw, R = bR, Φ = X, K = K₂, t = 0 — the wPrev positions are
+  scaled by t = 0) is byte-identical, so all recorded data and law sketches survive.
 
 PARAMETERIZATION (dep HK-15 not yet on disk): ν₁'s frame is HK-15's child stage σ₁
 (built by S9c at bStage/ψ₂/Φ̂ = fq at the NEXT pair (1,3), zbar₀ = U31.ν₀.zbar). Here
@@ -65,6 +74,7 @@ Estimated laws difficulty: routine-opus (~80 per blueprint).
 import Mathlib
 import LeanUrat.HC2.Defs
 import LeanUrat.HC2.U31_gateReadsOf
+import LeanUrat.HC2.HK13_bStageCoreP1a
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -94,10 +104,14 @@ theorem fgate_natDegree : fgate.natDegree = 4 := by
 
 /-- **The gate root node** (HK-18, resolution R-3): U31's inert root read, re-dressed
 for fgate's base side — γ₀ = 3 at slots 0–2 of the (1,1) side, ustar = 1,
-line = ⟨3, 1⟩ (intercept 3, slope 1). All other data are `U31.ν₀`'s. -/
+line = ⟨3, 1⟩ (intercept 3, slope 1). All other data are `U31.ν₀`'s, EXCEPT the frame:
+`σ := bStageP` (RATIFIED RE-KEY 2026-07-30 — `StageCoreL` at the literal `U31.bStage`
+is refutable: `reps = []` kills `reps_nonempty`/`p_is_rep`, `wPrev = bw` with `bw X = 1`
+kills `prevIaug`; see `HK13_bStageCoreP1a.lean`'s finding record. bStageP is
+byte-identical on every field this node's laws read — w, R, Φ, K, t = 0). -/
 noncomputable def ν₀gate : Node 2 F4 where
   species := ReadSpecies.root
-  σ := U31.bStage
+  σ := bStageP
   e := 1
   h := 1
   s := 1

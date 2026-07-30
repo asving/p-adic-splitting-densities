@@ -4,9 +4,18 @@ blueprint: lean/notes/BRIDGE_BP2_HC2K1_2026-07-30.md §4 Block G, unit HK-16.
 
 INFORMAL STATEMENT (blueprint): "σ₁'s Stage laws via the guarded S9a/S9b/S9c chain at
 the gate instance (e·g = 2 > 1 — the guards pass); consume HK-13/HK-56/HK-14 for the
-StageCoreL inputs."  deps: HK-13, HK-56, HK-14 (jointly: `StageCoreL U31.bStage` —
-NOT YET ON DISK, enters as the hypothesis `hσ`), HK-15 (σ₁'s pinned construction — NOT
+StageCoreL inputs."  deps: HK-13, HK-56, HK-14 (jointly: `StageCoreL bStageP` —
+enters as the hypothesis `hσ`), HK-15 (σ₁'s pinned construction — NOT
 YET ON DISK, see the deviation below).
+
+RATIFIED RE-KEY (2026-07-30): every occurrence of the blueprint's "bStage" is keyed at
+`bStageP` (HK-13's base-pin re-dress), NOT the literal `U31.bStage` — `StageCoreL
+U31.bStage` is REFUTABLE (`U31.bStage.reps = []` refutes `StageCore.reps_nonempty`/
+`p_is_rep`; `wPrev = bw` with `bw X = 1` refutes `StageCore.prevIaug`: `1·1 < 1` is
+false), so the hypothesis `hσ` would be undischargeable and the unit vacuous at the
+literal. bStageP differs only in (wPrev := gaussVal, reps := [C 2], Tvec := [(C 2,1)]);
+w/R/Φ/(e,h,s,t)/K are byte-identical, so the S9 chain's gate instantiation is unchanged.
+Full finding record: `HK13_bStageCoreP1a.lean`'s module header (orchestrator-ratified).
 
 E-PHASE RESOLUTION (recorded): HK-15's concrete σ₁ (pinned through `ChildResData` /
 the S9c witness) is not on disk, so the unit is stated as the GATE INSTANTIATION OF
@@ -19,8 +28,8 @@ lands, the P-phase re-binds the ∃-witness to HK-15's pinned σ₁ (definitiona
 exact hypothesis pack HK-20's read-1 SideReads statements consume (σ₁.Φ = fq is
 `.1.base.child_key`).
 
-PROOF SKETCH (P-phase): `S9c_coreAssembly U31.bStage hσ th hEG` at hEG : 1 < 1·2 =
-bStage.e * g (the guard passes at the gate), then `S9d_stageCoreL` for the L-core
+PROOF SKETCH (P-phase): `S9c_coreAssembly bStageP hσ th hEG` at hEG : 1 < 1·2 =
+bStageP.e * g (the guard passes at the gate), then `S9d_stageCoreL` for the L-core
 upgrade exactly as in `S9_transStage`'s proof (the hΦin degree argument via
 `L3_liftMonic` at th.hlift). Difficulty hard-fable ~100, mostly instantiation
 (blueprint).
@@ -28,6 +37,7 @@ upgrade exactly as in `S9_transStage`'s proof (the hΦin degree argument via
 import Mathlib
 import LeanUrat.HC2.Defs
 import LeanUrat.HC2.U31_gateReadsOf
+import LeanUrat.HC2.HK13_bStageCoreP1a
 import LeanUrat.HC1.DefsTower
 import LeanUrat.HC1.DefsSpine
 import LeanUrat.HC1.K1_vertexPin
@@ -42,24 +52,27 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD LeanUrat.HC1
 
 namespace HK16
 
-/-- HK-16: THE GATE CHILD STAGE'S LAWS — at the gate read (bStage, ψ₂, g = 2,
+/-- HK-16: THE GATE CHILD STAGE'S LAWS — at the gate read (bStageP, ψ₂, g = 2,
 Φ̂ = fq, next pair (1, 3), zbar₀ = the recorded root), the guarded S9 chain produces
 a child stage carrying the full transition record, the D.8 vertex pin, the childW
 tie, and the round-5 stage core (`StageCoreL`, via S9d). Hypotheses = the dep units:
-`hσ` is HK-13/HK-56/HK-14's `StageCoreL bStage`; `th` is HK-47's `transHyp_gate`.
-The ∃-witness is HK-15's σ₁ (E-phase resolution: see the file header). -/
-theorem childStage_gate (hσ : StageCoreL U31.bStage)
-    (th : TransHyp U31.bStage U31.ψ₂ 2 U31.fq 1 3 U31.ν₀.zbar) :
+`hσ` is HK-13/HK-56/HK-14's `StageCoreL bStageP`; `th` is HK-47's `transHyp_gate`.
+The ∃-witness is HK-15's σ₁ (E-phase resolution: see the file header).
+RATIFIED RE-KEY 2026-07-30: keyed at `bStageP`, not the refutable-core literal
+`U31.bStage` (reps = [] / prevIaug refutations — HK-13's finding record). -/
+theorem childStage_gate (hσ : StageCoreL bStageP)
+    (th : TransHyp bStageP U31.ψ₂ 2 U31.fq 1 3 U31.ν₀.zbar) :
     ∃ σ₁ : Stage 2 F4,
-      TransitionCoreL U31.bStage σ₁ U31.fq 1 3 U31.ν₀.zbar ∧
-      VertexPin U31.bStage σ₁ U31.fq U31.ν₀.zbar ∧
-      (∀ f, f ≠ 0 → σ₁.w f = childW U31.bStage U31.fq 1 3 f) ∧
+      TransitionCoreL bStageP σ₁ U31.fq 1 3 U31.ν₀.zbar ∧
+      VertexPin bStageP σ₁ U31.fq U31.ν₀.zbar ∧
+      (∀ f, f ≠ 0 → σ₁.w f = childW bStageP U31.fq 1 3 f) ∧
       StageCoreL σ₁ := by
   sorry
 
 /-- The gate guard check, standalone (the blueprint's "e·g = 2 > 1 — the guards
-pass"): the S9a/S9b/S9c/S9 increment guard is satisfied at the gate read. -/
-theorem gate_guard : 1 < U31.bStage.e * 2 := by
+pass"): the S9a/S9b/S9c/S9 increment guard is satisfied at the gate read
+(`bStageP.e = U31.bStage.e = 1` — the e field is untouched by the re-dress). -/
+theorem gate_guard : 1 < bStageP.e * 2 := by
   sorry
 
 end HK16

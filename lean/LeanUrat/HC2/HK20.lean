@@ -18,6 +18,13 @@ E-PHASE RESOLUTIONS (recorded; inherited from HK-18):
   the D.8 vertex pin, supplying the mfun ≡ 0 digit scalars clause (ii) reads; hw :
   the childW tie, computing σ₁.w on the concrete slots). hΦ := htc.base.child_key at
   the P-phase re-bind; here it is bound separately because `ν₁gate` consumes it.
+* RATIFIED RE-KEY (2026-07-30): the pack's parent stage is `bStageP` (HK-13's base-pin
+  re-dress), NOT the literal `U31.bStage` — `StageCoreL U31.bStage` is refutable
+  (`reps = []` kills `reps_nonempty`/`p_is_rep`; `wPrev = bw`, `bw X = 1` kills
+  `prevIaug`), and the pack must match HK-16's re-keyed conclusion conjuncts verbatim
+  (they are BYTE-COPIES — an un-re-keyed pack would be undischargeable). w/R/Φ/(e,h,s,t)
+  are byte-identical under the re-dress, so all recorded slot data are unchanged.
+  Record: `HK13_bStageCoreP1a.lean` module header.
 * Blueprint MANDATORY split rule (>100 proof lines ⇒ named seams): pre-executed —
   each SideReads conjunct is its own named declaration; (iv)+(vi) are ONE declaration
   because both read the SAME existential Φtop (the SideReads Φnext parameter: the
@@ -47,6 +54,7 @@ z − 1. Difficulty hard-fable ~120 (blueprint).
 -/
 import Mathlib
 import LeanUrat.HC2.HK18
+import LeanUrat.HC2.HK13_bStageCoreP1a
 import LeanUrat.HC1.DefsSpine
 import LeanUrat.HC1.K1_vertexPin
 
@@ -81,9 +89,9 @@ theorem Bdev1_dev : IsDevelopment U31.fq fgate Bdev1 3 := by
 section
 
 variable (σ₁ : Stage 2 F4) (hΦ : σ₁.Φ = U31.fq)
-  (htc : TransitionCoreL U31.bStage σ₁ U31.fq 1 3 U31.ν₀.zbar)
-  (hpin : VertexPin U31.bStage σ₁ U31.fq U31.ν₀.zbar)
-  (hw : ∀ f, f ≠ 0 → σ₁.w f = childW U31.bStage U31.fq 1 3 f)
+  (htc : TransitionCoreL bStageP σ₁ U31.fq 1 3 U31.ν₀.zbar)
+  (hpin : VertexPin bStageP σ₁ U31.fq U31.ν₀.zbar)
+  (hw : ∀ f, f ≠ 0 → σ₁.w f = childW bStageP U31.fq 1 3 f)
 
 /-- SideReads clause (i), lower bound, at (ν₁gate σ₁ hΦ, Bdev1, 3): the read
 functional `e·σ₁.w(B_j) + j·h` at the steep pair (1, 3) is ≥ γ₁ = 4 at every nonzero
