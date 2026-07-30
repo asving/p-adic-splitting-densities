@@ -55,9 +55,13 @@ probe_results_2026-07-30.txt; JSON to results/ke4_tails_stress.json; exit
 STATUS: RUN PHASE (2026-07-30) — body implemented AFTER the seal above
 (predictions P1–P4 verbatim untouched).  Phase 1 executes on invocation;
 phase 2 is implemented (`--phase2 CT cT` re-runs the stress from the cached
-census masses) but BLOCKED as of 2026-07-30: MovesX/KE5.lean is an E-phase
-`sorry` statement module with NO drafted constants (within-unit sequencing
-stub, not a unit blockage).
+census masses).  PHASE 2 RAN 2026-07-30 (P4 discharged, 2/2 PASS, exit 0):
+the KE5 prover's actual pair (C_T, c_T) = (1200488, 1) — the D4R.2
+pool-bound composition's constants made n-only by taking the max of the two
+per-box phase-1 sketch values (p=2: 3.74e5; p=3: 1.20e6), c_T = 1 — passes
+the in-box stress at both p with no violations and no growing detector
+trend; KE5's `x2Tails_of_route` (MovesX/KE5.lean) is PROVED and its
+acceptance gate is thereby CLEAR.
 
 RUN-PHASE READING NOTES (recorded, not sealed):
   * TallEvent transcription (MovesX/Defs.lean:307 `TallEvent`): f is tall at

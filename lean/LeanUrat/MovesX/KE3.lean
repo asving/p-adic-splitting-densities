@@ -9,7 +9,7 @@ import LeanUrat.MovesX.Defs
 
 BRIDGE CAMPAIGN unit **KE3** (area BP4, cluster c3; blueprint
 `lean/notes/BRIDGE_BP4_KERNELS_2026-07-30.md` §3.E (E-iii) + §4 KE3).
-E-PHASE STATEMENT MODULE — statement with `sorry` body.
+PROVED (2026-07-30, prover BP4-P8) — sorry-free, Lean-core axiom footprint.
 
 THE KERNEL: `X2CapP n X K` (MovesX/Defs.lean) — `cap(b) ≤ c_cap·(1 + Σ h_r)`
 inside the ns-free fourth-piece family, on `capDetectable` branches. Blueprint
@@ -36,6 +36,14 @@ deps: KE11 (CM gate — the affine-envelope probe runs FIRST; acceptance gated o
 its candidate-stress record, REV 2 F5); [3t] TB-CAP Lean surface (MovesT) for
 the eventual instance leg. Fallback: obstruction record naming the clause whose
 per-cell cap outruns the affine form. Consumers: XD4 `x2hypAssembled`, KE9.
+
+GATE RECORD (2026-07-30, prover BP4-P8): KE11 RAN FIRST and sealed clean
+(22/22 PASS, exit 0): cap(H) ≤ c_cap·(1 + Σ h_r) holds in-census with the
+clause candidate c_cap = n + 1 (empirical minimal c_cap ≤ 7/3 across boxes);
+the KE3-shape decomposition fitted (C_root^emp, C_cell^emp) with the
+candidate C_root + 2·C_cell also passing; growth detector flat.
+`x2Cap_of_capStep` PROVED below (Lean-core footprint); the ⚑ instance leg
+for `CapStep` (the MovesT TB-CAP seam) remains owner-side.
 -/
 
 namespace LeanUrat.MovesX
@@ -43,6 +51,20 @@ namespace LeanUrat.MovesX
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedVariables false
+
+private lemma sumH_append' {n : ℕ} (H : XHistory n) (ν : XNode n) :
+    sumH (H ++ [ν]) = sumH H + ν.h := by
+  simp [sumH]
+
+/-- KE3 helper — the length of a history is at most its height sum
+(`ν.hpos` per node). -/
+private lemma length_le_sumH {n : ℕ} (H : XHistory n) : H.length ≤ sumH H := by
+  induction H with
+  | nil => simp [sumH]
+  | cons ν t ih =>
+      have := ν.hpos
+      simp only [List.length_cons, sumH, List.map_cons, List.sum_cons] at *
+      omega
 
 /-- **KE3 named law (⚑ ratification)** — the TB-CAP per-clause cap accumulation
 over one context: the root branch's cap is at most `Croot`, and each appended
@@ -67,6 +89,58 @@ theorem x2Cap_of_capStep {n : ℕ} (X : XFamily n) (K : XConsts n)
     (hstep : ∀ (p : ℕ) [Fact p.Prime], CapStep n p (X.ctx p) Croot Ccell)
     (hccap : Croot + 2 * Ccell ≤ K.ccap) :
     X2CapP n X K := by
-  sorry
+  unfold X2CapP
+  intro p _ f b hb hdet
+  -- The branch invariant, by induction along the parent chain:
+  --   cap(b') ≤ Croot + Ccell · (len(hist b') + Σ h_r)
+  have key : ∀ b' : (X.ctx p).Branch f,
+      ((X.ctx p).detCap b' : ℚ) ≤
+        Croot + Ccell * ((((X.ctx p).hist b').length : ℚ)
+          + (sumH ((X.ctx p).hist b') : ℚ)) := by
+    intro b'
+    have hreach := (X.ctx p).reach b'
+    induction hreach using Relation.ReflTransGen.head_induction_on with
+    | refl =>
+        rw [(X.ctx p).hist_root f]
+        simpa using (hstep p).root f
+    | @head a c hpar hrest ih =>
+        obtain ⟨ν, hν⟩ := (X.ctx p).parent_hist a c hpar
+        have hchild : a ∈ (X.ctx p).children c :=
+          ((X.ctx p).children_iff c a).mpr hpar
+        have hstep' := (hstep p).step f c a ν hchild hν
+        rw [hν, sumH_append']
+        push_cast [List.length_append]
+        calc ((X.ctx p).detCap a : ℚ)
+            ≤ ((X.ctx p).detCap c : ℚ) + Ccell * (1 + (ν.h : ℚ)) := hstep'
+          _ ≤ (Croot + Ccell * ((((X.ctx p).hist c).length : ℚ)
+                + (sumH ((X.ctx p).hist c) : ℚ))) + Ccell * (1 + (ν.h : ℚ)) := by
+              linarith [ih]
+          _ = Croot + Ccell * (((((X.ctx p).hist c).length : ℚ) + 1)
+                + ((sumH ((X.ctx p).hist c) : ℚ) + (ν.h : ℚ))) := by ring
+  -- Close: `len ≤ Σ h_r`, then the constant bookkeeping.
+  have hLS : (((X.ctx p).hist b).length : ℚ) ≤ (sumH ((X.ctx p).hist b) : ℚ) := by
+    exact_mod_cast length_le_sumH ((X.ctx p).hist b)
+  have hS0 : (0 : ℚ) ≤ (sumH ((X.ctx p).hist b) : ℚ) := Nat.cast_nonneg _
+  have h2 : Ccell * ((((X.ctx p).hist b).length : ℚ)
+      + (sumH ((X.ctx p).hist b) : ℚ)) ≤
+      Ccell * ((sumH ((X.ctx p).hist b) : ℚ) + (sumH ((X.ctx p).hist b) : ℚ)) :=
+    mul_le_mul_of_nonneg_left (by linarith) hcell
+  have hCrS : (0 : ℚ) ≤ Croot * (sumH ((X.ctx p).hist b) : ℚ) :=
+    mul_nonneg hroot hS0
+  have h4 : (Croot + 2 * Ccell) * (1 + (sumH ((X.ctx p).hist b) : ℚ)) ≤
+      K.ccap * (1 + (sumH ((X.ctx p).hist b) : ℚ)) :=
+    mul_le_mul_of_nonneg_right hccap (by linarith)
+  calc ((X.ctx p).detCap b : ℚ)
+      ≤ Croot + Ccell * ((((X.ctx p).hist b).length : ℚ)
+          + (sumH ((X.ctx p).hist b) : ℚ)) := key b
+    _ ≤ Croot + Ccell * ((sumH ((X.ctx p).hist b) : ℚ)
+          + (sumH ((X.ctx p).hist b) : ℚ)) := by linarith
+    _ ≤ (Croot + 2 * Ccell) * (1 + (sumH ((X.ctx p).hist b) : ℚ)) := by
+        have expand : (Croot + 2 * Ccell) * (1 + (sumH ((X.ctx p).hist b) : ℚ))
+            = Croot + Ccell * ((sumH ((X.ctx p).hist b) : ℚ)
+                + (sumH ((X.ctx p).hist b) : ℚ))
+              + (Croot * (sumH ((X.ctx p).hist b) : ℚ) + 2 * Ccell) := by ring
+        linarith
+    _ ≤ K.ccap * (1 + (sumH ((X.ctx p).hist b) : ℚ)) := h4
 
 end LeanUrat.MovesX

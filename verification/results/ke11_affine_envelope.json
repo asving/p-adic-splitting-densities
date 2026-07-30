@@ -1,0 +1,573 @@
+{
+ "boxes": {
+  "n3_p2": {
+   "n": 3,
+   "p": 2,
+   "N": 8,
+   "box": 16777216,
+   "n_internal": 32,
+   "n_leaf": 260,
+   "margin_events": 209920,
+   "move_ledger": [
+    [
+     0,
+     0,
+     2
+    ],
+    [
+     1,
+     2,
+     1
+    ],
+    [
+     1,
+     3,
+     4
+    ],
+    [
+     2,
+     2,
+     3
+    ],
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     2,
+     4,
+     1
+    ],
+    [
+     2,
+     6,
+     4
+    ],
+    [
+     3,
+     2,
+     6
+    ],
+    [
+     3,
+     4,
+     3
+    ],
+    [
+     3,
+     6,
+     1
+    ],
+    [
+     3,
+     7,
+     2
+    ]
+   ],
+   "C_move": "3",
+   "c0_sketch": "9",
+   "c0_min": "3",
+   "bad_form": [],
+   "thr_violations": {
+    "sketch_nCmove": [],
+    "reference_c0_4": []
+   },
+   "ccap_min": "7/3",
+   "croot_emp": 11,
+   "ccell_emp": "0",
+   "ke3_candidate": "11",
+   "cap_violations": {
+    "sketch_n_plus_1": [],
+    "ke3_shape_Croot_2Ccell": []
+   },
+   "growth": {
+    "thr": {
+     "pts": [
+      [
+       0,
+       0.0
+      ],
+      [
+       1,
+       3.0
+      ],
+      [
+       2,
+       3.0
+      ],
+      [
+       3,
+       2.0
+      ],
+      [
+       4,
+       1.1666666666666667
+      ]
+     ],
+     "slope": 0.1333,
+     "growing": false
+    },
+    "cap": {
+     "pts": [
+      [
+       0,
+       2.3333333333333335
+      ],
+      [
+       1,
+       2.3333333333333335
+      ],
+      [
+       2,
+       1.75
+      ],
+      [
+       3,
+       1.2222222222222223
+      ],
+      [
+       4,
+       0.5714285714285714
+      ]
+     ],
+     "slope": -0.4635,
+     "growing": false
+    }
+   },
+   "secs": 4.9
+  },
+  "n3_p3": {
+   "n": 3,
+   "p": 3,
+   "N": 5,
+   "box": 14348907,
+   "n_internal": 63,
+   "n_leaf": 398,
+   "margin_events": 199746,
+   "move_ledger": [
+    [
+     0,
+     0,
+     6
+    ],
+    [
+     1,
+     2,
+     8
+    ],
+    [
+     1,
+     3,
+     18
+    ],
+    [
+     2,
+     2,
+     20
+    ],
+    [
+     2,
+     4,
+     10
+    ]
+   ],
+   "C_move": "3",
+   "c0_sketch": "9",
+   "c0_min": "3",
+   "bad_form": [],
+   "thr_violations": {
+    "sketch_nCmove": [],
+    "reference_c0_4": []
+   },
+   "ccap_min": "2",
+   "croot_emp": 7,
+   "ccell_emp": "0",
+   "ke3_candidate": "7",
+   "cap_violations": {
+    "sketch_n_plus_1": [],
+    "ke3_shape_Croot_2Ccell": []
+   },
+   "growth": {
+    "thr": {
+     "pts": [
+      [
+       0,
+       0.0
+      ],
+      [
+       1,
+       3.0
+      ],
+      [
+       2,
+       3.0
+      ],
+      [
+       3,
+       1.3333333333333333
+      ]
+     ],
+     "slope": 0.4,
+     "growing": false
+    },
+    "cap": {
+     "pts": [
+      [
+       0,
+       2.0
+      ],
+      [
+       1,
+       2.0
+      ],
+      [
+       2,
+       1.4
+      ]
+     ],
+     "slope": -0.3,
+     "growing": false
+    }
+   },
+   "secs": 3.1
+  },
+  "n2_p2": {
+   "n": 2,
+   "p": 2,
+   "N": 8,
+   "box": 65536,
+   "n_internal": 16,
+   "n_leaf": 78,
+   "margin_events": 768,
+   "move_ledger": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     1,
+     2,
+     2
+    ],
+    [
+     2,
+     2,
+     2
+    ],
+    [
+     2,
+     4,
+     2
+    ],
+    [
+     3,
+     2,
+     4
+    ],
+    [
+     3,
+     4,
+     2
+    ],
+    [
+     3,
+     6,
+     2
+    ]
+   ],
+   "C_move": "2",
+   "c0_sketch": "4",
+   "c0_min": "2",
+   "bad_form": [],
+   "thr_violations": {
+    "sketch_nCmove": [],
+    "reference_c0_4": []
+   },
+   "ccap_min": "7/4",
+   "croot_emp": 8,
+   "ccell_emp": "0",
+   "ke3_candidate": "8",
+   "cap_violations": {
+    "sketch_n_plus_1": [],
+    "ke3_shape_Croot_2Ccell": []
+   },
+   "growth": {
+    "thr": {
+     "pts": [
+      [
+       0,
+       0.0
+      ],
+      [
+       1,
+       2.0
+      ],
+      [
+       2,
+       2.0
+      ],
+      [
+       3,
+       1.5
+      ],
+      [
+       4,
+       1.0
+      ]
+     ],
+     "slope": 0.15,
+     "growing": false
+    },
+    "cap": {
+     "pts": [
+      [
+       0,
+       1.75
+      ],
+      [
+       1,
+       1.75
+      ],
+      [
+       2,
+       1.4
+      ],
+      [
+       3,
+       1.0
+      ],
+      [
+       4,
+       0.5714285714285714
+      ]
+     ],
+     "slope": -0.3107,
+     "growing": false
+    }
+   },
+   "secs": 0.2,
+   "oracle_gate": {
+    "walker_dec": 65280,
+    "oracle_dec": 61440,
+    "both": 61440,
+    "disagree": 0,
+    "disagree_witness": null
+   }
+  },
+  "n2_p3": {
+   "n": 2,
+   "p": 3,
+   "N": 6,
+   "box": 531441,
+   "n_internal": 27,
+   "n_leaf": 72,
+   "margin_events": 2187,
+   "move_ledger": [
+    [
+     0,
+     0,
+     2
+    ],
+    [
+     1,
+     2,
+     6
+    ],
+    [
+     2,
+     2,
+     12
+    ],
+    [
+     2,
+     4,
+     6
+    ]
+   ],
+   "C_move": "2",
+   "c0_sketch": "4",
+   "c0_min": "2",
+   "bad_form": [],
+   "thr_violations": {
+    "sketch_nCmove": [],
+    "reference_c0_4": []
+   },
+   "ccap_min": "5/3",
+   "croot_emp": 6,
+   "ccell_emp": "0",
+   "ke3_candidate": "6",
+   "cap_violations": {
+    "sketch_n_plus_1": [],
+    "ke3_shape_Croot_2Ccell": []
+   },
+   "growth": {
+    "thr": {
+     "pts": [
+      [
+       0,
+       0.0
+      ],
+      [
+       1,
+       2.0
+      ],
+      [
+       2,
+       2.0
+      ],
+      [
+       3,
+       1.3333333333333333
+      ]
+     ],
+     "slope": 0.4,
+     "growing": false
+    },
+    "cap": {
+     "pts": [
+      [
+       0,
+       1.6666666666666667
+      ],
+      [
+       1,
+       1.6666666666666667
+      ],
+      [
+       2,
+       1.25
+      ],
+      [
+       3,
+       0.6666666666666666
+      ]
+     ],
+     "slope": -0.3417,
+     "growing": false
+    }
+   },
+   "secs": 2.4,
+   "oracle_gate": {
+    "walker_dec": 530712,
+    "oracle_dec": 529254,
+    "both": 529254,
+    "disagree": 0,
+    "disagree_witness": null
+   }
+  }
+ },
+ "verdicts": [
+  {
+   "name": "KE11-V1 n=3 p=2: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)",
+   "ok": true,
+   "detail": "sigma [708608, 5038080, 4329472, 3951616, 2705408] vs [708608, 5038080, 4329472, 3951616, 2705408]; undec 44032 vs 44032"
+  },
+  {
+   "name": "KE11-V2 n=3 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE11-P1 n=3 p=2: threshold(H) <= 1 + c0\u00b7Sigma h_r with the sketch candidate c0 = n\u00b7C_move = 9 (and Sigma h = 0 => thr <= 1)",
+   "ok": true,
+   "detail": "empirical minimal c0 = 3; sketch violations []; bad-form rows [] (n=0)"
+  },
+  {
+   "name": "KE11-P1r n=3 p=2: the X-n3 observation-face reference c0 = 4 passes alongside",
+   "ok": true,
+   "detail": "violations []"
+  },
+  {
+   "name": "KE11-P2 n=3 p=2: cap(H) <= c_cap\u00b7(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 4",
+   "ok": true,
+   "detail": "empirical minimal c_cap = 7/3; violations []; KE3-shape (C_root^emp, C_cell^emp) = (11, 0) => C_root + 2\u00b7C_cell = 11, violations []; wf>n(1+Sigma h) ledger count 0"
+  },
+  {
+   "name": "KE11-P3 n=3 p=2: growth detector \u2014 per-depth max ratios flat (no super-affine branch family)",
+   "ok": true,
+   "detail": "thr ratios by depth [(0, 0.0), (1, 3.0), (2, 3.0), (3, 2.0), (4, 1.1666666666666667)] (slope 0.1333); cap ratios by depth [(0, 2.3333333333333335), (1, 2.3333333333333335), (2, 1.75), (3, 1.2222222222222223), (4, 0.5714285714285714)] (slope -0.4635)"
+  },
+  {
+   "name": "KE11-V1 n=3 p=3: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)",
+   "ok": true,
+   "detail": "sigma [927288, 5196312, 4269024, 2726460, 1185354] vs [927288, 5196312, 4269024, 2726460, 1185354]; undec 44469 vs 44469"
+  },
+  {
+   "name": "KE11-V2 n=3 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE11-P1 n=3 p=3: threshold(H) <= 1 + c0\u00b7Sigma h_r with the sketch candidate c0 = n\u00b7C_move = 9 (and Sigma h = 0 => thr <= 1)",
+   "ok": true,
+   "detail": "empirical minimal c0 = 3; sketch violations []; bad-form rows [] (n=0)"
+  },
+  {
+   "name": "KE11-P1r n=3 p=3: the X-n3 observation-face reference c0 = 4 passes alongside",
+   "ok": true,
+   "detail": "violations []"
+  },
+  {
+   "name": "KE11-P2 n=3 p=3: cap(H) <= c_cap\u00b7(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 4",
+   "ok": true,
+   "detail": "empirical minimal c_cap = 2; violations []; KE3-shape (C_root^emp, C_cell^emp) = (7, 0) => C_root + 2\u00b7C_cell = 7, violations []; wf>n(1+Sigma h) ledger count 0"
+  },
+  {
+   "name": "KE11-P3 n=3 p=3: growth detector \u2014 per-depth max ratios flat (no super-affine branch family)",
+   "ok": true,
+   "detail": "thr ratios by depth [(0, 0.0), (1, 3.0), (2, 3.0), (3, 1.3333333333333333)] (slope 0.4); cap ratios by depth [(0, 2.0), (1, 2.0), (2, 1.4)] (slope -0.3)"
+  },
+  {
+   "name": "KE11-V3 n=2 p=2: walker type == disc square-class oracle on every jointly decided f",
+   "ok": true,
+   "detail": "walker decided 65280, oracle decided 61440, both 61440, disagreements 0 (witness None)"
+  },
+  {
+   "name": "KE11-P1 n=2 p=2: threshold(H) <= 1 + c0\u00b7Sigma h_r with the sketch candidate c0 = n\u00b7C_move = 4 (and Sigma h = 0 => thr <= 1)",
+   "ok": true,
+   "detail": "empirical minimal c0 = 2; sketch violations []; bad-form rows [] (n=0)"
+  },
+  {
+   "name": "KE11-P1r n=2 p=2: the X-n3 observation-face reference c0 = 4 passes alongside",
+   "ok": true,
+   "detail": "violations []"
+  },
+  {
+   "name": "KE11-P2 n=2 p=2: cap(H) <= c_cap\u00b7(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 3",
+   "ok": true,
+   "detail": "empirical minimal c_cap = 7/4; violations []; KE3-shape (C_root^emp, C_cell^emp) = (8, 0) => C_root + 2\u00b7C_cell = 8, violations []; wf>n(1+Sigma h) ledger count 0"
+  },
+  {
+   "name": "KE11-P3 n=2 p=2: growth detector \u2014 per-depth max ratios flat (no super-affine branch family)",
+   "ok": true,
+   "detail": "thr ratios by depth [(0, 0.0), (1, 2.0), (2, 2.0), (3, 1.5), (4, 1.0)] (slope 0.15); cap ratios by depth [(0, 1.75), (1, 1.75), (2, 1.4), (3, 1.0), (4, 0.5714285714285714)] (slope -0.3107)"
+  },
+  {
+   "name": "KE11-V3 n=2 p=3: walker type == disc square-class oracle on every jointly decided f",
+   "ok": true,
+   "detail": "walker decided 530712, oracle decided 529254, both 529254, disagreements 0 (witness None)"
+  },
+  {
+   "name": "KE11-P1 n=2 p=3: threshold(H) <= 1 + c0\u00b7Sigma h_r with the sketch candidate c0 = n\u00b7C_move = 4 (and Sigma h = 0 => thr <= 1)",
+   "ok": true,
+   "detail": "empirical minimal c0 = 2; sketch violations []; bad-form rows [] (n=0)"
+  },
+  {
+   "name": "KE11-P1r n=2 p=3: the X-n3 observation-face reference c0 = 4 passes alongside",
+   "ok": true,
+   "detail": "violations []"
+  },
+  {
+   "name": "KE11-P2 n=2 p=3: cap(H) <= c_cap\u00b7(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 3",
+   "ok": true,
+   "detail": "empirical minimal c_cap = 5/3; violations []; KE3-shape (C_root^emp, C_cell^emp) = (6, 0) => C_root + 2\u00b7C_cell = 6, violations []; wf>n(1+Sigma h) ledger count 0"
+  },
+  {
+   "name": "KE11-P3 n=2 p=3: growth detector \u2014 per-depth max ratios flat (no super-affine branch family)",
+   "ok": true,
+   "detail": "thr ratios by depth [(0, 0.0), (1, 2.0), (2, 2.0), (3, 1.3333333333333333)] (slope 0.4); cap ratios by depth [(0, 1.6666666666666667), (1, 1.6666666666666667), (2, 1.25), (3, 0.6666666666666666)] (slope -0.3417)"
+  }
+ ]
+}
