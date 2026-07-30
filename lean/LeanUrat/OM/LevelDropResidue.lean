@@ -81,8 +81,8 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
     rw [← hgg]; exact hgm'.natDegree_map _
   have hm : 0 < g.natDegree := by rw [hdeg]; exact hm'
   -- Irreducibility at level `N` (transported from level `N+1` via `gbar_levelDrop`).
-  have hgirrN : Irreducible (gbar p N g h2) := by
-    rw [← gbar_levelDrop p N g' g h1 h2 hgg]; exact hgirr
+  have hgirrN : Irreducible (gbar p N g h2) :=
+    gbar_levelDrop p N g' g h1 h2 hgg ▸ hgirr
   -- Step 1: `v ≤ N` (junk bound) and `x ≠ 0`.
   have hvle : v ≤ N := le_of_lt hcut
   have hx : x ≠ 0 := by
@@ -105,9 +105,8 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
     have hxmem : x ∈ Ideal.span {((p : ℕ) : Oring p (N + 1) g') ^ (v + 1)} := by
       rw [Ideal.mem_span_singleton]
       refine ⟨w, ?_⟩
-      have hpc : ((p : ℕ) : Oring p (N + 1) g') ^ (v + 1)
-          = ((p : ℕ) : Oring p (N + 1) g') ^ v * ((p : ℕ) : Oring p (N + 1) g') := pow_succ _ _
-      rw [← huspec, hw, hpc]; ring
+      rw [← huspec, hw, pow_succ]
+      ring
     have hle : v + 1 ≤ v := by
       have := (le_pval_iff p (N + 1) g' (by omega : v + 1 ≤ N + 1)).mpr hxmem
       rwa [← hv] at this
@@ -116,16 +115,14 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
   have hresu_ne : resHom p (N + 1) g' hgm' h1 u ≠ 0 := by
     intro h0
     apply hu_notmem
-    rw [← ker_resHom_eq_span_p p (N + 1) g' hgm' h1, RingHom.mem_ker]
-    exact h0
+    rwa [← ker_resHom_eq_span_p p (N + 1) g' hgm' h1, RingHom.mem_ker]
   -- Step 3: `θ x = θ u · p^v` (θ ring hom, `θ p = p`).
   have hθx : θ x = θ u * (((p : ℕ) : Oring p N g) ^ v) := by
     rw [hθ, ← huspec, map_mul, map_pow, map_natCast]
   -- Naturality: `resHom N (θ u) = φ (resHom (N+1) u)`.
   have hnat : resHom p N g hgm h2 (θ u) = φ (resHom p (N + 1) g' hgm' h1 u) := by
-    have := resHom_natural_levelDrop p N g' g h1 h2 hgm' hgm hgg
-    have := congrArg (fun (F : Oring p (N + 1) g' →+* resField p N g h2) => F u) this
-    simpa [RingHom.comp_apply, hθ, hφ] using this
+    simpa [RingHom.comp_apply, hθ, hφ] using
+      RingHom.congr_fun (resHom_natural_levelDrop p N g' g h1 h2 hgm' hgm hgg) u
   -- `φ` is injective (nonzero ring hom of fields).
   have hφ_inj : Function.Injective φ := by
     haveI : Fact (Irreducible (gbar p (N + 1) g' h1)) := ⟨hgirr⟩
@@ -134,16 +131,12 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
   -- `resHom N (θ u) ≠ 0` (φ injective, `resHom (N+1) u ≠ 0`).
   have hresθu_ne : resHom p N g hgm h2 (θ u) ≠ 0 := by
     rw [hnat]
-    intro h0
-    apply hresu_ne
-    apply hφ_inj
-    rw [h0, map_zero]
+    exact fun h0 => hresu_ne (hφ_inj (h0.trans (map_zero φ).symm))
   -- `θ u ∉ (p)` at level `N` (ker resHom).
   have hθu_notmem : θ u ∉ Ideal.span {((p : ℕ) : Oring p N g)} := by
     intro hmem
     apply hresθu_ne
-    rw [← RingHom.mem_ker, ker_resHom_eq_span_p p N g hgm h2]
-    exact hmem
+    rwa [← RingHom.mem_ker, ker_resHom_eq_span_p p N g hgm h2]
   -- Step 4 (crux): `pval N (θ x) = v`.
   have hpval_θx : pval_Oring p N g (θ x) = v := by
     apply le_antisymm
@@ -156,9 +149,7 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
       obtain ⟨w, hw⟩ := hmem
       -- `θ u · p^v = θ x = w · p^{v+1} = w · p · p^v`, so `(θ u - w·p)·p^v = 0`.
       have hzero : (θ u - w * ((p : ℕ) : Oring p N g)) * (((p : ℕ) : Oring p N g) ^ v) = 0 := by
-        have hpc : ((p : ℕ) : Oring p N g) ^ (v + 1)
-            = ((p : ℕ) : Oring p N g) ^ v * ((p : ℕ) : Oring p N g) := pow_succ _ _
-        rw [sub_mul, ← hθx, hw, hpc]
+        rw [sub_mul, ← hθx, hw, pow_succ]
         ring
       -- `v < N`, so `θ u - w·p ∈ (p)`, hence `θ u ∈ (p)`, contradiction.
       have hdiffmem : (θ u - w * ((p : ℕ) : Oring p N g)) ∈ Ideal.span {((p : ℕ) : Oring p N g)} :=
@@ -175,8 +166,7 @@ theorem resUnitResidue_levelDrop (g' : (ZMod (p ^ (N + 1)))[X]) (g : (ZMod (p ^ 
   -- Step 5: `θ x ≠ 0` (from `pval (θ x) = v < N` and `pval = N ↔ = 0`).
   have hθx_ne : θ x ≠ 0 := by
     intro h0
-    have : pval_Oring p N g (θ x) = N := by rw [h0, pval_zero p N g]
-    rw [hpval_θx] at this
+    rw [h0, pval_zero p N g] at hpval_θx
     omega
   -- `θ u` is a witness for `θ x` at valuation `pval (θ x) = v`.
   have hwit : θ u * (((p : ℕ) : Oring p N g) ^ (pval_Oring p N g (θ x))) = θ x := by

@@ -558,4 +558,322 @@ inline `example : ¬ Slot_x degenerate…` per slot. Closure manifest (IB-G12): 
 identifier in each displayed Prop → its built decl path, grep-verified (the
 standing CLOSURE MANIFEST rule from wave-4 round 7).
 
-<!-- STAGE-4 CONTINUES -->
+---------------------------------------------------------------------------
+## 4. UNIT SPLIT (84 units on the default path: IB-A* dictionary 12 · IB-B* roster
+16 · IB-C* solve 6 · IB-D* classifier/fibers 19 (+2 gated: D20/D21) · IB-E* ZpBridge
+11 (E0–E10) · IB-F* pack/assembly 7 · IB-G* slots 13; pre-approved splits inside
+A9/A11/B5/E0/E1/E4 absorb overruns without new ids). Difficulty: R = routine-opus, H = hard-fable, ADJ = adjudication.
+Sizes are expected LINES OF PROOF (statements excluded); anything that grows past
+~40 splits per the standing rule. New files: MovesU/BridgeDict.lean (A),
+BridgeRoster.lean (B), BridgeSolve.lean (C), BridgeTrees.lean + BridgeClassifier.lean
+(D), BridgeZp.lean (E), BridgeKernels.lean + BridgeMk.lean (F), Slots*.lean (G).
+Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
+
+### Group A — dictionaries (†1–†3)
+- **IB-A1** `sigmaToFT`/`ftToSigma` + degree laws + roundtrips. Deps: —. Sketch:
+  Subtype.ext, Multiset.map_id tricks. R, ~15.
+- **IB-A2** `vmap_roundtrip` : (vmap C.T σ).map (fun v => ((vEquiv v).1.1, (vEquiv v).1.2))
+  = σ.1 (ℕ-valued pairs). Deps: —. Sketch: replay vmap_deg_sum's hcongr/hattach
+  (DefsCarriers.lean:51–69) with the pair-valued reader. H, ~30.
+- **IB-A3** `vmap_injective`. Deps: A2. Sketch: congrArg the roundtrip. R, ~8.
+- **IB-A4** `sigmaOfSigs` : s ∈ C.chain.Sigmas → SplittingType n (data + membership).
+  Deps: —. Sketch: map through vEquiv; positivity ℕ+; degree via vdeg_spec +
+  sig_exact. R, ~20.
+- **IB-A5** `vmap_sigmaOfSigs` : vmap C.T (sigmaOfSigs s hs) = s. Deps: A4. Sketch:
+  the reverse roundtrip; attach-of-map collapse (Multiset.attach_map_val +
+  map_congr; induction-free). H, ~35.
+- **IB-A6** `vmapEquiv : SplittingType n ≃ {s // s ∈ C.chain.Sigmas}` +
+  `vmap_mem` reuse. Deps: A3, A5. R, ~12.
+- **IB-A7** `sum_vmap_eq_sum_Sigmas` (†1c), CommMonoid-valued. Deps: A6. Sketch:
+  Finset.sum_nbij' univ→Sigmas. R, ~15.
+- **IB-A8** `monicBox_empty_of_level0` (n ≥ 1) + `box0_unique`. Deps: —. Sketch:
+  trivial-ring polynomial ext (replay RealInstanceV2.stratumCount_level0's core).
+  R, ~15.
+- **IB-A9** `boxPolyEquiv` (0 < N) (†2). Deps: A8 (edge doc only). Sketch: toFun
+  Box.toPoly with Monic/natDegree proofs (nontrivial ring); invFun coeff-read;
+  two ext lemmas. H, ~40 — pre-approved split: A9a (toPoly lands in monicBox),
+  A9b (the equiv laws).
+- **IB-A10** digit-sum identity (†3a, ℕ-level): v < p^N → Σ_{k<N} ((v/p^k)%p)·p^k = v.
+  Deps: —. Sketch: induction on N with div_add_mod telescoping. H, ~35.
+- **IB-A11** `boxEquivD` (0 < N) + `boxeq_digits` law (†3b). Deps: A10. Sketch: val
+  digits through digitIdx layout; ZMod cast of A10; extraction direction by
+  val-uniqueness < p^N. H, ~40 — split A11a equiv, A11b law if needed.
+- **IB-A12** `boxProj`-compat (†3c): boxProj ↔ Polynomial.map castHom under (†2);
+  digit truncation under (†3). Deps: A9, A11. R, ~25.
+
+### Group B — the tautological roster (†4)
+- **IB-B1** `one_mem_consumedDeltas` (†4a). Deps: —. Sketch: iterate-monotone seed
+  membership. R, ~12.
+- **IB-B2** `hStateNe` DERIVATION ATTEMPT (†4b): read RS1Bundle/LedgerIV for any
+  field forcing Nonempty (State e); if found, prove; else RETURN the exact missing
+  statement for the BridgePre row. ADJ, report-unit.
+- **IB-B3** `bridgeAct` + `bridgeAct_ok : g ∈ OKat q₀ → bridgeAct g q₀ = evalAt …`.
+  Deps: —. R, ~8.
+- **IB-B4** `Fintype (LegRoster C.T e)` + DecidableEq (Classical). Deps: —. Sketch:
+  Sigma-Fintype over instances; `Finset.attach` for the splitOuts subtype;
+  decidable continuing via Bool isRight. R, ~20.
+- **IB-B5** `card_legRoster` (†4d leg case): Fintype.card (LegRoster C.T e) =
+  Σ τ, Σ o ∈ splitOuts, Outcome.c. Deps: B4. Sketch: card_sigma twice + the
+  continuing-positions count = filter length (countP route). H, ~40.
+- **IB-B6** JIdx carrier def + Fintype + `card_JIdx` = Σ Σ card cells. Deps: —.
+  Sketch: same shape as B5, one level simpler. R, ~25.
+- **IB-B7** WIdx = Finset-coe Fintype + card = Sh.card. Deps: —. R, ~6.
+- **IB-B8** `bridgeRegData` — the data skeleton (all fields except bsplit/betaLeg).
+  Deps: B1, B2/BridgePre, B3, B4, B6, B7. Sketch: §3.3 display; instances wired.
+  R, ~35 (mostly `where` lines).
+- **IB-B9** bsplit/betaLeg dite fields + well-definedness lemmas (value independent
+  of the hdet proof — proof irrelevance is definitional for Prop binders; the
+  lemma is `dif_pos` rewriting). Deps: B8. R, ~15.
+- **IB-B10** `bridgeRegPin` — the rfl-pin assembly (blk/st/depth/K/iota/bterm/act/
+  legSt/legEquiv/legSt_pin/blockDim/shape/cell/leg pins). Deps: B8, B5, B6. Sketch:
+  Equiv.refl + rfl + the card lemmas. R, ~30.
+- **IB-B11** `Jcell_pin` image equality (†4c). Deps: B6, B10. Sketch: Finset.ext +
+  mem_image/mem_biUnion chase. H, ~35.
+- **IB-B12** `W_pin` image equality. Deps: B7. Sketch: univ.image over coe =
+  Finset.image on Sh (`Finset.image_coe_univ`-style; attach). R, ~15.
+- **IB-B13** `bsplit_pin`/`betaLeg_pin`. Deps: B9. Sketch: dif_pos + rfl. R, ~15.
+- **IB-B14** `bridgeRegData_pool_mem` sanity: p^1 ∈ Pool; RegP's binding shape at
+  the roster (non-vacuity display: entryList ≠ ∅). Deps: B8. R, ~15.
+- **IB-B15** PARTIAL RegP transport at all-active pools (†4e): from C.chain
+  (cl1/pools_e0/legs_read/rsh_interp) prove the (r2) clauses of
+  `RegP (bridgeRegData …)` for entries in the ALL-ACTIVE locus, and (r1) for the
+  blocks the chain's PoolHyp covers; RETURN the exact residual quantifier gap.
+  H, ~40 — expected PARTIAL by design; the unit's deliverable is proof + gap spec.
+- **IB-B16** the junk-block gap RECORD (†4e): machine-readable docstring unit — the
+  precise sublocus where full (r1) exceeds the note (MOVES 12208–12210 cite), no
+  proof obligations. R, doc-only.
+
+### Group C — solve + checksum (†10)
+- **IB-C1** `bridgeSolve C hdet` + `r_is_solve` (rfl) + `bridgeSolve_ok`
+  (OKat membership at primes via rsh_interp). Deps: A6. R, ~15.
+- **IB-C2** per-prime evaluation-1 (†10b ii): ∀ p prime,
+  evalAt p (Σ s ∈ Sigmas, Rsh s) = 1. Deps: C1. Sketch: map_sum on OKat +
+  rsh_interp/rs1_equates/x3_total; ℝ-cast down to ℚ (Rval is ℝ-valued —
+  the cast-back needs rsh_interp's ℚ→ℝ equality read injectively). H, ~35.
+- **IB-C3** infinite-roots vanishing: g : RatFunc ℚ, (∀ p prime, g ∈ OKat p ∧
+  evalAt p g = 0) → g = 0. Deps: —. Sketch: num.eval p = 0 at infinitely many
+  cast-primes; eq_zero_of_infinite_isRoot; num_eq_zero. H, ~35 (archaeology:
+  RatFunc.num/denom eval API vs the OKat presentation).
+- **IB-C4** `rs4_checksum_bridge` (†10b): Σ σ, bridgeSolve.R σ = 1. Deps: A7, C2,
+  C3. Sketch: apply C3 to (Σ R) − 1. R, ~20.
+- **IB-C5** `bridgeSolveSeam` assembly given `series_tie` row. Deps: C1. R, ~8.
+- **IB-C6** consistency display (optional gate): at n = 2 the bridgeSolve values at
+  q' = 2, 3 match the OM UniformCapstone gates (1/3,1/3,1/3; 1/4,3/8,3/8) — a
+  `decide`/norm_num seal ONCE an n = 2 UCarriers instance exists. ADJ (gated on
+  the S-area's n = 2 pack), ~20.
+
+### Group D — classifier, fibers, seam, pins (†5–†9)
+- **IB-D1** VERIFY-AND-WIRE `pol`/`Tm` from MovesSp SP8 CanTreeModel: confirm
+  (n, N)-genericity; export `bridgePol p`, `bridgeTm p n N`. ADJ, report+~15.
+- **IB-D2** chart semantics check: `chartWitness` vs `Realizes`'s read positions
+  (does the model read coefficient i's digits at slots digitIdx i k?); pin the
+  choice; document against (†3)'s layout. ADJ, report+~10.
+- **IB-D3** `Tree σ` carrier def (†5) + DecidableEq (Classical) + `lvl`. R, ~12.
+- **IB-D4** `vt`/`vt_inj`/`vt_typemult`/`vt_thr` (all rfl-level). Deps: D3. R, ~10.
+- **IB-D5** `TransferRow n p` STRUCTURE DEF (†6) — statement-only unit; fields
+  realizes_transfer + fiber_transfer; docstring cites TREE-N/Thm 2.1 +
+  MovesT.treeN_stable (fenced sibling; NOT consumed). ADJ (statement fence:
+  new named row), statement-only.
+- **IB-D6** fibering σ-uniqueness (†7u): two typed trees fibering at (N, f) have
+  equal vt hence equal σ. Deps: D3, D4. Sketch: vtree_eq_of_fiberAt +
+  typemult + Subtype.ext. R, ~15.
+- **IB-D7** `bridgeCanonical` def (†7) + `canonical_pin` (both directions). Deps:
+  D3, D6, A11. Sketch: dif unfolding; forward = choose + uniqueness; backward =
+  ∃-intro. H, ~40.
+- **IB-D8** `canonical_stable` from TransferRow. Deps: D7, D5, A12. Sketch: unpack
+  witness at N, transfer fiber + thr through N ≤ N'; N = 0 vacuous. H, ~30.
+- **IB-D9** `bridgeTrueType` def + uniqueness (†8u) + `lift_true`. Deps: E8
+  (lift_exists — group E), zfType def E9. Sketch: dif + choose; uniqueness via one
+  lift. H, ~30.
+- **IB-D10** trueType N=0 edge disposition (†8 tail): prove trueType 0 = none OR
+  verify no consumer reads it and record. ADJ, ~20.
+- **IB-D11** `bridgeClassifierSpec` assembly (canonical/trueType/stable/
+  teichmuller) + `o3_teichmuller` rfl. Deps: D7–D10. R, ~10.
+- **IB-D12** `mass` def (†9) + `mass_ne_top`-style sanity + lvl edge (thr = 0).
+  Deps: D3. R, ~15.
+- **IB-D13** `thrSlice` from `slice_finite` row + `mem_slice_iff`/`slice_exhausts`.
+  Deps: D3. Sketch: Set.Finite.toFinset spec. R, ~12.
+- **IB-D14** `bridgeFibers : FiberSeries n p X` assembly. Deps: D11–D13. R, ~10.
+- **IB-D15** `vt_real` from TransferRow (carrier realizability at lvl → any N ≥ thr,
+  0 < N). Deps: D3, D5. Sketch: transfer from lvl T. R, ~15.
+- **IB-D16** `vt_surj` (†5): realized V of typemult σ.1, thr ≤ N → carrier
+  membership (transfer DOWN to lvl V) → preimage. Deps: D5. R, ~20.
+- **IB-D17** `bridgeTreeOf`/`thr_le`/`treeOf_pin` via canonical_pin choice. Deps:
+  D7. R, ~20.
+- **IB-D18** `bridgeTreePin` assembly (pol/Tm/chart/chart_inj := chartWitness_inj/
+  boxeq := A11/boxeq_digits/vt*/canonical_pin/treeOf_pin). Deps: D1–D17. R, ~15.
+- **IB-D19** OPTIONAL ENRICHMENT (gated, Q1): the OM agreement seam statement
+  `omClassify_agree : ∀ N f, (bridgeCanonical N f).isSome →
+   decode-of-OM.classify agrees` — statement-only + n = 2 sanity instance. ADJ.
+- **IB-D20/D21** OPTIONAL count_tie DISCHARGE CHAIN (gated, Q7): D20 = the
+  instance-data pack (CellAssign/SiteLedger/TreeScaffold suppliers at (Tm, chart))
+  as a typed structure; D21 = count_tie from MovesT.treeN + sibjc rows + D20.
+  ADJ then H; NOT on the default path.
+
+### Group E — ZpBridge (†11) — E0 RUNS FIRST; E5–E7 GATED ON Q2
+- **IB-E0** THE COUNTERMODEL (†11f), FIRST: compile h := X² − p²c at p = 3, c = a
+  non-square unit (e.g. −1 when p ≡ 3 mod 4); prove IsLocalRing (AdjoinRoot h),
+  ramIdx h = 1, resDeg h = 1, natDegree = 2; conclude ¬∃ (the zf_factor conjuncts
+  3∧4 at g := h) — OR refute this blueprint's analysis with the exact Mathlib
+  computation. Deliverable either way is a compiled artifact + adjudication
+  memo. H, ~60 (own file, quarantine-adjacent; split E0a locality, E0b ramIdx,
+  E0c resDeg, E0d assembly if needed).
+- **IB-E1** ℤ_p[X] UFD wiring + `monicFactors` def + `monicFactors_prod` (†11a).
+  Deps: —. H, ~40 — split E1a (def + factor monic), E1b (prod law).
+- **IB-E2** factors irreducible in ℤ_p[X] + degree-positive. Deps: E1. R, ~15.
+- **IB-E3** Gauss transfer (†11b) + `IsFractionRing ℤ_[p] ℚ_[p]` VERIFY. Deps: E2.
+  H, ~30 (archaeology; if the instance is absent this unit's deliverable is the
+  instance).
+- **IB-E4** IP-1 (†11c): IsLocalRing (AdjoinRoot h). Deps: E3. H, ~40 — split E4a
+  (henselian route probe: which Mathlib instances exist), E4b (proof). This
+  discharges the ZpBridge residue item (ii) of DefsLedger's docstring.
+- **IB-E5** `zf_pos` (†11e) [GATED Q2 if the repair changes ramIdx]. Deps: E4.
+  H, ~30.
+- **IB-E6** pointwise e·f = deg (†11g) AT THE REPAIRED DEFS [GATED Q2]. Sketch:
+  sum_ramification_inertia at the field's valuation ring; locality collapses the
+  sum. H, ~40; ADJ first (the repair's exact statement).
+- **IB-E7** `zf_factor` assembly [GATED Q2]. Deps: E1–E6. R, ~25.
+- **IB-E8** `lift_exists` (†11d). Deps: —. R, ~25.
+- **IB-E9** `zfType` def + `bridgeZpBridge` assembly. Deps: E1, E5–E8, D9. R, ~15.
+- **IB-E10** the (†8u)-feeding lemma: for a monic lift g, zfType g determines σ
+  uniquely (Subtype.ext transport) + the zpDmass laws come free (DefsLedger).
+  Deps: E9. R, ~10.
+
+### Group F — packs + assembly
+- **IB-F1** `BridgePre` structure (hdet, hStateNe) — statement-only + the two
+  warrant docstrings + ratification flags. ADJ.
+- **IB-F2** `BridgeKernels` structure (†3.7 rows; exact dependency order fixed
+  here) — statement-only; every row's docstring cites its note display + owner +
+  fenced status. ADJ (this is the area's honesty ledger — Codex-audit magnet).
+- **IB-F3** `bridgeCapstoneLedger` assembly. Deps: C4, C5, D14, D17, F2. R, ~20.
+- **IB-F4** `mkUInstance` (G3). Deps: ALL construction units. R, ~20.
+- **IB-F5** `theoremU_fired`. Deps: F4. R, ~15.
+- **IB-F6** cl7_slice wiring (slice_bound row → UInstance field). Deps: F2. R, ~5.
+- **IB-F7** OPTIONAL n = 2 enrichment: discharge env_tendsto at n = 2 from OM
+  `hExhaustP` through the D19 agreement seam. ADJ; NOT on the default path.
+
+### Group G — the thirteen slots (§3.8)
+- **IB-G1** CInterface-carrier skeleton for the REL family (from the parked MovesR
+  draft; statement-only). ADJ.
+- **IB-G2** Slot_rel1 + Slot_rel2a/b/d/e formulations over G1. ADJ→H,
+  statement-only (5 displayed Props; the p^N-torsion trap documented).
+- **IB-G3** Slot_rel3 disposition (†3.8 trap). ADJ.
+- **IB-G4** Slot_rs0Lump. ADJ→H, statement-only.
+- **IB-G5** Slot_trackRule (MovesX vocabulary; must be CONSISTENT with
+  K7.track_restarts's (t3) — same Pop counters). ADJ→H.
+- **IB-G6** Slot_dnLattice (K7.Dden-keyed). ADJ→H.
+- **IB-G7** Slot_m1m5Echo (M1_bridge.md raw material). ADJ→H.
+- **IB-G8** Slot_x1aDict (GMN-axiom-citing; faithfulness entry cross-ref). ADJ→H.
+- **IB-G9** Slot_m4bConst (MovesV; Order0Perimeter fence respected). ADJ→H.
+- **IB-G10** Slot_jcInvHist (complement of cl19_rep; no overlap — the two
+  statements' conjunction must equal CL-19's display). ADJ→H.
+- **IB-G11** non-vacuity audit: per-slot degenerate falsifier. H, ~40 total.
+- **IB-G12** closure manifest (identifier → decl table, grep-verified). R, doc.
+- **IB-G13** `theoremU_bridged` (consume theoremU at the 13 Slot_* Props). R, ~15.
+
+---------------------------------------------------------------------------
+## 5. RISKS (countermodel-first ledger — each runs BEFORE its group's provers)
+
+- **R1 (CRITICAL, blueprint-level finding): `ZpBridge` is likely UNINSTANTIABLE as
+  typed.** zf_factor's conjuncts 3+4 force the (ramIdx, resDeg) aggregate to match
+  factor degrees, but `MovesT.ramIdx/resDeg` read `Ideal.ramificationIdx/inertiaDeg`
+  AT `AdjoinRoot h` — a possibly NON-MAXIMAL order. Countermodel §3.6 (†11f):
+  h = X² − p²c, AdjoinRoot local with (ramIdx, resDeg) = (1,1) ≠ (1,2) = true
+  invariants, aggregate {1} ≠ {2}. Unit IB-E0 (FIRST). If confirmed: Q2 repair
+  (statement change on RATIFIED files) before ANY ZpBridge prover runs. If refuted:
+  the memo shows which Mathlib convention saves it and E5–E7 un-gate.
+- **R2: `vt_real` false over the naive all-VTrees carrier** — unrealizable junk
+  trees of correct typemult. Mitigated by (†5) carrier design; residual check:
+  IB-D3's docstring must display the failure mode; no countermodel unit needed
+  once realizability is IN the carrier (vt_real reduces to the transfer row).
+  If a prover finds even the carrier version false → the TransferRow is
+  mis-scoped (report, adjudication).
+- **R3: full RegP transport is FALSE** (junk-block dets at wild pools; MOVES
+  12208–12210). Pre-refuted by note read; IB-B15 is scoped PARTIAL from birth and
+  IB-B16 records the gap. Failure mode guarded: a prover "fixing" B15 by weakening
+  RegP would violate the statement fence — RegP is Defs.lean:209, untouchable.
+- **R4: the checksum transport's cast chain** (†10b): rsh_interp equates ℚ-cast-ℝ
+  values; recovering the ℚ-level 1 needs Rat.cast injectivity — if the chain's ℝ
+  detour blocks, the repair is an added ℚ-level field… NO: derive
+  `(evalAt p Σ : ℚ) = 1` from `((… : ℚ) : ℝ) = 1` by exact_mod_cast — safe. Risk
+  retired at blueprint time; noted for the prover.
+- **R5: sigma-uniqueness edge at N = 0 for trueType** (†8): the "no σ at N = 0"
+  proof needs two lifts with distinct types — needs n ≥ 2 (hn binder) and an
+  explicit pair (X^n vs Eisenstein). If painful, IB-D10's fallback (consumer
+  audit) is pre-approved. Countermodel-flavored unit: IB-D10 itself.
+- **R6: slice_finite could be false even over the realizable carrier** if
+  infinitely many realizable trees share thr ≤ N (they'd have distinct fibers in a
+  finite box only if fibers are nonempty and disjoint — realizability gives
+  nonempty; disjointness across DISTINCT trees is vtree_eq_of_fiberAt's
+  contrapositive ⇒ ≤ p^{nN} trees: **slice_finite may be PROVABLE outright!**).
+  Pre-prover probe unit (add to IB-D13): attempt the pigeonhole proof
+  (inj Tree → nonempty disjoint fibers → card ≤ box) BEFORE wiring the row; if it
+  lands, slice_finite LEAVES BridgeKernels and slice_bound's row shrinks to the
+  p-uniformity claim. Upside risk — worth one fable-day.
+- **R7: SP8 CanTreeModel may be n = 2-specific** (IB-D1). If so, the general Tm is
+  a designer round (MovesD owns TreeModel; the constructor may need the MovesD
+  policy machinery at general n) — schedule slack; D-group statements are Tm-
+  parametric so only D1 blocks.
+- **R8: multiset attach-map lemmas (A2/A5)** are the classic Lean quagmire;
+  pre-approved fallback: restate via `Multiset.pmap` or induction on the
+  underlying list with Quot.induction. Bounded-repair rule applies (≤3 attempts,
+  then re-sketch).
+- **R9: the thirteen-slot formulations repeating the MovesR failure** (round-1:
+  15/6 → parked). Mitigation baked in: G-units are statement-only, CInterface-
+  parametric, each with the closure manifest + non-vacuity falsifier + Codex
+  audit BEFORE any consumer lands; rel3 explicitly allowed to remain bare (G3).
+
+## 6. ORCHESTRATOR QUESTIONS (decisions this blueprint cannot make)
+
+- **Q1 (interface, binds D-group):** ratify ARCHITECTURE B — `canonical` defined
+  as the VTree-fibering verdict (canonical_pin definitional, OM engine tied in via
+  optional agreement units D19/F7) — over A (OM classify + decode with
+  canonical_pin as a permanent open row). Recommendation: B (§3.4 rationale).
+  Affects the OM-tie area if one exists.
+- **Q2 (statement fence, blocks E5–E7):** upon IB-E0 confirming R1: sign off the
+  repair path for `MovesT.ramIdx/resDeg` (re-point to the integral closure /
+  valuation-ring invariants) + the corresponding `ZpBridge.zf_factor` re-read.
+  Both files are RATIFIED; the GOLF note already queues the pointwise retype.
+  Alternatives: (a) repair defs (recommended — fixes the semantics everywhere),
+  (b) rescope zf_factor to the maximal-order locus (weakens the ℤ_p clause of
+  theoremU — bad), (c) keep bridge uninstantiated (kills the area).
+- **Q3 (named premises, F1):** ratify the two BridgePre rows — `hdet`
+  (symbolic DetHyp; = (r1)'s symbolic face, derivable from (REG-p) at any one
+  prime) and `hStateNe` (pending IB-B2's derivation attempt). Both are
+  statement-gaining-named-hypothesis events under the campaign's scoping
+  authority; flagged here for ratification.
+- **Q4 (area boundary):** confirm that UCarriers/KernelCarriers/Cl7Kernel/
+  UpstreamTyped construction (incl. the n = 2 real pack over N2Shape) belongs to
+  the sibling S/X-area blueprints, and that `SolveData` construction (IB-C1) is
+  OWNED HERE. Also: who owns `KT : UpstreamTyped`'s discharge — it is not
+  consumed by mkUInstance but is a theoremU binder.
+- **Q5 (sequencing):** should the thirteen-slot formulations (G-group) wait for
+  wave-D / MovesR unparking (the REL family's carrier), or proceed now with the
+  CInterface-parametric shape? Recommendation: proceed statement-only now (they
+  gate nothing on the construction path), Codex-audit before any proof units.
+- **Q6 (row ownership):** cl6 (PolyGeomLaws), cl11_ksub (KsubM1C1T), cl19_rep —
+  carried as BridgeKernels rows here, but they are S-corpus-shaped claims; if the
+  S-area can PROVE any at the real pack (cl11_ksub is a finite roster check at
+  n = 2), the row moves out of the pack. Decide per-row after the S-area
+  blueprint lands.
+- **Q7 (scope):** pursue the count_tie discharge chain (IB-D20/D21 — needs
+  HC-2-flavored CellAssign/SiteLedger/TreeScaffold instance data) THIS campaign,
+  or keep count_tie a named row? Recommendation: keep the row; spec D20's
+  structure statement-only so wave-D can land it.
+- **Q8 (unit budget):** IB-E0's outcome may add 2–4 repair units (the def
+  re-point + downstream re-proof of UnramifiedOfDeg/HenLift consumers in MovesT)
+  — pre-authorize the overflow or re-scope.
+
+## 7. EXECUTION NOTES (for the prover fleet)
+
+Wave order within the area: [E0, B2, D1, D2, R6-probe] (adjudication/probe
+front-runners) → A-group ∥ B-group ∥ C-group → D-group → E-group (post-Q2) →
+F-group → G-group (anytime, statement-only). Every unit prompt carries: the
+statement-fence rule, the 64k staged-write discipline, `lake build` (never
+`lake env lean`) for green records, `#print axioms` per landed theorem
+(Lean-core expected everywhere in this area — no declared axiom is consumed on
+the construction path), and the standing rule that comments are unverified claims.
+File-level acceptance: BridgeMk.lean compiles with mkUInstance + theoremU_fired
+sorry-free, footprint Lean-core; the packs' rows are the ONLY hypotheses beyond
+theoremU's own; MANIFEST.json gains a BRIDGE section mirroring §4's ids.
+

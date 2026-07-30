@@ -106,8 +106,7 @@ open UnramifiedBase in
 /-- `span{p^N} = ⊥` since `p^N = 0` (`isNilpotent_natCast_p`). -/
 theorem span_p_pow_N_eq_bot (hN : 0 < N) :
     Ideal.span {((p : ℕ) : Oring p N g) ^ N} = (⊥ : Ideal (Oring p N g)) := by
-  rw [isNilpotent_natCast_p p N g hN]
-  exact Ideal.span_singleton_eq_bot.mpr rfl
+  rw [isNilpotent_natCast_p p N g hN, Ideal.span_singleton_eq_bot]
 
 open UnramifiedBase in
 /-- `pval x = N ↔ x = 0`: the top valuation is attained only at `0` (since `span{p^N} = ⊥`). -/
@@ -116,8 +115,7 @@ theorem pval_eq_N_iff (hN : 0 < N) (x : Oring p N g) :
   constructor
   · intro h
     have hmem := mem_span_p_pow_pval p N g x
-    rw [h, span_p_pow_N_eq_bot p N g hN, Ideal.mem_bot] at hmem
-    exact hmem
+    rwa [h, span_p_pow_N_eq_bot p N g hN, Ideal.mem_bot] at hmem
   · intro h; subst h; exact pval_zero p N g
 
 open UnramifiedBase in
@@ -153,14 +151,7 @@ theorem mem_span_p_of_mul_p_pow_eq_zero (hgm : g.Monic) (hN : 0 < N) (hm : 0 < g
     w ∈ Ideal.span {((p : ℕ) : Oring p N g)} := by
   by_contra hmem
   have hunit : IsUnit w := (isUnit_iff_notMem p N g hgm hN hm hgirr w).mpr hmem
-  obtain ⟨u, hu⟩ := hunit
-  have hpv : ((p : ℕ) : Oring p N g) ^ v = 0 := by
-    calc ((p : ℕ) : Oring p N g) ^ v
-        = (↑u⁻¹ * ↑u) * ((p : ℕ) : Oring p N g) ^ v := by rw [Units.inv_mul, one_mul]
-      _ = ↑u⁻¹ * (w * ((p : ℕ) : Oring p N g) ^ v) := by rw [hu]; ring
-      _ = ↑u⁻¹ * 0 := by rw [hw]
-      _ = 0 := mul_zero _
-  exact (p_pow_ne_zero_of_lt p N g hgm hN hm hgirr hv) hpv
+  exact p_pow_ne_zero_of_lt p N g hgm hN hm hgirr hv (hunit.mul_right_eq_zero.mp hw)
 
 open UnramifiedBase in
 /-- **Witness-independence of the unit residue** (for `x ≠ 0`). Any two witnesses `u₁ u₂` with
@@ -174,12 +165,11 @@ theorem resHom_witness_indep (hgm : g.Monic) (hN : 0 < N) (hm : 0 < g.natDegree)
     resHom p N g hgm hN u₁ = resHom p N g hgm hN u₂ := by
   have hdiff : (u₁ - u₂) * ((p : ℕ) : Oring p N g) ^ (pval_Oring p N g x) = 0 := by
     rw [sub_mul, h1, h2, sub_self]
-  have hmem := mem_span_p_of_mul_p_pow_eq_zero p N g hgm hN hm hgirr
-    (pval_lt_N_of_ne_zero p N g hN hx) hdiff
   have hker : u₁ - u₂ ∈ RingHom.ker (resHom p N g hgm hN) := by
-    rw [ker_resHom_eq_span_p]; exact hmem
-  rw [RingHom.mem_ker, map_sub, sub_eq_zero] at hker
-  exact hker
+    rw [ker_resHom_eq_span_p]
+    exact mem_span_p_of_mul_p_pow_eq_zero p N g hgm hN hm hgirr
+      (pval_lt_N_of_ne_zero p N g hN hx) hdiff
+  rwa [RingHom.mem_ker, map_sub, sub_eq_zero] at hker
 
 open UnramifiedBase in
 /-- **`resUnitResidue` equals the residue of ANY witness** (for `x ≠ 0`) — the canonicity
@@ -237,8 +227,7 @@ theorem childResidualExt_natDegree_lt (hgm : g.Monic) (hN : 0 < N)
   by_cases h0 : childResidualExt p N g hgm hN Φ μ h = 0
   · rw [h0, Polynomial.natDegree_zero]; exact hμ
   · have hdeg := childResidualExt_degree p N g hgm hN Φ μ h
-    rw [Polynomial.degree_eq_natDegree h0, Nat.cast_lt] at hdeg
-    exact hdeg
+    rwa [Polynomial.degree_eq_natDegree h0, Nat.cast_lt] at hdeg
 
 /-- The residual is `0` at `μ = 0` (empty sum) — the boundary consistency check. -/
 theorem childResidualExt_zero (hgm : g.Monic) (hN : 0 < N)

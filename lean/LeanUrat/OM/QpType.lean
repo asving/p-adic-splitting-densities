@@ -308,9 +308,7 @@ theorem mem_maximalIdeal_of_one_le_zmodValuation {N : ℕ} (hN : 0 < N) {x : ℤ
       rw [← PadicInt.ker_toZModPow]; exact RingHom.mem_ker.mpr hy
     exact Ideal.span_singleton_le_span_singleton.mpr (dvd_pow_self _ hN.ne') hker
   · obtain ⟨hx0, heq, -⟩ := valuation_eq_of_toZModPow_ne_zero p hy
-    have h1 : 1 ≤ x.valuation := by omega
-    have := (PadicInt.mem_span_pow_iff_le_valuation x hx0 1).mpr h1
-    simpa [pow_one] using this
+    simpa [pow_one] using (PadicInt.mem_span_pow_iff_le_valuation x hx0 1).mpr (by omega)
 
 /-! ## Block 3b — the axiom-free Eisenstein theorem on the wild gate stratum -/
 
@@ -325,15 +323,12 @@ theorem isEisensteinAt_of_wildGate {f : ℤ_[p][X]} (hf : f.Monic) (hdeg : f.nat
     omega
   constructor
   · rw [hf.leadingCoeff]
-    intro hmem
-    exact (Ideal.IsMaximal.ne_top inferInstance)
-      (Ideal.eq_top_of_isUnit_mem _ hmem isUnit_one)
+    exact (Ideal.ne_top_iff_one _).mp (Ideal.IsMaximal.ne_top inferInstance)
   · intro n hn
     rw [hdeg] at hn
     interval_cases n
     · rw [PadicInt.maximalIdeal_eq_span_p]
-      have hm := (PadicInt.mem_span_pow_iff_le_valuation _ ha0 1).mpr (by omega)
-      simpa [pow_one] using hm
+      simpa [pow_one] using (PadicInt.mem_span_pow_iff_le_valuation _ ha0 1).mpr (by omega)
     · exact h1
   · rw [PadicInt.maximalIdeal_eq_span_p, Ideal.span_singleton_pow]
     intro hmem
@@ -362,8 +357,7 @@ theorem wildFiber_irreducible {f : ℤ_[p][X]} (hf : f.Monic) (hdeg : f.natDegre
   by_cases hc : f.coeff 1 = 0
   · rw [hc]; exact Ideal.zero_mem _
   · rw [PadicInt.maximalIdeal_eq_span_p]
-    have hm := (PadicInt.mem_span_pow_iff_le_valuation _ hc 1).mpr h1
-    simpa [pow_one] using hm
+    simpa [pow_one] using (PadicInt.mem_span_pow_iff_le_valuation _ hc 1).mpr h1
 
 /-! ## Block 3c — the fiber link: the Wave-1 gate fiber forces the Eisenstein conditions
 
@@ -447,14 +441,12 @@ theorem wildGateFiber_valuation {N : ℕ} (hN0 : 0 < N) (hN2 : 2 ≤ N) {f : ℤ
       norm_num [lineAt, slopeQ, gateSide]
     rw [hhalf] at hline
     by_contra hlt
-    rw [not_le] at hlt
-    have h00 : vOf p fbox 1 = 0 := by omega
-    rw [h00] at hline
+    rw [not_le, Nat.lt_one_iff] at hlt
+    rw [hlt] at hline
     norm_num at hline
   -- decode through toBox
   have hvOf : ∀ i, vOf p fbox i
-      = PadicLift.zmodValuation p N (PadicInt.toZModPow N (f.coeff i)) := by
-    intro i
+      = PadicLift.zmodValuation p N (PadicInt.toZModPow N (f.coeff i)) := fun i => by
     simp only [vOf, hfbox, PadicLift.toBox_val, Polynomial.coeff_map]
   rw [hvOf 0] at hv0
   rw [hvOf 1] at hv1
@@ -515,9 +507,8 @@ noncomputable def trivialQpFactorization : QpFactorization p (X : ℤ_[p][X]) wh
 unramified degree-1 type. -/
 theorem qpType_trivialQpFactorization :
     qpType p (trivialQpFactorization p) = ⟨{((1 : ℕ), (1 : ℕ))}⟩ := by
-  have h : qpType p (trivialQpFactorization p)
-      = ⟨([efOf p (trivialFactorData p)] : List (ℕ × ℕ))⟩ := rfl
-  rw [h, efOf_trivialFactorData]
+  show (⟨([efOf p (trivialFactorData p)] : List (ℕ × ℕ))⟩ : FactorizationType) = _
+  rw [efOf_trivialFactorData]
   rfl
 
 /-! ## Block 5 — axiom census (this wave declares NO axiom; everything must be core-only) -/

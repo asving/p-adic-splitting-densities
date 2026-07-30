@@ -485,3 +485,420 @@ them, cap := the closing-read bound with hcap a REAL proof (agreement below cap
 covers the closing read ⇒ equal verdicts); htau by per-branch case analysis. If
 the model's data do NOT discriminate, record and return the extension decision
 to the reviewer (Q7) — do not fake discrimination.
+
+---
+
+## 4. UNIT SPLIT (43 units; ids TV-A1 … TV-I2)
+
+Format per unit: id | statement | deps | sketch | difficulty | est. proof size.
+"adjudication" units produce a decision package (quoted evidence + option menu +
+blast radii + recommendation), never Lean proofs. Ratification-required units
+are marked [FENCE].
+
+### Cluster A — E5 rootSplit pair (5 units)
+
+TV-A1. Defs additions `TrackUniqOn` / `TrackRepOn` (MovesT/Defs.lean, §2.4
+  vicinity): `def TrackUniqOn (T) (χ) (trackOf) (g) : Prop := ∀ y ∈ rootCell χ g,
+  ∀ ν ν', T.child none ν y → T.child none ν' y → trackOf ν = trackOf ν' → ν = ν'`
+  and `TrackRepOn` = the (R) conjunct verbatim (E5:343-348). Owner-tag docstring
+  HC-2/D4R0K quoting MOVES 7112–7119. Additive only. deps: none.
+  routine-opus, ~15 lines.
+
+TV-A2. [FENCE — Q1] `fiber_root_split` restated: premises gain
+  `(hU : TrackUniqOn T χ trackOf g) (hR : TrackRepOn T χ trackOf g)`; the
+  internal `have hD4R0K … := by sorry` (:343-349) deleted;
+  `obtain ⟨hTrkUniq, hTrkRep⟩ := hD4R0K` replaced by the premises. E5 module
+  sorry-free, footprint Lean-core. deps: A1. routine-opus, ~10 changed lines.
+
+TV-A3. Ripple 1 — E8/E10: `treeExp` gains
+  `(hUR : ∀ g, TrackUniqOn T χ trackOf g ∧ TrackRepOn T χ trackOf g)` (the g is
+  produced inside the root leg; thread at the fiber_root_split call);
+  `perShape_law` (E10) threads the same row. Both re-proved; `#print axioms`
+  now Lean-core (sorryAx gone). deps: A2. hard-fable (E8 is a 600+ line file;
+  the change is localized but the rebuild is fragile), ~40 changed lines.
+
+TV-A4. Ripple 2 — E11 `treeN`, D12 `jc_multi`, the Defs ∀-closures
+  (`TreeExpFin`/`TreeNStmt`/`RS1GivenPackage` rows if they quote the premise
+  roster), MovesU/DefsLedger consumers (grep `treeExp\|TreeNStmt` first);
+  enumerated corpus sweep + AxChk footprint re-verification; MANIFEST/
+  PROJECT_STATE records (R3 executed). deps: A3. routine-opus, wide (~40 lines
+  across ~6 files).
+
+TV-A5. The first in-corpus `CellAssign` instance + necessity probe:
+  (a) n = 1 childless micro-carrier (child ≡ False, mem := (· = none) on the
+  some-side, branchSetOf ≡ ∅; ChildCover vacuous via the lemma "a monic linear
+  poly's normalizedFactors has no factor of count ≥ 2" — card computation);
+  updates BOTH fence-rule records (E5:339-342, E11:85-89) from "premise
+  uninhabitable" to "inhabited; pair vacuously true at the witness".
+  (b) the stray-countermodel ATTEMPT at n = 2: extend carrier A's tables with a
+  child at track X+1 on the g = (1,0) cell (where redPoly = (X+1)² forces
+  child_cover to demand one) and probe whether (U) or (R) can be broken while
+  every CellData/CellAssign law holds; deliverable = compiled negation OR the
+  exact blocking law, recorded at the TV-A1 docstrings. deps: A1 (runs before
+  nothing — the pair is hoisted, not proved; this unit is fence-record upgrade).
+  hard-fable, ~120 lines.
+
+### Cluster B — E11 treeN_stable (7 units; B1 runs BEFORE B6/B7)
+
+TV-B1. COUNTERMODEL-ATTEMPT (countermodel-first duty for the sorried universal
+  `treeN_stable` AS STATED): attempt to build (pol, Tat, χat, trackOf,
+  hcov : KBTotTower, Tr, hdet, hreal) where the fiber reads a level-≥ n·N digit
+  (e.g. mem of a chain history keyed to a deep coordinate). The heavy legs are
+  KBTot.ns_lumps (needs JetSetup/ScaleFaithful/NsLumpFamily witnesses per
+  realized H) and scale_grow (JetTower + Tendsto). Deliverable: compiled
+  negation IN QUARANTINE (see the H1 coexistence rule — treeN_stable's sorry
+  asserts the universal, so a compiled in-build countermodel derives False; if
+  the build succeeds, the negation lands in the SAME commit as the B7 repair)
+  OR the exact blocking law recorded at both fence sites. deps: none.
+  hard-fable, ~150 lines or blocked-record.
+
+TV-B2. Type the stability-input bundle `StableInputs` (E11-local, E-DEV-9
+  pattern: carrier typed in the consuming unit): fields (i) `chart_pin : ∀ N' h b,
+  ((χat N' h) b : ℕ) < n`; (ii) `child_cyl` : the (S-child) transfer law at
+  threshold Tr.thr n (∀ N ≥ thr, ∀ N' ≥ N, ∀ o ν x x', agreement below n·N →
+  (child o ν x ↔ child o ν x')); (iii) `ns_cyl` : the NsHalts transfer (typed
+  after unfolding NsHalts — if NsHalts is mem/child-composed, this field is
+  DERIVED and dropped, recorded). Owner-tag HC-2/D4R0K quoting MOVES 7566–7570.
+  deps: none. routine-opus, ~30 lines.
+
+TV-B3. `mem_cyl_of_child_cyl`: (S-child) ⟹ (S-mem) by induction on H.nodes
+  through mem_single/mem_snoc. Needs the last-node decomposition lemma
+  (`History.snoc_induction`: every History is oneNode ν h or H₀.snoc ν hν —
+  build from the nodes-list structure + root_iff; the G1 ToyPinHelpers
+  snoc_eq lemmas are the pattern). deps: B2. hard-fable, ~60 lines.
+
+TV-B4. redPoly/henPayload/roster level-1 transfer: under chart_pin, x =_{<n·N}
+  x' with N ≥ 1 gives redPoly χ x = redPoly χ x' (Finset.sum_congr, the E5
+  hredeq pattern), hence henPayload equality and normalizedFactors-roster
+  equality. deps: B2. routine-opus, ~25 lines.
+
+TV-B5. PrunedMem/duty transfer: `PrunedMem T H x ↔ PrunedMem T H x'` and the
+  clause-(i) duty conjunction transfer from (S-mem) + (S-ns) (IrrHalts x-free).
+  deps: B2, B3. routine-opus, ~30 lines.
+
+TV-B6. `treeN_stable_of_inputs : StableInputs … → TreeNStable Tat χat Tr` —
+  the six-clause fiberAt transfer assembled (template: E5's hconv :453-510;
+  clauses (i)/(ii)/(iv) via B5, (iii)/(vi) via B4, (v) x-free). deps: B3-B5.
+  hard-fable, ~80 lines.
+
+TV-B7. [FENCE — Q2] Restatement executed per ruling: `treeN_stable` gains the
+  named `StableInputs` hypothesis (option 2) OR KBTotTower gains the fields
+  (option 1); `treeN_stable := treeN_stable_of_inputs` at the premise;
+  `treeN_stable_stmt`/`TreeNStableStmt`/`RS1GivenPackage.tree_n` re-keyed;
+  sweep + records. E11 sorry-free. deps: B1 (must have run), B6, ruling Q2.
+  routine-opus, ~30 lines.
+
+### Cluster C — G1 mem_realizable pair (4 units)
+
+TV-C1. ADJUDICATION PACKAGE (both carriers, one package): quote the two in-file
+  BLOCKED-FALSE records verbatim; display the degree-collision derivation
+  (§3.C); enumerate options (i) HistoryCoherent child-keying guard `1 < e·g`
+  on the 4th-clause transition demand (task #44; blast radius = grep-enumerated
+  HistoryCoherent consumers incl. mem_realizable's three dischargers
+  F2_dictPtwise:58 / S2_sibFalse:210 / D2_eligGate:124), (ii) scope
+  TreeModel.mem_realizable (NOT recommended), (iii) F4 toy re-pin (cost: full
+  REV-8 table rebuild), (iv) status quo. Recommendation: (i). deps: none.
+  adjudication, no Lean.
+
+TV-C2. [FENCE — Q3] Execute the ruling on `toyModel.mem_realizable`: under
+  option (i), land the HistoryCoherent guard (MovesC/MovesD Defs edit per the
+  task-#44 record), then prove the field at the pinned tables (the node-level
+  legs are already walked lawful per the DO-1 census; the guarded transition
+  leg at e·g = 1 becomes vacuous). Re-run toyModel's dependent gates. deps: C1
+  ruling. hard-fable, ~100 lines (mostly the guard ripple).
+
+TV-C3. Same for `toyModelB.mem_realizable` + G1 module sweep + MANIFEST
+  RATIFY-T-2/RERATIFY-T-1 record updates + task #44 G1-half close-out.
+  deps: C2 (pattern). routine-opus, ~60 lines.
+
+TV-C4. The permanent corner record: compile `toy_corner_refuted` — the OLD
+  (unguarded) obligation's falsity at the toy head as a standalone ¬-lemma
+  citing HC1.S9a_ungated_corner_refuted. ORDERING: only after C2/C3 land (the
+  sorried fields must stop asserting the old Prop first). deps: C2, C3.
+  routine-opus, ~30 lines.
+
+### Cluster D — the F4 two-node sub-project (5 units)
+
+TV-D1. `StageCoreL bStage`: verify StageCoreL's field list (HC1, S9c vicinity),
+  then prove each law at `LeanUrat.MovesJ.U31.bStage` (the w-side laws copy from
+  bStage's own fields — the G1 ToyStageTransport primed-lemma pattern :116-129
+  shows the defeq route; the residual core laws are the real work).
+  deps: none. hard-fable, ~150 lines (600-line-precedent caution: split
+  D1a w-side / D1b R-side at execution if over budget).
+
+TV-D2. The `TransHyp bStage ψ₂ g Φ̂ e' h' z̄` package with 1 < e·g = 2: choose
+  the recorded HC1 quadratic ψ₂ over K2; discharge TransHyp's fields
+  (hg/hlift/…; re-verify the field list at HC1/DefsTower.lean:40). deps: D1
+  (shares the bStage law inventory). hard-fable, ~100 lines.
+
+TV-D3. Fire `S9c_coreAssembly bStage hσ th (by norm_num : 1 < 2)` → obtain σ₁;
+  prove the card gate `Nat.card ↥σ₁.K = 4`. If the ∃-conclusion under-determines
+  K-card, derive it from TransitionCoreL's degree/rep fields; if not derivable,
+  ESCALATE per Q8 (additive clause on S9c's conclusion, HC1 statement change).
+  deps: D1, D2. hard-fable, ~60 lines.
+
+TV-D4. Build the two Node literals (node 0: bStage-keyed, card K = 2, g = 1;
+  node 1: σ₁-keyed, card K = 4) + `twoNodeKcardH : History 2 F4` (nodes list +
+  nonempty + root_iff fields; §0 record #7's data columns). Replaces the :2248
+  sorry. deps: D3. routine-opus, ~50 lines.
+
+TV-D5. `toy_v8_wchain : ¬ HistLawful 2 toyN twoNodeKcardH`: identify the
+  violated HistLawful conjunct at the pinned literals (per record #7 the
+  K-card/g chain clause; NodeDataLawful's p-power clause PASSES at 4 = 2², so
+  the refutation must land on the chain roster — the prover intros HistLawful,
+  specializes to i = 0/1, and refutes by decide/norm_num). Wire both into G1;
+  module green; records. deps: D4. routine-opus, ~40 lines.
+
+### Cluster E — ledgerIV_inst (8 units)
+
+TV-E1. `measuredOf` data block 1 (def, no laws): Pools/Box/finB/boxpos := V's;
+  Cell e τ := Σ o : T.Out e τ, DCellO-fiber at τ's ⟨s, α⟩; cellOut := Sigma.fst;
+  Hgt := Σ D, Hpt D; HDom from cdom/cdomT; μcell := the μcellH carrier;
+  cellEvt := the REV-6 double-dite over evtOf/evtOfT; Rep := the REV-5
+  representative family; cellLvl/cellInst wired per the Q5 ruling (stInst vs
+  per-cell). Keyed to (V, X, cp) only — the SHARED witness (Q5). deps: none.
+  hard-fable, ~120 lines.
+
+TV-E2. `measuredOf` data block 2: entrance block (EntShape := the V-side EntIx
+  carrier at β₀ = toStepCells.symm ⟨s,α⟩; entInst/entEvt/entLvl/entCount/hent/
+  Went from V's census fields; ιshH/ιsh/ιval := ιshH/iotaShV/iotaValV);
+  activeState := V.activeState ∘ toStepCells.symm (decA classical); kstep :=
+  the recursive definition (base := kstep_one's RHS); rowVal := the per-outcome
+  μcell sum; markedVal/gwt/rowVal residue fields. deps: E1. hard-fable, ~100.
+
+TV-E3. LedgerIV groups (1)-(2): xhd_sum (X.w face HasSum at μcell), xhd_no_stray
+  / xhd_no_orphan (X.d faces / no_orphanC route, the D21 pattern), d4r0
+  (evt_disj_cell + evt_disj_assign through the double-dite). deps: E1, E2.
+  hard-fable, ~80 lines.
+
+TV-E4. LedgerIV groups (3)-(5): part1 via the PROVED part1 producer (V4_part1C;
+  hb/hc/hd are ledgerIV_inst's own premises verbatim), rep_indep via rep_row
+  (V4-9; cp premise present, XHDdC from X.d), meas_card via evt_card at
+  N ≥ stabLvl (+ box_card for the ℝ-cast). deps: E1, E2. hard-fable, ~60.
+
+TV-E5. LedgerIV groups (6)-(7): kstep_one + hmc definitional at E2's recursive
+  kstep; act_target from no_entry (V4_act) through the rowVal reading — the
+  RESIDUAL REAL LAW: Σ_{o targeting β, kcol} rowVal = 0 at inactive β. If the
+  no_entry vocabulary (per-MoveData T-poly) does not reach the μcell-sum rowVal,
+  fall back to the activity-guarded kstep definition + prove kstep_one's
+  compatibility; if neither closes, ESCALATE (named hypothesis; risk R5).
+  deps: E2. hard-fable, ~50 lines.
+
+TV-E6. LedgerIV groups (8)-(9): init_agg (hEU + semilin_sum_exact + EntIx
+  re-index — the V5-6 comp_agg machinery), init_count (V.ent_card division-free
+  → card form via box_card), ent_count_card (rfl-genre, V7-6a2 precedent),
+  comp_once (the V7_livB HasSum.mul_left pattern). deps: E2. hard-fable, ~60.
+
+TV-E7. Assembly: T := tableShape_inst's witness (TablePins conjunct = its
+  proved bundle); the guarded |Box| tie = rfl at Box := V.Box; bundle E3-E6
+  into `Nonempty (LedgerIV T M)`; `ledgerIV_inst` proved, module sorry-free;
+  docstring pin-inventory updated FROM the compiled witness (the V7_livC
+  docstring's own closing instruction). deps: E3-E6. routine-opus, ~30 lines.
+
+TV-E8. Non-vacuity gate audit: grep for a compiled in-corpus `CtsMeasured`
+  instance; if one exists, fire `measuredOf` at it and display one non-zero
+  μcell value; else record "no compiled CTS instance — witness genericity
+  disclosed" at the docstring. deps: E7. adjudication/routine-opus, ~20 lines.
+
+### Cluster F — ratBurdens_exists (5 units)
+
+TV-F1. PolyGeom data map: tgP/jP from cp via dataOf/tblOf/pathProdPoly (V2-5);
+  jPCell := jcellPG (countS = 1 leg = V7_rbA, proved); ιP := choice over
+  ratBurdens_iota's ∃ (V7_rbB, proved). deps: none. routine-opus, ~40 lines.
+
+TV-F2. Shared-witness coherence: verify/adjust E1/E2's rowVal/μcell/ιsh/entCount
+  so the F3 interp laws are provable (rowVal = tgP eval at non-split routes,
+  μcell = jPCell eval at split routes, ιsh = ιP eval, entCount = ιP.countT
+  eval); this is the co-design seam — changes land in E1/E2's defs, not in
+  statements. deps: E1, E2, F1. hard-fable, ~40 lines.
+
+TV-F3. Interp + degree laws: tg_interp/j_interp (routeOf case split),
+  ι_interp/ι_countS_one/ι_count, the six degree ties at tableShape_inst's REAL
+  Wloc/Wstate against cp's degree laws (field-by-field check; C.T_deg is the
+  source). deps: F2. hard-fable, ~60 lines.
+
+TV-F4. [Q5 ruling] cellP family + act_iff + cellP_count + cellP_nonzero:
+  option (a) sizeP wiring (cellP := sizeP(τ) constant in c; act_iff = V.act_size
+  transported; cellInst := V.stInst; cellP_count = stInst_card; nonzero from
+  CellIdx's sizeP ≠ 0 subtype — verify) or option (b) per-cell cp.count polys.
+  Disclose the choice in the pin inventory. deps: F2, ruling Q5.
+  routine-opus, ~40 lines.
+
+TV-F5. jcell_sum (jP defined as the cell sum at split routes — co-design with
+  F1) + assembly → `ratBurdens_exists` proved over the SAME (T, M) as E7 (its
+  own hypothesis row suffices for the F-side laws; verify no E-only premise
+  leaked). Module sorry-free; records. deps: F1-F4. routine-opus, ~30 lines.
+
+### Cluster G — scs_data_supply (3 units)
+
+TV-G1. GATE + data supply: verify the CTS letters' species/catalogue records
+  reach all ten SCSData data fields (W, D, ℓ, g, μsel, W′, D′, flankCount,
+  flankWidth, resFactors) — the sources are letterSp/tgt_sp, the omem member
+  (size, δ, status) data, and the skeleton species records; then define the
+  supply over tableShape_inst's table. IF any field lacks a source: STOP,
+  escalate to adjudication (named hypothesis row supplying the stage record —
+  M1-failure-mode-safe), do NOT invent data (risk R6). deps: none.
+  hard-fable, ~80 lines.
+
+TV-G2. The algebraic laws: ℓpos/window_comp/flank_zero/sel_mem/res_sum/stage_D/
+  stage_W/cluster_parent at the G1 supply. deps: G1. hard-fable, ~50 lines.
+
+TV-G3. The roster laws + assembly: selIdx (position from omem_sel/tcellM_sel
+  choice), memberOf (roster injection avoiding selIdx), memberOf_inj/
+  memberOf_ne_sel, sel_continuing (cont_iff + the selected member's Sum.inr
+  status → continuing flag), cluster_child (omem_size + stage_D/stage_W);
+  `scs_data_supply` proved (T := tableShape_inst's witness, TablePins from it).
+  deps: G1, G2. hard-fable, ~60 lines.
+
+### Cluster H — W17ii clause (ii) (4 units; H1 BEFORE H3)
+
+TV-H1. COUNTERMODEL BUILD (countermodel-first): the §3.G infinite-shDom chain
+  over the all-inactive degenerate MeasuredSide (activeState ≡ False;
+  allActivePools = ∅). Blocker inventory to clear or record: RS1Bundle's
+  fields, legs_reg (RegP at EVERY prime — PrimePools is forced total by
+  prime_base), rsh_interp (check first whether DetHyp is uninhabitable at the
+  degenerate RB, which would vacuate the hdet-quantified laws). COEXISTENCE
+  RULE: the compiled chain + the sorried universal derive False — build in
+  quarantine (not imported by the build root) and land in-tree only in the same
+  commit as H3's repair. Deliverable: compiled `W17iiNeg.w17ii_false` OR the
+  exact blocking law. deps: none. hard-fable, ~200 lines or blocked-record.
+
+TV-H2. [FENCE — Q4] The summability-guard adjudication package: menu (a) new
+  RS4Chain census fields (shdom_no_stray + off-visH vanishing) making clause
+  (ii) provable, (b) a Summable/finiteness guard on W17ii clause (ii), (c) the
+  HasSum-as-field demotion (rejected-by-default). Include the U-28 h17
+  byte-diff analysis and the n2Chain impact check. deps: H1 (either outcome).
+  adjudication.
+
+TV-H3. Prove clause (ii) at the repaired statement: under (a), the counting
+  squeeze — shweight_card + wshval_card + shevt_grouping + the new census
+  fields at a fixed pool; under (b), the guarded HasSum from the finite/summable
+  reduction. Same commit retires the banked-sorry status (and lands H1's
+  witness if built). deps: H2 ruling. hard-fable, ~80 lines.
+
+TV-H4. Gate re-run + ripple: n2Chain (N2Sigmas) re-discharges the repaired
+  wsh17_pin (shDom = {0}, singleton HasSum — must survive the guard);
+  w17ii_pin/RS4Chain.wsh17_pin/U-28 premise byte-check; un-bank records
+  (MANIFEST banked_sorry entry retired). deps: H3. routine-opus, ~30 lines.
+
+### Cluster I — fold-ins (2 units)
+
+TV-I1. [FENCE — Q6] CtsmConclusions tautology fields: DELETE
+  active_value_recorded/ent_count_named (recommended; content rides as the
+  SolveCond antecedent + L.hEC) or retype to bare Props + ctsM hypotheses per
+  ruling; ctsM's two `id`s dropped; consumer grep + sweep; MANIFEST D27
+  close-out. deps: ruling Q6. routine-opus, ~15 lines.
+
+TV-I2. [FENCE — Q7] toyStrongPin strengthening (MovesSp#40): census
+  toyCanModel's per-branch datum values at closing reads; if discriminating,
+  rebuild the witness with branch-reading tauV, injective dict on the realized
+  Vd values, and a REAL hcap proof (cap covers the closing read index); htau by
+  branch cases. If non-discriminating, return the model-extension decision with
+  the census attached. deps: none. hard-fable, ~60 lines.
+
+### Scheduling constraints
+
+- B1 before B7; H1 before H3 (countermodel-first).
+- C4 after C2+C3; H1's witness lands in-tree only with H3 (soundness ordering).
+- A2 before A3 before A4 (ripple chain); E1/E2 before E3-E6/F2; F2 before F3-F5.
+- Adjudication/ratification gates: A2 (Q1), B7 (Q2), C2 (Q3), H2→H3 (Q4),
+  F4/E1 (Q5), I1 (Q6), I2 (Q7), D3-escalation (Q8).
+
+---
+
+## 5. RISKS (statements that could be FALSE as sketched + their countermodel units)
+
+R1. `treeN_stable` AS CURRENTLY STATED (KBTotTower premises only) may be FALSE:
+  nothing in perLevel/root_total/scale_grow bounds the digit level a model's
+  mem reads. Countermodel unit: TV-B1 (runs before any prover touches B6/B7).
+  If TV-B1 compiles a negation, B7's hypothesis addition becomes MANDATORY
+  (repair, not enrichment) and the record must say so.
+
+R2. `w17ii_wave4` clause (ii) AS STATED is PLAUSIBLY FALSE (the standing fence
+  record's infinite-shDom candidate). Countermodel unit: TV-H1 (runs first).
+  Note the soundness trap: its compiled witness must never coexist in the build
+  with the un-repaired sorried universal.
+
+R3. `toyModel.mem_realizable`/`toyModelB.mem_realizable` are RECORDED FALSE at
+  the pinned tables — NO prover unit exists for them anywhere in this
+  blueprint; only the adjudication (TV-C1) and post-ruling executions (C2/C3).
+
+R4. The E5 (U)∧(R) pair is believed NOT derivable from CellAssign's laws (the
+  separated-.red-cell stray shape) — no prover unit assigned; the hoist (A2) is
+  the disposition. TV-A5(b) is the necessity probe; its failure mode ("blocked
+  by law L") is an acceptable outcome that upgrades the fence record.
+
+R5. TV-E5's act_target discharge may be blocked by a vocabulary gap (no_entry
+  is stated per-MoveData on C.T polynomials; rowVal is a μcell sum) — the
+  bridge is cp's count laws + rep_indep; if it does not close, the unit
+  escalates to a named hypothesis on ledgerIV_inst (statement change — return
+  to orchestrator, do NOT weaken LedgerIV).
+
+R6. TV-G1's stage-field sources may be incomplete in the CTS vocabulary (the
+  recorded trivial-supply failure shows free data cannot fake
+  sel_continuing/cluster_child). The unit's gate step stops before inventing
+  data; escalation = a typed species-stage hypothesis row.
+
+R7. TV-D3's card gate (Nat.card ↥σ₁.K = 4) may be under-determined by
+  S9c_coreAssembly's ∃-conclusion — escalation Q8 (additive HC1 clause or an
+  extraction lemma against the construction).
+
+R8. The B2 bundle's (S-child) quantifier ("ALL histories at threshold thr(Tr)")
+  may be STRONGER than the note's D4R.4 content (which is per-site/per-branch).
+  If the HC-2 owner area later cannot discharge it, the bundle gets re-scoped
+  (realizable-H-only + a no-stray-history law) — flag at typing time (TV-B2's
+  docstring must present both quantifier options to the orchestrator).
+
+R9. Shared-witness coherence (Q5): if E-cluster and F-cluster law demands on
+  the ONE M conflict (e.g. rowVal forced two ways), the fallback is separate
+  witnesses per duty — each ∃-statement is independently satisfiable; the
+  shared witness is preferred but not load-bearing.
+
+---
+
+## 6. ORCHESTRATOR QUESTIONS (decisions this blueprint cannot make)
+
+Q1. RATIFY the E5 hoist (TV-A2/A3/A4): fiber_root_split + treeExp + downstream
+  rows gain the named TrackUniqOn/TrackRepOn hypotheses (statement fence;
+  PROJECT_STATE already records R3 as the agreed direction, deferred to
+  repo-prep — confirm THIS campaign executes it and approve the ∀-g threading
+  shape at treeExp).
+
+Q2. treeN_stable interface: (option 2, recommended) treeN_stable +
+  TreeNStableStmt gain the named StableInputs hypothesis — ripples
+  RS1GivenPackage.tree_n (a capstone-package row); or (option 1) KBTotTower
+  gains the stability fields — ripples VPPinned.covering and every KBTotTower
+  owner record. Which?
+
+Q3. G1 mem_realizable ruling on TV-C1's menu — in particular: is the
+  HistoryCoherent child-keying guard (task #44's first half) in THIS area's
+  scope, or does it belong to the HC-2 bridge area (in which case C2/C3 block
+  on that area's unit)? The two areas must not both edit HistoryCoherent.
+
+Q4. W17ii repair menu choice (TV-H2): census fields (a) vs summability guard
+  (b) vs field demotion (c) — a statement change on the capstone premise chain
+  (U-28's h17). Also: if TV-H1 is blocked by legs_reg/rsh_interp, does the
+  PLAUSIBLE-countermodel status suffice to justify the guard, or must the
+  build be pushed to completion first?
+
+Q5. The V7-4 witness: may clusters E and F share ONE measuredOf (T, M)
+  (recommended; conclusions stay byte-identical)? And cellP/cellInst wiring:
+  coarse sizeP/stInst (option a, lawful, per-state) vs per-cell cp.count
+  (option b, finer, costlier)? The pin inventories will disclose either way.
+
+Q6. CtsmConclusions tautology fields (TV-I1): delete (recommended) vs
+  retype-to-bare-Prop (which forces ctsM to gain two hypotheses — a larger
+  capstone-row change). Which?
+
+Q7. toyStrongPin (TV-I2): if toyCanModel's branch data do not discriminate,
+  approve extending the toy model (a new branch with distinct Species data) or
+  accept the census-backed "non-discriminating model" record?
+
+Q8. If S9c_coreAssembly's conclusion under-determines the child K-card
+  (TV-D3), sanction an ADDITIVE clause on its ∃ (HC1 statement change,
+  conclusion-strengthening) or require the extraction-lemma route only?
+
+Q9. Unit-count/priority: if the fleet must cut, the recommended priority order
+  is A (spine drainage) > E/F (seam duties) > B > H > D > C > G > I; C and G
+  carry the highest adjudication latency (external rulings) — start their
+  packages (C1, G1's gate step) early regardless.

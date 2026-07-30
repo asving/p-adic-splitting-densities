@@ -71,9 +71,8 @@ noncomputable def stratumCount1 (s N : ℕ) (c : NodeConfig) : ℕ :=
 `InCell`-fiber count of the same cell.  Immediate from `classify1_eq_some_iff`
 (`classify1 p f = some c ↔ InCell p f c`): the two subtypes coincide, so their `Nat.card`s do. -/
 theorem stratumCount1_eq_cellCard (s N : ℕ) (c : NodeConfig) :
-    stratumCount1 p s N c = Nat.card {f : QuotientBox.monicBox p N s // InCell p f c} := by
-  unfold stratumCount1
-  exact Nat.card_congr (Equiv.subtypeEquivRight fun f => classify1_eq_some_iff p)
+    stratumCount1 p s N c = Nat.card {f : QuotientBox.monicBox p N s // InCell p f c} :=
+  Nat.card_congr (Equiv.subtypeEquivRight fun f => classify1_eq_some_iff p)
 
 /-- **The closed form** for the genuine order-1 stratum count of a full menu cell
 `c = mkCell s P sh`: composing the bridge with `CellCard.cell_card_raw`, it equals
@@ -100,9 +99,7 @@ theorem cluster_classify1_none_iff {s N : ℕ} (hN : 0 < N) (hs : 0 < s)
   constructor
   · intro hnone hread
     -- readable ⟹ classify1 is some, contradicting none
-    have := classify1_isSome p hN hs f hcl hread
-    rw [hnone] at this
-    exact absurd this (by simp)
+    simpa [hnone] using classify1_isSome p hN hs f hcl hread
   · intro hnread
     -- unreadable ⟹ vOf f 0 = N ⟹ coeff 0 = 0 ⟹ tail
     have hle := CellCard.vOf_le p hN f 0
@@ -120,12 +117,8 @@ theorem stratumCount1_tail_zero {s N : ℕ} (hN : 0 < N) (hs : 0 < s) :
     tailCount1 p s N = p ^ ((s - 1) * (N - 1)) := by
   unfold tailCount1
   rw [← CellCard.card_cluster_dead p hN hs]
-  refine Nat.card_congr (Equiv.subtypeEquivRight fun f => ?_)
-  constructor
-  · rintro ⟨hcl, hnone⟩
-    exact ⟨hcl, (cluster_classify1_none_iff p hN hs hcl).mp hnone⟩
-  · rintro ⟨hcl, hdead⟩
-    exact ⟨hcl, (cluster_classify1_none_iff p hN hs hcl).mpr hdead⟩
+  exact Nat.card_congr (Equiv.subtypeEquivRight fun f =>
+    and_congr_right fun hcl => cluster_classify1_none_iff p hN hs hcl)
 
 /-! ## 4. The order-1 stratum PARTITION -/
 

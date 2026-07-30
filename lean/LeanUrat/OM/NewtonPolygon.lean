@@ -91,9 +91,7 @@ pairs `(P, P)` give the horizontal line through `P` (slope junk-`0`), pinning th
 `x = i_P`; off-diagonal pairs with distinct abscissa give the secant lines. -/
 def lineIndex : Finset ((ℕ × ℕ) × (ℕ × ℕ)) := S ×ˢ S
 
-lemma lineIndex_nonempty (hS : S.Nonempty) : (lineIndex S).Nonempty := by
-  obtain ⟨P, hP⟩ := hS
-  exact ⟨(P, P), by simp [lineIndex, Finset.mem_product, hP]⟩
+lemma lineIndex_nonempty (hS : S.Nonempty) : (lineIndex S).Nonempty := hS.product hS
 
 /-! ### The lower Newton height `npHeight` (REVISED: the convex lower hull)
 
@@ -143,9 +141,7 @@ lemma validLines_nonempty (hS : S.Nonempty) : (validLines S).Nonempty := by
   refine ⟨Finset.mem_product.2 ⟨hP₀mem, hP₀mem⟩, ?_⟩
   intro Q hQ
   -- the horizontal line through `P₀` has constant height `v_{P₀} ≤ v_Q`
-  rw [show ((P₀, P₀).1 : ℕ × ℕ) = P₀ from rfl, show ((P₀, P₀).2 : ℕ × ℕ) = P₀ from rfl]
-  rw [pairLine_diag_const P₀.1 P₀.2 (Q.1 : ℚ)]
-  exact_mod_cast hP₀min Q hQ
+  exact (pairLine_diag_const P₀.1 P₀.2 (Q.1 : ℚ)).trans_le (by exact_mod_cast hP₀min Q hQ)
 
 /-- **Lower Newton height** at a rational abscissa `x`: the supremum of all VALID supporting-line
 values at `x` — the convex lower hull. -/
@@ -160,18 +156,15 @@ coefficient-valuation point. Every VALID line lies weakly below all dots, so its
 
 /-- Each valid line evaluated at a dot's abscissa is `≤` that dot's height (by validity). -/
 lemma pairLine_le_of_valid {PR : (ℕ × ℕ) × (ℕ × ℕ)} (hPR : PR ∈ validLines S)
-    {i v : ℕ} (hiv : (i, v) ∈ S) : pairLine PR.1 PR.2 (i : ℚ) ≤ (v : ℚ) := by
-  rw [validLines, Finset.mem_filter] at hPR
-  exact hPR.2 (i, v) hiv
+    {i v : ℕ} (hiv : (i, v) ∈ S) : pairLine PR.1 PR.2 (i : ℚ) ≤ (v : ℚ) :=
+  (Finset.mem_filter.mp hPR).2 (i, v) hiv
 
 /-- **Lower minorant property** (blueprint `lem:npheight-minorant`). For every plotted dot
 `(i, v) ∈ S`, `npHeight S hS i ≤ v`: the polygon lies weakly below every coefficient-valuation
 point. Now via `Finset.sup'_le` over the valid lines (each is a lower bound). -/
 lemma npHeight_le (hS : S.Nonempty) {i v : ℕ} (hiv : (i, v) ∈ S) :
-    npHeight S hS (i : ℚ) ≤ (v : ℚ) := by
-  rw [npHeight]
-  refine Finset.sup'_le _ _ (fun PR hPR => ?_)
-  exact pairLine_le_of_valid S hPR hiv
+    npHeight S hS (i : ℚ) ≤ (v : ℚ) :=
+  Finset.sup'_le _ _ fun _ hPR => pairLine_le_of_valid S hPR hiv
 
 /-! ### Vertices, sides, slopes (`def:np-vertices`, `def:newtonpoly-side`)
 
@@ -377,9 +370,7 @@ membership `(i, v) ∈ S` is kept as a documented precondition though only the o
 -/
 theorem hullHeightAt_of_onHull (hS : S.Nonempty) {i v : ℕ} (_hiv : (i, v) ∈ S)
     (hon : (v : ℚ) = npHeight S hS (i : ℚ)) : hullHeightAt S hS i = v := by
-  unfold hullHeightAt
-  rw [← hon]
-  simp [Int.floor_natCast, Int.toNat_natCast]
+  rw [hullHeightAt, ← hon, Int.floor_natCast, Int.toNat_natCast]
 
 /-- A hull abscissa is exactly the abscissa of some on-hull support dot. -/
 theorem mem_hullAbscissae_iff (hS : S.Nonempty) {i : ℕ} :
@@ -397,14 +388,11 @@ theorem mem_hullAbscissae_iff (hS : S.Nonempty) {i : ℕ} :
 /-- **Every full-vertex lies on the hull.** -/
 theorem npVerticesFull_on_hull (hS : S.Nonempty) {P : ℕ × ℕ} (hP : P ∈ npVerticesFull S hS) :
     (P.2 : ℚ) = npHeight S hS (P.1 : ℚ) := by
-  unfold npVerticesFull at hP
-  rw [List.mem_map] at hP
+  rw [npVerticesFull, List.mem_map] at hP
   obtain ⟨i, hi, rfl⟩ := hP
-  rw [mem_hullAbscissae_iff] at hi
-  obtain ⟨v, hiv, hon⟩ := hi
+  obtain ⟨v, hiv, hon⟩ := (mem_hullAbscissae_iff S hS).mp hi
   -- `hullDotAt S hS i = (i, hullHeightAt S hS i) = (i, v)`
-  unfold hullDotAt
-  simp only
+  show ((hullHeightAt S hS i : ℕ) : ℚ) = npHeight S hS (i : ℚ)
   rw [hullHeightAt_of_onHull S hS hiv hon]
   exact hon
 
@@ -413,11 +401,8 @@ over the sorted hull abscissae, which is exactly `hullAbscissae` (each entry's f
 abscissa it was looked up at), and `Finset.sort (· ≤ ·)` on a `Nodup` set is strictly increasing. -/
 theorem npVerticesFull_fst (hS : S.Nonempty) :
     (npVerticesFull S hS).map Prod.fst = hullAbscissae S hS := by
-  unfold npVerticesFull
-  rw [List.map_map]
-  refine List.map_congr_left ?_ |>.trans (List.map_id _)
-  intro i _
-  rfl
+  rw [npVerticesFull, List.map_map]
+  exact (List.map_congr_left fun i _ => rfl).trans (List.map_id _)
 
 theorem npVerticesFull_sorted (hS : S.Nonempty) :
     ((npVerticesFull S hS).map Prod.fst).Pairwise (· < ·) := by
@@ -434,12 +419,8 @@ theorem npVertices_on_hull (hS : S.Nonempty) {P : ℕ × ℕ} (hP : P ∈ npVert
 /-- **Genuine-vertex abscissae are strictly increasing** (inherits via the sublist on the mapped
 abscissa list). -/
 theorem npVertices_sorted (hS : S.Nonempty) :
-    ((npVertices S hS).map Prod.fst).Pairwise (· < ·) := by
-  unfold npVertices
-  have hsub : ((dropCollinear (npVerticesFull S hS)).map Prod.fst).Sublist
-      ((npVerticesFull S hS).map Prod.fst) :=
-    (dropCollinear_sublist _).map Prod.fst
-  exact (npVerticesFull_sorted S hS).sublist hsub
+    ((npVertices S hS).map Prod.fst).Pairwise (· < ·) :=
+  (npVerticesFull_sorted S hS).sublist ((dropCollinear_sublist _).map Prod.fst)
 
 /-! ### Finiteness / length bounds (`lem:np-finite`) — now THEOREMS
 
@@ -447,15 +428,9 @@ theorem npVertices_sorted (hS : S.Nonempty) :
 `npSides` has length one less than `npVertices` (the `zip` with the tail). -/
 
 theorem npVertices_length_le (hS : S.Nonempty) : (npVertices S hS).length ≤ S.card := by
-  classical
-  unfold npVertices
   refine (List.Sublist.length_le (dropCollinear_sublist _)).trans ?_
-  unfold npVerticesFull
-  rw [List.length_map]
-  unfold hullAbscissae
-  rw [Finset.length_sort]
-  refine (Finset.card_image_le).trans ?_
-  exact Finset.card_filter_le _ _
+  rw [npVerticesFull, List.length_map, hullAbscissae, Finset.length_sort]
+  exact Finset.card_image_le.trans (Finset.card_filter_le _ _)
 
 theorem npSides_length (hS : S.Nonempty) :
     (npSides S hS).length + 1 = (npVertices S hS).length ∨ npVertices S hS = [] := by
@@ -532,14 +507,12 @@ and the proof is a one-liner over the reusable machinery. -/
 /-- **Convexity of the lower Newton minorant** (blueprint `lem:npheight-convex`). NOW CLOSED against the
 revised convex-lower-hull `npHeight`: the `sup'` of the affine valid lines is convex. -/
 theorem npHeight_convexOn (hS : S.Nonempty) (n : ℚ) :
-    ConvexOn ℚ (Set.Icc (0 : ℚ) n) (npHeight S hS) := by
-  have h :=
-    sup'_convexOn (ι := (ℕ × ℕ) × (ℕ × ℕ)) (Set.Icc (0 : ℚ) n)
-      (fun PR => pairLine PR.1 PR.2)
-      (fun PR => pairLine_convexOn PR.1 PR.2 _ (convex_Icc 0 n))
-      (validLines S) (validLines_nonempty S hS)
+    ConvexOn ℚ (Set.Icc (0 : ℚ) n) (npHeight S hS) :=
   -- `npHeight S hS = fun x => (validLines S).sup' _ (fun PR => pairLine PR.1 PR.2 x)` definitionally
-  exact h
+  sup'_convexOn (ι := (ℕ × ℕ) × (ℕ × ℕ)) (Set.Icc (0 : ℚ) n)
+    (fun PR => pairLine PR.1 PR.2)
+    (fun PR => pairLine_convexOn PR.1 PR.2 _ (convex_Icc 0 n))
+    (validLines S) (validLines_nonempty S hS)
 
 /-! ### Breakpoint / chord-attainment (HULL_BLUEPRINT §1)
 
@@ -568,13 +541,11 @@ lemma pairLine_concaveOn (P R : ℕ × ℕ) (s : Set ℚ) (hs : Convex ℚ s) :
   rw [e1, e2]
 
 /-- The two endpoints of a valid line both lie in `S` (the index pair lives in `S ×ˢ S`). -/
-lemma validLines_mem_left {PR : (ℕ × ℕ) × (ℕ × ℕ)} (hPR : PR ∈ validLines S) : PR.1 ∈ S := by
-  rw [validLines, Finset.mem_filter, lineIndex, Finset.mem_product] at hPR
-  exact hPR.1.1
+lemma validLines_mem_left {PR : (ℕ × ℕ) × (ℕ × ℕ)} (hPR : PR ∈ validLines S) : PR.1 ∈ S :=
+  (Finset.mem_product.1 (Finset.mem_filter.1 hPR).1).1
 
-lemma validLines_mem_right {PR : (ℕ × ℕ) × (ℕ × ℕ)} (hPR : PR ∈ validLines S) : PR.2 ∈ S := by
-  rw [validLines, Finset.mem_filter, lineIndex, Finset.mem_product] at hPR
-  exact hPR.1.2
+lemma validLines_mem_right {PR : (ℕ × ℕ) × (ℕ × ℕ)} (hPR : PR ∈ validLines S) : PR.2 ∈ S :=
+  (Finset.mem_product.1 (Finset.mem_filter.1 hPR).1).2
 
 /-- `pairLine A B` passes through the left endpoint: its value at `A.1` is `A.2`. -/
 lemma pairLine_left (A B : ℕ × ℕ) : pairLine A B (A.1 : ℚ) = (A.2 : ℚ) := by
@@ -610,7 +581,7 @@ theorem npHeight_eq_pairLine_of_validLine (hS : S.Nonempty)
     have hconv : ConvexOn ℚ (Set.Icc (0 : ℚ) (B.1 : ℚ)) (g - L) :=
       (npHeight_convexOn S hS (B.1 : ℚ)).sub (pairLine_concaveOn A B _ (convex_Icc 0 (B.1 : ℚ)))
     -- endpoints lie in `Icc 0 (B.1)`
-    have hA0 : (0 : ℚ) ≤ (A.1 : ℚ) := by positivity
+    have hA0 : (0 : ℚ) ≤ (A.1 : ℚ) := Nat.cast_nonneg _
     have hAmemIcc : (A.1 : ℚ) ∈ Set.Icc (0 : ℚ) (B.1 : ℚ) := ⟨hA0, hle⟩
     have hBmemIcc : (B.1 : ℚ) ∈ Set.Icc (0 : ℚ) (B.1 : ℚ) := ⟨le_trans hA0 hle, le_refl _⟩
     -- `(g - L) A.1 ≤ 0`
@@ -765,26 +736,20 @@ lemma hullDots_of_heights_zero (hS : S.Nonempty) (h0 : ∀ P ∈ S, P.2 = 0) :
 /-- If all support heights are zero, the hull height is zero at every abscissa. -/
 lemma hullHeightAt_of_heights_zero (hS : S.Nonempty) (h0 : ∀ P ∈ S, P.2 = 0) (i : ℕ) :
     hullHeightAt S hS i = 0 := by
-  unfold hullHeightAt
-  rw [npHeight_of_heights_zero S hS h0, Int.floor_zero]
-  rfl
+  rw [hullHeightAt, npHeight_of_heights_zero S hS h0, Int.floor_zero, Int.toNat_zero]
 
 /-- Concrete vertex list of the singleton support `{(0,0)}`. -/
 lemma npVertices_zeroSingleton (h : ({((0 : ℕ), (0 : ℕ))} : Finset (ℕ × ℕ)).Nonempty) :
     npVertices {((0 : ℕ), (0 : ℕ))} h = [((0 : ℕ), (0 : ℕ))] := by
   have h0 : ∀ P ∈ ({((0 : ℕ), (0 : ℕ))} : Finset (ℕ × ℕ)), P.2 = 0 := by
     intro P hP; rw [Finset.mem_singleton] at hP; subst hP; rfl
-  unfold npVertices npVerticesFull hullAbscissae
-  rw [hullDots_of_heights_zero _ h h0]
   have himg : ({((0 : ℕ), (0 : ℕ))} : Finset (ℕ × ℕ)).image Prod.fst = {0} := by decide
-  rw [himg]
-  have hsort : ({(0 : ℕ)} : Finset ℕ).sort (· ≤ ·) = [0] := by
-    rw [Finset.sort_singleton]
-  rw [hsort]
   have hd : hullDotAt {((0 : ℕ), (0 : ℕ))} h 0 = ((0 : ℕ), (0 : ℕ)) := by
     unfold hullDotAt
     rw [hullHeightAt_of_heights_zero _ h h0]
-  rw [List.map_cons, List.map_nil, hd]
+  unfold npVertices npVerticesFull hullAbscissae
+  rw [hullDots_of_heights_zero _ h h0, himg, Finset.sort_singleton, List.map_cons, List.map_nil,
+    hd]
   rfl
 
 /-- Concrete vertex list of the two-dot horizontal support `{(0,0), (1,0)}`. -/
@@ -796,21 +761,19 @@ lemma npVertices_zeroPair
     intro P hP
     rw [Finset.mem_insert, Finset.mem_singleton] at hP
     rcases hP with rfl | rfl <;> rfl
-  unfold npVertices npVerticesFull hullAbscissae
-  rw [hullDots_of_heights_zero _ h h0]
   have himg : ({((0 : ℕ), (0 : ℕ)), ((1 : ℕ), (0 : ℕ))} : Finset (ℕ × ℕ)).image Prod.fst
       = {0, 1} := by decide
-  rw [himg]
   have hsort : ({(0 : ℕ), (1 : ℕ)} : Finset ℕ).sort (· ≤ ·) = [0, 1] := by
     have h1 : ∀ b ∈ ({(1 : ℕ)} : Finset ℕ), 0 ≤ b := fun b _ => Nat.zero_le b
     have h2 : (0 : ℕ) ∉ ({(1 : ℕ)} : Finset ℕ) := by decide
     rw [Finset.sort_insert (fun x1 x2 : ℕ => x1 ≤ x2) h1 h2, Finset.sort_singleton]
-  rw [hsort]
   have hd : ∀ i : ℕ, hullDotAt {((0 : ℕ), (0 : ℕ)), ((1 : ℕ), (0 : ℕ))} h i = (i, (0 : ℕ)) := by
     intro i
     unfold hullDotAt
     rw [hullHeightAt_of_heights_zero _ h h0]
-  rw [List.map_cons, List.map_cons, List.map_nil, hd 0, hd 1]
+  unfold npVertices npVerticesFull hullAbscissae
+  rw [hullDots_of_heights_zero _ h h0, himg, hsort, List.map_cons, List.map_cons, List.map_nil,
+    hd 0, hd 1]
   rfl
 
 /-- **NEGATIVE RESULT (HULL_BLUEPRINT item 4, falsity witness).** The two-hypothesis hull-invariance

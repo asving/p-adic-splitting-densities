@@ -655,9 +655,7 @@ theorem slotPattern_of_coeffCond (hN : 0 < N) (he : 0 < e) (hμN : μ < N)
     induction t with
     | zero =>
         intro j hj
-        exfalso
-        have := j.2
-        omega
+        exact absurd j.2 (by omega)
     | succ t ih =>
         intro j hj
         have hjμ : (j : ℕ) < μ := j.2
@@ -820,7 +818,6 @@ theorem sidePolyR_eq_target_iff (_hN : 0 < N) (_he : 0 < e) (hμ : 0 < μ)
   have hIdx : ∀ k : ℕ,
       ((0, μ), (μ * e, 0)).1.1 + k * CellCard.sideE ((0, μ), (μ * e, 0)) = k * e := fun k => by
     rw [sideE_restart e μ hμ]
-    show 0 + k * e = k * e
     exact Nat.zero_add _
   constructor
   · intro hsp k hk
@@ -850,10 +847,7 @@ theorem rho_restart_read (he : 0 < e) (hμ : 0 < μ) (f : QuotientBox.monicBox p
     rho p (fun i : Fin (μ * e) =>
         digit p N (ceilAt (restartPath e μ) i.1) ((f.1).coeff i.1)) (k * e)
       = digit p N (μ - k) ((f.1).coeff (k * e)) := by
-  have hke : k * e < μ * e := by
-    have h1 : (k + 1) * e ≤ μ * e := Nat.mul_le_mul_right e (by omega)
-    have h2 : (k + 1) * e = k * e + e := Nat.succ_mul k e
-    omega
+  have hke : k * e < μ * e := (Nat.mul_lt_mul_right he).mpr hk
   rw [rho_lt p _ hke]
   show digit p N (ceilAt (restartPath e μ) (k * e)) ((f.1).coeff (k * e)) = _
   rw [ceilAt_restart e μ hμ (k * e) (le_of_lt hke),
@@ -979,10 +973,9 @@ theorem inCellAt_iff_slotPattern (hN : 0 < N) (he : 0 < e) (hμ2 : 2 ≤ μ) (h�
     (f : QuotientBox.monicBox p N (μ * e)) :
     InCellAt p N e μ c f ↔ SlotPattern p N e μ (developPhi p N e μ c hN he f) := by
   rw [inCellAt_iff_coeffCond p N e μ c hN he hμ2 hμN f]
-  have hf : (developPhi p N e μ c hN he).symm (developPhi p N e μ c hN he f) = f :=
-    Equiv.symm_apply_apply _ _
   have hval : assemble p N e μ c (developPhi p N e μ c hN he f) = f.1 := by
-    rw [← developPhi_symm_val p N e μ c hN he (developPhi p N e μ c hN he f), hf]
+    rw [← developPhi_symm_val p N e μ c hN he (developPhi p N e μ c hN he f),
+      Equiv.symm_apply_apply]
   constructor
   · intro hcc
     refine slotPattern_of_coeffCond p N e μ c hN he hμN _ ?_

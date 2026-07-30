@@ -65,10 +65,7 @@ composed coefficient hom `(AdjoinRoot.of g).comp (levelDropCoeff)` at `root g` v
 `UnramifiedBase.eval₂_g_root_gbar`. -/
 theorem eval₂_g'_root_g (hgg : g'.map (levelDropCoeff p N) = g) :
     g'.eval₂ ((AdjoinRoot.of g).comp (levelDropCoeff p N)) (AdjoinRoot.root g) = 0 := by
-  have h1 : g'.eval₂ ((AdjoinRoot.of g).comp (levelDropCoeff p N)) (AdjoinRoot.root g)
-      = (g'.map (levelDropCoeff p N)).eval₂ (AdjoinRoot.of g) (AdjoinRoot.root g) := by
-    rw [Polynomial.eval₂_map]
-  rw [h1, hgg, AdjoinRoot.eval₂_root]
+  rw [← Polynomial.eval₂_map, hgg, AdjoinRoot.eval₂_root]
 
 /-- **The level-drop ring hom** `AdjoinRoot g' →+* AdjoinRoot g`, sending the adjoined root `t'` to
 `t` and reducing the base along `levelDropCoeff : ZMod (p^(N+1)) →+* ZMod (p^N)`. Requires
@@ -144,8 +141,7 @@ theorem resHom_natural_levelDrop (h1 : 0 < N + 1) (h2 : 0 < N)
     (hgm' : g'.Monic) (hgm : g.Monic) (hgg : g'.map (levelDropCoeff p N) = g) :
     (resHom p N g hgm h2).comp (levelDropHom p N g' g hgg)
       = (levelDropResHom p N g' g h1 h2 hgg).comp (resHom p (N + 1) g' hgm' h1) := by
-  apply RingHom.ext
-  intro x
+  refine RingHom.ext fun x => ?_
   -- write `x = mk g' q`
   obtain ⟨q, rfl⟩ := AdjoinRoot.mk_surjective x
   rw [RingHom.comp_apply, RingHom.comp_apply]

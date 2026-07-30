@@ -43,3 +43,7 @@ def catN (n : ℕ) : List Species :=
 #eval (catN 2).map (fun s => s.sel.isNone)
 -- self-loops
 #eval (catN 2).map (fun s => succStepB 2 s s)
+
+-- degree-1: the catalogue is a single terminal root letter
+#eval (catN 1).length
+#eval (catN 1).map (fun s => (s.D, s.w, s.W, s.e, s.ell, s.sel.isNone))

@@ -49,7 +49,6 @@ theorem vanishing_forcing_tendsto_zero (y g : ℕ → ℝ) (r : ℝ)
     induction j with
     | zero =>
         simp only [Nat.add_zero, pow_zero, one_mul]
-        have : (0 : ℝ) ≤ ε / 2 := by positivity
         linarith
     | succ k ih =>
         -- n := M + k ≥ M, and M + (k+1) = n + 1.
@@ -79,23 +78,16 @@ theorem vanishing_forcing_tendsto_zero (y g : ℕ → ℝ) (r : ℝ)
   -- Step 3: pick J past which r^J · |y M| < ε/2.
   have hpow : Tendsto (fun n : ℕ => r ^ n) atTop (𝓝 0) :=
     tendsto_pow_atTop_nhds_zero_of_lt_one hr0 hr1
-  have hyM0 : (0 : ℝ) ≤ |y M| := abs_nonneg _
   have hε2 : 0 < ε / 2 := by positivity
-  -- choose J with r^J * |y M| < ε/2
+  -- choose J with r^J * |y M| < ε/2, from r^j·|y M| → 0·|y M| = 0.
   obtain ⟨J, hJ⟩ : ∃ J, ∀ j, J ≤ j → r ^ j * |y M| < ε / 2 := by
-    rcases eq_or_lt_of_le hyM0 with hzero | hpos
-    · -- |y M| = 0: any J works (the product is 0 < ε/2).
-      refine ⟨0, fun j _ => ?_⟩
-      rw [← hzero, mul_zero]; exact hε2
-    · -- |y M| > 0: use r^j → 0 to get r^j < (ε/2)/|y M|.
-      have htgt : 0 < ε / 2 / |y M| := by positivity
-      obtain ⟨J, hJ'⟩ := (Metric.tendsto_atTop.mp hpow) (ε / 2 / |y M|) htgt
-      refine ⟨J, fun j hj => ?_⟩
-      have := hJ' j hj
-      rw [Real.dist_eq, sub_zero, abs_of_nonneg (pow_nonneg hr0 j)] at this
-      -- r^j < (ε/2)/|y M|  ⟹  r^j * |y M| < ε/2
-      rw [lt_div_iff₀ hpos] at this
-      linarith
+    have hmul := hpow.mul_const |y M|
+    rw [zero_mul] at hmul
+    obtain ⟨J, hJ'⟩ := (Metric.tendsto_atTop.mp hmul) (ε / 2) hε2
+    refine ⟨J, fun j hj => ?_⟩
+    have := hJ' j hj
+    rw [Real.dist_eq, sub_zero] at this
+    exact lt_of_abs_lt this
   -- Step 4: combine.  For n ≥ M + J, write n = M + j with j ≥ J.
   refine ⟨M + J, fun n hn => ?_⟩
   -- j := n - M, with n = M + j and j ≥ J.
@@ -131,23 +123,15 @@ theorem firstOrder_recurrence_limit (x f : ℕ → ℝ) (r L : ℝ)
   have hrec' : ∀ N, y (N + 1) = r * y N + g (N + 1) := by
     intro N
     simp only [hy, hg]
-    have := hrec N
     -- x(N+1) - S = r·(x N - S) + (f(N+1) - L) + (r·S + L - S) and the last bracket is 0
-    nlinarith [this, hfix]
+    nlinarith [hrec N, hfix]
   -- g → 0.
-  have hg0 : Tendsto g atTop (𝓝 0) := by
-    have : Tendsto g atTop (𝓝 (L - L)) := hf.sub_const L
-    simpa using this
+  have hg0 : Tendsto g atTop (𝓝 0) := by simpa using hf.sub_const L
   -- Core gives y → 0.
   have hy0 : Tendsto y atTop (𝓝 0) :=
     vanishing_forcing_tendsto_zero y g r hr0 hr1 hrec' hg0
   -- x = y + S → 0 + S = S.
-  have hx : Tendsto (fun N => y N + S) atTop (𝓝 (0 + S)) :=
-    hy0.add_const S
-  have hxeq : (fun N => y N + S) = x := by
-    funext N; simp only [hy]; ring
-  rw [hxeq, zero_add] at hx
-  exact hx
+  simpa [hy] using hy0.add_const S
 
 /-- **Varying-forcing recurrence limit with a vanishing additive error.**
 Same as `firstOrder_recurrence_limit` but with an extra vanishing error `e → 0` in the
@@ -158,9 +142,7 @@ theorem firstOrder_recurrence_limit_err (x f e : ℕ → ℝ) (r L : ℝ)
     (hf : Tendsto f atTop (𝓝 L)) (he : Tendsto e atTop (𝓝 0)) :
     Tendsto x atTop (𝓝 (L / (1 - r))) := by
   -- f' := f + e converges to L + 0 = L; recurrence becomes x(N+1) = r·x N + f'(N+1).
-  have hf' : Tendsto (fun N => f N + e N) atTop (𝓝 L) := by
-    have := hf.add he
-    simpa using this
+  have hf' : Tendsto (fun N => f N + e N) atTop (𝓝 L) := by simpa using hf.add he
   have hrec' : ∀ N, x (N + 1) = r * x N + (fun N => f N + e N) (N + 1) := by
     intro N; simp only; rw [hrec N]; ring
   exact firstOrder_recurrence_limit x (fun N => f N + e N) r L hr0 hr1 hrec' hf'

@@ -56,15 +56,10 @@ box-volume collapse: the BB1 vertex factor `(1 - (q^N)⁻¹)^V → 1`. -/
 `tendsto_pow_atTop_nhds_zero_of_lt_one`. `[core]` -/
 theorem invPow_tendsto_zero {q : ℕ} (hq : 1 < q) :
     Filter.Tendsto (fun N => ((q : ℚ) ^ N)⁻¹) Filter.atTop (nhds 0) := by
-  have hq0 : (0 : ℚ) < (q : ℚ) := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one (le_of_lt hq)
-  have hqinv0 : (0 : ℚ) ≤ (q : ℚ)⁻¹ := le_of_lt (inv_pos.mpr hq0)
-  have hqinv1 : (q : ℚ)⁻¹ < 1 := by
-    rw [inv_lt_one_iff₀]
-    right
-    exact_mod_cast hq
-  have h := tendsto_pow_atTop_nhds_zero_of_lt_one hqinv0 hqinv1
-  refine h.congr ?_
-  intro N
+  have hq1 : (1 : ℚ) < (q : ℚ) := by exact_mod_cast hq
+  have hqinv0 : (0 : ℚ) ≤ (q : ℚ)⁻¹ := le_of_lt (inv_pos.mpr (lt_trans one_pos hq1))
+  have hqinv1 : (q : ℚ)⁻¹ < 1 := inv_lt_one_of_one_lt₀ hq1
+  refine (tendsto_pow_atTop_nhds_zero_of_lt_one hqinv0 hqinv1).congr fun N => ?_
   rw [inv_pow]
 
 /-- **The BB1 vertex factor collapses to `1`.** For `q > 1`, `(1 - (q^N)⁻¹)^V → (1 - 0)^V = 1`.
@@ -73,8 +68,7 @@ theorem vertexFactor_tendsto_one {q : ℕ} (hq : 1 < q) (V : ℕ) :
     Filter.Tendsto (fun N => (1 - ((q : ℚ) ^ N)⁻¹) ^ V) Filter.atTop (nhds 1) := by
   have hbase : Filter.Tendsto (fun N => 1 - ((q : ℚ) ^ N)⁻¹) Filter.atTop (nhds (1 - 0)) :=
     tendsto_const_nhds.sub (invPow_tendsto_zero hq)
-  have hpow := hbase.pow V
-  simpa using hpow
+  simpa using hbase.pow V
 
 /-! ## F3.L1 — `boxVolume_normalized_limit` (the `q`-power ratio collapse)
 
@@ -90,8 +84,7 @@ theorem bb1Value_share_tendsto_one {q : ℕ} (hq : 1 < q) (pg : L4.LatticePolygo
     Filter.Tendsto
       (fun N => L4.bb1Value pg (q ^ N) * (q : ℚ) ^ (L4.newtonExponent pg * N))
       Filter.atTop (nhds 1) := by
-  have hq0 : (0 : ℚ) < (q : ℚ) := by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_one (le_of_lt hq)
-  have hqne : (q : ℚ) ≠ 0 := ne_of_gt hq0
+  have hqne : (q : ℚ) ≠ 0 := by exact_mod_cast (Nat.zero_lt_of_lt hq).ne'
   -- Rewrite the rescaled box term as the vertex factor only.
   have hrw : ∀ N,
       L4.bb1Value pg (q ^ N) * (q : ℚ) ^ (L4.newtonExponent pg * N)
@@ -103,13 +96,8 @@ theorem bb1Value_share_tendsto_one {q : ℕ} (hq : 1 < q) (pg : L4.LatticePolygo
     -- (1 - (↑q^N)⁻¹)^V * ((↑q^N)^A)⁻¹ * ↑q^{A·N}, and ((↑q^N)^A)⁻¹ · ↑q^{A·N} = 1.
     have hpow : ((q : ℚ) ^ N) ^ L4.newtonExponent pg = (q : ℚ) ^ (L4.newtonExponent pg * N) := by
       rw [← pow_mul, Nat.mul_comm]
-    rw [hpow]
-    have hcancel : (((q : ℚ) ^ (L4.newtonExponent pg * N))⁻¹) * (q : ℚ) ^ (L4.newtonExponent pg * N) = 1 := by
-      rw [inv_mul_cancel₀ (pow_ne_zero _ hqne)]
-    rw [mul_assoc, hcancel, mul_one]
-  refine (vertexFactor_tendsto_one hq (L4.newtonVertexCount pg)).congr ?_
-  intro N
-  rw [hrw N]
+    rw [hpow, mul_assoc, inv_mul_cancel₀ (pow_ne_zero _ hqne), mul_one]
+  exact (vertexFactor_tendsto_one hq (L4.newtonVertexCount pg)).congr fun N => (hrw N).symm
 
 /-- **F3.L1 `boxVolume_normalized_limit`.** The level-`N` per-cell box × residual term, rescaled by
 the per-cell newton-exponent share `q^{A·N}` (`A = L4.newtonExponent c.polygon`), tends to the
@@ -126,9 +114,7 @@ theorem boxVolume_normalized_limit {q : ℕ} (hq : 1 < q) (c : CountCell) :
       (fun N => ((q : ℚ) ^ c.δ) ^ (c.dS - 1)
         * (L4.bb1Value c.polygon (q ^ N) * (q : ℚ) ^ (L4.newtonExponent c.polygon * N)))
       Filter.atTop (nhds (((q : ℚ) ^ c.δ) ^ (c.dS - 1))) := by
-  have h := bb1Value_share_tendsto_one hq c.polygon
-  have hmul := (tendsto_const_nhds (x := (((q : ℚ) ^ c.δ) ^ (c.dS - 1)))).mul h
-  simpa using hmul
+  simpa using (bb1Value_share_tendsto_one hq c.polygon).const_mul (((q : ℚ) ^ c.δ) ^ (c.dS - 1))
 
 /-! ## F3.L2 — `selfLoop_resummation` (the geometric self-loop limit)
 
@@ -184,12 +170,9 @@ theorem selfLoop_resummation_leaf {q : ℕ} {treeSize : ClusterShape → ℕ} {T
     unfold countPivot; simp [hT]
   rw [hr, hpivot, div_one]
   -- geomTrunc a 0 N = a * (1 - 0^(N+1)) / (1 - 0) = a, a constant sequence.
-  have hconst : ∀ N, NestedCollapse.geomTrunc a 0 N = a := by
-    intro N
-    unfold NestedCollapse.geomTrunc
-    simp
-  refine tendsto_const_nhds.congr ?_
-  intro N; rw [hconst N]
+  refine tendsto_const_nhds.congr fun N => ?_
+  unfold NestedCollapse.geomTrunc
+  simp
 
 /-! ## F3.L3 — `children_product_limit` (the finite product limit)
 
@@ -287,8 +270,8 @@ theorem nodeTrunc_tendsto_of_recurrence {q : ℕ} (hq : 2 ≤ q)
     Filter.Tendsto x Filter.atTop (nhds (L / countPivot (treeSize T) q)) := by
   obtain ⟨hr0, hr1⟩ := selfLoopRatio_mem_Ico hq (treeSize := treeSize) (T := T)
   -- rewrite the recurrence into the `r·x N + f (N+1)` shape the engine expects:
-  have hstep' : ∀ N, x (N + 1) = M8.selfLoopRatio treeSize T q * x N + f (N + 1) := by
-    intro N; rw [hstep N]; ring
+  have hstep' : ∀ N, x (N + 1) = M8.selfLoopRatio treeSize T q * x N + f (N + 1) :=
+    fun N => (hstep N).trans (add_comm _ _)
   have hlim := firstOrder_recurrence_limit_rat x f (M8.selfLoopRatio treeSize T q) L hr0 hr1 hstep' hf
   rwa [M8.one_sub_selfLoopRatio_eq_countPivot] at hlim
 
@@ -370,16 +353,9 @@ theorem node_limit_assembly {q n : ℕ} (p : ℕ) [Fact p.Prime]
             countCellCoeff c q
               * (c.children.map (fun ch => clusterCount cells treeSize cells_descend ch q)).prod)).sum
           / countPivot (treeSize T) q)) := by
-  -- `M8.nodeTrunc p q classify T N` is definitionally `stratumCount … / q^{n·N}`,
-  -- and `M8.nodeNum …` is definitionally the box-additive sum numerator.
-  have hfun : M8.nodeTrunc p q classify T
-      = fun N => M8.stratumCount (M8.shapeFiberCount p n classify) T N / (q : ℚ) ^ (n * N) := by
-    funext N; rfl
-  have hnum : M8.nodeNum cells treeSize cells_descend T q
-      = ((cells T).map (fun c =>
-            countCellCoeff c q
-              * (c.children.map (fun ch => clusterCount cells treeSize cells_descend ch q)).prod)).sum := rfl
-  rw [hfun, hnum] at h_spine
+  -- `M8.nodeTrunc p q classify T N` is definitionally `stratumCount … / q^{n·N}`, and
+  -- `M8.nodeNum …` is definitionally the box-additive sum numerator, so the hypothesis
+  -- and the conclusion are the same proposition up to `unfold`.
   exact h_spine
 
 /-! ## CRITICAL TYPE-COMPOSITION CHECK

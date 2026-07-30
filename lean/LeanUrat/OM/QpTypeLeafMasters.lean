@@ -109,12 +109,8 @@ theorem stepDecode_general {m L₀ L₁ : ℕ} (_hm : 1 ≤ m) (h2m : 2 * m ≤ 
   have hgdeg : g.natDegree = 2 := by
     rw [hgdef]
     compute_degree!
-  have hg0 : g.coeff 0 = b₀ := by
-    rw [hgdef]
-    simp
-  have hg1 : g.coeff 1 = b₁ := by
-    rw [hgdef]
-    simp
+  have hg0 : g.coeff 0 = b₀ := by simp [hgdef]
+  have hg1 : g.coeff 1 = b₁ := by simp [hgdef]
   have hrel : f.comp (C ((p : ℤ_[p]) ^ m) * X + C ((ĉ : ℤ_[p]) * (p : ℤ_[p]) ^ m))
       = C ((p : ℤ_[p]) ^ (2 * m)) * g := by
     conv_lhs => rw [monic_quadratic_eq p hf hdeg]
@@ -140,8 +136,7 @@ theorem stepDecode_general {m L₀ L₁ : ℕ} (_hm : 1 ≤ m) (h2m : 2 * m ≤ 
         + 2 * (ĉ : ZMod (p ^ (L₁ - m))) = PadicInt.toZModPow (L₁ - m) b₁
       rw [hw₁, box_shift_cast p hm1 (le_refl _),
         hb₁, map_add, map_mul, map_natCast, map_ofNat]
-  rw [hdesc] at htail
-  rw [← hg0, ← hg1] at htail
+  rw [hdesc, ← hg0, ← hg1] at htail
   exact ⟨ĉ, g, hg, hgdeg, hrel, htail⟩
 
 end StepDecode
@@ -196,13 +191,10 @@ theorem leafRam_master_irreducible {H : ℕ} (hodd : Odd H) {b₀ b₁ u : ℤ_[
     (hb₁ : (p : ℤ_[p]) ^ ((H + 1) / 2) ∣ b₁) :
     Irreducible ((X ^ 2 + C b₁ * X + C b₀ : ℤ_[p][X]).map (algebraMap ℤ_[p] ℚ_[p])) := by
   have hH2 : H % 2 = 1 := Nat.odd_iff.mp hodd
-  have hpz : (p : ℤ_[p]) ≠ 0 := by
-    exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
+  have hpz : (p : ℤ_[p]) ≠ 0 := by exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
   have hu0 : u ≠ 0 := fun h0 => hu (by rw [h0, map_zero])
   have hvu : u.valuation = 0 := valuation_eq_zero_of_toZMod_ne p hu
-  have hb₀ne : b₀ ≠ 0 := by
-    rw [hb₀]
-    exact mul_ne_zero (pow_ne_zero _ hpz) hu0
+  have hb₀ne : b₀ ≠ 0 := hb₀ ▸ mul_ne_zero (pow_ne_zero _ hpz) hu0
   have hval0 : b₀.valuation = H := by
     rw [hb₀, PadicInt.valuation_p_pow_mul H u hu0, hvu]
     omega
@@ -216,14 +208,8 @@ theorem leafRam_master_irreducible {H : ℕ} (hodd : Odd H) {b₀ b₁ u : ℤ_[
     rw [hc0] at hmul
     rw [hc1] at hadd
     -- both roots are nonzero and their valuations sum to H
-    have hc1ne : c₁ ≠ 0 := by
-      rintro rfl
-      rw [zero_mul] at hmul
-      exact hb₀ne hmul
-    have hc2ne : c₂ ≠ 0 := by
-      rintro rfl
-      rw [mul_zero] at hmul
-      exact hb₀ne hmul
+    have hc1ne : c₁ ≠ 0 := fun h => hb₀ne (by rw [hmul, h, zero_mul])
+    have hc2ne : c₂ ≠ 0 := fun h => hb₀ne (by rw [hmul, h, mul_zero])
     have hsum : c₁.valuation + c₂.valuation = H := by
       rw [← PadicInt.valuation_mul hc1ne hc2ne, ← hmul, hval0]
     -- b₁ = c₁ + c₂ ≠ 0 (else 2·v(c₁) = H — parity)
@@ -425,9 +411,7 @@ theorem leafRam_master_forced {H : ℕ} (hodd : Odd H) {b₀ b₁ u : ℤ_[p]}
   -- conclude: E ∣ 2 and E ≠ 1 force E = 2, then f = 1
   have hE2 : E = 2 := by
     have hdvd : E ∣ 2 := ⟨QpType.fOf p D, by rw [← he_val]; exact hef.symm⟩
-    rcases Nat.prime_two.eq_one_or_self_of_dvd E hdvd with h | h
-    · exact absurd h hEne1
-    · exact h
+    exact (Nat.prime_two.eq_one_or_self_of_dvd E hdvd).resolve_left hEne1
   have hff : 2 * QpType.fOf p D = 2 := by
     calc 2 * QpType.fOf p D = QpType.eOf p D * QpType.fOf p D := by rw [he_val, hE2]
       _ = 2 := hef
@@ -464,8 +448,7 @@ theorem leafInert_master_irreducible (m : ℕ) {b₀ b₁ w₀ w₁ : ℤ_[p]}
     Irreducible ((X ^ 2 + C b₁ * X + C b₀ : ℤ_[p][X]).map (algebraMap ℤ_[p] ℚ_[p])) := by
   have hrel := leafInert_rescale p m hb₀ hb₁
   have hhirr := inert_irreducible_Qp p hmem
-  have hpz : (p : ℤ_[p]) ≠ 0 := by
-    exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
+  have hpz : (p : ℤ_[p]) ≠ 0 := by exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
   have hpQ : (algebraMap ℤ_[p] ℚ_[p]) ((p : ℤ_[p]) ^ m) ≠ 0 :=
     algebraMap_ne_zero p (pow_ne_zero _ hpz)
   have hrelQ : ((X ^ 2 + C b₁ * X + C b₀ : ℤ_[p][X]).map (algebraMap ℤ_[p] ℚ_[p])).comp
@@ -496,13 +479,8 @@ theorem leafInert_master_forced (m : ℕ) {b₀ b₁ w₀ w₁ : ℤ_[p]}
     QpType.eOf p D = 1 ∧ QpType.fOf p D = 2 := by
   have hrel := leafInert_rescale p m hb₀ hb₁
   set ρ : ℤ_[p] →+* ℚ_[p] := algebraMap ℤ_[p] ℚ_[p] with hρ
-  have hpz : (p : ℤ_[p]) ≠ 0 := by
-    exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
-  have hpQ : ρ ((p : ℤ_[p]) ^ m) ≠ 0 := by
-    intro h0
-    have hpm : ((p : ℤ_[p]) ^ m) = 0 :=
-      IsFractionRing.injective ℤ_[p] ℚ_[p] (by rw [← hρ, h0, map_zero])
-    exact pow_ne_zero m hpz hpm
+  have hpz : (p : ℤ_[p]) ≠ 0 := by exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
+  have hpQ : ρ ((p : ℤ_[p]) ^ m) ≠ 0 := algebraMap_ne_zero p (pow_ne_zero _ hpz)
   have hrelQ : ((X ^ 2 + C b₁ * X + C b₀ : ℤ_[p][X]).map ρ).comp
       (C (ρ ((p : ℤ_[p]) ^ m)) * X + C (ρ 0))
         = C ((ρ ((p : ℤ_[p]) ^ m)) ^ 2)
@@ -546,9 +524,7 @@ theorem leafInert_master_forced (m : ℕ) {b₀ b₁ w₀ w₁ : ℤ_[p]}
     rw [← hkey]
     unfold QpType.efOf
     rw [hef12.1, hef12.2]
-  unfold QpType.efOf at hpair
-  rw [Prod.mk.injEq] at hpair
-  exact hpair
+  exact ⟨congrArg Prod.fst hpair, congrArg Prod.snd hpair⟩
 
 end InertMaster
 
@@ -581,8 +557,7 @@ theorem leafSplit_master_hasType (k : ℕ) {b₀ b₁ w₁ : ℤ_[p]}
     exact dvd_mul_right _ _
   obtain ⟨r₁, r₂, hne, hfac⟩ := split_two_roots p hw₀mem hw₁
   have hrel := leafInert_rescale p k hb₀' hb₁
-  have hpz : (p : ℤ_[p]) ≠ 0 := by
-    exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
+  have hpz : (p : ℤ_[p]) ≠ 0 := by exact_mod_cast (PadicInt.prime_p (p := p)).ne_zero
   have hpne : ((p : ℤ_[p]) ^ k) ≠ 0 := pow_ne_zero _ hpz
   have hhdeg : (X ^ 2 + C w₁ * X + C w₀ : ℤ_[p][X]).natDegree = 2 := by compute_degree!
   have hrel' : (X ^ 2 + C b₁ * X + C b₀ : ℤ_[p][X]).comp (C ((p : ℤ_[p]) ^ k) * X + C 0)
@@ -620,19 +595,14 @@ theorem leafFiber_ram_forced {H L₀ L₁ : ℕ} (hodd : Odd H)
   simp only [ChainMenu.LeafPair] at hfib
   obtain ⟨⟨hd0, hdig⟩, hd1⟩ := hfib
   obtain ⟨u, hu⟩ := dvd_of_box_dvd p (show H ≤ L₀ by omega) hd0
-  have hune : PadicInt.toZMod u ≠ 0 := by
-    intro h0
-    refine hdig ?_
-    rw [hu, box_digit_toZMod p (show H + 1 ≤ L₀ by omega) u]
-    exact h0
+  have hune : PadicInt.toZMod u ≠ 0 := fun h0 =>
+    hdig (by rw [hu, box_digit_toZMod p (show H + 1 ≤ L₀ by omega) u, h0])
   have hb₁ : (p : ℤ_[p]) ^ ((H + 1) / 2) ∣ g.coeff 1 :=
     dvd_of_box_dvd p (show (H + 1) / 2 ≤ L₁ by omega) hd1
   have hgeq : g = X ^ 2 + C (g.coeff 1) * X + C (g.coeff 0) := monic_quadratic_eq p hg hdeg
-  constructor
-  · rw [hgeq]
-    exact leafRam_master_irreducible p hodd hu hune hb₁
-  · rw [hgeq]
-    exact fun D => leafRam_master_forced p hodd hu hune hb₁ D
+  rw [hgeq]
+  exact ⟨leafRam_master_irreducible p hodd hu hune hb₁,
+    fun D => leafRam_master_forced p hodd hu hune hb₁ D⟩
 
 /-- **The inert-leaf fiber wrapper**: a genuine monic quadratic whose box pair at frame
 `(L₀, L₁)` (`leafNeed (inert m) = 2m + 1 ≤ L₀ ≤ L₁`) lies in the `LeafPair (inert m)` digit
@@ -652,19 +622,14 @@ theorem leafFiber_inert_forced {m L₀ L₁ : ℕ}
   obtain ⟨w₀, hw₀⟩ := dvd_of_box_dvd p (show 2 * m ≤ L₀ by omega) hd0
   obtain ⟨w₁, hw₁⟩ := dvd_of_box_dvd p (show m ≤ L₁ by omega) hd1
   have hdig0 : digit p L₀ (2 * m) (PadicInt.toZModPow L₀ (g.coeff 0))
-      = PadicInt.toZMod w₀ := by
-    rw [hw₀]
-    exact box_digit_toZMod p (show 2 * m + 1 ≤ L₀ by omega) w₀
-  have hdig1 : digit p L₁ m (PadicInt.toZModPow L₁ (g.coeff 1)) = PadicInt.toZMod w₁ := by
-    rw [hw₁]
-    exact box_digit_toZMod p (show m + 1 ≤ L₁ by omega) w₁
+      = PadicInt.toZMod w₀ := hw₀ ▸ box_digit_toZMod p (show 2 * m + 1 ≤ L₀ by omega) w₀
+  have hdig1 : digit p L₁ m (PadicInt.toZModPow L₁ (g.coeff 1)) = PadicInt.toZMod w₁ :=
+    hw₁ ▸ box_digit_toZMod p (show m + 1 ≤ L₁ by omega) w₁
   rw [hdig0, hdig1] at hmem
   have hgeq : g = X ^ 2 + C (g.coeff 1) * X + C (g.coeff 0) := monic_quadratic_eq p hg hdeg
-  constructor
-  · rw [hgeq]
-    exact leafInert_master_irreducible p m hw₀ hw₁ hmem
-  · rw [hgeq]
-    exact fun D => leafInert_master_forced p m hw₀ hw₁ hmem D
+  rw [hgeq]
+  exact ⟨leafInert_master_irreducible p m hw₀ hw₁ hmem,
+    fun D => leafInert_master_forced p m hw₀ hw₁ hmem D⟩
 
 /-- **The split-leaf fiber wrapper — axiom-free existence**: a genuine monic quadratic whose
 box pair at frame `(L₀, L₁)` (`L₀ ≤ L₁`; the readability gate `2k + 1 ≤ L₀` is INSIDE

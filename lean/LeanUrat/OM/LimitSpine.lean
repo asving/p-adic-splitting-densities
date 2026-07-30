@@ -203,9 +203,7 @@ theorem nodeTrunc_step_of_rec {q n : ℕ} (p : ℕ) [Fact p.Prime]
     M8.nodeTrunc p q classify T (N + 1)
       = nonSelfLoopNorm p q classify cells treeSize T N
         + (M8.selfLoopRatio treeSize T q * ((q : ℚ) ^ n)⁻¹) * M8.nodeTrunc p q classify T N := by
-  have hqne : (q : ℚ) ≠ 0 := by
-    have : (0 : ℚ) < (q : ℚ) := by exact_mod_cast hq
-    exact ne_of_gt this
+  have hqne : (q : ℚ) ≠ 0 := by exact_mod_cast hq.ne'
   have hqNn : ((q : ℚ) ^ (n * N)) ≠ 0 := pow_ne_zero _ hqne
   have hqn : ((q : ℚ) ^ n) ≠ 0 := pow_ne_zero _ hqne
   -- `nodeTrunc T (N+1) = stratumCount T (N+1) / q^{n(N+1)}` (def), then rewrite the numerator by `hrec`.

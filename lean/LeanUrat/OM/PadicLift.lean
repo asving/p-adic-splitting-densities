@@ -109,13 +109,10 @@ theorem zmodValuation_lt {N : ℕ} (_hN : 0 < N) {x : ZMod (p ^ N)} (hx : x ≠ 
   rw [zmodValuation_of_ne_zero p hx]
   have hval0 : x.val ≠ 0 := by
     simpa [ZMod.val_eq_zero] using hx
-  have hlt : x.val < p ^ N := ZMod.val_lt x
-  by_contra hge
-  rw [not_lt] at hge
-  -- `p ^ N ∣ p ^ (x.val.factorization p) ∣ x.val`, hence `p ^ N ≤ x.val`, contradicting `x.val < p^N`.
-  have hdvd : p ^ N ∣ x.val :=
-    (pow_dvd_pow p hge).trans (Nat.ordProj_dvd x.val p)
-  exact absurd (Nat.le_of_dvd (Nat.pos_of_ne_zero hval0) hdvd) (not_le.mpr hlt)
+  -- `p ^ (x.val.factorization p) ∣ x.val < p ^ N` forces the exponent below `N`
+  have hle : p ^ x.val.factorization p ≤ x.val :=
+    Nat.le_of_dvd (Nat.pos_of_ne_zero hval0) (Nat.ordProj_dvd x.val p)
+  exact (Nat.pow_lt_pow_iff_right hp.out.one_lt).mp (hle.trans_lt (ZMod.val_lt x))
 
 /-- For `x ≠ 0`, the unit-residue is nonzero in `ZMod p`: `p ∤ ordCompl[p] x.val`
 (`Nat.not_dvd_ordCompl`), so its cast to `ZMod p` is nonzero. -/
@@ -123,9 +120,8 @@ theorem zmodUnitResidue_ne_zero {N : ℕ} {x : ZMod (p ^ N)} (hx : x ≠ 0) :
     zmodUnitResidue p N x ≠ 0 := by
   have hval0 : x.val ≠ 0 := by
     simpa [ZMod.val_eq_zero] using hx
-  have hnotdvd : ¬ p ∣ ordCompl[p] x.val := Nat.not_dvd_ordCompl hp.out hval0
   rw [zmodUnitResidue, Ne, ZMod.natCast_eq_zero_iff]
-  exact hnotdvd
+  exact Nat.not_dvd_ordCompl hp.out hval0
 
 omit hp in
 /-- The defining decomposition: `x.val = p ^ (zmodValuation x) * ordCompl[p] x.val` for `x ≠ 0`.
@@ -195,7 +191,7 @@ theorem factorization_mod_eq {m N : ℕ} (hm : m ≠ 0) (hlt : m.factorization p
     have h2 : p ^ (v + 1) ∣ m := (Nat.dvd_mod_iff (pow_dvd_pow p hlt)).1 h1
     have : v + 1 ≤ v := (Nat.Prime.pow_dvd_iff_le_factorization hp.out hm).1 h2
     omega
-  · have hpvm : p ^ v ∣ m := by have := Nat.ordProj_dvd m p; rwa [← hv] at this
+  · have hpvm : p ^ v ∣ m := hv ▸ Nat.ordProj_dvd m p
     have hpd : p ^ v ∣ p ^ N := pow_dvd_pow p (le_of_lt hlt)
     have : p ^ v ∣ m % p ^ N := (Nat.dvd_mod_iff hpd).2 hpvm
     exact (Nat.Prime.pow_dvd_iff_le_factorization hp.out hm').1 this
@@ -225,10 +221,8 @@ theorem ordCompl_mod_cast_eq {m N : ℕ} (hm : m ≠ 0) (hlt : m.factorization p
     rw [← hdecomp_m, ← hdecomp_m']
     exact hcongN
   have hcong2 : ordCompl[p] m ≡ ordCompl[p] (m % p ^ N) [MOD p] := by
-    have hpvpos : p ^ v ≠ 0 := pow_ne_zero v hp.out.ne_zero
-    have hrw : p ^ (v + 1) = p ^ v * p := by ring
-    rw [hrw] at hcong
-    exact Nat.ModEq.mul_left_cancel' hpvpos hcong
+    rw [pow_succ] at hcong
+    exact Nat.ModEq.mul_left_cancel' (pow_ne_zero v hp.out.ne_zero) hcong
   rw [ZMod.natCast_eq_natCast_iff]
   exact hcong2.symm
 
@@ -267,8 +261,7 @@ theorem zmodUnitResidue_reduce_stable (N : ℕ) (_hN : 0 < N) (x : ZMod (p ^ (N 
   · subst hx0; simp [zmodValuation] at hx
   have hval0 : x.val ≠ 0 := by simpa [ZMod.val_eq_zero] using hx0
   rw [zmodValuation_of_ne_zero p hx0] at hx
-  have hred_val : (coeffReduce p N x).val = x.val % p ^ N := coeffReduce_val_eq p N x
-  rw [zmodUnitResidue, zmodUnitResidue, hred_val]
+  rw [zmodUnitResidue, zmodUnitResidue, coeffReduce_val_eq p N x]
   exact ordCompl_mod_cast_eq p hval0 hx
 
 /-- **A3** (`CERTLEVEL_DECOMP.md` Layer A, support nonvanishing transfer). If
@@ -284,8 +277,7 @@ theorem coeffReduce_ne_zero_of_val_lt (N : ℕ) (_hN : 0 < N) (x : ZMod (p ^ (N 
   · subst hx0; simp [zmodValuation] at hx
   have hval0 : x.val ≠ 0 := by simpa [ZMod.val_eq_zero] using hx0
   rw [zmodValuation_of_ne_zero p hx0] at hx
-  have hred_val : (coeffReduce p N x).val = x.val % p ^ N := coeffReduce_val_eq p N x
-  rw [← ZMod.val_ne_zero (coeffReduce p N x), hred_val]
+  rw [← ZMod.val_ne_zero (coeffReduce p N x), coeffReduce_val_eq p N x]
   exact mod_ne_zero_of_factorization_lt p hval0 hx
 
 end LeanUrat.OM.PadicLift

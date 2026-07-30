@@ -75,8 +75,8 @@ theorem child_size_lt (T : M5.OMType) (c : M5.OMCell T) (_hc : c ∈ M5.cells T)
 in the descent of a monic degree-`n` separable `f`, `treeSize (shapeOf T) ≤ n` (the OM tree has at
 most `n` leaves). The degree-budget bound; SUBSTITUTION for GMN Thm 4.18. -/
 theorem treeSize_le_degree (T : M5.OMType) (n : ℕ) (_hn : M5.clusterSize T ≤ n) :
-    treeSize (M5.shapeOf T) ≤ n := by
-  rw [treeSize_shapeOf]; exact _hn
+    treeSize (M5.shapeOf T) ≤ n :=
+  (treeSize_shapeOf T).trans_le _hn
 
 /-! ## Discharge of the `MontesData` obligations (`sec:m6-discharge`)
 
@@ -96,10 +96,8 @@ are now RE-COUPLED to the REAL instance objects:
 /-- **OM-type-level cells descend** (`thm:cells-descend-discharge`, OMType form). For every OM type `T`
 the children of every real cell strictly descend. PROVED from `child_size_lt`/`nodeSizeOf_child_lt`. -/
 theorem cells_descend_omtype (T : M5.OMType) :
-    ∀ c ∈ M5.cells T, ∀ ch ∈ c.children, treeSize ch.node < treeSize (M5.shapeOf T) := by
-  intro c _hc ch _hch
-  rw [treeSize_shapeOf]
-  exact M5.nodeSizeOf_child_lt T ch
+    ∀ c ∈ M5.cells T, ∀ ch ∈ c.children, treeSize ch.node < treeSize (M5.shapeOf T) :=
+  fun _c _hc ch _hch => (M5.nodeSizeOf_child_lt T ch).trans_eq (treeSize_shapeOf T).symm
 
 /-- **Discharge of `cells_descend`** (`thm:cells-descend-discharge`), RE-COUPLED to the real OM-type
 cell list. `cellsRaw T` is the real cell list of the decoded OM type `decode T` (M7's `cellsOfType`,
@@ -116,8 +114,7 @@ theorem cells_descend (decode : ClusterShape → M5.OMType)
     ∀ (T : ClusterShape), ∀ c ∈ cellsRaw T, ∀ ch ∈ c.children, treeSize ch < treeSize T := by
   intro T c hc ch hch
   obtain ⟨ch', rfl⟩ := hchild T c hc ch hch
-  rw [hsize T, treeSize_eq_nodeSizeOf]
-  exact M5.nodeSizeOf_child_lt (decode T) ch'
+  exact (M5.nodeSizeOf_child_lt (decode T) ch').trans_eq (hsize T).symm
 
 /-- **Discharge of `finiteTermination`** (`thm:finite-termination-discharge`), RE-COUPLED. For a
 `shapesOf` whose every degree-`n` shape is the REAL `shapeOf` of an OM type of cluster size `≤ n`
@@ -129,7 +126,6 @@ theorem finiteTermination (n : ℕ) (shapesOf : FactorizationType → Finset Clu
     ∀ (σ : FactorizationType), σ.degree = n → ∀ T ∈ shapesOf σ, treeSize T ≤ n := by
   intro σ hσ T hT
   obtain ⟨T', rfl, hle⟩ := hreal σ hσ T hT
-  rw [treeSize_shapeOf]
-  exact hle
+  exact (treeSize_shapeOf T').trans_le hle
 
 end LeanUrat.OM.M6

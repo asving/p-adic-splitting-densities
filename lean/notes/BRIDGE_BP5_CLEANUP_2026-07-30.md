@@ -433,4 +433,432 @@ DOMStmt' at i=1, m=0, interiorEnd=1 — a ~30-line witness) and record: the def 
 typed-only, currently consumed by NOTHING (grep-verified for `EQ2lawIfREL1'`
 consumers before writing the record); whether to re-scope the antecedent (e.g.
 to Gr-pinned packs or an ∃-form) is a MovesR-unparking design question, NOT
-decided here (§6 Q-4).
+decided here (§6 Q-4). Grep at HEAD confirms: no consumer of `EQ2lawIfREL1'` or
+`REL1Pack` outside R5_EQ2Pass.lean.
+
+### 3.3 MovesGr — prove-vs-quarantine, per file
+
+The corpus's mathematical mission (the graded-ring boundary: discharge the
+"definitional facade" audit) is ALREADY delivered by the proved layer:
+`L1_gradedRingStr_exists_2` (the genuine graded ring), `L1_gr_domain_iff_val_v3`
+(domain ⟺ valuation), `L2_degZero_subring_v2`, `L3_iso_exists`/`L3_rank1_residual`
+/`L3_residual_mul` (D.1(e)), `L4_grRes_eq_genuine` (the fiat discharge) — all
+Lean-core. What remains is hygiene + two FAITHLESS partials:
+
+**Quarantine set (6 files — golf repair-queue R2, pre-adjudicated "quarantine at
+repo-prep, R2 convention"; this area IS that repo-prep pass).** Rationale per
+file is in §2.3. The census effect: removes 7 of the 20 sorry tokens
+(1+1+1+3+1 = 7) and ALL cross-module name collisions in MovesGr (the root-level
+pairs `L1_gr_domain_iff_val` v1/v2, `L2_coeffLoc` v1, `L4_genuine_imp_stageCoreL`
+v1; the in-namespace pairs `L1_gradedRingStr_exists` v1, `L2_degZero_subring`
+v1). Post-quarantine name resolution: `LeanUrat.MovesGr.L1_gradedRingStr_exists`
+binds uniquely to the PROVED _2 module; root `L1_gr_domain_iff_val` disappears
+(the proved v3 is in-namespace); root `L2_coeffLoc` and root
+`L4_genuine_imp_stageCoreL` bind uniquely to the LIVE v2 partials (still
+sorry-backed — disclosed, next paragraph). Expected baseline delta vs
+golf_baseline/MovesGr_axioms.txt: Group B disappears entirely; Group A loses the
+root `L1_gr_domain_iff_val` line. Record this delta in the quarantine README
+entry so future fence checks do not read it as a regression.
+
+**The two live partials (13 tokens) — adjudication, NOT forced proof.**
+
+`L2_coeffLoc_v2.lean` (2 sorries): both open conjuncts carry grounded in-file
+arguments that they are UNPROVABLE from `(σ : Stage) (M : GenuineStageModel σ)` —
+the "(L^coeff)₀ ⊇ K" conjunct needs rep weights that reach parent value −ν
+(StageWF/DEF-3 content, not a `Stage` field; Θ-surjectivity gives arbitrary-f
+preimages, not rep-monomials), and the (P1) z-pinning conjunct needs a
+parent-weight-(−h)-reaching exponent vector with trivial scalar product (same
+gap). Honest-sorries discipline ⇒ the options are:
+  (a) statement repair: add the named hypothesis (a `RepLattice σ` Prop: the
+      rep-weight lattice reaches every parent weight, + `reps_pinned`-style
+      scalar normalization) to `CoeffLocLaw`'s derivation theorem — statement
+      change, sign-off, and it RIPPLES into L4_v2's `coeff_loc` leg;
+  (b) quarantine the partial (preserving the 2 proved conjuncts' work as .txt)
+      and leave `CoeffLocLaw σ` an open obligation with the MANIFEST's
+      status_asbuilt record as the pointer;
+  (c) keep as-is (status quo: disclosed, censused, FAITHLESS-classified).
+This blueprint recommends (b): the file's PROVED content (the Ein/Eout
+weight-detecting evaluation, S4 ⊆) is preserved verbatim in quarantine, the
+live census drops to L4_v2 only, and no false completeness is suggested by a
+live half-file. Orchestrator decides (§6 Q-5).
+
+`L4_genuine_imp_stageCoreL_v2.lean` (11 sorries): 7 are certified-underivable
+(free-field independence: σ.wPrev, σ.Tvec exponents, σ.reps membership are
+invisible to M — the header's perturbation arguments; same class as the HELD
+units' certificates), 4 are derivable-in-principle (`coeff` clauses 2-3 by
+hS5-monomial product induction, `slot`.2 by distinct-position termwise vanishing,
+`coeff_loc` clause 1 by graded-invariant closure induction). Filling the 4 does
+NOT change the unit's FAITHLESS classification (semaudit §B #21: StageCoreL
+content absent from M) nor kill its sorryAx (7 + the L2 inheritance remain).
+Options mirror (a)/(b)/(c) above; recommendation: (b) quarantine together with
+L2_coeffLoc_v2 (they are one derivation), UNLESS the orchestrator wants the
+4 derivable legs banked first (conditional unit CL-23). Either way the MovesGr
+LIVE census lands at 0 sorries.
+
+**The five HELD units:** no action (no files exist; MANIFEST held_status fields
++ Lean-core certificates already constitute the honest record). Any future
+revival goes through the faithful §B2-DEF D.2 restatements, out of scope here.
+
+### 3.4 Moves — the deprecated-file quarantine sweep
+
+The four files of §2.4 (plus the candidate fifth) are quarantined under the
+§2.5 convention. Execution constraints, each verified against the ledger:
+
+1. **The VertexDigit reversal (CRITICAL).** The golf baseline's Group A/B labels
+   are BACKWARDS for the `L5_landVertexDigit` pair: quarantine
+   `L5_landVertexDigit_repair.lean`, NEVER `L5_landVertexDigit.lean` — the
+   latter is imported by HC1/K1_vertexPin.lean:8 and HC1/S16_levelLanding.lean:11
+   (the K1 kernel's import). Following the baseline as written would delete a
+   load-bearing module. (Golf ledger, VERIFY-2 FOLD-IN CORRECTION section.)
+2. Zero-importer precondition: re-run the importer grep per file AT EXECUTION
+   TIME (the A7 lesson: the ledger once mis-reported an import that had already
+   been re-pointed; state drifts). A file with a live importer is NOT
+   quarantined — it escalates to adjudication.
+3. The sorried private `shared_read_forces`-style history: L5_landTwoSided_R5's
+   sorry@964 and L4_TRANSviii_b_R3's sorry@103 are believed-false or superseded
+   forms; the quarantine README entry must state the supersession pointer
+   (repair/R4 file + the R1 execution record for landTwoSided).
+4. Census effect: the "sorryAx only at the ten fenced sites + deprecated Moves
+   files" caveat (golf baseline header) simplifies to the fenced sites alone;
+   AxChk_baseline output is expected byte-identical (none of the five is in any
+   capstone cone — verify by the post-move re-run).
+
+---
+
+## 4. UNIT SPLIT
+
+Conventions: ids CL-01…CL-25. difficulty ∈ {routine-opus, hard-fable,
+adjudication}. "size" = estimated NEW proof lines (statements/defs excluded).
+Every prover unit gets the standing prompt rows: staged-write discipline, lake
+build (not lake env lean) for the green record, `#print axioms` tail, MANIFEST
+entry, BLOCKED-with-artifact permitted (never a forced proof).
+
+### C6 cluster
+
+**CL-01** — compiled countermodel attempt vs fenced C6.
+  Statement: construct `Tshallow : Tower 2 (GaloisField 2 2)` realizing
+  ScratchC6's shallow instance (base (e₀,h₀)=(1,1), one g=2 increment,
+  ψ = z²+z+1), + `card (Tshallow.alphabet 0 0) ≠ card F₄`, hence
+  `¬ C6-statement(Tshallow)` via `C6_forces_unconditional_fullness`.
+  Deps: none (runs first). Difficulty: hard-fable. Size: unknown, cap the
+  attempt at ~400 lines; PERMITTED OUTCOME: BLOCKED + the exact list of Tower/
+  Stage/move certificate fields that could not be discharged (feeds Q-2).
+**CL-02** — the C6 statement-repair adjudication (Asvin queue Q3).
+  Inputs: ScratchC6 certificates (1)-(2), CL-01's outcome, CL-04's probe if run.
+  Output: ratified statement text, R-a or R-b (or fence-hold). Difficulty:
+  adjudication. BLOCKS CL-03/CL-05.
+**CL-03** — (conditional: R-a) restate + prove C6-min.
+  Statement: §3.1 (R-a) display. Proof: conjunct 1 := `C6_conjunct1_closable`
+  (or T7 directly); conjunct 2 := `C6_conjunct2_rhs_always`; both already
+  proved — the unit re-homes them into C6_alphabetCard.lean (Scratch stays, its
+  copies documented). Deps: CL-02. Difficulty: routine-opus. Size: ~15.
+**CL-04** — (pre-adjudication probe; countermodel-first for R-b) address
+  vocabulary + dichotomy probe.
+  Part 1: defs (3) (`Addr`, `aligned`, `attainable`) — defs only, review-flagged.
+  Part 2: PROBE (4): search for a tower/instance where all aligned addresses at
+  (b,γ) are attainable yet card 𝔸 < card F_{K+1} (candidate mechanism: F_Q ⊊ K_top
+  digit-line deficiency even at full address occupancy — exactly ScratchC6's
+  card ≤ |F₂| < |F₄| mechanism, WHICH MAY SURVIVE the retype; check whether (4)'s
+  RHS must instead read "attainable ∧ digit lines full", i.e. whether the note
+  ties fullness to [F_Q : F_p]·#addresses = [F_{K+1} : F_p]). Output: a concrete
+  candidate countermodel sketch or a "no obstruction found + the counting
+  identity to prove" report. Deps: none (informs CL-02). Difficulty: hard-fable.
+  Size: defs ~30 + probe report.
+**CL-05** — (conditional: R-b ratified) the address-typed dichotomy proof.
+  Statement: (4) as ratified. Sketch: ⟸ via the counting identity
+  aDim = Σ_{attainable aligned addresses} dim_{F_p}(digit line) and the
+  fullness bookkeeping vs `C6_cardK_bridge`; ⟹ contrapositive via the missing
+  address ⇒ a missing p-power factor (T8's subgroup A). EXPECT re-splitting into
+  3-4 subunits at execution (counting lemma / ⟸ / ⟹ / assembly) — the E-phase
+  writer for this unit must propose the split. Deps: CL-02, CL-04, CL-01's
+  record. Difficulty: hard-fable. Size: ~150-250 across subunits.
+
+### R6 cluster
+
+**CL-06** — the A17 adjudication (fence sign-off).
+  Output: ratified LSTStmt' (i-b) repair text — VARIANT A vs B of (6) (§3.2
+  analysis attached); the DEFECT-2 scoping record (TYPStmt'/DOMStmt'/SecB1Stmt'
+  unchanged); the R6 proof-body history relocation approved. Difficulty:
+  adjudication. BLOCKS CL-14, CL-19 (statement edit lands here; the R1 file edit
+  itself is part of this unit: rewrite leg (i-b), rebuild HC1 cone — R1 is
+  imported by R2/R3/R5/R6, expect a small ripple, no proof breaks since nothing
+  proves LSTStmt' yet). Size: statement edit + ripple check.
+**CL-07** — LAT: the height lattice lemma.
+  Statement: `∀ c : T.Coord, 0 ≤ T.ht c ∧ ∃ n : ℕ, T.ht c = (n : ℚ) / T.strTop`
+  + the divisibility `∀ r, (T.stg r).e * T.str r ∣ T.strTop`.
+  Sketch: κ_r = h_r/(e_r·STR_r); clear denominators via the divisibility chain
+  STR_{r+1} ∣ STR_K ∣ strTop (induction on strAux); nonneg from ℕ-casts.
+  Deps: none. Difficulty: routine-opus. Size: ~40.
+**CL-08** — LatticeExp + wE + the four carrier laws.
+  Defs (7) + `gradedExpCarrier T : GradedCarrierR p` with `Gr := T.grQ`.
+  Sketch: AddCommGroup on the subtype (support condition additive); wE via the
+  well-ordering of the ℕ-indexed populated levels (Nat.find on
+  `∃ n ≤ N₀, B (n/strTop) ≠ 0` — note wE needs B ≠ 0 to terminate: define via
+  `if h : B = 0 then ⊤ else …`); laws per §3.2. Deps: CL-07. Difficulty:
+  routine-opus (fiddly WithTop bookkeeping, no ideas). Size: ~120; SPLIT RULE:
+  if the AddCommGroup instance alone exceeds ~40 lines, spin it off.
+**CL-09** — packE + the Gr-pin.
+  Def (8) incl. `monoE`, the lattice-support proofs of `packE.slotCoeff` and
+  `monoE` (via LAT + `levelSet`-emptiness ⇒ zero component + T3 for monoE), and
+  `theorem packE_gr_pin : ∀ γ, (packE T rl).G.Gr γ = T.grQ γ := fun _ => rfl`.
+  Deps: CL-07, CL-08. Difficulty: routine-opus. Size: ~80.
+**CL-10** — NCL countermodel attempt (COUNTERMODEL-FIRST; runs before CL-11/12).
+  Charge: try to falsify (10) — find distinct same-height bounded addresses
+  c ≠ c' (equal ht forces different l when s differs, since κ > 0 … verify) and
+  digits a, b with `digLift a · mono c + digLift b · mono c' = 0`, or prove a
+  small decidable instance rules it out. Attack the mod-p reduction's weak point:
+  digLift has gaussVal 0 (SOME coefficient is a unit) but its mod-p reduction
+  could in principle interact across DIFFERENT x-degree blocks. Output: a
+  countermodel, or a "mechanism survey: none found" report naming the exact
+  algebraic fact that blocks each attempt. Deps: none. Difficulty: hard-fable
+  (analysis unit, no required theorem). Size: report + optional ≤60-line cert.
+**CL-11** — F_p[x] positional uniqueness.
+  Statement (over any field K₀, applied at K₀ = 𝔽_p): for a finite set of
+  DISTINCT slot vectors s : Fin (K+1) → ℕ bounded by `slotBound` at inner
+  levels and constant (= b) at the top, monic Φ̄_r with
+  deg Φ̄_{r+1} = slotBound r · deg Φ̄_r (the key-degree ratio law), and nonzero
+  digits d̄_s with deg d̄_s < deg Φ̄₀:  Σ_s d̄_s · ∏_r Φ̄_r^{s r} ≠ 0.
+  Sketch: strong induction on the highest inner level where the s differ;
+  Euclidean uniqueness of div/mod by Φ̄_r^{(min slot at level r)} with the degree
+  bound Σ_{r'<r} slotBound·deg < deg Φ̄_r (the mixed-radix carry bound — T9(b)'s
+  numeric kernel re-used); base case: distinct powers of nothing left, one term,
+  d̄ ≠ 0. NOTE: the top slot is CONSTANT b, so it factors out (`Φ̄_K^b ≠ 0`) —
+  the induction runs on inner levels only. Deps: CL-10 (must complete first).
+  Difficulty: hard-fable. Size: ~150; SPLIT RULE: the div/mod degree lemma is
+  its own ~40-line sublemma — E-phase writer may emit CL-11a/CL-11b.
+**CL-12** — NCL: the ℤ_[p] lift.
+  Statement: display (10). Sketch: l_min := min p-exponent over supp y (finite);
+  in `slotCoeff b ŷ = Σ digLift(y c)·C(p^{l c})·∏Φ^{s c}`, reduce the coefficient
+  ring mod p^{l_min+1}: terms with l > l_min vanish; divide by p^{l_min}; reduce
+  mod p: survivors have distinct s (equal ht + equal l ⇒ equal s via the ht
+  formula's ℚ-independence over the bounded slots — the same-baseIdx step of
+  T9(b) — hence equal c); digits reduce to d̄_c ≠ 0 (gaussVal(digLift) = 0);
+  apply CL-11; conclude the polynomial ≠ 0 in ℤ_[p][x] (a nonzero mod-p^{l_min+1}
+  image). Deps: CL-10, CL-11, T9. Difficulty: hard-fable. Size: ~120.
+**CL-13** — LVL-DET.
+  Statement: display (9). Sketch: NCL gives the polynomial ≠ 0; T4 on ŷ (hfin
+  from `levelSet_finite'`, hsupp from level-set support, all heights = γ) pins
+  `wQ (slotCoeff b ŷ) = γ` exactly; `(T6_carrierLaws T).2`'s inγ_detects leg
+  gives `T.inGr γ … ≠ 0`. Deps: CL-12. Difficulty: routine-opus. Size: ~35.
+**CL-14** — repaired (i-b) at packE (the transport).
+  Statement: leg (i-b) of the CL-06-ratified LSTStmt' for `packE T rl`.
+  Sketch: §3.2's two-level argument — γ̂ := wE(E) via detects; T4 on the
+  γ̂-restriction for the witness c₀; minimality by contradiction through LVL-DET
+  at any lower populated height. Careful bookkeeping: y's support need not be
+  finite (VARIANT B) — every step above uses only PER-LEVEL restrictions, which
+  are finite; if VARIANT A was ratified, hfin is available and unused.
+  Deps: CL-06, CL-08, CL-09, CL-13. Difficulty: hard-fable. Size: ~100.
+**CL-15** — the easy LST legs at packE: (i-a), (i-c), (ii), (iii).
+  Sketch: (i-a) monoE single-level detect/kill via T3 + `mono_ne` (lift the
+  ScratchC6 private into this unit's file or re-prove — 10 lines); (i-c)
+  componentwise `rfl`-after-congr (the level restriction reads only lvl-values);
+  (ii) `rfl`-adjacent (floorB definitional); (iii) the C1 leg-(iii) two-liner.
+  Deps: CL-09 (+CL-07 for (i-a)'s lattice cases). Difficulty: routine-opus.
+  Size: ~90 total.
+**CL-16** — TYP conjunct 1 at packE + SecB1Stmt'.
+  Sketch: componentwise; restriction additive; rewrite both sides through
+  `T.typComposite` (the extension-of-restriction lemma: for z supported in
+  lvl b γ, `T.slotCoeff b z = T.slotCoeff b (extension of the subtype tuple)`);
+  close with `C2_TYPa T b γ |>.2`. Emit both `packE_typ1` and
+  `packE_secB1 : SecB1Stmt' p (packE T rl)` (same proof, second binder order).
+  SecB1 is NOT consumed by R6's statement — providing it is a flagged ADDITION
+  (§6 Q-6). Deps: CL-09. Difficulty: routine-opus. Size: ~70.
+**CL-17** — TYP conjunct 2 at packE.
+  Sketch: prove the closure-set equality `(R2's union at packE) = ↑(T.alphabet
+  b γ')` — both are closures of the same single-slot image family (the
+  subtype-Pi.single vs full-Pi.single rewriting: `Pi.single (c : Coord) y`
+  restricted to lvl equals the subtype `Pi.single ⟨c,h⟩ y` extension; for
+  c ∉ lvl both sides contribute {0} ⊆ closure — check R2's `⋃ c ∈ K.lvl` form
+  only ranges over members, so only the member case arises); then
+  `(T7_alphabetSpan T b γ').2.2.symm` with `packE.aDim = T.aDim` by rfl.
+  Deps: CL-09. Difficulty: routine-opus (fiddly). Size: ~60.
+**CL-18** — DOMStmt' at packE.
+  Sketch: cases on `i ≤ T.K`: guard branch `interiorEnd = 0` kills b < 0;
+  main branch: `(C4_DOM T rl ⟨i, _⟩ m hm b hb).1` after the if-rewrite.
+  Deps: CL-09. Difficulty: routine-opus. Size: ~25.
+**CL-19** — R6 assembly (kills HC1 sorry #2).
+  `R6_carrierInstance T rl := ⟨packE T rl, packE_gr_pin, ⟨…legs…⟩, ⟨typ1, typ2⟩,
+  dom⟩`; relocate the :73-144 obstruction record verbatim to the file header
+  under a "HISTORY (pre-A17)" banner; keep kernels 2a/2b; refresh the docstring
+  ("hyp: TowerRealizable" stays); `#print axioms` = Lean-core; full `lake build`;
+  MANIFEST as-built note (sorry :145 → 0). Deps: CL-06, CL-14…CL-18.
+  Difficulty: routine-opus (assembly). Size: ~30 + edits.
+**CL-20** — R5 antecedent-vacuity certificate.
+  Statement: `theorem rel1_forall_refuted : ¬ ∀ K : CarrierPackR p, REL1Pack p K`
+  via a junk pack breaking DOMStmt' (two constant lines, interiorEnd 1).
+  + a header record on `EQ2lawIfREL1'`: typed-only, zero consumers at HEAD,
+  re-scope deferred to MovesR unparking (Q-4). NEW public theorem — flagged
+  addition per campaign precedent. Deps: none (R1-R5 as-is; independent of
+  CL-06's edit — re-verify after it lands). Difficulty: routine-opus. Size: ~40.
+
+### MovesGr cluster
+
+**CL-21** — MovesGr quarantine execution (the R2 six).
+  Move the 6 files of §2.3 per the §2.5 convention (names:
+  `MovesGr_<file>_2026-07-30.lean.txt`); README entries incl. the expected
+  baseline delta (§3.3); MovesGr/MANIFEST.json as-built addendum; full
+  `lake build` + AxChk_baseline re-run byte-compare; repo grep proving no
+  import references remain. PRE-STEP (the §5 R-6 check): byte-diff
+  `L2_degZero_subring.lean` (v1, 0 sorries) vs `_v2` statements — v1 proves the
+  same-named theorem against the pre-rekey structure; record the statement diff
+  in the README entry before moving. Deps: none. Difficulty: routine-opus
+  (execution + evidence discipline; no proofs). Size: 0 proof lines.
+**CL-22** — live-partials disposition adjudication (L2_coeffLoc_v2 +
+  L4_genuine_imp_stageCoreL_v2).
+  Present §3.3's options (a)/(b)/(c) with the semaudit classifications;
+  recommended (b) quarantine-both-with-record. If (a) is chosen the repair
+  statement (the `RepLattice`-style named hypothesis) comes back through the
+  fence with its own blueprint addendum. Deps: CL-21 (so the census context is
+  clean). Difficulty: adjudication.
+**CL-23** — (conditional: CL-22 chooses keep-and-improve) bank the 4 derivable
+  v2 obligations: `coeff` clauses 2-3 (hS5-monomial product induction: positions
+  and degrees couple as (−t·ν, e·ν); `e·k_j = j − t·γ` gives the stride),
+  `slot`.2 (distinct positions ⇒ termwise vanishing), `coeff_loc` clause 1
+  (graded-invariant closure induction). Deps: CL-22. Difficulty: hard-fable.
+  Size: ~150 in-file.
+
+### Moves cluster
+
+**CL-24** — deprecated-Moves quarantine execution.
+  Move `L4_TRANSviii_b_R3.lean`, `L5_landTransport_R3.lean`,
+  `L5_landTwoSided_R5.lean`, `L5_landVertexDigit_repair.lean` (+
+  `L4_TRANSviii_a_R5.lean` iff Q-7 says yes) per §2.5 + §3.4's four constraints
+  (the VertexDigit reversal guard is EXECUTION-BLOCKING: re-verify the two HC1
+  imports of `L5_landVertexDigit` still resolve BEFORE and AFTER). README
+  entries with supersession pointers; full build + AxChk byte-compare; update
+  the golf-ledger R2 line and the baseline-header caveat via a dated addendum
+  (never rewrite the frozen baseline files). Deps: none. Difficulty:
+  routine-opus. Size: 0 proof lines.
+**CL-25** — post-sweep audit + records.
+  (i) Repo-wide duplicate-declaration audit: re-run the A26-style census —
+  assert NO fully-qualified name is declared in two live modules (script:
+  extract `theorem|def|structure` names per file, group, diff); expected
+  residue: the 19 live root-namespace MovesGr files (a NAMING smell, NOT a
+  collision — namespacing them is repo-prep batched with sign-off, OUT OF SCOPE
+  here; record only). (ii) Update PROJECT_STATE.md (HC1 census 2 → 0/refenced;
+  MovesGr live census; the "TEN corpus-wide" wording caveat gets the corrected
+  corpus-wide count), HC1/MANIFEST.json (`as_built` refresh: C6/R6 lines),
+  MovesGr/MANIFEST.json, golf ledger R2/R3 closure notes (R3 = MovesT E5, NOT
+  ours — record "R2 executed, R3 untouched, owner MovesT"). Deps: CL-19 or its
+  fence outcome, CL-21, CL-24. Difficulty: routine-opus.
+
+Dependency spine: CL-06 → CL-14 → CL-19; CL-10 → CL-11 → CL-12 → CL-13 → CL-14;
+CL-07 → CL-08 → CL-09 → {CL-14…CL-18} → CL-19; CL-02 → {CL-03 | CL-05};
+CL-21 → CL-22 → CL-23; CL-01, CL-04, CL-10, CL-20, CL-21, CL-24 have no
+prerequisites and can launch in parallel on day one.
+
+Count: 25 units (5 C6, 15 R6, 3 MovesGr, 2 Moves), of which 4 are adjudications
+(CL-02, CL-06, CL-22, + Q-7 inside CL-24) and 2 conditional (CL-03/CL-05
+mutually exclusive; CL-23).
+
+---
+
+## 5. RISKS (each with its countermodel/probe unit)
+
+**R-1. NCL (10) could be FALSE.** The whole R6 closure rides on it; T8's
+subgroup-A construction is circumstantial evidence the original provers DODGED
+kernel-triviality rather than proved it. If CL-10 finds a cancellation:
+(i-b) fails at packE (two-level countermodel per §3.2), the POSITIVE FINDING in
+R6's file is WRONG at its "(i-b) transports from T4" step, and R6 escalates back
+to adjudication with three fallbacks — window-guard (i-b) to NCL-verified blocks
+(vacuity risk: must stay non-trivial), add NCL as a named pack law (statement
+change on CarrierPackR consumers), or re-fence R6. Probe: CL-10, BEFORE CL-11/12.
+
+**R-2. The mod-p reduction step of CL-12 has a real gap candidate.** gaussVal
+(digLift) = 0 gives SOME unit coefficient, but the mod-p reduction d̄_c is
+nonzero only as a POLYNOMIAL — its degree may drop, and the CL-11 induction must
+tolerate deg d̄_c < deg Φ̄₀ with NO lower bound. CL-11's statement is written with
+exactly that tolerance; the E-phase writer must NOT strengthen d̄ to full degree.
+Probe: covered by CL-10's mechanism survey.
+
+**R-3. The repaired dichotomy (4) could STILL be false** — ScratchC6's shallow
+mechanism (digit lines over F_Q ⊊ K_top) may survive the address re-typing, in
+which case fullness needs the digit-field factor too. Probe: CL-04 runs BEFORE
+CL-02 commits to R-b, and CL-05 never launches without CL-04's report.
+
+**R-4. The compiled Tower countermodel (CL-01) may be unbuildable at sane cost**
+(Tower's per-move certificate fields are heavy). Mitigation: capped attempt,
+BLOCKED-with-artifact outcome feeds Q-2; the adjudication can rest on the
+Lean-core certificates (1)-(2) + the math-level record.
+
+**R-5. Quarantine breakage via a stale importer census.** The A7 precedent:
+chunk reports mis-stated import facts that had drifted. Mitigation: §3.4
+constraint 2 (grep at execution time, per file), the VertexDigit
+reversal guard (execution-blocking check in CL-24), and full-build + AxChk
+byte-compare as the acceptance gate for CL-21/CL-24.
+
+**R-6. `L2_degZero_subring` v1 is sorry-FREE** — quarantining a proved file
+under an "R2 sorried-superseded" banner would misstate the record. Mitigation:
+CL-21's pre-step byte-diffs the two statements and writes the true reason
+(same-name supersession after the add_def re-key) into the README entry.
+
+**R-7. The A17 edit ripples.** LSTStmt' is imported by R2/R3/R5/R6 and mentioned
+by kernels 2a/2b's hypotheses (`hlst : LSTStmt' p K` in `LSTib_offBlock_pincer`).
+Adding the (i-b) hypothesis row CHANGES what the pincer kernel refutes — after
+CL-06, kernel 2b documents the PRE-repair defect and its hypothesis no longer
+matches the live def. Mitigation: CL-06 re-types the kernel against a local
+frozen copy of the old (i-b) (e.g. `LSTStmt_pre_A17'` private def) so the
+refutation record stays compilable and honest; this is part of the ratified
+edit, not an afterthought.
+
+**R-8. wE's Nat.find needs decidability + a ℕ-bound.** `B γ ≠ 0` over `grQ γ`
+is not decidable; use Classical.dec + `Nat.find` on the ∃-form, and note the
+populated-level set needs NO upper bound for find (only nonemptiness). If the
+WithTop ℚ plumbing turns ugly, fall back to `sInf` on `{q : ℚ | …}` with the
+lattice discreteness from LAT giving attainment. CL-08's writer picks one and
+records why.
+
+---
+
+## 6. ORCHESTRATOR QUESTIONS (decisions this blueprint cannot make)
+
+**Q-1 (C6, statement fence — Asvin queue Q3).** R-a (minimal honest restate) vs
+R-b (address-typed dichotomy) vs fence-hold? Recommendation: run CL-01 + CL-04
+first, decide on their reports. R-b is the only option that keeps MOVES
+2160-2165's dichotomy as a formal statement.
+
+**Q-2 (C6).** May the C6 adjudication rest on the math-level shallow instance +
+the Lean-core collapse certificates, or is a COMPILED tower countermodel
+required before the fence moves? (Campaign precedent allows machine-verified
+analysis in lieu of a compiled negation when inhabitation is expensive — cf. the
+E-phase fence records — but the "no sorried universal without a
+countermodel-construction attempt" rule requires at least CL-01's attempt.)
+
+**Q-3 (R6/A17, statement fence).** Ratify the (i-b) repair: VARIANT A
+(hfin + hsupp, T4/C1 parity — recommended) or VARIANT B (hsupp only)? Plus the
+DEFECT-2 no-change scoping record, and the R-7 kernel-freezing edit.
+
+**Q-4 (R5).** Disposition of `EQ2lawIfREL1'` after CL-20's vacuity certificate:
+keep typed-only-with-record (recommended; zero consumers at HEAD) or re-scope
+the antecedent now? Re-scoping touches the MovesR unparking design — deferring
+keeps this area self-contained.
+
+**Q-5 (MovesGr).** The two live FAITHLESS partials: quarantine-with-record
+(recommended), keep-as-is, or repair-with-new-hypotheses (triggers a fence
+round + CL-23)? Note the HELD-unit precedent: certified-unprovable content in
+this corpus is kept as MANIFEST records + certificates, not as live sorries.
+
+**Q-6 (R6, scope).** CL-16 can deliver `SecB1Stmt' (packE)` for free. Emit it
+as a flagged addition (recommended — it strengthens the eventual REL1 story), or
+strictly match R6's three-conjunct statement and bank nothing extra?
+
+**Q-7 (Moves, scope).** Quarantine the FIFTH deprecated file
+(`L4_TRANSviii_a_R5.lean`, sorry-free, byte-identical statement to _final, zero
+importers, self-declared deprecated)? Recommendation: yes, same sweep — a
+sorry-free duplicate is still a census ambiguity; but it is outside the task's
+"four files" charge, hence flagged.
+
+**Q-8 (sequencing).** The MovesGr/Moves quarantines (CL-21, CL-24) are pure
+hygiene with no math dependencies — execute immediately, or hold for a single
+repo-prep batch with the (out-of-scope) A26 root-namespacing sign-off? This
+blueprint recommends immediate execution: every day they stand, censuses stay
+caveated.
+
+---
+
+*Blueprint ends. 25 units; hardest: CL-11/CL-12 (NCL — the one new theorem),
+CL-14 (the (i-b) transport), CL-05 (conditional dichotomy), CL-01 (tower
+inhabitation). Every load-bearing status claim above was re-verified by reading
+the file at HEAD on 2026-07-30; where a ledger and the tree disagreed (R6 sorry
+line, VertexDigit A/B labels, L2_degZero_subring v1 sorry count), the TREE was
+taken as ground truth and the discrepancy is recorded in place.*

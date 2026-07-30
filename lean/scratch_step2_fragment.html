@@ -1,0 +1,52 @@
+<!-- REPLACES the entire "Step 2: a finite alphabet" section of uniformity/paper.html:
+     everything from <h2>Step 2: a finite alphabet</h2> up to (not including)
+     <h2>Step 3: linear algebra and the squeeze</h2> — currently lines 164-168. -->
+
+    <h2>Step 2: a finite alphabet</h2>
+
+    <p>The tree is infinite &mdash; polygons steepen, recenterings stack, digits accumulate without bound &mdash; but almost none of that history matters below a node. What the subtree and the transition weights out of a node depend on is one bounded packet of the node's data, its <em>pattern</em>:</p>
+
+    $$(\dagger)\qquad \text{pattern} \;=\; \Bigl(\;\text{tag}\;\Big|\;D,\,w,\,W\;\Big|\;e,\,\ell,\,s_0,\,a\;\Big|\;\lambda,\,(g,\mu)\;\Big|\;\text{flanks}\;\Bigr).$$
+
+    <p>What each group is, and a one-line reason it cannot be dropped:</p>
+    <ul>
+      <li><strong>tag</strong> &mdash; which move opened the current window: the initial read, an increment, or a recentering. The two landing moves transport coefficients into the window by different carry laws, so equal-looking windows with different tags read differently.</li>
+      <li><strong>$D, w, W$</strong> &mdash; degree bookkeeping: $D$ the degree of the current approximating key, $w$ the residue degree accumulated so far, $W$ the window width &mdash; the size of the subproblem the previous selection opened. Everything below the node factors within the budget $W$; a width-2 window and a width-3 window pose different-sized subproblems even when they display the same side.</li>
+      <li><strong>$e, \ell, s_0, a$</strong> &mdash; the geometry of the side being read: stride $e$ (the lowest-terms denominator of the side's slope), normalized length $\ell$ (the degree of its residual), position $s_0$, and the carry anchor $a = \lfloor s_0/e \rfloor$, the count of stride-lattice slots left of the side &mdash; through it a recentering's transport acquires the explicit monomial factor $(\bar z + \bar c)^a$, invisible at $a = 0$, valuation-shifting at $a > 0$. Why $e$: the polygon $(0,1)$&ndash;$(2,0)$ ($e = 2$) commits to ramification whatever every deeper digit says, while $(0,2)$&ndash;$(2,0)$ ($e = 1$) is decided by its residual &mdash; same window, different slope datum, different futures.</li>
+      <li><strong>$\lambda, (g,\mu)$</strong> &mdash; the residual class: the multiset of (degree, multiplicity) pairs of the residual's irreducible factors, with $\sum g^{(i)}\mu^{(i)} = \ell$, plus the pair this branch descends at (the <em>selection</em>; $\bot$ when the read is terminal). Why $\lambda$: $x^2 - p^2 u$ presents the side $(0,2)$&ndash;$(2,0)$ at every prime and every unit $u$, but the residual $z^2 - \bar u$ splits ($\bar u$ a nonzero square), is irreducible ($\bar u$ a nonsquare), or repeats &mdash; over $\mathbb{F}_2$ the only choice is $z^2 - 1 = (z-1)^2$, forcing descent &mdash; identical polygons, three futures.</li>
+      <li><strong>flanks</strong> &mdash; the horizontal spans of the window's other sides (the co-factors, read by sibling branches), heights forgotten.</li>
+    </ul>
+
+    <p>Deliberately <em>not</em> in the packet: the sides' heights, the run-lengths of repeated reads, every digit value, every lift. Heights are unbounded &mdash; retaining them is exactly what would make the alphabet infinite. Forgetting them is safe: $x^2 - 2$ and $x^2 - 8$ (sides $(0,1)$&ndash;$(2,0)$ and $(0,3)$&ndash;$(2,0)$) are the <em>same letter</em> &mdash; different node measures, identical futures. And the prime is not a field of $(\dagger)$ at all: $p$-independence of the alphabet holds by construction, and $p$ enters only through $q$ in the weights. What licenses all this forgetting is the stability lemma, the load-bearing statement of this step:</p>
+
+    $$(\ddagger)\qquad \text{pattern}(v) = \text{pattern}(v') \;\Longrightarrow\; \operatorname{Sub}(v) \,\simeq\, \operatorname{Sub}(v') \ \text{ weight-for-weight over } \mathbb{Q}(q),$$
+
+    <p>for nodes $v, v'$ of any two trees &mdash; the same prime or different primes: there is a bijection of children preserving patterns, and corresponding transitions carry the same weight, one rational expression in $q$ evaluated at each node's own prime. Subtrees are isomorphic as weighted trees, conditional on their roots; the descent is a Markov walk on the finite pattern set, and the transfer matrix of Step 3 is well-defined. One honesty clause: for transitions that route digit overflow through a recentering &mdash; the carry-facing cases &mdash; $(\ddagger)$ rests on the base carry lemmas of Step 1 (the conjecture row of the status table). The finiteness statements next are proved outright.</p>
+
+    $$\#\{\text{patterns at degree } n\} \;\le\; (n+2)^{\,n^2 + 3n + 12}, \qquad \#\{\text{patterns at degree } 3\} = 53 \ \text{(enumerated)}.$$
+
+    <p>The bound is proved by encoding each pattern as a vector of $n^2+3n+12$ slots, each holding a value in $\{0, \dots, n+1\}$ &mdash; one slot for the tag, three for $(D,w,W)$, five for the side geometry (the four displayed fields plus the derived digit count $d = \ell + 1$), two for the selection, $n+1$ indicators for the carry-window slot set, $n^2$ for the residual matrix (the multiplicity of each degree&ndash;order pair), $2n$ for the two flank compositions &mdash; and proving the encoding injective. The bound is astronomically generous; the alphabets that occur are tiny. At degree 1 the catalogue is a single letter. At degree 2 it has fifteen, computed by the same closure that enumerates the 53, and is small enough to display whole. A degree-2 window admits six reads:</p>
+
+    <table class="vals">
+    <tr><th>letter</th><th>side read</th><th>residual $\lambda$</th><th>selection</th><th>next</th></tr>
+    <tr><td>$V$</td><td>$e=1,\ \ell=1$: a vertex splits the window $1{+}1$ (two letters, one per side)</td><td>$\{(1,1)\}$</td><td>$(1,1)$</td><td>confirm a $(1,1)$ piece</td></tr>
+    <tr><td>$S$</td><td>$e=1,\ \ell=2$, full window</td><td>$\{(1,1),(1,1)\}$</td><td>either $(1,1)$</td><td>confirm a $(1,1)$ piece</td></tr>
+    <tr><td>$I$</td><td>$e=1,\ \ell=2$, full window</td><td>$\{(2,1)\}$</td><td>$(2,1)$</td><td>confirm a $(1,2)$ piece</td></tr>
+    <tr><td>$R$</td><td>$e=2,\ \ell=1$, full window</td><td>$\{(1,1)\}$</td><td>$(1,1)$</td><td>confirm a $(2,1)$ piece</td></tr>
+    <tr><td>$D$</td><td>$e=1,\ \ell=2$, full window</td><td>$\{(1,2)\}$</td><td>$(1,2)$: recenter</td><td>re-read the window: any of the six shapes</td></tr>
+    </table>
+
+    <p>Each shape occurs twice &mdash; tagged as a first read or as a re-read after $D$'s recentering &mdash; and three terminal letters confirm the closed pieces $(1,1)$, $(1,2)$, $(2,1)$: six root letters, six recentered, three confirming, fifteen. The transitions: $V$ and $S$ feed the linear confirmation, $I$ and $R$ theirs, and $D$ feeds all six recentered shapes &mdash; including its own copy $\hat D$, the catalogue's unique <em>self-loop</em>. Wildness, in this picture, is just the reachability of the carry-sensitive transitions, the self-loops above all: the quadratic example's march down the digits of the discriminant is the walk entering $\hat D$ and circling there, deepening its approximation without changing its pattern.</p>
+
+    <details class="worked"><summary>Worked example: the fifteen-letter walk, weighted &mdash; and the certified densities read off it</summary>
+    <p>At a recentered node the current frame holds $x^2 + b_r x + c_r$ with both valuations $v_b := v(b_r)$, $v_c := v(c_r)$ at least $1$ (recentering at a repeated root kills the reduction of both coefficients), and by Step 1's cylinder identification the unpinned digits are uniform. The polygon on $(0, v_c), (1, v_b), (2,0)$ reads: $\hat R$ iff $v_c$ odd and $v_b \ge v_c/2$ (one undivided steep side); $\hat V$ iff $v_c > 2v_b$ (a vertex); else $v_c = 2k$ with $v_b \ge k$, one $e{=}1$ side whose residual $z^2 + \tilde b z + \tilde c$ ($\tilde c \ne 0$) splits the case into $\hat S$/$\hat I$/$\hat D$ by its discriminant. Each letter's weight is a geometric sum over the heights the pattern forgot, e.g.</p>
+    $$w(\hat R) \;=\; \sum_{k \ge 0} \underbrace{\Bigl(1 - \tfrac1q\Bigr) q^{-2k}}_{v_c = 2k+1} \cdot \underbrace{q^{-k}}_{v_b \ge k+1} \;=\; \frac{1 - \tfrac1q}{1 - q^{-3}} \;=\; \frac{q^2}{q^2+q+1},$$
+    <p>and altogether, with $N := q^2 + q + 1$:</p>
+    <table class="vals">
+    <tr><th>to</th><th>$\hat R$</th><th>$\hat V$</th><th>$\hat S$</th><th>$\hat I$</th><th>$\hat D$</th></tr>
+    <tr><th>weight from $D$ (either copy)</th><td>$\dfrac{q^2}{N}$</td><td>$\dfrac{1}{N}$</td><td>$\dfrac{q-2}{2N}$</td><td>$\dfrac{q}{2N}$</td><td>$\dfrac{1}{N}$</td></tr>
+    </table>
+    <p>The weights sum to $1$, and $w(\hat V) + w(\hat S) = w(\hat I)$: out of every recentering, split mass equals inert mass &mdash; $\hat V$ repays the apparent asymmetry ($\hat V$ is one measure-event read by two sibling branches, one per piece; its mass counts once). Now the mechanism of Step 3, one state early: the ramified mass $r$ absorbed from $\hat D$ satisfies the one-line linear system $r = \tfrac{q^2}{N} + \tfrac{1}{N}\,r$, so $r = \tfrac{q^2}{N-1} = \tfrac{q}{q+1}$. The first read obeys the same case analysis with $v_b, v_c \ge 0$, giving entry weights $\tfrac1N$ into $R$ and $\tfrac{q}{N}$ into $D$; hence</p>
+    $$\rho_{\mathrm{ram}} \;=\; \frac{1}{N} + \frac{q}{N}\cdot\frac{q}{q+1} \;=\; \frac{1}{q+1}, \qquad \rho_{\mathrm{split}} = \rho_{\mathrm{inert}} = \frac{q}{2(q+1)}$$
+    <p>&mdash; the certified quadratic values, at every prime. The two-state chain of Step 3's worked example is this graph as the discriminant sees it: the chain digests $v(d)$ one digit per step, a letter digests one whole polygon with its heights pre-summed (the $q^{-3k}$ above), and the two collapse to the same invariants &mdash; from the chain's state $B$ the eventually-ramified mass is $\frac{(q-1)/q}{1 - q^{-2}} = \frac{q}{q+1} = r$. Finally, the wild redistribution is visible in the table itself: nothing in it mentions $p$, and at $q = 2$ the weight $\tfrac{q-2}{2N}$ of $\hat S$ is $0$ &mdash; $\mathbb{F}_2$ has one nonzero residue, so a separable residual cannot have two distinct nonzero roots &mdash; and every split at $p=2$ routes through the vertex letters $V$: exactly the &ldquo;$b$ odd, $c$ even&rdquo; route of the first worked example, with the same rational functions, evaluated.</p>
+    </details>

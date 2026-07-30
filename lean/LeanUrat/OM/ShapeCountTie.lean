@@ -549,21 +549,14 @@ lemma exists_perm_of_buildPoly_eq (hinj : Function.Injective e) (hpos : ∀ i, 1
   refine ⟨φ.trans ((Equiv.setCongr hrange).trans φ₀.symm), ?_, ?_⟩
   · -- word is fixed: count matching
     intro i
-    have hcount : ∀ j, (normalizedFactors (buildPoly p w e)).count ((e j : (ZMod p)[X])) = w j := by
-      intro j
+    have hcount : ∀ (f : Fin n → Pool p d), Function.Injective f →
+        ∀ j, (normalizedFactors (buildPoly p w f)).count ((f j : (ZMod p)[X])) = w j := by
+      intro f hf j
       rw [nf_buildPoly, Multiset.count_sum', Finset.sum_eq_single j]
       · rw [Multiset.count_nsmul, Multiset.count_singleton_self, mul_one]
       · intro j' _ hj'
         rw [Multiset.count_nsmul, Multiset.count_singleton,
-          if_neg (fun h => hj' (hinj (Subtype.ext h.symm))), mul_zero]
-      · intro h; exact absurd (Finset.mem_univ j) h
-    have hcount' : ∀ j, (normalizedFactors (buildPoly p w e')).count ((e' j : (ZMod p)[X])) = w j := by
-      intro j
-      rw [nf_buildPoly, Multiset.count_sum', Finset.sum_eq_single j]
-      · rw [Multiset.count_nsmul, Multiset.count_singleton_self, mul_one]
-      · intro j' _ hj'
-        rw [Multiset.count_nsmul, Multiset.count_singleton,
-          if_neg (fun h => hj' (hinj' (Subtype.ext h.symm))), mul_zero]
+          if_neg (fun h => hj' (hf (Subtype.ext h.symm))), mul_zero]
       · intro h; exact absurd (Finset.mem_univ j) h
     set σ := φ.trans ((Equiv.setCongr hrange).trans φ₀.symm)
     have hσe : (e (σ i) : (ZMod p)[X]) = (e' i : (ZMod p)[X]) := by
@@ -574,8 +567,8 @@ lemma exists_perm_of_buildPoly_eq (hinj : Function.Injective e) (hpos : ∀ i, 1
         rfl
       rw [Equiv.ofInjective_apply] at h1
       exact congrArg (fun (z : Pool p d) => (z : (ZMod p)[X])) h1
-    have := hcount (σ i)
-    rw [hσe, heq, hcount' i] at this
+    have := hcount e hinj (σ i)
+    rw [hσe, heq, hcount e' hinj' i] at this
     exact this.symm
   · -- e ∘ σ = e'
     funext i
@@ -749,8 +742,7 @@ lemma card_wstab :
   classical
   have h := DomMulAct.stabilizer_card' (α := Fin n) (ι := ℕ) w
   -- h : Fintype.card {g // w ∘ g = w} = ∏ i ∈ image w univ, (card {a // w a = i})!
-  rw [Nat.card_congr (Equiv.refl {σ : Equiv.Perm (Fin n) // (fun i => w (σ i)) = w}),
-    Nat.card_eq_fintype_card]
+  rw [Nat.card_eq_fintype_card]
   rw [show (@Fintype.card {σ : Equiv.Perm (Fin n) // (fun i => w (σ i)) = w} _)
       = Fintype.card {g : Equiv.Perm (Fin n) // w ∘ (g : Fin n → Fin n) = w} from
     Fintype.card_congr (Equiv.refl _)]
@@ -904,11 +896,7 @@ theorem single_degree_count (d : ℕ) (_hd : 1 ≤ d) (L : Multiset (ℕ × ℕ)
   have hsymℚ : (symFactorMultiset L : ℚ) ≠ 0 := by
     exact_mod_cast symFactorMultiset_ne_zero L
   rw [eq_div_iff hsymℚ]
-  have : ((Order0.avail (ZMod p) d).descFactorial (Multiset.card L) : ℚ)
-      = ((Nat.card (shapeSetW p d w) : ℕ) : ℚ) * (symFactorMultiset L : ℚ) := by
-    rw [← Nat.cast_mul]
-    exact_mod_cast hmaster
-  rw [this]
+  exact_mod_cast hmaster.symm
 
 
 /-! ## RHS bridge: the choice polynomial per-degree factor -/
