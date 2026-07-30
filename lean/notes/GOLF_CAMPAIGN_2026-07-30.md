@@ -513,3 +513,43 @@ entry), this section. Codex artifacts: /tmp/codex_golf_p4/codex_run.jsonl +
 codex_scaffold.jsonl (session-local).
 
 PHASE 4 OUTCOME: ACCEPT (12/13 clean on pass 1; the 13th ratified via pass 2 + record).
+
+## R1 EXECUTION RECORD (2026-07-30) — QUEUED FOR ASVIN SIGN-OFF, NOT EXECUTED
+
+Recon (fresh agent, tree untouched): the sorried private `L5_landTwoSided_missing`
+(L6_measureExact_R4.lean:145) concludes over DefsCore.LandingCylinder (DefsCore.lean:299)
+while the ratified sorry-free repair theorem `L5_landTwoSided`
+(L5_landTwoSided_repair.lean:756, hexact-carrying) concludes over DefsL.LandingCylinderL
+(DefsL.lean:247). NOT aliases; no bridge exists in-tree. The four m0/VERTEX/side/BOX
+clauses coincide verbatim; the TRANSPORT clause differs materially: DefsCore demands
+per-slot toLaurent POLYNOMIALITY (the corpus-documented audit-#4 FAITHLESS locus,
+abandoned at the round-5 redesign) + executable carryDigit recursion, and LACKS the
+terminal no-overflow clause whose absence breaks the reverse implication (DefsL.lean:226-246
+records both defects). A DefsCore<->DefsL bridge in the needed direction is exactly the
+abandoned claim — suspected false. L6's own header prescribes the escape hatch:
+"a future bridge unit must reconcile the two cylinder objects (or re-point measureExact)".
+Consumer cone of L6_measureExact: one scratch file (HC1/ScratchS17.lean) + the axiom
+baseline. Name-collision hazard on consumption: deprecated L5_landTwoSided_R5.lean:755
+declares the SAME name — import only the repair module.
+
+ORCHESTRATOR RECOMMENDATION (option b): re-point L6_measureExact — retype hcylN/hcylM
+over LandingCylinderL, add the single named hypothesis
+`hexact : ¬ X ∣ Σ_{j<N} Cdig j · ψ^j` (f-independent; the D.8 anchor-exactness pin),
+retype the private and prove it by direct application of the ratified repair; header
+records the re-point + the hzN/hzM docstring-accuracy fix. Warrant: audit #4 + the
+Δ-shift countermodel (repair-file header) against the hexact-free form; the DefsCore
+cylinder is the documented-defective rendering. Blast radius: one scratch file.
+
+STATUS: the executing agent was BLOCKED by the safety classifier (statement changes
+require explicit sign-off; the orchestrator concurs — the campaign scoping authority
+was granted for corpus construction, not for this golf session). NOTHING EXECUTED;
+the sorried private STANDS. Fence-rule exposure while it stands: the statement is
+believed FALSE per the documented Δ-shift countermodel family (NOT compiled in-tree —
+deliberately, to avoid creating the sorried-P + proved-not-P inconsistency pattern);
+containment: the lemma is private, its sole consumer is L6_measureExact, whose sole
+consumer is a scratch file. SIGN-OFF ITEM filed in the task ledger.
+
+The same review should cover the two orchestrator ratifications made this session
+under campaign precedent: (1) the PHASE 4 recentering_scaffold ratification (new
+public lemma, one proved-generalization conjunct — see PHASE 4 record above);
+(2) the wave-B provenance repair on Rs2Unique (prose only).

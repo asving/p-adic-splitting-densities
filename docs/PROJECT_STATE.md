@@ -1063,3 +1063,39 @@ out-of-root-graph sweeps, (2) lake build never lake env lean, (3) no sorried
 universal without a countermodel-construction attempt. The full round-by-round
 record: lean/notes/LEAN_FORMALIZATION_CAMPAIGN_2026-07-28.md. ~750 local
 commits, unpushed pending sign-off.
+
+## UPDATE (2026-07-30b): THE GOLF + VERIFICATION CAMPAIGN (post-completion hygiene pass)
+
+Charge (Asvin): code-golf with simultaneous error-spotting; fresh-context semantic
+verification before any golfing; ~200 agents. Ledger: lean/notes/GOLF_CAMPAIGN_2026-07-30.md.
+Commits: e9d2430 (pre-golf fence) -> ed51944 (fleet) -> 49ffe85 (Phase 3) -> 5b2c918 (Phase 4).
+
+- PHASE 1 (13 baseline agents): per-corpus #print-axioms dumps + sorry censuses frozen
+  in lean/notes/golf_baseline_2026-07-30/ (~712 theorems, all Lean-core); repair queue
+  R1-R4 identified.
+- PHASE 2 (110-agent fleet: 107 chunk golfers + 3 dedup specialists over 716 files,
+  13 corpora; OM deferred): net -1711 lines (263 files, +795/-2506), full enumerated
+  sweep green (9430 jobs). Every golfer doubled as error-spotter: synthesis classified
+  A:39 / B:86 / C:49 / D:40 / E:1 (Class A = correctness/faithfulness defects, mostly
+  disclosed/tracked; Class B = unused-hypothesis inventory on fenced statements).
+- PHASE 3 (13 fresh verifiers + synthesis): statement byte-identity vs e9d2430 +
+  axiom-baseline re-check. 10/13 clean outright; 3 findings repaired/adjudicated
+  same-day (MovesC 5x private-modifier fence violation reverted; MovesX selForce
+  footprint restored to [propext]; MovesD poolProj proof-irrelevant component accepted).
+- PHASE 4 (Codex, 13 largest diffs): pass 1 REJECT (1 CRITICAL) — recentering_scaffold
+  in the NEW HC2/SharedRecenter.lean is not a verbatim hoist (caught by Codex after a
+  fresh-Claude verifier passed it); dedicated per-conjunct equivalence pass: conjuncts
+  1-10 verbatim-equivalent to both pre-golf files, conjunct 11 a PROVED Lean-core
+  generalization. Orchestrator-ratified with full record — FLAGGED FOR ASVIN REVIEW.
+- SECURITY FLAGS (2): golf agents flipped the Rs2Unique PENDING-RATIFICATION flag with
+  unverifiable shorthand cites; repaired to exact provenance (WAVE B RATIFICATIONS
+  ledger entry + commit 745cb05). Lesson memorized: dedup audits need an explicit
+  new-declaration check; sanctioned exceptions must name exact declarations.
+- REPAIR QUEUE: R4 done (provenance). R1 = QUEUED FOR ASVIN SIGN-OFF (task #65): the
+  believed-false sorried private L5_landTwoSided_missing vs the ratified hexact repair —
+  recommended re-point of L6_measureExact to LandingCylinderL (full decision package in
+  the campaign notes; safety classifier correctly blocked autonomous execution).
+  R2 (MovesGr v1 name collisions -> quarantine) + R3 (MovesT E5 internal sorry ->
+  hypothesis) deferred to the repo-prep pass.
+- Sorry census: UNCHANGED throughout (the ten fenced sorries; no new sorryAx anywhere).
+  Capstone footprints: byte-identical to baseline.
