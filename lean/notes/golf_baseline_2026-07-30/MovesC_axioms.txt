@@ -1,0 +1,98 @@
+# MovesC pre-golf baseline — 2026-07-30
+# Corpus: lean/LeanUrat/MovesC (37 files, 44 non-private theorems/lemmas)
+# Method: lake env lean on scratch importing all 37 modules, #print axioms per name
+# Scratch: /tmp/golf_baseline/MovesC_axchk_scratch.lean
+
+== AXIOM FOOTPRINTS (44/44 covered, none skipped) ==
+'LeanUrat.MovesC.C0_coordPrec_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_coordPrec_trichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_coordSort' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_digitSystemMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_moveMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_pinStatus' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesC.C0_pinTransport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_pinWelldef' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C0_solvedGraph' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesC.C0_unitriBij' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C1_TYP_fiberCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C1_TYP_toClause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C1_clausesCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C1_stripClause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C2_DOM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C2_DOM_floorForm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C2_EInh_implied' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C2_floorH_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C2_floorH_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C2_freshFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C3_crossing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C3_crossing_reverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C3_lineDom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C3_steeperChain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C3_vtxPolyNe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C3_widthConfine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C4_conditionalMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C4_numPinnedStep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C4_stepMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C5_massCodim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C5_massRec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C6_psiBij' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C6_thmC_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C6_thmC_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C6_transportedAdmissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.C6_transportedSystem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.card_joint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.card_zmod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.clause_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.clausesCountFull' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.clausesCountList' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.putOn_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.putOn_restrict_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesC.restrict_putOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+== SORRY CENSUS (real proof sorries) ==
+ZERO real sorries. Textual 'sorry' matches are all comments/docstrings:
+#   LeanUrat/MovesC/C5_massCodim.lean:12:step brick as a private `sorry` (its `C4.numPinnedStep` dependency was restated, not yet
+#   LeanUrat/MovesC/C5_massCodim.lean:13:imported, when that file was written) — importing it would put `sorryAx` in this unit's
+#   LeanUrat/MovesC/C5_massCodim.lean:14:footprint. Instead the step brick is taken from the NOW-BUILT, sorry-free sibling unit
+#   LeanUrat/MovesC/C5_massCodim.lean:34:  -- with the step brick supplied by the imported sorry-free unit `C4_numPinnedStep`.
+#   LeanUrat/MovesC/Defs.lean:155:no `sorry`, no axioms.
+
+== PER-FILE LINE COUNTS ==
+    13 LeanUrat/MovesC/C0_coordPrec_trans.lean
+    22 LeanUrat/MovesC/C0_coordPrec_trichotomy.lean
+    51 LeanUrat/MovesC/C0_coordSort.lean
+    25 LeanUrat/MovesC/C0_digitSystemMass.lean
+    20 LeanUrat/MovesC/C0_moveMass.lean
+   108 LeanUrat/MovesC/C0_pinStatus.lean
+    68 LeanUrat/MovesC/C0_pinTransport.lean
+   131 LeanUrat/MovesC/C0_pinWelldef.lean
+    91 LeanUrat/MovesC/C0_solvedGraph.lean
+    89 LeanUrat/MovesC/C0_unitriBij.lean
+    96 LeanUrat/MovesC/C1_TYP_fiberCount.lean
+    95 LeanUrat/MovesC/C1_TYP_toClause.lean
+   133 LeanUrat/MovesC/C1_clausesCount.lean
+    44 LeanUrat/MovesC/C1_stripClause.lean
+    23 LeanUrat/MovesC/C2_DOM.lean
+    38 LeanUrat/MovesC/C2_DOM_floorForm.lean
+    28 LeanUrat/MovesC/C2_EInh_implied.lean
+    19 LeanUrat/MovesC/C2_floorH_root.lean
+    32 LeanUrat/MovesC/C2_floorH_succ.lean
+    49 LeanUrat/MovesC/C2_freshFree.lean
+    16 LeanUrat/MovesC/C3_crossing.lean
+    17 LeanUrat/MovesC/C3_crossing_reverse.lean
+   114 LeanUrat/MovesC/C3_lineDom.lean
+    49 LeanUrat/MovesC/C3_steeperChain.lean
+    28 LeanUrat/MovesC/C3_vtxPolyNe.lean
+    55 LeanUrat/MovesC/C3_widthConfine.lean
+   222 LeanUrat/MovesC/C4_conditionalMass.lean
+    50 LeanUrat/MovesC/C4_numPinnedStep.lean
+    71 LeanUrat/MovesC/C4_stepMass.lean
+    57 LeanUrat/MovesC/C5_massCodim.lean
+    41 LeanUrat/MovesC/C5_massRec.lean
+    28 LeanUrat/MovesC/C6_psiBij.lean
+   194 LeanUrat/MovesC/C6_thmC_a.lean
+   173 LeanUrat/MovesC/C6_thmC_b.lean
+   106 LeanUrat/MovesC/C6_transportedAdmissible.lean
+    81 LeanUrat/MovesC/C6_transportedSystem.lean
+   978 LeanUrat/MovesC/Defs.lean
+  3455 total

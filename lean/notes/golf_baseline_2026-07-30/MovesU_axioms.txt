@@ -1,0 +1,88 @@
+# MovesU PRE-GOLF BASELINE
+# Generated: 2026-07-30T09:07:17Z  by fable (pre-golf fence)
+# Corpus: lean/LeanUrat/MovesU/  (17 .lean files: 4 Defs + 13 unit files)
+# Method: lake env lean over a scratch importing all 17 modules; #print axioms per non-private theorem/lemma.
+
+## SECTION 1 — AXIOM FENCE (#print axioms, 40 theorem/lemma decls, all namespace LeanUrat.MovesU)
+## Coverage: 40/40 resolved (0 skipped). Fence = Lean-core {propext, Classical.choice, Quot.sound}; NO sorryAx anywhere.
+
+'LeanUrat.MovesU.CapstoneLedger.finiteness_stack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegData.pool_self_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.Jcell_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.K_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.Wcoef_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.betaLeg_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.bsplit_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.bterm_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.det_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.entry_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegP.iota_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.RegPin.detHyp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.SolveSeam.R_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.SolveSeam.R_defined' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.SolveSeam.evalℝ_eq_Rval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.SolveSeam.rs4_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.SolveSeam.solve_stack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.TreeSeam.finiteness_stack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.UCarriers.cl1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.UCarriers.vmap_mem_Sigmas' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.ZpBridge.zpCount_eq_trueCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.ZpBridge.zpDmass_eq_trueDmass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.boxCard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.boxN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.chartWitness_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.ctsmSyntaxRow_iff_part' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.identification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.lmeas_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.lmeas_implied' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.menuWFT_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.splittingType_nonempty' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesU.sq2_partial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.sq2_partial_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.sq2_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.sq3_arith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.squeeze_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.theoremU' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.tonelli_partial_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.un_bracket' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesU.vmap_deg_sum' depends on axioms: [propext, Quot.sound]
+
+## NOTE: two decls use a strict SUBSET (no Classical.choice): splittingType_nonempty, vmap_deg_sum.
+
+## SECTION 2 — SORRY CENSUS (real proof sorries only; grep for word-boundary sorry, excluding comments/sorryAx-in-strings)
+## Total real proof sorries: 0. (DefsLedger.lean line 111 mentions 'sorryAx' inside a comment about the V corpus fence — NOT a proof sorry.)
+  Defs.lean : 0
+  DefsCarriers.lean : 0
+  DefsLedger.lean : 0
+  U0_boxCard.lean : 0
+  U0b_splitTypeFintype.lean : 0
+  U10_theoremU.lean : 0
+  U11_identification.lean : 0
+  U1_boxN.lean : 0
+  U2_tonelli.lean : 0
+  U3_sq2_partial.lean : 0
+  U4_sq2_upper.lean : 0
+  U5_sq3_arith.lean : 0
+  U6_un_bracket.lean : 0
+  U7_squeeze.lean : 0
+  U8_regP_access.lean : 0
+  U9_lmeas.lean : 0
+
+## SECTION 3 — PER-FILE LINE COUNTS
+   246   Defs.lean
+   138   DefsCarriers.lean
+   820   DefsLedger.lean
+    25   U0_boxCard.lean
+    90   U0b_splitTypeFintype.lean
+   157   U10_theoremU.lean
+    99   U11_identification.lean
+    57   U1_boxN.lean
+    33   U2_tonelli.lean
+    42   U3_sq2_partial.lean
+    52   U4_sq2_upper.lean
+    67   U5_sq3_arith.lean
+    46   U6_un_bracket.lean
+    51   U7_squeeze.lean
+   123   U8_regP_access.lean
+    76   U9_lmeas.lean
+  2122 total

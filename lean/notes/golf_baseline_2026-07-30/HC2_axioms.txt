@@ -1,0 +1,154 @@
+# HC2 PRE-GOLF BASELINE — generated 2026-07-30
+# Corpus: LeanUrat/HC2 (41 .lean files + MANIFEST.json); namespace LeanUrat.MovesJ (sub-ns: U1neg, U27, U31)
+# Method: /tmp/golf_baseline/AxChk_HC2.lean imports all 41 modules, one '#print axioms' per non-private theorem/lemma; run via 'lake env lean' (exit 0).
+# Coverage: 96/96 extracted names resolved. 79 clean (Lean-core subset), 17 sorryAx-tainted, 0 foreign axioms, 0 native_decide.
+
+## AXIOM FOOTPRINTS (96 theorems)
+'LeanUrat.MovesJ.boxChart_sorted' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesJ.boxChart_lt' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesJ.isNodeLift_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.valueSlots_spanSlot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkFreshClauses_disj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.pinTransportSystem_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.isDevelopment_extend' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.strFrame_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.K1_readVertexPin_nonrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.K1_readVertexPin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.K1_NA_transport_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.K1_NA_transport_increment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.K1_SAE_vertexEq_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_step_transport' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_step_freshExact' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_step_interiorZero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_step_confine' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.root_height_of_inBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.jetSetup_of_seed' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.NP_fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.NP_fits_box' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.present_exist_of_seeds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.threshold_of_seeds' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.lift_swap' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.galois_root_swap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.galois_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.galois_normalize_upTo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.galois_normalize' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.presentNorm_total' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.presentNorm_polOM' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.nextField_le_galFixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.canonRoot_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.presentNorm_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_coherent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.keys_exist_of_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U1neg.last_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U1neg.zeroLast_getElem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U1neg.zeroLast_map_e' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U1neg.zeroLast_strFrame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U1neg.zeroLast_coherent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U1neg.zeroLast_no_keys' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.retiredKeysExist_false_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.keysLawful_of_hcoh_false_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.nodeLift_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_NA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.NA_transport_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.NA_transport_increment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.NA_transport_recentering' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_HV_of_pin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_HV' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.SAE_spanStrict_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.SAE_vertexEq_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_SAE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_realizable' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.readsOf_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.polOM_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.polOM_liftOf_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.class_fiber_welldef' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U27.keysLawful₀' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_order0_inert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_order0_sep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_NP_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_NP_fits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_NP_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkFresh_disj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_polOM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.ρ_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.θ_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.bw_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.fq_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.fq_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.is_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.NF_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.bw_const_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.dev_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.coherent_H₀' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.landingKey_ν₀' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.U31.sideReads_ν₀' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.gate_readsOf_inert2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkFresh_band' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.levelSet_no_straddle' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkFresh_cover' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkFresh_assembled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkFresh_mstar' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkSigma_init' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.freshAttach_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkSigma_recursion_of_unpinned' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkSigma_recursion_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkSigma_recursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.mkStratum_inh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_root_downset_mp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_root_downset_mpr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_root_interior_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.zc_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesJ.u9c_probe_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## SORRY CENSUS (real proof sorries only; comment-aware scan)
+U10_zcStep.lean: 5 (lines 50,71,126,142,161)
+U17a_liftSwap.lean: 1 (line 38)
+U21_HV.lean: 1 (line 252)
+U26_fiberWelldef.lean: 1 (line 26)
+U4_freshCover.lean: 1 (line 80)
+TOTAL: 9 real sorries in 5 files; all other 'sorry' hits are docstring text.
+
+## PER-FILE LINE COUNTS
+   733 LeanUrat/HC2/Defs.lean
+   300 LeanUrat/HC2/K1_vertexPin.lean
+   163 LeanUrat/HC2/U10_zcStep.lean
+   102 LeanUrat/HC2/U11_rootHeight.lean
+   115 LeanUrat/HC2/U13_assembly.lean
+   271 LeanUrat/HC2/U14_npFits.lean
+    71 LeanUrat/HC2/U15_presentExist.lean
+    39 LeanUrat/HC2/U16_threshold.lean
+    40 LeanUrat/HC2/U17a_liftSwap.lean
+   961 LeanUrat/HC2/U17b_galois.lean
+    79 LeanUrat/HC2/U17c_total.lean
+   230 LeanUrat/HC2/U18_unique.lean
+    30 LeanUrat/HC2/U19_runCoherent.lean
+    74 LeanUrat/HC2/U1_keysExist.lean
+   249 LeanUrat/HC2/U1_negWitness.lean
+    86 LeanUrat/HC2/U1b_nodeLift.lean
+   153 LeanUrat/HC2/U20_NA.lean
+    50 LeanUrat/HC2/U20a_NAtransportRoot.lean
+    54 LeanUrat/HC2/U20b_NAtransportIncrement.lean
+   616 LeanUrat/HC2/U20c_NAtransportRecentering.lean
+   256 LeanUrat/HC2/U21_HV.lean
+   636 LeanUrat/HC2/U22E1_spanStrict.lean
+    52 LeanUrat/HC2/U22E2_vertexEq.lean
+   183 LeanUrat/HC2/U22_SAE.lean
+    36 LeanUrat/HC2/U23_runRealizable.lean
+    31 LeanUrat/HC2/U24_runCanon.lean
+   164 LeanUrat/HC2/U25_polTotal.lean
+    28 LeanUrat/HC2/U26_fiberWelldef.lean
+   761 LeanUrat/HC2/U27_gateInert.lean
+  1731 LeanUrat/HC2/U28_gateSep.lean
+   202 LeanUrat/HC2/U29_gateNP.lean
+    32 LeanUrat/HC2/U2_freshDisj.lean
+   637 LeanUrat/HC2/U30_gatePol.lean
+  1244 LeanUrat/HC2/U31_gateReadsOf.lean
+    64 LeanUrat/HC2/U3_freshBand.lean
+   151 LeanUrat/HC2/U4_freshCover.lean
+   122 LeanUrat/HC2/U5_freshAssembled.lean
+   179 LeanUrat/HC2/U6_mstarEq.lean
+   398 LeanUrat/HC2/U7_sigmaRec.lean
+    40 LeanUrat/HC2/U8_inhImplied.lean
+   610 LeanUrat/HC2/U9_zcRoot.lean
+ 11973 total

@@ -1,0 +1,158 @@
+# MovesX PRE-GOLF BASELINE  (generated 2026-07-30T09:09:22Z)
+# corpus: lean/LeanUrat/MovesX/*.lean  (48 unit files + Defs.lean)
+# toolchain: leanprover/lean4:v4.31.0 ; full MovesX build green (lake build, exit 0)
+# MANIFEST.json is the STALE E-phase snapshot (claims 44 sorries); live corpus below.
+
+## SECTION 1 — #print axioms fence (every non-private theorem/lemma/def/instance)
+## Method: LeanUrat/MovesX/AxChkMovesX.lean imports all modules; lake env lean it.
+## 42 named public decls covered (40 theorem/lemma + nsFreeDec instance + valExtOf def).
+## ALL sorryAx-FREE (Lean-core {propext,Classical.choice,Quot.sound} or a subset).
+## Anonymous 'example' anchors (XA6, XA7b x2, XE1a-h) cannot be #print-axioms'd -> skipped.
+
+'LeanUrat.MovesX.rowTotal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.selForce' depends on axioms: [propext]
+'LeanUrat.MovesX.t1Witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.t1Arith' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.t2Witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.lat1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.latSlice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.latGen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.t34Zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.ind2Region' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.dCertZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.dCertMono' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesX.fourPop' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesX.t3Charge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x1aChain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x1aTrivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x1bReduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x1bReductionT4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.capTotal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.maxHNil' depends on axioms: [propext]
+'LeanUrat.MovesX.x2hypCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x2hypDichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x2hypAssembled' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.envelopeExp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.envelopeSqrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.discCylinder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.discResBridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.resRootSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.pigeonMax' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.ballCover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.tailCountBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.tailZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.discZeroNull' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.branchLenBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.koenigFinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.detectJoin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.interTrichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.treeFinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x3Density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.x3Series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.nsFreeDec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesX.valExtOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## SECTION 2 — real proof-sorry census (per file; comment-only 'sorry' EXCLUDED)
+## Confirmed: all 5 grep hits for /\bsorry\b/ are in comment lines. REAL sorries = 0 corpus-wide.
+## No sorryAx / admit / native_decide / axiom declarations anywhere in corpus.
+0  LeanUrat/MovesX/Defs.lean
+0  LeanUrat/MovesX/XA1.lean
+0  LeanUrat/MovesX/XA2.lean
+0  LeanUrat/MovesX/XA3.lean
+0  LeanUrat/MovesX/XA4.lean
+0  LeanUrat/MovesX/XA5.lean
+0  LeanUrat/MovesX/XA6.lean
+0  LeanUrat/MovesX/XA7a.lean
+0  LeanUrat/MovesX/XA7b.lean
+0  LeanUrat/MovesX/XA8.lean
+0  LeanUrat/MovesX/XA9.lean
+0  LeanUrat/MovesX/XB1.lean
+0  LeanUrat/MovesX/XB2.lean
+0  LeanUrat/MovesX/XB3.lean
+0  LeanUrat/MovesX/XB4.lean
+0  LeanUrat/MovesX/XC1.lean
+0  LeanUrat/MovesX/XC2.lean
+0  LeanUrat/MovesX/XC3.lean
+0  LeanUrat/MovesX/XC4.lean
+0  LeanUrat/MovesX/XD1.lean
+0  LeanUrat/MovesX/XD2.lean
+0  LeanUrat/MovesX/XD3.lean
+0  LeanUrat/MovesX/XD4.lean
+0  LeanUrat/MovesX/XE1a.lean
+0  LeanUrat/MovesX/XE1b.lean
+0  LeanUrat/MovesX/XE1c.lean
+0  LeanUrat/MovesX/XE1d.lean
+0  LeanUrat/MovesX/XE1e.lean
+0  LeanUrat/MovesX/XE1f.lean
+0  LeanUrat/MovesX/XE1g.lean
+0  LeanUrat/MovesX/XE1h.lean
+0  LeanUrat/MovesX/XE2.lean
+0  LeanUrat/MovesX/XE3.lean
+0  LeanUrat/MovesX/XF1.lean
+0  LeanUrat/MovesX/XF10.lean
+0  LeanUrat/MovesX/XF2.lean
+0  LeanUrat/MovesX/XF3.lean
+0  LeanUrat/MovesX/XF4.lean
+0  LeanUrat/MovesX/XF5.lean
+0  LeanUrat/MovesX/XF6.lean
+0  LeanUrat/MovesX/XF7.lean
+0  LeanUrat/MovesX/XF8.lean
+0  LeanUrat/MovesX/XG1.lean
+0  LeanUrat/MovesX/XG2.lean
+0  LeanUrat/MovesX/XG2b.lean
+0  LeanUrat/MovesX/XG2c.lean
+0  LeanUrat/MovesX/XG2d.lean
+0  LeanUrat/MovesX/XG3.lean
+0  LeanUrat/MovesX/XG4.lean
+
+## SECTION 3 — per-file line counts (wc -l)  [AxChkMovesX.lean = scratch fence file, excluded]
+   469 LeanUrat/MovesX/Defs.lean
+    28 LeanUrat/MovesX/XA1.lean
+    30 LeanUrat/MovesX/XA2.lean
+    49 LeanUrat/MovesX/XA3.lean
+    29 LeanUrat/MovesX/XA4.lean
+    58 LeanUrat/MovesX/XA5.lean
+   146 LeanUrat/MovesX/XA6.lean
+   155 LeanUrat/MovesX/XA7a.lean
+    70 LeanUrat/MovesX/XA7b.lean
+    42 LeanUrat/MovesX/XA8.lean
+    57 LeanUrat/MovesX/XA9.lean
+    33 LeanUrat/MovesX/XB1.lean
+    72 LeanUrat/MovesX/XB2.lean
+    42 LeanUrat/MovesX/XB3.lean
+    72 LeanUrat/MovesX/XB4.lean
+    31 LeanUrat/MovesX/XC1.lean
+    32 LeanUrat/MovesX/XC2.lean
+    45 LeanUrat/MovesX/XC3.lean
+    44 LeanUrat/MovesX/XC4.lean
+    36 LeanUrat/MovesX/XD1.lean
+    84 LeanUrat/MovesX/XD2.lean
+    24 LeanUrat/MovesX/XD3.lean
+    75 LeanUrat/MovesX/XD4.lean
+    17 LeanUrat/MovesX/XE1a.lean
+    15 LeanUrat/MovesX/XE1b.lean
+    15 LeanUrat/MovesX/XE1c.lean
+    15 LeanUrat/MovesX/XE1d.lean
+    16 LeanUrat/MovesX/XE1e.lean
+    17 LeanUrat/MovesX/XE1f.lean
+    16 LeanUrat/MovesX/XE1g.lean
+    16 LeanUrat/MovesX/XE1h.lean
+   347 LeanUrat/MovesX/XE2.lean
+   417 LeanUrat/MovesX/XE3.lean
+    97 LeanUrat/MovesX/XF1.lean
+    30 LeanUrat/MovesX/XF10.lean
+    20 LeanUrat/MovesX/XF2.lean
+    28 LeanUrat/MovesX/XF3.lean
+    84 LeanUrat/MovesX/XF4.lean
+    23 LeanUrat/MovesX/XF5.lean
+   382 LeanUrat/MovesX/XF6.lean
+   370 LeanUrat/MovesX/XF7.lean
+    67 LeanUrat/MovesX/XF8.lean
+    28 LeanUrat/MovesX/XG1.lean
+    79 LeanUrat/MovesX/XG2.lean
+    37 LeanUrat/MovesX/XG2b.lean
+    34 LeanUrat/MovesX/XG2c.lean
+    85 LeanUrat/MovesX/XG2d.lean
+    74 LeanUrat/MovesX/XG3.lean
+    90 LeanUrat/MovesX/XG4.lean
+  4142 total  (corpus = 48 unit files + Defs.lean; scratch fence file excluded)

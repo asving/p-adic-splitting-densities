@@ -1,0 +1,243 @@
+# MovesT PRE-GOLF BASELINE — #print axioms fence
+# Generated 2026-07-30 via `lake env lean` on scratch importing all 56 MovesT modules.
+# Toolchain leanprover/lean4:v4.31.0. Corpus: LeanUrat/MovesT/ (56 .lean files, 55 units + Defs).
+# Coverage: 141 non-private theorem/lemma declarations, ALL resolved.
+# SKIPPED (3): false-positives from comment/docstring text, NOT real decls:
+#   LeanUrat.MovesT.is  (docstring word, Defs.lean:1059 'lemma is the note's own...')
+#   LeanUrat.MovesT.shared_split_state_forced   (RETIRED, in E8 header comment block)
+#   LeanUrat.MovesT.shared_split_siteExp_forced  (RETIRED, in E8 header comment block)
+#
+# Trusted footprint = [propext, Classical.choice, Quot.sound] (or subset). sorryAx = open hole.
+############################################################
+
+## AXIOM FOOTPRINTS (sorted by qualified name)
+'LeanUrat.MovesT.AofTr_shape_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.accEF_keyDeg' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.acc_childWidth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.acc_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.bandLevels_mem_elim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.belowHalt_decomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.belowHalt_empty_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.belowHalt_excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.canonRoot_sibNode2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.canonRoot_toyHead' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.capEnvelope_cellLocal_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.capIrr_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.cellLevel_local_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.cellOf_nonconstant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.cfw_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.chainReads_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.chain_charge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.constFalse_childCover_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.constFalse_no_cellAssign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.contfib_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.coordOf_fst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.coordOf_key_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.d4rcyl_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.eligibleT_cell_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.eligibleT_iff_child' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.eligibleT_root_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.eligible_nonvacuity_toy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.exists_of_mem_foldr_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.f1_two_leaf_discharge' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.fibOf_fiber_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.fibOf_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.fiber_first_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.fiber_root_split' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.fiber_seg_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.henPayload_cell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.history_ext' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.irr_iff_mu_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.jcMulti_branching' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.jcRoot_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.jcRoot_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.jc_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.laws_t1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.laws_t2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.le_sup_of_transported' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.levelIdx_coordOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.level_lt_npband' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.mem_bandLevels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.mem_foldr_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.mem_of_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.no_childless_vacuity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.np_id' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.np_id_pin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.np_id_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.npband_eq_sup_bandLevels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.nsNull_of_pricing_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.nsZ_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.ns_ladder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.ns_lump' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.ns_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.ns_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.ns_tree_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.oneF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.parentSt_of_deep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.perShape_law' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.preHalt_dict_ptwise' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.preHalt_dict_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.preHalt_prunedMem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.presents_imply_jcMultiAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.readLedgerOf_bdy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.readOf_guards_dead' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.redPoly_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.rootOnly_childless_rejected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.rootSplit_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.sat_iff_W1' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.sat_iff_selNone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.shapeClass_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.shapeOfH_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.shared_read_forces' does not depend on any axioms
+'LeanUrat.MovesT.shz_top_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.sibCount_pair_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.sibNode2_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.sibNode2_species' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.sib_falsifier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.sib_root_instance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.spectator_conditional_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.strictMono_fin_eq_id' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.t1_ne_t2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.t1_nodes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.t2_nodes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tau_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tau_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tbcap_hen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tbcap_hen_cells' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tbcap_irr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tbcap_irr_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tbcap_irr_npband' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tgt_finadd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyHead_ne_sibNode2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyHead_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK3_three_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK3_three_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK3_two_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK_X_sub_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK_add_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK_head_ord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK_leaf_ord' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK_two_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyK_two_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyLeafA_nonroot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyLeafB_nonroot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyPat3_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyStage3_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyStage_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_belowHalt_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_e5_instance' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_fiber_ne' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_gate' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_henflip_unrealizable' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_jcmulti_site' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_oneF' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_sib' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_state_cell' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_v8_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_v8_wchain' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toy_vdict_nonconstant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.toyχ_injective' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.treeExp' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.treeN' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.treeN_ns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.treeN_stable' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.treeN_stable_stmt' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.tree_fiber_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.unitri_preimage_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.vdAt_nontrivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.vd_deg_hen' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.vd_deg_ns' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesT.vdict_cell_of_child_cell' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.vtree_eq_of_fiberAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.vtree_ext_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.vtree_pathOrder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesT.w3_rekey_typed' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+############################################################
+## SUMMARY
+# Total decls fenced: 141
+# Lean-core clean (no sorryAx): 126
+# Carry sorryAx (open): 15
+# Decls carrying sorryAx:
+#   LeanUrat.MovesT.fiber_root_split
+#   LeanUrat.MovesT.perShape_law
+#   LeanUrat.MovesT.toy_e5_instance
+#   LeanUrat.MovesT.toy_fiber_ne
+#   LeanUrat.MovesT.toy_gate
+#   LeanUrat.MovesT.toy_henflip_unrealizable
+#   LeanUrat.MovesT.toy_jcmulti_site
+#   LeanUrat.MovesT.toy_oneF
+#   LeanUrat.MovesT.toy_sib
+#   LeanUrat.MovesT.toy_state_cell
+#   LeanUrat.MovesT.toy_v8_wchain
+#   LeanUrat.MovesT.treeExp
+#   LeanUrat.MovesT.treeN
+#   LeanUrat.MovesT.treeN_stable
+#   LeanUrat.MovesT.treeN_stable_stmt
+
+############################################################
+## SORRY CENSUS (real proof-body sorries; grep of ':= by sorry' and standalone 'sorry')
+E11_treeN.lean: 1   (lines [96])
+E5_rootSplit.lean: 1   (lines [355])
+G1_toyGate.lean: 4   (lines [562, 782, 2245, 2248])
+TOTAL real proof-body sorries: 6  (MANIFEST records 6 sorried declarations)
+
+############################################################
+## PER-FILE LINE COUNTS
+    72  C1_capHen.lean
+   316  C2_capIrr.lean
+    41  C3_nsLump.lean
+    44  C4_nsLadder.lean
+   103  C5_nsFree.lean
+    42  C6_nsPrice.lean
+   193  C7_nsNull.lean
+    33  C8_nsTreeBound.lean
+    38  D10_classTreeCtbl.lean
+   504  D11_fibOf.lean
+   137  D12_packages.lean
+    77  D13_ifaceGate.lean
+   179  D14_chainCharges.lean
+    38  D15_w3Rekey.lean
+    47  D1_eligible.lean
+   201  D2_eligGate.lean
+   108  D3_verdictModel.lean
+    65  D4_cellLevel.lean
+    30  D5_d4rcyl.lean
+    49  D6_cfw.lean
+   236  D7_npid.lean
+    46  D8_pathOrder.lean
+    47  D9_shapeCtbl.lean
+  1864  Defs.lean
+   161  E10_perShape.lean
+   105  E11_treeN.lean
+    78  E12_treeNns.lean
+    47  E13_tgtFinAdd.lean
+    36  E1_jcRootPart.lean
+    75  E2_jcRootCard.lean
+    40  E3_jcSingle.lean
+    41  E4_jcMultiBranch.lean
+   707  E5_rootSplit.lean
+   189  E6_segStep.lean
+    48  E7_firstSplit.lean
+   763  E8_treeExp.lean
+    69  E9_fiberDisjoint.lean
+   134  F0_preHalt.lean
+    34  F1_oneF.lean
+    99  F2_dictPtwise.lean
+   221  F3_dictSum.lean
+    66  F4_belowHalt.lean
+  2552  G1_toyGate.lean
+   112  G2_toyOneF.lean
+    40  S1_sibDefs.lean
+   363  S2_sibFalse.lean
+    38  S3_sibRoot.lean
+    22  V1_vdDeg.lean
+    23  V2_vdDegNs.lean
+   103  V3_accKeyDeg.lean
+    40  V4_satW1.lean
+    29  V5_tauDisjoint.lean
+    44  V6_tauTotal.lean
+    95  V7_vdFin.lean
+   235  V8_shapeOf.lean
+    93  V9_irrSat.lean
+ 11212  TOTAL

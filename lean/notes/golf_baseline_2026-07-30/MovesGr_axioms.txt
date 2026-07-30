@@ -1,0 +1,108 @@
+# MovesGr pre-golf baseline — 2026-07-30
+# Corpus: LeanUrat/MovesGr/*.lean (30 files). All oleans present & newer than sources at capture time.
+# Method: two scratch files (name collisions between v1 and v2/v3 modules force a split):
+#   Group A = latest versions (imports: all modules EXCEPT the five superseded ones below)
+#   Group B = superseded modules L1_gr_domain_iff_val(v1), L1_gradedRingStr_exists(v1), L2_coeffLoc(v1), L2_degZero_subring(v1), L4_genuine_imp_stageCoreL(v1)
+# Scratch sources: /tmp/golf_baseline/FenceA.lean, FenceB.lean ; lake env lean, both exit 0.
+
+## GROUP A (current versions; root-level names come from the v2/v3 module where a family exists)
+'LeanUrat.MovesGr.SideVal.coe_deg_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.SideVal.deg_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'stripReps_recentering' depends on axioms: [propext, Classical.choice, Quot.sound]
+'stripReps_not_stageCore' depends on axioms: [propext, Classical.choice, Quot.sound]
+'recTRANSRS_only_vacuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'baseStage_hbase_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'transitionCoreL_e0_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'tvec_units_fragment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_deg_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_ge_antitone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_gt_le_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_initialForm_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_initialForm_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_pmul_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L1_pmul_assoc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L1_initialForm_add_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L1_initialForm_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.L1_gradedRingStr_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L1_gr_domain_iff_val' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.L1_gr_domain_iff_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L2_coeffLoc' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.L2_degZero_subring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.L2_homMon_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L2_loc_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L3_Tunit_deg1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L3_iso_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L3_rank1_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L3_residual_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L4_genuine_imp_stageCoreL' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'L4_grRes_eq_genuine' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## GROUP B (superseded v1 modules; same declared names, different modules)
+'L1_gr_domain_iff_val' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.L1_gradedRingStr_exists' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'L2_coeffLoc' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.MovesGr.L2_degZero_subring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L4_genuine_imp_stageCoreL' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+
+## SORRY CENSUS (real proof sorries)
+# NOTE: per-file numbers below are LINE counts matching sorry patterns; true TOKEN totals: L4_genuine_imp_stageCoreL_v2 = 12 tokens on 11 lines (415 and 417 hold multiple/inline sorries). All other files: tokens = lines. Grand total 19 sorry tokens, 7 files; 11 of them in superseded v1 modules + v2 files' open conjuncts as itemized below.
+LeanUrat/MovesGr/L1_gr_domain_iff_val_v2.lean:1
+LeanUrat/MovesGr/L2_coeffLoc_v2.lean:2
+LeanUrat/MovesGr/L1_gr_domain_iff_val.lean:1
+LeanUrat/MovesGr/L1_gradedRingStr_exists.lean:1
+LeanUrat/MovesGr/L4_genuine_imp_stageCoreL_v2.lean:10
+LeanUrat/MovesGr/L2_coeffLoc.lean:3
+LeanUrat/MovesGr/L4_genuine_imp_stageCoreL.lean:1
+# per-token detail:
+L1_gr_domain_iff_val.lean:59:          sorry }
+L1_gr_domain_iff_val_v2.lean:109:          sorry }
+L2_coeffLoc_v2.lean:165:    sorry
+L2_coeffLoc_v2.lean:173:    sorry
+L2_coeffLoc.lean:22:    sorry
+L2_coeffLoc.lean:27:    sorry
+L2_coeffLoc.lean:35:    sorry
+L1_gradedRingStr_exists.lean:115:  mul_assoc a b c := by sorry
+L4_genuine_imp_stageCoreL.lean:68:theorem L4_genuine_imp_stageCoreL (σ : Stage p F) (M : GenuineStageModel σ) : StageCoreL σ := sorry
+L4_genuine_imp_stageCoreL_v2.lean:396:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:398:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:400:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:402:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:410:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:412:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:415:    exact ⟨fun B N γ hBN hBw hne hw => slot_decomp_model σ M B N γ hBN hBw hne hw, sorry⟩
+L4_genuine_imp_stageCoreL_v2.lean:417:    refine ⟨fun c => ?_, sorry, sorry⟩
+L4_genuine_imp_stageCoreL_v2.lean:421:    sorry
+L4_genuine_imp_stageCoreL_v2.lean:423:    sorry
+
+## LINE COUNTS
+   270 LeanUrat/MovesGr/Defs.lean
+    63 LeanUrat/MovesGr/HeldUnits_L5_cert.lean
+    91 LeanUrat/MovesGr/HeldUnits_certs.lean
+    17 LeanUrat/MovesGr/L0_deg_add.lean
+    16 LeanUrat/MovesGr/L0_ge_antitone.lean
+    17 LeanUrat/MovesGr/L0_gt_le_ge.lean
+    27 LeanUrat/MovesGr/L0_initialForm_ne_zero.lean
+    22 LeanUrat/MovesGr/L0_initialForm_zero.lean
+    13 LeanUrat/MovesGr/L0_pmul_mk.lean
+    60 LeanUrat/MovesGr/L1_gr_domain_iff_val.lean
+   110 LeanUrat/MovesGr/L1_gr_domain_iff_val_v2.lean
+   253 LeanUrat/MovesGr/L1_gr_domain_iff_val_v3.lean
+   186 LeanUrat/MovesGr/L1_gradedRingStr_exists.lean
+   218 LeanUrat/MovesGr/L1_gradedRingStr_exists_2.lean
+    18 LeanUrat/MovesGr/L1_initialForm_add_lt.lean
+    18 LeanUrat/MovesGr/L1_initialForm_mul.lean
+    48 LeanUrat/MovesGr/L1_pmul_assoc.lean
+    35 LeanUrat/MovesGr/L2_coeffLoc.lean
+   173 LeanUrat/MovesGr/L2_coeffLoc_v2.lean
+    71 LeanUrat/MovesGr/L2_degZero_subring.lean
+   121 LeanUrat/MovesGr/L2_degZero_subring_v2.lean
+    43 LeanUrat/MovesGr/L2_homMon_homogeneous.lean
+    30 LeanUrat/MovesGr/L2_loc_exists.lean
+    18 LeanUrat/MovesGr/L3_Tunit_deg1.lean
+    18 LeanUrat/MovesGr/L3_iso_exists.lean
+    19 LeanUrat/MovesGr/L3_rank1_residual.lean
+    56 LeanUrat/MovesGr/L3_residual_mul.lean
+    68 LeanUrat/MovesGr/L4_genuine_imp_stageCoreL.lean
+   423 LeanUrat/MovesGr/L4_genuine_imp_stageCoreL_v2.lean
+    18 LeanUrat/MovesGr/L4_grRes_eq_genuine.lean
+  2540 total

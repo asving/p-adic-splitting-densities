@@ -1,0 +1,226 @@
+# MovesD PRE-GOLF BASELINE — generated 2026-07-30T09:08:49Z
+# corpus: lean/LeanUrat/MovesD/  (56 modules: 1 Defs + 55 unit/support files)
+# namespace: LeanUrat.MovesD (verified: single namespace per file, all files)
+# build: lake build of all 56 modules -> green (8632 jobs), toolchain 4.31.0
+# scratch: /tmp/golf_baseline/AxScratch.lean ; names: /tmp/golf_baseline/names.txt
+
+## SECTION 1 — #print axioms for every non-private theorem/lemma (99 decls, 0 skipped)
+## ALL Lean-core only (subsets of {propext, Classical.choice, Quot.sound}); 0 sorryAx; 0 unknown names.
+
+'LeanUrat.MovesD.A'_nil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.A_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.CD_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.CD_correspondence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.CD_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R1_EV' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R1_EV_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R1_SUM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R2'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R2'_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R2_cor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R4_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R4_all_noteRange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.D4R4_emptyPref' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Dwidth_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.EtaGalEq.refl' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.EtaGalEq.symm' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.EtaGalEq.trans' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.L9_A' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Mfac_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.NP_eq_noteNP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.NP_le_Nshape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.NP_le_of_noteNP_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.NP_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.NP_stab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.OffsetPPin.lift_center_realizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.OffsetPPin.lift_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.OffsetPPin.no_pin_of_wrong_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.OffsetPPin.no_pin_of_wrong_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.OffsetPPin.not_realizes_bare_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Phat0_A'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Phat0_wf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.PhatStar_A'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.PhatStar_Mfac' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.PhatStar_NPband' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.PhatStar_Nshape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.PhatStar_W' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.PhatStar_wf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.PrefOpt_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.PrefOpt_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Pref_empty_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Presented.event_empty_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Presented.event_of_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Presented.mult_empty_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Presented.mult_of_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Ranch_deg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.Shape.mbar_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.ShapeWF_of_matches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.TW_threshold_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.advII_not_wf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.advI_not_wf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.advVI_not_wf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.band_lt_Nshape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.band_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.card_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.card_classes_abs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.chart_bij' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.chart_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.digit_in_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.eligible_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.emptyShape_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.encIdx_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.encTargetP_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.encTargetP_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.etaData_reprOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.event_empty_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.event_iff_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.event_mult_empty_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.fiber_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.fieldTower_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.floorH_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.frameField_eq_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.gamTie_stage_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.gmu_le_len' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.htH_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.innerslot_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.kappaH_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.lineS_at_jstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.line_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.mult_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.mult_sum_opt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.noteNP_le_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.pool_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.prefSet_subset_any' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.prevRim_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.rank_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.reprOf_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.selRank_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.slotVal_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.staircase_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.strFrame_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.thmC_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.topLocus_admissible' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.topLocus_numPinned' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.topLocus_sol' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesD.totalPins_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.tree_prefix_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.tree_root_of_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesD.wellformed_of_wf' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## SECTION 2 — sorry census (real proof sorries; both textual 'sorry' hits are in comments -> 0 real)
+## NOTE: MANIFEST.json (E-phase, 2026-07-27/29) claims 74 sorries; corpus has since been fully proved. Real count now = 0.
+D0a_topLocus.lean: 0
+D0b_thmCtop.lean: 0
+D0c_fiberPos.lean: 0
+D10_sumLaw.lean: 0
+D11a_multSum.lean: 0
+D11b_eventMult.lean: 0
+D12_evBound.lean: 0
+D13_evIff.lean: 0
+D14a_emptyShape.lean: 0
+D14b_emptyPref.lean: 0
+D14c_emptyEvent.lean: 0
+D1c_encCard.lean: 0
+D2a_finite.lean: 0
+D3a_poolBound.lean: 0
+D3b_corD4R2.lean: 0
+D4R4all_wrapper.lean: 0
+D4a_chartBij.lean: 0
+D4b_chartCount.lean: 0
+D5a_dwidthPos.lean: 0
+D5b_lineShape.lean: 0
+D6a_strShape.lean: 0
+D6b_kappaShape.lean: 0
+D6c_innerslotShape.lean: 0
+D6d_htShape.lean: 0
+D6e_prevRimShape.lean: 0
+D7a_staircaseShape.lean: 0
+D7b_floorShape.lean: 0
+D7c_slotValShape.lean: 0
+D8_bandShape.lean: 0
+D9_L9.lean: 0
+Defs.lean: 0
+E10_towerCard.lean: 0
+E1_digitPool.lean: 0
+E2_poolCard.lean: 0
+E3_frameField.lean: 0
+E4_ranchDeg.lean: 0
+E5_gmuLe.lean: 0
+E6_eligibleCard.lean: 0
+E7_rankLt.lean: 0
+E8_rankInj.lean: 0
+E9_encInj.lean: 0
+F1_enum.lean: 0
+F2_absCount.lean: 0
+F3_emptyBridge.lean: 0
+G1_gates.lean: 0
+G2_gatesClassifier.lean: 0
+L9s_Astable.lean: 0
+NPu_threshold.lean: 0
+NPv_npid.lean: 0
+PolPin.lean: 0
+SW1_shapeWF.lean: 0
+SW2_scaleCoherence.lean: 0
+T1a_prefixClosed.lean: 0
+W1_wellformed.lean: 0
+W2_MfacLe.lean: 0
+W3_coarseBound.lean: 0
+
+## SECTION 3 — per-file line counts
+    37 LeanUrat/MovesD/D0a_topLocus.lean
+    49 LeanUrat/MovesD/D0b_thmCtop.lean
+    40 LeanUrat/MovesD/D0c_fiberPos.lean
+    54 LeanUrat/MovesD/D10_sumLaw.lean
+    78 LeanUrat/MovesD/D11a_multSum.lean
+    50 LeanUrat/MovesD/D11b_eventMult.lean
+    53 LeanUrat/MovesD/D12_evBound.lean
+    71 LeanUrat/MovesD/D13_evIff.lean
+    71 LeanUrat/MovesD/D14a_emptyShape.lean
+    45 LeanUrat/MovesD/D14b_emptyPref.lean
+    58 LeanUrat/MovesD/D14c_emptyEvent.lean
+   102 LeanUrat/MovesD/D1c_encCard.lean
+    41 LeanUrat/MovesD/D2a_finite.lean
+    48 LeanUrat/MovesD/D3a_poolBound.lean
+    47 LeanUrat/MovesD/D3b_corD4R2.lean
+    77 LeanUrat/MovesD/D4R4all_wrapper.lean
+    64 LeanUrat/MovesD/D4a_chartBij.lean
+    48 LeanUrat/MovesD/D4b_chartCount.lean
+    39 LeanUrat/MovesD/D5a_dwidthPos.lean
+   111 LeanUrat/MovesD/D5b_lineShape.lean
+    37 LeanUrat/MovesD/D6a_strShape.lean
+    48 LeanUrat/MovesD/D6b_kappaShape.lean
+    37 LeanUrat/MovesD/D6c_innerslotShape.lean
+    34 LeanUrat/MovesD/D6d_htShape.lean
+    40 LeanUrat/MovesD/D6e_prevRimShape.lean
+    35 LeanUrat/MovesD/D7a_staircaseShape.lean
+    72 LeanUrat/MovesD/D7b_floorShape.lean
+    40 LeanUrat/MovesD/D7c_slotValShape.lean
+    46 LeanUrat/MovesD/D8_bandShape.lean
+    47 LeanUrat/MovesD/D9_L9.lean
+   700 LeanUrat/MovesD/Defs.lean
+    58 LeanUrat/MovesD/E10_towerCard.lean
+    37 LeanUrat/MovesD/E1_digitPool.lean
+    64 LeanUrat/MovesD/E2_poolCard.lean
+    85 LeanUrat/MovesD/E3_frameField.lean
+    49 LeanUrat/MovesD/E4_ranchDeg.lean
+    42 LeanUrat/MovesD/E5_gmuLe.lean
+   113 LeanUrat/MovesD/E6_eligibleCard.lean
+   155 LeanUrat/MovesD/E7_rankLt.lean
+   223 LeanUrat/MovesD/E8_rankInj.lean
+   136 LeanUrat/MovesD/E9_encInj.lean
+    44 LeanUrat/MovesD/F1_enum.lean
+   112 LeanUrat/MovesD/F2_absCount.lean
+    57 LeanUrat/MovesD/F3_emptyBridge.lean
+   359 LeanUrat/MovesD/G1_gates.lean
+    95 LeanUrat/MovesD/G2_gatesClassifier.lean
+   113 LeanUrat/MovesD/L9s_Astable.lean
+    79 LeanUrat/MovesD/NPu_threshold.lean
+   111 LeanUrat/MovesD/NPv_npid.lean
+   189 LeanUrat/MovesD/PolPin.lean
+   251 LeanUrat/MovesD/SW1_shapeWF.lean
+    64 LeanUrat/MovesD/SW2_scaleCoherence.lean
+   123 LeanUrat/MovesD/T1a_prefixClosed.lean
+    54 LeanUrat/MovesD/W1_wellformed.lean
+    74 LeanUrat/MovesD/W2_MfacLe.lean
+    33 LeanUrat/MovesD/W3_coarseBound.lean
+  5039 total

@@ -1,0 +1,201 @@
+# HC1 PRE-GOLF BASELINE — axiom census, 2026-07-30
+# Corpus: lean/LeanUrat/HC1 (80 modules, all oleans fresh at census time)
+# Method: scratch file lean/AxChk_HC1_scratch.lean importing all 80 modules; lake env lean.
+# 107 non-private theorems/lemmas. V8_eval₂_mem_nextField re-run separately (Unicode name).
+
+'LeanUrat.HC1.C1_LST' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C2_TYPa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C3_TYPb' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C4_DOM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C5_typToClause' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_alphabetCard' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_attain_automatic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_cardK_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_conjunct1_closable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_conjunct2_rhs_always' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_conjunct3_hyp_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.C6_forces_unconditional_fullness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D1_carryRing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D2_carryGrading' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D3_carryDomain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D4_carryAdjoinRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D5_carryE1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D6_carryHomogUnits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D7_digD_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.D8_digD_recenter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.G1_divGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.G2_carryGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.G3_caseJGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.G4_caseKGate_i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.G4_caseKGate_ii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.G5_spanGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.K1_coeffLocC_of_pin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.K1_frameVertexDigit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.K1_tvecUnitLaw_of_pin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.R6_carrierInstance' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S10_recStage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S11_towerSpine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S11a_coreTransport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S12_iaugPersist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S13_realPersist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S14_wellTypedAnchor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S15_anchoredSubst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S16_levelLanding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S17_levelMeasureExact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S17_scratch_with_hcore_hzsol' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S1_transHypGate_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S1_transHypGate_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S2_childW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S3_childK1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S4_childSubmult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S5_childValuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S6_childS4field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S7_childPin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S8_childS6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9_transStage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9_ungated_corner_refuted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9a_corner_fails_guard' depends on axioms: [propext, Quot.sound]
+'LeanUrat.HC1.S9a_stageLiteral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9a_ungated_corner_refuted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9b_childWeightSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9b_ungated_corner_refuted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9c_coreAssembly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9c_ungated_corner_refuted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9d_pinVerify' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9d_stageCoreL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9r_childR' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.S9w_residualLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T10_conjunct2_refuted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T10_floorStaircase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T11_attainDichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T12_coordFin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T1_baseStage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T2_baseGate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T3_htChainWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T4_slotMinHt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T5_levelSetInGamma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T6_carrierLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T7_alphabetSpan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T8_alphabetStep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.T9_blockDisjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.Tower.side_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V10_forcedKeyWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V10_readTransition_incompatible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V10_transportWindow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V1_readWPack' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V2_readFrame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V2_readResidual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V3_equalWeights_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V3_readLift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V4_readLanding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V6_descentOrbits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V6_regradeOrbits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V7_stripDischarge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8_childResidual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8_digitUnit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8_tiedPos_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8a_carrierAdditive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8b_carrierLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8c_wStrict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_E1box_nonrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_K1nonrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_bottomSlot_of_wvEqStretch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_readPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_readSteepness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_steepSide_frameDescent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_transSteepness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_wvEqStretch_of_bottomSlot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V9_wvGeStretch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.VertexPin.to_child_dig_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.childR_laws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.levelSet_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.HC1.V8_eval₂_mem_nextField' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+# ===== SORRY CENSUS (real proof sorries; grep for sorry-token lines, comments excluded) =====
+# C6_alphabetCard.lean:63 (inside C6_alphabetCard)  — matches sorryAx in census
+# R6_carrierInstance.lean:130 (inside R6_carrierInstance) — matches sorryAx in census
+# TOTAL: 2 real sorries; all other 105 declarations sorry-free.
+# NOTE: S9a_corner_fails_guard footprint = [propext, Quot.sound] (subset of core — fine).
+
+# ===== PER-FILE LINE COUNTS =====
+     76 LeanUrat/HC1/C1_LST.lean
+    735 LeanUrat/HC1/C2_TYPa.lean
+    130 LeanUrat/HC1/C3_TYPb.lean
+     51 LeanUrat/HC1/C4_DOM.lean
+    165 LeanUrat/HC1/C5_typToClause.lean
+     68 LeanUrat/HC1/C6_alphabetCard.lean
+    178 LeanUrat/HC1/D1_carryRing.lean
+     70 LeanUrat/HC1/D2_carryGrading.lean
+     59 LeanUrat/HC1/D3_carryDomain.lean
+    205 LeanUrat/HC1/D4_carryAdjoinRoot.lean
+     48 LeanUrat/HC1/D5_carryE1.lean
+     85 LeanUrat/HC1/D6_carryHomogUnits.lean
+    247 LeanUrat/HC1/D7_digD_mul.lean
+     85 LeanUrat/HC1/D8_digD_recenter.lean
+    298 LeanUrat/HC1/DefsCar.lean
+    129 LeanUrat/HC1/DefsChild.lean
+     91 LeanUrat/HC1/DefsD.lean
+     57 LeanUrat/HC1/DefsSpine.lean
+    186 LeanUrat/HC1/DefsTower.lean
+    144 LeanUrat/HC1/DefsV.lean
+     70 LeanUrat/HC1/G1_divGate.lean
+    117 LeanUrat/HC1/G2_carryGate.lean
+     66 LeanUrat/HC1/G3_caseJGate.lean
+    144 LeanUrat/HC1/G4_caseKGate.lean
+     75 LeanUrat/HC1/G5_spanGate.lean
+    840 LeanUrat/HC1/K1_vertexPin.lean
+     74 LeanUrat/HC1/R1_LSTStmt.lean
+     43 LeanUrat/HC1/R2_TYPStmt.lean
+     32 LeanUrat/HC1/R3_DOMStmt.lean
+     35 LeanUrat/HC1/R4_SecB1Stmt.lean
+     40 LeanUrat/HC1/R5_EQ2Pass.lean
+    134 LeanUrat/HC1/R6_carrierInstance.lean
+    732 LeanUrat/HC1/S10_recStage.lean
+     93 LeanUrat/HC1/S11_towerSpine.lean
+    204 LeanUrat/HC1/S11a_coreTransport.lean
+     94 LeanUrat/HC1/S12_iaugPersist.lean
+    216 LeanUrat/HC1/S13_realPersist.lean
+     89 LeanUrat/HC1/S14_wellTypedAnchor.lean
+    167 LeanUrat/HC1/S15_anchoredSubst.lean
+     66 LeanUrat/HC1/S16_levelLanding.lean
+    217 LeanUrat/HC1/S17_levelMeasureExact.lean
+   1275 LeanUrat/HC1/S1_transHypGate.lean
+    111 LeanUrat/HC1/S2_childW.lean
+    164 LeanUrat/HC1/S3_childK1.lean
+    107 LeanUrat/HC1/S4_childSubmult.lean
+    284 LeanUrat/HC1/S5_childValuation.lean
+    121 LeanUrat/HC1/S6_childS4field.lean
+    335 LeanUrat/HC1/S7_childPin.lean
+     87 LeanUrat/HC1/S8_childS6.lean
+    108 LeanUrat/HC1/S9_transStage.lean
+    364 LeanUrat/HC1/S9a_stageLiteral.lean
+    309 LeanUrat/HC1/S9b_childWeightSet.lean
+    692 LeanUrat/HC1/S9c_coreAssembly.lean
+     75 LeanUrat/HC1/S9d_pinVerify.lean
+     59 LeanUrat/HC1/S9r_childR.lean
+    117 LeanUrat/HC1/S9w_residualLaws.lean
+    398 LeanUrat/HC1/ScratchC6.lean
+    197 LeanUrat/HC1/ScratchS17.lean
+    166 LeanUrat/HC1/ScratchT10.lean
+    283 LeanUrat/HC1/T10_floorStaircase.lean
+    115 LeanUrat/HC1/T11_attainDichotomy.lean
+     57 LeanUrat/HC1/T12_coordFin.lean
+   2013 LeanUrat/HC1/T1_baseStage.lean
+    110 LeanUrat/HC1/T2_baseGate.lean
+    310 LeanUrat/HC1/T3_htChainWeight.lean
+    941 LeanUrat/HC1/T4_slotMinHt.lean
+    243 LeanUrat/HC1/T5_levelSetInGamma.lean
+    291 LeanUrat/HC1/T6_carrierLaws.lean
+    781 LeanUrat/HC1/T7_alphabetSpan.lean
+    172 LeanUrat/HC1/T8_alphabetStep.lean
+    235 LeanUrat/HC1/T9_blockDisjoint.lean
+    556 LeanUrat/HC1/V10_transportWindow.lean
+    330 LeanUrat/HC1/V1_readWPack.lean
+   1838 LeanUrat/HC1/V2_readResidual.lean
+   1113 LeanUrat/HC1/V3_readLift.lean
+   1221 LeanUrat/HC1/V4_readLanding.lean
+    348 LeanUrat/HC1/V6_alignedOrbits.lean
+    285 LeanUrat/HC1/V7_stripDischarge.lean
+   2148 LeanUrat/HC1/V8_childResidual.lean
+   3456 LeanUrat/HC1/V9_K1nonrec.lean
+  28470 total

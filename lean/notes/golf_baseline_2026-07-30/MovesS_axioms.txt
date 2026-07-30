@@ -1,0 +1,228 @@
+# MovesS PRE-GOLF BASELINE (generated 2026-07-30T09:09:51Z)
+# corpus: LeanUrat/MovesS/ (97 .lean files: Defs + Interfaces + 95 units)
+# toolchain 4.31.0, mathlib cache; built green via lake build (8655 jobs)
+# allowed axioms: propext, Classical.choice, Quot.sound (subsets OK)
+
+############################################################
+## SECTION 1 — AXIOM FENCE (#print axioms per non-private theorem/lemma)
+## 105 names covered; 0 errors, 0 sorryAx
+############################################################
+
+'LeanUrat.MovesS.Aℝ_det_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ReadOffBundle.legAgree_forall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.active_solve_meas' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.allActive_cofinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.allActive_cofinite_primes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.bSplit_def' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.bdy_edge' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesS.bdy_mass_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.bdy_node_shadow' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesS.blockSolve_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.blockSolve_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.dispatch_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.e0_det_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.e0_inv_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.evalAt_coe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.eval_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.interp_read_off' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.interp_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.kcol_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub_countFactored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub_eval_countFactored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub_pool_countFactored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ksub_regroup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ktri' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.mem_OKat_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.mulVec_abs_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2OnePG_evalAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2OnePG_val' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2OnePG_val_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_act' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_activity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_base_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_base_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_beta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_carriers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_checksum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_d4r0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_degcons_scs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_degpins_iota' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_degpins_tg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_ent_flow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_entcount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_events' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_heights' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_hmc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_init_agg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_init_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_interp_iota' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_interp_tg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_kstep_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_meas_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_part1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_polygeom_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_pools' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_pools_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_recursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_rep_indep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_rexact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_rs1eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_rsh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_sh_events' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_sh_laws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_shape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_shapefam' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_sigmas' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_solve_vals' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_wshp_device' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_x3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_xhd_orphan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_xhd_stray' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_xhd_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2_xrb' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2hK' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2hdc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.n2hdet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.nested_delta_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.neumann_partial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.powSubstAux_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.powSubst_C' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.powSubst_OKat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.powSubst_X' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.powSubst_evalAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.powSubst_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.pow_entry_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.pow_entry_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.pow_fixed_vector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.pow_pool' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.ratfunc_eval_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.rexact_solve' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.rs2_unique_interp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.rs3_det_symbolic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.rs4_rational_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.scs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.scs_flank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.scs_stage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.solve_cramer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.solve_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesS.solve_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## NOTE: bdy_edge, bdy_node_shadow use [propext, Quot.sound] (no Classical.choice) — a SUBSET of allowed, fine.
+
+############################################################
+## SECTION 2 — SORRY CENSUS (real proof sorries)
+############################################################
+# grep for 'sorry' token outside comments across LeanUrat/MovesS/*.lean:
+# ONLY hit = Defs.lean:7 (a docstring string literal describing filled skeleton). NO real proof sorries.
+# REAL PROOF SORRY COUNT = 0 (corpus fully discharged; SEAM-4 2026-07-29).
+# native_decide: NONE.  admit: NONE.  axiom decls: NONE.
+
+############################################################
+## SECTION 3 — PER-FILE LINE COUNTS
+############################################################
+   177 LeanUrat/MovesS/ActiveSolve.lean
+    55 LeanUrat/MovesS/AllActiveCofinite.lean
+    24 LeanUrat/MovesS/AllActivePrimes.lean
+    69 LeanUrat/MovesS/BSplitDef.lean
+    24 LeanUrat/MovesS/Bdy.lean
+    24 LeanUrat/MovesS/BdyMass.lean
+    27 LeanUrat/MovesS/BdyNode.lean
+    66 LeanUrat/MovesS/BlockSolve.lean
+    69 LeanUrat/MovesS/BlockSolveSpec.lean
+    81 LeanUrat/MovesS/BlockSolveTot.lean
+    63 LeanUrat/MovesS/ConsumedDeltas.lean
+    90 LeanUrat/MovesS/CountLaws.lean
+    35 LeanUrat/MovesS/DecompFintype.lean
+   623 LeanUrat/MovesS/Defs.lean
+    24 LeanUrat/MovesS/Dispatch.lean
+    55 LeanUrat/MovesS/E0DetNeZero.lean
+    69 LeanUrat/MovesS/E0InvNonneg.lean
+    18 LeanUrat/MovesS/EvalAtCoe.lean
+    20 LeanUrat/MovesS/EvalDet.lean
+    80 LeanUrat/MovesS/EvalReDef.lean
+   231 LeanUrat/MovesS/Interfaces.lean
+    38 LeanUrat/MovesS/InterpUnique.lean
+    29 LeanUrat/MovesS/KcolAgree.lean
+    51 LeanUrat/MovesS/Ksub.lean
+    83 LeanUrat/MovesS/KsubEval.lean
+   213 LeanUrat/MovesS/KsubPool.lean
+    82 LeanUrat/MovesS/KsubRegroup.lean
+    53 LeanUrat/MovesS/Ktri.lean
+    28 LeanUrat/MovesS/MarkedDef.lean
+    41 LeanUrat/MovesS/MulVecAbsBound.lean
+    21 LeanUrat/MovesS/N2Act.lean
+    26 LeanUrat/MovesS/N2Activity.lean
+   279 LeanUrat/MovesS/N2Beta.lean
+   145 LeanUrat/MovesS/N2Carriers.lean
+    28 LeanUrat/MovesS/N2Checksum.lean
+    23 LeanUrat/MovesS/N2Comp.lean
+    22 LeanUrat/MovesS/N2D4r0.lean
+    19 LeanUrat/MovesS/N2DegPinsIota.lean
+    22 LeanUrat/MovesS/N2DegPinsTg.lean
+    31 LeanUrat/MovesS/N2DegScs.lean
+    89 LeanUrat/MovesS/N2Det.lean
+    23 LeanUrat/MovesS/N2EntCount.lean
+    24 LeanUrat/MovesS/N2EntFlow.lean
+    25 LeanUrat/MovesS/N2Events.lean
+    24 LeanUrat/MovesS/N2Heights.lean
+    20 LeanUrat/MovesS/N2Hmc.lean
+    18 LeanUrat/MovesS/N2InitAgg.lean
+    25 LeanUrat/MovesS/N2InitCount.lean
+    23 LeanUrat/MovesS/N2InterpIota.lean
+    26 LeanUrat/MovesS/N2InterpTg.lean
+    27 LeanUrat/MovesS/N2KstepOne.lean
+    26 LeanUrat/MovesS/N2MeasCard.lean
+    22 LeanUrat/MovesS/N2Ok.lean
+    23 LeanUrat/MovesS/N2Part1.lean
+   378 LeanUrat/MovesS/N2PolyGeom.lean
+   144 LeanUrat/MovesS/N2Pool.lean
+   173 LeanUrat/MovesS/N2Pools.lean
+    19 LeanUrat/MovesS/N2PoolsData.lean
+   253 LeanUrat/MovesS/N2ReadOff.lean
+    22 LeanUrat/MovesS/N2Recursion.lean
+    19 LeanUrat/MovesS/N2RepIndep.lean
+    21 LeanUrat/MovesS/N2Rexact.lean
+    17 LeanUrat/MovesS/N2Rs1Eq.lean
+   184 LeanUrat/MovesS/N2Rsh.lean
+   129 LeanUrat/MovesS/N2ScsData.lean
+    26 LeanUrat/MovesS/N2ShEvents.lean
+    30 LeanUrat/MovesS/N2ShLaws.lean
+   121 LeanUrat/MovesS/N2Shape.lean
+    97 LeanUrat/MovesS/N2ShapeFam.lean
+  1091 LeanUrat/MovesS/N2Sigmas.lean
+   172 LeanUrat/MovesS/N2SolveVals.lean
+    26 LeanUrat/MovesS/N2WshpDevice.lean
+    19 LeanUrat/MovesS/N2X3.lean
+    22 LeanUrat/MovesS/N2XhdOrphan.lean
+    24 LeanUrat/MovesS/N2XhdStray.lean
+    23 LeanUrat/MovesS/N2XhdSum.lean
+    18 LeanUrat/MovesS/N2Xrb.lean
+    19 LeanUrat/MovesS/NeumannPartial.lean
+    30 LeanUrat/MovesS/PowEntryNonneg.lean
+    35 LeanUrat/MovesS/PowEntryTendsto.lean
+    22 LeanUrat/MovesS/PowFixedVector.lean
+    18 LeanUrat/MovesS/PowPool.lean
+    44 LeanUrat/MovesS/PowSubst.lean
+    25 LeanUrat/MovesS/PowSubstMul.lean
+   109 LeanUrat/MovesS/PowSubstOK.lean
+    30 LeanUrat/MovesS/RatfuncEvalInfinite.lean
+    40 LeanUrat/MovesS/ReadOff.lean
+    26 LeanUrat/MovesS/RexactSolve.lean
+    81 LeanUrat/MovesS/Rs2Unique.lean
+   106 LeanUrat/MovesS/Rs3DetSymbolic.lean
+    86 LeanUrat/MovesS/Rs4.lean
+    61 LeanUrat/MovesS/RshDef.lean
+    53 LeanUrat/MovesS/Scs.lean
+    64 LeanUrat/MovesS/ScsFlank.lean
+    24 LeanUrat/MovesS/ScsStage.lean
+    25 LeanUrat/MovesS/SolveCramer.lean
+    35 LeanUrat/MovesS/SolveExistsUnique.lean
+    21 LeanUrat/MovesS/SolveIff.lean
+  7535 total

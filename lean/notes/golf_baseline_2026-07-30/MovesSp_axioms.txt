@@ -1,0 +1,197 @@
+# PRE-GOLF BASELINE — LeanUrat/MovesSp
+# Generated 2026-07-30T09:08:37Z via 'lake env lean' (toolchain 4.31.0, mathlib cache)
+# Method: import all corpus modules; #print axioms <LeanUrat.MovesSp.name> for every non-private theorem/lemma.
+# Namespace: all decls in 'namespace LeanUrat.MovesSp' (Defs.lean also opens nested 'namespace Species', 0 theorems there).
+
+## SECTION 1 — AXIOM FENCE (99 theorems/lemmas; all resolved, exit 0, NO failures/skips)
+## Fence result: EVERY decl is Lean-core only. Distribution:
+##   94 x [propext, Classical.choice, Quot.sound]
+##    3 x [propext, Quot.sound]           (budgetB_iff, compEnum_complete, stageLaws_terminal)
+##    1 x [propext]                        (sh_e1)
+##    1 x (no axioms)                      (sh_example)
+## NO sorryAx, NO native_decide (Lean.ofReduceBool), NO declared/custom axioms anywhere.
+
+'LeanUrat.MovesSp.InCatalogue.coherent_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.R3_members' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_COMP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_COMP_collapsed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_COMP_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_COMP_nonvacuous_at_n2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_COMP_ofTreeModel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_DAG_walk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_DAG_words' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_FIN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SP_FIN'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SnRaw1_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.SnRaw3_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.StrongVerdictPin.weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.anchor_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.anchor_bound_geo' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.beqFast_eq_beq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.beqFast_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.budgetB_iff' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesSp.catalogue3_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.closure_step3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.code_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.coherentB_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.collapseRuns_collapsedWalk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.collapseRuns_eq_self_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.collapseRuns_ne_nil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.collapseRuns_sublist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.compCuts_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.compCuts_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.compEnum_complete' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesSp.compEnum_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.egμD_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.encode_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.entrance3_patterns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.entrance_collapsed_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.entrance_collapsed_len' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.exclusion_cards' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.exclusion_lists_pinned' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.full_forces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.full_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.f₂_monic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.f₂_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.groupR_admissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.groups_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.hasAnchorK_T_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.lamEnum_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.lamMatrix_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.loops3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.menu3_exact_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.menu3_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.menuMap3_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.multiSide6_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.multiSide6_pinned' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.n1_branch_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.n1_branch_word_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.n1_root_confirming' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.n1_word' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.nstar_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.nstar_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.out_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.postInc3_W1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rankNat_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rankNat_lt_of_lex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rank_step_inc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rank_step_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rank_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.reachable3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.root3_enum_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rootAdmissible3_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.rootAdmissibleB_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.selfloop_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.selfloop_isFull' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.selfloop_succStep_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_anchor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_congr_stage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_e1' depends on axioms: [propext]
+'LeanUrat.MovesSp.sh_e1_stage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_example' does not depend on any axioms
+'LeanUrat.MovesSp.sh_geo_slots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.sh_slots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.speciesEnum_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.stageLaws_terminal' depends on axioms: [propext, Quot.sound]
+'LeanUrat.MovesSp.succStepB_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.succStep_wordHead_wordMid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.succStep_wordMid_wordLast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.succ_terminal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.tauWord_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.terminal3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.toyCanModel_reads_in_catalogue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.toyCanModel_weak_of_strong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.toyStrongPin_alphabet_tie' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.w1_forces' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.wordHead_rootAdmissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.wordHead_transports_toyHead' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.wordLast_transports_halt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.MovesSp.wordMid_transports_toyLeafA' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## SECTION 2 — SORRY CENSUS (real proof sorries only; docstring/comment mentions excluded)
+## Corpus-wide real proof sorries: 0  (the MANIFEST's 88 E-phase sorries are ALL discharged).
+## The 5 grep-'sorry' hits are docstring text only:
+##   Defs.lean:15, DefsN3.lean:14, DefsEnum.lean:13, SP2_encodeInj.lean:17 (all 'no `sorry`')
+##   SP6_menuMap.lean:33 ('replace the `sorry`' — stale comment; proof is complete)
+## native_decide: 0 (only mentioned in docstrings as BANNED). axiom decls: 0. sorryAx: 0.
+
+## SECTION 3 — PER-FILE LINE COUNTS + theorem/lemma count
+file                                        lines  thm/lem
+Defs.lean                                     327        0
+DefsEnum.lean                                 147        0
+DefsN3.lean                                   270        0
+SP0_memCoherent.lean                           21        1
+SP0_reflBudget.lean                            25        1
+SP0_reflCoherent.lean                          21        1
+SP0_reflSucc.lean                              51        2
+SP0_succTerminal.lean                          30        2
+SP1_anchorBound.lean                           34        1
+SP1_anchorBoundGeo.lean                        22        1
+SP1_g6Forcing.lean                             80        1
+SP1_shAnchorInv.lean                           24        1
+SP1_shCongr.lean                               23        1
+SP1_shDvd.lean                                 22        1
+SP1_shE1.lean                                  18        1
+SP1_shEquiv.lean                               52        2
+SP1_shExample.lean                             19        1
+SP1_shSlots.lean                               36        2
+SP1_shStage.lean                               40        2
+SP2_b4Derived.lean                             35        1
+SP2_compEncode.lean                           101        2
+SP2_compEnum.lean                              86        2
+SP2_encodeCard.lean                            18        1
+SP2_encodeInj.lean                            350        1
+SP2_finThm.lean                                42        1
+SP2_finWords.lean                              39        1
+SP2_lamEncode.lean                             39        1
+SP2_lamEnum.lean                              145        1
+SP2_speciesEnum.lean                           74        1
+SP3_collapseEqSelf.lean                        52        1
+SP3_collapseNeNil.lean                         27        1
+SP3_collapseSublist.lean                       27        1
+SP3_collapseWalk.lean                          63        1
+SP3_compCollapsed.lean                         52        1
+SP3_compEdges.lean                             44        1
+SP3_compMember.lean                            50        1
+SP3_entrance.lean                              49        2
+SP3_n1Branch.lean                              75        2
+SP3_n1Root.lean                                23        1
+SP3_n1Word.lean                                41        1
+SP3_tauWord.lean                               45        1
+SP4_dagWalk.lean                               65        1
+SP4_dagWords.lean                              67        1
+SP4_fullForcing.lean                           96        1
+SP4_fullUnique.lean                            44        1
+SP4_outFinite.lean                             53        1
+SP4_rankRadix.lean                             86        2
+SP4_rankStepInc.lean                           27        1
+SP4_rankStepRec.lean                           77        1
+SP4_rankStrict.lean                            53        1
+SP4_selfloopChar.lean                          78        2
+SP4_selfloopFull.lean                          45        1
+SP6_NstarDomain.lean                           20        1
+SP6_NstarValues.lean                           22        1
+SP6_R3check.lean                               23        1
+SP6_card53.lean                                21        2
+SP6_catalogueEq.lean                           78        1
+SP6_closureStep.lean                          117        1
+SP6_entrance.lean                              53        1
+SP6_exclusionCards.lean                        18        1
+SP6_exclusionLists.lean                        25        1
+SP6_menuMap.lean                              107        3
+SP6_multiSide6.lean                            34        1
+SP6_multiSideMem.lean                          18        1
+SP6_n1singleton.lean                           53        1
+SP6_postincW1.lean                             18        1
+SP6_reachable.lean                             19        1
+SP6_rootLetters.lean                           91        5
+SP6_selfloops.lean                             21        1
+SP6_terminal5.lean                             27        1
+SP8_instantiation.lean                        371       14
+
+TOTAL .lean files: 71
+TOTAL lines: 4566
+TOTAL theorem/lemma decls: 99

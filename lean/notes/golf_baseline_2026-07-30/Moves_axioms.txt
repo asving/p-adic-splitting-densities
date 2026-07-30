@@ -1,0 +1,232 @@
+# Moves pre-golf axiom baseline — generated 2026-07-30
+# Method: two scratch files (/tmp/golf_baseline/AxChk_Moves_{A,B}.lean) because 7 revision-pairs
+# declare identical fully-qualified names and cannot share one import closure.
+# Group A = canonical side (61 names); Group B = deprecated/superseded side (10 names).
+# NOTE: L0_GRd.lean lacks 'namespace LeanUrat.Moves' — its theorem is top-level 'L0_GRd'.
+
+## GROUP A (canonical)
+'LeanUrat.Moves.Stage.le_nextField' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.Stage.grRes_mul_T_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_FactA_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_FactB_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_GRa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_GRb' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_GRc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'L0_GRd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_GRe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_GRf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L0_GRg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L1_baseResidual_laws' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L1_baseWeight_valuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L1_gaussVal_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_P6i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_P6ii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_anchorCong' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_iaugRecenter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_iaugRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_iaugStep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_keyResidualPow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_psiNotDvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_slotDecomp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_strideRule' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L2_widthBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_DIV' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_K1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_digPrime_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_liftExists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_liftMonic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_liftResidual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L3_liftWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.TRANSi_ge_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.TRANSiii_le_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSiii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSvii' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSviii_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSviii_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSviii_c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landBox' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landTransport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landTwoSided' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landVertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landVertexDigit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_realCofin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_realConclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_realDomination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_realRecursion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_recLiftIndep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_recRSland' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_recSpecies' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_recSubst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_recVV' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_ledgerCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_measureExact' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_moveAffineBij' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_moveReduceCommute' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## GROUP B (deprecated side: L2_P6i_R5, L4_TRANSviii_a_R5, L4_TRANSviii_b_R3, L5_landTransport_R3, L5_landTwoSided_R5, L5_landVertexDigit, L6_moveReduceCommute_R3)
+'LeanUrat.Moves.L2_P6i' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSviii_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L4_TRANSviii_b' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landTransport' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landTwoSided' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L5_landVertexDigit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_moveReduceCommute_of_nontrivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_moveReduceCommute_of_one_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_moveReduceCommute' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'LeanUrat.Moves.L6_moveReduceCommute_statement_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## NAME->FILE MAP (from scratch sources)
+BLeanUrat.Moves.L2_P6i  -- L2_P6i_R5.lean
+BLeanUrat.Moves.L4_TRANSviii_a  -- L4_TRANSviii_a_R5.lean
+BLeanUrat.Moves.L4_TRANSviii_b  -- L4_TRANSviii_b_R3.lean
+BLeanUrat.Moves.L5_landTransport  -- L5_landTransport_R3.lean
+BLeanUrat.Moves.L5_landTwoSided  -- L5_landTwoSided_R5.lean
+BLeanUrat.Moves.L5_landVertexDigit  -- L5_landVertexDigit.lean
+BLeanUrat.Moves.L6_moveReduceCommute_of_nontrivial  -- L6_moveReduceCommute_R3.lean
+BLeanUrat.Moves.L6_moveReduceCommute_of_one_le  -- L6_moveReduceCommute_R3.lean
+BLeanUrat.Moves.L6_moveReduceCommute  -- L6_moveReduceCommute_R3.lean
+BLeanUrat.Moves.L6_moveReduceCommute_statement_false  -- L6_moveReduceCommute_R3.lean
+ALeanUrat.Moves.Stage.le_nextField  -- Defs.lean
+ALeanUrat.Moves.Stage.grRes_mul_T_neg  -- DefsL.lean
+ALeanUrat.Moves.L0_FactA_exists  -- L0_FactA_exists.lean
+ALeanUrat.Moves.L0_FactB_unique  -- L0_FactB_unique.lean
+ALeanUrat.Moves.L0_GRa  -- L0_GRa.lean
+ALeanUrat.Moves.L0_GRb  -- L0_GRb.lean
+ALeanUrat.Moves.L0_GRc  -- L0_GRc.lean
+AL0_GRd  -- L0_GRd.lean
+ALeanUrat.Moves.L0_GRe  -- L0_GRe.lean
+ALeanUrat.Moves.L0_GRf  -- L0_GRf.lean
+ALeanUrat.Moves.L0_GRg  -- L0_GRg.lean
+ALeanUrat.Moves.L1_baseResidual_laws  -- L1_baseResidual_R4.lean
+ALeanUrat.Moves.L1_baseWeight_valuation  -- L1_baseWeight_R3.lean
+ALeanUrat.Moves.L1_gaussVal_mul  -- L1_gaussVal.lean
+ALeanUrat.Moves.L2_P6i  -- L2_P6i_R5_final.lean
+ALeanUrat.Moves.L2_P6ii  -- L2_P6ii_R3.lean
+ALeanUrat.Moves.L2_anchorCong  -- L2_anchorCong.lean
+ALeanUrat.Moves.L2_iaugRecenter  -- L2_iaugRecenter.lean
+ALeanUrat.Moves.L2_iaugRoot  -- L2_iaugRoot.lean
+ALeanUrat.Moves.L2_iaugStep  -- L2_iaugStep.lean
+ALeanUrat.Moves.L2_keyResidualPow  -- L2_keyResidualPow.lean
+ALeanUrat.Moves.L2_psiNotDvd  -- L2_psiNotDvd_R3.lean
+ALeanUrat.Moves.L2_slotDecomp  -- L2_slotDecomp_R4.lean
+ALeanUrat.Moves.L2_strideRule  -- L2_strideRule.lean
+ALeanUrat.Moves.L2_widthBound  -- L2_widthBound.lean
+ALeanUrat.Moves.L3_DIV  -- L3_DIV.lean
+ALeanUrat.Moves.L3_K1  -- L3_K1.lean
+ALeanUrat.Moves.L3_digPrime_nonzero  -- L3_digPrime_nonzero.lean
+ALeanUrat.Moves.L3_liftExists  -- L3_liftExists.lean
+ALeanUrat.Moves.L3_liftMonic  -- L3_liftMonic.lean
+ALeanUrat.Moves.L3_liftResidual  -- L3_liftResidual.lean
+ALeanUrat.Moves.L3_liftWeight  -- L3_liftWeight.lean
+ALeanUrat.Moves.TRANSi_ge_core  -- L4_TRANSi_R3.lean
+ALeanUrat.Moves.L4_TRANSi  -- L4_TRANSi_R3.lean
+ALeanUrat.Moves.L4_TRANSii  -- L4_TRANSii.lean
+ALeanUrat.Moves.TRANSiii_le_core  -- L4_TRANSiii_R3.lean
+ALeanUrat.Moves.L4_TRANSiii  -- L4_TRANSiii_R3.lean
+ALeanUrat.Moves.L4_TRANSiv  -- L4_TRANSiv.lean
+ALeanUrat.Moves.L4_TRANSv  -- L4_TRANSv_R3.lean
+ALeanUrat.Moves.L4_TRANSvii  -- L4_TRANSvii_R4.lean
+ALeanUrat.Moves.L4_TRANSviii_a  -- L4_TRANSviii_a_R5_final.lean
+ALeanUrat.Moves.L4_TRANSviii_b  -- L4_TRANSviii_b_R4.lean
+ALeanUrat.Moves.L4_TRANSviii_c  -- L4_TRANSviii_c_R1.lean
+ALeanUrat.Moves.L5_landBox  -- L5_landBox.lean
+ALeanUrat.Moves.L5_landTransport  -- L5_landTransport_R4.lean
+ALeanUrat.Moves.L5_landTwoSided  -- L5_landTwoSided_repair.lean
+ALeanUrat.Moves.L5_landVertex  -- L5_landVertex.lean
+ALeanUrat.Moves.L5_landVertexDigit  -- L5_landVertexDigit_repair.lean
+ALeanUrat.Moves.L5_realCofin  -- L5_realCofin_R3.lean
+ALeanUrat.Moves.L5_realConclusion  -- L5_realConclusion.lean
+ALeanUrat.Moves.L5_realDomination  -- L5_realDomination_R3.lean
+ALeanUrat.Moves.L5_realRecursion  -- L5_realRecursion_R3.lean
+ALeanUrat.Moves.L5_recLiftIndep  -- L5_recLiftIndep_R4.lean
+ALeanUrat.Moves.L5_recRSland  -- L5_recRSland_R4.lean
+ALeanUrat.Moves.L5_recSpecies  -- L5_recSpecies_R4.lean
+ALeanUrat.Moves.L5_recSubst  -- L5_recSubst_R4.lean
+ALeanUrat.Moves.L5_recVV  -- L5_recVV_R4.lean
+ALeanUrat.Moves.L6_ledgerCount  -- L6_ledgerCount.lean
+ALeanUrat.Moves.L6_measureExact  -- L6_measureExact_R4.lean
+ALeanUrat.Moves.L6_moveAffineBij  -- L6_moveAffineBij.lean
+ALeanUrat.Moves.L6_moveReduceCommute  -- L6_moveReduceCommute_R4.lean
+
+## SORRY CENSUS (real proof-term sorries only; comments excluded)
+LeanUrat/Moves/L5_landTransport_R3.lean:54:  sorry
+LeanUrat/Moves/L4_TRANSviii_b_R3.lean:103:    sorry
+LeanUrat/Moves/L6_moveReduceCommute_R3.lean:82:    sorry
+LeanUrat/Moves/L6_measureExact_R4.lean:155:  sorry
+LeanUrat/Moves/L5_landTwoSided_R5.lean:964:    sorry
+total files with real sorry: 5
+
+## PER-FILE LINE COUNTS
+   282 LeanUrat/Moves/Defs.lean
+   315 LeanUrat/Moves/DefsCore.lean
+   263 LeanUrat/Moves/DefsL.lean
+   202 LeanUrat/Moves/DefsT.lean
+    91 LeanUrat/Moves/L0_FactA_exists.lean
+   102 LeanUrat/Moves/L0_FactB_unique.lean
+    15 LeanUrat/Moves/L0_GRa.lean
+    17 LeanUrat/Moves/L0_GRb.lean
+    24 LeanUrat/Moves/L0_GRc.lean
+    26 LeanUrat/Moves/L0_GRd.lean
+    22 LeanUrat/Moves/L0_GRe.lean
+    69 LeanUrat/Moves/L0_GRf.lean
+    74 LeanUrat/Moves/L0_GRg.lean
+    36 LeanUrat/Moves/L1_baseResidual_R4.lean
+   847 LeanUrat/Moves/L1_baseWeight_R3.lean
+    84 LeanUrat/Moves/L1_gaussVal.lean
+   252 LeanUrat/Moves/L2_P6i_R5.lean
+   248 LeanUrat/Moves/L2_P6i_R5_final.lean
+   106 LeanUrat/Moves/L2_P6ii_R3.lean
+    40 LeanUrat/Moves/L2_anchorCong.lean
+    36 LeanUrat/Moves/L2_iaugRecenter.lean
+    13 LeanUrat/Moves/L2_iaugRoot.lean
+    66 LeanUrat/Moves/L2_iaugStep.lean
+    52 LeanUrat/Moves/L2_keyResidualPow.lean
+    72 LeanUrat/Moves/L2_psiNotDvd_R3.lean
+   280 LeanUrat/Moves/L2_slotDecomp_R4.lean
+    57 LeanUrat/Moves/L2_strideRule.lean
+   418 LeanUrat/Moves/L2_widthBound.lean
+   174 LeanUrat/Moves/L3_DIV.lean
+   581 LeanUrat/Moves/L3_K1.lean
+    70 LeanUrat/Moves/L3_digPrime_nonzero.lean
+    57 LeanUrat/Moves/L3_liftExists.lean
+    74 LeanUrat/Moves/L3_liftMonic.lean
+   265 LeanUrat/Moves/L3_liftResidual.lean
+   146 LeanUrat/Moves/L3_liftWeight.lean
+   364 LeanUrat/Moves/L4_TRANSi_R3.lean
+    48 LeanUrat/Moves/L4_TRANSii.lean
+   623 LeanUrat/Moves/L4_TRANSiii_R3.lean
+    34 LeanUrat/Moves/L4_TRANSiv.lean
+    50 LeanUrat/Moves/L4_TRANSv_R3.lean
+    40 LeanUrat/Moves/L4_TRANSvii_R4.lean
+   268 LeanUrat/Moves/L4_TRANSviii_a_R5.lean
+   270 LeanUrat/Moves/L4_TRANSviii_a_R5_final.lean
+   105 LeanUrat/Moves/L4_TRANSviii_b_R3.lean
+   480 LeanUrat/Moves/L4_TRANSviii_b_R4.lean
+   235 LeanUrat/Moves/L4_TRANSviii_c_R1.lean
+   581 LeanUrat/Moves/L5_landBox.lean
+    56 LeanUrat/Moves/L5_landTransport_R3.lean
+   286 LeanUrat/Moves/L5_landTransport_R4.lean
+   966 LeanUrat/Moves/L5_landTwoSided_R5.lean
+   969 LeanUrat/Moves/L5_landTwoSided_repair.lean
+   709 LeanUrat/Moves/L5_landVertex.lean
+   839 LeanUrat/Moves/L5_landVertexDigit.lean
+   830 LeanUrat/Moves/L5_landVertexDigit_repair.lean
+    51 LeanUrat/Moves/L5_realCofin_R3.lean
+    28 LeanUrat/Moves/L5_realConclusion.lean
+   128 LeanUrat/Moves/L5_realDomination_R3.lean
+   269 LeanUrat/Moves/L5_realRecursion_R3.lean
+    24 LeanUrat/Moves/L5_recLiftIndep_R4.lean
+   199 LeanUrat/Moves/L5_recRSland_R4.lean
+    94 LeanUrat/Moves/L5_recSpecies_R4.lean
+   373 LeanUrat/Moves/L5_recSubst_R4.lean
+   107 LeanUrat/Moves/L5_recVV_R4.lean
+    32 LeanUrat/Moves/L6_ledgerCount.lean
+   227 LeanUrat/Moves/L6_measureExact_R4.lean
+    49 LeanUrat/Moves/L6_moveAffineBij.lean
+   109 LeanUrat/Moves/L6_moveReduceCommute_R3.lean
+    52 LeanUrat/Moves/L6_moveReduceCommute_R4.lean
+ 14971 total

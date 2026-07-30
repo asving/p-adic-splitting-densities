@@ -1,0 +1,67 @@
+========================================================================
+PRE-GOLF BASELINE — LeanUrat/MovesRBase
+Generated 2026-07-30 (fresh-context baseline before any golfing).
+Toolchain leanprover/lean4:v4.31.0, mathlib pinned rev v4.31.0.
+Method: ScratchAxCensus.lean imported all 9 corpus modules and ran
+`#print axioms <QualifiedName>` per non-private theorem/lemma; elaborated
+via `lake env lean ScratchAxCensus.lean` (oleans prebuilt).
+========================================================================
+
+=== THE FENCE: #print axioms per non-private theorem/lemma (10 decls) ===
+All namespace = MovesRBase (verified per file). Coverage 10/10 (none skipped).
+The private lemma MovesRBase.pow_pow_eq_self (U2) is excluded per the
+"non-private" charge.
+
+'MovesRBase.map_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.Fsub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.O_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.relExt_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.relExt_relExt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.O_le_relExt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.qq_mul' depends on axioms: [propext]
+'MovesRBase.Fsub_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.EQ2law_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MovesRBase.O_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+NOTE: every footprint is Lean-core-only (subset of {propext, Classical.choice,
+Quot.sound}). NO sorryAx, NO declared/custom axioms anywhere. qq_mul is the
+tightest (propext only). This is the invariant a golf pass MUST preserve:
+rerun this census after golfing; any new axiom (esp. sorryAx) is a regression.
+
+Decl -> file map:
+  map_comp        LeanUrat/MovesRBase/MapComp.lean
+  Fsub_le         LeanUrat/MovesRBase/U2_Fsub_le.lean
+  O_le            LeanUrat/MovesRBase/U3_O_le.lean
+  relExt_eq       LeanUrat/MovesRBase/U4_relExt_comp.lean
+  relExt_relExt   LeanUrat/MovesRBase/U4_relExt_comp.lean
+  O_le_relExt     LeanUrat/MovesRBase/U4_relExt_comp.lean
+  qq_mul          LeanUrat/MovesRBase/U5_qq_mul.lean
+  Fsub_card       LeanUrat/MovesRBase/U6_Fsub_card.lean
+  EQ2law_card     LeanUrat/MovesRBase/U12_EQ2law_card.lean
+  O_chain         LeanUrat/MovesRBase/U41_O_chain.lean
+
+=== SORRY CENSUS (real proof sorries only; comment-hits excluded) ===
+Defs.lean            0   (the single `grep sorry` hit is "sorry-free" in a comment)
+MapComp.lean         0
+U2_Fsub_le.lean      0
+U3_O_le.lean         0
+U4_relExt_comp.lean  0
+U5_qq_mul.lean       0
+U6_Fsub_card.lean    0
+U12_EQ2law_card.lean 0
+U41_O_chain.lean     0
+TOTAL real sorries:  0
+(NB: MANIFEST.json describes the 2026-07-27 E-phase state "7 sorried theorems";
+the proofs have since been filled — the corpus is fully proved as of this baseline.)
+
+=== PER-FILE LINE COUNTS (wc -l) ===
+   27  MapComp.lean
+   27  U5_qq_mul.lean
+   31  U4_relExt_comp.lean
+   35  U2_Fsub_le.lean
+   35  U41_O_chain.lean
+   37  U12_EQ2law_card.lean
+   37  U3_O_le.lean
+   61  U6_Fsub_card.lean
+  124  Defs.lean
+  414  TOTAL (9 files)
