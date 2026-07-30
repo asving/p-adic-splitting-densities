@@ -109,14 +109,8 @@ omit hp in
 /-- `p^N = 0` in `Rphi` (the base ring `ZMod (p^N)` has characteristic `p^N`). -/
 theorem pCast_pow_N_eq_zero :
     ((p : ℕ) : Rphi p N e h c) ^ N = 0 := by
-  rw [← Nat.cast_pow]
-  have : ((p ^ N : ℕ) : ZMod (p ^ N)) = 0 := by
-    rw [ZMod.natCast_self]
-  calc ((p ^ N : ℕ) : Rphi p N e h c)
-      = algebraMap (ZMod (p ^ N)) (Rphi p N e h c) ((p ^ N : ℕ) : ZMod (p ^ N)) := by
-        rw [map_natCast]
-    _ = algebraMap (ZMod (p ^ N)) (Rphi p N e h c) 0 := by rw [this]
-    _ = 0 := map_zero _
+  rw [← Nat.cast_pow, ← map_natCast (algebraMap (ZMod (p ^ N)) (Rphi p N e h c)) (p ^ N),
+    ZMod.natCast_self, map_zero]
 
 omit hp in
 theorem isNilpotent_pCast : IsNilpotent (((p : ℕ) : Rphi p N e h c)) :=
@@ -343,14 +337,10 @@ theorem span_theta_p_eq_span_theta_of_h_one (he : 0 < e) :
     maximalSpan p N e 1 c = Ideal.span {theta p N e 1 c} := by
   apply le_antisymm
   · rw [maximalSpan, Ideal.span_le]
-    intro x hx
-    rcases hx with hx | hx
-    · rw [hx]; exact Ideal.subset_span rfl
-    · rw [Set.mem_singleton_iff] at hx; rw [hx]
-      exact natCast_p_mem_span_theta p N e c he
-  · rw [Ideal.span_le]
-    intro x hx
-    rw [Set.mem_singleton_iff] at hx; rw [hx]
+    rintro x (rfl | rfl)
+    · exact Ideal.subset_span rfl
+    · exact natCast_p_mem_span_theta p N e c he
+  · rw [Ideal.span_le, Set.singleton_subset_iff]
     exact theta_mem_maximalSpan p N e 1 c
 
 /-- **Compatibility (`h = 1`)**: the general-`h` filtration ideal equals the `θ`-adic ideal of

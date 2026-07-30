@@ -444,7 +444,7 @@ theorem hnode_oneSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ × ℕ) 
       rw [CellCard.prodSC, List.map_singleton, List.prod_singleton]]
     -- combine denominators: p^(s(N₀-1)) · p^s = p^(s·N₀).
     have hden : (p : ℚ) ^ (s * (N₀ - 1)) * (p : ℚ) ^ s = (p : ℚ) ^ (s * N₀) := by
-      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel hN₀]
+      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel (show 1 ≤ N₀ from hN₀)]
     -- s·N₀ = V + freeExp, so p^(s·N₀) = p^V · p^(freeExp).
     have hnum : (p : ℚ) ^ (s * N₀) = (p : ℚ) ^ V * (p : ℚ) ^ CellCard.freeExp s N₀ P := by
       rw [← pow_add]

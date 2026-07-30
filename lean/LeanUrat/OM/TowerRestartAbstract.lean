@@ -427,9 +427,6 @@ theorem card_span_p_pow_clamped (hgm : g.Monic) (hN : 0 < N) (hm : 0 < g.natDegr
         rw [← pow_add]; congr 1; omega
       rw [hkeq, isNilpotent_natCast_p p N g hN, zero_mul]
     rw [hzero, Ideal.span_singleton_eq_bot.mpr rfl, Nat.min_eq_left hk, Nat.sub_self, pow_zero]
-    haveI : Subsingleton (⊥ : Ideal (Oring p N g)) := by
-      constructor; rintro ⟨x, hx⟩ ⟨y, hy⟩
-      rw [Ideal.mem_bot] at hx hy; exact Subtype.ext (hx.trans hy.symm)
     exact Nat.card_of_subsingleton 0
 
 /-- **Deliverable 5 — `instTowerBase_Oring` (BUILT).** The unramified ring `O'' = Oring p N g` is a

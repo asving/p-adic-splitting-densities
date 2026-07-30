@@ -42,9 +42,12 @@ obligations (`toyModel.mem_realizable` G1_toyGate.lean:563,
 `HC1.S9a_ungated_corner_refuted`) get a repair adjudication package and a ruled
 execution — G1's four sorries go to zero WITHOUT weakening
 `TreeModel.mem_realizable` silently. The two type-blocked pins (`twoNodeKcardH`
-:2248, `toy_v8_wchain` :2251) get the card-4 `Stage 2 F4` sub-project (the S9c
-child-stage route) and land as a compiled counter-instance gate. This closes
-task #44's G1 half and removes the last MovesT sorries.
+:2248, `toy_v8_wchain` :2251) land as a compiled counter-instance gate. [REV 2:
+the card-4 `Stage 2 F4` is NOT built here — BP2 Block G (HK-13…HK-16) builds
+`StageCoreL bStage` and the card-4 child σ₁; BP3's D-cluster CONSUMES σ₁ and
+builds only the g₀ = 1 gate carrier + the ¬HistLawful proof. The carrier-data
+conflict with BP2's HK-24 hand-off (its H₂ has g₀ = 2) is ESCALATION E-2.] This
+closes task #44's G1 half and removes the last MovesT sorries.
 
 (G-d) **The three MovesV Phase-B seam duties discharged.** `ledgerIV_inst`
 (V7_livC.lean:66), `ratBurdens_exists` (V7_rbC.lean:52), `scs_data_supply`
@@ -234,7 +237,7 @@ existentially produced inside the proof — the threaded hypothesis must be
 This is exactly the shape of the other owner rows (RedCellPartition, SibCount)
 already quantified over g/cells in treeExp's row — no new genre.
 
-Non-vacuity/necessity evidence (unit A5): (i) an n = 1 childless micro-carrier
+Non-vacuity/necessity evidence (units A5a/A5b): (i) an n = 1 childless micro-carrier
 inhabits CellAssign — for n = 1, redPoly χ x is the degree-1 poly X − x(χ 0)
 (monic linear), whose normalizedFactors multiset has card 1, so no factor has
 count ≥ 2 and ChildCover is vacuous with `child := fun _ _ _ => False`;
@@ -283,9 +286,16 @@ child through `mem_single` (one-node histories) and `mem_snoc` (extensions), so
     (S-child)  ∀ o ν, ∀ x x' agreeing below n·N:
                (Tat N').child o ν x ↔ child o ν x'
     ⟹ (S-mem), by induction on H.nodes: every History decomposes as
-    oneNode/snoc (the G1/S-unit builders witness this decomposition; the
-    induction needs the standard `History` last-node decomposition lemma —
-    build it once, `History.snoc_induction`).
+    oneNode/snoc. [REV 2, finding 6] The last-node decomposition eliminator
+    `History.snoc_induction` is NOT in the inventory — it is a genuine NEW
+    prerequisite and now its own unit (TV-B8). Feasibility evidence (verified
+    at HEAD): the snoc side condition is `NodeExtends H ν := ν.species ≠
+    ReadSpecies.root` (MovesT/Defs.lean:77) — for a ≥2-node history the last
+    node's witness is RECOVERABLE from `History.root_iff` (index ≠ 0 ⟹ species
+    ≠ root), the prefix `H.nodes.dropLast` carries `root_iff` by restriction,
+    and the reconstruction equality `H = H₀.snoc ν hν` follows from the PROVED
+    ext lemma `history_eq_of_nodes_eq` (E5:131-193) + `List.dropLast_append_
+    getLast`. So the eliminator is buildable, but it is a unit, not a footnote.
 
 CAVEAT (threshold scoping, the honest hard part): (S-child) as displayed
 quantifies over ALL (o, ν) at the FIXED threshold N ≥ Tr.thr n. The owner
@@ -325,6 +335,13 @@ Repair options (the C1 package elaborates blast radii; ruling = Q3):
     consumer (MovesC/MovesD Defs + mem_realizable's consumers F2_dictPtwise:58,
     S2_sibFalse:210, D2_eligGate:124 — all currently discharge it vacuously or
     at 1-node histories, so the guard weakening their obligation is additive).
+    [REV 2, finding 9 + binding adjudication] **The HistoryCoherent edit itself
+    is BP2-EXCLUSIVE**: BP2 owns the ratified diff (HK-04), the countermodel
+    gate on the NEW guard (HK-05), and the execution (HK-06), consumer-gated by
+    HK-05 + HK-22 per the BP2 Q1 adjudication. Under option (i) BP3 executes
+    NOTHING on MovesC/MovesD Defs — TV-C2/C3 CONSUME the landed HK-06 state
+    and prove the two toy fields at the pinned tables under the repaired
+    definition.
 (ii) Scope `TreeModel.mem_realizable` itself (MovesD Defs statement change) —
     strictly larger fence event; NOT recommended (weakens every model).
 (iii) Re-pin the toys over F4 (a head with e·g = 2 exists there — cluster D
@@ -338,28 +355,60 @@ standalone ¬-lemma ONLY AFTER the two sorried fields stop asserting the old
 obligation (else sorried-Prop + compiled-negation = False in the environment).
 
 ### 3.D The F4 two-node sub-project (twoNodeKcardH / toy_v8_wchain)
+### [REV 2: rewritten — reconciled with BP2 Block G; exact conjunct displayed]
 
 Target (G1 docstring :2232-2247): the SEPARATE 𝔽₄-type carrier — a 2-node
 `History 2 F4` with card K₀ = p = 2, card K₁ = p² = 4, g₀ = 1 — and the gate
 `toy_v8_wchain : ¬ HistLawful 2 toyN twoNodeKcardH` (the K-card counter-instance
 of §0 record #7: HistLawful's clause roster rejects the card-4 second stage).
 
-Why a direct card-4 stage is impossible (recorded): a degree-1-key stage with
-K = ⊤ card 4 fails hS6b (the constant-digit map ℤ₂ˣ → 𝔽₄ˣ ≅ ℤ/3 must be trivial
-since ℤ₂ˣ ≅ ℤ/2 × ℤ₂ has no nontrivial hom to ℤ/3). The sanctioned route is the
-S9c CHILD-STAGE construction at e·g = 2 > 1: fire
-`S9c_coreAssembly bStage hσ th hEG` at ψ₂ (the HC2 quadratic over K2) to obtain
-σ₁ with `TransitionCoreL bStage σ₁ Φ̂ e' h' z̄` and `StageCore σ₁`; the child's
-K-carrier is the degree-2 extension — card 4. Missing inputs, to be built:
-`hσ : StageCoreL bStage` (D1) and `th : TransHyp bStage ψ₂ g Φ̂ e' h' z̄` (D2).
-Risk: S9c's ∃-conclusion may not EXPOSE card ↥σ₁.K = 4 — if not derivable from
-TransitionCoreL's fields, escalate (Q8). The nodes then carry (σ₀ = the
-transported toyStage genre at K = ⊤ ⊂ ZMod 2… NO — this carrier is 𝔽₄-typed:
-node 0 carries bStage itself, card ↥K2 = 2; node 1 carries σ₁, card 4). The
-gate proof: HistLawful's NodeDataLawful demands card K a p-power (4 = 2² passes)
-— the FAILING clause is the chain-clause roster's K-card/g tie at the recorded
-g₀ = 1 read (record #7); the prover identifies the exact conjunct at build time
-and refutes it by `decide`/`norm_num` arithmetic on the pinned literals.
+**The stage arrives from BP2 (cross-area reconciliation, finding 3).** The old
+TV-D1/D2/D3 (StageCoreL bStage, the TransHyp package, firing S9c_coreAssembly)
+DUPLICATED BP2 Block G, which owns exactly this build: HK-13/HK-14 =
+`StageCoreL bStage` (both halves), HK-15 = the child carrier σ₁ : Stage 2 F4
+DEFINED from HC1's S9 constructor data at bStage/ψ₂ **with the `Nat.card ↥σ₁.K
+= 4` check as its own deliverable**, HK-16 = σ₁'s stage laws via the guarded
+S9a/S9b/S9c chain at e·g = 2 > 1. The vocabulary finding 3 flagged as missing
+is therefore BP2's, and it EXISTS: ψ₂ is a declaration
+(`HC2/U31_gateReadsOf.lean:690, ψ₂ : Polynomial ↥K2 = X² + X + 1`) with
+`ψ₂_monic` :692, `ψ₂_natDegree = 2` :696, `ψ₂_irr` :720 — all currently
+`private` (BP2's HK-19 already plans the de-privatization of the U31
+machinery; if HK-15 needs them public, that is BP2's edit). Because HK-15
+DEFINES σ₁ (rather than eliminating S9c's ∃), the card-4 exposure risk R7 and
+question Q8 are MOOT if HK-15 lands — no extraction lemma against an
+∃-conclusion is needed. BP3's D-cluster now consumes σ₁ (unit TV-D6) and never
+touches HC1/HC2.
+
+**The carrier-data conflict (ESCALATION E-2).** BP2's HK-24 proposes the
+hand-off `twoNodeKcardH := H₂` where H₂ = ⟨[ν₀, ν₁]⟩ is the COHERENT gate
+history with the ψ₂-read at node 0 — i.e. **g₀ = 2** (Node law `hψdeg :
+ψ.natDegree = g`, MovesC/Defs.lean; deg ψ₂ = 2). But record #7's
+counter-instance pins **g₀ = 1**: at H₂ the intended clause (below) PASSES
+(4 = 2²), and ¬HistLawful 2 toyN H₂ could at best hold by an ARTIFACT clause
+(e.g. the root-width clause `s0₀ + wSide₀ ≤ n` at toyN = 2 against BP2's
+quartic), which would gut the gate's content. BP3 therefore builds its OWN
+node-0 literal (bStage-keyed, g := 1 with a degree-1 irreducible ψ, e.g.
+ψ = X + 1 — well-typed: verified against Node's full law roster, whose only
+g-tie is to the node's OWN ψ) and reuses ONLY σ₁ at node 1. Who owns
+`twoNodeKcardH` and with which data columns is a cross-area ruling — escalated,
+not decided here; TV-D4 blocks on it.
+
+**The gate conjunct, exactly (finding 2 repaired).** Verified at
+MovesT/Defs.lean:146: `HistLawful`'s chain-clauses conjunct contains the REV 4
+W-MULTIPLICATIVITY sub-clause
+
+    Nat.card ↥((H.nodes[i+1]).σ.K) = Nat.card ↥((H.nodes[i]).σ.K) ^ (H.nodes[i]).g
+
+At the pinned literals (card K₀ = 2, card K₁ = 4, g₀ = 1) and i = 0 it demands
+`4 = 2 ^ 1` — FALSE by `norm_num`. NodeDataLawful's p-power clause passes
+(4 = 2² with factorization exponent 2), exactly as the review worried — the
+refutation does NOT rest on it. The countermodel-first duty for this ¬-claim
+(finding 10) is the census gate TV-D7: `decide`/`norm_num`-evaluate EVERY
+HistLawful conjunct at the planned literals BEFORE the prover; if the census
+finds the W-multiplicativity clause satisfiable at every admissible node-0 pin
+(i.e. the g₀ = 1 pin is blocked by a law the roster read missed), then
+`toy_v8_wchain` is FALSE-AS-STATED — a NEW statement-fence event, escalate
+(E-3), never force.
 
 ### 3.E The real MeasuredSide field map (ledgerIV_inst + ratBurdens_exists)
 
@@ -383,16 +432,37 @@ core. The dictionary (the V7_livC docstring's own recipe :48-53, typed):
 - `rowVal e τ o` := Σ over the outcome's cells of μcell (FORCED up to
   rep_indep; define it as that sum so rep_indep is near-rfl) — equivalently the
   tgP/jP evaluation (the F-cluster co-design makes both readings agree).
-- `kstep` := THE RECURSIVE DEFINITION: kstep 1 := kstep_one's displayed RHS
-  (the rowVal sum over kcol outcomes with a size-e member targeting β);
-  kstep (k+1) := Σ_γ kstep k τ γ · kstep 1 γ β. Then LedgerIV.kstep_one and
-  LedgerIV.hmc are definitional. The REAL residual law is act_target:
-  kstep 1 τ β = 0 at inactive β — i.e. Σ rowVal over β-targeting outcomes
-  vanishes — exactly the PROVED `no_entry` (V4_act) through the rowVal = poly
-  eval reading. If the vocabulary mismatches (no_entry is per-MoveData T-poly,
-  rowVal is a μcell sum), the fallback is an activity-guarded kstep definition
-  PLUS deriving the kstep_one compatibility from no_entry — unit E5 owns this;
-  escalation path = a named hypothesis (Q5 records the fence).
+- `kstep` := THE RECURSIVE DEFINITION [REV 2, finding 4 — typed in full].
+  Carrier (verified, MovesS/Defs.lean:149): `kstep : ℕ → ∀ e, T.State e →
+  T.State e → ℚ → ℝ`; the γ-sum is finite via `T.fin : Fintype (T.State e)`,
+  equality via `T.deq`. The three-case recursion:
+
+      kstep 0     e τ β q₀ := if τ = β then 1 else 0        -- Kronecker
+      kstep 1     e τ β q₀ := ∑ o ∈ {o : T.Out e τ |
+          routeOf (T.odata e τ o) = .kcol ∧ ∃ μ ∈ (T.odata e τ o).mem,
+          ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β}.toFinset,
+          M.rowVal e τ o q₀                                  -- kstep_one's RHS,
+                                                             -- transcribed
+      kstep (k+2) e τ β q₀ := ∑ γ : T.State e,
+          kstep (k+1) e τ γ q₀ * kstep 1 e γ β q₀
+
+  (The review said kstep_one "has no referenceable RHS" — too strong: the
+  LedgerIV law DISPLAYS the RHS verbatim (Defs.lean:149ff, group (6)); it is
+  transcribed above. What the review correctly caught: `hmc` quantifies over
+  ALL k, and at k = 0 it reads `kstep 1 = Σ_γ kstep 0 τ γ · kstep 1 γ β` — so
+  kstep 0 is FORCED to be the Kronecker delta, and hmc's k = 0 case is
+  `Finset.sum_eq_single`, NOT rfl. kstep_one and hmc at k ≥ 1 are rfl-genre.)
+  The REAL residual law is act_target: kstep 1 τ β = 0 at inactive β — i.e.
+  Σ rowVal over β-targeting outcomes vanishes — exactly the PROVED `no_entry`
+  (V4_act) through the rowVal = poly eval reading. If the vocabulary mismatches
+  (no_entry is per-MoveData T-poly, rowVal is a μcell sum): the fallback
+  activity-guarded kstep (kstep 1 := if activeState β then Σ… else 0) makes
+  act_target rfl but moves the SAME bridge into kstep_one's inactive-β case
+  (0 = Σ rowVal) — [REV 2, finding 4] the fallback does NOT avoid the
+  no_entry/rowVal bridge, it relocates it. Hence the probe unit TV-E5a tests
+  the bridge BEFORE either definition is committed; if the bridge fails both
+  ways, the ONLY exit is escalation (named hypothesis on ledgerIV_inst, risk
+  R5) — recorded, never forced.
 - entrance block: `EntShape e τ` := the V-side entrance index at
   β₀ := toStepCells.symm ⟨s, α⟩ (EntIx-based); entInst/entEvt/entLvl/entCount
   from V's census fields; `ιshH/ιsh/ιval` from ιshH/iotaShV/iotaValV;
@@ -414,11 +484,28 @@ RatBurdens over the SAME (T, M): tgP/jP := the cp/dataOf/tblOf PolyGeom packs
 ιP := choice-functionalized initRat_comp (V7_rbB gives the ∃ per (β₀, i));
 jcell_sum forces jP := the cell sum — co-design jP as that sum. Degree ties: T's
 bounds are the REAL C.Wloc/(C.bd s).Wstate (tableShape_inst), and cp's packs
-carry exactly those bounds (cp's laws; F3 verifies field-by-field). cellP: the
-F-5 sizeP wiring (cellP e τ c := (C.bd s).sizeP α, constant in c) makes act_iff
-literally V.act_size and cellP_count = stInst_card with cellInst := V.stInst —
-lawful but per-STATE, not per-cell; the honest alternative is cp.count's
-per-cell polys. Q5 rules which; either way the pin inventory is updated.
+carry exactly those bounds (cp's laws; F3 verifies field-by-field). cellP:
+[REV 2 — Q5 IS RULED: "per-cell cp.count wiring"] the per-cell cp.count polys
+are the adjudicated wiring; the coarse sizeP/stInst option is retired from the
+menu (kept below only as the recorded rejected alternative). Pin inventory
+updated accordingly at TV-F4.
+
+**Shared witness is not free (finding 7).** `ledgerIV_inst` and
+`ratBurdens_exists` are SEPARATE `∃ T M` theorems (verified: V7_livC.lean:54,
+V7_rbC.lean:42) — eliminating them separately yields two unrelated (T, M)
+pairs, while `RS4Chain` (MovesS/Interfaces.lean:129) takes `L : LedgerIV T M`
+AND `RB : RatBurdens T M` over ONE (T, M). "Proved over the SAME witness"
+must therefore be a THEOREM, not a construction convention: new unit TV-F6
+adds the ADDITIVE combined producer
+
+    theorem measured_seam … : ∃ (T : MovesS.TableShape n)
+        (M : MovesS.MeasuredSide T), TablePins C T ∧ (the |Box| card tie) ∧
+        Nonempty (MovesS.LedgerIV T M) ∧ Nonempty (MovesS.RatBurdens T M)
+
+(premise row = the union of the two duties' rows), from which both existing
+statements re-derive byte-identically. No existing statement changes — the Q5
+"shared witness allowed" ruling covers sharing measuredOf; the combined ∃ is a
+new declaration, flagged for ratification as additive.
 
 ### 3.F SCSData supply
 
@@ -437,6 +524,21 @@ FIRST (unit G1): verify the catalogue letter record actually carries a usable
 if a field has no CTS/MovesSp source, ESCALATE to adjudication (a named
 hypothesis row supplying the species stage record — the M1-failure-mode-safe
 form) rather than inventing data.
+
+[REV 2, finding 5] **The gate must also census the ROSTER, not just the
+fields.** Verified at MovesS/Defs.lean:97: `memberOf` demands an INJECTION
+`Fin (flankCount e τ o) ⊕ Fin ((resFactors e τ o).erase (g, μsel)).card →
+Fin (T.odata e τ o).mem.length` avoiding `selIdx` (`memberOf_inj` +
+`memberOf_ne_sel`) — i.e. per outcome, `mem.length ≥ 1 + flankCount +
+(resFactors.erase (g,μsel)).card`, a CARDINALITY demand on the CTS odata
+rosters that no field-reachability check certifies. Also load-bearing and easy
+to miss: `cluster_parent : W·D = e` (an exact per-outcome arithmetic law) and
+`res_sum : Σ (g·μ over resFactors) = ℓ`. TV-G1's gate therefore delivers
+(i) the ten-field source map, (ii) the per-outcome roster-cardinality census
+against the memberOf demand, (iii) sources for the two arithmetic laws — and
+only THEN may TV-G3 assert the roster construction. If (ii) fails at any
+reachable outcome, `scs_data_supply` may be FALSE for that supply genre:
+STOP and escalate (same named-hypothesis exit).
 
 ### 3.G W17ii clause (ii) — countermodel first
 
@@ -462,14 +564,29 @@ sorried w17ii_wave4 applies to every RS4Chain, so a compiled countermodel chain
 built in quarantine (compiled once, recorded, NOT imported into the build root)
 OR the adjudicated repair lands in the SAME commit that un-sorries the clause —
 the H-cluster sequencing below enforces the second).
-Repair menu (H2, ruling Q4): (a) new RS4Chain census fields tying shDom to the
-event side (shdom_no_stray: h ∈ shDom → shEvtH Ŝ h q₀ N eventually nonempty;
-plus a vanishing law off visH) — then clause (ii) becomes provable by the
-counting squeeze at a fixed pool; (b) a Summable/domain-finiteness guard on
-clause (ii) itself; (c) carry the HasSum as a chain FIELD (rejected-by-default:
-kills the clause's content). U-28's `h17` premise is byte-stable under (a) and
-(b) only if W17ii's def or RS4Chain's fields change compatibly — H2 documents
-the exact byte-diff for sign-off.
+Repair menu (H2, ruling Q4) — [REV 2, finding 1: CORRECTED]. The review is
+right that a bare Summable/finiteness guard proves only that SOME sum exists —
+it cannot identify the sum with `WshVal`. Failure shape (accepted): finite
+shDom containing an h whose shEvtH is nonzero-weight but never in visH — the
+sum counts it, `wshval_card` (which reads only shEvt = the visH biUnion, via
+`shevt_grouping`) does not. So the OLD option (b) alone CANNOT close TV-H3;
+value identification needs census content in EVERY branch of the menu.
+Moreover the counting squeeze needs a law the chain does not currently carry
+at all (verified against RS4Chain's field list, MovesS/Interfaces.lean:129):
+pairwise DISJOINTNESS of `shEvtH Ŝ h q₀ N` across h ∈ visH — without it
+|biUnion| ≠ Σ of cards and even option (a) does not close. Revised menu:
+(a′) census fields: `shdom_no_stray` (h ∈ shDom → shEvtH eventually nonempty),
+an off-visH vanishing law (h ∈ shDom \ visH → shEvtH = ∅ eventually, and
+visH ⊆ shDom eventually), AND `shevt_disj` (pairwise disjointness) — clause
+(ii) then provable by the counting squeeze at a fixed pool IF shDom is also
+tied finite/summable; (b′) = the Q4-preferred summability guard PLUS the (a′)
+census fields needed for value identification — the guard alone is DEAD as a
+complete repair; (c) HasSum-as-field demotion (rejected-by-default: kills the
+clause's content). Since the Q4 adjudication ("summability guard preferred")
+described the old (b), whether (b′)'s extra RS4Chain fields are acceptable —
+a statement-shape change on a capstone-adjacent structure — is ESCALATION E-1.
+U-28's `h17` premise is byte-stable only if W17ii's def or RS4Chain's fields
+change compatibly — H2 documents the exact byte-diff for sign-off.
 
 ### 3.H Fold-ins
 
@@ -488,14 +605,16 @@ to the reviewer (Q7) — do not fake discrimination.
 
 ---
 
-## 4. UNIT SPLIT (43 units; ids TV-A1 … TV-I2)
+## 4. UNIT SPLIT (48 units after REVISION 2; ids TV-A1 … TV-I2; deleted:
+## D1/D2/D3 — superseded by BP2 HK-13…HK-16; new: A5a/A5b (replacing A5), A6,
+## B8, D6/D7, E5a/E5b (replacing E5), F6, H1a/H1b (replacing H1))
 
 Format per unit: id | statement | deps | sketch | difficulty | est. proof size.
 "adjudication" units produce a decision package (quoted evidence + option menu +
 blast radii + recommendation), never Lean proofs. Ratification-required units
 are marked [FENCE].
 
-### Cluster A — E5 rootSplit pair (5 units)
+### Cluster A — E5 rootSplit pair (7 units after REV 2)
 
 TV-A1. Defs additions `TrackUniqOn` / `TrackRepOn` (MovesT/Defs.lean, §2.4
   vicinity): `def TrackUniqOn (T) (χ) (trackOf) (g) : Prop := ∀ y ∈ rootCell χ g,
@@ -519,26 +638,42 @@ TV-A3. Ripple 1 — E8/E10: `treeExp` gains
 
 TV-A4. Ripple 2 — E11 `treeN`, D12 `jc_multi`, the Defs ∀-closures
   (`TreeExpFin`/`TreeNStmt`/`RS1GivenPackage` rows if they quote the premise
-  roster), MovesU/DefsLedger consumers (grep `treeExp\|TreeNStmt` first);
-  enumerated corpus sweep + AxChk footprint re-verification; MANIFEST/
-  PROJECT_STATE records (R3 executed). deps: A3. routine-opus, wide (~40 lines
-  across ~6 files).
+  roster — verified at HEAD these three names live in exactly five MovesT
+  files: Defs, E8_treeExp, E11_treeN, D12_packages, D15_w3Rekey); enumerated
+  corpus sweep; MANIFEST/PROJECT_STATE records (R3 executed). deps: A3.
+  routine-opus, wide (~40 lines across ~6 files).
 
-TV-A5. The first in-corpus `CellAssign` instance + necessity probe:
-  (a) n = 1 childless micro-carrier (child ≡ False, mem := (· = none) on the
-  some-side, branchSetOf ≡ ∅; ChildCover vacuous via the lemma "a monic linear
-  poly's normalizedFactors has no factor of count ≥ 2" — card computation);
-  updates BOTH fence-rule records (E5:339-342, E11:85-89) from "premise
-  uninhabitable" to "inhabited; pair vacuously true at the witness".
-  (b) the stray-countermodel ATTEMPT at n = 2: extend carrier A's tables with a
-  child at track X+1 on the g = (1,0) cell (where redPoly = (X+1)² forces
-  child_cover to demand one) and probe whether (U) or (R) can be broken while
-  every CellData/CellAssign law holds; deliverable = compiled negation OR the
-  exact blocking law, recorded at the TV-A1 docstrings. deps: A1 (runs before
-  nothing — the pair is hoisted, not proved; this unit is fence-record upgrade).
-  hard-fable, ~120 lines.
+TV-A6. [REV 2, finding 8 — NEW] The campaign-endpoint boundary deliverable:
+  after A4, (i) `MovesU` theoremU (U10_theoremU.lean:104) re-type-checked and
+  its `#print axioms` footprint re-verified via the AxChk census (plain
+  `lake build` + `lake env lean LeanUrat/AxChk_baseline.lean`); (ii) a written
+  interface record: theoremU's statement is byte-unchanged, its boundary
+  documentation updated to NAME the two new premise rows
+  (TrackUniqOn/TrackRepOn, the wave-4 parameter genre) and the StableInputs
+  row from B7; (iii) the DefsLedger/MovesU grep transcript attached (at HEAD:
+  zero MovesU consumers of the changed rows — the deliverable certifies this
+  STAYS true or enumerates what changed). This converts G-a's promise from a
+  grep-and-sweep into a checked artifact. deps: A4, B7. routine-opus, ~20
+  lines + records.
 
-### Cluster B — E11 treeN_stable (7 units; B1 runs BEFORE B6/B7)
+TV-A5a. [REV 2, finding 12 — split from A5] The first in-corpus `CellAssign`
+  instance: n = 1 childless micro-carrier (child ≡ False, mem := (· = none) on
+  the some-side, branchSetOf ≡ ∅; ChildCover vacuous via the lemma "a monic
+  linear poly's normalizedFactors has no factor of count ≥ 2" — card
+  computation); updates BOTH fence-rule records (E5:339-342, E11:85-89) from
+  "premise uninhabitable" to "inhabited; pair vacuously true at the witness".
+  deps: A1. hard-fable, ~70 lines.
+
+TV-A5b. [REV 2, finding 12 — split from A5] The stray-countermodel ATTEMPT at
+  n = 2 (different carrier, different algebra — deliberately its own unit):
+  extend carrier A's tables with a child at track X+1 on the g = (1,0) cell
+  (where redPoly = (X+1)² forces child_cover to demand one) and probe whether
+  (U) or (R) can be broken while every CellData/CellAssign law holds;
+  deliverable = compiled negation OR the exact blocking law, recorded at the
+  TV-A1 docstrings. deps: A1, A5a (reuses its carrier machinery).
+  hard-fable, ~90 lines.
+
+### Cluster B — E11 treeN_stable (8 units after REV 2; B1 runs BEFORE B6/B7)
 
 TV-B1. COUNTERMODEL-ATTEMPT (countermodel-first duty for the sorried universal
   `treeN_stable` AS STATED): attempt to build (pol, Tat, χat, trackOf,
@@ -561,11 +696,21 @@ TV-B2. Type the stability-input bundle `StableInputs` (E11-local, E-DEV-9
   DERIVED and dropped, recorded). Owner-tag HC-2/D4R0K quoting MOVES 7566–7570.
   deps: none. routine-opus, ~30 lines.
 
-TV-B3. `mem_cyl_of_child_cyl`: (S-child) ⟹ (S-mem) by induction on H.nodes
-  through mem_single/mem_snoc. Needs the last-node decomposition lemma
-  (`History.snoc_induction`: every History is oneNode ν h or H₀.snoc ν hν —
-  build from the nodes-list structure + root_iff; the G1 ToyPinHelpers
-  snoc_eq lemmas are the pattern). deps: B2. hard-fable, ~60 lines.
+TV-B8. [REV 2, finding 6 — NEW; the invented interface made a real unit]
+  `History.snoc_induction` (MovesT Defs vicinity, additive): a motive-based
+  eliminator — `∀ {motive : History p F → Prop}, (∀ ν h, motive (oneNode ν h))
+  → (∀ H₀ ν hν, motive H₀ → motive (H₀.snoc ν hν)) → ∀ H, motive H` — by
+  strong induction on `H.nodes.length`. Witness recovery (verified §3.B):
+  singleton case ⟹ the node is root-species by `root_iff` at j = 0, giving
+  `ChildRoot none ν`; ≥2 case ⟹ the LAST node has species ≠ root by
+  `root_iff` (index ≠ 0), giving `NodeExtends` (:= species ≠ root, verified
+  MovesT/Defs.lean:77) for the dropLast prefix (whose `root_iff` restricts);
+  the equality `H = H₀.snoc ν hν` via `history_eq_of_nodes_eq` (PROVED,
+  E5:131-193) + `List.dropLast_append_getLast`. The G1 ToyPinHelpers snoc_eq
+  lemmas are the concrete pattern. deps: none. hard-fable, ~50 lines.
+
+TV-B3. `mem_cyl_of_child_cyl`: (S-child) ⟹ (S-mem) by `History.snoc_induction`
+  (TV-B8) through mem_single/mem_snoc. deps: B2, B8. hard-fable, ~40 lines.
 
 TV-B4. redPoly/henPayload/roster level-1 transfer: under chart_pin, x =_{<n·N}
   x' with N ≥ 1 gives redPoly χ x = redPoly χ x' (Finset.sum_congr, the E5
@@ -600,12 +745,18 @@ TV-C1. ADJUDICATION PACKAGE (both carriers, one package): quote the two in-file
   REV-8 table rebuild), (iv) status quo. Recommendation: (i). deps: none.
   adjudication, no Lean.
 
-TV-C2. [FENCE — Q3] Execute the ruling on `toyModel.mem_realizable`: under
-  option (i), land the HistoryCoherent guard (MovesC/MovesD Defs edit per the
-  task-#44 record), then prove the field at the pinned tables (the node-level
-  legs are already walked lawful per the DO-1 census; the guarded transition
-  leg at e·g = 1 becomes vacuous). Re-run toyModel's dependent gates. deps: C1
-  ruling. hard-fable, ~100 lines (mostly the guard ripple).
+TV-C2. [FENCE — Q3] [REV 2, findings 9 + 14 — REWRITTEN: BP3 does NOT edit
+  HistoryCoherent; it is BP2-EXCLUSIVE per the binding adjudication] Execute
+  the ruling on `toyModel.mem_realizable`: under option (i), WAIT for BP2's
+  HK-06 (the ratified HistoryCoherent diff, executed by BP2), consumer-gated
+  by BP2's HK-05 (countermodel gate on the NEW guard) + HK-22 (compiled 2-node
+  instance) per the BP2 Q1 adjudication; THEN prove the field at the pinned
+  tables under the repaired definition (the node-level legs are already walked
+  lawful per the DO-1 census; the guarded transition leg at e·g = 1 becomes
+  vacuous). Re-run toyModel's dependent gates. The old ~100-line estimate
+  included the guard ripple — that ripple is BP2's; BP3's share is the
+  toy-side proof only. deps: C1 ruling, BP2 HK-06 landed (gated by HK-05 +
+  HK-22). hard-fable, ~60 lines.
 
 TV-C3. Same for `toyModelB.mem_realizable` + G1 module sweep + MANIFEST
   RATIFY-T-2/RERATIFY-T-1 record updates + task #44 G1-half close-out.
@@ -617,54 +768,73 @@ TV-C4. The permanent corner record: compile `toy_corner_refuted` — the OLD
   sorried fields must stop asserting the old Prop first). deps: C2, C3.
   routine-opus, ~30 lines.
 
-### Cluster D — the F4 two-node sub-project (5 units)
+### Cluster D — the F4 two-node sub-project (4 units after REV 2)
+### [REV 2, finding 3: TV-D1/D2/D3 DELETED — they duplicated BP2 Block G
+### (HK-13/HK-14 = StageCoreL bStage; HK-15/HK-16 = σ₁ defined with the
+### card-4 check; HK-17 = the TransitionCoreL record). BP3 consumes.]
 
-TV-D1. `StageCoreL bStage`: verify StageCoreL's field list (HC1, S9c vicinity),
-  then prove each law at `LeanUrat.MovesJ.U31.bStage` (the w-side laws copy from
-  bStage's own fields — the G1 ToyStageTransport primed-lemma pattern :116-129
-  shows the defeq route; the residual core laws are the real work).
-  deps: none. hard-fable, ~150 lines (600-line-precedent caution: split
-  D1a w-side / D1b R-side at execution if over budget).
+TV-D6. [REV 2 — NEW, the cross-area consumption unit] Import BP2's σ₁ (the
+  HK-15/HK-16 deliverable: `σ₁ : Stage 2 F4` DEFINED from HC1's S9 constructor
+  data at bStage/ψ₂) and re-verify `Nat.card ↥σ₁.K = 4` on the BP3 side (the
+  check is HK-15's own deliverable; this unit pins it as a named lemma G1 can
+  cite). No S9c ∃-elimination anywhere — Q8's extraction question is MOOT on
+  this route. If BP2's fleet has not landed HK-15/16, this unit BLOCKS (record
+  the dependency; do not rebuild the stage in BP3). deps: BP2 HK-15/HK-16
+  landed. routine-opus, ~25 lines.
 
-TV-D2. The `TransHyp bStage ψ₂ g Φ̂ e' h' z̄` package with 1 < e·g = 2: choose
-  the recorded HC1 quadratic ψ₂ over K2; discharge TransHyp's fields
-  (hg/hlift/…; re-verify the field list at HC1/DefsTower.lean:40). deps: D1
-  (shares the bStage law inventory). hard-fable, ~100 lines.
+TV-D7. [REV 2, findings 2 + 10 — NEW countermodel/census gate, runs BEFORE
+  D4/D5] The HistLawful conjunct census at the PLANNED literals: tabulate
+  every conjunct of `HistLawful 2 toyN` (Defs.lean:146 roster) at node data
+  (card K₀ = 2, g₀ := 1, deg-1 ψ; card K₁ = 4), each with its decide/norm_num
+  verdict. Expected: NodeDataLawful p-power PASSES (4 = 2²); the REV 4
+  W-MULTIPLICATIVITY chain sub-clause `Nat.card K₁ = Nat.card K₀ ^ g₀` FAILS
+  (4 ≠ 2¹). Also verify the g₀ = 1 node-0 pin is WELL-TYPED against Node's
+  full law roster (hψdeg/hψirr/hpat0/hpatTop/hbezCanon/hDwidth… — §3.D's
+  read says yes; the gate re-checks at the literals). If the census instead
+  finds every conjunct satisfiable at all admissible pins, `toy_v8_wchain` is
+  FALSE-AS-STATED: STOP — NEW statement-fence event, escalate (E-3).
+  deps: D6 (needs σ₁'s data). routine-opus, ~40 lines (census table + gate).
 
-TV-D3. Fire `S9c_coreAssembly bStage hσ th (by norm_num : 1 < 2)` → obtain σ₁;
-  prove the card gate `Nat.card ↥σ₁.K = 4`. If the ∃-conclusion under-determines
-  K-card, derive it from TransitionCoreL's degree/rep fields; if not derivable,
-  ESCALATE per Q8 (additive clause on S9c's conclusion, HC1 statement change).
-  deps: D1, D2. hard-fable, ~60 lines.
+TV-D4. [REV 2 — revised deps/data] Build the two Node literals (node 0:
+  bStage-keyed, card K = 2, **g := 1 with a degree-1 irreducible ψ** — record
+  #7's data column, NOT BP2's ν₀ whose ψ₂-read forces g = 2; node 1: σ₁-keyed,
+  card K = 4) + `twoNodeKcardH : History 2 F4` (nodes list + nonempty +
+  root_iff fields). Replaces the :2248 sorry. BLOCKED on ESCALATION E-2 (the
+  twoNodeKcardH carrier-ownership ruling vs BP2 HK-24's `:= H₂` hand-off).
+  deps: D6, D7, E-2 ruling. routine-opus, ~50 lines.
 
-TV-D4. Build the two Node literals (node 0: bStage-keyed, card K = 2, g = 1;
-  node 1: σ₁-keyed, card K = 4) + `twoNodeKcardH : History 2 F4` (nodes list +
-  nonempty + root_iff fields; §0 record #7's data columns). Replaces the :2248
-  sorry. deps: D3. routine-opus, ~50 lines.
+TV-D5. [REV 2, finding 2 — conjunct now EXACT] `toy_v8_wchain : ¬ HistLawful 2
+  toyN twoNodeKcardH`: intro, project the chain-clauses conjunct at i = 0, and
+  refute its 4th sub-clause (REV 4 W-MULTIPLICATIVITY, displayed §3.D):
+  `4 = 2 ^ 1` closes by norm_num on the pinned literals (D7's census is the
+  pre-verified script). Wire both into G1; module green; records state the
+  violated conjunct BY NAME (the gate certifies the K-card/g tie, not an
+  artifact clause). deps: D4, D7. routine-opus, ~40 lines.
 
-TV-D5. `toy_v8_wchain : ¬ HistLawful 2 toyN twoNodeKcardH`: identify the
-  violated HistLawful conjunct at the pinned literals (per record #7 the
-  K-card/g chain clause; NodeDataLawful's p-power clause PASSES at 4 = 2², so
-  the refutation must land on the chain roster — the prover intros HistLawful,
-  specializes to i = 0/1, and refutes by decide/norm_num). Wire both into G1;
-  module green; records. deps: D4. routine-opus, ~40 lines.
-
-### Cluster E — ledgerIV_inst (8 units)
+### Cluster E — ledgerIV_inst (9 units after REV 2)
 
 TV-E1. `measuredOf` data block 1 (def, no laws): Pools/Box/finB/boxpos := V's;
   Cell e τ := Σ o : T.Out e τ, DCellO-fiber at τ's ⟨s, α⟩; cellOut := Sigma.fst;
   Hgt := Σ D, Hpt D; HDom from cdom/cdomT; μcell := the μcellH carrier;
   cellEvt := the REV-6 double-dite over evtOf/evtOfT; Rep := the REV-5
-  representative family; cellLvl/cellInst wired per the Q5 ruling (stInst vs
-  per-cell). Keyed to (V, X, cp) only — the SHARED witness (Q5). deps: none.
-  hard-fable, ~120 lines.
+  representative family; cellLvl/cellInst wired per the Q5 RULING (per-cell
+  cp.count — adjudicated). Keyed to (V, X, cp) only — the SHARED witness (Q5).
+  [REV 2, finding 13] Deliverable EXPLICITLY includes the transport/equality
+  lemma layer the laws will need (Sigma-cell casts, double-dite definedness
+  case lemmas, toStepCells transport) — sizing honesty: ~180 lines; the E-fleet
+  is pre-authorized to split E1a (carriers) / E1b (transport lemmas) at
+  execution if over budget. deps: none. hard-fable, ~180 lines.
 
 TV-E2. `measuredOf` data block 2: entrance block (EntShape := the V-side EntIx
   carrier at β₀ = toStepCells.symm ⟨s,α⟩; entInst/entEvt/entLvl/entCount/hent/
   Went from V's census fields; ιshH/ιsh/ιval := ιshH/iotaShV/iotaValV);
   activeState := V.activeState ∘ toStepCells.symm (decA classical); kstep :=
-  the recursive definition (base := kstep_one's RHS); rowVal := the per-outcome
-  μcell sum; markedVal/gwt/rowVal residue fields. deps: E1. hard-fable, ~100.
+  THE THREE-CASE RECURSION AS DISPLAYED IN §3.E (REV 2: kstep 0 = Kronecker
+  delta — forced by hmc at k = 0; kstep 1 = the transcribed kstep_one RHS;
+  kstep (k+2) = the γ-sum recursion); rowVal := the per-outcome μcell sum;
+  markedVal/gwt residue fields. [REV 2, finding 13] Includes the entrance-side
+  transport lemmas (EntIx re-index equalities) — sizing honesty: ~150 lines,
+  same split authorization. deps: E1. hard-fable, ~150 lines.
 
 TV-E3. LedgerIV groups (1)-(2): xhd_sum (X.w face HasSum at μcell), xhd_no_stray
   / xhd_no_orphan (X.d faces / no_orphanC route, the D21 pattern), d4r0
@@ -676,13 +846,24 @@ TV-E4. LedgerIV groups (3)-(5): part1 via the PROVED part1 producer (V4_part1C;
   (V4-9; cp premise present, XHDdC from X.d), meas_card via evt_card at
   N ≥ stabLvl (+ box_card for the ℝ-cast). deps: E1, E2. hard-fable, ~60.
 
-TV-E5. LedgerIV groups (6)-(7): kstep_one + hmc definitional at E2's recursive
-  kstep; act_target from no_entry (V4_act) through the rowVal reading — the
-  RESIDUAL REAL LAW: Σ_{o targeting β, kcol} rowVal = 0 at inactive β. If the
-  no_entry vocabulary (per-MoveData T-poly) does not reach the μcell-sum rowVal,
-  fall back to the activity-guarded kstep definition + prove kstep_one's
-  compatibility; if neither closes, ESCALATE (named hypothesis; risk R5).
-  deps: E2. hard-fable, ~50 lines.
+TV-E5a. [REV 2, finding 10 — NEW probe gate, runs BEFORE E5b] The
+  no_entry/rowVal vocabulary-bridge probe: state (as a standalone lemma
+  attempt, no LedgerIV assembly) the bridge `Σ_{o targeting β, kcol}
+  (μcell-sum rowVal) = (the no_entry T-poly evaluation)` at inactive β, via
+  cp's count laws + rep_indep, and either PROVE it or record the exact
+  vocabulary gap (which cp law is missing, at which route case). This tests
+  the load-bearing uncertainty (risk R5) while proving NOTHING about the
+  target — the countermodel-first analogue for a duty whose sketch could be
+  unclosable. deps: E1, E2, F1 (cp packs). hard-fable, ~40 lines or
+  blocked-record.
+
+TV-E5b. LedgerIV groups (6)-(7): kstep_one rfl-genre + hmc (k = 0 case by
+  `Finset.sum_eq_single` at the Kronecker kstep 0 — §3.E REV 2; k ≥ 1 cases
+  rfl-genre) at E2's recursive kstep; act_target from E5a's bridge. [REV 2,
+  finding 4] The fallback activity-guarded kstep does NOT avoid the bridge
+  (it relocates it into kstep_one's inactive-β case) — so if E5a records a
+  gap, do NOT flip definitions and retry: ESCALATE directly (named hypothesis
+  on ledgerIV_inst; risk R5). deps: E2, E5a. hard-fable, ~50 lines.
 
 TV-E6. LedgerIV groups (8)-(9): init_agg (hEU + semilin_sum_exact + EntIx
   re-index — the V5-6 comp_agg machinery), init_count (V.ent_card division-free
@@ -693,14 +874,15 @@ TV-E7. Assembly: T := tableShape_inst's witness (TablePins conjunct = its
   proved bundle); the guarded |Box| tie = rfl at Box := V.Box; bundle E3-E6
   into `Nonempty (LedgerIV T M)`; `ledgerIV_inst` proved, module sorry-free;
   docstring pin-inventory updated FROM the compiled witness (the V7_livC
-  docstring's own closing instruction). deps: E3-E6. routine-opus, ~30 lines.
+  docstring's own closing instruction). deps: E3, E4, E5b, E6.
+  routine-opus, ~30 lines.
 
 TV-E8. Non-vacuity gate audit: grep for a compiled in-corpus `CtsMeasured`
   instance; if one exists, fire `measuredOf` at it and display one non-zero
   μcell value; else record "no compiled CTS instance — witness genericity
   disclosed" at the docstring. deps: E7. adjudication/routine-opus, ~20 lines.
 
-### Cluster F — ratBurdens_exists (5 units)
+### Cluster F — ratBurdens_exists (6 units after REV 2)
 
 TV-F1. PolyGeom data map: tgP/jP from cp via dataOf/tblOf/pathProdPoly (V2-5);
   jPCell := jcellPG (countS = 1 leg = V7_rbA, proved); ιP := choice over
@@ -710,35 +892,58 @@ TV-F2. Shared-witness coherence: verify/adjust E1/E2's rowVal/μcell/ιsh/entCou
   so the F3 interp laws are provable (rowVal = tgP eval at non-split routes,
   μcell = jPCell eval at split routes, ιsh = ιP eval, entCount = ιP.countT
   eval); this is the co-design seam — changes land in E1/E2's defs, not in
-  statements. deps: E1, E2, F1. hard-fable, ~40 lines.
+  statements. [REV 2, finding 10] EXPLICIT GATE DELIVERABLE (before the F5
+  prover runs): the jcell_sum candidate displayed (jP := the cell sum at split
+  routes) and TYPE-CHECKED as a rfl-or-lemma claim against the co-designed
+  defs — F5's riskiest law is thus probed at the seam, not discovered in the
+  prover. deps: E1, E2, F1. hard-fable, ~50 lines.
 
 TV-F3. Interp + degree laws: tg_interp/j_interp (routeOf case split),
   ι_interp/ι_countS_one/ι_count, the six degree ties at tableShape_inst's REAL
   Wloc/Wstate against cp's degree laws (field-by-field check; C.T_deg is the
   source). deps: F2. hard-fable, ~60 lines.
 
-TV-F4. [Q5 ruling] cellP family + act_iff + cellP_count + cellP_nonzero:
-  option (a) sizeP wiring (cellP := sizeP(τ) constant in c; act_iff = V.act_size
-  transported; cellInst := V.stInst; cellP_count = stInst_card; nonzero from
-  CellIdx's sizeP ≠ 0 subtype — verify) or option (b) per-cell cp.count polys.
-  Disclose the choice in the pin inventory. deps: F2, ruling Q5.
-  routine-opus, ~40 lines.
+TV-F4. [REV 2 — Q5 IS RULED: per-cell cp.count wiring, option (b)] cellP
+  family + act_iff + cellP_count + cellP_nonzero via cp.count's per-cell
+  polys; the coarse sizeP/stInst option (a) is RETIRED (recorded in the pin
+  inventory as the rejected alternative). Disclose the as-built wiring in the
+  pin inventory. deps: F2. routine-opus, ~50 lines (option (b) is the
+  costlier wiring — estimate raised accordingly).
 
 TV-F5. jcell_sum (jP defined as the cell sum at split routes — co-design with
-  F1) + assembly → `ratBurdens_exists` proved over the SAME (T, M) as E7 (its
-  own hypothesis row suffices for the F-side laws; verify no E-only premise
-  leaked). Module sorry-free; records. deps: F1-F4. routine-opus, ~30 lines.
+  F1; the F2 gate deliverable is the pre-checked candidate) + assembly →
+  `ratBurdens_exists` proved at the measuredOf witness (its own hypothesis row
+  suffices for the F-side laws; verify no E-only premise leaked). Module
+  sorry-free; records. deps: F1-F4. routine-opus, ~30 lines.
+
+TV-F6. [REV 2, finding 7 — NEW] The combined seam producer: additive theorem
+  `measured_seam` (§3.E REV 2 display) — ONE `∃ (T, M)` carrying TablePins +
+  the |Box| card tie + `Nonempty (LedgerIV T M)` + `Nonempty (RatBurdens T M)`,
+  premise row = the union of ledgerIV_inst's and ratBurdens_exists's rows,
+  proved at the SHARED measuredOf witness (E7 + F5's bundles). Both existing
+  ∃-statements re-derived from it (byte-identical statements — no fence);
+  the consumer-facing record: `RS4Chain` demands LedgerIV AND RatBurdens over
+  ONE (T, M) (verified, MovesS/Interfaces.lean:129), and THIS theorem is the
+  supply seam future wiring must eliminate — separate elimination of the two
+  ∃s does NOT compose. Flagged for ratification as an additive declaration.
+  deps: E7, F5. routine-opus, ~30 lines.
 
 ### Cluster G — scs_data_supply (3 units)
 
-TV-G1. GATE + data supply: verify the CTS letters' species/catalogue records
+TV-G1. GATE + data supply [REV 2, findings 5 + 10 — gate WIDENED to cover
+  what G3 asserts]: (i) verify the CTS letters' species/catalogue records
   reach all ten SCSData data fields (W, D, ℓ, g, μsel, W′, D′, flankCount,
   flankWidth, resFactors) — the sources are letterSp/tgt_sp, the omem member
-  (size, δ, status) data, and the skeleton species records; then define the
-  supply over tableShape_inst's table. IF any field lacks a source: STOP,
-  escalate to adjudication (named hypothesis row supplying the stage record —
+  (size, δ, status) data, and the skeleton species records; (ii) the
+  per-outcome ROSTER-CARDINALITY census against memberOf's injection demand
+  (`mem.length ≥ 1 + flankCount + (resFactors.erase (g,μsel)).card`, §3.F
+  REV 2) — the construction G3 later asserts, gated HERE; (iii) sources for
+  the exact arithmetic laws `cluster_parent : W·D = e` and `res_sum`; then
+  define the supply over tableShape_inst's table. IF any field lacks a source
+  OR the roster census fails at a reachable outcome: STOP, escalate to
+  adjudication (named hypothesis row supplying the stage record —
   M1-failure-mode-safe), do NOT invent data (risk R6). deps: none.
-  hard-fable, ~80 lines.
+  hard-fable, ~100 lines.
 
 TV-G2. The algebraic laws: ℓpos/window_comp/flank_zero/sel_mem/res_sum/stage_D/
   stage_W/cluster_parent at the G1 supply. deps: G1. hard-fable, ~50 lines.
@@ -750,31 +955,46 @@ TV-G3. The roster laws + assembly: selIdx (position from omem_sel/tcellM_sel
   `scs_data_supply` proved (T := tableShape_inst's witness, TablePins from it).
   deps: G1, G2. hard-fable, ~60 lines.
 
-### Cluster H — W17ii clause (ii) (4 units; H1 BEFORE H3)
+### Cluster H — W17ii clause (ii) (5 units after REV 2; H1a/H1b BEFORE H3)
 
-TV-H1. COUNTERMODEL BUILD (countermodel-first): the §3.G infinite-shDom chain
-  over the all-inactive degenerate MeasuredSide (activeState ≡ False;
-  allActivePools = ∅). Blocker inventory to clear or record: RS1Bundle's
-  fields, legs_reg (RegP at EVERY prime — PrimePools is forced total by
-  prime_base), rsh_interp (check first whether DetHyp is uninhabitable at the
-  degenerate RB, which would vacuate the hdet-quantified laws). COEXISTENCE
-  RULE: the compiled chain + the sorried universal derive False — build in
-  quarantine (not imported by the build root) and land in-tree only in the same
-  commit as H3's repair. Deliverable: compiled `W17iiNeg.w17ii_false` OR the
-  exact blocking law. deps: none. hard-fable, ~200 lines or blocked-record.
+TV-H1a. [REV 2, finding 11 — split from H1] Countermodel carriers: the
+  all-inactive degenerate MeasuredSide (activeState ≡ False; allActivePools
+  = ∅) + the degenerate RatBurdens over it + the DetHyp inhabitation check
+  (if DetHyp is uninhabitable at the degenerate RB, rsh_interp/legs_read are
+  hdet-vacuous — record which). Pure carrier work, no RS4Chain assembly.
+  deps: none. hard-fable, ~100 lines or blocked-record.
 
-TV-H2. [FENCE — Q4] The summability-guard adjudication package: menu (a) new
-  RS4Chain census fields (shdom_no_stray + off-visH vanishing) making clause
-  (ii) provable, (b) a Summable/finiteness guard on W17ii clause (ii), (c) the
-  HasSum-as-field demotion (rejected-by-default). Include the U-28 h17
-  byte-diff analysis and the n2Chain impact check. deps: H1 (either outcome).
-  adjudication.
+TV-H1b. [REV 2, finding 11 — split from H1] COUNTERMODEL ASSEMBLY
+  (countermodel-first): the §3.G infinite-shDom chain over H1a's carriers —
+  the ~30-field RS4Chain build; blocker inventory to clear or record:
+  RS1Bundle's fields, legs_reg (RegP at EVERY prime — PrimePools forced total
+  by prime_base), rsh_interp (vacuous if H1a's DetHyp check says so).
+  COEXISTENCE RULE: the compiled chain + the sorried universal derive False —
+  build in quarantine (not imported by the build root) and land in-tree only
+  in the same commit as H3's repair. Deliverable: compiled
+  `W17iiNeg.w17ii_false` OR the exact blocking law. deps: H1a.
+  hard-fable, ~120 lines or blocked-record.
 
-TV-H3. Prove clause (ii) at the repaired statement: under (a), the counting
-  squeeze — shweight_card + wshval_card + shevt_grouping + the new census
-  fields at a fixed pool; under (b), the guarded HasSum from the finite/summable
-  reduction. Same commit retires the banked-sorry status (and lands H1's
-  witness if built). deps: H2 ruling. hard-fable, ~80 lines.
+TV-H2. [FENCE — Q4 + ESCALATION E-1] The summability-guard adjudication
+  package, REVISED MENU per §3.G REV 2 (finding 1): (a′) census fields
+  (shdom_no_stray + off-visH vanishing + the previously-MISSING `shevt_disj`
+  pairwise-disjointness law) + a finiteness/summability tie, (b′) the
+  Q4-preferred summability guard PLUS the (a′) value-identification census —
+  the bare guard alone is recorded DEAD (it proves ∃-sum, not the WshVal tie),
+  (c) HasSum-as-field demotion (rejected-by-default). Include the U-28 h17
+  byte-diff analysis and the n2Chain impact check. Because every live option
+  now touches RS4Chain's field roster, the package goes to the orchestrator
+  as E-1 (the Q4 ruling as literally written cannot be executed).
+  deps: H1b (either outcome). adjudication.
+
+TV-H3. Prove clause (ii) at the repaired statement [REV 2, finding 1: the
+  "under (b), from the finite/summable reduction" claim is RETRACTED — value
+  identification ALWAYS runs through the census squeeze]: under (a′) or (b′),
+  the counting squeeze — shweight_card + wshval_card + shevt_grouping +
+  shevt_disj + the census fields at a fixed pool, then the guard (finiteness/
+  summability) turns the pointwise card limits into the HasSum. Same commit
+  retires the banked-sorry status (and lands H1b's witness if built).
+  deps: H2 ruling (E-1 resolved). hard-fable, ~90 lines.
 
 TV-H4. Gate re-run + ripple: n2Chain (N2Sigmas) re-discharges the repaired
   wsh17_pin (shDom = {0}, singleton HasSum — must survive the guard);
@@ -798,11 +1018,17 @@ TV-I2. [FENCE — Q7] toyStrongPin strengthening (MovesSp#40): census
 
 ### Scheduling constraints
 
-- B1 before B7; H1 before H3 (countermodel-first).
-- C4 after C2+C3; H1's witness lands in-tree only with H3 (soundness ordering).
-- A2 before A3 before A4 (ripple chain); E1/E2 before E3-E6/F2; F2 before F3-F5.
-- Adjudication/ratification gates: A2 (Q1), B7 (Q2), C2 (Q3), H2→H3 (Q4),
-  F4/E1 (Q5), I1 (Q6), I2 (Q7), D3-escalation (Q8).
+- B1 before B7; H1a/H1b before H3; D7 before D4/D5; E5a before E5b; the G1
+  gate (incl. the roster census) before G3 (countermodel/probe-first).
+- C4 after C2+C3; H1b's witness lands in-tree only with H3 (soundness
+  ordering).
+- A2 before A3 before A4 before A6 (ripple chain); E1/E2 before
+  E3/E4/E5a/E6/F2; F2 before F3-F5; F6 after E7+F5.
+- Cross-area blocking (REV 2): C2/C3 on BP2 HK-06 (gated by HK-05+HK-22);
+  D6 on BP2 HK-15/HK-16; D4 on the E-2 ruling; H2→H3 on the E-1 ruling.
+- Adjudication/ratification gates: A2 (Q1), B7 (Q2), C2 (Q3), H2→H3
+  (Q4 refined via E-1), I1 (Q6), I2 (Q7). Q5 and Q8 are resolved (ruled /
+  mooted — see §6 REV 2 annotations).
 
 ---
 
@@ -815,9 +1041,11 @@ R1. `treeN_stable` AS CURRENTLY STATED (KBTotTower premises only) may be FALSE:
   (repair, not enrichment) and the record must say so.
 
 R2. `w17ii_wave4` clause (ii) AS STATED is PLAUSIBLY FALSE (the standing fence
-  record's infinite-shDom candidate). Countermodel unit: TV-H1 (runs first).
-  Note the soundness trap: its compiled witness must never coexist in the build
-  with the un-repaired sorried universal.
+  record's infinite-shDom candidate). Countermodel units: TV-H1a/H1b (run
+  first). Note the soundness trap: the compiled witness must never coexist in
+  the build with the un-repaired sorried universal. [REV 2] The repair menu is
+  CORRECTED (finding 1): no live option closes without census fields incl. the
+  new `shevt_disj` — the Q4 ruling needs refinement (ESCALATION E-1).
 
 R3. `toyModel.mem_realizable`/`toyModelB.mem_realizable` are RECORDED FALSE at
   the pinned tables — NO prover unit exists for them anywhere in this
@@ -825,12 +1053,14 @@ R3. `toyModel.mem_realizable`/`toyModelB.mem_realizable` are RECORDED FALSE at
 
 R4. The E5 (U)∧(R) pair is believed NOT derivable from CellAssign's laws (the
   separated-.red-cell stray shape) — no prover unit assigned; the hoist (A2) is
-  the disposition. TV-A5(b) is the necessity probe; its failure mode ("blocked
+  the disposition. TV-A5b is the necessity probe; its failure mode ("blocked
   by law L") is an acceptable outcome that upgrades the fence record.
 
-R5. TV-E5's act_target discharge may be blocked by a vocabulary gap (no_entry
+R5. The act_target discharge may be blocked by a vocabulary gap (no_entry
   is stated per-MoveData on C.T polynomials; rowVal is a μcell sum) — the
-  bridge is cp's count laws + rep_indep; if it does not close, the unit
+  bridge is cp's count laws + rep_indep. [REV 2] The probe TV-E5a now tests
+  the bridge BEFORE the prover TV-E5b; the guarded-kstep fallback is recorded
+  as NOT an exit (it relocates the same bridge); if E5a records a gap, E5b
   escalates to a named hypothesis on ledgerIV_inst (statement change — return
   to orchestrator, do NOT weaken LedgerIV).
 
@@ -839,9 +1069,12 @@ R6. TV-G1's stage-field sources may be incomplete in the CTS vocabulary (the
   sel_continuing/cluster_child). The unit's gate step stops before inventing
   data; escalation = a typed species-stage hypothesis row.
 
-R7. TV-D3's card gate (Nat.card ↥σ₁.K = 4) may be under-determined by
-  S9c_coreAssembly's ∃-conclusion — escalation Q8 (additive HC1 clause or an
-  extraction lemma against the construction).
+R7. [REV 2 — MOOT on the reconciled route] The card gate
+  (Nat.card ↥σ₁.K = 4) was at risk of being under-determined by
+  S9c_coreAssembly's ∃-conclusion. TV-D6 now consumes BP2 HK-15's DEFINED σ₁
+  (card check on the carrier, no ∃-elimination) — Q8 does not fire. The
+  residual risk is schedule-shaped: D6 blocks on BP2's fleet landing
+  HK-15/HK-16.
 
 R8. The B2 bundle's (S-child) quantifier ("ALL histories at threshold thr(Tr)")
   may be STRONGER than the note's D4R.4 content (which is per-site/per-branch).
@@ -851,12 +1084,44 @@ R8. The B2 bundle's (S-child) quantifier ("ALL histories at threshold thr(Tr)")
 
 R9. Shared-witness coherence (Q5): if E-cluster and F-cluster law demands on
   the ONE M conflict (e.g. rowVal forced two ways), the fallback is separate
-  witnesses per duty — each ∃-statement is independently satisfiable; the
-  shared witness is preferred but not load-bearing.
+  witnesses per duty — each existing ∃-statement is independently satisfiable.
+  [REV 2, finding 7] But the shared witness IS load-bearing for TV-F6 (the
+  combined producer the RS4Chain seam needs): under the fallback, F6 cannot be
+  proved — record the conflict and RETURN it (the seam would then need its own
+  adjudication), do not silently drop F6.
 
 ---
 
 ## 6. ORCHESTRATOR QUESTIONS (decisions this blueprint cannot make)
+
+[REV 2 STATUS against BRIDGE_ADJUDICATIONS_2026-07-30: Q1 RATIFIED (hoist
+executes). Q2 RULED: named StableInputs hypothesis, option 2. Q3 PENDING on
+TV-C1; HistoryCoherent BP2-EXCLUSIVE (folded into TV-C2). Q4 RULED "summability
+guard preferred" — but finding 1 shows the bare guard cannot close TV-H3;
+REFINEMENT ESCALATED as E-1 below. Q5 RULED: shared witness allowed + per-cell
+cp.count (folded into E1/F4). Q6 RULED: DELETE (TV-I1 executes, fence event
+digest). Q7 RULED: extend-if-cheap-else-record (TV-I2 executes). Q8 RULED
+extraction-first — now MOOT via BP2 HK-15 (TV-D6). Q9 confirmed.
+
+NEW ESCALATIONS (REV 2 — cross-area decisions this revision cannot make):
+E-1. Q4 refinement (finding 1): every live W17ii repair requires RS4Chain
+  census fields incl. a NEW `shevt_disj` pairwise-disjointness law (absent
+  from the current field roster) — a statement-shape change on a
+  capstone-adjacent structure that the "summability guard preferred" ruling
+  as literally written does not authorize. TV-H2 delivers the revised menu
+  (a′)/(b′)/(c); H3 blocks on the ruling. Fence-ledger + Asvin digest entry
+  required per the cross-area rules.
+E-2. twoNodeKcardH carrier conflict (found during reconciliation, §3.D):
+  BP2 HK-24 hands off `twoNodeKcardH := H₂` with g₀ = 2 (coherent gate
+  carrier); G1 record #7 requires g₀ = 1 pinned so the W-MULTIPLICATIVITY
+  clause is the violated conjunct — at H₂ that clause PASSES (4 = 2²) and the
+  gate would be an artifact. Ruling needed: BP3 builds its own g₀ = 1 node-0
+  literal atop BP2's σ₁ (recommended; HK-24's hand-off re-scopes to σ₁ only),
+  or record #7's data columns are renegotiated. TV-D4 blocks on this.
+E-3. CONTINGENT fence event (finding 2 / TV-D7): if the conjunct census finds
+  every HistLawful conjunct satisfiable at all admissible pins, then
+  `toy_v8_wchain` is FALSE-AS-STATED — a new statement-fence event; the gate
+  unit STOPS and returns, never forces.]
 
 Q1. RATIFY the E5 hoist (TV-A2/A3/A4): fiber_root_split + treeExp + downstream
   rows gain the named TrackUniqOn/TrackRepOn hypotheses (statement fence;
@@ -894,11 +1159,166 @@ Q7. toyStrongPin (TV-I2): if toyCanModel's branch data do not discriminate,
   approve extending the toy model (a new branch with distinct Species data) or
   accept the census-backed "non-discriminating model" record?
 
-Q8. If S9c_coreAssembly's conclusion under-determines the child K-card
-  (TV-D3), sanction an ADDITIVE clause on its ∃ (HC1 statement change,
-  conclusion-strengthening) or require the extraction-lemma route only?
+Q8. [REV 2: MOOT — TV-D3 is deleted; TV-D6 consumes BP2 HK-15's DEFINED σ₁,
+  so no ∃-extraction arises. Historical text:] If S9c_coreAssembly's
+  conclusion under-determines the child K-card (TV-D3), sanction an ADDITIVE
+  clause on its ∃ (HC1 statement change, conclusion-strengthening) or require
+  the extraction-lemma route only?
 
 Q9. Unit-count/priority: if the fleet must cut, the recommended priority order
   is A (spine drainage) > E/F (seam duties) > B > H > D > C > G > I; C and G
   carry the highest adjudication latency (external rulings) — start their
   packages (C1, G1's gate step) early regardless.
+
+---
+
+## REVISION 2 (2026-07-30, post-Codex) — finding-by-finding disposition log
+
+Adversarial review: Codex, REVISE (3 CRITICAL / 7 GAP / 4 NOTE), findings at
+/tmp/bridge/reviews/findings_bp3.txt. Reviewer caveat: Codex could NOT read the
+repo (sandbox launcher failure) — every disposition below was re-verified
+against the sources at HEAD by the reviser. Unit count: 43 → 48 (deleted
+D1/D2/D3; A5 → A5a+A5b; E5 → E5a+E5b; H1 → H1a+H1b; new A6, B8, D6, D7, F6).
+
+1. CRITICAL (W17ii repair option (b) cannot prove the sum's VALUE) → APPLIED.
+   Verified against MovesS/Interfaces.lean:111/:129: a bare Summable/finiteness
+   guard yields ∃-sum only; the WshVal tie needs census content, and the
+   counting squeeze ALSO needs a pairwise-disjointness law (`shevt_disj`)
+   absent from RS4Chain's current field roster (the review missed this second
+   hole; found on re-verification). §3.G rewritten with the (a′)/(b′)/(c)
+   menu; TV-H2/H3 revised; TV-H3's "under (b), from the finite/summable
+   reduction" RETRACTED. Because the binding Q4 ruling ("summability guard
+   preferred") described the dead bare-guard option, refinement is ESCALATED
+   (E-1) — not decided here.
+
+2. CRITICAL (TV-D5 assumes an unidentified HistLawful conjunct fails) →
+   APPLIED, with the review's failure scenario REBUTTED against the source.
+   Verified at MovesT/Defs.lean:146: the chain-clauses conjunct's 4th
+   sub-clause (REV 4 W-MULTIPLICATIVITY) is `Nat.card K_{i+1} = Nat.card K_i ^
+   g_i` — NOT the "power of the parent cardinality or of p" the review
+   hypothesized would pass; at the record-#7 literals (cards 2,4; g₀ = 1
+   pinned) it demands 4 = 2¹, false by norm_num, while NodeDataLawful's
+   p-power clause passes (4 = 2²) exactly as the plan said. The legitimate
+   process demand (quote the conjunct; don't "identify at build time") is
+   applied: the conjunct is displayed in §3.D, TV-D5 names it, and the new
+   census gate TV-D7 pre-verifies EVERY conjunct at the literals with the
+   FALSE-AS-STATED stop-and-escalate exit (E-3). Node-side well-typedness of
+   the g₀ = 1 pin verified against Node's full law roster (MovesC/Defs
+   :361-440: the only g-tie is `hψdeg` to the node's OWN ψ — a degree-1
+   irreducible ψ serves).
+
+3. GAP (F4 route relies on undeclared ψ₂/extraction vocabulary) → APPLIED via
+   cross-area reconciliation (stronger than the requested vocabulary units).
+   ψ₂ IS declared: HC2/U31_gateReadsOf.lean:690 (`X² + X + 1` over K2) with
+   ψ₂_monic/ψ₂_natDegree/ψ₂_irr :692/:696/:720 (private — de-privatization is
+   BP2's HK-19-adjacent edit). The entire stage build (StageCoreL bStage,
+   TransHyp, the card-4 child σ₁) is BP2 Block G: HK-13/HK-14/HK-15/HK-16 —
+   BP3's TV-D1/D2/D3 duplicated it and are DELETED; new TV-D6 consumes σ₁
+   with the card-4 check as a named lemma. Q8's extraction concern is moot on
+   this route (HK-15 DEFINES σ₁; no ∃-elimination). Discovered in the same
+   reconciliation: the HK-24 hand-off carrier H₂ has g₀ = 2 and CANNOT serve
+   record #7's counter-instance — ESCALATED (E-2).
+
+4. GAP (recursive kstep assumes an unlisted typed recurrence) → APPLIED.
+   §3.E now displays the full typed recurrence at the verified carrier
+   `kstep : ℕ → ∀ e, T.State e → T.State e → ℚ → ℝ` (MovesS/Defs.lean:149),
+   including the case the blueprint AND the review both missed: `hmc`
+   quantifies over all k, so k = 0 forces kstep 0 = the Kronecker delta and
+   hmc's k = 0 case is Finset.sum_eq_single, not rfl. Partial rebuttal on one
+   sub-claim: kstep_one's RHS IS referenceable — the LedgerIV law displays it
+   verbatim (transcribed in §3.E). The review's second point is CONFIRMED and
+   recorded: the activity-guarded fallback does NOT avoid the no_entry/rowVal
+   bridge (it relocates it into kstep_one's inactive-β case) — hence the new
+   probe gate TV-E5a before the prover TV-E5b, with direct escalation (no
+   definition-flipping retry) if the bridge fails.
+
+5. GAP (SCSData construction assumes catalogue/roster interfaces not in the
+   inventory) → APPLIED. Verified at MovesS/Defs.lean:97: memberOf demands an
+   injection `Fin flankCount ⊕ Fin (resFactors.erase (g,μsel)).card →
+   Fin mem.length` avoiding selIdx — a per-outcome roster-CARDINALITY demand
+   (`mem.length ≥ 1 + flankCount + (erase).card`) no field-reachability check
+   certifies; plus the exact arithmetic laws cluster_parent (W·D = e) and
+   res_sum. §3.F extended; TV-G1's gate widened to deliver the roster census
+   and the arithmetic-law sources BEFORE TV-G3 may assert the construction
+   (also discharges finding 10's G3 leg).
+
+6. GAP (TV-B3 invents History.snoc_induction) → APPLIED. New unit TV-B8 builds
+   the eliminator; TV-B3 consumes it. Feasibility evidence recorded in §3.B
+   (verified): NodeExtends := ν.species ≠ ReadSpecies.root (MovesT/Defs:77),
+   recoverable from History.root_iff at index ≠ 0; the singleton case's
+   ChildRoot witness likewise from root_iff at j = 0; reconstruction equality
+   via the PROVED history_eq_of_nodes_eq (E5:131-193) +
+   List.dropLast_append_getLast. So the eliminator is buildable — but it is a
+   unit with its own budget, as the review demanded.
+
+7. GAP (separate ∃ seam theorems expose no shared witness) → APPLIED.
+   CONFIRMED against the sources: ledgerIV_inst (V7_livC:54) and
+   ratBurdens_exists (V7_rbC:42) are independent `∃ T M` theorems, while
+   RS4Chain (MovesS/Interfaces.lean:129) needs LedgerIV AND RatBurdens over
+   ONE (T, M). New unit TV-F6: the additive combined producer measured_seam
+   (one ∃, both Nonempty conjuncts, union premise row), from which both
+   existing statements re-derive byte-identically; R9 updated (the
+   separate-witness fallback now returns the conflict instead of silently
+   dropping the seam). No existing statement changes; the new declaration is
+   flagged additive for ratification.
+
+8. GAP (theoremU boundary ripple not assigned) → APPLIED. New unit TV-A6: the
+   endpoint boundary deliverable — theoremU (MovesU/U10_theoremU.lean:104)
+   re-type-checked, the AxChk footprint census re-run, the boundary
+   documentation updated to NAME the new premise rows, and the consumer-grep
+   transcript attached as a checked artifact. Verified at HEAD: TreeExpFin/
+   TreeNStmt/RS1GivenPackage occur in exactly five MovesT files and zero
+   MovesU files — the deliverable certifies that stays true (or enumerates
+   the change), rather than promising it in prose.
+
+9. CRITICAL (TV-C2 violates the HistoryCoherent area fence) → APPLIED.
+   CONFIRMED against the binding adjudication ("HistoryCoherent is
+   BP2-EXCLUSIVE") and BP2's blueprint: the ratified diff is HK-04, the
+   countermodel gate HK-05, the execution HK-06, the consumer gates HK-05 +
+   HK-22 (BP2 Q1). TV-C2 rewritten: BP3 edits NOTHING in MovesC/MovesD Defs;
+   C2/C3 consume the landed HK-06 state and prove the toy fields only. §3.C
+   annotated. (Jointly closes NOTE 14: the ~100-line ripple estimate belonged
+   to BP2's edit; BP3's share re-estimated at ~60.)
+
+10. GAP (risky provers lack countermodel-attempt gates) → APPLIED per leg:
+    D5 gets TV-D7 (the HistLawful conjunct census BEFORE the ¬-prover, with
+    the E-3 stop); E5 split into TV-E5a (bridge probe, proves nothing about
+    the target) before TV-E5b; F5's riskiest law (jcell_sum) gets an explicit
+    pre-checked-candidate deliverable in TV-F2's gate; G3's roster
+    construction is gated by TV-G1's widened census (finding 5); D3's gate is
+    moot (unit deleted; the card check runs on BP2's defined carrier). E7
+    carries no separate gate: its risk (R9, shared-witness conflict) is
+    exactly what TV-F2 probes before any assembly — recorded as the
+    discharging gate.
+
+11. NOTE (TV-H1 is not a small lemma) → APPLIED: split into TV-H1a
+    (degenerate carriers + DetHyp inhabitation check) and TV-H1b (the
+    ~30-field chain assembly + blocker inventory + quarantine discipline).
+
+12. NOTE (TV-A5 combines two unrelated developments) → APPLIED: split into
+    TV-A5a (n = 1 childless CellAssign instance, fence-record upgrade) and
+    TV-A5b (n = 2 stray-child countermodel probe), with the dependency
+    A5b ← A5a for carrier reuse.
+
+13. NOTE (TV-E1/E2 understate dependent-construction size) → APPLIED:
+    estimates raised (120→180, 100→150), the transport/equality-lemma layer
+    named as an explicit deliverable, and an execution-time split
+    authorization (E1a/E1b) recorded.
+
+14. NOTE (TV-C2's estimate omits the global ripple) → APPLIED jointly with
+    finding 9: the global definition ripple leaves BP3 entirely (it is BP2
+    HK-06's); C2 re-scoped and re-estimated.
+
+ESCALATIONS RETURNED TO THE ORCHESTRATOR (this revision decides none of them):
+E-1 (from finding 1): Q4 refinement — every live W17ii repair needs RS4Chain
+    census fields incl. the NEW shevt_disj law; the adjudicated bare
+    summability guard cannot close TV-H3. Statement-shape change on a
+    capstone-adjacent structure: fence ledger + Asvin digest.
+E-2 (from the finding-3 reconciliation): the twoNodeKcardH carrier conflict —
+    BP2 HK-24's H₂ (g₀ = 2) vs G1 record #7 (g₀ = 1 pinned). Recommended:
+    BP3 builds the g₀ = 1 node-0 literal atop BP2's σ₁; HK-24 re-scopes its
+    hand-off to σ₁ only. TV-D4 blocks on the ruling.
+E-3 (contingent, from findings 2 + 10): if TV-D7's census finds every
+    HistLawful conjunct satisfiable at all admissible pins, toy_v8_wchain is
+    FALSE-AS-STATED — a new statement-fence event to adjudicate; the unit
+    stops and returns.

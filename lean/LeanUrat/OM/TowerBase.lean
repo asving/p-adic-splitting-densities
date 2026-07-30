@@ -93,11 +93,8 @@ theorem B_mul_uniformizer_pow (m k : ℕ) (x : R) (hx : x ∈ B k) :
   | zero => simpa using hx
   | succ n ih =>
     have hstep := B_mul_uniformizer (R := R) (k + n * vUnif R) (ϖ ^ n * x) ih
-    have he : ϖ * (ϖ ^ n * x) = ϖ ^ (n + 1) * x := by rw [pow_succ]; ring
-    rw [he] at hstep
-    have : ϖ ^ (n + 1) * x ∈ B (k + n * vUnif R + vUnif R) := hstep
-    have hle : k + (n + 1) * vUnif R ≤ k + n * vUnif R + vUnif R := le_of_eq (by ring)
-    exact (B_antitone (R := R) hle) this
+    rw [← mul_assoc, ← pow_succ'] at hstep
+    exact B_antitone (R := R) (le_of_eq (by ring)) hstep
 
 /-- `ϖ^m` bumps by at least `m` (using `vUnif ≥ 1`). -/
 theorem B_mul_uniformizer_pow_ge (m k : ℕ) (x : R) (hx : x ∈ B k) : ϖ ^ m * x ∈ B (k + m) := by
@@ -353,8 +350,7 @@ theorem mem_filtIdealG [Nontrivial R] {e : ℕ} (he : 0 < e) (h : ℕ) (c : Rˣ)
 /-- `filtIdealG 0 = ⊤`: `dexp 0 i = 0` so every digit lies in `B 0 = ⊤`. -/
 theorem filtIdealG_zero_eq_top [Nontrivial R] {e : ℕ} (he : 0 < e) (h : ℕ) (c : Rˣ) :
     filtIdealG he h c 0 = ⊤ := by
-  rw [Ideal.eq_top_iff_one]
-  rw [mem_filtIdealG]
+  rw [Ideal.eq_top_iff_one, mem_filtIdealG]
   intro i
   have hdexp : RphiGenHCount.dexp e h 0 (i:ℕ) = 0 := by
     have := (RphiGenHCount.dexp_le_iff e h he 0 (i:ℕ) 0).mpr (by omega); omega

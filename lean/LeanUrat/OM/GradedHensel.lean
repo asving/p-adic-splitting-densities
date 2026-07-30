@@ -86,7 +86,6 @@ theorem le_w_mul_cdiv {w : ℕ} (hw : 0 < w) (q : ℕ) : q ≤ w * cdiv q w :=
 
 theorem cdiv_zero_left {w : ℕ} (hw : 0 < w) : cdiv 0 w = 0 := by
   unfold cdiv
-  rw [Nat.zero_add]
   exact Nat.div_eq_of_lt (by omega)
 
 theorem cdiv_mono {w q q' : ℕ} (h : q ≤ q') : cdiv q w ≤ cdiv q' w :=
@@ -281,9 +280,7 @@ theorem graded_mulVec_upgrade {n : ℕ} (M : Matrix (Fin n) (Fin n) (ZMod (p ^ N
         have hux : (u : ZMod (p ^ N)) * x j
             = (p : ZMod (p ^ N)) ^ b' * z + (p : ZMod (p ^ N)) ^ (N - v j) * z' := by
           linear_combination hz'
-        calc x j = (u⁻¹ : (ZMod (p ^ N))ˣ) * ((u : ZMod (p ^ N)) * x j) := by
-              rw [← mul_assoc, Units.inv_mul, one_mul]
-          _ = _ := by rw [hux]
+        rw [← hux, Units.inv_mul_cancel_left]
       rw [hxj]
       refine Dvd.dvd.mul_left (dvd_add (dvd_mul_right _ z) ?_) _
       refine Dvd.dvd.mul_right (pow_dvd_pow _ ?_) z'
@@ -383,12 +380,10 @@ theorem ker_shift_graded {a b : ℕ} (hN : 0 < N) {A₀ B₀ : (ZMod (p ^ N))[X]
   obtain ⟨hB'mon, hB'deg⟩ := monic_add_of_coeff hBmem.1 hBmem.2.1 hβtop
   refine ⟨?_, ?_, ?_⟩
   · refine hSAsat A hA _ hA'mon hA'deg fun i => ?_
-    have he : A + αβ.1 - A = αβ.1 := by ring
-    rw [he]
+    rw [add_sub_cancel_left]
     exact hdA i
   · refine hSBsat B hB _ hB'mon hB'deg fun i => ?_
-    have he : B + αβ.2 - B = αβ.2 := by ring
-    rw [he]
+    rw [add_sub_cancel_left]
     exact hdB i
   · have hexp : (A + αβ.1) * (B + αβ.2)
         = A * B + (B * αβ.1 + A * αβ.2) + αβ.1 * αβ.2 := by ring
@@ -434,9 +429,7 @@ noncomputable def fiberEquivPolyKer {a b : ℕ} (hN : 0 < N) {A₀ B₀ : (ZMod 
     rintro ⟨⟨α, β⟩, hmem⟩
     apply Subtype.ext
     dsimp only
-    have h1 : A + α - A = α := by ring
-    have h2 : B + β - B = β := by ring
-    rw [h1, h2]
+    rw [add_sub_cancel_left, add_sub_cancel_left]
 
 /-- **Graded fiber count**: under the pointwise margin and the per-point kernel count
 `p^c`, every fiber over the image has exactly `p^c` points. -/
@@ -570,9 +563,7 @@ private theorem eq_zero_of_pow3_dvd {x : ZMod (3 ^ 3)}
 private theorem eq_zero_of_pow4_dvd {x : ZMod (3 ^ 3)}
     (h : ((3 : ℕ) : ZMod (3 ^ 3)) ^ 4 ∣ x) : x = 0 := by
   obtain ⟨z, hz⟩ := h
-  rw [hz, show ((3 : ℕ) : ZMod (3 ^ 3)) ^ 4
-      = ((3 : ℕ) : ZMod (3 ^ 3)) ^ 3 * ((3 : ℕ) : ZMod (3 ^ 3)) from by ring,
-    h27, zero_mul, zero_mul]
+  linear_combination hz + 3 * z * h27
 
 /-- `x·y = 0` in `ZMod 27` when `3 ∣ x` and `9 ∣ y`. -/
 private theorem mul3_kill {x y : ZMod (3 ^ 3)}
@@ -581,9 +572,7 @@ private theorem mul3_kill {x y : ZMod (3 ^ 3)}
   obtain ⟨u, hu⟩ := hx
   obtain ⟨v, hv⟩ := hy
   rw [hu, hv]
-  calc ((3 : ℕ) : ZMod (3 ^ 3)) * u * (((3 : ℕ) : ZMod (3 ^ 3)) ^ 2 * v)
-      = ((3 : ℕ) : ZMod (3 ^ 3)) ^ 3 * (u * v) := by ring
-    _ = 0 := by rw [h27, zero_mul]
+  linear_combination u * v * h27
 
 /-- `−1 + 3k` is a unit of `ZMod 27`. -/
 private theorem isUnit_neg_one_add (k : ZMod (3 ^ 3)) :
@@ -988,9 +977,8 @@ private theorem dvd9_iff_val (x : ZMod (3 ^ 3)) :
 
 private theorem dvd3_iff_val (x : ZMod (3 ^ 3)) :
     ((3 : ℕ) : ZMod (3 ^ 3)) ∣ x ↔ x.val % 3 = 0 := by
-  have h : (((3 : ℕ) : ZMod (3 ^ 3)) ∣ x) ↔ (((3 : ℕ) : ZMod (3 ^ 3)) ^ 1 ∣ x) := by
-    rw [pow_one]
-  rw [h, RestartEquiv.pow_dvd_iff_dvd_val 3 3 (by norm_num) x]
+  rw [← pow_one ((3 : ℕ) : ZMod (3 ^ 3)),
+    RestartEquiv.pow_dvd_iff_dvd_val 3 3 (by norm_num) x]
   norm_num [Nat.dvd_iff_mod_eq_zero]
 
 set_option maxRecDepth 10000 in

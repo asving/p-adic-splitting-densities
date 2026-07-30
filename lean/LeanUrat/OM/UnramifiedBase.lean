@@ -381,13 +381,8 @@ theorem span_p_pow_antitone {i j : ℕ} (hij : i ≤ j) :
 omit hp in
 theorem card_quotient_span_p_pow_zero :
     Nat.card (Oring p N g ⧸ Ideal.span {((p : ℕ) : Oring p N g) ^ 0}) = 1 := by
-  have hsub : Subsingleton (Oring p N g ⧸ Ideal.span {((p : ℕ) : Oring p N g) ^ 0}) := by
-    constructor
-    intro x y
-    obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
-    obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective y
-    rw [Ideal.Quotient.eq, pow_zero, Ideal.span_singleton_one]
-    exact Submodule.mem_top
+  have hsub : Subsingleton (Oring p N g ⧸ Ideal.span {((p : ℕ) : Oring p N g) ^ 0}) :=
+    Submodule.Quotient.subsingleton_iff.mpr (by rw [pow_zero, Ideal.span_singleton_one])
   exact Nat.card_of_subsingleton 0
 
 theorem card_quotient_span_p_pow_top (hgm : g.Monic) (hN : 0 < N) :
@@ -489,9 +484,7 @@ theorem card_span_p_pow (hgm : g.Monic) (hN : 0 < N) (hm : 0 < g.natDegree)
     (Ideal.span {((p : ℕ) : Oring p N g) ^ j})
   rw [card_Oring_pow p N g hgm hN, card_quotient_span_p_pow p N g hgm hN hm hgirr j hj] at hlag
   have hsplit : p ^ (N * g.natDegree) = (p ^ g.natDegree) ^ (N - j) * (p ^ g.natDegree) ^ j := by
-    rw [← pow_add, ← pow_mul]
-    have : N - j + j = N := by omega
-    rw [this, Nat.mul_comm]
+    rw [← pow_add, ← pow_mul, Nat.sub_add_cancel hj, Nat.mul_comm]
   have hpos : 0 < (p ^ g.natDegree) ^ j := pow_pos (pow_pos hp.out.pos _) j
   exact Nat.eq_of_mul_eq_mul_right hpos (hlag.symm.trans hsplit)
 

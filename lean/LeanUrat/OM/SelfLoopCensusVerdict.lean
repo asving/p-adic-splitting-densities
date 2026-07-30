@@ -66,8 +66,8 @@ the fixed literal replaced by the depth-independent shape verdict. -/
 def verdictChain (k : ℕ) (g : QuotientBox.monicBox p N μ) : Prop :=
   ∀ i : ℕ, i < k → selfLoopVerdict p N μ (recenterIter p N μ c hN i g)
 
-theorem verdictChain_zero (g : QuotientBox.monicBox p N μ) : verdictChain p N μ c hN 0 g := by
-  intro i hi; exact absurd hi (Nat.not_lt_zero i)
+theorem verdictChain_zero (g : QuotientBox.monicBox p N μ) : verdictChain p N μ c hN 0 g :=
+  fun i hi => absurd hi (Nat.not_lt_zero i)
 
 /-- Chain-`(k+1)` splits: level-0 verdict ∧ depth-`k` chain of the recentered box.  Copy of
 `SelfLoopCensusK.selfLoopChain_succ` — only the per-level body clause changes; the `recenterIter`
@@ -79,18 +79,15 @@ theorem verdictChain_succ (k : ℕ) (g : QuotientBox.monicBox p N μ) :
   unfold verdictChain
   constructor
   · intro h
-    refine ⟨?_, fun i hi => ?_⟩
-    · have := h 0 (Nat.succ_pos k)
-      simpa [recenterIter] using this
-    · have := h (i + 1) (Nat.succ_lt_succ hi)
-      rwa [recenterIter_step] at this
+    refine ⟨h 0 (Nat.succ_pos k), fun i hi => ?_⟩
+    have := h (i + 1) (Nat.succ_lt_succ hi)
+    rwa [recenterIter_step] at this
   · rintro ⟨h0, hrest⟩ i hi
     cases i with
-    | zero => simpa [recenterIter] using h0
+    | zero => exact h0
     | succ j =>
-      have hj : j < k := Nat.lt_of_succ_lt_succ hi
-      have := hrest j hj
-      rwa [recenterIter_step j g]
+      rw [recenterIter_step j g]
+      exact hrest j (Nat.lt_of_succ_lt_succ hi)
 where
   recenterIter_step : ∀ (i : ℕ) (g : QuotientBox.monicBox p N μ),
       recenterIter p N μ c hN (i + 1) g
@@ -98,11 +95,7 @@ where
     intro i
     induction i with
     | zero => intro g; rfl
-    | succ j ih =>
-      intro g
-      show recenterStep p N μ c hN (recenterIter p N μ c hN (j + 1) g)
-        = recenterStep p N μ c hN (recenterIter p N μ c hN j (recenterStep p N μ c hN g))
-      rw [ih g]
+    | succ j ih => intro g; exact congrArg (recenterStep p N μ c hN) (ih g)
 
 /-! ## STEP B. The verdict ⊇ fixed-cell containment; non-vacuity
 
@@ -119,10 +112,9 @@ theorem selfLoopCell_verdict (hμ1 : 1 ≤ μ) (hμN : μ < N) (g : QuotientBox.
     selfLoopVerdict p N μ g := by
   have hin : InCell p g (Drainage.selfLoopCell μ) := (classify1_eq_some_iff p).mp h
   obtain ⟨P, sh, hP, hsh, hmk, hmatch⟩ := hin
-  have hPeq : P = Drainage.selfLoopPath μ ∧ sh = [[(1, μ)]] :=
+  obtain ⟨rfl, rfl⟩ : P = Drainage.selfLoopPath μ ∧ sh = [[(1, μ)]] :=
     mkCell_injective hP (Drainage.selfLoopPath_menuPath hμ1 hμN) hsh
       (Drainage.selfLoopShapes hμ1) hmk.symm
-  obtain ⟨rfl, rfl⟩ := hPeq
   exact ⟨Drainage.selfLoopPath μ, [[(1, μ)]], hP, hsh, hmatch, rfl⟩
 
 /-- Reading as the deepened cell `cellB1` forces the verdict at `(2,5,2)`.  `cellB1 = mkCell 2
@@ -134,10 +126,9 @@ theorem cellB1_verdict (g : QuotientBox.monicBox 2 5 2)
     selfLoopVerdict 2 5 2 g := by
   have hin : InCell 2 g SelfLoopTower.cellB1 := (classify1_eq_some_iff 2).mp h
   obtain ⟨P, sh, hP, hsh, hmk, hmatch⟩ := hin
-  have hPeq : P = [(0, 4), (2, 0)] ∧ sh = [[(1, 2)]] :=
+  obtain ⟨rfl, rfl⟩ : P = [(0, 4), (2, 0)] ∧ sh = [[(1, 2)]] :=
     mkCell_injective hP (SelfLoopTower.menuPath_B (by norm_num)) hsh
       SelfLoopTower.shapes_B1 hmk.symm
-  obtain ⟨rfl, rfl⟩ := hPeq
   exact ⟨[(0, 4), (2, 0)], [[(1, 2)]], hP, hsh, hmatch, rfl⟩
 
 /-! ## STEP C. The reduction (predicate-generic censusEquivQ at `Q := verdictChain k`)
@@ -164,13 +155,10 @@ predicate. -/
 theorem census_base_verdict (hμ2 : 2 ≤ μ) (hμN : μ < N) :
     Nat.card {f : QuotientBox.monicBox p N (μ * 1) //
         InCellAt p N 1 μ c f ∧ verdictChain p N μ c hN 0 (recenter' p N μ c hN f)}
-      = p ^ (μ * (N * 1 - 1) - 1 * μ * (μ + 1) / 2) := by
-  have hcong : Nat.card {f : QuotientBox.monicBox p N (μ * 1) //
-        InCellAt p N 1 μ c f ∧ verdictChain p N μ c hN 0 (recenter' p N μ c hN f)}
-      = Nat.card {f : QuotientBox.monicBox p N (μ * 1) // InCellAt p N 1 μ c f} :=
-    Nat.card_congr (Equiv.subtypeEquivRight fun f =>
-      and_iff_left (verdictChain_zero p N μ c hN _))
-  rw [hcong, RestartEquiv.card_restart_fiber p N 1 μ c hN one_pos hμ2 hμN]
+      = p ^ (μ * (N * 1 - 1) - 1 * μ * (μ + 1) / 2) :=
+  (Nat.card_congr (Equiv.subtypeEquivRight fun f =>
+      and_iff_left (verdictChain_zero p N μ c hN _))).trans
+    (RestartEquiv.card_restart_fiber p N 1 μ c hN one_pos hμ2 hμN)
 
 /-! ## STEP D. The equidistribution lemma (STATED as a named obligation; contingent assembly)
 
@@ -273,13 +261,9 @@ theorem gate_verdict_nonvacuous_depth1_2_5_2 :
   -- promote to the verdict-1 fiber
   have hv1 : verdictChain 2 5 2 1 (by norm_num) 1 (recenter' 2 5 2 1 (by norm_num) f) := by
     rw [verdictChain_succ]
-    refine ⟨cellB1_verdict (recenter' 2 5 2 1 (by norm_num) f) hcl, ?_⟩
-    exact verdictChain_zero 2 5 2 1 (by norm_num) _
-  have : Nonempty {f : QuotientBox.monicBox 2 5 (2 * 1) //
-      InCellAt 2 5 1 2 1 f ∧
-        verdictChain 2 5 2 1 (by norm_num) 1 (recenter' 2 5 2 1 (by norm_num) f)} :=
-    ⟨⟨f, hInCell, hv1⟩⟩
-  exact Nat.card_pos
+    exact ⟨cellB1_verdict (recenter' 2 5 2 1 (by norm_num) f) hcl,
+      verdictChain_zero 2 5 2 1 (by norm_num) _⟩
+  exact Nat.card_pos_iff.mpr ⟨⟨⟨f, hInCell, hv1⟩⟩, inferInstance⟩
 
 /-- **Gate — the depth-0 verdict census at `(2,5,2)` is `32`.**  `census_base_verdict`'s closed
 form `p^(μ(N−1) − μ(μ+1)/2) = 2^(2·4 − 3) = 2^5 = 32` — identical to
@@ -315,7 +299,7 @@ theorem inCellAt_verdict (f : QuotientBox.monicBox 2 5 (2 * 1))
   obtain ⟨hin, _hres⟩ := h
   obtain ⟨P, sh, hP, hsh, hmk, hmatch⟩ := hin
   -- restartCell 1 2 = mkCell 2 [(0,2),(2,0)] [[(1,2)]]  (2*1 defeq 2)
-  have hPeq : P = [(0, 2), (2, 0)] ∧ sh = [[(1, 2)]] :=
+  obtain ⟨rfl, rfl⟩ : P = [(0, 2), (2, 0)] ∧ sh = [[(1, 2)]] :=
     mkCell_injective hP
       (show CellMenu.MenuPath 2 5 [(0, 2), (2, 0)] from
         RestartEquiv.restartPath_menuPath 5 1 2 (by norm_num) (by norm_num) (by norm_num))
@@ -323,7 +307,6 @@ theorem inCellAt_verdict (f : QuotientBox.monicBox 2 5 (2 * 1))
       (show CellMenu.ShapesFor [(0, 2), (2, 0)] [[(1, 2)]] from
         RestartEquiv.restartShapes 1 2 (by norm_num))
       hmk.symm
-  obtain ⟨rfl, rfl⟩ := hPeq
   exact ⟨[(0, 2), (2, 0)], [[(1, 2)]], hP, hsh, hmatch, rfl⟩
 
 /-- **Gate — depth-2 verdict census is non-vacuous at `(2,5,2)` (the anti-vacuity guard).**
@@ -342,17 +325,14 @@ theorem gate_verdict_nonvacuous_depth2_2_5_2 :
     rw [gate_fiber_B1_N5]; norm_num
   obtain ⟨f, hInCell, hcl⟩ := (Nat.card_pos_iff.mp hpos).1
   -- f, viewed as monicBox 2 5 2, is a depth-2 verdict witness
-  have hstep : recenterStep 2 5 2 1 (by norm_num) f = recenter' 2 5 2 1 (by norm_num) f := rfl
+  -- (recenterStep 2 5 2 1 hN f = recenter' 2 5 2 1 hN f by rfl, so cellB1_verdict applies)
   have hv2 : verdictChain 2 5 2 1 (by norm_num) 2
       (show QuotientBox.monicBox 2 5 2 from f) := by
     rw [verdictChain_succ]
     refine ⟨inCellAt_verdict f hInCell, ?_⟩
     rw [verdictChain_succ]
-    refine ⟨?_, verdictChain_zero 2 5 2 1 (by norm_num) _⟩
-    rw [hstep]
-    exact cellB1_verdict (recenter' 2 5 2 1 (by norm_num) f) hcl
-  have : Nonempty {g : QuotientBox.monicBox 2 5 2 // verdictChain 2 5 2 1 (by norm_num) 2 g} :=
-    ⟨⟨f, hv2⟩⟩
-  exact Nat.card_pos
+    exact ⟨cellB1_verdict (recenter' 2 5 2 1 (by norm_num) f) hcl,
+      verdictChain_zero 2 5 2 1 (by norm_num) _⟩
+  exact Nat.card_pos_iff.mpr ⟨⟨⟨f, hv2⟩⟩, inferInstance⟩
 
 end LeanUrat.OM.SelfLoopCensusVerdict

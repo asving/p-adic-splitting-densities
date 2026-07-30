@@ -161,14 +161,9 @@ theorem card_Rphi (hN : 0 < N) (he : 0 < e) :
           ← pow_mul]
 
 theorem nontrivial_Rphi (hN : 0 < N) (he : 0 < e) : Nontrivial (Rphi p N e h c) := by
-  have hcard := card_Rphi p N e h c hN he
-  refine ⟨0, 1, fun h01 => ?_⟩
-  haveI : Subsingleton (Rphi p N e h c) := subsingleton_of_zero_eq_one h01
-  have h1 : Nat.card (Rphi p N e h c) = 1 := Nat.card_of_subsingleton 0
-  rw [hcard] at h1
-  have h2 : 1 < p ^ (N * e) :=
-    one_lt_pow' hp.out.one_lt (Nat.mul_ne_zero hN.ne' he.ne')
-  omega
+  haveI := finite_Rphi p N e h c hN he
+  rw [← Finite.one_lt_card_iff_nontrivial, card_Rphi p N e h c hN he]
+  exact one_lt_pow' hp.out.one_lt (Nat.mul_ne_zero hN.ne' he.ne')
 
 /-! ## Deliverable 2: local structure (`h = 1` for the Eisenstein facts) -/
 
@@ -305,13 +300,8 @@ private theorem nat_sandwich {P K : ℕ} (hP : 0 < P) (a : ℕ → ℕ) (h0 : a 
 omit hp in
 theorem card_quotient_span_theta_pow_zero :
     Nat.card (Rphi p N e 1 c ⧸ Ideal.span {theta p N e 1 c ^ 0}) = 1 := by
-  have hsub : Subsingleton (Rphi p N e 1 c ⧸ Ideal.span {theta p N e 1 c ^ 0}) := by
-    constructor
-    intro a b
-    obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective a
-    obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective b
-    rw [Ideal.Quotient.eq, pow_zero, Ideal.span_singleton_one]
-    exact Submodule.mem_top
+  haveI : Subsingleton (Rphi p N e 1 c ⧸ Ideal.span {theta p N e 1 c ^ 0}) :=
+    Ideal.Quotient.subsingleton_iff.mpr (by rw [pow_zero, Ideal.span_singleton_one])
   exact Nat.card_of_subsingleton 0
 
 theorem card_quotient_span_theta_pow_top (hN : 0 < N) (he : 0 < e) :
@@ -454,8 +444,7 @@ theorem card_map_span_theta_pow (hN : 0 < N) (he : 0 < e) (j : ℕ) (hj : j < N 
 /-- **Deliverable 2 (residue count)**: `|Rphi/(θ)| = p`. -/
 theorem card_quotient_span_theta (hN : 0 < N) (he : 0 < e) :
     Nat.card (Rphi p N e 1 c ⧸ Ideal.span {theta p N e 1 c}) = p := by
-  have h1 := card_quotient_span_theta_pow p N e c hN he 1 (Nat.mul_pos hN he)
-  simpa using h1
+  simpa using card_quotient_span_theta_pow p N e c hN he 1 (Nat.mul_pos hN he)
 
 /-- **Deliverable 2 (unit criterion)**: `x` is a unit iff `x ∉ (θ)`. -/
 theorem isUnit_iff_notMem (hN : 0 < N) (he : 0 < e) (x : Rphi p N e 1 c) :
@@ -570,8 +559,7 @@ theorem vphi_theta_pow (hN : 0 < N) (he : 0 < e) {j : ℕ} (hj : j ≤ N * e) :
 
 /-- **Deliverable 4 spec**: `vphi θ = 1`. -/
 theorem vphi_theta (hN : 0 < N) (he : 0 < e) : vphi p N e c (theta p N e 1 c) = 1 := by
-  have h1 : (1 : ℕ) ≤ N * e := Nat.mul_pos hN he
-  simpa using vphi_theta_pow p N e c hN he h1
+  simpa using vphi_theta_pow p N e c hN he (Nat.mul_pos hN he : (1 : ℕ) ≤ N * e)
 
 /-- `vphi` is invariant under multiplication by a unit. -/
 theorem vphi_unit_mul {u : Rphi p N e 1 c} (hu : IsUnit u) (x : Rphi p N e 1 c) :

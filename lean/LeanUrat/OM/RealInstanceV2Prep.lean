@@ -49,8 +49,7 @@ theorem sepShape_injective (n : ℕ) : Function.Injective (Order0.sepShape n) :=
   have hsort : lam.parts.sort (· ≤ ·) = lam'.parts.sort (· ≤ ·) := by
     rw [← Order0.dSList_sepShape n lam, ← Order0.dSList_sepShape n lam', h]
   have hparts : lam.parts = lam'.parts := by
-    have := congrArg (fun l : List ℕ => (l : Multiset ℕ)) hsort
-    simpa [Multiset.sort_eq] using this
+    simpa [Multiset.sort_eq] using congrArg (fun l : List ℕ => (l : Multiset ℕ)) hsort
   exact Nat.Partition.ext hparts
 
 /-! ## 2. Cross-σ menu disjointness -/
@@ -150,8 +149,8 @@ theorem sum_stratumCount_le_box (n N : ℕ) (hN : 0 < N) :
       = ((∑ lam : Nat.Partition n, M9.rawCount n (Order0.sepShape n lam) N : ℕ) : ℚ) := by
         rw [Nat.cast_sum]
         rfl
-    _ ≤ ((M9.realP ^ (n * N) : ℕ) : ℚ) := by exact_mod_cast key
-    _ = (M9.realP : ℚ) ^ (n * N) := by push_cast; ring
+    _ ≤ ((M9.realP ^ (n * N) : ℕ) : ℚ) := Nat.cast_le.mpr key
+    _ = (M9.realP : ℚ) ^ (n * N) := Nat.cast_pow _ _
 
 /-! ## 5. Level-≥1 constancy of the normalized menu sum -/
 

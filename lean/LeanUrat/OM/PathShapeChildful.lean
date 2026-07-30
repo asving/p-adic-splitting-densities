@@ -464,7 +464,7 @@ theorem hnode_oneSideShapeChildful (s N₀ : ℕ) (hN₀ : 0 < N₀) (pr : (ℕ 
     rw [show CellCard.prodSC p [shape] = CellCard.shapeCount p shape from by
       rw [CellCard.prodSC, List.map_singleton, List.prod_singleton]]
     have hden : (p : ℚ) ^ (s * (N₀ - 1)) * (p : ℚ) ^ s = (p : ℚ) ^ (s * N₀) := by
-      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel hN₀]
+      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel (show 1 ≤ N₀ from hN₀)]
     have hnum : (p : ℚ) ^ (s * N₀) = (p : ℚ) ^ V * (p : ℚ) ^ CellCard.freeExp s N₀ P := by
       rw [← pow_add]
       congr 1

@@ -95,19 +95,16 @@ theorem selfLoopChain_succ (k : ℕ) (g : QuotientBox.monicBox p N μ) :
   unfold selfLoopChain
   constructor
   · intro h
-    refine ⟨?_, fun i hi => ?_⟩
-    · have := h 0 (Nat.succ_pos k)
-      simpa [recenterIter] using this
-    · have := h (i + 1) (Nat.succ_lt_succ hi)
-      -- recenterIter (i+1) g = recenterIter i (recenterStep g)
-      rwa [recenterIter_step] at this
+    refine ⟨h 0 (Nat.succ_pos k), fun i hi => ?_⟩
+    have := h (i + 1) (Nat.succ_lt_succ hi)
+    -- recenterIter (i+1) g = recenterIter i (recenterStep g)
+    rwa [recenterIter_step] at this
   · rintro ⟨h0, hrest⟩ i hi
     cases i with
-    | zero => simpa [recenterIter] using h0
+    | zero => exact h0
     | succ j =>
-      have hj : j < k := Nat.lt_of_succ_lt_succ hi
-      have := hrest j hj
-      rwa [recenterIter_step j g]
+      rw [recenterIter_step j g]
+      exact hrest j (Nat.lt_of_succ_lt_succ hi)
 where
   recenterIter_step : ∀ (i : ℕ) (g : QuotientBox.monicBox p N μ),
       recenterIter p N μ c hN (i + 1) g
@@ -115,11 +112,7 @@ where
     intro i
     induction i with
     | zero => intro g; rfl
-    | succ j ih =>
-      intro g
-      show recenterStep p N μ c hN (recenterIter p N μ c hN (j + 1) g)
-        = recenterStep p N μ c hN (recenterIter p N μ c hN j (recenterStep p N μ c hN g))
-      rw [ih g]
+    | succ j ih => intro g; exact congrArg (recenterStep p N μ c hN) (ih g)
 
 /-! ## 2. The general-`Q` census equivalence (the `two_level_census` engine, predicate-uniform)
 
@@ -165,13 +158,10 @@ bridge = tower level-0", here directly on the box).  This anchors the recursion'
 theorem census_base (hμ2 : 2 ≤ μ) (hμN : μ < N) :
     Nat.card {f : QuotientBox.monicBox p N (μ * 1) //
         InCellAt p N 1 μ c f ∧ selfLoopChain p N μ c hN 0 (recenter' p N μ c hN f)}
-      = p ^ (μ * (N * 1 - 1) - 1 * μ * (μ + 1) / 2) := by
-  have hcong : Nat.card {f : QuotientBox.monicBox p N (μ * 1) //
-        InCellAt p N 1 μ c f ∧ selfLoopChain p N μ c hN 0 (recenter' p N μ c hN f)}
-      = Nat.card {f : QuotientBox.monicBox p N (μ * 1) // InCellAt p N 1 μ c f} :=
-    Nat.card_congr (Equiv.subtypeEquivRight fun f =>
-      and_iff_left (selfLoopChain_zero p N μ c hN _))
-  rw [hcong, card_restart_fiber p N 1 μ c hN one_pos hμ2 hμN]
+      = p ^ (μ * (N * 1 - 1) - 1 * μ * (μ + 1) / 2) :=
+  (Nat.card_congr (Equiv.subtypeEquivRight fun f =>
+      and_iff_left (selfLoopChain_zero p N μ c hN _))).trans
+    (card_restart_fiber p N 1 μ c hN one_pos hμ2 hμN)
 
 /-- **The depth-`1` tie to `two_level_census`.** At `k = 1` the chain census IS the banked
 `SelfLoopTower.two_level_census` verdict census at `c' = selfLoopCell μ`: the depth-1 self-loop
@@ -186,11 +176,10 @@ theorem census_depth_one (hμ2 : 2 ≤ μ) (hμN : μ < N) :
   refine Nat.card_congr (Equiv.subtypeEquivRight fun γ => and_congr_right fun _ => ?_)
   constructor
   · intro h
-    have := h 0 (by norm_num)
-    simpa [recenterIter] using this
+    exact h 0 Nat.one_pos
   · intro h i hi
-    interval_cases i
-    simpa [recenterIter] using h
+    obtain rfl := Nat.lt_one_iff.mp hi
+    exact h
 
 end
 

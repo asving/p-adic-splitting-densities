@@ -210,7 +210,7 @@ theorem Phi_theta (hN : 0 < N) (he : 0 < e) (w : ℕ) {x : Rphi p N e h c}
 theorem Phi_zero (hN : 0 < N) (he : 0 < e) (w : ℕ) : Phi p N e h c hN he w 0 := by
   intro i
   rw [digitCoeff, map_zero]
-  simp
+  exact dvd_zero _
 
 /-- `Phi` is closed under addition. -/
 theorem Phi_add (hN : 0 < N) (he : 0 < e) (w : ℕ) {x y : Rphi p N e h c}

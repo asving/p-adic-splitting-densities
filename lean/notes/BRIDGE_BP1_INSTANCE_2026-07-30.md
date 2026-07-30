@@ -201,12 +201,15 @@ DESIGN PRINCIPLE (the r_is_solve pattern): `RegData` is free data + `RegPin` equ
 it to the real §S objects. Constructing D FROM those objects makes every pin
 `rfl`/`Equiv.refl`/proof-irrelevance — the pins cost nothing and can never drift.
 
-    noncomputable def bridgeRegData (C : UCarriers n) (hne : BlockStatesNe C)
+    noncomputable def bridgeRegData (hn : 2 ≤ n) (C : UCarriers n)
+        (hne : ∀ e ∈ Finset.Icc 1 n, Nonempty (C.T.State e))  -- = BridgePre.hStateNe
         (p : ℕ) : RegData p where
       depthSet := (consumedDeltas C.T C.Fam).image (fun d : ℕ+ => (d : ℕ))
       one_mem_depthSet := …           -- (†4a)
       Pool := _.image (p ^ ·); pool_eq := rfl
-      Block := {e : ℕ // e ∈ Finset.Icc 1 n}      -- instNe: 1 ∈ Icc 1 n from 2 ≤ n
+      Block := {e : ℕ // e ∈ Finset.Icc 1 n}      -- instNe := ⟨⟨1, by omega⟩⟩ from hn;
+                                                  -- at n = 0 Block is EMPTY and hne is
+                                                  -- vacuous — hn is LOAD-BEARING (Codex f.2)
       bidx e := C.T.State e.1                      -- instBiNe: hne — see (†4b)
       blockDim e := Fintype.card (C.T.State e.1); bidx_card := rfl
       K e := Kmat C.T C.RB e.1 (C.hK e.1 e.2)
@@ -231,10 +234,18 @@ it to the real §S objects. Constructing D FROM those objects makes every pin
         else 0
       act g q₀ := if h : g ∈ OKat (q₀ : ℚ) then evalAt (q₀ : ℚ) ⟨g, h⟩ else 0
 
-    def bridgeRegPin … : RegPin C (bridgeRegData C hne p)
+    def bridgeRegPin … : RegPin C (bridgeRegData hn C hne p)
       -- blk := Equiv.refl; st := fun _ => Equiv.refl; every *_pin := rfl or
       -- dif_pos + Subsingleton.elim (DetHyp proofs are proof-irrelevant);
       -- legEquiv := fun _ => Equiv.refl; legSt := legTarget …; legSt_pin := rfl
+
+    ASSEMBLY ORDER (post-Codex findings 3+4): a structure literal cannot postpone
+    required fields. The two dite fields are STANDALONE defs `bridgeBsplit`/
+    `bridgeBetaLeg` (unit IB-B9, which now runs BEFORE the record unit IB-B8;
+    the record literal above consumes them). Likewise `bridgeRegPin` (IB-B10) is
+    assembled only AFTER the standalone pin lemmas exist (IB-B11 Jcell, IB-B12 W,
+    IB-B13 bsplit/betaLeg) — the pin units are LEMMAS over bridgeRegData, and
+    B10 is the final record literal wiring them in.
 
 The four NON-rfl obligations:
 
@@ -244,7 +255,10 @@ The four NON-rfl obligations:
       `Function.iterate_succ_apply'` + `Finset.subset_union_left`. Routine.
       (If it were false the whole `RegData` type is uninstantiable — it is not.)
 
-(†4b) `instBiNe : Nonempty (C.T.State e)` and `blockDim_pos`. `TableShape` carries
+(†4b) `instBiNe : Nonempty (C.T.State e)` and `blockDim_pos`. (Separately,
+      `instNe : Nonempty Block` rides `hn : 2 ≤ n` — mkUInstance's EXISTING binder,
+      threaded into bridgeRegData's signature post-Codex finding 2; no new premise.)
+      `TableShape` carries
       Fintype but NO nonemptiness (verified §2.2). NOT derivable from the pack:
       `MeasuredSide.rep_ne` gives `Nonempty (Rep e τ)` only GIVEN a τ. Resolution:
       the p-uniform pack `BridgePre` carries the NAMED warranted hypothesis
@@ -276,9 +290,24 @@ The four NON-rfl obligations:
       `List.count_eq_card_fin` style lemmas; expect Mathlib archaeology).
 
 (†4e) `RegP` (the per-p gate) is NOT constructed — it stays theoremU's explicit
-      hypothesis (D8: at a p failing (REG-p), no claim). PARTIAL TRANSPORT (IB-B15):
-      from `C.chain` (legs_reg → `UCarriers.cl1`, pools_e0, rsh_interp) derive as
-      much of `RegP (bridgeRegData …)` as is true at ALL-ACTIVE pools. The FULL
+      hypothesis (D8: at a p failing (REG-p), no claim). TYPED PARTIAL TRANSPORT
+      (retyped post-Codex finding 8 — the locus vocabulary is now a unit, IB-B17):
+        `RegPAt D q₀ e : Prop` := the (q₀, e)-clause of `RegP` factored out, with
+          the decomposition lemma `RegP D ↔ ∀ q₀ ∈ D.Pool, ∀ e, RegPAt D q₀ e`
+          (definitional re-grouping of Defs.lean:209's ∀∀-body);
+        `bridgeActiveLocus C p : Finset ℕ` := (bridgeRegData …).Pool.filter
+          (fun q₀ => (q₀ : ℚ) ∈ MovesS.allActivePools C.MS) (Classical
+          decidability) — EXACTLY `pools_e0`'s all-active locus
+          (MovesS/Interfaces.lean:138) read on the roster's pool.
+      IB-B15a proves the (r2) conjunct of `RegPAt (bridgeRegData …) q₀ e` for
+      every q₀ ∈ bridgeActiveLocus (from cl1/legs_reg + rsh_interp + B3's
+      bridgeAct_ok); IB-B15b proves the (r1) conjunct at the CHAIN-COVERED pairs
+      — primary route q₀ = p^1, where `UCarriers.cl1` (= legs_reg at the base
+      prime, DefsCarriers.lean:98) supplies `MovesS.RegP`, transported through
+      the K_pin submatrix-determinant identity (RegPin.detHyp's calc,
+      DefsLedger.lean:536ff, run in reverse); secondary probe: pools_e0's
+      PoolHyp packages at deeper all-active pools. Each unit RETURNS its typed
+      residual (Pool \ bridgeActiveLocus; the uncovered (q₀, e) pairs). The FULL
       transport is FALSE by design: the note's junk-block discipline (MOVES
       12208–12210) records junk-block determinants without requiring them nonzero,
       while (r1) demands EVERY block's det ≠ 0 at EVERY pool. IB-B16 documents this
@@ -354,14 +383,27 @@ digits; `chartWitness` is the digit-0 chart, consistent with (†3)'s slot layou
       `trueType N f := if h : ∃ σ, ZpReads n p zfType N f σ
          then some h.choose else none`.
       Uniqueness (†8u): for N arbitrary, IF a monic degree-n lift exists
-      (`lift_exists`, (†10d)) then two σ's satisfying ZpReads agree on that lift:
+      (`lift_exists`, (†11d)) then two σ's satisfying ZpReads agree on that lift:
       σ.1 = zfType g = σ'.1 ⇒ σ = σ'. So choose is the unique witness and
       `lift_true : trueType N f = some σ ↔ ZpReads … σ` follows by cases. At N = 0
       every g lifts f (trivial ring), so ZpReads pins ALL degree-n types at once —
       no σ (n ≥ 2 gives ≥ 2 types with distinct multisets, witnessed by X^n and an
-      Eisenstein X^n − p… lift-independent argument), trueType 0 = none; the unit
-      proves this edge or, if painful, notes trueType 0's value is irrelevant
-      (no ledger row reads it at N = 0 — verify) and keeps the dichotomy silent.
+      Eisenstein X^n − p… lift-independent argument), trueType 0 = none.
+      ORDERING + FALLBACK CORRECTED (post-Codex finding 6): the N = 0 probe
+      (IB-D10) runs BEFORE the lift_true prover (IB-D9b), per the binding
+      cross-area countermodel-first rule. The old fallback ("verify no consumer
+      reads trueType 0") is DELETED — it could not discharge lift_true's ∀-N
+      obligation, which is a ZpBridge FIELD one must prove at N = 0 too. The
+      accurate dependence, verified against the as-built source 2026-07-30:
+      `ZpReads` is the ∀-lift predicate (DefsLedger.lean:686–689), so (†8u)'s
+      uniqueness rides ONE lift — supplied by `lift_exists` at EVERY N including
+      0 (at N = 0 the map-to-trivial-ring condition is automatic) — and
+      lift_true's N = 0 instance holds by the same case split whether or not the
+      "trueType 0 = none" edge is settled. D10 therefore gates D9b procedurally
+      (rule compliance; it would also surface any ∃-read misreading of ZpReads)
+      but a painful edge does NOT block D9b: the corrected pre-approved fallback
+      is "record the edge OPEN + display the single-lift uniqueness derivation
+      that D9b actually consumes".
       `VPSound X` (canonical ⇒ trueType) is the identification KERNEL ROW
       (CL-10's VP + VP-SOUND citation duty, U10's clause (ii) engine) — open.
 
@@ -509,7 +551,16 @@ where `monicFactors g` is the multiset of monic ℤ_p-polynomial irreducible fac
       cl11_ksub    : KsubM1C1T C.T                                 -- (K-SUB) m=1 (Q6)
       cl17         : C.chain.wsh17_pin                             -- W17ii (open by design)
       cl19_rep     : (CapstoneLedger.cl19_rep's statement over C)  -- CL-19 face (Q6)
-      zp           : (post-Q2) the ZpBridge input laws not proved outright
+
+    NO `zp` CATCH-ALL ROW (deleted post-Codex finding 5): G1 promises the
+    ZpBridge built from genuine ℤ_p[X] factorization and G2 forbids un-named
+    conditionality — a catch-all row would hide exactly what G2 bans. Group E
+    (post-Q2 repair) proves ALL FIVE ZpBridge fields outright: zfType (IB-E11,
+    def), zf_pos (E5), zf_factor (E6/E7), lift_exists (E8), lift_true (D9b);
+    assembly IB-E9. If a specific law stalls, the prover returns a
+    blocked-report and the ORCHESTRATOR adjudicates adding it as a NAMED typed
+    row with owner + note display (a new-named-row fence event: campaign ledger
+    + Asvin digest) — never a silent catch-all.
 
     ORDERING CONSTRAINT: `slice_finite` is consumed by the DEFINITION of thrSlice
     (†9), so F's construction takes it as an argument — the pack splits internally:
@@ -543,7 +594,7 @@ typing FAILED once — MovesR adjudication #1):
 |---|---|---|---|
 | rel1 | CL-8 REL.1 | [2r] | base-change ledger clause at δ: parameterize by the MovesR re-architecture's CInterface carrier (raw material: the parked CStatements/GradedCarrier draft + `MovesRBase.SpeciesSyntax/AlphabetData`); TRAP: the jet-additivity typing refuted once (p^N-torsion — campaign ledger, MovesR FABLE leg); re-type per the recorded resumption charge (level-set digits → graded-piece composite) |
 | rel2a/b/d/e | CL-8 REL.2(a)(b)(d)(e) | [2r] | same carrier; four clause slots |
-| rel3 | CL-8 REL.3 | [2r] | the note says NO satisfiable self-contained statement exists (round-1 audit rejected an invented one); disposition unit: either a CInterface-relative typing or the honest record that rel3 stays a bare parameter with the note citation |
+| rel3 | CL-8 REL.3 | [2r] | the note says NO satisfiable self-contained statement exists (round-1 audit rejected an invented one); typing unit (rescoped post-Codex finding 10): the CInterface-RELATIVE typed Prop is the REQUIRED deliverable (the round-1 rejection was of a SELF-CONTAINED invention; carrier-relative is untried); the bare-parameter record is DEMOTED to a BLOCKED outcome requiring adjudication — it fails G4 and voids the G11a falsifier |
 | rs0Lump | CL-9(α) RS.0 lumpability | [3] | the fiber-process lumpability over MovesD/MovesT strata: the kernel `kstep`-aggregation invariance of `C.MS` rows vs the tree strata; candidate vocabulary exists (MeasuredSide.kstep, RS4Chain.L) |
 | trackRule | CL-7a (t1)/(t2)+(c1) | [4] | over MovesX: key/branch recognition predicates on `XHistory` + a `trackOf` assignment map compatible with `K7.track_restarts`'s (t3) face |
 | dnLattice | CL-7b lattice + strict increment | [4] | key weights ∈ (1/K7.Dden)·ℤ, Dden ∣ n!, per-node strict ledger increment — over MovesX Pop/dTotal vocabulary |
@@ -552,17 +603,19 @@ typing FAILED once — MovesR adjudication #1):
 | m4bConst | CL-16 M4b constancy + M4b-T equivariance | [1v]/[2b] | over MovesV height/translation carriers (`CtsFamily`, writeHeights vocabulary — mind the Order0Perimeter fence: do NOT consume the quarantined shim) |
 | jcInvHist | CL-19 h_ent/history residue | [2b] | over MovesT entrance vocabulary (`EntSt`, histories): the cl19_rep-complement — invariance in the HISTORY argument |
 
-Non-vacuity audit (IB-G11): every formulated Prop must be FALSE for a degenerate
+Non-vacuity audit (IB-G11a/b/c, split per family post-Codex finding 11): every
+formulated Prop must be FALSE for a degenerate
 instance the note would reject (the wave-2 doctrine) — one compiled falsifier or
 inline `example : ¬ Slot_x degenerate…` per slot. Closure manifest (IB-G12): every
 identifier in each displayed Prop → its built decl path, grep-verified (the
 standing CLOSURE MANIFEST rule from wave-4 round 7).
 
 ---------------------------------------------------------------------------
-## 4. UNIT SPLIT (84 units on the default path: IB-A* dictionary 12 · IB-B* roster
-16 · IB-C* solve 6 · IB-D* classifier/fibers 19 (+2 gated: D20/D21) · IB-E* ZpBridge
-11 (E0–E10) · IB-F* pack/assembly 7 · IB-G* slots 13; pre-approved splits inside
-A9/A11/B5/E0/E1/E4 absorb overruns without new ids). Difficulty: R = routine-opus, H = hard-fable, ADJ = adjudication.
+## 4. UNIT SPLIT (92 units on the default path, recounted at REVISION 2: IB-A*
+dictionary 12 · IB-B* roster 18 (B15→B15a/B15b, +B17) · IB-C* solve 7 (C3→C3a/C3b)
+· IB-D* classifier/fibers 20 (D9→D9a/D9b; +2 gated: D20/D21) · IB-E* ZpBridge 13
+(E0–E12) · IB-F* pack/assembly 7 · IB-G* slots 15 (G11→G11a/b/c); pre-approved
+splits inside A9/A11/B5/E0/E1/E4 absorb overruns without new ids). Difficulty: R = routine-opus, H = hard-fable, ADJ = adjudication.
 Sizes are expected LINES OF PROOF (statements excluded); anything that grows past
 ~40 splits per the standing rule. New files: MovesU/BridgeDict.lean (A),
 BridgeRoster.lean (B), BridgeSolve.lean (C), BridgeTrees.lean + BridgeClassifier.lean
@@ -618,30 +671,54 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
 - **IB-B6** JIdx carrier def + Fintype + `card_JIdx` = Σ Σ card cells. Deps: —.
   Sketch: same shape as B5, one level simpler. R, ~25.
 - **IB-B7** WIdx = Finset-coe Fintype + card = Sh.card. Deps: —. R, ~6.
-- **IB-B8** `bridgeRegData` — the data skeleton (all fields except bsplit/betaLeg).
-  Deps: B1, B2/BridgePre, B3, B4, B6, B7. Sketch: §3.3 display; instances wired.
-  R, ~35 (mostly `where` lines).
-- **IB-B9** bsplit/betaLeg dite fields + well-definedness lemmas (value independent
-  of the hdet proof — proof irrelevance is definitional for Prop binders; the
-  lemma is `dif_pos` rewriting). Deps: B8. R, ~15.
-- **IB-B10** `bridgeRegPin` — the rfl-pin assembly (blk/st/depth/K/iota/bterm/act/
-  legSt/legEquiv/legSt_pin/blockDim/shape/cell/leg pins). Deps: B8, B5, B6. Sketch:
-  Equiv.refl + rfl + the card lemmas. R, ~30.
-- **IB-B11** `Jcell_pin` image equality (†4c). Deps: B6, B10. Sketch: Finset.ext +
-  mem_image/mem_biUnion chase. H, ~35.
-- **IB-B12** `W_pin` image equality. Deps: B7. Sketch: univ.image over coe =
-  Finset.image on Sh (`Finset.image_coe_univ`-style; attach). R, ~15.
-- **IB-B13** `bsplit_pin`/`betaLeg_pin`. Deps: B9. Sketch: dif_pos + rfl. R, ~15.
+- **IB-B9** `bridgeBsplit`/`bridgeBetaLeg` — the two dite fields as STANDALONE
+  defs (re-scoped post-Codex finding 3: they must exist BEFORE the record) +
+  well-definedness lemmas (value independent of the hdet proof — proof
+  irrelevance is definitional for Prop binders; the lemma is `dif_pos`
+  rewriting). Deps: —. R, ~15. RUNS BEFORE B8.
+- **IB-B8** `bridgeRegData hn C hne p` — the FULL record assembly in ONE literal
+  (re-scoped post-Codex finding 3: no postponed fields; bsplit/betaLeg := B9's
+  defs). `hn : 2 ≤ n` feeds `instNe` (post-Codex finding 2; supplied at use
+  sites by mkUInstance's existing binder), `hne` (= BridgePre.hStateNe) feeds
+  instBiNe/blockDim_pos. Deps: B1, B2/BridgePre, B3, B4, B6, B7, B9. Sketch:
+  §3.3 display; instances wired. R, ~35 (mostly `where` lines).
+- **IB-B11** `bridge_Jcell_pin` — STANDALONE image-equality LEMMA (†4c) over
+  bridgeRegData (re-scoped post-Codex finding 4: not a RegPin field proof).
+  Deps: B6, B8. Sketch: Finset.ext + mem_image/mem_biUnion chase. H, ~35.
+- **IB-B12** `bridge_W_pin` — STANDALONE image-equality LEMMA. Deps: B7, B8.
+  Sketch: univ.image over coe = Finset.image on Sh (`Finset.image_coe_univ`-
+  style; attach). R, ~15.
+- **IB-B13** `bridge_bsplit_pin`/`bridge_betaLeg_pin` — STANDALONE LEMMAS.
+  Deps: B8, B9. Sketch: dif_pos + rfl. R, ~15.
+- **IB-B10** `bridgeRegPin` — the record assembly, LAST of the pin units
+  (re-ordered post-Codex finding 4): the rfl-pins inline (blk/st/depth/K/iota/
+  bterm/act/legSt/legEquiv/legSt_pin/blockDim/shape/cell/leg) + the standalone
+  lemmas wired in (Jcell_pin := B11, W_pin := B12, bsplit_pin/betaLeg_pin :=
+  B13, card pins := B5/B6). Deps: B5, B6, B8, B9, B11, B12, B13. Sketch:
+  Equiv.refl + rfl + the lemma wiring. R, ~30.
 - **IB-B14** `bridgeRegData_pool_mem` sanity: p^1 ∈ Pool; RegP's binding shape at
   the roster (non-vacuity display: entryList ≠ ∅). Deps: B8. R, ~15.
-- **IB-B15** PARTIAL RegP transport at all-active pools (†4e): from C.chain
-  (cl1/pools_e0/legs_read/rsh_interp) prove the (r2) clauses of
-  `RegP (bridgeRegData …)` for entries in the ALL-ACTIVE locus, and (r1) for the
-  blocks the chain's PoolHyp covers; RETURN the exact residual quantifier gap.
-  H, ~40 — expected PARTIAL by design; the unit's deliverable is proof + gap spec.
+- **IB-B17** RegP-transport VOCABULARY (new unit, post-Codex finding 8):
+  `RegPAt D q₀ e : Prop` (the (q₀, e)-clause of RegP) + the decomposition lemma
+  `RegP D ↔ ∀ q₀ ∈ D.Pool, ∀ e, RegPAt D q₀ e` (definitional re-grouping of
+  Defs.lean:209) + `bridgeActiveLocus C p : Finset ℕ` (Pool filtered by
+  `(· : ℚ) ∈ MovesS.allActivePools C.MS`, Classical decidability) — pools_e0's
+  locus (MovesS/Interfaces.lean:138) on the roster's pool. Deps: B8. R, ~20.
+- **IB-B15a** (r2)-transport ON THE ACTIVE LOCUS (split of B15, post-Codex
+  findings 8+11): typed theorem `∀ q₀ ∈ bridgeActiveLocus C p, ∀ e,
+  (r2 conjunct of RegPAt (bridgeRegData …) q₀ e)` from cl1/legs_reg +
+  rsh_interp + B3's bridgeAct_ok. Deps: B17, C1. H, ~35.
+- **IB-B15b** (r1)-transport AT CHAIN-COVERED PAIRS (split of B15): primary
+  route q₀ = p^1 via `UCarriers.cl1` (= legs_reg at the base prime,
+  DefsCarriers.lean:98) transported through the K_pin submatrix-determinant
+  identity (RegPin.detHyp's calc, DefsLedger.lean:536ff, reversed); secondary
+  probe at pools_e0's deeper all-active pools; RETURN the residual quantifier
+  gap as a TYPED record (Pool \ bridgeActiveLocus; uncovered (q₀, e) pairs).
+  Deps: B17, B10. H, ~35 — expected PARTIAL by design; deliverable is proof +
+  typed gap spec.
 - **IB-B16** the junk-block gap RECORD (†4e): machine-readable docstring unit — the
   precise sublocus where full (r1) exceeds the note (MOVES 12208–12210 cite), no
-  proof obligations. R, doc-only.
+  proof obligations; now also indexes B15a/B15b's typed residuals. R, doc-only.
 
 ### Group C — solve + checksum (†10)
 - **IB-C1** `bridgeSolve C hdet` + `r_is_solve` (rfl) + `bridgeSolve_ok`
@@ -650,12 +727,18 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   evalAt p (Σ s ∈ Sigmas, Rsh s) = 1. Deps: C1. Sketch: map_sum on OKat +
   rsh_interp/rs1_equates/x3_total; ℝ-cast down to ℚ (Rval is ℝ-valued —
   the cast-back needs rsh_interp's ℚ→ℝ equality read injectively). H, ~35.
-- **IB-C3** infinite-roots vanishing: g : RatFunc ℚ, (∀ p prime, g ∈ OKat p ∧
-  evalAt p g = 0) → g = 0. Deps: —. Sketch: num.eval p = 0 at infinitely many
-  cast-primes; eq_zero_of_infinite_isRoot; num_eq_zero. H, ~35 (archaeology:
-  RatFunc.num/denom eval API vs the OKat presentation).
+- **IB-C3a** the OKat→num/den translation (split of C3, post-Codex finding 11):
+  for g ∈ OKat q₀, evalAt q₀ ⟨g,_⟩ = g.num.eval q₀ / g.denom.eval q₀ with
+  g.denom.eval q₀ ≠ 0; corollary: evalAt q₀ ⟨g,_⟩ = 0 → g.num.eval q₀ = 0.
+  Deps: —. H, ~25 (the archaeology lives here: RatFunc.num/denom eval API vs
+  the OKat subring presentation).
+- **IB-C3b** infinite-roots vanishing (split of C3): g : RatFunc ℚ,
+  (∀ p prime, g ∈ OKat p ∧ evalAt p g = 0) → g = 0. Deps: C3a. Sketch:
+  num.eval = 0 at infinitely many cast-primes (`Nat.infinite_setOf_prime` +
+  cast injectivity); `Polynomial.eq_zero_of_infinite_isRoot`;
+  `RatFunc.num_eq_zero_iff`. R, ~20.
 - **IB-C4** `rs4_checksum_bridge` (†10b): Σ σ, bridgeSolve.R σ = 1. Deps: A7, C2,
-  C3. Sketch: apply C3 to (Σ R) − 1. R, ~20.
+  C3b. Sketch: apply C3b to (Σ R) − 1. R, ~20.
 - **IB-C5** `bridgeSolveSeam` assembly given `series_tie` row. Deps: C1. R, ~8.
 - **IB-C6** consistency display (optional gate): at n = 2 the bridgeSolve values at
   q' = 2, 3 match the OM UniformCapstone gates (1/3,1/3,1/3; 1/4,3/8,3/8) — a
@@ -682,13 +765,23 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   ∃-intro. H, ~40.
 - **IB-D8** `canonical_stable` from TransferRow. Deps: D7, D5, A12. Sketch: unpack
   witness at N, transfer fiber + thr through N ≤ N'; N = 0 vacuous. H, ~30.
-- **IB-D9** `bridgeTrueType` def + uniqueness (†8u) + `lift_true`. Deps: E8
-  (lift_exists — group E), zfType def E9. Sketch: dif + choose; uniqueness via one
-  lift. H, ~30.
-- **IB-D10** trueType N=0 edge disposition (†8 tail): prove trueType 0 = none OR
-  verify no consumer reads it and record. ADJ, ~20.
+- **IB-D9a** `bridgeTrueType` DEF only (†8; split of D9, post-Codex finding 1):
+  the dite-choose display over ZpReads. Deps: E11 (zfType DEF unit — group E;
+  the assembly E9 is NOT a dependency). R, ~8.
+- **IB-D10** trueType N = 0 edge PROBE (†8 tail) — re-scoped and RE-ORDERED
+  BEFORE D9b (post-Codex finding 6): attempt to settle `bridgeTrueType 0 = none`
+  via the two-witness argument (X^n vs Eisenstein zfType distinctness), and
+  re-verify by direct read that ZpReads is the ∀-lift predicate
+  (DefsLedger.lean:686–689 — an ∃-read would sink D9b's uniqueness route).
+  Corrected fallback if the edge is painful: record it OPEN + display the
+  single-lift uniqueness derivation D9b consumes (the old "no consumer reads
+  it" fallback is DELETED — it discharged nothing of lift_true's ∀-N burden).
+  Deps: D9a. ADJ, ~20.
+- **IB-D9b** uniqueness (†8u) + `lift_true` at ALL N (N = 0 included via the
+  single-lift route — see the corrected †8 tail). Deps: D9a, D10 (gate), E8,
+  E10. Sketch: dif + choose; uniqueness via ONE lift. H, ~25.
 - **IB-D11** `bridgeClassifierSpec` assembly (canonical/trueType/stable/
-  teichmuller) + `o3_teichmuller` rfl. Deps: D7–D10. R, ~10.
+  teichmuller) + `o3_teichmuller` rfl. Deps: D7, D8, D9a/D9b, D10. R, ~10.
 - **IB-D12** `mass` def (†9) + `mass_ne_top`-style sanity + lvl edge (thr = 0).
   Deps: D3. R, ~15.
 - **IB-D13** `thrSlice` from `slice_finite` row + `mem_slice_iff`/`slice_exhausts`.
@@ -702,15 +795,24 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   D7. R, ~20.
 - **IB-D18** `bridgeTreePin` assembly (pol/Tm/chart/chart_inj := chartWitness_inj/
   boxeq := A11/boxeq_digits/vt*/canonical_pin/treeOf_pin). Deps: D1–D17. R, ~15.
-- **IB-D19** OPTIONAL ENRICHMENT (gated, Q1): the OM agreement seam statement
-  `omClassify_agree : ∀ N f, (bridgeCanonical N f).isSome →
-   decode-of-OM.classify agrees` — statement-only + n = 2 sanity instance. ADJ.
+- **IB-D19** OPTIONAL ENRICHMENT (gated, Q1; re-scoped post-Codex finding 9 —
+  the inventory has NO general-degree decoder, §2.4: decoders are per-menu):
+  the agreement statement is PARAMETRIC in a SUPPLIED decoder —
+  `omClassify_agree (dec : ClusterShape → Option FactorizationType)
+     (hcov : (covering hypothesis: dec decodes OM.classify's range at (n, p)))
+     : ∀ N f (hN : 0 < N), (bridgeCanonical N f).isSome →
+       (agreement of dec ∘ OM.classify p n N (boxPolyEquiv f) with
+        bridgeCanonical through sigmaToFT)`
+  — decoder + covering proof are BINDERS, never an assumed global interface.
+  The n = 2 sanity instance supplies dec from the built menu decoders with
+  `UniformModelN2.cluster_coveringP` discharging hcov. ADJ, statement-only +
+  n = 2 instance.
 - **IB-D20/D21** OPTIONAL count_tie DISCHARGE CHAIN (gated, Q7): D20 = the
   instance-data pack (CellAssign/SiteLedger/TreeScaffold suppliers at (Tm, chart))
   as a typed structure; D21 = count_tie from MovesT.treeN + sibjc rows + D20.
   ADJ then H; NOT on the default path.
 
-### Group E — ZpBridge (†11) — E0 RUNS FIRST; E5–E7 GATED ON Q2
+### Group E — ZpBridge (†11) — E0 AND E12 (the gates) RUN FIRST; E5–E7 GATED ON Q2
 - **IB-E0** THE COUNTERMODEL (†11f), FIRST: compile h := X² − p²c at p = 3, c = a
   non-square unit (e.g. −1 when p ≡ 3 mod 4); prove IsLocalRing (AdjoinRoot h),
   ramIdx h = 1, resDeg h = 1, natDegree = 2; conclude ¬∃ (the zf_factor conjuncts
@@ -724,9 +826,24 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
 - **IB-E3** Gauss transfer (†11b) + `IsFractionRing ℤ_[p] ℚ_[p]` VERIFY. Deps: E2.
   H, ~30 (archaeology; if the instance is absent this unit's deliverable is the
   instance).
-- **IB-E4** IP-1 (†11c): IsLocalRing (AdjoinRoot h). Deps: E3. H, ~40 — split E4a
-  (henselian route probe: which Mathlib instances exist), E4b (proof). This
-  discharges the ZpBridge residue item (ii) of DefsLedger's docstring.
+- **IB-E12** IP-1 BOUNDARY GATE (new unit, post-Codex finding 7) — RUNS BEFORE
+  E4: a genuine falsification attempt at IP-1's universal (h monic +
+  ℚ_p-irreducible ⇒ IsLocalRing (AdjoinRoot h)). Deliverables: (a) the compiled
+  NEAR-MISS showing irreducibility is load-bearing — at odd p,
+  `¬ IsLocalRing (AdjoinRoot (X² − 1 : ℤ_p[X]))` (CRT split: X−1, X+1 coprime
+  since 2 is a unit ⇒ a nontrivial idempotent); (b) the stress check that E0's
+  NON-MAXIMAL order X² − p²c still satisfies IP-1 (locality ≠ maximality —
+  wired from E0a's proof, positive evidence kept SEPARATE from the gate); (c) a
+  memo enumerating any candidate failure class (none expected: domain + finite
+  over henselian local). If a genuine countermodel to IP-1 itself lands,
+  E4 is blocked → adjudication. Deps: E0 (locality-machinery reuse). H, ~30.
+- **IB-E4** IP-1 (†11c): IsLocalRing (AdjoinRoot h). Deps: E3, E12 (gate). H,
+  ~40 — split E4a (henselian route probe: which Mathlib instances exist), E4b
+  (proof; pre-approved internal split per Codex finding 11: E4b1 the
+  finite-algebra-over-henselian-local product decomposition, E4b2 the
+  domain-has-no-nontrivial-idempotents collapse; the norm/integrality fallback
+  is its own re-scope event, not an inline continuation). This discharges the
+  ZpBridge residue item (ii) of DefsLedger's docstring.
 - **IB-E5** `zf_pos` (†11e) [GATED Q2 if the repair changes ramIdx]. Deps: E4.
   H, ~30.
 - **IB-E6** pointwise e·f = deg (†11g) AT THE REPAIRED DEFS [GATED Q2]. Sketch:
@@ -734,10 +851,18 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   sum. H, ~40; ADJ first (the repair's exact statement).
 - **IB-E7** `zf_factor` assembly [GATED Q2]. Deps: E1–E6. R, ~25.
 - **IB-E8** `lift_exists` (†11d). Deps: —. R, ~25.
-- **IB-E9** `zfType` def + `bridgeZpBridge` assembly. Deps: E1, E5–E8, D9. R, ~15.
+- **IB-E11** `zfType` DEF only (new unit, post-Codex finding 1 — split out of E9
+  to break the D9/E9/E10 cycle): `zfType g := (monicFactors g).map (fun h =>
+  (MovesT.ramIdx h, MovesT.resDeg h))`. Textually Q2-stable (it reads whatever
+  ramIdx/resDeg the repair lands); its LAWS stay Q2-gated (E5–E7). Deps: E1.
+  R, ~5.
 - **IB-E10** the (†8u)-feeding lemma: for a monic lift g, zfType g determines σ
-  uniquely (Subtype.ext transport) + the zpDmass laws come free (DefsLedger).
-  Deps: E9. R, ~10.
+  uniquely (Subtype.ext transport). Deps: E11, E8. R, ~10.
+- **IB-E9** `bridgeZpBridge` ASSEMBLY (zfType := E11; zf_pos := E5; zf_factor :=
+  E7; lift_exists := E8; lift_true := D9b) + the zpDmass laws come free
+  (DefsLedger). Deps: E5–E8, E11, D9b. R, ~10.
+  EXECUTABLE ORDER (finding 1 resolved): E1 → E11 → D9a → D10 → (E8, E10) →
+  D9b → E9 — no cycle.
 
 ### Group F — packs + assembly
 - **IB-F1** `BridgePre` structure (hdet, hStateNe) — statement-only + the two
@@ -757,7 +882,15 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   draft; statement-only). ADJ.
 - **IB-G2** Slot_rel1 + Slot_rel2a/b/d/e formulations over G1. ADJ→H,
   statement-only (5 displayed Props; the p^N-torsion trap documented).
-- **IB-G3** Slot_rel3 disposition (†3.8 trap). ADJ.
+- **IB-G3** Slot_rel3 TYPING (§3.8 trap; re-scoped post-Codex finding 10): the
+  REQUIRED deliverable is a CInterface-RELATIVE typed Prop `Slot_rel3 (CI : …)`
+  over G1's carrier (the round-1 rejection was of a SELF-CONTAINED invention;
+  carrier-relative is the untried route) + its G11a falsifier. The
+  bare-parameter record is NO LONGER a pre-approved disposition — it fails G4,
+  voids the G11a falsifier, and leaves the True-instantiation escape alive at
+  G13. If the CI-relative typing ALSO fails faithfulness, the unit returns
+  BLOCKED and the fallback shape is ESCALATED to the orchestrator (see
+  REVISION 2 — not decidable at this altitude). ADJ→H.
 - **IB-G4** Slot_rs0Lump. ADJ→H, statement-only.
 - **IB-G5** Slot_trackRule (MovesX vocabulary; must be CONSISTENT with
   K7.track_restarts's (t3) — same Pop counters). ADJ→H.
@@ -767,9 +900,18 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
 - **IB-G9** Slot_m4bConst (MovesV; Order0Perimeter fence respected). ADJ→H.
 - **IB-G10** Slot_jcInvHist (complement of cl19_rep; no overlap — the two
   statements' conjunction must equal CL-19's display). ADJ→H.
-- **IB-G11** non-vacuity audit: per-slot degenerate falsifier. H, ~40 total.
+- **IB-G11a** non-vacuity audit, REL family (rel1, rel2a/b/d/e, rel3) — split of
+  G11 post-Codex finding 11: one compiled falsifier
+  (`example : ¬ Slot_x degenerate…`) per slot. Deps: G2, G3. H, ~20.
+- **IB-G11b** non-vacuity audit, mechanics family (rs0Lump, trackRule,
+  dnLattice). Deps: G4, G5, G6. H, ~15.
+- **IB-G11c** non-vacuity audit, seam family (m1m5Echo, x1aDict, m4bConst,
+  jcInvHist). Deps: G7, G8, G9, G10. H, ~15.
 - **IB-G12** closure manifest (identifier → decl table, grep-verified). R, doc.
-- **IB-G13** `theoremU_bridged` (consume theoremU at the 13 Slot_* Props). R, ~15.
+- **IB-G13** `theoremU_bridged` (consume theoremU at the 13 Slot_* Props — ALL
+  THIRTEEN typed, per G4; if G3 returns BLOCKED this unit WAITS on the
+  escalated rel3 adjudication rather than shipping a 12-slot variant). Deps:
+  G2–G10, G11a–c. R, ~15.
 
 ---------------------------------------------------------------------------
 ## 5. RISKS (countermodel-first ledger — each runs BEFORE its group's provers)
@@ -789,8 +931,9 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   If a prover finds even the carrier version false → the TransferRow is
   mis-scoped (report, adjudication).
 - **R3: full RegP transport is FALSE** (junk-block dets at wild pools; MOVES
-  12208–12210). Pre-refuted by note read; IB-B15 is scoped PARTIAL from birth and
-  IB-B16 records the gap. Failure mode guarded: a prover "fixing" B15 by weakening
+  12208–12210). Pre-refuted by note read; IB-B15a/B15b are scoped PARTIAL from
+  birth (typed loci via IB-B17) and
+  IB-B16 records the gap. Failure mode guarded: a prover "fixing" B15a/b by weakening
   RegP would violate the statement fence — RegP is Defs.lean:209, untouchable.
 - **R4: the checksum transport's cast chain** (†10b): rsh_interp equates ℚ-cast-ℝ
   values; recovering the ℚ-level 1 needs Rat.cast injectivity — if the chain's ℝ
@@ -799,8 +942,11 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
   retired at blueprint time; noted for the prover.
 - **R5: sigma-uniqueness edge at N = 0 for trueType** (†8): the "no σ at N = 0"
   proof needs two lifts with distinct types — needs n ≥ 2 (hn binder) and an
-  explicit pair (X^n vs Eisenstein). If painful, IB-D10's fallback (consumer
-  audit) is pre-approved. Countermodel-flavored unit: IB-D10 itself.
+  explicit pair (X^n vs Eisenstein). REVISED post-Codex finding 6: IB-D10 (the
+  probe) now runs BEFORE the prover D9b; the old consumer-audit fallback is
+  DELETED; the corrected fallback is record-the-edge-open + display the
+  single-lift uniqueness D9b consumes (sound at all N because ZpReads is the
+  ∀-lift predicate — DefsLedger.lean:686–689, verified 2026-07-30).
 - **R6: slice_finite could be false even over the realizable carrier** if
   infinitely many realizable trees share thr ≤ N (they'd have distinct fibers in a
   finite box only if fibers are nonempty and disjoint — realizability gives
@@ -866,8 +1012,10 @@ Deps on OTHER AREAS: none on the construction path (C/KC/K7 are binders).
 
 ## 7. EXECUTION NOTES (for the prover fleet)
 
-Wave order within the area: [E0, B2, D1, D2, R6-probe] (adjudication/probe
-front-runners) → A-group ∥ B-group ∥ C-group → D-group → E-group (post-Q2) →
+Wave order within the area: [E0, E12, B2, D1, D2, R6-probe] (adjudication/probe
+front-runners; D10 runs at the head of its D-subchain, before D9b) → A-group ∥
+B-group (internal order: B9 → B8; B11/B12/B13 → B10; B17 → B15a/B15b) ∥
+C-group → D-group → E-group (post-Q2; E11 is def-only and may land early) →
 F-group → G-group (anytime, statement-only). Every unit prompt carries: the
 statement-fence rule, the 64k staged-write discipline, `lake build` (never
 `lake env lean`) for green records, `#print axioms` per landed theorem
@@ -876,4 +1024,92 @@ the construction path), and the standing rule that comments are unverified claim
 File-level acceptance: BridgeMk.lean compiles with mkUInstance + theoremU_fired
 sorry-free, footprint Lean-core; the packs' rows are the ONLY hypotheses beyond
 theoremU's own; MANIFEST.json gains a BRIDGE section mirroring §4's ids.
+
+---------------------------------------------------------------------------
+## REVISION 2 (2026-07-30, post-Codex) — finding-by-finding disposition
+
+Codex adversarial review: REVISE (0 CRITICAL / 10 GAP + 1 NOTE). All findings
+verified against the as-built sources before disposition (RegData/RegP
+Defs.lean:124/209; ZpReads/ZpBridge DefsLedger.lean:686–735; RegPin
+DefsLedger.lean:479ff; allActivePools/pools_e0 MovesS/Interfaces.lean:138).
+Unit ids stable except where logged; new ids: B15a, B15b, B17, C3a, C3b, D9a,
+D9b, E11, E12, G11a, G11b, G11c (retired as single units: B15, C3, D9, G11).
+Default-path unit count 84 → 92.
+
+1. APPLIED (circular D9/E9/E10 dependency): E9 was carrying both the zfType DEF
+   and the ZpBridge ASSEMBLY. Split: new IB-E11 = zfType def (deps E1 only);
+   IB-E10 re-keyed to deps E11+E8; IB-D9 split into D9a (trueType def, deps
+   E11) and D9b (lift_true, deps D9a/D10/E8/E10); IB-E9 = assembly only (deps
+   E5–E8, E11, D9b). Executable order displayed in Group E: E1 → E11 → D9a →
+   D10 → (E8, E10) → D9b → E9.
+2. APPLIED (bridgeRegData missing 2 ≤ n): `hn : 2 ≤ n` threaded into the §3.3
+   display signature (feeds `instNe : Nonempty Block`, Defs.lean:136 — at
+   n = 0 Block is empty and hne vacuous, exactly as the finding says); supplied
+   at use sites by mkUInstance's EXISTING binder — no new premise, no fence
+   event. The undefined placeholder name `BlockStatesNe C` in the old display
+   was also replaced by the actual hStateNe statement.
+3. APPLIED (record with postponed fields impossible): IB-B9 re-scoped to
+   STANDALONE defs `bridgeBsplit`/`bridgeBetaLeg` and re-ordered BEFORE IB-B8;
+   IB-B8 now assembles the FULL record in one literal, deps + B9. Assembly-order
+   note added to §3.3.
+4. APPLIED (bridgeRegPin assembled before its field proofs): IB-B11/B12/B13
+   re-scoped to STANDALONE lemmas over bridgeRegData; IB-B10 re-ordered LAST
+   with deps B5, B6, B8, B9, B11, B12, B13 (the missing B9 dep the finding
+   flagged is now explicit).
+5. APPLIED (the `zp` catch-all row hid conditionality, defeating G1/G2): the
+   row is DELETED from BridgeKernels (§3.7). Group E proves all five ZpBridge
+   fields outright (zfType E11 / zf_pos E5 / zf_factor E6–E7 / lift_exists E8 /
+   lift_true D9b), post-Q2. A stall on any specific law returns a blocked-report
+   and adding it as a NAMED typed row is an orchestrator adjudication (fence
+   event: campaign ledger + digest) — pre-flagged, not decided here.
+6. APPLIED WITH PARTIAL REBUTTAL (D10 after its prover): the ordering violation
+   is real and fixed — D10 now runs BEFORE D9b (D9 split makes this possible:
+   the def D9a precedes the probe). The finding's second claim ("the fallback
+   does not validate D9's all-N lift_true") is CORRECT against the OLD
+   consumer-audit fallback, which is deleted; but the N = 0 edge itself is NOT
+   load-bearing for lift_true: ZpReads is the ∀-lift predicate
+   (DefsLedger.lean:686–689, verified today), so (†8u)'s uniqueness needs only
+   ONE lift, which lift_exists supplies at every N including 0 — lift_true's
+   N = 0 instance holds regardless of whether "trueType 0 = none" is settled.
+   Corrected fallback recorded in (†8)/R5/D10.
+7. APPLIED (no countermodel gate for IP-1): new unit IB-E12, runs before E4 —
+   compiled boundary near-miss ¬IsLocalRing (AdjoinRoot (X² − 1)) at odd p
+   (irreducibility load-bearing), E0's non-maximal order as separate positive
+   stress, failure-class memo. E4 deps gain E12.
+8. APPLIED (B15 had no typed statement): new vocabulary unit IB-B17 (`RegPAt`
+   clause decomposition of Defs.lean:209 + `bridgeActiveLocus` := Pool filtered
+   by MovesS.allActivePools — pools_e0's locus, Interfaces.lean:138); B15 split
+   into B15a ((r2) on the active locus) and B15b ((r1) at chain-covered pairs
+   via UCarriers.cl1 + the K_pin submatrix-det transport), each returning a
+   TYPED residual. §3.3 (†4e) retyped accordingly.
+9. APPLIED (D19 assumed a nonexistent general decoder): D19's agreement
+   statement re-scoped PARAMETRIC in a supplied decoder + covering-proof binder;
+   the n = 2 instance discharges them from the built menus +
+   UniformModelN2.cluster_coveringP. No general ClusterShape decoder is assumed
+   anywhere.
+10. APPLIED + ESCALATED (rel3 bare-parameter disposition fails G4): IB-G3
+    re-scoped — the CInterface-relative typed Prop is now the REQUIRED
+    deliverable (the round-1 rejection was of a self-contained invention;
+    carrier-relative is untried) with a G11a falsifier; the bare-parameter
+    record is DEMOTED from pre-approved disposition to BLOCKED-outcome.
+    ESCALATION (not decided here): if the CI-relative typing also fails
+    faithfulness, the fallback shape of theoremU_bridged (12 slots instantiated
+    + rel3 as a visible named binder, vs. G4's all-thirteen requirement) is a
+    goal-level decision not covered by Q5 — orchestrator adjudication required
+    before G13 lands in that branch.
+11. APPLIED (oversized units): C3 → C3a (OKat→num/den archaeology) + C3b
+    (infinite-roots); B15 → B17 + B15a + B15b (see 8); G11 → G11a/G11b/G11c
+    (REL / mechanics / seam families); E4 keeps E4a/E4b with a pre-approved
+    internal split of E4b (product decomposition / idempotent collapse) and the
+    norm/integrality fallback marked as its own re-scope event.
+
+Editorial (no finding): the (†8u) cross-ref typo "(†10d)" corrected to
+"(†11d)"; §5 R3 and §7 wave order updated to the new ids; §4 header recounted.
+
+ESCALATIONS QUEUED FOR THE ORCHESTRATOR (from this revision): (a) the rel3
+fallback shape (finding 10 above); (b) pre-flag: any Group-E stall converting a
+ZpBridge law into a new NAMED kernel row is a fence event needing adjudication
+(finding 5 above). No finding contradicted an existing adjudication (Q1–Q8
+stand); no new statement-fence event was surfaced (finding 2's hn is an
+existing binder; all other fixes are blueprint-internal).
 

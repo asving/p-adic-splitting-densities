@@ -130,14 +130,12 @@ theorem selfLoopCell_floor (hμ1 : 1 ≤ μ) (hμN : μ < N) (g : QuotientBox.mo
   have hin : InCell p g (Drainage.selfLoopCell μ) := (classify1_eq_some_iff p).mp hg
   obtain ⟨P, sh, hP, hsh, hmk, hmatch⟩ := hin
   -- recover the menu data of the self-loop cell
-  have hPeq : P = Drainage.selfLoopPath μ ∧ sh = [[(1, μ)]] :=
+  obtain ⟨rfl, rfl⟩ : P = Drainage.selfLoopPath μ ∧ sh = [[(1, μ)]] :=
     mkCell_injective hP (Drainage.selfLoopPath_menuPath hμ1 hμN) hsh
       (Drainage.selfLoopShapes hμ1) hmk.symm
-  obtain ⟨rfl, rfl⟩ := hPeq
-  -- the single side
-  have hspeq : sidePairs (Drainage.selfLoopPath μ) = [((0, μ), (μ, 0))] := rfl
-  have hside : ((0, μ), (μ, 0)) ∈ sidePairs (Drainage.selfLoopPath μ) := by
-    rw [hspeq]; exact List.mem_singleton.mpr rfl
+  -- the single side (sidePairs (selfLoopPath μ) = [((0, μ), (μ, 0))] definitionally)
+  have hside : ((0, μ), (μ, 0)) ∈ sidePairs (Drainage.selfLoopPath μ) :=
+    List.mem_singleton.mpr rfl
   intro j hj
   -- hull lower bound: line at j ≤ vOf g j
   have hline := matched_line_le p hP hmatch ((0, μ), (μ, 0)) hside j (le_of_lt hj)
@@ -152,9 +150,8 @@ theorem selfLoopCell_floor (hμ1 : 1 ≤ μ) (hμN : μ < N) (g : QuotientBox.mo
   -- so (μ : ℚ) − j ≤ vOf; hence (μ − j : ℕ) ≤ vOf (as vOf : ℕ, and j < μ)
   have hvOf_ge : μ - j ≤ vOf p g j := by
     have hle : ((μ - j : ℕ) : ℚ) ≤ (vOf p g j : ℚ) := by
-      have : ((μ - j : ℕ) : ℚ) = (μ : ℚ) - (j : ℚ) := by
-        rw [Nat.cast_sub (le_of_lt hj)]
-      rw [this]; exact hline
+      rw [Nat.cast_sub (le_of_lt hj)]
+      exact hline
     exact_mod_cast hle
   -- translate vOf ≥ μ−j to divisibility p^(μ−j) ∣ coeff_j
   have hmjN : μ - j ≤ N := le_trans (Nat.sub_le μ j) (le_of_lt hμN)
@@ -170,9 +167,8 @@ to the filtration's floor language (`card_filtIdeal_gen` / `GammaPattern`).  It 
 direction; the reverse fails (floor does not imply the residual-repeated-root verdict). -/
 theorem selfLoopChain_le_floorChain (hμ1 : 1 ≤ μ) (hμN : μ < N) (k : ℕ)
     (g : QuotientBox.monicBox p N μ) (hchain : selfLoopChain p N μ c hN k g) :
-    ∀ i : ℕ, i < k → selfLoopFloor p N μ (recenterIter p N μ c hN i g) := by
-  intro i hi
-  exact selfLoopCell_floor p N μ hμ1 hμN _ (hchain i hi)
+    ∀ i : ℕ, i < k → selfLoopFloor p N μ (recenterIter p N μ c hN i g) :=
+  fun i hi => selfLoopCell_floor p N μ hμ1 hμN _ (hchain i hi)
 
 /-! ## STEP 2. The honest decomposition: (floor ratio) × (verdict fraction)
 
@@ -320,8 +316,7 @@ theorem selfLoopCensus_filtration_step_ratio (hμ2 : 2 ≤ μ) (hμN : μ < N) (
         * (p : ℚ) ^ (L5fix.selfLoopExponent μ + 1)
       = (Nat.card {g : QuotientBox.monicBox p N μ //
           CellCard.IsCluster p g ∧ selfLoopChain p N μ c hN k g} : ℚ) := by
-    have h := hstep
-    exact_mod_cast h
+    exact_mod_cast hstep
   -- divide through by p^(exp+1); slBoxRatio = (p^(exp+1))⁻¹
   unfold SelfLoopResum.slBoxRatio
   rw [eq_mul_inv_iff_mul_eq₀ hpow]

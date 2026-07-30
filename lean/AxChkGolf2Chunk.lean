@@ -1,5 +1,20 @@
 -- SCRATCH (golf pass 2, OM real-instance chunk): axiom-footprint capture. DELETE BEFORE HANDOFF.
 import LeanUrat.OM.UnramifiedBase
+import LeanUrat.OM.RealInstanceV2Prep
+
+section Prep
+open LeanUrat.OM.RealInstanceV2Prep
+
+#print axioms sepShape_injective
+#print axioms eq_of_mem_sepShapesOf
+#print axioms sum_sepShapesOf
+#print axioms sum_unramTypeMenu_eq_sum_partitions
+#print axioms sum_card_fibers_le
+#print axioms sum_stratumCount_le_box
+#print axioms normSum_sepShapesOf_levelConst
+#print axioms normSum_sepShapesOf_zero_le
+
+end Prep
 
 open LeanUrat.OM.UnramifiedBase
 

@@ -266,7 +266,7 @@ theorem hnode_multiSideShape (s N₀ : ℕ) (hN₀ : 0 < N₀) (P : List (ℕ ×
     rw [omCount_multiSide_closed s N₀ P hP sh hsh p, ← hVdef]
     -- combine denominators: p^(s(N₀-1)) · p^s = p^(s·N₀).
     have hden : (p : ℚ) ^ (s * (N₀ - 1)) * (p : ℚ) ^ s = (p : ℚ) ^ (s * N₀) := by
-      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel hN₀]
+      rw [← pow_add, ← mul_add_one, Nat.sub_add_cancel (show 1 ≤ N₀ from hN₀)]
     -- s·N₀ = V + freeExp, so p^(s·N₀) = p^V · p^(freeExp).
     have hnum : (p : ℚ) ^ (s * N₀) = (p : ℚ) ^ V * (p : ℚ) ^ CellCard.freeExp s N₀ P := by
       rw [← pow_add]; congr 1; omega

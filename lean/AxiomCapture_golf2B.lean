@@ -47,4 +47,5 @@ open LeanUrat.OM
 #print axioms GradedHensel.GradedChain
 #print axioms GradedHensel.blocks_card_graded
 -- GradedHensel (private declarations potentially touched)
-#print axioms _private.LeanUrat.OM.GradedHensel.0.LeanUrat.OM.GradedHensel.dvd_of_isUnit_mul
+open private dvd_of_isUnit_mul from LeanUrat.OM.GradedHensel
+#print axioms dvd_of_isUnit_mul

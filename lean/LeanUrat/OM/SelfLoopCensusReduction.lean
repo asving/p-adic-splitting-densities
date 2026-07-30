@@ -96,10 +96,9 @@ uniform-in-`N` box census; the FLOOR tower object here is the exponent-level FLO
 actual `stratumCount1` aggregate. -/
 theorem floorAgg_reduces_to_fixpoint_generalMu {s q : ℕ} (hq : 2 ≤ q) (hs : 2 ≤ s) (depth0 : ℚ) :
     Tendsto (fun d => ∑ k ∈ Finset.range d, (q : ℚ) ^ k * SelfLoopDensityConnect.floorTowerMass s q depth0 k)
-      atTop (nhds (SelfLoopFixpoint.selfLoopFixpointValue depth0 s q)) := by
+      atTop (nhds (SelfLoopFixpoint.selfLoopFixpointValue depth0 s q)) :=
   -- `selfLoopFixpointValue depth0 s q` is defeq the RHS of `hnode_selfloop_box_order1`.
-  show Tendsto _ atTop (nhds (depth0 * (MontesAxiom.countPivot s q)⁻¹))
-  exact SelfLoopDensityConnect.hnode_selfloop_box_order1 hq hs depth0
+  SelfLoopDensityConnect.hnode_selfloop_box_order1 hq hs depth0
 
 /-! ## P4-2 — the same reduction stated on the `aggSelfLoopBoxTower` census object -/
 
@@ -114,9 +113,9 @@ equates the FLOOR-tower sum with `aggSelfLoopBoxTower` termwise.
 Same HONEST SCOPE as P4-1: census → fixpoint-value only; the `k ≥ 2` uniform-in-`N` census stays OPEN. -/
 theorem census_reduces_to_fixpoint_generalMu {s q : ℕ} (hq : 2 ≤ q) (hs : 2 ≤ s) (depth0 : ℚ) :
     Tendsto (fun d => SelfLoopIterate.aggSelfLoopBoxTower s q depth0 d)
-      atTop (nhds (SelfLoopFixpoint.selfLoopFixpointValue depth0 s q)) := by
-  refine (floorAgg_reduces_to_fixpoint_generalMu hq hs depth0).congr fun d => ?_
-  exact SelfLoopDensityConnect.floorAgg_eq_aggSelfLoopBoxTower s q (by omega) (by omega) depth0 d
+      atTop (nhds (SelfLoopFixpoint.selfLoopFixpointValue depth0 s q)) :=
+  (floorAgg_reduces_to_fixpoint_generalMu hq hs depth0).congr fun d =>
+    SelfLoopDensityConnect.floorAgg_eq_aggSelfLoopBoxTower s q (by omega) (by omega) depth0 d
 
 /-! ## P4-3 — the concrete `μ = 3` worked instance (`p = q = 2`), value `20/31` -/
 
@@ -153,10 +152,9 @@ theorem census_reduction_mu2_child_q2 :
   have h := floorAgg_reduces_to_fixpoint_generalMu (s := 2) (q := 2) (by norm_num) (by norm_num)
     (((2 : ℚ) - 1) / 2)
   -- `selfLoopFixpointValue ((2-1)/2) 2 2` is defeq `((2-1)/2) · (countPivot 2 2)⁻¹`.
-  rw [show SelfLoopFixpoint.selfLoopFixpointValue (((2 : ℚ) - 1) / 2) 2 2
+  rwa [show SelfLoopFixpoint.selfLoopFixpointValue (((2 : ℚ) - 1) / 2) 2 2
         = ((2 : ℚ) - 1) / 2 * (MontesAxiom.countPivot 2 2)⁻¹ from rfl,
     SelfLoopResum.resum_eq_omChildCount_q2] at h
-  exact h
 
 #print axioms floorAgg_reduces_to_fixpoint_generalMu
 #print axioms census_reduces_to_fixpoint_generalMu

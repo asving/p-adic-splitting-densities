@@ -48,14 +48,21 @@ convention). This is an audit-soundness deliverable for EVERY future census.
 
 (G-3) **MovesGr honest disposition.** After the quarantine, the remaining MovesGr
 sorries (13 of the 20-token census) sit in two LIVE partial files that are
-FAITHLESS-classified by the standing semantic audit; adjudicate
-prove-vs-quarantine per file with the analysis in §3.3.
+FAITHLESS-classified by the standing semantic audit; disposition per the BINDING
+Q-5 adjudication (2026-07-30): quarantine-with-record — executed by unit CL-26
+(REVISION 2), with the analysis in §3.3.
 
 DONE criterion for the area: HC1 sorry census 2 → 0 (or → explicitly re-fenced by
 orchestrator decision at C6), MovesGr sorry census 20 → 0-live (quarantined tokens
 do not count; quarantine files are .txt, invisible to lake), Moves deprecated
-collisions 0, full `lake build` green, `lake env lean LeanUrat/AxChk_baseline.lean`
-footprints byte-identical for every capstone, PROJECT_STATE.md + MANIFESTs updated.
+collisions 0, full `lake build` green, and the AxChk census byte-identical for
+every capstone via the BUILD-ONLY form (REVISION 2, finding 6): force-recompile
+the census module (delete its `.lake` build artifacts for that module, or bump
+the file's dated census-run comment line) and run
+`lake build LeanUrat.AxChk_baseline`, capturing the `#print axioms` info output
+from the build log — NEVER `lake env lean` (methodology rule #2; the same
+build-only form applies everywhere below that says "AxChk census re-run").
+PROJECT_STATE.md + MANIFESTs updated.
 
 ---
 
@@ -272,7 +279,24 @@ concrete `Tower p F` term (stages + moves + base data for the shallow instance).
 That construction cost is unknown (Tower has heavy per-move certificate fields);
 unit CL-01 is an attempt with explicit permission to return BLOCKED with the
 exact missing-constructor list. The adjudication may proceed on the math-level
-record + certificates (1)-(2) alone (§6 Q-2).
+record + certificates (1)-(2) alone (§6 Q-2, ADJUDICATED 2026-07-30: compiled
+countermodel preferred; Lean-core certificates suffice with record if cost
+insane).
+
+**LANDING GATE (REVISION 2, finding 2 — the binding cross-area no-coexistence
+ruling).** While `C6_alphabetCard`'s sorry is live, NO negation-shaped compiled
+artifact lands in the live tree: a landed `¬ C6-statement(Tshallow)` next to the
+sorried universal is exactly the forbidden inconsistent interval (the M1
+soundness lesson). Mechanism: CL-01 develops on a side branch / scratch build
+(its green record cites the branch commit); the landable interval opens at the
+commit in which CL-02's ratified disposition removes or re-fences the sorried
+universal, and the compiled negation lands ATOMICALLY in that same change-set,
+retargeted at a frozen `C6_stmt_pre_repair` def copy of the pre-repair statement
+text (the R-7 kernel-freezing pattern) so the refutation record stays compilable
+after the live statement changes. Conservatively, the gate also holds back the
+one-composition-away pieces (`Tshallow` + the card certificate, which compose
+with the already-live `C6_forces_unconditional_fullness` into the negation) —
+see the escalation note in REVISION 2.
 
 ### 3.2 R6 — execute A17, then close via the graded-expansion pack
 
@@ -379,19 +403,35 @@ T4 pins wQ = min-height-of-support = γ EXACTLY (no weight jump possible), and
 **NCL is the one genuinely new lemma** — the corpus NEVER proves it (T4, C1 take
 `slotCoeff ≠ 0` as hypothesis; T8's BijOn is from a SUBGROUP A, deliberately
 dodging kernel-triviality). Mathematically NCL = uniqueness of the mixed-radix
-p/Φ-adic development with unit digits. Proof plan (units CL-11/12/13):
-reduce mod p^{l_min+1} then mod p, where l_min = the least p-exponent in supp y:
-terms with l > l_min die; the survivors have DISTINCT slot vectors (T9(b):
-(baseIdx, l) injective, and baseIdx ↔ s injective under the slot_lt bounds), so
-over F_p[x] the sum is Σ_c d̄_c · ∏_r Φ̄_r^{s_c(r)} with every d̄_c ≠ 0 (digLift has
-gaussVal 0 ⇒ a unit coefficient survives mod p... see the §5 R-2 caveat),
-deg d̄_c < deg Φ̄₀, Φ̄_r monic of full degree. Positional uniqueness in F_p[x]:
+p/Φ-adic development with unit digits. Proof plan (REWRITTEN at REVISION 2,
+findings 4/5/9 — units CL-11/CL-27/CL-12/CL-13; the pre-revision "reduce the
+coefficient ring mod p^{l_min+1} … divide by p^{l_min}" sketch is REPLACED by a
+factor-out route needing no quotient ring beyond mod p and no division
+operator): let l_min := the least p-exponent over supp y (finite, NONEMPTY since
+y ≠ 0). FACTOR `C(p^{l_min})` out of every term inside ℤ_[p][x]
+(`slotCoeff_factor`, CL-27(c)); ℤ_[p][x] is a domain and `C(p^{l_min}) ≠ 0`, so
+(10) reduces to the cofactor `Σ_c digLift(y c)·C(p^{l c − l_min})·∏Φ^{s c} ≠ 0`.
+Reduce THAT mod p through the coefficientwise ring hom
+`red := Polynomial.map (PadicInt.toZMod)` (CL-27(b)): terms with l c > l_min die
+(`red (C (p^k)) = 0` for k ≥ 1); the survivors — at least one, l_min is attained
+— have DISTINCT slot vectors (equal ht + equal l ⇒ equal slot vector: T9(b)'s
+numeric kernel, PRIVATE at HEAD, extracted by CL-27(d) — T9's public
+`(baseIdx, l)`-injectivity alone is NOT sufficient), so over 𝔽_p[x] the sum is
+Σ_c d̄_c · ∏_r Φ̄_r^{s_c(r)} with every d̄_c ≠ 0 (gaussVal(digLift) = 0 via the
+base pin `T.base.1.1` ⇒ a unit coefficient ⇒ nonzero mod-p image; the §5 R-2
+caveat stands: the reduced DEGREE may drop), deg d̄_c < deg Φ̄₀ (digLift_deg +
+monic full degree under `red`), Φ̄_r monic of the EXACT degrees
+(`Polynomial.Monic.map` + the exact ratio law `t4_slotBound_mul`, PRIVATE at
+T4_slotMinHt.lean:255, de-privatized by CL-27(a) — `slotBound` is ℕ-DIVISION-
+defined, so exactness is a real lemma). Close with CL-11's positional
+uniqueness (under its REVISION-2 nonemptiness + positive-degree hypotheses):
 strong induction peeling the highest slot by Euclidean div/mod against
 Φ̄_r^{max} (quotient-remainder uniqueness with the degree bounds slot_lt). The
 countermodel-first rule BINDS here: NCL is a universal that could conceivably
-fail (unit CL-11 runs first). If NCL is FALSE, (i-b) FAILS at packE (a two-level
-y with a cancelling lower level is a countermodel) and R6 needs a different
-instance or a windowed (i-b) — automatic escalation to adjudication (§5 R-1).
+fail (unit CL-10 runs first — the pre-revision text said "CL-11", a typo). If
+NCL is FALSE, (i-b) FAILS at packE (a two-level y with a cancelling lower level
+is a countermodel) and R6 needs a different instance or a windowed (i-b) —
+automatic escalation to adjudication (§5 R-1).
 
 (i-c): definitional at packE — each component of packE.slotCoeff reads y ONLY
 through `y↾lvl b γ`, and the hypothesis row gives x, y equal there. [CL-15]
@@ -406,7 +446,8 @@ TYP conjunct 1: componentwise at each γ; restriction commutes with +; then
 `inGr γ (slotCoeff b ((x+y)↾lvl)) = … x↾ … + … y↾ …` is EXACTLY C2_TYPa
 conjunct (b) (typComposite additivity) after rewriting the restricted extension
 through `typComposite`. SecB1Stmt' is the SAME lemma (its statement is TYP
-conjunct 1 re-quantified). [CL-16]
+conjunct 1 re-quantified) — observation only: per the binding Q-6 ruling
+(REVISION 2, finding 7) nothing beyond the three conjuncts is banked. [CL-16]
 
 TYP conjunct 2: the closure in R2's display, instantiated at packE, is literally
 `T.alphabet b γ'` (same union of single-slot image ranges — an
@@ -480,7 +521,8 @@ gap). Honest-sorries discipline ⇒ the options are:
 This blueprint recommends (b): the file's PROVED content (the Ein/Eout
 weight-detecting evaluation, S4 ⊆) is preserved verbatim in quarantine, the
 live census drops to L4_v2 only, and no false completeness is suggested by a
-live half-file. Orchestrator decides (§6 Q-5).
+live half-file. **Q-5 ADJUDICATED (2026-07-30, binding): quarantine-with-record
+= option (b). Execution unit: CL-26 (REVISION 2, finding 3).**
 
 `L4_genuine_imp_stageCoreL_v2.lean` (11 sorries): 7 are certified-underivable
 (free-field independence: σ.wPrev, σ.Tvec exponents, σ.reps membership are
@@ -490,10 +532,11 @@ hS5-monomial product induction, `slot`.2 by distinct-position termwise vanishing
 `coeff_loc` clause 1 by graded-invariant closure induction). Filling the 4 does
 NOT change the unit's FAITHLESS classification (semaudit §B #21: StageCoreL
 content absent from M) nor kill its sorryAx (7 + the L2 inheritance remain).
-Options mirror (a)/(b)/(c) above; recommendation: (b) quarantine together with
-L2_coeffLoc_v2 (they are one derivation), UNLESS the orchestrator wants the
-4 derivable legs banked first (conditional unit CL-23). Either way the MovesGr
-LIVE census lands at 0 sorries.
+Options mirrored (a)/(b)/(c) above; **Q-5 ADJUDICATED (binding): (b)**,
+quarantine together with L2_coeffLoc_v2 (they are one derivation). The
+bank-first branch (old CL-23) is CANCELLED by the ruling; the 4 derivable legs
+are named verbatim in CL-26's README record for any future fence-gated revival.
+The MovesGr LIVE census lands at 0 sorries via CL-21 + CL-26.
 
 **The five HELD units:** no action (no files exist; MANIFEST held_status fields
 + Lean-core certificates already constitute the honest record). Any future
@@ -527,7 +570,8 @@ The four files of §2.4 (plus the candidate fifth) are quarantined under the
 
 ## 4. UNIT SPLIT
 
-Conventions: ids CL-01…CL-25. difficulty ∈ {routine-opus, hard-fable,
+Conventions: ids CL-01…CL-27 (REVISION 2: CL-22 retired, CL-23 cancelled,
+CL-26/CL-27 fresh). difficulty ∈ {routine-opus, hard-fable,
 adjudication}. "size" = estimated NEW proof lines (statements/defs excluded).
 Every prover unit gets the standing prompt rows: staged-write discipline, lake
 build (not lake env lean) for the green record, `#print axioms` tail, MANIFEST
@@ -535,13 +579,24 @@ entry, BLOCKED-with-artifact permitted (never a forced proof).
 
 ### C6 cluster
 
-**CL-01** — compiled countermodel attempt vs fenced C6.
+**CL-01** — compiled countermodel attempt vs fenced C6 (REVISED at REVISION 2,
+  findings 2 + 11).
   Statement: construct `Tshallow : Tower 2 (GaloisField 2 2)` realizing
   ScratchC6's shallow instance (base (e₀,h₀)=(1,1), one g=2 increment,
-  ψ = z²+z+1), + `card (Tshallow.alphabet 0 0) ≠ card F₄`, hence
-  `¬ C6-statement(Tshallow)` via `C6_forces_unconditional_fullness`.
-  Deps: none (runs first). Difficulty: hard-fable. Size: unknown, cap the
-  attempt at ~400 lines; PERMITTED OUTCOME: BLOCKED + the exact list of Tower/
+  ψ = z²+z+1), + `card (Tshallow.alphabet 0 0) ≠ card F₄`. The final negation
+  `¬ C6-statement(Tshallow)` (one application of
+  `C6_forces_unconditional_fullness`) is NOT compiled by this unit: per the
+  §3.1 LANDING GATE it lands only atomically with CL-02's fence transition,
+  retargeted at the frozen `C6_stmt_pre_repair` copy. CL-01 works on a side
+  branch / scratch build; deliverable = the branch artifact + report (nothing
+  lands in the live tree while the C6 sorry is live).
+  SPLIT PLAN (finding 11: this is a multi-unit artifact, not a small lemma):
+  the E-phase writer decomposes into CL-01a (base stage + StageCoreL data),
+  CL-01b (the increment MoveWitness: TransHyp + TransitionCoreL + child core'),
+  CL-01c (Tower assembly + the card computation), each individually capped
+  (~150 lines) and each individually permitted BLOCKED.
+  Deps: none (runs first). Difficulty: hard-fable. Size: ~400 as a PORTFOLIO
+  cap across the subunits; PERMITTED OUTCOME: BLOCKED + the exact list of Tower/
   Stage/move certificate fields that could not be discharged (feeds Q-2).
 **CL-02** — the C6 statement-repair adjudication (Asvin queue Q3).
   Inputs: ScratchC6 certificates (1)-(2), CL-01's outcome, CL-04's probe if run.
@@ -575,14 +630,18 @@ entry, BLOCKED-with-artifact permitted (never a forced proof).
 
 ### R6 cluster
 
-**CL-06** — the A17 adjudication (fence sign-off).
-  Output: ratified LSTStmt' (i-b) repair text — VARIANT A vs B of (6) (§3.2
-  analysis attached); the DEFECT-2 scoping record (TYPStmt'/DOMStmt'/SecB1Stmt'
-  unchanged); the R6 proof-body history relocation approved. Difficulty:
-  adjudication. BLOCKS CL-14, CL-19 (statement edit lands here; the R1 file edit
-  itself is part of this unit: rewrite leg (i-b), rebuild HC1 cone — R1 is
-  imported by R2/R3/R5/R6, expect a small ripple, no proof breaks since nothing
-  proves LSTStmt' yet). Size: statement edit + ripple check.
+**CL-06** — the A17 ratified-edit execution (Q-3 ADJUDICATED 2026-07-30:
+  VARIANT A — the adjudication half of this unit is already DONE; REVISION 2).
+  Output: execute the ratified LSTStmt' (i-b) repair, VARIANT A of (6)
+  (hfin + hsupp, T4/C1 parity); write the DEFECT-2 scoping record
+  (TYPStmt'/DOMStmt'/SecB1Stmt' texts unchanged); relocate the R6 proof-body
+  history (approved); execute the R-7 kernel freeze (retype kernels 2a/2b
+  against a private frozen `LSTStmt_pre_A17'` copy so the refutation record
+  stays compilable and honest). Difficulty: routine-opus (a fence-flagged
+  statement edit under a recorded ruling). BLOCKS CL-14, CL-19 (the R1 file
+  edit lands here: rewrite leg (i-b), rebuild HC1 cone — R1 is imported by
+  R2/R3/R5/R6, expect a small ripple, no proof breaks since nothing proves
+  LSTStmt' yet). Size: statement edit + kernel refreeze + ripple check.
 **CL-07** — LAT: the height lattice lemma.
   Statement: `∀ c : T.Coord, 0 ≤ T.ht c ∧ ∃ n : ℕ, T.ht c = (n : ℚ) / T.strTop`
   + the divisibility `∀ r, (T.stg r).e * T.str r ∣ T.strTop`.
@@ -612,29 +671,85 @@ entry, BLOCKED-with-artifact permitted (never a forced proof).
   countermodel, or a "mechanism survey: none found" report naming the exact
   algebraic fact that blocks each attempt. Deps: none. Difficulty: hard-fable
   (analysis unit, no required theorem). Size: report + optional ≤60-line cert.
-**CL-11** — F_p[x] positional uniqueness.
-  Statement (over any field K₀, applied at K₀ = 𝔽_p): for a finite set of
-  DISTINCT slot vectors s : Fin (K+1) → ℕ bounded by `slotBound` at inner
-  levels and constant (= b) at the top, monic Φ̄_r with
+**CL-11** — F_p[x] positional uniqueness (statement REPAIRED at REVISION 2,
+  finding 1: degeneracy hypotheses added).
+  Statement (over any field K₀, applied at K₀ = 𝔽_p): for a NONEMPTY finite set
+  of DISTINCT slot vectors s : Fin (K+1) → ℕ bounded by `slotBound` at inner
+  levels and constant (= b) at the top, monic Φ̄_r with **0 < deg Φ̄₀** and
   deg Φ̄_{r+1} = slotBound r · deg Φ̄_r (the key-degree ratio law), and nonzero
   digits d̄_s with deg d̄_s < deg Φ̄₀:  Σ_s d̄_s · ∏_r Φ̄_r^{s r} ≠ 0.
+  DEGENERACY RECORD (the REVISION-2 repair): as previously sketched the EMPTY
+  slot-vector set satisfied every hypothesis and gave Σ = 0 — the statement was
+  FALSE. NONEMPTY is the load-bearing addition; `0 < deg Φ̄₀` is then derivable
+  (a nonzero digit with deg d̄ < deg Φ̄₀ forces deg Φ̄₀ ≥ 1) but is stated
+  explicitly because the div/mod induction consumes it directly — the E-phase
+  writer may downgrade it to a derived `have` with a note, never drop the
+  nonemptiness. Both discharge for free at the CL-12 application site:
+  survivor set nonempty (y ≠ 0, l_min attained) and `(T.stg 0).hdeg :
+  1 ≤ Φ.natDegree` + monic-map degree preservation.
   Sketch: strong induction on the highest inner level where the s differ;
   Euclidean uniqueness of div/mod by Φ̄_r^{(min slot at level r)} with the degree
   bound Σ_{r'<r} slotBound·deg < deg Φ̄_r (the mixed-radix carry bound — T9(b)'s
   numeric kernel re-used); base case: distinct powers of nothing left, one term,
-  d̄ ≠ 0. NOTE: the top slot is CONSTANT b, so it factors out (`Φ̄_K^b ≠ 0`) —
-  the induction runs on inner levels only. Deps: CL-10 (must complete first).
-  Difficulty: hard-fable. Size: ~150; SPLIT RULE: the div/mod degree lemma is
-  its own ~40-line sublemma — E-phase writer may emit CL-11a/CL-11b.
-**CL-12** — NCL: the ℤ_[p] lift.
-  Statement: display (10). Sketch: l_min := min p-exponent over supp y (finite);
-  in `slotCoeff b ŷ = Σ digLift(y c)·C(p^{l c})·∏Φ^{s c}`, reduce the coefficient
-  ring mod p^{l_min+1}: terms with l > l_min vanish; divide by p^{l_min}; reduce
-  mod p: survivors have distinct s (equal ht + equal l ⇒ equal s via the ht
-  formula's ℚ-independence over the bounded slots — the same-baseIdx step of
-  T9(b) — hence equal c); digits reduce to d̄_c ≠ 0 (gaussVal(digLift) = 0);
-  apply CL-11; conclude the polynomial ≠ 0 in ℤ_[p][x] (a nonzero mod-p^{l_min+1}
-  image). Deps: CL-10, CL-11, T9. Difficulty: hard-fable. Size: ~120.
+  d̄ ≠ 0. NOTE: the top slot is CONSTANT b, so it factors out (`Φ̄_K^b ≠ 0`,
+  monic over a field) — the induction runs on inner levels only. Deps: CL-10
+  (must complete first). Difficulty: hard-fable. Size: ~150; SPLIT RULE: the
+  div/mod degree lemma is its own ~40-line sublemma — E-phase writer may emit
+  CL-11a/CL-11b.
+**CL-27** — (NEW at REVISION 2, findings 4 + 5) the reduction interface: the
+  named vocabulary between ℤ_[p][x] and CL-11's 𝔽_p[x] statement. Every item
+  below was verified against HEAD (2026-07-30). Deliverables, each a named
+  public lemma in the NCL file:
+  (a) de-privatized copies (all PROVED but `private` at HEAD; copy the proofs,
+      do not re-derive): `digLift_ne` (y ≠ 0 → digLift y ≠ 0; ScratchC6:244,
+      via the base hS6a), `digLift_spec` (≠ 0 ∧ inC Φ₀ ∧ wPrev = 0 ∧ R-value;
+      C2_TYPa:144), `digLift_deg` (degree < deg Φ₀; C2_TYPa:187 — `inC` IS the
+      degree bound, Moves/Defs.lean:67), `gaussVal_digLift_zero` (wPrev = 0 +
+      the base pin `T.base.1.1`; the ScratchC6:327 step), `mono_ne`, and
+      `t4_slotBound_mul` (T4_slotMinHt.lean:255 — the EXACT ratio law
+      `slotBound r · deg Φ_r = deg Φ_{r+1}`; `slotBound` is ℕ-DIVISION-defined
+      at DefsTower.lean:153, so exactness is a real lemma resting on
+      `t4_deg_dvd_step`, not `rfl`);
+  (b) the mod-p transport, `red := Polynomial.map (PadicInt.toZMod)`:
+      `red_monic_deg` (Monic Φ → Monic (red Φ) ∧ deg (red Φ) = deg Φ — Mathlib
+      `Polynomial.Monic.map` + monic degree preservation), `red_ratio_law`
+      (deg (red Φ_{r+1}) = slotBound r · deg (red Φ_r), from (a) + monicity),
+      `red_p_pow_zero` (red (C (p^k)) = 0 for 1 ≤ k), `red_digLift_ne`
+      (gaussVal (digLift y) = 0 → red (digLift y) ≠ 0: gaussVal = the min
+      coefficient valuation, Moves/L1_gaussVal.lean:31, so some coefficient is
+      a unit and survives `PadicInt.toZMod`), `red_digLift_deg`
+      (deg (red (digLift y)) < deg (red Φ₀), from digLift_deg + map-degree-≤ +
+      monic full degree — the reduced degree may DROP, which CL-11 tolerates);
+  (c) the factor-out kit (REPLACES the pre-revision "divide by p^{l_min}" step
+      — no division operator, no ZMod (p^{l+1}) quotient ring anywhere):
+      `slotCoeff_factor` (finsum-to-Finset.sum normalization on the finite
+      nonempty supp, then Σ_c digLift(y c)·C(p^{l c})·∏Φ^{s c} =
+      C(p^{l_min}) · Σ_c digLift(y c)·C(p^{l c − l_min})·∏Φ^{s c}),
+      `C_p_pow_ne` + IsDomain cancellation in ℤ_[p][x] (`mul_ne_zero_iff`);
+  (d) survivor distinctness: `coord_eq_of_ht_l_eq` (block-mates with equal ht
+      and equal l have equal slot vectors, hence are equal) — EXTRACTED from
+      T9(b)'s numeric kernel (private at HEAD); T9's public
+      `(baseIdx, l)`-injectivity is NOT directly sufficient — the
+      equal-ht-to-equal-baseIdx step lives inside the kernel.
+  Deps: none (parallel with CL-10; consumed by CL-12; independent of CL-11).
+  Difficulty: routine-opus (copies + Mathlib plumbing; (d) is the one
+  extraction with content). Size: ~110; SPLIT RULE: if (d) exceeds ~40 lines,
+  spin it off as CL-27a.
+**CL-12** — NCL: the ℤ_[p] assembly (REWRITTEN at REVISION 2, findings 4/5/9 —
+  the interface work moved to CL-27; this unit is now application-sized).
+  Statement: display (10). Sketch (the §3.2 REVISION-2 factor-out route, all
+  vocabulary from CL-27): l_min := min p-exponent over supp y (finite nonempty);
+  `slotCoeff_factor` + domain cancellation reduce (10) to the cofactor ≠ 0;
+  `red`(cofactor) = the sum over the l = l_min survivors of
+  red(digLift)·∏(red Φ)^s (ring-hom transport of sums/products +
+  `red_p_pow_zero`); survivors NONEMPTY (l_min attained) with DISTINCT slot
+  vectors (`coord_eq_of_ht_l_eq`); apply CL-11 at K₀ = 𝔽_p, hypotheses
+  discharged per CL-27(b) (`red_monic_deg`, `red_ratio_law`, `red_digLift_ne`,
+  `red_digLift_deg`; 0 < deg Φ̄₀ from `(T.stg 0).hdeg`); the cofactor ≠ 0
+  because its red-image is ≠ 0. Deps: CL-10, CL-11, CL-27, T9. Difficulty:
+  hard-fable. Size: ~60 (was ~120 pre-revision); SPLIT RULE: if the
+  finsum bookkeeping on `slotCoeff` resists CL-27(c)'s normalization, the
+  E-phase writer emits CL-12a (sum normalization) / CL-12b (the application).
 **CL-13** — LVL-DET.
   Statement: display (9). Sketch: NCL gives the polynomial ≠ 0; T4 on ŷ (hfin
   from `levelSet_finite'`, hsupp from level-set support, all heights = γ) pins
@@ -654,15 +769,21 @@ entry, BLOCKED-with-artifact permitted (never a forced proof).
   componentwise `rfl`-after-congr (the level restriction reads only lvl-values);
   (ii) `rfl`-adjacent (floorB definitional); (iii) the C1 leg-(iii) two-liner.
   Deps: CL-09 (+CL-07 for (i-a)'s lattice cases). Difficulty: routine-opus.
-  Size: ~90 total.
-**CL-16** — TYP conjunct 1 at packE + SecB1Stmt'.
+  Size: ~90 total; SPLIT RULE (REVISION 2, finding 10): the four legs are
+  independent interfaces — the E-phase writer may emit CL-15a ((i-a) mono
+  weight), CL-15b ((i-c) restriction extensionality), CL-15c ((ii) floor
+  identification), CL-15d ((iii) contradiction leg), so failure in one never
+  blocks the other three.
+**CL-16** — TYP conjunct 1 at packE (SCOPED at REVISION 2, finding 7 — the
+  binding Q-6 ruling: bank NOTHING beyond the three conjuncts).
   Sketch: componentwise; restriction additive; rewrite both sides through
   `T.typComposite` (the extension-of-restriction lemma: for z supported in
   lvl b γ, `T.slotCoeff b z = T.slotCoeff b (extension of the subtype tuple)`);
-  close with `C2_TYPa T b γ |>.2`. Emit both `packE_typ1` and
-  `packE_secB1 : SecB1Stmt' p (packE T rl)` (same proof, second binder order).
-  SecB1 is NOT consumed by R6's statement — providing it is a flagged ADDITION
-  (§6 Q-6). Deps: CL-09. Difficulty: routine-opus. Size: ~70.
+  close with `C2_TYPa T b γ |>.2`. Emit `packE_typ1` ONLY — no compiled
+  `packE_secB1`, no extra public name (the scaffold lesson). The observation
+  that SecB1Stmt' is the same lemma up to binder order survives as a header
+  COMMENT pointing at this blueprint, nothing more. Deps: CL-09. Difficulty:
+  routine-opus. Size: ~70.
 **CL-17** — TYP conjunct 2 at packE.
   Sketch: prove the closure-set equality `(R2's union at packE) = ↑(T.alphabet
   b γ')` — both are closures of the same single-slot image family (the
@@ -697,59 +818,98 @@ entry, BLOCKED-with-artifact permitted (never a forced proof).
   Move the 6 files of §2.3 per the §2.5 convention (names:
   `MovesGr_<file>_2026-07-30.lean.txt`); README entries incl. the expected
   baseline delta (§3.3); MovesGr/MANIFEST.json as-built addendum; full
-  `lake build` + AxChk_baseline re-run byte-compare; repo grep proving no
+  `lake build` + the §1 BUILD-ONLY AxChk census re-run byte-compare (REVISION 2,
+  finding 6: `lake build LeanUrat.AxChk_baseline` on a forced recompile, never
+  `lake env lean`); repo grep proving no
   import references remain. PRE-STEP (the §5 R-6 check): byte-diff
   `L2_degZero_subring.lean` (v1, 0 sorries) vs `_v2` statements — v1 proves the
   same-named theorem against the pre-rekey structure; record the statement diff
   in the README entry before moving. Deps: none. Difficulty: routine-opus
   (execution + evidence discipline; no proofs). Size: 0 proof lines.
-**CL-22** — live-partials disposition adjudication (L2_coeffLoc_v2 +
-  L4_genuine_imp_stageCoreL_v2).
-  Present §3.3's options (a)/(b)/(c) with the semaudit classifications;
-  recommended (b) quarantine-both-with-record. If (a) is chosen the repair
-  statement (the `RepLattice`-style named hypothesis) comes back through the
-  fence with its own blueprint addendum. Deps: CL-21 (so the census context is
-  clean). Difficulty: adjudication.
-**CL-23** — (conditional: CL-22 chooses keep-and-improve) bank the 4 derivable
-  v2 obligations: `coeff` clauses 2-3 (hS5-monomial product induction: positions
-  and degrees couple as (−t·ν, e·ν); `e·k_j = j − t·γ` gives the stride),
-  `slot`.2 (distinct positions ⇒ termwise vanishing), `coeff_loc` clause 1
-  (graded-invariant closure induction). Deps: CL-22. Difficulty: hard-fable.
-  Size: ~150 in-file.
+**CL-22** — RETIRED at REVISION 2 (finding 3): the Q-5 adjudication landed
+  BINDING before execution — quarantine-with-record (= §3.3 option (b)). No
+  options-presentation unit remains; the execution moved to CL-26. Id kept as
+  a tombstone; assign no agent.
+**CL-23** — CANCELLED at REVISION 2 (finding 3): its trigger (CL-22 choosing
+  keep-and-improve) can no longer fire under the binding Q-5 ruling. The 4
+  derivable-in-principle v2 obligations (`coeff` clauses 2-3 by hS5-monomial
+  product induction with the (−t·ν, e·ν) position/degree coupling and the
+  `e·k_j = j − t·γ` stride; `slot`.2 by distinct-position termwise vanishing;
+  `coeff_loc` clause 1 by graded-invariant closure induction) are preserved
+  verbatim IN CL-26's README record for any future fence-gated revival.
+**CL-26** — (NEW at REVISION 2, finding 3) live-partials quarantine execution:
+  the unit that actually delivers the binding Q-5 ruling and G-3's census.
+  Move `MovesGr/L2_coeffLoc_v2.lean` and `MovesGr/L4_genuine_imp_stageCoreL_v2.lean`
+  per the §2.5 convention (names `MovesGr_<file>_2026-07-30.lean.txt`). README
+  entries: the FAITHLESS classifications (semaudit §B #15/#21), the PROVED
+  content preserved verbatim (L2_v2: the Ein/Eout weight-detecting evaluation,
+  S4 ⊆; L4_v2: the 7-certified-underivable + 4-derivable-in-principle census,
+  the latter quoted per CL-23's tombstone), supersession pointer = NONE (these
+  are open obligations — the MANIFEST `status_asbuilt` records are the
+  pointers, HELD-unit precedent). MovesGr/MANIFEST.json as-built addendum.
+  Importer grep at execution time (the R-5 discipline). Full `lake build` +
+  the §1 BUILD-ONLY AxChk census byte-compare. VERIFY and record the post-move
+  census: MovesGr live sorry tokens = 0 (20 → 13 after CL-21's seven → 0
+  here), and the root names `L2_coeffLoc` / `L4_genuine_imp_stageCoreL` now
+  UNBOUND in the live tree (supersedes §2.3's "bind uniquely to the LIVE v2
+  partials" snapshot). Deps: CL-21 (clean census context). Difficulty:
+  routine-opus (execution + evidence discipline; no proofs). Size: 0 proof
+  lines.
 
 ### Moves cluster
 
 **CL-24** — deprecated-Moves quarantine execution.
   Move `L4_TRANSviii_b_R3.lean`, `L5_landTransport_R3.lean`,
-  `L5_landTwoSided_R5.lean`, `L5_landVertexDigit_repair.lean` (+
-  `L4_TRANSviii_a_R5.lean` iff Q-7 says yes) per §2.5 + §3.4's four constraints
+  `L5_landTwoSided_R5.lean`, `L5_landVertexDigit_repair.lean`, AND
+  `L4_TRANSviii_a_R5.lean` (Q-7 ADJUDICATED 2026-07-30: YES, the fifth file
+  goes in the same sweep) per §2.5 + §3.4's four constraints
   (the VertexDigit reversal guard is EXECUTION-BLOCKING: re-verify the two HC1
   imports of `L5_landVertexDigit` still resolve BEFORE and AFTER). README
-  entries with supersession pointers; full build + AxChk byte-compare; update
+  entries with supersession pointers; full build + the §1 BUILD-ONLY AxChk
+  census byte-compare (never `lake env lean`); update
   the golf-ledger R2 line and the baseline-header caveat via a dated addendum
   (never rewrite the frozen baseline files). Deps: none. Difficulty:
   routine-opus. Size: 0 proof lines.
-**CL-25** — post-sweep audit + records.
-  (i) Repo-wide duplicate-declaration audit: re-run the A26-style census —
-  assert NO fully-qualified name is declared in two live modules (script:
-  extract `theorem|def|structure` names per file, group, diff); expected
-  residue: the 19 live root-namespace MovesGr files (a NAMING smell, NOT a
+**CL-25** — post-sweep audit + records (audit MECHANISM REPLACED at
+  REVISION 2, finding 8).
+  (i) Repo-wide duplicate-declaration audit. The assertion "NO fully-qualified
+  name is declared in two live modules" is witnessed by LEAN ITSELF, not by
+  token extraction (namespace nesting/reopening, explicit qualification, and
+  multiline declaration forms defeat any regex, so a grep script CANNOT carry
+  this assertion): generate a scratch module — enumerated from the files on
+  disk, methodology rule #1, NOT from the root import graph — that imports
+  EVERY live `LeanUrat.*` module, and `lake build` it. Lean's import merge
+  errors on a duplicated constant name, so a green build IS the collision-free
+  certificate; private helpers are module-mangled and correctly exempt (e.g.
+  the four live private `digLift_zero` copies must NOT be flagged — a regex
+  would have). The scratch module's text and build log go in the audit record;
+  the module itself is then deleted (never left in the build graph). FALLBACK
+  if the mega-import is resource-infeasible: a Lean metaprogram dumping
+  `Environment` constants per module and diffing — still Lean-derived names,
+  never regex. SECONDARY (informational only, not the assertion): the A26-style
+  grep census of root-namespace declarations; expected residue: the 19 live
+  root-namespace MovesGr files (a NAMING smell, NOT a
   collision — namespacing them is repo-prep batched with sign-off, OUT OF SCOPE
   here; record only). (ii) Update PROJECT_STATE.md (HC1 census 2 → 0/refenced;
   MovesGr live census; the "TEN corpus-wide" wording caveat gets the corrected
   corpus-wide count), HC1/MANIFEST.json (`as_built` refresh: C6/R6 lines),
   MovesGr/MANIFEST.json, golf ledger R2/R3 closure notes (R3 = MovesT E5, NOT
   ours — record "R2 executed, R3 untouched, owner MovesT"). Deps: CL-19 or its
-  fence outcome, CL-21, CL-24. Difficulty: routine-opus.
+  fence outcome, CL-21, CL-24, CL-26. Difficulty: routine-opus.
 
-Dependency spine: CL-06 → CL-14 → CL-19; CL-10 → CL-11 → CL-12 → CL-13 → CL-14;
-CL-07 → CL-08 → CL-09 → {CL-14…CL-18} → CL-19; CL-02 → {CL-03 | CL-05};
-CL-21 → CL-22 → CL-23; CL-01, CL-04, CL-10, CL-20, CL-21, CL-24 have no
-prerequisites and can launch in parallel on day one.
+Dependency spine (REVISION 2): CL-06 → CL-14 → CL-19; CL-10 → CL-11 → CL-12 →
+CL-13 → CL-14; CL-27 → CL-12; CL-07 → CL-08 → CL-09 → {CL-14…CL-18} → CL-19;
+CL-02 → {CL-03 | CL-05} + the §3.1 LANDING GATE (CL-01's compiled negation
+lands atomically with CL-02's fence transition, never before); CL-21 → CL-26;
+CL-01, CL-04, CL-10, CL-20, CL-21, CL-24, CL-27 have no prerequisites and can
+launch in parallel on day one.
 
-Count: 25 units (5 C6, 15 R6, 3 MovesGr, 2 Moves), of which 4 are adjudications
-(CL-02, CL-06, CL-22, + Q-7 inside CL-24) and 2 conditional (CL-03/CL-05
-mutually exclusive; CL-23).
+Count (REVISION 2): 25 executable units — 5 C6 (CL-01…05), 16 R6 (CL-06…20 +
+CL-27), 2 MovesGr (CL-21, CL-26), 2 Moves (CL-24, CL-25) — over the id range
+CL-01…CL-27 with CL-22 RETIRED and CL-23 CANCELLED (tombstones above). Of
+these, 1 is an adjudication (CL-02; Q-3 folded into CL-06, Q-5 into CL-26, Q-7
+into CL-24 — all ADJUDICATED 2026-07-30) and 2 are conditional (CL-03/CL-05
+mutually exclusive on CL-02's outcome).
 
 ---
 
@@ -764,8 +924,8 @@ to adjudication with three fallbacks — window-guard (i-b) to NCL-verified bloc
 (vacuity risk: must stay non-trivial), add NCL as a named pack law (statement
 change on CarrierPackR consumers), or re-fence R6. Probe: CL-10, BEFORE CL-11/12.
 
-**R-2. The mod-p reduction step of CL-12 has a real gap candidate.** gaussVal
-(digLift) = 0 gives SOME unit coefficient, but the mod-p reduction d̄_c is
+**R-2. The mod-p reduction step (CL-27(b)/CL-12) has a real gap candidate.**
+gaussVal(digLift) = 0 gives SOME unit coefficient, but the mod-p reduction d̄_c is
 nonzero only as a POLYNOMIAL — its degree may drop, and the CL-11 induction must
 tolerate deg d̄_c < deg Φ̄₀ with NO lower bound. CL-11's statement is written with
 exactly that tolerance; the E-phase writer must NOT strengthen d̄ to full degree.
@@ -812,6 +972,19 @@ records why.
 
 ## 6. ORCHESTRATOR QUESTIONS (decisions this blueprint cannot make)
 
+**ADJUDICATION STATUS (REVISION 2).** The orchestrator adjudications landed
+2026-07-30 (`BRIDGE_ADJUDICATIONS_2026-07-30.md`, BP5 block) after this
+blueprint was written; the rulings are folded into the unit texts above and are
+BINDING: **Q-1** decide on CL-01/CL-04 reports (the decision METHOD is ratified;
+the R-a/R-b choice itself remains open = CL-02). **Q-2** compiled countermodel
+preferred; Lean-core certificates suffice with record if cost insane (→ CL-01,
+with the §3.1 LANDING GATE). **Q-3** VARIANT A (→ CL-06, now an execution
+unit). **Q-4** typed-only-with-record (→ CL-20 as written). **Q-5**
+quarantine-with-record (→ CL-26; CL-22 retired, CL-23 cancelled). **Q-6** bank
+NOTHING beyond the three conjuncts (→ CL-16 scoped). **Q-7** YES, quarantine
+the fifth file (→ CL-24). **Q-8** hygiene quarantines execute immediately
+(→ CL-21/CL-24 day-one). The question texts below are kept for the record.
+
 **Q-1 (C6, statement fence — Asvin queue Q3).** R-a (minimal honest restate) vs
 R-b (address-typed dichotomy) vs fence-hold? Recommendation: run CL-01 + CL-04
 first, decide on their reports. R-b is the only option that keeps MOVES
@@ -856,9 +1029,124 @@ caveated.
 
 ---
 
-*Blueprint ends. 25 units; hardest: CL-11/CL-12 (NCL — the one new theorem),
-CL-14 (the (i-b) transport), CL-05 (conditional dichotomy), CL-01 (tower
-inhabitation). Every load-bearing status claim above was re-verified by reading
-the file at HEAD on 2026-07-30; where a ledger and the tree disagreed (R6 sorry
-line, VertexDigit A/B labels, L2_degZero_subring v1 sorry count), the TREE was
-taken as ground truth and the discrepancy is recorded in place.*
+*Blueprint ends. 25 executable units after REVISION 2 (CL-22 retired, CL-23
+cancelled, CL-26/CL-27 added); hardest: CL-11/CL-27/CL-12 (NCL — the one new
+theorem), CL-14 (the (i-b) transport), CL-05 (conditional dichotomy), CL-01
+(tower inhabitation). Every load-bearing status claim above was re-verified by
+reading the file at HEAD on 2026-07-30; where a ledger and the tree disagreed
+(R6 sorry line, VertexDigit A/B labels, L2_degZero_subring v1 sorry count), the
+TREE was taken as ground truth and the discrepancy is recorded in place.*
+
+---
+
+## REVISION 2 (2026-07-30, post-Codex) — finding-by-finding disposition
+
+Adversarial Codex review verdict: REVISE (2 CRITICAL / 6 GAP / 3 NOTEs);
+findings archive `/tmp/bridge/reviews/findings_bp5.txt`. Binding adjudications:
+`BRIDGE_ADJUDICATIONS_2026-07-30.md` (BP5 block + the cross-area rulings).
+Every repo fact cited below was re-verified at HEAD during this revision.
+
+**Finding 1 (CRITICAL, CL-11 universal false as sketched) — APPLIED, with the
+witness corrected.** The reviewer's specific instantiation (all Φ̄_r = 1, both
+digits = 1 over 𝔽₂) does NOT satisfy the sketch's own hypothesis row: with
+deg Φ̄₀ = 0 the digit bound `deg d̄_s < deg Φ̄₀` admits no nonzero digit under
+either degree convention (`Polynomial.degree 1 = 0 ≮ 0`; natDegree likewise).
+The DEFECT is nonetheless real via a corrected witness: the EMPTY slot-vector
+set satisfies every stated hypothesis and gives Σ = 0 ≠ 0 — false. Fix
+applied at CL-11: NONEMPTY added (load-bearing), `0 < deg Φ̄₀` added explicitly
+(derivable from nonemptiness + the digit bound, but consumed directly by the
+div/mod induction); both discharge at the application site (y ≠ 0; `Stage.hdeg`
++ monic-map degree preservation — verified fields of `Stage`,
+Moves/Defs.lean). CL-12's application text now names the nonemptiness witness.
+
+**Finding 2 (CRITICAL, CL-01 violates no-coexistence) — APPLIED.** §3.1 gains
+the LANDING GATE: CL-01 develops on a side branch; nothing negation-shaped
+lands while `C6_alphabetCard`'s sorry is live; the compiled negation lands
+ATOMICALLY with CL-02's fence transition, retargeted at a frozen
+`C6_stmt_pre_repair` copy (the R-7 freezing pattern). CL-01's unit text
+rewritten to match; dependency spine annotated. See ESCALATION E-2 below on
+the rule's perimeter.
+
+**Finding 3 (GAP, Q-5 had no execution unit) — APPLIED.** CL-22 RETIRED
+(the Q-5 adjudication landed binding: quarantine-with-record), CL-23 CANCELLED
+(trigger unreachable), NEW CL-26 executes the ruling: moves both live partials,
+writes the README/MANIFEST records (semaudit classifications, proved content,
+the 4 derivable legs quoted for future revival), full build + build-only AxChk
+byte-compare, and VERIFIES the 0-live-sorry MovesGr census. G-3 and the DONE
+criterion are now delivered by CL-21 → CL-26.
+
+**Finding 4 (GAP, unplanned reduction/division interface) — APPLIED.** NEW
+CL-27 (the reduction interface) carries the named vocabulary; additionally the
+route CHANGED: factor `C(p^{l_min})` out inside the domain ℤ_[p][x] and reduce
+the cofactor mod p via `Polynomial.map (PadicInt.toZMod)` — no quotient ring
+beyond mod p, no division operator, no `ZMod (p^{l+1})` anywhere. The
+reviewer's missing-interface list maps onto: coefficientwise reduction =
+Mathlib's `Polynomial.map` ring hom; term divisibility = the explicit
+`slotCoeff_factor`; divide-injectivity = IsDomain cancellation. §3.2's proof
+plan rewritten accordingly.
+
+**Finding 5 (GAP, CL-11's hypotheses not delivered) — APPLIED.** CL-27(a)/(b)
+schedules every transported hypothesis as a named lemma, with verified sources:
+monicity/exact-degree preservation (Mathlib `Monic.map`); the exact ratio law
+`t4_slotBound_mul` — PRIVATE at T4_slotMinHt.lean:255, and genuinely needed
+since `slotBound` is ℕ-division-defined (DefsTower.lean:153) — de-privatized;
+digit mod-p nonvanishing from gaussVal = 0 (base pin `T.base.1.1`, gaussVal =
+min coefficient valuation, L1_gaussVal.lean:31); reduced-digit degree bound
+from `digLift_deg` (C2_TYPa:187; `inC` = the degree bound, Moves/Defs.lean:67);
+survivor distinctness extracted from T9(b)'s private kernel (the public
+statement is insufficient — recorded in CL-27(d)).
+
+**Finding 6 (GAP, `lake env lean` in the DONE criterion) — APPLIED.** The DONE
+criterion and CL-21/CL-24/CL-26 now specify the BUILD-ONLY census form:
+force-recompile the census module, `lake build LeanUrat.AxChk_baseline`,
+capture the `#print axioms` output from the build log — never `lake env lean`
+(methodology rule #2). See ESCALATION E-1: the repo CLAUDE.md still names the
+`lake env lean` form as ground truth — a standing doc inconsistency above this
+blueprint's authority.
+
+**Finding 7 (GAP, CL-16 contradicts binding Q-6) — APPLIED.** CL-16 emits
+`packE_typ1` ONLY; `packE_secB1` deleted from the deliverables; the
+binder-order observation survives as a comment. §3.2 and §6 annotated.
+
+**Finding 8 (GAP, regex audit cannot carry the assertion) — APPLIED.** CL-25(i)
+replaced: the collision-free certificate is now Lean's own import merge (a
+generated scratch module importing every live `LeanUrat.*` module, enumerated
+from disk per methodology rule #1; a green `lake build` = no duplicated
+constant names; private module-mangled helpers correctly exempt), with a
+Lean-metaprogram environment dump as the fallback; the grep census is demoted
+to informational-only.
+
+**Finding 9 (NOTE, CL-12 oversized) — APPLIED.** CL-12 shrunk to the ~60-line
+assembly (interface work moved to CL-27) and given a split rule (CL-12a/b),
+matching CL-08/CL-11 discipline.
+
+**Finding 10 (NOTE, CL-15 bundles four interfaces) — APPLIED.** Split rule
+added: CL-15a–d, one per leg, so one failure never blocks the other three.
+
+**Finding 11 (NOTE, CL-01 campaign-sized) — APPLIED.** CL-01 gains an explicit
+split plan (CL-01a base stage / CL-01b move witness / CL-01c assembly + card
+computation), per-subunit caps and per-subunit BLOCKED permission; the ~400
+lines re-labeled a portfolio cap.
+
+**Editorial (no finding):** §3.2's "unit CL-11 runs first" corrected to CL-10
+(the countermodel unit — a pre-revision typo); the 2026-07-30 adjudications of
+Q-2/Q-3/Q-4/Q-7/Q-8 folded into CL-01/CL-06/CL-20/CL-24 and the §6 preamble so
+the blueprint no longer presents decided questions as open.
+
+**ESCALATIONS (not decided here):**
+- **E-1 (doc authority):** project CLAUDE.md ("Build & verify") still
+  designates `lake env lean LeanUrat/AxChk_baseline.lean` as the trusted-base
+  ground truth, while campaign methodology rule #2 (quoted in this blueprint's
+  header) forbids `lake env lean` for green records. This revision follows
+  rule #2; reconciling CLAUDE.md is a cross-campaign documentation decision.
+- **E-2 (perimeter of the no-coexistence rule):** `C6_forces_unconditional_
+  fullness` is PROVED and live at HEAD, so `Tshallow` + the card certificate
+  would sit ONE application away from refuting the live sorried
+  `C6_alphabetCard`. This revision reads the ruling conservatively (those
+  pieces also wait for the fence transition), but whether
+  one-composition-away artifacts are inside the rule's perimeter is a
+  cross-area interpretation the orchestrator should confirm.
+
+*REVISION 2 ends. Executable unit count: 25 (ids CL-01…CL-27; CL-22 retired,
+CL-23 cancelled). Dispositions: 11/11 findings applied (finding 1 with a
+corrected countermodel witness on record); 0 rebutted outright.*

@@ -109,9 +109,8 @@ theorem patternCell_saturated {P₀ : (ZMod (p ^ N))[X]} {d : ℕ} {flo : ℕ �
   exact dvd_add (hP.2.2 i) (dvd_trans (pow_dvd_pow _ (h i)) (hdvd i))
 
 theorem cell_saturated {P₀ : (ZMod (p ^ N))[X]} {d k m : ℕ} (h : k ≤ m) :
-    Saturated (HenselCount.cell P₀ d k) d m := by
-  rw [cell_eq_patternCell]
-  exact patternCell_saturated fun _ => h
+    Saturated (HenselCount.cell P₀ d k) d m :=
+  patternCell_saturated fun _ => h
 
 theorem saturated_anti {S : Set ((ZMod (p ^ N))[X])} {d m m' : ℕ} (h : m ≤ m')
     (hS : Saturated S d m) : Saturated S d m' := fun P hP Q hQmon hQdeg hdvd =>
@@ -196,8 +195,7 @@ theorem pair_card {a b c : ℕ} {A₀ B₀ : (ZMod (p ^ N))[X]}
       Finset.card_univ, Nat.card_eq_fintype_card]
   have h2 : Nat.card ↥D = Nat.card SA * Nat.card SB := by
     rw [hD, Nat.card_congr (Equiv.Set.prod _ _), Nat.card_prod]
-  rw [← h1]
-  exact h2
+  exact h1.symm.trans h2
 
 /-- Deliverable 1 for floor-defined pattern cosets, with the two floor hypotheses stated
 explicitly: containment needs `c + 1 ≤ flo i`, kernel-saturation needs `flo i ≤ N - c`.
@@ -345,13 +343,11 @@ theorem mul_image_saturated {a b c mA mB m : ℕ} (hN : 0 < N) {A₀ B₀ : (ZMo
   obtain ⟨hB'mon, hB'deg⟩ := monic_add_of_coeff hBc.1 hBc.2.1 hβtop
   have hA' : A + polyOf (leftPart x) ∈ SA := by
     refine hSAsat A hA _ hA'mon hA'deg fun i => ?_
-    have he : A + polyOf (leftPart x) - A = polyOf (leftPart x) := by ring
-    rw [he]
+    rw [add_sub_cancel_left]
     exact dvd_trans (pow_dvd_pow _ (by omega : mA ≤ m - c)) (hαdvd i)
   have hB' : B + polyOf (rightPart x) ∈ SB := by
     refine hSBsat B hB _ hB'mon hB'deg fun i => ?_
-    have he : B + polyOf (rightPart x) - B = polyOf (rightPart x) := by ring
-    rw [he]
+    rw [add_sub_cancel_left]
     exact dvd_trans (pow_dvd_pow _ (by omega : mB ≤ m - c)) (hβdvd i)
   refine ⟨(A + polyOf (leftPart x), B + polyOf (rightPart x)),
     Set.mem_prod.mpr ⟨hA', hB'⟩, ?_⟩
@@ -406,9 +402,7 @@ noncomputable def imageSet : List (Block p N) → Set ((ZMod (p ^ N))[X])
 /-- The empty image `{1}` sits in every cell around the empty center. -/
 theorem imageSet_nil_subset_cell (k : ℕ) :
     imageSet ([] : List (Block p N)) ⊆ HenselCount.cell 1 0 k := by
-  intro P hP
-  rw [imageSet_nil, Set.mem_singleton_iff] at hP
-  subst hP
+  rintro P rfl
   exact mem_cell_self monic_one natDegree_one k
 
 /-- The empty image `{1}` is saturated at every level (a monic of degree 0 is `1`). -/

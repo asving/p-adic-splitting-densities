@@ -44,14 +44,17 @@ success would discharge (or reduce, with the reduction machine-checked):
         eligible recentering (MOVES 4653-4671), proved by tower induction —
         general (e,h,g,ψ)-stages, all weights above threshold, all classes,
         a > 0 anchors included. Direct Lean consumers: the `hD4R0K` (U)∧(R)
-        fenced sorry in `MovesT/E5_rootSplit.lean:343` (owner HC-2/D4R0K), the
+        fenced sorry in `MovesT/E5_rootSplit.lean:343` (owner HC-2/D4R0K;
+        being hoisted to the named `TrackUniqOn`/`TrackRepOn` hypotheses by
+        BP3 TV-A1..A5 — see the §3.B consumer edge, REV 2 F8), the
         `treeN_stable` row (E11), and the HC-1/HC-2 D4R0K owner rows.
   (G-C) **HMC.** `MovesV.HMC TE D` (Defs.lean:1180) — the exact-domain stepwise
         factorization. Known machine facts: ¬HMC at a carrier-level toy
         (`hmc_false_witness`, V4_hmc.lean:369), `hmcaug_of_hmc`
         (V4_hmcaug.lean:215), the n=2 scalar instance `n2_hmc` (N2Hmc.lean).
-        Deliverable shape: HMC REDUCED to two named structural laws
-        (DomProj + MarkCompose, §3.C) with the reduction machine-checked, plus
+        Deliverable shape: HMC split into two NAMED directional laws
+        (DomProj + MarkCompose, §3.C — a naming + instance-check package,
+        definitional as an implication; REV 2, F9), plus
         HMC proved on the order-0/self-loop-free perimeter. Consumers:
         (COMP-Σ)/V5-5, V4-12(a), `SolveCond`.
   (G-D) **WEIGHT-CHARGE / X.1b.** `MovesX.WeightChargeT4P/-FullP`
@@ -121,7 +124,7 @@ them as named hypotheses.
 | object | home (proposed) | role |
 |---|---|---|
 | `Kernels/E0Matrix.lean`: `RowSumLt`, `NoClosedClass`, `SubStochastic` + escape theorems | new mini-corpus `LeanUrat/Kernels/` | the abstract matrix layer (§3.A) |
-| `Kernels/E0Route.lean`: `KernelMassLaw`, `BlockDrain` + the ROUTE-E0 theorem | same | the typed measure route |
+| `Kernels/E0Route.lean`: `blockMass` def + `BlockDrain` + the ROUTE-E0 theorem (REV 2, F7) | same | the typed measure route |
 | `Kernels/D4R0K/Tower.lean`: `StageData`, `TowerData` (I-aug), `wt`, `offP`, `digRead` | same | the transcribed enumeration model (§3.B) |
 | `Kernels/D4R0K/L1.lean`: `l1_totality` (the induction) | same | the kernel theorem |
 | `Kernels/HmcReduction.lean`: `DomProj`, `MarkCompose` + `hmc_of_domProj_markCompose` | same | the HMC reduction (§3.C) |
@@ -161,9 +164,17 @@ ROUTE 1 (matrix, per-state exit positivity — the "regularity escape"):
   (1a)  [abstract] nonneg + every row sum ≤ κ < 1  ⟹  A^k𝟙 ≤ κ^k𝟙 → 0.
   (1b)  [abstract] nonneg + substochastic (row sums ≤ 1) + no closed class
         (from every state a path to a row-deficit state)  ⟹  escape.
-        Key identity: with m := card ι, ε := (min positive entry)^m · (min
-        row deficit) > 0, every entry of A^m𝟙 is ≤ 1 − ε; monotonicity of
-        k ↦ A^k𝟙 (substochasticity) interpolates: A^k𝟙 ≤ (1−ε)^⌊k/m⌋𝟙 → 0.
+        Key identity (REV 2, F6 — the old "min positive entry" is undefined
+        at A = 0, which satisfies the hypotheses: every row already strictly
+        deficient): per state i take the reachability witness path
+        i = i₀ → i₁ → … → i_ℓ (ℓ ≤ m := card ι; entries along the path > 0
+        by definition of reachability; row i_ℓ strictly deficient); set
+        ε_i := (Π_j A(i_j, i_{j+1})) · (1 − Σ_β A(i_ℓ, β)) > 0 (empty
+        product = 1 covers ℓ = 0, hence also A = 0); ε := min_i ε_i over
+        the finite state set. Peeling the path one factor per step, with
+        substochastic padding on the remaining m − ℓ steps, gives every
+        entry of A^m𝟙 ≤ 1 − ε; monotonicity of k ↦ A^k𝟙 (substochasticity)
+        interpolates: A^k𝟙 ≤ (1−ε)^⌊k/m⌋𝟙 → 0.
   (1c)  [converse, the refuter's soundness] a closed class C (every row of C
         sums to 1 within C) forces (A^k𝟙)|_C = 𝟙 — ¬escape. This makes
         escape_probe_a's layer-1 criterion a THEOREM, not just a script.
@@ -172,31 +183,59 @@ ROUTE 1 (matrix, per-state exit positivity — the "regularity escape"):
         (terminal + split) is > 0 — equivalently row sum < 1. WILD SUBTLETY:
         cell-count polynomials DO die at small pools (p = 2 kills six cells,
         probe §2), so the argument must exhibit an exit cell that SURVIVES
-        every q₀ ≥ 2. Candidate: the separable-residual escape digit — a
-        still-in-block state's next window read has a digit choice making the
-        residual polynomial SQUAREFREE (count of squarefree monics of degree
-        e over F_q is q^e − q^{e−1} > 0 for e ≥ 2, q ≥ 2; degree-1 residuals
-        are separable outright), and a squarefree residual at an e_read = 1
-        read is a hen/terminal outcome. The obstruction to check FIRST: the
-        window digits parameterize only PART of the residual's coefficients
-        (anchored strata pin a z^a factor), so squarefreeness must be forced
-        by the FREE coefficients away from the anchor. If that fails at some
-        (state, pool), the fallback record documents the exact window-to-
-        residual map and the pinned coefficient set.
+        every q₀ ≥ 2. Candidate (REV 2, F2 — the old single-case sketch
+        "some digit choice yields a squarefree residual" is FALSE at
+        anchored states): case-split on the state's anchor pin a (anchored
+        strata pin a z^a factor of the residual; the window digits
+        parameterize only the FREE coefficients away from the anchor):
+        · a = 0: some free-digit choice makes the residual SQUAREFREE
+          (squarefree monics of degree e over F_q number q^e − q^{e−1} > 0
+          for e ≥ 2, q ≥ 2; degree-1 residuals are separable outright); a
+          squarefree residual at an e_read = 1 read is a hen/terminal exit.
+        · a = 1: target residual z·(squarefree cofactor with z ∤ cofactor)
+          — still squarefree; same counting one degree down.
+        · a ≥ 2: NO residual is squarefree — z² divides every one,
+          REGARDLESS of the free coefficients (compiled arithmetic, not a
+          probe question). The sketched universal is dead here; the exit,
+          if any, must come from a DIFFERENT mechanism: either the anchored
+          read's own terminal/split criterion on the COFACTOR (separable
+          cofactor coprime to z — whether the real table grants that read
+          an exit is exactly the open question), or the per-state form
+          FAILS at these states and the class-level route (KA2c: the
+          anchored state reaches a deficit state in ≥ 1 steps) takes over.
+          KA6a's probe searches a ≥ 2 anchored states FIRST.
+        If the free coefficients cannot force the target at some (state,
+        pool), the fallback record documents the exact window-to-residual
+        map and the pinned coefficient set.
 
-ROUTE 2 (measure — the note's own ROUTE E0, MOVES 12179-96): typed interface
-  `KernelMassLaw`: (A^k𝟙)_τ = the still-in-block-after-k mass from τ
-  (normalized conditional mass; k = 0 forced to 1 — non-vacuity); masses
-  antitone in k. `BlockDrain`: μ(never exits the block) = 0 (the X.3
-  consumer — CL-4). Then each scalar sequence is antitone, bounded below,
-  with infimum μ(never exit | τ) = 0 ⟹ Tendsto 0. Monotone convergence over
-  a FINITE index is elementary — no measure theory beyond the interface.
+ROUTE 2 (measure — the note's own ROUTE E0, MOVES 12179-96), TYPED (REV 2,
+  F7 — the old sketch left the codomain undecided, law_step elided, and the
+  tie's coercions unstated; that was not yet an interface): NO record at the
+  abstract layer. Instead a DEF with ONE coercion point,
+
+      blockMass (A : Matrix ι ι ℚ) (k : ℕ) (τ : ι) : ℝ :=
+        ((A ^ k *ᵥ (fun _ => (1 : ℚ))) τ : ℝ)
+
+  with LEMMAS (not fields): blockMass_zero : blockMass A 0 τ = 1;
+  blockMass_step : blockMass A (k+1) τ = Σ_β (A τ β : ℝ) · blockMass A k β
+  (by pow_succ/mulVec unfolding); blockMass_antitone under nonneg +
+  substochastic. Then `BlockDrain A : Prop := ∀ τ, ⨅ k, blockMass A k τ = 0`
+  (ℝ-valued ciInf of a bounded-below sequence — well-posed; ℚ has no such
+  infima, which forced the codomain decision). BlockDrain is the X.3
+  consumer — CL-4. Antitone + bounded below + inf 0 ⟹ Tendsto 0 in ℝ
+  (`tendsto_atTop_ciInf`); the ℚ-valued EscapeE0.escape follows since
+  `Rat.cast : ℚ → ℝ` is inducing. The SEMANTIC identification (blockMass =
+  the still-in-block-after-k normalized conditional mass) is NOT a field
+  anywhere — it is KA4c's seam statement against XCtx. Monotone convergence
+  over a FINITE index is elementary — no measure theory beyond this.
   This route makes E0's X.3-conditionality a machine-checked implication:
   X.3 ⟹ E0 at the identified kernel (per pool, transported per [2r] at δ>1).
 
 ROUTE 3 (pool closure at n ≤ 3): decide/norm_num packages `PoolHyp` at the
-  sealed pools for the real n=3 carriers, MIRRORING N2Pool/N2Pools — blocked
-  on N3 carrier existence (⚑ Q3).
+  sealed pools for the real n=3 carriers, MIRRORING N2Pool/N2Pools —
+  DEFERRED (REV 2, F11: the Q3 adjudication rules "N3 carriers DEFERRED";
+  KA7/KC8 leave the campaign graph; this route is not advertised this
+  campaign).
 
 The det-side (S.4(ii)) is ALREADY BUILT conditional (`e0_det_ne_zero`,
 Rs3DetSymbolic, RatfuncEvalInfinite): symbolic det ≠ 0 from escape at
@@ -238,7 +277,16 @@ exactly (S6b′)'s CLAIM one stage down. Per-stage obligations:
   (L1-iv)  CLASS READ: the k-th residual coefficient res(t_{j₀+ek}/p^{u_k})
            equals P_k by the IH's exactness (each t_k has exact weight u_k
            and prescribed leading scalar); the read is linear over slots
-           (slots are distinct mod e ⟹ no cross-slot interference); hence
+           because the slots are pairwise-distinct Φ-adic POSITIONS: k ↦
+           j₀+ek is INJECTIVE, while every slot lies in the SAME class j₀
+           mod e (REV 2, F1 — the old justification "slots are distinct
+           mod e" was arithmetically FALSE: j₀+ek ≡ j₀ mod e for all k;
+           the independent reader CHECKS single-class membership,
+           l1_boundary_enum.py:227). Noninterference is positional: each
+           summand occupies its own development position (degree
+           invariant: per-digit degree < deg Φ_prev, so no slot overflows
+           into a neighbor — an explicit induction obligation, carried by
+           KB8a), and addition never mixes distinct positions; hence
            dig(t) = τ. COVERAGE: τ ↦ t is defined for every τ ∈ F′^×
            (bijectivity of the class map onto targets = the P-representative
            uniqueness); anchored targets τ = z̄^a·u are particular classes —
@@ -264,9 +312,16 @@ the same track ψ carry the same side/digit data (functions of f at the root)
 and the same canonical lift (L1 determinism!) ⟹ equal nodes. (R) — a
 multiplicity-1 track has a simple factor; the (c2) covering case analysis
 (MOVES 7112-7119) shows the read at a simple factor terminates (hen leaf), so
-no CONTINUING child exists on that track. Both are blueprinted as attempts at
-the canonical OM instance; at the abstract `CellData` interface they are the
-candidate law pair the E5 fence records (adjudication-tagged).
+no CONTINUING child exists on that track. CONSUMER EDGE (REV 2, F8 — the old
+"KB12+KB13 discharge the E5 sorry at the canonical instance" was a consumer
+mismatch: the sorry is an ABSTRACT (U)∧(R) row and no canonical→abstract
+implication exists or is planned): BP3's unit TV-A1 hoists the E5 pair into
+the NAMED hypotheses `TrackUniqOn`/`TrackRepOn` (owner HC-2/D4R0K),
+∀-quantified at the abstract carriers. KB12/KB13 attempt those Props'
+CANONICAL-INSTANCE legs — the shape BP1's per-prime `UInstance` construction
+consumes — and claim NO discharge of the abstract premise. The
+instance-vs-interface bridge is the QUEUED Q7 adjudication; unit KB15
+(statement-only, blocked on Q7) reserves it.
 
 ### 3.C HMC — the reduction to DomProj + MarkCompose
 
@@ -293,16 +348,27 @@ the iff into its two directions and NAME the missing structural laws:
                 is likely constructible — then DomProj is a genuinely new
                 named law, ⚑ flagged, consumed as a hypothesis (never a new
                 XHDd field without ratification).
-  (MarkCompose) per-step realized marks with matching retained states compose
-                to a realized composite mark: Mem h₁ ∧ Mem h₂ → Mem (h₁ ++ h₂)
-                — exactly the "marks compose" gap. [CM-first]: MUST fail at
+  (MarkCompose) DEFINED as the bare typed implication Mem h₁ ∧ Mem h₂ →
+                Mem (Hpt.append h₁ h₂), the retained-state matching carried
+                by the TYPING of the append (V4 cast toolkit). REV 2, F9:
+                the blueprint previously mixed this with a STRUCTURAL
+                reading ("per-step realized marks compose"); that version
+                would need a new marks-object vocabulary (statement-fence
+                ratification territory) plus a marks-to-Mem translation
+                theorem. The bare implication is the chosen definition; the
+                structural reading is demoted to motivation. It NAMES
+                exactly the "marks compose" gap. [CM-first]: MUST fail at
                 the census toy (else the toy would satisfy HMC) — the
                 compiled failure witness is the sharpened obstruction record.
 
-  THEOREM (the reduction): DomProj ∧ MarkCompose ⟹ HMC — by construction
-  nearly definitional once both laws are typed on the same carriers; the
-  content is the TYPING (getting the retained-state matching and the Hpt
-  append right — the V4 cast-lemma toolkit exists).
+  THEOREM (the reduction): DomProj ∧ MarkCompose ⟹ HMC — honest status
+  (REV 2, F9): with the bare-implication definitions this is DEFINITIONAL
+  ASSEMBLY (Iff.intro of the two named directions), not a depth reduction.
+  Its value is (i) the NAMING of the two directions as separately
+  attackable laws, (ii) the typing (retained-state matching + Hpt append
+  via the V4 cast-lemma toolkit), and (iii) the instance checks that give
+  the pair content — KC4 (MarkCompose FAILS at the toy) and KC6 (both laws
+  HOLD at Order0Sys). No marks-composition depth is claimed.
 
 **The provable perimeter:** HMC on ORDER-0/SELF-LOOP-FREE templates (the same
 perimeter as the capstone's order-0 slice and the wave-A2 spword/instbij
@@ -331,9 +397,33 @@ s(n) := L(n) follows from ONE new base lemma:
   (Res(f̄, f̄′) = 0), i.e. vdisc ≥ 1. Then: recT1 + t4 ≤ L ≤ L·vdisc = s·vdisc
   whenever a recentering exists; and = 0 ≤ s·vdisc otherwise.
 
-  This collapses TWO open kernels into ONE: WEIGHT-CHARGE ⇐ TRACK-COUNT +
-  (REC-DISC). TRACK-COUNT is itself sealed (15/15) and open; its attempt
-  units use the note's own charging material: the strict weight climb per
+  The implication WEIGHT-CHARGE ⇐ TRACK-COUNT + (REC-DISC) is KD3 — sound
+  as stated. BUT (REV 2, F3 — the old text advertised the ladder/budget
+  attempt as TRACK-COUNT's route, which is arithmetically unsupported) the
+  two targets must be kept apart:
+
+    (T-const) `track_restarts`'s CONSTANT L(n) — p/N/depth-uniform (the
+              ledger's binder order enforces the uniformity). Its ONLY
+              current support is the finite 15/15 probe. The ladder route
+              CANNOT deliver it: KD6 gives #recenterings ≤ D(n)·(w_final −
+              w_init) and KD7 targets w_final ≤ c(n)·(1 + vdisc f); their
+              composition GROWS with vdisc f — a fixed-degree family of
+              increasing discriminant depth with successive recentering/
+              refinement steps is the obvious stress family. (T-const)
+              stays an OPEN kernel with its own CM-first stress leg (KD1,
+              extended); NO prover is assigned to it in this campaign, and
+              its plausibility downgrade is ESCALATED (cross-area: BP1
+              owns the Cl7Kernel ledger row).
+    (T-disc)  the WeightCharge SHAPE ≤ s(n)·vdisc f — deliverable WITHOUT
+              (T-const): ladder (KD6) + cap (KD7) + (REC-DISC) compose
+              DIRECTLY to WeightChargeFullP with s := 2·D(n)·c(n): on a
+              history with ≥ 1 recentering, vdisc ≥ 1 (KD2), so
+              D·c·(1 + vdisc) ≤ 2·D·c·vdisc; zero-recentering histories
+              give count 0. This is the NEW unit KD10 — the schedulable
+              route to the cl2_route face, never needing a constant
+              restart cap.
+
+  Attempt material for KD6/KD7 themselves: the strict weight climb per
   recentering (D.10, DERIVED), the (1/D(n))·ℤ weight lattice (the dnLattice
   duty), and the L5fix Invariant-2 different budget via (P2):
   v_p(disc f) = 2·ind(f) + Σᵢ v_p(disc Lᵢ) — each restart must consume a
@@ -389,7 +479,9 @@ sealed layers into general theorems or named obstructions, never widening
 any statement.
 
 --------------------------------------------------------------------------------
-## 4. UNIT SPLIT (53 units: KA 13 · KB 13 · KC 9 · KD 8 · KE 10)
+## 4. UNIT SPLIT (REV 2: 64 schedulable units — KA 15 · KB 18 · KC 8 ·
+## KD 10 · KE 13 — plus 2 DEFERRED by the Q3 adjudication: KA7, KC8.
+## The pre-revision header claimed 53; the true pre-revision count was 55 — F12.)
 
 Format: id · statement (informal or Lean sketch) · deps · sketch · difficulty
 (routine-opus / hard-fable / adjudication) · est. Lean size. Files per §2.3.
@@ -406,31 +498,53 @@ KA2a `mulVec_mono` toolkit: nonneg matrix preserves ≤ on vectors; A^k𝟙
      deps: —. routine-opus, ~30 ln.
 KA2b `deficit_spread` : A nonneg substochastic, m := Fintype.card ι, every
      state reaches a strict-deficit row in ≤ m steps ⟹ ∃ ε > 0, ∀ i,
-     (A^m *ᵥ 𝟙) i ≤ 1 − ε. deps: KA2a. Sketch: ε := (min positive entry)^m ·
-     (min deficit); walk the reaching path, peel one factor per step; finite
-     min over states. hard-fable, ~80 ln (split further if it grows).
+     (A^m *ᵥ 𝟙) i ≤ 1 − ε. deps: KA2a. Sketch (REV 2, F6 — the old "min
+     positive entry" is undefined at A = 0, which satisfies the
+     hypotheses): per state i, ε_i := (product of the reachability-witness
+     path's entries) · (deficit at the path's end) > 0 (empty product = 1
+     covers path length 0, hence A = 0); ε := finite min over states; peel
+     the path one factor per step, substochastic padding on the remaining
+     m − ℓ steps. hard-fable, ~80 ln (split further if it grows).
 KA2c `escapeE0_of_noClosedClass` : nonneg + substochastic + reachability
-     hypothesis ⟹ EscapeE0. deps: KA1, KA2a, KA2b. Sketch: A^{km}𝟙 ≤
-     (1−ε)^k 𝟙 by KA2b + induction; interpolate by KA2a antitonicity.
-     routine-opus given deps, ~40 ln.
-KA2d [CM-first twin of KA2c] compiled witnesses that BOTH hypotheses are
-     needed: A = [[2]] (nonneg, deficit-free reachability vacuous, no
-     escape); A = [[1]] (substochastic, closed class, no escape). deps: —.
-     routine-opus, ~25 ln.
+     hypothesis ⟹ EscapeE0. deps: KA2d (CM gate — SEQUENCED FIRST, REV 2
+     F5), KA1, KA2a, KA2b. Sketch: A^{km}𝟙 ≤ (1−ε)^k 𝟙 by KA2b +
+     induction; interpolate by KA2a antitonicity. routine-opus given deps,
+     ~40 ln.
+KA2d [CM-first twin of KA2c — runs BEFORE the KA2c prover] compiled
+     witnesses that BOTH hypotheses are needed. REV 2, F4 — the old [[2]]
+     witness FAILED its own premises: its single row sums to 2, so no
+     strict-deficit row exists and the reachability hypothesis is violated
+     rather than retained. Corrected pair:
+     · drop substochasticity, keep reachability: A = !![0, 2; 1/2, 0] (ℚ):
+       nonneg; row 1 sums to 1/2 (strict deficit) and is reachable from
+       row 0 in one step (entry 2 > 0); NOT substochastic (row 0 sums to
+       2); A^2 = 1, so A^{2k}𝟙 = 𝟙 ↛ 0 — no escape.
+     · drop reachability, keep substochasticity: A = [[1]]: nonneg,
+       substochastic, the single class is closed (no strict-deficit row
+       exists to reach); A^k𝟙 = 𝟙 — no escape.
+     deps: —. routine-opus, ~35 ln.
 KA3  `noEscape_of_closedClass` (the refuter's soundness): C ⊆ ι nonempty,
      ∀ i ∈ C, ∑_{j∈C} A i j = 1 ∧ ∀ j ∉ C, A i j = 0 ⟹ ¬ EscapeE0 A.
      deps: KA2a. Sketch: (A^k𝟙)|_C = 1 by induction; Tendsto to 0 fails.
      routine-opus, ~35 ln. (Makes escape_probe_a layer 1 a theorem.)
-KA4a `KernelMassLaw`/`BlockDrain` interface records (E0Route.lean): fields
-     mass : ℕ → ι → ℝ≥0∞ (or ℚ≥0), law_zero : mass 0 = 1, law_step :
-     mass (k+1) τ = Σ_β A τ β · … , antitone, drain : ∀ τ, ⨅ k, mass k τ = 0;
-     tie : (A^k *ᵥ 𝟙) τ = mass k τ. NON-VACUITY: a decide instance at the
-     N2 pool. deps: —. routine-opus (design care), ~50 ln. ⚑ interface —
-     orchestrator ratifies field list before provers run.
-KA4b `escape_of_drain` : KernelMassLaw + BlockDrain → EscapeE0 A. deps:
-     KA4a. Sketch: per-τ scalar sequence antitone bounded below with inf 0 ⟹
-     tendsto 0 (Mathlib `tendsto_atTop_ciInf`); finite index ⟹ Pi.tendsto.
-     routine-opus, ~30 ln.
+KA4a `blockMass` def + `BlockDrain` Prop (E0Route.lean) — REV 2, F7: the
+     old sketch (record with codomain "ℝ≥0∞ (or ℚ≥0)", elided law_step,
+     coercion-free tie) was not yet a typed interface. Now fully decided:
+     `blockMass (A : Matrix ι ι ℚ) (k : ℕ) (τ : ι) : ℝ :=
+     ((A ^ k *ᵥ (fun _ => (1:ℚ))) τ : ℝ)` — a DEF (the tie is definitional,
+     the single ℚ→ℝ coercion sits here); LEMMAS blockMass_zero (= 1),
+     blockMass_step (= Σ_β (A τ β : ℝ) · blockMass A k β, by pow_succ),
+     blockMass_antitone (under nonneg + substochastic).
+     `BlockDrain A : Prop := ∀ τ, ⨅ k, blockMass A k τ = 0` (ℝ ciInf —
+     ℚ has no such infima, forcing the codomain choice). NON-VACUITY: a
+     decide/norm_num instance at the N2 pool. deps: —. routine-opus,
+     ~55 ln. ⚑ interface — orchestrator ratifies the def + Prop shape
+     before provers run.
+KA4b `escape_of_drain` : nonneg + substochastic + BlockDrain A → EscapeE0 A.
+     deps: KA4a. Sketch: per-τ blockMass antitone bounded below with inf 0
+     ⟹ Tendsto 0 in ℝ (`tendsto_atTop_ciInf`); pull the limit back along
+     the inducing `Rat.cast` to EscapeE0's ℚ-valued statement; finite
+     index ⟹ Pi.tendsto. routine-opus, ~35 ln.
 KA4c ROUTE-E0 seam: the note-shaped theorem `X.3-drain ⟹ per-pool escape` —
      BlockDrain derived from a SeriesData/XCtx-level a.e.-termination
      hypothesis at the pool (the CL-4 consumer edge, MOVES 12180-12187).
@@ -442,26 +556,42 @@ KA4c ROUTE-E0 seam: the note-shaped theorem `X.3-drain ⟹ per-pool escape` —
 KA5  `escapeE0_of_exitPos` : (∀ i, ∑ j, A i j < 1) → nonneg → EscapeE0 A.
      deps: KA1. Sketch: κ := Finset.max of row sums, < 1 by finiteness.
      routine-opus, ~20 ln.
-KA6a [CM-first for KA6b] the exit-cell survival probe (python,
+KA6a [CM-first for KA6b2] the exit-cell survival probe (python,
      verification/): for synthetic (K-SUB)-shaped tables at q₀ ∈ {2,3,4,8,9}
      and states with anchored windows, search for a (state, pool) whose
-     EVERY exit cell dies (cell count 0 at q₀). A finding refutes the
-     per-state form of E0's escape and reroutes KA6b to the class-level
-     statement. deps: —. routine-opus (script + seal record), no Lean.
-KA6b [ATTEMPT] the separable-residual escape digit: at every realized active
-     state and every pool q₀ ≥ 2, some window digit choice yields a
-     squarefree residual (⟹ terminal outcome; row sum < 1 via KA5).
-     Mathematical core: squarefree monics of degree e over F_q number
-     q^e − q^{e−1} > 0; the anchored z^a factor must be avoided by FREE
-     window coefficients. deps: KA6a; carriers: the §M-SPECIES menu
-     (MovesSp) or a self-contained window model (⚑ Q1). hard-fable —
-     THE OPEN CORE of E0; fallback: the obstruction record pinning the
-     window-to-residual coefficient map and which (state, pool) resists.
-     Est. ~120 ln if it goes; split at the first stall.
-KA7  n=3 pool closure: `PoolHyp` instances at q₀ ∈ {2,3,4} for the real n=3
+     EVERY exit cell dies (cell count 0 at q₀). SEARCH ORDER (REV 2, F2):
+     a ≥ 2 anchored states FIRST — there the squarefree-residual mechanism
+     is provably ABSENT (z² divides every residual), so survival must come
+     from a different exit; that zone is likeliest to refute the per-state
+     form. A finding refutes the per-state form of E0's escape and reroutes
+     KA6b2 to the class-level statement. deps: —. routine-opus (script +
+     seal record), no Lean.
+KA6b1 [NEW id at REV 2 — F2/F13 split of the retired KA6b] the finite-field
+     counting layer (pure F_q[z], no table seam): squarefree monics of
+     degree e over F_q number q^e − q^{e−1} > 0 (e ≥ 2, q ≥ 2); degree-1
+     monics separable; z·(squarefree cofactor coprime to z) is squarefree;
+     PLUS the compiled impossibility lemma: for a ≥ 2, z^a·c is NEVER
+     squarefree — the F2 fact, stated positively so no prover re-attempts
+     the dead route. deps: —. routine-opus, ~50 ln.
+KA6b2 [ATTEMPT; NEW id at REV 2 — the window/table seam, THE OPEN CORE of
+     E0, restated per §3.A (1d)'s case split (the old KA6b universal "some
+     digit choice yields a squarefree residual" is FALSE at a ≥ 2 anchors —
+     F2)]: at every realized active state with anchor pin a ≤ 1 and every
+     pool q₀ ≥ 2, some FREE window digit choice yields a squarefree
+     residual (⟹ terminal exit; row sum < 1 via KA5); at a ≥ 2 states,
+     exhibit the cofactor-criterion exit or REROUTE to the class-level
+     escape (KA2c reachability from anchored states) — whichever KA6a's
+     anchored-first findings support. deps: KA6a (CM gate — runs FIRST),
+     KA6b1; carriers: the §M-SPECIES menu (MovesSp) or a self-contained
+     window model (⚑ Q1). hard-fable; fallback: the obstruction record
+     pinning the window-to-residual coefficient map and which (state,
+     pool) resists. ~90 ln.
+KA7  [DEFERRED — Q3 ADJUDICATED 2026-07-30: "N3 carriers DEFERRED" (REV 2,
+     F11). Out of the campaign unit graph; id reserved; ROUTE 3 of §3.A is
+     deferred with it and is NOT an advertised E0 route this campaign.]
+     n=3 pool closure: `PoolHyp` instances at q₀ ∈ {2,3,4} for the real n=3
      carriers by norm_num/decide, mirroring N2Pool (values sealed: κ₂, κ₃,
-     dets at probe §1). deps: N3 carriers (⚑ Q3 — BLOCKED until answered).
-     routine-opus per pool once carriers exist, ~60 ln each.
+     dets at probe §1). deps: N3 carriers (deferred).
 KA8  the δ > 1 transport: EscapeE0 at the base-changed pool from the O_δ
      theory's own instance — typed conditional over consumedDeltas: a
      structure `PoolTransport` carrying the [2r]/(e2) identification as a
@@ -475,67 +605,125 @@ KA9  det glue: `detHyp_of_escape_infinite` — EscapeE0 at infinitely many
 
 ### KB — D4R.0-K(a) (files Kernels/D4R0K/Tower.lean, L1.lean; seams in HC1/MovesT)
 
-KB1  `StageData`/`TowerData` records: per-stage (e, h, g, ψ) with gcd(e,h)=1,
-     ψ monic irreducible deg g, ψ(0) ≠ 0; the (I-aug) chain h_{i} >
-     e_i·(e_{i−1}h_{i−1}g_{i−1}) as a field; fields F_i as iterated
-     AdjoinRoot (or the enumeration's tuple model). NON-VACUITY: the p=2
-     stage-3 instance from the probe grid, by decide. deps: —.
-     routine-opus (design care), ~80 ln. ⚑ interface ratification.
+KB1a [REV 2 — F13 split of the retired KB1 (it bundled records + field
+     towers + arithmetic + an instance into one "small unit")] the
+     `StageData`/`TowerData` records + arithmetic invariants only:
+     per-stage (e, h, g, ψ-as-data) with gcd(e,h)=1 and the (I-aug) chain
+     h_i > e_i·(e_{i−1}h_{i−1}g_{i−1}) as fields. deps: —. routine-opus
+     (design care), ~40 ln. ⚑ interface ratification.
+KB1b the residue-field carrier: F_i as iterated AdjoinRoot OR the
+     enumeration's tuple model (per the Q2 adjudication: prove over the
+     TRANSCRIBED ENUM MODEL — so the tuple model is the default; AdjoinRoot
+     only if the seam unit KB11 demands it); ψ monic irreducible deg g,
+     ψ(0) ≠ 0 as carrier laws. deps: KB1a. routine-opus, ~40 ln.
+KB1c NON-VACUITY gate: the p=2 stage-3 instance from the probe grid, by
+     decide, against KB1a+KB1b. deps: KB1a, KB1b. routine-opus, ~25 ln.
 KB2  slot arithmetic: `j0` def (h⁻¹W mod e via ZMod e units), slots ≤ eg−1,
      e ∣ W − (j₀+ek)h, u_k := (W−(j₀+ek)h)/e ∈ ℕ with e·u_k + (j₀+ek)h = W.
-     deps: KB1. Sketch: ZMod.unitOfCoprime + omega. routine-opus, ~40 ln.
+     deps: KB1a. Sketch: ZMod.unitOfCoprime + omega. routine-opus, ~40 ln.
 KB3  the guard chain: W > ehg ⟹ ∀ k < g, u_k > threshold one stage down
-     (the two-line (I-aug) inequality, MOVES 2450-2455). deps: KB1, KB2.
+     (the two-line (I-aug) inequality, MOVES 2450-2455). deps: KB1a, KB2.
      Sketch: e·u_k ≥ W − (eg−1)h > ehg − (eg−1)h = h; then (I-aug):
      h > e·(prev threshold). All in ℕ with the e-divisibility from KB2 —
      avoid rational division. routine-opus, ~35 ln.
 KB4  weight of a slot summand: w(t_k·Φ^{j₀+ek}) = e·w(t_k) + (j₀+ek)h at
      exact-weight t_k — the parent-scale weight law of the development.
-     deps: KB1 model's `wt` def. routine-opus, ~30 ln.
-KB5  leading-form nonvanishing: the sum over slots of prescribed leading
-     scalars reads to z^m·P(z̄) = τ ≠ 0; distinct slot classes mod e ⟹ no
-     cross-slot interference; hence w(t) = W EXACTLY (min attained, no
-     cancellation at weight W). deps: KB2, KB4. hard-fable (the ultrametric
-     min + read linearity — the one genuinely delicate stage lemma),
-     ~80 ln; pre-approved split: KB5a (min ≥ W), KB5b (read = τ ⟹ = W).
+     deps: KB1a-b (the model's `wt` def). routine-opus, ~30 ln.
+KB5  leading-form nonvanishing (REV 2, F1 — the old justification "distinct
+     slot classes mod e ⟹ no cross-slot interference" was arithmetically
+     FALSE: every slot j₀+ek ≡ j₀ mod e): the sum over slots of prescribed
+     leading scalars reads to z^m·P(z̄) = τ ≠ 0. TRUE mechanism: k ↦ j₀+ek
+     is INJECTIVE, so the slots are pairwise-distinct Φ-adic POSITIONS all
+     lying in the single class j₀ mod e (the independent reader's own
+     check, l1_boundary_enum.py:227); with the degree invariant (each
+     summand's digit degree < deg Φ_prev — KB8a's obligation, no positional
+     overflow) addition never mixes positions, so coefficientwise the sum
+     IS its summands: per-position weight = W, hence w(t) = W EXACTLY (min
+     attained, no cancellation at weight W) and the k-th read recovers P_k.
+     deps: KB2, KB4, KB10 (negative-control gate — SEQUENCED BEFORE this
+     prover, REV 2 F5). hard-fable (positional bookkeeping + the degree
+     invariant — the one genuinely delicate stage lemma), ~80 ln;
+     pre-approved split: KB5a (min ≥ W), KB5b (read = τ ⟹ = W).
 KB6  the class map: τ ↦ P (unique deg < g representative with z̄^m·P = τ),
-     bijectivity onto F′^× including anchored τ = z̄^a·u. deps: KB1.
-     Sketch: AdjoinRoot representative uniqueness; z̄ invertible since
-     ψ(0) ≠ 0. routine-opus, ~40 ln.
+     bijectivity onto F′^× including anchored τ = z̄^a·u. deps: KB1a-b.
+     Sketch: representative uniqueness in the carrier model; z̄ invertible
+     since ψ(0) ≠ 0. routine-opus, ~40 ln.
 KB7  base case: stage-1 realizers — every c ∈ F_Q^× at every weight, unit
-     lift, exact weight, deterministic. deps: KB1. routine-opus, ~30 ln.
-KB8  `l1_totality` — THE INDUCTION: ∀ stage r, ∀ W > thr_r, ∀ τ ∈ F_r^×,
-     ∃! (by-construction) t = offP r W τ with wt t = W ∧ digRead t = τ.
-     deps: KB2-KB7. Sketch: strong induction on r; per-slot recursive call
-     eligible by KB3; assemble by KB5 + KB6. hard-fable (the assembly),
-     ~90 ln; split at need into existence/exactness/read legs.
+     lift, exact weight, deterministic. deps: KB1a-b. routine-opus, ~30 ln.
+KB8a [REV 2 — F13 split of the retired KB8 (recursive construction +
+     eligibility + weight + read + uniqueness was a mini-development)]
+     `offP` construction + eligibility + DEGREE INVARIANT: the recursive
+     def offP r W τ (a def, not a choice — determinism is free); every
+     recursive call eligible (guard by KB3, slots in range by KB2); the
+     invariant "every stage-r realizer's Φ-adic digits occupy only the
+     designated slots, per-digit degree < deg Φ_prev" (KB5's
+     noninterference input — REV 2, F1). deps: KB1a-c, KB2, KB3.
+     hard-fable, ~60 ln.
+KB8b `l1_totality` — THE INDUCTION: ∀ stage r, ∀ W > thr_r, ∀ τ ∈ F_r^×,
+     wt (offP r W τ) = W ∧ digRead (offP r W τ) = τ, plus coverage
+     (surjectivity onto F_r^× via KB6). deps: KB8a, KB4, KB5, KB6, KB7.
+     Sketch: strong induction on r; exactness + read assembled by KB5 +
+     KB6. hard-fable (the assembly), ~70 ln; pre-approved further split:
+     exactness leg / read leg (split NOW in the plan, not at stall —
+     REV 2, F13).
 KB9  determinism + boundary corollaries: offP is a def (function of node
      data); the enumerated boundary corners (min W, g = 1, |F′^×| = 1 at
      p = 2) fall out as instances — state them as decide checks against the
-     probe's tallies (spot rows, not all 40,378). deps: KB8. routine-opus,
+     probe's tallies (spot rows, not all 40,378). deps: KB8b. routine-opus,
      ~40 ln.
-KB10 negative controls as theorems (the gate's teeth, probe §3): corrupted
-     slot class j₀+1 leaves the zero class; (I-aug) violation trips the
-     guard. deps: KB2, KB3. routine-opus, ~35 ln.
+KB10 negative controls as theorems (the gate's teeth, probe §3) — GATE
+     UNIT, sequenced BEFORE the KB5 prover (REV 2, F5: the old ordering
+     listed the gate after its prover with no dependency): corrupted slot
+     class j₀+1 leaves the zero class, transcribed AT THE SCRIPT'S OWN
+     SCOPE e ≥ 2 (the script runs NC1 at (p,e,h,g) = (3,2,1,2); at e = 1
+     every weight is zero-class mod 1 and the control is VACUOUS — REV 2,
+     F1: state the e ≥ 2 hypothesis explicitly, never quantify over
+     e = 1); (I-aug) violation trips the guard (NC3 verbatim). deps: KB2,
+     KB3. routine-opus, ~40 ln.
 KB11 [ADJUDICATION] the convention seam: the twist lemma — any slot-unit
      twist that is a function of node data induces a bijection of nonzero
      classes commuting with totality/weight/determinism (the script's
      CONVENTION paragraph, typed). Then the seam statement to HC-1's (S6b)
-     vocabulary (Moves/DefsCore.lean thresholds). deps: KB8; owner overlap
-     HC-1. adjudication (⚑ Q2 decides the target form), ~60 ln.
-KB12 [ATTEMPT] (U) at the canonical instance — per-point per-track root-
-     child uniqueness (E5's first conjunct): two realized root children on
-     one track share side/digit data (functions of f) + the canonical lift
-     (KB8 determinism) ⟹ equal. deps: KB8 + MovesD.CanonPolicy vocabulary.
-     hard-fable; fallback: the obstruction record naming the missing
-     child-datum-is-function-of-f law. ~70 ln.
-KB13 [ATTEMPT] (R) at the canonical instance — realized root children have
-     track multiplicity ≥ 2 (E5's second conjunct; the (c2) covering,
-     MOVES 7112-7119): a simple factor's read is hen-terminal, no
-     continuing child. deps: MovesD/MovesT root-read vocabulary. hard-fable;
-     same fallback genre. ~70 ln. KB12+KB13 together discharge the E5
-     `hD4R0K` sorry AT THE CANONICAL INSTANCE (the abstract CellData row
-     stays owner HC-2 — do NOT touch the fenced sorry without adjudication).
+     vocabulary (Moves/DefsCore.lean thresholds). deps: KB8b; owner overlap
+     HC-1. adjudication (Q2 ADJUDICATED 2026-07-30: prove over the
+     transcribed enum model + seam unit — this two-step architecture is
+     ratified; the seam target form still needs the ⚑ detail pass), ~60 ln.
+KB12 [ATTEMPT] (U) at the canonical instance — the canonical-instance leg
+     of BP3 TV-A1's named `TrackUniqOn` (REV 2, F8: the target Prop is
+     TV-A1's, instantiated at the canonical carriers — NOT the E5 sorry):
+     two realized root children on one track share side/digit data
+     (functions of f) + the canonical lift (KB8a/b determinism) ⟹ equal.
+     deps: KB14 (CM gate — runs FIRST, REV 2 F5), KB8b, MovesD.CanonPolicy
+     vocabulary. hard-fable; fallback: the obstruction record naming the
+     missing child-datum-is-function-of-f law. ~70 ln.
+KB13 [ATTEMPT] (R) at the canonical instance — the canonical-instance leg
+     of BP3 TV-A1's named `TrackRepOn` (the (c2) covering, MOVES
+     7112-7119): a simple factor's read is hen-terminal, no continuing
+     child. deps: KB14 (CM gate — runs FIRST), MovesD/MovesT root-read
+     vocabulary. hard-fable; same fallback genre. ~70 ln. CONSUMER EDGE
+     (REV 2, F8 — replaces the false "together discharge the E5 hD4R0K
+     sorry"): KB12+KB13 deliver instance-shaped legs for BP1's per-prime
+     `UInstance` rows and for whatever route the QUEUED Q7 adjudication
+     ratifies; they do NOT discharge the abstract E5 premise (owner HC-2,
+     hoisted to named hypotheses by BP3 TV-A1..A5) and no
+     canonical→abstract implication is claimed or planned outside KB15.
+KB14 [CM-first gate for KB12+KB13 — NEW at REV 2 (F5: risky universals had
+     no prior countermodel unit)] the (U)/(R) countermodel probe (python,
+     verification/): over the enum/census root reads, search for (i) two
+     DISTINCT realized root children on one track at one root-cell point
+     (refutes U) and (ii) a realized root child on a multiplicity-1 track
+     (refutes R); plus the in-corpus witness attempt at the G1 CellData
+     toys (expected blocked — the E5 fence record: child_cover fails on
+     both toy carriers, no CellAssign instance exists; record either way).
+     Sealed predictions before runs (Q6 discipline). deps: verification/.
+     routine-opus, no Lean.
+KB15 [ADJUDICATION — statement-only, BLOCKED on Q7; NEW at REV 2 (F8)] the
+     instance-vs-interface bridge: once the queued Q7 adjudication rules,
+     STATE (do not prove) the ratified bridge between the
+     canonical-instance (U)/(R) legs and the abstract
+     TrackUniqOn/TrackRepOn premise row. No prover may improvise this
+     bridge; until Q7 lands, KB12/13's only advertised consumer is BP1's
+     instance rows. deps: Q7 ruling. adjudication, statement-only.
 
 ### KC — HMC (file Kernels/HmcReduction.lean; instances in MovesV)
 
@@ -554,18 +742,25 @@ KC2b `DomProj` def + (conditional on KC2a's outcome) derivation attempt from
      the XHDd law fields (no_stray/exactness family). deps: KC2a.
      hard-fable, ~50 ln. [ATTEMPT with fallback: DomProj stays a named
      hypothesis.]
-KC3  `MarkCompose` def: per-step realized marks at matching retained states
-     compose — Mem h₁ ∧ Mem h₂ → Mem (h₁++h₂), typed with the V4 cast
-     toolkit (castHpt/append laws exist, MovesV/Defs.lean:1196-1219).
-     deps: —. routine-opus (typing only), ~35 ln. ⚑ named-law ratification.
+KC3  `MarkCompose` def — the BARE TYPED IMPLICATION (REV 2, F9: of the two
+     readings the old text mixed, this is the chosen one; the structural
+     "marks object" reading would need new ratified vocabulary + a
+     marks-to-Mem translation theorem, and is dropped to motivation):
+     Mem h₁ ∧ Mem h₂ → Mem (Hpt.append h₁ h₂), the retained-state matching
+     carried by the append TYPING (V4 cast toolkit: castHpt/append laws,
+     MovesV/Defs.lean:1196-1219). deps: —. routine-opus (typing only),
+     ~35 ln. ⚑ named-law ratification.
 KC4  [CM-first twin] `markCompose_fails_at_toy` : ¬ MarkCompose HmcToy —
      REQUIRED (else the toy would satisfy HMC via KC5); the compiled
      witness IS the sharpened obstruction record of the kernel. deps: KC3.
      routine-opus (decide), ~30 ln.
-KC5  `hmc_of_domProj_markCompose` : DomProj ∧ MarkCompose ⟹ HMC — the
-     reduction theorem. deps: KC2b/KC3. Sketch: the two directions are the
-     two laws; content = retained-state bookkeeping across .cons. routine-
-     opus given the defs, ~40 ln.
+KC5  `hmc_of_domProj_markCompose` : DomProj ∧ MarkCompose ⟹ HMC — honest
+     status (REV 2, F9): with KC3's bare-implication definition this is
+     DEFINITIONAL ASSEMBLY (Iff.intro of the two named directions), not a
+     depth reduction; it SHIPS ONLY together with its content guards KC4
+     (the pair fails at the toy) and KC6 (the pair holds at Order0Sys),
+     per R5. deps: KC3, KC4 (CM gate — SEQUENCED FIRST), KC2b. routine-
+     opus given the defs, ~30 ln.
 KC6  `Order0Sys` predicate + `hmc_of_order0` : full-product step domains ⟹
      HMC (the provable perimeter). Instances: the V1 witness satisfies
      Order0Sys (re-derive witHMC through it); HmcToy does NOT (decide).
@@ -575,9 +770,10 @@ KC7  consumer glue verify-only: (COMP-hΣ) + HMC ⟹ (COMP-Σ) — confirm the
      built V5-5 conditional consumes `HMC` verbatim and nothing stronger;
      record, no new proof expected. deps: MovesV V5 modules. routine-opus,
      ~15 ln or record-only.
-KC8  n=3 real-chain HMC layer (mirror n2_hmc): the block-level kstep power
-     law at the n=3 carriers. deps: ⚑ Q3 carriers. routine-opus once
-     unblocked, ~30 ln.
+KC8  [DEFERRED — Q3 ADJUDICATED 2026-07-30: "N3 carriers DEFERRED" (REV 2,
+     F11). Out of the campaign unit graph; id reserved.] n=3 real-chain
+     HMC layer (mirror n2_hmc): the block-level kstep power law at the
+     n=3 carriers. deps: N3 carriers (deferred).
 
 ### KD — WEIGHT-CHARGE / X.1b (file Kernels/WeightChargeRed.lean; seams in MovesX)
 
@@ -585,7 +781,13 @@ KD1  [CM-first] the s(n)-candidate refuter (python): re-run + extend the
      STALL-probe (p = 2 cubic 2²⁴ box, quartic RS-conditioned cylinder) to
      the ratio #recenterings / vdisc; also probe REC-DISC: search for f
      with a recentering node and vdisc f = 0 — a finding REFUTES KD2.
-     deps: verification/ infra. routine-opus (script + seal), no Lean.
+     NEW LEG (REV 2, F3 — the (T-const) stress): tabulate #recT1 + #t4
+     against vdisc depth on the same boxes; a growing trend along a
+     fixed-degree increasing-vdisc family is evidence AGAINST the ledger's
+     constant-L `track_restarts` face (a finite probe cannot refute the ∀,
+     but the trend record feeds the escalated cross-area review; the
+     15/15 seal alone cannot support a degree-only bound). deps:
+     verification/ infra. routine-opus (script + seal), no Lean.
 KD2  `recentering_vdisc_pos` (REC-DISC): H in the stratum of f, f ∉
      discZero, countPop H .recT1 + countPop H .t4 ≥ 1 ⟹ 1 ≤ vdisc f.
      deps: KD1 clean; vocabulary: MovesX + the mod-p discriminant lemma.
@@ -600,28 +802,50 @@ KD3  `weightChargeFull_of_trackCount` : Cl7Kernel-style track_restarts
      (∀ …, countPop H .recT1 + countPop H .t4 ≤ L) + REC-DISC ⟹
      WeightChargeFullP n X ⟨s := L, …⟩. deps: KD2. Sketch: case vdisc = 0
      (then count = 0 by KD2 contrapositive) vs vdisc ≥ 1 (L ≤ L·vdisc).
-     routine-opus, ~30 ln. THE REDUCTION — collapses X.1b into TRACK-COUNT.
+     routine-opus, ~30 ln. STATUS NOTE (REV 2, F3): sound as an
+     IMPLICATION, but its constant-L premise has NO supported general
+     route in this campaign — KD6/KD7 do NOT feed it (their composition
+     grows with vdisc); the schedulable WeightCharge discharge is KD10.
 KD4  `weightChargeT4_of_trackCount` : same with .t4 ≤ full count ≤ L.
-     deps: KD3. routine-opus, ~15 ln.
-KD5  `x3aRoute_of_trackCount_align` : TRACK-COUNT + REC-DISC + X1aAlignP
-     (inc state) ⟹ X3aRouteP (right disjunct). deps: KD3. routine-opus,
-     ~20 ln. Discharges cl2_route's shape conditionally.
-KD6  [ATTEMPT] TRACK-COUNT via the weight ladder: named `KeyWeightData`
-     carrier (per-node key weight, strict climb per recentering — D.10
-     DERIVED content; lattice (1/D(n))ℤ — the dnLattice duty) ⟹
-     #recenterings ≤ D(n)·(w_final − w_init). deps: carrier design ⚑.
-     hard-fable, ~80 ln; fallback: the typed carrier + the ladder lemma
-     alone (already useful — it converts TRACK-COUNT into a weight-cap
-     question).
+     deps: KD3. routine-opus, ~15 ln. Same status note as KD3.
+KD5  `x3aRoute_of_weightCharge_align` : WeightChargeFullP (via KD10's
+     ladder-cap route, or KD3 if a constant bound ever lands) + X1aAlignP
+     (inc state) ⟹ X3aRouteP (right disjunct). deps: KD10 (or KD3).
+     routine-opus, ~20 ln. Discharges cl2_route's shape conditionally
+     (REV 2, F3: re-pointed from the TRACK-COUNT-only route).
+KD6  [ATTEMPT] the weight ladder (REV 2, F3 — no longer advertised as a
+     TRACK-COUNT route; its honest conclusion is vdisc-relative): named
+     `KeyWeightData` carrier (per-node key weight, strict climb per
+     recentering — D.10 DERIVED content; lattice (1/D(n))ℤ — the dnLattice
+     duty) ⟹ #recenterings ≤ D(n)·(w_final − w_init). deps: KD9 (CM gate —
+     runs FIRST, REV 2 F5); carrier design ⚑. hard-fable, ~80 ln;
+     fallback: the typed carrier + the ladder lemma alone (already
+     useful — it converts the count into a weight-cap question).
 KD7  [ATTEMPT] the weight cap via the different budget: w_final ≤ c(n)·
      (1 + vdisc f) through (P2)'s leaf-different term (L5fix Invariant-2).
-     THE DEEP OPEN CORE of the cluster. deps: KD6; L5fix vocabulary
-     (LeanUrat/L5fix.lean). hard-fable; fallback: obstruction record naming
-     the exact budget consumable that fails to be exhibited (the note's own
-     "must be exhibited, not assumed", MOVES 11166). ~100 ln if it goes.
+     THE DEEP OPEN CORE of the cluster. deps: KD9 (CM gate — runs FIRST),
+     KD6; L5fix vocabulary (LeanUrat/L5fix.lean). hard-fable; fallback:
+     obstruction record naming the exact budget consumable that fails to
+     be exhibited (the note's own "must be exhibited, not assumed", MOVES
+     11166). ~100 ln if it goes.
 KD8  assembly + fence audit: the (CD)-pinned reading check — every KD unit's
      d_cert consumption matches reading A (task 58's adjudication); record
-     unit, verify-only. deps: KD2-KD5. routine-opus, record-only.
+     unit, verify-only. deps: KD2-KD5, KD10. routine-opus, record-only.
+KD9  [CM-first gate for KD6+KD7 — NEW at REV 2 (F5)] the ladder/cap probe
+     (python): on the KD1 boxes, (i) verify the strict key-weight climb
+     per recentering empirically and search for a recentering with ZERO
+     ladder gain (refutes KD6's ladder law as sketched); (ii) fit w_final
+     against 1 + vdisc f and search for super-linear growth (refutes every
+     constant c(n) candidate for KD7). Sealed predictions before runs (Q6
+     discipline). deps: verification/. routine-opus, no Lean.
+KD10 `weightChargeFull_of_ladderCap` — NEW at REV 2 (the F3 reroute):
+     KeyWeightData ladder (KD6's conclusion) + weight cap (KD7's
+     conclusion) + REC-DISC (KD2) ⟹ WeightChargeFullP with s :=
+     2·D(n)·c(n). Sketch: on a history with ≥ 1 recentering, vdisc ≥ 1
+     (KD2), so #rec ≤ D·(w_final − w_init) ≤ D·c·(1 + vdisc) ≤
+     2·D·c·vdisc; zero-recentering histories give count 0 ≤ anything.
+     deps: KD2, KD6, KD7. routine-opus given deps, ~35 ln. THE schedulable
+     X.1b discharge route — never needs a constant restart cap.
 
 ### KE — X.3 general-n + exhaustion sharpening (files in MovesX + Kernels/)
 
@@ -633,33 +857,45 @@ KE1  NsNullP port (the paper-proved (ns-null)): the single-state
      KE1b (fiber-null assembly).
 KE2  [ATTEMPT] X2AffP: branch induction through D.11's per-move threshold
      form with scale product Π e_i ≤ n; candidate c₀ = n·C_move. deps:
-     XCtx.threshold laws (check which exist; if the per-move form is
-     unbuilt, ⚑ a named `ThresholdStep` law). hard-fable, ~90 ln;
-     fallback: obstruction record with the branch shape whose threshold
-     outruns the affine bound.
+     KE11 (CM gate — runs FIRST, REV 2 F5); XCtx.threshold laws (check
+     which exist; if the per-move form is unbuilt, ⚑ a named
+     `ThresholdStep` law). hard-fable, ~90 ln; fallback: obstruction
+     record with the branch shape whose threshold outruns the affine
+     bound.
 KE3  [ATTEMPT] X2CapP: from TB-CAP's per-clause caps ((τ-hen) N_V = 1
-     PROVED; (τ-irr) per-realized-cell). deps: [3t] TB-CAP Lean surface
-     (MovesT). hard-fable, ~70 ln; same fallback genre.
-KE4  [CM-first] X2TailsP countermodel probe (python): exhaustive tall-event
-     masses at n = 3, p ∈ {2,3}, h* ≤ 8 vs candidate (C_T, c_T) — refutes
-     candidates, never the existential. deps: verification/. routine-opus.
+     PROVED; (τ-irr) per-realized-cell). deps: KE11 (CM gate — runs
+     FIRST); [3t] TB-CAP Lean surface (MovesT). hard-fable, ~70 ln; same
+     fallback genre.
+KE4  [CM-first, TWO-PHASE — REV 2, F10: X2TailsP is EXISTENTIAL in
+     (C_T, c_T) (XConsts data), so NO finite probe refutes it, and a probe
+     run before the prover knows no candidate constants; the honest gate
+     shape is candidate-stress + divergence detection]. Phase 1 (BEFORE
+     the KE5 prover): exhaustive tall-event masses at n = 3, p ∈ {2,3},
+     h* ≤ 8; fit the empirical decay exponent; compute the EXPLICIT
+     candidate pair the KE5 sketch implies (the D4R.2 pool-bound
+     composition) and stress it; track mass·p^{c·h*} growth in h* as the
+     divergence detector (R8). Phase 2 (AFTER KE5 drafts its constants,
+     BEFORE acceptance): re-run against the prover's actual (C_T, c_T).
+     deps: verification/ (phase 2 also: KE5 draft). routine-opus.
 KE5  [ATTEMPT] X2TailsP: price the first height-≥h* read by D4R.2's pool
      bound; sum over prefixes with the species-menu branching factor.
-     deps: KE4; MovesD mass laws (D4R.1/D4R.2 built). hard-fable, ~90 ln;
+     deps: KE4 phase 1 (gate); MovesD mass laws (D4R.1/D4R.2 built);
+     acceptance gated on KE4 phase 2 (REV 2, F10). hard-fable, ~90 ln;
      fallback: the divergent-series obstruction record.
 KE6  [ATTEMPT] X2BridgeP clause 1 (the set decomposition): Undec(N) ⊆
      discZero ∪ nsFibers ∪ InfTree ∪ {thr+cap > N leaf branch}. deps:
-     XCtx decision-stability laws; likely ⚑ `DetectAtThr` named law.
-     hard-fable, ~70 ln.
+     KE12 (CM gate — runs FIRST, REV 2 F5); XCtx decision-stability laws;
+     likely ⚑ `DetectAtThr` named law. hard-fable, ~70 ln.
 KE7  X2BridgeP clause 2 (the a.e. clause) given clause 1 + null legs
      (discZero null = XF10 PROVED; nsFibers null = KE1; InfTree null = the
      route's own (a) leg — check XG3's exact form). deps: KE6, KE1.
      routine-opus given deps, ~40 ln.
 KE8  [ATTEMPT] ALIGN-inc: the certified-increment transport (GMN Cor 4.19
      accounting through the T0-T5 index table, reading A). Consumes the
-     declared GMN axiom (allowed; already trusted). deps: X1a table units
-     (MovesX XA/XB built). hard-fable, ~90 ln; fallback: the per-row
-     obstruction (which table row's transport fails).
+     declared GMN axiom (allowed; already trusted). deps: KE13 (CM gate —
+     runs FIRST, REV 2 F5); X1a table units (MovesX XA/XB built).
+     hard-fable, ~90 ln; fallback: the per-row obstruction (which table
+     row's transport fails).
 KE9  [ATTEMPT, lowest priority] X2ProgressP linear — only if KE2+KE3 land
      with room; the per-move mass-pricing idea. hard-fable; explicitly
      deferrable (X.3 does not consume it). ~100 ln.
@@ -667,36 +903,67 @@ KE10 the sharpening audit: a record unit tabulating, per X-kernel Prop,
      which n=3-sealed layer now has a general-n theorem (KD/KE outputs) vs
      a named obstruction — the area's exit report, feeds the CL ledger.
      deps: all. routine-opus, record-only.
+KE11 [CM-first gate for KE2+KE3 — NEW at REV 2 (F5)] the affine-envelope
+     probe (python): thresholds and caps vs 1 + Σ h_r across the n = 3
+     (and n = 2) census; fit c₀/c_cap candidates; search for branch
+     families whose threshold/cap outrun every affine candidate
+     (X2AffP/X2CapP carry XConsts data like tails — the gate is
+     candidate-stress + growth detection, not ∀-refutation). Sealed
+     predictions before runs. deps: verification/. routine-opus, no Lean.
+KE12 [CM-first gate for KE6 — NEW at REV 2 (F5)] the Undec-decomposition
+     probe (python): enumerate Undec(N) members at the census and check
+     the four-set cover clause-by-clause; a member outside the union
+     REFUTES KE6's set decomposition outright (clause 1 is a genuine ∀ —
+     finitely refutable, the strongest gate genre in this area). deps:
+     verification/. routine-opus, no Lean.
+KE13 [CM-first gate for KE8 — NEW at REV 2 (F5)] the ALIGN transport
+     row-check probe (python): recompute the T0-T5 index-table increments
+     on the census under reading A and check GMN Cor 4.19's accounting
+     row-by-row; a violating row pins the failing transport row before
+     any prover runs. deps: verification/. routine-opus, no Lean.
 
-DEPENDENCY SPINE (what unblocks what): KA1→KA5→(KA6b) and KA4a→KA4b→KA4c are
-independent chains; KB2-KB7 fan into KB8; KC3+KC4 before KC5; KD2→KD3→KD5;
-KE1 independent (highest value/effort ratio of the whole area); KE6→KE7.
+DEPENDENCY SPINE (what unblocks what; REV 2 — every [CM-first] gate is now
+an explicit dependency of its prover and is SEQUENCED FIRST, per the binding
+cross-area adjudication, F5): KA2d→KA2c; KA1→KA5 and KA4a→KA4b→KA4c are
+independent chains; KA6a(gate)+KA6b1→KA6b2; KB1a-c/KB2-KB7 + KB10(gate) fan
+into KB8a→KB8b; KB14(gate)→KB12/KB13 (→KB15 after the Q7 ruling);
+KC2a(gate)→KC2b; KC3+KC4(gate)→KC5; KD1(gate)→KD2→KD3, KD9(gate)→KD6→KD7,
+KD2+KD6+KD7→KD10→KD5; KE1 independent (highest value/effort ratio of the
+whole area); KE11(gate)→KE2/KE3; KE4-phase-1(gate)→KE5(→KE4-phase-2 before
+acceptance); KE12(gate)→KE6→KE7; KE13(gate)→KE8. DEFERRED (Q3): KA7, KC8.
 Nothing in this area blocks any other bridge-campaign area; consumers pull
-through the named Props only.
+through the named Props only (KB12/13's consumers: BP1's per-prime
+`UInstance` rows + the Q7-gated KB15 bridge; the abstract E5 row stays with
+BP3 TV-A1..A5 / owner HC-2).
 
 --------------------------------------------------------------------------------
 ## 5. RISKS — statements that could be FALSE as sketched (each with its
 countermodel-attempt unit, which runs BEFORE the prover)
 
-R1. **KA6b (exit-cell survival) may be FALSE at some wild pool.** The probes
-    themselves show cells DIE at p = 2 (six dead cells); the claim is only
-    that SOME exit cell survives per state. If an anchored state's window
-    pins every residual coefficient that controls squarefreeness, a pool
-    could kill all exits. CM unit: KA6a (adversarial synthetic-table +
-    real-menu search at q₀ ∈ {2,3,4,8,9}). A finding does NOT refute E0
-    itself (the class-level escape can survive per-state failure) — it
-    reroutes to the class-level form through KA2c.
-R2. **KA2c without substochasticity is FALSE** ([[2]]-type witnesses) and
-    **without reachability is FALSE** ([[1]]). CM unit: KA2d (compiled).
+R1. **KA6b2 (exit-cell survival) may be FALSE at some wild pool — and at
+    a ≥ 2 anchors the squarefree mechanism is provably ABSENT** (REV 2,
+    F2: z² divides every anchored-a≥2 residual regardless of the free
+    coefficients — compiled arithmetic, KA6b1's impossibility lemma; the
+    pre-revision universal was false as sketched). The probes also show
+    cells DIE at p = 2 (six dead cells); the claim is only that SOME exit
+    survives per state. CM unit: KA6a (adversarial synthetic-table +
+    real-menu search at q₀ ∈ {2,3,4,8,9}, a ≥ 2 anchored states FIRST). A
+    finding does NOT refute E0 itself (the class-level escape can survive
+    per-state failure) — it reroutes to the class-level form through KA2c.
+R2. **KA2c without substochasticity is FALSE** (witness !![0,2;1/2,0]:
+    reachability retained, A² = 1, no escape — REV 2, F4: the old [[2]]
+    witness failed its own premises) and **without reachability is FALSE**
+    ([[1]]). CM unit: KA2d (compiled, sequenced before KA2c).
     Guards the abstract layer against silent hypothesis drop.
-R3. **KB5 (weight exactness) hides the one real cancellation risk**: all
-    slot summands share weight W, so exactness rests entirely on the
-    leading-form read being τ ≠ 0. If the read map has cross-slot
-    interference the model breaks. CM check: KB10's corrupted-slot negative
-    control (probe NC1/NC2 transcribed) — it must FAIL for the corrupted
-    formula and PASS for offP; if interference appears, the obstruction
-    record pins the two slots and the enumeration is re-examined for the
-    same interference (it passed 40,378 cases, so a Lean-side failure most
+R3. **KB5 (weight exactness) hides the one real risk — positional overflow,
+    not class arithmetic** (REV 2, F1: all slots share the class j₀ mod e;
+    the risk is a summand's digits overflowing its Φ-adic position, i.e.
+    the degree invariant failing, or a transcription mismatch in the read
+    map). CM check: KB10's corrupted-slot negative control (probe NC1
+    transcribed at its own e ≥ 2 scope, + NC2/NC3) — it must FAIL for the
+    corrupted formula and PASS for offP; if interference appears, the
+    obstruction record pins the two positions and the enumeration is
+    re-examined (it passed 40,378 cases, so a Lean-side failure most
     likely means a transcription bug, not a math one — adjudicate before
     concluding either way).
 R4. **KC2b (DomProj derivable) is probably FALSE as a derivation** — dom is
@@ -715,13 +982,17 @@ R6. **KD2 (REC-DISC) could be FALSE** if some recentering occurs above an
     continuing track needs multiplicity ≥ 2 — the same (c2)/(R) content as
     KB13); the probe makes it an empirical gate first.
 R7. **KD3's s := L(n) reduction changes the CONSTANT's meaning** (the note's
-    s(n) is a charge factor, L(n) a restart cap). The Lean Props only need
-    SOME s — `XConsts.s` is existential data — so no statement fence issue,
-    but the CL-2 record line should note the discharge route (⚑ Q5).
+    s(n) is a charge factor, L(n) a restart cap; KD10's s := 2·D(n)·c(n)
+    is a third shape). The Lean Props only need SOME s — `XConsts.s` is
+    existential data — so no statement fence issue, but the CL-2 record
+    line should note the actual discharge route (Q5 ADJUDICATED: annotate
+    at discharge).
 R8. **KE5 (tails) may be FALSE with any fixed (C_T, c_T)** if per-depth
     branching outruns per-height decay — the known divergence risk. CM
-    unit: KE4 (candidate refuter). The existential form (∃ constants) is
-    what X2TailsP states; KE4 refutes candidates only.
+    unit: KE4, TWO-PHASE (REV 2, F10): phase 1 stresses the sketch-implied
+    candidates + detects divergence BEFORE the prover; phase 2 stresses
+    the prover's actual constants before acceptance. No finite probe can
+    refute the existential X2TailsP itself.
 R9. **HMC itself may be FALSE at the real table** (the note's wall channel
     is the designed escape). NOTHING in KC asserts HMC unconditionally;
     every KC output is a reduction, a perimeter theorem, or an instance
@@ -732,9 +1003,31 @@ R10. **KA4c's drain embedding may need CL-5's identification** (the nine
     identification hypothesis. Do not let a prover improvise the
     identification — that is the vacuity genre the campaign's round-1
     audits killed.
+R11. **(NEW at REV 2, F3) The ledger's constant-L TRACK-COUNT face
+    (`Cl7Kernel.track_restarts`) is plausibly FALSE** — a fixed-degree
+    family with increasing discriminant depth and successive recentering/
+    refinement steps is the natural stress family, and the only current
+    support is the finite 15/15 probe. Handling: NO prover is assigned to
+    (T-const) in this campaign; KD1's new stress leg probes it; the
+    WeightCharge discharge is rerouted through KD10 (never needs the
+    constant); the plausibility downgrade is ESCALATED cross-area (BP1
+    owns the Cl7Kernel row of theoremU's hypothesis surface). No fence
+    event: Cl7Kernel is hypothesis DATA — nothing is asserted in-corpus.
 
 --------------------------------------------------------------------------------
 ## 6. ORCHESTRATOR QUESTIONS (decisions this blueprint cannot make)
+
+STATUS AT REV 2 (2026-07-30): all eight were ADJUDICATED before the Codex
+review (BRIDGE_ADJUDICATIONS_2026-07-30.md, BP4 block); the rulings now bind
+the units above. Q1: Kernels/ mini-corpus RATIFIED + lakefile/AxChk sweep
+entry MANDATORY. Q2: prove over the transcribed enum model + seam unit
+(KB11 architecture ratified). Q3: N3 carriers DEFERRED (KA7/KC8 out of the
+campaign graph — REV 2, F11). Q4: confirmed — hypothesis/carrier shape only,
+never new fields on frozen structures. Q5: annotate at discharge. Q6: probe
+units count as campaign units, seal discipline applies. Q7: the
+instance-vs-interface adjudication is QUEUED (KB15 blocked on it). Q8:
+priority order confirmed. The original questions are preserved below for
+the record.
 
 Q1. **Namespace/placement for the new mini-corpus.** Proposed
     `lean/LeanUrat/Kernels/` (E0Matrix, E0Route, D4R0K/, HmcReduction,
@@ -781,5 +1074,108 @@ Q8. **Priority ordering under a bounded fleet.** Recommended: KE1 (paper
     reorder against the other areas' pull.
 
 --------------------------------------------------------------------------------
-END BRIDGE_BP4_KERNELS. Unit count 53 (13 KA / 13 KB / 9 KC / 8 KD / 10 KE);
-hardest heads: KA6b, KA2b, KB8, KB5, KC6, KD7, KE1, KE2, KE5, KE8.
+--------------------------------------------------------------------------------
+## REVISION 2 (2026-07-30, post-Codex) — finding-by-finding disposition log
+
+Codex adversarial review verdict REVISE (4 CRITICAL / 8 GAP / 1 NOTE);
+findings at /tmp/bridge/reviews/findings_bp4.txt. Every finding was verified
+against the repo sources before application (l1_boundary_enum.py,
+MovesS/Defs.lean, MovesU/DefsLedger.lean, MovesV/Defs.lean,
+MovesT/E5_rootSplit.lean, MovesX/Defs.lean, BRIDGE_BP3_TV §TV-A1). ALL 13
+FINDINGS APPLIED; none rebutted. Dispositions:
+
+F1  (CRITICAL, slot separation) APPLIED. Verified: slots j₀+ek are ALL
+    ≡ j₀ mod e (the reader checks single-class membership,
+    l1_boundary_enum.py:227) — the sketched "distinct mod e" justification
+    was arithmetically false. Fixed L1-iv, KB5, R3 to the true mechanism:
+    k ↦ j₀+ek injective ⟹ pairwise-distinct Φ-adic POSITIONS + the degree
+    invariant (now an explicit KB8a obligation). KB10's NC1 transcription
+    scoped to e ≥ 2 (the script's own scope; vacuous at e = 1 — the
+    review's sub-point).
+F2  (CRITICAL, anchored squarefree-exit) APPLIED. For a ≥ 2 anchor pins,
+    z² divides every residual — no squarefree residual exists; the KA6b
+    universal was false as sketched. §3.A (1d) rewritten as an a-indexed
+    case split; KA6b retired, split into KA6b1 (counting layer + the
+    compiled a ≥ 2 impossibility lemma) and KA6b2 (seam attempt, restated
+    target, reroute option); KA6a search order now anchored-a≥2-first; R1
+    updated.
+F3  (CRITICAL, constant TRACK-COUNT) APPLIED. Verified `track_restarts`
+    is a constant-L p-uniform bound (DefsLedger.lean:199-217); the KD6∘KD7
+    composition gives D(n)·c(n)·(1 + vdisc) — grows with vdisc, cannot
+    deliver it; the 15/15 probe is finite-only. §3.D rewritten to separate
+    (T-const) (open, no prover assigned, KD1 stress leg added, risk R11)
+    from (T-disc) (rerouted via NEW unit KD10: ladder + cap + REC-DISC ⟹
+    WeightChargeFullP with s := 2·D(n)·c(n)); KD3/KD4 carry status notes
+    (sound implications, unsupported premise); KD5 re-pointed. ESCALATED
+    cross-area (BP1 owns the Cl7Kernel row).
+F4  (CRITICAL, KA2d witness) APPLIED. Verified: [[2]]'s single row sums to
+    2, so no strict-deficit row exists — the reachability premise fails
+    rather than being retained. Replaced with A = !![0, 2; 1/2, 0] (ℚ):
+    reachability holds, substochasticity fails, A² = 1 ⟹ A^{2k}𝟙 = 𝟙, no
+    escape. [[1]] retained for the reachability leg. R2 updated.
+F5  (GAP, CM-first ordering) APPLIED. KA2d now an explicit dependency of
+    KA2c (sequenced first); KB10 now a dependency of KB5; NEW CM-gate
+    units created for every previously ungated risky universal: KB14 (for
+    KB12/KB13), KD9 (for KD6/KD7), KE11 (for KE2/KE3), KE12 (for KE6),
+    KE13 (for KE8); KE4 reshaped (see F10). Dependency spine rewritten
+    with gates explicit.
+F6  (GAP, min-positive-entry at A = 0) APPLIED. KA2b's ε redefined as the
+    per-state path-product · end-deficit (empty product = 1 covers path
+    length 0 and A = 0); §3.A (1b) sketch rewritten to match.
+F7  (GAP, KA4a not typed) APPLIED. Interface fully decided: `blockMass`
+    is a DEF into ℝ with the single ℚ→ℝ coercion displayed; law_zero/
+    law_step/antitone are lemmas (law_step now complete); the tie is
+    definitional; `BlockDrain` is an ℝ-ciInf Prop (ℚ lacks the infima —
+    the codomain decision is forced and recorded); KA4b restated with the
+    cast-back step. §3.A ROUTE 2 rewritten to match.
+F8  (GAP, E5 consumer mismatch) APPLIED. KB12/KB13 re-targeted to the
+    canonical-instance legs of BP3 TV-A1's named `TrackUniqOn`/`TrackRepOn`
+    (the sibling interface reconciliation); the false "discharge the E5
+    sorry at the canonical instance" claim deleted; consumers = BP1's
+    per-prime UInstance rows; NEW unit KB15 (statement-only, blocked on
+    the queued Q7 adjudication) reserves the instance-vs-interface bridge.
+    §3.B consumer paragraph rewritten.
+F9  (GAP, MarkCompose ambiguity) APPLIED. MarkCompose DEFINED as the bare
+    typed implication (structural reading demoted to motivation — it would
+    need unratified vocabulary + a translation theorem); KC5 relabeled
+    honest DEFINITIONAL ASSEMBLY shipping only with its KC4/KC6 content
+    guards; §1 (G-C) and §3.C updated.
+F10 (GAP, KE4 gate shape) APPLIED. KE4 reshaped TWO-PHASE: phase 1
+    (pre-prover) candidate-stress on the sketch-implied constants +
+    divergence detection; phase 2 (post-draft, pre-acceptance) re-run on
+    the prover's actual constants; KE5 acceptance gated on phase 2; R8
+    updated. Recorded: no finite probe refutes the existential.
+F11 (GAP, N3 deferral) APPLIED. KA7 and KC8 marked DEFERRED per the Q3
+    adjudication, out of the campaign graph (ids reserved); ROUTE 3
+    marked deferred and removed from the advertised E0 routes; §6 status
+    block records all eight adjudications.
+F12 (GAP, unit count) APPLIED. Pre-revision true count was 55 (KA had 15
+    addressable units), not the declared 53. Post-revision declared
+    count: 64 schedulable + 2 deferred (see END line).
+F13 (NOTE, oversized units) APPLIED. KB1 → KB1a/KB1b/KB1c (records /
+    carrier / non-vacuity gate); KB8 → KB8a/KB8b (construction+eligibility
+    +degree-invariant / the induction, with the further exactness-vs-read
+    split pre-planned); KA6b → KA6b1/KA6b2 (counting layer / table seam) —
+    splits made in the dependency plan now, not at stall.
+
+ESCALATIONS (returned to the orchestrator, not decided here):
+E-1 (from F3) The constant-L TRACK-COUNT face (`Cl7Kernel.track_restarts`,
+    theoremU hypothesis surface, owner BP1) has NO supported general route
+    in any blueprint and is plausibly false (fixed-degree increasing-vdisc
+    stress family). BP4 reroutes WeightCharge through KD10 and probes
+    (T-const) via KD1's stress leg; BP1/campaign messaging about the CL-7
+    face needs an orchestrator decision. Not a fence event (hypothesis
+    data; nothing asserted in-corpus).
+E-2 (from F8) The queued Q7 adjudication should ALSO fix (i) that KB12/13
+    target TV-A1's named Props at the canonical carriers (cross-blueprint
+    interface now written into BP4) and (ii) the shape of the KB15 bridge;
+    until it lands, KB12/13's only consumer edge is BP1's instance rows.
+
+No new statement-fence events surfaced: every revision is blueprint-level;
+the one new compiled lemma (KA6b1's a ≥ 2 impossibility) is additive; no
+frozen Lean statement is touched; no adjudicated decision was found wrong.
+
+--------------------------------------------------------------------------------
+END BRIDGE_BP4_KERNELS (REV 2). Unit count 64 schedulable
+(15 KA / 18 KB / 8 KC / 10 KD / 13 KE) + 2 DEFERRED (KA7, KC8 — Q3);
+hardest heads: KA6b2, KA2b, KB8b, KB5, KC6, KD7, KE1, KE2, KE5, KE8.

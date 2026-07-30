@@ -62,9 +62,9 @@ Immediate from `selfLoopChain_succ` at `k = 0` (which peels the level-0 read) an
 `selfLoopChain 0` (`selfLoopChain_zero`). -/
 theorem selfLoopChain_one_iff (g : QuotientBox.monicBox p N μ) :
     selfLoopChain p N μ c hN 1 g
-      ↔ classify1 p g = some (Drainage.selfLoopCell μ) := by
-  rw [selfLoopChain_succ p N μ c hN 0 g]
-  exact and_iff_left (selfLoopChain_zero p N μ c hN _)
+      ↔ classify1 p g = some (Drainage.selfLoopCell μ) :=
+  (selfLoopChain_succ p N μ c hN 0 g).trans
+    (and_iff_left (selfLoopChain_zero p N μ c hN _))
 
 /-- **The depth-1 anchor as a genuine `stratumCount1` (`stratumCount1_selfLoop_eq_chain1`).**  The
 genuine order-1 self-loop stratum count over the size-`μ` box equals the depth-`1` self-loop chain
@@ -77,9 +77,8 @@ HONEST: this is the k = 1 base case; it is NOT the k ≥ 2 census.  Both sides c
 `selfLoopChain_one_iff`. -/
 theorem stratumCount1_selfLoop_eq_chain1 :
     stratumCount1 p μ N (Drainage.selfLoopCell μ)
-      = Nat.card {g : QuotientBox.monicBox p N μ // selfLoopChain p N μ c hN 1 g} := by
-  unfold stratumCount1
-  exact Nat.card_congr (Equiv.subtypeEquivRight fun g => (selfLoopChain_one_iff p N μ c hN g).symm)
+      = Nat.card {g : QuotientBox.monicBox p N μ // selfLoopChain p N μ c hN 1 g} :=
+  Nat.card_congr (Equiv.subtypeEquivRight fun g => (selfLoopChain_one_iff p N μ c hN g).symm)
 
 /-- **The depth-1 anchor as a `CellCard.InCell` fiber (`stratumCount1_selfLoop_eq_inCell`).**  Via
 `StratumOrder1.stratumCount1_eq_cellCard`, the genuine order-1 self-loop stratum count is the
