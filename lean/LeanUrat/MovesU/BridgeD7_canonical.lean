@@ -84,6 +84,28 @@ theorem bridgeCanonical_pin (n p : ℕ) [Fact p.Prime]
     bridgeCanonical n p boxeq N f = some σ ↔
       ∃ T : bridgeTree n p σ, bridgeThr n p σ T ≤ N ∧
         (bridgeVt n p σ T).fiberAt (bridgeTm p n N) (bridgeChart n N hN)
-          (boxeq N f) := sorry
+          (boxeq N f) := by
+  unfold bridgeCanonical
+  rw [dif_pos hN]
+  constructor
+  · intro hsome
+    by_cases h : ∃ (σ' : SplittingType n) (T : bridgeTree n p σ'),
+        bridgeThr n p σ' T ≤ N ∧
+          (bridgeVt n p σ' T).fiberAt (bridgeTm p n N) (bridgeChart n N hN)
+            (boxeq N f)
+    · rw [dif_pos h] at hsome
+      have hσ : h.choose = σ := Option.some_injective _ hsome
+      subst hσ
+      exact h.choose_spec
+    · rw [dif_neg h] at hsome
+      exact absurd hsome.symm (Option.some_ne_none σ)
+  · rintro ⟨T, hthr, hfib⟩
+    have hex : ∃ (σ' : SplittingType n) (T : bridgeTree n p σ'),
+        bridgeThr n p σ' T ≤ N ∧
+          (bridgeVt n p σ' T).fiberAt (bridgeTm p n N) (bridgeChart n N hN)
+            (boxeq N f) := ⟨σ, T, hthr, hfib⟩
+    rw [dif_pos hex]
+    obtain ⟨T', hthr', hfib'⟩ := hex.choose_spec
+    exact congrArg some (bridgeSigma_eq_of_fiberAt T' T hN hfib' hfib)
 
 end LeanUrat.MovesU

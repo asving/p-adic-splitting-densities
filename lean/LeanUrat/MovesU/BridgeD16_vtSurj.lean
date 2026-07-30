@@ -58,7 +58,9 @@ theorem bridge_realizedSelf_of_realizes {p : ℕ} [Fact p.Prime] {n : ℕ}
     MovesT.Realizes (Tm (max (V.thr n) 1))
       (chart (max (V.thr n) 1) (lt_of_lt_of_le zero_lt_one (le_max_right _ _)))
       V := by
-  sorry
+  exact transfer V N (max (V.thr n) 1) hN
+    (lt_of_lt_of_le zero_lt_one (le_max_right _ _)) hthr
+    (le_max_left _ _) hreal
 
 /-- (†5) `vt_surj`, the COMPLETENESS direction at the inlined carrier (file
     header): a realized σ.1-typemult tree within threshold lies in the (†5)
@@ -80,6 +82,7 @@ theorem bridge_vt_surj {p : ℕ} [Fact p.Prime] {n : ℕ}
           (chart (max (V'.thr n) 1)
             (lt_of_lt_of_le zero_lt_one (le_max_right _ _))) V'},
       T.1 = V := by
-  sorry
+  exact ⟨⟨V, htm,
+    bridge_realizedSelf_of_realizes Tm chart transfer V N hN hthr hreal⟩, rfl⟩
 
 end LeanUrat.MovesU

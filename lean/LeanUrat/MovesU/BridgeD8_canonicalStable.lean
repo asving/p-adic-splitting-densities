@@ -55,6 +55,17 @@ theorem bridgeCanonical_stable (n p : ℕ) [Fact p.Prime]
     (TR : TransferRow n p boxeq)
     {N N' : ℕ} (h : N ≤ N') (f : Box p n N') (σ : SplittingType n) :
     bridgeCanonical n p boxeq N (boxProj p n h f) = some σ →
-    bridgeCanonical n p boxeq N' f = some σ := sorry
+    bridgeCanonical n p boxeq N' f = some σ := by
+  intro hsome
+  rcases Nat.eq_zero_or_pos N with h0 | hN
+  · subst h0
+    rw [bridgeCanonical_level0] at hsome
+    exact absurd hsome.symm (Option.some_ne_none σ)
+  · have hN' : 0 < N' := lt_of_lt_of_le hN h
+    obtain ⟨T, hthr, hfib⟩ :=
+      (bridgeCanonical_pin n p boxeq N hN (boxProj p n h f) σ).mp hsome
+    exact (bridgeCanonical_pin n p boxeq N' hN' f σ).mpr
+      ⟨T, le_trans hthr h,
+        TR.fiber_transfer (bridgeVt n p σ T) N N' hN hN' h f hthr hfib⟩
 
 end LeanUrat.MovesU

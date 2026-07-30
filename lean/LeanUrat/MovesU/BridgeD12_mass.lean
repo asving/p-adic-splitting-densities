@@ -64,7 +64,9 @@ theorem bridgeMass_ne_top {p : ℕ} [Fact p.Prime] {n : ℕ}
     (chart : ∀ N : ℕ, 0 < N → Fin n → Fin (n * N))
     (V : MovesT.VTree p (ZMod p)) :
     bridgeMass Tm chart V ≠ ⊤ := by
-  sorry
+  have hp : (p : ℝ≥0∞) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (Fact.out : p.Prime).ne_zero
+  exact ENNReal.div_ne_top (ENNReal.natCast_ne_top _) (pow_ne_zero _ hp)
 
 /-- THE lvl EDGE (†9 tail): at threshold 0 the mass reads the LEVEL-1 fiber
     (lvl = max 0 1 = 1) — the same guard discipline as `TreePin.chart`
@@ -78,6 +80,14 @@ theorem bridgeMass_thr_zero {p : ℕ} [Fact p.Prime] {n : ℕ}
       = (Nat.card {x : MovesD.Box p (n * 1) //
           V.fiberAt (Tm 1) (chart 1 one_pos) x} : ℝ≥0∞)
         / (p : ℝ≥0∞) ^ (n * 1) := by
-  sorry
+  have key : ∀ (M : ℕ) (hM : 0 < M), max (V.thr n) 1 = M →
+      bridgeMass Tm chart V
+        = (Nat.card {x : MovesD.Box p (n * M) //
+            V.fiberAt (Tm M) (chart M hM) x} : ℝ≥0∞)
+          / (p : ℝ≥0∞) ^ (n * M) := by
+    intro M hM hMax
+    subst hMax
+    rfl
+  exact key 1 one_pos (by rw [h]; exact Nat.zero_max 1)
 
 end LeanUrat.MovesU

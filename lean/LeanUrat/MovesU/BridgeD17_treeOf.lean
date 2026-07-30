@@ -86,7 +86,16 @@ theorem bridgeTreeOf_thr_le {n p : ℕ} [Fact p.Prime] {X : ClassifierSpec n p}
     (σ : SplittingType n) (N : ℕ)
     (f : {f : Box p n N // X.canonical N f = some σ}) :
     F.thr σ (bridgeTreeOf F Tm chart boxeq vt hzero hpin σ N f) ≤ N := by
-  sorry
+  by_cases hN : 0 < N
+  · unfold bridgeTreeOf
+    rw [dif_pos hN]
+    exact ((hpin N hN f.1 σ).mp f.2).choose_spec.1
+  · exfalso
+    have h0 : N = 0 := by omega
+    subst h0
+    have h2 := f.2
+    rw [hzero f.1] at h2
+    exact Option.some_ne_none σ h2.symm
 
 /-- (†9) `treeOf_pin` — `TreePin.treeOf_pin`'s supply (DefsLedger.lean:369):
     the assigned tree FIBERS at the class (choose_spec, second conjunct). -/
@@ -106,6 +115,8 @@ theorem bridgeTreeOf_pin {n p : ℕ} [Fact p.Prime] {X : ClassifierSpec n p}
     (f : {f : Box p n N // X.canonical N f = some σ}) :
     (vt σ (bridgeTreeOf F Tm chart boxeq vt hzero hpin σ N f)).fiberAt
       (Tm N) (chart N hN) (boxeq N f.1) := by
-  sorry
+  unfold bridgeTreeOf
+  rw [dif_pos hN]
+  exact ((hpin N hN f.1 σ).mp f.2).choose_spec.2
 
 end LeanUrat.MovesU

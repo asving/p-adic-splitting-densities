@@ -60,6 +60,8 @@ theorem bridge_vt_real {p : ℕ} [Fact p.Prime] {n : ℕ}
       V)
     (N : ℕ) (hN : 0 < N) (hthr : V.thr n ≤ N) :
     MovesT.Realizes (Tm N) (chart N hN) V := by
-  sorry
+  exact transfer V (max (V.thr n) 1) N
+    (lt_of_lt_of_le zero_lt_one (le_max_right _ _)) hN
+    (le_max_left _ _) hthr hself
 
 end LeanUrat.MovesU
