@@ -548,3 +548,22 @@ l = 0 corner EXCLUDED (not a read: side width w' = e*l >= 1, M-SPECIES SP.1).
 [PASS] real-menu search: every (state, pool) retains a surviving exit cell  
 P3 record: every a >= 2 (state, pool) retains an exit cell — True; survivor = the cofactor-criterion exit (SPLIT under reading A, TERM under reading B); insensitive to the contested free_surj premise.
 VERDICT: ALL SEALED LEGS PASS; exit code 0.
+
+
+##### ke4_tails_stress_probe.py (UNIT KE4: tails candidate-stress gate for KE5) #####
+run 2026-07-30 21:37:08; PHASE FLAG: phase 1 (pre-prover; phase 2 blocked on the KE5 draft); spec BRIDGE_BP4_KERNELS_2026-07-30.md §4 KE4 + §3.E (E-iv) + R8; long log /tmp/ke4_tails_stress.out
+[PASS] KE4-V1 p=2: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)  sigma [708608, 5038080, 4329472, 3951616, 2705408] vs [708608, 5038080, 4329472, 3951616, 2705408]; undec 44032 vs 44032
+[PASS] KE4-V2 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0  {}
+[PASS] KE4-P1 p=2: fitted empirical decay exponent c_T^emp > 0 (geometric decay of frac(TallEvent h*))  per-step slopes [1.1907, 0.8651, 1.2417, 0.9599, 1.7269, 1.2932] (min 0.8651, mean 1.2129) over positive range h*=[1, 2, 3, 4, 5, 6, 7]
+[PASS] KE4-R8a p=2: the sketch composition series CONVERGES (analytic divergence check on sum_d B^d prod G_i)  S = 1263.3869
+[PASS] KE4-P2 p=2: candidate sketch (C_T=3.74e+05, c_T=1) passes in-box at every h* <= 8  violations []; margin-could-hide rows []
+[PASS] KE4-P2 p=2: candidate reference_Xn3 (C_T=53, c_T=1) passes in-box at every h* <= 8  violations []; margin-could-hide rows []
+[PASS] KE4-P3 p=2: divergence detector frac_low·p^(h*) bounded, no growing trend (R8)  seq [1.247587, 1.093102, 1.200226, 1.015076, 1.043701, 0.630615, 0.514648, 0.0]; log_p trend slope -0.2008
+[PASS] KE4-V1 p=3: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)  sigma [927288, 5196312, 4269024, 2726460, 1185354] vs [927288, 5196312, 4269024, 2726460, 1185354]; undec 44469 vs 44469
+[PASS] KE4-V2 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0  {}
+[PASS] KE4-P1 p=3: fitted empirical decay exponent c_T^emp > 0 (geometric decay of frac(TallEvent h*))  per-step slopes [1.2406, 0.9281, 1.8509] (min 0.9281, mean 1.3399) over positive range h*=[1, 2, 3, 4]
+[PASS] KE4-R8a p=3: the sketch composition series CONVERGES (analytic divergence check on sum_d B^d prod G_i)  S = 1111.5624
+[PASS] KE4-P2 p=3: candidate sketch (C_T=1.2e+06, c_T=1) passes in-box at every h* <= 8  violations []; margin-could-hide rows []
+[PASS] KE4-P2 p=3: candidate reference_Xn3 (C_T=53, c_T=1) passes in-box at every h* <= 8  violations []; margin-could-hide rows [8]
+[PASS] KE4-P3 p=3: divergence detector frac_low·p^(h*) bounded, no growing trend (R8)  seq [1.437988, 1.103998, 1.194737, 0.469136, 0.0, 0.0, 0.0, 0.0]; log_p trend slope -0.2987
+KE4 VERDICT: 14/14 PASS, 0 FINDING

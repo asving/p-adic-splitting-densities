@@ -869,3 +869,18 @@ Also executed in the same pass (synthesis N6): the E5 fence-rule record's stale
 "2026-08-01" date (MovesT/E5_rootSplit.lean:338) corrected to 2026-07-29 with
 git evidence (commit 00b03aa, 2026-07-29 17:39 UTC) — same A23 mis-dating class
 as the MovesU corrections above.
+
+Synthesis N8 (the mechanical dedup backlog) — PARTIAL EXECUTION in the same pass,
+quick items only per the BP5 charge: (1) MovesT D14 `hist_ext` — EXECUTED: the
+private verbatim copy of F0_preHalt's public `history_ext` deleted, the missing
+import added, 2 uses re-pointed (D14_chainCharges is a leaf module; rebuilt green;
+G1_toyGate's type-specialized twin left for its prover per the TV_B8 note).
+(2) HC2 U14 boxInv/muWidth arithmetic dup (HC2#101) — EXECUTED: the verbatim
+hcw/hlen/e1/e2/s2/s3 block extracted once as private `muStep`; `boxInv` succ case
+and `muWidth_le` now consume it; statements unchanged; leaf module rebuilt green;
+net −23 lines. (3) MovesS `eval_algebraMap_div` triplication + the N2
+okat_div/evalAt_div idiom copies and (4) MovesD E7/E8 private pairs (MovesD#53) —
+NOT executed: both need de-privatize+import (new public names + import-DAG edits;
+the MovesD pair proves the same facts by DIFFERENT mechanisms, so a survivor must
+be chosen) — that is a real sweep unit with the Codex-equivalence discipline, not
+a quick fold-in; remains queued.

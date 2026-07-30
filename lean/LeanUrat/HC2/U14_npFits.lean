@@ -35,74 +35,16 @@ descends the window/width chain (`root_box`, `window`, `dchain`, `gmu`, `edvd`) 
 rim threshold `prevRimS n (r+1) = μ_r·childWidthS_r` never exceeds `n`.  Needed to place a
 band coordinate's base index inside `Finset.range n` (the box `NPband` sups over). -/
 
-/-- Box invariant: the window span times the frame width fits the box at every read. -/
-private lemma boxInv {n : ℕ} (P : Shape n) :
-    ∀ (r : ℕ) (hr : r < (P : ShapePrefix).reads.length),
-      (((P : ShapePrefix).reads[r]'hr).s0 + ((P : ShapePrefix).reads[r]'hr).wSide)
-        * ((P : ShapePrefix).reads[r]'hr).Dwidth ≤ n := by
-  intro r
-  induction r with
-  | zero =>
-    intro hr
-    have hD : ((P : ShapePrefix).reads[0]'hr).Dwidth = 1 := P.2.dchain0 hr
-    have hbox : ((P : ShapePrefix).reads[0]'hr).s0 + ((P : ShapePrefix).reads[0]'hr).wSide ≤ n :=
-      P.2.root_box hr
-    rw [hD, Nat.mul_one]; exact hbox
-  | succ k ih =>
-    intro hr
-    have hk : k < (P : ShapePrefix).reads.length := by omega
-    have ihk := ih hk
-    have hwin := P.2.window k hr
-    have hdc := P.2.dchain k hr
-    have hgmu := P.2.gmu k hk
-    have hed := P.2.edvd k hk
-    -- goal: (s0_{k+1} + wSide_{k+1}) * Dwidth_{k+1} ≤ n
-    rw [hdc]
-    -- childWidthS_k = e_k * g_k * Dwidth_k
-    have hcw : ((P : ShapePrefix).reads[k]'hk).childWidthS
-        = ((P : ShapePrefix).reads[k]'hk).e * ((P : ShapePrefix).reads[k]'hk).g
-            * ((P : ShapePrefix).reads[k]'hk).Dwidth := rfl
-    -- e_k * len_k = wSide_k
-    have hlen : ((P : ShapePrefix).reads[k]'hk).e * ((P : ShapePrefix).reads[k]'hk).len
-        = ((P : ShapePrefix).reads[k]'hk).wSide := by
-      show ((P : ShapePrefix).reads[k]'hk).e
-          * (((P : ShapePrefix).reads[k]'hk).wSide / ((P : ShapePrefix).reads[k]'hk).e)
-          = ((P : ShapePrefix).reads[k]'hk).wSide
-      exact Nat.mul_div_cancel' hed
-    -- (s0_{k+1}+wSide_{k+1}) * childWidthS_k ≤ μ_k * childWidthS_k
-    have s1 : (((P : ShapePrefix).reads[k+1]'hr).s0 + ((P : ShapePrefix).reads[k+1]'hr).wSide)
-          * ((P : ShapePrefix).reads[k]'hk).childWidthS
-        ≤ ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS :=
-      Nat.mul_le_mul hwin le_rfl
-    -- μ_k * childWidthS_k ≤ wSide_k * Dwidth_k
-    have s2 : ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS
-        ≤ ((P : ShapePrefix).reads[k]'hk).wSide * ((P : ShapePrefix).reads[k]'hk).Dwidth := by
-      have e1 : ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS
-          = ((P : ShapePrefix).reads[k]'hk).e
-              * (((P : ShapePrefix).reads[k]'hk).g * ((P : ShapePrefix).reads[k]'hk).μ)
-              * ((P : ShapePrefix).reads[k]'hk).Dwidth := by rw [hcw]; ring
-      have e2 : ((P : ShapePrefix).reads[k]'hk).e
-            * (((P : ShapePrefix).reads[k]'hk).g * ((P : ShapePrefix).reads[k]'hk).μ)
-          ≤ ((P : ShapePrefix).reads[k]'hk).wSide := by
-        calc ((P : ShapePrefix).reads[k]'hk).e
-                * (((P : ShapePrefix).reads[k]'hk).g * ((P : ShapePrefix).reads[k]'hk).μ)
-              ≤ ((P : ShapePrefix).reads[k]'hk).e * ((P : ShapePrefix).reads[k]'hk).len :=
-                Nat.mul_le_mul le_rfl hgmu
-          _ = ((P : ShapePrefix).reads[k]'hk).wSide := hlen
-      rw [e1]
-      exact Nat.mul_le_mul e2 le_rfl
-    -- wSide_k * Dwidth_k ≤ (s0_k + wSide_k) * Dwidth_k
-    have s3 : ((P : ShapePrefix).reads[k]'hk).wSide * ((P : ShapePrefix).reads[k]'hk).Dwidth
-        ≤ (((P : ShapePrefix).reads[k]'hk).s0 + ((P : ShapePrefix).reads[k]'hk).wSide)
-            * ((P : ShapePrefix).reads[k]'hk).Dwidth :=
-      Nat.mul_le_mul (Nat.le_add_left _ _) le_rfl
-    exact le_trans s1 (le_trans s2 (le_trans s3 ihk))
-
-/-- The rim threshold `μ_k · childWidthS_k` fits the box. -/
-private lemma muWidth_le {n : ℕ} (P : Shape n) (k : ℕ)
+/-- [BP5/N8 dedup 2026-07-30 (HC2#101): the shared `hcw/hlen/e1/e2/s2/s3` arithmetic block,
+previously verbatim in BOTH `boxInv`'s succ case and `muWidth_le`, extracted once. No
+statement changes; both consumers' statements unchanged.]
+Shared step: the rim threshold `μ_k · childWidthS_k` is dominated by read `k`'s own box
+term `(s0_k + wSide_k) · Dwidth_k`. -/
+private lemma muStep {n : ℕ} (P : Shape n) (k : ℕ)
     (hk : k < (P : ShapePrefix).reads.length) :
-    ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS ≤ n := by
-  have hbox := boxInv P k hk
+    ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS
+      ≤ (((P : ShapePrefix).reads[k]'hk).s0 + ((P : ShapePrefix).reads[k]'hk).wSide)
+          * ((P : ShapePrefix).reads[k]'hk).Dwidth := by
   have hgmu := P.2.gmu k hk
   have hed := P.2.edvd k hk
   have hcw : ((P : ShapePrefix).reads[k]'hk).childWidthS
@@ -133,7 +75,42 @@ private lemma muWidth_le {n : ℕ} (P : Shape n) (k : ℕ)
       ≤ (((P : ShapePrefix).reads[k]'hk).s0 + ((P : ShapePrefix).reads[k]'hk).wSide)
           * ((P : ShapePrefix).reads[k]'hk).Dwidth :=
     Nat.mul_le_mul (Nat.le_add_left _ _) le_rfl
-  exact le_trans s2 (le_trans s3 hbox)
+  exact le_trans s2 s3
+
+/-- Box invariant: the window span times the frame width fits the box at every read. -/
+private lemma boxInv {n : ℕ} (P : Shape n) :
+    ∀ (r : ℕ) (hr : r < (P : ShapePrefix).reads.length),
+      (((P : ShapePrefix).reads[r]'hr).s0 + ((P : ShapePrefix).reads[r]'hr).wSide)
+        * ((P : ShapePrefix).reads[r]'hr).Dwidth ≤ n := by
+  intro r
+  induction r with
+  | zero =>
+    intro hr
+    have hD : ((P : ShapePrefix).reads[0]'hr).Dwidth = 1 := P.2.dchain0 hr
+    have hbox : ((P : ShapePrefix).reads[0]'hr).s0 + ((P : ShapePrefix).reads[0]'hr).wSide ≤ n :=
+      P.2.root_box hr
+    rw [hD, Nat.mul_one]; exact hbox
+  | succ k ih =>
+    intro hr
+    have hk : k < (P : ShapePrefix).reads.length := by omega
+    have ihk := ih hk
+    have hwin := P.2.window k hr
+    have hdc := P.2.dchain k hr
+    -- goal: (s0_{k+1} + wSide_{k+1}) * Dwidth_{k+1} ≤ n
+    rw [hdc]
+    -- (s0_{k+1}+wSide_{k+1}) * childWidthS_k ≤ μ_k * childWidthS_k
+    have s1 : (((P : ShapePrefix).reads[k+1]'hr).s0 + ((P : ShapePrefix).reads[k+1]'hr).wSide)
+          * ((P : ShapePrefix).reads[k]'hk).childWidthS
+        ≤ ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS :=
+      Nat.mul_le_mul hwin le_rfl
+    -- μ_k * childWidthS_k ≤ (s0_k + wSide_k) * Dwidth_k: the shared muStep block
+    exact le_trans s1 (le_trans (muStep P k hk) ihk)
+
+/-- The rim threshold `μ_k · childWidthS_k` fits the box. -/
+private lemma muWidth_le {n : ℕ} (P : Shape n) (k : ℕ)
+    (hk : k < (P : ShapePrefix).reads.length) :
+    ((P : ShapePrefix).reads[k]'hk).μ * ((P : ShapePrefix).reads[k]'hk).childWidthS ≤ n := by
+  exact le_trans (muStep P k hk) (boxInv P k hk)
 
 /-- Every rim threshold sits inside the degree-`n` box (`prevRimS n i ≤ n`). -/
 private lemma prevRimS_le {n : ℕ} (P : Shape n) (i : ℕ) :

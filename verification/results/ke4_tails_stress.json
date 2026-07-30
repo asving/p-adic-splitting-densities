@@ -1,0 +1,451 @@
+{
+ "phase": 1,
+ "boxes": {
+  "p2": {
+   "p": 2,
+   "N": 8,
+   "box": 16777216,
+   "masses": {
+    "1": "654095/1048576",
+    "2": "143275/524288",
+    "3": "39329/262144",
+    "4": "16631/262144",
+    "5": "4275/131072",
+    "6": "2583/262144",
+    "7": "527/131072",
+    "8": "0"
+   },
+   "tall_hist": {
+    "0": 6311696,
+    "7": 67456,
+    "2": 2067744,
+    "5": 381888,
+    "4": 517184,
+    "1": 5880720,
+    "3": 1452672,
+    "6": 97856
+   },
+   "margin": "2571/262144",
+   "undec": 44032,
+   "witness": {
+    "0": [
+     0,
+     0,
+     0
+    ],
+    "7": [
+     0,
+     0,
+     128
+    ],
+    "2": [
+     0,
+     0,
+     64
+    ],
+    "5": [
+     0,
+     0,
+     32
+    ],
+    "4": [
+     0,
+     0,
+     16
+    ],
+    "1": [
+     0,
+     0,
+     8
+    ],
+    "3": [
+     0,
+     208,
+     128
+    ],
+    "6": [
+     0,
+     2,
+     128
+    ]
+   },
+   "letters_h0": {
+    "Q2[e1 l1 a0 fl[]|[1] lam[(1, 1)] sel(1, 1)]": 2,
+    "Q2[e1 l1 a1 fl[1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q2[e1 l2 a0 fl[]|[] lam[(1, 2)] sel(1, 2)]": 1,
+    "Q2[e1 l2 a0 fl[]|[] lam[(2, 1)] sel(2, 1)]": 1,
+    "Q2[e2 l1 a0 fl[]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l1 a0 fl[]|[1, 1] lam[(1, 1)] sel(1, 1)]": 3,
+    "Q3[e1 l1 a0 fl[]|[2] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l1 a1 fl[1]|[1] lam[(1, 1)] sel(1, 1)]": 2,
+    "Q3[e1 l1 a2 fl[1, 1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l1 a2 fl[2]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l2 a0 fl[]|[1] lam[(1, 2)] sel(1, 2)]": 2,
+    "Q3[e1 l2 a0 fl[]|[1] lam[(2, 1)] sel(2, 1)]": 2,
+    "Q3[e1 l2 a1 fl[1]|[] lam[(1, 2)] sel(1, 2)]": 1,
+    "Q3[e1 l2 a1 fl[1]|[] lam[(2, 1)] sel(2, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(2, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 3)] sel(1, 3)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(3, 1)] sel(3, 1)]": 1,
+    "Q3[e2 l1 a0 fl[1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e2 l1 a0 fl[]|[1] lam[(1, 1)] sel(1, 1)]": 3,
+    "Q3[e3 l1 a0 fl[]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e1 l1 a0 fl[]|[1, 1] lam[(1, 1)] sel(1, 1)]": 2,
+    "R[e1 l1 a0 fl[]|[2] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e1 l1 a1 fl[1]|[1] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e1 l1 a2 fl[1, 1]|[] lam[(1, 1)] sel(1, 1)]": 0,
+    "R[e1 l1 a2 fl[2]|[] lam[(1, 1)] sel(1, 1)]": 0,
+    "R[e1 l2 a0 fl[]|[1] lam[(1, 2)] sel(1, 2)]": 1,
+    "R[e1 l2 a0 fl[]|[1] lam[(2, 1)] sel(2, 1)]": 1,
+    "R[e1 l2 a1 fl[1]|[] lam[(1, 2)] sel(1, 2)]": 0,
+    "R[e1 l2 a1 fl[1]|[] lam[(2, 1)] sel(2, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(1, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(2, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 3)] sel(1, 3)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(3, 1)] sel(3, 1)]": 0,
+    "R[e2 l1 a0 fl[1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e2 l1 a0 fl[]|[1] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e3 l1 a0 fl[]|[] lam[(1, 1)] sel(1, 1)]": 1
+   },
+   "Rd": {
+    "0": 1,
+    "1": 7,
+    "2": 13,
+    "3": 9,
+    "4": 2
+   },
+   "menu_min": 7,
+   "branch_sd": 2,
+   "fit": {
+    "slopes": [
+     1.1907,
+     0.8651,
+     1.2417,
+     0.9599,
+     1.7269,
+     1.2932
+    ],
+    "cmin": 0.8651,
+    "cmean": 1.2129,
+    "pos_range": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   "sketch": {
+    "CT": "13157636569680165999/35184372088832",
+    "CT_float": 373962.52337430744,
+    "cT": 1,
+    "S": 1263.386903291579,
+    "Lmenu": 37,
+    "h0r": 3,
+    "h0c": 2,
+    "B": 2,
+    "ledger": [
+     "Lmenu = 37 census-realized letters (union-bound terms of the tall read; catalogue caps it at 53)",
+     "h0r = 3 = max_L h0(L) (census-anchored tall-read tooth offset, weaker-safe)",
+     "h0c = 2 = max h0 over continuing (sel m>=2) letters (chain-node tooth offset)",
+     "B = 2 = max realized per-prefix (species,digit) branching (the species-menu factor; heights priced separately in G_i)",
+     "strict climb (D.10): chain heights h_1 < h_2 < ... with h_i >= i-1 => depth before the first tall read <= h*+1; summed to the convergent infinite series for an h*-uniform C_T",
+     "S = sum_d B^d prod G_i = 1263.3869 (converged at depth 16; diverged=False)",
+     "=> sketch pair at p=2: C_T = Lmenu\u00b7p^h0r\u00b7S = 373962.52, c_T = 1"
+    ]
+   },
+   "stress": {
+    "sketch": {
+     "CT": 373962.52337430744,
+     "cT": 1,
+     "violations": [],
+     "margin_could_hide": [],
+     "detector_seq": [
+      1.247587,
+      1.093102,
+      1.200226,
+      1.015076,
+      1.043701,
+      0.630615,
+      0.514648,
+      0.0
+     ],
+     "trend_slope": -0.2008,
+     "growing_trend": false
+    },
+    "reference_Xn3": {
+     "CT": 53.0,
+     "cT": 1,
+     "violations": [],
+     "margin_could_hide": [],
+     "detector_seq": [
+      1.247587,
+      1.093102,
+      1.200226,
+      1.015076,
+      1.043701,
+      0.630615,
+      0.514648,
+      0.0
+     ],
+     "trend_slope": -0.2008,
+     "growing_trend": false
+    }
+   },
+   "cmin_emp": "654095/524288",
+   "secs": 5.3
+  },
+  "p3": {
+   "p": 3,
+   "N": 5,
+   "box": 14348907,
+   "masses": {
+    "1": "764206/1594323",
+    "2": "21730/177147",
+    "3": "23516/531441",
+    "4": "38/6561",
+    "5": "0",
+    "6": "0",
+    "7": "0",
+    "8": "0"
+   },
+   "tall_hist": {
+    "0": 7471053,
+    "4": 83106,
+    "3": 551826,
+    "2": 1125198,
+    "1": 5117724
+   },
+   "margin": "5719/531441",
+   "undec": 44469,
+   "witness": {
+    "0": [
+     0,
+     0,
+     0
+    ],
+    "4": [
+     0,
+     0,
+     162
+    ],
+    "3": [
+     0,
+     0,
+     216
+    ],
+    "2": [
+     0,
+     0,
+     18
+    ],
+    "1": [
+     0,
+     0,
+     6
+    ]
+   },
+   "letters_h0": {
+    "Q2[e1 l1 a0 fl[]|[1] lam[(1, 1)] sel(1, 1)]": 2,
+    "Q2[e1 l1 a1 fl[1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q2[e1 l2 a0 fl[]|[] lam[(1, 1), (1, 1)] sel(1, 1)]": 1,
+    "Q2[e1 l2 a0 fl[]|[] lam[(1, 2)] sel(1, 2)]": 1,
+    "Q2[e1 l2 a0 fl[]|[] lam[(2, 1)] sel(2, 1)]": 1,
+    "Q2[e2 l1 a0 fl[]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l1 a0 fl[]|[2] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l1 a2 fl[2]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l2 a1 fl[1]|[] lam[(1, 1), (1, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l2 a1 fl[1]|[] lam[(1, 2)] sel(1, 2)]": 1,
+    "Q3[e1 l2 a1 fl[1]|[] lam[(2, 1)] sel(2, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 1), (1, 2)] sel(1, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 1), (1, 2)] sel(1, 2)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(1, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(2, 1)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(1, 3)] sel(1, 3)]": 1,
+    "Q3[e1 l3 a0 fl[]|[] lam[(3, 1)] sel(3, 1)]": 1,
+    "Q3[e2 l1 a0 fl[1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "Q3[e2 l1 a0 fl[]|[1] lam[(1, 1)] sel(1, 1)]": 3,
+    "Q3[e3 l1 a0 fl[]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e1 l1 a0 fl[]|[1, 1] lam[(1, 1)] sel(1, 1)]": 2,
+    "R[e1 l1 a0 fl[]|[2] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e1 l1 a1 fl[1]|[1] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e1 l1 a2 fl[1, 1]|[] lam[(1, 1)] sel(1, 1)]": 0,
+    "R[e1 l1 a2 fl[2]|[] lam[(1, 1)] sel(1, 1)]": 0,
+    "R[e1 l2 a0 fl[]|[1] lam[(1, 1), (1, 1)] sel(1, 1)]": 1,
+    "R[e1 l2 a0 fl[]|[1] lam[(1, 2)] sel(1, 2)]": 1,
+    "R[e1 l2 a0 fl[]|[1] lam[(2, 1)] sel(2, 1)]": 1,
+    "R[e1 l2 a1 fl[1]|[] lam[(1, 1), (1, 1)] sel(1, 1)]": 0,
+    "R[e1 l2 a1 fl[1]|[] lam[(1, 2)] sel(1, 2)]": 0,
+    "R[e1 l2 a1 fl[1]|[] lam[(2, 1)] sel(2, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 1), (1, 2)] sel(1, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 1), (1, 2)] sel(1, 2)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(1, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 1), (2, 1)] sel(2, 1)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(1, 3)] sel(1, 3)]": 0,
+    "R[e1 l3 a0 fl[]|[] lam[(3, 1)] sel(3, 1)]": 0,
+    "R[e2 l1 a0 fl[1]|[] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e2 l1 a0 fl[]|[1] lam[(1, 1)] sel(1, 1)]": 1,
+    "R[e3 l1 a0 fl[]|[] lam[(1, 1)] sel(1, 1)]": 1
+   },
+   "Rd": {
+    "0": 1,
+    "1": 14,
+    "2": 32,
+    "3": 16
+   },
+   "menu_min": 14,
+   "branch_sd": 6,
+   "fit": {
+    "slopes": [
+     1.2406,
+     0.9281,
+     1.8509
+    ],
+    "cmin": 0.9281,
+    "cmean": 1.3399,
+    "pos_range": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "sketch": {
+    "CT": "82389905887102144040/68630377364883",
+    "CT_float": 1200487.4379323996,
+    "cT": 1,
+    "S": 1111.5624425299995,
+    "Lmenu": 40,
+    "h0r": 3,
+    "h0c": 1,
+    "B": 6,
+    "ledger": [
+     "Lmenu = 40 census-realized letters (union-bound terms of the tall read; catalogue caps it at 53)",
+     "h0r = 3 = max_L h0(L) (census-anchored tall-read tooth offset, weaker-safe)",
+     "h0c = 1 = max h0 over continuing (sel m>=2) letters (chain-node tooth offset)",
+     "B = 6 = max realized per-prefix (species,digit) branching (the species-menu factor; heights priced separately in G_i)",
+     "strict climb (D.10): chain heights h_1 < h_2 < ... with h_i >= i-1 => depth before the first tall read <= h*+1; summed to the convergent infinite series for an h*-uniform C_T",
+     "S = sum_d B^d prod G_i = 1111.5624 (converged at depth 13; diverged=False)",
+     "=> sketch pair at p=3: C_T = Lmenu\u00b7p^h0r\u00b7S = 1200487.44, c_T = 1"
+    ]
+   },
+   "stress": {
+    "sketch": {
+     "CT": 1200487.4379323996,
+     "cT": 1,
+     "violations": [],
+     "margin_could_hide": [],
+     "detector_seq": [
+      1.437988,
+      1.103998,
+      1.194737,
+      0.469136,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "trend_slope": -0.2987,
+     "growing_trend": false
+    },
+    "reference_Xn3": {
+     "CT": 53.0,
+     "cT": 1,
+     "violations": [],
+     "margin_could_hide": [
+      8
+     ],
+     "detector_seq": [
+      1.437988,
+      1.103998,
+      1.194737,
+      0.469136,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "trend_slope": -0.2987,
+     "growing_trend": false
+    }
+   },
+   "cmin_emp": "764206/531441",
+   "secs": 3.5
+  }
+ },
+ "verdicts": [
+  {
+   "name": "KE4-V1 p=2: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)",
+   "ok": true,
+   "detail": "sigma [708608, 5038080, 4329472, 3951616, 2705408] vs [708608, 5038080, 4329472, 3951616, 2705408]; undec 44032 vs 44032"
+  },
+  {
+   "name": "KE4-V2 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE4-P1 p=2: fitted empirical decay exponent c_T^emp > 0 (geometric decay of frac(TallEvent h*))",
+   "ok": true,
+   "detail": "per-step slopes [1.1907, 0.8651, 1.2417, 0.9599, 1.7269, 1.2932] (min 0.8651, mean 1.2129) over positive range h*=[1, 2, 3, 4, 5, 6, 7]"
+  },
+  {
+   "name": "KE4-R8a p=2: the sketch composition series CONVERGES (analytic divergence check on sum_d B^d prod G_i)",
+   "ok": true,
+   "detail": "S = 1263.3869"
+  },
+  {
+   "name": "KE4-P2 p=2: candidate sketch (C_T=3.74e+05, c_T=1) passes in-box at every h* <= 8",
+   "ok": true,
+   "detail": "violations []; margin-could-hide rows []"
+  },
+  {
+   "name": "KE4-P2 p=2: candidate reference_Xn3 (C_T=53, c_T=1) passes in-box at every h* <= 8",
+   "ok": true,
+   "detail": "violations []; margin-could-hide rows []"
+  },
+  {
+   "name": "KE4-P3 p=2: divergence detector frac_low\u00b7p^(h*) bounded, no growing trend (R8)",
+   "ok": true,
+   "detail": "seq [1.247587, 1.093102, 1.200226, 1.015076, 1.043701, 0.630615, 0.514648, 0.0]; log_p trend slope -0.2008"
+  },
+  {
+   "name": "KE4-V1 p=3: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)",
+   "ok": true,
+   "detail": "sigma [927288, 5196312, 4269024, 2726460, 1185354] vs [927288, 5196312, 4269024, 2726460, 1185354]; undec 44469 vs 44469"
+  },
+  {
+   "name": "KE4-V2 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE4-P1 p=3: fitted empirical decay exponent c_T^emp > 0 (geometric decay of frac(TallEvent h*))",
+   "ok": true,
+   "detail": "per-step slopes [1.2406, 0.9281, 1.8509] (min 0.9281, mean 1.3399) over positive range h*=[1, 2, 3, 4]"
+  },
+  {
+   "name": "KE4-R8a p=3: the sketch composition series CONVERGES (analytic divergence check on sum_d B^d prod G_i)",
+   "ok": true,
+   "detail": "S = 1111.5624"
+  },
+  {
+   "name": "KE4-P2 p=3: candidate sketch (C_T=1.2e+06, c_T=1) passes in-box at every h* <= 8",
+   "ok": true,
+   "detail": "violations []; margin-could-hide rows []"
+  },
+  {
+   "name": "KE4-P2 p=3: candidate reference_Xn3 (C_T=53, c_T=1) passes in-box at every h* <= 8",
+   "ok": true,
+   "detail": "violations []; margin-could-hide rows [8]"
+  },
+  {
+   "name": "KE4-P3 p=3: divergence detector frac_low\u00b7p^(h*) bounded, no growing trend (R8)",
+   "ok": true,
+   "detail": "seq [1.437988, 1.103998, 1.194737, 0.469136, 0.0, 0.0, 0.0, 0.0]; log_p trend slope -0.2987"
+  }
+ ]
+}
