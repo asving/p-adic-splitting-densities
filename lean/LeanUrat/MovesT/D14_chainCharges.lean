@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesT.Defs
 import LeanUrat.MovesT.E6_segStep
+import LeanUrat.MovesT.F0_preHalt
 
 /-! # T-D14 `chain_charge_ledger` — MovesS §W4-SYNC S-6: the chain telescopes to the
 chain's ROOT-CELL entrance (Σ₀), consuming `state_cell` at each step; the contract's
@@ -25,9 +26,9 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 variable {n N m : ℕ} {pol : CanonPolicy p F}
 
-/-- nodes determine a `History` (proof-irrelevant remaining fields). -/
-private theorem hist_ext {A B : History p F} (h : A.nodes = B.nodes) : A = B := by
-  cases A; cases B; simp only at h; subst h; rfl
+-- [BP5/N8 dedup 2026-07-30: the private `hist_ext` copy deleted — it was verbatim
+--  F0_preHalt's public `history_ext` (the golf-census "missing import" item); uses
+--  below re-pointed. No statement changes.]
 
 /-- the length-`H.nodes.length` prefix reconstructs `H`. -/
 private theorem prefixAt_length (H : History p F) (hne : H.nodes ≠ []) :
@@ -36,7 +37,7 @@ private theorem prefixAt_length (H : History p F) (hne : H.nodes ≠ []) :
   unfold prefixAt
   rw [dif_pos ⟨hlen, le_refl _⟩]
   congr 1
-  exact hist_ext (by simp)
+  exact history_ext (by simp)
 
 /-- H's own length-`length` read is a member of its chain-reads. -/
 private theorem self_mem_chainReads (Tr : VTree p F) (H : History p F)
@@ -60,7 +61,7 @@ private theorem prefixAt_eq_of_prefix (H H' : History p F) (k : ℕ)
     unfold prefixAt
     rw [dif_pos ⟨hk0, hkH⟩, dif_pos ⟨hk0, hk⟩]
     congr 1
-    apply hist_ext
+    apply history_ext
     show H.nodes.take k = H'.nodes.take k
     have hh : H'.nodes = H.nodes.take H'.nodes.length := List.prefix_iff_eq_take.mp hpre
     calc H.nodes.take k = H.nodes.take (min k H'.nodes.length) := by rw [min_eq_left hk]

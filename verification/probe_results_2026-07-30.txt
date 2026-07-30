@@ -536,3 +536,15 @@ reading. NO note error; NO Lean change (MovesX was ratified under the
 certified forms). CL-2 (WEIGHT-CHARGE) is untouched: it remains the OPEN
 kernel over the FULL recentering population (MOVES 11156-11164), consumed
 by X.2/X.3 as displayed.
+
+##### ka6a_exit_survival_probe.py (UNIT KA6a run, 2026-07-30) #####
+transcription: self-contained window model (python twin of Kernels/KA6b2.lean WindowModel) + real n<=3 menu;
+grid a in 0..4, l in 1..4, pools [2, 3, 4, 8, 9]; models free_surj + vertex_pinned; readings A (full residual) + B (R_anch);
+l = 0 corner EXCLUDED (not a read: side width w' = e*l >= 1, M-SPECIES SP.1).
+[PASS] P1: sqfree-residual count == 0 at EVERY a >= 2 (state, pool) [transcription leg]  
+[PASS] P2: sqfree-residual count > 0 at EVERY a <= 1 (state, pool) [the load-bearing seal]  
+[PASS] P3 (recorded, not sealed): every a >= 2 (state, pool) retains an exit cell  cofactor-criterion exit survives everywhere
+[PASS] P4: q0=2 dead-cell list == escape_probe_a §2 sealed six  got ['A.3dist', 'A.dblsimple', 'C_even.dist', 'D_even.dist', 'm2.o_split', 'root.m_H3']
+[PASS] real-menu search: every (state, pool) retains a surviving exit cell  
+P3 record: every a >= 2 (state, pool) retains an exit cell — True; survivor = the cofactor-criterion exit (SPLIT under reading A, TERM under reading B); insensitive to the contested free_surj premise.
+VERDICT: ALL SEALED LEGS PASS; exit code 0.

@@ -3,6 +3,7 @@
  "preamble": "import Mathlib; import LeanUrat.Moves.Defs; import LeanUrat.Moves.DefsT; import LeanUrat.Moves.DefsCore; import LeanUrat.Moves.DefsL; import LeanUrat.MovesGr.Defs; open Polynomial LeanUrat.Moves LeanUrat.MovesGr LeanUrat.MovesGr.SideVal; variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]",
  "elaboration_test": "All 26 statements elaborated together against the Defs preamble (`:= sorry`, `lake env lean`, exit 0, exactly 26 `sorry` warnings, zero errors) on 2026-07-26, Lean 4.31.0.",
  "rekey_2026-07-28": "OPTION (a) of blueprint §8.1 EXECUTED (signed off by Asvin, 2026-07-28): `GradedRingStr` gained the field `add_def : ∀ (x y : S.Gr) (γ : ℤ), (letI := ring; x + y) γ = x γ + y γ` — the ring's addition is componentwise, i.e. the DirectSum's. (Stated componentwise, NOT as the signed-off Gr-level equation: Lean makes the `ring` field an ambient instance for later field types, so a Gr-level RHS `x + y` silently re-reads the ring's `+` and states a tautology — machine-checked; see blueprint §8.4.) Every statement whose text mentions `GradedRingStr` is re-keyed by the structure change and carries a `rekey` marker below; statements consuming `GenuineStageModel` inherit the re-key through its `Rg : GradedRingStr` field.",
+ "bp5_quarantine_asbuilt_2026-07-30": "BP5 CL-21 + CL-26 EXECUTED (2026-07-30, per BRIDGE_BP5_CLEANUP_2026-07-30.md and the binding Q-5 adjudication 'quarantine-with-record'): eight modules moved to lean/quarantine/MovesGr_<name>_2026-07-30.lean.txt — the R2 six superseded modules (L1_gradedRingStr_exists v1, L1_gr_domain_iff_val v1 + v2, L2_coeffLoc v1, L2_degZero_subring v1 [sorry-FREE; true reason = same-name supersession after the add_def re-key, statement lines byte-identical to _v2 — the R-6 record], L4_genuine_imp_stageCoreL v1) and the two live FAITHLESS partials (L2_coeffLoc_v2, L4_genuine_imp_stageCoreL_v2; semaudit §B #15/#21; proved content preserved verbatim in the .txt files; the 4 derivable-in-principle v2 legs quoted in lean/quarantine/README.md for future fence-gated revival). Importer grep at execution time: zero live importers for all eight. POST-MOVE CENSUS: MovesGr live sorry tokens = 0 (was 20 on 19 lines in 7 files); all cross-module name collisions in MovesGr removed; root names L2_coeffLoc and L4_genuine_imp_stageCoreL now UNBOUND in the live tree; LeanUrat.MovesGr.L1_gradedRingStr_exists binds uniquely to the PROVED _2 module; expected golf-baseline delta (Group B gone; Group A loses root L1_gr_domain_iff_val) recorded in the quarantine README so fence checks do not read it as a regression. Full lake build green + BUILD-ONLY AxChk census byte-compare (see the BP5 execution record).",
  "layer_counts": {
   "L0": 6,
   "L1": 5,
@@ -117,7 +118,8 @@
    "statement": "theorem L1_gradedRingStr_exists (S : SideVal p) (hval : ∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) : Nonempty (GradedRingStr S) := sorry",
    "sketch": "CAPSTONE of D.1(a)-(c): assemble the `CommRing S.Gr` by extending `pmul` over the DirectSum (`DirectSum.toAddMonoid` bilinear extension), then discharge the ring axioms from `L1_pmul_assoc` (assoc), symmetry of `pmul` (comm), and `mul_of`/`one_def`/`if_mul`/`if_add_lt` fields. Uses `hval` (valuation) for `if_mul`. Largest unit; may itself split into a `GMul`/`GSemiring` sub-thread in the fan-out.",
    "faithfulness": "The genuine graded ring; its inhabitation is the point that discharges the façade.",
-   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; constructor site updated, add_def closes by rfl for DirectSum.commRing (non-vacuously: componentwise field), proved in L1_gradedRingStr_exists_2.lean."
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; constructor site updated, add_def closes by rfl for DirectSum.commRing (non-vacuously: componentwise field), proved in L1_gradedRingStr_exists_2.lean.",
+   "quarantine_asbuilt_2026-07-30": "v1 module QUARANTINED 2026-07-30 (BP5 CL-21; in-namespace collision, A11; sorry@115). Live owner of the name: L1_gradedRingStr_exists_2.lean (PROVED)."
   },
   {
    "id": "L1_gr_domain_iff_val",
@@ -129,7 +131,8 @@
    "statement": "theorem L1_gr_domain_iff_val (S : SideVal p) (Rg : GradedRingStr S) : (letI := Rg.ring; IsDomain S.Gr) ↔ (∀ f g, f ≠ 0 → g ≠ 0 → S.w (f * g) = S.w f + S.w g) := sorry",
    "sketch": "D.1(c) verbatim: `gr` is a domain ⟺ `w` is a valuation. (⟸) products of nonzero homogeneous [f][g]=[fg]≠0 by `L0_initialForm_ne_zero`; (⟹) a strict submult drop makes [f][g]=0 with both nonzero.",
    "faithfulness": "D.1(c).",
-   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; statement text UNCHANGED, but under add_def the backward direction is TRUE (v2 diagnosed it FALSE against the old 4-field structure); FULLY PROVED in L1_gr_domain_iff_val_v3.lean (graded leading-term argument)."
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; statement text UNCHANGED, but under add_def the backward direction is TRUE (v2 diagnosed it FALSE against the old 4-field structure); FULLY PROVED in L1_gr_domain_iff_val_v3.lean (graded leading-term argument).",
+   "quarantine_asbuilt_2026-07-30": "v1 AND v2 modules QUARANTINED 2026-07-30 (BP5 CL-21; root-namespace collisions; v1 sorry@59, v2 sorry@124 — v2 diagnosed the OLD statement false pre-rekey). Live owner: L1_gr_domain_iff_val_v3.lean (PROVED, in-namespace); the root name is gone."
   },
   {
    "id": "L2_loc_exists",
@@ -152,7 +155,8 @@
    "statement": "theorem L2_degZero_subring (S : SideVal p) (Rg : GradedRingStr S) : letI := Rg.ring; ∃ (R0 : Subring S.Gr), ∀ x : S.Gr, x ∈ R0 ↔ (∀ γ ≠ (0:ℤ), (x γ : S.grPiece γ) = 0) := sorry",
    "sketch": "D.1(d): the degree-0 elements form a subring; `R0 := { x | ∀ γ≠0, x γ = 0 }` closed under +,*,1 (degree-0 · degree-0 ⊆ degree-0 via `mul_of`+`pmul`).",
    "faithfulness": "The `L₀`/degree-0 subring of the graded localization.",
-   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; the single hadd gap of v2 is exactly add_def at degree 0; FULLY PROVED in L2_degZero_subring_v2.lean."
+   "rekey": "REKEYED (option a, signed off 2026-07-28): GradedRingStr now carries add_def; the single hadd gap of v2 is exactly add_def at degree 0; FULLY PROVED in L2_degZero_subring_v2.lean.",
+   "quarantine_asbuilt_2026-07-30": "v1 module QUARANTINED 2026-07-30 (BP5 CL-21, the R-6 record): v1 is sorry-FREE — the reason is same-name supersession after the add_def re-key, NOT sorries; pre-move byte-diff: the v1/v2 theorem statement lines are BYTE-IDENTICAL. Live owner: L2_degZero_subring_v2.lean (PROVED, MANIFEST-canonical)."
   },
   {
    "id": "L2_homMon_homogeneous",
@@ -175,7 +179,8 @@
    "statement": "theorem L2_coeffLoc (σ : Stage p F) (M : GenuineStageModel σ) : CoeffLocLaw σ := sorry",
    "sketch": "S4 (DefsL `CoeffLocLaw`) DERIVED from the genuine model: the coefficient sub-localization at ⟨U⟩ (no Y) has degree-0 part = K and z pinned; transported across `M.Θ`. Replaces the DefsL definitional `coeffLocSR` with the genuine object's image.",
    "faithfulness": "Discharges audit #5 §2: coeffLoc now has source provenance.",
-   "status_asbuilt_2026-07-30": "PARTIAL (queue item A14, GOLF_CAMPAIGN_2026-07-30.md; status field added 2026-07-30 verify-2 fold-in): the live Fence-A module L2_coeffLoc_v2.lean carries 2 open sorries (the ⊇K and P1 z-pinning conjuncts, lines 161/169 at HEAD), so `CoeffLocLaw σ` is NOT fully established and the sketch must not be read as a completed derivation; `L4_genuine_imp_stageCoreL` (v2) inherits sorryAx through it. Classified FAITHLESS by MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #15. The superseded v1 module (L2_coeffLoc.lean, 3 sorries) declares the same root-level name — quarantine-bound (R2)."
+   "status_asbuilt_2026-07-30": "PARTIAL (queue item A14, GOLF_CAMPAIGN_2026-07-30.md; status field added 2026-07-30 verify-2 fold-in): the live Fence-A module L2_coeffLoc_v2.lean carries 2 open sorries (the ⊇K and P1 z-pinning conjuncts, lines 161/169 at HEAD), so `CoeffLocLaw σ` is NOT fully established and the sketch must not be read as a completed derivation; `L4_genuine_imp_stageCoreL` (v2) inherits sorryAx through it. Classified FAITHLESS by MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #15. The superseded v1 module (L2_coeffLoc.lean, 3 sorries) declares the same root-level name — quarantine-bound (R2).",
+   "quarantine_asbuilt_2026-07-30": "v1 (CL-21) AND v2 (CL-26, binding Q-5 quarantine-with-record) QUARANTINED 2026-07-30. CoeffLocLaw σ is an OPEN OBLIGATION; this status field is the pointer (HELD-unit precedent); no live module declares the name. v2's proved content (Ein/Eout weight-detecting evaluation, S4 ⊆) preserved verbatim in the quarantine .txt."
   },
   {
    "id": "L3_Tunit_deg1",
@@ -246,7 +251,8 @@
    "statement": "theorem L4_genuine_imp_stageCoreL (σ : Stage p F) (M : GenuineStageModel σ) : StageCoreL σ := sorry",
    "sketch": "THE BRIDGE: a genuine graded model implies the round-5 DefsL certificate `StageCoreL` (= `StageCore` + `TvecUnitLaw` + `CoeffLocLaw`). `TvecUnitLaw` from `L3_iso_exists`+`L3_Tunit_deg1` (the T-vector product is an identity of the genuine units mapped by Θ); `CoeffLocLaw` from `L2_coeffLoc`; `StageCore` tie laws from `L1_initialForm_add_lt`/`L3_residual_mul`. Every StageCoreL law now has provenance.",
    "faithfulness": "Discharges audit #5 §7: the theorem interface now carries `GenuineStageModel`.",
-   "status_asbuilt_2026-07-30": "SORRIED, both versions (queue items A12/A13, GOLF_CAMPAIGN_2026-07-30.md; status field added 2026-07-30 verify-2 fold-in): v1 (L4_genuine_imp_stageCoreL.lean) is a bare `:= sorry` whose grounded header argues the statement is NOT provable from its hypotheses (statement-level under-hypothesization — sign-off pending, A13); v2 (L4_genuine_imp_stageCoreL_v2.lean, same root-level name — collision quarantine-bound, R2) proves all but 11 pinned obligations (sorries at lines 395-422 at HEAD) and inherits sorryAx from L2_coeffLoc_v2's two open conjuncts. Classified FAITHLESS by MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #21 (StageCoreL content absent from `M`)."
+   "status_asbuilt_2026-07-30": "SORRIED, both versions (queue items A12/A13, GOLF_CAMPAIGN_2026-07-30.md; status field added 2026-07-30 verify-2 fold-in): v1 (L4_genuine_imp_stageCoreL.lean) is a bare `:= sorry` whose grounded header argues the statement is NOT provable from its hypotheses (statement-level under-hypothesization — sign-off pending, A13); v2 (L4_genuine_imp_stageCoreL_v2.lean, same root-level name — collision quarantine-bound, R2) proves all but 11 pinned obligations (sorries at lines 395-422 at HEAD) and inherits sorryAx from L2_coeffLoc_v2's two open conjuncts. Classified FAITHLESS by MOVES_LEAN_SEMAUDIT_GR_2026-07-26.md §B #21 (StageCoreL content absent from `M`).",
+   "quarantine_asbuilt_2026-07-30": "v1 (CL-21) AND v2 (CL-26, binding Q-5) QUARANTINED 2026-07-30. Open obligation, same as L2_coeffLoc; the 7 certified-underivable + 4 derivable-in-principle census and the quoted revival legs are in lean/quarantine/README.md; no live module declares the name."
   },
   {
    "id": "L4_baseStage_exists",

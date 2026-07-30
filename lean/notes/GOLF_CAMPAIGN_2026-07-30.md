@@ -835,3 +835,37 @@ written would delete the module the HC1 K1 kernel imports.
    MANIFEST.json, U10_theoremU.lean, and DefsLedger.lean citations re-pointed
    there (same provenance-repair class as commit ed51944's Rs2Unique
    re-point for MovesS).
+
+## ADDENDUM 2026-07-30 (BP5 execution): R2 EXECUTED; baseline-header caveat simplified
+
+R2 is CLOSED, executed by BP5 units CL-21 + CL-26 + CL-24 (BRIDGE_BP5_CLEANUP_
+2026-07-30.md; binding adjudications Q-5 quarantine-with-record, Q-7 fifth file
+YES, Q-8 immediate). Thirteen files moved to lean/quarantine/*_2026-07-30.lean.txt
+(full per-file record: lean/quarantine/README.md, "BP5 hygiene quarantines"):
+- MovesGr R2 six: L1_gradedRingStr_exists v1, L1_gr_domain_iff_val v1+v2,
+  L2_coeffLoc v1, L2_degZero_subring v1 (sorry-FREE — true reason same-name
+  supersession post-add_def-re-key, statement lines byte-identical to _v2; the
+  R-6 record), L4_genuine_imp_stageCoreL v1.
+- MovesGr live FAITHLESS partials (Q-5): L2_coeffLoc_v2,
+  L4_genuine_imp_stageCoreL_v2. MovesGr live sorry census now 0 (was 20/19/7).
+- Moves deprecated five (A5/A6 + the landTwoSided R5 + the reversed-label
+  VertexDigit pair + the Q-7 fifth): L4_TRANSviii_b_R3, L5_landTransport_R3,
+  L5_landTwoSided_R5, L5_landVertexDigit_repair (the A/B LABEL REVERSAL guard
+  honored: the canonical L5_landVertexDigit.lean STAYS, its two HC1 importers
+  verified before/after), L4_TRANSviii_a_R5.
+
+BASELINE-HEADER CAVEAT (dated correction — the frozen baseline files in
+lean/notes/golf_baseline_2026-07-30/ are NOT rewritten): the header line
+"sorryAx only at the ten fenced sites + deprecated Moves files" now reads, at
+HEAD, "sorryAx only at the fenced sites" — the deprecated-Moves clause is dead.
+Expected (non-regression) deltas vs the frozen dumps: MovesGr_axioms.txt Group B
+disappears entirely and Group A loses the root L1_gr_domain_iff_val line;
+Moves censuses lose the five deprecated files. AxChk capstone census verified
+byte-identical pre/post via the BUILD-ONLY form (forced recompile +
+`lake build LeanUrat.AxChk_baseline`). A26 root-namespacing of the 19 live
+root-namespace MovesGr files remains OUT OF SCOPE (naming smell, not collision).
+
+Also executed in the same pass (synthesis N6): the E5 fence-rule record's stale
+"2026-08-01" date (MovesT/E5_rootSplit.lean:338) corrected to 2026-07-29 with
+git evidence (commit 00b03aa, 2026-07-29 17:39 UTC) — same A23 mis-dating class
+as the MovesU corrections above.

@@ -335,7 +335,10 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
   --  datum g. NOTE for adjudication: (U)∧(R) is a candidate `CellData`/interface
   --  law pair, quantified over root-cell points only — strictly weaker than any
   --  per-cell table and independent of the cell chart.]
-  -- [FENCE-RULE RECORD 2026-08-01 (negation-attempt duty): no countermodel is
+  -- [FENCE-RULE RECORD 2026-07-29 (negation-attempt duty; date CORRECTED at BP5/N6
+  --  2026-07-30 — the record originally read "2026-08-01" from clock skew; git
+  --  evidence: introduced in commit 00b03aa, authored 2026-07-29 17:39 UTC, matching
+  --  the PROJECT_STATE date correction): no countermodel is
   --  constructible from in-corpus witnesses — this `have` sits under the FULL
   --  `CellAssign` premise row (child_cover included) and NO `CellAssign` instance
   --  exists in the corpus (G1's toys deliberately stop at the `CellData` layer:
