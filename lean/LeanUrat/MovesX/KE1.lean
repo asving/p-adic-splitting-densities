@@ -9,8 +9,8 @@ import LeanUrat.MovesX.Defs
 
 BRIDGE CAMPAIGN unit **KE1** (area BP4, cluster c3; blueprint
 `lean/notes/BRIDGE_BP4_KERNELS_2026-07-30.md` §3.E (E-i) + §4 KE1).
-E-PHASE STATEMENT MODULE — statements with `sorry` bodies; the blueprint's
-pre-approved split KE1a/KE1b is executed as the two theorems below.
+PROVED (prover pass 2026-07-30, BP4-P9-x3-assembly; Lean-core footprint);
+the blueprint's pre-approved split KE1a/KE1b is the two theorems below.
 
 THE KERNEL: `NsNullP n X` (MovesX/Defs.lean) — every (NS-c) fiber is `frac`-null.
 The paper proof is ON RECORD (MOVES_2026-07-24.md:7212-7240, the rev-2

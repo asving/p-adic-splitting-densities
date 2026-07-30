@@ -9,7 +9,10 @@ import LeanUrat.MovesX.Defs
 
 BRIDGE CAMPAIGN unit **KE8** (area BP4, cluster c3; blueprint
 `lean/notes/BRIDGE_BP4_KERNELS_2026-07-30.md` §3.E (E-vii) + §4 KE8).
-E-PHASE STATEMENT MODULE — statement with `sorry` body.
+PROVED (prover pass 2026-07-30, BP4-P9-x3-assembly; Lean-core footprint;
+KE13 gate ran FIRST and sealed CLEAN — 10/10 PASS, 0 FINDING, 0 per-row
+accounting violations under reading A; realized charged population at
+n = 3 is the T1 row, T2/T3/T4 realized-empty — recorded scope).
 
 THE KERNEL: `X1aAlignP n X ⟨true, false⟩` (MovesX/Defs.lean) — the (ALIGN-inc)
 discharge state: `d_cert(H) ≤ ind(f)` on every stratum off `discZero`, with
@@ -85,6 +88,29 @@ theorem x1aAlignInc_of_orderAccounting {n : ℕ} (X : XFamily n)
     (hacc : ∀ (p : ℕ) [Fact p.Prime],
       Nonempty (GmnOrderAccounting n p (X.gmn p))) :
     X1aAlignP n X ⟨true, false⟩ := by
-  sorry
+  intro p hp f H hdz hstr
+  obtain ⟨A⟩ := hacc p
+  classical
+  -- The placed orders: the image of the injective placement.
+  set R : Finset ℕ :=
+    Finset.image (A.place f H) Finset.univ with hR
+  have hinj : Function.Injective (A.place f H) := A.place_inj f H hdz hstr
+  have hcard : R.card = dCert ⟨true, false⟩ H := by
+    rw [hR, Finset.card_image_of_injective _ hinj, Finset.card_univ,
+      Fintype.card_fin]
+  -- Each placed order is charged ≥ 1 (`place_charged`), so the count is
+  -- dominated by the finite sum of per-order contributions.
+  have hlow : dCert ⟨true, false⟩ H ≤ ∑ r ∈ R, A.orderInd f r := by
+    calc dCert ⟨true, false⟩ H = R.card := hcard.symm
+      _ = ∑ _r ∈ R, 1 := by rw [Finset.card_eq_sum_ones]
+      _ ≤ ∑ r ∈ R, A.orderInd f r := by
+          refine Finset.sum_le_sum ?_
+          intro r hr
+          rw [hR] at hr
+          obtain ⟨j, _, hj⟩ := Finset.mem_image.mp hr
+          rw [← hj]
+          exact A.place_charged f H hdz hstr j
+  -- `finsum_le` (Thm 4.18(1)'s finite-sum face) dominates the sum by `ind f`.
+  exact le_trans hlow (A.finsum_le f hdz R)
 
 end LeanUrat.MovesX

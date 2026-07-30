@@ -1,0 +1,176 @@
+{
+ "boxes": {
+  "p2": {
+   "p": 2,
+   "N": 8,
+   "p3_ok": true,
+   "viol_A": 0,
+   "skipped_A": 21504,
+   "rows": {
+    "T1(e=1,l=2,h=0)": {
+     "members": 2097152,
+     "observed": 0,
+     "acct": 0,
+     "ok": true
+    },
+    "T1(e=1,l=2,h=1)": {
+     "members": 589824,
+     "observed": 1,
+     "acct": 1,
+     "ok": true
+    },
+    "T1(e=1,l=2,h=2)": {
+     "members": 149504,
+     "observed": 2,
+     "acct": 2,
+     "ok": true
+    },
+    "T1(e=1,l=2,h=3)": {
+     "members": 36864,
+     "observed": 3,
+     "acct": 3,
+     "ok": true
+    },
+    "T1(e=1,l=3,h=0)": {
+     "members": 2097152,
+     "observed": 0,
+     "acct": 0,
+     "ok": true
+    },
+    "T1(e=1,l=3,h=1)": {
+     "members": 65536,
+     "observed": 3,
+     "acct": 3,
+     "ok": true
+    },
+    "T1(e=1,l=3,h=2)": {
+     "members": 2048,
+     "observed": 6,
+     "acct": 6,
+     "ok": true
+    }
+   },
+   "t5_members": 16733184,
+   "per_row_viol": {
+    "T0": 0,
+    "T1": 0,
+    "T2": 0,
+    "T3": 0,
+    "T4": 0,
+    "T5": 0
+   },
+   "empty_rows": [
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "secs": 7.1
+  },
+  "p3": {
+   "p": 3,
+   "N": 5,
+   "p3_ok": true,
+   "viol_A": 0,
+   "skipped_A": 26244,
+   "rows": {
+    "T1(e=1,l=2,h=0)": {
+     "members": 1062882,
+     "observed": 0,
+     "acct": 0,
+     "ok": true
+    },
+    "T1(e=1,l=2,h=1)": {
+     "members": 240570,
+     "observed": 1,
+     "acct": 1,
+     "ok": true
+    },
+    "T1(e=1,l=2,h=2)": {
+     "members": 26244,
+     "observed": 2,
+     "acct": 2,
+     "ok": true
+    },
+    "T1(e=1,l=3,h=0)": {
+     "members": 2125764,
+     "observed": 0,
+     "acct": 0,
+     "ok": true
+    },
+    "T1(e=1,l=3,h=1)": {
+     "members": 8748,
+     "observed": 3,
+     "acct": 3,
+     "ok": true
+    }
+   },
+   "t5_members": 14304438,
+   "per_row_viol": {
+    "T0": 0,
+    "T1": 0,
+    "T2": 0,
+    "T3": 0,
+    "T4": 0,
+    "T5": 0
+   },
+   "empty_rows": [
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "secs": 3.8
+  }
+ },
+ "verdicts": [
+  {
+   "name": "KE13-P3a p=2: reading-A cumulative sweep reproduces the prior X1A seal (violations 0, censored-skipped 21504)",
+   "ok": true,
+   "detail": "violations 0 (witness None), skipped 21504"
+  },
+  {
+   "name": "KE13-P3b p=2: walker faithfulness \u2014 S7 decided integers + undec at level 8",
+   "ok": true,
+   "detail": "sigma [708608, 5038080, 4329472, 3951616, 2705408] vs [708608, 5038080, 4329472, 3951616, 2705408]; undec 44032 vs 44032"
+  },
+  {
+   "name": "KE13-V1 p=2: engine faults == 0",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE13-P1 p=2: 0 per-row accounting violations under reading A (each realized node increment == its row's Cor 4.19 value)",
+   "ok": true,
+   "detail": "violations 0; parity deviations 0; realized T1 tuples 7 (5038080 members)"
+  },
+  {
+   "name": "KE13-P2 p=2: per-row violation tally (a violating row names KE8's failing transport row)",
+   "ok": true,
+   "detail": "violating rows NONE; per-row {'T0': 0, 'T1': 0, 'T2': 0, 'T3': 0, 'T4': 0, 'T5': 0}"
+  },
+  {
+   "name": "KE13-P3a p=3: reading-A cumulative sweep reproduces the prior X1A seal (violations 0, censored-skipped 26244)",
+   "ok": true,
+   "detail": "violations 0 (witness None), skipped 26244"
+  },
+  {
+   "name": "KE13-P3b p=3: walker faithfulness \u2014 S7 decided integers + undec at level 5",
+   "ok": true,
+   "detail": "sigma [927288, 5196312, 4269024, 2726460, 1185354] vs [927288, 5196312, 4269024, 2726460, 1185354]; undec 44469 vs 44469"
+  },
+  {
+   "name": "KE13-V1 p=3: engine faults == 0",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE13-P1 p=3: 0 per-row accounting violations under reading A (each realized node increment == its row's Cor 4.19 value)",
+   "ok": true,
+   "detail": "violations 0; parity deviations 0; realized T1 tuples 5 (3464208 members)"
+  },
+  {
+   "name": "KE13-P2 p=3: per-row violation tally (a violating row names KE8's failing transport row)",
+   "ok": true,
+   "detail": "violating rows NONE; per-row {'T0': 0, 'T1': 0, 'T2': 0, 'T3': 0, 'T4': 0, 'T5': 0}"
+  }
+ ]
+}

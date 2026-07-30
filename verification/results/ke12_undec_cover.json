@@ -1,0 +1,239 @@
+{
+ "boxes": {
+  "p2": {
+   "p": 2,
+   "Nmax": 8,
+   "p2_ok": true,
+   "per_level": {
+    "1": {
+     "members": 8388608,
+     "thrcap": 8344576,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "2": {
+     "members": 3145728,
+     "thrcap": 3101696,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "3": {
+     "members": 1572864,
+     "thrcap": 1528832,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "4": {
+     "members": 786432,
+     "thrcap": 742400,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "5": {
+     "members": 360448,
+     "thrcap": 316416,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "6": {
+     "members": 180224,
+     "thrcap": 136192,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "7": {
+     "members": 90112,
+     "thrcap": 46080,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "8": {
+     "members": 44032,
+     "thrcap": 0,
+     "discZero_face": 44032,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    }
+   },
+   "anti_viol": 0,
+   "outside": 0,
+   "deep_unattributed": 0,
+   "deep_un_witnesses": [],
+   "undec_counts": {
+    "1": 4,
+    "2": 12,
+    "3": 48,
+    "4": 192,
+    "5": 704,
+    "6": 2816,
+    "7": 11264,
+    "8": 44032
+   },
+   "secs": {
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.1,
+    "4": 0.2,
+    "5": 0.4,
+    "6": 0.7,
+    "7": 1.5,
+    "8": 4.9
+   }
+  },
+  "p3": {
+   "p": 3,
+   "Nmax": 5,
+   "p2_ok": true,
+   "per_level": {
+    "1": {
+     "members": 4782969,
+     "thrcap": 4738500,
+     "discZero_face": 44469,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "2": {
+     "members": 1240029,
+     "thrcap": 1195560,
+     "discZero_face": 44469,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "3": {
+     "members": 413343,
+     "thrcap": 368874,
+     "discZero_face": 44469,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "4": {
+     "members": 137781,
+     "thrcap": 93312,
+     "discZero_face": 44469,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    },
+    "5": {
+     "members": 44469,
+     "thrcap": 0,
+     "discZero_face": 44469,
+     "nsFibers_face": 0,
+     "InfTree_face": 0,
+     "deep_unattributed": 0,
+     "outside": 0
+    }
+   },
+   "anti_viol": 0,
+   "outside": 0,
+   "deep_unattributed": 0,
+   "deep_un_witnesses": [],
+   "undec_counts": {
+    "1": 9,
+    "2": 63,
+    "3": 567,
+    "4": 5103,
+    "5": 44469
+   },
+   "secs": {
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.1,
+    "4": 0.4,
+    "5": 2.8
+   }
+  }
+ },
+ "verdicts": [
+  {
+   "name": "KE12-P2 p=2: Undec(N) counts + per-sigma decided reproduce the S7 integers, N=1..8",
+   "ok": true,
+   "detail": "exact"
+  },
+  {
+   "name": "KE12-V1 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0 across all levels",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE12-V2 p=2: per-member Undec antitonicity across levels (undec_antitone census face)",
+   "ok": true,
+   "detail": "violations 0"
+  },
+  {
+   "name": "KE12-V3 p=2: cylinder-count identity #members(N) = undec_N \u00b7 p^(3(Nmax\u2212N))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "KE12-P1 p=2: ZERO Undec(N) members outside the four-set union at every probed level (cover check)",
+   "ok": true,
+   "detail": "outside 0; per-level {1: 8388608, 2: 3145728, 3: 1572864, 4: 786432, 5: 360448, 6: 180224, 7: 90112, 8: 44032}"
+  },
+  {
+   "name": "KE12-P1d p=2: DEEP-UNATTRIBUTED deviation channel EMPTY (DEEP members all land on the discZero face)",
+   "ok": true,
+   "detail": "deviations 0; every DEEP member has vd >= Nmax (disc \u2261 0 at box precision)"
+  },
+  {
+   "name": "KE12-P2 p=3: Undec(N) counts + per-sigma decided reproduce the S7 integers, N=1..5",
+   "ok": true,
+   "detail": "exact"
+  },
+  {
+   "name": "KE12-V1 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0 across all levels",
+   "ok": true,
+   "detail": "{}"
+  },
+  {
+   "name": "KE12-V2 p=3: per-member Undec antitonicity across levels (undec_antitone census face)",
+   "ok": true,
+   "detail": "violations 0"
+  },
+  {
+   "name": "KE12-V3 p=3: cylinder-count identity #members(N) = undec_N \u00b7 p^(3(Nmax\u2212N))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "KE12-P1 p=3: ZERO Undec(N) members outside the four-set union at every probed level (cover check)",
+   "ok": true,
+   "detail": "outside 0; per-level {1: 4782969, 2: 1240029, 3: 413343, 4: 137781, 5: 44469}"
+  },
+  {
+   "name": "KE12-P1d p=3: DEEP-UNATTRIBUTED deviation channel EMPTY (DEEP members all land on the discZero face)",
+   "ok": true,
+   "detail": "deviations 0; every DEEP member has vd >= Nmax (disc \u2261 0 at box precision)"
+  }
+ ]
+}

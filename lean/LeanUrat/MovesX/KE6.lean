@@ -9,7 +9,9 @@ import LeanUrat.MovesX.Defs
 
 BRIDGE CAMPAIGN unit **KE6** (area BP4, cluster c3; blueprint
 `lean/notes/BRIDGE_BP4_KERNELS_2026-07-30.md` §3.E (E-v) + §4 KE6).
-E-PHASE STATEMENT MODULE — statement with `sorry` body.
+PROVED (prover pass 2026-07-30, BP4-P9-x3-assembly; Lean-core footprint;
+KE12 gate ran FIRST and sealed CLEAN — 12/12 PASS, 0 FINDING, cover check
+0 outside + 0 DEEP-UNATTRIBUTED at every probed level, both boxes).
 
 THE KERNEL: the FIRST conjunct of `X2BridgeP n X` (MovesX/Defs.lean) —
 `Undec(N) ⊆ discZero ∪ ⋃ nsFiber ∪ InfTree ∪ {∃ leaf b, ns-free, N < thr(b) + cap(b)}`.
@@ -55,6 +57,28 @@ theorem x2Bridge_cover {n p : ℕ} [Fact p.Prime] (C : XCtx n p) (N : ℕ) :
     C.Undec N ⊆ discZero n p ∪ (⋃ i, C.nsFiber i) ∪ InfTree C ∪
       { f | ∃ b : C.Branch f,
           IsLeafB C b ∧ NsFreeB C b ∧ N < C.threshold b + capHB C b } := by
-  sorry
+  intro f hf
+  by_contra hout
+  simp only [Set.mem_union, not_or, Set.mem_iUnion, not_exists,
+    Set.mem_setOf_eq, InfTree] at hout
+  obtain ⟨⟨⟨hdz, hns⟩, hinf⟩, hwit⟩ := hout
+  -- `f ∉ InfTree` gives finiteness of the branch type.
+  have hfin : Finite (C.Branch f) := not_not.mp hinf
+  -- Show every leaf is detected at `N`, so `undec_spec` expels `f` — contradiction.
+  refine absurd ((C.undec_spec f N).mpr ⟨hfin, fun b hleaf => ?_⟩) (by exact fun h => h hf)
+  -- Every leaf is ns-free (an ns node would put `f` in a fiber via `nsCover`).
+  have hnsfree : ∀ ν ∈ C.hist b, ¬ C.nsTrack ν := by
+    by_contra hcon
+    push Not at hcon
+    obtain ⟨ν, hν, hns'⟩ := hcon
+    obtain ⟨i, hi⟩ := C.nsCover f ⟨b, hleaf, ν, hν, hns'⟩
+    exact hns i hi
+  -- No fourth-set witness: the leaf's threshold + cap is within `N`.
+  have hcap : C.threshold b + capHB C b ≤ N := by
+    by_contra hgt
+    push Not at hgt
+    exact hwit b ⟨hleaf, hnsfree, hgt⟩
+  -- `detectBranch` closes (`capHB` is definitionally its ite).
+  exact C.detectBranch b hleaf hnsfree N (by simpa [capHB] using hcap)
 
 end LeanUrat.MovesX
