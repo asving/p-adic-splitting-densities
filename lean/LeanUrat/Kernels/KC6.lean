@@ -71,6 +71,48 @@ def Order0Sys {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
     ∀ (α : S.Cell) (γ : Template n S α) (h : Hpt γ.D),
       (D.dom γ).Mem h ↔ ThrMem θ θT γ h
 
+/-- Fin-append splitter identity (the KC6b docstring's sanctioned private
+helper; the original `hpt_take_append` is `private` in MovesV/V4_naming.lean,
+hence not importable). -/
+private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+    Hpt.take (Hpt.append h₁ h₂) = h₁ := by
+  funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
+
+/-- Fin-append splitter identity (private helper, as above). -/
+private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+    Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
+  funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
+
+/-- Private computation helper (as in the sibling Kernels files): the appended
+point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
+private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
+  intro h0
+  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
+      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
+  simp only [Hpt.append, Fin.append_left] at h1
+  exact one_ne_zero h1
+
+/-- the vacuous threshold vectors of the V1 witness system (all `witS`
+dimensions are 0, so the vectors quantify over `Fin 0`). -/
+private noncomputable def witθ :
+    ∀ (α β : witS.Cell) (m : witS.Move α β), Hpt (witS.dim m) :=
+  fun _ _ _ => fun i => i.elim0
+
+/-- the (empty) terminal-move threshold vectors of the V1 witness system. -/
+private noncomputable def witθT :
+    ∀ (α : witS.Cell) (v : VLabel 1) (mT : witS.MoveT α v), Hpt (witS.dimT mT) :=
+  fun _ _ mT => mT.elim
+
+/-- every witness-system template satisfies the vacuous threshold condition
+(all dimensions 0, so every `≤` quantifies over `Fin 0`). -/
+private lemma wit_thrMem : ∀ {α} (γ : Template 1 witS α) (h : Hpt γ.D),
+    ThrMem witθ witθT γ h
+  | _, .last m, h => le_of_eq (hpt_eq_of_dim0 rfl _ h)
+  | _, .lastT mT, _ => mT.elim
+  | _, .cons m γ', h =>
+      ⟨le_of_eq (hpt_eq_of_dim0 rfl _ _), wit_thrMem γ' (Hpt.drop h)⟩
+
 /-- KC6b — `hmc_of_order0`: full-product step domains ⟹ HMC (the provable
 perimeter theorem).  Sketch: rewrite both sides of HMC's iff through the
 Order0Sys presentation; on the composite side ThrMem (.cons m γ)
@@ -83,7 +125,12 @@ at h₁ and h₂, i.e. to ThrMem (.last m) h₁ ∧ ThrMem γ h₂ — `Iff.rfl`
 adjacent, exactly as the blueprint promises. -/
 theorem hmc_of_order0 {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
     (D : XHDd n S TE) (h0 : Order0Sys TE D) : HMC TE D := by
-  sorry
+  obtain ⟨θ, θT, hpres⟩ := h0
+  intro α β m γ h₁ h₂
+  rw [hpres _ (.cons m γ) (Hpt.append h₁ h₂), hpres _ (.last m) h₁,
+    hpres _ γ h₂]
+  simp only [ThrMem]
+  rw [hpt_take_append h₁ h₂, hpt_drop_append h₁ h₂]
 
 /-- KC6a instance check 1 — the V1 witness satisfies `Order0Sys`: every
 witness-system template has dimension 0 (`witS_tmpl_dim_zero`) and domain
@@ -93,7 +140,8 @@ Sketch: refine ⟨fun _ _ _ => (fun i => i.elim0), …⟩-genre vectors (the dim
 are 0 only up to `witS_tmpl_dim_zero`, so use `fun _ => 0` and prove the
 iff by induction on γ with both sides True). -/
 theorem wit_order0Sys : Order0Sys witTE witD := by
-  sorry
+  refine ⟨witθ, witθT, fun α γ h => iff_of_true
+    (zeroPart_mem_of_dim0 (witS_tmpl_dim_zero γ) h) (wit_thrMem γ h)⟩
 
 /-- KC6a instance check 2 — `HmcToy` does NOT satisfy `Order0Sys` (the
 blueprint's "¬Order0Sys — the toy's coupled census violates the predicate"):
@@ -103,13 +151,30 @@ threshold θ would satisfy θ ≤ (1,0) and θ ≤ (0,1), forcing θ = 0 and hen
 (0,0) ∈ box — but (0,0) ∉ nzPart 2 (`nzPart_not_mem`).  Together with
 instance check 1 this is KC5's non-vacuity guard pair (R5). -/
 theorem hmcToy_not_order0Sys : ¬ Order0Sys HmcToy.TE HmcToy.XD := by
-  sorry
+  rintro ⟨θ, θT, hpres⟩
+  -- (1,0) is in the composite domain `nzPart 2` (first coordinate nonzero) …
+  have hmem10 : (HmcToy.XD.dom (.cons HmcToy.mv (.last HmcToy.mv))).Mem
+      (Hpt.append ((fun _ => 1) : Hpt (HmcToy.S.dim HmcToy.mv))
+        ((fun _ => 0) : Hpt (HmcToy.S.dim HmcToy.mv))) :=
+    HmcToy.nzPart_mem (append_one_zero_ne_zero Nat.one_pos)
+  -- … so its ThrMem tail condition pins the presenting threshold at 0 …
+  have hthr := (hpres _ _ _).mp hmem10
+  have hzero : θ HmcToy.c0 HmcToy.c0 HmcToy.mv ≤
+      Hpt.drop (Hpt.append ((fun _ => 1) : Hpt (HmcToy.S.dim HmcToy.mv))
+        ((fun _ => 0) : Hpt (HmcToy.S.dim HmcToy.mv))) := hthr.2
+  rw [hpt_drop_append] at hzero
+  -- … which puts (0,0) in the box, contradicting (0,0) ∉ nzPart 2.
+  have hthr0 : ThrMem θ θT (.cons HmcToy.mv (.last HmcToy.mv))
+      ((fun _ => 0) :
+        Hpt (Template.cons HmcToy.mv (Template.last HmcToy.mv)).D) :=
+    ⟨hzero, hzero⟩
+  exact HmcToy.nzPart_not_mem (fun _ => rfl) ((hpres _ _ _).mpr hthr0)
 
 /-- KC6 rider — re-derive the V1 witness's HMC (`witHMC`,
 V1_witnessB.lean:144) THROUGH the perimeter theorem: the content guard that
 `hmc_of_order0` + `wit_order0Sys` compose (the pair is not False-everywhere,
 R5).  Expected discharge: `hmc_of_order0 witTE witD wit_order0Sys`. -/
 theorem wit_hmc_via_order0 : HMC witTE witD := by
-  sorry
+  exact hmc_of_order0 witTE witD wit_order0Sys
 
 end LeanUrat.Kernels

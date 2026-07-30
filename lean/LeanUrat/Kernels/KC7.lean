@@ -51,6 +51,6 @@ theorem compSigma_consumes_hmc_verbatim {n : ℕ} {C : CtsFamily n}
     iotaEps cc ε β₀ q₀ * (((pathProdPoly V γ).eval q₀ : ℚ) : ℝ)
         * gcVal Xs γ q₀
       = iotaEps cc ε β₀ q₀ * stepProdVal V Xs γ q₀ := by
-  sorry
+  exact comp_sigma cc P X U Xs hTie hHMC ε β₀ γ hq
 
 end LeanUrat.Kernels
