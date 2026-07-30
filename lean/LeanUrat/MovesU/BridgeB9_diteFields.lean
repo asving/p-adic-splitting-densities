@@ -79,7 +79,8 @@ theorem bridgeBsplit_eq_of_detHyp {n : ℕ} (C : UCarriers n)
       = ∑ σ' ∈ C.chain.Sigmas,
           MovesS.bSplit C.T C.RB C.hdc e.1 e.2
             (MovesS.blockSolveLt C.RB C.hdc C.hK hdet e.1) σ' i := by
-  sorry
+  unfold bridgeBsplit
+  exact dif_pos hdet
 
 /-- IB-B9 (well-definedness): `bridgeBetaLeg`'s value at ANY supplied `0 < δ`
     and `DetHyp` witnesses — the `dif_pos` unfolding law IB-B13 reads at
@@ -94,6 +95,7 @@ theorem bridgeBetaLeg_eq_of_pos {n : ℕ} (C : UCarriers n)
             MovesS.blockSolve C.T C.RB C.hdc C.hK hdet
               (legTarget C e.1 e.2 l).1.1 (legTarget C e.1 e.2 l).1.2
               (legTarget C e.1 e.2 l).2 σ') := by
-  sorry
+  unfold bridgeBetaLeg
+  exact dif_pos ⟨hδ, hdet⟩
 
 end LeanUrat.MovesU

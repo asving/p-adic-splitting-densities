@@ -46,7 +46,18 @@ namespace LeanUrat.MovesU
     `consumedDeltas`' multiplicative-closure iterate survives every step.
     Feeds `bridgeRegData.one_mem_depthSet` (IB-B8). -/
 theorem one_mem_consumedDeltas {n : ℕ} (C : UCarriers n) :
-    (1 : ℕ+) ∈ MovesS.consumedDeltas C.T C.Fam :=
-  sorry
+    (1 : ℕ+) ∈ MovesS.consumedDeltas C.T C.Fam := by
+  unfold MovesS.consumedDeltas
+  have h : ∀ k : ℕ, (1 : ℕ+) ∈
+      (fun s : Finset ℕ+ =>
+        s ∪ Finset.image₂ (· * ·) (MovesS.deltaFactors C.T C.Fam) s)^[k]
+        ({1} : Finset ℕ+) := by
+    intro k
+    induction k with
+    | zero => simp
+    | succ k ih =>
+      rw [Function.iterate_succ_apply']
+      exact Finset.mem_union_left _ ih
+  exact h n
 
 end LeanUrat.MovesU

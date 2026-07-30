@@ -44,7 +44,8 @@ theorem bridgeVt_eq_of_fiberAt {n p : ℕ} [Fact p.Prime]
     {N : ℕ} (hN : 0 < N) {x : MovesD.Box p (n * N)}
     (h : (bridgeVt n p σ T).fiberAt (bridgeTm p n N) (bridgeChart n N hN) x)
     (h' : (bridgeVt n p σ' T').fiberAt (bridgeTm p n N) (bridgeChart n N hN) x) :
-    bridgeVt n p σ T = bridgeVt n p σ' T' := sorry
+    bridgeVt n p σ T = bridgeVt n p σ' T' :=
+  MovesT.vtree_eq_of_fiberAt h h'
 
 /-- (†7u), σ face: the emitted splitting type is well-defined — two typed
     trees fibering at the same level-N box point have equal σ (typemult
@@ -54,7 +55,11 @@ theorem bridgeSigma_eq_of_fiberAt {n p : ℕ} [Fact p.Prime]
     {N : ℕ} (hN : 0 < N) {x : MovesD.Box p (n * N)}
     (h : (bridgeVt n p σ T).fiberAt (bridgeTm p n N) (bridgeChart n N hN) x)
     (h' : (bridgeVt n p σ' T').fiberAt (bridgeTm p n N) (bridgeChart n N hN) x) :
-    σ = σ' := sorry
+    σ = σ' := by
+  have hvt : bridgeVt n p σ T = bridgeVt n p σ' T' :=
+    bridgeVt_eq_of_fiberAt T T' hN h h'
+  refine Subtype.ext ?_
+  rw [← bridgeVt_typemult n p σ T, ← bridgeVt_typemult n p σ' T', hvt]
 
 /-- (†7u), same-σ corollary (IB-D17's single-valuedness of `treeOf`): within
     one σ the fibering tree is unique (`bridgeVt_inj` on
@@ -64,6 +69,7 @@ theorem bridgeTree_eq_of_fiberAt {n p : ℕ} [Fact p.Prime]
     {N : ℕ} (hN : 0 < N) {x : MovesD.Box p (n * N)}
     (h : (bridgeVt n p σ T).fiberAt (bridgeTm p n N) (bridgeChart n N hN) x)
     (h' : (bridgeVt n p σ T').fiberAt (bridgeTm p n N) (bridgeChart n N hN) x) :
-    T = T' := sorry
+    T = T' :=
+  bridgeVt_inj n p σ (bridgeVt_eq_of_fiberAt T T' hN h h')
 
 end LeanUrat.MovesU

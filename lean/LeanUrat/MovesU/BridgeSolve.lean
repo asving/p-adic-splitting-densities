@@ -5,6 +5,8 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.MovesU.DefsLedger
+import LeanUrat.MovesU.BridgeDict
+import LeanUrat.MovesS.RatfuncEvalInfinite
 
 /-!
 # BP1 group C — the solve family + the checksum transport (IB-C1 … IB-C5)
@@ -72,7 +74,12 @@ theorem bridgeSolve_r_is_solve {n : ℕ} (C : UCarriers n)
 theorem bridgeSolve_ok {n : ℕ} (C : UCarriers n)
     (hdet : MovesS.DetHyp C.T C.RB C.hK) (p : ℕ) (hp : p.Prime)
     (σ : SplittingType n) :
-    (bridgeSolve C hdet).R σ ∈ MovesS.OKat ((p : ℚ)) := sorry
+    (bridgeSolve C hdet).R σ ∈ MovesS.OKat ((p : ℚ)) := by
+  have hpP : ((p : ℚ)) ∈ C.chain.PrimePools :=
+    (C.chain.prime_base _).mpr ⟨p, hp, rfl⟩
+  obtain ⟨hok, -⟩ :=
+    C.chain.rsh_interp (vmap C.T σ) (C.vmap_mem_Sigmas σ) ((p : ℚ)) hpP hdet
+  exact hok
 
 /-! ## IB-C2 — per-prime evaluation-1 (†10b step ii) -/
 
@@ -93,8 +100,48 @@ theorem bridge_evalAt_sigmas_one {n : ℕ} (C : UCarriers n)
           ∈ MovesS.OKat ((p : ℚ)),
       MovesS.evalAt ((p : ℚ))
         ⟨∑ s ∈ C.chain.Sigmas,
-          MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s, hok⟩ = 1 :=
-  sorry
+          MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s, hok⟩ = 1 := by
+  classical
+  have hpP : ((p : ℚ)) ∈ C.chain.PrimePools :=
+    (C.chain.prime_base _).mpr ⟨p, hp, rfl⟩
+  -- per-summand OKat membership from the chain's interpolation row
+  have hokS : ∀ s ∈ C.chain.Sigmas,
+      MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s
+        ∈ MovesS.OKat ((p : ℚ)) :=
+    fun s hs => (C.chain.rsh_interp s hs ((p : ℚ)) hpP hdet).choose
+  have hok : (∑ s ∈ C.chain.Sigmas,
+      MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s)
+        ∈ MovesS.OKat ((p : ℚ)) := sum_mem hokS
+  refine ⟨hok, ?_⟩
+  -- the subring element IS the attach-indexed sum of subring elements
+  have hsub : (⟨∑ s ∈ C.chain.Sigmas,
+      MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s, hok⟩
+        : MovesS.OKat ((p : ℚ)))
+      = ∑ s ∈ C.chain.Sigmas.attach,
+          (⟨MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s.1,
+            hokS s.1 s.2⟩ : MovesS.OKat ((p : ℚ))) := by
+    apply Subtype.ext
+    rw [AddSubmonoidClass.coe_finsetSum]
+    exact (Finset.sum_attach _ _).symm
+  rw [hsub, map_sum]
+  -- ℝ-level: rsh_interp + rs1_equates + x3_total; then cast back injectively (R4)
+  have hcast : ((∑ s ∈ C.chain.Sigmas.attach,
+      MovesS.evalAt ((p : ℚ))
+        ⟨MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s.1,
+          hokS s.1 s.2⟩ : ℚ) : ℝ) = 1 := by
+    rw [Rat.cast_sum]
+    calc ∑ s ∈ C.chain.Sigmas.attach,
+        ((MovesS.evalAt ((p : ℚ))
+          ⟨MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s.1,
+            hokS s.1 s.2⟩ : ℚ) : ℝ)
+        = ∑ s ∈ C.chain.Sigmas.attach, C.chain.Rval s.1 ((p : ℚ)) :=
+          Finset.sum_congr rfl fun s _ =>
+            (C.chain.rsh_interp s.1 s.2 ((p : ℚ)) hpP hdet).choose_spec
+      _ = ∑ s ∈ C.chain.Sigmas, C.chain.Rval s ((p : ℚ)) :=
+          Finset.sum_attach C.chain.Sigmas (fun s => C.chain.Rval s ((p : ℚ)))
+      _ = C.chain.decidedTotal ((p : ℚ)) := C.chain.rs1_equates _ hpP
+      _ = 1 := C.chain.x3_total _ hpP
+  exact_mod_cast hcast
 
 /-! ## IB-C3a — the OKat → num/den translation -/
 
@@ -108,7 +155,9 @@ theorem bridge_evalAt_sigmas_one {n : ℕ} (C : UCarriers n)
     Deps: —. -/
 theorem evalAt_eq_num_div_denom {q₀ : ℚ} (g : MovesS.Qq)
     (hok : g ∈ MovesS.OKat q₀) :
-    MovesS.evalAt q₀ ⟨g, hok⟩ = g.num.eval q₀ / g.denom.eval q₀ := sorry
+    MovesS.evalAt q₀ ⟨g, hok⟩ = g.num.eval q₀ / g.denom.eval q₀ := by
+  change RatFunc.eval (RingHom.id ℚ) q₀ g = g.num.eval q₀ / g.denom.eval q₀
+  rw [RatFunc.eval, Polynomial.eval₂_id, Polynomial.eval₂_id]
 
 /-- IB-C3a (corollary): a vanishing regular evaluation kills the numerator at the
     point: `evalAt q₀ ⟨g, hok⟩ = 0 → g.num.eval q₀ = 0`.  Sketch: from the main
@@ -116,7 +165,9 @@ theorem evalAt_eq_num_div_denom {q₀ : ℚ} (g : MovesS.Qq)
     Deps: IB-C3a main. -/
 theorem num_eval_eq_zero_of_evalAt_eq_zero {q₀ : ℚ} (g : MovesS.Qq)
     (hok : g ∈ MovesS.OKat q₀) (h0 : MovesS.evalAt q₀ ⟨g, hok⟩ = 0) :
-    g.num.eval q₀ = 0 := sorry
+    g.num.eval q₀ = 0 := by
+  rw [evalAt_eq_num_div_denom g hok, div_eq_zero_iff] at h0
+  exact h0.resolve_right (MovesS.mem_OKat_iff.mp hok)
 
 /-! ## IB-C3b — infinite-roots vanishing -/
 
@@ -131,7 +182,16 @@ theorem num_eval_eq_zero_of_evalAt_eq_zero {q₀ : ℚ} (g : MovesS.Qq)
 theorem eq_zero_of_evalAt_primes_zero (g : MovesS.Qq)
     (h : ∀ p : ℕ, p.Prime → ∃ hok : g ∈ MovesS.OKat ((p : ℚ)),
       MovesS.evalAt ((p : ℚ)) ⟨g, hok⟩ = 0) :
-    g = 0 := sorry
+    g = 0 := by
+  have hinf : ((Nat.cast : ℕ → ℚ) '' {p | p.Prime}).Infinite :=
+    Nat.infinite_setOf_prime.image Nat.cast_injective.injOn
+  refine MovesS.ratfunc_eval_infinite g _ hinf ?_ ?_
+  · rintro x ⟨p, hp, rfl⟩
+    obtain ⟨hok, -⟩ := h p hp
+    exact MovesS.mem_OKat_iff.mp hok
+  · rintro x ⟨p, hp, rfl⟩
+    obtain ⟨hok, hval⟩ := h p hp
+    exact hval
 
 /-! ## IB-C4 — the checksum transport (†10b, "the area's prettiest theorem") -/
 
@@ -146,7 +206,34 @@ theorem eq_zero_of_evalAt_primes_zero (g : MovesS.Qq)
     un-bracket.  Deps: A7 (other cluster — proof-time only), C2, C3b. -/
 theorem rs4_checksum_bridge {n : ℕ} (C : UCarriers n)
     (hdet : MovesS.DetHyp C.T C.RB C.hK) :
-    ∑ σ : SplittingType n, (bridgeSolve C hdet).R σ = 1 := sorry
+    ∑ σ : SplittingType n, (bridgeSolve C hdet).R σ = 1 := by
+  classical
+  -- (i) sum transport through the vmap bijection (IB-A7, †1c)
+  have htrans : ∑ σ : SplittingType n, (bridgeSolve C hdet).R σ
+      = ∑ s ∈ C.chain.Sigmas,
+          MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s :=
+    sum_vmap_eq_sum_Sigmas C _
+  -- (iii) g := (Σ R) − 1 is OKat-regular and evaluates to 0 at every prime
+  have hg : (∑ σ : SplittingType n, (bridgeSolve C hdet).R σ) - 1 = 0 := by
+    apply eq_zero_of_evalAt_primes_zero
+    intro p hp
+    -- (ii) the per-prime evaluation-1 (IB-C2)
+    obtain ⟨hokS, hevalS⟩ := bridge_evalAt_sigmas_one C hdet p hp
+    have hokg : (∑ σ : SplittingType n, (bridgeSolve C hdet).R σ) - 1
+        ∈ MovesS.OKat ((p : ℚ)) := by
+      rw [htrans]
+      exact sub_mem hokS (one_mem _)
+    refine ⟨hokg, ?_⟩
+    have hsub : (⟨(∑ σ : SplittingType n, (bridgeSolve C hdet).R σ) - 1, hokg⟩
+        : MovesS.OKat ((p : ℚ)))
+        = (⟨∑ s ∈ C.chain.Sigmas,
+            MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP s, hokS⟩
+              : MovesS.OKat ((p : ℚ))) - 1 := by
+      apply Subtype.ext
+      push_cast
+      rw [htrans]
+    rw [hsub, map_sub, map_one, hevalS, sub_self]
+  exact sub_eq_zero.mp hg
 
 /-! ## IB-C5 — the SolveSeam assembly -/
 
@@ -161,6 +248,7 @@ theorem bridgeSolveSeam {n p : ℕ} (C : UCarriers n) {X : ClassifierSpec n p}
     (F : FiberSeries n p X) (hdet : MovesS.DetHyp C.T C.RB C.hK)
     (hseries : ∀ σ : SplittingType n,
       F.seriesSum σ = ENNReal.ofReal (C.chain.Rval (vmap C.T σ) ((p : ℚ)))) :
-    SolveSeam n p C F (bridgeSolve C hdet) := sorry
+    SolveSeam n p C F (bridgeSolve C hdet) :=
+  ⟨hseries, fun hdet' σ => bridgeSolve_r_is_solve C hdet hdet' σ⟩
 
 end LeanUrat.MovesU

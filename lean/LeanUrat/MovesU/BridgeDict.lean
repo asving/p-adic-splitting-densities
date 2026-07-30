@@ -61,7 +61,7 @@ def sigmaToFT {n : ℕ} (σ : SplittingType n) : FactorizationType :=
     `FactorizationType.degree` (`Multiset.map` congruence only). -/
 theorem sigmaToFT_degree {n : ℕ} (σ : SplittingType n) :
     (sigmaToFT σ).degree = n :=
-  sorry
+  σ.2.2
 
 /-- IB-A1 (partial inverse): a `FactorizationType` with positive entries and degree n,
     read back as a `SplittingType n`.  The data is `ft.data`; positivity is the
@@ -75,14 +75,14 @@ def ftToSigma {n : ℕ} (ft : FactorizationType)
     both sides carry the multiset `σ.1`.  Sketch: `Subtype.ext rfl`. -/
 theorem ftToSigma_sigmaToFT {n : ℕ} (σ : SplittingType n) :
     ftToSigma (sigmaToFT σ) σ.2.1 (sigmaToFT_degree σ) = σ :=
-  sorry
+  Subtype.ext rfl
 
 /-- IB-A1 (roundtrip, FT side): `sigmaToFT ∘ ftToSigma = id` on the positive degree-n
     locus.  Sketch: `FactorizationType` one-field eta (`rfl` or `cases ft; rfl`). -/
 theorem sigmaToFT_ftToSigma {n : ℕ} (ft : FactorizationType)
     (hpos : ∀ x ∈ ft.data, 1 ≤ x.1 ∧ 1 ≤ x.2) (hdeg : ft.degree = n) :
     sigmaToFT (ftToSigma ft hpos hdeg) = ft :=
-  sorry
+  rfl
 
 /-! ## IB-A2 / IB-A3 — the vmap roundtrip and injectivity (†1, injective half) -/
 
@@ -95,15 +95,25 @@ theorem sigmaToFT_ftToSigma {n : ℕ} (ft : FactorizationType)
     (`Multiset.map_congr rfl`), then `Multiset.attach_map_val` kills the attach. -/
 theorem vmap_roundtrip {n : ℕ} (T : MovesS.TableShape n) (σ : SplittingType n) :
     (vmap T σ).map (fun v => (((T.vEquiv v).1.1 : ℕ), ((T.vEquiv v).1.2 : ℕ)))
-      = σ.1 :=
-  sorry
+      = σ.1 := by
+  unfold vmap
+  rw [Multiset.map_map]
+  refine (Multiset.map_congr rfl ?_).trans (Multiset.attach_map_val σ.1)
+  intro x _
+  simp only [Function.comp_apply]
+  rw [Equiv.apply_symm_apply]
+  rfl
 
 /-- IB-A3: `vmap T` is injective (†1's injective half).  Deps: IB-A2.  Sketch:
     from `vmap T σ = vmap T σ'`, `congrArg (Multiset.map (pair reader))` + the
     roundtrip IB-A2 twice gives `σ.1 = σ'.1`; finish by `Subtype.ext`. -/
 theorem vmap_injective {n : ℕ} (T : MovesS.TableShape n) :
-    Function.Injective (vmap T) :=
-  sorry
+    Function.Injective (vmap T) := by
+  intro σ σ' h
+  have h2 := congrArg
+    (Multiset.map fun v => (((T.vEquiv v).1.1 : ℕ), ((T.vEquiv v).1.2 : ℕ))) h
+  rw [vmap_roundtrip, vmap_roundtrip] at h2
+  exact Subtype.ext h2
 
 /-! ## IB-A4 / IB-A5 — the section of vmap over the chain's σ-index (†1, surjective half) -/
 
@@ -116,7 +126,20 @@ theorem vmap_injective {n : ℕ} (T : MovesS.TableShape n) :
 noncomputable def sigmaOfSigs {n : ℕ} (C : UCarriers n) (s : Multiset C.T.VType)
     (hs : s ∈ C.chain.Sigmas) : SplittingType n :=
   ⟨s.map (fun v => (((C.T.vEquiv v).1.1 : ℕ), ((C.T.vEquiv v).1.2 : ℕ))),
-    sorry, sorry⟩
+    by
+      intro x hx
+      obtain ⟨v, hv, rfl⟩ := Multiset.mem_map.mp hx
+      exact ⟨(C.T.vEquiv v).1.1.pos, (C.T.vEquiv v).1.2.pos⟩,
+    by
+      rw [Multiset.map_map]
+      have hc : s.map ((fun x : ℕ × ℕ => x.1 * x.2) ∘ fun v =>
+            (((C.T.vEquiv v).1.1 : ℕ), ((C.T.vEquiv v).1.2 : ℕ)))
+          = s.map fun v => ((C.T.vdeg v : ℕ)) := by
+        apply Multiset.map_congr rfl
+        intro v _
+        exact (C.T.vdeg_spec v).symm
+      rw [hc]
+      exact (C.chain.sig_exact s).mp hs⟩
 
 /-- IB-A4 (data pin, definitional): the underlying multiset of `sigmaOfSigs`. -/
 theorem sigmaOfSigs_val {n : ℕ} (C : UCarriers n) (s : Multiset C.T.VType)
@@ -134,8 +157,17 @@ theorem sigmaOfSigs_val {n : ℕ} (C : UCarriers n) (s : Multiset C.T.VType)
     `Subtype.ext` on the ≤ n component). -/
 theorem vmap_sigmaOfSigs {n : ℕ} (C : UCarriers n) (s : Multiset C.T.VType)
     (hs : s ∈ C.chain.Sigmas) :
-    vmap C.T (sigmaOfSigs C s hs) = s :=
-  sorry
+    vmap C.T (sigmaOfSigs C s hs) = s := by
+  have hr : Function.Injective (fun v : C.T.VType =>
+      (((C.T.vEquiv v).1.1 : ℕ), ((C.T.vEquiv v).1.2 : ℕ))) := by
+    intro v w hvw
+    apply C.T.vEquiv.injective
+    apply Subtype.ext
+    exact Prod.ext (PNat.coe_injective (congrArg Prod.fst hvw))
+      (PNat.coe_injective (congrArg Prod.snd hvw))
+  apply Multiset.map_injective hr
+  rw [vmap_roundtrip]
+  exact sigmaOfSigs_val C s hs
 
 /-! ## IB-A6 — the dictionary equivalence (†1 assembled) -/
 
@@ -149,8 +181,9 @@ noncomputable def vmapEquiv {n : ℕ} (C : UCarriers n) :
     SplittingType n ≃ {s : Multiset C.T.VType // s ∈ C.chain.Sigmas} where
   toFun σ := ⟨vmap C.T σ, C.vmap_mem_Sigmas σ⟩
   invFun s := sigmaOfSigs C s.1 s.2
-  left_inv := sorry
-  right_inv := sorry
+  left_inv := fun σ =>
+    vmap_injective C.T (vmap_sigmaOfSigs C (vmap C.T σ) (C.vmap_mem_Sigmas σ))
+  right_inv := fun s => Subtype.ext (vmap_sigmaOfSigs C s.1 s.2)
 
 /-- IB-A6 (application pin, definitional): the forward map of `vmapEquiv` is `vmap`. -/
 theorem vmapEquiv_apply_coe {n : ℕ} (C : UCarriers n) (σ : SplittingType n) :
@@ -169,7 +202,8 @@ theorem vmapEquiv_apply_coe {n : ℕ} (C : UCarriers n) (σ : SplittingType n) :
     `vmapEquiv_apply_coe`. -/
 theorem sum_vmap_eq_sum_Sigmas {n : ℕ} (C : UCarriers n) {M : Type*}
     [AddCommMonoid M] (f : Multiset C.T.VType → M) :
-    ∑ σ : SplittingType n, f (vmap C.T σ) = ∑ s ∈ C.chain.Sigmas, f s :=
-  sorry
+    ∑ σ : SplittingType n, f (vmap C.T σ) = ∑ s ∈ C.chain.Sigmas, f s := by
+  rw [← Finset.sum_coe_sort C.chain.Sigmas f]
+  exact Fintype.sum_equiv (vmapEquiv C) _ _ (fun σ => rfl)
 
 end LeanUrat.MovesU

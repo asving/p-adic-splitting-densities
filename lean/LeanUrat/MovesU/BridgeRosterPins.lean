@@ -99,7 +99,7 @@ def RegPAt {p : ℕ} (D : RegData p) (q₀ : ℕ) (e : D.Block) : Prop :=
     of `RegPAtR1` matches `RegP`'s first-conjunct parenthesization). -/
 theorem regP_iff_regPAt {p : ℕ} (D : RegData p) :
     RegP D ↔ ∀ q₀ ∈ D.Pool, ∀ e : D.Block, RegPAt D q₀ e :=
-  sorry
+  Iff.rfl
 
 open scoped Classical in
 /-- IB-B17 (def): THE ACTIVE LOCUS of the tautological roster — the roster's
@@ -181,7 +181,7 @@ theorem bridge_bsplit_pin {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
       = ∑ σ' ∈ C.chain.Sigmas,
           MovesS.bSplit C.T C.RB C.hdc b.1 b.2
             (MovesS.blockSolveLt C.RB C.hdc C.hK hdet b.1) σ' i :=
-  sorry
+  bridgeBsplit_eq_of_detHyp C hdet b i
 
 /-- IB-B13 (betaLeg half): `bridge_betaLeg_pin` — the STANDALONE LEMMA equating
     the roster's β-leg row (IB-B9's `bridgeBetaLeg`, wired by IB-B8) to
@@ -203,7 +203,7 @@ theorem bridge_betaLeg_pin {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
             MovesS.blockSolve C.T C.RB C.hdc C.hK hdet
               (legTarget C b.1 b.2 l).1.1 (legTarget C b.1 b.2 l).1.2
               (legTarget C b.1 b.2 l).2 σ') :=
-  sorry
+  bridgeBetaLeg_eq_of_pos C hdet b l δ hδ
 
 /-! ## IB-B10 — the RegPin record assembly (LAST of the pin units) -/
 
@@ -226,22 +226,23 @@ noncomputable def bridgeRegPin {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
     RegPin C (bridgeRegData hn C hne p) where
   blk := Equiv.refl _
   st := fun _ => Equiv.refl _
-  depth_pin := sorry
-  K_pin := sorry
-  iota_pin := sorry
-  act_pin := sorry
-  bterm_pin := sorry
-  bsplit_pin := sorry
+  depth_pin := rfl
+  K_pin := fun _ _ _ => rfl
+  iota_pin := fun _ _ => rfl
+  act_pin := fun g q₀ hok => bridgeAct_ok g q₀ hok
+  bterm_pin := fun _ _ => rfl
+  bsplit_pin := fun hdet b i => bridge_bsplit_pin hn C hne p hdet b i
   legSt := fun b l => legTarget C b.1 b.2 l
   legEquiv := fun _ => Equiv.refl _
-  legSt_pin := sorry
-  betaLeg_pin := sorry
-  blockDim_pin := sorry
-  cell_pin := sorry
-  Jcell_pin := sorry
-  shape_pin := sorry
-  W_pin := sorry
-  leg_pin := sorry
+  legSt_pin := fun _ _ => rfl
+  betaLeg_pin := fun hdet b l δ hδ hmem =>
+    bridge_betaLeg_pin hn C hne p hdet b l δ hδ hmem
+  blockDim_pin := fun _ => rfl
+  cell_pin := fun _ => rfl
+  Jcell_pin := fun b => bridge_Jcell_pin hn C hne p b
+  shape_pin := rfl
+  W_pin := bridge_W_pin hn C hne p
+  leg_pin := fun _ => rfl
 
 /-! ## IB-B14 — roster sanity (non-vacuity display) -/
 
@@ -251,7 +252,7 @@ noncomputable def bridgeRegPin {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
 theorem bridgeRegData_pool_mem {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
     (hne : HStateNe n C) (p : ℕ) :
     p ∈ (bridgeRegData hn C hne p).Pool :=
-  sorry
+  (bridgeRegData hn C hne p).pool_self_mem
 
 /-- IB-B14 (entry half): the roster's entry list is nonempty at every block —
     the non-vacuity display of `RegP`'s (r2) binding shape (`MovesU/Defs.lean`

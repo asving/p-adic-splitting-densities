@@ -59,7 +59,8 @@ theorem bridgeZpReads_unique {n p : ℕ} [Fact p.Prime]
       g.Monic ∧ g.natDegree = n ∧ g.map (PadicInt.toZModPow N) = f.toPoly)
     (N : ℕ) (f : Box p n N) {σ σ' : SplittingType n}
     (h : ZpReads n p zf N f σ) (h' : ZpReads n p zf N f σ') : σ = σ' := by
-  sorry
+  obtain ⟨g, hm, hd, hmap⟩ := hlift N f
+  exact zpReads_unique_of_lift zf N f g hm hd hmap h h'
 
 /-- (†8) `lift_true` AT ALL N (N = 0 included via the single-lift route — the
     corrected †8 tail): the dite-defined `bridgeTrueType` emits σ IFF `ZpReads`
@@ -72,6 +73,19 @@ theorem bridgeTrueType_lift_true {n p : ℕ} [Fact p.Prime]
       g.Monic ∧ g.natDegree = n ∧ g.map (PadicInt.toZModPow N) = f.toPoly)
     (N : ℕ) (f : Box p n N) (σ : SplittingType n) :
     bridgeTrueType n p zf N f = some σ ↔ ZpReads n p zf N f σ := by
-  sorry
+  obtain ⟨g, hm, hd, hmap⟩ := hlift N f
+  unfold bridgeTrueType
+  split_ifs with hex
+  · constructor
+    · intro hsome
+      exact (Option.some.inj hsome) ▸ hex.choose_spec
+    · intro hσ
+      exact congrArg some
+        (zpReads_unique_of_lift zf N f g hm hd hmap hex.choose_spec hσ)
+  · constructor
+    · intro hnone
+      exact hnone.elim
+    · intro hσ
+      exact absurd ⟨σ, hσ⟩ hex
 
 end LeanUrat.MovesU

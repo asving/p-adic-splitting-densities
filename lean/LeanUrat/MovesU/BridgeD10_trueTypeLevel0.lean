@@ -66,7 +66,11 @@ theorem zpReads_forall_lift {n p : ℕ} [Fact p.Prime]
     coefficients) — every g maps onto every level-0 box polynomial. -/
 theorem map_toZModPow_zero_eq_toPoly {n p : ℕ} [Fact p.Prime]
     (g : Polynomial ℤ_[p]) (f : Box p n 0) :
-    g.map (PadicInt.toZModPow 0) = f.toPoly := sorry
+    g.map (PadicInt.toZModPow 0) = f.toPoly := by
+  haveI : Subsingleton (ZMod (p ^ 0)) := by
+    rw [pow_zero]
+    infer_instance
+  exact Polynomial.ext fun k => Subsingleton.elim _ _
 
 /-- PREDICTION (2) — THE LEVEL-0 EDGE, witness-parametric form: two monic
     degree-n polynomials with distinct zf values kill every level-0 read (both
@@ -78,7 +82,10 @@ theorem zpReads_level0_empty {n p : ℕ} [Fact p.Prime]
     (g₁ g₂ : Polynomial ℤ_[p]) (h₁m : g₁.Monic) (h₁d : g₁.natDegree = n)
     (h₂m : g₂.Monic) (h₂d : g₂.natDegree = n) (hne : zf g₁ ≠ zf g₂)
     (f : Box p n 0) (σ : SplittingType n) :
-    ¬ ZpReads n p zf 0 f σ := sorry
+    ¬ ZpReads n p zf 0 f σ := by
+  intro hread
+  exact hne ((hread g₁ h₁m h₁d (map_toZModPow_zero_eq_toPoly g₁ f)).trans
+    (hread g₂ h₂m h₂d (map_toZModPow_zero_eq_toPoly g₂ f)).symm)
 
 /-- PREDICTION (3), COMPILED — the single-lift uniqueness derivation IB-D9b
     consumes ((†8u), sound at ALL N by `zpReads_forall_lift`): ONE monic

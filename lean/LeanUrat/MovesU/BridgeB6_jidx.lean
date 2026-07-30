@@ -59,6 +59,17 @@ theorem card_bridgeJIdx {n : ℕ} (C : UCarriers n) (e : ℕ) :
     @Fintype.card (BridgeJIdx C e) (bridgeJIdxFintype C e)
       = ∑ τ : C.T.State e, ∑ o ∈ MovesS.splitOuts C.T e τ,
           (C.MS.cells e τ o).card := by
-  sorry
+  classical
+  have h : @Fintype.card (BridgeJIdx C e) (bridgeJIdxFintype C e)
+      = Fintype.card (Σ (τ : C.T.State e)
+          (o : {o : C.T.Out e τ // o ∈ MovesS.splitOuts C.T e τ}),
+          {c : C.MS.Cell e τ // c ∈ C.MS.cells e τ o.1}) :=
+    Fintype.card_congr (Equiv.refl _)
+  rw [h, Fintype.card_sigma]
+  refine Finset.sum_congr rfl fun τ _ => ?_
+  rw [Fintype.card_sigma]
+  rw [Finset.sum_coe_sort (MovesS.splitOuts C.T e τ)
+    (fun o => Fintype.card {c : C.MS.Cell e τ // c ∈ C.MS.cells e τ o})]
+  exact Finset.sum_congr rfl fun o _ => Fintype.card_coe _
 
 end LeanUrat.MovesU

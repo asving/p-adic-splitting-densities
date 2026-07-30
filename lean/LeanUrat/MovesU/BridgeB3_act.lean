@@ -44,6 +44,7 @@ noncomputable def bridgeAct (g : RatFunc ℚ) (q₀ : ℕ) : ℚ :=
     Sketch: `dif_pos` + proof irrelevance of the membership witness. -/
 theorem bridgeAct_ok (g : RatFunc ℚ) (q₀ : ℕ) (hok : g ∈ MovesS.OKat (q₀ : ℚ)) :
     bridgeAct g q₀ = MovesS.evalAt (q₀ : ℚ) ⟨g, hok⟩ := by
-  sorry
+  unfold bridgeAct
+  exact dif_pos hok
 
 end LeanUrat.MovesU
