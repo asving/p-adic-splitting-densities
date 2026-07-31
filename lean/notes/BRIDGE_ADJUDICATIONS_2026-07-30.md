@@ -867,3 +867,8 @@ the GD campaign head (GD-2/GD-3 as ONE MacLane/GMN unit over arbitrary
 unramified DVR — kills D-3 too); CU-1 prover (gated by its depth-3
 falsifier); Lean units U-B (O-12 pole-free), U-D (counting lemma), U-E
 (WGEO degree-1). U-C (capstone-shape) stays PARKED (sign-off class).
+
+## WAVE 6 PARTIAL FOLD (2026-08-01): DELTA 2 landed; Lean U-B/U-D/U-E ALL
+## GREEN (O-12 pole-free layer + the counting lemma + WGEO degree-1 — three
+## more verified-math->Lean round-trips); GD23 delivered (falsifier-first,
+## 0 violations) -> V26 hostile verification launched. CU-1 gate running.
