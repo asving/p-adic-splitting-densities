@@ -1031,3 +1031,18 @@ ledger falsifier; JUNCTION-PIN honestly rescoped to (FRESH)(c)). D-11 pass 1
 NOT ACCEPTED (M1(c)'s multi-block termination billing needs (S1); per-block
 unconditional; contained) -> r2. PHASE C PASS 1 (Codex, end-to-end on the
 root document) LAUNCHED.
+
+## WAVE 12 COMPLETE (2026-08-02, commits f9878d1/8ab8ca6/bb4326c)
+GD23 r4: all 9 gaps repaired (F1 'side-supported' DEFINED + proved automatic
+for nonzero homogeneous elements + domain membership proved at every firing
+via Lemma HOM-FACT; the policy-pin re-advertised; the (BOUND) datum
+displayed). CU-1 r4: all 7 repaired (rows 30-33 added — CEIL/L(H), (C4),
+Theta, the O-1thr bundle; the a0=1 depth-0 boundary ROUTED via the hen-leaf
+clause; (FR-equiv)'s frame clause displayed as pin content). O4T r3: the
+terminal '=' -> '<=' with the exact p^{n(N-1)} normalization identity + the
+verifier's refutation displayed; imports completed to EIGHT named Facts
+(SEP/DES added; six-vs-eight reconciled). Cores byte-stable everywhere
+(diff-verified). Gap-check passes ran behind (results in the wave-12 output
+tail); VERIFIED adjudications for GD23/CU-1/O4T ride the checks + the
+pending-verdict registry at the next harvest, alongside VC1 (Phase C pass 1
+on the ROOT document) and the D-11/O-11 r2s.
