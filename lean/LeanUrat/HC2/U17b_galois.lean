@@ -723,8 +723,14 @@ private lemma historyCoherent_historyMap (φ : F ≃+* F) (H : History p F)
     rw [historyMap_getElem φ H i (by omega) hi0, historyMap_getElem φ H (i + 1) hi hi1]
     refine ⟨fun hsp => ?_, fun hsp => ?_, hs, ht, hwin, hDw, hlt⟩
     · exact isRecenteringCore_map φ (hrec hsp)
-    · obtain ⟨hlift, hcore⟩ := hnonrec hsp
-      exact ⟨isNodeLift_map φ _ _ hlift, transitionCoreL_map φ hcore⟩
+    · -- HK-06 wave: the leg now carries the RG-2 guard + the σV regrade; `stageMap`
+      -- keeps every field `RegradeOf` reads (Φ/e/h/K/FQ/reps/w/wPrev), so the regrade
+      -- record transports verbatim to the mapped stages.
+      obtain ⟨he1, σV, hreg, hlift, hcore⟩ := hnonrec hsp
+      exact ⟨he1, stageMap φ σV,
+        ⟨hreg.1, hreg.2.1, hreg.2.2.1, hreg.2.2.2.1, hreg.2.2.2.2.1, hreg.2.2.2.2.2.1,
+          hreg.2.2.2.2.2.2.1, hreg.2.2.2.2.2.2.2⟩,
+        isNodeLift_map φ _ _ hlift, transitionCoreL_map φ hcore⟩
 
 private lemma transitionAdmissible_map (φ : F ≃+* F) (νp ν : Node p F)
     (h : TransitionAdmissible νp ν) :
@@ -794,8 +800,10 @@ private lemma tower_mem (H : History p F) (hcoh : HistoryCoherent H) :
           obtain ⟨_, hcen⟩ := (H.nodes[n]'hn).hspecRecCenter hsp
           rw [hcen]
           exact ((H.nodes[n]'hn).center).2
-      · obtain ⟨_, hcore⟩ := hnonrec hsp
-        refine ⟨hcore.base.field_grow, ?_⟩
+      · -- HK-06 wave: field_grow/child_field are keyed at the σV regrade, whose K is
+        -- the parent's (`RegradeOf` clause 4) — fold back through it.
+        obtain ⟨-, σV, hreg, -, hcore⟩ := hnonrec hsp
+        refine ⟨hreg.2.2.2.1 ▸ hcore.base.field_grow, ?_⟩
         rw [hcore.base.child_field]
         exact Subfield.subset_closure (Set.mem_union_right _ rfl)
     rcases Nat.lt_or_ge r n with hrn | hrn

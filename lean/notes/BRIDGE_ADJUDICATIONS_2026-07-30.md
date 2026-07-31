@@ -373,3 +373,18 @@ N8 eq2 CONFIRMED exhaustively (199,723 alphabets across 17 fields, all full;
 29,142 EQ-2 comparisons exact) — strong support for the M14 conditional proof.
 MATRIX SUMMARY: no Fable-vs-Codex-vs-numerics conflict anywhere; every
 refutation triangulated; every surviving conjecture numerically supported.
+
+## GROUP E + IFK (2026-07-31, commits b2a834a + 03efbd7)
+GROUP E COMPLETE: IB-E5/E6/E7 PROVED (zf_pos, pointwise e*f=deg, zf_factor at
+the re-pointed integral-closure invariants; footprint = AX_integralClosure_dvr
++ core, no sorryAx) + IB-E9 bridgeZpBridge CONSTRUCTED — THE LAST missing
+UInstance field. Census §2.2: UInstance CONSTRUCTION-COMPLETE modulo the R7
+sorryAx conditionality (which the landed item-13 repair + canPolicyC_pin
+reduction is closing). AxChk green, capstones Lean-core.
+IFK BLUEPRINT delivered (IFK_BLUEPRINT_2026-07-31.md, 401 lines): 4 faces
+(K-DICT / K-READ(thr|delta via BNS 3.13) / K-RUN / K-HALT) binding the exact
+carriers; 20-row derivation map covering M02/M05/M06/M12/M18 + F-chain +
+RunRealizerExists; NsFree = prerequisite (fence event 24); n=2
+discharge-today list; AX_BNS_precision drafted as 5th literature candidate;
+7-unit decomposition, gates first. GATE: Codex plan-review (launched) before
+any prover dispatch.

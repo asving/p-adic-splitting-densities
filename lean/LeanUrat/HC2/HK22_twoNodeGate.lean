@@ -183,7 +183,45 @@ lemma bw_X_add_C_one : U31.bw (X + C 1) = 0 := by
 /-! ### §3 — THE GATE OBSTRUCTION: no coherent 2-node history rides the forged
 ramified transition (root frame UNPINNED — no root frame works) -/
 
-/-- **THE 2-NODE GATE IS EMPTY AT HEAD** (pre-HK-06 vocabulary): any history whose
+/-- ═══ HK-06 WAVE M1 FREEZE (2026-07-31, task #44) ═══
+**The PRE-WAVE `HistoryCoherent`, VERBATIM** (MovesC/Defs as of the wave commit's
+parent — the OLD child keying this file's obstruction theorems refute).  The wave
+replaced the live definition's non-recentering leg by the ratified (S-a) two-step
+regrade form (RG-2-guarded, next-pair-keyed) and re-keyed/guarded the s/t ties; the
+live `HistoryCoherent` is NOW SATISFIABLE at this gate (the positive half:
+`HC2/HK23_twoNodeGatePos.lean`), so `ramifiedChild_twoNode_incoherent`/
+`twoNodeGate_isEmpty` below are RE-TARGETED at THIS frozen copy — they refute ONLY the
+historical form (the M1 no-coexistence rule; proofs byte-unchanged).  Never consume
+this def outside the two archival theorems. -/
+def HistoryCoherentPre {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : History p F) : Prop :=
+  (∀ hj : 0 < H.nodes.length, (H.nodes[0]'hj).σ.Φ.natDegree = 1) ∧
+  (∀ (i : ℕ) (hi : i < H.nodes.length),
+    (H.nodes[i]'hi).line.slope *
+        (((H.nodes[i]'hi).e : ℚ) * (H.strFrame i : ℚ) * ((H.nodes[i]'hi).Dwidth : ℚ))
+      = ((H.nodes[i]'hi).h : ℚ)) ∧
+  (∀ (i : ℕ) (hi : i < H.nodes.length),
+    (((H.nodes[i]'hi).gam : ℤ) : ℚ)
+      = ((H.nodes[i]'hi).e : ℚ) * ((H.strFrame i : ℚ) * (H.nodes[i]'hi).ustar)
+        + ((((H.nodes[i]'hi).s0 + (H.nodes[i]'hi).wSide) : ℕ) : ℚ) * ((H.nodes[i]'hi).h : ℚ)) ∧
+  ∀ (i : ℕ) (hi : i + 1 < H.nodes.length),
+    ((H.nodes[i]'(by omega)).species = ReadSpecies.recentering →
+      IsRecenteringCore (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
+        (H.nodes[i]'(by omega)).center (H.nodes[i]'(by omega)).lift) ∧
+    ((H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering →
+      IsNodeLift (H.nodes[i]'(by omega)) (H.nodes[i+1]'hi).σ.Φ ∧
+        TransitionCoreL (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
+          (H.nodes[i+1]'hi).σ.Φ (H.nodes[i]'(by omega)).e (H.nodes[i]'(by omega)).h
+          (H.nodes[i]'(by omega)).zbar) ∧
+    ((H.nodes[i+1]'hi).σ.s = (H.nodes[i]'(by omega)).s) ∧
+    ((H.nodes[i+1]'hi).σ.t = (H.nodes[i]'(by omega)).t) ∧
+    ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide ≤ (H.nodes[i]'(by omega)).μ) ∧
+    ((H.nodes[i+1]'hi).Dwidth = (H.nodes[i]'(by omega)).childWidth) ∧
+    ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope)
+
+/-- **THE 2-NODE GATE IS EMPTY AT THE PRE-WAVE KEYING** (re-targeted at the frozen
+`HistoryCoherentPre` by the HK-06 wave, 2026-07-31 — refutes ONLY the historical
+form; the live keying's positive instance is `HK23_twoNodeGatePos`): any history whose
 second node's frame is the forged `ramifiedStage` is INCOHERENT.  The i = 0 coherence
 leg pins the root read pair to (2, 5) (`child_e`/`child_h` at the recorded child), the
 root frame's valuation to `bw` (`child_wPrev` chained through the coherence record and
@@ -193,7 +231,7 @@ the parity kernel forces the key `X + C 1`, whose `bw`-weight 0 violates the fra
 theorem ramifiedChild_twoNode_incoherent (H : History 2 F4)
     (hlen : 1 < H.nodes.length)
     (hchild : (H.nodes[1]'hlen).σ = R7Forge.ramifiedStage) :
-    ¬ HistoryCoherent H := by
+    ¬ HistoryCoherentPre H := by
   intro hcoh
   have h0 : 0 < H.nodes.length := by omega
   obtain ⟨hdeg1, -, -, hstep⟩ := hcoh
@@ -227,7 +265,8 @@ theorem ramifiedChild_twoNode_incoherent (H : History 2 F4)
   have hh := (H.nodes[0]'h0).σ.hh
   omega
 
-/-- **THE PACKAGED GATE VERDICT** (the charge's exact conjunction, ∀ n): no 2-node
+/-- **THE PACKAGED GATE VERDICT, PRE-WAVE FORM** (re-targeted at the frozen
+`HistoryCoherentPre` by the HK-06 wave, 2026-07-31): no 2-node
 history over the base pin riding the forged ramified transition satisfies
 `HistoryCoherent ∧ Realizable ∧ InBox n`.  The `Realizable`/`InBox` conjuncts are
 killed with the coherence leg; the root pin `bStageP` is not even needed
@@ -236,7 +275,7 @@ theorem twoNodeGate_isEmpty (n : ℕ) :
     ¬ ∃ (H : History 2 F4) (hlen : 1 < H.nodes.length),
         (H.nodes[0]'(by omega)).σ = bStageP ∧
         (H.nodes[1]'hlen).σ = R7Forge.ramifiedStage ∧
-        HistoryCoherent H ∧ Realizable H ∧ InBox n H := by
+        HistoryCoherentPre H ∧ Realizable H ∧ InBox n H := by
   rintro ⟨H, hlen, -, hchild, hcoh, -, -⟩
   exact ramifiedChild_twoNode_incoherent H hlen hchild hcoh
 
