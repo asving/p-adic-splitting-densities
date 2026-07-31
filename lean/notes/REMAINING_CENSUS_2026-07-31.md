@@ -330,3 +330,12 @@ theoremU slots now have their full sited carrier vocabulary. G13'
 (no proof obligations of their own); their DISCHARGE at a real RelCarrierPack is
 the wave-D instance work (census critical path), for which the forge round's
 ramified Stage is groundwork.
+
+## DELTA (M09 formalized, 2026-07-31, commit 7ffb1da)
+BK.cl11_ksub: OPEN-MATH -> PROVED AT ALL n (KsubGeneral.lean:
+ksubM1C1T_of_degCons from DegCons.size_sum alone; UCarriers.cl11_ksub_general
+supplies both row sites; SynK1 n=2 subsumed, record untouched). First
+open-math obligation closed by the dual-agent pipeline (independent identical
+proofs). The open-math count drops by one; cl19_rep moved from OPEN-MATH to
+REFUTED-AS-STATED (queue item 22 — carrier-parameterization repair awaits
+sign-off; G13' gated).
