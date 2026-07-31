@@ -62,8 +62,9 @@ such that whether the machine reads that site on f is determined by f's coeffici
 digits below level L. **Theorem 2 ("O-1(thr)")**: (a) the realized-site two-lift
 comparison form of Theorem 1, uniform over working precisions ≥ L; and (b) window
 closure: at every state of a decided ns-free classification tree T, on the whole
-cylinder of boxes agreeing below thr(T) the realized-children roster is exactly T's
-recorded roster — deep candidate children are excluded, not merely untransported.
+cylinder of boxes agreeing below thr(T) the REALIZED-children roster (§1.3) is
+exactly T's recorded roster — deep candidate children are excluded, not merely
+untransported.
 **Theorem 3 (the cylinder law, "D-15")**: the fiber of a decided ns-free tree T
 (the set of boxes fibering T, §1.4 (F1)–(F6)) is, at every precision
 N ≥ thr(T), an EXACT finite union of level-thr(T) coefficient cylinders; fiber
@@ -209,8 +210,8 @@ displayed laws themselves ((N2)–(N4) enter through Lemmas NAT and CEIL). LAWFU
 is therefore box-free in full. Consistency and existence of lawful extensions are
 NEVER consumed (every theorem is universally quantified over sites or fibered
 boxes); non-vacuity is nonetheless witnessed — the Eisenstein site of §7
-satisfies CORE, and harvested sites satisfy CORE by construction
-((M6a)/(M6b), §2.4). (§8, seam S-2.)
+satisfies CORE, and harvested sites satisfy CORE by construction plus the
+displayed vertex laws ((M6a)/(M6b)/Corollary VTX, §2.4–2.5). (§8, seam S-2.)
 
 ### 1.3 The run predicate
 
@@ -373,11 +374,13 @@ uniformly in j — so (ii); (iii) is standard for min-of-develop valuations.
 The consequence: B − B′ = p^L·C with C integral, so
 w_i(B − B′) = L·E_i + w_i(C) ≥ L·E_i. ∎
 
-*Remark.* Only properties (i)–(iii) of the frame maps w_i are used anywhere in
-this brief (together with R-LOC, which needs only (iii)). Whether the recursion
-of §1.1 yields genuinely multiplicative (MacLane) valuations is standard but
-NEVER needed: the machine's reads treat the w_i as given height functions, and
-the theorems quantify over the recorded data.
+*Remark (updated at rev 3).* Properties (i)–(iii) of the frame maps w_i are all
+that Lemmas DEV/R-LOC/NAT/CEIL, Theorem 1, and Theorem 2(a) use: for them the
+w_i are just given height functions and the theorems quantify over recorded
+data. Genuine multiplicativity of the §1.1 chain (it is the MacLane composite)
+IS consumed at exactly one place — §2.5's window-geometry proofs — where it is
+the named input (V1): proved there at degree-1 first transitions (Lemma VAL1),
+cited (MacLane) beyond.
 
 ### 2.3 Lemma R-LOC (residual locality). *(a — definitional for graded residues)*
 
@@ -477,8 +480,9 @@ for lookup):
   graded ring gr(w_{i+1}): (a) in(Φ_{i+1}) is, up to a unit monomial, an
   irreducible homogeneous element ψ̂_hom of Φ_i-degree e_i·g_i, and homogeneous
   elements of smaller Φ_i-degree are not divisible by it; (b) the
-  Φ_{i+1}-development computes w_{i+1}: w_{i+1}(B) = min_k (w_{i+1}(C_k) +
-  k·γ̂_{i+1-index}) — the min over the sheared slot heights; (c)
+  Φ_{i+1}-development computes w_{i+1}: for every B, w_{i+1}(B) =
+  min_k (w_{i+1}(C_k) + k·γ̂_i) over B's Φ_{i+1}-development — the min over the
+  sheared slot heights; (c)
   ord_{ψ̂_hom}(in(f)) = ord_{ψ_i}(R_i(f)) — the residual polynomial computes
   ψ-order of the initial form. [GMN, Trans. AMS 364 (2012), §§1–2 (residual
   polynomials, the Theorem of the product); proved below at degree-1 first
@@ -604,11 +608,14 @@ strictly decreasing (F principal: h_F/e_F > 0 by (c)); so for k > μ:
 harvested child of a non-root state: C_μ ≠ 0, and the sheared vertex height is
 PINNED exactly: u_μ = w(C_μ) + μ·γ̂ = γ. Consequently vhtx (the (R5) record
 — the vertex coefficient's own frame height, cf. §1.3) satisfies
-vhtx ≤ I: at a first transition, e_0·vhtx = e_0·w_0(C_μ) ≤ w_1(C_μ) =
-γ − μ·γ̂_0 ≤ γ, i.e. vhtx ≤ γ/e_0 = I (the general-order inequality
-e_i·w_i(C_μ) ≤ w_{i+1}(C_μ) is the slot-0 term of §1.1's recursion, min ≤ term
-at t = 0... it is the recursion evaluated on C_μ's own parent development,
-whose every term e_i·w_i(c_t) + t·γ_{i+1} ≥ e_i·w_i(C_μ) needs POS only).
+vhtx ≤ I: at a first transition, displayed —
+e_0·vhtx = e_0·w_0(C_μ) ≤ w_1(C_μ) = γ − μ·γ̂_0 ≤ γ, i.e. vhtx ≤ γ/e_0 = I
+(the first inequality: w_1(C_μ) = min_t (e_0·v_p(c_t) + t·h_0) ≥
+e_0·min_t v_p(c_t) = e_0·w_0(C_μ), the last equality definitional at
+d_0 = 1). At general order the same
+chain needs e_i·w_i(C_μ) ≤ w_{i+1}(C_μ), i.e. that C_μ's Φ_i-development
+computes w_i from below — the development identity (V2b) at level i, part of
+the cited perimeter, NOT of POS.
 Root-state children: the depth-1 kernel remains as checked (T-E). The
 UNCONSUMED lower half of the (N4) band stays with (M6b)(ii). *(So the checkable
 kernel of (M6b) is now derived where WGEO applies; what (M6b) still asserts is
@@ -928,8 +935,8 @@ running the same argument from x′) it suffices: fiber(T, x) ⟹ fiber(T, x′)
   So no strays exist.
 * (F2): leaf kind and verdict are record-only for (τ-irr) leaves (saturation +
   verdict function of H); ns legs are absent. The maximality of each leaf among
-  realized runs at x′ follows from (F1)-at-x′ just established (chains = realized
-  runs, so maximal chain = maximal run).
+  REALIZED runs at x′ follows from (F1)-at-x′ just established (chains =
+  REALIZED runs, so maximal chain = maximal run).
 * (F4): ¬IrrHalts record-only; ¬NsHalts at interior chains: the tree child is
   REALIZED at x′ (Theorem 2(a)) and arises from a window principal face
   (**(M6c)(ii)**), so the window has a principal face.
