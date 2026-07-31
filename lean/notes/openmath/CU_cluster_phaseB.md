@@ -139,7 +139,9 @@ window N_V = 1. Equivalently: the codomain extension (t-ii) (a final entry
 level-(k'+1) GMN read of f, same shape as (c1) — so no free choice of terminal
 record exists at a verdict-carrying leaf. [R2 note: "no free choice" is
 quantified over RC-consistent records — Definition RC, §9.2a — and every
-run-emitted record is RC-consistent via the (T-DEC)/(T-VERD) rows of §9.4.]
+run-emitted record is RC-consistent via the (T-DEC)/(T-VERD) rows of §9.4;
+the (t-ii) final entry is (λ_{k'+1}, ⊥, (E, F)) after the §9.3(iii) CUC-F1
+repair — the appended record carries ν's verdict data.]
 
 **Proof route by citation (declared, NOT executed anywhere yet).** O-2a
 Theorem 2(B) saturation (+ Cor 1.20/3.8 for irreducibility and (e, f)) + the
@@ -492,7 +494,7 @@ consolidated CU-2..CU-7 unit of record). No other file touched.
 
 *(Appended by the CU-2t prover unit per the wave-8 dispatch (ledger §"WAVE 8
 COMPLETE"; tree DELTA 3). This section SUPERSEDES §2's grade line: CU-2t is
-now **PROVED-UNVERIFIED, conditional exactly as displayed in §9.6**; the
+now **PROVED-UNVERIFIED, conditional exactly as displayed in §9.5**; the
 statement is §2's, made precise below; the proof is corollary-grade over the
 cited homes, exactly as §D2.3 priced it ("OPEN (one lemma) over the GD
 residue" — the lemma is now written). Hostile pass owed. The section is
@@ -671,19 +673,43 @@ LIT-3 Hensel lift at a₀ = 1 — with (e, f) = (1, f₀) [(D3)/(L3+) PROVED +
 LIT-3]. Hence in both cases the verdict pair of T(f, 𝐇°) equals the TRUE
 invariant pair of a genuine irreducible p-adic factor of f; moreover it is
 a function of the PREFIX'S OWN DISCRETE FIELDS alone ((f₀; e_i, g_i)_{i≤k'}
-resp. f₀), so any two verdict-carrying terminal data consistent with the
-same (f, 𝐇°) coincide — no free choice.
+resp. f₀), so any two verdict-carrying terminal records RC-consistent with
+the same (f, 𝐇°) (Definition RC, §9.2a) agree on every RC-constrained
+field — no free choice at datum granularity (full-record coincidence sits
+behind the §9.2a inventory caveat, consumed by nothing here).
 
-**(iii) [(t-ii) consistency].** Define Θ^τ(𝐇°, ν) := Θ(𝐇°) ⌢ (λ_{k'+1}, ⊥)
-with λ_{k'+1} the read entry of (i). Θ^τ is well-defined on DEC seam objects
-(by (i)), truncation-compatible over Θ (strip the last entry), takes no
-Lift call at level k'+1 (the chain ENDS: no new representative, OL-1's
-cumulative quantifier untouched), and is INJECTIVE on DEC seam objects over
-a fixed f: equal images force equal Θ(𝐇°), Lemma R recovers 𝐇°, and
-(i)+(ii) reconstruct the terminal datum from (f, c). This closes Lemma R's
-terminal seam EXACTLY at verdict-carrying decided leaves; free
-(non-verdict) terminal records remain non-recoverable — the non-claim is
-unchanged, now displayed as scoped rather than open.
+**(iii) [(t-ii) consistency — REPAIRED at R2 per CUC F1].** Define
+Θ^τ(𝐇°, ν) := Θ(𝐇°) ⌢ (λ_{k'+1}, ⊥, (E_ν, F_ν)), where λ_{k'+1} is the
+read entry of (i) — a function of (f, c) — and (E_ν, F_ν) is ν's OWN
+announced verdict pair: the extension map now READS ν; the appended record
+carries ν's data. Θ^τ is well-defined on DEC seam objects ((i) for λ; the
+announced pair exists by the verdict-carrying typing),
+truncation-compatible over Θ (strip the appended entry), and takes no Lift
+call at level k'+1 (the chain ENDS: no new representative, OL-1's
+cumulative quantifier untouched). Injectivity over a fixed f, in two
+displayed layers:
+* **(iii-a) [unconditional; announced-pair granularity].** Θ^τ is
+  injective on the pairs (𝐇°, announced verdict pair): equal images force
+  equal Θ(𝐇°) — Lemma R recovers 𝐇° — and equal appended entries return
+  equal announced pairs. CUC F1's counterexample class (one 𝐇°, two
+  records announcing different pairs) now SEPARATES, because the announced
+  pair rides in the image.
+* **(iii-b) [determination layer — (ii)'s forcing DISPLAYED as the
+  injectivity argument].** If moreover RC_f(𝐇°, ν) (Definition RC, §9.2a)
+  — in particular for every RUN-EMITTED record, via (T-DEC)/(T-VERD)
+  (§9.4) — then ν's whole RC-constrained field vector is a single-valued
+  function of (f, 𝐇°): (RC-verd) pins (E_ν, F_ν) to the prefix accumulator
+  pair, a function of 𝐇°'s discrete fields by (ii), and (RC-read) pins the
+  shape fields to (i)'s unique side datum. So on RC-consistent seam
+  objects Θ^τ is injective at datum granularity through its
+  Θ(𝐇°)-coordinate alone — the ν-collision of CUC F1 is VACUOUS there,
+  and the determination is the argument. Full-RECORD recovery is stated
+  modulo the §9.2a inventory caveat.
+
+This closes Lemma R's terminal seam at verdict-carrying decided leaves AT
+THE TWO GRANULARITIES DISPLAYED; free (non-verdict) terminal records
+remain non-recoverable — the non-claim is unchanged, now displayed as
+scoped rather than open.
 
 **(iv) [windows].** The verdict pair on DEC(τ-hen) is a function of the
 level-1 datum ψ̂₀ alone (proved in (ii)) — consistent with, and joined into
@@ -734,17 +760,33 @@ j₀ = 1, (D3)/(L3+) [PROVED, O-2a §3]: the −∞ side carries the EXACT facto
 (e, f) = (1, f₀); at a₀ = 1, LIT-3 gives the unique monic factorization
 f = F·G with F̄ = ψ̂₀, F irreducible with (e, f) = (1, f₀). (At
 a₀ = 1 ∧ j₀ = 1 the two readings name the same factor F = φ₁.) The pair
-(1, f₀) is a function of ψ̂₀. Uniqueness across candidate records: a
-verdict-carrying terminal datum consistent with (f, 𝐇°) must announce its
-branch's invariant pair; the branch's decided factor is the SINGLE
-polynomial named above (irreducibility makes f_{t^{(k')}} one factor, not a
-product; LIT-3's F is unique), so its invariant pair is single-valued —
-combined with (i), the whole datum T(f, 𝐇°) is the unique consistent one.
+(1, f₀) is a function of ψ̂₀. Uniqueness across candidate records (R2:
+"consistent" = Definition RC, §9.2a — no longer an undefined word, the CUC
+F2 repair): (RC-verd) pins the announced pair to (accE_{k'}, accF_{k'})
+resp. (1, f₀) — arithmetic of 𝐇°'s own discrete fields, no reference to
+the true factor, hence no circularity — and (RC-read) pins the shape
+fields to the level-(k'+1) side, which (i) proved single-valued in (f, c).
+So any two RC-consistent records over the same (f, 𝐇°) agree on every
+RC-constrained field: T(f, 𝐇°) is the unique RC-consistent datum.
+CORRECTNESS — that the RC-pinned pair equals the TRUE invariant pair — is
+the main clause just proved: the branch's decided factor is the SINGLE
+polynomial named above (irreducibility makes f_{t^{(k')}} one factor, not
+a product; LIT-3's F is unique), and 2(B) resp. (D3)/(L3+)/LIT-3 computes
+its pair as exactly the accumulator values.
 
-(iii) Immediate from (i)/(ii) + Lemma R, as displayed in the statement.
-The trailing ⊥ entry separates Θ^τ-images from Θ-images of all-continuing
-histories, so no new collision is created — consistency of the extension in
-O-2a §2's sense.
+(iii) (iii-a) strip-and-compare: the appended entry is determined by its
+position (last), so equal Θ^τ-images give Θ(𝐇°₁) = Θ(𝐇°₂) and equal
+appended triples (λ, ⊥, (E, F)); Lemma R (both 𝐇° all-continuing with
+Cons_f) gives 𝐇°₁ = 𝐇°₂, and the appended equality gives
+(E, F)₁ = (E, F)₂. (iii-b) RC-consistency pins (E_ν, F_ν) to the
+accumulator pair — a function of 𝐇°'s discrete fields, by (ii) — and pins
+the read fields to (i)'s single-valued side datum, so two RC-consistent
+seam objects with equal 𝐇° agree on the whole RC-constrained vector: no
+distinct RC-consistent pair shares an image, at datum granularity. The
+trailing ⊥ separates Θ^τ-images from Θ-images of all-continuing histories
+(⊥ is not a ψ̂ value, by typing; the added verdict coordinates only widen
+the separation), so no new collision is created — consistency of the
+extension in O-2a §2's sense.
 
 (iv) The function claims were proved inside (ii); the two TB-CAP legs are
 consumed as cited (T-6 dual-accepted; the (τ-irr) leg perimeter-conditional
@@ -792,8 +834,13 @@ factor. **Pricing of (T-DEC)/(T-VERD):** both are GD-4-family instances
 (D2.2: "emission/record discipline — engine bookkeeping, not GMN
 mathematics", proof-by-construction routes on record); they are NOT in
 OL-4's printed clause list (which covers W-laws + (c0) only) — a displayed
-SCOPE NOTE owed to the GD-4 owner: GD-4 gains the two terminal rows. NO new
-open family is created. The machine-side home of both statements is O-1thr
+SCOPE NOTE owed to the GD-4 owner: GD-4 gains the two terminal rows, and
+(R2 honesty correction, CUC F4) these ARE two genuinely NEW unproved
+obligations on the mandatory path, absent from every earlier pricing (§2's
+condition line and §D2.3's "OPEN (one lemma) over the GD residue" both
+predate them). What is preserved: no new open FAMILY. The §9.2a inventory
+closure rides the same scope note (consumed by nothing in this lemma). The
+machine-side home of both statements is O-1thr
 §1.4's record mechanics ("IrrHalts ⟺ μ_last = 1"; "irrVerdict =
 (accE, accF) a pure record function") — cited here as CORROBORATION ONLY,
 not consumed, so CU-2t's pass conditionality stays as §2 priced it (no
@@ -805,17 +852,35 @@ P(O-1thr r4)).
 the OL statements consumed via CU-2] · TB-CAP's D-12r perimeter [(τ-irr)
 window leg only; the (τ-hen) leg is unconditional T-6 content] · the GD
 residue: via CU-2/(T-PREFIX) = OL-1..OL-6, plus OL-1 directly at k' ≥ 1 in
-clauses (i)/(ii), plus the (T-DEC)/(T-VERD) GD-4 rows (§9.4). Zero new open
-inputs beyond the GD families already on the mandatory path — exactly the
-§D2.3 pricing.
+clauses (i)/(ii), plus the (T-DEC)/(T-VERD) GD-4 rows (§9.4).
+
+**Pricing correction (R2, CUC F4 — replaces rev 1's "zero new open inputs"
+sentence, which OVERSTATED).** (T-DEC) and (T-VERD) are TWO NEW open
+inputs: unproved obligations in no printed clause list on file before §9.4
+displayed them. They are folded into GD-4 (so no new open FAMILY), but the
+mandatory-path residue is the §D2.3 pricing PLUS these two rows — §D2.3's
+"OPEN (one lemma) over the GD residue" and §2's condition line ("P(O-2a
+r5) + TB-CAP's D-12r perimeter + the GD residue via 2(B)'s hypothesis")
+both predate and exclude them. **Ledger + ROOT touches owed (enumerated
+for the orchestrator; NOT executed here, other-file discipline):**
+(1) tree, GD-4 node / §D2.2 row — clause list gains the two terminal rows
+(T-DEC)/(T-VERD), citing §9.4; (2) tree §D2.3, the CU-2t pricing line —
+"OPEN (one lemma) over the GD residue" → "… over the GD residue + the two
+GD-4 terminal rows"; (3) the ledger's CU-2t/wave-8 line — conditionality
+reads "GD residue incl. the two new GD-4 terminal rows (§9.4)";
+(4) GD-4's owner brief, at its next revision — absorb the §9.4 scope note
+(the two rows + the §9.2a inventory-closure question).
 
 **Consumers served:** CU-4's F4-C leg (§4's assembly display: "CU-2t (the
 terminal record fires, forced)" — this section supplies the forced-value
 half; the COMPLETENESS half, that the certificate fires within the window
 on the box, remains CU-4's walk) · CU-7 (I-1)(b) (§7: terminal event match
 = CU-2t + CU-4 + Lemma STEEP) · Lemma R's consumer audit (any future
-consumer needing full-𝐇 injectivity now has the verdict-carrying case
-supplied by Θ^τ, §9.3(iii)).
+consumer needing full-𝐇 injectivity has the verdict-carrying case supplied
+by Θ^τ at the §9.3(iii) granularities — unconditional at (𝐇°,
+announced-pair) level (iii-a); datum level on RC-consistent, in particular
+run-emitted, records (iii-b); full-record level only modulo the §9.2a
+inventory caveat — consumers must pick their granularity explicitly).
 
 **Non-claims (displayed):** (1) no claim that every decided branch GETS a
 verdict emitted at any particular level — completeness/acceptance is CU-4
@@ -858,12 +923,57 @@ j₀ ≤ 1 separability argument at every level; (8) that Θ^τ creates no
 collision with Θ-images (the trailing-⊥ separation). Falsifier F1/F3/F5
 citations are checkable against O-2a rev 5 §6 verbatim.
 
-**Grade after this unit: CU-2t = PROVED-UNVERIFIED, conditional per §9.5.**
+**Grade after this unit: CU-2t = PROVED-UNVERIFIED, conditional per §9.5
+(as corrected at R2); fresh hostile pass owed on the R2 text.**
 §2's "OPEN (one lemma)" and §8's table row and residue line are SUPERSEDED
-accordingly (append-only: the § texts above are unedited). Owner question
+accordingly (append-only at §9 time; R2 subsequently edited §1, the §2
+note, and §§9.2–9.5 in place — the diff record is §10). Owner question
 (§8's owed pointer) resolved: this unit (D3CU2t) wrote it; the CU-1 orbit
 inherits maintenance at V29 adjudication as recommended.
 
 **Files (§9 addendum):** this section appended to
 `lean/notes/openmath/CU_cluster_phaseB.md`. No other file touched by §9;
 the tree's DELTA 3 (same commit) records the path-level status.
+
+---
+
+## 10. R2 record — CUC pass-1 dispositions (unit CU2t, 2026-07-31)
+
+*(R2 was charged with the three CUC corrections — the F1 critical + F2, the
+F3 rescope, the F4 pricing honesty — plus the rev bump. Verified cores are
+byte-stable: Lemma CU-2t clauses (i), (ii)-main text up to its uniqueness
+tail, (iv), the (i)/(ii)/(iv) proof bodies except the (ii) uniqueness
+paragraph, the Corollary, §§9.0–9.1, 9.6, and the §6.1 audit are unedited.
+No Lean file touched; no other unit's file edited.)*
+
+| CUC finding | class | disposition at R2 |
+|---|---|---|
+| F1 — §9.3(iii) Θ^τ blind to ν, injectivity false as printed | CRITICAL | **FIXED in place.** Θ^τ repaired to carry ν's data: the appended record is (λ_{k'+1}, ⊥, (E_ν, F_ν)) with (E_ν, F_ν) ν's own announced pair. Injectivity restated in two displayed layers — (iii-a) unconditional at (𝐇°, announced-pair) granularity (F1's counterexample class separates in the image); (iii-b) on RC-consistent records, (ii)'s determination DISPLAYED as the injectivity argument (the ν-collision is vacuous there). §9.5's Lemma-R consumer line re-scoped to the granularities. Proof of (iii) rewritten (strip-and-compare + determination). |
+| F2 — undefined consistency predicate in (ii)'s uniqueness tail | GAP (root of F1) | **FIXED.** Definition RC displayed (§9.2a): (RC-read) = the (t-i) polygon tie in (c1) shape; (RC-verd) = the prefix-accumulator tie ((T-VERD) shape). Non-circularity displayed (neither clause mentions the true factor; correctness stays a theorem = (ii)-main). Uniqueness tail restated and re-proved over RC at datum granularity; the record-vs-datum inventory caveat displayed and routed to GD-4's scope note. |
+| F3 — §1 statement vs the §9.1 carrier note | GAP | **FIXED.** §1 rescoped: the CONTINUING PART 𝐇° is the well-formed Cons_f element of 𝔈; the at-most-one terminal record is the run-side half of the seam pair, never an 𝔈 node; "each emitted record" → "each emitted CONTINUING record"; terminal seam pointed at CU-2t. §2's display got the matching R2 note (seam-pair + repaired (t-ii) entry format). |
+| F4 — "zero new open inputs / exactly the §D2.3 pricing" overstatement | GAP | **FIXED.** §9.4: (T-DEC)/(T-VERD) now stated as two genuinely NEW unproved mandatory-path obligations (no new family). §9.5: the overstating sentence replaced by the pricing correction + the four enumerated ledger/ROOT touches owed to the orchestrator (tree GD-4 row, tree §D2.3 pricing line, ledger CU-2t line, GD-4 owner brief). |
+| F5 — T_can undefined in §§3–5 statements | GAP | **ROUTED, out of R2's charge** (CU-3/CU-4/K-OB-B statement layer). Candidate successor definition already hinted on file (DES-6 re-key: T_can(f) = the Cons_f-dressed histories); the owning units must DISPLAY it. Owner: CU-3/CU-4 walk owner at the next cluster revision. |
+| F6 — F4-S assembly: acceptance ⇒ run-membership unsupplied | GAP | **ROUTED** to CU-4's walk owner (CU-4 already graded ASSEMBLY, unwalked); the supply-row hole (O-1thr Thm 3's (E-N)-caveated bridge) must be priced in the walk. |
+| F7 — O-1thr Thm 3's post-V24 survival unattested in §0 | GAP | **ROUTED** to the registry/O-1thr owner: attest or shear Thm 3 in the §0 O-1thr row at the P(O-1thr r4) pass. Not editable here without the O-1thr ledger evidence. |
+| F8 — (I-1)(a): lift g's ns-freeness vs CU-2's perimeter | GAP | **ROUTED** to CU-7's owner: one displayed sentence owed (either the homes' fact that lifts of decided boxes are ns-free, or an explicit perimeter hypothesis on g). |
+| F9 — OB2: carrier→published-sense transport priced as "one transcription" | GAP | **ROUTED** to CU-6's owner: either display the types↔carrier bridge in the transcription duty, or re-cite the (e, f)-from-type content to the GMN pins directly. |
+| F10 — CU-3 factor (a): realizer's witness clause (incl. separability) not displayed | GAP | **ROUTED** to CU-3's owner: display O-14a′'s witness-producing clause verbatim (with the separability of g) at the next revision. |
+| F11 — impossible chronology (07-31 header, 08-01 sources, 08-02 appendix) | MINOR | **REGULARIZED.** Git-verified: every commit of this file is calendar 2026-07-31. The 08-01/08-02 strings are FORWARD-DATED FILENAMES / wave labels of the dispatch schedule (`MATH_COMPLETION_TREE_2026-08-01.md` etc. exist under those names today), not calendar dates; §9's "appended 2026-08-02" is the wave label of the D3CU2t dispatch. Calendar date of record for the unit, §9, and R2: 2026-07-31. Registry consumers should key on wave labels. |
+
+**Also fixed at R2 (record hygiene, this file's own):** §9's intro
+conditionality pointer §9.6 → §9.5 (typo); the §9.7 grade line now says the
+owed hostile pass is on the R2 text.
+
+**What R2 does NOT change:** the falsifier record (§9.6) — the repairs are
+structural (map format + predicate display), with no new numeric surface
+beyond the polygon reads already exercised; the §6.1 OB2/D-11 audit (CUC:
+no finding); every conditionality key P(·) and the §0 registry rows.
+
+**Grade after R2: CU-2t = PROVED-UNVERIFIED (R2), conditional per §9.5 as
+corrected; fresh hostile pass owed on R2 (the CUC pass-1 charge of §9.7
+plus: check Definition RC's non-circularity display, the two injectivity
+granularities, and the F4 pricing correction against the tree).**
+
+**Files (§10):** R2 edits confined to
+`lean/notes/openmath/CU_cluster_phaseB.md` (this file). The four
+ledger/ROOT touches of §9.5 are OWED, not executed.
