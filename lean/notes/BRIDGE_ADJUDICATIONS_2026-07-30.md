@@ -1263,3 +1263,11 @@ incl. the Mathlib Haar map; BP_II 63 units/5 waves keyed to O12PoleFree +
 RegPFinite with 4 displayed interface rows; BP_III the dictionary carriers;
 BP_IV/V/VI per their tables). Codex plan-reviews launched (BP_V keystone
 first); division leads launch on ACCEPTs.
+
+## ROOT REVISION 6 + BLUEPRINT REVIEWS (2026-08-03, commit 21505d4)
+REV 6: the promotion families EXHAUSTED — (H1) enlarged (3 displayed
+members), (H7) = (I-tau)/K-LOC its own row; TEN [M] rows <-> (H1)-(H7); THE
+T-U CORRESPONDENCE TABLES EXECUTED (21 SQ.6 items + 15 kernel rows, per-row
+warrants, 3 new adjudications flagged to VC7). VC7 launched (209KB doc).
+BLUEPRINTS: all six REVISE (first-round, expected) — revision agents
+dispatched, each folding its own review; re-reviews then the division leads.
