@@ -558,3 +558,29 @@ PHASE B WAVE 1 (early wins, dispatched): O-12 (REG-p emptiness at the
 intended instance — upgrades cofinite to all-primes) + O-13 (skeleton/menu
 finiteness at general n via T-4 + the Serre different-bound). The critical
 path (O-1/O-2/O-3) dispatches after the V6 completeness verdict lands.
+
+## V6 GAPS-FOUND + WAVE-1 PROVERS LANDED (2026-07-31 late)
+V6 (tree completeness): GAPS-FOUND — the load-bearing blockers: O-5's inputs
+don't yield the leaf/factor bijection (needs explicit disjointness + coverage
++ multiplicity compatibility as nodes); O-10 stronger than its reduction
+(N-restriction missing); O-11 under-dependent (needs O-5/O-9 + the semantic
+mass bridge; T-7 self-dependency risk); O-12 gated on semantic mass
+identification (circularity risk); O-13's stated reduction invalid (unbounded
+recentering runs — needs a compression theorem); O-14 not a single
+proposition; ordering: O-14a' precedes O-3, the O-2/O-3 cycle must be
+decomposed, drainage routes (qualitative O-4 vs quantitative O-6/7/8a) must
+be disambiguated mandatory-vs-alternative.
+WAVE-1 (simultaneous): O-12 PROVED — master denominator theorem (the intended
+solve lives in Q[q,1/q,1/(q^c-1)]; block dets are UNITS; poles only in
+{0,±1}; no prime power >= 2 is ever hit; falsifier 18120 prime powers 0
+findings; the instance-pin honestly scoped OUT to O-2/T-7/O-14d — which
+answers V6's circularity objection BY SCOPING). O-13 PROVED — and the prover
+INDEPENDENTLY supplied V6's demanded compression theorem (run-collapse via
+the tail lemma; |Sk(n)| bounded explicitly; p-uniform BY TYPING; Serre
+needed only value-side; falsifier reproduces the sealed |S_3| = 53 exactly).
+Both -> hostile Codex verification (V7/V8) with the V6 objections embedded in
+the charges. Acceptance bar: 2+ consecutive clean model-diverse passes.
+TREE DELTA dispatched: fold all V6 findings append-only (new nodes for the
+O-5 bijection triple; O-10 N-restriction; O-11 dependencies; O-14 split into
+propositions; the ordering fixes; the drainage-route fork made explicit;
+O-12/O-13 statuses = PROVED-UNVERIFIED at their honest scopes).
