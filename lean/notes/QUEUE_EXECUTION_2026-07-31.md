@@ -68,3 +68,73 @@ to construct a `DrainIdent` instance at the real pool from the
 SeriesData/XCtx vocabulary is now unblocked as its own unit (it waits on the
 same Phase-B XCtx/XFamily inhabitation as everything else; nothing in KA4c
 fences it).
+
+## Item 13 — PolPin.total re-scope + (†15) re-attempt (executed 2026-07-31, agent: items-8+13)
+
+AUTHORITY: Asvin 2026-07-31 verbatim "Sign-off granted on all 21 items as preferred,
+execute the queue" — item 13 preferred option (ii): re-key `OffsetPPin.total` to
+HistoryCoherent nodes (note-faithful, per note 4665–4666's L1 run-node totality).
+
+EXECUTED (statement repair, ratified PolPin.lean):
+- `OffsetPPin.total` re-keyed: `∀ (H : History p F), HistoryCoherent H → ∀ i hi,
+  (H.nodes[i]'hi).species = recentering → Realizes (H.nodes[i]'hi) (pol.liftOf …)`.
+  The other four laws (realizes_ne_zero / support_forced / realizes_unique /
+  digits_prescribed) are UNCHANGED (they are Realizes-conditional, not forcing).
+- In-file consumers re-keyed to the same granularity: `lift_ne_zero`,
+  `lift_center_realizer`, `no_pin_of_wrong_value`, `no_pin_of_wrong_weight`.
+  `not_realizes_bare_ne_zero`, `CD_canonical` untouched.
+
+M1 HYGIENE (rule 3 — the OLD form's compiled countermodels):
+- `R7_pinProbe.lean` gains the FROZEN verbatim old structure `OffsetPPinBare`
+  (bare-Node `total`) + a dated M1 header note; `offsetPPin_forces_stage_unramified`
+  and `offsetPPin_isEmpty_of_ramified` re-pointed at it, proofs byte-unchanged.
+- `R7_ramifiedForge.lean`: `offsetPPin_isEmpty_unconditional` / `no_offsetPPin`
+  re-pointed at `OffsetPPinBare` + dated note. The countermodels refute ONLY the
+  historical form; no compiled negation witness against the repaired statement exists
+  (probe node unreachable: root_iff kills index 0, coherence binds frames at index ≥ 1,
+  and HK22_twoNodeGate certifies ramified child frames unreachable pre-HK-06).
+
+RE-ATTEMPT of canPolicy/canPolicy_pin (TreeCan.lean:485,492 — the census critical-path
+head): **REDUCED-COMPILED, NOT DISCHARGED.** New leaf `MovesD/R7_polFillReduction.lean`
+(0 sorry, Lean-core {propext, Classical.choice, Quot.sound}):
+- `CanRealizes` (the realizer laws at one node, lift-blind), `canLiftOf`/`canPolicyC`
+  (choice-based policy, `blind` = rfl),
+- `RunRealizerExists` — THE ONE RESIDUAL LAW as a named Prop,
+- `canPolicyC_pin : RunRealizerExists p F → OffsetPPin (canPolicyC p F)` — the WHOLE
+  repaired pin from that one Prop (all five laws proved),
+- `interior_recentering_unramified` / `interior_center_realizer_exists` — coherence's
+  `IsRecenteringCore.base` supplies σ.e = 1 AND the recorded lift as a center realizer
+  at every INTERIOR recentering node (the coherence-derivable half of the law).
+
+EXACTLY HOW FAR THE D-GROUP OPENS (the charged report):
+- Sorry census UNCHANGED (canPolicy/canPolicy_pin stay the 2 honest sorries; D-group
+  consumers of bridgePol/bridgeTm keep sorryAx at HEAD).
+- But the pair returns from REFUTED (unfillable at any policy, forge-unconditional) to
+  OPEN: every consumer binding `OffsetPPin pol` binds a non-refuted interface again.
+- The full residue is now ONE compiled-named Prop: `RunRealizerExists p (ZMod p)`.
+  Fill recipe on its discharge: `canPolicy p := canPolicyC p (ZMod p)`,
+  `canPolicy_pin p := canPolicyC_pin hex`. Its open content splits:
+  (a) INTERIOR SUPPORT — the (S6b′) monomial-shape clause at deg Φ > 1 frames
+      (unchanged HC-1 residue: the formula, not the Stage interface, makes the
+      realizer a forced-class monomial);
+  (b) LAST-NODE FLANK — bare HistoryCoherent has no IsRecenteringCore record at
+      i = len−1 (clause 4 needs i+1 < len); the landing law lives at
+      `JetSetup.landing`/`LandingKey`, and even the CR clauses there need the (S6b)
+      threshold `wPrev Φ < h` (probe's `centerRealizer_exists_of_unramified_threshold`
+      displays the exact gap). NAMED OPEN FLANK: a future compiled countermodel here
+      (a coherent history ENDING in a recentering node over a ramified frame — a
+      2-node-gate-scale build, currently blocked by the same HK22 wall pre-HK-06)
+      would re-adjudicate the quantifier to the JetSetup carrier. Recorded, not silent.
+- NOTE ON ITEM 3 COUPLING: the re-keyed total rides the NAME `HistoryCoherent`, so the
+  HK-06 wave's (S-a) regrade re-key of that predicate automatically re-scopes the pin;
+  no PolPin edit will be needed when item 3 lands.
+
+VERIFIED: lake build green — PolPin, R7_pinProbe, R7_ramifiedForge,
+R7_polFillReduction, TreeCan (2 expected sorries), BridgeD1_treeModelWire,
+BridgeD3_treeCarrier, HK22_twoNodeGate; all touched decls Lean-core.
+(BridgeD5_transferRow fails at current worktree from the CONCURRENT item-7
+ReadLocality `child_local` re-signature — item-7 agent's scope, pre-existing in
+worktree, independent of this item; verified by error text: `1 ≤ min N N'` guard
+argument mismatch at :560/:601.)
+Records: MovesD/MANIFEST.json "item13_polpin_rescope_2026-07-31"; TreeCan.lean header
+ITEM 13 RE-ATTEMPT RECORD; PolPin.lean header + field docstrings.
