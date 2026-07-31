@@ -123,3 +123,20 @@ proofs of fenced statements as-is, designs, audits, ratifications, records.
 12. HC2/U4 levelSet_no_straddle statement repair — NOT PROVABLE AS STATED (value case
     false on a legal countermodel, dual-confirmed 2026-07-27); repair adjudication
     package to be drafted by the next BP2-area agent, execution on sign-off.
+
+## QUEUE ADDITIONS (round 3, 2026-07-31)
+13. PolPin.total re-scope (ratified PolPin.lean): canPolicy_pin FALSE-AS-QUANTIFIED,
+    compiled countermodel MovesD/R7_pinProbe.lean (any pin forces every Stage
+    unramified; transcription over-reach vs the note's L1 run-node totality).
+    Options: (i) frame side-condition guard, (ii) re-key to HistoryCoherent nodes
+    (note-faithful — preferred). Gates the census critical-path head (D-group
+    sorryAx kill).
+14. ratBurdens_iota full-existential re-point (TV_F1/V7_rbB): the current choice
+    discards initRat_comp conjuncts 3-4, making SeamCoherent.iota_val/iota_count
+    undischargeable; re-point at the full exists. Gates TV_F2/F3/F4.
+15. SCS species-stage-record hypothesis row (TV_G1 scsSupplyCore): faithful supply
+    needs a named row reading species-stage records through TablePins; trivial
+    fills forbidden (vacuity). Gates the G cluster.
+Round-3 delta: +16 proved; autonomous frontier nearly exhausted — remaining blocks
+converge onto the queue (now 15 items) + RealizationComplete (Phase-B open) + the
+census open-math list.

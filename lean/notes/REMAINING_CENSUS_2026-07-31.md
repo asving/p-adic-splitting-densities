@@ -310,3 +310,11 @@ axioms themselves (admissible literature).
 5. **`theoremU_bridged′` (IB-G13′) not yet written** — awaits Q12/Q13; it is the
    declaration that converts the 13 True-instantiable slots into carrier-pinned
    rows; until then the conditionality claim of record must keep the U10 wording.
+
+## DELTA (round 3, 2026-07-31)
++16 proved (round 3). canPolicy_pin refuted-compiled (queue item 13); hdom leak
+confirmed at TV_F5/F6/rbC/E7 (item 11); iota seam re-point needed (item 14); SCS
+row needed (item 15). The §4.2 critical-path head (TreeCan kills D-group sorryAx)
+is BLOCKED on item 13 — the critical path now STARTS at the sign-off queue.
+Autonomous remainder: the D-SC carrier prover round (11 E-phase sorries, pending
+the re-review) + scattered independents; everything else queue-gated or open-math.

@@ -76,6 +76,42 @@ theorem measuredOf_nonvacuity_gate :
     ⟨⟨(), ()⟩, ()⟩, 2, two_mem_pow2, ?_⟩
   show μcellOf mcV mcXHD.w mcCP skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩ ⟨⟨(), ()⟩, ()⟩ 2 ≠ 0
   rw [μcellOf, dif_pos (show (2 : ℚ) ∈ mcV.Pools from two_mem_pow2)]
-  sorry
+  -- the toy's only cells are terminal (`cont = False`): read the terminal branch.
+  have hcont : ¬ (Ctoy.bd sk1).cont () () := fun h => h
+  have htc : toCellAll mcV skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩ ⟨⟨(), ()⟩, ()⟩
+      = Sum.inr ⟨vlab1, ⟨⟨sk1, (), (), hcont, rfl, cId sk1⟩, rfl⟩, ()⟩ := by
+    unfold toCellAll
+    exact dif_neg hcont
+  -- the height domain is the single dimension-0 point (`zeroPart 0`).
+  have hpt : (⟨0, (fun i => i.elim0 : Hpt 0)⟩ : Σ D : ℕ, Hpt D)
+      ∈ hdomOf mcV skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩ ⟨⟨(), ()⟩, ()⟩ := by
+    show cdomAllMem mcV (toCellAll mcV skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩
+      ⟨⟨(), ()⟩, ()⟩) ⟨0, fun i => i.elim0⟩
+    rw [htc]
+    exact ⟨rfl, zeroPart_mem_of_dim0 rfl _⟩
+  have hss : Subsingleton {h : Σ D : ℕ, Hpt D //
+      h ∈ hdomOf mcV skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩ ⟨⟨(), ()⟩, ()⟩} := by
+    refine ⟨fun a b => Subtype.ext ?_⟩
+    obtain ⟨⟨Da, ha⟩, hma⟩ := a
+    obtain ⟨⟨Db, hb⟩, hmb⟩ := b
+    simp only [hdomOf, Set.mem_setOf_eq, htc, cdomAllMem] at hma hmb
+    obtain ⟨ea, -⟩ := hma
+    obtain ⟨eb, -⟩ := hmb
+    obtain rfl : Da = 0 := ea
+    obtain rfl : Db = 0 := eb
+    simp only [Sigma.mk.injEq, heq_eq_eq, true_and]
+    exact funext fun i => i.elim0
+  rw [tsum_eq_single ⟨⟨0, fun i => i.elim0⟩, hpt⟩
+    (fun b hb => absurd (Subsingleton.elim b _) hb)]
+  -- the single term is 1 · 2^(-k), nonzero.
+  show gwtAll mcV mcXHD.w mcCP
+      (toCellAll mcV skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩ ⟨⟨(), ()⟩, ()⟩)
+      ⟨0, fun i => i.elim0⟩ 2 ≠ 0
+  rw [htc]
+  simp only [gwtAll]
+  split
+  · rw [show mcCP.P sk1 () () (cId sk1) () = 1 from rfl, Polynomial.eval_one]
+    exact mul_ne_zero (by norm_num) (zpow_ne_zero _ (by norm_num))
+  · exact absurd rfl (by assumption)
 
 end LeanUrat.MovesV
