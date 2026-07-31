@@ -1090,3 +1090,31 @@ axioms):
 
 VERIFICATION: `lake env lean` GREEN on HK25_recGate (4 × Lean-core) and on
 U1_negWitness (note-only edit).  Capstone path untouched (leaf; no OM/*).
+
+## POST-WAVE UNIT 3 — ITEM-27 PREP: the sibjc ROUTE-(a) COUNTING GATE COMPILED
+## (agent: post-wave-1, 2026-07-31; NO statement changes anywhere)
+
+Per BRIDGE_ADJUDICATIONS item 27 ("countermodel gates should compile the (a)-route
+first"): NEW LEAF `MovesU/SibJcRouteA.lean` (0 sorry, both theorems Lean-core,
+in-file #print axioms):
+* `sib_diag_break` — THE M07 §2 CORRELATION-CELL MECHANISM AT FULL ABSTRACTION:
+  for ANY jointly uniform digit-form pair (v₁, v₂ : X → Fin p, every pair value
+  hit exactly U ≠ 0 times — the sealed F1 census P2 finding as a hypothesis, at
+  2 ≤ p), (SIB)'s m = 2 count-face identity FAILS at the correlation cell
+  Σc = {v₁ = v₂} with the single-digit events S_r = {v_r = a}: the sides are
+  U·(p·U) vs U·U — off by exactly p.
+* `sib_diag_break_F1` — the F1 instance (p = 5, U = 15 625): 5¹³ ≠ 5¹², the
+  M07 integers, compiled.
+HONEST SCOPE (in the leaf header): this is the (a)-route's counting core, NOT an
+at-instance refutation of the typed row — the residuals to that are (i) OL-2
+(lawful CellAssign inhabitation at the pinned TreePin — open; uninhabited ⇒ rows
+VACUOUS, itself the recorded defect), (ii) the §2.4 diagonal-refinement
+lawfulness compiled in the CellData vocabulary, (iii) the F1 events as ContFiber
+sets + census import.  Row status upgrade: PLAUSIBLY-FALSE-AS-TYPED with the
+arithmetic mechanism now COMPILED (evidence pack for the fence-event-27 sign-off
+= M07 prose routes + sealed census numerics + this Lean-core gate).  Repair menu
+unchanged (adaptedness law / carrier parameterization / R3 ledger re-key) —
+adjudication, not executed.
+
+VERIFICATION: `lake env lean` GREEN (2 × Lean-core).  Leaf imports Mathlib only;
+nothing imports it; capstone path untouched.
