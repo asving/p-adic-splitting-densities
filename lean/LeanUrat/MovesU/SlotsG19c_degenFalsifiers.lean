@@ -25,9 +25,11 @@ PROBE FENCE (as IB-G19b's): the `ProbeTarget_*` definitions below are
 PROBE-LOCAL COPIES of the displayed H-phase targets in the IB-G16/IB-G17 file
 headers (byte-faithful modulo binder names; IB-G20's closure manifest owes a
 drift flag between these copies, the G16/G17 headers, and the G19b probes).
-They are NOT the canonical `SitedSlot_*` (whose bodies stay `sorry` behind the
-Q5 audit) and NOTHING may consume them as evidence of content — their sole
-role is hosting the negation theorems.
+They are NOT the canonical `SitedSlot_*` (whose bodies were `sorry` when this
+unit landed; FILLED at the 2026-07-31 H-phase behind the Q5 ACCEPT — the same
+refutations now hold against the canonical definitions, in
+`SlotsG19d_canonFalsifiers.lean`) and NOTHING may consume them as evidence of
+content — their sole role is hosting the negation theorems.
 
 WHAT REMAINS AT IB-G19a (after the H-phase fills; value-level falsifiers with
 real prerequisites, listed with what each needs): rel2b's inverted-Dirac

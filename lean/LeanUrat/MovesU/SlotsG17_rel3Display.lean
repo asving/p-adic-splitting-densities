@@ -133,6 +133,26 @@ fills the displayed Prop behind the Q5 audit; IB-G19b gates the fill. -/
 def SitedSlot_rel3 {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (Fam : RelSiteFamily p)
     (RA : RelAssignment p Sp AD Fam) (CD : ConsumedDisplayPack p Fam) : Prop :=
-  sorry
+  -- (population, R-20):
+  Nonempty CD.Leg ∧
+  -- (coverage, R-20):
+  (∀ (S : RelSite p) (hS : S ∈ Fam.mem), ∀ T ∈ RA.consumed S hS,
+    ∃ l : CD.Leg,
+      (⟨CD.site l, CD.presc l⟩ : Σ S' : RelSite p, S'.PTree) = ⟨S, T⟩) ∧
+  -- (per leg): certification ∧ keying (R-19) ∧ consumption tie:
+  ∀ l : CD.Leg,
+    (Slot_rel1 (RA.tgt (CD.site l) (CD.site_mem l)) ∧
+      {g | (RA.data (CD.site l) (CD.site_mem l)).trees.TgtRealizes
+            ((RA.data (CD.site l) (CD.site_mem l)).trees.tgtTcan g)
+            ((RA.data (CD.site l) (CD.site_mem l)).trees.subtreeCorr (CD.presc l))}
+        ∈ (RA.tgt (CD.site l) (CD.site_mem l)).C.V.events ∧
+      (RA.data (CD.site l) (CD.site_mem l)).beta.β (CD.first l) (CD.site l).τ (CD.site l).βarg
+        = (RA.tgt (CD.site l) (CD.site_mem l)).C.V.vol
+            {g | (RA.data (CD.site l) (CD.site_mem l)).trees.TgtRealizes
+                  ((RA.data (CD.site l) (CD.site_mem l)).trees.tgtTcan g)
+                  ((RA.data (CD.site l) (CD.site_mem l)).trees.subtreeCorr (CD.presc l))}) ∧
+    (CD.first l = (RA.data (CD.site l) (CD.site_mem l)).beta.entryFirst ∧
+      RA.tableConv (CD.site l) (CD.site_mem l) (CD.first l)) ∧
+    CD.presc l ∈ RA.consumed (CD.site l) (CD.site_mem l)
 
 end LeanUrat.MovesU

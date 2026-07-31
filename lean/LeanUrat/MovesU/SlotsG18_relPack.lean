@@ -85,21 +85,35 @@ structure RelCarrierPack where
 
 /-- Closure row 1/6 — **`RelRow_rel1`**: REL.1 at every base the realized family
 reaches (see the file-header target).  H-phase fills behind the Q5 audit. -/
-def RelRow_rel1 (RP : RelCarrierPack) : Prop := sorry
+def RelRow_rel1 (RP : RelCarrierPack) : Prop :=
+  ∀ (p : ℕ) [Fact p.Prime], ∀ (S : RelSite p) (hS : S ∈ (RP.fam p).mem),
+    Slot_rel1 ((RP.assign p).tgt S hS)
 
 /-- Closure row 2/6 — **`RelRow_rel2a`** (see the file-header target). -/
-def RelRow_rel2a (RP : RelCarrierPack) : Prop := sorry
+def RelRow_rel2a (RP : RelCarrierPack) : Prop :=
+  ∀ (p : ℕ) [Fact p.Prime], ∀ (S : RelSite p) (hS : S ∈ (RP.fam p).mem),
+    SitedSlot_rel2a S ((RP.assign p).data S hS)
 
 /-- Closure row 3/6 — **`RelRow_rel2b`** (see the file-header target). -/
-def RelRow_rel2b (RP : RelCarrierPack) : Prop := sorry
+def RelRow_rel2b (RP : RelCarrierPack) : Prop :=
+  ∀ (p : ℕ) [Fact p.Prime], ∀ (S : RelSite p) (hS : S ∈ (RP.fam p).mem),
+    SitedSlot_rel2b S ((RP.assign p).data S hS) ((RP.assign p).tgt S hS)
 
 /-- Closure row 4/6 — **`RelRow_rel2d`** (see the file-header target). -/
-def RelRow_rel2d (RP : RelCarrierPack) : Prop := sorry
+def RelRow_rel2d (RP : RelCarrierPack) : Prop :=
+  ∀ (p : ℕ) [Fact p.Prime], ∀ (S : RelSite p) (hS : S ∈ (RP.fam p).mem),
+    SitedSlot_rel2d S ((RP.assign p).data S hS)
 
 /-- Closure row 5/6 — **`RelRow_rel2e`** (see the file-header target). -/
-def RelRow_rel2e (RP : RelCarrierPack) : Prop := sorry
+def RelRow_rel2e (RP : RelCarrierPack) : Prop :=
+  ∀ (p : ℕ) [Fact p.Prime], ∀ (S : RelSite p) (hS : S ∈ (RP.fam p).mem),
+    SitedSlot_rel2e S ((RP.assign p).data S hS)
+      ((RP.assign p).tableConv S hS) ((RP.assign p).consumed S hS)
+      ((RP.assign p).tgt S hS)
 
 /-- Closure row 6/6 — **`RelRow_rel3`** (see the file-header target). -/
-def RelRow_rel3 (RP : RelCarrierPack) : Prop := sorry
+def RelRow_rel3 (RP : RelCarrierPack) : Prop :=
+  ∀ (p : ℕ) [Fact p.Prime],
+    SitedSlot_rel3 (RP.fam p) (RP.assign p) (RP.display p)
 
 end LeanUrat.MovesU
