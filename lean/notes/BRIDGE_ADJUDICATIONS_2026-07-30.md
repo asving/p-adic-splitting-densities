@@ -748,3 +748,20 @@ format = 4 items: tree-is-right-tree (O-3+O-2b + O-5), finite-digit reads
 (O-1thr/M6c), drainage transfer (OL1-ii), pole-free self-loop algebra
 (O-12) — exactly the active Phase-B heads; the scaffold confirms the
 campaign is attacking the right joints.
+
+## ROUND 4 (2026-08-01): CONVERGENCE + ONE HONEST RESCOPE
+O-12 r4 REPAIRED (churn audit: no repair-introduced defects; the torus
+telescope CONFIRMED whole; O2 allocation made a displayed table datum; the
+degree-3 conjunct honestly rescoped to the quoted items + OL-O12-2; new
+Haar-null partition lemma L6e; 12/12 falsifiers) -> V19.
+O-2a r4 REPAIRED (findings 12 -> 2 across rounds; OL-5 first-read semantics
+DECLARED; OL-2 consumption split to OL-2-min; residue = FIVE exactly-stated
+open lemmas OL-2a-1..5; rescope target pre-registered) -> V20.
+O-14ap RESCOPED per protocol (churn: 4/4 V15 defects in rev-2 additions,
+core twice-verified): KEPT last-node closure + prime-field collapse +
+RRE(p, ZMod p) (formalized, consumed-instance safe) + F9 refutation +
+V15-ratified fragments; the stretch-threaded (S6b'-SUPP-2) DEMOTED to
+labeled Conjecture 5.4.C consumed by NOTHING on the mandatory path (DELTA-1
+audit displayed: the D-10/O-14a' obligation is MET — flank closed, residue
+closed-or-removed). The evading class the verifier found is now a certified
+falsifier (H1-H2). Honesty over ambition executed exactly as designed.
