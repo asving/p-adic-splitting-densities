@@ -346,9 +346,11 @@ the reduction patterns of f̄ (Fact F counts = the family-(v)/root-read entries)
 hand-offs are the root split's clusters — the (S1) root leg. ∎
 
 **Where the pole-free theorem is consumed — the displayed answer to the unit charge:**
-O-12's (r1) is the UNIQUENESS PIVOT (Φ_e(q₀) ≠ 0 pins the semantic density vector as
-THE solution of the abstract equation, at every prime power including wild); O-12's
-margins are the TERMINATION supply (M1(c)); O-12's (r2) is the definedness of every
+O-12's (r1) is the UNIQUENESS PIVOT (the folded re-entrant pivot 1 − q₀^{1−E} =
+Φ^{(O1)}(q₀) ≠ 0 — Corollary D — pins the semantic density vector as THE solution of
+the abstract equation, at every prime power including wild); O-12's margins are the
+TERMINATION supply (M1(c) per-visit at (O1)/(O3) + per-block; Lemma M2.0 for the
+multi-block composition, at M2's (S1) layer); O-12's (r2) is the definedness of every
 evaluated entry the induction touches. That is the identification through which the
 pole-free theorem "speaks about the real densities": without M1/M2 it is a theorem
 about rational functions; with them it is a theorem about the descent process's
@@ -397,9 +399,14 @@ The D-11 node's four clauses (tree §D1.2), with statuses after this unit:
    (GD/CU conditionality, displayed).
 2. *"the events per row pairwise disjoint"* — **PROVED (M1(b))**, up to the displayed
    null sets (Z_e; ns loci).
-3. *"with positive per-state termination margin"* — **PROVED (M1(c))**: the margins
-   ARE O-12's verified (r1) margins 3/4 · 7/8 · 6/7, reread as termination
-   probabilities; a.s. termination composed from L4 + the Markov property.
+3. *"with positive per-state termination margin"* — **PROVED (M1(c)) at the
+   density-carrying bookings**: the margins ARE O-12's verified (r1) margins 3/4
+   (O1) and 6/7 (O3), reread as per-visit termination probabilities; at (O2)/(O2′)
+   the 7/8 margin is a booked-row mass, NOT a termination probability (M1′; pass-1
+   F2), and the true per-visit loop mass is q₀^{1−E} ≤ 1/4 at every booking.
+   A.s. termination: PER BLOCK unconditional (M1(c), L4 + the Markov property);
+   the FULL multi-block process conditional exactly on (S1)'s child-law clause
+   (Lemma M2.0 — pass-1 F1's containment executed).
 4. *"the pack's block system IS 𝔅_n — or an organization covered by the robustness
    criterion"* — for the CONCRETE packs: degree-2 = the (O2) member IN the O-12 claim
    (with M1′'s coarseness finding: it is a gate object, not a density carrier);
@@ -416,7 +423,8 @@ datum. Dischargeable by a finite transcription-and-correspondence pass."
   (O3) member makes the pole-free theorem's clauses statements about the true degree-3
   densities (masses, margins, uniqueness of the solved values) — is **CLOSED by M1 +
   M2 at n = 3, (O3) booking**, at the conditionality displayed there (M1
-  unconditional; M2 on (S1)/(S2); M3 for the verdict/box reading). Nothing about the
+  unconditional; M2 + Lemma M2.0 on (S1)/(S2), monic scope — projective reading
+  additionally on (S3); M3 for the verdict/box reading). Nothing about the
   MEANING of the identification remains open.
 * Its remaining half is the finite transcription-and-correspondence pass itself (map
   each sealed row to its §2.3 family (i)–(vii) member and check entry equality) —
@@ -427,9 +435,10 @@ datum. Dischargeable by a finite transcription-and-correspondence pass."
 **Recommended DELTA-3 lines (governance, sign-off owed — not executed here):**
 (i) the CU §6.1 OB2 eviction, now constructively re-confirmed by M3(a); (ii) D-11
 status → PROVED-UNVERIFIED at this unit's displayed scope (M1(a–d)+M1′ unconditional
-over the verified O-12 lemma base; M2 conditional on (S1)/(S2); M3 on the displayed
-CU/O5triple/D-15 conditionality), hostile pass owed; (iii) OL-O12-2 re-labeled
-"data-pass only" per the split above.
+over the verified O-12 lemma base, with (c) = per-visit-at-(O1)/(O3) + per-block;
+Lemma M2.0 + M2 conditional on (S1)/(S2), monic scope, projective reading on (S3);
+M3 on the displayed CU/O5triple/D-15 conditionality), pass-2 owed; (iii) OL-O12-2
+re-labeled "data-pass only" per the split above.
 
 ## 6. Falsifier report (standing citations + the NEW extension, ran with this unit)
 
@@ -444,7 +453,9 @@ Standing (cited, not re-run):
   densities numerically — 24/24 (ensemble, n, p) configurations (n ≤ 5, p ∈ {2,3,5},
   all wild pairs, monic + projective), 0 cells beyond 4 SE, plus the float-free exact
   n = 2 census sandwich (width ~1.5e-5 / 5.7e-6 / 1.3e-5 at p = 2/3/5) — M2's
-  conclusion observed exactly where it can be enumerated.
+  conclusion observed exactly where it can be enumerated. [The projective
+  configurations exercise the (S3)-conditional PROJECTIVE reading of M2's
+  conclusion — numerical support for the seam, not a proof of it.]
 * **O-12 §8 rev 2/4 exact enumerations**: L6a's cell law and L6e's trichotomy over
   (ℤ/p^M)^e lifts, five configs, zero exceptions — M1(a)'s per-cell mass identity
   checked exhaustively at small levels.
@@ -468,22 +479,35 @@ real tables.
 ## 7. Honesty ledger
 
 **Proved here, unconditional over the VERIFIED O-12 §3 lemma base (+ ordinary measure
-theory):** Theorem M1 (a)–(d); Proposition M1′. These are new COMPOSITIONS: O-12's
+theory):** Theorem M1 (a)–(d) — where (c) is its REV-2 statement: per-visit
+termination margins at the density-carrying bookings (O1)/(O3) + the per-block a.s.
+exit; multi-block a.s. termination is NOT billed here (pass-1 F1) — and Proposition
+M1′. These are new COMPOSITIONS: O-12's
 claim deliberately excluded value semantics; its lemmas do not — this unit is the
 place where that composition is written down.
-**Proved here, conditional exactly on the displayed seams:** Theorem M2 [(S1) GD-3
-full / LIT-3 root leg; (S2) O-11 composition data]; Theorem M3(a) [P(O5t r3) +
+**Proved here, conditional exactly on the displayed seams:** Lemma M2.0 (a.s.
+termination of the full process) [(S1)'s child-marginal-law clause ONLY — Haar
+absolute continuity suffices]; Theorem M2, monic scope [(S1) GD-3
+full / LIT-3 root leg; (S2) O-11 composition data] — its PROJECTIVE reading
+additionally on [(S3) the projective assembly weight, owner A-1]; Theorem M3(a)
+[P(O5t r3) +
 (I-1)–(I-3) via CU-7 + five flags + P(O-1thr r4) + TB-CAP D-12r + (E-N) displayed];
 M3(b) [the GD/CU dictionary, per the CU §0 registry].
 **Findings:** M1′ (the (O2) verdict-row coarseness pins the density-carrying packs to
 the re-entrant bookings); the (r1)-as-uniqueness-pivot reading (§3) — the exact
 mechanism by which O-12 speaks about real densities; the constructive OB2
 re-confirmation (M3(a)).
-**Not attempted:** discharging (S1)/(S2) (owned by GD-3-full/O-9/O-11); the OL-O12-2
+**Not attempted:** discharging (S1)/(S2)/(S3) (owned by GD-3-full/O-9, O-11, and
+annex A-1 respectively); the OL-O12-2
 data pass (finite, engineering); the general-n pack population (O-14d); Lean
 artifacts; any O5triple/O-1thr/CU pass.
 
-**Files:** this record = `lean/notes/openmath/D11_massid_phaseB_attempt.md`; falsifier
-extension = `verification/openmath/N6-regp_scan_ext2000.py` + results JSON + log. No
+**Files:** this record = `lean/notes/openmath/D11_massid_phaseB_attempt_rev2.md`
+(rev 1 = `D11_massid_phaseB_attempt.md`, superseded; pass-1 report =
+`D11_pass1_verify.md`); falsifier
+extension = `verification/openmath/N6-regp_scan_ext2000.py` + results JSON + log
+(UNCHANGED by this revision — every clause it tests survives rev 2 verbatim: entry
+definedness/[0,1], count integrality, det margins; the withdrawn 7/8 REREAD was an
+interpretation, not a scanned quantity). No
 other file touched; home-brief pointer updates (O-12's OL-O12-2 line may add "math
 half closed at D11 unit") are their owners'.
