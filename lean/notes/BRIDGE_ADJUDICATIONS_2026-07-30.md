@@ -1117,3 +1117,17 @@ bookkeeping: B1 per-clause (UB) attribution, B2 the O-8b pending-pass row,
 B3 the Sigma=1 forward-credit (repairable at Step 19 with no new
 hypothesis), B4 one B-layer list entry (+4 advisories). ROOT R4 dispatched;
 then VC4 (Codex) for the two-consecutive-clean bar.
+
+## WAVE 14 (2026-08-02 night, commits 460ea59/567814d/3956500)
+O-9 r3: (ADM) redefined VALUE-attained (verifier's form); automaticity
+honestly rescoped (r=0 automatic; r=1 = a displayed decidable inequality;
+r>=1 general WITHDRAWN); K6 falsifier 0=0 at the countermodel. CU-2t R2:
+BOTH routes layered (Theta^tau carries nu's announced pair — injectivity
+unconditional at that granularity; the determination displayed on
+RC-consistent records via new Definition RC); §1 rescoped; HONESTY: the
+(T-DEC)/(T-VERD) rows = genuinely new mandatory-path obligations — THE
+RESIDUE GREW BY TWO GD-4 ROWS (ledger/ROOT touches owed: tree GD-4 row +
+§D2.3 pricing + this ledger + GD-4's owner brief — the ROOT r4/r5 agent
+must fold these). O4T r4 + O-10 r2: display fixes, cores byte-stable.
+CONFIRMING PASSES owed: O4T (the acceptance pass), O-9 pass 3, CU-2t R2
+pass, O-10 (rides — VERIFIED stands, framing fixed).
