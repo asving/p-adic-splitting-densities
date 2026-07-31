@@ -140,3 +140,36 @@ proofs of fenced statements as-is, designs, audits, ratifications, records.
 Round-3 delta: +16 proved; autonomous frontier nearly exhausted — remaining blocks
 converge onto the queue (now 15 items) + RealizationComplete (Phase-B open) + the
 census open-math list.
+
+## QUEUE CONSOLIDATION (round-3 full sweep, 2026-07-31 — pre-existing in-file
+## fence records surfaced/confirmed by round 3, gathered here so the sign-off
+## list is complete in ONE place)
+16. HK15 gateChildStage family (5 sorries): SUSPECT-FALSE as stated — the pair
+    (e',h',s',t')=(1,1,1,0) satisfies every stated hypothesis but violates
+    IAug (h' > 2*e', with bStageP.w U31.fq = 2 proven at HK47:174); repair =
+    add hiaug : IAug ... or specialize to the gate pair (1,3,1,0).
+17. U10c/U10d (U10_zcStep): U10c STOP upheld 3x — needs a NEW zcSeed STEP-READ
+    interior-exclusion law (Q8-class D5-fence designer item); U10d
+    SUSPECT-FALSE (over-quantifies to ALL pins where the note confines only
+    FRESH cuts); repair = fresh-cut restriction or a (ZC-b) rim-lead field.
+18. C6_alphabetCard: REFUTED-AS-STATED (CL01c_shallowTower countermodel in
+    repo: F4 singleton level set, fullness <== leg fails); repair =
+    independence/clean-threshold hypothesis on conjunct 2.
+19. R6_carrierInstance: (i-b) minimality over-quantifies after R1 dropped the
+    T4/C1 support hypothesis (compiled kernels realSlot_offBlock_blind +
+    LSTib_offBlock_pincer); repair = reinstate '(forall c, y c /= 0 -> blk c = b) ->'.
+20. KA4c ka4c_nsFiberUnion_null: empty-nsIdx corner underivable (no frac_empty
+    interface field); repair = add 2<=n | Nonempty C.nsIdx | frac_empty field.
+    R10 fallback already in place (DrainIdent named hypothesis; seam theorems proved).
+21. U21 readsOf_HV: certified underivable (dual-audit; S8 twist symmetry moves
+    the pin while fixing every recorded hypothesis); repair routes = the fenced
+    Moves/DefsL child_dig_frame pin, or an added HC1-constructed-history
+    hypothesis. Reduction readsOf_HV_of_pin proved, Lean-core.
+UNIFYING AUTONOMOUS UNIT (synthesis duty, dispatched 2026-07-31): three blocked
+records converge on "no compiled realized instance exists at HEAD" — (a) R7's
+conditional countermodel offsetPPin_isEmpty_of_ramified needs ONE ramified Stage
+(e>=2; only e=1 exists at HEAD); (b) TV_A5b's stray-child countermodel needs ONE
+realizable root node (HistoryCoherent length-1); (c) G11c's m4b falsifier needs
+ONE realized-prefix Presented instance. Dispatched as the instance-forge round
+(new-file leaf modules, M1 coexistence rule enforced). (a) also = groundwork for
+the wave-D RelCarrierPack instance on the census critical path.
