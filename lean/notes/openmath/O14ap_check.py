@@ -181,5 +181,40 @@ for m in range(26):
 report("G1: for every offset m: Theta_m bijective; full-support target missed by all "
        "one- and two-slot digit sets (exhaustive, F27, g=3)", g_ok)
 
+# ---------- H (round 3): WITHDRAWAL certificate for rev 2's "definitional void" ----------
+# V15 critical finding: Prop 5.4.3's arithmetic obstruction fires only when SOME nonzero
+# psi_k has e not dividing (g-k); descend polynomials whose every nonzero lower exponent
+# satisfies k = g (mod e) EVADE it. Rev 3 withdraws the void/exhaustiveness consequence;
+# these checks certify the evading class is real and populated (falsifier-first for the
+# withdrawal, not for a new positive claim).
+def irreducible_by_roots(coeffs, p):
+    # coeffs lowest-first, monic, degree 2 or 3: irreducible over F_p iff no root in F_p
+    assert len(coeffs) - 1 in (2, 3) and coeffs[-1] == 1
+    return all(sum(c * pow(a, i3, p) for i3, c in enumerate(coeffs)) % p != 0
+               for a in range(p))
+
+# H1: the displayed evading instance (the verifier's counterexample): e = 2, g = 2,
+# psi = z^2 + 1 over F_3 -- irreducible, and its only nonzero lower coefficient (k = 0)
+# has e | (g - k), so the stretched-frame display obstruction does NOT fire on it.
+psiH = (1, 0, 1)
+h1_irr = irreducible_by_roots(psiH, 3)
+h1_evades = all((2 - k) % 2 == 0 for k in range(2) if psiH[k] != 0)
+report("H1: z^2+1 irreducible over F3; every nonzero lower exponent k = g (mod e=2) "
+       "-- Prop 5.4.3 obstruction does not fire (void claim WITHDRAWN)",
+       h1_irr and h1_evades)
+
+# H2: the evading class is populated at several (e = g, p): monic irreducible z^g + c0
+# (all lower support in the class k = 0 = g mod e) exists for each configuration.
+h2_ok = True
+h2_counts = []
+for (e3, p3) in [(2, 3), (2, 5), (3, 7)]:
+    g3 = e3
+    found = sum(1 for c0 in range(1, p3)
+                if irreducible_by_roots(tuple([c0] + [0] * (g3 - 1) + [1]), p3))
+    h2_counts.append(((e3, p3), found))
+    h2_ok = h2_ok and found > 0
+report("H2: evading class populated (irreducible z^g + c0, g = e) at (e,p) in "
+       "{(2,3),(2,5),(3,7)}", h2_ok, f"counts={h2_counts}")
+
 print("ALL PASS" if ok else "FAILURES PRESENT")
 sys.exit(0 if ok else 1)
