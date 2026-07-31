@@ -130,7 +130,9 @@ assembled pack identically in ℚ(q).
 Each step names: the leaf/node (tree id) · its exact statement (compressed, faithful) ·
 its verification status with the pass records · what it consumes. The steps are in
 logical order; no step consumes a later one (the O-2/O-3 cycle was decomposed at
-DELTA-2 §D2.3 — the K-RUN-C composition replaced the joint induction). Standing
+DELTA-2 §D2.3 — the K-RUN-C composition replaced the joint induction; the D-11/O-11
+cycle VC1 found in the original walk is stratified at REVISION 1 as Steps 17/18/18b,
+and the Step-1 forward edge is re-pointed — see §7). Standing
 preconditions throughout (tree §2.4): f monic separable; trees range over ns-free
 carriers; statements are per-f (selected-f) except where D-15 owns box quantification.
 
@@ -576,6 +578,11 @@ VERIFIED O-12 lemma base"; verify pass 1 NOT ACCEPTED as billed, commit 2587c70 
 critical: M1(c)'s MULTI-BLOCK a.s.-termination billing consumes open (S1) while
 ledgered unconditional (per-block survives unconditional; contained), + 3 gaps; M1(a,
 b,d), the (O3) resummation, and the uniqueness pivot SURVIVE → D-11 r2 owed).
+[In-flight at REVISION 1 close: **r2 LANDED**, commit 566b967 — the critical contained
+exactly as specified (M1(c) rescoped to per-block unconditional content; multi-block
+a.s. termination MOVED to Lemma M2.0 at M2's (S1) layer; the (O2′) balance leg
+DERIVED; a THIRD seam **(S3)** = the projective assembly weight DECLARED, owner annex
+A-1, monic scope pinned on M2's statement); pass 2 launched.]
 Falsifier: N6-regp-ext2000, 303/303 primes < 2000, all EMPTY, margin sharp at 6/7.
 Consumes: Step 5's lemma base (as the mass statements they are), Step 6 (D-15), Step
 12 (Thm E), T-3/T-6 mass laws. NOTHING from Steps 18/18b.
@@ -602,7 +609,15 @@ verify pass 1 NOT ACCEPTED AS STATED (commit a7ede72 — 1 critical: (M6b)(iii) 
 at K4-CYL/row 4 but priced into no tier, so the "exactly FOUR" residue display is
 unsupported as written, + 8 gaps incl. reductions asserted by pricing-citation; the
 equivalence directions and the walk itself CLEAN; drainage verifiably unconsumed) →
-O-11 r2 owed. Falsifier ran FIRST: `verification/openmath/o11_seriestie_check.py`
+O-11 r2 owed. [In-flight at REVISION 1 close: **r2 LANDED**, commit 1bd8bd1 — the
+"exactly FOUR" display withdrawn, restated as the tier-1 four + THREE DECLARED
+interface rows with ledger homes HERE: **D-a** = (M6b)(iii)+(ii−) → the §3.3
+GD-4/GD-6 row; **D-b** = (I-τ)/K-LOC → the §3.3 interface row; **D-c** = (R1)–(R4) →
+the §3.1 [M] row; V1 corrected to the ENGINE-PROXY form; NEW supplement
+`o11_v2_oracle_pin.py` (10/10, engine ≡ oracle as rational functions) closes the
+executed-vs-sealed gap; pass 2 launched. The r2's §9 owed ROOT touches are EXECUTED
+in this document — see §7.]
+Falsifier ran FIRST: `verification/openmath/o11_seriestie_check.py`
 including Finding F1's test at the real-pack proxy (the n = 2 solve reproduces the
 true triple identically in ℚ(q); n = 3 five types symbolic; monotone bracket
 exhaustive p = 2, 3, 5; the pass-1 record corrects the count to 37/37 live).
@@ -664,8 +679,9 @@ composition findings are dispositioned in §7.
 The complete honest list, per the wave-10 residue enumeration (ledger §"WAVE 10 +
 PASS-2 ADJUDICATIONS": "THE WHOLE MANDATORY-PATH RESIDUE now = {(GR-B) orders ≥ 2
 (FGMN-pinned, transcription), (FRESH), the O-9 repair, O4T pass 2, D-11/O-11
-verification cycles, ROOT ASSEMBLY}"), EXPANDED to every named pin/flag a reader of §2
-encounters. Character classes: **[V]** verification-pass debt (a proof is on file; a
+verification cycles, ROOT ASSEMBLY}" — quoted as of wave 10; the rows below are SYNCED
+to the 2026-08-02 harvest at REVISION 1), EXPANDED to every named pin/flag a reader of
+§2 encounters. Character classes: **[V]** verification-pass debt (a proof is on file; a
 named fresh-context hostile pass is owed — no new mathematics expected unless the pass
 finds some); **[T]** transcription debt (content pinned to printed sources or existing
 proofs; writing/auditing owed, no new mechanism expected); **[M]** genuine open
@@ -676,12 +692,19 @@ mathematics (no proof on file). The CUC §0 pending-verdict registry
 
 | item | statement | owner | notes |
 |---|---|---|---|
-| **(GR-B) at OM orders ≥ 2** | the anchored-march residue-structure package (GD-2/GD-3's one open input): the frame tie + residual-dictionary march at orders ≥ 2, modeled on printed FGMN Thm 4.2 (both pairings), with the properness proviso | GD-1/GD23 arc (verify passes: the GD23 verification cycle continues at orders ≥ 2) | order ≤ 1 PROVED over an arbitrary complete DVR (inside VERIFIED leaf #4); the wave-10 ledger grades the ≥ 2 layer "FGMN-pinned, transcription" — every target statement is pinned to a printed theorem (LITUNIT §7), but the composed march at ≥ 2 is unwritten: honestly [M] until written and passed. Enters Steps 10 (CU-1's step), 14 (CEN-W), 16, 18 (K3) |
-| **(FRESH)** | the joint-with-parent level-determinacy separation clause (O-9's named open), priced at the GD-2/CL-13 vertex-law layer = CU-1's step content | O-9/CU-1 layer | enters Step 14's joint census CEN-J, hence Step 18's K3. Numerically unviolated (8.2M boxes) |
-| **(R1)–(R4)** (O-8b's base) | the T-1 stage-tower laws re-proved verbatim over O_δ = W(F_{p^δ}) | O-8b (M14's conditional proof closes given them) | expected mechanical ("nobody has written it" — tree O-8b); N8 exhaustive. Borderline [M]/[T]; kept here for honesty. Enters Step 16 |
+| **(GR-B) at OM orders ≥ 2** | the anchored-march residue-structure package (GD-2/GD-3's one open input): the frame tie + residual-dictionary march at orders ≥ 2, modeled on printed FGMN Thm 4.2 (both pairings), with the properness proviso | GD-1/GD23 arc (verify passes: the GD23 verification cycle continues at orders ≥ 2) | order ≤ 1 PROVED over an arbitrary complete DVR (inside VERIFIED leaf #4); the wave-10 ledger grades the ≥ 2 layer "FGMN-pinned, transcription" — every target statement is pinned to a printed theorem (LITUNIT §7), but the composed march at ≥ 2 is unwritten: honestly [M] until written and passed. Enters Steps 10 (CU-1's step), 14 (CEN-W), 16, 18 (K3), 18b ((S1)) |
+| **(FRESH)** | the joint-with-parent level-determinacy separation clause (O-9's named open), priced at the GD-2/CL-13 vertex-law layer = CU-1's step content; **since the O-9 rev-2 repair it carries clause (c) = the former JUNCTION-PIN** (PROVED label withdrawn at 01c21e6; the telescope consequence is proved GIVEN the clause) [REVISION 1, finding 4] | O-9/CU-1 layer | enters Step 14's joint census CEN-J, hence Step 18's K3. Numerically unviolated (8.2M boxes) |
+| **(R1)–(R4)** (O-8b's base) | the T-1 stage-tower laws re-proved verbatim over O_δ = W(F_{p^δ}) | O-8b (M14's conditional proof closes given them) | expected mechanical ("nobody has written it" — tree O-8b); N8 exhaustive. Borderline [M]/[T]; kept here for honesty. Enters Step 16, hence Step 18 (O-11 K3-c — declared row D-c at O-11 r2) |
+| **(UB-X)** — the clause-(UB) residue [NEW at REVISION 1, finding 7] | (a) the per-leaf O_δ re-base audit for the ℚ_p-stated leaves (the "per-leaf scope hygiene" of the D-3 collapse, declared at the GD dispatch but unwritten); (b) δ-stable position classes exhaust the realized ledger at every δ; (c) full solve + type aggregation commute with unramified base change | D-3/O-8b (Step 16) | until written, clause (UB) is proved ONLY at the Step-16 displayed scope; (ROOT-C) makes this explicit as hypothesis (H4). N8 numerically supports the law it scopes |
 | **D-12r** | TB-CAP's (τ-irr) completeness perimeter: the D4R.0-K(c) verdict-pin residual | [3t] VP owner (tree D-12r) | perimeter-conditional wherever TB-CAP is consumed (Steps 3, 11, 12); displayed, not discharged |
 | **(E-N)** | O-1thr Theorem 3(c)'s exhaustion caveat | O-1thr package | OPEN, scoped, touches CU-4 through Thm 3(c) (risk row R2 of the O3adj display); NOT consumed by the mandatory path elsewhere |
-| **(AGR) = OL1-ii at general n** | the drainage agreement seam: canonical termination + acceptance below a finite N(f) | O-4/O4T (TR-OM) | ASSEMBLED from CU-2 + CU-4 + GMN Cor 4.19 (all on file), so its residue is exactly the [V] debt of those pieces — listed here because until those passes land, general-n drainage is conditional; n ≤ 3 unconditional (O4T Thm N3) |
+
+**(AGR) relocated [REVISION 1, finding 10]:** the drainage agreement seam
+(= OL1-ii at general n: canonical termination + acceptance below a finite N(f)) is
+ASSEMBLED from CU-2 + CU-4 + GMN Cor 4.19 — all on file — so under this ledger's own
+definitions it is NOT [M]: no new mathematics is missing. It now lives in §3.2 as the
+inherited-[V] row it is; general-n drainage stays conditional until those passes land
+(n ≤ 3 unconditional, O4T Thm N3).
 
 ### 3.2 Verification-pass debt [V] — proofs on file, passes owed (named)
 
@@ -691,30 +714,38 @@ mathematics (no proof on file). The CUC §0 pending-verdict registry
 | **P(O-1thr r4)** | fresh hostile pass on O-1thr rev 4 (V24's criticals repaired; sloped/sheared pin stands) | O-1thr (Step 6) |
 | **P(O5t r3)** | fresh hostile pass on O5triple rev 3 (V23 0-critical arc) | O5triple (Step 12) |
 | **O-10 pass 2** | the second, model-diverse pass of the dual bar (pass 1 CLEAN, commit ec5e9a1) | O-10 (Step 15) |
-| **O4T repair + pass 2** | the in-flight Fable pass 2 (untracked working-tree record, NOT adjudicated) returned UNSOUND: 1 localized critical (N3-BRACKET terminal "=", false for N ≥ 2; inequality + density form survive, nothing downstream consumes it) + 4 gaps (import inventory incomplete) — repair round + re-pass owed | O4T (Step 13) |
-| **O-9 repair + re-pass** | pass 1 NOT ACCEPTED (commit c17777f): repair the census exponent E′'s left-tail ledger (machine-countermodeled) + the JUNCTION-PIN label; the verifier's sound-list preserves the reduction's shape | O-9 (Step 14) |
-| **D-11 verification cycle** | pass 1 on the MASS-ID attempt (commit 0cae7d8) | D-11 (Step 17) |
-| **O-11 verification cycle** | pass 1 on the SERIES-TIE assembly (commit 3fc8f52) | O-11 (Step 18) |
+| **O4T clean pass** [synced at REVISION 1] | rev 3 LANDED (commit bb4326c: N3-BRACKET "=" → "≤" with the exact normalization identity; imports completed to eight named Facts incl. SEP/DES); repair CHECKED CLEAN at the 2026-08-02 harvest; ONE full clean hostile pass owed | O4T (Step 13) |
+| **O-9 re-pass** [synced at REVISION 1, finding 4] | pass 1 NOT ACCEPTED (c17777f); **repair LANDED at rev 2 (commit 01c21e6)** — E′ left tail strict (countermodel predicted exactly), K5 predict-from-ledger falsifier 11/11, JUNCTION-PIN withdrawn into (FRESH)(c); re-pass owed. (At composition time this row misfiled a refuted exponent as [V]; with the repair on file the [V] filing is honest again) | O-9 (Step 14) |
+| **D-11 r2 + verification cycle** [synced at REVISION 1] | pass 1 NOT ACCEPTED as billed (commit 2587c70: M1(c) multi-block termination billing + 3 gaps; M1(a,b,d)/(O3)/uniqueness pivot survive) → r2 + re-pass owed. In-flight: **r2 LANDED (566b967**, (S3) declared, widened charge items (v)–(vii) pending acceptance**)**; pass 2 launched | D-11 (Steps 17/18b) |
+| **O-11 r2 + verification cycle** [synced at REVISION 1] | pass 1 NOT ACCEPTED AS STATED (commit a7ede72: (M6b)(iii) unpriced + 8 gaps; walk + equivalence directions clean) → r2 + re-pass owed. In-flight: **r2 LANDED (1bd8bd1**, D-a/D-b/D-c declared + oracle-pin supplement**)**; pass 2 launched | O-11 (Step 18) |
 | **CUC + CU-2t hostile pass** | pass on the consolidation record + the CU-2t lemma (CUC §9) | CUC (Step 11) |
-| **GD23 gap-9 light repairs** | the 9 justification gaps of the accepting pass 2 (4d109b9; heaviest: (GR-B) operator domain "side-supported", exact-match display's R-factoring, TIE policy pin at summary layer) ride the next doc touch — adjudicated non-blocking | GD23 (Step 8) |
-| **CU-1 gap-7 display repairs** | the 7 consumption-accounting/display gaps of the accepting pass 2 (252f34c) — same class | CU-1 (Step 10) |
+| **(AGR) inherited [V]** [relocated from §3.1 at REVISION 1, finding 10] | the drainage agreement seam, ASSEMBLED from CU-2 + CU-4 + GMN Cor 4.19 (all on file); its residue = exactly the pass debts of CU-2/CU-4 (this table) + the Cor 4.19 literature row (§4) — nothing else | O-4/O4T TR-OM (Step 13) |
+| **CU-1 r5** [synced at REVISION 1; was "gap-7 display repairs"] | rev 4 light repairs landed (8ab8ca6, all 7 gaps, cores byte-identical) → gap-check: GAPS-REMAIN → **r5 dispatched, IN FLIGHT** at the 2026-08-02 harvest; VERIFIED adjudication waits on it. In-flight: **r5 LANDED (6299a4a**, the single GAPS-REMAIN item repaired, cores byte-identical**)**; gap-check/adjudication rides the next harvest | CU-1 (Step 10) |
 | **Dfloor 3 minor gaps** | ID reduced-rep, ADD induction coprimality, TRANSFER sum-regularity — ride the next doc touch | Dfloor (Step 1) |
+| **B-layer verification rounds** [row added at REVISION 1, finding 3] | B-1, B-2 (doc level), B-5, B-6, B-7 are PROVED-UNVERIFIED June documents (grades displayed at Step 2); the tree §4 protocol already schedules their verification-only rounds; B-3's core and B-2's counting core are VERIFIED-LEAN; B-8 SUPERSEDED, cited nowhere | B-layer (Steps 2, 3) |
 | **K-12 faithfulness-audit record** | the Lean `undec`/`hExhaustP` vs mathematical-classifier audit (DELTA-1 §D1.5(g)); grade held pending | K-12/n = 2 anchor |
-| **End-to-end passes on THIS document** | ≥ 2 consecutive clean end-to-end passes, ≥ 2 models, verifiers who saw none of the per-leaf rounds (tree §4 Root criterion) | Phase C |
+| **End-to-end passes on THIS document** [synced at REVISION 1] | pass 1 (VC1, Codex) RAN: verdict COMPOSITION-GAPS → this REVISION 1 repairs it; the criterion resets — ≥ 2 consecutive CLEAN end-to-end passes, ≥ 2 models, verifiers who saw none of the per-leaf rounds (tree §4 Root criterion), now on the REVISED document | Phase C |
+
+**GD23 row RETIRED [REVISION 1 status sync]:** the former "GD23 gap-9 light repairs"
+row is DISCHARGED — rev 4 repaired all 9 gaps (f9878d1, cores byte-stable), the
+gap-check ran clean, and GD23 was ADJUDICATED **VERIFIED (leaf #4)** at the 2026-08-02
+harvest (c43b13b). No GD23 pass debt remains; its (GR-B) conditionality stays in §3.1.
 
 ### 3.3 Transcription/audit debt [T] and named pins/flags
 
 | item | content | owner |
 |---|---|---|
-| **GD-5 residue: the S-1 audit** | the one-page composition note + machine transcription audit (O-1thr machine ↔ O-2a stage interface F.0–F.2 at order 1) + the degree-g > 1 KEY1 generalization (same method) | GD-5 (D2.6 step 2) |
-| **GD-4 / GD-6 engine-bookkeeping units** | emission/record discipline (W1–W5, (c0), AUX band; K-OB-E's GMN Def-3.9 arithmetic is the one semantic clause) and run-decomposition conformance; proof-by-construction routes on record; CU-2t's (T-DEC)/(T-VERD) rows are displayed GD-4 instances | GD-4/GD-6 owners |
+| **GD-5 residue: the S-1 audit (incl. C.1.5)** | the one-page composition note + machine transcription audit (O-1thr machine ↔ O-2a stage interface F.0–F.2 at order 1) + the degree-g > 1 KEY1 generalization (same method). **Explicitly includes C.1.5** [REVISION 1, finding 5]: T-2's deferred graded-presentation obligation ("downsets are literal digit systems") — definitional at the mathematical machine (O-1thr §4 (S-1)); its transcription half is THIS audit | GD-5 (D2.6 step 2) / T-2 → Step 6 |
+| **D-5 disposition** [row added at REVISION 1, finding 5] | the tree's D-5 (WELLPOSED) carrier/equality design = O-2a rev 5 §§1–2 (two carriers, Θ, consistency predicate, Lemma R) — PROVED CONTENT of that leaf, verification debt = P(O-2a r5); the wider semantic-invariance clause is carried by each consuming leaf's own displayed carrier section (Steps 3, 6, 10), consumed nowhere as a separate node | O-2a (Step 7) |
+| **(O6) canonicalizations** [row added at REVISION 1, finding 5] | O3design §1: branch-letter keying + deep-marker pooling — DEFINITIONAL census-side bookkeeping, no proof content (CUC §3(c)); V16/V21 arc on the O3design record | O3design → CU-3 (Step 11) |
+| **GD-4 / GD-6 engine-bookkeeping units** | emission/record discipline (W1–W5, (c0), AUX band; K-OB-E's GMN Def-3.9 arithmetic is the one semantic clause) and run-decomposition conformance; proof-by-construction routes on record; CU-2t's (T-DEC)/(T-VERD) rows are displayed GD-4 instances; **enters Step 18 through D-15's (M6b)(iii)/(ii−) clauses** (O-11 K4-CYL — declared row D-a at O-11 r2) | GD-4/GD-6 owners |
 | **GD-7 flags: (GMN-COH)/(R-0)/(R-1)/(R-2)/(R-3)** | O5triple's five citation-grade flags (sprouted-type dissection, flow coherence, order-0 anchor, ADEQ read-back, representative lookup) — one GMN §2.1/§3/§4.1 reading session covers them; NOT covered by the executed LITUNIT | GD-7/literature unit (Step 12) |
 | **GD-8 order ≥ 2** | the exact-key polygon seam beyond order 1 (order-1 proved, falsifier-covered); expected verbatim over GD-2's frame tie | GD-8 |
 | **(KP)/(KPirr) beyond order 1 + properness proviso** | GD-1's representative-admissibility clauses; properness a genuine side condition only at e·g = 1 refinement reads (FGMN Lemma-5.3 discharge displayed) | GD-1 |
 | **Declared pins (P-ROOT)/(P-KEY)/(FR≡)** | CU-1's three declared pins replacing silent cross-brief glue; (FR≡) has refutable order-2 content = the gate's coherent-convention finding | CU-1 (Step 10) |
 | **Sloped/sheared convention pin** | O-1thr's window-height convention (the depth-2 falsifier forced it; 41,720/0 vs 7,472 violations unsheared) | O-1thr (Step 6) |
 | **(I-τ) + K-LOC interface** | the adapted-cell → engine-stratum presentation for O-10's Theorem 2 (K-LOC = M07 OL-3: continuation reads of branch j = OM reads of f_j up to cell-constant normalization) | GD families / O-10 consumers (Steps 15, 18) |
-| **(S1)/(S2) seams of D-11 M2** | (S1) = GD-3-FULL/O-9 hand-off; (S2) = the O-11 composition datum — both discharged BY Steps 14/18 once their passes land; displayed to keep the acyclicity visible | D-11 (Step 17) |
+| **(S1)/(S2) seams of D-11 M2** | (S1) = GD-3-FULL/O-9 hand-off ← Step 14 (+ (GR-B)); (S2) = the O-11 composition datum ← Step 18. Since REVISION 1 (finding 2) the step order 17 ≺ 18 ≺ 18b makes both seams STRUCTURALLY earlier — the acyclicity is in the walk itself, and the seams discharge when Steps 14/18's passes land. D-11 r2 (566b967, in flight) declares a THIRD seam **(S3)** = the projective assembly weight, owner annex A-1 — rides the next fold with the r2 acceptance | D-11 (Step 18b) |
 | **OL-O12-2 data pass** | the finite transcription/correspondence pass identifying the complete degree-3 table as an (O3) member of 𝔅₃ (math half closed at D-11) | O-12/D-11 |
 | **BASE-1(f) fence** | Dfloor's classifier-side n = 1 clause, fenced to the classifier steps (served by Steps 6–13's package) | Dfloor/CU |
 | **LC-COH** | the displayed open note from the O-3 clause-3 re-key — CONSUMED BY NOTHING (kept for honesty) | tree D2.1 line 1 |
@@ -773,6 +804,14 @@ verbatim quotes at named extraction lines.
    (resultant/discriminant; number flagged for page verification) — O4T Fact D.
    **[Cohen] Cohen**, *A Course in Computational Algebraic Number Theory* (GTM 138)
    §3.3 (coefficient-side resultant — also what the harnesses compute). Step 13.
+   **O4T import inventory — COMPLETE at rev 3 [REVISION 1, finding 8]:** the eight
+   named Facts beyond NP/SF/HEN are EXT, EF, D, GRD, UCT, HRG (rev 2, sources as
+   displayed in the O4T record) **+ SEP (char-0 separability of irreducibles) + DES
+   (Galois descent/fixed field)** — the pass-2 "Galois descent + one more" pair, both
+   added at rev 3 (commit bb4326c) as IN-LINE-PROVED imports with consumption-site
+   cite tags (standard field theory; no new external citation is consumed — the
+   proofs are in the leaf). Six-vs-eight reconciled: EF and GRD each bundle two of
+   V30's items.
 7. **[LIT-8 split, per DELTA-1 §D1.5(d)]** LIT-8a Krasner + the 2v+1 polish constant
    (inside VERIFIED M05 Lemma D); LIT-8b Newton–Hensel; LIT-8c Vandermonde/resultant
    identities (Bourbaki *Algèbre* IV §6 / Lang); LIT-8d Igusa §7.4 change of variables;
@@ -814,7 +853,7 @@ with a runnable falsifier RAN it before acceptance (countermodel-first disciplin
 | `o9_order2_census_check.py` (M08-T6) | Step 14 (order-2 census polynomiality) | 8,220,994 boxes, 1,128,288 order-2 instances, K1–K4+T2 0 violations, 18 cross-p cells, ε = 0 |
 | `o10_kcount_harness.py` | Step 15 (K-COUNT fiber law; sealed predictions) | 68 PASS / 0 FAIL |
 | N8 eq2 | Step 16 (the alphabet law) | 199,723 alphabets / 17 fields, 0 violations |
-| `o11_seriestie_check.py` | Step 18 (incl. Finding F1's test at the REAL pack) | 38/38 PASS; n = 2 true triple identical in ℚ(q) |
+| `o11_seriestie_check.py` | Step 18 (incl. Finding F1's test at the assembled-pack proxy) | 38/38 billed; the O-11 pass-1 record corrects the live count to 37/37 (one test = discriminant proxy) — flag stands either way; n = 2 true triple identical in ℚ(q) |
 | N3/N4/N5/N7 + the 22 sealed T-layer gates (D4-n3 404M boxes, SIB 32/32, T-n3, M-n3-V2, H-n3 151/151, V-n3 178/178, STATE-probe-2, …) | the §2.2 layer (Step 2) | ALL PASSING |
 
 Matrix synthesis (adjudications ledger): no Fable-vs-Codex-vs-numerics conflict
@@ -834,12 +873,78 @@ consecutive clean END-TO-END passes on this document by fresh verifiers, ≥ 2 m
 (3) the §5 matrix re-runs green; (4) the completeness audit: every tree node id appears
 here or in the recorded eviction list (§3.3's final paragraph + the tree's DELTAs).
 
-Immediate dispatch order (inherited from §D3.6, updated by this document): the O-9 E′
-repair; the O4T N3-BRACKET repair (both localized); the D-11 and O-11 pass-1s; the CUC/
-CU-2t pass; the three registry passes P(O-2a r5)/P(O-1thr r4)/P(O5t r3); O-10's pass 2;
-then the GD order-≥ 2 campaign for (GR-B)/(FRESH) — the last genuine mathematics
-between this assembly and the theorem.
+Immediate dispatch order (updated at REVISION 1; the O-9 E′ and O4T N3-BRACKET
+repairs have LANDED): the D-11 and O-11 r2s (+ their re-passes); CU-1 r5 (in flight);
+the O4T full clean pass; the CUC/CU-2t pass; the three registry passes
+P(O-2a r5)/P(O-1thr r4)/P(O5t r3); O-10's pass 2; the (UB-X)/(R1)–(R4) write-up; then
+the GD order-≥ 2 campaign for (GR-B)/(FRESH) — the last genuine mathematics between
+this assembly and the theorem. VC1 pass 2 (end-to-end, fresh verifier) runs on THIS
+revised document.
 
 — ROOT ASSEMBLY complete, 2026-08-02. Composed at HEAD d730669 + the recorded
 in-flight events (O4T pass 2, untracked). Every §2 grade traces to a named commit or
-pass record; nothing above upgrades any leaf's status.
+pass record; nothing above upgrades any leaf's status. REVISION 1 (§7) applied after
+VC1 at the 2026-08-02 harvest state (c43b13b).
+
+---
+
+## 7. REVISION 1 (2026-08-02, unit ROOT-R2) — disposition of VC1, the Phase C end-to-end pass 1
+
+**The pass.** VC1 = the first end-to-end verification of this document (Codex, fresh
+context, dependency-graph charge: "a named input counts only if an earlier step
+supplies it, a ledger row classifies it, or the literature roster carries it";
+`lean/notes/openmath/VC1_root.jsonl`). Verdict: **COMPOSITION-GAPS (findings 1–8
+blockers, 9–11 advisories)** — "the assembly is not composition-sound as written...
+forward edges, a genuine D-11/O-11 cycle, several unbound inputs, and an incomplete
+literature inventory." Every finding was accepted and repaired IN PLACE (the body
+above is edited, against the §6 byte-stability default, per the standing repair
+directive); this section is the audit trail. The step-by-step walk's FAIL/GAP verdicts
+(Steps 1–3, 6, 7, 9, 11, 14, 16–19) are subsumed by the findings below.
+
+**Disposition table.**
+
+| # | class | finding (compressed) | disposition | where |
+|---|---|---|---|---|
+| 1 | BLOCKER | Step 1 silently consumes T-6 (ns-null), supplied only at Step 2 | ACCEPTED; the edge is REMOVED, not waived: the dependency is re-pointed to Dfloor's own Appendix A (self-contained ns-null via LIT-8c, inside the VERIFIED leaf-#3 perimeter — the fact the leaf actually proves); T-6's (ns-null) is declared NOT consumed | Step 1 |
+| 2 | BLOCKER | D-11 M2 consumes (S2) = O-11's datum while O-11 consumes D-11's pack side — a genuine cycle | ACCEPTED; STRATIFIED exactly as the verifier proposed: D-11 {M1, M1′, M3} = Step 17 ≺ O-11 = Step 18 ≺ D-11 M2 = NEW Step 18b; both results displayed; no mutual dependency remains | Steps 17/18/18b, audit trail |
+| 3 | BLOCKER | B-1..B-7 outside the document's dependency universe | ACCEPTED; grades inlined at Step 2 from tree §2.1 (B-2/B-3 cores VERIFIED-LEAN; B-1/B-2doc/B-4/B-5/B-6/B-7 PROVED-UNVERIFIED; B-8 SUPERSEDED, uncited); §3.2 B-layer row added | Step 2, Step 3, §3.2 |
+| 4 | BLOCKER | O-9's refuted census exponent misfiled as [V] ("a proof is on file" was false) | ACCEPTED for the composed state; since then the rev-2 repair LANDED (01c21e6: E′ strict left tail, countermodel now predicted exactly; JUNCTION-PIN withdrawn → (FRESH)(c)) — the row is [V] again, re-pass owed | Step 14, §3.1 (FRESH), §3.2 |
+| 5 | BLOCKER | unbound inputs: C.1.5 (Step 6), D-5 (Step 7), (O6) (Step 11); Steps 9/16 lack Consumes lists | ACCEPTED; all suppliers displayed: C.1.5 = T-2's deferred obligation → the S-1 audit row; D-5's carrier design = O-2a rev 5 §§1–2 (proved content, debt = P(O-2a r5)); (O6) = O3design §1 definitional canonicalizations; Consumes lists ADDED to Steps 9 and 16; the registry re-worded as metadata | Steps 6/7/9/11/16, §3.3 |
+| 6 | BLOCKER | displayed theorem unconditional; steps prove a conditional implication | ACCEPTED; (ROOT) re-badged as THE TARGET; **(ROOT-C)** — hypotheses (H1)–(H4) = exactly the §3.1 [M] rows — displayed as THE theorem the composition proves, with the [V]/[T] rows displayed as audit debts on the implication's proof, not statement hypotheses; Step 19 closes at (ROOT-C) | §1, Step 19 |
+| 7 | BLOCKER | universal (UB) stronger than the Step-16 support (δ-stable classes, conditional (R1)–(R4)) | ACCEPTED; the exhaustion debt DISPLAYED as new §3.1 row **(UB-X)** (per-leaf O_δ audit; class exhaustion; aggregation/base-change commutation); Step 16 restated at honest scope; (ROOT-C)(H4) carries it | §1, Step 16, §3.1 |
+| 8 | BLOCKER | literature roster incomplete: O4T's "Galois descent + one more"; K-FACT's GMN source unpinned | ACCEPTED; the missing pair NOW EXISTS — O4T rev 3 (bb4326c) added Facts **SEP** + **DES** as in-line-proved imports (inventory complete at eight named Facts, six-vs-eight reconciled); **K-FACT = GMN Thms 1.15/1.19 + 3.1/3.7** (`docs/GMN_citations.md`), all four loci already §4-pinned | Step 13, Step 15, §4 item 6 |
+| 9 | ADVISORY | general-n 𝔅_n instance correspondence insufficiently explicit | ACCEPTED; **(B-INST)** displayed: the consumed pack is BY CONSTRUCTION the 𝔅_n member (three on-record organizations; OL-O12-1 the contingent escape); no theorem claims more; degree-3 realized-table identification = the OL-O12-2 data pass | Step 5 |
+| 10 | ADVISORY | (AGR) mislocated in [M] | ACCEPTED; relocated to §3.2 as an inherited-[V] row (assembled from CU-2 + CU-4 + Cor 4.19, all on file) with a §3.1 tombstone note | §3.1, §3.2 |
+| 11 | ADVISORY | Step 19 conflates O-11 (series = R_τ) with D-11 M2 (density = series) | ACCEPTED; both results displayed as labeled statements; Step 19's attribution now names both tranches and states neither alone delivers α = R_τ | Steps 18/18b/19 |
+
+**Status syncs applied with the repairs** (all at the 2026-08-02 harvest, ledger
+c43b13b): **GD23 = VERIFIED, leaf #4** (rev 4 gap repairs f9878d1 + gaps-closed check;
+the premature d730669 adjudication superseded); **O4T = repaired at rev 3, awaiting
+one full clean pass**; **CU-1 = rev 5 in flight** (rev 4 landed 8ab8ca6; gap-check
+GAPS-REMAIN; NOT VERIFIED — the headline's leaf count corrected 5 → 4); **O-9 =
+repaired at rev 2** (01c21e6), re-pass owed; **D-11/O-11 pass 1s = NOT ACCEPTED**
+(2587c70 / a7ede72), r2s owed. Nothing in this revision upgrades any leaf; it corrects
+this document's own composition and bookkeeping.
+
+**What VC1 pass 2 should check first:** the three structural repairs (Step 1's
+Appendix-A re-point; the 17 ≺ 18 ≺ 18b stratification; (ROOT-C) vs the Step-19 close),
+then the §3 completeness standard ("every named pin/flag has exactly one ledger
+home"), which findings 3/5 showed is the failure-prone invariant.
+
+**Concurrent in-flight events recorded at REVISION 1 close** (landed by parallel
+units while this revision was being written; statuses in the body are AS OF the
+c43b13b harvest, with bracketed in-flight notes at the affected rows): **D-11 r2**
+(566b967 — the pass-1 critical contained as specified; (S3) declared) and **O-11 r2**
+(1bd8bd1 — D-a/D-b/D-c declared; oracle-pin supplement 10/10) landed, pass 2s
+launched; **CU-1 r5** landed (6299a4a — the GAPS-REMAIN item repaired); the
+PROJECT_STATE refresh landed (3896eb0). O-11 r2's §9 owed ROOT touches are EXECUTED
+here: (1) Step 18 names D-a/D-b/D-c with engine-proxy language; (2) the §3.3
+GD-4/GD-6 row gains its Step-18 entry line; (3) the §3.1 (R1)–(R4) row gains "hence
+Step 18"; (4) the (I-τ)+K-LOC row already listed Step 18; (5) D-11's widened charge
+items (v)–(vii) noted pending acceptance; (6) the 37/37 falsifier-count correction
+displayed (§5 + Step 18). Bookkeeping note: commit 4e03512's staging sweep captured
+an intermediate state of THIS revision alongside the O-11/D-11 fold; this commit is
+the revision's unit of record.
+
+— REVISION 1 complete. The body above is the operative composition; VC1 pass 2 runs
+on this document as a whole.
