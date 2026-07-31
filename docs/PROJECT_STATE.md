@@ -1,7 +1,8 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-07-31 (see the final UPDATE section for the current
-state, standing obligations, and the pointer to the live census
+*Snapshot: 2026-07-19; last refreshed 2026-07-31 evening (root-assembly stage of the MATH-FIRST
+campaign — see the FINAL UPDATE section, which is the resumability anchor: current truth, standing
+loops, and the four-document resume protocol; the live Lean census is
 `lean/notes/REMAINING_CENSUS_2026-08-01.md`). This document lays out (1) the bigger picture, (2) what
 is proved and on what it rests, (3) the Lean blueprint and its correspondence to the math-language
 proof, and (4) what is in progress. It is meant to be sufficient, together with the code, for a
@@ -1161,9 +1162,9 @@ an instance of the shared machine (SYN-F2).
 
 ## UPDATE (2026-07-31): THE QUEUE + OPEN-MATH FLEET + HK-06 DAY — the current state of record
 
-*(This section + `lean/notes/REMAINING_CENSUS_2026-08-01.md` are the resumability anchor: a fresh
-agent should read this section, then the census, then `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`
-and `lean/notes/QUEUE_EXECUTION_2026-07-31.md` for the day's full records.)*
+*(SUPERSEDED AS THE RESUMABILITY ANCHOR by the final UPDATE section below — the math-first
+campaign, launched by the Asvin authority later this same day, parked this section's items 1–5.
+This section remains the record of the queue/fleet/HK-06 day and of the Lean-side state.)*
 
 ### Where the project stands (the two capstones)
 
@@ -1255,3 +1256,135 @@ instance + G13′ + a short list of named open mathematics.
    (OL-1..OL-4), C6's CL-05 leg, U17a/U26.
 6. **Phase B of the density capstones** (unchanged, parked behind the bridge campaign): omMenu
    growth beyond order 0 at general n, drainage/exhaustiveness, order ≥ 2 tower faithfulness.
+
+## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
+
+*(THIS SECTION IS THE RESUMABILITY ANCHOR. A fresh session resumes from this file alone via the
+resume protocol at the end of this section. Date-stamp caveat: the campaign's artifacts are
+internally dated 2026-08-01/02 but were all committed 2026-07-31 — the file-naming pattern already
+corrected twice above; cite commits, not internal dates, when precision matters. State anchor:
+commit c43b13b, "Harvest: GD23 VERIFIED (leaf 4)".)*
+
+### The authority and the campaign
+
+**Asvin (2026-07-31, verbatim, recorded in `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`
+§AUTHORITY UPDATE): "we finish the math first, get a verified complete proof of the theorem of
+uniformity across all primes including the wild primes, and use that scaffolding to figure out
+what to do."** This superseded the Lean queue as the primary campaign. Consequences, still in
+force: sign-off items 22–29 (+ G13′, the `hfin` ratification, the HK15 e′ ≥ 2 un-guard, the
+Wall A↔B disposition, the SlotsG2/G3 quarantine disposition) are **PARKED** — no statement repair
+executes until the mathematics is complete — and Lean work is autonomous-frontier only. The parked
+items' evidence packs stay current: items 22–27 = the capstone-ledger rows refuted-as-typed by the
+open-math fleet (jcInvHist, track_restarts/K7, count_tie/NsFree, child_local, vp_sound, SibJcRows;
+evidence census §4.1 + the ledger's round-3/4 fold-ins, e.g. item 27's Lean-core counting gate
+`MovesU/SibJcRouteA.lean`, 5¹³ ≠ 5¹²); item 28 = the ν₊.e ≥ 2 disposition (menu in
+`lean/notes/HK12_RECHECK_2026-07-31.md`; the HK-11a kernel `HC2/HK11a_vertexTransport.lean` landed,
+commit 2f9a35b); item 29 = the `SpeciesStageRow.sel_stage` field (TV_G1;
+`scs_cluster_child_of_selStage` proved and waiting). The **U-C Lean unit** (capstone-shape) is
+likewise PARKED (sign-off class; ledger, SYNTH4 fold). Campaign shape: **Phase A** the mathematical
+gap tree → **Phase B** per-leaf attack/verify cycles → **Phase C** the root assembly + end-to-end
+passes. Phases A and B-mandatory are built; the campaign is now INSIDE Phase C.
+
+### The four campaign documents (and what each is)
+
+1. **`docs/MATH_COMPLETION_TREE_2026-08-01.md`** — Phase A: the uniformity theorem's full claim
+   DAG (status vocabulary §0: VERIFIED / PROVED-UNVERIFIED / OPEN / LITERATURE; a reduction is not
+   a proof; numerics are flags, never substitutes). Body is append-only; **DELTAs 1–3 at the end
+   carry the corrected readings and GOVERN the body** (DELTA-2 = the GD-1..8 family merge + the
+   CU-1..CU-7 composition replacing the O-2/O-3 joint induction; DELTA-3 = CU-6 eviction + the O-9
+   index fix). DELTA 4 is owed at the next fold.
+2. **`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`** — the append-only event ledger. Its TAIL
+   (from §AUTHORITY UPDATE to the final §HARVEST) is the campaign's event log of record: waves
+   6–12, the verification verdicts, the CORRECTION entry (premature VERIFIED withdrawn), the
+   harvest adjudications. **The ledger tail supersedes any stale row elsewhere.**
+3. **`docs/ROOT_ASSEMBLY_2026-08-02.md`** (commit bdfb5a2) — Phase C's spine: the uniformity
+   theorem in Asvin's scaffold form ((0) cylinder-limit density, (SQ) level-k squeeze, (R) R_τ
+   evaluation with Σ_τ R_τ = 1, (UB) unramified base), proved as a 19-step / 5-movement linear
+   composition of the Phase-B leaves, each step = leaf + faithful statement + verification status
+   + consumption. Honesty headline: **the theorem is COMPOSED, NOT claimed verified.** Its §3
+   three-class conditionality ledger IS the honest distance (below); §4 = the literature roster
+   (GMN/MacLane/FGMN/Serre/Neukirch/Lang/Cohen/LIT-8; BNS, DCD, Denef explicitly NOT consumed);
+   §5 = the numerics corroboration index; §6 = the acceptance path + dispatch order.
+4. **`lean/notes/openmath/CU_cluster_phaseB.md` §0** — the pending-verdict registry: the live key
+   for every "CONDITIONAL-ON-PASS: P(·)" citation (P(O-2a r5), P(O-1thr r4), P(O5t r3), and the
+   per-leaf rev-of-record rows). Cross-check its rows against the ledger tail — harvests update
+   verdict states faster than the registry file.
+
+### The honest distance (ROOT_ASSEMBLY §3, the 3-class ledger)
+
+- **[M] genuine open mathematics** — exactly TWO first-class items: **(GR-B) at OM orders ≥ 2**
+  (the anchored-march residue-structure package; order ≤ 1 PROVED over an arbitrary complete DVR
+  inside VERIFIED leaf GD23; the ≥ 2 layer is FGMN-pinned statement-for-statement via the LITUNIT
+  but the composed march is unwritten) and **(FRESH)** (O-9's joint-with-parent level-determinacy
+  separation clause; numerically unviolated over 8.2M boxes). Smaller [M] rows: (R1)–(R4) over
+  O_δ = W(F_{p^δ}) (borderline [T]), D-12r (TB-CAP's verdict-pin residual), (E-N) (O-1thr Thm 3(c)
+  caveat, off the mandatory path), (AGR) = OL1-ii at general n (assembled; residue = its inputs'
+  [V] debt; n ≤ 3 unconditional via O4T Thm N3).
+- **[V] verification-pass debt** — proofs on file, named passes owed: the three registry passes
+  P(O-2a r5)/P(O-1thr r4)/P(O5t r3); O-10 pass 2 (pass 1 CLEAN, ec5e9a1); the O4T, O-9, D-11,
+  O-11, CUC/CU-2t cycles (state below); the K-12 faithfulness-audit record; and ≥ 2 consecutive
+  clean END-TO-END passes on the ROOT document itself by fresh verifiers, ≥ 2 models.
+- **[T] transcription/audit debt** — GD-4/5/6/7/8 bookkeeping units, the (KP)/(KPirr) + properness
+  provisos, declared pins ((P-ROOT)/(P-KEY)/(FR≡), sloped/sheared, (I-τ)+K-LOC, BASE-1(f)),
+  the LIT-1/LIT-3/LIT-8 citation confirmations, OL-O12-2's finite data pass, and the parked
+  item-27/28 Lean repairs + O-14d instance population (outside the math criterion, DELTA-1 §D-10).
+
+Acceptance (tree §4 root criterion, restated at ROOT §6): §3.1 + §3.2 empty into VERIFIED +
+literature-audited, ≥ 2 clean end-to-end passes by verifiers who saw no per-leaf round, the §5
+numerics matrix re-runs green, and the completeness audit over tree node ids.
+
+### Leaf scoreboard (per the ledger tail through the c43b13b harvest)
+
+**VERIFIED (the two-pass, model-diverse bar): FOUR** — **O-13** (leaf 1, skeleton finiteness;
+|S_n| = 1, 15, 53, 197, 509, 1460, verifier re-implemented the enumerator; `skeleton_finite` in
+Lean) · **O-12** (leaf 2, the pole-free/cyclotomic-denominator theorem, honest scope; Lean layer =
+U-B below) · **Dfloor** (leaf 3, D-1/D-2/D-4 measure floor; V22 clean + Fable pass 2, dbccbc1) ·
+**GD23** (leaf 4, the GD-2/GD-3 MacLane/GMN dictionary, order ≤ 1 over an arbitrary complete DVR;
+zero-critical pass 2 + the r4 GAPS-CLOSED check, adjudicated at the c43b13b harvest). A premature
+"GD23/CU-1 VERIFIED" adjudication at d730669 was WITHDRAWN by the ledger's CORRECTION entry
+(110f308) and only GD23 has since re-earned the grade — never cite d730669 for leaf counts.
+
+**In cycle (the standing verification loops):** **CU-1** r4 gap-check found GAPS-REMAIN → r5
+dispatched at the harvest · **O4T** r3 repair checked clean but owes ONE full clean pass ·
+**O-9** repaired at rev 2 (01c21e6: E′ left tail strict, JUNCTION-PIN honestly rescoped to
+(FRESH)(c), K5 predict-from-ledger falsifier 11/11) → re-pass owed · **D-11** pass 1 NOT ACCEPTED
+(M1(c)'s multi-block billing; M1 per-block unconditional survives) → r2 owed (working-tree edits
+to its attempt file may be in flight) · **O-11** pass 1 NOT ACCEPTED (1 critical: (M6b)(iii)
+unpriced; equivalence directions clean) → repair owed · **CUC + CU-2t** consolidated (CUC 6/7
+re-labels confirmed; CU-2t proved, zero new inputs) → hostile pass owed · **VC1** = Phase C
+end-to-end pass 1 on the ROOT document returned COMPOSITION-GAPS → ROOT repair + pass 2
+dispatched at the harvest, alongside CU-1 r5 and this PROJECT_STATE refresh.
+
+### The Lean corpus during the campaign (autonomous frontier only)
+
+**Zero sorryAx in the AxChk census** (`AxChk_baseline` at HEAD; the last designer sorryAx died
+with R7-RUN's `runRealizerExists_zmod`, and the census note records "AxChk census = ZERO sorryAx
+anywhere"); the density capstones (`montes_unconditional`, `montes_uniform_n2`) and `theoremU`
+unchanged, Lean-core. Sorry TOKENS in non-census files remain and are all classified in
+`lean/notes/REMAINING_CENSUS_2026-08-01.md` (43 in 26 files at its sweep: parked/Phase-B/
+autonomous/banked, incl. the 4 honest V9 HK-11 reopenings). **Math-first → Lean round-trips
+landed (verified math transcribed into new leaf modules, statements byte-untouched, Lean-core,
+no sorry; record `lean/notes/LEANW6_UNITS_2026-08-01.md`):** **U-B** = O-12's pole-free layer
+(`MovesU/O12PoleFree.lean`: ℛ-membership grammar + absorption + Corollary D margins) · **U-D** =
+O5triple Theorem B's abstract counting core (`MovesU/O5CountingB.lean`) · **U-E** = the WGEO/VTX
+degree-1 perimeter (`HC2/UE_vtxUpper.lean`); earlier units of the same discipline:
+`skeleton_finite` (O-13) and `MovesD/R7_runRealizer.lean` (O-14a′). U-C stays parked as above.
+
+### RESUME PROTOCOL (a fresh session starts here)
+
+1. **Tree + DELTAs**: read `docs/MATH_COMPLETION_TREE_2026-08-01.md` §0 (vocabulary) + its
+   DELTAs 1–3 (the corrected readings that govern).
+2. **Ledger tail**: read `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` from §AUTHORITY UPDATE
+   to the end — the event log of record; the final HARVEST entry is the newest adjudicated state.
+3. **`docs/ROOT_ASSEMBLY_2026-08-02.md`**: the theorem, the 19 steps, §3's ledger (= the
+   distance), §6's dispatch order.
+4. **Registry**: `lean/notes/openmath/CU_cluster_phaseB.md` §0 for the P(·) verdict keys,
+   corrected by any later harvest entries from step 2.
+
+Then continue the loops: the in-flight dispatches (ROOT repair + VC2, CU-1 r5, D-11 r2, O-11
+repair, O-9 re-pass, O4T clean pass, CUC/CU-2t pass, the three registry passes, O-10 pass 2), and
+after the [V] column drains, the GD order-≥ 2 arc for (GR-B)/(FRESH) — the last genuine
+mathematics between the assembly and the theorem. Per-leaf work follows the standing cycle:
+falsifier-first attempt → hostile pass → repair rev (cores byte-stable, edits at finding sites
+only) → model-diverse pass 2 → gaps-closed check → harvest adjudication; PROVED-UNVERIFIED is
+never consumed by an acceptance claim.
