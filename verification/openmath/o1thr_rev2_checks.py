@@ -14,16 +14,25 @@ displayed lawfulness laws:
     (N2) stride integrality:  gamma == s0*h (mod e)
     (N3) height positivity:   gamma >= (s0 + wSide)*h
     NAT: intercept I = gamma/e >= 1, hence L >= 2
-    T-E (vertex transport, (R5)-at-harvest): with the standard key lift
+    T-E ((M6b)/(N4) at harvest): with the standard key lift
           Phi_1 = sum_{k=0}^{g} psihat_k * p^((g-k)*h) * X^(e*k)
       (psihat_k in [0,p) lifting psi's coefficients, psihat_g = 1), the
       slot-mu coefficient C_mu of the Phi_1-adic development of the decode
-      f_x satisfies  w_0(C_mu) = beta* EXACTLY, where beta* = the side's
-      right-end height v1 and w_0(C) := min_j v_p(coeff_j C) (Gauss).
-      (Exact valuation pin <=> the height-beta* residual is NONZERO.)
+      f_x satisfies:
+        (T-E.1)  C_mu != 0   (the vertex read is well-defined), and
+        (T-E.2)  beta* <= w_0(C_mu) <= I   (the (N4) band: the harvested
+                 vertex height vhtx := w_0(C_mu) lies between the side's
+                 right-end height beta* = v1 and the intercept I = gamma/e),
+      where w_0(C) := min_j v_p(coeff_j C) (Gauss valuation w.r.t. X).
 
-A violation of T-E would refute the depth-1 instance of (M6b) under the
-standard lift policy and would be a REAL finding against the rev-2 package.
+Also REPORTED (not a pass/fail): the count of instances with
+w_0(C_mu) != beta* — the REFUTATION COUNT of the rev-1-adjacent reading
+that pinned the vertex height at beta* itself (the reading the verifier
+flagged as ambiguous; a positive count is the machine countermodel that
+forced the rev-2 restatement of (R5) with a RECORDED height field).
+
+A violation of T-E.1/T-E.2 would refute the depth-1 instance of (M6b) as
+restated at rev 2 and would be a REAL finding against the package.
 """
 import os
 import sys
@@ -80,7 +89,7 @@ def w0(c, p):
 def run_TE(p, n, M):
     boxes = [tuple(p * t for t in tup)
              for tup in product(range(p ** (M - 1)), repeat=n)]
-    checked, bad = 0, []
+    checked, bad, not_betastar = 0, [], 0
     for a in boxes:
         f = list(a) + [1]
         for (j0, j1, e, h, pat, psi, mu, L) in base.sites_of_box(a, p, n, M):
@@ -89,11 +98,12 @@ def run_TE(p, n, M):
             d = (j1 - j0) // e
             v0 = v1 + d * h
             gamma = e * v0 + j0 * h                  # ell(j0) = v0
+            intercept = Fraction(gamma, e)           # I = ell(0)
             # displayed lawfulness laws at harvest + Lemma NAT instance
             assert (gamma - j0 * h) % e == 0, (a, j0, j1)            # (N2)
             assert gamma >= (j0 + (j1 - j0)) * h, (a, j0, j1)        # (N3)
-            assert Fraction(gamma, e) >= 1 and L >= 2, (a, j0, j1)   # NAT
-            # T-E: standard key lift; slot-mu coefficient; w_0 pin at beta*
+            assert intercept >= 1 and L >= 2, (a, j0, j1)            # NAT
+            # T-E: standard key lift; slot-mu coefficient; the (N4) band
             Phi1 = [0] * (e * g + 1)
             for k in range(g + 1):
                 Phi1[e * k] = psi[k] * p ** ((g - k) * h)
@@ -101,11 +111,15 @@ def run_TE(p, n, M):
             Cmu = C[mu] if mu < len(C) else []
             w = w0(Cmu, p)
             checked += 1
-            if w != v1:
-                bad.append((a, (j0, j1, e, h, psi, mu), v1, w))
+            if w is None or not (v1 <= w <= intercept):
+                bad.append((a, (j0, j1, e, h, psi, mu), v1, str(intercept), w))
+            elif w != v1:
+                not_betastar += 1
     print(f"p={p} n={n} M={M}: boxes={len(boxes)} "
           f"site-instances checked={checked} "
-          f"| T-E vertex-transport violations: {len(bad)}")
+          f"| T-E violations (C_mu=0 or vhtx outside [beta*, I]): {len(bad)} "
+          f"| refutation count of the beta*-pin reading (vhtx != beta*): "
+          f"{not_betastar}")
     for b in bad[:5]:
         print("   VIOLATION:", b)
     return len(bad) == 0
