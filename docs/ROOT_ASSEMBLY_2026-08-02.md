@@ -9,17 +9,29 @@ state of the campaign (ledger `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` §
 `lean/notes/openmath/`, and the literature unit `lean/notes/openmath/LITUNIT_2026-08-01.md`.
 
 **Honesty headline (read first).** The theorem below is NOT yet a verified complete
-proof, and this document does not claim it is. What exists is: a complete, acyclic
-composition in which every step is a named leaf with an on-file proof, five of the
-leaves VERIFIED through the campaign's two-pass model-diverse bar, the rest
-PROVED-UNVERIFIED with their pending passes NAMED, and exactly TWO items of genuinely
-open mathematics — **(GR-B)** at OM orders ≥ 2 and **(FRESH)** — both pinned to printed
-literature statements and priced at a single lemma layer. §3 is the complete list of
-everything the root currently rests on beyond literature; §4 is the literature roster
-(the goal's conditionality class); §5 is the numerics corroboration index (flags, never
-substitutes). The tree's §4 acceptance criterion applies verbatim: PROVED-UNVERIFIED is
-never consumed by an acceptance claim, and this assembly becomes THE COMPLETE PROOF
-only when §3's ledger empties into VERIFIED + LITERATURE-audited.
+proof, and this document does not claim it is. **REVISION 1 applied** (appendix §7,
+2026-08-02): the Phase C end-to-end pass 1 (VC1, Codex, fresh context;
+`lean/notes/openmath/VC1_root.jsonl`) returned **COMPOSITION-GAPS** (blockers 1–8,
+advisories 9–11); every finding is dispositioned in §7 and repaired in place below, and
+statuses are synced to the 2026-08-02 harvest (ledger
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` final sections, commit c43b13b). What
+exists is: an acyclic composition (acyclicity now holds edge-by-edge: the Step-1 edge
+REMOVED by re-pointing to Dfloor's self-contained Appendix A, the D-11/O-11 cycle
+STRATIFIED as Step 17 ≺ Step 18 ≺ Step 18b) in which every step is a named leaf with an
+on-file proof, FOUR of the leaves VERIFIED through the campaign's two-pass
+model-diverse bar (O-13, O-12, Dfloor, GD23; the earlier CU-1 adjudication was
+premature — corrected at the ledger, r5 in flight), the rest PROVED-UNVERIFIED with
+their pending passes NAMED, and the genuinely open mathematics confined to §3.1: the
+two heavy items — **(GR-B)** at OM orders ≥ 2 and **(FRESH)** — both pinned to printed
+literature statements and priced at a single lemma layer, plus the smaller displayed
+rows ((R1)–(R4) with the clause-(UB) residue (UB-X), D-12r, (E-N)). **THE THEOREM AS
+PRESENTLY PROVED is the conditional form (ROOT-C) displayed in §1**; the unconditional
+(ROOT) is the TARGET, quantifier-for-quantifier NOT yet what the steps prove. §3 is the
+complete list of everything the root currently rests on beyond literature; §4 is the
+literature roster (the goal's conditionality class); §5 is the numerics corroboration
+index (flags, never substitutes). The tree's §4 acceptance criterion applies verbatim:
+PROVED-UNVERIFIED is never consumed by an acceptance claim, and this assembly becomes
+THE COMPLETE PROOF only when §3's ledger empties into VERIFIED + LITERATURE-audited.
 
 **Status vocabulary** (tree §0, compressed): **VERIFIED** = survived ≥ 2 consecutive
 clean adversarial passes in fresh contexts, at least two models (VERIFIED-DUAL), or
@@ -40,7 +52,9 @@ are separable of type τ; undec(k) is the measure of the classes not decided for
 type. Let ℛ := ℚ[q, 1/q, 1/(q^c − 1) : c ≥ 1] ⊂ ℚ(q) — the cyclotomic-type ring, whose
 elements have no poles at any real q ≥ 2, hence at any prime power.
 
-> **(ROOT) THE UNIFORMITY THEOREM.** For each n and each splitting type τ of degree n
+> **(ROOT) THE UNIFORMITY THEOREM — THE TARGET.** (Displayed as the campaign's goal;
+> NOT what the §2 steps presently prove — that is (ROOT-C) below, the honest
+> quantifier-for-quantifier form.) For each n and each splitting type τ of degree n
 > there is a SINGLE rational function R_τ ∈ ℛ ⊂ ℚ(t) such that at EVERY prime p —
 > including every wild prime p ≤ n — the following hold.
 >
@@ -67,6 +81,26 @@ elements have no poles at any real q ≥ 2, hence at any prime power.
 >
 > **(UB) Unramified base.** The SAME R_τ works over every unramified base: over the
 > degree-δ unramified extension of ℚ_p the type-τ density is R_τ(p^δ).
+
+> **(ROOT-C) THE COMPOSED THEOREM (what §2 proves, stated exactly).** Assume the §3.1
+> open-mathematics rows as hypotheses:
+> **(H1)** (GR-B) at OM orders ≥ 2; **(H2)** (FRESH); **(H3)** D-12r (the TB-CAP
+> (τ-irr) perimeter) and (E-N); **(H4)** for clause (UB) only: (R1)–(R4) AND the
+> clause-(UB) residue (UB-X) (the per-leaf O_δ re-base audit + position-class
+> exhaustion + aggregation commutation — §3.1).
+> Then for each n ≥ 2 and each splitting type τ of degree n there is a single
+> R_τ ∈ ℛ such that clauses (0), (SQ), (R) hold at EVERY prime p including every wild
+> p ≤ n, and clause (UB) holds. Without (H4), what is proved of (UB) is exactly the
+> Step-16 scope: the GD/census layers hold over an arbitrary absolutely-unramified
+> complete DVR, and the alphabet law (F_{p^δ}-linearity + a_δ = δ·a₁) holds at
+> δ-stable position classes.
+> **Proof status of the implication itself:** it is the §2 composition — four leaves
+> VERIFIED, the rest PROVED-UNVERIFIED with named pending passes (§3.2) and displayed
+> transcription debts (§3.3). The [V]/[T] rows are AUDIT debts on the proof of this
+> implication, not additional mathematical hypotheses of its statement; the
+> implication is therefore itself PROVED-UNVERIFIED (never consumed by an acceptance
+> claim) until §3.2/§3.3 empty and the end-to-end passes land. (ROOT) = (ROOT-C) +
+> discharge of (H1)–(H4).
 
 **Wild-prime scope, explicit.** The content is at p ≤ n (p | n!), where factorization
 is governed by higher-order Okutsu–Montes (OM) Newton-polygon towers whose combinatorics
@@ -109,19 +143,24 @@ below gives clause (0) — proved for both decided conventions in circulation, c
 (iv) EXACT in the strict convention; plus Corollaries BRACKET / SEM-DRAIN /
 SEM-DRAIN-RATE = the measure content of (SQ) on the SEMANTIC side, unconditional at
 every prime including wild. (D-2) every monic separable f has exactly one type
-(unique factorization + defectlessness); the nonseparable locus is Haar-null (T-6
-(ns-null), VERIFIED-DUAL); hence Σ_τ α(n,τ;p) = 1 at every p, and a rational function
-agreeing with 1 at infinitely many arguments is 1: Σ_τ R_τ = 1 in ℚ(t). (D-4) the
-degree-1/0 floor: type {(1,1)} density 1 decided at k = 0; empty-convolution unit
-conventions (C0)–(C2).
+(unique factorization + defectlessness); the nonseparable locus is Haar-null — proved
+SELF-CONTAINED inside this leaf (Dfloor Appendix A, via LIT-8c resultant/Vandermonde;
+part of the VERIFIED leaf-#3 perimeter). [REVISION 1, finding 1: the original text
+attributed ns-null to T-6's (ns-null) clause, a Step-2 node — a silent forward edge.
+The dependency is RE-POINTED to Appendix A, which is what the verified leaf actually
+proves; T-6's (ns-null) is the SAME fact proved independently at the T-layer (Step 2)
+and is NOT consumed here. The edge is removed, not waived.] Hence Σ_τ α(n,τ;p) = 1 at
+every p, and a rational function agreeing with 1 at infinitely many arguments is 1:
+Σ_τ R_τ = 1 in ℚ(t). (D-4) the degree-1/0 floor: type {(1,1)} density 1 decided at
+k = 0; empty-convolution unit conventions (C0)–(C2).
 Status: **VERIFIED — leaf #3** (pass 1 Codex V22 CLEAN SOUND, 0 criticals, commit
 604621f; pass 2 fresh Fable, model-diverse, 0 criticals, commit bdc996a; adjudicated at
 ledger dbccbc1; falsifier `verification/openmath/dfloor_checks.py` ALL PASS). Three
 minor gaps ride the next doc touch. Displayed residue: the **BASE-1(f) fence** — the
 classifier-side (algorithmic) half at n = 1 is fenced OUT to the classifier steps below.
 Consumes: LIT-2 (defectlessness; the K-11/M16 audited e·f bridge), LIT-8c
-(resultant/Vandermonde), standard measure theory with displayed statements (Folland-
-grade; §4 roster).
+(resultant/Vandermonde — carries Appendix A's ns-null), standard measure theory with
+displayed statements (Folland-grade; §4 roster). NOTHING from any later step.
 Delivers to the root: clause (0), the bracket shell of (SQ), and the Σ_τ R_τ = 1 half
 of (R).
 
@@ -141,8 +180,21 @@ dictionary steps below — §D1.5(e)); T-8 is verified for the formal ℚ(q) sol
 (REG-p)-conditional specialization (§D1.5(f)); T-7's value-correctness event
 ([1v]-FULL) is RE-OWNED by O-11 (D-9); T-6's TB-CAP is perimeter-conditional on D-12r.
 Twenty-two sealed numeric gates ride this layer (§5).
-Consumes: B-1..B-7 (the June skeleton, grades per tree §2.1; the deep June core B-8 is
-SUPERSEDED by this layer and cited nowhere).
+Consumes: B-1..B-7, the June skeleton, with grades DISPLAYED HERE so the dependency
+universe is closed inside this document [REVISION 1, finding 3]: **B-1** (Hensel
+residue-splitting measure-exact) PROVED-UNVERIFIED (June document; 2000/2000
+unit-resultant checks) — and the MOVES layer re-proves the split it needs inside
+T-1..T-3; **B-2** (residue shape counts are universal polynomials) PROVED-UNVERIFIED at
+document level with the counting core VERIFIED-LEAN (`L3.lean`/`L3Gauss.lean`/
+`L3Squarefree.lean`, Lean-core); **B-3** (Newton-cell volume) core VERIFIED-LEAN
+(`L4.lean` `cellVolume_eq`) + PROVED-UNVERIFIED document; **B-4** (order-r residual
+equidistribution) order 1 = B-3 (VERIFIED-LEAN), order r PROVED-UNVERIFIED
+(`M6_lemma.md`; its modern descendant is O-9's OL-B, discharged to GD-3); **B-5**
+(Vandermonde pushforward) PROVED-UNVERIFIED (`R1_complete.md`); **B-6** (termination +
+finite shape menu) PROVED-UNVERIFIED (`L5fix_complete.md`; modern face = O-13, Step 3);
+**B-7** (finite linear solve) PROVED-UNVERIFIED (`L6M4_complete.md`; modern VERIFIED
+counterpart = T-8 + K-13). The B-layer verification rounds are a §3.2 ledger row. B-8
+is SUPERSEDED by this layer and cited nowhere.
 Delivers: the entire p-free symbolic pipeline behind clause (R) — menu, tables, solve,
 squeeze shell.
 
@@ -160,7 +212,8 @@ night"). Lean: `skeleton_finite n` at every n (`SkeletonFinite.lean`). Displayed
 residue: **D-12r** — the completeness clause (realized trees spell inside Sk(n)) rides
 TB-CAP's D4R.0-K(c) verdict pin, a SEPARATE node. VAL-DIV is a labeled conjecture,
 consumed by nothing here.
-Consumes: T-4's letter finiteness (VERIFIED-DUAL), the B-6 depth mechanism.
+Consumes: T-4's letter finiteness (VERIFIED-DUAL), the B-6 depth mechanism
+(PROVED-UNVERIFIED, grade displayed at Step 2's consumption list; §3.2 B-layer row).
 Delivers: finiteness of the solve's state menu in clause (R), and K-OB-A's roster
 finiteness (CU-5).
 
@@ -189,6 +242,17 @@ this claim (that is D-11 + O-11); the extension to the eventual general-n pack i
 by D-11 (instance pin) + the contingent OL-O12-1 (fires only if a future pack departs
 from 𝔅_n's organizations). Residue: **OL-O12-2** — mathematical half CLOSED at the D-11
 unit; what remains is a finite transcription/data pass, zero mathematics.
+**(B-INST) — the instance correspondence, stated exactly [REVISION 1, finding 9].**
+What identifies the realized packs with 𝔅_n, per n: the pack consumed by Steps 17/18
+is BY CONSTRUCTION the 𝔅_n member assembled from T-4's menu, T-7s's tables, and T-8's
+block organization (tree §2.1's definition of the intended instance) — the O-12
+theorems apply to it verbatim PROVIDED its kernel organization is one of the three
+on-record, and OL-O12-1 (contingent, currently unfired) is the displayed escape if a
+future pack departs. NO supplied theorem identifies "every general-n realized pack"
+with 𝔅_n beyond this by-construction pin: at n = 3 the identification of the complete
+realized degree-3 table as an (O3) member of 𝔅₃ is the OL-O12-2 data pass (§3.3, owed);
+at general n it is D-11's instance pin (Step 17) + the same finite transcription
+discipline, which is exactly why D-11 sits on the mandatory path.
 Consumes: T-8's block structure, T-3/T-6 event structure (as structure only, never
 value correctness — the V6-finding-19 circularity is scoped OUT).
 Delivers: the pole-free clause of (R); with Step 4, "every prime" in the root.
@@ -215,8 +279,14 @@ Status: **PROVED-UNVERIFIED** — rev 4 landed (commit 5613274; V24's REAL≡ ci
 repaired structurally: (M6c) requantified, non-ns-halt now a conclusion); pending pass
 **P(O-1thr r4)** (fresh hostile pass on rev 4, owed). Displayed caveat **(E-N)** (Thm
 3(c) exhaustion) is OPEN and touches CU-4.
-Consumes: T-1/T-2's carry algebra (symbolic scope), the graded-presentation dictionary
-(C.1.5 layer), MacLane 1936 (V1) via the LITUNIT pin.
+Consumes: T-1/T-2's carry algebra (symbolic scope); the graded-presentation dictionary
+= **C.1.5**, whose supplier is now DISPLAYED [REVISION 1, finding 5]: C.1.5 ("downsets
+are literal digit systems") is T-2's ONE deferred proof obligation, displayed at T-2's
+dual acceptance (tree §2.2) and consumed exactly here — at the mathematical machine
+O-1thr's proofs run over, the dictionary is DEFINITIONAL (O-1thr §4 residue (S-1): the
+clause-by-clause correspondence is displayed, and its remaining content is the S-1
+machine-transcription audit, a §3.3 row that now names C.1.5 explicitly); MacLane 1936
+(V1) via the LITUNIT pin.
 Delivers: D-14 + D-15 to CU-1/CU-3/CU-4 and Step 17's per-box σ-constancy; the K-4/K-6
 repairs route through D-15.
 
@@ -231,10 +301,24 @@ level.
 Status: **PROVED-UNVERIFIED** — rev 5 (commit b337195), core THRICE confirmed (V10 →
 pass-2 → V25 arc; V25 on rev 4: 0 criticals, 1 minimality gap → OL-3-min trim executed);
 pending pass **P(O-2a r5)**. Displayed residue: the SIX exactly-stated open lemmas
-**OL-2a-1..6 = the GD-1..GD-6 families** (Step 8 closes GD-2/GD-3's head; the rest are
-§3 ledger rows).
-Consumes: LIT-1 (GMN) via the pinned citations; D-5's carrier/equality design
-(incorporated); the LITUNIT pins.
+**OL-2a-1..6 = the GD-1..GD-6 families**, mapped ONE-FOR-ONE [REVISION 1, finding 5's
+coverage charge]: OL-2a-1 = GD-1 (representative admissibility — §3.3 (KP)/(KPirr)
+row); OL-2a-2 = GD-2 (frame/valuation tie — head CLOSED at Step 8 order ≤ 1; orders
+≥ 2 = (GR-B), §3.1); OL-2a-3 = GD-3 (residual dictionary — min core CLOSED at Step 8;
+FULL form at orders ≥ 2 = (GR-B), consumed by the value side); OL-2a-4 = GD-4
+(engine bookkeeping — §3.3 row); OL-2a-5 = GD-5 (base-read conformance — §3.3 S-1
+row); OL-2a-6 = GD-6 (run-decomposition conformance — §3.3 row, with GD-4). Every
+residual has exactly one ledger home; nothing is covered twice or zero times.
+Consumes: LIT-1 (GMN) via the pinned citations; the LITUNIT pins; **D-5's
+carrier/equality design — supplier DISPLAYED [REVISION 1, finding 5]:** this is NOT an
+external input. The tree's D-5 (WELLPOSED) carrier/equality clause is INCORPORATED as
+proved content of O-2a rev 5 itself (§§1–2: the two discrete carriers, the map Θ, the
+consistency predicate, Lemma R — the design the V10 → pass-2 → V25 arc audited; its
+verification debt is the same P(O-2a r5)). The tree's wider D-5 semantic-invariance
+clause is carried on the mandatory path by each consuming leaf's own displayed carrier
+section (O-13's run-collapse well-definedness at Step 3; O-1thr's §1 machine carriers
+at Step 6; CU-1's declared pins at Step 10), not consumed as a separate node — §3.3
+records this disposition.
 Delivers: CU-2's content (no-phantom = Theorem 2(D) ∘ ι), CU-1's base and step
 vocabulary.
 
@@ -250,7 +334,11 @@ absolutely-unramified complete DVR (killing most of D-3 by scope discipline).
 Status: **VERIFIED at honest scope — leaf #4** (arc: V26 UNSOUND with order-≤1 core
 confirmed → rev 2 against the LITUNIT pins → V28 SOUND-WITH-GAPS 0-critical → rev 3
 (notation split + properness proviso) → pass 2 fresh Fable, 0 criticals, 9
-justification gaps, commit 4d109b9; ADJUDICATED VERIFIED at wave 10, d730669). The
+justification gaps, commit 4d109b9 → [the wave-10 VERIFIED adjudication at d730669 was
+CORRECTED AS PREMATURE at the ledger, commit 110f308] → rev 4 repairing all 9 gaps,
+cores byte-stable (commit f9878d1) → GAPS-CLOSED check → **ADJUDICATED VERIFIED at the
+2026-08-02 harvest** (ledger final section, commit c43b13b) [REVISION 1 status sync]).
+The
 honest scope IS the conditionality: order ≤ 1 proved outright; **(GR-B) at orders ≥ 2
 is a DECLARED open input** (the anchored-march residue-structure package, pinned to
 printed FGMN Thm 4.2 + Cor 4.4/4.8/4.9/5.6 + Prop 5.14/Cor 5.15 + MacLane Thm
@@ -268,6 +356,15 @@ instance RRE(p, ZMod p) is FORMALIZED Lean-core (`MovesD/R7_runRealizer.lean`,
 `runRealizerExists_zmod`); listed among the CUC §0 "VERIFIED homes (no pass
 condition)". The landing-flank countermodel search ran and produced no negation
 (positive gates only).
+Consumes [list added at REVISION 1, finding 5]: T-1/T-2's MacLane-frame vocabulary
+(symbolic scope, Step 2); the coherence predicate `HistoryCoherent` — the "re-keyed
+coherence" of the statement — which is the O-3 clause-3 re-key EXECUTED at DELTA-2
+§D2.1 line 1 (governance on record, not an open input); MacLane 1936 via the LITUNIT
+pins (§4). The (S6b′) clause and the landing flank are INTERNAL — closed inside the
+O14ap arc itself (rev 3), not consumed from elsewhere. The consumed instance
+RRE(p, ZMod p) rests on Lean core only. The rev-3 honesty ledger's open flags
+(OL-1/OL-2/(F1)) ride the NON-consumed tower strengthenings (Prop 5.4.2 sharpness,
+Conjecture 5.4.C) and enter nothing here.
 Delivers: CU-3's nonempty-locus witness.
 
 **Step 10 (CU-1 — no-missing + interior adequacy + state binding; THE ONE NEW PROOF of
@@ -277,12 +374,18 @@ N realizes 𝐇; (ii) the engine's frame state after the realized prefix equals 
 data of Θ(𝐇) (the OL-6 binding). Interior adequacy = per-site SPAN totality inside the
 same step; ADEQ split interior/terminal with terminals routed to O5triple's counting;
 no box-keyed universal statement anywhere.
-Status: **VERIFIED at honest scope — leaf #5** (arc: V27 UNSOUND, core repairable →
-rev 2 structural repairs (N-free induction, interior/terminal split,
-construction-before-recovery, declared pins) → V29 SOUND-WITH-GAPS 0-critical → rev 3
-(consumption accounting only; induction byte-stable) → pass 2 fresh Fable, 0 criticals,
-7 consumption-accounting/display gaps, commit 252f34c; ADJUDICATED VERIFIED at wave 10,
-d730669). Primary gate: the depth-3 falsifier ran BEFORE rev 1 and SURVIVED.
+Status: **ZERO-CRITICAL PASS 2, NOT YET VERIFIED — r5 IN FLIGHT** [REVISION 1 status
+sync] (arc: V27 UNSOUND, core repairable → rev 2 structural repairs (N-free induction,
+interior/terminal split, construction-before-recovery, declared pins) → V29
+SOUND-WITH-GAPS 0-critical → rev 3 (consumption accounting only; induction
+byte-stable) → pass 2 fresh Fable, 0 criticals, 7 consumption-accounting/display gaps,
+commit 252f34c → [the wave-10 VERIFIED adjudication at d730669 was CORRECTED AS
+PREMATURE at the ledger, commit 110f308] → rev 4 light repairs, all 7 gaps, cores
+§§1–3 byte-identical (commit 8ab8ca6) → gap-check: GAPS-REMAIN → **rev 5 dispatched,
+in flight at the 2026-08-02 harvest** (commit c43b13b)). The mathematical core
+(N-freeness, creation-first, split-exhaustiveness) is confirmed by the pass-2 report;
+what remains is accounting/display closure. Primary gate: the depth-3 falsifier ran
+BEFORE rev 1 and SURVIVED.
 Conditionality carried: the step consumes GD-2/GD-3(min)/GD-6 instances at orders ≥ 2
 through **(GR-B)**, plus the declared pins **(P-ROOT)/(P-KEY)/(FR≡)** ((FR≡)'s
 refutable order-2 content = the gate's coherent-convention finding).
@@ -295,7 +398,12 @@ Delivers: the no-missing direction of realization faithfulness (K-RUN's heart); 
 "CUC").** Statements (per DELTA-2 §D2.3): CU-2 no-phantom = O-2a Theorem 2(D) ∘ ι;
 CU-2t the terminal seam ((t-i)/(t-ii) as ONE lemma from O-2a Thm 2(B) saturation +
 Cor 1.20/3.8 + TB-CAP windows); CU-3 nonempty locus (coherent form) = O-14a′ + D-14 +
-(O6); CU-4 acceptance, selected-f (F4-S soundness at every N; F4-C completeness at
+(O6) — **(O6)'s supplier DISPLAYED [REVISION 1, finding 5]:** (O6) = the O3design §1
+canonicalizations (branch-letter keying + deep-marker pooling), a DEFINITIONAL
+bookkeeping convention for census-side counting with NO proof content (CUC §3(c)
+states exactly this; the O3design record passed the V16/V21 arc) — a §3.3 pin row,
+not an undefined leaf; CU-4 acceptance, selected-f (F4-S soundness at every N; F4-C
+completeness at
 N ≥ N\*, TB-CAP (τ-irr) perimeter-conditional); CU-5 the satellites K-OB-A/B/E; CU-7
 the O5triple interface discharge ((I-1)(a,b,c) + (I-2), with the attribution correction:
 the content is single-polynomial and consumes NO K-DICT-OB1).
@@ -307,8 +415,9 @@ GD residue, zero new open inputs; the two terminal engine-bookkeeping rows
 CUC record + CU-2t (owed, §3). The quarantined Corollary CU-2t-deep (the GD-8 exact-key
 corner) is conditional on the unpinned (REP-IRR) literature pull and is consumed by
 NOTHING on the mandatory path.
-Consumes: Steps 6–10 + the pending-verdict registry (CUC §0 — the live key every grade
-resolves through).
+Consumes (mathematical inputs): Steps 6–10 + (O6) as displayed above. The CUC §0
+pending-verdict registry is METADATA — the live key the P(·) grades resolve through,
+never a mathematical supplier [wording fixed at REVISION 1, finding 5].
 Delivers: no-phantom + terminal verdicts + acceptance = with Step 10 the full
 realization-faithfulness package (the old O-3), serving K-4/K-6's repairs, O-4's
 OL1-ii, O-5, O-7's (X1)/(X4).
@@ -347,16 +456,22 @@ BNS consumed). General n: TR-OM is CONDITIONAL on exactly the displayed seam
 N(f) with the certification predicate accepting there — assembled from CU-2 + CU-4 +
 GMN Cor 4.19 (the DELTA-1 §D1.4 adjudication: this qualitative route is the MANDATORY
 one; rates/O-6/O-7/O-8a are route R-QNT, struck from the root).
-Status: M05 core **VERIFIED at the V2-upheld scope** (items 5–8); O4T rev 2
-**PROVED-UNVERIFIED** (V30 UNSOUND → rev-2 repairs: TR-Q unboundedness hypothesis,
-RES-0 corner, full import inventory EXT/EF/D/GRD/UCT/HRG displayed; core upheld
-line-by-line). Pending: **O4T pass 2** — IN FLIGHT: an untracked Fable pass-2 record
-(`O4T_pass2_fable_verify.md`, working tree, post-d730669, NOT adjudicated) returns
-UNSOUND — one localized CRITICAL (Corollary N3-BRACKET's terminal "=" is false for
-N ≥ 2 by a level-normalization factor p^{n(N−1)}; the INEQUALITY and the density form
-survive, nothing downstream consumes the false clause) + 4 gaps (import inventory still
-incomplete: Galois descent + one more) — a repair round is owed; the mathematical core
-again survived line-by-line audit.
+Status [REVISION 1 status sync]: M05 core **VERIFIED at the V2-upheld scope** (items
+5–8); O4T **REPAIRED AT REV 3, AWAITING ONE FULL CLEAN PASS** (arc: V30 UNSOUND →
+rev-2 repairs → Fable pass 2 UNSOUND, one localized critical: Corollary N3-BRACKET's
+terminal "=" false for N ≥ 2 by the level-normalization factor p^{n(N−1)}, plus 4 gaps
+(import inventory short: Galois descent + char-0 separability) → **rev 3** (commit
+bb4326c): the terminal "=" → "≤" with the exact p^{n(N−1)} normalization identity
+displayed and the verifier's 8-vs-32 refutation shown, the density form kept as the
+identity-bearing statement (§4 consumed only the inequality — nothing downstream
+consumed the false clause); import inventory COMPLETED to eight named Facts — Facts
+**SEP** (char-0 separability of irreducibles) and **DES** (Galois descent/fixed field)
+added as in-line-proved imports with consumption-site cite tags, six-vs-eight
+reconciled (EF/GRD each bundle two of V30's items); the every-lift-separability chain
+displayed in N3's proof; cores byte-stable (diff-verified). The repair was CHECKED
+CLEAN at the 2026-08-02 harvest (ledger, c43b13b), but one full clean hostile pass is
+still OWED before any VERIFIED grade; the mathematical core has now survived
+line-by-line audit twice.
 Consumes: Steps 1/10/11 + GMN Cor 4.19 + the O4T import inventory (§4).
 Delivers: the undec(k) → 0 clause of (SQ) — unconditional at n ≤ 3, conditional on
 (AGR) (= CU-2 + CU-4 + Cor 4.19, all on file above) at general n.
@@ -374,12 +489,22 @@ clause; CEN-J = THE census). TYPE-MARCH (+ the F₃ type-breaking countermodel) 
 march is what MAKES the census polynomial: GD-3-FULL is a theorem-level dependency of
 the value side. OL-A's ledger (A1/TRI/LED/(DET)) proved outright; OL-B discharged to
 GD-3 per DELTA-2.
-Status: **PROVED-UNVERIFIED with a repair owed** — verify pass 1 NOT ACCEPTED (commit
-c17777f; 2 criticals: the census exponent E′'s left-tail ceiling REFUTED by machine
-countermodel (256 vs 64 — overcount q^d per integral left-tail slot), and
-JUNCTION-PIN's PROVED label unsupported; the verifier's own sound-list: TYPE-MARCH +
-F₃, A1/TRI/LED, (DET), CEN-W's (GR-B)-only conditionality — the reduction's SHAPE
-survives). Pending: the E′-ledger repair + re-pass.
+Status [REVISION 1, finding 4 + status sync]: **REPAIRED AT REV 2, RE-PASS OWED.**
+Verify pass 1 NOT ACCEPTED (commit c17777f; 2 criticals: the census exponent E′'s
+left-tail ceiling REFUTED by machine countermodel (256 vs 64 — overcount q^d per
+integral left-tail slot), and JUNCTION-PIN's PROVED label unsupported; the verifier's
+own sound-list: TYPE-MARCH + F₃, A1/TRI/LED, (DET), CEN-W's (GR-B)-only conditionality
+— the reduction's SHAPE survives). The pass-1 verdict made the then-current [V] filing
+DISHONEST (finding 4 is accepted: a refuted exponent is a missing proof, not a
+verification debt). **The repair has since LANDED — rev 2, commit 01c21e6:** E′'s left
+tail made STRICT (floor(line)+1; the countermodel now predicted exactly, 64 = 64), the
+K5 predict-from-ledger falsifier added (11/11 cells exact; the rev-0 formula refuted
+at every integral-left-tail case), E″ displayed and validated against M08 at r = 0, an
+(ADM) admissibility hypothesis displayed (automatic at orders ≤ 1), and JUNCTION-PIN's
+PROVED label WITHDRAWN — honestly rescoped as OPEN, absorbed into **(FRESH) as its
+clause (c)** (the telescope consequence is proved GIVEN the clause). The sound-listed
+core is byte-stable. With the repair on file the row is again honestly [V]:
+re-pass owed.
 Consumes: Step 8 (GD-3), GMN Prop 2.7/Lemma 2.2/Defs 2.19–2.21 via pins.
 Delivers: the transition weights of T-7s's tables as proven counts — K3's census half
 for Step 18.
@@ -397,7 +522,10 @@ verify pass 1 CLEAN (commit ec5e9a1: 0 criticals, 0 load-bearing gaps; 2 declare
 gaps + 3 precision notes). Pending: the second (model-diverse) pass of the dual bar.
 Falsifier: `verification/o10_kcount_harness.py` 68 PASS / 0 FAIL, predictions sealed
 pre-run.
-Consumes: LIT-8c (Sylvester/resultant), GMN stage factorization (K-FACT, citable).
+Consumes: LIT-8c (Sylvester/resultant); GMN stage factorization **K-FACT — pinned
+[REVISION 1, finding 8]: K-FACT = GMN Thms 1.15/1.19 + Thms 3.1/3.7** (the recorded
+perimeter, `docs/GMN_citations.md`; the O-10 §8 honesty ledger consumes exactly this
+citation set — all four loci already in the §4 GMN pin list).
 Delivers: K1's product law for Step 18; T-6's (SIB-STEP) at the statement layer.
 
 **Step 16 (O-8b + D-3 — the unramified-base package; clause (UB)).** Statement: the
@@ -411,62 +539,123 @@ map is F_{p^δ}-linear and a_δ = δ·a₁ — M14's conditional proof over the 
 Status: GD23's arbitrary-DVR scope **VERIFIED** (inside leaf #4); O-8b
 **PROVED-UNVERIFIED conditional on (R1)–(R4)** (expected mechanical, nobody has written
 it — §3 ledger); N8 numerics exhaustive (199,723 alphabets, 17 fields, 0 violations).
-Delivers: clause (UB).
+**Honest scope of what this step proves [REVISION 1, finding 7]:** (i) the GD/census
+layers (Steps 8, 14) hold over an arbitrary absolutely-unramified complete DVR —
+proved/stated at that generality from the start; (ii) the alphabet law
+(F_{p^δ}-linearity of the re-based slot map + a_δ = δ·a₁) AT δ-STABLE POSITION CLASSES,
+conditional on (R1)–(R4). This does NOT yet derive the theorem's global clause (UB):
+missing are exactly (a) the per-leaf O_δ re-base audit for the leaves stated over ℚ_p
+(the dictionary/CU/drainage layers — the "per-leaf scope hygiene" of the D-3 collapse,
+declared but unwritten), (b) that δ-stable position classes exhaust the classifier's
+realized ledger at every δ, and (c) that the full solve + type aggregation commute
+with unramified base change. (a)–(c) = the displayed row **(UB-X)** in §3.1; clause
+(UB) of (ROOT-C) is conditional on (R1)–(R4) + (UB-X), exactly as §1 displays.
+Consumes [list added at REVISION 1, finding 5]: Step 8 (the arbitrary-DVR GD
+statements + the V26-confirmed generality audit), Step 14 (the census over any
+complete DVR), Step 2 (the T-1 stage laws as the re-proof template for (R1)–(R4)),
+M14's conditional proof (the O-8b attempt on file), and the §3.1 rows
+(R1)–(R4)/(UB-X). N8 is a flag, never a substitute.
+Delivers: clause (UB) at the displayed conditional scope.
 
-**Step 17 (D-11 — MASS-ID: the solve's entries ARE the Haar masses; the instance
-pin).** Statement: (M1, one-step) every solve entry of 𝔅_n at every prime power IS the
-Haar mass of its continuation event — Σ = 1 across each row now a THEOREM; a.s.
-termination from the (r1) margins reread as termination margins — UNCONDITIONAL over
-the VERIFIED O-12 lemma base (L1–L6′). (M1′) the (O2) verdict-row coarseness finding
-(gate object, not a density carrier). (M2) the solved values are the real conditional
-densities, conditional on exactly **(S1)** = the GD-3-FULL/O-9 residual-descent
-hand-off and **(S2)** = the O-11 composition datum; (r1) is the uniqueness pivot. (M3)
-row labels are true types: σ-constancy across one continuation event's cylinder ←
-O5triple Theorem E + D-15 (per-box lift uniformity) — NO ∼_OM/OB2 consumption (the
-DELTA-3 §D3.1 audit, re-confirmed constructively by this unit; zero root-side BNS
-touch-points). OL-O12-2's mathematical half CLOSED here.
-Status: **PROVED-UNVERIFIED** (attempt landed, commit 0cae7d8; wave-10 adjudication:
-"THEOREM M1 PROVED UNCONDITIONALLY over the VERIFIED O-12 lemma base"). Pending: the
-D-11 verification cycle (pass 1 owed). Falsifier: N6-regp-ext2000, 303/303 primes
-< 2000, all EMPTY, margin sharp at 6/7.
+**Step 17 (D-11 first tranche — MASS-ID M1/M1′/M3: the pack side; the instance pin).**
+[REVISION 1, findings 2/11: D-11 is STRATIFIED. Its M2 clause consumed (S2) = the
+O-11 composition datum while O-11 consumed D-11's pack side — a genuine cycle as
+originally displayed. The honest order is **D-11 {M1, M1′, M3} ≺ O-11 ≺ D-11 M2**, and
+the steps now follow it: this step carries ONLY the first tranche; M2 is Step 18b.]
+Statement: (M1, one-step) every solve entry of 𝔅_n at every prime power IS the Haar
+mass of its continuation event — Σ = 1 across each row now a THEOREM; a.s. termination
+from the (r1) margins reread as termination margins — UNCONDITIONAL over the VERIFIED
+O-12 lemma base (L1–L6′). (M1′) the (O2) verdict-row coarseness finding (gate object,
+not a density carrier). (M3) row labels are true types: σ-constancy across one
+continuation event's cylinder ← O5triple Theorem E + D-15 (per-box lift uniformity) —
+NO ∼_OM/OB2 consumption (the DELTA-3 §D3.1 audit, re-confirmed constructively by this
+unit; zero root-side BNS touch-points). OL-O12-2's mathematical half CLOSED here.
+Status [REVISION 1 status sync]: **PROVED-UNVERIFIED, r2 owed** (attempt landed,
+commit 0cae7d8; wave-10 adjudication: "THEOREM M1 PROVED UNCONDITIONALLY over the
+VERIFIED O-12 lemma base"; verify pass 1 NOT ACCEPTED as billed, commit 2587c70 — 1
+critical: M1(c)'s MULTI-BLOCK a.s.-termination billing consumes open (S1) while
+ledgered unconditional (per-block survives unconditional; contained), + 3 gaps; M1(a,
+b,d), the (O3) resummation, and the uniqueness pivot SURVIVE → D-11 r2 owed).
+Falsifier: N6-regp-ext2000, 303/303 primes < 2000, all EMPTY, margin sharp at 6/7.
 Consumes: Step 5's lemma base (as the mass statements they are), Step 6 (D-15), Step
-12 (Thm E), T-3/T-6 mass laws.
-Delivers: the α = (solved value) identification that lets Step 5's pole-free R_τ speak
-about real densities; D-9k's escape input at the pack.
+12 (Thm E), T-3/T-6 mass laws. NOTHING from Steps 18/18b.
+Delivers: the pack-side mass laws + true row labels that Step 18's K1/K2 consume;
+D-9k's escape input at the pack; the (r1) uniqueness pivot Step 18b re-uses.
 
-**Step 18 (O-11 — SERIES-TIE: per-τ tree series = R_τ).** Statement: the σ-graded tree
-series of T_can equals the block-solve value R_τ, per type, at the intended
-instantiation — the M04 Theorem-4 walk (least fixed point, Bekić triangularization,
-Neumann under spectral escape; proved self-contained) re-priced at the D-9 corrected
-dependency set: K1 ← O-10 (guarded) + (I-τ)→GD + CU leaf labels; K2 ← O-12 at 𝔅_n +
-D-11 pack side; K3 = [1v]-FULL value correctness ASSEMBLED from T-7s + O-9's census +
-O-8b (arbitrary-DVR); K4 ← Dfloor/D-15/CU mass semantics. Every consumption displayed
-(the unit's 20-row table).
-Status: **PROVED-UNVERIFIED (ASSEMBLED)** — commit 3fc8f52; tier-1 residue exactly
-**{(GR-B), (FRESH), CU-2t, D-11}** (the middle two now on file above, pending their
-passes). Pending: the O-11 verification cycle (pass 1 owed). Falsifier ran FIRST:
-`verification/openmath/o11_seriestie_check.py` 38/38 PASS including Finding F1's test
-AT THE REAL PACK (the n = 2 solve reproduces the true triple identically in ℚ(q); n = 3
-five types symbolic; monotone bracket exhaustive p = 2, 3, 5).
-Delivers: the α(n,τ;p) = R_τ(p) evaluation clause of (R).
+**Step 18 (O-11 — SERIES-TIE: per-τ tree series = R_τ).** Statement — displayed
+exactly, since Step 19's attribution rides on it [REVISION 1, finding 11]:
+
+    (O-11)  for every type τ: the σ-graded tree series of T_can, assembled at the
+            intended 𝔅_n instantiation, EQUALS the block-solve value R_τ in ℚ(q).
+
+This is the SERIES = SOLVE-VALUE tie ONLY — it does not by itself say any Haar density
+equals anything (that is Step 18b). Proof: the M04 Theorem-4 walk (least fixed point,
+Bekić triangularization, Neumann under spectral escape; proved self-contained)
+re-priced at the D-9 corrected dependency set: K1 ← O-10 (guarded) + (I-τ)→GD + CU
+leaf labels; K2 ← O-12 at 𝔅_n + D-11 PACK SIDE (= Step 17's tranche, never M2); K3 =
+[1v]-FULL value correctness ASSEMBLED from T-7s + O-9's census + O-8b (arbitrary-DVR);
+K4 ← Dfloor/D-15/CU mass semantics. Every consumption displayed (the unit's 20-row
+table).
+Status [REVISION 1 status sync]: **PROVED-UNVERIFIED (ASSEMBLED), r2 owed** — commit
+3fc8f52; tier-1 residue exactly **{(GR-B), (FRESH), CU-2t, D-11 first tranche}**;
+verify pass 1 NOT ACCEPTED AS STATED (commit a7ede72 — 1 critical: (M6b)(iii) consumed
+at K4-CYL/row 4 but priced into no tier, so the "exactly FOUR" residue display is
+unsupported as written, + 8 gaps incl. reductions asserted by pricing-citation; the
+equivalence directions and the walk itself CLEAN; drainage verifiably unconsumed) →
+O-11 r2 owed. Falsifier ran FIRST: `verification/openmath/o11_seriestie_check.py`
+including Finding F1's test at the real-pack proxy (the n = 2 solve reproduces the
+true triple identically in ℚ(q); n = 3 five types symbolic; monotone bracket
+exhaustive p = 2, 3, 5; the pass-1 record corrects the count to 37/37 live).
+Consumes: Steps 1, 5, 6, 10–12, 14, 15, 16, 17 — all EARLIER. NOT consumed: D-11 M2
+(Step 18b) — the cycle is gone by stratification, not by fiat.
+Delivers: the series = R_τ half of clause (R)'s evaluation.
+
+**Step 18b (D-11 second tranche — MASS-ID M2: the density IS the series).** [NEW STEP
+at REVISION 1, findings 2/11.] Statement:
+
+    (D-11 M2)  for every type τ: α(n, τ; p) — the Haar density of clause (0) — equals
+               the σ-graded tree series of T_can; equivalently, the solved values are
+               the real conditional densities.
+
+Proof: the D-11 M2 argument (commit 0cae7d8) with its two seams now supplied by
+EARLIER steps: **(S1)** = the GD-3-FULL/O-9 residual-descent hand-off ← Step 14 (+ its
+(GR-B) conditionality, §3.1); **(S2)** = the O-11 composition datum ← Step 18. (r1) is
+the uniqueness pivot (Step 17). With Step 18 this closes the chain
+α = (tree series) = R_τ.
+Status: **PROVED-UNVERIFIED, r2 owed** (same D-11 record and pass-1 verdict as Step
+17; the M2-specific pass-1 gap — the (O2′) balance-equation leg underderived — rides
+the r2).
+Consumes: Steps 14, 17, 18 — all earlier; the (GR-B)/(FRESH) rows through (S1).
+Delivers: the α = series identification; with Step 18, the α(n,τ;p) = R_τ(p)
+evaluation clause of (R).
 
 ### Movement V — the closer
 
 **Step 19 (T-U + K-13 + O-12 — the squeeze fires at every prime).** THEOREM U
 (VERIFIED-DUAL, conditional on its displayed §U.SQ.6 ledger — which IS the set of
 leaves above) takes: the bracket at every finite level (Step 1 + D-15 + T-6), drainage
-(Step 13), the solved evaluation (Step 18), and the pole-free specialization at every
+(Step 13), the evaluation chain — **attribution exact [REVISION 1, finding 11]: Step
+18 delivers series = R_τ (O-11); Step 18b delivers α = series (D-11 M2); TOGETHER they
+deliver α = R_τ — neither alone does** — and the pole-free specialization at every
 prime power (Steps 4 + 5 + 17) — and squeezes: decided_τ(k)/p^{nk} → R_τ(p) = α(n,τ;p)
-at EVERY prime including wild, with Σ_τ R_τ = 1 from Step 1. Clause (UB) from Step 16.
-This is exactly (0) + (SQ) + (R) + (UB): **(ROOT)**. ∎ (conditional on §3)
+at EVERY prime including wild, with Σ_τ R_τ = 1 from Step 1. Clause (UB) from Step 16
+at its displayed conditional scope ((R1)–(R4) + (UB-X)). This is exactly (0) + (SQ) +
+(R) + (UB-conditional): **(ROOT-C)**, quantifier-for-quantifier. ∎ (conditional
+exactly on the (ROOT-C) hypotheses (H1)–(H4); the §3.2/§3.3 rows are audit debts on
+the composition, displayed, not hypotheses)
 
-**Composition audit trail.** Acyclicity: Steps 1–5 are semantic-floor/symbolic and
-consume nothing later; Steps 6–13 form the DELTA-2 recut order (the O-2/O-3 cycle
-decomposed into O-2a upstream + the CU composition; OB1/OB2 evicted); Steps 14–18
-consume only 1–13; Step 19 consumes 1–18. The V6 completeness review (26 findings) and
-the V5/V16/V21 architectural rejections were each dispositioned in the tree's DELTAs;
-every countermodel on record is explained by the repaired statements and none touches
-the root (tree §2.3 consistency note).
+**Composition audit trail (rewritten at REVISION 1).** Acyclicity, edge-checked: Step
+1 consumes no later node (the former T-6 attribution re-pointed to its own Appendix A
+— finding 1); Steps 2–5 are symbolic/regularity and consume only earlier steps (B-1..
+B-7 grades displayed at Step 2 — finding 3); Steps 6–13 form the DELTA-2 recut order
+(the O-2/O-3 cycle decomposed into O-2a upstream + the CU composition; OB1/OB2
+evicted), with every formerly implicit input now displayed (C.1.5, D-5, (O6), Step-9
+Consumes — finding 5); Steps 14–18b consume only earlier steps, with the former
+D-11/O-11 cycle stratified as 17 ≺ 18 ≺ 18b (finding 2); Step 19 consumes 1–18b. The
+V6 completeness review (26 findings) and the V5/V16/V21 architectural rejections were
+each dispositioned in the tree's DELTAs; every countermodel on record is explained by
+the repaired statements and none touches the root (tree §2.3 consistency note); VC1's
+composition findings are dispositioned in §7.
 
 ---
 

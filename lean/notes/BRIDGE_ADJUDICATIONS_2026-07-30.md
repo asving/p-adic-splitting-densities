@@ -1051,3 +1051,14 @@ on the ROOT document) and the D-11/O-11 r2s.
 ## GAPS-CLOSED check); O4T repair checked clean but owes one full clean pass;
 ## CU-1 GAPS-REMAIN -> r5; VC1 = COMPOSITION-GAPS on the ROOT document ->
 ## repair + pass 2. PROJECT_STATE refresh dispatched.
+
+## D-11 + O-11 REV 2 (2026-08-02, commits 566b967/1bd8bd1)
+D-11: F1 contained exactly as ordered (M1(a),(b),(d) + per-block exit
+unconditional; multi-block -> Lemma M2.0 at M2's (S1) layer, consuming only
+the child-marginal clause); the (O2') balance leg DERIVED; (S3) declared
+(projective weight, owner A-1); L2/L3 quoted verbatim -> the (O3)
+resummation airtight per the verifier's own conditional. O-11: the
+'exactly FOUR' headline honestly widened (tier-1 + D-a/D-b/D-c declared
+owned rows); K1-a de-anonymized; the falsifier record corrected (37/37 +
+the V2 oracle-pin supplement 10/10); ROOT ledger touches enumerated in §9.
+Both owe pass 2 (launched). VERIFIED: O-13, O-12, Dfloor, GD23.
