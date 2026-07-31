@@ -763,3 +763,117 @@ the six MovesU consumers DefsLedger/BridgeE0/BridgeE12/BridgeZp/BridgeMk/U10_the
 (8730 jobs).  Full `lake build` run at the end of the unit (see the queue-wide record).
 Concurrency note: MovesT/Defs.lean also carries item-1's chi-at guard edits (parallel
 agent, same file) — commits coordinated at file level.
+
+## Item 8 — P2 de-privatize sweep, six families (SYN2-S1) (executed 2026-07-31, agent: items-8+13)
+
+AUTHORITY: Asvin 2026-07-31 sign-off, item 8; normative spec = SYNTHESIS_PASS2_2026-07-31.md
+§P2-C1. Discipline applied: verbatim-hoist-then-delete; public statements byte-identical
+(scripted signature fence below); non-identical shapes downgraded to recorded one-line
+ADAPTERS over the survivor (never silently re-stated); Codex per-conjunct pass; AxChk;
+full lake build green.
+
+SWEEP-1 (ResVal Stage-engine micro-copies → `Moves/ResVal.lean`, 13 files):
+- Moves/L5_landTransport_R4: w_one/w_pow/R_one/R_pow DELETED (α-identical).
+- Moves/L5_realDomination_R3: w_one_eq_zero DELETED (= ResVal.w_one); w_pow_Phi
+  (Φ-specialized) + w_sum_ge (disjunctive) kept as ADAPTERS (recorded in-file).
+- Moves/L5_recSubst_R4: R_one'/R_pow'/w_one'/w_neg'/w_pow' DELETED; w_sum_ge
+  (subsum-nonvanishing shape) kept as ADAPTER.
+- Moves/L2_slotDecomp_R4: R_one/w_one/w_neg DELETED.
+- Moves/L4_TRANSviii_b_R4: the grep-first finding — copies PRESENT under camelCase
+  (wOne/wPow); wOne DELETED, wPow (Φ-specialized) kept as ADAPTER.
+- HC1/T3_htChainWeight: stage_w_one/stage_w_pow DELETED.
+- HC1/T4_slotMinHt: t4_w_one/t4_w_pow/t4_w_neg DELETED.
+- HC1/T7_alphabetSpan: stage_w_one DELETED; stage0_w_neg DELETED (= ResVal.w_neg at T.stg 0).
+- HC1/S5_childValuation: w_one DELETED.
+- HC1/S11a_coreTransport: w_one'/w_neg_one'/w_neg'/R_one' DELETED.
+- HC1/V2_readResidual: v2w_one/v2w_neg DELETED; v2sum_w_ge (ι-generic) kept as ADAPTER
+  over the bare hoisted engine `Moves.ult_sum_ge` (W := σ.w, hult := σ.hwult).
+- HC1/K1_vertexPin: w_one'/w_pow'/R_one'/R_pow' DELETED.
+- HC2/HK05_countermodelGate: hk05_w_one/hk05_w_pow DELETED (SYN-E0 hold lifted per P2-C1).
+Out-of-scope-verified files (S9c, S10/V8/V9/V10, HC2/K1_vertexPin) untouched per spec.
+
+SWEEP-2 (eval_algebraMap_div ×4 → ONE public): SURVIVOR = new public
+`MovesS.eval_algebraMap_div` in the EXISTING `MovesS/EvalAtCoe.lean` (the spec's natural
+home; the file already existed as unit U-19 — the lemma was ADDED, nothing shadowed).
+Deleted: PowSubstOK (the source; proof hoisted verbatim), N2PolyGeom, N2Rsh (primed
+name, use re-pointed), MovesV/V0_xhds_witness (cross-corpus mirror; its
+`open LeanUrat.MovesS (…)` clause extended). RECORDED NON-ITEM: N2Sigmas
+n2_okat_div/n2_evalAt_div = the adjacent OKat/evalAt idiom, NOT statement-identical
+(Subtype-valued evalAt) — kept, per the rubric.
+
+SWEEP-3 (MovesV denom-closure trio): SURVIVORS = MovesV/Defs `denom_dvd_of_add` +
+`denom_sum_dvd`, DE-PRIVATIZED (same identifiers, newly public — shadow-checked clean).
+Deleted + re-pointed: V5_jrat jrat_* pair, TV_F1 f1_* pair (the TV_F1 prover's own
+in-file hoist record, executed).
+
+SWEEP-4 (History extensionality ×4 → 1): SURVIVOR = the already-public
+`MovesT/F0_preHalt.history_ext`. Deleted + re-pointed: E5_rootSplit
+history_eq_of_nodes_eq, G1_toyGate hist_ext (was the (2, ZMod 2) instance; the general
+form applies), TV_B8 history_ext (the wave's fourth copy). D14's copy was already gone
+(N8 partial execution) — verified.
+
+SWEEP-5 (MovesD E7/E8): SURVIVOR CHOICE (recorded, as charged) =
+**E7's `finite_of_monic_natDegree`, DE-PRIVATIZED IN E7** — the GENERAL form (any
+predicate S with a Monic ∧ natDegree = g extraction), of which E8's `finite_eligible`
+was the EligibleImage specialization; E8's copy DELETED, use re-pointed
+(`fun q h => ⟨h.1, h.2.1⟩` supplies the extraction). E8's `poolSubfield_eq`: NOT
+deleted (its statement is the Subfield-valued corollary, not E3's Set-valued identity)
+— re-DERIVED from `E3.frameField_eq_pool` (the "add the E3 import, cite" instruction):
+the ~40-line inline re-proof collapsed to the carrier-transport + choice-unfold tail;
+E3 + E7 imports added; E8's verify-2 as-built header note updated in place.
+
+SWEEP-6 (wave-minted dups):
+- append_one_zero_ne_zero ×3: SURVIVOR = Kernels/HmcReduction (de-privatized — the
+  cluster's shared reduction base, per spec); KC1/KC6 copies DELETED + import added.
+- hpt_take_append/hpt_drop_append ×3: SURVIVOR CHOICE = the **V4_naming ORIGINALS,
+  DE-PRIVATIZED** (the spec's "either import or leave with record" cross-corpus arm,
+  resolved to import-the-original: every Kernels copy existed only because these were
+  private, per their own docstrings — one public copy corpus-wide beats a second public
+  in Kernels). KC2b/KC6 copies DELETED + `import LeanUrat.MovesV.V4_naming` added
+  (KC2b's "imports only MovesV.Defs" header note updated). V4_naming's
+  hpt_append_take_drop stays private (no twin).
+- length_le_dTotal_succ ×2: SURVIVOR = **XD2's raw-hypothesis form** (the more general:
+  takes the termLast content directly, no HistWF), HOISTED into MovesX/Defs; XG2d's
+  HistWF-keyed twin AND its now-dead private engine len_le_filter_succ DELETED, use
+  re-pointed through `.termLast`; XD2's private deleted, use unchanged.
+
+VERIFICATION (per the C1/C4 protocol):
+- Scripted signature fence: public-decl diff over all 34 touched files vs pre-sweep
+  HEAD — deltas at EXACTLY the six sanctioned sites, all purely ADDITIVE (MovesV/Defs
+  pair, E7 survivor, MovesX/Defs hoist, HmcReduction lemma, V4_naming pair,
+  EvalAtCoe lemma); zero existing public statement changed.
+- Per-file `lake env lean` / targeted `lake build` green at every step; ONE transient
+  concurrent-build .olean race (V3_spwordD) cured by retry per the 3x rule.
+- FULL `lake build` green (8579 jobs).
+- AxChk_baseline: capstone `OM.RealInstanceV2.montes_unconditional` Lean-core
+  {propext, Classical.choice, Quot.sound} — NO regression (the SerreLocalFields axiom
+  lines in the census are item 2's recorded additive change, not this item's).
+- Codex per-conjunct equivalence pass over the α-renamed deletions: verdict appended
+  below when returned.
+Estimated net: ~40 duplicated proofs deleted across 6 families / 34 files.
+
+### Item 8 — Codex per-conjunct pass VERDICT + dispositions (2026-07-31)
+
+Codex verdict archived: notes/CODEX_SWEEP_S1_VERDICT_2026-07-31.txt (31 numbered
+findings; every re-pointed USE SITE verified signature-correct; zero unsanctioned
+public drift found in the [SYN2-S1] hunks). Orchestration dispositions:
+- Findings 6/17/26/29 (stage0_w_neg, finite_eligible, G1 hist_ext, XG2d
+  length_le_dTotal_succ "not α-equivalent — specialization"): CORRECT-AND-SANCTIONED —
+  these four ARE the spec's named deletions of SPECIALIZED instances re-pointed at the
+  general survivor (P2-C1 lists each pair explicitly); the strict α-rule in the
+  verifier charge was narrower than the spec's dedup rule. No action.
+- Findings 15/18 (adapters not literally one-line): statements byte-unchanged,
+  survivor consumption verified — accepted as-built; "one-line" was this record's
+  shorthand, not the spec's requirement. No action.
+- Finding 16 (recSubst w_sum_ge binder h0 → _h0): cosmetic private-binder rename
+  (linter silence); private decl, outside the public fence. No action.
+- Finding 24 NOTE (E5 sweep comment named the wrong deleted lemma): FIXED in-file
+  (the re-point regex had renamed the mention inside the note; comment-only edit,
+  module re-checked green).
+- Finding 25 CRITICAL (E5_rootSplit.fiber_root_split gains hU/hR): NOT this item —
+  that is QUEUE ITEM 5 (the E5 hoist, "fiber_root_split + hU/hR named hypotheses"),
+  Asvin-sanctioned, executed by the item-5 agent in the same window; it rode into the
+  shared diff range. Attributed, no action here.
+- Finding 30 CRITICAL (XG2d len_le_filter_succ deleted, no survivor): DEAD-CODE
+  deletion, not a re-point — the generic list engine's ONLY consumer was the deleted
+  specialized lemma (grep-verified 2 occurrences = def + that one use). Recorded.

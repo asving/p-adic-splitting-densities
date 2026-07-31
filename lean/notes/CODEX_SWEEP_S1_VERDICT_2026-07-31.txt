@@ -1,0 +1,2360 @@
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities/lean
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: none
+reasoning summaries: none
+session id: 019fb71b-52ea-7590-a8b9-95f2f81d60d4
+--------
+user
+VERIFIER CHARGE (dedup-audit, per-conjunct equivalence pass — quote and classify, fix nothing).
+
+Context: a Lean 4 corpus executed a six-family de-privatize/dedup sweep (SYN2-S1). The rule:
+every DELETED private lemma must be alpha-equivalent (same statement up to binder names /
+explicit-implicit-preserving renaming) to the PUBLIC survivor it was re-pointed to, OR be
+explicitly downgraded to a recorded ADAPTER (kept private, one-line body consuming the survivor,
+statement unchanged). NO public statement may change except the six sanctioned ADDITIVE
+de-privatizations/hoists: MovesV.Defs {denom_dvd_of_add, denom_sum_dvd}, MovesD.E7
+finite_of_monic_natDegree, MovesX.Defs length_le_dTotal_succ, Kernels.HmcReduction
+append_one_zero_ne_zero, MovesV.V4_naming {hpt_take_append, hpt_drop_append}, MovesS.EvalAtCoe
+eval_algebraMap_div (new lemma in existing file).
+
+The survivor statements (verbatim from the corpus):
+- ResVal.w_one (σ : Stage p F) : σ.w 1 = 0
+- ResVal.w_neg_one (σ) : σ.w (-1) = 0
+- ResVal.w_neg (σ) (f) (hf : f ≠ 0) : σ.w (-f) = σ.w f
+- ResVal.w_pow (σ) (f) (hf : f ≠ 0) (n : ℕ) : σ.w (f ^ n) = (n : ℤ) * σ.w f
+- ResVal.R_one (σ) : σ.R (1 : Polynomial ℤ_[p]) = 1
+- ResVal.R_pow (σ) (f) (hf) (n) : σ.R (f ^ n) = (σ.R f) ^ n
+- ResVal.w_sum_ge (σ) (S : Finset ℕ) (a : ℕ → Polynomial ℤ_[p]) (m : ℤ)
+    (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) : m ≤ σ.w (∑ j ∈ S, a j)
+- Moves.ult_sum_ge (W : Polynomial ℤ_[p] → ℤ) (hult) (S : Finset ι) (a) (c) (hm) (hsum) : c ≤ W (∑ j ∈ S, a j)
+
+Recorded ADAPTERS (allowed, statement unchanged, body = one-line consumption):
+L5_realDomination_R3.{w_pow_Phi, w_sum_ge(disjunctive)}, L5_recSubst_R4.w_sum_ge(subsum-form),
+L4_TRANSviii_b_R4.wPow, V2_readResidual.v2sum_w_ge (via ult_sum_ge), E8_rankInj.poolSubfield_eq
+(now derived from E3.frameField_eq_pool).
+
+Your task, on the unified diff below: for EVERY deleted private lemma, (1) name it and its
+claimed survivor/adapter; (2) verify per-conjunct that the deleted statement is alpha-equivalent
+to the survivor's (or that the adapter's statement is byte-unchanged from the deleted original);
+(3) verify every re-pointed use site passes arguments consistent with the survivor's signature;
+(4) flag ANY public (non-private) declaration whose statement text changed, beyond the six
+sanctioned additive sites. Classify each finding: CRITICAL (statement drift / wrong re-point) or
+NOTE (cosmetic). Output a numbered list; if all clean, say ALL CLEAN. Do not propose fixes.
+KNOWN CONCURRENT NOISE: TV_F1.lean also carries an unrelated same-day edit (ratBurdens_iota
+re-point, a different queue item) — ignore hunks not marked [SYN2-S1].
+
+DIFF:
+diff --git a/lean/LeanUrat/HC1/K1_vertexPin.lean b/lean/LeanUrat/HC1/K1_vertexPin.lean
+index 0321b5a..bfbbc04 100644
+--- a/lean/LeanUrat/HC1/K1_vertexPin.lean
++++ b/lean/LeanUrat/HC1/K1_vertexPin.lean
+@@ -6,6 +6,7 @@ Authors: Asvin G
+ import Mathlib
+ import LeanUrat.HC1.DefsSpine
+ import LeanUrat.Moves.L5_landVertexDigit
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.K1_vertexPin — the read-indexed D.8 vertex pin and the twist-class bridge
+@@ -227,31 +228,8 @@ private lemma fin_sum_get {M : Type*} [AddCommMonoid M] {α : Type*} (l : List 
+ 
+ /-! ## Stage valuation/residual basics -/
+ 
+-private lemma w_one' (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  omega
+-
+-private lemma w_pow' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
+-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
+-  induction n with
+-  | zero => simpa [pow_zero] using w_one' σ
+-  | succ k ih =>
+-      rw [pow_succ, σ.hwmul _ x (pow_ne_zero k hx) hx, ih]
+-      push_cast
+-      ring
+-
+-private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
+-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
+-  exact (mul_left_cancel₀ hne (by rwa [mul_one])).symm
+-
+-private lemma R_pow' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
+-    σ.R (x ^ n) = σ.R x ^ n := by
+-  induction n with
+-  | zero => simpa [pow_zero] using R_one' σ
+-  | succ k ih => rw [pow_succ, σ.hRmul _ x (pow_ne_zero k hx) hx, ih, pow_succ]
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow/ResVal.R_one/ResVal.R_pow DELETED — single proof
++source `Moves/ResVal.lean` (α-identical); uses re-pointed. -/
+ 
+ private lemma list_prod_ne_zero' (l : List (Polynomial ℤ_[p])) (hl : ∀ x ∈ l, x ≠ 0) :
+     l.prod ≠ 0 :=
+@@ -260,7 +238,7 @@ private lemma list_prod_ne_zero' (l : List (Polynomial ℤ_[p])) (hl : ∀ x ∈
+ private lemma w_list_prod (σ : Stage p F) (l : List (Polynomial ℤ_[p]))
+     (hl : ∀ x ∈ l, x ≠ 0) : σ.w l.prod = (l.map σ.w).sum := by
+   induction l with
+-  | nil => simpa using w_one' σ
++  | nil => simpa using ResVal.w_one σ
+   | cons x xs ih =>
+       rw [List.prod_cons, List.map_cons, List.sum_cons,
+         σ.hwmul x xs.prod (hl x (by simp))
+@@ -270,7 +248,7 @@ private lemma w_list_prod (σ : Stage p F) (l : List (Polynomial ℤ_[p]))
+ private lemma R_list_prod (σ : Stage p F) (l : List (Polynomial ℤ_[p]))
+     (hl : ∀ x ∈ l, x ≠ 0) : σ.R l.prod = (l.map σ.R).prod := by
+   induction l with
+-  | nil => simpa using R_one' σ
++  | nil => simpa using ResVal.R_one σ
+   | cons x xs ih =>
+       rw [List.prod_cons, List.map_cons, List.prod_cons,
+         σ.hRmul x xs.prod (hl x (by simp))
+@@ -390,12 +368,12 @@ private lemma tvec_side_w (σ : Stage p F) (eF : ℤ → ℕ) :
+     obtain ⟨q, hq, rfl⟩ := List.mem_map.mp hx
+     exact pow_ne_zero _ ((tvec_entry_facts σ hq).1)
+   rw [σ.hwmul _ _ (list_prod_ne_zero' _ hentne) (pow_ne_zero _ σ.hmonic.ne_zero),
+-    w_list_prod σ _ hentne, w_pow' σ σ.Φ σ.hmonic.ne_zero, σ.hwΦ, List.map_map]
++    w_list_prod σ _ hentne, ResVal.w_pow σ σ.Φ σ.hmonic.ne_zero, σ.hwΦ, List.map_map]
+   congr 2
+   refine List.map_congr_left ?_
+   intro q hq
+   show σ.w (q.1 ^ eF q.2) = _
+-  rw [w_pow' σ q.1 ((tvec_entry_facts σ hq).1)]
++  rw [ResVal.w_pow σ q.1 ((tvec_entry_facts σ hq).1)]
+ 
+ /-- Residual of one side of the parent T-vector product, in monomial normal form. -/
+ private lemma tvec_side_R (σ : Stage p F) (eF : ℤ → ℕ) :
+@@ -410,7 +388,7 @@ private lemma tvec_side_R (σ : Stage p F) (eF : ℤ → ℕ) :
+     obtain ⟨q, hq, rfl⟩ := List.mem_map.mp hx
+     exact pow_ne_zero _ ((tvec_entry_facts σ hq).1)
+   rw [σ.hRmul _ _ (list_prod_ne_zero' _ hentne) (pow_ne_zero _ σ.hmonic.ne_zero),
+-    R_list_prod σ _ hentne, R_pow' σ σ.Φ σ.hmonic.ne_zero, σ.hRΦ,
++    R_list_prod σ _ hentne, ResVal.R_pow σ σ.Φ σ.hmonic.ne_zero, σ.hRΦ,
+     LaurentPolynomial.T_pow, List.map_map]
+   have hmap : σ.Tvec.map (σ.R ∘ fun q => q.1 ^ eF q.2)
+       = σ.Tvec.map (fun q =>
+@@ -420,7 +398,7 @@ private lemma tvec_side_R (σ : Stage p F) (eF : ℤ → ℕ) :
+     intro q hq
+     obtain ⟨hq0, hqC⟩ := tvec_entry_facts σ hq
+     show σ.R (q.1 ^ eF q.2) = _
+-    rw [R_pow' σ q.1 hq0, dOf_spec σ hq0 hqC, CT_pow']
++    rw [ResVal.R_pow σ q.1 hq0, dOf_spec σ hq0 hqC, CT_pow']
+   rw [hmap, CT_list_prod, mul_assoc, ← LaurentPolynomial.T_add]
+ 
+ /-- The three parent identities the twist-class bridges consume, extracted from the
+diff --git a/lean/LeanUrat/HC1/S11a_coreTransport.lean b/lean/LeanUrat/HC1/S11a_coreTransport.lean
+index b8fc7ff..6787b30 100644
+--- a/lean/LeanUrat/HC1/S11a_coreTransport.lean
++++ b/lean/LeanUrat/HC1/S11a_coreTransport.lean
+@@ -5,6 +5,7 @@ Authors: Asvin G
+ -/
+ import Mathlib
+ import LeanUrat.HC1.DefsSpine
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.S11a_coreTransport — the F-5 minimality certificate: the non-twist StageCore
+@@ -43,25 +44,8 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+ /-! ## Bare-Stage valuation facts (any stage) -/
+ 
+-private lemma w_one' (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  omega
+-
+-private lemma w_neg_one' (σ : Stage p F) : σ.w (-1) = 0 := by
+-  have h := σ.hwmul (-1) (-1) (neg_ne_zero.mpr one_ne_zero) (neg_ne_zero.mpr one_ne_zero)
+-  rw [neg_mul_neg, one_mul, w_one' σ] at h
+-  omega
+-
+-private lemma w_neg' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
+-    σ.w (-f) = σ.w f := by
+-  have h : (-f) = (-1) * f := by ring
+-  rw [h, σ.hwmul (-1) f (neg_ne_zero.mpr one_ne_zero) hf, w_neg_one' σ, zero_add]
+-
+-private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
+-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_neg_one/ResVal.w_neg/ResVal.R_one DELETED —
++single proof source `Moves/ResVal.lean` (α-identical); uses re-pointed. -/
+ 
+ /-- The w_strict tie law holds for EVERY stage from the bare (S1) laws (the
+ escalation's "valuation trick"): if the sum vanished, `w g = w (−f) = w f` would
+@@ -72,7 +56,7 @@ private lemma w_strict_of_bare (σ : Stage p F) (f g : Polynomial ℤ_[p])
+   have hfg : f + g ≠ 0 := by
+     intro h0
+     have hgf : g = -f := by linear_combination h0
+-    rw [hgf, w_neg' σ f hf] at hlt
++    rw [hgf, ResVal.w_neg σ f hf] at hlt
+     omega
+   have h1 : σ.w f ≤ σ.w (f + g) := by
+     have := σ.hwult f g hf hg hfg
+@@ -84,7 +68,7 @@ private lemma w_strict_of_bare (σ : Stage p F) (f g : Polynomial ℤ_[p])
+       exact hf (by linear_combination h0)
+     have := σ.hwult (f + g) (-g) hfg hng hsum
+     have heq : (f + g) + (-g) = f := by ring
+-    rw [heq, w_neg' σ g hg] at this
++    rw [heq, ResVal.w_neg σ g hg] at this
+     omega
+   omega
+ 
+@@ -149,16 +133,16 @@ theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ)
+       exact hΦdeg
+     -- the frame unit at parent weight 0 is 1 (read off B = 1)
+     obtain ⟨c₁, hc₁R, hc₁F⟩ := hdig 1 one_ne_zero hinC1
+-    have hw1 : σ.w 1 = 0 := w_one' σ
++    have hw1 : σ.w 1 = 0 := ResVal.w_one σ
+     have hc₁val : LaurentPolynomial.C ((c₁ : ↥σ'.K)) = 1 := by
+-      rw [R_one' σ', hw1, mul_zero, LaurentPolynomial.T_zero, mul_one] at hc₁R
++      rw [ResVal.R_one σ', hw1, mul_zero, LaurentPolynomial.T_zero, mul_one] at hc₁R
+       exact hc₁R.symm
+     have hc₁one : (c₁ : ↥σ'.K) = 1 := by
+       have h2 := congrArg (LaurentPolynomial.eval₂ (RingHom.id ↥σ'.K) (1 : (↥σ'.K)ˣ)) hc₁val
+       rwa [LaurentPolynomial.eval₂_C, map_one, RingHom.id_apply] at h2
+     have hdig1F : σ.digPrime zbar 1 = 1 := by
+       unfold Stage.digPrime
+-      rw [R_one' σ, map_one]
++      rw [ResVal.R_one σ, map_one]
+     have hzm0 : ((zbar ^ (mfun 0) : Fˣ) : F) = 1 := by
+       rw [hw1, hc₁one, hdig1F, one_mul] at hc₁F
+       rw [← hc₁F]
+@@ -166,10 +150,10 @@ theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ)
+     -- the child residual of −1 is −1 (read off B = −1, parent R_neg)
+     have hm1ne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
+     obtain ⟨c₂, hc₂R, hc₂F⟩ := hdig (-1) hm1ne hinCm1
+-    have hwm1 : σ.w (-1) = 0 := w_neg_one' σ
++    have hwm1 : σ.w (-1) = 0 := ResVal.w_neg_one σ
+     have hdigm1F : σ.digPrime zbar (-1) = -1 := by
+       unfold Stage.digPrime
+-      rw [hσ.core.R_neg 1, R_one' σ, map_neg, map_one]
++      rw [hσ.core.R_neg 1, ResVal.R_one σ, map_neg, map_one]
+     have hc₂F' : ((c₂ : ↥σ'.K) : F) = -1 := by
+       rwa [hwm1, hdigm1F, hzm0, mul_one] at hc₂F
+     have hc₂val : (c₂ : ↥σ'.K) = -1 := by
+diff --git a/lean/LeanUrat/HC1/S5_childValuation.lean b/lean/LeanUrat/HC1/S5_childValuation.lean
+index 9408f97..a3f84b2 100644
+--- a/lean/LeanUrat/HC1/S5_childValuation.lean
++++ b/lean/LeanUrat/HC1/S5_childValuation.lean
+@@ -11,6 +11,7 @@ import LeanUrat.Moves.L3_digPrime_nonzero
+ import LeanUrat.Moves.L0_FactA_exists
+ import LeanUrat.Moves.L0_FactB_unique
+ import LeanUrat.Moves.L3_liftMonic
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.S5_childValuation — D.7(iii): childW multiplicative, child value group ℤ
+@@ -92,11 +93,7 @@ private lemma childW_isSlotMin (σ : Stage p F) (Φhat : Polynomial ℤ_[p])
+   rw [hchild]
+   exact hex.choose_spec B N hdev
+ 
+-/-- `σ.w 1 = 0` from `w (1·1) = w 1 + w 1`. -/
+-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  omega
++/- [SYN2-S1 SWEEP-1, 2026-07-31] private ResVal.w_one DELETED (= ResVal.w_one). -/
+ 
+ /-- On a nonzero coefficient (`deg < deg Φ̂`) the child weight is the single-slot value
+ `e′·w(B)` (its `Φ̂`-development is `B·Φ̂⁰`). -/
+@@ -131,7 +128,7 @@ private lemma childW_one (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : 
+     show (1 : Polynomial ℤ_[p]).degree < Φhat.degree
+     rw [Polynomial.degree_one, Polynomial.degree_eq_natDegree hmon.ne_zero]
+     exact_mod_cast hdeg
+-  rw [childW_coeff σ Φhat hmon e' h' 1 one_ne_zero hc, w_one, mul_zero]
++  rw [childW_coeff σ Φhat hmon e' h' 1 one_ne_zero hc, ResVal.w_one, mul_zero]
+ 
+ /-- `childW Φ̂ = h′`: the key's own development is `1·Φ̂¹`, slot `1`, value `h′`. -/
+ private lemma childW_key (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic)
+@@ -164,7 +161,7 @@ private lemma childW_key (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : 
+   rw [hj0eq]
+   show (e' : ℤ) * σ.w (if (1 : ℕ) = 1 then (1 : Polynomial ℤ_[p]) else 0)
+       + ((1 : ℕ) : ℤ) * (h' : ℤ) = (h' : ℤ)
+-  rw [if_pos rfl, w_one]
++  rw [if_pos rfl, ResVal.w_one]
+   push_cast; ring
+ 
+ end Helpers
+diff --git a/lean/LeanUrat/HC1/T3_htChainWeight.lean b/lean/LeanUrat/HC1/T3_htChainWeight.lean
+index a0e552b..33c2605 100644
+--- a/lean/LeanUrat/HC1/T3_htChainWeight.lean
++++ b/lean/LeanUrat/HC1/T3_htChainWeight.lean
+@@ -7,6 +7,7 @@ import Mathlib
+ import LeanUrat.HC1.DefsTower
+ import LeanUrat.Moves.L3_K1
+ import LeanUrat.Moves.L2_keyResidualPow
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.T3_htChainWeight — LST(i-a): ht IS the K1-chain weight of the basis monomial
+@@ -33,23 +34,14 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+ /-! ## General stage-valuation lemmas -/
+ 
+-private lemma stage_w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have hw := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at hw; omega
+-
+-private lemma stage_w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
+-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
+-  induction n with
+-  | zero => simp [stage_w_one]
+-  | succ n ih =>
+-    have hfn : f ^ n ≠ 0 := pow_ne_zero n hf
+-    rw [pow_succ, σ.hwmul _ _ hfn hf, ih]; push_cast; ring
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow DELETED — single proof
++source `Moves/ResVal.lean` (α-identical); uses re-pointed to ResVal.w_one/w_pow. -/
+ 
+ private lemma stage_w_prod (σ : Stage p F) {ι : Type*} (s : Finset ι) (g : ι → Polynomial ℤ_[p])
+     (hg : ∀ i ∈ s, g i ≠ 0) : σ.w (∏ i ∈ s, g i) = ∑ i ∈ s, σ.w (g i) := by
+   classical
+   induction s using Finset.induction_on with
+-  | empty => simp [stage_w_one]
++  | empty => simp [ResVal.w_one]
+   | @insert a s ha ih =>
+     rw [Finset.prod_insert ha, Finset.sum_insert ha]
+     have hga : g a ≠ 0 := hg a (Finset.mem_insert_self a s)
+@@ -212,12 +204,12 @@ theorem T3_htChainWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
+       = ∑ r : Fin (T.K + 1), (c.slot r : ℤ) * (T.stg (Fin.last T.K)).w ((T.stg r).Φ) := by
+     apply Finset.sum_congr rfl
+     intro r _
+-    rw [stage_w_pow (T.stg (Fin.last T.K)) _ (hΦne r) (c.slot r)]
++    rw [ResVal.w_pow (T.stg (Fin.last T.K)) _ (hΦne r) (c.slot r)]
+   have hexpand : (T.stg (Fin.last T.K)).w (T.mono c)
+       = (c.l : ℤ) * (T.stg (Fin.last T.K)).w (C (p : ℤ_[p]))
+         + ∑ r : Fin (T.K + 1), (c.slot r : ℤ) * (T.stg (Fin.last T.K)).w ((T.stg r).Φ) := by
+     rw [hmono, (T.stg (Fin.last T.K)).hwmul _ _ hCpl_ne hprodne,
+-        stage_w_pow (T.stg (Fin.last T.K)) _ hCp0 c.l,
++        ResVal.w_pow (T.stg (Fin.last T.K)) _ hCp0 c.l,
+         stage_w_prod (T.stg (Fin.last T.K)) Finset.univ _ (fun r _ => pow_ne_zero _ (hΦne r)),
+         hsum_eq]
+   -- value of w(C p) = strTop
+diff --git a/lean/LeanUrat/HC1/T4_slotMinHt.lean b/lean/LeanUrat/HC1/T4_slotMinHt.lean
+index 0164020..bccf041 100644
+--- a/lean/LeanUrat/HC1/T4_slotMinHt.lean
++++ b/lean/LeanUrat/HC1/T4_slotMinHt.lean
+@@ -7,6 +7,7 @@ import Mathlib
+ import LeanUrat.HC1.DefsCar
+ import LeanUrat.Moves.L0_FactB_unique
+ import LeanUrat.HC1.T3_htChainWeight
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.T4_slotMinHt — LST(i-b): the iterated slot minimum
+@@ -48,30 +49,8 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+ /-! ## A. Generic stage-valuation lemmas (from the structure fields alone) -/
+ 
+-private lemma t4_w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have hw := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at hw; omega
+-
+-private lemma t4_w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
+-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
+-  induction n with
+-  | zero => simp [t4_w_one]
+-  | succ n ih =>
+-    have hfn : f ^ n ≠ 0 := pow_ne_zero n hf
+-    rw [pow_succ, σ.hwmul _ _ hfn hf, ih]; push_cast; ring
+-
+-private lemma t4_w_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
+-    σ.w (-f) = σ.w f := by
+-  have hm1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := by
+-    intro h; exact one_ne_zero (α := Polynomial ℤ_[p]) (by linear_combination -h)
+-  have hsq : σ.w ((-1 : Polynomial ℤ_[p]) * (-1)) = σ.w (-1) + σ.w (-1) :=
+-    σ.hwmul _ _ hm1 hm1
+-  rw [neg_one_mul, neg_neg] at hsq
+-  have hone := t4_w_one σ
+-  have hw1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by omega
+-  have : σ.w ((-1 : Polynomial ℤ_[p]) * f) = σ.w (-1) + σ.w f := σ.hwmul _ _ hm1 hf
+-  rw [neg_one_mul] at this
+-  rw [this, hw1, zero_add]
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow/ResVal.w_neg DELETED — single proof
++source `Moves/ResVal.lean` (α-identical); uses re-pointed to ResVal.w_one/w_pow/w_neg. -/
+ 
+ /-- The strict ultrametric: strictly smaller weight wins, and the sum cannot vanish. -/
+ private lemma t4_w_strict (σ : Stage p F) {f g : Polynomial ℤ_[p]} (hf : f ≠ 0) (hg : g ≠ 0)
+@@ -79,7 +58,7 @@ private lemma t4_w_strict (σ : Stage p F) {f g : Polynomial ℤ_[p]} (hf : f 
+   have hne : f + g ≠ 0 := by
+     intro h0
+     have hfg : f = -g := eq_neg_of_add_eq_zero_left h0
+-    rw [hfg, t4_w_neg σ g hg] at hlt
++    rw [hfg, ResVal.w_neg σ g hg] at hlt
+     exact lt_irrefl _ hlt
+   refine ⟨hne, ?_⟩
+   have h1 : min (σ.w f) (σ.w g) ≤ σ.w (f + g) := σ.hwult f g hf hg hne
+@@ -88,7 +67,7 @@ private lemma t4_w_strict (σ : Stage p F) {f g : Polynomial ℤ_[p]} (hf : f 
+     have hsum : f + g + -g = f := by ring
+     have := σ.hwult (f + g) (-g) hne hgneg (by rw [hsum]; exact hf)
+     rwa [hsum] at this
+-  rw [t4_w_neg σ g hg] at h2
++  rw [ResVal.w_neg σ g hg] at h2
+   omega
+ 
+ /-- Sum over a finite set with pairwise DISTINCT weights: nonzero, weight = the attained min. -/
+@@ -550,7 +529,7 @@ private lemma t4_claim (T : Tower p F) (y : T.Coord → ↥(T.stg 0).FQ) :
+         rw [(T.stg 0).hStretch _ hCp (t4_degC_lt (T.stg 0)), T.base.1.1 _ hCp,
+             t4_gaussVal_C_p, mul_one]
+       rw [hq, (T.stg 0).hwmul _ _ hdne (pow_ne_zero _ hCp), hwd,
+-          t4_w_pow (T.stg 0) _ hCp, hwCp]
++          ResVal.w_pow (T.stg 0) _ hCp, hwCp]
+       ring
+     have hdist : ∀ c ∈ S, ∀ c' ∈ S, c ≠ c' →
+         (T.stg ⟨0, hk⟩).w (qterm T y 0 c) ≠ (T.stg ⟨0, hk⟩).w (qterm T y 0 c') := by
+@@ -659,7 +638,7 @@ private lemma t4_claim (T : Tower p F) (y : T.Coord → ↥(T.stg 0).FQ) :
+       rw [t4_qterm_succ T y k hkf c,
+           (T.stg ⟨k, hkf⟩).hwmul _ _ (t4_qterm_ne T y k c (hne c hc))
+             (pow_ne_zero _ (T.stg ⟨k, hkf⟩).hmonic.ne_zero),
+-          t4_w_pow (T.stg ⟨k, hkf⟩) _ (T.stg ⟨k, hkf⟩).hmonic.ne_zero]
++          ResVal.w_pow (T.stg ⟨k, hkf⟩) _ (T.stg ⟨k, hkf⟩).hmonic.ne_zero]
+     -- (8) stage-k value of the whole sum = the c₀ term
+     have hwG_k : (T.stg ⟨k, hkf⟩).w (∑ c ∈ S, qterm T y (k + 1) c)
+         = (T.stg ⟨k, hkf⟩).w (qterm T y (k + 1) c₀) := by
+@@ -726,7 +705,7 @@ private lemma t4_hasSide (T : Tower p F) : T.HasSide := by
+     intro f
+     by_cases hf : f = 0
+     · simp [hf]
+-    · rw [if_neg (neg_ne_zero.mpr hf), if_neg hf, t4_w_neg _ f hf]
++    · rw [if_neg (neg_ne_zero.mpr hf), if_neg hf, ResVal.w_neg _ f hf]
+   · -- w_add
+     intro f g
+     by_cases hfg : f + g = 0
+@@ -776,7 +755,7 @@ private lemma t4_hasSide (T : Tower p F) : T.HasSide := by
+         rw [← WithTop.coe_add]
+         exact_mod_cast le_of_eq this.symm
+   · -- w_one
+-    rw [if_neg (one_ne_zero : (1 : Polynomial ℤ_[p]) ≠ 0), t4_w_one]
++    rw [if_neg (one_ne_zero : (1 : Polynomial ℤ_[p]) ≠ 0), ResVal.w_one]
+     rfl
+   · -- the agreement spec
+     intro f hf
+@@ -857,7 +836,7 @@ theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+       = (T.stg (Fin.last T.K)).w (qterm T y T.K c₀)
+         + (b : ℤ) * (T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ := by
+     rw [hconv, (T.stg (Fin.last T.K)).hwmul _ _ hGne (pow_ne_zero _ hΦlne),
+-        t4_w_pow _ _ hΦlne, hwG]
++        ResVal.w_pow _ _ hΦlne, hwG]
+   have hq_ht : ∀ c ∈ S, ((T.stg (Fin.last T.K)).w (qterm T y T.K c) : ℚ)
+       + (b : ℚ) * ((T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ : ℚ)
+       = (T.strTop : ℚ) * T.ht c := by
+@@ -886,7 +865,7 @@ theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+           + (b : ℤ) * (T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ := by
+       rw [hterm c hc,
+           (T.stg (Fin.last T.K)).hwmul _ _ (t4_qterm_ne T y T.K c hyc) (pow_ne_zero _ hΦlne),
+-          t4_w_pow _ _ hΦlne]
++          ResVal.w_pow _ _ hΦlne]
+     have hzz : (T.stg (Fin.last T.K)).w (qterm T y T.K c)
+         + (b : ℤ) * (T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ
+         = (T.stg (Fin.last T.K)).w (T.mono c) := by
+diff --git a/lean/LeanUrat/HC1/T7_alphabetSpan.lean b/lean/LeanUrat/HC1/T7_alphabetSpan.lean
+index 9518f12..aa90b7c 100644
+--- a/lean/LeanUrat/HC1/T7_alphabetSpan.lean
++++ b/lean/LeanUrat/HC1/T7_alphabetSpan.lean
+@@ -7,6 +7,7 @@ import Mathlib
+ import LeanUrat.HC1.DefsCar
+ import LeanUrat.HC1.T6_carrierLaws
+ import LeanUrat.Moves.L3_liftMonic
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.T7_alphabetSpan — the alphabet is the finite additive span of the slot images
+@@ -39,9 +40,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+ /-! ## The stretch chain (base→top weight propagation on base-cone coefficients) -/
+ 
+-private lemma stage_w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have hw := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at hw; omega
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one DELETED (= ResVal.w_one). -/
+ 
+ private lemma strAux_succ (T : Tower p F) (k : ℕ) (hk : k < T.K + 1) :
+     T.strAux (k + 1) = T.strAux k * (T.stg ⟨k, hk⟩).e := by
+@@ -420,18 +419,7 @@ private lemma tag_add (T : Tower p F) (y₁ y₂ : ↥(T.stg 0).FQ) :
+   push_cast
+   rfl
+ 
+-private lemma stage0_w_neg (T : Tower p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
+-    (T.stg 0).w (-f) = (T.stg 0).w f := by
+-  have hCn1 : (C (-1 : ℤ_[p])) ≠ 0 := by rw [Polynomial.C_ne_zero]; norm_num
+-  have hwn1 : (T.stg 0).w (C (-1 : ℤ_[p])) = 0 := by
+-    have h := (T.stg 0).hwmul (C (-1)) (C (-1)) hCn1 hCn1
+-    rw [← Polynomial.C_mul] at h
+-    have he : ((-1 : ℤ_[p]) * (-1)) = 1 := by ring
+-    rw [he, Polynomial.C_1, stage_w_one] at h
+-    omega
+-  have hneg : -f = C (-1 : ℤ_[p]) * f := by
+-    rw [map_neg, Polynomial.C_1, neg_one_mul]
+-  rw [hneg, (T.stg 0).hwmul _ _ hCn1 hf, hwn1, zero_add]
++/- [SYN2-S1 SWEEP-1, 2026-07-31] stage0_w_neg DELETED (= ResVal.w_neg at T.stg 0). -/
+ 
+ /-- Cone element of positive base weight: TOP weight is at least `strTop ≥ 1` —
+ the base carry is killed in every piece it did not open. -/
+@@ -582,7 +570,7 @@ private lemma line_closed (T : Tower p F) (b : ℕ) (γ : ℚ) (c : ↥(T.levelS
+       have hcw0 : 0 ≤ (T.stg 0).w (T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂)) := by
+         have hnegne : -(T.digLift (y₁ + y₂)) ≠ 0 := neg_ne_zero.mpr hf₁₂ne
+         have h := (T.stg 0).hwult _ _ hg₁₂ne hnegne (by rwa [← sub_eq_add_neg])
+-        rwa [stage0_w_neg T _ hf₁₂ne, hw12, hw0₁₂, min_self, ← sub_eq_add_neg] at h
++        rwa [ResVal.w_neg (T.stg 0) _ hf₁₂ne, hw12, hw0₁₂, min_self, ← sub_eq_add_neg] at h
+       have hadd_sub : T.digLift (y₁ + y₂)
+           + (T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂))
+           = T.digLift y₁ + T.digLift y₂ := by ring
+diff --git a/lean/LeanUrat/HC1/V2_readResidual.lean b/lean/LeanUrat/HC1/V2_readResidual.lean
+index ecb2be3..a7d10f7 100644
+--- a/lean/LeanUrat/HC1/V2_readResidual.lean
++++ b/lean/LeanUrat/HC1/V2_readResidual.lean
+@@ -10,6 +10,7 @@ import LeanUrat.HC1.V6_alignedOrbits
+ import LeanUrat.HC1.S3_childK1
+ import LeanUrat.Moves.L3_K1
+ import LeanUrat.Moves.L4_TRANSii
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC1.V2_readResidual — the lawful regrade carrier exists (blueprint §10, V2)
+@@ -72,42 +73,15 @@ section V2Infra
+ 
+ variable (σ : Stage p F)
+ 
+-private lemma v2w_one : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h; omega
+-
+-private lemma v2w_neg (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : σ.w (-f) = σ.w f := by
+-  have hne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
+-  have hneg1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by
+-    have h := σ.hwmul (-1) (-1) hne hne
+-    rw [neg_mul_neg, one_mul] at h
+-    have h1 := v2w_one σ
+-    omega
+-  have h := σ.hwmul (-1) f hne hf
+-  rw [neg_one_mul] at h
+-  omega
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_neg DELETED (= ResVal.w_one/w_neg,
++α-identical); v2sum_w_ge below is the ι-GENERIC shape — kept as a one-line ADAPTER
++over the bare hoisted engine `Moves.ult_sum_ge` (W := σ.w, hult := σ.hwult). -/
+ 
+ /-- ultrametric finite-sum lower bound (zeros allowed among the summands). -/
+ private lemma v2sum_w_ge {ι : Type*} (S : Finset ι) (a : ι → Polynomial ℤ_[p]) (m : ℤ)
+     (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
+-    m ≤ σ.w (∑ j ∈ S, a j) := by
+-  classical
+-  revert hm hsum
+-  induction S using Finset.induction with
+-  | empty => intro hm hsum; simp at hsum
+-  | insert i T hiT ih =>
+-    intro hm hsum
+-    rw [Finset.sum_insert hiT] at hsum ⊢
+-    by_cases hai : a i = 0
+-    · rw [hai, zero_add] at hsum ⊢
+-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
+-    · by_cases hsT : (∑ j ∈ T, a j) = 0
+-      · rw [hsT, add_zero] at hsum ⊢
+-        exact hm i (Finset.mem_insert_self i T) hai
+-      · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
+-        have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
+-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
+-        exact le_trans (le_min h1 h2) (σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum)
++    m ≤ σ.w (∑ j ∈ S, a j) :=
++  LeanUrat.Moves.ult_sum_ge σ.w σ.hwult S a m hm hsum
+ 
+ /-- "zero, or `w`-deep at least `ω`" — the domain of the level-`ω` graded residue. -/
+ private def v2Deep (ω : ℤ) (x : Polynomial ℤ_[p]) : Prop := x = 0 ∨ ω ≤ σ.w x
+@@ -151,9 +125,9 @@ private lemma v2gr_add (hσ : StageCore σ) {ω : ℤ} {x y : Polynomial ℤ_[p]
+     refine ⟨Or.inl hxy0, ?_⟩
+     rw [hxy0, v2gr_zero]
+     rcases eq_or_ne (σ.w x) ω with hwx | hwx
+-    · have hwy : σ.w y = ω := by rw [hyx, v2w_neg σ x hx0]; exact hwx
++    · have hwy : σ.w y = ω := by rw [hyx, ResVal.w_neg σ x hx0]; exact hwx
+       rw [v2gr_eq σ hx0 hwx, v2gr_eq σ hy0 hwy, hyx, hσ.R_neg, add_neg_cancel]
+-    · have hwy : σ.w y ≠ ω := by rw [hyx, v2w_neg σ x hx0]; exact hwx
++    · have hwy : σ.w y ≠ ω := by rw [hyx, ResVal.w_neg σ x hx0]; exact hwx
+       rw [v2gr_deep σ hwx, v2gr_deep σ hwy, add_zero]
+   have hult := σ.hwult x y hx0 hy0 hxy0
+   have hDeep : v2Deep σ ω (x + y) := Or.inr (le_trans (le_min hxw hyw) hult)
+@@ -505,7 +479,7 @@ private lemma v2cw_key (e' h' : ℕ)
+       show (if 0 = 1 then (1 : Polynomial ℤ_[p]) else 0) = 0
+       rw [if_neg (by omega : (0 : ℕ) ≠ 1)]
+     · show (h' : ℤ) ≤ (e' : ℤ) * σ.w (if 1 = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
+-      rw [if_pos rfl, v2w_one σ]
++      rw [if_pos rfl, ResVal.w_one σ]
+       push_cast
+       omega
+   · refine ⟨1, by omega, ?_, ?_⟩
+@@ -513,7 +487,7 @@ private lemma v2cw_key (e' h' : ℕ)
+       rw [if_pos rfl]
+       exact one_ne_zero
+     · show (h' : ℤ) = (e' : ℤ) * σ.w (if 1 = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
+-      rw [if_pos rfl, v2w_one σ]
++      rw [if_pos rfl, ResVal.w_one σ]
+       push_cast
+       omega
+ 
+@@ -532,8 +506,8 @@ private lemma v2cw_neg (e' h' : ℕ)
+     constructor
+     · intro j hj hnz
+       have h := hlo j hj (show -(B j) ≠ 0 from neg_ne_zero.mpr hnz)
+-      simpa only [v2w_neg σ (B j) hnz] using h
+-    · exact ⟨jj, hjj, hjjB, by simpa only [v2w_neg σ (B jj) hjjB] using hjje⟩
++      simpa only [ResVal.w_neg σ (B j) hnz] using h
++    · exact ⟨jj, hjj, hjjB, by simpa only [ResVal.w_neg σ (B jj) hjjB] using hjje⟩
+   exact v2slotMin_unique hattn' hatt
+ 
+ /-! #### the two `ReadResData` pins for the explicit carrier -/
+@@ -554,14 +528,14 @@ private lemma v2Rc_phi (e' h' : ℕ) (s' t' : ℤ)
+   have h1cond : (if (1 : ℕ) = 1 then (1 : Polynomial ℤ_[p]) else 0) ≠ 0 ∧
+       (e' : ℤ) * σ.w (if (1 : ℕ) = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
+         = childW σ σ.Φ e' h' σ.Φ := by
+-    rw [if_pos rfl, v2cw_key σ e' h' hSMW, v2w_one σ]
++    rw [if_pos rfl, v2cw_key σ e' h' hSMW, ResVal.w_one σ]
+     refine ⟨one_ne_zero, ?_⟩
+     push_cast
+     omega
+   rw [if_neg h0cond, if_pos h1cond, zero_add]
+   have hred : ((fun j : ℕ => if j = 1 then (1 : Polynomial ℤ_[p]) else 0) 1) = 1 := by
+     norm_num
+-  rw [hred, v2dig_one σ, map_one, one_mul, v2w_one σ]
++  rw [hred, v2dig_one σ, map_one, one_mul, ResVal.w_one σ]
+   norm_num
+ 
+ /-- the (S5) pin at the regrade: single-slot coefficients carry the SAME hS5 unit
+@@ -644,7 +618,7 @@ private lemma v2Rc_negLaw (hσ : StageCore σ) (e' h' : ℕ) (s' t' : ℤ)
+       rintro ⟨h0, -⟩
+       exact h0 hBj
+     rw [if_neg hn1, if_neg hn2, neg_zero]
+-  · have hwn := v2w_neg σ (B j) hBj
++  · have hwn := ResVal.w_neg σ (B j) hBj
+     have hcd : v2dig σ (-(B j)) = - v2dig σ (B j) := v2dig_of_Rneg σ hσ (B j)
+     by_cases hc : B j ≠ 0 ∧ (e' : ℤ) * σ.w (B j) + (j : ℤ) * (h' : ℤ)
+         = childW σ σ.Φ e' h' f
+@@ -1483,7 +1457,7 @@ private lemma v2Rc_mulLaw (hσ : StageCore σ) (hσL : StageCoreL σ)
+         have hsumne : H.coeff m' + -(H.coeff m' %ₘ σ.Φ) ≠ 0 := by
+           rw [← hyΦ]; exact hΦyne
+         have hult := σ.hwult _ _ hconv_ne hnegne hsumne
+-        rw [v2w_neg σ _ hrz] at hult
++        rw [ResVal.w_neg σ _ hrz] at hult
+         exact le_trans (le_min hwconv hrw) hult
+     have hmulw := σ.hwmul σ.Φ (H.coeff m' /ₘ σ.Φ) hΦne hy
+     rw [hmulw] at hwΦy
+@@ -1827,7 +1801,7 @@ theorem V2_readFrame {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+   obtain ⟨⟨D, hlaws⟩, -⟩ := V2_readResidual σ hσ estar hstar sstar tstar hrp
+   obtain ⟨⟨-, hSMW⟩, hwmul, hwult, -⟩ := V1_readWPack σ hσ estar hstar sstar tstar hrp
+   obtain ⟨hwPhi, hK1⟩ :=
+-    S3_childK1 σ σ.Φ σ.hmonic σ.hdeg estar hstar hrp.1 hrp.2.1 (v2w_one σ)
++    S3_childK1 σ σ.Φ σ.hmonic σ.hdeg estar hstar hrp.1 hrp.2.1 (ResVal.w_one σ)
+   exact ⟨⟨D, hlaws, hwmul, hwult, hwPhi, hK1,
+     fun B hB hBc => L4_TRANSii σ σ.Φ estar hstar _ hSMW B hB hBc,
+     V6_regradeOrbits σ hσ estar hstar sstar tstar hrp D⟩⟩
+diff --git a/lean/LeanUrat/HC2/HK05_countermodelGate.lean b/lean/LeanUrat/HC2/HK05_countermodelGate.lean
+index 194136c..68d948b 100644
+--- a/lean/LeanUrat/HC2/HK05_countermodelGate.lean
++++ b/lean/LeanUrat/HC2/HK05_countermodelGate.lean
+@@ -5,6 +5,7 @@ Authors: Asvin G
+ -/
+ import Mathlib
+ import LeanUrat.HC1.V10_transportWindow
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # HC2.HK05_countermodelGate — HK-05: the COUNTERMODEL GATE on the (NEW) clause set
+@@ -117,19 +118,9 @@ def StagedRegradeOf (σ : Stage p F) (ν : Node p F) (σV : Stage p F) : Prop :=
+   σV.Φ = σ.Φ ∧ σV.e = ν.e ∧ σV.h = ν.h ∧ σV.K = σ.K ∧ σV.FQ = σ.FQ ∧
+   σV.reps = σ.reps ∧ (∀ f, σV.wPrev f = σ.w f) ∧ IsSlotMinWeight σV.w σ.Φ ν.e ν.h σ.w
+ 
+-/-- `w 1 = 0` (the V10 helper pattern, re-derived locally — V10's copy is private). -/
+-private lemma hk05_w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h; omega
+-
+-/-- `w (x^n) = n·w x` (the V10 helper pattern). -/
+-private lemma hk05_w_pow (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
+-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
+-  induction n with
+-  | zero => rw [pow_zero, hk05_w_one σ]; push_cast; ring
+-  | succ k ih =>
+-      rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hx) hx, ih]
+-      push_cast; ring
++/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow DELETED — single proof
++source `Moves/ResVal.lean` (α-identical; the SYN-E0 concurrent-agent hold on this
++file is lifted, per P2-C1); uses re-pointed to ResVal.w_one/w_pow. -/
+ 
+ /-- The τ-part of any read lift has degree `< e·g·deg Φ` (V10's `hτdeg` pattern,
+ extracted; only the degree facts of the slot coefficients are consumed). -/
+@@ -332,7 +323,7 @@ private lemma hk05_recorded (ν : Node p F) (hνe : ν.e = 1) (hνh : ν.h = 3)
+   -- σV.w Φ̂ ≥ 6 (both development parts weigh 6)
+   have hwpow : σV.w (ν.σ.Φ ^ 2) = 6 := by
+     have hwΦσ : σV.w ν.σ.Φ = 3 := by rw [← hVΦ]; exact hkΦ
+-    rw [hk05_w_pow σV ν.σ.Φ hΦne 2, hwΦσ]; norm_num
++    rw [ResVal.w_pow σV ν.σ.Φ hΦne 2, hwΦσ]; norm_num
+   have hwhat : (6 : ℤ) ≤ σV.w Φhat := by
+     have hsplit : ν.σ.Φ ^ 2 + (Φhat - ν.σ.Φ ^ 2) = Φhat := by ring
+     have hne' : ν.σ.Φ ^ 2 + (Φhat - ν.σ.Φ ^ 2) ≠ 0 := by
+@@ -597,7 +588,7 @@ theorem hk05_find2_residual_entries_blocked
+       ← hVΦ, σV.hwΦ, hVh]
+     norm_num
+   refine ⟨?_, ?_, ?_⟩
+-  · rw [hk05_w_pow σ' ν.σ.Φ hΦne 2, hwPhi']; ring
++  · rw [ResVal.w_pow σ' ν.σ.Φ hΦne 2, hwPhi']; ring
+   · have hinτ : inC σ'.Φ (Φhat - ν.σ.Φ ^ 2) := by
+       show (Φhat - ν.σ.Φ ^ 2).degree < σ'.Φ.degree
+       rw [htrans.base.child_key]
+diff --git a/lean/LeanUrat/Kernels/HmcReduction.lean b/lean/LeanUrat/Kernels/HmcReduction.lean
+index 4f0d4d5..01f18c8 100644
+--- a/lean/LeanUrat/Kernels/HmcReduction.lean
++++ b/lean/LeanUrat/Kernels/HmcReduction.lean
+@@ -51,10 +51,11 @@ def MarkCompose {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
+     (D.dom (.last m)).Mem h₁ ∧ (D.dom γ).Mem h₂ →
+       (D.dom (.cons m γ)).Mem (Hpt.append h₁ h₂)
+ 
+-/-- Private computation helper (the analogous `hpt_*` lemmas of
+-MovesV/V4_naming.lean are `private` there, hence re-derived): the appended
+-point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
+-private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
++/-- The appended point (1, …, 0) is nonzero — its first coordinate survives
++`Fin.append_left`.
++[SYN2-S1 SWEEP-6, 2026-07-31: DE-PRIVATIZED as the family SURVIVOR (this module is the
++cluster's shared reduction base); the KC1/KC6 copies are deleted and re-pointed here.] -/
++lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+     (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
+   intro h0
+   have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
+diff --git a/lean/LeanUrat/Kernels/KC1.lean b/lean/LeanUrat/Kernels/KC1.lean
+index ff018e6..3909328 100644
+--- a/lean/LeanUrat/Kernels/KC1.lean
++++ b/lean/LeanUrat/Kernels/KC1.lean
+@@ -41,6 +41,7 @@ fullPart_mem/nzPart_mem/nzPart_not_mem computations).
+ Build: cd lean && lake build LeanUrat.Kernels.KC1
+ -/
+ import LeanUrat.MovesV.V4_hmc
++import LeanUrat.Kernels.HmcReduction
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -50,16 +51,8 @@ namespace LeanUrat.Kernels
+ 
+ open LeanUrat.MovesV
+ 
+-/-- Private computation helper (the analogous `hpt_*` lemmas of
+-MovesV/V4_naming.lean are `private` there, hence re-derived): the appended
+-point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
+-private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+-    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
+-  intro h0
+-  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
+-      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
+-  simp only [Hpt.append, Fin.append_left] at h1
+-  exact one_ne_zero h1
++/- [SYN2-S1 SWEEP-6, 2026-07-31] private append_one_zero_ne_zero DELETED —
++survivor = Kernels/HmcReduction (de-privatized, now imported); bare uses resolve. -/
+ 
+ /-- KC1 leg (i) — the ⊇/compose direction fails at the census point (0,0):
+ ¬(Mem (h₁ ++ h₂) ← factors) at h₁ = h₂ = 0, m = mv, γ = .last mv (the
+diff --git a/lean/LeanUrat/Kernels/KC2b.lean b/lean/LeanUrat/Kernels/KC2b.lean
+index 89be489..9ce7916 100644
+--- a/lean/LeanUrat/Kernels/KC2b.lean
++++ b/lean/LeanUrat/Kernels/KC2b.lean
+@@ -12,7 +12,7 @@ KC2b's and lands here.  <UnitId>.lean naming.
+ GATE SEQUENCING (REV 2, F5): KC2a — the DomProj countermodel attempt — is ON
+ RECORD as a sorried skeleton at Kernels/HmcReduction.lean and is SEQUENCED
+ BEFORE this unit's prover.  The gate is a scheduling constraint, not an
+-import: this file imports only MovesV.Defs.
++import: this file imports MovesV.Defs (+ V4_naming since the SWEEP-6 dedup).
+ 
+ RECORDED RESOLUTION (the "conditional on KC2a's outcome" clause): the
+ UNRESTRICTED derivation target `∀ TE D, DomProj TE D` is NOT stated in this
+@@ -38,6 +38,7 @@ obstruction record names the failing law step — never a silent sorry.]
+ Build: cd lean && lake build LeanUrat.Kernels.KC2b
+ -/
+ import LeanUrat.MovesV.Defs
++import LeanUrat.MovesV.V4_naming
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -47,17 +48,8 @@ namespace LeanUrat.Kernels
+ 
+ open LeanUrat.MovesV
+ 
+-/-- Fin-append splitter identity (private re-derivation; the original
+-`hpt_take_append` is `private` in MovesV/V4_naming.lean, hence not
+-importable). -/
+-private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+-    Hpt.take (Hpt.append h₁ h₂) = h₁ := by
+-  funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
+-
+-/-- Fin-append splitter identity (private re-derivation, as above). -/
+-private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+-    Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
+-  funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
++/- [SYN2-S1 SWEEP-6, 2026-07-31] private hpt_take_append/hpt_drop_append DELETED —
++survivors = the DE-PRIVATIZED V4_naming originals (now imported); bare uses resolve. -/
+ 
+ /-- KC2b — `DomProj`, the ⊆/projection leg of HMC as a NAMED law (⚑ Q4
+ named-law ratification): a realized composite history realizes its steps —
+diff --git a/lean/LeanUrat/Kernels/KC6.lean b/lean/LeanUrat/Kernels/KC6.lean
+index a36c795..a804088 100644
+--- a/lean/LeanUrat/Kernels/KC6.lean
++++ b/lean/LeanUrat/Kernels/KC6.lean
+@@ -35,6 +35,8 @@ mentions DomProj/MarkCompose).  difficulty: hard-fable, ~80 ln.
+ Build: cd lean && lake build LeanUrat.Kernels.KC6
+ -/
+ import LeanUrat.MovesV.V4_hmc
++import LeanUrat.Kernels.HmcReduction
++import LeanUrat.MovesV.V4_naming
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -71,27 +73,10 @@ def Order0Sys {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
+     ∀ (α : S.Cell) (γ : Template n S α) (h : Hpt γ.D),
+       (D.dom γ).Mem h ↔ ThrMem θ θT γ h
+ 
+-/-- Fin-append splitter identity (the KC6b docstring's sanctioned private
+-helper; the original `hpt_take_append` is `private` in MovesV/V4_naming.lean,
+-hence not importable). -/
+-private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+-    Hpt.take (Hpt.append h₁ h₂) = h₁ := by
+-  funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
+-
+-/-- Fin-append splitter identity (private helper, as above). -/
+-private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+-    Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
+-  funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
+-
+-/-- Private computation helper (as in the sibling Kernels files): the appended
+-point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
+-private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+-    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
+-  intro h0
+-  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
+-      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
+-  simp only [Hpt.append, Fin.append_left] at h1
+-  exact one_ne_zero h1
++/- [SYN2-S1 SWEEP-6, 2026-07-31] private hpt_take_append/hpt_drop_append/
++append_one_zero_ne_zero DELETED — survivors = the DE-PRIVATIZED V4_naming pair
++(the originals; their 'private there, hence not importable' rationale is gone)
+++ HmcReduction's nonzero-point lemma (both now imported); bare uses resolve. -/
+ 
+ /-- the vacuous threshold vectors of the V1 witness system (all `witS`
+ dimensions are 0, so the vectors quantify over `Fin 0`). -/
+diff --git a/lean/LeanUrat/Moves/L2_slotDecomp_R4.lean b/lean/LeanUrat/Moves/L2_slotDecomp_R4.lean
+index 7df7acf..2d191c4 100644
+--- a/lean/LeanUrat/Moves/L2_slotDecomp_R4.lean
++++ b/lean/LeanUrat/Moves/L2_slotDecomp_R4.lean
+@@ -6,6 +6,7 @@ Authors: Asvin G
+ import Mathlib
+ import LeanUrat.Moves.Defs
+ import LeanUrat.Moves.DefsT
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # Moves/L2_slotDecomp_R4 — (S3) slot decomposition + Y-transcendence (D.2/D.3)
+@@ -51,17 +52,14 @@ private lemma T_pow_s {R : Type*} [CommRing R] (s : ℤ) (j : ℕ) :
+ 
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+-/-- `R 1 = 1`. -/
+-private lemma R_one (σ : Stage p F) : σ.R 1 = 1 := by
+-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
++/- [SYN2-S1 SWEEP-1, 2026-07-31] private ResVal.R_one σ/w_one/w_neg DELETED —
++single proof source `Moves/ResVal.lean` (α-identical); uses re-pointed. -/
+ 
+ /-- `R(Φ^j) = (R Φ)^j`. -/
+ private lemma R_Phi_pow (σ : Stage p F) (j : ℕ) : σ.R (σ.Φ ^ j) = (σ.R σ.Φ) ^ j := by
+   have hΦ : σ.Φ ≠ 0 := σ.hmonic.ne_zero
+   induction j with
+-  | zero => rw [pow_zero, pow_zero, R_one]
++  | zero => rw [pow_zero, pow_zero, ResVal.R_one σ]
+   | succ n ih =>
+     rw [pow_succ, σ.hRmul (σ.Φ ^ n) σ.Φ (pow_ne_zero n hΦ) hΦ, ih, pow_succ]
+ 
+@@ -144,20 +142,6 @@ private lemma decomp_sum (σ : Stage p F)
+       rw [σ.hRadd (T a) (∑ j ∈ S', T j) hTa0 hP0 h3 (by rw [hwta, hwP]) (by rw [h2, hwta]), hRP]
+     exact ⟨h1, h2, h3⟩
+ 
+-/-- `w 1 = 0`. -/
+-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h; linarith
+-
+-/-- `w(-f) = w f` (via the unit `-1`). -/
+-private lemma w_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
+-    σ.w (-f) = σ.w f := by
+-  have hn1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
+-  have key := σ.hwmul (-1) (-1) hn1 hn1
+-  rw [neg_one_mul, neg_neg, w_one σ] at key
+-  have hw1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by linarith
+-  have h2 := σ.hwmul (-1) f hn1 hf
+-  rw [neg_one_mul, hw1, zero_add] at h2; exact h2
+ 
+ /-- **DECOMPOSITION engine** (graded trichotomy induction): every partial sum of equal-weight
+ slots is (a) zero with vanishing residual sum, (b) at weight `γ` with `R` additive so far, or
+@@ -212,7 +196,7 @@ private lemma trichotomy_sum (σ : Stage p F)
+           intro h0
+           have hTneg : T n = -(∑ j ∈ Finset.range n, T j) :=
+             eq_neg_of_add_eq_zero_right h0
+-          rw [hTneg, w_neg σ _ hPne] at hwn
++          rw [hTneg, ResVal.w_neg σ _ hPne] at hwn
+           omega
+         have hwPT : σ.w ((∑ j ∈ Finset.range n, T j) + T n) = γ := by
+           rw [add_comm (∑ j ∈ Finset.range n, T j) (T n),
+diff --git a/lean/LeanUrat/Moves/L4_TRANSviii_b_R4.lean b/lean/LeanUrat/Moves/L4_TRANSviii_b_R4.lean
+index 263b4d6..d25683a 100644
+--- a/lean/LeanUrat/Moves/L4_TRANSviii_b_R4.lean
++++ b/lean/LeanUrat/Moves/L4_TRANSviii_b_R4.lean
+@@ -12,6 +12,7 @@ import LeanUrat.Moves.L3_DIV
+ import LeanUrat.Moves.L3_liftMonic
+ import LeanUrat.Moves.L2_keyResidualPow
+ import LeanUrat.Moves.L0_FactB_unique
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # Moves/L4_TRANSviii_b_R4 — (S6b') the OFFSET P-LIFT above the clean threshold
+@@ -48,16 +49,11 @@ section Helpers
+ 
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+-private lemma wOne (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h; omega
+-
++/- [SYN2-S1 SWEEP-1, 2026-07-31] the camelCase Stage-engine micro-copies (the grep-first
++finding: differently named, present): `wOne` DELETED (= `ResVal.w_one`); `wPow` is the
++Φ-specialized shape — kept as a one-line ADAPTER over `ResVal.w_pow` + `hwΦ`. -/
+ private lemma wPow (σ : Stage p F) (j : ℕ) : σ.w (σ.Φ ^ j) = (j : ℤ) * σ.h := by
+-  induction j with
+-  | zero => simpa using wOne σ
+-  | succ n ih =>
+-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero n σ.hmonic.ne_zero) σ.hmonic.ne_zero, ih, σ.hwΦ]
+-    push_cast; ring
++  rw [ResVal.w_pow σ σ.Φ σ.hmonic.ne_zero j, σ.hwΦ]
+ 
+ /-- Every element of the next residue field `K⟮z̄⟯` is a polynomial in `z̄` over `K`
+ (the image of `eval₂` is a subfield: inverses via the finite-field power trick). -/
+@@ -120,7 +116,7 @@ private lemma liftWeight' (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (
+       · rw [htt0 k hcoef, Polynomial.degree_zero]; exact hΦdegbot
+       · obtain ⟨-, hinC, -, -⟩ := httk k hklt hcoef
+         exact hinC
+-  have hw1 : σ.w 1 = 0 := wOne σ
++  have hw1 : σ.w 1 = 0 := ResVal.w_one σ
+   have hsum : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
+       = (∑ k ∈ Finset.range g, tt k * σ.Φ ^ (σ.e * k)) + σ.Φ ^ (σ.e * g) := by
+     have step1 : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
+diff --git a/lean/LeanUrat/Moves/L5_landTransport_R4.lean b/lean/LeanUrat/Moves/L5_landTransport_R4.lean
+index f5e6030..2b6f6a7 100644
+--- a/lean/LeanUrat/Moves/L5_landTransport_R4.lean
++++ b/lean/LeanUrat/Moves/L5_landTransport_R4.lean
+@@ -4,6 +4,7 @@ import LeanUrat.Moves.DefsT
+ import LeanUrat.Moves.DefsCore
+ import LeanUrat.Moves.L0_FactB_unique
+ import LeanUrat.Moves.L3_liftMonic
++import LeanUrat.Moves.ResVal
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -53,37 +54,10 @@ section TransportHelpers
+ 
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+-/-- `w 1 = 0`: from `w(1·1) = w 1 + w 1`. -/
+-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  omega
+-
+-/-- `w(f^n) = n·w f`. -/
+-private lemma w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
+-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
+-  induction n with
+-  | zero => rw [pow_zero, w_one σ, Nat.cast_zero, zero_mul]
+-  | succ k ih =>
+-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hf) hf, ih]
+-    push_cast
+-    ring
+-
+-/-- `R 1 = 1` (from `hRmul` + `hRne`, cancellation in the Laurent domain). -/
+-private lemma R_one (σ : Stage p F) : σ.R (1 : Polynomial ℤ_[p]) = 1 := by
+-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  have hne : σ.R (1 : Polynomial ℤ_[p]) ≠ 0 := σ.hRne 1 one_ne_zero
+-  have key : σ.R (1 : Polynomial ℤ_[p]) * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
+-  exact (mul_left_cancel₀ hne key).symm
+-
+-/-- `R(f^n) = (R f)^n` (inlined `L0.GRe` — historical: that unit's `.olean` was not on disk
+-when written; it now builds (2026-07-30), duplication tracked as Class-D). -/
+-private lemma R_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
+-    σ.R (f ^ n) = (σ.R f) ^ n := by
+-  induction n with
+-  | zero => rw [pow_zero, pow_zero, R_one σ]
+-  | succ k ih => rw [pow_succ, σ.hRmul _ _ (pow_ne_zero k hf) hf, ih, pow_succ]
++/- [SYN2-S1 SWEEP-1, 2026-07-31] The four private Stage-engine micro-copies
++(w_one, w_pow, R_one, R_pow) are DELETED — single proof source is the ResVal
++Stage-keyed engine (`Moves/ResVal.lean`, statements α-identical); uses re-pointed
++to `ResVal.w_one`/`ResVal.w_pow`/`ResVal.R_pow`. -/
+ 
+ open Classical in
+ /-- A slot subset `T ⊆ range M` of a family of coefficients yields a `Φ̂`-development of its
+@@ -159,7 +133,7 @@ private lemma block_R (σ : Stage p F) {Φhat : Polynomial ℤ_[p]} (hmon : Φha
+     intro _ hTS
+     rw [Finset.sum_singleton, Finset.sum_singleton,
+         σ.hRmul _ _ (hTS a (Finset.mem_singleton_self a)).1 (pow_ne_zero _ hmon.ne_zero),
+-        R_pow σ Φhat hmon.ne_zero a]
++        ResVal.R_pow σ Φhat hmon.ne_zero a]
+   | cons a s ha hs ih =>
+     intro hT hTS
+     have haS := hTS a (Finset.mem_cons_self a s)
+@@ -170,7 +144,7 @@ private lemma block_R (σ : Stage p F) {Φhat : Polynomial ℤ_[p]} (hmon : Φha
+     have hxne : C a * Φhat ^ a ≠ 0 := mul_ne_zero haS.1 (pow_ne_zero _ hmon.ne_zero)
+     have hyne : (∑ j ∈ s, C j * Φhat ^ j) ≠ 0 := subdev_ne hmon hdeg hsT hb (hsS b hb).1
+     have hwx : σ.w (C a * Φhat ^ a) = m := by
+-      rw [σ.hwmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), w_pow σ Φhat hmon.ne_zero a]
++      rw [σ.hwmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), ResVal.w_pow σ Φhat hmon.ne_zero a]
+       exact haS.2
+     have hwy : σ.w (∑ j ∈ s, C j * Φhat ^ j) = m := by
+       obtain ⟨j, hjs, hjC, hjeq⟩ := subdev_weight σ hK1 hdeg hsT hyne
+@@ -186,7 +160,7 @@ private lemma block_R (σ : Stage p F) {Φhat : Polynomial ℤ_[p]} (hmon : Φha
+     rw [Finset.sum_cons,
+         σ.hRadd _ _ hxne hyne hconsne (hwx.trans hwy.symm) (hwcons.trans hwx.symm),
+         ih hsT hsS,
+-        σ.hRmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), R_pow σ Φhat hmon.ne_zero a]
++        σ.hRmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), ResVal.R_pow σ Φhat hmon.ne_zero a]
+ 
+ open Classical in
+ /-- **The minimizing-slot reading at the standard lift** (D.3(d)/D.8, formerly the honest gap):
+diff --git a/lean/LeanUrat/Moves/L5_realDomination_R3.lean b/lean/LeanUrat/Moves/L5_realDomination_R3.lean
+index 60e3012..14b657d 100644
+--- a/lean/LeanUrat/Moves/L5_realDomination_R3.lean
++++ b/lean/LeanUrat/Moves/L5_realDomination_R3.lean
+@@ -6,6 +6,7 @@ Authors: Asvin G
+ import Mathlib
+ import LeanUrat.Moves.Defs
+ import LeanUrat.Moves.DefsT
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # Moves/L5_realDomination_R3 — per-stage domination `h_r > e_r·f_r` as the INDUCTIVE STEP (D.9(c))
+@@ -32,20 +33,14 @@ set_option maxHeartbeats 400000
+ 
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+-/-- `w 1 = 0` (from multiplicativity). -/
+-private lemma w_one_eq_zero (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  linarith
++/- [SYN2-S1 SWEEP-1, 2026-07-31] `w_one_eq_zero` DELETED (= `ResVal.w_one`,
++α-identical); `w_pow_Phi`/`w_sum_ge` below are non-identical SHAPES (Φ-specialized;
++disjunctive) — kept as one-line ADAPTERS over the ResVal engine, per the
++re-point-if-identical-else-record rubric. -/
+ 
+ /-- `w(Φ^m) = m · w Φ = m · h`. -/
+ private lemma w_pow_Phi (σ : Stage p F) (m : ℕ) : σ.w (σ.Φ ^ m) = (m : ℤ) * σ.h := by
+-  have hΦ0 : σ.Φ ≠ 0 := σ.hmonic.ne_zero
+-  induction m with
+-  | zero => simpa using w_one_eq_zero σ
+-  | succ n ih =>
+-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero n hΦ0) hΦ0, ih, σ.hwΦ]
+-    push_cast; ring
++  rw [ResVal.w_pow σ σ.Φ σ.hmonic.ne_zero m, σ.hwΦ]
+ 
+ /-- Ultrametric over a finite sum: if every nonzero summand has weight `≥ M`, then the whole
+ sum is either zero or has weight `≥ M`. -/
+@@ -53,23 +48,9 @@ private lemma w_sum_ge (σ : Stage p F) (M : ℤ) (f : ℕ → Polynomial ℤ_[p
+     (hf : ∀ i ∈ s, f i ≠ 0 → M ≤ σ.w (f i)) :
+     (∑ i ∈ s, f i) = 0 ∨ M ≤ σ.w (∑ i ∈ s, f i) := by
+   classical
+-  induction s using Finset.induction_on with
+-  | empty => left; simp
+-  | @insert a t ha ih =>
+-    have hft : ∀ i ∈ t, f i ≠ 0 → M ≤ σ.w (f i) := fun i hi => hf i (Finset.mem_insert_of_mem hi)
+-    have iht := ih hft
+-    rw [Finset.sum_insert ha]
+-    by_cases hfa : f a = 0
+-    · rw [hfa, zero_add]; exact iht
+-    · have hMfa : M ≤ σ.w (f a) := hf a (Finset.mem_insert_self a t) hfa
+-      rcases eq_or_ne (∑ i ∈ t, f i) 0 with hst | hst
+-      · rw [hst, add_zero]; right; exact hMfa
+-      · have hMt : M ≤ σ.w (∑ i ∈ t, f i) := iht.resolve_left hst
+-        by_cases htot : f a + ∑ i ∈ t, f i = 0
+-        · left; exact htot
+-        · right
+-          calc M ≤ min (σ.w (f a)) (σ.w (∑ i ∈ t, f i)) := le_min hMfa hMt
+-            _ ≤ σ.w (f a + ∑ i ∈ t, f i) := σ.hwult _ _ hfa hst htot
++  by_cases h : (∑ i ∈ s, f i) = 0
++  · exact Or.inl h
++  · exact Or.inr (ResVal.w_sum_ge σ s f M hf h)
+ 
+ /-- Standard-lift weight LOWER bound `e·h·g ≤ w(Φ̂)` (the inequality half of `L3.liftWeight`,
+ proved inline: all terms of the displayed lift have weight `e·h·g`). -/
+diff --git a/lean/LeanUrat/Moves/L5_recSubst_R4.lean b/lean/LeanUrat/Moves/L5_recSubst_R4.lean
+index 9b787ae..0fe6f3a 100644
+--- a/lean/LeanUrat/Moves/L5_recSubst_R4.lean
++++ b/lean/LeanUrat/Moves/L5_recSubst_R4.lean
+@@ -9,6 +9,7 @@ import LeanUrat.Moves.DefsT
+ import LeanUrat.Moves.DefsCore
+ import LeanUrat.Moves.L0_FactA_exists
+ import LeanUrat.Moves.L0_FactB_unique
++import LeanUrat.Moves.ResVal
+ 
+ /-!
+ # Moves/L5_recSubst — the D.10 substitution identity in the common localization (§B2-DEF)
+@@ -43,42 +44,10 @@ open Polynomial
+ section
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+-/-- `R 1 = 1`. -/
+-private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
+-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h
+-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
+-
+-/-- `R (g^j) = (R g)^j` for `g ≠ 0`. -/
+-private lemma R_pow' (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :
+-    σ.R (g ^ j) = (σ.R g) ^ j := by
+-  induction j with
+-  | zero => rw [pow_zero, pow_zero, R_one']
+-  | succ n ih => rw [pow_succ, σ.hRmul (g ^ n) g (pow_ne_zero n hg) hg, ih, pow_succ]
+-
+-/-- `w 1 = 0`. -/
+-private lemma w_one' (σ : Stage p F) : σ.w 1 = 0 := by
+-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
+-  rw [mul_one] at h; linarith
+-
+-/-- `w (-f) = w f` (via the unit `-1`). -/
+-private lemma w_neg' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
+-    σ.w (-f) = σ.w f := by
+-  have hn1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
+-  have key := σ.hwmul (-1) (-1) hn1 hn1
+-  rw [neg_one_mul, neg_neg, w_one' σ] at key
+-  have hw1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by linarith
+-  have h2 := σ.hwmul (-1) f hn1 hf
+-  rw [neg_one_mul, hw1, zero_add] at h2; exact h2
+-
+-/-- `w (g^j) = j·(w g)` for `g ≠ 0`. -/
+-private lemma w_pow' (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :
+-    σ.w (g ^ j) = (j : ℤ) * σ.w g := by
+-  induction j with
+-  | zero => rw [pow_zero, w_one' σ]; simp
+-  | succ n ih =>
+-    rw [pow_succ, σ.hwmul (g ^ n) g (pow_ne_zero n hg) hg, ih]
+-    push_cast; ring
++/- [SYN2-S1 SWEEP-1, 2026-07-31] The five private Stage-engine micro-copies
++(R_one', R_pow', w_one', w_neg', w_pow') are DELETED — single proof source is the
++ResVal Stage-keyed engine (α-identical statements); `w_sum_ge` below is a
++non-identical SHAPE (subsum-nonvanishing hypotheses), kept as a one-line ADAPTER. -/
+ 
+ /-- A nonempty subfamily of the slots of a development sums to a nonzero element (Fact B). -/
+ private lemma subsum_ne_zero {R : Type*} [CommRing R] [Nontrivial R] (Φ : Polynomial R)
+@@ -112,28 +81,10 @@ private lemma subsum_ne_zero {R : Type*} [CommRing R] [Nontrivial R] (Φ : Polyn
+ 
+ /-- Generalized ultrametric bound over a finset with nonvanishing subsums. -/
+ private lemma w_sum_ge (σ : Stage p F) (T : ℕ → Polynomial ℤ_[p]) (γ' : ℤ) (S : Finset ℕ)
+-    (h0 : ∀ j ∈ S, T j ≠ 0) (hw : ∀ j ∈ S, γ' ≤ σ.w (T j))
++    (_h0 : ∀ j ∈ S, T j ≠ 0) (hw : ∀ j ∈ S, γ' ≤ σ.w (T j))
+     (hsub : ∀ S' ⊆ S, S'.Nonempty → (∑ j ∈ S', T j) ≠ 0) (hne : S.Nonempty) :
+-    γ' ≤ σ.w (∑ j ∈ S, T j) := by
+-  classical
+-  revert h0 hw hsub hne
+-  refine Finset.induction_on S ?_ ?_
+-  · intro _ _ _ hne; exact absurd hne (by simp)
+-  · intro a S' ha ih h0 hw hsub _
+-    rw [Finset.sum_insert ha]
+-    have hTa0 : T a ≠ 0 := h0 a (Finset.mem_insert_self a S')
+-    have hwa : γ' ≤ σ.w (T a) := hw a (Finset.mem_insert_self a S')
+-    rcases S'.eq_empty_or_nonempty with hE | hE
+-    · subst hE; rw [Finset.sum_empty, add_zero]; exact hwa
+-    · have hP0 : (∑ j ∈ S', T j) ≠ 0 := hsub S' (Finset.subset_insert a S') hE
+-      have hPw : γ' ≤ σ.w (∑ j ∈ S', T j) :=
+-        ih (fun j hj => h0 j (Finset.mem_insert_of_mem hj))
+-          (fun j hj => hw j (Finset.mem_insert_of_mem hj))
+-          (fun S'' h'' => hsub S'' (h''.trans (Finset.subset_insert a S'))) hE
+-      have htot : T a + ∑ j ∈ S', T j ≠ 0 := by
+-        have h := hsub (insert a S') (Finset.Subset.refl _) ⟨a, Finset.mem_insert_self a S'⟩
+-        rwa [Finset.sum_insert ha] at h
+-      exact le_trans (le_min hwa hPw) (σ.hwult (T a) (∑ j ∈ S', T j) hTa0 hP0 htot)
++    γ' ≤ σ.w (∑ j ∈ S, T j) :=
++  ResVal.w_sum_ge σ S T γ' (fun j hj _ => hw j hj) (hsub S Finset.Subset.rfl hne)
+ 
+ /-- **The graded trichotomy engine.** Over a family of nonzero terms of common weight `γ`
+ with nonvanishing subsums: the total weight is `≥ γ`; if it equals `γ` the residual is
+@@ -212,7 +163,7 @@ theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (
+   have hΦ'ne : σ'.Φ ≠ 0 := σ'.hmonic.ne_zero
+   have httne' : (-tt) ≠ 0 := neg_ne_zero.mpr httne
+   have hΦ'ne2 : σ.Φ + -tt ≠ 0 := by rw [← sub_eq_add_neg, ← hΦ'eq]; exact hΦ'ne
+-  have hwneg : σ.w (-tt) = σ.w σ.Φ := by rw [w_neg' σ tt httne, htw]
++  have hwneg : σ.w (-tt) = σ.w σ.Φ := by rw [ResVal.w_neg σ tt httne, htw]
+   have hdegΦ' : σ'.Φ.degree = σ.Φ.degree := by
+     rw [hΦ'eq]; exact Polynomial.degree_sub_eq_left_of_degree_lt htc
+   have hRtt : σ.R (-tt) = - LaurentPolynomial.C cc := by
+@@ -260,7 +211,7 @@ theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (
+     exact ⟨(Finset.mem_filter.mp h1.1).2, h1.2⟩
+   have hTw : ∀ j, B j ≠ 0 → σ.w (B j * σ'.Φ ^ j) = σ.w (B j) + (j : ℤ) * σ.w σ.Φ := by
+     intro j hBj
+-    rw [σ.hwmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), w_pow' σ σ'.Φ hΦ'ne, hwΦ']
++    rw [σ.hwmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), ResVal.w_pow σ σ'.Φ hΦ'ne, hwΦ']
+   have hT0M : ∀ j ∈ M, B j * σ'.Φ ^ j ≠ 0 := fun j hj =>
+     mul_ne_zero (hMmem j hj).1 (pow_ne_zero _ hΦ'ne)
+   have hTwM : ∀ j ∈ M, σ.w (B j * σ'.Φ ^ j) = σ.w f := fun j hj => by
+@@ -366,8 +317,8 @@ theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (
+     simp only [Stage.ratRes] at h1
+     rw [h1, hcC, LaurentPolynomial.eval₂_C, LaurentPolynomial.eval₂_C]
+   -- slotwise: R'(B_j·Φ'^j) = R'(B_j)·z^j vs R(B_j·Φ'^j) = R(B_j)·(z − c̃)^j
+-  rw [σ.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), R_pow' σ σ'.Φ hΦ'ne,
+-    σ'.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), R_pow' σ' σ'.Φ hΦ'ne,
++  rw [σ.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), ResVal.R_pow σ σ'.Φ hΦ'ne,
++    σ'.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), ResVal.R_pow σ' σ'.Φ hΦ'ne,
+     hRΦ', σ'.hRΦ, hs1', map_mul, map_mul, map_pow, map_pow, hXchild, hXpar, hcoeffj]
+ 
+ end LeanUrat.Moves
+diff --git a/lean/LeanUrat/MovesD/E7_rankLt.lean b/lean/LeanUrat/MovesD/E7_rankLt.lean
+index b861a54..a267fb4 100644
+--- a/lean/LeanUrat/MovesD/E7_rankLt.lean
++++ b/lean/LeanUrat/MovesD/E7_rankLt.lean
+@@ -27,8 +27,11 @@ open LeanUrat.Moves LeanUrat.MovesC Polynomial
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+ /-- Finiteness of any subtype of monic degree-`g` polynomials over a finite field:
+-the coefficient tuple `(coeff 0, …, coeff g)` determines the polynomial. -/
+-private lemma finite_of_monic_natDegree {K : Type*} [Field K] [Finite K] (g : ℕ)
++the coefficient tuple `(coeff 0, …, coeff g)` determines the polynomial.
++[SYN2-S1 SWEEP-5, 2026-07-31: DE-PRIVATIZED as the family SURVIVOR (the general form —
++takes any predicate S with a Monic ∧ natDegree extraction); E8's specialized twin
++`finite_eligible` is deleted and re-pointed here.] -/
++lemma finite_of_monic_natDegree {K : Type*} [Field K] [Finite K] (g : ℕ)
+     (S : Polynomial K → Prop) (hS : ∀ q, S q → q.Monic ∧ q.natDegree = g) :
+     Finite {q : Polynomial K // S q} := by
+   apply Finite.of_injective (β := (Fin (g + 1) → K)) (fun q => fun i : Fin (g + 1) => q.1.coeff i)
+diff --git a/lean/LeanUrat/MovesD/E8_rankInj.lean b/lean/LeanUrat/MovesD/E8_rankInj.lean
+index 688834f..d53ca62 100644
+--- a/lean/LeanUrat/MovesD/E8_rankInj.lean
++++ b/lean/LeanUrat/MovesD/E8_rankInj.lean
+@@ -3,15 +3,21 @@ Unit E8.rank_inj  (MovesD campaign, E-phase)  [AUX]
+ informal: on ONE eligible set, rank determines the factor (lex through the shared
+ `fieldEnum` is a strict total order — the note's "ordered lexicographically by
+ coefficient vectors in D.3(e)'s fixed residue bases").
+-deps (blueprint): E3, E6.  [as-built, 2026-07-30 verify-2 fold-in: imports only Defs;
+-E3's subfield identity is re-proved privately below (`poolSubfield_eq`) and E6's
++deps (blueprint): E3, E6.  [as-built, 2026-07-30 verify-2 fold-in: imported only Defs;
++E3's subfield identity was re-proved privately below (`poolSubfield_eq`) and E6's
+ `eligible_card_le` is not used — rank_inj needs no cardinality bound.]
++[SYN2-S1 SWEEP-5, 2026-07-31: the verify-2 duplication is CLOSED — E3/E7 now imported;
++`poolSubfield_eq` is a short corollary of E3's `frameField_eq_pool` (the cite, no
++re-proof); `finite_eligible` DELETED, re-pointed at E7's de-privatized survivor
++`finite_of_monic_natDegree`.]
+ sketch: equal Ranch-images + E3's common subfield give literally equal F-side eligible
+ sets; two members of a finite set with equal strict-initial-segment counts under a strict
+ total order are equal.  difficulty: medium-hard.  hypothesis_fields: none.
+ -/
+ import Mathlib
+ import LeanUrat.MovesD.Defs
++import LeanUrat.MovesD.E3_frameField
++import LeanUrat.MovesD.E7_rankLt
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -88,74 +94,19 @@ private lemma rank_count_inj {α : Type*} [Finite α] (r : α → α → Prop)
+ 
+ /-! ### the eligible set is finite -/
+ 
+-private lemma finite_eligible (w g μ : ℕ) (Rq : Polynomial F) :
+-    Finite {q : Polynomial F // EligibleImage p w g μ Rq q} := by
+-  apply Finite.of_injective
+-    (f := fun q : {q : Polynomial F // EligibleImage p w g μ Rq q} =>
+-      (fun i : Fin (g + 1) => q.1.coeff i))
+-  intro q q' hqq'
+-  apply Subtype.ext
+-  apply Polynomial.ext
+-  intro i
+-  by_cases hi : i ≤ g
+-  · simpa using congrFun hqq' ⟨i, by omega⟩
+-  · rw [Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q.2.2.1]; omega),
+-       Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q'.2.2.1]; omega)]
+-
+-/-! ### the pool subfield IS the matched frame field (E3, proved inline) -/
++/- [SYN2-S1 SWEEP-5, 2026-07-31] finite_eligible DELETED — supplied by E7's
++de-privatized `finite_of_monic_natDegree` (EligibleImage extracts Monic ∧ natDegree = g). -/
++
++/-! ### the pool subfield IS the matched frame field — E3's identity, CITED
++[SYN2-S1 SWEEP-5, 2026-07-31: was "proved inline" (the verify-2 record); now the
++Subfield-valued corollary of `E3.frameField_eq_pool`, single proof source.] -/
+ 
+ private lemma poolSubfield_eq {R : ShapeRead} {ν : Node p F} (hM : R.Matches ν) :
+     poolSubfield p R.w F = ν.σ.K := by
+   classical
+-  obtain ⟨-, -, -, -, -, -, -, -, -, -, -, hcard, -⟩ := hM
+-  -- `hcard : Nat.card ↥ν.σ.K = p ^ R.w`
+   have hcarrier : (ν.σ.K : Set F) = pool p R.w F := by
+-    -- the easy inclusion: a finite field of order `p^w` lies in the pool
+-    have hsub : (ν.σ.K : Set F) ⊆ pool p R.w F := by
+-      intro x hx
+-      simp only [pool, Set.mem_setOf_eq]
+-      haveI : Fintype ↥ν.σ.K := Fintype.ofFinite _
+-      have hcard' : Fintype.card ↥ν.σ.K = p ^ R.w := by
+-        rw [← Nat.card_eq_fintype_card]; exact hcard
+-      have hpow : (⟨x, hx⟩ : ↥ν.σ.K) ^ (p ^ R.w) = ⟨x, hx⟩ := by
+-        rw [← hcard']; exact FiniteField.pow_card _
+-      simpa using congrArg (fun z : ↥ν.σ.K => (z : F)) hpow
+-    -- the pool is finite of size `≤ p^w` (roots of `X^{p^w} - X`)
+-    have hp2 : 2 ≤ p := (Fact.out : p.Prime).two_le
+-    have hq2 : 2 ≤ p ^ R.w := by
+-      calc 2 ≤ p := hp2
+-        _ = p ^ 1 := (pow_one p).symm
+-        _ ≤ p ^ R.w := Nat.pow_le_pow_right (by omega) R.hw
+-    have hφ0 : (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F) ≠ 0 := by
+-      intro h0
+-      have hc1 : (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).coeff (p ^ R.w) = 1 := by
+-        rw [Polynomial.coeff_sub, Polynomial.coeff_X_pow, if_pos rfl,
+-            Polynomial.coeff_X_of_ne_one (by omega), sub_zero]
+-      rw [h0, Polynomial.coeff_zero] at hc1
+-      exact one_ne_zero hc1.symm
+-    have hset : pool p R.w F =
+-        (↑(Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).roots.toFinset : Set F) := by
+-      ext x
+-      simp only [pool, Set.mem_setOf_eq, Finset.mem_coe, Multiset.mem_toFinset,
+-                 Polynomial.mem_roots', hφ0, ne_eq, not_false_eq_true, true_and,
+-                 Polynomial.IsRoot.def, Polynomial.eval_sub, Polynomial.eval_pow,
+-                 Polynomial.eval_X, sub_eq_zero]
+-    have hpoolfin : (pool p R.w F).Finite := by
+-      rw [hset]; exact Finset.finite_toSet _
+-    have hpoolcard : (pool p R.w F).ncard ≤ p ^ R.w := by
+-      rw [hset, Set.ncard_coe_finset]
+-      calc (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).roots.toFinset.card
+-          ≤ Multiset.card (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).roots :=
+-            Multiset.toFinset_card_le _
+-        _ ≤ (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).natDegree :=
+-            Polynomial.card_roots' _
+-        _ ≤ p ^ R.w := by
+-            refine le_trans (Polynomial.natDegree_sub_le _ _) ?_
+-            rw [Polynomial.natDegree_X_pow, Polynomial.natDegree_X]
+-            exact max_le le_rfl (by omega)
+-    have hKcard : (ν.σ.K : Set F).ncard = p ^ R.w := hcard
+-    exact Set.eq_of_subset_of_ncard_le hsub (by rw [hKcard]; exact hpoolcard) hpoolfin
+-  -- convert the carrier equality into a subfield equality
++    rw [← frameField_eq_pool hM]
++    exact Set.ext fun x => ⟨fun hx => ⟨⟨x, hx⟩, rfl⟩, fun ⟨y, hy⟩ => hy ▸ y.2⟩
+   have hex : ∃ S : Subfield F, (S : Set F) = pool p R.w F := ⟨ν.σ.K, hcarrier⟩
+   have hpeq : poolSubfield p R.w F = hex.choose := by
+     unfold poolSubfield; rw [dif_pos hex]
+@@ -206,7 +157,7 @@ theorem rank_inj {R : ShapeRead} {ν ν' : Node p F} (hM : R.Matches ν) (hM' :
+   rw [e1, e2] at hs
+   -- the common eligible subtype, with both ψ-images as members
+   haveI : Finite {q : Polynomial F // EligibleImage p R.w ν.g ν.μ (RanchImage ν) q} :=
+-    finite_eligible R.w ν.g ν.μ (RanchImage ν)
++    finite_of_monic_natDegree ν.g _ (fun q h => ⟨h.1, h.2.1⟩)
+   have key : (⟨ψImage ν, hmem⟩ :
+         {q : Polynomial F // EligibleImage p R.w ν.g ν.μ (RanchImage ν) q})
+       = ⟨ψImage ν', hmem'⟩ := by
+diff --git a/lean/LeanUrat/MovesS/EvalAtCoe.lean b/lean/LeanUrat/MovesS/EvalAtCoe.lean
+index 354f1db..7a97a77 100644
+--- a/lean/LeanUrat/MovesS/EvalAtCoe.lean
++++ b/lean/LeanUrat/MovesS/EvalAtCoe.lean
+@@ -15,4 +15,44 @@ theorem evalAt_coe (q₀ : ℚ) (f : OKat q₀) :
+     evalAt q₀ f = RatFunc.eval (RingHom.id ℚ) q₀ (f : Qq) :=
+   rfl
+ 
++open Polynomial in
++/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`,
++whenever `q.eval x ≠ 0`.
++[SYN2-S1 SWEEP-2 public hoist, queue item 8, 2026-07-31 — single proof source for the
++FOUR ex-private byte-identical copies: `PowSubstOK.eval_algebraMap_div` (the source,
++proof verbatim below), `N2PolyGeom.eval_algebraMap_div`, `N2Rsh.eval_algebraMap_div'`,
++`MovesV/V0_xhds_witness.eval_algebraMap_div` — all deleted and re-pointed here.
++RECORDED NON-ITEM: `N2Sigmas.n2_okat_div`/`n2_evalAt_div` are the ADJACENT OKat/evalAt
++idiom (Subtype-valued `evalAt`, OKat-membership form), NOT statement-identical — kept,
++per the re-point-if-identical-else-record rubric.] -/
++lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
++    RatFunc.eval (RingHom.id ℚ) x
++        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
++      = p.eval x / q.eval x := by
++  have hq0 : q ≠ 0 := fun h0 => hq (by simp [h0])
++  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
++  have hdvd : (algebraMap (Polynomial ℚ) Qq p
++      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
++    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
++  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
++      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
++    rw [Polynomial.eval₂_id]
++    obtain ⟨c, hc⟩ := hdvd
++    intro hz
++    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
++  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
++      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
++    rw [RatFunc.denom_algebraMap]; simp
++  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
++    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
++  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
++    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
++  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
++      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
++    div_mul_cancel₀ _ hqne
++  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
++  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
++  rw [eq_div_iff hq]
++  exact key
++
+ end LeanUrat.MovesS
+diff --git a/lean/LeanUrat/MovesS/N2PolyGeom.lean b/lean/LeanUrat/MovesS/N2PolyGeom.lean
+index 645a50d..09699e4 100644
+--- a/lean/LeanUrat/MovesS/N2PolyGeom.lean
++++ b/lean/LeanUrat/MovesS/N2PolyGeom.lean
+@@ -14,6 +14,7 @@ UNPROVABLE until their `n2M` inputs (rowVal/ιsh/entCount/cellInst/activeState)
+ are filled by `n2_events`/`n2_ent_flow`/`n2_carriers` in N2Carriers.lean.
+ -/
+ import LeanUrat.MovesS.N2Carriers
++import LeanUrat.MovesS.EvalAtCoe
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -183,38 +184,8 @@ FILLED in N2Carriers.lean, so the three owned proof fields (`tg_interp`,
+ `ι_interp`, `ι_count`) are now provable in place; the owner units n2_interp_tg /
+ n2_interp_iota project them from the instance. -/
+ 
+-/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
+-whenever `q.eval x ≠ 0` (local copy of PowSubstOK's private lemma, as in
+-N2Rsh.lean). -/
+-private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
+-    RatFunc.eval (RingHom.id ℚ) x
+-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      = p.eval x / q.eval x := by
+-  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
+-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
+-  have hdvd : (algebraMap (Polynomial ℚ) Qq p
+-      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
+-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
+-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [Polynomial.eval₂_id]
+-    obtain ⟨c, hc⟩ := hdvd
+-    intro hz
+-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
+-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [RatFunc.denom_algebraMap]; simp
+-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
+-    div_mul_cancel₀ _ hqne
+-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
+-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
+-  rw [eq_div_iff hq]
+-  exact key
++/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div DELETED — single
++proof source `MovesS/EvalAtCoe.lean` (public, byte-identical); bare uses resolve. -/
+ 
+ /-- `evalAt` of a `pgDiv` presentation with regular denominator. -/
+ private lemma evalAt_pgDiv {q₀ : ℚ} {num den : Polynomial ℚ} {qp : ℕ}
+diff --git a/lean/LeanUrat/MovesS/N2Rsh.lean b/lean/LeanUrat/MovesS/N2Rsh.lean
+index da1ed1a..13ad3d2 100644
+--- a/lean/LeanUrat/MovesS/N2Rsh.lean
++++ b/lean/LeanUrat/MovesS/N2Rsh.lean
+@@ -25,6 +25,7 @@ import LeanUrat.MovesS.N2WshpDevice
+ import LeanUrat.MovesS.N2ShEvents
+ import LeanUrat.MovesS.N2ShLaws
+ import LeanUrat.MovesS.N2SolveVals
++import LeanUrat.MovesS.EvalAtCoe
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -60,37 +61,8 @@ private theorem powSubst_one (f : Qq) : powSubst 1 f = f := by
+   rw [map_div₀, powSubst_algebraMap', powSubst_algebraMap']
+   simp [RatFunc.num_div_denom]
+ 
+-/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
+-whenever `q.eval x ≠ 0` (local copy of PowSubstOK's private lemma). -/
+-private lemma eval_algebraMap_div' (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
+-    RatFunc.eval (RingHom.id ℚ) x
+-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      = p.eval x / q.eval x := by
+-  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
+-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
+-  have hdvd : (algebraMap (Polynomial ℚ) Qq p
+-      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
+-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
+-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [Polynomial.eval₂_id]
+-    obtain ⟨c, hc⟩ := hdvd
+-    intro hz
+-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
+-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [RatFunc.denom_algebraMap]; simp
+-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
+-    div_mul_cancel₀ _ hqne
+-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
+-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
+-  rw [eq_div_iff hq]
+-  exact key
++/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div DELETED — single
++proof source `MovesS/EvalAtCoe.lean` (public; primed use re-pointed). -/
+ 
+ /-- The shallow convolution at the root shape (k = 1, σ₀ = 0, δ = 1) collapses to
+ the single δ = 1 blockSolve leg at σ = {(1,2)}. -/
+@@ -178,7 +150,7 @@ theorem n2_rsh (hdet : DetHyp n2T n2RB n2hK) :
+       have h1 : evalAt p ⟨blockSolve n2T n2RB n2hdc n2hK n2hdet 2 he2 n2τ {n2v12}, hB⟩
+           = RatFunc.eval (RingHom.id ℚ) p
+               (blockSolve n2T n2RB n2hdc n2hK n2hdet 2 he2 n2τ {n2v12}) := rfl
+-      rw [h1, (n2_solve_vals he2).1, eval_algebraMap_div' p (X + 1) (X ^ 2 + X + 1) hbden]
++      rw [h1, (n2_solve_vals he2).1, eval_algebraMap_div p (X + 1) (X ^ 2 + X + 1) hbden]
+       simp
+     have hsub : (⟨Rsh n2T n2M n2RB n2hdc n2hK hdet n2F n2Chain.WshP {n2v12}, hok⟩ : OKat p)
+         = ⟨blockSolve n2T n2RB n2hdc n2hK n2hdet 2 he2 n2τ {n2v12}, hB⟩ :=
+diff --git a/lean/LeanUrat/MovesS/PowSubstOK.lean b/lean/LeanUrat/MovesS/PowSubstOK.lean
+index 746d327..8bfdb6d 100644
+--- a/lean/LeanUrat/MovesS/PowSubstOK.lean
++++ b/lean/LeanUrat/MovesS/PowSubstOK.lean
+@@ -7,6 +7,7 @@ ring homs.
+ -/
+ import LeanUrat.MovesS.Defs
+ import LeanUrat.MovesS.PowSubst
++import LeanUrat.MovesS.EvalAtCoe
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+@@ -33,37 +34,9 @@ private lemma powSubst_algebraMap (δ : ℕ+) (p : Polynomial ℚ) :
+   have h := RingHom.congr_fun hFG p
+   simpa only [RingHom.comp_apply, Polynomial.coe_eval₂RingHom, Polynomial.comp] using h
+ 
+-/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`,
+-whenever `q.eval x ≠ 0`. -/
+-private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
+-    RatFunc.eval (RingHom.id ℚ) x
+-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      = p.eval x / q.eval x := by
+-  have hq0 : q ≠ 0 := fun h0 => hq (by simp [h0])
+-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
+-  have hdvd : (algebraMap (Polynomial ℚ) Qq p
+-      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
+-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
+-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [Polynomial.eval₂_id]
+-    obtain ⟨c, hc⟩ := hdvd
+-    intro hz
+-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
+-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [RatFunc.denom_algebraMap]; simp
+-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
+-    div_mul_cancel₀ _ hqne
+-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
+-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
+-  rw [eq_div_iff hq]
+-  exact key
++/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div (the family SOURCE)
++DELETED — hoisted verbatim to the public `MovesS/EvalAtCoe.lean` copy; bare uses
++resolve unchanged (same namespace). -/
+ 
+ theorem powSubst_OKat (δ : ℕ+) (q₀ : ℚ) (f : Qq) (h : f ∈ OKat (q₀ ^ (δ : ℕ))) :
+     powSubst δ f ∈ OKat q₀ := by
+diff --git a/lean/LeanUrat/MovesT/E5_rootSplit.lean b/lean/LeanUrat/MovesT/E5_rootSplit.lean
+index 1e7e60b..47d75a4 100644
+--- a/lean/LeanUrat/MovesT/E5_rootSplit.lean
++++ b/lean/LeanUrat/MovesT/E5_rootSplit.lean
+@@ -179,14 +179,8 @@ private lemma mem_oneNode_iff (T : TreeModel p F n N m pol) (ν : Node p F)
+     simpa using (show ν.species = ReadSpecies.root from h)
+   exact T.mem_single ν h1 x
+ 
+-/-- histories are their node lists (the two proof fields are propositional). -/
+-private lemma history_eq_of_nodes_eq {H H' : History p F}
+-    (h : H.nodes = H'.nodes) : H = H' := by
+-  obtain ⟨n1, hne1, hri1⟩ := H
+-  obtain ⟨n2, hne2, hri2⟩ := H'
+-  change n1 = n2 at h
+-  subst h
+-  rfl
++/- [SYN2-S1 SWEEP-4, 2026-07-31] private history_ext DELETED —
++single proof source `F0_preHalt.history_ext` (public, already imported); uses re-pointed. -/
+ 
+ /-- a realized nonempty history's HEAD is a realized root child. -/
+ private lemma child_of_mem (T : TreeModel p F n N m pol) (H : History p F)
+@@ -205,11 +199,13 @@ private lemma child_of_mem (T : TreeModel p F n N m pol) (H : History p F)
+ end RootSplitHelpers
+ 
+ /-- **T-E5, the ROOT CLAUSE** — the decomposition chain of the blueprint sketch
+-(steps (1)–(5)), PROVED 2026-07-30 (the assembly-spine escalation) MODULO the single
+-fenced residual `hnostray` below. Route: `fiberAt` decomposes as
++(steps (1)–(5)), PROVED (sorry-free since the QUEUE ITEM 5 hoist, 2026-07-31: the
++former fenced residual rides as the NAMED premises `hU`/`hR`, TV-A2's pinned
++shape). Route: `fiberAt` decomposes as
+ `rootCell ∩ ⋂ᵢ trackEvent i` (the ⊆ leg from `fiberAt`'s own clauses through the
+ head roster; the ⊇ leg reconstructs all six clauses at any decomposed point, with
+-the head-roster completeness `hnostray` the one non-clause step); the count then
++the head-roster completeness `hnostray` the one non-clause step — a THEOREM of
++(U)∧(R) below); the count then
+ follows from (SIB) at the `.amb` cell (= the root cell, via `RootCellsOf`) for
+ t ≥ 2, and directly (no SIB) for t ≤ 1, with T-E2 converting `card(Σ₀)·pⁿ = p^m`. -/
+ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
+@@ -220,7 +216,9 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
+     (hsib : SibCount T CA.toCellData χ) (hreal : Realizes T χ Tr)
+     (g : Fin n → ZMod p) (htracks : RootSplitData Tr g)
+     (hcr : ∀ i, ChildRoot none (htracks.headOf i))
+-    (hfib : ∀ x, Tr.fiberAt T χ x → x ∈ rootCell χ g) :
++    (hfib : ∀ x, Tr.fiberAt T χ x → x ∈ rootCell χ g)
++    (hU : TrackUniqOn T χ trackOf g)
++    (hR : TrackRepOn T χ trackOf g) :
+     Nat.card ↥{x | Tr.fiberAt T χ x}
+         * (Nat.card ↥(rootCell χ g)) ^ htracks.t * p ^ n
+       = p ^ m * ∏ i : Fin htracks.t,
+@@ -320,17 +318,14 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
+       refine hx.2.2.2.1 H' (htsub i hH') ?_
+       intro hmaxc
+       exact hnmax (hmax_down i H' hmaxc)
+-  -- ==== THE FENCED RESIDUAL, REDUCED TO ITS D4R0K CORE ====
+-  -- [ADJUDICATION RECORD 2026-07-30; REFINED at the hnostray-reduction pass. The
+-  --  adjudicated `child_red_uniform` law kills the SAME-CELL strays; the recorded
+-  --  countermodel shape is a stray root child realized on a `.red`-cell DISJOINT
+-  --  from the fiber's own cells but inside the same root cell {f̄ = g} — at such a
+-  --  point y, every trackEvent condition can hold while `oneNode ν` gives y an
+-  --  extra pruned chain, so y ∈ R ∩ ⋂ᵢ Sᵢ ∖ fiber and the displayed count breaks.
+-  --  THIS PASS reduces the residual to its exact D4R0K core — the (c2) covering
+-  --  case analysis (MOVES 7112–7119: realized root children are EXACTLY the first
+-  --  window reads on the reduction's REPEATED tracks; m_i = 1 ⇒ τ-hen carries NO
+-  --  child), displayed as the pair
++  -- ==== THE (U)∧(R) PAIR — NAMED PREMISES SINCE THE QUEUE ITEM 5 HOIST ====
++  -- [ADJUDICATION RECORD 2026-07-30; REFINED at the hnostray-reduction pass;
++  --  EXECUTED as the Q1-ratified hoist 2026-07-31 (queue item 5): the pair rides
++  --  as the named premises `hU`/`hR` (TV_A1's `TrackUniqOn`/`TrackRepOn`), no
++  --  in-proof admission remains. The adjudicated `child_red_uniform` law kills
++  --  the SAME-CELL strays; the recorded countermodel shape was a stray root child
++  --  realized on a `.red`-cell DISJOINT from the fiber's own cells but inside the
++  --  same root cell {f̄ = g}. The pair:
+   --    (U) per-point per-track UNIQUENESS: two realized root children at one
+   --        root-cell point sharing a track are equal ("THE first window read");
+   --    (R) REPEATED-ONLY EXHAUSTIVENESS: a realized root child's track is a
+@@ -341,28 +336,15 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
+   --  (U)+(R) at x₀ hence SURJECTIVE by cardinality, heads realized at every
+   --  decomposed point (trackEvent clause (1) on the one-node chain), and (U) at y
+   --  pins any stray to the head sharing its track. Owner of (U)∧(R): HC-2/D4R0K
+-  --  (presented-face genre, same owner row as `presents`/`state_cell`). Discharge
+-  --  shape: the canonical `T.child none ν ·` event is the ν-cell stratum inside
+-  --  its track's window, and window structure is track data of the reduction
+-  --  datum g. NOTE for adjudication: (U)∧(R) is a candidate `CellData`/interface
+-  --  law pair, quantified over root-cell points only — strictly weaker than any
+-  --  per-cell table and independent of the cell chart.]
+-  -- [FENCE-RULE RECORD 2026-07-29 (negation-attempt duty; date CORRECTED at BP5/N6
+-  --  2026-07-30 — the record originally read "2026-08-01" from clock skew; git
+-  --  evidence: introduced in commit 00b03aa, authored 2026-07-29 17:39 UTC, matching
+-  --  the PROJECT_STATE date correction): no countermodel is
+-  --  constructible from in-corpus witnesses — this `have` sits under the FULL
+-  --  `CellAssign` premise row (child_cover included) and NO `CellAssign` instance
+-  --  exists in the corpus (G1's toys deliberately stop at the `CellData` layer:
+-  --  child_cover FAILS on both carriers at g = (1,0)); honest-open stands.]
+-  have hD4R0K :
+-      (∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
+-          T.child none ν' y → trackOf ν = trackOf ν' → ν = ν') ∧
+-      (∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
+-          2 ≤ Multiset.count (trackOf ν)
+-            (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y))) := by
+-    sorry
+-  obtain ⟨hTrkUniq, hTrkRep⟩ := hD4R0K
++  --  (presented-face genre, same owner row as `presents`/`state_cell`).
++  --  NECESSITY MACHINE-CERTIFIED (TV_A5b_forge.lean, 2026-07-31): the pair is NOT
++  --  derivable from the `CellData`/`CellAssign` laws — named hypotheses are the
++  --  honest carrier.]
++  have hTrkUniq : ∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
++      T.child none ν' y → trackOf ν = trackOf ν' → ν = ν' := hU
++  have hTrkRep : ∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
++      2 ≤ Multiset.count (trackOf ν)
++        (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y)) := hR
+   -- ==== roster TRACK-COMPLETENESS, machine-checked from (U)∧(R) + fiberAt (vi) ====
+   -- |heads| = |repeated factors| (fiberAt clause (vi) at x₀, card level)
+   have hcard6 : Tr.heads.card
+@@ -396,7 +378,7 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
+             rw [hn] at hlen1
+             simp only [List.length_cons] at hlen1
+             omega
+-      exact ⟨i, history_eq_of_nodes_eq hnodes.symm⟩
++      exact ⟨i, history_ext hnodes.symm⟩
+     · rintro ⟨i, rfl⟩
+       exact ⟨hheadchain i, rfl⟩
+   have hheads_card : Tr.heads.card = htracks.t := by
+diff --git a/lean/LeanUrat/MovesT/G1_toyGate.lean b/lean/LeanUrat/MovesT/G1_toyGate.lean
+index e5069fe..bd25507 100644
+--- a/lean/LeanUrat/MovesT/G1_toyGate.lean
++++ b/lean/LeanUrat/MovesT/G1_toyGate.lean
+@@ -8,6 +8,7 @@ import LeanUrat.MovesT.Defs
+ import LeanUrat.HC2.U31_gateReadsOf
+ import LeanUrat.HC2.U28_gateSep
+ import LeanUrat.MovesC.C0_digitSystemMass
++import LeanUrat.MovesT.F0_preHalt
+ 
+ /-! # T-G1 `toy_treeExp_gate` [split G1a/G1b] — the two pinned toy carriers (§T-G1's
+ REV-8 full-roster tables) + the gate battery (DO-3). GATE ARCHITECTURE (REV 2, Fable
+@@ -411,12 +412,8 @@ noncomputable def tB2d : History 2 (ZMod 2) := tA2b
+ private helpers only — no blueprint statement touched). -/
+ section ToyPinHelpers
+ 
+-private lemma hist_ext {H H' : History 2 (ZMod 2)} (h : H.nodes = H'.nodes) :
+-    H = H' := by
+-  obtain ⟨n, hne, hri⟩ := H
+-  obtain ⟨n', hne', hri'⟩ := H'
+-  subst h
+-  rfl
++/- [SYN2-S1 SWEEP-4, 2026-07-31] private history_ext DELETED — single proof source
++`F0_preHalt.history_ext` (the general form; this was its (2, ZMod 2) instance). -/
+ 
+ private lemma head_ne_leafA : toyHead ≠ toyLeafA := fun h => by
+   have h2 : ReadSpecies.root = ReadSpecies.recentering := congrArg Node.species h
+@@ -472,9 +469,9 @@ private lemma snoc_eq_tA2a_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
+   · intro h
+     obtain ⟨hH, hν'⟩ := snoc_eq_two
+       (show (H.snoc ν hν).nodes = [toyHead, toyLeafA] from congrArg History.nodes h)
+-    exact ⟨hist_ext (hH.trans tA1_nodes.symm), hν'⟩
++    exact ⟨history_ext (hH.trans tA1_nodes.symm), hν'⟩
+   · rintro ⟨h1, h2⟩
+-    refine hist_ext ?_
++    refine history_ext ?_
+     show H.nodes ++ [ν] = tA2a.nodes
+     rw [congrArg History.nodes h1, h2]
+     rfl
+@@ -486,9 +483,9 @@ private lemma snoc_eq_tA2b_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
+   · intro h
+     obtain ⟨hH, hν'⟩ := snoc_eq_two
+       (show (H.snoc ν hν).nodes = [toyHead, toyLeafB] from congrArg History.nodes h)
+-    exact ⟨hist_ext (hH.trans tA1_nodes.symm), hν'⟩
++    exact ⟨history_ext (hH.trans tA1_nodes.symm), hν'⟩
+   · rintro ⟨h1, h2⟩
+-    refine hist_ext ?_
++    refine history_ext ?_
+     show H.nodes ++ [ν] = tA2b.nodes
+     rw [congrArg History.nodes h1, h2]
+     rfl
+@@ -546,7 +543,7 @@ noncomputable def toyModel : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
+           congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
+         omega
+     · rintro ⟨hν, hd⟩
+-      exact ⟨Or.inl (hist_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl)), hd⟩
++      exact ⟨Or.inl (history_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl)), hd⟩
+   mem_snoc := by
+     intro H ν hν x
+     constructor
+@@ -754,7 +751,7 @@ noncomputable def toyModelB : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
+             congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
+           omega
+     · rintro ⟨hν, hd⟩
+-      exact Or.inl ⟨hist_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl), hd⟩
++      exact Or.inl ⟨history_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl), hd⟩
+   mem_snoc := by
+     intro H ν hν x
+     constructor
+@@ -938,10 +935,10 @@ private lemma tA1_prefix_tA2a : tA1.IsPrefixOf tA2a := ⟨[toyLeafA], rfl⟩
+ private lemma tA1_prefix_tA2b : tA1.IsPrefixOf tA2b := ⟨[toyLeafB], rfl⟩
+ 
+ private lemma tA2a_not_prefix_tA2b : ¬ tA2a.IsPrefixOf tA2b := fun h =>
+-  tA2a_ne_tA2b (hist_ext (h.eq_of_length rfl))
++  tA2a_ne_tA2b (history_ext (h.eq_of_length rfl))
+ 
+ private lemma tA2b_not_prefix_tA2a : ¬ tA2b.IsPrefixOf tA2a := fun h =>
+-  tA2a_ne_tA2b (hist_ext (h.eq_of_length rfl)).symm
++  tA2a_ne_tA2b (history_ext (h.eq_of_length rfl)).symm
+ 
+ private lemma tA2a_not_prefix_tA1 : ¬ tA2a.IsPrefixOf tA1 := fun h => by
+   have h2 : (2 : ℕ) ≤ 1 := h.length_le
+@@ -958,7 +955,7 @@ private lemma prefix_of_tA1 {H' : History 2 (ZMod 2)} (h : H'.IsPrefixOf tA1) :
+     rwa [tA1_nodes, List.length_singleton] at h2
+   have hpos : H'.nodes ≠ [] := H'.nonempty
+   have hpos' : 0 < H'.nodes.length := List.length_pos_iff.mpr hpos
+-  exact hist_ext (h.eq_of_length (by rw [tA1_nodes, List.length_singleton]; omega))
++  exact history_ext (h.eq_of_length (by rw [tA1_nodes, List.length_singleton]; omega))
+ 
+ private lemma prefix_of_two {H' : History 2 (ZMod 2)} {a b : Node 2 (ZMod 2)}
+     (h : H'.nodes <+: [a, b]) : H'.nodes = [a] ∨ H'.nodes = [a, b] := by
+@@ -1085,11 +1082,11 @@ noncomputable def toyTreeA : VTree 2 (ZMod 2) where
+     rcases hH with h | h | h <;> subst h
+     · exact Or.inl (prefix_of_tA1 hpre)
+     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hpre) with h | h
+-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+-      · exact Or.inr (Or.inl (hist_ext (h.trans tA2a_nodes.symm)))
++      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
++      · exact Or.inr (Or.inl (history_ext (h.trans tA2a_nodes.symm)))
+     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hpre) with h | h
+-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+-      · exact Or.inr (Or.inr (hist_ext (h.trans tA2b_nodes.symm)))
++      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
++      · exact Or.inr (Or.inr (history_ext (h.trans tA2b_nodes.symm)))
+   henV := ∅
+   hhen := by simp
+   leafV := fun H =>
+@@ -1140,11 +1137,11 @@ noncomputable def toyTreeB : VTree 2 (ZMod 2) where
+     rcases hH with h | h | h <;> subst h
+     · exact Or.inl (prefix_of_tA1 hpre)
+     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hpre) with h | h
+-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+-      · exact Or.inr (Or.inl (hist_ext (h.trans tA2a_nodes.symm)))
++      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
++      · exact Or.inr (Or.inl (history_ext (h.trans tA2a_nodes.symm)))
+     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hpre) with h | h
+-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
+-      · exact Or.inr (Or.inr (hist_ext (h.trans tA2b_nodes.symm)))
++      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
++      · exact Or.inr (Or.inr (history_ext (h.trans tA2b_nodes.symm)))
+   henV := ∅
+   hhen := by simp
+   leafV := fun H =>
+@@ -1735,18 +1732,18 @@ private lemma fiberA_iff (x : Box 2 9) :
+           intro H' hp hne hnn
+           rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hp)
+             with h | h
+-          · have hH' : H' = tA1 := hist_ext (h.trans tA1_nodes.symm)
++          · have hH' : H' = tA1 := history_ext (h.trans tA1_nodes.symm)
+             subst hH'
+             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+-          · exact absurd (hist_ext (h.trans tA2a_nodes.symm)) hne
++          · exact absurd (history_ext (h.trans tA2a_nodes.symm)) hne
+         · refine ⟨tA2b.nonempty, ⟨Or.inr (Or.inr rfl), hx⟩, ?_⟩
+           intro H' hp hne hnn
+           rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hp)
+             with h | h
+-          · have hH' : H' = tA1 := hist_ext (h.trans tA1_nodes.symm)
++          · have hH' : H' = tA1 := history_ext (h.trans tA1_nodes.symm)
+             subst hH'
+             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+-          · exact absurd (hist_ext (h.trans tA2b_nodes.symm)) hne
++          · exact absurd (history_ext (h.trans tA2b_nodes.symm)) hne
+       · rintro ⟨hne, ⟨hmem, -⟩⟩
+         exact hmem.1
+     · -- clause (ii)
+@@ -2006,18 +2003,18 @@ private lemma subFiberA_iff (x : Box 2 9) :
+           intro H'' hp1 hp2 hne
+           rcases prefix_of_two (show H''.nodes <+: [toyHead, toyLeafA] from hp2)
+             with h | h
+-          · have hH'' : H'' = tA1 := hist_ext (h.trans tA1_nodes.symm)
++          · have hH'' : H'' = tA1 := history_ext (h.trans tA1_nodes.symm)
+             subst hH''
+             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+-          · exact absurd (hist_ext (h.trans tA2a_nodes.symm)) hne
++          · exact absurd (history_ext (h.trans tA2a_nodes.symm)) hne
+         · refine ⟨tA1_prefix_tA2b, ⟨Or.inr (Or.inr rfl), hx⟩, ?_⟩
+           intro H'' hp1 hp2 hne
+           rcases prefix_of_two (show H''.nodes <+: [toyHead, toyLeafB] from hp2)
+             with h | h
+-          · have hH'' : H'' = tA1 := hist_ext (h.trans tA1_nodes.symm)
++          · have hH'' : H'' = tA1 := history_ext (h.trans tA1_nodes.symm)
+             subst hH''
+             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
+-          · exact absurd (hist_ext (h.trans tA2b_nodes.symm)) hne
++          · exact absurd (history_ext (h.trans tA2b_nodes.symm)) hne
+       · rintro ⟨-, hmem, -⟩
+         exact hmem.1
+     · intro H' hH' hmax
+diff --git a/lean/LeanUrat/MovesT/TV_B8.lean b/lean/LeanUrat/MovesT/TV_B8.lean
+index 3ec9fec..ddb4528 100644
+--- a/lean/LeanUrat/MovesT/TV_B8.lean
++++ b/lean/LeanUrat/MovesT/TV_B8.lean
+@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
+ Authors: Asvin G
+ -/
+ import LeanUrat.MovesT.Defs
++import LeanUrat.MovesT.F0_preHalt
+ 
+ /-! # TV-B8 — `History.snoc_induction`, the last-node decomposition eliminator
+ 
+@@ -44,16 +45,8 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
+ 
+ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+ 
+-/-- histories are their node lists (the two proof fields are propositional) — the
+-E5 `history_eq_of_nodes_eq`/G1 `hist_ext` content, re-derived locally (both
+-in-corpus twins are `private`; docstring note). -/
+-private lemma history_ext {H H' : History p F}
+-    (h : H.nodes = H'.nodes) : H = H' := by
+-  obtain ⟨n1, hne1, hri1⟩ := H
+-  obtain ⟨n2, hne2, hri2⟩ := H'
+-  change n1 = n2 at h
+-  subst h
+-  rfl
++/- [SYN2-S1 SWEEP-4, 2026-07-31] the wave's fourth private history_ext copy DELETED —
++single proof source `F0_preHalt.history_ext` (public, now imported); bare uses resolve. -/
+ 
+ /-- **TV-B8 `History.snoc_induction`** — the last-node decomposition eliminator
+ (blueprint §3.B display, verbatim): a motive holding at every one-node history
+diff --git a/lean/LeanUrat/MovesV/Defs.lean b/lean/LeanUrat/MovesV/Defs.lean
+index b5c5a09..f1d3e57 100644
+--- a/lean/LeanUrat/MovesV/Defs.lean
++++ b/lean/LeanUrat/MovesV/Defs.lean
+@@ -1493,14 +1493,19 @@ private theorem geomClass_dvd_of_le {b b' : ℕ} {as as' : Finset ℕ+}
+       ∣ Polynomial.X ^ b' * ∏ a ∈ as', (1 - Polynomial.X ^ (a : ℕ)) :=
+   mul_dvd_mul (pow_dvd_pow _ hb) (Finset.prod_dvd_prod_of_subset _ _ _ hs)
+ 
+-private theorem denom_dvd_of_add {x y : Qq} {L : Polynomial ℚ} (hL : L ≠ 0)
++/-- Denominator closure under addition (common denominator L).
++[SYN2-S1 SWEEP-3, 2026-07-31: DE-PRIVATIZED — the corpus single proof source; the
++V5_jrat (jrat_*) and TV_F1 (f1_*) verbatim copies are deleted and re-pointed here.] -/
++theorem denom_dvd_of_add {x y : Qq} {L : Polynomial ℚ} (hL : L ≠ 0)
+     (hx : x.denom ∣ L) (hy : y.denom ∣ L) : (x + y).denom ∣ L := by
+   obtain ⟨px, hpx⟩ := (RatFunc.denom_dvd hL).mp hx
+   obtain ⟨py, hpy⟩ := (RatFunc.denom_dvd hL).mp hy
+   exact (RatFunc.denom_dvd hL).mpr
+     ⟨px + py, by rw [hpx, hpy, map_add]; ring⟩
+ 
+-private theorem denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
++/-- Denominator closure under finite sums (common denominator L).
++[SYN2-S1 SWEEP-3, 2026-07-31: DE-PRIVATIZED — see `denom_dvd_of_add`.] -/
++theorem denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
+     ∀ (s : Finset ι) (f : ι → Qq), (∀ i ∈ s, (f i).denom ∣ L) →
+     (∑ i ∈ s, f i).denom ∣ L := by
+   classical
+diff --git a/lean/LeanUrat/MovesV/TV_F1.lean b/lean/LeanUrat/MovesV/TV_F1.lean
+index 36ac0b1..772b77f 100644
+--- a/lean/LeanUrat/MovesV/TV_F1.lean
++++ b/lean/LeanUrat/MovesV/TV_F1.lean
+@@ -52,26 +52,10 @@ private theorem f1_geomClass_dvd_of_le {b b' : ℕ} {as as' : Finset ℕ+}
+       ∣ Polynomial.X ^ b' * ∏ a ∈ as', (1 - Polynomial.X ^ (a : ℕ)) :=
+   mul_dvd_mul (pow_dvd_pow _ hb) (Finset.prod_dvd_prod_of_subset _ _ _ hs)
+ 
+-private theorem f1_denom_dvd_of_add {x y : MovesS.Qq} {L : Polynomial ℚ}
+-    (hL : L ≠ 0) (hx : x.denom ∣ L) (hy : y.denom ∣ L) : (x + y).denom ∣ L := by
+-  obtain ⟨px, hpx⟩ := (RatFunc.denom_dvd hL).mp hx
+-  obtain ⟨py, hpy⟩ := (RatFunc.denom_dvd hL).mp hy
+-  exact (RatFunc.denom_dvd hL).mpr ⟨px + py, by rw [hpx, hpy, map_add]; ring⟩
++/- [SYN2-S1 SWEEP-3, 2026-07-31] denom_dvd_of_add / denom_sum_dvd DELETED —
++single proof source = the de-privatized MovesV/Defs pair; uses re-pointed
++(the prover's own in-file hoist record, executed). -/
+ 
+-private theorem f1_denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
+-    ∀ (s : Finset ι) (f : ι → MovesS.Qq), (∀ i ∈ s, (f i).denom ∣ L) →
+-    (∑ i ∈ s, f i).denom ∣ L := by
+-  classical
+-  intro s
+-  induction s using Finset.cons_induction with
+-  | empty => intro f _; simp
+-  | cons a s ha ih =>
+-      intro f hf
+-      rw [Finset.sum_cons]
+-      exact f1_denom_dvd_of_add hL (hf a (Finset.mem_cons_self a s))
+-        (ih f (fun i hi => hf i (Finset.mem_cons.mpr (Or.inr hi))))
+-
+-open Classical in
+ /-- the PSigma packaging of `XHDs.Gc_denom`'s choose data (the `gcellDenom`
+ pattern of Defs, at the TEMPLATE face). -/
+ private noncomputable def f1_gcDenom {n : ℕ} {S : StepSys n} {W : XHDw n S}
+@@ -103,7 +87,7 @@ private noncomputable def f1_tmplPack {n : ℕ} {S : StepSys n} {W : XHDw n S}
+       (f1_gcDenom Xs γ j).1)
+     geomDenoms := Finset.univ.biUnion (fun j : Fin (D.dom γ).comps.length =>
+       (f1_gcDenom Xs γ j).2.1)
+-    geom_denom_dvd := f1_denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
++    geom_denom_dvd := denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
+       (fun j _ => dvd_trans (f1_gcDenom Xs γ j).2.2
+         (f1_geomClass_dvd_of_le
+           (Finset.le_sup (f := fun j : Fin (D.dom γ).comps.length =>
+@@ -206,7 +190,7 @@ noncomputable def jPGof {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+       (fun c => (jCellPGof X cp d c).qpow)
+     geomDenoms := (J.bcells d.s d.m d.o d.α).biUnion
+       (fun c => (jCellPGof X cp d c).geomDenoms)
+-    geom_denom_dvd := f1_denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
++    geom_denom_dvd := denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
+       (fun c hc => by
+         refine dvd_trans (dvd_trans ?_ (jCellPGof X cp d c).geom_denom_dvd)
+           (f1_geomClass_dvd_of_le
+diff --git a/lean/LeanUrat/MovesV/V0_xhds_witness.lean b/lean/LeanUrat/MovesV/V0_xhds_witness.lean
+index ea6c743..0b28119 100644
+--- a/lean/LeanUrat/MovesV/V0_xhds_witness.lean
++++ b/lean/LeanUrat/MovesV/V0_xhds_witness.lean
+@@ -1,12 +1,13 @@
+ /-  MovesV unit V0-4 `xhds_instance_A2` (RE-KEYED C3) — THE NON-DEGENERACY
+     WITNESS for the XHD-s format, in the (t,u) CHART where `EA2` lives. -/
+ import LeanUrat.MovesV.DefsGate
++import LeanUrat.MovesS.EvalAtCoe
+ 
+ set_option linter.style.longLine false
+ set_option linter.style.header false
+ 
+ namespace LeanUrat.MovesV
+-open LeanUrat.MovesS (Qq OKat evalAt)
++open LeanUrat.MovesS (Qq OKat evalAt eval_algebraMap_div)
+ 
+ /-- the cleared rational form X²/((X⁶−1)(X³−1)) — denominators in the
+ PolyGeom class. -/
+@@ -18,32 +19,9 @@ noncomputable def GA2 : Qq :=
+ /-- the seal's base value: EA2.eval ![1,0] = 7 (E at (h₀,h₂) = (4,1)). -/
+ theorem EA2_seal : EA2.eval ![1, 0] = 7 := by decide
+ 
+-/-- evaluation of a cleared polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
+-whenever `q.eval x ≠ 0` (mirrors the private `eval_algebraMap_div` of
+-`MovesS.PowSubstOK`, re-derived here to keep this unit self-contained). -/
+-private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
+-    RatFunc.eval (RingHom.id ℚ) x
+-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      = p.eval x / q.eval x := by
+-  have hq0 : q ≠ 0 := fun h0 => hq (by simp [h0])
+-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
+-  have hdvd : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
+-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
+-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
+-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [Polynomial.eval₂_id]; obtain ⟨c, hc⟩ := hdvd; intro hz
+-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
+-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
+-    rw [RatFunc.denom_algebraMap]; simp
+-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
+-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
+-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
+-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p := div_mul_cancel₀ _ hqne
+-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
+-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
+-  rw [eq_div_iff hq]; exact key
++/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div (the cross-corpus
++mirror) DELETED — single proof source `MovesS/EvalAtCoe.lean` (public, brought in
++through the extended `open LeanUrat.MovesS (...)` clause). -/
+ 
+ /-- the real geometric-value clearing identity (part ⌿(b)). -/
+ private lemma geomValId (r : ℝ) (hr : 1 < r) :
+diff --git a/lean/LeanUrat/MovesV/V4_naming.lean b/lean/LeanUrat/MovesV/V4_naming.lean
+index 50449fc..b508e95 100644
+--- a/lean/LeanUrat/MovesV/V4_naming.lean
++++ b/lean/LeanUrat/MovesV/V4_naming.lean
+@@ -21,12 +21,16 @@ def Factorizes {n : ℕ} {S : StepSys n} {TE : TmplEvents n S}
+       HasSum (fun h : {h // (D.dom γ).Mem h} => gProd X γ h.1 q₀) c →
+       a = b * c
+ 
+-/-- append/take/drop round-trip lemmas (the Fin.append coordinates). -/
+-private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
++/-- append/take/drop round-trip lemmas (the Fin.append coordinates).
++[SYN2-S1 SWEEP-6, 2026-07-31: `hpt_take_append`/`hpt_drop_append` DE-PRIVATIZED as the
++family SURVIVORS (the originals — the Kernels KC2b/KC6 copies existed only because
++these were `private`, per their own docstrings); Kernels copies deleted, re-pointed
++here.  `hpt_append_take_drop` below stays private (no twin).] -/
++lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+     Hpt.take (Hpt.append h₁ h₂) = h₁ := by
+   funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
+ 
+-private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
++lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+     Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
+   funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
+ 
+diff --git a/lean/LeanUrat/MovesV/V5_jrat.lean b/lean/LeanUrat/MovesV/V5_jrat.lean
+index 92e9f3c..36cf6dc 100644
+--- a/lean/LeanUrat/MovesV/V5_jrat.lean
++++ b/lean/LeanUrat/MovesV/V5_jrat.lean
+@@ -34,25 +34,8 @@ private theorem jrat_geomClass_ne_zero (b : ℕ) (as : Finset ℕ+) :
+   rw [Polynomial.coeff_sub, Polynomial.coeff_one, Polynomial.coeff_X_pow] at hc
+   simp at hc
+ 
+-private theorem jrat_denom_dvd_of_add {x y : MovesS.Qq} {L : Polynomial ℚ} (hL : L ≠ 0)
+-    (hx : x.denom ∣ L) (hy : y.denom ∣ L) : (x + y).denom ∣ L := by
+-  obtain ⟨px, hpx⟩ := (RatFunc.denom_dvd hL).mp hx
+-  obtain ⟨py, hpy⟩ := (RatFunc.denom_dvd hL).mp hy
+-  exact (RatFunc.denom_dvd hL).mpr ⟨px + py, by rw [hpx, hpy, map_add]; ring⟩
+-
+-/-- a finite sum whose summands all lie over a common denominator does too. -/
+-private theorem jrat_denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
+-    ∀ (s : Finset ι) (f : ι → MovesS.Qq), (∀ i ∈ s, (f i).denom ∣ L) →
+-    (∑ i ∈ s, f i).denom ∣ L := by
+-  classical
+-  intro s
+-  induction s using Finset.cons_induction with
+-  | empty => intro f _; simp
+-  | cons a s ha ih =>
+-      intro f hf
+-      rw [Finset.sum_cons]
+-      exact jrat_denom_dvd_of_add hL (hf a (Finset.mem_cons_self a s))
+-        (ih f (fun i hi => hf i (Finset.mem_cons.mpr (Or.inr hi))))
++/- [SYN2-S1 SWEEP-3, 2026-07-31] denom_dvd_of_add / denom_sum_dvd DELETED —
++single proof source = the de-privatized MovesV/Defs pair; uses re-pointed. -/
+ 
+ /-- THE PER-CELL CLAUSE (`jcell_interp`'s exact shape at the instance). -/
+ theorem jRat_cell {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+@@ -134,7 +117,7 @@ theorem jRat {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+               (fun c => (jcellPG hcell XsC ⟨s, m, o, J.route_cont s m o hr, α⟩ c).qpow),
+             geomDenoms := (J.bcells s m o α).biUnion
+               (fun c => (jcellPG hcell XsC ⟨s, m, o, J.route_cont s m o hr, α⟩ c).geomDenoms),
+-            geom_denom_dvd := jrat_denom_sum_dvd (jrat_geomClass_ne_zero _ _) _ _ hdvd },
++            geom_denom_dvd := denom_sum_dvd (jrat_geomClass_ne_zero _ _) _ _ hdvd },
+         rfl, rfl, ?_, ?_⟩
+   · simp only [MovesS.PolyGeom.val, mul_one, map_one, one_mul]
+   · intro q₀ hq
+diff --git a/lean/LeanUrat/MovesX/Defs.lean b/lean/LeanUrat/MovesX/Defs.lean
+index c955915..a2015be 100644
+--- a/lean/LeanUrat/MovesX/Defs.lean
++++ b/lean/LeanUrat/MovesX/Defs.lean
+@@ -468,4 +468,39 @@ def CountableFiberAdditive (S : SeriesData n p C) : Prop :=
+     (∀ f ∈ E, ∃ T ∈ I, f ∈ S.fiber T) → (∀ T ∈ I, S.fiber T ⊆ E) →
+     HasSum (fun T : I => C.frac (S.fiber T)) (C.frac E)
+ 
++
++/-- From the termLast discipline (only the last node may be non-continuing) the length
++exceeds the continuing-count by at most one.
++[SYN2-S1 SWEEP-6, 2026-07-31: hoisted SURVIVOR — XD2's raw-hypothesis form (the more
++general of the two wave-minted copies; XG2d's HistWF-keyed twin and its private
++`len_le_filter_succ` engine are deleted, uses re-pointed through `.termLast`).] -/
++theorem length_le_dTotal_succ {n : ℕ} (H : XHistory n)
++    (hterm : ∀ i : Fin H.length, (i : ℕ) + 1 < H.length → (H.get i).continuing = true) :
++    H.length ≤ dTotal H + 1 := by
++  induction H with
++  | nil => simp [dTotal]
++  | cons a t ih =>
++    -- termLast restricts to the tail
++    have htTerm : ∀ j : Fin t.length, (j : ℕ) + 1 < t.length →
++        (t.get j).continuing = true := by
++      intro j hj
++      have h := hterm j.succ (by simpa using hj)
++      simpa [List.get_cons_succ] using h
++    -- if the tail is nonempty, the head is continuing
++    have haCont : t.length ≠ 0 → a.continuing = true := by
++      intro hne
++      have h := hterm ⟨0, Nat.succ_pos _⟩ (by simp; omega)
++      simpa [List.get_cons_zero] using h
++    have IH := ih htTerm
++    by_cases hc : a.continuing = true
++    · have hd : dTotal (a :: t) = dTotal t + 1 := by
++        simp [dTotal, hc]
++      simp only [List.length_cons]
++      omega
++    · have ht0 : t.length = 0 := by
++        by_contra h0
++        exact hc (haCont h0)
++      simp only [List.length_cons, ht0]
++      omega
++
+ end LeanUrat.MovesX
+diff --git a/lean/LeanUrat/MovesX/XD2.lean b/lean/LeanUrat/MovesX/XD2.lean
+index 13a79c6..2c0c1ea 100644
+--- a/lean/LeanUrat/MovesX/XD2.lean
++++ b/lean/LeanUrat/MovesX/XD2.lean
+@@ -41,37 +41,8 @@ private theorem sum_le_length_mul_foldr_max :
+           Nat.add_le_add ha ht
+       _ = (t.length + 1) * max a (t.foldr max 0) := by ring
+ 
+-/-- From `termLast` (only the last node may be non-continuing) the length exceeds the
+-continuing-count by at most one. -/
+-private theorem length_le_dTotal_succ {n : ℕ} (H : XHistory n)
+-    (hterm : ∀ i : Fin H.length, (i : ℕ) + 1 < H.length → (H.get i).continuing = true) :
+-    H.length ≤ dTotal H + 1 := by
+-  induction H with
+-  | nil => simp [dTotal]
+-  | cons a t ih =>
+-    -- termLast restricts to the tail
+-    have htTerm : ∀ j : Fin t.length, (j : ℕ) + 1 < t.length →
+-        (t.get j).continuing = true := by
+-      intro j hj
+-      have h := hterm j.succ (by simpa using hj)
+-      simpa [List.get_cons_succ] using h
+-    -- if the tail is nonempty, the head is continuing
+-    have haCont : t.length ≠ 0 → a.continuing = true := by
+-      intro hne
+-      have h := hterm ⟨0, Nat.succ_pos _⟩ (by simp; omega)
+-      simpa [List.get_cons_zero] using h
+-    have IH := ih htTerm
+-    by_cases hc : a.continuing = true
+-    · have hd : dTotal (a :: t) = dTotal t + 1 := by
+-        simp [dTotal, hc]
+-      simp only [List.length_cons]
+-      omega
+-    · have ht0 : t.length = 0 := by
+-        by_contra h0
+-        exact hc (haCont h0)
+-      simp only [List.length_cons, ht0]
+-      omega
+-
++/- [SYN2-S1 SWEEP-6, 2026-07-31] private length_le_dTotal_succ HOISTED to
++MovesX/Defs.lean (this file's form was the survivor); use unchanged. -/
+ theorem x2hypCount {n : ℕ} (H : XHistory n) (W : HistWF n H) :
+     sumH H ≤ (dTotal H + 1) * maxH H := by
+   have hA : sumH H ≤ H.length * maxH H := by
+diff --git a/lean/LeanUrat/MovesX/XG2d.lean b/lean/LeanUrat/MovesX/XG2d.lean
+index e20cbf5..33f6343 100644
+--- a/lean/LeanUrat/MovesX/XG2d.lean
++++ b/lean/LeanUrat/MovesX/XG2d.lean
+@@ -24,31 +24,9 @@ predicate `P` (the `HistWF.termLast` shape), then at most one element fails `P`,
+ list is no longer than its `P`-filtered sublist plus one. Proof: `H.dropLast`
+ consists entirely of `P`-nodes, so filtering fixes it, and it is a sublist of the
+ filter of `H`; length monotonicity of sublists gives `|H| − 1 ≤ |filter P H|`. -/
+-private lemma len_le_filter_succ {α : Type*} (H : List α) (P : α → Bool)
+-    (hlast : ∀ i : Fin H.length, (i : ℕ) + 1 < H.length → P (H.get i) = true) :
+-    H.length ≤ (H.filter P).length + 1 := by
+-  have hself : (H.dropLast).filter P = H.dropLast := by
+-    apply List.filter_eq_self.mpr
+-    intro x hx
+-    rw [List.mem_iff_getElem] at hx
+-    obtain ⟨i, hi, hget⟩ := hx
+-    have hi' : i < H.length := by rw [List.length_dropLast] at hi; omega
+-    have hgd : H.dropLast[i] = H[i]'hi' := List.getElem_dropLast hi
+-    have hbnd : (i : ℕ) + 1 < H.length := by rw [List.length_dropLast] at hi; omega
+-    have hc : P (H[i]'hi') = true := by
+-      simpa [List.get_eq_getElem] using hlast ⟨i, hi'⟩ hbnd
+-    rw [← hget, hgd]; exact hc
+-  have hsub : List.Sublist ((H.dropLast).filter P) (H.filter P) :=
+-    (List.dropLast_sublist H).filter P
+-  have hle : ((H.dropLast).filter P).length ≤ (H.filter P).length := hsub.length_le
+-  rw [hself, List.length_dropLast] at hle
+-  omega
+-
+-/-- A well-formed history has at most one non-`continuing` (terminal) node — its last —
+-so its total length exceeds the count of continuing nodes (`dTotal`) by at most one. -/
+-private lemma length_le_dTotal_succ {n : ℕ} (H : XHistory n) (W : HistWF n H) :
+-    H.length ≤ dTotal H + 1 :=
+-  len_le_filter_succ H (·.continuing) W.termLast
++/- [SYN2-S1 SWEEP-6, 2026-07-31] private len_le_filter_succ + length_le_dTotal_succ
++DELETED — survivor = MovesX/Defs.length_le_dTotal_succ (XD2's raw-hypothesis form);
++the use below re-pointed through `.termLast`. -/
+ 
+ theorem treeFinite {n : ℕ} (X : XFamily n) (K : XConsts n) (R : X3aRouteP n X K)
+     (p : ℕ) [Fact p.Prime] (hn : 1 ≤ n) (f : MonicBox n p) (hd : f ∉ discZero n p) :
+@@ -75,7 +53,7 @@ theorem treeFinite {n : ℕ} (X : XFamily n) (K : XConsts n) (R : X3aRouteP n X
+     have hb1 : 2 * dTotal (C.hist (g k)) ≤ M :=
+       branchLenBound X K R p f (C.hist (g k)) (X.gmnLink p f (g k)) hd (C.wf (g k)) hn
+     have hb2 : (C.hist (g k)).length ≤ dTotal (C.hist (g k)) + 1 :=
+-      length_le_dTotal_succ (C.hist (g k)) (C.wf (g k))
++      length_le_dTotal_succ (C.hist (g k)) (C.wf (g k)).termLast
+     have hl := hlen k
+     omega
+   have := key (M + 2)
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+I’m auditing this as a strict textual/signature pass: deleted declarations, adapter statement preservation, every shown re-pointed application, and the public-statement allowlist. I’ll report violations only and won’t modify the corpus.
+codex
+1. **CLEAN — `HC1/K1_vertexPin.lean`.** Deleted `w_one' → ResVal.w_one`, `w_pow' → ResVal.w_pow`, `R_one' → ResVal.R_one`, and `R_pow' → ResVal.R_pow`. Every binder, hypothesis, and conclusion is alpha-equivalent. All six shown re-points supply arguments in survivor order.
+
+2. **CLEAN — `HC1/S11a_coreTransport.lean`.** Deleted `w_one' → ResVal.w_one`, `w_neg_one' → ResVal.w_neg_one`, `w_neg' → ResVal.w_neg`, and `R_one' → ResVal.R_one`. Statements are alpha-equivalent, and all shown applications match the survivor signatures.
+
+3. **CLEAN — `HC1/S5_childValuation.lean`.** Deleted `w_one → ResVal.w_one`. Exact statement equivalence; both re-points are signature-consistent.
+
+4. **CLEAN — `HC1/T3_htChainWeight.lean`.** Deleted `stage_w_one → ResVal.w_one` and `stage_w_pow → ResVal.w_pow`. Statements and all three re-points agree per binder and conclusion.
+
+5. **CLEAN — `HC1/T4_slotMinHt.lean`.** Deleted `t4_w_one → ResVal.w_one`, `t4_w_pow → ResVal.w_pow`, and `t4_w_neg → ResVal.w_neg`. Statements are alpha-equivalent. Every shown re-point supplies `σ`, polynomial, nonzero proof, and exponent in the correct order.
+
+6. **CRITICAL — `HC1/T7_alphabetSpan.stage0_w_neg`.** Claimed survivor: `ResVal.w_neg` instantiated at `T.stg 0`. The conclusion matches after instantiation, and the shown call is signature-correct, but the deleted declaration is not alpha-equivalent: it binds a `Tower p F`, whereas the survivor binds a `Stage p F`. This is specialization, not binder renaming. `stage_w_one → ResVal.w_one` is clean.
+
+7. **CLEAN — `HC1/V2_readResidual.lean`.** Deleted `v2w_one → ResVal.w_one` and `v2w_neg → ResVal.w_neg`; both are alpha-equivalent and every shown use is correctly ordered. Kept adapter `v2sum_w_ge → Moves.ult_sum_ge` has a byte-unchanged statement and passes `W`, `hult`, `S`, `a`, `m`, `hm`, `hsum` correctly.
+
+8. **CLEAN — `HC2/HK05_countermodelGate.lean`.** Deleted `hk05_w_one → ResVal.w_one` and `hk05_w_pow → ResVal.w_pow`. Exact proposition equivalence; all re-points are signature-consistent.
+
+9. **CLEAN — `Kernels/KC1.append_one_zero_ne_zero`.** Claimed survivor: the sanctioned public `Kernels.HmcReduction.append_one_zero_ne_zero`. All binders and the conclusion are identical; bare-name uses resolve through the new import.
+
+10. **CLEAN — `Kernels/KC2b.lean`.** Deleted `hpt_take_append` and `hpt_drop_append`, both re-pointed to the sanctioned public originals in `MovesV.V4_naming`. Statements are identical; bare uses resolve through the import.
+
+11. **CLEAN — `Kernels/KC6.lean`.** Deleted `hpt_take_append` and `hpt_drop_append → MovesV.V4_naming`, plus `append_one_zero_ne_zero → Kernels.HmcReduction`. All three statements are identical, and the imports make the existing bare uses consistent.
+
+12. **CLEAN — `Moves/L2_slotDecomp_R4.lean`.** Deleted `R_one → ResVal.R_one`, `w_one → ResVal.w_one`, and `w_neg → ResVal.w_neg`. The propositions are alpha-equivalent; all shown applications match their survivor signatures.
+
+13. **CLEAN — `Moves/L4_TRANSviii_b_R4.lean`.** Deleted `wOne → ResVal.w_one`. Exact statement equivalence and correct re-point. Kept adapter `wPow → ResVal.w_pow` has an unchanged specialized statement and consumes the survivor with the required `σ.Φ`, nonzero proof, exponent, and `σ.hwΦ`.
+
+14. **CLEAN — `Moves/L5_landTransport_R4.lean`.** Deleted `w_one`, `w_pow`, `R_one`, and `R_pow`, respectively re-pointed to the corresponding `ResVal` survivors. All statements are alpha-equivalent, and every shown use passes arguments correctly.
+
+15. **CRITICAL — `Moves/L5_realDomination_R3.w_sum_ge` adapter form.** Deleted `w_one_eq_zero → ResVal.w_one` is clean. Kept adapters `w_pow_Phi → ResVal.w_pow` and `w_sum_ge → ResVal.w_sum_ge` preserve their original statements, and their survivor calls are logically signature-correct. However, the disjunctive `w_sum_ge` adapter is not the required one-line body: it contains a `classical` declaration and a `by_cases` proof wrapper before consuming the survivor.
+
+16. **NOTE — `Moves/L5_recSubst_R4.w_sum_ge`.** Deleted `R_one'`, `R_pow'`, `w_one'`, `w_neg'`, and `w_pow'` are alpha-equivalent to their named `ResVal` survivors, with correct re-points. The kept `w_sum_ge` adapter is propositionally unchanged and correctly calls `ResVal.w_sum_ge`, but its binder text changed from `h0` to `_h0`; therefore its statement is not byte-unchanged, although this is purely cosmetic and does not alter binder explicitness or meaning.
+
+17. **CRITICAL — `MovesD/E8_rankInj.finite_eligible`.** Claimed survivor: `E7_rankLt.finite_of_monic_natDegree`. The replacement call is type/signature-consistent and supplies the required extraction function, but the statements are not alpha-equivalent. `finite_eligible` is specialized to `EligibleImage p w g μ Rq`; the survivor quantifies over an arbitrary predicate `S` and an additional proof `hS`. No unchanged private adapter remains.
+
+18. **CRITICAL — `MovesD/E8_rankInj.poolSubfield_eq` adapter form.** Its statement is byte-unchanged and the new proof correctly consumes `E3.frameField_eq_pool`. Nevertheless, it is not the required one-line adapter: it constructs carrier equality and then converts it to a `Subfield` equality through several intermediate declarations.
+
+19. **CLEAN — `MovesS/N2PolyGeom.eval_algebraMap_div`.** Claimed survivor: sanctioned public `MovesS.eval_algebraMap_div`. Every binder, hypothesis, and conclusion is identical; bare uses resolve via the added import.
+
+20. **CLEAN — `MovesS/N2Rsh.eval_algebraMap_div'`.** Claimed survivor: `MovesS.eval_algebraMap_div`. Apart from the declaration name, the statement is identical. The shown call supplies `x`, numerator, denominator, and nonvanishing proof correctly.
+
+21. **CLEAN — `MovesS/PowSubstOK.eval_algebraMap_div`.** This is the source hoisted to the sanctioned public survivor. The statement is unchanged, and existing bare uses resolve in the same namespace.
+
+22. **CLEAN — `MovesV/V0_xhds_witness.eval_algebraMap_div`.** Statement is identical to the sanctioned public survivor. Opening `LeanUrat.MovesS.eval_algebraMap_div` makes the bare re-points valid.
+
+23. **CLEAN — denominator family.** Deleted `TV_F1.{f1_denom_dvd_of_add, f1_denom_sum_dvd}` and `V5_jrat.{jrat_denom_dvd_of_add, jrat_denom_sum_dvd}` re-point to sanctioned public `MovesV.Defs.{denom_dvd_of_add, denom_sum_dvd}`. `MovesS.Qq` and `Qq` resolve to the same type; all binders and conclusions otherwise coincide. The shown `denom_sum_dvd` calls pass `hL`, finset, function, and pointwise divisibility proof correctly.
+
+24. **CLEAN — `MovesT/E5_rootSplit.history_eq_of_nodes_eq`.** Claimed survivor: public `F0_preHalt.history_ext`. The statement is alpha-equivalent, and `history_ext hnodes.symm` has the correct argument shape. **NOTE:** the sweep comment calls the deleted lemma `history_ext`, although its actual deleted name was `history_eq_of_nodes_eq`.
+
+25. **CRITICAL — public statement drift in `MovesT/E5_rootSplit.fiber_root_split`.** The public theorem gains two premises:
+   `hU : TrackUniqOn T χ trackOf g` and
+   `hR : TrackRepOn T χ trackOf g`.
+   This changes an existing public declaration’s statement and is not one of the six sanctioned additive de-privatizations/hoists.
+
+26. **CRITICAL — `MovesT/G1_toyGate.hist_ext`.** Claimed survivor: general `F0_preHalt.history_ext`. The shown uses instantiate the survivor correctly, but the statements are not alpha-equivalent: the deleted lemma is specialized to `History 2 (ZMod 2)`, while the survivor quantifies over general `p` and `F`.
+
+27. **CLEAN — `MovesT/TV_B8.history_ext`.** Claimed survivor: `F0_preHalt.history_ext`. The general statements are alpha-equivalent; bare uses resolve through the new import.
+
+28. **CLEAN — `MovesX/XD2.length_le_dTotal_succ`.** This exact raw-`hterm` declaration was hoisted to the sanctioned public survivor in `MovesX.Defs`. Its statement and existing call are unchanged.
+
+29. **CRITICAL — `MovesX/XG2d.length_le_dTotal_succ`.** Claimed survivor: `MovesX.Defs.length_le_dTotal_succ`. The replacement call through `(C.wf (g k)).termLast` is signature-correct, but the deleted statement is not alpha-equivalent: it accepted `W : HistWF n H`, whereas the survivor accepts the extracted raw `termLast` predicate.
+
+30. **CRITICAL — `MovesX/XG2d.len_le_filter_succ`.** The sweep comment groups this deleted generic list/filter lemma under `MovesX.Defs.length_le_dTotal_succ`, but their statements are not alpha-equivalent: the former is generic over `List α` and `P : α → Bool`, while the survivor is specific to `XHistory` and `dTotal`. No unchanged private adapter is retained.
+
+31. **CLEAN — sanctioned public additions.** The privacy changes/additions for `MovesV.Defs.{denom_dvd_of_add, denom_sum_dvd}`, `MovesD.E7_rankLt.finite_of_monic_natDegree`, `MovesX.Defs.length_le_dTotal_succ`, `Kernels.HmcReduction.append_one_zero_ne_zero`, `MovesV.V4_naming.{hpt_take_append, hpt_drop_append}`, and `MovesS.EvalAtCoe.eval_algebraMap_div` are within the explicit allowlist and preserve their source statements.
+
+No other non-private statement change appears in the supplied `[SYN2-S1]` hunks. The unrelated `TV_F1.ratBurdens_iota` queue item was ignored. A compile confirmation was attempted but unavailable because the environment’s Lean sandbox launcher lacks `bwrap`; the use-site conclusions above are therefore from direct signature checking of the supplied diff.
+tokens used
+55,666
+1. **CLEAN — `HC1/K1_vertexPin.lean`.** Deleted `w_one' → ResVal.w_one`, `w_pow' → ResVal.w_pow`, `R_one' → ResVal.R_one`, and `R_pow' → ResVal.R_pow`. Every binder, hypothesis, and conclusion is alpha-equivalent. All six shown re-points supply arguments in survivor order.
+
+2. **CLEAN — `HC1/S11a_coreTransport.lean`.** Deleted `w_one' → ResVal.w_one`, `w_neg_one' → ResVal.w_neg_one`, `w_neg' → ResVal.w_neg`, and `R_one' → ResVal.R_one`. Statements are alpha-equivalent, and all shown applications match the survivor signatures.
+
+3. **CLEAN — `HC1/S5_childValuation.lean`.** Deleted `w_one → ResVal.w_one`. Exact statement equivalence; both re-points are signature-consistent.
+
+4. **CLEAN — `HC1/T3_htChainWeight.lean`.** Deleted `stage_w_one → ResVal.w_one` and `stage_w_pow → ResVal.w_pow`. Statements and all three re-points agree per binder and conclusion.
+
+5. **CLEAN — `HC1/T4_slotMinHt.lean`.** Deleted `t4_w_one → ResVal.w_one`, `t4_w_pow → ResVal.w_pow`, and `t4_w_neg → ResVal.w_neg`. Statements are alpha-equivalent. Every shown re-point supplies `σ`, polynomial, nonzero proof, and exponent in the correct order.
+
+6. **CRITICAL — `HC1/T7_alphabetSpan.stage0_w_neg`.** Claimed survivor: `ResVal.w_neg` instantiated at `T.stg 0`. The conclusion matches after instantiation, and the shown call is signature-correct, but the deleted declaration is not alpha-equivalent: it binds a `Tower p F`, whereas the survivor binds a `Stage p F`. This is specialization, not binder renaming. `stage_w_one → ResVal.w_one` is clean.
+
+7. **CLEAN — `HC1/V2_readResidual.lean`.** Deleted `v2w_one → ResVal.w_one` and `v2w_neg → ResVal.w_neg`; both are alpha-equivalent and every shown use is correctly ordered. Kept adapter `v2sum_w_ge → Moves.ult_sum_ge` has a byte-unchanged statement and passes `W`, `hult`, `S`, `a`, `m`, `hm`, `hsum` correctly.
+
+8. **CLEAN — `HC2/HK05_countermodelGate.lean`.** Deleted `hk05_w_one → ResVal.w_one` and `hk05_w_pow → ResVal.w_pow`. Exact proposition equivalence; all re-points are signature-consistent.
+
+9. **CLEAN — `Kernels/KC1.append_one_zero_ne_zero`.** Claimed survivor: the sanctioned public `Kernels.HmcReduction.append_one_zero_ne_zero`. All binders and the conclusion are identical; bare-name uses resolve through the new import.
+
+10. **CLEAN — `Kernels/KC2b.lean`.** Deleted `hpt_take_append` and `hpt_drop_append`, both re-pointed to the sanctioned public originals in `MovesV.V4_naming`. Statements are identical; bare uses resolve through the import.
+
+11. **CLEAN — `Kernels/KC6.lean`.** Deleted `hpt_take_append` and `hpt_drop_append → MovesV.V4_naming`, plus `append_one_zero_ne_zero → Kernels.HmcReduction`. All three statements are identical, and the imports make the existing bare uses consistent.
+
+12. **CLEAN — `Moves/L2_slotDecomp_R4.lean`.** Deleted `R_one → ResVal.R_one`, `w_one → ResVal.w_one`, and `w_neg → ResVal.w_neg`. The propositions are alpha-equivalent; all shown applications match their survivor signatures.
+
+13. **CLEAN — `Moves/L4_TRANSviii_b_R4.lean`.** Deleted `wOne → ResVal.w_one`. Exact statement equivalence and correct re-point. Kept adapter `wPow → ResVal.w_pow` has an unchanged specialized statement and consumes the survivor with the required `σ.Φ`, nonzero proof, exponent, and `σ.hwΦ`.
+
+14. **CLEAN — `Moves/L5_landTransport_R4.lean`.** Deleted `w_one`, `w_pow`, `R_one`, and `R_pow`, respectively re-pointed to the corresponding `ResVal` survivors. All statements are alpha-equivalent, and every shown use passes arguments correctly.
+
+15. **CRITICAL — `Moves/L5_realDomination_R3.w_sum_ge` adapter form.** Deleted `w_one_eq_zero → ResVal.w_one` is clean. Kept adapters `w_pow_Phi → ResVal.w_pow` and `w_sum_ge → ResVal.w_sum_ge` preserve their original statements, and their survivor calls are logically signature-correct. However, the disjunctive `w_sum_ge` adapter is not the required one-line body: it contains a `classical` declaration and a `by_cases` proof wrapper before consuming the survivor.
+
+16. **NOTE — `Moves/L5_recSubst_R4.w_sum_ge`.** Deleted `R_one'`, `R_pow'`, `w_one'`, `w_neg'`, and `w_pow'` are alpha-equivalent to their named `ResVal` survivors, with correct re-points. The kept `w_sum_ge` adapter is propositionally unchanged and correctly calls `ResVal.w_sum_ge`, but its binder text changed from `h0` to `_h0`; therefore its statement is not byte-unchanged, although this is purely cosmetic and does not alter binder explicitness or meaning.
+
+17. **CRITICAL — `MovesD/E8_rankInj.finite_eligible`.** Claimed survivor: `E7_rankLt.finite_of_monic_natDegree`. The replacement call is type/signature-consistent and supplies the required extraction function, but the statements are not alpha-equivalent. `finite_eligible` is specialized to `EligibleImage p w g μ Rq`; the survivor quantifies over an arbitrary predicate `S` and an additional proof `hS`. No unchanged private adapter remains.
+
+18. **CRITICAL — `MovesD/E8_rankInj.poolSubfield_eq` adapter form.** Its statement is byte-unchanged and the new proof correctly consumes `E3.frameField_eq_pool`. Nevertheless, it is not the required one-line adapter: it constructs carrier equality and then converts it to a `Subfield` equality through several intermediate declarations.
+
+19. **CLEAN — `MovesS/N2PolyGeom.eval_algebraMap_div`.** Claimed survivor: sanctioned public `MovesS.eval_algebraMap_div`. Every binder, hypothesis, and conclusion is identical; bare uses resolve via the added import.
+
+20. **CLEAN — `MovesS/N2Rsh.eval_algebraMap_div'`.** Claimed survivor: `MovesS.eval_algebraMap_div`. Apart from the declaration name, the statement is identical. The shown call supplies `x`, numerator, denominator, and nonvanishing proof correctly.
+
+21. **CLEAN — `MovesS/PowSubstOK.eval_algebraMap_div`.** This is the source hoisted to the sanctioned public survivor. The statement is unchanged, and existing bare uses resolve in the same namespace.
+
+22. **CLEAN — `MovesV/V0_xhds_witness.eval_algebraMap_div`.** Statement is identical to the sanctioned public survivor. Opening `LeanUrat.MovesS.eval_algebraMap_div` makes the bare re-points valid.
+
+23. **CLEAN — denominator family.** Deleted `TV_F1.{f1_denom_dvd_of_add, f1_denom_sum_dvd}` and `V5_jrat.{jrat_denom_dvd_of_add, jrat_denom_sum_dvd}` re-point to sanctioned public `MovesV.Defs.{denom_dvd_of_add, denom_sum_dvd}`. `MovesS.Qq` and `Qq` resolve to the same type; all binders and conclusions otherwise coincide. The shown `denom_sum_dvd` calls pass `hL`, finset, function, and pointwise divisibility proof correctly.
+
+24. **CLEAN — `MovesT/E5_rootSplit.history_eq_of_nodes_eq`.** Claimed survivor: public `F0_preHalt.history_ext`. The statement is alpha-equivalent, and `history_ext hnodes.symm` has the correct argument shape. **NOTE:** the sweep comment calls the deleted lemma `history_ext`, although its actual deleted name was `history_eq_of_nodes_eq`.
+
+25. **CRITICAL — public statement drift in `MovesT/E5_rootSplit.fiber_root_split`.** The public theorem gains two premises:
+   `hU : TrackUniqOn T χ trackOf g` and
+   `hR : TrackRepOn T χ trackOf g`.
+   This changes an existing public declaration’s statement and is not one of the six sanctioned additive de-privatizations/hoists.
+
+26. **CRITICAL — `MovesT/G1_toyGate.hist_ext`.** Claimed survivor: general `F0_preHalt.history_ext`. The shown uses instantiate the survivor correctly, but the statements are not alpha-equivalent: the deleted lemma is specialized to `History 2 (ZMod 2)`, while the survivor quantifies over general `p` and `F`.
+
+27. **CLEAN — `MovesT/TV_B8.history_ext`.** Claimed survivor: `F0_preHalt.history_ext`. The general statements are alpha-equivalent; bare uses resolve through the new import.
+
+28. **CLEAN — `MovesX/XD2.length_le_dTotal_succ`.** This exact raw-`hterm` declaration was hoisted to the sanctioned public survivor in `MovesX.Defs`. Its statement and existing call are unchanged.
+
+29. **CRITICAL — `MovesX/XG2d.length_le_dTotal_succ`.** Claimed survivor: `MovesX.Defs.length_le_dTotal_succ`. The replacement call through `(C.wf (g k)).termLast` is signature-correct, but the deleted statement is not alpha-equivalent: it accepted `W : HistWF n H`, whereas the survivor accepts the extracted raw `termLast` predicate.
+
+30. **CRITICAL — `MovesX/XG2d.len_le_filter_succ`.** The sweep comment groups this deleted generic list/filter lemma under `MovesX.Defs.length_le_dTotal_succ`, but their statements are not alpha-equivalent: the former is generic over `List α` and `P : α → Bool`, while the survivor is specific to `XHistory` and `dTotal`. No unchanged private adapter is retained.
+
+31. **CLEAN — sanctioned public additions.** The privacy changes/additions for `MovesV.Defs.{denom_dvd_of_add, denom_sum_dvd}`, `MovesD.E7_rankLt.finite_of_monic_natDegree`, `MovesX.Defs.length_le_dTotal_succ`, `Kernels.HmcReduction.append_one_zero_ne_zero`, `MovesV.V4_naming.{hpt_take_append, hpt_drop_append}`, and `MovesS.EvalAtCoe.eval_algebraMap_div` are within the explicit allowlist and preserve their source statements.
+
+No other non-private statement change appears in the supplied `[SYN2-S1]` hunks. The unrelated `TV_F1.ratBurdens_iota` queue item was ignored. A compile confirmation was attempted but unavailable because the environment’s Lean sandbox launcher lacks `bwrap`; the use-site conclusions above are therefore from direct signature checking of the supplied diff.

@@ -179,8 +179,9 @@ private lemma mem_oneNode_iff (T : TreeModel p F n N m pol) (ν : Node p F)
     simpa using (show ν.species = ReadSpecies.root from h)
   exact T.mem_single ν h1 x
 
-/- [SYN2-S1 SWEEP-4, 2026-07-31] private history_ext DELETED —
-single proof source `F0_preHalt.history_ext` (public, already imported); uses re-pointed. -/
+/- [SYN2-S1 SWEEP-4, 2026-07-31] private `history_eq_of_nodes_eq` DELETED —
+single proof source `F0_preHalt.history_ext` (public, already imported); uses re-pointed.
+(Comment name fixed post-Codex-pass: the re-point script had renamed the mention too.) -/
 
 /-- a realized nonempty history's HEAD is a realized root child. -/
 private lemma child_of_mem (T : TreeModel p F n N m pol) (H : History p F)
