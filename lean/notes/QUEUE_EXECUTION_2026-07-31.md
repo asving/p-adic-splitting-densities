@@ -1061,3 +1061,32 @@ VERIFICATION: `lake env lean` GREEN on HK52_stretchGate (4 × Lean-core) and on
 V9_K1nonrec (footprint unchanged: the 2 expected sorry-decls, supply theorems
 Lean-core).  Capstone path untouched (leaf module, imported by nothing; no OM/*
 edit).  Full record: notes/HK12_RECHECK_2026-07-31.md.
+
+## POST-WAVE UNIT 2 — HK-25 EXECUTED: the recentering-ended gate H₂rec + THE
+## UNCONDITIONAL U1-NEG DISCHARGE (agent: post-wave-1, 2026-07-31)
+
+NEW LEAF `HC2/HK25_recGate.lean` (0 sorry; tcl_rec / coherent_H₂rec /
+retiredKeysExist_false / keysLawful_hcoh_false ALL Lean-core, in-file #print
+axioms):
+* CARRIER SUBSTITUTION (the one design decision, recorded): HK23's H₂ram child is
+  RAMIFIED (pair (2,5)) and `Node.hspecRec` forces a recentering node to e = 1 —
+  so the blueprint's "ν₁ re-dressed as a recentering" rides NOT the forge child
+  but HK-15's discharged UNRAMIFIED gate child `gateChildStage 1 3 1 0 …` (queue
+  item 16), whose gate pins (e,h,s,t) = (1,3,1,0) supply the (S-a) Bézout ties
+  where they FIRE (σ₁.e = 1 — the first compiled instance of the guarded ties
+  firing, HK23's were vacuous at e = 2).
+* `ν₁rec` = the recentering read on it: e = g = 1, h = 3, ψ = X − C 1 at center 1,
+  z̄₁ = 1, side (s0, wSide) = (0, 1), γ₁ = 3, u* = 0, line ⟨3, 3/2⟩ (slope law
+  (3/2)·(1·1·2) = 3), μ = 1, Ranch = X + 1 = ψ in char 2 (ord = 1).
+* `H₂rec` = [HK23.ν₀ram, ν₁rec]: HistoryCoherent PROVED — regrade/lift reused from
+  HK23 (regrade_gate, nodeLift_ν₀ram), STEP-2 at the child pair (1,3) = the S9
+  record transported to σVgate (tcl_rec, the tcl_gate idiom); window 1 ≤ 2, width
+  chain 2 = childWidth₀, steepening 1 < 3/2.
+* **`retiredKeysExist_false : ¬ RetiredKeysExistStmt 2 F4`** — the first
+  UNCONDITIONAL compiled negation of the retired hcoh-keyed keys_exist sentence:
+  U1_negWitness's recorded honesty perimeter (its header's one uncompiled leg) is
+  CLOSED.  Dated closure note appended to U1_negWitness.lean (comment-only; its
+  1-node increment-leg countermodel stays queued, unchanged).
+
+VERIFICATION: `lake env lean` GREEN on HK25_recGate (4 × Lean-core) and on
+U1_negWitness (note-only edit).  Capstone path untouched (leaf; no OM/*).

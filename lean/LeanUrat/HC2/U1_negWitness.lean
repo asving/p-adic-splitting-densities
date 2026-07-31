@@ -256,6 +256,14 @@ end LeanUrat.MovesJ
 -- Scope of this dated note: the recorded honesty perimeter (HK-25's recentering-ended H₂ʳ 
 -- variant): the HK-06 wave LANDED (task #44) — the HK-22 wall is gone and the gate carriers 
 -- (HC2/HK23_twoNodeGatePos.lean: σVgate/ν₀ram/H₂ram) now exist, so HK-25's inhabitation build 
--- is UNBLOCKED as a post-wave unit (BP2 Block G); the coherence-preservation lemmas of THIS file 
--- recompiled green under the (S-a) leg (the zeroLast surgery touches only lift, which the re-keyed 
+-- is UNBLOCKED as a post-wave unit (BP2 Block G); the coherence-preservation lemmas of THIS file
+-- recompiled green under the (S-a) leg (the zeroLast surgery touches only lift, which the re-keyed
 -- leg still ignores).
+--
+-- ═══ HK-25 EXECUTED (2026-07-31, post-wave unit 2) ═══
+-- THE HONESTY PERIMETER IS CLOSED: `HC2/HK25_recGate.lean` builds the recentering-ended
+-- 2-node coherent history H₂rec (HK23's ν₀ram root → the RECENTERING read ν₁rec on the
+-- unramified (1,3) gate child `gateChildStage 1 3 1 0 …` of HK-15, transition transported
+-- to σVgate) and instantiates `retiredKeysExist_false_of_witness` with it:
+-- `HK25.retiredKeysExist_false : ¬ RetiredKeysExistStmt 2 F4` — UNCONDITIONAL, Lean-core.
+-- (The 1-node increment-leg countermodel of the paragraph above remains queued, unchanged.)
