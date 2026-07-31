@@ -38,9 +38,10 @@ lemma splits into three one-idea lemmas, it is three units.
 
 | file | step | contents |
 |---|---|---|
-| `Hyps.lean` | — | the named [M] rows this movement displays: `ADMFull`, `PackCorrespondence`, `K3DeltaRow`, plus re-exported consumption stubs for rows owned elsewhere |
+| `CensusCore.lean` | 14 | `CensusData`, its derived finite carriers, and `ADMFull`; imports no value-side module |
+| `Hyps.lean` | — | the independent named [M] rows `PackCorrespondence` and `K3DeltaRow`; imports `CensusCore.lean` only when re-exporting `ADMFull` |
 | `Transfer.lean` | 13 | abstract drainage transfer over `ClassifierSpec` |
-| `Census.lean` | 14 | `CensusData` carriers + (ADM)-FULL layers + level-1 census |
+| `Census.lean` | 14 | imports `CensusCore.lean` and `Hyps.lean`; proves the (ADM)-FULL and level-1 census layers |
 | `KCount.lean` | 15 | Smith-profile fiber counts + adapted-cell product law |
 | `MassId.lean` | 17 | M1 unconditional layer + M3 glue |
 | `SeriesTie.lean` | 18 | resummation core + `seriesTie_of_kernels` |
@@ -61,12 +62,13 @@ All sketches below are signature-accurate targets; provers may adjust implicit
 binders/instance arguments but NOT the mathematical content (statement changes
 escalate to the division lead → orchestrator, per the statement fence).
 
-### 1.0 `Hyps.lean` — the named [M] hypothesis rows
+### 1.0 `CensusCore.lean` and `Hyps.lean` — the named [M] hypothesis rows
 
-The three rows ASSIGNED to this movement by the charge ((ADM)-FULL, (PACK), (K3-δ));
-each is the ROOT §3.1 row verbatim at Lean type level. They are Prop-valued
-structures consumed as hypotheses — the honest conditionality; discharging any of
-them is future mathematics, not this campaign's Lean work.
+`CensusData` and `ADMFull` are declared together in `CensusCore.lean`; this module
+imports neither `Census.lean` nor `Hyps.lean`. `Hyps.lean` contains the independent
+(PACK) and (K3-δ) rows and may re-export `CensusCore.lean`. Thus the import graph is
+`CensusCore → Hyps` and `{CensusCore, Hyps} → Census`, never a cycle. All [M] rows
+are datum-indexed Prop-valued structures, not axioms or proposition aliases.
 
 ```lean
 namespace LeanUrat.Scaffold
@@ -77,6 +79,7 @@ ledger — `attainDim β_k = d`, equivalently
 `#{j : wt j ≡ β_k (mod e), wt j ≤ β_k} = d`.  p-free, per-datum decidable
 (unit C3).  Automatic at r = 0 ONLY (unit C1); NOT automatic at r ≥ 1 (two
 countermodels on file, O-9 pass-2/pass-3 records). -/
+-- In `CensusCore.lean`, immediately after `CensusData` and its derived definitions:
 structure ADMFull (D : CensusData) : Prop where
   full_attained : ∀ β ∈ D.onLineSlots, D.attainDim β = D.d
 
@@ -90,28 +93,40 @@ structure AssembledPack (n : ℕ) where
   Row : Type
   instR : Fintype Row
   entry : Row → RatFunc ℚ
-  blockOf : Row → Fin n      -- block key e ∈ {1, …, n} of the row
+  blockOf : Row → ℕ
+  blockOf_pos : ∀ r, 1 ≤ blockOf r
+  blockOf_le : ∀ r, blockOf r ≤ n
 
-structure PackCorrespondence (n : ℕ) (C : UCarriers n) (P : AssembledPack n) : Prop where
-  entry_eq : ∀ r : P.Row, P.entry r = intendedEntry C (P.blockOf r) r
-  -- `intendedEntry : UCarriers n → Fin n → P.Row → RatFunc ℚ` is a definition of
-  -- this file (unit H2): the 𝔅_n table entry the chain's Rval/Wsh data assigns.
+attribute [instance] AssembledPack.instR
+
+/-- The independently typed reference table read from `C`; unit H2 supplies the
+actual reader without mentioning an out-of-scope pack variable. -/
+structure PackReference (n : ℕ) (C : UCarriers n) (P : AssembledPack n) where
+  intendedEntry : P.Row → RatFunc ℚ
+  intendedBlock : P.Row → ℕ
+  intendedBlock_pos : ∀ r, 1 ≤ intendedBlock r
+  intendedBlock_le : ∀ r, intendedBlock r ≤ n
+
+structure PackCorrespondence (n : ℕ) (C : UCarriers n) (P : AssembledPack n)
+    (R : PackReference n C P) : Prop where
+  entry_eq : ∀ r : P.Row, P.entry r = R.intendedEntry r
+  block_eq : ∀ r : P.Row, P.blockOf r = R.intendedBlock r
 
 /-- **(K3-δ)** (ROOT §3.1 (UB-X)(b) restricted; REVISION 4 finding VC4-1): every
 REALIZED δ > 1 pool of Step 18's K3-c is a δ-STABLE position class.
 `DeltaStablePos` is OWNED by Movement V (O-8b's blueprint) — consumed here as an
 opaque predicate parameter so this row compiles before Movement V lands. -/
 structure K3DeltaRow (p : ℕ) (D : RegData p)
-    (DeltaStablePos : ℕ → Prop) : Prop where
-  realized_stable : ∀ δ ∈ D.depthSet, 1 < δ → DeltaStablePos δ
+    (RealizedPool DeltaStablePos : ℕ → Prop) : Prop where
+  depthSet_iff_realized : ∀ δ, δ ∈ D.depthSet ↔ RealizedPool δ
+  realized_stable : ∀ δ, RealizedPool δ → 1 < δ → DeltaStablePos δ
 ```
 
-Rows owned by OTHER movements that this movement's units consume BY NAME (each is a
-hypothesis binder in the consuming unit, with the owner's blueprint cited in the
-docstring — no duplicate definition here; until the owning blueprint lands its
-carrier, the consuming units take the row as an explicit `(hrow : Prop)`-typed
-section variable with a `-- SEAM(BP_x)` tag, and the division lead re-keys on
-landing):
+Rows owned by OTHER movements are consumed using their actual datum-indexed
+structures. There are no `Prop` aliases or placeholder definitions in this
+movement. Their owner modules are explicit prerequisites of the first consuming
+wave; if an owner has not landed, that consuming unit is blocked rather than
+compiled against a weaker signature:
 
 | row | owner blueprint | consumed at (units) |
 |---|---|---|
@@ -160,14 +175,25 @@ theorem env_tendsto_zero_of_majorant {E B : ℕ → ℝ} {g : ℕ → ℕ}
     CEIL is the movement's queued HARD unit T7; until it lands the structure is a
     named row, exactly O4T's honest conditionality shape. -/
 structure DrainageImports (n p : ℕ) [Fact p.Prime] (X : ClassifierSpec n p) : Prop where
+  n_lower : 2 ≤ n
+  n_upper : n ≤ 3
   ceil : ∀ N (f : Box p n N), discV p n N f + 1 ≤ N → X.canonical N f ≠ none
   tail : ∀ N m : ℕ, (Nat.card {f : Box p n N // m ≤ discV p n N f} : ℝ)
       ≤ tailC n * (p : ℝ) ^ (n * N) * (p : ℝ) ^ (-(m : ℝ) / (2 * (n - 1)))
 
-/-- T5+T6 (N3-ENV assembled): the imports force drainage. -/
+/-- T6 (N3-ENV assembled): the scoped imports force drainage. -/
 theorem env_tendsto_zero_of_imports {n p : ℕ} [Fact p.Prime]
     {X : ClassifierSpec n p} (hI : DrainageImports n p X) :
     Tendsto X.env atTop (nhds 0)
+
+/-- T7's complete CEIL interface. `canonicalOrderLEOne` is the concrete
+classifier definition of unit T4b; the theorem has exactly the N3 degree scope. -/
+noncomputable def canonicalOrderLEOne (n p : ℕ) [Fact p.Prime] :
+    ClassifierSpec n p
+theorem canonicalOrderLEOne_ceil {n p : ℕ} [Fact p.Prime]
+    (hn0 : 2 ≤ n) (hn1 : n ≤ 3) :
+    ∀ N (f : Box p n N), discV p n N f + 1 ≤ N →
+      (canonicalOrderLEOne n p).canonical N f ≠ none
 ```
 
 `env_tendsto_zero_of_imports` is EXACTLY the shape of the corpus row
@@ -195,17 +221,21 @@ structure CensusData where
   f : Fin (r + 1) → ℕ
   he : ∀ i, 1 ≤ e i
   hf : ∀ i, 1 ≤ f i
+  triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i
+  h_coprime : ∀ i, Nat.Coprime (h i) (e i)
 
 namespace CensusData
 def d (D : CensusData) : ℕ := ∏ i, D.f i
 def period (D : CensusData) : ℕ := ∏ i, D.e i
 def J (D : CensusData) : Type := (i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)
 noncomputable def wt (D : CensusData) : D.J → ℕ                      -- unit C0
-def Gset (D : CensusData) (β : ℕ) : Finset D.J :=
-  {j | D.wt j % D.period = β % D.period ∧ D.wt j ≤ β}                -- unit C0
+noncomputable def Gset (D : CensusData) (β : ℕ) : Finset D.J :=
+  Finset.univ.filter
+    (fun j => D.wt j % D.period = β % D.period ∧ D.wt j ≤ β)         -- unit C0c
 noncomputable def attainDim (D : CensusData) (β : ℕ) : ℕ := (D.Gset β).card
-noncomputable def s (D : CensusData) (β : ℕ) : ℕ := #{j | D.wt j ≤ β}  -- left tail
-def onLineSlots (D : CensusData) : Finset ℕ                          -- unit C0
+noncomputable def s (D : CensusData) (β : ℕ) : ℕ :=
+  (Finset.univ.filter fun j : D.J => D.wt j ≤ β).card                -- unit C0c
+noncomputable def onLineSlots (D : CensusData) : Finset ℕ            -- unit C0d
 end CensusData
 
 /-- C3: (ADM)-FULL is per-datum decidable — the ROOT §3.1 row's "finite lattice
@@ -217,9 +247,10 @@ theorem admFull_of_r_eq_zero {D : CensusData} (hr : D.r = 0) : ADMFull D
 
 /-- C2: the r = 1 displayed criterion (O-9 r4, collapsing to the r3 form at
     f₁ = 1): FULL attainment at β ⟺ β ≥ h₁·((h₁⁻¹β mod e₁) + (f₁ − 1)·e₁). -/
-theorem admFull_r1_iff {D : CensusData} (hr : D.r = 1) (hcop : coprimeHyp D) :
+theorem admFull_r1_iff {D : CensusData} (hr : D.r = 1) :
     ADMFull D ↔ ∀ β ∈ D.onLineSlots,
-      r1Bound D β ≤ β        -- r1Bound: the displayed RHS, a definition (unit C2a)
+      r1Bound D β ≤ β
+    -- `r1Bound` uses `D.h_coprime`; no undefined auxiliary proposition occurs.
 
 /-- C6+C7: the census value CEN-W as data: a ℕ-coefficient polynomial in q per
     stratum (p-freeness is BY TYPE), with the padding law census = 0 at
@@ -232,16 +263,25 @@ theorem censusW_eq_zero_of_unattained {D : CensusData} (h : ¬ Attained D) :
     with c_i = Δ(i) + 1 at lattice slots — stated for the level-1 stratum carrier
     `Stratum1` (a Finset-of-boxes datum, unit C4a), as an exact ℕ-count identity
     at every prime power: count = (censusW D).eval q. -/
-theorem census_r0_law {D : CensusData} (hr : D.r = 0) (S : Stratum1 D)
-    {p N : ℕ} [Fact p.Prime] (q : ℕ) (hq : q = p ^ N) :
-    S.count q = (censusW D).eval q
+noncomputable def canonicalStratum1 (D : CensusData) : Stratum1 D
 
-/-- C5 (CEN-W at r ≥ 1) — the (GR-B)+(ADM)-conditional census, QUEUED HARD (wave 4);
-    stated now so the conditionality is displayed and consumers compile.
-    SEAM(BP_III): `hGRB` is Movement III's row. -/
-theorem census_law_of_grb {D : CensusData} (hGRB : GRBRow D) (hadm : ADMFull D)
-    (S : StratumR D) {p N : ℕ} [Fact p.Prime] (q : ℕ) (hq : q = p ^ N) :
-    S.count q = (censusW D).eval q
+theorem census_r0_law {D : CensusData} (hr : D.r = 0)
+    {p N : ℕ} [Fact p.Prime] (q : ℕ) (hq : q = p ^ N) :
+    (canonicalStratum1 D).count q = (censusW D).eval q
+
+/-- C5/C5′: the queued r≥1 mathematics is represented by a named hypothesis row,
+not by an unproved theorem declaration. The lower scope and both conclusions are
+visible fields. Wave 4 proves a constructor for this row. -/
+structure CensusValueRows (D : CensusData) : Prop where
+  cenW : 1 ≤ D.r → GRBRow D → ADMFull D →
+    ∀ (S : StratumR D) {p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N →
+      S.count q = (censusW D).eval q
+  cenJ : 1 ≤ D.r → GRBRow D → FreshRow D → ADMFull D →
+    ∀ (S : JunctionStratum D) {p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N →
+      S.count q = (censusW D).eval q
+
+theorem censusValueRows_of_anchoredMarch (D : CensusData)
+    (hproof : AnchoredMarchProof D) : CensusValueRows D
 ```
 
 (CEN-J adds `hFresh : FreshRow D` — unit C5', same shape.) The K5/K6/K7 falsifier
@@ -252,10 +292,12 @@ in any Lean statement (verifier charge for the division lead).
 
 ### 1.3 `KCount.lean` — Step 15, the Smith-profile fiber count + (SIB)
 
-Source: `O10_phaseB_attempt_rev2.md` §§1–4 (VERIFIED leaf #6). This is prime
-Mathlib territory: `Submodule.smithNormalForm` / `Basis.SmithNormalForm`
-(`Mathlib.LinearAlgebra.FreeModule.PID`) over the PID ℤ_p, plus finite counting
-in `ZMod (p^M)`. The proof decomposes exactly along the paper's Steps 1–4.
+Source: `O10_phaseB_attempt_rev2.md` §§1–4 (VERIFIED leaf #6). This uses the
+Smith-normal-form API exported by `Mathlib.LinearAlgebra.FreeModule.PID`, but K8a
+must first capture the exact declaration available at repository HEAD with a
+compiling `#check`. K8b then adapts that generic PID result to the particular Φ
+matrix and exposes U, D, V, their inverse identities, and the `Fin n` exponent
+indexing used by `MulFiberData`; generic existence alone does not discharge K8.
 
 ```lean
 /-- K0: truncated valuation on ZMod (p^M) vectors: v(x) := min(v_p(lift x), M),
@@ -293,8 +335,27 @@ theorem card_smithSubgroup {p M n : ℕ} [Fact p.Prime] (e : Fin n → ℕ) :
     K8), and the quadratic remainder Q with its p^{2τ} factor (K7b).
     K7a = the subset product expansion (`Finset.prod_add`);
     K7c = the chart bijection itself. -/
-structure MulFiberData (p : ℕ) [Fact p.Prime] (n N : ℕ) where ...   -- unit K7
-theorem fiber_equiv_solutions (F : MulFiberData p n N) (hne : F.FiberNonempty) :
+structure MulFiberData (p : ℕ) [Fact p.Prime] (n N : ℕ) where
+  τ : ℕ
+  ρ : ℕ
+  τ_sep : ρ + 1 ≤ τ
+  FactorPoint : Type
+  instFactorPoint : Fintype FactorPoint
+  base : FactorPoint
+  polydisc : Finset FactorPoint
+  Fiber : Type
+  instFiber : Fintype Fiber
+  FiberNonempty : Prop
+  SolutionSet : Type
+  instSolutionSet : Fintype SolutionSet
+  smithExp : FactorPoint → Fin n → ℕ
+
+attribute [instance] MulFiberData.instFactorPoint
+attribute [instance] MulFiberData.instFiber
+attribute [instance] MulFiberData.instSolutionSet
+
+theorem fiber_equiv_solutions {p n N : ℕ} [Fact p.Prime]
+    (F : MulFiberData p n N) (hne : F.FiberNonempty) :
     Nonempty (F.Fiber ≃ F.SolutionSet)
 
 /-- K8 (Lemma 2 half 1): Smith normal form of Φ over ℤ_p exists — transcription
@@ -322,10 +383,21 @@ theorem kcount_fiber_card {p n N : ℕ} [Fact p.Prime] (F : MulFiberData p n N)
     counts divided by the K5 fiber size — UNCONDITIONAL in factor coordinates.
     The APPLICATION to engine strata is a separate statement consuming the
     named rows K-LOC and (I-τ) (owner BP_III), displayed as binders. -/
-structure AdaptedCell (p n N : ℕ) [Fact p.Prime] where ...           -- unit K10a
+structure AdaptedCell (p n N : ℕ) [Fact p.Prime] where
+  Factor : Type
+  instFactor : Fintype Factor
+  toMulFiberData : MulFiberData p n N
+  cellCount : ℕ
+  factorCount : Factor → ℕ
+  sM : ℕ
+  domainCount_eq : Nat.card Factor = ∏ j, factorCount j
+  fiber_nonempty : toMulFiberData.FiberNonempty
+
+attribute [instance] AdaptedCell.instFactor
+
 theorem sib_product_law {p n N : ℕ} [Fact p.Prime] (A : AdaptedCell p n N)
     (hS : SmithStable A.toMulFiberData) :
-    A.cellCount = (∏ j, A.factorCount j) / p ^ A.sM
+    A.cellCount * p ^ A.sM = ∏ j, A.factorCount j
 ```
 
 ### 1.4 `MassId.lean` — Step 17, the D-11 M1 unconditional layer + M3 glue
@@ -334,29 +406,36 @@ Source: `D11_massid_phaseB_attempt_rev3.md` §2 (Theorem M1 at its REV-3
 in-statement scope) and §4 (M3). Scaffold form = counting: "Haar mass" of a
 level-k cylinder event is count/q₀^(k·dim) — no measure theory needed at this
 layer (the corpus `TreeSeam.count_tie` already fixed that convention).
-ONLY the unconditional content of M1 is targeted: families (i)/(ii)/(iii),
-row-sum-one, per-visit/per-block termination. M1(c)'s multi-block a.s.
+The algebraic M1 consequences are targeted conditionally on the named
+`BlockCountLaws` row until constructors deriving those laws from the established
+O-12 base have landed. No theorem is called unconditional merely because its
+premises were stored as carrier fields. M1(c)'s multi-block a.s.
 termination (Lemma M2.0) consumes (S1-m)+(DET) and is NOT a unit here — it
 rides Step 18b's row display (unit D4's binder list).
 
 ```lean
-/-- The one-step block stratum carrier (D-11 §1's displayed objects, counting
-    form): state-law cell C_e, descent event R_e, the reduction partition, the
-    loop strata with their counts at q₀ = p^δ.  All fields are Finset counts
-    with their displayed cardinalities as LAWS (so M1(a) becomes algebra). -/
+/-- The one-step block carrier contains objects and counts only. -/
 structure BlockStrata (E e : ℕ) (q₀ : ℕ) where
   hq : 2 ≤ q₀
-  hEe : e ≤ E                       -- E = Σ i over the block; block e ≥ 2
-  descentCount : ℕ                  -- #R_e-classes at the working level
-  cellCount : ℕ                     -- #C_e-classes
-  centerCount : ℕ                   -- rational e-fold centers
-  law_descent : descentCount * q₀ ^ E = cellCount        -- L1/L2/L3's count form
-  law_center  : centerCount = q₀
-  ...
+  hEe : e ≤ E
+  descentCount : ℕ
+  cellCount : ℕ
+  centerCount : ℕ
+  o1Count : ℕ
+
+/-- The hard counting content is an explicit named row, not data smuggled into
+`BlockStrata`. Constructors for this row must be derived from the imported O-12
+base before any M1 specialization is called unconditional. -/
+structure BlockCountLaws {E e q₀ : ℕ} (B : BlockStrata E e q₀) : Prop where
+  cell_pos : 0 < B.cellCount
+  descent_law : B.descentCount * q₀ ^ E = B.cellCount
+  center_law : B.centerCount = q₀
+  o1_law : B.o1Count * q₀ ^ E = B.cellCount * q₀
 
 /-- M1a ((O1) kernel value IS the continuation mass): K_e(q₀) = q₀^{1−E} as the
     exact count ratio of the displayed event. -/
-theorem kernel_O1_mass {E e q₀ : ℕ} (B : BlockStrata E e q₀) :
+theorem kernel_O1_mass {E e q₀ : ℕ} (B : BlockStrata E e q₀)
+    (hB : BlockCountLaws B) :
     (B.o1Count : ℚ) / B.cellCount = (q₀ : ℚ) ^ (1 - (E : ℤ))
 
 /-- M1b ((O2)/(O2′), c = 0): K_e(q₀) = q₀^{−E}.  MECH from the same laws. -/
@@ -387,7 +466,7 @@ theorem perBlock_exit {E q₀ : ℕ} (hq : 2 ≤ q₀) (hE : 2 ≤ E) :
     `cycS_eval_pos` (§3); packaged as: RegP transports the margin to every pool
     member. -/
 theorem r1_margin_of_regP {p : ℕ} {D : RegData p} (h : RegP D) (e : D.Block) :
-    ∀ q₀ ∈ D.Pool, ¬ IsPole (D.detFull e) q₀       -- shape; exact form unit M4
+    ∀ q₀ ∈ D.Pool, RatFunc.eval (q₀ : ℚ) (D.detFull e) ≠ 0
 
 /-- M7 (M3, row labels are true types — the σ-constancy glue): given the two
     Movement-III rows (O5triple Thm E: per-box lift uniformity; D-15), the true
@@ -436,23 +515,50 @@ theorem neumannSum_isLFP {m : ℕ} (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
     hypothesis structure whose fields are EXACTLY what K1 supplies (the O-10
     product law + (SIB)/(JC-multi) rows + CU leaf labels): per-σ, the level-N
     slice sum = entrance row + kernel matrix · level-(N−1) slice sums. -/
-structure TreeRecursion (n p : ℕ) (X : ClassifierSpec n p)
-    (F : FiberSeries n p X) (A : ...) (b : ...) : Prop where ...
-theorem seriesSum_eq_lfp ... (hrec : TreeRecursion n p X F A b) :
-    (fun σ => F.seriesSum σ) = restrict (neumannSum A b)
+structure TreeRecursion {n p m : ℕ} [Fact p.Prime]
+    (X : ClassifierSpec n p) (F : FiberSeries n p X)
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞) : Prop where
+  stateOf : SplittingType n → Fin m
+  slice : ℕ → Fin m → ℝ≥0∞
+  slice_zero : slice 0 = b
+  slice_succ : ∀ N, slice (N + 1) = b + A.mulVec (slice N)
+  series_eq_iSup : ∀ σ, F.seriesSum σ = ⨆ N, slice N (stateOf σ)
 
-/-- S3 (Bekić, Lemma 3.2): 2×2 block-lower-triangular lfp decomposes
-    componentwise (S3a); iterate to the full triangularization (S3b). -/
-theorem neumannSum_blockTriangular ...
+theorem seriesSum_eq_lfp {n p m : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    (hrec : TreeRecursion X F A b) :
+    ∀ σ : SplittingType n,
+      F.seriesSum σ = neumannSum A b (hrec.stateOf σ)
 
-/-- S4 (Neumann/Cramer under spectral escape, Lemma 3.3): when the ℝ≥0-shadow of
-    A has row-sum margin < 1 (supplied by MassId.perVisit_margin through the
-    pack), the ℝ≥0∞ Neumann sum is finite and equals the Cramer solve value —
-    the bridge from lfp to `Rval` evaluation.  S4a: summability from margin;
-    S4b: (1 − A)·neumannSum = b telescope; S4c: agreement with the RatFunc
-    evaluation under RegP (reuse `RegPin.detFull_ne_zero`, `SolveSeam`'s
-    `r_is_solve` shape). -/
-theorem neumann_eq_solve_of_margin ...
+/-- S3 (Bekić/triangular prefix independence). -/
+noncomputable def prefixMatrix {m : ℕ} (k : ℕ)
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) : Matrix (Fin m) (Fin m) ℝ≥0∞ :=
+  fun i j => if i.1 < k ∧ j.1 < k then A i j else 0
+noncomputable def prefixVector {m : ℕ} (k : ℕ)
+    (b : Fin m → ℝ≥0∞) : Fin m → ℝ≥0∞ :=
+  fun i => if i.1 < k then b i else 0
+theorem neumannSum_blockTriangular {m k : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (htri : ∀ i j, i.1 < k → k ≤ j.1 → A i j = 0) :
+    ∀ i, i.1 < k →
+      neumannSum A b i = neumannSum (prefixMatrix k A) (prefixVector k b) i
+
+/-- S4: finite Neumann sums agree with every real affine solution under a strict
+row-sum margin. -/
+noncomputable def matrixToReal {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) : Matrix (Fin m) (Fin m) ℝ :=
+  fun i j => (A i j).toReal
+noncomputable def vectorToReal {m : ℕ}
+    (b : Fin m → ℝ≥0∞) : Fin m → ℝ := fun i => (b i).toReal
+theorem neumann_eq_solve_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤) (hfiniteb : ∀ i, b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ)
+    (x : Fin m → ℝ)
+    (hx : x = vectorToReal b + (matrixToReal A).mulVec x) :
+    ∀ i, (neumannSum A b i).toReal = x i
 
 /-- S5 (THE TIE ASSEMBLY — the movement's Step-18 capstone): `series_tie` from
     the displayed row list, one binder per ROOT consumption:
@@ -462,11 +568,21 @@ theorem neumann_eq_solve_of_margin ...
          `hadm : ADMFull`, `hR14 : R1R4Row`, `hK3δ : K3DeltaRow …`),
     K4 = `hmass : TerminalSeamRows …` + the `TreeSeam` in scope (D-a/K4-CYL).
     Conclusion: the corpus row, verbatim. -/
-theorem seriesTie_of_kernels {n p : ℕ} [Fact p.Prime] {C : UCarriers n}
-    {X : ClassifierSpec n p} {F : FiberSeries n p X} (seam : TreeSeam n p X F)
-    (K1 : TreeRecursion n p X F A b) (hreg : RegP D) (hpin : RegPin C D)
-    (hpack : PackCorrespondence n C P) (K3 : CensusValueRows …)
-    (K4 : TerminalSeamRows …) :
+theorem seriesTie_of_kernels {n p m : ℕ} [Fact p.Prime]
+    {C : UCarriers n} {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {CD : CensusData} {RD : RegData p} {P : AssembledPack n}
+    {R : PackReference n C P}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    {RealizedPool DeltaStablePos : ℕ → Prop}
+    (seam : TreeSeam n p X F)
+    (K1 : TreeRecursion X F A b)
+    (hreg : RegP RD) (hpin : RegPin C RD)
+    (hpack : PackCorrespondence n C P R)
+    (hGRB : GRBRow CD) (hFresh : FreshRow CD) (hadm : ADMFull CD)
+    (hcen : CensusValueRows CD)
+    (hR14 : R1R4Row n p X)
+    (hK3δ : K3DeltaRow p RD RealizedPool DeltaStablePos)
+    (K4 : TerminalSeamRows n p X F) :
     ∀ σ : SplittingType n,
       F.seriesSum σ = ENNReal.ofReal (C.chain.Rval (vmap C.T σ) (p : ℚ))
 ```
@@ -517,14 +633,30 @@ theorem cylDensity_eq_seriesSum {n p : ℕ} [Fact p.Prime] [NeZero p]
 
 /-- D5 (the (r1) uniqueness pivot): under the margin, the renewal solution is
     UNIQUE (not merely least) — S1b's leastness + S4a's finiteness. -/
-theorem renewal_unique_of_margin ...
+theorem renewal_unique_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ) (b x y : Fin m → ℝ)
+    (hmargin : ∃ ρ : ℝ, 0 ≤ ρ ∧ ρ < 1 ∧
+      ∀ i, ∑ j, |A i j| ≤ ρ)
+    (hx : x = b + A.mulVec x) (hy : y = b + A.mulVec y) :
+    x = y
 
-/-- D4 (THE MOVEMENT CAPSTONE — α = R_τ at the displayed hypothesis set):
-    chain D3 + S5.  Binders = S5's list + henv + the (S1) census rows (already
-    inside K3) — the Lean face of ROOT clause (R)'s Step 17/18/18b chain,
-    MONIC scope. -/
-theorem valueSide_massTie {n p : ℕ} [Fact p.Prime] [NeZero p] …
-    (… S5's binders …) (henv : Tendsto X.env atTop (nhds 0)) :
+/-- D4 (THE MOVEMENT CAPSTONE — α = R_τ at the full displayed hypothesis set). -/
+theorem valueSide_massTie {n p m : ℕ} [Fact p.Prime] [NeZero p]
+    {C : UCarriers n} {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {CD : CensusData} {RD : RegData p} {P : AssembledPack n}
+    {R : PackReference n C P}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    {RealizedPool DeltaStablePos : ℕ → Prop}
+    (seam : TreeSeam n p X F)
+    (K1 : TreeRecursion X F A b)
+    (hreg : RegP RD) (hpin : RegPin C RD)
+    (hpack : PackCorrespondence n C P R)
+    (hGRB : GRBRow CD) (hFresh : FreshRow CD) (hadm : ADMFull CD)
+    (hcen : CensusValueRows CD)
+    (hR14 : R1R4Row n p X)
+    (hK3δ : K3DeltaRow p RD RealizedPool DeltaStablePos)
+    (K4 : TerminalSeamRows n p X F)
+    (henv : Tendsto X.env atTop (nhds 0)) :
     ∀ σ : SplittingType n,
       cylDensity X σ = C.chain.Rval (vmap C.T σ) (p : ℚ)
 ```
@@ -542,10 +674,11 @@ paragraph. Deps name unit ids; corpus imports are in §3.
 
 | id | statement | proof sketch | deps | diff | src |
 |---|---|---|---|---|---|
-| H1 | `ADMFull` structure | definition only (needs C0's `CensusData`) | C0 | MECH | ROOT §3.1 (ADM) row |
-| H2 | `AssembledPack`, `intendedEntry`, `PackCorrespondence` | definitions; `intendedEntry` reads the chain's table entry via `UCarriers.chain` | — | MECH | ROOT §3.1 (PACK); D11 r3 §5 clause 4 |
-| H3 | `K3DeltaRow` | definition over `RegData.depthSet` with opaque `DeltaStablePos` parameter | — | MECH | ROOT §3.1 (UB-X)(b)/(K3-δ) |
-| H4 | SEAM stubs: section-variable `Prop` rows for GRBRow/FreshRow/R1R4Row/TerminalSeamRows/ThmERow/D15Row with owner docstrings | doc-only carriers (each a `def … : Prop := hrow` alias until BP_III/BP_V land) | — | MECH | §1.0 table |
+| H1 | `ADMFull` structure in `CensusCore.lean` | definition after C0's finite datum interface; no reverse import | C0 | MECH | ROOT §3.1 (ADM) row |
+| H2a | `AssembledPack` with installed `Fintype` and one-based block bounds | definition only | — | MECH | ROOT §3.1 (PACK) |
+| H2b | `PackReference` and `PackCorrespondence` | datum-indexed reference and entry/block equalities | H2a | MECH | ROOT §3.1 (PACK); D11 r3 §5 clause 4 |
+| H3 | `K3DeltaRow` | records `depthSet ↔ RealizedPool` and stability of every realized δ | — | MECH | ROOT §3.1 (UB-X)(b)/(K3-δ) |
+| H4 | imports of the actual BP_III/BP_V row modules | no local declarations or aliases; first consumers wait for owner modules | — | MECH | §1.0 table |
 
 ### Transfer (T) — Step 13
 
@@ -592,20 +725,24 @@ paragraph. Deps name unit ids; corpus imports are in §3.
 | K7a | subset product expansion Π(h_j+a_j) − Π h_j = Σ_{|S|≥1} …  | `Finset.prod_add` + split |S| = 1 vs ≥ 2 | — | EASY | O10 §3 Step 1 |
 | K7b | the p^{2τ} extraction: Q(p^τ b) = p^{2τ} Q̃(b), Q̃ ℤ_p-coefficients | factor p^{τ|S|}, |S| ≥ 2 | K7a | EASY | O10 §3 Step 1 |
 | K7c | `MulFiberData` + `fiber_equiv_solutions` | monic-lift parametrization (differences of monics = degree-< d_j polys, p^τ-divisible); mod-p^N well-definedness; assemble (⋆) | K7a,K7b | HARD (borderline MED; the one big glue) | O10 §3 Steps 1–2 |
-| K8 | Smith data for Φ over ℤ_p | cite `Submodule.smithNormalForm` (Mathlib PID) at Φ's matrix; extract U, D, V | — | MED | O10 §2 Lemma 2 half 1 |
+| K8a | PID Smith theorem availability gate | import `Mathlib.LinearAlgebra.FreeModule.PID`; use `#check` to record the exact declaration available at repository HEAD before fixing the adapter proof | — | MECH | O10 §2 Lemma 2 half 1 |
+| K8b | `SmithData` adapter for the particular Φ matrix | instantiate the checked PID theorem, then expose the concrete U/D/V matrices, inverse laws, diagonal equality, and `Fin n` exponent indexing required by `MulFiberData` | K8a,K7d | MED | O10 §2 Lemma 2 half 1 |
 | K9 | HARD (wave 4): `SmithStable` discharge (exponent constancy on the polydisc) | Lemma 2's ρ-separation argument (resultant lower bounds); until landed the row is a displayed hypothesis | K8 | HARD | O10 §2 Lemma 2 |
 | K5 | `kcount_fiber_card` (Theorem 1(i)) | chart K7c; change variables (V bijection); K4 reduces to subgroup membership; K1/K2 bijection T; count K3b | K1–K4,K7c,K8 | EASY (glue) | O10 §3 Thm 1(i) |
 | K6 | guard range (Theorem 1(ii)): M ≥ e_max ⇒ Σ min(e_i,M) = ρ | `Finset.sum_congr` + `min_eq_left`; omega | — | MECH | O10 §3 Thm 1(ii) |
 | K10a | `AdaptedCell` structure ((A1)–(A3) as fields) | definition | K7c | MECH | O10 §4.1 |
-| K10 | `sib_product_law` (Theorem 2) | constant nonempty fibers (K5) ⇒ image count = domain/fiber; product cell = image of factor product | K5,K10a + O5CountingB | MED | O10 §4.2 |
-| K11 | engine application statement (consumes K-LOC + (I-τ) rows) — statement only | binders per §1.3; proof rides BP_III's dictionary landing | K10,H4 | MED (statement MECH) | O10 §4.3/§5.3 |
+| K10b | constant-fiber image theorem | combine the concrete cell map, nonempty fibers, and K5's exact fiber cardinality | K5,K10a + O5CountingB | MED | O10 §4.2 |
+| K10c | domain-product cardinality | identify the domain with the product of factor cells | K10a | EASY | O10 §4.2 |
+| K10 | `sib_product_law` in multiplicative form | combine K10b and K10c; no truncated division | K10b,K10c | EASY | O10 §4.2 |
+| K11 | `EngineSIBRow` named structure consuming actual K-LOC and (I-τ) rows | a Wave-4/owner constructor supplies the application; never an unproved theorem declaration | K10,H4 | MECH | O10 §4.3/§5.3 |
 
 ### MassId (M) — Step 17
 
 | id | statement | proof sketch | deps | diff | src |
 |---|---|---|---|---|---|
-| M0 | `BlockStrata` carrier + count laws | definition (fields = L1/L2/L3's count forms) | — | MECH | D11 §1 |
-| M1a | `kernel_O1_mass` | field algebra: q₀ centers × q₀^{−e} each × descent ratio q₀^{−(E−e)} | M0 | EASY | D11 §2 (a) (O1) |
+| M0a | `BlockStrata` carrier without mathematical laws | definition of counts and indices only | — | MECH | D11 §1 |
+| M0b | named `BlockCountLaws` row | explicit L1/L2/L3 count hypotheses; no axiom and no claim of unconditionality | M0a | MECH | D11 §1 |
+| M1a | `kernel_O1_mass` conditional on `BlockCountLaws B` | field algebra from the named row | M0b | EASY | D11 §2 (a) (O1) |
 | M1b | (O2) value q₀^{−E} | same, c = 0 | M0 | MECH | D11 §2 (a) (O2) |
 | M1c | `kernel_O3_resummed` | geometric `tsum` over ℝ≥0, ratio κ₀ = q₀^{−E} < 1 | — | EASY | D11 §2 (a) (O3) |
 | M2 | `row_sum_one` | Finset.sum over the partition fields; disjointness+exhaustion ⇒ counts add to cellCount | M0 | EASY | D11 §2 (b) |
@@ -622,7 +759,9 @@ paragraph. Deps name unit ids; corpus imports are in §3.
 |---|---|---|---|---|---|
 | S1a | `neumannSum` solves x = b + A·x | ℝ≥0∞ tsum shift: Σ_{k} A^{k+1}b = A·Σ A^k b (ENNReal.tsum commutes with mulVec — finite sums) | — | MED | M04 Lemma 3.1 |
 | S1b | leastness | induction: partial sums ≤ any solution; `iSup` ≤ | S1a | MED | M04 Lemma 3.1 |
-| S2 | `seriesSum_eq_lfp` | seriesSum = ⨆ slice sums (D3a); slice sums = partial Neumann sums by `TreeRecursion` induction on N | S1a,S1b,D3a | MED | M04 Thm 1 + Thm 4 K1 leg |
+| S0 | seriesSum is the supremum of slice sums | proved in `SeriesTie.lean`, so this file has no dependency on `DensityTie.lean` | — | MED | M04 Thm 1 |
+| S2a | recursion identifies every finite slice with a partial Neumann sum | induction on N using `TreeRecursion.slice_zero/slice_succ` | S1a | MED | M04 Thm 4 K1 leg |
+| S2b | `seriesSum_eq_lfp` | combine S0, S2a, and monotone convergence | S0,S1b,S2a | MED | M04 Thm 1 + Thm 4 K1 leg |
 | S3a | Bekić 2×2 block | substitute the solved lower block; verify both lfp properties | S1a,S1b | MED | M04 Lemma 3.2 |
 | S3b | full triangularization | induction on blocks via S3a | S3a | MED | M04 Lemma 3.2 |
 | S4a | summability from margin | row-sum ρ ≤ q₀^{1−E} ≤ 1/2 (M3') ⇒ ‖A^k b‖ ≤ 2^{−k}‖b‖; comparison | M3' | MED | M04 Lemma 3.3 |
@@ -638,14 +777,17 @@ paragraph. Deps name unit ids; corpus imports are in §3.
 | D0 | `cylDensity` def | definition (⨆) | D0a | MECH | THE PROOF SCAFFOLD (cylinder-limit density) |
 | D1 | `dmass_eq_sliceSum` | cast `TreeSeam.finiteness_stack` (PROVED corpus) to ℝ; divide by p^{nN} | — | EASY | D11 §3 (R-read); corpus reuse |
 | D2 | `sum_cylDensity_eq_one` | Σ_σ decided + undec = p^{nN} (box partition); env → 0 squeeze; generalize `decided6_lower/upper` | D0a,T1 | MED | D11 M2 proof; SeriesAssembly pattern |
-| D3a | seriesSum σ = ⨆_N slice sums | `mem_slice_iff` monotone slices; ℝ≥0∞ `iSup` of monotone Finset sums = tsum | — | MED | M04 Thm 1 |
-| D3 | `cylDensity_eq_seriesSum` | D1 + D3a + toReal cast under `hfin` | D1,D3a | MED | D11 M2 (S2) leg |
+| S0 | seriesSum σ = ⨆_N slice sums, located in `SeriesTie.lean` | `mem_slice_iff` monotone slices; ℝ≥0∞ `iSup` of monotone Finset sums = tsum | — | MED | M04 Thm 1 |
+| D3 | `cylDensity_eq_seriesSum` | D1 + imported S0 + toReal cast under `hfin` | D1,S0 | MED | D11 M2 (S2) leg |
 | D5 | `renewal_unique_of_margin` | least solution + any solution differ by a fixed point of A; margin kills it | S1b,S4a | MED | D11 (r1) pivot |
-| D4 | `valueSide_massTie` (CAPSTONE) | D3 + S5 + D2's existence; binder list = S5's + henv | D2,D3,S5 | EASY (glue) | ROOT Step 18b |
+| D4 | `valueSide_massTie` (CAPSTONE) | pointwise rewrite by D3 and S5; D2 is not used | D3,S5 | EASY (glue) | ROOT Step 18b |
 
-Unit count: 58 (48 provable this campaign: 5 HARD queued = T7, T8, C5, C5', K9;
-S4c/K7c flagged borderline). Zero `sorry`s at every wave boundary: HARD units land
-STATEMENTS as hypothesis-row consumers only, never sorried theorems.
+No aggregate unit-count claim is made: composite rows are split at assignment
+time as listed in §4. In particular C0, K0, K7c, K10, M0, M6, S2, S3b, S4c,
+and S5 are multi-unit chains, each assignment targeting one definition or one
+proof idea and approximately 40 Lean lines or fewer. T7, T8, C5/C5′, and K9
+export named hypothesis structures until their dedicated constructor proofs land.
+Every wave boundary is zero-`sorry`.
 
 ---
 
@@ -664,7 +806,7 @@ against HEAD (2ab2a48).
 | `BridgeKernels.series_tie` row (`MovesU/BridgeKernels.lean:223`) | THE TARGET ROW (owner [3t]) | S5's conclusion shape (byte-matched) |
 | `BridgeKernels.env_tendsto` row (`BridgeKernels.lean`) | CL-4's envelope row | T6's conclusion shape |
 | `SolveSeam` (+ `r_is_solve`, `R_defined`) (`DefsLedger.lean:578`) | the solve pin to `MovesS.Rsh` | S4c, S5 (K2 leg) |
-| `RegP.detFull_ne_zero`, `RegPin.detFull_eq`, `regP_iff_pool_avoids`, `RegData.zeroPoleSet` (`MovesU/RegPFinite.lean`) | M17's (REG-p) dictionary, PROVED | M4, S4c |
+| `RegP.detFull_ne_zero`, `RegPin.detFull_eq`, `regP_iff_pool_avoids`, `RegData.zeroPoleSet` (`MovesU/RegPFinite.lean`) | M17's (REG-p) dictionary, PROVED; supports nonzero evaluation, not a pole predicate | M4, S4c |
 | `cycS_eval_pos`, `MemRcyc.*`, `memRcyc_inv_cycS`, `MemRcyc.eq_div` (`MovesU/O12PoleFree.lean`) | O-12's 𝒮-positivity/localization layer, PROVED | M4 (nonvanishing at q₀ ≥ 2), S4c |
 | `surj_of_injOn_checksum`, `bijOn_of_injOn_checksum`, `card_eq_of_injOn_checksum` (`MovesU/O5CountingB.lean`) | O5triple Theorem B's counting core | K10 (image/fiber count), M2 (partition count option) |
 | `UCarriers.cl11_ksub_general`, `ksub_exists_form`, `ksubM1C1T_of_degCons` (`MovesU/KsubGeneral.lean`) | (K-SUB) m = 1 classification, general n | S5's K3 leg (the m = 1 verdict-row value fragment) |
@@ -676,7 +818,7 @@ against HEAD (2ab2a48).
 | D-SC slot layer: `SlotsG14_relSite` … `SlotsG19e_valueFalsifiers` (`MovesU/Slots*.lean`) | the sited value-law carriers + falsifier gates | S5's K3 keying: `CensusValueRows` should be STATED over the SlotsG15 `SiteData` carriers, not re-invented — E-phase instruction to the prover |
 | `n2_polyGeomLaws_nonempty` (`MovesS/N2PolyGeom.lean`, per BridgeKernels cl6 docstring) | the n = 2 value+degree law witness | S5's cl6-adjacent gates at n = 2 |
 | `Fintype (SplittingType n)` (corpus unit U0b) | finiteness of the type menu | D2's Σ_σ |
-| Mathlib: `Submodule.smithNormalForm` / `Basis.SmithNormalForm` (`Mathlib.LinearAlgebra.FreeModule.PID`) | SNF over a PID | K8 |
+| Mathlib PID Smith-normal-form API (`Mathlib.LinearAlgebra.FreeModule.PID`) | exact declaration name and arguments must be captured by K8a's compiling `#check`; K8b supplies the problem-specific U/D/V adapter | K8a,K8b |
 | Mathlib: `Finset.prod_add` | subset-expansion of products | K7a |
 | Mathlib: `Finite.injective_iff_bijective` | finite injectivity upgrade | K2 |
 | Mathlib: `tsum_geometric_of_lt_one` (ℝ≥0), `ENNReal.tsum_*` | geometric resummation | M1c, M6, S1a, S4a |
@@ -697,41 +839,53 @@ to one prover. Per-file `lake env lean` gate after each unit; `lake build` +
 64k staged-write discipline and the statement fence (no signature edits without
 division-lead sign-off).
 
-**Wave 0 — carriers and rows (all MECH, 1 prover-day, maximally parallel):**
-C0 → {H1, C2a, C3, C4a} ; H2, H3, H4 ; K0 (defs half), K10a-statement, M0 ;
-module skeletons for all seven files with `import` headers.
-GATE: everything compiles; zero sorries; `#print axioms` clean on all defs.
+**Wave 0a — independent carrier roots:**
+C0a (`CensusData`) ; H2a ; H3 ; K0a (`zmodVal`) ; M0a (`BlockStrata`) ;
+module skeletons, including `CensusCore.lean`. No unit in this subwave depends on
+another unit in the subwave.
 
-**Wave 1 — the easy floor (MECH/EASY, parallel):**
-T0, T1, T2, T3 ; C6, C7, C3 ; K2, K3a, K3b, K6, K7a, K7b ; M1a, M1b, M1c, M2,
-M3', M5, M8 ; D0a, D0, D1 ; S1a-statement + partial-sum lemmas.
-GATE: Transfer.lean proves T0–T3 outright; MassId's unconditional value layer
-(M1a–M3') done — Step 17's "Σ = 1 across each row now a THEOREM" has its Lean face.
+**Wave 0b — carrier derivatives:**
+C0b (`d/period/J`), then C0c (`wt/Gset/attainDim/s`), then C0d
+(`onLineSlots`), each gated before its dependents; H1 after C0d; H2b after H2a;
+K0b (`minVal`) after K0a; M0b (`BlockCountLaws`) after M0a. Actual BP_III/BP_V
+row modules must already compile before H4 is marked complete.
 
-**Wave 2 — the MED core (parallel within blocks):**
-block T: T4a, T4, T5, T6 (delivers `env_tendsto_zero_of_imports`);
-block C: C1, C2, C4b, C4c (delivers the r = 0 census law = M08 Theorem 2);
-block K: K1, K4, K8 ;
-block M: M4, M6, M7 ;
-block S: S1a, S1b, S3a, S4a ;
-block D: D2, D3a, D3, D5.
-GATE: the M08 law + K-COUNT prerequisites + the resummation halves land.
+**Wave 1a — independent easy roots:**
+T0, T2, T3 ; K3a, K6, K7a ; M1c, M3' ; D1 ; S0.
+**Wave 1b — easy dependents:**
+T1 after T0; K3b after K3a; K7b after K7a; D0a after T0, then D0; C3 after H1;
+C6 and C7 only after C4c in Wave 2; K2 only after K1 in Wave 2.
+Every declaration is proved in the same wave in which its theorem statement is
+introduced; there are no “statement-only” theorem declarations.
 
-**Wave 3 — glue and capstones (serial-ish; strongest provers):**
-K7c (the one big chart bijection) → K5 → K10 → K11-statement ;
-S2 → S3b → S4b → S4c → S5 (`seriesTie_of_kernels`) ;
-D4 (`valueSide_massTie`).
-GATE: S5's conclusion byte-matches `BridgeKernels.series_tie`; D4 compiles with
-the FULL displayed binder list ((ADM)-FULL, (PACK), (K3-δ), GRB, FRESH, R1R4,
-TerminalSeamRows, henv) — the ROOT clause-(R) attribution, machine-displayed.
-Division checkpoint: full `lake build`, AxChk, commit, ledger note.
+**Wave 2 — dependency-ordered MED chains:**
+T4a → T4b → T4 → T5 → T6;
+C1, C2a → C2, C4a → C4b → C4c → {C6,C7};
+K0b → K1 → K2, K4, and K8a;
+M0b → {M1a,M1b,M2,M5}, plus M4, M6a → M6b, M7;
+S1a → S1b, S3a, S4a; D0 → D2, and D1+S0 → D3; S1b+S4a → D5.
+Items separated by an arrow are serial assignments, not parallel work.
 
-**Wave 4 — the queued HARD cores (dedicated efforts, NOT prover-wave fodder):**
-T7 (N3 ceiling, 2 ≤ n ≤ 3), T8 (I-TAIL), C5/C5' (CEN-W/CEN-J at r ≥ 1 —
-BLOCKED on BP_III's (GR-B) carrier landing), K9 (Smith stability).
-Each gets its own mini-blueprint before assignment (plan-level Codex pass per
-the standing rule). None blocks Waves 0–3; their consumers compile against the
-named rows throughout.
+**Wave 3 — split glue chains:**
+K7b → K7c (monic parametrization) → K7d (quotient well-definedness) →
+K7e (`fiber_equiv_solutions`) → K8b → K5 → K10b (constant-fiber map) →
+K10c (domain-product identification) → K10; K11 is an `EngineSIBRow`
+hypothesis structure until its owner proof lands.
+S0+S1b → S2a → S2b; S3a → S3b1 (one induction step) → S3b2;
+S4a → S4b → S4c1 (finite evaluation) → S4c2 (SolveSeam agreement);
+then S5a (state/block reindexing) → S5b (`seriesTie_of_kernels`) → D4.
+No file in this chain imports `DensityTie.lean`; `DensityTie.lean` imports the
+completed `SeriesTie.lean`.
+
+**Wave 4 — dedicated HARD constructors:**
+T7 and T8 construct the two fields of `DrainageImports`; C5/C5′ prove
+`censusValueRows_of_anchoredMarch`; K9 proves a constructor of `SmithStable`.
+Their named row structures may be consumed earlier, but no theorem asserting the
+hard content is introduced before its proof. Consumers remain conditional.
+
+After every unit, run `lake env lean` on the modified file. After every numbered
+wave, run full `lake build` and `LeanUrat/AxChk_baseline.lean`. A subwave does not
+start until all dependency predecessors and owner-module imports pass their gates.
 
 **Failure protocol:** a unit refuted at statement level (type error traceable to
 this blueprint's sketch) escalates to the blueprint owner (me) for a signature
@@ -745,11 +899,11 @@ standing practice).
 
 * **BP_III (dictionary/CU movement):** owns GRBRow, FreshRow, TerminalSeamRows,
   ThmERow, D15Row, K-LOC, (I-τ), and the `TreeRecursion`-feeding product-law
-  instances (SibJcRows). Until its carriers land, units C5/C5'/K11/M7/S5 bind
-  opaque `Prop` variables per H4. On landing: the division leads execute a joint
-  re-key (H4 aliases → real carriers; signature-only change, pre-authorized here).
-* **BP_V (UB/O-8b movement):** owns R1R4Row and `DeltaStablePos` (consumed by H3).
-  Same re-key protocol.
+  instances (SibJcRows). Their real datum-indexed modules are prerequisites for
+  C5/C5′/K11/M7/S5; BP_IV defines no aliases and permits no later signature re-key.
+* **BP_V (UB/O-8b movement):** owns R1R4Row and `DeltaStablePos`. Their actual
+  modules are prerequisites for H3's consumers; `K3DeltaRow` additionally records
+  equality between `RegData.depthSet` and the realized-pool predicate.
 * **BP_VI / spine architect:** D4's `valueSide_massTie` is Movement IV's export to
   the root assembly; its binder list must be consumed VERBATIM by the spine's
   clause-(R) statement (any spine-side weakening of the binder list is a
@@ -762,3 +916,32 @@ standing practice).
   Lean statement matching the r2-class or r3-value form is a stop-the-line defect.
 
 — BP_IV architect (Fable), conversion swarm, per the 2026-08-03 ledger authority.
+
+## REVISION 2 (review fold, 2026-08-03)
+
+| finding | disposition | where/why |
+|---|---|---|
+| 1 | FIXED | §1.0 and module map introduce acyclic `CensusCore.lean`; `ADMFull` lives beside `CensusData`. |
+| 2 | FIXED | §§1.0, 1.3, 1.5, and 1.6 now display complete signatures for pack, fiber, cell, recursion, Neumann, uniqueness, and both capstones; free identifiers and ellipses are removed. |
+| 3 | FIXED | §4 introduces theorem statements only with their proofs; C5/C5′ and K11 are named hypothesis structures pending dedicated constructors. |
+| 4 | FIXED | §4 is dependency-ordered into subwaves; K1 precedes K2, C4c precedes C6/C7, K7 units are serial, and duplicate/serial Wave-0 assignments are removed. |
+| 5 | FIXED | S0 moved to `SeriesTie.lean`; `SeriesTie.lean` no longer imports `DensityTie.lean`, while `DensityTie.lean` imports SeriesTie. |
+| 6 | FIXED | `DrainageImports` records `2 ≤ n ≤ 3`, so T6 has the decay denominator scope required by CEIL. |
+| 7 | FIXED | S5 explicitly binds GRB, FRESH, ADM-FULL, `CensusValueRows`, R1–R4, K3-δ, and H6 with complete types. |
+| 8 | FIXED | H4 proposition aliases are prohibited; actual owner structures are compile-time prerequisites. |
+| 9 | FIXED | `PackReference` scopes `C` and `P` dependently, while `AssembledPack.blockOf` is a one-based natural with bounds. |
+| 10 | FIXED | `CensusValueRows.cenW` explicitly requires `1 ≤ D.r`. |
+| 11 | FIXED | `census_r0_law` applies to the constructed `canonicalStratum1 D`, not every arbitrary carrier. |
+| 12 | FIXED | Count laws moved from `BlockStrata` into the named `BlockCountLaws` hypothesis row; M1 is described as conditional until O-12-derived constructors land. |
+| 13 | FIXED | K10 concludes the exact multiplicative identity `cellCount * p^sM = ∏ factorCount`, avoiding truncated division. |
+| 14 | FIXED | M4 now concludes nonzero rational-function evaluation, exactly matching the cited reuse facts, rather than absence of a pole. |
+| 15 | FIXED | C0 uses `Finset.univ.filter` and explicit cardinality; finite instances are supplied by the dependent `Fin`/Pi carrier. |
+| 16 | FIXED | `CensusData` now contains named triangular and modular-coprimality rows; the undefined `coprimeHyp` binder is removed. |
+| 17 | FIXED | `AssembledPack.instR` and the analogous fiber/cell instances are explicitly installed with `attribute [instance]`. |
+| 18 | FIXED | `K3DeltaRow` records `depthSet_iff_realized` and quantifies stability over the realized-pool predicate. |
+| 19 | FIXED | K8 is split into an exact-API `#check` gate and a problem-specific U/D/V adapter with concrete indexing. |
+| 20 | FIXED | K10 is split into constant-fiber, domain-product, and multiplicative-cardinality units; O5 counting is cited only for the image/counting step. |
+| 21 | FIXED | §4 and the unit-count paragraph split all flagged composites into one-definition/one-idea assignments capped near 40 lines. |
+| 22 | FIXED | D4 depends only on D3 and S5; the spurious D2 edge is removed. |
+| 23 | FIXED | Unsupported totals “58/48” are deleted; the blueprint uses explicit split chains instead of unreliable aggregate arithmetic. |
+| 24 | FIXED | T7 now has a complete signature with explicit `2 ≤ n`, `n ≤ 3`, and the concrete `canonicalOrderLEOne` classifier. |

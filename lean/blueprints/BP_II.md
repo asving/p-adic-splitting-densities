@@ -34,8 +34,9 @@ record — that is D-11/O-11, Movements IV–V). The identification of the proje
 realized tables with 𝔅_n is the interface seam (B-INST)/OL-O12-1/OL-O12-2 — here a
 NAMED HYPOTHESIS ROW (`InstancePin`, §1.10), never an axiom. T-8's block structure and
 T-3/T-6's event structure enter "as structure only": they are the `BnMember` DATA, not
-hypotheses. The e = 1 corner is vacuous by construction (`K_1 = 0` definitional +
-hand-off descent) — the (SL≥2) display, units II-B11/B12.
+hypotheses. The e = 1 corner is established from the concrete transition support and hand-off
+descent carried by `BnCoordinates.Valid`; it is not inferred merely from a guarded
+kernel definition. The resulting (SL≥2) statements are units II-B11/B12.
 
 **Ground rules honored:** new modules only under `LeanUrat/Scaffold/`; namespace
 `LeanUrat.Scaffold`; no new axioms (the two audited axioms are not needed by this
@@ -146,25 +147,39 @@ theorem solve_O3 {e : ℕ} (he : 2 ≤ e) (s x : Qq)
 theorem solve_O2 {e : ℕ} (he : 2 ≤ e) (t x : Qq) (hbal : x = kappa0 e * x + t) :
     x = t * (1 - (qX ^ blockE e)⁻¹)⁻¹
 
-/-- Theorem 1(1)'s presentation-independence parenthetical: a scalar loop graded by a
-finite type set has kernel κ·Id, whose det (1−κ)^k has the same zero set as 1−κ. -/
+/-- Theorem 1(1)'s scalar determinant identity. -/
 theorem det_one_sub_scalar_id {k : ℕ} (κ : Qq) :
     ((1 : Matrix (Fin k) (Fin k) Qq) - κ • 1).det = (1 - κ) ^ k
+
+/-- Presentation independence of the zero set requires a nonempty state type. -/
+theorem det_one_sub_scalar_id_eq_zero_iff {k : ℕ} (hk : 0 < k) (κ : Qq) :
+    ((1 : Matrix (Fin k) (Fin k) Qq) - κ • 1).det = 0 ↔ 1 - κ = 0
 
 /-- (SL≥2), unit half: for 2 ≤ e the solve denominator is a nonzero ℛ-unit (L7(iii)). -/
 theorem solveU_unit (b : Booking) {e : ℕ} (he : 2 ≤ e) :
     b.solveU e ≠ 0 ∧ MemRcyc (b.solveU e) ∧ MemRcyc (b.solveU e)⁻¹
 
-/-- (SL≥2), display (ROOT Movement II, REV-2 finding V2-6): every self-loop of the
-system has e ≥ 2 — the kernel scalar VANISHES at e ≤ 1 and is nonzero at e ≥ 2, so
-the degenerate denominator 1/(1 − q^{−(E−1)}) at E = 1 never fires. -/
-theorem selfloop_ge_two (b : Booking) {e : ℕ} (h : b.kernel e ≠ 0) : 2 ≤ e
+/-- A concrete transition presentation for one booking. `step e σ e' σ'` is an
+actual system transition; kernel support is equivalent to existence of a same-block
+transition, rather than being the definition of “self-loop”. -/
+structure BookingSystem (n : ℕ) where
+  booking : Booking
+  step : ℕ → MovesU.SplittingType n → ℕ → MovesU.SplittingType n → Prop
+  kernel_support :
+    ∀ e, booking.kernel e ≠ 0 ↔
+      ∃ σ σ', step e σ e σ'
+  handoff_descent :
+    ∀ {e σ e' σ'}, step e σ e' σ' → e' ≠ e → e' < e
+
+/-- (SL≥2)(b,c): every actual same-block transition lies in a block of size ≥ 2. -/
+theorem selfloop_ge_two {n : ℕ} (S : BookingSystem n) {e : ℕ}
+    (hloop : ∃ σ σ', S.step e σ e σ') : 2 ≤ e
 theorem kernel_ne_zero (b : Booking) {e : ℕ} (he : 2 ≤ e) : b.kernel e ≠ 0
 
-/-- (SL≥2)(a): inter-block descent — a hand-off relation contained in < admits no
-cycle through distinct blocks (self-loops are within-block). -/
-theorem no_interblock_cycle {H : ℕ → ℕ → Prop} (hlt : ∀ a b, H a b → b < a) :
-    ∀ e, ¬ Relation.TransGen H e e
+/-- (SL≥2)(a): the concrete inter-block projection of `step` has no directed cycle. -/
+theorem no_interblock_cycle {n : ℕ} (S : BookingSystem n) :
+    ∀ e, ¬ Relation.TransGen
+      (fun a b => ∃ σ σ', S.step a σ b σ' ∧ b ≠ a) e e
 ```
 
 ### 1.3 GramOver + the 𝔅_n row families + Theorem 2 (`Scaffold/O12/Family.lean`)
@@ -231,17 +246,26 @@ enumeration of (g3)-volumes times (g4)-closures (exponents c_j ≥ 1, from
 `PolygonData`), times the (JC) shape factor ∏ P_{ρ_j}(q)·(q^{d_j}−q^{d_j−1})⁻¹. The
 DEFINITION takes the enumeration data as finite lists; L6′ (unit II-M11) ties it to
 the polygon cells. -/
-noncomputable def massPoly (e : ℕ) (enum : Finset (ℕ × ℕ))   -- (V, N_min(ε)) pairs
-    (cs : List ℕ+) (shape : List (Polynomial ℚ × ℕ+)) : Qq   -- (P_ρ_j, d_j) pairs
-theorem gram_massPoly (e : ℕ) (enum) (cs) (shape) : Gram (massPoly e enum cs shape)
+noncomputable def massPoly (e : ℕ) (enum : Finset (ℕ × ℕ))
+    (cs : List ℕ+) (shape : List (Polynomial ℚ × ℕ+)) : Qq :=
+  (∑ z ∈ enum, (qX ^ z.2)⁻¹) *
+  (cs.map (fun c => (1 - (qX ^ (c : ℕ))⁻¹)⁻¹)).prod *
+  (shape.map (fun z =>
+    algebraMap (Polynomial ℚ) Qq z.1 *
+      (qX ^ (z.2 : ℕ) - qX ^ ((z.2 : ℕ) - 1))⁻¹)).prod
+theorem gram_massPoly (e : ℕ) (enum : Finset (ℕ × ℕ))
+    (cs : List ℕ+) (shape : List (Polynomial ℚ × ℕ+)) :
+    Gram (massPoly e enum cs shape)
 
 /-- Family (iv): the verdict row of a family F with hand-off list H(F) and composition
 datum comp — a 0/1-coefficient finite sum of products of m(F) with base-changed lower
 β-legs (brief §2.3(iv) display). μ < e per L4 (units II-B12/II-P8 supply the bound). -/
 noncomputable def rowOf {n : ℕ} (β : ℕ → MovesU.SplittingType n → Qq)
-    (m : Qq) (H : List (ℕ × ℕ+))                              -- (μ_i, D_i)
+    (m : Qq) (H : List (ℕ × ℕ+))
     (comp : (∀ i : Fin H.length, MovesU.SplittingType n) → MovesU.SplittingType n)
-    (σ : MovesU.SplittingType n) : Qq
+    (σ : MovesU.SplittingType n) : Qq :=
+  ∑ τ ∈ Finset.univ.filter (fun τ => comp τ = σ),
+    m * ∏ i, MovesS.powSubst (H.get i).2 (β (H.get i).1 (τ i))
 theorem gramOver_rowOf {n β e} (hm : Gram m) (H) (hH : ∀ x ∈ H, x.1 < e) (comp σ) :
     GramOver (lowerLegs β e) (rowOf β m H comp σ)
 
@@ -255,27 +279,70 @@ theorem gramOver_allocAdjust {n β e S} (h : GramOver S t) (α : Polynomial ℚ)
     GramOver S (t + algebraMap (Polynomial ℚ) Qq α * (qX ^ blockE e)⁻¹)
 
 /-- Family (iv)/(v), (O3) exit scaling q^E/(q^E − 1) = Σ_{L≥0} κ₀^L (closed form). -/
-theorem gramOver_o3scale {e S t} (h : GramOver S t) :
-    GramOver S ((qX ^ blockE e) * ((qX ^ blockE e - 1 : Polynomial ℚ) ... )⁻¹ * t)
+theorem gramOver_o3scale {e : ℕ} {S : Set Qq} {t : Qq} (h : GramOver S t) :
+    GramOver S ((qX ^ blockE e) * (qX ^ blockE e - 1)⁻¹ * t)
 
 /-- Family (v): the entrance/shape weight list (brief §2.3(v)), all Gram. -/
 noncomputable def weightSet (n : ℕ) : Finset Qq
 theorem gram_weightSet {n g} (hg : g ∈ weightSet n) : Gram g
 
-/-- A 𝔅_n member: booking × per-block presentation × entry lists E(e) with their
-generation witnesses over the solved entries (families (i)–(vii) union). -/
-structure BnMember (n : ℕ) where
-  booking  : Booking
-  β        : ℕ → MovesU.SplittingType n → Qq
-  hbase    : ∀ e ≤ 1, ∀ σ, MemRcyc (β e σ)                 -- E(1) = {1}
-  blocks   : ∀ e, 2 ≤ e → BlockPresentation n β e
-  hblockU  : ∀ e (he : 2 ≤ e), (blocks e he).u = booking.solveU e
-  entries  : ℕ → Finset Qq                                  -- E(e)
-  hentries : ∀ e, ∀ g ∈ entries e, GramOver {f | ∃ e' ≤ e, ∃ σ, f = β e' σ} g
+/-- Raw §2.3 member coordinates: divisor masses, polygon masses, composition maps,
+allocation data, weights, transitions, and the recursively specified rows. -/
+structure BnCoordinates (n : ℕ) where
+  system       : BookingSystem n
+  pattData     : ℕ → Finset (Polynomial ℚ)
+  polygonData  : ℕ → Finset (Finset (ℕ × ℕ) × List ℕ+ ×
+    List (Polynomial ℚ × ℕ+))
+  handoffs     : ℕ → List (ℕ × ℕ+)
+  composition  : ∀ e, (∀ i : Fin (handoffs e).length,
+    MovesU.SplittingType n) → MovesU.SplittingType n
+  allocation   : ℕ → AllocDatum n
+  weights      : ℕ → Finset Qq
+  entries      : ℕ → Finset Qq
 
-/-- **THEOREM 2 (master denominator theorem)**: every member of every E(e), every
-booking, every composition datum, every allocation datum, every solved β at every
-depth, lies in ℛ — hence (landed L7(i)) is defined at every prime power q₀ ≥ 2. -/
+/-- Intrinsic membership conditions for the concrete coordinates. These are
+equations and support conditions defining §2.3 membership, not conclusions of
+Theorem 2. -/
+structure BnCoordinates.Valid {n : ℕ} (C : BnCoordinates n) : Prop where
+  weight_gram : ∀ e g, g ∈ C.weights e → Gram g
+  handoff_step :
+    ∀ e x, x ∈ C.handoffs e →
+      ∃ σ σ', C.system.step e σ x.1 σ'
+  entries_eq :
+    ∀ e, C.entries e =
+      (C.weights e ∪
+        (C.pattData e).image (massPatt e) ∪
+        (C.polygonData e).image
+          (fun z => massPoly e z.1 z.2.1 z.2.2))
+
+/-- A proved presentation produced from the concrete coordinates. -/
+structure BnMember (n : ℕ) where
+  coords   : BnCoordinates n
+  valid    : coords.Valid
+  β        : ℕ → MovesU.SplittingType n → Qq
+  hbase    : ∀ e ≤ 1, ∀ σ, MemRcyc (β e σ)
+  blocks   : ∀ e, 2 ≤ e → BlockPresentation n β e
+  hblockU  : ∀ e (he : 2 ≤ e),
+    (blocks e he).u = coords.system.booking.solveU e
+  entries  : ℕ → Finset Qq
+  entries_eq : entries = coords.entries
+  hentries : ∀ e, ∀ g ∈ entries e,
+    GramOver {f | ∃ e' ≤ e, ∃ σ, f = β e' σ} g
+
+abbrev BnMember.booking {n : ℕ} (T : BnMember n) : Booking :=
+  T.coords.system.booking
+
+/-- Construction theorem for the advertised concrete §2.3 family. Its proof unfolds
+`massPatt`, `massPoly`, `rowOf`, allocation adjustment, O3 scaling, and `weightSet`,
+then uses well-founded recursion along `valid.handoff_step` and
+`system.handoff_descent`. -/
+noncomputable def bnMember_of_coordinates {n : ℕ} (C : BnCoordinates n)
+    (hC : C.Valid) : BnMember n
+
+/-- **THEOREM 2 (master denominator theorem)**: for concrete §2.3 coordinates
+`C` satisfying the intrinsic membership predicate `C.Valid`, apply
+`bnMember_of_coordinates C hC`; every generated entry and solved leg lies in ℛ.
+The following closure form is the induction lemma consumed by that theorem. -/
 theorem BnMember.entries_memRcyc {n : ℕ} (T : BnMember n) :
     ∀ e, ∀ g ∈ T.entries e, MemRcyc g
 theorem BnMember.beta_leg_memRcyc {n : ℕ} (T : BnMember n) (e : ℕ)
@@ -318,16 +385,20 @@ degree-2 pin is dischargeable from the machine-checked table (α₂ = (0, q−1)
 the complete degree-3 pin is OL-O12-2 (finite transcription pass, zero mathematics);
 general n is D-11's pin (ROOT Step 17). -/
 structure InstancePin (p n : ℕ) (D : MovesU.RegData p) (T : BnMember n) : Prop where
-  det_eq      : ∀ e : D.Block, ∃ e' : ℕ, D.det e = T.booking.Phi e' ∧ 2 ≤ e' ∨ D.det e = 1
-  entries_sub : ∀ e : D.Block, ∀ g ∈ D.entryList e, ∃ e', g ∈ T.entries e'
-  -- field names/shapes to be finalized against RegData at E-phase; the CONTENT is
-  -- fixed: dets are the member's Φ's, entry lists land inside the member's E(e')'s.
+  regPin      : MovesU.RegPin D
+  block       : D.Block → Fin T.toAbs.nBlocks
+  det_eq      : ∀ e : D.Block,
+    D.det e = T.toAbs.Phi (block e)
+  entries_sub : ∀ e : D.Block, ∀ g ∈ D.entryList e,
+    g ∈ T.toAbs.entries (block e)
+  act_agree   : ∀ e : D.Block,
+    D.action e = T.toAbs.action (block e)
 
-/-- The seam theorem: pinned tables satisfy `RegP` at EVERY prime — Step 4's finiteness
-upgraded to Step 5's emptiness. (`RegP`'s (r2) act-agreement conjunct is free given
-definedness — RegPFinite.lean `RegPin.act_agree`.) -/
+/-- The seam theorem: pinned tables satisfy `RegP` at every prime. Determinants and
+entries translate through `hpin.block`; the `(r2)` conjunct uses the displayed
+`regPin` and `act_agree` fields. -/
 theorem regP_of_pin {p n : ℕ} {D : MovesU.RegData p} {T : BnMember n}
-    (hpin : InstancePin p n D T) (hp : 2 ≤ p) : MovesU.RegP D
+    (hpin : InstancePin p n D T) (hp : Nat.Prime p) : MovesU.RegP D
 
 /-- Display form: the landed failing-set Finset (`regP_failing_eq`) is EMPTY under
 the pin — "every prime" in the root. -/
@@ -345,7 +416,9 @@ theorem det_one_sub_ne_zero {k : ℕ} {M : Matrix (Fin k) (Fin k) ℝ} {ε : ℝ
 
 /-- Theorem 4, positivity: t ↦ det(1 − tM) is continuous, nonzero on [0,1], = 1 at
 t = 0 ⟹ positive at t = 1. -/
-theorem det_one_sub_pos {k M ε} (hε) (h0) (hrow) :
+theorem det_one_sub_pos {k : ℕ} {M : Matrix (Fin k) (Fin k) ℝ} {ε : ℝ}
+    (hε : 0 < ε) (h0 : ∀ i j, 0 ≤ M i j)
+    (hrow : ∀ i, ∑ j, M i j ≤ 1 - ε) :
     0 < ((1 : Matrix (Fin k) (Fin k) ℝ) - M).det
 
 /-- Instantiation at 𝔅_n: the scalar kernel value at any prime power is ≤ 1 − ε with
@@ -390,13 +463,30 @@ noncomputable def Npg (κ : FaceKind e) (s : SlopeTuple κ) : ℤ :=
   ∑ i ∈ Finset.range e, ⌈heights κ s i⌉
 theorem one_le_ceil_height {i : ℕ} (hi : i < e) (hpos : ...) : 1 ≤ ⌈heights κ s i⌉
 
-/-- L6b(i), the elementary move: a_j ↦ a_j + b_j changes N by exactly
-c′_j = x_j·L_j + L_j(L_j+1)/2 ≥ 1 (integer gains; ⌈h + z⌉ = ⌈h⌉ + z for z ∈ ℤ). -/
+/-- Admissibility of the elementary numerator change. It is deliberately false when
+the change would break slope order or the terminal bound `s_k < 1`. -/
+def SlopeTuple.BumpAdmissible (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) : Prop :=
+  let a' := fun i => if i = j then (s.a i : ℕ) + (κ.faces.get i).2 else s.a i
+  (∀ i i', i < i' →
+    (a' i' : ℚ) / (κ.faces.get i').2 <
+      (a' i : ℚ) / (κ.faces.get i).2) ∧
+  (∀ h : κ.faces ≠ [],
+    (a' ⟨κ.faces.length - 1, by omega⟩ : ℚ) /
+      (κ.faces.getLast h).2 < 1)
+
+noncomputable def SlopeTuple.bump (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : s.BumpAdmissible j) : SlopeTuple κ
+
+/-- L6b(i), conditional elementary move. -/
 def cPrime (κ : FaceKind e) (j : Fin κ.faces.length) : ℕ :=
-  κ.x j * (κ.faces.get j).1 + (κ.faces.get j).1 * ((κ.faces.get j).1 + 1) / 2
-theorem elemMove_Npg (κ s j) :
-    Npg κ (s.bump j) = Npg κ s + cPrime κ j       -- s.bump j := a_j += b_j
-theorem one_le_cPrime (κ j) : 1 ≤ cPrime κ j
+  κ.x j * (κ.faces.get j).1 +
+    (κ.faces.get j).1 * ((κ.faces.get j).1 + 1) / 2
+theorem elemMove_Npg (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : s.BumpAdmissible j) :
+    Npg κ (s.bump j hj) = Npg κ s + cPrime κ j
+theorem one_le_cPrime (κ : FaceKind e) (j : Fin κ.faces.length) :
+    1 ≤ cPrime κ j
 
 /-- L6b(ii), the nested-minimum period shift: a_j^min(s+1) = a_j^min(s) + b_j. -/
 theorem aMin_shift ...
@@ -419,9 +509,9 @@ theorem handoff_mu_lt (κ : FaceKind e) (he : 2 ≤ e) {μ D j : ℕ}
 
 /-- L4(i) arithmetic (the divisor-pattern half): a multiset of atoms (D, m) with
 Σ D·m = e, not equal to {(1,e)}, has every atom's m < e. -/
-theorem patt_mult_lt {e : ℕ} (π : Multiset (ℕ+ × ℕ+))
+theorem patt_mult_lt {e : ℕ} (he : 1 ≤ e) (π : Multiset (ℕ+ × ℕ+))
     (hdeg : (π.map fun x => (x.1 : ℕ) * x.2).sum = e)
-    (hne : π ≠ {(1, ⟨e, _⟩)}) : ∀ x ∈ π, (x.2 : ℕ) < e
+    (hne : π ≠ {(1, ⟨e, he⟩)}) : ∀ x ∈ π, (x.2 : ℕ) < e
 ```
 
 ### 1.7 Fact F (`Scaffold/O12/FactF.lean`)
@@ -441,14 +531,39 @@ noncomputable def fallingFac (P : Polynomial ℚ) (r : ℕ) : Polynomial ℚ :=
 /-- N_ρ(q), P_ρ(q) for a pattern ρ : Multiset (ℕ+ × ℕ+) of atoms (D, m):
 N_ρ = ∏_D (M_D)_{r_D} / ∏_m c_{D,m}!, and P_ρ = the same with the D = 1 supply
 M_1 = q replaced by q − 1 (z-free). -/
-noncomputable def Npoly (ρ : Multiset (ℕ+ × ℕ+)) : Polynomial ℚ
-noncomputable def Ppoly (ρ : Multiset (ℕ+ × ℕ+)) : Polynomial ℚ
+noncomputable def multiplicityCount
+    (ρ : Multiset (ℕ+ × ℕ+)) (D m : ℕ+) : ℕ :=
+  ρ.count (D, m)
+
+noncomputable def degreeCount
+    (ρ : Multiset (ℕ+ × ℕ+)) (D : ℕ+) : ℕ :=
+  (ρ.filter fun x => x.1 = D).card
+
+noncomputable def patternFactor
+    (supply : ℕ+ → Polynomial ℚ)
+    (ρ : Multiset (ℕ+ × ℕ+)) (D : ℕ+) : Polynomial ℚ :=
+  fallingFac (supply D) (degreeCount ρ D) *
+    Polynomial.C
+      ((∏ m ∈ ρ.map Prod.snd |>.toFinset,
+        (Nat.factorial (multiplicityCount ρ D m) : ℚ))⁻¹)
+
+noncomputable def Npoly (ρ : Multiset (ℕ+ × ℕ+)) : Polynomial ℚ :=
+  ∏ D ∈ ρ.map Prod.fst |>.toFinset, patternFactor Mpoly ρ D
+
+noncomputable def Ppoly (ρ : Multiset (ℕ+ × ℕ+)) : Polynomial ℚ :=
+  ∏ D ∈ ρ.map Prod.fst |>.toFinset,
+    patternFactor
+      (fun E => if E = 1 then Polynomial.X - 1 else Mpoly E) ρ D
 theorem gram_Npoly (ρ) : Gram (algebraMap (Polynomial ℚ) Qq (Npoly ρ))   -- (g1)
 
 /-- The factorization pattern of h ∈ F[z]: each distinct monic irreducible factor
 contributes the atom (its degree, its multiplicity). Unit-scalar invariant. -/
 noncomputable def patternOf {F : Type*} [Field F] (h : Polynomial F) :
-    Multiset (ℕ × ℕ)
+    Multiset (ℕ+ × ℕ+) :=
+  (UniqueFactorizationMonoid.normalizedFactors h).map
+    (fun f =>
+      (⟨f.natDegree, irreducible_natDegree_pos f.2⟩,
+       ⟨h.factorization f, factorization_pos_of_mem_normalizedFactors f.1⟩))
 theorem patternOf_smul_unit {F} [Field F] (u : Fˣ) (h : Polynomial F) :
     patternOf ((u : F) • h) = patternOf h
 
@@ -461,9 +576,17 @@ theorem X_pow_card_prod_irreducibles ...
 theorem card_irred_degree_sum ...
 /-- **Fact F(i)**: D·I_D = Σ_{δ|D} μ(δ)·q^{D/δ}, i.e. (Mpoly D).eval q = I_D
 (Möbius inversion: `Nat.ArithmeticFunction.sum_eq_iff_sum_smul_moebius_eq`). -/
-theorem card_monicIrreducible_eq (D : ℕ+) :
-    ((Mpoly D).eval (Fintype.card F : ℚ)) = #{f : Polynomial F | f.Monic ∧
-      Irreducible f ∧ f.natDegree = D}
+def MonicIrreducibleDegree (F : Type*) [Field F] (D : ℕ+) :=
+  {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = D}
+
+theorem finite_monicIrreducibleDegree
+    (F : Type*) [Field F] [Fintype F] (D : ℕ+) :
+    Finite (MonicIrreducibleDegree F D)
+
+theorem card_monicIrreducible_eq
+    (F : Type*) [Field F] [Fintype F] (D : ℕ+) :
+    (Mpoly D).eval (Fintype.card F : ℚ) =
+      (Nat.card (MonicIrreducibleDegree F D) : ℚ)
 /-- F(ii) abstract count: choices of r DISTINCT items from an M-element supply
 carrying a multiplicity multiset {m : c_m} number (M)_r / ∏ c_m!. -/
 theorem distinct_choice_count ...
@@ -488,9 +611,16 @@ theorem torus_count (F) [Field F] [Fintype F] (d : ℕ) (ρ) (c : Fˣ) :
 n_j : Fˣ × Fˣ → ℕ whose torus row-sums Σ_λ n_j(λ, c) = P_j are c-independent
 telescope over shared-vertex chains: Σ_{V ∈ (Fˣ)^k} ∏_j n_j(V_j, V_{j+1}) = ∏_j P_j
 (V_{k+1} := 1, the anchor). Induction on k, left to right. -/
-theorem chain_telescope {k : ℕ} (n : Fin k → Fˣ → Fˣ → ℕ) (P : Fin k → ℕ)
+theorem chain_telescope {F : Type*} [Field F] [Fintype F] {k : ℕ}
+    (n : Fin k → Fˣ → Fˣ → ℕ) (P : Fin k → ℕ)
     (hrow : ∀ j c, ∑ λ : Fˣ, n j λ c = P j) :
-    (∑ V : Fin k → Fˣ, ∏ j, n j (V j) (V.next j 1)) = ∏ j, P j
+    (∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k, n j
+          (V ⟨j, Nat.lt.step j.isLt⟩)
+          (V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩)
+      else 0) =
+    ∏ j, P j
 
 /-- **(JC) count form** (L6d): the joint residue-configuration count over a face-kind
 κ with shape vector ρ⃗ equals ∏_j (Ppoly ρ_j).eval q — instantiating the telescope
@@ -520,23 +650,63 @@ convention); (NP-SLOPES) the multiset of root valuations equals the multiset of
 Newton-polygon slopes (brief L1 last sentence; standard, cite Neukirch II.6);
 (TYPE-INV) splitting types invariant under x ↦ πx rescale and x ↦ x + c recenter
 (brief L2/L3 — VALUE-side, consumed only by Movements IV–V). -/
-structure SemanticRows (params...) where
-  haarBall   : ...   -- μ{v(a_i) ≥ t} = q₀^{−t}
-  haarShell  : ...   -- μ{v(a_i) = t} = (1 − q₀^{−1})·q₀^{−t}
-  haarIndep  : ...   -- product over coordinates
-  npSlopes   : ...   -- root valuations = polygon slopes (multiset equality)
-  typeRescale  : ... -- L2's splitting-type preservation (value-side)
-  typeRecenter : ... -- L3's splitting-type preservation (value-side)
+structure SemanticRows
+    (Coeff Root Γ TypeCode : Type*)
+    [LinearOrderedCommGroupWithZero Γ]
+    (valuation : Coeff → Γ)
+    (coeffVector : Polynomial Coeff → ℕ → Coeff)
+    (rootValues polygonSlopes : Polynomial Coeff → Multiset Γ)
+    (splitType : Polynomial Coeff → TypeCode)
+    (rescale recenter : Polynomial Coeff → Polynomial Coeff)
+    (coordMeasure : Set Coeff → ℝ≥0∞)
+    (q₀ : ℝ≥0∞) where
+  haarBall :
+    ∀ t : ℕ, coordMeasure {a | valuation a ≤ (valuation a) ^ t} = (q₀ ^ t)⁻¹
+  haarShell :
+    ∀ t : ℕ, coordMeasure {a | valuation a = (valuation a) ^ t} =
+      (1 - q₀⁻¹) * (q₀ ^ t)⁻¹
+  haarIndep :
+    ∀ (I : Finset ℕ) (A : ℕ → Set Coeff),
+      coordMeasure {a | ∀ i ∈ I, a ∈ A i} =
+        ∏ i ∈ I, coordMeasure (A i)
+  npSlopes :
+    ∀ g : Polynomial Coeff, rootValues g = polygonSlopes g
+  typeRescale :
+    ∀ g : Polynomial Coeff, splitType (rescale g) = splitType g
+  typeRecenter :
+    ∀ g : Polynomial Coeff, splitType (recenter g) = splitType g
 
-/-- L1 upper bound: v(a_i) = v(±e_i(r)) ≥ i·μ, μ := min_j v(r_j) (ultrametric sum
-bound over the i-subsets). Over an abstract `Valuation K Γ₀`. -/
-theorem val_esymm_ge ...
-/-- L1 equality case: with k := #{j : v(r_j) = μ}, v(a_k) = k·μ (unique
-strict-minimum term in e_k). -/
-theorem val_esymm_min_eq ...
-/-- **L1(i)/(ii)** both directions + the ℤ-snap (v(a) > 0 ⟹ v(a) ≥ 1 for integral
-coefficients): all roots v > 0 ⟺ ∀i v(a_i) ≥ 1; all roots v ≥ 1 ⟺ ∀i v(a_i) ≥ i. -/
-theorem L1_root_coeff ...
+/-- L1 is parameterized by a discrete additive valuation; discreteness and coefficient
+integrality are explicit inputs rather than hidden semantic assumptions. -/
+theorem val_esymm_ge
+    {K Γ₀ : Type*} [Field K] [LinearOrderedAddCommGroupWithTop Γ₀]
+    (v : Valuation K (Multiplicative Γ₀)) (r : Fin n → K) (i : ℕ) :
+    i • (Finset.univ.inf fun j => (v (r j)).toAdd) ≤
+      (v ((Finset.univ.map
+        ⟨r, fun _ _ h => h⟩).esymm i)).toAdd
+
+theorem val_esymm_min_eq
+    {K Γ₀ : Type*} [Field K] [LinearOrderedAddCommGroupWithTop Γ₀]
+    (v : Valuation K (Multiplicative Γ₀)) (r : Fin n → K) (μ : Γ₀)
+    (k : ℕ)
+    (hk : k = (Finset.univ.filter fun j => (v (r j)).toAdd = μ).card)
+    (hmin : ∀ j, μ ≤ (v (r j)).toAdd)
+    (hunique : ∀ I : Finset (Fin n), I.card = k →
+      (∀ j ∈ I, (v (r j)).toAdd = μ) →
+      I = Finset.univ.filter fun j => (v (r j)).toAdd = μ) :
+    (v ((Finset.univ.map
+      ⟨r, fun _ _ h => h⟩).esymm k)).toAdd = k • μ
+
+theorem L1_root_coeff
+    {K : Type*} [Field K] (v : Valuation K ℤₘ₀)
+    (g : Polynomial K) (roots : Fin g.natDegree → K)
+    (hroots : g = ∏ j, (Polynomial.X - Polynomial.C (roots j)))
+    (hintegral : ∀ i, 0 ≤ (v (g.coeff i)).toAdd) :
+    ((∀ j, 0 < (v (roots j)).toAdd) ↔
+      ∀ i ∈ Finset.Icc 1 g.natDegree, 1 ≤ (v (g.coeff i)).toAdd) ∧
+    ((∀ j, 1 ≤ (v (roots j)).toAdd) ↔
+      ∀ i ∈ Finset.Icc 1 g.natDegree,
+        (i : ℤ) ≤ (v (g.coeff i)).toAdd)
 
 /-- L2 algebraic half: the coefficients of h(y) = g(πy)/π^e are b_i = a_i/π^i
 (`Polynomial.scaleRoots` vocabulary). -/
@@ -583,15 +753,24 @@ theorem massPoly_enum_display ...
 | **(NP-SLOPES)** `SemanticRows.npSlopes` | §1.9 | root valuations = polygon slopes | standard (Neukirch II.6); consumed only by L6e(i)/L1-last-sentence — off the pole-free path |
 | **(TYPE-INV)** `SemanticRows.type*` | §1.9 | L2/L3 splitting-type preservation | VALUE-side, expressly outside the O-12 claim; consumed by Movements IV–V only |
 
-Everything in §§1.1–1.8 is UNCONDITIONAL (Lean-core target). §1.9's theorems are
-conditional exactly on the displayed rows above, matching the leaf's honest scope.
+The algebraic closure results in §§1.1–1.8 are unconditional for a
+`BnCoordinates.Valid` presentation. The separate theorem `bnMember_of_coordinates`
+constructs the proof-bearing induction interface from the concrete §2.3 coordinates.
+Realized-table claims remain conditional on `(B-INST)`, and §1.9 is conditional
+exactly on its displayed semantic rows.
 
 ## 2. UNIT TABLE
 
-Every unit ≤ ~40 lines of Lean. Difficulty: MECH (definition/transcription) < EASY
-(one-idea proof) < MED (a real but bounded proof) < HARD (needs care; pre-decomposed).
-"Source" = the paragraph of `O12_phaseB_verifybrief_rev4.md` (default) or ROOT.
-Dependencies list unit ids + corpus imports (§3 keys in brackets).
+A unit is one declaration or one proof idea and must compile independently. The
+former “≤40 lines” prediction is withdrawn: size is governed by proof obligations,
+not prose length. The composite HARD rows II-F4/F7/F8, II-P4/P6, and II-M2/M6/M9 are
+coordination milestones, not assignable units; before assignment the division lead
+must split each at its displayed semicolons into named helper declarations, place
+every helper's verbatim Lean statement in §1, add dependency edges here, and obtain
+statement-fence review. II-R7 is split into the definition and grammar proof already
+displayed; II-M6 and II-M9 are split into their forward/converse and
+coverage/disjointness component declarations before proving the advertised iff or
+partition theorem. No prover receives a milestone row directly.
 
 ### Core + Bookings
 
@@ -631,7 +810,7 @@ Dependencies list unit ids + corpus imports (§3 keys in brackets).
 | II-R11 | `weightSet` + `gram_weightSet` | finite list of (g2)/(g4) atoms | II-C4 | MECH | §2.3(v) |
 | II-R12 | `BnMember` structure | transcription; docstring records the §1 scope + that composition/allocation data are member coordinates | II-R4, II-B1 | MECH | §2.3 closing, §1 |
 | II-R13 | **THEOREM 2** `BnMember.entries_memRcyc` | II-R5 gives all β ∈ ℛ; `hentries` + II-R2 | II-R5, II-R12 | EASY | §5 Thm2 |
-| II-R14 | `beta_leg_memRcyc` (every depth δ ≥ 1) | `MemRcyc.powSubst` on II-R13's β's | II-R13, [U-B] | MECH | §2.3(vi) |
+| II-R14 | `beta_leg_memRcyc` (every depth δ ≥ 1) | apply `MemRcyc.powSubst` to β-membership obtained from II-R5 using `T.hbase` and `T.blocks` | II-R5, II-R12, [U-B] | MECH | §2.3(vi) |
 
 ### RegEmpty + Substochastic
 
@@ -642,7 +821,7 @@ Dependencies list unit ids + corpus imports (§3 keys in brackets).
 | II-G3 | **THEOREM 3** `BnMember.regEmpty` | fire landed `regAt_primePow` | II-G2, [U-B] | MECH | §6 Thm3 |
 | II-G4 | Corollary D `BnMember.detMargin` | II-B3 rewrite + landed `detO*_margin` + II-C2 | II-B3, [U-B margins] | EASY | §4 Cor D |
 | II-G5 | `InstancePin` structure ((B-INST) row) | statement layer; fields finalized against `RegData` at E-phase; Codex plan-review REQUIRED (new trust surface) | II-R12, [RegPFinite] | MECH | ROOT Step 5 (B-INST) |
-| II-G6 | `regP_of_pin`: pinned ⟹ `RegP D` at every prime | translate `RegAt` through the pin; (r2) agreement free via `RegPin.act_agree` pattern | II-G3, II-G5, [RegPFinite] | MED | §6 Thm3 + ROOT Step 4⊕5 |
+| II-G6 | `regP_of_pin`: pinned ⟹ `RegP D` at every prime | use `hpin.block` to translate the matching `toAbs.RegAt` determinant and entry obligations; discharge (r2) from `hpin.regPin` and `hpin.act_agree` | II-G3, II-G5, [RegPFinite] | MED | §6 Thm3 + ROOT Step 4⊕5 |
 | II-G7 | `regP_failing_empty_of_pin` | II-G6 + landed `regP_failing_eq` | II-G6, [RegPFinite] | EASY | ROOT Step 5 delivers-line |
 | II-S1 | `det_one_sub_ne_zero` (Thm 4 nonvanishing) | Gershgorin `Matrix.det_ne_zero_of_sum_row_lt_diag`; nonneg ⟹ ‖M i j‖ = M i j | Mathlib | EASY | §6 Thm4 |
 | II-S2 | `det_one_sub_pos` (Thm 4 positivity) | t ↦ det(1−tM) continuous (det = polynomial in entries), never 0 on [0,1] by II-S1 at scaled ε, = 1 at 0; IVT/connectedness | II-S1 | MED | §6 Thm4 |
@@ -709,7 +888,7 @@ L1–L6′/Fact F that Step 17 consumes").
 |---|---|---|
 | [U-B] `MovesU/O12PoleFree.lean` | `cycS`, `X_mem_cycS`, `Xpow_sub_one_mem_cycS`, `Xpow_mem_cycS`, `cycS_eval_pos` (L5/"Lemma RR"), `MemRcyc` + `.add/.mul/.neg/.sub`, `memRcyc_algebraMap`, `memRcyc_inv_cycS`, `MemRcyc.definedAt` (L7(i)), `MemRcyc.eval_ne_zero_of_inv` (L7(iii)), `cycS_expand`+`MemRcyc.powSubst` (L7(ii)), `Gram`+`Gram.memRcyc`, `eval_ratio`, `marginO1/O2/O3`, `detO1/detO2/detO3`+`_unit`+`_margin`, `unit_of_cycS_ratio`, `AbsSolveTable`+`RegAt`+`RcycDiscipline`+`regAt_of_discipline`+`regAt_primePow` | the WHOLE abstract layer: II-C4, II-B3/B10, II-R2, II-G1–G4 lean on it; Theorem 3's mechanism is landed |
 | [RegPFinite] `MovesU/RegPFinite.lean` | `RegP`, `RegData`, `RegData.detFull`, `regP_iff_pool_avoids`, `RegPin.act_agree`, `regP_failing_eq`, `regP_failing_finite`, `regP_cofinite` (Step 4 = M17 A/B/C/U) | II-G5–G7 (the seam); Step 4 needs NO new units |
-| [Defs] `MovesU/Defs.lean` | `DefinedAt`, `SplittingType`, `RegData` | vocabulary everywhere |
+| [Defs] `MovesU/Defs.lean` | `DefinedAt`, `SplittingType` | vocabulary everywhere; `RegData` provenance is exclusively `[RegPFinite]` |
 | [U0b] `MovesU/U0b_splitTypeFintype.lean` | `instSplittingTypeFintype`, `instSplittingTypeDecEq` | II-R4/R8/R9 verdict Finset sums |
 | [PowSubst] `MovesS/PowSubst.lean` | `powSubst`, `powSubst_X`, `powSubst_C` | (g5) legs: II-R1 subst, II-R14 |
 | [L4/BB1] `LeanUrat/L4.lean` | `LatticePolygon`, `newtonExponent`, `newtonVertexCount`, `bb1Value`, `cellVolume_eq`, `cellVolume_pIndependent` | II-M7 (L6a volume) LANDED up to transport; also the `hfactor` recorded-via-hypothesis precedent for II-M0 |
@@ -726,33 +905,43 @@ those are Movements I/III/IV quarry.
 Per-file gates during waves; `lake build` + `lake env lean LeanUrat/AxChk_baseline.lean`
 at each checkpoint (footprint regression = stop-the-line).
 
-* **Wave 0 — defs + statement layer (all MECH, fully parallel, no deps):**
-  II-C1, II-B1, II-R1(def only), II-R4, II-R12, II-P1, II-F1, II-M0(statement), II-G5(statement).
-  GATE before Wave 1: Codex plan-review of the two trust surfaces (II-M0 rows,
-  II-G5 pin fields) + orchestrator sign-off that `BnMember`/`BlockPresentation`
-  faithfully transcribe brief §2.3 (the dedup-audit new-declaration check applies:
-  every new decl here is a transcription of a displayed brief object).
-* **Wave 1 — the easy algebra (parallel after Wave 0):**
-  II-C2, II-C3, II-C4, II-B2, II-B5, II-B6, II-B7, II-B8, II-B9, II-B11, II-B12,
-  II-R2, II-R3, II-R6, II-R9, II-R10, II-R11, II-P2, II-P3, II-P5, II-P7, II-P8,
-  II-F2, II-S1.
-* **Wave 2 — the spine (needs Wave 1):**
-  II-B3, II-B4, II-B10, II-R5 (the engine — assign the strongest prover), II-R7,
-  II-R8, II-R13, II-R14, II-G1, II-G2, II-G3, II-G4, II-S2, II-S3, II-T2, II-M4,
-  II-M5, II-M8.
-  **CHECKPOINT: Theorems 2 + 3 + 4 + Corollary D compiled = ROOT Step 5's pole-free
-  clause formalized at 𝔅_n.** Commit + AxChk.
-* **Wave 3 — the hard cluster (parallel tracks):**
-  (a) counts: II-F3 → II-F4 → II-F5 → II-F6; II-F7 → II-F8 → II-F9 → II-T5;
-  (b) torus: II-T1 → II-T3 → II-T4;
-  (c) polygon: II-P4 → II-P6;
-  (d) L1: II-M1 → II-M2 → II-M3.
-  HARD units get the bounded-repair rule (3 attempts, then back to the division lead
-  with the exact obstruction; splitting a HARD unit into sub-lemmas is allowed and
-  expected, statements unchanged).
-* **Wave 4 — semantic assembly + seam (needs Waves 2–3):**
-  II-M6 → II-M7 → II-M9, II-M10, II-M11; II-G6 → II-G7.
-  **CHECKPOINT: full Movement II. Commit + AxChk + update `docs/PROJECT_STATE.md`.**
+Each subwave ends with `lake env lean` on every file changed in that subwave. No item
+in a subwave depends on another item in the same subwave.
+
+* **Wave 0a — independent definitions:** II-C1, II-R1(definition only), II-P1,
+  II-F1, II-M0(statement).
+* **Wave 0b — definitions depending on 0a:** II-B1, II-R4.
+* **Wave 0c — concrete-family and pin statements:** II-R12, then II-G5.
+  GATE: review II-M0, II-R12, and II-G5; run `lake build` and AxChk.
+
+* **Wave 1a:** II-C2, II-C3, II-C4, II-B2, II-B5, II-B8, II-B9, II-B11,
+  II-B12, II-R2, II-R3, II-P2, II-F2, II-S1.
+* **Wave 1b:** II-B6, II-R6, II-R9, II-R10, II-R11, II-P3, II-P5, II-P7,
+  II-P8.
+* **Wave 1c:** II-B7.
+
+* **Wave 2a:** II-B3, II-B4, II-R5, II-R8, II-G1, II-G4, II-S2, II-T2,
+  II-M4, II-M5, II-M8.
+* **Wave 2b:** II-B10, II-R7, II-R13, II-S3.
+* **Wave 2c:** II-R14, II-G2.
+* **Wave 2d:** II-G3.
+  CHECKPOINT: Theorems 2–4 and Corollary D; run `lake build` and AxChk.
+
+* **Wave 3a — independent track roots:** II-F3, II-F7, II-P4, II-M1.
+* **Wave 3b:** II-F4, II-P6, II-M2.
+* **Wave 3c:** II-F5, II-M3.
+* **Wave 3d:** II-F6.
+* **Wave 3e:** II-F8.
+* **Wave 3f:** II-F9.
+* **Wave 3g:** II-T1, II-T5.
+* **Wave 3h:** II-T3.
+* **Wave 3i:** II-T4.
+
+* **Wave 4a:** II-M6, II-G6.
+* **Wave 4b:** II-M7, II-M9, II-G7.
+* **Wave 4c:** II-M10.
+* **Wave 4d:** II-M11.
+  CHECKPOINT: full Movement II; run `lake build`, AxChk, and update project state.
 
 Estimated prover-agent load: ~63 units ⇒ ~70–80 prover runs (HARD units may split).
 
@@ -772,3 +961,26 @@ Estimated prover-agent load: ~63 units ⇒ ~70–80 prover runs (HARD units may 
   D-11's run; `verification/openmath/O12_rev4_checks.py` 12/12) — provers hitting a
   seemingly-false subgoal should suspect the TRANSCRIPTION, not the math, and escalate.
 
+## REVISION 2 (review fold, 2026-08-03)
+| finding | disposition | where / why |
+|---:|---|---|
+| 1 | FIXED | §1.3 now separates raw `BnCoordinates`, intrinsic `Valid`, the constructed `bnMember_of_coordinates`, and the closure interface; unconditionality is stated only after construction. |
+| 2 | FIXED | `BnCoordinates` explicitly carries pattern, polygon, hand-off, composition, allocation, weight, transition, and entry coordinates, with `entries_eq` connecting them. |
+| 3 | FIXED | `massPoly`, `rowOf`, `Npoly`, `Ppoly`, `patternOf`, and semantic row types now have displayed content; remaining polygon definitions are constrained by their displayed defining equations and theorem statements. |
+| 4 | FIXED | §1.2 introduces actual `BookingSystem.step`, kernel-support equivalence, and member hand-off descent; both SL≥2 conclusions are now about those concrete transitions. |
+| 5 | FIXED | `InstancePin` now contains a `RegPin` and an explicit `act_agree` field, and II-G6 names both inputs. |
+| 6 | FIXED | `InstancePin.block : D.Block → Fin T.toAbs.nBlocks` pins every determinant and entry list to the same valid abstract-table block. |
+| 7 | FIXED | `gramOver_o3scale` is entirely in `Qq`, has no ellipsis, and uses the explicit inverse of `qX ^ blockE e - 1`. |
+| 8 | FIXED | `bump` requires `BumpAdmissible`; the elementary-move theorem is conditional, so the last-face and ordering counterexamples are excluded. |
+| 9 | FIXED | `patternOf` now returns `Multiset (ℕ+ × ℕ+)`, with positivity witnesses extracted from irreducibility and positive multiplicity. |
+| 10 | FIXED | finite-field counts use `Nat.card` of a displayed subtype, an explicit finiteness theorem, explicit field binders, and a cast to `ℚ`. |
+| 11 | FIXED | `chain_telescope` now sums assignments on `Fin (k+1)` and displays the terminal anchor at index `k`. |
+| 12 | FIXED | `patt_mult_lt` now assumes `he : 1 ≤ e` and uses `⟨e, he⟩`. |
+| 13 | FIXED | `SemanticRows` and L1 now expose ambient types, valuation, measure, slope/type maps, discreteness, integrality, and structure arguments instead of bare ellipses. |
+| 14 | FIXED | §4 is replaced by topological subwaves; no subwave contains an internal dependency, and every subwave has per-file `lake env lean` gates. |
+| 15 | FIXED | §2 withdraws the false line bound and makes the eight named HARD rows non-assignable milestones that must be split into fenced, verbatim helper declarations before assignment. |
+| 16 | FIXED | II-R14 now cites II-R5 plus `hbase`/`blocks` for β-membership, not II-R13. |
+| 17 | FIXED | the determinant identity is separated from a zero-set theorem carrying `0 < k`. |
+| 18 | FIXED | `regP_of_pin` now assumes `Nat.Prime p`; the prose no longer silently claims the composite strengthening. |
+| 19 | FIXED | `[Defs]` no longer claims provenance for `RegData`; `[RegPFinite]` is the sole provenance row. |
+| 20 | FIXED | `det_one_sub_pos` now has explicit matrix, scalar, nonnegativity, epsilon, and row-sum hypothesis types matching II-S1. |

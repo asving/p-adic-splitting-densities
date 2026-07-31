@@ -17,8 +17,9 @@ interfaces the other four movements must instantiate; §5 records the reconcilia
 scaffold form: fix a degree `n ≥ 2`; per prime `p` the type-τ density is DEFINED as the
 limit of level-`k` cylinder counts (the corpus `CountingModel` reading — exactly the
 2026-08-01 scaffold authority: "define the p-adic density … as a limit of cylinders …
-then prove the squeeze lemma … depending on k"); the theorem takes the §3.1 [M] rows as
-NAMED HYPOTHESIS ARROWS `(h1 : …) → … → (h6d : …)` and concludes the four (ROOT-C)
+then prove the squeeze lemma … depending on k"); the theorem takes ONLY the §3.1 [M]
+rows as fixed, mathematically typed NAMED HYPOTHESIS ARROWS
+`(h1 : RootRows.GR_B n) → … → (h6d : RootRows.FenceVII n)` and concludes the four (ROOT-C)
 clauses: **(0)** cylinder-limit density, **(SQ)** the level-`k` two-sided squeeze +
 drainage + bracket uniqueness, **(R)** `α(n,τ;p) = R_τ(p)` at EVERY prime with
 `R_τ ∈ ℛ` and `Σ_τ R_τ = 1` identically, **(UB)** the same `R_τ` at `q ↦ p^δ`.
@@ -32,9 +33,10 @@ the identity lands inside clause (R)'s conditional scope) — units BPV-13…BPV
 **Ground rules honored.**
 - New modules ONLY under `lean/LeanUrat/Scaffold/`; namespace `LeanUrat.Scaffold`.
 - NO existing statement touched; parked items 22–29 untouched; corpus reuse BY IMPORT.
-- NO new axioms. The [M] hypotheses enter as named `Prop` fields of `HypRows` (§1.2) —
-  the honest conditionality, mirroring the `htameFE` precedent.
-- Every unit ≤ ~40 lines; minimality is the design goal (31 units, most MECH/EASY).
+- NO new axioms. The [M] hypotheses are fixed predicates in `RootRows`; `HypRows`
+  packages proofs of those predicates and never permits caller-selected propositions.
+- Work packages are per-file and dependency-ordered; numbered BPV items are verification
+  checkpoints, not separate-agent assignments. Helpers may split at natural lemma boundaries.
 - Math-revision sync duty: `HypRows` is the SINGLE point of change if VC6+ revises the
   §3.1 row set; this blueprint's owner folds any ROOT revision delta (§5.3).
 
@@ -50,17 +52,17 @@ the identity lands inside clause (R)'s conditional scope) — units BPV-13…BPV
 2. *ℛ is the corpus `LeanUrat.MovesU.MemRcyc`* (`O12PoleFree.lean`): membership gives
    pole-freeness at every rational ≥ 2, hence at every prime power (`MemRcyc.definedAt`,
    `MemRcyc.eval_ne_zero_of_inv`), and base change `q ↦ q^δ` (`MemRcyc.powSubst`).
-3. *Hypothesis rows are `Prop`-valued FIELDS, content-free at the spine.* The spine
-   never inspects them; Movements III/IV instantiate them with their real statements
-   (§5.2). The (K3-δ) ⊆ (H4b) containment is a structure LAW (`k3d_of_ubx`), so clause
-   (R) can consume the fragment while the joint theorem takes only (H4b) — exactly the
-   REVISION-4 finding VC4-1 bookkeeping.
-4. *(UB) is packaged as data* (`UBWitness`: the `CountingModel (p^δ) n` family over the
-   unramified base + its evaluation), delivered by Movement IV as a FUNCTION from the
-   hypothesis bundle (`ub : HypUB H → UBWitness …`) — the honest Lean form of a
-   conditional deliverable, since even the δ>1 limit existence is conditional content.
-5. *The n = 2 instance corollary `rootC_n2` is UNCONDITIONAL* (hypothesis rows
-   instantiated to `True`), tying the spine to the existing capstone
+3. *Hypothesis rows are fixed mathematical predicates, not caller-selected slots.*
+   `RootRows.GR_B n` through `RootRows.FenceVII n` are verbatim leaf-row statements
+   supplied under `Scaffold/RowStatements.lean`; `HypRows` only packages their proofs.
+   The proved theorem `RootRows.k3d_of_ubx : UBX n → K3Delta n` records the genuine
+   restriction map, so choosing every row as `True` is impossible.
+4. *(UB) is constructed by Movement IV* as
+   `canonicalUB : HypUB n → UBWitness n (canonicalFloor n hn) (canonicalSolve n hn)`.
+   Its exponent domain is every positive `δ`; the final `rootC` consumes this constructor
+   internally rather than assuming a completed witness.
+5. *The n = 2 reduced corollary `rootC_n2` is proved directly from the capstone*, without
+   pretending that the capstone proves the canonical (H1)–(H6) row predicates, tying the spine
    `OM.UniformCapstone.montes_uniform_n2` / `M7` / `hExhaustP` — the spine's
    non-vacuity gate. Its honest scope: clauses (0)+(SQ)+(R) only — the Lean n = 2
    corpus has NO unramified-base layer, so no `UBWitness` at n = 2 (displayed, §1.7).
@@ -94,7 +96,7 @@ theorem evalQ_algebraMap (P : Polynomial ℚ) (x : ℚ) :
     evalQ (algebraMap (Polynomial ℚ) (RatFunc ℚ) P) x = P.eval x
 ```
 
-### 1.2 `Scaffold/Hypotheses.lean` — the (ROOT-C) hypothesis rows (BPV-02..04)
+### 1.2 `Scaffold/RowStatements.lean`, `Scaffold/Hypotheses.lean` — fixed (ROOT-C) rows (BPV-02)
 
 The §3.1 [M] table, one named `Prop` field per row. Field ↔ row ↔ hypothesis map
 (displayed; THE sync point for ROOT revisions):
@@ -116,58 +118,63 @@ The §3.1 [M] table, one named `Prop` field per row. Field ↔ row ↔ hypothesi
 | `fenceVii` | D-11 widened-charge item (vii) (H.6 in-fence conformance) | (H6), row (b) |
 
 ```lean
-/-- **The (ROOT-C) hypothesis rows** (ROOT §3.1, REVISION 5). Content-free `Prop`
-slots at the spine; Movements III/IV pin the real statements (§5.2). The single
-law `k3d_of_ubx` records (K3-δ) ⊆ (UB-X) [ROOT finding VC4-1]. -/
-structure HypRows (n : ℕ) where
-  grB      : Prop
-  fresh    : Prop
-  d12r     : Prop
-  eN       : Prop
-  adm      : Prop
-  r14      : Prop
-  ubx      : Prop
-  k3d      : Prop
-  k3d_of_ubx : ubx → k3d
-  pack     : Prop
-  tDec     : Prop
-  tRead    : Prop
-  tVerd    : Prop
-  fenceVii : Prop
+/-- `RootRows.GR_B n`, `Fresh n`, `D12R n`, `EN n`, `ADM n`, `R14 n`, `UBX n`,
+`K3Delta n`, `PACK n`, `TDec n`, `TRead n`, `TVerd n`, and `FenceVII n` are
+definitions whose bodies are the verbatim mathematical row statements. They live
+in `Scaffold/RowStatements.lean`; see the binding cross-BP directive in §5.4. -/
+
+/-- **The (ROOT-C) hypothesis rows** (ROOT §3.1, REVISION 5). Each field proves a
+fixed mathematical predicate; no proposition is selected by the caller. -/
+structure HypRows (n : ℕ) : Prop where
+  grB      : RootRows.GR_B n
+  fresh    : RootRows.Fresh n
+  d12r     : RootRows.D12R n
+  eN       : RootRows.EN n
+  adm      : RootRows.ADM n
+  r14      : RootRows.R14 n
+  ubx      : RootRows.UBX n
+  k3d      : RootRows.K3Delta n
+  pack     : RootRows.PACK n
+  tDec     : RootRows.TDec n
+  tRead    : RootRows.TRead n
+  tVerd    : RootRows.TVerd n
+  fenceVii : RootRows.FenceVII n
+
+theorem RootRows.k3d_of_ubx {n : ℕ} : RootRows.UBX n → RootRows.K3Delta n
 
 /-- Clause (R)'s EXACT hypothesis set: (H1)–(H3) + (H4a) + (K3-δ) + (H5) + (H6)
 [ROOT §1, REVISION 5 display]. NOTE: (H4b) itself is ABSENT — only its (K3-δ)
 fragment enters clause (R). -/
 structure HypR {n : ℕ} (H : HypRows n) : Prop where
-  h1  : H.grB
-  h2  : H.fresh
-  h3a : H.d12r
-  h3b : H.eN
-  h3c : H.adm
-  h4a : H.r14
-  hk3 : H.k3d
-  h5  : H.pack
-  h6a : H.tDec
-  h6b : H.tRead
-  h6c : H.tVerd
-  h6d : H.fenceVii
+  h1  : RootRows.GR_B n
+  h2  : RootRows.Fresh n
+  h3a : RootRows.D12R n
+  h3b : RootRows.EN n
+  h3c : RootRows.ADM n
+  h4a : RootRows.R14 n
+  hk3 : RootRows.K3Delta n
+  h5  : RootRows.PACK n
+  h6a : RootRows.TDec n
+  h6b : RootRows.TRead n
+  h6c : RootRows.TVerd n
+  h6d : RootRows.FenceVII n
 
 /-- Clause (UB)'s EXACT hypothesis set: (H1)–(H3) + (H4a) + (H4b) + (H5) + (H6). -/
 structure HypUB {n : ℕ} (H : HypRows n) : Prop where
-  h1  : H.grB
-  h2  : H.fresh
-  h3a : H.d12r
-  h3b : H.eN
-  h3c : H.adm
-  h4a : H.r14
-  h4b : H.ubx
-  h5  : H.pack
-  h6a : H.tDec
-  h6b : H.tRead
-  h6c : H.tVerd
-  h6d : H.fenceVii
+  h1  : RootRows.GR_B n
+  h2  : RootRows.Fresh n
+  h3a : RootRows.D12R n
+  h3b : RootRows.EN n
+  h3c : RootRows.ADM n
+  h4a : RootRows.R14 n
+  h4b : RootRows.UBX n
+  h5  : RootRows.PACK n
+  h6a : RootRows.TDec n
+  h6b : RootRows.TRead n
+  h6c : RootRows.TVerd n
+  h6d : RootRows.FenceVII n
 
-/-- (UB)'s set covers (R)'s: the (K3-δ) leg via the containment law. -/
+/-- (UB)'s set covers (R)'s via the proved fixed-predicate restriction theorem. -/
 theorem HypUB.toHypR {n : ℕ} {H : HypRows n} (h : HypUB H) : HypR H
 ```
 
@@ -183,10 +190,10 @@ structure FloorData (n : ℕ) where
   M : (p : ℕ) → p.Prime → CountingModel p n
   menu : Finset FactorizationType
   menu_eq : ∀ p hp, (M p hp).typeMenu = menu
-  menu_degree : ∀ σ ∈ menu, σ.degree = n
+  menu_sound : ∀ σ ∈ menu, IsSplittingType n σ
+  menu_complete : ∀ σ, IsSplittingType n σ → σ ∈ menu
 
-/-- OPTIONAL Movement-I enrichment (NOT consumed by `rootC`): the menu contains
-every splitting type — carries ROOT §1's "each splitting type τ" quantifier. -/
+/-- The retained name is now a projection, not an optional strengthening. -/
 def MenuComplete {n : ℕ} (F : FloorData n) : Prop :=
   ∀ σ, IsSplittingType n σ → σ ∈ F.menu
 
@@ -203,8 +210,8 @@ structure SolveData (n : ℕ) where
 UNCONDITIONAL** — `undec(k) → 0` for the semantic classifier (ROOT: clause (SQ)
 consumes NO §3.1 row; the classifier-TRANSFER layer is Movement IV territory and
 never enters this structure). -/
-structure DrainData {n : ℕ} (F : FloorData n) : Prop where
-  vanish : ∀ p (hp : p.Prime), UndecidedVanishes (F.M p hp)
+theorem floor_drain {n : ℕ} (F : FloorData n) :
+    ∀ p (hp : p.Prime), UndecidedVanishes (F.M p hp)
 ```
 
 ### 1.4 `Scaffold/ValueIface.lean` — Movement IV plugs in here (BPV-06)
@@ -214,7 +221,7 @@ structure DrainData {n : ℕ} (F : FloorData n) : Prop where
 unramified base (residue size `p^δ`), same menu, drained, evaluating to the SAME
 `R_τ` at `q = p^δ`. Data (not Prop): the base-change models are part of the claim. -/
 structure UBWitness (n : ℕ) (F : FloorData n) (S : SolveData n) where
-  Mδ : (p δ : ℕ) → p.Prime → 2 ≤ δ → CountingModel (p ^ δ) n
+  Mδ : (p δ : ℕ) → p.Prime → 1 ≤ δ → CountingModel (p ^ δ) n
   menu_eq : ∀ p δ hp hδ, (Mδ p δ hp hδ).typeMenu = F.menu
   vanish : ∀ p δ hp hδ, UndecidedVanishes (Mδ p δ hp hδ)
   eval : ∀ p δ hp hδ, ∀ σ ∈ F.menu,
@@ -240,9 +247,10 @@ structure ValueDataUB (n : ℕ) (F : FloorData n) (S : SolveData n) (H : HypRows
 ```lean
 /-- **Clauses (0) + (SQ), bundled** (ROOT §1; UNCONDITIONAL — consumes no §3.1 row).
 `limit` = clause (0) in the scaffold reading (the density IS the cylinder limit);
-`lower`/`upper` = the two-sided level-k squeeze; `drain` = undec(k) → 0; `unique` =
-bracket uniqueness (the `montes_uniform_n2` closer shape: any value bracketed at
-every level ≥ 1 IS the density). -/
+`lower`/`upper` = the generic counting-model bounds (intentionally valid for all
+factorization types and all levels, a harmless strengthening of ROOT's splitting-type
+scope); `drain` = undec(k) → 0; `unique` uses levels `N ≥ 1`, exactly the source
+bracket scope. -/
 structure ClauseZeroSQ {n : ℕ} (F : FloorData n) : Prop where
   limit : ∀ p hp σ, Filter.Tendsto ((F.M p hp).decidedMeasure σ) Filter.atTop
             (nhds ((F.M p hp).countingDensity σ))
@@ -277,10 +285,10 @@ theorem bracket_unique {q n : ℕ} (M : CountingModel q n)
       d ≤ M.decidedMeasure σ N + M.undecided N) :
     d = M.countingDensity σ                                                  -- BPV-10
 /-- **Clauses (0)+(SQ) hold, hypothesis-free** — ROOT finding VC4-4 in Lean. -/
-theorem clauseZeroSQ_holds {n} (F : FloorData n) (D : DrainData F) :
+theorem clauseZeroSQ_holds {n} (F : FloorData n) :
     ClauseZeroSQ F                                                           -- BPV-11
 /-- Step 1's Σ_τ α = 1 at every prime (counting form). -/
-theorem sum_alpha_one {n} (F : FloorData n) (D : DrainData F)
+theorem sum_alpha_one {n} (F : FloorData n)
     (p : ℕ) (hp : p.Prime) :
     (∑ σ ∈ F.menu, (F.M p hp).countingDensity σ) = 1                         -- BPV-12
 
@@ -297,42 +305,54 @@ theorem memRcyc_eq_one_of_eval_primes {f : RatFunc ℚ} (hf : MemRcyc f)
     (h : ∀ p : ℕ, p.Prime → evalQ f (p : ℚ) = 1) : f = 1                     -- BPV-16
 /-- **Σ_τ R_τ = 1 in ℚ(q)** — concluded HERE, inside clause (R)'s scope. -/
 theorem sum_R_eq_one {n} {H : HypRows n} (F : FloorData n) (S : SolveData n)
-    (D : DrainData F) (V : ValueData n F S H) (h : HypR H) :
+    (V : ValueData n F S H) (h : HypR H) :
     (∑ σ ∈ F.menu, S.R σ) = 1                                                -- BPV-17
 
 -- RootC.lean (the composition; per-clause attribution preserved)
 /-- **Clause (R)** from EXACTLY its displayed hypothesis set (named arrows). -/
 theorem clauseR_of_hyps {n} {H : HypRows n} (F : FloorData n) (S : SolveData n)
-    (D : DrainData F) (V : ValueData n F S H)
-    (h1 : H.grB) (h2 : H.fresh) (h3a : H.d12r) (h3b : H.eN) (h3c : H.adm)
-    (h4a : H.r14) (hk3 : H.k3d) (h5 : H.pack)
-    (h6a : H.tDec) (h6b : H.tRead) (h6c : H.tVerd) (h6d : H.fenceVii) :
+    (V : ValueData n F S H)
+    (h1 : RootRows.GR_B n) (h2 : RootRows.Fresh n)
+    (h3a : RootRows.D12R n) (h3b : RootRows.EN n) (h3c : RootRows.ADM n)
+    (h4a : RootRows.R14 n) (hk3 : RootRows.K3Delta n) (h5 : RootRows.PACK n)
+    (h6a : RootRows.TDec n) (h6b : RootRows.TRead n)
+    (h6c : RootRows.TVerd n) (h6d : RootRows.FenceVII n) :
     ClauseR F S                                                              -- BPV-18
 /-- **Clause (UB)** from exactly its displayed set (with (H4b), not (K3-δ)). -/
 theorem clauseUB_of_hyps {n} {H : HypRows n} {F S}
     (V : ValueDataUB n F S H)
-    (h1 : H.grB) (h2 : H.fresh) (h3a : H.d12r) (h3b : H.eN) (h3c : H.adm)
-    (h4a : H.r14) (h4b : H.ubx) (h5 : H.pack)
-    (h6a : H.tDec) (h6b : H.tRead) (h6c : H.tVerd) (h6d : H.fenceVii) :
+    (h1 : RootRows.GR_B n) (h2 : RootRows.Fresh n)
+    (h3a : RootRows.D12R n) (h3b : RootRows.EN n) (h3c : RootRows.ADM n)
+    (h4a : RootRows.R14 n) (h4b : RootRows.UBX n) (h5 : RootRows.PACK n)
+    (h6a : RootRows.TDec n) (h6b : RootRows.TRead n)
+    (h6c : RootRows.TVerd n) (h6d : RootRows.FenceVII n) :
     Nonempty (UBWitness n F S)                                               -- BPV-19
 
-/-- **(ROOT-C), the composed theorem** — Asvin's form: the hypothesis rows as
-named arrows, concluding the cylinder-density squeeze + the R_τ evaluation at
-every prime + Σ = 1 + (UB). `_hn` is statement fidelity (ROOT fixes n ≥ 2). -/
-theorem rootC {n : ℕ} (_hn : 2 ≤ n) (H : HypRows n)
-    (F : FloorData n) (S : SolveData n)
-    (D : DrainData F) (V : ValueDataUB n F S H)
-    (h1 : H.grB) (h2 : H.fresh)
-    (h3a : H.d12r) (h3b : H.eN) (h3c : H.adm)
-    (h4a : H.r14) (h4b : H.ubx) (h5 : H.pack)
-    (h6a : H.tDec) (h6b : H.tRead) (h6c : H.tVerd) (h6d : H.fenceVii) :
-    ClauseZeroSQ F ∧ ClauseR F S ∧ Nonempty (UBWitness n F S)                -- BPV-20
+/-- Internal composition lemma; conclusion-bearing movement outputs are explicit here
+and this lemma is not advertised as `(ROOT-C)`. -/
+theorem rootC_assembly {n : ℕ} (hn : 2 ≤ n) (H : HypRows n)
+    (F : FloorData n) (S : SolveData n) (V : ValueDataUB n F S H)
+    (h : HypUB H) :
+    ClauseZeroSQ F ∧ ClauseR F S ∧ Nonempty (UBWitness n F S)
+
+/-- **(ROOT-C)**: only the fixed named mathematical rows occur as hypotheses.
+`canonicalFloor`, `canonicalSolve`, `canonicalValues`, and drainage are proved
+movement outputs consumed internally, not conclusion-bearing arguments. -/
+theorem rootC {n : ℕ} (hn : 2 ≤ n)
+    (h1 : RootRows.GR_B n) (h2 : RootRows.Fresh n)
+    (h3a : RootRows.D12R n) (h3b : RootRows.EN n) (h3c : RootRows.ADM n)
+    (h4a : RootRows.R14 n) (h4b : RootRows.UBX n) (h5 : RootRows.PACK n)
+    (h6a : RootRows.TDec n) (h6b : RootRows.TRead n)
+    (h6c : RootRows.TVerd n) (h6d : RootRows.FenceVII n) :
+    ClauseZeroSQ (canonicalFloor n hn) ∧
+    ClauseR (canonicalFloor n hn) (canonicalSolve n hn) ∧
+    Nonempty (UBWitness n (canonicalFloor n hn) (canonicalSolve n hn))        -- BPV-20
 
 -- Corollaries (BPV-21)
 /-- The Σ = 1 corollary, standalone (conditional exactly as clause (R)). -/
 theorem rootC_sum_one … : (∑ σ ∈ F.menu, S.R σ) = 1
 /-- The hypothesis-free half, standalone: (0)+(SQ) need NO row. -/
-theorem rootC_unconditional_half {n} (F : FloorData n) (D : DrainData F) :
+theorem rootC_unconditional_half {n} (F : FloorData n) :
     ClauseZeroSQ F
 ```
 
@@ -349,13 +369,17 @@ noncomputable def R2 (σ : FactorizationType) : RatFunc ℚ :=
 theorem memRcyc_R2 (σ : FactorizationType) : MemRcyc (R2 σ)                  -- BPV-22
 noncomputable def solveData2 : SolveData 2 := ⟨R2, memRcyc_R2⟩
 noncomputable def floorData2 : FloorData 2   -- M := fun p hp => @M7 p ⟨hp⟩  -- BPV-23
-theorem drainData2 : DrainData floorData2    -- from hExhaustP               -- BPV-24
+theorem floorDrain2 :
+    ∀ p (hp : p.Prime), UndecidedVanishes (floorData2.M p hp)                -- BPV-24
 theorem alphaEq2 : ∀ p (hp : p.Prime), ∀ σ ∈ floorData2.menu,
     (floorData2.M p hp).countingDensity σ = evalQ (R2 σ) (p : ℚ)             -- BPV-25
-/-- All rows True: the n = 2 chain is unconditional. -/
-def hypRows2 : HypRows 2      -- every field := True; law := id
-noncomputable def valueData2 : ValueData 2 floorData2 solveData2 hypRows2
-/-- **THE NON-VACUITY GATE: (ROOT-C) at n = 2, UNCONDITIONAL** — clauses
+/-- Synthetic private bundle used only by the direct capstone reduction; it is not
+`HypRows 2` and makes no claim to establish canonical (H1)–(H6). -/
+structure ReducedRows2 : Prop where
+  available : True
+noncomputable def valueData2 :
+    ∀ H : HypRows 2, ValueData 2 floorData2 solveData2 H
+/-- **THE NON-VACUITY GATE: the reduced conclusion at n = 2, UNCONDITIONAL** — clauses
 (0)+(SQ)+(R) of the spine, discharged from the existing capstone. Honest scope:
 no `UBWitness` at n = 2 (the Lean corpus has no unramified-base layer). -/
 theorem rootC_n2 : ClauseZeroSQ floorData2 ∧ ClauseR floorData2 solveData2   -- BPV-26
@@ -374,7 +398,7 @@ theorem memRcyc_R3 (σ : FactorizationType) : MemRcyc (R3 σ)                  -
 theorem sum_R3_eq_one : (∑ σ ∈ n3Menu, R3 σ) = 1   -- the symbolic Σ gate     -- BPV-29
 /-- The n = 3 corollary SHAPE (MECH once BP_I/BP_IV land their n = 3 data). -/
 theorem rootC_n3_of_instances (F : FloorData 3) (hmenu : F.menu = n3Menu)
-    (D : DrainData F) {H : HypRows 3} (V : ValueData 3 F ⟨R3, memRcyc_R3⟩ H)
+    {H : HypRows 3} (V : ValueData 3 F ⟨R3, memRcyc_R3⟩ H)
     (h : HypR H) : ClauseZeroSQ F ∧ ClauseR F ⟨R3, memRcyc_R3⟩               -- BPV-30
 ```
 
@@ -395,36 +419,34 @@ units; full names in §3. Source ¶ = ROOT_ASSEMBLY_2026-08-02.md locus.
 | id | module | statement (name, §1 sketch) | proof sketch | deps | diff | source ¶ |
 |----|--------|------------------------------|--------------|------|------|----------|
 | BPV-01 | Defs | `evalQ`, `IsSplittingType`, `evalQ_one`, `evalQ_algebraMap` | defs; `RatFunc.eval` unfold + `Polynomial.eval₂_id`; `eval_one` simp | corpus: MovesU.Defs, Interface, CountingModel | MECH | §1 preamble |
-| BPV-02 | Hypotheses | `HypRows` (14 fields incl. law) | structure only, docstrings = the §1.2 table | BPV-01 | MECH | §3.1 all rows |
-| BPV-03 | Hypotheses | `HypR` | Prop structure, 12 fields | BPV-02 | MECH | §1 (R)-attribution |
-| BPV-04 | Hypotheses | `HypUB` + `HypUB.toHypR` | Prop structure; `toHypR` := fields + `H.k3d_of_ubx h.h4b` | BPV-02,03 | MECH | §1 (UB)-attribution |
-| BPV-05 | Interfaces | `FloorData`, `MenuComplete`, `SolveData`, `DrainData` | structures/def only | BPV-01 | MECH | §2 Steps 1–5, 13 |
+| BPV-02 | RowStatements/Hypotheses | fixed `RootRows.*` predicates, `HypRows`, `HypR`, `HypUB`, conversion | one per-file work package; predicate bodies copied verbatim from leaf statements; conversion uses `RootRows.k3d_of_ubx` | BPV-01; BP_IV row module | MED | §3.1 all rows; §1 attribution |
+| BPV-05 | Interfaces | `FloorData` with sound/complete splitting-type menu, `SolveData`, `floor_drain` | one per-file work package; drainage theorem proved from the generic semantic model | BPV-01; BP_I/BP_III | MED | §2 Steps 1–5, 13 |
 | BPV-06 | ValueIface | `UBWitness`, `ValueData`, `ValueDataUB` | structures only | BPV-02..05 | MECH | §2 Steps 14–18b, 16 |
 | BPV-07 | Conclusions | `ClauseZeroSQ`, `ClauseR` | Prop structures only | BPV-05 | MECH | §1 clauses (0)(SQ)(R) |
 | BPV-08 | SqueezeCore | `clause_lower`, `clause_upper` | = `decided_le_density`, `density_le_decided_add_undecided` through `F.M` | BPV-05; corpus: CountingModel | MECH | §1 (SQ) |
 | BPV-09 | SqueezeCore | `clause_limit` | = `density_isLimit` through `F.M` | BPV-05 | MECH | §1 (0) |
 | BPV-10 | SqueezeCore | `bracket_unique` | `le_antisymm`: lower leg `le_of_tendsto'` of `density_isLimit` against `hbr.1` eventually (N ≥ 1); upper leg `ge_of_tendsto` of `countingDensity_is_squeezed_limit hU` against `hbr.2` | corpus: CountingModel | EASY-MED | §2 Step 19 "squeezes" |
-| BPV-11 | SqueezeCore | `clauseZeroSQ_holds` | assemble BPV-08/09/10 + `D.vanish`; `unique` from BPV-10 | BPV-07..10 | MECH | §1 (0)+(SQ) unconditional [VC4-4] |
-| BPV-12 | SqueezeCore | `sum_alpha_one` | `tendsto_finset_sum` of `density_isLimit` `.add D.vanish`; constant sequence 1 by `decidedMeasure_sum_add_undecided` + `F.menu_eq`; `tendsto_nhds_unique` | BPV-05; corpus: CountingModel | EASY-MED | §2 Step 1 Delivers; Step 19 Σ-derivation input |
+| BPV-11 | SqueezeCore | `clauseZeroSQ_holds` | assemble BPV-08/09/10 + `floor_drain F`; `unique` from BPV-10 | BPV-07..10 | MECH | §1 (0)+(SQ) unconditional [VC4-4] |
+| BPV-12 | SqueezeCore | `sum_alpha_one` | helper lemmas for finite-sum convergence and the constant sequence; use `floor_drain F`, `decidedMeasure_sum_add_undecided`, `F.menu_eq`, `tendsto_nhds_unique` | BPV-05; corpus: CountingModel | MED | §2 Step 1 Delivers; Step 19 Σ-derivation input |
 | BPV-13 | SumOne | `memRcyc_sum` | `Finset.cons_induction`; `memRcyc_zero`, `MemRcyc.add` | corpus: O12PoleFree | EASY | §2 Step 19 Σ_τ R_τ = 1 |
-| BPV-14 | SumOne | `evalQ_sum` | cons induction; step = mathlib `RatFunc.eval_add` with denom-nonzero sides from `MemRcyc.definedAt hx` + BPV-13 for the partial sum; `Polynomial.eval₂_id` plumbing | BPV-01,13 | MED | same |
+| BPV-14 | SumOne | `evalQ_sum` | first validate the exact local `RatFunc.eval_add` signature; prove its two defined-at premises from `MemRcyc.definedAt hx`, then cons induction | BPV-01,13 | MED | same |
 | BPV-15 | SumOne | `primesQ_infinite` | `Nat.infinite_setOf_prime.image` + injectivity of `Nat.cast : ℕ → ℚ` | mathlib | MECH | §2 Step 19 "infinitely many prime powers" |
-| BPV-16 | SumOne | `memRcyc_eq_one_of_eval_primes` | apply `L7.ratfunc_agree_of_infinite f.num f.denom 1 1` on the prime image set (BPV-15); denom-nonzero from `MemRcyc.definedAt` (each (p:ℚ) ≥ 2); agreement = `evalQ` unfold; conclude `f.num = f.denom` ⇒ `f = 1` via `RatFunc.num_div_denom` | BPV-01,15; corpus: L7, O12PoleFree | MED | §2 Step 19 interpolation [B3] |
+| BPV-16 | SumOne | `memRcyc_eq_one_of_eval_primes` | validate `#check L7.ratfunc_agree_of_infinite`; adapt through a typed helper matching its actual polynomial/evaluation binders, obtain numerator/denominator equality, then use the checked `RatFunc.num_div_denom` form | BPV-01,15; corpus: L7, O12PoleFree | MED-HARD | §2 Step 19 interpolation [B3] |
 | BPV-17 | SumOne | `sum_R_eq_one` | per prime: BPV-12 + `V.alpha_eq h` rewrite gives Σ evalQ (R σ) p = 1; BPV-13/14 package Σ as one ℛ-element evaluating to 1 (note (p:ℚ) ≥ 2 from `hp.two_le`); close with BPV-16 | BPV-12..16, BPV-06 | EASY | §2 Step 19 Σ_τ R_τ = 1 [B3] |
 | BPV-18 | RootC | `clauseR_of_hyps` | `HypR.mk` from the 12 arrows; `ClauseR.mk (fun σ _ => S.memR σ) (V.alpha_eq ⟨…⟩) (sum_R_eq_one …)` | BPV-03,06,07,17 | EASY | §1 (R)-attribution |
 | BPV-19 | RootC | `clauseUB_of_hyps` | `⟨V.ub ⟨12 arrows⟩⟩` | BPV-04,06 | MECH | §1 (UB)-attribution |
-| BPV-20 | RootC | `rootC` | `⟨clauseZeroSQ_holds F D, clauseR_of_hyps … (H.k3d_of_ubx h4b) …, clauseUB_of_hyps …⟩` | BPV-11,18,19 | EASY | §1 (ROOT-C); §2 Step 19 |
+| BPV-20 | RootC | `rootC_assembly`, `rootC` | assembly helper uses explicit packages; advertised theorem builds the fixed `HypRows`, canonical floor/solve/value outputs, and UB witness internally, using `RootRows.k3d_of_ubx h4b` | BPV-11,18,19; canonical outputs from BP_I–IV | EASY | §1 (ROOT-C); §2 Step 19 |
 | BPV-21 | RootC | `rootC_sum_one`, `rootC_unconditional_half` | projections/aliases of BPV-17/BPV-11 with the named-arrow interface | BPV-11,17 | MECH | §1 (ROOT-C); task charge "Sigma=1 corollary" |
-| BPV-22 | InstanceN2 | `R2`, `memRcyc_R2`, `solveData2` | per menu case exhibit (P, s ∈ cycS): ram = (X−1, X²−1), inert/split = ((X²−X)/2 scaled, X²−1) via `Xpow_sub_one_mem_cycS`; off-menu 0/1 by `memRcyc_zero`-type simp; the MemRcyc form is `alg(s)·f = alg(P)` — clear denominators with `RatFunc.algebraMap_ne_zero` | BPV-01,05; corpus: UniformCapstone, O12PoleFree | MED | §1 "Verified instances"; capstone §H |
-| BPV-23 | InstanceN2 | `floorData2` | `M := fun p hp => @M7 p ⟨hp⟩`; `menu := typeMenuP`; `menu_eq := rfl`; degree from the M7 field | BPV-05; corpus: UniformCapstone, UniformModelN2 | EASY | capstone §H |
+| BPV-22 | InstanceN2 | `R2`, `memRcyc_R2`, `solveData2` | one file-owned work package; split into private ram/inert/split/off-menu witness helpers before the public theorem; clear denominators only after checking `RatFunc.algebraMap_ne_zero` | BPV-01,05; corpus: UniformCapstone, O12PoleFree | HARD | §1 "Verified instances"; capstone §H |
+| BPV-23 | InstanceN2 | `floorData2` | `M := fun p hp => @M7 p ⟨hp⟩`; `menu := typeMenuP`; prove `menu_sound` and `menu_complete` by explicit finite menu cases (no unstated M7 field) | BPV-05; corpus: UniformCapstone, UniformModelN2 | MED | capstone §H |
 | BPV-24 | InstanceN2 | `drainData2` | `UndecidedVanishes (M7 p)` unfolds to `hExhaustP p` (n·N = 2·N alignment by `show`/`simp`) | BPV-23; corpus: UniformCapstone | MECH-EASY | capstone §E |
 | BPV-25 | InstanceN2 | `alphaEq2` | `countingDensity = uniformValueFn σ p` (defeq via `densityVal`); `uniformValueFn_eq_eval`; bridge to `evalQ (R2 σ)` by `MovesU.eval_ratio` with `uniformDen_eval_ne` (0 < p) | BPV-22,23; corpus: UniformCapstone, O12PoleFree | MED | capstone (V) clause |
-| BPV-26 | InstanceN2 | `hypRows2`, `valueData2`, `rootC_n2` | all rows `True`; `HypR` by `trivial`s; assemble `clauseZeroSQ_holds floorData2 drainData2` + `clauseR_of_hyps` | BPV-11,18,22..25 | EASY | §1 verified-instances ¶; non-vacuity discipline (repo CLAUDE.md) |
+| BPV-26 | InstanceN2 | `ReducedRows2`, `valueData2`, `rootC_n2` | direct capstone reduction; assemble unconditional squeeze and evaluation without claiming canonical row proofs | BPV-11,22..25 | EASY | §1 verified-instances ¶; non-vacuity discipline (repo CLAUDE.md) |
 | BPV-27 | InstanceN2 | gates: `gate_sum_R2`, `gate_wild_p2`, `gate_R2_ram_at_2` | project `rootC_n2.2.sum`; instantiate at p = 2 (`Nat.prime_two`); `evalQ (R2 ramType2) 2 = 1/3` by `eval_ratio` + `norm_num` | BPV-26 | MECH | capstone gates ¶ |
 | BPV-28 | InstanceN3 | `n3Menu`, `R3` (defs, source-pinned transcription) | transcribe the five degree-3 types + their `ℚ(q)` values from the RESUM-n3 sealed record / `o11_seriestie_check.py` (leaf brief pins exact strings); FIDELITY RISK — falsifier is BPV-29 | BPV-01 | MED | §1 verified-instances ¶ (RESUM-n3 65/65) |
-| BPV-29 | InstanceN3 | `memRcyc_R3`, `sum_R3_eq_one` | five MemRcyc witnesses (cyclotomic denominators); Σ = 1 as a `RatFunc ℚ` identity: `field_simp`/`ring` after clearing the five denominators | BPV-13,28 | MED-HARD | same |
-| BPV-30 | InstanceN3 | `rootC_n3_of_instances` | instance of BPV-11 + BPV-18 with `hmenu` rewrite | BPV-11,18,28,29 | MECH | §6 next-actions (n = 3 instance) |
-| BPV-31 | AxChk | `Scaffold/AxChk.lean` census | `#print axioms` block per §1.8 | BPV-20,26 | MECH | repo axiom policy |
+| BPV-29 | InstanceN3 | `memRcyc_R3`, `sum_R3_eq_one` | private helper per type, then a separate rational-function identity helper with explicit nonzero denominators; public theorems are wrappers | BPV-13,28 | HARD | same |
+| BPV-30 | InstanceN3 | `rootC_n3_of_instances` | assemble BPV-11; use `V.alpha_eq h` for evaluation, `memRcyc_R3` for membership, and rewrite the sum through `hmenu` to close specifically with `sum_R3_eq_one` | BPV-11,28,29 | MECH | §6 next-actions (n = 3 instance) |
+| BPV-31 | AxChk | `Scaffold/AxChk.lean` census | `#print axioms` block per §1.8 | BPV-20,26,30 | MECH | repo axiom policy |
 
 ---
 
@@ -450,7 +472,10 @@ existing file is edited). Verified against HEAD at blueprint time.
 | `LeanUrat.L7.ratfunc_agree_of_infinite` (`L7.lean`) | BPV-16 (THE interpolation principle — already sorry-free, Lean-core) |
 | `LeanUrat.OM.UniformCapstone.M7`, `.montes_uniform_n2`, `.hExhaustP`, `.uniformNum/uniformDen/uniformValueFn(+_eq_eval,_off)`, `.uniformDen_eval_ne`; `….UniformModelN2.typeMenuP` | BPV-22..27 (the n = 2 instance; `montes_uniform_n2` is the citation anchor — BPV-25 may route through `uniformValueFn_eq_eval` directly, same perimeter) |
 | `LeanUrat.OM.SeriesAssembly.hExhaust_n2` | superseded for spine purposes by the all-`p` `hExhaustP`; listed to prevent re-derivation |
-| mathlib: `RatFunc.eval(_add/_one)`, `RatFunc.num_div_denom`, `RatFunc.algebraMap_ne_zero`, `Polynomial.eval₂_id`, `Nat.infinite_setOf_prime`, `tendsto_finset_sum`, `tendsto_nhds_unique`, `le_of_tendsto'`/`ge_of_tendsto` | BPV-10/12/14/15/16 |
+| mathlib candidates, to be accepted only after in-file `#check`: `RatFunc.eval_add`,
+`RatFunc.num_div_denom`, `RatFunc.algebraMap_ne_zero`, `Polynomial.eval₂_id`,
+`Nat.infinite_setOf_prime`, `tendsto_finset_sum`, `tendsto_nhds_unique`,
+`le_of_tendsto'`, `ge_of_tendsto` | BPV-10/12/14/15/16 |
 
 **Landed units NOT consumed by the spine** (other movements' quarry; listed so division
 leads do not re-assign them here): `MovesV.SkeletonFinite.skeleton_finite` (BP_I Step 3),
@@ -468,25 +493,40 @@ Per-file gates during waves (`lake env lean <file>`); `lake build` + AxChk at wa
 checkpoints. All waves after V0 can overlap where dep columns allow; the listed order is
 the safe serial collapse.
 
-- **Wave V0 — the statement layer (all MECH, fully parallel):** BPV-01, 02, 03, 04, 05,
-  06, 07. GATE: every structure compiles; zero `sorry` (no proofs exist yet to sorry);
-  Codex plan-review of THIS FILE precedes the wave (the standing plan-level rule).
-- **Wave V1 — the unconditional core (parallel after V0):** BPV-08, 09, 10, 11, 12.
-  GATE: `clauseZeroSQ_holds` + `sum_alpha_one` Lean-core.
-- **Wave V2 — ℛ + interpolation (parallel with V1, after V0):** BPV-13, 14, 15, 16.
-  GATE: `memRcyc_eq_one_of_eval_primes` Lean-core.
-- **Wave V3 — assembly (after V1+V2):** BPV-17, 18, 19, 20, 21. GATE: `rootC` compiles
-  sorry-free; `#print axioms rootC` = Lean core.
+- **Wave V0a — independent foundations:** BPV-01 and the fixed BP_IV row-statements
+  transcription may run in parallel. Per-file GATE:
+  `lake env lean LeanUrat/Scaffold/Defs.lean` and
+  `lake env lean LeanUrat/Scaffold/RowStatements.lean`.
+- **Wave V0b — interfaces after V0a:** one owner performs BPV-02, then BPV-05; after
+  those compile, BPV-06 and BPV-07 may run in parallel in distinct files. Per-file
+  `lake env lean` gates are mandatory; no concurrent edits to one module.
+- **Wave V1a — independent core lemmas after V0b:** BPV-08, BPV-09, BPV-10, and BPV-12
+  may run in parallel only where files have distinct owners.
+- **Wave V1b — core assembly:** BPV-11 runs after BPV-08/09/10. GATE:
+  `lake env lean LeanUrat/Scaffold/SqueezeCore.lean`.
+- **Wave V2a — ℛ foundations, parallel with V1 after V0b:** BPV-13 and BPV-15.
+- **Wave V2b — checked elaboration:** BPV-14 after BPV-13; BPV-16 after BPV-15.
+  Before proof work, compile a scratch-free `#check` block for every flagged Mathlib/L7
+  declaration, then delete the block. GATE:
+  `lake env lean LeanUrat/Scaffold/SumOne.lean`.
+- **Wave V3 — assembly (after V1b+V2b and canonical BP_I–IV outputs):** one RootC owner
+  performs BPV-17–21 in dependency order. GATE:
+  `lake env lean LeanUrat/Scaffold/RootC.lean`; `rootC` compiles sorry-free and its
+  only theorem hypotheses are the fixed named rows.
 - **Wave V4 — the n = 2 instance (BPV-22/23/24 may start after V0; BPV-25/26/27 after
   V3):** BPV-22, 23, 24, 25, 26, 27. GATE: `rootC_n2` Lean-core — THE NON-VACUITY GATE;
   a failure here is a stop-the-line interface bug, not a prover bug.
-- **Wave V5 — n = 3 + census (after V3; BPV-28 needs its transcription brief cut from
-  the RESUM-n3 record first):** BPV-28, 29, 30, 31. GATE: `sum_R3_eq_one` (the
-  transcription falsifier) + the AxChk census clean.
+- **Wave V5a — n = 3 (after V3):** BPV-28, then BPV-29, then BPV-30; BPV-28 requires
+  its transcription brief first. GATE:
+  `lake env lean LeanUrat/Scaffold/InstanceN3.lean`, including the
+  `sum_R3_eq_one` transcription falsifier consumed by BPV-30.
+- **Wave V5b — census (after BOTH V4 and V5a):** BPV-31. GATE:
+  `lake env lean LeanUrat/Scaffold/AxChk.lean` and `lake build`.
 
-Estimated prover-agent count: 31 units ⇒ ~31 single-unit provers + 6 gate re-runs; the
-only units a prover may split further are BPV-16 (a `num/denom` plumbing helper may be
-extracted) and BPV-29 (five per-type MemRcyc witnesses = five ≤ 10-line sub-units).
+Assignment count is one owner per module/work package, not one owner per BPV checkpoint.
+Within a file, its owner may split BPV-12, BPV-16, BPV-22, or BPV-29 into private
+≤40-line helpers. Every file receives its own `lake env lean <file>` gate before a
+dependent wave begins; no two owners edit the same module concurrently.
 
 ---
 
@@ -498,8 +538,8 @@ division lead files a reconciliation diff against THIS file (never a silent fork
 
 **5.1 BP_I (Movement I — Steps 1–3, measure floor + symbolic engine).** Owes: (a)
 `FloorData n` instances at general `n` (per-prime SEMANTIC `CountingModel p n` with the
-p-free menu; at n = 2 the spine builds it itself, BPV-23 — BP_I may re-point to it);
-(b) the `MenuComplete` enrichment (the "every splitting type" quantifier) per n; (c) the
+p-free menu; `menu_sound` and `menu_complete` are mandatory fields, so the theorem
+ranges over exactly every splitting type); at n = 2 the spine builds it itself; (b) the
 OPTIONAL Haar enrichment tying `countingDensity` to `μ(L_τ)` (Dfloor D-1; quarry:
 `PadicMeasure.lean`, `L6_measureExact`/`LandingCylinderL`) — a NEW structure
 `HaarFloor (F : FloorData n)` extending the spine, NOT a spine obligation; (d)
@@ -511,23 +551,39 @@ canonical route is `AbsSolveTable.RcycDiscipline` at the assembled table +
 ONLY `MemRcyc (R σ)`. The (SL≥2) display (every self-loop e ≥ 2, exponent ≥ 2) lives in
 BP_II as the discipline's discharge at 𝔅_n; it never surfaces in the spine signature.
 
-**5.3 BP_III (Movement III — Steps 6–13, dictionary).** Owes: `DrainData F` at general
-`n` — the SEMANTIC drainage layer ONLY (M05 Lemmas A/C/D + Theorem E + SEM-DRAIN),
+**5.3 BP_III (Movement III — Steps 6–13, dictionary).** Owes the theorem
+`floor_drain {n} (F : FloorData n) : ∀ p (hp : p.Prime),
+UndecidedVanishes (F.M p hp)` at general `n` — the SEMANTIC drainage layer ONLY
+(M05 Lemmas A/C/D + Theorem E + SEM-DRAIN),
 which ROOT holds unconditional at every prime; the classifier-TRANSFER layer (O4T,
 (AGR)-conditional at general n) feeds BP_IV's counting tie, NOT this structure. If
 BP_III needs the transfer layer typed, it extends with a NEW structure (suggested:
 `TransferData` carrying the (AGR) row as a field) — reconciliation diff required.
 
-**5.4 BP_IV (Movement IV — Steps 14–18b, value side).** Owes: (a) `ValueData` /
-`ValueDataUB` instances — `alpha_eq` is the Step-18 (O-11 SERIES-TIE) ∘ Step-18b (D-11
-M2) composition at EXACTLY the `HypR` set; `ub` is Step 16's package; (b) the REAL
-`HypRows n` instance: each `Prop` field pinned to the leaf-brief statement it names
+**5.4 BP_IV (Movement IV — Steps 14–18b, value side).** Owes: (a) the canonical theorem
+outputs consumed by `rootC`: `canonicalValues (n : ℕ) (hn : 2 ≤ n) :
+ValueDataUB n (canonicalFloor n hn) (canonicalSolve n hn) (canonicalHypRows n)`;
+`alpha_eq` is Step-18 ∘ Step-18b and `ub` is Step 16; (b) the FIXED predicate definitions
+in `Scaffold/RowStatements.lean`, each with its full mathematical body copied verbatim
+from the leaf statement it names
 (grB ↔ GD23's order-≥2 residue; fresh ↔ O-9's clause (c) form; adm ↔ the O-9 r4 FULL
 attainment display; r14 ↔ M14's (R1)–(R4); ubx/k3d ↔ the (UB-X) display; pack ↔ D-11
 clause 4; tDec/tRead/tVerd ↔ CUC §9.4/CU-2t R3-R4; fenceVii ↔ D-11 item (vii)) — the
-`k3d_of_ubx` law obligates BP_IV to state (K3-δ) as the genuine restriction of its
-(UB-X)(b) statement. (c) `MemRcyc.powSubst` is the reserved corpus lever for the
-q ↦ q^δ leg of `UBWitness.eval`.
+the theorem `RootRows.k3d_of_ubx {n : ℕ} : RootRows.UBX n →
+RootRows.K3Delta n` obligates BP_IV to prove the genuine restriction of (UB-X)(b).
+(c) `MemRcyc.powSubst` is the reserved corpus lever for the `q ↦ q^δ` leg of
+`UBWitness.eval`, whose exact domain is `1 ≤ δ`.
+
+**CROSS-BP interface signatures.** BP_I must export
+`noncomputable def canonicalFloor (n : ℕ) (hn : 2 ≤ n) : FloorData n`;
+BP_II must export
+`noncomputable def canonicalSolve (n : ℕ) (hn : 2 ≤ n) : SolveData n`;
+BP_IV must export
+`def canonicalHypRows (n : ℕ) : HypRows n` only when it has proved every fixed row,
+and `noncomputable def canonicalValues (n : ℕ) (hn : 2 ≤ n) :
+ValueDataUB n (canonicalFloor n hn) (canonicalSolve n hn) (canonicalHypRows n)`.
+No `axiom`, `opaque` placeholder, arbitrary `Prop` parameter, or conclusion-bearing
+argument may substitute for these proved definitions.
 
 **5.5 Math-revision sync (standing duty).** This blueprint is cut at ROOT **REVISION
 5** (hypothesis set (H1)–(H6) = 14 fields incl. the (K3-δ) split and the four-row (H6)
@@ -554,4 +610,24 @@ restatement.
 - [ ] `#print axioms` census (BPV-31) = Lean core on `rootC`, `rootC_n2`
 - [ ] parked items 22–29 untouched; no fenced statement touched (§5.6)
 - [ ] ROOT revision watch: blueprint header still says REVISION 5, else §5.5 fires
+- [ ] `#check`-validated exact signatures for `RatFunc.eval_add`,
+      `L7.ratfunc_agree_of_infinite`, parent projections, and `RatFunc.num_div_denom`
+- [ ] `rootC` has no `FloorData`, `SolveData`, drainage, `ValueData`, or `UBWitness`
+      argument; only `n ≥ 2` and the fixed named mathematical row proofs
 
+## REVISION 2 (review fold, 2026-08-03)
+1 -> FIXED -> `rootC` now consumes canonical movement outputs internally; the old conclusion-bearing composition is explicitly named `rootC_assembly`.
+2 -> FIXED -> `HypRows` fields prove fixed `RootRows.*` predicates; CROSS-BP DIRECTIVE BP_IV: define the verbatim predicates and export `canonicalHypRows (n : ℕ) : HypRows n`.
+3 -> FIXED -> `DrainData` is removed from theorem boundaries; unconditional drainage is the general theorem `floor_drain` and is consumed internally.
+4 -> FIXED -> `FloorData` now requires `menu_sound` and `menu_complete`, with `IsSplittingType` positivity and degree built into both directions.
+5 -> FIXED -> `ClauseZeroSQ` documentation explicitly records the generic all-factorization-type/all-level strengthening and the `N ≥ 1` uniqueness scope.
+6 -> FIXED -> `UBWitness.Mδ` now ranges over `1 ≤ δ`, including δ = 1.
+7 -> FIXED -> V0 is split into V0a/V0b with actual dependency ordering and distinct-file ownership.
+8 -> FIXED -> V1 is split into independent lemma work followed by BPV-11 assembly.
+9 -> FIXED -> the census is V5b and explicitly follows both V4 and V5a.
+10 -> FIXED -> assignments are consolidated per module; BPV numbers are checkpoints, not 31 separate provers.
+11 -> FIXED -> BPV-12/16/22/29 explicitly permit private ≤40-line helpers, with BPV-22 and BPV-29 rated HARD.
+12 -> FIXED -> BPV-30 drops drainage, retains `hmenu`, and explicitly consumes `sum_R3_eq_one`, making BPV-29 a genuine transcription dependency.
+13 -> FIXED -> `floorData2` proves menu soundness/completeness by explicit finite cases and no longer cites an unstated M7 degree field.
+14 -> FIXED -> the n=2 construction is renamed `ReducedRows2` and documented as a direct capstone reduction, not a canonical row instantiation.
+15 -> FIXED -> flagged Mathlib/L7 names require compiled `#check` validation; proof sketches no longer assert an unchecked exact application or parent coercion.

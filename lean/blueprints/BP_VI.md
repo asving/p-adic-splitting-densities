@@ -125,15 +125,20 @@ def ClauseRHyps {n : ℕ} (H : RootHyps n) : Prop :=
     H.h4b_k3delta ∧ H.h5_pack ∧
     (H.h6_tdec ∧ H.h6_tread ∧ H.h6_tverd ∧ H.h6_vii)
 
-/-- Clause (UB)'s hypothesis set = clause (R)'s + the rest of (H4b). -/
+/-- Clause (UB)'s hypothesis set, transcribed directly: full (H4b)(b) is
+    primitive here; the K3-δ fragment is derived only when clause (R) is needed. -/
 def ClauseUBHyps {n : ℕ} (H : RootHyps n) : Prop :=
-  ClauseRHyps H ∧ H.h4b_rebase ∧ H.h4b_stable ∧ H.h4b_commute
+  H.h1_grb ∧ H.h2_fresh ∧ (H.h3_d12r ∧ H.h3_en ∧ H.h3_adm) ∧ H.h4a_r1r4 ∧
+    H.h4b_rebase ∧ H.h4b_stable ∧ H.h4b_commute ∧ H.h5_pack ∧
+    (H.h6_tdec ∧ H.h6_tread ∧ H.h6_tverd ∧ H.h6_vii)
 
 theorem clauseR_of_clauseUB {n : ℕ} {H : RootHyps n} :
     ClauseUBHyps H → ClauseRHyps H
 
-/-- HONESTY GATE (the wave-4-boundary display, machine-checked): `RootHyps` is
-    True-instantiable, so its mere presence pins nothing. -/
+/-- HONESTY GATE (the wave-4-boundary display, machine-checked): `RootHyps` and
+    its selectors are transcription devices, not mathematical discharge. Any
+    theorem claiming `RootC` must also expose the typed division results that
+    consume the selected rows; `ClauseRHyps`/`ClauseUBHyps` alone is insufficient. -/
 def trivialRootHyps (n : ℕ) : RootHyps n   -- all fields `True`, law `id`
 theorem trivialRootHyps_ub (n : ℕ) : ClauseUBHyps (trivialRootHyps n)
 ```
@@ -187,39 +192,75 @@ def RootC (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
         (fun σ => evalℝ ⟨R⟩ σ p)
 ```
 
-Fidelity note (statement-fence flag for the Codex plan review): `RootC` is a
-REPACKAGING of theoremU's conclusion — same quantifier order (∃ R before ∀ p, the
-F11 discipline), same (REG-p) guard, same five clauses. It adds NO strength and
-drops NONE (VI-B1 proves the transport). The (ROOT) target's clause (UB) is NOT
-in `RootC`: (UB) enters only through `ClauseUBHyps` at the future composed form
-(VI-F1) — matching the honest Step-16 scope of ROOT §1.
+The literal theoremU tuple, including its order, is recorded and checked here:
+
+```lean
+def TheoremUTuple (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
+    (K7 : Cl7Kernel n KC) (S : SolveData n)
+    (inst : ∀ (p : ℕ) (hp : p.Prime), UInstance n C KC K7 S p hp) : Prop :=
+  ∃ R : SplittingType n → RatFunc ℚ,
+    R = S.R ∧ (∑ σ, R σ = 1) ∧
+    ∀ (p : ℕ) (hp : p.Prime), RegP (inst p hp).D →
+      (∀ (σ : SplittingType n) (N : ℕ),
+        (evalℝ ⟨R⟩ σ p - (inst p hp).X.env N) * (p : ℝ) ^ (n * N) ≤
+          ((inst p hp).X.decided σ N : ℝ) ∧
+        ((inst p hp).X.decided σ N : ℝ) ≤
+          evalℝ ⟨R⟩ σ p * (p : ℝ) ^ (n * N)) ∧
+      (∀ σ, Tendsto ((inst p hp).X.dmass σ) atTop
+        (𝓝 (evalℝ ⟨R⟩ σ p))) ∧
+      (∀ σ, Tendsto ((inst p hp).X.trueDmass σ) atTop
+        (𝓝 (evalℝ ⟨R⟩ σ p))) ∧
+      (∀ σ, Tendsto (ZpBridge.zpDmass (inst p hp).bridge σ) atTop
+        (𝓝 (evalℝ ⟨R⟩ σ p))) ∧
+      Tendsto (inst p hp).X.env atTop (𝓝 0)
+
+theorem RootC_iff_tuple (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
+    (K7 : Cl7Kernel n KC) (S : SolveData n)
+    (inst : ∀ (p : ℕ) (hp : p.Prime), UInstance n C KC K7 S p hp) :
+    RootC n C KC K7 S inst ↔ TheoremUTuple n C KC K7 S inst
+```
+
+`RootC_iff_tuple` fixes theoremU's order as bracket, classifier density,
+true-type density, ℤ_p-read density, drainage. It checks the same quantifier
+order (∃ R before ∀ p), the same (REG-p) guard, and all five clauses. The (ROOT)
+target's clause (UB) is NOT in `RootC`: it enters only through `ClauseUBHyps` at
+the future composed form (VI-F1), matching the honest Step-16 scope of ROOT §1.
 
 ### 1.3 `Scaffold/CorpusBridge.lean` — theoremU → RootC [wave VI-1]
 
 Imports: `Scaffold/Spine.lean`, `LeanUrat.MovesU.U10_theoremU`,
-`LeanUrat.MovesU.BridgeMk`, `LeanUrat.MovesU.SlotsG18_relPack` (+ SlotsG4–G10 for
-the sited slot definitions).
+`LeanUrat.MovesU.BridgeMk`, `LeanUrat.MovesU.SlotsG18_relPack`,
+`LeanUrat.MovesU.SlotsG2_rel1`, `LeanUrat.MovesU.SlotsG3_rel2`,
+and every concrete slot module `SlotsG4_rs0Lump` through
+`SlotsG10_jcInvHist`. No reliance on re-export is permitted.
 
 ```lean
-/-- VI-B1: theoremU's conclusion, transported into the spine shape. Pure
-    repackaging — destructure the 5-tuple, build `PrimeConclusion`. -/
+/-- VI-B1: theoremU's conclusion, transported into the spine shape. -/
 theorem rootC_of_theoremU (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
     (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC) (S : SolveData n)
     (KT : UpstreamTyped n KC)
     (rel1 rel2a rel2b rel2d rel2e rel3 rs0Lump trackRule dnLattice
-     m1m5Echo x1aDict m4bConst jcInvHist : Prop)
-    (hrel1 : rel1) … (hjc : jcInvHist)          -- the 13 rows, verbatim U10
+      m1m5Echo x1aDict m4bConst jcInvHist : Prop)
+    (hrel1 : rel1) (hrel2a : rel2a) (hrel2b : rel2b)
+    (hrel2d : rel2d) (hrel2e : rel2e) (hrel3 : rel3)
+    (hrs0 : rs0Lump) (htrack : trackRule) (hdn : dnLattice)
+    (hm15 : m1m5Echo) (hx1a : x1aDict) (hm4b : m4bConst)
+    (hjc : jcInvHist)
     (inst : ∀ (p : ℕ) (hp : p.Prime), UInstance n C KC K7 S p hp) :
     RootC n C KC K7 S inst
 
-/-- VI-B2: RootC FIRED at the constructed instance family — the corpus's
-    strongest general-n realization: `theoremU_fired` (BridgeMk.lean:183)
-    composed with VI-B1 at S := `bridgeSolve C BP.hdet`,
-    inst := `fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp)`.
-    Inherits theoremU_fired's HONEST CONDITIONALITY OF RECORD verbatim
-    (BridgeMk.lean:174–182) — never describe as unconditional. -/
-theorem rootC_fired (n : ℕ) (hn : 2 ≤ n) … (BP : BridgePre n C)
-    (…the 13 rows…)
+/-- VI-B2: direct VI-B1 specialization at the same inputs used by
+    `theoremU_fired`; it does not consume `theoremU_fired` as an argument. -/
+theorem rootC_fired (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
+    (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC)
+    (KT : UpstreamTyped n KC) (BP : BridgePre n C)
+    (rel1 rel2a rel2b rel2d rel2e rel3 rs0Lump trackRule dnLattice
+      m1m5Echo x1aDict m4bConst jcInvHist : Prop)
+    (hrel1 : rel1) (hrel2a : rel2a) (hrel2b : rel2b)
+    (hrel2d : rel2d) (hrel2e : rel2e) (hrel3 : rel3)
+    (hrs0 : rs0Lump) (htrack : trackRule) (hdn : dnLattice)
+    (hm15 : m1m5Echo) (hx1a : x1aDict) (hm4b : m4bConst)
+    (hjc : jcInvHist)
     (BD : ∀ (p : ℕ) (hp : p.Prime), BridgeInputs n C KC K7 p hp) :
     RootC n C KC K7 (bridgeSolve C BP.hdet)
       (fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp))
@@ -234,7 +275,9 @@ theorem rootC_fired (n : ℕ) (hn : 2 ≤ n) … (BP : BridgePre n C)
     `Slot_x1aDict n KC` (SlotsG8); m4bConst ← `Slot_m4bConst …` (SlotsG9);
     jcInvHist ← `Slot_jcInvHist n` (SlotsG10). -/
 structure SlotAssignment (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
-    (K7 : Cl7Kernel n KC) (RP : RelCarrierPack) : Prop where
+    (K7 : Cl7Kernel n KC) (RP : RelCarrierPack)
+    (𝓕 : LeanUrat.MovesV.CtsFamily n)
+    (SS : LeanUrat.MovesV.StepSys n 𝓕) : Prop where
   rel1 : RelRow_rel1 RP
   rel2a : RelRow_rel2a RP
   rel2b : RelRow_rel2b RP
@@ -246,22 +289,28 @@ structure SlotAssignment (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
   dn : Slot_dnLattice n KC K7
   m15 : Slot_m1m5Echo n C
   x1a : Slot_x1aDict n KC
-  m4b : Slot_m4bConst_face n C     -- exact keying resolved at E-phase vs SlotsG9
+  m4b : Slot_m4bConst n 𝓕 SS
   jc : Slot_jcInvHist n
 
-/-- VI-B4: RootC fired WITH the slot parameters instantiated at the SITED
-    definitions — the wave-4 boundary made typed in scaffold-land: given
-    `SA : SlotAssignment n C KC K7 RP`, no True-instantiation reading survives. -/
-theorem rootC_fired_at_slots … (SA : SlotAssignment n C KC K7 RP) … :
-    RootC n C KC K7 (bridgeSolve C BP.hdet) (fun p hp => mkUInstance …)
+/-- VI-B4: RootC fired with all thirteen theoremU propositions instantiated by
+    the sited slot faces. Typed ledger, bridge preconditions, and per-prime
+    bridge inputs remain explicit. -/
+theorem rootC_fired_at_slots (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
+    (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC)
+    (KT : UpstreamTyped n KC) (BP : BridgePre n C)
+    (RP : RelCarrierPack) (𝓕 : LeanUrat.MovesV.CtsFamily n)
+    (SS : LeanUrat.MovesV.StepSys n 𝓕)
+    (SA : SlotAssignment n C KC K7 RP 𝓕 SS)
+    (BD : ∀ (p : ℕ) (hp : p.Prime), BridgeInputs n C KC K7 p hp) :
+    RootC n C KC K7 (bridgeSolve C BP.hdet)
+      (fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp))
 ```
 
-E-phase resolution duty (recorded for the VI-B3 prover): `Slot_m4bConst`
-(SlotsG9_m4bConst.lean:74) is keyed over `MovesV.CtsFamily`/`MovesV.StepSys`
-binders, not (n, C) alone — the E-phase writer either adds those binders to
-`SlotAssignment` or keys the field to an existential face; flag the choice for
-the Codex audit. Same check for `Slot_trackRule`/`Slot_dnLattice` implicit-binder
-order (SlotsG5/G6).
+The public binder decision is fixed: `SlotAssignment` takes `𝓕` before `SS`,
+with `SS : MovesV.StepSys n 𝓕`; `m4b` is the full
+`Slot_m4bConst n 𝓕 SS` face. `Slot_trackRule n KC K7` and
+`Slot_dnLattice n KC K7` retain the explicit `(n, KC, K7)` order shown above.
+No binder or existential-face choice remains for E-phase.
 
 ### 1.4 `Scaffold/AnchorN2.lean` — the numerics/instance anchors [wave VI-2]
 
@@ -271,35 +320,52 @@ discipline): each re-fires a machine-checked instance in scaffold shape so a
 regression anywhere in the spine's import cone breaks a visible gate.
 
 ```lean
-/-- VI-N1: the n = 2 scaffold-form anchor — `montes_uniform_n2`
-    (OM/UniformCapstone.lean:1850) re-stated as the named clause bundle:
-    at EVERY prime p (wild p = 2 included), single (num, den) pole-free family,
-    value tie, and the (SQ) bracket-uniqueness clause. Proof: `exact
-    montes_uniform_n2 σ hσ` after unfolding the bundle. -/
-structure AnchorN2 (p : ℕ) [Fact p.Prime] (σ : FactorizationType) : Prop where …
-theorem anchor_n2 (σ : FactorizationType) (hσ : σ.degree = 2) : AnchorN2 p σ
+/-- VI-N1 is the exact capstone proposition, not a hand-reconstructed partial
+    record. This preserves pole-freeness, the common rational family, value tie,
+    and bracket uniqueness together, with the prime instance explicit. -/
+def AnchorN2 (p : ℕ) [Fact p.Prime] (σ : FactorizationType)
+    (hσ : σ.degree = 2) : Prop :=
+  Nonempty (montes_uniform_n2 σ hσ)
 
-/-- VI-N2: the drainage row's n = 2 witness — `hExhaust_n2`
-    (OM/SeriesAssembly.lean:1745) re-fired under the scaffold name; the ONE
-    unconditional exhaustion on record. -/
-theorem anchor_n2_drainage : Tendsto (fun N => undecidedCount6 N / …) atTop (𝓝 0)
+theorem anchor_n2 (p : ℕ) [Fact p.Prime] (σ : FactorizationType)
+    (hσ : σ.degree = 2) : AnchorN2 p σ :=
+  ⟨montes_uniform_n2 σ hσ⟩
 
-/-- VI-N3: order-0 value gates re-fired: `gate_v2_value_inert2` (1/4 at n = 2
-    inert), `gate_v2_split_q3`/`gate_v2_inert_q3` (split ≠ inert at q' = 3),
-    `gate_v2_sigma_separation` (RealInstanceV2Gates.lean:90–136). One `example`
-    per gate, `exact` proofs. -/
+/-- VI-N2: the exact `hExhaust_n2` proposition is preserved by a named wrapper;
+    no denominator or coercion is retyped in the scaffold. -/
+def AnchorN2Drainage : Prop := Nonempty hExhaust_n2
+theorem anchor_n2_drainage : AnchorN2Drainage := ⟨hExhaust_n2⟩
+
+/-- VI-N3: stable named declarations, each preserving the complete proposition
+    and all coercions of its corpus gate definitionally. -/
+def AnchorV2ValueInert2 : Prop := Nonempty gate_v2_value_inert2
+theorem anchor_v2_value_inert2 : AnchorV2ValueInert2 :=
+  ⟨gate_v2_value_inert2⟩
+
+def AnchorV2SplitQ3 : Prop := Nonempty gate_v2_split_q3
+theorem anchor_v2_split_q3 : AnchorV2SplitQ3 := ⟨gate_v2_split_q3⟩
+
+def AnchorV2InertQ3 : Prop := Nonempty gate_v2_inert_q3
+theorem anchor_v2_inert_q3 : AnchorV2InertQ3 := ⟨gate_v2_inert_q3⟩
+
+def AnchorV2SigmaSeparation : Prop := Nonempty gate_v2_sigma_separation
+theorem anchor_v2_sigma_separation : AnchorV2SigmaSeparation :=
+  ⟨gate_v2_sigma_separation⟩
 ```
 
 ### 1.5 `Scaffold/AxChk.lean` — the axiom-census extension [wave VI-3]
 
 Standalone census file (NOT imported by anything; `AxChk_baseline.lean` NOT
 edited). Run: `lake env lean LeanUrat/Scaffold/AxChk.lean` at every division
-checkpoint (ledger ground rule). Contents: `#print axioms` rows for
-(a) every landed `LeanUrat.Scaffold` theorem (VI-H*, VI-S*, VI-B*, VI-N*), and
-(b) the corpus-reuse quarry it stands on: `theoremU`, `theoremU_fired`,
-`montes_uniform_n2`, `montes_unconditional`, `hExhaust_n2`, `skeleton_finite`,
-`runRealizerExists_zmod`, `sigmaV_vertexLaw`, the `ksub` family, the
-`O12PoleFree`/`RegPFinite`/`O5CountingB`/`UE_vtxUpper` main rows.
+checkpoint (ledger ground rule). Contents are four independently reviewable ≤40-line census units in this one
+standalone file: VI-A1 lists every named VI-H*/VI-S*/VI-B* theorem; VI-A2 lists
+every named VI-N* theorem and its four named gate wrappers; VI-A3 lists
+`theoremU`, `theoremU_fired`, `montes_uniform_n2`, `montes_unconditional`,
+`hExhaust_n2`, `skeleton_finite`, `runRealizerExists_zmod`, and
+`sigmaV_vertexLaw`; VI-A4 enumerates every declaration selected from the `ksub`,
+`O12PoleFree`, `RegPFinite`, `O5CountingB`, and `UE_vtxUpper` families. The
+module header must contain that finite enumeration; family names or wildcards
+are not accepted as census rows.
 Acceptance bar: Lean core only (`propext`, `Classical.choice`, `Quot.sound`) for
 every row above — a regression is stop-the-line (repo CLAUDE.md).
 
@@ -325,25 +391,29 @@ math source it transcribes.
 | id | target file | statement (compressed) | proof sketch | deps | diff | source ¶ |
 |---|---|---|---|---|---|---|
 | VI-H0 | Scaffold/Hypotheses.lean | module header: provenance block (ROOT §3.1 row map, revision pointers, sync-duty note) | prose only, no decls | — | MECH | §1.1 head |
-| VI-H1 | Scaffold/Hypotheses.lean | `structure RootHyps (n : ℕ)` — 16 fields incl. `stable_implies_k3delta` law field, one-line row docstrings | structure decl, compiles by itself | VI-H0 | MECH | §1.1; ROOT §3.1 rows 1–7 |
+| VI-H1 | Scaffold/Hypotheses.lean | `structure RootHyps (n : ℕ)` — sixteen bare-`Prop` hypothesis-row fields plus the seventeenth field `stable_implies_k3delta`, an implication law | structure decl, compiles by itself | VI-H0 | MECH | §1.1; ROOT §3.1 rows 1–7 |
 | VI-H2 | Scaffold/Hypotheses.lean | `ClauseRHyps`/`ClauseUBHyps` defs + `clauseR_of_clauseUB` | defs; lemma = `fun h => h.1` | VI-H1 | MECH | §1.1; ROOT §1 (ROOT-C) attribution display |
 | VI-H3 | Scaffold/Hypotheses.lean | `trivialRootHyps` (all-`True`) + `trivialRootHyps_ub` honesty gate | record literal, `⟨…, trivial…⟩`; `simp [ClauseRHyps, ClauseUBHyps, trivialRootHyps]` | VI-H2 | MECH | §1.1 honesty gate; U10 wave-4-boundary record |
 | VI-S1 | Scaffold/Spine.lean | `structure PrimeConclusion` (5 clause fields) | structure decl over MovesU types | — (imports MovesU.Defs/DefsLedger) | MECH | §1.2; U10_theoremU.lean:119–138; 2026-08-01 authority |
 | VI-S2 | Scaffold/Spine.lean | `def RootC` (∃ R, pin, Σ = 1, per-(REG-p) `PrimeConclusion`) | def only | VI-S1 | MECH | §1.2; ROOT §1 clauses (0)/(SQ)/(R) |
-| VI-S3 | Scaffold/Spine.lean | fidelity display: `RootC_iff_tuple` — RootC unfolds to theoremU's literal conclusion shape | `constructor <;> rintro ⟨R,h1,h2,h3⟩ <;> exact ⟨R,h1,h2, fun p hp hr => …⟩` (clause shuffle) | VI-S2 | EASY | §1.2 fidelity note |
+| VI-S3 | Scaffold/Spine.lean | `TheoremUTuple` literal five-clause signature + `RootC_iff_tuple` | destruct/rebuild in the recorded bracket, dmass, trueDmass, zpRead, drainage order | VI-S2 | EASY | §1.2 fidelity note |
 | VI-B1 | Scaffold/CorpusBridge.lean | `rootC_of_theoremU` (signature = theoremU's binder list, conclusion `RootC …`) | `obtain ⟨R,hR,hs,h⟩ := theoremU …; exact ⟨R,hR,hs, fun p hp hr => let t := h p hp hr; ⟨t.1,t.2.1,t.2.2.1,t.2.2.2.1,t.2.2.2.2⟩⟩` | VI-S2; MovesU.U10_theoremU | EASY | §1.3; ROOT Step 19 |
-| VI-B2 | Scaffold/CorpusBridge.lean | `rootC_fired` at (bridgeSolve, mkUInstance family) | `exact rootC_of_theoremU … (inst := fun p hp => mkUInstance …)` via `theoremU_fired`'s route; or VI-B1 applied to `theoremU_fired`'s output shape | VI-B1; MovesU.BridgeMk | MECH | §1.3; BridgeMk IB-F5 |
-| VI-B3 | Scaffold/CorpusBridge.lean | `structure SlotAssignment` (13 typed slot faces, sited D-SC defs) | structure decl; E-phase binder resolution per §1.3 duty note | MovesU.SlotsG2–G10, G18 | MECH | §1.3; U10 residual-bare-rows docstring |
-| VI-B4 | Scaffold/CorpusBridge.lean | `rootC_fired_at_slots` — VI-B2 with the 13 Props := the sited defs, hypotheses from `SA` | apply VI-B2 with `rel1 := RelRow_rel1 RP` etc., `hrel1 := SA.rel1` … | VI-B2, VI-B3 | MECH | §1.3 |
-| VI-N1 | Scaffold/AnchorN2.lean | `AnchorN2` bundle + `anchor_n2` (montes_uniform_n2 repackaged) | `refine ⟨?_, ?_⟩ <;> exact (montes_uniform_n2 σ hσ).…` | VI-S1 (shape only); OM.UniformCapstone | EASY | §1.4; ROOT §1 verified-instances block |
-| VI-N2 | Scaffold/AnchorN2.lean | `anchor_n2_drainage` (hExhaust_n2 re-fired) | `exact hExhaust_n2` | OM.SeriesAssembly | MECH | §1.4 |
-| VI-N3 | Scaffold/AnchorN2.lean | order-0 value/separation gates re-fired (4 `example`s) | `exact gate_v2_…` each | OM.RealInstanceV2Gates | MECH | §1.4 |
-| VI-A1 | Scaffold/AxChk.lean | `#print axioms` census, scaffold decls + quarry (§1.5 list) | `#print axioms` lines only | ALL landed VI units | MECH | §1.5 |
+| VI-B2 | Scaffold/CorpusBridge.lean | `rootC_fired` with `KT`, all thirteen propositions/proofs, `BP`, and `BD` visible | direct specialization of VI-B1 at `bridgeSolve`/`mkUInstance`; `theoremU_fired` is a parallel corpus check, not an output argument | VI-B1; MovesU.BridgeMk | MECH | §1.3; BridgeMk IB-F5 |
+| VI-B3 | Scaffold/CorpusBridge.lean | `structure SlotAssignment` with fixed `(𝓕, SS)` binders and thirteen typed slot faces | structure declaration only; no E-phase interface decision remains | MovesU.SlotsG2–G10, G18 | MECH | §1.3; U10 residual-bare-rows docstring |
+| VI-B4 | Scaffold/CorpusBridge.lean | full `rootC_fired_at_slots` signature: explicit `KT`, `BP`, `RP`, `𝓕`, `SS`, `SA`, and `BD`; conclusion shows the complete `mkUInstance` family | apply VI-B2 with all thirteen proposition parameters set to the displayed slot faces and all thirteen proofs projected from `SA` | VI-B2, VI-B3 | MECH | §1.3 |
+| VI-N1 | Scaffold/AnchorN2.lean | `AnchorN2` exact-proposition wrapper + `anchor_n2`, with explicit `p` and `[Fact p.Prime]` | constructor containing `montes_uniform_n2 σ hσ` | OM.UniformCapstone | EASY | §1.4; ROOT §1 verified-instances block |
+| VI-N2 | Scaffold/AnchorN2.lean | `AnchorN2Drainage` + named `anchor_n2_drainage`, preserving the exact `hExhaust_n2` type | constructor containing `hExhaust_n2` | OM.SeriesAssembly | MECH | §1.4 |
+| VI-N3 | Scaffold/AnchorN2.lean | four named exact-proposition wrappers and four named gate theorems | constructor containing the corresponding `gate_v2_…` proof | OM.RealInstanceV2Gates | MECH | §1.4 |
+| VI-A1 | Scaffold/AxChk.lean | `#print axioms` for VI-H*, VI-S*, VI-B* | explicit finite declaration list | landed scaffold core | MECH | §1.5 |
+| VI-A2 | Scaffold/AxChk.lean | `#print axioms` for VI-N* and direct anchors | explicit finite declaration list | VI-N1–VI-N3 | MECH | §1.5 |
+| VI-A3 | Scaffold/AxChk.lean | `#print axioms` for theoremU/bridge and OM quarry | explicit finite declaration list | imported quarry | MECH | §1.5 |
+| VI-A4 | Scaffold/AxChk.lean | `#print axioms` for named `ksub`, `O12PoleFree`, `RegPFinite`, `O5CountingB`, and `UE_vtxUpper` declarations enumerated in the module header | explicit finite declaration list; no family wildcard | imported quarry | MECH | §1.5 |
 
-Estimated: 15 waved units (12 MECH, 3 EASY), 0 sorries introduced at any point —
-every unit compiles green in isolation; there is NO H-phase debt in this
-movement. The genuinely hard integration content (VI-F1) is deliberately future:
-it cannot be stated before the divisions' step statements exist.
+Estimated: 18 waved units (15 MECH, 3 EASY), 0 sorries permitted. “Green” means
+the complete target file has passed its wave's explicit `lake env lean` gate;
+no claim of isolated compilation is made for fragments that share a file.
+The genuinely hard integration content (VI-F1) is deliberately future: it
+cannot be stated before the divisions' step statements exist.
 
 ## 3. CORPUS-REUSE MAP (which existing proved declarations discharge which units)
 
@@ -363,14 +433,17 @@ it cannot be stated before the divisions' step statements exist.
 ## 4. WAVE PLAN (for the division lead)
 
 * **Wave VI-0 (FIRST; blocks every other division's briefs):** VI-H0 → VI-H1 →
-  VI-H2 → VI-H3 (one prover, sequential — single file) ∥ VI-S1 → VI-S2 (second
-  prover). Gate: file-level `lake env lean`; announce `RootHyps` field names +
-  `RootC` to all division leads on landing.
-* **Wave VI-1:** VI-S3, VI-B1 (after VI-0) → VI-B2 → VI-B3 → VI-B4 (B3 can run
-  parallel to B1/B2; B4 last). Gate: per-file build + the §1.3 E-phase binder
-  resolutions recorded in the module header for Codex audit.
-* **Wave VI-2 (parallel to VI-1):** VI-N1, VI-N2, VI-N3 (independent provers).
-* **Wave VI-3 (checkpoint):** VI-A1; then division checkpoint = full
+  VI-H2 → VI-H3, then gate
+  `lake env lean LeanUrat/Scaffold/Hypotheses.lean`; independently VI-S1 → VI-S2,
+  then gate `lake env lean LeanUrat/Scaffold/Spine.lean`. Announce the landed
+  field names and `RootC` only after both gates pass.
+* **Wave VI-1:** VI-S3, then re-gate
+  `lake env lean LeanUrat/Scaffold/Spine.lean`; VI-B1 → VI-B2 and VI-B3 → VI-B4,
+  then gate `lake env lean LeanUrat/Scaffold/CorpusBridge.lean`.
+* **Wave VI-2 (parallel to VI-1):** VI-N1 → VI-N2 → VI-N3, then gate
+  `lake env lean LeanUrat/Scaffold/AnchorN2.lean`.
+* **Wave VI-3 (checkpoint):** VI-A1 → VI-A2 → VI-A3 → VI-A4, then division
+  checkpoint = full
   `lake build` + `lake env lean LeanUrat/Scaffold/AxChk.lean` +
   `lake env lean LeanUrat/AxChk_baseline.lean` (regression watch) + commit.
 * FUTURE table (§1.6): assigned to no wave; VI-F1 re-enters when BP_I–BP_V
@@ -384,10 +457,31 @@ it cannot be stated before the divisions' step statements exist.
   DELTA lands first in §1.1/§1.2 here (BP_VI owner), then in
   `Scaffold/Hypotheses.lean` — the ledger's math-revision sync duty.
 * Statement-fence flags for the Codex plan review (level 2): the `RootHyps`
-  field list vs ROOT §3.1 (row-for-row); `ClauseRHyps`/`ClauseUBHyps` vs the
-  (ROOT-C) attribution display; `PrimeConclusion`/`RootC` vs theoremU's
-  conclusion (no strengthening, no weakening); the §1.3 `SlotAssignment` keying
-  resolutions; the §1.5 census list vs the ledger's ~40-unit quarry.
+  field list vs ROOT §3.1 (sixteen rows plus one implication law);
+  `ClauseRHyps`/`ClauseUBHyps` vs the (ROOT-C) attribution display;
+  `TheoremUTuple`/`PrimeConclusion`/`RootC` vs theoremU's literal ordered
+  conclusion; the fixed §1.3 `SlotAssignment` binders; and the finite,
+  declaration-by-declaration VI-A1–VI-A4 census.
 * Standing honesty rule for every consumer: `RootC`-family theorems inherit
   theoremU_fired's conditionality record; `RootHyps` presence is UNPINNED until
   field refinement — no acceptance claim may read either as discharged.
+
+## REVISION 2 (review fold, 2026-08-03)
+| finding | disposition | where/why |
+|---|---|---|
+| 1 | FIXED | §1.3 fixes `SlotAssignment` binders as `(𝓕, SS)`, uses full `Slot_m4bConst n 𝓕 SS`, and fixes track/dn order. |
+| 2 | FIXED | §1.4 makes `AnchorN2` preserve the exact complete proposition of `montes_uniform_n2`, including all four advertised components. |
+| 3 | FIXED | §1.4 replaces the omitted denominator and absent examples with exact-proposition wrappers and four stable named theorem declarations. |
+| 4 | FIXED | §1.2 adds the complete `TheoremUTuple` signature and `RootC_iff_tuple`, fixing the five-clause tuple order. |
+| 5 | FIXED | §1.3 displays `KT`, all thirteen proposition/proof pairs, `BP`, and `BD` in `rootC_fired`. |
+| 6 | FIXED | §1.3 and VI-B2 now specify direct VI-B1 specialization; no theorem output is falsely passed as an argument. |
+| 7 | FIXED | §1.3 gives the complete VI-B4 binders, `SA`, `BD`, and constructed `UInstance` family. |
+| 8 | FIXED | VI-N3 now creates four named theorems, so every scaffold gate has a stable AxChk target. |
+| 9 | FIXED | `ClauseUBHyps` is transcribed directly with full H4b primitive; K3-δ is derived only for clause R. |
+| 10 | FIXED | VI-H1 now says sixteen bare-Prop rows plus one implication-law field, seventeen structure fields total. |
+| 11 | FIXED | §1.1 states that selectors are transcription devices and every RootC consumer must visibly expose typed division results. |
+| 12 | FIXED | `anchor_n2` explicitly binds `(p : ℕ) [Fact p.Prime]`. |
+| 13 | FIXED | VI-N1 drops the unused VI-S1 dependency; AnchorN2 imports only its actual OM source. |
+| 14 | FIXED | the census is split into four ≤40-line units with a mandatory finite declaration enumeration. |
+| 15 | FIXED | §1.3 explicitly imports G2, G3, G4–G10, and G18; VI-B3 matches that dependency set. |
+| 16 | FIXED | the blanket isolation claim is removed and every wave now has an explicit per-file `lake env lean` gate. |
