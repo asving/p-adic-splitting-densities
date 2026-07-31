@@ -229,3 +229,11 @@ theorem centerRealizer_exists_of_unramified_threshold (σ0 : Stage p F)
 end
 
 end LeanUrat.MovesD
+-- 
+-- ═══ HK-06 WAVE NOTE (2026-07-31, task #44, wave executor) ═══
+-- Scope of this dated note: the pre-2026-07-31 order-of-battle: its coexistence argument cited the 
+-- HK22 wall ('ramified child frames unreachable pre-HK-06'). The HK-06 wave LANDED (task #44): 
+-- ramified child frames are now REACHABLE — HC2/HK23_twoNodeGatePos.lean compiles a 
+-- coherent+realizable 2-node history with the forge child. The probe's own theorems target the FROZEN 
+-- OffsetPPinBare and are unaffected; any future consumer of the 'unreachable' language must re-read 
+-- it as pre-wave-only.

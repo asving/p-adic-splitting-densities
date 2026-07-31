@@ -33,6 +33,15 @@ At the REGRADED frame the clause reads: each minimizing slot term of the
 slot this IS the bottom-window law, R3b's exact residue
 (`V9_wvEqStretch_of_bottomSlot`'s hypothesis).
 
+## ═══ HK-06 WAVE NOTE (2026-07-31, task #44) — THIS FILE IS NOW A HISTORICAL WITNESS ═══
+The (S-a) two-step regrade re-key landed: `HistoryCoherent`'s non-recentering leg no
+longer records the OLD same-pair configuration these theorems refute — their hypothesis
+class is UNINSTANTIABLE BY RECORDED RUNS at HEAD (the statements keep compiling; the
+refutations stand as the permanent record of WHY the re-key happened).  The V9 exfalso
+closures that consumed `V10_readTransition_incompatible` were re-opened as honest
+HK-11 obligations (see V9_K1nonrec's wave blocks); the positive instance the OLD form
+excluded is compiled at `HC2/HK23_twoNodeGatePos.lean`.
+
 ## ⚠⚠ THE TRANSCRIPTION FINDING (V10 round, 2026-07-28) — READ BEFORE CONSUMING ⚠⚠
 
 Transcribing the clause "wherever both sides are actual data" forces one to ask what

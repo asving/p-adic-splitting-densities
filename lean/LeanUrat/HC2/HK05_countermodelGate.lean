@@ -118,6 +118,15 @@ def StagedRegradeOf (σ : Stage p F) (ν : Node p F) (σV : Stage p F) : Prop :=
   σV.Φ = σ.Φ ∧ σV.e = ν.e ∧ σV.h = ν.h ∧ σV.K = σ.K ∧ σV.FQ = σ.FQ ∧
   σV.reps = σ.reps ∧ (∀ f, σV.wPrev f = σ.w f) ∧ IsSlotMinWeight σV.w σ.Φ ν.e ν.h σ.w
 
+/-- **HK-06 WAVE ALIGNMENT CERTIFICATE (2026-07-31, task #44)**: the compiled
+`MovesC.RegradeOf` the wave landed (pair-parameterized, per the §3.1(c) LAYERING
+dissolution) is BYTE-THE-SAME clause list as this gate's staged copy — `Iff.rfl`.
+The stall certified in this file therefore holds verbatim against the live wave
+definition; the staged copy is KEPT as the gate's frozen record (this file's theorems
+consume it), per the HK-22 archival precedent. -/
+theorem stagedRegradeOf_iff_regradeOf (σ : Stage p F) (ν : Node p F) (σV : Stage p F) :
+    StagedRegradeOf σ ν σV ↔ LeanUrat.MovesC.RegradeOf σ ν.e ν.h σV := Iff.rfl
+
 /- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow DELETED — single proof
 source `Moves/ResVal.lean` (α-identical; the SYN-E0 concurrent-agent hold on this
 file is lifted, per P2-C1); uses re-pointed to ResVal.w_one/w_pow. -/

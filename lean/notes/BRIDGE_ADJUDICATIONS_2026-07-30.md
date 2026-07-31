@@ -388,3 +388,17 @@ RunRealizerExists; NsFree = prerequisite (fence event 24); n=2
 discharge-today list; AX_BNS_precision drafted as 5th literature candidate;
 7-unit decomposition, gates first. GATE: Codex plan-review (launched) before
 any prover dispatch.
+
+## IFK PLAN-REVIEW: REJECT (V4, 2026-07-31) — REVISION CYCLE DISPATCHED
+Codex REJECT with 26 numbered findings; the load-bearing blockers: (20) the
+K-RUN/R7 designer-data circularity is real, not benign (toy instances do not
+supply the bridge instance); (22) gate ordering wrong — the cheapest
+real-instance falsifier (M18 Tests A-C: any T < T-hat length-2 stratum negates
+K-RUN) must run FIRST; (23-25) the BNS-3.13 axiom draft SMUGGLES
+tree-correspondence + sigma-invariance beyond the published theorem (only the
+delta+1 congruence clause is faithful); (15/18/19) derivation-map rows
+overstate. Dispatched (w9j9p1ci4): the U6 falsifier probe FIRST, then
+REVISION 1 folding all 26 findings + the probe verdict (circularity resolved
+honestly via the landed canPolicyC_pin reduction or re-scoped; BNS stripped;
+map corrected; recount). Re-review gate before any prover dispatch.
+The memory rule held: plan-level adversarial passes BEFORE proof drafting.

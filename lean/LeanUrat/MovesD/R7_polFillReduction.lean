@@ -185,3 +185,10 @@ end LeanUrat.MovesD
 #print axioms LeanUrat.MovesD.canPolicyC_pin
 #print axioms LeanUrat.MovesD.interior_recentering_unramified
 #print axioms LeanUrat.MovesD.interior_center_realizer_exists
+-- 
+-- ═══ HK-06 WAVE NOTE (2026-07-31, task #44, wave executor) ═══
+-- Scope of this dated note: the pre-wave reachability fence: the LAST-NODE FLANK note said a 
+-- coherent history ending in a recentering over a ramified frame was 'blocked by the same HK22 wall 
+-- pre-HK-06'. The HK-06 wave LANDED (task #44) and HC2/HK23_twoNodeGatePos.lean compiles the 
+-- ramified-child gate — the flank's countermodel search is now LIVE (a 3-node extension of H₂ram 
+-- by a recentering read is the natural target); the RunRealizerExists reduction itself is unaffected.

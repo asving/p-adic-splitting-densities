@@ -251,3 +251,11 @@ theorem keysLawful_of_hcoh_false_of_witness {p : ℕ} [Fact p.Prime] {F : Type*}
 #print axioms LeanUrat.MovesJ.keysLawful_of_hcoh_false_of_witness
 
 end LeanUrat.MovesJ
+-- 
+-- ═══ HK-06 WAVE NOTE (2026-07-31, task #44, wave executor) ═══
+-- Scope of this dated note: the recorded honesty perimeter (HK-25's recentering-ended H₂ʳ 
+-- variant): the HK-06 wave LANDED (task #44) — the HK-22 wall is gone and the gate carriers 
+-- (HC2/HK23_twoNodeGatePos.lean: σVgate/ν₀ram/H₂ram) now exist, so HK-25's inhabitation build 
+-- is UNBLOCKED as a post-wave unit (BP2 Block G); the coherence-preservation lemmas of THIS file 
+-- recompiled green under the (S-a) leg (the zeroLast surgery touches only lift, which the re-keyed 
+-- leg still ignores).

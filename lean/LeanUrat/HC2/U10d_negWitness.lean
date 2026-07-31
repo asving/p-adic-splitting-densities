@@ -346,3 +346,10 @@ end U10dNeg
 #print axioms U10dNeg.zcStepConfineStmt_false_of_config
 
 end LeanUrat.MovesJ
+-- 
+-- ═══ HK-06 WAVE NOTE (2026-07-31, task #44, wave executor) ═══
+-- Scope of this dated note: the OLD ∀-pins zcStepConfineStmt form (item-17 note above stands). 
+-- WAVE CLOSURE: the parked exists-config instantiation (HK-22 record P2) is MOOT — item 17 repaired 
+-- U10d to the fresh-cut restriction and PROVED it (U10_zcStep sorry-free), so no post-wave 
+-- instantiation of the retired negation is owed; this leaf stays as the frozen record of the 
+-- pre-item-17 form only.
