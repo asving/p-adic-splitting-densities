@@ -622,8 +622,8 @@ was displayed in §9.2 but loose here] it is 𝔈-legal in the (τ-hen) case
 below ONLY at a₀ ≥ 2 (k' = 0; Theorem 1 case (ii)'s shape); at a₀ = 1 —
 the Hensel booking — there is no 𝔈-legal concatenation either, the seam
 object being (ρ₀) plus the machine record (§9.2); and at a saturated
-prefix (μ_{k'} = 1) appending ν would VIOLATE W3's interior clause. §2's display "𝐇 = (𝐇°; ν)" is therefore to be read as the
-seam PAIR; the dressed history of a (τ-irr)-decided branch is the
+prefix (μ_{k'} = 1) appending ν would VIOLATE W3's interior clause.
+§2's display "𝐇 = (𝐇°; ν)" is therefore to be read as the seam PAIR; the dressed history of a (τ-irr)-decided branch is the
 all-continuing 𝐇° itself (consistent with OL-4's "a run emits at most one
 terminal record, last" — the record exists run-side), and Θ^τ below is
 defined on pairs. This sharpens, and is convergent with, CU-1 rev 2's split
@@ -1033,7 +1033,7 @@ executed here, other-file discipline). Fold-state note — CORRECTED at R4
 (CU2tp G-β; R3's "the R2-owed touches were meanwhile EXECUTED at the
 two-row count … so (1)–(3) are now AMENDMENTS of executed text" was
 FALSE for the tree, and doubly imprecise: R2's §10 F4 owed list named no
-ROOT touch, and the ROOT folds were wave-14 events, not R2 executions.
+ROOT touch, and the ROOT folds were wave-14 events, not R2 executions).
 The actual state: the tree's CU-2t sites are byte-stable since DELTA 3,
 which PRECEDES R2 — §D3.5 still carries the rev-1 ZERO-count sentence,
 §D2.3's CU-2t bullet carries NO row count at all, and DELTA 4 (unit
