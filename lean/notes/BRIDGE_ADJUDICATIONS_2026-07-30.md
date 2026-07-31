@@ -535,3 +535,26 @@ per-leaf >= 2 consecutive clean fresh-context adversarial passes with model
 diversity; falsifier-first; root = end-to-end seam pass x2 + numerics
 regression + completeness audit. EXIT GATE: Codex completeness review
 (launched). Phase B wave 1 dispatches on its pass.
+
+## IFK RE-REVIEW: REJECT-2 (V5) — ORCHESTRATOR DISPOSITION (math-first)
+V5 confirms the two big rev-1 corrections (BNS axiom now strictly weaker than
+the published Thm 3.13 — findings 23-26 RESOLVED at the axiom boundary; the
+R7 circularity GENUINELY REMOVED — acyclic graph, downgraded to advisory) but
+finds the residual defects ARCHITECTURAL: K-DICT lacks a coherent
+carrier/equality design; CYL is not implied by its listed faces; K-READ-delta
+lacks execution transport; disposition audit = 10 resolved / 8 partial / 8
+not-resolved-as-derivations.
+DISPOSITION (per the math-first authority): NO third blueprint iteration. The
+IFK blueprint's DERIVATION-MAP layer is SUPERSEDED by the math completion
+tree (its leaves O-1/O-2/O-3 ARE the architectural gaps V5 names — they get
+resolved by PROVING the mathematics in Phase B, not by re-drafting). What
+SURVIVES as validated Phase-B inputs: the stripped AX_BNS draft, the 9 named
+obligations (K-OB-A..E, K-DICT-OB1/OB2, K-RUN cl.4, I3-rc), the U6
+canonicalizations (whole-node-read species; pooled deep marker), the acyclic
+dependency structure, and V5's own defect list (each defect = a sharpened
+Phase-B charge). A fresh Lean-design blueprint gets written FROM the finished
+math ("use that scaffolding to figure out what to do").
+PHASE B WAVE 1 (early wins, dispatched): O-12 (REG-p emptiness at the
+intended instance — upgrades cofinite to all-primes) + O-13 (skeleton/menu
+finiteness at general n via T-4 + the Serre different-bound). The critical
+path (O-1/O-2/O-3) dispatches after the V6 completeness verdict lands.
