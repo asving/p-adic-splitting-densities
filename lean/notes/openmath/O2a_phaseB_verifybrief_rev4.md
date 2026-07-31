@@ -451,10 +451,16 @@ at k' = 1 reads off, in order: ψ̂₀, a₀, (e₁, h₁), the unique slope-λ�
 ## 4. The six open lemmas (exact statements; NOT proved anywhere in the note)
 
 OL-2/OL-3/OL-4/OL-5/OL-6 are statements about the project engine's stage flow — an
-external, cited artifact (MOVES §B2-DEF, stage data F.0–F.2; Lean `MovesX`) —
-asserting that its EMITTED records satisfy the intrinsic clauses of (C4).
-OL-1 is a statement about the pinned function Lift of (C2). Their statements
-are exact relative to the following displayed interface, which is ALL of the
+external, cited artifact (MOVES §B2-DEF, stage data F.0–F.2; Lean `MovesX`):
+OL-2-min/OL-3/OL-5 assert that its emitted READ records satisfy the intrinsic
+clauses of (C4); OL-4 that its emitted histories are well-formed with (c0);
+OL-6 that a complete run DECOMPOSES into reads whose chain parameters are its
+own emitted prefixes' chains [REV 4 — P2-1]. OL-1 is a statement about the
+pinned function Lift of (C2). Their statements
+are exact relative to the following displayed interface — plus the run-level
+vocabulary (complete run, emitted history/record, the level-1 BASE read),
+which names the engine's control flow and is consumed ONLY by the run-wise
+OL-4/OL-6 and OL-5's premise — which together are ALL of the
 engine text they consume [REV 2 — V10-G2/G3: the interface is now displayed;
 rev 1's fractional-lattice ("(1/(e₁⋯e_i))ℤ, slot coordinates cleared, up to
 the recorded translation") presentation is DELETED].
@@ -586,38 +592,79 @@ Intended proof route (NOT part of this note): the engine's control flow — the
 μ ≥ 2; the increment bookkeeping sets inc; a run emits at most one terminal
 record, last.
 
-**OL-5 (first-read semantics, order 1). OPEN.** [NEW in rev 3 — V14-1: rev
+**OL-5 (first-read conformance, order 1 — minimal core). OPEN.** [Declared
+in rev 3 — V14-1: rev
 2's Theorem 2(D) obtained (c1)/(c2) at i = 1 by citing (D3), but (D3) is a
 CONDITIONAL — "a first read that computes exactly these objects … produces
 literally the (c0)/(c1)/(c2) data" — and nothing among OL-1–OL-4 asserted
 that the engine's first read does compute them: OL-2/OL-3 quantify over the
 level-(i+1) ≥ 2 stage interface only, and OL-4 supplies well-formedness plus
 (c0). This was another undeclared emission-semantics dependence, distinct
-from OL-4's W-law discipline.] For every monic f ∈ O[x] with disc f ≠ 0 and
-every complete run of the engine's stage flow on f whose emitted history has
-a CONTINUING first node ν₁ = (e₁, h₁, ℓ₁, s₁, u₁, (g₁, μ₁), inc₁) over the
-track ρ₀ = (ψ̂₀, a₀): the first read is performed by the (D3)-displayed
-formulas w.r.t. φ₁ := Lift₀(ψ̂₀) (the run's level-0 dressing) — i.e.
-(a) [development + hull] the read computes the φ₁-adic development
-  f = Σ_j b_j φ₁^j and its lower hull in the (L2) order-1 integer frame
-  {(j, v(b_j)) : b_j ≠ 0}, with the (L3+) j₀ convention on the −∞ side;
-(b) [side + position] λ₁ := −h₁/e₁ is a finite slope of N₁^−(f) with
-  lowest-terms pair (e₁, h₁); ℓ₁ = d(S₁) and (s₁, u₁) = the initial point of
-  S₁ in that frame, S₁ the (unique) slope-λ₁ side;
-(c) [residual + selection] ψ̂₁ (the level-1 dressing) is a monic irreducible
-  factor of the (L3) residual R_{λ₁}(f) with ord_{ψ̂₁}(R_{λ₁}(f)) = μ₁ and
-  deg ψ̂₁ = g₁.
-By (D3) — PROVED: the displayed formulas ARE (L2)/(L3)'s order-1 objects —
-OL-5 yields (c1) (side data AND positional clause) and (c2) at i = 1.
-Consumed by: Theorem 2(D) ONLY (its induction base). OL-5 is the level-1
-sibling of OL-2/OL-3: those cover the F.0–F.2 stage interface at levels ≥ 2;
-the first read is the engine's BASE code path, so its conformance is a
-separate statement. Histories whose first node is terminal need no level-1
-clause (Cons_f constrains no terminal field), and k = 0 histories need only
-(c0) = OL-4(d). Intended proof route (NOT part of this note): the base read
-of MOVES §B2-DEF is the plain Newton-polygon read — trivial digit algebra
-(e_b = 1, 𝒟 = F₁), no twist, no offset — so OL-5 should be the degenerate
-instance of the OL-2/OL-3 conformance family.
+from OL-4's W-law discipline. REV 4 — P2-1/P2-3: rev 3 phrased OL-5 RUN-wise,
+internalizing the run↔read glue at level 1 only; that glue is now the
+all-levels OL-6 below, and OL-5 is restated STAGE-wise (parameterized by
+(f, ρ₀), the exact sibling of OL-2-min/OL-3) and cut to the clauses (D)
+consumes — P2-3 (= V20 gap 1) charged rev 3's clause (a), the engine-internal
+development/hull computation, as over-strength: the same asymmetry as
+V14-2's OL-2 split.] For f ∈ O[x] monic with disc f ≠ 0: suppose the
+engine's BASE READ (level 1) on f over the track ρ₀ = (ψ̂₀, a₀), with key
+φ₁ := Lift₀(ψ̂₀), emits the continuing record
+ν₁ = (e₁, h₁, ℓ₁, s₁, u₁, (g₁, μ₁), inc₁) with dressing ψ̂₁. Then:
+(b′) [side + position] N₁^−(f) (w.r.t. φ₁) has a side S₁ of finite slope
+  λ₁ := −h₁/e₁ ((e₁, h₁) the lowest-terms pair) with d(S₁) = ℓ₁, and
+  (s₁, u₁) = the initial point of S₁ in the order-1 INTEGER FRAME — the
+  plane of the point set {(j, v(b_j))} of the development f = Σ_j b_j φ₁^j
+  [intrinsic anchoring, no engine frame — P2-3] — verbatim (c1) at i = 1;
+(c′) [residual + selection] ψ̂₁ is a monic irreducible factor of the (L3)
+  residual R_{λ₁}(f) with ord_{ψ̂₁}(R_{λ₁}(f)) = μ₁ and deg ψ̂₁ = g₁ —
+  verbatim (c2) at i = 1.
+Rev 3's clause (a) (the read COMPUTES the φ₁-adic development and its lower
+hull, with the (L3+) j₀ convention) is consumed by NO theorem of this note;
+it is re-advertised to the O-3 realization seam (sibling of OL-2(a)–(b), the
+same conformance unit family) and remains the intended PROOF ROUTE: by (D3)
+— PROVED: the displayed formulas ARE (L2)/(L3)'s order-1 objects — a read
+performed by those formulas satisfies (b′)+(c′) automatically. Consumed by:
+Theorem 2(D) ONLY (its induction base, at the read OL-6(a) binds). OL-5 is
+the level-1 sibling of OL-2-min/OL-3: those cover the F.0–F.2 stage
+interface at levels ≥ 2; the first read is the engine's BASE code path, so
+its conformance is a separate statement. Histories whose first node is
+terminal need no level-1 clause (Cons_f constrains no terminal field), and
+k = 0 histories need only (c0) = OL-4(d). Intended proof route (NOT part of
+this note): the base read of MOVES §B2-DEF is the plain Newton-polygon read
+— trivial digit algebra (e_b = 1, 𝒟 = F₁), no twist, no offset — so OL-5
+should be the degenerate instance of the OL-2/OL-3 conformance family.
+
+**OL-6 (run decomposition + chain binding, every level). OPEN.** [NEW in
+rev 4 — P2-1: OL-2-min/OL-3 (and now OL-5) are hypotheticals about reads
+PARAMETERIZED by (f, c) resp. (f, ρ₀); nothing in rev 3 asserted that a
+complete run DECOMPOSES into such reads with the chain parameter of each
+read equal to the formal chain of the previously emitted records — [F.0]'s c
+was unbound — so Theorem 2(D)'s induction was unlicensed at every level ≥ 2:
+the V14-1 defect class one level up. Per the round-5 churn discipline this
+is repaired by ONE general law, not per-level patches.] For every monic
+f ∈ O[x] with disc f ≠ 0 and every complete run of the engine's stage flow
+on f with emitted dressed history 𝐇 = (ρ₀; ν₁, …, ν_k) (well-formed by
+OL-4; its proper prefixes 𝐇_{≤i} := (ρ₀; ν₁, …, ν_i) are then well-formed
+with all nodes continuing, by W5 and (C1)'s prefix closure): for every
+1 ≤ j ≤ k with ν_j CONTINUING, the j-th emitted record (with its dressing)
+IS the record emitted by the engine's level-j read on f over the chain of
+its emitted prefix — the binding displayed:
+(a) at j = 1: ν₁ is emitted by the BASE read of OL-5 on f over the track
+  ρ₀, with key φ₁ = Lift₀(ψ̂₀) — the run's level-0 dressing;
+(b) at j = i + 1 ≥ 2: ν_{i+1} is emitted by the stage read at level i + 1
+  on f over c := Θ(𝐇_{≤i}) — the formal chain datum of the run's emitted
+  prefix, the run's current center (Θ is total and formal, (C3), so c is
+  defined with NO consistency or OL-1 input) — with the stage's [F.0] key
+  Φ̂_{i+1} = Lift_i(c).
+In words: a complete run decomposes into successive reads, and the chain
+parameter of each read is exactly the formal chain of what the run emitted
+before it. Consumed by: Theorem 2(D) ONLY (base and step — it supplies the
+premise on which OL-5/OL-2-min/OL-3 fire). Terminal records need no binding
+clause: Cons_f constrains no terminal field (Lemma R's non-claim). Intended
+proof route (NOT part of this note): the engine's control flow BIRTHS each
+next stage from the just-emitted record (MOVES §B2-DEF's stage-birth step),
+so the binding should hold by construction of the flow; it is declared here
+because this note consumes the engine only through its emitted records.
 
 ## 5. Theorem 2 (all orders) — statement and complete conditional proof
 
@@ -648,8 +695,10 @@ dCert(𝐇) ≤ Σ_{r=1}^{k'} ind_r(f) ≤ ind(f). [At k' = 0 this degenerates t
 dCert(𝐇) = 0 ≤ ind(f): certified nodes are continuing, and ind(f) ≥ 0 by
 (L8).]
 
-(D) [OL-1 + OL-2-min + OL-3 + OL-4 + OL-5; REV 3 — the hypothesis list now
-names the level-1 lemma (V14-1) and only the minimal OL-2 core (V14-2)]
+(D) [OL-1 + OL-2-min + OL-3 + OL-4 + OL-5 + OL-6; REV 4 — the run/read
+binding is now the declared OL-6 at every level, and OL-5 is cut to its
+minimal core (P2-1/P2-3); REV 3 — the level-1 lemma (V14-1) and only the
+minimal OL-2 core (V14-2)]
 Every history emitted by the engine's stage flow on f is a well-formed
 element of 𝔈 (OL-4) satisfying Cons_f — so (A)/(B)/(C) apply to it.
 
@@ -688,28 +737,33 @@ occupy distinct orders (placement is the identity), so
 dCert(𝐇) = #{certified i} ≤ Σ_{certified i} ind_i(f) ≤ Σ_{r=1}^{k'} ind_r(f)
 ≤ ind(f), the last inequality being (L9) at r = k'.
 
-(D) [REV 3 — level-1 base re-founded on OL-5 (V14-1) and the step re-pointed
-at OL-2-min (V14-2). REV 2 — rewritten; V10-C8.] Fix a complete run of the
-stage flow on f and let 𝐇 be its emitted dressed history. OL-4 gives 𝐇 ∈ 𝔈
-(domains, W1–W5, tower dressing, only-last-terminal) and (c0) (its clause
-(d)). Cons_f by induction along the continuing nodes: level 1 — OL-5 asserts
-that the first read is performed by the (D3)-displayed formulas w.r.t.
-φ₁ = Lift₀(ψ̂₀), and (D3) (PROVED) pins that those formulas compute exactly
-(L2)/(L3)'s order-1 objects, so (c1) (side data AND initial point — the
-positional clause) and (c2) hold at i = 1 [rev 2 cited (D3)'s conditional
-alone here, leaving the engine side undeclared — V14-1]; level i + 1 ≥ 2,
-given the prefix Cons_f-consistent — OL-2-min gives (c1) in full ((c′) the
-side data, (d′) the positional clause), OL-3 gives (c2); OL-1 keeps the
-level-(i+2) GMN objects defined over F_rep. No clause of OL-2 beyond
-OL-2-min is consumed. Hence Cons_f(𝐇), and (A)/(B)/(C) apply. The terminal
-record, if any, is placed by OL-4's discipline but constrained by nothing —
-consistent with Lemma R's restriction. ∎
+(D) [REV 4 — the run↔read binding at EVERY level is now the declared OL-6
+(P2-1); rev 3 internalized it at level 1 only (its run-wise OL-5), leaving
+the chain parameter of a level-≥2 stage occurring inside a run unbound.
+REV 3 — level-1 base on OL-5 (V14-1), step re-pointed at OL-2-min (V14-2).
+REV 2 — rewritten; V10-C8.] Fix a complete run of the stage flow on f and
+let 𝐇 be its emitted dressed history. OL-4 gives 𝐇 ∈ 𝔈 (domains, W1–W5,
+tower dressing, only-last-terminal) and (c0) (its clause (d)). Cons_f by
+induction along the continuing nodes. Level 1: OL-6(a) binds ν₁ to the base
+read on f over ρ₀ with key φ₁ = Lift₀(ψ̂₀); OL-5 applied to THAT read gives
+(b′) = (c1) (side data AND initial point — the positional clause) and
+(c′) = (c2) at i = 1. Level i + 1 ≥ 2: the induction hypothesis makes
+c := Θ(𝐇_{≤i}) a Cons_f-consistent chain of order i; OL-6(b) binds ν_{i+1}
+to the stage read at level i + 1 on f over THIS c (key Φ̂_{i+1} = Lift_i(c))
+— exactly the premise OL-2-min and OL-3 quantify over; OL-2-min then gives
+(c1) in full ((c′) the side data, (d′) the positional clause), OL-3 gives
+(c2); OL-1 keeps the level-(i+2) GMN objects defined over F_rep. No clause
+of OL-2 beyond OL-2-min, and no clause of rev 3's OL-5 beyond (b′)+(c′), is
+consumed. Hence Cons_f(𝐇), and (A)/(B)/(C) apply. The terminal record, if
+any, is placed by OL-4's discipline but constrained by nothing — consistent
+with Lemma R's restriction. ∎
 
 **Scope remarks the verifier should enforce.** (1) Nothing above claims that
 the stage flow's emitted histories are exactly the GMN tree of f, nor that
 every GMN type of f is realized — those are trace/realization statements,
 explicitly out of scope. (2) The consumption of (L9) is the ONLY appeal to
-the theorem of the index, and it is used exactly in the finite-sum form (†).
+the theorem of the index, and it is used exactly in the finite-sum form (†) —
+at r = 1 always through Lemma B's family bridge (P2-2).
 (3′) [REPLACES rev 1's remark (3), which asserted the engine's W-law
 conformance was "out of scope" while Theorem 2(D) consumed it — V10-C8; that
 conformance is now the declared OL-4.] Consumer audit: every exported
@@ -800,12 +854,17 @@ the labeled claim). F1–F4 are rev 1's, carried unchanged; F5 is new in rev 2.
    2(D) levels ≥ 2 side + positional data — and NOTHING else; in particular
    Lemma R must nowhere consume any part of OL-2, and (D) must nowhere
    consume OL-2(a)/(b) — V14-2), OL-3 ((c2) at orders ≥ 2 in (D)), OL-4
-   (well-formedness + (c0) in (D)), OL-5 ((c1)/(c2) at i = 1 in (D), through
-   the PROVED (D3) — V14-1) is flagged, and that no OTHER unproved step
-   hides in Theorem 2. Minimality direction too: each hypothesis list must
-   name no more than the proof consumes.
-7. **The (†) consumption**: only (L9), only in finite-sum form, only at
-   k' ≥ 1 (the k' = 0 branch of (C) must not cite it).
+   (well-formedness + (c0) in (D)), OL-5 ((b′)/(c′) = (c1)/(c2) at i = 1 in
+   (D), at the read OL-6(a) binds — and NOTHING else: rev 3's clause (a)
+   must be consumed nowhere, P2-3), OL-6 (the run/read binding in (D), base
+   and step — and NOTHING else, P2-1) is flagged, and that no OTHER unproved
+   step hides in Theorem 2. Minimality direction too: each hypothesis list
+   must name no more than the proof consumes.
+7. **The (†) consumption**: only (L9), only in finite-sum form; in Theorem
+   2(C) only at k' ≥ 1 (the k' = 0 branch must not cite it); in Theorem 1
+   the r = 1 cites (all three cases) pass through the displayed Lemma B —
+   verify the bridge (level-0-only dependence of ind₁; the Thm-2.11 family
+   extension; the transport) — P2-2.
 8. **Carrier coherence**: every field of every carrier object now has a
    declared domain (V10-C1); equalities are literal on constructed objects;
    no isomorphism-class or choice-dependent object appears in either carrier;
@@ -820,18 +879,27 @@ the labeled claim). F1–F4 are rev 1's, carried unchanged; F5 is new in rev 2.
    at 𝐇 = (ρ₀) and at (ρ₀; ν₁ terminal), and every clause of Theorem 2 at
    k' = 0 — each must be well-formed and proved as stated (no undefined
    μ_{k'}, no "last read", no (L9) at r = 0).
-11. **The stage interface**: are OL-2/OL-2-min/OL-3/OL-4/OL-5 exactly
+11. **The stage interface**: are OL-2/OL-2-min/OL-3/OL-4/OL-5/OL-6 exactly
    attackable as stated — i.e., is every object in their statements either
-   GMN-defined (§1), carrier-defined (§2), displayed in §4's interface, or
-   (for OL-5) displayed in Theorem 1's (D3)? (V10-G2/G3 asked for precisely
+   GMN-defined (§1), carrier-defined (§2), displayed in §4's interface
+   (whose c is now the stage's bound parameter — P2-1), or (for OL-5's frame)
+   intrinsic per (c1)'s positional clause? (V10-G2/G3 asked for precisely
    this.)
-12. **The level-1 base (V14-1)**: instantiate Theorem 2(D)'s induction at
-   i = 1 — does OL-5 + (D3) yield (c1) INCLUDING the positional clause and
-   (c2), with no residual appeal to the engine's internals? And does the
-   (a)+(b) ⇒ OL-2-min display in §4 genuinely collapse (the at-most-one-side
-   -per-slope step)?
+12. **The level-1 base (V14-1/P2-3)**: instantiate Theorem 2(D)'s induction
+   at i = 1 — does OL-6(a) + OL-5 yield (c1) INCLUDING the positional clause
+   and (c2), with no residual appeal to the engine's internals and no use of
+   rev 3's clause (a)? And does the (a)+(b) ⇒ OL-2-min display in §4
+   genuinely collapse (the at-most-one-side-per-slope step)?
+13. **The run/read seam (P2-1)**: at every level i + 1 ≥ 2 of (D)'s
+   induction, verify the read to which OL-2-min/OL-3 are applied is BOUND —
+   its chain parameter is OL-6(b)'s c = Θ(𝐇_{≤i}) with key
+   Φ̂_{i+1} = Lift_i(c) — and that no stage-wise lemma anywhere in the note
+   is applied to a run-emitted record without an OL-6 clause supplying its
+   read; verify OL-6's own statement needs no consistency or OL-1 input
+   (Θ is total and formal); sweep for any OTHER consumer of the run/read
+   seam with an unbound chain parameter.
 
 Charge: quote-and-classify only; critical error vs justification gap; check
-steps downstream of a gap by assuming the gap's conclusion. The five OL's are
+steps downstream of a gap by assuming the gap's conclusion. The six OL's are
 DECLARED open — they are not findings; an UNDECLARED dependence is.
 
