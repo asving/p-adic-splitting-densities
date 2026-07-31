@@ -477,3 +477,80 @@ sweep").
 - Capstone path untouched (root lib imports no MovesT/MovesU; AxChk_baseline
   replayed unchanged in the all-module build).
 - MovesT/MANIFEST.json: three deviation records appended (parses).
+
+## ITEMS 11 / 14 / 15 — EXECUTED 2026-07-31 (agent: fable, MovesV E/F/G clusters)
+
+### Item 11 — hdom row addition (EXECUTED; 2 of 3 sorries DISCHARGED, 1 re-blocked with exact record)
+Statement changes (all authorized, `hdom : EntDomOrder0 V` appended to the row):
+- `ledgerIV_inst` (V7_livC.lean) — sorry STANDS, but now waits on EXACTLY ONE
+  adjudication: the `hfin : Finite (Skeleton n)` row question (TV_E7 header's
+  execution-time ratification item, NOT in the signed-off queue; Skeleton-
+  finiteness is proved only at n = 1 and n = 3, and an in-place fill is also
+  import-blocked — TV_E6/TV_E7 import V7_livC).  Record in-file.
+- `measuredOf_comp_once` (TV_E6.lean) — PROVED: `ledgerIV_comp_once` (V7_livB)
+  transported across the new Σ-collapse equiv `iDomEquiv` (+ helpers
+  `sigma_castHpt_eq`, `mem_iDomOf_own_dim`, `iDomEquiv_apply_val`, all private).
+- `ledgerIV_inst_assembly` (TV_E7.lean) — PROVED: the recorded mechanical
+  assembly executed verbatim at the shared (ctsTable, measuredOf) witness;
+  all 14 LedgerIV fields from measuredOf_* (E3/E4/E5b/E6), TablePins from
+  ctsTable_pins, |Box| tie rfl.  THE E-CLUSTER IS NOW SORRY-FREE (TV_E1-E8).
+- `ratBurdens_exists_pack` (TV_F5.lean) — row repaired per the round-3
+  confirmed leak (duty (ii) RESOLVED: rows byte-identical again, WITH hdom);
+  sorry stands behind the TV-F2/F3/F4 seam chain.
+- `measured_seam` + both corollaries (TV_F6.lean) — union row gains hdom;
+  corollaries re-proved (mechanical); measured_seam's sorry stands (RatBurdens
+  leg behind the seam chain; LedgerIV leg now supplied by TV_E7).
+- `ratBurdens_exists` (V7_rbC.lean) — row repaired; sorry stands behind TV_F5.
+No compiled countermodel of any OLD form exists (hypothesis-addition repairs)
+— no M1 leaf notes needed.
+
+### Item 14 — ratBurdens_iota full-existential re-point (EXECUTED; ι-legs PROVED)
+- `ratBurdens_iota` (V7_rbB.lean) re-pointed at `initRat_comp`'s FULL
+  4-conjunct existential (conclusion byte-identical to V3_initrat:41-48 at
+  XsEnt := X.sEnt); proof = direct application, conjuncts 3-4 no longer
+  discarded.
+- TV_F1: `iotaPGof_geom` projection re-indexed (.2.1); NEW spec projections
+  `iotaPGof_census` (conjunct 3) + `iotaPGof_val` (conjunct 4).
+- NEW UNIT TV_F2b.lean: the SeamCoherent ι-legs PROVED at the measuredOf
+  witness for any entKey-canonical keying — `measuredOf_iota_ok`,
+  `measuredOf_iota_val`, `measuredOf_iota_count` (the last mints the base
+  point's Order0Perimeter certificate from hdom — the item-11 genre).
+- tg_val leg: BLOCKED as charged — the rowVal tie is val_b's content, gated
+  on the named Phase-B row `RealizationComplete` (V2_valB:272); recorded in
+  TV_F2's docstring + TV_F2b's header.  `seam_coherence_exists` keeps its ONE
+  honest sorry (remaining legs: tg_val/j_val/jcell_val/jcell_sum + the
+  SeamKeys datum/cellKey witness construction).
+
+### Item 15 — SCS species-stage-record hypothesis row (EXECUTED; G1+G2 OPEN)
+- NEW `SpeciesStageRow C T hp` (TV_G1.lean): key (outcome → CTS
+  skeleton/letter/outcome triple), spRec (the species-stage record), sel (the
+  selected (g, μ)); faithfulness ties rec_read (record = the letter's letterSp
+  species at continuing keys) + key_roster (roster-length read); census laws
+  rec_coh / rec_stride (stride = block size — the gate's flagged tension) /
+  rec_cluster (W·D = e) / sel_mem / roster_card.  Anti-vacuity + NOT-TIED
+  inventory recorded in the TV_G1 header (SeamKeys constrain-not-determine
+  genre; terminal-key records are row-supplied, no in-corpus source).
+- `scsSupplyCore` gains the row and is CONSTRUCTED (sorry killed); primed
+  fields defined by the StageLaws outputs.
+- `scs_roster_census` gains the row and is PROVED (= roster_card).
+- G-CLUSTER OPENING REPORT: TV-G1 2/2 open+proved; TV-G2 8/8 laws PROVED
+  (ℓpos, window_comp — the stride-vs-block flag lands on rec_stride,
+  flank_zero, sel_mem, res_sum, stage_D/stage_W rfl-genre, cluster_parent);
+  TV-G3 residuals recorded in-file, exactly: (a) scsSelIdx needs a selected-
+  position tie (row extension `selPos` or hp-choice plumbing), (b) memberOf +
+  inj/ne_sel = pure combinatorics once (a) lands (card bound IS the proved
+  census), (c) sel_continuing needs the kcol status tie, (d) cluster_child
+  needs the pointwise (size, δ, status) member tie (key_roster ties length
+  only), (e) scs_data_supply_pack (statement UNCHANGED) additionally needs the
+  row discharged at tableShape_inst's witness (Phase B).
+
+### Verification
+Per-file `lake env lean` / `lake build <mod>` green on: V7_rbB, TV_F1,
+V7_livC, TV_E6, TV_E7, TV_E8, TV_F2, TV_F2b (new), TV_F3, TV_F4, TV_F5,
+TV_F6, V7_rbC, TV_G1, TV_G2, TV_G3.  No file outside MovesV consumes the
+changed declarations (grep-verified).  Capstone path untouched (MovesV is not
+imported by OM/RealInstanceV2; AxChk not required by rule 4).  MovesV
+MANIFEST census updated.  Sorry delta in the three clusters: TV_E6(1) +
+TV_E7(1) + TV_G1(2) + TV_G2(8) = 12 sorries DISCHARGED; +0 added (TV_G3 kept
+its 7; the 3 EXISTS-pinned duties V7_livC/V7_rbC/V7_scsData stand as named
+open duties with tightened records).

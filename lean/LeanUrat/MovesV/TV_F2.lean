@@ -39,7 +39,20 @@
       two typing-time compatibility fields (`datum_term`, `cellKey_out`) are
       the minimal recorded ties.  Adjusting them is a co-design-seam move on
       THESE new carriers only (record at this docstring) — never on the
-      RatBurdens interface. -/
+      RatBurdens interface.
+    [QUEUE ITEM 14 EXECUTED, 2026-07-31 (Asvin sign-off; ledger
+    lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 14): `ratBurdens_iota`
+    re-pointed at initRat_comp's FULL 4-conjunct ∃ (V7_rbB) + the TV-F1 spec
+    projections `iotaPGof_census`/`iotaPGof_val` — the SeamCoherent ι-legs
+    (iota_ok/iota_val/iota_count) are now PROVED at the measuredOf witness
+    for any entKey-canonical keying: TV_F2b.lean (this file untouched except
+    this record — no import-graph change).  `seam_coherence_exists` below
+    keeps its ONE honest sorry for the remaining legs: `tg_val` is BLOCKED
+    on the named Phase-B row `RealizationComplete` (V2_valB:272 — the val_b
+    rowVal bridge; see the TV_F2b header record), `j_val`/`jcell_val`/
+    `jcell_sum` remain with the F-prover (μcellH re-index), and the full
+    SeamKeys witness (datum/cellKey fields) remains the co-design
+    construction duty.] -/
 import LeanUrat.MovesV.TV_F1
 import LeanUrat.MovesV.V7_ts
 
