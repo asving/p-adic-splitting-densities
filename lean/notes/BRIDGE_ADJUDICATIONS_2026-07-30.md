@@ -490,3 +490,14 @@ adversarial acceptance. In-flight fleets (IFK revision, HK-11a) continue —
 the IFK is the mathematical core of Phase B.
 Lean work during the campaign: autonomous-frontier only (new leaves, gates,
 probes, records); the parked items' evidence packs stay current.
+
+## HK-11A KERNEL LANDED (2026-07-31, commit 2f9a35b)
+HC2/HK11a_vertexTransport.lean (649 lines, 0 sorry, Lean-core): R3a
+anchor_transport PROVED (SideReads(iii) NOT consumed — U31 fence held);
+sigmaV_vertexLaw = THE kernel; readVertex_e1/readBox_e1 = V9's displayed
+conclusions on the e'=1 sub-perimeter with three NAMED carried hypotheses
+(he'1 = where a future item-28 option-(i) guard lands; hsteep; hsigmaL).
+V9 sorries correctly NOT filled (none restricts to e'=1); waiting suppliers
+named in-file. BP2 map: HK-11a LANDED re-pointed; HK-11b has its hard
+supplier, blocked on the PARKED rulings (item 28 + hsteep/hsigmaL supply) —
+all deferred per the math-first authority.
