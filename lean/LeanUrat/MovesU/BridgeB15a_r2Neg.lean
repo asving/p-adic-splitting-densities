@@ -109,6 +109,7 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesU.R2Neg
 open LeanUrat.MovesS
 open Polynomial
+open Matrix
 open scoped Classical
 
 /-! ## §1 The verdict carrier and the table (n = 2) -/
@@ -207,8 +208,8 @@ private lemma route_outT2 : routeOf (V := cmVType) (State := cmState) outT2 = .t
 private lemma route_outSplit : routeOf (V := cmVType) (State := cmState) outSplit = .split := rfl
 
 /-- Verdict pins. -/
-private lemma verd_outT1 : (outT1).verdicts = ({w11} : Multiset cmVType) := rfl
-private lemma verd_outT2 : (outT2).verdicts = ({w12} : Multiset cmVType) := rfl
+private lemma verd_outT1 : (outT1).verdicts = ({w11} : Multiset cmT.VType) := rfl
+private lemma verd_outT2 : (outT2).verdicts = ({w12} : Multiset cmT.VType) := rfl
 
 /-! ## §2 The adversarial rational functions -/
 
@@ -1556,7 +1557,6 @@ private lemma cm_led_meas_card : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ)
         have hcast : ((2 * m ^ 4 : ℕ) : ℚ) = 2 * (m : ℚ) ^ 4 := by push_cast; ring
         rw [hcast]
         field_simp
-        ring
       show ((kV (m : ℚ) : ℚ) : ℝ) * ((2 * m ^ 4 : ℕ) : ℝ)
         = ((kCard (((m : ℚ)).num.toNat) : ℕ) : ℝ)
       rw [hQ]
@@ -1600,6 +1600,14 @@ private lemma cm_led_meas_card : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ)
     have hg2 : (if e = 1 then cmMass1 c.1 (m : ℚ) else 1) = (1 : ℝ) := if_neg he
     rw [hg2, one_mul, Finset.card_univ, cm_box_card]
 
+private lemma cm_mem_kset {e : ℕ} {τ β : cmT.State e} {o : cmT.Out e τ} :
+    o ∈ ({o : cmT.Out e τ | routeOf (cmT.odata e τ o) = .kcol ∧
+        ∃ μ ∈ (cmT.odata e τ o).mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
+      } : Set (cmT.Out e τ)).toFinset
+      ↔ (routeOf (cmT.odata e τ o) = .kcol ∧
+        ∃ μ ∈ (cmT.odata e τ o).mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β) :=
+  Set.mem_toFinset
+
 private lemma cm_led_kstep_one : ∀ e (τ β : cmT.State e) (q₀ : ℚ),
     q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
     cmM.kstep 1 e τ β q₀ =
@@ -1616,12 +1624,10 @@ private lemma cm_led_kstep_one : ∀ e (τ β : cmT.State e) (q₀ : ℚ),
     rw [hbase]
     refine Eq.symm ((Finset.sum_eq_single_of_mem (⟨0, by norm_num⟩ : cmT.Out 1 τ)
       ?_ ?_).trans ?_)
-    · rw [Set.mem_toFinset]
-      exact ⟨rfl, ⟨1, 1, Sum.inr ()⟩, List.mem_singleton_self _, rfl, rfl⟩
+    · exact cm_mem_kset.mpr ⟨rfl, ⟨1, 1, Sum.inr ()⟩, List.mem_singleton_self _, rfl, rfl⟩
     · intro b hb hbne
       exfalso
-      rw [Set.mem_toFinset] at hb
-      obtain ⟨hr, -⟩ := hb
+      obtain ⟨hr, -⟩ := cm_mem_kset.mp hb
       rcases cm_route1_cases τ b with ⟨hb0', -⟩ | ⟨-, hr', -⟩ | ⟨-, hr', -⟩
       · exact hbne (hb0'.trans (Fin.ext rfl))
       · rw [hr'] at hr; exact Route.noConfusion hr
@@ -1634,9 +1640,9 @@ private lemma cm_led_kstep_one : ∀ e (τ β : cmT.State e) (q₀ : ℚ),
         ∃ μ ∈ (cmT.odata e τ o).mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
       } : Set (cmT.Out e τ)).toFinset = ∅ := by
       ext o
-      rw [Set.mem_toFinset]
-      simp only [Set.mem_setOf_eq, Finset.notMem_empty, iff_false]
-      rintro ⟨hr, -⟩
+      simp only [Finset.notMem_empty, iff_false]
+      intro hmem
+      obtain ⟨hr, -⟩ := cm_mem_kset.mp hmem
       by_cases he2 : e = 2
       · subst he2
         rcases cm_route2_cases τ o with ⟨-, hr'⟩ | ⟨-, hr', -⟩
@@ -1694,7 +1700,8 @@ private lemma cm_led_comp_once : ∀ e (τ : cmT.State e) (ε : cmM.EntShape e �
     ⟨(0 : ℕ), rfl⟩ ?_
   intro b hb
   obtain ⟨bv, hbv⟩ := b
-  exact absurd (Subtype.ext (hbv : bv = (0 : ℕ))) hb
+  have hbv0 : bv = (0 : ℕ) := hbv
+  exact absurd (Subtype.ext hbv0) hb
 
 /-- THE ledger. -/
 private theorem cmLedger : LedgerIV cmT cmM :=
@@ -1712,5 +1719,979 @@ private theorem cmLedger : LedgerIV cmT cmM :=
     init_count := cm_led_init_count
     ent_count_card := cm_led_ent_count_card
     comp_once := cm_led_comp_once }
+
+/-! ## §13 The per-pool packages: PoolHyp at EVERY pool, per block (legs_reg's
+quantifier).  At the wild pool 4 the block-1 Act is EMPTY (the note's own junk
+discipline); everywhere else the 1×1 active kernel [k(m)] escapes (k(m) < 1). -/
+
+private lemma cm_escape_subsingleton {ι : Type} [Fintype ι] [DecidableEq ι]
+    [Subsingleton ι] (A : Matrix ι ι ℚ) (hbd : ∀ i j, 0 ≤ A i j ∧ A i j < 1) :
+    EscapeE0 A := by
+  refine ⟨fun i j => (hbd i j).1, ?_⟩
+  rcases isEmpty_or_nonempty ι with hie | hne
+  · have hfun : (fun k : ℕ => A ^ k *ᵥ (fun _ => (1 : ℚ))) = fun _ => 0 :=
+      funext (fun k => funext (fun i => hie.elim i))
+    rw [hfun]
+    exact tendsto_const_nhds
+  · obtain ⟨i₀⟩ := hne
+    haveI : Unique ι := ⟨⟨i₀⟩, fun x => Subsingleton.elim x i₀⟩
+    have hA : ∀ i j : ι, A i j = A default default := fun i j => by
+      rw [Subsingleton.elim i default, Subsingleton.elim j default]
+    have haux : ∀ (k : ℕ) (i : ι),
+        (A ^ k *ᵥ (fun _ => (1 : ℚ))) i = (A default default) ^ k := by
+      intro k
+      induction k with
+      | zero => intro i; simp
+      | succ n ih =>
+        intro i
+        have hstep : (A ^ (n + 1) *ᵥ (fun _ => (1 : ℚ))) i
+            = ∑ j, A i j * (A ^ n *ᵥ (fun _ => (1 : ℚ))) j := by
+          rw [pow_succ', ← Matrix.mulVec_mulVec]
+          rfl
+        rw [hstep]
+        simp only [ih, hA]
+        rw [Fintype.sum_unique, ← pow_succ']
+    rw [tendsto_pi_nhds]
+    intro i
+    simp only [Pi.zero_apply]
+    have hfun : (fun k => (A ^ k *ᵥ (fun _ => (1 : ℚ))) i)
+        = (fun k => (A default default) ^ k) := funext (fun k => haux k i)
+    rw [hfun]
+    exact tendsto_pow_atTop_nhds_zero_of_lt_one (hbd default default).1
+      (hbd default default).2
+
+private lemma cm_kmat_ok (e : ℕ) (he : e ∈ Finset.Icc 1 2) (τ β : cmT.State e)
+    {q₀ : ℚ} (hq : q₀ ∈ cmM.Pools) :
+    Kmat cmT cmRB e (cm_hK e he) τ β ∈ OKat q₀ := by
+  by_cases he1 : e = 1
+  · subst he1
+    rw [cm_kmat1 he, pgK_val]
+    exact cm_okat_div (cm_polB_eval_ne hq)
+  · rw [cm_kmat_ne1 he he1]
+    exact zero_mem _
+
+/-- The evaluated block-1 kernel entry is k(q₀). -/
+private lemma cm_A_val1 (he : 1 ∈ Finset.Icc 1 2) (τ β : cmT.State 1) {q₀ : ℚ}
+    (hq : q₀ ∈ cmM.Pools) (hok : Kmat cmT cmRB 1 (cm_hK 1 he) τ β ∈ OKat q₀) :
+    (evalAt q₀ ⟨Kmat cmT cmRB 1 (cm_hK 1 he) τ β, hok⟩ : ℚ) = kV q₀ := by
+  have hsub : (⟨Kmat cmT cmRB 1 (cm_hK 1 he) τ β, hok⟩ : OKat q₀)
+      = ⟨aQ polK / aQ polB, cm_okat_div (cm_polB_eval_ne hq)⟩ :=
+    Subtype.ext ((cm_kmat1 he τ β).trans pgK_val)
+  rw [hsub, cm_evalAt_div (cm_polB_eval_ne hq)]
+  rfl
+
+/-- The evaluated non-block-1 kernel entry is 0. -/
+private lemma cm_A_val_ne1 {e : ℕ} (he : e ∈ Finset.Icc 1 2) (hne : e ≠ 1)
+    (τ β : cmT.State e) {q₀ : ℚ}
+    (hok : Kmat cmT cmRB e (cm_hK e he) τ β ∈ OKat q₀) :
+    (evalAt q₀ ⟨Kmat cmT cmRB e (cm_hK e he) τ β, hok⟩ : ℚ) = 0 := by
+  have hsub : (⟨Kmat cmT cmRB e (cm_hK e he) τ β, hok⟩ : OKat q₀) = 0 :=
+    Subtype.ext (cm_kmat_ne1 he hne τ β)
+  rw [hsub, map_zero]
+
+/-- The Act carrier: the active states of the block at the pool. -/
+noncomputable def cmAct (e : ℕ) (q₀ : ℚ) : Finset (cmT.State e) :=
+  Finset.univ.filter (fun τ => cmM.activeState q₀ e τ)
+
+/-- The evaluated Act-submatrix. -/
+noncomputable def cmA (e : ℕ) (he : e ∈ Finset.Icc 1 2) {q₀ : ℚ}
+    (hq : q₀ ∈ cmM.Pools) : Matrix ↥(cmAct e q₀) ↥(cmAct e q₀) ℚ :=
+  fun τA βA => evalAt q₀ ⟨Kmat cmT cmRB e (cm_hK e he) τA.1 βA.1,
+    cm_kmat_ok e he τA.1 βA.1 hq⟩
+
+private lemma cm_escape (e : ℕ) (he : e ∈ Finset.Icc 1 2) {q₀ : ℚ}
+    (hq : q₀ ∈ cmM.Pools) : EscapeE0 (cmA e he hq) := by
+  haveI hsub : Subsingleton (cmT.State e) := ⟨fun a b => rfl⟩
+  haveI : Subsingleton ↥(cmAct e q₀) :=
+    ⟨fun a b => Subtype.ext (Subsingleton.elim a.1 b.1)⟩
+  apply cm_escape_subsingleton
+  intro i j
+  obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+  by_cases he1 : e = 1
+  · subst he1
+    have hia : cmM.activeState (m : ℚ) 1 i.1 := (Finset.mem_filter.mp i.2).2
+    have hm4 : m ≠ 4 := by
+      intro h4
+      exact (hia rfl) (by rw [h4]; norm_num)
+    have hval : cmA 1 he hq i j = kV (m : ℚ) := cm_A_val1 he i.1 j.1 hq _
+    rw [hval]
+    exact ⟨cm_kV_nonneg hm2, cm_kV_lt_one hm2 hm4⟩
+  · have hval : cmA e he hq i j = 0 := cm_A_val_ne1 he he1 i.1 j.1 _
+    rw [hval]
+    exact ⟨le_refl 0, by norm_num⟩
+
+/-- THE PER-POOL PACKAGE — at every pool of the instance, every block. -/
+noncomputable def cmPool (e : ℕ) (he : e ∈ Finset.Icc 1 2) {q₀ : ℚ}
+    (hq : q₀ ∈ cmM.Pools) : PoolHyp cmT cmM cmRB e (cm_hK e he) q₀ where
+  pool_mem := hq
+  Act := cmAct e q₀
+  act_spec := fun τ => by
+    rw [cmAct, Finset.mem_filter]
+    exact ⟨fun h => h.2, fun h => ⟨Finset.mem_univ τ, h⟩⟩
+  entry_ok := fun τ' β' _ _ => cm_kmat_ok e he τ' β' hq
+  A := cmA e he hq
+  A_eval := fun τ β => rfl
+  inactive_vanish := fun τ' β' hok hτ hβ => by
+    exfalso
+    apply hβ
+    have hττ : τ' = β' := rfl
+    rw [← hττ]
+    exact hτ
+  e0 := cm_escape e he hq
+
+/-! ## §14 Multiset vocabulary for the σ'-graded solve -/
+
+private lemma cm_ms_ne_11_12 : ({w11} : Multiset cmT.VType) ≠ {w12} := fun h =>
+  w_ne_11_12 (Multiset.singleton_inj.mp h)
+
+private lemma cm_ms_ne_1111_1112 :
+    ({w11, w11} : Multiset cmT.VType) ≠ {w11, w12} := by
+  show (w11 ::ₘ {w11} : Multiset cmT.VType) ≠ w11 ::ₘ {w12}
+  intro h
+  exact w_ne_11_12 (Multiset.singleton_inj.mp ((Multiset.cons_inj_right w11).mp h))
+
+private lemma cm_sub_cons {V : Type} [DecidableEq V] (a : V) (s : Multiset V) :
+    (a ::ₘ s) - {a} = s := by
+  rw [show ({a} : Multiset V) = a ::ₘ 0 from rfl, Multiset.sub_cons,
+    Multiset.erase_cons_head, Multiset.sub_zero]
+
+private lemma cm_sub_1111 : ({w11, w11} : Multiset cmT.VType) - {w11} = {w11} := by
+  show (w11 ::ₘ {w11} : Multiset cmT.VType) - {w11} = {w11}
+  exact cm_sub_cons w11 {w11}
+
+private lemma cm_sub_1112 : ({w11, w12} : Multiset cmT.VType) - {w11} = {w12} := by
+  show (w11 ::ₘ {w12} : Multiset cmT.VType) - {w11} = {w12}
+  exact cm_sub_cons w11 {w12}
+
+private lemma cm_le_1111 : ({w11} : Multiset cmT.VType) ≤ {w11, w11} := by
+  show ({w11} : Multiset cmT.VType) ≤ w11 ::ₘ {w11}
+  exact Multiset.singleton_le.mpr (Multiset.mem_cons_self _ _)
+
+private lemma cm_le_1112 : ({w11} : Multiset cmT.VType) ≤ {w11, w12} := by
+  show ({w11} : Multiset cmT.VType) ≤ w11 ::ₘ {w12}
+  exact Multiset.singleton_le.mpr (Multiset.mem_cons_self _ _)
+
+/-- {w11} ≤ σ' recovers σ' = {w11} + (σ' − {w11}). -/
+private lemma cm_le_rebuild {σ' : Multiset cmT.VType}
+    (h : ({w11} : Multiset cmT.VType) ≤ σ') : σ' = {w11} + (σ' - {w11}) :=
+  (add_tsub_cancel_of_le h).symm
+
+/-! ## §15 The measured β family and the RS1Bundle -/
+
+/-- βmeas: the evaluated solve values — block 1 the t̂ᵢ at the pool itself,
+block 2 the δ = 2 leg values t̂ᵢ(q₀²), keyed by the verdict multisets.  At the
+wild pool 4 (resp. at q₀ = 2 for the block-2 keys, where q₀² = 4) the value is
+the JUNK 0 of ℚ-division — exactly `RatFunc.eval`'s junk convention. -/
+noncomputable def cmβ (e : ℕ) (σ' : Multiset cmT.VType) (q₀ : ℚ) : ℝ :=
+  if e = 1 then
+    (if σ' = {w11} then ((bh1V q₀ : ℚ) : ℝ)
+     else if σ' = {w12} then ((bh2V q₀ : ℚ) : ℝ) else 0)
+  else
+    (if σ' = {w11, w11} then ((bh1V (q₀ ^ 2) : ℚ) : ℝ)
+     else if σ' = {w11, w12} then ((bh2V (q₀ ^ 2) : ℚ) : ℝ) else 0)
+
+private lemma cm_castIcc {x : ℚ} (hx : x ∈ Set.Icc (0 : ℚ) 1) :
+    ((x : ℚ) : ℝ) ∈ Set.Icc (0 : ℝ) 1 :=
+  ⟨by exact_mod_cast hx.1, by exact_mod_cast hx.2⟩
+
+private lemma cm_β_bdd (e : ℕ) (σ' : Multiset cmT.VType) {q₀ : ℚ}
+    (hq : q₀ ∈ cmM.Pools) : cmβ e σ' q₀ ∈ Set.Icc (0 : ℝ) 1 := by
+  obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+  have hm2sq : 2 ≤ m ^ 2 := by nlinarith
+  have hcast : ((m : ℚ)) ^ 2 = ((m ^ 2 : ℕ) : ℚ) := by push_cast; ring
+  unfold cmβ
+  split_ifs
+  · exact cm_castIcc (cm_bh_bdd hm2).1
+  · exact cm_castIcc (cm_bh_bdd hm2).2
+  · exact ⟨le_refl 0, zero_le_one⟩
+  · rw [hcast]; exact cm_castIcc (cm_bh_bdd hm2sq).1
+  · rw [hcast]; exact cm_castIcc (cm_bh_bdd hm2sq).2
+  · exact ⟨le_refl 0, zero_le_one⟩
+
+/-- splitOuts membership (instance-pinned helper, the cm_mem_cells pattern). -/
+private lemma cm_mem_splitOuts {e : ℕ} {τ : cmT.State e} {o : cmT.Out e τ} :
+    o ∈ splitOuts cmT e τ ↔ routeOf (cmT.odata e τ o) = .split := by
+  unfold splitOuts
+  exact Set.mem_toFinset
+
+private lemma cm_splitOuts1_empty (τ : cmT.State 1) : splitOuts cmT 1 τ = ∅ := by
+  apply Finset.eq_empty_of_forall_notMem
+  intro o hmem
+  exact cm_route1_ne_split τ o (cm_mem_splitOuts.mp hmem)
+
+private lemma cm_splitOuts_pad_empty {e : ℕ} (h1 : e ≠ 1) (h2 : e ≠ 2)
+    (τ : cmT.State e) : splitOuts cmT e τ = ∅ := by
+  apply Finset.eq_empty_of_forall_notMem
+  intro o hmem
+  exact cm_route_ne_split_of_ne h1 h2 τ o (cm_mem_splitOuts.mp hmem)
+
+/-- The measured terminal exit vector at block 1: the two adversarial masses. -/
+private lemma cm_bTermMeas1 (τ : cmT.State 1) (σ' : Multiset cmT.VType) (q₀ : ℚ) :
+    bTermMeas cmT cmM 1 σ' q₀ τ
+      = (if σ' = {w11} then ((t1V q₀ : ℚ) : ℝ) else 0)
+        + (if σ' = {w12} then ((t2V q₀ : ℚ) : ℝ) else 0) := by
+  unfold bTermMeas
+  by_cases h1 : σ' = {w11}
+  · subst h1
+    have hsum : (∑ o : cmT.Out 1 τ, if routeOf (cmT.odata 1 τ o) = .termFin ∧
+        (cmT.odata 1 τ o).verdicts = ({w11} : Multiset cmT.VType)
+        then cmM.rowVal 1 τ o q₀ else 0)
+        = cmM.rowVal 1 τ (⟨1, by norm_num⟩ : cmT.Out 1 τ) q₀ := by
+      refine (Finset.sum_eq_single_of_mem (⟨1, by norm_num⟩ : cmT.Out 1 τ)
+        (Finset.mem_univ _) ?_).trans ?_
+      · intro b _ hbne
+        rcases cm_route1_cases τ b with ⟨-, hr⟩ | ⟨hb1, -, -⟩ | ⟨-, -, hv⟩
+        · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+        · exact absurd (hb1.trans (Fin.ext rfl)) hbne
+        · exact if_neg (fun hc => cm_ms_ne_11_12 (hv.symm.trans hc.2).symm)
+      · exact if_pos ⟨rfl, rfl⟩
+    rw [hsum]
+    have er1 : (if ({w11} : Multiset cmT.VType) = {w11} then ((t1V q₀ : ℚ) : ℝ) else 0)
+        = ((t1V q₀ : ℚ) : ℝ) := if_pos rfl
+    have er2 : (if ({w11} : Multiset cmT.VType) = {w12} then ((t2V q₀ : ℚ) : ℝ) else 0)
+        = 0 := if_neg cm_ms_ne_11_12
+    rw [er1, er2, add_zero]
+    rfl
+  · by_cases h2 : σ' = {w12}
+    · subst h2
+      have hsum : (∑ o : cmT.Out 1 τ, if routeOf (cmT.odata 1 τ o) = .termFin ∧
+          (cmT.odata 1 τ o).verdicts = ({w12} : Multiset cmT.VType)
+          then cmM.rowVal 1 τ o q₀ else 0)
+          = cmM.rowVal 1 τ (⟨2, by norm_num⟩ : cmT.Out 1 τ) q₀ := by
+        refine (Finset.sum_eq_single_of_mem (⟨2, by norm_num⟩ : cmT.Out 1 τ)
+          (Finset.mem_univ _) ?_).trans ?_
+        · intro b _ hbne
+          rcases cm_route1_cases τ b with ⟨-, hr⟩ | ⟨-, -, hv⟩ | ⟨hb2, -, -⟩
+          · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+          · exact if_neg (fun hc => cm_ms_ne_11_12 (hv.symm.trans hc.2))
+          · exact absurd (hb2.trans (Fin.ext rfl)) hbne
+        · exact if_pos ⟨rfl, rfl⟩
+      rw [hsum]
+      have er1 : (if ({w12} : Multiset cmT.VType) = {w11} then ((t1V q₀ : ℚ) : ℝ) else 0)
+          = 0 := if_neg (fun hc => cm_ms_ne_11_12 hc.symm)
+      have er2 : (if ({w12} : Multiset cmT.VType) = {w12} then ((t2V q₀ : ℚ) : ℝ) else 0)
+          = ((t2V q₀ : ℚ) : ℝ) := if_pos rfl
+      rw [er1, er2, zero_add]
+      rfl
+    · have hsum : (∑ o : cmT.Out 1 τ, if routeOf (cmT.odata 1 τ o) = .termFin ∧
+          (cmT.odata 1 τ o).verdicts = σ' then cmM.rowVal 1 τ o q₀ else 0) = 0 := by
+        apply Finset.sum_eq_zero
+        intro o _
+        rcases cm_route1_cases τ o with ⟨-, hr⟩ | ⟨-, -, hv⟩ | ⟨-, -, hv⟩
+        · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+        · exact if_neg (fun hc => h1 (hc.2.symm.trans hv))
+        · exact if_neg (fun hc => h2 (hc.2.symm.trans hv))
+      rw [hsum, if_neg h1, if_neg h2, add_zero]
+
+/-- The measured terminal exit vector vanishes at block 2 (padding rows carry
+mass 0; the split row is not terminal). -/
+private lemma cm_bTermMeas2 (τ : cmT.State 2) (σ' : Multiset cmT.VType) (q₀ : ℚ) :
+    bTermMeas cmT cmM 2 σ' q₀ τ = 0 := by
+  unfold bTermMeas
+  apply Finset.sum_eq_zero
+  intro o _
+  rcases cm_route2_cases τ o with ⟨-, hr⟩ | ⟨ho, -, -⟩
+  · rw [if_neg]
+    rintro ⟨hc, -⟩
+    rw [hr] at hc
+    exact Route.noConfusion hc
+  · have hrow : cmM.rowVal 2 τ o q₀ = 0 := by
+      rw [cmM_rowVal_def]
+      have h2 : (if (2 : ℕ) = 1 then cmMass1 o.1 q₀ else if o.1 = 0 then (1 : ℝ) else 0)
+          = (if o.1 = 0 then (1 : ℝ) else 0) := if_neg (by norm_num)
+      rw [h2]
+      exact if_neg (fun h0 => ho (Fin.ext h0))
+    rw [hrow]
+    exact ite_self 0
+
+/-- THE Fin-2 DECOMPOSITION SUM (generic; the σ'-graded split collapses to the
+halted-member indicator times the continuing leg at σ' − {a}). -/
+private lemma cm_decomp_sum {M : Type} [NonAssocSemiring M] {V : Type}
+    [DecidableEq V] (σ' : Multiset V) (a : V) (F : Multiset V → M) :
+    (∑ g : {g : Fin 2 → Multiset V // σ' = ∑ j, g j},
+        (if g.1 0 = {a} then (1 : M) else 0) * F (g.1 1))
+      = if ({a} : Multiset V) ≤ σ' then F (σ' - {a}) else 0 := by
+  by_cases hle : ({a} : Multiset V) ≤ σ'
+  · rw [if_pos hle]
+    have hdec : σ' = ∑ j, (![{a}, σ' - {a}]) j := by
+      rw [Fin.sum_univ_two]
+      show σ' = {a} + (σ' - {a})
+      exact (add_tsub_cancel_of_le hle).symm
+    refine (Fintype.sum_eq_single (⟨![{a}, σ' - {a}], hdec⟩ :
+      {g : Fin 2 → Multiset V // σ' = ∑ j, g j}) ?_).trans ?_
+    · rintro ⟨g, hg⟩ hne
+      by_cases h0 : g 0 = {a}
+      · exfalso
+        apply hne
+        apply Subtype.ext
+        funext j
+        have hg' : σ' = g 0 + g 1 := by rw [hg, Fin.sum_univ_two]
+        have h1 : g 1 = σ' - {a} := by
+          rw [hg', h0, add_tsub_cancel_left]
+        fin_cases j
+        · show g 0 = ({a} : Multiset V)
+          exact h0
+        · show g 1 = σ' - {a}
+          exact h1
+      · rw [if_neg h0, zero_mul]
+    · show (if (![{a}, σ' - {a}]) 0 = {a} then (1 : M) else 0)
+        * F ((![{a}, σ' - {a}]) 1) = F (σ' - {a})
+      rw [show (![{a}, σ' - {a}]) 0 = ({a} : Multiset V) from rfl, if_pos rfl, one_mul,
+        show (![{a}, σ' - {a}]) 1 = σ' - {a} from rfl]
+  · rw [if_neg hle]
+    apply Finset.sum_eq_zero
+    rintro ⟨g, hg⟩ -
+    by_cases h0 : g 0 = {a}
+    · exfalso
+      apply hle
+      rw [hg, Fin.sum_univ_two, h0]
+      exact Multiset.le_iff_exists_add.mpr ⟨g 1, rfl⟩
+    · rw [if_neg h0, zero_mul]
+
+/-- The block-2 measured split summand collapses to the δ = 2 leg. -/
+private lemma cm_bSplitMeas2 (τ : cmT.State 2) (σ' : Multiset cmT.VType) (q₀ : ℚ)
+    (βhat : ∀ e', e' ∈ Finset.Icc 1 2 → cmT.State e' → Multiset cmT.VType → ℚ → ℝ) :
+    bSplitMeas cmT cmM 2 σ' q₀ βhat τ
+      = if ({w11} : Multiset cmT.VType) ≤ σ'
+        then βhat 1 (by decide) () (σ' - {w11}) (q₀ ^ 2) else 0 := by
+  unfold bSplitMeas
+  refine (Finset.sum_eq_single_of_mem (⟨0, by norm_num⟩ : cmT.Out 2 τ)
+    (cm_mem_splitOuts.mpr rfl) ?_).trans ?_
+  · intro b hb hbne
+    exfalso
+    have hbr := cm_mem_splitOuts.mp hb
+    rcases cm_route2_cases τ b with ⟨hb0, -⟩ | ⟨-, hr, -⟩
+    · exact hbne (hb0.trans (Fin.ext rfl))
+    · rw [hr] at hbr
+      exact Route.noConfusion hbr
+  · have hrow : cmM.rowVal 2 τ (⟨0, by norm_num⟩ : cmT.Out 2 τ) q₀ = 1 := rfl
+    rw [hrow, one_mul]
+    have hterm : ∀ g : {g : Fin 2 → Multiset cmT.VType // σ' = ∑ j, g j},
+        (∏ j : Fin 2, legFactorMeas cmT 2 τ (⟨0, by norm_num⟩ : cmT.Out 2 τ) q₀ βhat g.1 j)
+          = (if g.1 (0 : Fin 2) = ({w11} : Multiset cmT.VType) then (1 : ℝ) else 0)
+            * βhat 1 (by decide) () (g.1 (1 : Fin 2)) (q₀ ^ 2) := by
+      intro g
+      rw [Fin.prod_univ_two]
+      rfl
+    have hsum : (∑ g : {g : Fin 2 → Multiset cmT.VType // σ' = ∑ j, g j},
+        ∏ j : Fin 2, legFactorMeas cmT 2 τ (⟨0, by norm_num⟩ : cmT.Out 2 τ) q₀ βhat g.1 j)
+        = ∑ g : {g : Fin 2 → Multiset cmT.VType // σ' = ∑ j, g j},
+            (if g.1 (0 : Fin 2) = ({w11} : Multiset cmT.VType) then (1 : ℝ) else 0)
+              * βhat 1 (by decide) () (g.1 (1 : Fin 2)) (q₀ ^ 2) :=
+      Finset.sum_congr rfl (fun g _ => hterm g)
+    exact hsum.trans (cm_decomp_sum σ' w11 (fun μ => βhat 1 (by decide) () μ (q₀ ^ 2)))
+
+private lemma cmβ_1_11 (q₀ : ℚ) :
+    cmβ 1 ({w11} : Multiset cmT.VType) q₀ = ((bh1V q₀ : ℚ) : ℝ) := by
+  unfold cmβ
+  rw [if_pos rfl, if_pos rfl]
+
+private lemma cmβ_1_12 (q₀ : ℚ) :
+    cmβ 1 ({w12} : Multiset cmT.VType) q₀ = ((bh2V q₀ : ℚ) : ℝ) := by
+  unfold cmβ
+  rw [if_pos rfl, if_neg (fun hc => cm_ms_ne_11_12 hc.symm), if_pos rfl]
+
+private lemma cmβ_1_other (σ' : Multiset cmT.VType) (h1 : σ' ≠ {w11})
+    (h2 : σ' ≠ {w12}) (q₀ : ℚ) : cmβ 1 σ' q₀ = 0 := by
+  unfold cmβ
+  rw [if_pos rfl, if_neg h1, if_neg h2]
+
+/-- The measured recursion (R_e-lump) at the instance — cmβ is the honest
+fixpoint of evalRe at every pool and active state. -/
+private lemma cm_recursion (e : ℕ) (he : e ∈ Finset.Icc 1 2) (τ : cmT.State e)
+    (σ' : Multiset cmT.VType) {q₀ : ℚ} (hq : q₀ ∈ cmM.Pools)
+    (hact : cmM.activeState q₀ e τ) :
+    cmβ e σ' q₀ = evalRe cmT cmM cmRB cm_hdc e he τ σ' q₀
+      (fun e' _ _ σ'' q₀' => cmβ e' σ'' q₀') := by
+  haveI : Unique (cmT.State e) := ⟨⟨()⟩, fun _ => rfl⟩
+  have he12 := Finset.mem_Icc.mp he
+  unfold evalRe
+  rw [Fintype.sum_unique]
+  beta_reduce
+  by_cases he1 : e = 1
+  · subst he1
+    -- block 1: β = k·β + t (bSplitMeas = 0)
+    have hsplit0 : bSplitMeas cmT cmM 1 σ' q₀ (fun e' _ _ σ'' q₀' => cmβ e' σ'' q₀') τ
+        = 0 := by
+      unfold bSplitMeas
+      rw [cm_splitOuts1_empty, Finset.sum_empty]
+    rw [hsplit0, add_zero, cm_bTermMeas1]
+    obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+    have hm4 : m ≠ 4 := fun h4 => (hact rfl) (by rw [h4]; norm_num)
+    have hkstep : cmM.kstep 1 1 τ default (m : ℚ) = ((kV (m : ℚ) : ℚ) : ℝ) := by
+      rw [cmM_kstep_def, pow_one]
+      exact if_pos ⟨rfl, fun h4 => hm4 (by exact_mod_cast h4)⟩
+    rw [hkstep]
+    have hβdef : cmβ 1 σ' (m : ℚ)
+        = (if σ' = {w11} then ((bh1V (m : ℚ) : ℚ) : ℝ)
+           else if σ' = {w12} then ((bh2V (m : ℚ) : ℚ) : ℝ) else 0) := if_pos rfl
+    rw [hβdef]
+    have hx0 : ((m : ℚ)) ≠ 0 := (cm_x_pos hm2).ne'
+    have hD : polD.eval (m : ℚ) ≠ 0 := (cm_D_pos hm2 hm4).ne'
+    obtain ⟨hfix1, hfix2⟩ := cm_fix1 hx0 hD
+    by_cases h1 : σ' = {w11}
+    · subst h1
+      rw [if_pos rfl, if_pos rfl, if_neg cm_ms_ne_11_12, add_zero]
+      exact_mod_cast hfix1
+    · by_cases h2 : σ' = {w12}
+      · subst h2
+        rw [if_neg h1, if_pos rfl, if_neg (fun hc => cm_ms_ne_11_12 hc.symm),
+          if_pos rfl, zero_add]
+        exact_mod_cast hfix2
+      · rw [if_neg h1, if_neg h2, if_neg h1, if_neg h2]
+        norm_num
+  · have he2 : e = 2 := by omega
+    subst he2
+    -- block 2: β(σ') = the δ = 2 leg at σ' − {w11}
+    have hkstep : cmM.kstep 1 2 τ default q₀ = 0 := by
+      rw [cmM_kstep_def, pow_one]
+      exact if_neg (fun hc => (by norm_num : ¬(2 : ℕ) = 1) hc.1)
+    rw [hkstep, zero_mul, zero_add, cm_bTermMeas2, zero_add, cm_bSplitMeas2]
+    have hβ2 : cmβ 2 σ' q₀
+        = (if σ' = {w11, w11} then ((bh1V (q₀ ^ 2) : ℚ) : ℝ)
+           else if σ' = {w11, w12} then ((bh2V (q₀ ^ 2) : ℚ) : ℝ) else 0) :=
+      if_neg (by norm_num)
+    rw [hβ2]
+    by_cases h1 : σ' = {w11, w11}
+    · subst h1
+      rw [if_pos rfl, if_pos cm_le_1111]
+      show ((bh1V (q₀ ^ 2) : ℚ) : ℝ) = cmβ 1 ({w11, w11} - {w11}) (q₀ ^ 2)
+      rw [cm_sub_1111]
+      have hβ1 : cmβ 1 ({w11} : Multiset cmT.VType) (q₀ ^ 2)
+          = ((bh1V (q₀ ^ 2) : ℚ) : ℝ) := by
+        unfold cmβ
+        rw [if_pos rfl, if_pos rfl]
+      rw [hβ1]
+    · by_cases h2 : σ' = {w11, w12}
+      · subst h2
+        rw [if_neg h1, if_pos rfl, if_pos cm_le_1112]
+        show ((bh2V (q₀ ^ 2) : ℚ) : ℝ) = cmβ 1 ({w11, w12} - {w11}) (q₀ ^ 2)
+        rw [cm_sub_1112]
+        have hβ1 : cmβ 1 ({w12} : Multiset cmT.VType) (q₀ ^ 2)
+            = ((bh2V (q₀ ^ 2) : ℚ) : ℝ) := by
+          unfold cmβ
+          rw [if_pos rfl, if_neg cm_ms_ne_11_12.symm, if_pos rfl]
+        rw [hβ1]
+      · rw [if_neg h1, if_neg h2]
+        by_cases hle : ({w11} : Multiset cmT.VType) ≤ σ'
+        · rw [if_pos hle]
+          have hβ1 : cmβ 1 (σ' - {w11}) (q₀ ^ 2) = 0 := by
+            unfold cmβ
+            rw [if_pos rfl, if_neg, if_neg]
+            · intro hc
+              exact h2 (by rw [cm_le_rebuild hle, hc]; rfl)
+            · intro hc
+              exact h1 (by rw [cm_le_rebuild hle, hc]; rfl)
+          rw [hβ1]
+        · rw [if_neg hle]
+
+/-- THE RS1 BUNDLE. -/
+noncomputable def cmB : RS1Bundle cmT cmM cmRB cm_hdc cm_hK where
+  βmeas := fun e _ _ _ σ' q₀ => cmβ e σ' q₀
+  β_bdd := fun e he h_ent τ σ' q₀ hq => cm_β_bdd e σ' hq
+  βfull := fun e _ _ _ σ' q₀ => cmβ e σ' q₀
+  xrb := fun _ _ _ _ _ _ _ _ => rfl
+  recursion_meas := fun e he τ σ' q₀ hq hact h_ent => cm_recursion e he τ σ' hq hact
+  nsNull := True
+  rexact := fun _ _ _ _ _ _ _ _ => rfl
+
+/-! ## §16 The σ-roster (sig_exact at n = 2; the N2Sigmas §C idiom verbatim —
+same verdict carrier) -/
+
+noncomputable def cmSigmas : Finset (Multiset cmT.VType) := {{w11, w11}, {w12}, {w21}}
+
+private lemma cm_sigma_ne_1 : ({w11, w11} : Multiset cmT.VType) ≠ {w12} := by
+  intro h
+  have hmem : w11 ∈ ({w11, w11} : Multiset cmT.VType) := by
+    show w11 ∈ (w11 ::ₘ {w11} : Multiset cmT.VType)
+    exact Multiset.mem_cons_self _ _
+  rw [h] at hmem
+  exact w_ne_11_12 (Multiset.mem_singleton.mp hmem)
+
+private lemma cm_sigma_ne_2 : ({w11, w11} : Multiset cmT.VType) ≠ {w21} := by
+  intro h
+  have hmem : w11 ∈ ({w11, w11} : Multiset cmT.VType) := by
+    show w11 ∈ (w11 ::ₘ {w11} : Multiset cmT.VType)
+    exact Multiset.mem_cons_self _ _
+  rw [h] at hmem
+  exact w_ne_11_21 (Multiset.mem_singleton.mp hmem)
+
+private lemma cm_sigma_ne_3 : ({w12} : Multiset cmT.VType) ≠ {w21} := fun h =>
+  w_ne_12_21 (Multiset.singleton_inj.mp h)
+
+/-- Degree classification on the verdict carrier (the n2_vdeg_cases proof
+verbatim at the renamed labels). -/
+private lemma cm_vdeg_cases (v : cmT.VType) :
+    ((cmT.vdeg v : ℕ) = 1 ∧ v = w11) ∨
+    ((cmT.vdeg v : ℕ) = 2 ∧ (v = w12 ∨ v = w21)) := by
+  obtain ⟨⟨a, b⟩, hab⟩ := v
+  have ha := a.one_le
+  have hb := b.one_le
+  have hd : (cmT.vdeg ⟨(a, b), hab⟩ : ℕ) = (a : ℕ) * (b : ℕ) :=
+    cmT.vdeg_spec ⟨(a, b), hab⟩
+  have hab' : (a : ℕ) * (b : ℕ) ≤ 2 := hab
+  have hcases : ((a : ℕ) = 1 ∧ (b : ℕ) = 1) ∨ ((a : ℕ) = 1 ∧ (b : ℕ) = 2) ∨
+      ((a : ℕ) = 2 ∧ (b : ℕ) = 1) := by
+    have h1 : 1 ≤ (a : ℕ) := ha
+    have h2 : 1 ≤ (b : ℕ) := hb
+    rcases Nat.lt_or_ge (a : ℕ) 2 with hlt | hge
+    · have ha1 : (a : ℕ) = 1 := by omega
+      rw [ha1, one_mul] at hab'
+      omega
+    · have hb1 : (b : ℕ) = 1 := by nlinarith
+      rw [hb1, mul_one] at hab'
+      omega
+  have hv1 : ((1 : ℕ+) : ℕ) = 1 := rfl
+  have hv2 : ((2 : ℕ+) : ℕ) = 2 := rfl
+  rcases hcases with ⟨h1, h2⟩ | ⟨h1, h2⟩ | ⟨h1, h2⟩
+  · left
+    have hA : a = 1 := PNat.coe_injective (by rw [h1, hv1])
+    have hB : b = 1 := PNat.coe_injective (by rw [h2, hv1])
+    subst hA; subst hB
+    exact ⟨by rw [hd]; decide, rfl⟩
+  · right
+    have hA : a = 1 := PNat.coe_injective (by rw [h1, hv1])
+    have hB : b = 2 := PNat.coe_injective (by rw [h2, hv2])
+    subst hA; subst hB
+    exact ⟨by rw [hd]; decide, Or.inl rfl⟩
+  · right
+    have hA : a = 2 := PNat.coe_injective (by rw [h1, hv2])
+    have hB : b = 1 := PNat.coe_injective (by rw [h2, hv1])
+    subst hA; subst hB
+    exact ⟨by rw [hd]; decide, Or.inr rfl⟩
+
+private lemma cm_vdeg_pos (v : cmT.VType) : 1 ≤ (cmT.vdeg v : ℕ) :=
+  (cmT.vdeg v).one_le
+
+/-- sig_exact: a verdict multiset has degree-sum 2 iff it is one of
+{(1,1)²}, {(1,2)}, {(2,1)} (the n2_sig_exact proof verbatim). -/
+private lemma cm_sig_exact (σ : Multiset cmT.VType) :
+    σ ∈ cmSigmas ↔ (σ.map fun v => ((cmT.vdeg v : ℕ))).sum = 2 := by
+  constructor
+  · intro hσ
+    simp only [cmSigmas, Finset.mem_insert, Finset.mem_singleton] at hσ
+    have h11 : (cmT.vdeg w11 : ℕ) = 1 := by
+      rcases cm_vdeg_cases w11 with ⟨h, _⟩ | ⟨_, hv | hv⟩
+      · exact h
+      · exact absurd hv w_ne_11_12
+      · exact absurd hv w_ne_11_21
+    rcases hσ with rfl | rfl | rfl
+    · show (Multiset.map (fun v => ((cmT.vdeg v : ℕ))) (w11 ::ₘ w11 ::ₘ 0)).sum = 2
+      rw [Multiset.map_cons, Multiset.map_cons, Multiset.map_zero, Multiset.sum_cons,
+        Multiset.sum_cons, Multiset.sum_zero, h11]
+      norm_num
+    · rcases cm_vdeg_cases w12 with ⟨_, h⟩ | ⟨hd, _⟩
+      · exact absurd h.symm w_ne_11_12
+      · show (Multiset.map (fun v => ((cmT.vdeg v : ℕ))) (w12 ::ₘ 0)).sum = 2
+        rw [Multiset.map_cons, Multiset.map_zero, Multiset.sum_cons, Multiset.sum_zero,
+          hd]
+        norm_num
+    · rcases cm_vdeg_cases w21 with ⟨_, h⟩ | ⟨hd, _⟩
+      · exact absurd h.symm w_ne_11_21
+      · show (Multiset.map (fun v => ((cmT.vdeg v : ℕ))) (w21 ::ₘ 0)).sum = 2
+        rw [Multiset.map_cons, Multiset.map_zero, Multiset.sum_cons, Multiset.sum_zero,
+          hd]
+        norm_num
+  · intro hσ
+    have hcard : σ.card ≤ 2 := by
+      have hle : σ.card ≤ (σ.map fun v => ((cmT.vdeg v : ℕ))).sum := by
+        clear hσ
+        induction σ using Multiset.induction_on with
+        | empty => simp
+        | cons v σ' ih =>
+          rw [Multiset.map_cons, Multiset.sum_cons, Multiset.card_cons]
+          have := cm_vdeg_pos v
+          omega
+      omega
+    have h012 : σ.card = 0 ∨ σ.card = 1 ∨ σ.card = 2 := by omega
+    rcases h012 with hc | hc | hc
+    · rw [Multiset.card_eq_zero] at hc
+      subst hc
+      simp at hσ
+    · rw [Multiset.card_eq_one] at hc
+      obtain ⟨v, rfl⟩ := hc
+      rw [Multiset.map_singleton, Multiset.sum_singleton] at hσ
+      rcases cm_vdeg_cases v with ⟨hd, _⟩ | ⟨_, hv⟩
+      · omega
+      · rcases hv with rfl | rfl
+        · exact Finset.mem_insert_of_mem (Finset.mem_insert_self _ _)
+        · exact Finset.mem_insert_of_mem (Finset.mem_insert_of_mem
+            (Finset.mem_singleton_self _))
+    · rw [Multiset.card_eq_two] at hc
+      obtain ⟨v, w, rfl⟩ := hc
+      rw [Multiset.insert_eq_cons, Multiset.map_cons, Multiset.sum_cons,
+        Multiset.map_singleton, Multiset.sum_singleton] at hσ
+      have hv1 : (cmT.vdeg v : ℕ) = 1 := by
+        have := cm_vdeg_pos v; have := cm_vdeg_pos w; omega
+      have hw1 : (cmT.vdeg w : ℕ) = 1 := by
+        have := cm_vdeg_pos v; omega
+      have hv : v = w11 := by
+        rcases cm_vdeg_cases v with ⟨_, h⟩ | ⟨hd, _⟩
+        · exact h
+        · omega
+      have hw : w = w11 := by
+        rcases cm_vdeg_cases w with ⟨_, h⟩ | ⟨hd, _⟩
+        · exact h
+        · omega
+      subst hv; subst hw
+      exact Finset.mem_insert_self _ _
+
+/-! ## §17 The symbolic block solves (the pole is BORN here) -/
+
+/-- The generic 1×1 triangular solve (N2SolveVals idiom, local copy). -/
+private theorem cm_inv_mulVec {ι R : Type*} [Fintype ι] [DecidableEq ι]
+    [CommRing R] {A : Matrix ι ι R} (hA : IsUnit A.det) {b w : ι → R}
+    (h : A *ᵥ w = b) : A⁻¹ *ᵥ b = w := by
+  rw [← h, Matrix.mulVec_mulVec, Matrix.nonsing_inv_mul A hA, Matrix.one_mulVec]
+
+private lemma pgConst_one_val : (pgConst 1 0).val = 1 := by
+  rw [pgConst_val, map_one, map_one]
+
+private lemma pgConst_zero_val : (pgConst 0 0).val = 0 := by
+  rw [pgConst_val, map_zero, map_zero]
+
+/-- bTerm at block 1: the two adversarial exit masses (symbolic). -/
+private lemma cm_bTerm1 (τ : cmT.State 1) (σ' : Multiset cmT.VType) :
+    bTerm cmT cmRB 1 σ' τ
+      = (if σ' = {w11} then t1Q else 0) + (if σ' = {w12} then t2Q else 0) := by
+  unfold bTerm
+  by_cases h1 : σ' = {w11}
+  · subst h1
+    have hsum : (∑ o : cmT.Out 1 τ, if routeOf (cmT.odata 1 τ o) = .termFin ∧
+        (cmT.odata 1 τ o).verdicts = ({w11} : Multiset cmT.VType)
+        then cmRB.TG 1 τ o else 0) = cmRB.TG 1 τ (⟨1, by norm_num⟩ : cmT.Out 1 τ) := by
+      refine (Finset.sum_eq_single_of_mem (⟨1, by norm_num⟩ : cmT.Out 1 τ)
+        (Finset.mem_univ _) ?_).trans ?_
+      · intro b _ hbne
+        rcases cm_route1_cases τ b with ⟨-, hr⟩ | ⟨hb1, -, -⟩ | ⟨-, -, hv⟩
+        · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+        · exact absurd (hb1.trans (Fin.ext rfl)) hbne
+        · exact if_neg (fun hc => cm_ms_ne_11_12 (hv.symm.trans hc.2).symm)
+      · exact if_pos ⟨rfl, rfl⟩
+    rw [hsum]
+    have er1 : (if ({w11} : Multiset cmT.VType) = {w11} then t1Q else 0) = t1Q :=
+      if_pos rfl
+    have er2 : (if ({w11} : Multiset cmT.VType) = {w12} then t2Q else 0) = 0 :=
+      if_neg cm_ms_ne_11_12
+    rw [er1, er2, add_zero]
+    exact pgT1_val
+  · by_cases h2 : σ' = {w12}
+    · subst h2
+      have hsum : (∑ o : cmT.Out 1 τ, if routeOf (cmT.odata 1 τ o) = .termFin ∧
+          (cmT.odata 1 τ o).verdicts = ({w12} : Multiset cmT.VType)
+          then cmRB.TG 1 τ o else 0)
+          = cmRB.TG 1 τ (⟨2, by norm_num⟩ : cmT.Out 1 τ) := by
+        refine (Finset.sum_eq_single_of_mem (⟨2, by norm_num⟩ : cmT.Out 1 τ)
+          (Finset.mem_univ _) ?_).trans ?_
+        · intro b _ hbne
+          rcases cm_route1_cases τ b with ⟨-, hr⟩ | ⟨-, -, hv⟩ | ⟨hb2, -, -⟩
+          · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+          · exact if_neg (fun hc => cm_ms_ne_11_12 (hv.symm.trans hc.2))
+          · exact absurd (hb2.trans (Fin.ext rfl)) hbne
+        · exact if_pos ⟨rfl, rfl⟩
+      rw [hsum]
+      have er1 : (if ({w12} : Multiset cmT.VType) = {w11} then t1Q else 0) = 0 :=
+        if_neg (fun hc => cm_ms_ne_11_12 hc.symm)
+      have er2 : (if ({w12} : Multiset cmT.VType) = {w12} then t2Q else 0) = t2Q :=
+        if_pos rfl
+      rw [er1, er2, zero_add]
+      exact pgT2_val
+    · have hsum : (∑ o : cmT.Out 1 τ, if routeOf (cmT.odata 1 τ o) = .termFin ∧
+          (cmT.odata 1 τ o).verdicts = σ' then cmRB.TG 1 τ o else 0) = 0 := by
+        apply Finset.sum_eq_zero
+        intro o _
+        rcases cm_route1_cases τ o with ⟨-, hr⟩ | ⟨-, -, hv⟩ | ⟨-, -, hv⟩
+        · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+        · exact if_neg (fun hc => h1 (hc.2.symm.trans hv))
+        · exact if_neg (fun hc => h2 (hc.2.symm.trans hv))
+      rw [hsum, if_neg h1, if_neg h2, add_zero]
+
+/-- bTerm at block 2 vanishes (the padding rows carry the ZERO presentation). -/
+private lemma cm_bTerm2 (τ : cmT.State 2) (σ' : Multiset cmT.VType) :
+    bTerm cmT cmRB 2 σ' τ = 0 := by
+  unfold bTerm
+  apply Finset.sum_eq_zero
+  intro o _
+  rcases cm_route2_cases τ o with ⟨-, hr⟩ | ⟨ho, -, -⟩
+  · exact if_neg (fun hc => Route.noConfusion (hr.symm.trans hc.1))
+  · have hTG : cmRB.TG 2 τ o = 0 := by
+      show (cmTg 2 o).val = 0
+      have htg : cmTg 2 o = pgConst 0 0 := by
+        unfold cmTg
+        rw [if_neg (by norm_num : ¬(2 : ℕ) = 1), if_neg ho]
+      rw [htg]
+      exact pgConst_zero_val
+    rw [hTG]
+    exact ite_self 0
+
+/-- bSplit vanishes at block 1 (no split outcomes). -/
+private lemma cm_bSplit1 (he : 1 ∈ Finset.Icc 1 2)
+    (βlt : ∀ e', e' < 1 → cmT.State e' → Multiset cmT.VType → Qq)
+    (σ' : Multiset cmT.VType) (τ : cmT.State 1) :
+    bSplit cmT cmRB cm_hdc 1 he βlt σ' τ = 0 := by
+  rw [bSplit_def, cm_splitOuts1_empty, Finset.sum_empty]
+
+/-- THE BLOCK-1 SOLVE: t̂ᵢ = (D±1)/(2D), keyed by the exit verdicts — the POLE
+at q = 4 is born in the (1−k)⁻¹ = q⁴/D factor. -/
+private lemma cm_blockSolve1 (he : 1 ∈ Finset.Icc 1 2) (τ : cmT.State 1)
+    (σ' : Multiset cmT.VType) :
+    blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1 he τ σ'
+      = (if σ' = {w11} then bh1Q else 0) + (if σ' = {w12} then bh2Q else 0) := by
+  haveI : Unique (cmT.State 1) := ⟨⟨()⟩, fun _ => rfl⟩
+  have hunit : IsUnit ((1 - Kmat cmT cmRB 1 (cm_hK 1 he)).det) :=
+    isUnit_iff_ne_zero.mpr (cmDetHyp 1 he)
+  rw [blockSolve_eq]
+  refine congrFun (cm_inv_mulVec hunit
+    (w := fun _ => (if σ' = {w11} then bh1Q else 0)
+      + (if σ' = {w12} then bh2Q else 0)) ?_) τ
+  funext τ'
+  simp only [Matrix.mulVec, dotProduct, Fintype.sum_unique, Pi.add_apply]
+  have hdiag : (1 - Kmat cmT cmRB 1 (cm_hK 1 he)) τ' default = dQ := by
+    rw [Matrix.sub_apply, cm_kmat1 he, pgK_val]
+    rw [Subsingleton.elim τ' (default : cmT.State 1), Matrix.one_apply_eq]
+    exact one_sub_kQ
+  rw [hdiag, cm_bTerm1, cm_bSplit1, add_zero]
+  by_cases h1 : σ' = {w11}
+  · subst h1
+    rw [if_pos rfl, if_neg cm_ms_ne_11_12, if_pos rfl, if_neg cm_ms_ne_11_12,
+      add_zero, add_zero, mul_comm]
+    exact bh1Q_mul_dQ
+  · by_cases h2 : σ' = {w12}
+    · subst h2
+      rw [if_neg h1, if_pos rfl, if_neg h1, if_pos rfl, zero_add, zero_add, mul_comm]
+      exact bh2Q_mul_dQ
+    · rw [if_neg h1, if_neg h2, if_neg h1, if_neg h2]
+      norm_num
+
+private lemma cm_blockSolve1_11 (he : 1 ∈ Finset.Icc 1 2) (τ : cmT.State 1) :
+    blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1 he τ ({w11} : Multiset cmT.VType)
+      = bh1Q := by
+  rw [cm_blockSolve1, if_pos rfl, if_neg cm_ms_ne_11_12, add_zero]
+
+private lemma cm_blockSolve1_12 (he : 1 ∈ Finset.Icc 1 2) (τ : cmT.State 1) :
+    blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1 he τ ({w12} : Multiset cmT.VType)
+      = bh2Q := by
+  rw [cm_blockSolve1, if_neg (fun hc => cm_ms_ne_11_12 hc.symm), if_pos rfl, zero_add]
+
+/-- THE BLOCK-2 SPLIT ROW (symbolic): the δ = 2 leg pulls the block-1 solve
+back through q ↦ q² — the pole at 4 becomes a pole at 2. -/
+private lemma cm_bSplit2 (he : 2 ∈ Finset.Icc 1 2) (τ : cmT.State 2)
+    (σ' : Multiset cmT.VType) :
+    bSplit cmT cmRB cm_hdc 2 he (blockSolveLt cmRB cm_hdc cm_hK cmDetHyp 2) σ' τ
+      = if ({w11} : Multiset cmT.VType) ≤ σ'
+        then powSubst 2 (blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1
+          (by norm_num) () (σ' - {w11}))
+        else 0 := by
+  rw [bSplit_def]
+  refine (Finset.sum_eq_single_of_mem (⟨0, by norm_num⟩ : cmT.Out 2 τ)
+    (cm_mem_splitOuts.mpr rfl) ?_).trans ?_
+  · intro b hb hbne
+    exfalso
+    have hbr := cm_mem_splitOuts.mp hb
+    rcases cm_route2_cases τ b with ⟨hb0, -⟩ | ⟨-, hr, -⟩
+    · exact hbne (hb0.trans (Fin.ext rfl))
+    · rw [hr] at hbr
+      exact Route.noConfusion hbr
+  · have hJ : cmRB.J 2 τ (⟨0, by norm_num⟩ : cmT.Out 2 τ) = 1 := by
+      show (pgConst 1 (if (2 : ℕ) = 1 then 2 else 0)).val = 1
+      rw [pgConst_val, map_one, map_one]
+    rw [hJ, one_mul]
+    have hterm : ∀ g : {g : Fin 2 → Multiset cmT.VType // σ' = ∑ j, g j},
+        (∏ j : Fin 2, legFactor cmT 2 τ (⟨0, by norm_num⟩ : cmT.Out 2 τ)
+          (blockSolveLt cmRB cm_hdc cm_hK cmDetHyp 2) g.1 j)
+          = (if g.1 (0 : Fin 2) = ({w11} : Multiset cmT.VType) then (1 : Qq) else 0)
+            * powSubst 2 (blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1
+              (by norm_num) () (g.1 (1 : Fin 2))) := by
+      intro g
+      rw [Fin.prod_univ_two]
+      rfl
+    have hsum : (∑ g : {g : Fin 2 → Multiset cmT.VType // σ' = ∑ j, g j},
+        ∏ j : Fin 2, legFactor cmT 2 τ (⟨0, by norm_num⟩ : cmT.Out 2 τ)
+          (blockSolveLt cmRB cm_hdc cm_hK cmDetHyp 2) g.1 j)
+        = ∑ g : {g : Fin 2 → Multiset cmT.VType // σ' = ∑ j, g j},
+            (if g.1 (0 : Fin 2) = ({w11} : Multiset cmT.VType) then (1 : Qq) else 0)
+              * powSubst 2 (blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1
+                (by norm_num) () (g.1 (1 : Fin 2))) :=
+      Finset.sum_congr rfl (fun g _ => hterm g)
+    exact hsum.trans (cm_decomp_sum σ' w11
+      (fun μ => powSubst 2 (blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1
+        (by norm_num) () μ)))
+
+/-- THE BLOCK-2 SOLVE. -/
+private lemma cm_blockSolve2 (he : 2 ∈ Finset.Icc 1 2) (τ : cmT.State 2)
+    (σ' : Multiset cmT.VType) :
+    blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he τ σ'
+      = if ({w11} : Multiset cmT.VType) ≤ σ'
+        then powSubst 2 (blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 1
+          (by norm_num) () (σ' - {w11}))
+        else 0 := by
+  rw [blockSolve_eq]
+  have hK2 : (1 - Kmat cmT cmRB 2 (cm_hK 2 he)) = 1 := by
+    ext i j
+    rw [Matrix.sub_apply, cm_kmat_ne1 he (by norm_num) i j, sub_zero]
+  rw [hK2, inv_one, Matrix.one_mulVec]
+  show bTerm cmT cmRB 2 σ' τ + bSplit cmT cmRB cm_hdc 2 he _ σ' τ = _
+  rw [cm_bTerm2, zero_add]
+  exact cm_bSplit2 he τ σ'
+
+/-! ## §18 The device shape family (one k = 0 fill shape, σ₀ = {(1,1),(1,1)},
+W ≡ 1 — carries the chain tail rs1_equates/x3_total/rsh_interp) -/
+
+noncomputable def cmShape : Shape cmT where
+  k := 0
+  eOf := Fin.elim0
+  eIcc := fun i => i.elim0
+  τOf := fun i => i.elim0
+  δOf := Fin.elim0
+  σ0 := {w11, w11}
+
+noncomputable def cmF : ShapeFam cmT := ⟨{cmShape}⟩
+
+private lemma cm_shConv (hdet : DetHyp cmT cmRB cm_hK) (σ : Multiset cmT.VType) :
+    shConv cmT cmM cmRB cm_hdc cm_hK hdet cmShape σ
+      = if σ = ({w11, w11} : Multiset cmT.VType) then 1 else 0 := by
+  unfold shConv
+  haveI hie : IsEmpty (Fin cmShape.k) := by
+    show IsEmpty (Fin 0)
+    infer_instance
+  by_cases hσ : σ = ({w11, w11} : Multiset cmT.VType)
+  · rw [if_pos hσ]
+    have hg0 : σ = cmShape.σ0 + ∑ i, (fun _ : Fin cmShape.k =>
+        (0 : Multiset cmT.VType)) i := by
+      rw [Finset.univ_eq_empty, Finset.sum_empty, add_zero]
+      exact hσ
+    refine (Fintype.sum_eq_single (⟨fun _ => 0, hg0⟩ :
+      {g : Fin cmShape.k → Multiset cmT.VType // σ = cmShape.σ0 + ∑ i, g i})
+      ?_).trans ?_
+    · rintro ⟨g, hg⟩ hne
+      exfalso
+      apply hne
+      apply Subtype.ext
+      funext i
+      exact i.elim0
+    · rw [Finset.univ_eq_empty, Finset.prod_empty]
+  · rw [if_neg hσ]
+    haveI : IsEmpty {g : Fin cmShape.k → Multiset cmT.VType //
+        σ = cmShape.σ0 + ∑ i, g i} := by
+      refine ⟨fun g => hσ ?_⟩
+      have hg := g.2
+      rw [Finset.univ_eq_empty, Finset.sum_empty, add_zero] at hg
+      exact hg
+    rw [Finset.univ_eq_empty, Finset.sum_empty]
+
+private lemma cm_Rsh (hdet : DetHyp cmT cmRB cm_hK) (σ : Multiset cmT.VType) :
+    Rsh cmT cmM cmRB cm_hdc cm_hK hdet cmF (fun _ => pgConst 1 0) σ
+      = if σ = ({w11, w11} : Multiset cmT.VType) then 1 else 0 := by
+  unfold Rsh
+  rw [show cmF.Sh = {cmShape} from rfl, Finset.sum_singleton, pgConst_one_val, one_mul]
+  exact cm_shConv hdet σ
+
+/-- The decided values: the σ₀-indicator (total mass 1, carried entirely by the
+device shape). -/
+noncomputable def cmRval : Multiset cmT.VType → ℚ → ℝ := fun σ _ =>
+  if σ = ({w11, w11} : Multiset cmT.VType) then 1 else 0
+
+private lemma cm_rval_sum (p : ℚ) : (∑ σ ∈ cmSigmas, cmRval σ p) = 1 := by
+  unfold cmSigmas
+  rw [Finset.sum_insert (by
+    simp only [Finset.mem_insert, Finset.mem_singleton]
+    rintro (h | h)
+    · exact cm_sigma_ne_1 h
+    · exact cm_sigma_ne_2 h)]
+  rw [Finset.sum_insert (by
+    simp only [Finset.mem_singleton]
+    exact cm_sigma_ne_3)]
+  rw [Finset.sum_singleton]
+  unfold cmRval
+  rw [if_pos rfl, if_neg (fun h => cm_sigma_ne_1 h.symm),
+    if_neg (fun h => cm_sigma_ne_2 h.symm)]
+  norm_num
+
+/-! ## §19 THE CHAIN -/
+
+private def cmPrimePools : Set ℚ := {q₀ : ℚ | ∃ p : ℕ, p.Prime ∧ q₀ = (p : ℚ)}
+
+private lemma cm_prime_sub : cmPrimePools ⊆ cmM.Pools := by
+  rintro q₀ ⟨p, hp, rfl⟩
+  exact ⟨p, hp, 1, by rw [PNat.one_coe, pow_one]⟩
+
+private lemma cm_four_mem_pools : (4 : ℚ) ∈ cmM.Pools :=
+  ⟨2, Nat.prime_two, 2, by norm_num⟩
+
+private lemma cm_nle_12 : ¬(({w11} : Multiset cmT.VType) ≤ {w12}) := fun h =>
+  w_ne_11_12 (Multiset.mem_singleton.mp (Multiset.singleton_le.mp h))
+
+private lemma cm_nle_21 : ¬(({w11} : Multiset cmT.VType) ≤ {w21}) := fun h =>
+  w_ne_11_21 (Multiset.mem_singleton.mp (Multiset.singleton_le.mp h))
+
+private lemma cm_bh1Q_ok16 : bh1Q ∈ OKat ((4 : ℚ) ^ (2 : ℕ)) := by
+  unfold bh1Q
+  refine cm_okat_div ?_
+  rw [pol2D_eval]
+  norm_num
+
+private lemma cm_bh2Q_ok16 : bh2Q ∈ OKat ((4 : ℚ) ^ (2 : ℕ)) := by
+  unfold bh2Q
+  refine cm_okat_div ?_
+  rw [pol2D_eval]
+  norm_num
+
+/-- THE WILD-POOL AGREEMENT (legs_read at 4, block 2): the symbolic solve's
+value at 4 is the measured β read through the δ = 2 leg at 16 — the ACTIVE
+coordinate agreement holds; the block-1 coordinate is INACTIVE and never read
+(the note's junk discipline).  This is the countermodel's KEY consistency
+check: the pole lives at the inactive coordinate ONLY. -/
+private lemma cm_legs_read_val (he : 2 ∈ Finset.Icc 1 2) (σ' : Multiset cmT.VType) :
+    ∃ hok : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ' ∈ OKat 4,
+      ((evalAt 4 ⟨blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ', hok⟩ : ℚ) : ℝ)
+        = if ({w11} : Multiset cmT.VType) ≤ σ'
+          then cmβ 1 (σ' - {w11}) ((4 : ℚ) ^ 2) else 0 := by
+  by_cases hle : ({w11} : Multiset cmT.VType) ≤ σ'
+  · set μ := σ' - {w11} with hμdef
+    by_cases hμ1 : μ = ({w11} : Multiset cmT.VType)
+    · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ'
+          = powSubst 2 bh1Q := by
+        rw [cm_blockSolve2, if_pos hle, ← hμdef, hμ1, cm_blockSolve1_11]
+      rw [hbs]
+      refine ⟨powSubst_OKat 2 4 bh1Q cm_bh1Q_ok16, ?_⟩
+      rw [powSubst_evalAt 2 (4 : ℚ) bh1Q cm_bh1Q_ok16]
+      have hev : (evalAt ((4 : ℚ) ^ (2 : ℕ)) ⟨bh1Q, cm_bh1Q_ok16⟩ : ℚ)
+          = bh1V ((4 : ℚ) ^ 2) := by
+        have hsub : (⟨bh1Q, cm_bh1Q_ok16⟩ : OKat ((4 : ℚ) ^ (2 : ℕ)))
+            = ⟨aQ polT1 / aQ pol2D, cm_okat_div (by rw [pol2D_eval]; norm_num)⟩ :=
+          Subtype.ext rfl
+        rw [hsub, cm_evalAt_div]
+        rfl
+      rw [hev, if_pos hle, ← hμdef, hμ1, cmβ_1_11]
+    · by_cases hμ2 : μ = ({w12} : Multiset cmT.VType)
+      · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ'
+            = powSubst 2 bh2Q := by
+          rw [cm_blockSolve2, if_pos hle, ← hμdef, hμ2, cm_blockSolve1_12]
+        rw [hbs]
+        refine ⟨powSubst_OKat 2 4 bh2Q cm_bh2Q_ok16, ?_⟩
+        rw [powSubst_evalAt 2 (4 : ℚ) bh2Q cm_bh2Q_ok16]
+        have hev : (evalAt ((4 : ℚ) ^ (2 : ℕ)) ⟨bh2Q, cm_bh2Q_ok16⟩ : ℚ)
+            = bh2V ((4 : ℚ) ^ 2) := by
+          have hsub : (⟨bh2Q, cm_bh2Q_ok16⟩ : OKat ((4 : ℚ) ^ (2 : ℕ)))
+              = ⟨aQ polT2 / aQ pol2D, cm_okat_div (by rw [pol2D_eval]; norm_num)⟩ :=
+            Subtype.ext rfl
+          rw [hsub, cm_evalAt_div]
+          rfl
+        rw [hev, if_pos hle, ← hμdef, hμ2, cmβ_1_12]
+      · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ' = 0 := by
+          rw [cm_blockSolve2, if_pos hle, ← hμdef, cm_blockSolve1,
+            if_neg hμ1, if_neg hμ2, add_zero, map_zero]
+        rw [hbs]
+        refine ⟨zero_mem _, ?_⟩
+        have h0 : (⟨(0 : Qq), zero_mem _⟩ : OKat 4) = 0 := rfl
+        rw [h0, map_zero, if_pos hle, ← hμdef, cmβ_1_other μ hμ1 hμ2]
+        norm_num
+  · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ' = 0 := by
+      rw [cm_blockSolve2, if_neg hle]
+    rw [hbs]
+    refine ⟨zero_mem _, ?_⟩
+    have h0 : (⟨(0 : Qq), zero_mem _⟩ : OKat 4) = 0 := rfl
+    rw [h0, map_zero, if_neg hle]
+    norm_num
 
 end LeanUrat.MovesU.R2Neg
