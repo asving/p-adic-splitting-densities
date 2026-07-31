@@ -1,0 +1,16 @@
+p=2 n=4 M=4: boxes=4096 order-2 instances=5017 beyond-window=1288 growth(e1*g1>=2)=226 ext-field(g>=2)=317 g1>=2=44 sat-parent=4665 sat-state=4973
+   violations T-G.0:0 T-G.1a:0 T-G.1b:0 T-G.1c:0 T-G.2:0 T-G.3:0 T-G.4:0 T-G.5:0 T-G.6:0 | REPORT naive-differs: 0 naive vertex-law refutations: 0 | (N4)-lower-naive fails: 5001
+p=3 n=4 M=3: boxes=6561 order-2 instances=7506 beyond-window=1298 growth(e1*g1>=2)=131 ext-field(g>=2)=240 g1>=2=19 sat-parent=7329 sat-state=7494
+   violations T-G.0:0 T-G.1a:0 T-G.1b:0 T-G.1c:0 T-G.2:0 T-G.3:0 T-G.4:0 T-G.5:0 T-G.6:0 | REPORT naive-differs: 189 naive vertex-law refutations: 180 | (N4)-lower-naive fails: 7506
+   first nviol instance: ((0, 3, 0, 3), (3, 1, (1, 1), 1), (0, 1, 1, 2, ((2,), (1,)), 1))
+p=2 n=6 M=3: boxes=4096 order-2 instances=4714 beyond-window=901 growth(e1*g1>=2)=91 ext-field(g>=2)=127 g1>=2=18 sat-parent=4572 sat-state=4696
+   violations T-G.0:0 T-G.1a:0 T-G.1b:0 T-G.1c:0 T-G.2:0 T-G.3:0 T-G.4:0 T-G.5:0 T-G.6:0 | REPORT naive-differs: 0 naive vertex-law refutations: 0 | (N4)-lower-naive fails: 4714
+p=3 n=3 M=4: boxes=19683 order-2 instances=23669 beyond-window=4151 growth(e1*g1>=2)=138 ext-field(g>=2)=444 g1>=2=13 sat-parent=23494 sat-state=23661
+   violations T-G.0:0 T-G.1a:0 T-G.1b:0 T-G.1c:0 T-G.2:0 T-G.3:0 T-G.4:0 T-G.5:0 T-G.6:0 | REPORT naive-differs: 1638 naive vertex-law refutations: 1638 | (N4)-lower-naive fails: 23653
+   first nviol instance: ((0, 3, 3), (2, 1, (1, 1), 1), (0, 1, 1, 1, ((2,), (1,)), 1))
+p=2 n=6 M=4: boxes=262144 order-2 instances=350980 beyond-window=99414 growth(e1*g1>=2)=9618 ext-field(g>=2)=14321 g1>=2=1851 sat-parent=335847 sat-state=349145
+   violations T-G.0:0 T-G.1a:0 T-G.1b:0 T-G.1c:0 T-G.2:0 T-G.3:0 T-G.4:0 T-G.5:0 T-G.6:0 | REPORT naive-differs: 0 naive vertex-law refutations: 0 | (N4)-lower-naive fails: 350333
+p=2 n=8 M=3: boxes=65536 order-2 instances=78850 beyond-window=15525 growth(e1*g1>=2)=731 ext-field(g>=2)=1023 g1>=2=146 sat-parent=77688 sat-state=78704
+   violations T-G.0:0 T-G.1a:0 T-G.1b:0 T-G.1c:0 T-G.2:0 T-G.3:0 T-G.4:0 T-G.5:0 T-G.6:0 | REPORT naive-differs: 0 naive vertex-law refutations: 0 | (N4)-lower-naive fails: 78850
+TOTALS: {'g0': 0, 'g1a': 0, 'g1b': 0, 'g1c': 0, 'g2': 0, 'g3': 0, 'g4': 0, 'g5': 0, 'g6': 0, 'inst': 470736, 'beyond': 122577, 'growth': 10935, 'ext': 16472, 'g1ge2': 2091, 'satpar': 453595, 'satst': 468673, 'lowrep': 470057, 'ndiff': 1827, 'nviol': 1818}
+OVERALL: GATE SURVIVES (all T-G pass)
