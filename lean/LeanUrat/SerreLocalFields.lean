@@ -59,9 +59,13 @@ anything beyond the book statement.
 The re-pointed `MovesT.ramIdx`/`resDeg` (item 2 duty (a)) junk-dispatch on the Prop-class
 `IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (g.map (algebraMap ℤ_[p] ℚ_[p]))))`; the
 smoke theorem `isLocalRing_integralClosure_adjoinRoot` below shows the axiom FIRES that
-dispatch on the whole monic ℚ_p-irreducible locus. **BP1 Group E provers (IB-E5–E7) stay
-gated**: the orchestrator runs a Codex audit of this axiom statement BEFORE any Group-E
-consumer is dispatched (recorded in `notes/QUEUE_EXECUTION_2026-07-31.md`, item 2).
+dispatch on the whole monic ℚ_p-irreducible locus. **GATE RESOLVED 2026-07-31**: the
+orchestrator-run Codex audit of this axiom statement PASSED (verdict FAITHFUL-WITH-CAVEATS,
+axiom EXACT; `notes/openmath/V3_serre_audit.jsonl` + BRIDGE_ADJUDICATIONS "VERIFICATION
+ROUND 1"; entry `docs/AXIOM_FAITHFULNESS.md` AX-SERRE-DVR updated), and the Group-E
+consumers LANDED: `MovesU/BridgeE567_zfLaws.lean` (IB-E5/E6/E7 — zf_pos, pointwise
+e·f = deg, zf_factor) + `MovesU/BridgeE9_zpBridge.lean` (IB-E9 `bridgeZpBridge`), each
+printing exactly this axiom + core.
 
 ## Safety evidence (the U1 lesson, axiom edition)
 
@@ -97,8 +101,9 @@ GTM 67, Chapter II §2, Proposition 3 — the DVR clause, at the instance
 `(A, K) = (ℤ_[p], ℚ_[p])`): the integral closure of `ℤ_[p]` in a finite field extension
 `L` of `ℚ_[p]` is a discrete valuation ring. The `ℤ_[p]`-algebra structure on `L` is
 pinned to the composite through `ℚ_[p]` by the `IsScalarTower` hypothesis. Declared
-2026-07-31 (sign-off queue item 2); Codex statement audit PENDING — Group E consumers
-stay gated until it passes. -/
+2026-07-31 (sign-off queue item 2); Codex statement audit PASSED 2026-07-31 (axiom EXACT
+— `notes/openmath/V3_serre_audit.jsonl`; AX-SERRE-DVR entry), Group E consumers landed
+(`MovesU/BridgeE567_zfLaws.lean` / `BridgeE9_zpBridge.lean`). -/
 axiom AX_integralClosure_dvr (p : ℕ) [Fact p.Prime]
     (L : Type) [Field L] [Algebra ℚ_[p] L] [FiniteDimensional ℚ_[p] L]
     [Algebra ℤ_[p] L] [IsScalarTower ℤ_[p] ℚ_[p] L] :

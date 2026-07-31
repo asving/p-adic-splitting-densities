@@ -19,7 +19,7 @@ ledger verified against the tree (not prose); the D-SC thirteen-slot boundary.
 |---|---|---|
 | QUEUE-GATED sign-off items | 13 items (51 sorries) | the 10 named queue items (BRIDGE_ADJUDICATIONS "CONSOLIDATED SIGN-OFF QUEUE") + D-SC Q12/Q13/Q14 |
 | AUTONOMOUS units (provable/executable now) | ~32 units (62 sorries) | TreeCan designer round (R7), BP3-E/F/G remainders, TV_A5 micro-carriers, HC2 P-phase (HK15/U10/U17a/U21/U26), HC1 fills (C6/CL16/CL17/CL20/R6), KA4c/KE9/KE10, D19 n2 probe, G11c falsifier, G19b-half-2 + Q5/Q12 Codex audits, L6_R3 hygiene quarantine |
-| OPEN-MATH obligations (no sorry token — hypothesis rows) | 20 | the 9 BridgeKernels rows + count_tie + transfer/ReadLocality + K7 laws + the 9 UpstreamTyped rows (grouped) + ZpBridge laws + wave-D carrier population + per-p (REG-p); 3 are literature-axiom-eligible |
+| OPEN-MATH obligations (no sorry token — hypothesis rows) | 20 | the 9 BridgeKernels rows + count_tie + transfer/ReadLocality + K7 laws + the 9 UpstreamTyped rows (grouped) + ~~ZpBridge laws~~ (**DISCHARGED 2026-07-31**: E5/E6/E7 PROVED on the AX-SERRE-DVR axiom, BridgeE567_zfLaws.lean; IB-E9 assembled) + wave-D carrier population + per-p (REG-p); 3 are literature-axiom-eligible |
 
 **The capstone chain at HEAD (all compiled, Lean-core):**
 `theoremU` (U10, proved) ← `theoremU_fired` (BridgeMk IB-F5, proved) ←
@@ -27,8 +27,11 @@ ledger verified against the tree (not prose); the D-SC thirteen-slot boundary.
 bundle — a TRANSCRIPTION DEVICE that must not survive; the post-prover wiring pass
 replaces it with the landed constructions).  What stands between HEAD and the goal
 is therefore exactly: (a) supply every `BridgeInputs` field from landed
-constructions (one field, `bridge : ZpBridge`, has NO construction at HEAD —
-group E unwritten, item-2-gated); (b) discharge or literature-cite every row of
+constructions — **CLOSED 2026-07-31**: `bridge : ZpBridge` LANDED as IB-E9
+`bridgeZpBridge` (MovesU/BridgeE9_zpBridge.lean, over IB-E5/E6/E7 in
+MovesU/BridgeE567_zfLaws.lean; footprint = `AX_integralClosure_dvr` + core), so
+**the §2.2 `UInstance` field table is CONSTRUCTION-COMPLETE modulo the R7 sorryAx
+conditionality**; (b) discharge or literature-cite every row of
 `BridgePre` + `BridgeKernelsCtor` + `BridgeKernels` + the seam-carried `count_tie`;
 (c) fill + consume the thirteen slot parameters (D-SC carriers designed; G13′ =
 Q13); (d) inhabit the p-uniform packs (C, KC, K7, KT) — the wave-D instance; (e)
@@ -170,7 +173,7 @@ QUEUE-GATED (named item) · OPEN-MATH · LIT-AXIOM-ELIGIBLE.
 | `Tpin : TreePin` | `bridgeTreePin` (IB-D18 at D1/D2/A11/D4/D15/D16/D7/D17, landed) | PROVED construction (R7 conditionality) |
 | `D : RegData` | `bridgeRegData` (IB-B8, landed) | PROVED construction (consumes BridgePre.hStateNe) |
 | `Dpin : RegPin` | `bridgeRegPin` (IB-B10, BridgeRosterPins.lean, landed) | PROVED construction |
-| `bridge : ZpBridge` | IB-E9 `bridgeZpBridge` — **DOES NOT EXIST AT HEAD** | QUEUE ITEM 2 (Q2-gated: E5–E7 zf_pos/zf_factor provers run only after the ramIdx/resDeg re-point; IP-1 instance = BridgeE12 gate, landed as gate only; `bridgeZfType` exists in BridgeZp.lean) |
+| `bridge : ZpBridge` | IB-E9 `bridgeZpBridge` — **LANDED 2026-07-31** (`MovesU/BridgeE9_zpBridge.lean`, at `bridgeClassifierSpec … bridgeZfType` over the D7/D8 canonical binders) | PROVED construction: IB-E5 `bridge_zf_pos` + IB-E6 `ramIdx_mul_resDeg_of_irreducible` (POINTWISE e·f = deg at the repaired integral-closure defs, via `Ideal.ramificationIdx_mul_inertiaDeg_of_isLocalRing` + the M16 §5 instance chain) + IB-E7 `bridge_zf_factor` (`MovesU/BridgeE567_zfLaws.lean`); ran after the item-2 re-point + the PASSED Codex audit of `AX_integralClosure_dvr` (AX-SERRE-DVR); footprint = that ONE axiom + core (no sorryAx of its own; the R7 conditionality enters only through the D7/D8 binders' eventual suppliers).  With this row the §2.2 table is CONSTRUCTION-COMPLETE modulo R7 |
 | `L : CapstoneLedger` | `bridgeCapstoneLedger` (IB-F3, PROVED) from BK rows + seam + `rs4_checksum_bridge` (IB-C4, PROVED) + `bridgeSolveSeam` (IB-C5, PROVED) | assembly PROVED; content = the BK rows below |
 | `sibjc`, `cl7_slice` | BK.sibjc, `bridge_cl7_slice` (IB-F6, PROVED projection) | ride the BK rows |
 

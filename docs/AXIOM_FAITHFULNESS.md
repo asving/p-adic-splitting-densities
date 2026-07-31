@@ -296,7 +296,7 @@ faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW
 - **Guardian audit:** `notes/SEMANTIC_AUDIT_LOG.md` AXIOMS section, `omReadValuation_lt_of_certLevel_fkeyed`
   entry (2026-07-16 baseline) — CLEAN.
 
-### AX-SERRE-DVR = `SerreLocalFields.AX_integralClosure_dvr` — **FAITHFUL (single clause of a named textbook theorem, instance-restricted)** *(DRAFT 2026-07-31 — PENDING CODEX STATEMENT AUDIT + ASVIN REVIEW; Group E consumers gated until the audit passes)*
+### AX-SERRE-DVR = `SerreLocalFields.AX_integralClosure_dvr` — **FAITHFUL (single clause of a named textbook theorem, instance-restricted)** *(Codex guardian STATEMENT AUDIT PASSED 2026-07-31 — verdict FAITHFUL-WITH-CAVEATS, axiom EXACT, caveats = entry phrasing only (fixed); `lean/notes/openmath/V3_serre_audit.jsonl` + BRIDGE_ADJUDICATIONS "VERIFICATION ROUND 1"; Group E consumers CLEARED and landed 2026-07-31 (BridgeE567_zfLaws/BridgeE9_zpBridge); declaration signed off with the 21-item queue, Asvin 2026-07-31)*
 - **Statement (as declared, LeanUrat/SerreLocalFields.lean; declared 2026-07-31 under sign-off queue
   item 2, `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` C3/N1 + Asvin sign-off):**
   `axiom AX_integralClosure_dvr (p : ℕ) [Fact p.Prime] (L : Type) [Field L] [Algebra ℚ_[p] L]
@@ -329,9 +329,13 @@ faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW
   ℚ_p-irreducible locus by `isLocalRing_integralClosure_adjoinRoot`) and, post-audit, BP1 Group E
   (IB-E5–E7) + `OM/QpType.LocalFactorData` construction; the density capstones do NOT consume it
   (re-printed Lean-core in `AxChk_baseline.lean`, ground truth).
-- **Guardian audit:** PENDING — orchestrator-run Codex audit of the axiom statement is the
-  declared gate before any Group-E prover consumes it (item-2 duty (d), recorded in
-  `lean/notes/QUEUE_EXECUTION_2026-07-31.md`).
+- **Guardian audit:** PASSED 2026-07-31 (the declared item-2 duty-(d) gate) — orchestrator-run
+  Codex audit, artifact `lean/notes/openmath/V3_serre_audit.jsonl`, adjudicated in
+  `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` "VERIFICATION ROUND 1": axiom statement EXACT
+  (precisely the DVR clause, no missing hypotheses, scalar-tower correct); the caveats were entry
+  phrasing only and were fixed in the same round.  Group E dispatched on the pass; the consuming
+  laws are `MovesU/BridgeE567_zfLaws.lean` (IB-E5/E6/E7) + `MovesU/BridgeE9_zpBridge.lean` (IB-E9),
+  each printing exactly this axiom + core.
 
 ### AX-LEAF = `OM.OmLeafFaithful.om_leaf_faithful` — **FAITHFUL (menu-fiber-scoped; joint cite)** *(DRAFT 2026-07-30 — PENDING ASVIN REVIEW)*
 - **Statement (as declared, OM/OmLeafFaithful.lean:489; current scope = W6q re-scope 2026-07-22):** for

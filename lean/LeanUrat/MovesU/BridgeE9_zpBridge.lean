@@ -80,8 +80,9 @@ theorem bridgeZpBridge_zfType (n p : ℕ) [Fact p.Prime]
     (bridgeZpBridge n p canonical canonical_stable).zfType
       = bridgeZfType (p := p) := rfl
 
-/-! ## Census (expected: `bridgeZpBridge` prints `AX_integralClosure_dvr` + core —
-the M16 single-axiom conditionality through the E5/E7 legs; the display is core). -/
+/-! ## Census (expected: BOTH prints `AX_integralClosure_dvr` + core — the M16
+single-axiom conditionality through the E5/E7 legs; the `rfl` display references
+the def, so it inherits the def's footprint). -/
 
 section AxCheck
 
