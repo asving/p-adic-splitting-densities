@@ -60,8 +60,9 @@ the pattern.
 
 ## 2. What changed (edit sites; everything else byte-identical to rev 3)
 
-Diff perimeter of `O2a_phaseB_verifybrief_rev4.md` vs rev 3 (cp + 15 local
-edits; verified by `diff` — every hunk at a declared repair site): header
+Diff perimeter of `O2a_phaseB_verifybrief_rev4.md` vs rev 3 (cp + ~20 local
+edits, 23 diff hunks; verified by `diff` — every hunk at a declared repair
+site): header
 (rev bump, round-5 record, SIX lemmas); deliverable-3 bullet (six); non-
 claims paragraph (OL-6 added); NEW §0″ rev-4 changelog (5 rows); §1 (L6)
 translation fix; §3 NEW Lemma B + proof + the two cite-site re-points +
