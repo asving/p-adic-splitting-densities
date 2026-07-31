@@ -203,3 +203,20 @@ HK-22 (the compiled 2-node instance gating the HK-06 wave, item 3), U10d
 instantiation (item 17), U1_negWitness honesty perimeter, and the U15 SEED-EXIST
 wall's first real test. Forge-A supplies both stages + the TransitionCoreL seam
 + IsNodeLift ingredients. THE 2-NODE GATE dispatched as the next autonomous unit.
+
+## ASVIN SIGN-OFF (2026-07-31, verbatim): "Sign-off granted on all 21 items as
+## preferred, execute the queue. THen alunch agents in parallel (1 fabe and 1
+## codex) for each open piece of math. Orchestrate the entire thing yourself and
+## as proofs land, queue them up to be formalized. Run lots of numerical
+## verification for open conjectures"
+BOUNDARY LIFTED for the 21 queued items at their preferred options. Where the
+ledger lists options without an explicit preferred marker, the /goal authority
+(logic decides) adjudicates: item 16 = add hiaug named hypothesis; item 17 =
+U10d fresh-cut restriction + U10c STEP-READ law via designer unit; item 20 =
+add the 2<=n hypothesis (both null anchors already require it) unless the
+repair agent finds frac_empty ripples less; item 21 = named-hypothesis hoist
+(readsOf_HV_of_pin canonicalized), frozen Moves/DefsL untouched.
+Item 3 (HK-06 wave) executes AFTER the in-flight HK-22 gate lands.
+Open-math campaign: 1 Fable + 1 Codex per census obligation + numerical
+verification fleet (verification/ infra). Proofs that land queue for
+formalization.
