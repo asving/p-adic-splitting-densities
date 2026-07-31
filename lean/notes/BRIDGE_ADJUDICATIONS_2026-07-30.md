@@ -72,3 +72,24 @@ N3 two upside probes ADDED to the gate class: slice_finite pigeonhole;
 ReadLocality-provable-from-SP8-construction (would discharge all three C2 faces).
 N6/N7/N8 folded into BP5 execution. Routine prover mass HELD until gates + C1/C2
 land (many routine units are supplied or deleted by the consolidations).
+
+## THE CONSOLIDATED SIGN-OFF QUEUE (2026-07-31 early; awaiting Asvin's named
+## sign-off — the safety layer requires per-item naming; every item carries
+## compiled evidence and a single logic-preferred option)
+
+1. chi-at chart guard (MovesT/Defs KBTotTower + TreeExpNs): carrier uninhabited
+   at N=0, compiled witness; repair = guard the field.
+2. ramIdx/resDeg re-point (MovesT defs + DefsLedger re-read): IB-E0 countermodel
+   compiled total; repair = invariants at the integral closure (QpType vocabulary).
+3. HK-06 HistoryCoherent wave (frozen MovesC/Defs; task #44): HK-05 GREEN; staged
+   HK-21/22 next; then the (S-a) two-step regrade keying diff.
+4. W17ii field repair (MovesS RS4Chain): TV-H1 countermodel COMPILED; repair =
+   census fields + shevt_disj.
+5. E5 hoist (MovesT fiber_root_split + hU/hR named hypotheses).
+6. CL-06 LSTStmt (i-b) repair, VARIANT A (HC1 R-layer): CL-01/CL-04 evidence done.
+7. ReadLocality row fixes: chart_pin -> the N3b compiled-corrected form;
+   child_local + the below-base N0 <= N guard (audit 1b CRITICAL + GAP).
+8. P2 de-privatize sweep (six families incl. the MovesD E7/E8 survivor choice).
+9. (r2)-on-activeLocus re-scope IF the IB-B15a gate compiles its countermodel.
+Executed under STANDING authorities (not queued): cl6 pgZero.countS := 0
+(private def, definition-change authority; Codex diff confirmation to follow).

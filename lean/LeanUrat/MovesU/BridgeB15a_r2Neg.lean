@@ -460,6 +460,16 @@ def t2Card (m : ℕ) : ℕ := (t2CardZ m).toNat
 def aCard (m : ℕ) : ℕ := (((m : ℤ) - 4) ^ 2).toNat
 def boxCard (m : ℕ) : ℕ := 2 * m ^ 4
 
+private lemma cm_aCard_castQ (m : ℕ) : ((aCard m : ℕ) : ℚ) = ((m : ℚ) - 4) ^ 2 := by
+  unfold aCard
+  have hnn : (0 : ℤ) ≤ ((m : ℤ) - 4) ^ 2 := sq_nonneg _
+  have h1 : ((((m : ℤ) - 4) ^ 2).toNat : ℤ) = ((m : ℤ) - 4) ^ 2 := Int.toNat_of_nonneg hnn
+  have h2 : ((((m : ℤ) - 4) ^ 2).toNat : ℚ) = ((((m : ℤ) - 4) ^ 2 : ℤ) : ℚ) := by
+    exact_mod_cast congrArg (Int.cast : ℤ → ℚ) h1
+  rw [h2]
+  push_cast
+  ring
+
 private lemma cm_DZ_ge {m : ℕ} (hm2 : 2 ≤ m) (hm4 : m ≠ 4) :
     (2 : ℤ) ≤ ((m : ℤ) - 4) ^ 2 * ((m : ℤ) ^ 2 - 2) := by
   have h1 : (1 : ℤ) ≤ ((m : ℤ) - 4) ^ 2 := by
@@ -620,6 +630,25 @@ noncomputable def cmM : MeasuredSide cmT where
 /-- The active locus of the instance: the block-1 state is inactive EXACTLY at 4. -/
 private lemma cm_active_iff (q₀ : ℚ) (e : ℕ) (τ : cmT.State e) :
     cmM.activeState q₀ e τ ↔ (e = 1 → q₀ ≠ 4) := Iff.rfl
+
+/-- Box-typed interval-card wrappers (the n2_box_filter idiom). -/
+private lemma cm_box_card (q₀ : ℚ) (N : ℕ) :
+    Fintype.card (cmM.Box q₀ N) = max 1 (2 * q₀.num.toNat ^ 4) := Fintype.card_fin _
+
+private lemma cm_box_filter_lt (q₀ : ℚ) (N : ℕ) {a : ℕ}
+    (ha : a ≤ max 1 (2 * q₀.num.toNat ^ 4)) :
+    (Finset.univ.filter (fun y : cmM.Box q₀ N => y.1 < a)).card = a :=
+  card_filter_fin_lt ha
+
+private lemma cm_box_filter_mid (q₀ : ℚ) (N : ℕ) {a b : ℕ}
+    (hb : b ≤ max 1 (2 * q₀.num.toNat ^ 4)) :
+    (Finset.univ.filter (fun y : cmM.Box q₀ N => a ≤ y.1 ∧ y.1 < b)).card = b - a :=
+  card_filter_fin_mid hb
+
+private lemma cm_box_filter_ge (q₀ : ℚ) (N : ℕ) (b : ℕ) :
+    (Finset.univ.filter (fun y : cmM.Box q₀ N => b ≤ y.1)).card
+      = max 1 (2 * q₀.num.toNat ^ 4) - b :=
+  card_filter_fin_ge _ b
 
 /-! ## §7 OKat/evalAt helpers (N2Sigmas §F' idiom, local copies) -/
 
@@ -829,12 +858,12 @@ private lemma cm_tg_evalAt (e : ℕ) (τ : cmT.State e) (o : Fin 3) {q₀ : ℚ}
     · subst ho
       have htg : cmTg e 0 = pgConst 1 0 := by unfold cmTg; rw [if_neg he, if_pos rfl]
       have hval : (⟨(cmTg e 0).val, hok⟩ : OKat q₀)
-          = ⟨(pgConst 1 0).val, pgConst_ok _ _ _⟩ := Subtype.ext (by rw [htg])
+          = ⟨(pgConst 1 0).val, pgConst_ok⟩ := Subtype.ext (congrArg PolyGeom.val htg)
       rw [hval, pgConst_evalAt]
       norm_num
     · have htg : cmTg e o = pgConst 0 0 := by unfold cmTg; rw [if_neg he, if_neg ho]
       have hval : (⟨(cmTg e o).val, hok⟩ : OKat q₀)
-          = ⟨(pgConst 0 0).val, pgConst_ok _ _ _⟩ := Subtype.ext (by rw [htg])
+          = ⟨(pgConst 0 0).val, pgConst_ok⟩ := Subtype.ext (congrArg PolyGeom.val htg)
       have ho1 : o.1 ≠ 0 := fun h => ho (Fin.ext h)
       rw [hval, pgConst_evalAt, if_neg ho1]
       norm_num
@@ -857,13 +886,12 @@ noncomputable def cmRB : RatBurdens cmT cmM where
     · by_cases he2 : e = 2
       · subst he2
         rcases cm_route2_cases τ o with ⟨ho, -⟩ | ⟨-, hr, -⟩
-        · subst ho
-          show ((1 : ℚ) : ℝ) = cmM.rowVal 2 τ 0 q₀
-          have : cmM.rowVal 2 τ 0 q₀ = 1 := by
-            show (if (2 : ℕ) = 1 then cmMass1 (0 : Fin 3).1 q₀
-              else if (0 : Fin 3).1 = 0 then 1 else 0) = 1
-            norm_num
-          rw [this]; norm_num
+        · have ho1 : o.1 = 0 := congrArg Fin.val ho
+          have hrow : cmM.rowVal 2 τ o q₀ = 1 := by
+            show (if (2 : ℕ) = 1 then cmMass1 o.1 q₀ else if o.1 = 0 then 1 else 0) = 1
+            rw [if_neg (by norm_num : ¬(2 : ℕ) = 1), if_pos ho1]
+          rw [hrow]
+          norm_num
         · rw [hr] at hroute; exact absurd hroute (fun hc => Route.noConfusion hc)
       · exact absurd hroute (cm_route_ne_split_of_ne he he2 τ o)
   ι_interp := fun e τ ε q₀ h => by
@@ -885,28 +913,30 @@ noncomputable def cmRB : RatBurdens cmT cmM where
   ι_degS := fun _ _ _ => rfl
   cellP := fun e _ c => cmCellP e c.1
   cellP_deg := fun e τ c => by
+    show (cmCellP e c.1).natDegree ≤ (if e = 1 then 2 else 0)
     unfold cmCellP
-    split_ifs with h
-    · rw [cm_actPoly_deg]
-      show 2 ≤ (if e = 1 then 2 else 0)
-      rw [if_pos h.1]
-    · show (1 : Polynomial ℚ).natDegree ≤ _
+    by_cases h : e = 1 ∧ c.1 = 3
+    · rw [if_pos h, cm_actPoly_deg, if_pos h.1]
+    · rw [if_neg h]
       simp
   cellP_nonzero := fun e _ τ c => by
+    show cmCellP e c.1 ≠ 0
     unfold cmCellP
-    split_ifs with h
-    · exact cm_actPoly_ne
-    · exact one_ne_zero
+    by_cases h : e = 1 ∧ c.1 = 3
+    · rw [if_pos h]; exact cm_actPoly_ne
+    · rw [if_neg h]; exact one_ne_zero
   cellP_count := fun e τ c q₀ hq hact => by
     obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+    have hQ : (((m : ℚ)).num.toNat) = m := cm_pool_toNat m
+    show ((cmCellP e c.1).eval (m : ℚ) : ℚ) = _
     unfold cmCellP
     by_cases h : e = 1 ∧ c.1 = 3
     · rw [if_pos h, cm_actPoly_eval]
       have hinst : cmM.cellInst e τ c (m : ℚ) (cmM.cellLvl e τ c)
           = Finset.univ.filter (fun y => y.1 < aCard (((m : ℚ)).num.toNat)) := if_pos h
-      rw [hinst, cm_pool_toNat]
-      have hle : aCard m ≤ max 1 (2 * (((m : ℚ)).num.toNat) ^ 4) := by
-        rw [cm_pool_toNat]
+      rw [hinst]
+      have hle : aCard (((m : ℚ)).num.toNat) ≤ max 1 (2 * (((m : ℚ)).num.toNat) ^ 4) := by
+        rw [hQ]
         refine le_trans ?_ (le_max_right _ _)
         have hbound : ((m : ℤ) - 4) ^ 2 ≤ 2 * (m : ℤ) ^ 4 := by
           have hm : (2 : ℤ) ≤ (m : ℤ) := by exact_mod_cast hm2
@@ -915,7 +945,7 @@ noncomputable def cmRB : RatBurdens cmT cmM where
         have hcast : ((2 * m ^ 4 : ℕ) : ℤ) = 2 * (m : ℤ) ^ 4 := by push_cast; ring
         unfold aCard
         omega
-      rw [card_filter_fin_lt hle]
+      rw [cm_box_filter_lt _ _ hle, hQ]
       unfold aCard
       have hnn : (0 : ℤ) ≤ ((m : ℤ) - 4) ^ 2 := sq_nonneg _
       push_cast [Int.toNat_of_nonneg hnn]
@@ -930,10 +960,11 @@ noncomputable def cmRB : RatBurdens cmT cmM where
     · intro hact c
       show (cmCellP e c.1).eval q₀ ≠ 0
       unfold cmCellP
-      split_ifs with h
-      · rw [cm_actPoly_eval]
+      by_cases h : e = 1 ∧ c.1 = 3
+      · rw [if_pos h, cm_actPoly_eval]
         exact pow_ne_zero _ (sub_ne_zero.mpr (hact h.1))
-      · simp
+      · rw [if_neg h]
+        simp
     · intro hall he1
       subst he1
       have hc := hall ⟨3, by norm_num⟩
