@@ -1359,3 +1359,158 @@ stays root-side (the conservative reading).
 — DELTA 2 complete, 2026-08-01. Original tree + DELTA 1 above byte-untouched; the §4
 acceptance criterion unchanged (§D1.7). Next tree edit: DELTA 3 after the GD campaign's
 first wave + the D2.7 audit.
+
+---
+
+## DELTA 3 (wave-8 fold) — append-only, dated 2026-08-02
+
+*(Executes the ledger's wave-8 adjudications: `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`
+§"WAVE 8 COMPLETE (2026-08-02, commits a9f294c/6caf586/3e9f199)", folded at 6e170e6.
+Everything above — DELTA 1/2 included — is byte-untouched; corrected readings recorded HERE
+govern. The §4 acceptance criterion is unchanged and applies verbatim (§D1.7 discipline).
+No Lean file is touched by this delta. Unit: D3CU2t (which also EXECUTED CU-2t — §D3.5).)*
+
+### D3.1 CU-6 EVICTED from the root-mandatory path (the D2.7 audit, adjudicated)
+
+The owed §D2.7 audit was ANSWERED at the CU cluster unit —
+`lean/notes/openmath/CU_cluster_phaseB.md` §6.1 (commit a9f294c): **NO on every text on
+file** — the D-11 node text (§D1.2) carries no ∼_OM quantifier; O-12's OL-O12-2 is a pure
+table-data identification with no BNS object; the O3design §R2 row has no warrant sentence
+and its visible ancestry is a rates-only (LIT-5-consuming) rationale that is D-16's move.
+What D-11's mass identification DOES need is σ-CONSTANCY ACROSS ONE CONTINUATION EVENT'S
+CYLINDER — per-box lift uniformity, owned by O5triple Theorem E + D-15 (via CU-7's
+interface) — NOT σ-invariance across ∼_OM-equivalent polynomials. Orchestrator adjudication
+(math-first delegation, ledger wave-8 entry): **the CUC §6.1 recommended line is signed
+off.** Governing consequences:
+* **CU-6/OB2 leaves the root-mandatory path** → deferred tier (route R-QNT, D-16's package,
+  alongside OB1). §D2.3's CU-6 bullet and §D2.6's conservative root-side placement are
+  SUPERSEDED.
+* The BNS §2 definitional pin (Defs 1.7/3.1–3.2) leaves with it: **ZERO root-side BNS
+  touch-points remain.** §D2.4's "ONE residual BNS touch-point … pending the D2.7 audit"
+  resolves to none; LIT-5 is now route-R-QNT-only OUTRIGHT (§D2.6 step 4's parenthesis
+  resolves the same way).
+* The D2.3 consumer-walk arrow "D-11 σ-invariance ← CU-6" is DELETED, replaced by
+  "row-label σ-constancy ← CU-7 (O5triple Thm E) + D-15" (CUC §8 arrow delta (3)).
+* Gate G-OB2 is retained as a free-rider; CU-6's §6 proof-by-citation text stays on record
+  in the deferred tier (nothing is discarded).
+* Standing caveat (O3adj §4 R3 discipline, carried): D-11 is OPEN — if its eventual PROOF
+  (as opposed to every present statement text) pools OM-equivalent instances, this eviction
+  re-opens as a re-scoping event, not a silent assumption.
+
+### D3.2 The O-9 index fix (recorded display correction; corrected reading governs)
+
+The §2.4 O-9 node text (and M08 §3, which it quotes) writes the order-(r+1) census field as
+F_{q^{f̄_r}} with f̄_r = f₀⋯f_{r−1}. **Off by one:** in GMN indexing the order-(r+1)
+residual polynomials of a type of order r live over F_{r+1}, of degree **d = f₀⋯f_r** (one
+more factor, the type's own f_r = deg ψ_r included). Everywhere the O-9 node writes
+q^{f̄_r}, read q^d; the census statement's polynomial-in-q content is insensitive, the field
+degree display was wrong. Evidence: `lean/notes/openmath/O9_phaseB_verifybrief.md` §"INDEX
+FLAG" + attempt §1 (commit 6caf586); the harness instance (order-1 parent with root key X:
+f₀ = 1, f₁ = g, reads over F_{q^g}) pins it concretely.
+
+### D3.3 O-9 status update: REDUCED to (GR-B) + (FRESH) — zero new open inputs
+
+Per §0 vocabulary (a reduction is not a proof): **O-9 at order ≥ 2 remains OPEN, now
+REDUCED to exactly two pre-existing named opens** — **(GR-B)** (GD23 rev 2/3 §7.2's
+anchored-march residue-structure package = the GD-2/GD-3 head, order-1 instance PROVED,
+orders ≥ 2 under the GD23 verification arc) and **(FRESH)** (the joint-with-parent
+separation clause, priced at the GD-2/CL-13 vertex-law layer = CU-1's step content).
+**O-9 adds ZERO new open inputs to the mandatory path.** On file (commit 6caf586;
+`O9_phaseB_attempt.md` + `O9_phaseB_verifybrief.md`, hostile pass owed —
+PROVED-UNVERIFIED artifacts): OL-A(i)/(ii) proved outright (Lemmas A1/TRI/LED over the
+pinned GMN Prop 2.7(1)(3)(4) + Lemma 2.2(2)); OL-A(iii) CONSUMED from GD-3 (executing
+D2.2's "OL-B is GD-3" re-pointing — the tree's OL-B row is thereby discharged as a
+separate obligation); OL-A(iv) = the displayed (DET) sufficiency + (FRESH); OL-C = the
+two-theorem census **CEN-W** (window form, conditional on (GR-B) alone; free-end factor
+(q^d − 1)^ε) / **CEN-J** (joint form = THE O-9 census, conditional on (GR-B) + (FRESH);
+ε killed by JUNCTION-PIN). **TYPE-MARCH** (+ the F₃ type-breaking countermodel (1,1,2):
+{(1,2)} ↦ {(2,1)}) shows the march is what makes the census polynomial — GD-3-FULL is a
+THEOREM-LEVEL dependency of the value side, sharpening SYNTH4's pricing note. Falsifier
+executed (M08's proposed T6): `verification/openmath/o9_order2_census_check.py` — 10
+configs, 8,220,994 boxes, 1,128,288 order-2 instances, checks K1–K4 + T2 all 0 violations,
+18 cross-p census cells (one over F_{p²}), fitted spectrum ε = 0 throughout.
+
+### D3.4 O-10 status update: PROVED-UNVERIFIED IN FULL, SHARPER than charged
+
+**O-10 (SIB/JC) moves OPEN → PROVED-UNVERIFIED** (proof on file, commit 3e9f199,
+`lean/notes/openmath/O10_phaseB_attempt.md`; hostile pass owed; ledger grade "PROVED IN
+FULL SHARPER"). Content: **K-COUNT proved in full**, self-contained in factor coordinates
+over ℤ_p, sharper than the D-8 charge — the fibers of the level-N multiplication map over
+a ρ-separated polydisc are constant and nonempty at EVERY N ≥ τ, of size
+p^{Σᵢ min(eᵢ, N−τ)} for the Smith profile (eᵢ) of the Sylvester block map, which equals
+p^ρ exactly in the D-8 guard range N ≥ τ + e_max (e_max ≤ ρ) — Sylvester block
+determinant + in-polydisc Smith-profile constancy + Newton T-bijection. Theorem 2 = the
+adapted-cell O-10 statement carrying the D-8 guard, UNCONDITIONAL in factor coordinates
+with the (SIB) product law; its application to the engine's realized site strata is
+conditional on the two displayed open interfaces (K-LOC = M07 OL-3, and (I-τ)) — exactly
+as the tree prices them. K-JAC (polydisc form) = its Lemma 3; K-FACT consumed as the
+recorded GMN citations. **OL-4/D-8r RESOLVED within the adapted regime** (no small-N
+anomaly; the product law needs only the read-depth guard; the 2ρ buffer buys the explicit
+p^ρ). M07's fences mapped one-per-clause; the item-27 Lean statement repair stays PARKED.
+Falsifier: `verification/o10_kcount_harness.py`, 68 PASS / 0 FAIL (predictions sealed
+pre-run; one post-hoc refinement honestly recorded). D-8's guard is confirmed in the
+sharper exact-fiber form; consumers (T-6 (SIB-STEP), O-11's K1) are now served at the
+statement layer through the displayed K-LOC interface.
+
+### D3.5 CU-2t EXECUTED (the one open lemma of the CU cluster)
+
+The CUC's honest flag (its §2: "OPEN (one lemma)") is discharged: **Lemma CU-2t is
+written and proved** — `lean/notes/openmath/CU_cluster_phaseB.md` §9 (unit D3CU2t, this
+delta's commit): the (t-i)/(t-ii) terminal seam as one lemma, per the recorded route
+O-2a Thm 2(B) + Cor 1.20/3.8 + TB-CAP windows. Grade: **PROVED-UNVERIFIED, conditional on
+P(O-2a r5) + TB-CAP's D-12r perimeter + the GD residue** (zero new open inputs; the two
+engine-bookkeeping terminal rows (T-DEC)/(T-VERD) are displayed GD-4-family instances —
+scope note owed to the GD-4 owner). Displayed extras: the W3 carrier note (the τ-irr seam
+object is a PAIR, not an 𝔈-concatenation) and the quarantined Corollary CU-2t-deep (the
+GD-8 exact-key corner, conditional on the unpinned (REP-IRR) literature pull — flagged to
+the literature unit). §D2.3's CU-2t bullet reads accordingly; hostile pass owed.
+
+### D3.6 The pending-verdict registry + the remaining mandatory path
+
+**Registry pointer (governing):** every CONDITIONAL-ON-PASS in the CU/GD/O-* Phase-B
+grades resolves through the CUC §0 pending-verdict registry
+(`lean/notes/openmath/CU_cluster_phaseB.md` §0) — the live key for P(O-2a r5),
+P(O-1thr r4), P(O5t r3), P(CU-1 r2), P(GD23 r2). Tree readers consult it before citing
+any D2.3/D2.5 grade.
+
+**Remaining mandatory path (supersedes §D2.6's tail; ledger wave-8 wording):**
+1. **The running pass-2 verdicts + wave-8/9 verifications.** GD23 r3 pass 2 LANDED while
+   this delta was drafted (commit 4d109b9: SOUND-WITH-GAPS, 0 critical, 9 justification
+   gaps — adjudication + light repairs owed); CU-1 r3 pass 2 LANDED (commit 252f34c:
+   SOUND-WITH-GAPS, 0 critical, 7 consumption-accounting/display gaps — same); O4T r2
+   pass 2 RUNNING. Fresh hostile passes owed on the wave-8 artifacts: O-9 (§D3.3), O-10
+   (§D3.4), the CUC record + CU-2t (§D3.5), and the §0-registry passes (O-2a r5,
+   O-1thr r4, O5triple r3).
+2. **CU-2t** — EXECUTED (§D3.5); verification rides item 1.
+3. **D-11 + OL-O12-2** (instance pin) — now precisely priced post-audit: kernel entries as
+   Haar volumes of T-3/T-6 continuation events with per-row disjointness + termination
+   margin + block system 𝔅_n (or the O-12 robustness criterion); the σ input is row-label
+   σ-constancy ← CU-7 (O5triple Thm E) + D-15; **no OB2, no BNS** (§D3.1).
+4. **O-11** (D-9 corrected dependency set: O-10 [now §D3.4, guarded] + O-5/D-7 semantic
+   labels + O-8b/O-9 transition weights + K2/D-9k + K4; [1v]-FULL value content its own).
+5. **ROOT ASSEMBLY** (Phase C; D-1/D-2/D-4 in hand per D2.5; Asvin's scaffold shape as
+   the document spine).
+Throughout: the GD-1..GD-8 families remain the conditionality mass behind items 1–4; their
+heads are the GD23/CU-1 arcs (item 1) + the GD campaign (D2.6 step 3, in flight).
+
+### D3.7 In-flight events landed while this delta was drafted (recorded, NOT adjudicated)
+
+Two sibling wave-10 units committed between this delta's drafting and its landing;
+recorded for honesty against §§D3.3/D3.6, adjudication rides the next fold:
+* **O-9 verify pass 1: NOT ACCEPTED** (commit c17777f; 2 criticals / 3 gaps) — the census
+  exponent E′'s left-tail ceiling is REFUTED by a machine countermodel (256 vs 64:
+  overcount q^d per integral left-tail slot), and JUNCTION-PIN's PROVED label is
+  unsupported against the unit's own §5.4; the verifier's SOUND sublayer: TYPE-MARCH + the
+  F₃ countermodel, A1/TRI/LED, (DET), and CEN-W's (GR-B)-only conditionality. Consequence
+  for §D3.3: the reduction's SHAPE (zero new open inputs; (GR-B) + (FRESH)) survives per
+  the verifier's own sound-list, but the exponent ledger needs a repair round — §D3.3's
+  "hostile pass owed" reads "repair + re-pass owed". The §D3.2 index fix is untouched.
+* **D-11 (MASS-ID) Phase-B attempt LANDED** (commit 0cae7d8) — M1/M1′/M2/M3, with M3
+  (O5triple Thm E + D-15 σ-constancy) explicitly re-confirming "OB2 unconsumed" — the
+  §D3.1 eviction's factual basis re-confirmed by the D-11 prover itself; OL-O12-2's math
+  half closed there, residue a finite data pass. §D3.6 item 3 is in execution, verdict
+  owed.
+
+— DELTA 3 complete, 2026-08-02 (unit D3CU2t). Original tree + DELTA 1/2 above
+byte-untouched; §4 acceptance criterion unchanged. Next tree edit: DELTA 4 at the wave-10
+fold (the §D3.7 verdicts + the pass-2 adjudications of §D3.6 item 1).
