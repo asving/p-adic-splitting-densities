@@ -325,3 +325,28 @@ behind RealizationComplete (= M18 MarkGraft), item-16 e'>=2 pin, item-21 Wall
 A<->B seam. NEXT: HK-06 wave SOLO (item 3, the last); Serre+GMN Codex audits;
 M12-Codex-proof Fable verification; M05-Fable-proof Codex verification; M17
 formalization.
+
+## VERIFICATION ROUND 1 (2026-07-31): V1/V2/V3 adjudicated
+V3 Serre axiom: FAITHFUL-WITH-CAVEATS — axiom EXACT (states precisely the DVR
+clause, no missing hypotheses, scalar-tower correct); caveats were entry
+phrasing only, FIXED. Guardian audit PASSED -> GROUP E DISPATCHED.
+V1 (Codex M12 proof): UNSOUND — 2 criticals: (i) inStratum quantifier
+over-reach (needs a realization theorem: inStratum contains ONLY branch
+histories/prefixes — additional data, not derivable from XFamily); (ii)
+tree/iteration correspondence unproved. POSITIVE: the caterpillar does NOT
+break the s=2 cap (resultant term pays: v_p(Disc f_m)=2(m+1) >= m) — the
+numerical WeightChargeFullP s=2 cap survives as a supported conjecture (N7
+numerics bear on it). M12 status: REDUCED (sharpened).
+V2 (Fable M05 proof): UNSOUND — criticals confined to (i) the T5
+optimality/"real gap" claim (lower bound from a superset — invalid) and (ii)
+the unproved tie to the PROJECT classifier (OL2). VERIFIER CONFIRMS the core:
+semantic-classifier exhaustion WITH RATE at every prime incl. wild (Lemmas B-D
+sound; wild term = finite additive shift). M05 status: PARTIAL-VERIFIED; OL2
+literature candidate pinned by the verifier: Bauch-Nart-Stainsby "Complexity
+of OM factorizations", LMS JCM 16 (2013), Theorem 3.13 (precision delta+1
+preserves OM factorizations) — 4th literature-axiom candidate.
+CONVERGENCE (the unifying idea, synthesis duty): M02 (L1-L3), M05 (OL2), M06
+(ns-soundness), M12 (inStratum realization), M18 (MarkGraft) ALL reduce to ONE
+INSTANCE-FAITHFULNESS KERNEL — "the built classifier realizes the semantic OM
+object" — BNS 3.13 anchors the precision half. Synthesis agent dispatched to
+design THE kernel.

@@ -320,7 +320,7 @@ faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW
   by the `IsScalarTower` hypothesis, and the quantification over arbitrary `Algebra ℚ_[p] L`
   structure maps φ is harmless: `integralClosure ℤ_[p] L` depends only on the image subring
   φ(ℤ_[p]), a complete DVR with fraction field φ(ℚ_[p]) by transport along the ring isomorphism —
-  every instance is literally Prop. 3 at (A, K, L) = (φ(ℤ_[p]), φ(ℚ_[p]), L); (b) hypothesis-class
+  every instance is canonically equivalent (by transport) Prop. 3 at (A, K, L) = (φ(ℤ_[p]), φ(ℚ_[p]), L); (b) hypothesis-class
   non-vacuity is machine-checked (`axiom_nonvacuous` at L = ℚ_[p]; the degree-1 content is
   independently witnessed axiom-free at the `IsIntegralClosure` carrier by
   `OM/QpType.trivialFactorData`); (c) mathlib wall documented at `OM/QpType.lean` (no DVR-ness of

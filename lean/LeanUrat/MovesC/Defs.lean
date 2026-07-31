@@ -612,6 +612,27 @@ def History.prevRim (H : History p F) (n : ℕ) : ℕ → ℕ
   | 0 => n
   | i + 1 => (H.nodes[i]?).elim n (fun ν => ν.μ * ν.childWidth)
 
+/-- **The READ REGRADE** `σ → σV` at a read pair `(e★, h★)` — HK-06 WAVE (task #44, the
+ratified (S-a) two-step transition keying, BP2 §3.1(c), executed 2026-07-31): the
+intermediate stage `σV` keeps the parent's key/fields/base/representatives, hosts the
+READ pair (`σV.e = e★`, `σV.h = h★`), records the parent's `w` as its `wPrev`
+(`child_wPrev`-style history invariant, one step earlier), and carries the
+`(e★, h★)`-slot-minimum weight over the parent's `w`.  PAIR-PARAMETERIZED (the clause
+list reads only the node's `(e, h)`), so `HC2.StageTransHyp`'s re-key can consume it
+without a `Node` (dissolves BP2 REVISION-2 finding 6's layering cycle).  The clause
+list is the HK-05-CERTIFIED staged core list (`HC2/HK05_countermodelGate.lean`'s
+`StagedRegradeOf`, byte-per modulo the pair parameterization; the stall gate ran
+against exactly these clauses).  The D.7(i)–(v) σV residual-law clauses are a NAMED
+OPEN ADDENDUM — never ratified (BP2 pass-8: §B2-FINAL not accepted); the `e★ = 1`
+recording fence in `HistoryCoherent` below keeps the recorded perimeter where the S9
+route discharges them.  At a read with `(e★, h★) = (σ.e, σ.h)` and `σ.wPrev = σ.w`
+pointwise, `σV := σ` satisfies every clause (the identity regrade; root reads at the
+frame pair use a wPrev-re-dressed copy when `σ.wPrev ≠ σ.w`). -/
+def RegradeOf (σ : Stage p F) (estar hstar : ℕ) (σV : Stage p F) : Prop :=
+  σV.Φ = σ.Φ ∧ σV.e = estar ∧ σV.h = hstar ∧ σV.K = σ.K ∧ σV.FQ = σ.FQ ∧
+  σV.reps = σ.reps ∧ (∀ f, σV.wPrev f = σ.w f) ∧
+  IsSlotMinWeight σV.w σ.Φ estar hstar σ.w
+
 /-- **History coherence** (§C.0 + C.1.0): the recorded frames are linked by the ACCEPTED
 §B2-DEF transitions AT THE RECORDED NODE DATA — no free existentials (round-1 audit repairs:
 the increment transition consumes the PARENT node's recorded `ψ, g, e, h, zbar` through
@@ -630,7 +651,30 @@ REALIZABILITY class (`TransitionAdmissible`/`Realizable`), rev 14's hypothesis b
 never to coherence. In their place, the per-node **γ-TIE** (the on-lattice condition, role
 (ii) of `Node.ustar`): the recorded integer `gam` equals the augmented-scale total side
 weight `e_i·(STR_i·u*_i) + j*_i·h_i` (stage scale = `STR_i ×` absolute, C.1.0(c); `γ ∈ ℤ`
-IS on-lattice, and `hAnchor` reads the stride-position anchor off it). -/
+IS on-lattice, and `hAnchor` reads the stride-position anchor off it).
+**HK-06 WAVE (task #44; the ratified (S-a) two-step regrade re-key, executed
+2026-07-31 — BP2 §3.1(c) + the HK-22 emptiness certificate
+`HC2/HK22_twoNodeGate.lean` proving the OLD keying's necessity-of-repair).** The OLD
+non-recentering leg keyed BOTH the lift stride and `TransitionCoreL` at the PARENT
+node's pair `(νᵢ.e, νᵢ.h)` with ties `σᵢ₊₁.s/t = νᵢ.s/t` — CONTRADICTORY at every
+genuinely steep read (V10 findings 1–2, Lean-core on disk; the machine-certified gate
+instance is `HK22.twoNodeGate_isEmpty`). The repaired leg decomposes the transition
+per D.5→D.7: STEP 1, the READ REGRADE `RegradeOf σᵢ νᵢ.e νᵢ.h σV` (against which the
+recorded `IsNodeLift` is the frame-pair standard-lift shape — S9's hypothesis class);
+STEP 2, `TransitionCoreL σV σᵢ₊₁` at the NEXT pair `(νᵢ₊₁.e, νᵢ₊₁.h)` (D.7's next-side
+keying; the child stage pair = the child node's read pair via `child_e`/`child_h`).
+Wave riders, decided by the /goal rule with compiled evidence, recorded in
+`lean/notes/QUEUE_EXECUTION_2026-07-31.md` §Item 3:
+* **RG-2 recording fence** (the Q2-extension; evidence: §B2-FINAL NOT accepted at
+  pass 8): the leg conjoins `νᵢ.e = 1` — non-recentering reads with regrade stride
+  `e ≥ 2` (the open carry-algebra interior) are UNRECORDABLE, a disclosed definitional
+  scope restriction (visible here, unlike the OLD silent contradiction). The V9 cone's
+  `e ≥ 2` legs close by this disclosed emptiness, statements byte-unchanged.
+* **R-tie guard** (evidence: the HK-15 per-leg pair-pin adjudication, item 16
+  2026-07-31 — the ∀-(s,t) stage tie is UNPROVABLE for choice-built stages at
+  `e' ≥ 2`, Bézout non-uniqueness under `Exists.choose`): the Bézout ties re-key to
+  the CHILD node's pair (`σᵢ₊₁.s/t = νᵢ₊₁.s/t`, per the (S-a) display) and are
+  GUARDED by `σᵢ₊₁.e = 1`, where `he1t`/`hbezCanon` force both sides. -/
 def HistoryCoherent (H : History p F) : Prop :=
   (∀ hj : 0 < H.nodes.length, (H.nodes[0]'hj).σ.Φ.natDegree = 1) ∧
   (∀ (i : ℕ) (hi : i < H.nodes.length),
@@ -646,12 +690,16 @@ def HistoryCoherent (H : History p F) : Prop :=
       IsRecenteringCore (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
         (H.nodes[i]'(by omega)).center (H.nodes[i]'(by omega)).lift) ∧
     ((H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering →
-      IsNodeLift (H.nodes[i]'(by omega)) (H.nodes[i+1]'hi).σ.Φ ∧
-        TransitionCoreL (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
-          (H.nodes[i+1]'hi).σ.Φ (H.nodes[i]'(by omega)).e (H.nodes[i]'(by omega)).h
+      (H.nodes[i]'(by omega)).e = 1 ∧
+      ∃ σV : Stage p F,
+        RegradeOf (H.nodes[i]'(by omega)).σ (H.nodes[i]'(by omega)).e
+            (H.nodes[i]'(by omega)).h σV ∧
+        IsNodeLift (H.nodes[i]'(by omega)) (H.nodes[i+1]'hi).σ.Φ ∧
+        TransitionCoreL σV (H.nodes[i+1]'hi).σ
+          (H.nodes[i+1]'hi).σ.Φ (H.nodes[i+1]'hi).e (H.nodes[i+1]'hi).h
           (H.nodes[i]'(by omega)).zbar) ∧
-    ((H.nodes[i+1]'hi).σ.s = (H.nodes[i]'(by omega)).s) ∧
-    ((H.nodes[i+1]'hi).σ.t = (H.nodes[i]'(by omega)).t) ∧
+    ((H.nodes[i+1]'hi).σ.e = 1 → (H.nodes[i+1]'hi).σ.s = (H.nodes[i+1]'hi).s) ∧
+    ((H.nodes[i+1]'hi).σ.e = 1 → (H.nodes[i+1]'hi).σ.t = (H.nodes[i+1]'hi).t) ∧
     ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide ≤ (H.nodes[i]'(by omega)).μ) ∧
     ((H.nodes[i+1]'hi).Dwidth = (H.nodes[i]'(by omega)).childWidth) ∧
     ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope)

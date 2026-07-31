@@ -119,6 +119,7 @@ pari.allocatemem(1 << 28, silent=True)
 
 INF = 10 ** 9          # valuation marker "above precision horizon"
 RNG = random.Random(20260731)
+sys.setrecursionlimit(60000)
 
 # ======================================================================
 # Ring tower: BaseRing = Z/p^K with uniformizer p; EisRing(prev, e, cstar)
@@ -249,6 +250,11 @@ def poly_trim(R, f):
 def poly_add(R, f, g):
     n = max(len(f), len(g))
     return [(R.add(f[i] if i < len(f) else R.zero(),
+                   g[i] if i < len(g) else R.zero())) for i in range(n)]
+
+def poly_sub(R, f, g):
+    n = max(len(f), len(g))
+    return [(R.sub(f[i] if i < len(f) else R.zero(),
                    g[i] if i < len(g) else R.zero())) for i in range(n)]
 
 def poly_mul(R, f, g):
@@ -438,20 +444,17 @@ class Walk:
             self.anom.append('Vmu-nonzero(%d)' % pts[mu][1]); return
         # precision horizon (in ring units): consumed values must stay below
         horizon = (self.K - 2) * R.Eabs
-        if pts[0][1] >= min(INF, horizon):
+        pts_fin = [(j, v) for (j, v) in pts if v < horizon]
+        if not pts_fin or pts_fin[0][0] == mu:
             self.branches.append(dict(hist=hist, ef=None, xw=Fraction(m * mu) * xmult,
                                       deep=True, Nstar=None))
             return
-        hull = lower_hull(pts)
-        if any(v >= horizon for (_, v) in hull):
-            self.branches.append(dict(hist=hist, ef=None, xw=Fraction(m * mu) * xmult,
+        jmin = pts_fin[0][0]
+        if jmin > 0:
+            # censored member: a phi-power-jmin factor deeper than the horizon
+            self.branches.append(dict(hist=hist, ef=None, xw=Fraction(m * jmin) * xmult,
                                       deep=True, Nstar=None))
-            return
-        # missing j=0 vertex (INF val) with finite hull start > 0: phi divides F
-        if hull[0][0] != 0:
-            self.branches.append(dict(hist=hist, ef=None, xw=Fraction(m * mu) * xmult,
-                                      deep=True, Nstar=None))
-            return
+        hull = lower_hull(pts_fin)
         for si in range(len(hull) - 1):
             (j1, v1), (j2, v2) = hull[si], hull[si + 1]
             rise, run = v1 - v2, j2 - j1
@@ -486,13 +489,17 @@ class Walk:
                     self.leaf(hist2, eacc * e_s, facc * g,
                               Fraction(m * e_s * g) * xmult, wabs)
                 elif e_s == 1 and g == 1:
-                    # RECENTERING (same key, refined)
+                    # RECENTERING (same key, refined): phi' = phi - r~ pi^h
                     if prev_h is not None and h_s <= prev_h:
                         self.anom.append('D10-climb-violation h %s<=%s' % (h_s, prev_h))
+                        self.branches.append(dict(hist=hist2, ef=None,
+                                                  xw=Fraction(m * mu_f) * xmult,
+                                                  deep=True, Nstar=None))
+                        continue
                     root = self.residual_root(psi_f, m)
                     delta = [R.mul(ring_from_int(R, rc), R.shift_elt(1, h_s))
                              for rc in root]
-                    phi2 = poly_add(R, phi, delta + [R.zero()] * (m + 1 - len(delta)))
+                    phi2 = poly_sub(R, phi, delta + [R.zero()] * (m + 1 - len(delta)))
                     phi2 = phi2[:m] + [R.one()]
                     self.cluster(R, F, psibar, mu_f, hist2, depth0, eacc, facc,
                                  xmult, phi=phi2, prev_h=h_s)
@@ -554,17 +561,18 @@ class Walk:
             self.anom.append('order2-Vmu-nonzero(%s)' % V1[mu]); return
         horizon = (self.K - 2) * R.Eabs * e1
         pts = [(j, V1[j]) for j in range(mu + 1)]
-        if pts[0][1] >= min(INF, horizon):
+        pts_fin = [(j, v) for (j, v) in pts if v < horizon]
+        if not pts_fin or pts_fin[0][0] == mu:
             self.branches.append(dict(hist=hist, ef=None,
                                       xw=Fraction(e1 * mu) * xmult,
                                       deep=True, Nstar=None))
             return
-        hull = lower_hull(pts)
-        if any(v >= horizon for (_, v) in hull) or hull[0][0] != 0:
+        jmin = pts_fin[0][0]
+        if jmin > 0:
             self.branches.append(dict(hist=hist, ef=None,
-                                      xw=Fraction(e1 * mu) * xmult,
+                                      xw=Fraction(e1 * jmin) * xmult,
                                       deep=True, Nstar=None))
-            return
+        hull = lower_hull(pts_fin)
         for si in range(len(hull) - 1):
             (j1, v1), (j2, v2) = hull[si], hull[si + 1]
             rise, run = v1 - v2, j2 - j1
@@ -572,7 +580,10 @@ class Walk:
                 continue
             g0 = gcd(rise, run)
             e2, h2, ell2 = run // g0, rise // g0, g0
-            # residual with carry twist
+            # residual with the derived carry twist:
+            #   chat_i = c_i * rbar^{eps_i},
+            #   eps_i = floor(i*kappa/e1) - (k_i + (i*kappa mod e1) - k1)/e1
+            # (from D = F_p[u,P]/(u^e1 - rbar P^h1); Y = Phi^{e2} B(h2)^{-1})
             kappa = (h2 * h1inv) % e1
             k1 = (v1 * h1inv) % e1
             coeffs, bad = [], False
@@ -584,11 +595,12 @@ class Walk:
                 if remv != 0 or vlev < 0:
                     bad = True; break
                 ci = R.digit(atay[j][ki], vlev) if V1[j] == w else 0
-                tau = (ki + i * kappa - k1)
-                if tau % e1 != 0:
+                num = ki + (i * kappa) % e1 - k1
+                if num % e1 != 0:
                     bad = True; break
-                tau //= e1
-                ci = (ci * pow(rbar, tau % (p - 1) if p > 2 else 0, p)) % p
+                eps = (i * kappa) // e1 - num // e1
+                if p > 2:
+                    ci = (ci * pow(rbar, eps % (p - 1), p)) % p
                 coeffs.append((ci,))
             if bad or coeffs[0] == (0,) or coeffs[-1] == (0,):
                 self.anom.append('order2-residual-bad'); continue
@@ -609,9 +621,13 @@ class Walk:
                     if prev_h2 is not None and h2 <= prev_h2:
                         self.anom.append('D10-climb-violation o2 %s<=%s'
                                          % (h2, prev_h2))
+                        self.branches.append(dict(
+                            hist=hist2, ef=None, xw=Fraction(e1 * mu2) * xmult,
+                            deep=True, Nstar=None))
+                        continue
                     s_root = (-psi2[0][0]) % p
-                    # un-twist the refinement digit: delta leading form must be
-                    # s * b_{h2}; R(y) roots carry rbar^{tau}-twisted digits
+                    # refinement: delta = s~ * (x-c0)^{k(h2)} * pi^{v(h2)},
+                    # leading form s * B(h2) (no extra twist for e2 = 1)
                     kh = (h2 * h1inv) % e1
                     vlev, remv = divmod(h2 - kh * h1, e1)
                     if remv != 0 or vlev < 0:
@@ -620,18 +636,12 @@ class Walk:
                             hist=hist2, ef=None, xw=Fraction(e1 * mu2) * xmult,
                             deep=True, Nstar=None))
                         continue
-                    sd = (s_root * pow(rbar, (-1 * ((kh + 0) // e1)) % (p - 1)
-                                       if p > 2 else 0, p)) % p
-                    # delta = sd~ * (x-c0)^{kh} * pi^{vlev}
-                    delta = [R.zero()] * (kh + 1)
-                    delta[kh] = R.mul(ring_from_int(R, sd), R.shift_elt(1, vlev))
-                    dx = [R.zero()]
-                    xmc = [R.sub(R.zero(), R.sub(R.zero(), c0)), R.one()]
-                    # build delta(x) = sd * pi^vlev * (x - c0)^kh
-                    dpoly = [R.mul(ring_from_int(R, sd), R.shift_elt(1, vlev))]
+                    dpoly = [R.mul(ring_from_int(R, s_root),
+                                   R.shift_elt(1, vlev))]
                     for _ in range(kh):
-                        dpoly = poly_mul(R, dpoly, [c0neg(R, c0), R.one()])
-                    phi2b = poly_add(R, phi2, dpoly + [R.zero()] *
+                        dpoly = poly_mul(R, dpoly,
+                                         [R.sub(R.zero(), c0), R.one()])
+                    phi2b = poly_sub(R, phi2, dpoly + [R.zero()] *
                                      max(0, len(phi2) - len(dpoly)))
                     phi2b = phi2b[:e1] + [R.one()]
                     self.order2(R, F, c0, e1, h1, rbar, mu2, hist2, depth0,
@@ -818,8 +828,8 @@ def spectator(n_extra, p, avoid_res):
         cs = [RNG.randrange(p) for _ in range(n_extra)]
         pol = pari.Pol([1] + list(reversed(cs)))
         fac = pari.factormod(pol, p)
-        if len(fac[:, 0]) == 1 and int(fac[0, 1]) == 1:
-            g = pari.centerlift(pari.lift(fac[0, 0]))
+        if len(list(fac[0])) == 1 and int(fac[1][0]) == 1:
+            g = pari.centerlift(pari.lift(fac[0][0]))
             root_ok = True
             for r in avoid_res:
                 if int(pari.subst(g, pari.Pol('x'), r)) % p == 0:

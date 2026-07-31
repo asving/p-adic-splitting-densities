@@ -8,14 +8,14 @@ import LeanUrat.HC1.V10_transportWindow
 import LeanUrat.HC1.V11_minimalCore
 
 /-!
-# HC2.HK03_stageTransHypEmpty — HK-03: `StageTransHyp`'s steep perimeter is EMPTY
+# HC2.HK03_stageTransHypEmpty — HK-03: `StageTransHypOld`'s steep perimeter is EMPTY
 
 Bridge campaign BP2 (`lean/notes/BRIDGE_BP2_HC2K1_2026-07-30.md`, Block K, unit HK-03).
 E-PHASE SKELETON: statement + `sorry` body; P-phase proves (routine-opus, est. ~60 lines).
 
 **Unit HK-03 `stageTransHyp_steep_empty`**.
 
-INFORMAL STATEMENT (blueprint §3.1(d)): `StageTransHyp p F` (HC2/Defs l.200 — the (OLD)
+INFORMAL STATEMENT (blueprint §3.1(d)): `StageTransHypOld p F` (HC2/Defs l.200 — the (OLD)
 configuration: read-pair lift shape + NEXT-pair steepness `IAug` at the SAME `(e', h')`,
 concluding `TransitionCoreL` at that pair + the s/t ties) implies that NO `StageCoreL`
 stage admits ANY lawful `(ψ, g, z̄, e', h', s', t', Φ̂)` read instance with `IsReadLift`,
@@ -30,14 +30,14 @@ contradiction with the forced equality: `False`.
 
 TRANSCRIPTION RESOLUTIONS (recorded per the E-phase charge):
 * the blueprint display's `∃ (ψ g e' h' s' t' Φ̂), (binders) ∧ …` gloss is transcribed as
-  `StageTransHyp`'s own binder telescope, which includes the recorded residue root
+  `StageTransHypOld`'s own binder telescope, which includes the recorded residue root
   `z̄ : Fˣ` with `eval₂ σ.K.subtype z̄ ψ = 0` — `zbar` is therefore ADDED to the ∃-list
   (without a root the hypothesis cannot fire; minimal resolution);
-* the Bézout-range clause is copied byte-faithfully from `StageTransHyp`
+* the Bézout-range clause is copied byte-faithfully from `StageTransHypOld`
   (`0 ≤ t' ∧ t' < e'`).
 
 ARCHIVAL DISCIPLINE (REVISION 2, finding 7): this theorem is proved PRE-WAVE against the
-CURRENT `StageTransHyp`; the HK-06 migration wave renames the subject to
+CURRENT `StageTransHypOld`; the HK-06 migration wave renames the subject to
 `StageTransHypOld` and mechanically re-points this file — the theorem is the permanent
 refuted-shape record of WHY the re-key happened, and is NEVER re-interpreted against the
 re-keyed definition.
@@ -55,16 +55,16 @@ namespace LeanUrat.MovesJ
 
 open Polynomial LeanUrat.Moves
 
-/-- **HK-03 `stageTransHyp_steep_empty`** — the emptiness record: under `StageTransHyp p F`
+/-- **HK-03 `stageTransHyp_steep_empty`** — the emptiness record: under `StageTransHypOld p F`
 (the (OLD) same-pair configuration), no `StageCoreL` stage admits a lawful steep read
-instance — every `(ψ, g, z̄, e', h', s', t', Φ̂)` with the `StageTransHyp` binder laws,
+instance — every `(ψ, g, z̄, e', h', s', t', Φ̂)` with the `StageTransHypOld` binder laws,
 `IsReadLift`, `IAug`, and `2 ≤ e'·g` is refuted.  Proof route: fire the hypothesis, then
 `V10_forcedKeyWeight` + the read-lift key-slot computation force `h' = e'²·g·σ.h` while
 `IAug` demands `h' > e'²·g·σ.h`.
 [Blueprint BP2 HK-03; deps: HK-02 patterns, `V10_forcedKeyWeight`; sketch + the recorded
 ∃-list resolution (zbar included) in the module header.] -/
 theorem stageTransHyp_steep_empty {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    (hst : StageTransHyp p F) :
+    (hst : StageTransHypOld p F) :
     ∀ σ : Stage p F, StageCoreL σ →
       ¬ ∃ (ψ : Polynomial ↥σ.K) (g : ℕ) (zbar : Fˣ) (e' h' : ℕ) (s' t' : ℤ)
           (Φhat : Polynomial ℤ_[p]),

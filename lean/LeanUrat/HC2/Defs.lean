@@ -198,12 +198,16 @@ theorem isNodeLift_iff {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-! ## §3 — the two NAMED HYPOTHESES (ours; hypothesis-NEVER-axiom; the P-1/P-3 dispositions) -/
 
-/-- The stage-transition supplier hypothesis (HC-1's TRANS; rev-1 P-1's statement with the
-lift keyed at the READ pair per GAP-1). **NEVER an axiom** — consumers (U17a, history
-construction) carry it verbatim; its discharge is HC-1's D.7 induction, or the recorded
-P-1-reduced + `StageLedgerHyp` contingency (blueprint §3 DISPOSITION: DEFAULT = NO
-DECLARATION). -/
-def StageTransHyp (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop :=
+/-- **ARCHIVAL — the pre-HK-06 stage-transition supplier, REFUTED-SHAPE HISTORICAL
+RECORD** (HK-06 wave rename per BP2 REVISION-2 finding 7, executed 2026-07-31; the
+standing name `StageTransHyp` below carries the re-keyed two-step form).  This form
+binds the READ-pair lift `IsReadLift σ ψ g e' h'` AND the next-pair steepness
+`IAug σ Φ̂ e' h'` at the SAME `(e', h')` — BP2 §3.1(d)'s conflation; HK-03
+(`HC2/HK03_stageTransHypEmpty.lean`, re-pointed at this name by the wave) is its
+permanent emptiness record: it admits NO lawful steep instance with `e'·g ≥ 2`.
+Kept on disk, never re-interpreted against the re-keyed definition; NO consumer may
+bind it. -/
+def StageTransHypOld (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop :=
   ∀ (σ : Stage p F), StageCoreL σ →
     ∀ (ψ : Polynomial ↥σ.K) (g : ℕ), ψ.Monic → ψ.natDegree = g → Irreducible ψ →
       ψ ≠ Polynomial.X → 1 ≤ g →
@@ -214,6 +218,31 @@ def StageTransHyp (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Pr
       IAug σ Φhat e' h' →
     ∃ σ' : Stage p F, σ'.Φ = Φhat ∧ σ'.e = e' ∧ σ'.h = h' ∧ σ'.s = s' ∧ σ'.t = t' ∧
       TransitionCoreL σ σ' Φhat e' h' zbar ∧ StageCoreL σ'
+
+/-- The stage-transition supplier hypothesis (HC-1's TRANS) — **RE-KEYED to the (S-a)
+two-step form by the HK-06 wave** (task #44, BP2 §3.1(d), executed 2026-07-31; Q9 rode
+the wave per the standing /goal decision rule): the recorded READ-pair lift
+`IsReadLift σ ψ g e★ h★` is consumed through the read regrade `RegradeOf σ e★ h★ σV`
+(STEP 1; `MovesC.RegradeOf`, pair-parameterized), and the supplied transition is
+`TransitionCoreL σV σ'` at the NEXT pair `(e', h')` with `IAug` read AT σV (STEP 2 —
+D.7's next-side keying; the old same-pair conflation is `StageTransHypOld` above,
+empty at every steep instance by HK-03).  **NEVER an axiom** — consumers (U17a/U17c,
+history construction) carry it verbatim; binder text at use sites is unchanged (same
+name, re-keyed Prop — the Q9 statement-fence event, a repair of a conditionally-FALSE
+hypothesis, never a weakening). -/
+def StageTransHyp (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop :=
+  ∀ (σ : Stage p F), StageCoreL σ →
+    ∀ (ψ : Polynomial ↥σ.K) (g : ℕ), ψ.Monic → ψ.natDegree = g → Irreducible ψ →
+      ψ ≠ Polynomial.X → 1 ≤ g →
+    ∀ (zbar : Fˣ), Polynomial.eval₂ σ.K.subtype ((zbar : Fˣ) : F) ψ = 0 →
+    ∀ (estar hstar : ℕ), 1 ≤ estar → 1 ≤ hstar → Nat.gcd estar hstar = 1 →
+    ∀ (Φhat : Polynomial ℤ_[p]), IsReadLift σ ψ g estar hstar Φhat →
+    ∀ (σV : Stage p F), RegradeOf σ estar hstar σV → StageCoreL σV →
+    ∀ (e' h' : ℕ) (s' t' : ℤ), 1 ≤ e' → 1 ≤ h' → Nat.gcd e' h' = 1 →
+      (e' : ℤ) * s' + (h' : ℤ) * t' = 1 → 0 ≤ t' ∧ t' < (e' : ℤ) →
+      IAug σV Φhat e' h' →
+    ∃ σ' : Stage p F, σ'.Φ = Φhat ∧ σ'.e = e' ∧ σ'.h = h' ∧ σ'.s = s' ∧ σ'.t = t' ∧
+      TransitionCoreL σV σ' Φhat e' h' zbar ∧ StageCoreL σ'
 
 /-- The uniqueness supplier hypothesis — typed VERBATIM as U18's statement (MovesD
 `PresentNorm` clause (ii)). **NEVER an axiom** (P-3 STRUCK, blueprint §3 GAP-3); carried by
