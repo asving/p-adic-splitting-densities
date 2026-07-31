@@ -55,7 +55,8 @@ noncomputable def mcCP : CellPolyPack 1 Ctoy mcS mcV where
           Finset.mem_filter.mpr ⟨Finset.mem_univ _,
             @Subsingleton.elim (mcV.DCellO d.s d.m d.o d.α)
               (inferInstanceAs (Subsingleton Unit)) _ c⟩⟩)
-      simp
+      exact Finset.card_le_one.mpr
+        (fun a _ b _ => @Subsingleton.elim _ (inferInstanceAs (Subsingleton Unit)) a b)
     rw [hc1]; norm_num
 
 /-- TV-E8 [the gate]: the fired witness is NOT the degenerate A28 core —
@@ -69,6 +70,12 @@ theorem measuredOf_nonvacuity_gate :
       (q₀ : ℚ),
       q₀ ∈ mcV.Pools ∧
       (measuredOf mcV mcXHD mcCP skeleton1_finite).μcell e τ x c q₀ ≠ 0 := by
+  classical
+  refine ⟨skBlk sk1, ⟨⟨sk1, cId sk1⟩, rfl⟩,
+    (fun q₀ hq => ⟨(), trivial⟩),
+    ⟨⟨(), ()⟩, ()⟩, 2, two_mem_pow2, ?_⟩
+  show μcellOf mcV mcXHD.w mcCP skeleton1_finite ⟨⟨sk1, cId sk1⟩, rfl⟩ ⟨⟨(), ()⟩, ()⟩ 2 ≠ 0
+  rw [μcellOf, dif_pos (show (2 : ℚ) ∈ mcV.Pools from two_mem_pow2)]
   sorry
 
 end LeanUrat.MovesV
