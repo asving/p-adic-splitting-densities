@@ -41,6 +41,7 @@ fullPart_mem/nzPart_mem/nzPart_not_mem computations).
 Build: cd lean && lake build LeanUrat.Kernels.KC1
 -/
 import LeanUrat.MovesV.V4_hmc
+import LeanUrat.Kernels.HmcReduction
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -50,16 +51,8 @@ namespace LeanUrat.Kernels
 
 open LeanUrat.MovesV
 
-/-- Private computation helper (the analogous `hpt_*` lemmas of
-MovesV/V4_naming.lean are `private` there, hence re-derived): the appended
-point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
-private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
-    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
-  intro h0
-  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
-      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
-  simp only [Hpt.append, Fin.append_left] at h1
-  exact one_ne_zero h1
+/- [SYN2-S1 SWEEP-6, 2026-07-31] private append_one_zero_ne_zero DELETED —
+survivor = Kernels/HmcReduction (de-privatized, now imported); bare uses resolve. -/
 
 /-- KC1 leg (i) — the ⊇/compose direction fails at the census point (0,0):
 ¬(Mem (h₁ ++ h₂) ← factors) at h₁ = h₂ = 0, m = mv, γ = .last mv (the

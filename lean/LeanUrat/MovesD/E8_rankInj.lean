@@ -3,15 +3,21 @@ Unit E8.rank_inj  (MovesD campaign, E-phase)  [AUX]
 informal: on ONE eligible set, rank determines the factor (lex through the shared
 `fieldEnum` is a strict total order — the note's "ordered lexicographically by
 coefficient vectors in D.3(e)'s fixed residue bases").
-deps (blueprint): E3, E6.  [as-built, 2026-07-30 verify-2 fold-in: imports only Defs;
-E3's subfield identity is re-proved privately below (`poolSubfield_eq`) and E6's
+deps (blueprint): E3, E6.  [as-built, 2026-07-30 verify-2 fold-in: imported only Defs;
+E3's subfield identity was re-proved privately below (`poolSubfield_eq`) and E6's
 `eligible_card_le` is not used — rank_inj needs no cardinality bound.]
+[SYN2-S1 SWEEP-5, 2026-07-31: the verify-2 duplication is CLOSED — E3/E7 now imported;
+`poolSubfield_eq` is a short corollary of E3's `frameField_eq_pool` (the cite, no
+re-proof); `finite_eligible` DELETED, re-pointed at E7's de-privatized survivor
+`finite_of_monic_natDegree`.]
 sketch: equal Ranch-images + E3's common subfield give literally equal F-side eligible
 sets; two members of a finite set with equal strict-initial-segment counts under a strict
 total order are equal.  difficulty: medium-hard.  hypothesis_fields: none.
 -/
 import Mathlib
 import LeanUrat.MovesD.Defs
+import LeanUrat.MovesD.E3_frameField
+import LeanUrat.MovesD.E7_rankLt
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -88,74 +94,19 @@ private lemma rank_count_inj {α : Type*} [Finite α] (r : α → α → Prop)
 
 /-! ### the eligible set is finite -/
 
-private lemma finite_eligible (w g μ : ℕ) (Rq : Polynomial F) :
-    Finite {q : Polynomial F // EligibleImage p w g μ Rq q} := by
-  apply Finite.of_injective
-    (f := fun q : {q : Polynomial F // EligibleImage p w g μ Rq q} =>
-      (fun i : Fin (g + 1) => q.1.coeff i))
-  intro q q' hqq'
-  apply Subtype.ext
-  apply Polynomial.ext
-  intro i
-  by_cases hi : i ≤ g
-  · simpa using congrFun hqq' ⟨i, by omega⟩
-  · rw [Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q.2.2.1]; omega),
-       Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [q'.2.2.1]; omega)]
+/- [SYN2-S1 SWEEP-5, 2026-07-31] finite_eligible DELETED — supplied by E7's
+de-privatized `finite_of_monic_natDegree` (EligibleImage extracts Monic ∧ natDegree = g). -/
 
-/-! ### the pool subfield IS the matched frame field (E3, proved inline) -/
+/-! ### the pool subfield IS the matched frame field — E3's identity, CITED
+[SYN2-S1 SWEEP-5, 2026-07-31: was "proved inline" (the verify-2 record); now the
+Subfield-valued corollary of `E3.frameField_eq_pool`, single proof source.] -/
 
 private lemma poolSubfield_eq {R : ShapeRead} {ν : Node p F} (hM : R.Matches ν) :
     poolSubfield p R.w F = ν.σ.K := by
   classical
-  obtain ⟨-, -, -, -, -, -, -, -, -, -, -, hcard, -⟩ := hM
-  -- `hcard : Nat.card ↥ν.σ.K = p ^ R.w`
   have hcarrier : (ν.σ.K : Set F) = pool p R.w F := by
-    -- the easy inclusion: a finite field of order `p^w` lies in the pool
-    have hsub : (ν.σ.K : Set F) ⊆ pool p R.w F := by
-      intro x hx
-      simp only [pool, Set.mem_setOf_eq]
-      haveI : Fintype ↥ν.σ.K := Fintype.ofFinite _
-      have hcard' : Fintype.card ↥ν.σ.K = p ^ R.w := by
-        rw [← Nat.card_eq_fintype_card]; exact hcard
-      have hpow : (⟨x, hx⟩ : ↥ν.σ.K) ^ (p ^ R.w) = ⟨x, hx⟩ := by
-        rw [← hcard']; exact FiniteField.pow_card _
-      simpa using congrArg (fun z : ↥ν.σ.K => (z : F)) hpow
-    -- the pool is finite of size `≤ p^w` (roots of `X^{p^w} - X`)
-    have hp2 : 2 ≤ p := (Fact.out : p.Prime).two_le
-    have hq2 : 2 ≤ p ^ R.w := by
-      calc 2 ≤ p := hp2
-        _ = p ^ 1 := (pow_one p).symm
-        _ ≤ p ^ R.w := Nat.pow_le_pow_right (by omega) R.hw
-    have hφ0 : (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F) ≠ 0 := by
-      intro h0
-      have hc1 : (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).coeff (p ^ R.w) = 1 := by
-        rw [Polynomial.coeff_sub, Polynomial.coeff_X_pow, if_pos rfl,
-            Polynomial.coeff_X_of_ne_one (by omega), sub_zero]
-      rw [h0, Polynomial.coeff_zero] at hc1
-      exact one_ne_zero hc1.symm
-    have hset : pool p R.w F =
-        (↑(Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).roots.toFinset : Set F) := by
-      ext x
-      simp only [pool, Set.mem_setOf_eq, Finset.mem_coe, Multiset.mem_toFinset,
-                 Polynomial.mem_roots', hφ0, ne_eq, not_false_eq_true, true_and,
-                 Polynomial.IsRoot.def, Polynomial.eval_sub, Polynomial.eval_pow,
-                 Polynomial.eval_X, sub_eq_zero]
-    have hpoolfin : (pool p R.w F).Finite := by
-      rw [hset]; exact Finset.finite_toSet _
-    have hpoolcard : (pool p R.w F).ncard ≤ p ^ R.w := by
-      rw [hset, Set.ncard_coe_finset]
-      calc (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).roots.toFinset.card
-          ≤ Multiset.card (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).roots :=
-            Multiset.toFinset_card_le _
-        _ ≤ (Polynomial.X ^ (p ^ R.w) - Polynomial.X : Polynomial F).natDegree :=
-            Polynomial.card_roots' _
-        _ ≤ p ^ R.w := by
-            refine le_trans (Polynomial.natDegree_sub_le _ _) ?_
-            rw [Polynomial.natDegree_X_pow, Polynomial.natDegree_X]
-            exact max_le le_rfl (by omega)
-    have hKcard : (ν.σ.K : Set F).ncard = p ^ R.w := hcard
-    exact Set.eq_of_subset_of_ncard_le hsub (by rw [hKcard]; exact hpoolcard) hpoolfin
-  -- convert the carrier equality into a subfield equality
+    rw [← frameField_eq_pool hM]
+    exact Set.ext fun x => ⟨fun hx => ⟨⟨x, hx⟩, rfl⟩, fun ⟨y, hy⟩ => hy ▸ y.2⟩
   have hex : ∃ S : Subfield F, (S : Set F) = pool p R.w F := ⟨ν.σ.K, hcarrier⟩
   have hpeq : poolSubfield p R.w F = hex.choose := by
     unfold poolSubfield; rw [dif_pos hex]
@@ -206,7 +157,7 @@ theorem rank_inj {R : ShapeRead} {ν ν' : Node p F} (hM : R.Matches ν) (hM' : 
   rw [e1, e2] at hs
   -- the common eligible subtype, with both ψ-images as members
   haveI : Finite {q : Polynomial F // EligibleImage p R.w ν.g ν.μ (RanchImage ν) q} :=
-    finite_eligible R.w ν.g ν.μ (RanchImage ν)
+    finite_of_monic_natDegree ν.g _ (fun q h => ⟨h.1, h.2.1⟩)
   have key : (⟨ψImage ν, hmem⟩ :
         {q : Polynomial F // EligibleImage p R.w ν.g ν.μ (RanchImage ν) q})
       = ⟨ψImage ν', hmem'⟩ := by

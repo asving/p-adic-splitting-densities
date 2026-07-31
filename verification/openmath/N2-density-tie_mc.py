@@ -53,6 +53,11 @@ KDIG = {2: 50, 3: 32, 5: 24}
 
 GP_TEMPLATE = r"""
 default(parisizemax, 256000000);
+\\ the projective ensemble's scaled polynomials (coefficients up to p^{K(n-1)}, Krasner
+\\ lifts up to p^{2 v(disc)+20}) overflow the default float precision inside
+\\ idealprimedec ("precision too low in get_norm") — raise it globally (cheap: only
+\\ slow-path factors reach nfinit).
+default(realbitprecision, 12800);
 eftype(g, p, prec) = {
   \\ (e,f) of Q_p[x]/(g), g monic irreducible over Q_p with t_PADIC coefficients:
   \\ the quartic_oracle.py logic verbatim (Krasner lift + idealprimedec), plus the

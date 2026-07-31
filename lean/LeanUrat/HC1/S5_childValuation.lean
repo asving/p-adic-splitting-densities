@@ -11,6 +11,7 @@ import LeanUrat.Moves.L3_digPrime_nonzero
 import LeanUrat.Moves.L0_FactA_exists
 import LeanUrat.Moves.L0_FactB_unique
 import LeanUrat.Moves.L3_liftMonic
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.S5_childValuation — D.7(iii): childW multiplicative, child value group ℤ
@@ -92,11 +93,7 @@ private lemma childW_isSlotMin (σ : Stage p F) (Φhat : Polynomial ℤ_[p])
   rw [hchild]
   exact hex.choose_spec B N hdev
 
-/-- `σ.w 1 = 0` from `w (1·1) = w 1 + w 1`. -/
-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
+/- [SYN2-S1 SWEEP-1, 2026-07-31] private ResVal.w_one DELETED (= ResVal.w_one). -/
 
 /-- On a nonzero coefficient (`deg < deg Φ̂`) the child weight is the single-slot value
 `e′·w(B)` (its `Φ̂`-development is `B·Φ̂⁰`). -/
@@ -131,7 +128,7 @@ private lemma childW_one (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : �
     show (1 : Polynomial ℤ_[p]).degree < Φhat.degree
     rw [Polynomial.degree_one, Polynomial.degree_eq_natDegree hmon.ne_zero]
     exact_mod_cast hdeg
-  rw [childW_coeff σ Φhat hmon e' h' 1 one_ne_zero hc, w_one, mul_zero]
+  rw [childW_coeff σ Φhat hmon e' h' 1 one_ne_zero hc, ResVal.w_one, mul_zero]
 
 /-- `childW Φ̂ = h′`: the key's own development is `1·Φ̂¹`, slot `1`, value `h′`. -/
 private lemma childW_key (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : Φhat.Monic)
@@ -164,7 +161,7 @@ private lemma childW_key (σ : Stage p F) (Φhat : Polynomial ℤ_[p]) (hmon : �
   rw [hj0eq]
   show (e' : ℤ) * σ.w (if (1 : ℕ) = 1 then (1 : Polynomial ℤ_[p]) else 0)
       + ((1 : ℕ) : ℤ) * (h' : ℤ) = (h' : ℤ)
-  rw [if_pos rfl, w_one]
+  rw [if_pos rfl, ResVal.w_one]
   push_cast; ring
 
 end Helpers

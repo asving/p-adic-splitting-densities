@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.HC1.DefsSpine
 import LeanUrat.Moves.L5_landVertexDigit
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.K1_vertexPin — the read-indexed D.8 vertex pin and the twist-class bridge
@@ -227,31 +228,8 @@ private lemma fin_sum_get {M : Type*} [AddCommMonoid M] {α : Type*} (l : List �
 
 /-! ## Stage valuation/residual basics -/
 
-private lemma w_one' (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
-
-private lemma w_pow' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
-  induction n with
-  | zero => simpa [pow_zero] using w_one' σ
-  | succ k ih =>
-      rw [pow_succ, σ.hwmul _ x (pow_ne_zero k hx) hx, ih]
-      push_cast
-      ring
-
-private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  have hne : σ.R 1 ≠ 0 := σ.hRne 1 one_ne_zero
-  exact (mul_left_cancel₀ hne (by rwa [mul_one])).symm
-
-private lemma R_pow' (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
-    σ.R (x ^ n) = σ.R x ^ n := by
-  induction n with
-  | zero => simpa [pow_zero] using R_one' σ
-  | succ k ih => rw [pow_succ, σ.hRmul _ x (pow_ne_zero k hx) hx, ih, pow_succ]
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow/ResVal.R_one/ResVal.R_pow DELETED — single proof
+source `Moves/ResVal.lean` (α-identical); uses re-pointed. -/
 
 private lemma list_prod_ne_zero' (l : List (Polynomial ℤ_[p])) (hl : ∀ x ∈ l, x ≠ 0) :
     l.prod ≠ 0 :=
@@ -260,7 +238,7 @@ private lemma list_prod_ne_zero' (l : List (Polynomial ℤ_[p])) (hl : ∀ x ∈
 private lemma w_list_prod (σ : Stage p F) (l : List (Polynomial ℤ_[p]))
     (hl : ∀ x ∈ l, x ≠ 0) : σ.w l.prod = (l.map σ.w).sum := by
   induction l with
-  | nil => simpa using w_one' σ
+  | nil => simpa using ResVal.w_one σ
   | cons x xs ih =>
       rw [List.prod_cons, List.map_cons, List.sum_cons,
         σ.hwmul x xs.prod (hl x (by simp))
@@ -270,7 +248,7 @@ private lemma w_list_prod (σ : Stage p F) (l : List (Polynomial ℤ_[p]))
 private lemma R_list_prod (σ : Stage p F) (l : List (Polynomial ℤ_[p]))
     (hl : ∀ x ∈ l, x ≠ 0) : σ.R l.prod = (l.map σ.R).prod := by
   induction l with
-  | nil => simpa using R_one' σ
+  | nil => simpa using ResVal.R_one σ
   | cons x xs ih =>
       rw [List.prod_cons, List.map_cons, List.prod_cons,
         σ.hRmul x xs.prod (hl x (by simp))
@@ -390,12 +368,12 @@ private lemma tvec_side_w (σ : Stage p F) (eF : ℤ → ℕ) :
     obtain ⟨q, hq, rfl⟩ := List.mem_map.mp hx
     exact pow_ne_zero _ ((tvec_entry_facts σ hq).1)
   rw [σ.hwmul _ _ (list_prod_ne_zero' _ hentne) (pow_ne_zero _ σ.hmonic.ne_zero),
-    w_list_prod σ _ hentne, w_pow' σ σ.Φ σ.hmonic.ne_zero, σ.hwΦ, List.map_map]
+    w_list_prod σ _ hentne, ResVal.w_pow σ σ.Φ σ.hmonic.ne_zero, σ.hwΦ, List.map_map]
   congr 2
   refine List.map_congr_left ?_
   intro q hq
   show σ.w (q.1 ^ eF q.2) = _
-  rw [w_pow' σ q.1 ((tvec_entry_facts σ hq).1)]
+  rw [ResVal.w_pow σ q.1 ((tvec_entry_facts σ hq).1)]
 
 /-- Residual of one side of the parent T-vector product, in monomial normal form. -/
 private lemma tvec_side_R (σ : Stage p F) (eF : ℤ → ℕ) :
@@ -410,7 +388,7 @@ private lemma tvec_side_R (σ : Stage p F) (eF : ℤ → ℕ) :
     obtain ⟨q, hq, rfl⟩ := List.mem_map.mp hx
     exact pow_ne_zero _ ((tvec_entry_facts σ hq).1)
   rw [σ.hRmul _ _ (list_prod_ne_zero' _ hentne) (pow_ne_zero _ σ.hmonic.ne_zero),
-    R_list_prod σ _ hentne, R_pow' σ σ.Φ σ.hmonic.ne_zero, σ.hRΦ,
+    R_list_prod σ _ hentne, ResVal.R_pow σ σ.Φ σ.hmonic.ne_zero, σ.hRΦ,
     LaurentPolynomial.T_pow, List.map_map]
   have hmap : σ.Tvec.map (σ.R ∘ fun q => q.1 ^ eF q.2)
       = σ.Tvec.map (fun q =>
@@ -420,7 +398,7 @@ private lemma tvec_side_R (σ : Stage p F) (eF : ℤ → ℕ) :
     intro q hq
     obtain ⟨hq0, hqC⟩ := tvec_entry_facts σ hq
     show σ.R (q.1 ^ eF q.2) = _
-    rw [R_pow' σ q.1 hq0, dOf_spec σ hq0 hqC, CT_pow']
+    rw [ResVal.R_pow σ q.1 hq0, dOf_spec σ hq0 hqC, CT_pow']
   rw [hmap, CT_list_prod, mul_assoc, ← LaurentPolynomial.T_add]
 
 /-- The three parent identities the twist-class bridges consume, extracted from the

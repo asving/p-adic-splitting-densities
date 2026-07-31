@@ -25,6 +25,7 @@ import LeanUrat.MovesS.N2WshpDevice
 import LeanUrat.MovesS.N2ShEvents
 import LeanUrat.MovesS.N2ShLaws
 import LeanUrat.MovesS.N2SolveVals
+import LeanUrat.MovesS.EvalAtCoe
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -60,37 +61,8 @@ private theorem powSubst_one (f : Qq) : powSubst 1 f = f := by
   rw [map_div₀, powSubst_algebraMap', powSubst_algebraMap']
   simp [RatFunc.num_div_denom]
 
-/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
-whenever `q.eval x ≠ 0` (local copy of PowSubstOK's private lemma). -/
-private lemma eval_algebraMap_div' (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
-    RatFunc.eval (RingHom.id ℚ) x
-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
-      = p.eval x / q.eval x := by
-  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
-  have hdvd : (algebraMap (Polynomial ℚ) Qq p
-      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
-    rw [Polynomial.eval₂_id]
-    obtain ⟨c, hc⟩ := hdvd
-    intro hz
-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
-      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
-    rw [RatFunc.denom_algebraMap]; simp
-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
-    div_mul_cancel₀ _ hqne
-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
-  rw [eq_div_iff hq]
-  exact key
+/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div DELETED — single
+proof source `MovesS/EvalAtCoe.lean` (public; primed use re-pointed). -/
 
 /-- The shallow convolution at the root shape (k = 1, σ₀ = 0, δ = 1) collapses to
 the single δ = 1 blockSolve leg at σ = {(1,2)}. -/
@@ -178,7 +150,7 @@ theorem n2_rsh (hdet : DetHyp n2T n2RB n2hK) :
       have h1 : evalAt p ⟨blockSolve n2T n2RB n2hdc n2hK n2hdet 2 he2 n2τ {n2v12}, hB⟩
           = RatFunc.eval (RingHom.id ℚ) p
               (blockSolve n2T n2RB n2hdc n2hK n2hdet 2 he2 n2τ {n2v12}) := rfl
-      rw [h1, (n2_solve_vals he2).1, eval_algebraMap_div' p (X + 1) (X ^ 2 + X + 1) hbden]
+      rw [h1, (n2_solve_vals he2).1, eval_algebraMap_div p (X + 1) (X ^ 2 + X + 1) hbden]
       simp
     have hsub : (⟨Rsh n2T n2M n2RB n2hdc n2hK hdet n2F n2Chain.WshP {n2v12}, hok⟩ : OKat p)
         = ⟨blockSolve n2T n2RB n2hdc n2hK n2hdet 2 he2 n2τ {n2v12}, hB⟩ :=

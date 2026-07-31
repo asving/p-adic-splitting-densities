@@ -8,6 +8,7 @@ import LeanUrat.MovesT.Defs
 import LeanUrat.HC2.U31_gateReadsOf
 import LeanUrat.HC2.U28_gateSep
 import LeanUrat.MovesC.C0_digitSystemMass
+import LeanUrat.MovesT.F0_preHalt
 
 /-! # T-G1 `toy_treeExp_gate` [split G1a/G1b] — the two pinned toy carriers (§T-G1's
 REV-8 full-roster tables) + the gate battery (DO-3). GATE ARCHITECTURE (REV 2, Fable
@@ -411,12 +412,8 @@ noncomputable def tB2d : History 2 (ZMod 2) := tA2b
 private helpers only — no blueprint statement touched). -/
 section ToyPinHelpers
 
-private lemma hist_ext {H H' : History 2 (ZMod 2)} (h : H.nodes = H'.nodes) :
-    H = H' := by
-  obtain ⟨n, hne, hri⟩ := H
-  obtain ⟨n', hne', hri'⟩ := H'
-  subst h
-  rfl
+/- [SYN2-S1 SWEEP-4, 2026-07-31] private history_ext DELETED — single proof source
+`F0_preHalt.history_ext` (the general form; this was its (2, ZMod 2) instance). -/
 
 private lemma head_ne_leafA : toyHead ≠ toyLeafA := fun h => by
   have h2 : ReadSpecies.root = ReadSpecies.recentering := congrArg Node.species h
@@ -472,9 +469,9 @@ private lemma snoc_eq_tA2a_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
   · intro h
     obtain ⟨hH, hν'⟩ := snoc_eq_two
       (show (H.snoc ν hν).nodes = [toyHead, toyLeafA] from congrArg History.nodes h)
-    exact ⟨hist_ext (hH.trans tA1_nodes.symm), hν'⟩
+    exact ⟨history_ext (hH.trans tA1_nodes.symm), hν'⟩
   · rintro ⟨h1, h2⟩
-    refine hist_ext ?_
+    refine history_ext ?_
     show H.nodes ++ [ν] = tA2a.nodes
     rw [congrArg History.nodes h1, h2]
     rfl
@@ -486,9 +483,9 @@ private lemma snoc_eq_tA2b_iff {H : History 2 (ZMod 2)} {ν : Node 2 (ZMod 2)}
   · intro h
     obtain ⟨hH, hν'⟩ := snoc_eq_two
       (show (H.snoc ν hν).nodes = [toyHead, toyLeafB] from congrArg History.nodes h)
-    exact ⟨hist_ext (hH.trans tA1_nodes.symm), hν'⟩
+    exact ⟨history_ext (hH.trans tA1_nodes.symm), hν'⟩
   · rintro ⟨h1, h2⟩
-    refine hist_ext ?_
+    refine history_ext ?_
     show H.nodes ++ [ν] = tA2b.nodes
     rw [congrArg History.nodes h1, h2]
     rfl
@@ -546,7 +543,7 @@ noncomputable def toyModel : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
           congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
         omega
     · rintro ⟨hν, hd⟩
-      exact ⟨Or.inl (hist_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl)), hd⟩
+      exact ⟨Or.inl (history_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl)), hd⟩
   mem_snoc := by
     intro H ν hν x
     constructor
@@ -754,7 +751,7 @@ noncomputable def toyModelB : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
             congrArg (fun K : History 2 (ZMod 2) => K.nodes.length) hH
           omega
     · rintro ⟨hν, hd⟩
-      exact Or.inl ⟨hist_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl), hd⟩
+      exact Or.inl ⟨history_ext (by rw [show ((⟨[ν], h1.1, h1.2⟩ : History 2 (ZMod 2))).nodes = [ν] from rfl, hν]; rfl), hd⟩
   mem_snoc := by
     intro H ν hν x
     constructor
@@ -938,10 +935,10 @@ private lemma tA1_prefix_tA2a : tA1.IsPrefixOf tA2a := ⟨[toyLeafA], rfl⟩
 private lemma tA1_prefix_tA2b : tA1.IsPrefixOf tA2b := ⟨[toyLeafB], rfl⟩
 
 private lemma tA2a_not_prefix_tA2b : ¬ tA2a.IsPrefixOf tA2b := fun h =>
-  tA2a_ne_tA2b (hist_ext (h.eq_of_length rfl))
+  tA2a_ne_tA2b (history_ext (h.eq_of_length rfl))
 
 private lemma tA2b_not_prefix_tA2a : ¬ tA2b.IsPrefixOf tA2a := fun h =>
-  tA2a_ne_tA2b (hist_ext (h.eq_of_length rfl)).symm
+  tA2a_ne_tA2b (history_ext (h.eq_of_length rfl)).symm
 
 private lemma tA2a_not_prefix_tA1 : ¬ tA2a.IsPrefixOf tA1 := fun h => by
   have h2 : (2 : ℕ) ≤ 1 := h.length_le
@@ -958,7 +955,7 @@ private lemma prefix_of_tA1 {H' : History 2 (ZMod 2)} (h : H'.IsPrefixOf tA1) :
     rwa [tA1_nodes, List.length_singleton] at h2
   have hpos : H'.nodes ≠ [] := H'.nonempty
   have hpos' : 0 < H'.nodes.length := List.length_pos_iff.mpr hpos
-  exact hist_ext (h.eq_of_length (by rw [tA1_nodes, List.length_singleton]; omega))
+  exact history_ext (h.eq_of_length (by rw [tA1_nodes, List.length_singleton]; omega))
 
 private lemma prefix_of_two {H' : History 2 (ZMod 2)} {a b : Node 2 (ZMod 2)}
     (h : H'.nodes <+: [a, b]) : H'.nodes = [a] ∨ H'.nodes = [a, b] := by
@@ -1085,11 +1082,11 @@ noncomputable def toyTreeA : VTree 2 (ZMod 2) where
     rcases hH with h | h | h <;> subst h
     · exact Or.inl (prefix_of_tA1 hpre)
     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hpre) with h | h
-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
-      · exact Or.inr (Or.inl (hist_ext (h.trans tA2a_nodes.symm)))
+      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inl (history_ext (h.trans tA2a_nodes.symm)))
     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hpre) with h | h
-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
-      · exact Or.inr (Or.inr (hist_ext (h.trans tA2b_nodes.symm)))
+      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inr (history_ext (h.trans tA2b_nodes.symm)))
   henV := ∅
   hhen := by simp
   leafV := fun H =>
@@ -1140,11 +1137,11 @@ noncomputable def toyTreeB : VTree 2 (ZMod 2) where
     rcases hH with h | h | h <;> subst h
     · exact Or.inl (prefix_of_tA1 hpre)
     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hpre) with h | h
-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
-      · exact Or.inr (Or.inl (hist_ext (h.trans tA2a_nodes.symm)))
+      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inl (history_ext (h.trans tA2a_nodes.symm)))
     · rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hpre) with h | h
-      · exact Or.inl (hist_ext (h.trans tA1_nodes.symm))
-      · exact Or.inr (Or.inr (hist_ext (h.trans tA2b_nodes.symm)))
+      · exact Or.inl (history_ext (h.trans tA1_nodes.symm))
+      · exact Or.inr (Or.inr (history_ext (h.trans tA2b_nodes.symm)))
   henV := ∅
   hhen := by simp
   leafV := fun H =>
@@ -1735,18 +1732,18 @@ private lemma fiberA_iff (x : Box 2 9) :
           intro H' hp hne hnn
           rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafA] from hp)
             with h | h
-          · have hH' : H' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+          · have hH' : H' = tA1 := history_ext (h.trans tA1_nodes.symm)
             subst hH'
             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
-          · exact absurd (hist_ext (h.trans tA2a_nodes.symm)) hne
+          · exact absurd (history_ext (h.trans tA2a_nodes.symm)) hne
         · refine ⟨tA2b.nonempty, ⟨Or.inr (Or.inr rfl), hx⟩, ?_⟩
           intro H' hp hne hnn
           rcases prefix_of_two (show H'.nodes <+: [toyHead, toyLeafB] from hp)
             with h | h
-          · have hH' : H' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+          · have hH' : H' = tA1 := history_ext (h.trans tA1_nodes.symm)
             subst hH'
             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
-          · exact absurd (hist_ext (h.trans tA2b_nodes.symm)) hne
+          · exact absurd (history_ext (h.trans tA2b_nodes.symm)) hne
       · rintro ⟨hne, ⟨hmem, -⟩⟩
         exact hmem.1
     · -- clause (ii)
@@ -2006,18 +2003,18 @@ private lemma subFiberA_iff (x : Box 2 9) :
           intro H'' hp1 hp2 hne
           rcases prefix_of_two (show H''.nodes <+: [toyHead, toyLeafA] from hp2)
             with h | h
-          · have hH'' : H'' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+          · have hH'' : H'' = tA1 := history_ext (h.trans tA1_nodes.symm)
             subst hH''
             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
-          · exact absurd (hist_ext (h.trans tA2a_nodes.symm)) hne
+          · exact absurd (history_ext (h.trans tA2a_nodes.symm)) hne
         · refine ⟨tA1_prefix_tA2b, ⟨Or.inr (Or.inr rfl), hx⟩, ?_⟩
           intro H'' hp1 hp2 hne
           rcases prefix_of_two (show H''.nodes <+: [toyHead, toyLeafB] from hp2)
             with h | h
-          · have hH'' : H'' = tA1 := hist_ext (h.trans tA1_nodes.symm)
+          · have hH'' : H'' = tA1 := history_ext (h.trans tA1_nodes.symm)
             subst hH''
             exact ⟨not_irrHalts_tA1, not_nsHalts_tA1 hx⟩
-          · exact absurd (hist_ext (h.trans tA2b_nodes.symm)) hne
+          · exact absurd (history_ext (h.trans tA2b_nodes.symm)) hne
       · rintro ⟨-, hmem, -⟩
         exact hmem.1
     · intro H' hH' hmax

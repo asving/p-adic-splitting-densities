@@ -71,6 +71,23 @@ SEALED PREDICTIONS (before first run):
 
 Run with the sympy venv python.  Pure exact arithmetic (Fraction / sympy Rational);
 no floats in any law check.
+
+ADDENDUM (2026-07-31, after the queue-item-4 Lean repair LANDED in the working
+tree while this unit ran): MovesS/Interfaces.lean now carries EXACTLY five repair
+fields -- shdom_fin (FINITE shDom; the summable-only guard recorded DEAD),
+shdom_no_stray, vis_sub_shdom, shevt_off_vis, shevt_disj -- and V7_w17ii.lean
+proves clause (ii) by the counting squeeze (banked sorry retired).  Fidelity
+mapping to THIS script: the landed statement is instantiated by FINITE-HEIGHT
+SLICES of the data built here (shDom := the visible heights below the frontier;
+their stabilized weights and the partitioned events realize all five fields
+exactly, and the slice tie sum_h w = WshVal_slice holds by the verified
+stabilization); the natural FULL instantiation (all heights, shDom infinite,
+WshVal = the full shape density) sits OUTSIDE the landed guard (shdom_fin
+false there, and wshval_card's exact eventual equality also fails for the full
+value) -- yet, as verified here, the full height sum still ties exactly
+(n = 2 closed form) / within vanishing sandwiches (n = 3).  The abstract script
+(N5-w17ii_abstract.py, Part C) shows the guard cannot be weakened to
+Summable-with-census: the mass-leak chain satisfies everything but the tie.
 """
 
 import sys
@@ -169,7 +186,10 @@ def disc2(b, c):
 
 
 def sigma2_of_disc(dint, v, p):
-    """Quadratic etale class from disc dint != 0 with v_p(dint) = v.
+    """Quadratic etale class from disc dint != 0 with v_p(dint) = v:
+    split ((1,1),(1,1)) iff disc is a square in Q_p; inert ((1,2),) iff disc is a
+    nonsquare unit-class with even valuation that generates the unramified
+    quadratic (p odd: non-QR unit; p=2: u = 5 mod 8); ramified ((2,1),) otherwise.
     (f = linear x quadratic preserves the square class of disc exactly, so this
     applies whenever a cubic splits off a Q_p-rational root.)"""
     if v % 2 == 1:
@@ -184,12 +204,23 @@ def sigma2_of_disc(dint, v, p):
         return ((2, 1),)
     if pow(u % p, (p - 1) // 2, p) == 1:
         return ((1, 1), (1, 1))
-    return ((2, 1),)
+    return ((1, 2),)
 
 
 def K_of(p):
-    """Digits above v(disc) needed to read the disc square class."""
+    """Digits above v(disc) needed to read the disc square class (worst case)."""
     return 3 if p == 2 else 1
+
+
+def sigma2_readable(d, p, N):
+    """Can the class at level N read the quadratic etale class of a disc with
+    valuation d?  Odd d needs only the parity (ramified); even d needs the unit
+    class: 1 digit (p odd, = readability) or 3 digits (p = 2, mod 8)."""
+    if d >= N:
+        return False
+    if d % 2 == 1:
+        return True
+    return d + K_of(p) <= N
 
 
 def reduction_table(p, n):
@@ -264,10 +295,11 @@ def np_hull(pts):
     return segs
 
 
-def decide_cubic_cluster(A, B, C, p, P, d, dint, depth=0):
+def decide_cubic_cluster(A, B, C, p, P, d, dint, s2ok, depth=0):
     """Splitting type of the cubic cluster g = x^3+Ax^2+Bx+C (A,B,C = 0 mod p),
-    coefficients known mod p^P; d = v_p(disc of the original f) (< P + slack),
-    dint = the exact integer disc of the original f (nonzero here).
+    coefficients known mod p^P; d = v_p(disc of the original f), dint = the exact
+    integer disc of the original f (nonzero here); s2ok = whether the disc square
+    class is readable at this class's precision.
     Returns sigma tuple or None (pending).  Sound rules only; None on any doubt."""
     if depth > 12 or P < 2:
         return None
@@ -281,7 +313,7 @@ def decide_cubic_cluster(A, B, C, p, P, d, dint, depth=0):
         return ((1, 1), (1, 1), (1, 1))
     if len(segs) == 2:
         # linear x quadratic over Q_p; quadratic classified by disc-f square class
-        return ((1, 1),) + sigma2_of_disc(dint, d, p)
+        return ((1, 1),) + sigma2_of_disc(dint, d, p) if s2ok else None
     # single segment: slope vC/3
     num, den, _ = segs[0]
     if num % 3 != 0:
@@ -296,7 +328,7 @@ def decide_cubic_cluster(A, B, C, p, P, d, dint, depth=0):
     if code[0] == 'SEP':
         return code[1]
     if code[0] == 'DOUBLE':
-        return ((1, 1),) + sigma2_of_disc(dint, d, p)
+        return ((1, 1),) + sigma2_of_disc(dint, d, p) if s2ok else None
     # TRIPLE residual: recurse into the sub-cluster
     t = code[1] * p ** s            # the residual triple root, lifted scale
     A1 = A + 3 * t
@@ -311,7 +343,7 @@ def decide_cubic_cluster(A, B, C, p, P, d, dint, depth=0):
     return decide_cubic_cluster((A1 // p ** s) % p ** P2,
                                 (B1 // p ** (2 * s)) % p ** P2,
                                 (C1 // p ** (3 * s)) % p ** P2,
-                                p, P2, d, dint, depth + 1)
+                                p, P2, d, dint, s2ok, depth + 1)
 
 
 TAB2 = {}
@@ -321,26 +353,28 @@ TAB3 = {}
 def decide_class(coeffs, p, N, n):
     """Decision for one class (canonical lift coeffs, level N).
     Returns ('D', sigma, h) decided | ('P', dmin) pending with min possible height."""
-    K = K_of(p)
     if n == 2:
         a, b = coeffs
-        dint = disc2(a, b)
-        d = vp_int(dint, p, N)
         code = TAB2[p][(a % p, b % p)]
         if code[0] == 'SEP':
             return ('D', code[1], 0)
-        if d + K > N:
+        dint = disc2(a, b)
+        d = vp_int(dint, p, N)
+        if not sigma2_readable(d, p, N):
             return ('P', d)
         return ('D', sigma2_of_disc(dint, d, p), d)
     a, b, c = coeffs
-    dint = disc3(a, b, c)
-    d = vp_int(dint, p, N)
     code = TAB3[p][(a % p, b % p, c % p)]
     if code[0] == 'SEP':
         return ('D', code[1], 0)
-    if d + K > N:
+    dint = disc3(a, b, c)
+    d = vp_int(dint, p, N)
+    if d >= N:
         return ('P', d)
+    s2ok = sigma2_readable(d, p, N)
     if code[0] == 'DOUBLE':
+        if not s2ok:
+            return ('P', d)
         return ('D', ((1, 1),) + sigma2_of_disc(dint, d, p), d)
     # TRIPLE
     t = code[1]
@@ -348,7 +382,7 @@ def decide_class(coeffs, p, N, n):
     B = b + 2 * a * t + 3 * t * t
     C = c + b * t + a * t * t + t ** 3
     M = p ** N
-    sig = decide_cubic_cluster(A % M, B % M, C % M, p, N, d, dint)
+    sig = decide_cubic_cluster(A % M, B % M, C % M, p, N, d, dint, s2ok)
     if sig is None:
         return ('P', d)
     return ('D', sig, d)
@@ -365,16 +399,24 @@ def run_census(n, p, baseN, maxN, child_cap):
     harvested = defaultdict(Fr)        # (sigma,h) -> weight (Fraction, final)
     harvest_level = {}                 # (sigma,h) -> level first seen
     records = []
-    pend = list(itertools.product(range(p ** baseN), repeat=n))
     N = baseN
     frontier_prev = 0
     stab_ok = True
     conserve_ok = True
+    pend = None                        # None = base level (all classes)
     while True:
+        if pend is None:
+            stream = itertools.product(range(p ** baseN), repeat=n)
+        else:
+            # children of the pending classes at the previous level
+            M = p ** (N - 1)
+            offs = list(itertools.product(range(p), repeat=n))
+            stream = (tuple(cc + dd * M for cc, dd in zip(coeffs, deltas))
+                      for coeffs in pend for deltas in offs)
         newly = defaultdict(int)
         still = []
         dmin = N                       # min possible final height among pending
-        for coeffs in pend:
+        for coeffs in stream:
             r = decide_class(coeffs, p, N, n)
             if r[0] == 'D':
                 newly[(r[1], r[2])] += 1
@@ -404,13 +446,6 @@ def run_census(n, p, baseN, maxN, child_cap):
         pend = still
         if not pend or N >= maxN or len(pend) * p ** n > child_cap:
             break
-        # refine: children at level N+1
-        M = p ** N
-        newpend = []
-        for coeffs in pend:
-            for deltas in itertools.product(range(p), repeat=n):
-                newpend.append(tuple(cc + dd * M for cc, dd in zip(coeffs, deltas)))
-        pend = newpend
         N += 1
     return dict(harvested=dict(harvested), harvest_level=harvest_level,
                 frontier=frontier_prev, pending_measure=records[-1]["pend_meas"],
@@ -531,11 +566,13 @@ if __name__ == "__main__":
         TAB2[p] = reduction_table(p, 2)
         TAB3[p] = reduction_table(p, 3)
 
+    ALLRES = {}
     print("\n" + "=" * 78)
     print("n = 2 (exhaustive; exact closed-form closure of the height sum)")
     print("=" * 78)
     for p, baseN, maxN in ((2, 6, 16), (3, 4, 11), (5, 3, 9)):
         res = run_census(2, p, baseN, maxN, child_cap=3_000_000)
+        ALLRES[(2, p)] = res
         report_census(2, p, res)
         n2_exact_tie(p, res)
 
@@ -543,9 +580,10 @@ if __name__ == "__main__":
     print("n = 3 (exhaustive census + NP/cluster recursion; sandwich closure)")
     print("=" * 78)
     N3RES = {}
-    for p, baseN, maxN in ((2, 6, 13), (3, 4, 9), (5, 3, 7)):
-        res = run_census(3, p, baseN, maxN, child_cap=6_000_000)
+    for p, baseN, maxN in ((2, 6, 12), (3, 4, 8), (5, 3, 6)):
+        res = run_census(3, p, baseN, maxN, child_cap=13_000_000)
         N3RES[p] = res
+        ALLRES[(3, p)] = res
         report_census(3, p, res)
         # h=0 cross-check vs exact reduction-pattern counts mod p
         sep_counts = defaultdict(int)
@@ -566,6 +604,24 @@ if __name__ == "__main__":
                 rr = ["h%d/h%d=%s" % (h2, h1, str(Fr(w2, w1)))
                       for (h1, w1), (h2, w2) in zip(hw, hw[1:]) if w1 != 0]
                 print(f"    tail ratios {str(sig):26s}: " + ", ".join(rr[-4:]))
+
+    # dump exact census results for the oracle script (script 3)
+    import json
+    dump = {}
+    for (n, p), res in ALLRES.items():
+        dump[f"{n},{p}"] = {
+            "frontier": res["frontier"],
+            "pending": str(res["pending_measure"]),
+            "harvested": [[repr(sig), h, str(w)]
+                          for (sig, h), w in sorted(res["harvested"].items(),
+                                                    key=lambda kv: str(kv[0]))],
+            "engine": {repr(sig): str(ref_val(n, sig, p)) for sig in REF[n]},
+        }
+    outp = ("/data/users/asvin/math-and-lean/p-adic-splitting-densities/"
+            "verification/openmath/results_N5-w17ii_census.json")
+    with open(outp, "w") as fh:
+        json.dump(dump, fh, indent=1)
+    log(f"census dump written to {outp}")
 
     print("\n" + "=" * 78)
     if FAIL:

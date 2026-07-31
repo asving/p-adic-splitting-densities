@@ -21,12 +21,16 @@ def Factorizes {n : ℕ} {S : StepSys n} {TE : TmplEvents n S}
       HasSum (fun h : {h // (D.dom γ).Mem h} => gProd X γ h.1 q₀) c →
       a = b * c
 
-/-- append/take/drop round-trip lemmas (the Fin.append coordinates). -/
-private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+/-- append/take/drop round-trip lemmas (the Fin.append coordinates).
+[SYN2-S1 SWEEP-6, 2026-07-31: `hpt_take_append`/`hpt_drop_append` DE-PRIVATIZED as the
+family SURVIVORS (the originals — the Kernels KC2b/KC6 copies existed only because
+these were `private`, per their own docstrings); Kernels copies deleted, re-pointed
+here.  `hpt_append_take_drop` below stays private (no twin).] -/
+lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
     Hpt.take (Hpt.append h₁ h₂) = h₁ := by
   funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
 
-private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
+lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
     Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
   funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
 

@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.V10_transportWindow
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC2.HK05_countermodelGate — HK-05: the COUNTERMODEL GATE on the (NEW) clause set
@@ -117,19 +118,9 @@ def StagedRegradeOf (σ : Stage p F) (ν : Node p F) (σV : Stage p F) : Prop :=
   σV.Φ = σ.Φ ∧ σV.e = ν.e ∧ σV.h = ν.h ∧ σV.K = σ.K ∧ σV.FQ = σ.FQ ∧
   σV.reps = σ.reps ∧ (∀ f, σV.wPrev f = σ.w f) ∧ IsSlotMinWeight σV.w σ.Φ ν.e ν.h σ.w
 
-/-- `w 1 = 0` (the V10 helper pattern, re-derived locally — V10's copy is private). -/
-private lemma hk05_w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; omega
-
-/-- `w (x^n) = n·w x` (the V10 helper pattern). -/
-private lemma hk05_w_pow (σ : Stage p F) (x : Polynomial ℤ_[p]) (hx : x ≠ 0) (n : ℕ) :
-    σ.w (x ^ n) = (n : ℤ) * σ.w x := by
-  induction n with
-  | zero => rw [pow_zero, hk05_w_one σ]; push_cast; ring
-  | succ k ih =>
-      rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hx) hx, ih]
-      push_cast; ring
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow DELETED — single proof
+source `Moves/ResVal.lean` (α-identical; the SYN-E0 concurrent-agent hold on this
+file is lifted, per P2-C1); uses re-pointed to ResVal.w_one/w_pow. -/
 
 /-- The τ-part of any read lift has degree `< e·g·deg Φ` (V10's `hτdeg` pattern,
 extracted; only the degree facts of the slot coefficients are consumed). -/
@@ -332,7 +323,7 @@ private lemma hk05_recorded (ν : Node p F) (hνe : ν.e = 1) (hνh : ν.h = 3) 
   -- σV.w Φ̂ ≥ 6 (both development parts weigh 6)
   have hwpow : σV.w (ν.σ.Φ ^ 2) = 6 := by
     have hwΦσ : σV.w ν.σ.Φ = 3 := by rw [← hVΦ]; exact hkΦ
-    rw [hk05_w_pow σV ν.σ.Φ hΦne 2, hwΦσ]; norm_num
+    rw [ResVal.w_pow σV ν.σ.Φ hΦne 2, hwΦσ]; norm_num
   have hwhat : (6 : ℤ) ≤ σV.w Φhat := by
     have hsplit : ν.σ.Φ ^ 2 + (Φhat - ν.σ.Φ ^ 2) = Φhat := by ring
     have hne' : ν.σ.Φ ^ 2 + (Φhat - ν.σ.Φ ^ 2) ≠ 0 := by
@@ -597,7 +588,7 @@ theorem hk05_find2_residual_entries_blocked
       ← hVΦ, σV.hwΦ, hVh]
     norm_num
   refine ⟨?_, ?_, ?_⟩
-  · rw [hk05_w_pow σ' ν.σ.Φ hΦne 2, hwPhi']; ring
+  · rw [ResVal.w_pow σ' ν.σ.Φ hΦne 2, hwPhi']; ring
   · have hinτ : inC σ'.Φ (Φhat - ν.σ.Φ ^ 2) := by
       show (Φhat - ν.σ.Φ ^ 2).degree < σ'.Φ.degree
       rw [htrans.base.child_key]

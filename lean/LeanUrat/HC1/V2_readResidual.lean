@@ -10,6 +10,7 @@ import LeanUrat.HC1.V6_alignedOrbits
 import LeanUrat.HC1.S3_childK1
 import LeanUrat.Moves.L3_K1
 import LeanUrat.Moves.L4_TRANSii
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.V2_readResidual — the lawful regrade carrier exists (blueprint §10, V2)
@@ -72,42 +73,15 @@ section V2Infra
 
 variable (σ : Stage p F)
 
-private lemma v2w_one : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; omega
-
-private lemma v2w_neg (f : Polynomial ℤ_[p]) (hf : f ≠ 0) : σ.w (-f) = σ.w f := by
-  have hne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
-  have hneg1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by
-    have h := σ.hwmul (-1) (-1) hne hne
-    rw [neg_mul_neg, one_mul] at h
-    have h1 := v2w_one σ
-    omega
-  have h := σ.hwmul (-1) f hne hf
-  rw [neg_one_mul] at h
-  omega
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_neg DELETED (= ResVal.w_one/w_neg,
+α-identical); v2sum_w_ge below is the ι-GENERIC shape — kept as a one-line ADAPTER
+over the bare hoisted engine `Moves.ult_sum_ge` (W := σ.w, hult := σ.hwult). -/
 
 /-- ultrametric finite-sum lower bound (zeros allowed among the summands). -/
 private lemma v2sum_w_ge {ι : Type*} (S : Finset ι) (a : ι → Polynomial ℤ_[p]) (m : ℤ)
     (hm : ∀ j ∈ S, a j ≠ 0 → m ≤ σ.w (a j)) (hsum : (∑ j ∈ S, a j) ≠ 0) :
-    m ≤ σ.w (∑ j ∈ S, a j) := by
-  classical
-  revert hm hsum
-  induction S using Finset.induction with
-  | empty => intro hm hsum; simp at hsum
-  | insert i T hiT ih =>
-    intro hm hsum
-    rw [Finset.sum_insert hiT] at hsum ⊢
-    by_cases hai : a i = 0
-    · rw [hai, zero_add] at hsum ⊢
-      exact ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsum
-    · by_cases hsT : (∑ j ∈ T, a j) = 0
-      · rw [hsT, add_zero] at hsum ⊢
-        exact hm i (Finset.mem_insert_self i T) hai
-      · have h1 : m ≤ σ.w (a i) := hm i (Finset.mem_insert_self i T) hai
-        have h2 : m ≤ σ.w (∑ j ∈ T, a j) :=
-          ih (fun j hj hj0 => hm j (Finset.mem_insert_of_mem hj) hj0) hsT
-        exact le_trans (le_min h1 h2) (σ.hwult (a i) (∑ j ∈ T, a j) hai hsT hsum)
+    m ≤ σ.w (∑ j ∈ S, a j) :=
+  LeanUrat.Moves.ult_sum_ge σ.w σ.hwult S a m hm hsum
 
 /-- "zero, or `w`-deep at least `ω`" — the domain of the level-`ω` graded residue. -/
 private def v2Deep (ω : ℤ) (x : Polynomial ℤ_[p]) : Prop := x = 0 ∨ ω ≤ σ.w x
@@ -151,9 +125,9 @@ private lemma v2gr_add (hσ : StageCore σ) {ω : ℤ} {x y : Polynomial ℤ_[p]
     refine ⟨Or.inl hxy0, ?_⟩
     rw [hxy0, v2gr_zero]
     rcases eq_or_ne (σ.w x) ω with hwx | hwx
-    · have hwy : σ.w y = ω := by rw [hyx, v2w_neg σ x hx0]; exact hwx
+    · have hwy : σ.w y = ω := by rw [hyx, ResVal.w_neg σ x hx0]; exact hwx
       rw [v2gr_eq σ hx0 hwx, v2gr_eq σ hy0 hwy, hyx, hσ.R_neg, add_neg_cancel]
-    · have hwy : σ.w y ≠ ω := by rw [hyx, v2w_neg σ x hx0]; exact hwx
+    · have hwy : σ.w y ≠ ω := by rw [hyx, ResVal.w_neg σ x hx0]; exact hwx
       rw [v2gr_deep σ hwx, v2gr_deep σ hwy, add_zero]
   have hult := σ.hwult x y hx0 hy0 hxy0
   have hDeep : v2Deep σ ω (x + y) := Or.inr (le_trans (le_min hxw hyw) hult)
@@ -505,7 +479,7 @@ private lemma v2cw_key (e' h' : ℕ)
       show (if 0 = 1 then (1 : Polynomial ℤ_[p]) else 0) = 0
       rw [if_neg (by omega : (0 : ℕ) ≠ 1)]
     · show (h' : ℤ) ≤ (e' : ℤ) * σ.w (if 1 = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
-      rw [if_pos rfl, v2w_one σ]
+      rw [if_pos rfl, ResVal.w_one σ]
       push_cast
       omega
   · refine ⟨1, by omega, ?_, ?_⟩
@@ -513,7 +487,7 @@ private lemma v2cw_key (e' h' : ℕ)
       rw [if_pos rfl]
       exact one_ne_zero
     · show (h' : ℤ) = (e' : ℤ) * σ.w (if 1 = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
-      rw [if_pos rfl, v2w_one σ]
+      rw [if_pos rfl, ResVal.w_one σ]
       push_cast
       omega
 
@@ -532,8 +506,8 @@ private lemma v2cw_neg (e' h' : ℕ)
     constructor
     · intro j hj hnz
       have h := hlo j hj (show -(B j) ≠ 0 from neg_ne_zero.mpr hnz)
-      simpa only [v2w_neg σ (B j) hnz] using h
-    · exact ⟨jj, hjj, hjjB, by simpa only [v2w_neg σ (B jj) hjjB] using hjje⟩
+      simpa only [ResVal.w_neg σ (B j) hnz] using h
+    · exact ⟨jj, hjj, hjjB, by simpa only [ResVal.w_neg σ (B jj) hjjB] using hjje⟩
   exact v2slotMin_unique hattn' hatt
 
 /-! #### the two `ReadResData` pins for the explicit carrier -/
@@ -554,14 +528,14 @@ private lemma v2Rc_phi (e' h' : ℕ) (s' t' : ℤ)
   have h1cond : (if (1 : ℕ) = 1 then (1 : Polynomial ℤ_[p]) else 0) ≠ 0 ∧
       (e' : ℤ) * σ.w (if (1 : ℕ) = 1 then 1 else 0) + ((1 : ℕ) : ℤ) * (h' : ℤ)
         = childW σ σ.Φ e' h' σ.Φ := by
-    rw [if_pos rfl, v2cw_key σ e' h' hSMW, v2w_one σ]
+    rw [if_pos rfl, v2cw_key σ e' h' hSMW, ResVal.w_one σ]
     refine ⟨one_ne_zero, ?_⟩
     push_cast
     omega
   rw [if_neg h0cond, if_pos h1cond, zero_add]
   have hred : ((fun j : ℕ => if j = 1 then (1 : Polynomial ℤ_[p]) else 0) 1) = 1 := by
     norm_num
-  rw [hred, v2dig_one σ, map_one, one_mul, v2w_one σ]
+  rw [hred, v2dig_one σ, map_one, one_mul, ResVal.w_one σ]
   norm_num
 
 /-- the (S5) pin at the regrade: single-slot coefficients carry the SAME hS5 unit
@@ -644,7 +618,7 @@ private lemma v2Rc_negLaw (hσ : StageCore σ) (e' h' : ℕ) (s' t' : ℤ)
       rintro ⟨h0, -⟩
       exact h0 hBj
     rw [if_neg hn1, if_neg hn2, neg_zero]
-  · have hwn := v2w_neg σ (B j) hBj
+  · have hwn := ResVal.w_neg σ (B j) hBj
     have hcd : v2dig σ (-(B j)) = - v2dig σ (B j) := v2dig_of_Rneg σ hσ (B j)
     by_cases hc : B j ≠ 0 ∧ (e' : ℤ) * σ.w (B j) + (j : ℤ) * (h' : ℤ)
         = childW σ σ.Φ e' h' f
@@ -1483,7 +1457,7 @@ private lemma v2Rc_mulLaw (hσ : StageCore σ) (hσL : StageCoreL σ)
         have hsumne : H.coeff m' + -(H.coeff m' %ₘ σ.Φ) ≠ 0 := by
           rw [← hyΦ]; exact hΦyne
         have hult := σ.hwult _ _ hconv_ne hnegne hsumne
-        rw [v2w_neg σ _ hrz] at hult
+        rw [ResVal.w_neg σ _ hrz] at hult
         exact le_trans (le_min hwconv hrw) hult
     have hmulw := σ.hwmul σ.Φ (H.coeff m' /ₘ σ.Φ) hΦne hy
     rw [hmulw] at hwΦy
@@ -1827,7 +1801,7 @@ theorem V2_readFrame {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   obtain ⟨⟨D, hlaws⟩, -⟩ := V2_readResidual σ hσ estar hstar sstar tstar hrp
   obtain ⟨⟨-, hSMW⟩, hwmul, hwult, -⟩ := V1_readWPack σ hσ estar hstar sstar tstar hrp
   obtain ⟨hwPhi, hK1⟩ :=
-    S3_childK1 σ σ.Φ σ.hmonic σ.hdeg estar hstar hrp.1 hrp.2.1 (v2w_one σ)
+    S3_childK1 σ σ.Φ σ.hmonic σ.hdeg estar hstar hrp.1 hrp.2.1 (ResVal.w_one σ)
   exact ⟨⟨D, hlaws, hwmul, hwult, hwPhi, hK1,
     fun B hB hBc => L4_TRANSii σ σ.Φ estar hstar _ hSMW B hB hBc,
     V6_regradeOrbits σ hσ estar hstar sstar tstar hrp D⟩⟩

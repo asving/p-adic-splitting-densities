@@ -1493,14 +1493,19 @@ private theorem geomClass_dvd_of_le {b b' : ℕ} {as as' : Finset ℕ+}
       ∣ Polynomial.X ^ b' * ∏ a ∈ as', (1 - Polynomial.X ^ (a : ℕ)) :=
   mul_dvd_mul (pow_dvd_pow _ hb) (Finset.prod_dvd_prod_of_subset _ _ _ hs)
 
-private theorem denom_dvd_of_add {x y : Qq} {L : Polynomial ℚ} (hL : L ≠ 0)
+/-- Denominator closure under addition (common denominator L).
+[SYN2-S1 SWEEP-3, 2026-07-31: DE-PRIVATIZED — the corpus single proof source; the
+V5_jrat (jrat_*) and TV_F1 (f1_*) verbatim copies are deleted and re-pointed here.] -/
+theorem denom_dvd_of_add {x y : Qq} {L : Polynomial ℚ} (hL : L ≠ 0)
     (hx : x.denom ∣ L) (hy : y.denom ∣ L) : (x + y).denom ∣ L := by
   obtain ⟨px, hpx⟩ := (RatFunc.denom_dvd hL).mp hx
   obtain ⟨py, hpy⟩ := (RatFunc.denom_dvd hL).mp hy
   exact (RatFunc.denom_dvd hL).mpr
     ⟨px + py, by rw [hpx, hpy, map_add]; ring⟩
 
-private theorem denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
+/-- Denominator closure under finite sums (common denominator L).
+[SYN2-S1 SWEEP-3, 2026-07-31: DE-PRIVATIZED — see `denom_dvd_of_add`.] -/
+theorem denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
     ∀ (s : Finset ι) (f : ι → Qq), (∀ i ∈ s, (f i).denom ∣ L) →
     (∑ i ∈ s, f i).denom ∣ L := by
   classical

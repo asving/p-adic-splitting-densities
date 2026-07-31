@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import LeanUrat.MovesT.Defs
+import LeanUrat.MovesT.F0_preHalt
 
 /-! # TV-B8 — `History.snoc_induction`, the last-node decomposition eliminator
 
@@ -44,16 +45,8 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- histories are their node lists (the two proof fields are propositional) — the
-E5 `history_eq_of_nodes_eq`/G1 `hist_ext` content, re-derived locally (both
-in-corpus twins are `private`; docstring note). -/
-private lemma history_ext {H H' : History p F}
-    (h : H.nodes = H'.nodes) : H = H' := by
-  obtain ⟨n1, hne1, hri1⟩ := H
-  obtain ⟨n2, hne2, hri2⟩ := H'
-  change n1 = n2 at h
-  subst h
-  rfl
+/- [SYN2-S1 SWEEP-4, 2026-07-31] the wave's fourth private history_ext copy DELETED —
+single proof source `F0_preHalt.history_ext` (public, now imported); bare uses resolve. -/
 
 /-- **TV-B8 `History.snoc_induction`** — the last-node decomposition eliminator
 (blueprint §3.B display, verbatim): a motive holding at every one-node history

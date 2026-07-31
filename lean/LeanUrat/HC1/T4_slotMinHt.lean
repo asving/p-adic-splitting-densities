@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.HC1.DefsCar
 import LeanUrat.Moves.L0_FactB_unique
 import LeanUrat.HC1.T3_htChainWeight
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.T4_slotMinHt — LST(i-b): the iterated slot minimum
@@ -48,30 +49,8 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-! ## A. Generic stage-valuation lemmas (from the structure fields alone) -/
 
-private lemma t4_w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have hw := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at hw; omega
-
-private lemma t4_w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
-  induction n with
-  | zero => simp [t4_w_one]
-  | succ n ih =>
-    have hfn : f ^ n ≠ 0 := pow_ne_zero n hf
-    rw [pow_succ, σ.hwmul _ _ hfn hf, ih]; push_cast; ring
-
-private lemma t4_w_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    σ.w (-f) = σ.w f := by
-  have hm1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := by
-    intro h; exact one_ne_zero (α := Polynomial ℤ_[p]) (by linear_combination -h)
-  have hsq : σ.w ((-1 : Polynomial ℤ_[p]) * (-1)) = σ.w (-1) + σ.w (-1) :=
-    σ.hwmul _ _ hm1 hm1
-  rw [neg_one_mul, neg_neg] at hsq
-  have hone := t4_w_one σ
-  have hw1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by omega
-  have : σ.w ((-1 : Polynomial ℤ_[p]) * f) = σ.w (-1) + σ.w f := σ.hwmul _ _ hm1 hf
-  rw [neg_one_mul] at this
-  rw [this, hw1, zero_add]
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow/ResVal.w_neg DELETED — single proof
+source `Moves/ResVal.lean` (α-identical); uses re-pointed to ResVal.w_one/w_pow/w_neg. -/
 
 /-- The strict ultrametric: strictly smaller weight wins, and the sum cannot vanish. -/
 private lemma t4_w_strict (σ : Stage p F) {f g : Polynomial ℤ_[p]} (hf : f ≠ 0) (hg : g ≠ 0)
@@ -79,7 +58,7 @@ private lemma t4_w_strict (σ : Stage p F) {f g : Polynomial ℤ_[p]} (hf : f �
   have hne : f + g ≠ 0 := by
     intro h0
     have hfg : f = -g := eq_neg_of_add_eq_zero_left h0
-    rw [hfg, t4_w_neg σ g hg] at hlt
+    rw [hfg, ResVal.w_neg σ g hg] at hlt
     exact lt_irrefl _ hlt
   refine ⟨hne, ?_⟩
   have h1 : min (σ.w f) (σ.w g) ≤ σ.w (f + g) := σ.hwult f g hf hg hne
@@ -88,7 +67,7 @@ private lemma t4_w_strict (σ : Stage p F) {f g : Polynomial ℤ_[p]} (hf : f �
     have hsum : f + g + -g = f := by ring
     have := σ.hwult (f + g) (-g) hne hgneg (by rw [hsum]; exact hf)
     rwa [hsum] at this
-  rw [t4_w_neg σ g hg] at h2
+  rw [ResVal.w_neg σ g hg] at h2
   omega
 
 /-- Sum over a finite set with pairwise DISTINCT weights: nonzero, weight = the attained min. -/
@@ -550,7 +529,7 @@ private lemma t4_claim (T : Tower p F) (y : T.Coord → ↥(T.stg 0).FQ) :
         rw [(T.stg 0).hStretch _ hCp (t4_degC_lt (T.stg 0)), T.base.1.1 _ hCp,
             t4_gaussVal_C_p, mul_one]
       rw [hq, (T.stg 0).hwmul _ _ hdne (pow_ne_zero _ hCp), hwd,
-          t4_w_pow (T.stg 0) _ hCp, hwCp]
+          ResVal.w_pow (T.stg 0) _ hCp, hwCp]
       ring
     have hdist : ∀ c ∈ S, ∀ c' ∈ S, c ≠ c' →
         (T.stg ⟨0, hk⟩).w (qterm T y 0 c) ≠ (T.stg ⟨0, hk⟩).w (qterm T y 0 c') := by
@@ -659,7 +638,7 @@ private lemma t4_claim (T : Tower p F) (y : T.Coord → ↥(T.stg 0).FQ) :
       rw [t4_qterm_succ T y k hkf c,
           (T.stg ⟨k, hkf⟩).hwmul _ _ (t4_qterm_ne T y k c (hne c hc))
             (pow_ne_zero _ (T.stg ⟨k, hkf⟩).hmonic.ne_zero),
-          t4_w_pow (T.stg ⟨k, hkf⟩) _ (T.stg ⟨k, hkf⟩).hmonic.ne_zero]
+          ResVal.w_pow (T.stg ⟨k, hkf⟩) _ (T.stg ⟨k, hkf⟩).hmonic.ne_zero]
     -- (8) stage-k value of the whole sum = the c₀ term
     have hwG_k : (T.stg ⟨k, hkf⟩).w (∑ c ∈ S, qterm T y (k + 1) c)
         = (T.stg ⟨k, hkf⟩).w (qterm T y (k + 1) c₀) := by
@@ -726,7 +705,7 @@ private lemma t4_hasSide (T : Tower p F) : T.HasSide := by
     intro f
     by_cases hf : f = 0
     · simp [hf]
-    · rw [if_neg (neg_ne_zero.mpr hf), if_neg hf, t4_w_neg _ f hf]
+    · rw [if_neg (neg_ne_zero.mpr hf), if_neg hf, ResVal.w_neg _ f hf]
   · -- w_add
     intro f g
     by_cases hfg : f + g = 0
@@ -776,7 +755,7 @@ private lemma t4_hasSide (T : Tower p F) : T.HasSide := by
         rw [← WithTop.coe_add]
         exact_mod_cast le_of_eq this.symm
   · -- w_one
-    rw [if_neg (one_ne_zero : (1 : Polynomial ℤ_[p]) ≠ 0), t4_w_one]
+    rw [if_neg (one_ne_zero : (1 : Polynomial ℤ_[p]) ≠ 0), ResVal.w_one]
     rfl
   · -- the agreement spec
     intro f hf
@@ -857,7 +836,7 @@ theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       = (T.stg (Fin.last T.K)).w (qterm T y T.K c₀)
         + (b : ℤ) * (T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ := by
     rw [hconv, (T.stg (Fin.last T.K)).hwmul _ _ hGne (pow_ne_zero _ hΦlne),
-        t4_w_pow _ _ hΦlne, hwG]
+        ResVal.w_pow _ _ hΦlne, hwG]
   have hq_ht : ∀ c ∈ S, ((T.stg (Fin.last T.K)).w (qterm T y T.K c) : ℚ)
       + (b : ℚ) * ((T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ : ℚ)
       = (T.strTop : ℚ) * T.ht c := by
@@ -886,7 +865,7 @@ theorem T4_slotMinHt {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
           + (b : ℤ) * (T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ := by
       rw [hterm c hc,
           (T.stg (Fin.last T.K)).hwmul _ _ (t4_qterm_ne T y T.K c hyc) (pow_ne_zero _ hΦlne),
-          t4_w_pow _ _ hΦlne]
+          ResVal.w_pow _ _ hΦlne]
     have hzz : (T.stg (Fin.last T.K)).w (qterm T y T.K c)
         + (b : ℤ) * (T.stg (Fin.last T.K)).w (T.stg (Fin.last T.K)).Φ
         = (T.stg (Fin.last T.K)).w (T.mono c) := by

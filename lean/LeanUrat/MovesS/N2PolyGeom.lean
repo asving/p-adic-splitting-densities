@@ -14,6 +14,7 @@ UNPROVABLE until their `n2M` inputs (rowVal/ιsh/entCount/cellInst/activeState)
 are filled by `n2_events`/`n2_ent_flow`/`n2_carriers` in N2Carriers.lean.
 -/
 import LeanUrat.MovesS.N2Carriers
+import LeanUrat.MovesS.EvalAtCoe
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -183,38 +184,8 @@ FILLED in N2Carriers.lean, so the three owned proof fields (`tg_interp`,
 `ι_interp`, `ι_count`) are now provable in place; the owner units n2_interp_tg /
 n2_interp_iota project them from the instance. -/
 
-/-- Evaluation of a polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
-whenever `q.eval x ≠ 0` (local copy of PowSubstOK's private lemma, as in
-N2Rsh.lean). -/
-private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
-    RatFunc.eval (RingHom.id ℚ) x
-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
-      = p.eval x / q.eval x := by
-  have hq0 : q ≠ 0 := fun h0 => hq (by rw [h0]; simp)
-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
-  have hdvd : (algebraMap (Polynomial ℚ) Qq p
-      / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
-    rw [Polynomial.eval₂_id]
-    obtain ⟨c, hc⟩ := hdvd
-    intro hz
-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x
-      (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
-    rw [RatFunc.denom_algebraMap]; simp
-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p :=
-    div_mul_cancel₀ _ hqne
-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
-  rw [eq_div_iff hq]
-  exact key
+/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div DELETED — single
+proof source `MovesS/EvalAtCoe.lean` (public, byte-identical); bare uses resolve. -/
 
 /-- `evalAt` of a `pgDiv` presentation with regular denominator. -/
 private lemma evalAt_pgDiv {q₀ : ℚ} {num den : Polynomial ℚ} {qp : ℕ}

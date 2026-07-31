@@ -35,6 +35,8 @@ mentions DomProj/MarkCompose).  difficulty: hard-fable, ~80 ln.
 Build: cd lean && lake build LeanUrat.Kernels.KC6
 -/
 import LeanUrat.MovesV.V4_hmc
+import LeanUrat.Kernels.HmcReduction
+import LeanUrat.MovesV.V4_naming
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -71,27 +73,10 @@ def Order0Sys {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
     ∀ (α : S.Cell) (γ : Template n S α) (h : Hpt γ.D),
       (D.dom γ).Mem h ↔ ThrMem θ θT γ h
 
-/-- Fin-append splitter identity (the KC6b docstring's sanctioned private
-helper; the original `hpt_take_append` is `private` in MovesV/V4_naming.lean,
-hence not importable). -/
-private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
-    Hpt.take (Hpt.append h₁ h₂) = h₁ := by
-  funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
-
-/-- Fin-append splitter identity (private helper, as above). -/
-private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
-    Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
-  funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
-
-/-- Private computation helper (as in the sibling Kernels files): the appended
-point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
-private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
-    (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
-  intro h0
-  have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))
-      (Fin.castAdd D₂ ⟨0, hD⟩) = 0 := by rw [h0]; rfl
-  simp only [Hpt.append, Fin.append_left] at h1
-  exact one_ne_zero h1
+/- [SYN2-S1 SWEEP-6, 2026-07-31] private hpt_take_append/hpt_drop_append/
+append_one_zero_ne_zero DELETED — survivors = the DE-PRIVATIZED V4_naming pair
+(the originals; their 'private there, hence not importable' rationale is gone)
++ HmcReduction's nonzero-point lemma (both now imported); bare uses resolve. -/
 
 /-- the vacuous threshold vectors of the V1 witness system (all `witS`
 dimensions are 0, so the vectors quantify over `Fin 0`). -/

@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.HC1.DefsTower
 import LeanUrat.Moves.L3_K1
 import LeanUrat.Moves.L2_keyResidualPow
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.T3_htChainWeight — LST(i-a): ht IS the K1-chain weight of the basis monomial
@@ -33,23 +34,14 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-! ## General stage-valuation lemmas -/
 
-private lemma stage_w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have hw := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at hw; omega
-
-private lemma stage_w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
-  induction n with
-  | zero => simp [stage_w_one]
-  | succ n ih =>
-    have hfn : f ^ n ≠ 0 := pow_ne_zero n hf
-    rw [pow_succ, σ.hwmul _ _ hfn hf, ih]; push_cast; ring
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_pow DELETED — single proof
+source `Moves/ResVal.lean` (α-identical); uses re-pointed to ResVal.w_one/w_pow. -/
 
 private lemma stage_w_prod (σ : Stage p F) {ι : Type*} (s : Finset ι) (g : ι → Polynomial ℤ_[p])
     (hg : ∀ i ∈ s, g i ≠ 0) : σ.w (∏ i ∈ s, g i) = ∑ i ∈ s, σ.w (g i) := by
   classical
   induction s using Finset.induction_on with
-  | empty => simp [stage_w_one]
+  | empty => simp [ResVal.w_one]
   | @insert a s ha ih =>
     rw [Finset.prod_insert ha, Finset.sum_insert ha]
     have hga : g a ≠ 0 := hg a (Finset.mem_insert_self a s)
@@ -212,12 +204,12 @@ theorem T3_htChainWeight {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite 
       = ∑ r : Fin (T.K + 1), (c.slot r : ℤ) * (T.stg (Fin.last T.K)).w ((T.stg r).Φ) := by
     apply Finset.sum_congr rfl
     intro r _
-    rw [stage_w_pow (T.stg (Fin.last T.K)) _ (hΦne r) (c.slot r)]
+    rw [ResVal.w_pow (T.stg (Fin.last T.K)) _ (hΦne r) (c.slot r)]
   have hexpand : (T.stg (Fin.last T.K)).w (T.mono c)
       = (c.l : ℤ) * (T.stg (Fin.last T.K)).w (C (p : ℤ_[p]))
         + ∑ r : Fin (T.K + 1), (c.slot r : ℤ) * (T.stg (Fin.last T.K)).w ((T.stg r).Φ) := by
     rw [hmono, (T.stg (Fin.last T.K)).hwmul _ _ hCpl_ne hprodne,
-        stage_w_pow (T.stg (Fin.last T.K)) _ hCp0 c.l,
+        ResVal.w_pow (T.stg (Fin.last T.K)) _ hCp0 c.l,
         stage_w_prod (T.stg (Fin.last T.K)) Finset.univ _ (fun r _ => pow_ne_zero _ (hΦne r)),
         hsum_eq]
   -- value of w(C p) = strTop

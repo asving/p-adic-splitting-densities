@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.HC1.DefsCar
 import LeanUrat.HC1.T6_carrierLaws
 import LeanUrat.Moves.L3_liftMonic
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.T7_alphabetSpan — the alphabet is the finite additive span of the slot images
@@ -39,9 +40,7 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-! ## The stretch chain (base→top weight propagation on base-cone coefficients) -/
 
-private lemma stage_w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have hw := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at hw; omega
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one DELETED (= ResVal.w_one). -/
 
 private lemma strAux_succ (T : Tower p F) (k : ℕ) (hk : k < T.K + 1) :
     T.strAux (k + 1) = T.strAux k * (T.stg ⟨k, hk⟩).e := by
@@ -420,18 +419,7 @@ private lemma tag_add (T : Tower p F) (y₁ y₂ : ↥(T.stg 0).FQ) :
   push_cast
   rfl
 
-private lemma stage0_w_neg (T : Tower p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    (T.stg 0).w (-f) = (T.stg 0).w f := by
-  have hCn1 : (C (-1 : ℤ_[p])) ≠ 0 := by rw [Polynomial.C_ne_zero]; norm_num
-  have hwn1 : (T.stg 0).w (C (-1 : ℤ_[p])) = 0 := by
-    have h := (T.stg 0).hwmul (C (-1)) (C (-1)) hCn1 hCn1
-    rw [← Polynomial.C_mul] at h
-    have he : ((-1 : ℤ_[p]) * (-1)) = 1 := by ring
-    rw [he, Polynomial.C_1, stage_w_one] at h
-    omega
-  have hneg : -f = C (-1 : ℤ_[p]) * f := by
-    rw [map_neg, Polynomial.C_1, neg_one_mul]
-  rw [hneg, (T.stg 0).hwmul _ _ hCn1 hf, hwn1, zero_add]
+/- [SYN2-S1 SWEEP-1, 2026-07-31] stage0_w_neg DELETED (= ResVal.w_neg at T.stg 0). -/
 
 /-- Cone element of positive base weight: TOP weight is at least `strTop ≥ 1` —
 the base carry is killed in every piece it did not open. -/
@@ -582,7 +570,7 @@ private lemma line_closed (T : Tower p F) (b : ℕ) (γ : ℚ) (c : ↥(T.levelS
       have hcw0 : 0 ≤ (T.stg 0).w (T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂)) := by
         have hnegne : -(T.digLift (y₁ + y₂)) ≠ 0 := neg_ne_zero.mpr hf₁₂ne
         have h := (T.stg 0).hwult _ _ hg₁₂ne hnegne (by rwa [← sub_eq_add_neg])
-        rwa [stage0_w_neg T _ hf₁₂ne, hw12, hw0₁₂, min_self, ← sub_eq_add_neg] at h
+        rwa [ResVal.w_neg (T.stg 0) _ hf₁₂ne, hw12, hw0₁₂, min_self, ← sub_eq_add_neg] at h
       have hadd_sub : T.digLift (y₁ + y₂)
           + (T.digLift y₁ + T.digLift y₂ - T.digLift (y₁ + y₂))
           = T.digLift y₁ + T.digLift y₂ := by ring

@@ -27,8 +27,11 @@ open LeanUrat.Moves LeanUrat.MovesC Polynomial
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- Finiteness of any subtype of monic degree-`g` polynomials over a finite field:
-the coefficient tuple `(coeff 0, …, coeff g)` determines the polynomial. -/
-private lemma finite_of_monic_natDegree {K : Type*} [Field K] [Finite K] (g : ℕ)
+the coefficient tuple `(coeff 0, …, coeff g)` determines the polynomial.
+[SYN2-S1 SWEEP-5, 2026-07-31: DE-PRIVATIZED as the family SURVIVOR (the general form —
+takes any predicate S with a Monic ∧ natDegree extraction); E8's specialized twin
+`finite_eligible` is deleted and re-pointed here.] -/
+lemma finite_of_monic_natDegree {K : Type*} [Field K] [Finite K] (g : ℕ)
     (S : Polynomial K → Prop) (hS : ∀ q, S q → q.Monic ∧ q.natDegree = g) :
     Finite {q : Polynomial K // S q} := by
   apply Finite.of_injective (β := (Fin (g + 1) → K)) (fun q => fun i : Fin (g + 1) => q.1.coeff i)

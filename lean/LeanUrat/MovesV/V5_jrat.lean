@@ -34,25 +34,8 @@ private theorem jrat_geomClass_ne_zero (b : ℕ) (as : Finset ℕ+) :
   rw [Polynomial.coeff_sub, Polynomial.coeff_one, Polynomial.coeff_X_pow] at hc
   simp at hc
 
-private theorem jrat_denom_dvd_of_add {x y : MovesS.Qq} {L : Polynomial ℚ} (hL : L ≠ 0)
-    (hx : x.denom ∣ L) (hy : y.denom ∣ L) : (x + y).denom ∣ L := by
-  obtain ⟨px, hpx⟩ := (RatFunc.denom_dvd hL).mp hx
-  obtain ⟨py, hpy⟩ := (RatFunc.denom_dvd hL).mp hy
-  exact (RatFunc.denom_dvd hL).mpr ⟨px + py, by rw [hpx, hpy, map_add]; ring⟩
-
-/-- a finite sum whose summands all lie over a common denominator does too. -/
-private theorem jrat_denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
-    ∀ (s : Finset ι) (f : ι → MovesS.Qq), (∀ i ∈ s, (f i).denom ∣ L) →
-    (∑ i ∈ s, f i).denom ∣ L := by
-  classical
-  intro s
-  induction s using Finset.cons_induction with
-  | empty => intro f _; simp
-  | cons a s ha ih =>
-      intro f hf
-      rw [Finset.sum_cons]
-      exact jrat_denom_dvd_of_add hL (hf a (Finset.mem_cons_self a s))
-        (ih f (fun i hi => hf i (Finset.mem_cons.mpr (Or.inr hi))))
+/- [SYN2-S1 SWEEP-3, 2026-07-31] denom_dvd_of_add / denom_sum_dvd DELETED —
+single proof source = the de-privatized MovesV/Defs pair; uses re-pointed. -/
 
 /-- THE PER-CELL CLAUSE (`jcell_interp`'s exact shape at the instance). -/
 theorem jRat_cell {n : ℕ} {C : CtsFamily n} {S : StepSys n}
@@ -134,7 +117,7 @@ theorem jRat {n : ℕ} {C : CtsFamily n} {S : StepSys n}
               (fun c => (jcellPG hcell XsC ⟨s, m, o, J.route_cont s m o hr, α⟩ c).qpow),
             geomDenoms := (J.bcells s m o α).biUnion
               (fun c => (jcellPG hcell XsC ⟨s, m, o, J.route_cont s m o hr, α⟩ c).geomDenoms),
-            geom_denom_dvd := jrat_denom_sum_dvd (jrat_geomClass_ne_zero _ _) _ _ hdvd },
+            geom_denom_dvd := denom_sum_dvd (jrat_geomClass_ne_zero _ _) _ _ hdvd },
         rfl, rfl, ?_, ?_⟩
   · simp only [MovesS.PolyGeom.val, mul_one, map_one, one_mul]
   · intro q₀ hq

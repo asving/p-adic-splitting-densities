@@ -52,26 +52,10 @@ private theorem f1_geomClass_dvd_of_le {b b' : ℕ} {as as' : Finset ℕ+}
       ∣ Polynomial.X ^ b' * ∏ a ∈ as', (1 - Polynomial.X ^ (a : ℕ)) :=
   mul_dvd_mul (pow_dvd_pow _ hb) (Finset.prod_dvd_prod_of_subset _ _ _ hs)
 
-private theorem f1_denom_dvd_of_add {x y : MovesS.Qq} {L : Polynomial ℚ}
-    (hL : L ≠ 0) (hx : x.denom ∣ L) (hy : y.denom ∣ L) : (x + y).denom ∣ L := by
-  obtain ⟨px, hpx⟩ := (RatFunc.denom_dvd hL).mp hx
-  obtain ⟨py, hpy⟩ := (RatFunc.denom_dvd hL).mp hy
-  exact (RatFunc.denom_dvd hL).mpr ⟨px + py, by rw [hpx, hpy, map_add]; ring⟩
+/- [SYN2-S1 SWEEP-3, 2026-07-31] denom_dvd_of_add / denom_sum_dvd DELETED —
+single proof source = the de-privatized MovesV/Defs pair; uses re-pointed
+(the prover's own in-file hoist record, executed). -/
 
-private theorem f1_denom_sum_dvd {ι : Type*} {L : Polynomial ℚ} (hL : L ≠ 0) :
-    ∀ (s : Finset ι) (f : ι → MovesS.Qq), (∀ i ∈ s, (f i).denom ∣ L) →
-    (∑ i ∈ s, f i).denom ∣ L := by
-  classical
-  intro s
-  induction s using Finset.cons_induction with
-  | empty => intro f _; simp
-  | cons a s ha ih =>
-      intro f hf
-      rw [Finset.sum_cons]
-      exact f1_denom_dvd_of_add hL (hf a (Finset.mem_cons_self a s))
-        (ih f (fun i hi => hf i (Finset.mem_cons.mpr (Or.inr hi))))
-
-open Classical in
 /-- the PSigma packaging of `XHDs.Gc_denom`'s choose data (the `gcellDenom`
 pattern of Defs, at the TEMPLATE face). -/
 private noncomputable def f1_gcDenom {n : ℕ} {S : StepSys n} {W : XHDw n S}
@@ -103,7 +87,7 @@ private noncomputable def f1_tmplPack {n : ℕ} {S : StepSys n} {W : XHDw n S}
       (f1_gcDenom Xs γ j).1)
     geomDenoms := Finset.univ.biUnion (fun j : Fin (D.dom γ).comps.length =>
       (f1_gcDenom Xs γ j).2.1)
-    geom_denom_dvd := f1_denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
+    geom_denom_dvd := denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
       (fun j _ => dvd_trans (f1_gcDenom Xs γ j).2.2
         (f1_geomClass_dvd_of_le
           (Finset.le_sup (f := fun j : Fin (D.dom γ).comps.length =>
@@ -206,7 +190,7 @@ noncomputable def jPGof {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (fun c => (jCellPGof X cp d c).qpow)
     geomDenoms := (J.bcells d.s d.m d.o d.α).biUnion
       (fun c => (jCellPGof X cp d c).geomDenoms)
-    geom_denom_dvd := f1_denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
+    geom_denom_dvd := denom_sum_dvd (f1_geomClass_ne_zero _ _) _ _
       (fun c hc => by
         refine dvd_trans (dvd_trans ?_ (jCellPGof X cp d c).geom_denom_dvd)
           (f1_geomClass_dvd_of_le

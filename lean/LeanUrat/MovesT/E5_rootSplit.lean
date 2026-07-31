@@ -179,14 +179,8 @@ private lemma mem_oneNode_iff (T : TreeModel p F n N m pol) (ν : Node p F)
     simpa using (show ν.species = ReadSpecies.root from h)
   exact T.mem_single ν h1 x
 
-/-- histories are their node lists (the two proof fields are propositional). -/
-private lemma history_eq_of_nodes_eq {H H' : History p F}
-    (h : H.nodes = H'.nodes) : H = H' := by
-  obtain ⟨n1, hne1, hri1⟩ := H
-  obtain ⟨n2, hne2, hri2⟩ := H'
-  change n1 = n2 at h
-  subst h
-  rfl
+/- [SYN2-S1 SWEEP-4, 2026-07-31] private history_ext DELETED —
+single proof source `F0_preHalt.history_ext` (public, already imported); uses re-pointed. -/
 
 /-- a realized nonempty history's HEAD is a realized root child. -/
 private lemma child_of_mem (T : TreeModel p F n N m pol) (H : History p F)
@@ -384,7 +378,7 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
             rw [hn] at hlen1
             simp only [List.length_cons] at hlen1
             omega
-      exact ⟨i, history_eq_of_nodes_eq hnodes.symm⟩
+      exact ⟨i, history_ext hnodes.symm⟩
     · rintro ⟨i, rfl⟩
       exact ⟨hheadchain i, rfl⟩
   have hheads_card : Tr.heads.card = htracks.t := by

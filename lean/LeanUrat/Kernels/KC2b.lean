@@ -12,7 +12,7 @@ KC2b's and lands here.  <UnitId>.lean naming.
 GATE SEQUENCING (REV 2, F5): KC2a — the DomProj countermodel attempt — is ON
 RECORD as a sorried skeleton at Kernels/HmcReduction.lean and is SEQUENCED
 BEFORE this unit's prover.  The gate is a scheduling constraint, not an
-import: this file imports only MovesV.Defs.
+import: this file imports MovesV.Defs (+ V4_naming since the SWEEP-6 dedup).
 
 RECORDED RESOLUTION (the "conditional on KC2a's outcome" clause): the
 UNRESTRICTED derivation target `∀ TE D, DomProj TE D` is NOT stated in this
@@ -38,6 +38,7 @@ obstruction record names the failing law step — never a silent sorry.]
 Build: cd lean && lake build LeanUrat.Kernels.KC2b
 -/
 import LeanUrat.MovesV.Defs
+import LeanUrat.MovesV.V4_naming
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -47,17 +48,8 @@ namespace LeanUrat.Kernels
 
 open LeanUrat.MovesV
 
-/-- Fin-append splitter identity (private re-derivation; the original
-`hpt_take_append` is `private` in MovesV/V4_naming.lean, hence not
-importable). -/
-private lemma hpt_take_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
-    Hpt.take (Hpt.append h₁ h₂) = h₁ := by
-  funext i; simp only [Hpt.take, Hpt.append, Fin.append_left]
-
-/-- Fin-append splitter identity (private re-derivation, as above). -/
-private lemma hpt_drop_append {D₁ D₂ : ℕ} (h₁ : Hpt D₁) (h₂ : Hpt D₂) :
-    Hpt.drop (Hpt.append h₁ h₂) = h₂ := by
-  funext j; simp only [Hpt.drop, Hpt.append, Fin.append_right]
+/- [SYN2-S1 SWEEP-6, 2026-07-31] private hpt_take_append/hpt_drop_append DELETED —
+survivors = the DE-PRIVATIZED V4_naming originals (now imported); bare uses resolve. -/
 
 /-- KC2b — `DomProj`, the ⊆/projection leg of HMC as a NAMED law (⚑ Q4
 named-law ratification): a realized composite history realizes its steps —

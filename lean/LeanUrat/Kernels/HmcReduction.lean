@@ -51,10 +51,11 @@ def MarkCompose {n : ℕ} {S : StepSys n} (TE : TmplEvents n S)
     (D.dom (.last m)).Mem h₁ ∧ (D.dom γ).Mem h₂ →
       (D.dom (.cons m γ)).Mem (Hpt.append h₁ h₂)
 
-/-- Private computation helper (the analogous `hpt_*` lemmas of
-MovesV/V4_naming.lean are `private` there, hence re-derived): the appended
-point (1, …, 0) is nonzero — its first coordinate survives `Fin.append_left`. -/
-private lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
+/-- The appended point (1, …, 0) is nonzero — its first coordinate survives
+`Fin.append_left`.
+[SYN2-S1 SWEEP-6, 2026-07-31: DE-PRIVATIZED as the family SURVIVOR (this module is the
+cluster's shared reduction base); the KC1/KC6 copies are deleted and re-pointed here.] -/
+lemma append_one_zero_ne_zero {D₁ D₂ : ℕ} (hD : 0 < D₁) :
     (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂)) ≠ 0 := by
   intro h0
   have h1 : (Hpt.append (fun _ => 1) (fun _ => 0) : Hpt (D₁ + D₂))

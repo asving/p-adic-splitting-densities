@@ -1,12 +1,13 @@
 /-  MovesV unit V0-4 `xhds_instance_A2` (RE-KEYED C3) — THE NON-DEGENERACY
     WITNESS for the XHD-s format, in the (t,u) CHART where `EA2` lives. -/
 import LeanUrat.MovesV.DefsGate
+import LeanUrat.MovesS.EvalAtCoe
 
 set_option linter.style.longLine false
 set_option linter.style.header false
 
 namespace LeanUrat.MovesV
-open LeanUrat.MovesS (Qq OKat evalAt)
+open LeanUrat.MovesS (Qq OKat evalAt eval_algebraMap_div)
 
 /-- the cleared rational form X²/((X⁶−1)(X³−1)) — denominators in the
 PolyGeom class. -/
@@ -18,32 +19,9 @@ noncomputable def GA2 : Qq :=
 /-- the seal's base value: EA2.eval ![1,0] = 7 (E at (h₀,h₂) = (4,1)). -/
 theorem EA2_seal : EA2.eval ![1, 0] = 7 := by decide
 
-/-- evaluation of a cleared polynomial fraction `p/q` at `x` is `p.eval x / q.eval x`
-whenever `q.eval x ≠ 0` (mirrors the private `eval_algebraMap_div` of
-`MovesS.PowSubstOK`, re-derived here to keep this unit self-contained). -/
-private lemma eval_algebraMap_div (x : ℚ) (p q : Polynomial ℚ) (hq : q.eval x ≠ 0) :
-    RatFunc.eval (RingHom.id ℚ) x
-        (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
-      = p.eval x / q.eval x := by
-  have hq0 : q ≠ 0 := fun h0 => hq (by simp [h0])
-  have hqne : algebraMap (Polynomial ℚ) Qq q ≠ 0 := RatFunc.algebraMap_ne_zero hq0
-  have hdvd : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ∣ q :=
-    (RatFunc.denom_dvd hq0).mpr ⟨p, rfl⟩
-  have hgden : Polynomial.eval₂ (RingHom.id ℚ) x
-      (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
-    rw [Polynomial.eval₂_id]; obtain ⟨c, hc⟩ := hdvd; intro hz
-    exact hq (by rw [hc, Polynomial.eval_mul, hz, zero_mul])
-  have hden_q : Polynomial.eval₂ (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q).denom ≠ 0 := by
-    rw [RatFunc.denom_algebraMap]; simp
-  have epq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq p) = p.eval x := by
-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
-  have eqq : RatFunc.eval (RingHom.id ℚ) x (algebraMap (Polynomial ℚ) Qq q) = q.eval x := by
-    rw [RatFunc.eval_algebraMap]; simp [Polynomial.eval₂_id]
-  have hmul : (algebraMap (Polynomial ℚ) Qq p / algebraMap (Polynomial ℚ) Qq q)
-      * algebraMap (Polynomial ℚ) Qq q = algebraMap (Polynomial ℚ) Qq p := div_mul_cancel₀ _ hqne
-  have key := congrArg (RatFunc.eval (RingHom.id ℚ) x) hmul
-  rw [RatFunc.eval_mul (RingHom.id ℚ) x hgden hden_q, epq, eqq] at key
-  rw [eq_div_iff hq]; exact key
+/- [SYN2-S1 SWEEP-2, 2026-07-31] private eval_algebraMap_div (the cross-corpus
+mirror) DELETED — single proof source `MovesS/EvalAtCoe.lean` (public, brought in
+through the extended `open LeanUrat.MovesS (...)` clause). -/
 
 /-- the real geometric-value clearing identity (part ⌿(b)). -/
 private lemma geomValId (r : ℝ) (hr : 1 < r) :

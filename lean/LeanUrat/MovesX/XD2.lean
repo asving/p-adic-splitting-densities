@@ -41,37 +41,8 @@ private theorem sum_le_length_mul_foldr_max :
           Nat.add_le_add ha ht
       _ = (t.length + 1) * max a (t.foldr max 0) := by ring
 
-/-- From `termLast` (only the last node may be non-continuing) the length exceeds the
-continuing-count by at most one. -/
-private theorem length_le_dTotal_succ {n : ℕ} (H : XHistory n)
-    (hterm : ∀ i : Fin H.length, (i : ℕ) + 1 < H.length → (H.get i).continuing = true) :
-    H.length ≤ dTotal H + 1 := by
-  induction H with
-  | nil => simp [dTotal]
-  | cons a t ih =>
-    -- termLast restricts to the tail
-    have htTerm : ∀ j : Fin t.length, (j : ℕ) + 1 < t.length →
-        (t.get j).continuing = true := by
-      intro j hj
-      have h := hterm j.succ (by simpa using hj)
-      simpa [List.get_cons_succ] using h
-    -- if the tail is nonempty, the head is continuing
-    have haCont : t.length ≠ 0 → a.continuing = true := by
-      intro hne
-      have h := hterm ⟨0, Nat.succ_pos _⟩ (by simp; omega)
-      simpa [List.get_cons_zero] using h
-    have IH := ih htTerm
-    by_cases hc : a.continuing = true
-    · have hd : dTotal (a :: t) = dTotal t + 1 := by
-        simp [dTotal, hc]
-      simp only [List.length_cons]
-      omega
-    · have ht0 : t.length = 0 := by
-        by_contra h0
-        exact hc (haCont h0)
-      simp only [List.length_cons, ht0]
-      omega
-
+/- [SYN2-S1 SWEEP-6, 2026-07-31] private length_le_dTotal_succ HOISTED to
+MovesX/Defs.lean (this file's form was the survivor); use unchanged. -/
 theorem x2hypCount {n : ℕ} (H : XHistory n) (W : HistWF n H) :
     sumH H ≤ (dTotal H + 1) * maxH H := by
   have hA : sumH H ≤ H.length * maxH H := by

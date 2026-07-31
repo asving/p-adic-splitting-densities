@@ -468,4 +468,39 @@ def CountableFiberAdditive (S : SeriesData n p C) : Prop :=
     (∀ f ∈ E, ∃ T ∈ I, f ∈ S.fiber T) → (∀ T ∈ I, S.fiber T ⊆ E) →
     HasSum (fun T : I => C.frac (S.fiber T)) (C.frac E)
 
+
+/-- From the termLast discipline (only the last node may be non-continuing) the length
+exceeds the continuing-count by at most one.
+[SYN2-S1 SWEEP-6, 2026-07-31: hoisted SURVIVOR — XD2's raw-hypothesis form (the more
+general of the two wave-minted copies; XG2d's HistWF-keyed twin and its private
+`len_le_filter_succ` engine are deleted, uses re-pointed through `.termLast`).] -/
+theorem length_le_dTotal_succ {n : ℕ} (H : XHistory n)
+    (hterm : ∀ i : Fin H.length, (i : ℕ) + 1 < H.length → (H.get i).continuing = true) :
+    H.length ≤ dTotal H + 1 := by
+  induction H with
+  | nil => simp [dTotal]
+  | cons a t ih =>
+    -- termLast restricts to the tail
+    have htTerm : ∀ j : Fin t.length, (j : ℕ) + 1 < t.length →
+        (t.get j).continuing = true := by
+      intro j hj
+      have h := hterm j.succ (by simpa using hj)
+      simpa [List.get_cons_succ] using h
+    -- if the tail is nonempty, the head is continuing
+    have haCont : t.length ≠ 0 → a.continuing = true := by
+      intro hne
+      have h := hterm ⟨0, Nat.succ_pos _⟩ (by simp; omega)
+      simpa [List.get_cons_zero] using h
+    have IH := ih htTerm
+    by_cases hc : a.continuing = true
+    · have hd : dTotal (a :: t) = dTotal t + 1 := by
+        simp [dTotal, hc]
+      simp only [List.length_cons]
+      omega
+    · have ht0 : t.length = 0 := by
+        by_contra h0
+        exact hc (haCont h0)
+      simp only [List.length_cons, ht0]
+      omega
+
 end LeanUrat.MovesX

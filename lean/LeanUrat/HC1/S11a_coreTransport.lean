@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsSpine
+import LeanUrat.Moves.ResVal
 
 /-!
 # HC1.S11a_coreTransport — the F-5 minimality certificate: the non-twist StageCore
@@ -43,25 +44,8 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-! ## Bare-Stage valuation facts (any stage) -/
 
-private lemma w_one' (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
-
-private lemma w_neg_one' (σ : Stage p F) : σ.w (-1) = 0 := by
-  have h := σ.hwmul (-1) (-1) (neg_ne_zero.mpr one_ne_zero) (neg_ne_zero.mpr one_ne_zero)
-  rw [neg_mul_neg, one_mul, w_one' σ] at h
-  omega
-
-private lemma w_neg' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    σ.w (-f) = σ.w f := by
-  have h : (-f) = (-1) * f := by ring
-  rw [h, σ.hwmul (-1) f (neg_ne_zero.mpr one_ne_zero) hf, w_neg_one' σ, zero_add]
-
-private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
+/- [SYN2-S1 SWEEP-1, 2026-07-31] ResVal.w_one/ResVal.w_neg_one/ResVal.w_neg/ResVal.R_one DELETED —
+single proof source `Moves/ResVal.lean` (α-identical); uses re-pointed. -/
 
 /-- The w_strict tie law holds for EVERY stage from the bare (S1) laws (the
 escalation's "valuation trick"): if the sum vanished, `w g = w (−f) = w f` would
@@ -72,7 +56,7 @@ private lemma w_strict_of_bare (σ : Stage p F) (f g : Polynomial ℤ_[p])
   have hfg : f + g ≠ 0 := by
     intro h0
     have hgf : g = -f := by linear_combination h0
-    rw [hgf, w_neg' σ f hf] at hlt
+    rw [hgf, ResVal.w_neg σ f hf] at hlt
     omega
   have h1 : σ.w f ≤ σ.w (f + g) := by
     have := σ.hwult f g hf hg hfg
@@ -84,7 +68,7 @@ private lemma w_strict_of_bare (σ : Stage p F) (f g : Polynomial ℤ_[p])
       exact hf (by linear_combination h0)
     have := σ.hwult (f + g) (-g) hfg hng hsum
     have heq : (f + g) + (-g) = f := by ring
-    rw [heq, w_neg' σ g hg] at this
+    rw [heq, ResVal.w_neg σ g hg] at this
     omega
   omega
 
@@ -149,16 +133,16 @@ theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ)
       exact hΦdeg
     -- the frame unit at parent weight 0 is 1 (read off B = 1)
     obtain ⟨c₁, hc₁R, hc₁F⟩ := hdig 1 one_ne_zero hinC1
-    have hw1 : σ.w 1 = 0 := w_one' σ
+    have hw1 : σ.w 1 = 0 := ResVal.w_one σ
     have hc₁val : LaurentPolynomial.C ((c₁ : ↥σ'.K)) = 1 := by
-      rw [R_one' σ', hw1, mul_zero, LaurentPolynomial.T_zero, mul_one] at hc₁R
+      rw [ResVal.R_one σ', hw1, mul_zero, LaurentPolynomial.T_zero, mul_one] at hc₁R
       exact hc₁R.symm
     have hc₁one : (c₁ : ↥σ'.K) = 1 := by
       have h2 := congrArg (LaurentPolynomial.eval₂ (RingHom.id ↥σ'.K) (1 : (↥σ'.K)ˣ)) hc₁val
       rwa [LaurentPolynomial.eval₂_C, map_one, RingHom.id_apply] at h2
     have hdig1F : σ.digPrime zbar 1 = 1 := by
       unfold Stage.digPrime
-      rw [R_one' σ, map_one]
+      rw [ResVal.R_one σ, map_one]
     have hzm0 : ((zbar ^ (mfun 0) : Fˣ) : F) = 1 := by
       rw [hw1, hc₁one, hdig1F, one_mul] at hc₁F
       rw [← hc₁F]
@@ -166,10 +150,10 @@ theorem S11a_coreTransport (σ σ' : Stage p F) (hσ : StageCoreL σ)
     -- the child residual of −1 is −1 (read off B = −1, parent R_neg)
     have hm1ne : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
     obtain ⟨c₂, hc₂R, hc₂F⟩ := hdig (-1) hm1ne hinCm1
-    have hwm1 : σ.w (-1) = 0 := w_neg_one' σ
+    have hwm1 : σ.w (-1) = 0 := ResVal.w_neg_one σ
     have hdigm1F : σ.digPrime zbar (-1) = -1 := by
       unfold Stage.digPrime
-      rw [hσ.core.R_neg 1, R_one' σ, map_neg, map_one]
+      rw [hσ.core.R_neg 1, ResVal.R_one σ, map_neg, map_one]
     have hc₂F' : ((c₂ : ↥σ'.K) : F) = -1 := by
       rwa [hwm1, hdigm1F, hzm0, mul_one] at hc₂F
     have hc₂val : (c₂ : ↥σ'.K) = -1 := by
