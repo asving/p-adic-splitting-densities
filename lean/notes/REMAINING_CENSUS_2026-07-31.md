@@ -318,3 +318,15 @@ row needed (item 15). The §4.2 critical-path head (TreeCan kills D-group sorryA
 is BLOCKED on item 13 — the critical path now STARTS at the sign-off queue.
 Autonomous remainder: the D-SC carrier prover round (11 E-phase sorries, pending
 the re-review) + scattered independents; everything else queue-gated or open-math.
+
+## DELTA (D-SC H-phase, 2026-07-31, commit 42285ae)
+The 11 carrier slot bodies (G16:4, G17:1, G18:6) are FILLED — statement-complete,
+transcribed token-exact from the Codex-ACCEPTed (dsc_review2) displayed targets;
+IB-G19b hygiene gate PASS; canonical degenerate falsifiers compiled against the
+CANONICAL definitions (SlotsG19d, 7 lemmas, 0 sorry, Lean-core). The 13 reserved
+theoremU slots now have their full sited carrier vocabulary. G13'
+(theoremU_bridged', ALL THIRTEEN typed) remains gated on: E-1 ratification
+(sign-off queue) + IB-G19a value-level falsifiers. The slot Props are DEFINITIONS
+(no proof obligations of their own); their DISCHARGE at a real RelCarrierPack is
+the wave-D instance work (census critical path), for which the forge round's
+ramified Stage is groundwork.
