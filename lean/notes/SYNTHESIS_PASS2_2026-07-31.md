@@ -249,3 +249,33 @@ true date 2026-07-29" rather than silently rewriting):
 5. **P2-C5 records pass** — batch with the next MANIFEST/records commit.
 
 END OF PASS 2.
+
+════════════════════════════════════════════════════════════════════════════════
+## ADDENDUM — EXECUTION STATUS AT HEAD (2026-07-31, post-report re-scan)
+
+Recorded so this file stays accurate; outcomes live in the P2-C3 probe record
+(commit 62f4f7d) and the sign-off-queue commits (4671648/f74ef9c).
+
+- **SYN2-K1 EXECUTED — DISCHARGED**: `ksubM1C1T_n2 : KsubM1C1T n2T` PROVED
+  (MovesU/SynK1_ksubN2.lean, Lean-core roster walk). Generic row KEPT per the
+  §P2-C3(a) payoff line; final n=2 wiring supplies it by theorem.
+- **SYN2-K2 EXECUTED — the PERMITTED OUTCOME fired**: `n2_polyGeomLaws_isEmpty :
+  IsEmpty (PolyGeomLaws n2T n2M n2RB)` COMPILED (MovesU/SynK2_cl6N2.lean).
+  scount_val fails at the e≠2 roster-PADDING outcomes (pgZero countS=1 vs empty
+  cell fiber) — the "missing cell-count identity" arm, value-law-invisible and
+  confined to padding. Row does NOT move out; the val-preserving
+  `pgZero.countS := 0` repair is a Q6 sign-off item (definition-change event,
+  not executed — boundary decision f74ef9c).
+- **SYN2-S1 (six-family sweep): NOT executed** — all listed privates verified
+  still present at HEAD. Remains the top routine unit; new-file/delete-private
+  work sits on the autonomous frontier.
+- **SYN2-R1/R2 + ADJ-R3 (ReadLocality narrowing): NOT executed** — no
+  ReadsOfLocal at HEAD; ReadLocality.lean byte-unchanged since SYN-C2. Note the
+  ratification-1b ReadLocality fixes are sign-off queue item 7 — R1's mechanical
+  gates are frontier-safe, but ADJ-R3 and any row re-key must wait behind that
+  queue item.
+- **SYN2-W1 (WindowModel.ofEnum): NOT executed** (no ofEnum in Kernels/).
+- **SYN2-F3 (KB11 charge amendment): NOT executed** — do at the KB11
+  adjudication as planned.
+- **P2-C5 date-skew records pass: NOT executed** — MovesT/Defs.lean still
+  carries the 2026-08-01 stamps; batch with the next records commit.
