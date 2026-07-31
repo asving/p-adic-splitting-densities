@@ -1514,3 +1514,205 @@ recorded for honesty against §§D3.3/D3.6, adjudication rides the next fold:
 — DELTA 3 complete, 2026-08-02 (unit D3CU2t). Original tree + DELTA 1/2 above
 byte-untouched; §4 acceptance criterion unchanged. Next tree edit: DELTA 4 at the wave-10
 fold (the §D3.7 verdicts + the pass-2 adjudications of §D3.6 item 1).
+
+---
+
+## DELTA 4 (2026-08-02, unit TREE-GAPS) — the announced fold-back + the tree-completeness-audit resolutions
+
+*(Original tree + DELTAs 1–3 byte-untouched; corrected readings govern. This delta
+executes DELTA 3's closing announcement — the wave-10/14 + VC1–VC3 fold — and resolves
+the completeness audit's five gaps G-1..G-5 and five advisories A-1..A-5
+(`lean/notes/openmath/TREE_COMPLETENESS_AUDIT_2026-08-02.md`, commit fba7f16). The §4
+acceptance criterion is UNCHANGED. Every ROOT touch this delta owes is EXECUTED in
+`docs/ROOT_ASSEMBLY_2026-08-02.md` at this unit — the [TREE-GAPS] tags there.)*
+
+### D4.1 The fold-back (supersedes §D3.6's tail; adjudicates §D3.7)
+
+**The ROOT ASSEMBLY (`docs/ROOT_ASSEMBLY_2026-08-02.md`, REVISION 3, unit of record
+ea0336f) is the OPERATIVE status ledger for every node this tree tracks.** Where a
+tree/delta grade and the ROOT ledger diverge, the ROOT governs; the completeness audit
+walked every node and found each divergence traces to a named later harvest (c43b13b,
+7b28562). §D3.7's two recorded-not-adjudicated events are adjudicated as the ROOT
+records them: (i) the O-9 arc — pass 1 NOT ACCEPTED → r2 (01c21e6) → pass 2 UNSOUND →
+r3 (460ea59) → pass 3 NOT ACCEPTED → **r4** (031784c: (ADM) at FULL attainment), fresh
+pass owed; (ii) the D-11 attempt (0cae7d8) entered the ROOT as Steps 17/18b (the
+D-11/O-11 cycle stratified 17 ≺ 18 ≺ 18b), now at r3 (8a0786c), pass 3 owed. §D3.6
+item 1's pass-2 adjudications landed as: GD23 → VERIFIED (leaf #4, c43b13b); CU-1 →
+VERIFIED (leaf #5); O-10 → VERIFIED at scope (leaf #6; both 7b28562); O4T → VERIFIED
+(leaf #7, 8602e97, post-audit) — **VERIFIED = 7** with Dfloor/O-12/O-13 (leaves
+#3/#2/#1). Also recorded post-audit: CU-2t R3 light (81589e9; the GD-4 residue history
+0 → 2 → 3 rows said plainly there; fresh pass owed). End-to-end: VC1–VC3 ran, each
+COMPOSITION-GAPS → repaired in place (ROOT §§7–9); the ≥ 2-consecutive-clean counter is
+at ZERO. [In flight at this unit's close: **ROOT REVISION 4** (unit ROOT r5, sibling
+session) — VC4 (Codex) ran COMPOSITION-GAPS (4 blockers + 1 advisory, again all
+attribution/ledger integrity); headline repairs landing concurrently: a NEW (ROOT-C)
+hypothesis **(H5) = (PACK)** (D-11's open clause 4, the actual-pack row
+correspondence, promoted to a §3.1 [M] row — finding VC4-3), clause (SQ)'s
+attribution corrected DOWNWARD to unconditional (VC4-4), the (K3-δ) fragment of
+(H4b) attributed to clause (R) (VC4-1), (ADM) synced to O-9 r4's FULL-attainment
+form (VC4-2). Where this delta's §D4.2/§D4.3 sentences say "(H1)–(H4b)", read the
+hypothesis list AS OF REVISION 3; the (ROOT-C)-impact adjudications below are
+restated against (H5) in place at their sites. The r5 commit is that revision's unit
+of record.]
+
+### D4.2 G-4 ADJUDICATED — the six H.6 fences gating [1v]-FULL: SUPERSEDED AS ROUTED into D-11 item (vii); one live condition; no (ROOT-C) hypothesis affected
+
+**The question (the audit's one potentially-real conditionality).** Tree T-5: "Its six
+H.6 fences gate the [1v]-FULL event"; tree O-11's K3 repeats the gate. ROOT Step 18
+assembles K3 from T-7s + O-9 + O-8b with no fence mention (grep-zero at the audited
+text). Either the O-11/D-11 residue restructure superseded the gate on record, or a K3
+conditionality was undisplayed.
+
+**The displayed evidence.** O-11 r2/r3's K3-a — the pass-1 G-5 repair, quoted from
+`O11_phaseB_verifybrief_rev3.md` §3.4: "the six H.6 fences GATE this event at every n
+(tree T-5 row); that the BUILT per-n tables sit INSIDE the fences is proved nowhere at
+general n — V-n3/H-n3 (151/151) are the SEALED n = 3 EVIDENCE, not a proof. At general
+n, in-fence conformance of the constructed pack is a construction obligation of the
+instance pin — D-11's restated charge, item (vii)"; and its §0 restated D-11 entry:
+"(vii) general-n H.6 fence conformance of the built tables (K3-a; n = 3 evidence
+V-n3/H-n3)", with "(v)–(vii) WIDEN the dispatch's WAVE-8 charge: acceptance owed by
+the D-11 rev-2 owner ... until accepted they are displayed here as D-11-charge-pending,
+not silently ridden."
+
+**Adjudication: SUPERSEDED AS ROUTED — honestly, not silently, and NOT discharged.**
+The restructure split the tree's gate line into (i) the six fences as the PERIMETER of
+T-5's dual acceptance — open general kernels with owners and refuters UNCHANGED
+([2b]/§H-DOMAINS roster, `ASSEMBLY_PLAN_2026-07-26.md` REV 15/16), which NO root step
+consumes as general lemmas; and (ii) the single live condition the root DOES consume
+at Step 18's K3-a: in-fence conformance of the built per-n tables, open at general n,
+= D-11 restated-charge item (vii). The M2 seams and declared rows do NOT carry fence
+content — (S1)/(S2) are D-11 M2's hand-off seams (← Steps 14/18), D-a/D-b/D-c are the
+K4-CYL/(I-τ)/(R1)–(R4) interfaces — item (vii) is the SOLE carrier. Fence-by-fence
+(the mapping is uniform: the restructure treats the six as one perimeter):
+
+| H.6 fence (REV 15/16 roster) | general kernel — owner unchanged | consumed by ROOT Step 18? |
+|---|---|---|
+| (1) XHD-d-EX(∂) boundary-component exactness (H.2.3) | fenced at [2b]; H-n3 low-height corner = evidence, not discharge | NO — only via item (vii) |
+| (2) M4b-T-AUD normal-form-audit ALL-quantifier + π_v = id (H.5.1) | fenced at [2b]; H-n3 constancy layers run, STATE-probe-2 unrun | NO — only via item (vii) |
+| (3) U-R-COUNT per-species representative count (H.4.2/H.5.3) | fenced at [2b]; JOINT-probe unrun, H-n3 rep layer run | NO — only via item (vii) |
+| (4) XHD-u-X cross-component count equality (H.4.3) | fenced at [2b]; heterogeneous ≥ 2-component re-seal duty stands | NO — only via item (vii) |
+| (5) H-LIST-GEN listed partitions beyond class (TRI) | fenced at [2b]; needs a non-adjacent gate family | NO — only via item (vii); sharpest escalation risk |
+| (6) E-POS per-period template-total positivity ⟨w_E, v⟩ ≥ 1 | fenced at [2b]; per-family displays only (coordinatewise form FALSE) | NO — only via item (vii) |
+
+**Status effect + the owed displays (executed at this unit).** The tree T-5/O-11 gate
+lines now READ: "gated on T-5's six H.6 fences" = conditional on D-11 item (vii) (the
+fences' conformance face); the fence kernels themselves are [2b]-owned perimeter, off
+the mandatory path. The ROOT gains (1) the Step-18 fence display and (2) an OPERATIVE
+§3.3 row for the widened-charge items (v)–(vii) — REVISION 1 executed the owed touch
+only as the §7 audit-trail note "(5) ... noted pending acceptance" with no operative
+row; that was the actual residue of gap G-4. **(ROOT-C) impact, said plainly: NO
+hypothesis is affected** — (H1)–(H4b) are unchanged; item (vii) conditions the PROOF
+of the composed implication through D-11's PENDING tier-1 grade at Steps 17/18
+(alongside D-11's other open instance-pin clauses, e.g. M1(a)'s displayed exclusions
+and the clause-4 actual-pack correspondence), not the statement's hypothesis list.
+Escalation is displayed, not hidden: if the D-11 owner rejects items (v)–(vii), or a
+built pack NEEDS fenced territory (sharpest: H-LIST-GEN's beyond-(TRI) partitions),
+the fence kernel so touched enters ROOT §3.1 as [M] on clause (R)'s chain.
+[REVISION-4 sync (see §D4.1's in-flight note): the concurrently landing (H5) =
+(PACK) is D-11's clause 4 (pack↔𝔅_n row correspondence) — a DIFFERENT D-11 clause
+from item (vii) (H-fence conformance); G-4's adjudication stands: the fence residue
+neither created nor modified any (ROOT-C) hypothesis, and whether item (vii) should
+be promoted to hypothesis grade like clause 4 is flagged to the next VC pass at the
+ROOT §3.3 row.]
+
+### D4.3 G-1/G-2 — O-14b (cl19 carrier ladder) + O-14c (hStateNe) HOMED; D-10's criterion clause re-scoped
+
+**O-14b (the cl19 repaired carrier ladder, post-K-7).** OPEN. Root-side consumption:
+NONE — no ROOT §2 step consumes it (audit grep-zero: `cl19` absent from the ROOT), and
+K-7's dangling "repaired carrier form = part of leaf O-14" pointer lands HERE. Its
+actual consumer is the Lean-bridge slot wiring: carrier-parameterize `Slot_jcInvHist′`
++ the O1–O3 semantic ladder at a real carrier pack = **queue item 22**
+(`REMAINING_CENSUS_2026-08-01.md`: "REFUTED AS STATED (M11, dual; queue item 22; G13′
+gated)"; theoremU itself SAFE — bare-Prop slot), PARKED by the 2026-07-31 math-first
+directive (fe3cda5: items 22–29 parked until the mathematical completion lands).
+HOMED: ROOT §3.3 "O-14a/b/c engine-residue dispositions" row, owner Lean side
+post-math.
+
+**O-14c (hStateNe derivability).** OPEN, expected derivable. = `BridgePre.hStateNe`,
+a NAMED RATIFIED PREMISE of the Lean bridge (`BRIDGE_ADJUDICATIONS_2026-07-30.md`:
+"ratified as named premises (hStateNe derivation attempt first)"); standing
+disposition = the IB-B2 derivation attempt (`BRIDGE_BP1_INSTANCE_2026-07-30.md`; if it
+closes, the row DROPS — a fence event). Root-side consumption: NONE. Same ROOT row,
+same owner.
+
+**Verified and said plainly (the dispatch's charge):** both are post-item-22 /
+derivation-attempt Lean-bridge territory, OFF the (ROOT-C) hypothesis list — display
+sweep at this unit: neither `cl19` nor `hStateNe` nor any O-14b/c content appears in
+(H1)–(H4b) or any ROOT §3.1 [M] row. **D-10's completion-criterion clause is
+RE-SCOPED (corrected reading, governs):** "all leaves proved means O-14a/a′/b/c each
+closed" now reads at the MATH criterion as O-14a (e′ = 1 CLOSED, §D4.4; ≥ 2
+disposition = sign-off item 28) + O-14a′ (consumed at ROOT Step 9; residue displayed
+there); O-14b/c join O-14d and items 27/28 in the PARKED engineering register —
+engine-internal instance lemmas whose closure gates the LEAN BRIDGE, not the root
+composition.
+
+### D4.4 G-3 — O-14a's guarded e′ = 1 vertex-transport law: CLOSED at its sub-perimeter
+
+The guarded law at ν_{i+1}.e = 1 is PROVED with a machine-checked Lean twin:
+**`lean/LeanUrat/HC2/HK11a_vertexTransport.lean`** (the σV-vertex transport law at
+e′ = 1, Lean-core; unit record `QUEUE_EXECUTION_2026-07-31.md` POST-WAVE 1 + the
+HK-11a kernel unit; in-repo at the fe3cda5 sweep). The unguarded form stays
+REFUTED-AS-STATED (HK52_stretchGate — the compiled ν_{i+1}.e-stretch obstruction). The
+consumer line the audit found missing, now recorded: on the ROOT mandatory path NO §2
+step consumes the vertex-transport law in either form — its consumers are
+engine-internal (the Lean bridge's V9/HK cone); the nearest ROOT content, GD-2's
+clause-(c) HK52 trap, is the ≥ 2 COUNTERMODEL, not a consumption. The ≥ 2 disposition
+remains sign-off item 28 (ROOT §3.3 PARKED row). Homed at the ROOT §3.3 O-14 row.
+
+### D4.5 G-5 — `cl3_tails` (X2-TAILS): its own eviction row, route R-QNT
+
+The tree O-8 row marks `cl3_tails` "a SEPARATE open estimate (owner §H-DOMAINS
+family)" — by its own terms NOT carried by the O-6/O-7/O-8a eviction (D1.4).
+Adjudication: it is a measure/cone TAIL estimate — quantitative-rate content of the
+X.2 pricing family; the count-native mandatory path controls undecided mass by
+DRAINAGE (ROOT Step 13 / O-4), never by tail rates; nothing on the root path consumes
+it (audit grep-zero). **EVICTED to route R-QNT on its own row** — warrant: the D1.4
+rates-only adjudication extended to it by content class, recorded here rather than
+ridden on O-8a's terms; owner if rates are ever elected: §H-DOMAINS family/[2b]. ROOT
+§3.3's NOT-on-ledger paragraph now names it.
+
+### D4.6 Advisories A-1..A-5 — executed
+
+* **A-1 (T-11/JOINT-D1 id).** ROOT §3.3 gains the closed-row id table: T-11 → Step 2
+  inside T-1's perimeter (D1-marginal machine-checked, `OM/DevBijection.lean`).
+* **A-2 (LIT-4/OM-SAT roster id + scope caveat).** ROOT §4 item 1 gains the LIT-4
+  line: the id, its content (Cor 3.8 + Def 3.9; order-1 Cor 1.20), the audited
+  **"K = ℚ_p exactly"** scope, consumption only through dictionary node O-2, and the
+  K_δ re-scope duty NAMED as (UB-X)(a) content (previously covered only generically).
+* **A-3 (K-OB-D).** Named in the ROOT NOT-on-ledger paragraph: certificate-firing at
+  O-5's threshold; evicted by containment — sole consumer O-7, route R-QNT (D1.4 +
+  D2.4); the containment is now a recorded line (the last IFK REV-1 obligation
+  without an explicit disposition).
+* **A-4 (K-14 duty (I2)).** Adjudicated: (I2) = level coherence TRANSCRIBES T-3
+  §D4-R's own stabilization-level definition (D4R.4/L12: N(P̂) := max of per-prefix
+  resolution levels, finite by L8) — definitional at the statement layer, per M18
+  fable §6.2's displayed warrant; its instance-build face rides the O-14d/D-11
+  population with the other build-conformance duties. Not a missing consumer-walk
+  edge; recorded in the ROOT closed-row table.
+* **A-5 (refuted/closed row ids).** The ROOT closed-row id table displays content
+  homes for K-1/K-2/K-15 (CLOSED Lean-interface), K-3, K-5, K-7 (→ O-14b), K-8, K-9,
+  K-10 — the tree-§4 criterion-4 reading ("every node id appears in the document or
+  in its explicitly-argued pruning list") is now checkable against the ROOT text.
+
+### D4.7 Disposition table (this delta)
+
+| audit finding | resolution | recorded at |
+|---|---|---|
+| G-1 O-14b | HOMED: PARKED-class engine row (queue item 22; directive fe3cda5); K-7's pointer lands here; off (ROOT-C) | §D4.3; ROOT §3.3 O-14 row |
+| G-2 O-14c | HOMED: `BridgePre.hStateNe` named ratified premise; IB-B2 derivation attempt; off (ROOT-C) | §D4.3; ROOT §3.3 O-14 row |
+| G-3 O-14a guarded law | CLOSED at e′ = 1 (Lean twin `HC2/HK11a_vertexTransport.lean`); ≥ 2 = item 28 PARKED; no §2 consumer | §D4.4; ROOT §3.3 O-14 row |
+| G-4 H.6 fences @ K3 | SUPERSEDED AS ROUTED → D-11 item (vii); uniform six-fence mapping displayed; operative [T] row + Step-18 note added; (H1)–(H4b) UNAFFECTED | §D4.2; ROOT Step 18 + §3.3 widened-charge row |
+| G-5 cl3_tails | EVICTED route R-QNT on its own row (content-class warrant) | §D4.5; ROOT §3.3 NOT-on-ledger |
+| A-1 T-11 id | closed-row id table | ROOT §3.3 |
+| A-2 LIT-4 | roster line + "K = ℚ_p exactly" caveat named at (UB-X)(a) | ROOT §4 item 1 |
+| A-3 K-OB-D | containment eviction recorded by name | ROOT §3.3 NOT-on-ledger |
+| A-4 K-14 (I2) | definitional vs T-3 D4R.4/L12; instance face → O-14d/D-11 | §D4.6; ROOT §3.3 |
+| A-5 closed-row ids | id table added | ROOT §3.3 |
+
+With these homes recorded, the audit's criterion-4 blocker list is EMPTY: all five
+gaps homed or adjudicated with displayed evidence, all five advisories executed. No
+leaf grade changed at this delta; no new mathematics claimed.
+
+— DELTA 4 complete, 2026-08-02 (unit TREE-GAPS). Original + DELTAs 1–3 byte-untouched;
+§4 acceptance criterion unchanged and applies verbatim. Next tree edit: DELTA 5 at the
+VC4 disposition (or the next harvest).
