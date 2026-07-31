@@ -787,3 +787,20 @@ coherent); gates don't test stated quantifiers; JC-0 (statement-layer
 type-check) must be FIRST; U6 cannot serve as inductive base. -> revision:
 right-size every face to its consumer (this WEAKENS proof obligations),
 fix gates, reorder.
+
+## WAVE 4 + PASS 2s (2026-08-01): O-12 VERIFIED — SECOND LEAF THROUGH THE BAR
+O-12: pass 1 (V19, no criticals) + pass 2 (Fable, ZERO criticals, main chain
+CLEAN incl. the torus telescope in every characteristic; 2 gaps = one wording
+conjunct (math holds) + one inert proviso) => VERIFIED at the honest scope:
+THE POLE-FREE / (REG-p)-EMPTINESS THEOREM at the abstract solve family B_n.
+Wording fix rides the next touch. Formalization candidate queued (parked
+consumers noted).
+O-2a pass 2: UNSOUND — 1 critical: the run-record <-> stage-read binding at
+levels >= 2 is undeclared (OL-5 fixed level 1 only; the V14-1 class persists
+above). Repair = declare/generalize the glue lemma (OL-6 or OL-5-general) at
+every level. r5 dispatched.
+Dfloor r2 + O5triple r2 REPAIRED (all findings; O5triple honestly
+FLAG-CONDITIONAL on a 5-flag roster classified [S]tatement-matching vs
+[M]athematical); O3design REVISED (right-sized per all 14 V16 findings;
+JC-0 first; LC-COH + ADEQ + SEM-LAWFUL named; TT-DET flagged riskiest).
+V21 (design re-review) / V22 (Dfloor) / V23 (O5triple) launched.
