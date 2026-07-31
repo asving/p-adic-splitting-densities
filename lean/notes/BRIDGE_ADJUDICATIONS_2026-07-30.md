@@ -726,3 +726,25 @@ SHARPENING: D-7b coverage consumes NO no-missing (injectivity + checksums
 force surjectivity by counting); STEEP: corner leaf is lift-variant
 realization with lift-INVARIANT verdict; 1341/1341 falsifiers + a
 load-bearing negative control. -> V18.
+
+## AUTHORITY (Asvin, 2026-08-01, verbatim): THE PROOF SCAFFOLD
+"the structure of the lean proof should be that we start off with a prime p,
+with a degree n, a type tau of degree n as hypothesis, define the p-adic
+density of the polynomials with splitting type tau as a limit of cylinders
+(so depending on the size of the coefficients Z/p^k) and then prove the
+squeeze lemma as you stated it, depending on k ... the proof would go by
+enumerating the polynomials mod p, enumerating the tree of possibilities as
+we keep lifting mod higher powers, use the type tau to write a recursive
+formula on top of this tree and sum over all of it, including the self-loop
+parts to finally write down a formula which is visibly uniform in p"
+CONSEQUENCES: (1) this is the TARGET SHAPE for the final Lean statement
+(cylinder-limit density + level-k squeeze + R_tau evaluation) — Phase C's
+document spine AND the eventual capstone restatement adopt it; the current
+theoremU reading-based form maps onto it via D-1/BRACKET (recorded, no
+statement change now — parked class). (2) The expository paper is being
+restructured around it (wh388lmbo: rewrite -> Codex critique -> fix; LOCAL
+commits, push only after Asvin reviews). (3) The main-math-left in this
+format = 4 items: tree-is-right-tree (O-3+O-2b + O-5), finite-digit reads
+(O-1thr/M6c), drainage transfer (OL1-ii), pole-free self-loop algebra
+(O-12) — exactly the active Phase-B heads; the scaffold confirms the
+campaign is attacking the right joints.
