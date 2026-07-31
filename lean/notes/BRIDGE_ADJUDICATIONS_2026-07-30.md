@@ -446,3 +446,24 @@ inhabitation (if uninhabited, the rows are vacuous — itself a defect for the
 27 ruling).
 ASVIN DIGEST (current): sign-off wanted on items 22-27 (+G13' via 22) + NEW
 item 28; everything else is autonomous or open-math per census §4.
+
+## ROUND 4 FOLD-IN (2026-07-31 late, commits 4ffe049/210ecfd/2fe3d4c/75703c7/fa0f44f)
+Retired: TV_A2/A3/A4 hoisted twins (-4, direct from the item-5 rows, all
+Lean-core); TV_G3 (a)-(c) + inj/ne_sel (-5, hp-choice plumbing, NO row
+extension needed for these); G1 twoNodeKcardH pin BUILT + toy_v8_wchain
+PROVED (-2, the pin uses HK-25's nu1rec — the post-wave artifacts composing).
+G1 mem_realizable x2: RE-CONFIRMED FALSE at the new keying (compiled
+countermodels, head-lift kernel); stand as intended honest records.
+BridgeD19 decCovers row CLOSED BY COUNTERMODEL (fails at EVERY prime; witness
+= the X^2 stall cluster; repair shape recorded = decided-locus guard on
+IB-F7's hcov; off-default-path, no queue item needed).
+G11c: gap shrunk (new suppliers gateJ/U28/V8_shapeOf/U15 catalogued; missing
+= one history carrying both halves + the eta-class exhaustion kernel —
+IFK-adjacent, parked).
+G2/G3 QUARANTINE REFUSED (correct): live importers found (SlotsG16 consumes
+G2's filled Slot_rel1; G12b imports G3) — the census's dead-vocabulary
+classification was FILE-level wrong though DECL-level right; the 5 sorried
+decls stay in place as dead records; census corrected below.
+29. NEW SIGN-OFF ITEM: SpeciesStageRow.sel_stage field (TV_G1) — the exact
+    displayed law recorded in TV_G3's header; with it, scs_cluster_child is a
+    one-line fill (scs_cluster_child_of_selStage is PROVED and waiting).

@@ -337,3 +337,9 @@ Lean-core; the SerreLocalFields block = the one recorded additive change
 (item 2), consumers exactly `AX_integralClosure_dvr` + core.  Numerics matrix
 (N1–N8) closed with ZERO Fable/Codex/numerics conflicts; the density tie itself
 CONFIRMED at deep-wild (5,5).
+
+## DELTA (round 4, 2026-07-31 late)
+-11 sorries (TV-A x4, TV-G3 x5, G1 x2); BridgeD19 row closed by countermodel;
+CORRECTION: SlotsG2/G3 are NOT file-level dead (live importers: SlotsG16 ->
+G2.Slot_rel1, G12b -> G3); the 5 sorried decls remain dead vocabulary IN
+PLACE. New queue item 29 (sel_stage row). Real sorry count now ~32.

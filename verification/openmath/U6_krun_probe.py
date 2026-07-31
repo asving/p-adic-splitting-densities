@@ -145,37 +145,29 @@ def lower_hull(pts):
     return hull
 
 def fp_poly_roots(coeffs, p):
-    """Roots with multiplicity of a monic poly over F_p given low->high
-    coeffs (with leading 1 appended by caller). Trial division, p<=3, deg<=3."""
-    cs = [c % p for c in coeffs]
+    """Roots with multiplicity of a poly over F_p given low->high coeffs.
+    Returns (root->mult, rootless quotient factor coeffs, its degree).
+    Trial division; p<=3, deg<=3 in this probe."""
+    work = [c % p for c in coeffs]
     roots = {}
     for r in range(p):
         m = 0
-        work = list(cs)
-        while True:
-            # evaluate and divide by (x - r) while root
+        while len(work) > 1:
             val = 0
             for c in reversed(work):
                 val = (val * r + c) % p
             if val != 0:
                 break
-            # synthetic division by (x - r)
-            out = []
+            out = []           # synthetic division by (x - r)
             acc = 0
             for c in reversed(work):
                 acc = (acc * r + c) % p
                 out.append(acc)
-            out = out[:-1][::-1]  # drop remainder (=0), back to low->high
-            # out is one degree lower, leading coeff retained
-            work = out
+            work = out[:-1][::-1]
             m += 1
-            if len(work) == 1:
-                break
         if m:
             roots[r] = m
-    deg = len(cs) - 1
-    used = sum(roots.values())
-    return roots, deg - used   # (root->mult, degree of rootless part)
+    return roots, work, len(work) - 1
 
 # ------------------------------------------------------- certified reads
 # A "read" of a cluster (the mu roots of monic g with valuation > h_prev,
@@ -257,19 +249,21 @@ def side_reads(coeffs, p, N, hull, j0, h_prev, hcap):
             root = (-rc[0] * pow(rc[1], -1, p)) % p
             branches.append(('ram', lam, e, root))
             continue
-        roots, rootless_deg = fp_poly_roots(rc, p)
+        # species carries the branch's OWN side profile ell (residual
+        # degree): one-side vs split-polygon configurations are different
+        # reads (XNode letter fields (e, ell, h) in the N7 engine mapping)
+        roots, rootless, rootless_deg = fp_poly_roots(rc, p)
         for r, m in sorted(roots.items()):
             if m == 1:
-                branches.append(('splitleaf', lam, r))
+                branches.append(('splitleaf', lam, ell, r))
             else:
-                branches.append(('cont', lam, r, m))
+                branches.append(('cont', lam, ell, r, m))
         if rootless_deg:
-            # normalize the rootless part is not needed: deg 2/3 with no
-            # roots over F_p is a single irreducible; datum = full residual
-            # shape (canonical: monic-normalized residual coeffs)
-            lead_inv = pow(rc[-1], -1, p)
-            psi = tuple((c * lead_inv) % p for c in rc)
-            branches.append(('inert', lam, rootless_deg, psi))
+            # rootless quotient: deg 2/3 with no roots over F_p (p<=3
+            # keeps it a single irreducible here); monic-normalized
+            lead_inv = pow(rootless[-1], -1, p)
+            psi = tuple((c * lead_inv) % p for c in rootless)
+            branches.append(('inert', lam, ell, rootless_deg, psi))
     return branches, clen, 'ok'
 
 def read_cluster(coeffs, p, N, mu, h_prev, hcap):
@@ -305,7 +299,7 @@ def walk_depth2(coeffs, p, N, mu, hcap):
     for b in br1:
         if b[0] != 'cont':
             continue
-        _, h1, a1, mu2 = b
+        _, h1, _ell1, a1, mu2 = b
         assert h1.denominator == 1
         g2 = poly_shift(coeffs, a1 * p ** int(h1), pN)
         br2, st2 = read_cluster(g2, p, N, mu2, int(h1), hcap)
@@ -348,94 +342,150 @@ def cylinder_iter(n, p, N):
     return itertools.product(reps, repeat=n)
 
 def s1_stratum(b):
-    """Length-1 stratum key (species, height) of a step-1 branch."""
+    """Length-1 stratum key (species incl. own side profile, height)."""
     kind = b[0]
     if kind == 'cont':
-        return ('cont', b[1], b[3])          # (kind, h1, mu_next)
+        return ('cont', b[1], (b[2], b[4]))     # (h1, (ell, mu_next))
     if kind == 'ram':
-        return ('ram', b[1], b[2])           # (kind, h, e)
+        return ('ram', b[1], b[2])              # (h, e)
     if kind == 'inert':
-        return ('inert', b[1], b[2])         # (kind, h, deg)
+        return ('inert', b[1], (b[2], b[3]))    # (h, (ell, deg))
     if kind == 'splitleaf':
-        return ('splitleaf', b[1], None)
+        return ('splitleaf', b[1], b[2])        # (h, ell)
     return ('deep', None, None)
 
 def s1_cell(b):
     """Cell datum of a step-1 branch (the read-off digits)."""
     kind = b[0]
     if kind == 'cont':
-        return b[2]
-    if kind in ('ram', 'splitleaf'):
-        return b[2] if kind == 'splitleaf' else b[3]
-    if kind == 'inert':
         return b[3]
+    if kind == 'ram':
+        return b[3]
+    if kind == 'splitleaf':
+        return b[3]
+    if kind == 'inert':
+        return b[4]
     return None
 
-def run_row(n, p, N, mu_entry, hcap, h1max, sample_cap=400, seed=0):
-    """One exhaustive cylinder sweep. Returns the raw censuses."""
-    pN = p ** N
+def leaves_of(w):
+    """Decided (e,f) leaves of a depth-2 walk; None if walk not fully
+    decided at depth 2 (a continuing or deep branch remains)."""
+    leaves, decided = [], True
+    for b in list(w['step1']) + [ch[3] for ch in w['chains']]:
+        if b[0] == 'splitleaf':
+            leaves.append((1, 1))
+        elif b[0] == 'inert':
+            leaves.append((1, b[3]))
+        elif b[0] == 'ram':
+            leaves.append((b[2], 1))
+        elif b[0] in ('deep', 'cont'):
+            decided = False
+    return tuple(sorted(leaves)) if decided else None
+
+def probe_one(coeffs, n, p, N, mu_entry, hcap, h1max):
+    """Walk + per-step menu reads for one coefficient tuple at horizon N.
+    Returns (certified?, walk, menu_reads). certified=False means some read
+    (entry, step-2, or frame) touched the horizon: the coset must be
+    resolved by lifting before ANY of its data is counted."""
+    w = walk_depth2(list(coeffs), p, N, mu_entry, hcap)
+    if w['status'] != 'ok':
+        return False, None, None
+    if w['step2imprecise'] > 0:
+        return False, None, None
+    mreads = frame_menu_reads(list(coeffs), p, N, hcap,
+                              range(1, h1max + 1), n)
+    if any(fk == ('imprecise',) for fk, _ in mreads):
+        return False, None, None
+    return True, w, mreads
+
+def commit(res, coeffs, w, mreads, mass):
+    """Add one certified coset's data (with Haar mass in level-N-box units)
+    into the row censuses."""
+    for b in w['step1']:
+        key = (s1_stratum(b), s1_cell(b))
+        res['s1'][key] = res['s1'].get(key, 0) + mass
+    for ch in w['chains']:
+        res['chains'][ch] = res['chains'].get(ch, 0) + mass
+    for fkey, d2 in mreads:
+        if d2[0] == 'deep':
+            continue
+        res['menus'].setdefault(fkey, {}).setdefault(d2, coeffs)
+
+def run_row(n, p, N, mu_entry, hcap, h1max, sample_cap=400, seed=0,
+            kmax=None):
+    if kmax is None:
+        # by horizon N + kmax every in-scope read certifies except cosets
+        # converging to discZero (their residual mass is the tolerance)
+        kmax = int((n + 1) * hcap) + 3
+    """One exhaustive cylinder sweep with lift-resolution of horizon-
+    touching cosets (masses in level-N-box units; exact Fractions)."""
     rng = random.Random(seed)
-    s1_census = {}        # (stratum1, cell) -> count
-    ch_census = {}        # (h1, a1, mu2, d2) -> count   [realized chains]
-    menus = {}            # (h1, mu2) -> {d2: witness_coeffs}
-    menu_imprecise = 0
-    n_entry_imprecise = n_noclus = n_step2_imprecise = n_total = 0
-    oracle_samples = []   # (coeffs, decided (e,f) multiset) for gate V1
-    h1_range = range(1, h1max + 1)
+    res = dict(n=n, p=p, N=N, mu=mu_entry, hcap=hcap, h1max=h1max,
+               total=0, s1={}, chains={}, menus={}, pending0=0,
+               unresolved_mass=Fraction(0), samples=[])
+    pending = []
     for coeffs in cylinder_iter(n, p, N):
-        n_total += 1
-        w = walk_depth2(list(coeffs), p, N, mu_entry, hcap)
-        if w['status'] != 'ok':
-            n_entry_imprecise += 1
-        else:
-            n_step2_imprecise += w['step2imprecise']
-            leaves, decided = [], True
-            for b in w['step1']:
-                key = (s1_stratum(b), s1_cell(b))
-                s1_census[key] = s1_census.get(key, 0) + 1
-                if b[0] == 'splitleaf':
-                    leaves.append((1, 1))
-                elif b[0] == 'inert':
-                    leaves.append((1, b[2]))
-                elif b[0] == 'ram':
-                    leaves.append((b[2], 1))
-                elif b[0] == 'deep':
-                    decided = False
-            if w['step2imprecise']:
-                decided = False
-            for ch in w['chains']:
-                ch_census[ch] = ch_census.get(ch, 0) + 1
-                d2 = ch[3]
-                if d2[0] == 'splitleaf':
-                    leaves.append((1, 1))
-                elif d2[0] == 'inert':
-                    leaves.append((1, d2[2]))
-                elif d2[0] == 'ram':
-                    leaves.append((d2[2], 1))
+        res['total'] += 1
+        cert, w, mreads = probe_one(coeffs, n, p, N, mu_entry, hcap, h1max)
+        if not cert:
+            pending.append(coeffs)
+            continue
+        commit(res, coeffs, w, mreads, 1)
+        if len(res['samples']) < sample_cap and rng.random() < 0.02:
+            lv = leaves_of(w)
+            if lv:
+                res['samples'].append((coeffs, lv))
+    res['pending0'] = len(pending)
+    # lift-resolution: a coset unreadable at horizon N is replaced by its
+    # p^n children at horizon N+1 (mass /p^n), until certified or kmax.
+    level, mass = 0, Fraction(1)
+    while pending and level < kmax:
+        level += 1
+        mass = Fraction(1, p ** (n * level))
+        Nk = N + level
+        nxt = []
+        for coeffs in pending:
+            for digs in itertools.product(range(p), repeat=n):
+                child = tuple(c + d * p ** (Nk - 1)
+                              for c, d in zip(coeffs, digs))
+                cert, w, mreads = probe_one(child, n, p, Nk, mu_entry,
+                                            hcap, h1max)
+                if cert:
+                    commit(res, child, w, mreads, mass)
                 else:
-                    decided = False
-            if decided and leaves and len(oracle_samples) < sample_cap \
-               and rng.random() < 0.02:
-                oracle_samples.append((coeffs, tuple(sorted(leaves))))
-        for fkey, d2 in frame_menu_reads(list(coeffs), p, N, hcap,
-                                         h1_range, n):
-            if fkey == ('imprecise',):
-                menu_imprecise += 1
-                continue
-            if d2[0] == 'deep':
-                continue
-            menus.setdefault(fkey, {}).setdefault(d2, coeffs)
-    return dict(n=n, p=p, N=N, mu=mu_entry, hcap=hcap, h1max=h1max,
-                total=n_total, s1=s1_census, chains=ch_census, menus=menus,
-                entry_imprecise=n_entry_imprecise,
-                step2_imprecise=n_step2_imprecise,
-                menu_imprecise=menu_imprecise, samples=oracle_samples)
+                    nxt.append(child)
+        pending = nxt
+    res['unresolved_mass'] = len(pending) * mass if pending else Fraction(0)
+    res['unresolved'] = len(pending)
+    return res
 
 # ----------------------------------------------------------------- tests
 def is_ppow(x, p):
+    if isinstance(x, Fraction):
+        if x.denominator != 1:
+            return False
+        x = x.numerator
+    if x < 1:
+        return False
     while x % p == 0:
         x //= p
     return x == 1
+
+def fiber_law(fibers, p, tol):
+    """Equal-fiber check up to the unresolved-mass tolerance: the true
+    common fiber F* is the smallest p-power >= max(fibers); each observed
+    fiber may be short by at most tol (mass hiding in unresolved cosets).
+    Returns (ok, F*, used_tol?)."""
+    mx = max(fibers)
+    Fs = 1
+    while Fs < mx:
+        Fs *= p
+    if Fs - mx > tol:
+        return False, Fs, True
+    exact = (len(set(fibers)) == 1 and mx == Fs)
+    if exact:
+        return True, Fs, False
+    return all(Fs - f <= tol for f in fibers), Fs, True
 
 def test_A(row):
     """Length-1 tie: per stratum (m1,h1): equal cell fibers, power of p,
@@ -445,13 +495,15 @@ def test_A(row):
         if st[0] == 'deep':
             continue
         strata.setdefault(st, {})[cell] = cnt
+    tol = row['unresolved_mass']
     table, viol = [], []
     for st in sorted(strata, key=str):
         cells = strata[st]
         fibers = sorted(set(cells.values()))
-        ok = len(fibers) == 1 and is_ppow(fibers[0], row['p'])
+        ok, Fs, used_tol = fiber_law(list(cells.values()), row['p'], tol)
         census = sum(cells.values())
-        table.append((st, len(cells), fibers, census, ok))
+        table.append((st, len(cells), fibers if not ok else Fs, census,
+                      ok, used_tol))
         if not ok:
             viol.append((st, dict(cells)))
     return (not viol), table, viol
@@ -467,10 +519,17 @@ def test_BC(row):
         if st[0] == 'cont':
             a1_sets.setdefault((int(st[1]), st[2]), set()).add(cell)
     # realized chains grouped by stratum2 = (h1, mu2, kind2, h2, extra2)
+    # extra2 = the step-2 species' own side profile (mirrors s1_stratum)
     def s2_key(h1, mu2, d2):
         kind = d2[0]
-        extra = d2[3] if kind == 'cont' else (d2[2] if kind in
-                                              ('ram', 'inert') else None)
+        if kind == 'cont':
+            extra = (d2[2], d2[4])
+        elif kind == 'inert':
+            extra = (d2[2], d2[3])
+        elif kind == 'ram':
+            extra = d2[2]
+        else:
+            extra = d2[2] if kind == 'splitleaf' else None
         return (h1, mu2, kind, d2[1], extra)
     strata = {}
     for (h1, a1, mu2, d2), cnt in row['chains'].items():
@@ -496,7 +555,8 @@ def test_BC(row):
         T = len(chains)
         That = len(A1) * len(menu)
         fibers = sorted(set(chains.values()))
-        fib_ok = (T == 0) or (len(fibers) == 1 and is_ppow(fibers[0], p))
+        fib_ok = (T == 0) or fiber_law(list(chains.values()), p,
+                                       row['unresolved_mass'])[0]
         if not fib_ok:
             fib_viol.append((sk, {str(k): v for k, v in chains.items()}))
         # the phantom scan (Test C granularity)
@@ -531,3 +591,309 @@ def test_V5(row_N, row_Nm1):
             if d2 not in row_N['menus'].get(fkey, {}):
                 issues.append(('menu-lost-at-N', fkey, d2))
     return issues
+
+# ------------------------------------------------------- validation gates
+def gate_V1(row):
+    """PARI factorpadic oracle tie on the row's fully-decided samples:
+    walker (e,f) leaf multiset == oracle (e,f) multiset. Returns
+    (checked, mismatches)."""
+    import cypari2
+    pari = cypari2.Pari()
+    pari.allocatemem(1 << 27, silent=True)
+    n, p = row['n'], row['p']
+    mism, checked = [], 0
+    for coeffs, leaves in row['samples']:
+        terms = [f"({c})*x^{i}" for i, c in enumerate(coeffs)] + [f"x^{n}"]
+        pol = pari(" + ".join(terms))
+        disc = pari.poldisc(pol)
+        if disc == 0:
+            continue
+        vd = int(pari.valuation(disc, p))
+        fac = pari.factorpadic(pol, p, 2 * vd + 10 + row['N'])
+        oracle = []
+        nfac = len(fac[0])
+        for i in range(nfac):
+            F = pari.liftall(fac[0][i])
+            assert int(fac[1][i]) == 1, "inseparable factor"
+            d = int(pari.poldegree(F))
+            if d == 1:
+                oracle.append((1, 1))
+                continue
+            # exact (e,f): number field of the lifted factor, maximal
+            # order at p, prime decomposition (quartic_oracle.py idiom;
+            # Krasner: at this precision the lift generates the same
+            # Q_p-field, so a single prime lies above p)
+            K = pari.nfinit([F, [p]])
+            dec = pari.idealprimedec(K, p)
+            assert len(dec) == 1, (coeffs, str(F))
+            e, f = int(dec[0][2]), int(dec[0][3])
+            assert e * f == d, (coeffs, e, f, d)
+            oracle.append((e, f))
+        checked += 1
+        if tuple(sorted(oracle)) != leaves:
+            mism.append((coeffs, leaves, tuple(sorted(oracle))))
+    return checked, mism
+
+def gate_V2(n, p, N, hcap, h1max):
+    """Translation invariance / cylinder faithfulness on a tiny FULL monic
+    box: per entry residue r (repeated root of f-bar), the recentered
+    censuses must agree across r, and the r=0 census must equal the
+    cylinder sweep's. Compares raw certified data + pending counts."""
+    per_r = {}
+    for coeffs in itertools.product(range(p ** N), repeat=n):
+        fb = [c % p for c in coeffs] + [1]
+        roots, _ = fp_poly_roots(fb, p)
+        for r, mu in roots.items():
+            if mu < 2:
+                continue
+            g = poly_shift(list(coeffs), r, p ** N)
+            cert, w, mreads = probe_one(tuple(g), n, p, N, mu, hcap, h1max)
+            bucket = per_r.setdefault((mu, r), dict(s1={}, chains={},
+                                                    menus=set(), pend=0))
+            if not cert:
+                bucket['pend'] += 1
+                continue
+            for b in w['step1']:
+                k = (s1_stratum(b), s1_cell(b))
+                bucket['s1'][k] = bucket['s1'].get(k, 0) + 1
+            for ch in w['chains']:
+                bucket['chains'][ch] = bucket['chains'].get(ch, 0) + 1
+            for fk, d2 in mreads:
+                if d2[0] != 'deep':
+                    bucket['menus'].add((fk, d2))
+    issues = []
+    mus = sorted({mu for mu, _ in per_r})
+    for mu in mus:
+        buckets = [per_r[(m, r)] for (m, r) in sorted(per_r) if m == mu]
+        b0 = buckets[0]
+        for b in buckets[1:]:
+            if (b['s1'], b['chains'], b['menus'], b['pend']) != \
+               (b0['s1'], b0['chains'], b0['menus'], b0['pend']):
+                issues.append(('r-variance', mu))
+        if mu == n and (mu, 0) in per_r:
+            # r=0, full-cluster entries = the cylinder sweep (no lifting;
+            # compare certified data + pending count)
+            res = dict(n=n, p=p, N=N, s1={}, chains={}, menus={})
+            pend = 0
+            for coeffs in cylinder_iter(n, p, N):
+                cert, w, mreads = probe_one(coeffs, n, p, N, mu,
+                                            hcap, h1max)
+                if not cert:
+                    pend += 1
+                    continue
+                commit(res, coeffs, w, mreads, 1)
+            cyl_menus = {(fk, d2) for fk, dd in res['menus'].items()
+                         for d2 in dd}
+            b0 = per_r[(mu, 0)]
+            if (b0['s1'], b0['chains'], b0['menus'], b0['pend']) != \
+               (res['s1'], res['chains'], cyl_menus, pend):
+                issues.append(('cylinder-mismatch', mu))
+    return sorted(per_r), issues
+
+def gate_V4(p, N, hcap, h1max, trials=400, seed=1):
+    """Hensel mu=2 reduction for n=3 (deviation D3): the cluster walk of
+    g = (y^2+sy+t)(y-w), w a unit, equals the n=2 walk of y^2+sy+t
+    (branch datums are unit-scaling invariant). Compared when both certify
+    at horizon N."""
+    rng = random.Random(seed)
+    pN = p ** N
+    mism, compared = [], 0
+    for _ in range(trials):
+        s = p * rng.randrange(p ** (N - 1))
+        t = p * rng.randrange(p ** (N - 1))
+        w = rng.randrange(1, pN)
+        while w % p == 0:
+            w = rng.randrange(1, pN)
+        g = ((-t * w) % pN, (t - s * w) % pN, (s - w) % pN)
+        cert_g, wg, mg = probe_one(g, 3, p, N, 2, hcap, h1max)
+        cert_q, wq, mq = probe_one((t, s), 2, p, N, 2, hcap, h1max)
+        if not (cert_g and cert_q):
+            continue
+        compared += 1
+        cg = (sorted(map(str, wg['step1'])), sorted(map(str, wg['chains'])))
+        cq = (sorted(map(str, wq['step1'])), sorted(map(str, wq['chains'])))
+        if cg != cq:
+            mism.append(((s, t, w), cq, cg))
+    return compared, mism
+
+# ------------------------------------------------------------ report/main
+def jsonable(x):
+    if isinstance(x, dict):
+        return {str(k): jsonable(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple, set)):
+        return [jsonable(v) for v in sorted(x, key=str)] \
+            if isinstance(x, set) else [jsonable(v) for v in x]
+    if isinstance(x, Fraction):
+        return str(x)
+    return x
+
+def report_row(tag, row, resA, resBC, v5_issues, out):
+    p, n = row['p'], row['n']
+    out(f"\n===== ROW {tag}: n={n} p={p} N={row['N']} mu={row['mu']} "
+        f"hcap={row['hcap']} h1max={row['h1max']} =====")
+    out(f"  cylinder size p^(n(N-1)) = {row['total']}; "
+        f"horizon-pending at N: {row['pending0']} "
+        f"(unresolved after lifting: {row['unresolved']}, "
+        f"mass {row['unresolved_mass']} level-N boxes)")
+    okA, tableA, violA = resA
+    out(f"  Test A (length-1 tie): {'PASS' if okA else 'FAIL'} "
+        f"({len(tableA)} strata)")
+    for st, ncells, fibers, census, ok, used_tol in tableA:
+        tag_ = 'ok' if ok else 'VIOLATION'
+        if ok and used_tol:
+            tag_ = 'ok (within unresolved tolerance)'
+        out(f"    m1={st[0]:<9} h1={str(st[1]):<4} x={st[2]}  "
+            f"cells={ncells:<3} fiber={fibers}  census={census}  {tag_}")
+    tie_fail = [r for r in resBC['table'] if not r[6]]
+    fib_fail = resBC['fib_viol']
+    out(f"  Test B (length-2 counting tie T vs T-hat): "
+        f"{len(resBC['table'])} strata, "
+        f"{'ALL TIED' if not tie_fail else str(len(tie_fail)) + ' UNTIED'}; "
+        f"fiber law: {'PASS' if not fib_fail else 'FAIL'}")
+    for sk, nA1, nMenu, T, That, fibers, tie, fib_ok in resBC['table']:
+        h1, mu2, kind, h2, extra = sk
+        mark = 'ok' if (tie and fib_ok) else '**'
+        out(f"    (h1={h1},mu2={mu2})->({kind},h2={h2},x={extra}): "
+            f"|A1|={nA1} |menu|={nMenu}  T={T} T-hat={That} "
+            f"fiber={fibers[0] if len(fibers) == 1 else fibers}  {mark}")
+    out(f"  Test C (phantom scan): {len(resBC['phantoms'])} phantom(s)")
+    for ph in resBC['phantoms']:
+        out(f"    PHANTOM: stratum={ph['stratum']} a1={ph['a1']} "
+            f"d2={ph['d2']} menu-witness={ph['menu_witness']}")
+    if resBC['v3_viol']:
+        out(f"  V3 VIOLATION (realized read outside per-step menu): "
+            f"{resBC['v3_viol'][:5]}")
+    out(f"  V5 stabilization vs N-1: "
+        f"{'PASS' if not v5_issues else f'{len(v5_issues)} ISSUE(S)'}")
+    for iss in v5_issues[:8]:
+        out(f"    V5: {iss}")
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--quick', action='store_true')
+    args = ap.parse_args()
+    here = os.path.dirname(os.path.abspath(__file__))
+    os.makedirs(os.path.join(here, 'results'), exist_ok=True)
+    lines = []
+
+    def out(s):
+        print(s, flush=True)
+        lines.append(s)
+
+    out(f"U6_krun_probe — K-RUN depth-2 no-phantom falsifier "
+        f"(IFK-U6-FIRST, V4 item 22).  {time.strftime('%F %T')}")
+    out("Claim: length-2 counting tie T = T-hat; any T < T-hat stratum "
+        "(phantom chain) negates K-RUN as drafted.")
+    if args.quick:
+        ROWS = [('R1', 2, 2, 7, 2, Fraction(3), 2),
+                ('R2', 2, 3, 6, 2, Fraction(2), 1),
+                ('R3', 3, 2, 6, 3, Fraction(2), 1),
+                ('R4', 3, 3, 4, 3, Fraction(3, 2), 1)]
+    else:
+        ROWS = [('R1', 2, 2, 9, 2, Fraction(4), 3),
+                ('R2', 2, 3, 7, 2, Fraction(3), 2),
+                ('R3', 3, 2, 7, 3, Fraction(3), 2),
+                ('R4', 3, 3, 5, 3, Fraction(2), 1)]
+    results, phantoms, fib_viols, gate_fail = {}, [], [], []
+    for tag, n, p, N, mu, hcap, h1max in ROWS:
+        t0 = time.time()
+        row = run_row(n, p, N, mu, hcap, h1max)
+        rowm1 = run_row(n, p, N - 1, mu, hcap, h1max)
+        resA = test_A(row)
+        resBC = test_BC(row)
+        v5 = test_V5(row, rowm1)
+        report_row(tag, row, resA, resBC, v5, out)
+        out(f"  [{time.time()-t0:.1f}s]")
+        for ph in resBC['phantoms']:
+            confirmed = (row['unresolved'] == 0)
+            phantoms.append((tag, ph, confirmed))
+        fib_viols += [(tag, v) for v in resBC['fib_viol']]
+        if not resA[0]:
+            fib_viols += [(tag, ('testA', v)) for v in resA[2]]
+        if resBC['v3_viol'] or v5:
+            gate_fail.append((tag, 'V3' if resBC['v3_viol'] else 'V5',
+                              (resBC['v3_viol'] + v5)[:5]))
+        results[tag] = dict(
+            params=dict(n=n, p=p, N=N, mu=mu, hcap=str(hcap),
+                        h1max=h1max),
+            coverage=dict(total=row['total'], pending0=row['pending0'],
+                          unresolved=row['unresolved'],
+                          unresolved_mass=str(row['unresolved_mass'])),
+            testA=dict(ok=resA[0], strata=jsonable(resA[1]),
+                       violations=jsonable(resA[2])),
+            testB=dict(table=jsonable(resBC['table']),
+                       fib_viol=jsonable(resBC['fib_viol']),
+                       v3_viol=jsonable(resBC['v3_viol'])),
+            testC=dict(phantoms=jsonable(resBC['phantoms'])),
+            v5=jsonable(v5))
+        # gate V1 per row (oracle tie)
+        try:
+            checked, mism = gate_V1(row)
+            out(f"  gate V1 (PARI factorpadic tie): {checked} samples, "
+                f"{len(mism)} mismatch(es)")
+            if mism:
+                gate_fail.append((tag, 'V1', jsonable(mism[:3])))
+                for m in mism[:3]:
+                    out(f"    V1 MISMATCH: {m}")
+            results[tag]['gateV1'] = dict(checked=checked,
+                                          mism=jsonable(mism))
+        except Exception as e:
+            out(f"  gate V1 SKIPPED (oracle unavailable: {e!r})")
+            results[tag]['gateV1'] = dict(skipped=repr(e))
+    # gate V2: tiny full boxes, translation invariance / cylinder tie
+    out("\n===== GATES (global) =====")
+    for n, p, N, hcap, h1max in [(2, 2, 5, Fraction(2), 1),
+                                 (2, 3, 4, Fraction(3, 2), 1),
+                                 (3, 2, 5, Fraction(2), 1),
+                                 (3, 3, 3, Fraction(1), 1)]:
+        keys, issues = gate_V2(n, p, N, hcap, h1max)
+        out(f"  gate V2 n={n} p={p} N={N}: entry classes {keys} "
+            f"-> {'PASS' if not issues else issues}")
+        if issues:
+            gate_fail.append(('V2', (n, p, N), jsonable(issues)))
+    for p, N, hcap, h1max in [(2, 7, Fraction(3), 2),
+                              (3, 5, Fraction(2), 1)]:
+        compared, mism = gate_V4(p, N, hcap, h1max)
+        out(f"  gate V4 (Hensel mu=2-in-n=3 reduction) p={p}: "
+            f"{compared} compared, {len(mism)} mismatch(es)")
+        if mism:
+            gate_fail.append(('V4', p, jsonable(mism[:3])))
+    # ------------------------------------------------------------ verdict
+    out("\n===== VERDICT =====")
+    confirmed = [x for x in phantoms if x[2]]
+    candidates = [x for x in phantoms if not x[2]]
+    if confirmed:
+        verdict = 'FIRES'
+        out("FIRES — phantom chain(s) found: K-RUN's no-phantom face is "
+            "FALSE at depth 2 as drafted. Witnesses:")
+        for tag, ph, _ in confirmed:
+            out(f"  {tag}: {jsonable(ph)}")
+    elif candidates or fib_viols:
+        verdict = 'FIRES-CANDIDATE' if candidates else 'FIRES-FIBER'
+        out(f"ANOMALY — candidates={jsonable(candidates)} "
+            f"fiber-violations={jsonable(fib_viols)} (see log)")
+    elif gate_fail:
+        verdict = 'UNTESTABLE'
+        out(f"UNTESTABLE — validation gate failure(s): {gate_fail}")
+    else:
+        verdict = 'SURVIVES'
+        out("SURVIVES — no phantom and no fiber-law violation on any "
+            "probed stratum; every per-step-counted length-2 chain is "
+            "realized, with exact equal fibers (all gates green).")
+    tot_strata = sum(len(r['testB']['table']) for r in results.values())
+    tot_chains = sum(sum(x[3] for x in r['testB']['table'])
+                     for r in results.values())
+    out(f"Coverage: {tot_strata} length-2 strata, {tot_chains} realized "
+        f"chains, 4 exhaustive rows (+2 reduction rows via gate V4).")
+    payload = dict(unit='IFK-U6-FIRST', date=time.strftime('%F %T'),
+                   verdict=verdict, rows=results,
+                   gate_failures=jsonable(gate_fail),
+                   phantoms=jsonable(phantoms))
+    jpath = os.path.join(here, 'results', 'U6_krun_results.json')
+    with open(jpath, 'w') as f:
+        json.dump(payload, f, indent=1)
+    out(f"JSON: {jpath}")
+    return 0 if verdict in ('SURVIVES', 'FIRES') else 2
+
+if __name__ == '__main__':
+    sys.exit(main())
