@@ -1271,3 +1271,18 @@ T-U CORRESPONDENCE TABLES EXECUTED (21 SQ.6 items + 15 kernel rows, per-row
 warrants, 3 new adjudications flagged to VC7). VC7 launched (209KB doc).
 BLUEPRINTS: all six REVISE (first-round, expected) — revision agents
 dispatched, each folding its own review; re-reviews then the division leads.
+
+## VC7 + BLUEPRINT REVISION 2 FOLD (2026-08-03)
+VC7 (end-to-end, Codex, REVISION 6): COMPOSITION-GAPS — but findings 6-11
+CONFIRM (T-U tables genuine incl. the 3 flagged adjudications; (H1)
+enlargement + (H7) sound; TEN-row bijection correct; "the remaining linear
+walk proves (ROOT-C) quantifier-for-quantifier"; acyclicity passes). ONLY 2
+blockers, both attribution: (1) KEY1 deg-g>1 needs an explicit (H1) member;
+(2) (PACK) must display rsh_interp/r_bdd/wsh_ok for the B_n rows (corres-
+pondence alone insufficient). +3 wording advisories. r8 dispatched
+(wf_3f35e0c0-41e): (H1)(d) + (H5) PACK-i/ii/iii enlargements + advisories
+=> REVISION 7; VC8 next. Report archived: lean/notes/openmath/VC7_root_report.md.
+BLUEPRINTS: all six REVISION 2 applied via Codex edit-blocks (120 findings
+fixed, 0 rebutted, all READY; BP_I's 1 failed block = overlap, content
+present). Agent-tool session pool EXHAUSTED (200/200) — revision round ran
+on Codex; division leads to run via Workflow (spawn viability = r8 canary).
