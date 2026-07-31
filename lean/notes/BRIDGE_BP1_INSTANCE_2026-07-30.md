@@ -1498,3 +1498,138 @@ The future (e)-pass resolves the seam by PROVING one reading from [3]'s tables
 — never by a silent keying choice.  FILE MAP + build record updated: seven new
 files total, `lake build … SlotsG15b_e4Seam` green ("Build completed
 successfully (8567 jobs)", 2026-07-31).
+
+### D-SC REVISION 2 (2026-07-31) — the REVISE-round repairs (5 CRITICAL / 3 GAP)
+
+CHARGE: the ratification review of this addendum + the seven D-SC modules
+returned REVISE (findings archived at the ratify record; verdict 5 CRITICAL /
+3 GAP).  The recurring defect class, named by the reviewer and confirmed:
+**SUPPLIED-CARRIER VACUITY** — P1 converts closure traps into supplied
+parameters, but several displayed targets were then TRUE at the EMPTY or
+degenerate supplied carrier (`consumed = ∅`, `tableConv = fun _ => True`,
+`Leg := Empty`), and the planned falsifiers targeted only non-degenerate junk,
+so they could never fire against the actual escapes.  P1 alone is not enough:
+where the note anchors an obligation at an OBJECT (the branch's T_j, the
+convention's value), the carrier layer must anchor there too (P3), not behind
+a quantifier over a suppliable-empty set.  All repairs are statement edits to
+PRE-RATIFICATION skeletons (E-phase; no ratified file touched; the G2/G3
+blocked records and `theoremU` untouched; bodies stay `sorry`).
+
+FINDING → DISPOSITION (all eight):
+
+1. **CRITICAL, rel2e empty-`consumed`/free-`tableConv` vacuity — ACCEPTED,
+   fixed at the statement (R-16 + R-18).**  The note's own SETTING fixes ONE
+   prescribed subtree per branch (MOVES 9430–48: the site IS (η, Σ, c, b_j)
+   with REL.2(b)'s S_j and (SIB-Oδ)'s "THE prescribed subtree T_j"), so the
+   site carries it: `RelSite.Tj : PTree` is now a FIELD (G14; replaces the
+   weaker `prescNe`).  The rel2e target is re-anchored (G16 header + G19b):
+   (e3) MASS = ENTRY is stated UNCONDITIONALLY at `S.Tj` — no
+   `consumed`-quantifier remains to vacate; (e5) becomes coverage +
+   determination (`S.Tj ∈ consumed ∧ ∀ T ∈ consumed, T = S.Tj`).  COMPILED:
+   `SlotsG19c.rel2e_probe_refuted_at_empty_consumed` (the finding's exact
+   adversary now refutes the target, uniformly over all sites/packs/CIs) and
+   `rel2e_probe_refuted_at_two_elements` (the old table's two-element
+   falsifier, now uniform — no junk-site construction needed).
+2. **CRITICAL, rel3 empty-display escape — ACCEPTED, fixed at the statement
+   (R-20).**  The "vacuous-faithfully at `Leg := Empty`" reading is RETIRED:
+   vacuous TRUTH in a Prop wearing REL.3's name misstated the
+   deferred-statement status.  The target gains (population) `Nonempty CD.Leg`
+   and (coverage) every prescription in `RA.consumed` at every family member
+   is a leg (Sigma-equality form).  Consequence: before [4] drafts SQ.0–SQ.2
+   the slot is UNDISCHARGEABLE (the honest status — REL.3 stays an open
+   hypothesis), never silently true.  COMPILED:
+   `SlotsG19c.rel3_probe_refuted_at_empty_pack`.
+3. **CRITICAL, rel2d drops the prescribed-subtree identification — ACCEPTED,
+   fixed (R-17).**  The G2 blocked spec's fourth leg ("+ the prescribed-subtree
+   identification (without which (SIB-Oδ) is ill-typed)") was indeed absent
+   from the elaborated target; `TgtSub`/`subtreeCorr`/`TgtRealizes` were
+   unconstrained.  RESTORED as the fourth conjunct (G16 header + G19b):
+   ∀ T f, f ∈ S.SEvent T ↔ TgtRealizes (tgtTcan (Θ (domIdent f)))
+   (subtreeCorr T) — `SEvent T` is exactly the Θ-pullback of the target
+   realization event, which is what makes S_j(T) an O_{δ_j}-statement.
+4. **CRITICAL, the [4]-side display carrier not supplied — PARTIALLY ACCEPTED
+   (R-20), remainder REBUTTED BY THE G3 RECORD.**  Accepted: a key-only pack
+   with no completeness relation admits leg omission; the new COVERAGE
+   conjunct ties the pack to the [3]-export corpus (every consumed
+   prescription is a leg — derived-not-free), and population kills the
+   omit-everything case.  Rebutted: binding the ACTUAL SQ.0–SQ.2 display
+   carriers now is precisely round 1's rejected inventive move ("their Lean
+   shape is exactly what must not be invented here" — the G3 BLOCKED record
+   this design executes).  The legs-are-exactly-[4]'s-consumption relation is
+   typed AT POPULATION TIME and is [4]'s Q15/E-3 acceptance criterion,
+   ledgered below.
+5. **CRITICAL, ambient-vs-rebased ambiguity at (e4) — PARTIALLY ACCEPTED
+   (R-18 + R-19), remainder REBUTTED.**  Accepted: `tableConv` free made (e4)
+   contentless.  (e4) now = UNIQUE agreement (`tableConv entryFirst ∧ ∀ m,
+   tableConv m → m = entryFirst`): a convention that determines nothing is no
+   convention, so `fun _ => True` refutes the slot (COMPILED:
+   `SlotsG19c.rel2e_probe_refuted_at_trivial_tableConv`), and `entryFirst` is
+   pinned to THE exported value.  Forced consequence (R-19):
+   `RelAssignment.tableConv` is PER-SITE (the note defines e_j "from b_j's
+   data"; a family-global predicate + uniqueness would wrongly equate all
+   sites' first indices).  Rebutted: the design must NOT prove
+   `entryFirst = S.dRel` or `= S.d` — the seam is note-side OPEN (D-SC.8/
+   item-9(iv)); resolving it by a keying law would be inventing mathematics.
+   The law now pins entryFirst to [3]'s export; WHICH value that export takes
+   is exactly the open (e)-pass obligation, unchanged.
+6. **GAP, suppliers outstanding — ACCEPTED AS RECORD-KEEPING.**  Correct: the
+   deps columns list STATEMENT-level deps only.  Clarified here: [3]/MovesS's
+   `tableConv`/`consumed` exports, [4]'s pack population, and wave-D's
+   `SiteData`/`RelAssignment`/`RelCarrierPack` instances are Q15 ledger duties
+   that gate any DISCHARGE of the G18 rows (nothing can gate the statements —
+   they are hypothesis vocabulary).  Post-revision the distinction has teeth:
+   the rows are now UNDISCHARGEABLE at degenerate supplies (findings 1/2/5's
+   escapes are refuted, compiled), so "assumes eventual meaningful instances"
+   has become "cannot be discharged by anything less".
+7. **GAP, rel2b zero-mass escape — REBUTTED WITH EVIDENCE.**  The claimed
+   missing family law EXISTS: `RelSiteFamily.mem_pos : ∀ S ∈ mem, 0 <
+   S.cellMass` (SlotsG14, the CF1/R-8 field; evidently outside the review's
+   paste).  The G18 rows quantify over `hS : S ∈ (RP.fam p).mem`, so the
+   slot-level guard `0 < S.cellMass →` (the note's own scoping, MOVES 9483–85:
+   "only for cells with μ(Σ_c) > 0") discharges at every quantified site; a
+   zero-mass site is not a family member.  COMPILED WITNESS:
+   `SlotsG19c.rel2b_guard_fires_on_family`; the row-level wiring is now also
+   displayed in the G18 header.
+8. **GAP, falsifiers not shown capable of firing — PARTIALLY ACCEPTED.**
+   Accepted for the degenerate class (the review's defect class): IB-G19c is
+   LANDED with COMPILED, UNIFORM falsifiers — empty `consumed`, trivial
+   `tableConv`, two-element `consumed`, empty display pack — none requiring
+   the unproven prerequisites the finding lists, because each refuted conjunct
+   is uniformly false at the degenerate parameter.  Still scheduled at IB-G19a
+   (unchanged, now with prerequisites listed in the G19c header): rel2b's
+   inverted-Dirac countermodel (needs two disjoint cylinders + a positive-mass
+   junk site), rel2d's non-constant composite, the β ≡ 2 value falsifiers
+   (need a concrete CI with a proved vol ≤ 1 bound).  G19a remains
+   fills-gated; the non-vacuity gate is no longer only a plan.
+
+NEW E-PHASE RESOLUTIONS (all flagged for the Q5 audit):
+* **R-16** `RelSite.Tj : PTree` — the SETTING's own per-branch prescribed
+  subtree as a carrier field (replaces `prescNe`); (e3)/(e5) anchor at it.
+* **R-17** rel2d's fourth conjunct — the prescribed-subtree event
+  identification (SEvent T = Θ-pullback of the realization event).
+* **R-18** (e4) unique agreement + (e5) coverage-and-determination at `Tj` +
+  (e3) pinned unconditionally at `Tj`.
+* **R-19** `RelAssignment.tableConv` per-site
+  (`(S : RelSite p) → S ∈ Fam.mem → ℕ → Prop`); `SitedSlot_rel2e`'s parameter
+  shape unchanged (rows feed the per-site instantiation).
+* **R-20** rel3 population (`Nonempty CD.Leg`) + coverage (legs cover
+  `RA.consumed` across the family, Sigma-equality form).  [4]'s population
+  acceptance criterion (legs = exactly SQ.0–SQ.2's consumption sites) stays
+  OWED at Q15/E-3 — typed at population, never before.
+
+SUPERSESSIONS IN THE TABLES ABOVE (D-SC.3): the rel2d row's "faithful
+statement" column gains the R-17 conjunct; the rel2e row's falsifier column
+("two-element `consumed`") and the rel3 row's caveat column ("+ empty-pack
+caveat") are superseded by the G19c compiled family; the rel2e "faithful
+statement" column reads per R-18.  D-SC.2's †20 "Empty-pack caveat recorded
+(vacuous-faithfully …)" is RETIRED per finding 2.
+
+FILE MAP DELTA: + lean/LeanUrat/MovesU/SlotsG19c_degenFalsifiers.lean (NEW;
+probe-fenced falsifier host).  MODIFIED (pre-ratification skeletons only):
+SlotsG14 (Tj field, R-16), SlotsG15 (doc only), SlotsG16 (header targets +
+docstrings), SlotsG17 (RelAssignment.tableConv per-site + rel3 target),
+SlotsG18 (header only), SlotsG19b (probes re-elaborated at the revised
+targets).  BUILD RECORD: `lake build` green through SlotsG15b/G19b/G19c
+2026-07-31 ("Build completed successfully", 8571–8573 jobs); sorry census
+UNCHANGED (11: G16 4, G17 1, G18 6; G19c adds 0); nothing imports the D-SC
+modules (capstone path + footprints untouched).
