@@ -1221,6 +1221,16 @@ instance + G13′ + a short list of named open mathematics.
    re-keyed to HistoryCoherent nodes; `canPolicyC_pin` (`MovesD/R7_polFillReduction.lean`) proves
    the whole repaired pin from `RunRealizerExists p (ZMod p)` — the single named residue standing
    between the landed D-group constructions and Lean-core-clean.
+   **→ DISCHARGED 2026-07-31 (R7-RUN, O-14a′ wave 2):** `MovesD/R7_runRealizer.lean` proves
+   `runRealizerExists_zmod : RunRealizerExists p (ZMod p)` outright (the O-14a′ math: prime-field
+   collapse Thm 1 + last-node flank Thm 3, `notes/openmath/O14ap_phaseB_attempt.md` §4.2 recipe),
+   and TreeCan's (†15) pair `canPolicy`/`canPolicy_pin` is FILLED (statements byte-unchanged) —
+   the D-group sorryAx is DEAD: `canPolicy`/`canPolicy_pin`/`bridgePol`/`bridgeTm` all print
+   Lean-core `{propext, Classical.choice, Quot.sound}`; AxChk_baseline zero-sorryAx, capstones
+   unchanged.  HONEST SCOPE (report with any citation): rides the RG-2 recording fence — a fence
+   lift REOPENS the (CR2) support clause at ZMod p, so the (S6b′-SUPP) re-adjudication is a
+   PREREQUISITE of any fence lift (O-14a′ §5.5); recorded towers over the prime field are
+   linear-key (disclosed thinness); at general F the compiled (CR2) is refuted-as-stated (Thm 5).
 7. **Hygiene/records:** the D-SC carrier layer completed + fully falsifier-certified (G16–G19e);
    `Moves/L6_R3` and `HC1/CL10` quarantined with records; `GMNIndex.lean` statement draft landed
    with the axiom keyword WITHHELD (zero-witness rule); M1 freeze notes on every re-keyed
@@ -1236,8 +1246,8 @@ instance + G13′ + a short list of named open mathematics.
    probe first, re-review, then dispatch provers; declare the stripped BNS 3.13 axiom after
    guardian audit.  Discharges (or reduces) count_tie/env_tendsto/vp_sound/series_tie/
    RealizationComplete — the F-chain and the identification clause's semantic residue.
-3. **The BP2 post-wave ladder**: HK-12 → HK-52 → HK-11a/b/c (the reopened V9 legs), HK-08, HK-25;
-   plus the `RunRealizerExists` discharge attempt (interior half already proved).
+3. **The BP2 post-wave ladder**: HK-12 → HK-52 → HK-11a/b/c (the reopened V9 legs), HK-08, HK-25.
+   (The `RunRealizerExists` discharge is DONE — R7-RUN 2026-07-31, see result 6 above.)
 4. **The wave-D n = 2 instance** (UCarriers/KernelCarriers/RelCarrierPack at the HK23/forge
    carriers) — converts the 13-slot boundary + carrier packs into pinned rows at a real instance.
 5. **The remaining typed open math**: K7 lemmas A–E (post-item-23 form), X.1b WEIGHT-CHARGE, X.2

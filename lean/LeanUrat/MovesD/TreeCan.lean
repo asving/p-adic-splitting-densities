@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.MovesD.Defs
 import LeanUrat.MovesD.PolPin
+import LeanUrat.MovesD.R7_runRealizer
 import LeanUrat.HC2.Defs
 
 /-!
@@ -69,6 +70,14 @@ lift as center realizer; `interior_recentering_unramified`).  The open content i
 residue) and (b) the LAST-NODE flank (no `IsRecenteringCore` record at i = len−1;
 landing law lives at `JetSetup.landing`/`LandingKey`).  The two sorries below STAND
 as the honest boundary; they are no longer FALSE-as-quantified.
+
+R7-RUN FILL RECORD (2026-07-31, O-14a′ wave 2): both residues (a) and (b) were PROVED
+as mathematics (O14ap_phaseB_attempt.md — (a) is FREE at F = ZMod p by the prime-field
+collapse; (b) closed positively by the last-node-flank theorem) and formalized in
+`MovesD/R7_runRealizer.lean` (`runRealizerExists_zmod`, Lean-core).  The (†15) pair
+below is FILLED; SORRY CENSUS now 0 in this module.  Honest scope of the discharge:
+see the (†15) section header below (RG-2 fence riding; prime-field thinness;
+general-F (CR2) refuted-as-stated).
 -/
 
 set_option linter.style.longLine false
@@ -487,22 +496,39 @@ theorem canTreeModel_inBox (H : History p F) (x : Box p m) :
 
 end
 
-/-! ## (†15) IB-D26 — the POL-PIN policy (HONEST DATA SORRIES, owner HC-1) -/
+/-! ## (†15) IB-D26 — the POL-PIN policy (DISCHARGED 2026-07-31: O-14a′ wave-2 fill)
+
+R7-RUN DISCHARGE NOTE (2026-07-31, O-14a′ wave 2 — `MovesD/R7_runRealizer.lean`): the
+(†15) pair below is FILLED.  `runRealizerExists_zmod` proves the ONE residual Prop
+`RunRealizerExists p (ZMod p)` (O-14a′ Cor 4: prime-field collapse Thm 1 + last-node
+flank Thm 3), and `canPolicyC_pin` (R7_polFillReduction) turns it into the full pin at
+the choice policy.  The D-group sorryAx source is DEAD.  HONEST SCOPE (report with any
+citation of this discharge): (i) Thm 1(ii) rides the RG-2 recording fence — a fence
+lift REOPENS (CR2) at ZMod p (O-14a′ §5.5), so the (S6b′-SUPP) re-adjudication is a
+prerequisite of any fence lift; (ii) over the prime ambient field the recorded towers
+are linear-key (disclosed thinness, order-0-slice-consistent); (iii) at general F the
+compiled (CR2) is REFUTED-AS-STATED (O-14a′ Thm 5) — nothing here quantifies past
+F = ZMod p.  Statements below are byte-unchanged from the designer round. -/
 
 /-- **THE CANONICAL POLICY** (†15, IB-D26): the note's ONE lift rule — the (S6b)
 OFFSET-P-LIFT realizer at every recentering (note 4646–4651; POL-PIN, W4-5). OWNER
 HC-1/§B2-DEF: the (S6b′) formula needs the lower-stage realizer vocabulary that MovesC/
 MovesD do not export (`PolPin.lean`'s named residue). NOT dischargeable this campaign;
 the sorry is the designer round's honest boundary, and `canPolicy_pin` below is its
-LAW-CARRYING obligation — a filled `canPolicy` without the pin is NOT acceptance. -/
+LAW-CARRYING obligation — a filled `canPolicy` without the pin is NOT acceptance.
+[FILLED 2026-07-31 (R7-RUN): the choice policy `canPolicyC`, whose pin is total by
+`runRealizerExists_zmod` — the docstring above is the designer round's record; see the
+section header for the discharge + scope note.] -/
 noncomputable def canPolicy (p : ℕ) [Fact p.Prime] : CanonPolicy p (ZMod p) :=
-  sorry
+  canPolicyC p (ZMod p)
 
 /-- The policy is PINNED (†15): `canPolicy` carries the W4-5 `OffsetPPin` — L1 totality,
 genuineness, the forced-class support law, determinism, and the D.10 digit-value law.
 Owner HC-1 (discharged together with `canPolicy`; the pin excludes every under-typed
-instantiation — see `OffsetPPin.not_realizes_bare_ne_zero` and the bypass kills). -/
+instantiation — see `OffsetPPin.not_realizes_bare_ne_zero` and the bypass kills).
+[FILLED 2026-07-31 (R7-RUN): `canPolicyC_pin` at `runRealizerExists_zmod` — all five
+laws; see the section header for the discharge + scope note.] -/
 noncomputable def canPolicy_pin (p : ℕ) [Fact p.Prime] : OffsetPPin (canPolicy p) :=
-  sorry
+  canPolicyC_pin (runRealizerExists_zmod p)
 
 end LeanUrat.MovesD
