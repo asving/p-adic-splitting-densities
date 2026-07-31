@@ -877,3 +877,135 @@ public drift found in the [SYN2-S1] hunks). Orchestration dispositions:
 - Finding 30 CRITICAL (XG2d len_le_filter_succ deleted, no survivor): DEAD-CODE
   deletion, not a re-point — the generic list engine's ONLY consumer was the deleted
   specialized lemma (grep-verified 2 occurrences = def + that one use). Recorded.
+
+## ITEM 3 — THE HK-06 HISTORYCOHERENT WAVE (task #44; executed 2026-07-31, agent: hk06-wave, SOLO)
+
+AUTHORIZATION: Asvin 2026-07-31 verbatim "Sign-off granted on all 21 items as
+preferred, execute the queue" + the /goal standing decision rule (2026-07-30
+authority update: pending adjudications decided by whichever option makes the
+proof work, compiled gates supplying the evidence).  Gates green on entry:
+HK-05 stall (HC2/HK05_countermodelGate.lean, Lean-core), HK-22 emptiness
+certificate (HC2/HK22_twoNodeGate.lean + notes/HK22_TWONODE_GATE_2026-07-31.md
+— the wave's necessity machine-certified), HK-29 wave-invariant stall record.
+
+### THE EXECUTED DIFF (frozen MovesC/Defs.lean — the ratified (S-a) two-step regrade keying)
+
+1. NEW `MovesC.RegradeOf (σ : Stage p F) (estar hstar : ℕ) (σV : Stage p F)` —
+   PAIR-PARAMETERIZED (reads only the node's (e, h)), placed before
+   `HistoryCoherent`; clause list = HK-05's certified staged core list BYTE-PER
+   (compiled alignment certificate: `HK05.stagedRegradeOf_iff_regradeOf`,
+   `Iff.rfl`).  The pair parameterization DISSOLVES BP2 REVISION-2 finding 6's
+   layering cycle (no Node needed), so HC2's StageTransHyp consumes it directly.
+   The D.7(i)–(v) σV residual-law clauses: NAMED OPEN ADDENDUM, never ratified
+   (B2-FINAL not accepted at pass 8) — recorded in the def docstring.
+   Consumer API added: `RegradeOf.nextField_eq` (K-preservation → child_field
+   chains), `RegradeOf.w_coeff` (the e★ = 1 coefficient-carrier fold-back).
+2. `HistoryCoherent`'s non-recentering leg → the (S-a) display: species guard →
+   `νᵢ.e = 1 ∧ ∃ σV, RegradeOf σᵢ νᵢ.e νᵢ.h σV ∧ IsNodeLift νᵢ Φᵢ₊₁ ∧
+   TransitionCoreL σV σᵢ₊₁ Φᵢ₊₁ (νᵢ₊₁.e) (νᵢ₊₁.h) (νᵢ.zbar)`.
+   WAVE RIDER RG-2 (the Q2-extension, decided by the /goal rule; evidence =
+   B2-FINAL pass-8 rejection): the `νᵢ.e = 1` recording fence — e ≥ 2
+   non-recentering reads are UNRECORDABLE, a DISCLOSED definitional scope
+   restriction (visible in the def, unlike the OLD silent contradiction); the
+   V9 cone's e ≥ 2 legs close by this disclosed emptiness, statements
+   byte-unchanged (BP2's E-d disposition).
+   WAVE RIDER R-tie (evidence = item-16's compiled per-leg pair-pin
+   adjudication: the ∀-(s,t) stage tie is UNPROVABLE for choice-built stages at
+   e' ≥ 2, Bézout non-uniqueness under Exists.choose): the Bézout ties re-key
+   to the CHILD node's pair per the display AND are GUARDED by `σᵢ₊₁.e = 1`
+   (where he1t/hbezCanon force both sides).  Leg tuple arity kept at 7
+   (positions preserved) to minimize destructuring ripple.
+3. HC2/Defs: `StageTransHyp` → `StageTransHypOld` (archival rename, docstring
+   "refuted-shape historical record"; HK-03's file mechanically re-pointed,
+   its emptiness theorem = the permanent record) + the RE-KEYED `StageTransHyp`
+   under the standing name (two-step: read-pair lift → RegradeOf σV → IAug AT
+   σV → TransitionCoreL σV σ' at the next pair; conclusion still pins
+   σ'.s/t/e/h/Φ + StageCoreL).  Q9 rode the wave: U17a/U17c binder TEXT
+   unchanged (same name, re-keyed Prop — repair of a conditionally-FALSE
+   hypothesis per HK-03, never a weakening).
+
+### THE POSITIVE GATE — PASSED (the wave's acceptance test, duty 4)
+
+NEW LEAF `HC2/HK23_twoNodeGatePos.lean` (0 sorry; ALL six public theorems
+Lean-core {propext, Classical.choice, Quot.sound}, in-file #print axioms):
+`twoNodeGate_pos` — ∃ H : History 2 F4 with nodes[0].σ = bStageP,
+nodes[1].σ = R7Forge.ramifiedStage, HistoryCoherent H ∧ Realizable H ∧
+InBox 4 H — the EXACT conjunction `HK22.twoNodeGate_isEmpty` refutes for the
+pre-wave keying.  Carrier: root ν₀ram = the (1,1) read with residual ψ₂²
+(pattern (1,0,1,0,1) on slots 0–4, γ₀ = 4, μ₀ = 2, line ⟨4,1⟩), child ν₁ram =
+the ADJACENT (2,5) read on the forge frame (slots 0–2, γ₁ = 10, ψ₁ = z−1,
+canonical Bézout (−2,1), line ⟨5,5/4⟩); σV witness = U31.bStage re-dressed
+with bStageP's reps (RegradeOf via Stage.hK1's slot-min at bw X = 1); the
+transition record = the forge's `ramifiedStage_trans` transported field-by-
+field; (HV) closes by vtx ν₀ram = 1 (ψ₂²/ψ₂² = 1 at a = m̂ = 0); (SAE) 4 < 5,
+2 < 5/2; vertex equality 0 = 0.  The stride-decoupling collision is REPAIRED:
+lift at the ROOT pair (1,1), transition at the CHILD pair (2,5).
+
+### FALLOUT (the full ripple; explicit 1053-module sweep green, exit 0)
+
+Direct breakage was SIX modules; dispositions:
+* HC1/V9_K1nonrec — the hard case.  FOUR OLD-keying supply lemmas
+  (`v9_readSteep_all` private, `V9_readSteepness`, `V9_transSteepness`,
+  `V9_readPair`) DELETED with an in-file archival block: REFUTED AS STATED
+  under (NEW) (`child_h` collapses them to `νᵢ.e·νᵢ.h < νᵢ.h`, false at
+  Node.he/hh; compiled instance = H₂ram at i = 1 — the HK-48 half-record);
+  pre-wave proofs in git history; HK-08's restatement is the post-wave unit
+  (risk R-9 stands).  `V9_K1nonrec`/`V9_E1box_nonrec` statements BYTE-UNCHANGED
+  with FOUR honest sorries (2 each): the e·g ≥ 2 steep legs (OLD closure was
+  the V10 exfalso — gone by design; = HK-52/HK-11a/HK-11b's obligation) and the
+  i = 0 ∧ e·g = 1 corners (OLD honest v9c toolkit proofs consumed the OLD-keyed
+  record; RE-OPENED, truth-under-new-keying flagged RE-ADJUDICATION-SUSPECT in
+  both wave blocks — the νᵢ₊₁.e-stretch factor).  The e·g = 1 ∧ i ≥ 1 species
+  legs survive.  Downstream K1_vertexPin/U20a/b/c/U22E1/U22E2 compile with
+  statements unchanged, now honestly carrying sorryAx from V9 (the vacuous
+  Lean-core footprint they had was the masked V10 contradiction — this is the
+  disclosed cost BP2 priced at REVISION-2 finding 1).
+* HC2/U21_HV — `readsOf_HV_of_pin` re-routed through the σV leg; new
+  position-independent scalar extraction `CT_eq_scalar_of_ne_zero` (the σV
+  re-route shifts the recorded position; both monomials are the same element).
+  Sorry-free, footprint unchanged.
+* HC2/U18_unique, MovesD/SW1_shapeWF — child_field chains folded through
+  `RegradeOf.nextField_eq`.  Green.
+* HC2/U17b_galois — historyMap coherence transport carries the guard + the
+  mapped σV (stageMap keeps every RegradeOf-read field); K-fold via clause 4.
+  Green.
+* HC2/HK22_twoNodeGate — M1 FREEZE (duty 5): verbatim pre-wave def
+  `HistoryCoherentPre` added; `ramifiedChild_twoNode_incoherent` +
+  `twoNodeGate_isEmpty` RE-TARGETED at it (proofs byte-unchanged, docstrings
+  dated) — they refute ONLY the historical form; no compiled negation coexists
+  with the live keying (whose positive instance is HK23).
+Everything else (U9/U10/U4/U13, C3_lineDom/steeperChain, PolPin/R7 leaves,
+MovesD D5/D7 shape files, MovesT G1/TV_A5b/S2/V8, TreeCan, U1_negWitness's
+surgery lemmas, U19/U23/U24/U25 projections) recompiled GREEN UNCHANGED.
+
+### M1 NOTES + PARKED CONSUMERS (duties 5–6)
+
+* HK22_twoNodeGate.lean: the freeze above.  R7_pinProbe.lean +
+  R7_polFillReduction.lean: dated notes — the "ramified child unreachable
+  pre-HK-06" wall language is superseded (HK23 reaches it); the item-13
+  LAST-NODE FLANK countermodel search is now LIVE (target: 3-node extension of
+  H₂ram by a recentering read).  V10_transportWindow.lean: the historical-
+  witness header note (BP2 HK-06 wave content).
+* U10dNeg exists-config (parked at HK-22 P2): CLOSED-MOOT — item 17 repaired
+  U10d (fresh-cut restriction) and PROVED it; no instantiation of the retired
+  negation is owed.  Dated note in U10d_negWitness.lean.
+* U1_negWitness honesty perimeter (HK-25's H₂ʳ): UNBLOCKED by the wave, not
+  built here (post-wave Block-G unit; the HK23 carriers are the supply).
+  Dated note in-file.
+* TV_A5b_forge coherence legs: NOT TOUCHED (recompiled green unchanged).
+
+### VERIFICATION
+
+* Explicit all-module sweep (1052 pre-wave modules): GREEN, exit 0.  Final
+  sweep incl. HK23 (1053): launched at record time, see the commit gate.
+* `lake env lean LeanUrat/AxChk_baseline.lean`: exit 0, ZERO sorryAx in the
+  census, `montes_unconditional` Lean-core — footprint diff EXACTLY EQUAL
+  (rule 7: additive-or-equal PASSED; the V9 cone is outside the root census;
+  its sorryAx delta is the recorded HK-11 obligation, not a capstone event).
+* Sorry delta: V9_K1nonrec 0 → 4 (the honest reopening; BP2 REVISION-2
+  finding 1's priced cost).  All other touched files: 0 added.
+* MANIFEST rows (HC2 HK-23 + the MovesC RegradeOf row): deferred to the next
+  manifest sweep, per the FORGE-B/HK-22 deferral precedent.
+* POST-WAVE QUEUE (BP2 sequencing, now unblocked): HK-12 → HK-52 → HK-11a/b/c
+  (the reopened V9 legs), HK-08 (steepness restatement), HK-48(b), HK-25,
+  Blocks L/H/Z provers, MovesT G1b re-adjudication (Q7).
