@@ -268,4 +268,432 @@ charges, the saturation leaf data — is a function of 𝐇° alone (certified
 nodes are continuing by definition; §5 (B)/(C) quantify over i ≤ k'), so the
 restriction to 𝔈°_f costs no clause of this note.
 
-<!-- REV2-STAGE-2 -->
+## 3. Theorem 1 (order ≤ 1) — statement and complete proof
+
+**Theorem 1.** Let f ∈ O[x] be monic of degree ≤ n with disc f ≠ 0, and let
+𝐇 be well-formed of length ≤ 1 with Cons_f(𝐇); k' ∈ {0, 1} its number of
+continuing nodes. [REV 2 — V10-C4: the rev-1 statement quantified symbols
+(e₁, h₁, g₁, μ₁, ψ̂₁, G) undefined at k' = 0; the domain is now exhausted by
+three explicit cases.]
+
+**Case (i)** 𝐇 = (ρ₀) (k = k' = 0) and **Case (ii)** 𝐇 = (ρ₀; ν₁) with ν₁
+terminal (k = 1, k' = 0; then a₀ ≥ 2 by W3 and Θ(𝐇) = Θ((ρ₀))). Claims:
+(D0°) Θ is total and truncation-compatible on 𝔈 (unconditional; formal
+  codomain); 𝐇° = (ρ₀) is recoverable from (f, Θ(𝐇)) (Lemma R at length 0);
+  in case (ii), 𝐇 itself is NOT recoverable (Lemma R's non-claim) — no
+  injectivity beyond 𝔈°_f is asserted.
+(D2°) t^{(0)} ∈ t₀(f); non-complete whenever a₀ ≥ 2 (in particular in case
+  (ii)).
+(D4) as below (level-0 admissibility).
+(Ch°) dCert(𝐇) = 0 ≤ ind₁(f) ≤ ind(f).
+
+**Case (iii)** 𝐇 = (ρ₀; ν₁) with ν₁ continuing (k = k' = 1). Claims:
+(D0) Θ total and truncation-compatible (as above); 𝐇 recoverable from
+  (f, Θ(𝐇)) — Θ injective on {Cons_f, length ≤ 1, all nodes continuing}
+  (Lemma R at length 1);
+(D1) [invariant matching] the interpreted Θ(𝐇) is a genuine type of order 1
+  over F_rep with f₁ = g₁, [F₂ : F_q] = f₀f₁, m₂ = e₁·(f₀g₁) = accE·accF
+  where accE := e₁, accF := f₀g₁; v₂(φ₁) = h₁; and the SATURATION law: the
+  tracked cluster factor G (defined in the proof) has deg G = m₂·μ₁, so
+  accE·accF = deg G ⇔ μ₁ = 1, and when μ₁ = 1, G is irreducible with
+  (e, f) = (accE, accF);
+(D2) [placement] t^{(0)} ∈ t₀(f), non-complete, and Θ(𝐇) ∈ t₁(f);
+(D3) [order-1 crossing] the first-read data format defined by the displayed
+  development/hull/positional/residual formulas below IS (L2)/(L3)'s order-1
+  data — so a first read performed by those formulas satisfies (c0)/(c1)
+  (INCLUDING the positional clause)/(c2) automatically;
+(D4) [admissibility, level 0] F_rep's level-0 layer is admissible: Lift₀(ψ̂₀)
+  is a monic lift of ψ̂₀, one per ψ̂₀ — exactly (L5)'s first layer;
+and the charge: dCert(𝐇) ≤ ind₁(f) ≤ ind(f).
+
+*Proof.* Write ψ₀ = ψ̂₀, φ₁ = Lift₀(ψ₀), a = a₀.
+
+(D4): Lift₀(ψ₀) is monic (lift of a monic polynomial coefficientwise, top
+coefficient 1) and reduces to ψ₀; (L5)'s first layer demands exactly a monic
+lift of every ψ₀, chosen once — Lift₀ is a function, so the choice is
+universal. No other property of an order-0 representative is required by (L1).
+
+(Cases (i)/(ii)): (D0°) is Lemma R at length 0 plus its displayed non-claim.
+(D2°): t^{(0)} = ψ₀ ∈ t₀(f) means ω₁(f) = ord_{ψ₀}(f̄) ≥ 1, which is (c0)
+with a₀ ≥ 1; non-completeness at a₀ ≥ 2 is Def 3.9. (Ch°): certified nodes
+are continuing by definition, so dCert = 0; ind₁(f) ≥ 0 by (L8) nonnegativity
+(a sum of ind_t ≥ 0); ind₁(f) ≤ ind(f) is (L9) at r = 1. ∎ (cases (i)/(ii))
+
+(Case (iii), (D3)): The order-1 objects of (L2)/(L3) are: the φ₁-adic
+development f = Σ_j b_j φ₁^j (deg b_j < f₀, unique by monic division), the
+polygon = lower hull of {(j, v(b_j)) : b_j ≠ 0} (v₁ = v, and
+v₁(b_jφ₁^j) = v(b_j) + j·0 since v(φ₁) = 0), whose FINITE-slope principal
+part runs on abscissas [j₀, a], where j₀ := ord_{φ₁}(f) and
+ω = ord_{ψ₀}(f̄) = a (the ψ₀-adic development of f̄ is the reduction of the
+φ₁-adic development of f, and ψ₀^a ∥ f̄ forces v(b_j) ≥ 1 for j < a — with
+v(0) = ∞ — and v(b_a) = 0). [REV 2, V10-G1 — the j₀ corner, previously
+glossed as "[0, ω]":] for separable f, j₀ ≤ 1 (if φ₁² | f then every root of
+φ₁ is a multiple root of f, contradicting disc f ≠ 0). If j₀ = 1, (L3+)'s
+side of slope −∞ has length E_∞ = 1 and carries the exact factor φ₁, which
+is irreducible with (e, f) = (1, f₀) (monic with irreducible reduction —
+the multiplicity-1/Hensel case of (L6)); if j₀ = a (forcing a = j₀ = 1) the
+finite part is the single point (a, 0), N₁^−(f) has no finite side, and no
+continuing node is Cons_f-consistent with this track (cases (i)/(ii) still
+apply to it). All (c1)/(c2) clauses and Def 3.10 quantify over FINITE slopes,
+so they are untouched by the −∞ side; the charge below is untouched because
+ind(N) gains only the NONNEGATIVE term E_∞·H_fin ((L8)), preserving
+ind(N) ≥ ind(S) and every inequality used; (L6)'s side dissection and the
+tracked factor G live on the finite side S. [Falsifier F5 (§6) executes
+exactly this corner: 871 forced j₀ = 1 samples, zero findings.] Continuing:
+the side data (e, h, ℓ) with E = eℓ, H = hℓ, d = ℓ; the side's INITIAL POINT
+(s₁, u₁) read off the hull in this same integer frame — the (c1) positional
+datum [REV 2: the positional clause is part of the first-read format]; and
+the residual coefficients c_j as displayed in (L3) (unit-part classes in F₁;
+no twist at order 1). A "first read" that computes exactly these objects and
+selects a monic irreducible factor ψ̂₁ of R_{λ₁}(f) with its multiplicity μ₁
+therefore produces literally the (c0)/(c1)/(c2) data. (This clause is
+definitional-by-inspection; the verifier should confirm that each displayed
+formula matches (L2)/(L3) and that the ∼-ambiguity of R does not affect
+factor selection: a global nonzero scalar changes neither the irreducible
+factors nor their multiplicities.)
+
+(D1): By W4 and Cons_f, ψ̂₁ ∈ F₁[z] is monic irreducible ≠ z (under Cons_f
+this is automatic: R_λ(f) is never divisible by y, (L3)); λ₁ = −h₁/e₁ with
+e₁, h₁ coprime positive (W-laws); so the interpreted Θ(𝐇) = (φ₁; λ₁, ψ̂₁) is
+a type of order 1 over F_rep per (L1), with f₁ = deg ψ̂₁ = g₁,
+F₂ = F₁[z]/(ψ̂₁), [F₂ : F_q] = f₀f₁, m₂ = m₁e₁f₁ = f₀e₁g₁.
+v₂(φ₁) = h₁ + e₁·v₁(φ₁) = h₁ (L4 with v₁(φ₁) = v(φ₁) = 0, φ₁ monic).
+Saturation: by (L6), the side S = S₁ carries the monic factor F_S, and the
+choice ψ̂₁ with R_{λ₁}(f) ∼ ∏ ψ_i^{a_i} carves out G := G_{ψ̂₁} with
+one-sided polygon of slope λ₁, residual ∼ ψ̂₁^{μ₁}, and
+deg G = m₁·e₁·μ₁·f₁ = m₂·μ₁. Hence deg G = accE·accF = m₂ iff μ₁ = 1; and if
+μ₁ = 1, Cor 1.20 gives G irreducible with e(L/K) = e₁ = accE and
+f(L/K) = f₀f₁ = accF. [The verifier should check the degree bookkeeping
+deg G = m₁·e·a·f against (L6)'s transcription.]
+
+(D2): t^{(0)} = ψ₀ ∈ t₀(f) means ω₁(f) = ord_{ψ₀}(f̄) ≥ 1: that is (c0) with
+a₀ ≥ 1. Since ν₁ exists, W3 gives a₀ ≥ 2, i.e. ω₁(f) ≥ 2: t^{(0)} is
+non-complete, so Def 3.10 sprouts order-1 types from it; (c1) says λ₁ is a
+finite slope of N₁^−(f) and (c2) says ψ̂₁ | R_{λ₁}(f) with multiplicity
+μ₁ ≥ 1 — Def 3.10 membership verbatim: Θ(𝐇) ∈ t₁(f).
+
+(Charge): Suppose ν₁ is certified: T1 with e₁g₁ ≥ 2, or T2 (W1/W2). Its side S
+is T1 (ℓ ≥ 2) or T2 (ℓ = 1, e, h ≥ 2). Claim ind(S) ≥ 1: by Remark 4.14,
+2·ind(S) = EH − E − H + d counts (twice) the lattice points of the displayed
+region; exhibit one point. T1: the on-side integer point (s + e, u_s − h)
+(abscissa > s; ordinate exceeds the last-point ordinate u_s − hℓ by
+h(ℓ−1) > 0 since ℓ ≥ 2; on the side ⇒ in the region). T2: the point
+(s + 1, u_s − h + 1) = (s+1, u_end + 1) lies in the region iff
+h·1 + e·1 ≤ eh ⇔ (e−1)(h−1) ≥ 1, true at e, h ≥ 2. [Algebra cross-check:
+2·ind(S) = ℓ(ehℓ + 1 − e − h); at T1 with e = h = 1 this is ℓ(ℓ−1) ≥ 2.]
+Then: ind(N₁^−(f)) ≥ ind(S) ≥ 1 ((L8): all summands ≥ 0);
+ind_{t^{(0)}}(f) = f₀·ind(N₁^−(f)) ≥ 1 (Def 4.15, r = 1, twist f₀ ≥ 1);
+ind₁(f) = Σ_{t ∈ t₀(f)} ind_t(f) ≥ ind_{t^{(0)}}(f) (t^{(0)} ∈ t₀(f) by (D2),
+all terms ≥ 0); and ind₁(f) ≤ ind(f) (L9, r = 1). dCert ≤ 1 closes the bound;
+dCert = 0 is trivial.
+
+(D0): Totality/truncation are structural on the formal codomain (C3);
+recovery/injectivity is Lemma R at length ≤ 1 (its recovery map instantiated
+at k' = 1 reads off, in order: ψ̂₀, a₀, (e₁, h₁), the unique slope-λ₁ side,
+(ℓ₁, s₁, u₁), ψ̂₁, g₁, μ₁, inc₁). ∎
+
+## 4. The four open lemmas (exact statements; NOT proved anywhere in the note)
+
+OL-2/OL-3/OL-4 are statements about the project engine's stage flow — an
+external, cited artifact (MOVES §B2-DEF, stage data F.0–F.2; Lean `MovesX`) —
+asserting that its EMITTED records satisfy the intrinsic clauses of (C4).
+OL-1 is a statement about the pinned function Lift of (C2). Their statements
+are exact relative to the following displayed interface, which is ALL of the
+engine text they consume [REV 2 — V10-G2/G3: the interface is now displayed;
+rev 1's fractional-lattice ("(1/(e₁⋯e_i))ℤ, slot coordinates cleared, up to
+the recorded translation") presentation is DELETED].
+
+**The stage interface (from F.0–F.2).** A stage at level i + 1 ≥ 2 carries:
+* [F.0] a ℤ-valued SIDE VALUATION u_{i+1} on O[x]∖{0} (multiplicative,
+  ultrametric); the monic KEY Φ̂_{i+1} = Lift_i(c) with coefficient space
+  C = {B : deg B < deg Φ̂_{i+1}}; the DIGIT ALGEBRA
+  𝒟 = ⊕_{ρ ∈ ℤ/e_b} F·u_ρ, u_ρu_σ = ζ^{⌊(ρ+σ)/e_b⌋}u_{ρ+σ mod e_b}
+  (≅ F[u]/(u^{e_b} − ζ); F the stage residue field, e_b ≥ 1 the birth index,
+  ζ ∈ F^× a distinguished unit; at e_b = 1, 𝒟 = F); the digit map
+  dig : C∖{0} → nonzero homogeneous elements of 𝒟; and the axioms (S-Ore)
+  (u and dig multiplicative through Φ̂-remainders) and (S-K1)
+  (u(f) = min_j (u(B_j) + j·u(Φ̂_{i+1})) over the development
+  f = Σ_j B_j Φ̂_{i+1}^j).
+* The STAGE WINDOW POLYGON of f := the lower hull of
+  {(j, u_{i+1}(B_j) + j·u_{i+1}(Φ̂_{i+1})) : B_j ≠ 0}.
+* [F.1] At a read side of denominator e (the read index): the STAGE RESIDUAL
+  R^st(f)(z) := Σ_{u-minimizing j on the side} dig(B_j)·z^{(j−j₀)/e} ∈ 𝒟[z],
+  support-anchored at j₀ := the least minimizing slot.
+* [F.2] The ANCHOR NORMALIZATION: division by the anchor unit u_{ρ₀} (the
+  𝒟-grade of the anchor coefficient) converts R^st to R^nrm ∈ F[z]; the stage
+  residue field F is identified with the constructed F_{i+1} of (C1) — the
+  same iterated quotient tower on both sides.
+* The EMITTED node record at the read is (e, h, ℓ, s, u, sel, inc): (e, h)
+  the coprime slope pair and ℓ the degree of the read side, (s, u) its
+  initial point — all in the window-polygon frame — and sel = (g, μ) the
+  degree/multiplicity of the selected monic irreducible factor of R^nrm
+  (or sel = ⊥ at termination).
+
+**OL-1 (lift admissibility + normalization). OPEN.** For every well-formed
+chain datum c of order i ≥ 1, with t = its type over F_rep: (a) Lift_i(c) is
+monic in O[x] of degree m_{i+1} = m_i e_i f_i; (b) Lift_i(c) is of type t with
+R_i(Lift_i(c)) ∼ ψ̂_i — i.e., a Def-2.12 representative of t; (c)
+v_{i+1}(Lift_i(c)) = e_i f_i·v_{i+1}(Lift_{i−1}(c′)) (c′ the parent datum),
+equivalently V_{i+1} = e_i f_i(e_i V_i + h_i) with V_i := v_i(Lift_{i−1}(c′)).
+[GMN Thm 2.11 proves EXISTENCE of a representative with (a)–(c); the open
+content is that the pinned Lift_i satisfies the same.] Consumed by: ι's
+well-definedness at orders ≥ 2 (hence by every order-≥2 clause of §5), and
+by nothing at order ≤ 1.
+
+**OL-2 (frame crossing + positional transport, orders ≥ 2). OPEN.** [REV 2 —
+strengthened per V10-G2/C7.] For f monic separable and c a Cons_f-consistent
+chain of order i ≥ 1 (well-defined given OL-1), with E_i := e₁⋯e_i:
+(a) [valuation tie] u_{i+1} = v_{i+1} as functions on
+  {B ∈ O[x] : B ≠ 0, deg B < m_{i+1}} — the stage side valuation IS GMN's
+  order-(i+1) valuation (L2) in its own ℤ-normalization — and
+  u_{i+1}(Φ̂_{i+1}) = v_{i+1}(Φ̂_{i+1}). [Attackable consequence: on
+  constants, u_{i+1}(π) = E_i — the index-E_i extension of (L2); an
+  implementation failing this on constants refutes (a) outright.]
+(b) [frame identity — NO translation, NO scaling] hence the stage window
+  polygon of f EQUALS N_{i+1}(f) as subsets of ℝ², vertex for vertex and side
+  for side. Any window offset or recentering shift applied internally by the
+  engine is inverted before the record is emitted; the correctness of that
+  inversion is PART OF THIS CLAIM — it is exactly where the corpus's compiled
+  stretch counterexample lives (HK52: a naive engine-internal vertex
+  transport fails by a factor-e′ stretch at e′ ≥ 2), which is why (b) is
+  stated as an exact identity of the EMITTED record, not of internal state.
+(c) [side dictionary] consequently the emitted (e, h, ℓ) at the read side
+  equal the lowest-terms slope pair (e_{i+1}, h_{i+1}) and degree d(S) of the
+  corresponding side S of N_{i+1}^−(f) — the (c1) side data.
+(d) [positional transport] the emitted (s, u) equal the initial point of S in
+  the order-(i+1) integer frame — exactly the pair pinned by (c1)'s
+  positional clause. Displayed corollary: (s, u) is then determined by
+  (f, t^{(i)}, λ_{i+1}) alone (the unique slope-λ_{i+1} side's initial
+  point), which is the recoverability Lemma R consumes — Lemma R itself
+  needs NO part of OL-2, since (c1)'s positional clause is intrinsic.
+Consumed by: Theorem 2(D) ONLY.
+
+**OL-3 (residual identification, orders ≥ 2). OPEN.** [REV 2 — restated over
+the displayed interface per V10-G3.] Same setting: the anchor-normalized
+stage residual satisfies R^nrm = c·R_{λ_{i+1}}(f) for some c ∈ F_{i+1}^×,
+where R_{λ_{i+1}}(f) is GMN's Def-2.21 residual over F_rep (itself defined
+only up to F^×, so this is the maximal meaningful sharpness); both sides have
+nonzero constant term (support anchoring on the engine side; "never divisible
+by y" on the GMN side, (L3)). Hence equal monic-irreducible factor multisets
+with equal multiplicities, and the selected (ψ̂_{i+1}, μ_{i+1}) satisfy (c2).
+The open content: the z-power twists of GMN's Def 2.20 coefficients are
+absorbed EXACTLY by the single anchor-unit division of F.2. Consumed by:
+Theorem 2(D) ONLY. [Shared with the O-9 leaf's twisted-residue lemma: one
+proof should serve both.]
+
+**OL-4 (emission discipline). OPEN.** [NEW in rev 2 — this dependence was
+hidden by rev 1's scope remark (3), now deleted; V10-C8.] For every monic
+f ∈ O[x] with disc f ≠ 0 and every complete run of the engine's stage flow on
+f: the emitted dressed history 𝐇 = (ρ₀; ν₁, …, ν_k) is a WELL-FORMED element
+of 𝔈, namely (a) every record field lies in (C1)'s declared domains; (b)
+W1–W5 hold — in particular sel_i ≠ ⊥ for all i < k (only the final record may
+be terminal), interior selections have μ_i ≥ 2, a₀ ≥ 2 whenever k ≥ 1, and
+inc_i = 1 ⇔ e_i·g_i ≥ 2; (c) the dressing lands in the constructed tower with
+ψ̂_i monic irreducible ≠ z of degree g_i (the F.2 normalization); (d) the
+level-0 record satisfies a₀ = ord_{ψ̂₀}(f̄). Consumed by: Theorem 2(D) ONLY.
+Intended proof route (NOT part of this note): the engine's control flow — the
+(τ-irr) rule halts a branch at multiplicity 1, so continuation implies
+μ ≥ 2; the increment bookkeeping sets inc; a run emits at most one terminal
+record, last.
+
+## 5. Theorem 2 (all orders) — statement and complete conditional proof
+
+**Theorem 2.** Let f ∈ O[x] be monic of degree ≤ n, disc f ≠ 0, 𝐇 ∈ 𝔈 with
+continuing nodes ν₁ … ν_{k'}, k' ≥ 0. Then:
+
+(A) [Cons_f; at orders ≥ 2, OL-1 grants well-definedness of the GMN objects
+read] t^{(i)} ∈ t_i(f) for 0 ≤ i ≤ k', with t^{(i)} non-complete for i < k';
+the identity placement is injective; Θ is injective on 𝔈°_f with the
+displayed recovery map (Lemma R); for 𝐇 with a terminal last node, exactly
+𝐇° is recoverable. [At k' = 0 this reads: t^{(0)} ∈ t₀(f), and (ψ̂₀, a₀) is
+recovered.]
+
+(B) [Cons_f + OL-1] Invariant matching, all clauses quantified over
+1 ≤ i ≤ k' (VACUOUS at k' = 0): e_i, h_i, f_i = g_i as constructed;
+[F_{i+1} : F_q] = f₀⋯f_i; deg Φ̂_{i+1} = m_{i+1} = accE_i·accF_i where
+accE_i := e₁⋯e_i, accF_i := f₀g₁⋯g_i; the V-recursion
+V_{i+1} = e_i f_i(e_i V_i + h_i). SATURATION — asserted for k' ≥ 1 ONLY
+[REV 2 — V10-C9: at k' = 0 there is no "last read" and μ_{k'} is undefined]:
+at the last continuing node, the cluster factor f_{t^{(k')}} has degree
+m_{k'+1}·μ_{k'}, so accE·accF = deg f_{t^{(k')}} ⇔ μ_{k'} = 1; and if
+μ_{k'} = 1 then f_{t^{(k')}} is irreducible with
+(e, f) = (accE_{k'}, accF_{k'}).
+
+(C) [Cons_f + OL-1] The charge: every certified node ν_i has
+ind_{t^{(i−1)}}(f) ≥ 1; distinct certified nodes charge distinct orders; and
+dCert(𝐇) ≤ Σ_{r=1}^{k'} ind_r(f) ≤ ind(f). [At k' = 0 this degenerates to
+dCert(𝐇) = 0 ≤ ind(f): certified nodes are continuing, and ind(f) ≥ 0 by
+(L8).]
+
+(D) [OL-1 + OL-2 + OL-3 + OL-4] Every history emitted by the engine's stage
+flow on f is a well-formed element of 𝔈 (OL-4) satisfying Cons_f — so
+(A)/(B)/(C) apply to it.
+
+*Proof.* (A) Induction on i. Base: (c0) gives ω₁(f) = a₀ ≥ 1, so
+t^{(0)} ∈ t₀(f); if k' ≥ 1, W3 forces a₀ ≥ 2 = non-completeness. Step: given
+t^{(i−1)} ∈ t_{i−1}(f) non-complete, (c1) provides the finite slope λ_i of
+N_i^−(f) and (c2) the monic irreducible ψ̂_i | R_{λ_i}(f); Def 3.10 membership
+verbatim: t^{(i)} ∈ t_i(f). Interior non-completeness: ω_{i+1}(f) = μ_i ≥ 2
+for i < k' (W3). Injectivity: Lemma R (its recovery map is stated for
+arbitrary k'; at orders ≥ 2 the objects it reads are well-defined by OL-1),
+together with its displayed terminal non-claim. Placement: identity on
+indices of a finite list — injective.
+
+(B) The levelwise identifications are Θ's construction plus W4. Tower and
+m-recursion: (L1) arithmetic, with deg Φ̂_{i+1} = m_{i+1} from OL-1(a).
+V-recursion: OL-1(c) + (L4)'s Prop-2.7 identity. Saturation (under its
+k' ≥ 1 guard): t^{(k')} ∈ t_{k'}(f) by (A);
+ω_{k'+1}(f) = ord_{ψ̂_{k'}}(R_{λ_{k'}}(f)) = μ_{k'} by (c2); Def 2.3 gives
+deg f_{t^{(k')}} = m_{k'+1}·ω_{k'+1}(f) = (accE·accF)·μ_{k'} (using
+m_{k'+1} = accE_{k'}·accF_{k'} from the m-recursion and m₁ = f₀). Hence the
+biconditional. At μ_{k'} = 1: Def 3.9 completeness + Cor 3.8 give
+irreducibility and (e, f) = (e₁⋯e_{k'}, f₀⋯f_{k'}) = (accE, accF).
+
+(C) If k' = 0 there is no certified node (certified ⇒ continuing), so
+dCert(𝐇) = 0, and ind(f) ≥ 0 by (L8)'s Def-4.11 nonnegativity — the bound
+holds trivially; no appeal to (L9) is made [REV 2 — V10-C9]. Let now k' ≥ 1.
+A certified ν_i is T1 with e_ig_i ≥ 2 or T2 (W1/W2). By (c1), N_i^−(f)
+has the side S_i with the engine data (e_i, h_i, ℓ_i); S_i is then a T1 or T2
+side, and ind(S_i) ≥ 1 by the two lattice witnesses in Theorem 1's charge
+step — pure Def-4.12 arithmetic, order-agnostic. Then ind(N_i^−(f)) ≥
+ind(S_i) ≥ 1 by (L8) nonnegativity; ind_{t^{(i−1)}}(f) =
+f₀⋯f_{i−1}·ind(N_i^−(f)) ≥ 1 (Def 4.15 at r = i; the twist is a product of
+positive integers); ind_i(f) ≥ ind_{t^{(i−1)}}(f) since t^{(i−1)} ∈ t_{i−1}(f)
+by (A) and Def 4.15's sum has nonnegative terms. Distinct certified nodes
+occupy distinct orders (placement is the identity), so
+dCert(𝐇) = #{certified i} ≤ Σ_{certified i} ind_i(f) ≤ Σ_{r=1}^{k'} ind_r(f)
+≤ ind(f), the last inequality being (L9) at r = k'.
+
+(D) [REV 2 — rewritten; V10-C8.] Fix a complete run of the stage flow on f
+and let 𝐇 be its emitted dressed history. OL-4 gives 𝐇 ∈ 𝔈 (domains, W1–W5,
+tower dressing, only-last-terminal) and (c0) (its clause (d)). Cons_f by
+induction along the continuing nodes: level 1 — (D3) pins that the first
+read computes exactly (L2)/(L3)'s order-1 objects, so (c1) (side data AND
+initial point — the positional clause) and (c2) hold at i = 1; level
+i + 1 ≥ 2, given the prefix Cons_f-consistent — OL-2(c) gives (c1)'s side
+data, OL-2(d) gives (c1)'s positional clause, OL-3 gives (c2); OL-1 keeps the
+level-(i+2) GMN objects defined over F_rep. Hence Cons_f(𝐇), and (A)/(B)/(C)
+apply. The terminal record, if any, is placed by OL-4's discipline but
+constrained by nothing — consistent with Lemma R's restriction. ∎
+
+**Scope remarks the verifier should enforce.** (1) Nothing above claims that
+the stage flow's emitted histories are exactly the GMN tree of f, nor that
+every GMN type of f is realized — those are trace/realization statements,
+explicitly out of scope. (2) The consumption of (L9) is the ONLY appeal to
+the theorem of the index, and it is used exactly in the finite-sum form (†).
+(3′) [REPLACES rev 1's remark (3), which asserted the engine's W-law
+conformance was "out of scope" while Theorem 2(D) consumed it — V10-C8; that
+conformance is now the declared OL-4.] Consumer audit: every exported
+quantity (Θ(𝐇), dCert, charges, saturation data) is a function of the
+continuing part 𝐇°, so Lemma R's restriction to 𝔈°_f costs no clause; any
+FUTURE consumer needing full-𝐇 injectivity must first supply the terminal
+seam (t-i)/(t-ii) of §2. (4) The ∼-ambiguity of residuals never matters:
+only factor multisets and multiplicities are consumed.
+
+## 6. Corroborating computation (exact arithmetic; NOT part of the proofs)
+
+Executed falsifiers (PARI/GP; all exact; a failure of any would have refuted
+the labeled claim). F1–F4 are rev 1's, carried unchanged; F5 is new in rev 2.
+
+* **F1 (Theorem 1's (D1)/(D3)).** 3600 monic f ∈ ℤ[x] read at p ∈ {2, 3, 5},
+  n ∈ {2..6} (half plain random, half with a forced repeated residue factor
+  ψ₀^a·rest + p·noise; seed fixed). For each repeated residue factor: canonical
+  lift, φ-adic development, lower hull, per-side (e, h, ℓ), residual over
+  F_{p^{f₀}} by the (L3) unit-part formula, factorization. For the 3432 f whose
+  every residual factor had multiplicity 1 ("order-1 decided"): the predicted
+  (e, f)-multiset — (1, f₀) per simple residue factor (Hensel), (e, f₀·deg ψ)
+  per multiplicity-1 residual factor (Cor 1.20) — was compared against ground
+  truth from prime decomposition in the number fields of the ℚ-irreducible
+  factors (orders maximal at p). Result: 0 mismatches, 0 degree-checksum
+  failures. [Caveat, rev 2: F1's code SKIPPED polynomials with a vanishing
+  initial digit (b₀ = 0) — exactly the V10-G1 corner. F5 covers it.]
+* **F2 ((L9) at r = 1, first execution in this project).** For all 3600
+  samples: ind₁(f) = Σ_{ψ₀ repeated} f₀·ind(N₁^−) (Def 4.12 with cross terms)
+  versus ind_p(f) computed by the étale-algebra formula ind_p(f) =
+  Σ_i (v_p(disc g_i) − v_p(disc K_i))/2 + Σ_{i<j} v_p(Res(g_i, g_j)) over the
+  ℚ-irreducible factors. Result: 0 violations of ind₁ ≤ ind_p.
+* **F3 (order-2 instances of Theorem 2(B)).** Family A: f = (x²−p)² −
+  p^{2k+1}x, p ∈ {2,3,5}, k ∈ {1,2,3}: predicted chain (e₁, f₁) = (2, 1) →
+  (e₂, f₂) = (2, 1), saturated; predicted (e, f) = (4, 1): confirmed 9/9.
+  Family B (wild, residue-extended): p = 2, φ₁ = x² + x + 1,
+  f = (φ₁² − 2x)² − 2^{2k+1}φ₁, k ∈ {1,2,3}: hand-derived chain — order-1 side
+  (0,2)–(4,0), (e,h,ℓ) = (2,1,2), residual z² + (w̄+1) = (z + w̄)² over F₄
+  (w̄² = w̄+1), selection (g, μ) = (1, 2); representative φ₂ = φ₁² − 2x (own
+  polygon (0,1)–(2,0), residual z + w̄, deg 4 = m₂, v₂(φ₂) = 2 = e₁f₁v₂(φ₁));
+  order-2 points (0, 4k+3), (2, 4) — computed in the v₂ INTEGER frame, the
+  same frame OL-2(a)/(d) pins (v₂(2) = e₁ = 2, v₂(φ₁) = h₁ + e₁v₁(φ₁) = 1),
+  with initial point (s₂, u₂) = (0, 4k+3) — side (e₂,h₂,ℓ₂) = (2, 4k−1, 1),
+  saturated. Predicted (e, f) = (accE, accF) = (4, 2): confirmed 3/3. Sharper:
+  measured ind_2(f) = 6, 10, 14 = 4k + 2 = f₀·ind(N₁^−) + f₀f₁·ind(N₂^−) =
+  2·2 + 2·(2k−1) EXACTLY — pinning Def 4.15's twist factor numerically (without
+  the twist the prediction would be 2k + 1) and, via Thm 4.18(2), consistent
+  with termination at order 2. Also dCert = 2 ≤ ind throughout.
+* **F4 (the ind(S) table).** All 1548 configurations (coprime e, h ≤ 8,
+  ℓ ≤ 6, offset grid): brute lattice count = ½(EH − E − H + d), and
+  count ≥ 1 exactly on T1/T2 shapes: 0 violations.
+* **F5 [NEW in rev 2] (the V10-G1 corner: exact φ₁-divisibility / slope-−∞
+  side).** 871 samples f = φ₁·g at p ∈ {2, 3, 5}, n ∈ {3..7} (seed 20260801),
+  constructed with ord_{φ₁}(f) = 1 and ord_{ψ₀}(f̄) = a ≥ 2 — exactly the
+  case F1 skipped. Per sample: finite principal part read on [j₀, a]; the −∞
+  side booked as the Hensel leaf (1, f₀) (the exact factor φ₁) plus the
+  ind(N) term E_∞·H_fin per (L8). Checks: (i) predicted (e,f) multiset vs
+  idealprimedec ground truth on the 827 order-1-decided samples — 0
+  mismatches; (ii) degree checksum — 0 failures; (iii) ind₁ ≤ ind_p WITH the
+  E_∞·H_fin term included (the sharper direction: the term only increases
+  ind₁) — 0 violations; (iv) #certified finite sides ≤ ind₁ — 0 violations.
+  Plus the displayed hand corner p = 3, f = x² + 3x (j₀ = 1, a = 2,
+  ind₁ = ind_p = 1, leaves (1,1)+(1,1)): pass. Script:
+  `lean/notes/openmath/O2a_rev2_check.gp`.
+
+## 7. Verification checklist (where to press hardest)
+
+1. **Transcriptions (L1)–(L9)** against the paper (arXiv:0807.2620v2): esp.
+   eq. (16) + the Prop 2.7 identity; Def 4.15's twist product f₀⋯f_{r−1} and
+   its INDEXING at r = i in Theorem 2(C); Def 3.10's sprouting-from-non-complete;
+   the order-1 residual coefficient formula (no twist at order 1); Remark
+   4.14's region and its consequences (every Def-4.12 summand ≥ 0); and NEW:
+   (L3+)'s slope-−∞ convention and the E_∞·H_fin term of (L8) — is the
+   finite-slope-only quantification of Def 3.10 faithful?
+2. **The degree bookkeeping** deg G = m₁·e·a·f in Theorem 1 (D1) — does (L6)
+   as transcribed genuinely yield it, including F̄_i = ψ₀^{E_i}?
+3. **The two lattice witnesses** in the charge step (T1: on-side point;
+   T2: (s+1, u_end+1)) — check region membership conventions against (L8).
+4. **W3 vs Def 3.10**: the note maps interior nodes to sprouting steps; verify
+   no clause needs sprouting FROM a complete type (the μ = 1 ⇒ last-node
+   discipline), including the T4 corner (ℓ = 1, e = 1 forces μ = g = 1: check
+   such a node can only be last, by W3).
+5. **Placement design**: the identity placement presupposes that EVERY
+   continuing node opens a GMN order — verify (L1) tuples admit consecutive
+   orders with e_i = f_i = 1 (same-degree steps) and that nothing in §1 forbids
+   them (GMN "optimality" of types is NOT assumed in this paper's §1–4).
+6. **Independence of clauses from the open lemmas**: confirm each use of OL-1
+   (ι's well-definedness at orders ≥ 2; deg; V-recursion), OL-2 (Theorem 2(D)
+   levels ≥ 2 side + positional data — and NOTHING else; in particular Lemma
+   R must nowhere consume OL-2), OL-3 ((c2) at orders ≥ 2 in (D)), OL-4
+   (well-formedness + (c0) in (D)) is flagged, and that no OTHER unproved
+   step hides in Theorem 2.
+7. **The (†) consumption**: only (L9), only in finite-sum form, only at
+   k' ≥ 1 (the k' = 0 branch of (C) must not cite it).
+8. **Carrier coherence**: every field of every carrier object now has a
+   declared domain (V10-C1); equalities are literal on constructed objects;
+   no isomorphism-class or choice-dependent object appears in either carrier;
+   the codomain is formal and Θ's totality genuinely unconditional (V10-C6);
+   no GMN-valued object is used without ι being granted at that order
+   (V10-C2).
+9. **The terminal seam** (V10-C3/C5/C7): verify Lemma R's restriction to
+   𝔈°_f is used consistently — no clause of Theorems 1/2 or of the consumer
+   remarks claims recovery of terminal fields; verify the consumer audit
+   (3′): every exported quantity really is a function of 𝐇°.
+10. **The k' = 0 corners** (V10-C4/C9): instantiate every clause of Theorem 1
+   at 𝐇 = (ρ₀) and at (ρ₀; ν₁ terminal), and every clause of Theorem 2 at
+   k' = 0 — each must be well-formed and proved as stated (no undefined
+   μ_{k'}, no "last read", no (L9) at r = 0).
+11. **The stage interface**: are OL-2/OL-3/OL-4 exactly attackable as stated
+   — i.e., is every object in their statements either GMN-defined (§1),
+   carrier-defined (§2), or displayed in §4's interface? (V10-G2/G3 asked for
+   precisely this.)
+
+Charge: quote-and-classify only; critical error vs justification gap; check
+steps downstream of a gap by assuming the gap's conclusion. The four OL's are
+DECLARED open — they are not findings; an UNDECLARED dependence is.
+
