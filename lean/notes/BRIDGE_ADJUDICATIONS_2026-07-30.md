@@ -963,3 +963,20 @@ NAMED with citations (Neukirch/Serre/Lang/Cohen + the GD23 V26-confirmed
 layer); the Gamma-unbounded hypothesis fix (the verifier's Gamma=1
 counterexample honored); REC's corner rewritten via the verifier's own
 rescue (RES-0). ALL THREE -> Fable pass 2s (launched).
+
+## WAVE 8 COMPLETE (2026-08-02, commits a9f294c/6caf586/3e9f199)
+CUC: 6/7 re-labels CONFIRMED (CU-2/2t/3/4/5/7 mapped to proved homes with a
+pending-verdict registry; CU-2t = the ONE open corollary-grade lemma). THE
+OB2/D-11 AUDIT ANSWERED: NO on all three quoted texts — D-11 needs per-box
+lift uniformity (O5triple Thm E + D-15), NOT ~OM invariance. ORCHESTRATOR
+ADJUDICATES (math-first delegation): CU-6 EVICTED from the mandatory path
+(DELTA-3 line 1); OB2 lives with the R-QNT tier.
+O-9: order-r census REDUCED to (GR-B)+(FRESH) — ZERO new open inputs; the
+TYPE-MARCH lemma (+F3 countermodel) shows GD-3-FULL is theorem-level;
+falsifier 1,128,288 order-2 instances 0 violations. DELTA-3 line 2: the O-9
+node's q^{f-bar_r} display corrected to d = f_0...f_r (index off-by-one).
+O-10: PROVED IN FULL SHARPER (K-COUNT constant nonempty fibers at EVERY
+N >= tau with the Smith-profile size; p^rho exactly in the D-8 range; the
+(SIB) product law; M07 fences mapped one-per-clause; item-27 Lean repair
+stays PARKED). MANDATORY PATH REMAINING: the running pass-2s + wave-8
+verifications; CU-2t; D-11 (now precisely priced); O-11; ROOT ASSEMBLY.
