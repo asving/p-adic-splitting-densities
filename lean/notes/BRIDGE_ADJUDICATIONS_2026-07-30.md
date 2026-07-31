@@ -951,3 +951,15 @@ multiplicativity, disc identity) — the defect is the DEPENDENCE CLAIM
 fast" prose (the semantic classifier is the floor); + the Krasner bracket
 replacement (verifier: "mathematically faithful"). -> r2 light.
 All three go to Fable pass 2 after these repairs.
+
+## WAVE 9 COMPLETE (2026-08-02, commits 97f0edc/ec86ccd/8cf63a9)
+GD23 r3: the notation split (weight-indexed vs side-anchored pairs) executed;
+EXACT MATCH to printed FGMN Thm 4.2 verified clause-for-clause against the
+source (the mixed-pairing discrepancy = the ybar^{j0} power, exactly as V28
+predicted); the properness proviso displayed with FGMN Lemma-5.3 discharge.
+CU-1 r3: accounting rebuilt (rows 24-29; Thm 2(A) dropped; SURJ dependency
+split by clause); induction byte-stable. O4T r2: all eight classical imports
+NAMED with citations (Neukirch/Serre/Lang/Cohen + the GD23 V26-confirmed
+layer); the Gamma-unbounded hypothesis fix (the verifier's Gamma=1
+counterexample honored); REC's corner rewritten via the verifier's own
+rescue (RES-0). ALL THREE -> Fable pass 2s (launched).
