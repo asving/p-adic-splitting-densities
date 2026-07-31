@@ -1017,3 +1017,17 @@ VERIFIED count stays at 3 (O-13, O-12, Dfloor). The ROOT ASSEMBLY (in
 flight) must read THIS status — its agent reads the ledger at compose time;
 if it composed against the premature statuses, its conditionality ledger
 gets corrected at its verification pass.
+
+## WAVE 11: THE ROOT ASSEMBLY DELIVERED (2026-08-02, commit bdfb5a2)
+docs/ROOT_ASSEMBLY_2026-08-02.md (656 lines): the uniformity theorem in
+Asvin's scaffold form, composed as 19 steps / 5 movements, each step = leaf
++ exact statement + verification status + consumption. THE HONEST RESIDUE:
+[M] genuine open math = (GR-B) orders >= 2 (FGMN-pinned) + (FRESH) (+ the
+smaller (R1)-(R4)/D-12r/(E-N)/(AGR) rows); [V] 13 named pass debts; [T]
+transcription/pins. Evictions + literature roster + numerics index complete.
+The theorem is COMPOSED, NOT claimed verified — Phase C's end-to-end passes
+begin on this document now. O-9 REPAIRED (left tail strict + predict-from-
+ledger falsifier; JUNCTION-PIN honestly rescoped to (FRESH)(c)). D-11 pass 1
+NOT ACCEPTED (M1(c)'s multi-block termination billing needs (S1); per-block
+unconditional; contained) -> r2. PHASE C PASS 1 (Codex, end-to-end on the
+root document) LAUNCHED.
