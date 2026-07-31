@@ -353,3 +353,97 @@ faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW
 - **Guardian audit:** `notes/SEMANTIC_AUDIT_LOG.md` 2026-07-21 Wild Wave 2 entry + re-scope audits
   #4–#7 — ACCEPT (with recorded flags). Consumed only by the faithfulness theorems; the density
   capstones remain Lean-core-only.
+
+### AX-GMN-INDEX = `AX_GMN_index_finsum` — **STATEMENT DRAFT ONLY (NO Lean axiom exists; NOT-YET-DECLARED)** *(DRAFT 2026-07-31 — PENDING guardian audit + the two engine-side definitions + Asvin sign-off; NO consumer may cite it; declaration itself is gated)*
+- **Statement (drafted, NOT declared; shape on record as `LeanUrat.GMNIndexAxiom.GmnIndexFinsumFace`,
+  `lean/LeanUrat/GMNIndex.lean`, M15 dual-LITERATURE unit):**
+  `axiom AX_GMN_index_finsum (n p : ℕ) [Fact p.Prime] (f : MonicBox n p) (hdz : f ∉ discZero n p)
+  (R : Finset ℕ) : ∑ r ∈ R, gmnOrderInd p f r ≤ gmnInd p f` — every FINITE set of per-order GMN
+  index contributions is dominated by the polynomial's index. The two constants are the deferral:
+  `gmnInd p f : ℕ` (GMN Def 4.11 at O = ℤ_p) and `gmnOrderInd p f r : ℕ` (Def 4.15's ind_r(f),
+  KEYED to the engine's pinned representative family, value 0 at r = 0) are NOT YET BUILT, and an
+  axiom over `opaque` stand-ins is not a faithful transcription — it is satisfied by the all-zero
+  functions (machine-checked vacuity witness `face_zero_witness` in the leaf). Hence the `axiom`
+  keyword is withheld; the leaf ships the shape as a `def` + the declaration text + gates.
+- **Verified core:** Guàrdia–Montes–Nart, *Newton polygons of higher order in algebraic number
+  theory*, Trans. Amer. Math. Soc. 364 (2012), no. 1, 361–416 (arXiv:0807.2620v2), **Theorem
+  4.18(1)** ("theorem of the index": ind(f) ≥ ind₁(f) + ⋯ + ind_r(f), f monic separable over O)
+  with **Definitions 4.11** (ind(f) via irreducible factors + pairwise resultants), **4.12** (ind
+  of a side/principal polygon), **4.15** (higher-order ind_t/ind_r; explicit representative-choice
+  warning) and **Remark 4.14** (ind as a lattice-point count, whence ind_r(f) ≥ 0). The finite-sum
+  face follows rigorously: nonnegativity + Thm 4.18(1) at r = max R dominate any finite subfamily
+  (avoids all summability bookkeeping). Both twins verified the citation independently against the
+  re-downloaded arXiv v2 text (Fable: `lean/notes/openmath/M15-x1a-align-gmn_fable.md` §1–§2, with
+  executed numeric probes N1/N2/N4 — the 1548-case Def-4.12/`ind2` dictionary check, the §4.3
+  worked family over ℤ₂, and a depth-2 two-increment family; Codex twin: results K1/K2, VERDICT
+  LITERATURE). Theorem numbers are arXiv-v2; `docs/GMN_citations.md`'s standing caveat (confirm
+  printed TAMS numbering before external use) applies.
+- **Scope caveats:** (a) **representative-family keying is load-bearing**: per Def 4.15's own
+  warning, ind_t(f) depends on the choice of representatives ("universally fixed family", §4.2
+  opening convention), so `gmnOrderInd` is well-defined only relative to the engine's pinned
+  family — the axiom must be declared against THAT definition, never a "canonical" value (residual
+  OL-3 below); (b) **finite-sum face ONLY** — the axiom asserts nothing about histories, nodes,
+  placement, or the engine; (c) **over-scoping trap (both twins, independently)**: declaring
+  `∀ p, Nonempty (GmnOrderAccounting n p (X.gmn p))` (the KE8 carrier) as the axiom would import
+  the `place`/`place_inj`/`place_charged` fields, which the paper does NOT assert — the same
+  failure mode as the retired uniform read-guard axiom; the leaf's seam theorems
+  (`orderAccounting_of_face`, `x1aAlignInc_of_face`, both Lean-core) machine-check that the face
+  discharges `finsum_le` alone and every other field stays an explicit hypothesis; (d) the
+  interface law `GMNIndex.p2` (2·ind f ≤ vdisc f) is NOT covered by this entry — both twins agree
+  it needs separate disposition (classical, Ore-era: Def 4.11 + the per-factor
+  v(disc F) = 2 ind(F) + v(disc L/K) which GMN itself only "recalls"; cite e.g. Serre, *Corps
+  Locaux* III §6, or Neukirch III.2 — its own narrow cite or a proof, never folded in here);
+  (e) hypothesis match is exact: monic ✓, separable ⇔ `f ∉ discZero` (monic, char 0) ✓, base field
+  ℚ_p a special case of the paper's finite K/ℚ_p ✓, ℕ-valued ✓.
+- **Residual (what `KT.cl15_align` = `MovesX.X1aAlignP n KC.XF ⟨true, false⟩` needs BEYOND the
+  citation — the reconciled twin analyses):** Given the face, the row follows through the PROVED
+  KE8 reduction `x1aAlignInc_of_orderAccounting` ONLY IF the engine discharges four open lemmas
+  (Fable's OL-1–OL-4; the Codex twin packages the same content as one "Open Lemma L — ledger/GMN
+  faithfulness" with four clauses + two remarks). The reconciliation map, explicit:
+  * **OL-1 (injective order placement)** ↔ Codex L.1 + L.4: each certified-increment node of a
+    stratum history is a genuine, DISTINCT accounting event of f's Montes flow — Fable: an
+    injective map to GMN orders r with a type t_ν ∈ t_{r−1}(f) (mechanism: T1/T2 increments
+    strictly grow the key degree m_r = m_{r−1}e_{r−1}f_{r−1}); Codex: an injection into
+    "index-accounting events of the complete refined flow". **Route divergence, resolved:** the
+    pinned axiom follows Fable's TAMS-only per-ORDER charging (single citation); Codex's charging
+    to REFINED/cut indices ind^{H_r}_t(f) needs the companion paper (GMN, *Higher Newton polygons
+    in the computation of discriminants…*, J. Théor. Nombres Bordeaux 23 (2011); Codex cites
+    Def 3.3, Prop 3.4(b), 3.5(c), §3.3, Thm 2.5, Rmk 2.6) and is recorded as the FALLBACK
+    mechanism for discharging OL-1/OL-2 if per-order placement fails on interleaved refinements —
+    NOT as part of the axiom. Flag: the Bordeaux paper's numbering was NOT verified by the Fable
+    twin this session (journal ref itself unverified — Fable §1); any discharge leaning on it must
+    verify numbering first. Note the ⟨true, false⟩ state is design-load-bearing here: T1
+    re-centerings are EXCLUDED from `dCert`, and Fable's N4/§7 worked example (GMN §4.3 family)
+    exhibits a re-centering that GMN's own bookkeeping charges at a new order — the exclusion is
+    what lets certified increments claim distinct orders without the refined-index apparatus.
+  * **OL-2 (normalization crossing / per-order positivity)** ↔ Codex L.2 + L.3: the node's raw-
+    frame side data (e, h, ℓ) must transport to a side of N_r^−(f) in the order-r valuation v_r's
+    normalized coordinates (GMN Def 2.5) with the same (e, h) and the same ℓ ≥ 2 / ℓ = 1 class
+    (Codex phrases the transport as region containment "after the integral shear"), giving
+    ind_{t_ν}(f) ≥ 1, hence ind_r(f) ≥ 1 by nonnegativity of the other types' terms. The RAW-frame
+    half is already machine-checked corpus-side and is NOT residual: `ind2Region`/XA9 prove
+    ind2 = 2·|Remark-4.14 region| and 1 ≤ ind2 at T1/T2 (Codex's L.3 dictionary E = eℓ, H = hℓ,
+    d = ℓ = Fable §3, brute-forced over 1548 configurations, 0 violations); what remains open is
+    exactly the crossing.
+  * **OL-3 (representative admissibility)**: the engine's canonical key lifts are GMN Def 2.12
+    representatives forming ONE universally fixed family, so Def 4.15/Thm 4.18 apply as stated to
+    the engine's data. Codex subsumes this under L.1's "valid refined Montes computation" and
+    remarks representative choice is "not an obstruction"; kept EXPLICIT here because it fixes the
+    MEANING of `gmnOrderInd` itself (scope caveat (a)) — it gates the axiom's declaration, not
+    merely the placement proof.
+  * **OL-4 (stratum scope)** ↔ Codex's `inStratum` remark: the real instance's `inStratum f H`
+    must hold ONLY for ledgers of actual paths of f's canonical tree (the converse of the carried
+    `gmnLink`); the row carries no `HistWF` hypothesis, so — as Codex puts it — its absence "is
+    harmless only if `inStratum` itself enforces genuine-ledger semantics". Otherwise the
+    placement legs are unprovable against junk histories.
+  Consensus summary: both twins independently reached VERDICT LITERATURE (scoped), the SAME
+  citation, the SAME face, and the SAME conclusion that the residual is engine-side
+  implementation faithfulness, not literature; the only substantive divergence is the OL-1
+  charging route (per-order vs refined-event), resolved above in favor of the single-citation
+  per-order form with the refined route on record as fallback.
+- **Guardian audit:** **PENDING — this is the declared gate.** Order of gates before ANY
+  declaration: (1) `gmnInd`/`gmnOrderInd` built as real definitions with the representative family
+  pinned (OL-3); (2) orchestrator-run Codex guardian audit of this entry + the drafted statement
+  (quote-and-classify, per the axiom policy — the process that caught two false axioms);
+  (3) Asvin sign-off. Until all three: no `axiom` keyword, no consumer, no footprint change
+  (`AxChk_baseline` untouched — nothing to print).
