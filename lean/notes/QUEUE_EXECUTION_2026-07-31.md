@@ -1009,3 +1009,55 @@ surgery lemmas, U19/U23/U24/U25 projections) recompiled GREEN UNCHANGED.
 * POST-WAVE QUEUE (BP2 sequencing, now unblocked): HK-12 → HK-52 → HK-11a/b/c
   (the reopened V9 legs), HK-08 (steepness restatement), HK-48(b), HK-25,
   Blocks L/H/Z provers, MovesT G1b re-adjudication (Q7).
+
+## POST-WAVE UNIT 1 — HK-12 EXECUTED + HK-52/HK-11a RE-SCOPED + THE ν_{i+1}.e STRETCH
+## RE-ADJUDICATION (agent: post-wave-1, 2026-07-31; V9 statements BYTE-UNTOUCHED)
+
+CHARGE: the post-wave queue's head (HK-12 → HK-52 → HK-11a/b for the four reopened
+V9 sorries; corners flagged re-adjudication-suspect — countermodel-not-force rule).
+
+EXECUTED:
+* HK-12 (the BP2-mandated first step): `verification/hk12_recheck.py` — the r3b
+  countermodel re-checked against the repaired (S-a) semantics; five asserted
+  findings F1–F5, all green.  Headline: r3b is CURED at child pair e′ = 1 (the
+  wave's re-route works — R3b's bottom-window law DISSOLVES for V9's steep legs),
+  BUT BP2 HK-11a's displayed law stays refuted verbatim (and is not consumed by
+  V9 — re-point it at the σV-vertex law = V4-(VERTEX) at the regrade + R3a), AND
+  a NEW obstruction appears: the ν_{i+1}.e stretch.
+* NEW LEAF `HC2/HK52_stretchGate.lean` (0 sorry; 4 theorems, ALL Lean-core
+  {propext, Classical.choice, Quot.sound}, in-file #print axioms):
+  `hk52_qform_stretch` (σ'.w B = e′·σV.w B at any STEP-2 record — Stage hStretch
+  + child_e + child_wPrev, no run data), `hk52_history_child_stretch` (same off a
+  coherent history's non-recentering leg), `hk52_v9_qform_reduction` (V9's
+  DISPLAYED ℚ-form ⟺ ν_{i+1}.e·σV.w(B μ) = strFrame(i+1)·lineᵢ.at(μ·cwᵢ) — the
+  stretch factor made compiled-visible; strFrame carries NO ν_{i+1}.e),
+  `hk52_gate_stretch_two` (the factor is literally 2 at HK23's coherent H₂ram
+  carrier, child pair (2,5)).
+* RE-ADJUDICATION VERDICT (all four V9 sorries — K1/E1box, steep AND corner):
+  TRUE-perimeter = ν_{i+1}.e = 1 (there the displayed form IS the σV-vertex law;
+  residual supply = the re-pointed HK-11a: R3a anchor transport + scale
+  conversion at root/post-recentering reads; the corners additionally reduce to
+  the v9c toolkit re-plumbing via RegradeOf.w_coeff).  FALSE-SUSPECT at
+  ν_{i+1}.e ≥ 2 (ramified TERMINAL child — recordable, node i+1's leg never
+  fires; coherent carrier compiled at HK23).  Full refutation residual = ReadsOf
+  inhabitation at one ramified-terminal-child record (Block-G-gate-scale, NOT
+  built).  Per the countermodel-not-force rule the sorries STAND; dated addenda
+  added at all four sorry bodies (comments only — git diff certified 0
+  non-comment lines).
+* INTERIOR DEGENERATION FINDING (F5, re-scopes HK-52): at i ≥ 1 with
+  non-recentering predecessor the frame pair IS the read pair and the e★ = 1
+  regrade is weight-idempotent (σV.w = σᵢ.w) — HK-52's σV recursion is the
+  IDENTITY at interior reads; h-steep reads live at i = 0/post-recentering only;
+  interior e·g ≥ 2 content = HK-08's frame-pair side structure.
+
+ADJUDICATION SURFACED (blocks HK-11b): the ν_{i+1}.e ≥ 2 disposition on V9's four
+legs is UNRULED (the Q2-extension covered the PARENT stride only).  Menu in
+notes/HK12_RECHECK_2026-07-31.md: (i) σ_{i+1}.e = 1 guard on the legs
+(statement-fence event, R-tie precedent) / (ii) terminal recording-fence
+extension (breaks HK23 as stated — disfavored) / (iii) commission the gate-scale
+ReadsOf countermodel first.  DO NOT fill the V9 sorries before the ruling.
+
+VERIFICATION: `lake env lean` GREEN on HK52_stretchGate (4 × Lean-core) and on
+V9_K1nonrec (footprint unchanged: the 2 expected sorry-decls, supply theorems
+Lean-core).  Capstone path untouched (leaf module, imported by nothing; no OM/*
+edit).  Full record: notes/HK12_RECHECK_2026-07-31.md.

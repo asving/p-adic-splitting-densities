@@ -2603,10 +2603,22 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     -- now the (ν_{i+1}.e, ν_{i+1}.h)-slot-min over the σV regrade, so the displayed ℚ-form
     -- may need the HK-11b re-scope (the ν_{i+1}.e-stretch factor).  Do NOT consume this
     -- K1 steep (e·g ≥ 2 ⇒ e = 1 ∧ g ≥ 2 by the RG-2 recording fence) leg as settled mathematics; the sorry is the recorded HK-11 obligation.
+    -- ── POST-WAVE UNIT 1 ADDENDUM (2026-07-31, HK-12 executed): the ℚ-form REDUCES to
+    -- `ν_{i+1}.e · σV.w(B μ) = RHS` (compiled: HC2/HK52_stretchGate.lean, Lean-core) —
+    -- TRUE-perimeter ν_{i+1}.e = 1 (residue: the σV-vertex law = re-pointed HK-11a, R3a);
+    -- FALSE-SUSPECT at ν_{i+1}.e ≥ 2 (coherent stretch-2 carrier compiled at HK23; full
+    -- refutation needs a gate-scale ReadsOf build).  ADJUDICATION SURFACED — do not fill
+    -- before the ν_{i+1}.e ruling.  Record: notes/HK12_RECHECK_2026-07-31.md.
     sorry
   · -- `ν.e·ν.g = 1`
     rcases Nat.eq_zero_or_pos i with hi0 | hi1'
     · -- ═══ HK-06 WAVE HONEST REOPENING (2026-07-31, task #44) — THE CORNER, RE-OPENED ═══
+      -- ── POST-WAVE UNIT 1 ADDENDUM (2026-07-31, HK-12): the suspicion is CONFIRMED as the
+      -- ν₁.e-stretch — at the corner `σV.w = σ₀.w` on the shared coefficient space
+      -- (`RegradeOf.w_coeff`, e★ = 1, deg Φ̂ = deg Φ₀), so the displayed ℚ-form reduces to
+      -- `ν₁.e·(gam₀ − μ₀h₀) = gam₀ − μ₀h₀` (HC2/HK52_stretchGate.lean, Lean-core): TRUE at
+      -- ν₁.e = 1 (v9c toolkit re-plumbing suffices), FALSE-SUSPECT at a ramified terminal
+      -- child.  Record: notes/HK12_RECHECK_2026-07-31.md.  Do not fill before the ruling.
       -- K1 corner (i = 0 ∧ e·g = 1; OLD proof: v9c_corner toolkit): the pre-wave honest proof consumed the OLD-keyed transition record
       -- (TransitionCoreL at the PARENT pair with unguarded s/t ties); under the (S-a)
       -- re-key the record is keyed at (ν₁.e, ν₁.h) through the σV regrade, and the
@@ -2658,10 +2670,17 @@ theorem V9_E1box_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
     -- now the (ν_{i+1}.e, ν_{i+1}.h)-slot-min over the σV regrade, so the displayed ℚ-form
     -- may need the HK-11b re-scope (the ν_{i+1}.e-stretch factor).  Do NOT consume this
     -- E1box steep (e·g ≥ 2 ⇒ e = 1 ∧ g ≥ 2 by the RG-2 recording fence) leg as settled mathematics; the sorry is the recorded HK-11 obligation.
+    -- ── POST-WAVE UNIT 1 ADDENDUM (2026-07-31, HK-12 executed): same ν_{i+1}.e-stretch
+    -- finding as the K1 steep leg (the strict `<` form inherits the same LHS stretch):
+    -- HC2/HK52_stretchGate.lean + notes/HK12_RECHECK_2026-07-31.md.  Do not fill before
+    -- the ν_{i+1}.e adjudication.
     sorry
   · -- `ν.e·ν.g = 1`
     rcases Nat.eq_zero_or_pos i with hi0 | hi1'
     · -- ═══ HK-06 WAVE HONEST REOPENING (2026-07-31, task #44) — THE CORNER, RE-OPENED ═══
+      -- ── POST-WAVE UNIT 1 ADDENDUM (2026-07-31, HK-12): same ν₁.e-stretch finding as the
+      -- K1 corner (the strict `<` inherits the same LHS stretch); HC2/HK52_stretchGate.lean
+      -- + notes/HK12_RECHECK_2026-07-31.md.  Do not fill before the ν₁.e adjudication.
       -- E1box corner (i = 0 ∧ e·g = 1; OLD proof: v9c_cornerBox): the pre-wave honest proof consumed the OLD-keyed transition record
       -- (TransitionCoreL at the PARENT pair with unguarded s/t ties); under the (S-a)
       -- re-key the record is keyed at (ν₁.e, ν₁.h) through the σV regrade, and the
