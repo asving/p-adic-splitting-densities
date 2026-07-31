@@ -1071,3 +1071,12 @@ cycle STRATIFIED 17<18<18b; the roster completed; statuses synced
 (VERIFIED = 4: O-13, O-12, Dfloor, GD23). CU-1 r5: the last clause fixed.
 PROJECT_STATE refreshed as the sole resumability anchor (3896eb0). VC2
 (end-to-end pass 2 on the revised ROOT) launched.
+
+## VC2/V31/V32 (2026-08-02 late): NARROWING
+VC2: (ROOT-C)/(ROOT) split + cycle + Step-1 repairs ACCEPTED; remaining =
+the e=1 SELF-LOOP CORNER (1/(1-q^0) = 0 — a real quantifier bug: prove
+e >= 2 at every self-loop or scope the clause), S3 edge class, H4 leakage,
+B-4/(ADM) classifications, roster annotations. V31 D-11: correctly-billed
+list long; remaining = M2.0's minimal-dependence display, M1(a) billing,
+the completed-node overclaim (pack correspondence honestly open). V32 O-11:
+the (ADM) residue item + run-history phrasing. ALL -> round 3 (dispatched).
