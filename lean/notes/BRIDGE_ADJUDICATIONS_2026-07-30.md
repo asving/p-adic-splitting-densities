@@ -91,5 +91,14 @@ land (many routine units are supplied or deleted by the consolidations).
    child_local + the below-base N0 <= N guard (audit 1b CRITICAL + GAP).
 8. P2 de-privatize sweep (six families incl. the MovesD E7/E8 survivor choice).
 9. (r2)-on-activeLocus re-scope IF the IB-B15a gate compiles its countermodel.
-Executed under STANDING authorities (not queued): cl6 pgZero.countS := 0
-(private def, definition-change authority; Codex diff confirmation to follow).
+10. cl6 pgZero.countS := 0 (private def in MovesS/N2PolyGeom.lean): the compiled
+    IsEmpty probe (SynK2_cl6N2.lean) shows the as-built pack refutes PolyGeomLaws;
+    the val-preserving countS := 0 repair cures it. Initially dispatched under the
+    standing definition-change authority; the safety layer blocked it as same-class
+    — QUEUED with the rest.
+
+ORCHESTRATOR BOUNDARY DECISION (2026-07-31): after repeated safety-layer blocks,
+NO further statement-, signature-, or definition-level change (even on private
+declarations under standing authorities) will be dispatched until Asvin names the
+items. The autonomous frontier continues: new-file units, countermodel gates,
+proofs of fenced statements as-is, designs, audits, ratifications, records.

@@ -945,11 +945,7 @@ noncomputable def cmRB : RatBurdens cmT cmM where
         have hcast : ((2 * m ^ 4 : ℕ) : ℤ) = 2 * (m : ℤ) ^ 4 := by push_cast; ring
         unfold aCard
         omega
-      rw [cm_box_filter_lt _ _ hle, hQ]
-      unfold aCard
-      have hnn : (0 : ℤ) ≤ ((m : ℤ) - 4) ^ 2 := sq_nonneg _
-      push_cast [Int.toNat_of_nonneg hnn]
-      ring
+      rw [cm_box_filter_lt _ _ hle, hQ, cm_aCard_castQ]
     · rw [if_neg h]
       have hinst : cmM.cellInst e τ c (m : ℚ) (cmM.cellLvl e τ c)
           = {⟨0, Nat.lt_of_lt_of_le Nat.one_pos (le_max_left _ _)⟩} := if_neg h
@@ -992,28 +988,31 @@ noncomputable def cmRB : RatBurdens cmT cmM where
       by_contra he2
       exact cm_route_ne_split_of_ne he he2 τ o hroute
     subst he2
-    have ho : o = 0 := by
+    have ho1 : o.1 = 0 := by
       rcases cm_route2_cases τ o with ⟨ho, -⟩ | ⟨-, hr, -⟩
-      · exact ho
+      · exact congrArg Fin.val ho
       · rw [hr] at hroute; exact absurd hroute (fun hc => Route.noConfusion hc)
-    subst ho
-    have hcells : cmM.cells 2 τ 0 = Finset.univ := by
+    have hcells : cmM.cells 2 τ o = Finset.univ := by
       ext c
       simp only [MeasuredSide.cells, Set.mem_toFinset, Set.mem_setOf_eq,
         Finset.mem_univ, iff_true]
       have hc1 : c.1 < 1 := by
-        have := c.2
-        simpa using this
+        have hb : c.1 < (if (2 : ℕ) = 1 then 4 else 1) := c.2
+        rwa [if_neg (by norm_num : ¬(2 : ℕ) = 1)] at hb
       apply Fin.ext
-      show c.1 % 3 = 0
+      show c.1 % 3 = o.1
       omega
     rw [hcells]
     have huniv : (Finset.univ : Finset (cmM.Cell 2 τ)) = {⟨0, by norm_num⟩} := by
       ext c
       simp only [Finset.mem_univ, Finset.mem_singleton, true_iff]
       apply Fin.ext
-      have := c.2
-      simpa using this
+      show c.1 = 0
+      have hc1 : c.1 < 1 := by
+        have hb : c.1 < (if (2 : ℕ) = 1 then 4 else 1) := c.2
+        rwa [if_neg (by norm_num : ¬(2 : ℕ) = 1)] at hb
+      omega
     rw [huniv, Finset.sum_singleton]
+    rw [pgConst_val, pgConst_val]
 
 end LeanUrat.MovesU.R2Neg
