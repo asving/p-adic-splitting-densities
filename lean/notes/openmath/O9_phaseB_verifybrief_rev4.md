@@ -20,8 +20,9 @@ countermodel at a PARTIALLY attained slot: 73728 vs 49152 at q = 2. Rev 4
 executes exactly the pass-3 displayed repair direction. Everything confirmed
 is carried **byte-stable**: §§1, 3, 4 (LED-top included), 5.2, 5.3, 5.4,
 6.1, 6.2, 8 are verbatim rev 3; §6.4 is verbatim rev 3 except step 3's
-consumption parenthetical + one word in the validation paragraph (marked);
-§7/§9 verbatim except bracketed (ADM)-rereading tags. The repairs live in
+consumption parenthetical + one appended validation parenthetical (both
+flagged at the section header); §7/§9 verbatim except bracketed
+(ADM)-rereading tags. The repairs live in
 §0-pre, §0, §2 (the (ADM) block), §5.1 (the surjectivity bullet — the
 defect's consumption site), §6.3 (the on-line bullet), §10 (K7), §11.
 
