@@ -109,6 +109,7 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesU.R2Neg
 open LeanUrat.MovesS
 open Polynomial
+open scoped Classical
 
 /-! ## §1 The verdict carrier and the table (n = 2) -/
 
@@ -815,6 +816,12 @@ private lemma cm_route_ne_split_of_ne {e : ℕ} (h1 : e ≠ 1) (h2 : e ≠ 2)
   rw [(cm_route_pad h1 h2 τ o).1]
   exact fun hc => Route.noConfusion hc
 
+private lemma cm_mem_cells {e : ℕ} {τ : cmT.State e} {o : cmT.Out e τ}
+    {c : cmM.Cell e τ} :
+    c ∈ cmM.cells e τ o ↔ cmM.cellOut e τ c = o := by
+  unfold MeasuredSide.cells
+  exact Set.mem_toFinset
+
 /-! ## §8'' The RatBurdens laws -/
 
 private lemma cm_tg_ok (e : ℕ) (o : Fin 3) {q₀ : ℚ} (hq : q₀ ∈ cmPoolsSet) :
@@ -994,11 +1001,11 @@ noncomputable def cmRB : RatBurdens cmT cmM where
       · rw [hr] at hroute; exact absurd hroute (fun hc => Route.noConfusion hc)
     have hcells : cmM.cells 2 τ o = Finset.univ := by
       ext c
-      simp only [MeasuredSide.cells, Set.mem_toFinset, Set.mem_setOf_eq,
-        Finset.mem_univ, iff_true]
+      refine ⟨fun _ => Finset.mem_univ c, fun _ => cm_mem_cells.mpr ?_⟩
       have hc1 : c.1 < 1 := by
         have hb : c.1 < (if (2 : ℕ) = 1 then 4 else 1) := c.2
-        rwa [if_neg (by norm_num : ¬(2 : ℕ) = 1)] at hb
+        have h1 : (if (2 : ℕ) = 1 then 4 else 1) = 1 := by norm_num
+        omega
       apply Fin.ext
       show c.1 % 3 = o.1
       omega
@@ -1010,9 +1017,700 @@ noncomputable def cmRB : RatBurdens cmT cmM where
       show c.1 = 0
       have hc1 : c.1 < 1 := by
         have hb : c.1 < (if (2 : ℕ) = 1 then 4 else 1) := c.2
-        rwa [if_neg (by norm_num : ¬(2 : ℕ) = 1)] at hb
+        have h1 : (if (2 : ℕ) = 1 then 4 else 1) = 1 := by norm_num
+        omega
       omega
     rw [huniv, Finset.sum_singleton]
     rw [pgConst_val, pgConst_val]
+
+/-! ## §10 DegCons, KmatHyp, the kernel values, DetHyp -/
+
+private lemma cm_size_one {e : ℕ} (τ : cmT.State e) (o : Fin 3) :
+    ∀ μ ∈ (cmT.odata e τ o).mem, μ.size = 1 := by
+  intro μ hμ
+  by_cases he1 : e = 1
+  · subst he1
+    rw [cm_odata1] at hμ
+    split_ifs at hμ
+    · obtain rfl := List.mem_singleton.mp hμ; rfl
+    · obtain rfl := List.mem_singleton.mp hμ; rfl
+    · obtain rfl := List.mem_singleton.mp hμ; rfl
+  · by_cases he2 : e = 2
+    · subst he2
+      rw [cm_odata2] at hμ
+      split_ifs at hμ
+      · rcases List.mem_cons.mp hμ with rfl | hμ'
+        · rfl
+        · obtain rfl := List.mem_singleton.mp hμ'; rfl
+      · obtain rfl := List.mem_singleton.mp hμ; rfl
+    · rw [cm_odata_pad he1 he2] at hμ
+      obtain rfl := List.mem_singleton.mp hμ; rfl
+
+private lemma cm_hdc : DegCons cmT := by
+  refine ⟨fun e τ o μ hμ => le_of_eq (cm_size_one τ o μ hμ).symm,
+    fun e he τ o => ?_⟩
+  have he12 := Finset.mem_Icc.mp he
+  by_cases he1 : e = 1
+  · subst he1
+    rw [cm_odata1]
+    split_ifs
+    · exact Nat.le_refl 1
+    · exact Nat.le_refl 1
+    · exact Nat.le_refl 1
+  · have he2 : e = 2 := by omega
+    subst he2
+    rw [cm_odata2]
+    split_ifs
+    · exact Nat.le_refl 2
+    · exact one_le_two
+
+private lemma cm_hK : ∀ e, e ∈ Finset.Icc 1 2 → KmatHyp cmT e := by
+  intro e he τ o hk μ hμ
+  by_cases he1 : e = 1
+  · subst he1
+    exact cm_size_one τ o μ hμ
+  · exfalso
+    by_cases he2 : e = 2
+    · subst he2
+      rcases cm_route2_cases τ o with ⟨-, hr⟩ | ⟨-, hr, -⟩
+      · rw [hr] at hk; exact Route.noConfusion hk
+      · rw [hr] at hk; exact Route.noConfusion hk
+    · rw [(cm_route_pad he1 he2 τ o).1] at hk
+      exact Route.noConfusion hk
+
+/-- The block-1 kernel collapses to the o₀ burden k(q). -/
+private lemma cm_kmat1 (he : 1 ∈ Finset.Icc 1 2) (τ β : cmT.State 1) :
+    Kmat cmT cmRB 1 (cm_hK 1 he) τ β = pgK.val := by
+  unfold Kmat
+  refine (Finset.sum_eq_single_of_mem (⟨0, by norm_num⟩ : cmT.Out 1 τ)
+    (Finset.mem_univ _) ?_).trans ?_
+  · intro b _ hb
+    rcases cm_route1_cases τ b with ⟨hb0, -⟩ | ⟨-, hr, -⟩ | ⟨-, hr, -⟩
+    · exact absurd (hb0.trans (Fin.ext rfl : (0 : Fin 3) = ⟨0, by norm_num⟩)) hb
+    · exact dif_neg (by rw [hr]; exact fun hc => Route.noConfusion hc)
+    · exact dif_neg (by rw [hr]; exact fun hc => Route.noConfusion hc)
+  · rfl
+
+/-- Every other block's kernel vanishes (no kcol outcomes). -/
+private lemma cm_kmat_ne1 {e : ℕ} (he : e ∈ Finset.Icc 1 2) (hne : e ≠ 1)
+    (τ β : cmT.State e) : Kmat cmT cmRB e (cm_hK e he) τ β = 0 := by
+  unfold Kmat
+  apply Finset.sum_eq_zero
+  intro o _
+  refine dif_neg ?_
+  by_cases he2 : e = 2
+  · subst he2
+    rcases cm_route2_cases τ o with ⟨-, hr⟩ | ⟨-, hr, -⟩
+    · rw [hr]; exact fun hc => Route.noConfusion hc
+    · rw [hr]; exact fun hc => Route.noConfusion hc
+  · rw [(cm_route_pad hne he2 τ o).1]
+    exact fun hc => Route.noConfusion hc
+
+/-- DELIVERABLE PIN 1: `DetHyp` HOLDS at the countermodel — the dite fields of
+the tautological roster fire their REAL branch (det(1−K₁) = D/q⁴ ≠ 0 as a
+rational function even though it VANISHES at the wild pool 4). -/
+theorem cmDetHyp : DetHyp cmT cmRB cm_hK := by
+  intro e he
+  haveI : Unique (cmT.State e) := ⟨⟨()⟩, fun _ => rfl⟩
+  rw [Matrix.det_unique]
+  by_cases he1 : e = 1
+  · subst he1
+    rw [Matrix.sub_apply, Matrix.one_apply_eq, cm_kmat1 he, pgK_val]
+    have hd : (1 : Qq) - aQ polK / aQ polB = dQ := one_sub_kQ
+    rw [hd]
+    exact dQ_ne
+  · rw [Matrix.sub_apply, Matrix.one_apply_eq, cm_kmat_ne1 he he1, sub_zero]
+    exact one_ne_zero
+
+/-! ## §11 Term-mode reduction lemmas for the cmM fields (n2 §E0 idiom) -/
+
+private lemma cm_toNat_castQ {z : ℤ} (hz : 0 ≤ z) : ((z.toNat : ℕ) : ℚ) = (z : ℚ) := by
+  exact_mod_cast congrArg (Int.cast : ℤ → ℚ) (Int.toNat_of_nonneg hz)
+
+private lemma cm_kCard_castQ {m : ℕ} (hm2 : 2 ≤ m) :
+    ((kCard m : ℕ) : ℚ) = 2 * polK.eval (m : ℚ) := by
+  unfold kCard
+  rw [cm_toNat_castQ (cm_kCardZ_nonneg hm2), polK_eval]
+  unfold kCardZ
+  push_cast
+  ring
+
+private lemma cm_t1Card_castQ {m : ℕ} (hm2 : 2 ≤ m) :
+    ((t1Card m : ℕ) : ℚ) = polT1.eval (m : ℚ) := by
+  unfold t1Card
+  rw [cm_toNat_castQ (cm_t1CardZ_pos hm2).le, polT1_eval]
+  unfold t1CardZ
+  push_cast
+  ring
+
+private lemma cm_t2Card_castQ {m : ℕ} (hm2 : 2 ≤ m) (hm4 : m ≠ 4) :
+    ((t2Card m : ℕ) : ℚ) = polT2.eval (m : ℚ) := by
+  unfold t2Card
+  rw [cm_toNat_castQ (cm_t2CardZ_pos hm2 hm4).le, polT2_eval]
+  unfold t2CardZ
+  push_cast
+  ring
+
+private lemma cm_HDom_def (e : ℕ) (τ : cmT.State e) (c : cmM.Cell e τ) :
+    cmM.HDom e τ c = if e = 1 ∧ c.1 = 3 then (∅ : Set ℕ) else {0} := rfl
+
+private lemma cm_HDom_cases {e : ℕ} {τ : cmT.State e} {c : cmM.Cell e τ} {h : ℕ}
+    (hh : h ∈ cmM.HDom e τ c) : h = 0 ∧ ¬(e = 1 ∧ c.1 = 3) := by
+  by_cases hac : e = 1 ∧ c.1 = 3
+  · exfalso
+    rw [cm_HDom_def, if_pos hac] at hh
+    exact hh
+  · rw [cm_HDom_def, if_neg hac] at hh
+    exact ⟨hh, hac⟩
+
+private lemma cmM_cellEvt_def (e : ℕ) (τ : cmT.State e) (x : cmM.Rep e τ)
+    (c : cmM.Cell e τ) (h : ℕ) (q₀ : ℚ) (N : ℕ) :
+    cmM.cellEvt e τ x c h q₀ N
+      = if h = 0 then
+          (if e = 1 then
+            (if c.1 = 0 then
+               Finset.univ.filter (fun y : cmM.Box q₀ N => y.1 < kCard q₀.num.toNat)
+             else if c.1 = 1 then Finset.univ.filter (fun y : cmM.Box q₀ N =>
+               kCard q₀.num.toNat ≤ y.1 ∧ y.1 < kCard q₀.num.toNat + t1Card q₀.num.toNat)
+             else if c.1 = 2 then Finset.univ.filter (fun y : cmM.Box q₀ N =>
+               kCard q₀.num.toNat + t1Card q₀.num.toNat ≤ y.1)
+             else ∅)
+           else Finset.univ)
+        else ∅ := rfl
+
+private lemma cmM_cellEvt1_0 (τ : cmT.State 1) (x : cmM.Rep 1 τ) (c : cmM.Cell 1 τ)
+    (q₀ : ℚ) (N : ℕ) :
+    cmM.cellEvt 1 τ x c (0 : ℕ) q₀ N
+      = (if c.1 = 0 then
+           Finset.univ.filter (fun y : cmM.Box q₀ N => y.1 < kCard q₀.num.toNat)
+         else if c.1 = 1 then Finset.univ.filter (fun y : cmM.Box q₀ N =>
+           kCard q₀.num.toNat ≤ y.1 ∧ y.1 < kCard q₀.num.toNat + t1Card q₀.num.toNat)
+         else if c.1 = 2 then Finset.univ.filter (fun y : cmM.Box q₀ N =>
+           kCard q₀.num.toNat + t1Card q₀.num.toNat ≤ y.1)
+         else ∅) := rfl
+
+private lemma cmM_cellEvt_ne1_0 {e : ℕ} (he : e ≠ 1) (τ : cmT.State e)
+    (x : cmM.Rep e τ) (c : cmM.Cell e τ) (q₀ : ℚ) (N : ℕ) :
+    cmM.cellEvt e τ x c (0 : ℕ) q₀ N = Finset.univ := by
+  have h1 := cmM_cellEvt_def e τ x c 0 q₀ N
+  rw [if_pos rfl] at h1
+  rw [h1]
+  exact if_neg he
+
+private lemma cmM_μcell_def (e : ℕ) (τ : cmT.State e) (x : cmM.Rep e τ)
+    (c : cmM.Cell e τ) (q₀ : ℚ) :
+    cmM.μcell e τ x c q₀ = if e = 1 then cmMass1 c.1 q₀ else 1 := rfl
+
+private lemma cmM_gwt_def (e : ℕ) (τ : cmT.State e) (c : cmM.Cell e τ) (h : ℕ) (q₀ : ℚ) :
+    cmM.gwt e τ c h q₀
+      = if h = 0 then (if e = 1 then cmMass1 c.1 q₀ else 1) else 0 := rfl
+
+private lemma cmM_rowVal_def (e : ℕ) (τ : cmT.State e) (o : Fin 3) (q₀ : ℚ) :
+    cmM.rowVal e τ o q₀
+      = if e = 1 then cmMass1 o.1 q₀ else if o.1 = 0 then 1 else 0 := rfl
+
+private lemma cmM_kstep_def (k e : ℕ) (τ β : cmT.State e) (q₀ : ℚ) :
+    cmM.kstep k e τ β q₀
+      = (if e = 1 ∧ q₀ ≠ 4 then ((kV q₀ : ℚ) : ℝ) else 0) ^ k := rfl
+
+private lemma cm_mass1_3 (q₀ : ℚ) : cmMass1 3 q₀ = 0 := by
+  unfold cmMass1
+  norm_num
+
+private lemma cm_cell1_lt4 {τ : cmT.State 1} (c : cmM.Cell 1 τ) : c.1 < 4 := by
+  have hb : c.1 < (if (1 : ℕ) = 1 then 4 else 1) := c.2
+  have h1 : (if (1 : ℕ) = 1 then 4 else 1) = 4 := by norm_num
+  omega
+
+private lemma cm_cell_ne1_eq0 {e : ℕ} (he : e ≠ 1) {τ : cmT.State e}
+    (c : cmM.Cell e τ) : c.1 = 0 := by
+  have hb : c.1 < (if e = 1 then 4 else 1) := c.2
+  have h1 : (if e = 1 then 4 else 1) = 1 := if_neg he
+  omega
+
+private lemma cm_wild_of_not_active {q₀ : ℚ} {e : ℕ} {τ : cmT.State e}
+    (h : ¬ cmM.activeState q₀ e τ) : e = 1 ∧ q₀ = 4 := by
+  rw [cm_active_iff] at h
+  push_neg at h
+  exact h
+
+/-- The active-pool card facts at m ≥ 2, m ≠ 4: the three intervals are
+nonempty and tile the 2m⁴-point box. -/
+private lemma cm_card_facts {m : ℕ} (hm2 : 2 ≤ m) (hm4 : m ≠ 4) :
+    0 < kCard m ∧ 0 < t1Card m ∧ 0 < t2Card m ∧
+      kCard m + t1Card m + t2Card m = 2 * m ^ 4 ∧
+      max 1 (2 * m ^ 4) = 2 * m ^ 4 := by
+  have hk := cm_kCardZ_pos hm2
+  have h1 := cm_t1CardZ_pos hm2
+  have h2 := cm_t2CardZ_pos hm2 hm4
+  have htile := cm_tile hm2 hm4
+  have hbox : max 1 (2 * m ^ 4) = 2 * m ^ 4 := by
+    have hpos : 0 < m ^ 4 := pow_pos (by omega) 4
+    exact max_eq_right (by omega)
+  refine ⟨?_, ?_, ?_, ?_, hbox⟩
+  · unfold kCard; omega
+  · unfold t1Card; omega
+  · unfold t2Card; omega
+  · exact htile
+
+/-! ## §12 The ledger (LedgerIV, field by field) -/
+
+private lemma cm_led_xhd_sum : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ)
+    (c : cmM.Cell e τ) (q₀ : ℚ), q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    HasSum (fun h : cmM.HDom e τ c => cmM.gwt e τ c h q₀) (cmM.μcell e τ x c q₀) := by
+  intro e τ x c q₀ _ _
+  by_cases hac : e = 1 ∧ c.1 = 3
+  · haveI hie : IsEmpty (cmM.HDom e τ c) := by
+      rw [cm_HDom_def, if_pos hac]
+      exact ⟨fun z => z.2⟩
+    haveI : Fintype (cmM.HDom e τ c) := Fintype.ofIsEmpty
+    have hμ : cmM.μcell e τ x c q₀ = 0 := by
+      rw [cmM_μcell_def, if_pos hac.1, hac.2, cm_mass1_3]
+    have hs := hasSum_fintype (fun h : cmM.HDom e τ c => cmM.gwt e τ c h q₀)
+    rw [Finset.univ_eq_empty, Finset.sum_empty] at hs
+    rw [hμ]
+    exact hs
+  · have hdom : cmM.HDom e τ c = ({0} : Set ℕ) := by rw [cm_HDom_def, if_neg hac]
+    have hmem0 : (0 : ℕ) ∈ cmM.HDom e τ c := by rw [hdom]; rfl
+    refine hasSum_single (f := fun h : cmM.HDom e τ c => cmM.gwt e τ c h q₀)
+      ⟨_, hmem0⟩ ?_
+    intro b hb
+    obtain ⟨bv, hbv⟩ := b
+    have hbv' : bv ∈ ({0} : Set ℕ) := by rw [← hdom]; exact hbv
+    have hbv0 : bv = (0 : ℕ) := hbv'
+    exact absurd (Subtype.ext hbv0) hb
+
+private lemma cm_led_xhd_no_stray : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ)
+    (c : cmM.Cell e τ) (h : ℕ), h ∈ cmM.HDom e τ c → ∀ q₀ ∈ cmM.Pools,
+    cmM.activeState q₀ e τ →
+    ∃ N₀, ∀ N ≥ N₀, (cmM.cellEvt e τ x c h q₀ N).Nonempty := by
+  intro e τ x c h hh q₀ hq hact
+  obtain ⟨rfl, hac⟩ := cm_HDom_cases hh
+  obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+  have hQ : (((m : ℚ)).num.toNat) = m := cm_pool_toNat m
+  refine ⟨0, fun N _ => ?_⟩
+  by_cases he : e = 1
+  · subst he
+    rw [cmM_cellEvt1_0]
+    have hm4 : m ≠ 4 := by
+      intro h4
+      exact (hact rfl) (by rw [h4]; norm_num)
+    obtain ⟨hk, h1, h2, htile, hbox⟩ := cm_card_facts hm2 hm4
+    have hkQ : 0 < kCard (((m : ℚ)).num.toNat) := by rw [hQ]; exact hk
+    have h1Q : 0 < t1Card (((m : ℚ)).num.toNat) := by rw [hQ]; exact h1
+    have hboxQ : kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat)
+        < max 1 (2 * (((m : ℚ)).num.toNat) ^ 4) := by
+      rw [hQ]
+      omega
+    by_cases hc0 : c.1 = 0
+    · rw [if_pos hc0]
+      refine ⟨⟨0, Nat.lt_of_lt_of_le Nat.one_pos (le_max_left _ _)⟩,
+        Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩⟩
+      show 0 < kCard (((m : ℚ)).num.toNat)
+      omega
+    · rw [if_neg hc0]
+      by_cases hc1 : c.1 = 1
+      · rw [if_pos hc1]
+        refine ⟨⟨kCard (((m : ℚ)).num.toNat), by omega⟩,
+          Finset.mem_filter.mpr ⟨Finset.mem_univ _, ⟨?_, ?_⟩⟩⟩
+        · show kCard (((m : ℚ)).num.toNat) ≤ kCard (((m : ℚ)).num.toNat)
+          exact le_refl _
+        · show kCard (((m : ℚ)).num.toNat)
+            < kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat)
+          omega
+      · rw [if_neg hc1]
+        have hc2 : c.1 = 2 := by
+          have := cm_cell1_lt4 c
+          omega
+        rw [if_pos hc2]
+        refine ⟨⟨kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat), by omega⟩,
+          Finset.mem_filter.mpr ⟨Finset.mem_univ _, ?_⟩⟩
+        show kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat)
+          ≤ kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat)
+        exact le_refl _
+  · rw [cmM_cellEvt_ne1_0 he]
+    haveI := cmM.boxpos (m : ℚ) N
+    exact Finset.univ_nonempty
+
+private lemma cm_led_xhd_no_orphan : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ)
+    (c : cmM.Cell e τ) (h : ℕ), h ∉ cmM.HDom e τ c → ∀ (q₀ : ℚ) (N : ℕ),
+    cmM.cellEvt e τ x c h q₀ N = ∅ := by
+  intro e τ x c h hh q₀ N
+  by_cases hne : h = (0 : ℕ)
+  · subst hne
+    have hac : e = 1 ∧ c.1 = 3 := by
+      by_contra hac
+      exact hh (by rw [cm_HDom_def, if_neg hac]; rfl)
+    obtain ⟨he, hc3⟩ := hac
+    subst he
+    rw [cmM_cellEvt1_0]
+    rw [if_neg (by omega), if_neg (by omega), if_neg (by omega)]
+  · rw [cmM_cellEvt_def]
+    exact if_neg hne
+
+/-- Elimination for membership in the block-1 four-way event split. -/
+private lemma cm_evt1_cases {q₀ : ℚ} {N : ℕ} (k : ℕ) (a : cmM.Box q₀ N)
+    (ha : a ∈ (if k = 0 then
+        Finset.univ.filter (fun y : cmM.Box q₀ N => y.1 < kCard q₀.num.toNat)
+      else if k = 1 then Finset.univ.filter (fun y : cmM.Box q₀ N =>
+        kCard q₀.num.toNat ≤ y.1 ∧ y.1 < kCard q₀.num.toNat + t1Card q₀.num.toNat)
+      else if k = 2 then Finset.univ.filter (fun y : cmM.Box q₀ N =>
+        kCard q₀.num.toNat + t1Card q₀.num.toNat ≤ y.1)
+      else (∅ : Finset (cmM.Box q₀ N)))) :
+    (k = 0 ∧ a.1 < kCard q₀.num.toNat) ∨
+    (k = 1 ∧ kCard q₀.num.toNat ≤ a.1 ∧
+      a.1 < kCard q₀.num.toNat + t1Card q₀.num.toNat) ∨
+    (k = 2 ∧ kCard q₀.num.toNat + t1Card q₀.num.toNat ≤ a.1) := by
+  by_cases h0 : k = 0
+  · rw [if_pos h0] at ha
+    exact Or.inl ⟨h0, (Finset.mem_filter.mp ha).2⟩
+  · rw [if_neg h0] at ha
+    by_cases h1 : k = 1
+    · rw [if_pos h1] at ha
+      exact Or.inr (Or.inl ⟨h1, (Finset.mem_filter.mp ha).2⟩)
+    · rw [if_neg h1] at ha
+      by_cases h2 : k = 2
+      · rw [if_pos h2] at ha
+        exact Or.inr (Or.inr ⟨h2, (Finset.mem_filter.mp ha).2⟩)
+      · rw [if_neg h2] at ha
+        exact absurd ha (Finset.notMem_empty a)
+
+private lemma cm_led_d4r0 : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ) (q₀ : ℚ)
+    (N : ℕ) (c c' : cmM.Cell e τ) (h h' : ℕ), (c, h) ≠ (c', h') →
+    Disjoint (cmM.cellEvt e τ x c h q₀ N) (cmM.cellEvt e τ x c' h' q₀ N) := by
+  intro e τ x q₀ N c c' h h' hne
+  by_cases hh : h = (0 : ℕ)
+  · by_cases hh' : h' = (0 : ℕ)
+    · subst hh; subst hh'
+      have hcc : c ≠ c' := fun hc => hne (by rw [hc])
+      by_cases he : e = 1
+      · subst he
+        rw [cmM_cellEvt1_0, cmM_cellEvt1_0]
+        have hv : c.1 ≠ c'.1 := fun hv => hcc (Fin.ext hv)
+        rw [Finset.disjoint_left]
+        intro a ha ha'
+        rcases cm_evt1_cases c.1 a ha with ⟨h1, h2⟩ | ⟨h1, h2⟩ | ⟨h1, h2⟩ <;>
+          rcases cm_evt1_cases c'.1 a ha' with ⟨g1, g2⟩ | ⟨g1, g2⟩ | ⟨g1, g2⟩ <;>
+          omega
+      · exact absurd (Fin.ext ((cm_cell_ne1_eq0 he c).trans
+          (cm_cell_ne1_eq0 he c').symm)) hcc
+    · rw [show cmM.cellEvt e τ x c' h' q₀ N = ∅ from
+        (cmM_cellEvt_def e τ x c' h' q₀ N).trans (if_neg hh')]
+      exact Finset.disjoint_empty_right _
+  · rw [show cmM.cellEvt e τ x c h q₀ N = ∅ from
+      (cmM_cellEvt_def e τ x c h q₀ N).trans (if_neg hh)]
+    exact Finset.disjoint_empty_left _
+
+private lemma cm_led_part1 : ∀ e ∈ Finset.Icc 1 2, ∀ (τ : cmT.State e)
+    (x : cmM.Rep e τ) (q₀ : ℚ), q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    ∑ c : cmM.Cell e τ, cmM.μcell e τ x c q₀ = 1 := by
+  intro e he τ x q₀ hq _
+  obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+  have hx0 : ((m : ℚ)) ≠ 0 := (cm_x_pos hm2).ne'
+  have he12 := Finset.mem_Icc.mp he
+  by_cases he1 : e = 1
+  · subst he1
+    show ∑ c : Fin 4, cmM.μcell 1 τ x c (m : ℚ) = 1
+    rw [Fin.sum_univ_four]
+    have h0 : cmM.μcell 1 τ x ((0 : Fin 4) : cmM.Cell 1 τ) (m : ℚ)
+        = ((kV (m : ℚ) : ℚ) : ℝ) := rfl
+    have h1 : cmM.μcell 1 τ x ((1 : Fin 4) : cmM.Cell 1 τ) (m : ℚ)
+        = ((t1V (m : ℚ) : ℚ) : ℝ) := rfl
+    have h2 : cmM.μcell 1 τ x ((2 : Fin 4) : cmM.Cell 1 τ) (m : ℚ)
+        = ((t2V (m : ℚ) : ℚ) : ℝ) := rfl
+    have h3 : cmM.μcell 1 τ x ((3 : Fin 4) : cmM.Cell 1 τ) (m : ℚ) = 0 := rfl
+    rw [h0, h1, h2, h3, add_zero]
+    have hsum := cm_masses_sum hx0
+    have hcast := congrArg (Rat.cast : ℚ → ℝ) hsum
+    push_cast at hcast
+    convert hcast using 2
+  · have he2 : e = 2 := by omega
+    subst he2
+    show ∑ c : Fin 1, cmM.μcell 2 τ x c (m : ℚ) = 1
+    rw [Fin.sum_univ_one]
+    rfl
+
+private lemma cm_led_rep_indep : ∀ e (τ : cmT.State e) (o : cmT.Out e τ)
+    (x : cmM.Rep e τ) (q₀ : ℚ), q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    cmM.rowVal e τ o q₀ = ∑ c ∈ cmM.cells e τ o, cmM.μcell e τ x c q₀ := by
+  intro e τ o x q₀ _ _
+  by_cases he : e = 1
+  · subst he
+    -- block 1: the fiber sum collapses to the o-indexed mass cell via
+    -- sum_eq_single (the activity cell rides the o₀ fiber with MASS 0)
+    rcases o with ⟨v, hv⟩
+    interval_cases v
+    · refine Eq.symm ((Finset.sum_eq_single_of_mem
+        (⟨0, by norm_num⟩ : cmM.Cell 1 τ) ?_ ?_).trans ?_)
+      · exact cm_mem_cells.mpr rfl
+      · intro b hb hbne
+        have hb' : cmM.cellOut 1 τ b = ⟨0, hv⟩ := cm_mem_cells.mp hb
+        have hbo : b.1 % 3 = 0 := congrArg Fin.val hb'
+        have hb4 := cm_cell1_lt4 (τ := τ) b
+        have hb3 : b.1 = 3 := by
+          rcases (by omega : b.1 = 0 ∨ b.1 = 3) with h | h
+          · exfalso
+            apply hbne
+            apply Fin.ext
+            show b.1 = 0
+            exact h
+          · exact h
+        show cmMass1 b.1 q₀ = 0
+        rw [hb3, cm_mass1_3]
+      · rfl
+    · refine Eq.symm ((Finset.sum_eq_single_of_mem
+        (⟨1, by norm_num⟩ : cmM.Cell 1 τ) ?_ ?_).trans ?_)
+      · exact cm_mem_cells.mpr rfl
+      · intro b hb hbne
+        exfalso
+        have hb' : cmM.cellOut 1 τ b = ⟨1, hv⟩ := cm_mem_cells.mp hb
+        have hbo : b.1 % 3 = 1 := congrArg Fin.val hb'
+        have hb4 := cm_cell1_lt4 (τ := τ) b
+        apply hbne
+        apply Fin.ext
+        show b.1 = 1
+        omega
+      · rfl
+    · refine Eq.symm ((Finset.sum_eq_single_of_mem
+        (⟨2, by norm_num⟩ : cmM.Cell 1 τ) ?_ ?_).trans ?_)
+      · exact cm_mem_cells.mpr rfl
+      · intro b hb hbne
+        exfalso
+        have hb' : cmM.cellOut 1 τ b = ⟨2, hv⟩ := cm_mem_cells.mp hb
+        have hbo : b.1 % 3 = 2 := congrArg Fin.val hb'
+        have hb4 := cm_cell1_lt4 (τ := τ) b
+        apply hbne
+        apply Fin.ext
+        show b.1 = 2
+        omega
+      · rfl
+  · have hval : ∀ c : cmM.Cell e τ, cmM.μcell e τ x c q₀ = 1 := fun c => by
+      have h1 := cmM_μcell_def e τ x c q₀
+      rw [h1]
+      exact if_neg he
+    by_cases ho : o.1 = 0
+    · have hcells : cmM.cells e τ o = Finset.univ := by
+        ext c
+        refine ⟨fun _ => Finset.mem_univ c, fun _ => cm_mem_cells.mpr ?_⟩
+        apply Fin.ext
+        show c.1 % 3 = o.1
+        have := cm_cell_ne1_eq0 he c
+        omega
+      rw [hcells, Finset.sum_congr rfl (fun c _ => hval c), Finset.sum_const,
+        Finset.card_univ]
+      have hcard : Fintype.card (cmM.Cell e τ) = 1 := by
+        have hcf : Fintype.card (cmM.Cell e τ) = (if e = 1 then 4 else 1) :=
+          Fintype.card_fin _
+        rw [hcf]
+        exact if_neg he
+      rw [hcard, one_smul, cmM_rowVal_def]
+      have h2 : (if e = 1 then cmMass1 o.1 q₀ else if o.1 = 0 then 1 else 0)
+          = (if o.1 = 0 then (1 : ℝ) else 0) := if_neg he
+      rw [h2]
+      exact if_pos ho
+    · have hcells : cmM.cells e τ o = ∅ := by
+        ext c
+        simp only [Finset.notMem_empty, iff_false]
+        intro hc
+        have hco : cmM.cellOut e τ c = o := cm_mem_cells.mp hc
+        have hval' : c.1 % 3 = o.1 := congrArg Fin.val hco
+        have := cm_cell_ne1_eq0 he c
+        omega
+      rw [hcells, Finset.sum_empty, cmM_rowVal_def]
+      have h2 : (if e = 1 then cmMass1 o.1 q₀ else if o.1 = 0 then 1 else 0)
+          = (if o.1 = 0 then (1 : ℝ) else 0) := if_neg he
+      rw [h2]
+      exact if_neg ho
+
+private lemma cm_led_meas_card : ∀ e (τ : cmT.State e) (x : cmM.Rep e τ)
+    (c : cmM.Cell e τ) (h : ℕ), h ∈ cmM.HDom e τ c → ∀ q₀ ∈ cmM.Pools,
+    cmM.activeState q₀ e τ → ∃ N₀, ∀ N ≥ N₀,
+    cmM.gwt e τ c h q₀ * (Fintype.card (cmM.Box q₀ N) : ℝ)
+      = ((cmM.cellEvt e τ x c h q₀ N).card : ℝ) := by
+  intro e τ x c h hh q₀ hq hact
+  obtain ⟨rfl, hac⟩ := cm_HDom_cases hh
+  obtain ⟨m, hm2, rfl⟩ := cm_pool_nat hq
+  have hQ : (((m : ℚ)).num.toNat) = m := cm_pool_toNat m
+  refine ⟨0, fun N _ => ?_⟩
+  rw [cm_box_card]
+  by_cases he : e = 1
+  · subst he
+    have hm4 : m ≠ 4 := fun h4 => (hact rfl) (by rw [h4]; norm_num)
+    obtain ⟨hk, h1, h2, htile, hbox⟩ := cm_card_facts hm2 hm4
+    rw [cmM_cellEvt1_0]
+    have hboxR : ((max 1 (2 * (((m : ℚ)).num.toNat) ^ 4) : ℕ) : ℝ)
+        = ((2 * m ^ 4 : ℕ) : ℝ) := by
+      rw [hQ, hbox]
+    rw [hboxR]
+    have hgwt : cmM.gwt 1 τ c (0 : ℕ) (m : ℚ) = cmMass1 c.1 (m : ℚ) := rfl
+    rw [hgwt]
+    have hx0 : ((m : ℚ)) ≠ 0 := (cm_x_pos hm2).ne'
+    have hx4 : ((m : ℚ)) ^ 4 ≠ 0 := pow_ne_zero _ hx0
+    have hc3 : c.1 ≠ 3 := fun h3 => hac ⟨rfl, h3⟩
+    by_cases hc0 : c.1 = 0
+    · rw [if_pos hc0, cm_box_filter_lt _ _ (by rw [hQ]; omega), hc0]
+      have hqq : (kV (m : ℚ)) * ((2 * m ^ 4 : ℕ) : ℚ) = ((kCard m : ℕ) : ℚ) := by
+        rw [cm_kCard_castQ hm2]
+        unfold kV
+        rw [polB_eval]
+        have hcast : ((2 * m ^ 4 : ℕ) : ℚ) = 2 * (m : ℚ) ^ 4 := by push_cast; ring
+        rw [hcast]
+        field_simp
+        ring
+      show ((kV (m : ℚ) : ℚ) : ℝ) * ((2 * m ^ 4 : ℕ) : ℝ)
+        = ((kCard (((m : ℚ)).num.toNat) : ℕ) : ℝ)
+      rw [hQ]
+      exact_mod_cast hqq
+    · rw [if_neg hc0]
+      by_cases hc1 : c.1 = 1
+      · rw [if_pos hc1, cm_box_filter_mid _ _ (by rw [hQ]; omega), hc1]
+        have hsub : kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat)
+            - kCard (((m : ℚ)).num.toNat) = t1Card m := by rw [hQ]; omega
+        rw [hsub]
+        have hqq : (t1V (m : ℚ)) * ((2 * m ^ 4 : ℕ) : ℚ) = ((t1Card m : ℕ) : ℚ) := by
+          rw [cm_t1Card_castQ hm2]
+          unfold t1V
+          rw [pol2B_eval]
+          have hcast : ((2 * m ^ 4 : ℕ) : ℚ) = 2 * (m : ℚ) ^ 4 := by push_cast; ring
+          rw [hcast]
+          field_simp
+        show ((t1V (m : ℚ) : ℚ) : ℝ) * ((2 * m ^ 4 : ℕ) : ℝ) = ((t1Card m : ℕ) : ℝ)
+        exact_mod_cast hqq
+      · have hc2 : c.1 = 2 := by
+          have := cm_cell1_lt4 c
+          omega
+        rw [if_neg hc1, if_pos hc2, cm_box_filter_ge, hc2]
+        have hsub : max 1 (2 * (((m : ℚ)).num.toNat) ^ 4)
+            - (kCard (((m : ℚ)).num.toNat) + t1Card (((m : ℚ)).num.toNat))
+            = t2Card m := by rw [hQ]; omega
+        rw [hsub]
+        have hqq : (t2V (m : ℚ)) * ((2 * m ^ 4 : ℕ) : ℚ) = ((t2Card m : ℕ) : ℚ) := by
+          rw [cm_t2Card_castQ hm2 hm4]
+          unfold t2V
+          rw [pol2B_eval]
+          have hcast : ((2 * m ^ 4 : ℕ) : ℚ) = 2 * (m : ℚ) ^ 4 := by push_cast; ring
+          rw [hcast]
+          field_simp
+        show ((t2V (m : ℚ) : ℚ) : ℝ) * ((2 * m ^ 4 : ℕ) : ℝ) = ((t2Card m : ℕ) : ℝ)
+        exact_mod_cast hqq
+  · rw [cmM_cellEvt_ne1_0 he]
+    have hg1 := cmM_gwt_def e τ c 0 (m : ℚ)
+    rw [if_pos rfl] at hg1
+    rw [hg1]
+    have hg2 : (if e = 1 then cmMass1 c.1 (m : ℚ) else 1) = (1 : ℝ) := if_neg he
+    rw [hg2, one_mul, Finset.card_univ, cm_box_card]
+
+private lemma cm_led_kstep_one : ∀ e (τ β : cmT.State e) (q₀ : ℚ),
+    q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    cmM.kstep 1 e τ β q₀ =
+    ∑ o ∈ {o : cmT.Out e τ | routeOf (cmT.odata e τ o) = .kcol ∧
+        ∃ μ ∈ (cmT.odata e τ o).mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
+      }.toFinset, cmM.rowVal e τ o q₀ := by
+  intro e τ β q₀ hq hact
+  rw [cmM_kstep_def, pow_one]
+  by_cases he : e = 1
+  · subst he
+    have h4 : q₀ ≠ 4 := hact rfl
+    have hbase : (if (1 : ℕ) = 1 ∧ q₀ ≠ 4 then ((kV q₀ : ℚ) : ℝ) else 0)
+        = ((kV q₀ : ℚ) : ℝ) := if_pos ⟨rfl, h4⟩
+    rw [hbase]
+    refine Eq.symm ((Finset.sum_eq_single_of_mem (⟨0, by norm_num⟩ : cmT.Out 1 τ)
+      ?_ ?_).trans ?_)
+    · rw [Set.mem_toFinset]
+      exact ⟨rfl, ⟨1, 1, Sum.inr ()⟩, List.mem_singleton_self _, rfl, rfl⟩
+    · intro b hb hbne
+      exfalso
+      rw [Set.mem_toFinset] at hb
+      obtain ⟨hr, -⟩ := hb
+      rcases cm_route1_cases τ b with ⟨hb0', -⟩ | ⟨-, hr', -⟩ | ⟨-, hr', -⟩
+      · exact hbne (hb0'.trans (Fin.ext rfl))
+      · rw [hr'] at hr; exact Route.noConfusion hr
+      · rw [hr'] at hr; exact Route.noConfusion hr
+    · rfl
+  · have hbase : (if e = 1 ∧ q₀ ≠ 4 then ((kV q₀ : ℚ) : ℝ) else 0) = 0 :=
+      if_neg (fun hc => he hc.1)
+    rw [hbase]
+    have hset : ({o : cmT.Out e τ | routeOf (cmT.odata e τ o) = .kcol ∧
+        ∃ μ ∈ (cmT.odata e τ o).mem, ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
+      } : Set (cmT.Out e τ)).toFinset = ∅ := by
+      ext o
+      rw [Set.mem_toFinset]
+      simp only [Set.mem_setOf_eq, Finset.notMem_empty, iff_false]
+      rintro ⟨hr, -⟩
+      by_cases he2 : e = 2
+      · subst he2
+        rcases cm_route2_cases τ o with ⟨-, hr'⟩ | ⟨-, hr', -⟩
+        · rw [hr'] at hr; exact Route.noConfusion hr
+        · rw [hr'] at hr; exact Route.noConfusion hr
+      · rw [(cm_route_pad he he2 τ o).1] at hr
+        exact Route.noConfusion hr
+    rw [hset, Finset.sum_empty]
+
+private lemma cm_led_hmc : ∀ (k : ℕ) e (τ β : cmT.State e) (q₀ : ℚ),
+    q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    cmM.kstep (k + 1) e τ β q₀
+      = ∑ γ : cmT.State e, cmM.kstep k e τ γ q₀ * cmM.kstep 1 e γ β q₀ := by
+  intro k e τ β q₀ _ _
+  haveI : Unique (cmT.State e) := ⟨⟨()⟩, fun _ => rfl⟩
+  rw [Fintype.sum_unique, cmM_kstep_def, cmM_kstep_def, cmM_kstep_def, ← pow_add]
+
+private lemma cm_led_act_target : ∀ e (τ β : cmT.State e) (q₀ : ℚ),
+    q₀ ∈ cmM.Pools → ¬ cmM.activeState q₀ e β → cmM.kstep 1 e τ β q₀ = 0 := by
+  intro e τ β q₀ _ hβ
+  obtain ⟨he, h4⟩ := cm_wild_of_not_active hβ
+  rw [cmM_kstep_def, pow_one]
+  exact if_neg (fun hc => hc.2 h4)
+
+private lemma cm_led_init_agg : ∀ e (τ : cmT.State e) (q₀ : ℚ),
+    q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    cmM.ιval e τ q₀ = ∑ ε : cmM.EntShape e τ, cmM.ιsh e τ ε q₀ := by
+  intro e τ q₀ _ _
+  haveI : Unique (cmM.EntShape e τ) := ⟨⟨()⟩, fun _ => rfl⟩
+  rw [Fintype.sum_unique]
+  rfl
+
+private lemma cm_led_init_count : ∀ e (τ : cmT.State e) (ε : cmM.EntShape e τ)
+    (h : ℕ), h ∈ cmM.ιDom e τ ε → ∀ q₀ ∈ cmM.Pools,
+    cmM.activeState q₀ e τ → ∃ N₀, ∀ N ≥ N₀,
+    cmM.ιshH e τ ε h q₀ * (Fintype.card (cmM.Box q₀ N) : ℝ)
+      = ((cmM.entEvtH e τ ε h q₀ N).card : ℝ) := by
+  intro e τ ε h hh q₀ _ _
+  obtain rfl : h = 0 := hh
+  refine ⟨0, fun N _ => ?_⟩
+  show (1 : ℝ) * (Fintype.card (cmM.Box q₀ N) : ℝ)
+    = (((Finset.univ : Finset (cmM.Box q₀ N))).card : ℝ)
+  rw [one_mul, Finset.card_univ]
+
+private lemma cm_led_ent_count_card : ∀ e (τ : cmT.State e)
+    (ε : cmM.EntShape e τ) (q₀ : ℚ), q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    (cmM.entInst e τ ε q₀ (cmM.entLvl e τ ε)).card = cmM.entCount e τ ε q₀ :=
+  fun _ _ _ _ _ _ => Finset.card_singleton _
+
+private lemma cm_led_comp_once : ∀ e (τ : cmT.State e) (ε : cmM.EntShape e τ)
+    (q₀ : ℚ), q₀ ∈ cmM.Pools → cmM.activeState q₀ e τ →
+    HasSum (fun h : cmM.ιDom e τ ε => cmM.ιshH e τ ε h q₀) (cmM.ιsh e τ ε q₀) := by
+  intro e τ ε q₀ _ _
+  refine hasSum_single (f := fun h : cmM.ιDom e τ ε => cmM.ιshH e τ ε h q₀)
+    ⟨(0 : ℕ), rfl⟩ ?_
+  intro b hb
+  obtain ⟨bv, hbv⟩ := b
+  exact absurd (Subtype.ext (hbv : bv = (0 : ℕ))) hb
+
+/-- THE ledger. -/
+private theorem cmLedger : LedgerIV cmT cmM :=
+  { xhd_sum := cm_led_xhd_sum
+    xhd_no_stray := cm_led_xhd_no_stray
+    xhd_no_orphan := cm_led_xhd_no_orphan
+    d4r0 := cm_led_d4r0
+    part1 := cm_led_part1
+    rep_indep := cm_led_rep_indep
+    meas_card := cm_led_meas_card
+    kstep_one := cm_led_kstep_one
+    hmc := cm_led_hmc
+    act_target := cm_led_act_target
+    init_agg := cm_led_init_agg
+    init_count := cm_led_init_count
+    ent_count_card := cm_led_ent_count_card
+    comp_once := cm_led_comp_once }
 
 end LeanUrat.MovesU.R2Neg
