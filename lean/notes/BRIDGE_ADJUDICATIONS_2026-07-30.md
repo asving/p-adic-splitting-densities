@@ -1174,3 +1174,21 @@ wave-8/wave-14 lines are hereby amended to THREE); (T-DEC) split
 owed: fold into that pass's charge text when dispatched); tree D3.5 + ROOT
 Step-11/§3.3 amendments owed to their next revision agents. Both packages
 owe fresh passes (O-9 pass 4; CU-2t R3 pass).
+
+## TREE-GAP RESOLUTION (2026-08-02 night, commit 46e583e)
+All 5 gaps + 5 advisories RESOLVED with displayed evidence. G-4 adjudicated
+SUPERSEDED-AS-ROUTED: the six H.6 fences = the PERIMETER of T-5's dual
+acceptance (open general kernels, consumed by NO ROOT step as general
+lemmas); the single live condition = D-11's restated item (vii) (the built
+per-n tables sit inside the fenced perimeter — sealed n=3 evidence, proof
+owed by the D-11 owner), now an operative ROOT §3.3 [T] row with an
+escalation clause. NO (ROOT-C) hypothesis affected. G-1/G-2 homed (item-22
+PARKED territory + the hStateNe premise); G-3 closed with the HK-11a Lean
+twin cited; G-5 evicted on its own row; A-1..A-5 closed (incl. the LIT-4
+"K = Q_p exactly" scope caveat displayed). Tree DELTA 4 = the fold-back;
+the TREE leg's blocker list is EMPTY. Note: ROOT REVISION 4 landed
+mid-flight with (H5)/(PACK) = D-11's pack-correspondence clause promoted to
+the hypothesis list — the (ROOT-C) statement now carries SIX [M]-grade
+hypothesis groups; the next VC pass audits it.
+PHASE-C STANDING: REG ACCEPTED; TREE resolved; the end-to-end pass on the
+r5/REVISION-4 document (VC5) = the remaining leg.
