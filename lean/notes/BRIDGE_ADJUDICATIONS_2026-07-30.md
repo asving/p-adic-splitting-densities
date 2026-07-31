@@ -640,3 +640,24 @@ fixes ride the next doc touch. Per the pipeline: the Lean formalization unit
 (hfin : Finite (Skeleton n) via the catalogue encoding) DISPATCHED, plus the
 O-14a' RunRealizerExists fill (§4.2 recipe, no statement changes) — both
 autonomous-frontier.
+
+## VERIFICATION ROUND V9-V12 (2026-08-01 early) — ADJUDICATIONS
+V9 (O-12 r2): UNSOUND, residue = ONE missing lemma (joint count-rationality
+at shared-vertex faces, uniform in residue char) + a reversed display; ALL
+else confirmed (L1-L4, O3 gcd, dets, margins, closure, p/delta-uniformity,
+backup theorem). Round 3 dispatched.
+V10 (O-2a): UNSOUND, 3 criticals (OL-2 "up to translation" too weak for
+positional recovery + terminal nonrecoverability; Theorem 2(D)'s undeclared
+emission-discipline dependence W1-W5; the k'=0 corner) — but the core
+type-tree induction/degree recursion/saturation/index charge CONFIRMED
+complete from the GMN facts given Cons_f. Repair dispatched.
+V11 (O-14a'): UNSOUND on the GENERAL-F replacement law only — a real scale
+error (wPrev vs w confusion; valid only at sigma_{r-1}.e = 1 — THE SAME
+nu.e STRETCH the Lean side compiled at HK52, caught independently twice) +
+sharpness only shown at g=2. THE LOAD-BEARING PARTS CONFIRMED SOUND: last-
+node closure, prime-field collapse, F9 refutation — so RunRealizerExists at
+ZMod p STANDS and the in-flight Lean fill rests on verified ground. Repair
+(the stretch-corrected recursion) dispatched.
+V12 (O1thr): SOUND-WITH-GAPS — the Eisenstein guard exclusion CONFIRMED
+working exactly as designed; per-box disjointness + the p^{n(N-t)} factor
+confirmed; gaps repairable. Light repair then pass 2 (fresh Fable).
