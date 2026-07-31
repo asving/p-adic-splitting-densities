@@ -296,6 +296,43 @@ faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW
 - **Guardian audit:** `notes/SEMANTIC_AUDIT_LOG.md` AXIOMS section, `omReadValuation_lt_of_certLevel_fkeyed`
   entry (2026-07-16 baseline) — CLEAN.
 
+### AX-SERRE-DVR = `SerreLocalFields.AX_integralClosure_dvr` — **FAITHFUL (single clause of a named textbook theorem, instance-restricted)** *(DRAFT 2026-07-31 — PENDING CODEX STATEMENT AUDIT + ASVIN REVIEW; Group E consumers gated until the audit passes)*
+- **Statement (as declared, LeanUrat/SerreLocalFields.lean; declared 2026-07-31 under sign-off queue
+  item 2, `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` C3/N1 + Asvin sign-off):**
+  `axiom AX_integralClosure_dvr (p : ℕ) [Fact p.Prime] (L : Type) [Field L] [Algebra ℚ_[p] L]
+  [FiniteDimensional ℚ_[p] L] [Algebra ℤ_[p] L] [IsScalarTower ℤ_[p] ℚ_[p] L] :
+  IsDiscreteValuationRing (integralClosure ℤ_[p] L)` — the integral closure of ℤ_p in a finite
+  field extension of ℚ_p is a discrete valuation ring.
+- **Verified core:** Serre, *Corps Locaux* (Hermann 1962; 2ᵉ éd. 1968) = *Local Fields* (GTM 67,
+  Springer 1979, transl. Greenberg), **Chapter II ("Completion"), §2 ("Extension of a Complete
+  Field"), Proposition 3**: for a complete discrete valuation ring `A` with fraction field `K` and
+  a finite extension `L/K` of degree `n`, the integral closure `B` of `A` in `L` is a discrete
+  valuation ring, a free `A`-module of rank `n`, complete, and carries the unique extension of the
+  valuation. Numbering cross-checked against the de Frutos-Fernández–Nuccio formalization
+  (`LocalClassFieldTheory/DiscreteValuationRing/Extensions.lean`,
+  `integralClosure.discreteValuationRing_of_finite_extension`, docstring "Chapter 2, Section 2,
+  Proposition 3 in Serre's Local Fields"; paper arXiv:2310.01998), which formalizes exactly this
+  clause for abstract complete DVRs — independent confirmation the wall is real AND
+  literature-grade. The axiom asserts **ONLY the DVR clause, only at (A, K) = (ℤ_[p], ℚ_[p])** —
+  no freeness/rank, no completeness, no uniqueness-of-extension, no e·f = n, no lying-over (that
+  last is DERIVED axiom-free: `SerreLocalFields.maximalIdeal_liesOver`, core-only footprint).
+- **Scope caveats:** (a) the ℤ_p-algebra structure on `L` is PINNED to the composite through ℚ_p
+  by the `IsScalarTower` hypothesis, and the quantification over arbitrary `Algebra ℚ_[p] L`
+  structure maps φ is harmless: `integralClosure ℤ_[p] L` depends only on the image subring
+  φ(ℤ_[p]), a complete DVR with fraction field φ(ℚ_[p]) by transport along the ring isomorphism —
+  every instance is literally Prop. 3 at (A, K, L) = (φ(ℤ_[p]), φ(ℚ_[p]), L); (b) hypothesis-class
+  non-vacuity is machine-checked (`axiom_nonvacuous` at L = ℚ_[p]; the degree-1 content is
+  independently witnessed axiom-free at the `IsIntegralClosure` carrier by
+  `OM/QpType.trivialFactorData`); (c) mathlib wall documented at `OM/QpType.lean` (no DVR-ness of
+  `integralClosure ℤ_[p] L` at the v4.31.0 pin) and re-confirmed by the C3/N1 synthesis finding;
+  (d) consumers: the item-2 re-pointed `MovesT.ramIdx`/`resDeg` dispatch (fired on the monic
+  ℚ_p-irreducible locus by `isLocalRing_integralClosure_adjoinRoot`) and, post-audit, BP1 Group E
+  (IB-E5–E7) + `OM/QpType.LocalFactorData` construction; the density capstones do NOT consume it
+  (re-printed Lean-core in `AxChk_baseline.lean`, ground truth).
+- **Guardian audit:** PENDING — orchestrator-run Codex audit of the axiom statement is the
+  declared gate before any Group-E prover consumes it (item-2 duty (d), recorded in
+  `lean/notes/QUEUE_EXECUTION_2026-07-31.md`).
+
 ### AX-LEAF = `OM.OmLeafFaithful.om_leaf_faithful` — **FAITHFUL (menu-fiber-scoped; joint cite)** *(DRAFT 2026-07-30 — PENDING ASVIN REVIEW)*
 - **Statement (as declared, OM/OmLeafFaithful.lean:489; current scope = W6q re-scope 2026-07-22):** for
   monic `f : ℤ_[p][X]` of degree `n` in a genuine classifier fiber (`fiberOf7`) of a shape

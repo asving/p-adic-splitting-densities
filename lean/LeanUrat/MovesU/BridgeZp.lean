@@ -655,8 +655,14 @@ theorem ip1_holds : IP1 p := by
   · exact heB1 (by rw [← hphia, show a = 1 by rwa [sub_eq_zero] at h1, map_one])
 
 /-- IB-E4 consumption wrapper (real wiring, no sorry of its own): the unfolded
-    IP-1 shape the `MovesT.ramIdx`/`resDeg` junk-dispatch consumers read —
-    `IsLocalRing (AdjoinRoot h)` for monic h with ℚ_p-irreducible image. -/
+    IP-1 shape — `IsLocalRing (AdjoinRoot h)` for monic h with ℚ_p-irreducible
+    image.  [2026-07-31, item-2 re-point note: this is the ORDER's locality; it
+    is NO LONGER the `MovesT.ramIdx`/`resDeg` dispatch Prop — the re-pointed
+    defs dispatch on `IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (h.map
+    (algebraMap ℤ_[p] ℚ_[p]))))`, fired on this locus by
+    `SerreLocalFields.isLocalRing_integralClosure_adjoinRoot` (declared axiom,
+    Codex audit pending).  IP-1 stays a true proved statement about orders
+    (E12's gate + E0a's countermodel machinery consume it).] -/
 theorem isLocalRing_adjoinRoot (h : Polynomial ℤ_[p]) (hm : h.Monic)
     (hirr : Irreducible (h.map PadicInt.Coe.ringHom)) :
     IsLocalRing (AdjoinRoot h) :=

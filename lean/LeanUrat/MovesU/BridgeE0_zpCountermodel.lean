@@ -44,7 +44,8 @@ COMPILES sorry-free it must NOT coexist with an un-repaired sorried
 `zf_factor`-instance universal — the Q2 repair lands in the same window.
 
 Units: E0a `e0_isLocalRing` · E0b `e0_ramIdx` · E0c `e0_resDeg` ·
-E0d `e0_zf_factor_false` + `e0_no_zpBridge`.  Deps: none (front-runner).
+E0d `e0_zf_factor_false` + `e0_no_zpBridge` (→ `e0_no_zpBridge_orderForm` at the
+2026-07-31 re-target, see the note below).  Deps: none (front-runner).
 
 LANDED 2026-07-30 (IB-E0 prover): ALL pieces are now sorry-free — the sealed
 prediction is CONFIRMED, the countermodel COMPILES, R1 stands.  Fence check at
@@ -54,6 +55,25 @@ in-tree — the Q2-gated IB-E9 assembly `bridgeZpBridge` is not yet declared, an
 gate renders vacuous at (n, p) = (2, 3): that is the finding, not a soundness
 clash) — so the compiled witness may live here.  Q2's repair is TRIGGERED;
 E5–E7 remain gated until the `ramIdx`/`resDeg` re-point lands.
+
+**RE-POINT EXECUTED 2026-07-31 (sign-off queue item 2 — M1-hygiene note on WHICH
+FORM this leaf refutes).**  `MovesT.ramIdx`/`resDeg` now read the invariants at
+the INTEGRAL CLOSURE of ℤ_p in `AdjoinRoot (h.map (algebraMap ℤ_[p] ℚ_[p]))`
+(the `OM/QpType` `eOf`/`fOf` convention); the ORDER-level reads this leaf
+refutes survive verbatim in MovesT/Defs as `ramIdxOrder`/`resDegOrder`, and
+every statement below is re-targeted at THOSE names (statement content
+byte-identical to the pre-re-point forms; only the def names moved).  What this
+leaf refutes, precisely: the PRE-2026-07-31 `ZpBridge.zf_factor` (its conjuncts
+3–4 read `(ramIdxOrder h, resDegOrder h)`), whose no-instance consequence is
+preserved as `e0_no_zpBridge_orderForm` — the zfType-abstracted, verbatim
+pre-re-point body (the historical `e0_no_zpBridge : IsEmpty (ZpBridge 2 3 X)`
+consumed the LIVE `ZpBridge` structure and is retired WITH the disease: under
+the re-pointed reads the true invariants (1, 2) at h = X² + 9 satisfy the
+aggregate 1·2 = 2 = deg, so the ℤ_3-instance obstruction is CURED, which is the
+repair's point).  E0a (`e0_isLocalRing`, the order's locality) is untouched —
+it is a true statement about the ORDER, still consumed by E12(b)'s stress check.
+This leaf refutes the order-level (e,f) reading ONLY; it says nothing against
+the re-pointed integral-closure reads.
 -/
 
 set_option linter.style.longLine false
@@ -300,9 +320,11 @@ theorem e0Chi_nonunit {x : AdjoinRoot e0Poly} (hx : ¬IsUnit x) :
 
 /-- E0b — the order's ramification read is 1: (3) ≤ m = (3, π) but
     3 ∉ m² = (9, 3π) (else 1 = 3a + πb ∈ m), so
-    `Ideal.ramificationIdx (max ℤ_3) (max R) = sSup {k | (3) ≤ m^k} = 1`. -/
-theorem e0_ramIdx : MovesT.ramIdx e0Poly = 1 := by
-  unfold MovesT.ramIdx
+    `Ideal.ramificationIdx (max ℤ_3) (max R) = sSup {k | (3) ≤ m^k} = 1`.
+    (2026-07-31 item-2 re-target: the read under test is the ORDER-level
+    `ramIdxOrder` = the pre-re-point `ramIdx`, verbatim.) -/
+theorem e0_ramIdx : MovesT.ramIdxOrder e0Poly = 1 := by
+  unfold MovesT.ramIdxOrder
   rw [dif_pos e0_instIsLocalRing]
   refine Ideal.ramificationIdx_spec ?_ ?_
   · -- map (3) ≤ m¹: the image of 3 is a nonunit
@@ -372,9 +394,10 @@ instance e0_liesOver :
 
 /-- E0c — the order's residue read is 1: R/m = 𝔽_3[X]/(X, X²) = 𝔽_3, so
     inertiaDeg = 1.  (The FIELD's residue degree is 2 — the order is not maximal;
-    that contrast is the whole finding.) -/
-theorem e0_resDeg : MovesT.resDeg e0Poly = 1 := by
-  unfold MovesT.resDeg
+    that contrast is the whole finding.  2026-07-31 item-2 re-target: the read
+    under test is the ORDER-level `resDegOrder` = the pre-re-point `resDeg`.) -/
+theorem e0_resDeg : MovesT.resDegOrder e0Poly = 1 := by
+  unfold MovesT.resDegOrder
   rw [dif_pos e0_instIsLocalRing]
   rw [Ideal.inertiaDeg_algebraMap]
   have hbij : Function.Bijective
@@ -395,9 +418,11 @@ theorem e0_resDeg : MovesT.resDeg e0Poly = 1 := by
   rw [← LinearEquiv.finrank_eq (LinearEquiv.ofBijective (Algebra.linearMap _ _) hbij)]
   exact Module.finrank_self _
 
-/-- E0d — THE COUNTERMODEL: no factor multiset satisfies `zf_factor`'s conjuncts
-    1, 2 and the (3∧4)-composite at g := e0Poly.  Route: by conjuncts 1–2 and
-    uniqueness of monic ℚ_p-factorizations (+ injectivity of
+/-- E0d — THE COUNTERMODEL: no factor multiset satisfies the PRE-RE-POINT
+    `zf_factor`'s conjuncts 1, 2 and the (3∧4)-composite at g := e0Poly (order-level
+    reads `ramIdxOrder`/`resDegOrder` — the 2026-07-31 item-2 re-target, statement
+    otherwise byte-identical).  Route: by conjuncts 1–2 and uniqueness of monic
+    ℚ_p-factorizations (+ injectivity of
     `Polynomial.map PadicInt.Coe.ringHom`), factors = {e0Poly}; then the
     composite demands {ramIdx·resDeg} = {1} = {2} = {natDegree} — false. -/
 theorem e0_zf_factor_false :
@@ -405,7 +430,7 @@ theorem e0_zf_factor_false :
       e0Poly.map PadicInt.Coe.ringHom
           = (factors.map (Polynomial.map PadicInt.Coe.ringHom)).prod ∧
       (∀ h ∈ factors, h.Monic ∧ Irreducible (h.map PadicInt.Coe.ringHom)) ∧
-      factors.map (fun h => MovesT.ramIdx h * MovesT.resDeg h)
+      factors.map (fun h => MovesT.ramIdxOrder h * MovesT.resDegOrder h)
         = factors.map Polynomial.natDegree := by
   rintro ⟨factors, hprod, hfac, hagg⟩
   have hEirr : Irreducible (e0Poly.map PadicInt.Coe.ringHom) := e0Poly_irreducible
@@ -440,21 +465,32 @@ theorem e0_zf_factor_false :
   simp only [e0_ramIdx, e0_resDeg, e0Poly_natDegree] at hagg
   norm_num at hagg
 
-/-- E0d assembly — THE CONSEQUENCE (blueprint †11f): as currently typed, NO
-    `ZpBridge` instance exists at (n, p) = (2, 3), for ANY classifier `X`
-    (the ∃ in `zf_factor` gives no freedom).  The wiring below is REAL (compiled
-    now); only the pieces above carry sorries. -/
-theorem e0_no_zpBridge (X : ClassifierSpec 2 3) : IsEmpty (ZpBridge 2 3 X) := by
-  constructor
-  intro B
-  obtain ⟨factors, hprod, hfac, hzf, hdeg⟩ :=
-    B.zf_factor e0Poly e0Poly_monic e0Poly_natDegree
+/-- E0d assembly — THE CONSEQUENCE (blueprint †11f), HISTORICAL/ORDER FORM
+    (2026-07-31 item-2 re-target): as typed BEFORE the re-point — `zf_factor`'s
+    conjuncts 3–4 reading the ORDER-level `(ramIdxOrder h, resDegOrder h)` — NO
+    bridge reading existed at (n, p) = (2, 3): the statement below is the
+    pre-re-point `zf_factor` body VERBATIM with the structure's `zfType`
+    abstracted to a bare `zf` (the ∃ gives no freedom).  The historical
+    `e0_no_zpBridge : IsEmpty (ZpBridge 2 3 X)` consumed the LIVE `ZpBridge`
+    and is retired with the disease it certified — under the re-pointed reads
+    the (2, 3) obstruction is CURED (header note).  Proof skeleton unchanged. -/
+theorem e0_no_zpBridge_orderForm :
+    ¬ ∃ zf : Polynomial ℤ_[3] → Multiset (ℕ × ℕ),
+      ∀ g : Polynomial ℤ_[3], g.Monic → g.natDegree = 2 →
+        ∃ factors : Multiset (Polynomial ℤ_[3]),
+          g.map (PadicInt.Coe.ringHom)
+              = (factors.map (Polynomial.map PadicInt.Coe.ringHom)).prod ∧
+          (∀ h ∈ factors, h.Monic ∧ Irreducible (h.map PadicInt.Coe.ringHom)) ∧
+          zf g = factors.map (fun h => (MovesT.ramIdxOrder h, MovesT.resDegOrder h)) ∧
+          (zf g).map (fun ef => ef.1 * ef.2) = factors.map Polynomial.natDegree := by
+  rintro ⟨zf, hzf⟩
+  obtain ⟨factors, hprod, hfac, hpin, hdeg⟩ := hzf e0Poly e0Poly_monic e0Poly_natDegree
   refine e0_zf_factor_false ⟨factors, hprod, hfac, ?_⟩
-  calc factors.map (fun h => MovesT.ramIdx h * MovesT.resDeg h)
-      = (factors.map (fun h => (MovesT.ramIdx h, MovesT.resDeg h))).map
+  calc factors.map (fun h => MovesT.ramIdxOrder h * MovesT.resDegOrder h)
+      = (factors.map (fun h => (MovesT.ramIdxOrder h, MovesT.resDegOrder h))).map
           (fun ef => ef.1 * ef.2) := by
         rw [Multiset.map_map]; rfl
-    _ = (B.zfType e0Poly).map (fun ef => ef.1 * ef.2) := by rw [hzf]
+    _ = (zf e0Poly).map (fun ef => ef.1 * ef.2) := by rw [hpin]
     _ = factors.map Polynomial.natDegree := hdeg
 
 end LeanUrat.MovesU

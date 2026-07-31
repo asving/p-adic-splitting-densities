@@ -1107,11 +1107,53 @@ def PCI (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)
 /-! ### §2.7 VP-SOUND's two declared citations (typed, hypothesis-only) -/
 
 /-- the two extension invariants, CLOSED — REV 9 (Codex-8 crit 2): HONEST JUNK-TOTAL
-DISPATCH — classically decide the local-ring Prop-class, junk 0 off it; the REAL value
-is read only on the local domain (§9 IP-1 supplies `IsLocalRing (AdjoinRoot g)` for
-monic irreducible g over ℤ_p). [E-DEV: `Ideal.ramificationIdx` is projection-style in
-the pinned Mathlib — no `algebraMap` argument.] -/
+DISPATCH — classically decide the local-ring Prop-class, junk 0 off it. [E-DEV:
+`Ideal.ramificationIdx` is projection-style in the pinned Mathlib — no `algebraMap`
+argument.]
+
+**RE-POINTED 2026-07-31 (sign-off queue item 2, `notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`
+C3/N1 + Asvin sign-off; executed per `notes/QUEUE_EXECUTION_2026-07-31.md`)**: the
+invariants are read at THE INTEGRAL CLOSURE of ℤ_p in the factor FIELD
+`AdjoinRoot (g.map (algebraMap ℤ_[p] ℚ_[p]))` — the `OM/QpType.LocalFactorData`
+convention (`eOf`/`fOf`: the same 2-arg `Ideal.ramificationIdx`/`Ideal.inertiaDeg` at the
+maximal ideals of `ℤ_[p]` and of the integral-closure DVR) — and NOT at the ℤ_p-order
+`AdjoinRoot g`, which IB-E0's compiled countermodel
+(`MovesU/BridgeE0_zpCountermodel.lean`: h = X² + 9 over ℤ_3 reads (1,1) at the order,
+true field invariants (1,2)) REFUTES as the bridge's (e,f). The order-level reads are
+preserved verbatim below as `ramIdxOrder`/`resDegOrder` — countermodel targets ONLY.
+Dispatch Prop-class: `IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (g.map …)))`; on
+the monic ℚ_p-irreducible locus it FIRES through the declared literature axiom
+`LeanUrat.SerreLocalFields.AX_integralClosure_dvr` (Serre, *Local Fields*, Ch. II §2,
+Prop. 3 — see `LeanUrat/SerreLocalFields.lean`; NOT imported here — the defs stay
+axiom-free, the axiom only proves the dispatch fires: `isLocalRing_integralClosure_adjoinRoot`).
+Codex audit of the axiom statement pending; Group E (IB-E5–E7) stays gated. -/
 noncomputable def ramIdx (g : Polynomial ℤ_[p]) : ℕ :=
+  open Classical in
+  if h : IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (g.map (algebraMap ℤ_[p] ℚ_[p])))) then
+    letI := h
+    Ideal.ramificationIdx (IsLocalRing.maximalIdeal ℤ_[p])
+      (IsLocalRing.maximalIdeal (integralClosure ℤ_[p] (AdjoinRoot (g.map (algebraMap ℤ_[p] ℚ_[p])))))
+  else 0
+
+/-- residue degree, same junk-total dispatch at the integral-closure DVR (§2.7;
+re-pointed 2026-07-31 with `ramIdx` — sign-off queue item 2, see `ramIdx`'s docstring). -/
+noncomputable def resDeg (g : Polynomial ℤ_[p]) : ℕ :=
+  open Classical in
+  if h : IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (g.map (algebraMap ℤ_[p] ℚ_[p])))) then
+    letI := h
+    (IsLocalRing.maximalIdeal ℤ_[p]).inertiaDeg
+      (IsLocalRing.maximalIdeal (integralClosure ℤ_[p] (AdjoinRoot (g.map (algebraMap ℤ_[p] ℚ_[p])))))
+  else 0
+
+/-- THE PRE-RE-POINT ORDER-LEVEL READ (the REV-9 `ramIdx` body, verbatim, renamed at the
+2026-07-31 item-2 re-point): reads `Ideal.ramificationIdx` at the ℤ_p-order
+`AdjoinRoot g` itself. **REFUTED as the (e,f) reading** by IB-E0
+(`MovesU/BridgeE0_zpCountermodel.lean`, sealed prediction confirmed 2026-07-30: at
+h = X² + 9 over ℤ_3 the order is local with ramification read 1 and residue read 1,
+while the true invariants of ℚ_3(√−1)/ℚ_3 are (e, f) = (1, 2)). RETAINED ONLY as the
+compiled countermodel's target (M1 hygiene: a compiled negation witness must keep a
+compiled target); consumed by NOTHING else. -/
+noncomputable def ramIdxOrder (g : Polynomial ℤ_[p]) : ℕ :=
   open Classical in
   if h : IsLocalRing (AdjoinRoot g) then
     letI := h
@@ -1119,8 +1161,9 @@ noncomputable def ramIdx (g : Polynomial ℤ_[p]) : ℕ :=
       (IsLocalRing.maximalIdeal ℤ_[p]) (IsLocalRing.maximalIdeal (AdjoinRoot g))
   else 0
 
-/-- residue degree, same junk-total dispatch (§2.7). -/
-noncomputable def resDeg (g : Polynomial ℤ_[p]) : ℕ :=
+/-- order-level residue read (the REV-9 `resDeg` body, verbatim, renamed at the
+2026-07-31 item-2 re-point) — countermodel target only, see `ramIdxOrder`. -/
+noncomputable def resDegOrder (g : Polynomial ℤ_[p]) : ℕ :=
   open Classical in
   if h : IsLocalRing (AdjoinRoot g) then
     letI := h

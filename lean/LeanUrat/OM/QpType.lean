@@ -64,7 +64,12 @@ open LeanUrat.OM.CellMenu
 
 Mathlib at the pin cannot PROVE this bundle inhabited for wild `g` of degree ≥ 2 (no DVR-ness of
 `integralClosure ℤ_[p] L`); the Wave-2b axiom carries exactly that existence content. The bundle
-TYPE is inhabited (degree 1): `trivialFactorData` below. -/
+TYPE is inhabited (degree 1): `trivialFactorData` below. [2026-07-31, sign-off queue item 2: the
+DVR-ness wall itself is now a DECLARED literature axiom,
+`LeanUrat.SerreLocalFields.AX_integralClosure_dvr` (Serre, *Local Fields*, Ch. II §2, Prop. 3 —
+leaf module `LeanUrat/SerreLocalFields.lean`, NOT imported here; Codex audit of the statement
+pending). With it every remaining bundle field is mathlib-derivable for monic ℚ_p-irreducible
+`g` — that construction is deliberately deferred behind the audit gate.] -/
 structure LocalFactorData (p : ℕ) [Fact p.Prime] (g : ℤ_[p][X]) where
   /-- The local factor field. -/
   L : Type

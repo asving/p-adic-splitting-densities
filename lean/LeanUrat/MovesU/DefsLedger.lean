@@ -57,6 +57,12 @@ change below quotes its finding:
   now pins each read pair to THE valuation-theoretic invariants — the MovesT
   REV-9 closed defs `ramIdx`/`resDeg` at the monic factor (ℤ_p coefficients;
   ℚ_p-irreducible). Remaining HC-2 residue stated at the structure.
+  [RE-READ 2026-07-31, sign-off queue item 2: `MovesT.ramIdx`/`resDeg` are
+  RE-POINTED at the INTEGRAL CLOSURE of ℤ_p in the factor field
+  `AdjoinRoot (h.map (algebraMap ℤ_[p] ℚ_[p]))` (the `OM/QpType` `eOf`/`fOf`
+  convention) — IB-E0's compiled countermodel refuted the order-level reads;
+  those survive as `ramIdxOrder`/`resDegOrder`, countermodel targets only.
+  `zf_factor`'s TEXT is unchanged; its pairs now denote the field invariants.]
 * GAP 1 ("the evaluated checksum is still assumed"): `rs4_eval` is DERIVED
   (`SolveSeam.rs4_eval`) from `rs4_checksum` + derived definedness via the
   `evalAt` ring hom; the ledger field and `LowerStack` are retired.
@@ -695,15 +701,28 @@ def ZpReads (zf : Polynomial ℤ_[p] → Multiset (ℕ × ℕ)) (N : ℕ)
     every read pair to THE valuation-theoretic invariants: each entry is
     `(ramIdx h, resDeg h)` at the corresponding monic factor `h` (ℤ_p
     coefficients, irreducible over ℚ_p) — the MovesT REV-9 CLOSED defs reading
-    `Ideal.ramificationIdx`/`Ideal.inertiaDeg` of the maximal ideals through
-    `AdjoinRoot h`. The degree accounting is retained as `zf_factor`'s final conjunct.
+    `Ideal.ramificationIdx`/`Ideal.inertiaDeg` of the maximal ideals, SINCE THE
+    2026-07-31 ITEM-2 RE-POINT at the INTEGRAL CLOSURE of ℤ_p in the factor
+    field `AdjoinRoot (h.map (algebraMap ℤ_[p] ℚ_[p]))` (the `OM/QpType`
+    `LocalFactorData` `eOf`/`fOf` convention; the pre-re-point ORDER-level reads
+    through `AdjoinRoot h` itself were REFUTED as the (e,f) by IB-E0's compiled
+    countermodel and survive only as `MovesT.ramIdxOrder`/`resDegOrder`).
+    The degree accounting is retained as `zf_factor`'s final conjunct.
     REMAINING HC-2 RESIDUE (exact statement): (i) the INSTANCE obligation itself —
     supplying `lift_exists`/`lift_true`/`zf_factor` at the real classifier (the
-    classifier ↔ ℤ_p-factorization seam); (ii) the §9 IP-1 instance plumbing —
-    `ramIdx`/`resDeg` read their values through `IsLocalRing (AdjoinRoot h)`
-    (junk 0 off it), so the bridge's (e,f) are the true invariants exactly on the
-    locus where IP-1 (`IsLocalRing (AdjoinRoot h)` for monic ℚ_p-irreducible
-    `h` over ℤ_p) holds — an owed instance, no longer an untyped invariant;
+    classifier ↔ ℤ_p-factorization seam); (ii) the dispatch plumbing —
+    `ramIdx`/`resDeg` read their values through
+    `IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (h.map (algebraMap ℤ_[p] ℚ_[p]))))`
+    (junk 0 off it), so the bridge's (e,f) are the true invariants exactly on
+    the locus where that Prop-class holds; on the monic ℚ_p-irreducible locus it
+    FIRES through the declared literature axiom
+    `LeanUrat.SerreLocalFields.AX_integralClosure_dvr` (Serre, *Local Fields*,
+    Ch. II §2, Prop. 3; smoke theorem
+    `SerreLocalFields.isLocalRing_integralClosure_adjoinRoot` — Codex audit of
+    the axiom statement pending, Group E IB-E5–E7 gated behind it; the OLD
+    order-level IP-1 `IsLocalRing (AdjoinRoot h)` remains a PROVED theorem
+    about orders, `BridgeE12_ip1Gate`/`isLocalRing_adjoinRoot`, no longer the
+    (e,f) read locus);
     (iii) `zf_pos` and `zf_factor`'s degree conjunct are carried as bridge laws
     (true theorems of local field theory, not yet Lean-derived). SCOPE NOTE
     (2026-07-30 verify-2 fold-in): the CARRIED degree conjunct is only the

@@ -88,6 +88,7 @@ import LeanUrat.OM.UniformCapstone
 import LeanUrat.OM.UniformModelN2Recovery
 import LeanUrat.OM.DevBijection
 import LeanUrat.OM.DescendBijection
+import LeanUrat.SerreLocalFields
 open LeanUrat
 
 -- Capstones
@@ -1426,3 +1427,23 @@ open LeanUrat
 #print axioms LeanUrat.OM.DescendBijection.descendTower_bijection
 #print axioms LeanUrat.OM.DescendBijection.joint_count
 #print axioms LeanUrat.OM.DescendBijection.gate_caseF_144
+
+-- ★★★ ITEM 2 (2026-07-31, sign-off queue item 2 — BRIDGE_ADJUDICATIONS C3/N1, Asvin
+-- sign-off 2026-07-31): the Wave-2b-class structure-theorem axiom
+-- `SerreLocalFields.AX_integralClosure_dvr` — Serre, *Corps Locaux* / *Local Fields*
+-- (GTM 67), Chapter II §2, Proposition 3, DVR clause ONLY, at (A, K) = (ℤ_[p], ℚ_[p]):
+-- the integral closure of ℤ_p in a finite extension L/ℚ_p is a DVR.  This is the
+-- documented Mathlib wall behind OM/QpType.LocalFactorData existence (wild deg ≥ 2)
+-- and behind the item-2 re-pointed MovesT.ramIdx/resDeg dispatch.  Faithfulness entry:
+-- docs/AXIOM_FAITHFULNESS.md (AX-SERRE-DVR).  Codex statement audit PENDING; BP1
+-- Group E (IB-E5–E7) stays gated until it passes.  `maximalIdeal_liesOver` (the
+-- lying-over derivation) must print CORE ONLY; the other three print core + the axiom:
+#print axioms LeanUrat.SerreLocalFields.AX_integralClosure_dvr
+#print axioms LeanUrat.SerreLocalFields.integralClosure_isLocalRing
+#print axioms LeanUrat.SerreLocalFields.maximalIdeal_liesOver
+#print axioms LeanUrat.SerreLocalFields.isLocalRing_integralClosure_adjoinRoot
+#print axioms LeanUrat.SerreLocalFields.axiom_nonvacuous
+-- RE-PRINT (REQUIRED): the density capstones REMAIN Lean core ONLY —
+-- AX_integralClosure_dvr must NOT enter either footprint (stop-the-line event):
+#print axioms LeanUrat.OM.RealInstanceW.montes_unconditional_w
+#print axioms LeanUrat.OM.RealInstanceV2.montes_unconditional
