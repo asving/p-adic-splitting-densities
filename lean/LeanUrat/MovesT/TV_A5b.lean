@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import LeanUrat.MovesT.TV_A1
+import LeanUrat.MovesT.TV_A5b_forge
 
 /-! # TV-A5b — the stray-countermodel ATTEMPT at n = 2 (necessity probe for (U)∧(R))
 
@@ -84,6 +85,6 @@ theorem stray_countermodel_attempt :
   -- piece 3: child_cover at the extended tables (now satisfiable at g = (1,0))
   -- piece 4: the stray breaking (U) (second child sharing track X + 1 on a
   --          disjoint .red-cell) or (R) (a child on a multiplicity-1 track)
-  sorry
+  exact stray_countermodel_witness
 
 end LeanUrat.MovesT
