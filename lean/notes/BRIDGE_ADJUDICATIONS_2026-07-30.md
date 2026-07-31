@@ -220,3 +220,25 @@ Item 3 (HK-06 wave) executes AFTER the in-flight HK-22 gate lands.
 Open-math campaign: 1 Fable + 1 Codex per census obligation + numerical
 verification fleet (verification/ infra). Proofs that land queue for
 formalization.
+
+## GATE + G19A FOLD-IN (2026-07-31, commits a5270df + a4b5d8f)
+HK-22 GATE VERDICT (compiled, Lean-core): twoNodeGate_isEmpty — ANY 2-node
+History (bStageP root, ramifiedStage child) is NOT HistoryCoherent under the
+CURRENT keying (parity kernel: IsNodeLift at stride 2 over a linear key forces
+X + C 1, whose bw = 0 violates hwPhi/hh). The V10/V11 stride-decoupling
+collision the HK-06 (S-a) regrade repairs is now MACHINE-CERTIFIED NECESSARY.
+Per the recorded staging ("item 3 executes AFTER the HK-22 gate lands"), the
+emptiness certificate IS the gate in its only pre-wave-satisfiable form: THE
+HK-06 WAVE IS CLEARED TO EXECUTE. ORCHESTRATOR SEQUENCING DECISION: the wave
+re-keys HistoryCoherent (widest ripple in the corpus) — it dispatches SOLO
+after the 9-agent queue-execution fleet lands, not concurrently. U10d
+instantiation + U1 perimeter park behind the wave (dispositions in
+HK22_TWONODE_GATE record).
+G19A COMPLETE (SlotsG19e): value-level falsifiers for rel2b (Dirac site vs
+cylinder-pinned vol), rel2d (non-constant composite square break), rel2e
+(beta≡2 vs vol_univ mass) + bonus rel3 (one-leg junk pack) — each with its
+non-failing-legs lemma isolating the falsified clause. With G19b/G19c/G19d,
+the D-SC carrier layer is now FULLY falsifier-certified. G13'
+(theoremU_bridged') gate conditions: G19a DONE, G19b DONE, Q5 audit DONE;
+E-1 ratification rides queue item 4 (R-C, in flight) — G13' dispatches with
+the post-repair round.
