@@ -173,3 +173,33 @@ realizable root node (HistoryCoherent length-1); (c) G11c's m4b falsifier needs
 ONE realized-prefix Presented instance. Dispatched as the instance-forge round
 (new-file leaf modules, M1 coexistence rule enforced). (a) also = groundwork for
 the wave-D RelCarrierPack instance on the census critical path.
+
+## FORGE ROUND FOLD-IN (2026-07-31, commits bf023cd + aa55409 + c02cca5;
+## note: the safety classifier was down during subagent review — orchestrator
+## independently verified the sensitive claims: TV_A5b diff = import line +
+## sorry->exact only (git show), TV_A5b recompiled GREEN, all three commit
+## scopes = new leaf files + notes only)
+FORGE-A PROVED: R7_ramifiedForge.lean — ramifiedStage : Stage 2 F4 (e=2, h=5;
+the FIRST ramified Stage in the corpus), forged through the PROVED S9_transStage
+constructor (no hand build needed; method note in R7_RAMIFIEDFORGE_RECORD).
+Byproducts: bStageP_stageCoreL (first base-pin StageCoreL assembly; discharges
+HK-16 childStage_gate's h_sigma) + full TransitionCoreL record. QUEUE ITEM 13
+EVIDENCE NOW UNCONDITIONAL: offsetPPin_isEmpty_unconditional (every policy,
+IsEmpty). Wave-D groundwork for BP1.
+FORGE-B PROVED: TV_A5b_forge.lean — TWO compiled realizable root nodes over G1's
+toyStage; full TreeModel + CellAssign carrier with EXACT child_cover at n=2/p=2;
+TV_A5b.lean:87's fenced existence statement DISCHARGED AS-IS (repo sorry census
+-1). The sealed E5:311-342/R4 prediction CONFIRMED-COMPILED: (U)/(R) necessity
+as named HC-2/D4R0K hypotheses is machine-certified; KB13's RootTrackMem premise
+certified non-redundant. M1 clean.
+PROBE-C: item 16 (HK15 IAug) EVIDENCE-COMPLETE (HK15_iaugProbe.lean, M1-clean,
+HK47 not imported). Item 17 (U10d) kernel PROVED (confine_bound_fails: the bound
+fails at EVERY i; zcStepConfineStmt_false_of_config packaged) — the exists-config
+instantiation waits on THE 2-NODE GATE (HK-37: none on disk), same wall as
+U1_negWitness's perimeter.
+CONVERGENCE (synthesis duty): FOUR standing obligations meet at ONE missing
+artifact — a concrete 2-node History (bStageP root -> ramifiedStage child):
+HK-22 (the compiled 2-node instance gating the HK-06 wave, item 3), U10d
+instantiation (item 17), U1_negWitness honesty perimeter, and the U15 SEED-EXIST
+wall's first real test. Forge-A supplies both stages + the TransitionCoreL seam
++ IsNodeLift ingredients. THE 2-NODE GATE dispatched as the next autonomous unit.
