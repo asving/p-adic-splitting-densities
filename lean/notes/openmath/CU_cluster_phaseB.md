@@ -1,4 +1,4 @@
-# The CU re-label cluster (CU-2, CU-2t, CU-3, CU-4, CU-5, CU-6, CU-7) — consolidated Phase-B unit (Fable "CUC", 2026-07-31; **R2** 2026-07-31, unit CU2t; **R3** 2026-07-31, unit CU2t, light)
+# The CU re-label cluster (CU-2, CU-2t, CU-3, CU-4, CU-5, CU-6, CU-7) — consolidated Phase-B unit (Fable "CUC", 2026-07-31; **R2** 2026-07-31, unit CU2t; **R3** 2026-07-31, unit CU2t, light; **R4** 2026-07-31, unit CU2t, prose)
 
 *(R2 applies the `CUC_pass1_verify.md` corrections in place: the F1 CRITICAL
 (Θ^τ blind to ν) + its F2 root (undefined consistency predicate) repaired in
@@ -18,6 +18,23 @@ scope vs the deep exact-key corner, now fenced to the Corollary); G3 — the
 (§1 flag, §8 owed pointer, §9.5 touch (5)); G4 — (c1) quoted verbatim in
 §9.2a; M5/M6 — label/record fixes. Disposition table: §11. Verified cores
 byte-stable again — no proof body touched at R3.)*
+
+*(R4 — prose repairs, per the adjudication of `CU2t_R3_verify.md` (pass
+CU2tp: SOUND-WITH-GAPS, 0 critical, 2 gaps, 1 minor; both R3 logic repairs
+VERIFIED): G-α — (T-READ) RE-GRADED honestly: its (RC-read) content is
+OL-2-min/OL-5-type read-semantics CONFORMANCE (mathematics-grade, O-3
+conformance-unit proof routes), not "engine bookkeeping"; graded in that
+family, with the per-case decomposition displayed — at k' ≥ 1 an OL-2-min
+instance + a new terminal-binding clause, at k' = 0 NO decomposition and NO
+sibling anywhere in the OL residue. The THREE-row count stands. G-β — the
+false "meanwhile EXECUTED / (1)–(3) are now AMENDMENTS" fold-state note
+corrected: the tree's CU-2t sites are byte-stable since DELTA 3 (pre-R2);
+touch (2) is a FIRST execution; only the ROOT ever folded a two-row count,
+and it has since folded the three-row count (ROOT REVISION 4). What the
+tree still owes is enumerated at §9.5. M-γ — the §9.1 carrier note's a₀ ≥ 2
+restriction displayed. Disposition table: §12. Edits confined to §9.4/§9.5
+pricing prose + one §9.1 clause + §9.7's grade line — no proof body,
+statement, or tie logic touched; every R3-verified core byte-stable again.)*
 
 **Unit type: RE-LABEL CONSOLIDATION.** Per the O3adj adjudication (§3.1) and the
 tree's DELTA-2 §D2.3, the K-RUN-C composition has exactly ONE new proof (CU-1,
@@ -598,10 +615,14 @@ machine record.
 
 **Carrier note (a finding of this unit, displayed — nothing edited).**
 Under W3/W5 as printed in O-2a rev 5 (C1), the CONCATENATION (𝐇°; ν) is a
-well-formed 𝔈 element only when every interior selection has μ ≥ 2 — so it
-is 𝔈-legal in the (τ-hen) case below (k' = 0; Theorem 1 case (ii)'s shape),
-but at a saturated prefix (μ_{k'} = 1) appending ν would VIOLATE W3's
-interior clause. §2's display "𝐇 = (𝐇°; ν)" is therefore to be read as the
+well-formed 𝔈 element only when every interior selection has μ ≥ 2 AND —
+W3's second clause, "a₀ ≥ 2 if k ≥ 1", which fires as soon as ν is
+appended — the track has a₀ ≥ 2. So [R4, CU2tp M-γ — the a₀ restriction
+was displayed in §9.2 but loose here] it is 𝔈-legal in the (τ-hen) case
+below ONLY at a₀ ≥ 2 (k' = 0; Theorem 1 case (ii)'s shape); at a₀ = 1 —
+the Hensel booking — there is no 𝔈-legal concatenation either, the seam
+object being (ρ₀) plus the machine record (§9.2); and at a saturated
+prefix (μ_{k'} = 1) appending ν would VIOLATE W3's interior clause. §2's display "𝐇 = (𝐇°; ν)" is therefore to be read as the
 seam PAIR; the dressed history of a (τ-irr)-decided branch is the
 all-continuing 𝐇° itself (consistent with OL-4's "a run emits at most one
 terminal record, last" — the record exists run-side), and Θ^τ below is
@@ -899,9 +920,11 @@ configuration" while admitting the corner booking). Both repaired below.]
   (T-DEC-dec) site, the emitted terminal record's shape/position fields
   (e, h, ℓ, s, u), with sel = ⊥, are the (c1)-shape datum of the
   level-(k'+1) polygon side — i.e. the emitted ν satisfies (RC-read)
-  (Definition RC, §9.2a, where (c1) is now displayed). Engine READ
-  bookkeeping: the terminal record's shape fields are written FROM the
-  level-(k'+1) polygon read the engine performs at the decided
+  (Definition RC, §9.2a, where (c1) is now displayed). Read-semantics
+  CONFORMANCE — re-graded at R4 (CU2tp G-α; R3's "engine READ
+  bookkeeping" label was unjustified; grade + per-case decomposition in
+  the pricing note below): the terminal record's shape fields are written
+  FROM the level-(k'+1) polygon read the engine performs at the decided
   configuration — not defaults, not copies of the last continuing read.
   No other row can supply this: Cons_f constrains no terminal field
   (Lemma R's terminal non-claim, §9.1), (T-DEC-dec) speaks only of the
@@ -926,20 +949,54 @@ and survives on those alone. Corner-booked emissions, if any, are fenced
 to the Corollary by (T-DEC-cor) and are NOT covered by this tie.
 
 **Pricing of (T-DEC)/(T-READ)/(T-VERD) (R3 correction of the R2
-correction).** All three are GD-4-family instances (D2.2:
+correction; grading corrected at R4, CU2tp G-α).** (T-DEC-dec),
+(T-DEC-cor) and (T-VERD) are GD-4-family instances (D2.2:
 "emission/record discipline — engine bookkeeping, not GMN mathematics",
-proof-by-construction routes on record); none is in OL-4's printed clause
-list (which covers W-laws + (c0) only) — a displayed SCOPE NOTE owed to
-the GD-4 owner: GD-4 gains the THREE terminal rows, three genuinely NEW
-unproved obligations on the mandatory path, absent from every pricing
-before this unit's. Said plainly: the GD-4 residue count changes AGAIN —
-rev 1 priced ZERO new inputs (retracted at R2 per CUC F4), R2 priced TWO
-(and those two were already folded downstream: tree §D3.5/§D2.3, ROOT r4
-Step 11 + its §3.3 GD-4/GD-6 row), and the honest count is THREE, so the
-executed folds are one row short and owe a +1 amendment (§9.5 touches
-(1)–(3)). What is preserved: no new open FAMILY. The §9.2a inventory
-closure and (T-DEC-cor)'s exhaustiveness clause ride the same scope note
-(consumed by nothing in this lemma). The machine-side home of
+proof-by-construction routes on record). **(T-READ) is NOT of that
+grade** — R3 filed it under the same label, unjustified by the row's own
+content (the CU2tp G-α gap, accepted): (RC-read) asserts CONFORMANCE of
+emitted fields to a GMN object (a side of N_{k'+1}^−(f) read through ι
+over c = Θ(𝐇°)) — exactly the statement TYPE of O-2a's OL-2-min and
+OL-5, which O-2a rev 5 §4 declares as open MATHEMATICAL conformance
+lemmas whose intended proof routes run through the O-3 conformance-unit
+family, NOT proof-by-construction on record. (T-READ) is therefore
+graded IN THAT FAMILY (read-semantics conformance, the GD-2/GD-5 grade),
+with the per-case decomposition displayed:
+* **at k' ≥ 1 (DEC(τ-irr)):** OL-2-min's premise — "suppose the engine's
+  stage read at level i + 1 on f over c emits the record
+  (e, h, ℓ, s, u, …)" — is NOT restricted to continuing records, so the
+  mathematical half of (T-READ) (read-conformance of the level-(k'+1)
+  stage read over the Cons_f chain c of order k' ≥ 1) is an OL-2-min
+  INSTANCE, already-priced GD-2-family residue; what is genuinely NEW at
+  k' ≥ 1 is the terminal BINDING clause — that the emitted terminal
+  record IS the record of that stage read — the exact clause OL-6
+  supplies for continuing records and explicitly exempts here
+  ("Terminal records need no binding clause"). That binding half is
+  bookkeeping (GD-4 grade);
+* **at k' = 0 (DEC(τ-hen)):** NO such decomposition exists — OL-5's
+  premise covers only "the continuing record ν₁", and its scope note
+  reads "Histories whose first node is terminal need no level-1 clause"
+  — so the level-1 leg of (T-READ) is new mathematics-grade conformance
+  content with NO sibling anywhere in the OL residue (an OL-5-type
+  terminal sibling, owed from scratch).
+None of the three is in OL-4's printed clause list (which covers W-laws
++ (c0) only) — the displayed SCOPE NOTE stands, now with the honest
+family split: GD-4 gains (T-DEC-dec)/(T-DEC-cor)/(T-VERD) plus
+(T-READ)'s terminal-binding half; the OL-2-min/OL-5 conformance family
+gains (T-READ)'s read-semantics content ((T-READ) is thereby the scope
+note's SECOND semantic clause, after K-OB-E). The COUNT is unchanged by
+the re-grade: THREE genuinely NEW unproved obligations on the mandatory
+path, absent from every pricing before this unit's. "No new open
+FAMILY" also survives, but only in the corrected sense — GD-2, GD-4 and
+GD-5 all pre-exist as open families; what R3 got wrong was WHICH family:
+a GD-4 owner working proof-by-construction cannot discharge (T-READ)'s
+(RC-read) content. Said plainly: the residue count changed AGAIN across
+the revisions, 0 → 2 → 3 — rev 1 priced ZERO new inputs (retracted at
+R2 per CUC F4), R2 priced TWO, R3 priced THREE; the downstream
+fold-state is at §9.5 (CORRECTED at R4, CU2tp G-β: only the ROOT ever
+executed a two-row fold — the tree never folded any count). The §9.2a
+inventory closure and (T-DEC-cor)'s exhaustiveness clause ride the same
+scope note (consumed by nothing in this lemma). The machine-side home of
 (T-DEC-dec)/(T-VERD) is O-1thr §1.4's record mechanics ("IrrHalts ⟺
 μ_last = 1"; "irrVerdict = (accE, accF) a pure record function") — cited
 here as CORROBORATION ONLY, not consumed, so CU-2t's pass conditionality
@@ -952,8 +1009,11 @@ machine-side home on file — it is purely owed.
 the OL statements consumed via CU-2] · TB-CAP's D-12r perimeter [(τ-irr)
 window leg only; the (τ-hen) leg is unconditional T-6 content] · the GD
 residue: via CU-2/(T-PREFIX) = OL-1..OL-6, plus OL-1 directly at k' ≥ 1 in
-clauses (i)/(ii), plus the (T-DEC)/(T-READ)/(T-VERD) GD-4 rows (§9.4 —
-THREE rows after the R3 G1/G2 corrections).
+clauses (i)/(ii), plus the (T-DEC)/(T-READ)/(T-VERD) terminal rows (§9.4 —
+THREE rows after the R3 G1/G2 corrections; graded at R4 per CU2tp G-α:
+(T-DEC-dec)/(T-DEC-cor)/(T-VERD) + (T-READ)'s terminal-binding half GD-4,
+(T-READ)'s read-conformance content OL-2-min/OL-5-family = GD-2/GD-5
+grade).
 
 **Pricing correction (R3, CU2tpass G1 — supersedes R2's "TWO NEW open
 inputs", which itself replaced rev 1's "zero new open inputs"; the count
@@ -962,27 +1022,53 @@ has moved 0 → 2 → 3 across the revisions and this is stated plainly).**
 obligations in no printed clause list on file before §9.4 displayed them.
 R2 displayed and priced only (T-DEC)/(T-VERD); the (RC-read) supply for
 emitted records had NO row, so the R2 residue correction itself
-undercounted by one — the CU2tpass G1 finding, accepted. They are folded
-into GD-4 (so no new open FAMILY), but the mandatory-path residue is the
-§D2.3 pricing PLUS these three rows. **Ledger + ROOT touches owed
-(enumerated for the orchestrator; NOT executed here, other-file
-discipline). Note: the R2-owed touches were meanwhile EXECUTED at the
-two-row count (tree §D3.5/§D2.3; ROOT r4 Step 11 + §3.3 GD-4/GD-6 row),
-so (1)–(3) are now AMENDMENTS of executed text, not first executions:**
+undercounted by one — the CU2tpass G1 finding, accepted. Family homes per
+the R4 grading (CU2tp G-α, §9.4): (T-DEC-dec)/(T-DEC-cor)/(T-VERD) +
+(T-READ)'s terminal-binding half fold into GD-4; (T-READ)'s
+read-conformance content is graded in the OL-2-min/OL-5 conformance
+family (GD-2/GD-5) — no new open FAMILY, all three pre-exist. The
+mandatory-path residue is the §D2.3 pricing PLUS these three rows.
+**Ledger + ROOT touches owed (enumerated for the orchestrator; NOT
+executed here, other-file discipline). Fold-state note — CORRECTED at R4
+(CU2tp G-β; R3's "the R2-owed touches were meanwhile EXECUTED at the
+two-row count … so (1)–(3) are now AMENDMENTS of executed text" was
+FALSE for the tree, and doubly imprecise: R2's §10 F4 owed list named no
+ROOT touch, and the ROOT folds were wave-14 events, not R2 executions.
+The actual state: the tree's CU-2t sites are byte-stable since DELTA 3,
+which PRECEDES R2 — §D3.5 still carries the rev-1 ZERO-count sentence,
+§D2.3's CU-2t bullet carries NO row count at all, and DELTA 4 (unit
+TREE-GAPS) was append-only elsewhere in the file, recording the R3 event
+post-audit while amending neither site. Only the ROOT was executed at
+the two-row count (r4: Step 11 + §3.3 GD-4/GD-6 row), and it has SINCE
+been executed at the THREE-row count (ROOT REVISION 4: Step 11
+"including the THREE NEW GD-4 terminal rows" + the §3.3 row, folding
+this section's R3 amendment). So of (1)–(3): (1) amends a ZERO-count
+sentence — rewrite, not increment, as demanded below; (2) is a FIRST
+execution — there is no two-row text at §D2.3 to amend; (3)'s ROOT half
+is EXECUTED at three rows and now owes only the R4 grading sync. What
+the tree still owes: touches (1) and (2) IN FULL, at the three-row count
+with the R4 grading:**
 (1) tree, GD-4 node / §D2.2 row + §D3.5 — the clause list reads THREE
 terminal rows (T-DEC)/(T-READ)/(T-VERD) citing §9.4, with the (T-DEC)
-split noted; §D3.5's surviving "zero new open inputs; the two
-engine-bookkeeping terminal rows (T-DEC)/(T-VERD)" sentence — which
-predates even the R2 correction — is superseded twice over and must be
-rewritten, not just incremented; (2) tree §D2.3, the CU-2t pricing line —
-"OPEN (one lemma) over the GD residue" → "… over the GD residue + the
-THREE GD-4 terminal rows"; (3) ROOT's Step 11 row + §3.3 GD-4/GD-6 row
-and the ledger's CU-2t wave-8/wave-14 lines — "+2 GD-4 rows" → "+3 GD-4
-rows" (the ledger's 85670f7 adjudication entry already records "the GD-4
-residue is THREE rows, not two"; the older lines predate it);
+split noted AND (T-READ)'s R4 grade (read-conformance family, not GD-4
+bookkeeping — only its binding half is GD-4); §D3.5's surviving "zero new
+open inputs; the two engine-bookkeeping terminal rows (T-DEC)/(T-VERD)"
+sentence — which predates even the R2 correction — is superseded twice
+over and must be rewritten, not just incremented; (2) tree §D2.3, the
+CU-2t pricing line — a FIRST execution: "OPEN (one lemma) over the GD
+residue" → "… over the GD residue + the THREE terminal rows (§9.4: GD-4
++ the re-graded (T-READ))"; (3) ROOT's Step 11 row + §3.3 GD-4/GD-6 row
+and the ledger's CU-2t wave-8/wave-14 lines — the three-row count is
+EXECUTED (ROOT REVISION 4; the ledger's 85670f7 adjudication entry
+already records "the GD-4 residue is THREE rows, not two"; the older
+wave-8/wave-14 lines predate it and stand as history); remaining: sync
+the §3.3 row's "(T-READ) … GD-4 obligations" wording to the R4 grade at
+ROOT's next revision;
 (4) GD-4's owner brief, at its next revision — absorb the §9.4 scope note
-(the three rows + the §9.2a inventory-closure question + (T-DEC-cor)'s
-exhaustiveness clause, the last jointly with GD-8);
+AS RE-GRADED at R4 (the three rows with (T-READ)'s conformance content
+carved out to the OL-2-min/OL-5 family — a proof-by-construction route
+cannot discharge it — + the §9.2a inventory-closure question +
+(T-DEC-cor)'s exhaustiveness clause, the last jointly with GD-8);
 (5) [NEW at R3, CU2tpass G3] the O-2a owner / the P(O-2a r5) pass charge —
 deliver the §9.1 W3 carrier finding together with the 2(D)-scope dichotomy
 (§1's R3 flag): decide whether 2(D) as printed asserts continuing-part or
@@ -1037,15 +1123,22 @@ the −∞ side, and −∞-length = ord_{φ}(f)?); (3) the ω = μ identificati
 dependence on (c2) + the pinned ω-definition; (4) that (ii) consumes
 Theorem 2(B) only at its displayed hypothesis row and adds no hidden
 realization semantics; (5) that (T-DEC-dec)/(T-DEC-cor)/(T-READ)/(T-VERD)
-are engine-bookkeeping rows (GD-4 grade), not smuggled mathematics; (6) that the Corollary's
+are engine-bookkeeping rows (GD-4 grade), not smuggled mathematics [R4:
+the pass ANSWERED this item against the charge's expectation — (T-READ)'s
+(RC-read) content IS mathematics-grade (CU2tp G-α); re-graded at §9.4];
+(6) that the Corollary's
 (REP-IRR) is genuinely quarantined out of the lemma's grade; (7) the
 j₀ ≤ 1 separability argument at every level; (8) that Θ^τ creates no
 collision with Θ-images (the trailing-⊥ separation). Falsifier F1/F3/F5
 citations are checkable against O-2a rev 5 §6 verbatim.
 
 **Grade after this unit: CU-2t = PROVED-UNVERIFIED, conditional per §9.5
-(as corrected at R2, re-corrected at R3 — three GD-4 rows); fresh hostile
-pass owed on the R3 text (charge: §11).**
+(as corrected at R2, re-corrected at R3 — three terminal rows — and
+re-graded at R4). The owed pass RAN on the R3 text (CU2tp,
+`CU2t_R3_verify.md`: SOUND-WITH-GAPS, 0 critical — both R3 logic repairs
+VERIFIED); its G-α/G-β/M-γ prose findings are repaired at R4 (§12); per
+the verifier's disposition recommendation, no further full pass — a
+spot-check of the R4-edited paragraphs serves.**
 §2's "OPEN (one lemma)" and §8's table row and residue line are SUPERSEDED
 accordingly (append-only at §9 time; R2 subsequently edited §1, the §2
 note, and §§9.2–9.5 in place — the diff record is §10). Owner question
@@ -1162,4 +1255,63 @@ pointer), §9.2a ((c1) display + caveat row names), §9.3 (iii-labels only),
 (conditionality line, pricing correction, five touches, consumer
 qualifier), §9.7 (charge item (5) + grade line), this §11. The FIVE
 ledger/ROOT touches of §9.5 are OWED, not executed (three of them
-amendments of already-executed two-row folds).
+amendments of already-executed two-row folds). [R4, CU2tp G-β: this
+paragraph's closing parenthetical repeats the R3 fold-state error — see
+§12; the corrected state is at §9.5.]
+
+---
+
+## 12. R4 record — CU2tp dispositions (unit CU2t, 2026-07-31; prose repairs)
+
+*(R4 was charged, per the adjudication of the CU2tp hostile pass on the R3
+text (`CU2t_R3_verify.md`: SOUND-WITH-GAPS, 0 critical, 2 gaps, 1 minor;
+both R3 logic repairs — the (T-READ) no-other-supplier display with
+per-half tie consumption, and the (T-DEC-dec)/(T-DEC-cor) split — VERIFIED
+correct as displayed), with the two prose gaps + the minor. No finding
+touches the lemma, the tie's logic, or the three-row arithmetic (all
+verified by the pass). Verified cores byte-stable AGAIN: Lemma CU-2t
+clauses (i)/(ii)/(iii)/(iv), the ENTIRE §9.3 proof block, Definition RC +
+the (c1) display (§9.2a), the Corollary, §9.2, §9.6, the §6.1 audit, and
+the §10/§11 records are unedited at R4 (except one flagged annotation to
+§11's files paragraph, displayed there). R4 edits sit in §9.1 (one
+carrier-note clause), §9.4/§9.5 (pricing + fold-state prose), §9.7 (grade
+line + one bracket on charge item (5)), the header, and this §12.)*
+
+| CU2tp finding | class | disposition at R4 |
+|---|---|---|
+| G-α — (T-READ)'s "engine bookkeeping, not GMN mathematics" GD-4 grading unsupported by the row's own content | GAP (family/grade attribution) | **FIXED in place — the row is RE-GRADED.** §9.4's pricing note now grades (T-READ) in the OL-2-min/OL-5 read-semantics-conformance family (GD-2/GD-5 grade — mathematics-grade conformance to a GMN object, intended proof routes through the O-3 conformance-unit family, NOT proof-by-construction), with the per-case decomposition displayed: at k' ≥ 1 the mathematical half is an OL-2-min INSTANCE (its premise, quoted, is not restricted to continuing records — already-priced GD-2 residue) and the genuinely new half is the terminal BINDING clause OL-6 explicitly exempts ("Terminal records need no binding clause") — that half stays GD-4; at k' = 0 NO decomposition exists (OL-5's premise covers only "the continuing record ν₁"; its scope note exempts terminal-first histories) — the level-1 leg is new mathematics-grade conformance content with NO sibling anywhere in the OL residue. The row's own label ("engine READ bookkeeping") replaced by the conformance grade; (T-READ) is flagged as the scope note's SECOND semantic clause after K-OB-E. **The THREE-row count stands** (three genuinely NEW unproved mandatory-path obligations); "no new open family" survives only in the corrected sense (GD-2/GD-4/GD-5 all pre-exist) and is restated that way. §9.5's conditionality line, family-homes sentence, and touches (1)/(2)/(4) synced to the grading; touch (3) gains the ROOT §3.3 grading-sync line. |
+| G-β — "the R2-owed touches were meanwhile EXECUTED at the two-row count … (1)–(3) are now AMENDMENTS of executed text" false for the tree; §9.5 contradicted its own item (1) | GAP (record-keeping accuracy) | **FIXED in place — the fold-state note rewritten to the verified repo state.** The tree's CU-2t sites are byte-stable since DELTA 3, which PRECEDES R2: §D3.5 still carries the rev-1 ZERO-count sentence, §D2.3's CU-2t bullet carries NO row count at all, and DELTA 4 (unit TREE-GAPS) was append-only elsewhere (it records the R3 event post-audit, amending neither site). Only the ROOT was executed at the two-row count (r4: Step 11 + §3.3 GD-4/GD-6 row — wave-14 events, not items of R2's §10 F4 owed list, which named no ROOT touch), and it has SINCE folded the THREE-row count (ROOT REVISION 4: Step 11 + §3.3 row). Consequently, stated plainly at §9.5: touch (1) amends a ZERO-count sentence (rewrite, not increment); **touch (2) is a FIRST execution** — there is no two-row text at §D2.3 to amend; touch (3)'s ROOT half is EXECUTED at three rows, owing only the R4 grading sync. **What the tree still owes: touches (1) and (2) IN FULL, at the three-row count with the R4 grading.** §9.4's parallel "already folded downstream" clause corrected to point at the fixed §9.5 note; §11's files-paragraph repetition of the error annotated in place (the §11 table is otherwise left byte-stable as the R3 document of record, per the §10/M6 precedent). |
+| M-γ — §9.1's "𝔈-legal in the (τ-hen) case" loose: W3's "a₀ ≥ 2 if k ≥ 1" clause fires once ν is appended | MINOR | **FIXED.** The carrier note now displays the a₀ ≥ 2 restriction: 𝔈-legal in the (τ-hen) case ONLY at a₀ ≥ 2; at a₀ = 1 (the Hensel booking) there is no 𝔈-legal concatenation either — the seam object is (ρ₀) plus the machine record, as §9.2 already displayed correctly. §9.1 and §9.2 now agree read-alone. |
+
+**Falsifier duty (falsifier-first, R4).** No mathematical claim changed —
+G-α moves a grading label between pre-existing families, G-β corrects a
+fold-state record, M-γ tightens a display to what §9.2 already said — so
+the §9.6 record stands unedited, and the new rows' owed refutable surfaces
+recorded at §11 stand unchanged (they are owed WITH the rows; (T-READ)'s
+harness duty now travels to the conformance-family owner alongside the
+GD-4 owner per the re-grade).
+
+**What R4 does NOT change:** the three-row count and its 0 → 2 → 3
+history; every conditionality key P(·) and the §0 registry rows; the
+falsifier record §9.6; the §6.1 OB2/D-11 audit; the Corollary and its
+(REP-IRR) quarantine; all proof bodies, Definition RC, and the tie's
+per-half consumption display; the §10/§11 records as documents of record
+(one displayed annotation at §11's files paragraph excepted).
+
+**Grade after R4: CU-2t = PROVED-UNVERIFIED (R4), conditional per §9.5 as
+corrected — the GD residue includes the THREE terminal rows at their R4
+grades ((T-DEC-dec)/(T-DEC-cor)/(T-VERD) + (T-READ)'s binding half GD-4;
+(T-READ)'s read-conformance content OL-2-min/OL-5-family). Per the CU2tp
+disposition recommendation, NO further full pass is owed; a spot-check of
+the R4-edited paragraphs (§9.1 carrier note, §9.4 pricing note, §9.5
+fold-state note + touches) serves.**
+
+**Files (§12):** R4 edits confined to
+`lean/notes/openmath/CU_cluster_phaseB.md` (this file): header + R4
+parenthetical, §9.1 (carrier-note a₀ ≥ 2 clause), §9.4 ((T-READ) row
+label + pricing note), §9.5 (conditionality line, family-homes sentence,
+fold-state note, touches (1)–(4)), §9.7 (item-(5) bracket + grade line),
+§11 (one flagged annotation), this §12. Still owed elsewhere (per §9.5):
+tree touches (1)–(2) in full; the ROOT §3.3 grading sync; the GD-4 owner
+brief (touch (4)); the O-2a delivery (touch (5), rides the P(O-2a r5)
+pass).
