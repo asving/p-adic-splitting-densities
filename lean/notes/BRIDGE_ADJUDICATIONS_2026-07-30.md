@@ -804,3 +804,17 @@ FLAG-CONDITIONAL on a 5-flag roster classified [S]tatement-matching vs
 [M]athematical); O3design REVISED (right-sized per all 14 V16 findings;
 JC-0 first; LC-COH + ADEQ + SEM-LAWFUL named; TT-DET flagged riskiest).
 V21 (design re-review) / V22 (Dfloor) / V23 (O5triple) launched.
+
+## O-1THR REV 3 (2026-08-01, commit 60d0ac7)
+(M6c) DECLARED + PROVED-ON-PERIMETER (Lemma WGEO; root states + degree-1
+first transitions outright; general states modulo (V1) MacLane
+multiplicativity + (V2) the GMN dictionary — both citation-grade). Corollary
+VTX simultaneously discharges (M6b)(i) + the (N4)-upper, SHRINKING the
+interface. CRITICAL DISCOVERY via falsifier-first: rev 2's window heights
+were NOT the OM composite — depth-2 falsifier refuted the plain reading
+(7,472 phantom violations incl. at a saturated state) and confirmed the
+repaired sloped/sheared machine exhaustively (41,720 instances, 0
+violations), forcing the honest convention pin. All pass-2 findings
+repaired (REALIZED single notion + audit table; Thm 2(a) unconditional;
+exhaustion caveat (E-N) stated OPEN). Pass 3 (Codex, V24) launched —
+§4 needs re-verification against the sheared displays.
