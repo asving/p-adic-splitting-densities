@@ -707,3 +707,22 @@ ADJUDICATION: rev 3 required — declare (M6c) as a NAMED interface condition
 window-length genre, possibly literature-adjacent via GNP/BNS window bounds),
 fix the equivocation + ledger + definitions. Model diversity earned its
 cost: pass 1 (Codex) had confirmed the same sections but missed the tag.
+
+## WAVE 3 LANDED (2026-08-01, commits 89dd9a1/53d97c9/3d57bc8)
+O3design DESIGNED: the joint O-3+O-2b cluster as ONE well-founded induction
+(lex (N, k)) bundling six faces F1-F6 in the O-2a rev-2 carrier; classifier
+quantifier ELIMINATED (traces = Cons^tau sets); 16 prover units JC-*; 12
+falsifiers with the cross-polynomial trace gate G-F6 FIRST; V5's defects
+answered by construction; 5 asks queued for plan review. -> V16.
+Dfloor PROVED (all three): MEAS-BRIDGE (clause (iv) EXACT in the strict
+convention via the verified M05 Krasner import; Haar built from scratch);
+SUM-ONE (TRANSFER in honest hypothesis-explicit form; n=1,2 unconditional);
+BASE-CASES (the n=1 uniformity ROOT proved outright; conventions pinned).
+Falsifiers exhaustive, 0 failures. -> V17.
+O5triple PARTIAL-STRONG: Theorem A UNCONDITIONAL — leaf/factor BIJECTION
+with product identity + pinned (e,f) + checksum, 3 named GMN transcription
+flags; classifier triple priced clause-by-clause at interface (I-1)-(I-3);
+SHARPENING: D-7b coverage consumes NO no-missing (injectivity + checksums
+force surjectivity by counting); STEEP: corner leaf is lift-variant
+realization with lift-INVARIANT verdict; 1341/1341 falsifiers + a
+load-bearing negative control. -> V18.
