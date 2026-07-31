@@ -1046,3 +1046,8 @@ verifier's refutation displayed; imports completed to EIGHT named Facts
 tail); VERIFIED adjudications for GD23/CU-1/O4T ride the checks + the
 pending-verdict registry at the next harvest, alongside VC1 (Phase C pass 1
 on the ROOT document) and the D-11/O-11 r2s.
+
+## HARVEST (2026-08-02): GD23 VERIFIED (leaf #4 — zero-critical pass 2 +
+## GAPS-CLOSED check); O4T repair checked clean but owes one full clean pass;
+## CU-1 GAPS-REMAIN -> r5; VC1 = COMPOSITION-GAPS on the ROOT document ->
+## repair + pass 2. PROJECT_STATE refresh dispatched.
