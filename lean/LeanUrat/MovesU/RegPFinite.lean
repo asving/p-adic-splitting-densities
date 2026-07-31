@@ -372,12 +372,14 @@ theorem RegPin.entryList_eq {n : ℕ} {C : UCarriers n} {p : ℕ} {D : RegData p
       subst hdeq
       refine ⟨d, hd, P.legEquiv b l, ?_⟩
       rw [P.betaLeg_pin hdet b l (↑d) d.pos hδ, P.legSt_pin b l]
+      rfl
     · rintro ⟨d, hd, r, rfl⟩
       have hmem : (d : ℕ) ∈ D.depthSet := by
         rw [P.depth_pin]; exact Finset.mem_image_of_mem _ hd
       refine ⟨(d : ℕ), hmem, (P.legEquiv b).symm r, ?_⟩
       rw [P.betaLeg_pin hdet b ((P.legEquiv b).symm r) (↑d) d.pos hmem,
         P.legSt_pin b ((P.legEquiv b).symm r), Equiv.apply_symm_apply]
+      rfl
   show (Finset.univ.image fun ij : D.bidx b × D.bidx b => D.K b ij.1 ij.2)
       ∪ Finset.univ.image (D.bterm b) ∪ Finset.univ.image (D.bsplit b)
       ∪ Finset.univ.image (D.Jcell b) ∪ Finset.univ.image (D.iota b)
@@ -385,6 +387,7 @@ theorem RegPin.entryList_eq {n : ℕ} {C : UCarriers n} {p : ℕ} {D : RegData p
       ∪ (D.depthSet.biUnion fun δ => Finset.univ.image fun l => D.betaLeg b l δ)
       = _
   rw [hK, hbterm, hbsplit, hiota, hbeta, P.Jcell_pin b, P.W_pin]
+  rfl
 
 /-- B, the p-UNIFORM REAL zero/pole locus (M17 Theorem A's B at the instance
     data): the union over the real blocks e ∈ [1, n] of the per-block
@@ -403,16 +406,15 @@ theorem RegPin.zeroPoleSet_eq {n : ℕ} {C : UCarriers n} {p : ℕ} {D : RegData
   letI := D.instB
   unfold RegData.zeroPoleSet realZeroPoleSet
   ext x
-  simp only [Finset.mem_biUnion, Finset.mem_univ, true_and, Finset.mem_attach,
-    exists_true_left]
+  simp only [Finset.mem_biUnion, Finset.mem_univ, true_and, Finset.mem_attach]
   constructor
   · rintro ⟨b, hb⟩
     refine ⟨P.blk b, ?_⟩
     rwa [P.detFull_eq b, P.entryList_eq hdet b] at hb
   · rintro ⟨e, he⟩
     refine ⟨P.blk.symm e, ?_⟩
-    rw [P.detFull_eq (P.blk.symm e), P.entryList_eq hdet (P.blk.symm e)]
-    simp only [Equiv.apply_symm_apply]
+    rw [P.detFull_eq (P.blk.symm e), P.entryList_eq hdet (P.blk.symm e),
+      P.blk.apply_symm_apply e]
     exact he
 
 /-- M17 Lemma 0(iii), instance-independence: the truth value of (REG-p) is a
