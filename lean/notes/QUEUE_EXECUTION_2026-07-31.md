@@ -379,3 +379,13 @@ Interfaces, N2Sigmas, BridgeB15a_r2Neg, V7_w17ii, TV_H1a, TV_H1b).  Root-graph
 Full 1047-module sweep build launched for the whole Moves* cone (the root-graph
 gotcha); result recorded below.
 Capstone path: NO OM/* file touched; AxChk_baseline run after the sweep — see below.
+
+ITEMS 4+10 VERIFICATION RESULT (post-launch fill-in): full 1047-module explicit
+sweep build GREEN (9605 jobs, 0 errors; log lean/logs/queue_item4_10_sweep_071559.log).
+`lake env lean LeanUrat/AxChk_baseline.lean` exit 0, footprints: zero sorryAx
+anywhere, capstones Lean-core (+ the declared PadicMeasure axioms on the measure
+route only) — NO regression (the Moves* corpora are outside the root graph, so the
+capstone path is untouched by construction).  Axiom census on the new artifacts:
+w17ii_wave4 / w17ii_pin / n2_polyGeomLaws_nonempty / n2_countLaws_block2 /
+n2_tcount_val / n2_scount_val / negCarrier_shdom_finite ALL exactly
+[propext, Classical.choice, Quot.sound].
