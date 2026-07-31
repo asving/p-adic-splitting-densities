@@ -123,3 +123,31 @@ an order where (V1) is not yet supplied (the cumulative reading of (KP)).
 (iv) Confirm the brief's §8 consumption table promises nothing beyond §0's
 status table. (v) The three flags (T-1, T-2, ML-scope) are single displayed
 sentences — confirm they are flagged at every use site.
+
+## 7. Rev 2 (2026-07-31, post-V26; supersedes §4's honesty summary)
+
+V26 (`V26_gd23.jsonl`, Codex fresh context) returned UNSOUND: 3 criticals,
+4 gaps — while CONFIRMING the order-≤1 layer, DEVID, and the arbitrary-DVR
+generality audit. `GD23_phaseB_verifybrief_rev2.md` is the repaired brief
+(hand THAT to the next hostile pass); confirmed statements/proofs carried
+byte-stable (checked by diff). The repairs: (V26-1) the missing MacLane
+irreducibility premise is DECLARED as the new (KP) clause (KPirr) — proved
+at j = 0 by KEY-g(ii) — and the tower composition recomposed against the
+printed Def 4.1 via the new proved Lemma BRIDGE; (V26-2) the false
+"one anchor absorbs all slot twists" deduction is DELETED — (GR-B)(2′) now
+IS the anchored-march identity (FGMN Thm 4.2's shape), with both
+countermodels displayed (V26's τ_κ = a^κ / 1+z ↦ 1+az, and CU-1's
+slot-fresh reading refuted 1,818× at depth 3); GD-3(full)/(slot law)/[F.2]
+statements now carry the march; (V26-3) IFACE rescoped per clause (the
+polygon clause rides REC-c1 = GMN scope; rev 0's "any O" row was a scope
+error); (V26-4) POS-g's sub-multiplicativity rescoped to orders ≤ 1
+outright, with the general-order division-control step now displayed,
+conditional on exactly the tower's own package. The LITUNIT pins
+(`LITUNIT_2026-08-01.md`: all five flags MATCH, verbatim quotes) are folded
+in: T-1 = GMN Prop 2.7(1)(3)+Lemma 2.2(2); T-2 = ω-def + Lemma 2.17(2)(3)
++ Def 1.8 (first attainment in the printed proof); ML-scope CLEARED;
+(GR-B) cited clause-by-clause (MacLane 10.2/10.1/11.1–2/12.1/12.2; FGMN
+4.2/4.4/4.8/4.9/5.6(2)/5.13/5.14/5.15). Falsifier-of-record for the march
+clause: CU-1's `o1thr_depth3_check.py` production run (470,736 order-2
+instances, 0 violations under the coherent convention), run before rev 2
+was written.
