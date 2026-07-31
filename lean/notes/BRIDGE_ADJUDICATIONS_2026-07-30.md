@@ -1319,3 +1319,23 @@ CONSECUTIVE-CLEAN COUNTER = ONE. Pass 2 must be model-diverse => VC10 =
 fresh-context FABLE end-to-end (workflow), same charge. VC10 clean =>
 PHASE-C ACCEPTANCE => THE FINAL REPORT to Asvin. Report archived:
 lean/notes/openmath/VC9_root_report.md.
+
+## PHASE-C ACCEPTANCE: THE BAR IS MET (2026-08-03)
+VC10 (FABLE, fresh context, hostile falsifier-first, max effort, REVISION
+8): COMPOSITION-SOUND — zero blockers; 3 advisories, all display/ledger
+hygiene, verifier's own words "none breaks the composition". With VC9
+(Codex, same document, zero findings): TWO CONSECUTIVE CLEAN MODEL-DIVERSE
+END-TO-END PASSES on identical text (no repairs between passes).
+ACCEPTANCE per the standing bar. The accepted object: (ROOT-C) — clauses
+(0)/(SQ) UNCONDITIONAL; (R)/(UB) conditional on the displayed groups
+(H1)-(H7) (ten [M] rows) + pinned [T] literature + K3-delta; (ROOT)
+remains the TARGET, separation displayed, no silent upgrade (VC10 checked).
+POST-ACCEPTANCE HYGIENE QUEUE (r10, does not reset the counter): VC10-1
+O-14a' grade display (vocabulary-conformant grade or named pass row),
+VC10-2 D-12r/(E-N) Enters-lists gain the (UB) transport entry, VC10-3 the
+6(iii)-(ix)+7 residue list run to closure ((H4a)/(K3-delta) via K3).
+STANDING NON-[M] OBLIGATIONS (named, unretired): GD-7 flags reading
+session (acceptance precondition per A-7), owed leaf pass-3s (D-11 r3,
+O-11 r3, CUC P(O-2a r5)/P(O-1thr r4)/P(O5t r3)).
+THE FINAL REPORT to Asvin: FIRES NOW. Reports archived: VC9/VC10 at
+lean/notes/openmath/VC{9,10}_*_report.md.

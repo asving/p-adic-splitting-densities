@@ -1388,3 +1388,16 @@ mathematics between the assembly and the theorem. Per-leaf work follows the stan
 falsifier-first attempt → hostile pass → repair rev (cores byte-stable, edits at finding sites
 only) → model-diverse pass 2 → gaps-closed check → harvest adjudication; PROVED-UNVERIFIED is
 never consumed by an acceptance claim.
+
+---
+## MILESTONE ADDENDUM 2026-08-03: PHASE-C ACCEPTANCE OF THE ROOT COMPOSITION
+docs/ROOT_ASSEMBLY_2026-08-02.md (REVISION 8, commit 12b80bb) ACCEPTED:
+two consecutive clean model-diverse end-to-end passes on identical text
+(VC9 Codex + VC10 Fable, zero blockers each; VC10's 3 advisories =
+display hygiene, queued as r10). Accepted object = (ROOT-C): (0)/(SQ)
+unconditional; (R)/(UB) conditional on displayed groups (H1)-(H7) (ten
+[M] rows = named OPEN mathematics) + pinned [T] literature. (ROOT) stays
+the target. Full trail: lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md
+tail + lean/notes/openmath/VC*_report.md. The Lean division swarm
+(lean/blueprints/BP_I..VI.md REVISION 2 + division_workflow.js) runs in
+parallel; Scaffold/ modules landing wave-by-wave.
