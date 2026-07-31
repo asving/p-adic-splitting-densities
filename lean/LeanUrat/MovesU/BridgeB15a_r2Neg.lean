@@ -2558,7 +2558,9 @@ private lemma cm_shConv (hdet : DetHyp cmT cmRB cm_hK) (σ : Multiset cmT.VType)
   · rw [if_pos hσ]
     have hg0 : σ = cmShape.σ0 + ∑ i, (fun _ : Fin cmShape.k =>
         (0 : Multiset cmT.VType)) i := by
-      rw [Finset.univ_eq_empty, Finset.sum_empty, add_zero]
+      have hsum0 : (∑ i, (fun _ : Fin cmShape.k => (0 : Multiset cmT.VType)) i) = 0 :=
+        Finset.sum_of_isEmpty _
+      rw [hsum0, add_zero]
       exact hσ
     refine (Fintype.sum_eq_single (⟨fun _ => 0, hg0⟩ :
       {g : Fin cmShape.k → Multiset cmT.VType // σ = cmShape.σ0 + ∑ i, g i})
@@ -2569,15 +2571,16 @@ private lemma cm_shConv (hdet : DetHyp cmT cmRB cm_hK) (σ : Multiset cmT.VType)
       apply Subtype.ext
       funext i
       exact i.elim0
-    · rw [Finset.univ_eq_empty, Finset.prod_empty]
+    · exact Finset.prod_of_isEmpty _
   · rw [if_neg hσ]
     haveI : IsEmpty {g : Fin cmShape.k → Multiset cmT.VType //
         σ = cmShape.σ0 + ∑ i, g i} := by
       refine ⟨fun g => hσ ?_⟩
       have hg := g.2
-      rw [Finset.univ_eq_empty, Finset.sum_empty, add_zero] at hg
+      have hsum0 : (∑ i, g.1 i) = 0 := Finset.sum_of_isEmpty _
+      rw [hsum0, add_zero] at hg
       exact hg
-    rw [Finset.univ_eq_empty, Finset.sum_empty]
+    exact Finset.sum_of_isEmpty _
 
 private lemma cm_Rsh (hdet : DetHyp cmT cmRB cm_hK) (σ : Multiset cmT.VType) :
     Rsh cmT cmM cmRB cm_hdc cm_hK hdet cmF (fun _ => pgConst 1 0) σ
@@ -2624,13 +2627,13 @@ private lemma cm_nle_12 : ¬(({w11} : Multiset cmT.VType) ≤ {w12}) := fun h =>
 private lemma cm_nle_21 : ¬(({w11} : Multiset cmT.VType) ≤ {w21}) := fun h =>
   w_ne_11_21 (Multiset.mem_singleton.mp (Multiset.singleton_le.mp h))
 
-private lemma cm_bh1Q_ok16 : bh1Q ∈ OKat ((4 : ℚ) ^ (2 : ℕ)) := by
+private lemma cm_bh1Q_ok16 : bh1Q ∈ OKat ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) := by
   unfold bh1Q
   refine cm_okat_div ?_
   rw [pol2D_eval]
   norm_num
 
-private lemma cm_bh2Q_ok16 : bh2Q ∈ OKat ((4 : ℚ) ^ (2 : ℕ)) := by
+private lemma cm_bh2Q_ok16 : bh2Q ∈ OKat ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) := by
   unfold bh2Q
   refine cm_okat_div ?_
   rw [pol2D_eval]
@@ -2655,14 +2658,18 @@ private lemma cm_legs_read_val (he : 2 ∈ Finset.Icc 1 2) (σ' : Multiset cmT.V
       rw [hbs]
       refine ⟨powSubst_OKat 2 4 bh1Q cm_bh1Q_ok16, ?_⟩
       rw [powSubst_evalAt 2 (4 : ℚ) bh1Q cm_bh1Q_ok16]
-      have hev : (evalAt ((4 : ℚ) ^ (2 : ℕ)) ⟨bh1Q, cm_bh1Q_ok16⟩ : ℚ)
-          = bh1V ((4 : ℚ) ^ 2) := by
-        have hsub : (⟨bh1Q, cm_bh1Q_ok16⟩ : OKat ((4 : ℚ) ^ (2 : ℕ)))
-            = ⟨aQ polT1 / aQ pol2D, cm_okat_div (by rw [pol2D_eval]; norm_num)⟩ :=
+      have hden16 : pol2D.eval ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) ≠ 0 := by
+        rw [pol2D_eval]
+        norm_num
+      have hev : (evalAt ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) ⟨bh1Q, cm_bh1Q_ok16⟩ : ℚ)
+          = bh1V ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) := by
+        have hsub : (⟨bh1Q, cm_bh1Q_ok16⟩ : OKat ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)))
+            = ⟨aQ polT1 / aQ pol2D, cm_okat_div hden16⟩ :=
           Subtype.ext rfl
-        rw [hsub, cm_evalAt_div]
+        rw [hsub, cm_evalAt_div hden16]
         rfl
-      rw [hev, if_pos hle, ← hμdef, hμ1, cmβ_1_11]
+      rw [hev, if_pos hle, hμ1, cmβ_1_11]
+      rfl
     · by_cases hμ2 : μ = ({w12} : Multiset cmT.VType)
       · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ'
             = powSubst 2 bh2Q := by
@@ -2670,21 +2677,25 @@ private lemma cm_legs_read_val (he : 2 ∈ Finset.Icc 1 2) (σ' : Multiset cmT.V
         rw [hbs]
         refine ⟨powSubst_OKat 2 4 bh2Q cm_bh2Q_ok16, ?_⟩
         rw [powSubst_evalAt 2 (4 : ℚ) bh2Q cm_bh2Q_ok16]
-        have hev : (evalAt ((4 : ℚ) ^ (2 : ℕ)) ⟨bh2Q, cm_bh2Q_ok16⟩ : ℚ)
-            = bh2V ((4 : ℚ) ^ 2) := by
-          have hsub : (⟨bh2Q, cm_bh2Q_ok16⟩ : OKat ((4 : ℚ) ^ (2 : ℕ)))
-              = ⟨aQ polT2 / aQ pol2D, cm_okat_div (by rw [pol2D_eval]; norm_num)⟩ :=
+        have hden16 : pol2D.eval ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) ≠ 0 := by
+          rw [pol2D_eval]
+          norm_num
+        have hev : (evalAt ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) ⟨bh2Q, cm_bh2Q_ok16⟩ : ℚ)
+            = bh2V ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)) := by
+          have hsub : (⟨bh2Q, cm_bh2Q_ok16⟩ : OKat ((4 : ℚ) ^ ((2 : ℕ+) : ℕ)))
+              = ⟨aQ polT2 / aQ pol2D, cm_okat_div hden16⟩ :=
             Subtype.ext rfl
-          rw [hsub, cm_evalAt_div]
+          rw [hsub, cm_evalAt_div hden16]
           rfl
-        rw [hev, if_pos hle, ← hμdef, hμ2, cmβ_1_12]
+        rw [hev, if_pos hle, hμ2, cmβ_1_12]
+        rfl
       · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ' = 0 := by
           rw [cm_blockSolve2, if_pos hle, ← hμdef, cm_blockSolve1,
             if_neg hμ1, if_neg hμ2, add_zero, map_zero]
         rw [hbs]
         refine ⟨zero_mem _, ?_⟩
         have h0 : (⟨(0 : Qq), zero_mem _⟩ : OKat 4) = 0 := rfl
-        rw [h0, map_zero, if_pos hle, ← hμdef, cmβ_1_other μ hμ1 hμ2]
+        rw [h0, map_zero, if_pos hle, cmβ_1_other μ hμ1 hμ2]
         norm_num
   · have hbs : blockSolve cmT cmRB cm_hdc cm_hK cmDetHyp 2 he () σ' = 0 := by
       rw [cm_blockSolve2, if_neg hle]
@@ -2693,5 +2704,306 @@ private lemma cm_legs_read_val (he : 2 ∈ Finset.Icc 1 2) (σ' : Multiset cmT.V
     have h0 : (⟨(0 : Qq), zero_mem _⟩ : OKat 4) = 0 := rfl
     rw [h0, map_zero, if_neg hle]
     norm_num
+
+/-- THE COUNTERMODEL CHAIN. -/
+noncomputable def cmChain : RS4Chain cmT cmM cmRB cm_hdc cm_hK cmF where
+  L := cmLedger
+  B := cmB
+  hns := trivial
+  PrimePools := cmPrimePools
+  prime_sub := cm_prime_sub
+  prime_base := fun _ => Iff.rfl
+  pools_e0 := fun e he q₀ hq₀ => ⟨cmPool e he (cm_prime_sub hq₀.1)⟩
+  legs_reg := fun p hp => by
+    obtain ⟨p', hp', hpp⟩ := hp
+    have hpe : p' = p := Nat.cast_injective hpp.symm
+    subst hpe
+    intro e he δ hδ
+    exact ⟨cmPool e he ⟨p', hp', δ, rfl⟩⟩
+  legs_read := fun p hp δ hδ hnot hdet => by
+    have hq4 : ((p : ℚ) ^ (δ : ℕ)) = 4 := by
+      by_contra hne4
+      apply hnot
+      refine ⟨cmM.pools_closed (p : ℚ) (cm_prime_sub hp) δ, ?_⟩
+      intro e he τ he1
+      exact hne4
+    rw [hq4]
+    intro e he
+    refine ⟨cmPool e he cm_four_mem_pools, ?_⟩
+    intro τA σ' h_ent
+    by_cases he1 : e = 1
+    · exfalso
+      have hact := ((cmPool e he cm_four_mem_pools).act_spec τA.1).mp τA.2
+      rw [cm_active_iff] at hact
+      exact (hact he1) rfl
+    · have he2 : e = 2 := by
+        have := Finset.mem_Icc.mp he
+        omega
+      subst he2
+      obtain ⟨hok, hval⟩ := cm_legs_read_val he σ'
+      refine ⟨hok, ?_⟩
+      have hA1 : (1 : Matrix _ _ ℝ) - Aℝ (cmPool 2 he cm_four_mem_pools) = 1 := by
+        have hA0 : Aℝ (cmPool 2 he cm_four_mem_pools) = 0 := by
+          ext i j
+          show algebraMap ℚ ℝ ((cmPool 2 he cm_four_mem_pools).A i j) = 0
+          rw [show (cmPool 2 he cm_four_mem_pools).A i j = (0 : ℚ) from
+            cm_A_val_ne1 he (by norm_num) i.1 j.1
+              (cm_kmat_ok 2 he i.1 j.1 cm_four_mem_pools), map_zero]
+        rw [hA0, sub_zero]
+      rw [hA1, inv_one, Matrix.one_mulVec]
+      show _ = bTermMeas cmT cmM 2 σ' 4 τA.1
+        + bSplitMeas cmT cmM 2 σ' 4 (fun e' he' => cmB.βmeas e' he' h_ent) τA.1
+      rw [cm_bTermMeas2, zero_add, cm_bSplitMeas2]
+      exact hval
+  Sigmas := cmSigmas
+  sig_exact := cm_sig_exact
+  WshP := fun _ => pgConst 1 0
+  wsh_ok := fun _ _ _ _ => pgConst_ok
+  WshVal := fun _ _ => 1
+  wsh_interp := fun _ _ q₀ _ => by
+    rw [pgConst_evalAt]
+    norm_num
+  wshval_bdd := fun _ _ _ _ => ⟨zero_le_one, le_refl 1⟩
+  shDom := fun _ => ({0} : Set ℕ)
+  shEvtH := fun _ _ _ _ => Finset.univ
+  visH := fun _ _ _ => ({0} : Finset ℕ)
+  shEvt := fun _ _ _ => Finset.univ
+  shWeightH := fun _ _ _ => 1
+  shevt_grouping := fun _ _ _ => Finset.singleton_biUnion.symm
+  shDom_ne := fun _ _ => ⟨(0 : ℕ), rfl⟩
+  sh_realized := fun _ _ q₀ _ => ⟨0, fun N _ => by
+    haveI := cmM.boxpos q₀ N
+    exact Finset.univ_nonempty⟩
+  shweight_card := fun _ _ h _ q₀ _ => ⟨0, fun N _ => by
+    show (1 : ℝ) * (Fintype.card (cmM.Box q₀ N) : ℝ)
+      = (((Finset.univ : Finset (cmM.Box q₀ N))).card : ℝ)
+    rw [one_mul, Finset.card_univ]⟩
+  wshval_card := fun _ _ q₀ _ => ⟨0, fun N _ => by
+    show (1 : ℝ) * (Fintype.card (cmM.Box q₀ N) : ℝ)
+      = (((Finset.univ : Finset (cmM.Box q₀ N))).card : ℝ)
+    rw [one_mul, Finset.card_univ]⟩
+  Rval := cmRval
+  r_bdd := fun σ q₀ _ => by
+    unfold cmRval
+    split_ifs
+    · exact ⟨zero_le_one, le_refl 1⟩
+    · exact ⟨le_refl 0, zero_le_one⟩
+  decidedTotal := fun _ => 1
+  x3_total := fun _ _ => rfl
+  rs1_equates := fun p _ => cm_rval_sum p
+  rsh_interp := fun σ hσ p hp hdet => by
+    rw [cm_Rsh hdet σ]
+    by_cases h1 : σ = ({w11, w11} : Multiset cmT.VType)
+    · rw [if_pos h1]
+      refine ⟨one_mem _, ?_⟩
+      have h1' : (⟨(1 : Qq), one_mem _⟩ : OKat p) = 1 := rfl
+      rw [h1', map_one]
+      unfold cmRval
+      rw [if_pos h1]
+      norm_num
+    · rw [if_neg h1]
+      refine ⟨zero_mem _, ?_⟩
+      have h0 : (⟨(0 : Qq), zero_mem _⟩ : OKat p) = 0 := rfl
+      rw [h0, map_zero]
+      unfold cmRval
+      rw [if_neg h1]
+      norm_num
+
+/-! ## §20 THE ADVERSARIAL CARRIER PACK -/
+
+/-- THE COUNTERMODEL `UCarriers` — every carried §S law discharged above. -/
+noncomputable def cmC : UCarriers 2 :=
+  ⟨cmT, cmM, cmRB, cm_hdc, cm_hK, cmF, cmChain⟩
+
+/-- The Q3-ratified `hStateNe` premise holds (every block state is `Unit`). -/
+theorem cmHne : HStateNe 2 cmC := fun _ _ => ⟨()⟩
+
+/-! ## §21 The vocabulary copies (COEXISTENCE RULE — see the file header)
+
+`RegPAtR2N` is a BYTE-IDENTICAL copy of `RegPAtR2` (BridgeRosterPins.lean:88-90);
+`bridgeActiveLocusN` of `bridgeActiveLocus` (BridgeRosterPins.lean:113-116).
+This module must never import (or be imported alongside) BridgeRosterPins. -/
+
+def RegPAtR2N {p : ℕ} (D : RegData p) (q₀ : ℕ) (e : D.Block) : Prop :=
+  ∀ g ∈ D.entryList e,
+    DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = D.act g q₀
+
+open scoped Classical in
+noncomputable def bridgeActiveLocusN {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
+    (hne : HStateNe n C) (p : ℕ) : Finset ℕ :=
+  (bridgeRegData hn C hne p).Pool.filter
+    fun q₀ => (q₀ : ℚ) ∈ MovesS.allActivePools C.MS
+
+/-! ## §22 THE REFUTATION -/
+
+/-- DELIVERABLE PIN 2: the base pool 2 IS in the active locus (2 = 2¹, δ = 1
+consumed; every state of every block is active at 2). -/
+theorem cm_two_mem_locus : (2 : ℕ) ∈ bridgeActiveLocusN (le_refl 2) cmC cmHne 2 := by
+  rw [bridgeActiveLocusN, Finset.mem_filter]
+  constructor
+  · show (2 : ℕ) ∈ ((MovesS.consumedDeltas cmC.T cmC.Fam).image
+      (fun d : ℕ+ => (d : ℕ))).image (2 ^ ·)
+    refine Finset.mem_image.mpr ⟨1, ?_, by norm_num⟩
+    exact Finset.mem_image.mpr ⟨1, one_mem_consumedDeltas cmC, rfl⟩
+  · show ((2 : ℕ) : ℚ) ∈ allActivePools cmM
+    refine ⟨⟨2, Nat.prime_two, 1, by norm_num⟩, ?_⟩
+    intro e he τ
+    rw [cm_active_iff]
+    intro _
+    norm_num
+
+/-- The wild-pool display: 4 = 2² is a consumed pool NOT in the locus (the
+block-1 state is inactive there — k(4) = 1 saturates the kernel). -/
+theorem cm_four_wild : ((4 : ℚ)) ∉ allActivePools cmM := by
+  rintro ⟨-, hall⟩
+  have h1 := hall 1 (by norm_num) ()
+  rw [cm_active_iff] at h1
+  exact (h1 rfl) rfl
+
+/-- `powSubst` on a polynomial image (PowSubstOK's private lemma, local copy). -/
+private lemma cm_powSubst_algebraMap (δ : ℕ+) (r : Polynomial ℚ) :
+    powSubst δ (aQ r) = aQ (r.comp (Polynomial.X ^ (δ : ℕ))) := by
+  have hFG : (powSubst δ).comp (algebraMap (Polynomial ℚ) Qq)
+      = (algebraMap (Polynomial ℚ) Qq).comp
+          (Polynomial.eval₂RingHom Polynomial.C (Polynomial.X ^ (δ : ℕ))) := by
+    apply Polynomial.ringHom_ext
+    · intro a
+      simp only [RingHom.comp_apply, Polynomial.coe_eval₂RingHom, Polynomial.eval₂_C,
+        RatFunc.algebraMap_C, powSubst_C]
+    · simp only [RingHom.comp_apply, Polynomial.coe_eval₂RingHom, Polynomial.eval₂_X,
+        powSubst_X]
+  have h := RingHom.congr_fun hFG r
+  simpa only [RingHom.comp_apply, Polynomial.coe_eval₂RingHom, Polynomial.comp] using h
+
+/-- THE POLE, COMPILED: the transported solve entry t̂₁(q²) is UNDEFINED at the
+all-active base pool 2 (its reduced denominator vanishes there: 2(q²−4)²(q⁴−2)
+has the root q = 2, pulled back from the wild pool 4 = 2² through the δ = 2
+base-change leg). -/
+theorem cm_not_definedAt : ¬ DefinedAt (powSubst 2 bh1Q) (2 : ℚ) := by
+  intro hdef
+  have hform : powSubst 2 bh1Q
+      = aQ (polT1.comp (Polynomial.X ^ 2)) / aQ (pol2D.comp (Polynomial.X ^ 2)) := by
+    unfold bh1Q
+    rw [map_div₀]
+    congr 1
+    · exact cm_powSubst_algebraMap 2 polT1
+    · exact cm_powSubst_algebraMap 2 pol2D
+  have hden_ne : pol2D.comp (Polynomial.X ^ 2) ≠ 0 := by
+    intro h0
+    have hev := congrArg (Polynomial.eval (1 : ℚ)) h0
+    rw [Polynomial.eval_comp] at hev
+    rw [show (Polynomial.X ^ 2 : Polynomial ℚ).eval 1 = 1 by norm_num, pol2D_eval] at hev
+    norm_num at hev
+  have hcross : powSubst 2 bh1Q * aQ (pol2D.comp (Polynomial.X ^ 2))
+      = aQ (polT1.comp (Polynomial.X ^ 2)) := by
+    rw [hform]
+    exact div_mul_cancel₀ _ (RatFunc.algebraMap_ne_zero hden_ne)
+  set g : Qq := powSubst 2 bh1Q with hgdef
+  have hd_ne : aQ g.denom ≠ 0 :=
+    RatFunc.algebraMap_ne_zero (RatFunc.denom_ne_zero g)
+  have h1 : g * aQ g.denom = aQ g.num := by
+    nth_rewrite 1 [← RatFunc.num_div_denom g]
+    exact div_mul_cancel₀ _ hd_ne
+  have hcross2 : aQ g.num * aQ (pol2D.comp (Polynomial.X ^ 2))
+      = aQ (polT1.comp (Polynomial.X ^ 2)) * aQ g.denom := by
+    calc aQ g.num * aQ (pol2D.comp (Polynomial.X ^ 2))
+        = (g * aQ g.denom) * aQ (pol2D.comp (Polynomial.X ^ 2)) := by rw [h1]
+      _ = (g * aQ (pol2D.comp (Polynomial.X ^ 2))) * aQ g.denom := by ring
+      _ = aQ (polT1.comp (Polynomial.X ^ 2)) * aQ g.denom := by rw [hcross]
+  have hpoly : g.num * (pol2D.comp (Polynomial.X ^ 2))
+      = (polT1.comp (Polynomial.X ^ 2)) * g.denom := by
+    apply IsFractionRing.injective (Polynomial ℚ) Qq
+    rw [map_mul, map_mul]
+    exact hcross2
+  have hev := congrArg (Polynomial.eval (2 : ℚ)) hpoly
+  rw [Polynomial.eval_mul, Polynomial.eval_mul, Polynomial.eval_comp,
+    Polynomial.eval_comp,
+    show (Polynomial.X ^ 2 : Polynomial ℚ).eval 2 = 4 by norm_num,
+    pol2D_eval, polT1_eval] at hev
+  norm_num at hev
+  exact hdef hev.symm
+
+/-- The roster's block-2 bsplit row IS the transported pole. -/
+theorem cm_bridgeBsplit :
+    bridgeBsplit cmC ⟨2, by norm_num⟩ () = powSubst 2 bh1Q := by
+  rw [bridgeBsplit_eq_of_detHyp cmC cmDetHyp]
+  show (∑ σ' ∈ cmSigmas, bSplit cmT cmRB cm_hdc 2 (by norm_num)
+    (blockSolveLt cmRB cm_hdc cm_hK cmDetHyp 2) σ' ()) = _
+  unfold cmSigmas
+  rw [Finset.sum_insert (by
+    simp only [Finset.mem_insert, Finset.mem_singleton]
+    rintro (h | h)
+    · exact cm_sigma_ne_1 h
+    · exact cm_sigma_ne_2 h)]
+  rw [Finset.sum_insert (by
+    simp only [Finset.mem_singleton]
+    exact cm_sigma_ne_3)]
+  rw [Finset.sum_singleton, cm_bSplit2, cm_bSplit2, cm_bSplit2,
+    if_pos cm_le_1111, cm_sub_1111, cm_blockSolve1_11,
+    if_neg cm_nle_12, if_neg cm_nle_21, add_zero, add_zero]
+
+/-- DELIVERABLE 3: the (r2) clause FAILS at the locus point 2 and the top
+block — the bsplit member of the entry list is UNDEFINED there. -/
+theorem cm_regPAtR2_false :
+    ¬ RegPAtR2N (bridgeRegData (le_refl 2) cmC cmHne 2) 2 ⟨2, by norm_num⟩ := by
+  intro hreg
+  have hmem : (bridgeRegData (le_refl 2) cmC cmHne 2).bsplit ⟨2, by norm_num⟩ ()
+      ∈ (bridgeRegData (le_refl 2) cmC cmHne 2).entryList ⟨2, by norm_num⟩ := by
+    unfold RegData.entryList
+    simp only [Finset.mem_union, Finset.mem_image, Finset.mem_biUnion,
+      Finset.mem_univ, true_and]
+    exact Or.inl (Or.inl (Or.inl (Or.inl (Or.inr ⟨(), rfl⟩))))
+  have hdef := (hreg _ hmem).1
+  have hbs : (bridgeRegData (le_refl 2) cmC cmHne 2).bsplit ⟨2, by norm_num⟩ ()
+      = powSubst 2 bh1Q := cm_bridgeBsplit
+  rw [hbs] at hdef
+  exact cm_not_definedAt hdef
+
+/-- THE COUNTERMODEL, ∃-form: a locus point and a block where (r2) fails. -/
+theorem cm_refutes : ∃ q₀ ∈ bridgeActiveLocusN (le_refl 2) cmC cmHne 2,
+    ∃ b : {e : ℕ // e ∈ Finset.Icc 1 2},
+      ¬ RegPAtR2N (bridgeRegData (le_refl 2) cmC cmHne 2) q₀ b :=
+  ⟨2, cm_two_mem_locus, ⟨2, by norm_num⟩, cm_regPAtR2_false⟩
+
+/-- THE GATE DELIVERABLE: IB-B15a's ∀-statement (over the byte-identical
+vocabulary copies) is FALSE — `bridge_r2_on_activeLocus` is refuted as stated. -/
+theorem bridge_r2_on_activeLocus_false :
+    ¬ (∀ (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n) (hne : HStateNe n C) (p : ℕ)
+        (_ : p.Prime), ∀ q₀ ∈ bridgeActiveLocusN hn C hne p,
+        ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
+          RegPAtR2N (bridgeRegData hn C hne p) q₀ b) := by
+  intro hall
+  exact cm_regPAtR2_false
+    (hall 2 (le_refl 2) cmC cmHne 2 Nat.prime_two 2 cm_two_mem_locus ⟨2, by norm_num⟩)
+
+/-! ## §23 SIGN-OFF QUEUE DRAFT — the re-scoped (r2), DISPLAY ONLY (no unit
+here; statement changes need sign-off).  The split: the FIVE STATIC families
+unconditional, the TWO DITE families gated by the named per-pool OKat premise
+`BridgeDiteOK` — exactly the obligation this countermodel exhibits as
+non-derivable from the chain. -/
+
+/-- DRAFT (display): the static entry sublist — K/bterm/Jcell/iota/Wcoef, the
+five families whose (r2) transport is chain-warranted on the locus. -/
+noncomputable def bridgeStaticEntryList {p : ℕ} (D : RegData p) (e : D.Block) :
+    Finset (RatFunc ℚ) :=
+  letI := Classical.decEq (RatFunc ℚ)
+  letI := D.instBi e; letI := D.instBd e; letI := D.instJ e; letI := D.instW
+  (Finset.univ.image fun ij : D.bidx e × D.bidx e => D.K e ij.1 ij.2)
+    ∪ (Finset.univ.image (D.bterm e)) ∪ (Finset.univ.image (D.Jcell e))
+    ∪ (Finset.univ.image (D.iota e)) ∪ (Finset.univ.image D.Wcoef)
+
+/-- DRAFT (display): THE NAMED PER-POOL HYPOTHESIS gating the dite families —
+every summed `blockSolve` leg lies in OKat at every pool value of the active
+locus, after `powSubst` (the obligation `cm_not_definedAt` refutes at the
+tautological roster; converted into an explicit premise for IB-B15a-dite). -/
+def BridgeDiteOK {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n) (hne : HStateNe n C)
+    (p : ℕ) : Prop :=
+  ∀ q₀ ∈ bridgeActiveLocusN hn C hne p,
+    ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
+      (∀ i : C.T.State b.1,
+        (bridgeRegData hn C hne p).bsplit b i ∈ MovesS.OKat (q₀ : ℚ)) ∧
+      (∀ (l : LegRoster C.T b.1) (δ : ℕ),
+        δ ∈ (bridgeRegData hn C hne p).depthSet →
+        (bridgeRegData hn C hne p).betaLeg b l δ ∈ MovesS.OKat (q₀ : ℚ))
 
 end LeanUrat.MovesU.R2Neg
