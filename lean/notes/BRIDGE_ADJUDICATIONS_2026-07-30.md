@@ -264,3 +264,41 @@ GATED on item 22 in addition to E-1.
 Codex twin verdicts so far (12/18): M09 PROVED, M11 REFUTED, M15+M16
 LITERATURE, M01/M04/M05/M07/M10/M14 REDUCED; Fable fleet 14/18 done —
 full cross-check matrix at fleet completion.
+
+## OPEN-MATH FLEET COMPLETE (18/18 Fable, 2026-07-31) — NEW FENCE EVENTS
+## (each = a Lean row refuted AS TYPED with exact witness + proposed repair;
+## statement changes await Asvin's naming, evidence on file in
+## lean/notes/openmath/M##_fable.md)
+23. K7.track_restarts (M01): REFUTED at intended instance — caterpillar family
+    f_m=(x-a)(x-b) forces m consecutive T1-recenterings (~v_p(disc)/2), numerics
+    executed (m01_quad_walker.py); Lean row counts population where the note
+    counts track-OPENINGS. Repair = re-type to runCount (Lemma R: runCount <=
+    #incT12+#t3+1, Lean-provable today) with L(n)=floor(log2 n)+1; rest of K7
+    REDUCED to lemmas A-E with L(n)<=(n-1)+2*floor(log2 n).
+24. seam.count_tie (M02): REFUTED — bridgeTree lacks the ns-free clause the
+    note's TREE-N always carried; exact-square family scales x p not x p^2,
+    PARI-verified. Repair = add MovesT.NsFree to bridgeTree (also rescues
+    canonical_stable + VPSound); then row REDUCES to one cross-level cylinder
+    law CYL over open lemmas L1-L3.
+25. ReadLocality.child_local (M03): REFUTED at canonical instance even in the
+    item-7 corrected form (Eisenstein family f_N=X^2+p^N; X-adic development
+    forces B_0=0); chart_pin leg definitionally TRUE (compiled gate). Repair =
+    per-site guard (proposal in attempt).
+26. BK.vp_sound (M06): REFUTED as built — ns-verdict at finite level is
+    unsound ((x+p)^2 class realizes three types, PARI-verified). Repair rides
+    item 24's NsFree clause (same root cause).
+27. SibJcRows (M07): all three fields PLAUSIBLY FALSE as typed (CellData lacks
+    an adaptedness law; three adversarial routes given). Repair = adaptedness
+    law on CellData or carrier-parameterization; countermodel gates should
+    compile the (a)-route first.
+HIGHLIGHTS (positive): M05 exhaust — never-decided set is Haar-null proved for
+the SEMANTIC classifier with explicit rate at EVERY prime incl. wild; residual
+= tying project classifier to semantic (the L1-L3 genre). M17 REG-p — failing
+prime set FINITE with exact characterization (zeros/poles of pinned rational
+data); formalization candidate after twin cross-check. M15/M16 LITERATURE
+pinned (GMN TAMS 364 Thm 4.18(1) + Defs 4.11/4.12/4.15, ind2 = 2*ind(S)
+1548-case verified; Serre Local Fields Ch II §2, exactly ONE obligation
+beyond Mathlib). M18 MarkGraft <=> RealizationComplete (compiled certificates;
+unconditional form refuted at the corpus's own toy).
+Codex twins: 14/18 returned or running, M06/M18 launched last; cross-check
+matrix builds when all return.
