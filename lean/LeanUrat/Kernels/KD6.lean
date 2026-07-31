@@ -16,6 +16,18 @@ schedulable consumer is KD10's WeightCharge discharge (s := 2·D(n)·c(n)).
 GATE SEQUENCING (REV 2, F5): the CM-first twin KD9 (the python ladder/cap
 probe: zero-ladder-gain recentering search + w_final vs 1 + vdisc fit) is a
 SIBLING unit and runs BEFORE any prover is assigned here.
+KD9 PASSED 2026-07-30 (exit 0; P1: zero zero-gain recenterings over 735,744
++ 3,194,880 recentering members; P2: no super-linear cap growth, empirical
+minimal c = 2/7 / 8/25; probe re-seal note: the empirical ladder weight has
+zero gain AT THE KEY-CREATION node, so a real-engine instance of this
+carrier needs a shifted functional, e.g. w = mu + (1/D)·#counted-nodes —
+which the abstract carrier permits; see kd9_ladder_cap_probe.py header).
+
+AS-BUILT (2026-07-30 prover pass): the ladder lemma is PROVED from the
+carrier laws alone; `countKeyWeight` below is the compiled NON-VACUITY
+witness for the ⚑ carrier (the count weight, D = 1) — it satisfies every
+law trivially and therefore localizes the ENTIRE deep-open content of the
+KD6∘KD7 route in KD7's budget field.
 
 RECORDED RESOLUTIONS (⚑ carrier design — flagged for orchestrator
 ratification per the blueprint's own "carrier design ⚑"):
@@ -109,17 +121,18 @@ theorem kd6_ladder_count_le {n : ℕ} (KW : KeyWeightData n)
             MovesX.countPop H MovesX.Pop.t4) + 1 := by
         rcases hpop with h | h <;> simp [h] <;> omega
       rw [hcnt]
-      push_cast
-      calc ((MovesX.countPop H MovesX.Pop.recT1 +
-              MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ) + 1
+      push_cast at ih ⊢
+      calc (MovesX.countPop H MovesX.Pop.recT1 : ℚ) +
+            (MovesX.countPop H MovesX.Pop.t4 : ℚ) + 1
           ≤ (KW.D : ℚ) * (KW.w H - KW.w []) + 1 := by linarith [ih]
         _ = (KW.D : ℚ) * (KW.w H + 1 / (KW.D : ℚ) - KW.w []) := by
             field_simp
+            ring
         _ ≤ (KW.D : ℚ) * (KW.w (H ++ [ν]) - KW.w []) := by
             apply mul_le_mul_of_nonneg_left _ hD
             linarith [hclimb]
     · -- any other node: count unchanged, weight does not decrease
-      push_neg at hpop
+      rw [not_or] at hpop
       rw [if_neg hpop.1, if_neg hpop.2]
       have hmono := KW.mono H ν
       calc ((MovesX.countPop H MovesX.Pop.recT1 + 0 +
@@ -130,5 +143,44 @@ theorem kd6_ladder_count_le {n : ℕ} (KW : KeyWeightData n)
         _ ≤ (KW.D : ℚ) * (KW.w (H ++ [ν]) - KW.w []) := by
             apply mul_le_mul_of_nonneg_left _ hD
             linarith [hmono]
+
+/-- Non-vacuity witness for the ⚑ carrier (compiled record, part of the
+ratification packet): the COUNT key weight w H := #recT1(H) + #t4(H)
+inhabits `KeyWeightData` with lattice denominator D = 1 — every law holds
+trivially.  Consequence recorded for the campaign: the carrier itself is
+free; for THIS w the KD7 budget field `DifferentBudget.budget` IS the
+population-vs-index charge, so the entire deep-open content of the ladder-
+cap route lives in exhibiting the budget (KD7's obstruction record). -/
+noncomputable def countKeyWeight (n : ℕ) : KeyWeightData n where
+  D := 1
+  D_pos := one_pos
+  w H := ((MovesX.countPop H MovesX.Pop.recT1 +
+      MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ)
+  w_nil_nonneg := by positivity
+  lattice H := ⟨((MovesX.countPop H MovesX.Pop.recT1 +
+      MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℤ), by push_cast; norm_num⟩
+  mono H ν := by
+    have h : MovesX.countPop H MovesX.Pop.recT1 +
+          MovesX.countPop H MovesX.Pop.t4 ≤
+        MovesX.countPop (H ++ [ν]) MovesX.Pop.recT1 +
+          MovesX.countPop (H ++ [ν]) MovesX.Pop.t4 := by
+      rw [countPop_append_singleton, countPop_append_singleton]
+      split_ifs <;> omega
+    exact_mod_cast h
+  climb H ν hpop := by
+    have h : MovesX.countPop H MovesX.Pop.recT1 +
+          MovesX.countPop H MovesX.Pop.t4 + 1 ≤
+        MovesX.countPop (H ++ [ν]) MovesX.Pop.recT1 +
+          MovesX.countPop (H ++ [ν]) MovesX.Pop.t4 := by
+      rw [countPop_append_singleton, countPop_append_singleton]
+      rcases hpop with hh | hh <;> simp [hh]
+    have hq : ((MovesX.countPop H MovesX.Pop.recT1 +
+          MovesX.countPop H MovesX.Pop.t4 + 1 : ℕ) : ℚ) ≤
+        ((MovesX.countPop (H ++ [ν]) MovesX.Pop.recT1 +
+          MovesX.countPop (H ++ [ν]) MovesX.Pop.t4 : ℕ) : ℚ) := by
+      exact_mod_cast h
+    push_cast at hq ⊢
+    norm_num
+    linarith
 
 end LeanUrat.Kernels

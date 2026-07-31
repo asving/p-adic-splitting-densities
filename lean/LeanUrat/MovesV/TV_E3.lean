@@ -259,6 +259,135 @@ theorem measuredOf_d4r0 {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (h h' : (measuredOf V X cp hfin).Hgt), (c, h) ≠ (c', h') →
       Disjoint ((measuredOf V X cp hfin).cellEvt e τ x c h q₀ N)
         ((measuredOf V X cp hfin).cellEvt e τ x c' h' q₀ N) := by
-  sorry
+  intro e τ x q₀ N c c' h h' hne
+  by_cases hq : q₀ ∈ V.Pools
+  case neg =>
+    show Disjoint
+      (if hq' : q₀ ∈ V.Pools then
+        evtAll V ((x q₀ hq').1) N (toCellAll V hfin τ c) h else ∅)
+      (if hq' : q₀ ∈ V.Pools then
+        evtAll V ((x q₀ hq').1) N (toCellAll V hfin τ c') h' else ∅)
+    rw [dif_neg hq, dif_neg hq]
+    exact Finset.disjoint_empty_left _
+  case pos =>
+    show Disjoint
+      (if hq' : q₀ ∈ V.Pools then
+        evtAll V ((x q₀ hq').1) N (toCellAll V hfin τ c) h else ∅)
+      (if hq' : q₀ ∈ V.Pools then
+        evtAll V ((x q₀ hq').1) N (toCellAll V hfin τ c') h' else ∅)
+    rw [dif_pos hq, dif_pos hq]
+    rw [Finset.disjoint_left]
+    intro b hb hb'
+    apply hne
+    obtain ⟨o, cc⟩ := c
+    obtain ⟨o', cc'⟩ := c'
+    obtain ⟨D, hh⟩ := h
+    obtain ⟨D', hh'⟩ := h'
+    have hzc : S.zc (x q₀ hq).1 := (x q₀ hq).2
+    by_cases h1 : (C.bd τ.1.1).cont o.1 o.2 <;>
+      by_cases h2 : (C.bd τ.1.1).cont o'.1 o'.2
+    -- ── continuing/continuing ──
+    · rw [show toCellAll V hfin τ ⟨o, cc⟩
+          = Sum.inl ⟨⟨⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩, rfl⟩, cc⟩ from by
+        unfold toCellAll; rw [dif_pos h1]] at hb
+      rw [show toCellAll V hfin τ ⟨o', cc'⟩
+          = Sum.inl ⟨⟨⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩, rfl⟩, cc'⟩ from by
+        unfold toCellAll; rw [dif_pos h2]] at hb'
+      simp only [evtAll] at hb hb'
+      split at hb
+      case isFalse => simp at hb
+      case isTrue e1 =>
+      split at hb'
+      case isFalse => simp at hb'
+      case isTrue e2 =>
+      subst e1
+      subst e2
+      rw [eq_of_heq (cast_heq _ (x q₀ hq).1), castHpt_self] at hb hb'
+      unfold CtsMeasured.cellEvt at hb hb'
+      rw [Finset.mem_biUnion] at hb hb'
+      obtain ⟨a, haf, hbe⟩ := hb
+      obtain ⟨a', haf', hbe'⟩ := hb'
+      rw [Finset.mem_filter] at haf haf'
+      -- the two AStep points at the shared source
+      set p : AStep S (V.toStepCells.symm τ.1) (x q₀ hq).1 :=
+        Sum.inl ⟨V.toStepCells.symm
+            (MoveData.tgt ⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩),
+          V.moveOf ⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩, hh, a⟩ with hp
+      set p' : AStep S (V.toStepCells.symm τ.1) (x q₀ hq).1 :=
+        Sum.inl ⟨V.toStepCells.symm
+            (MoveData.tgt ⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩),
+          V.moveOf ⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩, hh', a'⟩ with hp'
+      have hbp : b ∈ V.toCtsCells.evtOfStep p N := hbe
+      have hbp' : b ∈ V.toCtsCells.evtOfStep p' N := hbe'
+      by_cases hk : V.toCtsCells.stepKey p = V.toCtsCells.stepKey p'
+      case neg =>
+        exact absurd hbp'
+          (Finset.disjoint_left.mp
+            (V.evt_disj_cell (x q₀ hq).1 p p' N hk) hbp)
+      case pos =>
+      haveI : Nonempty {dd : MoveData n C //
+          V.toStepCells.symm dd.src = V.toStepCells.symm τ.1} :=
+        ⟨⟨⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩, rfl⟩⟩
+      have hbij := V.moveOf_bij (V.toStepCells.symm τ.1)
+      have hk1 := congrArg Prod.fst hk
+      simp only [hp, hp', CtsCells.stepKey] at hk1
+      have hdd := (Sigma.mk.inj_iff.1 (Sum.inl.inj hk1)).1
+      have hd1 : Function.invFun
+          (fun dd : {dd : MoveData n C //
+              V.toStepCells.symm dd.src = V.toStepCells.symm τ.1} =>
+            (⟨V.toStepCells.symm dd.1.tgt,
+              castMove dd.2 rfl (V.moveOf dd.1)⟩ :
+              Σ βc, S.Move (V.toStepCells.symm τ.1) βc))
+          ⟨V.toStepCells.symm
+            (MoveData.tgt ⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩),
+            V.moveOf ⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩⟩
+          = ⟨⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩, rfl⟩ :=
+        Function.leftInverse_invFun hbij.1 ⟨⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩, rfl⟩
+      have hd2 : Function.invFun
+          (fun dd : {dd : MoveData n C //
+              V.toStepCells.symm dd.src = V.toStepCells.symm τ.1} =>
+            (⟨V.toStepCells.symm dd.1.tgt,
+              castMove dd.2 rfl (V.moveOf dd.1)⟩ :
+              Σ βc, S.Move (V.toStepCells.symm τ.1) βc))
+          ⟨V.toStepCells.symm
+            (MoveData.tgt ⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩),
+            V.moveOf ⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩⟩
+          = ⟨⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩, rfl⟩ :=
+        Function.leftInverse_invFun hbij.1
+          ⟨⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩, rfl⟩
+      rw [hd1, hd2] at hdd
+      have hd5 : (⟨τ.1.1, o.1, o.2, h1, τ.1.2⟩ : MoveData n C)
+          = ⟨τ.1.1, o'.1, o'.2, h2, τ.1.2⟩ := Subtype.ext_iff.mp hdd
+      have hd6 := congrArg (fun d : MoveData n C =>
+        (⟨d.s, d.m, d.o⟩ : Σ s : Skeleton n,
+          Σ m : (C.bd s).Letter, (C.bd s).Outc m)) hd5
+      have ho : o = o' := eq_of_heq (Sigma.mk.inj_iff.mp hd6).2
+      subst ho
+      -- heights
+      have hk2 := congrArg Prod.snd hk
+      simp only [hp, hp', CtsCells.stepKey] at hk2
+      have hhh : hh = hh' := eq_of_heq (Sigma.mk.inj_iff.mp hk2).2
+      subst hhh
+      -- assignments: equal (else per-assignment disjointness contradicts b)
+      have haa : HEq a a' := by
+        by_cases heq : a = (haf'.2 ▸ a')
+        · rw [heq]
+          exact (cast_heq _ _).symm ▸ HEq.rfl
+        · exact absurd hbp' (Finset.disjoint_left.mp
+            (V.evt_disj_assign _ (x q₀ hq).1 hh a (haf'.2 ▸ a')
+              heq N) hbp)
+      have hcc : cc = cc' := by
+        rw [← haf.2, ← haf'.2]
+        congr 1
+        exact eq_of_heq haa
+      subst hcc
+      rfl
+    -- ── continuing/terminal (keys differ at the Sum constructor) ──
+    · exact absurd rfl (d4r0_mixed_aux V X cp hfin τ hq
+        o cc o' cc' hh hh' h1 h2 b hb hb' N).elim
+    · exact absurd rfl (d4r0_mixed_aux' V X cp hfin τ hq
+        o cc o' cc' hh hh' h1 h2 b hb hb' N).elim
+    -- ── terminal/terminal ──
+    · sorry
 
 end LeanUrat.MovesV

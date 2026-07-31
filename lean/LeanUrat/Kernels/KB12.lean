@@ -83,7 +83,20 @@ theorem kb12_rootChild_canonLift (T : TreeModel p F n N m pol)
     (x : Box p m) (ν : Node p F) (hchild : T.child none ν x)
     (hsp : ν.species = ReadSpecies.root) :
     ν.lift = pol.liftOf ν := by
-  sorry
+  -- the `mem_single` side condition at the root-species node
+  have h1 : (([ν] : List (Node p F)) ≠ [] ∧
+      ∀ (j : ℕ) (hj : j < ([ν] : List (Node p F)).length),
+        ((([ν] : List (Node p F))[j]'hj).species = ReadSpecies.root ↔ j = 0)) := by
+    refine ⟨by simp, ?_⟩
+    intro j hj
+    have hj0 : j = 0 := by simpa using Nat.lt_one_iff.mp (by simpa using hj)
+    subst hj0
+    simpa using hsp
+  -- membership of the singleton history, then realizability ⟹ IsCanonPres
+  have hmem : T.mem (some ⟨[ν], h1.1, h1.2⟩) x := (T.mem_single ν h1 x).mpr hchild
+  have hcanon : pol.IsCanon ⟨[ν], h1.1, h1.2⟩ :=
+    (T.mem_realizable ⟨[ν], h1.1, h1.2⟩ x hmem).2.2.1
+  simpa using hcanon 0 (by simp)
 
 /-- KB12 (HEAD — (U) at the canonical instance): the two named laws force
 TV-A1's `TrackUniqOn` at every reduction datum g.  deps: KB14 (gate),
@@ -100,6 +113,20 @@ theorem kb12_trackUniqOn_canonical (T : TreeModel p F n N m pol)
     (hroot : RootChildRootSpecies T)
     (g : Fin n → ZMod p) :
     TrackUniqOn T χ trackOf g := by
-  sorry
+  intro y _hy ν ν' hc hc' htr
+  -- all-but-lift agreement (the named data law)
+  have hupd : ({ ν with lift := ν'.lift } : Node p F) = ν' := hdata y ν ν' hc hc' htr
+  -- both lifts are canonical (root species + the TreeModel laws)
+  have hl : ν.lift = pol.liftOf ν :=
+    kb12_rootChild_canonLift T y ν hc (hroot y ν hc)
+  have hl' : ν'.lift = pol.liftOf ν' :=
+    kb12_rootChild_canonLift T y ν' hc' (hroot y ν' hc')
+  -- `blind` transports liftOf across the update: liftOf ν' = liftOf ν
+  have hLo : pol.liftOf ν' = pol.liftOf ν := by
+    rw [← hupd]; exact pol.blind ν ν'.lift
+  -- hence the lifts agree, and the update collapses to ν
+  have hlift : ν'.lift = ν.lift := by rw [hl', hLo, ← hl]
+  have hν : ({ ν with lift := ν'.lift } : Node p F) = ν := by rw [hlift]
+  exact hν.symm.trans hupd
 
 end LeanUrat.Kernels

@@ -22,8 +22,10 @@ import LeanUrat.MovesV.V7_livC
 set_option linter.style.longLine false
 set_option linter.style.header false
 set_option linter.unusedVariables false
+set_option linter.style.openClassical false
 
 namespace LeanUrat.MovesV
+open scoped Classical
 
 /-- TV-E6(a) [LedgerIV group (8), init_agg]: the state entrance value is the
 finite entrance-shape aggregate (verbatim `MovesS.LedgerIV.init_agg` at
@@ -41,7 +43,11 @@ theorem measuredOf_init_agg {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (measuredOf V X cp hfin).ιval e τ q₀
         = ∑ ε : (measuredOf V X cp hfin).EntShape e τ,
             (measuredOf V X cp hfin).ιsh e τ ε q₀ := by
-  sorry
+  intro e τ q₀ hq hact
+  show iotaValV V X.sEnt (V.toStepCells.symm τ.1) q₀ = _
+  unfold iotaValV
+  refine Finset.sum_congr ?_ (fun _ _ => rfl)
+  congr 1
 
 /-- TV-E6(b) [LedgerIV group (8), init_count]: the fixed-height entrance
 weight counts its event, eventually (verbatim `MovesS.LedgerIV.init_count`
@@ -62,7 +68,48 @@ theorem measuredOf_init_count {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (measuredOf V X cp hfin).ιshH e τ ε h q₀
           * (Fintype.card ((measuredOf V X cp hfin).Box q₀ N) : ℝ)
         = (((measuredOf V X cp hfin).entEvtH e τ ε h q₀ N).card : ℝ) := by
-  sorry
+  intro e τ ε h hdom q₀ hq hact
+  obtain ⟨he, hmem⟩ := hdom
+  rcases hw : writeHeights? ε.1.1 (castHpt he h.2) with _ | εs
+  · -- no instantiation at this point: both sides are zero at every level
+    refine ⟨0, fun N _ => ?_⟩
+    show ishHOf V ε h q₀
+        * ((@Fintype.card _ (V.finB q₀ N) : ℕ) : ℝ)
+      = ((entEvtHOf V ε h q₀ N).card : ℝ)
+    unfold ishHOf entEvtHOf
+    rw [dif_pos he, dif_pos he]
+    unfold ιshH CtsMeasured.instCensus
+    rw [hw]
+    simp
+  · -- the instantiated point: V.ent_card + V.box_card
+    refine ⟨(εs.template?).elim 0 V.entLvl, fun N hN => ?_⟩
+    have hec := V.ent_card εs (V.toStepCells.symm τ.1) q₀ hq N hN
+    have hbox := V.box_card q₀ hq N
+    have hq1 : (1 : ℚ) < q₀ := S.pools_gt_one q₀ (V.pools_sub hq)
+    have hq0R : (0 : ℝ) < (q₀ : ℝ) := by
+      exact_mod_cast lt_trans one_pos hq1
+    have hqne : (q₀ : ℝ) ≠ 0 := ne_of_gt hq0R
+    show ishHOf V ε h q₀
+        * ((@Fintype.card _ (V.finB q₀ N) : ℕ) : ℝ)
+      = ((entEvtHOf V ε h q₀ N).card : ℝ)
+    unfold ishHOf entEvtHOf
+    rw [dif_pos he, dif_pos he]
+    unfold ιshH CtsMeasured.instCensus instA
+    rw [hw]
+    simp only [Option.map_some, Option.getD_some]
+    have hecR : (((V.entEvt εs (V.toStepCells.symm τ.1) q₀ N).card : ℕ) : ℝ)
+          * (q₀ : ℝ) ^ ((εs.A : ℕ))
+        = ((V.entCensus εs (V.toStepCells.symm τ.1) q₀ : ℕ) : ℝ)
+          * (q₀ : ℝ) ^ (n * N) := by
+      exact_mod_cast hec
+    have hboxR : ((@Fintype.card _ (V.finB q₀ N) : ℕ) : ℝ) = (q₀ : ℝ) ^ (n * N) := by
+      exact_mod_cast hbox
+    rw [hboxR]
+    rw [show (q₀ : ℝ) ^ (-((εs.A : ℕ) : ℤ)) = ((q₀ : ℝ) ^ ((εs.A : ℕ)))⁻¹ by
+      rw [zpow_neg, zpow_natCast]]
+    have hpne : ((q₀ : ℝ) ^ ((εs.A : ℕ))) ≠ 0 := pow_ne_zero _ hqne
+    field_simp
+    linear_combination -hecR
 
 /-- TV-E6(c) [LedgerIV group (8), ent_count_card]: the entrance census at its
 own level IS the entrance count (verbatim `MovesS.LedgerIV.ent_count_card`
@@ -81,11 +128,36 @@ theorem measuredOf_ent_count_card {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       ((measuredOf V X cp hfin).entInst e τ ε q₀
           ((measuredOf V X cp hfin).entLvl e τ ε)).card
         = (measuredOf V X cp hfin).entCount e τ ε q₀ := by
-  sorry
+  intro e τ ε q₀ hq hact
+  show (entInstOf V ε q₀ (entLvlOf V ε)).card = V.entCount ε q₀
+  unfold entInstOf entLvlOf CtsMeasured.entCount CtsMeasured.instCensus
+  rcases hw : writeHeights? ε.1.1 ((V.entDom ε.1.1).comps.get ε.1.2).base
+    with _ | εs
+  · rfl
+  · rfl
 
 /-- TV-E6(d) [LedgerIV group (9), comp_once]: THE one entrance height sum
 (verbatim `MovesS.LedgerIV.comp_once` at measuredOf; the V7_livB
-HasSum.mul_left pattern). -/
+HasSum.mul_left pattern).
+[PROVER RECORD, 2026-07-30 — BLOCKED, the file-header's anticipated
+named-hypothesis fence event fires: comp_once at the blueprint field map IS
+`ledgerIV_comp_once` (V7_livB) modulo the Σ-collapse equiv, and that
+producer's own premise row carries `hdom : EntDomOrder0 V` — required to
+mint the `Order0Perimeter` certificates that hEU's census-constancy clause
+demands at every component point (`writeHeights` is total ONLY on the
+order-0 perimeter; the unscoped form is REFUTED,
+V3_spword_negWitness2).  `ledgerIV_inst`'s row has no such member, and no
+in-corpus law supplies instCensus-constancy without it: init_count pins
+ιshH to the PER-POINT census (V.ent_card), while comp_once + init_agg +
+the FENCED ιval pin (iotaValV) jointly force the h-sum to the BASE census
+— their conjunction IS the constancy.  Swapping ιshH to the entCount-based
+weight relocates the same gap into init_count (the per-point event card is
+census-at-h).  ESCALATION per the header: add the named warranted
+hypothesis `hdom : EntDomOrder0 V` to ledgerIV_inst's row (statement
+change — orchestrator ratification required; V7_rbB/V3_initrat already
+carry hdom for the SAME reason on the RatBurdens side, so the row addition
+is the established genre).  The sorry below is the honest record; TV-E7
+blocks on it. -/
 theorem measuredOf_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)

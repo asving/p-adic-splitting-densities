@@ -45,7 +45,14 @@ theorem measuredOf_kstep_one {n : ℕ} {C : CtsFamily n} {S : StepSys n}
                 ∃ h : μ.size = e, h ▸ μ.status = Sum.inr β
             }.toFinset,
             (measuredOf V X cp hfin).rowVal e τ o q₀ := by
-  sorry
+  intro e τ β q₀ hq hact
+  show kstepOne V X.w cp hfin e τ β q₀ = _
+  unfold kstepOne
+  split
+  · rfl
+  · next hβin =>
+      symm
+      exact measuredOf_act_bridge V X cp hVA hfin e τ β q₀ hq hact hβin
 
 /-- TV-E5b(b) [LedgerIV group (6), hmc]: the guarded Chapman-Kolmogorov
 factorization at every k (verbatim `MovesS.LedgerIV.hmc` at measuredOf;
@@ -65,7 +72,19 @@ theorem measuredOf_hmc {n : ℕ} {C : CtsFamily n} {S : StepSys n}
         = ∑ γ : (ctsTable C hfin).State e,
             (measuredOf V X cp hfin).kstep k e τ γ q₀
               * (measuredOf V X cp hfin).kstep 1 e γ β q₀ := by
-  sorry
+  intro k e τ β q₀ hq hact
+  cases k with
+  | zero =>
+      symm
+      rw [Finset.sum_eq_single τ (fun γ _ hγ => by
+          show (if τ = γ then (1 : ℝ) else 0)
+              * (measuredOf V X cp hfin).kstep 1 e γ β q₀ = 0
+          rw [if_neg (fun h => hγ h.symm), zero_mul])
+        (fun habs => absurd (Finset.mem_univ τ) habs)]
+      show (if τ = τ then (1 : ℝ) else 0)
+          * (measuredOf V X cp hfin).kstep 1 e τ β q₀ = _
+      rw [if_pos rfl, one_mul]
+  | succ k => rfl
 
 /-- TV-E5b(c) [LedgerIV group (7), act_target]: one-step mass into an
 inactive target vanishes (verbatim `MovesS.LedgerIV.act_target` at
@@ -83,6 +102,9 @@ theorem measuredOf_act_target {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       q₀ ∈ (measuredOf V X cp hfin).Pools →
       ¬ (measuredOf V X cp hfin).activeState q₀ e β →
       (measuredOf V X cp hfin).kstep 1 e τ β q₀ = 0 := by
-  sorry
+  intro e τ β q₀ hq hin
+  show kstepOne V X.w cp hfin e τ β q₀ = 0
+  unfold kstepOne
+  rw [if_neg (show ¬ V.activeState q₀ (V.toStepCells.symm β.1) from hin)]
 
 end LeanUrat.MovesV

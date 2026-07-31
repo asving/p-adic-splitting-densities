@@ -84,6 +84,17 @@ theorem kb13_trackRepOn_canonical (T : TreeModel p F n N m pol)
     (hhen : HenAtSimple T χ trackOf)
     (g : Fin n → ZMod p) :
     TrackRepOn T χ trackOf g := by
-  sorry
+  intro y hy ν hc
+  -- membership puts the count at ≥ 1
+  have h1 : 0 < Multiset.count (trackOf ν)
+      (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y)) :=
+    Multiset.count_pos.mpr (hmem y ν hc)
+  -- count = 1 is excluded by the hen law at ψ := trackOf ν
+  by_contra hlt
+  push_neg at hlt
+  have hcount : Multiset.count (trackOf ν)
+      (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y)) = 1 := by
+    omega
+  exact hhen y (trackOf ν) hcount ν hc rfl
 
 end LeanUrat.Kernels

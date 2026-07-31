@@ -1,0 +1,129 @@
+{
+ "boxA_p2": {
+  "p": 2,
+  "N": 8,
+  "boxes": 16777216,
+  "hist": {
+   "(1, 0)": 16777216,
+   "(2, 0)": 3596288,
+   "(2, 1)": 598016,
+   "(3, 0)": 4051968,
+   "(3, 1)": 142336
+  },
+  "undecided_pairs": 131072,
+  "structural_rows": 8388608,
+  "faults": {},
+  "n_u_witnesses": 0,
+  "n_r_witnesses": 0,
+  "u_witnesses_recorded": [],
+  "r_witnesses_recorded": [],
+  "secs": 4.0
+ },
+ "boxB_p3": {
+  "p": 3,
+  "N": 5,
+  "boxes": 14348907,
+  "hist": {
+   "(1, 0)": 18600435,
+   "(2, 0)": 2943702,
+   "(2, 1)": 244944,
+   "(3, 0)": 1581201,
+   "(3, 1)": 13122
+  },
+  "undecided_pairs": 177147,
+  "structural_rows": 9034497,
+  "faults": {},
+  "n_u_witnesses": 0,
+  "n_r_witnesses": 0,
+  "u_witnesses_recorded": [],
+  "r_witnesses_recorded": [],
+  "secs": 3.6
+ },
+ "boxC_quartic": {
+  "total": 67108864,
+  "firsts": {
+   "TS": 3194880,
+   "RAM": 51130368,
+   "INERT": 6389760,
+   "SPLIT": 3194880,
+   "RS2(r=1)": 16384,
+   "RS1(r=1)": 1048576,
+   "DEEP": 4096,
+   "RS1(r=3)": 1048576,
+   "RS1(r=2)": 1048576,
+   "RS2(r=2)": 16384,
+   "RS2(r=3)": 16384
+  },
+  "unknown_labels": 0,
+  "undecided": 4096,
+  "secs": 5.7
+ },
+ "g1_record": {
+  "expected": "BLOCKED (E5 fence record)",
+  "e5_fence_record_quote(E5_rootSplit.lean:339-346)": [
+   "  --  2026-07-30 \u2014 the record originally read \"2026-08-01\" from clock skew; git",
+   "  --  evidence: introduced in commit 00b03aa, authored 2026-07-29 17:39 UTC, matching",
+   "  --  the PROJECT_STATE date correction): no countermodel is",
+   "  --  constructible from in-corpus witnesses \u2014 this `have` sits under the FULL",
+   "  --  `CellAssign` premise row (child_cover included) and NO `CellAssign` instance",
+   "  --  exists in the corpus (G1's toys deliberately stop at the `CellData` layer:",
+   "  --  child_cover FAILS on both carriers at g = (1,0)); honest-open stands.]",
+   "  have hD4R0K :"
+  ],
+  "g1_toys_quote(G1_toyGate.lean:714-716)": [
+   "  -- [REV 8 RE-FENCE (Codex-7 #1): the toys instantiate the DATA layer `CellData`",
+   "  --  ONLY \u2014 `child_cover` FAILS on both carriers at g = (1,0) (deliberately partial;",
+   "  --  disclosed at \u00a72.9/\u00a76 and the \u00a75 W4-1 row)]"
+  ],
+  "finding": "BLOCKED CONFIRMED: the G1 toys (toyModel/toyModelB) stop at the CellData layer \u2014 child_cover FAILS on both carriers at g = (1,0) (G1 quote above), so no CellAssign over them exists and no (U)/(R) witness is constructible from the G1 toys.  The only in-corpus CellAssign construction attempt is BP3 TV-A5a (n = 1 CHILDLESS micro-carrier, a concurrent E-phase skeleton, sorry count below) \u2014 still uncompiled, and even completed it is childless: both TrackUniqOn and TrackRepOn hold VACUOUSLY at it, so it can never be a (U)/(R) countermodel.  No compiled negation witness coexists with the fenced universal (the M1 rule holds).",
+  "tv_a5a_sorry_count": 7,
+  "q7_escalation_needed": false
+ },
+ "checks": [
+  {
+   "name": "KB14-V1 spot p=2 f=(0,4,2): one mult-3 z-track, 0 continuing, decided",
+   "ok": true,
+   "detail": "recs=[(('lin', 0), 3, 0, (), 0, False)]"
+  },
+  {
+   "name": "KB14-V2 spot p=2 f=(1,4,4): z-track mult2 ONE continuing child; (z+1)-track mult1 ZERO",
+   "ok": true,
+   "detail": "recs=[(('lin', 0), 2, 1, ((1, 1, 0, (1, 1), 2),), 0, False), (('lin', 1), 1, 0, (), 0, False)]"
+  },
+  {
+   "name": "KB14-V3 spot p=2 f=(0,0,0): capped window counted UNDECIDED",
+   "ok": true,
+   "detail": "recs=[(('lin', 0), 3, 0, (), 6, False)]"
+  },
+  {
+   "name": "KB14-V4 spot p=3 f=(0,3,3): one mult-3 z-track, 0 continuing, decided",
+   "ok": true,
+   "detail": "recs=[(('lin', 0), 3, 0, (), 0, False)]"
+  },
+  {
+   "name": "KB14-V5 spot p=3 window (9,3,2): reader count == direct fp_factor count",
+   "ok": true,
+   "detail": "cont=() expect=0 fs=[((2, 2, 1), 1)]"
+  },
+  {
+   "name": "KB14-checksum box sizes (2^24, 3^15, 2^26)",
+   "ok": true,
+   "detail": "16777216 14348907 67108864"
+  },
+  {
+   "name": "KB14-P1 (U): ZERO (i)-witnesses (two distinct realized root children on one track at one point)",
+   "ok": true,
+   "detail": "p2=0 p3=0 quartic-unknown-labels=0 (witnesses recorded verbatim in JSON if any)"
+  },
+  {
+   "name": "KB14-P2 (R): ZERO (ii)-witnesses (continuing child on a mult-1 track)",
+   "ok": true,
+   "detail": "p2=0 p3=0 (quartic cylinder track is mult-2 by construction)"
+  },
+  {
+   "name": "KB14-P3 in-corpus G1 toy attempt: BLOCKED record produced, no compiled witness, no Q7 escalation",
+   "ok": true,
+   "detail": "BLOCKED CONFIRMED: the G1 toys (toyModel/toyModelB) stop at the CellData layer \u2014 child_cover FAILS on both carriers at g..."
+  }
+ ]
+}

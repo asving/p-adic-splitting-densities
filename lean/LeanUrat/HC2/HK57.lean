@@ -48,34 +48,125 @@ namespace HK57
 
 open HK18 HK19
 
+/-- The 2-adic normal form of `θ fgate` (P-phase local): `θ fgate = 8·(2q₁² + q₁ + 2)`
+with cofactor reducing to `ψ₂ = z² + z + 1` mod 2 — the anchor's supply. -/
+lemma NF_θ_fgate : U31.NF (U31.θ fgate) 3
+    (Polynomial.C 2 * U31.q₁ ^ 2 + U31.q₁ + Polynomial.C 2) := by
+  constructor
+  · have hθfq : U31.θ U31.fq = (Polynomial.C 2) ^ 2 * U31.q₁ := HK13R.NF_θ_fq.1
+    show U31.θ (U31.fq ^ 2 + Polynomial.C 2 * U31.fq + Polynomial.C 16) = _
+    rw [map_add, map_add, map_pow, map_mul, hθfq, U31.θ_C, U31.θ_C]
+    have h16 : (Polynomial.C (16 : ℤ_[2])) = (Polynomial.C (2 : ℤ_[2])) ^ 4 := by
+      rw [← C_pow]
+      norm_num
+    rw [h16]
+    ring
+  · have hmap : (Polynomial.C 2 * U31.q₁ ^ 2 + U31.q₁ + Polynomial.C 2).map U31.ρ
+        = X ^ 2 + X + 1 := by
+      rw [Polynomial.map_add, Polynomial.map_add, Polynomial.map_mul, Polynomial.map_pow,
+        Polynomial.map_C, HK13R.ρ_two, HK13R.map_ρ_q₁, Polynomial.C_0, zero_mul, zero_add,
+        add_zero]
+    rw [hmap]
+    exact HK13R.XXone_ne_zero
+
 /-- SideReads clause (iii), ANCHOR, at (ν₀gate, Bdev0, 5): the recorded (a, Ranch) =
 (0, ψ₂) anchor the frame residual of the window sum (= fgate). Byte-copy of the first
 (iii) conjunct of `SideReads`. -/
 theorem sideReads0_anchor :
     HasAnchorK (ν₀gate.σ.R (∑ j ∈ Finset.range 5, Bdev0 j * ν₀gate.σ.Φ ^ j))
       ν₀gate.a ν₀gate.Ranch := by
-  sorry
+  show HasAnchorK (U31.bR (∑ j ∈ Finset.range 5, Bdev0 j * (X : Polynomial ℤ_[2]) ^ j))
+    0 U31.ψ₂
+  rw [← Bdev0_dev.2.2]
+  constructor
+  · rw [HK13R.ψ₂_coeff_zero]
+    exact one_ne_zero
+  · have hmap : (Polynomial.C 2 * U31.q₁ ^ 2 + U31.q₁ + Polynomial.C 2).map U31.ρ
+        = X ^ 2 + X + 1 := by
+      rw [Polynomial.map_add, Polynomial.map_add, Polynomial.map_mul, Polynomial.map_pow,
+        Polynomial.map_C, HK13R.ρ_two, HK13R.map_ρ_q₁, Polynomial.C_0, zero_mul, zero_add,
+        add_zero]
+    rw [HK13R.bR_eq NF_θ_fgate, hmap, LaurentPolynomial.T_zero, one_mul]
+    rfl
 
 /-- SideReads clause (iii), ψ-ORDER, at ν₀gate: ord_ψ₂ (Ranch = ψ₂) = μ = 1. Byte-copy
 of the second (iii) conjunct of `SideReads`. -/
-theorem sideReads0_ord : OrdPsiPoly ν₀gate.ψ ν₀gate.Ranch ν₀gate.μ := by
-  sorry
+theorem sideReads0_ord : OrdPsiPoly ν₀gate.ψ ν₀gate.Ranch ν₀gate.μ :=
+  HK13R.ord_ψ₂
 
 /-- SideReads clause (iv), DESCENT WITNESS, at read 0: the recorded landing produces the
 designated next key Φ̂ = fq — `LandingKey ν₀gate fq` (the recorded lift; U31's
 `landingKey_ν₀` witness transports verbatim). -/
 theorem sideReads0_landing : LandingKey ν₀gate U31.fq := by
-  sorry
+  constructor
+  · intro h
+    exact ReadSpecies.noConfusion h
+  · intro _
+    refine ⟨fun k => if k = 0 then Polynomial.C 4 else if k = 1 then Polynomial.C 2 else 0,
+      ?_, ?_, ?_⟩
+    · intro k hk
+      match k with
+      | 0 =>
+          have hk' : U31.ψ₂.coeff 0 = 0 := hk
+          rw [HK13R.ψ₂_coeff_zero] at hk'
+          exact absurd hk' one_ne_zero
+      | 1 =>
+          have hk' : U31.ψ₂.coeff 1 = 0 := hk
+          rw [HK13R.ψ₂_coeff_one] at hk'
+          exact absurd hk' one_ne_zero
+      | (n + 2) => rfl
+    · intro k hk hne
+      have hk2 : k < 2 := hk
+      interval_cases k
+      · refine ⟨?_, HK13R.inC_C, ?_, ?_⟩
+        · show (Polynomial.C (4 : ℤ_[2])) ≠ 0
+          exact Polynomial.C_ne_zero.mpr (by norm_num)
+        · show U31.bw (Polynomial.C 4) = ((1 : ℕ) : ℤ) * (((2 : ℕ) : ℤ) - ((0 : ℕ) : ℤ))
+          rw [bw_C4]
+          norm_num
+        · have hgoal : U31.bR (Polynomial.C 4) = (LaurentPolynomial.C (U31.ψ₂.coeff 0)) *
+              (LaurentPolynomial.T (- (0 : ℤ) * gaussVal (Polynomial.C (4 : ℤ_[2]))) :
+                LaurentPolynomial ↥U31.K2) := by
+            rw [HK13R.bR_const (by norm_num : (4 : ℤ_[2]) ≠ 0), HK13R.ψ₂_coeff_zero,
+              map_one, neg_zero, zero_mul, LaurentPolynomial.T_zero, one_mul]
+          exact hgoal
+      · refine ⟨?_, HK13R.inC_C, ?_, ?_⟩
+        · show (Polynomial.C (2 : ℤ_[2])) ≠ 0
+          exact Polynomial.C_ne_zero.mpr HK13R.two_ne_zero'
+        · show U31.bw (Polynomial.C 2) = ((1 : ℕ) : ℤ) * (((2 : ℕ) : ℤ) - ((1 : ℕ) : ℤ))
+          rw [HK13R.bw_C2]
+          norm_num
+        · have hgoal : U31.bR (Polynomial.C 2) = (LaurentPolynomial.C (U31.ψ₂.coeff 1)) *
+              (LaurentPolynomial.T (- (0 : ℤ) * gaussVal (Polynomial.C (2 : ℤ_[2]))) :
+                LaurentPolynomial ↥U31.K2) := by
+            rw [HK13R.bR_C2, HK13R.ψ₂_coeff_one, map_one, neg_zero, zero_mul,
+              LaurentPolynomial.T_zero, one_mul]
+          exact hgoal
+    · show U31.fq = X ^ (1 * 2) + ∑ k ∈ Finset.range 2,
+        (if k = 0 then Polynomial.C 4 else if k = 1 then Polynomial.C 2 else 0) * X ^ (1 * k)
+      rw [Finset.sum_range_succ, Finset.sum_range_one]
+      norm_num [U31.fq]
+      ring
 
 /-- SideReads clause (v), first leg: ν₀gate carries the polOM lift (= 0; no recentering
 realizer exists at the base stage). -/
 theorem sideReads0_polOM : ν₀gate.lift = (polOM 2 F4).liftOf ν₀gate := by
-  sorry
+  have hno : ¬ ∃ tL, RecenterLiftSpec ν₀gate tL := by
+    rintro ⟨tL, _, htne, _, hR⟩
+    have hzero : (LaurentPolynomial.C ((0 : ↥U31.K2))) *
+        (LaurentPolynomial.T (0 : ℤ) : LaurentPolynomial ↥U31.K2) = 0 := by
+      rw [map_zero, zero_mul]
+    exact HK13R.bR_ne tL htne (hR.trans hzero)
+  have hlift : (polOM 2 F4).liftOf ν₀gate = 0 := by
+    classical
+    show (if h : ∃ tL, RecenterLiftSpec ν₀gate tL then h.choose else 0) = 0
+    rw [dif_neg hno]
+  rw [hlift]
+  rfl
 
 /-- SideReads clause (v), second leg: the recorded residue root is THE canonical one
 (canonRoot reads (σ, ψ) only, so it agrees with U31's r₀ pinning). -/
-theorem sideReads0_canonRoot : ((ν₀gate.zbar : F4ˣ) : F4) = canonRoot ν₀gate := by
-  sorry
+theorem sideReads0_canonRoot : ((ν₀gate.zbar : F4ˣ) : F4) = canonRoot ν₀gate := rfl
 
 /-- SideReads clause (vi), VERTEX READ-OFF, at (ν₀gate, Bdev0, 5, Φnext = fq): in ANY
 fq-adic development of the window sum (= fgate), the vertex-slot (μ = 1) digit is the
@@ -85,7 +176,73 @@ theorem sideReads0_vertex :
     ∀ (Bh : ℕ → Polynomial ℤ_[2]) (Nh : ℕ),
       IsDevelopment U31.fq (∑ j ∈ Finset.range 5, Bdev0 j * ν₀gate.σ.Φ ^ j) Bh Nh →
       ν₀gate.σ.digPrime ν₀gate.zbar (Bh ν₀gate.μ) = ν₀gate.vtx := by
-  sorry
+  intro Bh Nh hdev
+  have hdev' : IsDevelopment U31.fq fgate Bh Nh := by
+    have h2 : IsDevelopment U31.fq
+        (∑ j ∈ Finset.range 5, Bdev0 j * (X : Polynomial ℤ_[2]) ^ j) Bh Nh := hdev
+    rwa [← Bdev0_dev.2.2] at h2
+  have hfq_deg : U31.fq.degree = 2 := by
+    rw [Polynomial.degree_eq_natDegree U31.fq_monic.ne_zero, U31.fq_natDegree]
+    rfl
+  have hcanon : IsDevelopment U31.fq fgate
+      (fun j => if j = 0 then Polynomial.C 16 else if j = 1 then Polynomial.C 2
+        else if j = 2 then 1 else 0) 3 := by
+    refine ⟨?_, ?_, ?_⟩
+    · intro j
+      dsimp only
+      split_ifs
+      · rw [hfq_deg]
+        exact lt_of_le_of_lt degree_C_le (by norm_num)
+      · rw [hfq_deg]
+        exact lt_of_le_of_lt degree_C_le (by norm_num)
+      · rw [hfq_deg]
+        exact lt_of_le_of_lt degree_one_le (by norm_num)
+      · rw [degree_zero, hfq_deg]
+        decide
+    · intro j hj
+      dsimp only
+      split_ifs with h1 h2 h3
+      · exact absurd h1 (by omega)
+      · exact absurd h2 (by omega)
+      · exact absurd h3 (by omega)
+      · rfl
+    · rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_one]
+      norm_num [fgate]
+      ring
+  have hBh1 : Bh 1 = Polynomial.C 2 := by
+    have h := L0_FactB_unique U31.fq U31.fq_monic fgate hdev' hcanon 1
+    simpa using h
+  have hψ₂_deg : U31.ψ₂.degree = 2 := by
+    rw [Polynomial.degree_eq_natDegree HK13R.ψ₂_ne_zero, HK13R.ψ₂_natDegree]
+    rfl
+  have hvp : ν₀gate.vtxPoly = 1 := by
+    have hdiv : U31.ψ₂ /ₘ U31.ψ₂ = 1 := by
+      have h := Polynomial.mul_divByMonic_cancel_left (1 : Polynomial ↥U31.K2)
+        HK13R.ψ₂_monic
+      rwa [mul_one] at h
+    have hmod : (1 : Polynomial ↥U31.K2) %ₘ U31.ψ₂ = 1 := by
+      refine (Polynomial.modByMonic_eq_self_iff HK13R.ψ₂_monic).mpr ?_
+      rw [Polynomial.degree_one, hψ₂_deg]
+      decide
+    have h0 : ν₀gate.vtxPoly = (U31.ψ₂ /ₘ U31.ψ₂ ^ 1) %ₘ U31.ψ₂ := rfl
+    rw [h0, pow_one, hdiv, hmod]
+    rfl
+  have hexp : ν₀gate.a - (ν₀gate.μ : ℤ) * ν₀gate.mhat = 0 := by
+    have hmh : ν₀gate.mhat = 0 := by
+      show -ν₀gate.t * (ν₀gate.h : ℤ) * (ν₀gate.g : ℤ) = 0
+      have ht : ν₀gate.t = 0 := rfl
+      rw [ht]
+      ring
+    have ha : ν₀gate.a = 0 := rfl
+    rw [ha, hmh, mul_zero, sub_zero]
+  have hvtx : ν₀gate.vtx = 1 := by
+    unfold Node.vtx
+    rw [hvp, Polynomial.eval₂_one, mul_one, hexp, zpow_zero, Units.val_one]
+  show ν₀gate.σ.digPrime ν₀gate.zbar (Bh 1) = ν₀gate.vtx
+  rw [hBh1, hvtx]
+  show LaurentPolynomial.eval₂ U31.K2.subtype ν₀gate.zbar (U31.bR (Polynomial.C 2)) = 1
+  rw [HK13R.bR_C2]
+  exact map_one _
 
 end HK57
 

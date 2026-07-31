@@ -41,6 +41,9 @@ import LeanUrat.HC2.HK13_bStageCoreP1a
 import LeanUrat.HC1.DefsTower
 import LeanUrat.HC1.DefsSpine
 import LeanUrat.HC1.K1_vertexPin
+import LeanUrat.HC1.S9c_coreAssembly
+import LeanUrat.HC1.S9d_pinVerify
+import LeanUrat.Moves.L3_liftMonic
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -67,13 +70,27 @@ theorem childStage_gate (hσ : StageCoreL bStageP)
       VertexPin bStageP σ₁ U31.fq U31.ν₀.zbar ∧
       (∀ f, f ≠ 0 → σ₁.w f = childW bStageP U31.fq 1 3 f) ∧
       StageCoreL σ₁ := by
-  sorry
+  have hEG : 1 < bStageP.e * 2 := by
+    rw [bStageP_e_def]
+    norm_num
+  obtain ⟨σ₁, tc, pin, htie, hcore⟩ := S9c_coreAssembly bStageP hσ th hEG
+  obtain ⟨hmonΦ, hdegΦ⟩ := L3_liftMonic bStageP U31.ψ₂ 2 th.hg U31.fq th.hlift
+  have hΦnatlt : bStageP.Φ.natDegree < U31.fq.natDegree := by
+    rw [hdegΦ]
+    exact lt_mul_of_one_lt_left bStageP.hdeg hEG
+  have hΦin : inC U31.fq bStageP.Φ := by
+    change bStageP.Φ.degree < U31.fq.degree
+    rw [Polynomial.degree_eq_natDegree bStageP.hmonic.ne_zero,
+      Polynomial.degree_eq_natDegree hmonΦ.ne_zero]
+    exact_mod_cast hΦnatlt
+  exact ⟨σ₁, tc, pin, htie, S9d_stageCoreL bStageP σ₁ hσ th tc pin hΦin hcore⟩
 
 /-- The gate guard check, standalone (the blueprint's "e·g = 2 > 1 — the guards
 pass"): the S9a/S9b/S9c/S9 increment guard is satisfied at the gate read
 (`bStageP.e = U31.bStage.e = 1` — the e field is untouched by the re-dress). -/
 theorem gate_guard : 1 < bStageP.e * 2 := by
-  sorry
+  rw [bStageP_e_def]
+  norm_num
 
 end HK16
 

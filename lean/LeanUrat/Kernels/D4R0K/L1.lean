@@ -1044,7 +1044,144 @@ deps: KB8a (`offP`), the model defs.  Sketch: decide/norm_num after
 theorem spot_minW_j0pos :
     wt 3 spotStream32 1 (offP 3 spotStream32 1 5 spotTauA) = (5 : ℕ∞) ∧
       digRead 3 spotStream32 1 (offP 3 spotStream32 1 5 spotTauA) = spotTauA := by
-  sorry
+  -- stage-data projections (kept folded elsewhere)
+  have he : (spotStream32 0).e = 2 := rfl
+  have hh : (spotStream32 0).h = 1 := rfl
+  have hg : (spotStream32 0).g = 2 := rfl
+  -- the forced slot class j₀ = 5 mod 2 = 1
+  have hj0 : j0 (spotStream32 0) 5 = 1 := by
+    have hu : (ZMod.unitOfCoprime (spotStream32 0).h (spotStream32 0).cop.symm
+        : (ZMod (spotStream32 0).e)ˣ) = 1 := by
+      apply Units.ext
+      show (((spotStream32 0).h : ℕ) : ZMod (spotStream32 0).e) = 1
+      decide
+    simp only [j0, hu, inv_one, Units.val_one, one_mul]
+    decide
+  -- the required parent-parent-scale weights u₀ = 2, u₁ = 1
+  have huk0 : uk (spotStream32 0) 5 0 = 2 := by
+    simp only [uk, slot, hj0, he, hh]
+  have huk1 : uk (spotStream32 0) 5 1 = 1 := by
+    simp only [uk, slot, hj0, he, hh]
+  have hval3 : ZMod.val (1 : ZMod 3) = 1 := by decide
+  -- the realizer, position by position: (0, 1·3², 0, 1·3¹)
+  set t := offP 3 spotStream32 1 5 spotTauA with hT
+  have ht0 : t ⟨0, by decide⟩ = (0 : ℤ) := by
+    rw [hT, offP_succ]
+    simp only [slotAssemble, hj0, he, hg]
+    norm_num [realZero]
+  have ht1 : t ⟨1, by decide⟩ = (9 : ℤ) := by
+    rw [hT, offP_succ]
+    simp only [slotAssemble, hj0, he, hg]
+    norm_num [spotTauA, huk0, offP, offBase, hval3]
+  have ht2 : t ⟨2, by decide⟩ = (0 : ℤ) := by
+    rw [hT, offP_succ]
+    simp only [slotAssemble, hj0, he, hg]
+    norm_num [realZero]
+  have ht3 : t ⟨3, by decide⟩ = (3 : ℤ) := by
+    rw [hT, offP_succ]
+    simp only [slotAssemble, hj0, he, hg]
+    norm_num [spotTauA, huk1, offP, offBase, hval3]
+  -- padic valuations of the digit realizers
+  have hpv9 : padicValInt 3 9 = 2 := by
+    have h : (9 : ℤ).natAbs = 3 ^ 2 := by norm_num
+    rw [padicValInt, h, padicValNat.prime_pow]
+  have hpv3 : padicValInt 3 3 = 1 := by
+    have h : (3 : ℤ).natAbs = 3 ^ 1 := by norm_num
+    rw [padicValInt, h, padicValNat.prime_pow]
+  -- the four slot weights: (⊤, 5, ⊤, 5)
+  have hs0 : slotWt 3 spotStream32 0 t ⟨0, by decide⟩ = ⊤ := by
+    simp only [slotWt, ht0, wt, wtBase, he, hh]
+    norm_num
+  have hs1 : slotWt 3 spotStream32 0 t ⟨1, by decide⟩ = 5 := by
+    simp only [slotWt, ht1, wt, wtBase, he, hh]
+    norm_num [hpv9]
+  have hs2 : slotWt 3 spotStream32 0 t ⟨2, by decide⟩ = ⊤ := by
+    simp only [slotWt, ht2, wt, wtBase, he, hh]
+    norm_num
+  have hs3 : slotWt 3 spotStream32 0 t ⟨3, by decide⟩ = 5 := by
+    simp only [slotWt, ht3, wt, wtBase, he, hh]
+    norm_num [hpv3]
+  -- the position space, enumerated
+  have huniv : (Finset.univ : Finset (Fin ((spotStream32 0).e * (spotStream32 0).g)))
+      = {⟨0, by decide⟩, ⟨1, by decide⟩, ⟨2, by decide⟩, ⟨3, by decide⟩} := by
+    decide
+  -- the weight: inf(⊤, 5, ⊤, 5) = 5
+  have hwt : wt 3 spotStream32 1 t = (5 : ℕ∞) := by
+    rw [wt_succ, huniv]
+    simp only [Finset.inf_insert, Finset.inf_singleton, hs0, hs1, hs2, hs3]
+    simp
+  refine ⟨hwt, ?_⟩
+  -- the minimizing-slot set {1, 3}
+  have hmins : minSlots 3 spotStream32 0 t
+      = {⟨1, by decide⟩, ⟨3, by decide⟩} := by
+    unfold minSlots
+    rw [show wt 3 spotStream32 1 t = (5 : ℕ∞) from hwt]
+    ext j
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_insert,
+      Finset.mem_singleton]
+    fin_cases j <;> simp_all
+  -- the reader's slot class: least minimizing slot = 1, j0read = 1 % 2 = 1
+  have hne : (minSlots 3 spotStream32 0 t).Nonempty := by
+    rw [hmins]; exact ⟨_, Finset.mem_insert_self _ _⟩
+  have hread : j0read 3 spotStream32 0 t = 1 := by
+    unfold j0read
+    rw [dif_pos hne]
+    have hmin : (minSlots 3 spotStream32 0 t).min' hne = ⟨1, by decide⟩ := by
+      apply le_antisymm
+      · exact Finset.min'_le _ _ (by rw [hmins]; exact Finset.mem_insert_self _ _)
+      · apply Finset.le_min'
+        intro y hy
+        rw [hmins] at hy
+        rcases Finset.mem_insert.mp hy with h | h
+        · exact le_of_eq h.symm
+        · rw [Finset.mem_singleton.mp h]; decide
+    rw [hmin]
+    have hv : ((⟨1, by decide⟩ : Fin ((spotStream32 0).e * (spotStream32 0).g)) : ℕ) = 1 := rfl
+    rw [hv, he]
+  -- the read recovers τ = (1, 1)
+  funext k
+  show (if hj : j0read 3 spotStream32 0 t + (spotStream32 0).e * (k : ℕ)
+        < (spotStream32 0).e * (spotStream32 0).g then
+      if (⟨j0read 3 spotStream32 0 t + (spotStream32 0).e * (k : ℕ), hj⟩
+          : Fin ((spotStream32 0).e * (spotStream32 0).g)) ∈
+          minSlots 3 spotStream32 0 t then
+        digRead 3 spotStream32 0
+          (t ⟨j0read 3 spotStream32 0 t + (spotStream32 0).e * (k : ℕ), hj⟩)
+      else resZero 3 spotStream32 0
+    else resZero 3 spotStream32 0) = spotTauA k
+  have hk2 : (k : ℕ) < 2 := by
+    have := k.isLt
+    simpa [hg] using this
+  have hk01 : (k : ℕ) = 0 ∨ (k : ℕ) = 1 := by omega
+  rcases hk01 with hk | hk
+  · -- k = 0: position 1, digit 3² ↦ residue 1
+    simp only [hread, hk, hmins]
+    rw [dif_pos (by decide)]
+    have hmem : (⟨1 + (spotStream32 0).e * 0, by decide⟩ :
+        Fin ((spotStream32 0).e * (spotStream32 0).g)) ∈
+        ({⟨1, by decide⟩, ⟨3, by decide⟩} :
+          Finset (Fin ((spotStream32 0).e * (spotStream32 0).g))) := by decide
+    rw [if_pos hmem]
+    have ht1' : t ⟨1 + (spotStream32 0).e * 0, by decide⟩ = (9 : ℤ) := ht1
+    rw [ht1']
+    show digBase 3 9 = spotTauA k
+    unfold digBase
+    rw [hpv9]
+    norm_num [spotTauA]
+  · -- k = 1: position 3, digit 3¹ ↦ residue 1
+    simp only [hread, hk, hmins]
+    rw [dif_pos (by decide)]
+    have hmem : (⟨1 + (spotStream32 0).e * 1, by decide⟩ :
+        Fin ((spotStream32 0).e * (spotStream32 0).g)) ∈
+        ({⟨1, by decide⟩, ⟨3, by decide⟩} :
+          Finset (Fin ((spotStream32 0).e * (spotStream32 0).g))) := by decide
+    rw [if_pos hmem]
+    have ht3' : t ⟨1 + (spotStream32 0).e * 1, by decide⟩ = (3 : ℤ) := ht3
+    rw [ht3']
+    show digBase 3 3 = spotTauA k
+    unfold digBase
+    rw [hpv3]
+    norm_num [spotTauA]
 
 /-- KB9 (spot data). The constant stage stream at (e,h,g) = (2,1,1), p = 2 —
 the g = 1 single-slot corner with TRIVIAL unit group |F′^×| = 1
@@ -1064,6 +1201,92 @@ deps/sketch: as `spot_minW_j0pos`. -/
 theorem spot_g1_trivialUnit :
     wt 2 spotStream21 1 (offP 2 spotStream21 1 3 spotTauB) = (3 : ℕ∞) ∧
       digRead 2 spotStream21 1 (offP 2 spotStream21 1 3 spotTauB) = spotTauB := by
-  sorry
+  have he : (spotStream21 0).e = 2 := rfl
+  have hh : (spotStream21 0).h = 1 := rfl
+  have hg : (spotStream21 0).g = 1 := rfl
+  have hj0 : j0 (spotStream21 0) 3 = 1 := by
+    have hu : (ZMod.unitOfCoprime (spotStream21 0).h (spotStream21 0).cop.symm
+        : (ZMod (spotStream21 0).e)ˣ) = 1 := by
+      apply Units.ext
+      show (((spotStream21 0).h : ℕ) : ZMod (spotStream21 0).e) = 1
+      decide
+    simp only [j0, hu, inv_one, Units.val_one, one_mul]
+    decide
+  have huk0 : uk (spotStream21 0) 3 0 = 1 := by
+    simp only [uk, slot, hj0, he, hh]
+  have hval2 : ZMod.val (1 : ZMod 2) = 1 := by decide
+  set t := offP 2 spotStream21 1 3 spotTauB with hT
+  have ht0 : t ⟨0, by decide⟩ = (0 : ℤ) := by
+    rw [hT, offP_succ]
+    simp only [slotAssemble, hj0, he, hg]
+    norm_num [realZero]
+  have ht1 : t ⟨1, by decide⟩ = (2 : ℤ) := by
+    rw [hT, offP_succ]
+    simp only [slotAssemble, hj0, he, hg]
+    norm_num [spotTauB, huk0, offP, offBase, hval2]
+  have hpv2 : padicValInt 2 2 = 1 := by
+    have h : (2 : ℤ).natAbs = 2 ^ 1 := by norm_num
+    rw [padicValInt, h, padicValNat.prime_pow]
+  have hs0 : slotWt 2 spotStream21 0 t ⟨0, by decide⟩ = ⊤ := by
+    simp only [slotWt, ht0, wt, wtBase, he, hh]
+    norm_num
+  have hs1 : slotWt 2 spotStream21 0 t ⟨1, by decide⟩ = 3 := by
+    simp only [slotWt, ht1, wt, wtBase, he, hh]
+    norm_num [hpv2]
+  have huniv : (Finset.univ : Finset (Fin ((spotStream21 0).e * (spotStream21 0).g)))
+      = {⟨0, by decide⟩, ⟨1, by decide⟩} := by
+    decide
+  have hwt : wt 2 spotStream21 1 t = (3 : ℕ∞) := by
+    rw [wt_succ, huniv]
+    simp only [Finset.inf_insert, Finset.inf_singleton, hs0, hs1]
+    simp
+  refine ⟨hwt, ?_⟩
+  have hmins : minSlots 2 spotStream21 0 t = {⟨1, by decide⟩} := by
+    unfold minSlots
+    rw [show wt 2 spotStream21 1 t = (3 : ℕ∞) from hwt]
+    ext j
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_singleton]
+    fin_cases j <;> simp_all
+  have hne : (minSlots 2 spotStream21 0 t).Nonempty := by
+    rw [hmins]; exact ⟨_, Finset.mem_singleton_self _⟩
+  have hread : j0read 2 spotStream21 0 t = 1 := by
+    unfold j0read
+    rw [dif_pos hne]
+    have hmin : (minSlots 2 spotStream21 0 t).min' hne = ⟨1, by decide⟩ := by
+      apply le_antisymm
+      · exact Finset.min'_le _ _ (by rw [hmins]; exact Finset.mem_singleton_self _)
+      · apply Finset.le_min'
+        intro y hy
+        rw [hmins, Finset.mem_singleton] at hy
+        exact le_of_eq hy.symm
+    rw [hmin]
+    have hv : ((⟨1, by decide⟩ : Fin ((spotStream21 0).e * (spotStream21 0).g)) : ℕ) = 1 := rfl
+    rw [hv, he]
+  funext k
+  show (if hj : j0read 2 spotStream21 0 t + (spotStream21 0).e * (k : ℕ)
+        < (spotStream21 0).e * (spotStream21 0).g then
+      if (⟨j0read 2 spotStream21 0 t + (spotStream21 0).e * (k : ℕ), hj⟩
+          : Fin ((spotStream21 0).e * (spotStream21 0).g)) ∈
+          minSlots 2 spotStream21 0 t then
+        digRead 2 spotStream21 0
+          (t ⟨j0read 2 spotStream21 0 t + (spotStream21 0).e * (k : ℕ), hj⟩)
+      else resZero 2 spotStream21 0
+    else resZero 2 spotStream21 0) = spotTauB k
+  have hk0 : (k : ℕ) = 0 := by
+    have h1 : (k : ℕ) < 1 := hg ▸ k.isLt
+    omega
+  simp only [hread, hk0, hmins]
+  rw [dif_pos (by decide)]
+  have hmem : (⟨1 + (spotStream21 0).e * 0, by decide⟩ :
+      Fin ((spotStream21 0).e * (spotStream21 0).g)) ∈
+      ({⟨1, by decide⟩} :
+        Finset (Fin ((spotStream21 0).e * (spotStream21 0).g))) := by decide
+  rw [if_pos hmem]
+  have ht1' : t ⟨1 + (spotStream21 0).e * 0, by decide⟩ = (2 : ℤ) := ht1
+  rw [ht1']
+  show digBase 2 2 = spotTauB k
+  unfold digBase
+  rw [hpv2]
+  norm_num [spotTauB]
 
 end LeanUrat.Kernels.D4R0K

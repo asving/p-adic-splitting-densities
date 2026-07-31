@@ -663,3 +663,109 @@ KD9-P2 leg (ii) cap fit — w_final vs 1 + vdisc (fit population: >= 1 recenteri
 
 KD9 VERDICT: 8 checks, 0 sealed FINDING(s), 0 validation failure(s); wall 6s
 scope reminder (sealed fence): candidate-stress + growth detection only; the existential X-side statements are never probe-decidable.  P1+P2 clean GATES the KD6/KD7 provers.
+
+
+##### kb14_ur_countermodel_probe.py #####
+########################################################################
+# kb14_ur_countermodel_probe.py RUN 2026-07-30 23:37:28 — the (U)/(R) countermodel probe (KB14, BP4 gate)
+# seal: P1-P3 in this file docstring, sealed 2026-07-30 before any run; extraction rule + deviations d1-d4 recorded there.
+########################################################################
+--- validation layer: hand-computed spot rows ---
+[PASS] KB14-V1 spot p=2 f=(0,4,2): one mult-3 z-track, 0 continuing, decided  recs=[(('lin', 0), 3, 0, (), 0, False)]
+[PASS] KB14-V2 spot p=2 f=(1,4,4): z-track mult2 ONE continuing child; (z+1)-track mult1 ZERO  recs=[(('lin', 0), 2, 1, ((1, 1, 0, (1, 1), 2),), 0, False), (('lin', 1), 1, 0, (), 0, False)]
+[PASS] KB14-V3 spot p=2 f=(0,0,0): capped window counted UNDECIDED  recs=[(('lin', 0), 3, 0, (), 6, False)]
+[PASS] KB14-V4 spot p=3 f=(0,3,3): one mult-3 z-track, 0 continuing, decided  recs=[(('lin', 0), 3, 0, (), 0, False)]
+[PASS] KB14-V5 spot p=3 window (9,3,2): reader count == direct fp_factor count  cont=() expect=0 fs=[((2, 2, 1), 1)]
+box p=2 N=8 (16777216 boxes) done 4s
+  (mult, n_continuing_children) histogram: {'(1, 0)': 16777216, '(2, 0)': 3596288, '(2, 1)': 598016, '(3, 0)': 4051968, '(3, 1)': 142336}
+  undecided (f, track) window pairs: 131072; structural deg>=2 mult-1 hen rows: 8388608; reader faults: none
+box p=3 N=5 (14348907 boxes) done 4s
+  (mult, n_continuing_children) histogram: {'(1, 0)': 18600435, '(2, 0)': 2943702, '(2, 1)': 244944, '(3, 0)': 1581201, '(3, 1)': 13122}
+  undecided (f, track) window pairs: 177147; structural deg>=2 mult-1 hen rows: 9034497; reader faults: none
+box C (quartic RS cylinder 2^26, N=10; one deg-2 mult-2 track per f) done 6s
+  first-read label row: {'DEEP': 4096, 'INERT': 6389760, 'RAM': 51130368, 'RS1(r=1)': 1048576, 'RS1(r=2)': 1048576, 'RS1(r=3)': 1048576, 'RS2(r=1)': 16384, 'RS2(r=2)': 16384, 'RS2(r=3)': 16384, 'SPLIT': 3194880, 'TS': 3194880}
+  label -> continuing-children map: {'DEEP': 'undec', 'INERT': 0, 'RAM': 0, 'RS1(r=1)': 1, 'RS1(r=2)': 1, 'RS1(r=3)': 1, 'RS2(r=1)': 1, 'RS2(r=2)': 1, 'RS2(r=3)': 1, 'SPLIT': 0, 'TS': 0}; undecided (DEEP): 4096
+--- sealed families ---
+[PASS] KB14-checksum box sizes (2^24, 3^15, 2^26)  16777216 14348907 67108864
+[PASS] KB14-P1 (U): ZERO (i)-witnesses (two distinct realized root children on one track at one point)  p2=0 p3=0 quartic-unknown-labels=0 (witnesses recorded verbatim in JSON if any)
+[PASS] KB14-P2 (R): ZERO (ii)-witnesses (continuing child on a mult-1 track)  p2=0 p3=0 (quartic cylinder track is mult-2 by construction)
+[PASS] KB14-P3 in-corpus G1 toy attempt: BLOCKED record produced, no compiled witness, no Q7 escalation  BLOCKED CONFIRMED: the G1 toys (toyModel/toyModelB) stop at the CellData layer — child_cover FAILS on both carriers at g...
+  honesty row (report-only): undecided window pairs p2=131072 p3=177147 quartic-DEEP=4096 — a witness must be decided; undecided reads are tallied, never PASSed
+
+KB14 VERDICT: 9 checks, 0 FINDING(s); wall 14s
+gate consequence: CLEAN RUN — KB12 (U-leg) and KB13 (R-leg) provers are UNBLOCKED per the sealed rule.
+
+
+##### ke12_undec_cover_probe.py (UNIT KE12: Undec-decomposition gate for KE6) #####
+run 2026-07-30 23:40:51; spec BRIDGE_BP4_KERNELS_2026-07-30.md §4 KE12 + §3.E (E-v); sealed P1-P2 of 2026-07-30 in force; long log /tmp/ke12_undec_cover.out
+[PASS] KE12-P2 p=2: Undec(N) counts + per-sigma decided reproduce the S7 integers, N=1..8  exact
+[PASS] KE12-V1 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0 across all levels  {}
+[PASS] KE12-V2 p=2: per-member Undec antitonicity across levels (undec_antitone census face)  violations 0
+[PASS] KE12-V3 p=2: cylinder-count identity #members(N) = undec_N · p^(3(Nmax−N))  
+[PASS] KE12-P1 p=2: ZERO Undec(N) members outside the four-set union at every probed level (cover check)  outside 0; per-level {1: 8388608, 2: 3145728, 3: 1572864, 4: 786432, 5: 360448, 6: 180224, 7: 90112, 8: 44032}
+[PASS] KE12-P1d p=2: DEEP-UNATTRIBUTED deviation channel EMPTY (DEEP members all land on the discZero face)  deviations 0; every DEEP member has vd >= Nmax (disc ≡ 0 at box precision)
+[PASS] KE12-P2 p=3: Undec(N) counts + per-sigma decided reproduce the S7 integers, N=1..5  exact
+[PASS] KE12-V1 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0 across all levels  {}
+[PASS] KE12-V2 p=3: per-member Undec antitonicity across levels (undec_antitone census face)  violations 0
+[PASS] KE12-V3 p=3: cylinder-count identity #members(N) = undec_N · p^(3(Nmax−N))  
+[PASS] KE12-P1 p=3: ZERO Undec(N) members outside the four-set union at every probed level (cover check)  outside 0; per-level {1: 4782969, 2: 1240029, 3: 413343, 4: 137781, 5: 44469}
+[PASS] KE12-P1d p=3: DEEP-UNATTRIBUTED deviation channel EMPTY (DEEP members all land on the discZero face)  deviations 0; every DEEP member has vd >= Nmax (disc ≡ 0 at box precision)
+KE12 VERDICT: 12/12 PASS, 0 FINDING
+
+# KD9 CORRECTION MARKER (2026-07-30): the FIRST kd9_ladder_cap_probe block
+# above (run 23:31:28) mislabeled box A's censored '>=8' vdisc bucket as an
+# exact vd=8 row (the in-box read marks censored members with the value 8,
+# not 0); numerically it was the documented vd=8 floor treatment, so the
+# P1/P2 verdicts are unaffected, but the SECOND block (corrected censoring,
+# same seals, exit 0) is the record of consumption.  Fix: worker_cubic
+# censor test vd == 0 -> vd >= NA.  results/kd9_ladder_cap.json holds the
+# corrected run only.
+
+
+##### ke13_align_rowcheck_probe.py (UNIT KE13: ALIGN transport row-check gate for KE8) #####
+run 2026-07-30 23:42:49; spec BRIDGE_BP4_KERNELS_2026-07-30.md §4 KE13 + §3.E (E-vii); sealed P1-P3 of 2026-07-30 in force; reading A ONLY (X1B fence); long log /tmp/ke13_align_rowcheck.out
+[PASS] KE13-P3a p=2: reading-A cumulative sweep reproduces the prior X1A seal (violations 0, censored-skipped 21504)  violations 0 (witness None), skipped 21504
+[PASS] KE13-P3b p=2: walker faithfulness — S7 decided integers + undec at level 8  sigma [708608, 5038080, 4329472, 3951616, 2705408] vs [708608, 5038080, 4329472, 3951616, 2705408]; undec 44032 vs 44032
+[PASS] KE13-V1 p=2: engine faults == 0  {}
+[PASS] KE13-P1 p=2: 0 per-row accounting violations under reading A (each realized node increment == its row's Cor 4.19 value)  violations 0; parity deviations 0; realized T1 tuples 7 (5038080 members)
+[PASS] KE13-P2 p=2: per-row violation tally (a violating row names KE8's failing transport row)  violating rows NONE; per-row {'T0': 0, 'T1': 0, 'T2': 0, 'T3': 0, 'T4': 0, 'T5': 0}
+[PASS] KE13-P3a p=3: reading-A cumulative sweep reproduces the prior X1A seal (violations 0, censored-skipped 26244)  violations 0 (witness None), skipped 26244
+[PASS] KE13-P3b p=3: walker faithfulness — S7 decided integers + undec at level 5  sigma [927288, 5196312, 4269024, 2726460, 1185354] vs [927288, 5196312, 4269024, 2726460, 1185354]; undec 44469 vs 44469
+[PASS] KE13-V1 p=3: engine faults == 0  {}
+[PASS] KE13-P1 p=3: 0 per-row accounting violations under reading A (each realized node increment == its row's Cor 4.19 value)  violations 0; parity deviations 0; realized T1 tuples 5 (3464208 members)
+[PASS] KE13-P2 p=3: per-row violation tally (a violating row names KE8's failing transport row)  violating rows NONE; per-row {'T0': 0, 'T1': 0, 'T2': 0, 'T3': 0, 'T4': 0, 'T5': 0}
+KE13 VERDICT: 10/10 PASS, 0 FINDING
+
+
+##### ke11_affine_envelope_probe.py (UNIT KE11: affine-envelope gate for KE2 + KE3) #####
+run 2026-07-30 23:43:02; spec BRIDGE_BP4_KERNELS_2026-07-30.md §4 KE11 + §3.E (E-ii)/(E-iii); long log /tmp/ke11_affine_envelope.out
+[PASS] KE11-V1 n=3 p=2: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)  sigma [708608, 5038080, 4329472, 3951616, 2705408] vs [708608, 5038080, 4329472, 3951616, 2705408]; undec 44032 vs 44032
+[PASS] KE11-V2 n=3 p=2: engine faults (VERTEX/BOX/Iaug/partition) == 0  {}
+[PASS] KE11-P1 n=3 p=2: threshold(H) <= 1 + c0·Sigma h_r with the sketch candidate c0 = n·C_move = 9 (and Sigma h = 0 => thr <= 1)  empirical minimal c0 = 3; sketch violations []; bad-form rows [] (n=0)
+[PASS] KE11-P1r n=3 p=2: the X-n3 observation-face reference c0 = 4 passes alongside  violations []
+[PASS] KE11-P2 n=3 p=2: cap(H) <= c_cap·(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 4  empirical minimal c_cap = 7/3; violations []; KE3-shape (C_root^emp, C_cell^emp) = (11, 0) => C_root + 2·C_cell = 11, violations []; wf>n(1+Sigma h) ledger count 0
+[PASS] KE11-P3 n=3 p=2: growth detector — per-depth max ratios flat (no super-affine branch family)  thr ratios by depth [(0, 0.0), (1, 3.0), (2, 3.0), (3, 2.0), (4, 1.1666666666666667)] (slope 0.1333); cap ratios by depth [(0, 2.3333333333333335), (1, 2.3333333333333335), (2, 1.75), (3, 1.2222222222222223), (4, 0.5714285714285714)] (slope -0.4635)
+[PASS] KE11-V1 n=3 p=3: adapted walker reproduces the S7 decided integers + undecided count (x_n3 gate values)  sigma [927288, 5196312, 4269024, 2726460, 1185354] vs [927288, 5196312, 4269024, 2726460, 1185354]; undec 44469 vs 44469
+[PASS] KE11-V2 n=3 p=3: engine faults (VERTEX/BOX/Iaug/partition) == 0  {}
+[PASS] KE11-P1 n=3 p=3: threshold(H) <= 1 + c0·Sigma h_r with the sketch candidate c0 = n·C_move = 9 (and Sigma h = 0 => thr <= 1)  empirical minimal c0 = 3; sketch violations []; bad-form rows [] (n=0)
+[PASS] KE11-P1r n=3 p=3: the X-n3 observation-face reference c0 = 4 passes alongside  violations []
+[PASS] KE11-P2 n=3 p=3: cap(H) <= c_cap·(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 4  empirical minimal c_cap = 2; violations []; KE3-shape (C_root^emp, C_cell^emp) = (7, 0) => C_root + 2·C_cell = 7, violations []; wf>n(1+Sigma h) ledger count 0
+[PASS] KE11-P3 n=3 p=3: growth detector — per-depth max ratios flat (no super-affine branch family)  thr ratios by depth [(0, 0.0), (1, 3.0), (2, 3.0), (3, 1.3333333333333333)] (slope 0.4); cap ratios by depth [(0, 2.0), (1, 2.0), (2, 1.4)] (slope -0.3)
+[PASS] KE11-V3 n=2 p=2: walker type == disc square-class oracle on every jointly decided f  walker decided 65280, oracle decided 61440, both 61440, disagreements 0 (witness None)
+[PASS] KE11-P1 n=2 p=2: threshold(H) <= 1 + c0·Sigma h_r with the sketch candidate c0 = n·C_move = 4 (and Sigma h = 0 => thr <= 1)  empirical minimal c0 = 2; sketch violations []; bad-form rows [] (n=0)
+[PASS] KE11-P1r n=2 p=2: the X-n3 observation-face reference c0 = 4 passes alongside  violations []
+[PASS] KE11-P2 n=2 p=2: cap(H) <= c_cap·(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 3  empirical minimal c_cap = 7/4; violations []; KE3-shape (C_root^emp, C_cell^emp) = (8, 0) => C_root + 2·C_cell = 8, violations []; wf>n(1+Sigma h) ledger count 0
+[PASS] KE11-P3 n=2 p=2: growth detector — per-depth max ratios flat (no super-affine branch family)  thr ratios by depth [(0, 0.0), (1, 2.0), (2, 2.0), (3, 1.5), (4, 1.0)] (slope 0.15); cap ratios by depth [(0, 1.75), (1, 1.75), (2, 1.4), (3, 1.0), (4, 0.5714285714285714)] (slope -0.3107)
+[PASS] KE11-V3 n=2 p=3: walker type == disc square-class oracle on every jointly decided f  walker decided 530712, oracle decided 529254, both 529254, disagreements 0 (witness None)
+[PASS] KE11-P1 n=2 p=3: threshold(H) <= 1 + c0·Sigma h_r with the sketch candidate c0 = n·C_move = 4 (and Sigma h = 0 => thr <= 1)  empirical minimal c0 = 2; sketch violations []; bad-form rows [] (n=0)
+[PASS] KE11-P1r n=2 p=3: the X-n3 observation-face reference c0 = 4 passes alongside  violations []
+[PASS] KE11-P2 n=2 p=3: cap(H) <= c_cap·(1 + Sigma h_r) with the clause candidate c_cap = n + 1 = 3  empirical minimal c_cap = 5/3; violations []; KE3-shape (C_root^emp, C_cell^emp) = (6, 0) => C_root + 2·C_cell = 6, violations []; wf>n(1+Sigma h) ledger count 0
+[PASS] KE11-P3 n=2 p=3: growth detector — per-depth max ratios flat (no super-affine branch family)  thr ratios by depth [(0, 0.0), (1, 2.0), (2, 2.0), (3, 1.3333333333333333)] (slope 0.4); cap ratios by depth [(0, 1.6666666666666667), (1, 1.6666666666666667), (2, 1.25), (3, 0.6666666666666666)] (slope -0.3417)
+KE11 VERDICT: 22/22 PASS, 0 FINDING
+
+
+##### ke4_tails_stress_probe.py (UNIT KE4: tails candidate-stress gate for KE5) #####
+run 2026-07-30 23:56:08; PHASE FLAG: phase 2 (prover constants C_T=1200488, c_T=1); spec BRIDGE_BP4_KERNELS_2026-07-30.md §4 KE4 + §3.E (E-iv) + R8; long log /tmp/ke4_tails_stress.out
+[PASS] KE4-P4 p=2: prover pair (C_T=1200488, c_T=1) in-box stress  violations []; margin-could-hide rows []; detector growing=False
+[PASS] KE4-P4 p=3: prover pair (C_T=1200488, c_T=1) in-box stress  violations []; margin-could-hide rows []; detector growing=False
+KE4 VERDICT: 2/2 PASS, 0 FINDING

@@ -58,6 +58,40 @@ theorem weightChargeFull_of_ladderCap {n : ℕ} (X : MovesX.XFamily n)
       1 ≤ MovesX.vdisc f)
     (hs : 2 * (KW.D : ℚ) * c ≤ (K.s : ℚ)) :
     MovesX.WeightChargeFullP n X K := by
-  sorry
+  intro p hp f H hf hstrat
+  rcases Nat.eq_zero_or_pos
+      (MovesX.countPop H MovesX.Pop.recT1 + MovesX.countPop H MovesX.Pop.t4)
+    with h0 | h1
+  -- zero-recentering history: count 0 ≤ anything
+  · simp only [h0]
+    exact Nat.zero_le _
+  -- ≥ 1 recentering: vdisc ≥ 1 (REC-DISC), then the ℚ chain
+  · have hv : 1 ≤ MovesX.vdisc f := hrecdisc p f H hf hstrat h1
+    have hvq : (1 : ℚ) ≤ (MovesX.vdisc f : ℚ) := by exact_mod_cast hv
+    have hD : (0 : ℚ) ≤ (KW.D : ℚ) := Nat.cast_nonneg _
+    have hDc : (0 : ℚ) ≤ (KW.D : ℚ) * c := mul_nonneg hD hc
+    have hladder := kd6_ladder_count_le KW H
+    have hcapH := hcap p f H hf hstrat
+    have chain : ((MovesX.countPop H MovesX.Pop.recT1 +
+          MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ) ≤
+        (K.s : ℚ) * (MovesX.vdisc f : ℚ) := by
+      calc ((MovesX.countPop H MovesX.Pop.recT1 +
+              MovesX.countPop H MovesX.Pop.t4 : ℕ) : ℚ)
+          ≤ (KW.D : ℚ) * (KW.w H - KW.w []) := hladder
+        _ ≤ (KW.D : ℚ) * KW.w H := by
+            apply mul_le_mul_of_nonneg_left _ hD
+            linarith [KW.w_nil_nonneg]
+        _ ≤ (KW.D : ℚ) * (c * (1 + (MovesX.vdisc f : ℚ))) :=
+            mul_le_mul_of_nonneg_left hcapH hD
+        _ = ((KW.D : ℚ) * c) * (1 + (MovesX.vdisc f : ℚ)) := by ring
+        _ ≤ ((KW.D : ℚ) * c) *
+              ((MovesX.vdisc f : ℚ) + (MovesX.vdisc f : ℚ)) := by
+            apply mul_le_mul_of_nonneg_left _ hDc
+            linarith
+        _ = (2 * (KW.D : ℚ) * c) * (MovesX.vdisc f : ℚ) := by ring
+        _ ≤ (K.s : ℚ) * (MovesX.vdisc f : ℚ) := by
+            apply mul_le_mul_of_nonneg_right hs
+            linarith
+    exact_mod_cast chain
 
 end LeanUrat.Kernels

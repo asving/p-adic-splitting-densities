@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsCar
+import LeanUrat.HC1.CL13_lvlDet
 
 /-!
 # HC1.CL14_packEslotMin — the repaired LST leg (i-b) at `packE`, unfolded (BP5 CL-14)
@@ -70,6 +71,46 @@ namespace LeanUrat.HC1
 
 open scoped Classical
 
+open Polynomial LeanUrat.Moves in
+/-- `digLift 0 = 0` (C2_TYPa's private `digLift_zero`, copied). -/
+private lemma cl14_digLift_zero {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (T : Tower p F) : T.digLift 0 = 0 := by
+  rw [Tower.digLift, dif_neg]
+  rintro ⟨B, hB0, -, -, hR⟩
+  apply (T.stg 0).hRne B hB0
+  rw [hR]
+  have h0 : (⟨((0 : ↥(T.stg 0).FQ) : F), (T.stg 0).hFQ_le (0 : ↥(T.stg 0).FQ).2⟩ :
+      ↥(T.stg 0).K) = 0 := Subtype.ext (by simp)
+  rw [h0, map_zero, zero_mul]
+
+/-- The slot coefficient of an everywhere-zero digit assignment vanishes. -/
+private lemma cl14_slotCoeff_zero {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (T : Tower p F) (b : ℕ) (z : T.Coord → ↥(T.stg 0).FQ)
+    (hz : ∀ c, z c = 0) : T.slotCoeff b z = 0 := by
+  rw [Tower.slotCoeff]
+  apply finsum_mem_of_eqOn_zero
+  intro c _
+  show T.digLift (z c) * T.mono c = (0 : Polynomial ℤ_[p])
+  rw [hz c, cl14_digLift_zero T, zero_mul]
+
+/-- The class `[f]` in the degree-`m` piece vanishes iff `f` has strictly higher weight
+(T6's private `mk_eq_zero_iff`, copied). -/
+private lemma cl14_mk_eq_zero_iff {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (T : Tower p F) (m : ℤ) (f : Polynomial ℤ_[p]) (hf : f ∈ T.side.ge m) :
+    (Submodule.Quotient.mk (⟨f, hf⟩ : T.side.ge m) : T.side.grPiece m) = 0
+      ↔ (↑m : WithTop ℤ) < T.side.w f := by
+  rw [Submodule.Quotient.mk_eq_zero]
+  exact Iff.rfl
+
+/-- `inGr γ 0 = 0` (both branches of the class map send `0` to `0`). -/
+private lemma cl14_inGr_zero {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (T : Tower p F) (γ : ℚ) : T.inGr γ (0 : Polynomial ℤ_[p]) = 0 := by
+  by_cases h : T.onLattice γ ∧ ((⌊(T.strTop : ℚ) * γ⌋ : WithTop ℤ) ≤ T.side.w 0)
+  · rw [Tower.inGr, dif_pos h]
+    exact (cl14_mk_eq_zero_iff T _ 0 h.2).mpr
+      (by rw [T.side.w_zero]; exact WithTop.coe_lt_top _)
+  · rw [Tower.inGr, dif_neg h]
+
 /-- **CL-14** — the repaired (i-b) at `packE T rl`, unfolded to tower vocabulary
 (see the module docstring's E-phase resolutions): block-b-supported `y` (the
 CL-06-ratified VARIANT-A row `hfin` + `hsupp`) with a nonzero graded expansion
@@ -89,7 +130,56 @@ theorem CL14_packE_ib {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
         ∀ γ : ℚ, γ < T.ht c₀ →
           T.inGr γ (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ then y c else 0)) = 0) ∧
       ∀ c : T.Coord, y c ≠ 0 → T.ht c₀ ≤ T.ht c := by
-  sorry
+  classical
+  -- 1. the support is nonempty (a nonzero component forces a support coordinate)
+  have hsuppne : ∃ c : T.Coord, y c ≠ 0 := by
+    obtain ⟨γ₁, hγ₁⟩ := hne
+    by_contra hall
+    have hall' : ∀ c : T.Coord, y c = 0 := fun c => by
+      by_contra hyc
+      exact hall ⟨c, hyc⟩
+    apply hγ₁
+    have hz : ∀ c : T.Coord, (if c ∈ T.levelSet b γ₁ then y c else 0) = 0 := by
+      intro c
+      by_cases hc : c ∈ T.levelSet b γ₁
+      · simp [hc, hall' c]
+      · simp [hc]
+    rw [cl14_slotCoeff_zero T b _ hz, cl14_inGr_zero T γ₁]
+  obtain ⟨c₁, hc₁⟩ := hsuppne
+  -- 2. pick a support coordinate of minimal height (VARIANT A's hfin is consumed here)
+  set S : Finset T.Coord := hfin.toFinset with hSdef
+  have hmemS : ∀ c, c ∈ S ↔ y c ≠ 0 := by
+    intro c
+    rw [hSdef, Set.Finite.mem_toFinset]
+    exact Iff.rfl
+  have hSne : S.Nonempty := ⟨c₁, (hmemS c₁).mpr hc₁⟩
+  obtain ⟨c₀, hc₀S, hmin⟩ := S.exists_min_image (fun c => T.ht c) hSne
+  have hc₀ne : y c₀ ≠ 0 := (hmemS c₀).mp hc₀S
+  have hminS : ∀ c : T.Coord, y c ≠ 0 → T.ht c₀ ≤ T.ht c :=
+    fun c hc => hmin c ((hmemS c).mpr hc)
+  refine ⟨c₀, hc₀ne, ⟨?_, ?_⟩, hminS⟩
+  -- 3a. the component AT ht c₀ is detected: LVL-DET (CL-13) on the γ̂-restriction
+  · apply CL13_lvlDet T b (T.ht c₀)
+    · refine ⟨c₀, ?_⟩
+      have hmem : c₀ ∈ T.levelSet b (T.ht c₀) := ⟨hsupp c₀ hc₀ne, rfl⟩
+      simpa [hmem] using hc₀ne
+    · intro c hc
+      by_cases hcl : c ∈ T.levelSet b (T.ht c₀)
+      · exact hcl
+      · simp [hcl] at hc
+  -- 3b. every component STRICTLY BELOW vanishes: no support below the minimal height
+  · intro γ hγ
+    have hz : ∀ c : T.Coord, (if c ∈ T.levelSet b γ then y c else 0) = 0 := by
+      intro c
+      by_cases hcl : c ∈ T.levelSet b γ
+      · have hy0 : y c = 0 := by
+          by_contra hyc
+          have hge := hminS c hyc
+          rw [hcl.2] at hge
+          exact absurd (lt_of_lt_of_le hγ hge) (lt_irrefl _)
+        simp [hcl, hy0]
+      · simp [hcl]
+    rw [cl14_slotCoeff_zero T b _ hz, cl14_inGr_zero T γ]
 
 end LeanUrat.HC1
 

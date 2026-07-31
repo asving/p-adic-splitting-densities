@@ -371,7 +371,7 @@ theorem isAdicComplete_of_linearEquiv {R M N : Type*} [CommRing R] {I : Ideal R}
       simpa using hx
     · intro hx
       exact ⟨e.symm y, hx, by simp⟩
-  have hH : IsHausdorff I N := by
+  haveI hH : IsHausdorff I N := by
     constructor
     intro x hx
     have h0 : e.symm x = 0 := by
@@ -382,7 +382,7 @@ theorem isAdicComplete_of_linearEquiv {R M N : Type*} [CommRing R] {I : Ideal R}
       rwa [sub_zero] at hx'
     have := congrArg e h0
     simpa using this
-  have hP : IsPrecomplete I N := by
+  haveI hP : IsPrecomplete I N := by
     constructor
     intro f hf
     obtain ⟨L, hL⟩ := IsPrecomplete.prec (inferInstance : IsPrecomplete I M)
@@ -393,10 +393,12 @@ theorem isAdicComplete_of_linearEquiv {R M N : Type*} [CommRing R] {I : Ideal R}
     rw [SModEq.sub_mem, hmem n]
     have := SModEq.sub_mem.mp (hL n)
     simpa [map_sub] using this
-  exact ⟨hH, hP⟩
+  exact IsAdicComplete.mk
 
+set_option linter.unusedFintypeInType false in
 /-- Proof-internal (IB-E4a, NOT a fenced statement): `IsAdicComplete` passes to
-    finite powers — the shape `Basis.equivFun` reduces a finite free module to. -/
+    finite powers — the shape `Basis.equivFun` reduces a finite free module to.
+    (`Fintype ι` is used through `Finset.univ` in the single-decomposition.) -/
 theorem isAdicComplete_pi_of_fintype {R M : Type*} [CommRing R] (I : Ideal R)
     {ι : Type*} [Fintype ι] [AddCommGroup M] [Module R M]
     [IsAdicComplete I M] : IsAdicComplete I (ι → M) := by
@@ -421,17 +423,17 @@ theorem isAdicComplete_pi_of_fintype {R M : Type*} [CommRing R] (I : Ideal R)
       have hx' : x = ∑ i : ι, Pi.single i (x i) := (Finset.univ_sum_single x).symm
       rw [hx']
       exact Submodule.sum_mem _ fun i _ => hle i (Submodule.mem_map_of_mem (hx i))
-  have hH : IsHausdorff I (ι → M) := by
+  haveI hH : IsHausdorff I (ι → M) := by
     constructor
     intro x hx
     funext i
-    show x i = 0
+    change x i = 0
     refine IsHausdorff.haus (inferInstance : IsHausdorff I M) (x i) fun n => ?_
     rw [SModEq.sub_mem, sub_zero]
     have hxn := SModEq.sub_mem.mp (hx n)
     rw [sub_zero] at hxn
     exact (hmem n x).mp hxn i
-  have hP : IsPrecomplete I (ι → M) := by
+  haveI hP : IsPrecomplete I (ι → M) := by
     constructor
     intro f hf
     have hcomp : ∀ i : ι, ∃ L : M, ∀ n : ℕ,
@@ -448,7 +450,7 @@ theorem isAdicComplete_pi_of_fintype {R M : Type*} [CommRing R] (I : Ideal R)
     intro i
     have := SModEq.sub_mem.mp (hL i n)
     simpa using this
-  exact ⟨hH, hP⟩
+  exact IsAdicComplete.mk
 
 /-- Proof-internal (IB-E4a, NOT a fenced statement): the monic order
     `AdjoinRoot h` is adically complete at the extended maximal ideal —
@@ -567,10 +569,14 @@ theorem ip1_holds : IP1 p := by
   -- STEP 3 (E4a): the residue ring AdjoinRoot h̄ is Artinian (finite
   -- dimensional over the residue field through the power basis).
   have hbarM : hbar.Monic := hm.map _
-  haveI hArtB : IsArtinianRing (AdjoinRoot hbar) := by
-    haveI : Module.Finite (ℤ_[p] ⧸ IsLocalRing.maximalIdeal ℤ_[p]) (AdjoinRoot hbar) :=
-      (AdjoinRoot.powerBasis hbarM.ne_zero).finite
-    exact IsArtinianRing.of_finite (ℤ_[p] ⧸ IsLocalRing.maximalIdeal ℤ_[p]) (AdjoinRoot hbar)
+  -- the residue field is finite (≅ ZMod p), so the monic power basis makes
+  -- AdjoinRoot h̄ a FINITE ring, hence Artinian — no quotient-field instance
+  -- needed (avoids the `Ideal.Quotient.field` non-instance diamond).
+  haveI hkFin : Finite (ℤ_[p] ⧸ IsLocalRing.maximalIdeal ℤ_[p]) :=
+    Finite.of_equiv (ZMod p) (PadicInt.residueField (p := p)).symm.toEquiv
+  haveI hBFin : Finite (AdjoinRoot hbar) :=
+    Finite.of_equiv _ ((AdjoinRoot.powerBasis' hbarM).basis.equivFun).symm.toEquiv
+  haveI hArtB : IsArtinianRing (AdjoinRoot hbar) := isArtinian_of_finite
   -- STEP 4: locality via unique maximal ideal; J sits below every maximal
   -- ideal (completeness ⇒ J ≤ Jacobson radical).
   have hJle : ∀ M : Ideal (AdjoinRoot h), M.IsMaximal → J ≤ M := by
@@ -613,14 +619,17 @@ theorem ip1_holds : IP1 p := by
     refine (hker _).mp ?_
     rw [map_sub, map_pow, ha₀, sq, heBid.eq, sub_self]
   have hev : Polynomial.eval a₀ ((X : Polynomial (AdjoinRoot h)) ^ 2 - X) ∈ J := by
-    simpa using hevJ
+    rw [Polynomial.eval_sub, Polynomial.eval_pow, Polynomial.eval_X]
+    exact hevJ
   have hder : IsUnit (Ideal.Quotient.mk J
       (Polynomial.eval a₀ (Polynomial.derivative
         ((X : Polynomial (AdjoinRoot h)) ^ 2 - X)))) := by
     have hd : Polynomial.eval a₀ (Polynomial.derivative
         ((X : Polynomial (AdjoinRoot h)) ^ 2 - X)) = 2 * a₀ - 1 := by
-      simp [Polynomial.derivative_sub, Polynomial.derivative_X_pow]
-      ring
+      rw [Polynomial.derivative_sub, Polynomial.derivative_X_pow, Polynomial.derivative_X]
+      simp only [Nat.cast_ofNat, Polynomial.eval_sub, Polynomial.eval_mul,
+        Polynomial.eval_C, Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one]
+      norm_num
     rw [hd]
     refine IsUnit.of_mul_eq_one (Ideal.Quotient.mk J (2 * a₀ - 1)) ?_
     rw [← map_mul, ← map_one (Ideal.Quotient.mk J), Ideal.Quotient.eq]
