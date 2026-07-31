@@ -116,3 +116,10 @@ NO further statement-, signature-, or definition-level change (even on private
 declarations under standing authorities) will be dispatched until Asvin names the
 items. The autonomous frontier continues: new-file units, countermodel gates,
 proofs of fenced statements as-is, designs, audits, ratifications, records.
+
+## QUEUE ADDITIONS (census, 2026-07-31)
+11. hdom row addition — ledgerIV_inst/measuredOf_comp_once gain hdom : EntDomOrder0 V
+    (the established genre: V7_rbB/V3_initrat already carry it); holds 3 sorries.
+12. HC2/U4 levelSet_no_straddle statement repair — NOT PROVABLE AS STATED (value case
+    false on a legal countermodel, dual-confirmed 2026-07-27); repair adjudication
+    package to be drafted by the next BP2-area agent, execution on sign-off.
