@@ -1062,3 +1062,12 @@ resummation airtight per the verifier's own conditional. O-11: the
 owned rows); K1-a de-anonymized; the falsifier record corrected (37/37 +
 the V2 oracle-pin supplement 10/10); ROOT ledger touches enumerated in §9.
 Both owe pass 2 (launched). VERIFIED: O-13, O-12, Dfloor, GD23.
+
+## WAVE 13 (2026-08-02, commits f34b530/6299a4a/3896eb0)
+ROOT r2: all 11 VC1 findings fixed — (ROOT-C) = the theorem-AS-PROVED
+displayed with explicit hypotheses (H1) (GR-B), (H2) (FRESH), (H3)
+D-12r+(E-N), (H4) (R1)-(R4)+(UB-X); (ROOT) re-badged TARGET; the D-11/O-11
+cycle STRATIFIED 17<18<18b; the roster completed; statuses synced
+(VERIFIED = 4: O-13, O-12, Dfloor, GD23). CU-1 r5: the last clause fixed.
+PROJECT_STATE refreshed as the sole resumability anchor (3896eb0). VC2
+(end-to-end pass 2 on the revised ROOT) launched.
