@@ -842,3 +842,11 @@ claim self-caught pre-commit). Codex critique: 76 findings, all triaged
 (~35 fixed, ~37 verified-no-change, 4 extraction artifacts). What-remains =
 the four open pieces in the directive's format. LOCAL commits only —
 REVIEW-READY for Asvin; push awaits his look.
+
+## V21-V25 (2026-08-01): Dfloor pass-1 CLEAN SOUND -> pass 2; O5triple +
+## O-2a SOUND-WITH-GAPS (converging); O3design REJECT x2 (adjudication:
+## the repair agent must judge whether the design approach itself is wrong
+## vs reviewer-severity — read both reject reports side by side);
+## O-1thr rev-3 UNSOUND (the anticipated sheared-display re-verification).
+## SYNTHESIS PASS 4 dispatched (the standing duty, lapsed since the IFK
+## convergence — flagged by the goal loop).
