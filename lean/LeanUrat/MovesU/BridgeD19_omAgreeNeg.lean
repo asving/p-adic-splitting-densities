@@ -49,7 +49,6 @@ lemmas `typeOf5_typeOf4_compat` / `typeOf4_typeOfW_compat`.
 
 set_option linter.style.longLine false
 set_option linter.style.header false
-set_option maxHeartbeats 1000000
 
 namespace LeanUrat.MovesU
 
@@ -71,7 +70,7 @@ theorem stallBox_support (p : ℕ) [Fact p.Prime] :
     (stallBox p).1.support = {2} := by
   haveI : Fact (1 < p ^ 1) := ⟨by simpa using (Fact.out (p := p.Prime)).one_lt⟩
   haveI : Nontrivial (OM.QuotientBox.ResidueRing p 1) := ZMod.nontrivial _
-  show (Polynomial.X ^ 2 : (OM.QuotientBox.ResidueRing p 1)[X]).support = {2}
+  change (Polynomial.X ^ 2 : (OM.QuotientBox.ResidueRing p 1)[X]).support = {2}
   rw [Polynomial.X_pow_eq_monomial, Polynomial.support_monomial _ one_ne_zero]
 
 /-- The box-native valuation support of the stall point is a SINGLE dot. -/
@@ -130,13 +129,13 @@ degree 0. -/
 theorem classify_stallBox_tree (p : ℕ) [Fact p.Prime] :
     (OM.B.classify p 2 1 (stallBox p)).tree = [(0, 2, 0)] := by
   rw [OM.ClassifierBridgeChildful.classify_eq_shapeOf one_pos (stallBox p)]
-  show OM.M5.encodeTree (OM.B.fRootCtx p 1 one_pos (stallBox p)) = [(0, 2, 0)]
+  change OM.M5.encodeTree (OM.B.fRootCtx p 1 one_pos (stallBox p)) = [(0, 2, 0)]
   have hRr : (OM.B.fRootCtx p 1 one_pos (stallBox p)).Rr = 0 :=
     rootResidual_stallBox p
   rw [OM.M5.encodeTree,
     cells_eq_nil_of_natDegree_zero _ (by rw [hRr, Polynomial.natDegree_zero]),
     List.flatMap_nil]
-  show [(0, 2, (OM.B.rootResidual p 1 one_pos (stallBox p)).natDegree)]
+  change [(0, 2, (OM.B.rootResidual p 1 one_pos (stallBox p)).natDegree)]
     = [(0, 2, 0)]
   rw [rootResidual_stallBox p, Polynomial.natDegree_zero]
 
