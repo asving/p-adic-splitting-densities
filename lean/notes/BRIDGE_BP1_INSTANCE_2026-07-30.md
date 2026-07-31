@@ -1290,3 +1290,211 @@ LeanUrat.MovesD.TreeCan` green 2026-07-30, "Build completed successfully
 No existing file touched; MovesD/MANIFEST.json entry + the D27 wire are
 follow-on edits (Q11).
 
+
+---------------------------------------------------------------------------
+## DESIGN ADDENDUM D-SC (2026-07-31) — the REL SITE-CARRIER LAYER
+### (the thirteen-slot carrier design; resolves the SlotsG2/SlotsG3 BLOCKED escalations)
+
+CHARGE (the compiled failure records, verbatim dispositions): SlotsG2_relFamily.lean
+— "the site-carrier layer (or a ratified alternative closure) is an orchestrator
+adjudication — surfaced, never improvised"; SlotsG3_rel3.lean — "the genuinely
+missing ingredient is the [4]-side SQ.0–SQ.2 display carriers (unbuilt; their Lean
+shape is exactly what must not be invented here)".  This addendum IS the dispatched
+design round: the minimal structure family (sites, condMass carriers, Θ transports,
+table/consumed-display carriers) that states each blocked slot faithfully, at unit
+granularity, with the landed E-phase skeletons (new files only; the G2/G3 BLOCKED
+records and every ratified file UNTOUCHED — 2026-07-31 boundary decision honored).
+GROUND TRUTH read for this round: the G2/G3 records; the U10 docstring; §3.8 +
+REVISION 2 finding 10; MOVES_2026-07-24.md 9421–9660 (REL.2 (a)–(e), (SIB-Oδ),
+REL.3), 9293–9330 (the obligation ledger); the parked draft
+MOVESR_LEAN_BLUEPRINT_2026-07-28.md (Setting/SettingsFamily/REL2a1–a6/REL2d/REL2e
+with CF1/CF10–CF14 folded); the landed SlotsG1/G2/G4–G10 as-built.
+
+### D-SC.1 The three design principles (each compiled-lesson-backed)
+
+* **P1 — SUPPLIED CARRIERS, NEVER CLOSED QUANTIFIERS.** The G2 record proves both
+  closures of site data inside a CI-only Prop fail (∀ false at every CI via the
+  junk Dirac site; ∃ True-instantiable via the identity site).  Resolution: site,
+  data pack, target interface, and exports are PARAMETERS of the slot Props —
+  the same epistemic footing as theoremU's own `C : UCarriers n`.  The junk site
+  converts from ∀-closure killer into the IB-G19a falsifier witness; the identity
+  site converts from ∃-escape into the caller's VISIBLE liability at a named
+  binder (falsifiable, recorded — the supplied-carrier discipline the capstone
+  already lives under).
+* **P2 — LAW/DATA SPLIT.** The parked draft carried note obligations as law
+  FIELDS (its consumers hypothesized Props directly).  Fed to theoremU's slot
+  parameters, law-fields collapse each slot to `Nonempty (pack)` — the ∃-trap
+  again.  Resolution: carriers carry DATA + structural wellformedness only
+  (nonemptiness, event-algebra closure, measure axioms — BoxVol's G1 precedent);
+  every note OBLIGATION is a slot-Prop conjunct.  Consequence, by design:
+  degenerate packs are constructible (falsifiers live), and NO consumer may take
+  a raw pack without its law slot (the D-TM R12 policy-without-pin guard,
+  restated here as R15).
+* **P3 — DERIVED, NOT FREE (the rel3 repair).** The G3 record's junk-pack
+  countermodels rode the display pack's FREE value/event fields.  Resolution:
+  `ConsumedDisplayPack` carries ONLY the consumption KEY (site, first index,
+  prescribed subtree); the leg's value is DERIVED as the site's β-table read
+  and its event as the realization event — the q ↦ q^δ substitution is excluded
+  STRUCTURALLY (no field to ride in), which is the note's own fixed discipline
+  ("an input theorem about vol_{O_δ}, never the formal substitution").  Round 1's
+  sin (inventing SQ.0–SQ.2 content) is not committed: the pack types only the
+  keying the note fixes; its faithful POPULATION is [4]'s wave-D drafting event.
+
+### D-SC.2 The structure family (landed E-phase skeletons; all builds green)
+
+(†17) **`RelSite p` / `RelSiteFamily p`** (SlotsG14_relSite.lean, real, 0 sorry):
+      the parked `Setting`/`SettingsFamily` re-homed (R-5), p phantom (R-6),
+      realized-measure laws kept as wellformedness (R-7), CF1's `mem_pos` family
+      scope (R-8); derived `δabs`/`dRel`/`βarg` (ABSOLUTE indices, (e2) pinned).
+(†18) **the seven per-site data packs + `SiteData` bundle** (SlotsG15_siteData.lean,
+      real, 0 sorry): `SiteDom` (a1-data), `SiteEmbed` (a3-data), `SiteTheta`
+      (a4 = Θ itself), `SiteFrames` (a5-data, target transports; R-10 thinning),
+      `SiteDict` (a6-data, per-read field readers + `resDict`), `SiteTrees`
+      (d-data: square vertices, `nodeCorr`, word/read/verdict readers, `posOf`,
+      `TgtSub`/`subtreeCorr`/`TgtRealizes`), `SiteBeta` (e-data: `stateDict`,
+      read rosters, [3]'s β table in [3]'s keying, `entryFirst`).  CF13/CF14
+      carried: `tableConv`/`consumed` are NOT fields (R-11).
+(†19) **the four sited law slots** (SlotsG16_sitedLaws.lean, 4 E-phase sorries):
+      `SitedSlot_rel2a (S) (SD)`, `SitedSlot_rel2b (S) (SD) (CI)`,
+      `SitedSlot_rel2d (S) (SD)`, `SitedSlot_rel2e (S) (SD) (tableConv)
+      (consumed) (CI)` — full displayed targets in the file header, REL.1
+      conditionality displayed per site as a `Slot_rel1 CI` conjunct (the
+      draft's `_linked`/FF6 shape); target vol = the supplied CI's OWN
+      cylinder-pinned BoxVol.
+(†20) **`RelAssignment` + `ConsumedDisplayPack` + `SitedSlot_rel3`**
+      (SlotsG17_rel3Display.lean, 1 E-phase sorry): the per-family data/target/
+      export assignment; the [4]-display pack per P3; the rel3 target =
+      per-leg certification + keying (`first l = entryFirst`, `tableConv`) +
+      consumption tie (`presc l ∈ consumed`).  Empty-pack caveat recorded
+      (vacuous-faithfully until [4] drafts; falsifier = one-leg junk pack).
+(†21) **`RelCarrierPack` + the six closure rows** (SlotsG18_relPack.lean, 6
+      E-phase sorries): the p-uniform bundle (Sp p-free per EQ-1; per-prime
+      AD/fam/assign/display) and `RelRow_rel1/_rel2a/_rel2b/_rel2d/_rel2e/_rel3`
+      — the Props IB-G13′ feeds to theoremU's six REL parameters; ∀-closures
+      range over the SUPPLIED family only.
+(†22) **the elaboration probe** (SlotsG19b_targetElab.lean, 0 sorry): every †19/†20
+      displayed target compiled as an anonymous `example : Prop` — the
+      well-typedness half of the hygiene gate, consumable by nothing.
+
+### D-SC.3 Per-slot design table (all thirteen)
+
+| slot | carriers (fields) | faithful statement | falsifier (non-vacuity) | countermodel gate | deps | difficulty |
+|---|---|---|---|---|---|---|
+| rel1 | `CInterface` (G1: counting pack, jets, towers, frames, pins, ZC, LST/TYP carriers, blockEdge) | FILLED (G2 `Slot_rel1`: §A/§B1/§B2-DEF/ThmC(a)(b)/C.0.5/C.1/C.1.5/LST/TYP/DOM, r-F3-1/2/3) | degenerate CI breaking C.1 pricing or the r-F3-2 span (G11a, pending) | p^N-torsion trap — passed (r-F3-1) | G1 | done; audit pending |
+| rel2b | `RelSite`+`SiteDom`+`SiteTheta`+CI_tgt | `Slot_rel1 CI` ∧ (0<μ(Σ_c) → Θ-pullbacks in the algebra ∧ condMass = CI.C.V.vol) | the G2 Dirac-site countermodel INVERTED (two disjoint cylinders vs a two-valued condMass) | G19b (elab landed; hygiene pending) | G14,G15,G1,G2 | fill R (~10) |
+| rel2a | + `SiteEmbed`,`SiteFrames`,`SiteDict` | (a1)∧(a2)∧(a3 teich_pin)∧(a5 anchors+commutation)∧(a6 dictionary laws) | finite `freeCoords` (a1 fails); letter-collapsing `readDict` (a6 fails) | G19b | G14,G15 | fill R (~25) |
+| rel2d | + `SiteTrees` | square ∧ word/read/verdict preservation ∧ posOf_letter (CF12) | constant `tgtTcan` vs non-constant `nodeCorr ∘ ambTcan` | G19b | G14,G15 | fill R (~12) |
+| rel2e | + `SiteBeta`; params `tableConv`,`consumed` ([3]) | (e1)∧(e4 tableConv only, CF13)∧(e5)∧(e3 MASS=ENTRY at CI vol, `Slot_rel1` displayed) | β ≡ 2 (vol ≤ 1); two-element `consumed` | G19b | G14,G15,G1,G2 | fill R (~15) |
+| rel3 | `RelSiteFamily`+`RelAssignment`+`ConsumedDisplayPack` | per-leg: certification (DERIVED value/event) ∧ keying ∧ consumption tie | one-leg junk pack with β ≡ 2 | G19b + empty-pack caveat | G14–G17 | fill R (~15); residue = [4] population (E-3) |
+| rs0Lump | `UCarriers` (built; stratum = `verdictImage` pin) | FILLED (G4) | non-lumpable 2-state row (G11b) | — | — | done |
+| trackRule | `KernelCarriers`+`Cl7Kernel` (∃-bound keyRec/trackOf, K7.L-priced) | FILLED (G5) | branch with > K7.L non-designated siblings (G11b) | — | — | done |
+| dnLattice | same + ∃-bound w/trk/A ledger | FILLED (G6) | K7 with Dden ∤ n! (G11b) | — | — | done |
+| m1m5Echo | `UCarriers`+MovesSp catalogue (∃-bound letterOf) | FILLED (G7) | member δ beyond catalogue budget (G11c) | — | — | done |
+| x1aDict | `KernelCarriers` (gmn, Sp.shape; ∃-bound letterOf/share) | FILLED (G8; AX-INDEX cite statement-side) | gmn ≡ 0 with a certified charge (G11c) | — | — | done |
+| m4bConst | MovesV `CtsMeasured` (+Order0Perimeter fence) | FILLED (G9) | census jump inside one listed component (G11c) | — | — | done |
+| jcInvHist | MovesT/MovesD (TreeModel/CellData/entEvent)+`NodeRetainedKeyEq` | FILLED (G10) | key-equal entrances with unequal joint laws (G11c) | — | — | done |
+NOTE on the ∃s inside G5–G8's filled bodies: P1 governs where junk data can
+DISCHARGE a row; those ∃s are budget-priced/pinned (K7.L, Dden, catalogue, gmn)
+so junk witnesses cannot discharge — reviewed at their fills, not re-opened here.
+
+### D-SC.4 Unit split + build record
+
+- **IB-G14** RelSite/RelSiteFamily + δabs/dRel/βarg [LANDED real]. R.
+- **IB-G15** seven data packs + SiteData [LANDED real]. R.
+- **IB-G16** SitedSlot_rel2a/b/d/e [LANDED, 4 sorries]; H-phase fill ADJ→R
+  (targets pre-elaborated at †22), behind the Q5 audit + G19b.
+- **IB-G17** RelAssignment + ConsumedDisplayPack + SitedSlot_rel3 [LANDED,
+  1 sorry]; same gates.
+- **IB-G18** RelCarrierPack + six RelRow_* [LANDED, 6 sorries]; row targets in
+  header; same gates.
+- **IB-G19b** hygiene gate: half 1 (well-typedness probe) LANDED; half 2 (the
+  closure re-analysis at the new signatures + degenerate-falseness spot checks)
+  runs BEFORE any G16/G17/G18 fill. H.
+- **IB-G19a** compiled falsifier family for the six sited/row Props (extends
+  G11a; runs AFTER the fills — falsifiers need bodies). H, ~30 total.
+- **IB-G20** closure-manifest extension for G14–G18 identifiers (G12 pattern).
+  R, doc.
+- **IB-G13′** theoremU_bridged′ (ALL THIRTEEN: G4–G10 Props + the six RelRow_*
+  at a `RelCarrierPack` binder). WAITS on Q12/Q13 + Q5 audits + G19a/b.
+BUILD RECORD: `lake build` green 2026-07-31 through SlotsG19b ("Build completed
+successfully (8571 jobs)"); new-sorry census = 11, all E-phase Prop bodies
+(G16: 4, G17: 1, G18: 6); G14/G15/G19b sorry-free; nothing imports the new
+modules (capstone path + footprints untouched); MovesU/MANIFEST.json entry =
+follow-on edit (D-TM precedent).
+
+### D-SC.5 The thirteen ordered by carrier reuse (discharge order)
+
+1. rel1 (the CInterface anchor every REL slot's conditionality displays) →
+2. rel2b (site kernel: RelSite+SiteDom+SiteTheta+CI — the pricing every later
+   mass claim rides) → 3. rel2a (completes the six-item bundle: +Embed/Frames/
+   Dict) → 4. rel2d (+SiteTrees, reuses Θ+dict) → 5. rel2e (+SiteBeta+[3]
+   exports, reuses trees+CI vol) → 6. rel3 (adds ONLY the display pack; reuses
+   the entire family+assignment) → 7./8. trackRule, dnLattice (pair: same
+   XHistory/Pop keying; the ledger reuses the track handle) → 9./10. rs0Lump,
+   m1m5Echo (pair: UCarriers roster/verdictImage keying) → 11. x1aDict (KC +
+   the GMN cite, isolated) → 12. m4bConst (MovesV, isolated) → 13. jcInvHist
+   (MovesT/MovesD, isolated; the Tpin seam caveat recorded at G10).
+
+### D-SC.6 Risk-ledger updates
+
+- **R9 → HALF-RETIRED**: the REL-family half (the "thirteen-slot formulations
+  repeating the MovesR failure") is resolved-by-design at the supplied-carrier
+  signature; residual = the H-phase fills behind Q5 + G19a/b.  The mechanics/
+  seam half was already landed (G4–G10).
+- **R13 (new)**: caller-supplied degenerate `RelCarrierPack` at G13′ —
+  visible-liability status (named binder in the conditionality record),
+  falsifiable (G19a), semantically pinned only by wave-D's instance, exactly
+  like `C : UCarriers n`.  Any stronger pinning claim is FORBIDDEN in records.
+- **R14 (new)**: carrier drift if MovesR un-parks — two homes for
+  Setting-shaped vocabulary.  G14/G15 are the canonical home (R-5); un-parking
+  must re-key onto them or supersede by adjudication, never fork.
+- **R15 (new; = D-TM R12's pattern)**: pack-without-law leakage — a consumer
+  taking a raw `SiteData`/`SiteEmbed` without its `SitedSlot_*` law would ride
+  unpinned data (e.g. `teich` without the (a3) pin).  Guard: consumers take the
+  law slot as a binder; G20's manifest flags raw-pack consumers.
+
+### D-SC.7 Orchestrator questions / escalations (this addendum's fence events)
+
+- **Q12 (design ratification):** ratify P1–P3 + the G14–G18 vocabulary as THE
+  resolution of the G2/G3 BLOCKED escalations (mechanism: the Q5 Codex audit
+  over this addendum + the six new files; then G19b half 2).  Until then the
+  new Props gate nothing and nothing consumes them.
+- **Q13 (= the queued rel3-fallback adjudication, E-1):** G13′ ships ALL
+  THIRTEEN via the `RelCarrierPack` binder — the 12-slot fallback (rel3 as a
+  visible bare binder) is SUPERSEDED if Q12 lands.  Goal-level conditionality
+  surface: the bridged capstone's honesty record gains the pack binder + the
+  eleven H-phase-filled law Props.  Flagged for the AUTHORITY-UPDATE decision
+  rule; G13′ is a NEW declaration (no ratified statement touched), but its
+  capstone role warrants the named sign-off queue.
+- **Q14 (disposition of the BLOCKED records):** once Q12 lands, the five
+  sorried `Slot_rel2a/b/d/e`/`Slot_rel3` in SlotsG2/G3 are dead vocabulary
+  wearing live names — quarantine-with-record vs keep-in-place.  Fence event;
+  NOT executed under the 2026-07-31 boundary decision.
+- **Q15 (cross-area export duties, E-3):** ledger entries owed — [3]/MovesS
+  exports `tableConv`/`consumed` (CF13/CF14's suppliers); [4] populates
+  `ConsumedDisplayPack` when SQ.0–SQ.2 are drafted (the note's own REL.3
+  acceptance criterion); wave-D inhabits `SiteData`/`RelAssignment`/
+  `RelCarrierPack`; HC-1's GradedCarrier deliverable unchanged.
+
+FILE MAP (all NEW; no existing file touched): lean/LeanUrat/MovesU/
+SlotsG14_relSite.lean · SlotsG15_siteData.lean · SlotsG16_sitedLaws.lean ·
+SlotsG17_rel3Display.lean · SlotsG18_relPack.lean · SlotsG19b_targetElab.lean.
+
+### D-SC.8 Mid-round scope fold-in (item-9 adjudication, 2026-07-31)
+
+The item-9 FORM ADJUDICATION (wf_b933dcd7-877; BRIDGE_ADJUDICATIONS sign-off
+item 9(iv), committed 02498f7 mid-round) routed one addition into this design's
+scope: "the base-change seam (REL.2(d), e_j ambient-vs-rebased) is note-side
+OPEN — the (e4) 'owed' first-index definition joins the carrier-layer design
+scope."  DISPOSITION (landed, IB-G15b = SlotsG15b_e4Seam.lean, real, 0 sorry):
+the design already carries (e4) per CF13 — `entryFirst` free data + `tableConv`
+as the ONLY obligation — which is exactly compatible with the seam being open;
+G15b makes the seam VISIBLE as vocabulary by naming BOTH candidate readings
+(`SiteBeta.firstIdxCandidateRebased` : entryFirst = S.dRel, the note's own
+candidate; `SiteBeta.firstIdxCandidateAmbient` : entryFirst = (S.d : ℕ), the
+seam's other face) under the CF13 consumption fence (named candidates ONLY; no
+consumer, no SitedSlot law, may hypothesize either; IB-G20 flags violators).
+The future (e)-pass resolves the seam by PROVING one reading from [3]'s tables
+— never by a silent keying choice.  FILE MAP + build record updated: seven new
+files total, `lake build … SlotsG15b_e4Seam` green ("Build completed
+successfully (8567 jobs)", 2026-07-31).
