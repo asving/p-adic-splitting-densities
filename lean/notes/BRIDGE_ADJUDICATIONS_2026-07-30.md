@@ -584,3 +584,22 @@ TREE DELTA dispatched: fold all V6 findings append-only (new nodes for the
 O-5 bijection triple; O-10 N-restriction; O-11 dependencies; O-14 split into
 propositions; the ordering fixes; the drainage-route fork made explicit;
 O-12/O-13 statuses = PROVED-UNVERIFIED at their honest scopes).
+
+## TREE DELTA 1 + V7/V8 (2026-07-31 late, commits 6861104 + this)
+DELTA 1 folded: 16 new D-nodes (all 26 V6 findings dispositioned, 4
+answered-by-scoping); O-2/O-3 cycle decomposed (O-2a upstream, O-2b joins
+O-3); DRAINAGE FORK ADJUDICATED — O-4 qualitative is MANDATORY for the root,
+the quantitative O-6/O-7/O-8a route is OPTIONAL (struck from root-mandatory);
+new critical path: O-14a' -> O-1(thr)+D-14+D-15 -> O-2a(+D-5) -> the joint
+O-3+O-2b cluster -> O-5+D-7 -> O-4 -> D-1/D-2/D-4 floor -> O-9+O-10g -> D-3
+-> D-11 -> O-11 -> root.
+V7 (O-12): UNSOUND but the DENOMINATOR ALGEBRA IS VERIFIED (subring closure,
+every det identity, every numeric check confirmed by the hostile verifier);
+exactly TWO gaps: L6 depth-sum c>=1 unproved; the g7 resummation invalid at
+organization O2 (exit row contains the current beta_e). Repair round
+dispatched — well-targeted.
+V8 (O-13): SOUND-WITH-GAPS — Theorems 1-3+5 verified correct as pure
+combinatorics (pass 1 substantively clean); gaps = COMP honestly-conditioned
+(stays a named condition) + the broad "wildness only through values" claim
+must narrow to the PROVED p-free index sets. Light revision then pass 2
+(fresh Fable verifier for model diversity).
