@@ -96,11 +96,13 @@ noncomputable def fgate : Polynomial ℤ_[2] :=
 
 /-- fgate is monic (consumed by HK-22's `ReadsOf` head clause). -/
 theorem fgate_monic : fgate.Monic := by
-  sorry
+  unfold fgate U31.fq
+  monicity!
 
 /-- fgate is quartic (consumed by HK-22's `ReadsOf` head clause at n = 4). -/
 theorem fgate_natDegree : fgate.natDegree = 4 := by
-  sorry
+  unfold fgate U31.fq
+  compute_degree!
 
 /-- **The gate root node** (HK-18, resolution R-3): U31's inert root read, re-dressed
 for fgate's base side — γ₀ = 3 at slots 0–2 of the (1,1) side, ustar = 1,
@@ -140,16 +142,16 @@ noncomputable def ν₀gate : Node 2 F4 where
   hμ := le_refl 1
   hEdvd := one_dvd 2
   hDwidth := natDegree_X.symm
-  hψmonic := sorry
-  hψdeg := sorry
-  hψirr := sorry
-  hRanch := sorry
-  hpat0 := sorry
-  hpatTop := sorry
+  hψmonic := U31.ν₀.hψmonic
+  hψdeg := U31.ν₀.hψdeg
+  hψirr := U31.ν₀.hψirr
+  hRanch := U31.ν₀.hRanch
+  hpat0 := U31.ν₀.hpat0
+  hpatTop := U31.ν₀.hpatTop
   hAnchor := by norm_num
-  hLineU := sorry
-  hOrd := sorry
-  hzbarRoot := sorry
+  hLineU := by show (3 : ℚ) - 1 * (((0 + 2) * 1 : ℕ) : ℚ) = 1; norm_num
+  hOrd := U31.ν₀.hOrd
+  hzbarRoot := U31.ν₀.hzbarRoot
   hspecInc := by intro h; simp at h
   hspecRec := by intro h; simp at h
   hspecRecCenter := by intro h; simp at h
@@ -189,23 +191,54 @@ noncomputable def ν₁aux (σ₁ : Stage 2 F4) (hΦ : σ₁.Φ = U31.fq) : Node
   hg := le_refl 1
   hμ := le_refl 1
   hEdvd := one_dvd 1
-  hDwidth := sorry
+  hDwidth := by rw [hΦ]; exact U31.fq_natDegree.symm
   ψ := Polynomial.X - Polynomial.C 1
   pat := fun _ => 1
   Ranch := Polynomial.X + 1
-  hψmonic := sorry
-  hψdeg := sorry
-  hψirr := sorry
-  hRanch := sorry
-  hpat0 := sorry
-  hpatTop := sorry
+  hψmonic := Polynomial.monic_X_sub_C 1
+  hψdeg := Polynomial.natDegree_X_sub_C 1
+  hψirr := Polynomial.irreducible_X_sub_C 1
+  hRanch := by
+    show (Polynomial.X + 1 : Polynomial ↥σ₁.K)
+        = ∑ k ∈ Finset.range 2,
+            (Polynomial.C (1 : ↥σ₁.K) * (Polynomial.X : Polynomial ↥σ₁.K) ^ k)
+    have hbody : ∀ k : ℕ,
+        (Polynomial.C (1 : ↥σ₁.K) * (Polynomial.X : Polynomial ↥σ₁.K) ^ k) = Polynomial.X ^ k := by
+      intro k; rw [map_one, one_mul]
+    rw [Finset.sum_congr rfl (fun k _ => hbody k), Finset.sum_range_succ, Finset.sum_range_one]
+    ring
+  hpat0 := one_ne_zero
+  hpatTop := one_ne_zero
   hAnchor := by norm_num
-  hLineU := sorry
-  hOrd := sorry
-  hzbarRoot := sorry
+  hLineU := by show (4 : ℚ) - (3 / 2) * (((0 + 1) * 2 : ℕ) : ℚ) = 1; norm_num
+  hOrd := by
+    have h2 : (2 : F4) = 0 := by exact_mod_cast CharP.cast_eq_zero F4 2
+    have h11 : (1 : F4) + 1 = 0 := by rw [show (1 : F4) + 1 = 2 from by norm_num]; exact h2
+    have hnegF : (-1 : F4) = 1 := neg_eq_iff_add_eq_zero.mpr h11
+    have hneg : (-1 : ↥σ₁.K) = 1 := by
+      apply σ₁.K.subtype.injective
+      simp only [map_neg, map_one]
+      exact hnegF
+    have hψeq : (Polynomial.X - Polynomial.C (1 : ↥σ₁.K)) = Polynomial.X + 1 := by
+      rw [sub_eq_add_neg, ← Polynomial.C_neg, hneg, Polynomial.C_1]
+    refine ⟨?_, ?_⟩
+    · rw [pow_one]; exact dvd_of_eq hψeq
+    · rw [hψeq]
+      intro hdvd
+      have hne : (Polynomial.X + 1 : Polynomial ↥σ₁.K) ≠ 0 := by
+        rw [← Polynomial.C_1]; exact (Polynomial.monic_X_add_C 1).ne_zero
+      have hnd : (Polynomial.X + 1 : Polynomial ↥σ₁.K).natDegree = 1 := by
+        rw [← Polynomial.C_1]; exact Polynomial.natDegree_X_add_C 1
+      have hle := Polynomial.natDegree_le_of_dvd hdvd hne
+      rw [Polynomial.natDegree_pow, hnd] at hle
+      omega
+  hzbarRoot := by
+    show Polynomial.eval₂ σ₁.K.subtype ((1 : F4ˣ) : F4) (Polynomial.X - Polynomial.C 1) = 0
+    rw [Polynomial.eval₂_sub, Polynomial.eval₂_X, Polynomial.eval₂_C]
+    simp
   hspecInc := by intro h; simp at h
   hspecRec := fun _ => ⟨rfl, rfl⟩
-  hspecRecCenter := fun _ => ⟨rfl, sorry⟩
+  hspecRecCenter := fun _ => ⟨rfl, by simp⟩
 
 /-- **The read-1 node** ν₁ (HK-18): `ν₁aux` carrying the polOM lift. Since `polOM` is
 `blind` (reads only (σ, center), never the lift field), `(polOM 2 F4).liftOf (ν₁gate …)

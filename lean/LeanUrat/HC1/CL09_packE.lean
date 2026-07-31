@@ -6,6 +6,8 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.HC1.R1_LSTStmt
 import LeanUrat.HC1.CL08_latticeExp
+import LeanUrat.HC1.CL07_heightLattice
+import LeanUrat.HC1.CL15a_packEmonoWeight
 
 /-!
 # HC1.CL09_packE — packE + the Gr-pin (BP5 CL-09)
@@ -59,14 +61,71 @@ set_option maxHeartbeats 800000
 
 namespace LeanUrat.HC1
 
+open Polynomial
+
 open scoped Classical
 
 variable {p : ℕ} [Fact p.Prime] {F : Type} [Field F] [Finite F]
 
+/-! ## Private toolkit for the two lattice-support legs. -/
+
+private lemma cl09_strTop_pos (T : Tower p F) : 0 < T.strTop := by
+  have haux : ∀ n : ℕ, 0 < T.strAux n := by
+    intro n
+    induction n with
+    | zero => norm_num [Tower.strAux]
+    | succ k ih =>
+      rw [Tower.strAux]
+      apply Nat.mul_pos ih
+      split
+      · exact (T.stg _).he
+      · exact Nat.one_pos
+  rw [Tower.strTop, Tower.str]
+  exact Nat.mul_pos (haux _) (T.stg (Fin.last T.K)).he
+
+/-- On-lattice + nonnegative ⟹ a genuine `n/strTop` witness (`n : ℕ`). -/
+private lemma cl09_lattice_of (T : Tower p F) {γ : ℚ} (honL : T.onLattice γ) (hpos : 0 ≤ γ) :
+    ∃ n : ℕ, γ = (n : ℚ) / (T.strTop : ℚ) := by
+  have hstrpos : (0 : ℚ) < (T.strTop : ℚ) := by exact_mod_cast cl09_strTop_pos T
+  rw [Tower.onLattice] at honL
+  have hfloor_nonneg : 0 ≤ ⌊(T.strTop : ℚ) * γ⌋ := by
+    rw [Int.le_floor]; push_cast; exact mul_nonneg (le_of_lt hstrpos) hpos
+  refine ⟨(⌊(T.strTop : ℚ) * γ⌋).toNat, ?_⟩
+  have hcast : ((⌊(T.strTop : ℚ) * γ⌋).toNat : ℚ) = (⌊(T.strTop : ℚ) * γ⌋ : ℚ) := by
+    exact_mod_cast Int.toNat_of_nonneg hfloor_nonneg
+  rw [hcast, honL, eq_div_iff (ne_of_gt hstrpos)]; ring
+
+/-- `digLift 0 = 0` (copy of ScratchC6's private `digLift_zero`). -/
+private lemma cl09_digLift_zero (T : Tower p F) : T.digLift (0 : ↥(T.stg 0).FQ) = 0 := by
+  rw [Tower.digLift, dif_neg]
+  rintro ⟨B, hB0, _, _, hBR⟩
+  have hz : (⟨((0 : ↥(T.stg 0).FQ) : F), (T.stg 0).hFQ_le (0 : ↥(T.stg 0).FQ).2⟩ :
+      ↥(T.stg 0).K) = 0 := by ext; simp
+  rw [hz, map_zero, zero_mul] at hBR
+  exact (T.stg 0).hRne B hB0 hBR
+
+/-- `inGr γ 0 = 0` (the class of the zero polynomial vanishes in every piece). -/
+private lemma cl09_inGr_zero (T : Tower p F) (γ : ℚ) :
+    T.inGr γ (0 : Polynomial ℤ_[p]) = 0 := by
+  rw [Tower.inGr]
+  split
+  · exact (Submodule.Quotient.mk_eq_zero _).mpr (Submodule.zero_mem _)
+  · rfl
+
 /-- **monoE** (display (8)): the graded expansion of a basis monomial — the class of
 `T.mono c` in every piece (nonzero only at `γ = ht c`, on the lattice by CL-07). -/
 noncomputable def monoE (T : Tower p F) (c : T.Coord) : LatticeExp T :=
-  ⟨fun γ => T.inGr γ (T.mono c), by sorry⟩
+  ⟨fun γ => T.inGr γ (T.mono c), by
+    intro γ hne0
+    have hne : T.inGr γ (T.mono c) ≠ 0 := hne0
+    have honL : T.onLattice γ := by
+      by_contra hcon
+      exact hne (by rw [Tower.inGr, dif_neg (fun hh => hcon hh.1)])
+    have hge : T.ht c ≤ γ := by
+      by_contra hcon
+      exact hne ((CL15a_packE_ia T c).2 γ (not_le.mp hcon))
+    have hpos : 0 ≤ γ := le_trans (CL07_heightLattice T c).1 hge
+    exact cl09_lattice_of T honL hpos⟩
 
 /-- **Display (8), packE**: the graded-expansion carrier pack over the real tower
 data — `G := gradedExpCarrier T` (so `Gr = T.grQ`, the non-vacuity pin), real
@@ -84,7 +143,20 @@ noncomputable def packE (T : Tower p F) (rl : TowerRealizable T) : CarrierPackR 
   lvl _ b γ := T.levelSet b γ
   slotCoeff _ b y :=
     (⟨fun γ => T.inGr γ (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ then y c else 0)),
-      by sorry⟩ : LatticeExp T)
+      by
+        intro γ h0
+        have h : T.inGr γ (T.slotCoeff b
+            (fun c => if c ∈ T.levelSet b γ then y c else 0)) ≠ 0 := h0
+        rcases Set.eq_empty_or_nonempty (T.levelSet b γ) with hempty | ⟨c₀, hc₀⟩
+        · exfalso
+          apply h
+          have hfun : (fun c => if c ∈ T.levelSet b γ then y c else 0)
+              = (fun _ => (0 : ↥(T.stg 0).FQ)) := by funext c; simp [hempty]
+          have hsc : T.slotCoeff b (fun _ => (0 : ↥(T.stg 0).FQ)) = 0 := by
+            rw [Tower.slotCoeff]; simp only [cl09_digLift_zero, zero_mul, finsum_zero]
+          rw [hfun, hsc, cl09_inGr_zero]
+        · obtain ⟨n, hn⟩ := (CL07_heightLattice T c₀).2
+          exact ⟨n, by rw [← hc₀.2]; exact hn⟩⟩ : LatticeExp T)
   aDim _ := T.aDim
   lines _ := rl.line
   blockEdge _ := T.blockEdge

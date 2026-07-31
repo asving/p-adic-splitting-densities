@@ -54,8 +54,7 @@ open Polynomial LeanUrat.Moves
 
 /-- HK-15 (supply): the canonical residue root is nonzero — restatement of U31's `private`
 `r₀_ne` (byte-faithful; needed to clothe `r₀` as a unit).  [Blueprint BP2 HK-15.] -/
-theorem gateRoot_ne_zero : U31.r₀ ≠ 0 := by
-  sorry
+theorem gateRoot_ne_zero : U31.r₀ ≠ 0 := U31.ν₀.zbar.ne_zero
 
 /-- HK-15: **the gate residue root z̄₀** — U31's canonical residue root `r₀` (the canonical
 root of ψ₂ = z² + z + 1 in F4) as a unit of F4.  This is the `zbar₀` of HK-47's TransHyp
@@ -69,7 +68,10 @@ theorem gateRoot_val : ((gateRoot : F4ˣ) : F4) = U31.r₀ := rfl
 U31's `private` `r₀_prop` (byte-faithful).  [Blueprint BP2 HK-15.] -/
 theorem gateRoot_spec :
     ((gateRoot : F4ˣ) : F4) ^ 2 + ((gateRoot : F4ˣ) : F4) + 1 = 0 := by
-  sorry
+  rw [gateRoot_val]
+  have h : Polynomial.eval₂ U31.K2.subtype U31.r₀ U31.ψ₂ = 0 := U31.ν₀.hzbarRoot
+  simpa [U31.ψ₂, Polynomial.eval₂_add, Polynomial.eval₂_pow, Polynomial.eval₂_X,
+    Polynomial.eval₂_one] using h
 
 /-- HK-15: **the gate ChildResData instantiation** — HC1's S9 constructor-data carrier
 (the D.7(vi)-normalized child residual with the S5′ pinned shape and the D.3(b) key pin)

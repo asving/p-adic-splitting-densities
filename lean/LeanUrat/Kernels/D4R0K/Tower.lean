@@ -17,9 +17,12 @@ cluster) and are NOT here — this file carries exactly the BP4-c2 units. The
 sibling cluster should place them in Kernels/D4R0K/L1.lean (importing this
 file) or obtain orchestrator authorization to extend this one.
 
-E-phase discipline: Defs are sorry-free where decidable (one recorded
-exception: `ExtCarrier.carrierField`, see its docstring); theorems have sorry
-bodies.  Build: cd lean && lake build LeanUrat.Kernels.D4R0K.Tower
+STATUS (BP4-P3-d4r0k-tower prover, 2026-07-31): all BP4-c2 units DISCHARGED and
+Lean-core (`{propext, Classical.choice, Quot.sound}`) — KB1a (records/invariants,
+defs), KB1b (`carrierField` proved via the AdjoinRoot power-basis transport, no
+longer a sorried placeholder), KB1c (`stage3_instance_p2` non-vacuity), KB2 (slot
+arithmetic), KB3 (guard chain), KB10 (negative-control gates).  The file is
+sorry-free.  Build: cd lean && lake build LeanUrat.Kernels.D4R0K.Tower
 -/
 import Mathlib
 
@@ -132,18 +135,72 @@ l1_boundary_enum.py:100-103): (0,1,0,…) at g ≥ 2; −ψ₀ at g = 1. -/
 def zbar : E.Carrier :=
   if E.g = 1 then fun _ => -(E.ψ 0) else fun i => if (i : ℕ) = 1 then 1 else 0
 
-/-- KB1b (carrier-law placeholder — the ONE sorried def of this file,
-recorded).  The field structure on the tuple carrier: the quotient field
-F′ = B[z]/(ψ) transported to the tuple presentation (well-defined since
-ψ_irred).  Deliberately a def, NOT an instance — no silent instance search
-may route through a sorried term.  Filling it (AdjoinRoot transport along
-toPoly/ofPoly, or direct verification of the script ops above) is the KB1b
-prover's job; consumers `letI := E.carrierField` explicitly.  (`@[reducible]`
-per the compiler's class-typed-def rule; reducibility does NOT register it
-for instance search, so the no-silent-instance fence stands.) -/
-@[reducible] noncomputable def carrierField : Field E.Carrier := sorry
+/-- KB1b (helper). ψpoly has no coefficients above degree g. -/
+theorem psipoly_coeff_zero : ∀ N, E.g < N → E.ψpoly.coeff N = 0 := by
+  intro N hN
+  simp only [ψpoly, finsetSum_coeff, coeff_C_mul, coeff_X_pow]
+  apply Finset.sum_eq_zero
+  intro i _
+  have hne : N ≠ (i : ℕ) := by have := i.is_le; omega
+  simp [hne]
+
+/-- KB1b (helper). The degree-g coefficient of ψpoly is ψ(last) = 1. -/
+theorem psipoly_coeff_g : E.ψpoly.coeff E.g = 1 := by
+  simp only [ψpoly, finsetSum_coeff, coeff_C_mul, coeff_X_pow]
+  rw [Finset.sum_eq_single (Fin.last E.g)]
+  · have hlast : ((Fin.last E.g : Fin (E.g + 1)) : ℕ) = E.g := Fin.val_last E.g
+    rw [hlast]; simp [E.ψ_monic]
+  · intro i _ hne
+    have hi : (i : ℕ) ≠ E.g := fun h => hne (Fin.ext (by rw [h, Fin.val_last]))
+    simp [Ne.symm hi]
+  · intro h; exact absurd (Finset.mem_univ _) h
+
+/-- KB1b (helper). ψpoly has natDegree exactly g. -/
+theorem psipoly_natDegree : E.ψpoly.natDegree = E.g := by
+  apply le_antisymm
+  · exact natDegree_le_iff_coeff_eq_zero.mpr E.psipoly_coeff_zero
+  · exact le_natDegree_of_ne_zero (by rw [E.psipoly_coeff_g]; exact one_ne_zero)
+
+/-- KB1b (helper). ψpoly is monic (leading coefficient ψ(last) = 1). -/
+theorem psipoly_monic : E.ψpoly.Monic := by
+  unfold Polynomial.Monic
+  rw [Polynomial.leadingCoeff, E.psipoly_natDegree]
+  exact E.psipoly_coeff_g
+
+/-- KB1b (carrier law — DISCHARGED, no longer a sorried placeholder).  The field
+structure on the tuple carrier: the quotient field F′ = B[z]/(ψ) transported to
+the tuple presentation (well-defined since ψ_irred).  PROOF: ψpoly is monic of
+natDegree g (`psipoly_monic`/`psipoly_natDegree`, from the two coefficient
+helpers), so `AdjoinRoot.powerBasis'` gives a power basis of dim g; its
+`equivFun` composed with `finCongr` yields `E.Carrier ≃ AdjoinRoot ψpoly`, and
+`Equiv.field` transports the AdjoinRoot field (from `Fact (Irreducible ψpoly)`)
+back to the tuple carrier.  Deliberately a def, NOT an instance — no silent
+instance search may route through it; consumers `letI := E.carrierField`
+explicitly.  (`@[reducible]` per the compiler's class-typed-def rule;
+reducibility does NOT register it for instance search, so the
+no-silent-instance fence stands.) -/
+@[reducible] noncomputable def carrierField : Field E.Carrier := by
+  haveI : Fact (Irreducible E.ψpoly) := ⟨E.ψ_irred⟩
+  have hmonic : E.ψpoly.Monic := E.psipoly_monic
+  have hdim : E.g = (AdjoinRoot.powerBasis' hmonic).dim :=
+    ((AdjoinRoot.powerBasis'_dim hmonic).trans E.psipoly_natDegree).symm
+  let e : E.Carrier ≃ AdjoinRoot E.ψpoly :=
+    (Equiv.arrowCongr (finCongr hdim) (Equiv.refl B)).trans
+      (AdjoinRoot.powerBasis' hmonic).basis.equivFun.toEquiv.symm
+  exact Equiv.field e
 
 end ExtCarrier
+
+/-- KB1c (helper). A monic degree-1 polynomial `1 + X` (the g = 1 layer's ψpoly)
+is irreducible over any field — the degree-1 irreducibility used at both probe
+layers. -/
+theorem deg1_irred (F : Type) [Field F] :
+    Irreducible (∑ i : Fin (1 + 1), C ((fun _ => (1 : F)) i) * X ^ (i : ℕ)) := by
+  have h : (∑ i : Fin (1 + 1), C ((fun _ => (1 : F)) i) * X ^ (i : ℕ)) = X - C (-1 : F) := by
+    rw [Fin.sum_univ_two]
+    simp only [Fin.val_zero, Fin.val_one, pow_zero, pow_one, mul_one, one_mul, map_one, map_neg]
+    ring
+  rw [h]; exact irreducible_X_sub_C _
 
 /-! ## KB1c — NON-VACUITY gate: the p = 2 stage-3 probe instance. -/
 
@@ -173,7 +230,11 @@ theorem stage3_instance_p2 :
     ∃ E1 : ExtCarrier (ZMod 2), E1.g = (towerP2.stage 0).g ∧
       ∃ inst : Field E1.Carrier, ∃ E2 : @ExtCarrier E1.Carrier inst,
         E2.g = (towerP2.stage 1).g := by
-  sorry
+  let E1 : ExtCarrier (ZMod 2) :=
+    ⟨1, one_pos, fun _ => 1, rfl, one_ne_zero, deg1_irred (ZMod 2)⟩
+  letI : Field E1.Carrier := ExtCarrier.carrierField E1
+  refine ⟨E1, by decide, ExtCarrier.carrierField E1, ?_⟩
+  exact ⟨⟨1, one_pos, fun _ => 1, rfl, one_ne_zero, deg1_irred _⟩, by decide⟩
 
 /-! ## KB2 — slot arithmetic. -/
 

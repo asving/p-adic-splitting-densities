@@ -86,7 +86,30 @@ theorem readLift_iff_standardLift (ψ : Polynomial ↥bStageP.K) (g : ℕ)
     (hmon : ψ.Monic) (hdeg : ψ.natDegree = g) (Φhat : Polynomial ℤ_[2]) :
     IsReadLift bStageP ψ g bStageP.e bStageP.h Φhat ↔
       IsStandardLift bStageP ψ g Φhat := by
-  sorry
+  have ht0 : bStageP.t = (0 : ℤ) := rfl
+  constructor
+  · rintro ⟨tt, hz, hk, hΦ⟩
+    refine ⟨hmon, hdeg, tt, hz, ?_, hΦ⟩
+    intro k hklt hcoef
+    obtain ⟨hne, hin, hw, hR⟩ := hk k hklt hcoef
+    have hconst : tt k = Polynomial.C ((tt k).coeff 0) := U31.is_const hin
+    have hb : (tt k).coeff 0 ≠ 0 := fun h => hne (by rw [hconst, h, map_zero])
+    have hbg : bStageP.w (tt k) = bStageP.wPrev (tt k) := by
+      rw [hconst]; exact HK13R.bw_C_eq_gaussVal hb
+    refine ⟨hne, hin, ?_, ?_⟩
+    · rw [← hbg]; exact hw
+    · rw [hR, ht0]; simp
+  · rintro ⟨-, -, tt, hz, hk, hΦ⟩
+    refine ⟨tt, hz, ?_, hΦ⟩
+    intro k hklt hcoef
+    obtain ⟨hne, hin, hw, hR⟩ := hk k hklt hcoef
+    have hconst : tt k = Polynomial.C ((tt k).coeff 0) := U31.is_const hin
+    have hb : (tt k).coeff 0 ≠ 0 := fun h => hne (by rw [hconst, h, map_zero])
+    have hbg : bStageP.w (tt k) = bStageP.wPrev (tt k) := by
+      rw [hconst]; exact HK13R.bw_C_eq_gaussVal hb
+    refine ⟨hne, hin, ?_, ?_⟩
+    · rw [hbg]; exact hw
+    · rw [hR, ht0]; simp
 
 /-- HK-47 deliverable (a), consumer form (the K-4 seam made compilable): the recorded
 root-read lift `IsNodeLift ν₀gate Φ̂` (= `IsReadLift` at the root read pair = frame
@@ -94,7 +117,10 @@ pair, `isNodeLift_iff`) converts to the `TransHyp.hlift` shape. Coherently keyed
 `ν₀gate.σ = bStageP` after the ratified re-key (HK-18 R-3 / HK-13's finding). -/
 theorem nodeLift_to_standardLift (Φhat : Polynomial ℤ_[2]) :
     IsNodeLift ν₀gate Φhat → IsStandardLift bStageP U31.ψ₂ 2 Φhat := by
-  sorry
+  intro h
+  have hrl : IsReadLift bStageP U31.ψ₂ 2 bStageP.e bStageP.h Φhat :=
+    (isNodeLift_iff ν₀gate Φhat).mp h
+  exact (readLift_iff_standardLift U31.ψ₂ 2 U31.ν₀.hψmonic U31.ν₀.hψdeg Φhat).mp hrl
 
 /-- HK-47 deliverable (b): THE ASSEMBLED TRANSITION HYPOTHESIS at the gate — the full
 D.3–D.7 increment interface for the root read (bStageP, ψ₂, g = 2) landing on
@@ -106,7 +132,50 @@ hEG : 1 < bStageP.e·g = 2 (HK-16/HK-17). RATIFIED RE-KEY 2026-07-30: keyed at
 only at the base pin (resolution R-KEY / HK-13's finding record). -/
 theorem transHyp_gate :
     LeanUrat.HC1.TransHyp bStageP U31.ψ₂ 2 U31.fq 1 3 U31.ν₀.zbar := by
-  sorry
+  -- the standard lift of fq, transported from U31's recorded root-read landing key
+  have hlift : IsStandardLift bStageP U31.ψ₂ 2 U31.fq := by
+    have hnl : IsNodeLift U31.ν₀ U31.fq := U31.landingKey_ν₀.2 (by decide)
+    have hrl : IsReadLift U31.bStage U31.ψ₂ 2 1 1 U31.fq :=
+      (isNodeLift_iff U31.ν₀ U31.fq).mp hnl
+    have ht0b : U31.bStage.t = (0 : ℤ) := rfl
+    have ht0 : bStageP.t = (0 : ℤ) := rfl
+    obtain ⟨tt, hz, hk, hΦ⟩ := hrl
+    refine ⟨U31.ν₀.hψmonic, U31.ν₀.hψdeg, tt, hz, ?_, hΦ⟩
+    intro k hklt hcoef
+    obtain ⟨hne, hin, hw, hR⟩ := hk k hklt hcoef
+    have hconst : tt k = Polynomial.C ((tt k).coeff 0) := U31.is_const hin
+    have hb : (tt k).coeff 0 ≠ 0 := fun h => hne (by rw [hconst, h, map_zero])
+    have hbg : U31.bStage.w (tt k) = bStageP.wPrev (tt k) := by
+      rw [hconst]; exact HK13R.bw_C_eq_gaussVal hb
+    refine ⟨hne, hin, ?_, ?_⟩
+    · rw [← hbg]; exact hw
+    · rw [show bStageP.R (tt k) = U31.bStage.R (tt k) from rfl, hR]
+      congr 2
+      rw [ht0b, ht0]; ring
+  refine
+    { hmonic := U31.ν₀.hψmonic
+      hirr := U31.ν₀.hψirr
+      hne_z := ?_
+      hdeg := U31.ν₀.hψdeg
+      hg := by norm_num
+      hlift := hlift
+      he' := le_refl 1
+      hh' := by norm_num
+      hcop := by norm_num
+      hiaug := ?_
+      hroot := ?_ }
+  · -- ψ₂ ≠ X, by degree
+    intro hEq
+    have hdeg2 : U31.ψ₂.natDegree = 2 := U31.ν₀.hψdeg
+    have hdeg1 : U31.ψ₂.natDegree = 1 := by rw [hEq]; exact Polynomial.natDegree_X
+    omega
+  · -- hiaug : 3 > 1 · bStageP.w fq = 2
+    show (3 : ℤ) > (1 : ℤ) * bStageP.w U31.fq
+    have hbf : bStageP.w U31.fq = 2 := U31.bw_eq HK13R.NF_θ_fq
+    rw [hbf]; norm_num
+  · -- hroot : aeval (root) (ψ₂.map subtype) = 0
+    rw [Polynomial.aeval_def, Polynomial.eval₂_map]
+    exact U31.ν₀.hzbarRoot
 
 /-- The assembled pair IS ν₁'s recorded read pair (rfl-grade; the blueprint's
 `(ν₁.e) (ν₁.h)` binders resolved — resolution R-b's certificate). -/
