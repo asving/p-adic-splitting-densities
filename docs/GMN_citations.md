@@ -244,3 +244,59 @@ in the header).
 > at finite order (Thm 4.18, Cor 4.19). All of this is `p`-independent and treats the wild
 > inseparable case as generic. Everything else — that the resulting per-shape volumes are uniform
 > rational functions of `q` — is derived.**
+
+---
+
+## 6. LITUNIT 2026-08-01 appendix — the GD23 flag pins + two superseding corrections
+
+*(Appended by the literature unit for the GD23 brief; full quotes and verdicts in
+`lean/notes/openmath/LITUNIT_2026-08-01.md`. Line numbers cite the 2026-07-22-compatible
+pdftotext extraction of arXiv:0807.2620v2 — 4350 lines, anchor "We fix a finite extension K of
+Qp" at line 381.)*
+
+### 6.0 Two superseding corrections to THIS file (this copy had missed the 2026-07-03 audit-fix)
+
+1. **Theorem 2.26 EXISTS** — the header paragraph above ("there is **no Theorem 2.26** in this
+   paper") is FALSE and was corrected on 2026-07-03 in `lean/notes/GMN_citations.md`; this
+   `docs/` copy had diverged. Re-verified 2026-08-01 (gmn.txt:2122), verbatim: **Theorem 2.26
+   (Theorem of the product in order r).** "For any nonzero f(x), g(x) ∈ O[x] and any negative
+   rational number λ_r we have N_r^−(fg) = N_r^−(f) + N_r^−(g),
+   R_{λ_r}(fg)(y) = R_{λ_r}(f)(y)R_{λ_r}(g)(y)." (What stays true: Thm 2.26 is not the Theorem
+   of the residual polynomial — that is Thm 3.7.)
+2. **GMN's scope is a fixed finite extension K/ℚ_p** (gmn.txt:381), NOT "an arbitrary complete
+   DVF" as §0/§3/§5 above say — same 2026-07-03 audit-fix, same divergence. The p-independence
+   of the assembled volumes is DERIVED from the p-free shape of the per-p imports, not imported.
+
+### 6.1 New verbatim pins (the GD23 T-1/T-2 flags, now discharged)
+
+> **Proposition 2.7** (gmn.txt:1204). For nonzero P(x) ∈ O[x]:
+> (1) v_r(P) ≥ e_{r−1}v_{r−1}(P), equality iff ω_{r−1}(P) = 0;
+> (3) if P = Σ_i a_i φ_{r−1}^i is the φ_{r−1}-adic development, then
+> v_r(P) = min_i{v_r(a_i φ_{r−1}^i)} = e_{r−1} min_i{v_{r−1}(a_i) + i(v_{r−1}(φ_{r−1}) + |λ_{r−1}|)};
+> (4) v_r(φ_{r−1}) = e_{r−1}v_{r−1}(φ_{r−1}) + h_{r−1}.
+> *(= the GD23 flag **T-1**, with Lemma 2.2(2) "deg P < m_r ⟹ ω_r(P) = 0" supplying the
+> deg b < deg φ_{r−1} form. Also the sharp home of the (P-key)/(L4) pin: it is displayed as
+> Prop 2.7(4), not merely inside Prop 2.15's proof.)*
+
+> **Lemma 2.17** (gmn.txt:1795). (1) min_{0≤i≤n}{u_i} = v_r(f), n := ℓ(N_r(f)) = ⌊deg f/m_r⌋;
+> (2) the length of N_r^−(f) is ω_r(f); (3) the side of slope −∞ of N_r^−(f) has length
+> ord_{φ_r}(f). With: **ω_{i+1}(P) := ord_{ψ_i}(R_i(P))** (§2.1 displayed definition,
+> gmn.txt:1093) and **Definition 1.8** ("principal φ-polygon … including the side of slope −∞",
+> gmn.txt:427). *(= the GD23 flag **T-2**; the proof identifies ω_r(f) as the LEAST abscissa
+> attaining the min — the first-attainment form WGEO(b) consumes.)*
+
+### 6.2 Companion-source pins recorded by the same unit (full quotes in the LITUNIT note)
+
+* **MacLane 1936** (Trans. AMS 40, 363–395; Ford re-typeset PDF): Part I §§2–6 standing scope =
+  "any field K", any real non-archimedean value; discreteness assumed ONLY in §§7/8/16. Def 4.1
+  (key polynomials: equivalence-irreducibility, minimal degree, monic) + Thm 4.2 (augmented
+  values are values) quoted verbatim — the (V1)/ML-scope flags CLEARED, Vaquié fallback
+  unnecessary. Residue-ring structure (the (GR-B) MacLane half): Thm 10.2, Lemma 10.1, Lemmas
+  11.1–11.2, **Thm 12.1** (Δ_t ≅ F_t[y] for commensurable inductive values), Cor 12.2.
+* **FGMN = Fernández–Guàrdia–Montes–Nart, J. Algebra 427 (2015) 30–75 = arXiv:1305.0775**,
+  scope "Let K be a field equipped with a discrete valuation v" (arbitrary; no completeness for
+  the pinned statements): Thm 4.2 (H_µ(g) = ϕ_r(g)·R_r(g)(y_r) — initial form = unit monomial ×
+  residual), Cor 4.4, **Thm 4.8** (∆(µ) = F_r[y_r]), Cor 4.9, Cor 5.6 (R_i(φ_{i+1}) = ψ_i),
+  **Prop 5.14/Cor 5.15** (ord_ψ(R_r(g)) = ord_{µ,φ}(g) for proper keys — (GR-B) clause (4)
+  faithfulness EXISTS in print), Thm 5.8 (KP(µ)/∼ ↔ Max ∆). GD23 §10 attack items (5)/(6):
+  RESOLVED.
