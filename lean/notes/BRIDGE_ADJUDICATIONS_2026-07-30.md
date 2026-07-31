@@ -1080,3 +1080,13 @@ B-4/(ADM) classifications, roster annotations. V31 D-11: correctly-billed
 list long; remaining = M2.0's minimal-dependence display, M1(a) billing,
 the completed-node overclaim (pack correspondence honestly open). V32 O-11:
 the (ADM) residue item + run-history phrasing. ALL -> round 3 (dispatched).
+
+## ROUND 3 (2026-08-02 late, commits 45900c8/8a0786c/7aef1b9)
+ROOT REVISION 2: the e=1 corner VACUOUS with displayed proof (SL>=2: block-
+triangular solve, block 1 loopless, E >= 3, denominators units); (H4) split
+(H4a)/(H4b) with per-clause attribution; (ADM) homed as the 7th [M] row;
+completeness invariant re-run — (ROOT-C) hypotheses = EXACTLY the seven [M]
+rows. D-11 r3: (S1-m)+(DET) display (the uncountable-prefix defect fixed);
+M1(a) rescoped; status honestly LAYERED-NOT-COMPLETE. O-11 r3: (ADM) + H-2..
+H-4 hypothesis-grade rows displayed. VC3 (Fable end-to-end, model-diverse)
+LAUNCHED on the twice-revised ROOT.
