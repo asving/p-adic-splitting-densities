@@ -1,0 +1,58 @@
+{
+ "check1": [
+  {
+   "e": 2,
+   "p": 2,
+   "M": 7,
+   "hulls_exact": 19,
+   "hulls_capped": 5,
+   "cnr_buckets": 1,
+   "fibers_ok": true
+  },
+  {
+   "e": 2,
+   "p": 3,
+   "M": 5,
+   "hulls_exact": 11,
+   "hulls_capped": 4,
+   "cnr_buckets": 1,
+   "fibers_ok": true
+  },
+  {
+   "e": 3,
+   "p": 2,
+   "M": 6,
+   "hulls_exact": 29,
+   "hulls_capped": 10,
+   "cnr_buckets": 7,
+   "fibers_ok": true
+  },
+  {
+   "e": 3,
+   "p": 3,
+   "M": 4,
+   "hulls_exact": 13,
+   "hulls_capped": 7,
+   "cnr_buckets": 5,
+   "fibers_ok": true
+  },
+  {
+   "e": 4,
+   "p": 2,
+   "M": 5,
+   "hulls_exact": 32,
+   "hulls_capped": 17,
+   "cnr_buckets": 15,
+   "fibers_ok": true
+  }
+ ],
+ "check2": {
+  "moves": 2536,
+  "kinds": 139,
+  "ok": true
+ },
+ "check3": {
+  "ok": true
+ },
+ "findings": []
+}
