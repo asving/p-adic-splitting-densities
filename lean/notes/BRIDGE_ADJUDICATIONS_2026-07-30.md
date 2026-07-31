@@ -1131,3 +1131,21 @@ RESIDUE GREW BY TWO GD-4 ROWS (ledger/ROOT touches owed: tree GD-4 row +
 must fold these). O4T r4 + O-10 r2: display fixes, cores byte-stable.
 CONFIRMING PASSES owed: O4T (the acceptance pass), O-9 pass 3, CU-2t R2
 pass, O-10 (rides — VERIFIED stands, framing fixed).
+
+## CONFIRMING PASSES (2026-08-02 night)
+O4T: SOUND — CLEAN PASS (0 crit, 0 gap; core independently re-derived incl.
+both CEIL corners by hand; harness re-run digit-for-digit vs the sealed
+JSON) => VERIFIED (LEAF #7). [Note N3: the --quick clobber hazard on the
+sealed results path — flagged for the harness hygiene list.]
+O-9 pass 3: UNSOUND — the attainment ladder goes one deeper: the count needs
+FULL attainment (dim G_beta = d), value-attainment (dim >= 1) insufficient at
+partially-attained slots (fresh machine countermodel: 49152 vs 73728, ratio
+(q+1)/q; all prior value gates ran at d=1 where the notions coincide). The
+repair direction is displayed (restate (ADM) at full attainment — still
+p-free decidable; re-derive the r=1 inequality). NOT infected: the whole r=0
+layer, the lemma stock, TYPE-MARCH, K6's dichotomy. -> r4.
+CU-2t: SOUND-WITH-GAPS, 0 crit — F1 genuinely repaired (both injectivity
+layers valid); G1 = the missing (T-READ) third row (pricing undercount by
+one — the GD-4 residue is THREE rows, not two; ROOT touch owed); G2 = a
+(T-DEC) row-internal contradiction. -> light r3.
+VERIFIED = 7: O-13, O-12, Dfloor, GD23, CU-1, O-10, O4T.
