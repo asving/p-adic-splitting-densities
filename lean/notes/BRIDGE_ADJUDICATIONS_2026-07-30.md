@@ -1160,3 +1160,17 @@ the six H.6 fences gating [1v]-FULL at Step 18's K3 (zero ROOT occurrences:
 supersession line owed OR an undisplayed conditionality — adjudicate FIRST);
 G-5 cl3_tails not carried by the R-QNT eviction. Resolution unit dispatched;
 VC4 pending.
+
+## O-9 R4 + CU-2T R3 (2026-08-02 night, commits 031784c/81589e9)
+O-9 r4: (ADM) at FULL attainment (dim G_beta = d, p-free decidable; the
+(CLASS-d) reading; the r=1 inequality re-derived, collapsing to rev-3's at
+f1=1 — why the d=1 gates were blind); the rev-3 bijection gloss WITHDRAWN
+(the image-subspace law is what (GR-B) supplies); K7 = the first d>=2 VALUE
+gate: truth = formula EXACTLY at the positive control; the countermodel
+fenced with per-slot localization. CU-2t r3: (T-READ) added — AMENDMENT: the
+GD-4 terminal residue is THREE rows (rev1: 0 -> R2: 2 -> R3: 3; this ledger's
+wave-8/wave-14 lines are hereby amended to THREE); (T-DEC) split
+(dec/corner); the W3 dichotomy routed to the P(O-2a r5) charge (delivery
+owed: fold into that pass's charge text when dispatched); tree D3.5 + ROOT
+Step-11/§3.3 amendments owed to their next revision agents. Both packages
+owe fresh passes (O-9 pass 4; CU-2t R3 pass).
