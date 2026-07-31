@@ -90,7 +90,21 @@ land (many routine units are supplied or deleted by the consolidations).
 7. ReadLocality row fixes: chart_pin -> the N3b compiled-corrected form;
    child_local + the below-base N0 <= N guard (audit 1b CRITICAL + GAP).
 8. P2 de-privatize sweep (six families incl. the MovesD E7/E8 survivor choice).
-9. (r2)-on-activeLocus re-scope IF the IB-B15a gate compiles its countermodel.
+9. (r2)-on-activeLocus re-scope — EVIDENCE COMPLETE (BridgeB15a_r2Neg.lean compiled,
+   Lean-core, 8 deliverables) + FORM ADJUDICATED by the note read (wf_b933dcd7-877):
+   (i) the two-part re-scope executes as drafted (§23: IB-B15a-static unconditional
+   + IB-B15a-dite gated by BridgeDiteOK) — the degree law alone cannot rescue the
+   unsplit statement (per-component poles at same-degree distinct verdicts, n >= 3);
+   (ii) ADDITIONALLY the note-warranted VerdictDeg law (VP-1 = displayed equality
+   sum E*F = d; sketch: vdeg_size : forall halted member, vdeg v = mu.size) enters
+   as a NEW additive sibling Prop — its DESIGN is boundary-safe (new file), its
+   THREADING into consumers is part of this queue item; open disposition flagged:
+   halted delta > 1 (add halted => delta = 1, or vdeg = size*delta — note silent);
+   (iii) the reader's SECOND independent countermodel cheat (delta-weighted size
+   sum 1*1 + 1*2 = 3 > e = 2, invisible to as-built size_sum) recorded — the
+   delta-weighted DegCons strengthening rides the same sign-off;
+   (iv) the base-change seam (REL.2(d), e_j ambient-vs-rebased) is note-side OPEN —
+   the (e4) 'owed' first-index definition joins the carrier-layer design scope.
 10. cl6 pgZero.countS := 0 (private def in MovesS/N2PolyGeom.lean): the compiled
     IsEmpty probe (SynK2_cl6N2.lean) shows the as-built pack refutes PolyGeomLaws;
     the val-preserving countS := 0 repair cures it. Initially dispatched under the
