@@ -625,3 +625,18 @@ carrier design DES-1..7 (V5 defect 1 answered), order <= 1 proved from the
 pinned GMN citations, all-orders conditional on Cons_f + 3 named open lemmas.
 Verifications: V9 (O-12 rev2) + V10 (O2a) running; V11 (O-14a') + V12
 (O1thr) launched now; O-13 pass 2 (fresh Fable) running.
+
+## O-13 REACHES VERIFIED (2026-07-31 night) — THE FIRST PHASE-B LEAF ACCEPTED
+Pass 1 (Codex V8): SOUND-WITH-GAPS -> gaps repaired in rev 2. Pass 2 (FRESH
+Fable, model-diverse, package-only context): SOUND-WITH-GAPS with ALL SIX
+gaps non-consumed cosmetics (definition ordering, a non-consumed remark
+exponent, phrasing); "Theorems 1, 2, 3, 5, Lemmas B/L/E/T/T'/D9/D10 and the
+(COMP)-conditional Corollary all verify line by line"; the verifier
+independently re-implemented the enumerator from the package text ALONE and
+reproduced |S_n| = 1,15,53,197,509,1460 exactly. ADJUDICATION: O-13 =
+VERIFIED at its honest scope (skeleton/menu finiteness, p-free by typing;
+COMP the named condition; VAL-DIV a labeled conjecture). The 6 cosmetic
+fixes ride the next doc touch. Per the pipeline: the Lean formalization unit
+(hfin : Finite (Skeleton n) via the catalogue encoding) DISPATCHED, plus the
+O-14a' RunRealizerExists fill (§4.2 recipe, no statement changes) — both
+autonomous-frontier.
