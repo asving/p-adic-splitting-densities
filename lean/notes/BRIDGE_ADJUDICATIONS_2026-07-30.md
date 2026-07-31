@@ -914,3 +914,9 @@ Lemma R recovers, does not create; the read-back is globally quantified in
 substance). -> r2 (scope ADEQ to interior/continuing + route terminal
 children through O5triple's counting where they belong).
 O-4 DRAINAGE TRANSFER dispatched in parallel (independent path step).
+
+## WAVE 7 PARTIAL (2026-08-01 late): GD23 r2 + CU-1 r2 DELIVERED (V26/V27
+## findings dispositioned; GD23 now leans on the LITUNIT-pinned printed
+## statements; CU-1's ADEQ scoped to interior children with the O5triple
+## counting split covering terminals). V28/V29 launched. O-4 transfer
+## still proving.
