@@ -167,8 +167,8 @@ its size.
    reads a lower-block solution through q ↦ q², importing a genuine pole from
    the pool value 4 = 2² down to the base pool q₀ = 2. So no argument from the
    carried laws alone can prove "(REG-p) at EVERY prime"; any correct result
-   must tolerate a nonempty finite exceptional set at adversarial instances.
-   In that countermodel Δ = {1, 2, 4} and the failing prime set is {2}.
+   must tolerate exceptional primes at adversarial instances. In that
+   countermodel Δ = {1, 2, 4}, and p = 2 fails (REG-p).
 6. **The n = 2 probe instance** (`lean/LeanUrat/MovesS/N2*.lean`): the real
    degree-2 table has singleton state sets, Δ = {1}, K_1 = 0 (so Φ_1 = 1), and
    Φ_2 = (q³ − 1)/q³ (`n2_det`); the packages of item 1 are proved there at
@@ -189,9 +189,8 @@ above are available as hypotheses; the pin fixes all objects):
 - **(D1)** A theorem: the set {p prime : (REG-p) fails at the pinned record} is
   finite — or, if that is not provable, a density-1 statement, or a compiled-
   countermodel-style refutation. By item 5 the theorem cannot conclude the set
-  is empty; by item 5 any claimed characterization must contain {2} for the
-  countermodel instance and (by item 6, expectedly) be empty for the real n = 2
-  instance.
+  is empty, and any claimed characterization must put p = 2 in the failing set
+  of the countermodel instance.
 - **(D2)** A characterization of the failing set in terms of the fixed instance
   data (exact if possible; otherwise an explicit finite superset), effective
   enough to be computed for a concrete instance.

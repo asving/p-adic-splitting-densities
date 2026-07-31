@@ -112,10 +112,11 @@ def law_report(cfg, NMAX, heights, n0_of_h, n0_val, expect):
     ok = all(cfg["shEvt_card"](N) == sum(cfg["cnt"](h, N) for h in cfg["visH"](N))
              for N in range(0, NMAX + 1))
     res["grouping+disj(card)"] = ok
-    # shdom_no_stray: h in shDom => shEvtH eventually nonempty
-    ok = all(any(cfg["cnt"](h, N) > 0 for N in range(0, NMAX + 1)) and
-             all(cfg["cnt"](h, N) > 0 for N in range(max(n0_of_h(h), 1), NMAX + 1))
-             for h in heights)
+    # shdom_no_stray: h in shDom => shEvtH eventually nonempty (checked on the
+    # heights whose stabilization level lies inside the window)
+    ok = all(cfg["cnt"](h, N) > 0
+             for h in heights if n0_of_h(h) <= NMAX - 1
+             for N in range(max(n0_of_h(h), 1), NMAX + 1))
     res["shdom_no_stray"] = ok
     # off-visH vanishing: h in shDom \ visH(N) => cnt(h,N)=0  (checked STRICTLY at
     # every N; the strict form implies every "eventually" reading)
@@ -328,7 +329,7 @@ leak = {
     "box": lambda N: 2 ** N,
     "visH": lambda N: set(range(N)),
     "cnt": leak_cnt,
-    "shEvt_card": lambda N: 2 ** N,
+    "shEvt_card": lambda N: 2 ** N if N >= 1 else 0,   # empty at N=0 (visH empty)
     "w": lambda h: Fr(1, 2 ** (h + 2)),
     "wshval": Fr(1),
     "shDomAll": lambda upto: set(range(upto + 1)),
@@ -338,7 +339,7 @@ NMAX_C, HMAX_C = 60, 60
 check("set-realizability: sum_{h in visH(N)} cnt = |Box(N)| exactly, all N<=60",
       all(sum(leak_cnt(h, N) for h in range(N)) == 2 ** N for N in range(1, NMAX_C + 1)),
       "so disjoint shEvtH with these cards exist literally (a partition of Box)")
-res = law_report(leak, NMAX_C, range(HMAX_C + 1), lambda h: h + 2, 0,
+res = law_report(leak, NMAX_C, range(HMAX_C + 1), lambda h: h + 2, 1,
                  {"shweight_card": True, "wshval_card": True,
                   "grouping+disj(card)": True, "shdom_no_stray": True,
                   "offvis_vanish": True, "visH_sub_shDom": True})
@@ -370,12 +371,12 @@ for r in range(1, 5):
     cntv = mk_cnt(r)
     lv = {"name": f"leak-r{r}", "box": lambda N: 2 ** N,
           "visH": lambda N: set(range(N)), "cnt": cntv,
-          "shEvt_card": lambda N: 2 ** N,
+          "shEvt_card": lambda N: 2 ** N if N >= 1 else 0,
           "w": lambda h, r=r: Fr(2 ** r - 1, 2 ** (h + 1 + r)),
           "wshval": Fr(1), "shDomAll": lambda upto: set(range(upto + 1))}
     part_ok = all(sum(cntv(h, N) for h in range(N)) == 2 ** N
                   for N in range(1, 41))
-    laws = law_report(lv, 40, range(41), lambda h, r=r: h + 1 + r, 0,
+    laws = law_report(lv, 40, range(41), lambda h, r=r: h + 1 + r, 1,
                       {"shweight_card": True, "wshval_card": True,
                        "grouping+disj(card)": True, "offvis_vanish": True,
                        "visH_sub_shDom": True})
@@ -454,7 +455,7 @@ viol_lo = viol_hi = 0
 conv_gap = []
 for t in range(4000):
     m = rng.choice([2, 3, 5])
-    s = Fr(rng.randint(1, 8), 8)
+    s = Fr(rng.randint(1, m * m - 1), m * m)   # denominator a power of m
     NM = 24
     D = 30
     N0 = {h: h + rng.randint(1, 3) for h in range(NM + 1)}
@@ -464,12 +465,11 @@ for t in range(4000):
     def cnt_u3(h, N):
         if h >= N or h > NM:
             return 0
-        cap = w[h] * (m ** (N + D)) * 8
-        assert cap.denominator == 1
-        cap = int(cap) // 8                    # = floor(w_h * box) -- (u3) cap
+        cap = w[h] * (m ** (N + D))
+        assert cap.denominator == 1            # integral: den(w_h) | m^(N+D)
+        cap = int(cap)                         # = w_h * box -- the (u3) cap
         if N >= N0[h]:
-            v = w[h] * m ** (N + D)
-            return int(v)                      # exactly stabilized (integral: 8|s den)
+            return cap                         # exactly stabilized
         return (cap * frac[h]) // 8            # (u3)-dominated pre-stabilization
 
     for N in (8, 16, 24):

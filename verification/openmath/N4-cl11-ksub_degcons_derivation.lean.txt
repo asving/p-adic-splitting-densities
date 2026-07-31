@@ -1,0 +1,40 @@
+import Mathlib
+import LeanUrat.MovesU.DefsCarriers
+
+/- Scratch check (N4-cl11-ksub numerics unit): is the BridgeKernels ledger row
+   cl11_ksub : KsubM1C1T C.T generically derivable from the carried DEG-CONS
+   row C.hdc : MovesS.DegCons C.T ?  (NOT committed; verification scratch.) -/
+
+namespace LeanUrat.MovesU
+open LeanUrat
+
+theorem ksubM1C1T_of_degCons {n : ℕ} (T : MovesS.TableShape n)
+    (hdc : MovesS.DegCons T) : KsubM1C1T T := by
+  intro e he τ o hall hc
+  have he1 : 1 ≤ e := (Finset.mem_Icc.mp he).1
+  have hmpos : 0 < (T.odata e τ o).mem.length :=
+    List.length_pos_iff.mpr (T.odata e τ o).hm
+  have hsum : ((T.odata e τ o).mem.map MovesS.Member.size).sum ≤ e :=
+    hdc.size_sum e he τ o
+  have hconst : (T.odata e τ o).mem.map MovesS.Member.size
+      = (T.odata e τ o).mem.map (fun _ => e) :=
+    List.map_congr_left (fun μ hμ => hall μ hμ)
+  have hlen : ((T.odata e τ o).mem.map (fun _ => e)).sum
+      = (T.odata e τ o).mem.length * e := by
+    induction (T.odata e τ o).mem with
+    | nil => simp
+    | cons a l ih => simp only [List.map_cons, List.sum_cons, List.length_cons, ih]; ring
+  have hsum' : (T.odata e τ o).mem.length * e ≤ e := by
+    rw [hconst, hlen] at hsum; exact hsum
+  have hm1 : (T.odata e τ o).mem.length = 1 := by
+    by_contra hne
+    have h2 : 2 ≤ (T.odata e τ o).mem.length := by omega
+    have h2e : 2 * e ≤ (T.odata e τ o).mem.length * e := Nat.mul_le_mul_right e h2
+    linarith
+  have hcle : (T.odata e τ o).c ≤ (T.odata e τ o).m :=
+    List.length_filter_le _ _
+  refine ⟨hm1, ?_⟩
+  have : (T.odata e τ o).m = 1 := hm1
+  omega
+
+end LeanUrat.MovesU

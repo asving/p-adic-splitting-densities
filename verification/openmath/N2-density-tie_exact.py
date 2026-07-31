@@ -151,16 +151,21 @@ for n in range(2, 6):
     log(f"n={n}: {len(ALPHA[n])} monic types, {len(RHO[n])} projective types")
 
 # ---------------------------------------------------------------- gates
+def ratzero(expr):
+    """Exact zero test for a rational function in q (sp.simplify is pathologically
+    slow on the n=5 sums — >14 min; this is polynomial arithmetic, < 1 s)."""
+    return sp.expand(sp.numer(sp.together(expr))) == 0
+
 # G1: exhaustiveness sum = 1
 for n in range(2, 6):
-    gate(f"G1 sum_sigma alpha({n}) == 1", sp.simplify(sum(ALPHA[n].values()) - 1) == 0)
-    gate(f"G1 sum_sigma rho({n})   == 1", sp.simplify(sum(RHO[n].values()) - 1) == 0)
+    gate(f"G1 sum_sigma alpha({n}) == 1", ratzero(sum(ALPHA[n].values()) - 1))
+    gate(f"G1 sum_sigma rho({n})   == 1", ratzero(sum(RHO[n].values()) - 1))
 
 # G2: n=2 monic anchors == the W6q Lean-ledger values (census_n2_uniform.py header)
 w6q = {((2, 1),): 1/(q+1), ((1, 2),): q/(2*(q+1)), ((1, 1), (1, 1)): q/(2*(q+1))}
 for t, v in w6q.items():
     gate(f"G2 alpha(2)[{t}] == W6q ledger {v}",
-         sp.simplify(ALPHA[2][t] - v) == 0, f"engine: {sp.factor(ALPHA[2][t])}")
+         ratzero(ALPHA[2][t] - v), f"engine: {sp.factor(ALPHA[2][t])}")
 
 # G3: rho(3) == paper / cert_crosschecks section-10 densities
 Phi = q**4 + q**3 + q**2 + q + 1
@@ -170,11 +175,11 @@ paper3 = {((1, 1), (1, 1), (1, 1)): (q**2+1)**2/(6*Phi),
           ((1, 1), (2, 1)):         (q**3+q)/Phi,
           ((3, 1),):                q**2/Phi}
 for t, v in paper3.items():
-    gate(f"G3 rho(3)[{t}] == paper", sp.simplify(RHO[3][t] - v) == 0)
+    gate(f"G3 rho(3)[{t}] == paper", ratzero(RHO[3][t] - v))
 
 # G4 (record): the ensembles genuinely differ
 for n in range(2, 6):
-    diff = any(sp.simplify(ALPHA[n].get(t, 0) - RHO[n].get(t, 0)) != 0
+    diff = any(not ratzero(ALPHA[n].get(t, 0) - RHO[n].get(t, 0))
                for t in set(ALPHA[n]) | set(RHO[n]))
     log(f"G4 record: alpha({n}) != rho({n}) as rational functions: {diff}")
 

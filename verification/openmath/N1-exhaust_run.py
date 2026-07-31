@@ -172,7 +172,7 @@ FULLTYPE_BUDGET = 40000
 def MC_SIZES(n, quick):
     if n <= 3:
         return (20000 if not quick else 1500), 16     # M cosets, T lifts
-    return (5000 if not quick else 400), 12
+    return (8000 if not quick else 400), 12
 
 DISC_MC = {2: 200000, 3: 200000, 4: 120000, 5: 80000}   # disc-tail MC samples
 SURV_WORK_BUDGET = 4_000_000                            # survivor-recursion eval budget
@@ -578,7 +578,8 @@ def exhaustive_scan(n, p, C, quick, log):
             elif prev != t:
                 undec[N].add(key)
     out = {}
-    for N in range(1, C + 1):
+    # N = C is vacuous (a single depth-C rep per coset: no pairs to disagree)
+    for N in range(1, C):
         out[N] = len(undec[N]) / p ** (n * N)
     log("  exhaustive C=%d (%d reps, %s types, %d oracle-skips) in %.1fs" %
         (C, total, "full-ef" if use_full else "refined-tag", und_oracle, time.time() - t0))
@@ -723,8 +724,13 @@ def run_block(n, quick, log):
         log("  disc tail P(v>=m): " + "  ".join(
             "m%d:%.3g%s" % (m, tv[0], "" if tv[1] == "exact" else "~")
             for m, tv in sorted(tail.items()) if 1 <= m <= 10))
-        log("  disc-tail per-digit ratio fit: %s (theory ~ 1/p = %.3f)" %
-            ("%.4f" % dfit if dfit else "n/a", 1 / p))
+        # Tail-rate theory: v(disc)>=m is dominated by root clusters; a size-k
+        # cluster at depth t costs ~p^(-(k-1)t) and yields v ~ k(k-1)t/2, so the
+        # asymptotic per-digit ratio is p^(-2/n) (maximal cluster k=n); the
+        # pair-collision rate 1/p rules at n=2 and at small m (transient).
+        log("  disc-tail per-digit ratio fit: %s (pair rate 1/p = %.3f; "
+            "max-cluster asymptote p^(-2/n) = %.3f)" %
+            ("%.4f" % dfit if dfit else "n/a", 1 / p, p ** (-2 / n)))
 
         Nmax = NMAX(n, p)
         ucert = {}
@@ -735,7 +741,11 @@ def run_block(n, quick, log):
         r["U_cert"] = {str(N): v for N, v in ucert.items()}
 
         C = EXH_C[(n, p)]
-        exh, Cused, exh_mode = exhaustive_scan(n, p, C, quick, log)
+        if C >= 2:
+            exh, Cused, exh_mode = exhaustive_scan(n, p, C, quick, log)
+        else:
+            exh, Cused, exh_mode = {}, C, "skipped(C<2 vacuous)"
+            log("  exhaustive scan skipped (C=1 is vacuous); MC covers this config")
         r["U_exh_lower"] = {str(N): v for N, v in exh.items()}
         r["exh_C"], r["exh_mode"] = Cused, exh_mode
 
@@ -767,8 +777,8 @@ def run_block(n, quick, log):
         mc_pairs = [(N, mc[N]["undec_lower"]) for N in mc if mc[N]["M"] * mc[N]["undec_lower"] >= 15]
         rate_mc = fit_rate(mc_pairs)
         r["rate_cert"], r["rate_exh"], r["rate_mc"] = rate_cert, rate_exh, rate_mc
-        log("  per-level ratios: U_cert %s (theory ~ p^-1/2 = %.3f) | exh-lower %s | mc-lower %s (theory ~ 1/p = %.3f)" %
-            ("%.3f" % rate_cert if rate_cert else "n/a", p ** -0.5,
+        log("  per-level ratios: U_cert %s (theory in [p^-1/2, p^-1/n] = [%.3f, %.3f]) | exh-lower %s | mc-lower %s (pair-collision theory ~ 1/p = %.3f)" %
+            ("%.3f" % rate_cert if rate_cert else "n/a", p ** -0.5, p ** (-1 / n),
              "%.3f" % rate_exh if rate_exh else "n/a",
              "%.3f" % rate_mc if rate_mc else "n/a", 1 / p))
 
@@ -784,8 +794,14 @@ def run_block(n, quick, log):
             uc = ucert[N]
             if N in exh and exh[N] > uc + 1e-12:
                 flags.append("SANDWICH VIOLATION exh at N=%d: %.3g > %.3g" % (N, exh[N], uc))
-            if N in mc and mc[N]["undec_lo95"] > uc + 0.002:
-                flags.append("SANDWICH VIOLATION mc at N=%d" % N)
+            if N in mc:
+                # statistical tolerance: U_sem can EQUAL U_cert (tight at small N),
+                # so an MC lower estimate may legitimately straddle it
+                Mm = mc[N]["M"]
+                tol = 3 * math.sqrt(max(uc * (1 - uc), 1e-9) / Mm) + 1e-9
+                if mc[N]["undec_lo95"] > uc and mc[N]["undec_lower"] > uc + tol:
+                    flags.append("SANDWICH VIOLATION mc at N=%d: %.4g > %.4g" %
+                                 (N, mc[N]["undec_lower"], uc))
             if n == 2:
                 us = (r.get("U_sem_exact") or {}).get(str(N))
                 if us and us[1] == "exact":

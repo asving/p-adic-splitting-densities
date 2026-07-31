@@ -8,17 +8,21 @@ the brief; n = degree, all constants n-only.
 
 **Result (summary).** The linear-rate progress kernel `X2ProgressP` — believed
 in the source note to require a new "per-move mass pricing" argument, with only
-the √N form available — REDUCES, with no new engine obligations beyond sharpened
-forms of two already-owed laws, to:
+the √N form available — REDUCES to three named residual laws:
 
 - (OL-A) the engine's own per-move ledger endpoint (§B2-DEF D.11) in MAX form:
-  threshold(b) ≤ 1 + the largest constrained height along the branch; and
+  threshold(b) ≤ 1 + the largest constrained height along the branch;
 - (OL-B) the TB-CAP identification: cap(b) ≤ 1 + the halting read's constrained
-  height (recorded proved, perimeter-conditional, in §T-ASSEMBLY);
+  height (recorded proved, perimeter-conditional, in §T-ASSEMBLY); and
+- (OL-C) a flank-cofactor floor bound, live only for n ≥ 4 at keys of degree
+  not dividing n — VACUOUS (proved trivially) for n ≤ 3 and at all
+  degree-1-key reads;
 
-because of two ELEMENTARY facts proved here (Lemmas 1–2): every read's
-constrained height is ≤ n·(its own in-frame height) + n·(the branch's first
-height) — i.e. affinely bounded by mh ALONE, not by Σh. Hence
+because of an ELEMENTARY convexity fact proved here (Lemmas 1–2): every
+read's constrained height is ≤ n·(its own in-frame height) + (the top
+development coefficient's value), and the latter vanishes at divisible-degree
+keys — i.e. the constrained heights are affinely bounded by mh ALONE, not by
+Σh. Hence
 
   thr(b) + cap(b) ≤ 2 + 4n·mh   on the fourth-piece family,          (★)
 
@@ -87,52 +91,65 @@ value of f under the augmented valuation the read produces.
 **Lemma 1 (side-value bound; hull convexity).** Let P be the lower convex hull
 of points {(j, y_j)}_{j=0}^{M} with all y_j ≥ 0, and let S be a side of the
 descending part of P with slope −s (s > 0) and right endpoint (b₀, y_{b₀}).
-Let y_min := min_j y_j, attained at some j₀ ≤ M. Then
+Then, for EVERY j ≥ b₀,
 
-  val(S) := (S's supporting line at abscissa 0) ≤ y_min + s·j₀ ≤ y_min + s·M.
+  val(S) := (S's supporting line at abscissa 0) ≤ y_j + s·j;  in particular
+  val(S) ≤ y_M + s·M.
 
-*Proof.* Convexity: the hull between abscissas b₀ and j₀ (note j₀ ≥ b₀, since
-the hull is still descending at b₀ unless b₀ = j₀) consists of sides of slopes
-≤ s in absolute value, so y_{b₀} ≤ y_min + s·(j₀ − b₀). The supporting line of
-S at 0 equals y_{b₀} + s·b₀ (collinearity of S's endpoints with the line),
-hence val(S) ≤ y_min + s·j₀. ∎
+*Proof.* val(S) = y_{b₀} + s·b₀ (S's endpoints are on its line). For j ≥ b₀
+the hull from b₀ to j descends no faster than slope s (convexity: sides right
+of S are shallower) and may ascend, so y_{b₀} ≤ y_j + s·(j − b₀). Add s·b₀. ∎
 
-Applied to P_r and the read side (slope s = λ_r, M_r ≤ n):
+Applied to P_r and the read side (slope s = λ_r, M := M_r ≤ n):
 
-  wf_r ≤ ŷ_min(r) + n·λ_r ≤ ŷ_min(r) + n·h_r,   ŷ_min(r) := min_j ŵ_r(B_j).
+  wf_r ≤ ŷ_M(r) + n·λ_r ≤ ŷ_M(r) + n·h_r,   ŷ_M(r) := ŵ_r(B_{M_r}),
 
-**Lemma 2 (floor bound).** ŷ_min(r) ≤ n·λ₁ ≤ n·h₁ ≤ n·mh, where λ₁ is the
-absolute slope of the FIRST read of the branch (convention: λ₁ = 0 if the
-first read is a slope-0 side).
+so everything reduces to the TOP development coefficient's value — the
+**floor**. By monic division, B_{M_r} is monic of degree
+d₀ := n − M_r·deg φ_r = n mod deg φ_r < deg φ_r.
 
-*Proof.* f is monic of degree n = M_r·deg φ_r + deg B_{M_r}, and by monic
-division the top development coefficient B_{M_r} is MONIC of degree
-d₀ := n − M_r·deg φ_r < deg φ_r. For any valuation, the value of a sum is ≥
-the min of term values, and conversely ŵ_r(g) ≤ value of any single term
-whenever that term's value is strictly minimal — but we only need the generic
-ultrametric bound ŵ_r(g) = min over the monomials c_i x^i of ŵ_r(c_i x^i) ≤
-ŵ_r(x^{d₀}) (the leading term has coefficient 1). [If the min is attained
-elsewhere the inequality only improves.] So ŷ_min(r) ≤ ŵ_r(B_{M_r}) ≤
-d₀·ŵ_r(x) < n·ŵ_r(x). Finally ŵ_r(x): writing the first key φ₁ = x − c₁
-(c₁ ∈ ℤ_p, possibly 0), ŵ_r(x) ≤ max-free bound min(ŵ_r(φ₁), v_p(c₁)) ≤
-ŵ_r(φ₁) = λ₁ — using the standard MacLane stabilization ŵ_r(φ₁) = ŵ_1(φ₁) =
-λ₁ (values of earlier keys are frozen along the chain), and ultrametricity
-ŵ_r(x) ≥ min(...) with ŵ_r(x) ≤ λ₁ because x = φ₁ + c₁ where ŵ_r(φ₁) = λ₁
-and v_p(c₁) ≥ 0: if v_p(c₁) ≥ λ₁ then ŵ_r(x) ≥ ... in every case
-ŵ_r(x) ≤ max(λ₁, 0) would fail only if both terms exceeded λ₁, impossible
-since ŵ_r(φ₁) = λ₁ exactly. Concretely: ŵ_r(x) ≤ λ₁ when v_p(c₁) ≥ λ₁
-(then ŵ_r(x) = λ₁ if strict, ≤ by tie), and ŵ_r(x) = v_p(c₁) < λ₁ otherwise.
-Either way ŵ_r(x) ≤ λ₁. ∎
+**Lemma 2 (floor vanishes in the divisible-key regime).** If deg φ_r | n —
+in particular whenever deg φ_r = 1, i.e. at every read of every
+same-degree-recentering run over a degree-1 key, hence at ALL reads for
+n ≤ 3 — then d₀ = 0, B_{M_r} = 1, ŷ_M(r) = 0, and
 
-(Sanity: at n ≤ 3 every deep chain has deg φ = 1, so B_M = 1 and ŷ_min = 0 —
-the census regime; the floor term is live only for keys of degree ≥ 2 not
-dividing n, i.e. from n = 4 on. This is exactly the close-cofactor/Krasner
-regime; see NUMERIC-TESTS item 3.)
+  wf_r ≤ n·λ_r ≤ n·h_r ≤ n·mh.
 
-**Corollary (per-read bound).**  wf_r ≤ n·(λ₁ + λ_r) ≤ n·(h₁ + h_r) ≤ 2n·mh
-for every read of the branch (continuing or terminal).
+*Proof.* Monic division of a monic degree-n polynomial by a monic key whose
+degree divides n has monic top quotient coefficient of degree 0, i.e.
+B_{M_r} = 1, so ŷ_M(r) = ŵ_r(1) = 0; Lemma 1 with y_M = 0. That deg φ_r = 1
+covers n ≤ 3 entirely: an OM chain's key degrees multiply by e·g ≥ 2 at each
+increment and every proper cluster of a degree-≤3 polynomial that needs
+further refinement is approximated by degree-1 keys (a degree-2 or -3 key at
+n ≤ 3 arises only at the certifying terminal read; the exhaustive n = 3
+census corroborates: every realized continuing read has key degree 1). ∎
 
-## 3. The two named residual laws (open lemmas), and the theorem
+**(OL-C) [OPEN — the flank-cofactor floor; live only for n ≥ 4 and
+deg φ_r ∤ n].** For every read r of a fourth-piece branch:
+
+  ŷ_M(r) = ŵ_r(B_{M_r}) ≤ n·max_{r′ ≤ r} λ_{r′}  ( ≤ n·mh ).
+
+Standard content and expected route (sketch, NOT a proof): B_{M_r} is the
+monic degree-d₀ shadow of the flank cofactor (the product of f's factors NOT
+followed by the branch, reduced mod φ_r); MacLane domination ŵ_r ≤ v_θ (the
+inductive valuation is dominated by evaluation at any root θ the branch
+approximates) gives ŵ_r(B_{M_r}) ≤ v̂(B_{M_r}(θ)) = Σ_ρ v̂(θ − ρ) over its d₀
+roots; each cofactor root separated from the branch's cluster AT one of the
+branch's own earlier reads, so its distance to θ is ≤ the separating read's
+absolute slope λ_{r′} (a Krasner-type optimality: were some ρ closer than
+every read slope, the classifier's window would still contain it and B_{M_r}
+would shed that root into the key side). The artifact perturbation of the
+division (B_{M_r} = cofactor-shadow + higher-value correction) does not lower
+values. Making "separated at an earlier read of THIS branch" precise is
+exactly the window/flank bookkeeping of the project's §B2-DEF (flank sides,
+D.8 landings); it is left OPEN here.
+
+**Corollary (per-read bound).** Given (OL-C) where it is live:
+wf_r ≤ n·(max_{r′≤r} λ_{r′} + λ_r) ≤ 2n·mh for every read (continuing or
+terminal); unconditionally wf_r ≤ n·mh whenever deg φ_r | n (Lemma 2), hence
+at every read when n ≤ 3.
+
+## 3. The named residual laws (open lemmas), and the theorem
 
 **(OL-A) [OPEN — the engine's D.11 endpoint, max form].** For every
 fourth-piece branch b: threshold(b) ≤ 1 + max over the continuing reads of
@@ -156,28 +173,30 @@ per-realized-cell cap = "1 + the largest base level among the halting read's
 equations" (proved, perimeter-conditional). The census transcribes cap
 exactly this way (cap := 1 + wf(halting read)).
 
-**Theorem (linear progress, conditional on OL-A + OL-B).** On the fourth-piece
-family, with mh := maxH(hist b):
+**Theorem (linear progress, conditional on OL-A + OL-B + OL-C).** On the
+fourth-piece family, with mh := maxH(hist b):
 
-  thr(b) + cap(b) ≤ (1 + 2n·mh) + (1 + 2n·mh) = 2 + 4n·mh.        (★)
+  thr(b) + cap(b) ≤ (1 + 2n·mh) + (1 + 2n·mh) = 2 + 4n·mh,        (★)
 
-Hence `ProgressPricing n p (X.ctx p) (4n+2)` holds at every prime (since
+where OL-C enters only at the (n ≥ 4, deg φ_r ∤ n) reads — for n ≤ 3, (★)
+holds given OL-A + OL-B alone, with the sharper constant 2 + 2n·mh. Hence
+`ProgressPricing n p (X.ctx p) (4n+2)` holds at every prime (since
 2 + 4n·mh ≤ (4n+2)(1 + d + mh)), and by KE9's `x2Progress_of_pricing`
 (PROVED, Lean-core), `X2ProgressP n X K` holds for any XConsts K with
 c_d = c_h = 1/(8n+4) > 0, c_d′ = c_h′ = 1/2 (the hypotheses
 c_d·(2C_prog) ≤ 1, c_h·(2C_prog) ≤ 1, 1/2 ≤ c_d′, 1/2 ≤ c_h′ hold with
 equality). Empty-history corner: mh = 0, thr ≤ 1 (D.11 base), cap ≤ 1
-(τ-hen), and 2 ≤ 2 + 0. ∎ (given OL-A/OL-B; Lemmas 1–2 unconditional)
+(τ-hen), and 2 ≤ 2 + 0. ∎ (given OL-A/OL-B/OL-C; Lemmas 1–2 unconditional)
 
 **Byproducts.** (i) (X2-AFF) with c₀ = 2n: thr ≤ 1 + 2n·mh ≤ 1 + 2n·Σh
 (mh ≤ Σh as the max of a subfamily of summands, all h ≥ 1 for nodes). (ii)
 (X2-CAP) with c_cap = 2n+1: cap ≤ 1 + 2n·mh ≤ (2n+1)(1 + Σh) — the terminal
 read's height is included in Σh (`sumH` sums ALL nodes). So `cl3_aff` and
-`cl3_cap` reduce to the SAME two residual laws — no separate engine duty
-remains for them, and the ⚑ instance legs of KE2/KE3 are superseded by OL-A/
-OL-B. (iii) The census's empirical constants (c₀_min = n, C_move = n,
-c_cap ≤ n+1 on all four boxes) sit a factor ≤ 2 inside these; the factor 2 is
-Lemma 2's floor term, invisible at n ≤ 3.
+`cl3_cap` reduce to the SAME residual laws (OL-A/OL-B, plus OL-C at n ≥ 4) —
+no separate engine duty remains for them, and the ⚑ instance legs of KE2/KE3
+are superseded. (iii) The census's empirical constants (c₀_min = n,
+C_move = n, c_cap ≤ n+1 on all four boxes) sit a factor ≤ 2 inside these; the
+factor 2 is OL-C's floor term, provably absent at n ≤ 3 (Lemma 2).
 
 **Why the √N barrier dissolves.** The note's (X2-AFF) prices thr against Σh;
 along a same-degree recentering run the in-frame heights climb strictly
@@ -202,9 +221,10 @@ consistent with the envelope, which prices the deep leg through X.1b anyway.
 |---|---|
 | Observation 1 (equivalence) | proved here (⇐ also in Lean: KE9) |
 | Lemma 1 (hull side-value bound) | proved here; elementary ((c) claimed new as packaged; folklore-adjacent) |
-| Lemma 2 (floor ≤ n·λ₁) | proved here; elementary, uses MacLane key-value stabilization ((a)-adjacent) |
+| Lemma 2 (floor = 0 at divisible-degree keys; all reads for n ≤ 3) | proved here; elementary |
 | OL-A (D.11 max-form threshold law) | OPEN — engine endpoint; §B2-DEF pass-16 converged, not accepted; composition-along-history deferred to §C; sharpens the existing ⚑ ThresholdStep duty |
 | OL-B (TB-CAP cap identification) | owed by [3t]; recorded PROVED perimeter-conditional (§T-ASSEMBLY §T.2) |
+| OL-C (flank-cofactor floor, n ≥ 4 non-divisible keys) | OPEN — new named sub-lemma; sketch via MacLane domination + flank separation; vacuous for n ≤ 3 |
 | Theorem (★) ⟹ X2ProgressP | proved here + KE9 (Lean, proved) |
 | `cl3_bridge` | already reduced in Lean: KE6 `x2Bridge_cover` proved unconditionally over the interface; KE7 needs 2 ≤ n + `X3aRouteP` + `NsNullP` (rows outside this family) |
 | `cl3_tails` | NOT addressed: a measure/cone-tail estimate ((X2-TAILS), owner §H-DOMAINS/[2b]); KE5 reduces it to the ⚑ `TailsRoute` carrier; independent mathematics |
@@ -215,27 +235,32 @@ stated, (★)'s constant degrades but stays n-only — the linear CLAIM survives
 anything n-only. (R2) The reading of `threshold` ("least N with the stratum a
 finite union of level-N cylinders") must be what the eventual `XCtx` instance
 supplies; if the instance's threshold is Thm 2.1's N₀ through a different
-route, OL-A must be restated against it. (R3) Lemma 2's λ₁ is the branch's
-own first read; if a future frame convention measures h₁ after a level-0
-cluster opening differently, replace λ₁ by the first NODE height — the census
-convention already does this (h = 0 openings contribute 0). (R4) At n ≥ 4 the
-floor term is live and untested (census is n ≤ 3): see test 3.
+route, OL-A must be restated against it. (R3) OL-C's max_{r′≤r} λ_{r′} ranges
+over the branch's OWN reads; level-0 cluster openings (the census's h = 0
+selections, which are not nodes in the Lean vocabulary) contribute nothing —
+consistent with the census convention. (R4) At n ≥ 4 OL-C is live and
+untested (census is n ≤ 3): see test 3. Its failure shape would be a
+constrained height driven by a flank cofactor closer to the branch's cluster
+than any read slope — a configuration Krasner-type optimality is expected to
+exclude, but which test 3 targets directly.
 
 ## VERDICT
 
 REDUCED. `X2ProgressP` (linear rates) is reduced — via the lossless pricing
-equivalence and the new elementary Lemmas 1–2 — to two named residual laws
-that the corpus already owes in weaker/equal forms: (OL-A) the §B2-DEF D.11
-per-move ledger endpoint in max-currency form composed along a history, and
-(OL-B) the §T-ASSEMBLY TB-CAP cap identification (recorded proved,
-perimeter-conditional). Given OL-A + OL-B: thr + cap ≤ 2 + 4n·maxH on the
-fourth-piece family, and `X2ProgressP` holds with c_d = c_h = 1/(8n+4),
-c_d′ = c_h′ = 1/2 through the already-proved Lean reduction KE9. The same
-bound discharges the (X2-AFF)/(X2-CAP) rows (c₀ = 2n, c_cap = 2n+1),
-superseding the KE2/KE3 ⚑ laws. `cl3_bridge` was already reduced (KE6/KE7);
-`cl3_tails` remains a separate open measure estimate. No new engine
-obligation beyond OL-A/OL-B is introduced; the previously-open "per-move mass
-pricing" is NOT needed.
+equivalence and the new elementary Lemmas 1–2 — to three named residual laws:
+(OL-A) the §B2-DEF D.11 per-move ledger endpoint in max-currency form
+composed along a history (a sharpening of the already-owed ⚑ ThresholdStep
+duty), (OL-B) the §T-ASSEMBLY TB-CAP cap identification (recorded proved,
+perimeter-conditional), and (OL-C) the flank-cofactor floor bound (new,
+open, but vacuous for n ≤ 3 and at all divisible-degree keys). Given these:
+thr + cap ≤ 2 + 4n·maxH on the fourth-piece family (2 + 2n·maxH for n ≤ 3),
+and `X2ProgressP` holds with c_d = c_h = 1/(8n+4), c_d′ = c_h′ = 1/2 through
+the already-proved Lean reduction KE9. The same bound discharges the
+(X2-AFF)/(X2-CAP) rows (c₀ = 2n, c_cap = 2n+1), superseding the KE2/KE3 ⚑
+laws. In particular AT n ≤ 3 the linear kernel needs NOTHING beyond what the
+√N form's own rows already owed (OL-A/OL-B). `cl3_bridge` was already reduced
+(KE6/KE7); `cl3_tails` remains a separate open measure estimate. The
+previously-open "per-move mass pricing" is NOT needed at any n.
 
 ## NUMERIC-TESTS
 
@@ -257,15 +282,17 @@ numpy):
 
 Proposed (concrete; sympy/cypari2 available):
 
-3. **n = 4 deep-key stress (the only regime where Lemma 2's floor is live).**
+3. **n = 4 deep-key stress (the only regime where OL-C's floor is live).**
    Families over p ∈ {2, 3, 5}: f = (x² − β)(x² − β′) and (x² − β)(x − c)(x − c′)
    with β, β′, c, c′ gridded so the quadratic cluster radius v(disc quad)/2 and
    the cofactor distance v(c − √β) sweep the Krasner margin; oracle = PARI
    `factorpadic` (adapt `verification/quartic_oracle.py`); walker = 5-slot
    polygon walker in original coordinates (extend the n = 3 pattern). Per
-   read, record (h_r, e_r, wf_r, h₁): CONFIRMS if wf_r ≤ 4·(h₁ + h_r) always
+   read, record (h_r, e_r, wf_r, H_r := max_{r′≤r} h_{r′}): CONFIRMS if
+   wf_r ≤ 4·(H_r + h_r) always (≤ 8·maxH)
    and thr + cap ≤ 2 + 16·maxH (= 2 + 4n·mh); a wf_r violation REFUTES the
-   Lemma 1+2 packaging at the census reading (localize: report ŷ_min vs n·λ₁);
+   Lemma-1 + OL-C packaging at the census reading (localize: report the floor
+   ŷ_M = ŵ(B_M) against n·max_{r′≤r} λ_{r′});
    a thr violation with wf's fine REFUTES the OL-A transcription instead.
    Sample ~10⁶ per family plus the targeted margin grid; precision N ≤ 24.
 4. **OL-A direct test (the load-bearing open lemma).** For every f in the
@@ -282,7 +309,7 @@ Proposed (concrete; sympy/cypari2 available):
    2n = 8 — crossing kills the display constant 2 + 2n·mh but not the theorem
    (whose proved constant is 2 + 4n·mh = 18 at n = 4).
    Note: no finite census can refute `X2ProgressP` itself (existential in the
-   constants); tests 3–5 stress the two lemmas' transcriptions and OL-A/OL-B,
+   constants); tests 3–5 stress the lemmas' transcriptions and OL-A/OL-B/OL-C,
    which are ∀-statements and finitely refutable (Q6 discipline).
 
 Pointers: Lean targets `LeanUrat/MovesX/Defs.lean` (the five Props),
@@ -296,6 +323,7 @@ rings", Trans. AMS 40 (1936) (key polynomials, augmented-value ladder);
 J. Guàrdia, J. Montes, E. Nart, "Newton polygons of higher order in
 arithmetical applications", Trans. AMS 364 (2012) (higher-order polygons,
 residual polynomials, index accounting); M. Vaquié, "Extension d'une valuation"
-(2007) (augmentation chains). These support Lemma 2's stabilization and the
-ladder; OL-A's digit-level ledger has no published counterpart (the note's own
-literature disclaimer) and must be discharged in-house.
+(2007) (augmentation chains). These support OL-C's MacLane-domination step
+(w ≤ v_θ) and the height ladder; OL-A's digit-level ledger has no published
+counterpart (the note's own literature disclaimer) and must be discharged
+in-house.

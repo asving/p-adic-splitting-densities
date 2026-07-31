@@ -110,19 +110,22 @@ run(n, p, K, prec, NS, ens) = {
   my(mat = Mat(M));
   for(i = 1, matsize(mat)[1], print("COUNT|", mat[i,1], "|", mat[i,2]));
 }
-setrand(SEED);
-run(NVAL, PVAL, KVAL, PRECVAL, NSVAL, ENSVAL);
+setrand(@SEED@);
+run(@N@, @P@, @K@, @PREC@, @NS@, @ENS@);
 quit;
 """
 
 
 def run_config(n, p, nsamp, ensemble, seed):
     K = KDIG[p]
+    # NOTE: delimited tokens (@X@) — plain names collided (ENSVAL ends in NSVAL),
+    # which silently ran the wrong ensemble in an early smoke test.
     script = (GP_TEMPLATE
-              .replace("SEED", str(seed)).replace("NVAL", str(n))
-              .replace("PVAL", str(p)).replace("KVAL", str(K))
-              .replace("PRECVAL", str(K)).replace("NSVAL", str(nsamp))
-              .replace("ENSVAL", "0" if ensemble == "monic" else "1"))
+              .replace("@SEED@", str(seed)).replace("@N@", str(n))
+              .replace("@P@", str(p)).replace("@K@", str(K))
+              .replace("@PREC@", str(K)).replace("@NS@", str(nsamp))
+              .replace("@ENS@", "0" if ensemble == "monic" else "1"))
+    assert "@" not in script
     t0 = time.time()
     r = subprocess.run([GP, "-q", "-s", "64000000"], input=script,
                        capture_output=True, text=True, timeout=3600)

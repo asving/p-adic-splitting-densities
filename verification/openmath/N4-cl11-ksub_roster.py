@@ -404,11 +404,21 @@ class Resolver:
             raise Deep("max steps")
         e_size = sum(self.factors[i][1] for i in idxs)
         groups = defaultdict(list)     # (s: Fraction, psi) -> [(i, mult mu_i)]
+        exact_roots = []               # linear factors with root == C exactly
         for i in idxs:
             cs, d = self.factors[i]
             gC = 0
             for c in reversed(cs):
                 gC = gC * C + c
+            if gC == 0:
+                # exact integer root at the center: only a LINEAR factor can
+                # vanish at a rational point.  Its root ball (residual z = 0)
+                # separates from every finite-slope group's z != 0 point at
+                # THIS step -> decided (1,1) leaf member of size 1 now.
+                if d != 1:
+                    raise EngineError("nonlinear factor vanished at rational center")
+                exact_roots.append(i)
+                continue
             val = vp(gC, p)
             if val >= PREC - MARGIN:
                 raise Deep("v(g(C)) too deep")
@@ -452,6 +462,10 @@ class Resolver:
         members = []
         recurse = []
         deg_total = 0
+        for i in exact_roots:
+            members.append(('V', 1, 1, 1))
+            self.derived_ef[i] = (1, 1)
+            deg_total += 1
         for (s, psi), lst in sorted(groups.items()):
             b = s.denominator
             D = len(psi) - 1
@@ -679,27 +693,30 @@ def main():
 
     configs = []
     # n = 2 (tie to the Lean-proved instance)
-    configs.append((2, 2, 'exh m=6', sampler_exhaustive(2, 2, 6)))
+    configs.append((2, 2, 'exh m=7', sampler_exhaustive(2, 2, 7 if sm == 1 else 5)))
     configs.append((2, 3, 'exh m=4', sampler_exhaustive(2, 3, 4)))
-    configs.append((2, 2, 'strat',   sampler_stratified(2, 2, 6000 // sm, rng)))
-    configs.append((2, 5, 'rand',    sampler_random(2, 5, 5000 // sm, rng)))
+    configs.append((2, 2, 'rand',    sampler_random(2, 2, 10000 // sm, rng)))
+    configs.append((2, 2, 'strat',   sampler_stratified(2, 2, 10000 // sm, rng)))
+    configs.append((2, 3, 'strat',   sampler_stratified(2, 3, 6000 // sm, rng)))
+    configs.append((2, 5, 'rand',    sampler_random(2, 5, 8000 // sm, rng)))
     # n = 3 (the unit's target; wild p = 2, 3 preferential)
-    configs.append((3, 2, 'exh m=4', sampler_exhaustive(3, 2, 4)))
+    configs.append((3, 2, 'exh m=5', sampler_exhaustive(3, 2, 5 if sm == 1 else 4)))
     configs.append((3, 3, 'exh m=3', sampler_exhaustive(3, 3, 3)))
     configs.append((3, 5, 'exh m=2', sampler_exhaustive(3, 5, 2)))
-    configs.append((3, 2, 'rand',    sampler_random(3, 2, 12000 // sm, rng)))
-    configs.append((3, 3, 'rand',    sampler_random(3, 3, 12000 // sm, rng)))
-    configs.append((3, 2, 'strat',   sampler_stratified(3, 2, 12000 // sm, rng)))
-    configs.append((3, 3, 'strat',   sampler_stratified(3, 3, 12000 // sm, rng)))
-    configs.append((3, 5, 'strat',   sampler_stratified(3, 5, 6000 // sm, rng)))
-    configs.append((3, 7, 'rand',    sampler_random(3, 7, 6000 // sm, rng)))
+    configs.append((3, 2, 'rand',    sampler_random(3, 2, 20000 // sm, rng)))
+    configs.append((3, 3, 'rand',    sampler_random(3, 3, 20000 // sm, rng)))
+    configs.append((3, 2, 'strat',   sampler_stratified(3, 2, 20000 // sm, rng)))
+    configs.append((3, 3, 'strat',   sampler_stratified(3, 3, 20000 // sm, rng)))
+    configs.append((3, 5, 'strat',   sampler_stratified(3, 5, 8000 // sm, rng)))
+    configs.append((3, 7, 'rand',    sampler_random(3, 7, 8000 // sm, rng)))
+    configs.append((3, 7, 'strat',   sampler_stratified(3, 7, 5000 // sm, rng)))
     # n = 4 ("if cheap" — it is; wild p = 2, 3 preferential)
-    configs.append((4, 2, 'rand',    sampler_random(4, 2, 12000 // sm, rng)))
-    configs.append((4, 3, 'rand',    sampler_random(4, 3, 10000 // sm, rng)))
-    configs.append((4, 2, 'strat',   sampler_stratified(4, 2, 14000 // sm, rng)))
-    configs.append((4, 3, 'strat',   sampler_stratified(4, 3, 12000 // sm, rng)))
-    configs.append((4, 5, 'rand',    sampler_random(4, 5, 5000 // sm, rng)))
-    configs.append((4, 5, 'strat',   sampler_stratified(4, 5, 5000 // sm, rng)))
+    configs.append((4, 2, 'rand',    sampler_random(4, 2, 20000 // sm, rng)))
+    configs.append((4, 3, 'rand',    sampler_random(4, 3, 15000 // sm, rng)))
+    configs.append((4, 2, 'strat',   sampler_stratified(4, 2, 24000 // sm, rng)))
+    configs.append((4, 3, 'strat',   sampler_stratified(4, 3, 20000 // sm, rng)))
+    configs.append((4, 5, 'rand',    sampler_random(4, 5, 8000 // sm, rng)))
+    configs.append((4, 5, 'strat',   sampler_stratified(4, 5, 8000 // sm, rng)))
 
     rosters = {}                    # n -> rows dict
     per_config = []
