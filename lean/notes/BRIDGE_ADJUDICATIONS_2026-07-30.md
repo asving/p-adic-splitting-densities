@@ -501,3 +501,21 @@ V9 sorries correctly NOT filled (none restricts to e'=1); waiting suppliers
 named in-file. BP2 map: HK-11a LANDED re-pointed; HK-11b has its hard
 supplier, blocked on the PARKED rulings (item 28 + hsteep/hsigmaL supply) —
 all deferred per the math-first authority.
+
+## IFK CYCLE ROUND 2 (2026-07-31, commits fe3cda5 + 9fcdc2d)
+U6 PROBE: SURVIVES — exhaustive M18 Tests A-C at all (n,p) in {2,3}^2: zero
+phantoms, T = T-hat on 174/174 length-2 strata (369 chains), equal-fiber law
+EXACT (no tolerance used), both wild corners covered; PARI gate 1600 samples
+0 mismatches. Honest bounds: supports duties (I0)-(I2) at the intended
+semantics, discharges nothing (M18 Theorem 0 stands). TWO CANONICALIZATIONS
+for the statement layer: (i) branch species = the WHOLE node read (side
+letters alone spuriously falsify equal-fiber); (ii) beyond-cap pools into one
+('deep', k) marker (pooled deep censuses are exact p-powers).
+REVISION 1 (append-only, 266 lines): all 26 V4 findings ACCEPTED (21 fixed);
+finding-20 circularity broken by RE-ATTRIBUTION with landed citations
+(RunRealizerExists = upstream HC-1/JetSetup supply; coherence half already
+compiled at R7:138/152/167; residue = S6b' interior support + last-node
+flank); BNS stripped to the published delta+1 clause (tree-correspondence +
+sigma-invariance -> K-DICT-OB1/OB2 proof obligations); honest recount = 8
+rows + 10 F-chain sorries retired by the faces, 9 new named obligations
+surfaced. GATE: Codex re-review launched before any prover dispatch.
