@@ -240,11 +240,26 @@ structure BridgeKernels (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
   sibjc : @SibJcRows n p ⟨hp⟩ X F seam Tpin
   /-- CL-6, TYPED (`CapstoneLedger.cl6`'s supply): the (iv)-POLY value+degree
       law package over the real carriers.  Q6 ADJUDICATED: kept a kernel row;
-      if the S-area proves it at the real pack, the row moves out. -/
+      if the S-area proves it at the real pack, the row moves out.
+      SYN2-K2 PROBE RECORD (2026-07-31, `SynK2_cl6N2.lean`): the n = 2
+      instance discharge is REFUTED AT THE AS-BUILT PACK — the compiled
+      `n2_polyGeomLaws_isEmpty` shows `PolyGeomLaws n2T n2M n2RB` is EMPTY
+      (`scount_val` fails at the e ≠ 2 roster-PADDING outcomes: `pgZero`
+      carries `countS = 1` against an empty cell fiber; value-law-invisible,
+      confined to padding — `n2_countLaws_block2` proves both count laws at
+      the whole block-2 layer).  The row does NOT move out; the final n = 2
+      wiring MUST NOT instantiate this row at the unrepaired pack.  Discharge
+      path (adjudication, definition-change event): the val-preserving
+      `pgZero.countS := 0` repair recorded in the probe's header. -/
   cl6 : Nonempty (MovesS.PolyGeomLaws C.T C.MS C.RB)
   /-- CL-11's (K-SUB) m = 1 classification OVER THE REAL ROSTER
       (`CapstoneLedger.cl11_ksub`'s supply).  Q6 ADJUDICATED: kept a row
-      (a finite roster check at the n = 2 real pack may discharge it there). -/
+      (a finite roster check at the n = 2 real pack may discharge it there).
+      SYN2-K1 RECORD (2026-07-31, `SynK1_ksubN2.lean`): DISCHARGED AT THE
+      INSTANCE — `ksubM1C1T_n2 : KsubM1C1T n2T` PROVED (Lean-core roster
+      walk); the final n = 2 wiring supplies this row by that theorem.  The
+      row itself is KEPT (p-uniform/n-generic shape unchanged, per the
+      P2-C3(a) payoff line — no fence event). -/
   cl11_ksub : KsubM1C1T C.T
   /-- CL-17's PRODUCTION BURDEN (`CapstoneLedger.cl17`'s supply): W17ii at the
       chain's own carriers — the chain's OPEN projection, open BY DESIGN
