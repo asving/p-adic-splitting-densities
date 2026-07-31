@@ -690,3 +690,20 @@ definitional VOID; general-g sharpness via basis argument); O-1thr r2 (all
 V12 gaps + falsifier CAUGHT a real R5 defect — 1,644 countermodels, restated
 with recorded vhtx + N4). Verifications V13/V14/V15 (Codex) + O-1thr Fable
 pass 2 dispatched.
+
+## O-1THR PASS 2 (Fable, fresh): SOUND-WITH-GAPS — VERIFIED BLOCKED
+The diverse second verifier found what pass 1 missed: a SECOND substantive
+interface assumption hidden under the [Definition of harvesting] tag — the
+OM principal-part-length / window-harvest completeness theorem ((R1) beyond
+the window at non-root states + no-phantom from window faces), consumed by
+SPAN totality, Thm 2(b) Case 1, Thm 3 (F1)/(F4). Also: the
+realized-equivocation (READ∧LAWFUL vs machine-execution), a conditionality-
+ledger inconsistency at Thm 2(a), the undefined sigma-count term, and minor
+items. VERIFIED SOUND: Thm 1 (inspects no runs), all five lemmas, SPAN
+arithmetic, cylinder exactness/scaling/disjointness, (N4)/(R5) consistency,
+and the Eisenstein exclusion BY STATED HYPOTHESES at all three theorems.
+ADJUDICATION: rev 3 required — declare (M6c) as a NAMED interface condition
+(and attempt its proof from the package's own lemma stock; it is the M02-L1
+window-length genre, possibly literature-adjacent via GNP/BNS window bounds),
+fix the equivocation + ledger + definitions. Model diversity earned its
+cost: pass 1 (Codex) had confirmed the same sections but missed the tag.

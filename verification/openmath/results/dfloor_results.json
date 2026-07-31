@@ -1,0 +1,191 @@
+{
+ "suite": "dfloor_checks",
+ "date": "2026-07-31",
+ "TA_p2": [
+  {
+   "N": 1,
+   "counts": {
+    "split": 1,
+    "inert": 1,
+    "ram": 0
+   },
+   "undec": 2,
+   "undec_mass": "1/2"
+  },
+  {
+   "N": 2,
+   "counts": {
+    "split": 4,
+    "inert": 4,
+    "ram": 4
+   },
+   "undec": 4,
+   "undec_mass": "1/4"
+  },
+  {
+   "N": 3,
+   "counts": {
+    "split": 20,
+    "inert": 20,
+    "ram": 16
+   },
+   "undec": 8,
+   "undec_mass": "1/8"
+  },
+  {
+   "N": 4,
+   "counts": {
+    "split": 80,
+    "inert": 80,
+    "ram": 80
+   },
+   "undec": 16,
+   "undec_mass": "1/16"
+  },
+  {
+   "N": 5,
+   "counts": {
+    "split": 336,
+    "inert": 336,
+    "ram": 320
+   },
+   "undec": 32,
+   "undec_mass": "1/32"
+  },
+  {
+   "N": 6,
+   "counts": {
+    "split": 1344,
+    "inert": 1344,
+    "ram": 1344
+   },
+   "undec": 64,
+   "undec_mass": "1/64"
+  },
+  {
+   "N": 7,
+   "counts": {
+    "split": 5440,
+    "inert": 5440,
+    "ram": 5376
+   },
+   "undec": 128,
+   "undec_mass": "1/128"
+  }
+ ],
+ "TA_p3": [
+  {
+   "N": 1,
+   "counts": {
+    "split": 3,
+    "inert": 3,
+    "ram": 0
+   },
+   "undec": 3,
+   "undec_mass": "1/3"
+  },
+  {
+   "N": 2,
+   "counts": {
+    "split": 27,
+    "inert": 27,
+    "ram": 18
+   },
+   "undec": 9,
+   "undec_mass": "1/9"
+  },
+  {
+   "N": 3,
+   "counts": {
+    "split": 270,
+    "inert": 270,
+    "ram": 162
+   },
+   "undec": 27,
+   "undec_mass": "1/27"
+  },
+  {
+   "N": 4,
+   "counts": {
+    "split": 2430,
+    "inert": 2430,
+    "ram": 1620
+   },
+   "undec": 81,
+   "undec_mass": "1/81"
+  }
+ ],
+ "TA_p5": [
+  {
+   "N": 1,
+   "counts": {
+    "split": 10,
+    "inert": 10,
+    "ram": 0
+   },
+   "undec": 5,
+   "undec_mass": "1/5"
+  },
+  {
+   "N": 2,
+   "counts": {
+    "split": 250,
+    "inert": 250,
+    "ram": 100
+   },
+   "undec": 25,
+   "undec_mass": "1/25"
+  },
+  {
+   "N": 3,
+   "counts": {
+    "split": 6500,
+    "inert": 6500,
+    "ram": 2500
+   },
+   "undec": 125,
+   "undec_mass": "1/125"
+  }
+ ],
+ "TD_p3": [
+  {
+   "N": 1,
+   "closed_form_ok": true
+  },
+  {
+   "N": 2,
+   "closed_form_ok": true
+  },
+  {
+   "N": 3,
+   "closed_form_ok": true
+  }
+ ],
+ "TD_p5": [
+  {
+   "N": 1,
+   "closed_form_ok": true
+  },
+  {
+   "N": 2,
+   "closed_form_ok": true
+  }
+ ],
+ "TE": {
+  "p=2": {
+   "tested": 3000,
+   "sharpness_2v_violations": 0
+  },
+  "p=3": {
+   "tested": 3000,
+   "sharpness_2v_violations": 0
+  },
+  "p=5": {
+   "tested": 3000,
+   "sharpness_2v_violations": 0
+  }
+ },
+ "TF": "exact pass q=2..200 (n=2 and n=3)",
+ "failures": [],
+ "verdict": "ALL PASS"
+}
