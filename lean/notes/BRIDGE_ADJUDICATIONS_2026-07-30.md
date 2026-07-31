@@ -936,3 +936,18 @@ at EVERY prime incl. wild; L <= v_p(disc)+1 sharp; env(N) explicit; 2.53M
 classes falsifier ALL PASS; no CU/GD>=2/BNS consumed); general-n =
 conditional on the named (AGR)=OL1-ii seam. V28/V29 running; V30 (O4T)
 launched.
+
+## V28/V29/V30 (2026-08-02 early): CONVERGING
+V28 GD23 r2: SOUND-WITH-GAPS — all criticals resolved ("no missing
+irreducibility premise remains"; march at all sites; interface honestly
+restricted); residue = ONE notation conflation (phi_r(alpha)/R_{r,alpha} vs
+phi_r(g)/R_r) blocking the FGMN exact-match verification. -> r3 light.
+V29 CU-1 r2: SOUND-WITH-GAPS — consumption-accounting defects only, "not a
+demonstrated counterexample to the induction". -> r3 light (map rows).
+V30 O4T: UNSOUND but the verifier's own audit: the extra classical facts
+"none looks false" (all standard: e*f=[K:Q_p], graded domain, initial-form
+multiplicativity, disc identity) — the defect is the DEPENDENCE CLAIM
+(display them as named citation-grade imports); + the backwards "at least as
+fast" prose (the semantic classifier is the floor); + the Krasner bracket
+replacement (verifier: "mathematically faithful"). -> r2 light.
+All three go to Fable pass 2 after these repairs.
