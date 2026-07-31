@@ -1,0 +1,36 @@
+{
+ "A_structure": {
+  "2": true,
+  "3": true,
+  "4": true,
+  "5": true,
+  "6": true
+ },
+ "B_dets": {
+  "engine_e2": true,
+  "engine_e3": true,
+  "engine_e4": true,
+  "engine_e5": true,
+  "engine_e6": true,
+  "engine_e7": true,
+  "engine_e8": true,
+  "movesS_n2_gate": true,
+  "real_n2_block2": true,
+  "resum_blk2": true,
+  "resum_blk3": true
+ },
+ "C_solve": {
+  "2": true,
+  "3": true,
+  "4": true,
+  "5": true
+ },
+ "D_rho": {
+  "2": true,
+  "3": true,
+  "4": true,
+  "5": true
+ },
+ "findings": [],
+ "verdict": "CONFIRMED"
+}
