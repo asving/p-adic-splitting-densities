@@ -1,4 +1,4 @@
-# The CU re-label cluster (CU-2, CU-2t, CU-3, CU-4, CU-5, CU-6, CU-7) — consolidated Phase-B unit (Fable "CUC", 2026-07-31; **R2** 2026-07-31, unit CU2t)
+# The CU re-label cluster (CU-2, CU-2t, CU-3, CU-4, CU-5, CU-6, CU-7) — consolidated Phase-B unit (Fable "CUC", 2026-07-31; **R2** 2026-07-31, unit CU2t; **R3** 2026-07-31, unit CU2t, light)
 
 *(R2 applies the `CUC_pass1_verify.md` corrections in place: the F1 CRITICAL
 (Θ^τ blind to ν) + its F2 root (undefined consistency predicate) repaired in
@@ -6,6 +6,18 @@
 F4 with ledger/ROOT touches enumerated. Full disposition table for all
 eleven findings: §10. Surviving cores — Lemma CU-2t clauses (i), (ii)-main,
 (iv), the §6.1 audit — are byte-stable.)*
+
+*(R3 — light, per the CU2t adjudication (ledger 85670f7) — applies the
+`CU2t_R2_verify.md` (pass CU2tpass) corrections in place: G1 — the missing
+(T-READ) third GD-4 supply row displayed in §9.4 with its consumption at the
+tie's read-entry half, and the pricing corrected to THREE new rows (the GD-4
+residue count changes AGAIN: 0 → 2 → 3, said plainly at §9.4/§9.5); G2 — the
+(T-DEC) row SPLIT to resolve its internal contradiction (decided-configuration
+scope vs the deep exact-key corner, now fenced to the Corollary); G3 — the
+§9.1 W3 carrier finding + the 2(D)-scope dichotomy ROUTED to the O-2a owner
+(§1 flag, §8 owed pointer, §9.5 touch (5)); G4 — (c1) quoted verbatim in
+§9.2a; M5/M6 — label/record fixes. Disposition table: §11. Verified cores
+byte-stable again — no proof body touched at R3.)*
 
 **Unit type: RE-LABEL CONSOLIDATION.** Per the O3adj adjudication (§3.1) and the
 tree's DELTA-2 §D2.3, the K-RUN-C composition has exactly ONE new proof (CU-1,
@@ -95,7 +107,16 @@ with 2(A)–(C); the run-length induction is written inside §5's (D)-proof (bas
 = OL-6(a) + OL-5; step = OL-6(b) + OL-2-min + OL-3-min + OL-1; discipline =
 OL-4). Nothing is re-derived here — per O3adj §2 ("no-phantom is not a new
 induction at all… its run-length induction is already written inside O-2a
-rev 4 §5", carried to rev 5 intact).
+rev 4 §5", carried to rev 5 intact). [R3 flag (CU2tpass G3): the rescoped
+statement above asserts CONTINUING-PART 𝔈-membership; whether 2(D) as
+printed in O-2a asserts the same or full-history membership is undecidable
+from this file. If the latter, 2(D)-as-printed clashes with the §9.1 W3
+carrier finding at (τ-irr)-decided leaves (appending ν at a saturated
+prefix violates W3's interior clause) and needs its own repair before this
+citation closes; if the former, rev 1's CU-2 was a misquote, fixed at R2,
+and the citation line is again accurate. The dichotomy + the finding are
+ROUTED to the O-2a owner at the P(O-2a r5) pass — §8 owed pointer, §9.5
+touch (5) — no longer merely displayed here.]
 
 **Displayed residue (consumed, not discharged):** exactly OL-1 + OL-2-min +
 OL-3-min + OL-4 + OL-5 + OL-6 = the GD-1..GD-6 instances (§0 mapping); OL-6's
@@ -137,11 +158,15 @@ with verdict pair (1, f₀) and the (D3)-window read, inside the TB-CAP (τ-hen)
 window N_V = 1. Equivalently: the codomain extension (t-ii) (a final entry
 (λ_{k'+1}, ⊥) on Θ) is consistent, and (t-i) the terminal fields tie to the
 level-(k'+1) GMN read of f, same shape as (c1) — so no free choice of terminal
-record exists at a verdict-carrying leaf. [R2 note: "no free choice" is
-quantified over RC-consistent records — Definition RC, §9.2a — and every
-run-emitted record is RC-consistent via the (T-DEC)/(T-VERD) rows of §9.4;
-the (t-ii) final entry is (λ_{k'+1}, ⊥, (E, F)) after the §9.3(iii) CUC-F1
-repair — the appended record carries ν's verdict data.]
+record exists at a verdict-carrying leaf. [R2 note, corrected at R3
+(CU2tpass G1/G2): "no free choice" is quantified over RC-consistent
+records — Definition RC, §9.2a — and every run-emitted record AT A DECIDED
+SITE is RC-consistent via the (T-DEC-dec)/(T-READ)/(T-VERD) rows of §9.4
+(R2 named only two rows; the (RC-read) half had NO supply row — the
+CU2tpass G1 undercount); corner bookings, if any, are fenced to the
+Corollary by (T-DEC-cor). The (t-ii) final entry is (λ_{k'+1}, ⊥, (E, F))
+after the §9.3(iii) CUC-F1 repair — the appended record carries ν's
+verdict data.]
 
 **Proof route by citation (declared, NOT executed anywhere yet).** O-2a
 Theorem 2(B) saturation (+ Cor 1.20/3.8 for irreducibility and (e, f)) + the
@@ -483,7 +508,11 @@ the four owed passes of §0.
 replace the two attribution lines per §7 at its next revision · O-2a brief §4
 — OL-6's consumer line may add "(sole consumer after CU-1 rev 2)" · the tree —
 the §6.1 DELTA-3 line (orchestrator sign-off) · CU-2t — assign an owner at
-CU-1's V29 adjudication.
+CU-1's V29 adjudication · [R3, CU2tpass G3] the O-2a owner / the P(O-2a r5)
+pass — the §9.1 W3 carrier finding + the 2(D)-scope dichotomy (§1's R3
+flag; §9.5 touch (5)): a finding that the cited home's carrier laws clash
+with its flagship theorem's apparent scope is hereby DELIVERED to that
+home's pass, not merely displayed here.
 
 **Files:** this record = `lean/notes/openmath/CU_cluster_phaseB.md` (the
 consolidated CU-2..CU-7 unit of record). No other file touched.
@@ -626,6 +655,25 @@ object with Cons_f(𝐇°); c = Θ(𝐇°). Say ν is **RC-consistent with
   DEC(τ-hen) — a pure record function of 𝐇°'s own discrete fields, the
   (T-VERD) shape (§9.4).
 
+**(c1) displayed (R3, the CU2tpass G4 repair — the shape (RC-read)
+references, quoted VERBATIM from O-2a rev 5 (C4), its REV-2 provenance
+bracket omitted):** "(c1) for each 1 ≤ i ≤ k' (inductively, reading GMN
+objects through ι — level 1 unconditional, levels ≥ 2 given OL-1):
+N_i^−(f), computed w.r.t. t^{(i−1)} = ι(Θ(𝐇)_{≤i−1}) and
+φ_i = Lift_{i−1}(⋯), has a side S_i of finite slope −h_i/e_i with
+d(S_i) = ℓ_i; AND (positional clause) (s_i, u_i) = the initial point of
+S_i in the order-i INTEGER FRAME — the plane of the point set
+{(j, v_i(b_j φ_i^j))} of the development f = Σ_j b_j φ_i^j."
+Well-formedness of (RC-read), now checkable standalone: (c1)'s shape datum
+at a level is exactly the 5-tuple (e, h, ℓ, s, u) — (e, h) the
+lowest-terms data of the side's slope, ℓ the side's degree d(S), (s, u)
+its initial point in the integer frame — and (RC-read) instantiates that
+shape at level k'+1, with "sel = ⊥ in place of a selection" type-checking
+because sel is the residual-selection coordinate (governed for continuing
+nodes by W1/W2 and read against (c2)), OUTSIDE (c1)'s shape datum; on the
+j₀ = 1 branches the finite-slope clause is replaced by the §9.2
+slope-−∞-side convention.
+
 **Non-circularity, displayed.** Neither clause mentions the true factor or
 its invariants: (RC-read) is a polygon read of f over the prefix's chain
 (exactly the (c1) shape), and (RC-verd) is arithmetic of 𝐇°'s own fields.
@@ -641,8 +689,8 @@ machine records (beyond Dfloor's (C0)–(C2) verdict fields), so
 datum granularity only; full-RECORD coincidence additionally needs the
 inventory closure (that the RC-constrained fields exhaust a terminal
 record's payload) — an engine-bookkeeping question routed WITH the
-(T-DEC)/(T-VERD) scope note to the GD-4 owner (§9.4), consumed by no
-clause below.
+(T-DEC)/(T-READ)/(T-VERD) scope note to the GD-4 owner (§9.4), consumed by
+no clause below.
 
 ### 9.3 Lemma CU-2t and proof
 
@@ -682,13 +730,17 @@ behind the §9.2a inventory caveat, consumed by nothing here).
 Θ^τ(𝐇°, ν) := Θ(𝐇°) ⌢ (λ_{k'+1}, ⊥, (E_ν, F_ν)), where λ_{k'+1} is the
 read entry of (i) — a function of (f, c) — and (E_ν, F_ν) is ν's OWN
 announced verdict pair: the extension map now READS ν; the appended record
-carries ν's data. Θ^τ is well-defined on DEC seam objects ((i) for λ; the
+carries ν's VERDICT data only ((E_ν, F_ν) — λ_{k'+1} is a function of
+(f, c) and ν's shape fields are not in the image; label aligned with §2's
+phrasing at R3, CU2tpass M5). Θ^τ is well-defined on DEC seam objects ((i) for λ; the
 announced pair exists by the verdict-carrying typing),
 truncation-compatible over Θ (strip the appended entry), and takes no Lift
 call at level k'+1 (the chain ENDS: no new representative, OL-1's
 cumulative quantifier untouched). Injectivity over a fixed f, in two
 displayed layers:
-* **(iii-a) [unconditional; announced-pair granularity].** Θ^τ is
+* **(iii-a) [no RC hypothesis — that is all "unconditional" meant; the
+  lemma's standing row (Lemma R at P(O-2a r5); ι/OL-1 at k' ≥ 1) applies
+  as everywhere (R3, CU2tpass M5); announced-pair granularity].** Θ^τ is
   injective on the pairs (𝐇°, announced verdict pair): equal images force
   equal Θ(𝐇°) — Lemma R recovers 𝐇° — and equal appended entries return
   equal announced pairs. CUC F1's counterexample class (one 𝐇°, two
@@ -696,8 +748,9 @@ displayed layers:
   pair rides in the image.
 * **(iii-b) [determination layer — (ii)'s forcing DISPLAYED as the
   injectivity argument].** If moreover RC_f(𝐇°, ν) (Definition RC, §9.2a)
-  — in particular for every RUN-EMITTED record, via (T-DEC)/(T-VERD)
-  (§9.4) — then ν's whole RC-constrained field vector is a single-valued
+  — in particular for every record RUN-EMITTED at a decided site, via
+  (T-DEC-dec)/(T-READ)/(T-VERD) (§9.4; three rows after the R3 G1/G2
+  corrections) — then ν's whole RC-constrained field vector is a single-valued
   function of (f, 𝐇°): (RC-verd) pins (E_ν, F_ν) to the prefix accumulator
   pair, a function of 𝐇°'s discrete fields by (ii), and (RC-read) pins the
   shape fields to (i)'s unique side datum. So on RC-consistent seam
@@ -809,42 +862,89 @@ Thm A(3), per §2's routing.
 
 ### 9.4 The emitted-side tie (the §2 statement's "emitted by a complete run")
 
-For 𝐇°+ν produced by a complete run on f, three supply rows connect the
-machine to the lemma — displayed, priced, nothing silently absorbed:
+For 𝐇°+ν produced by a complete run on f, FOUR supply rows connect the
+machine to the lemma — displayed, priced, nothing silently absorbed. [R3,
+CU2tpass G1/G2: R2 displayed three rows and priced two as new; the honest
+row count is FOUR displayed, THREE new — R2's (RC-read) half had no supply
+row at all, and R2's (T-DEC) row contradicted itself ("ONLY at a decided
+configuration" while admitting the corner booking). Both repaired below.]
 
 * **(T-PREFIX).** Cons_f(𝐇°): this is CU-2 (§1 = O-2a Theorem 2(D)),
   consumed with its full displayed residue OL-1..OL-6 = the GD-1..GD-6
   instances. Nothing new.
-* **(T-DEC).** The engine emits a verdict-carrying terminal record on a
-  branch ONLY at a decided configuration, bound to its branch: after the
-  branch's saturated selection (μ_last = 1 → the τ-irr booking) or at the
-  base read's Hensel/−∞ booking (→ τ-hen); the deep exact-key booking, if
-  the engine performs one, is the displayed Corollary corner. Engine
-  CONTROL-FLOW bookkeeping — the same clause OL-4's intended proof route
-  already cites ("the (τ-irr) rule halts a branch at multiplicity 1").
+* **(T-DEC) — SPLIT at R3 (CU2tpass G2).**
+  * **(T-DEC-dec).** Emission discipline at decided sites: the engine's
+    verdict-carrying terminal record after a branch's saturated selection
+    (μ_last = 1) is the τ-irr booking, and at the base read's Hensel/−∞
+    booking the τ-hen booking — both DEC configurations (§9.2), bound to
+    their branch. Engine CONTROL-FLOW bookkeeping — the same clause OL-4's
+    intended proof route already cites ("the (τ-irr) rule halts a branch
+    at multiplicity 1").
+  * **(T-DEC-cor) — the corner fence.** Any OTHER verdict-carrying
+    emission site is the deep exact-key corner (k' ≥ 1, μ_{k'} ≥ 2,
+    j₀ = 1 at level k'+1) — which is NOT a DEC configuration: T(f, 𝐇°)
+    is undefined there and Lemma CU-2t does NOT apply to such a record.
+    The tie below is therefore stated for (T-DEC-dec) emissions ONLY; a
+    corner-booked record's forcing is exactly Corollary CU-2t-deep, at
+    the Corollary's own conditionality ((REP-IRR) + GD-8's booking
+    conformance), and whether the engine ever corner-books is GD-8
+    territory. The exhaustiveness clause itself (decided sites + the
+    corner exhaust the verdict-carrying emission sites) is engine
+    bookkeeping of the same GD-4 grade, riding the scope note below. R2's
+    silent conditional "the engine never corner-books" is thereby
+    eliminated: corner bookings are covered — by the Corollary,
+    conditionally, displayed.
+* **(T-READ) — NEW row at R3 (CU2tpass G1; absent from R2's display, so
+  R2's own pricing correction still undercounted by one).** At a
+  (T-DEC-dec) site, the emitted terminal record's shape/position fields
+  (e, h, ℓ, s, u), with sel = ⊥, are the (c1)-shape datum of the
+  level-(k'+1) polygon side — i.e. the emitted ν satisfies (RC-read)
+  (Definition RC, §9.2a, where (c1) is now displayed). Engine READ
+  bookkeeping: the terminal record's shape fields are written FROM the
+  level-(k'+1) polygon read the engine performs at the decided
+  configuration — not defaults, not copies of the last continuing read.
+  No other row can supply this: Cons_f constrains no terminal field
+  (Lemma R's terminal non-claim, §9.1), (T-DEC-dec) speaks only of the
+  emission SITE, and (T-VERD) only of the verdict pair.
 * **(T-VERD).** The emitted verdict pair is the record function of the
-  emitted prefix: (accE_{k'}, accF_{k'}) resp. (1, f₀). Engine RECORD
-  bookkeeping (the accumulator fields are part of the emitted record
-  stream).
+  emitted prefix: (accE_{k'}, accF_{k'}) resp. (1, f₀) — i.e. the emitted
+  ν satisfies (RC-verd). Engine RECORD bookkeeping (the accumulator
+  fields are part of the emitted record stream).
 
-Given the rows: emitted verdict-carrying ⇒ DEC configuration with Cons_f
-prefix ⇒ (Lemma CU-2t) the terminal datum is the forced T(f, 𝐇°) and the
-emitted verdict equals the true invariant pair of the branch's irreducible
-factor. **Pricing of (T-DEC)/(T-VERD):** both are GD-4-family instances
-(D2.2: "emission/record discipline — engine bookkeeping, not GMN
-mathematics", proof-by-construction routes on record); they are NOT in
-OL-4's printed clause list (which covers W-laws + (c0) only) — a displayed
-SCOPE NOTE owed to the GD-4 owner: GD-4 gains the two terminal rows, and
-(R2 honesty correction, CUC F4) these ARE two genuinely NEW unproved
-obligations on the mandatory path, absent from every earlier pricing (§2's
-condition line and §D2.3's "OPEN (one lemma) over the GD residue" both
-predate them). What is preserved: no new open FAMILY. The §9.2a inventory
-closure rides the same scope note (consumed by nothing in this lemma). The
-machine-side home of both statements is O-1thr
-§1.4's record mechanics ("IrrHalts ⟺ μ_last = 1"; "irrVerdict =
-(accE, accF) a pure record function") — cited here as CORROBORATION ONLY,
-not consumed, so CU-2t's pass conditionality stays as §2 priced it (no
-P(O-1thr r4)).
+Given the rows — with each half's consumption displayed (the CU2tpass G1
+charge): emitted verdict-carrying at a decided site ⇒ [(T-DEC-dec)] DEC
+configuration with [(T-PREFIX)] Cons_f prefix ⇒ the emitted record is
+RC-consistent — (RC-read) supplied by (T-READ), (RC-verd) by (T-VERD) —
+so Lemma CU-2t applies and forces BOTH halves of "the terminal datum is
+the forced T(f, 𝐇°)": the READ-ENTRY half (the record's shape fields =
+clause (i)'s unique side datum) consumes (T-READ) — without that row the
+engine could emit records conforming to (T-DEC-dec)/(T-VERD) whose shape
+fields are junk, and this half would FAIL (the CU2tpass G1 failure
+scenario) — and the VERDICT half (the announced pair = the true invariant
+pair of the branch's irreducible factor) consumes (T-VERD) + clause (ii)
+and survives on those alone. Corner-booked emissions, if any, are fenced
+to the Corollary by (T-DEC-cor) and are NOT covered by this tie.
+
+**Pricing of (T-DEC)/(T-READ)/(T-VERD) (R3 correction of the R2
+correction).** All three are GD-4-family instances (D2.2:
+"emission/record discipline — engine bookkeeping, not GMN mathematics",
+proof-by-construction routes on record); none is in OL-4's printed clause
+list (which covers W-laws + (c0) only) — a displayed SCOPE NOTE owed to
+the GD-4 owner: GD-4 gains the THREE terminal rows, three genuinely NEW
+unproved obligations on the mandatory path, absent from every pricing
+before this unit's. Said plainly: the GD-4 residue count changes AGAIN —
+rev 1 priced ZERO new inputs (retracted at R2 per CUC F4), R2 priced TWO
+(and those two were already folded downstream: tree §D3.5/§D2.3, ROOT r4
+Step 11 + its §3.3 GD-4/GD-6 row), and the honest count is THREE, so the
+executed folds are one row short and owe a +1 amendment (§9.5 touches
+(1)–(3)). What is preserved: no new open FAMILY. The §9.2a inventory
+closure and (T-DEC-cor)'s exhaustiveness clause ride the same scope note
+(consumed by nothing in this lemma). The machine-side home of
+(T-DEC-dec)/(T-VERD) is O-1thr §1.4's record mechanics ("IrrHalts ⟺
+μ_last = 1"; "irrVerdict = (accE, accF) a pure record function") — cited
+here as CORROBORATION ONLY, not consumed, so CU-2t's pass conditionality
+stays as §2 priced it (no P(O-1thr r4)); (T-READ) has NO displayed
+machine-side home on file — it is purely owed.
 
 ### 9.5 Conditionality (exact), consumers, non-claims
 
@@ -852,24 +952,42 @@ P(O-1thr r4)).
 the OL statements consumed via CU-2] · TB-CAP's D-12r perimeter [(τ-irr)
 window leg only; the (τ-hen) leg is unconditional T-6 content] · the GD
 residue: via CU-2/(T-PREFIX) = OL-1..OL-6, plus OL-1 directly at k' ≥ 1 in
-clauses (i)/(ii), plus the (T-DEC)/(T-VERD) GD-4 rows (§9.4).
+clauses (i)/(ii), plus the (T-DEC)/(T-READ)/(T-VERD) GD-4 rows (§9.4 —
+THREE rows after the R3 G1/G2 corrections).
 
-**Pricing correction (R2, CUC F4 — replaces rev 1's "zero new open inputs"
-sentence, which OVERSTATED).** (T-DEC) and (T-VERD) are TWO NEW open
-inputs: unproved obligations in no printed clause list on file before §9.4
-displayed them. They are folded into GD-4 (so no new open FAMILY), but the
-mandatory-path residue is the §D2.3 pricing PLUS these two rows — §D2.3's
-"OPEN (one lemma) over the GD residue" and §2's condition line ("P(O-2a
-r5) + TB-CAP's D-12r perimeter + the GD residue via 2(B)'s hypothesis")
-both predate and exclude them. **Ledger + ROOT touches owed (enumerated
-for the orchestrator; NOT executed here, other-file discipline):**
-(1) tree, GD-4 node / §D2.2 row — clause list gains the two terminal rows
-(T-DEC)/(T-VERD), citing §9.4; (2) tree §D2.3, the CU-2t pricing line —
-"OPEN (one lemma) over the GD residue" → "… over the GD residue + the two
-GD-4 terminal rows"; (3) the ledger's CU-2t/wave-8 line — conditionality
-reads "GD residue incl. the two new GD-4 terminal rows (§9.4)";
+**Pricing correction (R3, CU2tpass G1 — supersedes R2's "TWO NEW open
+inputs", which itself replaced rev 1's "zero new open inputs"; the count
+has moved 0 → 2 → 3 across the revisions and this is stated plainly).**
+(T-DEC), (T-READ) and (T-VERD) are THREE NEW open inputs: unproved
+obligations in no printed clause list on file before §9.4 displayed them.
+R2 displayed and priced only (T-DEC)/(T-VERD); the (RC-read) supply for
+emitted records had NO row, so the R2 residue correction itself
+undercounted by one — the CU2tpass G1 finding, accepted. They are folded
+into GD-4 (so no new open FAMILY), but the mandatory-path residue is the
+§D2.3 pricing PLUS these three rows. **Ledger + ROOT touches owed
+(enumerated for the orchestrator; NOT executed here, other-file
+discipline). Note: the R2-owed touches were meanwhile EXECUTED at the
+two-row count (tree §D3.5/§D2.3; ROOT r4 Step 11 + §3.3 GD-4/GD-6 row),
+so (1)–(3) are now AMENDMENTS of executed text, not first executions:**
+(1) tree, GD-4 node / §D2.2 row + §D3.5 — the clause list reads THREE
+terminal rows (T-DEC)/(T-READ)/(T-VERD) citing §9.4, with the (T-DEC)
+split noted; §D3.5's surviving "zero new open inputs; the two
+engine-bookkeeping terminal rows (T-DEC)/(T-VERD)" sentence — which
+predates even the R2 correction — is superseded twice over and must be
+rewritten, not just incremented; (2) tree §D2.3, the CU-2t pricing line —
+"OPEN (one lemma) over the GD residue" → "… over the GD residue + the
+THREE GD-4 terminal rows"; (3) ROOT's Step 11 row + §3.3 GD-4/GD-6 row
+and the ledger's CU-2t wave-8/wave-14 lines — "+2 GD-4 rows" → "+3 GD-4
+rows" (the ledger's 85670f7 adjudication entry already records "the GD-4
+residue is THREE rows, not two"; the older lines predate it);
 (4) GD-4's owner brief, at its next revision — absorb the §9.4 scope note
-(the two rows + the §9.2a inventory-closure question).
+(the three rows + the §9.2a inventory-closure question + (T-DEC-cor)'s
+exhaustiveness clause, the last jointly with GD-8);
+(5) [NEW at R3, CU2tpass G3] the O-2a owner / the P(O-2a r5) pass charge —
+deliver the §9.1 W3 carrier finding together with the 2(D)-scope dichotomy
+(§1's R3 flag): decide whether 2(D) as printed asserts continuing-part or
+full-history 𝔈-membership at terminal-carrying emissions, and repair 2(D)
+first if the latter.
 
 **Consumers served:** CU-4's F4-C leg (§4's assembly display: "CU-2t (the
 terminal record fires, forced)" — this section supplies the forced-value
@@ -877,10 +995,12 @@ half; the COMPLETENESS half, that the certificate fires within the window
 on the box, remains CU-4's walk) · CU-7 (I-1)(b) (§7: terminal event match
 = CU-2t + CU-4 + Lemma STEEP) · Lemma R's consumer audit (any future
 consumer needing full-𝐇 injectivity has the verdict-carrying case supplied
-by Θ^τ at the §9.3(iii) granularities — unconditional at (𝐇°,
-announced-pair) level (iii-a); datum level on RC-consistent, in particular
-run-emitted, records (iii-b); full-record level only modulo the §9.2a
-inventory caveat — consumers must pick their granularity explicitly).
+by Θ^τ at the §9.3(iii) granularities — at (𝐇°, announced-pair) level with
+NO RC hypothesis ((iii-a); the lemma's standing conditionality applies as
+everywhere — M5 qualifier); datum level on RC-consistent, in particular
+decided-site run-emitted (§9.4, three rows), records (iii-b); full-record
+level only modulo the §9.2a inventory caveat — consumers must pick their
+granularity explicitly).
 
 **Non-claims (displayed):** (1) no claim that every decided branch GETS a
 verdict emitted at any particular level — completeness/acceptance is CU-4
@@ -916,15 +1036,16 @@ the seam-pair reading is THIS unit's, not O-2a's; (2) the Lemma 2.17/Def
 the −∞ side, and −∞-length = ord_{φ}(f)?); (3) the ω = μ identification's
 dependence on (c2) + the pinned ω-definition; (4) that (ii) consumes
 Theorem 2(B) only at its displayed hypothesis row and adds no hidden
-realization semantics; (5) that (T-DEC)/(T-VERD) are engine-bookkeeping
-rows (GD-4 grade), not smuggled mathematics; (6) that the Corollary's
+realization semantics; (5) that (T-DEC-dec)/(T-DEC-cor)/(T-READ)/(T-VERD)
+are engine-bookkeeping rows (GD-4 grade), not smuggled mathematics; (6) that the Corollary's
 (REP-IRR) is genuinely quarantined out of the lemma's grade; (7) the
 j₀ ≤ 1 separability argument at every level; (8) that Θ^τ creates no
 collision with Θ-images (the trailing-⊥ separation). Falsifier F1/F3/F5
 citations are checkable against O-2a rev 5 §6 verbatim.
 
 **Grade after this unit: CU-2t = PROVED-UNVERIFIED, conditional per §9.5
-(as corrected at R2); fresh hostile pass owed on the R2 text.**
+(as corrected at R2, re-corrected at R3 — three GD-4 rows); fresh hostile
+pass owed on the R3 text (charge: §11).**
 §2's "OPEN (one lemma)" and §8's table row and residue line are SUPERSEDED
 accordingly (append-only at §9 time; R2 subsequently edited §1, the §2
 note, and §§9.2–9.5 in place — the diff record is §10). Owner question
@@ -977,3 +1098,68 @@ granularities, and the F4 pricing correction against the tree).**
 **Files (§10):** R2 edits confined to
 `lean/notes/openmath/CU_cluster_phaseB.md` (this file). The four
 ledger/ROOT touches of §9.5 are OWED, not executed.
+
+---
+
+## 11. R3 record — CU2tpass dispositions (unit CU2t, 2026-07-31; light revision)
+
+*(R3 was charged, per the ledger 85670f7 adjudication of the CU2tpass
+verdict (`CU2t_R2_verify.md`: SOUND-WITH-GAPS, 0 critical, 4 gaps,
+2 minor), with: the G1 missing supply row + the three-row pricing, the G2
+(T-DEC) contradiction, and the remaining findings G3/G4/M5/M6. The
+seam-object lemma core was CONFIRMED sound by that pass; every R3 edit
+sits on the emitted-side tie, labels, routing, or quotation display —
+no proof body is touched. Verified cores byte-stable AGAIN: Lemma CU-2t
+clauses (i), (ii), (iv), the ENTIRE §9.3 proof block ((i)/(ii)/(iii)/(iv)
+paragraphs), the Corollary, §§9.0–9.2 (§9.2a excepted), 9.6, the §6.1
+audit, and the whole §10 R2 record are unedited at R3. §9.3's edits are
+confined to the (iii) statement labels ((iii) preamble, (iii-a) header,
+(iii-b) row list) — display fixes, no mathematical content changed.)*
+
+| CU2tpass finding | class | disposition at R3 |
+|---|---|---|
+| G1 — run-emitted RC-consistency overclaimed: the (RC-read) half had NO supply row; pricing undercounted by one | GAP (load-bearing) | **FIXED in place.** §9.4 gains the **(T-READ)** row — the emitted terminal record's shape/position fields (e, h, ℓ, s, u), sel = ⊥, ARE the (c1)-shape datum of the level-(k'+1) polygon side, i.e. emitted ⇒ (RC-read) — with the no-other-row-supplies-it display (Lemma R's terminal non-claim quoted; (T-DEC)/(T-VERD) each shown not to touch the shape fields). The tie's conclusion now displays PER-HALF consumption: the read-entry half consumes (T-READ) (and the G1 junk-shape-fields failure scenario is displayed as what breaks without it); the verdict half survives on (T-VERD) + (ii) alone. Pricing corrected to **THREE new GD-4 rows** — the 0 → 2 → 3 history stated plainly at §9.4 and §9.5 — and the §9.5 touches re-enumerated with (1)–(3) marked as AMENDMENTS of already-executed tree/ROOT two-row folds (tree §D3.5/§D2.3; ROOT r4 Step 11 + §3.3 row). §2's note and §9.3(iii-b)'s row list updated to the three rows. |
+| G2 — (T-DEC) not a well-formed single statement: "ONLY at a decided configuration" while admitting the corner booking | GAP | **FIXED in place — the row is SPLIT.** **(T-DEC-dec)** = emission discipline at decided sites (the clause the tie consumes); **(T-DEC-cor)** = the corner fence: the deep exact-key corner is NOT DEC, T(f, 𝐇°) is undefined there, Lemma CU-2t does not apply to a corner-booked record — such records are fenced to Corollary CU-2t-deep at ITS conditionality ((REP-IRR) + GD-8 booking conformance), and the tie is scoped to (T-DEC-dec) emissions only. The exhaustiveness clause (decided + corner = all verdict-carrying sites) is displayed as GD-4-grade bookkeeping riding the §9.4 scope note (jointly with GD-8). R2's silent conditional "the engine never corner-books" is eliminated: corner bookings are covered — by the Corollary, conditionally, displayed. |
+| G3 — the W3 carrier finding + the 2(D)-scope dichotomy unrouted to the O-2a owner | GAP | **FIXED (routing executed in THIS file; delivery rides the pass).** §1 gains the R3 flag displaying the dichotomy — (a) 2(D)-as-printed already continuing-part ⇒ rev 1 misquoted, citation now accurate; (b) full-history ⇒ 2(D)-as-printed clashes with the §9.1 carrier finding at (τ-irr)-decided leaves and needs repair before the citation closes — undecidable from this file. §9.5 touch (5) + the §8 owed pointer DELIVER finding + dichotomy to the P(O-2a r5) pass charge. |
+| G4 — Definition RC leans on the undisplayed (c1) | GAP (standalone discipline) | **FIXED.** (c1) quoted VERBATIM (O-2a rev 5 (C4); provenance bracket omitted, noted) in §9.2a, with the well-formedness check displayed: (c1)'s shape datum = exactly the 5-tuple (e, h, ℓ, s, u); "sel = ⊥ in place of a selection" type-checks (sel = the residual-selection coordinate, outside (c1)'s shape datum); −∞ branches via the §9.2 convention. |
+| M5 — two overstating labels in §9.3(iii) | MINOR | **FIXED.** "the appended record carries ν's data" → "carries ν's VERDICT data only" (aligned with §2's phrasing); (iii-a)'s bare "[unconditional]" re-labeled "[no RC hypothesis — the lemma's standing row applies as everywhere]", and §9.5's consumer line carries the matching qualifier. |
+| M6 — §10's F3 row compresses two commits into one R2 narrative | MINOR | **RECORDED — this row is the record; §10 is left byte-stable as the R2 document of record.** The R2 disposition spans TWO commits: 52d4eed (§1/§9.2a/header) and 567814d (§9.3(iii)/§9.4/§9.5/§10); the intermediate tree state has a header referencing a not-yet-existing §10; the final text is the object of every pass. No content consequence. |
+
+**Falsifier duty (falsifier-first, R3).** No mathematical claim of the
+lemma changed — (T-READ) and (T-DEC-cor) are new displayed OBLIGATIONS on
+the engine, not new claims by this lemma — so the §9.6 record stands
+unedited. For the record, the new rows' own refutable surfaces (owed WITH
+the rows, to the GD-4 owner, not by this unit): (T-READ) — dump emitted
+terminal records over the F1/F3/F5 families and compare the shape fields
+(e, h, ℓ, s, u) against an independent level-(k'+1) polygon read (any
+default/copied field refutes the row); (T-DEC-cor)'s exhaustiveness — scan
+a run corpus for verdict-carrying emissions at sites neither DEC nor the
+corner (one hit refutes). Neither harness exists on file.
+
+**What R3 does NOT change:** every conditionality key P(·) and the §0
+registry rows; the falsifier record §9.6; the §6.1 OB2/D-11 audit; the
+Corollary and its (REP-IRR) quarantine; all proof bodies; the §10 R2
+record.
+
+**Grade after R3: CU-2t = PROVED-UNVERIFIED (R3), conditional per §9.5 as
+corrected — the GD residue now includes THREE GD-4 terminal rows; fresh
+hostile pass owed on the R3 text.** Charge to that pass: the §9.7 items
+(with item (5) at the split row names) PLUS: (9) the (T-READ) row's
+consumption display at the tie's read-entry half — is the per-half
+attribution exact, and does anything else silently supply (RC-read)?;
+(10) the (T-DEC-dec)/(T-DEC-cor) split — is the tie's scoping to decided
+sites complete, and is the corner fence consistent with the Corollary's
+displayed conditionality?; (11) the §9.2a (c1) quotation against O-2a
+rev 5 (C4) verbatim, and the 5-tuple type-check; (12) the 0 → 2 → 3
+pricing arithmetic against §9.4/§9.5 and the five enumerated touches,
+including the executed-fold amendment claims against the tree/ROOT texts.
+
+**Files (§11):** R3 edits confined to
+`lean/notes/openmath/CU_cluster_phaseB.md` (this file): header + R3
+parenthetical, §1 (G3 flag), §2 (note corrected to three rows), §8 (owed
+pointer), §9.2a ((c1) display + caveat row names), §9.3 (iii-labels only),
+§9.4 (rewritten: split + new row + consumption display + pricing), §9.5
+(conditionality line, pricing correction, five touches, consumer
+qualifier), §9.7 (charge item (5) + grade line), this §11. The FIVE
+ledger/ROOT touches of §9.5 are OWED, not executed (three of them
+amendments of already-executed two-row folds).
