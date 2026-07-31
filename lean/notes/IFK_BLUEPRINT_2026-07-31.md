@@ -399,3 +399,269 @@ follows) · docs/GMN_citations.md, docs/AXIOM_FAITHFULNESS.md (perimeter).
 — IFK synthesis unit, 2026-07-31. Next step: Codex plan-review of THIS file
 (charge: adversarial, quote-and-classify, fix nothing), then orchestrator
 adjudication, then IFK-U0/U1 dispatch.
+
+---
+
+# ═══ REVISION 1 (2026-07-31, same day) — the V4 REJECT folded + the U6 probe verdict ═══
+
+**GATE (re-armed, read first): REVISION 1 goes back to Codex re-review before ANY
+prover dispatch.** Nothing below authorizes IFK-U0..U7 launches. The rev-0 text
+above is preserved verbatim per record discipline; where this revision contradicts
+it, the revision governs.
+
+Inputs consumed: (a) the V4 adversarial plan-review — VERDICT: REJECT, 26 numbered
+findings (`lean/notes/openmath/V4_ifk_review.jsonl`); (b) the IFK-U6 K-RUN probe —
+VERDICT: SURVIVES (`verification/openmath/U6_krun_probe.py`,
+`verification/openmath/results/U6_krun_results.json`, committed at fe3cda5; full log
+on disk at `verification/openmath/logs/U6.log`); (c) the landed item-13 reduction
+module `LeanUrat/MovesD/R7_polFillReduction.lean` at HEAD (read-only — the
+MovesC/HC1/HC2/MovesD cone stays with the HK-06 wave owner).
+
+New vocabulary introduced by this revision (all become named Props in IFK-U2):
+**K-OB-A** finite-site assembly · **K-OB-B** inStratum→realized bridge ·
+**K-OB-C** Okutsu proximity bound · **K-OB-D** singleton-cluster certificate-firing
+(completeness) · **K-OB-E** continuing-node ⇒ repeated-residual (GMN-side) ·
+**K-DICT-OB1** tree correspondence · **K-DICT-OB2** σ-invariance ·
+**K-RUN clause 4** certification acceptance (OL1-ii, now face-content).
+
+## R1. Per-finding disposition table (26 rows, no silent drops)
+
+All 26 findings are ACCEPTED — none is rebutted. Classes: B = BLOCKER, A = ADVISORY.
+
+| # | Finding (V4, compressed) | Disposition | Fix / argument |
+|---|---|---|---|
+| 1 | B: K-DICT ill-posed — Θ leaves both carriers free, function/bijection/relation ambiguous | ACCEPTED-fixed | Θ re-typed: for each fixed monic f off `discZero`, a FUNCTION Θ_f from the REALIZED runs of `canDec f` (`ReadsOf`-adapted histories, never free `VTree` data) to the GMN types of f; injectivity/surjectivity are separate named clauses. Enters U2 in this shape. |
+| 2 | B: K-READ leaves H free; comparison variables unstated | ACCEPTED-fixed | Adaptation hypothesis added: (H, ν) ranges over sites realized on `canDec x`; "depends only on" is restated as an explicit two-lift comparison — for x, x′ agreeing below slot n·L(H,ν): `ReadsOf (canDec x) (H·ν) ↔ ReadsOf (canDec x′) (H·ν)`, uniformly over working levels ≥ L(H,ν). |
+| 3 | B: K-READ-δ silently exceeds BNS 3.13 | ACCEPTED-fixed | Tier demoted: BNS 3.13 supplies ONLY OM-factorization stability under δ+1 congruence. K-READ-δ is restated as a DERIVED face conditional on K-DICT (incl. OB1/OB2, §R3) + K-RUN; never "directly from the citation". |
+| 4 | B: K-RUN nonempty-locus clause quantifies over free formal chains | ACCEPTED-fixed (probe-informed) | Clause re-indexed at the FRESH-FRAME reading the U6 probe validated: chains whose per-step reads are menu-lawful at the frame state (h₁, μ₂) — the probe's fidelity header records the joint reading as tautological (tests nothing). Two probe canonicalizations bind U2: species = WHOLE node read; beyond-cap pooled as ('deep', k). See §R5. |
+| 5 | B: K-HALT asserts verdicts for every lift g with no adaptation | ACCEPTED-fixed | Leaf-local statement is for the run's OWN polynomial; the transport corollary to lifts g is stated only for g in the leaf's read cylinder (g ≡ canDec x below the max K-READ modulus along the realized run), with K-READ+K-RUN as explicit premises. Assembly clause conditioned on a complete, polynomial-adapted tree. |
+| 6 | B: row 2 needs fiber invariance, not bare no-phantom | ACCEPTED-fixed | Row 2 deps [R] → [R]+[P]: per-site pinning identifies the branch across the congruence class. §R4. |
+| 7 | B: row 3 "re-point" suppresses finite-site assembly | ACCEPTED-fixed | New obligation **K-OB-A**: the finitely many sites relevant to a row share fiber agreement below the max modulus. Row 3 = [P]+[R]+K-OB-A; `transferRow_of_readLocality` is NOT merely re-pointed. |
+| 8 | B: row 4 assumes CYL instead of deriving it | ACCEPTED-fixed | Row split: 4a = [P]-thr+[R] ⇒ CYL (OPEN — the real content); 4b = CYL ⇒ `count_tie` (compiled, M02 §3). Collapse credit attaches to 4a only. §R4. |
+| 9 | B: row 5's K-READ cannot give roster stability / VPSound satisfiability | ACCEPTED-fixed | Deps NsFree+[P] → NsFree+[P]+[R]. §R4. |
+| 10 | B: row 6 smuggles certification acceptance into K-RUN | ACCEPTED-fixed | K-RUN gains an explicit FOURTH clause (acceptance): the built certification predicate accepts exactly the realized = semantic runs — OL1-ii verbatim, now honest face-content. The face is heavier; priced in §R6. |
+| 11 | B: row 7 overreads BNS (no stopping-time bound) and K-DICT (no execution transport) | ACCEPTED-fixed | Row 7 deps → [P]-δ + [D incl. **K-DICT-OB1**]: OL2's rate rides the HARDEST dictionary content and is recorded as conditional on §3.3's true residual, not on the citation. §R4. |
+| 12 | B: row 8 assumes termination + a uniform complete tree | ACCEPTED-fixed | Deps [R]+[P] → [R]+[P]+AX-GMN (Cor. 4.19 termination, existing perimeter) + K-OB-A (finite-site synchronization). §R4. |
+| 13 | B: row 11 omits its own [P]/LOC dependency | ACCEPTED-fixed | Deps → [R]+[P]+[H]+[D]+NsFree. §R4. |
+| 14 | B: row 12 assumes the missing inStratum→realized bridge (the V1 overreach again) | ACCEPTED-fixed | New obligation **K-OB-B**: `inStratum` membership ⇒ realization — the V1-critical object ITSELF, now priced as a lemma. Row 12 = [R]+K-OB-B; no-phantom alone says nothing about arbitrary members. §R4. |
+| 15 | B: row 13 derives a metric disk from mere branch membership | ACCEPTED-fixed | New obligation **K-OB-C** (Okutsu proximity: semantic-prefix membership ⇒ disk at radius w − C_φ; GMN-side, candidate cite to be pulled before U4e). Row 13 = [R]+[D]+K-OB-C. §R4. |
+| 16 | B: row 14 reverses K-HALT soundness into completeness | ACCEPTED-fixed | New obligation **K-OB-D** (the certificate FIRES at singleton clusters within slack κ₀ = 1 — a completeness lemma). K-HALT stays soundness-only; (X3′) = [H]+K-OB-D. §R4. |
+| 17 | B: row 15 overstates no-phantom (continuing ⇒ repeated residual is semantic) | ACCEPTED-fixed | New obligation **K-OB-E** (GMN-side: a continuing OM node presupposes a repeated residual factor). Row 15 = [R]+K-OB-E. §R4. |
+| 18 | A: row 16 embeds the counting theorem in K-DICT, then projects it back | ACCEPTED-bookkeeping | Row 16 removed from collapse credit: the "population clause" IS the obligation (= K-DICT-OB1, §R3), and §3.3 already named it the true residual. §R4. |
+| 19 | B: row 18 drops [P] (I2) and the reading-coherence premise | ACCEPTED-fixed | Deps [R] → [R]+[P] + named premise (I3-rc); "(I3) definitional" demoted to expected-definitional-at-reading-built-tmark, to be CERTIFIED in U4d, not assumed. §R4. |
+| 20 | B: row 20 / the U3–U7 circularity is genuine — toy instances do not break it | ACCEPTED-fixed (re-scoped) | Full resolution §R2: the cycle is broken by re-attribution, not new proof — `RunRealizerExists` is an UPSTREAM supply (HC-1/JetSetup cone), partially compiled at HEAD (`canPolicyC_pin`, `interior_center_realizer_exists`); row 20 DELETED; collapse item 13 removed. |
+| 21 | A: rows 1/9/10/17/19 are projections, not independent derivations | ACCEPTED-bookkeeping | Relabeled "definitional projections" in the map; zero independent collapse credit — their content is priced into the faces (§R6). |
+| 22 | B: the cheapest falsification gate (U6/M18 A–C) is not first | ACCEPTED-executed | U6 was run FIRST, before this revision, and the face SURVIVED exhaustively at all four (n,p) ∈ {2,3}² incl. both wild corners. Verdict + implications on record in §R5; unit order re-cut there (U1 demoted, U0 stripped of gate status). |
+| 23 | B: BNS draft adds conclusions the published theorem does not state | ACCEPTED-fixed | Axiom STRIPPED to the published δ+1 congruence clause only. §R3. |
+| 24 | B: "the OM trees correspond" is a substantial strengthening (imports K-DICT into the axiom) | ACCEPTED-fixed | Clause deleted from the axiom; becomes **K-DICT-OB1** (tree correspondence), a PROOF obligation inside K-DICT. §R3. |
+| 25 | B: σ(f) = σ(g) unsupported without a separate invariance theorem | ACCEPTED-fixed | Clause deleted; becomes **K-DICT-OB2** (σ-invariance under the paper's OM-factorization/Okutsu-equivalence relation), a PROOF obligation. §R3. |
+| 26 | A: the core δ+1 clause itself is no stronger than the publication | ACCEPTED-confirmation | The stripped axiom (§R3) is EXACTLY this core clause; nothing else remains in it. |
+
+Honesty note on finding 4: the U6 SURVIVES is evidence for the REPAIRED
+(fresh-frame-indexed) clause, not for rev-0's free-chain wording — the probe itself
+had to choose the non-tautological reading to have anything to test. V4's diagnosis
+of the wording as "precisely the project's documented failure pattern" stands.
+
+## R2. Finding 20 resolved: the K-RUN/R7 circularity — row 20 EXITS the kernel
+
+The cycle as charged (correctly): bridge-instance discharge (U7) waits on the R7
+designer data (`canPolicy`/`canPolicy_pin` designer-sorried, TreeCan.lean:485/492);
+the designer data unblocks via `RunRealizerExists`; rev-0's row 20 derived
+`RunRealizerExists` FROM K-RUN ([R]). A toy-instance existence theorem does not
+provide the bridge-instance Prop, so "benign, sequence U3 before U7" was wrong.
+
+Resolution — a NON-CIRCULAR supply path exists and is partially compiled at HEAD,
+checked against `LeanUrat/MovesD/R7_polFillReduction.lean` (read-only; 0 sorry;
+in-file `#print axioms` = Lean-core):
+
+1. `RunRealizerExists` (R7_polFillReduction.lean:124) is quantified over
+   `HistoryCoherent` histories at the MovesC carrier — NOT over `canDec`,
+   `canTreeModelN`, or any bridge object. No clause of its statement mentions a
+   K-RUN face. Rev-0's "= a K-RUN corollary" was a mis-attribution.
+2. `canPolicyC_pin : RunRealizerExists p F → OffsetPPin (canPolicyC p F)`
+   (R7:138) already reduces the ENTIRE (†15) designer pair to this one Prop —
+   all five pin laws proved from it ("nothing else is missing", in-file record).
+3. The coherence-derivable HALF of the Prop is PROVED with no kernel input:
+   `interior_recentering_unramified` (R7:152) and
+   `interior_center_realizer_exists` (R7:167) supply, at every INTERIOR
+   recentering node of every coherent history, the realizer's
+   nonzero/inC/weight/center clauses directly from `IsRecenteringCore.base` —
+   i.e. from the HK-06 wave's re-keyed coherence, not from K-RUN or from any
+   instance discharge.
+4. The UNPROVED residue is exactly the module's recorded split: (a) the interior
+   SUPPORT clause (monomial shape — PolPin's (S6b′) residue, owner HC-1
+   lower-stage realizer export) and (b) the LAST-NODE flank (a final node carries
+   no `IsRecenteringCore` record; needs `JetSetup.landing`'s threshold law, or a
+   quantifier re-adjudication to the JetSetup carrier — the module's dated HK-06
+   note records this flank's countermodel search as LIVE via
+   `HK23_twoNodeGatePos`). Both live in the HC-1/HC2 cone, currently fenced to
+   the HK-06 wave owner.
+
+So the dependency arrow REVERSES: HC-1/JetSetup cone → `RunRealizerExists` →
+`canPolicyC_pin` → compiled bridge instance → THEN bridge-instance K-RUN becomes
+attemptable as a strictly stronger downstream statement. Consequences:
+
+* Derivation row 20 is **DELETED** (not re-derived): `RunRealizerExists` is an
+  upstream supply, not a kernel corollary.
+* Collapse item 13 is **REMOVED** from §5's tally (§R6 recount).
+* U7's precondition changes from "U3 + R7 designer data (via row 20)" to
+  "U3 + `RunRealizerExists` supplied EXTERNALLY by the HC-1/JetSetup cone; IFK
+  dispatches nothing at that cone while the HK-06 wave owns it".
+* If flank (b) is refuted by the live countermodel search, the re-adjudicated
+  quantifier feeds `canPolicyC_pin` the same way; U7 stays gated either way.
+
+This is the honest shape: the cycle is broken by recognizing rev-0 inflated the
+kernel by one row it does not own — no new mathematics is claimed here.
+
+## R3. The BNS axiom, STRIPPED (findings 23–25)
+
+§3.2's candidate 5 draft is SUPERSEDED. New draft — GMNIndex pattern throughout:
+statement shape as a parameterized `def`, **`axiom` keyword withheld** until the
+GMN-side carriers exist; published text transcribed verbatim into the
+AXIOM_FAITHFULNESS entry before any declaration:
+
+> **AX_BNS_precision (REV 1 DRAFT — NOT DECLARED).** Let p be prime and
+> f, g ∈ ℤ_p[x] monic separable of common degree n, δ := v_p(disc f). If
+> f ≡ g coefficient-wise mod p^{δ+1}, then every OM factorization of f is an
+> OM factorization of g. [Bauch–Nart–Stainsby, *Complexity of OM factorizations
+> of polynomials over local fields*, LMS J. Comput. Math. 16 (2013) 139–171,
+> Theorem 3.13, pp. 154–155 — V4 pinned the published PDF.]
+
+DELETED from the axiom (each a strengthening the published theorem does not
+state, per findings 23–25): "the OM representations remain valid", "the OM trees
+correspond", "σ(f) = σ(g)". These become named PROOF OBLIGATIONS inside K-DICT:
+
+* **K-DICT-OB1 (tree correspondence).** Equality of admissible OM factorizations
+  ⇒ correspondence of the refinement traces/trees the classifier produces. This
+  is project math (same factorization is reachable through different
+  representative choices and refinement histories — finding 24's exact point).
+  OB1 ABSORBS rev-0's row-16 "population clause" and is §3.3's true residual,
+  now stated once instead of hiding in an axiom and a derivation row.
+* **K-DICT-OB2 (σ-invariance).** σ is invariant under the paper's
+  Okutsu-equivalence / OM-factorization relation. A separate theorem; without it
+  the axiom yields factorization data only, never σ(f) = σ(g).
+
+Unchanged: faithfulness-skeleton items 1–6 of §3.2 (verbatim-transcription gate,
+GMN-side typing consumed only through K-DICT, ℚ_p scope, no per-site modulus,
+numerics on record, sign-off process). Finding 26 confirms the surviving clause
+is no stronger than the publication — the excess strength is gone WITH the
+deleted clauses, none remains in the δ+1 hypothesis itself.
+
+## R4. Derivation-map corrections (replacement rows)
+
+Rows 1/9/10/17/19 stand, RELABELED "definitional projection — no independent
+collapse credit" (finding 21). Corrected rows (rev-0 text is superseded):
+
+| # | Residual | Faces (corrected) | Correction |
+|---|---|---|---|
+| 2 | M02 L2 | [R]+[P] | fiber invariance = no-phantom + per-site pinning on the congruence class (finding 6) |
+| 3 | M02 L3 / `TransferRow` | [P]+[R]+**K-OB-A** | finite-site assembly is a named lemma, not a "re-point" (finding 7) |
+| 4a | [P]-thr+[R] ⇒ CYL | [P]-thr+[R] | the OPEN derivation — the row's real content (finding 8) |
+| 4b | CYL ⇒ `seam.count_tie` | — | compiled (M02 §3); carries no open math |
+| 5 | `canonical_stable` + `VPSound` sat. | NsFree+[P]+**[R]** | roster stability needs run faithfulness (finding 9) |
+| 6 | M05 OL1 ⇒ `env_tendsto` | [R incl. clause 4]+[P]+AX-GMN | acceptance is face-content, not smuggled (finding 10) |
+| 7 | M05 OL2 | [P]-δ+[D incl. **OB1**] | OL2's rate is conditional on the HARDEST dictionary content (finding 11) |
+| 8 | M06 OL-1 (LOC) | [R]+[P]+AX-GMN+**K-OB-A** | termination + finite-site sync made explicit (finding 12) |
+| 11 | `BK.vp_sound` | [R]+**[P]**+[H]+[D]+NsFree | the omitted LOC dependency restored (finding 13) |
+| **12** | inStratum realization | [R]+**K-OB-B** | the bridge lemma IS the V1-critical object (finding 14) |
+| **13** | M12 (X1) | [R]+[D]+**K-OB-C** | the proximity bound is a separate GMN-side lemma; membership alone gives no radius (finding 15) |
+| **14** | M12 (X3′) | [H]+**K-OB-D** | completeness (the certificate FIRES) is not K-HALT soundness (finding 16) |
+| **15** | M12 (X4) / `RecImpliesWild` | [R]+**K-OB-E** | "continuing ⇒ repeated residual factor" is a semantic GMN-side theorem, not a reading of no-phantom (finding 17) |
+| **16** | tree/iteration correspondence | = **K-DICT-OB1** | an OBLIGATION inside [D], not a consequence; removed from collapse credit (finding 18) |
+| **18** | `MarkGraft` ⇒ `RealizationComplete` | [R]+**[P]**+(I3-rc) | (I2) is [P]'s; reading-coherence premise NAMED, certified in U4d (finding 19) |
+| **20** | `RunRealizerExists` | **DELETED** | upstream supply from the HC-1/JetSetup cone, §R2 (finding 20) |
+
+## R5. Gate order (finding 22) + the U6 verdict on record
+
+Revised rule: **U6-class falsifiers run FIRST** — the cheapest direct
+real-instance negation criterion before any statement layer lands. And U6 has
+now RUN, ahead of this revision, and the face SURVIVED its own preregistered
+falsifier:
+
+> **IFK-U6 verdict (2026-07-31): SURVIVES.** Exhaustive M18 Tests A–C at all
+> four (n, p) ∈ {2,3}² — both wild corners included. Rows (r = 0 entry-cluster
+> cylinder sweeps, lift-resolved precision horizons): R1 n=2 p=2 N=9 hcap=4
+> (2¹⁶ boxes); R2 n=2 p=3 N=7 hcap=3 (3¹²); R3 n=3 p=2 N=7 hcap=3 μ=3 (2¹⁸);
+> R4 n=3 p=3 N=5 hcap=2 μ=3 (3¹²). ZERO phantoms (no per-step-counted length-2
+> chain with empty locus); the counting tie T = T̂ holds on every one of 174
+> length-2 strata (369 realized chains); the D4R.4 equal-fiber law holds
+> EXACTLY (all chain fibers equal and a p-power; unresolved mass 0 — no
+> tolerance used). Validation gates green: V1 PARI factorpadic (e,f)-multiset
+> tie via nfinit+idealprimedec, 1600 fully-decided samples, 0 mismatches (an
+> earlier residue-reduction shortcut was mathematically wrong and REPLACED);
+> V2 full-box cylinder/translation tie at 4 tiny boxes; V4 Hensel μ=2-in-n=3
+> reduction, 796 samples, 0 mismatches; V5 N-vs-N−1 stabilization on all rows.
+> Artifacts: `verification/openmath/U6_krun_probe.py`,
+> `results/U6_krun_results.json` (committed at fe3cda5), `logs/U6.log` on disk.
+
+What SURVIVES implies for the map — honestly bounded:
+
+* SUPPORTS the repaired K-RUN face at the fresh-frame indexing (§R1 finding 4)
+  and duties (I0)–(I2) at the intended p-adic semantics — at depth ≤ 2, heights
+  ≤ hcap, the four probed boxes. Content confirmed: the step-2 read menu is
+  independent of the step-1 arrival digits, and the full |A1| × |menu| product
+  structure is realized on every stratum (all 2×2 blocks realized at the p=3
+  wild cubic).
+* DISCHARGES nothing: per M18 Theorem 0 the row is FALSE without instance
+  structure — the probe is evidence for the instance-adapted statement, not a
+  proof. K-RUN completeness at depth ≥ 2, general n, beyond the probed boxes
+  stays §3.3-open, exactly as before.
+* Two engine canonicalizations BIND the U2 statement layer: (i) branch species
+  = the WHOLE node read (all polygon sides + residual profiles) — keying by the
+  branch's own side letters (e, ℓ, h) pools configurations with different
+  digit-pinning counts and SPURIOUSLY falsifies the equal-fiber law; (ii) the
+  beyond-cap region pools into a single ('deep', k) marker — its internal side
+  decomposition is horizon-dependent, while "k deepest roots beyond cap" is a
+  clean digit-cylinder condition (pooled deep censuses verified exact p-powers).
+* Carried caveat: the spec's own (2,3,6)/(3,3,4) rows under-certified their
+  stated H and were re-leveled — U2's height clauses must be
+  certification-driven, not aspirational.
+
+Revised unit order: **U6 (DONE, SURVIVES) → Codex re-review of THIS revision →
+U2** (statement layer, now carrying the §R1 face repairs, the two
+canonicalizations, and K-OB-A..E + K-DICT-OB1/OB2 + K-RUN clause 4 as named
+Props) **→ U1** (countermodel compile — demoted to post-U2: it certifies a
+known fence, it does not probe the kernel) **→ U0** (MarkGraft landing, gate
+status stripped — unrelated material, finding 22) **→ U3 → U4a–f → U5**
+(stripped axiom package per §R3) **→ U7** (gated on the EXTERNAL
+`RunRealizerExists` supply, §R2 — no IFK dispatch into the HK-06 cone).
+
+## R6. The honest recount of the collapse
+
+Rev-0 claimed ~13 named rows/hypotheses + 10 F-chain sorries. Corrected:
+
+**Retired by the kernel as revised** (conditional on the four ENLARGED faces —
+adapted quantifiers, K-RUN clause 4 — plus the stripped axiom):
+`seam.count_tie` (via 4a+4b), `BK.vp_sound`, `BK.env_tendsto` general-n
+residual, `canonical_stable` supply, `BridgeReadLocality` → per-site
+(+ `TransferRow`/`TreeNStable` derived through K-OB-A), `cl15_align`'s
+dictionary half, `RealizationComplete`/`hRC`, and the OL rosters (OL1-ii now
+face-content). = **8 named rows + 10 F-chain sorries** (the F-chain rides row 19
+unchanged).
+
+**Retired only WITH a named auxiliary lemma each** (new pricing, findings
+14–17): inStratum-realization (K-OB-B), M12 (X1) (K-OB-C), (X3′) (K-OB-D),
+(X4) (K-OB-E). = 4 rows, each costing one new open lemma.
+
+**Removed from the tally**: `RunRealizerExists` (rev-0 item 13 — upstream
+supply, §R2); the row-16 counting theorem (never a collapse: it IS K-DICT-OB1,
+§3.3's residual, previously double-booked as both an axiom clause and a
+derivation).
+
+**New open mass made explicit by this revision** (it was hidden inside overread
+arrows and the fat axiom): K-OB-A..E, K-DICT-OB1 (the known hardest face),
+K-DICT-OB2, K-RUN clause 4, the (I3-rc) premise — nine named obligations, of
+which OB1 is deep-wild-tower-hard and the other eight are bounded project math.
+
+Net verdict, stated plainly: the §0 convergence observation STANDS — five
+fleets' residuals still factor through the four faces — but rev-0 overstated
+the collapse by one row (RunRealizerExists), double-counted one (row 16), and
+under-priced eleven arrows. The kernel is a genuine consolidation with heavier
+faces than advertised, not a shortcut. The U6 SURVIVES is the first
+falsification-grade evidence that the heaviest face's depth-2 content is TRUE
+at the intended semantics.
+
+— REVISION 1, IFK synthesis unit, 2026-07-31. Next step: Codex re-review of the
+FULL document (rev-0 + this revision as one artifact; charge: adversarial,
+quote-and-classify, fix nothing), then orchestrator adjudication. NO prover
+dispatch before that verdict.
