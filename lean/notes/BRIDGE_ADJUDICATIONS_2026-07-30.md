@@ -1192,3 +1192,19 @@ the hypothesis list — the (ROOT-C) statement now carries SIX [M]-grade
 hypothesis groups; the next VC pass audits it.
 PHASE-C STANDING: REG ACCEPTED; TREE resolved; the end-to-end pass on the
 r5/REVISION-4 document (VC5) = the remaining leg.
+
+## ROOT REVISION 4 + LEAF PASSES (2026-08-02 late night, commits 5c7abd9/6ed4136/d18a6ce)
+ROOT REV 4: all VC4 findings repaired; clause (SQ) corrected DOWNWARD to
+UNCONDITIONAL (Step-1 bracket + semantic drainage need no [M] hypothesis —
+favorable); (H5)/(PACK) = D-11's open pack-correspondence clause honestly
+promoted to the hypothesis list; invariant re-run: (ROOT-C) hypotheses =
+EIGHT [M] rows, per-clause display complete ((0)/(SQ) unconditional;
+(R) <- H1-H3+H4a+H5+K3-delta; (UB) <- H1-H3+H4a+H4b+H5). O-9 PASS 4:
+SOUND, 0 criticals — the FULL-attainment repair verified in full (all
+arithmetic re-derived by hand; K7 re-executed byte-identical); 1
+non-load-bearing gap (two stale summary glosses, grep-verified unconsumed)
+-> two-line fix + one confirming pass to the bar. CU-2t R3 pass: 0
+criticals, BOTH logic repairs VERIFIED; two pricing-prose gaps (G-alpha
+grading; G-beta the false 'meanwhile executed' tree claim) + one minor ->
+light prose repairs + spot-check. VC5 (the acceptance-candidate end-to-end
+on the REVISION-4 document) LAUNCHED.
