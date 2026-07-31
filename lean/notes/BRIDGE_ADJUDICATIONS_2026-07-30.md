@@ -1090,3 +1090,18 @@ rows. D-11 r3: (S1-m)+(DET) display (the uncountable-prefix defect fixed);
 M1(a) rescoped; status honestly LAYERED-NOT-COMPLETE. O-11 r3: (ADM) + H-2..
 H-4 hypothesis-grade rows displayed. VC3 (Fable end-to-end, model-diverse)
 LAUNCHED on the twice-revised ROOT.
+
+## THE FIVE OWED PASSES (2026-08-02 night)
+CU-1: GAPS-CLOSED, 0 crit 0 gap -> VERIFIED (LEAF #5). O-10: pass 2
+SOUND-WITH-GAPS, math airtight (Lemma 1/2 verified incl. the adversarial
+minor case), gaps = the D-8 value-vs-law framing (collapses definitionally —
+fix rides) + a transport cite -> VERIFIED (LEAF #6) at scope. O4T: pass 3
+SOUND-WITH-GAPS, ZERO criticals, harness independently re-run (2.53M classes,
+sharpness confirmed); two one-liners ('>0' criterion — the consumed form
+verified correct; import inventory) -> one-liners + ONE confirming pass to
+the bar. O-9: UNSOUND — the (ADM) repair introduced a class-vs-value
+attainment false equivalence (countermodel displayed; the automaticity claim
+refuted) -> r3 with the VALUE-attained reading. CUC: UNSOUND — CU-2t's
+Theta^tau is constant in nu (seam objects collide) + the (T-DEC)/(T-VERD)
+residue-growth contradiction ('zero new inputs' false) -> CU-2t r2 + CUC
+ledger corrections. VERIFIED = 6: O-13, O-12, Dfloor, GD23, CU-1, O-10.
