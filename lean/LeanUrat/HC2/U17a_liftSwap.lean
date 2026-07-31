@@ -35,6 +35,25 @@ theorem lift_swap {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       etaData (P : ShapePrefix) H' = etaData (P : ShapePrefix) H ∧
       (polOM p F).IsCanon H' ∧
       HistoryCoherent H' ∧ Realizable H' ∧ InBox n H' := by
+  -- BLOCKED (2026-07-31, hc2-p-phase-hard prover round; statement byte-unchanged).
+  -- The named `StageTransHyp` as typed CANNOT drive the required rebuild:
+  -- (a) RECENTERING legs have NO supplier — swapping a recentering lift to
+  --     `polOM.liftOf` changes the child key `Φ' = Φ − t'`, so the child stage must be
+  --     REBUILT via `IsRecenteringCore σ σ'`, but `StageTransHyp` concludes only the
+  --     increment-shaped `TransitionCoreL`; the recentered-stage constructor is HC-1
+  --     D.7/D.10 property, not present in this hypothesis;
+  -- (b) INCREMENT legs are the HK-03 steep perimeter: `stageTransHyp_steep_empty`
+  --     (HC2/HK03, E-phase skeleton) records that under `StageTransHyp` NO lawful
+  --     steep read instance (`2 ≤ e'·g`, every increment by `hspecInc`) exists on a
+  --     `StageCoreL` stage — so the rebuild either needs the closure-by-contradiction
+  --     route (requiring `StageCoreL`/`IAug`/`ψ ≠ X` at the REBUILT stage — exactly
+  --     the unproved HK-49/HK-50 rebuild invariant) or a re-keyed hypothesis;
+  -- (c) the BP2 decomposition of this unit (HK-49/HK-50/HK-53/HK-54/HK-41,
+  --     BRIDGE_BP2_HC2K1_2026-07-30.md §4) is NOT yet elaborated, and its risk row R-8
+  --     pre-declares the fallback: U17a converts to carrying the leg-shaped named
+  --     hypothesis — a statement-fence event (designer sign-off), never a prover fill.
+  -- Also gated behind the in-flight HK-06 `StageTransHyp` re-key (task #44; the
+  -- ARCHIVAL-DISCIPLINE note in HK03 renames the subject to `StageTransHypOld`).
   sorry
 
 end LeanUrat.MovesJ
