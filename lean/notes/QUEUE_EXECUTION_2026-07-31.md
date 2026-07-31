@@ -204,3 +204,178 @@ touched, so no AxChk diff owed per rule 4; the full build's census infos printed
 capstone footprints unchanged).  Downstream consumers: none import BridgeRosterPins or
 the leaf at HEAD (verified by rg); the new gate file is the first importer of the leaf,
 legal as of this commit.
+
+## Items 6 + 18 + 19 — CL-06 LSTStmt' (i-b) VARIANT A, C6 clean-threshold repair +
+## countermodel landing, R6_carrierInstance DISCHARGED (executed 2026-07-31, agent: items-6-18-19)
+
+**Item 6 (CL-06, the A17/DEFECT-1 statement repair, VARIANT A — BP5 §3.2 display (6),
+Q-3 adjudication).** `HC1/R1_LSTStmt.lean` leg (i-b) reinstates EXACTLY T4/C1's
+hypothesis row `(Function.support y).Finite → (∀ c, y c ≠ 0 → K.blk H c = b) →`
+(hfin + hsupp, T4-parity order); execution record added to the module docstring.
+R-7 kernel freeze executed in `HC1/R6_carrierInstance.lean`: private frozen
+`LSTStmt_pre_A17'` (verbatim pre-repair text) added; kernel 2b
+(`LSTib_offBlock_pincer`) RETYPED against the frozen copy with a dated M1-hygiene
+note (it refutes the PRE-repair form only); kernel 2a unchanged (no LSTStmt'
+reference). The 70-line pass-2 obstruction record relocated VERBATIM from the R6
+proof body to the file header (blueprint order: do not delete). DEFECT-2 scoping
+record written (R1 + R6 headers): TYPStmt'/DOMStmt'/SecB1Stmt' texts UNCHANGED —
+instance-choice defect, cured by the graded-expansion pack, never by weakening R2/R3/R4.
+Ripple: R2/R3/R4/R5/CL09/CL20 rebuilt green (nothing proved the pre-repair LSTStmt';
+no proof breaks). `LSTStmt'` footprint: Lean-core.
+
+**Item 19 (R6_carrierInstance non-vacuous discharge) — PROVED, Lean-core, 0 sorry.**
+`#print axioms LeanUrat.HC1.R6_carrierInstance = [propext, Classical.choice,
+Quot.sound]` (build log, `lake build`). Statement UNTOUCHED (still `{F : Type*}`,
+same four clauses). Witness pack = the private `r6_pack T rl`: `G := gradedExpCarrier
+T` (CL-08) so the Gr-pin `∀ γ, K.G.Gr γ = T.grQ γ` is `fun _ => rfl` — the
+non-vacuity clause; Hist = Unit; real Coord/ht/blk/levelSet/aDim/blockEdge; lines =
+rl.line with the `i > K` interiorEnd guard; window ≡ True; display-(8) slotCoeff and
+monoE. UNIVERSE GLUE (the CL-09 pin, resolved statement-neutrally): `Digit :=
+Shrink.{0} ↥(T.stg 0).FQ` (Finite ⇒ Countable ⇒ Small.{0}), digits read through
+`Shrink.addEquiv`; CL-09's Type-pinned `packE` untouched. Leg fold-backs: (i-a)
+CL-15a + the new private `r6_wE_eq` (wE least-populated-level spec) + CL-07 LAT;
+(i-b, the REPAIRED leg) CL-14 through the digit equivalence (support/block rows
+transported; `r6_exists_ne` converts pack-nonzero to a populated component); (i-c)
+CL-15b; (ii) rfl (CL-15c definitional); (iii) CL-15d; TYP conjunct 1 CL-16 (map_add
+transport); TYP conjunct 2 CL-17 (digit-range rewrite: `equivShrink`-surjectivity +
+Pi.single commutation); DOM CL-18. The NCL spine (CL-10 gate → CL-27/CL-11 → CL-12 →
+CL-13 → CL-14) is consumed underneath (i-b), all Lean-core at HEAD. HC1's R6 sorry
+(pre-repair :145) is CLOSED.
+
+**Item 18 (C6_alphabetCard fence transition) — repaired + partially proved; the
+countermodel LANDED atomically.**
+* Repair (`HC1/C6_alphabetCard.lean`): conjunct 2 gains the NAMED hypothesis
+  `Tower.cleanThreshold b γ := ∀ s : T.Addr b, T.aligned γ s → T.attainable γ s`
+  (new def, review-flagged; CL-04 display-(3) vocabulary now statement-consumed).
+  WEAKEST-form warrant: per the CL-04 probe record fullness is believed EQUIVALENT
+  to this condition (CI-1..CI-4), so no strictly weaker non-trivial hypothesis
+  restores the iff; the D.9(b) clean-threshold regime is the displayed sufficient
+  instance (hence the ledger's "independence/clean-threshold" name — independence
+  is CI-3 THEOREM content, not hypothesis). Conjuncts 1/3 stay unguarded.
+* Proof status: conjunct 1 PROVED (`C6_conjunct1_closable`/T7); conjunct 2 →
+  PROVED (`C6_conjunct2_rhs_always`); conjunct 3 PROVED (`C6_conjunct3_hyp_false`,
+  ex falso). Conjunct 2 ⟸ (cleanThreshold → fullness) = the ONE remaining honest
+  sorry — exactly CL-05's specified obligation (CI-1 equidistribution, CI-2 line
+  card, CI-3 slot-min orthogonality, CI-4 card bridge; named in-file). The
+  "clean-threshold instance discharges it" branch did NOT fire: no corpus lemma
+  supplies the counting identity at HEAD. `#print axioms C6_alphabetCard =
+  [propext, sorryAx, Classical.choice, Quot.sound]` (census count for the file
+  unchanged at 1, now on a believed-TRUE statement).
+* Countermodel landing (BP5 §3.1 LANDING GATE, atomic with the repair): CL-01a/b/c
+  landed from side branch de42a7e (Tshallow + six certificates PROVED, Lean-core;
+  re-verified green at HEAD by lake build). `CL01c_shallowTower.lean` gained the
+  frozen `C6_stmt_pre_repair` def (verbatim pre-repair conclusion) + the compiled
+  negations `C6_pre_repair_refuted_at_Tshallow` and `C6_pre_repair_theorem_refuted`
+  (∀-form at the gate ambient) — both Lean-core. M1 no-coexistence satisfied: the
+  negation targets ONLY the frozen copy; the pre-repair sorried universal no longer
+  exists in the live tree.
+* CL-04 probe slot: file UNCHANGED except a dated note (rule-3 hygiene) — the
+  banked `CL04_dichotomy_probe` sorry targets display (4)'s ⟸ leg (believed FALSE
+  existential), not either C6 form; disposition pends CL-05.
+
+**Verification.** Per-target `lake build` green for every touched module
+(R1, R2/R3/R4/R5 cone via R6, R6, CL09, CL20, C6, CL01a/b/c, CL04); full
+`lake build` green (8579 jobs). Footprints (build-log `#print axioms`):
+`LSTStmt'`, `R6_carrierInstance`, `C6_cardK_bridge`, `Tshallow_levelSet_nonempty`,
+`Tshallow_alphabet_deficient`, `C6_pre_repair_refuted_at_Tshallow`,
+`C6_pre_repair_theorem_refuted` all `[propext, Classical.choice, Quot.sound]`;
+`C6_alphabetCard` adds `sorryAx` (the one honest CL-05 leg). Capstone path
+untouched (no OM/* file; grep: no `import LeanUrat.HC1` in OM/, AxChk_baseline,
+MontesV2, Goal — no AxChk diff owed per rule 4).
+
+**HC1 census delta.** Proof sorries: R6:145 CLOSED; C6:63 remains 1 (relocated to
+the ⟸ leg of the REPAIRED statement, believed true, CL-05-spec'd); CL01a/b/c
+E-phase skeleton sorries (7 tokens incl. the 2 def-slot sorries) CLOSED by the
+branch landing; CL04:177 banked probe slot unchanged. Net: HC1 real-sorry census
+2 → 2 (C6 leg + CL04 probe slot), with R6 closed and the CL01 portfolio proved.
+
+## ITEMS 4 + 10 EXECUTED (agent wr-item4-10, 2026-07-31)
+
+AUTHORIZATION quoted: Asvin, 2026-07-31, verbatim: "Sign-off granted on all 21 items
+as preferred, execute the queue."
+
+### Item 4 — W17ii field repair (MovesS RS4Chain): EXECUTED, clause (ii) PROVED
+
+Preferred option executed: the TV-H2/ESCALATION E-1 menu (b′) of
+BRIDGE_BP3_TV_2026-07-30.md §3.G REV 2 — the Q4-preferred summability guard (in the
+finiteness form the squeeze needs) PLUS the (a′) census fields, incl. the E-1
+`shevt_disj` ratified in the same grant.  Evidence trigger: the TV-H1b COMPILED
+countermodel (quarantine/TV_H1b_w17iiNeg_2026-07-30.lean.txt — infinite shDom,
+shWeightH ≡ 1, all pre-repair chain laws satisfied; clause (ii)'s HasSum false at
+every value), so `w17ii_wave4` clause (ii) was FALSE AS STATED.
+
+Executed changes:
+1. `MovesS/Interfaces.lean` — RS4Chain gains FIVE fields (statement change,
+   authorized):
+   - `shdom_fin : ∀ Ŝ ∈ F.Sh, (shDom Ŝ).Finite` (the guard; a bare Summable is
+     recorded DEAD per REV 2 finding 1 — it proves ∃-sum, not the WshVal tie);
+   - `shdom_no_stray` (h ∈ shDom → shEvtH eventually nonempty, per pool);
+   - `vis_sub_shdom` (visH ⊆ shDom eventually);
+   - `shevt_off_vis` (h ∈ shDom \ visH at level N → shEvtH = ∅, eventually);
+   - `shevt_disj` (E-1: pairwise disjointness of shEvtH across h ∈ visH — the
+     card-additivity law the chain carried NOWHERE).
+   `W17ii` itself and the projection-def `RS4Chain.wsh17_pin` are BYTE-UNTOUCHED,
+   so U-28's premise `h17 : C.wsh17_pin` is byte-identical (checked: Rs4.lean
+   `rs4_rational_step` recompiles unchanged).
+2. `MovesV/V7_w17ii.lean` — clause (ii) PROVED by the counting squeeze (TV-H3):
+   at a fixed pool and one uniform level N ≥ all census thresholds,
+   WshVal·|Box| = |shEvt| (wshval_card) = Σ_{h∈visH}|shEvtH| (shevt_grouping +
+   shevt_disj via Finset.card_biUnion) = Σ_{h∈shDom}|shEvtH| (vis_sub_shdom +
+   shevt_off_vis via Finset.sum_subset) = (Σ_{h∈shDom} shWeightH)·|Box|
+   (shweight_card); |Box| ≠ 0 (boxpos + Fintype.card_pos) cancels; shdom_fin +
+   hasSum_sum_of_ne_finset_zero/hasSum_subtype_iff_indicator turn the finite sum
+   into the HasSum.  THE ONE BANKED SORRY (C14) IS RETIRED.
+   `#print axioms`: w17ii_wave4, w17ii_pin BOTH [propext, Classical.choice,
+   Quot.sound] — Lean-core, zero sorryAx.
+3. Instance re-discharges (TV-H4 "must survive the guard" gate):
+   `MovesS/N2Sigmas.lean` n2ChainCore + `MovesU/BridgeB15a_r2Neg.lean` cmChain —
+   both carry the device carriers (shDom = {0}, visH = {0}, shEvtH = univ):
+   shdom_fin = finite singleton; shdom_no_stray = full box nonempty (boxpos);
+   vis_sub_shdom = singleton-to-singleton; shevt_off_vis/shevt_disj vacuous at
+   the singleton visH.  Both files GREEN.
+4. TV-H1b disposition (M1 hygiene): the blueprint's "re-land the fill in the
+   repair commit" is IMPOSSIBLE as written — the fill does not typecheck against
+   the repaired structure (negChain pins shDom = univ, excluded by shdom_fin),
+   and `w17ii_false` is now REFUTED for every chain, so its five skeleton sorries
+   were unfillable-false and are DELETED (the honesty invariant; recorded
+   deviation-with-reason).  `MovesV/TV_H1b.lean` converted to the dated
+   retirement record + a compiled CURE SEAL (`negCarrier_shdom_finite`: at the
+   countermodel's own carriers, every repaired chain has finite shDom).  The
+   quarantine archive got the rule-3 dated note stating exactly which form it
+   refutes (the pre-2026-07-31 census-free RS4Chain); TV_H1a.lean header got the
+   outcome note (carriers stay — they host the seal).
+5. Records: MovesV/MANIFEST.json banked_sorry entry RETIRED (sorried census
+   4 → 3: ledgerIV_inst, ratBurdens_exists, scs_data_supply remain); V7-8 unit
+   entry updated; Interfaces.lean RS4Chain + wsh17_pin docstrings updated.
+
+### Item 10 — cl6 pgZero.countS := 0 (MovesS/N2PolyGeom.lean): EXECUTED, probe now POSITIVE
+
+Executed the val-preserving repair exactly as recorded in the probe header:
+`pgZero` redefined as a structure literal with `countS := 0` (was pgDiv-pinned 1);
+`pgZero.val = 0` either way (`pgZero_val` compiled), degree pins kept
+(degBoundS = 0, natDegree 0 = 0).  In-file proof ripple: `n2tgP_ok` closes the
+padding branch via `pgZero_val_mem`; `n2tgP_interp`'s padding branches via the
+new `evalAt_pgZero`; degree-pin lemmas unchanged (rfl at the literal).
+NEW public companions (the privates are file-local): `n2_tcount_val` (countT ≡ 1
+evaluates to the ℕ-count 1 at every (e,τ,o,q₀)) and `n2_scount_val` (countS
+evaluates to the cell-fiber census at EVERY roster row — 1 at the real rows,
+0 at the e ≠ 2 padding rows).
+
+Probe re-run (`MovesU/SynK2_cl6N2.lean`): CONFIRMED — the repaired pack SATISFIES
+the count laws.  `n2_countLaws_block2` (the block-2 genre) recompiles UNCHANGED
+and green; the pre-repair `n2_polyGeomLaws_isEmpty` is not restatable at HEAD
+(the pack definition changed — the compiled IsEmpty artifact lives in git
+history, dated M1-hygiene note in the file header states it refuted the
+pgZero.countS = 1 form only); the leaf is EXTENDED with the positive lemma
+(cheap, done): `n2_polyGeomLaws_nonempty : Nonempty (PolyGeomLaws n2T n2M n2RB)`
+with tCount ≡ 1 — the BridgeKernels.cl6 row's "moves out" instance evidence
+(row docstring updated; the generic row itself KEPT per the SYN2-K1 precedent).
+No sorries in the leaf; Lean-core.
+
+### Verification
+Per-file `lake env lean` green on every touched file (N2PolyGeom, SynK2_cl6N2,
+Interfaces, N2Sigmas, BridgeB15a_r2Neg, V7_w17ii, TV_H1a, TV_H1b).  Root-graph
+`lake build` green (8579 jobs; capstone census infos unchanged, Lean-core).
+Full 1047-module sweep build launched for the whole Moves* cone (the root-graph
+gotcha); result recorded below.
+Capstone path: NO OM/* file touched; AxChk_baseline run after the sweep — see below.
