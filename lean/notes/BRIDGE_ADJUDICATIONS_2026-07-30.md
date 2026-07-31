@@ -765,3 +765,25 @@ labeled Conjecture 5.4.C consumed by NOTHING on the mandatory path (DELTA-1
 audit displayed: the D-10/O-14a' obligation is MET — flank closed, residue
 closed-or-removed). The evading class the verifier found is now a certified
 falsifier (H1-H2). Honesty over ambition executed exactly as designed.
+
+## V16-V20 ADJUDICATED (2026-08-01)
+V19 O-12: NO CRITICAL ERRORS — the pole-free theorem at the abstract family
+B_n is PASS-1 CLEAN (torus telescope, all dets, solve, every quantifier
+confirmed); gaps confined to the labeled concrete-table conjuncts
+(OL-O12-2). -> Fable pass 2 at the honest scope.
+V20 O-2a: pass-1 substantively clean — OL-2-min consumption verified, OL-5
+base verified, all five OLs attackable+consistent, GMN citations confirmed
+against the paper. -> Fable pass 2.
+V18 O5triple: central pricing claim CORRECT (coverage from injectivity +
+checksums); repair = pin Def-2.5 normalization + order-zero identification,
+relabel Theorem A conditional-on-3-transcription-flags. -> light repair.
+V17 Dfloor: core SOUND (semantic bridge, SUM-ONE, TRANSFER, level-0); the
+defects are an n=0 convention falsity + the n=1 root overclaiming the
+classifier side. -> light repair (fix n=0, scope n=1 to the semantic
+statement, name the classifier residue).
+V16 O3design: REJECT for OVER-STRENGTH — faces stated stronger than their
+consumers need (F4 biconditional, F1 every-lift vs K-RUN, F3 menu-lawful vs
+coherent); gates don't test stated quantifiers; JC-0 (statement-layer
+type-check) must be FIRST; U6 cannot serve as inductive base. -> revision:
+right-size every face to its consumer (this WEAKENS proof obligations),
+fix gates, reorder.
