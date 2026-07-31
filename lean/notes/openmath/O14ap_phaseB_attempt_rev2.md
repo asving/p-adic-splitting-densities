@@ -13,10 +13,10 @@ as the statement of record; rev 1 is retained for the audit trail. All round-1-c
 sections are byte-identical to rev 1. Companion self-contained verifier package:
 `O14ap_phaseB_verifybrief_rev2.md`.
 **Author**: Phase-B prover unit O14ap. **No Lean edits**; math only.
-**Falsifier suite**: `O14ap_check.py` (same directory) — ALL PASS (10/10; rev 1's checks
-A–D byte-unchanged, round-2 checks added: E — the threaded slot law and the un-MacLane
-regrade slopes at the HK23-gate numbers; F — the stretched-frame display void; G —
-general-g sharpness, exhaustive at g = 3 over 𝔽₂₇, all unit offsets).
+**Falsifier suite**: `O14ap_check.py` (same directory) — ALL PASS (14/14; rev 1's checks
+A1–A4/B/C/D byte-unchanged, round-2 checks added: E1–E3 — the threaded slot law and the
+un-MacLane regrade slopes at the HK23-gate numbers; F1–F2 — the stretched-frame display
+void; G0–G1 — general-g sharpness, exhaustive at g = 3 over 𝔽₂₇, all unit offsets).
 
 ---
 
@@ -467,3 +467,345 @@ with support anywhere. The true statement is EXISTENTIAL: the canonical realizer
 (§5.3–5.4) has the lawful support; the recorded lift need not. This matches the compiled
 ∃-shape of `RunRealizerExists` and re-cuts the task phrasing accordingly.
 
+### 5.3 The faithful (S6b′) support law — REV 2: the stretch-threaded statement
+
+*(Round-2 rebuild; supersedes rev 1's §5.3. Rev 1 carried a scale error — V11 CRITICAL
+finding, disposition table above: the recursion prescribed lower-stage realizers in the
+wPrev_{r−1}-scale but fed them to a slot minimum that consumes the σ_{r−1}.w-scale;
+these differ by the stretch factor σ_{r−1}.e. Rev 2 threads that factor explicitly. The
+compiled corpus independently carries the exact mechanism — `HC2/HK52_stretchGate.lean`,
+`hk52_qform_stretch`: σ′.w B = e′·σV.w B on child-key coefficients — cited as compiled
+evidence of the corrected shape, not as proof; the proof below is a one-line (STR)
+application.)*
+
+Notation as in rev 1: a stage σ_r of the intended tower with frame key Φ_r built by the
+read (e, h, g) := (e_{r−1}, h_{r−1}, g_{r−1}) from the previous key Φ_{r−1};
+coefficients t ∈ C_{Φ_r} develop in the previous key, t = Σ_{j<eg} B_j·Φ_{r−1}^j with
+deg B_j < deg Φ_{r−1}. The parent scale of stage r is wPrev_r = the read-regrade
+slot-minimum of §1.3's (C4-non) (σV.w there, tied by (T3); throughout §5.3–5.6 we write
+**(n1)** for that slot-minimum law and **(n2)** for the standard-lift display
+`IsNodeLift`, matching the companion brief's labels), displayed at level r as:
+
+    (n1-r)   wPrev_r(t) = min over occupied slots j of ( e·σ_{r−1}.w(B_j) + j·h ).
+
+**The stretch.** e★ := σ_{r−1}.e, the parent FRAME's ramification entry. On coherent
+histories e★ ∈ {1, e}: e★ = 1 when frame r−1 is the base/root frame (intended base:
+pair (1,1)) or was created by a recentering transition ((r2)); e★ = e when frame r−1
+was created by a non-recentering transition — (T1) ties the frame pair to its own
+node's read pair, and that node's read IS the read (e, h) creating stage r. Every
+RG-2-fenced recorded frame, every root- and post-recentering frame, and every frame of
+the §5.1 tower has e★ = 1.
+
+**(THR) The threaded slot law.** For every occupied slot j, (STR) at σ_{r−1} gives
+σ_{r−1}.w(B_j) = e★·wPrev_{r−1}(B_j) (B_j ∈ C_{Φ_{r−1}}, B_j ≠ 0), hence
+
+    (THR)   wPrev_r(t) = min over occupied slots j of ( e·e★·wPrev_{r−1}(B_j) + j·h ).
+
+A lower-stage realizer supplied at wPrev_{r−1}-scale target W_k therefore enters the
+level-r slot minimum at weight e·e★·W_k + j·h. Rev 1 wrote e·W_k + j·h — correct only
+at e★ = 1. This one-line conversion is the whole repair mechanism; everything below is
+its bookkeeping.
+
+**Forced class and progression, threaded.** Write E := e·e★. Since gcd(e, h) = 1 and
+e★ ∈ {1, e}, also gcd(E, h) = 1, so every W ∈ ℤ has a unique forced class
+j₀(W) ∈ [0, E) with h·j₀ ≡ W (mod E); the forced progression is
+P(W) := { j₀(W) + E·k : k ∈ ℕ } ∩ [0, eg); the lower targets are
+W_k := (W − (j₀ + Ek)·h)/E ∈ ℤ. At e★ = 1: E = e, j₀ < e, and P(W) =
+{ j₀ + e·k : 0 ≤ k < g } — exactly g slots. At e★ = e ≥ 2: E = e², and §5.6 proves the
+configuration is a definitional void of the current clause triple — no (n2) display
+exists at any stretched frame — so the law below is stated at e★ = 1 per level, which
+§5.6 shows is the ENTIRE statable domain of the current definitions, not a retreat.
+
+> **(S6b′-SUPP-2)** (the repaired law; supersedes rev 1's (S6b′-SUPP)). Let σ_r be a
+> stage of a coherent intended tower satisfying
+> **(U)**: every frame strictly below r is unstretched — σ_m.e = 1 for all m < r.
+> (Equivalently: every key-creating read below r either sits at a root/post-recentering
+> frame or has stride 1. All RG-2-recordable towers, and the §5.1 and §5.5 instance
+> classes, satisfy (U).)
+> Then e★ = 1 at every level below r, and for every parent-scale weight
+> W > wPrev_r(Φ_r) = e·h·g and every digit scalar c̃ ∈ K_rˣ there is a realizer t ≠ 0,
+> t ∈ C_{Φ_r}, with wPrev_r(t) = W and digit scalar c̃ at the forced position, such
+> that:
+> (i) [level r−1] the Φ_{r−1}-slot support of t is contained in the forced progression
+> P(W) = { j₀(W) + e·k : 0 ≤ k < g };
+> (ii) [recursion, in the regrade scale] each occupied slot's coefficient B_{j₀+ek} is
+> itself an (S6b′-SUPP-2) realizer one stage down, at the wPrev_{r−1}-SCALE target
+> W_k = (W − (j₀+ek)·h)/e — every level's target is prescribed in THAT level's
+> wPrev/regrade scale, and (THR) is the conversion consumed at each ascent — down to
+> the base stage, where realizers are p^m·û with û a unit lift of the prescribed
+> base-field residue (support {0} for the linear base key).
+>
+> Recentering steps create no level: (r8)–(r10) transport w, wPrev, and coefficient
+> residuals unchanged (Lemma 3.2), and the per-slot strict ultrametric gives
+> wPrev(Φ − lift) = wPrev(Φ) (Remark 5.3.1), so "the creating read" of a
+> post-recentering frame means the last non-recentering read below it, with the same
+> (e, h, g), the same threshold, and the same forced progression.
+>
+> At a recentering read (the CanRealizes consumer): W = w(Φ_r) = the key weight (the
+> consumer's frame has σ_r.e = 1, so w = wPrev on C_{Φ_r}), the threshold is
+> Lemma 3.1's inequality, and the progression (i) has the frame-creating read's stride
+> e and length g — NOT the recentering node's own (e, g) = (1, 1). The compiled (CR2)
+> reads the progression at (ν.e, ν.g) and in X-monomial vocabulary: two independent
+> transcription divergences, each separately fatal at deg Φ > 1 (§5.1, §5.5).
+> (S6b′-SUPP-2) is the statement the fence event should re-adjudicate (CR2) to. In
+> X-vocabulary (i) specializes correctly ONLY at towers whose keys are X-power-pure
+> (e.g. root key X with all lower realizers constants).
+
+**Remark 5.3.1 (recentering transport of the threshold).** Let ν be a recentering at
+frame σ with lift t, so ((r5) + hStretch at σ.e = 1) wPrev(t) = σ.w(t) = σ.w(σ.Φ) =
+σ.h, and let (e′, h′, g′) be the creating read of σ.Φ. Develop Φ′ = σ.Φ − t in the
+previous key: the development subtracts slot-wise. Every occupied slot of σ.Φ's
+display weighs exactly e′h′g′ ((n1)+(n2), the Lemma 3.1(b) computation), while every
+occupied slot of t weighs ≥ wPrev(t) = σ.h > e′h′g′ (Lemma 3.1(c)/5.4.0). On a slot
+where both are present, the (S1) strict ultrametric keeps the display slot's weight
+(the two per-slot σ-weights differ); slots occupied by t alone weigh > e′h′g′; and the
+top display slot (index e′g′, coefficient 1) is untouched since deg t < deg σ.Φ
+confines t to slots < e′g′. So the minimum is still attained at a display slot:
+wPrev(Φ′) = e′h′g′ = wPrev(σ.Φ). The CLEARING inequality also survives a recentering
+run: along recenterings e_i = g_i = 1, so STR and D are constant; with b′ the run's
+first index and r−1 the node reading onward, (C2) gives
+h_{r−1} = slope_{r−1}·(e_{r−1}·STR·D) and h_{b′} = slope_{b′}·(STR·D), chained (C7)
+gives slope_{r−1} > slope_{b′}, hence h_{r−1} > e_{r−1}·h_{b′} > e_{r−1}·e′h′g′ (the
+last step is Lemma 5.4.0 at the creating read, index b′−1, where e_{b′} = 1) — the
+transported threshold still clears: e′h′g′ < h_{r−1}/e_{r−1}. ∎
+
+### 5.4 Proofs — REV 2: the threshold lemma, the law on (U), sharpness at every g
+
+#### 5.4.0 Lemma (general steepening; retires rev 1's flagged (F2))
+
+**Lemma 5.4.0.** In a coherent history, for every i with i + 1 < len, writing
+(e_i, h_i, g_i) := (ν_i.e, ν_i.h, ν_i.g): h_{i+1} > e_{i+1}·e_i·h_i·g_i. Consequently,
+when ν_i is a non-recentering (so the Lemma 3.1(b) slot computation applies verbatim at
+index i): wPrev_{i+1}(Φ_{i+1}) = e_i·h_i·g_i < h_{i+1}/e_{i+1}.
+
+*Proof.* By (C2) at i and at i+1, STR_{i+1} = STR_i·e_i (definition of STR), and (C6)
+D_{i+1} = e_i·g_i·D_i:
+
+    h_{i+1} = slope_{i+1} · (e_{i+1} · STR_{i+1} · D_{i+1})
+            = slope_{i+1} · e_{i+1} · (STR_i·e_i) · (e_i·g_i·D_i)
+            > slope_i · e_{i+1} · e_i² · g_i · STR_i · D_i        [(C7); the multiplier
+                                                                   is a positive integer]
+            = e_{i+1} · e_i · g_i · ( slope_i · (e_i · STR_i · D_i) )
+            = e_{i+1} · e_i · g_i · h_i.                                   ∎
+
+(Lemma 3.1(c) is the e_{i+1} = 1 case. Rev 1 consumed the corollary as the flagged fact
+(F2), "the previous stage satisfies its own threshold inequality wPrev(Φ) < h/e"; it is
+now derived from (C2)/(C6)/(C7) alone, and the flag is retired. (F1) — the consecutive
+residual positions of the progression slots, position(j₀ + ek) = m(W) + k — remains the
+one consumed-and-flagged intended-apparatus fact, per level, unchanged from rev 1.)
+
+#### 5.4.1 Theorem (the law holds on class (U))
+
+**Theorem 5.4.1.** (S6b′-SUPP-2) holds as stated in §5.3.
+
+*Proof.* Strong induction on r ≥ 1. Fix W > ehg and c̃ ∈ K_rˣ. By (U), e★ = σ_{r−1}.e
+= 1, so E = e and the forced progression is { j₀ + ek : k < g }, j₀ = j₀(W) < e.
+
+(1) *Class arithmetic.* On the progression the lower targets W_k = (W − (j₀+ek)h)/e are
+integers (choice of j₀); off the class j ≡ j₀ (mod e), no slot can sit at total weight
+W, since by (THR) with e★ = 1 every occupied slot j weighs e·wPrev_{r−1}(B_j) + j·h ≡
+j·h (mod e) and h·j ≡ W (mod e) forces j ≡ j₀.
+
+(2) *Design.* By (F1), the progression slots j₀, j₀+e, …, j₀+e(g−1) sit at consecutive
+residual positions m(W), m(W)+1, …, m(W)+g−1 of the previous stage's residual variable.
+K_r = K_{r−1}(z̄) = K_{r−1}[z]/(ψ) has K_{r−1}-basis 1, z̄, …, z̄^{g−1}, and z̄^{m(W)} is
+a unit, so there is a UNIQUE P ∈ K_{r−1}[z] with deg P < g and z̄^{m(W)}·P(z̄) = c̃;
+P ≠ 0 since c̃ ≠ 0. Set
+
+    t := Σ_{k < g, P_k ≠ 0}  t_k · Φ_{r−1}^{j₀ + e·k},
+
+with t_k the SHAPED realizer at stage r−1 of digit scalar P_k ∈ K_{r−1}ˣ at the
+wPrev_{r−1}-scale target W_k, supplied by the induction hypothesis at r−1 ≥ 1, and at
+r = 1 by the base realizer t_k := p^{W_k}·û_k (û_k a unit lift of P_k; the base key is
+linear, so C_{Φ₀}-coefficients are constants and the support is {0}).
+
+(3) *The recursive call is licensed.* W_k ≥ (W − (eg−1)h)/e > (ehg − (eg−1)h)/e = h/e.
+At r ≥ 2, Lemma 5.4.0 one stage down gives wPrev_{r−1}(Φ_{r−1}) = e′h′g′ < h/e for the
+creating read (e′, h′, g′) of stage r−1 (a post-recentering frame has the same
+threshold by Remark 5.3.1), so W_k clears the lower threshold; and (U) restricted to
+m < r−1 is (U) for the lower call. At r = 1, W_k > h/e > 0 suffices (the base needs no
+threshold; W_k ≥ 1).
+
+(4) *Weight — the repaired seam.* Each summand's slot weight is
+
+    e·e★·W_k + (j₀+ek)·h  =  e·1·W_k + (j₀+ek)·h  =  W :
+
+by (STR) at σ_{r−1} and e★ = 1, the lower realizer's σ_{r−1}.w-weight EQUALS its
+wPrev_{r−1}-scale target W_k, which is what (n1-r) consumes. [This is the exact point
+where rev 1 broke at e★ ≥ 2: there the consumed weight is e·e★·W_k ≠ e·W_k.] All
+occupied slots weigh exactly W and at least one slot is occupied (P ≠ 0), so the
+attained minimum gives wPrev_r(t) = W; and t ≠ 0 (a development with a nonzero slot,
+unique for monic Φ_{r−1}).
+
+(5) *Digit.* By (F1) the slot digits assemble as Σ_k P_k·z^{m(W)+k} = z^{m(W)}·P(z) in
+the previous residual variable; ψ-reduction/evaluation at z̄ (the passage into K_r)
+gives the digit scalar z̄^{m(W)}·P(z̄) = c̃ at the forced position. At a recentering
+consumer (frame pair e = 1, Bézout t = 0) the position is 0 and R_r(t) = C(c̃)·T 0,
+matching (CR3) exactly.
+
+(6) *Support.* Clause (i) is the literal index set of the sum; clause (ii) is the
+construction of the t_k in (2). ∎
+
+*Consistency witness (the §5.1 instance).* At σ₁ of the countermodel ((e, h, g) =
+(1, 1, 2) creating read, W = 3, e★ = 1): j₀ = 0, progression {0, 1}, W₀ = 3, W₁ = 2 —
+exactly the recorded lift's slot weights (v₃ = 3 and 2 with slot-1 total 2 + 1 = 3),
+confirming the repaired bookkeeping reproduces the machine-checked instance.
+
+#### 5.4.2 Proposition (sharpness at every g — the basis argument; repairs V11 finding 2)
+
+**Proposition 5.4.2.** In the setting of Theorem 5.4.1, fix W > ehg and let
+Θ : { P ∈ K_{r−1}[z] : deg P < g } → K_r, Θ(P) := z̄^{m(W)}·P(z̄). Then:
+(a) Θ is a K_{r−1}-linear bijection.
+(b) For every nonempty S ⊆ {0, …, g−1}, the scalar c̃_S := Θ(P_S), P_S := Σ_{k∈S} z^k,
+is a unit of K_r, and EVERY (S6b′-SUPP-2)-shaped realizer of (W, c̃_S) — any t
+assembled per §5.3 (i)+(ii), i.e. progression-supported with equal slot weights and
+nonzero slot digit scalars at the occupied slots — has slot support EXACTLY
+{ j₀(W) + e·k : k ∈ S }.
+(c) In particular (S = {0, …, g−1}): all g progression slots are simultaneously
+necessary. The progression length g is sharp for every g ≥ 1, and no single-monomial
+strengthening of the law is available at any g ≥ 2: single-slot shaped realizers reach
+only ∪_{k<g} K_{r−1}ˣ·z̄^{m(W)+k} — the union of the g basis lines — which for g ≥ 2
+misses every c̃_S with |S| ≥ 2.
+
+*Proof.* (a) Θ is K_{r−1}-linear and maps the basis 1, z, …, z^{g−1} of the domain to
+z̄^{m}, z̄^{m+1}, …, z̄^{m+g−1}, which is the unit z̄^{m} times the K_{r−1}-basis
+1, z̄, …, z̄^{g−1} of K_r = K_{r−1}[z]/(ψ) (deg ψ = g), hence itself a basis. A linear
+map carrying a basis to a basis of spaces of equal finite dimension is a bijection.
+(b) c̃_S = Θ(P_S) ≠ 0 since P_S ≠ 0 and Θ is injective; K_r is a field, so c̃_S ∈ K_rˣ.
+A shaped realizer t of (W, c̃_S) assembles, by (F1) exactly as in Theorem 5.4.1(5), the
+digit Θ(P_t), where (P_t)_k = the digit scalar of slot j₀+ek when occupied and 0
+otherwise; occupied slots carry NONZERO scalars, so support(P_t) = the occupied k-set.
+Θ(P_t) = c̃_S = Θ(P_S) forces P_t = P_S by (a), so the occupied set is exactly S.
+(c) is (b) at S = {0, …, g−1}; the single-slot digit set is the k-indexed union of the
+images of the coordinate lines, Θ(K_{r−1}ˣ·z^k) = K_{r−1}ˣ·z̄^{m+k}, and any c̃_S with
+|S| ≥ 2 lies outside every one of them by uniqueness of P. ∎
+
+*Scope note (unchanged claim class, now proved).* 5.4.2 is sharpness WITHIN the shaped
+class — the same scope as rev 1's tightness claim; it consumes (F1) and nothing else.
+An arbitrary-realizer strengthening (any t with wPrev_r(t) = W and digit c̃_S has its
+minimal-weight slot stratum supported on exactly the S-progression) would additionally
+need the graded fact that a coefficient's digit reads off its minimal-weight slot
+stratum by the same (F1) assembly; that fact is intended-apparatus content consumed by
+NOTHING here and is recorded as OPEN, not claimed.
+
+*Instances.* The rev-1 F₉ refutation (§5.1–5.2, byte-stable; V11-confirmed) is the case
+g = 2, S = {0, 1}, K_{r−1} = 𝔽₃, z̄ = i: c̃_S = (1+i)·i^m has order 8 and lies outside
+the union 𝔽₃ˣ·⟨i⟩ of the two basis lines — falsifier checks A1–A4. The general-g
+mechanism is machine-checked exhaustively at g = 3 over 𝔽₂₇ = 𝔽₃[z]/(z³−z−1) for every
+unit offset m (check G): Θ is a bijection at every m; the full-support target is missed
+by every one-slot and every two-slot digit set.
+
+### 5.5 The fence-lift flag (forward obligation, at F = ZMod p)
+
+If the RG-2 fence is lifted (interior reads with stride e ≥ 2 recorded — the open
+carry-algebra interior, §B2-FINAL territory), Theorem 1(ii) fails and (CR2) regains
+content at F = ZMod p — and it is then REFUTABLE at the intended stages by a pure
+weight-lattice mechanism: over a unit-shifted root key Φ₀ = X − a₀ (a₀ ≢ 0 mod p), X is
+a w-unit, so X-monomials u·X^j realize only weights in STR·ℤ (STR = the accumulated
+stretch), while a recentering after one interior e = 2 read can require the odd key
+weight h ∉ 2ℤ (e.g. h = 3, slope 3/4 > 1/2: lawful under (C2)/(C7)); the faithful
+progression realizer t = d·Φ₀ (slot 1, weight 2v₃(d)+1) exists, but its X-support
+{0, 1} is not a singleton, and no X-monomial has the required weight at all (falsifier
+check D). CONSEQUENCE: the (CR2) re-adjudication to (S6b′-SUPP) is a PREREQUISITE of any
+fence lift, not an optional cleanup. Recorded here as a named forward obligation.
+
+### 5.6 Scholium (NEW, round 2): the stretched-frame void — the complement of (U)
+
+**Proposition 5.6.** Let σ be a stage at a STRETCHED frame of a coherent history:
+σ.e = e ≥ 2 (by (T1), this is exactly a frame created by a non-recentering transition
+whose own node reads at stride e ≥ 2 — the configuration behind the RG-2 fence, whose
+frame pair equals its read pair). Consider any attempted non-recentering read at σ with
+descend polynomial ψ of degree g (the read pair is the frame's own (e, h), per (T1)).
+If ψ_k ≠ 0 for some k with e ∤ (g − k) — in particular WHENEVER e ∤ g, since ψ₀ ≠ 0
+for every irreducible ψ ≠ z — then NO (n2) standard-lift display exists: there is no
+t_k ∈ C_{σ.Φ}, t_k ≠ 0, with σ.w(t_k) = h·(g − k) at all.
+
+*Proof.* By (STR) at σ, every nonzero t_k ∈ C_{σ.Φ} has σ.w(t_k) = e·σ.wPrev(t_k) ∈
+e·ℤ (wPrev is ℤ-valued). The display demands σ.w(t_k) = h·(g−k). Since gcd(e, h) = 1:
+e ∣ h·(g−k) ⟺ e ∣ (g−k). ∎
+
+*(Non-vacuity of the statement: under the current fence, an INTERIOR read at a
+stretched frame is already unrecordable for the independent reason that (C4-non)
+demands ν_i.e = 1 while the frame ties ν_i.e = σ.e ≥ 2; the proposition quantifies
+over the display equation itself, so it rules the UNFENCED variant — exactly the
+fence-lift scenario — void as well, this time by arithmetic rather than by fiat.)*
+
+**Displayed instance (the compiled gate).** The corpus's own ramified frame
+`R7Forge.ramifiedStage` (the HC2/HK23 positive gate: child of the p = 2 base pin under
+the (2, 5) read; σ.e = 2, key fq = X² + 2X + 4) admits NO onward (n2) display for any
+odd g — at g = 1: k = 0 demands σ.w(t₀) = 5·1 = 5 ∉ 2ℤ. Falsifier check F. Independently, the (n1) regrade scale at this frame is not
+a MacLane augmentation at all: it evaluates p ↦ 4 and fq ↦ 5 (key slope 5/4), while
+the frame's own w has p ↦ 2 and fq ↦ 5 (slope 5/2) — no rescaling matches both
+(falsifier check E3). So above a stretched frame the current clause triple
+{(n1) regrade, (n2) display, (STR) stretch} records NOTHING: the complement of class
+(U) is definitionally empty territory, and Theorem 5.4.1's (U)-scope is the entire
+statable domain of the current definitions — the honest content of the verifier's
+"works only under σ_{r−1}.e = 1".
+
+**What the faithful e ≥ 2 interior should say** is §B2-FINAL adjudication territory.
+The classical-normalization design option — display weights e·h·(g−k) instead of
+h·(g−k), and the child's parent scale taken as the frame's OWN w on coefficients, under
+which the stride-e/length-g law of Theorem 5.4.1 recurs verbatim at every stretch — is
+NAMED here as **(S6b′-DEEP)**, conjecture-level, claimed nowhere in this note.
+
+**Consequence (strengthens §5.5).** A lift of the RG-2 fence must re-adjudicate not
+only (CR2) → (S6b′-SUPP-2) (§5.5's obligation) but the regrade/display weight laws
+themselves — the (n1)/(n2)/(STR) triple at e ≥ 2, i.e. the never-ratified D.7(i)–(v)
+addendum named in the compiled `RegradeOf` docstring. The compiled HK-52 record
+(finding F4: the ν_{i+1}.e ≥ 2 disposition is an adjudication item) points at the same
+seam from the Lean side; Proposition 5.6 adds the display-level obstruction, previously
+unrecorded on either side.
+
+---
+
+## 6. Honest-scope ledger (rev 2)
+
+* **Proved outright (bare coherence + node/stage typing, no extra hypotheses):**
+  Theorem 1 (at F = ZMod p; part (ii) exactly as conditional as the RG-2 fence),
+  Lemma 3.1, Lemma 3.2, Theorem 3, Corollary 4 [all V11-CONFIRMED, byte-stable]; round
+  2 adds Lemma 5.4.0 (general steepening — retires rev 1's flagged (F2)), Remark 5.3.1
+  (recentering transport of the threshold), and Proposition 5.6 (the stretched-frame
+  display void). These consume ONLY the §1 clauses; every use is cited by label.
+* **Proved at the intended tower (consuming T-1's dual-accepted stage constructions +
+  the flagged position fact (F1), per level):** Theorem 5.4.1 — (S6b′-SUPP-2) on class
+  (U), the stretch-threaded law — and Proposition 5.4.2 (sharpness at every g, shaped
+  class). The statements quantify over stages of coherent towers built by the accepted
+  §B2-DEF transitions (the same scope as T-1), now with the (U) frame-stretch
+  hypothesis DISPLAYED and proved to exhaust the statable domain (§5.6).
+* **Refutations:** §5.1 (semantic countermodel at (3, 𝔽₉); stage-instance
+  axiom-compliance asserted as standard order-1 apparatus + machine-checked arithmetic;
+  compiled-instance build named as follow-up falsifier) [V11-CONFIRMED]; §5.2
+  (recorded-lift form; complete); §5.5 (conditional on fence lift; arithmetic
+  machine-checked); §5.6 (the stretched-frame void — unconditional, current clause
+  triple).
+* **Open / not claimed:** the e ≥ 2 interior law (S6b′-DEEP) — named as a design option
+  in §5.6, conjecture-level, blocked on the §B2-FINAL/D.7 adjudication; the
+  arbitrary-realizer strengthening of sharpness (§5.4.2 scope note). Not done here:
+  Lean edits (per charge); the compiled 𝔽₉ Stage instances; the formalization of
+  Corollary 4 (recipe §4.2).
+* **Known/new labels:** Theorem 1 — new observation (elementary, load-bearing).
+  Theorem 3 — NEW theorem (closes the leaf's main open flank positively). Theorem 5
+  refutation — NEW countermodel. (S6b′-SUPP-2) — content of the dual-accepted
+  T-1/(S6b′) construction with the support clause made explicit AND the stretch factor
+  threaded (label (b): new packaging of accepted material + the round-2 threading
+  repair). Lemma 5.4.0 — new, elementary. Proposition 5.4.2 — new proposition.
+  Proposition 5.6 — NEW observation, previously unrecorded on the math or Lean side.
+* **Predictions falsifiable now:** (P1) the LIVE flank countermodel search returns
+  empty; (P2) a Lean prover following §4.2 discharges the (†15) pair with no statement
+  changes; (P3) any attempt to compile the §5.1 stages as `Stage 3 F` instances
+  succeeds and empties the singleton-(CR2) fiber at ν₁; (P4, NEW) any attempt to build
+  an `IsNodeLift` display at a stretched frame with e ∤ g — e.g. any g = 1 onward read
+  at `R7Forge.ramifiedStage` — fails on the Proposition 5.6 arithmetic (a compiled
+  emptiness lemma is a cheap falsifier follow-up).
+
+## 7. Consumed tree nodes and compiled evidence
+
+T-1 (§B2-DEF stage laws + the (S6b′) construction — for §5.3–5.4 only; §§2–4 consume
+nothing above the compiled definitions' mathematical content); the D-10/O-14a′ leaf
+statement; evidence artifacts cited for provenance only (item-13 record, HK23/HK25
+gates, U6, and — round 2 — `HC2/HK52_stretchGate.lean` (`hk52_qform_stretch`, the
+compiled stretch mechanism that (THR) mirrors) and `MovesD/R7_ramifiedForge.lean`
+(`ramifiedStage`, Proposition 5.6's displayed instance) — none load-bearing: every
+proof stands on the §1 clauses plus the flagged (F1)). No other leaf is consumed; in
+particular NOTHING here depends on O-1/O-2/O-3, so this unit sits at the top of the
+§D1.6 critical path as required (V6 finding 22 honored: O-14a′ before O-3).

@@ -104,5 +104,82 @@ two = {2 * v for v in range(10)} | {2 * v + 1 for v in range(10)}
 report("D: 3 not in X-monomial lattice {2v}; 3 in two-slot lattice {2v} u {2v+1}",
        3 not in mono and 3 in two)
 
+# ==================== ROUND-2 CHECKS (V11 repair; rev-2 sections 5.3-5.6) ====================
+
+# ---------- E: the threaded slot law (THR) at the HK23-gate numbers ----------
+# Compiled two-level tower over p=2: base w0 = Gauss; frame sigma1 = ramifiedStage-like:
+# pair (2,5), key fq (deg 2), (STR): w1(B) = 2*wPrev1(B) on C_fq; the (n1) slot-minimum of
+# a (2,5) read over sigma1 weighs slot j as 2*w1(B_j) + 5j = 4*wPrev1(B_j) + 5j.
+e_read, h_read, estar = 2, 5, 2
+agree = [(Wk, j) for Wk in range(1, 60) for j in range(4)
+         if e_read * Wk + j * h_read == e_read * (estar * Wk) + j * h_read]
+report("E1: rev-1 slot weight e*W_k+j*h != threaded e*estar*W_k+j*h at estar=2 (all W_k>=1)",
+       not agree, f"agreements={agree[:3]}")
+report("E2: at estar=1 the rev-1 and threaded weights coincide",
+       all(e_read * Wk + j * h_read == e_read * (1 * Wk) + j * h_read
+           for Wk in range(60) for j in range(4)))
+# E3: the (n1) regrade scale at the stretched frame is un-MacLane: u(p) = 2*w1(p) = 4,
+# u(fq) = 2*w1(1) + 5 = 5 (slope 5/4), while the frame's own w has w1(p) = 2, w1(fq) = 5
+# (slope 5/2) -- no single rescaling matches both.
+u_p, u_fq = 2 * 2, 2 * 0 + 1 * 5
+w1_p, w1_fq = 2, 5
+report("E3: regrade slope 5/4 vs frame slope 5/2 at the stretched gate frame",
+       Fraction(u_fq, u_p) == Fraction(5, 4) and Fraction(w1_fq, w1_p) == Fraction(5, 2)
+       and Fraction(u_fq, u_p) != Fraction(w1_fq, w1_p))
+
+# ---------- F: the stretched-frame display void (Prop 5.6 / brief Prop 5.4.3) ----------
+# (n2) demands sigma.w(t_k) = h*(g-k); (STR) at a stretched frame forces sigma.w-values of
+# coefficients into e*Z; gcd(e,h)=1 makes these clash exactly when e does not divide (g-k).
+import math
+viol = 0
+for _ in range(20000):
+    e = random.randint(2, 7)
+    h = random.choice([x for x in range(1, 60) if math.gcd(x, e) == 1])
+    g = random.randint(1, 8)
+    k = random.randint(0, g - 1)
+    if (((g - k) % e != 0)) != ((h * (g - k)) % e != 0):
+        viol += 1
+report("F1: e | h*(g-k) iff e | (g-k) at gcd(e,h)=1 (20k random)", viol == 0, f"violations={viol}")
+report("F2: gate instance -- stretched frame (e,h)=(2,5), onward g=1, k=0: weight 5 not in 2Z",
+       (5 * 1) % 2 != 0)
+
+# ---------- G: sharpness at g = 3 (Prop 5.4.2) over F27 = F3[z]/(z^3 - z - 1) ----------
+# Theta_m(P) = zbar^m * P(zbar) on {P : deg < 3}: bijective for every m; the full-support
+# target Theta_m(1 + z + z^2) is missed by every one-slot and every two-slot digit set.
+def f27_mul(x, y):
+    c = [0] * 5
+    for i2 in range(3):
+        for j2 in range(3):
+            c[i2 + j2] = (c[i2 + j2] + x[i2] * y[j2]) % 3
+    # reduce: z^3 = z + 1, z^4 = z^2 + z
+    return ((c[0] + c[3]) % 3, (c[1] + c[3] + c[4]) % 3, (c[2] + c[4]) % 3)
+# sanity: z^3 - z - 1 has no root in F3 (irreducible cubic)
+report("G0: z^3 - z - 1 irreducible over F3 (no roots)",
+       all((a ** 3 - a - 1) % 3 != 0 for a in range(3)))
+f27_all = [(a, b, c) for a in range(3) for b in range(3) for c in range(3)]
+zb = (0, 1, 0)
+zpow = [(1, 0, 0)]
+for _ in range(26):
+    zpow.append(f27_mul(zpow[-1], zb))
+g_ok = True
+for m in range(26):
+    zm = zpow[m]
+    theta = {P: f27_mul(zm, P) for P in f27_all}      # Theta_m(P) = zbar^m * P(zbar)
+    if len(set(theta.values())) != 27:                 # bijectivity (injective on 27)
+        g_ok = False
+    target = theta[(1, 1, 1)]                          # full-support c~_S
+    one_slot = {f27_mul(zpow[(m + k) % 26], (u, 0, 0)) for k in range(3) for u in (1, 2)}
+    two_slot = set()
+    for ka in range(3):
+        for kb in range(ka + 1, 3):
+            for ua in (1, 2):
+                for ub in (1, 2):
+                    Pa = [0, 0, 0]; Pa[ka] = ua; Pa[kb] = ub
+                    two_slot.add(theta[tuple(Pa)])
+    if target in one_slot or target in two_slot:
+        g_ok = False
+report("G1: for every offset m: Theta_m bijective; full-support target missed by all "
+       "one- and two-slot digit sets (exhaustive, F27, g=3)", g_ok)
+
 print("ALL PASS" if ok else "FAILURES PRESENT")
 sys.exit(0 if ok else 1)
