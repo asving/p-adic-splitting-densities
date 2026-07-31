@@ -2609,6 +2609,15 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     -- FALSE-SUSPECT at ν_{i+1}.e ≥ 2 (coherent stretch-2 carrier compiled at HK23; full
     -- refutation needs a gate-scale ReadsOf build).  ADJUDICATION SURFACED — do not fill
     -- before the ν_{i+1}.e ruling.  Record: notes/HK12_RECHECK_2026-07-31.md.
+    -- ── POST-WAVE UNIT 4 ADDENDUM (2026-07-31, re-pointed HK-11a kernel LANDED): the
+    -- e′ = 1 supplier for THIS displayed conclusion is now ON DISK, Lean-core:
+    -- `HC2/HK11a_vertexTransport.lean` — `HK11a.readVertex_e1` (this statement's binders
+    -- + he'1/hσL/hsteep), fed by `HK11a.sigmaV_vertexLaw` (the σV-vertex law (†)) and
+    -- `HK11a.anchor_transport` (R3a, PROVED from SideReads(i)+(ii); (iii) NOT consumed).
+    -- This sorry still CANNOT close from it: the statement quantifies over ALL ν_{i+1}.e
+    -- (the F4 adjudication item, UNRULED) and carries neither StageCoreL σᵢ nor the
+    -- strict read steepness (F5: genuine only at i = 0/post-recentering — themselves
+    -- ruling-class supplies).  Waiting supplier named; do not fill before the rulings.
     sorry
   · -- `ν.e·ν.g = 1`
     rcases Nat.eq_zero_or_pos i with hi0 | hi1'
@@ -2626,6 +2635,13 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
       -- RE-ADJUDICATION-SUSPECT under the new keying (HK-11b scope).  Full pre-wave
       -- proof in git history (wave commit^).  Recorded HK-11 obligation; do NOT consume
       -- as settled mathematics.
+      -- ── POST-WAVE UNIT 4 ADDENDUM (2026-07-31): the re-pointed HK-11a kernel
+      -- (HC2/HK11a_vertexTransport.lean) does NOT cover this corner — its ReadPair needs
+      -- STRICT read steepness `e★·σ₀.h < h★`, underivable at `e·g = 1` (the R3c record:
+      -- root records are consistent with `h ≤ e·σ₀.h`).  The corner's e′ = 1 route stays
+      -- the v9c-toolkit re-plumb (HK-12 corner finding: `RegradeOf.w_coeff` folds σV.w
+      -- back to σ₀.w, so the reduced form is `ν₁.e·(gam₀ − μ₀h₀) = gam₀ − μ₀h₀`), still
+      -- blocked on the same ν₁.e ruling.  Do not fill before it.
       sorry
     · -- `i ≥ 1`: a non-recentering non-root read is an increment; `hspecInc`
       -- forces `1 < e·g` against the case hypothesis.
@@ -2674,6 +2690,12 @@ theorem V9_E1box_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
     -- finding as the K1 steep leg (the strict `<` form inherits the same LHS stretch):
     -- HC2/HK52_stretchGate.lean + notes/HK12_RECHECK_2026-07-31.md.  Do not fill before
     -- the ν_{i+1}.e adjudication.
+    -- ── POST-WAVE UNIT 4 ADDENDUM (2026-07-31, re-pointed HK-11a kernel LANDED): the
+    -- e′ = 1 supplier for THIS displayed strict form is now ON DISK, Lean-core:
+    -- `HC2/HK11a_vertexTransport.lean` — `HK11a.readBox_e1` (this statement's binders
+    -- + he'1/hσL/hsteep; the (BOX) leg of `HK11a.sigmaV_vertexLaw`, R3a-fed).  Still
+    -- NOT a fill: the statement quantifies over ALL ν_{i+1}.e (F4, unruled) and carries
+    -- neither StageCoreL σᵢ nor strict read steepness (F5).  Waiting supplier named.
     sorry
   · -- `ν.e·ν.g = 1`
     rcases Nat.eq_zero_or_pos i with hi0 | hi1'
@@ -2688,6 +2710,10 @@ theorem V9_E1box_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
       -- RE-ADJUDICATION-SUSPECT under the new keying (HK-11b scope).  Full pre-wave
       -- proof in git history (wave commit^).  Recorded HK-11 obligation; do NOT consume
       -- as settled mathematics.
+      -- ── POST-WAVE UNIT 4 ADDENDUM (2026-07-31): the re-pointed HK-11a kernel
+      -- (HC2/HK11a_vertexTransport.lean) does NOT cover this corner (strict steepness
+      -- underivable at e·g = 1 — see the K1 corner addendum above); the corner's e′ = 1
+      -- route stays the v9c_cornerBox re-plumb, blocked on the same ν₁.e ruling.
       sorry
     · -- `i ≥ 1`: a non-recentering non-root read is an increment; `hspecInc`
       -- forces `1 < e·g` against the case hypothesis.

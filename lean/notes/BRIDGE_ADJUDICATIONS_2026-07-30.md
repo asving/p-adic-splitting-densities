@@ -467,3 +467,26 @@ decls stay in place as dead records; census corrected below.
 29. NEW SIGN-OFF ITEM: SpeciesStageRow.sel_stage field (TV_G1) — the exact
     displayed law recorded in TV_G3's header; with it, scs_cluster_child is a
     one-line fill (scs_cluster_child_of_selStage is PROVED and waiting).
+
+## AUTHORITY UPDATE (Asvin, 2026-07-31, verbatim): "For all of these, I would
+## say that we finish the math first, get a verified complete proof of the
+## theorem of uniformity across all primes including the wild primes, and use
+## that scaffolding to figure out what to do"
+CONSEQUENCE: sign-off items 22-29 (+ G13', hfin, HK15 un-guard, Wall A<->B)
+are PARKED — no statement repair executes until the mathematics is complete.
+THE PRIMARY CAMPAIGN is now THE MATHEMATICAL COMPLETION: a verified complete
+proof of uniformity at ALL primes including wild, at the informal-rigorous
+level, adversarially verified to acceptance (fresh-context verifiers,
+quote-and-classify, several consecutive clean passes), numerics as standing
+corroboration. The finished proof then dictates the repair shapes for the
+parked items ("use that scaffolding to figure out what to do").
+CAMPAIGN SHAPE: Phase A = the mathematical gap tree (the uniformity theorem's
+full claim DAG at HEAD: verified / proved-unverified / open / literature per
+leaf, built from HUMAN_PROOF + census §4.3 + the 18 M-attempts + verifier
+verdicts + the IFK revision) -> Codex completeness review; Phase B =
+dual-agent attack rounds per open leaf (prover + adversarial verifier,
+iterate to clean); Phase C = THE COMPLETE PROOF document, end-to-end
+adversarial acceptance. In-flight fleets (IFK revision, HK-11a) continue —
+the IFK is the mathematical core of Phase B.
+Lean work during the campaign: autonomous-frontier only (new leaves, gates,
+probes, records); the parked items' evidence packs stay current.

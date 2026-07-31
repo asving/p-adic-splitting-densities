@@ -19,11 +19,18 @@ M18 B§6; we compute at the intended p-adic semantics M18 §6):
     walk: residual factorization mod p, then per repeated linear residue root
     a Newton-polygon read of the recentered cluster (one node per polygon
     read; the m01_quad_walker.py / N7-track-count_test.py engine idiom).
-  * step (m_k, h_k, cell a_k)  <->  one certified cluster read: species m_k
-    (continuing / terminal kind), height h_k = the side slope (Fraction),
-    fresh digit cell a_k = the repeated residual root (continuing) or the
-    full residual read-off datum (terminal), matching M18 §6.2 (I0)
-    "Assign(m,x,h) = fresh digit cells realizing (m,h) from x".
+  * step (m_k, h_k, cell a_k)  <->  one certified WHOLE NODE READ of the
+    followed cluster: species m_k = the read's signature shape (all sides'
+    (slope, e, ell) + residual multiplicity profiles — the XNode letter
+    fields of the N7 engine mapping, per side), heights h_k = the side
+    slopes (Fractions), fresh digit cell a_k = ALL digits the read
+    consumes (residual roots + inert-factor coefficients), matching M18
+    §6.2 (I0)/(I3): "Assign(m,x,h) = fresh digit cells realizing (m,h)
+    from x", "the marks ARE the realized histories" (reading-built tmark).
+    A read continues at its (unique, n<=3) repeated residual root; the
+    beyond-cap part of a read is pooled into one ('deep', k) marker —
+    its internal decomposition is horizon-dependent, while "k deepest
+    roots beyond the cap" is a clean digit-cylinder condition.
   * marked pair (f mod p^N, eta)  <->  (g, chain) with g in the enumerated
     coefficient box and chain = the depth-2 read path (a1-cell, d2-datum).
   * T_gamma (census count, D4R.4-normalized)  <->  #realized chains, with the
@@ -63,21 +70,26 @@ DEVIATIONS from the M18 §7 test rows (declared, with why):
       instruction: "never trust an unstabilized count ... raise N for that
       stratum"). Spec rows (2,3,6) and (3,3,4) cannot certify their stated
       H at their stated N (an h2=3 quadratic read needs v up to 7; a mu2=2
-      h2=2 read needs v up to 5). Rows run here (cylinder sizes):
-        n=2, p=2: N=9  (2^16),  caps h1<=3, h2<=4
-        n=2, p=3: N=7  (3^12),  caps h1<=2, h2<=3
-        n=3, p=2: N=7  (2^18),  mu=3 entry; h1<=2, h2<=3 (mu2=2), h2<=2 (mu2=3)
-        n=3, p=3: N=5  (3^12),  mu=3 entry; h1=1,  h2<=2
+      h2=2 read needs v up to 5). Horizon-touching cosets are resolved by
+      digit-lifting (children at horizon N+1, mass /p^n, exact Fractions)
+      until certified; the tiny residue after kmax lifts (cosets converging
+      to the excluded discZero locus) is the reported unresolved mass and
+      the tolerance of the fiber checks. Rows run here (cylinder sizes;
+      height cap hcap bounds ALL read heights, h1 < h2 <= hcap):
+        n=2, p=2: N=9  (2^16),  hcap=4
+        n=2, p=3: N=7  (3^12),  hcap=3
+        n=3, p=2: N=7  (2^18),  mu=3 entry, hcap=3
+        n=3, p=3: N=5  (3^12),  mu=3 entry, hcap=2
       This includes the spec's wild-corner emphasis (p=2 n=2; p=3 n=3).
   D3. n=3 with a DOUBLE root entry (mu=2, third root simple): by Hensel the
       level-N box factors bijectively as (cluster quadratic) x (unit linear)
       and the cluster reads equal the quadratic's reads, so this row's tie
       is the n=2 row's tie. We VERIFY the reduction numerically (gate V4)
       on random samples instead of re-enumerating 3.2M polynomials.
-  D4. Reads whose deciding valuations touch the precision horizon are
-      binned IMPRECISE and excluded from BOTH sides symmetrically (counted,
-      reported as coverage loss). Reads with heights beyond the cap are
-      binned DEEP likewise.
+  D4. A coset with ANY horizon-touching read (walk or frame) contributes
+      NOTHING until lift-resolved (all-or-nothing certification, both
+      sides symmetrically); beyond-cap read content is carried inside the
+      signatures as the pooled ('deep', k) marker.
   D5. Depth is truncated at 2 (the face under test); step-2 continuing
       reads are recorded as continuing cells, not walked further.
 
@@ -210,18 +222,30 @@ def hull_of(coeffs, p, N):
     return hull, j0, ok
 
 def side_reads(coeffs, p, N, hull, j0, h_prev, hcap):
-    """All branch reads from hull sides with slope steeper than -h_prev
-    (root valuation lam > h_prev), heights capped at hcap.
-    Returns (branches, cluster_len, status). cluster_len counts roots at
-    valuation > h_prev including any certified left block."""
-    branches, clen = [], 0
+    """ONE NODE READ: all hull sides with slope steeper than -h_prev (root
+    valuation lam > h_prev), heights capped at hcap, as a tuple of side
+    entries ordered deepest-first:
+      ('side', lam, e, ell, roots, psi)  with roots = sorted (digit, mult)
+        pairs of the residual and psi = the monic-normalized rootless
+        residual factor (or None); e > 1 sides carry their single residual
+        digit the same way.
+      ('deep', size)  certified beyond the height cap (out of scope). ALL
+        beyond-cap roots are pooled into ONE such marker: their internal
+        polygon decomposition is horizon-dependent (not canonical), while
+        'k deepest roots all beyond hcap' is a clean digit-cylinder
+        condition given the in-scope part.
+    A step of the walk = one whole node read: the read consumes ALL the
+    digits of the polygon + residual factorizations at this node (M18 (I3)
+    'the marks ARE the realized histories'; reading-built tmark).
+    Returns (sides, cluster_len, status)."""
+    sides, clen, deep_total = [], 0, 0
     if j0 > 0:
-        # left block [0,j0): all coeffs inexact; root valuations >=
-        # (N - v(c_{j0}))/j0 each (conservative). Certify as deep or fail.
+        # left block [0,j0): all coeffs inexact; every left-block root
+        # valuation >= (N - v(c_{j0}))/j0 (convexity + inexact >= N).
         vj0 = hull[0][1]
         bound = Fraction(N - vj0, j0)
         if bound > hcap and bound > h_prev:
-            branches.append(('deep', j0))
+            deep_total += j0
             clen += j0
         else:
             return None, None, 'imprecise'
@@ -231,7 +255,7 @@ def side_reads(coeffs, p, N, hull, j0, h_prev, hcap):
             continue
         clen += x2 - x1
         if lam > hcap:
-            branches.append(('deep', x2 - x1))
+            deep_total += x2 - x1
             continue
         e, a = lam.denominator, lam.numerator     # slope = a/e lowest terms
         ell = (x2 - x1) // e
@@ -244,27 +268,46 @@ def side_reads(coeffs, p, N, hull, j0, h_prev, hcap):
             v, ex = vp(c, p, N)
             rc.append((c // p ** v_i) % p if (ex and v == v_i) else 0)
         assert rc[0] != 0 and rc[-1] != 0, "side endpoints must be exact units"
+        roots, rootless, rootless_deg = fp_poly_roots(rc, p)
         if e > 1:
             assert ell == 1, "unexpected long ramified side at n<=3"
-            root = (-rc[0] * pow(rc[1], -1, p)) % p
-            branches.append(('ram', lam, e, root))
-            continue
-        # species carries the branch's OWN side profile ell (residual
-        # degree): one-side vs split-polygon configurations are different
-        # reads (XNode letter fields (e, ell, h) in the N7 engine mapping)
-        roots, rootless, rootless_deg = fp_poly_roots(rc, p)
-        for r, m in sorted(roots.items()):
-            if m == 1:
-                branches.append(('splitleaf', lam, ell, r))
-            else:
-                branches.append(('cont', lam, ell, r, m))
+        psi = None
         if rootless_deg:
-            # rootless quotient: deg 2/3 with no roots over F_p (p<=3
-            # keeps it a single irreducible here); monic-normalized
             lead_inv = pow(rootless[-1], -1, p)
             psi = tuple((c * lead_inv) % p for c in rootless)
-            branches.append(('inert', lam, ell, rootless_deg, psi))
-    return branches, clen, 'ok'
+        sides.append(('side', lam, e, ell, tuple(sorted(roots.items())),
+                      psi))
+    if deep_total:
+        sides.insert(0, ('deep', deep_total))   # deepest-first, canonical
+    return tuple(sides), clen, 'ok'
+
+def read_species(read):
+    """Signature shape of a node read: digits stripped, structure kept."""
+    out = []
+    for s in read:
+        if s[0] == 'deep':
+            out.append(s)
+        else:
+            _, lam, e, ell, roots, psi = s
+            out.append(('side', lam, e, ell,
+                        tuple(sorted(m for _, m in roots)),
+                        len(psi) - 1 if psi else 0))
+    return tuple(out)
+
+def read_digits(read):
+    """The digit content of a node read (the fresh assignment / cell)."""
+    out = []
+    for s in read:
+        out.append(None if s[0] == 'deep' else (s[4], s[5]))
+    return tuple(out)
+
+def read_cont(read):
+    """The (unique, n<=3) continuing datum of a read: (h, digit, mult) of
+    the repeated residual root, or None."""
+    conts = [(s[1], r, m) for s in read if s[0] == 'side'
+             for r, m in s[4] if m >= 2]
+    assert len(conts) <= 1, read
+    return conts[0] if conts else None
 
 def read_cluster(coeffs, p, N, mu, h_prev, hcap):
     """Certified read of the size-mu cluster (valuation > h_prev) of monic
@@ -284,54 +327,50 @@ def read_cluster(coeffs, p, N, mu, h_prev, hcap):
 # ------------------------------------------------------------- the walker
 def walk_depth2(coeffs, p, N, mu, hcap):
     """Depth-2 canonical walk of the entry cluster (size mu, center 0,
-    h_prev = 0). Returns dict:
+    h_prev = 0). A step = one whole node read; at n <= 3 a read has at
+    most one repeated residual root, so the continuing walk is a chain.
+    Returns dict:
       status: 'ok'|'imprecise'
-      step1:  list of step-1 branches (as read datums)
-      chains: list of (h1, a1, mu2, d2) for each realized length-2 marked
-              prefix (d2 = full step-2 branch datum)
-      step2imprecise: count of continuing step-1 branches whose step-2 read
-              was imprecise (coverage loss, excluded both sides)"""
-    br1, st = read_cluster(coeffs, p, N, mu, 0, hcap)
+      read1:  the step-1 node read
+      chain:  (h1, a1, mu2, read2) if step 1 continues in scope, else None
+      step2imprecise: 1 if the continuation's read touched the horizon"""
+    r1, st = read_cluster(coeffs, p, N, mu, 0, hcap)
     if st != 'ok':
         return {'status': 'imprecise'}
-    out = {'status': 'ok', 'step1': br1, 'chains': [], 'step2imprecise': 0}
-    pN = p ** N
-    for b in br1:
-        if b[0] != 'cont':
-            continue
-        _, h1, _ell1, a1, mu2 = b
-        assert h1.denominator == 1
-        g2 = poly_shift(coeffs, a1 * p ** int(h1), pN)
-        br2, st2 = read_cluster(g2, p, N, mu2, int(h1), hcap)
-        if st2 != 'ok':
-            # 'no-cluster' cannot happen after a genuine continuing read
-            assert st2 == 'imprecise', st2
-            out['step2imprecise'] += 1
-            continue
-        for d2 in br2:
-            out['chains'].append((int(h1), a1, mu2, d2))
+    out = {'status': 'ok', 'read1': r1, 'chain': None, 'step2imprecise': 0}
+    cont = read_cont(r1)
+    if cont is None:
+        return out
+    h1, a1, mu2 = cont
+    assert h1.denominator == 1, r1   # repeated roots live on e = 1 sides
+    g2 = poly_shift(coeffs, a1 * p ** int(h1), p ** N)
+    r2, st2 = read_cluster(g2, p, N, mu2, int(h1), hcap)
+    if st2 != 'ok':
+        # 'no-cluster' cannot happen after a genuine continuing read
+        assert st2 == 'imprecise', st2
+        out['step2imprecise'] = 1
+        return out
+    out['chain'] = (int(h1), a1, mu2, r2)
     return out
 
 def frame_menu_reads(coeffs, p, N, hcap, h1_range, n):
     """Per-step (fresh-frame) reads: for each integer h1 in h1_range and
     mu2 >= 2, if g satisfies the frame cluster condition at (h1, mu2)
-    (sides steeper than h1 total exactly mu2), contribute the step-2 reads.
-    Returns list of ((h1, mu2), d2). Imprecise hulls contribute
+    (sides steeper than h1 total exactly mu2), contribute the whole node
+    read. Returns list of ((h1, mu2), read). Imprecise hulls contribute
     (('imprecise',), None) markers."""
     hull, j0, ok = hull_of(coeffs, p, N)
     if not ok:
         return [(('imprecise',), None)]
     out = []
     for h1 in h1_range:
-        br, clen, st = side_reads(coeffs, p, N, hull, j0, h1, hcap)
+        sides, clen, st = side_reads(coeffs, p, N, hull, j0, h1, hcap)
         if st != 'ok':
             out.append((('imprecise',), None))
             continue
         if clen < 2 or clen > n:
             continue
-        mu2 = clen
-        for d2 in br:
-            out.append(((h1, mu2), d2))
+        out.append(((h1, clen), sides))
     return out
 
 # ---------------------------------------------------------------- sweeps
@@ -341,45 +380,29 @@ def cylinder_iter(n, p, N):
     reps = [p * k for k in range(p ** (N - 1))]
     return itertools.product(reps, repeat=n)
 
-def s1_stratum(b):
-    """Length-1 stratum key (species incl. own side profile, height)."""
-    kind = b[0]
-    if kind == 'cont':
-        return ('cont', b[1], (b[2], b[4]))     # (h1, (ell, mu_next))
-    if kind == 'ram':
-        return ('ram', b[1], b[2])              # (h, e)
-    if kind == 'inert':
-        return ('inert', b[1], (b[2], b[3]))    # (h, (ell, deg))
-    if kind == 'splitleaf':
-        return ('splitleaf', b[1], b[2])        # (h, ell)
-    return ('deep', None, None)
-
-def s1_cell(b):
-    """Cell datum of a step-1 branch (the read-off digits)."""
-    kind = b[0]
-    if kind == 'cont':
-        return b[3]
-    if kind == 'ram':
-        return b[3]
-    if kind == 'splitleaf':
-        return b[3]
-    if kind == 'inert':
-        return b[4]
-    return None
-
 def leaves_of(w):
-    """Decided (e,f) leaves of a depth-2 walk; None if walk not fully
-    decided at depth 2 (a continuing or deep branch remains)."""
+    """Decided (e,f) leaves of a depth-2 walk; None if not fully decided
+    at depth 2 (a deep side or an uncontinued/deeper repeated root)."""
     leaves, decided = [], True
-    for b in list(w['step1']) + [ch[3] for ch in w['chains']]:
-        if b[0] == 'splitleaf':
-            leaves.append((1, 1))
-        elif b[0] == 'inert':
-            leaves.append((1, b[3]))
-        elif b[0] == 'ram':
-            leaves.append((b[2], 1))
-        elif b[0] in ('deep', 'cont'):
-            decided = False
+    reads = [(w['read1'], True)]
+    if w['chain'] is not None:
+        reads.append((w['chain'][3], False))
+    elif read_cont(w['read1']) is not None:
+        decided = False                      # cont exists but not walked
+    for read, is_step1 in reads:
+        for s in read:
+            if s[0] == 'deep':
+                decided = False
+                continue
+            _, lam, e, ell, roots, psi = s
+            for r, m in roots:
+                if m == 1:
+                    leaves.append((e, 1))
+                elif not is_step1:
+                    decided = False          # depth cap hit
+            if psi:
+                assert e == 1
+                leaves.append((1, len(psi) - 1))
     return tuple(sorted(leaves)) if decided else None
 
 def probe_one(coeffs, n, p, N, mu_entry, hcap, h1max):
@@ -400,16 +423,14 @@ def probe_one(coeffs, n, p, N, mu_entry, hcap, h1max):
 
 def commit(res, coeffs, w, mreads, mass):
     """Add one certified coset's data (with Haar mass in level-N-box units)
-    into the row censuses."""
-    for b in w['step1']:
-        key = (s1_stratum(b), s1_cell(b))
-        res['s1'][key] = res['s1'].get(key, 0) + mass
-    for ch in w['chains']:
-        res['chains'][ch] = res['chains'].get(ch, 0) + mass
-    for fkey, d2 in mreads:
-        if d2[0] == 'deep':
-            continue
-        res['menus'].setdefault(fkey, {}).setdefault(d2, coeffs)
+    into the row censuses. Keys are whole node reads."""
+    r1 = w['read1']
+    res['s1'][r1] = res['s1'].get(r1, 0) + mass
+    if w['chain'] is not None:
+        key = (r1, w['chain'][3])
+        res['chains'][key] = res['chains'].get(key, 0) + mass
+    for fkey, read in mreads:
+        res['menus'].setdefault(fkey, {}).setdefault(read, coeffs)
 
 def run_row(n, p, N, mu_entry, hcap, h1max, sample_cap=400, seed=0,
             kmax=None):
@@ -488,13 +509,11 @@ def fiber_law(fibers, p, tol):
     return all(Fs - f <= tol for f in fibers), Fs, True
 
 def test_A(row):
-    """Length-1 tie: per stratum (m1,h1): equal cell fibers, power of p,
-    census = #cells * fiber. Returns (ok, table, violations)."""
+    """Length-1 tie: per stratum (= step-1 read species): equal digit-cell
+    fibers, power of p, census = #cells * fiber."""
     strata = {}
-    for (st, cell), cnt in row['s1'].items():
-        if st[0] == 'deep':
-            continue
-        strata.setdefault(st, {})[cell] = cnt
+    for r1, cnt in row['s1'].items():
+        strata.setdefault(read_species(r1), {})[read_digits(r1)] = cnt
     tol = row['unresolved_mass']
     table, viol = [], []
     for st in sorted(strata, key=str):
@@ -505,53 +524,52 @@ def test_A(row):
         table.append((st, len(cells), fibers if not ok else Fs, census,
                       ok, used_tol))
         if not ok:
-            viol.append((st, dict(cells)))
+            viol.append((st, {str(k): v for k, v in cells.items()}))
     return (not viol), table, viol
 
 def test_BC(row):
     """Length-2 counting tie T vs T-hat (per-step menus) + equal-fiber law
     + the targeted phantom scan (Test C shape: menu entry, empty locus).
-    Returns dict with per-stratum table, phantom list, fiber violations."""
+    Strata = (step-1 species, step-2 species); chains within a stratum =
+    (step-1 digits, step-2 digits); the step-2 menu is per-step, keyed by
+    the frame state (h1, mu2) alone. Returns per-stratum table, phantom
+    list, fiber violations."""
     p = row['p']
-    # realized step-1 continuing cells per (h1, mu2)
-    a1_sets = {}
-    for (st, cell), cnt in row['s1'].items():
-        if st[0] == 'cont':
-            a1_sets.setdefault((int(st[1]), st[2]), set()).add(cell)
-    # realized chains grouped by stratum2 = (h1, mu2, kind2, h2, extra2)
-    # extra2 = the step-2 species' own side profile (mirrors s1_stratum)
-    def s2_key(h1, mu2, d2):
-        kind = d2[0]
-        if kind == 'cont':
-            extra = (d2[2], d2[4])
-        elif kind == 'inert':
-            extra = (d2[2], d2[3])
-        elif kind == 'ram':
-            extra = d2[2]
-        else:
-            extra = d2[2] if kind == 'splitleaf' else None
-        return (h1, mu2, kind, d2[1], extra)
-    strata = {}
-    for (h1, a1, mu2, d2), cnt in row['chains'].items():
-        if d2[0] == 'deep':
+    # realized step-1 continuing cells (digit tuples) per species
+    a1_sets, spec1_frame = {}, {}
+    for r1, cnt in row['s1'].items():
+        cont = read_cont(r1)
+        if cont is None:
             continue
-        strata.setdefault(s2_key(h1, mu2, d2), {})[(a1, d2)] = cnt
-    # menu entries grouped the same way
-    menu_by_stratum = {}
-    for (h1, mu2), dd in row['menus'].items():
-        for d2, wit in dd.items():
-            menu_by_stratum.setdefault(s2_key(h1, mu2, d2), {})[d2] = wit
+        sp1 = read_species(r1)
+        a1_sets.setdefault(sp1, set()).add(read_digits(r1))
+        spec1_frame[sp1] = (int(cont[0]), cont[2])       # (h1, mu2)
+    # realized chains grouped by (species1, species2)
+    strata = {}
+    for (r1, r2), cnt in row['chains'].items():
+        sk = (read_species(r1), read_species(r2))
+        strata.setdefault(sk, {})[(read_digits(r1), read_digits(r2))] = cnt
+    # menus regrouped: (h1, mu2) -> species2 -> {digits2: witness}
+    menu_by_spec = {}
+    for fkey, dd in row['menus'].items():
+        for read, wit in dd.items():
+            menu_by_spec.setdefault(fkey, {}).setdefault(
+                read_species(read), {})[read_digits(read)] = wit
     table, phantoms, fib_viol, v3_viol = [], [], [], []
-    all_strata = sorted(set(strata) | set(menu_by_stratum), key=str)
-    for sk in all_strata:
-        h1, mu2 = sk[0], sk[1]
-        A1 = a1_sets.get((h1, mu2), set())
+    all_strata = set(strata)
+    for sp1, frame in spec1_frame.items():
+        for sp2 in menu_by_spec.get(frame, {}):
+            all_strata.add((sp1, sp2))
+    for sk in sorted(all_strata, key=str):
+        sp1, sp2 = sk
+        frame = spec1_frame.get(sp1)
+        A1 = a1_sets.get(sp1, set())
         chains = strata.get(sk, {})
-        menu = menu_by_stratum.get(sk, {})
-        # V3: every realized d2 must be in the per-step menu
-        for (a1, d2) in chains:
+        menu = menu_by_spec.get(frame, {}).get(sp2, {}) if frame else {}
+        # V3: every realized step-2 read must be in the per-step menu
+        for (d1, d2) in chains:
             if d2 not in menu:
-                v3_viol.append((sk, a1, d2))
+                v3_viol.append((sk, d1, d2))
         T = len(chains)
         That = len(A1) * len(menu)
         fibers = sorted(set(chains.values()))
@@ -560,10 +578,10 @@ def test_BC(row):
         if not fib_ok:
             fib_viol.append((sk, {str(k): v for k, v in chains.items()}))
         # the phantom scan (Test C granularity)
-        for a1 in sorted(A1):
+        for d1 in sorted(A1, key=str):
             for d2, wit in sorted(menu.items(), key=str):
-                if (a1, d2) not in chains:
-                    phantoms.append(dict(stratum=sk, a1=a1, d2=d2,
+                if (d1, d2) not in chains:
+                    phantoms.append(dict(stratum=sk, a1=d1, d2=d2,
                                          menu_witness=wit))
         table.append((sk, len(A1), len(menu), T, That, fibers,
                       T == That, fib_ok))
@@ -579,8 +597,6 @@ def test_V5(row_N, row_Nm1):
     issues = []
     # chains certified at N-1 must appear at N with fiber ratio p^n
     for ch, cnt in row_Nm1['chains'].items():
-        if ch[3][0] == 'deep':
-            continue
         big = row_N['chains'].get(ch)
         if big is None:
             issues.append(('chain-lost-at-N', ch))
@@ -642,7 +658,7 @@ def gate_V2(n, p, N, hcap, h1max):
     per_r = {}
     for coeffs in itertools.product(range(p ** N), repeat=n):
         fb = [c % p for c in coeffs] + [1]
-        roots, _ = fp_poly_roots(fb, p)
+        roots, _, _ = fp_poly_roots(fb, p)
         for r, mu in roots.items():
             if mu < 2:
                 continue
@@ -653,14 +669,13 @@ def gate_V2(n, p, N, hcap, h1max):
             if not cert:
                 bucket['pend'] += 1
                 continue
-            for b in w['step1']:
-                k = (s1_stratum(b), s1_cell(b))
-                bucket['s1'][k] = bucket['s1'].get(k, 0) + 1
-            for ch in w['chains']:
-                bucket['chains'][ch] = bucket['chains'].get(ch, 0) + 1
-            for fk, d2 in mreads:
-                if d2[0] != 'deep':
-                    bucket['menus'].add((fk, d2))
+            r1 = w['read1']
+            bucket['s1'][r1] = bucket['s1'].get(r1, 0) + 1
+            if w['chain'] is not None:
+                k = (r1, w['chain'][3])
+                bucket['chains'][k] = bucket['chains'].get(k, 0) + 1
+            for fk, read in mreads:
+                bucket['menus'].add((fk, read))
     issues = []
     mus = sorted({mu for mu, _ in per_r})
     for mu in mus:
@@ -710,8 +725,8 @@ def gate_V4(p, N, hcap, h1max, trials=400, seed=1):
         if not (cert_g and cert_q):
             continue
         compared += 1
-        cg = (sorted(map(str, wg['step1'])), sorted(map(str, wg['chains'])))
-        cq = (sorted(map(str, wq['step1'])), sorted(map(str, wq['chains'])))
+        cg = (str(wg['read1']), str(wg['chain']))
+        cq = (str(wq['read1']), str(wq['chain']))
         if cg != cq:
             mism.append(((s, t, w), cq, cg))
     return compared, mism
@@ -726,6 +741,26 @@ def jsonable(x):
     if isinstance(x, Fraction):
         return str(x)
     return x
+
+def fmt_sp(sp):
+    """Compact display of a read species."""
+    bits = []
+    for s in sp:
+        if s[0] == 'deep':
+            bits.append(f"deep:{s[1]}")
+        else:
+            _, lam, e, ell, mults, psideg = s
+            b = f"h={lam}"
+            if e > 1:
+                b += f",e={e}"
+            if ell > 1:
+                b += f",l={ell}"
+            if any(m > 1 for m in mults):
+                b += f",m={list(mults)}"
+            if psideg:
+                b += f",psi{psideg}"
+            bits.append(b)
+    return "[" + " | ".join(bits) + "]"
 
 def report_row(tag, row, resA, resBC, v5_issues, out):
     p, n = row['p'], row['n']
@@ -742,8 +777,8 @@ def report_row(tag, row, resA, resBC, v5_issues, out):
         tag_ = 'ok' if ok else 'VIOLATION'
         if ok and used_tol:
             tag_ = 'ok (within unresolved tolerance)'
-        out(f"    m1={st[0]:<9} h1={str(st[1]):<4} x={st[2]}  "
-            f"cells={ncells:<3} fiber={fibers}  census={census}  {tag_}")
+        out(f"    m1={fmt_sp(st):<40} cells={ncells:<4} fiber={fibers}  "
+            f"census={census}  {tag_}")
     tie_fail = [r for r in resBC['table'] if not r[6]]
     fib_fail = resBC['fib_viol']
     out(f"  Test B (length-2 counting tie T vs T-hat): "
@@ -751,9 +786,9 @@ def report_row(tag, row, resA, resBC, v5_issues, out):
         f"{'ALL TIED' if not tie_fail else str(len(tie_fail)) + ' UNTIED'}; "
         f"fiber law: {'PASS' if not fib_fail else 'FAIL'}")
     for sk, nA1, nMenu, T, That, fibers, tie, fib_ok in resBC['table']:
-        h1, mu2, kind, h2, extra = sk
+        sp1, sp2 = sk
         mark = 'ok' if (tie and fib_ok) else '**'
-        out(f"    (h1={h1},mu2={mu2})->({kind},h2={h2},x={extra}): "
+        out(f"    {fmt_sp(sp1)} -> {fmt_sp(sp2)}: "
             f"|A1|={nA1} |menu|={nMenu}  T={T} T-hat={That} "
             f"fiber={fibers[0] if len(fibers) == 1 else fibers}  {mark}")
     out(f"  Test C (phantom scan): {len(resBC['phantoms'])} phantom(s)")
@@ -785,17 +820,19 @@ def main():
     out("Claim: length-2 counting tie T = T-hat; any T < T-hat stratum "
         "(phantom chain) negates K-RUN as drafted.")
     if args.quick:
-        ROWS = [('R1', 2, 2, 7, 2, Fraction(3), 2),
-                ('R2', 2, 3, 6, 2, Fraction(2), 1),
-                ('R3', 3, 2, 6, 3, Fraction(2), 1),
-                ('R4', 3, 3, 4, 3, Fraction(3, 2), 1)]
+        ROWS = [('R1', 2, 2, 7, 2, Fraction(3)),
+                ('R2', 2, 3, 6, 2, Fraction(2)),
+                ('R3', 3, 2, 6, 3, Fraction(2)),
+                ('R4', 3, 3, 4, 3, Fraction(3, 2))]
     else:
-        ROWS = [('R1', 2, 2, 9, 2, Fraction(4), 3),
-                ('R2', 2, 3, 7, 2, Fraction(3), 2),
-                ('R3', 3, 2, 7, 3, Fraction(3), 2),
-                ('R4', 3, 3, 5, 3, Fraction(2), 1)]
+        ROWS = [('R1', 2, 2, 9, 2, Fraction(4)),
+                ('R2', 2, 3, 7, 2, Fraction(3)),
+                ('R3', 3, 2, 7, 3, Fraction(3)),
+                ('R4', 3, 3, 5, 3, Fraction(2))]
     results, phantoms, fib_viols, gate_fail = {}, [], [], []
-    for tag, n, p, N, mu, hcap, h1max in ROWS:
+    for tag, n, p, N, mu, hcap in ROWS:
+        # menus must cover every h1 the walker can continue on (h1 <= hcap)
+        h1max = int(hcap)
         t0 = time.time()
         row = run_row(n, p, N, mu, hcap, h1max)
         rowm1 = run_row(n, p, N - 1, mu, hcap, h1max)
@@ -842,18 +879,18 @@ def main():
             results[tag]['gateV1'] = dict(skipped=repr(e))
     # gate V2: tiny full boxes, translation invariance / cylinder tie
     out("\n===== GATES (global) =====")
-    for n, p, N, hcap, h1max in [(2, 2, 5, Fraction(2), 1),
-                                 (2, 3, 4, Fraction(3, 2), 1),
-                                 (3, 2, 5, Fraction(2), 1),
-                                 (3, 3, 3, Fraction(1), 1)]:
-        keys, issues = gate_V2(n, p, N, hcap, h1max)
+    for n, p, N, hcap in [(2, 2, 5, Fraction(2)),
+                          (2, 3, 4, Fraction(3, 2)),
+                          (3, 2, 5, Fraction(2)),
+                          (3, 3, 3, Fraction(1))]:
+        keys, issues = gate_V2(n, p, N, hcap, int(hcap))
         out(f"  gate V2 n={n} p={p} N={N}: entry classes {keys} "
             f"-> {'PASS' if not issues else issues}")
         if issues:
             gate_fail.append(('V2', (n, p, N), jsonable(issues)))
-    for p, N, hcap, h1max in [(2, 7, Fraction(3), 2),
-                              (3, 5, Fraction(2), 1)]:
-        compared, mism = gate_V4(p, N, hcap, h1max)
+    for p, N, hcap in [(2, 7, Fraction(3)),
+                       (3, 5, Fraction(2))]:
+        compared, mism = gate_V4(p, N, hcap, int(hcap))
         out(f"  gate V4 (Hensel mu=2-in-n=3 reduction) p={p}: "
             f"{compared} compared, {len(mism)} mismatch(es)")
         if mism:
