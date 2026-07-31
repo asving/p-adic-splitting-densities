@@ -484,17 +484,23 @@ N ≥ N\*, TB-CAP (τ-irr) perimeter-conditional); CU-5 the satellites K-OB-A/B/
 the O5triple interface discharge ((I-1)(a,b,c) + (I-2), with the attribution correction:
 the content is single-polynomial and consumes NO K-DICT-OB1).
 Status: **PROVED-UNVERIFIED as a consolidation record** — wave 8 confirmed 6/7
-re-labels mapped to proved homes (commit a9f294c); **CU-2t is PROVED at r2** (CUC §9,
-unit D3CU2t) conditional on P(O-2a r5) + TB-CAP's D-12r perimeter + the GD residue,
-with the (T-DEC)/(T-VERD) terminal engine-bookkeeping rows displayed GD-4-family
-instances. [REVISION 3 status sync: CUC pass 1 RAN — **UNSOUND** (b9d1d70: 1 critical,
+re-labels mapped to proved homes (commit a9f294c); **CU-2t is PROVED at R2** (CUC §9,
+unit D3CU2t) conditional on P(O-2a r5) + TB-CAP's D-12r perimeter + the GD residue
+**including the two NEW GD-4 terminal rows (T-DEC)/(T-VERD)** — genuinely new
+unproved mandatory-path obligations first displayed at CUC §9.4, folded into GD-4 (no
+new open FAMILY) but growing the residue by two rows; rev 1's "zero new open inputs"
+billing OVERSTATED and is replaced by this pricing (the CUC F4 correction, folded
+here per the wave-14 charge — §3.3 GD-4/GD-6 row synced). [REVISION 3 status sync:
+CUC pass 1 RAN — **UNSOUND** (b9d1d70: 1 critical,
 §9.3(iii)'s Θ^τ injectivity constant in ν under an unconstrained hypothesis row, + 9
-gaps incl. the (T-DEC)/(T-VERD) residue-growth contradiction — rev 1's "zero new open
-inputs" billing was FALSE; the §6.1 audit SOUND; clauses (i)/(ii)-main survive) →
-**CU-2t r2 LANDED** (52d4eed: the ν-dependence critical + its root, the undefined
-record-consistency predicate, repaired via the displayed Definition RC, §§9.2a/9.3;
-CU-2 rescoped to the continuing part 𝐇°; surviving cores byte-stable; full
-disposition table CUC §10); the r2 hostile re-pass is the in-flight debt (§3.2).] The quarantined Corollary CU-2t-deep (the GD-8 exact-key
+gaps incl. the (T-DEC)/(T-VERD) residue-growth contradiction; the §6.1 audit SOUND;
+clauses (i)/(ii)-main survive) → **CU-2t R2 LANDED** (unit of record 567814d;
+52d4eed's staging sweep captured an intermediate state: the ν-dependence critical +
+its root, the undefined record-consistency predicate, repaired via the displayed
+Definition RC, §§9.2a/9.3 — Θ^τ now carries ν's announced verdict pair, injectivity
+restated at two displayed granularities; CU-2 rescoped to the continuing part 𝐇°;
+surviving cores byte-stable; full disposition table CUC §10); the R2 hostile re-pass
+is the in-flight debt (§3.2).] The quarantined Corollary CU-2t-deep (the GD-8 exact-key
 corner) is conditional on the unpinned (REP-IRR) literature pull and is consumed by
 NOTHING on the mandatory path.
 Consumes (mathematical inputs): Steps 6–10 + (O6) as displayed above. The CUC §0
@@ -557,9 +563,12 @@ line-by-line audit twice. [REVISION 3 status sync: pass 3 (the acceptance pass) 
 **SOUND-WITH-GAPS, ZERO criticals** (ed413ae; harness independently re-run, 2.53M
 classes, ceiling sharpness confirmed; all 11 charges PASS), two one-line gaps (the
 (I1) base-case "≥ 1" criterion display — the consumed form verified correct — and the
-"one external import" undercount vs M05 Lemmas B/D) → **r4 (the two one-liners) IN
-FLIGHT + one confirming pass to the bar** (ledger 7b28562); the core has now survived
-line-by-line audit three times.]
+"one external import" undercount vs M05 Lemmas B/D) → **r4 (the two one-liners)** —
+**LANDED at revision close** (3956500: the (I1) criterion corrected "≥ 1" → "> 0"
+with the verifier's derivation displayed; the external-import count corrected to
+three with exact consumption sites; cores byte-stable) — **+ one confirming pass to
+the bar** (ledger 7b28562); the core has now survived line-by-line audit three
+times.]
 Consumes: Steps 1/10/11 + GMN Cor 4.19 + the O4T import inventory (§4).
 Delivers: the undec(k) → 0 clause of (SQ) — unconditional at n ≤ 3, conditional on
 (AGR) (= CU-2 + CU-4 + Cor 4.19, all on file above) at general n.
@@ -600,8 +609,10 @@ rescope) verified SOUND, but the rev-2 (ADM) display rests on a FALSE class-vs-v
 attainment equivalence (r = 1 countermodel: e₁ = 3, h₁ = 2, weights {0,2,4}, on-line
 β = 1 unattained — empty stratum, positive formula; the automaticity claim refuted at
 that reading); K5 + harness records verified log-exact → **r3 with the VALUE-attained
-(ADM) reading IN FLIGHT** (ledger 7b28562). The §3.1 (ADM) row carries the matching
-note.]
+(ADM) reading** (ledger 7b28562) — **LANDED at revision close** (460ea59: automaticity
+rescoped r = 0 automatic / r = 1 displayed decidable inequality / general r ≥ 1
+withdrawn; LED-top(ii) image-subspace fix; K6 falsifier 0 = 0 exact); pass 3 owed.
+The §3.1 (ADM) row carries the matching note.]
 Consumes: Step 8 (GD-3), GMN Prop 2.7/Lemma 2.2/Defs 2.19–2.21 via pins.
 Delivers: the transition weights of T-7s's tables as proven counts — K3's census half
 for Step 18.
@@ -620,7 +631,8 @@ model-diverse SOUND-WITH-GAPS, 5296528 — all five charged proofs check, Lemmas
 verified incl. the adversarial minor case, harness 68/0 reproduced; 2 justification
 gaps: the D-8 value-vs-law split collapses definitionally (fix rides the next doc
 touch) + one undisplayed box-count transport cite → **ADJUDICATED VERIFIED (leaf #6)
-at scope** at the 2026-08-02-night harvest).
+at scope** at the 2026-08-02-night harvest; the two gaps were repaired at r2, landed
+at revision close (3956500) — VERIFIED stands per the wave-14 ledger, framing fixed).
 Falsifier: `verification/o10_kcount_harness.py` 68 PASS / 0 FAIL, predictions sealed
 pre-run.
 Consumes: LIT-8c (Sylvester/resultant); GMN stage factorization **K-FACT — pinned
@@ -847,7 +859,7 @@ mathematics (no proof on file). The CUC §0 pending-verdict registry
 | **(GR-B) at OM orders ≥ 2** | the anchored-march residue-structure package (GD-2/GD-3's one open input): the frame tie + residual-dictionary march at orders ≥ 2, modeled on printed FGMN Thm 4.2 (both pairings), with the properness proviso | GD-1/GD23 arc (verify passes: the GD23 verification cycle continues at orders ≥ 2) | order ≤ 1 PROVED over an arbitrary complete DVR (inside VERIFIED leaf #4); the wave-10 ledger grades the ≥ 2 layer "FGMN-pinned, transcription" — every target statement is pinned to a printed theorem (LITUNIT §7), but the composed march at ≥ 2 is unwritten: honestly [M] until written and passed. Enters Steps 10 (CU-1's step), 14 (CEN-W), 16, 18 (K3), 18b ((S1)) |
 | **(FRESH)** | the joint-with-parent level-determinacy separation clause (O-9's named open), priced at the GD-2/CL-13 vertex-law layer = CU-1's step content; **since the O-9 rev-2 repair it carries clause (c) = the former JUNCTION-PIN** (PROVED label withdrawn at 01c21e6; the telescope consequence is proved GIVEN the clause) [REVISION 1, finding 4] | O-9/CU-1 layer | enters Step 10 (CU-1's step — the GD-2/CL-13 vertex-law layer where it is priced; Step 10's Delivers-line names the consumption site, so clause (SQ) inherits it as displayed — REVISION 3, finding A6(iii)) and Step 14's joint census CEN-J, hence Step 18's K3, and Step 16/clause (UB) through the same census (REVISION 3, finding B1). Numerically unviolated (8.2M boxes) |
 | **(R1)–(R4)** (O-8b's base) **= (ROOT-C)(H4a)** [re-scoped at REVISION 2, finding V2-2] | the T-1 stage-tower laws re-proved verbatim over O_δ = W(F_{p^δ}) | O-8b (M14's conditional proof closes given them) | expected mechanical ("nobody has written it" — tree O-8b); N8 exhaustive. Borderline [M]/[T]; kept here for honesty. Enters Step 16 AND Step 18 (O-11 K3-c — declared row D-c at O-11 r2): NOT clause-(UB)-only — through K3-c it conditions clause (R)'s α = R_τ evaluation wherever verdict rows consume base-changed β-legs (δ > 1 pools). Audit note [REVISION 3, finding A5]: O-8b's law is declared at δ-STABLE position classes; that K3-c's realized δ > 1 pools are of that kind is asserted at the D-c interface, not displayed — the match display (or a re-scope) rides the next O-11/O-8b touch, and until then the (H4a)-only attribution of K3-c presumes it |
-| **(ADM)** — O-9's census admissibility [NEW row at REVISION 2, finding V2-5] | ledger-admissibility of the census datum: every on-line lattice slot's β_k is ledger-attained (β_k mod e ∈ {wt(𝐣) mod e}) — the explicit hypothesis O-9 r2 (01c21e6) added to CEN-W/CEN-J | O-9 (Step 14) | PROVED automatic at orders ≤ 1 (O-9 r2 §2: r = 0 has e = 1; r = 1 via gcd(h₁,e₁) = 1); at orders ≥ 2 an explicit hypothesis with NO proof on file — p-free and per-datum DECIDABLE (a finite lattice check), so borderline [M]/[T] like (R1)–(R4); kept here for honesty. Enters Step 14 (CEN-W/CEN-J), hence Step 18's K3 census half, AND Step 16/clause (UB) through Step 16's consumption of the census over any complete DVR [REVISION 3, finding B1]; carried by (ROOT-C)(H3). Unattained-vertex data have census 0 (the padding value), so the hypothesis prices attainment, not positivity. [REVISION 3 status sync: O-9 pass 2 (af2293e) REFUTED the r2 CLASS-attainment display's automaticity route (the parenthetical "β_k mod e ∈ {wt(𝐣) mod e}" is the r2 class reading; r = 1 countermodel on file) — O-9 r3 restates (ADM) in the VALUE-attained reading, in flight; this row's content is the r3 reading once landed, and its [M] classification is unchanged] |
+| **(ADM)** — O-9's census admissibility [NEW row at REVISION 2, finding V2-5] | ledger-admissibility of the census datum: every on-line lattice slot's β_k is ledger-attained (β_k mod e ∈ {wt(𝐣) mod e}) — the explicit hypothesis O-9 r2 (01c21e6) added to CEN-W/CEN-J | O-9 (Step 14) | PROVED automatic at orders ≤ 1 (O-9 r2 §2: r = 0 has e = 1; r = 1 via gcd(h₁,e₁) = 1); at orders ≥ 2 an explicit hypothesis with NO proof on file — p-free and per-datum DECIDABLE (a finite lattice check), so borderline [M]/[T] like (R1)–(R4); kept here for honesty. Enters Step 14 (CEN-W/CEN-J), hence Step 18's K3 census half, AND Step 16/clause (UB) through Step 16's consumption of the census over any complete DVR [REVISION 3, finding B1]; carried by (ROOT-C)(H3). Unattained-vertex data have census 0 (the padding value), so the hypothesis prices attainment, not positivity. [REVISION 3 status sync: O-9 pass 2 (af2293e) REFUTED the r2 CLASS-attainment display's automaticity route (the parenthetical "β_k mod e ∈ {wt(𝐣) mod e}" is the r2 class reading; r = 1 countermodel on file) — **O-9 r3 LANDED at revision close** (460ea59): (ADM) redefined VALUE-attained (the verifier's form), automaticity honestly RESCOPED — r = 0 automatic, r = 1 a displayed decidable inequality, the general r ≥ 1 automaticity claim WITHDRAWN (so this row's older "PROVED automatic at orders ≤ 1" phrasing is SUPERSEDED: automatic at r = 0 only); K6 falsifier exact at the countermodel (0 = 0; the mod-e reading refuted 256/26244). O-9 pass 3 owed; the [M] classification is unchanged] |
 | **(UB-X)** — the clause-(UB) residue [NEW at REVISION 1, finding 7] | (a) the per-leaf O_δ re-base audit for the ℚ_p-stated leaves (the "per-leaf scope hygiene" of the D-3 collapse, declared at the GD dispatch but unwritten); (b) δ-stable position classes exhaust the realized ledger at every δ; (c) full solve + type aggregation commute with unramified base change | D-3/O-8b (Step 16) | until written, clause (UB) is proved ONLY at the Step-16 displayed scope; (ROOT-C) makes this explicit as hypothesis **(H4b)** (renamed from (H4) at the REVISION-2 split, finding V2-2 — (UB-X) is the genuinely clause-(UB)-only part). N8 numerically supports the law it scopes |
 | **D-12r** | TB-CAP's (τ-irr) completeness perimeter: the D4R.0-K(c) verdict-pin residual | [3t] VP owner (tree D-12r) | perimeter-conditional wherever TB-CAP is consumed (Steps 2 (T-6's declared TB-CAP conditionality), 3, 11, 12, and Step 19 — the (SQ) bracket consumes T-6; consumer list completed at REVISION 3, finding A6(ii)); displayed, not discharged |
 | **(E-N)** | O-1thr Theorem 3(c)'s exhaustion caveat | O-1thr package | OPEN, scoped, touches CU-4 through Thm 3(c) (risk row R2 of the O3adj display); NOT consumed by the mandatory path elsewhere |
@@ -867,14 +879,14 @@ inherited-[V] row it is; general-n drainage stays conditional until those passes
 | **P(O-1thr r4)** | fresh hostile pass on O-1thr rev 4 (V24's criticals repaired; sloped/sheared pin stands) | O-1thr (Step 6) |
 | **P(O5t r3)** | fresh hostile pass on O5triple rev 3 (V23 0-critical arc) | O5triple (Step 12) |
 | **P(O-8b/M14)** [NEW row at REVISION 3, finding B2] | fresh hostile pass on M14's conditional O-8b proof (on file; the alphabet law at δ-stable position classes over (R1)–(R4)) — the one consumed PROVED-UNVERIFIED proof whose pending pass was named nowhere; it sits on the mandatory path of clause (R) (Step 18's K3-c), not just (UB) | O-8b/M14 (Steps 16, 18) |
-| **O4T r4 + confirming pass** [synced at REVISIONS 1/3] | rev 3 LANDED (bb4326c); pass 3 (acceptance) RAN — SOUND-WITH-GAPS, ZERO criticals (ed413ae; harness re-run 2.53M classes, sharpness confirmed), two one-line gaps → **r4 (the two one-liners) IN FLIGHT** + ONE confirming pass to the bar | O4T (Step 13) |
-| **O-9 r3 + re-pass** [synced at REVISIONS 1/3, finding 4] | rev 2 (01c21e6) survived on its pass-1 repairs, but pass 2 (af2293e) was **UNSOUND**: the (ADM) display's class-vs-value attainment equivalence FALSE (r = 1 countermodel) → **r3 with the VALUE-attained (ADM) reading IN FLIGHT**; re-pass owed on r3 | O-9 (Step 14) |
+| **O4T r4 + confirming pass** [synced at REVISIONS 1/3] | rev 3 LANDED (bb4326c); pass 3 (acceptance) RAN — SOUND-WITH-GAPS, ZERO criticals (ed413ae; harness re-run 2.53M classes, sharpness confirmed), two one-line gaps → r4 (the two one-liners) **LANDED at revision close** (3956500, cores byte-stable) + ONE confirming pass to the bar | O4T (Step 13) |
+| **O-9 r3 + pass 3** [synced at REVISIONS 1/3, finding 4] | rev 2 (01c21e6) survived on its pass-1 repairs, but pass 2 (af2293e) was **UNSOUND**: the (ADM) display's class-vs-value attainment equivalence FALSE (r = 1 countermodel) → r3 with the VALUE-attained (ADM) reading **LANDED at revision close** (460ea59; automaticity rescoped, K6 falsifier 0 = 0); pass 3 owed on r3 | O-9 (Step 14) |
 | **D-11 verification cycle (at r3)** [synced at REVISIONS 1/3] | pass 1 NOT ACCEPTED as billed (2587c70) → r2 (566b967) → pass 2: 2 criticals, both CONTAINED at **r3** (8a0786c: M1(a) rescoped, completed-node overclaim withdrawn — honestly LAYERED; M2.0 rewritten over countable addresses); pass 3 owed | D-11 (Steps 17/18b) |
 | **O-11 verification cycle (at r3)** [synced at REVISIONS 1/3] | pass 1 NOT ACCEPTED AS STATED (a7ede72) → r2 (1bd8bd1, D-a/D-b/D-c declared + oracle-pin supplement) → pass 2 (V32): billing precision → **r3** (7aef1b9: tier 2 split into hypothesis-grade rows H-1..H-4; walk/cores byte-stable); pass 3 owed | O-11 (Step 18) |
-| **CUC + CU-2t r2 re-pass** [synced at REVISION 3] | pass 1 **UNSOUND** (b9d1d70: the Θ^τ ν-blindness critical + 9 gaps; §6.1 audit sound) → **CU-2t r2 LANDED** (52d4eed: Definition RC displayed, the critical + its root repaired; disposition table CUC §10); hostile re-pass on the r2 record owed | CUC (Step 11) |
+| **CUC + CU-2t R2 re-pass** [synced at REVISION 3] | pass 1 **UNSOUND** (b9d1d70: the Θ^τ ν-blindness critical + 9 gaps; §6.1 audit sound) → **CU-2t R2 LANDED** (unit of record 567814d: Definition RC displayed, the critical + its root repaired, the (T-DEC)/(T-VERD) pricing honesty-corrected — residue +2 GD-4 rows, see the §3.3 row; disposition table CUC §10); hostile re-pass on the R2 record owed | CUC (Step 11) |
 | **(AGR) inherited [V]** [relocated from §3.1 at REVISION 1, finding 10] | the drainage agreement seam, ASSEMBLED from CU-2 + CU-4 + GMN Cor 4.19 (all on file); its residue = exactly the pass debts of CU-2/CU-4 (this table) + the Cor 4.19 literature row (§4) — nothing else | O-4/O4T TR-OM (Step 13) |
 | **Dfloor 3 minor gaps** | ID reduced-rep, ADD induction coprimality, TRANSFER sum-regularity — ride the next doc touch | Dfloor (Step 1) |
-| **O-10 2 minor gaps** [added at REVISION 3 status sync] | the D-8 value-vs-law framing (collapses definitionally) + the box-count transport cite — ride the next doc touch (found at the VERIFYING pass 2; no pass debt remains) | O-10 (Step 15) |
+| **O-10 2 minor gaps** [added at REVISION 3 status sync] | the D-8 value-vs-law framing (collapses definitionally) + the box-count transport cite — found at the VERIFYING pass 2; **repaired at O-10 r2, landed at revision close** (3956500: the D-8 separation dropped as definitional with the existence range displayed; the (BOX) transport display + M07 §2.1 cite row; cores byte-stable). Per the wave-14 ledger: VERIFIED (leaf #6) STANDS, framing fixed; the r2 diff-confirmation rides the next harvest | O-10 (Step 15) |
 | **B-layer verification rounds** [row added at REVISION 1, finding 3; B-4 added at REVISION 2, finding V2-4; **B-3 (doc level) added at REVISION 3, finding B4**] | B-1, B-2 (doc level), **B-3 (doc level)**, **B-4 (order-r layer)**, B-5, B-6, B-7 are PROVED-UNVERIFIED June documents (grades displayed at Step 2); the tree §4 protocol already schedules their verification-only rounds; B-3's core and B-2's counting core are VERIFIED-LEAN (B-3's doc level has the same status shape as B-2's — Lean-verified core + PROVED-UNVERIFIED June document — and is now listed like it); B-4's order-1 instance = B-3's VERIFIED-LEAN core, and its order-r content (`M6_lemma.md`) has as modern face O-9's OL-B, discharged to GD-3 — on the modern path the orders-≥ 2 content rides §3.1's (GR-B), so this row prices only the June-document verification rounds; B-8 SUPERSEDED, cited nowhere | B-layer (Steps 2, 3) |
 | **K-12 faithfulness-audit record** | the Lean `undec`/`hExhaustP` vs mathematical-classifier audit (DELTA-1 §D1.5(g)); grade held pending | K-12/n = 2 anchor |
 | **End-to-end passes on THIS document** [synced at REVISIONS 1/3] | passes 1–3 RAN, each COMPOSITION-GAPS → each repaired by its revision (§§7–9): VC1 (Codex) → REVISION 1; VC2 (Codex) → REVISION 2; VC3 (Fable, model-diverse) → REVISION 3 — VC3 confirmed the composition's MATHEMATICS (all findings attribution/ledger integrity). The criterion: ≥ 2 consecutive CLEAN end-to-end passes, ≥ 2 models, verifiers who saw none of the per-leaf rounds (tree §4 Root criterion); the consecutive-clean counter is at ZERO; next = VC4 (Codex) on this thrice-revised document | Phase C |
@@ -899,7 +911,7 @@ O-10's K-LOC/(I-τ) interfaces stay where they are (§3.1/§3.3).
 | **GD-5 residue: the S-1 audit (incl. C.1.5)** | the one-page composition note + machine transcription audit (O-1thr machine ↔ O-2a stage interface F.0–F.2 at order 1) + the degree-g > 1 KEY1 generalization (same method). **Explicitly includes C.1.5** [REVISION 1, finding 5]: T-2's deferred graded-presentation obligation ("downsets are literal digit systems") — definitional at the mathematical machine (O-1thr §4 (S-1)); its transcription half is THIS audit | GD-5 (D2.6 step 2) / T-2 → Step 6 |
 | **D-5 disposition** [row added at REVISION 1, finding 5] | the tree's D-5 (WELLPOSED) carrier/equality design = O-2a rev 5 §§1–2 (two carriers, Θ, consistency predicate, Lemma R) — PROVED CONTENT of that leaf, verification debt = P(O-2a r5); the wider semantic-invariance clause is carried by each consuming leaf's own displayed carrier section (Steps 3, 6, 10), consumed nowhere as a separate node | O-2a (Step 7) |
 | **(O6) canonicalizations** [row added at REVISION 1, finding 5] | O3design §1: branch-letter keying + deep-marker pooling — DEFINITIONAL census-side bookkeeping, no proof content (CUC §3(c)); V16/V21 arc on the O3design record | O3design → CU-3 (Step 11) |
-| **GD-4 / GD-6 engine-bookkeeping units** | emission/record discipline (W1–W5, (c0), AUX band; K-OB-E's GMN Def-3.9 arithmetic is the one semantic clause) and run-decomposition conformance; proof-by-construction routes on record; CU-2t's (T-DEC)/(T-VERD) rows are displayed GD-4 instances; **enters Step 18 through D-15's (M6b)(iii)/(ii−) clauses** (O-11 K4-CYL — declared row D-a at O-11 r2) | GD-4/GD-6 owners |
+| **GD-4 / GD-6 engine-bookkeeping units** | emission/record discipline (W1–W5, (c0), AUX band; K-OB-E's GMN Def-3.9 arithmetic is the one semantic clause) and run-decomposition conformance; proof-by-construction routes on record; CU-2t's (T-DEC)/(T-VERD) rows — RE-BILLED at the CU-2t R2 (567814d, CUC F4; folded here per the wave-14 charge) as **two genuinely NEW unproved mandatory-path GD-4 obligations** (in no printed clause list before CUC §9.4 displayed them; no new open family, but the residue GREW by these two rows — rev 1's "displayed GD-4 instances" wording understated them); GD-4's owner brief absorbs the §9.4 scope note at its next revision; **enters Step 18 through D-15's (M6b)(iii)/(ii−) clauses** (O-11 K4-CYL — declared row D-a at O-11 r2) | GD-4/GD-6 owners |
 | **GD-7 flags: (GMN-COH)/(R-0)/(R-1)/(R-2)/(R-3)** | O5triple's five citation-grade flags (sprouted-type dissection, flow coherence, order-0 anchor, ADEQ read-back, representative lookup) — one GMN §2.1/§3/§4.1 reading session covers them; NOT covered by the executed LITUNIT | GD-7/literature unit (Step 12) |
 | **GD-8 order ≥ 2** | the exact-key polygon seam beyond order 1 (order-1 proved, falsifier-covered); expected verbatim over GD-2's frame tie | GD-8 |
 | **(KP)/(KPirr) beyond order 1 + properness proviso** | GD-1's representative-admissibility clauses; properness a genuine side condition only at e·g = 1 refinement reads (FGMN Lemma-5.3 discharge displayed) | GD-1 |
@@ -1053,10 +1065,12 @@ pass (VC3, fresh verifier) runs on THIS twice-revised document, and the ≥ 2
 consecutive-clean counter is still at zero.] [Updated at REVISION 3: VC3 RAN —
 COMPOSITION-GAPS, all attribution/ledger integrity, the mathematics CONFIRMED —
 dispositioned at §9. Dispatch now: **VC4 (Codex) on this thrice-revised document**
-toward the two-consecutive-clean bar; in flight per ledger 7b28562: O-9 r3
-(value-attained (ADM)), the CU-2t r2 re-pass, O4T r4 + its confirming pass, the
-D-11/O-11 pass 3s; owed: P(O-2a r5)/P(O-1thr r4)/P(O5t r3), P(O-8b/M14) (§3.2, new),
-the (UB-X)/(R1)–(R4) write-up; then the GD order-≥ 2 campaign for (GR-B)/(FRESH).]
+toward the two-consecutive-clean bar; the wave-14 repairs LANDED at revision close
+(460ea59/567814d/3956500: O-9 r3, CU-2t R2, O4T r4 + O-10 r2) — their confirming
+passes (O-9 pass 3, the CU-2t R2 re-pass, O4T's acceptance pass) are the in-flight
+debts, with the D-11/O-11 pass 3s; owed: P(O-2a r5)/P(O-1thr r4)/P(O5t r3),
+P(O-8b/M14) (§3.2, new), the (UB-X)/(R1)–(R4) write-up; then the GD order-≥ 2
+campaign for (GR-B)/(FRESH).]
 
 — ROOT ASSEMBLY complete, 2026-08-02. Composed at HEAD d730669 + the recorded
 in-flight events (O4T pass 2, untracked). Every §2 grade traces to a named commit or
@@ -1188,3 +1202,91 @@ and their rows carry unchanged.
 
 — REVISION 2 complete. The body above is the operative composition; VC3 runs on this
 document as a whole.
+
+---
+
+## 9. REVISION 3 (2026-08-02 night, unit ROOT r4) — disposition of VC3, the Phase C end-to-end pass 3
+
+**The pass.** VC3 = the third end-to-end verification and the first MODEL-DIVERSE one
+(Claude/Fable, fresh context — VC1/VC2 were Codex; read the ROOT document ONLY, no
+leaf records; `lean/notes/openmath/VC3_root_fable_verify.md`). Verdict:
+**COMPOSITION-GAPS** — 4 blockers (B1–B4) + 4 advisories (A5–A8). The headline is
+what VC3 CONFIRMED: "under all five hypotheses jointly, the composition proves
+(ROOT-C) quantifier-for-quantifier from the leaves' declared statements + ledger
+rows; every defect found is attribution/ledger integrity, not mathematics missing
+beyond the displayed hypotheses." Explicit passes: acyclicity edge-by-edge over all
+20 steps (incl. the 17 ≺ 18 ≺ 18b stratification); the completeness invariant
+((ROOT-C) hypotheses ↔ the seven §3.1 [M] rows, EXACTLY EQUAL); and all three §8
+pre-charged spots — the (SL≥2) display internally sound with its consumer audit, the
+(H4a)/(H4b) split consistent as displayed, the (S3) monic/projective split coherent.
+Every finding is dispositioned below and repaired in place; per the standing charge,
+NO mathematical content changed — every repair is attribution, a ledger row, or a
+status sync.
+
+**Disposition table.**
+
+| # | class | finding (compressed) | disposition | where |
+|---|---|---|---|---|
+| B1 | BLOCKER | the "exact" per-clause attribution understates clause (UB): it reads "(H4a) + (H4b)" as (UB)'s full hypothesis set, but (UB) also consumes (H1)–(H3) — through Step 8 ((GR-B) at orders ≥ 2), Step 14's census ((FRESH)/(ADM)), and the (UB-X)(a)-transported layers (D-12r, (E-N)); the (ADM) row's Enters-list omitted Step 16 | ACCEPTED — the V2-2 genre in reverse (consumed but unattributed); (ROOT-C)'s attribution completed: clause (UB) consumes **(H1)–(H3) + (H4a) + (H4b)**, only (H4b) is (UB)-exclusive; Step 16's conditionality restated in full; Step 19's (UB) close synced; the (ADM) and (FRESH) rows' Enters-lists gain Step 16/clause (UB). The JOINT theorem (all five hypotheses) was never affected | §1, Steps 16/19, §3.1 (ADM)/(FRESH) |
+| B2 | BLOCKER | O-8b/M14's PROVED-UNVERIFIED conditional proof is consumed (Step 16; Step 18's K3 — hence clause (R)'s mandatory path) with NO ledger row naming its pending pass — the exact V2-4/V2-5 failure class | ACCEPTED; new §3.2 row **P(O-8b/M14)** (fresh hostile pass on the M14 proof, owners Steps 16/18); Step 16's status names the pass | §3.2, Step 16 |
+| B3 | BLOCKER | Σ_τ R_τ = 1 credited to Step 1 beyond Dfloor's declared statement (R_τ undefinable in the leaf's perimeter; α = R_τ needs Steps 18/18b) — a textual forward edge inside a VERIFIED perimeter, consumed by Step 19 "from Step 1" | ACCEPTED; repaired exactly as the verifier prescribed, no new hypothesis: Step 1 restated to its declared perimeter (Σ_τ α = 1 at every p + the interpolation principle; Delivers-line synced), and the identity CONCLUDED at Step 19 with the derivation displayed (Σα = 1 [Step 1] + α = R_τ ∀p [Steps 18/18b, (H1)–(H3)+(H4a)] + the principle ⇒ Σ_τ R_τ = 1 in ℚ(t)); the conditionality was already priced inside clause (R) | Step 1, Step 19 |
+| B4 | BLOCKER | B-3's document-level PROVED-UNVERIFIED grade (same status shape as B-2's: Lean-verified core + June document) missing from the §3.2 B-layer row — a consumed input with no ledger class (the V2-4 class) | ACCEPTED; **B-3 (doc level)** added to the B-layer row | §3.2 |
+| A5 | ADVISORY | undisplayed interface match: O-8b's law holds at δ-STABLE position classes only, but nothing displays that K3-c's δ > 1 pools are δ-stable — if one were not, (UB-X)(b) would leak into clause (R) | ACCEPTED as an honesty display: the presumption is now DISPLAYED at Step 18 and recorded as an audit note on the §3.1 (R1)–(R4) row (the match is asserted at the D-c interface, not proved here); the match display (or a re-scope) rides the next O-11/O-8b touch | Step 18, §3.1 |
+| A6 | ADVISORY | three consumer-list gaps: (i) GMN roster omits Step 11 (CU-2t consumes Cor 1.20/3.8 directly); (ii) the D-12r row omits Steps 2 and 19 (T-6's TB-CAP conditionality; the bracket consumes T-6); (iii) the (FRESH) row omits Step 10 while Step 10's Delivers-line names "the (FRESH) consumption site" | ACCEPTED; all three lists completed ((iii) resolved as CONSUMPTION at CU-1's step — the row itself prices (FRESH) "at the GD-2/CL-13 vertex-law layer = CU-1's step content"; clause (SQ)'s (H1)–(H3) attribution already covered it) | §4 item 1, §3.1 D-12r/(FRESH) |
+| A7 | ADVISORY | OL-O12-1 (Step 5's contingent escape flag) has no ledger home, against the §7 closing standard | ACCEPTED; §3.3 row added (unfired, consumed by nothing — homed for the invariant) | §3.3 |
+| A8 | ADVISORY | Step 19 discharges T-U's §U.SQ.6 kernel ledger by the ASSERTED-not-displayed claim that it equals the Steps 1–18b roster; a fresh reader cannot check it | ACCEPTED at the honest-marking option: Step 19's parenthetical now states the claim is asserted, and a §3.3 audit row owes the row-by-row display table (per-item pointer §U.SQ.6 → step/eviction/annex) | Step 19, §3.3 |
+
+**Status syncs applied with the repairs** (the 2026-08-02-night harvest, ledger
+7b28562 — "THE FIVE OWED PASSES" section): **CU-1 = VERIFIED, leaf #5** (r5 gap-check
+GAPS-CLOSED 0/0, commit 5329a4e); **O-10 = VERIFIED at scope, leaf #6** (pass 2
+model-diverse SOUND-WITH-GAPS, math airtight, 5296528; two minor gaps ride a §3.2
+doc-touch row) — **VERIFIED = 6: O-13, O-12, Dfloor, GD23, CU-1, O-10** (headline +
+(ROOT-C) proof-status synced 4 → 6; the discharged CU-1/O-10 §3.2 rows retired).
+Wave-14 rows synced: **O-9** pass 2 UNSOUND (af2293e: the rev-2 (ADM) class-vs-value
+attainment equivalence refuted by an r = 1 countermodel) → **r3 with the
+VALUE-attained (ADM) reading** (§3.1 (ADM) row annotated); **CUC/CU-2t** pass 1
+UNSOUND (b9d1d70: the Θ^τ ν-blindness critical + 9 gaps) → **CU-2t R2** (Definition
+RC displayed; the (T-DEC)/(T-VERD) pricing honesty-corrected — the mandatory-path
+residue GREW by two GD-4 rows, folded at Step 11 + the §3.3 GD-4/GD-6 row per the
+R2's F4 charge), re-pass owed; **O4T** pass 3 SOUND-WITH-GAPS,
+ZERO criticals (ed413ae) → **r4 (two one-liners)** + one confirming pass to
+the bar. Also recorded (round-3 events pre-dating VC3, rows previously stale): D-11
+pass 2 → **r3** (8a0786c, honestly LAYERED) and O-11 pass 2 (V32) → **r3** (7aef1b9,
+tier 2 split into H-1..H-4), pass 3s owed. Nothing in this revision upgrades any
+leaf beyond the ledger's own adjudications; it corrects this document's composition
+bookkeeping and syncs recorded statuses.
+
+**The completeness invariant, re-run after these repairs** (the failure-prone one
+again — B2/B4 are its V2-4/V2-5 class, and B1 is its per-clause face): the (ROOT-C)
+hypothesis list is unchanged — (H1) (GR-B) ≥ 2, (H2) (FRESH), (H3) D-12r + (E-N) +
+(ADM), (H4a) (R1)–(R4), (H4b) (UB-X) — exactly the seven §3.1 [M] rows; the
+per-clause attribution is now: (0) unconditional; (SQ)/(R) ← (H1)–(H3), (R)
+additionally ← (H4a); (UB) ← (H1)–(H3) + (H4a) + (H4b); (H4b) (UB)-only. Every
+consumed PROVED-UNVERIFIED input now has a named §3.2 pass (O-8b/M14 and B-3-doc were
+the last two missing); every named pin/flag has exactly one ledger home (OL-O12-1 was
+the last).
+
+**What VC4 (the next end-to-end pass, Codex, toward the ≥ 2-consecutive-clean bar)
+should check first:** (1) the B3 repair — does Step 19's displayed Σ_τ R_τ = 1
+derivation consume only Steps 1/18/18b at their declared statements, and is Step 1's
+restated perimeter now exactly the Dfloor leaf's?; (2) the completed (UB) attribution
+against Steps 8/14/16 (is (H1)–(H3) + (H4a) + (H4b) now exact, neither under- nor
+over-attributed?); (3) the A5 presumption at Step 18 (is the δ-stable audit note
+scoped so that clause (R)'s (H4a)-only attribution is honest as displayed?); (4) the
+completeness invariant, per standing §7/§8 experience.
+
+**Concurrent in-flight events recorded at REVISION 3 close** (the wave-14 repair
+commits landed by parallel units while this revision was being written; body statuses
+are AS OF the 7b28562 harvest, with bracketed landed-at-close notes at the affected
+rows): **O-9 r3** (460ea59 — (ADM) redefined VALUE-attained; automaticity rescoped
+r = 0 automatic / r = 1 displayed decidable inequality / general r ≥ 1 withdrawn; K6
+falsifier 0 = 0 exact at the pass-2 countermodel); **CU-2t R2** (unit of record
+567814d — Definition RC; Θ^τ carries ν's announced pair; the +2 GD-4 rows pricing);
+**O4T r4 + O-10 r2** (3956500 — display fixes, cores byte-stable; O-10's VERIFIED
+stands per the wave-14 ledger). Confirming passes owed: O4T (acceptance), O-9 pass 3,
+the CU-2t R2 re-pass. Bookkeeping note (the REVISION-1 4e03512 precedent): commit
+9136564's staging sweep captured this revision's in-progress body repairs alongside
+the wave-14 ledger fold; THIS commit is the revision's unit of record.
+
+— REVISION 3 complete. The body above is the operative composition; VC4 runs on this
+document as a whole, and the ≥ 2 consecutive-clean counter remains at ZERO.
