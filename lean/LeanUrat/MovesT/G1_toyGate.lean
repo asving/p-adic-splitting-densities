@@ -9,6 +9,7 @@ import LeanUrat.HC2.U31_gateReadsOf
 import LeanUrat.HC2.U28_gateSep
 import LeanUrat.MovesC.C0_digitSystemMass
 import LeanUrat.MovesT.F0_preHalt
+import LeanUrat.HC2.HK25_recGate
 
 /-! # T-G1 `toy_treeExp_gate` [split G1a/G1b] — the two pinned toy carriers (§T-G1's
 REV-8 full-roster tables) + the gate battery (DO-3). GATE ARCHITECTURE (REV 2, Fable
@@ -576,6 +577,19 @@ noncomputable def toyModel : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
   --  discharge this sorry; the fix requires a blueprint-level re-adjudication
   --  (either a head with e·g > 1 — impossible over F = ZMod 2, where hzbarRoot +
   --  hψirr force g = 1 — or a scoped `mem_realizable`). Recorded; sorry stands.]
+  -- [POST-WAVE RE-ADJUDICATION (2026-07-31, G1b re-run under the HK-06 (S-a)
+  --  re-keyed `HistoryCoherent` — the census's Q7 row): **STILL FALSE at the NEW
+  --  keying.** The repaired leg moved only the `TransitionCoreL` keying (to the σV
+  --  regrade at the CHILD pair); the recorded `IsNodeLift (head) (leaf).σ.Φ`
+  --  conjunct is UNCHANGED, and at the pinned tables it is refuted outright:
+  --  `toyLeafA/B.σ.Φ = toyStage.Φ = X` (degree 1), so the lift equation
+  --  `X = X^{e·g} + Σ_{k<g} tt k·X^{e·k}` at the head's (e, g) = (1, 1) forces
+  --  `tt 0 = 0`, while `ψ₀.coeff 0 = −1 ≠ 0` forces `tt 0 ≠ 0`. Compiled
+  --  countermodel leaves (M1 hygiene, targeting THIS field statement verbatim at
+  --  the post-wave keying): `toy_headNodeLift_false` → `toy_hcoh_tA2a_false` /
+  --  `toy_hcoh_tA2b_false` → `toy_memRealizableA_false` (§POST-WAVE section at
+  --  EOF). The pre-wave degree-collision route (via `child_reps`) also remains
+  --  live. Sorry stands, statement byte-unchanged.]
 
 open Classical in
 noncomputable def toyCellA : EntSt 2 (ZMod 2) 2 → Box 2 9 → ToyCell
@@ -782,6 +796,11 @@ noncomputable def toyModelB : TreeModel 2 (ZMod 2) 2 3 9 polTriv where
   --  e·g = 1 corner refutation as carrier A's `mem_realizable` above — `toyMemB`
   --  realizes tB2c/tB2d (= tA2a/tA2b), same head, same excluded transition corner
   --  (`HC1.S9a_ungated_corner_refuted`). Recorded; sorry stands.]
+  -- [POST-WAVE RE-ADJUDICATION (2026-07-31): **STILL FALSE at the NEW keying**,
+  --  same kernel as carrier A above (tB2c = tA2a shares the head's refuted
+  --  `IsNodeLift` conjunct — see the dated note at carrier A's site). Compiled
+  --  countermodel: `toy_memRealizableB_false` (§POST-WAVE section at EOF).
+  --  Sorry stands, statement byte-unchanged.]
 
 open Classical in
 noncomputable def toyCellB : EntSt 2 (ZMod 2) 2 → Box 2 9 → ToyCell
@@ -2226,6 +2245,135 @@ theorem toy_state_cell :
           ToyCell.splitC :=
   state_cell_tA2a _
 
+/-! #### POST-WAVE BUILD (2026-07-31): the two-node K-card counter-instance nodes.
+The blocker recorded in `twoNodeKcardH`'s docstring below — "blocked on a built
+`Stage 2 F4` with `Nat.card ↥K = 4` … precisely task #44's pending sub-project" — was
+DISCHARGED by BP2 Block G: HK-15's queue-item-16 family (`gateChildStage`, S9-forged at
+`bStageP` over `StageCoreL` + `gateTransHyp`) delivers the card-4 stage at the gate pins
+(1, 3, 1, 0), and HK-25 (`HC2/HK25_recGate.lean`) already rides it with a recentering
+node `ν₁rec`. The counter-instance per the blueprint bracket (card K₀ = p, card K₁ = p²,
+g₀ = 1): a root read over `bStageP` (card K₀ = 2) with RECORDED g₀ = 1 at the pair
+(e₀, h₀) = (2, 1) — e₀ = 2 keeps the width chain D₁ = e₀·g₀·D₀ = 2 = deg fq honest, so
+W-MULTIPLICATIVITY is the UNIQUE failing `HistLawful` clause — and HK-25's child re-lined
+for the e₀ = 2 stretch. New leaves only; the pinned statements are byte-unchanged. -/
+section TwoNodeKcardBuild
+
+open LeanUrat.MovesJ in
+/-- the ambient count of the base pin's residue carrier: `card ↥bStageP.K = 2`
+(K₂ ≅ 𝔽₂ inside F4; two-element enumeration by HK-13's `bStageP_K_cases`). -/
+private lemma bStagePKcard : Nat.card ↥(bStageP.K) = 2 := by
+  rw [Nat.card_eq_two_iff]
+  refine ⟨0, 1, zero_ne_one, ?_⟩
+  ext x
+  simp only [Set.mem_insert_iff, Set.mem_singleton_iff, Set.mem_univ, iff_true]
+  exact bStageP_K_cases x
+
+open LeanUrat.MovesJ in
+/-- **the K-card ROOT read** (records 5+7's carrier root, post-wave build 2026-07-31):
+the root read over the base pin `bStageP` (K = K₂, card 2) with RECORDED `g = 1` — the
+counter-instance datum — at the read pair (e, h) = (2, 1): side slots 0–2 with stride 2,
+canonical Bézout `(s, t) = (0, 1)` (`2·0 + 1·1 = 1`, `t ∈ [0, 2)`), `γ₀ = 2` (γ-tie
+`2 = 2·(1·0) + 2·1`), `a = −1` (anchor `2·(−1) = 0 − 1·2`), `ψ = z − 1` (deg = g = 1),
+`pat ≡ 1`, `Ranch = z + 1 = ψ¹` (`μ = 1`), `line = ⟨1, 1/2⟩` (slope law
+`(1/2)·(2·1·1) = 1`), `u* = 0` at the endpoint base index 2. Root side
+`s0 + wSide = 2 ≤ toyN` with monic-lead `sideDigit 1 = 1`. -/
+noncomputable def twoNodeKcardRoot : Node 2 LeanUrat.MovesJ.F4 where
+  species := ReadSpecies.root
+  σ := bStageP
+  e := 2
+  h := 1
+  s := 0
+  t := 1
+  g := 1
+  μ := 1
+  a := -1
+  s0 := 0
+  wSide := 2
+  Dwidth := 1
+  line := ⟨1, 1/2⟩
+  ustar := 0
+  gam := 2
+  zbar := 1
+  center := 1
+  lift := 0
+  ψ := Polynomial.X - Polynomial.C 1
+  pat := fun _ => 1
+  Ranch := Polynomial.X + 1
+  he := by norm_num
+  hh := le_refl 1
+  hcop := by norm_num
+  hbez := by norm_num
+  hbezCanon := by norm_num
+  hg := le_refl 1
+  hμ := le_refl 1
+  hEdvd := dvd_refl 2
+  hDwidth := Polynomial.natDegree_X.symm
+  hψmonic := Polynomial.monic_X_sub_C 1
+  hψdeg := Polynomial.natDegree_X_sub_C 1
+  hψirr := Polynomial.irreducible_X_sub_C 1
+  hRanch := by
+    show (Polynomial.X + 1 : Polynomial ↥bStageP.K)
+        = ∑ k ∈ Finset.range 2,
+            (Polynomial.C (1 : ↥bStageP.K)
+              * (Polynomial.X : Polynomial ↥bStageP.K) ^ k)
+    rw [Finset.sum_range_succ, Finset.sum_range_one]
+    simp
+    ring
+  hpat0 := one_ne_zero
+  hpatTop := one_ne_zero
+  hAnchor := by norm_num
+  hLineU := by
+    show (1 : ℚ) - 1 / 2 * (((0 + 2) * 1 : ℕ) : ℚ) = 0
+    norm_num
+  hOrd := by
+    have h2 : (2 : LeanUrat.MovesJ.F4) = 0 := by
+      exact_mod_cast CharP.cast_eq_zero LeanUrat.MovesJ.F4 2
+    have h11 : (1 : LeanUrat.MovesJ.F4) + 1 = 0 := by
+      rw [show (1 : LeanUrat.MovesJ.F4) + 1 = 2 from by norm_num]; exact h2
+    have hnegF : (-1 : LeanUrat.MovesJ.F4) = 1 := neg_eq_iff_add_eq_zero.mpr h11
+    have hneg : (-1 : ↥bStageP.K) = 1 := by
+      apply bStageP.K.subtype.injective
+      simp only [map_neg, map_one]
+      exact hnegF
+    have hψeq : (Polynomial.X - Polynomial.C (1 : ↥bStageP.K))
+        = Polynomial.X + 1 := by
+      rw [sub_eq_add_neg, ← Polynomial.C_neg, hneg, Polynomial.C_1]
+    refine ⟨?_, ?_⟩
+    · rw [pow_one]; exact dvd_of_eq hψeq
+    · rw [hψeq]
+      intro hdvd
+      have hne : (Polynomial.X + 1 : Polynomial ↥bStageP.K) ≠ 0 := by
+        rw [← Polynomial.C_1]; exact (Polynomial.monic_X_add_C 1).ne_zero
+      have hnd : (Polynomial.X + 1 : Polynomial ↥bStageP.K).natDegree = 1 := by
+        rw [← Polynomial.C_1]; exact Polynomial.natDegree_X_add_C 1
+      have hle := Polynomial.natDegree_le_of_dvd hdvd hne
+      rw [Polynomial.natDegree_pow, hnd] at hle
+      omega
+  hzbarRoot := by
+    show Polynomial.eval₂ bStageP.K.subtype ((1 : LeanUrat.MovesJ.F4ˣ) : LeanUrat.MovesJ.F4)
+        (Polynomial.X - Polynomial.C 1) = 0
+    rw [Polynomial.eval₂_sub, Polynomial.eval₂_X, Polynomial.eval₂_C]
+    simp
+  hspecInc := by intro h; simp at h
+  hspecRec := by intro h; simp at h
+  hspecRecCenter := by intro h; simp at h
+
+open LeanUrat.MovesJ in
+/-- **the K-card CHILD read** — HK-25's recentering read `ν₁rec` on the card-4
+unramified gate child `σ₁rec` (= HK-15's `gateChildStage` at the gate pins (1,3,1,0),
+`Nat.card ↥K = 4` by `gateChildStage_K_card`), RE-LINED for THIS pin's root stretch
+(STR₁ = e₀ = 2): `line = ⟨3/2, 3/4⟩` (slope law `(3/4)·(1·2·2) = 3`, `u*₁ = 0` at the
+endpoint base index 2, steepening `1/2 < 3/4`); every other field is `ν₁rec`'s
+(γ₁ = 3 = 1·(2·0) + 1·3 at the new stretch — the γ-tie stays exact). -/
+noncomputable def twoNodeKcardChild : Node 2 LeanUrat.MovesJ.F4 :=
+  { HK25.ν₁rec with
+    line := ⟨3/2, 3/4⟩
+    hLineU := by
+      show (3 / 2 : ℚ) - 3 / 4 * (((0 + 1) * 2 : ℕ) : ℚ) = 0
+      norm_num }
+
+end TwoNodeKcardBuild
+
 /-- records 5+7's gate — the SEPARATE 𝔽₄-type carrier (§0 record #7's two-node
 K-card instance; the history pin is its own OPEN construction, `twoNodeKcardH`).
 STATEMENT REPAIR (pin-repair pass, 2026-07-30, charge item 5): the E-phase typed this
@@ -2241,11 +2389,59 @@ trivial — `ℤ₂ˣ ≅ ℤ/2 × ℤ₂` has no nontrivial hom to `ℤ/3` — 
 law fails at every weight), the repo's built F4 stages (`U31.bStage`, HC1 `σpin`) are
 degree-1/card-2, and the S9c child-stage route (`S9c_coreAssembly` at `bStage`/ψ₂,
 e·g = 2 > 1) needs the unbuilt `StageCoreL bStage` + `TransHyp` package — precisely
-task #44's pending 2-node ReadsOf gate sub-project. Recorded; sorry stands. -/
-noncomputable def twoNodeKcardH : History 2 LeanUrat.MovesJ.F4 := by sorry
+task #44's pending 2-node ReadsOf gate sub-project. Recorded; sorry stands.
+[POST-WAVE BUILD (2026-07-31, G1b re-adjudication — the census's UNBLOCKED row): the
+recorded blocker is DISCHARGED, exactly along the route the record names — BP2 Block G
+executed the S9 child-stage package (HK-15 `gateChildStage` over `StageCoreL bStageP` +
+`gateTransHyp`, queue item 16), delivering the card-4 `Stage 2 F4` at the gate pins
+(1, 3, 1, 0) (`gateChildStage_K_card`; HK-25's `σ₁rec`). The pin is now BUILT:
+root = `twoNodeKcardRoot` (bStageP frame, card K₀ = 2 = p, RECORDED g₀ = 1, read pair
+(2, 1)), child = `twoNodeKcardChild` (HK-25's `ν₁rec` re-lined for the e₀ = 2 stretch;
+card K₁ = 4 = p²) — the blueprint bracket's exact card/g₀ spec. Sorry retired; the
+signature is byte-unchanged.] -/
+noncomputable def twoNodeKcardH : History 2 LeanUrat.MovesJ.F4 :=
+  { nodes := [twoNodeKcardRoot, twoNodeKcardChild]
+    nonempty := by simp
+    root_iff := by
+      intro j hj
+      have hj2 : j < 2 := by simpa using hj
+      interval_cases j
+      · exact iff_of_true rfl rfl
+      · refine iff_of_false ?_ (by omega)
+        show LeanUrat.MovesJ.HK25.ν₁rec.species ≠ ReadSpecies.root
+        intro hcontra
+        exact ReadSpecies.noConfusion hcontra }
 
+/-- records 5+7's gate (post-wave build 2026-07-31): the two-node K-card
+counter-instance — card K₀ = 2 = p (`bStageP.K`), card K₁ = 4 = p² (HK-15's card-4 gate
+child), RECORDED g₀ = 1 — FAILS the REV-4 W-MULTIPLICATIVITY clause
+(`card K₁ = card K₀ ^ g₀` reads `4 = 2¹`); removing the clause makes this gate fail to
+prove: every OTHER `HistLawful` clause holds at the pin (NodeDataLawful: cards 2 = 2¹
+and 4 = 2², e/g/μ ≥ 1 both; root deg Φ₀ = deg X = 1; w₀-clause card K₀ = 2; slope ties
+(1/2)·(2·1·1) = 1 and (3/4)·(1·2·2) = 3 at STR₁ = e₀ = 2; γ-ties 2 = 2·(1·0) + 2·1 and
+3 = 1·(2·0) + 1·3; anchors 2·(−1) = 0 − bezT(2,1)·2 with bezT(2,1) = 1 and
+1·0 = 0 − bezT(1,3)·3 with bezT(1,3) = 0; e ∣ wSide both; g·μ = 1 ≤ wSide/e both;
+window 0 + 1 ≤ μ₀ = 1; width chain D₁ = 2 = 2·1·1 = childWidth₀; steepening 1/2 < 3/4;
+root box 0 + 2 ≤ toyN = 2; monic-lead sideDigit(wSide₀/e₀) = pat 1 = 1). -/
 theorem toy_v8_wchain : ¬ HistLawful 2 toyN twoNodeKcardH := by
-  sorry
+  intro hlaw
+  have hi : 0 + 1 < twoNodeKcardH.nodes.length := by
+    show 0 + 1 < 2
+    omega
+  -- the chain clause at i = 0; its 4th conjunct is W-MULTIPLICATIVITY
+  have hw := (hlaw.2.2.2.2.2.2.1 0 hi).2.2.2
+  -- the child card: 4 (HK-15's discharged G1 carrier check)
+  have h4 : Nat.card ↥((twoNodeKcardH.nodes[0+1]'hi).σ.K) = 4 :=
+    LeanUrat.MovesJ.gateChildStage_K_card 1 3 1 0 (le_refl 1) (by norm_num)
+      (by norm_num) (by norm_num) (fun _ => rfl) LeanUrat.MovesJ.HK47.transHyp_gate.hiaug
+  -- the root side: card K₀ ^ g₀ = 2¹ = 2
+  have h2 : Nat.card ↥((twoNodeKcardH.nodes[0]'(by omega)).σ.K)
+      ^ ((twoNodeKcardH.nodes[0]'(by omega)).g) = 2 := by
+    show Nat.card ↥(LeanUrat.MovesJ.bStageP.K) ^ 1 = 2
+    rw [pow_one]
+    exact bStagePKcard
+  have hcontra : (4 : ℕ) = 2 := h4.symm.trans (hw.trans h2)
+  norm_num at hcontra
 
 /-! #### the p = 3 stage transport (pin-repair pass, 2026-07-30, charge items 7/8):
 TRANSPORT of the de-privatized `LeanUrat.MovesJ.sigma0 : Stage 3 F9` (HC2/U28's base
@@ -2548,5 +2744,94 @@ theorem toy_v8_monic : ¬ HistLawful 3 toyN3 oneNodePatH := by
     push_cast at hml
     exact hml
   exact absurd hfin (by decide)
+
+/-! #### POST-WAVE RE-ADJUDICATION of the two `mem_realizable` admissions (2026-07-31;
+G1b re-run under the HK-06 (S-a) re-keyed `HistoryCoherent` — the census's Q7 row).
+VERDICT: **STILL FALSE at the NEW keying**, both carriers. The (S-a) repair moved the
+`TransitionCoreL` keying to the σV regrade at the CHILD pair, but the recorded
+`IsNodeLift (parent) (child).σ.Φ` conjunct of the non-recentering leg is byte-unchanged
+— and at the toys' pinned tables it is refuted OUTRIGHT: the leaves' frame is the pinned
+`toyStage` with key `Φ = X` of degree 1, so the lift equation
+`X = X^{e·g} + Σ_{k<g} tt k·X^{e·k}` at the head's (e, g) = (1, 1) forces `tt 0 = 0`,
+while `ψ₀ = z − 1` has `ψ₀.coeff 0 = −1 ≠ 0` (char 2), forcing `tt 0 ≠ 0`. (The
+pre-wave adjudication's degree-collision route through `child_reps` also remains live;
+this kernel is one conjunct shorter and survives ANY re-keying that keeps the recorded
+lift.) M1 hygiene: the two leaves below refute VERBATIM the `mem_realizable` field
+Props of `toyModel`/`toyModelB` (MovesD `TreeModel` at `toyMemA`/`toyMemB`, `polTriv`)
+against the POST-HK-06 `HistoryCoherent`; the two field sorries stand at their sites,
+statements byte-unchanged, with dated notes appended there. -/
+section PostWaveMemRealizable
+
+/-- the shared kernel: the head's recorded lift onto the pinned leaf key
+`toyStage.Φ = X` is impossible at the NEW keying's `IsNodeLift` (consumed by BOTH
+tA2a's and tA2b's (S-a) legs — the leaves share the frame pin `toyStage`). -/
+theorem toy_headNodeLift_false : ¬ IsNodeLift toyHead toyStage.Φ := by
+  rintro ⟨tt, -, hk, hsum⟩
+  have hc : toyHead.ψ.coeff 0 ≠ 0 := by
+    show (X - Polynomial.C 1 : Polynomial ↥toyStage.K).coeff 0 ≠ 0
+    rw [Polynomial.coeff_sub, Polynomial.coeff_X_zero, Polynomial.coeff_C_zero]
+    simp
+  have hne : tt 0 ≠ 0 := (hk 0 toyHead.hg hc).1
+  apply hne
+  have hs : toyStage.Φ = toyStage.Φ + tt 0 := by
+    calc toyStage.Φ
+        = toyHead.σ.Φ ^ (toyHead.e * toyHead.g)
+            + ∑ k ∈ Finset.range toyHead.g, tt k * toyHead.σ.Φ ^ (toyHead.e * k) := hsum
+      _ = toyStage.Φ + tt 0 := by
+          show (X : Polynomial ℤ_[2]) ^ (1 * 1)
+              + ∑ k ∈ Finset.range 1, tt k * (X : Polynomial ℤ_[2]) ^ (1 * k)
+            = X + tt 0
+          rw [Finset.sum_range_one]
+          norm_num
+  have := congrArg (fun z => z - toyStage.Φ) hs
+  simpa using this.symm
+
+/-- countermodel leg A: `tA2a` is NOT `HistoryCoherent` at the post-HK-06 keying — the
+(S-a) leg at i = 0 demands the refuted `IsNodeLift toyHead toyStage.Φ`. -/
+theorem toy_hcoh_tA2a_false : ¬ HistoryCoherent tA2a := by
+  intro hcoh
+  have hi : 0 + 1 < tA2a.nodes.length := by
+    show 0 + 1 < 2
+    omega
+  obtain ⟨-, σV, -, hlift, -⟩ :=
+    (hcoh.2.2.2 0 hi).2.1 (fun h => ReadSpecies.noConfusion h)
+  exact toy_headNodeLift_false hlift
+
+/-- countermodel leg B: `tA2b` likewise (the leaf-b frame is the same pinned
+`toyStage`). -/
+theorem toy_hcoh_tA2b_false : ¬ HistoryCoherent tA2b := by
+  intro hcoh
+  have hi : 0 + 1 < tA2b.nodes.length := by
+    show 0 + 1 < 2
+    omega
+  obtain ⟨-, σV, -, hlift, -⟩ :=
+    (hcoh.2.2.2 0 hi).2.1 (fun h => ReadSpecies.noConfusion h)
+  exact toy_headNodeLift_false hlift
+
+/-- **the carrier-A countermodel** (M1 hygiene): the Prop of `toyModel`'s
+`mem_realizable` field — byte-identical binder shape, at the POST-HK-06
+`HistoryCoherent` — is FALSE: `toyMemA` realizes `tA2a` at the all-zero box member,
+and `tA2a` is not coherent. The field's sorry (G1a site above) is BLOCKED-FALSE at
+the new keying too. -/
+theorem toy_memRealizableA_false :
+    ¬ (∀ (H : History 2 (ZMod 2)) (x : Box 2 9), toyMemA (some H) x →
+        HistoryCoherent H ∧ Realizable H ∧ polTriv.IsCanonPres H) := by
+  intro hall
+  have hmem : toyMemA (some tA2a) (fun _ => 0) :=
+    ⟨Or.inr (Or.inl rfl), rfl, rfl, rfl, rfl, rfl, rfl⟩
+  exact toy_hcoh_tA2a_false (hall tA2a (fun _ => 0) hmem).1
+
+/-- **the carrier-B countermodel** (M1 hygiene): the Prop of `toyModelB`'s
+`mem_realizable` field is FALSE — `toyMemB` realizes `tB2c = tA2a` at the all-zero
+box member. -/
+theorem toy_memRealizableB_false :
+    ¬ (∀ (H : History 2 (ZMod 2)) (x : Box 2 9), toyMemB (some H) x →
+        HistoryCoherent H ∧ Realizable H ∧ polTriv.IsCanonPres H) := by
+  intro hall
+  have hmem : toyMemB (some tA2a) (fun _ => 0) :=
+    Or.inr ⟨Or.inl rfl, rfl, rfl, rfl, rfl, rfl⟩
+  exact toy_hcoh_tA2a_false (hall tA2a (fun _ => 0) hmem).1
+
+end PostWaveMemRealizable
 
 end LeanUrat.MovesT
