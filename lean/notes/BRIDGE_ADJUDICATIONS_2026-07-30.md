@@ -818,3 +818,11 @@ violations), forcing the honest convention pin. All pass-2 findings
 repaired (REALIZED single notion + audit table; Thm 2(a) unconditional;
 exhaustion caveat (E-N) stated OPEN). Pass 3 (Codex, V24) launched —
 §4 needs re-verification against the sheared displays.
+
+## O-2A R5 (2026-08-01, commit b337195)
+OL-6 DECLARED (run decomposition + chain binding at EVERY level, ONE general
+law; the [F.0] unbound-c fixed; Theorem 2(D) base AND step re-founded); all
+P2 gaps + the undispositioned V20 gap repaired; unbound-c sweep done
+(cross-unit: O3design F1 has the same pattern — flagged to its owner, not
+edited). Core THRICE confirmed. Residue = SIX exactly-stated open lemmas
+(OL-2a-1..6). V25 (rev-4 re-verification) launched.
