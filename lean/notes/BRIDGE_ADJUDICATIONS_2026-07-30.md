@@ -872,3 +872,16 @@ falsifier); Lean units U-B (O-12 pole-free), U-D (counting lemma), U-E
 ## GREEN (O-12 pole-free layer + the counting lemma + WGEO degree-1 — three
 ## more verified-math->Lean round-trips); GD23 delivered (falsifier-first,
 ## 0 violations) -> V26 hostile verification launched. CU-1 gate running.
+
+## WAVE 6 COMPLETE (2026-08-01, commits 4e7ad28/4d31f5a/ec20db8/+)
+CU-1 GATE SURVIVES (depth-3 falsifier at order-2 states: 470,736 instances,
+0 violations of all nine checks) and THE CU-1 PROOF IS WRITTEN (one ordinary
+chain-length induction; Corollary CU-1-ADEQ kills the global ADEQ object;
+residue = exactly the GD families, nothing new). Bonus: the checker caught a
+convention defect -> the coherent slot-normalization countermodel (naive
+reading refuted 1,818x) — GD-3's statement must carry it. GD23: order-<=1
+layer PROVED over ARBITRARY complete DVR (D-3 killed; O_delta and F_q[[t]]
+are instances); DEVID at every order; w=v modulo one flagged transcription
+T-1; falsifiers 0/8,762. DELTA 2 = the tree's law (recut 8-step path). Lean
+U-B/U-D/U-E green. V26 (GD23) + V27 (CU-1) + the literature unit
+(T-1/T-2/ML-scope confirmations) now run.
