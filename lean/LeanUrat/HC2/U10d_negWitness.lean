@@ -214,6 +214,123 @@ lemma prevRim_le_root {n : ℕ} {H : History p F} (hcoh : HistoryCoherent H)
       rw [hstep]
       exact le_trans hchain (by rw [← hprev]; exact ih hk)
 
+/-- THE REFUTATION KERNEL (the in-file record's exact recipe, U10_zcStep.lean:909–925):
+on ANY configuration satisfying `zc_step_confine`'s own hypothesis class (coherent; `N ≥ 1`;
+`i + 1 < len`) whose ROOT read has `s0₀ = 0`, `0 < ustar₀`, `wSide₀ < n`, the coordinate
+`(0, wSide₀)` — box index `n − 1 − wSide₀` — is a STRIP cut of read 0, hence pinned in
+`Σ_{i+2}` (pin persistence), yet sits at-or-beyond the rim `prevRim n (i+1)`: the claimed
+confinement bound FAILS at it.  (`hreal`/`hbox` are not consumed: the violation needs
+none of realizability/box placement — strictly stronger than refuting inside the class.) -/
+theorem confine_bound_fails {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
+    (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
+    (hcoh : HistoryCoherent H) (hN : 1 ≤ N)
+    (i : ℕ) (hi1 : i + 1 < H.nodes.length) (h0 : 0 < H.nodes.length)
+    (hs0 : (H.nodes[0]'h0).s0 = 0)
+    (hu : 0 < (H.nodes[0]'h0).ustar)
+    (hw : (H.nodes[0]'h0).wSide < n) :
+    ∃ j : Fin (n * N), (mkSigma H n N S vOf (i+2)).pinned j = true ∧
+      ¬ ((boxChart n N j).2 < H.prevRim n (i + 1)) := by
+  classical
+  have hn0 : 0 < n := lt_of_le_of_lt (Nat.zero_le _) hw
+  -- the root frame's key has degree 1 (coherence clause 1), so Dwidth₀ = 1
+  have hD1 : (H.nodes[0]'h0).Dwidth = 1 := by
+    rw [(H.nodes[0]'h0).hDwidth]
+    exact hcoh.1 h0
+  -- the witness box index: level 0, base index wSide₀ (chart is base-DESCENDING)
+  have hjlt : n - 1 - (H.nodes[0]'h0).wSide < n * N := by
+    calc n - 1 - (H.nodes[0]'h0).wSide < n := by omega
+      _ = n * 1 := (Nat.mul_one n).symm
+      _ ≤ n * N := Nat.mul_le_mul_left n hN
+  have hbc1 : (boxChart n N ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩).1 = 0 := by
+    show (n - 1 - (H.nodes[0]'h0).wSide) / n = 0
+    exact Nat.div_eq_of_lt (by omega)
+  have hbc2 : (boxChart n N ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩).2
+      = (H.nodes[0]'h0).wSide := by
+    show n - 1 - (n - 1 - (H.nodes[0]'h0).wSide) % n = (H.nodes[0]'h0).wSide
+    rw [Nat.mod_eq_of_lt (by omega)]
+    omega
+  -- read-0 height and floor at the witness coordinate
+  have hht0 : H.htH 0 (boxChart n N ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩) = 0 := by
+    unfold History.htH
+    rw [hbc1]
+    simp
+  have hfl : H.floorH 0 (boxChart n N ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩).2 = ⊥ := rfl
+  -- root fine slot and slot valuation at base wSide₀ (`Dwidth₀ = 1`, `s0₀ = 0`, `hLineU`)
+  have hfs : (H.nodes[0]'h0).fineSlot (H.nodes[0]'h0).wSide = (H.nodes[0]'h0).wSide := by
+    unfold Node.fineSlot
+    rw [hD1, Nat.div_one]
+  have hsv : (H.nodes[0]'h0).slotVal (H.nodes[0]'h0).wSide = (H.nodes[0]'h0).ustar := by
+    unfold Node.slotVal
+    rw [hD1, Nat.mul_one]
+    have hLU := (H.nodes[0]'h0).hLineU
+    rw [hs0, hD1, Nat.zero_add, Nat.mul_one] at hLU
+    exact hLU
+  -- the witness is a read-0 STRIP cut: in-band (height 0 ∈ (⊥, ustar₀]), non-value (0 ≠ ustar₀)
+  have hband : inFreshBand H n (boxChart n N) 0 (H.nodes[0]'h0)
+      ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩ := by
+    unfold inFreshBand
+    refine ⟨?_, ?_, ?_⟩
+    · rw [hbc2]
+      show (H.nodes[0]'h0).wSide < n
+      exact hw
+    · rw [hfl, hht0]
+      exact WithBot.bot_lt_coe 0
+    · rw [hht0, hbc2, hfs, hsv]
+      exact le_of_lt hu
+  have hnotval : ¬ IsValueCoord H (boxChart n N) 0 (H.nodes[0]'h0)
+      ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩ := by
+    unfold IsValueCoord
+    rintro ⟨-, hht⟩
+    rw [hht0, hbc2, hfs, hsv] at hht
+    exact (ne_of_lt hu) hht
+  have hstrip : (⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩ : Fin (n * N))
+      ∈ stripSet H n N 0 (H.nodes[0]'h0) := by
+    unfold stripSet
+    rw [Finset.mem_filter]
+    exact ⟨Finset.mem_univ _, hband, hnotval⟩
+  -- the pin, persisted down the chain to Σ_{i+2}
+  have hpin : (mkSigma H n N S vOf (i + 2)).pinned
+      ⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩ = true :=
+    mkSigma_pinned_mono S vOf 1 (i + 2) (by omega) _
+      (mkSigma_one_pinned_of_strip S vOf h0 _ hstrip)
+  -- the bound violation: prevRim n (i+1) ≤ μ₀·cW₀ ≤ wSide₀·Dwidth₀ = wSide₀
+  have hrim : H.prevRim n (i + 1) ≤ (H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth :=
+    prevRim_le_root hcoh h0 i (by omega)
+  have hroot : (H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth
+      ≤ (H.nodes[0]'h0).wSide := by
+    have h := C3_widthConfine (H.nodes[0]'h0)
+    rw [hD1, Nat.mul_one] at h
+    exact h
+  refine ⟨⟨n - 1 - (H.nodes[0]'h0).wSide, hjlt⟩, hpin, ?_⟩
+  rw [hbc2]
+  exact Nat.not_lt.mpr (le_trans hrim hroot)
+
+/-- THE NEGATION WITNESS: the ∀-sentence `ZcStepConfineStmt` (the byte-identical local
+copy of `zc_step_confine`'s statement) is FALSE at `(p, F)` GIVEN any legal configuration
+whose root read satisfies the recipe (`s0₀ = 0`, `0 < ustar₀`, `wSide₀ < n`).  The
+inhabitation of the configuration class is the standing 2-node-gate blocker — see the
+module header's honesty perimeter. -/
+theorem zcStepConfineStmt_false_of_config
+    (hwit : ∃ (n N : ℕ) (H : History p F) (keys : ℕ → Polynomial ℤ_[p])
+      (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N)),
+      HistoryCoherent H ∧ Realizable H ∧ InBox n H ∧ 1 ≤ N ∧
+      ∃ (i : ℕ) (hi1 : i + 1 < H.nodes.length) (h0 : 0 < H.nodes.length),
+        (H.nodes[0]'h0).s0 = 0 ∧ 0 < (H.nodes[0]'h0).ustar ∧
+        (H.nodes[0]'h0).wSide < n) :
+    ¬ ZcStepConfineStmt p F := by
+  intro hstmt
+  obtain ⟨n, N, H, keys, S, vOf, hcoh, hreal, hbox, hN, i, hi1, h0, hs0, hu, hw⟩ := hwit
+  obtain ⟨j, hpin, hviol⟩ := confine_bound_fails S vOf hcoh hN i hi1 h0 hs0 hu hw
+  exact hviol (hstmt S vOf hcoh hreal hbox hN i hi1 j hpin)
+
 end U10dNeg
+
+-- Axiom audit: Lean core only ({propext, Classical.choice, Quot.sound}); in particular
+-- NO sorryAx — the witness never touches the sorried U10 module (M1 coexistence rule).
+#print axioms U10dNeg.mkSigma_pinned_mono
+#print axioms U10dNeg.mkSigma_one_pinned_of_strip
+#print axioms U10dNeg.prevRim_le_root
+#print axioms U10dNeg.confine_bound_fails
+#print axioms U10dNeg.zcStepConfineStmt_false_of_config
 
 end LeanUrat.MovesJ
