@@ -1249,3 +1249,17 @@ O12PoleFree/KsubGeneral/RegPFinite/SkeletonFinite/R7_runRealizer/HK11a etc.);
 per-file gates during waves, lake build + AxChk at division checkpoints;
 commits with explicit paths + lock retries; math-revision sync duty (when a
 leaf's brief revs, its blueprint owner folds the delta).
+
+## VC6 + THE SIX BLUEPRINTS (2026-08-03, commits 0b5cd71 + ff15f35/6df11d2/1ced656/+)
+VC6: 3 blockers = the [T]->[M] genre WALKED TO COMPLETION (D-b/K-LOC the
+last of the O-11 triple; GD-1's (KP) beyond order 1; GD-6's >=2 instances —
+all named open propositions, same shape as the promoted rows); A-9 the T-U
+correspondence table (THIRD recording — EXECUTE before VC7); A-8 a stale
+leaf count. Everything else PASSED (acyclicity, the nine-row bijection,
+per-clause attribution, Sigma=1, (SL>=2), the (H6) mechanics, leaf #8's
+exact scope). ROOT r7 = the final promotions + the executed T-U table.
+BLUEPRINTS: ALL SIX DELIVERED to lean/blueprints/ (BP_I 41 units/6 waves
+incl. the Mathlib Haar map; BP_II 63 units/5 waves keyed to O12PoleFree +
+RegPFinite with 4 displayed interface rows; BP_III the dictionary carriers;
+BP_IV/V/VI per their tables). Codex plan-reviews launched (BP_V keystone
+first); division leads launch on ACCEPTs.
