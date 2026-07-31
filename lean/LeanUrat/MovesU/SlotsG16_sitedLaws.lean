@@ -111,7 +111,37 @@ nothing (the parked bundle discipline).  See the file header for the displayed
 target.  H-phase fills behind the Q5 audit; IB-G19b gates the fill. -/
 def SitedSlot_rel2a {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (S : RelSite p) (SD : SiteData p S Sp AD) : Prop :=
-  sorry
+  -- (a1): freeCoords infinite, event-algebra compatibility of `domIdent`, digit
+  -- cylinders priced into `prodEvents` (the G19b-compiled elaboration, verbatim):
+  SD.dom.freeCoords.Infinite ∧
+  (∀ W, W ∈ SD.dom.prodEvents ↔ (fun f => SD.dom.domIdent f) ⁻¹' W ∈ S.AmbEvents) ∧
+  (∀ (E : Finset (ℕ × ℕ)) (v : (ℕ × ℕ) → ↥(Fsub p S.δ)),
+    {x : SD.dom.freeCoords → ↥(Fsub p S.δ) |
+      ∀ c : SD.dom.freeCoords, (c : ℕ × ℕ) ∈ E → x c = v (c : ℕ × ℕ)} ∈ SD.dom.prodEvents) ∧
+  -- (a2): target integrality:
+  ((S.δrel : ℕ) ∣ (S.d : ℕ) ∧ 0 < S.dRel) ∧
+  -- (a3): the Teichmüller pin:
+  (∀ x, ((SD.emb.teich x : ↥(O p S.δabs)) : Wbar p)
+    = WittVector.teichmuller p (x : Kbar p)) ∧
+  -- (a5): ambient unitriangularity of `S.reframe` through `domIdent` at
+  -- `MovesC.CoordPrec`, target unitriangularity of `tgtOf` at the Fin-order,
+  -- and the Θ-commutation:
+  (∀ (F F' : S.FrameC) (x y : SD.dom.freeCoords → ↥(Fsub p S.δ)) (c : SD.dom.freeCoords),
+    (∀ c' : SD.dom.freeCoords, MovesC.CoordPrec (c' : ℕ × ℕ) (c : ℕ × ℕ) → x c' = y c') →
+    SD.dom.domIdent (S.reframe F F' (SD.dom.domIdent.symm x)) c - x c
+      = SD.dom.domIdent (S.reframe F F' (SD.dom.domIdent.symm y)) c - y c) ∧
+  (∀ (F F' : S.FrameC) (x y : Fin S.dRel → ↥(O p S.δabs)) (j : Fin S.dRel),
+    (∀ j' < j, x j' = y j') →
+    SD.frames.tgtOf F F' x j - x j = SD.frames.tgtOf F F' y j - y j) ∧
+  (∀ (F F' : S.FrameC) (f : S.Cont),
+    SD.theta.Θ (SD.dom.domIdent (S.reframe F F' f))
+      = SD.frames.tgtOf F F' (SD.theta.Θ (SD.dom.domIdent f))) ∧
+  -- (a6): dictionary injectivity + letter/shape/anchor/side preservation:
+  Function.Injective SD.dict.readDict ∧
+  (∀ r, SD.dict.tgtLetter (SD.dict.readDict r) = SD.dict.ambLetter r) ∧
+  (∀ r, SD.dict.tgtShape (SD.dict.readDict r) = SD.dict.ambShape r) ∧
+  (∀ r, SD.dict.tgtAnchor (SD.dict.readDict r) = SD.dict.ambAnchor r) ∧
+  (∀ r, SD.dict.tgtSide (SD.dict.readDict r) = SD.dict.ambSide r)
 
 /-- IB-G16 slot 2/4 — **`SitedSlot_rel2b`** (CL-8 REL.2(b), owner [2r]; the sited
 re-type of the BLOCKED `Slot_rel2b`): normalization/Jacobian — the conditioned
@@ -122,7 +152,10 @@ See the file header for the displayed target. -/
 def SitedSlot_rel2b {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (S : RelSite p) (SD : SiteData p S Sp AD)
     (CI : CInterface p Sp AD S.δabs S.dRel) : Prop :=
-  sorry
+  Slot_rel1 CI ∧
+  (0 < S.cellMass → ∀ W ∈ CI.C.V.events,
+    (fun f => SD.theta.Θ (SD.dom.domIdent f)) ⁻¹' W ∈ S.AmbEvents ∧
+    S.condMass ((fun f => SD.theta.Θ (SD.dom.domIdent f)) ⁻¹' W) = CI.C.V.vol W)
 
 /-- IB-G16 slot 3/4 — **`SitedSlot_rel2d`** (CL-8 REL.2(d), owner [2r]; the sited
 re-type of the BLOCKED `Slot_rel2d`): lift-policy compatibility — the
@@ -134,7 +167,20 @@ of the target realization event, restored at D-SC REVISION 2 finding 3).
 See the file header for the displayed target. -/
 def SitedSlot_rel2d {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (S : RelSite p) (SD : SiteData p S Sp AD) : Prop :=
-  sorry
+  -- the square:
+  (∀ f : S.Cont, SD.trees.nodeCorr (SD.trees.ambTcan f)
+    = SD.trees.tgtTcan (SD.theta.Θ (SD.dom.domIdent f))) ∧
+  -- word/read/verdict preservation:
+  (∀ t, SD.trees.tgtWord (SD.trees.nodeCorr t) = SD.trees.ambWord t) ∧
+  (∀ t, SD.trees.tgtReads (SD.trees.nodeCorr t)
+    = (SD.trees.ambReads t).map SD.dict.readDict) ∧
+  (∀ t, SD.trees.tgtVerdict (SD.trees.nodeCorr t) = SD.trees.ambVerdict t) ∧
+  -- (CF12) the `posOf_letter` wiring constraint:
+  (∀ r, AD.posLetter S.δabs (SD.trees.posOf r) = SD.dict.tgtLetter r) ∧
+  -- (R-17) the prescribed-subtree identification:
+  (∀ (T : S.PTree) (f : S.Cont), f ∈ S.SEvent T ↔
+    SD.trees.TgtRealizes (SD.trees.tgtTcan (SD.theta.Θ (SD.dom.domIdent f)))
+      (SD.trees.subtreeCorr T))
 
 /-- IB-G16 slot 4/4 — **`SitedSlot_rel2e`** (CL-8 REL.2(e), owner [2r]; the sited
 re-type of the BLOCKED `Slot_rel2e`): the β-identification (e1)–(e5) with
@@ -150,6 +196,18 @@ def SitedSlot_rel2e {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (S : RelSite p) (SD : SiteData p S Sp AD)
     (tableConv : ℕ → Prop) (consumed : Set S.PTree)
     (CI : CInterface p Sp AD S.δabs S.dRel) : Prop :=
-  sorry
+  -- (e1) compatibility:
+  (∀ s, SD.beta.stateReadsRel (SD.beta.stateDict s)
+    = (SD.beta.stateReadsAmb s).map SD.dict.readDict) ∧
+  -- (e4) UNIQUE agreement with the exported convention (R-18):
+  (tableConv SD.beta.entryFirst ∧ ∀ m, tableConv m → m = SD.beta.entryFirst) ∧
+  -- (e5) coverage + determination at the site's own `Tj` (R-16/R-18):
+  (S.Tj ∈ consumed ∧ ∀ T ∈ consumed, T = S.Tj) ∧
+  -- (e3) `Slot_rel1` displayed + MASS = ENTRY pinned unconditionally AT `S.Tj`:
+  (Slot_rel1 CI ∧
+    {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr S.Tj)}
+      ∈ CI.C.V.events ∧
+    SD.beta.β SD.beta.entryFirst S.τ S.βarg
+      = CI.C.V.vol {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr S.Tj)})
 
 end LeanUrat.MovesU
