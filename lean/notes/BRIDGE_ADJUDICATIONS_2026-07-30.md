@@ -420,3 +420,29 @@ already proved the repaired U10d). HK-25 U1 perimeter UNBLOCKED. Item-13
 LAST-NODE FLANK countermodel now LIVE.
 WITH THIS, ASVIN'S QUEUE IS 21/21 EXECUTED. Sign-off-gated remainder = the
 NEW fence events 22-27 (dual/compiled evidence each) + G13' (needs 22).
+
+## POST-WAVE ROUND LANDED (2026-07-31, commits 29b80fd/6959191/23afcf3 + census 6b30010)
+CENSUS 2026-08-01: 43 sorries / 26 files (from 114/40); PROJECT_STATE refreshed
+(resumability anchor; AX_integralClosure_dvr in the trusted table).
+HK-12 RE-ADJUDICATION: the r3b countermodel CURED at e'=1; the nu_{i+1}.e
+child-pair STRETCH compiled (HK52_stretchGate, Lean-core, incl. the literal
+factor 2 at H2ram): all four reopened V9 sorries are TRUE exactly on the
+nu_{i+1}.e = 1 sub-perimeter, FALSE-SUSPECT at >= 2. NOT force-filled.
+28. NEW SIGN-OFF ITEM (nu_{i+1}.e >= 2 disposition; menu in
+    HK12_RECHECK_2026-07-31.md): (i) sigma_{i+1}.e = 1 guard on the V9 legs
+    (statement-fence, R-tie precedent — logic-preferred) / (ii) terminal
+    recording-fence extension (breaks HK23's positive gate — disfavored) /
+    (iii) commission the gate-scale ReadsOf ramified-terminal countermodel
+    first. Even at e'=1 the closure needs the re-pointed HK-11a (R3a anchor
+    transport, ~300-line kernel — next dedicated autonomous unit).
+HK-25 CLOSED: HK25_recGate.retiredKeysExist_false — the FIRST unconditional
+compiled negation of the retired keys_exist sentence; U1_negWitness perimeter
+closed; the wave's guarded Bezout ties fire for the first time (carrier =
+HK-15's repaired (1,3,1,0) gate pair — item 16's repair enabling item HK-25:
+the queue composing with itself).
+ITEM-27 EVIDENCE: SibJcRouteA (Lean-core counting gate at the sealed F1
+integers, 5^13 != 5^12) + M07 prose + numerics; residual = OL-2 CellAssign
+inhabitation (if uninhabited, the rows are vacuous — itself a defect for the
+27 ruling).
+ASVIN DIGEST (current): sign-off wanted on items 22-27 (+G13' via 22) + NEW
+item 28; everything else is autonomous or open-math per census §4.
