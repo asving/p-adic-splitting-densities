@@ -1,0 +1,13 @@
+{
+ "id": "N6-regp-ext2000",
+ "primes_scanned": 303,
+ "faithful_pass": {
+  "2": 303,
+  "3": 303
+ },
+ "faithful_failures": [],
+ "superset_failures": [],
+ "gate_failures": [],
+ "brute_act_anchors_ok": true,
+ "E0_min_margin": "6/7"
+}
