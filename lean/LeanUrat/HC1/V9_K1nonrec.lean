@@ -215,119 +215,17 @@ private lemma v9_recenter_h_eq {σ σ' : Stage p F} {cc : ↥σ.K} {tt : Polynom
     rwa [hΦ', hw' (σ.Φ - tt)] at h
   rwa [hres] at hkey
 
-/-- **The read steepness, for EVERY read with a predecessor** (the (I-aug) at the read scale):
-`e_i·σ_i.h < h_i` for all `1 ≤ i < len`, whatever the species of `i` — a strong induction over
-the recentering chain.  At a NON-recentering predecessor `TransitionCoreL.child_h` gives
-`σ_i.h = h_{i−1}`; at a RECENTERING predecessor `v9_recenter_h_eq` gives `σ_i.h = σ_{i−1}.h` and
-the strict inductive hypothesis bounds it.  In both cases the slope law + strict steepening
-(`slope_{i−1} < slope_i`) + the width chain close the ℚ inequality. -/
-private lemma v9_readSteep_all (H : History p F) (hcoh : HistoryCoherent H) :
-    ∀ i, 1 ≤ i → ∀ hi : i < H.nodes.length,
-      ((H.nodes[i]'hi).e : ℤ) * ((H.nodes[i]'hi).σ.h : ℤ) < ((H.nodes[i]'hi).h : ℤ) := by
-  obtain ⟨hroot, hslope, hgam, htrans⟩ := hcoh
-  intro i
-  induction i using Nat.strong_induction_on with
-  | _ i IH =>
-    intro hi1 hi
-    obtain ⟨j, rfl⟩ : ∃ j, i = j + 1 := ⟨i - 1, by omega⟩
-    have hj : j < H.nodes.length := by omega
-    set νj : Node p F := H.nodes[j]'hj with hνjdef
-    set νi : Node p F := H.nodes[j + 1]'hi with hνidef
-    obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteep⟩ := htrans j hi
-    -- slope laws in ℚ
-    have hSLi := hslope (j + 1) hi
-    have hSLj := hslope j hj
-    rw [← hνidef] at hSLi
-    rw [← hνjdef] at hSLj
-    -- strFrame recursion
-    have hSTR : (H.strFrame (j + 1) : ℚ) = (H.strFrame j : ℚ) * (νj.e : ℚ) := by
-      rw [v9_strFrame_succ H j hj, ← hνjdef]; push_cast; ring
-    -- Dwidth chain, as ℚ
-    have hDw : (νi.Dwidth : ℚ) = (νj.e : ℚ) * (νj.g : ℚ) * (νj.Dwidth : ℚ) := by
-      have := hDweq
-      rw [← hνidef, ← hνjdef] at this
-      rw [this]; show ((νj.e * νj.g * νj.Dwidth : ℕ) : ℚ) = _; push_cast; ring
-    rw [← hνidef, ← hνjdef] at hsteep
-    -- positivity facts
-    have hejpos : (0 : ℚ) < (νj.e : ℚ) := by exact_mod_cast νj.he
-    have heipos : (0 : ℚ) < (νi.e : ℚ) := by exact_mod_cast νi.he
-    have hgjpos : (0 : ℚ) < (νj.g : ℚ) := by exact_mod_cast νj.hg
-    have hDjpos : (0 : ℚ) < (νj.Dwidth : ℚ) := by
-      have := νj.σ.hdeg; rw [νj.hDwidth]; exact_mod_cast this
-    have hSjpos : (0 : ℚ) < (H.strFrame j : ℚ) := by exact_mod_cast v9_strFrame_pos H j
-    have hhipos : (0 : ℚ) < (νi.h : ℚ) := by exact_mod_cast νi.hh
-    -- slope positivity of `j`
-    have hsjpos : (0 : ℚ) < νj.line.slope := by
-      have hpos : (0 : ℚ) < (νj.e : ℚ) * (H.strFrame j : ℚ) * (νj.Dwidth : ℚ) := by positivity
-      have hhjpos : (0 : ℚ) < (νj.h : ℚ) := by exact_mod_cast νj.hh
-      nlinarith [hSLj, hpos, hhjpos]
-    -- reduce the goal to ℚ
-    rw [show ((νi.e : ℤ) * (νi.σ.h : ℤ) < (νi.h : ℤ))
-        ↔ ((νi.e : ℚ) * (νi.σ.h : ℚ) < (νi.h : ℚ)) by
-      constructor <;> intro h <;> exact_mod_cast h]
-    by_cases hjrec : νj.species = ReadSpecies.recentering
-    · -- RECENTERING predecessor
-      have hrc := hrecC hjrec
-      have hσih : (νi.σ.h : ℚ) = (νj.σ.h : ℚ) := by
-        have := v9_recenter_h_eq hrc; exact_mod_cast this
-      obtain ⟨hej1, hgj1⟩ := νj.hspecRec hjrec
-      have hej1' : (νj.e : ℚ) = 1 := by rw [hej1]; norm_num
-      have hgj1' : (νj.g : ℚ) = 1 := by rw [hgj1]; norm_num
-      -- j ≥ 1 (node 0 is the root, never a recentering)
-      have hjpos : 1 ≤ j := by
-        rcases Nat.eq_zero_or_pos j with hj0 | hj0
-        · exfalso
-          apply absurd hjrec
-          rw [hνjdef, (H.root_iff j hj).mpr hj0]
-          decide
-        · exact hj0
-      have hIH := IH j (by omega) hjpos hj
-      rw [← hνjdef] at hIH
-      -- IH : e_j·σ_j.h < h_j ; with e_j = 1 : σ_j.h < h_j  (in ℤ, cast to ℚ)
-      have hIHq : (νj.σ.h : ℚ) < (νj.h : ℚ) := by
-        have : ((νj.e : ℤ) * (νj.σ.h : ℤ) < (νj.h : ℤ)) := hIH
-        have hcast : (νj.e : ℚ) * (νj.σ.h : ℚ) < (νj.h : ℚ) := by exact_mod_cast this
-        rw [hej1', one_mul] at hcast; exact hcast
-      rw [hσih]
-      -- h_j = slope_j · STR_j · Dwidth_j ; h_i = slope_i · e_i · STR_j · Dwidth_j
-      rw [hSTR, hej1', mul_one] at hSLi
-      rw [hej1', one_mul] at hSLj
-      rw [hDw, hej1', hgj1', one_mul, one_mul] at hSLi
-      have hP : (0 : ℚ) < (νi.e : ℚ) * (H.strFrame j : ℚ) * (νj.Dwidth : ℚ) := by positivity
-      have hhj : (νj.h : ℚ) = νj.line.slope * ((H.strFrame j : ℚ) * (νj.Dwidth : ℚ)) := by
-        rw [← hSLj]
-      have hhi : (νi.h : ℚ)
-          = νi.line.slope * ((νi.e : ℚ) * (H.strFrame j : ℚ) * (νj.Dwidth : ℚ)) := by
-        rw [← hSLi]
-      have step1 : (νi.e : ℚ) * (νj.σ.h : ℚ) < (νi.e : ℚ) * (νj.h : ℚ) :=
-        mul_lt_mul_of_pos_left hIHq heipos
-      have step2 : (νi.e : ℚ) * (νj.h : ℚ) < (νi.h : ℚ) := by
-        rw [hhj, hhi]
-        nlinarith [mul_lt_mul_of_pos_left hsteep hP]
-      linarith [step1, step2]
-    · -- NON-RECENTERING predecessor: σ_i.h = h_j
-      obtain ⟨hlift, htcore⟩ := hnrecC hjrec
-      have hσih : (νi.σ.h : ℚ) = (νj.h : ℚ) := by exact_mod_cast htcore.base.child_h
-      rw [hσih]
-      -- substitute the width/strFrame chains
-      rw [hSTR, hDw] at hSLi
-      have hsipos : (0 : ℚ) < νi.line.slope := lt_trans hsjpos hsteep
-      have hegge1 : (1 : ℚ) ≤ (νj.e : ℚ) * (νj.g : ℚ) := by
-        have h1 : (1 : ℚ) ≤ (νj.e : ℚ) := by exact_mod_cast νj.he
-        have h2 : (1 : ℚ) ≤ (νj.g : ℚ) := by exact_mod_cast νj.hg
-        nlinarith [h1, h2]
-      have hkeyslope : νj.line.slope < νi.line.slope * ((νj.e : ℚ) * (νj.g : ℚ)) := by
-        calc νj.line.slope < νi.line.slope := hsteep
-          _ = νi.line.slope * 1 := (mul_one _).symm
-          _ ≤ νi.line.slope * ((νj.e : ℚ) * (νj.g : ℚ)) :=
-              mul_le_mul_of_nonneg_left hegge1 (le_of_lt hsipos)
-      have hQ : (0 : ℚ) < (νi.e : ℚ) * (νj.e : ℚ) * (H.strFrame j : ℚ) * (νj.Dwidth : ℚ) := by
-        positivity
-      have hhj : (νj.h : ℚ)
-          = νj.line.slope * ((νj.e : ℚ) * (H.strFrame j : ℚ) * (νj.Dwidth : ℚ)) := hSLj.symm
-      -- goal: e_i · h_j < h_i
-      rw [hhj, ← hSLi]
-      nlinarith [mul_lt_mul_of_pos_left hkeyslope hQ]
+/- ═══ HK-06 WAVE ARCHIVAL RECORD (2026-07-31, task #44) — FOUR SUPPLY LEMMAS DELETED ═══
+   `v9_readSteep_all` (private), `V9_readSteepness`, `V9_transSteepness`, `V9_readPair`
+   were the OLD-keying read-steepness suppliers (`νᵢ.e·σᵢ.h < νᵢ.h`).  Under the ratified
+   (S-a) two-step regrade keying they are REFUTED AS STATED: the (NEW) leg's `child_h`
+   ties σᵢ.h = νᵢ.h at every node with a non-recentering predecessor, collapsing the
+   statement to `νᵢ.e·νᵢ.h < νᵢ.h` — false at Node.he/hh (BP2 §3.2 item 1, REVISION-2
+   finding 13; the compiled countermodel instance is the positive gate history H₂ram of
+   HC2/HK23_twoNodeGatePos.lean at i = 1, the HK-48 record).  Full pre-wave proofs are in
+   git history (HEAD^ of the wave commit).  The restated pre-augmentation-scale supply
+   `(νᵢ.e : ℤ)·σᵢ.wPrev σᵢ.Φ < νᵢ.h` is HK-08's post-wave unit (risk R-9: may need the
+   HK-01 addendum).  `w_strict_helper` (below) is keying-independent and stays. -/
 
 /-- The STRICT ultrametric law, DERIVED from `hwmul`/`hwult` alone (no `StageCore` needed):
 `w f < w g → w (f + g) = w f` — the two-sided min trick on `f = (f + g) + (−g)`. -/
@@ -342,189 +240,7 @@ private lemma w_strict_helper (σ : Stage p F) (f g : Polynomial ℤ_[p])
 
 end V9SteepHelpers
 
-/-- V9 step (i): the READ STEEPNESS at any read with a predecessor — from
-`HistoryCoherent`'s slope law + strict steepening,
-`h_i > h_{i−1}·e_i·e_{i−1}·g_{i−1} ≥ e_i·h_{i−1} = e_i·σ_i.h` — the `ReadPair`
-steepness hypothesis of the regrade at (ν.e, ν.h) over ν.σ. -/
-theorem V9_readSteepness {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    {H : History p F} (hcoh : HistoryCoherent H)
-    (i : ℕ) (hi : i < H.nodes.length) (hi0 : 1 ≤ i)
-    (hsp : (H.nodes[i]'hi).species ≠ ReadSpecies.recentering) :
-    ((H.nodes[i]'hi).e : ℤ) * ((H.nodes[i]'hi).σ.h : ℤ)
-      < ((H.nodes[i]'hi).h : ℤ) :=
-  v9_readSteep_all H hcoh i hi0 hi
 
-/-- **V9 step (i) at the ROOT read, `e·g ≥ 2` (REV 2, escalation round)**: the read
-steepness `e·σ.h < h` derived from the RECORDED (i, i+1) transition itself — NO
-predecessor needed (`V9_readSteepness` requires `1 ≤ i`).  Mechanism (the "σ'.h is
-FORCED via hwΦ" route): the child stage weighs its own key at `σ'.w Φ̂ = σ'.h = ν.h`
-(`hwΦ` + `child_h`), while the recorded node lift `Φ̂ = Φ^{eg} + τ` forces
-`σ'.w (Φ^{eg}) = eg·(e·σ.h)` through `hStretch`/`child_wPrev`/`child_e` on the parent
-key; if steepness FAILED (`h ≤ e·σ.h`) then every τ-slot weighs `σ.w ≥ g·h`, so
-`σ'.w τ ≥ e·g·h ≥ 2h > h` and the DERIVED strict law pins `σ'.w (Φ^{eg}) = h`,
-forcing `eg·e·σ.h = h ≤ e·σ.h` — impossible at `e·g ≥ 2`.  The corner
-`i = 0 ∧ e·g = 1` is genuinely underivable (obstruction record R3c below). -/
-theorem V9_transSteepness {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    {H : History p F} (hcoh : HistoryCoherent H)
-    (i : ℕ) (hi1 : i + 1 < H.nodes.length)
-    (hsp : (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).species ≠ ReadSpecies.recentering)
-    (hEG : 2 ≤ (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).e
-      * (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).g) :
-    ((H.nodes[i]'(Nat.lt_of_succ_lt hi1)).e : ℤ)
-        * ((H.nodes[i]'(Nat.lt_of_succ_lt hi1)).σ.h : ℤ)
-      < ((H.nodes[i]'(Nat.lt_of_succ_lt hi1)).h : ℤ) := by
-  obtain ⟨hroot, hslope, hgam, htrans⟩ := hcoh
-  obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans i hi1
-  obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
-  set ν : Node p F := H.nodes[i]'(Nat.lt_of_succ_lt hi1) with hν
-  set ν' : Node p F := H.nodes[i+1]'hi1 with hν'
-  have hlift : IsNodeLift ν ν'.σ.Φ := hliftraw
-  have htcore : TransitionCoreL ν.σ ν'.σ ν'.σ.Φ ν.e ν.h ν.zbar := htcoreraw
-  set σ : Stage p F := ν.σ with hσdef
-  set σ' : Stage p F := ν'.σ with hσ'def
-  set E : ℕ := ν.e with hE
-  set G : ℕ := ν.g with hG
-  obtain ⟨tt, htt0, httk, hPhi⟩ := hlift
-  have hce : σ'.e = E := htcore.base.child_e
-  have hch : σ'.h = ν.h := htcore.base.child_h
-  have hcw : ∀ f, σ'.wPrev f = σ.w f := htcore.base.child_wPrev
-  by_contra hcon
-  push_neg at hcon
-  -- hcon : (ν.h : ℤ) ≤ E·σ.h
-  have hE1 : 1 ≤ E := ν.he
-  have hG1 : 1 ≤ G := ν.hg
-  have hh1' : (1 : ℤ) ≤ (ν.h : ℤ) := by exact_mod_cast ν.hh
-  have hσh1' : (1 : ℤ) ≤ (σ.h : ℤ) := by exact_mod_cast σ.hh
-  have hE1' : (1 : ℤ) ≤ (E : ℤ) := by exact_mod_cast hE1
-  have hEG2' : (2 : ℤ) ≤ (E : ℤ) * (G : ℤ) := by exact_mod_cast hEG
-  have hΦmon := σ.hmonic
-  have hΦne : σ.Φ ≠ 0 := hΦmon.ne_zero
-  have hD1 : 1 ≤ σ.Φ.natDegree := σ.hdeg
-  set D : ℕ := σ.Φ.natDegree with hD
-  set τ : Polynomial ℤ_[p] := ∑ k ∈ Finset.range G, tt k * σ.Φ ^ (E * k) with hτdef
-  -- degree bookkeeping
-  have hpowne : σ.Φ ^ (E * G) ≠ 0 := pow_ne_zero _ hΦne
-  have hdegpow : (σ.Φ ^ (E * G)).degree = ((E * G * D : ℕ) : WithBot ℕ) := by
-    rw [Polynomial.degree_eq_natDegree hpowne, Polynomial.natDegree_pow]
-  have hτdeg : τ.degree < ((E * G * D : ℕ) : WithBot ℕ) := by
-    refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
-    rw [Finset.sup_lt_iff (WithBot.bot_lt_coe _)]
-    intro k hk
-    by_cases htk : tt k = 0
-    · rw [htk, zero_mul, Polynomial.degree_zero]; exact WithBot.bot_lt_coe _
-    · have hkG : k < G := Finset.mem_range.mp hk
-      have hψk : ν.ψ.coeff k ≠ 0 := fun h0 => htk (htt0 k h0)
-      obtain ⟨-, htkC, -, -⟩ := httk k hkG hψk
-      have htermne : tt k * σ.Φ ^ (E * k) ≠ 0 := mul_ne_zero htk (pow_ne_zero _ hΦne)
-      refine (Polynomial.natDegree_lt_iff_degree_lt htermne).mp ?_
-      rw [Polynomial.natDegree_mul htk (pow_ne_zero _ hΦne), Polynomial.natDegree_pow]
-      have httdeg : (tt k).natDegree < D := Polynomial.natDegree_lt_natDegree htk htkC
-      have h1 : E * k + 1 ≤ E * G := by
-        have hEk : E * k + 1 ≤ E * (k + 1) := by
-          rw [Nat.mul_succ]
-          exact Nat.add_le_add_left hE1 (E * k)
-        exact le_trans hEk (Nat.mul_le_mul_left E hkG)
-      have hb : D + E * k * D ≤ E * G * D := by
-        have h2 : (E * k + 1) * D ≤ (E * G) * D := Nat.mul_le_mul_right D h1
-        calc D + E * k * D = (E * k + 1) * D := by ring
-          _ ≤ E * G * D := h2
-      exact lt_of_lt_of_le (Nat.add_lt_add_right httdeg _) hb
-  have hΦ'deg : σ'.Φ.degree = ((E * G * D : ℕ) : WithBot ℕ) := by
-    rw [hPhi, Polynomial.degree_add_eq_left_of_degree_lt (by rw [hdegpow]; exact hτdeg),
-      hdegpow]
-  have hΦ'ne : σ'.Φ ≠ 0 := σ'.hmonic.ne_zero
-  -- child-stage weights
-  have hwPhi' : σ'.w σ'.Φ = (ν.h : ℤ) := by rw [σ'.hwΦ, hch]
-  have hwparent : σ'.w σ.Φ = (E : ℤ) * (σ.h : ℤ) := by
-    have hinC : inC σ'.Φ σ.Φ := by
-      show σ.Φ.degree < σ'.Φ.degree
-      rw [hΦ'deg, Polynomial.degree_eq_natDegree hΦne]
-      have hlt : D < E * G * D := by
-        have h2 : 2 * D ≤ E * G * D := Nat.mul_le_mul_right D hEG
-        omega
-      exact_mod_cast hlt
-    rw [σ'.hStretch σ.Φ hΦne hinC, hcw, σ.hwΦ, hce]
-  have hwpow : σ'.w (σ.Φ ^ (E * G)) = ((E * G : ℕ) : ℤ) * ((E : ℤ) * (σ.h : ℤ)) := by
-    rw [ResVal.w_pow σ' σ.Φ hΦne (E * G), hwparent]
-  -- the common contradiction, once σ'.w (Φ^{eg}) = ν.h is pinned
-  have hfinal : σ'.w (σ.Φ ^ (E * G)) = (ν.h : ℤ) → False := by
-    intro hkey
-    rw [hwpow] at hkey
-    push_cast at hkey
-    -- hkey : E·G·(E·σ.h) = ν.h  (up to orientation)
-    have hX0 : (0 : ℤ) ≤ (E : ℤ) * (σ.h : ℤ) := by positivity
-    have hmul : 2 * ((E : ℤ) * (σ.h : ℤ))
-        ≤ ((E : ℤ) * (G : ℤ)) * ((E : ℤ) * (σ.h : ℤ)) :=
-      mul_le_mul_of_nonneg_right hEG2' hX0
-    nlinarith [hkey, hcon, hmul, hE1', hσh1', hh1']
-  by_cases hτ0 : τ = 0
-  · -- no tail: Φ̂ = Φ^{eg}
-    have hkey : σ'.w (σ.Φ ^ (E * G)) = (ν.h : ℤ) := by
-      rw [← hwPhi', hPhi, hτ0, add_zero]
-    exact hfinal hkey
-  · -- tail present: every τ-slot weighs ≥ g·h under the failure hypothesis
-    have hτC : inC σ'.Φ τ := by
-      show τ.degree < σ'.Φ.degree
-      rw [hΦ'deg]; exact hτdeg
-    have hwτbound : (G : ℤ) * (ν.h : ℤ) ≤ σ.w τ := by
-      refine ResVal.w_sum_ge σ (Finset.range G) _ _ ?_ (by rw [← hτdef]; exact hτ0)
-      intro k hk htkne
-      have hkG : k < G := Finset.mem_range.mp hk
-      have htk : tt k ≠ 0 := fun h0 => htkne (by rw [h0, zero_mul])
-      have hψk : ν.ψ.coeff k ≠ 0 := fun h0 => htk (htt0 k h0)
-      obtain ⟨-, -, htkw, -⟩ := httk k hkG hψk
-      rw [σ.hwmul _ _ htk (pow_ne_zero _ hΦne), htkw,
-        ResVal.w_pow σ σ.Φ hΦne (E * k), σ.hwΦ]
-      have hk0 : (0 : ℤ) ≤ (k : ℤ) := Int.natCast_nonneg k
-      have hkh : (k : ℤ) * (ν.h : ℤ) ≤ (k : ℤ) * ((E : ℤ) * (σ.h : ℤ)) :=
-        mul_le_mul_of_nonneg_left hcon hk0
-      push_cast
-      nlinarith [hkh]
-    have hwτ' : σ'.w τ = (E : ℤ) * σ.w τ := by
-      rw [σ'.hStretch τ hτ0 hτC, hcw, hce]
-    have hwτbig : (ν.h : ℤ) < σ'.w τ := by
-      rw [hwτ']
-      have hE0 : (0 : ℤ) ≤ (E : ℤ) := by linarith
-      have hint1 : (E : ℤ) * ((G : ℤ) * (ν.h : ℤ)) ≤ (E : ℤ) * σ.w τ :=
-        mul_le_mul_of_nonneg_left hwτbound hE0
-      have hh0 : (0 : ℤ) ≤ (ν.h : ℤ) := by linarith
-      have hint2 : 2 * (ν.h : ℤ) ≤ ((E : ℤ) * (G : ℤ)) * (ν.h : ℤ) :=
-        mul_le_mul_of_nonneg_right hEG2' hh0
-      nlinarith [hint1, hint2, hh1']
-    have hkey : σ'.w (σ.Φ ^ (E * G)) = (ν.h : ℤ) := by
-      have hsum : σ'.Φ + (-τ) = σ.Φ ^ (E * G) := by rw [hPhi]; ring
-      have hne' : σ'.Φ + (-τ) ≠ 0 := by rw [hsum]; exact hpowne
-      have hlt : σ'.w σ'.Φ < σ'.w (-τ) := by
-        rw [ResVal.w_neg σ' τ hτ0, hwPhi']; exact hwτbig
-      have hs := w_strict_helper σ' σ'.Φ (-τ) hΦ'ne (neg_ne_zero.mpr hτ0) hne' hlt
-      rw [hsum, hwPhi'] at hs
-      exact hs
-    exact hfinal hkey
-
-/-- **The V9 step-(i) PACKAGE**: the full `ReadPair` of the regrade at every
-non-recentering read with a recorded successor — `he/hh/hcop/hbez` from the node,
-the canonical `e = 1 → t = 0` from `hbezCanon`, and the steepness from
-`V9_readSteepness` (`i ≥ 1`) or `V9_transSteepness` (`e·g ≥ 2`, covers the root).
-The hypothesis `1 ≤ i ∨ 2 ≤ e·g` is exactly the perimeter outside obstruction R3c. -/
-theorem V9_readPair {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
-    {H : History p F} (hcoh : HistoryCoherent H)
-    (i : ℕ) (hi1 : i + 1 < H.nodes.length)
-    (hsp : (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).species ≠ ReadSpecies.recentering)
-    (hcase : 1 ≤ i ∨ 2 ≤ (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).e
-      * (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).g) :
-    ReadPair (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).σ
-      (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).e (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).h
-      (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).s (H.nodes[i]'(Nat.lt_of_succ_lt hi1)).t := by
-  set ν : Node p F := H.nodes[i]'(Nat.lt_of_succ_lt hi1) with hν
-  refine ⟨ν.he, ν.hh, ν.hcop, ν.hbez, ?_, ?_⟩
-  · intro he1
-    have hbc := ν.hbezCanon
-    rw [he1] at hbc
-    push_cast at hbc
-    omega
-  · rcases hcase with hi0 | hEG
-    · exact v9_readSteep_all H hcoh i hi0 (Nat.lt_of_succ_lt hi1)
-    · exact V9_transSteepness hcoh i hi1 hsp hEG
 
 /-- **The PROVED half of the V9 step-(v) grading bridge** (REV 2): the regrade
 functional DOMINATES the stretched stage valuation, `e★·σ.w x ≤ wV(x)` for EVERY
@@ -2877,243 +2593,28 @@ theorem V9_K1nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   classical
   have hilen : i < H.nodes.length := by omega
   by_cases hEG : 2 ≤ (H.nodes[i]'hilen).e * (H.nodes[i]'hilen).g
-  · -- NON-CORNER: the recorded transition data are contradictory (V10 finding 2)
-    exfalso
-    obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
-    obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans i hi1
-    obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
-    have hsteep := V9_transSteepness h.2.2.1 i hi1 hsp hEG
-    -- `ψ.coeff 0 ≠ 0` from irreducibility + monicity + the unit root
-    have hψ0 : (H.nodes[i]'hilen).ψ.coeff 0 ≠ 0 := by
-      intro h0
-      obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
-      rcases (H.nodes[i]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
-      · exact Polynomial.not_isUnit_X hX
-      · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
-        have hψX : (H.nodes[i]'hilen).ψ = Polynomial.C c * Polynomial.X := by
-          rw [hu, ← hc.2]; ring
-        have hlc : c = 1 := by
-          have hm := (H.nodes[i]'hilen).hψmonic
-          rw [hψX] at hm
-          have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
-            rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
-              Polynomial.leadingCoeff_X, mul_one]
-          rw [Polynomial.Monic, hlead] at hm
-          exact hm
-        have hzb := (H.nodes[i]'hilen).hzbarRoot
-        rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
-        exact Units.ne_zero _ hzb
-    -- the P2 pin from the canonical Bézout window
-    have he1t : (H.nodes[i]'hilen).e = 1 → (H.nodes[i]'hilen).t = 0 := by
-      intro he1
-      have hc := (H.nodes[i]'hilen).hbezCanon
-      rw [he1] at hc
-      push_cast at hc
-      omega
-    exact V10_readTransition_incompatible (H.nodes[i]'hilen).σ (H.nodes[i+1]'hi1).σ
-      (H.nodes[i]'hilen).e (H.nodes[i]'hilen).h (H.nodes[i]'hilen).s
-      (H.nodes[i]'hilen).t (H.nodes[i]'hilen).g (H.nodes[i]'hilen).ψ
-      ((H.nodes[i+1]'hi1).σ.Φ) hsteep hEG (H.nodes[i]'hilen).hcop
-      (H.nodes[i]'hilen).hbez he1t hψ0 hliftraw htcoreraw.base.child_key
-      htcoreraw.base.child_e htcoreraw.base.child_wPrev
-      htcoreraw.base.child_slotmin hseq hteq
+  · -- ═══ HK-06 WAVE HONEST REOPENING (2026-07-31, task #44; the (S-a) regrade re-key) ═══
+    -- The OLD closure of this leg was `V10_readTransition_incompatible` — an EXFALSO from
+    -- the pre-wave keying's recorded contradiction.  Under the repaired leg the recorded
+    -- steep transition is CONSISTENT (HK-05 stall gate + the compiled positive 2-node gate
+    -- HC2/HK23_twoNodeGatePos.lean), so no contradiction closure exists.  This leg is the
+    -- honest transport obligation HK-52/HK-11a/HK-11b (BP2 §3.3), scheduled post-wave.
+    -- ⚠ TRUTH-UNDER-NEW-KEYING IS PART OF THAT ADJUDICATION: the recorded child weight is
+    -- now the (ν_{i+1}.e, ν_{i+1}.h)-slot-min over the σV regrade, so the displayed ℚ-form
+    -- may need the HK-11b re-scope (the ν_{i+1}.e-stretch factor).  Do NOT consume this
+    -- K1 steep (e·g ≥ 2 ⇒ e = 1 ∧ g ≥ 2 by the RG-2 recording fence) leg as settled mathematics; the sorry is the recorded HK-11 obligation.
+    sorry
   · -- `ν.e·ν.g = 1`
     rcases Nat.eq_zero_or_pos i with hi0 | hi1'
-    · -- THE R3c CORNER `i = 0 ∧ ν.e·ν.g = 1` — CLOSED (corner round, 2026-07-28)
-      -- via `v9c_corner`: child_slotmin as the cross-slot jump law + the binomial
-      -- transport at the degree-1 keys + child_dig_frame's same-weight
-      -- cross-multiplication (the mfun twists cancel) + the Taylor/Hasse
-      -- nonvanishing at the recorded root from ν.hOrd.  SideReads(iii) NOT
-      -- consumed (the ⚠ fence holds); StageCore tie laws NOT needed — the
-      -- REV-4 record's assessment is superseded by the toolkit above.
-      subst hi0
-      -- e = g = 1
-      have hEG1 : (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g = 1 := by
-        have h1 := (H.nodes[0]'hilen).he
-        have h2 := (H.nodes[0]'hilen).hg
-        have h4 : 1 * 1 ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
-          Nat.mul_le_mul h1 h2
-        rw [one_mul] at h4
-        set x := (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g with hx
-        omega
-      have hE1 : (H.nodes[0]'hilen).e = 1 := by
-        have h5 : (H.nodes[0]'hilen).e ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
-          Nat.le_mul_of_pos_right _ (H.nodes[0]'hilen).hg
-        rw [hEG1] at h5
-        have h1 := (H.nodes[0]'hilen).he
-        omega
-      have hG1 : (H.nodes[0]'hilen).g = 1 := by
-        have h5 : (H.nodes[0]'hilen).g ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
-          Nat.le_mul_of_pos_left _ (H.nodes[0]'hilen).he
-        rw [hEG1] at h5
-        have h2 := (H.nodes[0]'hilen).hg
-        omega
-      -- t = 0, s = 1 (canonical Bézout at e = 1)
-      obtain ⟨hbc1, hbc2⟩ := (H.nodes[0]'hilen).hbezCanon
-      rw [hE1] at hbc2
-      have ht0 : (H.nodes[0]'hilen).t = 0 := by push_cast at hbc2; omega
-      have hs1 : (H.nodes[0]'hilen).s = 1 := by
-        have hb := (H.nodes[0]'hilen).hbez
-        rw [hE1, ht0] at hb
-        simp at hb
-        exact hb
-      -- coherence: the recorded (0,1) transition
-      obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
-      obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans 0 hi1
-      obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
-      -- the recorded lift at e·g = 1: Φ̂ = Φ + tt 0
-      obtain ⟨tt, htt0, httk, hPhi⟩ := hliftraw
-      rw [hE1, hG1] at hPhi
-      simp only [one_mul, Finset.sum_range_one, mul_zero, pow_zero, pow_one,
-        mul_one] at hPhi
-      -- ψ.coeff 0 ≠ 0 (unit root of an irreducible monic linear ψ)
-      have hψ0 : (H.nodes[0]'hilen).ψ.coeff 0 ≠ 0 := by
-        intro h0
-        obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
-        rcases (H.nodes[0]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
-        · exact Polynomial.not_isUnit_X hX
-        · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
-          have hψX : (H.nodes[0]'hilen).ψ = Polynomial.C c * Polynomial.X := by
-            rw [hu, ← hc.2]; ring
-          have hlc : c = 1 := by
-            have hm := (H.nodes[0]'hilen).hψmonic
-            rw [hψX] at hm
-            have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
-              rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
-                Polynomial.leadingCoeff_X, mul_one]
-            rw [Polynomial.Monic, hlead] at hm
-            exact hm
-          have hzb := (H.nodes[0]'hilen).hzbarRoot
-          rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
-          exact Units.ne_zero _ hzb
-      -- the lift coefficient's recorded data at k = 0
-      have hg0 : (0 : ℕ) < (H.nodes[0]'hilen).g := by rw [hG1]; norm_num
-      obtain ⟨ht₀ne, ht₀C, ht₀w, ht₀R⟩ := httk 0 hg0 hψ0
-      rw [hG1] at ht₀w
-      have ht₀w' : (H.nodes[0]'hilen).σ.w (tt 0) = ((H.nodes[0]'hilen).h : ℤ) := by
-        rw [ht₀w]; push_cast; ring
-      -- ψ is monic linear: ψ = X + C (ψ.coeff 0), root tie
-      have hψdeg1 : (H.nodes[0]'hilen).ψ.natDegree = 1 := by
-        rw [(H.nodes[0]'hilen).hψdeg, hG1]
-      have hψlin : (H.nodes[0]'hilen).ψ
-          = Polynomial.X + Polynomial.C ((H.nodes[0]'hilen).ψ.coeff 0) :=
-        (H.nodes[0]'hilen).hψmonic.eq_X_add_C hψdeg1
-      have hzb := (H.nodes[0]'hilen).hzbarRoot
-      rw [hψlin, Polynomial.eval₂_add, Polynomial.eval₂_X, Polynomial.eval₂_C] at hzb
-      have hc₀z : (((H.nodes[0]'hilen).ψ.coeff 0 : ↥(H.nodes[0]'hilen).σ.K) : F)
-          = - (((H.nodes[0]'hilen).zbar : Fˣ) : F) := by
-        have h1 : (((H.nodes[0]'hilen).zbar : Fˣ) : F)
-            + (((H.nodes[0]'hilen).ψ.coeff 0 : ↥(H.nodes[0]'hilen).σ.K) : F) = 0 := by
-          rw [← hzb]
-          congr 1
-        exact eq_neg_of_add_eq_zero_right h1
-      -- the ψ-order and pattern data at the linear key
-      have hOrd0 : OrdPsiPoly
-          (Polynomial.X + Polynomial.C ((H.nodes[0]'hilen).ψ.coeff 0))
-          (H.nodes[0]'hilen).Ranch (H.nodes[0]'hilen).μ := by
-        rw [← hψlin]; exact (H.nodes[0]'hilen).hOrd
-      have hRanch0 : (H.nodes[0]'hilen).Ranch
-          = ∑ k ∈ Finset.range ((H.nodes[0]'hilen).wSide + 1),
-              Polynomial.C ((H.nodes[0]'hilen).pat k) * Polynomial.X ^ k := by
-        have hR := (H.nodes[0]'hilen).hRanch
-        rw [hE1, Nat.div_one] at hR
-        exact hR
-      -- child-stage ties
-      have hce : (H.nodes[0+1]'hi1).σ.e = 1 := by rw [htcoreraw.base.child_e, hE1]
-      have hch : (H.nodes[0+1]'hi1).σ.h = (H.nodes[0]'hilen).h :=
-        htcoreraw.base.child_h
-      have hcs : (H.nodes[0+1]'hi1).σ.s = 1 := by rw [hseq]; exact hs1
-      have hct : (H.nodes[0+1]'hi1).σ.t = 0 := by rw [hteq]; exact ht0
-      have hcw := htcoreraw.base.child_wPrev
-      have hsm : IsSlotMinWeight (H.nodes[0+1]'hi1).σ.w (H.nodes[0+1]'hi1).σ.Φ 1
-          (H.nodes[0]'hilen).h (H.nodes[0]'hilen).σ.w := by
-        have hcs' := htcoreraw.base.child_slotmin
-        rw [hE1] at hcs'
-        exact hcs'
-      obtain ⟨mfun, hmf⟩ := htcoreraw.child_dig_frame
-      -- ReadsOf's read-0 record
-      obtain ⟨B₀, Nd₀, Φnext, hdev₀, hΦnext, hside⟩ := h.2.2.2 0 hilen
-      have hΦn : Φnext = (H.nodes[0+1]'hi1).σ.Φ := hΦnext hi1
-      obtain ⟨⟨hside1a, hside1b⟩, hside2, -, -, -, -⟩ := hside
-      -- normalize SideReads (i)+(ii) at e = 1
-      have hside1a' : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
-          (H.nodes[0]'hilen).gam ≤ (H.nodes[0]'hilen).σ.w (B₀ j)
-            + (j : ℤ) * ((H.nodes[0]'hilen).h : ℤ) := by
-        intro j hj hne
-        have h1 := hside1a j hj hne
-        rw [hE1] at h1
-        push_cast at h1
-        linarith
-      have hside1b' : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
-          (H.nodes[0]'hilen).σ.w (B₀ j) + (j : ℤ) * ((H.nodes[0]'hilen).h : ℤ)
-            = (H.nodes[0]'hilen).gam →
-          ∃ k : ℕ, k ≤ (H.nodes[0]'hilen).wSide ∧ j = (H.nodes[0]'hilen).s0 + k ∧
-            (H.nodes[0]'hilen).pat k ≠ 0 := by
-        intro j hj hne heq
-        obtain ⟨k, hkW, hjk, hkp⟩ := hside1b j hj hne (by rw [hE1]; push_cast; linarith)
-        rw [hE1, Nat.div_one] at hkW
-        rw [hE1, one_mul] at hjk
-        exact ⟨k, hkW, hjk, hkp⟩
-      have hside2' : ∀ k : ℕ, k ≤ (H.nodes[0]'hilen).wSide →
-          (H.nodes[0]'hilen).pat k ≠ 0 →
-          B₀ ((H.nodes[0]'hilen).s0 + k) ≠ 0 ∧
-          (H.nodes[0]'hilen).σ.w (B₀ ((H.nodes[0]'hilen).s0 + k))
-            + (((H.nodes[0]'hilen).s0 + k : ℕ) : ℤ) * ((H.nodes[0]'hilen).h : ℤ)
-            = (H.nodes[0]'hilen).gam ∧
-          (H.nodes[0]'hilen).σ.R (B₀ ((H.nodes[0]'hilen).s0 + k))
-            = LaurentPolynomial.C ((H.nodes[0]'hilen).pat k) *
-              LaurentPolynomial.T (- (H.nodes[0]'hilen).σ.t
-                * (H.nodes[0]'hilen).σ.wPrev (B₀ ((H.nodes[0]'hilen).s0 + k))) := by
-        intro k hkW hkp
-        have hkW' : k ≤ (H.nodes[0]'hilen).wSide / (H.nodes[0]'hilen).e := by
-          rw [hE1, Nat.div_one]; exact hkW
-        obtain ⟨h1, h2, h3⟩ := hside2 k hkW' hkp
-        rw [hE1, one_mul] at h1 h2 h3
-        refine ⟨h1, ?_, h3⟩
-        push_cast at h2 ⊢
-        linarith
-      -- THE CORNER CORE FIRES
-      have hres := v9c_corner (H.nodes[0]'hilen).σ (H.nodes[0+1]'hi1).σ
-        (H.nodes[0]'hilen).h (hroot hilen) hce hch hcs hct hcw hsm
-        (tt 0) ht₀ne ht₀C ht₀w' ((H.nodes[0]'hilen).ψ.coeff 0) ht₀R hPhi
-        (H.nodes[0]'hilen).zbar hc₀z
-        (H.nodes[0]'hilen).Ranch (H.nodes[0]'hilen).μ (H.nodes[0]'hilen).s0
-        (H.nodes[0]'hilen).wSide (H.nodes[0]'hilen).pat (H.nodes[0]'hilen).gam
-        hRanch0 (H.nodes[0]'hilen).hpat0 hOrd0 mfun hmf f h.1.ne_zero
-        B₀ Nd₀ hdev₀ B Nd hdev hNd hside1a' hside1b' hside2'
-      obtain ⟨hBμne, hBμw⟩ := hres
-      refine ⟨hBμne, ?_⟩
-      -- the ℚ-form: strFrame 1 = 1, childWidth = 1, line.at (μ·1) = gam − h·μ
-      have hSTR0 : H.strFrame 0 = 1 := by
-        unfold History.strFrame
-        simp
-      have hSTR1 : H.strFrame (0 + 1) = 1 := by
-        rw [v9_strFrame_succ H 0 hilen, hSTR0, hE1]
-      have hDw1 : (H.nodes[0]'hilen).Dwidth = 1 := by
-        rw [(H.nodes[0]'hilen).hDwidth, hroot hilen]
-      have hCW : (H.nodes[0]'hilen).childWidth = 1 := by
-        unfold Node.childWidth
-        rw [hE1, hG1, hDw1]
-      have hsl := hslope 0 hilen
-      rw [hSTR0, hE1, hDw1] at hsl
-      push_cast at hsl
-      have hslope1 : (H.nodes[0]'hilen).line.slope = ((H.nodes[0]'hilen).h : ℚ) := by
-        linarith [hsl]
-      have hgam0 := hgam 0 hilen
-      rw [hSTR0, hE1] at hgam0
-      push_cast at hgam0
-      have hLU := (H.nodes[0]'hilen).hLineU
-      rw [hDw1] at hLU
-      show ((H.nodes[0+1]'hi1).σ.w (B (H.nodes[0]'hilen).μ) : ℚ)
-          = (H.strFrame (0 + 1) : ℚ)
-            * (H.nodes[0]'hilen).line.at
-                ((H.nodes[0]'hilen).μ * (H.nodes[0]'hilen).childWidth)
-      rw [hSTR1, hCW, mul_one]
-      unfold Line.at at hLU ⊢
-      rw [hslope1] at hLU ⊢
-      rw [hBμw]
-      push_cast at hLU ⊢
-      linarith [hgam0, hLU]
+    · -- ═══ HK-06 WAVE HONEST REOPENING (2026-07-31, task #44) — THE CORNER, RE-OPENED ═══
+      -- K1 corner (i = 0 ∧ e·g = 1; OLD proof: v9c_corner toolkit): the pre-wave honest proof consumed the OLD-keyed transition record
+      -- (TransitionCoreL at the PARENT pair with unguarded s/t ties); under the (S-a)
+      -- re-key the record is keyed at (ν₁.e, ν₁.h) through the σV regrade, and the
+      -- recorded child weight gains the ν₁.e-stretch — the corner statement itself is
+      -- RE-ADJUDICATION-SUSPECT under the new keying (HK-11b scope).  Full pre-wave
+      -- proof in git history (wave commit^).  Recorded HK-11 obligation; do NOT consume
+      -- as settled mathematics.
+      sorry
     · -- `i ≥ 1`: a non-recentering non-root read is an increment; `hspecInc`
       -- forces `1 < e·g` against the case hypothesis.
       cases hspec : (H.nodes[i]'hilen).species with
@@ -3147,237 +2648,28 @@ theorem V9_E1box_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
   classical
   have hilen : i < H.nodes.length := by omega
   by_cases hEG : 2 ≤ (H.nodes[i]'hilen).e * (H.nodes[i]'hilen).g
-  · -- NON-CORNER: the recorded transition data are contradictory (V10 finding 2)
-    exfalso
-    obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
-    obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans i hi1
-    obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
-    have hsteep := V9_transSteepness h.2.2.1 i hi1 hsp hEG
-    -- `ψ.coeff 0 ≠ 0` from irreducibility + monicity + the unit root
-    have hψ0 : (H.nodes[i]'hilen).ψ.coeff 0 ≠ 0 := by
-      intro h0
-      obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
-      rcases (H.nodes[i]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
-      · exact Polynomial.not_isUnit_X hX
-      · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
-        have hψX : (H.nodes[i]'hilen).ψ = Polynomial.C c * Polynomial.X := by
-          rw [hu, ← hc.2]; ring
-        have hlc : c = 1 := by
-          have hm := (H.nodes[i]'hilen).hψmonic
-          rw [hψX] at hm
-          have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
-            rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
-              Polynomial.leadingCoeff_X, mul_one]
-          rw [Polynomial.Monic, hlead] at hm
-          exact hm
-        have hzb := (H.nodes[i]'hilen).hzbarRoot
-        rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
-        exact Units.ne_zero _ hzb
-    -- the P2 pin from the canonical Bézout window
-    have he1t : (H.nodes[i]'hilen).e = 1 → (H.nodes[i]'hilen).t = 0 := by
-      intro he1
-      have hc := (H.nodes[i]'hilen).hbezCanon
-      rw [he1] at hc
-      push_cast at hc
-      omega
-    exact V10_readTransition_incompatible (H.nodes[i]'hilen).σ (H.nodes[i+1]'hi1).σ
-      (H.nodes[i]'hilen).e (H.nodes[i]'hilen).h (H.nodes[i]'hilen).s
-      (H.nodes[i]'hilen).t (H.nodes[i]'hilen).g (H.nodes[i]'hilen).ψ
-      ((H.nodes[i+1]'hi1).σ.Φ) hsteep hEG (H.nodes[i]'hilen).hcop
-      (H.nodes[i]'hilen).hbez he1t hψ0 hliftraw htcoreraw.base.child_key
-      htcoreraw.base.child_e htcoreraw.base.child_wPrev
-      htcoreraw.base.child_slotmin hseq hteq
+  · -- ═══ HK-06 WAVE HONEST REOPENING (2026-07-31, task #44; the (S-a) regrade re-key) ═══
+    -- The OLD closure of this leg was `V10_readTransition_incompatible` — an EXFALSO from
+    -- the pre-wave keying's recorded contradiction.  Under the repaired leg the recorded
+    -- steep transition is CONSISTENT (HK-05 stall gate + the compiled positive 2-node gate
+    -- HC2/HK23_twoNodeGatePos.lean), so no contradiction closure exists.  This leg is the
+    -- honest transport obligation HK-52/HK-11a/HK-11b (BP2 §3.3), scheduled post-wave.
+    -- ⚠ TRUTH-UNDER-NEW-KEYING IS PART OF THAT ADJUDICATION: the recorded child weight is
+    -- now the (ν_{i+1}.e, ν_{i+1}.h)-slot-min over the σV regrade, so the displayed ℚ-form
+    -- may need the HK-11b re-scope (the ν_{i+1}.e-stretch factor).  Do NOT consume this
+    -- E1box steep (e·g ≥ 2 ⇒ e = 1 ∧ g ≥ 2 by the RG-2 recording fence) leg as settled mathematics; the sorry is the recorded HK-11 obligation.
+    sorry
   · -- `ν.e·ν.g = 1`
     rcases Nat.eq_zero_or_pos i with hi0 | hi1'
-    · -- THE `i = 0 ∧ e·g = 1` CORNER — the strict corner Box fires
-      subst hi0
-      -- e = g = 1
-      have hEG1 : (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g = 1 := by
-        have h1 := (H.nodes[0]'hilen).he
-        have h2 := (H.nodes[0]'hilen).hg
-        have h4 : 1 * 1 ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
-          Nat.mul_le_mul h1 h2
-        rw [one_mul] at h4
-        set x := (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g with hx
-        omega
-      have hE1 : (H.nodes[0]'hilen).e = 1 := by
-        have h5 : (H.nodes[0]'hilen).e ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
-          Nat.le_mul_of_pos_right _ (H.nodes[0]'hilen).hg
-        rw [hEG1] at h5
-        have h1 := (H.nodes[0]'hilen).he
-        omega
-      have hG1 : (H.nodes[0]'hilen).g = 1 := by
-        have h5 : (H.nodes[0]'hilen).g ≤ (H.nodes[0]'hilen).e * (H.nodes[0]'hilen).g :=
-          Nat.le_mul_of_pos_left _ (H.nodes[0]'hilen).he
-        rw [hEG1] at h5
-        have h2 := (H.nodes[0]'hilen).hg
-        omega
-      -- t = 0, s = 1 (canonical Bézout at e = 1)
-      obtain ⟨hbc1, hbc2⟩ := (H.nodes[0]'hilen).hbezCanon
-      rw [hE1] at hbc2
-      have ht0 : (H.nodes[0]'hilen).t = 0 := by push_cast at hbc2; omega
-      have hs1 : (H.nodes[0]'hilen).s = 1 := by
-        have hb := (H.nodes[0]'hilen).hbez
-        rw [hE1, ht0] at hb
-        simp at hb
-        exact hb
-      -- coherence: the recorded (0,1) transition
-      obtain ⟨hroot, hslope, hgam, htrans⟩ := h.2.2.1
-      obtain ⟨hrecC, hnrecC, hseq, hteq, hwin, hDweq, hsteepen⟩ := htrans 0 hi1
-      obtain ⟨hliftraw, htcoreraw⟩ := hnrecC hsp
-      -- the recorded lift at e·g = 1: Φ̂ = Φ + tt 0
-      obtain ⟨tt, htt0, httk, hPhi⟩ := hliftraw
-      rw [hE1, hG1] at hPhi
-      simp only [one_mul, Finset.sum_range_one, mul_zero, pow_zero, pow_one,
-        mul_one] at hPhi
-      -- ψ.coeff 0 ≠ 0 (unit root of an irreducible monic linear ψ)
-      have hψ0 : (H.nodes[0]'hilen).ψ.coeff 0 ≠ 0 := by
-        intro h0
-        obtain ⟨u, hu⟩ := Polynomial.X_dvd_iff.mpr h0
-        rcases (H.nodes[0]'hilen).hψirr.isUnit_or_isUnit hu with hX | hUnit
-        · exact Polynomial.not_isUnit_X hX
-        · obtain ⟨c, hc⟩ := Polynomial.isUnit_iff.mp hUnit
-          have hψX : (H.nodes[0]'hilen).ψ = Polynomial.C c * Polynomial.X := by
-            rw [hu, ← hc.2]; ring
-          have hlc : c = 1 := by
-            have hm := (H.nodes[0]'hilen).hψmonic
-            rw [hψX] at hm
-            have hlead : (Polynomial.C c * Polynomial.X).leadingCoeff = c := by
-              rw [Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C,
-                Polynomial.leadingCoeff_X, mul_one]
-            rw [Polynomial.Monic, hlead] at hm
-            exact hm
-          have hzb := (H.nodes[0]'hilen).hzbarRoot
-          rw [hψX, hlc, map_one, one_mul, Polynomial.eval₂_X] at hzb
-          exact Units.ne_zero _ hzb
-      -- the lift coefficient's recorded data at k = 0
-      have hg0 : (0 : ℕ) < (H.nodes[0]'hilen).g := by rw [hG1]; norm_num
-      obtain ⟨ht₀ne, ht₀C, ht₀w, ht₀R⟩ := httk 0 hg0 hψ0
-      rw [hG1] at ht₀w
-      have ht₀w' : (H.nodes[0]'hilen).σ.w (tt 0) = ((H.nodes[0]'hilen).h : ℤ) := by
-        rw [ht₀w]; push_cast; ring
-      -- ψ is monic linear: ψ = X + C (ψ.coeff 0), root tie
-      have hψdeg1 : (H.nodes[0]'hilen).ψ.natDegree = 1 := by
-        rw [(H.nodes[0]'hilen).hψdeg, hG1]
-      have hψlin : (H.nodes[0]'hilen).ψ
-          = Polynomial.X + Polynomial.C ((H.nodes[0]'hilen).ψ.coeff 0) :=
-        (H.nodes[0]'hilen).hψmonic.eq_X_add_C hψdeg1
-      have hzb := (H.nodes[0]'hilen).hzbarRoot
-      rw [hψlin, Polynomial.eval₂_add, Polynomial.eval₂_X, Polynomial.eval₂_C] at hzb
-      have hc₀z : (((H.nodes[0]'hilen).ψ.coeff 0 : ↥(H.nodes[0]'hilen).σ.K) : F)
-          = - (((H.nodes[0]'hilen).zbar : Fˣ) : F) := by
-        have h1 : (((H.nodes[0]'hilen).zbar : Fˣ) : F)
-            + (((H.nodes[0]'hilen).ψ.coeff 0 : ↥(H.nodes[0]'hilen).σ.K) : F) = 0 := by
-          rw [← hzb]
-          congr 1
-        exact eq_neg_of_add_eq_zero_right h1
-      -- the ψ-order and pattern data at the linear key
-      have hOrd0 : OrdPsiPoly
-          (Polynomial.X + Polynomial.C ((H.nodes[0]'hilen).ψ.coeff 0))
-          (H.nodes[0]'hilen).Ranch (H.nodes[0]'hilen).μ := by
-        rw [← hψlin]; exact (H.nodes[0]'hilen).hOrd
-      have hRanch0 : (H.nodes[0]'hilen).Ranch
-          = ∑ k ∈ Finset.range ((H.nodes[0]'hilen).wSide + 1),
-              Polynomial.C ((H.nodes[0]'hilen).pat k) * Polynomial.X ^ k := by
-        have hR := (H.nodes[0]'hilen).hRanch
-        rw [hE1, Nat.div_one] at hR
-        exact hR
-      -- child-stage ties
-      have hce : (H.nodes[0+1]'hi1).σ.e = 1 := by rw [htcoreraw.base.child_e, hE1]
-      have hch : (H.nodes[0+1]'hi1).σ.h = (H.nodes[0]'hilen).h :=
-        htcoreraw.base.child_h
-      have hcs : (H.nodes[0+1]'hi1).σ.s = 1 := by rw [hseq]; exact hs1
-      have hct : (H.nodes[0+1]'hi1).σ.t = 0 := by rw [hteq]; exact ht0
-      have hcw := htcoreraw.base.child_wPrev
-      have hsm : IsSlotMinWeight (H.nodes[0+1]'hi1).σ.w (H.nodes[0+1]'hi1).σ.Φ 1
-          (H.nodes[0]'hilen).h (H.nodes[0]'hilen).σ.w := by
-        have hcs' := htcoreraw.base.child_slotmin
-        rw [hE1] at hcs'
-        exact hcs'
-      obtain ⟨mfun, hmf⟩ := htcoreraw.child_dig_frame
-      -- ReadsOf's read-0 record
-      obtain ⟨B₀, Nd₀, Φnext, hdev₀, hΦnext, hside⟩ := h.2.2.2 0 hilen
-      have hΦn : Φnext = (H.nodes[0+1]'hi1).σ.Φ := hΦnext hi1
-      obtain ⟨⟨hside1a, hside1b⟩, hside2, -, -, -, -⟩ := hside
-      -- normalize SideReads (i)+(ii) at e = 1
-      have hside1a' : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
-          (H.nodes[0]'hilen).gam ≤ (H.nodes[0]'hilen).σ.w (B₀ j)
-            + (j : ℤ) * ((H.nodes[0]'hilen).h : ℤ) := by
-        intro j hj hne
-        have h1 := hside1a j hj hne
-        rw [hE1] at h1
-        push_cast at h1
-        linarith
-      have hside1b' : ∀ j : ℕ, j < Nd₀ → B₀ j ≠ 0 →
-          (H.nodes[0]'hilen).σ.w (B₀ j) + (j : ℤ) * ((H.nodes[0]'hilen).h : ℤ)
-            = (H.nodes[0]'hilen).gam →
-          ∃ k : ℕ, k ≤ (H.nodes[0]'hilen).wSide ∧ j = (H.nodes[0]'hilen).s0 + k ∧
-            (H.nodes[0]'hilen).pat k ≠ 0 := by
-        intro j hj hne heq
-        obtain ⟨k, hkW, hjk, hkp⟩ := hside1b j hj hne (by rw [hE1]; push_cast; linarith)
-        rw [hE1, Nat.div_one] at hkW
-        rw [hE1, one_mul] at hjk
-        exact ⟨k, hkW, hjk, hkp⟩
-      have hside2' : ∀ k : ℕ, k ≤ (H.nodes[0]'hilen).wSide →
-          (H.nodes[0]'hilen).pat k ≠ 0 →
-          B₀ ((H.nodes[0]'hilen).s0 + k) ≠ 0 ∧
-          (H.nodes[0]'hilen).σ.w (B₀ ((H.nodes[0]'hilen).s0 + k))
-            + (((H.nodes[0]'hilen).s0 + k : ℕ) : ℤ) * ((H.nodes[0]'hilen).h : ℤ)
-            = (H.nodes[0]'hilen).gam ∧
-          (H.nodes[0]'hilen).σ.R (B₀ ((H.nodes[0]'hilen).s0 + k))
-            = LaurentPolynomial.C ((H.nodes[0]'hilen).pat k) *
-              LaurentPolynomial.T (- (H.nodes[0]'hilen).σ.t
-                * (H.nodes[0]'hilen).σ.wPrev (B₀ ((H.nodes[0]'hilen).s0 + k))) := by
-        intro k hkW hkp
-        have hkW' : k ≤ (H.nodes[0]'hilen).wSide / (H.nodes[0]'hilen).e := by
-          rw [hE1, Nat.div_one]; exact hkW
-        obtain ⟨h1, h2, h3⟩ := hside2 k hkW' hkp
-        rw [hE1, one_mul] at h1 h2 h3
-        refine ⟨h1, ?_, h3⟩
-        push_cast at h2 ⊢
-        linarith
-      -- THE STRICT CORNER BOX FIRES
-      have hres := v9c_cornerBox (H.nodes[0]'hilen).σ (H.nodes[0+1]'hi1).σ
-        (H.nodes[0]'hilen).h (hroot hilen) hce hch hcs hct hcw hsm
-        (tt 0) ht₀ne ht₀C ht₀w' ((H.nodes[0]'hilen).ψ.coeff 0) ht₀R hPhi
-        (H.nodes[0]'hilen).zbar hc₀z
-        (H.nodes[0]'hilen).Ranch (H.nodes[0]'hilen).μ (H.nodes[0]'hilen).s0
-        (H.nodes[0]'hilen).wSide (H.nodes[0]'hilen).pat (H.nodes[0]'hilen).gam
-        hRanch0 (H.nodes[0]'hilen).hpat0 hOrd0 mfun hmf f h.1.ne_zero
-        B₀ Nd₀ hdev₀ B Nd hdev j hjμ hjne hside1a' hside1b' hside2'
-      -- the ℚ-form: strFrame 1 = 1, childWidth = 1, line.at (j·1) = gam − h·j
-      have hSTR0 : H.strFrame 0 = 1 := by
-        unfold History.strFrame
-        simp
-      have hSTR1 : H.strFrame (0 + 1) = 1 := by
-        rw [v9_strFrame_succ H 0 hilen, hSTR0, hE1]
-      have hDw1 : (H.nodes[0]'hilen).Dwidth = 1 := by
-        rw [(H.nodes[0]'hilen).hDwidth, hroot hilen]
-      have hCW : (H.nodes[0]'hilen).childWidth = 1 := by
-        unfold Node.childWidth
-        rw [hE1, hG1, hDw1]
-      have hsl := hslope 0 hilen
-      rw [hSTR0, hE1, hDw1] at hsl
-      push_cast at hsl
-      have hslope1 : (H.nodes[0]'hilen).line.slope = ((H.nodes[0]'hilen).h : ℚ) := by
-        linarith [hsl]
-      have hgam0 := hgam 0 hilen
-      rw [hSTR0, hE1] at hgam0
-      push_cast at hgam0
-      have hLU := (H.nodes[0]'hilen).hLineU
-      rw [hDw1] at hLU
-      have hresQ : ((H.nodes[0]'hilen).gam : ℚ)
-          - (j : ℚ) * ((H.nodes[0]'hilen).h : ℚ)
-          < (((H.nodes[0+1]'hi1).σ.w (B j) : ℤ) : ℚ) := by
-        exact_mod_cast hres
-      show (H.strFrame (0 + 1) : ℚ)
-          * (H.nodes[0]'hilen).line.at (j * (H.nodes[0]'hilen).childWidth)
-          < (((H.nodes[0+1]'hi1).σ.w (B j) : ℤ) : ℚ)
-      rw [hSTR1, hCW, mul_one]
-      unfold Line.at at hLU ⊢
-      rw [hslope1] at hLU ⊢
-      push_cast at hLU ⊢
-      linarith [hgam0, hLU, hresQ]
+    · -- ═══ HK-06 WAVE HONEST REOPENING (2026-07-31, task #44) — THE CORNER, RE-OPENED ═══
+      -- E1box corner (i = 0 ∧ e·g = 1; OLD proof: v9c_cornerBox): the pre-wave honest proof consumed the OLD-keyed transition record
+      -- (TransitionCoreL at the PARENT pair with unguarded s/t ties); under the (S-a)
+      -- re-key the record is keyed at (ν₁.e, ν₁.h) through the σV regrade, and the
+      -- recorded child weight gains the ν₁.e-stretch — the corner statement itself is
+      -- RE-ADJUDICATION-SUSPECT under the new keying (HK-11b scope).  Full pre-wave
+      -- proof in git history (wave commit^).  Recorded HK-11 obligation; do NOT consume
+      -- as settled mathematics.
+      sorry
     · -- `i ≥ 1`: a non-recentering non-root read is an increment; `hspecInc`
       -- forces `1 < e·g` against the case hypothesis.
       exfalso
@@ -3391,9 +2683,6 @@ theorem V9_E1box_nonrec {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F
 
 end LeanUrat.HC1
 
-#print axioms LeanUrat.HC1.V9_readSteepness
-#print axioms LeanUrat.HC1.V9_transSteepness
-#print axioms LeanUrat.HC1.V9_readPair
 #print axioms LeanUrat.HC1.V9_wvGeStretch
 #print axioms LeanUrat.HC1.V9_wvEqStretch_of_bottomSlot
 #print axioms LeanUrat.HC1.V9_bottomSlot_of_wvEqStretch

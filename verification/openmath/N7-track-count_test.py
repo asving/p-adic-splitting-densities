@@ -361,8 +361,10 @@ def factor_residual(p, psibar, coeffs):
                 continue        # leading-unit row
             cl = []
             for i in range(d + 1):
-                lifted = pari.liftall(pari.polcoef(fk, i))
-                cl.append(tuple(int(pari.polcoef(lifted, i2, 'z')) % p
+                # FFELTs stay t_FFELT under lift in cypari2; they PRINT as
+                # integer z-polynomials -- re-parse the string to get coords
+                zp = pari(str(pari.polcoef(fk, i)))
+                cl.append(tuple(int(pari.polcoef(zp, i2, 'z')) % p
                                 for i2 in range(m)))
             out.append((tuple(cl), int(mu)))
     out.sort()
@@ -438,14 +440,15 @@ class Walk:
         p, m = self.p, len(psibar) - 1
         if phi is None:
             phi = [ring_from_int(R, c) for c in psibar]
-        A = phi_expansion(R, F, phi, mu)
-        pts = [(j, poly_val(R, A[j])) for j in range(mu + 1)]
-        if pts[mu][1] != 0:
+        jtop = (len(F) - 1) // m
+        A = phi_expansion(R, F, phi, jtop)
+        pts = [(j, poly_val(R, A[j])) for j in range(jtop + 1)]
+        if prev_h is None and mu <= jtop and pts[mu][1] != 0:
             self.anom.append('Vmu-nonzero(%d)' % pts[mu][1]); return
         # precision horizon (in ring units): consumed values must stay below
         horizon = (self.K - 2) * R.Eabs
         pts_fin = [(j, v) for (j, v) in pts if v < horizon]
-        if not pts_fin or pts_fin[0][0] == mu:
+        if not pts_fin or pts_fin[0][0] >= mu:
             self.branches.append(dict(hist=hist, ef=None, xw=Fraction(m * mu) * xmult,
                                       deep=True, Nstar=None))
             return
@@ -455,11 +458,16 @@ class Walk:
             self.branches.append(dict(hist=hist, ef=None, xw=Fraction(m * jmin) * xmult,
                                       deep=True, Nstar=None))
         hull = lower_hull(pts_fin)
+        prev_slope = Fraction(prev_h) if prev_h is not None else Fraction(0)
+        run_seen = 0
         for si in range(len(hull) - 1):
             (j1, v1), (j2, v2) = hull[si], hull[si + 1]
             rise, run = v1 - v2, j2 - j1
             if rise <= 0:
                 continue   # non-principal part (slope >= 0): unit side, skip
+            if Fraction(rise, run) <= prev_slope:
+                continue   # shallow side: structure already walked upstream
+            run_seen += run
             g0 = gcd(rise, run)
             e_s, h_s, ell = run // g0, rise // g0, g0
             # residual polynomial along the side
@@ -546,10 +554,11 @@ class Walk:
         self.nodes_used += 1
         p = self.p
         h1inv = pow(h1, -1, e1)
-        A = phi_expansion(R, F, phi2, mu)
+        jtop = (len(F) - 1) // e1
+        A = phi_expansion(R, F, phi2, jtop)
         # (x-c0)-Taylor coefficients of each A_j (deg < e1)
         atay, V1 = [], []
-        for j in range(mu + 1):
+        for j in range(jtop + 1):
             aj = taylor_shift_scale(R, A[j] + [R.zero()] * (e1 - len(A[j])),
                                     c0, R.one())
             aj = aj[:e1]
@@ -557,12 +566,13 @@ class Walk:
             v = min((e1 * R.val(ak) + k * h1 for k, ak in enumerate(aj)
                      if R.val(ak) < INF), default=INF)
             V1.append(v)
-        if V1[mu] != 0:
-            self.anom.append('order2-Vmu-nonzero(%s)' % V1[mu]); return
+        # fresh-read baseline: same-side roots OUTSIDE the selected residual
+        # factor sit at phi2-value exactly e1*h1; the cluster's sides are
+        # strictly steeper (standard order-2 principal-polygon baseline)
         horizon = (self.K - 2) * R.Eabs * e1
-        pts = [(j, V1[j]) for j in range(mu + 1)]
+        pts = [(j, V1[j]) for j in range(jtop + 1)]
         pts_fin = [(j, v) for (j, v) in pts if v < horizon]
-        if not pts_fin or pts_fin[0][0] == mu:
+        if not pts_fin or pts_fin[0][0] >= mu:
             self.branches.append(dict(hist=hist, ef=None,
                                       xw=Fraction(e1 * mu) * xmult,
                                       deep=True, Nstar=None))
@@ -573,11 +583,15 @@ class Walk:
                                       xw=Fraction(e1 * jmin) * xmult,
                                       deep=True, Nstar=None))
         hull = lower_hull(pts_fin)
+        prev_slope = (Fraction(prev_h2) if prev_h2 is not None
+                      else Fraction(e1 * h1))
         for si in range(len(hull) - 1):
             (j1, v1), (j2, v2) = hull[si], hull[si + 1]
             rise, run = v1 - v2, j2 - j1
             if rise <= 0:
                 continue
+            if Fraction(rise, run) <= prev_slope:
+                continue   # shallow side: structure already walked upstream
             g0 = gcd(rise, run)
             e2, h2, ell2 = run // g0, rise // g0, g0
             # residual with the derived carry twist:
@@ -845,59 +859,82 @@ def poly_mul_int(f, g):
             out[i + j] += a * b
     return out
 
+def dense_unit(p, ndig, phase=0):
+    """Unit with dense nonzero base-p digits (p=2: nonzero density 4/5, so
+    every refinement chain must discover ~4/5 of the digit levels)."""
+    if p == 2:
+        return sum((0 if (i + phase) % 5 == 4 else 1) * 2 ** i
+                   for i in range(ndig)) | 1
+    return sum((((i * 7 + 3 + phase) % (p - 1)) + 1) * p ** i
+               for i in range(ndig))
+
+def nonsquare_unit(p):
+    if p == 2: return 5           # 5 mod 8: nonsquare unit of Z_2
+    for cand in range(2, p * p):
+        if cand % p and pow(cand, (p - 1) // 2, p) == p - 1:
+            return cand
+    return 2
+
 def stress_families(n, p, Ks):
-    """Yield (tag, K', coeffs) increasing-depth families, all with a
-    colliding cluster of depth ~K' plus a degree-(n-2 or n-4) spectator."""
+    """(tag, K', coeffs): increasing-depth refinement-chain families, a
+    colliding cluster of separation depth ~K' with a dense-digit center
+    (so the canonical walk must discover ~one digit per recentering read),
+    times a spectator filling the degree."""
+    u = nonsquare_unit(p)
     fams = []
-    # a = unit with dense base-p digits (the center the engine must discover)
-    a = sum(((i * 7 + 3) % (p - 1) + 1 if p > 2 else 1) * p ** i
-            for i in range(30))
     for Kp in Ks:
-        # S1 split pair: (x-a)(x-a-p^K d)
-        pair = poly_mul_int([-a, 1], [-(a + p ** Kp), 1])
-        fams.append(('S1-split', Kp, pair))
+        a = dense_unit(p, 2 * Kp + 20)
+        # S1 split pair: (x-a)(x-a-p^K)
+        fams.append(('S1-split', Kp, a,
+                     poly_mul_int([-a, 1], [-(a + p ** Kp), 1])))
         # S2 ramified pair: (x-a)^2 - p^(2K+1)
-        pair = [a * a - p ** (2 * Kp + 1), -2 * a, 1]
-        fams.append(('S2-ram', Kp, pair))
-        # S3 inert pair: (x-a)^2 - p^(2K) u, u a non-square unit
-        u = None
-        for cand in range(2, p * p):
-            if cand % p and pow(cand, (p - 1) // 2, p) == p - 1 if p > 2 else False:
-                u = cand; break
-        if p == 2: u = 5    # 5 is a nonsquare unit in Z_2 (5 mod 8)
-        if u is None: u = 2
-        pair = [a * a - p ** (2 * Kp) * u, -2 * a, 1]
-        fams.append(('S3-inert', Kp, pair))
+        fams.append(('S2-ram', Kp, a,
+                     [a * a - p ** (2 * Kp + 1), -2 * a, 1]))
+        # S3 inert pair: (x-a)^2 - p^(2K) u
+        fams.append(('S3-inert', Kp, a,
+                     [a * a - p ** (2 * Kp) * u, -2 * a, 1]))
     out = []
-    for tag, Kp, pair in fams:
-        res_root = (a % p)
-        spec = spectator(n - 2, p, {res_root})
+    for tag, Kp, a, pair in fams:
+        spec = spectator(n - 2, p, {a % p})
         out.append((tag, Kp, poly_mul_int(pair, spec)))
-    # S4 (n>=4): deg-2-key cluster psi(x)^2 - p^(2K) u  (psi irred mod p)
+    # S4 (n>=4): degree-2-key chain psil(x)^2 - p^(2K) u, psil = dense lift
+    # of an irreducible quadratic mod p (F_{p^2}-digit refinements)
     if n >= 4:
         psi = None
         for b in range(p):
             for c in range(1, p):
-                pol = pari.Pol([1, b, c])
-                fac = pari.factormod(pol, p)
-                if len(fac[:, 0]) == 1 and int(fac[0, 1]) == 1:
+                fac = pari.factormod(pari.Pol([1, b, c]), p)
+                if len(list(fac[0])) == 1 and int(fac[1][0]) == 1:
                     psi = [c, b, 1]; break
             if psi: break
-        psil = [psi[0] + p * 3, psi[1] + p * 7, 1]      # a lift with tail digits
         for Kp in Ks:
+            psil = [psi[0] + p * dense_unit(p, 2 * Kp + 8),
+                    psi[1] + p * dense_unit(p, 2 * Kp + 8, phase=2), 1]
             base = poly_mul_int(psil, psil)
-            base[0] -= p ** (2 * Kp) * (u if p > 2 else 5)
-            spec = spectator(n - 4, p, set())
-            out.append(('S4-key2', Kp, poly_mul_int(base, spec)))
-    # S5 (n>=4): eis-frame chain ((x^2 - p c)^2 - p^(2K+1) style)
+            base[0] -= p ** (2 * Kp) * u
+            out.append(('S4-key2', Kp,
+                        poly_mul_int(base, linear_spec(n - 4, p, set()))))
+    # S5 (n>=4): order-2 chain (x^2 - p c)^2 - p^(2K+1), c dense
     if n >= 4:
-        c = 1 + p  # unit
         for Kp in Ks:
+            c = dense_unit(p, 2 * Kp + 8, phase=1)
             base = poly_mul_int([-p * c, 0, 1], [-p * c, 0, 1])
             base[0] -= p ** (2 * Kp + 1)
-            spec = spectator(n - 4, p, set())
-            out.append(('S5-eis', Kp, poly_mul_int(base, spec)))
+            out.append(('S5-o2', Kp,
+                        poly_mul_int(base, linear_spec(n - 4, p, {0}))))
     return out
+
+def linear_spec(d, p, avoid):
+    """Squarefree spectator: product of d distinct small integer roots whose
+    residues avoid the given residue set (mod-p collisions with the stress
+    cluster's residue point).  Same-residue collisions among the spectator
+    roots themselves are shallow separable pairs (walkable, cheap)."""
+    f, r, got = [1], 0, 0
+    while got < d:
+        if r % p not in avoid:
+            f = poly_mul_int(f, [-r, 1]); got += 1
+        r += 1
+    return f
 
 # ======================================================================
 # Random polynomial generators
@@ -1071,7 +1108,8 @@ def main():
     emit('#' * 74)
     NS = [3, 4, 5, 6]
     PS = [2, 3, 5, 7]
-    Ks_stress = [2, 3, 4, 6, 8, 10, 12] if not args.quick else [2, 4, 6]
+    Ks_stress = ([2, 3, 4, 6, 8, 10, 12, 16, 20, 26, 32, 42]
+                 if not args.quick else [2, 4, 6])
     counts = (2500, 2500, 1500) if not args.quick else (300, 300, 200)
     K_census = 24
     tallies = {}
@@ -1109,7 +1147,7 @@ def main():
     emit('=== exhaustive cubic boxes (independent padic_types oracle) ===')
     box_ties = []
     for (p, K, cap) in [(2, 6, 1 << 18), (3, 4, 600000), (5, 3, 200000),
-                        (7, 2, 150000)]:
+                        (7, 4, 120000)]:
         if args.quick:
             cap = min(cap, 20000)
         checked, bad = cubic_box_census(p, K, cap, tallies[(3, p)])
@@ -1149,7 +1187,8 @@ def main():
             t = tallies[(n, p)]
             emit('  n=%d p=%d: max track1 = %3d  (candidate n^2 = %2d)  witness %s'
                  % (n, p, t.max_track1[0], n * n,
-                    t.max_track1[1] if t.max_track1[0] > n * n else ''))
+                    (t.max_track1[1][0], 'vdisc=%s' % t.max_track1[1][2])
+                    if t.max_track1[1] else ''))
             if t.max_track1[0] > n * n:
                 law1_refuted.append((n, p, t.max_track1[0]))
     emit('  depth trend (max track1 by vdisc bucket), n=3:')

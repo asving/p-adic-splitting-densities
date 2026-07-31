@@ -117,6 +117,20 @@ private lemma CT_eq_scalar {K : Type*} [Field K] {c c' : K} {n : ℤ}
   rw [CT_apply', CT_apply', if_pos rfl, if_pos rfl] at h1
   exact h1
 
+/-- Equal `C·T` monomials with a NONZERO right scalar have equal scalars at ANY pair of
+positions (HK-06 wave supply, 2026-07-31: the σV regrade re-route shifts the recorded
+position term — `child_wPrev` now lands on `σV.w`, the pin on `σᵢ.w` — but both
+monomials are one and the same Laurent element, so the scalars agree regardless). -/
+private lemma CT_eq_scalar_of_ne_zero {K : Type*} [Field K] {c c' : K} {m n : ℤ}
+    (h : LaurentPolynomial.C c * LaurentPolynomial.T m
+       = LaurentPolynomial.C c' * LaurentPolynomial.T n) (hc' : c' ≠ 0) : c = c' := by
+  by_cases hmn : m = n
+  · subst hmn; exact CT_eq_scalar h
+  · exfalso
+    have h1 := congrArg (fun t : ℤ →₀ K => t n) h
+    rw [CT_apply', CT_apply', if_neg hmn, if_pos rfl] at h1
+    exact hc' h1.symm
+
 /-! ## The exact residue, named -/
 
 /-- **THE U21 RESIDUE — the vertex pin at a recorded run transition** (HC1's
@@ -225,14 +239,18 @@ theorem readsOf_HV_of_pin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
           hdigeq (B (H.nodes[i]'hi).μ) hBne hBinp (H.nodes[i]'hi).zbar
       _ = (H.nodes[i]'hi).vtx := hviB
   · -- ROOT/INCREMENT parent: the frame change through the pin
-    have htc := (hncleg hsp).2
+    -- (HK-06 wave: the leg's TransitionCoreL is now keyed through the σV regrade at the
+    -- CHILD pair; the frame link `child_wPrev` lands on σV.w while the named pin's
+    -- position is σᵢ.w — the scalar extraction is position-independent, see
+    -- `CT_eq_scalar_of_ne_zero`.)
+    obtain ⟨-, σV, -, -, htc⟩ := hncleg hsp
     obtain ⟨c', hc'R, hc'F⟩ := hpin hsp (B (H.nodes[i]'hi).μ) hBne hBin
-    -- align the residual positions through the recorded frame link wPrev′ = w
+    -- align the residual positions through the recorded frame link wPrev′ = σV.w
     rw [htc.base.child_wPrev] at hres
     -- extract the scalar: the recorded pattern lead IS the pinned child digit
     have hsc : (H.nodes[i+1]'hi1).pat ((H.nodes[i+1]'hi1).wSide / (H.nodes[i+1]'hi1).e)
         = (c' : ↥(H.nodes[i+1]'hi1).σ.K) :=
-      CT_eq_scalar (hres.symm.trans hc'R)
+      CT_eq_scalar_of_ne_zero (hres.symm.trans hc'R) (Units.ne_zero c')
     rw [hsc]
     exact hc'F.trans hviB
 

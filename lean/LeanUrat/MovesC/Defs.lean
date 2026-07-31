@@ -633,6 +633,45 @@ def RegradeOf (σ : Stage p F) (estar hstar : ℕ) (σV : Stage p F) : Prop :=
   σV.reps = σ.reps ∧ (∀ f, σV.wPrev f = σ.w f) ∧
   IsSlotMinWeight σV.w σ.Φ estar hstar σ.w
 
+/-- Regrade API: the regraded stage keeps the parent's residue field, so the D.6 next
+field is unchanged (consumer supply for the `child_field` chains re-keyed by the HK-06
+wave). -/
+theorem RegradeOf.nextField_eq {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    {σ σV : Stage p F} {estar hstar : ℕ} (h : RegradeOf σ estar hstar σV) (zbar : Fˣ) :
+    σV.nextField zbar = σ.nextField zbar := by
+  unfold Stage.nextField
+  rw [h.2.2.2.1]
+
+/-- Regrade API: at an UNRAMIFIED read regrade (`e★ = 1`) the regraded weight agrees
+with the parent's weight on the parent's coefficient carrier (the `e★ = 1` face of
+C.1.0(c)'s stretch `σV.w B = e★·σ.w B`; the recorded slot-minimum at the single-slot
+development).  This is the wave's replacement supply for consumers that read the OLD
+`child_wPrev : σ'.wPrev = σᵢ.w` as landing on the parent — under (NEW) it lands on
+`σV.w`, which THIS lemma folds back at the RG-2 perimeter `e★ = 1`. -/
+theorem RegradeOf.w_coeff {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    {σ σV : Stage p F} {hstar : ℕ} (h : RegradeOf σ 1 hstar σV)
+    {B : Polynomial ℤ_[p]} (hB : B ≠ 0) (hin : inC σ.Φ B) : σV.w B = σ.w B := by
+  have hsm := h.2.2.2.2.2.2.2
+  have hdev : IsDevelopment σ.Φ B (fun j => if j = 0 then B else 0) 1 := by
+    refine ⟨?_, ?_, ?_⟩
+    · intro j
+      by_cases hj : j = 0
+      · simpa [hj] using (show B.degree < σ.Φ.degree from hin)
+      · simp only [hj, if_false, Polynomial.degree_zero]
+        exact bot_lt_iff_ne_bot.mpr
+          (fun hb => σ.hmonic.ne_zero (Polynomial.degree_eq_bot.mp hb))
+    · intro j hj
+      have : j ≠ 0 := by omega
+      simp [this]
+    · simp
+  obtain ⟨hle, j, hjlt, hnz, heq⟩ := hsm B (fun j => if j = 0 then B else 0) 1 hB hdev
+  have hj0 : j = 0 := by omega
+  subst hj0
+  norm_num at heq
+  have hle0 := hle 0 (by omega) (by simpa using hB)
+  norm_num at hle0
+  omega
+
 /-- **History coherence** (§C.0 + C.1.0): the recorded frames are linked by the ACCEPTED
 §B2-DEF transitions AT THE RECORDED NODE DATA — no free existentials (round-1 audit repairs:
 the increment transition consumes the PARENT node's recorded `ψ, g, e, h, zbar` through

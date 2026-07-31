@@ -350,3 +350,26 @@ CONVERGENCE (the unifying idea, synthesis duty): M02 (L1-L3), M05 (OL2), M06
 INSTANCE-FAITHFULNESS KERNEL — "the built classifier realizes the semantic OM
 object" — BNS 3.13 anchors the precision half. Synthesis agent dispatched to
 design THE kernel.
+
+## NUMERICS FLEET COMPLETE (8/8, 2026-07-31) — THE CROSS-CHECK MATRIX CLOSES
+N1 exhaust CONFIRMED (20/20 (n,p) configs incl. all wild: certified two-sided
+bracket, geometric drainage, largest per-level ratio 0.858 bounded away from 1;
+n=2 exact law matches the proved Lean hExhaust_n2 anchor).
+N2 density-tie CONFIRMED (THE theorem numerically: exact n=2 census sandwich
+widths ~1e-5; MC 150k/config at n<=5, p<=5 incl. deep-wild (5,5); monic-vs-
+projective ensemble distinction established and both laws pass).
+N3 cl6 CONFIRMED on the NOTE's real block packs n=2,3,4 (all sealed
+CASE_RESUMN3 anchors reproduced exactly) — supports M08's intended-pack frame.
+N4 ksub CONFIRMED 0/240,525 violations (corroborates the PROVED KsubGeneral).
+N5 w17ii CONFIRMED (repaired form passes 12k adversarial configs; TV-H1
+countermodel regression anchor: violates OLD, cured by NEW — matching the
+landed R-C proof).
+N6 regp CONFIRMED (25/25 gates; sealed RESUM-n3 S1/S2/S3 displays close
+symbolically; supports the M17 finiteness theorem).
+N7 track-count MIXED = CONFIRMS M01's refutation: max #recT1+#t4 grows with
+exhaustive depth (49 observed at n=6/K=64 vs sealed n^2=36) — the constant-cap
+form is empirically dead; (runCount repaired-form results in the full output).
+N8 eq2 CONFIRMED exhaustively (199,723 alphabets across 17 fields, all full;
+29,142 EQ-2 comparisons exact) — strong support for the M14 conditional proof.
+MATRIX SUMMARY: no Fable-vs-Codex-vs-numerics conflict anywhere; every
+refutation triangulated; every surviving conjecture numerically supported.

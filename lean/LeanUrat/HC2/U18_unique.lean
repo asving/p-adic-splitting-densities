@@ -189,10 +189,12 @@ theorem presentNorm_unique {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
         obtain ⟨-, -, -, -, -, -, -, -, -, -, hKK, -⟩ := hrc.base
         have hKK' : (H.nodes[r + 1]'hr1).σ.K = (H.nodes[r]'hr).σ.K := hKK
         exact ih hr x (hKK' ▸ hx)
-      · -- increment/root species: child field = K⟮z̄⟯ (TransitionData.child_field)
-        have hTC := (hstep.2.1 hrec).2
+      · -- increment/root species: child field = K⟮z̄⟯ (TransitionData.child_field;
+        -- HK-06 wave: re-routed through the σV regrade, whose K is the parent's)
+        obtain ⟨-, σV, hreg, -, hTC⟩ := hstep.2.1 hrec
         have hcf : (H.nodes[r + 1]'hr1).σ.K
-            = (H.nodes[r]'hr).σ.nextField (H.nodes[r]'hr).zbar := hTC.base.child_field
+            = (H.nodes[r]'hr).σ.nextField (H.nodes[r]'hr).zbar := by
+          rw [hTC.base.child_field, RegradeOf.nextField_eq hreg]
         exact nextField_le_galFixed (ih hr) hzfix (hcf ▸ hx)
   -- (2) η-DATA EQUALITY: every recorded value is φ-fixed; the transport collapses.
   obtain ⟨hlenP, -⟩ := hMatch

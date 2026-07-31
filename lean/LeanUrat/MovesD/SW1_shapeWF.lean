@@ -209,9 +209,11 @@ theorem ShapeWF_of_matches {Q : ShapePrefix} {H : History p F} (hM : Q.MatchesHi
                 * (Q.reads[r]'(by omega : r < Q.reads.length)).g) := by rw [hRg1, Nat.mul_one]
       exact Nat.pow_right_injective hp2 key0
     · -- increment/root: residue tower, card raised to the g-th power
-      have hnr := hnrC hrec
+      -- (HK-06 wave: child_field re-routed through the σV regrade, K-preserving)
+      obtain ⟨-, σV, hreg, -, hTCsw⟩ := hnrC hrec
       have hcf : (H.nodes[r+1]'hr1).σ.K
-          = (H.nodes[r]'hr0).σ.nextField (H.nodes[r]'hr0).zbar := hnr.2.base.child_field
+          = (H.nodes[r]'hr0).σ.nextField (H.nodes[r]'hr0).zbar := by
+        rw [hTCsw.base.child_field, RegradeOf.nextField_eq hreg]
       have hcardstep : Nat.card ↥(H.nodes[r+1]'hr1).σ.K
           = (Nat.card ↥(H.nodes[r]'hr0).σ.K) ^ (H.nodes[r]'hr0).g := by
         rw [hcf]
