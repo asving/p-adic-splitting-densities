@@ -1298,3 +1298,13 @@ or quarantine, sorry census, commit)). Launched STAGGERED (box load 122/104
 cores — good-neighbor throttle): BP_I = wf_12d118bd-21b, BP_VI =
 wf_2b313f27-624; II/III/IV/V queue as slots free. ROOT r8 in flight
 (wf_3f35e0c0-41e).
+
+## ROOT REVISION 7 (r8, commit 3cbb8f1) + VC8 LAUNCH (2026-08-03)
+Both VC7 blockers closed by HONEST ENLARGEMENT: (H1)(d) = the degree-g>1
+KEY1 block displayed ((d1) in(Phi)=u*psi_hom irreducible, (d2) degree block,
+(d3) ord tie — exactly Step 6's order->=2 all-site consumption; S-1 row
+superseded); (PACK-i/ii/iii) = rsh_interp / r_bdd / wsh_ok stated AT the
+B_n rows as explicit clauses (the REVISION-6 "priced inside correspondence"
+inference WITHDRAWN as invalid). 3 advisories fixed; T-U audit row RETIRED;
+invariant re-run (ten rows, membership grew in place). VC8 launched (232KB).
+Clean VC8 = pass 1 of the 2-consecutive acceptance bar.
