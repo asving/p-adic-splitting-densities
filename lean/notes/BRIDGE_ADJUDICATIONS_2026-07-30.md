@@ -1286,3 +1286,15 @@ BLUEPRINTS: all six REVISION 2 applied via Codex edit-blocks (120 findings
 fixed, 0 rebutted, all READY; BP_I's 1 failed block = overlap, content
 present). Agent-tool session pool EXHAUSTED (200/200) — revision round ran
 on Codex; division leads to run via Workflow (spawn viability = r8 canary).
+
+## THE DIVISION SWARM LAUNCHES (2026-08-03)
+Workflow spawns survive the Agent-tool session cap (r8 canary alive).
+Architecture flattened per necessity: division LEADS = parameterized
+Workflow runs of lean/blueprints/division_workflow.js (plan agent extracts
+the BP wave/unit list as structured output -> per-wave prover fan-out
+(statements VERBATIM from the BP, Scaffold/ namespace only, per-file lake
+env lean gates, honest BLOCKED) -> per-wave checkpoint agent (compile-fix
+or quarantine, sorry census, commit)). Launched STAGGERED (box load 122/104
+cores — good-neighbor throttle): BP_I = wf_12d118bd-21b, BP_VI =
+wf_2b313f27-624; II/III/IV/V queue as slots free. ROOT r8 in flight
+(wf_3f35e0c0-41e).
