@@ -1308,3 +1308,14 @@ B_n rows as explicit clauses (the REVISION-6 "priced inside correspondence"
 inference WITHDRAWN as invalid). 3 advisories fixed; T-U audit row RETIRED;
 invariant re-run (ten rows, membership grew in place). VC8 launched (232KB).
 Clean VC8 = pass 1 of the 2-consecutive acceptance bar.
+
+## VC9: COMPOSITION-SOUND — THE FIRST CLEAN PASS (2026-08-03)
+Codex end-to-end on REVISION 8 (commit 12b80bb): ZERO blockers, ZERO
+advisories — all six charge items PASS ((H1)(d) order-slices exhaust Step
+6's range with no degree/order equivalence consumed; PACK i/ii->K2,
+iii->K3 uniform; ten-row invariant; the walk proves (ROOT-C) at displayed
+scope with no unconditional upgrade; acyclicity; zero regressions).
+CONSECUTIVE-CLEAN COUNTER = ONE. Pass 2 must be model-diverse => VC10 =
+fresh-context FABLE end-to-end (workflow), same charge. VC10 clean =>
+PHASE-C ACCEPTANCE => THE FINAL REPORT to Asvin. Report archived:
+lean/notes/openmath/VC9_root_report.md.
