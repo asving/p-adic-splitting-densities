@@ -826,3 +826,19 @@ P2 gaps + the undispositioned V20 gap repaired; unbound-c sweep done
 (cross-unit: O3design F1 has the same pattern — flagged to its owner, not
 edited). Core THRICE confirmed. Residue = SIX exactly-stated open lemmas
 (OL-2a-1..6). V25 (rev-4 re-verification) launched.
+
+## PAPER SCAFFOLD REWRITE COMPLETE (2026-08-01, site commits 986da98 + fix)
+The exposition now follows Asvin's scaffold exactly: cylinder-limit density +
+displayed squeeze (0) -> theorem R_sigma in Q[q,1/q,1/(q^c-1)] -> the proof
+in four movements (enumerate mod p / the p-FREE tree skeleton with the
+verified catalogue / the tau-keyed transfer solve with self-loops =
+1/(1-q^-E) / visible uniformity). NEW: the complete degree-2 expansion
+(R_ram = 1/(q+1) falling out at every prime); the tame degree-5 walk now
+displays its actual recursive sum (beta_3, beta_5, the assembled rho with
+the denominator visibly 2(q+1)(q^5-1)(q^7-1)/(q-1)^2); the wild walk
+displays the q^-14 self-loop geometric series becoming (q^14-1). All
+formulas verified against the engine BEFORE writing (one false palindromy
+claim self-caught pre-commit). Codex critique: 76 findings, all triaged
+(~35 fixed, ~37 verified-no-change, 4 extraction artifacts). What-remains =
+the four open pieces in the directive's format. LOCAL commits only —
+REVIEW-READY for Asvin; push awaits his look.
