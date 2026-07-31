@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsCar
+import LeanUrat.HC1.C2_TYPa
 
 /-!
 # HC1.CL16_packEtyp1 — TYP conjunct 1 at `packE`, unfolded (BP5 CL-16)
@@ -54,6 +55,16 @@ namespace LeanUrat.HC1
 
 open scoped Classical
 
+/-- The ite-restriction form of `inγ γ' ∘ slotCoeff` IS `typComposite` of the
+subtype restriction (`dite → ite`, the then-branch does not use the membership
+proof). -/
+private theorem inGr_slot_restrict {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
+    [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (g : T.Coord → ↥(T.stg 0).FQ) :
+    T.inGr γ' (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ' then g c else 0))
+      = T.typComposite b γ' (fun c : ↥(T.levelSet b γ') => g c.1) := by
+  rw [Tower.typComposite]
+  congr 2
+
 /-- **CL-16 (`packE_typ1` — the ONLY public banked for TYP conjunct 1, per the
 binding Q-6 ruling)** — `TYPStmt'` conjunct 1 at `packE`, unfolded (see the module
 docstring): the γ'-component of the slot-coefficient expansion is additive in the
@@ -63,7 +74,12 @@ theorem packE_typ1 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     T.inGr γ' (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ' then (x + y) c else 0))
       = T.inGr γ' (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ' then x c else 0))
         + T.inGr γ' (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ' then y c else 0)) := by
-  sorry
+  rw [inGr_slot_restrict T b γ' (x + y), inGr_slot_restrict T b γ' x,
+    inGr_slot_restrict T b γ' y]
+  rw [show (fun c : ↥(T.levelSet b γ') => (x + y) c.1)
+        = (fun c : ↥(T.levelSet b γ') => x c.1) + (fun c : ↥(T.levelSet b γ') => y c.1) from by
+      funext c; simp [Pi.add_apply]]
+  exact (C2_TYPa T b γ').2 _ _
 
 end LeanUrat.HC1
 

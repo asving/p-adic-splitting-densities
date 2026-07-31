@@ -52,6 +52,17 @@ E-PHASE RESOLUTIONS (each minimal, FLAGGED for the Q5 Codex audit):
   only cells any (SIB) display conditions on" as FAMILY SCOPE — the family IS
   the family of (SIB)-conditioning sites; no positive-cell existence law beyond
   the parameterized `ne`.
+* R-16 (D-SC REVISION 2, findings 1/3 — the site's own prescription): the
+  SETTING's branch b_j carries ITS prescribed subtree — `Tj : PTree` is a
+  FIELD.  This is the note's own datum, not an invention: REL.2(b) prices THE
+  event S_j (= `SEvent Tj`), REL.2(d) "identifies THE prescribed subtree T_j",
+  and (SIB-Oδ) quantifies branches each WITH its T_j (MOVES 9430–48, 9613–27).
+  `Tj` replaces the weaker `prescNe` (nonemptiness now witnessed by the
+  distinguished element).  Purpose: the (e3)/(e5) obligations of
+  `SitedSlot_rel2e` are ANCHORED at `Tj` — MASS = ENTRY is stated AT the site's
+  own prescription, never behind a `consumed`-quantifier an empty supplied
+  carrier could vacate (the REVISE-round finding-1 escape, killed at the
+  statement rather than at a falsifier).
 
 STATEMENT-FENCE FLAG: every structure below is NEW carrier vocabulary
 (hypothesis-side; nothing here is a built-corpus statement and no ratified file
@@ -72,8 +83,9 @@ variable (p : ℕ) [Fact p.Prime]
 
 /-- **THE BRANCH CONTINUATION SITE** (†17; the parked draft's `Setting`, verbatim
 with R-6/R-7): one realized instance of the note's SETTING — ambient base O_δ,
-realized prefix η, state cylinder Σ (frame Ψ_η), digit cell c, branch b_j; η/Σ/c/b_j
-absorbed into carriers; the REALIZED-MEASURE LAWS are fields (draft finding 2).
+realized prefix η, state cylinder Σ (frame Ψ_η), digit cell c, branch b_j WITH its
+prescribed subtree T_j (R-16); η/Σ/c/b_j/T_j absorbed into carriers; the
+REALIZED-MEASURE LAWS are fields (draft finding 2).
 `δ` is the ambient ABSOLUTE index (root δ = 1), `δrel` = δ_j^rel (residual degrees
 g accumulated over F_δ down b_j), `d` = d_j (the O_δ-degree of b_j's cluster).
 `FrameC`/`reframe` is (CF10) the AMBIENT C.0.5 frame family at the cell — (a5)'s
@@ -98,8 +110,8 @@ structure RelSite (p : ℕ) where
   condMass_univ : 0 < cellMass → condMass Set.univ = 1
   condMass_add : ∀ E ∈ AmbEvents, ∀ E' ∈ AmbEvents,
     Disjoint E E' → condMass (E ∪ E') = condMass E + condMass E'
-  PTree : Type                            -- prescribed finite subtrees T_j for b_j
-  prescNe : Nonempty PTree
+  PTree : Type                            -- prescribed finite subtrees for b_j
+  Tj : PTree                              -- THE prescribed subtree T_j of b_j (R-16)
   SEvent : PTree → Set Cont               -- S_j(T); (W1)'s reading kept opaque
   SEvent_mem : ∀ T, SEvent T ∈ AmbEvents
   StateIdx : Type                         -- [3]/[3t]'s state indices

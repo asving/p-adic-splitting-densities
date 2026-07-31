@@ -56,6 +56,40 @@ set_option maxHeartbeats 800000
 
 namespace LeanUrat.HC1
 
+/-- The junk graded carrier: weight `⊤` everywhere, class map `≡ 0`. The four
+`GradedCarrierR` laws hold trivially (`inγ_detects` is VACUOUS — `w B = ↑γ` is never
+`⊤ = ↑γ`). -/
+private def junkGR (p : ℕ) [Fact p.Prime] : GradedCarrierR p where
+  Coeff := ℤ
+  Gr := fun _ => ℤ
+  w := fun _ => ⊤
+  inγ := fun _ _ => 0
+  w_add := fun _ _ => le_top
+  inγ_add := fun _ _ _ _ _ => (add_zero 0).symm
+  inγ_kills := fun _ _ _ => rfl
+  inγ_detects := fun _ _ h => absurd h (by simp)
+
+/-- The junk carrier pack: two constant lines `line 0 ≡ 1`, `line k ≡ 0` (k ≠ 0),
+`interiorEnd ≡ 1`. Refutes `DOMStmt'` at `H = ()`, `i = 1`, `m = 0`, `b = 0`:
+`(line 0).at 0 = 1 > 0 = (line 1).at 0` while `m < i` and `b < interiorEnd`. -/
+private def junkPackR (p : ℕ) [Fact p.Prime] : CarrierPackR p where
+  G := junkGR p
+  Hist := Unit
+  Coord := Unit
+  Digit := ℤ
+  kIdx := fun _ => 0
+  ht := fun _ _ => 0
+  blk := fun _ _ => 0
+  lvl := fun _ _ _ => ∅
+  slotCoeff := fun _ _ _ => 0
+  aDim := fun _ _ _ => 0
+  lines := fun _ k => if k = 0 then ⟨1, 0⟩ else ⟨0, 0⟩
+  blockEdge := fun _ _ => 0
+  interiorEnd := fun _ _ => 1
+  window := fun _ _ => True
+  mono := fun _ _ => 0
+  floorB := fun _ _ => 0
+
 /-- **CL-20 (FLAGGED new public theorem)**: the ∀-instances antecedent of
 `EQ2lawIfREL1'` is REFUTED — a junk carrier pack (two constant lines with the wrong
 order at the interior, `interiorEnd = 1`) violates `DOMStmt'`, hence `REL1Pack`.
@@ -64,7 +98,11 @@ typed-only and any consumer must re-scope its antecedent first (Q-4, deferred to
 MovesR unparking). -/
 theorem rel1_forall_refuted (p : ℕ) [Fact p.Prime] :
     ¬ ∀ K : CarrierPackR p, REL1Pack p K := by
-  sorry
+  intro h
+  have hdom := (h (junkPackR p)).2.2.1
+  have hbad := hdom () 1 0 0 (by norm_num) (by simp [junkPackR])
+  simp only [junkPackR, MovesC.Line.at] at hbad
+  norm_num at hbad
 
 end LeanUrat.HC1
 

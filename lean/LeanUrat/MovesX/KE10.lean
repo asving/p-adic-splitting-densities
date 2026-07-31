@@ -55,9 +55,27 @@ inductive SharpStatus
   deriving DecidableEq, Repr
 
 /-- **KE10 — the audit table** (record unit; deps: ALL of KE1-KE9 + the KD
-cluster). To be filled at area exit with one row per kernel Prop listed in the
-module docstring, each `String` naming the Prop and its discharge/obstruction
-artifact. The `sorry` is the unfilled record slot, not a proof obligation. -/
-def sharpeningAudit : List (String × SharpStatus) := sorry
+cluster). FILLED 2026-07-31 at area exit: one row per kernel Prop listed in the
+module docstring, each `String` naming the Prop and its discharge artifact, the
+`SharpStatus` its disposition. -/
+def sharpeningAudit : List (String × SharpStatus) :=
+  [ ("NsNullP — KE1 (nsNullP_of_lumpChains); conditional on the per-fiber lump chains",
+      .conditionalTheorem),
+    ("X2AffP — KE2 (x2Aff_of_thresholdStep); conditional on the threshold-step law",
+      .conditionalTheorem),
+    ("X2CapP — KE3 (x2Cap_of_capStep); conditional on the cap-step law",
+      .conditionalTheorem),
+    ("X2TailsP — KE5 (x2Tails_of_route); conditional on the tails route",
+      .conditionalTheorem),
+    ("X2BridgeP clause 1 — KE6 (x2Bridge_cover); unconditional Undec-cover",
+      .generalTheorem),
+    ("X2BridgeP clause 2 — KE7 (x2Bridge_assembled); null legs KE1/XF10/XG2d, 2≤n",
+      .conditionalTheorem),
+    ("X1aAlignP inc — KE8 (x1aAlignInc_of_orderAccounting); conditional on order accounting",
+      .conditionalTheorem),
+    ("X2ProgressP linear — KE9 (x2Progress_of_pricing); conditional on ProgressPricing ⚑ (√N form general at XD4 x2hypAssembled)",
+      .conditionalTheorem),
+    ("WeightChargeT4P/WeightChargeFullP — KD10 (weightChargeFull_of_ladderCap); conditional on the ladder-cap law",
+      .conditionalTheorem) ]
 
 end LeanUrat.MovesX

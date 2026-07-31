@@ -38,7 +38,15 @@ quantifier shape IS the design content — recorded here, ratified there):
 * `RelRow_rel2b RP` — ∀ p, ∀ S hS, SitedSlot_rel2b S (data S hS) (tgt S hS).
 * `RelRow_rel2d RP` — ∀ p, ∀ S hS, SitedSlot_rel2d S (data S hS).
 * `RelRow_rel2e RP` — ∀ p, ∀ S hS, SitedSlot_rel2e S (data S hS)
-    (RP.assign p).tableConv ((RP.assign p).consumed S hS) (tgt S hS).
+    ((RP.assign p).tableConv S hS) ((RP.assign p).consumed S hS) (tgt S hS)
+    — `tableConv` per-site since R-19 (D-SC REVISION 2, finding 5).
+  ROW-LEVEL POSITIVITY (D-SC REVISION 2, finding 7 rebuttal, displayed): every
+  site the rel2b/rel2e rows quantify over satisfies `0 < S.cellMass` — that is
+  G14's `RelSiteFamily.mem_pos` field (CF1/R-8) at the row's own `hS : S ∈
+  (RP.fam p).mem`, so the slot-level positive-cell guard (the note's scoping,
+  MOVES 9483–85) discharges at every quantified site; a zero-mass site is
+  simply not a family member.  Compiled witness: SlotsG19c
+  `rel2b_guard_fires_on_family`.
 * `RelRow_rel3 RP` — ∀ p, SitedSlot_rel3 (RP.fam p) (RP.assign p) (RP.display p).
 These ∀-closures are over the SUPPLIED family — the G2 record's junk-site
 ∀-falseness does not apply (the quantifier never ranges over abstract sites).

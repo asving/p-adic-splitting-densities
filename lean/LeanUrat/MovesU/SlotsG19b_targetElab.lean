@@ -84,8 +84,9 @@ example : Prop :=
     (fun f => SD.theta.Θ (SD.dom.domIdent f)) ⁻¹' W ∈ S.AmbEvents ∧
     S.condMass ((fun f => SD.theta.Θ (SD.dom.domIdent f)) ⁻¹' W) = CI.C.V.vol W)
 
-/-- probe: `SitedSlot_rel2d`'s target — the square + node-data correspondence +
-the (CF12) `posOf_letter` wiring. -/
+/-- probe: `SitedSlot_rel2d`'s REVISED target (D-SC REVISION 2, finding 3) —
+the square + node-data correspondence + the (CF12) `posOf_letter` wiring + the
+R-17 prescribed-subtree identification. -/
 example : Prop :=
   (∀ f : S.Cont, SD.trees.nodeCorr (SD.trees.ambTcan f)
     = SD.trees.tgtTcan (SD.theta.Θ (SD.dom.domIdent f))) ∧
@@ -93,21 +94,25 @@ example : Prop :=
   (∀ t, SD.trees.tgtReads (SD.trees.nodeCorr t)
     = (SD.trees.ambReads t).map SD.dict.readDict) ∧
   (∀ t, SD.trees.tgtVerdict (SD.trees.nodeCorr t) = SD.trees.ambVerdict t) ∧
-  (∀ r, AD.posLetter S.δabs (SD.trees.posOf r) = SD.dict.tgtLetter r)
+  (∀ r, AD.posLetter S.δabs (SD.trees.posOf r) = SD.dict.tgtLetter r) ∧
+  (∀ (T : S.PTree) (f : S.Cont), f ∈ S.SEvent T ↔
+    SD.trees.TgtRealizes (SD.trees.tgtTcan (SD.theta.Θ (SD.dom.domIdent f)))
+      (SD.trees.subtreeCorr T))
 
-/-- probe: `SitedSlot_rel2e`'s target — (e1) compatibility, (e4) `tableConv`
-agreement, (e5) determination, (e3) MASS = ENTRY at the REL.1 vol, `Slot_rel1`
-displayed. -/
+/-- probe: `SitedSlot_rel2e`'s REVISED target (D-SC REVISION 2, findings 1/5) —
+(e1) compatibility, (e4) UNIQUE `tableConv` agreement, (e5) coverage +
+determination at the site's `Tj`, (e3) MASS = ENTRY at the REL.1 vol pinned AT
+`Tj` (no `consumed`-quantifier), `Slot_rel1` displayed. -/
 example : Prop :=
   (∀ s, SD.beta.stateReadsRel (SD.beta.stateDict s)
     = (SD.beta.stateReadsAmb s).map SD.dict.readDict) ∧
-  tableConv SD.beta.entryFirst ∧
-  (∀ T ∈ consumed, ∀ T' ∈ consumed, T = T') ∧
-  (Slot_rel1 CI ∧ ∀ T ∈ consumed,
-    {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr T)}
+  (tableConv SD.beta.entryFirst ∧ ∀ m, tableConv m → m = SD.beta.entryFirst) ∧
+  (S.Tj ∈ consumed ∧ ∀ T ∈ consumed, T = S.Tj) ∧
+  (Slot_rel1 CI ∧
+    {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr S.Tj)}
       ∈ CI.C.V.events ∧
     SD.beta.β SD.beta.entryFirst S.τ S.βarg
-      = CI.C.V.vol {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr T)})
+      = CI.C.V.vol {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr S.Tj)})
 
 end probe
 
@@ -116,10 +121,15 @@ variable {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax} {AD : AlphabetData p Sp}
 variable (Fam : RelSiteFamily p) (RA : RelAssignment p Sp AD Fam)
 variable (CD : ConsumedDisplayPack p Fam)
 
-/-- probe: `SitedSlot_rel3`'s target — per-leg certification (value = the site's
-β read; event = the realization event; both DERIVED, none free), keying, and the
-consumption tie. -/
+/-- probe: `SitedSlot_rel3`'s REVISED target (D-SC REVISION 2, findings 2/4) —
+population + coverage (R-20), then per-leg certification (value = the site's
+β read; event = the realization event; both DERIVED, none free), keying (at the
+R-19 per-site `tableConv`), and the consumption tie. -/
 example : Prop :=
+  Nonempty CD.Leg ∧
+  (∀ (S : RelSite p) (hS : S ∈ Fam.mem), ∀ T ∈ RA.consumed S hS,
+    ∃ l : CD.Leg,
+      (⟨CD.site l, CD.presc l⟩ : Σ S' : RelSite p, S'.PTree) = ⟨S, T⟩) ∧
   ∀ l : CD.Leg,
     (Slot_rel1 (RA.tgt (CD.site l) (CD.site_mem l)) ∧
       {g | (RA.data (CD.site l) (CD.site_mem l)).trees.TgtRealizes
@@ -132,7 +142,7 @@ example : Prop :=
                   ((RA.data (CD.site l) (CD.site_mem l)).trees.tgtTcan g)
                   ((RA.data (CD.site l) (CD.site_mem l)).trees.subtreeCorr (CD.presc l))}) ∧
     (CD.first l = (RA.data (CD.site l) (CD.site_mem l)).beta.entryFirst ∧
-      RA.tableConv (CD.first l)) ∧
+      RA.tableConv (CD.site l) (CD.site_mem l) (CD.first l)) ∧
     CD.presc l ∈ RA.consumed (CD.site l) (CD.site_mem l)
 
 end probe3

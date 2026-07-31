@@ -59,7 +59,11 @@ theorem count_normalizedFactors_le_one_of_monic_natDegree_one
     (f : Polynomial (ZMod p)) (hf : f.Monic) (hdeg : f.natDegree = 1)
     (ψ : Polynomial (ZMod p)) :
     Multiset.count ψ (UniqueFactorizationMonoid.normalizedFactors f) ≤ 1 := by
-  sorry
+  have hirr : Irreducible f :=
+    hf.irreducible_of_degree_eq_one (by
+      rw [Polynomial.degree_eq_natDegree hf.ne_zero, hdeg]; rfl)
+  rw [UniqueFactorizationMonoid.normalizedFactors_irreducible hirr]
+  exact le_trans (Multiset.count_le_card _ _) (le_of_eq (Multiset.card_singleton _))
 
 /-- TV-A5a data block: the n = 1 CHILDLESS micro-tree — `mem o x := (o = none)`
 (root always realized, no some-state ever realized), `child ≡ False`. The three
@@ -68,9 +72,9 @@ def microTree (pol : CanonPolicy p F) (N m : ℕ) : TreeModel p F 1 N m pol wher
   mem o _ := o = none
   child _ _ _ := False
   root_mem _ := rfl
-  mem_single := sorry
-  mem_snoc := sorry
-  mem_realizable := sorry
+  mem_single := fun _ _ _ => by simp
+  mem_snoc := fun _ _ _ _ => by simp
+  mem_realizable := fun _ _ h => by simp at h
 
 /-- TV-A5a: the micro-tree is CHILDLESS (definitional). -/
 theorem micro_childless (pol : CanonPolicy p F) (N m : ℕ) :
@@ -85,8 +89,29 @@ childless micro-tree at n = 1. Intended data (sketch): `Cell := Unit`, constant
 monic linear). -/
 noncomputable def microCellAssign (pol : CanonPolicy p F) (N m : ℕ)
     (χ : Fin 1 → Fin m) (trackOf : Node p F → Polynomial (ZMod p)) :
-    CellAssign p F 1 N m pol (microTree pol N m) χ trackOf := by
-  sorry
+    CellAssign p F 1 N m pol (microTree pol N m) χ trackOf where
+  Cell := Unit
+  hCellFin := inferInstance
+  cellOf := fun _ _ => ()
+  cellLevel := fun _ => 0
+  levelOf := fun _ => 0
+  cell_local := fun _ _ _ _ => rfl
+  branchSetOf := fun _ => ∅
+  child_cell := fun _ _ _ _ => by simp [microTree]
+  child_root_sub := fun _ _ h => by simp [microTree] at h
+  child_cell_red := fun _ _ _ _ _ _ h => by simp at h
+  child_red_uniform := fun _ _ _ _ _ _ => Iff.rfl
+  branchCellOf := fun _ _ _ => ()
+  branch_cell_joint := fun _ _ _ _ _ => rfl
+  child_cover := by
+    intro g x _ ψ _ hcount
+    exfalso
+    have hred : redPoly χ x = Polynomial.X + Polynomial.C (x (χ 0)) := by
+      simp [redPoly]
+    have hmonic : (redPoly χ x).Monic := by rw [hred]; exact Polynomial.monic_X_add_C _
+    have hdeg : (redPoly χ x).natDegree = 1 := by rw [hred]; exact Polynomial.natDegree_X_add_C _
+    have hle := count_normalizedFactors_le_one_of_monic_natDegree_one (redPoly χ x) hmonic hdeg ψ
+    omega
 
 /-- **TV-A5a, the fence-record upgrade**: at the micro-carrier the TV-A1 pair is
 (vacuously) TRUE at every reduction datum `g` — so the (U)∧(R) hypotheses of the
@@ -97,6 +122,10 @@ theorem micro_pair_vacuous (pol : CanonPolicy p F) (N m : ℕ)
     (g : Fin 1 → ZMod p) :
     TrackUniqOn (microTree pol N m) χ trackOf g ∧
     TrackRepOn (microTree pol N m) χ trackOf g := by
-  sorry
+  refine ⟨?_, ?_⟩
+  · intro y _ ν ν' h
+    simp [microTree] at h
+  · intro y _ ν h
+    simp [microTree] at h
 
 end LeanUrat.MovesT

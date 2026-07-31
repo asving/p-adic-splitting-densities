@@ -129,8 +129,10 @@ O_{δ_j}-engine's canonical trees, the node-data correspondence `nodeCorr`, the
 word/read/verdict readers on both sides, the (EQ-2) position assignment, and
 the prescribed-subtree identification (`TgtSub`/`subtreeCorr`/`TgtRealizes` —
 without which (SIB-Oδ) is ill-typed).  The (d) LAWS — the commuting square at
-Θ, word/read/verdict preservation, the `posOf_letter` wiring constraint (CF12)
-— are IB-G16 conjuncts. -/
+Θ, word/read/verdict preservation, the `posOf_letter` wiring constraint (CF12),
+and the PRESCRIBED-SUBTREE EVENT IDENTIFICATION (R-17: `SEvent T` is exactly
+the Θ-pullback of `subtreeCorr T`'s realization event — what constrains
+`TgtSub`/`subtreeCorr`/`TgtRealizes`) — are IB-G16 conjuncts. -/
 structure SiteTrees (S : RelSite p) (Sp : SpeciesSyntax) (AD : AlphabetData p Sp)
     (Dc : SiteDict p S Sp) where
   AmbTree : Type
@@ -155,8 +157,10 @@ R-11): REL.1-side states over O_{δ_j}, the (e1) dictionary from [3]/[3t]'s stat
 index, the per-state read rosters on both sides, [3]'s β TABLE in [3]'s own
 keying (first index, state, argument) ↦ entry, and the (e4) first index
 `entryFirst` FIXED per branch.  `tableConv`/`consumed` are NOT fields (R-11).
-The (e) LAWS — (e1)-compatibility, (e4) agreement, (e5) determination, (e3)
-MASS = ENTRY at the REL.1 vol — are IB-G16 conjuncts. -/
+The (e) LAWS — (e1)-compatibility, (e4) UNIQUE agreement with the exported
+convention (R-18), (e5) coverage + determination anchored at the site's `Tj`
+(R-16/R-18), (e3) MASS = ENTRY at the REL.1 vol pinned AT `Tj` — are IB-G16
+conjuncts. -/
 structure SiteBeta (S : RelSite p) (Sp : SpeciesSyntax) (Dc : SiteDict p S Sp) where
   RelState : Type
   relStateNe : Nonempty RelState

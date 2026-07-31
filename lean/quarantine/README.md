@@ -149,3 +149,25 @@ skeleton + the execution record until then. NOTE: the repair will change W17ii's
 statement or RS4Chain's field roster, so at revival the fill needs mechanical
 re-alignment to the repaired vocabulary (the refutation targets the PRE-repair
 clause; its role then is the necessity certificate for the census guard).
+
+## BP5 hygiene quarantines (2026-07-31) — L6_R3 (Q-8) / CL-10 (Q-5)
+
+Completion of the pre-authorized BP5 sweep (same binding adjudications as the
+2026-07-30 batch above: Q-8 execute-immediately hygiene; Q-5 quarantine-with-record).
+Importer census re-run by grep AT EXECUTION TIME (A7 discipline): **zero live importers
+for both**; neither is in the root import graph (`LeanUrat.lean`) or reachable from any
+capstone. Post-move per-module reverify (`lake env lean`) of the only files that name
+either — `HC1/CL11_posUniq`, `HC1/CL12_nclAssembly` (comment-only refs to CL-10), and
+`HC1/S17_levelMeasureExact` (imports the successor `L6_..._R4`, not R3) — all GREEN,
+axioms `[propext, Classical.choice, Quot.sound]`. Full-tree `lake build` was green with
+both files present (8560 jobs, 2026-07-31) immediately before the move.
+
+| file | class | reason | supersession / complement (KEEP) | sorries removed |
+|---|---|---|---|---|
+| `Moves_L6_moveReduceCommute_R3_2026-07-31.lean.txt` | Q-8 | manifest statement is machine-checked FALSE at `M = 0` (`ZMod (p^0)` trivial ⟹ clause 1 demands `⊥ < ⊥`; in-file disproof `L6_moveReduceCommute_statement_false`); the honest `sorry` was confined to that `M=0` branch under the statement fence. do-not-import header was in place. Only importer was `notes/golf_baseline_2026-07-30/AxChk_Moves_B.lean` (a frozen notes snapshot, not in the build tree). | `Moves/L6_moveReduceCommute_R4.lean` (sorry-free, adds `hM : 1 ≤ M`; imported live by `HC1/S17_levelMeasureExact`). The FULLY PROVEN content `L6_moveReduceCommute_of_nontrivial` / `_of_one_le` is preserved verbatim inside the quarantined text. | 1 @82 |
+| `HC1_CL10_nclProbe_2026-07-31.lean.txt` | Q-5 | believed-FALSE sorried `∃` (the NCL countermodel ATTEMPT `CL10_ncl_countermodel_attempt`; sealed prediction "no witness exists" upheld — the in-file mechanism survey M-A..M-E finds none). The file's own closing record prescribed quarantine once CL-12 lands. NOT a compiled negation witness (contrast TV_H1b above) — just a dead probe, so no coexistence hazard. | `HC1/CL12_nclAssembly.lean` `CL12_ncl` (PROVED — the universal this probe failed to negate) + `CL11_posUniq` positional uniqueness. Both landed; both compile without CL-10 present. The full mechanism-survey report is preserved verbatim inside the quarantined text. | 1 @84 |
+
+Census effect: 2 live `sorry` tokens removed from `LeanUrat/` (one in `Moves/`, one in
+`HC1/`). Orchestrator-level acceptance gate still pending: the BUILD-ONLY AxChk census
+byte-compare (`lake build LeanUrat.AxChk_baseline`, `#print axioms` diff vs the pre-move
+capture) — flagged, not run by the prover.

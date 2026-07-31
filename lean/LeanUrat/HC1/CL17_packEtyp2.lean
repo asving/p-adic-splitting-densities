@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsCar
+import LeanUrat.HC1.T7_alphabetSpan
 
 /-!
 # HC1.CL17_packEtyp2 — TYP conjunct 2 at `packE`, unfolded (BP5 CL-17)
@@ -55,6 +56,41 @@ namespace LeanUrat.HC1
 
 open scoped Classical
 
+/-- The ite-restriction form of `inγ γ' ∘ slotCoeff` IS `typComposite` of the
+subtype restriction (`dite → ite`, the then-branch does not use the membership
+proof). -/
+private theorem inGr_slot_restrict {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
+    [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (g : T.Coord → ↥(T.stg 0).FQ) :
+    T.inGr γ' (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ' then g c else 0))
+      = T.typComposite b γ' (fun c : ↥(T.levelSet b γ') => g c.1) := by
+  rw [Tower.typComposite]
+  congr 2
+
+/-- The subtype-restriction of a `Coord`-level `Pi.single` at a level-set member IS
+the subtype-level `Pi.single`. -/
+private theorem single_restrict_eq {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
+    [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (c : T.Coord)
+    (hc : c ∈ T.levelSet b γ') (y : ↥(T.stg 0).FQ) :
+    (fun c'' : ↥(T.levelSet b γ') =>
+        (Pi.single (c : T.Coord) y : T.Coord → ↥(T.stg 0).FQ) c''.1)
+      = Pi.single (⟨c, hc⟩ : ↥(T.levelSet b γ')) y := by
+  funext c''
+  simp only [Pi.single_apply]
+  by_cases h : (c'' : T.Coord) = c
+  · rw [if_pos h, if_pos (Subtype.ext h)]
+  · rw [if_neg h, if_neg (fun he => h (by rw [he]))]
+
+/-- The generating set of the packE `TYPStmt'` conjunct-2 closure IS the tower's
+alphabet generating set. -/
+private theorem single_pack_eq {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
+    [Finite F] (T : Tower p F) (b : ℕ) (γ' : ℚ) (c : T.Coord)
+    (hc : c ∈ T.levelSet b γ') (y : ↥(T.stg 0).FQ) :
+    T.inGr γ' (T.slotCoeff b (fun c' => if c' ∈ T.levelSet b γ'
+        then (Pi.single (c : T.Coord) y : T.Coord → ↥(T.stg 0).FQ) c' else 0))
+      = T.typComposite b γ' (Pi.single (⟨c, hc⟩ : ↥(T.levelSet b γ')) y) := by
+  rw [inGr_slot_restrict T b γ' (Pi.single (c : T.Coord) y),
+    single_restrict_eq T b γ' c hc y]
+
 /-- **CL-17 (`packE_typ2`)** — `TYPStmt'` conjunct 2 at `packE`, unfolded (see the
 module docstring): span pricing — the additive closure of the single-coordinate
 slot-image ranges at (b, γ') has cardinality `p ^ aDim b γ'`. Up to the
@@ -68,7 +104,26 @@ theorem packE_typ2 {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
             (fun c' => if c' ∈ T.levelSet b γ'
               then (Pi.single c y : T.Coord → ↥(T.stg 0).FQ) c' else 0))))
       = p ^ T.aDim b γ' := by
-  sorry
+  have hset : (⋃ c ∈ T.levelSet b γ', Set.range fun y : ↥(T.stg 0).FQ =>
+          T.inGr γ' (T.slotCoeff b
+            (fun c' => if c' ∈ T.levelSet b γ'
+              then (Pi.single c y : T.Coord → ↥(T.stg 0).FQ) c' else 0)))
+        = (⋃ c : ↥(T.levelSet b γ'), Set.range fun y : ↥(T.stg 0).FQ =>
+            T.typComposite b γ' (Pi.single c y)) := by
+    ext z
+    simp only [Set.mem_iUnion, Set.mem_range]
+    constructor
+    · rintro ⟨c, hc, y, rfl⟩
+      exact ⟨⟨c, hc⟩, y, (single_pack_eq T b γ' c hc y).symm⟩
+    · rintro ⟨⟨c, hc⟩, y, rfl⟩
+      exact ⟨c, hc, y, single_pack_eq T b γ' c hc y⟩
+  calc Nat.card ↥(AddSubgroup.closure
+          (⋃ c ∈ T.levelSet b γ', Set.range fun y : ↥(T.stg 0).FQ =>
+            T.inGr γ' (T.slotCoeff b
+              (fun c' => if c' ∈ T.levelSet b γ'
+                then (Pi.single c y : T.Coord → ↥(T.stg 0).FQ) c' else 0))))
+        = Nat.card ↥(T.alphabet b γ') := by rw [Tower.alphabet, hset]
+      _ = p ^ T.aDim b γ' := (T7_alphabetSpan T b γ').2.2.symm
 
 end LeanUrat.HC1
 

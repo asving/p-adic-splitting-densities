@@ -38,8 +38,25 @@ header).  Sketch: the toy has one skeleton/letter/outcome roster and
 subsingleton cell indices; `P := ` the constant polynomial matching mcV's
 `cntc`/`cntcT` at the pow2 pools (the V1_witnessC counting laws).
 PROBE DUTY: build, or fire the else-branch record. -/
-noncomputable def mcCP : CellPolyPack 1 Ctoy mcS mcV :=
-  sorry
+noncomputable def mcCP : CellPolyPack 1 Ctoy mcS mcV where
+  P := fun _ _ _ _ _ => 1
+  deg := fun _ _ _ _ _ => by simp
+  count := fun d => d.hc.elim
+  countT := by
+    classical
+    intro v d c q₀ x hzc hq h hmem
+    letI : Fintype (mcS.AssignT (mcV.moveOfT d) x h) := mcS.finAT (mcV.moveOfT d) x h
+    show ((1 : Polynomial ℚ).eval q₀ : ℚ) = (mcV.cntcT d x c h : ℚ)
+    rw [Polynomial.eval_one]
+    have hc1 : mcV.cntcT d x c h = 1 := by
+      simp only [CtsMeasured.cntcT]
+      refine le_antisymm (le_trans (Finset.card_filter_le _ _) ?_)
+        (Finset.card_pos.mpr ⟨(() : mcS.AssignT (mcV.moveOfT d) x h),
+          Finset.mem_filter.mpr ⟨Finset.mem_univ _,
+            @Subsingleton.elim (mcV.DCellO d.s d.m d.o d.α)
+              (inferInstanceAs (Subsingleton Unit)) _ c⟩⟩)
+      simp
+    rw [hc1]; norm_num
 
 /-- TV-E8 [the gate]: the fired witness is NOT the degenerate A28 core —
 one non-zero μcell value displayed at a pool point of the compiled toy

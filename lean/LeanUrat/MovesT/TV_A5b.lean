@@ -56,7 +56,13 @@ at track X + 1 (the probe's insertion point). -/
 theorem stray_redPoly_repeated (m : ℕ) (χ : Fin 2 → Fin m) (x : Box 2 m)
     (hx : x ∈ rootCell χ ![1, 0]) :
     redPoly χ x = (Polynomial.X + Polynomial.C 1) ^ 2 := by
-  sorry
+  have hx' : ∀ b : Fin 2, x (χ b) = ![1, 0] b := hx
+  have h0 : x (χ 0) = 1 := by simpa using hx' 0
+  have h1 : x (χ 1) = 0 := by simpa using hx' 1
+  rw [add_pow_char]
+  unfold redPoly
+  rw [Fin.sum_univ_two, h0, h1]
+  simp [Polynomial.C_1]
 
 /-- **TV-A5b, the probe statement**: a full `CellAssign` carrier at n = 2 over
 `ZMod 2` at which the TV-A1 pair FAILS — the compiled-negation branch of the

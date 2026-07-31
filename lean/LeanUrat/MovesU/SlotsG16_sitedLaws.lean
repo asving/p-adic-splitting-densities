@@ -47,21 +47,42 @@ FORMULATION TARGETS (H-phase bodies, behind the Q5 Codex audit; deps IB-G15 +
     (fun f => SD.theta.Θ (SD.dom.domIdent f)) ⁻¹' W ∈ S.AmbEvents ∧
     S.condMass ((fun f => SD.theta.Θ (SD.dom.domIdent f)) ⁻¹' W) = CI.C.V.vol W)
   — the target vol IS the CI's own cylinder-pinned `BoxVol` (FF5(ii)/FF6).
-* `SitedSlot_rel2d` — the acceptance-criterion square at (S, SD):
+* `SitedSlot_rel2d` — the acceptance-criterion square at (S, SD)
+  (REVISED at D-SC REVISION 2, finding 3 — the prescribed-subtree
+  identification the G2 blocked spec requires is RESTORED as the fourth leg):
   ∀ f : S.Cont, SD.trees.nodeCorr (SD.trees.ambTcan f)
     = SD.trees.tgtTcan (SD.theta.Θ (SD.dom.domIdent f)),
   ∧ word/read/verdict preservation (tgtWord ∘ nodeCorr = ambWord;
     tgtReads ∘ nodeCorr = map readDict ∘ ambReads; verdicts equal)
-  ∧ (CF12) ∀ r, AD.posLetter S.δabs (SD.trees.posOf r) = SD.dict.tgtLetter r.
-* `SitedSlot_rel2e` — (e1)–(e5) at (S, SD, tableConv, consumed, CI):
+  ∧ (CF12) ∀ r, AD.posLetter S.δabs (SD.trees.posOf r) = SD.dict.tgtLetter r
+  ∧ (R-17, the PRESCRIBED-SUBTREE IDENTIFICATION — what pins
+     `TgtSub`/`subtreeCorr`/`TgtRealizes`, and what makes S_j(T) an
+     O_{δ_j}-statement so (SIB-Oδ) is well-typed):
+     ∀ (T : S.PTree) (f : S.Cont), f ∈ S.SEvent T ↔
+       SD.trees.TgtRealizes (SD.trees.tgtTcan (SD.theta.Θ (SD.dom.domIdent f)))
+         (SD.trees.subtreeCorr T).
+* `SitedSlot_rel2e` — (e1)–(e5) at (S, SD, tableConv, consumed, CI)
+  (REVISED at D-SC REVISION 2, findings 1/5 — the empty-`consumed` and
+  free-`tableConv` escapes are killed at the statement: (e3) is pinned AT the
+  site's own `S.Tj` (R-16) with NO `consumed`-quantifier left to vacate; (e5)
+  gains the coverage half; (e4) gains unique determination):
   (e1) ∀ s, SD.beta.stateReadsRel (SD.beta.stateDict s)
         = (SD.beta.stateReadsAmb s).map SD.dict.readDict;
-  (e4) tableConv SD.beta.entryFirst — [3]'s exported convention ONLY (CF13);
-  (e5) ∀ T ∈ consumed, ∀ T' ∈ consumed, T = T' (determination);
-  (e3) `Slot_rel1 CI` ∧ ∀ T ∈ consumed,
-        {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g) (SD.trees.subtreeCorr T)}
-          ∈ CI.C.V.events ∧
-        SD.beta.β SD.beta.entryFirst S.τ S.βarg = CI.C.V.vol {g | …realizes…}
+  (e4) tableConv SD.beta.entryFirst ∧ (∀ m, tableConv m → m = SD.beta.entryFirst)
+       — [3]'s exported convention ONLY (CF13), which as a CONVENTION must
+       DETERMINE the first index (R-18; `fun _ => True` is now refuted, and no
+       ambient-vs-rebased reading is chosen — the G15b seam stays open, resolved
+       only by [3]'s actual export);
+  (e5) S.Tj ∈ consumed ∧ (∀ T ∈ consumed, T = S.Tj) — coverage (the table
+       actually consumes THE site's prescription) + determination (nothing
+       else at this key); `consumed = ∅` is now refuted (R-16/R-18);
+  (e3) `Slot_rel1 CI` ∧
+        {g | SD.trees.TgtRealizes (SD.trees.tgtTcan g)
+              (SD.trees.subtreeCorr S.Tj)} ∈ CI.C.V.events ∧
+        SD.beta.β SD.beta.entryFirst S.τ S.βarg
+          = CI.C.V.vol {g | …realizes S.Tj…}
+       — MASS = ENTRY stated unconditionally AT `S.Tj`, never behind a
+       supplied-carrier quantifier
   ((e2) is definitional at `RelSite.βarg` — the draft's `βarg_eq` face).
 
 E-PHASE DIVISION OF LABOR (the G2 discipline, verbatim): bodies are `sorry`;
@@ -107,7 +128,9 @@ def SitedSlot_rel2b {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
 re-type of the BLOCKED `Slot_rel2d`): lift-policy compatibility — the
 acceptance-criterion commutative square `nodeCorr (T_can f) = T_can^{O_δ}(Θ f)`
 with the SPECIFIED node-data correspondence (word/reads/verdicts preserved,
-(EQ-2) wiring constrained by `posOf_letter`) over the supplied `SD.trees`.
+(EQ-2) wiring constrained by `posOf_letter`) over the supplied `SD.trees`,
+PLUS the prescribed-subtree identification (R-17: `SEvent T` = the Θ-pullback
+of the target realization event, restored at D-SC REVISION 2 finding 3).
 See the file header for the displayed target. -/
 def SitedSlot_rel2d {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (S : RelSite p) (SD : SiteData p S Sp AD) : Prop :=
@@ -117,8 +140,12 @@ def SitedSlot_rel2d {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
 re-type of the BLOCKED `Slot_rel2e`): the β-identification (e1)–(e5) with
 `tableConv`/`consumed` as [3]/MovesS-supplied PARAMETERS (CF13/CF14 — the
 audited-vacuity repairs, carried verbatim) and MASS = ENTRY priced at the
-supplied CI's REL.1 vol, `Slot_rel1 CI` displayed.  See the file header for the
-displayed target. -/
+supplied CI's REL.1 vol, `Slot_rel1 CI` displayed — REVISED at D-SC REVISION 2
+(findings 1/5): (e3) pinned unconditionally at the site's own `S.Tj`, (e5) =
+coverage + determination at `S.Tj`, (e4) = unique agreement with the exported
+convention, so the empty-`consumed`/`fun _ => True` degenerate carriers make
+the slot FALSE, not vacuously true (compiled: SlotsG19c).  See the file header
+for the displayed target. -/
 def SitedSlot_rel2e {p : ℕ} [Fact p.Prime] {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (S : RelSite p) (SD : SiteData p S Sp AD)
     (tableConv : ℕ → Prop) (consumed : Set S.PTree)

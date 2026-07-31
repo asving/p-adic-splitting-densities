@@ -9,10 +9,10 @@ import LeanUrat.MovesX.Defs
 
 BRIDGE CAMPAIGN unit **KE9** (area BP4, cluster c3; blueprint
 `lean/notes/BRIDGE_BP4_KERNELS_2026-07-30.md` §3.E (E-vi) + §4 KE9).
-E-PHASE STATEMENT MODULE — statement with `sorry` body. EXPLICITLY DEFERRABLE:
-X.3 does NOT consume `X2ProgressP` (only SQ.3's quantitative envelope does),
-and the √N form is PROVED (XD4 `x2hypAssembled`). Scheduled only if KE2+KE3
-land with room.
+PROVED 2026-07-31 (`x2Progress_of_pricing`, footprint Lean-core; conditional on
+the ⚑ `ProgressPricing` law). EXPLICITLY DEFERRABLE: X.3 does NOT consume
+`X2ProgressP` (only SQ.3's quantitative envelope does), and the √N form is also
+PROVED (XD4 `x2hypAssembled`).
 
 THE KERNEL: `X2ProgressP n X K` (MovesX/Defs.lean) — an undetected-at-N
 fourth-piece branch is deep or tall at LINEAR rates
@@ -54,7 +54,7 @@ structure ProgressPricing (n p : ℕ) [Fact p.Prime] (C : XCtx n p)
     ((C.threshold b : ℕ) : ℚ) + ((capHB C b : ℕ) : ℚ) ≤
       Cprog * (1 + (dTotal (C.hist b) : ℚ) + (maxH (C.hist b) : ℚ))
 
-/-- **KE9 [ATTEMPT, lowest priority]** — `X2ProgressP` (the LINEAR progress
+/-- **KE9 [PROVED 2026-07-31]** — `X2ProgressP` (the LINEAR progress
 kernel) from the pricing law: `N < thr + cap ≤ Cprog·(1 + d_total + max h)`
 forces `d_total` or `max h` past `N/(2·Cprog) − 1/2`, and the slope/intercept
 hypotheses convert that to the `K`-rated dichotomy (resolution 2).
@@ -66,6 +66,27 @@ theorem x2Progress_of_pricing {n : ℕ} (X : XFamily n) (K : XConsts n)
     (hcd : K.cd * (2 * Cprog) ≤ 1) (hcd' : (1 : ℚ) / 2 ≤ K.cd')
     (hch : K.ch * (2 * Cprog) ≤ 1) (hch' : (1 : ℚ) / 2 ≤ K.ch') :
     X2ProgressP n X K := by
-  sorry
+  intro p hp f b N hfp hN
+  -- The pricing law at this prime, evaluated on the fourth-piece branch.
+  have hprice := (hpr p).bound f b hfp
+  -- `N < thr + cap` (nat) casts to ℚ.
+  have hNQ : (N : ℚ) < ((X.ctx p).threshold b : ℚ) + (capHB (X.ctx p) b : ℚ) := by
+    exact_mod_cast hN
+  set d : ℚ := (dTotal ((X.ctx p).hist b) : ℚ) with hd_def
+  set h : ℚ := (maxH ((X.ctx p).hist b) : ℚ) with hh_def
+  -- Chain: `N < thr + cap ≤ Cprog·(1 + d + h)`.
+  have hN2 : (N : ℚ) < Cprog * (1 + d + h) := lt_of_lt_of_le hNQ hprice
+  have hNnn : (0 : ℚ) ≤ (N : ℚ) := by positivity
+  -- Suppose both disjuncts fail; the pricing bound then forces `N < N`.
+  by_contra hcon
+  simp only [not_or, not_le] at hcon
+  obtain ⟨hd, hh⟩ := hcon
+  nlinarith [hN2, hC,
+    mul_pos hC (by linarith : (0 : ℚ) < K.cd * (N : ℚ) - K.cd' - d),
+    mul_pos hC (by linarith : (0 : ℚ) < K.ch * (N : ℚ) - K.ch' - h),
+    mul_nonneg (by linarith : (0 : ℚ) ≤ 1 - K.cd * (2 * Cprog)) hNnn,
+    mul_nonneg (by linarith : (0 : ℚ) ≤ 1 - K.ch * (2 * Cprog)) hNnn,
+    mul_nonneg hC.le (by linarith : (0 : ℚ) ≤ K.cd' - 1 / 2),
+    mul_nonneg hC.le (by linarith : (0 : ℚ) ≤ K.ch' - 1 / 2)]
 
 end LeanUrat.MovesX
