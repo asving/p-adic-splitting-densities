@@ -900,3 +900,17 @@ literature-pinned over arbitrary discretely valued fields. INCIDENTAL:
 docs/GMN_citations.md had diverged (pre-07-03 false claims) — corrected with
 a superseding appendix. The GD unit's honest residue is now: engine
 conformance (GD-4/GD-6/S-1) + the V26/V27 verification cycles.
+
+## V26/V27 (2026-08-01 late): both UNSOUND, cores confirmed
+V26 GD23: order-<=1 layer NO CRITICAL ERROR; DEVID sound (conditional);
+arbitrary-DVR sound for the local proofs. Criticals: higher-order (V1)
+composition missing an irreducibility premise; GD3-FULL/OL-B from (GR-B)
+deduction; IFACE arbitrary-DVR scope. The 1+z -> 1+az slot-twist example =
+the SAME phenomenon CU-1's harness caught (coherent normalization) —
+convergent evidence the twist clause is real. -> r2.
+V27 CU-1: the induction core has repairables; chief = Corollary CU-1-ADEQ
+overclaims (terminal GMN children outside CU-1's continuing-node scope;
+Lemma R recovers, does not create; the read-back is globally quantified in
+substance). -> r2 (scope ADEQ to interior/continuing + route terminal
+children through O5triple's counting where they belong).
+O-4 DRAINAGE TRANSFER dispatched in parallel (independent path step).
