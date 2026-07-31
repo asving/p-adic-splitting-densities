@@ -54,8 +54,26 @@ private noncomputable def pgIn : PolyGeom :=
 /-- Padding at the levels e ≠ 2: the constant 1 (the terminal head outcome). -/
 private noncomputable def pgOne : PolyGeom := pgDiv 1 1 0 (one_dvd _)
 /-- Padding at the levels e ≠ 2: the constant 0 (the roster's duplicate
-outcomes carry no mass). -/
-private noncomputable def pgZero : PolyGeom := pgDiv 0 1 0 (one_dvd _)
+outcomes carry no mass).
+QUEUE ITEM 10 REPAIR (Asvin sign-off 2026-07-31; probe `MovesU/SynK2_cl6N2.lean`):
+`countS := 0` — the honest cell census for the padding rows, whose cell fibers
+are EMPTY.  The old `pgDiv`-pinned `countS = 1` refuted `PolyGeomLaws n2T n2M
+n2RB` at (e, o, q₀) = (1, 1, 2) (compiled `n2_polyGeomLaws_isEmpty`, git history
+of the probe file — superseded by this repair in the same commit).  The change
+is VAL-PRESERVING (`pgZero_val : pgZero.val = 0`, as before) and keeps the
+degree pins (`natDegree 0 = 0 ≤ 0`); no external consumer pins `tgP`'s `countS`
+(probe-grep-verified). -/
+private noncomputable def pgZero : PolyGeom where
+  countT := 1
+  degBoundT := 0
+  degT_le := by simp
+  countS := 0
+  degBoundS := 0
+  degS_le := by simp
+  geom := 0
+  qpow := 0
+  geomDenoms := ∅
+  geom_denom_dvd := by simp
 
 /-- The block-2 roster: o_K ↦ q⁻³, o_spl ↦ (X−1)/X, o_in ↦ (X²−1)/X³. -/
 private noncomputable def tgTop : Fin 3 → PolyGeom := fun o =>
@@ -105,11 +123,22 @@ private lemma pgDiv_val_mem {q₀ : ℚ} {num den : Polynomial ℚ} {qp : ℕ}
   rw [hc, Polynomial.eval_mul, h0, zero_mul] at hden
   exact hden rfl
 
+/-- The repaired padding presentation still has value 0 (queue item 10:
+val-preservation). -/
+private lemma pgZero_val : pgZero.val = 0 := by
+  simp [pgZero, PolyGeom.val]
+
+private lemma pgZero_val_mem (q₀ : ℚ) : pgZero.val ∈ OKat q₀ := by
+  rw [pgZero_val]; exact zero_mem _
+
 private lemma n2tgP_ok (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) (q₀ : ℚ)
     (hq : q₀ ∈ n2M.Pools) : (n2tgP e τ o).val ∈ OKat q₀ := by
   have hne : q₀ ≠ 0 := pools_ne_zero hq
-  simp only [n2tgP, tgTop, tgLow, pgK, pgSpl, pgIn, pgOne, pgZero]
-  split_ifs <;> exact pgDiv_val_mem (by simp [hne])
+  simp only [n2tgP, tgTop, tgLow, pgK, pgSpl, pgIn, pgOne]
+  split_ifs <;>
+    first
+      | exact pgDiv_val_mem (by simp [hne])
+      | exact pgZero_val_mem q₀
 
 private lemma n2ιP_val (e : ℕ) (τ : n2T.State e) (ε : n2M.EntShape e τ) :
     (n2ιP e τ ε).val = 1 := by
@@ -204,6 +233,12 @@ private lemma evalAt_of_val_one {q₀ : ℚ} {g : Qq} (hg : g ∈ OKat q₀) (h1
   have hsub : (⟨g, hg⟩ : OKat q₀) = 1 := Subtype.ext h1
   rw [hsub, map_one]
 
+/-- `evalAt` of the repaired zero-padding presentation (queue item 10): value 0. -/
+private lemma evalAt_pgZero {q₀ : ℚ} (hok : pgZero.val ∈ OKat q₀) :
+    (evalAt q₀ ⟨pgZero.val, hok⟩ : ℚ) = 0 := by
+  have hsub : (⟨pgZero.val, hok⟩ : OKat q₀) = 0 := Subtype.ext pgZero_val
+  rw [hsub, map_zero]
+
 /-- tg/j interpolation at every pool (owner unit `n2_interp_tg`): the evaluated
 presentation is the measured row of N2Carriers' `rowVal` fill. -/
 private lemma n2tgP_interp (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) (q₀ : ℚ)
@@ -260,13 +295,11 @@ private lemma n2tgP_interp (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) (q₀
       refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
       simp
     · rw [if_neg one_ne_zero]
-      have hval := evalAt_pgDiv (num := 0) (den := 1) (qp := 0)
-        (hdvd := one_dvd _) (q₀ := q₀) (by simp) hok'
+      have hval := evalAt_pgZero (q₀ := q₀) hok'
       refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
       simp
     · rw [if_neg (by omega : ¬(2 = 0))]
-      have hval := evalAt_pgDiv (num := 0) (den := 1) (qp := 0)
-        (hdvd := one_dvd _) (q₀ := q₀) (by simp) hok'
+      have hval := evalAt_pgZero (q₀ := q₀) hok'
       refine (congrArg (fun t : ℚ => (t : ℝ)) hval).trans ?_
       simp
 
@@ -368,5 +401,104 @@ theorem n2_polygeom_data :
     (n2RB.tgP 2 n2τ n2oIn).qpow = 3 ∧
     (n2RB.tgP 2 n2τ n2oK).geomDenoms = ∅ := by
   exact ⟨pgK_val, pgSpl_val, pgIn_val, rfl, rfl, rfl, rfl⟩
+
+/-! ### [QUEUE ITEM 10 COMPANIONS, 2026-07-31] The CL-6 count laws at the
+repaired pack — the two `PolyGeomLaws` VALUE obligations, proved HERE because
+the presentation constants are private to this file; the SYN2-K2 probe module
+(`MovesU/SynK2_cl6N2.lean`) assembles the `Nonempty (PolyGeomLaws n2T n2M n2RB)`
+witness from them (the `BridgeKernels.cl6` "moves out" evidence). -/
+
+/-- CL-6 T-count law at the n = 2 pack: every roster presentation carries the
+constant-1 `countT`, so it evaluates to the ℕ-count 1 at every q₀. -/
+theorem n2_tcount_val (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) (q₀ : ℚ) :
+    (n2RB.tgP e τ o).countT.eval q₀ = ((1 : ℕ) : ℚ) := by
+  have h1 : (n2RB.tgP e τ o).countT = 1 := by
+    show (n2tgP e τ o).countT = 1
+    simp only [n2tgP, tgTop, tgLow, pgK, pgSpl, pgIn, pgOne, pgZero, pgDiv]
+    split_ifs <;> rfl
+  rw [h1]
+  simp
+
+/-- CL-6 cell-count law at the n = 2 pack (the repaired census): every roster
+presentation's `countS` evaluates to the outcome's cell-fiber census — 1 at the
+real rows (singleton fibers: the three block-2 rosters and the e ≠ 2 terminal
+head), 0 at the e ≠ 2 padding rows (EMPTY fibers, matched by the repaired
+`pgZero.countS = 0`).  Before the queue-item-10 repair this law was REFUTABLE
+at (e, o) = (1, 1) — the compiled probe record. -/
+theorem n2_scount_val (e : ℕ) (τ : n2T.State e) (o : n2T.Out e τ) (q₀ : ℚ) :
+    (n2RB.tgP e τ o).countS.eval q₀
+      = ∑ c ∈ n2M.cells e τ o,
+          ((n2M.cellInst e τ c q₀ (n2M.cellLvl e τ c)).card : ℚ) := by
+  -- every cell instance is a singleton: the census is the fiber cardinality
+  have hinst : ∀ c : n2M.Cell e τ,
+      (n2M.cellInst e τ c q₀ (n2M.cellLvl e τ c)).card = 1 := fun _ => rfl
+  have hsum : ∑ c ∈ n2M.cells e τ o,
+      ((n2M.cellInst e τ c q₀ (n2M.cellLvl e τ c)).card : ℚ)
+      = ((n2M.cells e τ o).card : ℚ) := by
+    rw [Finset.sum_congr rfl (fun c _ => by rw [hinst c, Nat.cast_one]),
+      Finset.sum_const, nsmul_eq_mul, mul_one, Finset.card_def]
+  rw [hsum]
+  by_cases he : e = 2
+  · -- the block-2 layer: three real rosters, singleton fibers, countS ≡ 1
+    subst he
+    obtain ⟨_, _, _, _, _, _, _, _, _, hstate2, _, _⟩ := n2_shape
+    have hτ := hstate2 τ
+    subst hτ
+    rcases o with ⟨v, hv⟩
+    have hfib : n2M.cells 2 n2τ (⟨v, hv⟩ : Fin 3)
+        = {(show n2M.Cell 2 n2τ from ⟨v, by simpa using hv⟩)} := by
+      ext c
+      simp only [MeasuredSide.cells, Set.mem_toFinset, Set.mem_setOf_eq,
+        Finset.mem_singleton]
+      constructor
+      · intro h
+        have h1 : c.1 % 3 = v := congrArg Fin.val h
+        have h2 : c.1 < 3 := c.2
+        exact Fin.ext (by change c.1 = v; omega)
+      · rintro rfl
+        exact Fin.ext (by change v % 3 = v; omega)
+    rw [hfib, Finset.card_singleton]
+    interval_cases v <;>
+      · change (1 : Polynomial ℚ).eval q₀ = ((1 : ℕ) : ℚ)
+        simp
+  · -- e ≠ 2: the one-cell layer — the terminal head o = 0 has the full fiber,
+    -- the padding rows o = 1, 2 have EMPTY fibers and countS = 0
+    have hc1 : ∀ c : n2M.Cell e τ, c.1 = 0 := by
+      intro c
+      have h2 := c.2
+      have h3 : (if e = 2 then 3 else 1) = 1 := if_neg he
+      omega
+    rcases o with ⟨v, hv⟩
+    have hcs : (n2RB.tgP e τ ⟨v, hv⟩).countS = if v = 0 then 1 else 0 := by
+      change (n2tgP e τ ⟨v, hv⟩).countS = _
+      simp only [n2tgP, if_neg he, tgLow]
+      split_ifs with h1 h2 h2
+      · rfl
+      · exact absurd (congrArg Fin.val h1) (by simpa using h2)
+      · exact absurd (Fin.ext (by simpa using h2)) h1
+      · rfl
+    by_cases hv0 : v = 0
+    · subst hv0
+      have hfib : n2M.cells e τ (⟨0, hv⟩ : Fin 3) = Finset.univ := by
+        ext c
+        simp only [MeasuredSide.cells, Set.mem_toFinset, Set.mem_setOf_eq,
+          Finset.mem_univ, iff_true]
+        exact Fin.ext (by change c.1 % 3 = 0; rw [hc1 c])
+      rw [hfib, Finset.card_univ]
+      have hcard : Fintype.card (n2M.Cell e τ) = 1 := by
+        change Fintype.card (Fin (if e = 2 then 3 else 1)) = 1
+        rw [Fintype.card_fin, if_neg he]
+      rw [hcard, hcs, if_pos rfl]
+      simp
+    · have hfib : n2M.cells e τ (⟨v, hv⟩ : Fin 3) = ∅ := by
+        rw [Finset.eq_empty_iff_forall_notMem]
+        intro c hc
+        simp only [MeasuredSide.cells, Set.mem_toFinset, Set.mem_setOf_eq] at hc
+        have h1 : c.1 % 3 = v := congrArg Fin.val hc
+        rw [hc1 c] at h1
+        exact hv0 h1.symm
+      rw [hfib, Finset.card_empty]
+      rw [hcs, if_neg hv0]
+      simp
 
 end LeanUrat.MovesS

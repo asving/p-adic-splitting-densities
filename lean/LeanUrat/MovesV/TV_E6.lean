@@ -156,15 +156,36 @@ census-at-h).  ESCALATION per the header: add the named warranted
 hypothesis `hdom : EntDomOrder0 V` to ledgerIV_inst's row (statement
 change — orchestrator ratification required; V7_rbB/V3_initrat already
 carry hdom for the SAME reason on the RatBurdens side, so the row addition
-is the established genre).  The sorry below is the honest record; TV-E7
-blocks on it. -/
+is the established genre).
+[QUEUE ITEM 11 EXECUTED, 2026-07-31 (Asvin sign-off; ledger
+lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 11): the row below
+gains `hdom : EntDomOrder0 V` as escalated, and the sorry is DISCHARGED —
+the proof is `ledgerIV_comp_once` (V7_livB) transported across the
+Σ-collapse equiv between the Σ-embedded `iDomOf` domain and the
+component-membership subtype (proof-irrelevant `castHpt` legs).] -/
+private def iDomEquiv {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {β₀ : S.Cell} (i : V.EntIx β₀) :
+    {h : Hpt i.1.1.entDim // ((V.entDom i.1.1).comps.get i.1.2).Mem h}
+      ≃ {p : Σ D : ℕ, Hpt D // p ∈ iDomOf V i} where
+  toFun h := ⟨⟨i.1.1.entDim, h.1⟩, ⟨rfl, h.2⟩⟩
+  invFun p := ⟨castHpt p.2.choose p.1.2, p.2.choose_spec⟩
+  left_inv h := Subtype.ext (castHpt_self _ h.1)
+  right_inv p := by
+    obtain ⟨⟨D, x⟩, hp⟩ := p
+    apply Subtype.ext
+    obtain ⟨e, hm⟩ := hp
+    subst e
+    show (⟨D, castHpt _ x⟩ : Σ D : ℕ, Hpt D) = ⟨D, x⟩
+    rw [castHpt_self]
+
 theorem measuredOf_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hHMC : HMC TE X.d)
     (hb : P1CtblAdd V X.w) (hc : P1NullRem V X.w)
     (hd : P1FixedHeightExact V X.w)
-    (hEC : EntCount V) (hEU : EntU V) (hfin : Finite (Skeleton n)) :
+    (hEC : EntCount V) (hEU : EntU V) (hdom : EntDomOrder0 V)
+    (hfin : Finite (Skeleton n)) :
     ∀ (e : ℕ) (τ : (ctsTable C hfin).State e)
       (ε : (measuredOf V X cp hfin).EntShape e τ) (q₀ : ℚ),
       q₀ ∈ (measuredOf V X cp hfin).Pools →
@@ -172,6 +193,22 @@ theorem measuredOf_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       HasSum (fun h : (measuredOf V X cp hfin).ιDom e τ ε =>
           (measuredOf V X cp hfin).ιshH e τ ε h q₀)
         ((measuredOf V X cp hfin).ιsh e τ ε q₀) := by
-  sorry
+  intro e τ ε q₀ hq hact
+  show HasSum (fun p : {p : Σ D : ℕ, Hpt D // p ∈ iDomOf V ε} =>
+      ishHOf V ε p.1 q₀) (iotaShV V X.sEnt ε q₀)
+  have base := ledgerIV_comp_once V X hdom hEU (V.toStepCells.symm τ.1) ε
+    (show q₀ ∈ V.Pools from hq)
+  refine ((iDomEquiv V ε).hasSum_iff).mp ?_
+  have hcomp : ∀ h : {h : Hpt ε.1.1.entDim //
+      ((V.entDom ε.1.1).comps.get ε.1.2).Mem h},
+      ((fun p : {p : Σ D : ℕ, Hpt D // p ∈ iDomOf V ε} =>
+        ishHOf V ε p.1 q₀) ∘ (iDomEquiv V ε)) h
+        = ιshH V ε.1.1 h.1 (V.toStepCells.symm τ.1) q₀ := by
+    intro h
+    show ishHOf V ε ⟨ε.1.1.entDim, h.1⟩ q₀ = _
+    unfold ishHOf
+    rw [dif_pos rfl]
+  rw [funext hcomp]
+  exact base
 
 end LeanUrat.MovesV

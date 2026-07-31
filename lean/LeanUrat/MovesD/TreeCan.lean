@@ -55,6 +55,20 @@ occupied slots of a degree-1 development are ≤ natDegree = n) — Q9's roster 
 `InBox` conjunct needed. SORRY CENSUS (2): `canPolicy`/`canPolicy_pin` (IB-D26, owner
 HC-1 — NOT dischargeable this campaign without the (S6b′) lower-stage realizer export;
 R12 guard: no unit unfolds them, canonicity-demanding consumers bind `OffsetPPin pol`).
+
+ITEM 13 RE-ATTEMPT RECORD (2026-07-31, Asvin sign-off queue item 13): after the
+`OffsetPPin.total` re-key to `HistoryCoherent` nodes (PolPin.lean; the R7/forge
+countermodel now refutes only the frozen `OffsetPPinBare`), the (†15) pair was
+RE-ATTEMPTED.  OUTCOME: REDUCED, NOT DISCHARGED — `MovesD/R7_polFillReduction.lean`
+proves `canPolicyC_pin : RunRealizerExists p F → OffsetPPin (canPolicyC p F)` (choice
+policy, all five laws), so this pair is fillable from the ONE named Prop
+`RunRealizerExists p (ZMod p)`; its coherence-derivable half is PROVED there
+(`interior_center_realizer_exists` — interior recentering nodes supply the recorded
+lift as center realizer; `interior_recentering_unramified`).  The open content is
+(a) the interior SUPPORT clause (the (S6b′) monomial shape — the unchanged HC-1
+residue) and (b) the LAST-NODE flank (no `IsRecenteringCore` record at i = len−1;
+landing law lives at `JetSetup.landing`/`LandingKey`).  The two sorries below STAND
+as the honest boundary; they are no longer FALSE-as-quantified.
 -/
 
 set_option linter.style.longLine false

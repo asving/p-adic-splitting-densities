@@ -35,6 +35,24 @@ exports ONLY the top graded residual R(t) (one graded piece); the lower-stage di
 expansion of a coefficient (D.3(e)(ii)'s unitriangular digit systems) is not a
 MovesC/MovesD export. The HC-1 wave instantiates `Realizes` with the (S6b′) formula and
 discharges all five laws; owner = HC-1/§B2-DEF (POL-PIN, §2 ledger).
+[ITEM 13 RE-SCOPE, 2026-07-31 — Asvin sign-off queue item 13, preferred option (ii)]:
+`total` is RE-KEYED from bare `Node` values to nodes of `HistoryCoherent` histories — the
+exact quantifier of L1's totality (note 4665–4666 quantifies over nodes OF A RUN; the old
+form widened "every node of the run" to "every value of the `Node` type", where the frame
+is a free field). The old bare-Node form was REFUTED-COMPILED: `R7_pinProbe.lean` ((†R7)
+parity — a pin for ANY policy forces EVERY Stage unramified) completed unconditionally by
+`R7_ramifiedForge.lean` (one forged ramified Stage at (2, F4) empties the old pin type for
+every policy). Both leaf modules stay compiled against the FROZEN old form
+(`OffsetPPinBare`, M1 hygiene) with dated notes. Under the re-key, at INTERIOR recentering
+nodes coherence's `IsRecenteringCore.base` (= `IsRecentering`, Moves/Defs.lean:271)
+supplies `σ.e = 1` AND a center-realizer witness (the recorded lift), so the (†R7) forcing
+argument no longer reaches arbitrary stages; ramified child frames are additionally
+UNREACHABLE in the pre-HK-06 coherence vocabulary (`HC2/HK22_twoNodeGate`). NAMED OPEN
+FLANK (recorded, not silent): a history's FINAL recentering node carries no
+`IsRecenteringCore` record under bare `HistoryCoherent` — its landing law lives one
+predicate up (`JetSetup.landing`/`LandingKey`); a future countermodel at that flank would
+re-adjudicate the quantifier to the JetSetup carrier (record:
+notes/QUEUE_EXECUTION_2026-07-31.md §Item-13).
 deps: Defs (bezT), D2a (CD_eq, for the pinned specialization).
 sketch: structure + one-line consequences + the negative witness.  difficulty: easy.
 hypothesis_fields: none (the pin itself is the new hypothesis object).
@@ -58,23 +76,38 @@ predicate "t is the (S6b) offset-P-lift realizer at ν" (carried abstract here e
 `TreeModel` carries mem/child; its remaining HC-1 content is ONLY the sub-residual slot
 selection — see `digits_prescribed`). FIVE laws are the here-statable content:
 `total` = L1's kernel-(a) totality ("No node exists where the policy is partial", note
-4665–4666) at Node granularity — recenterings are the ONLY lift-consuming reads (note
+4665–4666) at RUN-NODE granularity (nodes of `HistoryCoherent` histories — item 13
+re-scope, 2026-07-31; the bare-Node granularity was the R7-refuted over-reach) —
+recenterings are the ONLY lift-consuming reads (note
 3455–3458: "for RECENTERINGS, the LIFT t_i itself"); `realizes_ne_zero` = L1's "returns a
 realizer t with w(t) = ν" (note 4658): a realizer of finite weight is NONZERO;
 `support_forced` = the (S6b′) slot geometry [D2″]; `realizes_unique` = L1's determinism
 [D2″]; `digits_prescribed` = the D.10 value/weight prescription in Stage-carrier
-vocabulary [D2‴]. Together they force `pol.liftOf ν ≠ 0` at every recentering
-(`OffsetPPin.lift_ne_zero`) and make it a genuine center realizer
+vocabulary [D2‴]. Together they force `pol.liftOf ν ≠ 0` at every recentering node of a
+coherent history (`OffsetPPin.lift_ne_zero`) and make it a genuine center realizer
 (`OffsetPPin.lift_center_realizer`), so no instantiation of the pin is vacuous and no
-wrong-valued policy has one (`no_pin_of_wrong_value`/`no_pin_of_wrong_weight`). -/
+wrong-valued policy has one (`no_pin_of_wrong_value`/`no_pin_of_wrong_weight`).
+[ITEM 13, 2026-07-31: `total` re-keyed to `HistoryCoherent`-history nodes — see its
+docstring; the bare-Node form is the R7-refuted historical form `OffsetPPinBare`
+(frozen in `R7_pinProbe.lean`).] -/
 structure OffsetPPin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (pol : CanonPolicy p F) where
   /-- SEAM RESIDUE (W4-5): "t IS the (S6b) offset-P-lift realizer at ν". Instantiated by
   the HC-1 wave with §B2-DEF D.5's formula (note 4648–4650). -/
   Realizes : Node p F → Polynomial ℤ_[p] → Prop
-  /-- L1 TOTALITY (kernel part (a), note 4653–4667): at every recentering node the
-  policy's output realizes. -/
-  total : ∀ ν : Node p F, ν.species = ReadSpecies.recentering → Realizes ν (pol.liftOf ν)
+  /-- L1 TOTALITY (kernel part (a), note 4653–4667) — **RE-SCOPED, item 13 (2026-07-31)**:
+  at every recentering node OF A `HistoryCoherent` HISTORY the policy's output realizes.
+  This is note 4665–4666's exact quantifier ("No node exists where the policy is partial"
+  ranges over nodes of a RUN). The pre-repair form quantified over every bare `Node` value
+  (the frame a free field) and was REFUTED-COMPILED — `R7_pinProbe.lean`'s (†R7) parity
+  argument forces every Stage unramified, emptied unconditionally at (2, F4) by
+  `R7_ramifiedForge.lean`; both leaves keep the frozen old form (`OffsetPPinBare`). At
+  interior recentering nodes coherence itself supplies the witness ingredients
+  (`IsRecenteringCore.base`: `σ.e = 1` + the recorded lift's center-realizer clauses). -/
+  total : ∀ (H : History p F), HistoryCoherent H →
+    ∀ (i : ℕ) (hi : i < H.nodes.length),
+      (H.nodes[i]'hi).species = ReadSpecies.recentering →
+      Realizes (H.nodes[i]'hi) (pol.liftOf (H.nodes[i]'hi))
   /-- Realizers are GENUINE (note 4658: "a realizer t with w(t) = ν" — finite weight, so
   nonzero; the zero polynomial has no weight). -/
   realizes_ne_zero : ∀ (ν : Node p F) (t : Polynomial ℤ_[p]), Realizes ν t → t ≠ 0
@@ -115,11 +148,15 @@ section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- The pin's non-vacuity witness: a pinned policy emits a genuine (nonzero) lift at every
-recentering node — the lawless/zero policies are excluded. (The blind structural layer
-already excluded `Canon := fun _ => False`; this excludes `liftOf := fun _ => 0`.) -/
+recentering node of a coherent history — the lawless/zero policies are excluded. (The blind
+structural layer already excluded `Canon := fun _ => False`; this excludes
+`liftOf := fun _ => 0` at every reachable recentering.) [Item 13 re-key, 2026-07-31:
+history-keyed with `total`.] -/
 theorem OffsetPPin.lift_ne_zero {pol : CanonPolicy p F} (pin : OffsetPPin pol)
-    (ν : Node p F) (hν : ν.species = ReadSpecies.recentering) : pol.liftOf ν ≠ 0 :=
-  pin.realizes_ne_zero ν (pol.liftOf ν) (pin.total ν hν)
+    (H : History p F) (hH : HistoryCoherent H) (i : ℕ) (hi : i < H.nodes.length)
+    (hν : (H.nodes[i]'hi).species = ReadSpecies.recentering) :
+    pol.liftOf (H.nodes[i]'hi) ≠ 0 :=
+  pin.realizes_ne_zero _ (pol.liftOf (H.nodes[i]'hi)) (pin.total H hH i hi hν)
 
 /-- **NON-VACUITY RE-VERIFICATION** [D2″]: the Codex-confirm instantiation
 `Realizes ν t := t ≠ 0` ("any policy producing nonzero recentering lifts can obtain an
@@ -140,32 +177,44 @@ theorem OffsetPPin.not_realizes_bare_ne_zero {pol : CanonPolicy p F}
 
 /-- [D2‴] A pinned policy's recentering lift is a genuine D.10 CENTER REALIZER: coefficient
 space, key weight, top digit = the recorded center — `total` + `digits_prescribed`. This is
-exactly the lift datum `LandingKey`/`HistoryCoherent` consume at recenterings. -/
+exactly the lift datum `LandingKey`/`HistoryCoherent` consume at recenterings. [Item 13
+re-key, 2026-07-31: stated at the recentering nodes of a coherent history — `total`'s new
+granularity.] -/
 theorem OffsetPPin.lift_center_realizer {pol : CanonPolicy p F} (pin : OffsetPPin pol)
-    (ν : Node p F) (hν : ν.species = ReadSpecies.recentering) :
-    inC ν.σ.Φ (pol.liftOf ν) ∧ ν.σ.w (pol.liftOf ν) = ν.σ.w ν.σ.Φ ∧
-      ν.σ.R (pol.liftOf ν) = LaurentPolynomial.C ν.center * LaurentPolynomial.T 0 :=
-  pin.digits_prescribed ν (pol.liftOf ν) (pin.total ν hν) hν
+    (H : History p F) (hH : HistoryCoherent H) (i : ℕ) (hi : i < H.nodes.length)
+    (hν : (H.nodes[i]'hi).species = ReadSpecies.recentering) :
+    inC (H.nodes[i]'hi).σ.Φ (pol.liftOf (H.nodes[i]'hi)) ∧
+      (H.nodes[i]'hi).σ.w (pol.liftOf (H.nodes[i]'hi))
+        = (H.nodes[i]'hi).σ.w (H.nodes[i]'hi).σ.Φ ∧
+      (H.nodes[i]'hi).σ.R (pol.liftOf (H.nodes[i]'hi))
+        = LaurentPolynomial.C (H.nodes[i]'hi).center * LaurentPolynomial.T 0 :=
+  pin.digits_prescribed _ (pol.liftOf (H.nodes[i]'hi)) (pin.total H hH i hi hν) hν
 
 /-- **BYPASS KILL, value leg** [D2‴]: confirm-2's singleton-realizer bypass ("`Realizes ν t
 := t = pol.liftOf ν` for a policy whose recentering lift is any nonzero monomial in the
 forced congruence class … while the digit values … are wrong") admits NO pin: a policy whose
-lift at ONE recentering node has the WRONG top residual digit (≠ the recorded center at
-position 0) has an EMPTY pin type. Wrong-valued policies are excluded by type, not by prose. -/
-theorem OffsetPPin.no_pin_of_wrong_value {pol : CanonPolicy p F} (ν : Node p F)
-    (hν : ν.species = ReadSpecies.recentering)
-    (hwrong : ν.σ.R (pol.liftOf ν)
-      ≠ LaurentPolynomial.C ν.center * LaurentPolynomial.T 0) :
+lift at ONE recentering node OF A COHERENT HISTORY has the WRONG top residual digit (≠ the
+recorded center at position 0) has an EMPTY pin type. Wrong-valued policies are excluded by
+type, not by prose. [Item 13 re-key, 2026-07-31: the offending node must now be exhibited
+INSIDE a coherent history — exactly the reachable-node discipline the R7 probe demanded.] -/
+theorem OffsetPPin.no_pin_of_wrong_value {pol : CanonPolicy p F}
+    (H : History p F) (hH : HistoryCoherent H) (i : ℕ) (hi : i < H.nodes.length)
+    (hν : (H.nodes[i]'hi).species = ReadSpecies.recentering)
+    (hwrong : (H.nodes[i]'hi).σ.R (pol.liftOf (H.nodes[i]'hi))
+      ≠ LaurentPolynomial.C (H.nodes[i]'hi).center * LaurentPolynomial.T 0) :
     IsEmpty (OffsetPPin pol) :=
-  ⟨fun pin => hwrong (pin.lift_center_realizer ν hν).2.2⟩
+  ⟨fun pin => hwrong (pin.lift_center_realizer H hH i hi hν).2.2⟩
 
 /-- **BYPASS KILL, weight leg** [D2‴]: same at the weight equation w(t) = w(Φ) — the other
-datum confirm-2 named as unconstrained ("the … weight equation … may all be wrong"). -/
-theorem OffsetPPin.no_pin_of_wrong_weight {pol : CanonPolicy p F} (ν : Node p F)
-    (hν : ν.species = ReadSpecies.recentering)
-    (hwrong : ν.σ.w (pol.liftOf ν) ≠ ν.σ.w ν.σ.Φ) :
+datum confirm-2 named as unconstrained ("the … weight equation … may all be wrong").
+[Item 13 re-key, 2026-07-31: coherent-history-keyed, as the value leg.] -/
+theorem OffsetPPin.no_pin_of_wrong_weight {pol : CanonPolicy p F}
+    (H : History p F) (hH : HistoryCoherent H) (i : ℕ) (hi : i < H.nodes.length)
+    (hν : (H.nodes[i]'hi).species = ReadSpecies.recentering)
+    (hwrong : (H.nodes[i]'hi).σ.w (pol.liftOf (H.nodes[i]'hi))
+      ≠ (H.nodes[i]'hi).σ.w (H.nodes[i]'hi).σ.Φ) :
     IsEmpty (OffsetPPin pol) :=
-  ⟨fun pin => hwrong (pin.lift_center_realizer ν hν).2.1⟩
+  ⟨fun pin => hwrong (pin.lift_center_realizer H hH i hi hν).2.1⟩
 
 /-- `CD_canonical` — the D2a class-count identity, SPECIALIZED to a pinned policy: the
 recorded consumer of W4-5. Content = `CD_eq`; the pin binder records that the note's C is

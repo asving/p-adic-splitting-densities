@@ -232,7 +232,12 @@ theorem jPGof_val {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   simp only [MovesS.PolyGeom.val, jPGof, mul_one, map_one, one_mul]
 
 /-- TV-F1(d) [ιP]: PRESCRIBED BODY — "ιP := choice over ratBurdens_iota's ∃"
-(blueprint §4 TV-F1; the ∃ is PROVED at V7_rbB from `initRat_comp`). -/
+(blueprint §4 TV-F1; the ∃ is PROVED at V7_rbB from `initRat_comp`).
+[QUEUE ITEM 14, 2026-07-31: `ratBurdens_iota` now carries the FULL 4-conjunct
+`initRat_comp` existential; the two NEW spec projections `iotaPGof_census`/
+`iotaPGof_val` below expose conjuncts 3-4 (census interpolation + evalAt
+value) — these discharge the `SeamCoherent.iota_val`/`iota_count` legs at the
+measuredOf witness (TV_F2b).] -/
 noncomputable def iotaPGof {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S} (X : XHD n S TE V)
     (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
@@ -254,6 +259,32 @@ theorem iotaPGof_geom {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
     (hdom : EntDomOrder0 V) (β₀ : S.Cell) (i : V.EntIx β₀) :
     (iotaPGof V X hEU hEC hA hdom β₀ i).geom = X.sEnt.Gent β₀ i :=
-  (ratBurdens_iota V X hEU hEC hA hdom β₀ i).choose_spec.2
+  (ratBurdens_iota V X hEU hEC hA hdom β₀ i).choose_spec.2.1
+
+/-- TV-F1(d) spec, census leg (ITEM 14 — conjunct 3 of the re-pointed
+`ratBurdens_iota`): the pack's countT interpolates the scoped-writeHeights
+census at every component point of the entrance domain. -/
+theorem iotaPGof_census {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {TE : TmplEvents n S} (X : XHD n S TE V)
+    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
+    (hdom : EntDomOrder0 V) (β₀ : S.Cell) (i : V.EntIx β₀) :
+    ∀ h : Hpt i.1.1.entDim, ((V.entDom i.1.1).comps.get i.1.2).Mem h →
+      ∀ (hs : Order0Perimeter i.1.1 h), ∀ q₀ ∈ V.Pools,
+      ((iotaPGof V X hEU hEC hA hdom β₀ i).countT.eval q₀ : ℚ)
+        = V.entCensus (writeHeights i.1.1 h hs) β₀ q₀ :=
+  (ratBurdens_iota V X hEU hEC hA hdom β₀ i).choose_spec.2.2.1
+
+/-- TV-F1(d) spec, value leg (ITEM 14 — conjunct 4 of the re-pointed
+`ratBurdens_iota`): the pack's value evaluates to the per-shape entrance
+mass `iotaShV` at every pool point. -/
+theorem iotaPGof_val {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {TE : TmplEvents n S} (X : XHD n S TE V)
+    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
+    (hdom : EntDomOrder0 V) (β₀ : S.Cell) (i : V.EntIx β₀) :
+    ∀ q₀ (hq : q₀ ∈ V.Pools),
+      ∃ hok : (iotaPGof V X hEU hEC hA hdom β₀ i).val ∈ MovesS.OKat q₀,
+      ((MovesS.evalAt q₀ ⟨(iotaPGof V X hEU hEC hA hdom β₀ i).val, hok⟩ : ℚ) : ℝ)
+        = iotaShV V X.sEnt i q₀ :=
+  (ratBurdens_iota V X hEU hEC hA hdom β₀ i).choose_spec.2.2.2
 
 end LeanUrat.MovesV

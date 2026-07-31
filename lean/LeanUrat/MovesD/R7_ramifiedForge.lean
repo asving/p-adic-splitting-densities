@@ -33,14 +33,20 @@ forges it when fed a RAMIFIED side.]
    over the p = 2 base pin.  The child carries `StageCoreL` + the full `TransitionCoreL`
    record (`ramifiedStage_spec`), so it is directly reusable for the wave-D instance
    construction (deeper reads at a genuinely ramified frame).
-4. `offsetPPin_isEmpty_unconditional : ∀ pol : CanonPolicy 2 F4, IsEmpty (OffsetPPin pol)`
+4. `offsetPPin_isEmpty_unconditional : ∀ pol : CanonPolicy 2 F4, IsEmpty (OffsetPPinBare pol)`
    — **THE R7 COUNTERMODEL, UNCONDITIONAL** at (p, F) = (2, F4):
    `offsetPPin_isEmpty_of_ramified ramifiedStage (e = 2 ≠ 1)`.  Per R7's
-   `offsetPPin_forces_stage_unramified`, any inhabitant of `OffsetPPin pol` would prove
+   `offsetPPin_forces_stage_unramified`, any inhabitant of the bare pin would prove
    EVERY `Stage 2 F4` unramified — `ramifiedStage_e` refutes that consequence, so the pin
-   type is empty for every policy and `canPolicy_pin` (the (†15) designer sorry) is
-   unfillable AT ANY POLICY over (2, F4).  The TreeCan sorries are UNTOUCHED (statement
-   fence); this is the compiled obstruction, now hypothesis-free.
+   type is empty for every policy; this is what certified `canPolicy_pin` (the (†15)
+   designer sorry) unfillable AT ANY POLICY over (2, F4) in the pre-item-13 vocabulary.
+   [M1 NOTE, queue item 13 EXECUTED 2026-07-31: `OffsetPPin.total` is now
+   `HistoryCoherent`-keyed (PolPin.lean); this module's emptiness theorems are
+   RE-POINTED at the frozen historical form `OffsetPPinBare` (R7_pinProbe.lean) and
+   refute ONLY that form — proofs byte-unchanged.  The repaired `OffsetPPin` is out of
+   this argument's reach: the forcing needed `total` at a bare probe node, which no
+   coherent history contains (see the probe's M1 note; ramified frames are additionally
+   unreachable pre-HK-06 per `HC2/HK22_twoNodeGate`).]
 
 ## Coexistence audit (M1 rule)
 
@@ -172,15 +178,16 @@ theorem ramifiedStage_ramified : ramifiedStage.e ≠ 1 := by
   norm_num
 
 /-- **THE R7 COUNTERMODEL, UNCONDITIONAL** (the discharge of `R7_pinProbe`'s conditional
-leg): at (p, F) = (2, F4), `OffsetPPin pol` is EMPTY for EVERY policy — any pin would
-prove every `Stage 2 F4` unramified (`offsetPPin_forces_stage_unramified`), and
-`ramifiedStage` is not. -/
+leg): at (p, F) = (2, F4), the FROZEN pre-item-13 pin `OffsetPPinBare pol` is EMPTY for
+EVERY policy — any bare pin would prove every `Stage 2 F4` unramified
+(`offsetPPin_forces_stage_unramified`), and `ramifiedStage` is not.  [Item 13, 2026-07-31:
+refutes ONLY the historical bare-Node form; see header §4 M1 note.] -/
 theorem offsetPPin_isEmpty_unconditional (pol : CanonPolicy 2 F4) :
-    IsEmpty (OffsetPPin pol) :=
+    IsEmpty (OffsetPPinBare pol) :=
   offsetPPin_isEmpty_of_ramified ramifiedStage ramifiedStage_ramified pol
 
-/-- Consumption form: a pin at any policy over (2, F4) is absurd. -/
-theorem no_offsetPPin (pol : CanonPolicy 2 F4) (pin : OffsetPPin pol) : False :=
+/-- Consumption form: a BARE-form pin at any policy over (2, F4) is absurd. -/
+theorem no_offsetPPin (pol : CanonPolicy 2 F4) (pin : OffsetPPinBare pol) : False :=
   (offsetPPin_isEmpty_unconditional pol).false pin
 
 end R7Forge

@@ -49,6 +49,11 @@ TRANSCRIPTION RESOLUTIONS (recorded per the E-phase rules):
    spec's display is literally the (M = N ≤ M') instance.  Same open
    content, same owner; strictly the faithful quantifier closure of the
    note's "reads only digits < n·N" claim.
+   [AMENDED 2026-07-31, QUEUE ITEM 7 (audit-1b GAP): the free-cutoff closure
+   was STRICTLY STRONGER than the note's law (see the `child_local` field
+   docstring) — the cutoff now carries `N₀ ≤ N`, and the below-base corner
+   of `StableInputs.child_cyl` is supplied by the `N₀ ≤ Tr.thr n` premise on
+   `stableInputs_of_readLocality` (TV_B2), true at the bridge instance.]
 3. Field (iii) of the C2 spec (an NsHalts face "if TV-B2's typing pass finds
    it non-derived") is ABSENT: TV-B2's executed typing pass verified
    `NsHalts` is mem/child-composed (Defs.lean:223–225), so its transfer is
@@ -92,16 +97,32 @@ HC-2/D4R0K, MOVES 7566–7570; the note's Thm 2.1 / D4R.4 / TB-CAP face).  Over
 a pinned tower of models/charts (guarded χat — header resolution 1) and a
 tree `Tr`:
 
-* `chart_pin` — the chart lands in the LEVEL-1 block (`(χat N' h' b : ℕ) < n`),
-  so `redPoly`/`henPayload`/the factor roster read only level-0 digit slots at
-  every tower level (TV-B2's (S-chart), guarded);
+* `chart_pin` — **THE N3b COMPILED-CORRECTED FORM** (QUEUE ITEM 7 EXECUTED
+  2026-07-31, audit-1b CRITICAL — ratify1b.jsonl: "`ReadLocality.chart_pin`
+  retains the rejected TV-B2 form … Under the supplied instruction that 'the
+  row must use the corrected form,' this is not ratifiable"): the chart reads
+  EXACTLY coefficient b's digit-0 slot — at this row's standard level-major
+  layout that slot is position b of the level-1 block, so the pin is the
+  equality `(χat N' h' b : ℕ) = b` (the `bridgeChart_eq_digitIdx0` genre of
+  BridgeN3b LEG 3, transported through the block-interleave dressing:
+  `bridgeChartStd n N hN b` has value b, `bridgeChartStd_pin_eq`, BridgeD5).
+  The old `< n` level-1-block bound is the DERIVED face `chart_pin_lt` below
+  (consumed by TV-B2's `StableInputs` derivation);
 * `child_local` — the CROSS-LEVEL child locality: once the tree's threshold is
-  ≤ N, the child relation at ANY tower level ≥ N is one function of the first
-  n·N box digits, uniformly across levels — for tower levels M, M' ≥ N (no
-  order) and boxes agreeing on the first n·N coordinates, child at M ↔ child
-  at M', at EVERY site (o, ν) (TV-B2's quantifier option α).  The fixed-level
-  cylinder face is the M = M' instance; the cross-level transport face is the
-  M < M' instance (header resolution 2).
+  ≤ N **and the cutoff is at or above the tower base (`N₀ ≤ N` — QUEUE ITEM 7
+  EXECUTED 2026-07-31, audit-1b GAP: without the guard, `Tr.thr n = 0` + N = 0
+  makes the agreement premise vacuous over `Fin (n·0)` and the row asserts the
+  child relation is CONSTANT across all boxes and levels — strictly stronger
+  than the note's cutoff-to-extension law)**, the child relation at ANY tower
+  level ≥ N is one function of the first n·N box digits, uniformly across
+  levels — for tower levels M, M' ≥ N (no order) and boxes agreeing on the
+  first n·N coordinates, child at M ↔ child at M', at EVERY site (o, ν)
+  (TV-B2's quantifier option α).  The fixed-level cylinder face is the M = M'
+  instance; the cross-level transport face is the M < M' instance (header
+  resolution 2, AMENDED by the item-7 guard: the below-base corner
+  Tr.thr n ≤ N < N₀ is NO LONGER asserted — `stableInputs_of_readLocality`
+  (TV_B2) accordingly carries the `N₀ ≤ Tr.thr n` premise, discharged at the
+  bridge instance where N₀ = 1 ≤ thr = … ⊔ 1).
 
 Derived surfaces (SYN-C2): `StableInputs` (TV_B2.lean,
 `stableInputs_of_readLocality` — PROVED), `TransferRow`
@@ -112,8 +133,8 @@ structure ReadLocality {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N' (h' : N₀ ≤ N'), Fin n → Fin (n * N'))
     (Tr : VTree p F) : Prop where
-  chart_pin : ∀ (N' : ℕ) (h' : N₀ ≤ N') (b : Fin n), ((χat N' h' b : ℕ)) < n
-  child_local : ∀ (N : ℕ), Tr.thr n ≤ N →
+  chart_pin : ∀ (N' : ℕ) (h' : N₀ ≤ N') (b : Fin n), ((χat N' h' b : ℕ)) = (b : ℕ)
+  child_local : ∀ (N : ℕ), Tr.thr n ≤ N → N₀ ≤ N →
     ∀ (M : ℕ) (hM : N₀ ≤ M) (M' : ℕ) (hM' : N₀ ≤ M')
       (hNM : N ≤ M) (hNM' : N ≤ M')
       (o : Option (History p F)) (ν : Node p F)
@@ -122,6 +143,17 @@ structure ReadLocality {N₀ : ℕ}
         x (Fin.castLE (Nat.mul_le_mul_left n hNM) c)
           = x' (Fin.castLE (Nat.mul_le_mul_left n hNM') c)) →
       ((Tat M hM).child o ν x ↔ (Tat M' hM').child o ν x')
+
+/-- the DERIVED level-1-block face of the corrected `chart_pin` (the old TV-B2
+`< n` form; item-7 record in the field docstring above) — the digit-0 slot b
+sits in the level-1 block. Consumed by TV-B2's `stableInputs_of_readLocality`. -/
+theorem ReadLocality.chart_pin_lt {N₀ : ℕ}
+    {Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol}
+    {χat : ∀ N' (h' : N₀ ≤ N'), Fin n → Fin (n * N')} {Tr : VTree p F}
+    (RL : ReadLocality Tat χat Tr) (N' : ℕ) (h' : N₀ ≤ N') (b : Fin n) :
+    ((χat N' h' b : ℕ)) < n := by
+  rw [RL.chart_pin N' h' b]
+  exact b.isLt
 
 /-! ## The layout dressing (generic half; header resolution 4)
 

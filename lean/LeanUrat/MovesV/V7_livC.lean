@@ -50,14 +50,31 @@ fields; Box := V.Box, cells := the DCellO fibers, cellEvt := V.cellEvt,
 μcell := μcellH) + the LedgerIV suite from X/cp/hVA + part1/part2 (the
 xhd_sum leg IS V0-3 + cp.count; part1 IS the supplied `hb`/`hc`/`hd`
 route), after which the pins can be strengthened FROM the compiled
-witness. -/
+witness.
+QUEUE ITEM 11 EXECUTED (Asvin sign-off 2026-07-31; ledger
+lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 11): the row gains the
+named warranted hypothesis `hdom : EntDomOrder0 V` — required to mint the
+`Order0Perimeter` certificates that hEU's census-constancy clause demands
+at every component point (`writeHeights` is total ONLY on the order-0
+perimeter; the unscoped form is REFUTED, V3_spword_negWitness2); the
+TV_E6(d) record is the fence event, V7_rbB/V3_initrat the established
+genre.  REMAINING BLOCK (recorded, NOT signed off): the TV-E7 assembly
+`ledgerIV_inst_assembly` (TV_E7.lean, now PROVED) discharges this ∃ but
+its row additionally carries `hfin : Finite (Skeleton n)` —
+`tableShape_inst`'s own hypothesis, without which no TablePins witness is
+constructible in-corpus (Skeleton-finiteness is proved only at n = 1
+(V1_witnessC, TV_E8) and n = 3 (V2_skeleton)).  Whether THIS row gains
+`hfin` (or per-n finiteness instances discharge it) remains the TV-E7
+header's execution-time ratification item — this sorry now waits on
+EXACTLY that adjudication, nothing else.  (An in-place fill is also
+import-blocked: TV_E6/TV_E7 import THIS file.) -/
 theorem ledgerIV_inst {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hHMC : HMC TE X.d)
     (hb : P1CtblAdd V X.w) (hc : P1NullRem V X.w)
     (hd : P1FixedHeightExact V X.w)
-    (hEC : EntCount V) (hEU : EntU V) :
+    (hEC : EntCount V) (hEU : EntU V) (hdom : EntDomOrder0 V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →

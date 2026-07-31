@@ -56,6 +56,22 @@ quantified over run nodes) + D.10/`LandingKey` (MovesC 545–557).
 deps: PolPin (the pin under probe; brings MovesD.Defs, MovesC.Defs, Moves.Defs).
 sketch: legal probe node over an arbitrary stage + the (†R7) parity argument.
 difficulty: easy (the finding is the content).  hypothesis_fields: none.
+
+## M1 NOTE (queue item 13 EXECUTED, 2026-07-31 — Asvin sign-off, preferred option (ii))
+
+The repair pre-scoped above LANDED: `OffsetPPin.total` (PolPin.lean) is now keyed to
+nodes of `HistoryCoherent` histories.  THIS MODULE'S COUNTERMODEL REFUTES ONLY THE
+**OLD, PRE-ITEM-13 BARE-NODE FORM**, frozen below verbatim as `OffsetPPinBare` (the
+2026-07-28..30 `OffsetPPin` — only `total`'s quantifier differs from the repaired
+structure).  `offsetPPin_forces_stage_unramified` / `offsetPPin_isEmpty_of_ramified`
+(and their unconditional completion in `R7_ramifiedForge.lean`) are re-pointed at the
+frozen form; their proofs are byte-unchanged.  They do NOT refute the repaired
+`OffsetPPin`: the probe node `recProbeNode σ₀` cannot sit in any `HistoryCoherent`
+history — at index 0 `root_iff` forbids its recentering species, and at index ≥ 1 its
+frame is no longer free (coherence's `IsRecenteringCore`/`TransitionCoreL` legs bind
+it; moreover `HC2/HK22_twoNodeGate` certifies ramified child frames UNREACHABLE in the
+pre-HK-06 coherence vocabulary).  The M1 coexistence rule is satisfied: no compiled
+negation witness against the repaired statement exists in this module.
 -/
 import Mathlib
 import LeanUrat.MovesD.PolPin
@@ -72,6 +88,28 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC
 
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+/-- **THE FROZEN PRE-ITEM-13 PIN** (M1 hygiene, 2026-07-31): the 2026-07-28..30
+`OffsetPPin` VERBATIM — the form THIS module's countermodel refutes.  The ONLY
+difference from the repaired `OffsetPPin` (PolPin.lean) is `total`'s quantifier:
+here it ranges over every bare `Node` value (the refuted over-reach); there it
+ranges over nodes of `HistoryCoherent` histories (note 4665–4666's run nodes).
+Kept compiled so `offsetPPin_forces_stage_unramified` /
+`offsetPPin_isEmpty_of_ramified` (and `R7_ramifiedForge`'s unconditional completion)
+remain machine-checked refutation records of the historical form. -/
+structure OffsetPPinBare (pol : CanonPolicy p F) where
+  Realizes : Node p F → Polynomial ℤ_[p] → Prop
+  total : ∀ ν : Node p F, ν.species = ReadSpecies.recentering → Realizes ν (pol.liftOf ν)
+  realizes_ne_zero : ∀ (ν : Node p F) (t : Polynomial ℤ_[p]), Realizes ν t → t ≠ 0
+  support_forced : ∀ (ν : Node p F) (t : Polynomial ℤ_[p]), Realizes ν t →
+    ∃ j₀ : ℕ, (j₀ : ℤ) % (ν.e : ℤ) = (bezT ν.e ν.h * ν.gam) % (ν.e : ℤ) ∧
+      ∀ j ∈ t.support, ∃ k : ℕ, k < ν.g ∧ j = j₀ + k * ν.e
+  realizes_unique : ∀ (ν : Node p F) (t t' : Polynomial ℤ_[p]),
+    Realizes ν t → Realizes ν t' → t = t'
+  digits_prescribed : ∀ (ν : Node p F) (t : Polynomial ℤ_[p]), Realizes ν t →
+    ν.species = ReadSpecies.recentering →
+    inC ν.σ.Φ t ∧ ν.σ.w t = ν.σ.w ν.σ.Φ ∧
+      ν.σ.R t = LaurentPolynomial.C ν.center * LaurentPolynomial.T 0
 
 /-- **The probe node** — a LEGAL `Node` value of recentering species over an ARBITRARY
 stage `σ₀` (nothing in `Node` ties the frame to the species): read index `(e,h) = (1,1)`
@@ -132,16 +170,17 @@ noncomputable def recProbeNode (σ0 : Stage p F) : Node p F where
   hspecRec := fun _ => ⟨rfl, rfl⟩
   hspecRecCenter := fun _ => ⟨rfl, by simp⟩
 
-/-- **THE R7 OBSTRUCTION (†R7)** — a pin for ANY policy proves EVERY stage unramified:
-`total` puts the policy's lift at the probe node into `Realizes`; `realizes_ne_zero` +
-`digits_prescribed` make it a nonzero center realizer in `C_Φ` of weight `w Φ`; then
-`hStretch`/`hwΦ` give `σ₀.e ∣ σ₀.h` and `hcop` kills every `σ₀.e ≥ 2`.  Since ramified
-stages are the intended semantics of every `e ≥ 2` increment read, `OffsetPPin` as stated
-is globally vacuous-by-emptiness, and the (†15) pair `canPolicy`/`canPolicy_pin`
-(MovesD/TreeCan.lean) is unfillable for ANY policy choice — the designer round's
-BLOCKED-FALSE record. -/
+/-- **THE R7 OBSTRUCTION (†R7)** — a BARE-form pin for ANY policy proves EVERY stage
+unramified: `total` puts the policy's lift at the probe node into `Realizes`;
+`realizes_ne_zero` + `digits_prescribed` make it a nonzero center realizer in `C_Φ` of
+weight `w Φ`; then `hStretch`/`hwΦ` give `σ₀.e ∣ σ₀.h` and `hcop` kills every `σ₀.e ≥ 2`.
+Since ramified stages are the intended semantics of every `e ≥ 2` increment read, the
+bare-Node pin was globally vacuous-by-emptiness — the finding that drove queue item 13.
+[2026-07-31: re-pointed at the FROZEN historical form `OffsetPPinBare`; the repaired
+`OffsetPPin` (HistoryCoherent-keyed `total`) is NOT touched by this argument — see the
+M1 note in the header.] -/
 theorem offsetPPin_forces_stage_unramified {pol : CanonPolicy p F}
-    (pin : OffsetPPin pol) (σ0 : Stage p F) : σ0.e = 1 := by
+    (pin : OffsetPPinBare pol) (σ0 : Stage p F) : σ0.e = 1 := by
   set ν : Node p F := recProbeNode σ0 with hν
   have hspec : ν.species = ReadSpecies.recentering := rfl
   have hreal : pin.Realizes ν (pol.liftOf ν) := pin.total ν hspec
@@ -159,12 +198,12 @@ theorem offsetPPin_forces_stage_unramified {pol : CanonPolicy p F}
   rw [σ0.hcop] at hgcd
   exact Nat.dvd_one.mp hgcd
 
-/-- The conditional-countermodel form: ONE ramified stage empties `OffsetPPin pol` for
-EVERY policy.  (The unconditional countermodel = this + an in-corpus ramified `Stage`
-instance — a bStage-scale construction, e.g. the `X² − p` Eisenstein read; deliberately
-not attempted in this unit.) -/
+/-- The conditional-countermodel form: ONE ramified stage empties the BARE pin
+`OffsetPPinBare pol` for EVERY policy.  (The unconditional countermodel = this + an
+in-corpus ramified `Stage` instance — supplied 2026-07-31 by `R7_ramifiedForge.lean`.)
+[2026-07-31: re-pointed at the frozen historical form, M1 note in header.] -/
 theorem offsetPPin_isEmpty_of_ramified (σ0 : Stage p F) (h2 : σ0.e ≠ 1)
-    (pol : CanonPolicy p F) : IsEmpty (OffsetPPin pol) :=
+    (pol : CanonPolicy p F) : IsEmpty (OffsetPPinBare pol) :=
   ⟨fun pin => h2 (offsetPPin_forces_stage_unramified pin σ0)⟩
 
 /-- **The repair-side evidence** (what a re-scoped pin CAN get from the Stage interface):

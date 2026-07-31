@@ -925,17 +925,24 @@ structure KBTot (T : TreeModel p F n N m pol) : Prop where
 
 /-- **KB-TOT ALONG THE PINNED LEVEL FAMILY** — REV 5/6/7: per-level faces + the
 PER-TRACK level-0 covering `root_total` (ruling 2) + the Scale-gap growth. This is
-what `VPPinned.covering` consumes. Owner HC-2/D4R0K; NEVER proved here. -/
+what `VPPinned.covering` consumes. Owner HC-2/D4R0K; NEVER proved here.
+[QUEUE ITEM 1 EXECUTED 2026-07-31 (Asvin sign-off; the ratified chi-at guard
+repair, commit 89b2f7f's adjudication "+ same-pattern sweep of
+KBTotTower/TreeExpNs"): the chart carrier `χat` is GUARDED (`∀ N' (h' : N₀ ≤ N'),
+…`) — the unguarded carrier `∀ N', Fin n → Fin (n * N')` is UNINHABITED at n ≥ 1
+via N' = 0 (compiled witness `tv_b1_chart_carrier_uninhabited`, TV_B1.lean), so
+the unguarded structure was uninstantiable at n ≥ 1. Same guard shape as
+`ReadLocality` (header resolution 1).] -/
 structure KBTotTower (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
-    (χat : ∀ N', Fin n → Fin (n * N'))
+    (χat : ∀ N' (h' : N₀ ≤ N'), Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p)) : Prop where
   perLevel : ∀ N' h, KBTot (Tat N' h)
   root_total : ∀ N' (h : N₀ ≤ N') (x : Box p (n * N')),
     ∀ ψ : Polynomial (ZMod p),
-      ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x) →
+      ψ ∈ UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N' h) x) →
       2 ≤ Multiset.count ψ
-        (UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N') x)) →
+        (UniqueFactorizationMonoid.normalizedFactors (redPoly (χat N' h) x)) →
     ∃ ν : Node p F, trackOf ν = ψ ∧ (Tat N' h).child none ν x
   scale_grow : ∀ (H : History p F),
     (∀ N' h, ∃ x, (Tat N' h).mem (some H) x) →
@@ -1579,6 +1586,15 @@ def TreeExpFin (T : TreeModel p F n N m pol) (χ : Fin n → Fin m)
       SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
         (sc.splitFrame H hH).S) →
     (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) →
+    -- [QUEUE ITEM 5 (E5 hoist ripple 2, TV-A4 shape) 2026-07-31: the ∀-g (U)∧(R)
+    --  row, appended last — the formulas are `TrackUniqOn`/`TrackRepOn` (TV_A1)
+    --  INLINED (TV_A1 imports this file, so the names cannot be used here).]
+    (∀ g : Fin n → ZMod p,
+      (∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
+        T.child none ν' y → trackOf ν = trackOf ν' → ν = ν') ∧
+      (∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
+        2 ≤ Multiset.count (trackOf ν)
+          (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y)))) →
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H) = p ^ m
 
@@ -1608,6 +1624,14 @@ def TreeNStmt (pol : CanonPolicy p F) : Prop :=
       SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
         (sc.splitFrame H hH).S) →
     Tr.thr n ≤ N' →
+    -- [QUEUE ITEM 5 (E5 hoist ripple 2, TV-A4 shape) 2026-07-31: the ∀-g (U)∧(R)
+    --  row, appended last (`TrackUniqOn`/`TrackRepOn` INLINED — import direction).]
+    (∀ g : Fin n → ZMod p,
+      (∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
+        T.child none ν' y → trackOf ν = trackOf ν' → ν = ν') ∧
+      (∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
+        2 ≤ Multiset.count (trackOf ν)
+          (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y)))) →
     Nat.card ↥{x : Box p (n * N') | Tr.fiberAt T χ x} * p ^ AofTr Tr L = p ^ (n * N')
 
 /-- **TREE-N's CROSS-LEVEL STABILITY, TYPED** — the note's displayed theorem (MOVES
@@ -1633,23 +1657,34 @@ def TreeNStable {N₀ : ℕ}
 /-- TREE-N's stability leg, ∀-closed — the second conjunct of
 `RS1GivenPackage.tree_n` (2026-08-01 integration; the premise row = T-E11b
 `treeN_stable`'s own, the note's declared inputs). OPEN — owner HC-2/D4R0K
-(T-E11b carries the honest `sorry` with the owner tag). -/
+(T-E11b carries the honest `sorry` with the owner tag).
+[QUEUE ITEM 1 ADAPTER 2026-07-31: `KBTotTower`'s chart carrier is now guarded, so
+the premise reads it through `fun N' _ => χat N'`. This closure's OWN ∀-χat binder
+stays unguarded — its vacuity at n ≥ 1 is the RECORDED TV-B1 fence (consequence 2)
+whose repair is the B7 EXECUTION (TV_B7's hoisted rows + guard collapse), a
+cluster-B unit outside item 1's scope. Do NOT discharge by the vacuity.] -/
 def TreeNStableStmt (pol : CanonPolicy p F) : Prop :=
   ∀ {N₀ : ℕ} (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p)),
-    KBTotTower pol Tat χat trackOf →
+    KBTotTower pol Tat (fun N' _ => χat N') trackOf →
     ∀ Tr : VTree p F,
       (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) →
       (∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr) →
       TreeNStable Tat χat Tr
 
 /-- TREE-EXP's (ns) face, ∀-closed (`tree_exp_ns`) — T-E12's statement, finite-face
-rider binding (§5 S-2). -/
+rider binding (§5 S-2).
+[QUEUE ITEM 1 EXECUTED 2026-07-31 (the ratified chi-at guard repair, same-pattern
+sweep): the ∀-quantified chart carrier `χat` is GUARDED — the unguarded quantifier
+made this closure VACUOUSLY TRUE at n ≥ 1 (compiled witness
+`tv_b1_chart_carrier_uninhabited`, TV_B1.lean). T-E12's theorem `treeN_ns` still
+binds the unguarded carrier at HEAD; its re-key rides the B-cluster guard collapse
+(recorded, QUEUE_EXECUTION_2026-07-31.md).] -/
 def TreeExpNs (pol : CanonPolicy p F) : Prop :=
   ∀ (Tr : VTree p F) (H : History p F), (H ∈ Tr.chains ∧ Tr.nsLeaf H) →
     ∀ (N₀ : ℕ) (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
-      (χat : ∀ N', Fin n → Fin (n * N'))
+      (χat : ∀ N' (h : N₀ ≤ N'), Fin n → Fin (n * N'))
       (Jat : ∀ N' (h : N₀ ≤ N'), JetSetup H n N' (n * N'))
       (Lat : ∀ N' h, NsLumpFamily (Tat N' h) (Jat N' h)), JetTower Jat →
       (∀ N' h, ZCPack (Jat N' h)) →
@@ -1658,10 +1693,11 @@ def TreeExpNs (pol : CanonPolicy p F) : Prop :=
         (fun N' : {k // N₀ ≤ k} => Mlev (Jat N'.1 N'.2) N'.1 - M₀ (Jat N'.1 N'.2))
         Filter.atTop Filter.atTop →
       (∀ N' (h : N₀ ≤ N'), (stateTruncAt Jat N').Nonempty) →
-      (∀ N' (h : N₀ ≤ N'), {x : Box p (n * N') | Tr.fiberAt (Tat N' h) (χat N') x}
+      (∀ N' (h : N₀ ≤ N'), {x : Box p (n * N') | Tr.fiberAt (Tat N' h) (χat N' h) x}
         ⊆ nsTruncAt Jat Lat N') →
       Filter.Tendsto (fun N' : {k // N₀ ≤ k} =>
-          (Nat.card ↥{x : Box p (n * N'.1) | Tr.fiberAt (Tat N'.1 N'.2) (χat N'.1) x} : ℝ)
+          (Nat.card ↥{x : Box p (n * N'.1) |
+              Tr.fiberAt (Tat N'.1 N'.2) (χat N'.1 N'.2) x} : ℝ)
             / (p : ℝ) ^ (n * N'.1))
         Filter.atTop (nhds 0)
 
@@ -1765,7 +1801,11 @@ theorem nsNull_of_pricing_growth (μcap : ℕ → ℝ) (μclass : ℝ) (Z : ℕ 
   exact tendsto_nhds_unique hcont hμ
 
 /-- VP pinned (`vp`): (c1)/(c3-a) inhabited cell-data verdict models per level, (c2)
-the tower-keyed KB-TOT closure, VP-SOUND's two cites + the REV-8 totality leg. -/
+the tower-keyed KB-TOT closure, VP-SOUND's two cites + the REV-8 totality leg.
+[QUEUE ITEM 1 ADAPTER 2026-07-31: `covering` reads the guarded `KBTotTower` through
+`fun N' _ => χat N'`. This structure's OWN unguarded χat parameter shares the TV-B1
+disease (uninstantiable at n ≥ 1); its guard is the same B-cluster collapse as
+`TreeNStableStmt`'s (recorded), outside item 1's named scope.] -/
 structure VPPinned (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
@@ -1775,7 +1815,7 @@ structure VPPinned (pol : CanonPolicy p F) {N₀ : ℕ}
     Prop where
   model : ∀ N' h,
     Nonempty (VerdictModelT (Tat N' h) (CAat N' h).toCellData (χat N'))
-  covering : KBTotTower pol Tat χat trackOf
+  covering : KBTotTower pol Tat (fun N' _ => χat N') trackOf
   hen_lift : HenLift p
   om_sat : OmSat p F n trackOf
   om_total : OmSatTot p F n trackOf

@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.MovesT.Defs
 import LeanUrat.MovesT.F0_preHalt
 import LeanUrat.MovesT.E2_jcRootCard
+import LeanUrat.MovesT.TV_A1
 
 /-! # T-E5 `fiber_root_split` [hard] — the ROOT CLAUSE (MOVES 7485–7495), exponent
 t = numTracks (rev-2 arithmetic, census-verified). `RootSplitData`/`trackEvent` are
@@ -28,7 +29,18 @@ the fiber/track-event set decomposition (both inclusions, all six `fiberAt` clau
 reconstructed), the (SIB) application at the `.amb` cell (= the root cell via
 `RootCellsOf`), the head-roster product split, the t ≤ 1 direct legs, and the T-E2
 conversion. The residual's countermodel shape, owner tag (HC-2/D4R0K), and candidate
-interface-law shape are recorded at the `hD4R0K` site. -/
+interface-law shape are recorded at the (U)∧(R) premise site.
+
+**QUEUE ITEM 5 EXECUTED 2026-07-31 (Asvin sign-off; the Q1-ratified E5 hoist,
+TV-A2's pinned shape)**: the internal fenced `have hD4R0K … := by sorry` is HOISTED
+to the two NAMED warranted premises `hU : TrackUniqOn T χ trackOf g` /
+`hR : TrackRepOn T χ trackOf g` (TV_A1's defs — imported; owner HC-2/D4R0K),
+appended last. THIS MODULE IS NOW SORRY-FREE (Lean-core footprint). Necessity of
+the pair as named hypotheses is MACHINE-CERTIFIED: (U)∧(R) is not derivable from
+the `CellData`/`CellAssign` laws (TV_A5b_forge.lean, the sealed E5/R4 prediction,
+compiled 2026-07-31). Ripples: `treeExp` (E8), `perShape_law` (E10), `treeN`
+(E11) carry the ∀-g row `hUR`; the Defs ∀-closures `TreeExpFin`/`TreeNStmt` carry
+the row inlined (TV-A3/TV-A4 shapes). -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
