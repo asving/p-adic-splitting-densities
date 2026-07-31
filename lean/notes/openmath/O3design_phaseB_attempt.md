@@ -363,3 +363,238 @@ gates, 2 new investments, one-shot kill criteria named), dependency map
 (16 prover units with dispatch order and IH interfaces). No mathematics is
 claimed proved by this unit. Next: Codex plan review with §7's five asks, then
 JC-N (the gate wave) before any prover dispatch.
+
+---
+
+# REVISION 1 (2026-07-31, post-V16) — the right-sizing pass
+
+V16 (report `V16_o3design.jsonl`) REJECTED the design: 6 blockers + 8
+advisories, with ONE central diagnosis — faces stated STRONGER than any
+consumer needs (the reviewer's finding 12 lists the instances; findings 1–5/7
+are where the over-strength breaks well-posedness or provability). §§0–7 above
+are kept byte-stable as the record of the reviewed state; where a REVISION 1
+clause conflicts with them, REVISION 1 governs. The repair method: walk the
+tree's consumer list per face (§R2), restate each face at the strength its
+strongest actual consumer uses (§R3), re-fit every gate to its stated
+quantifier or narrow its advertised kill (§R4), reorder dispatch with the
+statement-layer type-check first (§R5), and replace the U6-as-base language
+with the PROVED base (§R5).
+
+## R1. Disposition table — all 14 V16 findings
+
+| # | V16 finding (compressed) | class | disposition |
+|---|---|---|---|
+| 1 | T_can(f) := Cons^τ-set silently replaces the O-3 target (no adequacy with GMN's t_•(f)) | CRIT | **ACCEPTED** → new named lemma **(ADEQ)** (§R3): Θ induces a prefix-tree isomorphism T_can(f) ≅ t_•(f) over F_rep — lands-in + injectivity are PROVED (O-2a + Lemma R); the SURJECTIVITY leg (read-back construction) is the new open clause, priced into JC-0. K-RUN-as-designed implies K-RUN-as-in-tree only THROUGH ADEQ; displayed as such |
+| 2 | F6 claims a raw-run bijection its ingredients cannot give (quotient ≠ raw) | CRIT | **ACCEPTED** → **F6′** (§R3): stated at the pooled/quotient level only; raw-run bijection WITHDRAWN (the caterpillar already forbade it — the rev-0 text was internally inconsistent) |
+| 3 | TT-DET preserves no level filtration, so it cannot restrict to same-N run sets | CRIT | **ACCEPTED** → **TT-DET′** (§R3): restated as a FILTERED isomorphism (compatible system over N, preserving the primary level N*); the level clause is flagged as the design's single riskiest claim, gate-tested (G-F6′) before JC-10a dispatches; bounded-shift fallback recorded |
+| 4 | (O5) max-of-ceilings is not a semantic truncation level (ceilings are upper bounds; F1's ≤ N unprovable from O-1thr) | CRIT | **ACCEPTED** → the D4R.4/L12 per-branch level **N\*** is PRIMARY (§R3 (O5′)); max-of-ceilings demoted to the one-directional upper bound **(CEIL-UB)** (all K-OB-A needs); F1′'s conformance clause re-warranted as ENGINE mechanics (OL-2a-4 + L12 window), not an O-1thr consequence |
+| 5 | every-lift quantifier ill-typed (nonseparable lifts) and subsumes a cylinder law (unacknowledged CYL) | CRIT | **ACCEPTED** → every-lift WITHDRAWN from F1/F4 (selected-f forms, §R3); all residual lift quantifiers typed over monic SEPARABLE lifts (JC-0 duty); cylinder content routed to D-15 downstream where the ns-guard is explicit — the design still neither claims nor consumes CYL, now truthfully |
+| 6 | intra-step order F5→F1→F2→F4→F6 genuinely acyclic | ADV+ | **RECORDED** — §2.3 stands byte-stable; the assumption it rests on (TT-DET/MF-MATCH invoke no run correspondence) is re-checked against TT-DET′ (still true: TT-DET′ is Cons^τ-side only) |
+| 7 | F3's route misses lawful ⇒ coherent (O-14a′ realizes only coherent histories) | CRIT | **ACCEPTED** → **F3′** re-indexed to COHERENT chains (`HistoryCoherent`, O-14a′'s actual compiled scope); the lawful→coherent bridge named **(LC-COH)**, displayed OPEN and UNCONSUMED (no current consumer needs lawful-chain indexing — §R2); G-F3 kill criterion narrowed accordingly (§R4) |
+| 8 | "D-14 (the next semantic read is MENU-LAWFUL)" misattributes the bridge; no named statement discharges it | ADV | **ACCEPTED** → new named lemma **(SEM-LAWFUL)** (§R3), owned by JC-7's spec: the semantic next read of a Cons_f chain is menu-lawful at the F5-identified frame state (from roster totality (M6a)/(M6b) + O-2a positional clauses + K-OB-E); D-14 supplies ONLY locality at the lawful site |
+| 9 | OB2 genuinely level-free (BNS Defs 1.7/3.1–3.2 quantify over factors, not traces); Thm 3.13 cannot supply TT-DET implicitly | ADV+ | **RECORDED** — §7 ask 3 answered; JC-12 unchanged; the BNS definition numbers are pinned into JC-12/JC-10a's citation-pull duty |
+| 10 | load-bearing F6 content = filtered pooled execution structure + verdicts + refinement blocks (raw runs too strong, bare skeleton+invariants too weak) | ADV | **ACCEPTED** → F6′ is pitched at exactly this middle (§R3); §7 ask 2 answered |
+| 11 | (M6b) should be an explicit joint corollary of JC-2/3, not an "expected discharge" | ADV | **ACCEPTED** → JC-2's spec states the O-1thr (M6b) interface conclusion VERBATIM as a displayed corollary, with JC-3's residual-identification input recorded; one verifier pass, two consumers (§R6) |
+| 12 | over-strength list: F5 literal identity; TT-DET whole-tree; F6 raw bijection; F1/F4 every-lift; F4 all-N biconditional; F3 lawful chains | ADV | **ACCEPTED per item** → F1/F3/F4/F6/TT-DET right-sized (§R3). F5 is the ONE deliberate retention: its literal strength is purchased upstream (OL-2a-2 identity-frame clauses deliver on-the-nose equalities), so weakening buys no proof reduction and would break the verbatim-consumption discipline — displayed as intentional |
+| 13 | gates don't test their stated quantifiers (F1 lifts, F4 all-N, N(𝐇) direction) | ADV | **ACCEPTED** → §R4: G-F1′ narrowed to the selected-f claim; NEW G-LIFT rider tests the two-lift transfer where it now lives (O-1thr/D-14); G-F4′ sweeps ALL working levels with split kill criteria; G-CEIL′ tests the conformance DIRECTION (ceiling ≤ working level) plus CEIL-UB |
+| 14 | JC-0 is the cheapest falsifier and isn't first; finite U6 survival cannot be an inductive base | ADV | **ACCEPTED** → dispatch reordered JC-0 FIRST, then JC-N with G-F6′ first among computational gates (§R5); base language REPLACED: the base is the PROVED O-2a Thm 1 + OL-5 order-1 base (V20-confirmed); U6 demoted to corroboration everywhere (§R5) |
+
+§7's five asks are hereby absorbed: ask 1 → finding 4's repair; ask 2 →
+finding 10; ask 3 → finding 9; ask 4 → finding 11; ask 5 → findings 6 + 8.
+
+## R2. The consumer-to-face table (the right-sizing warrant)
+
+Walking §4's supply list against the tree (`MATH_COMPLETION_TREE_2026-08-01.md`
+node texts): what each consumer of the cluster ACTUALLY uses.
+
+| consumer (tree node) | what it needs from the cluster | right-sized form that suffices |
+|---|---|---|
+| K-14 MarkGraft (I0) extend/graft | realized censuses extend | F2′ + F3′ — the coherent-chain form suffices: grafted extensions extend realized (hence Cons^τ) prefixes, which are coherent by construction |
+| K-14 (I1) faithful census | realized counts = semantic counts per stratum | F1′ + F2′ at the box's own f — no lift quantifier |
+| K-14 (I3-rc) | frame-state premise at recenterings | F5 (as stated) |
+| O-4 OL1-ii (agreement seam) | run terminates below finite N(f) AND Cert accepts there | F1′ conformance clause + **F4-C** at N ≥ N(f) + GMN Cor 4.19 — completeness at the DECISION level only |
+| O-5 + D-7a/b/c (leaf verdicts) | accepted leaf ⇒ true factor datum | **F4-S** (soundness, selected f) + O-2a saturation + F1′; D-7c's all-lifts clause routes through D-15's cylinder law, NOT an F1 lift quantifier |
+| O-7 (X1) | realized read ⇒ root-tracking disk | F1′ + K-OB-C |
+| O-7 (X4) | first-read wildness | F1′ + K-OB-E |
+| D-15 (CYL, downstream assembly) | decided classes = cylinder unions | D-14 + O-1thr (K2) + F1′/F2′ + (τ-irr) — THIS node owns lift-uniformity, with the ns-guard explicit |
+| D-16 (δ execution transport) | run correspondence at ∼_OM pairs | **F6′** (filtered, pooled, verdict-preserving) + OB2 + F1′–F5 — per V16 finding 10, raw-run bijection NOT needed |
+| D-11 / mass-id | σ invariance | OB2 (level-free) |
+| K-4/K-6 repairs | via D-15 | indirect — no direct face consumption |
+
+**The display:** NO consumer requires (a) Cons_g^τ for every lift, (b) the F4
+biconditional at every N, (c) a raw-run bijection, (d) lawful-chain-indexed
+nonemptiness. Each withdrawn quantifier reappears, if at all, in the
+downstream node that owns it (D-15) or as a displayed unconsumed lemma
+(LC-COH).
+
+## R3. The revised statement layer (supersedes §2.1's F1/F3/F4/F6, §2.2's TT-DET, and (O5))
+
+Standing: f monic separable ns-free of degree n over O, x_f := f mod p^N.
+EVERY residual lift quantifier in the layer ranges over monic SEPARABLE lifts
+(JC-0 types every domain; V16 finding 5's ill-posedness cured at the root).
+
+* **(O5′) The primary resolution level.** N\*(𝐇) := the D4R.4/L12 per-branch
+  level N(η,⊤) of 𝐇's end state (the exact level at which the branch state is
+  realized), joined at a terminal node with the TB-CAP verdict window ((τ-hen)
+  N_V = 1; (τ-irr) the level-N(η) window). This is THE truncation level — the
+  project's earlier per-branch resolution stays primary (V16 finding 4).
+  Induction measure: (N, k) lexicographic with N = N\*.
+* **(CEIL-UB) — the demoted (O5) expression; JC-0 lemma.** N\*(𝐇) ≤
+  max_i L(H_i, ν_i) ∨ (verdict window): the max of the O-1thr per-site
+  ceilings BOUNDS the primary level (each read is determined below its
+  ceiling, so the branch state is pinned below the max). One direction only —
+  exactly what K-OB-A consumes. No minimality or equality is claimed.
+* **(F1′_N — no-phantom, selected-f form).** Every 𝐇 ∈ Run_N(x_f) satisfies
+  Cons_f^τ(𝐇), and N\*(𝐇) ≤ N. The conformance clause is warranted by ENGINE
+  mechanics (the working-level-N run reads only digits below N: OL-2a-4
+  emission discipline + the L12 window bookkeeping), NOT by O-1thr ceilings —
+  V16 finding 4's provability objection lands on the rev-0 warrant, and this
+  is the repair. [Every-lift clause WITHDRAWN: ill-typed on nonseparable
+  lifts, and jointly with F2 it was an unacknowledged cylinder law (V16
+  finding 5); fiber invariance below the ceiling lives in O-1thr Thm 1/D-14
+  and is consumed by D-15, not asserted here.]
+* **(F2′_N — no-missing).** Every 𝐇 ∈ T_can(f) with N\*(𝐇) ≤ N lies in
+  Run_N(x_f). [Unchanged except keyed to N\*.]
+* **(F3′_N — nonempty locus, coherent form).** Every COHERENT chain
+  (`HistoryCoherent`, the O-14a′ predicate — the realizer theorem's actual
+  scope) with N\* ≤ N, bookkept under the (O6) canonicalizations, has a monic
+  separable witness g in its level-N digit cylinder with the corresponding
+  history in T_can(g). **(LC-COH)** — "every fresh-frame-lawful chain is
+  coherent/witnessed" — is NOT claimed, displayed OPEN, and consumed by
+  nothing in the tree (§R2); if a future census consumer demands lawful-chain
+  indexing, LC-COH must be proved then (V16 finding 7).
+* **(F4_N split — acceptance).** **(F4-S, soundness, every N):** Cert accepts
+  (x_f, 𝐇) ⇒ 𝐇 ∈ Run_N(x_f) AND 𝐇 is verdict-carrying in T_can(f).
+  **(F4-C, completeness at the decision level):** if 𝐇 ∈ T_can(f) is
+  verdict-carrying and N ≥ N\*(𝐇), then Cert accepts (x_f, 𝐇). Displayed
+  corollary: for N ≥ N\*(𝐇) the two give the biconditional — the all-N
+  biconditional and its lift quantifier are WITHDRAWN (V16 findings 5/12; §R2:
+  OL1-ii uses F4-C at the decision level, D-7a-c use F4-S).
+* **(F5_N — unchanged, intentionally.)** Literal identity of key/valuation/
+  tower/position is retained: OL-2a-2's identity-frame clauses supply it
+  on-the-nose, so the strength is free, and every consumer quotes those
+  clauses verbatim. The one deliberate over-strength, displayed (V16
+  finding 12).
+* **(F6′_N — pooled filtered trace correspondence = OB1 at level N).** For
+  f ∼_OM g: writing P_N(f) := (Run_N(x_f) pooled by collapsing maximal
+  recentering runs)/≈, there is an isomorphism P_N(f) ≅ P_N(g), compatible
+  with truncation P_{N+1} → P_N, preserving per-node (e_i, h_i, g_i, μ_i),
+  terminal verdicts AND acceptance, branch incidence/multiplicity of the
+  pooled tree, and matching refinement blocks (maximal recentering runs)
+  one-to-one with same-degree refinement iterations of the published Montes
+  flow (MF-MATCH). Explicitly NOT claimed: any bijection of raw run sets (the
+  caterpillar forbids it). This is V16 finding 10's load-bearing middle —
+  strong enough for D-16's execution transport, no stronger.
+* **(TT-DET′ — filtered type-tree determinacy; supersedes TT-DET).** For
+  f ∼_OM g: a system of isomorphisms T_can(f)^{≤N}/≈ ≅ T_can(g)^{≤N}/≈
+  (T^{≤N} := {𝐇 : N\*(𝐇) ≤ N}), compatible with N → N+1, preserving
+  (e_i, h_i, g_i, μ_i), collapsed recentering runs, and terminal verdicts —
+  equivalently, ONE quotient-tree isomorphism that PRESERVES N\* on pooled
+  classes. The level-preservation clause is the design's single riskiest
+  claim (V16 finding 3): G-F6′ tests it empirically BEFORE JC-10a dispatches.
+  Recorded fallback if the gate kills on-the-nose preservation: a
+  bounded-shift form (N\* preserved up to an explicit constant of the ∼_OM
+  data) — D-16's rate consumer tolerates a uniform additive shift; adjudicate
+  at gate results, do not paper over.
+* **(ADEQ — T_can adequacy; the finding-1 repair).** Over the pinned family
+  F_rep, Θ restricted to T_can(f) induces an isomorphism of prefix trees onto
+  GMN's type tree t_•(f) with verdict decoration: (i) lands-in — PROVED
+  (O-2a Thm 1/2 scope, seam-conditional at orders ≥ 2); (ii) SURJECTIVITY —
+  OPEN, the read-back construction: a t_•(f) node's side/residual data is
+  exactly the data Cons_f's intrinsic clauses demand, so build the dressed
+  history level by level (conditional on OL-2a-1 admissibility); (iii)
+  injectivity on all-continuing — PROVED (Lemma R) — plus terminal
+  correspondence via O-2a Thm 2(B)/Cor 3.8. WITHOUT ADEQ, Run_N = T_can(f)_{≤N}
+  is a theorem about the design's object, not the tree's O-3; WITH it, the
+  original K-RUN target is recovered. Owner: JC-0 (leg (ii) is its hardest
+  clause and may split off as JC-0b).
+* **(SEM-LAWFUL — the finding-8 repair; owned by JC-7's spec).** For an
+  all-continuing 𝐇 ∈ T_can(f) whose frame state is identified by F5 on the
+  strict prefix: every immediate Cons_f-extension of 𝐇 corresponds to a read
+  that is MENU-LAWFUL at that frame state. Warrant: roster totality
+  ((M6a)/(M6b) — the menu lists ALL sides + residual profiles readable at the
+  state) + O-2a positional clauses (c1)/(c2) (semantic side data IS frame
+  positional data) + K-OB-E (continuing ⇒ μ ≥ 2). D-14 then supplies ONLY
+  locality at that lawful site — the quantifier orientation of §2.3 is
+  unchanged; the bridge now has a name and an owner.
+
+F2's step, restated with the names: IH-F2 realizes the strict prefix; IH-F5
+identifies its frame state; **SEM-LAWFUL** shows the next semantic read is on
+the menu; **D-14** localizes it; roster finiteness + K-OB-E close the child
+set. (This is V16 finding 8's own reconstruction, adopted verbatim.)
+
+## R4. Gate fixes (supersedes the affected §3 rows; V16 finding 13)
+
+| gate | fix | new advertised kill criterion |
+|---|---|---|
+| **G-F1′** | criterion NARROWED to the face's actual quantifier | any realized history on box x_f failing Cons_f^τ for the box's OWN f (canonical instantiation) — the every-lift kill is retired with the clause |
+| **G-LIFT** (NEW rider) | tests the two-lift transfer where it now lives (O-1thr Thm 1 / D-14, consumed by D-15) | per box sample ≥ 3 monic separable lifts incl. extremal digit patterns above level N; ANY two lifts of one box with different level-N realized run sets or per-site read sets |
+| **G-F4′** | all-N sweep: run Cert at EVERY working level N = 1..N(f)+2 per box | kill-S: accepted-but-semantically-wrong at ANY N (kills F4-S); kill-C: verdict-carrying semantic 𝐇 with N\*(𝐇) ≤ N unaccepted at N (kills F4-C) |
+| **G-CEIL′** | direction FIXED: test conformance (ceiling ≤ working level), not just reads-below-ceiling | kill-1: a realized read on a working-level-N run with N\*(𝐇) > N (kills F1′ conformance); kill-2: a history with N\* > the max-ceilings expression (kills CEIL-UB); the old reads-above-ceiling check retained as the O-1thr regression |
+| **G-F6′** | extended to the filtered claim | pooled traces compared WITH per-history N\* levels and terminal verdicts/acceptance; any ∼_OM pair mismatching pooled structure, verdicts, OR N\* levels (a level-only mismatch kills the TT-DET′ level clause → adjudicate the bounded-shift fallback) |
+| **G-F3′** | kill criterion NARROWED to the coherent form | an EMPTY predicted-nonempty stratum of a COHERENT chain kills F3′; an empty lawful-but-incoherent stratum refutes nothing here — it is a recorded finding against LC-COH/census indexing |
+
+Unchanged rows: G-F2, G-F2t, G-F5, G-MF, G-OB2, G-OBC, G-EMIT (their stated
+quantifiers already match their claims).
+
+## R5. Reordering + the base repair (supersedes §5's dispatch head and §2.3's base paragraph; V16 finding 14)
+
+**Dispatch order revised:** **JC-0 FIRST** — the pure statement-layer unit is
+the cheapest falsifier of the whole design (it would have surfaced V16
+findings 1–5 pre-review): formal type-check of Cons^τ (t-i), T_can truncation
+laws, ADEQ statement + legs (i)/(iii) wiring, N\* definition + CEIL-UB, every
+lift domain typed monic separable, the six REVISED faces + the §2.3 acyclicity
+display re-verified against them. THEN JC-N (the gate wave) with **G-F6′
+first** among the computational gates (hardest conjecture, cheapest kill),
+G-F3′ second; then {JC-1, JC-2, JC-3, JC-11, JC-12 in parallel} → JC-4 → JC-5
+→ JC-6 → {JC-7, JC-8} → JC-9 → JC-13 → {JC-10a, JC-10b} → JC-10c → JC-14.
+
+**Base case, restated:** the inductive base is PROVED mathematics — O-2a
+Theorem 1 (order ≤ 1, all clauses incl. the j₀ corner and k′ = 0) with the
+OL-5 first-read base, per V20's confirmation of O-2a rev-3 (SOUND-WITH-GAPS;
+both findings justification-gap class; the verifier's own summary: "OL-5(b)/(c),
+together with OL-4(d), fully establish the order-1 base without an undeclared
+engine-semantics assumption") + the compiled length-≤1 forge instances + K-12's
+n = 2 anchor. **U6's exhaustive depth-2 survival is CORROBORATION ONLY** — a
+numeric floor above the base, never cited as a base-case proof. Every "U6
+sits directly above the base" phrasing in §§2.3/2.1 is superseded by this
+paragraph.
+
+## R6. Unit-spec deltas (supersedes the affected §5 rows)
+
+* **JC-0** (now FIRST): gains ADEQ (surjectivity leg = hardest clause, may
+  split off as JC-0b), CEIL-UB, the N\* primary definition (no reconciliation
+  duty remains — the L12 form IS the definition), and lift-domain typing.
+* **JC-2**: states the O-1thr (M6b) interface conclusion VERBATIM as a
+  displayed joint corollary (JC-3's residual identification recorded as
+  input) — one verifier pass serves both consumers.
+* **JC-6** (F1′): selected-f form; the conformance clause proved from
+  OL-2a-4 + L12 window mechanics, not from O-1thr ceilings.
+* **JC-7** (F2′): gains SEM-LAWFUL as a displayed lemma of its spec.
+* **JC-8** (F3′): re-keyed to `HistoryCoherent` chains; (O6)
+  canonicalizations retained for census bookkeeping; LC-COH displayed
+  unconsumed.
+* **JC-9** (F4): split into the F4-S and F4-C legs with their separate kill
+  criteria.
+* **JC-10a** (TT-DET′): filtered form; the level clause is the unit's
+  declared crux; BLOCKED until G-F6′ reports.
+* **JC-10c** (F6′): assembly at the pooled level; raw-bijection language
+  purged.
+* **JC-12, JC-13**: unchanged (V16 finding 9 confirms OB2's evasion; BNS
+  Defs 1.7/3.1–3.2 pinned into the citation-pull duty; Thm 3.13 recorded as
+  unable to supply TT-DET implicitly).
+* Proposed TREE delta (recorded, not executed here): O-3's clause-3 wording
+  ("every fresh-frame-lawful assignment chain") to be re-keyed to the
+  coherent-chain form at the next tree edit, with LC-COH listed as the
+  displayed residue; O-3's "of any lift f" phrase inherits the D-15 routing.
+
+## REVISION 1 VERDICT
+
+**REVISED** — all 14 V16 findings dispositioned (6 blockers repaired by
+right-sizing + three new named lemmas ADEQ/SEM-LAWFUL/CEIL-UB + one displayed
+non-claim LC-COH; 8 advisories absorbed: 3 as repairs, 2 as confirmations
+recorded, 3 as reorderings/demotions). The revised layer claims, for each
+face, exactly the strength of its strongest tree consumer (§R2 table); the
+one deliberate over-strength (F5) is displayed with its warrant. No
+mathematics is claimed proved by this revision. Next: re-review of the
+revised layer (brief rev-2), then JC-0 before any gate or prover dispatch.
