@@ -234,9 +234,10 @@ would divide two coprime factors — contradiction. So G_L ≠ G_{L′}.
 **(2) Surjective.** Let F | g be monic irreducible. Descend from the root: H0 places F in
 exactly one root child's cluster. At a hen leaf, F = g_j (g_j irreducible, F | g_j
 nonconstant). At a track node t₀: the type-0 cluster f_{t₀} per (L5) is the largest
-factor divisible by t₀, i.e. the product of the irreducible factors whose reduction is a
-ψ̄_j-power; by H0's per-factor clause that product is exactly g_j, so f_{t₀} = g_j and
-F | f_{t₀}. At an active node t with F | f_t: NODE(iii) places F in exactly one listed
+factor divisible by t₀; order-0 divisibility reads as "F̄ is a ψ̄_j-power" [a GMN §1
+vocabulary reading, to be confirmed at transcription together with (GMN-COH)], so f_{t₀}
+is the product of the irreducible factors with ψ̄_j-power reduction; by H0's per-factor
+clause that product is exactly g_j, so f_{t₀} = g_j and F | f_{t₀}. At an active node t with F | f_t: NODE(iii) places F in exactly one listed
 factor. Exact-key: F | φ_r ⇒ F = φ_r (leaf). (a=1): F | G_{S,ψ} irreducible ⇒
 F = G_{S,ψ} (leaf). a ≥ 2: F | G_{S,ψ} = f_{t′} [NODE(v)] — continue at the child.
 Orders strictly increase, bounded by (1), so the descent reaches a leaf L with F = G_L.
