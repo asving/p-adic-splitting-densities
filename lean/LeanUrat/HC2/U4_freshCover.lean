@@ -97,14 +97,194 @@ set_option maxHeartbeats 1000000
 namespace LeanUrat.MovesJ
 open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD SharedZC
 
+/-! ### The file-private F5 floor-collapse kernel (queue item 12, 2026-07-31).
+Byte-faithful replicas of the `private` U10 kernel (`LeanUrat/HC2/U10_zcStep.lean`,
+hc2-p-phase-hard round) — the `valueClause_support'` replica precedent; a dedup
+target for the item-8 de-privatize sweep. Provenance per lemma: the identically-named
+`private` original in U10_zcStep. -/
+
+section StraddleKernel
+
+variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+private lemma strFrame_pos (H : History p F) (r : ℕ) : 0 < H.strFrame r := by
+  unfold History.strFrame
+  rw [Nat.pos_iff_ne_zero]
+  intro h0
+  rw [List.prod_eq_zero_iff] at h0
+  rw [List.mem_map] at h0
+  obtain ⟨ν, hν, hν0⟩ := h0
+  have := ν.he
+  omega
+
+private lemma Dwidth_pos {H : History p F} (hcoh : HistoryCoherent H) {r : ℕ}
+    (hr : r < H.nodes.length) : 0 < (H.nodes[r]'hr).Dwidth := by
+  rw [Nat.pos_iff_ne_zero]
+  intro hD0
+  have hslope := hcoh.2.1 r hr
+  rw [hD0] at hslope
+  simp only [Nat.cast_zero, mul_zero] at hslope
+  have hh := (H.nodes[r]'hr).hh
+  have h1 : ((H.nodes[r]'hr).h : ℚ) = 0 := hslope.symm
+  have h2 : (H.nodes[r]'hr).h = 0 := by exact_mod_cast h1
+  omega
+
+private lemma slope_pos {H : History p F} (hcoh : HistoryCoherent H) {r : ℕ}
+    (hr : r < H.nodes.length) : 0 < (H.nodes[r]'hr).line.slope := by
+  have hslope := hcoh.2.1 r hr
+  have h1 : (0:ℚ) < ((H.nodes[r]'hr).e : ℚ) := by exact_mod_cast (H.nodes[r]'hr).he
+  have h2 : (0:ℚ) < ((H.strFrame r : ℕ) : ℚ) := by exact_mod_cast strFrame_pos H r
+  have h3 : (0:ℚ) < ((H.nodes[r]'hr).Dwidth : ℚ) := by exact_mod_cast Dwidth_pos hcoh hr
+  have h4 : (0:ℚ) < ((H.nodes[r]'hr).h : ℚ) := by exact_mod_cast (H.nodes[r]'hr).hh
+  by_contra hns
+  rw [not_lt] at hns
+  have hX : (0:ℚ) < ((H.nodes[r]'hr).e : ℚ) * ((H.strFrame r : ℕ) : ℚ)
+      * ((H.nodes[r]'hr).Dwidth : ℚ) := mul_pos (mul_pos h1 h2) h3
+  have h5 := mul_le_mul_of_nonneg_right hns (le_of_lt hX)
+  rw [zero_mul, hslope] at h5
+  linarith
+
+/-- The coarse block's left edge sits at-or-left of the fine block's left edge. -/
+private lemma div_mul_le_div_mul {d D : ℕ} (hdvd : d ∣ D) (hd : 0 < d) (b : ℕ) :
+    b / D * D ≤ b / d * d := by
+  obtain ⟨q, rfl⟩ := hdvd
+  rw [show b / (d * q) * (d * q) = b / (d * q) * q * d by ring]
+  apply mul_le_mul_right'
+  rw [Nat.le_div_iff_mul_le hd]
+  calc b / (d * q) * q * d = b / (d * q) * (d * q) := by ring
+    _ ≤ b := Nat.div_mul_le_self _ _
+
+private lemma dwidth_dvd_chain {H : History p F} (hcoh : HistoryCoherent H) {s : ℕ}
+    (hs : s < H.nodes.length) :
+    ∀ t, s ≤ t → ∀ (ht : t < H.nodes.length),
+      (H.nodes[s]'hs).Dwidth ∣ (H.nodes[t]'ht).Dwidth := by
+  intro t
+  induction t with
+  | zero =>
+      intro hst h0
+      have hs0 : s = 0 := by omega
+      subst hs0
+      exact dvd_refl _
+  | succ t iht =>
+      intro hst ht1
+      by_cases hst' : s ≤ t
+      · have ht : t < H.nodes.length := by omega
+        have hF : (H.nodes[t+1]'ht1).Dwidth = (H.nodes[t]'(by omega)).childWidth :=
+          (hcoh.2.2.2 t ht1).2.2.2.2.2.1
+        rw [hF]
+        refine dvd_trans (iht hst' ht) ?_
+        show (H.nodes[t]'ht).Dwidth ∣ (H.nodes[t]'(by omega)).childWidth
+        unfold Node.childWidth
+        exact dvd_mul_left _ _
+      · have hst'' : s = t + 1 := by omega
+        subst hst''
+        exact dvd_refl _
+
+private lemma childWidth_dvd_chain {H : History p F} (hcoh : HistoryCoherent H) {r M : ℕ}
+    (hrl : r < H.nodes.length) (hrM : r ≤ M) (hM : M < H.nodes.length) :
+    (H.nodes[r]'hrl).childWidth ∣ (H.nodes[M]'hM).childWidth := by
+  rcases eq_or_lt_of_le hrM with heq | hlt
+  · subst heq
+    exact dvd_refl _
+  · have hr1 : r + 1 < H.nodes.length := by omega
+    have hcw : (H.nodes[r]'hrl).childWidth = (H.nodes[r+1]'hr1).Dwidth := by
+      have hF : (H.nodes[r+1]'hr1).Dwidth = (H.nodes[r]'(by omega)).childWidth :=
+        (hcoh.2.2.2 r hr1).2.2.2.2.2.1
+      exact hF.symm
+    rw [hcw]
+    refine dvd_trans (dwidth_dvd_chain hcoh hr1 M hlt hM) ?_
+    unfold Node.childWidth
+    exact dvd_mul_left _ _
+
+private lemma childWidth_pos {H : History p F} (hcoh : HistoryCoherent H) {r : ℕ}
+    (hr : r < H.nodes.length) : 0 < (H.nodes[r]'hr).childWidth := by
+  unfold Node.childWidth
+  have h1 := (H.nodes[r]'hr).he
+  have h2 := (H.nodes[r]'hr).hg
+  have h3 := Dwidth_pos hcoh hr
+  exact Nat.mul_pos (Nat.mul_pos (by omega) (by omega)) h3
+
+private lemma prevRim_succ {H : History p F} (n : ℕ) {m : ℕ} (hm : m < H.nodes.length) :
+    H.prevRim n (m+1) = (H.nodes[m]'hm).μ * (H.nodes[m]'hm).childWidth := by
+  show (H.nodes[m]?).elim n (fun ν => ν.μ * ν.childWidth) = _
+  rw [List.getElem?_eq_getElem hm]
+  rfl
+
+private lemma staircase_mono {H : History p F} (hcoh : HistoryCoherent H)
+    (hreal : Realizable H) {r M : ℕ} (hrl : r < H.nodes.length) (hrM : r ≤ M)
+    (hM : M < H.nodes.length) {b : ℕ}
+    (hb : b < (H.nodes[M]'hM).μ * (H.nodes[M]'hM).childWidth) :
+    (H.nodes[r]'hrl).staircase b ≤ (H.nodes[M]'hM).staircase b := by
+  unfold Node.staircase
+  by_cases hbr : b < (H.nodes[r]'hrl).μ * (H.nodes[r]'hrl).childWidth
+  · rw [if_pos hbr, if_pos hb, WithBot.coe_le_coe]
+    have h1 : (H.nodes[r]'hrl).line.at
+          (b / (H.nodes[r]'hrl).childWidth * (H.nodes[r]'hrl).childWidth)
+        ≤ (H.nodes[M]'hM).line.at
+          (b / (H.nodes[r]'hrl).childWidth * (H.nodes[r]'hrl).childWidth) :=
+      C3_lineDom H hcoh hreal M hM r hrM _ (lt_of_le_of_lt (Nat.div_mul_le_self _ _) hb)
+    have h2 : b / (H.nodes[M]'hM).childWidth * (H.nodes[M]'hM).childWidth
+        ≤ b / (H.nodes[r]'hrl).childWidth * (H.nodes[r]'hrl).childWidth :=
+      div_mul_le_div_mul (childWidth_dvd_chain hcoh hrl hrM hM)
+        (childWidth_pos hcoh hrl) b
+    have h3 : (H.nodes[M]'hM).line.at
+          (b / (H.nodes[r]'hrl).childWidth * (H.nodes[r]'hrl).childWidth)
+        ≤ (H.nodes[M]'hM).line.at
+          (b / (H.nodes[M]'hM).childWidth * (H.nodes[M]'hM).childWidth) := by
+      unfold Line.at
+      have h4 : ((b / (H.nodes[M]'hM).childWidth * (H.nodes[M]'hM).childWidth : ℕ) : ℚ)
+          ≤ ((b / (H.nodes[r]'hrl).childWidth * (H.nodes[r]'hrl).childWidth : ℕ) : ℚ) := by
+        exact_mod_cast h2
+      have h5 := mul_le_mul_of_nonneg_left h4 (le_of_lt (slope_pos hcoh hM))
+      linarith
+    exact le_trans h1 h3
+  · rw [if_neg hbr]
+    exact bot_le
+
+private lemma floorH_le {H : History p F} {b : ℕ} {x : WithBot ℚ} :
+    ∀ i, i ≤ H.nodes.length →
+      (∀ r, r < i → ∀ (hrl : r < H.nodes.length), (H.nodes[r]'hrl).staircase b ≤ x) →
+      H.floorH i b ≤ x := by
+  intro i
+  induction i with
+  | zero =>
+      intro _ _
+      rw [C2_floorH_root]
+      exact bot_le
+  | succ i ih =>
+      intro hi1 hall
+      have hi : i < H.nodes.length := by omega
+      rw [C2_floorH_succ H i hi b]
+      exact max_le (ih (by omega) (fun r hr hrl => hall r (by omega) hrl))
+        (hall i (by omega) hi)
+
+private lemma floorH_collapse {H : History p F} (hcoh : HistoryCoherent H)
+    (hreal : Realizable H) {M : ℕ} (hM : M < H.nodes.length) {b : ℕ}
+    (hb : b < (H.nodes[M]'hM).μ * (H.nodes[M]'hM).childWidth) :
+    H.floorH (M+1) b = (H.nodes[M]'hM).staircase b := by
+  refine le_antisymm ?_ ?_
+  · exact floorH_le (M+1) (by omega)
+      (fun r hr hrl => staircase_mono hcoh hreal hrl (by omega) hM hb)
+  · rw [C2_floorH_succ H M hM b]
+    exact le_max_right _ _
+
+end StraddleKernel
+
 /-- THE GEOMETRIC NO-STRADDLE LEMMA (N-6 option (i), 2026-07-28): under coherence +
 realizability, a span slot's exact-valuation level set cannot STRADDLE the floor — if
 one member is in-band, every member is. Content: the (SAE) strict span-entry / C.1.5
 line-dominance keeps node-i's line strictly above the accumulated floor across the whole
 window, so the per-base floor variation of the earlier staircases cannot cross a level
 set sitting AT `slotVal j` (the U10 wave's family; the root case i = 0 is clean —
-`floorH 0 = ⊥`). QUEUED-FLEET; the U4 countermodel's adversarial `floorH` is
-coherence-infeasible. -/
+`floorH 0 = ⊥`).
+QUEUE ITEM 12 EXECUTED (2026-07-31): PROVED, statement unchanged (adjudication option
+(o-i) — see the header package). Rim leg: the slot's fine window sits inside the
+standing rim (`j+1 ≤ μ_{i−1}` from the in-band member, coherence width chain
+`D_i = cW_{i−1}`). Floor leg: F5 floor window-constancy (`floorH_collapse` — the
+cumulative floor IS node (i−1)'s staircase on the factor interior, a left-edge
+evaluation constant across each fine slot), so the in-band member's strict floor
+clause transfers to every sibling. Edge leg: level-set membership IS the band's upper
+edge (`htH = slotVal j`). -/
 theorem levelSet_no_straddle {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (H : History p F) (n N : ℕ)
     (hcoh : HistoryCoherent H) (hreal : Realizable H)
@@ -113,7 +293,92 @@ theorem levelSet_no_straddle {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Fin
     (hband : inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c)
     (hc' : c' ∈ levelSet H n N i (H.nodes[i]'hi) j) :
     inFreshBand H n (boxChart n N) i (H.nodes[i]'hi) c' := by
-  sorry
+  classical
+  have hcm := hc
+  unfold levelSet at hcm
+  rw [Finset.mem_filter] at hcm
+  obtain ⟨-, hcfs, hcht⟩ := hcm
+  have hcm' := hc'
+  unfold levelSet at hcm'
+  rw [Finset.mem_filter] at hcm'
+  obtain ⟨-, hcfs', hcht'⟩ := hcm'
+  obtain ⟨hrim, hfl, -⟩ := hband
+  rcases i with _ | m
+  · -- ROOT READ: rim = the whole box, floor = ⊥ — every level-set member is in-band.
+    refine ⟨?_, ?_, ?_⟩
+    · exact (boxChart_lt n N c').2
+    · rw [C2_floorH_root]
+      exact WithBot.bot_lt_coe _
+    · rw [hcfs']
+      exact le_of_eq hcht'
+  · -- STEP READ i = m+1: rim containment of the fine window + F5 window-constancy.
+    have hm : m < H.nodes.length := by omega
+    have hm1 : m + 1 < H.nodes.length := hi
+    have hDcw : (H.nodes[m+1]'hm1).Dwidth = (H.nodes[m]'hm).childWidth :=
+      (hcoh.2.2.2 m hm1).2.2.2.2.2.1
+    have hDpos : 0 < (H.nodes[m+1]'hm1).Dwidth := Dwidth_pos hcoh hm1
+    -- the standing rim in node-m form
+    have hrimc : (boxChart n N c).2 < (H.nodes[m]'hm).μ * (H.nodes[m]'hm).childWidth := by
+      have h1 := hrim
+      rwa [prevRim_succ n hm] at h1
+    -- the slot's window sits inside the rim: j + 1 ≤ μ_m
+    have hj0b : (boxChart n N c).2 / (H.nodes[m+1]'hm1).Dwidth = j := by
+      have h := hcfs
+      simp only [Node.fineSlot] at h
+      exact h
+    have hj1 : j + 1 ≤ (H.nodes[m]'hm).μ := by
+      have h1 : j * (H.nodes[m+1]'hm1).Dwidth ≤ (boxChart n N c).2 := by
+        rw [← hj0b]
+        exact Nat.div_mul_le_self _ _
+      have h1' : j * (H.nodes[m]'hm).childWidth ≤ (boxChart n N c).2 := by
+        rw [← hDcw]
+        exact h1
+      have h2 : j * (H.nodes[m]'hm).childWidth
+          < (H.nodes[m]'hm).μ * (H.nodes[m]'hm).childWidth := lt_of_le_of_lt h1' hrimc
+      exact lt_of_mul_lt_mul_right h2 (Nat.zero_le _)
+    -- c' shares the window, hence also sits inside the rim
+    have hj0b' : (boxChart n N c').2 / (H.nodes[m+1]'hm1).Dwidth = j := by
+      have h := hcfs'
+      simp only [Node.fineSlot] at h
+      exact h
+    have hwin' : (boxChart n N c').2 < (j + 1) * (H.nodes[m+1]'hm1).Dwidth := by
+      have h3 : (H.nodes[m+1]'hm1).Dwidth
+            * ((boxChart n N c').2 / (H.nodes[m+1]'hm1).Dwidth)
+          + (boxChart n N c').2 % (H.nodes[m+1]'hm1).Dwidth = (boxChart n N c').2 :=
+        Nat.div_add_mod _ _
+      rw [hj0b'] at h3
+      have h4 : (boxChart n N c').2 % (H.nodes[m+1]'hm1).Dwidth
+          < (H.nodes[m+1]'hm1).Dwidth := Nat.mod_lt _ hDpos
+      calc (boxChart n N c').2
+          = (H.nodes[m+1]'hm1).Dwidth * j
+            + (boxChart n N c').2 % (H.nodes[m+1]'hm1).Dwidth := h3.symm
+        _ < (H.nodes[m+1]'hm1).Dwidth * j + (H.nodes[m+1]'hm1).Dwidth :=
+            Nat.add_lt_add_left h4 _
+        _ = (j + 1) * (H.nodes[m+1]'hm1).Dwidth := by ring
+    have hrimc' : (boxChart n N c').2
+        < (H.nodes[m]'hm).μ * (H.nodes[m]'hm).childWidth := by
+      calc (boxChart n N c').2 < (j + 1) * (H.nodes[m+1]'hm1).Dwidth := hwin'
+        _ ≤ (H.nodes[m]'hm).μ * (H.nodes[m+1]'hm1).Dwidth := mul_le_mul_right' hj1 _
+        _ = (H.nodes[m]'hm).μ * (H.nodes[m]'hm).childWidth := by rw [hDcw]
+    -- F5 window-constancy: both floors are node m's staircase at the SAME left edge
+    have hbcw : (boxChart n N c).2 / (H.nodes[m]'hm).childWidth = j := by
+      rw [← hDcw]
+      exact hj0b
+    have hbcw' : (boxChart n N c').2 / (H.nodes[m]'hm).childWidth = j := by
+      rw [← hDcw]
+      exact hj0b'
+    have hfle : H.floorH (m+1) (boxChart n N c').2 = H.floorH (m+1) (boxChart n N c).2 := by
+      rw [floorH_collapse hcoh hreal hm hrimc', floorH_collapse hcoh hreal hm hrimc]
+      unfold Node.staircase
+      rw [if_pos hrimc', if_pos hrimc, hbcw, hbcw']
+    refine ⟨?_, ?_, ?_⟩
+    · rw [prevRim_succ n hm]
+      exact hrimc'
+    · rw [hfle, hcht']
+      rw [hcht] at hfl
+      exact hfl
+    · rw [hcfs']
+      exact le_of_eq hcht'
 
 /-- Every band coordinate is covered by some constructed clause's support (verbatim
 `JetSetup.fresh_cover`'s field type at `mkFresh`; N-6 RESTATEMENT: under

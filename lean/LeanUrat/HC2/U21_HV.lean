@@ -78,6 +78,14 @@ transition of a run, non-recentering parents — HC1's `VertexPin` formula verba
 weight w₀ = σ_i.w (B′ μ_i) = (gam′ − μ_i·h′)/e′; the ∀-form is stated because the run's
 development is existential). Consumers: U23's (HV) leg via `readsOf_HV` (byte-unchanged).
 ═══════════════════════════════════════════════════════════════════════════════════════
+
+QUEUE ITEM 21 EXECUTED (2026-07-31, Asvin sign-off): the residue is HOISTED — the sorry
+is GONE. `readsOf_HV` is RE-TYPED to carry the named hypothesis `hpin` (the
+`RunVertexPin` residue, exactly as `readsOf_HV_of_pin` bills it; hpin placed before
+hadj so the (HV)-conjunct partial-application shape survives) and is discharged BY
+`readsOf_HV_of_pin` — the unit is now sorry-free, Lean-core. Frozen `Moves/DefsL`
+untouched. Consumer re-point: U23 `readsOf_realizable` gains the matching ∀-reads named
+row and threads it (its own record there).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -229,28 +237,36 @@ theorem readsOf_HV_of_pin {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
     exact hc'F.trans hviB
 
 /-- (HV) for runs: at an adjacent consecutive read of a run, the pattern LEAD equals the
-transported vertex value in `F` (the (HV) conjunct of `TransitionAdmissible`). -/
+transported vertex value in `F` (the (HV) conjunct of `TransitionAdmissible`).
+
+QUEUE ITEM 21 EXECUTED (2026-07-31, Asvin sign-off on the consolidated queue — the
+adjudicated NAMED-HYPOTHESIS HOIST, `readsOf_HV_of_pin` canonicalized; frozen
+`Moves/DefsL` untouched): the statement now CARRIES the certified-underivable residue
+as the named hypothesis `hpin : … → RunVertexPin …` (the S8 dual-audited twist symmetry
+moves the pin while fixing every recorded hypothesis — see the header record; so the
+hoist is the /goal-preferred repair: the reduction `readsOf_HV_of_pin`, PROVED
+Lean-core, becomes the discharge). `hpin` sits BEFORE `hadj` so consumers' partial
+application `readsOf_HV h i hi (hpin …)` still lands on the `TransitionAdmissible`
+(HV) conjunct shape `hadj → concl`. Discharge routes for `hpin` at concrete runs stay
+as recorded: (a) the Wall A↔B seam (HC1-constructed histories carry it by
+`v8Rc_S5'`/`VertexPin`); (b) a future `child_dig_frame` Defs pin (a `Moves/DefsL`
+statement change, NOT part of this item). Consumer re-point: U23's
+`readsOf_realizable` gains the matching named row. -/
 theorem readsOf_HV {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
     (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (hpin : (H.nodes[i]'(by omega : i < H.nodes.length)).species
+        ≠ ReadSpecies.recentering →
+      RunVertexPin (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi1).σ
+        (H.nodes[i+1]'hi1).σ.Φ (H.nodes[i]'(by omega)).zbar)
     (hadj : (H.nodes[i+1]'hi1).s0 + (H.nodes[i+1]'hi1).wSide
       = (H.nodes[i]'(by omega)).μ) :
     (((H.nodes[i+1]'hi1).pat ((H.nodes[i+1]'hi1).wSide / (H.nodes[i+1]'hi1).e)
         : ↥(H.nodes[i+1]'hi1).σ.K) : F)
-      = (H.nodes[i]'(by omega)).vtx := by
-  refine readsOf_HV_of_pin h i hi1 hadj (fun hsp => ?_)
-  -- ═══ THE EXACT RESIDUE (specialist round, 2026-07-28; header record above) ═══
-  -- `RunVertexPin` at the recorded (i, i+1) transition, non-recentering parent — the
-  -- `child_dig_frame` existential with `mfun ≡ 0` (needed only at the single vertex
-  -- element B′ μ_i). NOT derivable from the recorded class (S8 twist symmetry, dual-
-  -- audited); the D.7(v) warrant pins the CONSTRUCTED child (`ChildResData.hS5'`,
-  -- `v8Rc_S5'`), not the recorded one — instance mismatch, so the warrant does not
-  -- discharge this sorry. Discharge routes: (a) the Wall A↔B seam — histories built by
-  -- HC1's construction carry the pin by `v8Rc_S5'`/`VertexPin`; (b) the sign-off Defs
-  -- pin of `child_dig_frame` (S7-scratch "same honest fix, UPSTREAM", now D.7(v)-
-  -- warranted) — a `Moves/DefsL` statement change, Asvin's queue, fenced here.
-  sorry
+      = (H.nodes[i]'(by omega)).vtx :=
+  readsOf_HV_of_pin h i hi1 hadj hpin
 
 end LeanUrat.MovesJ
 
 #print axioms LeanUrat.MovesJ.readsOf_HV_of_pin
+#print axioms LeanUrat.MovesJ.readsOf_HV

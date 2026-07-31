@@ -38,6 +38,16 @@ the same term `U31.bw_eq HK13R.NF_θ_fq`).
 
 deps: HC2.HK13_bStageCoreP1a (the `bStageP` carrier + `HK13R.NF_θ_fq`; sorry-free).
 axioms: Lean core only.
+
+M1 DATED NOTE (2026-07-31, queue item 16 EXECUTED — Asvin sign-off on the consolidated
+queue): this leaf refutes the OLD (pre-hiaug) form of the `gateChildStage` family ONLY —
+the hypothesis row quoted above (provenance `HK15_gateChildCarrier.lean:95–96` at the
+PRE-repair HEAD: binders `he' hh' hcop hbez he1t`, no steepness guard). At the repaired
+HEAD the family carries `hiaug : IAug bStageP U31.fq e' h'` and is DISCHARGED (all six
+sorries; S9-forged σ₁): the probe's tuple (1,1,1,0) now FAILS the hypothesis row —
+`gateTuple_not_IAug` below is exactly the certificate that `hiaug` excludes it. The
+leaf stays intact as the durable fence evidence; the refuted hypothesis-row shape now
+exists only as the local copies in this file (M1 coexistence rule satisfied).
 -/
 import Mathlib
 import LeanUrat.HC2.HK13_bStageCoreP1a

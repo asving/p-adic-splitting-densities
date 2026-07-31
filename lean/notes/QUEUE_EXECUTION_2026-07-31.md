@@ -554,3 +554,212 @@ MANIFEST census updated.  Sorry delta in the three clusters: TV_E6(1) +
 TV_E7(1) + TV_G1(2) + TV_G2(8) = 12 sorries DISCHARGED; +0 added (TV_G3 kept
 its 7; the 3 EXISTS-pinned duties V7_livC/V7_rbC/V7_scsData stand as named
 open duties with tightened records).
+
+## Items 12 + 16 + 17 + 21 — U4 no-straddle / HK15 hiaug family / U10c+U10d zc_step / U21 readsOf_HV (executed 2026-07-31, agent: items-12+16+17+21)
+
+AUTHORIZATION: Asvin 2026-07-31 verbatim "Sign-off granted on all 21 items as
+preferred, execute the queue" (BRIDGE_ADJUDICATIONS_2026-07-30.md ASVIN SIGN-OFF
+block; adjudicated preferred options: item 16 = add hiaug named hypothesis;
+item 17 = U10d fresh-cut restriction + U10c STEP-READ law via designer unit;
+item 21 = named-hypothesis hoist, readsOf_HV_of_pin canonicalized, frozen
+Moves/DefsL untouched; item 12 = adjudication package drafted in-file, repair
+picked by the /goal rule).
+
+### Item 17 — U10c/U10d (HC2/U10_zcStep.lean): THE UNIT IS NOW SORRY-FREE
+- DESIGNER ADDENDUM (Q8-class D5-fence event): `ZCSeedLaws` (HC2/Defs.lean)
+  gains the STEP-READ VALUE-INTERIOR-EXCLUSION law `step_shape` — root_shape's
+  all-reads generalization ((ZC-b) "leads at rim" interior content; the exact
+  residue the U10c third-prover record named). Same faithful weakening as
+  root_shape (value-COORDINATE-free interiors). Header record added; U27's gate
+  seed supplies the new field by the root_shape arithmetic (single-read history,
+  r < 1 forces r = 0) — U27 green, byte-identical statement surface elsewhere.
+- U10c `zc_step_interiorZero` PROVED. Recorded ih-threading executed: the
+  statement gains the `ih : ZCData ...` row the assembled zc_step already
+  carries (named by the third-prover record as part of the block). Proof:
+  interior pins of Σ_{i+2} sit at-or-below the new floor (pin_src + bridge_ht,
+  the U10a machinery), so theta_norm makes Θ_{i+1} literal; provenance dichotomy
+  = strip (spec clause (3)) / value (EXCLUDED by step_shape at read i+1) / old
+  pin (clause (4) + ih.interior_zero through the rim chain); both live legs
+  close by U9's `u9c_probe_tail`.
+- U10d `zc_step_confine` RESTATED to the adjudicated fresh-cut restriction
+  (∀ j, (∃ cl ∈ mkFresh(i+1).clauses, j ∈ cl.support) → base < prevRim n (i+1))
+  and PROVED in 3 lines from U3's `mkFresh_band` (the §C rim rule's actual
+  content). M1 NOTE appended to `U10d_negWitness.lean` (leaf intact): it refutes
+  the OLD ∀-pins form only; no sorried copy of that form remains in-tree.
+- `zc_step` PROVED, statement BYTE-UNCHANGED: downset_exact mp = provenance +
+  bridge at pins of Σ_{i+2}; mpr = zc_step_freshExact; interior_zero = U10c.
+  Consumer U13_assembly re-run GREEN (consumes zc_step by name, unchanged).
+
+### Item 16 — HK15 gateChildStage family (HC2/HK15_gateChildCarrier.lean):
+### ALL SIX SORRIES DISCHARGED, Lean-core
+- REPAIR: whole family gains `hiaug : IAug bStageP U31.fq e' h'`;
+  `gateChildResData` gains the FULL row (its OLD row was hypothesis-free, hence
+  uninhabitable-in-general — uniform family re-type, recorded in-file).
+- DISCHARGES via the forged-transHyp machinery (R7_ramifiedForge / HK47 idioms
+  as billed): NEW `gateTransHyp` = HK47.transHyp_gate with the four side-keyed
+  fields abstracted into the row (read-shaped fields reused verbatim; zbar =
+  gateRoot ≡ U31.ν₀.zbar definitionally); `gateChildResData` by S9r_childR;
+  `gateChildStage` = the S9_transStage child (hEG = 1 < 1·2); Phi/K/e/h pins =
+  the transition record's fields; K_card by `nextField_gateRoot_top`
+  (F₂(r₀) = F₄: four distinct elements at char 2 + GaloisField.card) —
+  #print axioms: Lean core only, all four printed at EOF.
+- PAIR-PIN PER-LEG ADJUDICATION (/goal rule, recorded in-file): e/h legs hold
+  at every steep pair; the s/t legs are GUARDED by `e' = 1` (the ledger's
+  "specialize to the gate pair" option applied to exactly the two legs the
+  hiaug repair cannot cure: at e' ≥ 2 the ∀-(s',t') s/t pin is FALSE for any
+  choice-based σ₁ — Bézout non-uniqueness + proof-irrelevant choose; at e' = 1
+  the pair is FORCED on both sides by he1t + hbez). GATE-PAIR INSTANCE
+  `gateChildStage_gate_pins` PROVED at (1,3,1,0): all six pins incl. s = 1,
+  t = 0, card 4. Residual flagged for the synthesis duty (NOT executed): an
+  S9 variant exposing the builder's Bézout pair would un-guard the s/t legs.
+- STAGECORE REPLICAS: `bStageP_stageCore'`/`bStageP_stageCoreL'` file-private
+  replicas of FORGE-A's assemblies (import-cone decoupling from MovesD, under
+  active edit by the item-13 agent; dedup target for the item-8 sweep).
+- M1 NOTE appended to `HK15_iaugProbe.lean` (leaf intact): it refutes the OLD
+  (pre-hiaug) row only; `gateTuple_not_IAug` is now the certificate that the
+  repaired row excludes the probe tuple.
+
+### Item 12 — HC2/U4 levelSet_no_straddle: ADJUDICATION PACKAGE IN-FILE +
+### REPAIR (o-i) EXECUTED — STATEMENT STANDS, PROVED; U4 IS NOW SORRY-FREE
+- PACKAGE (drafted in the U4 header): the dual-confirmed 2026-07-27 value-case
+  countermodel targets the PRE-N-6 hypothesis-free form (its adversarial floorH
+  needs an incoherent history; under coherence the floor is window-constant on
+  fine slots — the F5 collapse). Options enumerated: (o-i) statement stands,
+  prove via the U10 F5 kernel; (o-ii) extra hypotheses — non-minimal; (o-iii)
+  band-aware redesign — already rejected at N-6. PICKED: (o-i) per the /goal
+  rule (it makes the proof work with zero statement changes).
+- PROOF: rim leg (the slot's fine window sits inside the standing rim,
+  j+1 ≤ μ_{i−1} via the coherence width chain), floor leg (floorH_collapse:
+  both members read node-(i−1)'s staircase at the SAME left edge), edge leg
+  (level-set membership IS the band's upper edge). Root case i = 0 clean.
+  Engine = file-private replicas of the U10 floor-collapse kernel (11 lemmas,
+  provenance noted per lemma; valueClause_support' precedent; dedup target for
+  the item-8 sweep). `mkFresh_cover` is thereby fully proved as well.
+
+### Item 21 — U21 readsOf_HV (HC2/U21_HV.lean + U23): NAMED-HYPOTHESIS HOIST
+### EXECUTED — U21 IS NOW SORRY-FREE, Lean-core
+- `readsOf_HV` RE-TYPED to carry `hpin : species ≠ recentering → RunVertexPin …`
+  (the S8-dual-audit-certified underivable residue, hoisted; hpin placed BEFORE
+  hadj so the TransitionAdmissible (HV)-conjunct partial-application shape
+  survives); discharged by the PROVED `readsOf_HV_of_pin` (canonicalized).
+  Frozen Moves/DefsL UNTOUCHED.
+- CONSUMER RE-POINT: U23 `readsOf_realizable` gains the matching ∀-reads named
+  row and threads it; no further consumers (grep). Both files green; U21's
+  #print axioms extended to readsOf_HV (Lean-core once hpin is supplied by the
+  Wall A↔B seam at concrete runs).
+
+### Verification
+- Per-file builds GREEN: HC2.Defs, U27_gateInert, U10_zcStep, U4_freshCover,
+  U21_HV, U23_runRealizable, U13_assembly (consumer), U10d_negWitness,
+  HK15_iaugProbe, HK15_gateChildCarrier (axiom prints: Lean core only).
+- Sorry delta: U10_zcStep 3 → 0, U4_freshCover 1 → 0, U21_HV 1 → 0,
+  HK15_gateChildCarrier 6 → 0 = 11 sorries DISCHARGED; +0 added.
+- Capstone path untouched (HC2/MovesJ is outside the LeanUrat root import
+  graph / AxChk_baseline; rule-4 AxChk run not required).
+- Full `lake build` at the end of the session: recorded below by the closing
+  agent of this parallel round if green at HEAD; this agent's final targeted
+  builds were all green.
+
+## Item 2 — ramIdx/resDeg re-point at the integral closure + the Wave-2b Serre axiom (executed 2026-07-31, agent: item-2)
+
+AUTHORIZATION quoted for the record — Asvin, 2026-07-31, verbatim: "Sign-off granted
+on all 21 items as preferred, execute the queue."  Normative spec: THE CONSOLIDATED
+SIGN-OFF QUEUE item 2 + the SYNTHESIS PASS 1 C3/N1 adjudication
+(BRIDGE_ADJUDICATIONS_2026-07-30.md).
+
+### (a) The re-point (MovesT defs + DefsLedger re-read) — EXECUTED, GREEN
+
+* `LeanUrat/MovesT/Defs.lean` §2.7: `MovesT.ramIdx`/`resDeg` re-pointed — the junk-total
+  dispatch now decides `IsLocalRing (integralClosure ℤ_[p] (AdjoinRoot (g.map (algebraMap
+  ℤ_[p] ℚ_[p]))))` and reads the 2-arg `Ideal.ramificationIdx`/`Ideal.inertiaDeg` at the
+  maximal ideals of ℤ_p and of THE INTEGRAL CLOSURE (the `OM/QpType.LocalFactorData`
+  `eOf`/`fOf` convention, per the C3/N1 preferred option).  Signatures unchanged
+  (`Polynomial ℤ_[p] → ℕ`); the defs stay axiom-free (the axiom only proves the dispatch
+  fires).  The REFUTED order-level bodies are preserved VERBATIM under new names
+  `ramIdxOrder`/`resDegOrder`, docstring-fenced as countermodel targets only.
+* `LeanUrat/MovesU/DefsLedger.lean`: `ZpBridge.zf_factor`'s TEXT is unchanged — its
+  conjunct-3 pairs `(MovesT.ramIdx h, MovesT.resDeg h)` now denote the integral-closure
+  invariants (the re-read).  Docstrings updated: module-header CRITICAL 5 bullet +
+  the `ZpBridge` docstring's residue clause (ii) (old order-level IP-1 language →
+  the new dispatch Prop-class + the axiom pointer).
+* `LeanUrat/MovesU/BridgeZp.lean`: doc-only note on `isLocalRing_adjoinRoot` (IP-1 is
+  the ORDER's locality, no longer the dispatch Prop; statement untouched, stays proved).
+* `LeanUrat/OM/QpType.lean`: doc-only pointer at the LocalFactorData wall paragraph
+  (the wall now = the declared axiom).
+
+### M1 hygiene (rule 3) — the IB-E0 countermodel leaf
+
+`LeanUrat/MovesU/BridgeE0_zpCountermodel.lean` re-targeted at the PRESERVED order-level
+defs with a dated header note stating exactly WHICH form it refutes (the pre-2026-07-31
+order-level (e,f) reading; it says NOTHING against the integral-closure reads):
+
+* `e0_ramIdx`/`e0_resDeg`/`e0_zf_factor_false`: statements byte-identical modulo
+  `ramIdx`→`ramIdxOrder`, `resDeg`→`resDegOrder` (proofs unchanged).
+* `e0_no_zpBridge : IsEmpty (ZpBridge 2 3 X)` — FORCED DEVIATION from "leave the leaf
+  intact", recorded: it consumed the LIVE `ZpBridge` structure, and under the re-pointed
+  reads the (2,3) obstruction is CURED (at h = X²+9 the true invariants (1,2) satisfy
+  1·2 = 2 = deg) — keeping it would keep a now-unprovable/false claim against the live
+  structure.  Replaced by `e0_no_zpBridge_orderForm`: the pre-re-point `zf_factor` body
+  VERBATIM with the structure's `zfType` abstracted to a bare `zf`; proof skeleton
+  unchanged.  E0a (`e0_isLocalRing`) untouched (still consumed by E12(b)).
+* Cross-check: `BridgeE12_ip1Gate` uses only `e0Poly`/`e0_isLocalRing` — unaffected.
+
+### (b) The literature axiom — DECLARED
+
+New leaf `LeanUrat/SerreLocalFields.lean` (imports Mathlib only; ONE axiom, zero sorry):
+
+* `AX_integralClosure_dvr (p) (L) [Field L] [Algebra ℚ_[p] L] [FiniteDimensional ℚ_[p] L]
+  [Algebra ℤ_[p] L] [IsScalarTower ℤ_[p] ℚ_[p] L] :
+  IsDiscreteValuationRing (integralClosure ℤ_[p] L)`.
+* EXACT CITATION: Serre, *Corps Locaux* (Hermann 1962/1968) = *Local Fields* (GTM 67,
+  1979), **Chapter II, §2, Proposition 3** — stated ONLY as its DVR clause, only at
+  (A, K) = (ℤ_[p], ℚ_[p]) (minimally sufficient for the wall).  Numbering
+  cross-checked against an independent source: the de Frutos-Fernández–Nuccio
+  formalization (arXiv:2310.01998; repo `LocalClassFieldTheory/DiscreteValuationRing/
+  Extensions.lean`, `integralClosure.discreteValuationRing_of_finite_extension`,
+  docstring "Chapter 2, Section 2, Proposition 3 in Serre's Local Fields").
+* What the repair opens, PROVED in the leaf (footprints verified):
+  `integralClosure_isLocalRing` (dispatch Prop, core+axiom) ·
+  `maximalIdeal_liesOver` (lying-over DERIVED, **core-only**) ·
+  `isLocalRing_integralClosure_adjoinRoot` (the smoke theorem: the axiom FIRES the
+  re-pointed dispatch on the whole monic ℚ_p-irreducible locus, core+axiom) ·
+  `axiom_nonvacuous` (hypothesis-class non-vacuity at L = ℚ_[p]).
+* Open upside probe (recorded, 3 bounded attempts spent): an AXIOM-FREE proof of the
+  degree-1 instance at the subalgebra carrier stalled at the pin (no
+  `RingEquiv.isDiscreteValuationRing` transfer in mathlib v4.31.0; `Algebra.botEquiv`
+  needs a field base); coherence is instead anchored at `OM/QpType.trivialFactorData`.
+
+### (c) Faithfulness entry — WRITTEN
+
+`docs/AXIOM_FAITHFULNESS.md` addendum: new entry **AX-SERRE-DVR** (format matches
+AX-CELLREC/AX-INDEX/AX-LEAF; status DRAFT 2026-07-31, PENDING CODEX STATEMENT AUDIT +
+ASVIN REVIEW), including the φ-transport faithfulness argument for the algebra-structure
+quantifier.
+
+### (d) Group E — NOT DISPATCHED, NOT UNBLOCKED (per the duty)
+
+No IB-E5/E6/E7 prover was dispatched or unblocked by this unit.  The orchestrator runs
+a Codex audit of the axiom statement FIRST; that gate is recorded in the axiom's
+docstring, in AxChk_baseline's census block, and in the AX-SERRE-DVR entry.  The
+C3/N1 line "Group E provers DO NOT run until this re-point lands" is now satisfied on
+the re-point side; the remaining gate is the audit.
+
+### AxChk duty (rule 4) — PASSED, diff EXACTLY ADDITIVE
+
+`AxChk_baseline.lean` gained `import LeanUrat.SerreLocalFields` + the ITEM 2 census
+block (5 prints + the two capstone re-prints).  Before-run = HEAD AxChk against the
+post-edit tree; after-run = new AxChk.  `diff`: all 1080 pre-existing footprint lines
+BYTE-IDENTICAL; 19 added lines = the new block exactly as documented
+(`maximalIdeal_liesOver` core-only; the axiom-consumers core+`AX_integralClosure_dvr`;
+`montes_unconditional_w` and `montes_unconditional` re-printed **Lean-core only**).
+No regression.
+
+### Green checks run
+
+`lake env lean` green: SerreLocalFields.lean · MovesT/Defs.lean · MovesU/DefsLedger.lean
+· MovesU/BridgeE0_zpCountermodel.lean · AxChk_baseline.lean (footprint diff above).
+`lake build` green: LeanUrat.MovesT.Defs (8580 jobs) · LeanUrat.SerreLocalFields ·
+the six MovesU consumers DefsLedger/BridgeE0/BridgeE12/BridgeZp/BridgeMk/U10_theoremU
+(8730 jobs).  Full `lake build` run at the end of the unit (see the queue-wide record).
+Concurrency note: MovesT/Defs.lean also carries item-1's chi-at guard edits (parallel
+agent, same file) — commits coordinated at file level.
