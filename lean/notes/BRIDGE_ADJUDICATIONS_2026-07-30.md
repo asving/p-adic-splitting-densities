@@ -1149,3 +1149,14 @@ layers valid); G1 = the missing (T-READ) third row (pricing undercount by
 one — the GD-4 residue is THREE rows, not two; ROOT touch owed); G2 = a
 (T-DEC) row-internal contradiction. -> light r3.
 VERIFIED = 7: O-13, O-12, Dfloor, GD23, CU-1, O-10, O4T.
+
+## PHASE-C LEGS (2026-08-02 night, commits 044a6d9/fba7f16)
+REG: ZERO-REGRESSIONS — all 18 suites at HEAD, all PASS, zero drift (logs
+line-for-line identical; results JSONs byte-identical). LEG ACCEPTED.
+TREE: coverage complete EXCEPT 5 gaps + 5 advisories, all bookkeeping/
+adjudication-line debts: G-1 O-14b cl19-carrier un-homed; G-2 O-14c hStateNe
+same; G-3 the e'=1 vertex-transport law's home; G-4 THE ONE REAL QUESTION —
+the six H.6 fences gating [1v]-FULL at Step 18's K3 (zero ROOT occurrences:
+supersession line owed OR an undisplayed conditionality — adjudicate FIRST);
+G-5 cl3_tails not carried by the R-QNT eviction. Resolution unit dispatched;
+VC4 pending.
