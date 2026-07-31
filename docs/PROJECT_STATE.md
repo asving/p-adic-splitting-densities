@@ -1,9 +1,11 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19. This document lays out (1) the bigger picture, (2) what is proved and on what
-it rests, (3) the Lean blueprint and its correspondence to the math-language proof, and (4) what is in
-progress. It is meant to be sufficient, together with the code, for a reader to reconstruct the full
-state of the project.*
+*Snapshot: 2026-07-19; last refreshed 2026-07-31 (see the final UPDATE section for the current
+state, standing obligations, and the pointer to the live census
+`lean/notes/REMAINING_CENSUS_2026-08-01.md`). This document lays out (1) the bigger picture, (2) what
+is proved and on what it rests, (3) the Lean blueprint and its correspondence to the math-language
+proof, and (4) what is in progress. It is meant to be sufficient, together with the code, for a
+reader to reconstruct the full state of the project.*
 
 ---
 
@@ -122,6 +124,7 @@ Each is an explicit `axiom` that faithfully ports one published result. Full aud
 | `AX_cellRecursion` | `PadicMeasure.lean` | Denef–Igusa *p*-adic Igusa-zeta **cell recursion** (the measure "wall") |
 | `clusterMeasure`, `omCells`, `descend`, `descend_size_lt` | `PadicMeasure.lean` | the measure-route OM-tree interface (dropped by the count-native capstone) |
 | `omReadValuation_lt_of_certLevel_fkeyed` | `OM/Classifier.lean` | GMN (Guàrdia–Montes–Nart, arXiv:0807.2620) **theorem of the index**, `ind(f) ≤ v_p(disc f)`, read-set-restricted, arising-key form |
+| `AX_integralClosure_dvr` | `SerreLocalFields.lean` | Serre, *Corps Locaux* / *Local Fields* (GTM 67), **Ch. II §2, Prop. 3, DVR clause only**, at (A,K) = (ℤ_[p], ℚ_[p]): the integral closure of ℤ_p in a finite extension L/ℚ_p is a DVR. Declared 2026-07-31 (queue item 2, Asvin sign-off); Codex guardian STATEMENT AUDIT **PASSED** same day (FAITHFUL — axiom EXACT, caveats were entry phrasing, fixed; `notes/openmath/V3_serre_audit.jsonl`). Numbering cross-checked against the de Frutos-Fernández–Nuccio formalization (arXiv:2310.01998). Fires the re-pointed `MovesT.ramIdx`/`resDeg` dispatch (integral-closure invariants); consumed by Group E (`MovesU/BridgeE567_zfLaws.lean` + `BridgeE9_zpBridge.lean` — the ZpBridge laws e·f = deg etc.), footprints exactly this axiom + core. The density capstones do NOT consume it (AxChk diff exactly additive; capstones re-printed Lean-core). |
 | `om_leaf_faithful` | `OM/OmLeafFaithful.lean` | GMN Thm 1.15 + 1.19 + Cor 1.20 (order-1 leaf dichotomy, explicit (e,f); the order-≤1 instances of Thm 3.1/3.7/Cor 3.8) + Def 3.10/eq.(37), **jointly with** the standard local-field structure theory the paper presupposes (integer rings of finite extensions of ℚ_p are DVRs; Serre, *Local Fields* I–II — mathlib cannot prove this at the pin, so the `LocalFactorData` existence is carried here). **Menu-fiber-scoped** (arising-shape form; RE-SCOPED W4c 2026-07-22, guardian audit #4 ACCEPT-WITH-FLAGS): only for `f : ℤ_[p][X]` in a genuine fiber of a shape of the mixed-e menu `MultiSlopeMenu.omMenu4 n K σ` (∀K), via the PER-FAMILY fiber predicate `fiberOf4` — `B.classify = T` on the order-0/constant-e families, `classify1 = some (mkCell (decode T))` on the multi-slope mixed-e literals (the dispatch that prevents a vacuous mixed branch: B.classify reads only the first side). Content: GMN Thm 1.15 slope dissection + per-side Thm 1.19/Cor 1.20, the mixed (e,f)-multiset recovered by `typeOf4`. Prior scopes derived back (`om_leaf_faithful_w3`/`_w1`); consumers byte-unchanged. Anchors/probes: full-strength no-root theorem at the n=5 mixed gate; all-unramified AND wrong-e mutations machine-refuted. Existence-only; no uniformity/rationality/measure/density term. Consumed ONLY by the faithfulness theorems (`menuFiber_hasType` etc.) — the density capstones remain Lean-core-only (census re-prints). Mutation probe on record: the split-type mutation derives machine-checked `False` against the axiom-free Eisenstein irreducibility of the wild gate fiber. |
 
 **RETIRED (W4, 2026-07-21):** `realDensity_tame_functionalEquation` (Del Corso–Dvornicich tame
@@ -149,28 +152,16 @@ scoped (read-set-restricted, arising-key-only).
 `boxValSupport_reduce_stable_R` (an off-capstone reduce-stability lemma), never by any capstone. Retained
 as an honest banked contract rather than deleted.
 
-It is NOT the sole `sorry` in the repository: the 2026-07-26/28 campaign corpora (Moves\*/HC\*) carry
-their own disclosed open items. Exact corpus-wide census at HEAD (comment-aware token scan,
-2026-07-30, post-R1; 46 real `sorry` tokens; paths under `lean/LeanUrat/`):
-
-- **OM (1, banked):** `OM/Classifier.lean:1243` (this section's item).
-- **MovesT (6, fenced/disclosed):** `MovesT/E5_rootSplit.lean:349` (the internal D4R0K `have`; golf
-  repair queue R3), `MovesT/E11_treeN.lean:96` (TreeNStable), `MovesT/G1_toyGate.lean:562,782,2245,2248`
-  (task #44 sign-off cluster).
-- **MovesV (4, fenced/disclosed):** `MovesV/V7_livC.lean:66`, `MovesV/V7_rbC.lean:52`,
-  `MovesV/V7_scsData.lean:46` (the three Phase-B seam-instantiation duties), `MovesV/V7_w17ii.lean:48`
-  (the banked W17ii).
-- **HC1 (2, disclosed):** `HC1/C6_alphabetCard.lean:63`, `HC1/R6_carrierInstance.lean:130`.
-- **HC2 (9, disclosed):** `HC2/U10_zcStep.lean:50,71,126,142,161`, `HC2/U17a_liftSwap.lean:38`,
-  `HC2/U21_HV.lean:252`, `HC2/U26_fiberWelldef.lean:26`, `HC2/U4_freshCover.lean:80`.
-- **Moves deprecated R3/R5 files (4, not imported):** `Moves/L4_TRANSviii_b_R3.lean:103`,
-  `Moves/L5_landTransport_R3.lean:54`, `Moves/L5_landTwoSided_R5.lean:964`,
-  `Moves/L6_moveReduceCommute_R3.lean:82`.
-- **MovesGr partial/superseded modules (20; v1 duplicates slated for quarantine, golf repair queue
-  R2):** `MovesGr/L1_gr_domain_iff_val.lean:59`, `MovesGr/L1_gr_domain_iff_val_v2.lean:109`,
-  `MovesGr/L1_gradedRingStr_exists.lean:115`, `MovesGr/L2_coeffLoc.lean:22,27,35`,
-  `MovesGr/L2_coeffLoc_v2.lean:161,169`, `MovesGr/L4_genuine_imp_stageCoreL.lean:68`,
-  `MovesGr/L4_genuine_imp_stageCoreL_v2.lean:395,397,399,401,409,411,414,416(×2),420,422`.
+It is NOT the sole `sorry` in the repository: the campaign corpora (Moves\*/HC\*) carry their own
+disclosed open items. **The live corpus-wide census is `lean/notes/REMAINING_CENSUS_2026-08-01.md`**
+(comment-aware token scan at HEAD, 2026-07-31 evening, post-queue-execution/post-HK-06:
+**43 real `sorry` tokens in 26 files**, down from 114 the previous day — the 21-item sign-off queue,
+the D-SC carrier fills, the forge round, and the autonomous fills retired 75; the HK-06 wave honestly
+reopened 4 in `HC1/V9_K1nonrec.lean` as the HK-52/HK-11 transport obligations). Every token is
+classified there (sign-off-gated / Phase-B-blocked / autonomous / banked) with its exact blocker;
+that file also carries the full hypothesis-row sweep of the `theoremU` capstone chain. The MovesGr
+v1 duplicates and deprecated Moves R3/R5 files listed in earlier snapshots were quarantined
+2026-07-30/31 (`lean/quarantine/`).
 
 ---
 
@@ -1167,3 +1158,90 @@ AxChk census byte-identical to the golf2 baseline, 0 sorryAx. Forward wiring
 (SYN_C1_EXECUTION_2026-07-30.md): BP2 HK-02/HK-52/HK-11a consume the future σV
 `RegradeOf.pack` instead of a 10th copy (SYN-F1); BP4 KB5's noninterference input is
 an instance of the shared machine (SYN-F2).
+
+## UPDATE (2026-07-31): THE QUEUE + OPEN-MATH FLEET + HK-06 DAY — the current state of record
+
+*(This section + `lean/notes/REMAINING_CENSUS_2026-08-01.md` are the resumability anchor: a fresh
+agent should read this section, then the census, then `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`
+and `lean/notes/QUEUE_EXECUTION_2026-07-31.md` for the day's full records.)*
+
+### Where the project stands (the two capstones)
+
+**Density capstones (unchanged, machine-checked, Lean-core):**
+`OM.RealInstanceV2.montes_unconditional` (σ-keyed order-0, non-vacuous) and the n = 2 all-primes
+uniformity capstone `OM/UniformCapstone.montes_uniform_n2`; `AxChk_baseline` re-verified at HEAD
+(zero sorryAx in the census; the 2026-07-31 diff exactly additive = the SerreLocalFields block).
+
+**The bridge campaign capstone (the active /goal): `LeanUrat.MovesU.theoremU`** — the general-n
+uniformity squeeze (one fixed R_σ ∈ ℚ(q) per type at every (REG-p) prime, wild included), PROVED
+Lean-core over typed interface hypotheses, fired through `theoremU_fired`/`mkUInstance`.  Goal of
+record: make its conditionality LITERATURE-ONLY (declared, audited axioms citing published theorems;
+arXiv:2212.00294 excluded; htameFE/palindromy out of scope by directive).  As of tonight the
+`BridgeInputs` construction table is **CONSTRUCTION-COMPLETE** (every `UInstance` field has a landed
+constructed supplier) and the honest distance is enumerated in the census: 6 sign-off-gated
+statement repairs (fence events 22–27) + THE instance-faithfulness kernel (IFK) + the wave-D n=2
+instance + G13′ + a short list of named open mathematics.
+
+### Today's major landings (2–4 sentences each)
+
+1. **The 21-item sign-off queue EXECUTED 21/21** (Asvin's verbatim grant, preferred options;
+   9 parallel agents + the solo HK-06 wave; full per-item records in QUEUE_EXECUTION_2026-07-31.md).
+   Highlights: W17ii clause (ii) PROVED in full at the census-field-repaired RS4Chain (the banked
+   burden retired — BK.cl17 now derived at every chain); the (ZC) chain CLOSED with `zc_step`
+   proved statement-byte-unchanged; U4/HK15/U21/KA4c/R6 all proved or discharged; the E5 hoist made
+   the TREE-EXP spine sorry-free Lean-core; the P2 de-privatize sweep deleted ~40 duplicate proofs.
+2. **The Serre literature axiom + Group E: `UInstance` CONSTRUCTION-COMPLETE.**
+   `SerreLocalFields.AX_integralClosure_dvr` declared (Corps Locaux II §2 Prop 3, DVR clause only),
+   guardian-audited FAITHFUL same day; on it Group E proved the ZpBridge laws (pointwise e·f = deg
+   at the re-pointed integral-closure invariants) and assembled `bridgeZpBridge` (IB-E9) — the last
+   missing `BridgeInputs` field.  Footprints exactly the one axiom + core; capstones untouched.
+3. **The open-math fleet (18 Fable + Codex twins) + numerics (8/8) + verification round 1.**
+   Five capstone-ledger rows REFUTED AS TYPED with dual/compiled evidence and adjudicated repairs —
+   the new sign-off items 22–27 (jcInvHist, track_restarts/K7, count_tie/NsFree, child_local,
+   vp_sound, SibJcRows).  Positive results: **cl11_ksub PROVED at all n** (M09, formalized in
+   `MovesU/KsubGeneral.lean`), **the (REG-p) failing-prime set PROVED FINITE** with exact
+   characterization (M17, formalized in `MovesU/RegPFinite.lean`, 14 thms Lean-core), semantic-
+   classifier exhaustion PROVED with explicit rate at every prime incl. wild (M05, verifier-
+   confirmed core), GMN + BNS literature citations pinned.  The numerics matrix closed with zero
+   conflicts; the density tie itself confirmed at deep-wild (5,5).
+4. **THE IFK identified** (verification-round synthesis): M02/M05/M06/M12/M18 all reduce to ONE
+   instance-faithfulness kernel — "the built classifier realizes the semantic OM object" (4 faces
+   K-DICT/K-READ/K-RUN/K-HALT; BNS 3.13 anchors K-READ's precision half as the 5th literature-axiom
+   candidate).  Blueprint delivered, then REJECTed at Codex plan review (26 findings — the K-RUN/R7
+   circularity is real; the BNS draft over-reached); the falsify-then-revise cycle is dispatched
+   (U6 falsifier probe first).  This is where the remaining semantic distance to /goal lives.
+5. **The HK-06 HistoryCoherent wave LANDED** (the widest re-key of the campaign, solo after the
+   fleet): the (S-a) two-step regrade keying repaired the machine-certified stride-decoupling
+   collision, and the POSITIVE GATE PASSED — `HK23_twoNodeGatePos` compiles a ramified 2-node
+   history (bStageP → ramifiedStage) that is HistoryCoherent ∧ Realizable ∧ InBox under the new
+   keying (Lean-core), the exact conjunction refuted pre-wave.  1053-module ripple green; AxChk
+   exactly equal.  Honest cost (priced in advance): 4 V9 legs reopened as the HK-52/HK-11
+   obligations (their old closures were a masked exfalso from the pre-wave contradiction).
+6. **Item 13 reduced the R7 designer conditionality to ONE compiled Prop.**  `OffsetPPin.total`
+   re-keyed to HistoryCoherent nodes; `canPolicyC_pin` (`MovesD/R7_polFillReduction.lean`) proves
+   the whole repaired pin from `RunRealizerExists p (ZMod p)` — the single named residue standing
+   between the landed D-group constructions and Lean-core-clean.
+7. **Hygiene/records:** the D-SC carrier layer completed + fully falsifier-certified (G16–G19e);
+   `Moves/L6_R3` and `HC1/CL10` quarantined with records; `GMNIndex.lean` statement draft landed
+   with the axiom keyword WITHHELD (zero-witness rule); M1 freeze notes on every re-keyed
+   countermodel.  Sorry census 114 → 43 (26 files).
+
+### Standing obligations (priority order)
+
+1. **Sign-off pass on fence events 22–27 + G13′** (each with compiled/dual evidence + adjudicated
+   repair shape; see census §4.1 — one naming pass unblocks five capstone-ledger rows and the
+   thirteen-slot consumer `theoremU_bridged′`).  Also pending naming: the `hfin : Finite (Skeleton n)`
+   row (TV_E7 escalation), the SlotsG2/G3 quarantine disposition, the HK15 e′ ≥ 2 s/t un-guarding.
+2. **THE IFK**: fold the 26 plan-review findings (revision 1, in flight), run the U6 falsifier
+   probe first, re-review, then dispatch provers; declare the stripped BNS 3.13 axiom after
+   guardian audit.  Discharges (or reduces) count_tie/env_tendsto/vp_sound/series_tie/
+   RealizationComplete — the F-chain and the identification clause's semantic residue.
+3. **The BP2 post-wave ladder**: HK-12 → HK-52 → HK-11a/b/c (the reopened V9 legs), HK-08, HK-25;
+   plus the `RunRealizerExists` discharge attempt (interior half already proved).
+4. **The wave-D n = 2 instance** (UCarriers/KernelCarriers/RelCarrierPack at the HK23/forge
+   carriers) — converts the 13-slot boundary + carrier packs into pinned rows at a real instance.
+5. **The remaining typed open math**: K7 lemmas A–E (post-item-23 form), X.1b WEIGHT-CHARGE, X.2
+   linear rates (s = 2 cap = supported conjecture), EQ-2's condition, the ALIGN/GMN dictionary tie
+   (OL-1..OL-4), C6's CL-05 leg, U17a/U26.
+6. **Phase B of the density capstones** (unchanged, parked behind the bridge campaign): omMenu
+   growth beyond order 0 at general n, drainage/exhaustiveness, order ≥ 2 tower faithfulness.
