@@ -998,3 +998,22 @@ verify pass 1 NOT accepted (E' left-tail + JUNCTION-PIN label; core sound)
 -> repair owed. THE WHOLE MANDATORY-PATH RESIDUE now = {(GR-B) orders >= 2
 (FGMN-pinned, transcription), (FRESH), the O-9 repair, O4T pass 2, D-11/O-11
 verification cycles, ROOT ASSEMBLY}.
+
+## CORRECTION (2026-08-02): GD23/CU-1 VERIFIED ADJUDICATION PREMATURE
+The d730669 adjudication used a mid-flight 0-critical summary. THE FULL
+PASS-2 REPORTS: GD23 SOUND-WITH-GAPS (ZERO criticals confirmed — the tower
+composition, DEVID, the two-form pairing, the arbitrary-DVR display all
+recomputed sound — but 9 gaps incl. F1 'side-supported' UNDEFINED with
+vacuity risk in Route B, and F3 the TIE policy-pin under-advertised);
+CU-1 SOUND-WITH-GAPS (ZERO criticals — N-freeness, creation-first,
+split-exhaustiveness all confirmed — but 7 accounting gaps incl. F-1/F-2
+unmapped load-bearing inputs (CEIL, (C4)) and F-5 the a0=1 depth-0 boundary
+UNROUTED). O4T pass 2: UNSOUND — ONE false displayed equality (N3-BRACKET's
+terminal '='; off by p^{n(N-1)}; the INEQUALITY survives and is all that is
+consumed; one-line repair) + import inventory completions (Galois descent;
+char-0 separability). STATUS RESET: GD23/CU-1 = ZERO-CRITICAL-PASS-2 WITH
+GAP DEBTS (r4 light repairs + gap-check passes before VERIFIED); O4T = r3.
+VERIFIED count stays at 3 (O-13, O-12, Dfloor). The ROOT ASSEMBLY (in
+flight) must read THIS status — its agent reads the ledger at compose time;
+if it composed against the premature statuses, its conditionality ledger
+gets corrected at its verification pass.
