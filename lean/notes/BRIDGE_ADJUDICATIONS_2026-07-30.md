@@ -980,3 +980,21 @@ N >= tau with the Smith-profile size; p^rho exactly in the D-8 range; the
 (SIB) product law; M07 fences mapped one-per-clause; item-27 Lean repair
 stays PARKED). MANDATORY PATH REMAINING: the running pass-2s + wave-8
 verifications; CU-2t; D-11 (now precisely priced); O-11; ROOT ASSEMBLY.
+
+## WAVE 10 + PASS-2 ADJUDICATIONS (2026-08-02, commits aa00747/0cae7d8/+)
+GD23 pass 2 (4d109b9) + CU-1 pass 2 (252f34c): BOTH 0-CRITICAL ->
+ADJUDICATED VERIFIED at their honest scopes (leaves #4 and #5 through the
+2-pass model-diverse bar). D-11: THEOREM M1 PROVED UNCONDITIONALLY over the
+VERIFIED O-12 lemma base (every solve entry at every prime power IS the Haar
+mass of its continuation event; Sigma = 1 now a THEOREM; a.s. termination
+from the (r1) margins reread as termination margins); M2 conditional on
+exactly (S1)=GD-3-FULL/O-9 hand-off + (S2)=O-11 composition datum; M3
+composed per the audit; OL-O12-2's mathematical half CLOSED (residue = a
+finite transcription pass, zero mathematics); falsifier extended to 303
+primes < 2000, ALL PASS, margin sharp at 6/7. O-11 ASSEMBLED conditional on
+exactly {(GR-B), (FRESH), CU-2t, D-11}. CU-2t PROVED (zero new inputs; the
+W3 carrier note convergent with CU-1's split). DELTA 3 = tree law. O-9
+verify pass 1 NOT accepted (E' left-tail + JUNCTION-PIN label; core sound)
+-> repair owed. THE WHOLE MANDATORY-PATH RESIDUE now = {(GR-B) orders >= 2
+(FGMN-pinned, transcription), (FRESH), the O-9 repair, O4T pass 2, D-11/O-11
+verification cycles, ROOT ASSEMBLY}.
