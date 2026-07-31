@@ -1,4 +1,11 @@
-# The CU re-label cluster (CU-2, CU-2t, CU-3, CU-4, CU-5, CU-6, CU-7) — consolidated Phase-B unit (Fable "CUC", 2026-07-31)
+# The CU re-label cluster (CU-2, CU-2t, CU-3, CU-4, CU-5, CU-6, CU-7) — consolidated Phase-B unit (Fable "CUC", 2026-07-31; **R2** 2026-07-31, unit CU2t)
+
+*(R2 applies the `CUC_pass1_verify.md` corrections in place: the F1 CRITICAL
+(Θ^τ blind to ν) + its F2 root (undefined consistency predicate) repaired in
+§§9.2a/9.3; §1 rescoped per F3; the §9.4/§9.5 pricing honesty-corrected per
+F4 with ledger/ROOT touches enumerated. Full disposition table for all
+eleven findings: §10. Surviving cores — Lemma CU-2t clauses (i), (ii)-main,
+(iv), the §6.1 audit — are byte-stable.)*
 
 **Unit type: RE-LABEL CONSOLIDATION.** Per the O3adj adjudication (§3.1) and the
 tree's DELTA-2 §D2.3, the K-RUN-C composition has exactly ONE new proof (CU-1,
@@ -67,16 +74,21 @@ OL-6 = GD-6(a). "The GD residue" below always means these, by the D2.2 merge.
 
 ## 1. CU-2 (NP — no-phantom)
 
-**Statement (CU-2).** Let f satisfy the standing perimeter. Every history 𝐇
-emitted by a complete run of the engine's stage flow on f is a well-formed
-element of the carrier 𝔈 satisfying Cons_f — hence, through the GMN
-interpretation ι and O-2a Theorem 2(A)–(C): each emitted record (with its
-dressing) is the GMN datum of the stage read over its emitted prefix's chain
-Θ(𝐇_{≤i}) ((c1) side data verbatim, (c2) residual multiplicity), the chain
-places t^{(i)} ∈ t_i(f) at every level with injective placement, the invariant
+**Statement (CU-2 — rescoped at R2 per the §9.1 carrier note; CUC F3).** Let
+f satisfy the standing perimeter. For every history emitted by a complete run
+of the engine's stage flow on f, the CONTINUING PART 𝐇° is a well-formed
+element of the carrier 𝔈 satisfying Cons_f — the run's at-most-one terminal
+record (OL-4), when present, is the run-side half of the seam PAIR (𝐇°, ν)
+of §9.1, NOT a node of the 𝔈 element (at a saturated prefix appending it
+would violate W3's interior clause — the §9.1 finding; its own forcing is
+CU-2t, §9) — hence, through the GMN interpretation ι and O-2a Theorem
+2(A)–(C): each emitted CONTINUING record (with its dressing) is the GMN
+datum of the stage read over its emitted prefix's chain Θ(𝐇°_{≤i}) ((c1)
+side data verbatim, (c2) residual multiplicity), the chain places
+t^{(i)} ∈ t_i(f) at every level with injective placement, the invariant
 matching and saturation clauses of 2(B) hold, and the index charge of 2(C)
-bounds dCert(𝐇) ≤ ind(f). In words: every emitted record is the GMN datum of
-its chain — the run emits NO phantom.
+bounds dCert(𝐇°) ≤ ind(f). In words: every emitted continuing record is the
+GMN datum of its chain — the run emits NO phantom (terminal seam: CU-2t).
 
 **Proof by citation.** This IS O-2a rev 5 **Theorem 2(D)** (brief §5) composed
 with 2(A)–(C); the run-length induction is written inside §5's (D)-proof (base
@@ -125,7 +137,9 @@ with verdict pair (1, f₀) and the (D3)-window read, inside the TB-CAP (τ-hen)
 window N_V = 1. Equivalently: the codomain extension (t-ii) (a final entry
 (λ_{k'+1}, ⊥) on Θ) is consistent, and (t-i) the terminal fields tie to the
 level-(k'+1) GMN read of f, same shape as (c1) — so no free choice of terminal
-record exists at a verdict-carrying leaf.
+record exists at a verdict-carrying leaf. [R2 note: "no free choice" is
+quantified over RC-consistent records — Definition RC, §9.2a — and every
+run-emitted record is RC-consistent via the (T-DEC)/(T-VERD) rows of §9.4.]
 
 **Proof route by citation (declared, NOT executed anywhere yet).** O-2a
 Theorem 2(B) saturation (+ Cor 1.20/3.8 for irreducibility and (e, f)) + the
@@ -587,9 +601,46 @@ used).
   (accE₀, accF₀) on DEC(τ-hen).
 
 This IS the O3design (O2) terminal clause, stated per seam object: the
-(t-ii) codomain extension appends (λ_{k'+1}, ⊥) to Θ(𝐇°), and (t-i) says
+(t-ii) codomain extension appends a terminal entry to Θ(𝐇°), and (t-i) says
 the terminal datum ties to the level-(k'+1) GMN read of f, same shape as
 (c1) — side-existence + position with sel = ⊥ in place of a selection.
+
+### 9.2a Definition RC — record-consistency (the (t-i) tie as a displayed predicate; R2, the CUC F2 repair)
+
+The uniqueness tail of (ii) and the injectivity layer of (iii) quantify over
+"consistent" records; that predicate is now DEFINED (it was an undefined
+word at rev 1 — CUC F2):
+
+**Definition RC.** Let f satisfy the perimeter and (𝐇°, ν) be a DEC seam
+object with Cons_f(𝐇°); c = Θ(𝐇°). Say ν is **RC-consistent with
+(f, 𝐇°)** — written RC_f(𝐇°, ν) — iff both:
+
+* **(RC-read)** ν's shape/position fields (e, h, ℓ, s, u), with sel = ⊥,
+  are the (c1)-shape datum of a side of N_{k'+1}^−(f), read through ι over
+  c — the same clause shape as (c1), sel = ⊥ in place of a selection; on
+  the −∞ branches (j₀ = 1), the slope-−∞-side convention of §9.2.
+* **(RC-verd)** ν's announced verdict pair (E, F) equals the PREFIX
+  ACCUMULATOR pair: (accE_{k'}, accF_{k'}) on DEC(τ-irr), (1, f₀) on
+  DEC(τ-hen) — a pure record function of 𝐇°'s own discrete fields, the
+  (T-VERD) shape (§9.4).
+
+**Non-circularity, displayed.** Neither clause mentions the true factor or
+its invariants: (RC-read) is a polygon read of f over the prefix's chain
+(exactly the (c1) shape), and (RC-verd) is arithmetic of 𝐇°'s own fields.
+That the RC-pinned pair equals the TRUE invariant pair of a genuine
+irreducible factor is a THEOREM — clause (ii)-main below — not part of the
+definition. This is the non-circular reading CUC F2 asked to be displayed.
+
+**Granularity caveat (displayed, priced nowhere else).** RC constrains the
+field vector (e, h, ℓ, s, u, sel, E, F) — call this the record's **datum
+granularity**. No document on file displays a field INVENTORY for terminal
+machine records (beyond Dfloor's (C0)–(C2) verdict fields), so
+"RC-consistent records over the same (f, 𝐇°) coincide" is asserted at
+datum granularity only; full-RECORD coincidence additionally needs the
+inventory closure (that the RC-constrained fields exhaust a terminal
+record's payload) — an engine-bookkeeping question routed WITH the
+(T-DEC)/(T-VERD) scope note to the GD-4 owner (§9.4), consumed by no
+clause below.
 
 ### 9.3 Lemma CU-2t and proof
 

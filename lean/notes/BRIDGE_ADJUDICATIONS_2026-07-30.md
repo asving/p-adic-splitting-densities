@@ -1105,3 +1105,15 @@ refuted) -> r3 with the VALUE-attained reading. CUC: UNSOUND — CU-2t's
 Theta^tau is constant in nu (seam objects collide) + the (T-DEC)/(T-VERD)
 residue-growth contradiction ('zero new inputs' false) -> CU-2t r2 + CUC
 ledger corrections. VERIFIED = 6: O-13, O-12, Dfloor, GD23, CU-1, O-10.
+
+## VC3 (2026-08-02 night): THE COMPOSITION'S MATHEMATICS CONFIRMED
+The model-diverse end-to-end pass: "under all five hypotheses jointly the
+composition proves (ROOT-C) quantifier-for-quantifier from the declared leaf
+statements — every defect found is attribution/ledger integrity, not missing
+mathematics beyond the displayed hypotheses." PASSES: acyclicity edge-by-edge
+(incl. 17<18<18b), the (ROOT-C)-hypotheses = the seven [M] rows invariant,
+(SL>=2) internally sound, the (S3) split coherent. The 4 BLOCKERS are
+bookkeeping: B1 per-clause (UB) attribution, B2 the O-8b pending-pass row,
+B3 the Sigma=1 forward-credit (repairable at Step 19 with no new
+hypothesis), B4 one B-layer list entry (+4 advisories). ROOT R4 dispatched;
+then VC4 (Codex) for the two-consecutive-clean bar.
