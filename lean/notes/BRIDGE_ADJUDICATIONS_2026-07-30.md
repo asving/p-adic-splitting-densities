@@ -519,3 +519,19 @@ flank); BNS stripped to the published delta+1 clause (tree-correspondence +
 sigma-invariance -> K-DICT-OB1/OB2 proof obligations); honest recount = 8
 rows + 10 F-chain sorries retired by the faces, 9 new named obligations
 surfaced. GATE: Codex re-review launched before any prover dispatch.
+
+## PHASE A LANDED (2026-07-31, commit 6776aa1)
+docs/MATH_COMPLETION_TREE_2026-08-01.md: the uniformity theorem's complete
+claim DAG — root in both forms (U-DENS/U-GEN, wild scope explicit); 4 layers
+(literature roster incl. the stripped BNS candidate; the June skeleton graded;
+the dual-verified MOVES core with its assembly paragraph; the kernel-row
+verdict table). 15 OPEN LEAVES O-1..O-14 in dependency order, each with
+sharpest reduction + prover charge + fastest falsifier. CRITICAL PATH:
+O-1 (per-site bounded read) + O-2 (engine-GMN dictionary; K-DICT-OB1 tree
+correspondence = hardest single item) + O-3 (realization faithfulness; U6
+survives). EARLY WINS: O-12 (REG-p emptiness at the intended instance),
+O-13 (skeleton finiteness via T-4 + Serre different-bound). ACCEPTANCE:
+per-leaf >= 2 consecutive clean fresh-context adversarial passes with model
+diversity; falsifier-first; root = end-to-end seam pass x2 + numerics
+regression + completeness audit. EXIT GATE: Codex completeness review
+(launched). Phase B wave 1 dispatches on its pass.
