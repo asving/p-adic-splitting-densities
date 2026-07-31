@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import LeanUrat.MovesT.TV_A1
+import LeanUrat.MovesT.E11_treeN
 
 /-! # TV-A4 — ripple 2 of the E5 hoist: `treeN` (E11) + the Defs ∀-closures
 (`TreeExpFin`/`TreeNStmt`) gain the ∀-g (U)∧(R) row
@@ -39,7 +40,16 @@ pin the exact restated shapes. The `treeN_stable`/`TreeNStableStmt` legs of
 `RS1GivenPackage.tree_n` are CLUSTER B's (TV-B7), not this unit's.
 
 deps: A3. Consumed by: TV-A6 (the boundary deliverable). difficulty:
-routine-opus, wide (~40 lines across ~6 files at execution). -/
+routine-opus, wide (~40 lines across ~6 files at execution).
+
+RETIREMENT RECORD (2026-07-31, hoisted-twin retirement round): ripple 2 LANDED
+in place at queue item 5 — `treeN` (E11_treeN.lean:42) carries the ∀-g (U)∧(R)
+row `hUR` appended last, exactly the pinned signature, sorry-free Lean-core
+(and the Defs ∀-closures were re-keyed in place, so the two Hoisted defs below
+are the pins' compiled record). `treeN_hoisted` is therefore PROVED by direct
+application (the pin checked: the diff is the identity); it stays as the
+unit's compiled record per the census's retirement disposition. Statement
+byte-unchanged. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -76,7 +86,9 @@ theorem treeN_hoisted (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
       TrackUniqOn T χ trackOf g ∧ TrackRepOn T χ trackOf g) :
     Nat.card ↥{x : Box p (n * N) | Tr.fiberAt T χ x} * p ^ AofTr Tr L
       = p ^ (n * N) := by
-  sorry
+  -- The item-5 hoist landed in place: the twin IS the landed E11 row.
+  exact treeN Tr T χ trackOf CA hχ hrc hred hreal hdet hsib L sc hjcm
+    hsibT hUR
 
 /-- **TV-A4 `TreeExpFinHoisted`** — the TREE-EXP ∀-closure (Defs.lean:1565,
 `RS1GivenPackage.tree_exp_fin`'s value) with the ∀-g (U)∧(R) row inserted

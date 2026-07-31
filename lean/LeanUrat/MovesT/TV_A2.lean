@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import LeanUrat.MovesT.TV_A1
+import LeanUrat.MovesT.E5_rootSplit
 
 /-! # TV-A2 — `fiber_root_split` RESTATED: the (U)∧(R) pair as NAMED premises
 
@@ -45,7 +46,14 @@ convention is used across TV-A3/TV-A4.
 
 deps: A1. Consumed by: TV-A3 (`treeExp`/`perShape_law` threading), TV-A4
 (E11/D12/Defs sweep), TV-A6 (boundary record). difficulty: routine-opus,
-~10 changed lines at execution. -/
+~10 changed lines at execution.
+
+RETIREMENT RECORD (2026-07-31, hoisted-twin retirement round): the in-place
+restatement LANDED at queue item 5 — `fiber_root_split` (E5_rootSplit.lean:212)
+now carries `hU`/`hR` appended last, exactly this pinned signature, and E5 is
+sorry-free. The twin below is therefore PROVED by direct application (the pin
+checked: the diff is the identity); it stays as the unit's compiled record per
+the census's retirement disposition. Statement byte-unchanged. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -78,6 +86,8 @@ theorem fiber_root_split_hoisted (Tr : VTree p F) (T : TreeModel p F n N m pol)
         * (Nat.card ↥(rootCell χ g)) ^ htracks.t * p ^ n
       = p ^ m * ∏ i : Fin htracks.t,
           Nat.card ↥(rootCell χ g ∩ trackEvent Tr T htracks i (hcr i)) := by
-  sorry
+  -- The item-5 hoist landed in place: the twin IS the landed E5 row.
+  exact fiber_root_split Tr T χ trackOf CA hχ hrc hred hsib hreal g htracks
+    hcr hfib hU hR
 
 end LeanUrat.MovesT

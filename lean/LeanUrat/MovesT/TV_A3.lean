@@ -40,7 +40,15 @@ these skeletons pin the exact restated signatures. The rebuild is fragile
 (E8 is 600+ lines) — blueprint difficulty hard-fable.
 
 deps: A2 (the restated E5 signature these bodies call). Consumed by: TV-A4
-(E11/D12/Defs sweep), TV-A6. -/
+(E11/D12/Defs sweep), TV-A6.
+
+RETIREMENT RECORD (2026-07-31, hoisted-twin retirement round): ripple 1 LANDED
+in place at queue item 5 — `treeExp` (E8_treeExp.lean:618) and `perShape_law`
+(E10_perShape.lean:114) both carry the ∀-g (U)∧(R) row `hUR` appended last,
+exactly these pinned signatures, sorry-free Lean-core. Both twins below are
+therefore PROVED by direct application (the pins checked: the diffs are the
+identity); they stay as the unit's compiled record per the census's retirement
+disposition. Statements byte-unchanged. -/
 
 set_option linter.style.longLine false
 set_option linter.unusedVariables false
@@ -78,7 +86,9 @@ theorem treeExp_hoisted (Tr : VTree p F) (T : TreeModel p F n N m pol)
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H)
       = p ^ m := by
-  sorry
+  -- The item-5 hoist landed in place: the twin IS the landed E8 row.
+  exact treeExp Tr T χ trackOf CA hχ hrc hred hsib hreal L sc hjcm hsibT
+    hdet hUR
 
 /-- **TV-A3 `perShape_law_hoisted`** — T-E10b's per-shape law
 (E10_perShape.lean:114, byte-identical premise row and conclusion) RESTATED per
@@ -114,6 +124,8 @@ theorem perShape_law_hoisted (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
         Nat.card ↥{x | (Tr : VTree p F).fiberAt T χ x})
         * p ^ (AofTr Tr₀ L₀)
       = Nat.card ↥(shapeClass Tr₀ T χ) * p ^ m := by
-  sorry
+  -- The item-5 hoist landed in place: the twin IS the landed E10 row.
+  exact perShape_law Tr₀ T χ trackOf CA hχ hrc hred hsib hns₀ hreal₀ L₀ Lat
+    scat hjcm hsibT hdict hdict₀ hUR
 
 end LeanUrat.MovesT
