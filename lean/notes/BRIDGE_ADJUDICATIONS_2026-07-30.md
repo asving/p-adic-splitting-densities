@@ -850,3 +850,20 @@ REVIEW-READY for Asvin; push awaits his look.
 ## O-1thr rev-3 UNSOUND (the anticipated sheared-display re-verification).
 ## SYNTHESIS PASS 4 dispatched (the standing duty, lapsed since the IFK
 ## convergence — flagged by the goal loop).
+
+## SYNTHESIS 4 + O3 REPLACE ADJUDICATED (2026-08-01, commits 29dd2fa/57b4da4/bdc996a)
+ORCHESTRATOR ACCEPTS both (they cross-validate): (1) the GD merge — 22 open
+items -> 8 families GD-1..GD-8; the dictionary seam (GD-2/GD-3) unifies FIVE
+packages; GD-5 closes by composing proved pieces (VAL1/KEY1/DIV1 + (D3));
+O-2b + BNS + K-OB-C EVICTED from the mandatory path (BNS exits entirely —
+the 5th literature axiom no longer needed for the root!). (2) the O3
+REPLACE: joint induction retired; the CU-1..CU-7 composition serves every
+root-mandatory consumer (displayed walk); CU-1 = the ONE new proof (ordinary
+chain-length induction, step proved at the O-1thr rev-3 perimeter, state
+bound by OL-6). DFLOOR VERIFIED (pass 2 SOUND, 0 criticals) — LEAF #3.
+O-1thr r4: pin STANDS (V24 criticals were packaging; convention re-verified).
+DISPATCHED: tree DELTA 2 (the 5 SYNTH4 lines + CU skeleton + GD families);
+the GD campaign head (GD-2/GD-3 as ONE MacLane/GMN unit over arbitrary
+unramified DVR — kills D-3 too); CU-1 prover (gated by its depth-3
+falsifier); Lean units U-B (O-12 pole-free), U-D (counting lemma), U-E
+(WGEO degree-1). U-C (capstone-shape) stays PARKED (sign-off class).
