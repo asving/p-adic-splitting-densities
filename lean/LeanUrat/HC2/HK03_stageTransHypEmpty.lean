@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.V10_transportWindow
+import LeanUrat.HC1.V11_minimalCore
 
 /-!
 # HC2.HK03_stageTransHypEmpty — HK-03: `StageTransHyp`'s steep perimeter is EMPTY
@@ -72,6 +73,63 @@ theorem stageTransHyp_steep_empty {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
         (1 ≤ e' ∧ 1 ≤ h' ∧ Nat.gcd e' h' = 1 ∧
           (e' : ℤ) * s' + (h' : ℤ) * t' = 1 ∧ 0 ≤ t' ∧ t' < (e' : ℤ)) ∧
         IsReadLift σ ψ g e' h' Φhat ∧ IAug σ Φhat e' h' ∧ 2 ≤ e' * g := by
-  sorry
+  intro σ hσ
+  rintro ⟨ψ, g, zbar, e', h', s', t', Φhat, ⟨hmon, hdeg, hirr, hne, hg1⟩, hroot,
+    ⟨he', hh', hcop, hbez, ht0, htlt⟩, hlift, hIAug, hEG⟩
+  -- fire the (OLD) transition hypothesis at this instance
+  obtain ⟨σ', hΦ, he_tie, hh_tie, hs_tie, ht_tie, hTC, hσ'⟩ :=
+    hst σ hσ ψ g hmon hdeg hirr hne hg1 zbar hroot e' h' s' t' he' hh' hcop hbez ⟨ht0, htlt⟩
+      Φhat hlift hIAug
+  have hcw := hTC.base.child_wPrev
+  have hΦne : σ.Φ ≠ 0 := σ.hmonic.ne_zero
+  have hh0 : (0 : ℤ) ≤ (h' : ℤ) := Int.natCast_nonneg _
+  have he'Z : (1 : ℤ) ≤ (e' : ℤ) := by exact_mod_cast he'
+  have hIAug' : (h' : ℤ) > (e' : ℤ) * σ.w Φhat := hIAug
+  -- crude lower bound: `min (e'·g·σ.h) h' ≤ σ.w Φ̂` (the read-lift τ-slots each weigh ≥ h')
+  have hlb : min ((e' : ℤ) * (g : ℤ) * (σ.h : ℤ)) (h' : ℤ) ≤ σ.w Φhat := by
+    obtain ⟨tt, htt0, httk, hPhi⟩ := hlift
+    set τ : Polynomial ℤ_[p] := ∑ k ∈ Finset.range g, tt k * σ.Φ ^ (e' * k) with hτdef
+    have hpowne : σ.Φ ^ (e' * g) ≠ 0 := pow_ne_zero _ hΦne
+    have hwpow : σ.w (σ.Φ ^ (e' * g)) = (e' : ℤ) * (g : ℤ) * (σ.h : ℤ) := by
+      rw [ResVal.w_pow σ σ.Φ hΦne (e' * g), σ.hwΦ]; push_cast; ring
+    by_cases hτ0 : τ = 0
+    · have hval : σ.w Φhat = (e' : ℤ) * (g : ℤ) * (σ.h : ℤ) := by
+        rw [hPhi, hτ0, add_zero, hwpow]
+      rw [hval]; exact min_le_left _ _
+    · have hτbound : (h' : ℤ) ≤ σ.w τ := by
+        refine ResVal.w_sum_ge σ (Finset.range g) _ (h' : ℤ) ?_ (by rw [← hτdef]; exact hτ0)
+        intro k hk htermne
+        have hkG : k < g := Finset.mem_range.mp hk
+        have htk : tt k ≠ 0 := fun h0 => htermne (by rw [h0, zero_mul])
+        have hψk : ψ.coeff k ≠ 0 := fun h0 => htk (htt0 k h0)
+        obtain ⟨-, -, htkw, -⟩ := httk k hkG hψk
+        rw [σ.hwmul _ _ htk (pow_ne_zero _ hΦne), htkw, ResVal.w_pow σ σ.Φ hΦne (e' * k), σ.hwΦ]
+        have hGk1 : (1 : ℤ) ≤ (g : ℤ) - (k : ℤ) := by
+          have : (k : ℤ) < (g : ℤ) := by exact_mod_cast hkG
+          omega
+        have hp1 : (0 : ℤ) ≤ (h' : ℤ) * (((g : ℤ) - (k : ℤ)) - 1) := mul_nonneg hh0 (by linarith)
+        have hp2 : (0 : ℤ) ≤ ((e' * k : ℕ) : ℤ) * (σ.h : ℤ) := by positivity
+        push_cast at hp2 ⊢
+        nlinarith [hp1, hp2]
+      have hΦhatne : Φhat ≠ 0 := by rw [← hΦ]; exact σ'.hmonic.ne_zero
+      have hne0 : σ.Φ ^ (e' * g) + τ ≠ 0 := by rw [← hPhi]; exact hΦhatne
+      have hult := σ.hwult (σ.Φ ^ (e' * g)) τ hpowne hτ0 hne0
+      rw [hwpow, ← hPhi] at hult
+      calc min ((e' : ℤ) * (g : ℤ) * (σ.h : ℤ)) (h' : ℤ)
+          ≤ min ((e' : ℤ) * (g : ℤ) * (σ.h : ℤ)) (σ.w τ) := min_le_min (le_refl _) hτbound
+        _ ≤ σ.w Φhat := hult
+  -- IAug forces `h' > e'·min`; the two min-cases each refute
+  have key : (h' : ℤ) > (e' : ℤ) * min ((e' : ℤ) * (g : ℤ) * (σ.h : ℤ)) (h' : ℤ) :=
+    lt_of_le_of_lt (mul_le_mul_of_nonneg_left hlb (by positivity)) hIAug'
+  rcases le_total ((e' : ℤ) * (g : ℤ) * (σ.h : ℤ)) (h' : ℤ) with hle | hle
+  · -- min = e'·g·σ.h ⟹ truly steep ⟹ HK-02's minimal core fires
+    rw [min_eq_left hle] at key
+    have hsteep : (e' : ℤ) * (e' : ℤ) * (g : ℤ) * (σ.h : ℤ) < (h' : ℤ) := by nlinarith [key]
+    exact LeanUrat.HC1.V11_minimalIncompat σ σ' e' h' g ψ Φhat hsteep hEG hlift hΦ
+      he_tie hh_tie hcw
+  · -- min = h' ⟹ h' > e'·h' ≥ h', immediate contradiction
+    rw [min_eq_right hle] at key
+    have hle2 : (h' : ℤ) ≤ (e' : ℤ) * (h' : ℤ) := le_mul_of_one_le_left hh0 he'Z
+    linarith [key, hle2]
 
 end LeanUrat.MovesJ

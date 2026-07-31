@@ -272,6 +272,6 @@ theorem bridge_cl7_slice (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
     (seam : TreeSeam n p X F) (Tpin : @TreePin n p ⟨hp⟩ X F seam)
     (BK : BridgeKernels n C KC K7 p hp X F seam Tpin) :
     ∀ (σ : SplittingType n) (N : ℕ),
-      (F.thrSlice σ N).card ≤ K7.Tbound N := sorry
+      (F.thrSlice σ N).card ≤ K7.Tbound N := BK.slice_bound
 
 end LeanUrat.MovesU

@@ -43,8 +43,7 @@ staircase-floor identification `floorB b = (line K).at (blockEdge b)`, definitio
 through `TowerRealizable.floorB`. -/
 theorem CL15c_packE_floor {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) :
-    rl.floorB b = (rl.line T.K).at (T.blockEdge b) := by
-  sorry
+    rl.floorB b = (rl.line T.K).at (T.blockEdge b) := rfl
 
 end LeanUrat.HC1
 

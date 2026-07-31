@@ -55,7 +55,13 @@ theorem CL15b_packE_ic {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (hlow : ∀ c : T.Coord, T.blk c = b → T.ht c < γ → x c = 0 ∧ y c = 0) :
     T.inGr γ (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ then x c else 0))
       = T.inGr γ (T.slotCoeff b (fun c => if c ∈ T.levelSet b γ then y c else 0)) := by
-  sorry
+  have hfun : (fun c => if c ∈ T.levelSet b γ then x c else 0)
+            = (fun c => if c ∈ T.levelSet b γ then y c else 0) := by
+    funext c
+    by_cases h : c ∈ T.levelSet b γ
+    · rw [if_pos h, if_pos h]; exact hagree c h
+    · rw [if_neg h, if_neg h]
+  rw [hfun]
 
 end LeanUrat.HC1
 

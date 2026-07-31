@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsCar
+import LeanUrat.HC1.C4_DOM
 
 /-!
 # HC1.CL18_packEdom — `DOMStmt'` at `packE`, unfolded (BP5 CL-18)
@@ -50,7 +51,11 @@ theorem CL18_packE_dom {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (T : Tower p F) (rl : TowerRealizable T) (i m b : ℕ)
     (hm : m < i) (hb : b < if i ≤ T.K then rl.interiorEnd i else 0) :
     (rl.line m).at b ≤ (rl.line i).at b := by
-  sorry
+  by_cases hle : i ≤ T.K
+  · rw [if_pos hle] at hb
+    exact (C4_DOM T rl ⟨i, by omega⟩ m hm b hb).1
+  · rw [if_neg hle] at hb
+    exact absurd hb (Nat.not_lt_zero b)
 
 end LeanUrat.HC1
 

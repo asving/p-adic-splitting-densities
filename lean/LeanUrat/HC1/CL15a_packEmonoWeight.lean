@@ -5,6 +5,8 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.HC1.DefsCar
+import LeanUrat.HC1.T3_htChainWeight
+import LeanUrat.HC1.T6_carrierLaws
 
 /-!
 # HC1.CL15a_packEmonoWeight — LST leg (i-a) at `packE`, unfolded (BP5 CL-15a)
@@ -52,6 +54,33 @@ set_option maxHeartbeats 800000
 
 namespace LeanUrat.HC1
 
+open Polynomial
+
+variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+/-- strTop positivity (copy of CL13's private toolkit). -/
+private lemma cl15a_strTop_pos (T : Tower p F) : 0 < T.strTop := by
+  have haux : ∀ n : ℕ, 0 < T.strAux n := by
+    intro n
+    induction n with
+    | zero => norm_num [Tower.strAux]
+    | succ k ih =>
+      rw [Tower.strAux]
+      apply Nat.mul_pos ih
+      split
+      · exact (T.stg _).he
+      · exact Nat.one_pos
+  rw [Tower.strTop, Tower.str]
+  exact Nat.mul_pos (haux _) (T.stg (Fin.last T.K)).he
+
+/-- The basis monomial never vanishes (copy of ScratchC6's private `mono_ne`). -/
+private lemma cl15a_mono_ne (T : Tower p F) (c : T.Coord) : T.mono c ≠ 0 := by
+  rw [Tower.mono]
+  refine mul_ne_zero ?_ ?_
+  · rw [Ne, Polynomial.C_eq_zero]
+    exact pow_ne_zero _ PadicInt.prime_p.ne_zero
+  · exact Finset.prod_ne_zero_iff.mpr (fun r _ => pow_ne_zero _ (T.stg r).hmonic.ne_zero)
+
 /-- **CL-15a** — leg (i-a) at `packE`, unfolded (see the module docstring): the
 basis-monomial expansion `monoE c = (fun γ => T.inGr γ (T.mono c))` detects at the
 coordinate's height and vanishes strictly below it — i.e. `wE (monoE c) = ht c`
@@ -60,7 +89,45 @@ theorem CL15a_packE_ia {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     (T : Tower p F) (c : T.Coord) :
     T.inGr (T.ht c) (T.mono c) ≠ 0 ∧
     ∀ γ : ℚ, γ < T.ht c → T.inGr γ (T.mono c) = 0 := by
-  sorry
+  have hμne : T.mono c ≠ 0 := cl15a_mono_ne T c
+  have hsideW : T.side.w (T.mono c)
+      = (((T.stg (Fin.last T.K)).w (T.mono c) : ℤ) : WithTop ℤ) :=
+    T.side_w (T6_carrierLaws T).1 hμne
+  have hT3 := T3_htChainWeight T c hμne
+  have hstrpos : (0 : ℚ) < (T.strTop : ℚ) := by exact_mod_cast cl15a_strTop_pos T
+  -- the quotient-kernel iff (copy of ScratchC6/CL13 plumbing)
+  have mk_zero : ∀ (m : ℤ) (f : Polynomial ℤ_[p]) (hf : f ∈ T.side.ge m),
+      (Submodule.Quotient.mk (⟨f, hf⟩ : T.side.ge m) : T.side.grPiece m) = 0
+        ↔ ((m : WithTop ℤ) < T.side.w f) := by
+    intro m f hf; rw [Submodule.Quotient.mk_eq_zero]; exact Iff.rfl
+  refine ⟨?_, ?_⟩
+  · -- detection at ht c
+    have honL : T.onLattice (T.ht c) := by
+      rw [Tower.onLattice, ← hT3, Int.floor_intCast]
+    have hfl : ⌊(T.strTop : ℚ) * T.ht c⌋ = (T.stg (Fin.last T.K)).w (T.mono c) := by
+      rw [← hT3, Int.floor_intCast]
+    have hcondeq : ((⌊(T.strTop : ℚ) * T.ht c⌋ : ℤ) : WithTop ℤ) = T.side.w (T.mono c) := by
+      rw [hsideW, hfl]
+    rw [Tower.inGr, dif_pos ⟨honL, le_of_eq hcondeq⟩]
+    intro hcontra
+    have hlt := (mk_zero _ _ _).mp hcontra
+    rw [hsideW, hfl] at hlt
+    exact lt_irrefl _ hlt
+  · -- kill strictly below ht c
+    intro γ hγ
+    by_cases hcond2 : T.onLattice γ ∧
+        ((⌊(T.strTop : ℚ) * γ⌋ : WithTop ℤ) ≤ T.side.w (T.mono c))
+    · rw [Tower.inGr, dif_pos hcond2]
+      refine (mk_zero _ _ _).mpr ?_
+      rw [hsideW]
+      have hlt2 : (T.strTop : ℚ) * γ < (T.strTop : ℚ) * T.ht c :=
+        mul_lt_mul_of_pos_left hγ hstrpos
+      have hstep : (⌊(T.strTop : ℚ) * γ⌋ : ℚ) < ((T.stg (Fin.last T.K)).w (T.mono c) : ℚ) := by
+        rw [hT3]; exact lt_of_le_of_lt (Int.floor_le _) hlt2
+      have hint : ⌊(T.strTop : ℚ) * γ⌋ < (T.stg (Fin.last T.K)).w (T.mono c) := by
+        exact_mod_cast hstep
+      exact_mod_cast hint
+    · rw [Tower.inGr, dif_neg hcond2]
 
 end LeanUrat.HC1
 

@@ -114,7 +114,17 @@ structure BridgeInputs (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
 noncomputable def bridgeCapstoneLedger (n : ℕ) (C : UCarriers n)
     (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC) (BP : BridgePre n C)
     (p : ℕ) (hp : p.Prime) (BD : BridgeInputs n C KC K7 p hp) :
-    CapstoneLedger n p C BD.X BD.F (bridgeSolve C BP.hdet) BD.D := sorry
+    CapstoneLedger n p C BD.X BD.F (bridgeSolve C BP.hdet) BD.D where
+  cl4_env_tendsto := BD.BK.env_tendsto
+  cl6 := BD.BK.cl6
+  cl10_vpsound := BD.BK.vp_sound
+  cl11_ksub := BD.BK.cl11_ksub
+  cl17 := BD.BK.cl17
+  cl19_rep := BD.BK.cl19_rep
+  o3_teichmuller := BD.hXbase
+  seam := BD.seam
+  ssrc := bridgeSolveSeam C BD.F BP.hdet BD.BK.series_tie
+  rs4_checksum := rs4_checksum_bridge C BP.hdet
 
 /-- IB-F3 (seam display): the assembled ledger's seam IS the bundle's seam —
     `rfl` once the record literal lands (the assembly pins `seam := BD.seam`);
@@ -123,7 +133,7 @@ noncomputable def bridgeCapstoneLedger (n : ℕ) (C : UCarriers n)
 theorem bridgeCapstoneLedger_seam (n : ℕ) (C : UCarriers n)
     (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC) (BP : BridgePre n C)
     (p : ℕ) (hp : p.Prime) (BD : BridgeInputs n C KC K7 p hp) :
-    (bridgeCapstoneLedger n C KC K7 BP p hp BD).seam = BD.seam := sorry
+    (bridgeCapstoneLedger n C KC K7 BP p hp BD).seam = BD.seam := rfl
 
 /-! ## IB-F4 — the per-prime instance constructor (G3) -/
 
@@ -142,7 +152,16 @@ theorem bridgeCapstoneLedger_seam (n : ℕ) (C : UCarriers n)
 noncomputable def mkUInstance (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
     (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC) (BP : BridgePre n C)
     (p : ℕ) (hp : p.Prime) (BD : BridgeInputs n C KC K7 p hp) :
-    UInstance n C KC K7 (bridgeSolve C BP.hdet) p hp := sorry
+    UInstance n C KC K7 (bridgeSolve C BP.hdet) p hp where
+  X := BD.X
+  F := BD.F
+  D := BD.D
+  L := bridgeCapstoneLedger n C KC K7 BP p hp BD
+  Dpin := BD.Dpin
+  bridge := BD.bridge
+  Tpin := BD.Tpin
+  sibjc := BD.BK.sibjc
+  cl7_slice := bridge_cl7_slice n C KC K7 p hp BD.X BD.F BD.seam BD.Tpin BD.BK
 
 /-! ## IB-F5 — Theorem U, fired -/
 
@@ -200,6 +219,11 @@ theorem theoremU_fired (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
               atTop (𝓝 (evalℝ ⟨R⟩ σ p)))
           -- (iii) the undecided complement has mass 0
           ∧ Tendsto (mkUInstance n hn C KC K7 BP p hp (BD p hp)).X.env
-              atTop (𝓝 0) := sorry
+              atTop (𝓝 0) :=
+  theoremU n hn C KC K7 (bridgeSolve C BP.hdet) KT
+    rel1 rel2a rel2b rel2d rel2e rel3 rs0Lump trackRule dnLattice
+    m1m5Echo x1aDict m4bConst jcInvHist
+    hrel1 hrel2a hrel2b hrel2d hrel2e hrel3 hrs0 htrk hdn hm15 hx1a hm4b hjc
+    (fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp))
 
 end LeanUrat.MovesU

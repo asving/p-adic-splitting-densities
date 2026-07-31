@@ -46,7 +46,10 @@ theorem CL15d_packE_avoid {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite
     (T : Tower p F) (rl : TowerRealizable T) (b : ℕ) (γ' : ℚ)
     (hfl : rl.floorB b < γ') :
     ∀ c ∈ T.levelSet b γ', ¬ (T.blk c = b ∧ T.ht c ≤ rl.floorB b) := by
-  sorry
+  rintro c hc ⟨-, hle⟩
+  have hht : T.ht c = γ' := hc.2
+  rw [hht] at hle
+  exact absurd hle (not_le.mpr hfl)
 
 end LeanUrat.HC1
 

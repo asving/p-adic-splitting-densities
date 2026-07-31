@@ -189,14 +189,25 @@ def j0 (s : StageData) (W : ℕ) : ℕ :=
 /-- KB2. j₀ < e (so slot 0 sits inside the coefficient space).
 Sketch: `ZMod.val_lt` with `NeZero s.e` from `e_pos`. -/
 theorem j0_lt (s : StageData) (W : ℕ) : j0 s W < s.e := by
-  sorry
+  haveI : NeZero s.e := ⟨s.e_pos.ne'⟩
+  exact ZMod.val_lt _
 
 /-- KB2. The defining congruence j₀·h ≡ W (mod e).
 Sketch: cast the val back (`ZMod.natCast_val`/`ZMod.cast_id`), cancel the
 unit `ZMod.unitOfCoprime s.h _` against its inverse. -/
 theorem j0_mul_h (s : StageData) (W : ℕ) :
     ((j0 s W * s.h : ℕ) : ZMod s.e) = (W : ZMod s.e) := by
-  sorry
+  haveI : NeZero s.e := ⟨s.e_pos.ne'⟩
+  set u := ZMod.unitOfCoprime s.h s.cop.symm with hudef
+  have hu : ((u : (ZMod s.e)ˣ) : ZMod s.e) = (s.h : ZMod s.e) := ZMod.coe_unitOfCoprime _ _
+  have hinv : ((u⁻¹ : (ZMod s.e)ˣ) : ZMod s.e) * ((u : (ZMod s.e)ˣ) : ZMod s.e) = 1 := by
+    rw [← Units.val_mul, inv_mul_cancel, Units.val_one]
+  have hj0 : ((j0 s W : ℕ) : ZMod s.e)
+      = ((u⁻¹ : (ZMod s.e)ˣ) : ZMod s.e) * (W : ZMod s.e) := by
+    unfold j0
+    rw [← hudef, ZMod.natCast_val, ZMod.cast_id]
+  rw [Nat.cast_mul, hj0, ← hu]
+  linear_combination (W : ZMod s.e) * hinv
 
 /-- KB2 (def). The k-th slot j₀ + e·k of the offset-P development. -/
 def slot (s : StageData) (W k : ℕ) : ℕ := j0 s W + s.e * k
@@ -205,7 +216,13 @@ def slot (s : StageData) (W k : ℕ) : ℕ := j0 s W + s.e * k
 Sketch: `j0_lt` + omega. -/
 theorem slot_le (s : StageData) (W : ℕ) {k : ℕ} (hk : k < s.g) :
     slot s W k ≤ s.e * s.g - 1 := by
-  sorry
+  have h1 : j0 s W < s.e := j0_lt s W
+  have hone : 1 ≤ s.e * s.g :=
+    Nat.one_le_iff_ne_zero.mpr (Nat.mul_ne_zero s.e_pos.ne' s.g_pos.ne')
+  have h2 : slot s W k + 1 ≤ s.e * s.g := by
+    have := Nat.mul_le_mul_right s.e (show k + 1 ≤ s.g from hk)
+    simp only [slot]; nlinarith [this]
+  omega
 
 /-- KB2. Every slot lies in the SINGLE class j₀ mod e and carries a
 zero-class summand weight: (j₀+ek)·h ≡ W (mod e).  (REV 2, F1: all slots
@@ -215,7 +232,13 @@ i.e. injectivity of k ↦ j₀+ek, and belongs to KB5/KB8a.)
 Sketch: `j0_mul_h` + push_cast; e·k·h ≡ 0. -/
 theorem slot_mul_h (s : StageData) (W k : ℕ) :
     ((slot s W k * s.h : ℕ) : ZMod s.e) = (W : ZMod s.e) := by
-  sorry
+  have hj := j0_mul_h s W
+  have hrw : slot s W k * s.h = j0 s W * s.h + s.e * (k * s.h) := by
+    simp only [slot]; ring
+  rw [hrw, Nat.cast_add]
+  rw [show ((s.e * (k * s.h) : ℕ) : ZMod s.e) = 0 by
+    rw [Nat.cast_mul, ZMod.natCast_self, zero_mul]]
+  rw [add_zero]; exact hj
 
 /-- KB2. e ∣ W − (j₀+ek)·h (ℕ-subtraction guarded by `hle`; the guard is
 discharged above threshold by KB3's `slot_mul_h_lt`).
@@ -224,7 +247,8 @@ Sketch: `slot_mul_h` + `ZMod.natCast_self_eq_zero` bookkeeping
 theorem slot_weight_dvd (s : StageData) (W k : ℕ)
     (hle : slot s W k * s.h ≤ W) :
     s.e ∣ W - slot s W k * s.h := by
-  sorry
+  haveI : NeZero s.e := ⟨s.e_pos.ne'⟩
+  rw [← ZMod.natCast_eq_zero_iff, Nat.cast_sub hle, slot_mul_h s W k, sub_self]
 
 /-- KB2 (def). u_k := (W − (j₀+ek)·h)/e — the required parent-parent-scale
 weight of the k-th summand (exact by `uk_spec`; ℕ-valued by construction). -/
@@ -235,7 +259,10 @@ def uk (s : StageData) (W k : ℕ) : ℕ := (W - slot s W k * s.h) / s.e
 deps: `slot_weight_dvd`.  Sketch: `Nat.div_mul_cancel` + omega. -/
 theorem uk_spec (s : StageData) (W k : ℕ) (hle : slot s W k * s.h ≤ W) :
     s.e * uk s W k + slot s W k * s.h = W := by
-  sorry
+  have hdvd := slot_weight_dvd s W k hle
+  simp only [uk]
+  rw [Nat.mul_div_cancel' hdvd]
+  exact Nat.sub_add_cancel hle
 
 /-! ## KB3 — the guard chain (the two-line (I-aug) inequality,
 MOVES 2450-2455). -/
@@ -245,14 +272,29 @@ slot weight clears W strictly: (j₀+ek)·h < W for k < g.
 Sketch: slot ≤ eg−1 (KB2), so slot·h ≤ (eg−1)·h = egh − h < ehg < W. -/
 theorem slot_mul_h_lt (s : StageData) {W : ℕ} (hW : s.thr < W) {k : ℕ}
     (hk : k < s.g) : slot s W k * s.h < W := by
-  sorry
+  have hsl := slot_le s W hk
+  have hone : 1 ≤ s.e * s.g :=
+    Nat.one_le_iff_ne_zero.mpr (Nat.mul_ne_zero s.e_pos.ne' s.g_pos.ne')
+  have h1 : slot s W k < s.e * s.g := by omega
+  have hthr : s.thr = s.e * s.g * s.h := by simp only [StageData.thr]; ring
+  have h2 := mul_lt_mul_of_pos_right h1 s.h_pos
+  omega
 
 /-- KB3 (first line of the two-line chain).
 e·u_k = W − (j₀+ek)·h ≥ W − (eg−1)·h > ehg − (eg−1)·h = h.
 All in ℕ with the e-divisibility from KB2 — no rational division. -/
 theorem h_lt_e_mul_uk (s : StageData) {W : ℕ} (hW : s.thr < W) {k : ℕ}
     (hk : k < s.g) : s.h < s.e * uk s W k := by
-  sorry
+  have hlt := slot_mul_h_lt s hW hk
+  have hspec := uk_spec s W k (le_of_lt hlt)
+  have hsl := slot_le s W hk
+  have hone : 1 ≤ s.e * s.g :=
+    Nat.one_le_iff_ne_zero.mpr (Nat.mul_ne_zero s.e_pos.ne' s.g_pos.ne')
+  have h1 : slot s W k + 1 ≤ s.e * s.g := by omega
+  have h2 := Nat.mul_le_mul_right s.h h1
+  rw [add_mul, one_mul] at h2
+  have hthr : s.thr = s.e * s.g * s.h := by simp only [StageData.thr]; ring
+  omega
 
 /-- KB3 — THE GUARD CHAIN (second line).  W > ehg ⟹ every summand weight u_k
 clears the threshold one stage down: (I-aug) h > e·thr_prev gives
@@ -261,7 +303,9 @@ ELIGIBLE (blueprint L1-ii).
 deps: KB1a, KB2.  Sketch: `h_lt_e_mul_uk` + `Nat.lt_of_mul_lt_mul_left`. -/
 theorem guard_chain (prev s : StageData) (hIaug : IAug prev s) {W : ℕ}
     (hW : s.thr < W) {k : ℕ} (hk : k < s.g) : prev.thr < uk s W k := by
-  sorry
+  have h1 := h_lt_e_mul_uk s hW hk
+  have h2 : s.e * prev.thr < s.h := hIaug
+  exact lt_of_mul_lt_mul_left (lt_trans h2 h1) (Nat.zero_le _)
 
 /-- KB3 (tower form). The guard along a `TowerData`'s own (I-aug) chain
 field: at every consecutive pair of tower stages, weights above the upper
@@ -270,7 +314,7 @@ theorem guard_chain_tower (T : TowerData) (i : Fin T.len) {W : ℕ}
     (hW : (T.stage i.succ).thr < W) {k : ℕ}
     (hk : k < (T.stage i.succ).g) :
     (T.stage i.castSucc).thr < uk (T.stage i.succ) W k := by
-  sorry
+  exact guard_chain (T.stage i.castSucc) (T.stage i.succ) (T.iaug i) hW hk
 
 /-! ## KB10 — negative controls as theorems (GATE UNIT; sequenced BEFORE the
 KB5 prover, REV 2 F5).  SEALED PREDICTIONS (probe §3, all PASS on record):
@@ -290,7 +334,23 @@ h ≢ 0 mod e since gcd(e,h) = 1 and e ≥ 2. -/
 theorem nc1_corrupted_slot (s : StageData) (he : 2 ≤ s.e) (W : ℕ) {k : ℕ}
     (hk : k < s.g) :
     (((j0 s W + 1 + s.e * k) * s.h : ℕ) : ZMod s.e) ≠ (W : ZMod s.e) := by
-  sorry
+  haveI : NeZero s.e := ⟨by omega⟩
+  have hslot := slot_mul_h s W k
+  have hrw : (j0 s W + 1 + s.e * k) * s.h = slot s W k * s.h + s.h := by
+    simp only [slot]; ring
+  have hh0 : (s.h : ZMod s.e) ≠ 0 := by
+    intro hcast
+    rw [ZMod.natCast_eq_zero_iff] at hcast
+    have hg1 : Nat.gcd s.e s.h = 1 := s.cop
+    have hd1 : s.e ∣ 1 := hg1 ▸ Nat.dvd_gcd dvd_rfl hcast
+    have := Nat.le_of_dvd one_pos hd1
+    omega
+  rw [hrw, Nat.cast_add, hslot]
+  intro hcontra
+  apply hh0
+  have : (W : ZMod s.e) + (s.h : ZMod s.e) = (W : ZMod s.e) + 0 := by
+    rw [add_zero]; exact hcontra
+  exact add_left_cancel this
 
 /-- KB10/NC3 (data). The (I-aug)-violating stage-2 side data:
 h₂ = e₂·e₁h₁g₁ − 1 = 3 over stage 1 = `s1P2` (script NC3 verbatim,
@@ -300,8 +360,7 @@ def s2Bad : StageData :=
 
 /-- KB10/NC3 (violation record). `s2Bad` indeed violates (I-aug) over
 `s1P2`: h₂ = 3 < 4 = e₂·(e₁h₁g₁).  Sketch: decide. -/
-theorem s2Bad_iaug_violated : ¬ IAug s1P2 s2Bad := by
-  sorry
+theorem s2Bad_iaug_violated : ¬ IAug s1P2 s2Bad := by decide
 
 /-- KB10/NC3 — GATE.  At the minimal eligible W₃ = e₂h₂g₂ + 1 = 7 the
 recursion guard trips: u₀ = (7 − 1·3)/2 = 2 ≤ 2 = e₁h₁g₁ (the guard demands
@@ -310,6 +369,18 @@ u_k > e₁h₁g₁; script NC3 expects exactly this `Partial`).  Together with
 (KB3) and TRIPS on its violation (here).
 deps: KB2, KB3.  Sketch: decide/norm_num on the concrete numerals. -/
 theorem nc3_guard_trips : uk s2Bad (s2Bad.thr + 1) 0 ≤ s1P2.thr := by
-  sorry
+  have hthr : s2Bad.thr = 6 := by simp only [StageData.thr]; rfl
+  have hj0 : j0 s2Bad (s2Bad.thr + 1) = 1 := by
+    have h1 : j0 s2Bad (s2Bad.thr + 1) < 2 := j0_lt s2Bad _
+    have h2 : ((j0 s2Bad (s2Bad.thr + 1) * 3 : ℕ) : ZMod 2)
+        = (((s2Bad.thr + 1 : ℕ)) : ZMod 2) := j0_mul_h s2Bad _
+    rw [ZMod.natCast_eq_natCast_iff, Nat.ModEq] at h2
+    omega
+  have hslot : slot s2Bad (s2Bad.thr + 1) 0 = 1 := by
+    simp only [slot, hj0]; rfl
+  simp only [uk, hslot]
+  rw [hthr]
+  simp only [StageData.thr]
+  rfl
 
 end LeanUrat.Kernels.D4R0K

@@ -50,6 +50,24 @@ theorem ledgerIV_inst_assembly {n : ℕ} {C : CtsFamily n} {S : StepSys n}
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
         Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
       Nonempty (MovesS.LedgerIV T M) := by
+  -- [PROVER RECORD, 2026-07-30 — BLOCKED on exactly ONE law: LedgerIV group
+  -- (9) `comp_once` needs the named hypothesis `hdom : EntDomOrder0 V`
+  -- (see the TV-E6(d) record — the file-header-anticipated fence event; the
+  -- certificates for hEU's census-constancy clause are not mintable from
+  -- this row).  ALL OTHER LedgerIV fields are PROVED at (ctsTable,
+  -- measuredOf): groups (1)-(2) TV-E3 (xhd_sum/no_stray/no_orphan/d4r0),
+  -- (3)-(5) TV-E4 (part1/rep_indep/meas_card), (6)-(7) TV-E5b
+  -- (kstep_one/hmc/act_target via the PROVED TV-E5a bridge), (8) TV-E6
+  -- (init_agg/init_count/ent_count_card).  The TablePins conjunct
+  -- (ctsTable_pins) and the |Box| tie (rfl at Box := V.Box) are proved.
+  -- Once the orchestrator ratifies the hdom row addition, this assembly is
+  -- mechanical: ⟨ctsTable C hfin, measuredOf V X cp hfin, ctsTable_pins C
+  -- hfin, fun _ _ _ _ => rfl-genre card tie, ⟨{ xhd_sum := measuredOf_xhd_sum
+  -- V X cp hVA hHMC hb hc hd hEC hEU hfin, … , comp_once := (the hdom-fed
+  -- leg) }⟩⟩.  Honest sorry per the campaign discipline; do NOT swap in a
+  -- degenerate-entrance hybrid M (it would break the Q5 SHARED witness the
+  -- F-cluster's laws are proved over and gut the ledger's entrance content —
+  -- the M4 vacuous-seam lesson).
   sorry
 
 end LeanUrat.MovesV
