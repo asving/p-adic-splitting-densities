@@ -725,7 +725,9 @@ each factor (g1) or (g2): in ℛ by (g6).
 of m(F) ∈ ℛ (items (ii)/(iii)) with β_{μ_i}(σ_i)(q^{D_i}) ∈ ℛ (induction
 hypothesis + (g5), μ_i < e by L4): in ℛ because ℛ is a ring — for EVERY
 composition datum, since any 0/1-coefficient combination of ℛ elements
-lies in ℛ regardless of which summands the datum selects.
+lies in ℛ regardless of which summands the datum selects. The booking
+adjustments stay in ℛ: adding κ₁ = (q−1)q^{−E} ∈ ℛ (O2) or multiplying by
+q^E/(q^E−1) ∈ ℛ (O3) are ring operations on ℛ elements.
 (v) the weights — (g2) atoms, and q^{E_m}/(q^{E_m}−1) ∈ ℛ ((g4) with A = 1;
 also a unit, L7(iii)).
 (vi) β-legs — induction hypothesis + (g5) + finite σ′-sums (g6).
