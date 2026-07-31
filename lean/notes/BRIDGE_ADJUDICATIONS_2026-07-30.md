@@ -302,3 +302,26 @@ beyond Mathlib). M18 MarkGraft <=> RealizationComplete (compiled certificates;
 unconditional form refuted at the corpus's own toy).
 Codex twins: 14/18 returned or running, M06/M18 launched last; cross-check
 matrix builds when all return.
+
+## QUEUE EXECUTION COMPLETE (2026-07-31, 9/9 agents, commits 1137436/7f04a97/
+## 99efb9e/ca8bd8d/128950d/b790989/588a32c/8e10ee9 + sweeps)
+ALL 20 dispatched items EXECUTED at preferred options. Major closures:
+W17ii PROVED IN FULL (w17ii_wave4, every RS4Chain — BK.cl17 CLOSED, the banked
+burden retired); the (ZC) chain CLOSED (U4 + U10c + U10d + zc_step, statement
+byte-unchanged); bridgeRegPCovered_of_diteOK — IB-B16 covered display CLOSES
+((r1) via B15b + (r2) via the item-9 assembly, gated by BridgeDiteOK);
+R6_carrierInstance PROVED non-vacuously (statement untouched); TV_E6/E7 PROVED
+(ledgerIV assembly at the shared witness); TV_G1 scsSupplyCore CONSTRUCTED +
+census PROVED + TV_G2 8/8; KA4c CLOSED; PolPin repaired, canPolicyC_pin proved
+from ONE named residual (RunRealizerExists); readsOf_HV discharged via hoist;
+HK15 family proved (e'=1 legs; e'>=2 s/t-pin residual recorded); Serre axiom
+AX_integralClosure_dvr DECLARED (Corps Locaux II §2 Prop 3; AxChk diff exactly
+additive; Group E GATED on Codex audit); n2 PolyGeomLaws NONEMPTY at repaired
+pack. R-A boundary deviation disclosed + accepted: 3 forced same-commit TV seam
+edits (TV_B1/B2/B7), each scheduled by those files' own coordination records.
+Honest residuals: C6 <= leg (cleanThreshold instance gap), ledgerIV_inst hfin
+row (TV_E7-header escalation), TV_G3 7 residuals (selPos extension), F-chain
+behind RealizationComplete (= M18 MarkGraft), item-16 e'>=2 pin, item-21 Wall
+A<->B seam. NEXT: HK-06 wave SOLO (item 3, the last); Serre+GMN Codex audits;
+M12-Codex-proof Fable verification; M05-Fable-proof Codex verification; M17
+formalization.
