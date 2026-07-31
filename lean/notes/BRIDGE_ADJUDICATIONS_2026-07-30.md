@@ -603,3 +603,25 @@ combinatorics (pass 1 substantively clean); gaps = COMP honestly-conditioned
 (stays a named condition) + the broad "wildness only through values" claim
 must narrow to the PROVED p-free index sets. Light revision then pass 2
 (fresh Fable verifier for model diversity).
+
+## WAVE 2 COMPLETE (2026-07-31 night, commits 39a0a5a/c3ae787/88dc4a4/+)
+O-12 REPAIRED (both V7 gaps: L6a/b/c semantic-link triple; O2 circularity
+dissolved — as-built has no feedback, re-entrant form solved explicitly, both
+in the unit subring). O-13 REPAIRED (VAL-DIV labeled conjecture; COMP chain
+displayed; V8's section-1 gaps closed incl. Lemma T' = D-12's object in full,
+no Konig/choice). O-14a' BREAKTHROUGH: last-node flank CLOSED from bare
+coherence (the missing threshold is DERIVABLE — Lemmas 3.1/3.2); (S6b') at
+F = ZMod p FREE by prime-field collapse => RunRealizerExists p (ZMod p)
+PROVED for every prime under the current fenced predicate => the (t15)
+canPolicy pair dischargeable via the on-file reduction (Lean recipe §4.2,
+~300-450 lines, NO statement changes — dispatched); at general F the
+singleton clause REFUTED (inert-quadratic countermodel) and the faithful
+(S6b'-SUPP) law proved for the canonical realizer, sharp; forward obligation:
+if the RG-2 fence ever lifts, (CR2) re-adjudicates to (S6b'-SUPP) first
+(parked class). O1thr: D-14 PROVED OUTRIGHT (lawful-site locality), O-1(thr)
+PROVED (Lemma SPAN = V5's demanded CYL mechanism), D-15 CYL PROVED — the
+per-site head of the critical path is substantively done. O2a PARTIAL:
+carrier design DES-1..7 (V5 defect 1 answered), order <= 1 proved from the
+pinned GMN citations, all-orders conditional on Cons_f + 3 named open lemmas.
+Verifications: V9 (O-12 rev2) + V10 (O2a) running; V11 (O-14a') + V12
+(O1thr) launched now; O-13 pass 2 (fresh Fable) running.
