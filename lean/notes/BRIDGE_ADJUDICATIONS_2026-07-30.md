@@ -885,3 +885,18 @@ are instances); DEVID at every order; w=v modulo one flagged transcription
 T-1; falsifiers 0/8,762. DELTA 2 = the tree's law (recut 8-step path). Lean
 U-B/U-D/U-E green. V26 (GD23) + V27 (CU-1) + the literature unit
 (T-1/T-2/ML-scope confirmations) now run.
+
+## LITERATURE UNIT: ALL FLAGS MATCH (2026-08-01, commit b2209db)
+5/5 with verbatim quotes: T-1 = GMN Prop 2.7(1)+(3) (+2.7(4) = the P-key
+pin); T-2 = Lemma 2.17(2)+(3) with the printed proof supporting WGEO(b)'s
+first-attainment form; ML-scope WIDER than claimed (MacLane Part I needs only
+an arbitrary field + real non-arch value; the (GR-B) MacLane numbers filled:
+Thm 10.2/Lemmas 10.1,11.1-2/Thm 12.1/Cor 12.2); (V1)/(V2) exact; FGMN
+(arXiv:1305.0775 = J.Algebra 427) pins the WHOLE (GR-B) package (Thm 4.2 +
+Cor 4.4 + Lemma 5.13; Cor 5.6(2); Prop 5.14/Cor 5.15 for faithfulness —
+GD23's keys proper by Def 5.10; Thm 4.8 structure) — GD23 attack items (5)
+and (6) RESOLVED BY THE PRINTED SOURCES; GD-3 Route B fully
+literature-pinned over arbitrary discretely valued fields. INCIDENTAL:
+docs/GMN_citations.md had diverged (pre-07-03 false claims) — corrected with
+a superseding appendix. The GD unit's honest residue is now: engine
+conformance (GD-4/GD-6/S-1) + the V26/V27 verification cycles.
