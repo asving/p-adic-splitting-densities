@@ -402,3 +402,21 @@ REVISION 1 folding all 26 findings + the probe verdict (circularity resolved
 honestly via the landed canPolicyC_pin reduction or re-scoped; BNS stripped;
 map corrected; recount). Re-review gate before any prover dispatch.
 The memory rule held: plan-level adversarial passes BEFORE proof drafting.
+
+## THE HK-06 WAVE LANDED (2026-07-31, commit 436a457) — QUEUE 21/21 EXECUTED
+(S-a) regrade keying diff EXECUTED on frozen MovesC/Defs (RegradeOf pair-
+parameterized, HK-05 staged-clause alignment certificate Iff.rfl; RG-2
+recording fence + R-tie guard riders decided per /goal with compiled
+evidence); HC2 StageTransHyp re-keyed (Q9 rode the wave). POSITIVE GATE
+PASSED: HK23_twoNodeGatePos.twoNodeGate_pos — the ramified 2-node History
+(bStageP -> ramifiedStage) is HistoryCoherent ∧ Realizable ∧ InBox under the
+NEW keying (the exact conjunction refuted pre-wave), Lean-core. Ripple: 1053
+modules green; 6 direct fallout modules repaired; AxChk EXACTLY EQUAL
+(orchestrator re-verified independently: exit 0, 0 sorryAx, capstones
+Lean-core). HONEST COST (BP2-priced): V9 steep+corner legs reopened — 4
+sorries now honestly carry the HK-52/HK-11a/b obligation (the old closure was
+a masked V10 exfalso, deleted with archival). U10dNeg CLOSED-MOOT (item 17
+already proved the repaired U10d). HK-25 U1 perimeter UNBLOCKED. Item-13
+LAST-NODE FLANK countermodel now LIVE.
+WITH THIS, ASVIN'S QUEUE IS 21/21 EXECUTED. Sign-off-gated remainder = the
+NEW fence events 22-27 (dual/compiled evidence each) + G13' (needs 22).
