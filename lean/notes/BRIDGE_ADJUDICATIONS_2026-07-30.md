@@ -920,3 +920,19 @@ O-4 DRAINAGE TRANSFER dispatched in parallel (independent path step).
 ## statements; CU-1's ADEQ scoped to interior children with the O5triple
 ## counting split covering terminals). V28/V29 launched. O-4 transfer
 ## still proving.
+
+## WAVE 7 COMPLETE (2026-08-01 late, commits 784728a/3108e26/+)
+GD23 r2: all V26 criticals repaired against the PRINTED statements ((KPirr)
+declared + proved at j=0; the false absorption DELETED, (GR-B)(2') restated
+as the anchored-march identity modeled verbatim on FGMN Thm 4.2 with BOTH
+countermodels displayed; IFACE rescoped per clause). CU-1 r2: ADEQ split
+interior/terminal (no-gap/no-overlap displayed; terminals -> O5triple
+counting); construction-before-recovery reorder; N-free induction (the N*
+break cured structurally); 23-row consumption map; new declared pins
+(P-ROOT)/(P-KEY)/(FR-equiv) with (FR-equiv)'s refutable order-2 content =
+the gate's coherent-convention finding. O4T: n<=3 DRAINAGE TRANSFER
+PROVED-UNCONDITIONALLY (canonical classifier terminates on every separable f
+at EVERY prime incl. wild; L <= v_p(disc)+1 sharp; env(N) explicit; 2.53M
+classes falsifier ALL PASS; no CU/GD>=2/BNS consumed); general-n =
+conditional on the named (AGR)=OL1-ii seam. V28/V29 running; V30 (O4T)
+launched.
