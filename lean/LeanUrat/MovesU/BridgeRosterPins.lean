@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.MovesU.BridgeB8_regData
 import LeanUrat.MovesS.EvalDet
 import LeanUrat.MovesS.E0DetNeZero
+import LeanUrat.MovesS.EvalAtCoe
 
 /-!
 # BridgeRosterPins — the roster pins + the RegP transport (bridge campaign BP1, cluster BP1-c5)
@@ -23,7 +24,10 @@ ratified as named premises).  Units in this file, in internal dependency order
 * IB-B13  `bridge_bsplit_pin`/`bridge_betaLeg_pin` — the dite-field pins
 * IB-B10  `bridgeRegPin` — the `RegPin` record assembly (LAST of the pin units)
 * IB-B14  `bridgeRegData_pool_mem` + `bridgeRegData_entryList_nonempty` sanity
-* IB-B15a `bridge_r2_on_activeLocus` — (r2)-transport on the active locus
+* IB-B15a — (r2)-transport on the active locus, TWO-PART RE-SCOPE (sign-off
+  queue item 9(i), executed 2026-07-31): `bridgeStaticEntryList`/`BridgeDiteOK`
+  vocabulary + `bridge_r2_static_on_activeLocus` (unconditional) +
+  `bridge_r2_dite_on_activeLocus` (gated) + the `RegPAtR2` assembly
 * IB-B15b `bridge_r1_on_activeLocus` — (r1)-transport at the chain-covered pairs
 * IB-B16  the junk-block gap RECORD (three named display Props, doc-only)
 
@@ -62,6 +66,11 @@ TRANSCRIPTION RESOLUTIONS (recorded per the E-phase charge):
 5. IB-B16 ("machine-readable docstring unit … no proof obligations") is
    realized as three NAMED display Props (burden / covered / residual gap) so
    the quantifier diff is compiled vocabulary, not prose; no theorem is stated.
+6. RE-SCOPE UPDATE (2026-07-31, sign-off queue item 9(i)): resolution 3's `hp`
+   record is SUPERSEDED for IB-B15a only — the re-scoped (r2) route rides
+   pool-membership OKat laws + subring closure (never `cl1`), so primality no
+   longer binds and the static/dite/assembly signatures drop `hp`.  IB-B15b
+   keeps `hp` (its cl1 route is unchanged); theoremU's per-p frame unchanged.
 -/
 
 set_option linter.style.longLine false
@@ -294,29 +303,198 @@ theorem bridgeRegData_entryList_nonempty {n : ℕ} (hn : 2 ≤ n) (C : UCarriers
     true_and]
   exact Or.inl (Or.inl (Or.inl (Or.inl (Or.inl (Or.inl ⟨(i₀, i₀), rfl⟩)))))
 
-/-! ## IB-B15a — (r2)-transport on the active locus (†4e) -/
+/-! ## IB-B15a — (r2)-transport on the active locus (†4e): THE TWO-PART RE-SCOPE
 
-/-- IB-B15a: the (r2) conjunct of `RegPAt (bridgeRegData …) q₀ e` holds for
-    EVERY pool value on the active locus and every block — the typed partial
-    transport of (REG-p)'s entry-family clause from the carried chain.
-    EXPECTED PARTIAL BY DESIGN at the unit level: the deliverable is proof +
-    typed gap spec; the residual index is `bridgeResidualPool` (IB-B17), the
-    record IB-B16.  Deps: IB-B17, IB-C1 (proof-time: `bridgeSolve_ok`'s OKat
-    route), IB-B3 (`bridgeAct_ok`).  `hp` per header resolution 3.
-    Sketch (H, ~35): q₀ = p^δ with δ ∈ consumedDeltas (pool_eq); `UCarriers.cl1
-    hp` (= `legs_reg` at the base prime, DefsCarriers.lean:98) supplies the
-    `PoolHyp` package at every consumed pool; on the ALL-ACTIVE locus the
-    entry families are pole-free (`jcell_ok`/`wsh_ok`/the chain's per-family
-    OKat laws), so each `g ∈ entryList` is `DefinedAt` and
-    `bridgeAct_ok` (IB-B3) closes the agreement conjunct
-    (`D.act g q₀ = evalAt q₀ ⟨g, _⟩ = g.eval …` — the eval/evalAt tie is the
-    `SolveSeam.R_agree` cast pattern, DefsLedger.lean:599, in miniature). -/
-theorem bridge_r2_on_activeLocus {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
-    (hne : HStateNe n C) (p : ℕ) (hp : p.Prime) :
+SIGN-OFF QUEUE ITEM 9(i), EXECUTED (2026-07-31; grant recorded at
+`notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` §ASVIN SIGN-OFF): the original
+unconditional universal `bridge_r2_on_activeLocus` (this section's previous
+occupant, E-phase `sorry`) was REFUTED AS STATED by the compiled countermodel
+`BridgeB15a_r2Neg.lean` (`bridge_r2_on_activeLocus_false`: a DetHyp-true
+adversarial `UCarriers 2` whose `bsplit` row is UNDEFINED at a locus point —
+a `blockSolve` pole surviving at an inactive coordinate of a wild descent
+pool, pulled back to the all-active base pool through `powSubst`).  Per that
+file's coexistence rule the sorried universal is DELETED in the SAME commit
+that lands this re-scope; the leaf countermodel stays, with a dated note
+marking that it refutes ONLY the pre-item-9 form.  The §23 draft (the two
+display defs at the end of BridgeB15a_r2Neg.lean) executes as adjudicated:
+
+* IB-B15a-static (`bridge_r2_static_on_activeLocus`): the FIVE STATIC entry
+  families (K/bterm/Jcell/iota/Wcoef — the sublist `bridgeStaticEntryList`)
+  are (r2)-transported on the active locus UNCONDITIONALLY.  Chain warrant:
+  `tg_ok`/`jcell_ok`/`ι_ok`/`wsh_ok` + OKat subring closure + `bridgeAct_ok`.
+* IB-B15a-dite (`bridge_r2_dite_on_activeLocus`): the TWO DITE families
+  (`bsplit`/`betaLeg`) are (r2)-transported on the locus GATED by the NAMED
+  per-pool hypothesis `BridgeDiteOK` — exactly the OKat obligation the
+  countermodel exhibits as non-derivable from the chain, converted into an
+  explicit premise.
+* Assembly (`bridge_r2_on_activeLocus_of_diteOK`): under `BridgeDiteOK` the
+  full (r2) clause `RegPAtR2` holds at every locus pool and block; with the
+  proved IB-B15b this closes `bridgeRegPCovered`
+  (`bridgeRegPCovered_of_diteOK`, end of file).
+
+The two defs below are the §23 drafts transcribed VERBATIM, with the
+countermodel file's `N`-suffix vocabulary copies (`RegPAtR2N`,
+`bridgeActiveLocusN`) replaced by this file's originals.  `hp` dropped per
+header resolution 6. -/
+
+/-- IB-B15a (vocabulary; §23 draft landed): the STATIC entry sublist —
+    K/bterm/Jcell/iota/Wcoef, the five families whose (r2) transport is
+    chain-warranted on the locus.  Sub-union of `RegData.entryList` (the
+    `bsplit` image and the `betaLeg` biUnion omitted). -/
+noncomputable def bridgeStaticEntryList {p : ℕ} (D : RegData p) (e : D.Block) :
+    Finset (RatFunc ℚ) :=
+  letI := Classical.decEq (RatFunc ℚ)
+  letI := D.instBi e; letI := D.instBd e; letI := D.instJ e; letI := D.instW
+  (Finset.univ.image fun ij : D.bidx e × D.bidx e => D.K e ij.1 ij.2)
+    ∪ (Finset.univ.image (D.bterm e)) ∪ (Finset.univ.image (D.Jcell e))
+    ∪ (Finset.univ.image (D.iota e)) ∪ (Finset.univ.image D.Wcoef)
+
+/-- IB-B15a (vocabulary; §23 draft landed): THE NAMED PER-POOL HYPOTHESIS
+    gating the dite families — every summed `blockSolve` leg lies in OKat at
+    every pool value of the active locus, after `powSubst` (the obligation
+    `cm_not_definedAt` refutes at the tautological roster; converted into an
+    explicit premise for IB-B15a-dite). -/
+def BridgeDiteOK {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n) (hne : HStateNe n C)
+    (p : ℕ) : Prop :=
+  ∀ q₀ ∈ bridgeActiveLocus hn C hne p,
+    ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
+      (∀ i : C.T.State b.1,
+        (bridgeRegData hn C hne p).bsplit b i ∈ MovesS.OKat (q₀ : ℚ)) ∧
+      (∀ (l : LegRoster C.T b.1) (δ : ℕ),
+        δ ∈ (bridgeRegData hn C hne p).depthSet →
+        (bridgeRegData hn C hne p).betaLeg b l δ ∈ MovesS.OKat (q₀ : ℚ))
+
+/-- The (r2) clause pair from OKat membership: definedness IS membership
+    (`mem_OKat_iff`), and the literal eval agrees with the tautological ACT
+    value (`bridgeAct_ok` + `evalAt_coe`). -/
+private theorem r2_of_okat {g : RatFunc ℚ} {q₀ : ℕ}
+    (hg : g ∈ MovesS.OKat (q₀ : ℚ)) :
+    DefinedAt g (q₀ : ℚ) ∧ g.eval (RingHom.id ℚ) (q₀ : ℚ) = bridgeAct g q₀ :=
+  ⟨MovesS.mem_OKat_iff.mp hg,
+    ((bridgeAct_ok g q₀ hg).trans (MovesS.evalAt_coe (q₀ : ℚ) ⟨g, hg⟩)).symm⟩
+
+/-- Locus membership reads the measured pool set (`allActivePools ⊆ M.Pools`). -/
+private theorem locus_mem_pools {n : ℕ} {hn : 2 ≤ n} {C : UCarriers n}
+    {hne : HStateNe n C} {p q₀ : ℕ}
+    (hq₀ : q₀ ∈ bridgeActiveLocus hn C hne p) : (q₀ : ℚ) ∈ C.MS.Pools := by
+  classical
+  have hact := (Finset.mem_filter.mp hq₀).2
+  simp only [MovesS.allActivePools, Set.mem_setOf_eq] at hact
+  exact hact.1
+
+/-- K-family OKat: every kernel entry is a dite-sum of `tg_ok` members —
+    subring closure at any measured pool value. -/
+private theorem bridge_K_okat {n : ℕ} (C : UCarriers n) {e : ℕ}
+    (hK : MovesS.KmatHyp C.T e) {q₀ : ℚ} (hQ : q₀ ∈ C.MS.Pools)
+    (τ β : C.T.State e) :
+    MovesS.Kmat C.T C.RB e hK τ β ∈ MovesS.OKat q₀ := by
+  unfold MovesS.Kmat
+  refine Subring.sum_mem _ fun o _ => ?_
+  split_ifs with hk ht
+  · exact C.RB.tg_ok e τ o q₀ hQ
+  · exact zero_mem _
+  · exact zero_mem _
+
+/-- bterm-family OKat: the assembled `bTerm` row over `verdictImage` is an
+    ite-sum of `tg_ok` members — subring closure. -/
+private theorem bridge_bterm_okat {n : ℕ} (C : UCarriers n) {e : ℕ} {q₀ : ℚ}
+    (hQ : q₀ ∈ C.MS.Pools) (i : C.T.State e) :
+    (∑ σ' ∈ MovesS.verdictImage C.T e i, MovesS.bTerm C.T C.RB e σ' i)
+      ∈ MovesS.OKat q₀ := by
+  refine Subring.sum_mem _ fun σ' _ => ?_
+  unfold MovesS.bTerm
+  refine Subring.sum_mem _ fun o _ => ?_
+  split_ifs with h
+  · exact C.RB.tg_ok e i o q₀ hQ
+  · exact zero_mem _
+
+/-- iota-family OKat: the assembled entrance row is a sum of `ι_ok` members. -/
+private theorem bridge_iota_okat {n : ℕ} (C : UCarriers n) {e : ℕ} {q₀ : ℚ}
+    (hQ : q₀ ∈ C.MS.Pools) (i : C.T.State e) :
+    C.RB.ι e i ∈ MovesS.OKat q₀ := by
+  unfold MovesS.RatBurdens.ι
+  exact Subring.sum_mem _ fun ε _ => C.RB.ι_ok e i ε q₀ hQ
+
+/-- IB-B15a-static core: every member of the static sublist lies in the
+    evaluation-regular subring at every measured pool value (not just the
+    locus — activity is never consumed by the static families). -/
+theorem bridgeStaticEntryList_okat {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
+    (hne : HStateNe n C) (p : ℕ) (b : {e : ℕ // e ∈ Finset.Icc 1 n})
+    {q₀ : ℚ} (hQ : q₀ ∈ C.MS.Pools) :
+    ∀ g ∈ bridgeStaticEntryList (bridgeRegData hn C hne p) b,
+      g ∈ MovesS.OKat q₀ := by
+  classical
+  intro g hg
+  unfold bridgeStaticEntryList at hg
+  simp only [Finset.mem_union, Finset.mem_image, Finset.mem_univ, true_and] at hg
+  rcases hg with ((((⟨ij, rfl⟩ | ⟨i, rfl⟩) | ⟨j, rfl⟩) | ⟨i, rfl⟩) | ⟨Ŝ, rfl⟩)
+  · exact bridge_K_okat C (C.hK b.1 b.2) hQ ij.1 ij.2
+  · exact bridge_bterm_okat C hQ i
+  · exact C.RB.jcell_ok b.1 j.1 j.2.2.1 q₀ hQ
+  · exact bridge_iota_okat C hQ i
+  · exact C.chain.wsh_ok Ŝ.1 Ŝ.2 q₀ hQ
+
+/-- IB-B15a-static: the five static entry families are (r2)-transported on the
+    active locus UNCONDITIONALLY — every member of `bridgeStaticEntryList` is
+    defined at the pool value and agrees with the ACT active value. -/
+theorem bridge_r2_static_on_activeLocus {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
+    (hne : HStateNe n C) (p : ℕ) :
     ∀ q₀ ∈ bridgeActiveLocus hn C hne p,
       ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
-        RegPAtR2 (bridgeRegData hn C hne p) q₀ b :=
-  sorry
+        ∀ g ∈ bridgeStaticEntryList (bridgeRegData hn C hne p) b,
+          DefinedAt g (q₀ : ℚ) ∧
+            g.eval (RingHom.id ℚ) (q₀ : ℚ) = (bridgeRegData hn C hne p).act g q₀ :=
+  fun _ hq₀ b g hg =>
+    r2_of_okat (bridgeStaticEntryList_okat hn C hne p b (locus_mem_pools hq₀) g hg)
+
+/-- IB-B15a-dite: the two dite families are (r2)-transported on the locus,
+    GATED by the named per-pool hypothesis `BridgeDiteOK` (the §23 split's
+    conditional half; the gate the countermodel proves non-derivable). -/
+theorem bridge_r2_dite_on_activeLocus {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
+    (hne : HStateNe n C) (p : ℕ) (hOK : BridgeDiteOK hn C hne p) :
+    ∀ q₀ ∈ bridgeActiveLocus hn C hne p,
+      ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
+        (∀ i : C.T.State b.1,
+          DefinedAt ((bridgeRegData hn C hne p).bsplit b i) (q₀ : ℚ) ∧
+            ((bridgeRegData hn C hne p).bsplit b i).eval (RingHom.id ℚ) (q₀ : ℚ)
+              = (bridgeRegData hn C hne p).act
+                  ((bridgeRegData hn C hne p).bsplit b i) q₀) ∧
+        (∀ (l : LegRoster C.T b.1) (δ : ℕ),
+          δ ∈ (bridgeRegData hn C hne p).depthSet →
+          DefinedAt ((bridgeRegData hn C hne p).betaLeg b l δ) (q₀ : ℚ) ∧
+            ((bridgeRegData hn C hne p).betaLeg b l δ).eval (RingHom.id ℚ) (q₀ : ℚ)
+              = (bridgeRegData hn C hne p).act
+                  ((bridgeRegData hn C hne p).betaLeg b l δ) q₀) :=
+  fun q₀ hq₀ b =>
+    ⟨fun i => r2_of_okat ((hOK q₀ hq₀ b).1 i),
+     fun l δ hδ => r2_of_okat ((hOK q₀ hq₀ b).2 l δ hδ)⟩
+
+/-- IB-B15a assembly: under `BridgeDiteOK` the FULL (r2) clause `RegPAtR2`
+    holds at every locus pool and block — the static families by the
+    unconditional core, the dite families by the gate.  This is the honest
+    replacement of the refuted universal: same conclusion, plus the named
+    premise the countermodel proves necessary. -/
+theorem bridge_r2_on_activeLocus_of_diteOK {n : ℕ} (hn : 2 ≤ n)
+    (C : UCarriers n) (hne : HStateNe n C) (p : ℕ)
+    (hOK : BridgeDiteOK hn C hne p) :
+    ∀ q₀ ∈ bridgeActiveLocus hn C hne p,
+      ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
+        RegPAtR2 (bridgeRegData hn C hne p) q₀ b := by
+  classical
+  intro q₀ hq₀ b g hg
+  have hQ : (q₀ : ℚ) ∈ C.MS.Pools := locus_mem_pools hq₀
+  unfold RegData.entryList at hg
+  simp only [Finset.mem_union, Finset.mem_image, Finset.mem_biUnion,
+    Finset.mem_univ, true_and] at hg
+  rcases hg with ((((((⟨ij, rfl⟩ | ⟨i, rfl⟩) | ⟨i, rfl⟩) | ⟨j, rfl⟩) | ⟨i, rfl⟩)
+      | ⟨Ŝ, rfl⟩) | ⟨δ, hδ, l, rfl⟩)
+  · exact r2_of_okat (bridge_K_okat C (C.hK b.1 b.2) hQ ij.1 ij.2)
+  · exact r2_of_okat (bridge_bterm_okat C hQ i)
+  · exact r2_of_okat ((hOK q₀ hq₀ b).1 i)
+  · exact r2_of_okat (C.RB.jcell_ok b.1 j.1 j.2.2.1 (q₀ : ℚ) hQ)
+  · exact r2_of_okat (bridge_iota_okat C hQ i)
+  · exact r2_of_okat (C.chain.wsh_ok Ŝ.1 Ŝ.2 (q₀ : ℚ) hQ)
+  · exact r2_of_okat ((hOK q₀ hq₀ b).2 l δ hδ)
 
 /-! ## IB-B15b — (r1)-transport at the chain-covered pairs (†4e) -/
 
@@ -446,8 +624,19 @@ shape" — they did):
   `bridgeActiveLocus` is EMPTY (the cl1 `PoolHyp` at every consumed δ + the
   `rs3_det_symbolic` subring/submatrix calc + `e0_det_ne_zero` close every
   (q₀, b)); its typed residual is exactly `bridgeResidualPool` — unchanged.
-* IB-B15a BLOCKED (suspect-false as stated; countermodel gate queued by the
-  orchestrator): ON the locus the (r2) burden splits BY ENTRY FAMILY — the
+* IB-B15a — RECORD SUPERSEDED (2026-07-31, sign-off queue item 9): the
+  countermodel gate FIRED (`BridgeB15a_r2Neg.lean` compiled, Lean-core: the
+  suspect-false statement is FALSE as stated), and the adjudicated two-part
+  re-scope LANDED above (IB-B15a-static unconditional; IB-B15a-dite behind
+  the named `BridgeDiteOK`; the sorried universal deleted per the
+  countermodel file's coexistence rule).  The family split recorded below is
+  CONFIRMED-EXACT by the countermodel and is now the compiled shape of the
+  unit itself.  The degree leak the countermodel rides (a halted member's
+  verdict degree untied to its size) is now EXCLUDED by the additive sibling
+  laws `VerdictDeg`/`DegConsDelta` (BridgeVerdictDeg.lean, item 9(ii)/(iii));
+  the countermodel table is their compiled violation witness
+  (BridgeVerdictDegGate.lean).  Original analysis (kept as the record):
+  ON the locus the (r2) burden splits BY ENTRY FAMILY — the
   five static families (K/bterm/Jcell/iota/Wcoef) are chain-warranted
   (`tg_ok`/`j_ok`/`jcell_ok`/`ι_ok`/`wsh_ok` + OKat subring closure), but the
   two dite families (`bsplit`/`betaLeg` under `DetHyp`) EXCEED the chain even
@@ -489,5 +678,20 @@ def bridgeRegPResidualGap {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
   ∀ q₀ ∈ bridgeResidualPool hn C hne p,
     ∀ b : {e : ℕ // e ∈ Finset.Icc 1 n},
       RegPAt (bridgeRegData hn C hne p) q₀ b
+
+/-- THE COVERED PART CLOSES (item 9(i) yield, 2026-07-31): under the named
+    dite premise, `bridgeRegPCovered` — IB-B16's display 2/3, "exactly
+    IB-B15a ∧ IB-B15b's joint target" — is PROVED: (r1) by the landed
+    IB-B15b (locus-total, `cl1` route, hence `hp`), (r2) by the re-scoped
+    assembly.  The burden's remaining distance to `bridgeRegPBurden` is
+    exactly `bridgeRegPResidualGap` (unassignable as stated, see the IB-B16
+    header) plus the `BridgeDiteOK` premise itself. -/
+theorem bridgeRegPCovered_of_diteOK {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n)
+    (hne : HStateNe n C) (p : ℕ) (hp : p.Prime)
+    (hOK : BridgeDiteOK hn C hne p) :
+    bridgeRegPCovered hn C hne p :=
+  fun q₀ hq₀ b =>
+    ⟨bridge_r1_on_activeLocus hn C hne p hp q₀ hq₀ b,
+     bridge_r2_on_activeLocus_of_diteOK hn C hne p hOK q₀ hq₀ b⟩
 
 end LeanUrat.MovesU

@@ -138,3 +138,69 @@ worktree, independent of this item; verified by error text: `1 ≤ min N N'` gua
 argument mismatch at :560/:601.)
 Records: MovesD/MANIFEST.json "item13_polpin_rescope_2026-07-31"; TreeCan.lean header
 ITEM 13 RE-ATTEMPT RECORD; PolPin.lean header + field docstrings.
+
+## ITEM 9 — the (r2)-on-activeLocus two-part re-scope + the VerdictDeg sibling laws (2026-07-31, agent wr-item9)
+
+EXECUTED at the preferred option (the drafted §23 form, BridgeB15a_r2Neg.lean:2979ff),
+all four sub-items.  Files touched: `LeanUrat/MovesU/BridgeRosterPins.lean` (statement
+repair + proofs), `LeanUrat/MovesU/BridgeB15a_r2Neg.lean` (dated M1 note ONLY, leaf
+intact), NEW `LeanUrat/MovesU/BridgeVerdictDeg.lean` (IB-B18) + NEW
+`LeanUrat/MovesU/BridgeVerdictDegGate.lean` (IB-B19).
+
+(i) TWO-PART RE-SCOPE — LANDED AND PROVED (not just restated).  The refuted sorried
+universal `bridge_r2_on_activeLocus` (BridgeRosterPins.lean:314-319) is DELETED in this
+commit, per the countermodel file's coexistence rule ("delete the sorried IB-B15a in
+the SAME commit").  Its replacement, the §23 drafts transcribed verbatim (N-suffix
+copies -> the RosterPins originals) plus the proofs the repair opens:
+  * `bridgeStaticEntryList` (vocabulary) + `BridgeDiteOK` (the named per-pool gate);
+  * `bridgeStaticEntryList_okat` — PROVED: every static-family member is in OKat at
+    EVERY measured pool value (K/bterm via tg_ok + subring closure over the dite/ite
+    sums; Jcell via jcell_ok; iota via ι_ok + closure; Wcoef via wsh_ok);
+  * IB-B15a-static `bridge_r2_static_on_activeLocus` — PROVED UNCONDITIONALLY;
+  * IB-B15a-dite `bridge_r2_dite_on_activeLocus` — PROVED from `BridgeDiteOK`;
+  * assembly `bridge_r2_on_activeLocus_of_diteOK` — full `RegPAtR2` on the locus
+    under the gate;
+  * `bridgeRegPCovered_of_diteOK` — IB-B16's covered display CLOSES: (r1) by the
+    landed IB-B15b (hp kept there) + (r2) by the assembly.
+  Signature note: `hp : p.Prime` dropped from the re-scoped unit (header resolution 6
+  added; the OKat route never consumes primality; B15b unchanged).  M1 hygiene: the
+  leaf countermodel kept intact + dated end-of-file note pinning that it refutes ONLY
+  the pre-item-9 form (the gate premise `BridgeDiteOK` fails at `cmC` by
+  `cm_not_definedAt`); its header's import ban recorded RETIRED as of this commit.
+
+(ii) VerdictDeg — NEW ADDITIVE SIBLING Prop (new file, `DegCons`/`UCarriers`/
+`TableShape` untouched; every existing instance incl. `cmT` stays legal):
+`structure VerdictDeg (T : TableShape n) : Prop`, field `vdeg_size : ∀ e ∈ Icc 1 n,
+∀ τ o, ∀ μ ∈ mem, ∀ v, μ.status = Sum.inl v → (T.vdeg v : ℕ) = μ.size * (μ.δ : ℕ)`;
+derived `VerdictDeg.EF_eq` = VP-1's displayed equality E·F = d through vdeg_spec.
+OPEN-DISPOSITION RESOLUTION (halted δ > 1, note silent): the note read record
+wf_b933dcd7-877 is NOT present in notes/ (verified by grep — it is a work-record id),
+so per the assignment's silence rule the WEAKER law landed: vdeg = size·δ (implied by,
+strictly weaker than, the halted⇒δ=1 package; true in both candidate worlds; reduces
+to the ledger's sketch vdeg = size when δ = 1).  Guard decision (same rule): both laws
+carry `e ∈ Icc 1 n`, mirroring `DegCons.size_sum` — VP-1 speaks of realized clusters.
+THREADING (per ledger): compiled non-vacuity PAIR in the gate file —
+`cmT_not_verdictDeg` (the recorded t₂ (1,2)-on-size-1 cheat violates it) +
+`n2T_verdictDeg` (the REAL n=2 instance satisfies it); records updated in
+BridgeRosterPins (IB-B16) + the r2Neg dated note; consumers adopt as NAMED hypothesis
+rows (hdom-row genre), never trivial fills — no frozen structure gains a field.
+
+(iii) delta-weighted DegCons strengthening — `structure DegConsDelta (T) : Prop`,
+field `size_sum_delta : Σ (μ.size · μ.δ) ≤ e` (same guard); derived
+`DegConsDelta.size_sum` PROVES it strictly refines the carried `DegCons.size_sum`
+(pointwise size ≤ size·δ).  Compiled pair: `cmT_not_degConsDelta` (the reader's second
+cheat 1·1 + 1·2 = 3 > 2 fires) + `n2T_degConsDelta` (real instance satisfies).
+
+(iv) (e4) owed first-index — VERIFIED ALREADY HANDLED at the D-SC carrier layer, NOT
+duplicated: `SlotsG15b_e4Seam.lean` (landed 2026-07-31, D-SC.8 fold-in) names both
+candidate readings (`SiteBeta.firstIdxCandidateRebased`/`...Ambient`) under the CF13
+consumption fence; nothing added by this item.
+
+VERIFICATION: `lake env lean` green per touched/new file; full `lake build` GREEN
+("Build completed successfully"); explicit module builds green; `#print axioms` on all
+11 new/re-scoped theorems = Lean-core {propext, Classical.choice, Quot.sound} (no
+sorryAx, no declared axioms).  Capstone path untouched (MovesU only; no OM/* file
+touched, so no AxChk diff owed per rule 4; the full build's census infos printed the
+capstone footprints unchanged).  Downstream consumers: none import BridgeRosterPins or
+the leaf at HEAD (verified by rg); the new gate file is the first importer of the leaf,
+legal as of this commit.

@@ -2782,6 +2782,21 @@ noncomputable def cmChain : RS4Chain cmT cmM cmRB cm_hdc cm_hK cmF where
     show (1 : ℝ) * (Fintype.card (cmM.Box q₀ N) : ℝ)
       = (((Finset.univ : Finset (cmM.Box q₀ N))).card : ℝ)
     rw [one_mul, Finset.card_univ]⟩
+  -- W17ii(ii) REPAIR CENSUS (queue item 4, 2026-07-31) at the device shallow
+  -- carriers (shDom = {0}, visH = {0}, shEvtH = univ) — same discharges as
+  -- N2Sigmas' gate: singleton domain finite, full-box events nonempty,
+  -- off-visH/disjointness vacuous at the singleton visH.
+  shdom_fin := fun _ _ => Set.finite_singleton (0 : ℕ)
+  shdom_no_stray := fun _ _ _ _ q₀ _ => ⟨0, fun N _ => by
+    haveI := cmM.boxpos q₀ N
+    exact Finset.univ_nonempty⟩
+  vis_sub_shdom := fun _ _ _ _ => ⟨0, fun N _ h hh =>
+    Set.mem_singleton_iff.mpr (Finset.mem_singleton.mp hh)⟩
+  shevt_off_vis := fun _ _ h hh _ _ => ⟨0, fun N _ hnot =>
+    absurd (Finset.mem_singleton.mpr (Set.mem_singleton_iff.mp hh)) hnot⟩
+  shevt_disj := fun _ _ N h hh h' hh' hne =>
+    absurd ((Finset.mem_singleton.mp hh).trans
+      (Finset.mem_singleton.mp hh').symm) hne
   Rval := cmRval
   r_bdd := fun σ q₀ _ => by
     unfold cmRval
@@ -3005,5 +3020,36 @@ def BridgeDiteOK {n : ℕ} (hn : 2 ≤ n) (C : UCarriers n) (hne : HStateNe n C)
       (∀ (l : LegRoster C.T b.1) (δ : ℕ),
         δ ∈ (bridgeRegData hn C hne p).depthSet →
         (bridgeRegData hn C hne p).betaLeg b l δ ∈ MovesS.OKat (q₀ : ℚ))
+
+/-! ## DATED NOTE (2026-07-31, sign-off queue item 9 execution — M1 hygiene)
+
+WHAT THIS LEAF REFUTES (scope pin): the compiled negation above
+(`bridge_r2_on_activeLocus_false`) refutes the PRE-ITEM-9 form of IB-B15a —
+the unconditional universal
+`bridge_r2_on_activeLocus : ∀ q₀ ∈ locus, ∀ b, RegPAtR2 (bridgeRegData …) q₀ b`
+(BridgeRosterPins.lean's former line 314–319 E-phase `sorry`) — and ONLY that
+form.  Per this file's COEXISTENCE RULE, the sorried universal was DELETED in
+the SAME commit as this note; its replacement is the §23 two-part re-scope,
+landed and PROVED in BridgeRosterPins.lean: `bridge_r2_static_on_activeLocus`
+(unconditional), `bridge_r2_dite_on_activeLocus` (gated by `BridgeDiteOK`),
+and the assembly `bridge_r2_on_activeLocus_of_diteOK` — the re-scoped forms
+are NOT refuted by this countermodel (the gate premise `BridgeDiteOK` FAILS
+at `cmC`, exactly by `cm_not_definedAt`).  The coexistence rule's import ban
+is therefore RETIRED as of this commit (no sorried universal remains to
+contradict); the §23 display defs above stay as the draft record — the landed
+unit vocabulary transcribes them with the `N`-suffix copies replaced by the
+BridgeRosterPins originals.
+
+DEGREE-CHEAT RECORD UPDATE (item 9(ii)/(iii)): the LOAD-BEARING CHEAT of the
+file header ("NO carried law ties a halted member's verdict degree to its
+size") is now EXCLUDED by named vocabulary — the additive sibling laws
+`VerdictDeg` (halted verdict degree = δ-weighted member size) and
+`DegConsDelta` (δ-weighted size sum ≤ e) in BridgeVerdictDeg.lean; `cmT` is
+their compiled violation witness (BridgeVerdictDegGate.lean: the t₂ (1,2)
+verdict on the size-1 δ=1 member violates `vdeg_size`; the block-2 split
+outcome's δ-weighted sum 1·1 + 1·2 = 3 > 2 violates `size_sum_delta` — the
+reader's second recorded cheat, invisible to the as-built `DegCons.size_sum`).
+This table remains a legal `DegCons`/`UCarriers` instance — the new laws are
+ADDITIVE siblings, not fields, so nothing here breaks. -/
 
 end LeanUrat.MovesU.R2Neg
