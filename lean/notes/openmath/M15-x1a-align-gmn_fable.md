@@ -291,17 +291,24 @@ beyond the cited statement (§4's axiom-scoping trap).
   ind₁(f) ≤ ind_p(f) pointwise. Any violation refutes the transcription of (†)
   (or an implementation bug); zero violations over the sweep is supporting
   evidence for the axiom face as formulated in §6.
-- **N4 (PROPOSED — direct probe of the ROW's bookkeeping at depth 2).** Build
-  two-increment families with prescribed reads, e.g. GMN §4.3's
-  v(c+2a+4) ≥ 4 branch (order-1 read (e,h,ℓ) = (2,1,2): T1-increment; order-2
-  read (2,3,1): T2), so dCert = 2; and deeper stacks like
-  f = (x² − p)² − p^{2k+1} (order-1 (2,1,2) T1-inc, order-2 (2, 2k−1, 1) T2,
-  k = 2,3,4) — for each, compute ind_p(f) as in N2 and check
-  dCert ≤ ind_p(f). Extend by exhaustive n = 4, p = 2 boxes (coefficients mod
-  2⁸) using PARI `factorpadic` to locate nontrivial strata, hand-computing the
-  order-1 read and the order-2 read on the φ₂-development for the ≤ 2-increment
-  cases. One violating (f, branch) with the reads certified per §3's table
-  refutes the row (hence blocks the axiom route); expected outcome per the
-  analysis: no violations, with slack exactly Σ v_p(disc Lᵢ)/2 + re-centering
-  orders' contributions.
+- **N4 (PARTIALLY EXECUTED, PASS — direct probe of the ROW's bookkeeping at
+  depth 2).** Two-certified-increment families with hand-derived reads:
+  f = (x² − p)² − p^{2k+1}·x. Order-1 polygon: one side (0,2)–(4,0), read
+  (e,h,ℓ) = (2,1,2), residual (y∓1)² repeated — a T1-increment (key x ↦ x²−p).
+  Order-2 φ₂-development f = φ₂² − p^{2k+1}x, v₂-values (Def 2.5 normalization,
+  e₁ = 2, v₂(φ₂) = 2, v₂(x) = 1): points (2,4) and (0,4k+3), one side of slope
+  −(4k−1)/2, read (e,h,ℓ) = (2, 4k−1, 1) — a T2 node; residual degree 1,
+  f-complete. So dCert = 2 and the predicted index is
+  ind = ind₁ + ind₂ = 2 + (2k−1) = 2k+1. EXECUTED (gp, p ∈ {2,3,5},
+  k ∈ {1,2,3}): étale-algebra ind_p(f) as in N2 equals 2k+1 in all 9 cases —
+  confirming the Def 4.15 bookkeeping AND dCert = 2 ≤ 2k+1 = ind with the
+  slack growing in k. (Honesty note: my first hand computation of the order-2
+  side used points (i, v₂(aᵢ)) instead of (i, v₂(aᵢφ₂ⁱ)) and predicted 2k+3;
+  the executed check caught it — the recorded derivation above is the
+  corrected one, re-verified against GMN's §4.3 figure conventions.)
+  PROPOSED extension: exhaustive n = 4, p = 2 boxes (coefficients mod 2⁸)
+  using PARI `factorpadic` to locate nontrivial strata, hand-computing order-1
+  and order-2 reads on the φ₂-development for the ≤ 2-increment cases. One
+  violating (f, branch) with reads certified per §3's table refutes the row
+  (hence blocks the axiom route).
 

@@ -56,7 +56,13 @@
     CONFIRMED the predicted branch: det (1 − Kmat) = 1 ≠ 0 by
     `Matrix.det_isEmpty` at the empty state index — DetHyp INHABITED, so
     TV-H1b's rsh_interp/legs_read are NOT hdet-vacuous (and were discharged
-    for real there). -/
+    for real there).
+
+    OUTCOME NOTE (queue item 4 executed, 2026-07-31): the sealed prediction
+    CONFIRMED-COMPILED at TV-H1b (quarantined), the adjudicated repair (the
+    five RS4Chain census fields + the proved `w17ii_wave4`) landed, and
+    TV-H1b's skeleton is RETIRED — see TV_H1b.lean's retirement record.
+    These carriers stay in-tree: they host TV_H1b's compiled cure seal. -/
 import LeanUrat.MovesS.Defs
 
 set_option linter.style.longLine false

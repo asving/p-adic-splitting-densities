@@ -136,6 +136,44 @@ theorem measuredOf_ent_count_card {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   · rfl
   · rfl
 
+section Item11Helpers
+
+/-- [item-11 helper] recollapsing a `castHpt`-transported Σ-point. -/
+private theorem sigma_castHpt_eq {D D' : ℕ} (e : D = D') (x : Hpt D) :
+    (⟨D', castHpt e x⟩ : Σ D : ℕ, Hpt D) = ⟨D, x⟩ := by
+  subst e
+  rw [castHpt_self]
+
+/-- [item-11 helper] the Σ-embedding into `iDomOf` at the index's own
+dimension. -/
+private theorem mem_iDomOf_own_dim {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {β₀ : S.Cell} (i : V.EntIx β₀)
+    (h : Hpt i.1.1.entDim)
+    (hm : ((V.entDom i.1.1).comps.get i.1.2).Mem h) :
+    (⟨i.1.1.entDim, h⟩ : Σ D : ℕ, Hpt D) ∈ iDomOf V i := by
+  simp only [iDomOf, Set.mem_setOf_eq]
+  exact ⟨trivial, by rw [castHpt_self]; exact hm⟩
+
+/-- [item-11 helper] THE Σ-collapse equiv: the Σ-embedded `iDomOf` domain
+(E2's `ιDom` carrier) is the component-membership subtype at the entrance
+index's own dimension. -/
+private def iDomEquiv {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {β₀ : S.Cell} (i : V.EntIx β₀) :
+    {h : Hpt i.1.1.entDim // ((V.entDom i.1.1).comps.get i.1.2).Mem h}
+      ≃ {p : Σ D : ℕ, Hpt D // p ∈ iDomOf V i} where
+  toFun h := ⟨⟨i.1.1.entDim, h.1⟩, mem_iDomOf_own_dim V i h.1 h.2⟩
+  invFun p := ⟨castHpt p.2.choose p.1.2, p.2.choose_spec⟩
+  left_inv h := Subtype.ext (castHpt_self rfl h.1)
+  right_inv p := Subtype.ext (sigma_castHpt_eq p.2.choose p.1.2)
+
+private theorem iDomEquiv_apply_val {n : ℕ} {C : CtsFamily n} {S : StepSys n}
+    (V : CtsMeasured n C S) {β₀ : S.Cell} (i : V.EntIx β₀)
+    (h : {h : Hpt i.1.1.entDim // ((V.entDom i.1.1).comps.get i.1.2).Mem h}) :
+    ((iDomEquiv V i) h).1 = ⟨i.1.1.entDim, h.1⟩ :=
+  rfl
+
+end Item11Helpers
+
 /-- TV-E6(d) [LedgerIV group (9), comp_once]: THE one entrance height sum
 (verbatim `MovesS.LedgerIV.comp_once` at measuredOf; the V7_livB
 HasSum.mul_left pattern).
@@ -163,21 +201,6 @@ gains `hdom : EntDomOrder0 V` as escalated, and the sorry is DISCHARGED —
 the proof is `ledgerIV_comp_once` (V7_livB) transported across the
 Σ-collapse equiv between the Σ-embedded `iDomOf` domain and the
 component-membership subtype (proof-irrelevant `castHpt` legs).] -/
-private def iDomEquiv {n : ℕ} {C : CtsFamily n} {S : StepSys n}
-    (V : CtsMeasured n C S) {β₀ : S.Cell} (i : V.EntIx β₀) :
-    {h : Hpt i.1.1.entDim // ((V.entDom i.1.1).comps.get i.1.2).Mem h}
-      ≃ {p : Σ D : ℕ, Hpt D // p ∈ iDomOf V i} where
-  toFun h := ⟨⟨i.1.1.entDim, h.1⟩, ⟨rfl, h.2⟩⟩
-  invFun p := ⟨castHpt p.2.choose p.1.2, p.2.choose_spec⟩
-  left_inv h := Subtype.ext (castHpt_self _ h.1)
-  right_inv p := by
-    obtain ⟨⟨D, x⟩, hp⟩ := p
-    apply Subtype.ext
-    obtain ⟨e, hm⟩ := hp
-    subst e
-    show (⟨D, castHpt _ x⟩ : Σ D : ℕ, Hpt D) = ⟨D, x⟩
-    rw [castHpt_self]
-
 theorem measuredOf_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
@@ -199,16 +222,17 @@ theorem measuredOf_comp_once {n : ℕ} {C : CtsFamily n} {S : StepSys n}
   have base := ledgerIV_comp_once V X hdom hEU (V.toStepCells.symm τ.1) ε
     (show q₀ ∈ V.Pools from hq)
   refine ((iDomEquiv V ε).hasSum_iff).mp ?_
-  have hcomp : ∀ h : {h : Hpt ε.1.1.entDim //
-      ((V.entDom ε.1.1).comps.get ε.1.2).Mem h},
-      ((fun p : {p : Σ D : ℕ, Hpt D // p ∈ iDomOf V ε} =>
-        ishHOf V ε p.1 q₀) ∘ (iDomEquiv V ε)) h
-        = ιshH V ε.1.1 h.1 (V.toStepCells.symm τ.1) q₀ := by
-    intro h
-    show ishHOf V ε ⟨ε.1.1.entDim, h.1⟩ q₀ = _
+  show HasSum (fun h => ishHOf V ε ((iDomEquiv V ε) h).1 q₀)
+    (iotaShV V X.sEnt ε q₀)
+  have hfun : (fun h : {h : Hpt ε.1.1.entDim //
+        ((V.entDom ε.1.1).comps.get ε.1.2).Mem h} =>
+        ishHOf V ε ((iDomEquiv V ε) h).1 q₀)
+      = fun h => ιshH V ε.1.1 h.1 (V.toStepCells.symm τ.1) q₀ := by
+    funext h
+    rw [iDomEquiv_apply_val]
     unfold ishHOf
-    rw [dif_pos rfl]
-  rw [funext hcomp]
+    rw [dif_pos rfl, castHpt_self]
+  rw [hfun]
   exact base
 
 end LeanUrat.MovesV

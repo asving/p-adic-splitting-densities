@@ -38,12 +38,20 @@ could make the ∃ FALSE for adversarial V (the M1 failure mode).
 INSTANTIATION ATTEMPT (recorded): the RatBurdens data (countS/geom
 polynomial packs) must come from `cellPolyPack`'s sizeP/count wiring + the
 V3 initrat `PolyGeom` packs — the V7-4 field-map unit; stays the named
-sorried duty. -/
+sorried duty.
+QUEUE ITEM 11 EXECUTED (Asvin sign-off 2026-07-31; ledger
+lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 11): the row gains the
+named warranted hypothesis `hdom : EntDomOrder0 V` — the round-3 census
+confirmed the leak at this duty (the ι-leg of any RatBurdens witness
+consumes `iotaPGof`/`ratBurdens_iota`, whose census/value clauses require
+the order-0 perimeter certificates; hdom is not dischargeable from the old
+row).  The sorry still stands behind the TV-F2/F3/F4 seam chain +
+`ratBurdens_exists_pack` (TV_F5, row now byte-identical again). -/
 theorem ratBurdens_exists {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V) (hEU : EntU V)
-    (hEC : EntCount V) (hA : AffEnt n) :
+    (hEC : EntCount V) (hA : AffEnt n) (hdom : EntDomOrder0 V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →

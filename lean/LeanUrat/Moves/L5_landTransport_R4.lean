@@ -4,6 +4,7 @@ import LeanUrat.Moves.DefsT
 import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.L0_FactB_unique
 import LeanUrat.Moves.L3_liftMonic
+import LeanUrat.Moves.ResVal
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -53,37 +54,10 @@ section TransportHelpers
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- `w 1 = 0`: from `w(1·1) = w 1 + w 1`. -/
-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  omega
-
-/-- `w(f^n) = n·w f`. -/
-private lemma w_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.w (f ^ n) = (n : ℤ) * σ.w f := by
-  induction n with
-  | zero => rw [pow_zero, w_one σ, Nat.cast_zero, zero_mul]
-  | succ k ih =>
-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero k hf) hf, ih]
-    push_cast
-    ring
-
-/-- `R 1 = 1` (from `hRmul` + `hRne`, cancellation in the Laurent domain). -/
-private lemma R_one (σ : Stage p F) : σ.R (1 : Polynomial ℤ_[p]) = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  have hne : σ.R (1 : Polynomial ℤ_[p]) ≠ 0 := σ.hRne 1 one_ne_zero
-  have key : σ.R (1 : Polynomial ℤ_[p]) * 1 = σ.R 1 * σ.R 1 := by rw [mul_one]; exact h
-  exact (mul_left_cancel₀ hne key).symm
-
-/-- `R(f^n) = (R f)^n` (inlined `L0.GRe` — historical: that unit's `.olean` was not on disk
-when written; it now builds (2026-07-30), duplication tracked as Class-D). -/
-private lemma R_pow (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (n : ℕ) :
-    σ.R (f ^ n) = (σ.R f) ^ n := by
-  induction n with
-  | zero => rw [pow_zero, pow_zero, R_one σ]
-  | succ k ih => rw [pow_succ, σ.hRmul _ _ (pow_ne_zero k hf) hf, ih, pow_succ]
+/- [SYN2-S1 SWEEP-1, 2026-07-31] The four private Stage-engine micro-copies
+(w_one, w_pow, R_one, R_pow) are DELETED — single proof source is the ResVal
+Stage-keyed engine (`Moves/ResVal.lean`, statements α-identical); uses re-pointed
+to `ResVal.w_one`/`ResVal.w_pow`/`ResVal.R_pow`. -/
 
 open Classical in
 /-- A slot subset `T ⊆ range M` of a family of coefficients yields a `Φ̂`-development of its
@@ -159,7 +133,7 @@ private lemma block_R (σ : Stage p F) {Φhat : Polynomial ℤ_[p]} (hmon : Φha
     intro _ hTS
     rw [Finset.sum_singleton, Finset.sum_singleton,
         σ.hRmul _ _ (hTS a (Finset.mem_singleton_self a)).1 (pow_ne_zero _ hmon.ne_zero),
-        R_pow σ Φhat hmon.ne_zero a]
+        ResVal.R_pow σ Φhat hmon.ne_zero a]
   | cons a s ha hs ih =>
     intro hT hTS
     have haS := hTS a (Finset.mem_cons_self a s)
@@ -170,7 +144,7 @@ private lemma block_R (σ : Stage p F) {Φhat : Polynomial ℤ_[p]} (hmon : Φha
     have hxne : C a * Φhat ^ a ≠ 0 := mul_ne_zero haS.1 (pow_ne_zero _ hmon.ne_zero)
     have hyne : (∑ j ∈ s, C j * Φhat ^ j) ≠ 0 := subdev_ne hmon hdeg hsT hb (hsS b hb).1
     have hwx : σ.w (C a * Φhat ^ a) = m := by
-      rw [σ.hwmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), w_pow σ Φhat hmon.ne_zero a]
+      rw [σ.hwmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), ResVal.w_pow σ Φhat hmon.ne_zero a]
       exact haS.2
     have hwy : σ.w (∑ j ∈ s, C j * Φhat ^ j) = m := by
       obtain ⟨j, hjs, hjC, hjeq⟩ := subdev_weight σ hK1 hdeg hsT hyne
@@ -186,7 +160,7 @@ private lemma block_R (σ : Stage p F) {Φhat : Polynomial ℤ_[p]} (hmon : Φha
     rw [Finset.sum_cons,
         σ.hRadd _ _ hxne hyne hconsne (hwx.trans hwy.symm) (hwcons.trans hwx.symm),
         ih hsT hsS,
-        σ.hRmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), R_pow σ Φhat hmon.ne_zero a]
+        σ.hRmul _ _ haS.1 (pow_ne_zero _ hmon.ne_zero), ResVal.R_pow σ Φhat hmon.ne_zero a]
 
 open Classical in
 /-- **The minimizing-slot reading at the standard lift** (D.3(d)/D.8, formerly the honest gap):

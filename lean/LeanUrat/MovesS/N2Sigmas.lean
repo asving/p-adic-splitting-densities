@@ -1066,6 +1066,21 @@ noncomputable def n2ChainCore : RS4Chain n2T n2M n2RB n2hdc n2hK n2F where
     show (1 : ℝ) * (Fintype.card (n2M.Box q₀ N) : ℝ)
       = (((Finset.univ : Finset (n2M.Box q₀ N))).card : ℝ)
     rw [one_mul, Finset.card_univ]⟩
+  -- W17ii(ii) REPAIR CENSUS (queue item 4, 2026-07-31) at the device carriers
+  -- (shDom = {0}, visH = {0}, shEvtH = univ): the singleton domain is finite;
+  -- events are the full box (nonempty by boxpos); visH = shDom so the off-visH
+  -- and disjointness laws are vacuous — TV-H4's "must survive the guard" gate.
+  shdom_fin := fun _ _ => Set.finite_singleton (0 : ℕ)
+  shdom_no_stray := fun _ _ _ _ q₀ _ => ⟨0, fun N _ => by
+    haveI := n2M.boxpos q₀ N
+    exact Finset.univ_nonempty⟩
+  vis_sub_shdom := fun _ _ _ _ => ⟨0, fun N _ h hh =>
+    Set.mem_singleton_iff.mpr (Finset.mem_singleton.mp hh)⟩
+  shevt_off_vis := fun _ _ h hh _ _ => ⟨0, fun N _ hnot =>
+    absurd (Finset.mem_singleton.mpr (Set.mem_singleton_iff.mp hh)) hnot⟩
+  shevt_disj := fun _ _ N h hh h' hh' hne =>
+    absurd ((Finset.mem_singleton.mp hh).trans
+      (Finset.mem_singleton.mp hh').symm) hne
   Rval := n2RvalF
   r_bdd := n2_r_bdd
   decidedTotal := fun q₀ => ∑ σ ∈ n2SigmasSet, n2RvalF σ q₀

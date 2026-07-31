@@ -45,6 +45,20 @@ band) — absurd.
 U10c and `zc_step`: STOP UPHELD, see the records at their sorries.  U10d: NEW
 BLOCKED-SUSPECT-FALSE record at its sorry (over-quantification: OLD pins persist beyond
 the shrinking rim).
+
+QUEUE ITEM 17 EXECUTED (2026-07-31, Asvin sign-off on the consolidated queue; this
+round): THE UNIT IS NOW SORRY-FREE.
+* U10d `zc_step_confine` RESTATED to the adjudicated fresh-cut restriction (the §C rim
+  rule confines FRESH cuts only) and PROVED from U3's `mkFresh_band`; the old ∀-pins
+  form's compiled negation witness is `U10d_negWitness.lean` (leaf intact, M1 note
+  appended there).
+* U10c `zc_step_interiorZero` PROVED: the NEW `ZCSeedLaws.step_shape` law (the Q8-class
+  D5-fence designer addendum, HC2/Defs — root_shape's all-reads generalization)
+  excludes interior value pins; strip pins close by spec clause (3) + `theta_norm` at
+  the bridge bound; OLD pins close by the recorded ih-threading (statement gains the
+  `ih : ZCData …` row that `zc_step` already carries) + spec clause (4) + `theta_norm`.
+* `zc_step` PROVED (statement byte-unchanged): downset_exact mp = provenance + bridge
+  at pins of `Σ_{i+2}`, mpr = `zc_step_freshExact`, interior_zero = U10c.
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
@@ -823,110 +837,144 @@ theorem zc_step_freshExact {n N : ℕ} {H : History p F} {keys : ℕ → Polynom
   intro j hj hfloor
   exact downset_pinned S vOf hcoh hreal hbox hN (i+1) hi1 j hj hfloor
 
-/-- U10c — interior ZEROS: interior pins of the new state solve to the literal 0. -/
+/-- U10c — interior ZEROS: interior pins of the new state solve to the literal 0.
+
+QUEUE ITEM 17 EXECUTED (2026-07-31, Asvin sign-off on the consolidated queue): the
+STOP-record's two named residues are both discharged —
+* the STEP-READ value-interior-exclusion law is now the `ZCSeedLaws.step_shape` field
+  (the Q8-class D5-fence designer addendum, `HC2/Defs.lean`; root_shape's all-reads
+  generalization) — interior pins of read `i+1` are STRIP pins;
+* the OLD-pin leg's `ih`-threading (named by the third-prover record as part of the
+  block) is executed: the statement GAINS the `ih : ZCData …` hypothesis row that the
+  assembled `zc_step` already carries (hypothesis-side, matching zc_step's own binder;
+  zc_step's statement stays byte-unchanged) — old interior pins have literal-zero old
+  solves (`ih.interior_zero` through the rim chain), which spec clause (4) + `theta_norm`
+  carry to the new state.
+Proof: every interior pin of `Σ_{i+2}` sits at-or-below the new floor (provenance +
+the general-step bridge — the U10a machinery), so `theta_norm` makes `Θ_{i+1}` literal
+there; the pin's provenance dichotomy (spec clause (2)) is strip-clause (clause (3)),
+value-clause (EXCLUDED by `step_shape` at read `i+1`), or old pin (clause (4) +
+`ih.interior_zero`); both live legs close by the U9c tail (`u9c_probe_tail`). -/
 theorem zc_step_interiorZero {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
     (hcoh : HistoryCoherent H) (hreal : Realizable H) (hbox : InBox n H) (hN : 1 ≤ N)
-    (i : ℕ) (hi1 : i + 1 < H.nodes.length) :
+    (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (ih : ZCData (mkSigma H n N S vOf (i+1)) (boxChart n N) (H.htH (i+1)) (H.floorH (i+1))
+      ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth)) :
     ∀ j : Fin (n * N),
       (boxChart n N j).2 < (H.nodes[i+1]'hi1).μ * (H.nodes[i+1]'hi1).childWidth →
       (mkSigma H n N S vOf (i+2)).pinned j = true →
       ∀ f : (j' : Fin (n * N)) → j' < j → ZMod p,
         (mkSigma H n N S vOf (i+2)).solve j f = 0 := by
-  -- STOP-THE-LINE (2026-07-28, DC-3 round) — UNPROVABLE AS STATED; in fact REFUTABLE.
-  -- The exact step-analogue of the recorded U9c STOP (`zc_root_interior_zero`), and the
-  -- pre-declared stuck-rule firing site (blueprint §5/§6: "whatever step resists
-  -- derivation is a candidate zcSeed law, D5's fence").  DC-3 did NOT and could not
-  -- unlock this leg — it discharged only the existence/recursion supply (U10a/b/d).
-  --
-  -- THE OBSTRUCTION (definitional, not effort).  `ZCData.interior_zero` demands a
-  -- LITERAL solve `(mkSigma … (i+2)).solve j f = 0`.  `mkSigma … (i+2)` is the choice
-  -- `pinTransportSystem`, so its `solve` is `h.choose`'s, constrained ONLY through
-  -- `IsFreshAttach`.  Post-DC-3 clauses (3)/(4) give Θ-IMAGE zeros — for `x` with
-  -- `x c = solve`, only `S.Theta (i+1) x c = 0` — never `solve = 0`.  Concretely the
-  -- witness `freshAttach_exists` builds has strip solve `= U c − corr c = − corr c`
-  -- (`U c = 0`), literally `0` IFF the unitriangular correction `corr` of `S.Theta (i+1)`
-  -- vanishes on that coordinate.  A raw lawful seed may carry a nonzero constant
-  -- correction on a strip coordinate (respecting `Theta_uni`/`pres_theta`/`pres_block`
-  -- /`downsets_literal`, which never constrain it) — the U9c `badSeed` — making this
-  -- goal FALSE.  So no argument from the current `ZCSeedLaws` + `ih` + U3 + `hreal`
-  -- reaches it (`ih.interior_zero` gives OLD literal zeros, which clause (4) only carries
-  -- forward as Θ-image zeros).
-  --
-  -- Second, independent gap (the U9c(ii) analogue): interior VALUE coordinates are not
-  -- excluded — nothing forces the read's span slots at/beyond the rim — so a value-pinned
-  -- interior coordinate exists whose `solve` is the emitted `vOf`-digit, generically ≠ 0.
-  --
-  -- REPAIR (designer sign-off, N-queue; FORBIDDEN here by statement-fence / Defs-untouched
-  -- / zero-axiom): the Θ-normalization zcSeed law (corrections vanish at read-`i` pinned
-  -- coordinates — C.1.5(2)'s (ZC-a) normalized presentation, MOVES 3984–3988), plus the
-  -- RootD4-class value-interior-exclusion law.  Statement kept byte-identical per the fence.
-  --
-  -- ESCALATION CONFIRMED (Fable, second prover, 2026-07-28) — STOP UPHELD after an
-  -- independent source-level re-derivation: (a) `IsFreshAttach` clause (3) probes ALL
-  -- digit vectors `x` (not just presentational ones), so with `IsUnitriangular`'s
-  -- `Θ x c = x c + corr (x|₍<c₎)` EVERY spec witness has strip solve `= −corr` at every
-  -- prefix — literal zero IFF `corr ≡ 0` as a total function; (b) no `PresentSeed` /
-  -- `ZCSeedLaws` field mentions `Theta` beyond `Theta_uni` (bare existence of `corr`) /
-  -- `pres_theta` / `pres_block`, and the in-tree machine-checked `badSeed`
-  -- (`scratch_U7_recursion_false.lean`: U27's green gate + the constant shift, corr ≡ 1,
-  -- every seed law discharged) lifts one read up (shift at read `i+1`, length `i+2`;
-  -- `downsets_literal`/`pres_attain` never see the modified `pres (i+2)`); (c) U10c has
-  -- NO `ih`, so even the no-witness fallback branch is unsupported.  SHARPENING for the
-  -- designer round: the pending Θ-normalization law must assert `corr = 0` AT ALL RAW
-  -- digit vectors (unconditional in `x`) — a law conditioned on `pres` leaves clause
-  -- (3)'s arbitrary-`x` forcing (and this ∀-`f` goal) false unchanged.
-  --
-  -- THIRD-PROVER CONFIRMATION (2026-07-31, hc2-p-phase-hard round) — STOP UPHELD AGAIN.
-  -- Note the D5-fence sign-off has since LANDED `theta_norm` in `ZCSeedLaws` (used by
-  -- the now-PROVED U9c), which closes the STRIP leg here too (clause (3) + theta_norm
-  -- at the U10a bound, exactly the U9c tail).  What remains missing is ONLY the
-  -- STEP-READ value-interior-exclusion law (`root_shape` is root-only BY DESIGN — its
-  -- docstring records the faithful weakening at read 0); without it an interior VALUE
-  -- pin of read i+1 solves to the emitted vOf-digit ≠ 0 (this round's floor-collapse
-  -- machinery even shows every interior value coordinate IS freshly pinned — U10b —
-  -- so the gap is not hypothetical).  Also the OLD-pin leg would need `ih` (clause (4)
-  -- + theta_norm), which this statement does not carry.  The R-3 risk record
-  -- (BRIDGE_BP2 §5) and the HK-37 countermodel unit own the disposition; the repair
-  -- stays a Q8-class D5-fence event (designer sign-off), never a prover fill.
-  sorry
+  -- (The full pre-repair STOP/escalation history — DC-3 obstruction, badSeed, the
+  -- second- and third-prover confirmations — is preserved in git history and the
+  -- BRIDGE_BP2 §5 R-3 risk record; the queue-17 record above supersedes it.)
+  classical
+  intro j hj hpin f
+  have hm : i < H.nodes.length := by omega
+  have hsig : mkSigma H n N S vOf (i+2)
+      = pinTransportSystem (mkSigma H n N S vOf (i+1)) (S.Theta (i+1))
+          (mkFresh H n N S vOf (i+1) hi1) := by
+    show (if hi : i + 1 < H.nodes.length then
+        pinTransportSystem (mkSigma H n N S vOf (i+1)) (S.Theta (i+1))
+          (mkFresh H n N S vOf (i+1) hi)
+      else mkSigma H n N S vOf (i+1)) = _
+    rw [dif_pos hi1]
+  -- witness existence at read i+1 (the downset_pinned block, ih-free)
+  have hunp : ∀ c : Fin (n * N), (mkSigma H n N S vOf (i+1)).pinned c = true →
+      ¬ ∃ cl ∈ (mkFresh H n N S vOf (i+1) hi1).clauses, c ∈ cl.support := by
+    intro c hc hex
+    obtain ⟨cl, hcl, hcs⟩ := hex
+    have hband := mkFresh_band H n N S vOf (i+1) hi1 cl hcl c hcs
+    obtain ⟨k, hk, hkm, cl', hcl', hcs'⟩ := pin_src S vOf (i+1) c hc
+    have hedge := (mkFresh_band H n N S vOf k hk cl' hcl' c hcs').2.2
+    have hrim : (boxChart n N c).2
+        < (H.nodes[i]'hm).μ * (H.nodes[i]'hm).childWidth := by
+      have h1 := hband.1
+      rwa [prevRim_succ n hm] at h1
+    have hbr := bridge_ht hcoh hreal hk (by omega : k ≤ i) hm (boxChart n N c) hrim hedge
+    have hfl : (H.nodes[i]'hm).staircase (boxChart n N c).2
+        ≤ H.floorH (i+1) (boxChart n N c).2 := by
+      rw [C2_floorH_succ H i hm]
+      exact le_max_right _ _
+    exact absurd (lt_of_lt_of_le hband.2.1 (le_trans hbr hfl)) (lt_irrefl _)
+  have hasg : ∀ cl ∈ (mkFresh H n N S vOf (i+1) hi1).clauses,
+      ∃ u : Fin (n * N) → ZMod p, ∀ x, cl.sat x ↔ ∀ c ∈ cl.support, x c = u c :=
+    fun cl hcl => clause_assign cl (mkFresh_codim S vOf (i+1) hi1 cl hcl)
+  have hEx : ∃ D' : Locus p (n * N),
+      IsFreshAttach (mkSigma H n N S vOf (i+1)) (S.Theta (i+1))
+        (mkFresh H n N S vOf (i+1) hi1) D' :=
+    freshAttach_exists (mkSigma H n N S vOf (i+1)) (S.Theta_uni (i+1))
+      (mkFresh H n N S vOf (i+1) hi1) hasg hunp
+  have spec := pinTransportSystem_spec (mkSigma H n N S vOf (i+1)) (S.Theta (i+1))
+    (mkFresh H n N S vOf (i+1) hi1) hEx
+  have hpin' : (pinTransportSystem (mkSigma H n N S vOf (i+1)) (S.Theta (i+1))
+      (mkFresh H n N S vOf (i+1) hi1)).pinned j = true := by
+    rw [← hsig]; exact hpin
+  -- the Θ-normalization bound: the interior pin is at-or-below the NEW floor
+  -- (provenance + the general-step bridge, exactly the U10a machinery)
+  have hbound : ((H.htH (i+2) (boxChart n N j) : ℚ) : WithBot ℚ)
+      ≤ H.floorH (i+2) (boxChart n N j).2 := by
+    obtain ⟨k, hk, hkm, cl, hcl, hcs⟩ := pin_src S vOf (i+2) j hpin
+    have hedge := (mkFresh_band H n N S vOf k hk cl hcl j hcs).2.2
+    have hbr := bridge_ht hcoh hreal hk (by omega : k ≤ i + 1) hi1 (boxChart n N j) hj hedge
+    refine le_trans hbr ?_
+    rw [C2_floorH_succ H (i+1) hi1]
+    exact le_max_right _ _
+  have hthetalit : ∀ x : Fin (n * N) → ZMod p, S.Theta (i+1) x j = x j :=
+    fun x => S.zcSeed.theta_norm (i+1) hi1 j hbound x
+  rw [hsig]
+  -- pin provenance at THIS step (spec clause (2)): old pin ∨ fresh cut of read i+1
+  rcases (spec.2.1 j).mp hpin' with hold | ⟨cl, hclmem, hjsup⟩
+  · -- OLD pin: interior to the OLD rim (rim chain), so ih gives literal-zero old
+    -- solves; clause (4) + theta_norm carry them to the new state.
+    have hjold : (boxChart n N j).2 < (H.nodes[i]'hm).μ * (H.nodes[i]'hm).childWidth :=
+      lt_of_lt_of_le hj (rim_step hcoh hi1)
+    have hzero : ∀ g : (j' : Fin (n * N)) → j' < j → ZMod p,
+        (mkSigma H n N S vOf (i+1)).solve j g = 0 :=
+      fun g => ih.interior_zero j hjold hold g
+    exact u9c_probe_tail _ _ j f (fun x hx => spec.2.2.2 j hold hzero x hx) hthetalit
+  · -- FRESH cut of read i+1: strip (clause (3)) or value (EXCLUDED by step_shape)
+    rcases List.mem_append.mp hclmem with hstrip | hval
+    · obtain ⟨c, hcmem, rfl⟩ := List.mem_map.mp hstrip
+      have hjc : j = c :=
+        Finset.mem_singleton.mp ((C1_stripClause (p := p) c).choose_spec.1 ▸ hjsup)
+      subst hjc
+      exact u9c_probe_tail _ _ j f
+        (fun x hx => spec.2.2.1 j ⟨(C1_stripClause (p := p) j).choose, hclmem,
+          (C1_stripClause (p := p) j).choose_spec.1,
+          (C1_stripClause (p := p) j).choose_spec.2.2⟩ x hx)
+        hthetalit
+    · exfalso
+      obtain ⟨jh, hjhmem, rfl⟩ := List.mem_map.mp hval
+      rw [valueClause_support' S vOf (i+1) hi1 jh.1 (valueSlots_spanSlot jh.2)] at hjsup
+      unfold levelSet at hjsup
+      obtain ⟨-, hfs, hhtv⟩ := Finset.mem_filter.mp hjsup
+      exact S.zcSeed.step_shape (i+1) hi1 j hj
+        ⟨by rw [hfs]; exact valueSlots_spanSlot jh.2, by rw [hfs]; exact hhtv⟩
 
-/-- U10d — rim-lead PLACEMENT/CONFINEMENT: every pin of the new state sits inside the
-standing read's constraint region (base index < the OLD rim = `prevRim (i+2)`'s
-predecessor region; no fresh pin escapes the factor interior — §C rim rule / DOM(3)). -/
+/-- U10d — rim-lead PLACEMENT/CONFINEMENT, FRESH-CUT RESTRICTED (QUEUE ITEM 17
+EXECUTED, 2026-07-31, Asvin sign-off — the adjudicated preferred option): every FRESH
+cut of the standing read `i+1` sits inside the read's constraint region (base index
+`< prevRim n (i+1)` — §C rim rule / DOM(3), which confines FRESH cuts only).
+The former ∀-pins form was an E-phase over-quantification, REFUTED-as-stated by the
+compiled negation witness `U10d_negWitness.lean` (`confine_bound_fails` /
+`zcStepConfineStmt_false_of_config`: old pins PERSIST beyond the shrinking rim — the
+BLOCKED-SUSPECT-FALSE record of the hc2-p-phase-hard round, upgraded to
+evidence-complete at PROBE-C; full mechanism in that leaf's header). Zero in-tree
+consumers were re-pointed (grep: only U13 consumes `zc_step`, never this). -/
 theorem zc_step_confine {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]}
     (S : PresentSeed p F H n N keys) (vOf : VOf p (n * N))
     (hcoh : HistoryCoherent H) (hreal : Realizable H) (hbox : InBox n H) (hN : 1 ≤ N)
     (i : ℕ) (hi1 : i + 1 < H.nodes.length) :
-    ∀ j : Fin (n * N), (mkSigma H n N S vOf (i+2)).pinned j = true →
+    ∀ j : Fin (n * N),
+      (∃ cl ∈ (mkFresh H n N S vOf (i+1) hi1).clauses, j ∈ cl.support) →
       (boxChart n N j).2 < H.prevRim n (i + 1) := by
-  -- STATUS (2026-07-28, DC-3 round): DC-3-UNLOCKED, PROVABLE, deferred.  Reading the pin
-  -- of `mkSigma … (i+2)` off `pinTransportSystem_spec` clause (2) (existence via DC-3's
-  -- `freshAttach_exists`) splits it into (old pin of `Σ_{i+1}`, confined by `ih` via
-  -- `ih.downset_exact`'s rim guard) ∨ (fresh cut of read `i+1`, confined by U3
-  -- `mkFresh_band`'s `prevRim` clause).  Left as a clean `sorry`; the unit STOPs at U10c.
-  --
-  -- BLOCKED-SUSPECT-FALSE (2026-07-31, hc2-p-phase-hard round) — the recorded route
-  -- above is REFUTED and the statement is believed FALSE as stated:
-  -- (a) the route's old-pin leg misreads `ZCData`: `downset_exact` is an iff GUARDED by
-  --     interiority — it does NOT confine pins to the interior (ZCData has NO
-  --     confinement field; the note's (ZC-b) "leads at rim" clause was never
-  --     transcribed) — and U10d carries no `ih` in any case;
-  -- (b) OLD pins genuinely escape: pins PERSIST down the whole chain (fallback and
-  --     witness branches alike, spec clause (2) Or.inl), and the ROOT read pins its
-  --     full band `{(ℓ,b) : b < n, ℓ ≤ line₀.at b}` against `prevRim n 0 = n`.  On any
-  --     legal configuration with `s0₀ = 0`, `ustar₀ > 0` and `wSide₀ < n` (InBox only
-  --     demands `s0₀ + wSide₀ ≤ n`), the coordinate `(0, wSide₀)` is a STRIP cut of
-  --     read 0 (height 0 < ustar₀ = line₀.at wSide₀ by `hLineU`, so in-band non-value),
-  --     hence pinned in every `Σ_{i+2}`; yet `wSide₀ ≥ μ₀·cW₀` (`C3_widthConfine` at
-  --     root `Dwidth = 1`) `≥ μ_i·cW_i = prevRim n (i+1)` (the rim chain `rim_step`) —
-  --     violating the claimed bound at EVERY i.  The true §C content is U3's
-  --     fresh-cut confinement (PROVED) — "no FRESH pin escapes"; the ∀-pins rendering
-  --     is an E-phase over-quantification.
-  -- Zero in-tree consumers (grep: only U13 consumes `zc_step`, never `zc_step_confine`).
-  -- Repair = restrict to read-(i+1) fresh cuts OR add the (ZC-b) rim-lead field —
-  -- either is a statement/Defs-fence event (designer sign-off), not a prover fill.
-  sorry
+  -- The restricted content IS U3's band confinement: a fresh cut lies in the read's
+  -- band, whose first clause is the rim bound.
+  intro j hex
+  obtain ⟨cl, hcl, hcs⟩ := hex
+  exact (mkFresh_band H n N S vOf (i+1) hi1 cl hcl j hcs).1
 
 /-- U10 assembled — the inductive step: (ZC) at prefix `i+1` re-establishes (ZC) at
 prefix `i+2` (the `i+1` instance of `JetSetup.zc` from the `i` instance). -/
@@ -938,20 +986,20 @@ theorem zc_step {n N : ℕ} {H : History p F} {keys : ℕ → Polynomial ℤ_[p]
       ((H.nodes[i]'(by omega)).μ * (H.nodes[i]'(by omega)).childWidth)) :
     ZCData (mkSigma H n N S vOf (i+2)) (boxChart n N) (H.htH (i+2)) (H.floorH (i+2))
       ((H.nodes[i+1]'hi1).μ * (H.nodes[i+1]'hi1).childWidth) := by
-  -- STOP-THE-LINE (2026-07-28, DC-3 round): BLOCKED — this packages `downset_exact`
-  -- (`fun j hj => ⟨U10a-derived →, zc_step_freshExact j hj⟩`) with `interior_zero :=
-  -- zc_step_interiorZero`, and its `interior_zero` field IS U10c, refutable-as-stated
-  -- above.  DC-3 unlocked the recursion/existence supply (U10a/b/d), but the assembled
-  -- (ZC) re-establishment is FALSE for the U9c `badSeed` until the Θ-normalization zcSeed
-  -- law (+ value-interior-exclusion law) are signed off — the pre-declared D5-fence
-  -- residue.  Statement byte-unchanged per the fence.
-  --
-  -- UPDATE (2026-07-31, hc2-p-phase-hard round): the `downset_exact` field is now FULLY
-  -- SUPPLIED (the mp direction by the U10a machinery at pins of `Σ_{i+2}` — provenance
-  -- + `bridge_ht` at M := i+1; the mpr by `zc_step_freshExact`, both PROVED above,
-  -- ih-free).  The block is now EXACTLY U10c/`interior_zero` (the missing step-read
-  -- value-interior-exclusion zcSeed law + the ih-threading of clause (4)); see U10c's
-  -- third-prover confirmation.  BLOCKED stands; statement byte-unchanged per the fence.
-  sorry
+  -- QUEUE ITEM 17 EXECUTED (2026-07-31): PROVED, statement byte-unchanged, exactly as
+  -- the hc2-p-phase-hard update predicted — `downset_exact` mp by the U10a machinery
+  -- at pins of `Σ_{i+2}` (provenance + `bridge_ht` at M := i+1), mpr by the PROVED
+  -- `zc_step_freshExact`; `interior_zero` by the now-PROVED U10c
+  -- (`zc_step_interiorZero`, closed by the `step_shape` zcSeed law + the recorded
+  -- ih-threading — see its queue-17 record).
+  refine ⟨fun j hj => ⟨fun hpin => ?_, zc_step_freshExact S vOf hcoh hreal hbox hN i hi1 j hj⟩,
+    fun j hj hpin f =>
+      zc_step_interiorZero S vOf hcoh hreal hbox hN i hi1 ih j hj hpin f⟩
+  obtain ⟨k, hk, hkm, cl, hcl, hcs⟩ := pin_src S vOf (i+2) j hpin
+  have hedge := (mkFresh_band H n N S vOf k hk cl hcl j hcs).2.2
+  have hbr := bridge_ht hcoh hreal hk (by omega : k ≤ i + 1) hi1 (boxChart n N j) hj hedge
+  refine le_trans hbr ?_
+  rw [C2_floorH_succ H (i+1) hi1]
+  exact le_max_right _ _
 
 end LeanUrat.MovesJ

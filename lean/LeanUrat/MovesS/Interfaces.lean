@@ -124,8 +124,11 @@ non-all-active pools (ratification 2026-07-28 finding 1); `wsh_ok` is denominato
 regularity ONLY (R53) — CL-17(ii)'s production burden is `W17ii` above, its
 inheritance the projection-def `RS4Chain.wsh17_pin` below (R57, retyped from the
 degenerate bare-`Prop` field at ratification finding 4): U-28 takes
-`h17 : C.wsh17_pin` as an explicit premise; NO unconditional marking while it is
-open. -/
+`h17 : C.wsh17_pin` as an explicit premise.  QUEUE ITEM 4 (2026-07-31): the
+chain gains the five W17ii(ii) repair-census fields (`shdom_fin` …
+`shevt_disj`, see the block below) and `wsh17_pin` is now PROVED for every
+chain (`MovesV.w17ii_pin`); `h17` stays a premise byte-identically — consumers
+may discharge it by that theorem. -/
 structure RS4Chain (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M)
     (hdc : DegCons T) (hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e)
     (F : ShapeFam T) where
@@ -173,6 +176,35 @@ structure RS4Chain (T : TableShape n) (M : MeasuredSide T) (RB : RatBurdens T M)
       = ((shEvtH Ŝ h q₀ N).card : ℝ)
   wshval_card : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools, ∃ N₀, ∀ N ≥ N₀,
     WshVal Ŝ q₀ * (Fintype.card (M.Box q₀ N) : ℝ) = ((shEvt Ŝ q₀ N).card : ℝ)
+  -- W17ii(ii) REPAIR CENSUS (QUEUE ITEM 4, Asvin sign-off 2026-07-31; the
+  -- TV-H2/ESCALATION E-1 ruling = menu (b′) of BRIDGE_BP3_TV_2026-07-30.md
+  -- §3.G REV 2, shevt_disj ratified in the same grant).  EVIDENCE: the TV-H1b
+  -- COMPILED countermodel (quarantine/TV_H1b_w17iiNeg_2026-07-30.lean.txt —
+  -- infinite shDom, shWeightH ≡ 1, every pre-repair law satisfied, clause (ii)
+  -- FALSE), so `w17ii_wave4` was false as stated; these five fields are exactly
+  -- the census the counting squeeze needs, and clause (ii) is now PROVED for
+  -- every chain (MovesV/V7_w17ii.lean — the banked C14 sorry retired).
+  /-- The Q4-preferred summability guard, in the finiteness form the squeeze
+  needs: the height domain is finite (the countermodel's `shDom = univ : Set ℕ`
+  is excluded HERE).  A bare `Summable` guard is recorded DEAD (it proves
+  ∃-sum, not the `WshVal` tie — REV 2 finding 1). -/
+  shdom_fin : ∀ Ŝ ∈ F.Sh, (shDom Ŝ).Finite
+  /-- Census (a′): no stray heights — every domain height eventually shows a
+  nonempty event at every pool. -/
+  shdom_no_stray : ∀ Ŝ ∈ F.Sh, ∀ h ∈ shDom Ŝ, ∀ q₀ ∈ M.Pools,
+    ∃ N₀, ∀ N ≥ N₀, (shEvtH Ŝ h q₀ N).Nonempty
+  /-- Census (a′): the visible heights eventually lie in the domain. -/
+  vis_sub_shdom : ∀ Ŝ ∈ F.Sh, ∀ q₀ ∈ M.Pools, ∃ N₀, ∀ N ≥ N₀,
+    ∀ h ∈ visH Ŝ q₀ N, h ∈ shDom Ŝ
+  /-- Census (a′), off-visH vanishing: a domain height that is not visible at
+  level N eventually carries the empty event there. -/
+  shevt_off_vis : ∀ Ŝ ∈ F.Sh, ∀ h ∈ shDom Ŝ, ∀ q₀ ∈ M.Pools,
+    ∃ N₀, ∀ N ≥ N₀, h ∉ visH Ŝ q₀ N → shEvtH Ŝ h q₀ N = ∅
+  /-- E-1's NEW law (previously carried by NO field — REV 2 finding 1): pairwise
+  DISJOINTNESS of the per-height events across the visible heights, so that
+  |shEvt| = |biUnion| = Σ_h |shEvtH| (the counting squeeze's card additivity). -/
+  shevt_disj : ∀ Ŝ (q₀ : ℚ) (N : ℕ), ∀ h ∈ visH Ŝ q₀ N, ∀ h' ∈ visH Ŝ q₀ N,
+    h ≠ h' → Disjoint (shEvtH Ŝ h q₀ N) (shEvtH Ŝ h' q₀ N)
   Rval : Multiset T.VType → ℚ → ℝ
   r_bdd : ∀ σ (q₀ : ℚ), q₀ ∈ M.Pools → Rval σ q₀ ∈ Set.Icc (0 : ℝ) 1
   decidedTotal : ℚ → ℝ
@@ -189,9 +221,11 @@ sum.  It is now a PROJECTION-NAMED def whose content is `W17ii` at the chain's
 OWN carriers — so U-28's premise `h17 : C.wsh17_pin` stays byte-identical while
 no instance can weaken the burden (it is no longer instance-supplied data).  The
 n = 2 gate's substantive `n2Wsh17Device` is exactly this Prop at the device
-carriers (discharged sorry-free at unit `n2_rsh`).  R57 discipline unchanged:
-the checksum consumes `h17` as an explicit OPEN premise; NO unconditional
-marking while W17ii is open. -/
+carriers (discharged sorry-free at unit `n2_rsh`).  R57 discipline: the
+checksum consumes `h17` as an explicit premise.  QUEUE ITEM 4 (2026-07-31):
+with the repair-census fields above, this pin is PROVED for EVERY chain —
+`MovesV.w17ii_pin` (the banked C14 sorry retired); the premise shape is kept
+byte-identical for U-28's stability. -/
 def RS4Chain.wsh17_pin {T : TableShape n} {M : MeasuredSide T} {RB : RatBurdens T M}
     {hdc : DegCons T} {hK : ∀ e, e ∈ Finset.Icc 1 n → KmatHyp T e} {F : ShapeFam T}
     (C : RS4Chain T M RB hdc hK F) : Prop :=

@@ -81,6 +81,12 @@ Elaboration deviations (each recorded in `MANIFEST.json` "deviations"):
   gains the two pre-assigned laws `theta_norm` + `root_shape` (the U9b/U9c residue —
   NOTE root_shape's faithful weakening recorded at the field). Every addition is
   hypothesis-side or additive; no axiom, no weakening.
+* QUEUE ITEM 17 (2026-07-31, Asvin sign-off on the consolidated queue — the U10c
+  designer addendum, Q8-class D5-fence event): `ZCSeedLaws` gains the STEP-READ law
+  `step_shape` — `root_shape`'s all-reads generalization (the (ZC-b) "leads at rim"
+  interior content; U10c's third-prover record named exactly this residue). U10c
+  (`U10_zcStep.zc_step_interiorZero`) and the assembled `zc_step` close with it.
+  Hypothesis-side, additive; discharged at U27's gate by the root_shape arithmetic.
 Flagged for semantic-guardian review throughout (the trust boundary).
 -/
 
@@ -373,6 +379,21 @@ structure ZCSeedLaws {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   root_shape : ∀ (h0 : 0 < H.nodes.length) (c : Fin m),
       (coordOf c).2 < (H.nodes[0]'h0).μ * (H.nodes[0]'h0).childWidth →
       ¬ IsValueCoord H coordOf 0 (H.nodes[0]'h0) c
+  /-- STEP-READ VALUE-INTERIOR EXCLUSION [QUEUE ITEM 17 SIGN-OFF LAW, 2026-07-31 — the
+  U10c designer addendum (Q8-class D5-fence event); the U10c third-prover record's exact
+  named residue]: NO read's factor interior carries an exact-valuation (value)
+  coordinate — value pins are the (ZC-b) RIM LEADS (`ZCData` docstring, MovesC/Defs:
+  "(ZC-b) LEADS AT RIM — every other pin is at a rim base index"; §C C.1(ii)'s rim rule
+  keeps the DIG leads at-or-beyond the read's factor interior `μ_r·cW_r`). This is
+  `root_shape`'s all-reads generalization — that field is the `r = 0` instance, KEPT for
+  byte-stability of U9c's consumption — with the SAME faithful weakening (the value-
+  COORDINATE-free form, not the refuted `μ·childWidth ≤ s0·Dwidth` draft; see
+  root_shape's docstring). Consumer: U10c (`zc_step_interiorZero` — interior pins of a
+  step read are then STRIP pins or Θ-literal old zeros, closing `zc_step`). Discharged
+  at U27's gate by the root_shape arithmetic (single-read history). -/
+  step_shape : ∀ (r : ℕ) (hr : r < H.nodes.length) (c : Fin m),
+      (coordOf c).2 < (H.nodes[r]'hr).μ * (H.nodes[r]'hr).childWidth →
+      ¬ IsValueCoord H coordOf r (H.nodes[r]'hr) c
 
 /-- The graded-presentation SEED (D5, rev-2 PRUNED per audit GAP-5): exactly the fields of
 `JetSetup` that MovesC's honest boundary defers to the unbuilt graded ring (§B2-DEF R4.5

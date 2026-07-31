@@ -358,3 +358,18 @@ theorem w17ii_false : ¬ negChain.wsh17_pin := by
   exact one_ne_zero (tendsto_nhds_unique hone hzero)
 
 end LeanUrat.MovesV.W17iiNeg
+
+-- ============================================================================
+-- DATED NOTE (M1 hygiene; QUEUE ITEM 4 EXECUTED, 2026-07-31):
+-- THIS FILL REFUTES THE PRE-2026-07-31 FORM OF `RS4Chain` ONLY — the structure
+-- WITHOUT the five W17ii(ii) repair-census fields (shdom_fin, shdom_no_stray,
+-- vis_sub_shdom, shevt_off_vis, shevt_disj) added at Asvin's 2026-07-31
+-- sign-off (BRIDGE_ADJUDICATIONS_2026-07-30.md item 4; TV-H2/E-1 ruling (b′)).
+-- Against the repaired structure this text does NOT typecheck: `negChain`
+-- pins `shDom ≡ Set.univ : Set ℕ` (infinite), excluded by `shdom_fin` — the
+-- guard whose absence the refutation exploited.  `w17ii_wave4` clause (ii)
+-- is now PROVED for every chain (MovesV/V7_w17ii.lean, Lean-core; counting
+-- squeeze over the census fields).  The in-tree TV_H1b.lean module carries
+-- the retirement record + the compiled cure seal (negCarrier_shdom_finite).
+-- This archive stays as the historical countermodel record; do NOT re-land.
+-- ============================================================================

@@ -133,7 +133,11 @@ theorem perShape_law (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
           ((Lat Tr h).cellAt H) ((scat Tr h).splitFrame H hH).S)
     (hdict : ∀ Tr (h : Tr ∈ shapeClass Tr₀ T χ), ∀ H ∈ Tr.chains,
       (Lat Tr h).siteExp H = shapeExp (shapeOfH H n) n)
-    (hdict₀ : ∀ H ∈ Tr₀.chains, L₀.siteExp H = shapeExp (shapeOfH H n) n) :
+    (hdict₀ : ∀ H ∈ Tr₀.chains, L₀.siteExp H = shapeExp (shapeOfH H n) n)
+    -- [QUEUE ITEM 5 (E5 hoist ripple 1, TV-A3 shape) 2026-07-31: the ∀-g (U)∧(R)
+    --  row, Tr-independent — ONE row serves every class member's `treeExp` call.]
+    (hUR : ∀ g : Fin n → ZMod p,
+      TrackUniqOn T χ trackOf g ∧ TrackRepOn T χ trackOf g) :
     (∑ Tr ∈ (shapeClass_finite Tr₀ T χ).toFinset,
         Nat.card ↥{x | (Tr : VTree p F).fiberAt T χ x})
         * p ^ (AofTr Tr₀ L₀)
@@ -150,7 +154,7 @@ theorem perShape_law (Tr₀ : VTree p F) (T : TreeModel p F n N m pol)
     have hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H := hmem.2.1
     have hreal : Realizes T χ Tr := hmem.2.2
     have hE8 := treeExp Tr T χ trackOf CA hχ hrc hred hsib hreal (Lat Tr hmem)
-      (scat Tr hmem) (hjcm Tr hmem) (hsibT Tr hmem) hdet
+      (scat Tr hmem) (hjcm Tr hmem) (hsibT Tr hmem) hdet hUR
     have hA : AofTr Tr (Lat Tr hmem) = AofTr Tr₀ L₀ :=
       AofTr_shape_const Tr₀ Tr T CA.toCellData χ heq L₀ (Lat Tr hmem)
         (hdict Tr hmem) hdict₀

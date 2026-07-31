@@ -22,7 +22,19 @@
       requires it); if hdom cannot be discharged from this row at the
       witness, the exit is ESCALATION (named-hypothesis addition on the
       pack, flagged for ratification) — never a forced proof and never a
-      silent row change on the existing V7_rbC statement. -/
+      silent row change on the existing V7_rbC statement.
+    [QUEUE ITEM 11 EXECUTED, 2026-07-31 (Asvin sign-off; ledger
+    lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 11): the round-3
+    census confirmed the hdom leak at exactly this pack (escalation (ii)
+    fired — hdom is NOT dischargeable from the old row; it certifies the
+    order-0 perimeter of V's entrance domains, which no other row member
+    supplies).  The ratified addition lands here and on `ratBurdens_exists`
+    (V7_rbC) and `measured_seam` (TV_F6), so duty (ii) is now RESOLVED:
+    rows match again, WITH hdom.  The sorry below still stands — it waits
+    on the seam chain TV-F2/F3/F4 (`seam_coherence_exists` →
+    `seam_degree_exists` → `seam_cell_exists`), whose value legs are the
+    remaining open supply (tg/j/jcell legs; see the TV_F2 record — the
+    ι-legs are now PROVED at the measuredOf witness, TV_F2b).] -/
 import LeanUrat.MovesV.TV_F4
 
 set_option linter.style.longLine false
@@ -76,18 +88,18 @@ theorem ratBurdens_of_seam {n : ℕ} {C : CtsFamily n} {S : StepSys n}
      jcell_sum := hco.jcell_sum }⟩
 
 /-- TV-F5 ASSEMBLY: the `ratBurdens_exists` producer — statement
-byte-identical to the named open duty at MovesV/V7_rbC.lean:42-51 (premise
-row verbatim; conclusion ∃ T M, TablePins ∧ guarded |Box| card tie ∧
-Nonempty (RatBurdens T M)).  Proof sketch: eliminate TV-F4's cumulative
-`seam_cell_exists` (discharging its extra hdom premise from this row or
-escalating — duty (ii) in the header) and apply `ratBurdens_of_seam`; the
+byte-identical to the named open duty at MovesV/V7_rbC.lean (premise
+row verbatim — both rows carry `hdom` since queue item 11; conclusion
+∃ T M, TablePins ∧ guarded |Box| card tie ∧ Nonempty (RatBurdens T M)).
+Proof sketch: eliminate TV-F4's cumulative `seam_cell_exists` (its hdom
+premise is now IN this row — item 11) and apply `ratBurdens_of_seam`; the
 witness is the SHARED measuredOf (T, M) — TV-F6 certifies the sharing with
 the LedgerIV side. -/
 theorem ratBurdens_exists_pack {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V) (hEU : EntU V)
-    (hEC : EntCount V) (hA : AffEnt n) :
+    (hEC : EntCount V) (hA : AffEnt n) (hdom : EntDomOrder0 V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →

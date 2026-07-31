@@ -75,13 +75,23 @@ row of `treeN_stable` (E11_treeN.lean:90-98) inhabited — KBTotTower + a
 deterministic realizable tree — together with the FAILURE of `TreeNStable`.
 Structurally FALSE as typed: see the module docstring and
 `tv_b1_chart_carrier_uninhabited`. Kept as the gate's record of WHAT was
-attempted; the post-Q2 repaired statement re-keys this Prop. -/
+attempted; the post-Q2 repaired statement re-keys this Prop.
+[QUEUE ITEM 1 SEAM ADAPTER 2026-07-31 (M1-hygiene note, appended by the item-1
+executor — the ONLY touch to this leaf): `KBTotTower`'s chart carrier is now
+GUARDED in MovesT/Defs (the ratified chi-at repair this gate demanded), so the
+application below reads it through `fun N' _ => χat N'`. The compiled law
+`tv_b1_chart_carrier_uninhabited` stands UNCHANGED and refutes the PRE-REPAIR
+(unguarded, pre-2026-07-31) carrier form of `KBTotTower`/`TreeExpNs` — it is
+the witness that FORCED the repair, not a countermodel of any repaired
+statement. The residual unguarded binders (this def's own χat, `TreeNStable`,
+`TreeNStableStmt`, `StableInputs`, the E11/B7 rows) remain fenced for the B7
+execution's guard collapse.] -/
 def TVB1Countermodel : Prop :=
   ∃ (n N₀ : ℕ) (pol : CanonPolicy 2 (ZMod 2))
     (Tat : ∀ N', N₀ ≤ N' → TreeModel 2 (ZMod 2) n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node 2 (ZMod 2) → Polynomial (ZMod 2)),
-    KBTotTower pol Tat χat trackOf ∧
+    KBTotTower pol Tat (fun N' _ => χat N') trackOf ∧
     ∃ Tr : VTree 2 (ZMod 2),
       (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) ∧
       (∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr) ∧

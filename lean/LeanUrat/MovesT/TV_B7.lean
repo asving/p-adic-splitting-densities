@@ -94,7 +94,11 @@ theorem treeN_stable_hoisted (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p))
-    (hcov : KBTotTower pol Tat χat trackOf)
+    -- [QUEUE ITEM 1 SEAM ADAPTER 2026-07-31 (appended by the item-1 executor —
+    --  the KBTotTower chart carrier is now guarded in Defs; the E11-mirror
+    --  adapter. This row's own χat binder stays unguarded pending the B7
+    --  execution's guard collapse — module-docstring fence stands).]
+    (hcov : KBTotTower pol Tat (fun N' _ => χat N') trackOf)
     (Tr : VTree p F)
     (hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H)
     (hreal : ∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr)
@@ -113,7 +117,8 @@ def TreeNStableStmtHoisted (pol : CanonPolicy p F) : Prop :=
   ∀ {N₀ : ℕ} (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p)),
-    KBTotTower pol Tat χat trackOf →
+    -- [QUEUE ITEM 1 SEAM ADAPTER 2026-07-31 — same as `treeN_stable_hoisted`.]
+    KBTotTower pol Tat (fun N' _ => χat N') trackOf →
     ∀ Tr : VTree p F,
       (∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) →
       (∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr) →

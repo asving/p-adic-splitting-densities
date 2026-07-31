@@ -242,3 +242,25 @@ the D-SC carrier layer is now FULLY falsifier-certified. G13'
 (theoremU_bridged') gate conditions: G19a DONE, G19b DONE, Q5 audit DONE;
 E-1 ratification rides queue item 4 (R-C, in flight) — G13' dispatches with
 the post-repair round.
+
+## OPEN-MATH FIRST RETURNS (2026-07-31, dual-agent cross-checks)
+M09 cl11_ksub GENERAL-n: DUAL-PROVED (Fable + Codex, INDEPENDENT IDENTICAL
+proofs — pigeonhole from DegCons.size_sum alone: m*e <= e forces m=1, c<=m
+forces c=1). Fable compiled it green in scratch (ksubM1C1T_of_degCons +
+UCarriers.cl11_ksub_general, Lean-core). FORMALIZATION UNIT DISPATCHED. The
+BK.cl11_ksub row becomes DERIVED at every pack and every n; row deletion vs
+keep-and-supply flagged as future cleanup (keep-and-supply executes now, no
+statement change).
+M11 cl19_rep / Slot_jcInvHist: DUAL-REFUTED (same 4 != 0 cross-multiplication
+counterexample at n=2; the corpus's own G11c falsifier already witnesses it).
+STRUCTURAL FINDING (Fable): jcInvHist is the UNIQUE slot of the thirteen that
+internalizes its carrier quantifier — so it is outright FALSE, not
+falsifiable-at-degenerate; theoremU is SAFE (bare-Prop slot) but G13'
+(theoremU_bridged) would carry a provably-false hypothesis.
+NEW QUEUE ITEM 22 (needs sign-off): carrier-parameterize Slot_jcInvHist'
+n T CA (inner statement verbatim; Codex concurs on the repair shape and
+supplies the semantic-discharge ladder O1-O3 as open lemmas). G13' drafting
+GATED on item 22 in addition to E-1.
+Codex twin verdicts so far (12/18): M09 PROVED, M11 REFUTED, M15+M16
+LITERATURE, M01/M04/M05/M07/M10/M14 REDUCED; Fable fleet 14/18 done —
+full cross-check matrix at fleet completion.

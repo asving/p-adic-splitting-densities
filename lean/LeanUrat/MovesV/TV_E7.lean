@@ -37,37 +37,43 @@ namespace LeanUrat.MovesV
 witness — ∃ (T, M), TablePins C T ∧ (the guarded |Box| card tie) ∧
 Nonempty (LedgerIV T M), with T := ctsTable C hfin and M := measuredOf
 V X cp hfin.  Conclusion byte-identical to V7_livC's `ledgerIV_inst`; row
-= its row + hfin (see the file-header statement record). -/
+= its row + hfin (see the file-header statement record).
+[QUEUE ITEM 11 EXECUTED, 2026-07-31 (Asvin sign-off; ledger
+lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 11): the ratified
+`hdom : EntDomOrder0 V` row addition landed (here, TV_E6's comp_once, and
+V7_livC's `ledgerIV_inst`); the 2026-07-30 blocked record (one law short —
+comp_once's hdom) is RESOLVED and the recorded mechanical assembly is
+executed below at the SHARED witness, exactly as sketched.  V7_livC's own
+sorry still stands behind the hfin ratification item of this file's
+header (its row has no `hfin`), see the record there.] -/
 theorem ledgerIV_inst_assembly {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (V : CtsMeasured n C S) {TE : TmplEvents n S}
     (X : XHD n S TE V) (cp : CellPolyPack n C S V) (hVA : ValA n C S V)
     (hHMC : HMC TE X.d)
     (hb : P1CtblAdd V X.w) (hc : P1NullRem V X.w)
     (hd : P1FixedHeightExact V X.w)
-    (hEC : EntCount V) (hEU : EntU V) (hfin : Finite (Skeleton n)) :
+    (hEC : EntCount V) (hEU : EntU V) (hdom : EntDomOrder0 V)
+    (hfin : Finite (Skeleton n)) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
         Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
-      Nonempty (MovesS.LedgerIV T M) := by
-  -- [PROVER RECORD, 2026-07-30 — BLOCKED on exactly ONE law: LedgerIV group
-  -- (9) `comp_once` needs the named hypothesis `hdom : EntDomOrder0 V`
-  -- (see the TV-E6(d) record — the file-header-anticipated fence event; the
-  -- certificates for hEU's census-constancy clause are not mintable from
-  -- this row).  ALL OTHER LedgerIV fields are PROVED at (ctsTable,
-  -- measuredOf): groups (1)-(2) TV-E3 (xhd_sum/no_stray/no_orphan/d4r0),
-  -- (3)-(5) TV-E4 (part1/rep_indep/meas_card), (6)-(7) TV-E5b
-  -- (kstep_one/hmc/act_target via the PROVED TV-E5a bridge), (8) TV-E6
-  -- (init_agg/init_count/ent_count_card).  The TablePins conjunct
-  -- (ctsTable_pins) and the |Box| tie (rfl at Box := V.Box) are proved.
-  -- Once the orchestrator ratifies the hdom row addition, this assembly is
-  -- mechanical: ⟨ctsTable C hfin, measuredOf V X cp hfin, ctsTable_pins C
-  -- hfin, fun _ _ _ _ => rfl-genre card tie, ⟨{ xhd_sum := measuredOf_xhd_sum
-  -- V X cp hVA hHMC hb hc hd hEC hEU hfin, … , comp_once := (the hdom-fed
-  -- leg) }⟩⟩.  Honest sorry per the campaign discipline; do NOT swap in a
-  -- degenerate-entrance hybrid M (it would break the Q5 SHARED witness the
-  -- F-cluster's laws are proved over and gut the ledger's entrance content —
-  -- the M4 vacuous-seam lesson).
-  sorry
+      Nonempty (MovesS.LedgerIV T M) :=
+  ⟨ctsTable C hfin, measuredOf V X cp hfin, ctsTable_pins C hfin,
+    fun _ _ _ _ => rfl,
+    ⟨{ xhd_sum := measuredOf_xhd_sum V X cp hVA hHMC hb hc hd hEC hEU hfin
+       xhd_no_stray := measuredOf_xhd_no_stray V X cp hVA hHMC hb hc hd hEC hEU hfin
+       xhd_no_orphan := measuredOf_xhd_no_orphan V X cp hVA hHMC hb hc hd hEC hEU hfin
+       d4r0 := measuredOf_d4r0 V X cp hVA hHMC hb hc hd hEC hEU hfin
+       part1 := measuredOf_part1 V X cp hVA hHMC hb hc hd hEC hEU hfin
+       rep_indep := measuredOf_rep_indep V X cp hVA hHMC hb hc hd hEC hEU hfin
+       meas_card := measuredOf_meas_card V X cp hVA hHMC hb hc hd hEC hEU hfin
+       kstep_one := measuredOf_kstep_one V X cp hVA hHMC hb hc hd hEC hEU hfin
+       hmc := measuredOf_hmc V X cp hVA hHMC hb hc hd hEC hEU hfin
+       act_target := measuredOf_act_target V X cp hVA hHMC hb hc hd hEC hEU hfin
+       init_agg := measuredOf_init_agg V X cp hVA hHMC hb hc hd hEC hEU hfin
+       init_count := measuredOf_init_count V X cp hVA hHMC hb hc hd hEC hEU hfin
+       ent_count_card := measuredOf_ent_count_card V X cp hVA hHMC hb hc hd hEC hEU hfin
+       comp_once := measuredOf_comp_once V X cp hVA hHMC hb hc hd hEC hEU hdom hfin }⟩⟩
 
 end LeanUrat.MovesV

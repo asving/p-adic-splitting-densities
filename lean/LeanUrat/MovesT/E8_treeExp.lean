@@ -609,9 +609,12 @@ private theorem cone_charge (Tr : VTree p F) (T : TreeModel p F n N m pol)
 
 /-- **T-E8, TREE-EXP** (MOVES 7449–7456): μ{f : T_can^τ(f) = T} = ∏_{sites} jvol —
 every site charged exactly once, the ROOT INCLUDED — assembled from T-E5 (the root
-clause; inherits its fenced `hnostray` sorryAx, disclosed) and the cone recursion
+clause) and the cone recursion
 (`cone_charge`) over the adjudicated per-site row. Statement re-key record in the
-file header. -/
+file header. [QUEUE ITEM 5 (E5 hoist ripple 1, TV-A3 shape) 2026-07-31: gains the
+∀-g (U)∧(R) row `hUR` (appended last), consumed at the internal `fiber_root_split`
+call at the scaffold's root datum `sc.g`; the former inherited E5 sorryAx is GONE —
+Lean-core footprint.] -/
 theorem treeExp (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (χ : Fin n → Fin m) (trackOf : Node p F → Polynomial (ZMod p))
     (CA : CellAssign p F n N m pol T χ trackOf)
@@ -626,15 +629,18 @@ theorem treeExp (Tr : VTree p F) (T : TreeModel p F n N m pol)
       2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
       SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
         (sc.splitFrame H hH).S)
-    (hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H) :
+    (hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H)
+    (hUR : ∀ g : Fin n → ZMod p,
+      TrackUniqOn T χ trackOf g ∧ TrackRepOn T χ trackOf g) :
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H)
       = p ^ m := by
   classical
   obtain ⟨x₀, hx₀⟩ := hreal
-  -- ==== the root clause (T-E5 at the scaffold's own root data) ====
+  -- ==== the root clause (T-E5 at the scaffold's own root data; the (U)∧(R)
+  -- row fired at sc.g — the item-5 hoist threading, TV-A3) ====
   have hE5 := fiber_root_split Tr T χ trackOf CA hχ hrc hred hsib
-    ⟨x₀, hx₀⟩ sc.g sc.root sc.hcr sc.hg
+    ⟨x₀, hx₀⟩ sc.g sc.root sc.hcr sc.hg (hUR sc.g).1 (hUR sc.g).2
   -- ==== the track groups are the head cones ====
   have hheadmem : ∀ i, oneNode (sc.root.headOf i) (sc.hcr i) ∈ Tr.chains := by
     intro i

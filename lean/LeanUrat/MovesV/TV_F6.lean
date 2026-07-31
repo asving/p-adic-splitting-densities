@@ -16,11 +16,21 @@
     construction convention: THIS declaration is the supply seam future
     wiring must eliminate — separate elimination of the two ∃s does NOT
     compose.  Premise row = the UNION of the two duties' rows (verbatim:
-    ledgerIV_inst's V X cp hVA hHMC hb hc hd hEC hEU ∪ ratBurdens_exists's
-    V X cp hVA hTie J hEU hEC hA).  Both existing conclusions re-derive from
-    it byte-identically (the two PROVED corollaries below — union row, since
-    a corollary of the union-row theorem cannot shrink the row; the EXISTING
-    two statements stay untouched as the row-minimal forms).
+    ledgerIV_inst's V X cp hVA hHMC hb hc hd hEC hEU hdom ∪
+    ratBurdens_exists's V X cp hVA hTie J hEU hEC hA hdom).  Both existing
+    conclusions re-derive from it byte-identically (the two PROVED
+    corollaries below — union row, since a corollary of the union-row
+    theorem cannot shrink the row; the EXISTING two statements stay
+    untouched as the row-minimal forms).
+    [QUEUE ITEM 11 EXECUTED, 2026-07-31 (Asvin sign-off; ledger
+    lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md item 11): the union row
+    below gains the ratified `hdom : EntDomOrder0 V` — both duty rows now
+    carry it (V7_livC / V7_rbC), so the union does too.  `measured_seam`'s
+    sorry still stands: the LedgerIV leg is PROVED at the shared witness
+    (`ledgerIV_inst_assembly`, TV_E7 — but importing TV_E7 here would be a
+    seam-ownership move left to the F-prover), while the RatBurdens leg
+    waits on the TV-F2/F3/F4 seam chain (tg/j/jcell value legs open;
+    ι-legs proved, TV_F2b).]
     Sketch: T := tableShape_inst's witness, M := the shared measuredOf;
     LedgerIV from the E-cluster bundles (E3-E6 at E7's assembly), RatBurdens
     from `ratBurdens_of_seam` at the SAME (T, M, K) (TV-F5); the box tie is
@@ -43,7 +53,8 @@ theorem measured_seam {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hb : P1CtblAdd V X.w) (hc : P1NullRem V X.w)
     (hd : P1FixedHeightExact V X.w)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V)
-    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n) :
+    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
+    (hdom : EntDomOrder0 V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
@@ -61,14 +72,15 @@ theorem ledgerIV_inst_of_seam {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hb : P1CtblAdd V X.w) (hc : P1NullRem V X.w)
     (hd : P1FixedHeightExact V X.w)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V)
-    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n) :
+    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
+    (hdom : EntDomOrder0 V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
         Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
       Nonempty (MovesS.LedgerIV T M) := by
   obtain ⟨T, M, h1, h2, h3, _⟩ :=
-    measured_seam V X cp hVA hHMC hb hc hd hTie J hEU hEC hA
+    measured_seam V X cp hVA hHMC hb hc hd hTie J hEU hEC hA hdom
   exact ⟨T, M, h1, h2, h3⟩
 
 /-- TV-F6 re-derivation, burdens leg (PROVED from the producer): the
@@ -80,14 +92,15 @@ theorem ratBurdens_exists_of_seam {n : ℕ} {C : CtsFamily n} {S : StepSys n}
     (hb : P1CtblAdd V X.w) (hc : P1NullRem V X.w)
     (hd : P1FixedHeightExact V X.w)
     (hTie : MDomTie V TE X.d) (J : JCells n C S V)
-    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n) :
+    (hEU : EntU V) (hEC : EntCount V) (hA : AffEnt n)
+    (hdom : EntDomOrder0 V) :
     ∃ (T : MovesS.TableShape n) (M : MovesS.MeasuredSide T),
       TablePins C T ∧
       (∀ q₀ ∈ V.Pools, ∀ N : ℕ, Nonempty (V.Box q₀ N) →
         Fintype.card (M.Box q₀ N) = @Fintype.card _ (V.finB q₀ N)) ∧
       Nonempty (MovesS.RatBurdens T M) := by
   obtain ⟨T, M, h1, h2, _, h4⟩ :=
-    measured_seam V X cp hVA hHMC hb hc hd hTie J hEU hEC hA
+    measured_seam V X cp hVA hHMC hb hc hd hTie J hEU hEC hA hdom
   exact ⟨T, M, h1, h2, h4⟩
 
 end LeanUrat.MovesV

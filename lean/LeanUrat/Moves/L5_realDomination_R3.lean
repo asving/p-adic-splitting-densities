@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.Moves.Defs
 import LeanUrat.Moves.DefsT
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L5_realDomination_R3 — per-stage domination `h_r > e_r·f_r` as the INDUCTIVE STEP (D.9(c))
@@ -32,20 +33,14 @@ set_option maxHeartbeats 400000
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- `w 1 = 0` (from multiplicativity). -/
-private lemma w_one_eq_zero (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  linarith
+/- [SYN2-S1 SWEEP-1, 2026-07-31] `w_one_eq_zero` DELETED (= `ResVal.w_one`,
+α-identical); `w_pow_Phi`/`w_sum_ge` below are non-identical SHAPES (Φ-specialized;
+disjunctive) — kept as one-line ADAPTERS over the ResVal engine, per the
+re-point-if-identical-else-record rubric. -/
 
 /-- `w(Φ^m) = m · w Φ = m · h`. -/
 private lemma w_pow_Phi (σ : Stage p F) (m : ℕ) : σ.w (σ.Φ ^ m) = (m : ℤ) * σ.h := by
-  have hΦ0 : σ.Φ ≠ 0 := σ.hmonic.ne_zero
-  induction m with
-  | zero => simpa using w_one_eq_zero σ
-  | succ n ih =>
-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero n hΦ0) hΦ0, ih, σ.hwΦ]
-    push_cast; ring
+  rw [ResVal.w_pow σ σ.Φ σ.hmonic.ne_zero m, σ.hwΦ]
 
 /-- Ultrametric over a finite sum: if every nonzero summand has weight `≥ M`, then the whole
 sum is either zero or has weight `≥ M`. -/
@@ -53,23 +48,9 @@ private lemma w_sum_ge (σ : Stage p F) (M : ℤ) (f : ℕ → Polynomial ℤ_[p
     (hf : ∀ i ∈ s, f i ≠ 0 → M ≤ σ.w (f i)) :
     (∑ i ∈ s, f i) = 0 ∨ M ≤ σ.w (∑ i ∈ s, f i) := by
   classical
-  induction s using Finset.induction_on with
-  | empty => left; simp
-  | @insert a t ha ih =>
-    have hft : ∀ i ∈ t, f i ≠ 0 → M ≤ σ.w (f i) := fun i hi => hf i (Finset.mem_insert_of_mem hi)
-    have iht := ih hft
-    rw [Finset.sum_insert ha]
-    by_cases hfa : f a = 0
-    · rw [hfa, zero_add]; exact iht
-    · have hMfa : M ≤ σ.w (f a) := hf a (Finset.mem_insert_self a t) hfa
-      rcases eq_or_ne (∑ i ∈ t, f i) 0 with hst | hst
-      · rw [hst, add_zero]; right; exact hMfa
-      · have hMt : M ≤ σ.w (∑ i ∈ t, f i) := iht.resolve_left hst
-        by_cases htot : f a + ∑ i ∈ t, f i = 0
-        · left; exact htot
-        · right
-          calc M ≤ min (σ.w (f a)) (σ.w (∑ i ∈ t, f i)) := le_min hMfa hMt
-            _ ≤ σ.w (f a + ∑ i ∈ t, f i) := σ.hwult _ _ hfa hst htot
+  by_cases h : (∑ i ∈ s, f i) = 0
+  · exact Or.inl h
+  · exact Or.inr (ResVal.w_sum_ge σ s f M hf h)
 
 /-- Standard-lift weight LOWER bound `e·h·g ≤ w(Φ̂)` (the inequality half of `L3.liftWeight`,
 proved inline: all terms of the displayed lift have weight `e·h·g`). -/

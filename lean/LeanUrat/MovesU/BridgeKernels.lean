@@ -242,15 +242,19 @@ structure BridgeKernels (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
       law package over the real carriers.  Q6 ADJUDICATED: kept a kernel row;
       if the S-area proves it at the real pack, the row moves out.
       SYN2-K2 PROBE RECORD (2026-07-31, `SynK2_cl6N2.lean`): the n = 2
-      instance discharge is REFUTED AT THE AS-BUILT PACK — the compiled
-      `n2_polyGeomLaws_isEmpty` shows `PolyGeomLaws n2T n2M n2RB` is EMPTY
-      (`scount_val` fails at the e ≠ 2 roster-PADDING outcomes: `pgZero`
-      carries `countS = 1` against an empty cell fiber; value-law-invisible,
-      confined to padding — `n2_countLaws_block2` proves both count laws at
-      the whole block-2 layer).  The row does NOT move out; the final n = 2
-      wiring MUST NOT instantiate this row at the unrepaired pack.  Discharge
-      path (adjudication, definition-change event): the val-preserving
-      `pgZero.countS := 0` repair recorded in the probe's header. -/
+      instance discharge was REFUTED AT THE PRE-REPAIR PACK — the compiled
+      `n2_polyGeomLaws_isEmpty` (git history of the probe file) showed
+      `PolyGeomLaws n2T n2M n2RB` EMPTY (`scount_val` failed at the e ≠ 2
+      roster-PADDING outcomes: `pgZero` carried `countS = 1` against an empty
+      cell fiber; value-law-invisible, confined to padding).
+      QUEUE ITEM 10 EXECUTED (Asvin sign-off 2026-07-31): the val-preserving
+      `pgZero.countS := 0` repair landed in `MovesS/N2PolyGeom.lean`; the
+      probe re-run is GREEN and the POSITIVE witness is compiled —
+      `n2_polyGeomLaws_nonempty : Nonempty (PolyGeomLaws n2T n2M n2RB)`
+      (with `n2_countLaws_block2` unchanged).  The final n = 2 wiring MAY
+      supply this row by that witness (the pre-authorized "moves out"
+      clause's instance evidence; the generic-C row itself stays, per the
+      SYN2-K1 precedent — p-uniform/n-generic shape unchanged). -/
   cl6 : Nonempty (MovesS.PolyGeomLaws C.T C.MS C.RB)
   /-- CL-11's (K-SUB) m = 1 classification OVER THE REAL ROSTER
       (`CapstoneLedger.cl11_ksub`'s supply).  Q6 ADJUDICATED: kept a row

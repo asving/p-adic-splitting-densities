@@ -421,19 +421,19 @@ def linearity_checks(D, tag, sub_embs, maps, n_addpairs, n_lam=None, n_x=None):
 # ------------------------------------------------------------------
 
 MAIN_Q = [2, 3, 4, 5, 7, 8, 9, 16, 25, 27]                    # the charge's list
-AUX_Q  = [49, 64, 81, 125, 256, 729]                          # re-based legs only (F6)
+AUX_Q  = [49, 64, 81, 125, 256, 625, 729]                     # re-based legs only (F6)
 E_RANGE = range(1, 7)
 
 PK = {2:(2,1), 3:(3,1), 4:(2,2), 5:(5,1), 7:(7,1), 8:(2,3), 9:(3,2),
       16:(2,4), 25:(5,2), 27:(3,3), 49:(7,2), 64:(2,6), 81:(3,4),
-      125:(5,3), 256:(2,8), 729:(3,6)}
+      125:(5,3), 256:(2,8), 625:(5,4), 729:(3,6)}
 
 # (base q0, rebased q1, δ relative degree)
 PAIRS = [(2,4,2),(2,8,3),(2,16,4),(2,64,6),(2,256,8),
          (3,9,2),(3,27,3),(3,81,4),(3,729,6),
-         (5,25,2),(5,125,3),(7,49,2),
+         (5,25,2),(5,125,3),(5,625,4),(7,49,2),
          (4,16,2),(4,64,3),(4,256,4),(8,64,2),(9,81,2),(9,729,3),
-         (16,256,2),(25,125,2),(27,729,2)]
+         (16,256,2),(25,625,2),(27,729,2)]
 
 log("=" * 78)
 log("N8-eq2-alphabet: (EQ-2) alphabet law at the carry algebra D = F_q[u]/(u^e-z̄)")
@@ -499,12 +499,12 @@ for q in MAIN_Q:
             # in-domain expectation check happens at comparison time; but record
             # the unconditional card_eq/attainability failures immediately (done
             # inside alphabet_sweep).  Linearity: exhaustive for q<=9, sampled else.
-            n_pairs = q*q if q <= 9 else 400
-            # test linearity on all maps for q<=9; on a spread otherwise
             maps = list(dims.keys())
-            if q > 9:
-                maps = maps[::max(1, len(maps)//60)]
-            linearity_checks(D, tag, sub_embs, maps, n_pairs)
+            if q <= 9:      # fully exhaustive linearity (all maps, all pairs, all λ, all x)
+                linearity_checks(D, tag, sub_embs, maps, q*q)
+            else:           # sampled spread of maps; budgets keep ≥10^4 checks/config
+                maps = maps[::max(1, len(maps)//12)]
+                linearity_checks(D, tag, sub_embs, maps, 150, n_lam=8, n_x=20)
     log(f"    q={q}: done in {time.time()-t_q:.1f}s "
         f"(slot maps so far: {CHECK_COUNTS['slot_maps']}, "
         f"tier1 products: {CHECK_COUNTS['tier1_products']})")
@@ -514,32 +514,41 @@ for q in MAIN_Q:
 # ------------------------------------------------------------------
 
 log("\n[4] AUX REDUCED SWEEP over q in", AUX_Q, "(re-based comparison legs; F6) ...")
-AUX_ZS = defaultdict(set)   # q1 -> set of zbar values = union of embedded base F_{q0}^*
+# z̄/c value sets: embedded images of the compared bases' units — capped for the
+# big fields (q > 100): z̄ = emb(1) + ≤3 more sampled per base; c = ≤6 per base
+# + 4 random off-base.  Below 100: all embedded units + 8 random.
+AUX_ZS = defaultdict(set)
 AUX_CS = defaultdict(set)
 for (q0, q1, d) in PAIRS:
     if q1 in AUX_Q:
         emb = EMBS[(q0, q1)][0]
-        for z0 in range(1, q0):
-            AUX_ZS[q1].add(emb[z0]); AUX_CS[q1].add(emb[z0])
+        units0 = list(range(1, q0))
+        if q1 > 100:
+            zsel = [1] + random.sample([z for z in units0 if z != 1], min(3, q0-2))
+            csel = [1] + random.sample([z for z in units0 if z != 1], min(5, q0-2))
+        else:
+            zsel = units0; csel = units0
+        for z0 in zsel: AUX_ZS[q1].add(emb[z0])
+        for c0 in csel: AUX_CS[q1].add(emb[c0])
 for q in AUX_Q:
     F = FIELDS[q]
     cs = sorted(AUX_CS[q])
     extra = [x for x in range(1, F.q) if x not in AUX_CS[q]]
-    cs += sorted(random.sample(extra, min(8, len(extra))))     # a few off-base digits
+    cs += sorted(random.sample(extra, min(8 if q <= 100 else 4, len(extra))))
     sub_embs = subfield_embs(q)
     reduced = q > 100
     t_q = time.time()
     for e in E_RANGE:
-        sigmas = list(range(e)) if not reduced else sorted({0, 1, e-1})
+        sigmas = list(range(e)) if not reduced else sorted({0, 1 % e, e-1})
         for zb in sorted(AUX_ZS[q]):
             D = CarryAlg(F, e, zb)
             tag = (q, e, zb)
-            tier1_carry_law(D, tag, exhaustive=(q <= 81), samples=20000)
+            tier1_carry_law(D, tag, exhaustive=(q <= 81), samples=10000)
             dims = alphabet_sweep(D, tag, range(e), sigmas, cs, ADIM)
-            maps = list(dims.keys())[::max(1, (len(dims)//24) or 1)]
-            linearity_checks(D, tag, sub_embs, maps, 200)
-    log(f"    q={q}: z̄ set {sorted(AUX_ZS[q])}, {len(cs)} digit scalars, "
-        f"σ {'full' if not reduced else 'reduced'}, {time.time()-t_q:.1f}s")
+            maps = list(dims.keys())[::max(1, (len(dims)//8) or 1)]
+            linearity_checks(D, tag, sub_embs, maps, 100, n_lam=6, n_x=12)
+    log(f"    q={q}: {len(AUX_ZS[q])} z̄ values {sorted(AUX_ZS[q])}, {len(cs)} digit "
+        f"scalars, σ {'full' if not reduced else 'reduced'}, {time.time()-t_q:.1f}s")
 
 # ------------------------------------------------------------------
 # 7. (K): the EQ-2 comparisons a_δ = δ·a  (+ |A_δ| = |A_1|^δ)

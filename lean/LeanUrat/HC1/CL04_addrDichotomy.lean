@@ -126,6 +126,19 @@ card 𝔸 ≤ |F_Q|^{N'} < card F_{K+1} (needs only CI-1 + the CI-2 upper bound)
 gate with the counting identity now specified from existing laws; per the /goal
 decision rule this supports ratifying R-b (it alone keeps the MOVES 2160–2165
 dichotomy formal). CL-05's launch condition (this report) is satisfied.
+
+## DATED NOTE (2026-07-31, item-18 execution — M1 hygiene). The C6 fence
+## transition EXECUTED: `C6_alphabetCard` was repaired with the named
+## `Tower.cleanThreshold b γ := ∀ s : T.Addr b, T.aligned γ s → T.attainable γ s`
+## hypothesis guarding conjunct 2 (the hypothesis-guard form of the ratified
+## "independence/clean-threshold" repair — this file's Part-1 vocabulary is now
+## statement-consumed there), and the compiled `Tshallow` countermodel landed in
+## CL01c against the frozen `C6_stmt_pre_repair` copy. THIS file's banked probe
+## slot `CL04_dichotomy_probe` (below) is UNCHANGED: it targets display (4)'s ⟸
+## leg (an existential believed FALSE for every tower — the probe report above),
+## NOT the pre- or post-repair C6 statement; its sorry stays banked as the open
+## probe slot pending CL-05 (whose ⟸-leg proof would refute it constructively:
+## no such instance can exist once CI-1..CI-4 are proved).
 -/
 
 set_option linter.style.longLine false

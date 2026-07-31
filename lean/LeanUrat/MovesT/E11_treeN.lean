@@ -54,14 +54,18 @@ theorem treeN (Tr : VTree p F) (T : TreeModel p F n N (n * N) pol)
     (hsibT : ∀ H (hH : H ∈ Tr.chains),
       2 ≤ (CA.toCellData.branchSetOf (L.cellAt H)).card →
       SibCountAt T CA.toCellData χ (L.parentSt H) H.lastNode (L.cellAt H)
-        (sc.splitFrame H hH).S) :
+        (sc.splitFrame H hH).S)
+    -- [QUEUE ITEM 5 (E5 hoist ripple 2, TV-A4 shape) 2026-07-31: the ∀-g (U)∧(R)
+    --  row, appended last; passed through to the internal `treeExp` call.]
+    (hUR : ∀ g : Fin n → ZMod p,
+      TrackUniqOn T χ trackOf g ∧ TrackRepOn T χ trackOf g) :
     Nat.card ↥{x : Box p (n * N) | Tr.fiberAt T χ x} * p ^ AofTr Tr L
       = p ^ (n * N) := by
   -- T-E11 is T-E8 (`treeExp`) at the working level m := n·N; `AofTr Tr L` unfolds
   -- to `treeExp`'s exponent `n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H` (Defs §2.10).
   change Nat.card ↥{x : Box p (n * N) | Tr.fiberAt T χ x}
       * p ^ (n + ∑ H ∈ Tr.hfin.toFinset, L.siteExp H) = p ^ (n * N)
-  exact treeExp Tr T χ trackOf CA hχ hrc hred hsib hreal L sc hjcm hsibT hdet
+  exact treeExp Tr T χ trackOf CA hχ hrc hred hsib hreal L sc hjcm hsibT hdet hUR
 
 /- [2026-08-01 INTEGRATION NOTE: the `TreeNStable` DEF is HOISTED to Defs §2.10
 (verbatim), so the ∀-closure `TreeNStableStmt` can ride `RS1GivenPackage.tree_n`
@@ -105,7 +109,11 @@ theorem treeN_stable (pol : CanonPolicy p F) {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N'))
     (trackOf : Node p F → Polynomial (ZMod p))
-    (hcov : KBTotTower pol Tat χat trackOf)
+    -- [QUEUE ITEM 1 ADAPTER 2026-07-31: `KBTotTower`'s chart carrier is now
+    --  guarded; this row's OWN χat binder stays unguarded — its vacuity at n ≥ 1
+    --  is the standing TV-B1 fence, repaired by the B7 execution (guard collapse),
+    --  not by this adapter. Do NOT discharge by the vacuity.]
+    (hcov : KBTotTower pol Tat (fun N' _ => χat N') trackOf)
     (Tr : VTree p F)
     (hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H)
     (hreal : ∀ N' (h' : N₀ ≤ N'), Realizes (Tat N' h') (χat N') Tr) :

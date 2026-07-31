@@ -9,6 +9,7 @@ import LeanUrat.Moves.DefsT
 import LeanUrat.Moves.DefsCore
 import LeanUrat.Moves.L0_FactA_exists
 import LeanUrat.Moves.L0_FactB_unique
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L5_recSubst — the D.10 substitution identity in the common localization (§B2-DEF)
@@ -43,42 +44,10 @@ open Polynomial
 section
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- `R 1 = 1`. -/
-private lemma R_one' (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
-
-/-- `R (g^j) = (R g)^j` for `g ≠ 0`. -/
-private lemma R_pow' (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :
-    σ.R (g ^ j) = (σ.R g) ^ j := by
-  induction j with
-  | zero => rw [pow_zero, pow_zero, R_one']
-  | succ n ih => rw [pow_succ, σ.hRmul (g ^ n) g (pow_ne_zero n hg) hg, ih, pow_succ]
-
-/-- `w 1 = 0`. -/
-private lemma w_one' (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; linarith
-
-/-- `w (-f) = w f` (via the unit `-1`). -/
-private lemma w_neg' (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    σ.w (-f) = σ.w f := by
-  have hn1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
-  have key := σ.hwmul (-1) (-1) hn1 hn1
-  rw [neg_one_mul, neg_neg, w_one' σ] at key
-  have hw1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by linarith
-  have h2 := σ.hwmul (-1) f hn1 hf
-  rw [neg_one_mul, hw1, zero_add] at h2; exact h2
-
-/-- `w (g^j) = j·(w g)` for `g ≠ 0`. -/
-private lemma w_pow' (σ : Stage p F) (g : Polynomial ℤ_[p]) (hg : g ≠ 0) (j : ℕ) :
-    σ.w (g ^ j) = (j : ℤ) * σ.w g := by
-  induction j with
-  | zero => rw [pow_zero, w_one' σ]; simp
-  | succ n ih =>
-    rw [pow_succ, σ.hwmul (g ^ n) g (pow_ne_zero n hg) hg, ih]
-    push_cast; ring
+/- [SYN2-S1 SWEEP-1, 2026-07-31] The five private Stage-engine micro-copies
+(R_one', R_pow', w_one', w_neg', w_pow') are DELETED — single proof source is the
+ResVal Stage-keyed engine (α-identical statements); `w_sum_ge` below is a
+non-identical SHAPE (subsum-nonvanishing hypotheses), kept as a one-line ADAPTER. -/
 
 /-- A nonempty subfamily of the slots of a development sums to a nonzero element (Fact B). -/
 private lemma subsum_ne_zero {R : Type*} [CommRing R] [Nontrivial R] (Φ : Polynomial R)
@@ -112,28 +81,10 @@ private lemma subsum_ne_zero {R : Type*} [CommRing R] [Nontrivial R] (Φ : Polyn
 
 /-- Generalized ultrametric bound over a finset with nonvanishing subsums. -/
 private lemma w_sum_ge (σ : Stage p F) (T : ℕ → Polynomial ℤ_[p]) (γ' : ℤ) (S : Finset ℕ)
-    (h0 : ∀ j ∈ S, T j ≠ 0) (hw : ∀ j ∈ S, γ' ≤ σ.w (T j))
+    (_h0 : ∀ j ∈ S, T j ≠ 0) (hw : ∀ j ∈ S, γ' ≤ σ.w (T j))
     (hsub : ∀ S' ⊆ S, S'.Nonempty → (∑ j ∈ S', T j) ≠ 0) (hne : S.Nonempty) :
-    γ' ≤ σ.w (∑ j ∈ S, T j) := by
-  classical
-  revert h0 hw hsub hne
-  refine Finset.induction_on S ?_ ?_
-  · intro _ _ _ hne; exact absurd hne (by simp)
-  · intro a S' ha ih h0 hw hsub _
-    rw [Finset.sum_insert ha]
-    have hTa0 : T a ≠ 0 := h0 a (Finset.mem_insert_self a S')
-    have hwa : γ' ≤ σ.w (T a) := hw a (Finset.mem_insert_self a S')
-    rcases S'.eq_empty_or_nonempty with hE | hE
-    · subst hE; rw [Finset.sum_empty, add_zero]; exact hwa
-    · have hP0 : (∑ j ∈ S', T j) ≠ 0 := hsub S' (Finset.subset_insert a S') hE
-      have hPw : γ' ≤ σ.w (∑ j ∈ S', T j) :=
-        ih (fun j hj => h0 j (Finset.mem_insert_of_mem hj))
-          (fun j hj => hw j (Finset.mem_insert_of_mem hj))
-          (fun S'' h'' => hsub S'' (h''.trans (Finset.subset_insert a S'))) hE
-      have htot : T a + ∑ j ∈ S', T j ≠ 0 := by
-        have h := hsub (insert a S') (Finset.Subset.refl _) ⟨a, Finset.mem_insert_self a S'⟩
-        rwa [Finset.sum_insert ha] at h
-      exact le_trans (le_min hwa hPw) (σ.hwult (T a) (∑ j ∈ S', T j) hTa0 hP0 htot)
+    γ' ≤ σ.w (∑ j ∈ S, T j) :=
+  ResVal.w_sum_ge σ S T γ' (fun j hj _ => hw j hj) (hsub S Finset.Subset.rfl hne)
 
 /-- **The graded trichotomy engine.** Over a family of nonzero terms of common weight `γ`
 with nonvanishing subsums: the total weight is `≥ γ`; if it equals `γ` the residual is
@@ -212,7 +163,7 @@ theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (�
   have hΦ'ne : σ'.Φ ≠ 0 := σ'.hmonic.ne_zero
   have httne' : (-tt) ≠ 0 := neg_ne_zero.mpr httne
   have hΦ'ne2 : σ.Φ + -tt ≠ 0 := by rw [← sub_eq_add_neg, ← hΦ'eq]; exact hΦ'ne
-  have hwneg : σ.w (-tt) = σ.w σ.Φ := by rw [w_neg' σ tt httne, htw]
+  have hwneg : σ.w (-tt) = σ.w σ.Φ := by rw [ResVal.w_neg σ tt httne, htw]
   have hdegΦ' : σ'.Φ.degree = σ.Φ.degree := by
     rw [hΦ'eq]; exact Polynomial.degree_sub_eq_left_of_degree_lt htc
   have hRtt : σ.R (-tt) = - LaurentPolynomial.C cc := by
@@ -260,7 +211,7 @@ theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (�
     exact ⟨(Finset.mem_filter.mp h1.1).2, h1.2⟩
   have hTw : ∀ j, B j ≠ 0 → σ.w (B j * σ'.Φ ^ j) = σ.w (B j) + (j : ℤ) * σ.w σ.Φ := by
     intro j hBj
-    rw [σ.hwmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), w_pow' σ σ'.Φ hΦ'ne, hwΦ']
+    rw [σ.hwmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), ResVal.w_pow σ σ'.Φ hΦ'ne, hwΦ']
   have hT0M : ∀ j ∈ M, B j * σ'.Φ ^ j ≠ 0 := fun j hj =>
     mul_ne_zero (hMmem j hj).1 (pow_ne_zero _ hΦ'ne)
   have hTwM : ∀ j ∈ M, σ.w (B j * σ'.Φ ^ j) = σ.w f := fun j hj => by
@@ -366,8 +317,8 @@ theorem L5_recSubst {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F] (�
     simp only [Stage.ratRes] at h1
     rw [h1, hcC, LaurentPolynomial.eval₂_C, LaurentPolynomial.eval₂_C]
   -- slotwise: R'(B_j·Φ'^j) = R'(B_j)·z^j vs R(B_j·Φ'^j) = R(B_j)·(z − c̃)^j
-  rw [σ.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), R_pow' σ σ'.Φ hΦ'ne,
-    σ'.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), R_pow' σ' σ'.Φ hΦ'ne,
+  rw [σ.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), ResVal.R_pow σ σ'.Φ hΦ'ne,
+    σ'.hRmul (B j) (σ'.Φ ^ j) hBj (pow_ne_zero _ hΦ'ne), ResVal.R_pow σ' σ'.Φ hΦ'ne,
     hRΦ', σ'.hRΦ, hs1', map_mul, map_mul, map_pow, map_pow, hXchild, hXpar, hcoeffj]
 
 end LeanUrat.Moves

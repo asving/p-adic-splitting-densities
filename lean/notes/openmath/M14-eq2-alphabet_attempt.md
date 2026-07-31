@@ -346,3 +346,24 @@ irreducible degree-δ polynomial; Teichmüller via a ↦ a^{q^M}-iteration).
    must instantiate the Theorem (q ↦ q² exponent preservation); any exponent
    mismatch at a certified-stable position REFUTES (EQ-2)(ii) as a whole,
    not just the gate.
+
+### PRELIMINARY RUN (executed 2026-07-31, this session)
+
+A mini version of T1 was run (p = 3, tower x/(e,h) = (2,1)/ψ = z²+1, δ = 3;
+base side exhaustive over (ℤ/27)⁴ = 531441 boxes, GR(3³, 3)-side 4·10⁵
+biased samples; digit = un-normalized leading residual pair over the residue
+field; alphabet = {0} ∪ {values at weight exactly γ} — note the value set on
+{w ≥ γ} always contains 0, contributed by deeper B; a first run that forgot
+the 0 came out shifted by exactly one at every height, confirming the
+level-set reading of the domain). RESULT — all PASS:
+
+  |𝔸(γ)|, γ = 0..4:        3, 3, 9, 9, 9      (predicted 3, 3, 9, 9, 9)
+  |𝔸^{(δ)}(γ)|, γ = 0..4:  27, 27, 729, 729, 729 = |𝔸(γ)|³ exactly
+  shallow-span check (γ ∈ {0,1}: z̄-component ≡ 0 on both sides): PASS
+  additive closure of the shallow base alphabet: PASS
+
+This confirms the δ-scaling AT SHALLOW HEIGHTS (I(γ) = {0} ⊊ {0,1}) and the
+skeleton matching, on an in-domain instance (gcd(m, δ) = gcd(2, 3) = 1).
+Caveat: with d = 1 the per-slot alphabets are full fields, so the run does
+not yet exercise a NESTED proper sub-alphabet — that is T4's job (two-stage
+tower), still to be run.

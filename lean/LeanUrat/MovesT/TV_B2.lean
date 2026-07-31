@@ -114,23 +114,30 @@ structure StableInputs {N₀ : ℕ}
 /-- **SYN-C2 THE DERIVATION (StableInputs leg), PROVED** — the TV-B2 bundle
 follows from the ONE kernel row `ReadLocality` (MovesT/ReadLocality.lean;
 C2/N2 ratification: "TransferRow … and StableInputs (TV_B2) become derived
-lemmas").  `chart_pin` is the row's guarded field read through the
-unguarded-χat adapter `fun N' _ => χat N'` (the Defs carriers are still
-unguarded on disk — ReadLocality header, resolution 1); `child_cyl` is ONE
-application of `child_local` at the fixed-level face M = M' = N' (the
-below-tower-base corner Tr.thr n ≤ N < N₀ included — ReadLocality header,
-resolution 2: N is only the CUTOFF there).  With this lemma the eventual
+lemmas").  `chart_pin` is the DERIVED `< n` face of the row's corrected
+digit-slot pin (`ReadLocality.chart_pin_lt`), read through the
+unguarded-χat adapter `fun N' _ => χat N'` (the TreeNStable-family carriers are
+still unguarded on disk — ReadLocality header, resolution 1); `child_cyl` is ONE
+application of `child_local` at the fixed-level face M = M' = N'.
+[QUEUE ITEM 7 SEAM 2026-07-31 (appended by the item-7 executor — the ONLY
+touch to this file): the kernel's `child_local` now carries the below-base
+guard `N₀ ≤ N` (audit-1b GAP repair), so the below-tower-base corner
+Tr.thr n ≤ N < N₀ of `child_cyl` is NO LONGER derivable from the kernel —
+this derivation gains the premise `hbase : N₀ ≤ Tr.thr n` (under which the
+corner is empty; true at the bridge instance, where N₀ = 1 ≤ thr = … ⊔ 1).]
+With this lemma the eventual
 HC-2/D4R0K discharge (or the N3 construction probe) supplies ReadLocality
 once and every StableInputs consumer (TV-B3/B4/B5/B6 → `treeN_stable`) is
 fed. -/
 theorem stableInputs_of_readLocality {N₀ : ℕ}
     (Tat : ∀ N', N₀ ≤ N' → TreeModel p F n N' (n * N') pol)
     (χat : ∀ N', Fin n → Fin (n * N')) (Tr : VTree p F)
+    (hbase : N₀ ≤ Tr.thr n)
     (RL : ReadLocality Tat (fun N' _ => χat N') Tr) :
     StableInputs Tat χat Tr where
-  chart_pin N' h' b := RL.chart_pin N' h' b
+  chart_pin N' h' b := RL.chart_pin_lt N' h' b
   child_cyl N hN N' h' hNN' o ν x x' hagree :=
-    RL.child_local N hN N' h' N' h' hNN' hNN' o ν x x'
+    RL.child_local N hN (le_trans hbase hN) N' h' N' h' hNN' hNN' o ν x x'
       (fun c => hagree (Fin.castLE (Nat.mul_le_mul_left n hNN') c)
         (by simp))
 

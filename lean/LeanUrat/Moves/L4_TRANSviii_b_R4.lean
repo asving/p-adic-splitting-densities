@@ -12,6 +12,7 @@ import LeanUrat.Moves.L3_DIV
 import LeanUrat.Moves.L3_liftMonic
 import LeanUrat.Moves.L2_keyResidualPow
 import LeanUrat.Moves.L0_FactB_unique
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L4_TRANSviii_b_R4 — (S6b') the OFFSET P-LIFT above the clean threshold
@@ -48,16 +49,11 @@ section Helpers
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-private lemma wOne (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; omega
-
+/- [SYN2-S1 SWEEP-1, 2026-07-31] the camelCase Stage-engine micro-copies (the grep-first
+finding: differently named, present): `wOne` DELETED (= `ResVal.w_one`); `wPow` is the
+Φ-specialized shape — kept as a one-line ADAPTER over `ResVal.w_pow` + `hwΦ`. -/
 private lemma wPow (σ : Stage p F) (j : ℕ) : σ.w (σ.Φ ^ j) = (j : ℤ) * σ.h := by
-  induction j with
-  | zero => simpa using wOne σ
-  | succ n ih =>
-    rw [pow_succ, σ.hwmul _ _ (pow_ne_zero n σ.hmonic.ne_zero) σ.hmonic.ne_zero, ih, σ.hwΦ]
-    push_cast; ring
+  rw [ResVal.w_pow σ σ.Φ σ.hmonic.ne_zero j, σ.hwΦ]
 
 /-- Every element of the next residue field `K⟮z̄⟯` is a polynomial in `z̄` over `K`
 (the image of `eval₂` is a subfield: inverses via the finite-field power trick). -/
@@ -120,7 +116,7 @@ private lemma liftWeight' (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g : ℕ) (
       · rw [htt0 k hcoef, Polynomial.degree_zero]; exact hΦdegbot
       · obtain ⟨-, hinC, -, -⟩ := httk k hklt hcoef
         exact hinC
-  have hw1 : σ.w 1 = 0 := wOne σ
+  have hw1 : σ.w 1 = 0 := ResVal.w_one σ
   have hsum : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j
       = (∑ k ∈ Finset.range g, tt k * σ.Φ ^ (σ.e * k)) + σ.Φ ^ (σ.e * g) := by
     have step1 : ∑ j ∈ Finset.range (σ.e * g + 1), B j * σ.Φ ^ j

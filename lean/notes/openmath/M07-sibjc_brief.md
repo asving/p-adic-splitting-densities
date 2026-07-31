@@ -59,7 +59,8 @@ the **decode** map is
     dec(x) := X^n + Σ_{i<n} C(coeff_i(x))·X^i ∈ ℤ_p[X],
 
 where coeff_i(x) := Σ_{k<N} x(i·N + k)·p^k (each coefficient's N digits sit at
-the chart positions i·N, …, i·N + N − 1; canonical Teichmüller-free lift). The
+the chart positions i·N, …, i·N + N − 1, digits lifted canonically to ℤ_p;
+the exact decode is `canCoeff`/`canDec`, `lean/LeanUrat/MovesD/TreeCan.lean:92`). The
 **level-0 chart** χ : Fin n → Fin (n·N) selects the digit position of each
 coefficient's constant digit; at the pinned instance χ(i) = i·N. The **level-0
 reduction** of x is
@@ -246,7 +247,9 @@ structure SibJcRows {X : ClassifierSpec n p} {F : FiberSeries n p X}
     MovesT.JCmultiAt (TP.Tm N) CA.toCellData (TP.chart N hN) es ν₀ ss
 ```
 
-with the three consumed predicates (`lean/LeanUrat/MovesT/Defs.lean`):
+with the three consumed predicates (`lean/LeanUrat/MovesT/Defs.lean`:
+`SibCount` at :989, `SibCountAt` at :1034, `JCmultiAt` at :628; the `(T …)`
+binders below are abridged — the full signatures are in that file):
 
 ```lean
 def SibCount (T : TreeModel p F n N m pol) (CA : CellData p F n N m pol T)

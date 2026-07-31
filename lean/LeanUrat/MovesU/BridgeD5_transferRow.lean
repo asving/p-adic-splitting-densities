@@ -88,11 +88,19 @@ CROSS-RECORDS (concurrent-fleet reconciliation, 2026-07-30):
   of this seam independently — LEG 3's
   `bridgeChart_levelMajor_chart_pin_false` is exactly the "raw pair violates
   chart_pin" fact above, and its verdict "SYN-C2 must re-key the chart face"
-  is EXECUTED here by re-keying the INSTANTIATION (the dressing), not the
-  row's statement: the abstract row keeps TV-B2's level-major `< n` form
+  was first EXECUTED here by re-keying the INSTANTIATION (the dressing), not
+  the row's statement: the abstract row kept TV-B2's level-major `< n` form
   because `TreeNStable`/`StableInputs` (ratified/byte-frozen MovesT
   statements) are level-major — a layout-free or digitIdx-keyed row could not
-  derive them.  LEG 2's interface countermodel
+  derive them.  [SUPERSEDED 2026-07-31, QUEUE ITEM 7 (audit-1b CRITICAL): the
+  row's chart face NOW CARRIES the N3b compiled-corrected form itself — the
+  digit-slot pin `(χat N' h' b : ℕ) = b` at the standard layout (the
+  level-major transport of `bridgeChart_eq_digitIdx0`); the `< n` bound is
+  the row's DERIVED face `chart_pin_lt`, so the level-major derivations
+  survive. The dressed instance satisfies the equality by `rfl`
+  (`bridgeChartStd_pin_eq` below). `child_local` also gained the below-base
+  `N₀ ≤ N` cutoff guard (audit-1b GAP) — the two calls below supply it from
+  the positivity guards (N₀ = 1).]  LEG 2's interface countermodel
   (`child_locality_not_interface_derivable`) negates only the
   interface-GENERIC universal; `transferRow_of_readLocality` below is
   CONDITIONAL on `BridgeReadLocality`, so no compiled negation coexists with
@@ -158,6 +166,15 @@ def bridgeChartStd (n N : ℕ) (hN : 0 < N) : Fin n → Fin (n * N) :=
     `bridgeChart` provably violates this, header dressing record). -/
 theorem bridgeChartStd_pin (n N : ℕ) (hN : 0 < N) (b : Fin n) :
     ((bridgeChartStd n N hN b : ℕ)) < n := b.isLt
+
+/-- QUEUE ITEM 7 gate (2026-07-31): the CORRECTED `ReadLocality.chart_pin` form
+    (the N3b digit-slot pin at the standard layout — `(χat N' h' b : ℕ) = b`)
+    holds at the dressed instance: the dressed chart reads EXACTLY coefficient
+    b's digit-0 slot (= level-1 block position b). This is
+    `bridgeChart_eq_digitIdx0` (BridgeN3b LEG 3) transported through the
+    block-interleave dressing. -/
+theorem bridgeChartStd_pin_eq (n N : ℕ) (hN : 0 < N) (b : Fin n) :
+    ((bridgeChartStd n N hN b : ℕ)) = (b : ℕ) := rfl
 
 /-- SYN-C2 compiled gate (dressing faithfulness): the dressed chart IS the
     block-interleave image of the pinned digit-0 chart `bridgeChart` — slot
@@ -557,7 +574,7 @@ theorem transferRow_of_readLocality (n p : ℕ) [Fact p.Prime]
         (ν : MovesC.Node p (ZMod p)),
         (bridgeTmStd p n N).child o ν y ↔ (bridgeTmStd p n N').child o ν y' :=
       fun o ν => (RL V).child_local (min N N') (le_min hthrN hthrN')
-        N hN N' hN' hcN hcN' o ν y y' hagree
+        (le_min hN hN') N hN N' hN' hcN hcN' o ν y y' hagree
     have hred : MovesT.redPoly (bridgeChartStd n N hN) y
         = MovesT.redPoly (bridgeChartStd n N' hN') y' := by
       unfold MovesT.redPoly
@@ -598,7 +615,7 @@ theorem transferRow_of_readLocality (n p : ℕ) [Fact p.Prime]
     have hchild : ∀ (o : Option (MovesC.History p (ZMod p)))
         (ν : MovesC.Node p (ZMod p)),
         (bridgeTmStd p n N).child o ν y ↔ (bridgeTmStd p n N').child o ν y' :=
-      fun o ν => (RL V).child_local N hthr N hN N' hN' (le_refl N) hNN' o ν y y' hagree
+      fun o ν => (RL V).child_local N hthr hN N hN N' hN' (le_refl N) hNN' o ν y y' hagree
     have hred : MovesT.redPoly (bridgeChartStd n N hN) y
         = MovesT.redPoly (bridgeChartStd n N' hN') y' := by
       unfold MovesT.redPoly

@@ -49,10 +49,45 @@ sorried — the (SAE)/C.1.5 line-dominance content, the U10 wave's family; QUEUE
 fleet). U4's own theorem body is now complete modulo that named lemma; the countermodel
 above is closed by hypothesis (its adversarial `floorH` needs an incoherent H).
 Consumer update: U13 threads `hcoh hreal` (it holds both).
+
+*** QUEUE ITEM 12 — REPAIR ADJUDICATION PACKAGE + EXECUTION (2026-07-31, Asvin
+sign-off on the consolidated queue; the /goal authority adjudicates: the option that
+MAKES THE PROOF WORK wins). ***
+EVIDENCE RE-READ. The queue row carried forward the dual-confirmed 2026-07-27
+countermodel ("NOT PROVABLE AS STATED — value case false on a legal countermodel").
+That countermodel (above) targets the PRE-N-6, hypothesis-free form: its adversarial
+`floorH` step data (`floorH 1 0 = 0` while `floorH 1 1 = 2` INSIDE one node-1 fine
+slot) requires `childWidth₀ ≠ Dwidth₁`, i.e. an INCOHERENT history — under
+`HistoryCoherent`'s width chain `D_{i+1} = cW_i`, the cumulative floor is
+WINDOW-CONSTANT on each fine slot (the F5 floor collapse, PROVED in the U10
+hc2-p-phase-hard round: `floorH (m+1) = staircase_m` on the factor interior, a
+left-edge evaluation on aligned `cW_m`-blocks). So the evidence refutes the OLD form
+only; the CURRENT statement (post-N-6, carrying `hcoh + hreal`) is not touched by it.
+REPAIR OPTIONS ENUMERATED.
+ (o-i) STATEMENT STANDS; prove it via the U10 F5 kernel (floor window-constancy +
+       the fine-slot window's rim containment). Zero statement changes.
+ (o-ii) Add further hypotheses (an explicit no-straddle seed law / rim guard) —
+       unnecessary if (o-i) closes; rejected as non-minimal.
+ (o-iii) Band-aware `levelSet`/`valueSlots` redesign — REJECTED already at N-6
+       (re-opens proved U3/U5/U6 + Defs); unchanged here.
+ADJUDICATION: (o-i) — executed below and PROVED. The proof engine is a file-private
+replica block of the U10 floor-collapse kernel (`Dwidth_pos`/`slope_pos`/
+`staircase_mono`/`floorH_collapse` etc. are `private` in `U10_zcStep.lean`; the
+`valueClause_support'` replica precedent applies; the block is a dedup target for the
+queue's item-8 de-privatize sweep). Proof shape: (rim) the fine-slot window of the
+straddle-free slot `j` sits inside the standing rim (`j+1 ≤ μ_{i−1}` from the in-band
+member + the coherence width chain), so every level-set sibling is rim-interior;
+(floor) F5 window-constancy gives `floorH i` the SAME value at all siblings of the
+slot, so the in-band member's strict floor clause transfers; (edge) the level set
+sits AT `slotVal j` — the band's upper edge — by membership. Root case `i = 0` is the
+clean corner (`floorH 0 = ⊥`, `prevRim n 0 = n`).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs
 import LeanUrat.HC2.SharedZC
+import LeanUrat.MovesC.C2_floorH_succ
+import LeanUrat.MovesC.C2_floorH_root
+import LeanUrat.MovesC.C3_lineDom
 
 set_option linter.style.longLine false
 set_option linter.style.header false

@@ -9,9 +9,9 @@
  },
  "units_total": 100,
  "units_landed": 100,
- "sorried_declarations": 4,
- "banked_sorry": "V7_w17ii.lean w17ii_wave4 clause (ii) — the ONE [3t]-owned banked sorry (C14); every other sorry is an E-phase statement body awaiting the prover pass",
- "census_asbuilt_2026-07-30": "verify-2 fold-in: exact live-sorry census at HEAD = 4 declarations — V7_livC.lean:66 (ledgerIV_inst), V7_rbC.lean:52 (ratBurdens_exists), V7_scsData.lean:46 (scs_data_supply), V7_w17ii.lean:48 (w17ii_wave4 clause (ii), the banked [3t] sorry). Every other unit file is sorry-free on disk; the units table's 'sorry-stmt' wordings are E-phase records, each now carrying an AS-BUILT correction. Evidence: comment-stripped sorry-token grep at HEAD + golf_baseline_2026-07-30/MovesV_axioms.txt.",
+ "sorried_declarations": 3,
+ "banked_sorry": "RETIRED 2026-07-31 (queue item 4, Asvin sign-off): w17ii_wave4 clause (ii) — the C14 banked sorry — is PROVED (Lean-core) at the repaired RS4Chain (the five census fields shdom_fin/shdom_no_stray/vis_sub_shdom/shevt_off_vis/shevt_disj, MovesS/Interfaces.lean; TV-H2/E-1 ruling (b'), evidence = the TV-H1b compiled countermodel in quarantine). w17ii_pin now supplies every consumer's h17. No banked sorry remains in MovesV.",
+ "census_asbuilt_2026-07-30": "verify-2 fold-in: exact live-sorry census at HEAD = 4 declarations — V7_livC.lean:66 (ledgerIV_inst), V7_rbC.lean:52 (ratBurdens_exists), V7_scsData.lean:46 (scs_data_supply), V7_w17ii.lean:48 (w17ii_wave4 clause (ii), the banked [3t] sorry). Every other unit file is sorry-free on disk; the units table's 'sorry-stmt' wordings are E-phase records, each now carrying an AS-BUILT correction. Evidence: comment-stripped sorry-token grep at HEAD + golf_baseline_2026-07-30/MovesV_axioms.txt. [UPDATE 2026-07-31, queue item 4: w17ii_wave4 PROVED — V7-8 census entry retired; the 3 EXISTS-pinned duty sorries (ledgerIV_inst/ratBurdens_exists/scs_data_supply) remain. TV_H1b's 5 E-phase skeleton sorries also retired (module converted to the retirement record + cure seal).]",
  "conditionality_banner": "per blueprint §0: XHD faces/(ENT-U)/ENT-COUNT/INIT-RAT premises/(J-RAT) pack/(ii-c)/ContTwo/StageLawBurden/MDomTie/MarkFiberTie/HMC ride as typed hypothesis structures/arguments; HMC open kernel (no unit proves it, none assumes it); HMCAug consumed by nothing (verdict (A): separation obligation withdrawn, V4-11 leg (iii) carries NO proof obligation); MovesS.XRBPackage NOT BUILT (V7-7's xrbPackageOf gated on wave-4 co-build)",
  "units": {
   "V0-1": [
@@ -408,7 +408,7 @@
   ],
   "V7-8": [
    "V7_w17ii.lean",
-   "THE W17ii SORRY-GATE at the BUILT type: clause (i) PROVED (wsh_ok/wsh_interp); clause (ii) = THE ONE BANKED [3t] SORRY (C14); wsh17_pin projection PROVED"
+   "THE W17ii GATE at the BUILT type: clause (i) PROVED (wsh_ok/wsh_interp); clause (ii) PROVED 2026-07-31 (queue item 4: the counting squeeze over the five RS4Chain repair-census fields; the C14 banked sorry RETIRED — pre-repair form was FALSE, TV-H1b compiled countermodel in quarantine); wsh17_pin projection PROVED, Lean-core"
   ],
   "V7-9": [
    "V7_pgLaws.lean",

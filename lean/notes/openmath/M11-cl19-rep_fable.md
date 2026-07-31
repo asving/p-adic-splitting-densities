@@ -270,3 +270,93 @@ never key-match increment states — good); the note's own adjudication
 channel for a surviving failure is R2's lumpability wall (one 𝒯-refinement
 round, then wall). I did not find a counterexample to the intended
 instance-level claim, and the numerics below support it.
+
+## §6 Deliverable summary (for the orchestrator)
+
+1. REFUTED as stated: `¬ Slot_jcInvHist 2` is a kernel-checked in-corpus
+   theorem (Lean-core axioms; re-verified). No wave-D discharge of
+   theoremU's `jcInvHist` via `Slot_jcInvHist n` is possible at n = 2;
+   conjecturally at any n. **Do not draft G13′ against the current G10.**
+2. Adjudication item (new): G10 is the unique carrier-internalized slot of
+   the thirteen; its "discharged falsifier" is an outright refutation. The
+   R1 repair (carrier parameterization, inner statement verbatim) restores
+   the family pattern, keeps the falsifier as a genuine ∃-degenerate audit,
+   and costs one def + two touch-ups; requires statement-change sign-off.
+3. REDUCED after repair: Lemma A / Corollary B / Proposition C (proved
+   here) reduce the repaired slot at any instance to (JC-a) entrance
+   rectangularity + (JC-b) read locality + (JC-c) key-only fresh-digit
+   transport — the third is the real [2b] mathematics, aligned with the
+   HC1 carry-algebra + anchor-transport kernels and the note's (β-1)
+   height-shift conjugacy.
+4. Classification of results: §1 is (a) already known (in-corpus theorem,
+   audited); §3's uniqueness finding and §4's repair analysis are (c)
+   claimed new (to the corpus record); §5's Lemma A/Cor B/Prop C are (b)
+   elementary/standard counting arguments given full proofs here; JC-a/b/c
+   are explicitly OPEN lemmas.
+
+VERDICT: REFUTED (as normatively stated; kernel-checked, in-corpus, axioms
+re-audited) — with a proposed repair under which the obligation becomes
+REDUCED to three named open structural lemmas via fully-proved counting
+criteria; the intended instance-level invariance is numerically supported
+and remains open.
+
+## NUMERIC-TESTS
+
+Executed this session (exact integer counting, python3; all counts exact,
+no floats):
+
+- **(N1) Falsifier recount** — Box = 𝔽₂², Σ = Σ' = {x₀ = 0}, Ψ ≡ 2,
+  Ψ' ≡ 3, c = 2: LHS = 4, RHS = 0. CONFIRMS the compiled refutation's
+  arithmetic.
+- **(N2) h_ent-invariance at the n = 2 self-loop (real-classifier shape).**
+  D uniform mod p^N; entrance at height k: Σ_k = {p^{2k} ∣ D} (the k-fold
+  undecided doubling loop for x² − D); joint 2-digit read
+  Ψ_k(D) = (D/p^{2k}) mod p². Cross-multiplied law checked at ALL cells and
+  all height pairs k, l ∈ {0,1,2}: p = 2 (N = 8, #Σ = 256/64/16), p = 3
+  (N = 6, 729/81/9), p = 5 (N = 6, 15625/625/25) — INVARIANT, exactly.
+- **(N3) n = 3 dilation loop, p = 2, N = 8** — (a, b) mod 2^N,
+  Σ_k = {v(a) ≥ 2k ∧ v(b) ≥ 3k} (the monomial-dilation self-loop for
+  x³ + ax + b), joint read (a/2^{2k} mod 4, b/2^{3k} mod 4), heights
+  k ∈ {0,1,2} (#Σ = 65536/2048/64): INVARIANT, exactly, at all 16 cells.
+- **(Control, power check)** — same as N3 at k = 1 but with the entrance
+  over-pinned by one fresh digit (v(a) ≥ 2k+1) while the read frame stays
+  keyed to the state (divide by 2^{2k}): the cross-multiplied law FAILS at
+  16/16 cells. So the tests are not vacuous, and (JC-a) — the entrance
+  must be a spectator of the read's fresh block — is exactly the
+  load-bearing hypothesis.
+
+Proposed further tests (not run; specs concrete enough to hand to the
+numerics fleet):
+
+- **(P1) Genuine second-read joint law at an e = 2, μ = 2 window (n = 4,
+  p = 2).** Entrance family at height parameter k: monic quartics
+  x⁴ + a₃x³ + a₂x² + a₁x + a₀ with v(a₃) ≥ k+1, v(a₂) ≥ 2k+1 with
+  a₂/2^{2k+1} ≡ 0 (mod 2), v(a₁) ≥ 3k+2, v(a₀) = 4k+2 with
+  a₀/2^{4k+2} ≡ 1 (mod 2) — this realizes the first read: side of slope
+  −(2k+1)/2 over slots [0,4] (e = 2, h = 2k+1, wSide = 4), residual
+  z² + 1 = (z+1)² over 𝔽₂ (g = 1, μ = 2), retained key equal across k,
+  h_ent = 2k+1 varying. Read: the SECOND-read joint digit cell — implement
+  either directly (transported window digits of f(x) under the OM
+  transform at the e = 2 frame) or, coarser but oracle-checkable, the
+  final ℚ₂-splitting type via PARI `factorpadic` (any coarsening of an
+  invariant law is invariant, so a coarsened FAILURE refutes; coarsened
+  agreement is supporting evidence only — say so in the report).
+  Enumerate coefficients mod 2^{4k+2+6}, k ∈ {0, 1, 2}; PASS = exact
+  cross-multiplied equality of the coarsened law across k; FAIL at any
+  cell = counterexample to (JC-INV) as roster'd — escalate to the R2
+  lumpability channel per the note.
+- **(P2) Representative-invariance at fixed h_ent (the cl19_rep face,
+  same machinery).** Same family as P1 at fixed k, but vary the entrance
+  REPRESENTATIVE: partition Σ_k by the erased data (e.g. the value of
+  a₃/2^{k+1} mod 2, or recentering path taken to reach the state) into
+  subclasses with identical retained key, and check the joint second-read
+  law is identical across subclasses. PASS/FAIL as in P1. This probes the
+  (r2) roster choice itself: a FAIL against a subclass keyed by an ERASED
+  field means the roster is too coarse (a faithfulness failure of (r2),
+  flagged in the G10 header as the falsifier-visible risk).
+- **(P3) Roster-sharpness probe.** Deliberately merge entrances with
+  DIFFERENT retained keys (e.g. different μ, or different a) and confirm
+  the law FAILS — establishing that each roster component is necessary,
+  i.e. the retained key is minimal as well as sufficient. Ranges: p ∈
+  {2, 3}, n ∈ {2, 3, 4}, levels N ≤ 14 with #enumeration ≤ 2²⁴ per cell
+  table.

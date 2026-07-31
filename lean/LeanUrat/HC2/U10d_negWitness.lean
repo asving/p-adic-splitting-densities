@@ -57,6 +57,18 @@ skeletons at HEAD; HK-37's header records "NO CONCRETE 2-NODE GATE EXISTS ON DIS
 
 deps: HC2.Defs, HC2.SharedZC, HC2.U7_sigmaRec, MovesC.C3_widthConfine (all sorry-free).
 axioms: Lean core only (verified by the #print axioms at EOF).
+
+M1 DATED NOTE (2026-07-31, queue item 17 EXECUTED — Asvin sign-off on the consolidated
+queue): this leaf refutes the OLD ∀-pins form of `zc_step_confine` ONLY — the byte copy
+`ZcStepConfineStmt` below (provenance `U10_zcStep.lean:897–902` at the PRE-repair HEAD).
+At the repaired HEAD, `zc_step_confine` is RESTATED to the adjudicated fresh-cut
+restriction (∀ j, (∃ cl ∈ mkFresh(i+1).clauses, j ∈ cl.support) → j's base < prevRim n
+(i+1)) and PROVED from U3's `mkFresh_band`; the refutation mechanism here (old pins
+persisting beyond the shrinking rim) does not touch the repaired form, whose quantifier
+never sees old pins. The leaf stays intact as the durable evidence for the fence event;
+no sorried copy of the OLD form remains anywhere in-tree (M1 coexistence rule satisfied
+in the strongest sense: the refuted statement now exists ONLY inside this negation
+witness).
 -/
 import Mathlib
 import LeanUrat.HC2.Defs

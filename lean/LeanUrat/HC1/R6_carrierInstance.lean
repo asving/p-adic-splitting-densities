@@ -281,6 +281,8 @@ private noncomputable def r6_slotE (T : Tower p F) (b : ℕ)
       rcases Set.eq_empty_or_nonempty (T.levelSet b γ) with hempty | ⟨c₀, hc₀⟩
       · exfalso
         apply h0
+        show T.inGr γ (T.slotCoeff b
+            (fun c => if c ∈ T.levelSet b γ then r6_dEq T (y c) else 0)) = 0
         have hfun : (fun c => if c ∈ T.levelSet b γ then r6_dEq T (y c) else 0)
             = (fun _ : T.Coord => (0 : ↥(T.stg 0).FQ)) := by
           funext c; simp [hempty]
@@ -294,12 +296,13 @@ the lattice-support proof is CL-15a + CL-07, CL-09's own argument verbatim). -/
 private noncomputable def r6_monoE (T : Tower p F) (c : T.Coord) : LatticeExp T :=
   ⟨fun γ => T.inGr γ (T.mono c), by
     intro γ hne0
+    have hne : T.inGr γ (T.mono c) ≠ 0 := hne0
     have honL : T.onLattice γ := by
       by_contra hcon
-      exact hne0 (by rw [Tower.inGr, dif_neg (fun hh => hcon hh.1)])
+      exact hne (by rw [Tower.inGr, dif_neg (fun hh => hcon hh.1)])
     have hge : T.ht c ≤ γ := by
       by_contra hcon
-      exact hne0 ((CL15a_packE_ia T c).2 γ (not_le.mp hcon))
+      exact hne ((CL15a_packE_ia T c).2 γ (not_le.mp hcon))
     have hpos : 0 ≤ γ := le_trans (CL07_heightLattice T c).1 hge
     have hstrpos : (0 : ℚ) < (T.strTop : ℚ) := by exact_mod_cast r6_strTop_pos T
     rw [Tower.onLattice] at honL
@@ -408,7 +411,7 @@ theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
           r6_dEq T (x c) = 0 ∧ r6_dEq T (y c) = 0 := by
         intro c hb hht
         obtain ⟨hx0, hy0⟩ := hlow c hb hht
-        exact ⟨by rw [hx0, map_zero], by rw [hy0, map_zero]⟩
+        exact ⟨by rw [hx0]; exact map_zero _, by rw [hy0]; exact map_zero _⟩
       exact CL15b_packE_ic T b γ (fun c => r6_dEq T (x c)) (fun c => r6_dEq T (y c))
         hagree' hlow'
     · -- (iii): floor avoidance — CL-15d verbatim
@@ -430,7 +433,8 @@ theorem R6_carrierInstance {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finit
               then ((fun c' => r6_dEq T (x c')) + fun c' => r6_dEq T (y c')) c else 0) := by
         funext c
         by_cases hc : c ∈ T.levelSet b γ'
-        · simp only [if_pos hc, Pi.add_apply, map_add]
+        · simp only [if_pos hc, Pi.add_apply]
+          exact map_add (r6_dEq T) (x c) (y c)
         · simp only [if_neg hc]
       rw [hfun]
       exact packE_typ1 T b γ' (fun c => r6_dEq T (x c)) (fun c => r6_dEq T (y c))

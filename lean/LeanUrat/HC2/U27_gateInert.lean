@@ -499,6 +499,20 @@ noncomputable def seed : PresentSeed 2 F4 U31.H₀ 2 1 keys₀ where
       have h3 : ((boxChart 2 1 c).2 : ℚ) = 2 := by push_cast at hht ⊢; linarith
       have h4 : (boxChart 2 1 c).2 = 2 := by exact_mod_cast h3
       omega
+    · -- step_shape (queue item 17 D5-fence law, 2026-07-31): the gate history has a
+      -- single read, so every read IS the root read and the root_shape arithmetic
+      -- runs verbatim (the gate's box carries no value coordinate at any read).
+      intro r hr c hint hvc
+      have hr0 : r = 0 := by have h1 : r < 1 := hr; omega
+      subst hr0
+      obtain ⟨-, hht⟩ := hvc
+      rw [htH0_eq, (base_lvl c).1] at hht
+      rw [show (U31.H₀.nodes[0]'hr) = U31.ν₀ from rfl] at hht
+      rw [fineSlot_eq, slotVal_eq] at hht
+      have h2 : (boxChart 2 1 c).2 ≤ 1 := by have := (boxChart_lt 2 1 c).2; omega
+      have h3 : ((boxChart 2 1 c).2 : ℚ) = 2 := by push_cast at hht ⊢; linarith
+      have h4 : (boxChart 2 1 c).2 = 2 := by exact_mod_cast h3
+      omega
 
 /-! ### §5 — the gate jet setup (U28's p = 3 pattern, ported to p = 2) -/
 

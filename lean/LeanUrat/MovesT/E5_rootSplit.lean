@@ -205,11 +205,13 @@ private lemma child_of_mem (T : TreeModel p F n N m pol) (H : History p F)
 end RootSplitHelpers
 
 /-- **T-E5, the ROOT CLAUSE** — the decomposition chain of the blueprint sketch
-(steps (1)–(5)), PROVED 2026-07-30 (the assembly-spine escalation) MODULO the single
-fenced residual `hnostray` below. Route: `fiberAt` decomposes as
+(steps (1)–(5)), PROVED (sorry-free since the QUEUE ITEM 5 hoist, 2026-07-31: the
+former fenced residual rides as the NAMED premises `hU`/`hR`, TV-A2's pinned
+shape). Route: `fiberAt` decomposes as
 `rootCell ∩ ⋂ᵢ trackEvent i` (the ⊆ leg from `fiberAt`'s own clauses through the
 head roster; the ⊇ leg reconstructs all six clauses at any decomposed point, with
-the head-roster completeness `hnostray` the one non-clause step); the count then
+the head-roster completeness `hnostray` the one non-clause step — a THEOREM of
+(U)∧(R) below); the count then
 follows from (SIB) at the `.amb` cell (= the root cell, via `RootCellsOf`) for
 t ≥ 2, and directly (no SIB) for t ≤ 1, with T-E2 converting `card(Σ₀)·pⁿ = p^m`. -/
 theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
@@ -220,7 +222,9 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
     (hsib : SibCount T CA.toCellData χ) (hreal : Realizes T χ Tr)
     (g : Fin n → ZMod p) (htracks : RootSplitData Tr g)
     (hcr : ∀ i, ChildRoot none (htracks.headOf i))
-    (hfib : ∀ x, Tr.fiberAt T χ x → x ∈ rootCell χ g) :
+    (hfib : ∀ x, Tr.fiberAt T χ x → x ∈ rootCell χ g)
+    (hU : TrackUniqOn T χ trackOf g)
+    (hR : TrackRepOn T χ trackOf g) :
     Nat.card ↥{x | Tr.fiberAt T χ x}
         * (Nat.card ↥(rootCell χ g)) ^ htracks.t * p ^ n
       = p ^ m * ∏ i : Fin htracks.t,
@@ -320,17 +324,14 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
       refine hx.2.2.2.1 H' (htsub i hH') ?_
       intro hmaxc
       exact hnmax (hmax_down i H' hmaxc)
-  -- ==== THE FENCED RESIDUAL, REDUCED TO ITS D4R0K CORE ====
-  -- [ADJUDICATION RECORD 2026-07-30; REFINED at the hnostray-reduction pass. The
-  --  adjudicated `child_red_uniform` law kills the SAME-CELL strays; the recorded
-  --  countermodel shape is a stray root child realized on a `.red`-cell DISJOINT
-  --  from the fiber's own cells but inside the same root cell {f̄ = g} — at such a
-  --  point y, every trackEvent condition can hold while `oneNode ν` gives y an
-  --  extra pruned chain, so y ∈ R ∩ ⋂ᵢ Sᵢ ∖ fiber and the displayed count breaks.
-  --  THIS PASS reduces the residual to its exact D4R0K core — the (c2) covering
-  --  case analysis (MOVES 7112–7119: realized root children are EXACTLY the first
-  --  window reads on the reduction's REPEATED tracks; m_i = 1 ⇒ τ-hen carries NO
-  --  child), displayed as the pair
+  -- ==== THE (U)∧(R) PAIR — NAMED PREMISES SINCE THE QUEUE ITEM 5 HOIST ====
+  -- [ADJUDICATION RECORD 2026-07-30; REFINED at the hnostray-reduction pass;
+  --  EXECUTED as the Q1-ratified hoist 2026-07-31 (queue item 5): the pair rides
+  --  as the named premises `hU`/`hR` (TV_A1's `TrackUniqOn`/`TrackRepOn`), no
+  --  in-proof admission remains. The adjudicated `child_red_uniform` law kills
+  --  the SAME-CELL strays; the recorded countermodel shape was a stray root child
+  --  realized on a `.red`-cell DISJOINT from the fiber's own cells but inside the
+  --  same root cell {f̄ = g}. The pair:
   --    (U) per-point per-track UNIQUENESS: two realized root children at one
   --        root-cell point sharing a track are equal ("THE first window read");
   --    (R) REPEATED-ONLY EXHAUSTIVENESS: a realized root child's track is a
@@ -341,28 +342,15 @@ theorem fiber_root_split (Tr : VTree p F) (T : TreeModel p F n N m pol)
   --  (U)+(R) at x₀ hence SURJECTIVE by cardinality, heads realized at every
   --  decomposed point (trackEvent clause (1) on the one-node chain), and (U) at y
   --  pins any stray to the head sharing its track. Owner of (U)∧(R): HC-2/D4R0K
-  --  (presented-face genre, same owner row as `presents`/`state_cell`). Discharge
-  --  shape: the canonical `T.child none ν ·` event is the ν-cell stratum inside
-  --  its track's window, and window structure is track data of the reduction
-  --  datum g. NOTE for adjudication: (U)∧(R) is a candidate `CellData`/interface
-  --  law pair, quantified over root-cell points only — strictly weaker than any
-  --  per-cell table and independent of the cell chart.]
-  -- [FENCE-RULE RECORD 2026-07-29 (negation-attempt duty; date CORRECTED at BP5/N6
-  --  2026-07-30 — the record originally read "2026-08-01" from clock skew; git
-  --  evidence: introduced in commit 00b03aa, authored 2026-07-29 17:39 UTC, matching
-  --  the PROJECT_STATE date correction): no countermodel is
-  --  constructible from in-corpus witnesses — this `have` sits under the FULL
-  --  `CellAssign` premise row (child_cover included) and NO `CellAssign` instance
-  --  exists in the corpus (G1's toys deliberately stop at the `CellData` layer:
-  --  child_cover FAILS on both carriers at g = (1,0)); honest-open stands.]
-  have hD4R0K :
-      (∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
-          T.child none ν' y → trackOf ν = trackOf ν' → ν = ν') ∧
-      (∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
-          2 ≤ Multiset.count (trackOf ν)
-            (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y))) := by
-    sorry
-  obtain ⟨hTrkUniq, hTrkRep⟩ := hD4R0K
+  --  (presented-face genre, same owner row as `presents`/`state_cell`).
+  --  NECESSITY MACHINE-CERTIFIED (TV_A5b_forge.lean, 2026-07-31): the pair is NOT
+  --  derivable from the `CellData`/`CellAssign` laws — named hypotheses are the
+  --  honest carrier.]
+  have hTrkUniq : ∀ y ∈ rootCell χ g, ∀ ν ν' : Node p F, T.child none ν y →
+      T.child none ν' y → trackOf ν = trackOf ν' → ν = ν' := hU
+  have hTrkRep : ∀ y ∈ rootCell χ g, ∀ ν : Node p F, T.child none ν y →
+      2 ≤ Multiset.count (trackOf ν)
+        (UniqueFactorizationMonoid.normalizedFactors (redPoly χ y)) := hR
   -- ==== roster TRACK-COMPLETENESS, machine-checked from (U)∧(R) + fiberAt (vi) ====
   -- |heads| = |repeated factors| (fiberAt clause (vi) at x₀, card level)
   have hcard6 : Tr.heads.card

@@ -6,6 +6,7 @@ Authors: Asvin G
 import Mathlib
 import LeanUrat.Moves.Defs
 import LeanUrat.Moves.DefsT
+import LeanUrat.Moves.ResVal
 
 /-!
 # Moves/L2_slotDecomp_R4 — (S3) slot decomposition + Y-transcendence (D.2/D.3)
@@ -51,17 +52,14 @@ private lemma T_pow_s {R : Type*} [CommRing R] (s : ℤ) (j : ℕ) :
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
-/-- `R 1 = 1`. -/
-private lemma R_one (σ : Stage p F) : σ.R 1 = 1 := by
-  have h := σ.hRmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h
-  exact (mul_left_cancel₀ (σ.hRne 1 one_ne_zero) (by rw [mul_one]; exact h)).symm
+/- [SYN2-S1 SWEEP-1, 2026-07-31] private ResVal.R_one σ/w_one/w_neg DELETED —
+single proof source `Moves/ResVal.lean` (α-identical); uses re-pointed. -/
 
 /-- `R(Φ^j) = (R Φ)^j`. -/
 private lemma R_Phi_pow (σ : Stage p F) (j : ℕ) : σ.R (σ.Φ ^ j) = (σ.R σ.Φ) ^ j := by
   have hΦ : σ.Φ ≠ 0 := σ.hmonic.ne_zero
   induction j with
-  | zero => rw [pow_zero, pow_zero, R_one]
+  | zero => rw [pow_zero, pow_zero, ResVal.R_one σ]
   | succ n ih =>
     rw [pow_succ, σ.hRmul (σ.Φ ^ n) σ.Φ (pow_ne_zero n hΦ) hΦ, ih, pow_succ]
 
@@ -144,20 +142,6 @@ private lemma decomp_sum (σ : Stage p F)
       rw [σ.hRadd (T a) (∑ j ∈ S', T j) hTa0 hP0 h3 (by rw [hwta, hwP]) (by rw [h2, hwta]), hRP]
     exact ⟨h1, h2, h3⟩
 
-/-- `w 1 = 0`. -/
-private lemma w_one (σ : Stage p F) : σ.w 1 = 0 := by
-  have h := σ.hwmul 1 1 one_ne_zero one_ne_zero
-  rw [mul_one] at h; linarith
-
-/-- `w(-f) = w f` (via the unit `-1`). -/
-private lemma w_neg (σ : Stage p F) (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
-    σ.w (-f) = σ.w f := by
-  have hn1 : (-1 : Polynomial ℤ_[p]) ≠ 0 := neg_ne_zero.mpr one_ne_zero
-  have key := σ.hwmul (-1) (-1) hn1 hn1
-  rw [neg_one_mul, neg_neg, w_one σ] at key
-  have hw1 : σ.w (-1 : Polynomial ℤ_[p]) = 0 := by linarith
-  have h2 := σ.hwmul (-1) f hn1 hf
-  rw [neg_one_mul, hw1, zero_add] at h2; exact h2
 
 /-- **DECOMPOSITION engine** (graded trichotomy induction): every partial sum of equal-weight
 slots is (a) zero with vanishing residual sum, (b) at weight `γ` with `R` additive so far, or
@@ -212,7 +196,7 @@ private lemma trichotomy_sum (σ : Stage p F)
           intro h0
           have hTneg : T n = -(∑ j ∈ Finset.range n, T j) :=
             eq_neg_of_add_eq_zero_right h0
-          rw [hTneg, w_neg σ _ hPne] at hwn
+          rw [hTneg, ResVal.w_neg σ _ hPne] at hwn
           omega
         have hwPT : σ.w ((∑ j ∈ Finset.range n, T j) + T n) = γ := by
           rw [add_comm (∑ j ∈ Finset.range n, T j) (T n),
