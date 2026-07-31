@@ -679,3 +679,14 @@ SkeletonFinite.lean: skeleton_finite n at EVERY n + the p-free card bound
 instances subsumed (files untouched); consumer wiring correctly PARKED behind
 the hfin fence (+ an import-order block recorded). Verified-math -> Lean
 pipeline round-trip #2 and #3 complete (after M09/M17).
+
+## REPAIR ROUND R3 COMPLETE (2026-08-01, commits 2c5a36d/e7b800b/797b549/+)
+All four REPAIRED, per-finding disposition tables, falsifier-first: O-12 r3
+(L6d shared-vertex torus telescope; seven displayed row families); O-2a r2
+(intrinsic positional recovery; OL-2a-4 declared; k'=0 split; injectivity
+restricted to all-continuing histories); O-14ap r2 ((S6b'-SUPP-2) with the
+threaded stretch matching hk52_qform_stretch; stretched complement = a
+definitional VOID; general-g sharpness via basis argument); O-1thr r2 (all
+V12 gaps + falsifier CAUGHT a real R5 defect — 1,644 countermodels, restated
+with recorded vhtx + N4). Verifications V13/V14/V15 (Codex) + O-1thr Fable
+pass 2 dispatched.
