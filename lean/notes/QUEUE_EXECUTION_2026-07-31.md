@@ -389,3 +389,91 @@ capstone path is untouched by construction).  Axiom census on the new artifacts:
 w17ii_wave4 / w17ii_pin / n2_polyGeomLaws_nonempty / n2_countLaws_block2 /
 n2_tcount_val / n2_scount_val / negCarrier_shdom_finite ALL exactly
 [propext, Classical.choice, Quot.sound].
+
+## Items 1 + 5 + 7 — chi-at chart guard / E5 hoist / ReadLocality row fixes (executed 2026-07-31, agent: items-1+5+7)
+
+AUTHORIZATION: Asvin 2026-07-31 verbatim "Sign-off granted on all 21 items as
+preferred, execute the queue" (BRIDGE_ADJUDICATIONS_2026-07-30.md, ASVIN
+SIGN-OFF block).
+
+### Item 1 — chi-at chart guard (MovesT/Defs `KBTotTower` + `TreeExpNs`)
+Executed the ratified guard shape (adjudication commit 89b2f7f: "chi-at guard
+repair RATIFIED (+ same-pattern sweep of KBTotTower/TreeExpNs)"; compiled
+witness `tv_b1_chart_carrier_uninhabited`, TV_B1.lean — the unguarded carrier
+`∀ N', Fin n → Fin (n·N')` is uninhabited at n ≥ 1 via N' = 0):
+- `KBTotTower` (Defs): `χat : ∀ N' (h' : N₀ ≤ N'), Fin n → Fin (n * N')`;
+  `root_total` reads `χat N' h`. Structure now INSTANTIABLE at n ≥ 1.
+- `TreeExpNs` (Defs): the ∀-χat quantifier guarded — the closure is no longer
+  vacuously true at n ≥ 1.
+- FORCED ADAPTERS (`fun N' _ => χat N'`) at the guarded `KBTotTower`'s use
+  sites: `TreeNStableStmt` + `VPPinned.covering` (Defs), `treeN_stable` (E11),
+  `TVB1Countermodel` (TV_B1), `treeN_stable_hoisted`/`TreeNStableStmtHoisted`
+  (TV_B7). The TreeNStable-FAMILY binders (`TreeNStable`, `TreeNStableStmt`,
+  `StableInputs`, the E11/B7 rows, E12's `treeN_ns`, `VPPinned`'s own χat,
+  D12's package binders) remain UNGUARDED — their vacuity fence (TV-B1
+  consequence 2) STANDS for the B7-execution guard collapse (cluster B), which
+  is NOT one of the 21 signed items. Do NOT discharge those sorries by the
+  vacuity.
+- M1 HYGIENE (rule-3 note): `tv_b1_chart_carrier_uninhabited` stays compiled
+  and UNCHANGED in TV_B1; a dated note there marks that it refutes the
+  PRE-REPAIR (unguarded) carrier form only.
+
+### Item 5 — E5 hoist (`fiber_root_split` + hU/hR named hypotheses)
+Executed the Q1-ratified hoist at the TV-A2/A3/A4 pinned shapes (in-place,
+same names):
+- `fiber_root_split` (E5) gains `hU : TrackUniqOn T χ trackOf g` /
+  `hR : TrackRepOn T χ trackOf g` (TV_A1's defs; E5 now imports TV_A1),
+  appended last; the internal `have hD4R0K … := by sorry` is GONE. E5 is
+  SORRY-FREE (repo census −1).
+- `treeExp` (E8), `perShape_law` (E10), `treeN` (E11) gain
+  `hUR : ∀ g, TrackUniqOn T χ trackOf g ∧ TrackRepOn T χ trackOf g` appended
+  last; internal calls threaded (`(hUR sc.g).1/(hUR sc.g).2` at E8:root).
+- Defs ∀-closures `TreeExpFin`/`TreeNStmt` gain the row appended last before
+  the conclusion, formulas INLINED (TV_A1 imports Defs — the names cannot be
+  used inside Defs). D12's package values re-key definitionally (no D12 edit).
+- FOOTPRINTS VERIFIED: `#print axioms` on fiber_root_split / treeExp /
+  perShape_law / treeN = [propext, Classical.choice, Quot.sound] (the E5
+  sorryAx is out of the whole TREE-EXP spine). Necessity of (U)∧(R) as named
+  hypotheses is machine-certified (TV_A5b_forge, 2026-07-31).
+- TV-A2/A3/A4 skeletons (sorry-bodied `*_hoisted` twins) left as-is for their
+  owner; they are now provable from the in-place rows and due retirement.
+
+### Item 7 — ReadLocality row fixes (audit-1b CRITICAL + GAP, ratify1b.jsonl)
+- `chart_pin` → THE N3b COMPILED-CORRECTED FORM: the digit-slot pin
+  `(χat N' h' b : ℕ) = b` (the standard-layout transport of BridgeN3b LEG-3's
+  `bridgeChart_eq_digitIdx0`; at the dressed bridge chart it holds by `rfl` —
+  new gate `bridgeChartStd_pin_eq`, BridgeD5). The old `< n` level-1-block
+  bound is the DERIVED face `ReadLocality.chart_pin_lt` (proved).
+- `child_local` gains the below-base cutoff guard `N₀ ≤ N` (the audit's GAP:
+  unguarded, thr = 0 + N = 0 forced the child relation CONSTANT — stronger
+  than the note's law).
+- RIPPLE: `stableInputs_of_readLocality` (TV_B2) gains
+  `hbase : N₀ ≤ Tr.thr n` (under which the below-base corner is empty;
+  true at the bridge: N₀ = 1 ≤ thr = … ⊔ 1) and reads `chart_pin_lt`;
+  `transferRow_of_readLocality` (BridgeD5) re-threaded (guards supplied from
+  the 0 < N positivity args); BridgeD5 cross-record amended (the "row keeps
+  TV-B2's < n form" paragraph superseded, dated).
+- Post-item-7 state: ONE kernel row remains (`ReadLocality`, open math, owner
+  HC-2/D4R0K); `treeN_stable` (E11:1 sorry) + `treeN_stable_hoisted`
+  (TV_B7:1 sorry) stay honest-open behind it + the B7 guard collapse.
+
+### Scope disclosure (boundary note for the orchestrator)
+The dispatch marked TV_* files as another agent's. Items 1/7's repairs are
+TYPE-LEVEL couplings into exactly three TV_B files; leaving them unedited
+would have broken the build (KBTotTower/ReadLocality applications). Executed
+the MINIMAL forced seam — TV_B1 (1 adapter + M1 note), TV_B2 (the derivation's
+hbase premise + chart_pin_lt read), TV_B7 (2 adapters) — each with a dated
+in-file record naming this item's executor; nothing else in any TV file was
+touched. These same-commit edits are the ones the files' own coordination
+records schedule ("the B7 EXECUTION must carry [the guard] in the same
+commit"; "the adapters collapse when the gates fleet lands the Defs guard
+sweep").
+
+### Verification
+- Per-module builds green: Defs, TV_A1, ReadLocality, TV_B1, TV_B2, E5, E8,
+  E10, E11, E12, D12, TV_B6, TV_B7, BridgeD5 + full explicit all-module build
+  (9608 jobs, whole repo) green 2026-07-31.
+- Sorry delta: E5_rootSplit.lean −1 (now 0). No new sorries anywhere.
+- Capstone path untouched (root lib imports no MovesT/MovesU; AxChk_baseline
+  replayed unchanged in the all-module build).
+- MovesT/MANIFEST.json: three deviation records appended (parses).
