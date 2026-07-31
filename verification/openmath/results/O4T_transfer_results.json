@@ -293,7 +293,7 @@
    "P5_env_fails": [],
    "P5_mono_fails": [],
    "fail_examples": {},
-   "seconds": 1.9,
+   "seconds": 1.8,
    "verdict": "PASS"
   },
   {
@@ -348,7 +348,7 @@
    "P5_env_fails": [],
    "P5_mono_fails": [],
    "fail_examples": {},
-   "seconds": 27.6,
+   "seconds": 27.3,
    "verdict": "PASS"
   }
  ],
