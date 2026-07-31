@@ -343,3 +343,10 @@ CONFIRMED at deep-wild (5,5).
 CORRECTION: SlotsG2/G3 are NOT file-level dead (live importers: SlotsG16 ->
 G2.Slot_rel1, G12b -> G3); the 5 sorried decls remain dead vocabulary IN
 PLACE. New queue item 29 (sel_stage row). Real sorry count now ~32.
+
+## DELTA (Lean fills, 2026-08-01)
+R7 sorryAx SOURCE DEAD (5fa3503): canPolicy pair discharged via
+runRealizerExists_zmod; AxChk census = ZERO sorryAx anywhere; TreeCan 0
+sorries. skeleton_finite at every n landed (77f913e); hfin consumers stay
+parked (fence + import order). Sorry count ~30. The critical-path residue
+O-14a' is closed at the instance the formalization consumes.

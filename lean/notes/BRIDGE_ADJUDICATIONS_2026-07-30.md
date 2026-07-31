@@ -661,3 +661,21 @@ ZMod p STANDS and the in-flight Lean fill rests on verified ground. Repair
 V12 (O1thr): SOUND-WITH-GAPS — the Eisenstein guard exclusion CONFIRMED
 working exactly as designed; per-box disjointness + the p^{n(N-t)} factor
 confirmed; gaps repairable. Light repair then pass 2 (fresh Fable).
+
+## LEAN FILLS LANDED (2026-08-01, commits 5fa3503 + 77f913e) — R7 SORRYAX DEAD
+R7_runRealizer.lean: runRealizerExists_zmod PROVED for every prime (Lean-core;
+the O-14a' §4.2 recipe verbatim — prime-field collapse, no-jump law, slot-min
+display, terminal anchor + Nat.le_induction transport); the (t15)
+canPolicy/canPolicy_pin pair DISCHARGED, TreeCan sorry census 0. AxChk:
+canPolicy/canPolicy_pin/bridgePol/bridgeTm all dropped sorryAx — ZERO sorryAx
+in the entire 740-footprint census; both density capstones unchanged
+Lean-core. The D-group conditionality that has ridden every bridge
+construction since the first census is GONE. Honest scope recorded: rides the
+RG-2 fence as hypothesis; a future fence lift must re-adjudicate (CR2) to
+(S6b'-SUPP) first (parked class); nothing quantifies past F = ZMod p (the
+general-F clause is refuted-as-stated, O-14a' Thm 5).
+SkeletonFinite.lean: skeleton_finite n at EVERY n + the p-free card bound
+(catalogue-encoding injection; IsEmpty at n=0 corner); n=1/n=3 ad-hoc
+instances subsumed (files untouched); consumer wiring correctly PARKED behind
+the hfin fence (+ an import-order block recorded). Verified-math -> Lean
+pipeline round-trip #2 and #3 complete (after M09/M17).
