@@ -1222,3 +1222,30 @@ CU-2t. Remaining cycles: D-11 (r3, pass owed), O-11 (r3, pass owed), the
 CUC re-labels (registry passes), O-1thr rev3+ (pass owed), O-2a rev5 (pass
 owed), O5triple rev2+ (pass owed), Dfloor VERIFIED, GD23 VERIFIED. THE LAST
 PHASE-C MOVER: VC5 (running).
+
+## AUTHORITY (Asvin, 2026-08-03, verbatim): THE LEAN CONVERSION SWARM
+"run the agent swarm to convert the math into minute detailed blueprints for
+lean, and then launch up to 500 agents (each piece should be minimal and
+formalizable quickly and cleanly) to convert the blueprints into lean with
+you orchestrating everything. This can happen in parallel with the math
+verification and both can feed into each other. For the lean sweep, delegate
+agents to parts of the document who further launch subagents. Split up the
+task hierarchically, delegate intelligently."
+ARCHITECTURE: Level 0 = orchestrator (me; the math loop continues in
+parallel). Level 1 = SIX BLUEPRINT ARCHITECTS (one per ROOT movement + the
+integration/spine architect), delivering lean/blueprints/BP_L*.md with unit
+tables (each unit <= ~40 lines Lean, exact signature sketch, dependencies,
+target module, corpus-reuse map). Level 2 = Codex plan-review of each
+blueprint (the standing plan-level-adversarial rule). Level 3 = DIVISION
+LEADS (one per blueprint, Agent-tool-enabled) each running prover waves of
+its units — up to ~500 provers total across divisions. GROUND RULES: new
+modules only under LeanUrat/Scaffold/ (the scaffold-form statement spine per
+the 2026-08-01 authority); parked items 22-29 UNTOUCHED; existing fenced
+statements UNTOUCHED; the [M] hypotheses ((GR-B), (FRESH), (PACK), the
+terminal seam, etc.) enter Lean as NAMED HYPOTHESIS ROWS/structures (the
+honest conditionality — NO new axioms without the full policy loop; the two
+audited axioms usable); corpus reuse by import (the ~40 proved units incl.
+O12PoleFree/KsubGeneral/RegPFinite/SkeletonFinite/R7_runRealizer/HK11a etc.);
+per-file gates during waves, lake build + AxChk at division checkpoints;
+commits with explicit paths + lock retries; math-revision sync duty (when a
+leaf's brief revs, its blueprint owner folds the delta).
