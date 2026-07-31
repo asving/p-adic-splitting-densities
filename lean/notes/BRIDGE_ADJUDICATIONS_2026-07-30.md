@@ -1208,3 +1208,17 @@ criticals, BOTH logic repairs VERIFIED; two pricing-prose gaps (G-alpha
 grading; G-beta the false 'meanwhile executed' tree claim) + one minor ->
 light prose repairs + spot-check. VC5 (the acceptance-candidate end-to-end
 on the REVISION-4 document) LAUNCHED.
+
+## O-9 + CU-2T VERIFIED (2026-08-03 early, commits 9335057/b9f05db/825378d)
+O-9: pass 4 SOUND (0 crit) + pass 5 CLEAN (0 crit, 0 gaps; K7 re-executed
+byte-identical) => VERIFIED (LEAF #8) — the order-r census layer at its
+honest scope (CEN-W/CEN-J conditional on (GR-B)+(FRESH)+(ADM)-FULL, all
+displayed; the FULL-attainment ladder closed). CU-2t: R3 pass (0 crit,
+both logic repairs verified) + R4 spot-check CLEAN (per the verifier's own
+disposition, no further full pass owed) => VERIFIED at scope (LEAF #9) —
+the terminal seam, conditional per §9.5 (the three GD-4 rows + the pinned
+literature). VERIFIED = 9: O-13, O-12, Dfloor, GD23, CU-1, O-10, O4T, O-9,
+CU-2t. Remaining cycles: D-11 (r3, pass owed), O-11 (r3, pass owed), the
+CUC re-labels (registry passes), O-1thr rev3+ (pass owed), O-2a rev5 (pass
+owed), O5triple rev2+ (pass owed), Dfloor VERIFIED, GD23 VERIFIED. THE LAST
+PHASE-C MOVER: VC5 (running).
