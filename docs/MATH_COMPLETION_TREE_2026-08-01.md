@@ -800,3 +800,300 @@ Companion live records: `lean/notes/REMAINING_CENSUS_2026-08-01.md` (Lean-side),
 
 — Phase A unit, 2026-07-31/2026-08-01. Next: Codex completeness review of THIS document,
 then Phase B dispatch per §3.
+
+---
+
+## DELTA 1 (V6 fold-in) — append-only, dated 2026-07-31 late
+
+*(The Codex completeness review V6 (`lean/notes/openmath/V6_tree_review.jsonl`, verdict
+**GAPS-FOUND**, 26 numbered findings: 24 BLOCKER + 2 ADVISORY) is folded in here per the
+§6 change discipline. Everything above this line is byte-untouched; where a finding
+corrects text above, the correction is recorded HERE and the corrected reading governs.
+Sources: the full V6 text; the two wave-1 attempts `lean/notes/openmath/
+O12_phaseB_attempt.md` + `O13_phaseB_attempt.md`, whose honest-scope declarations answer
+several findings BY SCOPING (exact scopes cited); the V5 IFK re-review disposition
+(`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` §"IFK RE-REVIEW: REJECT-2 (V5)"), whose
+three architectural defects become tree nodes here. New node ids are **D-1..D-16**
+("delta nodes"; the N-* prefix is already taken by the numerics suites in §5).
+The §4 acceptance criterion is UNCHANGED — see §D1.7.)*
+
+### D1.1 Per-finding disposition table (all 26 V6 findings; no silent drops)
+
+Vocabulary: **ACC** = ACCEPTED-with-fix (fix named); **SCOPE** = ANSWERED-BY-SCOPING (an
+attempt's honest-scope section already carries the answer; citation given); **REB** =
+REBUTTED-with-argument. No finding is rebutted outright; two are answered by scoping
+plus a residue node — the residue is what survives of the objection.
+
+| # | V6 finding (compressed) | disposition |
+|---|---|---|
+| 1 | Haar/counting limit bridge is not a node | **ACC** → new node **D-1** (MEAS-BRIDGE) |
+| 2 | semantic partition + Σ_σ R_σ = 1 in ℚ(t) never assembled | **ACC** → new node **D-2** (SUM-ONE) |
+| 3 | unramified-base claim lacks a semantic transfer package | **ACC** → new node **D-3** (UNRAM-TRANSFER); O-8b re-typed as its alphabet SLICE, not its carrier |
+| 4 | recursion base cases (degree 1/0) absent | **ACC** → new node **D-4** (BASE-CASES) |
+| 5 | canonical-object well-posedness is not a node | **ACC** → new node **D-5** (WELLPOSED), absorbing V5 defect (1) (K-DICT carrier/equality design) |
+| 6 | pole-free specialization underspecified (denominators beyond det(I−K)) | **ACC + SCOPE** → new node **D-6** (DENOM-ALL); the O-12 attempt §§5–8 (Theorem 4 + Lemma RR + numerics items B–D) PROVES the all-denominator clause at 𝔅_n; residue = the instance pin, node D-11 |
+| 7 | (U-DENS) ⇔ (U-GEN) is false as written | **ACC** → root amendment §D1.5(a): downgraded to U-GEN ⇒ U-DENS; U-GEN is the operative root claim |
+| 8 | LIT-1's LITERATURE grade premature (pagination caveat + O-2 conditionality) | **ACC** → §D1.5(b): LIT-1 = LITERATURE-CONDITIONAL until printed-TAMS confirmation; engine-side applicability conditional on O-2, stated on-node |
+| 9 | LIT-3 claims more readiness than evidence | **ACC** → §D1.5(c): demoted to LITERATURE-CANDIDATE (numbers to confirm; the irreducibility/unramified-conclusion scope pairing owed at transcription) |
+| 10 | LIT-8 is an unaudited bundle | **ACC** → §D1.5(d): split into LIT-8a..LIT-8e, each LITERATURE-CANDIDATE with per-use-site transcription |
+| 11 | T-1's verified scope exceeds evidence ("each OM read" is semantic) | **ACC** → §D1.5(e): T-1 re-scoped to the SYMBOLIC engine; the semantic clause routes through O-2/O-3 |
+| 12 | T-8's nonzero-pivot wording conflicts with O-12/K-13 | **ACC** → §D1.5(f): T-8 re-scoped to formal-ℚ(q) solve + (REG-p)-conditional specialization; the unrestricted claim = K-13 + O-12 |
+| 13 | K-12 lacks the VERIFIED-LEAN faithfulness audit record (ADVISORY) | **ACC** → §D1.5(g): audit duty added (undec/hExhaustP vs the mathematical classifier + Haar mass); grade held pending the record |
+| 14 | O-1/O-3 circular quantifier seam (realized-site restriction) | **ACC** → new node **D-14** (LAWFUL-SITE READ), the noncircular quantifier form; δ-tier one-directionality (O-1δ ← O-2+O-3, never →) recorded |
+| 15 | O-2 and O-3 mutually dependent in substance | **ACC** → the §D1.3 decomposition (O-2a upstream / O-2b joined to O-3) |
+| 16 | O-5's inputs don't yield the leaf/factor bijection | **ACC** → the bijection triple **D-7a/D-7b/D-7c** (disjointness / semantic coverage / multiplicity compatibility) |
+| 17 | O-10 stronger than its reduction (no N-restriction) | **ACC** → node **D-8**: O-10 restated with the N ≥ thr(c)+2ρ(c) guard; small-N residue D-8r; consumer audit added |
+| 18 | O-11 lacks dependencies; T-7 self-dependency; K2 ≠ K-13 | **ACC** → node **D-9**: corrected dependency set; T-7 SPLIT (T-7s symbolic vs [1v]-FULL re-owned by O-11); K2-SEM input node D-9k |
+| 19 | O-12 not near-independent (semantic-mass circularity risk) | **ACC + SCOPE** → node **D-11** (MASS-ID) gates the INSTANCE-PIN half; per the O-12 attempt's §8 honesty ledger its theorems consume table STRUCTURE only, never value correctness — the circularity is scoped OUT, not incurred |
+| 20 | O-13's stated reduction invalid (unbounded recentering; K-3 caterpillar) | **ACC + SCOPE** → node **D-12** (SKEL-COMPRESS): the O-13 attempt itself SUPPLIES the demanded compressed-skeleton definition + compression theorem (Lemma T run-collapse + Theorem 3 Sk(n)); the tree's §3 item-14 charge was indeed the wrong mechanism (the attempt's §4 "role display" says so explicitly) |
+| 21 | O-14 is not a single settled proposition | **ACC** → node **D-10**: split into O-14a / O-14a′ / O-14b / O-14c (+ O-14d as engineering duty) |
+| 22 | O-14a′ (RunRealizerExists residue) must precede O-3 | **ACC** → attack order re-cut, §D1.6 slot 1 |
+| 23 | O-2-before-O-3 doesn't decompose their cycle | **ACC** → §D1.3 (K-DICT's invariant/order-placement half split from its trace-correspondence half; the latter into O-3's cluster) |
+| 24 | O-11 scheduled too early | **ACC** → §D1.6: O-11 re-slotted after O-5, O-8b/O-9, O-10(guarded), D-11 |
+| 25 | O-12/O-13 not justified early wins | **ACC + SCOPE** → wave 1 ran them at honestly REDUCED scopes that answer the gating objections (rows 19/20); statuses = PROVED-UNVERIFIED at those scopes (§D1.5(h,i)) with the residues as separate nodes (D-11; D-12r) |
+| 26 | drainage routes conflated: O-4 vs O-6/O-7/O-8a (ADVISORY) | **ACC** → §D1.4 fork adjudication: O-4 qualitative is MANDATORY for the root; O-6/O-7/O-8a + T-9's charging table = the ALTERNATIVE quantitative route |
+
+### D1.2 New nodes (D-1..D-16; statuses per the §0 vocabulary)
+
+* **D-1 (MEAS-BRIDGE — the Haar/counting limit bridge; V6 finding 1).** Statement, with
+  quantifiers: for every n, σ, p: (i) the locus L_σ = {f monic separable of type σ} is
+  Borel in ℤ_p^n; (ii) every level-N residue class is a measurable cylinder of Haar mass
+  p^{−nN}; (iii) the decided-σ cylinder unions are nested increasing in N; (iv)
+  ∪_N decided_σ(N) = L_σ up to a Haar-null set; (v) continuity from below then gives
+  lim_N decided_σ(N)/p^{nN} = α(n, σ; p). Fragments on file: T-6's (ns-null), O-4
+  Lemma A (the cylinder mass identity), K-12 at n = 2. Status: OPEN (assembly-grade;
+  no new mechanism expected, but the complete bridge with quantifiers is owed as ONE
+  proposition). Consumed by: T-U's squeeze, the root.
+* **D-2 (SUM-ONE — semantic partition + the rational identity; V6 finding 2).**
+  Statement: (i) every monic separable degree-n f over ℚ_p has EXACTLY ONE degree-n
+  splitting type (unique factorization + defectlessness, LIT-2); (ii) the nonseparable
+  locus is Haar-null (= T-6 (ns-null), already VERIFIED-DUAL); (iii) hence
+  Σ_σ α(n,σ;p) = 1 at every p, so Σ_σ R_σ(p) = 1 at the (REG-p) primes — infinitely
+  many; (iv) a rational function with infinitely many roots is zero, so Σ_σ R_σ = 1 in
+  ℚ(t). Status: OPEN (assembly of proved parts; (i) is the only new text). Consumed by:
+  the root's Σ_σ R_σ = 1 clause.
+* **D-3 (UNRAM-TRANSFER — the unramified-base semantic package; V6 finding 3).**
+  Statement: over K_δ = W(F_{p^δ})[1/p] (every δ ≥ 1), the unramified restatements AND
+  proofs of: K-DICT (O-2), K-RUN (O-3), K-HALT/ASSEMBLY (O-5), drainage (O-4), Haar
+  normalization (level-N mass q^{−nN}, q = p^δ), and sibling independence (O-10) — so
+  that the root's "same R_σ read at q = p^δ" clause has a proof, not a census formula.
+  Partials: O-8b's (R1)–(R4) is exactly the carry-algebra/alphabet SLICE of this node
+  (M14's conditional proof + N8 exhaustive numerics); O-9 is already stated over any
+  complete DVR; LIT-4's audited scope is "K = ℚ_p exactly", so its consumption at K_δ
+  must be re-derived or re-scoped here. Status: OPEN. Route note: the cheapest discharge
+  is to prove O-1..O-5 over an arbitrary absolutely-unramified complete DVR from the
+  start (the O-9/M08 discipline); adjudicate at O-1 dispatch — if adopted, D-3 collapses
+  into per-leaf scope hygiene plus the O-8b slice.
+* **D-4 (BASE-CASES — recursion floor; V6 finding 4).** Statement: the degree-1 density
+  (a monic linear polynomial has type {(1,1)}, density 1, decided at N = 0); terminal
+  classifier behavior at degree-1/saturated leaves; the empty-product/degree-0
+  conventions of the branch convolution (empty child set ⇒ convolution unit). Status:
+  OPEN (expected one page; nothing on file states it). Consumed by: B-7/T-8's solve,
+  T-6's recursion, D-1.
+* **D-5 (WELLPOSED — canonical-object well-posedness; V6 finding 5 + V5 defect (1)).**
+  Statement: the quantified engine objects — T_can(f), realized sites, ns-free carriers,
+  resolution levels, fresh frames, letters, skeletons, certification predicates — are
+  well-defined, canonical (invariant under lift and recentering-representative
+  presentation choices), and compatible across truncation levels N → N+1. Incorporates
+  the V5 architectural defect: a coherent CARRIER + EQUALITY design for the dictionary
+  Θ's domain (what V5 called "K-DICT lacks a coherent carrier/equality design").
+  Partials: the dual-accepted §B2-DEF/§M-SPECIES definitions give symbolic
+  well-typedness; the SEMANTIC invariance half is new. Status: OPEN. Consumed by: O-2a,
+  O-3, every leaf that quantifies over T_can(f).
+* **D-6 (DENOM-ALL — every denominator of the solve is pole-free; V6 finding 6).**
+  Statement: EVERY denominator introduced anywhere in the assembled solve — block det
+  numerators/denominators, table-coefficient denominators, height resummations,
+  normalizations, the final R_σ — is of cyclotomic type (a unit in
+  ℛ = ℚ[q, 1/q, 1/(q^c−1)]), hence nonvanishing at every prime power ≥ 2. Status:
+  **PROVED-UNVERIFIED at the 𝔅_n scope** — the O-12 attempt's Theorems 1 + 4 and
+  Lemma RR prove exactly this (its numerics items B–D check the FULL pipeline n = 2..5
+  including all R_σ reduced denominators); the extension to the eventual general-n pack
+  is gated by D-11, per the attempt's own scope declaration (§1 + §8). V7 hostile
+  verification in flight.
+* **D-7a/b/c (the O-5 bijection triple; V6 finding 16).** The ASSEMBLY clause of O-5,
+  split into the three propositions its listed inputs do NOT supply:
+  **D-7a (LEAF-DISJOINT)** distinct leaves of the halted realized run determine
+  DISTINCT (pairwise coprime) irreducible factors; **D-7b (LEAF-COVER)** every monic
+  irreducible factor of every lift g of the decided class is hit by some leaf — the
+  degree-checksum "no orphan factors" argument made an actual proof; **D-7c
+  (LEAF-MULT)** multiplicity compatibility: the leaf multiset's (e, f) data equals the
+  factors-with-multiplicity of g, uniformly over ALL lifts g. All three OPEN; they ride
+  O-2/O-3 + GMN eq. (37)/defectlessness but are separate obligations (V6: the product
+  formula + checksums + "histories are chains" do not alone yield a bijection).
+* **D-8 (O-10 restated with the N-threshold; V6 finding 17).** O-10's statement is
+  RESTATED with the guard its reduction actually reaches: sibling independence in exact
+  count form for N ≥ thr(c) + 2ρ(c) (K-COUNT's constant-fiber range). **D-8r (small-N
+  residue)**: behavior below the threshold — expected resolution is an N-guard adopted
+  by every consumer; **the consumer audit** (T-6's (SIB-STEP), O-11's K1 need only the
+  guarded form) is part of D-8. Status: OPEN (statement fix + audit; K-COUNT unchanged).
+* **D-9 (O-11's true dependency set + the T-7 self-dependency resolution; V6 findings
+  18/24).** O-11's input set is CORRECTED to: O-10 (guarded, D-8) + O-5 (+D-7 triple,
+  for correct semantic leaf labels) + O-8b/O-9 (correct transition weights) + the
+  semantic mass bridge (D-1/D-11, the K4 face) + **T-7s**. The T-7 SPLIT resolving the
+  self-dependency: **T-7s** = the symbolic tables + obligations ledger (VERIFIED-DUAL,
+  stands as is); the **[1v]-FULL value-correctness event is RE-OWNED by O-11 as goal
+  content** — K3 is struck from O-11's input list (T-7 routed its open value content to
+  O-11, so T-7 was never a lawful unconditional predecessor). **D-9k (K2-SEM)**: the
+  semantic escape property (positive termination/escape mass from every state at the
+  intended instance) is a SEPARATE input — K-13's finiteness theorem does NOT supply it;
+  at 𝔅_n it is the O-12 attempt's Theorem 1 + Corollary D (PROVED-UNVERIFIED, margins
+  ≥ 3/4, 7/8, 6/7); at the eventual pack it rides D-11. Status: dependency corrections
+  recorded; O-11 remains OPEN.
+* **D-10 (the O-14 split; V6 finding 21).** O-14 is dissolved into its ≥ 4 distinct
+  propositions, each with its own status: **O-14a** the GUARDED vertex-transport law at
+  ν_{i+1}.e = 1 (HK-11a landed; the ≥ 2 disposition = sign-off item 28; suspected-false
+  unguarded form REFUTED-AS-STATED by HK52_stretchGate); **O-14a′** RunRealizerExists —
+  the upstream stage-tower supply: interior half PROVED
+  (`interior_center_realizer_exists`, Lean-core), OPEN residue = the (S6b′)
+  monomial-shape clause at deg Φ > 1 + the last-node landing flank (countermodel search
+  LIVE); **O-14b** the cl19 repaired carrier ladder (OPEN); **O-14c** hStateNe
+  derivability (OPEN, expected derivable); **O-14d** instance population — an
+  ENGINEERING duty, tracked outside the math tree. "All leaves proved" now means:
+  O-14a/a′/b/c each closed; O-14d excluded from the criterion.
+* **D-11 (MASS-ID — semantic mass identification / the instance pin; V6 finding 19).**
+  Statement: the eventual general-n pack's kernel entries are the Haar volumes of the
+  T-3/T-6 continuation events at the intended instance, the events per row pairwise
+  disjoint with positive per-state termination margin, and the pack's block system IS
+  𝔅_n — or an organization covered by the O-12 attempt's robustness criterion
+  (Theorem 3 + the contingent OL-O12-1). This node gates the INSTANCE-PIN half of O-12
+  (the attempt's §1 scope declaration assigns it to O-2/T-7/O-14d territory — exactly
+  this node) and D-9k at the pack. Status: OPEN. Inputs: O-2, T-7s, O-14d, T-3/T-6.
+* **D-12 (SKEL-COMPRESS — the compressed-skeleton definition + compression theorem;
+  V6 finding 20).** Statement (as supplied by the O-13 attempt §3): run-collapse is
+  well-defined (within a run every node has exactly one child, so collapsing a maximal
+  run has no attachment ambiguity); every realized T_can(f) — infinite branches
+  included — loop-collapses to a FINITE tree (Lemma T: ≤ 6n² letter blocks per branch);
+  and the collapsed shapes form the finite p-free set Sk(n) (Theorem 3,
+  |Sk(n)| ≤ (n+2)^{7n³(n²+3n+16)}). This is exactly the object V6 said was missing —
+  the attempt survives the K-3 caterpillar because arbitrarily long recentering runs
+  collapse to one node with depth PARAMETER in ℕ∪{∞}, never new shapes. Status:
+  **PROVED-UNVERIFIED** (V8 hostile verification in flight). **D-12r (completeness
+  residue)**: Theorem 4 (realized trees spell inside Sk(n)) is conditional on T-4
+  SP-COMP's D4R.0-K(c) verdict-pin residual (owner [3t] VP) — a SEPARATE node, not
+  discharged by D-12.
+* **D-13 (the O-2 split; V6 findings 15/23).** **O-2a** = clauses (i)–(iv) of O-2
+  (invariant matching, injective order placement, normalization crossing,
+  admissibility) + the D-5 carrier/equality design — UPSTREAM: provable against the GMN
+  text without realization semantics. **O-2b** = clauses (v)–(vi) (K-DICT-OB1 trace/
+  tree correspondence + K-DICT-OB2 σ-invariance) — moved INTO the O-3 cluster (§D1.3);
+  these are the halves that quantify over "the trees the classifier produces", i.e.
+  over O-3's subject matter. Status: split recorded; both halves OPEN.
+* **D-14 (LAWFUL-SITE READ — the noncircular locality quantifier; V6 finding 14).**
+  Statement: for every menu-LAWFUL site (H, ν) (lawful at the frame state — NOT
+  presupposed realized on the run), whether the canonical run on f reads (H, ν) is
+  determined by f's digits below L(H, ν). This strengthening of O-1's realized-site
+  two-lift form is what O-3's (no-missing) direction actually needs (an
+  instance-restricted locality theorem cannot establish no-missing realization). O-1's
+  stated form stands as the realized-site tier; D-14 is the obligation that breaks the
+  O-1/O-3 seam. Status: OPEN.
+* **D-15 (CYL — the cylinder law as its own node; V5 defect (2)).** Statement: decided
+  verdict classes are EXACT finite unions of level-N cylinders with the per-tree fiber
+  scaling law (count_tie's L1/CYL). V5's finding: CYL is NOT implied by the faces O-1
+  listed — it additionally needs D-14 + (K2) window closure + T-6's (τ-irr)
+  perimeter-conditional discharged. Previously implicit inside O-1/K-4; now a node.
+  Status: OPEN. Consumed by: K-4's repair, D-1(ii), T-U's bracket.
+* **D-16 (READ-δ TRANSPORT — execution transport for the δ-tier; V5 defect (3)).**
+  Statement: f ≡ g mod p^{δ+1} (δ = v_p(disc f)) ⇒ the canonical RUNS on f and g
+  correspond site-for-site — not merely their OM factorizations (which is all LIT-5's
+  published Theorem 3.13 gives). This is the "execution transport" V5 found missing
+  from K-READ-δ; it consumes O-2b + O-3 and is the true carrier of O-1's δ-tier and
+  O-4's OL2 rates. Status: OPEN (optional for the root — rates only; see §D1.4).
+
+### D1.3 The O-2/O-3 cycle, decomposed (V6 findings 15/23)
+
+The cycle V6 found: O-3's no-phantom needs engine-reads → OM-types (= O-2); O-2's
+tree-correspondence clause quantifies over the classifier's produced trees (= O-3's
+subject). Resolution — three pieces, acyclic:
+1. **O-2a** (invariant/order-placement half + D-5 carrier design): upstream, no
+   realization semantics consumed. Dispatches FIRST.
+2. **O-3 ⊕ O-2b** (realization faithfulness + trace/tree correspondence + σ-invariance):
+   ONE joint cluster, proved together by mutual induction on resolution level (the
+   induction hypothesis at level N supplies each half what it needs of the other at
+   level < N — the standard resolution of a mutual dependency, made explicit instead of
+   ordered away). The U6 falsifier extension (length 3) rides this cluster.
+3. **D-16** (δ-tier execution transport): AFTER the cluster; consumes both halves.
+Ordering O-2 wholesale before O-3 (the pre-delta §3 order) is hereby retired.
+
+### D1.4 The drainage-route fork, adjudicated (V6 finding 26)
+
+From the §2.2 assembly paragraph: T-U's squeeze needs, at each prime, the two-sided
+bracket at every finite N (counting/cylinder structure: T-6 + D-15 + D-1) and
+undec(N) → 0 — a QUALITATIVE input. Adjudication:
+* **MANDATORY for the root: O-4** (qualitative drainage). Its M05/V2-verified core
+  already proves SEMANTIC drainage at every prime (Lemma D Krasner constant 2v+1 +
+  Lemma C tail bound); the open residue is OL1-ii (the O-1+O-3 agreement seam), NOT any
+  rate. Neither O-6 nor O-7 nor O-8a appears in this route.
+* **ALTERNATIVE (quantitative) route: T-9's index/charging table + O-6 + O-7 + O-8a.**
+  Needed only if (a) Phase C elects to route drainage through T-9's envelope instead of
+  the M05 route, or (b) effective verification levels / explicit rates are wanted
+  (OL2, via D-16). These leaves are struck from the root-mandatory set.
+* Consequence recorded: the pre-delta §3 "every leaf is needed" reading is corrected —
+  the mandatory set is the §D1.6 critical path + its named dependencies; O-6/O-7/O-8a
+  are route-R-QNT assets (and remain live obligations for T-9's own honest kernels).
+
+### D1.5 Status updates (append-only corrections to §§1–2.4)
+
+* (a) **Root**: the "(U-DENS) ⇔ (U-GEN)" sentence is downgraded (V6 finding 7): U-GEN ⇒
+  U-DENS holds (given D-1); the converse is NOT claimed and not needed — the operative
+  root claim is U-GEN, whose clause (iii) carries the finite-solve provenance.
+* (b) **LIT-1**: LITERATURE-CONDITIONAL (printed-TAMS pagination confirmation owed;
+  engine-side applicability conditional on O-2).
+* (c) **LIT-3**: LITERATURE-CANDIDATE (citation numbers + exact-scope pairing owed).
+* (d) **LIT-8**: split into LIT-8a (Krasner + the 2v+1 polish constant), LIT-8b
+  (Newton–Hensel), LIT-8c (Vandermonde/resultant identities), LIT-8d (Igusa §7.4 change
+  of variables), LIT-8e (Gauss/Möbius counts) — each LITERATURE-CANDIDATE, transcribed
+  at its declaration site per §4 rule 5.
+* (e) **T-1**: VERIFIED-DUAL **as a theorem about the symbolic carry-algebra engine**;
+  the semantic "each OM read" scope is conditional on O-2/O-3 (V6 finding 11).
+* (f) **T-8**: VERIFIED-DUAL for the formal ℚ(q) solve + (REG-p)-conditional
+  specialization; unrestricted per-prime wording routes through K-13 + O-12.
+* (g) **K-12**: faithfulness-audit duty recorded (Lean `undec`/`hExhaustP` vs the
+  mathematical classifier + Haar mass); VERIFIED-LEAN grade held pending the record.
+* (h) **O-12** = **PROVED-UNVERIFIED at the O-12 attempt's honest scope**: at 𝔅_n (the
+  §1-defined intended instance), all three on-record kernel organizations, every block
+  determinant and assembled denominator cyclotomic-type, failing set EMPTY at every
+  prime power ≥ 2 (falsifier: 18,120 prime powers, 0 findings). Hostile Codex
+  verification **V7 in flight**. Residues as SEPARATE nodes: D-11 (instance pin) +
+  contingent OL-O12-1 (fires only if a future pack departs from 𝔅_n's organizations).
+* (i) **O-13** = **PROVED-UNVERIFIED at the O-13 attempt's honest scope**: Sk(n) finite
+  and p-free by typing at every n (Theorems 1–3 + Lemmas B/L/T, unconditional over the
+  dual-accepted vocabulary-as-definitions; falsifier reproduces the sealed |𝒮₃| = 53).
+  Hostile Codex verification **V8 in flight**. Residue as a SEPARATE node: D-12r (the
+  completeness clause rides the D4R.0-K(c) verdict pin). Note on file: the Serre bound
+  is VALUE-side only (the attempt's §4 role display) — the tree's expected reduction is
+  corrected accordingly.
+
+### D1.6 THE NEW CRITICAL PATH + re-cut attack order (honoring V6 findings 22–25)
+
+**Critical path (mandatory for the root):**
+O-14a′ (upstream realizer residue) → O-1(thr-tier) + D-14 + D-15 → O-2a (+D-5) →
+[O-3 ⊕ O-2b joint cluster] → O-5 + D-7a/b/c → O-4 (qualitative drainage, OL1-ii from
+O-1/O-3) → D-1 + D-2 + D-4 (assembly floor) → O-9 + O-10(D-8-guarded) → D-3
+(unramified package, O-8b as its slice) → D-11 (mass-id) → O-11 (D-9 dependency set) →
+root — with O-12 (via D-6/D-11) and O-13 (via D-12) verifying in parallel (V7/V8).
+
+**Attack order:**
+1. **O-14a′** — BEFORE O-3 (V6 finding 22): close or remove the (S6b′) + landing-flank
+   residue; the LIVE countermodel search is its falsifier.
+2. **O-1 thr-tier + D-14 + D-15** — the per-site read with the lawful-site quantifier
+   and the CYL law; δ-tier DEFERRED behind the O-3 cluster + D-16.
+3. **O-2a + D-5** — carrier/equality design first (V5 defect 1), then invariants/order
+   placement/admissibility against the GMN text.
+4. **The O-3 ⊕ O-2b joint cluster** — mutual induction on resolution level; K-OB-A/B/C/E
+   + K-DICT-OB1/OB2 + K-RUN clause 4 priced inside; U6 falsifier extended to length 3.
+5. **O-5 + D-7a/b/c** — halt soundness, then the bijection triple.
+6. **O-4** (mandatory route, §D1.4) **+ D-4** alongside.
+7. **D-1 + D-2** — the measure bridge and the partition/identity assembly.
+8. **O-9; O-10 at the D-8 guarded statement** (+ the consumer audit).
+9. **D-3** (unramified transfer; adjudicate the arbitrary-DVR route first).
+10. **D-11, then O-11** at the D-9 corrected dependency set (V6 finding 24 honored).
+11. Residues + options: D-12r; O-14a/b/c; D-16 + O-6/O-7/O-8a (route R-QNT) only if
+    quantitative rates are elected.
+
+### D1.7 Acceptance criterion
+
+**UNCHANGED.** §4 applies verbatim to every D-* node and to the re-scoped statuses
+above; V7/V8 count toward (not past) the ≥ 2 consecutive clean model-diverse passes;
+PROVED-UNVERIFIED is still never consumed by an acceptance claim.
+
+— DELTA 1 complete, 2026-07-31 late. Original tree above byte-untouched.
