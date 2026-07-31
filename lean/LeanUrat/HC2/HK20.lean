@@ -267,8 +267,10 @@ theorem sideReads1_digits :
           LaurentPolynomial.T (- (ν₁gate σ₁ hΦ).σ.t *
             (ν₁gate σ₁ hΦ).σ.wPrev (Bdev1 ((ν₁gate σ₁ hΦ).s0 + (ν₁gate σ₁ hΦ).e * k))) := by
   intro k hk hpat'
-  have hk1 : k ≤ 1 := hk
   have ht0 : σ₁.t = 0 := σ₁.he1t htc.base.child_e
+  have hk1 : k ≤ 1 := by
+    rw [show (ν₁gate σ₁ hΦ).wSide = 1 from rfl, show (ν₁gate σ₁ hΦ).e = 1 from rfl] at hk
+    omega
   interval_cases k
   · refine ⟨?_, ?_, ?_⟩
     · show Polynomial.C (16 : ℤ_[2]) ≠ 0
@@ -278,12 +280,13 @@ theorem sideReads1_digits :
         w_coeff σ₁ htc (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 16)
       rw [hw, bw_C16]
       norm_num
-    · show σ₁.R (Bdev1 (0 + 1 * 0)) = LaurentPolynomial.C ((1 : ↥σ₁.K)) *
-        LaurentPolynomial.T (- σ₁.t * σ₁.wPrev (Bdev1 (0 + 1 * 0)))
-      have hR : σ₁.R (Bdev1 (0 + 1 * 0)) = 1 :=
-        R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 16)
-          (digPrime_one (by norm_num))
-      rw [hR, ht0, map_one, one_mul, neg_zero, zero_mul, LaurentPolynomial.T_zero]
+    · have hgoal : σ₁.R (Bdev1 (0 + 1 * 0)) = LaurentPolynomial.C ((1 : ↥σ₁.K)) *
+          LaurentPolynomial.T (- σ₁.t * σ₁.wPrev (Bdev1 (0 + 1 * 0))) := by
+        have hR : σ₁.R (Bdev1 (0 + 1 * 0)) = 1 :=
+          R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 16)
+            (digPrime_one (by norm_num))
+        rw [hR, ht0, neg_zero, zero_mul, LaurentPolynomial.T_zero, map_one, one_mul]
+      exact hgoal
   · refine ⟨?_, ?_, ?_⟩
     · show Polynomial.C (2 : ℤ_[2]) ≠ 0
       exact Polynomial.C_ne_zero.mpr HK13R.two_ne_zero'
@@ -292,12 +295,13 @@ theorem sideReads1_digits :
         w_coeff σ₁ htc (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') (inC_fq_C 2)
       rw [hw, HK13R.bw_C2]
       norm_num
-    · show σ₁.R (Bdev1 (0 + 1 * 1)) = LaurentPolynomial.C ((1 : ↥σ₁.K)) *
-        LaurentPolynomial.T (- σ₁.t * σ₁.wPrev (Bdev1 (0 + 1 * 1)))
-      have hR : σ₁.R (Bdev1 (0 + 1 * 1)) = 1 :=
-        R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') (inC_fq_C 2)
-          (digPrime_one HK13R.two_ne_zero')
-      rw [hR, ht0, map_one, one_mul, neg_zero, zero_mul, LaurentPolynomial.T_zero]
+    · have hgoal : σ₁.R (Bdev1 (0 + 1 * 1)) = LaurentPolynomial.C ((1 : ↥σ₁.K)) *
+          LaurentPolynomial.T (- σ₁.t * σ₁.wPrev (Bdev1 (0 + 1 * 1))) := by
+        have hR : σ₁.R (Bdev1 (0 + 1 * 1)) = 1 :=
+          R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') (inC_fq_C 2)
+            (digPrime_one HK13R.two_ne_zero')
+        rw [hR, ht0, neg_zero, zero_mul, LaurentPolynomial.T_zero, map_one, one_mul]
+      exact hgoal
 
 include hΦ htc hpin in
 /-- SideReads clause (iii), ANCHOR + ψ-ORDER, at read 1 (the single-side read — the
@@ -373,12 +377,17 @@ theorem sideReads1_anchor_ord :
       2 hABne hdev2
     have hwAB : σ₁.w (Polynomial.C (16 : ℤ_[2]) + Polynomial.C 2 * U31.fq) = 4 := by
       interval_cases j2
-      · have h' : σ₁.w (Polynomial.C (16 : ℤ_[2]) + Polynomial.C 2 * U31.fq)
-            = U31.bw (Polynomial.C (16 : ℤ_[2])) := by simpa using heq2
-        rw [h', bw_C16]
-      · have h' : σ₁.w (Polynomial.C (16 : ℤ_[2]) + Polynomial.C 2 * U31.fq)
-            = U31.bw (Polynomial.C (2 : ℤ_[2])) + 3 := by simpa using heq2
-        rw [h', HK13R.bw_C2]
+      · have h' := heq2
+        simp only [Nat.cast_one, Nat.cast_zero, Nat.cast_ofNat, one_mul, zero_mul,
+          add_zero, reduceIte] at h'
+        rw [h']
+        exact bw_C16
+      · have h' := heq2
+        simp only [Nat.cast_one, Nat.cast_ofNat, one_mul, reduceIte] at h'
+        rw [if_neg (by norm_num : ¬(1 : ℕ) = 0)] at h'
+        rw [h']
+        have h2 : bStageP.w (Polynomial.C (2 : ℤ_[2])) = 1 := HK13R.bw_C2
+        rw [h2]
         norm_num
     have hRA : σ₁.R (Polynomial.C (16 : ℤ_[2])) = 1 :=
       R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 16)
@@ -437,9 +446,9 @@ theorem sideReads1_anchor_ord :
       · rw [pow_one]
       · intro hdvd
         have hne : (Polynomial.X + 1 : Polynomial ↥σ₁.K) ≠ 0 := by
-          intro h0
-          have h1 := congrArg (fun q => Polynomial.coeff q 1) h0
-          simp at h1
+          have h := Polynomial.monic_X_add_C (1 : ↥σ₁.K)
+          rw [Polynomial.C_1] at h
+          exact h.ne_zero
         have h1 := Polynomial.natDegree_le_of_dvd hdvd hne
         rw [Polynomial.natDegree_pow] at h1
         have h2 : (Polynomial.X + 1 : Polynomial ↥σ₁.K).natDegree = 1 := by
@@ -447,9 +456,11 @@ theorem sideReads1_anchor_ord :
           rwa [Polynomial.C_1] at h
         rw [h2] at h1
         omega
-    show OrdPsiPoly (Polynomial.X - Polynomial.C (1 : ↥σ₁.K)) (Polynomial.X + 1) 1
-    rw [psi_eq σ₁]
-    exact hord
+    have hgoal : OrdPsiPoly (Polynomial.X - Polynomial.C (1 : ↥σ₁.K))
+        (Polynomial.X + 1) 1 := by
+      rw [psi_eq σ₁]
+      exact hord
+    exact hgoal
 
 include hΦ htc hpin in
 /-- SideReads clauses (iv) + (vi) jointly, at read 1 (TERMINAL — the last-read
@@ -480,10 +491,11 @@ theorem sideReads1_terminal :
     · show σ₁.w (Polynomial.C (8 : ℤ_[2])) = σ₁.w σ₁.Φ
       rw [w_coeff σ₁ htc (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 8), bw_C8,
         hwΦ']
-    · show σ₁.R (Polynomial.C (8 : ℤ_[2]))
-        = LaurentPolynomial.C ((1 : ↥σ₁.K)) * LaurentPolynomial.T 0
-      rw [R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 8)
-        (digPrime_one (by norm_num)), map_one, LaurentPolynomial.T_zero, mul_one]
+    · have hgoal : σ₁.R (Polynomial.C (8 : ℤ_[2]))
+          = LaurentPolynomial.C ((1 : ↥σ₁.K)) * LaurentPolynomial.T 0 := by
+        rw [R_coeff σ₁ hpin ht0 (Polynomial.C_ne_zero.mpr (by norm_num)) (inC_fq_C 8)
+          (digPrime_one (by norm_num)), LaurentPolynomial.T_zero, map_one, one_mul]
+      exact hgoal
   have hspec : RecenterLiftSpec (ν₁aux σ₁ hΦ) ((polOM 2 F4).liftOf (ν₁aux σ₁ hΦ)) := by
     classical
     show RecenterLiftSpec (ν₁aux σ₁ hΦ)
@@ -496,20 +508,22 @@ theorem sideReads1_terminal :
   -- clause (vi): the vertex digit of ANY Φtop-development is 1
   intro Bh Nh hdev
   set L : Polynomial ℤ_[2] := (ν₁gate σ₁ hΦ).lift with hLdef
+  -- retype the choice-spec conjuncts at L (defeq: L ≡ polOM's choice on ν₁aux)
+  have hLne : L ≠ 0 := hℓne
+  have hwL : σ₁.w L = σ₁.w σ₁.Φ := hwℓ
   set a : ℤ_[2] := L.coeff 1 with ha
   set b : ℤ_[2] := L.coeff 0 with hb
   have hLin : L.degree < U31.fq.degree := by
     have h' : L.degree < σ₁.Φ.degree := hin
     rwa [hΦ] at h'
   have hbwL : U31.bw L = 3 := by
-    have h1 : σ₁.w L = U31.bw L := w_coeff σ₁ htc hℓne hLin
+    have h1 : σ₁.w L = U31.bw L := w_coeff σ₁ htc hLne hLin
     have h2 : σ₁.w L = 3 := by
-      have hwℓ' : σ₁.w L = σ₁.w σ₁.Φ := hwℓ
-      rw [hwℓ', hwΦ']
+      rw [hwL, hwΦ']
     rw [← h1]
     exact h2
   -- 4 ∣ a: the NF exponent 3 forces v₂(coeff 1 of θ L) ≥ 3, and θ scales slot 1 by 2
-  obtain ⟨m, Q, hQ⟩ := HK13R.NF_exists (HK13R.θ_ne_zero hℓne)
+  obtain ⟨m, Q, hQ⟩ := HK13R.NF_exists (HK13R.θ_ne_zero hLne)
   have hm3 : m = 3 := by
     have h := U31.bw_eq hQ
     rw [hbwL] at h
@@ -529,12 +543,13 @@ theorem sideReads1_terminal :
   -- the linear form of L
   have hndL : L.natDegree ≤ 1 := by
     have h2 : L.natDegree < 2 := by
-      rw [Polynomial.natDegree_lt_iff_degree_lt hℓne]
-      rw [← fq_deg] at *
-      exact_mod_cast hLin
+      rw [Polynomial.natDegree_lt_iff_degree_lt hLne]
+      have hcast : U31.fq.degree = ((2 : ℕ) : WithBot ℕ) := by exact_mod_cast fq_deg
+      rw [← hcast]
+      exact hLin
     omega
   have heqL : L = Polynomial.C a * X + Polynomial.C b := by
-    rw [ha, hb, mul_comm]
+    rw [ha, hb]
     exact Polynomial.eq_X_add_C_of_natDegree_le_one hndL
   -- window sum = fgate; the development re-keys to fq − L
   have hsum' : (∑ j ∈ Finset.range 3, Bdev1 j * (ν₁gate σ₁ hΦ).σ.Φ ^ j) = fgate := by
@@ -583,7 +598,7 @@ theorem sideReads1_terminal :
       · exact absurd h3 (by omega)
       · rfl
     · rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_one]
-      simp only [reduceIte]
+      show fgate = B0 * (U31.fq - L) ^ 0 + B1 * (U31.fq - L) ^ 1 + 1 * (U31.fq - L) ^ 2
       rw [hB0, hB1, hc1, hc0, heqL, fgate, U31.fq]
       simp only [map_add, map_mul, map_sub, map_pow, map_ofNat]
       ring
@@ -595,12 +610,12 @@ theorem sideReads1_terminal :
     rw [w_coeff σ₁ htc (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') (inC_fq_C 2),
       HK13R.bw_C2]
   have hL3 : σ₁.w L = 3 := by
-    rw [w_coeff σ₁ htc hℓne hLin, hbwL]
+    rw [w_coeff σ₁ htc hLne hLin, hbwL]
   have hrest : (Polynomial.C 2 * L + Polynomial.C (a ^ 2)) ≠ 0 →
       4 ≤ σ₁.w (Polynomial.C 2 * L + Polynomial.C (a ^ 2)) := by
     intro hne
     have hw2L : σ₁.w (Polynomial.C (2 : ℤ_[2]) * L) = 4 := by
-      rw [σ₁.hwmul _ _ (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') hℓne, hw2', hL3]
+      rw [σ₁.hwmul _ _ (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') hLne, hw2', hL3]
       norm_num
     by_cases ha0 : a = 0
     · have hz : Polynomial.C (a ^ 2) = 0 := by
@@ -624,7 +639,7 @@ theorem sideReads1_terminal :
         rw [w_coeff σ₁ htc (Polynomial.C_ne_zero.mpr ha2ne) (inC_fq_C _)]
         exact hbwa2
       have hult := σ₁.hwult (Polynomial.C 2 * L) (Polynomial.C (a ^ 2))
-        (mul_ne_zero (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') hℓne)
+        (mul_ne_zero (Polynomial.C_ne_zero.mpr HK13R.two_ne_zero') hLne)
         (Polynomial.C_ne_zero.mpr ha2ne) hne
       calc (4 : ℤ) = min 4 4 := by norm_num
         _ ≤ min (σ₁.w (Polynomial.C 2 * L)) (σ₁.w (Polynomial.C (a ^ 2))) := by
@@ -673,6 +688,7 @@ theorem sideReads1_terminal :
             (Polynomial.X - Polynomial.C (1 : ↥σ₁.K)) ^ 1) %ₘ
           (Polynomial.X - Polynomial.C (1 : ↥σ₁.K)) := rfl
     rw [h0, psi_eq σ₁, pow_one, hdiv, hmod]
+    rfl
   have hvtx : (ν₁gate σ₁ hΦ).vtx = 1 := by
     have hexp : (ν₁gate σ₁ hΦ).a - ((ν₁gate σ₁ hΦ).μ : ℤ) * (ν₁gate σ₁ hΦ).mhat = 0 := by
       have hmh : (ν₁gate σ₁ hΦ).mhat = 0 := by
@@ -707,7 +723,9 @@ theorem sideReads1_lifts :
     show ((1 : F4ˣ) : F4) = canonRoot (ν₁gate σ₁ hΦ)
     unfold canonRoot
     rw [hroots]
-    simp
+    simp only [Multiset.toFinset_singleton, Finset.image_singleton, Finset.min_singleton,
+      Units.val_one]
+    exact (Equiv.symm_apply_apply (fieldEnum F4) 1).symm
 
 end
 
