@@ -1097,3 +1097,265 @@ above; V7/V8 count toward (not past) the ≥ 2 consecutive clean model-diverse p
 PROVED-UNVERIFIED is still never consumed by an acceptance claim.
 
 — DELTA 1 complete, 2026-07-31 late. Original tree above byte-untouched.
+
+---
+
+## DELTA 2 (SYNTH4 + O3-REPLACE fold) — append-only, dated 2026-08-01
+
+*(Folds in the two cross-validating adjudicated units: **SYNTH4**
+(`lean/notes/SYNTHESIS_PASS4_2026-08-01.md`, commit 29dd2fa — the GD merge, the recut
+mandatory path, the Lean units) and **O3adj** (`lean/notes/openmath/O3adj_adjudication.md`,
+commit 57b4da4 — the two-REJECT adjudication of the O-3 ⊕ O-2b joint-induction design,
+verdict REPLACE, the K-RUN-C composition). Both ACCEPTED by the orchestrator: ledger
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` §"SYNTHESIS 4 + O3 REPLACE ADJUDICATED
+(2026-08-01)", commit dbccbc1. Everything above this line — DELTA 1 included — is
+byte-untouched; where this delta corrects text above, the correction is recorded HERE and
+the corrected reading governs. The §4 acceptance criterion is UNCHANGED and applies
+verbatim to every GD-*/CU-* node (§D1.7 discipline). No Lean file is touched by this
+delta.)*
+
+### D2.1 The five SYNTH4 lines (proposed at SYNTH4 §5; adjudicated, now governing)
+
+1. **O-3 clause 3 (nonempty locus) re-keyed:** "every fresh-frame-lawful assignment
+   chain" → "every coherent chain (HistoryCoherent)"; **LC-COH** is displayed as a named
+   open note CONSUMED BY NOTHING. [Executes V21 finding 3's recorded-but-unexecuted tree
+   delta; the design's §R2 disposition was judged internally coherent by V21 itself.]
+2. **O-2b evicted from the critical path:** the OB1 half (K-DICT-OB1 trace/tree
+   correspondence, TT-DET′, MF-MATCH, the V21-4 congruence/well-definedness obligations)
+   moves to route R-QNT as D-16's package, per O3design's own §4 consumer table +
+   §D1.4's striking of D-16/rates. **OB2 (σ-invariance) stays root-side for now**
+   (composition unit CU-6), CONDITIONAL on the owed D-11 audit (§D2.7). **LIT-5 (BNS):
+   re-marked LITERATURE-CANDIDATE, route-R-QNT-ONLY** (see D2.4).
+3. **D-15 (CYL): merged into the recut cluster's deliverables** — its content is the
+   lift-uniformity corollary of the composition (CU-1/CU-2 per-f faithfulness + O-1thr
+   Theorem 3's cylinder exactness + D-14 + TB-CAP); K-4's repair pointer follows.
+   Adjudicated routing (O3adj §3.2): D-15 KEEPS its node identity and owns ALL box-level
+   lift quantification — the composition states NO box-keyed universal theorem, which is
+   what dissolves the V21-1/2 quantifier class permanently.
+4. **K-OB-C (Okutsu proximity) struck from the mandatory set** (O-7/route-R-QNT only);
+   the no-phantom warrant on the mandatory path is the GD dictionary (F5 + OL-2a-2(c,d)/3
+   per O3design's intra-step order), and O5triple §7 remark 6 bypasses the Krasner route
+   for D-7a. The citation is pulled only if the rates route is elected.
+5. **New named nodes GD-1..GD-8** (§D2.2 below) with the statement-level consumption
+   mappings as the cross-index; the O-1thr/O-2a/O-3-cluster/O-5/O-9 residues are
+   RE-POINTED at them — a GD family proved retires its instances in every carrier
+   package at once (after the family's own transcription-audit clause).
+
+### D2.2 The GD-1..GD-8 merged open-lemma families (new named nodes; SYNTH4 §1)
+
+**The merge finding:** the ~22 named open items across the seven active Phase-B packages
+are EIGHT lemma families; the GMN-dictionary/engine-read seam (GD-2/GD-3) is ONE subject
+stated in FIVE vocabularies. "↔ labels" below quote each package's exact item names.
+A partial proved in one vocabulary transports to the family's other carriers ONLY after
+the (S-1)-style machine transcription audit (O-1thr §8) — the audit is part of closure.
+All GD families are **OPEN** (they merge open items); proved partials are named per row.
+
+| id | merged subject | carriers (exact labels) | proved partials on file |
+|---|---|---|---|
+| **GD-1** | representative shape / pinned-lift admissibility: Φ_{i+1} = Lift_i(c) monic of degree m_i·e_i·f_i, a GMN Def-2.12 representative (one-sided N_j, R_j ∼ ψ_j, top mult 1), V-recursion V_{i+1} = e_i f_i(e_i V_i + h_i); graded corollary on in(Φ_{i+1}) | O-2a **OL-1 (a)(b)(c)** = the statement; O5triple **(R-1)** = clause (b) at the constructed representative (V23: substantive, not a lookup); O-1thr **(V2)(a)** = the graded corollary; O3design **JC-1** | GMN Thm 2.11 (SOME representative); O-1thr **Lemma KEY1** proves the graded corollary outright at degree-1 first transitions |
+| **GD-2** | frame/valuation tie + development identity (the seam's spine): u_{i+1} = v_{i+1} on low-degree nonzero B, w multiplicative (MacLane); w_{i+1}(B) = min_k (w_{i+1}(C_k) + k·γ̂_i); window polygon = N_{i+1}(f) vertex-for-vertex; emitted record (e,h,ℓ,s,u) verbatim (c1) | O-2a **OL-2 (a)+(b)** ⇒ **OL-2-min [(c′)+(d′)]**; O-1thr **(V1)** + **(V2)(b)** verbatim + **Corollary VTX**'s general-order residue; O3design **JC-2** (+ the (M6b) locality corollary); O5triple **(I-1)(a)** side-data leg | **Lemmas VAL1 + DIV1** outright at degree-1 first transitions; **WGEO(a)–(d)** at every order from (V1)/(V2); T-F machine check 41,720 instances 0 violations (7,472 violations of the UNsheared reading — the convention pin is load-bearing); HK52 stretch countermodel = the standing clause-(c) trap |
+| **GD-3** | residual dictionary / twisted residues. MIN CORE: ord_{ψ̂_hom}(in(f)) = ord_ψ(R_λ(f)). FULL FORM: R^nrm = c·R_λ(f), c ∈ F^×, slot-wise residue-field bijections (no un-cancelled z ↦ z^a, a ≥ 2). Consumption split: the cluster needs the MIN CORE only (V25's minimality gap, executed at O-2a rev 5's OL-3-min trim); the value side (O-9 census → O-11 tables) needs the FULL form | O-2a **OL-3** (full) / **OL-3-min** (core); O-1thr **(V2)(c)** = the min core VERBATIM; O-9 **OL-B** = the slot-wise clause ("one proof should serve both" — O-2a's own text); O3design **JC-3**; O5triple **(I-1)(a)** residual leg | KEY1's ord computation (degree-1 first transitions); M08 Theorem 2 = level-1 census PROVED (46-strata machine check); B-4/M6 empirical through OM order 4 |
+| **GD-4** | emission/record discipline (engine bookkeeping, not GMN mathematics): W1–W5 well-formed dressed histories, domains, level-0 (c0), AUX-at-harvest + lower (N4) band | O-2a **OL-4**; O-1thr **(M6b)(iii)** + **(M6b)(ii−)**; O3design **JC-4** (OL-2a-4 + K-OB-E) | proof-by-construction routes on record in both briefs; K-OB-E (GMN Def 3.9 arithmetic) is the one semantic clause |
+| **GD-5** | base-read conformance at order 1 — **NEARLY CLOSED BY COMPOSITION**: O-2a OL-5 (b′)+(c′) = the composition of O-1thr's PROVED (V1)/(V2)-at-order-1 layer (VAL1/KEY1/DIV1 + ROOT-M + WGEO) with O-2a's PROVED (D3). Residue: ONE transcription audit (S-1 seam, O-1thr machine ↔ O-2a stage interface F.0–F.2 at order 1) + the degree-g > 1 root-key KEY1 generalization (small, same method) | O-2a **OL-5 (b′)+(c′)**; O-1thr rev 3 §§ VAL1/KEY1/DIV1/ROOT-M/WGEO; O-2a **(D3)** (proved) | the entire content except the S-1 audit; SYNTH4's proposal: a one-page composition note closes it, no new mathematics expected |
+| **GD-6** | run decomposition / execution ≡ realization: (a) run = successive stage reads with chain parameter Θ(𝐇_{≤i}) (= O-2a **OL-6**, V25 no-critical); (b) machine execution ≡ REALIZED (= O-1thr **Lemma REAL≡**); (c) O3design's F1′ level-accounting clause | O-2a **OL-6**; O-1thr **REAL≡**; O3design **F1′** conformance warrant | (b)'s V24 circularity (the non-halted guard) REPAIRED at O-1thr rev 4 (commit 5613274: (M6c) requantified, non-ns-halt now a CONCLUSION); repair verification pending — pin STANDS per ledger |
+| **GD-7** | flow coherence / process matching / adequacy: (a) sprouted-type dissection factor G_{S,ψ} = f_{t′} with ω_{r+1} = a(S,ψ); (b) flow-sprouted types lie in t_r(f) so Thm 4.18/Cor 4.19 apply; (c) order-0 anchor f_{t₀} = g_j (product-closure half substantive, per V23 gap 2 — in the lemma, not the lookup); (d) ADEQ read-back surjectivity, conditional on GD-1 | O5triple **(GMN-COH)** [M], **(R-3)** [M], **(R-0)** [S/M split at rev 3]; O3design **(ADEQ)** leg (ii); **MF-MATCH** = the D-16-only sibling, NOT mandatory (kept for provenance); O-4 V2-item-4 caveat consumed at OL1-i | one GMN reading session covers (a)–(c) + the (R-1) lookup + L5b pin + printed-TAMS pagination — the whole literature-facing surface of GD-1/GD-7/GD-8 |
+| **GD-8** | exact-key polygon seam: at ord_{φ_r}(g) = j₀ ≥ 1 the φ_r-development has the slope-−∞ side of length j₀ contributing the EXACT factor φ_r^{j₀}, finite sides carrying ω − j₀, with degree bookkeeping | O5triple **(R-2)** [M] (NODE(ii), Thm A(3)); O-2a order-1 **(L3+)** | the order-1 proof (falsifier-covered: 871 forced exact-divisibility samples, 0 findings); expected to generalize verbatim over GD-2's frame tie |
+
+**The non-merging remainder (7 genuinely separate item groups, unchanged owners):**
+O-10's K-COUNT + K-JAC (the hardest genuinely-new quantitative lemmas; D-8 guard +
+consumer audit ride along) · O-9's OL-A/OL-C/OL-D (OL-B is GD-3) · the instance pin
+(D-11 + OL-O12-2 + contingent OL-O12-1) · D-3/O-8b's (R1)–(R4) (arbitrary-DVR statement
+discipline adjudicated at GD dispatch — if adopted, D-3 collapses to scope hygiene) ·
+(E-N) (open, scoped, NOT consumed by the mandatory path) · the O-14 residue
+(Conjecture 5.4.C, consumed by nothing mandatory) · Dfloor's (C2) conventions at
+degree > 1 (owned by O5triple Theorem C). K-OB-C: struck (D2.1 line 4).
+
+**Count: 22 named open items → 8 families + 7 independent groups**; the mandatory path
+needs the 8 families minus MF-MATCH, plus O-9/O-10/instance-pin/D-3 from the remainder.
+
+### D2.3 The K-RUN-C composition (CU-1..CU-7) — replaces the O-3 ⊕ O-2b joint cluster
+
+**§D1.3 item 2 is RETIRED.** The "ONE joint cluster, proved together by mutual induction
+on resolution level" is replaced by the K-RUN-C composition (O3adj §3, accepted at
+dbccbc1). Grounds (O3adj §§1–2): V21's three heavy blockers (findings 1/2/5) are V16's
+two central blockers surviving their own repairs — (P1) any box-keyed global "∀ f"
+statement carries the every-lift/cylinder law intrinsically; (P2) the Cons^τ-defined
+global T_can forces an un-schedulable global adequacy theorem. Both are structural to
+the design's defining moves, hence REPLACE, not a third revision. The replacement's
+pieces each carry their own hostile-verification record; its statements are PER-f
+(selected-f); box quantification appears only where D-15 owns it (D2.1 line 3).
+N\*(𝐇) = the D4R.4/L12 per-branch level with the TB-CAP verdict-window join; CEIL-UB
+retained one-directional. Standing preconditions unchanged (§2.4).
+
+* **CU-1 (NM — no-missing + interior adequacy + state binding; THE ONE NEW PROOF).**
+  One ordinary induction on chain length k, two clauses: for every Cons_f chain 𝐇 with
+  N\*(𝐇) ≤ N — (i) the canonical run on f at working level N realizes 𝐇; (ii) the
+  engine's frame state after the realized prefix equals the stage data of Θ(𝐇) (the
+  OL-6 binding — the old F5 content as a carried clause, not a face). Step = IH + OL-6 +
+  OL-2a-2-min/3 + SPAN/(M6a)/(M6c)/VTX + D-14 + REAL≡ — i.e. GD-2/GD-3(min)/GD-6
+  instances plus O-1thr's per-site kernel, already proved at the rev-3 perimeter (root
+  states + degree-1 first transitions outright). Base = O-2a Theorem 1 + OL-5 order-1,
+  statuses displayed VERBATIM (no "proved base" phrase — V21-6 accepted). Interior
+  adequacy = per-site SPAN totality inside the same step; **ADEQ as a global unit is
+  DELETED** (leaf surjectivity is CU-7/counting — Arg-2). Status: OPEN; primary gate =
+  the promoted DEPTH-3 falsifier (order-2 states, where (V1)/(V2) are genuinely
+  consumed), which must run BEFORE the CU-1 spec dispatches.
+* **CU-2 (NP — no-phantom).** = O-2a Theorem 2(D) ∘ ι: every emitted record of the
+  canonical run on f is the GMN datum of its chain. Consumed from O-2a rev 4/5; residue
+  exactly OL-2a-1..6 = GD-1..GD-6; nothing re-derived. **CU-2t (terminal seam):** the
+  old Cons^τ (t-i)/(t-ii) obligations as ONE lemma from O-2a Theorem 2(B) saturation +
+  TB-CAP (τ-hen)/(τ-irr) windows; no global T_can definition rides on it. Status: OPEN
+  (one lemma) over the GD residue.
+* **CU-3 (NE — nonempty locus, coherent form).** = O-14a′ RunRealizerExists (ZMod p
+  collapse + last-node closure) + D-14 cylinder pinning + the (O6) canonicalizations.
+  Requires the O-3 clause-3 re-key — EXECUTED at D2.1 line 1.
+* **CU-4 (ACC — acceptance, selected-f).** F4-S (soundness, every N) + F4-C
+  (completeness at N ≥ N\*) exactly as rev 1 split them (V21 confirmed the level
+  quantifiers), stated for the box's own f only; from O-1thr Theorem 3 (F1)/(F4) +
+  O-2a Theorem 2(B) + TB-CAP (τ-irr) window [perimeter-conditional, displayed].
+* **CU-5 (satellites).** K-OB-A = O-1thr Thm 1 per site + O-13/D-12 roster finiteness
+  (corollary-grade). K-OB-B = DES-6 re-key + CU-1 (definitional + one N\* computation).
+  K-OB-E = GMN Def 3.9 (near-definitional). K-OB-C = struck from mandatory (D2.1
+  line 4); standalone GMN-side unit only if R-QNT elects it.
+* **CU-6 (OB2 — σ-invariance, level-free).** O-2a clause (i) + the BNS §2 definitional
+  transcription (Defs 1.7/3.1–3.2 pinned). Root-side PENDING the D2.7 audit: if D-11
+  does not consume OB2, CU-6 and its BNS pin leave the mandatory path too.
+* **CU-7 (O5triple interface discharge + re-attribution).** (I-1)(a) = CU-2 + O-1thr
+  Thm 1/D-14 lift transfer below thr(T); (I-1)(b) = CU-2t + CU-4 + Lemma STEEP;
+  (I-1)(c) = O-2a Theorem 2(B)/(D); (I-2) = OL-2a-2/3 faithfulness + the (N4) corner
+  band. **ACTION OWED: correct the O5triple brief's (I-1) attribution line** — its
+  displayed content is single-polynomial and consumes NO K-DICT-OB1; the "∘ O-2b trace
+  correspondence" phrase priced a node the content never uses.
+* **DEFERRED TIER (route R-QNT; not root-mandatory).** OB1 = F6′ + TT-DET′ + MF-MATCH +
+  the V21-4 congruence obligations + D-16 + gates G-F6′/G-MF; rev-1's right-sized
+  statements are the tier's starting spec (two review rounds banked, not discarded).
+  Opens only if Phase C elects explicit rates (OL2) or the T-9 quantitative route.
+
+**Consumer-table walk (every O-3/O-2b consumer served or explicitly deferred; O3adj
+§3.2):** K-14 (I0) ← CU-1 + CU-3 · K-14 (I1) ← CU-1 + CU-2 (per f) + D-15 (box level) ·
+K-14 (I3-rc) ← CU-1(ii) · O-4 OL1-ii ← CU-2 + CU-4 + GMN Cor 4.19 · O-5 + D-7a/b/c ←
+CU-7 (no OB1) · O-7 (X1)/(X4) ← CU-2 + CU-5 [O-7 itself R-QNT] · D-15 ← D-14 + O-1thr
+Thm 3 + CU-1/CU-2 + TB-CAP · D-16 ← DEFERRED (root-optional, §D1.4) · D-11 σ-invariance
+← CU-6 · K-4/K-6 repairs ← via D-15. No box-keyed universal theorem, no global ADEQ,
+no OB1 anywhere on the mandatory side; the unserved consumers are exactly route R-QNT.
+
+**Gates (re-attributed per V21-6):** U6 length-3 (G-F1/G-F2/G-F5, selected-f);
+**G-LIFT split** — per-site read comparison tests O-1thr Thm 1/D-14, full-run-set lift
+comparison moves to D-15; G-F3′ (coherent-chain kill only); G-F4′; G-CEIL′ (both
+directions); G-EMIT (now also OL-6's falsifier); G-OB2; G-OBC; G-F6′/G-MF → deferred
+tier. **F2′-as-assembly note (SYNTH4 §2.3, verified for D-7b):** O5triple Theorem B
+derives D-7b coverage from injectivity + checksums alone (NO no-missing consumed);
+the drainage-side no-missing residue is exactly CU-1's induction over the PROVED
+(M6a)/(M6c) layer + the GD dictionary — assembly, not fresh mathematics.
+
+**Risk display (O3adj §4, carried):** R1 CU-1's step at deep states rides (V1)/(V2) +
+REAL≡'s perimeter (depth-3 falsifier = cheap pre-test; a kill reopens the per-site
+kernel, not the composition's shape) · R2 the (E-N) caveat touches CU-4 through O-1thr
+Thm 3(c) (displayed OPEN) · R3 a future genuine cross-polynomial OB1 consumer would
+re-open the deferred tier (re-scoping event, not silent assumption) · R4 K-14 census
+granularity below leaf level is D-15 content by routing.
+
+### D2.4 Evictions from the root-mandatory set (recorded corrections; readings govern)
+
+* **O-2b (K-DICT-OB1 / TT-DET′ / MF-MATCH):** OFF the mandatory path → route R-QNT
+  (D-16's package). Evidence: O3design §4's own consumer table gives F6′/OB1 exactly one
+  consumer, D-16, which §D1.4 struck (rates only); the O3adj §3.2 walk confirms no other
+  root-mandatory consumer (the O5triple (I-1) attribution was a mis-pricing — CU-7).
+  §D1.3's reason for the join ("needed to consume any BNS iteration/precision bound",
+  O-2 clause (v)) was a rates-only reason.
+* **LIT-5 (BNS) re-marked: LITERATURE-CANDIDATE, route-R-QNT-ONLY.** Theorem 3.13 was
+  already unconsumed on the mandatory path; with OB1 evicted, the BNS §2/§4
+  transcription duties (with their documented arXiv-vs-journal numbering hazards) are
+  R-QNT items. The ledger records the consequence: the 5th literature axiom is no
+  longer needed for the root. ONE residual BNS touch-point remains root-side pending
+  the D2.7 audit: CU-6/OB2's §2 definitional pin (Defs 1.7/3.1–3.2) — definitions, not
+  the precision theorem.
+* **K-OB-C (Okutsu proximity):** struck from the mandatory set (D2.1 line 4); only
+  consumer left is O-7 (route R-QNT). O-3's §2.4/§3 charge texts naming K-OB-C for
+  no-phantom are superseded by the GD-dictionary warrant.
+* Already struck at §D1.4 and unchanged: D-16, O-6/O-7/O-8a (route R-QNT).
+
+### D2.5 Status updates (evidence-cited; §D1.5 pattern)
+
+* **Dfloor (D-1 MEAS-BRIDGE + D-2 SUM-ONE + D-4 BASE-CASES) = VERIFIED — the THIRD
+  Phase-B leaf through the bar.** Pass 1 (Codex V22): CLEAN SOUND, 0 criticals (commit
+  604621f). Pass 2 (fresh Fable, model-diverse, commit bdc996a): SOUND, 0 criticals,
+  3 minor gaps (ID reduced-rep, ADD induction coprimality, TRANSFER sum-regularity),
+  all six charged rev-2 repairs confirmed, T-F numerator independently recomputed.
+  Adjudicated VERIFIED at ledger dbccbc1; the 3 minor-gap fixes ride the next doc
+  touch. Residue (displayed, not discharged): the BASE-1(f) fence = classifier-side
+  content, the composition cluster's business. Lean unit U-C (the Dfloor capstone
+  shape) stays PARKED — sign-off class, per the ledger.
+* **O-12 = VERIFIED at its honest scope — the SECOND leaf (recap).** Pass 1 (V19, no
+  criticals) + pass 2 (fresh Fable, ZERO criticals; 2 gaps = one wording conjunct +
+  one inert proviso, math holds) ⇒ VERIFIED: the pole-free/(REG-p)-emptiness theorem
+  at the abstract solve family 𝔅_n (ledger §"WAVE 4 + PASS 2s", commit 95a46d2).
+  Wording conjunct rides the next touch. Residues as separate nodes, unchanged:
+  OL-O12-2 (complete degree-3 table = an (O3) member of 𝔅₃) + D-11 (instance pin) +
+  contingent OL-O12-1. Lean unit U-B (𝔅_n solve-table family + pole-free theorem)
+  DISPATCHED per the ledger, parked consumers noted.
+* **O-13 = VERIFIED at its honest scope — the FIRST leaf (recap).** Pass 1 (Codex V8):
+  SOUND-WITH-GAPS → gaps repaired in rev 2. Pass 2 (fresh Fable, model-diverse,
+  package-only context): all six gaps non-consumed cosmetics; the verifier
+  re-implemented the enumerator from the package text alone and reproduced
+  |S_n| = 1, 15, 53, 197, 509, 1460 exactly (ledger §"O-13 REACHES VERIFIED,
+  2026-07-31 night"). Scope: skeleton/menu finiteness, p-free by typing; (COMP) the
+  named condition (D-12r rides the D4R.0-K(c) verdict pin, a SEPARATE node); VAL-DIV a
+  labeled conjecture. Lean: `skeleton_finite n` at every n (SkeletonFinite.lean,
+  catalogue encoding); the hfin consumer unwiring is parked as unit U-F behind the
+  recorded import-order block.
+* Repair-wave landings already on record (path step 1 below, partially done):
+  **O-1thr rev 4** landed (commit 5613274 — V24's criticals repaired, (M6c)
+  requantified, the REAL≡ circle killed; the sloped pin STANDS per ledger; fresh pass
+  owed) · **O5triple rev 3 + O-2a rev 5** landed (commit 6fe1b2d — both 0-critical;
+  OL-3 trimmed to OL-3-min; the L5b′ = (L2) single-point cross-package seam flagged).
+
+### D2.6 The recut mandatory path, in dispatch order (REPLACES §D1.6's slots 1–11)
+
+1. **Repair wave** (verification-only, cheap): O-1thr rev 4 [LANDED, pass owed]; O-2a
+   OL-3-min trim + O5triple rev 3 [LANDED, passes owed]; Dfloor pass 2 [DONE — D2.5].
+2. **GD-5 composition note** (one page, closes the base seam) + the **S-1 machine
+   transcription audit** O-1thr ↔ O-2a stage interface (the audit IS the content).
+3. **THE GD CAMPAIGN** (the critical mass): one prover-unit family for GD-1, GD-2,
+   GD-3 (min core first, full form for the value side), GD-8 — stated over an arbitrary
+   absolutely-unramified complete DVR from the start (kills most of D-3); GD-4/GD-6 as
+   engine-bookkeeping units alongside. Falsifiers: T-E/T-F harnesses extended to
+   order ≥ 2 states; the HK52 stretch gate as the standing GD-2(c) trap; the 871-sample
+   (L3+) harness for GD-8. [Campaign head DISPATCHED per ledger: GD-2/GD-3 as ONE
+   MacLane/GMN unit.]
+4. **The literature unit** (one session): GMN §2.1/§3/§4.1 pulls for GD-1(R-1)/GD-7
+   (a)–(c) + L5b normalization + printed-TAMS pagination; MacLane 1936 pin for (V1);
+   LIT-3 numbers + Mathlib probe. (LIT-5/BNS: struck, pending the D2.7 OB2 audit.)
+5. **The K-RUN-C composition** (CU-1..CU-7 per D2.3): depth-3 falsifier FIRST (CU-1's
+   gate), then the CU-1 spec, then the rest as the consumption arrows dictate; the
+   D2.1/D2.4 tree edits are executed by THIS delta. [CU-1 prover DISPATCHED, gated.]
+6. **O-5/D-7 close** (O5triple Theorems + cluster interface via CU-7), then **O-4
+   OL1-ii** assembly (CU-2 + CU-4 + GMN Cor 4.19).
+7. **O-9** (OL-A/C/D over GD-3-full) ∥ **O-10** (K-COUNT/K-JAC; D-8 guard + consumer
+   audit).
+8. **D-11 + OL-O12-2** (instance pin; run the D2.7 OB2 audit here at the latest) →
+   **O-11** (D-9 corrected dependency set) → **root assembly** (Phase C; D-1/D-2/D-4
+   in hand per D2.5; Asvin's scaffold shape as the document spine).
+
+Formalization-side (non-blocking, from SYNTH4 §4): U-D (O5triple Theorem B abstract
+counting lemma) + U-A (`GDInterface` design — ONE Lean structure carrying GD-1..GD-6,
+the enforceable mirror of the D2.2 merge) are hours-scale; U-B/U-E prover-unit-sized
+[U-B, U-D, U-E DISPATCHED per ledger]; U-C/U-G wait on their pass-2s; U-C additionally
+PARKED (capstone-statement sign-off class).
+
+### D2.7 Owed check: the OB2-alleged-D-11-consumption audit
+
+**The one audit gating a further eviction (SYNTH4 §2.1, flagged to the D-11 owner).**
+O3design's §4 consumer table carries the row "D-11: σ invariance | OB2". If D-11's
+eventual statement really consumes OB2 (σ-invariance under the BNS ∼_OM equivalence),
+then the cheap level-free OB2 stays root-mandatory WITH its BNS §2 definitional pin
+(CU-6 as written). If — as this tree's own D-11 statement suggests (kernel entries as
+Haar volumes of continuation events; no ∼_OM quantifier anywhere in D-11's text) — it
+does not, then OB2 leaves the mandatory path too, CU-6 moves to the deferred tier, and
+the LAST root-side BNS touch-point disappears. Deadline: adjudicate no later than D-11
+dispatch (path step 8); record the outcome as a DELTA-3 line. Until adjudicated, CU-6
+stays root-side (the conservative reading).
+
+— DELTA 2 complete, 2026-08-01. Original tree + DELTA 1 above byte-untouched; the §4
+acceptance criterion unchanged (§D1.7). Next tree edit: DELTA 3 after the GD campaign's
+first wave + the D2.7 audit.
