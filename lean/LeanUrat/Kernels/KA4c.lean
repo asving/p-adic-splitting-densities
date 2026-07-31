@@ -43,6 +43,7 @@ Build: cd lean && lake build LeanUrat.Kernels.KA4c
 -/
 import LeanUrat.Kernels.E0Route
 import LeanUrat.MovesX.Defs
+import LeanUrat.MovesX.XF10
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -86,32 +87,48 @@ structure DrainIdent (n p : ℕ) [Fact p.Prime] (C : MovesX.XCtx n p)
 
 /-! ## The countable-union glue (NsNullP feeds the ns leg) -/
 
-/-- KA4c (glue): the ns-fiber union is null when every fiber is (the form
-`NsNullP` delivers per prime).  deps: XCtx's `nsCountable` +
-`frac_iUnion_null` + `frac_mono`.  Sketch: `Countable nsIdx` gives an
-ℕ-indexed surjection (or the index is empty); reindex the union and apply
-`frac_iUnion_null`; `frac_mono` + `frac_nonneg` close the comparison. -/
-theorem ka4c_nsFiberUnion_null {n p : ℕ} [Fact p.Prime] (C : MovesX.XCtx n p)
+/-- KA4c (glue, REPAIRED 2026-07-31 queue item 20): the ns-fiber union is null
+when every fiber is (the form `NsNullP` delivers per prime).  deps: XCtx's
+`nsCountable` + `frac_iUnion_null` + `frac_mono` + XF10's `discZeroNull`
+(the `2 ≤ n` anchor for the empty-index corner).  Sketch: `Countable nsIdx`
+gives an ℕ-indexed surjection (or the index is empty); reindex the union and
+apply `frac_iUnion_null`; `frac_mono` + `frac_nonneg` close the comparison;
+at EMPTY `nsIdx` the union is `∅` and `frac ∅ = 0` anchors on the null
+`discZero` (the XG3.lean:31 precedent).
+
+STATEMENT-REPAIR RECORD (executed 2026-07-31, Asvin sign-off on queue item 20,
+BRIDGE_ADJUDICATIONS_2026-07-30.md): the fenced statement carried no `2 ≤ n`
+and its empty-`nsIdx` corner was UNDERIVABLE at the XCtx interface (the frac
+laws admit `frac ≡ 1` with `frac_iUnion_null` vacuous; obstruction record
+formerly at this corner).  Adjudicated repair options: (i) `frac_empty` XCtx
+field, (ii) `2 ≤ n` hypothesis, (iii) `Nonempty C.nsIdx`.  DECISION: (ii),
+the preferred option — the `rg XCtx` census shows ZERO XCtx constructions in
+the build graph (every module takes `C : XCtx n p` as a parameter) but TWO
+note-side compiled refutation witnesses constructing XCtx
+(notes/XE2_refutation_witness.lean, notes/XE3_REFUTATION_2026-07-27.lean)
+that a new field breaks, and THREE standing in-file adjudications freeze the
+interface ("never a new `XCtx` field": KE1/KE2/KE3), so `frac_empty` ripples
+MORE; both null anchors (`discZeroNull`, `tailZero`) already require `2 ≤ n`,
+so consumers live there already.  No downstream Lean consumer of this theorem
+exists at HEAD (`escape_of_x3drain` inlines its own Option-reindexed glue,
+hypothesis-free); no compiled countermodel of the OLD form exists (the corner
+was sorried, not refuted), so no M1 leaf note is owed. -/
+theorem ka4c_nsFiberUnion_null {n p : ℕ} [Fact p.Prime] (h2 : 2 ≤ n)
+    (C : MovesX.XCtx n p)
     (hnull : ∀ i, C.frac (C.nsFiber i) = 0) :
     C.frac (⋃ i, C.nsFiber i) = 0 := by
   haveI : Countable C.nsIdx := C.nsCountable
   rcases isEmpty_or_nonempty C.nsIdx with hE | hNE
-  · /- ⚑ BLOCKED CORNER (sharpened obstruction record, owner: BP4 orchestrator).
-    With `nsIdx` EMPTY the union is `∅` and the goal is `frac ∅ = 0` from NO
-    hypotheses (`hnull` is vacuous) — underivable at the XCtx interface: the
-    frac laws (univ/nonneg/mono/union_le/iUnion_null/inter_tendsto) all admit
-    the countermodel `frac ≡ 1` (iUnion_null vacuous since no set has frac 0),
-    whose only reality-tie is `vdisc_le_tail` at the degenerate n.  The corpus
-    precedent (XG3.lean:31) derives `frac ∅ = 0` by `frac_mono` into the null
-    `discZero` via XF10's `discZeroNull` — which REQUIRES `2 ≤ n`, a hypothesis
-    this fenced statement does not carry.  Missing law, either of:
-    (i) a `frac_empty : frac ∅ = 0` XCtx field / derived lemma, or
-    (ii) `2 ≤ n` on this statement (then import XF10 and anchor on discZero), or
-    (iii) `Nonempty C.nsIdx` on this statement.
-    The consumers are UNAFFECTED: `blockDrain_of_drainIdent` takes the union
-    nullity as a hypothesis, and `escape_of_x3drain` (below) inlines the glue
-    anchored on its own null `InfTree` leg — both fully proved. -/
-    sorry
+  · -- nsIdx EMPTY: the union is `∅`; anchor `frac ∅ = 0` on the null
+    -- `discZero` via `frac_mono` (XF10's `discZeroNull` at `2 ≤ n` —
+    -- the XG3.lean:31 corpus precedent).
+    have hdz : C.frac (MovesX.discZero n p) = 0 := MovesX.discZeroNull n p h2 C
+    have hunion : (⋃ i, C.nsFiber i) = (∅ : Set (MovesX.MonicBox n p)) :=
+      Set.iUnion_of_empty _
+    rw [hunion]
+    exact le_antisymm
+      (by simpa [hdz] using C.frac_mono ∅ (MovesX.discZero n p) (Set.empty_subset _))
+      (C.frac_nonneg _)
   · obtain ⟨e, he⟩ : ∃ e : ℕ → C.nsIdx, Function.Surjective e :=
       exists_surjective_nat _
     have hunion : (⋃ i, C.nsFiber i) = ⋃ k, C.nsFiber (e k) :=
