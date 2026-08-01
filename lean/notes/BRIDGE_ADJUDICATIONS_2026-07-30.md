@@ -2049,3 +2049,13 @@ mathematics remains that must stay [M]") w/ a §4 roster-sync advisory
 enumeration); (NSF-KEY) six-artifact retirement PASSES; Step-4 grade
 drop honest. r15 dispatched: execute the move -> ELEVEN [M] rows.
 Report: lean/notes/openmath/VC16_report.md.
+
+## ROOT r15/REVISION 14 LANDED: D-12r [M]->[T] EXECUTED — ELEVEN ROWS (2026-08-05)
+ROOT §20: the VC16-warranted move executed — D-12r out of §3.1 to §4 entry 10
+((HEN-LIFT) Neukirch II §4 (4.6) p.129 + companion uniqueness lemma + Serre LF I §6
+Prop 15 pp.17-18; (OM-SAT) riding the GMN rider at TAMS-confirmed Cor 3.8/Def 3.9;
+routing table preserved); (H3) = {(ADM),(E-N)}; §4 roster synced HONESTLY (item 1
+pagination = (OM-SAT) slice only, LIT-1 session still owed; item 5 numbers CONFIRMED
++ Mathlib probe ABSENT — paper cite stands; Prop 15 added to item 4); 19-display
+enumeration audit (16 edited/3 conformant). Acceptance: earned r12, re-anchored r13
+by VC16; r15 is a text change — VC17 OWED. PROJECT_STATE sync owed at next touch.
