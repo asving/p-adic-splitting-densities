@@ -173,7 +173,6 @@ private def D₀ : CensusData where
   f := ![1]
   he := by decide
   hf := by decide
-  triangular := by decide
   h_coprime := by decide
 
 private lemma D₀_pd : D₀.period * D₀.d = 1 := by decide

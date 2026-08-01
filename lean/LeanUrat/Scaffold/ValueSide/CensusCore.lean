@@ -27,7 +27,20 @@ namespace LeanUrat.Scaffold
     i = 0..r, with e_i, f_i ≥ 1.  Derived: d = ∏ f_i (census field degree —
     O-9's DELTA-3 index fix: d = f₀⋯f_r, NOT f₀⋯f_{r−1}), the period
     e = ∏ e_i, the slot-weight function wt on the mixed-radix φ-monomial index
-    set J (a Fintype), the graded pieces G_β, and s(β) = #{j | wt j ≤ β}. -/
+    set J (a Fintype), the graded pieces G_β, and s(β) = #{j | wt j ≤ β}.
+
+    **ADM-U0 REPAIR RECORD (HDISCHARGE_H3 §1.3(b) (F-ADM-1), definition-change
+    authority).**  The BP_IV §1.2 display carried a fourth axiom row
+    `triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i`, which JOINTLY with `h_coprime`
+    forces e_i = 1 at every stage i ≥ 1 (e_i ∣ h_i ∧ gcd(h_i, e_i) = 1 ⟹
+    e_i = 1 — the compiled degeneracy witnesses, git history at the pre-repair
+    `Census.lean`), so the landed carrier could express NO ramified stage-≥1
+    type (the K6 datum e₁ = 3, h₁ = 2 fails 3 ∣ 2).  Adjudicated against the
+    math source of record, O-9 rev5 §1 (the pinned data sheet): the type data
+    is `λ_i = −h_i/e_i in lowest terms` — COPRIMALITY ONLY, e_i > 1 explicitly
+    live at stages ≥ 1 (warning display 1).  The row was a transcription
+    defect of the blueprint display (the C1/C2 `ledgerE` precedent, REVISION 3)
+    and is DROPPED; `he/hf/h_coprime` are the complete axiom set. -/
 structure CensusData where
   r : ℕ
   e : Fin (r + 1) → ℕ
@@ -35,7 +48,6 @@ structure CensusData where
   f : Fin (r + 1) → ℕ
   he : ∀ i, 1 ≤ e i
   hf : ∀ i, 1 ≤ f i
-  triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i
   h_coprime : ∀ i, Nat.Coprime (h i) (e i)
 
 /-!

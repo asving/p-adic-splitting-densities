@@ -649,7 +649,6 @@ def gateData : CensusData where
   f := fun _ => 2
   he := fun _ => one_le_two
   hf := fun _ => one_le_two
-  triangular := fun i hi => absurd (Fin.val_eq_zero i) hi
   h_coprime := fun _ => Nat.coprime_one_left 2
 
 /-- Gate 1: the canonical digit census at q = 3 is 3 = q^{f₀−1} (one pinned
@@ -900,10 +899,10 @@ end C2R1Salvage
 theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
     (β : ℕ) :
     D.attainDim β = D.d ↔ r1Bound D β ≤ β := by
-  obtain ⟨r, e, h, f, he, hf, htri, hcop⟩ := D
+  obtain ⟨r, e, h, f, he, hf, hcop⟩ := D
   dsimp only at hr
   subst hr
-  set Dm : CensusData := ⟨1, e, h, f, he, hf, htri, hcop⟩ with hDm
+  set Dm : CensusData := ⟨1, e, h, f, he, hf, hcop⟩ with hDm
   haveI : NeZero (e 1) := ⟨by have := he 1; omega⟩
   set A : ℕ := (((ZMod.unitOfCoprime (h 1) (hcop 1))⁻¹ : (ZMod (e 1))ˣ)
       * (β : ZMod (e 1)) : ZMod (e 1)).val with hA
@@ -1386,30 +1385,26 @@ mechanism is TRI + the vertex digit-read, supplied by the eventual engine
 instance; the skeletal `StratumR` cannot derive it) with the two operative
 projection theorems below.
 
-**SATISFIABILITY RECORD (compiled; ESCALATION per BP_IV §4 failure
-protocol).**  At HEAD the padding hypothesis `D.attainDim β = 0` is
-UNSATISFIABLE — not for C7's reason, but by a carrier degeneracy traceable
-to the blueprint's §1.2 `CensusData` display: the fields
-`triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i` and
-`h_coprime : ∀ i, Nat.Coprime (h i) (e i)` JOINTLY force `e i = 1` at every
-stage i ≥ 1 (`CensusData.e_eq_one_of_ne_zero` below), hence
-`period = 1` (`period_eq_one`), hence EVERY β is value-attained by the
-zero ledger index (`attainDim_pos`).  Consequences, on record:
-* the O9 warning-display-1 datum (e₁ = 3, h₁ = 2 — the padding clause's
-  own countermodel site) is UNREPRESENTABLE on the landed carrier
-  (3 ∤ 2 violates `triangular`), and O9's `triangular`-free r = 1 ledger
-  (§2: gcd(h₁, e₁) = 1 with e₁ > 1 allowed) contradicts the field;
-* this is a statement-level transcription defect of the blueprint display
-  against the math source of record — ESCALATED to the blueprint owner
-  (never a prover-side restatement, per the statement fence); the C1/C2
-  precedent applies (carrier wrong, law right: the `ledgerE` fix of
-  REVISION 3 §R3.3);
-* the padding law below is keyed EXACTLY to the post-repair carrier (on a
-  repaired `triangular` row, warning display 1 gives `attainDim 1 = 0` at
-  period 3 and the clause is live) — NO re-key will be needed;
-* per the honesty invariant (`sorry`-free ≠ non-vacuous) this vacuity is
-  ON DISPLAY here, machine-checked by the three witnesses, exactly as the
-  C7 adjudication displayed its own.
+**SATISFIABILITY RECORD — RESOLVED at ADM-U0 (HDISCHARGE_H3 §1.3(b),
+finding (F-ADM-1); definition-change authority).**  The escalation this
+record originally carried is DISCHARGED.  Pre-repair, the carrier's
+`triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i` row JOINTLY with `h_coprime`
+forced e_i = 1 at every stage i ≥ 1, hence period = 1, hence EVERY β
+value-attained by the zero ledger index — the padding hypothesis
+`D.attainDim β = 0` was UNSATISFIABLE at the then-HEAD, machine-checked
+by three compiled degeneracy witnesses (`e_eq_one_of_ne_zero` /
+`period_eq_one` / `attainDim_pos`, RETIRED with the row they witnessed
+against — see git history at this file).  The adjudication: the row was a
+statement-level transcription defect of the blueprint's §1.2 display
+against the math source of record — O9's r = 1 ledger (rev5 §§1–2) has
+gcd(h₁, e₁) = 1 with e₁ > 1 allowed (warning display 1: e₁ = 3, h₁ = 2,
+where 3 ∤ 2) — the C1/C2 precedent exactly (carrier wrong, law right: the
+`ledgerE` fix of REVISION 3 §R3.3).  The repair DROPS the row
+(`CensusCore.lean`, the ADM-U0 repair record on `CensusData`).  As this
+record predicted, the padding law below was keyed to the post-repair
+carrier and needed NO re-key; on the repaired carrier warning display 1
+is representable, gives `attainDim 1 = 0` at period 3, and the clause is
+LIVE (the K6 machine gate is unit ADM-U4's charge).
 -/
 
 /-- The census field degree is positive (each f_i ≥ 1). -/
@@ -1448,46 +1443,6 @@ theorem junctionStratum_count_eq_zero_of_unattained_vertex
     (q : ℕ) : SJ.count q = 0 :=
   hproof.paddingJ β hβ h0 q
 
-/-- CARRIER-DEGENERACY WITNESS (i): `triangular` + `h_coprime` force
-    e_i = 1 at every stage i ≥ 1 (e_i divides both h_i and e_i, hence their
-    gcd = 1).  The O9 r = 1 data with e₁ > 1 (e.g. warning display 1's
-    e₁ = 3, h₁ = 2) are therefore UNREPRESENTABLE — the escalation record
-    above. -/
-theorem CensusData.e_eq_one_of_ne_zero (D : CensusData) {i : Fin (D.r + 1)}
-    (hi : i.1 ≠ 0) : D.e i = 1 := by
-  have hdvd : D.e i ∣ Nat.gcd (D.h i) (D.e i) :=
-    Nat.dvd_gcd (D.triangular i hi) dvd_rfl
-  rw [(D.h_coprime i).gcd_eq_one] at hdvd
-  exact Nat.dvd_one.mp hdvd
-
-/-- CARRIER-DEGENERACY WITNESS (ii): the ledger period collapses to 1 at
-    EVERY datum on the landed carrier. -/
-theorem CensusData.period_eq_one (D : CensusData) : D.period = 1 := by
-  unfold CensusData.period
-  refine Finset.prod_eq_one fun i _ => ?_
-  unfold CensusData.ledgerE
-  split_ifs with h0
-  · rfl
-  · exact D.e_eq_one_of_ne_zero h0
-
-/-- CARRIER-DEGENERACY WITNESS (iii): with period 1 every β is
-    value-attained by the zero ledger index — the compiled proof that the
-    padding hypothesis is empty at HEAD (the generalization of
-    `attained_always` from β = 0 to all β that ONLY holds on the degenerate
-    carrier; on the post-repair carrier it fails at O9 warning display 1). -/
-theorem CensusData.attainDim_pos (D : CensusData) (β : ℕ) :
-    0 < D.attainDim β := by
-  unfold CensusData.attainDim
-  refine Finset.card_pos.mpr
-    ⟨fun i => (⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩), ?_⟩
-  have hwt0 : D.wt (fun i => (⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩)) = 0 := by
-    unfold CensusData.wt
-    exact Finset.sum_eq_zero fun i _ => by simp
-  unfold CensusData.Gset
-  rw [Finset.mem_filter]
-  exact ⟨Finset.mem_univ _, by rw [hwt0, D.period_eq_one]; omega,
-    by rw [hwt0]; exact Nat.zero_le β⟩
-
 namespace C5CtorGate
 
 /-- The C5-ctor machine-gate datum: r = 1, e ≡ 1, h ≡ 1, f = (2, 1)
@@ -1503,7 +1458,6 @@ def gateData : CensusData where
   f := fun i => if i.1 = 0 then 2 else 1
   he := fun _ => le_refl 1
   hf := by intro i; split_ifs <;> omega
-  triangular := fun _ _ => dvd_rfl
   h_coprime := fun _ => Nat.coprime_one_left 1
 
 theorem gate_d : gateData.d = 2 := by decide
