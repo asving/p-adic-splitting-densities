@@ -1347,3 +1347,40 @@ footer/§15). O-14a' honestly graded PROVED-UNVERIFIED with new named row
 P(O-14a' r3) (owed: V11/V15 arc display OR one fresh hostile pass).
 OWED-PASS QUEUE now: O-14a' fresh pass, D-11 r3, O-11 r3, CUC P(O-2a r5)/
 P(O-1thr r4)/P(O5t r3) — dispatched as a delegated Codex campaign.
+
+## OWED-PASS CAMPAIGN RESULTS (2026-08-03, delegated Codex campaign)
+Three owed hostile passes run (Codex, fresh context, full note text pasted,
+falsifier-first, fix-nothing charge; budget 52% of the 7-day window at
+launch — all three run). NO repairs performed anywhere; adjudication from
+the report texts only.
+- **O-14a' fresh pass** (target `openmath/O14ap_phaseB_verifybrief_rev3.md`,
+  charge stated: clean certifies core Theorems 1-3 at rev 3): verdict
+  **GAPS-ONLY** (0 CRITICAL, 3 GAP). The verifier found NO defect in the
+  core chain (Thm 1, Lemmas 3.1-3.2, Thm 3, Cor 4 — all falsification
+  attempts fail) — all 3 gaps sit in §5's flag-honesty perimeter (§5.2
+  "whenever" overreach; §5.3(i) recorded-lift (r7)-(r10) omission; a
+  missing residual-assembly obligation in the Conjecture 5.4.C accounting).
+  **NOT CLEAN => NOT banked**; P(O-14a' r3) does NOT upgrade on this pass.
+  (If a future adjudicator judges the §5-honesty gaps outside what the row
+  requires, that is an r11 decision — the row edit is NOT made here;
+  recorded as ready-for-r11 with this report as the evidence.) Archive:
+  `lean/notes/openmath/O14ap_owedpass_2026-08-03.md`.
+- **D-11 r3**: verdict **CRITICAL** (6 CRITICAL + 3 GAP: M1(a')
+  conditioning-scope contradiction; family-(v) factor-as-mass repeat;
+  §5/§7 billing contradiction; M1(b) overbroad disjointness; M2 false at
+  displayed universal scope under arbitrary allocation data; M3(b)
+  silently consumes open clause 4). **NOT banked**; the D-11 registry
+  counter does NOT advance (its bar unmet). Archive:
+  `lean/notes/openmath/D11_owedpass_2026-08-03.md`.
+- **O-11 r3**: verdict **CRITICAL** (1 CRITICAL + 2 GAP: Theorem O11
+  proves only the n>=2 restriction of the advertised every-n target row;
+  CUT-WD premise not folded into the "EXACTLY four rows" accounting;
+  "65/65 end-to-end" rederivation claim unsupported beyond the 5 proved
+  identities). **NOT banked**; the O-11 registry counter does NOT advance.
+  Archive: `lean/notes/openmath/O11_owedpass_2026-08-03.md`.
+What this does/does not change: the ROOT acceptance is untouched (these
+are leaf registry debts, not composition clauses). No leaf status, grade,
+or registry counter was edited; D-11/O-11 banking would additionally need
+their protocols' bars met even on a clean pass, and any P(O-14a' r3) row
+edit is reserved to r11. CUC P(O-2a r5)/P(O-1thr r4)/P(O5t r3) remain
+queued (not in this campaign's scope).
