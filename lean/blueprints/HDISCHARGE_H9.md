@@ -47,7 +47,7 @@ displayed premises of the first member are housed IN the member (one-home):
 | (NSF-KEY) | as-built keying conformance (ONE proposition, §1.1) | EXECUTED-ADJUDICATION (Unit C ran; no further proving) + a compiled-proposition bonus unit (H9-U1) | **RETIRED** — adjudicated this session (ledger entry "H9 LEAD ADJUDICATION"); r14 edit spec at §1.4, QUEUED behind the Unit-D bar |
 | (NSF-INT) | the interface implication chain pin → predicate → corpus (claims (i)+(ii)) | PROVE — **already proved conditionally**: I-1 (the §4B leaf proof) ON FILE, I-2 closed, I-3 GRANTED (r4 pass 2) | OPEN, priced — residual = exactly the (K1-CANON) discharge (§3); after it, retirement is a ledger adjudication + the §3.6 r15 spec |
 | — premise: marks-vocabulary (§1.4 of O-1thr) | a mark is the RECORD of an NsHalts event (§1.4's sole generation rule) | CARRIED (no separate discharge owed per (NSF-INT-RET) as corrected at ROOT r11 — see §4) | displayed; compiled conformance gate H9-U4 (probe-proved); optional hygiene unit H9-D3 |
-| — premise: (K1-CANON) | K1's "canonical tree" denotes (q-4)'s pinned notion at every consumed Step-18 site | PROVE (interface-lemma form, §3; the M04-side pin display is the OPTIONAL recording edit, sign-off-gated) | OPEN — the note H9-C1 + hostile pass H9-C2 are this blueprint's main new work |
+| — premise: (K1-CANON) | K1's "canonical tree" denotes (q-4)'s pinned notion at every consumed Step-18 site | M04-side SCOPE PIN DISPLAY (guard-in-statement; the ROOT-named route), SIGN-OFF-GATED, backed by warrant note + hostile pass [restructured at this blueprint's Codex review — §3.2] | OPEN — the (ed-1) edit spec + warrant note H9-C1 + gates g-A..g-D are this blueprint's main new work |
 
 Consumption (unchanged, ROOT row): enters Step 18's K1/K4 chain and Step 17's M3 leg
 (via Steps 11/12); clause (R) + inherited (UB). Two channels (design §2.5): (ch-1)
@@ -77,7 +77,10 @@ p^{N−2} against (SCALE)) — an obligation certain to fire, which fired.
 ### 1.2 The adjudication (executed retirement — the one sanctioned fiat-free case)
 
 **VERDICT: RETIRED.** Full entry: ledger `BRIDGE_ADJUDICATIONS_2026-07-30.md`, "H9
-LEAD ADJUDICATION" (this session). Two independent grounds:
+LEAD ADJUDICATION" (this session). The ONE sanctioned ground is (a); (b) is
+CORROBORATION only [Codex review finding 1: (NSF-KEY) retires ONLY by Unit C per
+(NSF-KEY-RET), NEVER by leaf text or compiled theorems — a compiled theorem witnesses
+the retired state, it does not constitute a second retirement route]:
 
 * **(a) the six-artifact iff:** R-0 sign-off (ledger, Asvin verbatim: "sign-off
   granted on the NsFree repair!"); R-1 the verbatim conjunct diff at HEAD
@@ -91,12 +94,13 @@ LEAD ADJUDICATION" (this session). Two independent grounds:
   promised); R-4 `lake build` green (8579 jobs) + AxChk census identical (740
   footprints, 0 sorryAx); R-5 fresh-context Codex diff confirmation
   (`UNITC_diff_confirm.md`, 7 checks, VERDICT: CONFIRMED).
-* **(b) truth at HEAD, machine-checkable:** the §1.1 proposition was COMPILE-PROBED AS
-  A THEOREM against built HEAD this session — statement + 6-line proof from
-  `bridgeCanonical_pin` (proved, both directions) + `bridgeVt_nsFree` +
+* **(b) corroboration — truth at HEAD, machine-checkable:** the §1.1 proposition was
+  COMPILE-PROBED AS A THEOREM against built HEAD this session — statement + 6-line
+  proof from `bridgeCanonical_pin` (proved, both directions) + `bridgeVt_nsFree` +
   `bridgeCanonical_level0`; axiom footprint {propext, Classical.choice, Quot.sound}.
   Verbatim statement + probe-verified proof body: unit **H9-U1** (§6). This upgrades
-  the design's "holds by construction of (†7)" to a compiled proposition.
+  the design's "holds by construction of (†7)" to a compiled proposition — a WITNESS
+  of the retired state, carrying no retirement weight of its own.
 
 **Bounds (the adjudication's own honesty lines):** (i) (H9) NOT closed — (NSF-INT)
 stands priced; (ii) NO carrier non-vacuity claim (§5.2); (iii) the
@@ -108,10 +112,13 @@ still displays KNOWN FALSE AT HEAD — adjudicated conservative-stale on record
 
 Design §2.5 retirement EFFECT: the design-graph node N2's BLOCKED-PENDING clause drops
 "(NSF-KEY) execution" (its other clause, the (CH-COV) audit, was EXECUTED at r4 §4A —
-outcome CLEAN, residue (CH-RES)); exact squares and every window-degenerate locus now
-fiber NO carried tree and drain to `none`/env(N) — (q-6)'s intended drainage, by
-construction. M02's flagged step (intended `ReadsOf` semantics; no compiled
-countermodel while `canPolicy` is designer-sorried) is inherited verbatim.
+outcome CLEAN, residue (CH-RES)). Drainage, stated at its two grades [Codex review
+finding 7]: (COMPILED, universal over ns-MARKED trees) no ns-marked tree is carried —
+`bridgeVt_nsFree`; (INTENDED-SEMANTICS reading, NOT compiled) exact squares and
+window-degenerate loci fiber only ns-marked trees and hence drain to `none`/env(N) —
+(q-6)'s intended drainage — inherited WITH M02's flagged step (intended `ReadsOf`
+semantics; no compiled countermodel possible while `canPolicy` is designer-sorried);
+the second grade is a reading of the first, not a new compiled fact.
 
 ### 1.4 The owed ROOT r14 edit spec (SPEC ONLY — this unit does NOT edit ROOT)
 
@@ -130,9 +137,10 @@ global-enumeration-audit convention):
   by the repair design's sign-off-gated Unit C ((NSF-KEY-RET))" by: "…, **RETIRED**
   (Unit C executed at the 2026-08-05 sign-off's dispatch: all six (NSF-KEY-RET)
   artifacts on file — ledger 'UNIT C EXECUTED' + 'H9 LEAD ADJUDICATION' entries; holds
-  at HEAD by construction of (†7) over the guarded carrier, compiled-proposition
-  record H9-U1); the row's OPEN member is (NSF-INT) (its two displayed premises
-  housed in-member; (K1-CANON) discharge owed)".
+  at HEAD by construction of (†7) over the guarded carrier; compiled-proposition
+  record H9-U1 — CITE ONLY IF LANDED at edit time, else cite the ledger adjudication +
+  blueprint §6 probe record [Codex review finding 8]); the row's OPEN member is
+  (NSF-INT) (its two displayed premises housed in-member; (K1-CANON) discharge owed)".
 * **E-r14-2 — §3.1 (H9) row (line ~1474):** (a) the (NSF-KEY) member block: KNOWN
   FALSE record re-labeled RETIREMENT PROVENANCE (historical); executed status +
   artifact pointers (UNITC_ripple.md, UNITC_diff_confirm.md, the two ledger entries);
@@ -142,9 +150,12 @@ global-enumeration-audit convention):
   any leaf text" → "(NSF-KEY) RETIRED by Unit C per (NSF-KEY-RET) (executed;
   artifacts on file)"; (d) the row's closing display rule "The (H9) target must NEVER
   be displayed as covering the HEAD wiring while (NSF-KEY) is unretired" → "the
-  target's as-built keying face now holds at HEAD ((NSF-KEY) retired; compiled record
-  H9-U1 once landed); the target must NOT be displayed as discharged while (NSF-INT)
-  stands priced ((K1-CANON) owed)".
+  target's as-built keying face now holds at HEAD ((NSF-KEY) retired; H9-U1 pointer
+  under the same landed-only rule as E-r14-1 [Codex review finding 8]); the target
+  must NOT be displayed as discharged while (NSF-INT) stands priced ((K1-CANON)
+  owed)". SEQUENCING PREFERENCE [same finding]: land Wave 1 (the H9-U1 module) BEFORE
+  r14 fires — cheap, and r14 waits for the VC15 bar anyway; if r14 fires first, the
+  landed-only citation rule keeps the pointers honest.
 * **E-r14-3 — Step 18's K1-a/K4 lines + Step 17's M3 leg (the E9 homes):** the (H9)
   display gains "(NSF-KEY) executed/retired as of r14" and re-states the residual
   price as "(NSF-INT) (incl. its (K1-CANON) premise)"; two-channel attribution and
@@ -228,93 +239,120 @@ one machine-checked candidate, not K1; three admissible routes displayed —
 guard-in-definition, guard-in-statement, proved interface lemma — none on file);
 r4 pass-2 gap 3 (I-3's accept is conditional and cannot supply it).
 
-### 3.2 Door: PROVE the interface-lemma form. Deliverable: note H9-C1
+### 3.2 Door: the M04-side SCOPE PIN DISPLAY (guard-in-statement), sign-off-gated,
+### backed by a warrant note [RESTRUCTURED at the Codex review — findings 2/3/4/5]
 
-**Primary route = the interface-lemma form** (the pass's route (γ)), as a leaf-external
-note `lean/notes/openmath/K1CANON_discharge.md`, because it needs NO statement change:
-the M04-side pin display (route guard-in-statement) is demoted to an OPTIONAL recording
-edit (§3.5) so the (H9) closure is not gated on a sign-off.
+**The review's ruling, accepted:** the blueprint's first draft made the
+interface-lemma form the primary route with no statement change. Codex showed that
+route re-runs pass-1 gap 5's WITHDRAWN inference in new clothes: its central step —
+"the post-K4 sum's index set = the pinned/carrier corpus" — is NOT derivable from the
+quotes on file ((q-4) defines decided_σ from the map, but nothing displayed makes
+Theorem 4's paper-level "Σ_{T type σ}" range over exactly the map's fibered trees),
+and (q-4) itself is OLD evidence, already on the table when gap 5 was filed and
+adjudicated insufficient. The as-built compiled guard (Unit C + the §6 units) is the
+only genuinely NEW display, and it speaks about `bridgeTree`, not about M04's
+paper-level K1 quantifier. Conclusion: the missing range display cannot be PROVED
+from file — it must be SUPPLIED at the source.
 
-**What changed since gap 5 was filed — why this is now provable rather than
-re-assertable:** gap 5's complaint was that NO display tied K1's consumed range to the
-guarded corpus. Two displays now exist that did not then: (a) as-built — Unit C made
-the carrier ITSELF guarded (`bridgeTree`'s third conjunct; read-off `bridgeVt_nsFree`),
-and units H9-U3/U5 compile the translation NsFree ⟺ all-maximal-chains-(τ-irr)-halted
-at realized trees, so "the trees the wired classifier ranges over satisfy the guard"
-is a THEOREM, not a walk assertion; (b) intended — (q-4)'s docstring clause carries the
-guard verbatim. The note's job reduces to: every K1 invocation on the mandatory path
-ranges over exactly those trees.
+**Primary route therefore = guard-in-statement** (the pass-1 verifier's own first
+admissible route): M04 §5.5 is edited to DISPLAY the scope pin — K1's "each complete
+finite realizable canonical tree" and Theorem 4's proof display "Σ_{T type σ}" are
+BOTH pinned, in one coherent edit, to (q-4)'s pinned notion (all leaves
+(τ-irr)/(τ-hen), the (q-3)/TREE-N scope). K1 is OL-1, the project's OWN open kernel —
+its statement scope is the note owner's to fix, UNDER the statement fence: Asvin
+sign-off naming the exact diff + a hostile Codex pass on the warrant note + the edit.
+This is a legitimate discharge of a DENOTATION premise (it fixes what the quantifier
+means at the source); it is not a proof of new mathematics, and it is priced
+accordingly: the discharge event is the SIGNED-OFF, PASSED edit, never the note alone.
 
-### 3.3 The note's skeleton (section-by-section; honest open points named)
+### 3.3 The deliverables: the edit spec + the warrant note H9-C1
 
-* **(C1-0) Claim + bookkeeping.** The §3.1 display verbatim; the discharge grade
-  sought (premise of (NSF-INT)'s grade, discharged by adjudication-by-inspection
-  against named quotes + compiled units); the gate (one hostile Codex pass,
-  quote-and-classify); what it does NOT touch (no leaf edit, no ROOT edit, no Lean
-  statement change).
+**(ed-1) The M04 §5.5 edit, exact (executed only after sign-off + pass):**
+(a) K1's statement gains the scope parenthetical after "each complete finite
+realizable canonical tree": "(canonical tree := (q-4)'s pinned notion — complete
+finite realizable, ALL leaves (τ-irr)/(τ-hen), the (q-3)/TREE-N scope; at the wired
+instance the `bridgeTree` carrier, whose `MovesT.NsFree` clause equals this guard's
+MARK COMPONENT at realized trees [H9-U3/U5])"; (b) Theorem 4's proof display "K4
+turns the LHS into Σ_{T type σ} μ(fiber T)" gains "(the sum over the SAME pinned
+corpus — the carrier's type-σ trees)"; (c) a one-line §5.5 preamble records the pin
+and cites (K1-CANON)'s provenance. One coherent scope pin across §5.5; nothing else
+touched.
+
+**(K1CANON_discharge.md), the warrant note — it SUPPORTS the sign-off request and the
+pass; it is NOT itself the discharge:**
+* **(C1-0) Claim + bookkeeping:** the §3.1 (K1-CANON) display verbatim; the discharge
+  event defined as (ed-1) signed-off + passed; the layer discipline stated up front
+  [review finding 5]: the as-built leg and the intended/paper leg are argued
+  SEPARATELY — no inference crosses from `bridgeTree` to M04's paper quantifier.
 * **(C1-1) The closed K1 invocation-site list** (= I-2's K1 restriction): (s-a) ROOT
-  Step 18's K1-a line; (s-b) M04 §5.5 Theorem 4's proof, the step "K4 turns the LHS
-  into Σ_{T type σ} μ(fiber T). K1 + Lemma 3.3 turn it into the shallow convolution".
-  Identity with §4A's walked closure displayed; closure carried RELATIVE to (CH-RES)
-  (same corpus-relative grade as §4A — no stronger completeness claimed).
-* **(C1-2) The consumed-range display, per site.** At (s-b): K1 is invoked at the
-  index set of the post-K4 sum; that sum is produced FROM decided_σ(N), and decided_σ
-  is "DEFINED from the canonical map (never a free field)" ((q-4) quote) — so the
-  consumed range = {trees fibered by `some σ`-labeled boxes within threshold} = the
-  σ-carrier's trees. At (s-a): ROOT's K1-a line consumes the SAME regrouping at the
-  same corpus (quote the line at execution). Range displays, both instantiation
-  layers: as-built = `bridgeCanonical_pin`'s ∃-range, i.e. `bridgeTree` (compiled);
-  intended = (q-4)'s pinned trees (displayed docstring).
-* **(C1-3) The guard at that range.** As-built: the carrier's third conjunct
-  (`bridgeVt_nsFree`), translated to leaf vocabulary by H9-U5 (every carried tree has
-  all maximal chains IrrHalts — probe-proved); the hen leg: carrier hen-content lives
-  in `henV` (payload; `hhen`'s (1,g)-shape), never a chain, so "all leaves
-  (τ-irr)/(τ-hen)" = "all maximal chains (τ-irr)" + payload — exactly U5's conclusion
-  (§4B claim (i) item 3's Lean face). Intended: (q-4)'s clause verbatim.
-* **(C1-4) Conclusion (the interface-lemma form) + the denotation corollary.** Every
-  tree at which the mandatory path invokes K1 satisfies the guard (both layers); hence
-  the (q-3)-scoped source lemmas' proved range covers every consumed K1 instance, and
-  K1's "canonical tree" AT THE CONSUMED SITES denotes the pinned notion — which is the
-  (K1-CANON) display. Trees outside the guard — if K1's bare quantifier admits any —
-  are invoked nowhere on the mandatory path ((CH-RES)-relative).
-* **(C1-5) Honest cruxes, displayed for the verifier to attack:** (x-1) "K1 is invoked
-  only at the post-K4 range" rests on Theorem 4's quoted proof order + the walked
-  closure — corpus-relative, residue (CH-RES) carried, NOT absolute; (x-2) the
-  compiled U3/U5 translation is at `fiberAt` witnesses (realized trees) — exactly the
-  carrier's `RealizedSelf` scope, no broader; (x-3) the intended-layer leg reads
-  (q-4)'s text as the definition of "labeled" — legitimate HERE because the claim
-  being proved IS the denotation statement (no circularity: the pin text is quoted as
-  the range's definition, not as K1's).
+  Step 18's K1-a line; (s-b) M04 §5.5 Theorem 4's proof step "K4 turns the LHS into
+  Σ_{T type σ} μ(fiber T). K1 + Lemma 3.3 turn it into the shallow convolution".
+  Identity with §4A's walked closure displayed; closure RELATIVE to (CH-RES), no
+  stronger completeness claimed.
+* **(C1-2) Why the edit loses no consumed instance (the no-loss warrant):** with the
+  pin, K1's narrowed quantifier + the pinned Σ-reading still supply every use in
+  Theorem 4's proof — the proof consumes K1 exactly once, immediately after K4, at
+  the sum the SAME edit pins; ROOT's K1-a line consumes the same regrouping. Display
+  the residual honestly: that the paper sum was ALWAYS INTENDED over the labeled
+  corpus is exactly what the edit stipulates at the source — it is a scope DECISION
+  by the kernel's owner, warranted (not proved) by (q-4)'s decided_σ definition and
+  by series_tie's LHS being built from decided_σ; the note must NOT present this as
+  a derivation [review finding 3].
+* **(C1-3) The as-built conformance leg (compiled; `bridgeTree` layer ONLY):** the
+  carrier's third conjunct (`bridgeVt_nsFree`); H9-U5: every carried tree has all
+  maximal chains IrrHalts (probe-proved); H9-U3: NsFree ⟺ all-maximal-chains-irr at
+  `fiberAt` witnesses. Billing per review finding 6: these compile the guard's MARK
+  COMPONENT only — complete/finite/canonical are `VTree` structural fields (the
+  carrier docstring's "BY CONSTRUCTION"), realizability is `RealizedSelf`, and the
+  (τ-hen) content is the `henV` payload (`hhen`'s (1,g)-shape), not a chain; the
+  FULL (q-3) package at the carrier = structure fields + `RealizedSelf` + U5 +
+  payload shape. No claim that U3/U5 alone supply the whole guard.
+* **(C1-4) What the edit discharges:** after (ed-1), K1's "canonical tree" denotes
+  the pinned notion BY DISPLAY AT THE SOURCE at every consumed site (the sites of
+  C1-1 all read §5.5) — the (K1-CANON) display holds; the (q-3)-scoped source
+  lemmas' proved range covers the (now displayed) consumed range. Layer discipline:
+  this is the intended/paper layer, discharged by the edit; the as-built layer is
+  C1-3's compiled record; no cross-layer step exists or is needed.
+* **(C1-5) Honest cruxes for the verifier:** (x-1) the invocation-site closure is
+  (CH-RES)-relative; (x-2) U3/U5 operate at `fiberAt` witnesses = the carrier's
+  `RealizedSelf` scope, no broader; (x-3) the scope pin is a STIPULATION under the
+  statement fence, priced as a statement change with a no-loss warrant — the note
+  claims no derivation of the range identity [review findings 3/4 folded].
 
-### 3.4 Gate + downstream (what fires on ACCEPT)
+### 3.4 Gates + downstream (what fires, in order)
 
-H9-C2: one adversarial Codex pass on H9-C1 (fresh context; charge: quote-and-classify,
-critical-vs-gap; verify (a) C1-1 = I-2's K1 restriction, (b) each step consumes only
-displayed quotes/compiled units, (c) no smuggled absolute-completeness claim). ≥1
-clean pass required; the (NSF-INT) retirement adjudication (H9-C3) then cites
-I-1 + I-2 + I-3 + this discharge, enters the ledger, and writes the r15 spec (§3.6).
-On REJECT: fold findings, revise, re-pass; if the verifier shows the interface-lemma
-form UNDERDETERMINED by the quotes on file, fall back to §3.5 (the sign-off route).
+(g-A) H9-C2: one adversarial Codex pass on the PACKAGE (warrant note + (ed-1) spec);
+charge: quote-and-classify; verify (a) C1-1 = I-2's K1 restriction, (b) the no-loss
+warrant's honesty (no derivation claimed where none exists), (c) the layer
+discipline, (d) the billing of U3/U5. (g-B) Asvin SIGN-OFF naming the (ed-1) diff
+(statement fence). (g-C) execute (ed-1); re-verify Theorem 4's text reads coherently;
+H8-coordination check (below). (g-D) ledger record: (K1-CANON) DISCHARGED (by ed-1 +
+pass + sign-off); then H9-C3, the (NSF-INT) retirement adjudication citing
+I-1 + I-2 + I-3 + this discharge, + the r15 spec (§3.6). Any REJECT/refusal: fold or
+halt; NO fallback that discharges without the fence.
 
-### 3.5 OPTIONAL recording edit (sign-off-gated; NOT required for discharge)
+**Coordination flag (H8):** (H8) = (K-CUT) owns M04 Lemma 3.3's hypothesis at the
+same Step-18 K1 regrouping; (ed-1) does not touch Lemma 3.3's hypothesis (disjoint
+objects), but both edits live in M04 §5.5 — the H8 lead must see this spec before
+either lead edits M04.
 
-M04 §5.5 (K1) gains a scope parenthetical after "each complete finite realizable
-canonical tree": "(canonical tree := the (q-3)/TREE-N scope — all leaves
-(τ-irr)/(τ-hen); at the wired instance, the carrier's `MovesT.NsFree` clause, which
-equals this guard at realized trees [H9-U3/U5])". Statement-fence: K1 = OL-1, an OPEN
-KERNEL consumed by ROOT Step 18 and M04 Theorem 4 — narrowing its quantifier is a
-statement change ⟹ Asvin sign-off + Codex conformance check (warrant: C1-2 shows the
-narrowing loses no consumed instance; Theorem 4's proof unchanged). **Coordination
-flag (H8):** (H8) = (K-CUT) owns M04 Lemma 3.3's hypothesis at the same Step-18 K1
-regrouping; the K1-quantifier parenthetical does not touch Lemma 3.3's hypothesis
-(disjoint objects), but both edits would live in M04 §5.5 — the H8 lead must see this
-spec before either edits M04.
+### 3.5 The abandoned first draft (dead-end record, per repo culture)
+
+The interface-lemma-ONLY route (prove "every mandatory-path K1 invocation is at a
+guarded tree" from quotes on file, no statement change) is WITHDRAWN at this
+blueprint's own Codex review (findings 2/3/4/5, archived at
+`lean/notes/openmath/H9_bp_review.md`): its central range identity is not derivable
+from the on-file displays, (q-4) was already-adjudicated-insufficient evidence, and
+the route re-ran pass-1 gap 5's withdrawn inference. Do not re-attempt without a
+genuinely new display.
 
 ### 3.6 The r15 edit spec (fires only after H9-C3; SPEC ONLY)
 
 On (NSF-INT) retirement: §1 (ROOT-C) (H9) block → both members retired, row moves out
-of the open-hypothesis enumeration (the ELEVEN remaining rows ↔ (H1)–(H8) bijection
-must be re-displayed — same genre as r11's twelve-row edit, reversed); §3.1 (H9) row →
+of the open-hypothesis enumeration (the §3.1 open-row count and the (H1)–(H9)
+enumeration displays re-synced by the ROOT editor per the r13 global-enumeration-audit
+rule — row counts RE-DERIVED at execution, this spec pre-computes none [Codex review
+finding 10]); §3.1 (H9) row →
 retirement record (artifacts: I-1/I-2/I-3 + K1CANON_discharge.md + its pass + the
 ledger entries); Step 17/18 displays drop the (H9) price from their Consumes lines
 (keep the historical pointer); the 6(iii)–(ix)+7 residue list drops (H9); counter
@@ -438,9 +476,12 @@ theorem nsFree_iff_maximal_irrHalts {p : ℕ} [Fact p.Prime] {F : Type*}
     · exact absurd h2.2.2.1 (hnf H hmem)
   · exact nsFree_of_maximal_irrHalts Tr T χ x hfib
 ```
-Content: at realized trees the two guard vocabularies COINCIDE — `NsFree`/`hdet`
-(mark vocabulary) ⟺ all-maximal-chains-(τ-irr)-halted ((q-3) leaf vocabulary). The
-compiled scope-coincidence kernel consumed by the (K1-CANON) note (C1-3).
+Content [billing per Codex review finding 6]: at `fiberAt` witnesses, the guard's
+MARK COMPONENT in the two vocabularies coincides — `NsFree`/`hdet` (mark vocabulary)
+⟺ all-maximal-chains-IrrHalts (the chain-leaf component of (q-3)'s vocabulary). NOT
+billed as the full (q-3) package (complete/finite/canonical = `VTree` structural
+fields; realizability = `RealizedSelf`; (τ-hen) content = the `henV` payload).
+Consumed by the (K1-CANON) warrant note at C1-3, under exactly this billing.
 
 ### H9-U4 `nsLeaf_nsHalts_of_fiberAt` [EASY, probe-proved]
 ```lean
@@ -491,10 +532,13 @@ theorem bridgeVt_maximal_irrHalts (n p : ℕ) [Fact p.Prime]
   obtain ⟨x, hfib⟩ := bridgeVt_realizedSelf n p σ T
   exact (nsFree_iff_maximal_irrHalts _ _ _ _ hfib).mp (bridgeVt_nsFree n p σ T)
 ```
-Content: every CARRIED tree satisfies the (q-3) guard in the LEAF vocabulary (all
-maximal chains (τ-irr)-halted) — the as-built half of (K1-CANON)'s C1-3, via the
-carrier's own `RealizedSelf` witness. (Hen content is payload `henV`, not a chain —
-no chain-side hen case exists at this carrier; displayed in the docstring.)
+Content [billing per Codex review finding 6]: every CARRIED tree satisfies the
+CHAIN-LEAF component of the (q-3) guard (all maximal chains IrrHalts), via the
+carrier's own `RealizedSelf` witness — the as-built input to the warrant note's C1-3.
+NOT billed as the full guard package: complete/finite/canonical are `VTree`
+structural fields, realizability is the carrier's `RealizedSelf` clause, and (τ-hen)
+content is the `henV` payload (`hhen`'s (1,g)-shape), not a chain — the docstring
+must display this decomposition.
 
 **Falsifier/negative-control gates for the prover:** (g-1) `#print axioms` on all
 five = Lean-core exactly; (g-2) `lake env lean LeanUrat/AxChk_baseline.lean`
@@ -513,26 +557,33 @@ WAVE 0 (THIS session, done):     A0 ledger adjudication entry  [DONE]
 WAVE 1 (Lean, ONE prover):       U2 → U3 → U4 → U1 → U5 in ONE module
                                  (file order as §6; U4/U1 independent of U3;
                                   U5 needs U3; all probe-proved)     [EASY]
-WAVE 2 (paper, ONE writer,       C1 the K1CANON_discharge.md note (§3.3
-        parallel with Wave 1):      skeleton; cites U3/U5 as "probe-proved,
-                                    landing as Wave 1" until Wave 1 lands)
-                                                                  [MEDIUM]
-WAVE 3 (gate):                   C2 Codex hostile pass on C1 → fold → ≥1 clean
-WAVE 4 (ledger, lead):           C3 (NSF-INT) retirement adjudication + r15 spec
-                                 (fires ONLY on C2 ACCEPT)
+                                 PREFERRED before r14 fires (§1.4 landed-only
+                                 citation rule) [review finding 8]
+WAVE 2 (paper, ONE writer,       C1 draft = the K1CANON_discharge.md warrant
+        may DRAFT parallel          note + the (ed-1) edit spec (§3.3); may
+        with Wave 1):               cite U-units as "probe-proved, Wave 1"
+                                    only while DRAFTING          [MEDIUM]
+WAVE 3 (gates, STRICT ORDER):    g-A Codex hostile pass on the C1 package —
+                                 RUNS ONLY AFTER WAVE 1 LANDS (compiled deps
+                                 real, not probes [review finding 9])
+                                 → g-B Asvin sign-off on (ed-1)
+                                 → g-C execute (ed-1) + H8 coordination
+                                 → g-D ledger: (K1-CANON) DISCHARGED
+WAVE 4 (ledger, lead):           C3 (NSF-INT) retirement adjudication + r15
+                                 spec (fires ONLY after g-D)
 QUEUED EXTERNALLY:               r14 ROOT edit (§1.4 spec; ROOT editor, after
-                                 the VC15 bar closes) · r15 (§3.6, after C3)
-OPTIONAL/SIGN-OFF:               C4 = §3.5 M04 pin display (coordinate with H8)
-                                 D3 = §5.3 O-1thr hygiene display
+                                 the VC15 bar closes; Wave 1 preferably first)
+                                 · r15 (§3.6, after C3)
+OPTIONAL/SIGN-OFF:               D3 = §5.3 O-1thr hygiene display
 PHASE-B QUEUE (blocked):         D1 = §5.1 vt_surj re-scope brief (fence-gated)
                                  D2 = §5.2 non-vacuity witness (realization seam)
 ```
 
-Parallelism summary: Waves 1 and 2 run concurrently (2 agents); everything else is
-sequential gating. Total NEW prover load: 1 easy Lean unit-module + 1 medium note +
-1 Codex pass. No numerics fleet needed: the standing M02/PARI exact-square record and
-N2-density-tie census are the row's numerics of record; no new numeric claim is made
-by any unit here (negative control g-5 keeps it that way).
+Parallelism summary: Wave 1 and Wave 2's DRAFT run concurrently (2 agents); all gates
+are sequential. Total NEW prover load: 1 easy Lean unit-module + 1 medium note/edit
+package + 1 Codex pass + 1 sign-off. No numerics fleet needed: the standing M02/PARI
+exact-square record and N2-density-tie census are the row's numerics of record; no
+new numeric claim is made by any unit here (negative control g-5 keeps it that way).
 
 ---
 
@@ -544,6 +595,32 @@ justification); attack specifically (1) the (NSF-KEY) adjudication's grounds and
 bounds, (2) the r14 spec's faithfulness to E9/(NSF-KEY-RET)/the bar sequencing,
 (3) the (K1-CANON) note design's cruxes (x-1)–(x-3) — especially circularity risk at
 the intended layer, (4) the Lean specs' fidelity to the quoted corpus, (5) fiat-
-discharge leaks. Verdict + disposition table appended below after the run.
+discharge leaks.
 
-[REVIEW PENDING — appended on completion]
+**RUN (2026-08-01 machine clock):** detached `codex exec`, fresh context, prompt =
+charge + full pre-fold blueprint + verbatim ground-truth appendix (49,615 bytes;
+archived at `/tmp/openmath/H9_bp_prompt.txt`, raw stream `H9_bp_review.jsonl`, review
+text `lean/notes/openmath/H9_bp_review.md`). **VERDICT: REVISE — 7 CRITICAL + 3 GAP.
+All ten findings adjudicated VALID and FOLDED same-session** (the fold IS the current
+text of this file; the review quotes the PRE-fold draft). Notably the verifier
+CONFIRMED the five Lean bodies against the appendix ground truth (finding 6: "The
+Lean theorems themselves are valid and their displayed bodies are confirmed").
+
+| # | sev | finding (compressed) | disposition (where folded) |
+|---|---|---|---|
+| 1 | CRIT | ground (b) billed as an independent retirement ground — contradicts "ONLY by Unit C / NEVER by leaf text" | FIXED: (b) re-billed CORROBORATION, retirement rests on (a) alone — §1.2 + the ledger entry's wording |
+| 2 | CRIT | "(q-4) newly available" misstates chronology — it was on file at gap 5 and adjudicated insufficient | FIXED: §3.2 rewritten; only the as-built compiled guard is NEW; the route architecture restructured |
+| 3 | CRIT | the range identity "post-K4 sum = the carrier/pinned corpus" not derivable from the quoted displays | FIXED: identity DEMOTED from derivation to the scope pin the (ed-1) edit STIPULATES at the source, with a no-loss warrant (§3.2/§3.3 C1-2) |
+| 4 | CRIT | (x-3) circularity: reading (q-4) as "labeled"'s definition supplies no bridge from K1's bare quantifier | FIXED: intended-layer leg now discharged by the signed-off source edit, not by reading (q-4) (§3.3 C1-4/C1-5 x-3) |
+| 5 | CRIT | C1-4 conflated as-built `bridgeTree` with M04's paper quantifier — the withdrawn inference in new terms | FIXED: layer discipline displayed at C1-0/C1-4; no cross-layer inference remains; old route recorded as dead end (§3.5) |
+| 6 | CRIT | U3/U5 billed stronger than statements (full (q-3) package vs mark/chain-leaf component) | FIXED: precise billing at §2.2 gloss, §3.3 C1-3, and both §6 glosses (structural fields + RealizedSelf + payload displayed) |
+| 7 | CRIT | universal drainage claim ("every exact square/window-degenerate locus") exceeded the compiled record | FIXED: §1.3 split into the compiled grade (universal over ns-MARKED trees) vs the intended-semantics reading (ReadsOf caveat) |
+| 8 | GAP | r14 could fire before H9-U1 exists — dangling corpus pointer | FIXED: landed-only citation rule at E-r14-1/-2 + Wave-1-before-r14 preference (§1.4, §7) |
+| 9 | GAP | C2 not explicitly gated on Wave 1 landing (probe-only deps) | FIXED: Wave 3 g-A runs only after Wave 1 lands (§7) |
+| 10 | GAP | "ELEVEN rows ↔ (H1)–(H8)" arithmetic invented | FIXED: r15 spec defers row counts to the ROOT editor's re-derivation per the r13 audit rule (§3.6) |
+
+**Residual review status:** the fold is the lead's own adjudication (each fix
+traceable above); the K1CANON package gets its OWN fresh hostile pass at Wave 3 g-A —
+the review bar for the actual discharge is therefore still ahead, as designed. A
+re-review of THIS folded text was not run (budget discipline; the fold's substance —
+route demotion, billing, sequencing — follows the verifier's own prescriptions).

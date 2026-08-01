@@ -1784,7 +1784,10 @@ THE QUESTION (per the dispatch): is (NSF-KEY) — ROOT §3.1 (H9)'s as-built
 keying member, ONE proposition: "if `bridgeCanonical … N f = some σ` then f
 fibers a carried σ-tree satisfying `MovesT.NsFree` at threshold ≤ N" —
 DISCHARGED at HEAD by the compiled Unit C artifacts? VERDICT: **YES,
-RETIRED**, on two independent grounds.
+RETIRED** — on the ONE sanctioned ground (a), with (b) as corroboration
+[wording per the H9 Codex review finding 1: (NSF-KEY) retires ONLY by
+Unit C per (NSF-KEY-RET), NEVER by leaf text or compiled theorems; (b)
+is a truth-at-HEAD witness, NOT a second retirement route].
 (a) RETIREMENT-SEMANTICS GROUND: (NSF-KEY-RET) is an exact six-artifact
 iff (design V5 §2.5, "when and only when ALL SIX artifacts exist on
 file"); all six verified on file this session: R-0 sign-off (this ledger,
