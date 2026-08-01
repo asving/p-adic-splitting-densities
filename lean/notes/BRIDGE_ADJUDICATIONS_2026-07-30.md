@@ -1495,3 +1495,14 @@ contingency LIVE, N2 open); (4) N1 beta-leg normalization source unnamed
 or PACK-i/ii explicitly; (5) M2.0 obligation list incomplete (countable-
 union identity, infinite pre-handoff path, +). "BLOCKED: NONE" unsupported.
 Report: lean/notes/openmath/R11D_review_2026-08-04.md. Revision dispatched.
+
+## BP_VI DIVISION: 12/18 + 6 BLUEPRINT-LEVEL BLOCKS (2026-08-04)
+Wave VI-0 (the cross-division brief gate) 6/6; total 12/18. ALL SIX blocks
+= ill-typed blueprint statements (fence held, provers refused to alter):
+SlotAssignment binder mismatch vs real StepSys (VI-B3/B4); Nonempty
+applied to proof TERMS at the three anchors (VI-N1..N3, + montes_uniform_n2
+application mismatch); VI-A2 census downstream. Repair+mop-up dispatched
+(wf_9f84ecd5-7a0): compile-gated REVISION 3 statement repairs (sanctioned:
+compiler-refuted = no content lost), then land the 6. BP_III launched into
+the freed slot (wf_51095701-464). Fleets: BP_II, BP_III, BP_VI-mopup,
+r11-design-rev2.

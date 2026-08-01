@@ -1,9 +1,40 @@
 # R11 REPAIR DESIGN (2026-08-03) — restoring the composition after the D-11 owed-pass refutations
 
-**Status of this document: DESIGN ONLY.** No edit to ROOT
-(`docs/ROOT_ASSEMBLY_2026-08-02.md`, REVISION 9, a2ad88a) and no edit to the D-11 leaf
-(`lean/notes/openmath/D11_massid_phaseB_attempt_rev3.md`, 8a0786c) is made here. This
-design goes to a Codex plan-review BEFORE execution; §7 lists the execution units.
+**Status of this document: DESIGN ONLY — now at REVISION 2 (2026-08-04).** No edit to
+ROOT (`docs/ROOT_ASSEMBLY_2026-08-02.md`, REVISION 9, a2ad88a) and no edit to the D-11
+leaf (`lean/notes/openmath/D11_massid_phaseB_attempt_rev3.md`, 8a0786c) is made here.
+This design goes to a Codex plan-review BEFORE execution; §7 lists the execution units.
+
+## REVISION 2 record (2026-08-04) — the plan-review criticals folded
+
+The Codex plan-review of REVISION 1 returned **DESIGN-REVISE** (report:
+`R11D_review_2026-08-04.md` — findings 1–5 and 9 CRITICAL, findings 6–8 ADVISORY; the
+dispatch counted "5 criticals" = findings 1–5, finding 9 being the execution-order
+ruling, folded here at §7). REVISION 2 is produced by editing the REVISION-1 body IN
+PLACE at exactly the sections each finding hits; every REVISION-1 passage not named in
+the table below is byte-stable. Dispositions (no silent drops):
+
+| # | review finding (gist) | class | disposition | where |
+|---|---|---|---|---|
+| 1 | (RE) is NOT definitionally discharged (the O-12 quotes do not pin the consumed member's per-block booking profile; absence-of-α does not prove the full profile; M1′'s pin is in-chain assertion); (PACK-iv) is warranted | CRITICAL | **ACCEPTED — (PACK-iv) PROMOTED to the PRIMARY route**; the definitional discharge WITHDRAWN with the reasons recorded verbatim; the (RE) analysis kept as (PACK-iv)'s named RETIREMENT ROUTE; E4 presents (PACK-iv) as a NEW hypothesis member, never a clarification | §3.3, §3.5, §4 N5, §7 E3/E4 |
+| 2 | (b-SW) is asserted, not proved from the quoted grammar; {loop-0 forever} is not a finite word and sits outside (b-PF) | CRITICAL | **ACCEPTED — (b-SW) REPLACED by the OPEN LEMMA (b-EX)** (grammar exhaustiveness), stated verbatim with its proof route (induction over the displayed seven-family grammar + the three booking adjustments) as a D-11 r4 proof obligation, the case-check sketch displayed in-design; the infinite loop-0 word handled by the separate displayed null/disjointness note **(LOOP-∞)** | §2.4, §4 N1, §7 L4/E1 |
+| 3 | the M3(a) narrowing may lose content N2 needs (Haar-nullity ≠ exact classification / finite-level counting / weight-preserving regrouping); the certificate implication was pointed at, not checked | CRITICAL | **CONSUMER-SIDE CHECK EXECUTED for this revision** (sources read: O-1thr §1.4 + Theorem 3; M04 Theorems 1–2 / Lemma 3.3 / Theorem 4; ROOT Step 18 K1/K4): every K1 box receiving a verdict label fibers a decided NS-FREE tree BY THE DISPLAYED CORPUS DEFINITIONS — displayed as **Lemma (K1-NSF)** with the two-channel consumption attribution; (NS-ALL) stays a labeled contingency, now narrowed | §2.5, §4 N2, §7 E9 |
+| 4 | N1 silently uses content outside repaired M1 (member-row Σ = 1 via "canonical grammar + family-(vi) aggregates"); β-leg normalization source unnamed; circularity risk with Step 18b | CRITICAL | **TRACE EXECUTED**: member-row Σ = 1 is consumed NOWHERE on the mandatory path — the REVISION-1 N1 delivery claim is WITHDRAWN; the only normalization-class law at Step 18 is (PACK-ii) (already priced); the contingent route **(ROW-Σ)** is displayed (block induction, M2-free, non-circular); the 18-vs-18b dependency chains displayed | §4 N1 + (†18), §6, §7 E1 |
+| 5 | the M2.0 repair is plausible but not a discharged proof; obligations omitted (union identity, infinite pre-hand-off path, measurability, law preservation, per-block a.s.-exit use) | CRITICAL | **ACCEPTED — the obligation list COMPLETED**: (O-1)–(O-5) enumerated verbatim, each with its displayed route; "billing unchanged" demoted from established fact to the design-level claim the r4 proof must bear out | §3.4, §4 N4, §7 L6 |
+| 6 | BOX-VOL is a genuine local demonstration; r4 should verify k counts distinct imposed equalities + every N(P) occurrence's provenance | ADVISORY | r4 duty ADDED to L2 | §7 L2 |
+| 7 | "clause (c): per sub-clause as displayed" is not a scope statement; "proof obligations: none" too strong absent a downstream "mass"-word sweep | ADVISORY | §2.1's repaired preamble gains clause (c)'s per-sub-clause reference measures; L1 gains the sweep of every downstream unqualified "mass" | §2.1, §7 L1 |
+| 8 | (H8) correctly treated (possible overpricing, not concealment) | ADVISORY | no change | §5.1 |
+| 9 | execution/acceptance order unsound: Unit B not conditioned on r4 ACCEPTANCE; E8's counter-to-zero conflates "no recorded leaf critical" with "composition accepted" | CRITICAL | **ACCEPTED**: Unit B now CONDITIONAL on the r4 hostile pass ACCEPTING; E8 restated — every standing display stays **SUSPENDED** until the NEW end-to-end bar passes; the counter shows 0-of-2 toward that bar and never reads "clean" | §7 E8 + Order |
+
+**The revised bottom line (supersedes REVISION 1's "BLOCKED: NONE" — which the
+review correctly ruled unsupported).** No need is blocked in the strict ledger sense
+(every need has a displayed route: a proof on file, a priced [M] member, or a named r4
+proof obligation with a displayed proof route and a hostile-pass bar), but the flat
+"all MET" is WITHDRAWN. Honest tiers, argued need-by-need at §4: N3/N6 MET on file;
+N2 MET by the executed check; N5/N7 MET AT PRICE (one NEW [M] member, (PACK-iv));
+N1/N4 **MET-PENDING-r4-PROOF** ((b-EX); (O-1)–(O-5)) — the composition is NOT restored,
+and the acceptance standing does not move, until those discharge under the D-11 r4
+hostile pass.
 
 **What happened (self-contained).** The ROOT composition assembles the uniformity
 theorem (splitting-type densities of Haar-random monic degree-n p-adic polynomials are
@@ -36,18 +67,20 @@ Lean-guard note. Both dispositioned at §5.
 | D11-C1 (M1 conditioning scope) | TRUE-SCOPE REPAIR | per-clause reference-measure display; no formula changes (§2.1) |
 | D11-C2 (family-(v) L6a factor) | TRUE-SCOPE REPAIR | the relaxed-box event □(P) + Lemma (BOX-VOL), 2-line proof over L6a's own displays (§2.2) |
 | D11-C3 (billing contradiction) | display repair | §5/§7 re-billed to match (a″) exactly (§2.3) |
-| D11-C4 (M1(b) disjointness) | TRUE-SCOPE REPAIR | (b-PF) prefix-free lemma + (b-SW) stopping-word grammar fact; prefix-freeness IS a fact of the 𝔅_n row grammar (§2.4) |
-| D11-G5 (M2.0 addresses) | TRUE-SCOPE REPAIR | loop-extended addresses; two-letter transport induction (loop letters ← L2/L3 PROVED, hand-off letters ← (S1-m)); billing unchanged (§3.4) |
-| D11-C6 (M2 false at scope) | TRUE-SCOPE REPAIR (primary) | hypothesis (RE): all blocks booked re-entrant — then verdict rows are canonical BY THE VERIFIED 𝔅_n GRAMMAR (α exists only at (O2)); (RE) discharged at the consumed instance by the on-file instance pin. FALLBACK [M] member (PACK-iv) drafted verbatim (§3) |
+| D11-C4 (M1(b) disjointness) | TRUE-SCOPE REPAIR | (b-PF) prefix-free lemma (argued in-design) + **(b-EX) grammar-exhaustiveness OPEN LEMMA** (r4 proof obligation; induction sketch over the displayed grammar, §2.4) + the **(LOOP-∞)** null/disjointness display for the infinite loop-0 word [REVISION 2] |
+| D11-G5 (M2.0 addresses) | TRUE-SCOPE REPAIR | loop-extended addresses; two-letter transport induction (loop letters ← L2/L3 PROVED, hand-off letters ← (S1-m)); r4 obligations **(O-1)–(O-5)** enumerated with routes; billing (S1-m)+(DET) = the design-level claim the r4 must bear out (§3.4) [REVISION 2] |
+| D11-C6 (M2 false at scope) | TRUE-SCOPE REPAIR + [M] PRICE [REVISION 2] | Theorem M2 restated AT the hypothesis (RE): all blocks booked re-entrant — then verdict rows are canonical BY THE VERIFIED 𝔅_n GRAMMAR (α exists only at (O2)). At the CONSUMED member, (RE)+row-form = **(PACK-iv)**, a NEW (H5) row-law member — the PRIMARY route; the REVISION-1 definitional discharge is WITHDRAWN (review finding 1); the (RE) analysis survives as (PACK-iv)'s RETIREMENT ROUTE (§3.3/§3.5) |
 | D11-C7 (M3(b) silent clause 4) | leaf statement hygiene | conditionality moved in-statement; ROOT already insulated at (H5) (§2.7) |
-| D11-G8 (M3(a) "EVERY polynomial") | TRUE-SCOPE REPAIR | conclusion at separable lifts (= Theorem E's scope) + ns-null mass-sufficiency note; contingency (NS-ALL) flagged (§2.5) |
+| D11-G8 (M3(a) "EVERY polynomial") | TRUE-SCOPE REPAIR | conclusion at separable lifts (= Theorem E's scope) + ns-null mass-sufficiency note; consumer-side check EXECUTED at REVISION 2 — **Lemma (K1-NSF)** displayed with the two-channel attribution; contingency (NS-ALL) flagged, narrowed (§2.5) |
 | D11-G9 (falsifier criterion) | display repair | criterion rescoped to (a″)'s families (§2.6) |
 | O11-G2 (CUT-WD) | [M] PRICE | NEW row **(H8) = (K-CUT)**, with the O-11 charge-(vi) adjudication as named retirement route (§5.1) |
 | O11-C1 residue (n ≥ 2 guard) | leaf/Lean note | O-11 r4 restates the target row at n ≥ 2; BK.series_tie carries the guard at formalization (§5.2) |
 
-**BLOCKED list: EMPTY.** Every need of Steps 17/18b is met by the repairs + the one
-new [M] row; §4 runs the check need-by-need. Two labeled contingencies (not
-blockers) at §6.
+**BLOCKED list [restated at REVISION 2; the REVISION-1 "EMPTY" was unsupported]:**
+strictly EMPTY (every need has a displayed route), but stratified honestly — N1/N4
+are MET-PENDING-r4-PROOF and N5/N7 MET AT PRICE ((PACK-iv), NEW (H5) member, plus
+(H8)); §4 runs the check need-by-need with the tiers displayed. Labeled
+contingencies (not blockers) at §6.
 
 ---
 
@@ -101,11 +134,18 @@ state law C_e:").**
 > valuation-box readings, with the conditional forms used inside (a) displayed as
 > ratios; the PER-CELL conditional law for the singleton-residual readings; NO mass
 > reading for the (O3) scalings — they exceed 1); clauses (b)/(d): statements about
-> the one-step strata of the C_e-conditional process; clause (c): per sub-clause as
-> displayed:
+> the one-step strata of the C_e-conditional process; clause (c): the per-visit
+> margin sub-clauses CONDITIONAL on the block state law C_e (the loop/exit masses
+> and the (r1) margins are C_e-conditional probabilities), and the per-block
+> a.s.-exit sub-clause a statement about the C_μ-conditional law of each block μ —
+> [REVISION 2, review advisory 7: "per sub-clause as displayed" was not itself a
+> scope statement; the two sub-clauses' reference measures are now named]:
 
-**Proof obligations.** None new. Survives verbatim: all (a) bullets, (b)'s one-step
-content, (c), (d), M1′.
+**Proof obligations.** No new mathematics. ONE r4 duty [REVISION 2, advisory 7]:
+sweep every downstream occurrence of the unqualified word "mass" in the leaf (§§3–7)
+and pin each to its clause-(a)/(a′) reference measure or reword — the "obligations:
+none" of REVISION 1 was too strong until that sweep is on file. Survives verbatim:
+all (a) bullets, (b)'s one-step content, (c), (d), M1′.
 
 ### 2.2 C2 — the family-(v) L6a cell factor (the relaxed-box event)
 
@@ -200,30 +240,82 @@ E_{w′} ⊆ E_w (the verifier's loop-0 / loop-0-then-exit counterexample).
 > FALSE — E_{w′} ⊆ E_w whenever w is a proper prefix of w′; the rev-3 sentence is
 > WITHDRAWN at that generality.]
 >
-> **(b-SW) [the consumed families are stopping words — a FACT of the displayed 𝔅_n
-> row grammar].** Every multi-step continuation event this document books — the (O3)
-> kernel's family {E^{(L)}}_{L≥1} (words (loop-0)^{L−1}·(loop-c, c ≠ 0)), each
-> (O3)-scaled exit family {(loop-0)^L ∘ F}_{L≥0} (F a fixed exit stratum), and their
-> union with {loop-0 forever} in (c)'s complement reread — is indexed by STOPPING
-> WORDS: every proper prefix is all-(loop-0) and the final letter is not (loop-0).
-> Any set of stopping words is prefix-free: a proper prefix of a stopping word is
-> all-(loop-0), and no stopping word is all-(loop-0). So (b-PF) applies to every
-> consumed family. This is a fact of the ROW GRAMMAR: §2.3's families (i)–(iii) are
-> one-step, and the ONLY multi-step row constructions in the displayed grammar are
-> the (O3) resummations, all of stopping-word form. [Concrete packs' combined/
-> adjusted rows remain clause-4 content — the existing scope sentence stands
-> unchanged.]
+> **(b-EX) [grammar exhaustiveness — an OPEN LEMMA and a D-11 r4 PROOF OBLIGATION;
+> REVISION 2: the rev-1 "(b-SW)" presented this as "a FACT of the displayed
+> grammar", which the plan-review correctly rejected — the seven-family enumeration
+> does not by itself demonstrate the exhaustiveness claim; it must be PROVED by a
+> grammar induction].** Every within-block multi-step continuation event booked by a
+> row of the DISPLAYED 𝔅_n row families (i)–(vii) (O-12 §2.3: E(e) IS the union of
+> those seven displayed families), under any of the three displayed booking
+> adjustments (§2.3(iv)/§2.4: the (O2) α-fold, the (O2′) re-feed leg, the (O3)
+> scaling), is indexed by a set of STOPPING WORDS over the one-step strata — words
+> whose proper prefixes are all-(loop-0) and whose final letter is not (loop-0).
+> Any set of stopping words is prefix-free (a proper prefix of a stopping word is
+> all-(loop-0), and no stopping word is all-(loop-0)), so (b-PF) applies to every
+> such family. [Concrete packs' combined/adjusted rows remain clause-4 content —
+> the existing scope sentence stands unchanged; (b-EX) quantifies over the DISPLAYED
+> grammar only.]
 
-**WHERE prefix-freeness is discharged for the consumed row-walks: at (b-SW), as a
-grammar fact — no new hypothesis.** Consumers re-pointed in r4: (a)'s (O3) bullet
-("pairwise disjoint (they differ at the first non-(loop-0) step)" → "pairwise
-disjoint by (b-PF)+(b-SW)"), the (O3) exit-scaling line, (c)'s complement reread, and
+**Proof route for (b-EX) — the grammar induction the r4 must write out, sketched
+here case-by-case (the sketch is possible because the leaf's consumed §grammar,
+O-12 §2.3, DEFINES E(e) as the union of the displayed families (i)–(vii) and §2.4
+displays exactly three booking adjustments, so the case enumeration below is
+exhaustive over the displayed grammar BY CONSTRUCTION of E(e)):**
+* family (i), kernels: (O1)/(O2)/(O2′) book one-step unions of loop strata — no
+  multi-step content; (O3) books E_rec = {(loop-0)^{L−1}·(loop-c, c ≠ 0) : L ≥ 1} —
+  stopping words. [In family (i) the only (g4) closure running along the TIME axis
+  is the (O3) resummation, displayed as Σ_{w≥0} q^{−Ew}·(q−1)q^{−E}.]
+* family (ii), divisor-pattern masses: one-step strata (patt-π). No word structure.
+* family (iii), polygon-family masses: one-step strata (poly-κρ⃗); their (g4)
+  closures (exponents c_j ≥ 1) run along the DEPTH axis w of L6b's cone — countably
+  many CELLS of the SAME step (O-12 §2.2 lists the polygon strata among the
+  one-step strata of C_e \ R_e), never a second step of 𝒟_e.
+* family (iv), verdict rows: each books its exit stratum F — one-step at block e
+  (the children cross into blocks μ < e: hand-off content consumed at M2's layer
+  through (S1)/(S2), not an M1(b) multi-step event); the (O2) α-adjustment books
+  the one-step recentering mass; the (O2′) re-feed leg books the one-step
+  recentering strata; the (O3) adjustment scales each exit row to
+  {(loop-0)^L ∘ F : L ≥ 0} — stopping words.
+* family (v), scalar atoms: book no events except through their occurrences inside
+  (a)/(a′) and the (O3) exit scalings — the latter exactly family (iv)'s (O3) case.
+* families (vi)/(vii), β-legs and solved entries: book NO block-e continuation
+  events ((a″) excludes them from every mass claim; their density reading is
+  Theorem M2's conditional conclusion).
+The r4 write-out = this case check stated against the displayed definitions, one
+paragraph per family. Honesty clause: if any case fails to close from displayed
+text at the r4 pass, (b-EX) stays an OPEN lemma at the failing family, every
+consumer citing it inherits that conditionality, and §4's N1 re-opens — the
+outcome is priced in advance, not assumed away.
+
+**(LOOP-∞) [the infinite loop-0 word — handled SEPARATELY; REVISION 2, review
+finding 2: it is not a finite word and is outside (b-PF) as stated].** Set
+{loop-0 forever} := ⋂_{L≥1} {first L steps = (loop-0)} — measurable (a countable
+intersection of composed preimages of displayed strata under the step maps).
+(i) NULL: its C_e-conditional mass is ≤ P(first L steps = (loop-0) | C_e) = κ₀^L =
+q₀^{−EL} → 0 (the Markov property, L2+L3, as in M1(c)'s per-block clause — here at
+the single stratum (loop-0)). (ii) DISJOINT from every finite stopping-word event
+E_w: the word w's final letter, at position |w|, is NOT (loop-0), while on
+{loop-0 forever} step |w| lies in (loop-0); both events constrain step |w| through
+the same composed step maps, and the one-step strata at the composed state are
+pairwise disjoint by (b)'s one-step clause — so E_w ∩ {loop-0 forever} = ∅. Hence
+(c)'s complement reread decomposes the loop region EXACTLY as
+⨆_{stopping words w} E_w ⊔ {loop-0 forever}, the last term null — the
+countable-additivity computations of (a)'s (O3) bullet are unaffected.
+
+**WHERE prefix-freeness is discharged for the consumed row-walks [REVISION 2 — no
+longer claimed as a no-hypothesis grammar fact]: at (b-PF) (argued above) + (b-EX)
+(r4 proof obligation, route displayed) + (LOOP-∞) (displayed argument).** Consumers
+re-pointed in r4: (a)'s (O3) bullet ("pairwise disjoint (they differ at the first
+non-(loop-0) step)" → "pairwise disjoint by (b-PF), the family being stopping words
+per (b-EX)"), the (O3) exit-scaling line, (c)'s complement reread (→ (LOOP-∞)), and
 M2's renewal-equation exhaustiveness note (which cites M1(b)/(d)).
 
 **Proof obligations.** (b-PF): the two-sentence argument displayed above (the
 composed-state observation is the only content; it is the same measurable-preimage
-reading already used in §1). (b-SW): the one-line prefix check displayed above.
-Everything else in (b) survives verbatim.
+reading already used in §1). (b-EX): the r4 grammar-induction write-out per the
+displayed route — an OPEN LEMMA until it lands AND passes the r4 hostile pass.
+(LOOP-∞): the two-part display above, transcribed. Everything else in (b) survives
+verbatim.
 
 ### 2.5 G8 — M3(a)'s "EVERY polynomial" (separable-scope restatement)
 
@@ -243,10 +335,62 @@ separability of every lift is not displayed (ns-null justifies only a.e.).
 > decided-ns-free certificate apparatus (O-1thr §1.4's fiber clauses; D-15's
 > vocabulary), not by this clause.
 
-**Contingency (NS-ALL), flagged not priced:** if a verification pass finds a
-mandatory consumer needing all-lifts separability FROM M3 at boxes not definitionally
-ns-free, that statement becomes an explicit open lemma to price. §4's need check
-argues no Step-17/18 need does.
+**The consumer-side check (REVISION 2, review finding 3 — EXECUTED for this
+revision; sources read in full for it: O-1thr `O1thr_phaseB_verifybrief_rev4.md`
+§1.4 (states/trees/fibers: the "decided ns-free" definition and the fiber clauses
+(F1)–(F6)) + §6 Theorem 3 (= D-15, incl. the displayed count definition D_σ(N));
+M04 `M04-series-tie_fable.md` §§2–5 (Theorems 1–2, Lemma 3.3, Theorem 4 = the
+K1–K4 reduction); ROOT Step 18's K1/K4 lines and the Step 11/12 → Step 17 label
+route).** The review's question: does every Step-18 K1 box receiving an M3 label
+carry a decided-ns-free certificate — EXACT classification, not a.e.? The answer
+is YES, by the displayed DEFINITIONS of the counted corpus, and REVISION 2
+displays it as a lemma with its warrant (r4/r11 carry it per §7 E9):
+
+> **Lemma (K1-NSF) [every labeled K1 box carries the decided-ns-free
+> certificate].** Every box that receives a verdict label anywhere in Step 18's
+> K1/K4 chain fibers a decided NS-FREE tree T — i.e. carries the full certificate
+> fiber(T, x) = (F1)–(F6) with T decided ns-free — and D-15's exact-classification
+> package (fiber = EXACT finite union of level-thr(T) cylinders; the exact count
+> tie #Φ_N(T) = mass(T)·p^{nN}; per-box uniqueness/disjointness) applies to it
+> with NO a.e. weakening. *Warrant (definitional unfolding of displayed text, no
+> new mathematics):* (w1) O-1thr §1.4 defines the ONE bundled predicate "decided
+> ns-free := every maximal chain is a (τ-irr) leaf and the Hensel payload covers
+> the simple part — no ns-marks"; an ns-halt (τ-ns) is a MARKED halt that is not
+> a (τ-irr) leaf, so there is no decided-but-ns-marked class in the displayed
+> vocabulary to leak through. (w2) O-1thr Theorem 3(c) defines the level-N
+> decided-σ count D_σ(N) := #{x level-N : fiber(T, x) for some DECIDED NS-FREE T
+> with typemult = σ} — the corpus is decided-ns-free-quantified in its displayed
+> definition. (w3) M04 Theorem 2(a)'s partition (Σ_σ decided_σ(N) + undec(N) =
+> p^{nN}, the verdict map f ↦ canonical N f) routes every box whose canonical run
+> is not decided — in particular every ns-halted box — into the NONE-fiber
+> undec(N): such boxes receive NO label. (w4) K1/K4's corpus ("complete finite
+> realizable canonical trees"; bridgeMass at decided trees, with (ns-null)
+> excluding infinite trees) is keyed to the SAME decided corpus that the
+> count_tie/finiteness_stack interface ties to D_σ(N) — the corpus KEYING is
+> definitional on both sides; the numerical tie itself is the count_tie row's
+> content, priced at its own home, not consumed by this lemma. ∎
+
+**The two consumption channels (what M3 does and does not supply at K1 —
+displayed so the a.e./exact distinction cannot blur again):**
+* **(ch-1) K1's EXACT combinatorics** — the cylinder classification, the
+  finite-level counts, Lemma 3.3's weight-preserving regrouping — consumes D-15 +
+  the K1 kernels AT decided ns-free trees and is LABEL-SEMANTICS-BLIND: both
+  sides are keyed by the trees' RECORDED verdict multisets; no statement on this
+  channel reads the true type of any polynomial. M3 is not consumed here, so its
+  separable-lift scope cannot injure the exact content.
+* **(ch-2) the SEMANTIC tie** (recorded labels = true types) — where M3(a)
+  enters (via Steps 11/12 → Step 17): consumed MASS-MEDIATED. Each counted box's
+  true-σ locus is the box minus its nonseparable locus (M3(a) at separable scope,
+  applicable by Lemma (K1-NSF)), of full box mass by T-6 (ns-null) — exactly what
+  the Step-19 squeeze and Step 18b's density reading consume. No mandatory
+  consumer reads a true type at an individual nonseparable lift.
+
+**Contingency (NS-ALL), still flagged not priced — NARROWED by the executed
+check:** it fires only if a verification pass finds a consumer needing all-lifts
+separability FROM M3 at boxes not definitionally ns-free — i.e. a consumer
+OUTSIDE both displayed channels; the REVISION-2 check found none on the
+Step-17/18/18b/19 path. If one is found, (NS-ALL) is priced as an explicit open
+lemma per §6.
 
 ### 2.6 G9 — the falsifier-criterion display
 
@@ -359,14 +503,58 @@ with the three displayed booking legs ((O1)/(O2′)/(O3)) and the uniqueness-piv
 close byte-stable. The r3 note that exhaustiveness consumes M1(b)/(d) is re-pointed
 to (b)/(b-PF)/(b-SW) per §2.4.
 
-**Where (RE) is discharged at the CONSUMED instance.** ROOT Step 18b consumes M2 at
-"the intended 𝔅_n instantiation" (through (H5)). The intended instantiation's
-booking profile is on file in VERIFIED text: O-12 §1 ("the sealed degree-3 tables =
-(O3); the general-n engine = (O1)") + D-11 M1′ (the instance pin). So (RE) at the
-consumed member is a DEFINITIONAL DISPLAY (the choice of intended member), warranted
-by the verified O-12 record — not a new hypothesis. The concrete pack's conformance
-to that member is (H5), unchanged. ROOT r11 displays this discharge at Step 18b
-(§7, edit E3) and adds one sentence to the (H5) row (edit E4).
+**At the CONSUMED instance: the definitional discharge is WITHDRAWN [REVISION 2,
+review finding 1] — (RE)+row-form at the consumed member is (PACK-iv), a NEW [M]
+member of (H5); §3.5 is now the PRIMARY route.** REVISION 1 claimed (RE) at the
+member ROOT consumes rides the "on-file instance pin" (O-12 §1: "the sealed
+degree-3 tables = (O3); the general-n engine = (O1)"; D-11 M1′). The review refuted
+the warrant, and the refutation is ACCEPTED on re-reading the quoted text itself —
+the reasons, recorded so the withdrawal is durable:
+* the O-12 §1 sentence names the project's concrete tables' INTENDED bookings, but
+  O-12's own scope declaration (§1, verbatim) makes the identification of the
+  COMPLETE sealed degree-3 tables with an (O3) member "an interface assumption
+  declared outside this proof (recorded as the labeled open item OL-O12-2)", and
+  the general-n identification likewise ("declared outside this proof, NOT proved
+  here and NOT part of the claim"). So the quoted sentence cannot pin the
+  PER-BLOCK BOOKING PROFILE of the member ROOT actually consumes: that member is
+  reached only through (H5), and its booking profile is exactly (H5)-class
+  content — hypothesis, not verified text;
+* absence-of-α does not prove the profile: the §2.3(iv)/§2.4 displays establish
+  that the allocation datum exists only under (O2) — i.e. (O2) ⟹ carries α — NOT
+  the converse; and (RE) needs more than "no α": every block booked
+  (O1)/(O2′)/(O3) AND the family-(iv) rows equal to the canonical 0/1-coefficient
+  assembly with only the displayed adjustments — a per-block booking + row-form
+  profile that no quoted display pins for the consumed member;
+* M1′'s "instance pin" is a sentence of D-11's own repaired chain — an assertion
+  inside the artifact under repair, not independent evidence of pack-to-member
+  conformance.
+The grammar facts (g-i)–(g-iv) above remain correct AND load-bearing — but in two
+demoted roles only: as the derivation "(RE)-member ⟹ canonical verdict rows"
+INSIDE Theorem M2 (r4) (a theorem about members satisfying (RE), honest as
+stated), and as (PACK-iv)'s RETIREMENT ROUTE (next paragraph) — never as a
+discharge at the consumed instance. The concrete pack's conformance to the member
+remains (H5)'s correspondence clause, unchanged. ROOT r11 displays the PRICE at
+Step 18b (§7, edit E3) and adds (PACK-iv) to the (H5) row as a NEW hypothesis
+member (edit E4 — worded as an ADDITION to the row-law roster, never a
+clarification).
+
+**(PACK-iv)'s RETIREMENT ROUTE — what would discharge it later (the surviving
+content of the withdrawn analysis, kept per the revision charge).** (PACK-iv)
+retires when the booking profile and row forms of a consumed member become
+VERIFIED DATA rather than hypothesis:
+* (route-a), n = 3: the OL-O12-2 transcription-and-correspondence pass (D-11 §5
+  clause 4's data half), EXTENDED BY ONE NAMED DUTY — per sealed row, verify the
+  block's booking against the (O3) forms and the row against §2.3(iv)'s canonical
+  assembly + the displayed (O3) scaling. (Finite data comparison, the same
+  execution class as before; naming the duty prevents the pass from silently
+  skipping the booking-profile half.)
+* (route-b), general n: the O-14d instance population constructing the member IN
+  the (O1) booking — the profile then holds BY CONSTRUCTION and is checkable at
+  population time.
+On either route's verified completion at a consumed instance, (g-i)–(g-iv)
+convert "verified re-entrant profile, no α" into the canonical row-form clause BY
+the displayed §2.3(iv) definition, and (PACK-iv) retires into the executed
+correspondence at that instance.
 
 **Proof obligations for M2 r4:** (RE)-grammar cite displayed (quote §2.3(iv) into
 the leaf's §0 consumed-inputs list — it is brief-internal displayed content of the
@@ -392,16 +580,66 @@ stratum s under the loop step map IS Haar-C_e: verbatim L2+L3 ("conditioned on t
 stratum, ĥ is AGAIN the state law"), PROVED, no seam; HAND-OFF letters — (S1-m), as
 now. The kernel-null-set step is unchanged in form at both letter kinds. (iii) Step
 2's reduction sentence gains "after executing its finite loop word" at the node-birth
-reading. **Billing unchanged: (S1-m) + (DET)** — the loop-letter transport is proved
-content, so the widening the verifier contemplated is not needed; the honest-widening
-paragraph ((S1-m+) under a stochastic hand-off reading) survives verbatim.
+reading.
 
-### 3.5 FALLBACK [M] member (only if the plan-review rejects §3.3's grammar/pin discharge)
+**The r4 OBLIGATION LIST for the rewritten Lemma M2.0 [REVISION 2, review finding
+5 — the facts the loop-extension must PROVE, not assert; each with its displayed
+route; §4's N4 rests on exactly these]:**
+* **(O-1) [the child-reached identity — the disjoint/countable-union display].**
+  For a node a′ and a child slot (F, i): {child (F, i) of a′ reached} =
+  ⨆_w ({a′ reached} ∩ {the within-block trajectory at a′ executes the finite loop
+  word w, then lands in F}) — a COUNTABLE union, PAIRWISE DISJOINT over the words
+  w over block-μ(a′)'s loop alphabet ({loop-0} ∪ {loop-c}_{c≠0}). Route: the
+  words w·F are stopping words in the generalized sense (proper prefixes all-loop,
+  final letter the exit stratum F); pairwise disjointness at the first differing
+  position is (b-PF) — (b)'s one-step clause covers the full mixed loop alphabet;
+  countability: finite words over a finite-per-length alphabet; exhaustion of
+  {child reached} minus the (O-2) null set: under (DET) the trajectory is a
+  deterministic map sequence, so reaching the child MEANS some finite loop history
+  precedes the hand-off. This identity REPLACES the rev-3 false one-letter
+  induction equation {node a reached} = {node a′ reached} ∩ {x_{a′} ∈ F}.
+* **(O-2) [the infinite pre-hand-off loop path].** At every node a′ with
+  P(a′ reached) > 0: P(the within-block trajectory at a′ never exits | a′ reached)
+  = 0. Route: the eternal-loop set N_μ ⊆ C_μ is Haar-null (M1(c)'s per-block
+  clause, over ALL loop strata); the reached-conditioned law of x_{a′} is ≪
+  Haar-C_μ (the step-3 induction); null pulls back to null.
+* **(O-3) [measurability of the iterated restrictions and maps].** Every loop
+  letter's step map (g ↦ ĥ = h(c̃ + y) on its stratum) is measurable; finite
+  compositions along a word are measurable; every event in (O-1)/(O-2) is a
+  composed preimage of displayed strata — the L2/L3/L6 measurability layer of §1,
+  applied finitely often per word; the r4 writes the composition sentence once,
+  at the loop-extended addresses.
+* **(O-4) [preservation of normalized conditional laws after arbitrary loop
+  words].** Under the CANONICAL block law, conditioned on executing the loop word
+  w, the post-w state law IS Haar-C_{μ(a′)} exactly (|w|-fold L2+L3, each letter's
+  normalized stratum restriction pushing forward TO the state law); under a
+  reached-conditioned law that is merely ≪ Haar-C_{μ(a′)}, absolute continuity is
+  preserved letter-by-letter (the kernel-null-set step with (S1-m) replaced by the
+  PROVED L2+L3 statement). This is the loop case of the two-letter transport and
+  the exact reason the billing does not widen.
+* **(O-5) [where per-block a.s. exit is consumed — the explicit discard of
+  infinite words].** The address-tree accounting uses (O-2) at EVERY node so that
+  {a′ reached} = ⨆_w {a′ reached, w then exit through some (F, i)} ⊔ (null) loses
+  no mass; the r4 displays this consumption line explicitly at the induction step
+  (it is where M1(c)'s per-block bound, transported by ≪, is spent).
 
-If the reviewer rules that (RE)-at-the-consumed-member cannot ride as a definitional
-display (e.g. judging the general-n intended member under-defined until the O-14d
-population), the priced form is the following (H5) clause, stated per the PACK-i/ii/iii
-genre AT the 𝔅_n member:
+**Billing: (S1-m) + (DET), claimed UNCHANGED — but demoted at REVISION 2 from an
+established fact to the design-level claim the r4 proof must bear out** ((O-4)'s
+loop legs consume only the PROVED L2/L3; (O-1)/(O-3) are structural; (O-2)/(O-5)
+consume M1(c) + the ≪-induction). The honest-widening paragraph ((S1-m+) under a
+stochastic hand-off reading) survives verbatim. Until the (O-1)–(O-5) write-outs
+land AND pass the r4 hostile pass, Lemma M2.0 stands REPAIR-DESIGNED, not
+repaired (§4 N4).
+
+### 3.5 (PACK-iv) — the PRIMARY route's [M] member [REVISION 2: PROMOTED from
+fallback — the plan-review ruled §3.3's grammar/pin discharge unwarranted (its
+finding 1), and the ruling is accepted with the reasons recorded at §3.3]
+
+The priced form is the following NEW (H5) clause, stated per the PACK-i/ii/iii
+genre AT the 𝔅_n member. E4 presents it as a NEW HYPOTHESIS MEMBER — an
+enlargement of (H5)'s displayed row-law roster, exactly the mechanism by which
+PACK-i/ii/iii entered at ROOT REVISION 7 — NEVER as a clarification of existing
+content (review finding 1's closing charge):
 
 > **(PACK-iv) sem_alloc — semantic verdict-row form at the intended member.** At
 > every block e of the intended 𝔅_n instantiation, the booking is re-entrant
@@ -423,6 +661,14 @@ chain (Steps 17 → 18/18b), same borderline-[M]/[T]-kept-[M] disposition (a fin
 per-n row-form comparison, RESUM-n3's transcription its executed n = 3 instance). A
 separate row would split the 𝔅_n row-law content across two homes against the
 VC7-2 precedent.
+
+**[M] accounting [REVISION 2 — exact, per the revision charge]:** (PACK-iv) adds a
+MEMBER to (H5), not a row. The §3.1 ROW count after r11 remains ELEVEN — (H8) is
+the only new row (§5.1's ten → eleven stands); (H5)'s displayed row-law roster
+grows THREE → FOUR (PACK-i/ii/iii → PACK-i/ii/iii/iv, plus the correspondence
+clause it always carried). Its named retirement route is §3.3's (route-a)/(route-b)
+— content that can retire independently, displayed on the row per the (H8)
+precedent.
 
 ---
 
