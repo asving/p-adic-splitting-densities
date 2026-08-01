@@ -1986,3 +1986,9 @@ guard DID, with a mandatory compiled interior witness (actual slope, ∃!
 realized) + guard-excludes-F-4 lemma + honest pricing (row = citation
 structure; (FRESH) content stays at (TRANS-DEEP)/U9). Full build + AxChk
 green; Codex diff CONFIRMED 7/7. H2 wave-3: U10 DONE; U9 waits on B2-FINAL.
+
+## H4 FAN-OUT: 7/11 (2026-08-05)
+Wave 0 Lean statement layer COMPLETE (4/4); waves 1-4 landed M-notes
+partially (7 total; the unproved remainder = multi-pass math leaves w/
+partial records, incl. N-K3 seal work and the ROOT-sync draft — the H4
+follow-up cycle owns them; NO statement blocks). Queue -> H3.
