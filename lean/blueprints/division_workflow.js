@@ -58,9 +58,12 @@ if (!plan || !plan.waves?.length) { log(`${BP}: plan extraction FAILED`); return
 log(`${BP}: ${plan.waves.length} waves, ${plan.waves.reduce((s, w) => s + w.units.length, 0)} units`)
 
 const results = []
+const isDocUnit = (u) => /(^|\/)docs\//.test(u.file) || /ROOT_ASSEMBLY|PROJECT_STATE\.md/.test(u.task + ' ' + u.file)
 for (const wave of plan.waves) {
   const wr = await parallel(wave.units.map(u => () =>
-    agent(
+    isDocUnit(u)
+    ? Promise.resolve({ id: u.id, file: u.file, status: 'BLOCKED', note: 'doc-edit unit: ROOT/docs edits never run through the generic prover — route to the dedicated revision workflow' })
+    : agent(
       `You are prover ${u.id}, ${BP} division, Lean swarm. Repo: ${REPO} (Lean 4.31 + Mathlib; work from ${REPO}/lean). UNIT: ${u.task}\n` +
       `RULES: (1) Open lean/blueprints/${BP}.md, find unit ${u.id} — its Lean statement is there VERBATIM; transcribe EXACTLY (statement changes forbidden; if the statement cannot compile as written, report BLOCKED with the exact error — do not weaken it). (2) Target file ${u.file}; namespace LeanUrat.Scaffold.*; you may create it or extend it; imports from the existing corpus welcome; editing files outside lean/LeanUrat/Scaffold/ is FORBIDDEN (blueprints read-only). (3) Prove: skeleton first, then the cascade rfl/simp/omega/ring/linarith/nlinarith/positivity/exact?/grind/aesop per goal; search before hand-writing (lean_local_search, loogle); bounded repair ~3 attempts per error then step back. (4) [M]-hypotheses stay NAMED structure rows — never axioms, never discharged by fiat. (5) GATE: 'lake env lean ${u.file.replace('lean/', '')}' from ${REPO}/lean must pass; zero sorry in YOUR declarations (a genuinely stuck subgoal: leave sorry + '-- BLOCKED(${u.id}): <reason>' and report BLOCKED/PARTIAL honestly — an honest sorry beats a weakened statement). (6) Do NOT run git. (7) Keep total output <2000 chars.`,
       { label: `${BP}:${u.id}`, phase: 'Prove', schema: VERDICT_SCHEMA },

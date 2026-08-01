@@ -1992,3 +1992,13 @@ Wave 0 Lean statement layer COMPLETE (4/4); waves 1-4 landed M-notes
 partially (7 total; the unproved remainder = multi-pass math leaves w/
 partial records, incl. N-K3 seal work and the ROOT-sync draft — the H4
 follow-up cycle owns them; NO statement blocks). Queue -> H3.
+
+## H3 FAN-OUT: 12/18 + A CORRECT CLASSIFIER CATCH (2026-08-05)
+Waves 0-1 near-complete (11/12 incl. all seven parallel W0 units); W2:
+1/5 (ADM-U6a/U6b track-B + EN-U3 = follow-up cycle). D12R-U4 was BLOCKED
+BY THE SAFETY CLASSIFIER — correctly: a ROOT-row adjudication had been
+dispatched through the generic prover template without the ROOT revision
+discipline. FIX: division_workflow.js now auto-BLOCKS doc-edit units
+(docs/ / ROOT_ASSEMBLY / PROJECT_STATE targets) and routes them to the
+dedicated revision workflows; D12R-U4 joins the r14 queue (with VC15's 4
+advisories + the (NSF-KEY) discharge + H4's ROOT-sync draft). Queue -> H8.
