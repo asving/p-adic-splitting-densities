@@ -346,8 +346,6 @@ namespace LeanUrat.Scaffold.HDischarge.H5
 open LeanUrat.MovesU (MemRcyc SplittingType Gram)
 open LeanUrat.MovesS (OKat evalAt powSubst)
 
-open scoped Classical
-
 /-- ℛ_cyc-membership implies leafless 𝒢-generation: `f = s⁻¹·P` with `s ∈ 𝒮`
 is the `(g2)·(g1)` composite `(invS hs).mul (poly P)`. Converse bridge to the
 landed `Gram.memRcyc`; C2's device for putting ℛ_cyc-valued rows into a
@@ -369,7 +367,7 @@ theorem gramOver_tRow {n : ℕ} {β : ℕ → SplittingType n → Qq} {e : ℕ}
     (E : ExitData n) (hm : ∀ F : E.idx, Gram (E.mass F))
     (hH : ∀ F : E.idx, ∀ x ∈ E.handoff F, x.1 < e) (σ : SplittingType n) :
     GramOver (lowerLegs β e) (tRow β E σ) := by
-  show GramOver (lowerLegs β e)
+  change GramOver (lowerLegs β e)
     (∑ F : E.idx, rowOf β (E.mass F) (E.handoff F) (E.comp F) σ)
   exact GramOver.finsetSum _ _ fun F _ => gramOver_rowOf (hm F) _ (hH F) _ σ
 
@@ -413,6 +411,7 @@ noncomputable def mkREBlocks {n : ℕ} (C : BnCoordinates n) (E : ℕ → ExitDa
     hu     := solveU_unit C.system.booking he
     hsolve := hsolve e he }
 
+open Classical in
 /-- The route-b weights roster: the input weights PLUS the constructed
 displayed rows at every block (the roster-compilation choice displayed in
 the C2 header block). [HDISCHARGE_H5 unit C2 component] -/
@@ -422,6 +421,7 @@ noncomputable def reWeights {n : ℕ} (C : BnCoordinates n) (E : ℕ → ExitDat
     Finset.image (fun σ => displayedRow C.system.booking e β (E e) σ)
       Finset.univ
 
+open Classical in
 /-- The route-b entries roster, in `Valid.entries_eq`'s exact three-family
 shape over `reWeights` — so the built coordinates satisfy `entries_eq` by
 `rfl` and the constructed rows are IN the roster by construction.
@@ -432,6 +432,7 @@ noncomputable def reEntries {n : ℕ} (C : BnCoordinates n) (E : ℕ → ExitDat
     (C.pattData e).image (massPatt e) ∪
     (C.polygonData e).image (fun z => massPoly e z.1 z.2.1 z.2.2)
 
+open Classical in
 /-- **[HDISCHARGE_H5 unit C2] `mkREMember` — the route-b builder** (REVISION
 2 duty list per Codex critical 2): from re-entrant-booked coordinates `C`
 (with `C.Valid` for the INPUT roster), per-block `ExitData` (descending
