@@ -69,6 +69,7 @@ only, in `Scaffold/HDischarge/H6/`).
 -/
 import Mathlib
 import LeanUrat.Scaffold.DictIII.CU1
+import LeanUrat.Scaffold.DictIII.GDOrder1
 import LeanUrat.Scaffold.HDischarge.H6.Emission
 import LeanUrat.Scaffold.HDischarge.H6.EngineConform
 
