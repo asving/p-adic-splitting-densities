@@ -448,4 +448,184 @@ theorem zfree_total_two (x : ℚ) (S : Finset (Multiset (ℕ+ × ℕ+)))
 
 end ZfreeTotalBlocked
 
+/-! ## Unit II-T3 — `jc_count`, the (JC) count form (L6d Step 2): PARTIAL
+(statement elided in the blueprint; the Ppoly display refuted-blocked with
+II-F8/F9; the unit's telescope content compiled in full as `jc_count_core`)
+
+**PROVENANCE.**
+
+* Blueprint: `lean/blueprints/BP_II.md` §1.8 (unit II-T3; row table §2, MED).
+* Math source of record: L6d Step 2.
+* Deps: II-T2 (`chain_telescope`, this file), II-T1 (`torusEquiv`, this file).
+
+TRANSCRIPTION NOTE (II-T3). BP_II.md §1.8 displays this unit's statement as
+`theorem jc_count ...` — ELIDED like II-F8/F9/II-T5 (no verbatim Lean text to
+transcribe); the verbatim docstring is "**(JC) count form** (L6d): the joint
+residue-configuration count over a face-kind κ with shape vector ρ⃗ equals
+∏_j (Ppoly ρ_j).eval q — instantiating the telescope with the
+interior-coefficient counts, row sums supplied by (T1)."
+
+BLOCKED half (the Ppoly display). The "= ∏_j (Ppoly ρ_j).eval q" tie consumes
+Fact F(iii) (unit II-F9), which is BLOCKED — refuted against the landed II-F3
+`patternOf` (`card_pattern_zfree_eq_refuted`, FactF.lean). The defect reaches
+II-T3 itself: every faithful fixing of the elided display is FALSE at k = 1,
+d₁ = 2, ρ₁ = {(1,2)}, over EVERY finite field — the joint chain count is 0
+(no polynomial has the singleton pattern {(1,2)}: `patternOf_ne_atom_one_two`)
+while ∏_j (Ppoly ρ_j).eval q = q − 1 ≥ 1. Compiled below as
+`jc_count_ppoly_refuted`. Reassign the Ppoly display together with II-F8/F9
+after the `patternOf` dedup repair (the II-F8 section note's disposition).
+
+PROVED half (`jc_count_core`). The §2 row's ENTIRE proof content —
+"instantiate II-T2 with interior-coefficient counts n_j; hrow from II-T1;
+anchor c = 1" — is immune to the multiplicity defect and is compiled in full
+generality: the anchored chain sum of the interior-coefficient counts
+n_j(λ, c) = #{R : deg R = d_j, lead(R) = λ, R(0) = c, patternOf R = ρ_j}
+equals ∏_j (the monic z-free count at (d_j, ρ_j)) — (T1)'s c-independent row
+value, which is exactly what "(Ppoly ρ_j).eval q" DENOTES under the intended
+(repaired) Fact F(iii). When the II-F8/F9 repair lands, `jc_count` is
+`jc_count_core` composed with the repaired `card_pattern_zfree_eq` per face —
+no change to the telescope content below. -/
+
+section JcCount
+
+variable {F : Type*} [Field F]
+
+/-- Helper [unit II-T3]: over a finite field, any set of polynomials of
+bounded `natDegree` is finite (inject into the submodule `Polynomial.degreeLT`,
+carried to the finite type `Fin (d+1) → F` by `Polynomial.degreeLTEquiv`).
+Supplies the `Finite` instances that keep the `Nat.card` bookkeeping below
+honest (no junk-value collapse of an infinite count to 0). -/
+theorem finite_of_natDegree_le [Fintype F] {d : ℕ} {s : Set (Polynomial F)}
+    (hs : ∀ R ∈ s, R.natDegree ≤ d) : Finite s := by
+  have h1 : Finite (Polynomial.degreeLT F (d + 1)) :=
+    Finite.of_equiv _ (Polynomial.degreeLTEquiv F (d + 1)).toEquiv.symm
+  have hmem : ∀ R : s, (R : Polynomial F) ∈ Polynomial.degreeLT F (d + 1) := by
+    intro R
+    rw [Polynomial.mem_degreeLT]
+    calc (R : Polynomial F).degree
+        ≤ ((R : Polynomial F).natDegree : WithBot ℕ) := Polynomial.degree_le_natDegree
+      _ ≤ (d : WithBot ℕ) := by exact_mod_cast hs R R.2
+      _ < ((d + 1 : ℕ) : WithBot ℕ) := by exact_mod_cast Nat.lt_succ_self d
+  exact Finite.of_injective
+    (fun R : s => (⟨R, hmem R⟩ : Polynomial.degreeLT F (d + 1)))
+    fun R S h => Subtype.ext (congrArg Subtype.val h)
+
+/-- Helper [unit II-T3]: a member of the c-fiber has nonzero leading
+coefficient (it is nonzero, since its constant coefficient is the unit c). -/
+theorem torus_cfiber_lead_ne_zero {d : ℕ} {ρ : Multiset (ℕ+ × ℕ+)} {c : Fˣ}
+    {R : Polynomial F} (h : R.natDegree = d ∧ R.coeff 0 = ↑c ∧ patternOf R = ρ) :
+    R.leadingCoeff ≠ 0 :=
+  Polynomial.leadingCoeff_ne_zero.mpr
+    (fun h0 => c.ne_zero (by rw [← h.2.1, h0, Polynomial.coeff_zero]))
+
+open Classical in
+/-- Helper [unit II-T3], **the (T1) row sums** of the telescope: for every
+anchor c ∈ Fˣ, the interior-coefficient counts n(λ, c) sum over the lead
+coordinate λ to the monic z-free count — the c-INDEPENDENT row value P.
+Proof: fiber the c-fiber by the leading coefficient (a unit, by
+`torus_cfiber_lead_ne_zero`), collapse the sigma type (`Nat.card_sigma`), and
+apply the II-T1 bijection `torusEquiv` at the anchor c. -/
+theorem torus_row_sum [Fintype F] (d : ℕ) (ρ : Multiset (ℕ+ × ℕ+)) (c : Fˣ) :
+    ∑ l : Fˣ, Nat.card {R : Polynomial F | R.natDegree = d ∧
+        R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c ∧ patternOf R = ρ}
+      = Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d ∧
+        S.coeff 0 ≠ 0 ∧ patternOf S = ρ} := by
+  haveI : ∀ l : Fˣ, Finite ↥{R : Polynomial F | R.natDegree = d ∧
+      R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c ∧ patternOf R = ρ} := fun _ =>
+    finite_of_natDegree_le fun _ hR => le_of_eq hR.1
+  have e : (Σ l : Fˣ, ↥{R : Polynomial F | R.natDegree = d ∧ R.leadingCoeff = ↑l ∧
+        R.coeff 0 = ↑c ∧ patternOf R = ρ}) ≃
+      ↥{R : Polynomial F | R.natDegree = d ∧ R.coeff 0 = ↑c ∧ patternOf R = ρ} :=
+    { toFun := fun x => ⟨x.2.1, x.2.2.1, x.2.2.2.2.1, x.2.2.2.2.2⟩
+      invFun := fun R => ⟨Units.mk0 R.1.leadingCoeff (torus_cfiber_lead_ne_zero R.2),
+        R.1, R.2.1, rfl, R.2.2.1, R.2.2.2⟩
+      left_inv := by
+        rintro ⟨l, R, hdeg, hlc, hc0, hpat⟩
+        have hl : Units.mk0 R.leadingCoeff
+            (torus_cfiber_lead_ne_zero ⟨hdeg, hc0, hpat⟩) = l := Units.ext hlc
+        subst hl
+        rfl
+      right_inv := fun _ => rfl }
+  calc ∑ l : Fˣ, Nat.card ↥{R : Polynomial F | R.natDegree = d ∧ R.leadingCoeff = ↑l ∧
+        R.coeff 0 = ↑c ∧ patternOf R = ρ}
+      = Nat.card (Σ l : Fˣ, ↥{R : Polynomial F | R.natDegree = d ∧ R.leadingCoeff = ↑l ∧
+          R.coeff 0 = ↑c ∧ patternOf R = ρ}) := Nat.card_sigma.symm
+    _ = Nat.card ↥{R : Polynomial F | R.natDegree = d ∧ R.coeff 0 = ↑c ∧
+          patternOf R = ρ} := Nat.card_congr e
+    _ = Nat.card ↥{S : Polynomial F | S.Monic ∧ S.natDegree = d ∧ S.coeff 0 ≠ 0 ∧
+          patternOf S = ρ} := Nat.card_congr (torusEquiv d ρ c)
+
+open Classical in
+/-- **The (JC) count form, telescope content** [unit II-T3, PROVED half —
+see the section note: the blueprint display is elided and its Ppoly tie is
+refuted-blocked with II-F8/F9]: the anchored chain sum of the
+interior-coefficient counts n_j(λ, c) = #{R : deg R = d_j, lead(R) = λ,
+R(0) = c, patternOf R = ρ_j} over shared-vertex chains V ∈ (Fˣ)^{k+1} with
+anchor V_{k+1} = 1 equals ∏_j (the monic z-free count at (d_j, ρ_j)) — the
+instantiation of II-T2 `chain_telescope` with hrow = `torus_row_sum` (II-T1),
+anchor c = 1, exactly the §2 row's proof sketch. -/
+theorem jc_count_core (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (ρ : Fin k → Multiset (ℕ+ × ℕ+)) :
+    (∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          Nat.card {R : Polynomial F | R.natDegree = d j ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+            patternOf R = ρ j}
+      else 0) =
+    ∏ j : Fin k,
+      Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
+        S.coeff 0 ≠ 0 ∧ patternOf S = ρ j} :=
+  chain_telescope
+    (fun j l c => Nat.card {R : Polynomial F | R.natDegree = d j ∧
+      R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c ∧ patternOf R = ρ j})
+    (fun j => Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
+      S.coeff 0 ≠ 0 ∧ patternOf S = ρ j})
+    (fun j c => torus_row_sum (d j) (ρ j) c)
+
+open Classical in
+/-- **BLOCKED(II-T3) refutation**: the intended (JC) count display
+"joint chain count = ∏_j (Ppoly ρ_j).eval q" (BP_II §1.8, elided) is FALSE
+against the landed `patternOf`, already at k = 1, d₁ = 2, ρ₁ = {(1,2)}, over
+EVERY finite field: the joint count is 0 (`patternOf_ne_atom_one_two`) while
+the right side is q − 1 ≥ 1 (`Ppoly_atom_one_two`) — the same multiplicity
+defect that blocks II-F8/F9. -/
+theorem jc_count_ppoly_refuted (F : Type*) [Field F] [Fintype F] :
+    ¬ (((∑ V : Fin 2 → Fˣ,
+        if V ⟨1, Nat.lt_succ_self 1⟩ = 1 then
+          ∏ j : Fin 1,
+            Nat.card {R : Polynomial F | R.natDegree = 2 ∧
+              R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+              R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+              patternOf R = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))}
+        else 0 : ℕ) : ℚ)
+      = ∏ _j : Fin 1,
+          (Ppoly ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))).eval
+            (Fintype.card F : ℚ)) := by
+  intro h
+  haveI : IsEmpty ↥{S : Polynomial F | S.Monic ∧ S.natDegree = 2 ∧ S.coeff 0 ≠ 0 ∧
+      patternOf S = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))} :=
+    ⟨fun ⟨S, _, _, _, hpat⟩ => patternOf_ne_atom_one_two S hpat⟩
+  have hcore : (∑ V : Fin 2 → Fˣ,
+      if V ⟨1, Nat.lt_succ_self 1⟩ = 1 then
+        ∏ j : Fin 1,
+          Nat.card {R : Polynomial F | R.natDegree = 2 ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+            patternOf R = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))}
+      else 0)
+      = ∏ _j : Fin 1,
+          Nat.card ↥{S : Polynomial F | S.Monic ∧ S.natDegree = 2 ∧ S.coeff 0 ≠ 0 ∧
+            patternOf S = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))} :=
+    jc_count_core F (fun _ => 2)
+      (fun _ => ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)))
+  rw [hcore] at h
+  rw [Fin.prod_univ_one, Fin.prod_univ_one, Nat.card_of_isEmpty, Nat.cast_zero,
+    Ppoly_atom_one_two] at h
+  have h1 : (1 : ℚ) < (Fintype.card F : ℚ) := by exact_mod_cast Fintype.one_lt_card
+  linarith [h, h1]
+
+end JcCount
+
 end LeanUrat.Scaffold
