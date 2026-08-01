@@ -231,7 +231,8 @@ sync but IS a text change — a confirming end-to-end pass (**VC16**) is OWED to
 re-anchor the accepted text on the REVISION-13 wording; until it lands, the
 acceptance citation points at the REVISION-12 text (charge at §19).
 
-**VC16 + REVISION 14 applied (r15, appendix §20) — the CURRENT standing.** VC16
+**VC16 + REVISION 14 applied (r15, appendix §20) — superseded as CURRENT
+standing by the REVISION 15 paragraph below.** VC16
 (the confirming end-to-end pass, fresh context;
 `lean/notes/openmath/VC16_report.md`) RAN on the REVISION-13 text and returned
 **COMPOSITION-SOUND** — zero blockers, advisories only — re-anchoring the
@@ -257,6 +258,27 @@ enumeration). HONEST COUNTER STATEMENT: the acceptance was EARNED on the
 REVISION-12 text and RE-ANCHORED by VC16 on REVISION 13; REVISION 14 executes a
 VC16-warranted reclassification but IS a text change — a confirming end-to-end
 pass (**VC17**) is OWED on the REVISION-14 wording (charge at §20).
+
+**VC17 + REVISION 15 applied (r16, appendix §21) — the CURRENT standing.** VC17
+(the confirming end-to-end pass, fresh context;
+`lean/notes/openmath/VC17_report.md`) RAN on the REVISION-14 text and returned
+**COMPOSITION-GAPS** — ONE blocker + ONE advisory, both display-conformance at
+the r15 edits themselves, with ALL other charged checks PASSING (the D-12r
+residue confined to (HEN-LIFT)/(OM-SAT), the ELEVEN-row ↔ (H1)–(H9) bijection
+with (H3) = {(ADM), (E-N)}, the operative-clause attributions, the conditional
+walk, acyclicity incl. 17 ≺ 18 ≺ 18b, no REVISION-12/13 regression). REVISION 15
+(§21, unit ROOT r16) repairs both in place: Step 12's (τ-irr) saturation
+description now locally displays "perimeter-conditional on the §4 D-12r pin
+(entry 10)" — the one former consumption site the r15-5 audit had passed on the
+central-enumeration ground alone, now matching Steps 2/3/11/16/19 — and Step 4's
+grade is rendered in the EXACT §0 word, **PROVED-UNVERIFIED** (pending upgrade:
+the §3.2 M17/RegPFinite faithfulness-audit row; the machine-checked-Lean-core
+fact and Step 5's independent route stay as displayed notes, not grade words).
+No [M] member, step proof content, leaf pointer, or clause attribution changed;
+the §3.1 roster stays ELEVEN rows. HONEST COUNTER STATEMENT: the acceptance was
+EARNED on the REVISION-12 text, RE-ANCHORED on REVISION 13 by VC16; REVISION 15
+is a two-sentence display repair but IS a text change — the confirming
+end-to-end pass (**VC18**) is OWED on the REVISION-15 wording (charge at §21).
 
 **Status vocabulary** (tree §0, compressed): **VERIFIED** = survived ≥ 2 consecutive
 clean adversarial passes in fresh contexts, at least two models (VERIFIED-DUAL), or
@@ -605,9 +627,12 @@ finiteness (CU-5).
 **Step 4 (K-13 — (REG-p) finiteness; Lean-formalized).** Statement: the set of primes
 where the pinned rational data degenerate is finite, exactly characterized, effectively
 bounded; Theorem U fires at a cofinite set. Status [grade conformed to the §0
-vocabulary at REVISION 13, VC15 advisory 2 — the O-14a′/VC10-advisory-1 precedent]:
-**PROVED (dual provenance) + machine-checked Lean-core; VERIFIED-LEAN PENDING the
-named faithfulness-audit row** (M17 Theorems A/B/C + Corollary U;
+vocabulary at REVISION 13, VC15 advisory 2 — the O-14a′/VC10-advisory-1 precedent;
+rendered in the EXACT §0 word at REVISION 15, r16, VC17 advisory 2]:
+**PROVED-UNVERIFIED — the pending upgrade is the named §3.2 row M17/RegPFinite
+faithfulness-audit record, whose landing upgrades the grade to VERIFIED-LEAN**;
+displayed notes, NOT grade words: dual provenance + machine-checked Lean-core,
+and Step 5's independent route contains the impact (M17 Theorems A/B/C + Corollary U;
 `MovesU/RegPFinite.lean`, 14 theorems, Lean-core, per-declaration `#print axioms`
 checked; dual provenance = the Fable proof `M17-regp-density_fable.md` + an
 independent Codex twin from the neutral brief, agreeing on every load-bearing step
@@ -942,7 +967,12 @@ OL1-ii, O-5, O-7's (X1)/(X4).
 **Step 12 (O5triple — O-5 halt/assembly + the D-7 bijection triple).** Statement: at an
 ns-free leaf of a realized run the halting verdict is the true factorization datum
 ((τ-hen) via LIT-3 coprime Hensel; (τ-irr) saturated leaf via OM saturation through the
-dictionary); Theorem B derives D-7b LEAF-COVER from injectivity + degree checksums
+dictionary — the (τ-irr) leg's TB-CAP dependence is perimeter-conditional on the
+§4 D-12r pin (entry 10) [locally re-pointed at REVISION 15, r16, per VC17
+blocker 1: the r15-5 audit had confirmed this step as already-conformant because
+its consumption is priced at the §4 entry's enumeration, but the r15 claim was
+that EVERY former consumption site displays the conditionality locally — Step 12
+now matches Steps 2/3/11/16/19]); Theorem B derives D-7b LEAF-COVER from injectivity + degree checksums
 alone (NO no-missing consumed — the F2′-as-assembly note, verified); D-7a
 LEAF-DISJOINT and D-7c LEAF-MULT close the triple; Theorem E: any two monic separable
 lifts of a decided class have EQUAL splitting types (the multiset is engine data,
@@ -1621,7 +1651,7 @@ inherited-[V] row it is; general-n drainage stays conditional until those passes
 | **O-10 2 minor gaps** [added at REVISION 3 status sync] | the D-8 value-vs-law framing (collapses definitionally) + the box-count transport cite — found at the VERIFYING pass 2; **repaired at O-10 r2, landed at revision close** (3956500: the D-8 separation dropped as definitional with the existence range displayed; the (BOX) transport display + M07 §2.1 cite row; cores byte-stable). Per the wave-14 ledger: VERIFIED (leaf #6) STANDS, framing fixed; the r2 diff-confirmation rides the next harvest | O-10 (Step 15) |
 | **B-layer verification rounds** [row added at REVISION 1, finding 3; B-4 added at REVISION 2, finding V2-4; **B-3 (doc level) added at REVISION 3, finding B4**] | B-1, B-2 (doc level), **B-3 (doc level)**, **B-4 (order-r layer)**, B-5, B-6, B-7 are PROVED-UNVERIFIED June documents (grades displayed at Step 2); the tree §4 protocol already schedules their verification-only rounds; B-3's core and B-2's counting core are VERIFIED-LEAN (B-3's doc level has the same status shape as B-2's — Lean-verified core + PROVED-UNVERIFIED June document — and is now listed like it); B-4's order-1 instance = B-3's VERIFIED-LEAN core, and its order-r content (`M6_lemma.md`) has as modern face O-9's OL-B, discharged to GD-3 — on the modern path the orders-≥ 2 content rides §3.1's (GR-B), so this row prices only the June-document verification rounds; B-8 SUPERSEDED, cited nowhere | B-layer (Steps 2, 3) |
 | **K-12 faithfulness-audit record** | the Lean `undec`/`hExhaustP` vs mathematical-classifier audit (DELTA-1 §D1.5(g)); grade held pending | K-12/n = 2 anchor |
-| **M17/RegPFinite faithfulness-audit record** [NEW row at REVISION 13, VC15 advisory 2 — grade-display conformance, the O-14a′/K-12 precedent] | the Lean-statement-vs-mathematical-statement audit for Step 4's (REG-p) finiteness leaf: the `MovesU/RegPFinite.lean` declarations (`regP_iff_pool_avoids`/`regP_failing_eq`/`regP_failing_finite`/`pow_hits_finite`/`UCarriers.detHyp` + companions, 14 theorems Lean-core) vs M17's mathematical Theorems A/B/C + Corollary U. ON RECORD: dual provenance (Fable proof + independent Codex twin from a neutral brief, load-bearing steps agreeing; `lean/notes/M17_FORMALIZED_2026-07-31.md` incl. its honesty ledger — Theorem C and the cardinality bound NOT formalized; the vacuity note on supplied pinned families). OWED: the faithfulness-audit record itself (the K-12 genre). Until it lands, Step 4's grade is PROVED + machine-checked, NOT VERIFIED-LEAN — §0's definition requires the audit; Step 5's independent emptiness-at-𝔅_n result contains the impact | K-13/M17 (Step 4) |
+| **M17/RegPFinite faithfulness-audit record** [NEW row at REVISION 13, VC15 advisory 2 — grade-display conformance, the O-14a′/K-12 precedent] | the Lean-statement-vs-mathematical-statement audit for Step 4's (REG-p) finiteness leaf: the `MovesU/RegPFinite.lean` declarations (`regP_iff_pool_avoids`/`regP_failing_eq`/`regP_failing_finite`/`pow_hits_finite`/`UCarriers.detHyp` + companions, 14 theorems Lean-core) vs M17's mathematical Theorems A/B/C + Corollary U. ON RECORD: dual provenance (Fable proof + independent Codex twin from a neutral brief, load-bearing steps agreeing; `lean/notes/M17_FORMALIZED_2026-07-31.md` incl. its honesty ledger — Theorem C and the cardinality bound NOT formalized; the vacuity note on supplied pinned families). OWED: the faithfulness-audit record itself (the K-12 genre). Until it lands, Step 4's grade is **PROVED-UNVERIFIED** (the exact §0 word, rendered at Step 4 at REVISION 15, r16, VC17 advisory 2), NOT VERIFIED-LEAN — §0's definition requires the audit; Step 5's independent emptiness-at-𝔅_n result contains the impact | K-13/M17 (Step 4) |
 | **End-to-end passes on THIS document** [synced at REVISIONS 1/3/4/5/6/7/8/9] | passes 1–8 RAN, each COMPOSITION-GAPS → each repaired by its revision (§§7–14): VC1 (Codex) → REVISION 1; VC2 (Codex) → REVISION 2; VC3 (Fable, model-diverse) → REVISION 3 — VC3 confirmed the composition's MATHEMATICS; VC4 (Codex) → REVISION 4 — again all attribution/ledger integrity (a new hypothesis-grade row surfaced ((PACK)), one attribution weakened favorably ((SQ) unconditional)); VC5 (Codex) → REVISION 5 — two blockers of ONE genre (consumed [T] rows are open propositions: the (H6) promotion) + the standing T-U advisory, with the eight-row mapping, both unconditional clauses, the (ADM) operative form, the (PACK)/(K3-δ) propagation, acyclicity, and the Σ_τ R_τ = 1 derivation all PASSING; VC6 (Fable, model-diverse) → REVISION 6 — 3 blockers, the VC5 genre WALKED TO COMPLETION (the last consumed-open-in-[T] rows: (H1) enlarged by GD-1-beyond-1 + the GD-6 instances; (H7) = (I-τ)/K-LOC) + 6 advisories (incl. A-9: the T-U §U.SQ.6 table now EXECUTED at §3.4), with the nine-row bijection, per-clause attribution, acyclicity, Σ_τ R_τ = 1, (SL≥2), and the leaf-#8 interlock all PASSING; VC7 (Codex) → REVISION 7 — 2 blockers, BOTH attribution/warrant findings at REVISION-6 A-6 adjudications (Step 6's all-order KEY1 consumption had no displayed (H1) member → member (d) added; (PACK)'s correspondence could not warrant the three pack row-laws → the (H5) enlargement PACK-i/ii/iii) + 3 advisories, with VC7's findings 6–11 CONFIRMING the composition (the §3.4 T-U tables genuine incl. the three flagged adjudications; the (H1) enlargement + (H7) sound; the TEN-row bijection correct with per-clause attribution consistent; the walk proving (ROOT-C) quantifier-for-quantifier; acyclicity PASSING); VC8 (Codex) → REVISION 8 — 1 blocker + 1 advisory, the NARROWEST residue of the eight passes, BOTH at the REVISION-7 repairs themselves ((H1)(d)'s "key has degree > 1" quantifier rested on an UNPROVEN identification with the order-≥ 2 reads → the member REQUANTIFIED to read order; the PACK K2/K3 sub-attribution inconsistent across summaries → synced, PACK-i/ii at K2's glue, PACK-iii at K3's ring-hom with D-6), with all three r8 advisory repairs, the TEN-row count, the quantifier walk (Σ_τ R_τ = 1 properly delayed to Step 19), acyclicity incl. 17 ≺ 18 ≺ 18b, and no regression on the §3.4 tables/(H7)/bijection/pack-law non-inference all PASSING. The criterion: ≥ 2 consecutive CLEAN end-to-end passes, ≥ 2 models, verifiers who saw none of the per-leaf rounds (tree §4 Root criterion); after pass 8 the consecutive-clean counter stood at ZERO, with VC9 next (charge at §14). **ACCEPTANCE [synced at REVISION 9]:** VC9 (Codex) and VC10 (Fable — the model-diverse pass) RAN on the IDENTICAL REVISION-8 text and BOTH returned **COMPOSITION-SOUND, ZERO blockers** (`lean/notes/openmath/VC9_root_report.md`, `lean/notes/openmath/VC10_fable_report.md`) — the criterion is MET (two consecutive clean passes, two models, fresh verifiers): the composition is **ACCEPTED at (ROOT-C)'s displayed conditional scope**, and the consecutive-clean counter is **TWO**. VC10's three ADVISORIES (display hygiene only) are dispositioned at §15 (REVISION 9, post-acceptance) — advisories do NOT reset the counter; it STAYS TWO. **SUSPENSION + REVISION 10 [r11, 2026-08-04 — the CURRENT standing]:** the acceptance was **SUSPENDED** at the stop-the-line (ledger 44ce0a7): the owed D-11 pass 3 returned CRITICAL and Steps 17/18b consumed the refuted layers AS PROVED. REVISION 10 (§16) CURES the composition-level defect (the repaired r4 leaf consumed at true scope; every missing premise a displayed [M] member; TWELVE rows ↔ (H1)–(H9)) — but a suspension cure is a TEXT CHANGE: **the consecutive-clean counter is ZERO of 2**, the acceptance is NOT in force, and it is re-earned ONLY by two fresh consecutive clean model-diverse end-to-end passes on the IDENTICAL REVISION-10 text (fresh verifiers, tree §4 Root criterion). **VC11 [synced at REVISION 11, r12]:** the pass RAN on the REVISION-10 text (`lean/notes/openmath/VC11_report.md`) — **COMPOSITION-GAPS** (4 blockers + 1 advisory, ALL r11 RIPPLE-SYNC defects: Steps 16/19's scope displays + the final ∎ stale at (H7)/PACK-i-iii, §3.4 item 12's routing contradicting the (H8) row, the 6(iii)–(ix)+7 residue list omitting (H9), Step 18b's Consumes summary omitting (ADM)) — with the TARGETED r11 repairs CONFIRMED (Step 17's per-clause measures, Step 18b at (RE)/(PACK-iv), the twelve-row bijection, (NSF-KEY) known-false-at-HEAD with gated retirement, (0)/(SQ) unconditional, 17 ≺ 18 ≺ 18b) → REVISION 11 (§17), pure display syncs; a text change: **the counter STAYS ZERO of 2**. **VC12 + VC13 [synced at REVISION 12, r13]:** VC12 RAN on the REVISION-11 text (`lean/notes/openmath/VC12_report.md`) — **COMPOSITION-SOUND, ZERO findings**: the counter reached ONE of 2; VC13 (Fable — the model-diverse pass) RAN on the same REVISION-11 text (`lean/notes/openmath/VC13_fable_report.md`) — **COMPOSITION-GAPS** (2 blockers + 3 advisories, ALL the stale-hypothesis-enumeration genre: §1's (H5) display at PACK-i-iii only, Step 18's stale "— §1" clause-(R) quote + five-hypothesis count, Step 17's Consumes omitting (H9)/(PACK-iv), the (H8) "owed-pass G-2" provenance irreconcilable with the §3.2 O-11 row, the (AGR) residue eliding CU-4's [M] conditionality — the walk/bijection/seams/acyclicity/(NSF-KEY) discipline all CONFIRMED) → REVISION 12 (§18): pure display syncs + the GLOBAL ENUMERATION AUDIT (every operative hypothesis-enumeration display checked against §1 and synced); **the counter RESETS to ZERO of 2**; VC14 next (charge at §18). **VC14 + VC15 — RE-ACCEPTANCE [synced at REVISION 13, r14]:** VC14 (Codex, fresh context; `lean/notes/openmath/VC14_report.md`) RAN on the REVISION-12 text — **COMPOSITION-SOUND, clean** (the enumeration-audit claim TESTED and held; zero regressions): counter ONE of 2; VC15 (Fable, fresh context — the model-diverse, deciding pass; `lean/notes/openmath/VC15_fable_report.md`) RAN on the same REVISION-12 text — **COMPOSITION-SOUND, ZERO blockers** (explicit null result on the blocker hunt; 4 advisories, display hygiene) — the bar is MET (two consecutive clean model-diverse passes, fresh verifiers): **the composition is RE-ACCEPTED at (ROOT-C)'s twelve-row displayed conditional scope** (ledger "RE-ACCEPTANCE: THE BAR IS MET AT TWELVE ROWS"). REVISION 13 (r14, §19) is the post-acceptance display/status-sync batch (the r10/REVISION-9 precedent); it is a TEXT CHANGE, so a confirming end-to-end pass **VC16 is OWED to re-anchor the accepted text on the REVISION-13 wording** — until it lands, the acceptance citation points at the REVISION-12 text. **VC16 [synced at REVISION 14, r15]:** the confirming pass RAN on the REVISION-13 text (`lean/notes/openmath/VC16_report.md`) — **COMPOSITION-SOUND, zero blockers** (advisories only: the Step-4 grade reads as PROVED-UNVERIFIED under §0's vocabulary until its audit lands; the D-12r §4 roster sync owed at the move; plus five confirmations incl. the (NSF-KEY) retirement, the K-CUT re-scope, the structural invariants, and no REVISION-12 regression) — **the acceptance RE-ANCHORS on the REVISION-13 text**, and finding 2 adjudicates the D-12r reclassification WARRANTED. REVISION 14 (r15, §20) EXECUTES the move (D-12r [M] → the §4 literature pin; ELEVEN rows ↔ (H1)–(H9)); a text change: the confirming pass **VC17 is OWED on the REVISION-14 wording** — until it lands, the acceptance citation points at the REVISION-13 text | Phase C |
 
 **GD23 row RETIRED [REVISION 1 status sync]:** the former "GD23 gap-9 light repairs"
@@ -2176,6 +2206,15 @@ MINUS nothing (the D-12r move retires no pass debt) — the (K1-CANON) discharge
 the H8 fan-out hostile pass, the H4 firing conditions, the M17/RegPFinite
 audit, the standing queue; PLUS the LIT-1 remaining-loci session (input: the
 D12R-U3 located-page map).]
+[Updated at REVISION 15 (r16): VC17 RAN on the REVISION-14 text —
+COMPOSITION-GAPS, 1 blocker + 1 advisory, BOTH display-conformance at the r15
+edits (Step 12 not locally re-pointed at the D-12r perimeter; Step 4's grade
+outside the §0 vocabulary), with all other charged checks PASSING (the D-12r
+move's faithfulness, the ELEVEN-row bijection, the walk, acyclicity, no
+regression) — dispositioned at §21 and repaired in place as pure display syncs.
+Dispatch now: **VC18 — the confirming end-to-end pass on this REVISION-15 text**
+(charge at §21). In flight/owed BEYOND VC18: unchanged from the REVISION-14
+list above.]
 
 — ROOT ASSEMBLY complete, 2026-08-02. Composed at HEAD d730669 + the recorded
 in-flight events (O4T pass 2, untracked). Every §2 grade traces to a named commit or
@@ -2277,7 +2316,18 @@ to "perimeter-conditional on the §4 D-12r pin"; the §3.1 roster is **ELEVEN ro
 finding 2 (items 1/4/5 + the §3.3 LIT-1/LIT-3 rows). No step proof content, no
 leaf pointer, no clause attribution changed. REVISION 14 is a text change: **a
 confirming end-to-end pass (VC17) is OWED on the REVISION-14 wording** (charge
-at §20).
+at §20). VC17 RAN on the REVISION-14 text — **COMPOSITION-GAPS, 1 blocker + 1
+advisory, both display-conformance at the r15 edits** (all other charged checks
+PASS; `lean/notes/openmath/VC17_report.md`). REVISION 15 (§21, unit ROOT r16)
+applied: Step 12's (τ-irr) description locally re-pointed to
+"perimeter-conditional on the §4 D-12r pin (entry 10)" — matching Steps
+2/3/11/16/19 — with the §20 r15-5 already-conformant confirmation marked
+RESOLVED; Step 4's grade rendered in the exact §0 word, PROVED-UNVERIFIED
+(pending: the §3.2 M17/RegPFinite faithfulness-audit row; the Lean-core and
+Step-5 facts kept as notes). Pure display syncs — no [M] member, step proof
+content, leaf pointer, or clause attribution changed; ELEVEN rows stand.
+REVISION 15 is a text change: **the confirming end-to-end pass (VC18) is OWED
+on the REVISION-15 wording** (charge at §21).
 
 ---
 
@@ -3422,7 +3472,7 @@ leaf pointer, no clause attribution changed.
 | r15-2 | VC16 finding 2 sync item (a) — "§4 item 1 still says the GMN pagination confirmation is owed" | ROSTER SYNC (honest partial) | §4 item 1's status updated to the on-file state: pagination **CONFIRMED for the (OM-SAT) slice ONLY** (unit D12R-U3, `lean/notes/openmath/H3_omsat_brief.md` §1 — six loci verbatim at printed pp. 374/398–399/399/399/400/366, no arXiv-v2 drift); NOT run to full CONFIRMED — the REMAINING pinned loci still owe the LIT-1/GD-7 session (the §3.3 LIT-1 row now records the partial discharge and holds the brief's located-page map as session input) | §4 item 1; §3.3 LIT-1 row |
 | r15-3 | VC16 finding 2 sync item (b) — "§4 item 5 still calls the Neukirch pin a candidate with its probe owed" | ROSTER SYNC (honest state) | §4 item 5 updated: numbers **CONFIRMED** ((4.6) "Hensel's Lemma", printed p. 129 — unit D12R-U1, `lean/notes/openmath/H3_henlift_brief.md`); the Mathlib probe **RAN, answer ABSENT** (`HenselianLocalRing` root-lifting only; no coprime-factor lifting) — the pin STANDS AS A PAPER CITE; the printed (4.6) is existence-only, uniqueness disposed via the brief's §2 companion lemma; the optional Lean materialization (D12R-U2a/b/c) owes its own axiom-policy loop when it lands. §3.3 LIT-3 row synced to the same state | §4 item 5; §3.3 LIT-3 row |
 | r15-4 | VC16 finding 2 sync item (c) — "Serre LF I §6 Prop. 15 is not presently enumerated as a consumed locus" | ROSTER SYNC | **Serre LF I §6 Prop 15 (printed pp. 17–18) ADDED** to §4 item 4's consumed-loci enumeration, tagged as the (HL-c) read-off of the D-12r pin, with the entry-10 cross-reference | §4 item 4 |
-| r15-5 | the VC13-lesson enumeration audit (this revision's ripple) | RIPPLE SYNC | Every operative (H1)–(H9)/(H3)-membership/row-count display checked and synced: §1's (ROOT-C) (H3) display shrunk to {(ADM), (E-N)} with the reclassification bracket (grouping preserved); §1's clause-(UB) B1 attribution parenthetical re-pointed; headline enumeration run to ELEVEN; Steps 2, 3, 11 (the A-4 reconciling display), 16, and 19 re-pointed to "perimeter-conditional on the §4 D-12r pin"; the §3.1 (E-N) row's leg-C3 mention, the §3.2 (AGR) row, §3.4 Table A (the 6(iii)–(ix)+7 residue list and row 10's (τ-irr) pointer), Step 18's O-11 r3 tier record (its H-2 = D-12r naming bracketed to the §4 home), the §3.2 pass-ledger row, §6, and the footer synced. AUDIT COUNT: 19 displays checked — 16 EDITED (header roster enumeration + headline count note; §1's (H3) display + the clause-(UB) B1 parenthetical; Steps 2, 3, 11 (A-4 display), 16, 19; Step 18's tier record; §3.1 row-out/tombstone + the (E-N) leg-C3 mention; §3.2 (AGR) + pass-ledger rows; §3.4 residue list + row 10) and 3 CONFIRMED already-conformant (Step 12's text names no D-12r directly — its consumption is priced at the §4 entry's enumeration; §1's (ROOT)-discharge sentence and Step 19's final ∎ name hypothesis GROUPS only, membership displayed at §1's (H3) bracket); the §4/§3.3 roster-sync edits counted at r15-1..r15-4; the historical §§7–19 records untouched by design | §§0/1, Steps 2/3/11/16/18/19, §3.1/§3.2/§3.4/§4/§6, footer |
+| r15-5 | the VC13-lesson enumeration audit (this revision's ripple) | RIPPLE SYNC | Every operative (H1)–(H9)/(H3)-membership/row-count display checked and synced: §1's (ROOT-C) (H3) display shrunk to {(ADM), (E-N)} with the reclassification bracket (grouping preserved); §1's clause-(UB) B1 attribution parenthetical re-pointed; headline enumeration run to ELEVEN; Steps 2, 3, 11 (the A-4 reconciling display), 16, and 19 re-pointed to "perimeter-conditional on the §4 D-12r pin"; the §3.1 (E-N) row's leg-C3 mention, the §3.2 (AGR) row, §3.4 Table A (the 6(iii)–(ix)+7 residue list and row 10's (τ-irr) pointer), Step 18's O-11 r3 tier record (its H-2 = D-12r naming bracketed to the §4 home), the §3.2 pass-ledger row, §6, and the footer synced. AUDIT COUNT: 19 displays checked — 16 EDITED (header roster enumeration + headline count note; §1's (H3) display + the clause-(UB) B1 parenthetical; Steps 2, 3, 11 (A-4 display), 16, 19; Step 18's tier record; §3.1 row-out/tombstone + the (E-N) leg-C3 mention; §3.2 (AGR) + pass-ledger rows; §3.4 residue list + row 10) and 3 CONFIRMED already-conformant (Step 12's text names no D-12r directly — its consumption is priced at the §4 entry's enumeration [this confirmation was ADJUDICATED INSUFFICIENT by VC17 blocker 1 against the stronger every-site-re-pointed claim — RESOLVED at REVISION 15, r16: Step 12's (τ-irr) description now carries the local "perimeter-conditional on the §4 D-12r pin (entry 10)" sentence]; §1's (ROOT)-discharge sentence and Step 19's final ∎ name hypothesis GROUPS only, membership displayed at §1's (H3) bracket); the §4/§3.3 roster-sync edits counted at r15-1..r15-4; the historical §§7–19 records untouched by design | §§0/1, Steps 2/3/11/16/18/19, §3.1/§3.2/§3.4/§4/§6, footer |
 
 **The completeness invariant, re-run.** §3.1 has **ELEVEN rows ↔ (ROOT-C)'s
 (H1)–(H9)**: (H1) the graded-dictionary family (four members) · (H2) = (FRESH) ·
@@ -3475,3 +3525,78 @@ record (unit ROOT r15).
 §4, ELEVEN rows) + three honest roster syncs + the enumeration-audit ripple;
 the acceptance stands as earned on REVISION 12 and re-anchored on REVISION 13;
 VC17 is owed to re-anchor it on this text.
+
+## 21. REVISION 15 (r16, VC17 fold) — the two display-conformance repairs at the r15 edits
+
+**The pass.** VC17 (the confirming end-to-end pass, fresh context;
+`lean/notes/openmath/VC17_report.md`) RAN on the REVISION-14 text and returned
+**COMPOSITION-GAPS** — ONE blocker + ONE advisory, both display-conformance
+findings at the r15 edits themselves. All other charged checks PASS: the D-12r
+move's faithfulness (residue confined to (HEN-LIFT)/(OM-SAT), the uniqueness
+companion lemma explicit, sibling debts decomposed at their prior homes); §3.1
+at exactly ELEVEN rows ↔ (H1)–(H9) with (H3) = {(ADM), (E-N)}; the operative
+clause attributions ((0)/(SQ) unconditional; (R)/(UB) carrying the same groups
+at §1 and Steps 16/18/19); the remaining twelve-row/former-(H3) enumerations
+confined to dated historical records; the walk conditional at its stated scope
+with no unconditional (ROOT) upgrade; acyclicity intact incl. 17 ≺ 18 ≺ 18b;
+no REVISION-12/13 regression.
+
+**This revision (unit ROOT r16).** Repairs both findings in place — pure
+display syncs. No [M] member, step proof content, leaf pointer, or clause
+attribution changed; NO status syncs.
+
+**Disposition table.**
+
+| item | source | grade | disposition | edit sites |
+|---|---|---|---|---|
+| r16-1 | VC17 blocker 1 (Step 12 not locally re-pointed at the D-12r move) | BLOCKER — repaired in place | Step 12's `(τ-irr)` saturation description now carries the honest conditionality sentence locally: "the (τ-irr) leg's TB-CAP dependence is perimeter-conditional on the §4 D-12r pin (entry 10)" — the language Steps 2/3/11/16/19 received at r15. The r15-5 audit had passed Step 12 as already-conformant on the central-§4-enumeration ground alone; VC17 adjudicated that INSUFFICIENT against the stronger every-former-consumption-site-re-pointed claim — the §20 r15-5 acknowledgment ("Step 12's text names no D-12r directly") is KEPT and marked RESOLVED in place | Step 12 statement; §20 r15-5 row (resolution bracket) |
+| r16-2 | VC17 advisory 2 (Step 4's grade outside the §0 vocabulary — completing VC16 finding 1 / the REVISION-13 VC15-advisory-2 conformance) | ADVISORY — repaired in place | Step 4's grade rendered in the EXACT §0 word: **PROVED-UNVERIFIED**, with the named §3.2 row **M17/RegPFinite faithfulness-audit record** displayed as the pending upgrade condition (VERIFIED-LEAN on its landing); the machine-checked-Lean-core fact (dual provenance, `MovesU/RegPFinite.lean`, 14 theorems) and the Step-5 independent-route containment stay as displayed NOTES, not grade words — no silent mathematical upgrade or downgrade; the §3.2 row's own grade sentence synced | Step 4 status; §3.2 M17/RegPFinite row |
+
+**The completeness invariant, re-run.** §3.1 has **ELEVEN rows ↔ (ROOT-C)'s
+(H1)–(H9)**, UNCHANGED from REVISION 14: (H1) the graded-dictionary family
+(four members) · (H2) = (FRESH) · (H3) = {(ADM), (E-N)} (TWO members) ·
+(H4a) = (R1)–(R4) · (H4b) = (UB-X) · (H5) = (PACK) (PACK-i/ii/iii/iv) ·
+(H6) the terminal-seam group · (H7) = (I-τ)/K-LOC · (H8) = (K-CUT) (REDUCED,
+open) · (H9) = (NSF) ((NSF-INT)-only-open). Per-clause attribution UNCHANGED
+and displayed identically at §1, Step 16, Step 18's δ-stable note, and Step 19:
+(0) unconditional; (SQ) unconditional; clause (R) consumes (H1)–(H3) + (H4a) +
+the (K3-δ) fragment of (H4b) + (H5)–(H9); clause (UB) consumes (H1)–(H3) +
+(H4a) + (H4b) + (H5)–(H9) — the former D-12r conditionality carried as
+LITERATURE-grade at the §4 pin, now displayed locally at EVERY former
+consumption site (Steps 2/3/11/12/16/19 — Step 12 closed at r16-1). The
+falsifier re-ran: `grep -n "D-12r"` hits in operative sections are the §4
+entry, the §3.1 tombstone, and re-pointed conditionality language only.
+
+**The honest acceptance statement (the counter).** The acceptance was EARNED
+on the REVISION-12 text (VC14 + VC15, two consecutive clean model-diverse
+passes, fresh verifiers) and RE-ANCHORED on the REVISION-13 text by VC16's
+clean confirming pass. VC17 was the confirming pass owed on REVISION 14; it
+returned COMPOSITION-GAPS, so it does NOT re-anchor — and REVISION 15, which
+repairs its two findings, IS a text change: **the confirming end-to-end pass
+(VC18) is OWED to re-anchor the accepted text on the REVISION-15 wording.**
+Until VC18 lands clean, the acceptance citation points at the REVISION-13
+text; a VC18 blocker would re-open the composition question in full (the
+standing suspension discipline).
+
+**VC18 charge (the confirming pass).** Verify (i) the two r16 repairs: Step 12
+displays the local "perimeter-conditional on the §4 D-12r pin (entry 10)"
+sentence at its (τ-irr) description, and Step 4's grade word is exactly
+PROVED-UNVERIFIED with the audit row named and the Lean-core/Step-5 facts as
+notes only; (ii) EVERY former D-12r consumption site (Steps 2/3/11/12/16/19)
+now displays the §4-pin conditionality locally — the claim VC17 refuted at
+Step 12; (iii) the §20 r15-5 resolution bracket is honest (acknowledgment
+kept, marked resolved, nothing rewritten); (iv) NO REGRESSION on the
+VC17-confirmed items (the D-12r faithfulness, the ELEVEN-row bijection, the
+walk, seams, acyclicity, (0)/(SQ) unconditional, the (H9)/(H8)/(E-N) states).
+Standing riders unchanged: no display may claim the D-12r perimeter
+discharged; the acceptance statement must read exactly as this revision
+displays it.
+
+**Bookkeeping.** Historical §§7–20 untouched except the sanctioned r15-5
+resolution bracket. `docs/PROJECT_STATE.md` sync owed at the next state-file
+touch. The commit closing this revision is its unit of record (unit ROOT r16).
+
+— REVISION 15 complete. VC17's blocker + advisory folded as two in-place
+display syncs (Step 12 locally re-pointed; Step 4 at the exact §0 grade);
+ELEVEN rows unchanged; the acceptance stands as earned on REVISION 12 and
+re-anchored on REVISION 13; VC18 is owed to re-anchor it on this text.

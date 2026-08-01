@@ -2073,3 +2073,9 @@ launched.
 Eleven-row invariant, D-12r residue confinement, attributions, walk,
 acyclicity ALL PASS. r16 dispatched (two display fixes -> REVISION 15);
 VC18 = confirming pass after.
+
+## r16 EXECUTED: REVISION 15 — VC17 folded, two display syncs (2026-08-05)
+Step 12 locally re-pointed ("perimeter-conditional on the §4 D-12r pin (entry 10)",
+matching Steps 2/3/11/16/19; §20 r15-5 acknowledgment marked RESOLVED); Step 4 graded
+exactly PROVED-UNVERIFIED (§3.2 M17 audit row = upgrade; Lean-core/Step-5 as notes).
+ELEVEN rows unchanged; acceptance stands earned r12/re-anchored r13; VC18 OWED.
