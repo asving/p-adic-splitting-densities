@@ -6,9 +6,15 @@ the PROVED corpus `TreeSeam.finiteness_stack`), D0a (`dmass_monotone`,
 `dmass` monotone in N from `canonical_stable` + T0), D0 (`cylDensity`,
 BP_IV §1.6 verbatim), D2 (`sum_cylDensity_eq_one`, the squeeze — BP_IV §1.6
 verbatim; the corpus box partition `boxN` (U1) + D0a monotone convergence +
-the `henv` binder), D3 (`cylDensity_eq_seriesSum`).  Later waves add
-D5 (`renewal_unique_of_margin`) and D4
-(`valueSide_massTie`, the movement CAPSTONE).
+the `henv` binder), D3 (`cylDensity_eq_seriesSum`), and
+D5 (`renewal_unique_of_margin`).
+
+BLOCKED(D4): `valueSide_massTie` (the movement CAPSTONE, §1.6 verbatim) does
+NOT land here yet — five of its binder row types have no declaration anywhere
+in the corpus (checked 2026-08-01 against freshly rebuilt oleans, including
+the just-landed S2b `TreeRecursion`, which DOES resolve).  Full obstruction
+record in the BLOCKED(D4) block at the end of this file; per the §4 failure
+protocol it escalates to the blueprint owner — no prover-side restatement.
 Import graph (BP_IV §1.0/§4): this module imports the completed
 `SeriesTie.lean`; `SeriesTie.lean` never imports this module.  D0a's T0
 dependency (`card_boxProj_fiber`) arrives via `Transfer.lean`, a leaf module
@@ -306,5 +312,41 @@ theorem renewal_unique_of_margin {m : ℕ}
   have hi : |x i - y i| = 0 :=
     le_antisymm (le_trans (hi₀ i) hmax0) (abs_nonneg _)
   exact abs_eq_zero.mp hi
+
+/-!
+**BLOCKED(D4)** (`valueSide_massTie`, THE MOVEMENT CAPSTONE — BP_IV §1.6 code
+block; §2 D-table row D4 "pointwise rewrite by D3 and S5; D2 is not used").
+The verbatim statement cannot elaborate: its binder list applies FIVE row
+types with no declaration anywhere in the corpus (probe run 2026-08-01, from
+`import … DensityTie + … Hyps`, `open LeanUrat.MovesU
+LeanUrat.Scaffold.ValueSide`, oleans freshly rebuilt so that the just-landed
+S2b `TreeRecursion` resolves — it does):
+
+* `hGRB : GRBRow CD`, `hFresh : FreshRow CD` — the landed BP_III owner rows
+  (`Scaffold/DictIII/Hyps.lean`) are named `GRB`/`FRESH` and are indexed
+  `(p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F]`, not
+  `CensusData`-indexed; per the §5 seam ("BP_IV defines no aliases") no
+  prover-side alias/bridge may be declared.
+* `hcen : CensusValueRows CD` — no owner module anywhere; the §3
+  corpus-reuse map keys it to the SlotsG15 `SiteData` carriers as an
+  E-phase instruction to the S5 prover, not yet executed.
+* `hR14 : R1R4Row n p X` — owner BP_V (`Scaffold/RowStatements.lean`,
+  `RootRows.R14`): module absent (unit-H4 ledger, `ValueSide/Hyps.lean`).
+* `K4 : TerminalSeamRows n p X F` — owner BP_III (CU-2t,
+  `DictIII/CU2t.lean`): module absent (same ledger).
+
+Each of the five fails with
+`error: Function expected at GRBRow|FreshRow|CensusValueRows|R1R4Row|`
+`TerminalSeamRows, but this term has type ?m.N … The identifier … is
+unknown`.  Every OTHER binder (incl. `TreeRecursion X F A b`, `RegP RD`,
+`RegPin C RD`, `PackCorrespondence n C P R`, `ADMFull CD`,
+`K3DeltaRow p RD RealizedPool DeltaStablePos`) and the conclusion
+`∀ σ, cylDensity X σ = C.chain.Rval (vmap C.T σ) (p : ℚ)` elaborate cleanly.
+Dep S5b (`seriesTie_of_kernels`) is likewise not landed — its §1.5 statement
+binds the same five rows, consistent with the unit-H4 ledger's "Consumer
+blocked: S5"; the §4 wave plan is serial S5a → S5b → D4.  Statement fence
+(§5): the binder list must reach the BP_VI spine VERBATIM, so the unit waits
+for the owner modules rather than compiling against a weaker signature.
+-/
 
 end LeanUrat.Scaffold

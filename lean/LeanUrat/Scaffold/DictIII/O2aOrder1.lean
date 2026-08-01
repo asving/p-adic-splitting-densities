@@ -8,7 +8,7 @@ import LeanUrat.Scaffold.DictIII.Hyps
 import LeanUrat.OM.ResidualPolynomial
 
 /-!
-# Scaffold/DictIII/O2aOrder1 — O-2a §§2/3/5 order-≤1 layer (BP_III units III-A1, III-A4, III-A6a, III-A6b, III-A6c, III-A7, III-A8, III-A9)
+# Scaffold/DictIII/O2aOrder1 — O-2a §§2/3/5 order-≤1 layer (BP_III units III-A1, III-A3, III-A4, III-A6a, III-A6b, III-A6c, III-A7, III-A8, III-A9)
 
 BLOCKED-record file (prover III-A4, 2026-08-01; prover III-A7, 2026-08-01;
 prover III-A8, 2026-08-01)
@@ -27,7 +27,14 @@ the landed unit III-A6a (prover III-A6a, 2026-08-01: `gmnDataOrder1` — the
 `valSupport` + `residualPoly`/`residualDeg`) restricted by
 `c.slopes.length ≤ 1`, with the ι-parameters and the `sideRead` coherence
 seam recorded in its section header, last section of this file; this CLOSES
-the III-A6b seam note).  The BLOCKED units III-A4 (pre-split
+the III-A6b seam note), and the landed unit III-A3 (prover III-A3,
+2026-08-01: Lemma R terminal NON-recovery — the compiled two-witness gate
+`nuT1`/`nuT2` = (1,1,1,0,0,⊥,0)/(1,2,1,0,0,⊥,0), the `snocTerm` surgery with
+its Θ/EWF/ConsF terminal-field-blindness transports, the displayed non-claim
+`TerminalRecoveryStmt`, and the UNCONDITIONAL discharge
+`A3Gate.terminalRecovery_false : ¬ TerminalRecoveryStmt 2 (ZMod 2)`,
+Lean-core; negation-witness style per BP §3.5, content from O2a §2 Lemma R
+pf end).  The BLOCKED units III-A4 (pre-split
 III-A4a level-0 / III-A4b Lemma B), III-A7 (O2a §5 Theorem 2(B) fired from
 the `GMNCor120_38` literature row), and III-A8 (O2a §5 Theorem 2(D), the
 no-phantom/CU-2 content composed with III-A7) cannot
@@ -936,11 +943,11 @@ carriers VERBATIM (nothing redeclared or weakened at the interface level):
     (III-A3 helper). -/
 private theorem takeWhile_concat_of_neg {α : Type*} {P : α → Bool} {a : α}
     (ha : P a = false) : ∀ l : List α, (l ++ [a]).takeWhile P = l.takeWhile P
-  | [] => by simp [List.takeWhile_cons, ha]
+  | [] => by simp [ha]
   | x :: xs => by
     by_cases hx : P x
-    · simp [List.takeWhile_cons, hx, takeWhile_concat_of_neg ha xs]
-    · simp [List.takeWhile_cons, hx]
+    · simp [hx, takeWhile_concat_of_neg ha xs]
+    · simp [hx]
 
 /-- A successful lookup in `l ++ [a]` is a lookup in `l`, or the appended `a`
     (III-A3 helper). -/
@@ -1064,7 +1071,7 @@ theorem ewf_snocTerm_congr (H : EHist p F) {ν ν' : ENodeData}
     rcases split hg with hg' | ⟨-, rfl⟩
     · exact hwf.w2 i μ g m (toNu hg') hsel
     · rw [hν'] at hsel
-      exact Option.noConfusion hsel
+      simp at hsel
   · intro i μ hi hg gμ hmem
     rw [hlen] at hi
     rcases split hg with hg' | ⟨heq, rfl⟩
@@ -1089,12 +1096,12 @@ theorem ewf_snocTerm_congr (H : EHist p F) {ν ν' : ENodeData}
     rcases split hg with hg' | ⟨-, rfl⟩
     · exact hwf.w4dress i μ g m (toNu hg') hsel
     · rw [hν'] at hsel
-      exact Option.noConfusion hsel
+      simp at hsel
   · intro i μ g m hg hsel
     rcases split hg with hg' | ⟨-, rfl⟩
     · exact hwf.towerStepDegree i μ g m (toNu hg') hsel
     · rw [hν'] at hsel
-      exact Option.noConfusion hsel
+      simp at hsel
 
 /-- "Cons_f constrains no terminal field": `ConsF` reads only the reader's
     DATA fields (`side`, `resOrd`, `rootOrd`), the root multiplicity `a0`,
@@ -1238,7 +1245,7 @@ theorem hwf0 : EWF (snocTerm H0 nuT1) := by
   · intro i μ g m hg hsel
     cases mem_snoc0 hg
     have hcontra : (none : Option (ℕ × ℕ)) = some (g, m) := hsel
-    exact Option.noConfusion hcontra
+    simp at hcontra
   · intro i μ hi _ _ _
     have h1 : i + 1 < 1 := hi
     omega
@@ -1248,7 +1255,7 @@ theorem hwf0 : EWF (snocTerm H0 nuT1) := by
   · intro i μ g m hg hsel
     cases mem_snoc0 hg
     have hcontra : (none : Option (ℕ × ℕ)) = some (g, m) := hsel
-    exact Option.noConfusion hcontra
+    simp at hcontra
   · show Nat.card ↥(⊤ : Subfield (ZMod 2)) =
       Nat.card ↥(⊤ : Subfield (ZMod 2)) ^ o2aGatePoly.natDegree
     rw [show o2aGatePoly.natDegree = 1 from Polynomial.natDegree_X_add_C 1,
@@ -1256,7 +1263,7 @@ theorem hwf0 : EWF (snocTerm H0 nuT1) := by
   · intro i μ g m hg hsel
     cases mem_snoc0 hg
     have hcontra : (none : Option (ℕ × ℕ)) = some (g, m) := hsel
-    exact Option.noConfusion hcontra
+    simp at hcontra
 
 /-- Any concrete polynomial serves; the empty-polygon reader below never
     consults it. -/
@@ -1276,7 +1283,7 @@ noncomputable def R0 : GMNReader f0 (Theta (snocTerm H0 nuT1)) D0 :=
       intro i S
       constructor
       · intro h
-        exact Option.noConfusion h
+        simp at h
       · rintro ⟨hS, -⟩
         exact absurd hS List.not_mem_nil
     side_unique := by
@@ -1288,7 +1295,7 @@ noncomputable def R0 : GMNReader f0 (Theta (snocTerm H0 nuT1)) D0 :=
     rootOrd_spec := rfl
     resDeg_eq_sideDeg := by
       intro i S h
-      exact Option.noConfusion h }
+      simp at h }
 
 /-- (𝐇⁰; nuT1) is `ConsF`: (c0) reads a₀ = 2 = rootOrd, and the continuing
     part is empty (nuT1 is terminal), so (c1)/(c2) are vacuous. -/
@@ -1405,12 +1412,13 @@ carrier is not consumed here — the level-0 residual read is direct, per the
 unit row's own proof column ("Newton-polygon side list and residual data
 from `OM/`"). -/
 
-open LeanUrat.OM in
+open LeanUrat.OM Classical in
 /-- III-A6a residue datum (GMN Def 2.20 at the `ℤ_[p]` carrier): `c_t` is the
     `ZMod p` residue of the unit part of the coefficient at abscissa
     `i₀ + t·e` when its valuation sits ON the side line `v₀ + t·h`, else `0`.
     This is `Classifier.boxCoeffData`'s recipe at infinite precision — the
-    concrete instantiation of the datum `M4.residualPoly` consumes. -/
+    concrete instantiation of the datum `M4.residualPoly` consumes
+    (`Classical` for the `ℤ_[p]`-equality guard, as in the OM quarry). -/
 noncomputable def padicCoeffData (f : Polynomial ℤ_[p])
     (S : NewtonPolygon.Side) : ℕ → ZMod p := fun t =>
   if h : f.coeff (S.i₀ + t * S.e) ≠ 0 ∧
@@ -1557,10 +1565,10 @@ theorem find?_congr_of_mem {α : Type*} {l : List α} {q r : α → Bool}
   | nil => rfl
   | cons a t ih =>
     by_cases hra : r a = true
-    · rw [List.find?_cons_of_pos _ (by rw [h a (List.mem_cons_self ..)]; exact hra),
-        List.find?_cons_of_pos _ hra]
-    · rw [List.find?_cons_of_neg _ (by rw [h a (List.mem_cons_self ..)]; exact hra),
-        List.find?_cons_of_neg _ hra]
+    · rw [List.find?_cons_of_pos (by rw [h a (List.mem_cons_self ..)]; exact hra),
+        List.find?_cons_of_pos hra]
+    · rw [List.find?_cons_of_neg (by rw [h a (List.mem_cons_self ..)]; exact hra),
+        List.find?_cons_of_neg hra]
       exact ih fun b hb => h b (List.mem_cons_of_mem _ hb)
 
 /-- **The III-A6a → III-A6b coherence seam** (no OL row consumed): on the
@@ -1577,18 +1585,24 @@ theorem sideRead_gmnDataOrder1 {f : Polynomial ℤ_[p]} {c : ChainData p F}
     sideRead f c (gmnDataOrder1 f c ιb ι0 hlen) i = matchedDatum f c i := by
   by_cases hi : i = 0
   · subst hi
-    show (principalData f).find? (fun S => decide (HasRequestedSlope c 0 S))
-      = matchedDatum f c 0
+    have hL : sideRead f c (gmnDataOrder1 f c ιb ι0 hlen) 0
+        = (principalData f).find? (fun S => decide (HasRequestedSlope c 0 S)) := by
+      simp [sideRead, gmnDataOrder1]
+    rw [hL]
     cases heh : requestedSlope c 0 with
     | none =>
-      rw [List.find?_eq_none.mpr fun T _ hT => by
-        have : requestedSlope c 0 = some (T.e, T.h) := of_decide_eq_true hT
-        rw [heh] at this
-        exact Option.noConfusion this]
-      simp [matchedDatum, matchedSideAt, heh]
+      have hR : matchedDatum f c 0 = none := by
+        simp [matchedDatum, matchedSideAt, heh]
+      rw [hR, List.find?_eq_none]
+      intro T _ hT
+      have hcon : requestedSlope c 0 = some (T.e, T.h) := of_decide_eq_true hT
+      rw [heh] at hcon
+      simp at hcon
     | some eh =>
-      unfold matchedDatum matchedSideAt matchedSide
-      rw [heh, Option.some_bind, principalData, List.find?_map]
+      have hR : matchedDatum f c 0 = ((principalSideList f).find?
+          (fun S => decide (S.e = eh.1 ∧ S.h = -(eh.2 : ℤ)))).map sideToDatum := by
+        simp [matchedDatum, matchedSideAt, matchedSide, heh]
+      rw [hR, principalData, List.find?_map]
       refine congrArg (Option.map sideToDatum) (find?_congr_of_mem ?_)
       intro S hS
       have hneg : S.h < 0 :=
@@ -1599,21 +1613,23 @@ theorem sideRead_gmnDataOrder1 {f : Polynomial ℤ_[p]} {c : ChainData p F}
       rw [heh]
       constructor
       · intro hsome
-        have : eh = ((sideToDatum S).e, (sideToDatum S).h) :=
+        have hinj : eh = ((sideToDatum S).e, (sideToDatum S).h) :=
           Option.some_injective _ hsome
-        have he : eh.1 = S.e := by rw [this]
-        have hh : eh.2 = S.h.natAbs := by rw [this]
+        have he : eh.1 = S.e := congrArg Prod.fst hinj
+        have hh : eh.2 = S.h.natAbs := congrArg Prod.snd hinj
         exact ⟨he.symm, by omega⟩
       · rintro ⟨he, hh⟩
         have hnat : S.h.natAbs = eh.2 := by omega
-        have : ((sideToDatum S).e, (sideToDatum S).h) = eh := by
+        have hpair : ((sideToDatum S).e, (sideToDatum S).h) = eh := by
           show (S.e, S.h.natAbs) = eh
           rw [he, hnat]
-        rw [this]
+        rw [hpair]
   · have hle : c.slopes.length ≤ i := hlen.trans (by omega)
-    show ((gmnDataOrder1 f c ιb ι0 hlen).principalSides i).find? _ = _
-    simp [gmnDataOrder1, hi, matchedDatum, matchedSideAt,
-      requestedSlope_eq_none hle]
+    have hL : sideRead f c (gmnDataOrder1 f c ιb ι0 hlen) i = none := by
+      simp [sideRead, gmnDataOrder1, hi]
+    have hR : matchedDatum f c i = none := by
+      simp [matchedDatum, matchedSideAt, requestedSlope_eq_none hle]
+    rw [hL, hR]
 
 /-! ## Unit III-A2 — Lemma R proper: recovery + injectivity on 𝔈°_f (O-2a rev-5 §2)
 
@@ -1774,13 +1790,16 @@ theorem lemmaR_recovers (f : Polynomial ℤ_[p]) {H : EHist p F}
     obtain ⟨hg1, hμ1, hμg⟩ := ν.hsel (g, μ) (Option.mem_def.mpr hsel.symm)
     have w2 := hwf.w2 i ν g μ hν hsel.symm
     -- Run the recovery recipe.
-    simp only [recoverNode, hsl, hS, Option.bind_some]
-    rw [dif_pos ⟨ν.he, ν.hh, ν.hcop,
-      by rw [hSl]; exact ν.hl,
-      by rw [hgdeg]; exact hg1,
-      by rw [hμ]; exact hμ1,
-      by rw [hμ, hgdeg, hSl]; exact hμg⟩]
-    rw [Option.pure_def]
+    have hguard : 1 ≤ ν.e ∧ 1 ≤ ν.h ∧ Nat.gcd ν.e ν.h = 1 ∧
+        1 ≤ S.ℓ ∧ 1 ≤ ((Theta H).psihat i).natDegree ∧ 1 ≤ R.resOrd i ∧
+        R.resOrd i * ((Theta H).psihat i).natDegree ≤ S.ℓ :=
+      ⟨ν.he, ν.hh, ν.hcop,
+        by rw [hSl]; exact ν.hl,
+        by rw [hgdeg]; exact hg1,
+        by rw [hμ]; exact hμ1,
+        by rw [hμ, hgdeg, hSl]; exact hμg⟩
+    simp only [recoverNode, hsl, hS, Option.bind_eq_bind, Option.bind_some]
+    rw [dif_pos hguard, Option.pure_def]
     refine congrArg some (ENodeData.ext_fields rfl rfl hSl hSs hSu ?_ ?_)
     · -- sel: some (deg ψ̂_i, resOrd i) = ν.sel
       show some (((Theta H).psihat i).natDegree, R.resOrd i) = ν.sel
@@ -1962,14 +1981,14 @@ end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-A9): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.ol6_of_consF
+#print axioms LeanUrat.Scaffold.DictIII.ol6_at_o2aGate
+#print axioms LeanUrat.Scaffold.DictIII.ol6Gate_fired
+#print axioms LeanUrat.Scaffold.DictIII.ol6Gate_conclusion_fires
 
 -- Footprint audit (unit III-A3 gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.terminalRecovery_false_of_witness
 #print axioms LeanUrat.Scaffold.DictIII.A3Gate.terminalRecovery_false
 #print axioms LeanUrat.Scaffold.DictIII.A3Gate.witness_pair_gate
-#print axioms LeanUrat.Scaffold.DictIII.ol6_at_o2aGate
-#print axioms LeanUrat.Scaffold.DictIII.ol6Gate_fired
-#print axioms LeanUrat.Scaffold.DictIII.ol6Gate_conclusion_fires
 
 -- Footprint audit (unit III-A6a): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.gmnDataOrder1

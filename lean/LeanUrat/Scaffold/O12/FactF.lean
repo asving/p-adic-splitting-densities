@@ -10,7 +10,9 @@ polynomial over a field (REV2 finding 9: `Multiset (ℕ+ × ℕ+)` with positivi
 witnesses) and its unit-scalar invariance;
 II-F4 (`X_pow_card_prod_irreducibles` + fenced sub-lemmas II-F4a/b/c) — Fact
 F(i) factorization: X^{q^D} − X = ∏ monic irreducibles of degree ∣ D,
-squarefree (see its transcription note: the blueprint display is elided).
+squarefree (see its transcription note: the blueprint display is elided);
+II-F5 (`card_irred_degree_sum`) — Fact F(i) degree count q^D = Σ_{δ|D} δ·I_δ
+(see its transcription note: the blueprint display is elided).
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.Core
@@ -283,6 +285,77 @@ theorem X_pow_card_prod_irreducibles (D : ℕ+) :
       ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X)).toFinset
   rw [Multiset.toFinset_val, Multiset.dedup_eq_self.mpr hnodup] at hval
   exact hprod.symm.trans hval
+
+/-! ## Unit II-F5 — Fact F(i) degree count: q^D = Σ_{δ|D} δ·I_δ
+
+TRANSCRIPTION NOTE (II-F5). BP_II.md §1.7 displays this unit's statement as
+`theorem card_irred_degree_sum ...` — ELIDED like II-F4 (no verbatim text to
+transcribe). The prose spec "q^D = Σ_{δ|D} δ·I_δ" is formalized with
+I_δ := `Nat.card` of the subtype of monic irreducibles of degree δ; for
+δ = (E : ℕ+) this subtype is DEFINITIONALLY the blueprint's
+`MonicIrreducibleDegree F E` (displayed under II-F6, which consumes this
+count directly). FIXED STATEMENT, FLAGGED FOR REVIEW per the trust boundary.
+Proof per the §2 row sketch: take `natDegree` across II-F4's product identity
+(`Polynomial.natDegree_prod`) and fiber the factor Finset by degree. -/
+
+/-- **Unit II-F5, Fact F(i) degree count** (BP_II §1.7; statement fixed from
+the blueprint's ELIDED display — see the transcription note above): over a
+finite field `F` with `q = Fintype.card F`, counting degrees in the II-F4
+factorization of `X^{q^D} − X` gives q^D = Σ_{δ∣D} δ·I_δ, where I_δ is the
+number of monic irreducible polynomials of degree δ over `F`. -/
+theorem card_irred_degree_sum (D : ℕ+) :
+    Fintype.card F ^ (D : ℕ) =
+      ∑ δ ∈ (D : ℕ).divisors,
+        δ * Nat.card {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = δ} := by
+  obtain ⟨-, hmem, hprod⟩ := X_pow_card_prod_irreducibles F D
+  set S : Finset (Polynomial F) :=
+    (UniqueFactorizationMonoid.normalizedFactors
+      ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X)).toFinset
+    with hS
+  have hmemS : ∀ f : Polynomial F,
+      f ∈ S ↔ f.Monic ∧ Irreducible f ∧ f.natDegree ∣ (D : ℕ) := fun f =>
+    (Multiset.mem_toFinset).trans (hmem f)
+  -- degree of the left side: natDegree (X^{q^D} − X) = q^D
+  have hdeg : ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ)
+      - Polynomial.X).natDegree = Fintype.card F ^ (D : ℕ) :=
+    FiniteField.X_pow_card_pow_sub_X_natDegree_eq F D.pos.ne' Fintype.one_lt_card
+  -- degree of the right side: natDegree of the product = Σ of factor degrees
+  have hne0 : ∀ f ∈ S, f ≠ 0 := fun f hf => ((hmemS f).mp hf).2.1.ne_zero
+  have hsum : Fintype.card F ^ (D : ℕ) = ∑ f ∈ S, f.natDegree := by
+    conv_lhs => rw [← hdeg, hprod]
+    exact Polynomial.natDegree_prod S id hne0
+  -- every factor degree is a divisor of D
+  have hfib : ∀ f ∈ S, f.natDegree ∈ (D : ℕ).divisors := fun f hf =>
+    Nat.mem_divisors.mpr ⟨((hmemS f).mp hf).2.2, D.pos.ne'⟩
+  -- fiber count = I_δ
+  have hcard : ∀ δ ∈ (D : ℕ).divisors,
+      (S.filter fun f => f.natDegree = δ).card
+        = Nat.card {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = δ} := by
+    intro δ hδ
+    have hset : {f : Polynomial F | f.Monic ∧ Irreducible f ∧ f.natDegree = δ}
+        = ↑(S.filter fun f => f.natDegree = δ) := by
+      ext f
+      constructor
+      · rintro ⟨hm, hi, hd⟩
+        exact Finset.mem_coe.mpr (Finset.mem_filter.mpr
+          ⟨(hmemS f).mpr ⟨hm, hi, by rw [hd]; exact (Nat.mem_divisors.mp hδ).1⟩, hd⟩)
+      · intro hf
+        obtain ⟨hfS, hd⟩ := Finset.mem_filter.mp (Finset.mem_coe.mp hf)
+        obtain ⟨hm, hi, -⟩ := (hmemS f).mp hfS
+        exact ⟨hm, hi, hd⟩
+    have h1 : Nat.card {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = δ}
+        = ({f : Polynomial F | f.Monic ∧ Irreducible f ∧ f.natDegree = δ}
+            : Set (Polynomial F)).ncard := Nat.card_coe_set_eq _
+    rw [h1, hset, Set.ncard_coe_finset]
+  -- assemble: fiber the degree sum over the divisors of D
+  calc Fintype.card F ^ (D : ℕ)
+      = ∑ f ∈ S, f.natDegree := hsum
+    _ = ∑ δ ∈ (D : ℕ).divisors, ∑ f ∈ S with f.natDegree = δ, δ :=
+        (Finset.sum_fiberwise_of_maps_to' hfib id).symm
+    _ = ∑ δ ∈ (D : ℕ).divisors,
+          δ * Nat.card {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = δ} := by
+        refine Finset.sum_congr rfl fun δ hδ => ?_
+        rw [Finset.sum_const, smul_eq_mul, hcard δ hδ, mul_comm]
 
 end FactFi
 

@@ -16,9 +16,62 @@ the `Finite.injective_iff_bijective` cite unit), K4 (`starstar_iff_smithMem`
 + the scalar legs `pow_mul_eq_zero_iff_pow_dvd` / `starstar_vacuous` /
 `starstar_iff_pow_dvd`: (⋆⋆)_i ⟺ T(c)_i ≡ 0 mod p^(M−e_i), vacuous at
 e_i > M), K8a (the PID Smith-normal-form availability gate: compiling
-`#check` + signature pin of `Submodule.smithNormalForm` at repository HEAD).
-Pending (later waves, per BP_IV §4): K5, K7c, K8b,
-and the (SIB) product law.
+`#check` + signature pin of `Submodule.smithNormalForm` at repository HEAD),
+K10a (`AdaptedCell`, the O-10 §4.1 (A1)–(A3) adapted-cell carrier; its
+`MulFiberData` dependency is the K7c-owned carrier structure transcribed
+VERBATIM — single copy, DEDUP(K7c) resolved at the declaration; the chart
+bijection `fiber_equiv_solutions` is NOT declared), K7c (first split of the
+parent glue chain: `monic_sub_monic_degree_lt` + `dvd_coeff_sub_trans` +
+`monicLiftEquiv`, the monic-lift parametrization — differences of monics =
+degree-< d_j polys, π^τ-divisible coefficients — plus adopted ownership of
+the VERBATIM `MulFiberData` carrier), K7d (`dvd_prod_sub_prod`
++ `fiberCond_congr` + `fiberCond_congr_scaled`: the quotient
+well-definedness of the chart parametrization — the fiber condition
+Π(h+a) ≡ Πh mod π^N depends only on a mod π^N, and only on b mod π^M at
+a = π^τ b), K10c (`adaptedCell_domainProduct_card`, the domain-product
+cardinality — the K10a clause `domainCount_eq` exposed as the theorem K10
+chains with K10b; + the constructor-side identification lemmas
+`card_domainProduct` / `card_domainProduct_finset`, `Nat.card_pi` at the
+genuine product of factor cells), K9 (`SmithStable`, the exported named
+hypothesis row per §2 — structure only, constructor proof HARD wave 4), K10
+partial (`sib_product_law_of_imageCount`, the K10b+K10c combine step with the
+missing K10b image law displayed as the binder `himg`; the verbatim
+`sib_product_law` display itself is BLOCKED — see below).
+Pending (later waves, per BP_IV §4): K5, K7c (monic-lift parametrization),
+K8b, and the (SIB) product law.
+
+-- BLOCKED(K10): the §1.3 `sib_product_law` display is REFUTABLE over the
+-- §1.3 `AdaptedCell` (K10a) — no field constrains `cellCount`/`sM`, so
+-- `cellCount := 0` satisfies every clause and falsifies the conclusion;
+-- compiled countermodel `K10Probe.sib_product_law_as_displayed_refuted`.
+-- The missing row is exactly K10b's conclusion
+-- `imageCount_eq : cellCount * p ^ sM = Nat.card Factor`; with it the unit
+-- is the one-line chain compiled at `sib_product_law_of_imageCount`.  The
+-- verbatim theorem is NOT declared (statement changes forbidden; a sorried
+-- refuted statement violates the §2 zero-`sorry` wave rule).  Escalated to
+-- the blueprint owner per the §4 failure protocol (K10a field addition or a
+-- K10 binder addition required; both recorded at the BLOCKED(K10) section).
+
+-- BLOCKED(K7e): `fiber_equiv_solutions` (the chart bijection over the
+-- `MulFiberData` carrier) is NOT declared — the §1.3 display is refutable
+-- over the verbatim abstract carrier (`Fiber`/`SolutionSet`/`FiberNonempty`
+-- are opaque, mutually unrelated fields); see the BLOCKED(K7e) section
+-- below the carrier + the compiled countermodel
+-- `fiber_equiv_solutions_display_refuted`.  Escalated to the blueprint
+-- owner per the §4 failure protocol (signature fix required; candidate
+-- fixes recorded at the section).
+
+-- BLOCKED(K11): the `EngineSIBRow` unit (BP_IV §2 K-table + §1.3 K10
+-- application note) cannot be declared at HEAD.  Its binders must be the
+-- ACTUAL K-LOC = M07 OL-3 and (I-τ) datum-indexed rows, OWNED by BP_III
+-- (BP_IV §1.0 owner table), and no such rows exist anywhere in the corpus
+-- (`DictIII/Hyps.lean` carries only GRB/FRESH; `OL3min` is the GD-3 minimal
+-- form, not the K-LOC/(I-τ) pair — per the H4 ledger in
+-- `ValueSide/Hyps.lean`, which already records "Consumer blocked: K11").
+-- BP_IV §1.0: "if an owner has not landed, that consuming unit is blocked
+-- rather than compiled against a weaker signature" — so no placeholder
+-- structure is declared here.  Dep K10 (`AdaptedCell`/`sib_product_law`)
+-- has also not landed in this file.  Escalated per the §4 failure protocol.
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
 * Math source of record: `lean/notes/openmath/O10_phaseB_attempt_rev2.md` §3
@@ -30,6 +83,9 @@ and the (SIB) product law.
 -- explicitly per the unit charge (also reachable through `import Mathlib`).
 import Mathlib.LinearAlgebra.FreeModule.PID
 import Mathlib
+-- K10b (BP_IV §3 reuse row; REV-2 finding 20): the O5triple Theorem B
+-- counting core, cited only for the image/counting step.
+import LeanUrat.MovesU.O5CountingB
 
 namespace LeanUrat.Scaffold
 
@@ -512,6 +568,165 @@ theorem prod_add_sub_prod_split_pow (s : Finset ι) (h b : ι → R) (π : R) (�
 
 end K7b
 
+/-! ### K7c: the monic-lift parametrization (O-10 §3 Steps 1–2)
+
+First split of the parent K7c glue chain (BP_IV §4 wave 3: K7b → K7c (monic
+parametrization) → K7d (quotient well-definedness) → K7e
+(`fiber_equiv_solutions`)).  O-10 §3 Step 1's opening clause: a general
+element of the stratum `A_j(N)` around a member `g` is `g + a` with
+`a ∈ (p^τ ℤ/p^N ℤ)[x]_{<d_j}` — the DIFFERENCE of two monic degree-`d_j`
+polynomials agreeing with the base `f_j` coefficientwise mod `p^τ` has
+degree `< d_j` and `p^τ`-divisible coefficients, and conversely adding such
+an increment to a member gives a member.  Stated over an arbitrary
+commutative ring with a scaling element `π` (specialized to `ZMod (p^N)`
+with `π = p` by the later splits), matching the K7a/K7b/K7d generality.
+(BP_IV §2 K-table row K7c + §1.3 K7 doc; the blueprint displays no Lean
+block for this SPLIT — the statements below transcribe the K-table row's
+"differences of monics = degree-< d_j polys, p^τ-divisible" clause, the
+same convention as the K2/K3a/K4/K7a/K7b/K7d units.  The parent unit's
+displayed Lean block is `MulFiberData` + `fiber_equiv_solutions`: the
+structure stands transcribed VERBATIM below (the K7-carrier section, single
+copy per its DEDUP(K7c) note — ownership now discharged by this split);
+the theorem `fiber_equiv_solutions` is unit K7e's per §4 wave 3, and §4
+forbids statement-only theorem declarations, so it is NOT declared.) -/
+
+section K7c
+
+variable {R : Type*} [CommRing R]
+
+/-- K7c, degree leg: the difference of two monic polynomials of the same
+    degree `d` has degree `< d` (the leading terms cancel;
+    `Polynomial.degree_sub_lt`). -/
+theorem monic_sub_monic_degree_lt {d : ℕ} {g g' : Polynomial R}
+    (hg : g.Monic) (hg' : g'.Monic)
+    (hgd : g.degree = (d : WithBot ℕ)) (hg'd : g'.degree = (d : WithBot ℕ)) :
+    (g' - g).degree < (d : WithBot ℕ) := by
+  have hne : g' ≠ 0 := by
+    intro h0
+    rw [h0, Polynomial.degree_zero] at hg'd
+    exact absurd hg'd (by simp)
+  have h := Polynomial.degree_sub_lt (hg'd.trans hgd.symm) hne
+    (by rw [hg'.leadingCoeff, hg.leadingCoeff])
+  rwa [hg'd] at h
+
+/-- K7c, divisibility leg: two polynomials congruent to the same base `f`
+    (coefficientwise `c`-divisible differences) have coefficientwise
+    `c`-divisible difference — `g' − g = (g' − f) − (g − f)`. -/
+theorem dvd_coeff_sub_trans {c : R} {f g g' : Polynomial R}
+    (hgf : ∀ k, c ∣ (g - f).coeff k) (hg'f : ∀ k, c ∣ (g' - f).coeff k)
+    (k : ℕ) : c ∣ (g' - g).coeff k := by
+  have h : g' - g = (g' - f) - (g - f) := by ring
+  rw [h, Polynomial.coeff_sub]
+  exact dvd_sub (hg'f k) (hgf k)
+
+/-- K7c (BP_IV §2 K-table row K7c, the monic-lift parametrization clause;
+    O-10 §3 Step 1 opening): around a fixed member `g` (monic, degree `d`,
+    coefficientwise `≡ f` mod `π^τ`), the stratum members are EXACTLY
+    `g + a` for increments `a` of degree `< d` with `π^τ`-divisible
+    coefficients — subtraction of `g` is a bijection from the stratum onto
+    the increment space (specialized by K7d/K7e at `R = ZMod (p^N)`,
+    `π = p`, `d = d_j`, base `f = f_j`, where the source subtype is the
+    level-`N` stratum `A_j(N)`). -/
+noncomputable def monicLiftEquiv (π : R) (τ : ℕ) {d : ℕ} (f g : Polynomial R)
+    (hg : g.Monic) (hgd : g.degree = (d : WithBot ℕ))
+    (hgf : ∀ k, π ^ τ ∣ (g - f).coeff k) :
+    {g' : Polynomial R // g'.Monic ∧ g'.degree = (d : WithBot ℕ) ∧
+        ∀ k, π ^ τ ∣ (g' - f).coeff k}
+      ≃ {a : Polynomial R // a.degree < (d : WithBot ℕ) ∧
+          ∀ k, π ^ τ ∣ a.coeff k} where
+  toFun g' := ⟨g'.1 - g,
+    monic_sub_monic_degree_lt hg g'.2.1 hgd g'.2.2.1,
+    dvd_coeff_sub_trans hgf g'.2.2.2⟩
+  invFun a := ⟨g + a.1,
+    hg.add_of_left (a.2.1.trans_eq hgd.symm),
+    by rw [Polynomial.degree_add_eq_left_of_degree_lt
+        (a.2.1.trans_eq hgd.symm), hgd],
+    fun k => by
+      have h : g + a.1 - f = (g - f) + a.1 := by ring
+      rw [h, Polynomial.coeff_add]
+      exact dvd_add (hgf k) (a.2.2 k)⟩
+  left_inv g' := Subtype.ext (by simp)
+  right_inv a := Subtype.ext (by simp)
+
+end K7c
+
+/-! ### K7d: quotient well-definedness of the chart parametrization (O-10 §3 Steps 1–2)
+
+O-10 §3 Step 1 parametrizes a fiber element as `ḡ'_j = ḡ_j + ā_j`, "subject to
+`Π_j (h_j + a_j) ≡ Π_j h_j mod p^N` for one (equivalently any) lift `a_j` of
+`ā_j` — the condition depends only on `a` mod `p^N`"; the Step-1 close reads
+(⋆) "in `b̄ ∈ (ℤ/p^M)`-coefficient vectors", the same well-definedness one
+level down at `a = p^τ b`, `M = N − τ`.  K7d is that quotient
+well-definedness clause (BP_IV §4 wave 3: "K7d (quotient well-definedness)";
+§2 K-table row K7c clause "mod-p^N well-definedness").  Stated over an
+arbitrary commutative ring with scaling element `π`, matching K7a/K7b, so K7c
+consumes it at `ℤ_p`-polynomial coefficients (`π = (p : ℤ_p)`, where
+`p^N ∣ ·` coefficientwise is `p^N ∣ ·` in `ℤ_p[x]`).  (BP_IV §1.3 displays
+no Lean block for K7d — the statements below transcribe the table-row clause
+and the quoted Step-1 sentence, the same convention as the K2/K3a/K4/K7a/K7b
+units above.) -/
+
+section K7d
+
+variable {R : Type*} [CommRing R] {ι : Type*}
+
+/-- K7d core law: congruent factor tuples have congruent products — if
+    `d ∣ g_j − g'_j` on all of `s` then `d ∣ Π g − Π g'` (the telescoping
+    `g_j·Π − g'_j·Π' = (g_j − g'_j)·Π + g'_j·(Π − Π')`, by induction). -/
+theorem dvd_prod_sub_prod (s : Finset ι) (g g' : ι → R) {d : R}
+    (hcong : ∀ j ∈ s, d ∣ g j - g' j) :
+    d ∣ ∏ j ∈ s, g j - ∏ j ∈ s, g' j := by
+  induction s using Finset.cons_induction with
+  | empty => simp
+  | cons j s hj ih =>
+    rw [Finset.prod_cons, Finset.prod_cons]
+    have hsplit : g j * ∏ i ∈ s, g i - g' j * ∏ i ∈ s, g' i
+        = (g j - g' j) * ∏ i ∈ s, g i
+          + g' j * (∏ i ∈ s, g i - ∏ i ∈ s, g' i) := by ring
+    rw [hsplit]
+    exact dvd_add ((hcong j (Finset.mem_cons_self j s)).mul_right _)
+      ((ih fun i hi => hcong i (Finset.mem_cons_of_mem hi)).mul_left _)
+
+/-- K7d (THE quotient well-definedness, O-10 §3 Step 1): the fiber condition
+    `Π_j (h_j + a_j) ≡ Π_j h_j mod π^N` depends only on `a` mod `π^N` — it
+    holds at one lift of the increment class iff it holds at any other, so
+    the K7 chart parametrization descends to classes `ā`. -/
+theorem fiberCond_congr (s : Finset ι) (h a a' : ι → R) (π : R) (N : ℕ)
+    (hlift : ∀ j ∈ s, π ^ N ∣ a j - a' j) :
+    (π ^ N ∣ ∏ j ∈ s, (h j + a j) - ∏ j ∈ s, h j
+      ↔ π ^ N ∣ ∏ j ∈ s, (h j + a' j) - ∏ j ∈ s, h j) := by
+  have key : π ^ N ∣ ∏ j ∈ s, (h j + a j) - ∏ j ∈ s, (h j + a' j) :=
+    dvd_prod_sub_prod s _ _ fun j hj => by
+      simpa using hlift j hj
+  constructor
+  · intro hcond
+    have hrw : ∏ j ∈ s, (h j + a' j) - ∏ j ∈ s, h j
+        = (∏ j ∈ s, (h j + a j) - ∏ j ∈ s, h j)
+          - (∏ j ∈ s, (h j + a j) - ∏ j ∈ s, (h j + a' j)) := by ring
+    rw [hrw]
+    exact dvd_sub hcond key
+  · intro hcond
+    have hrw : ∏ j ∈ s, (h j + a j) - ∏ j ∈ s, h j
+        = (∏ j ∈ s, (h j + a' j) - ∏ j ∈ s, h j)
+          + (∏ j ∈ s, (h j + a j) - ∏ j ∈ s, (h j + a' j)) := by ring
+    rw [hrw]
+    exact dvd_add hcond key
+
+/-- K7d at the (⋆) reading level (`a = π^τ b`, `N = τ + M`): the fiber
+    condition depends only on `b` mod `π^M` — the "solution set of (⋆) in
+    `b̄ ∈ (ℤ/p^M)`-coefficient vectors" of O-10 §3 Step 1 is well-defined
+    on classes mod `π^M`. -/
+theorem fiberCond_congr_scaled (s : Finset ι) (h b b' : ι → R) (π : R)
+    (τ M : ℕ) (hlift : ∀ j ∈ s, π ^ M ∣ b j - b' j) :
+    (π ^ (τ + M) ∣ ∏ j ∈ s, (h j + π ^ τ * b j) - ∏ j ∈ s, h j
+      ↔ π ^ (τ + M) ∣ ∏ j ∈ s, (h j + π ^ τ * b' j) - ∏ j ∈ s, h j) := by
+  refine fiberCond_congr s h _ _ π (τ + M) fun j hj => ?_
+  have hfac : π ^ τ * b j - π ^ τ * b' j = π ^ τ * (b j - b' j) := by ring
+  rw [hfac, pow_add]
+  exact mul_dvd_mul_left _ (hlift j hj)
+
+end K7d
+
 /-! ### K2: injective ⇒ bijective on the finite vector space (BP_IV §1.3 + §2 K-table)
 
 The blueprint displays no Lean block for K2 — the §1.3 entry is a doc comment
@@ -711,5 +926,445 @@ theorem starstar_iff_smithMem {n : ℕ} {τ : ℕ}
     exact one_dvd _
 
 end K4
+
+/-! ### K7 carrier (BP_IV §1.3; owner unit K7c — LANDED, single copy kept here)
+
+K10a's `toMulFiberData` field consumes the `MulFiberData` carrier.  The
+carrier STRUCTURE is transcribed VERBATIM from the §1.3 display — data fields
+only.  DEDUP(K7c) resolved: unit K7c (first split of the parent glue chain,
+the monic-lift parametrization section above) landed and adopts THIS single
+copy as its charged transcription (character-identical to the §1.3 display);
+the chart bijection `fiber_equiv_solutions` remains unit K7e's charge per §4
+wave 3 and is NOT declared here. -/
+
+/-- K7: the fiber chart (O-10 §3 Step 1 + Step 2 packaged): a bijection between a
+    nonempty fiber of the level-N multiplication map and the solution set of the
+    Smith-diagonalized congruence (⋆⋆).  `MulFiberData` carries: the factor
+    polydisc (monic factor degrees d_j, base point, separation level τ with
+    (SEP): τ ≥ ρ + 1), the Jacobian-type map Φ, its Smith data (U, D, V — from
+    K8), and the quadratic remainder Q with its p^{2τ} factor (K7b).
+    K7a = the subset product expansion (`Finset.prod_add`);
+    K7c = the chart bijection itself. -/
+structure MulFiberData (p : ℕ) [Fact p.Prime] (n N : ℕ) where
+  τ : ℕ
+  ρ : ℕ
+  τ_sep : ρ + 1 ≤ τ
+  FactorPoint : Type
+  instFactorPoint : Fintype FactorPoint
+  base : FactorPoint
+  polydisc : Finset FactorPoint
+  Fiber : Type
+  instFiber : Fintype Fiber
+  FiberNonempty : Prop
+  SolutionSet : Type
+  instSolutionSet : Fintype SolutionSet
+  smithExp : FactorPoint → Fin n → ℕ
+
+attribute [instance] MulFiberData.instFactorPoint
+attribute [instance] MulFiberData.instFiber
+attribute [instance] MulFiberData.instSolutionSet
+
+/-! ### K7e (BP_IV §4 wave 3): `fiber_equiv_solutions` — BLOCKED, statement-level refutation
+
+The §1.3 display charged to unit K7e is, VERBATIM:
+
+    theorem fiber_equiv_solutions {p n N : ℕ} [Fact p.Prime]
+        (F : MulFiberData p n N) (hne : F.FiberNonempty) :
+        Nonempty (F.Fiber ≃ F.SolutionSet)
+
+BLOCKED(K7e): the displayed statement is REFUTABLE over the verbatim §1.3
+carrier.  `Fiber`, `SolutionSet`, and `FiberNonempty` are opaque carrier
+fields with no relating law (the §1.3 doc comment promises Φ, its Smith
+data, and Q on the carrier, but the displayed structure omits them), so the
+carrier admits instances with `|Fiber| = 1 ≠ 2 = |SolutionSet|` and
+`FiberNonempty := True` — compiled countermodel below
+(`mulFiberDataCounter` + `fiber_equiv_solutions_display_refuted`).  No
+`sorry`'d declaration of the refuted statement is landed (K11 precedent in
+this file's header: nothing is compiled against a refuted signature — and a
+`sorry`'d false theorem would be consumable by the parallel K8b/K5 units).
+The obstruction is intrinsic to the display: no K7c/K7d lemma layer can
+prove a false ∀-statement, and the DEDUP(K7c) character-identity pin forbids
+adding the chart field the theorem would need.  Escalated to the blueprint
+owner per the §4 failure protocol; candidate signature fixes (owner's
+choice, NOT enacted here): (a) a chart row on the carrier (e.g.
+`chart : FiberNonempty → Fiber ≃ SolutionSet`, making K7e a projection and
+moving the O-10 §3 Steps 1–2 content into the concrete instance builder,
+where K7a/K7b/K7d already supply the (⋆)-assembly ingredients), or (b)
+concrete `Fiber`/`SolutionSet` fields (the O-10 fiber of the level-N
+multiplication map and the (⋆⋆) solution set), the bijection then provable
+but no longer over an abstract carrier. -/
+
+section K7e
+
+/-- BLOCKED(K7e) countermodel carrier: the verbatim §1.3 structure admits an
+    instance with a one-point `Fiber`, a two-point `SolutionSet`, and
+    `FiberNonempty := True` — no field relates them. -/
+def mulFiberDataCounter : MulFiberData 2 1 1 where
+  τ := 1
+  ρ := 0
+  τ_sep := by omega
+  FactorPoint := Unit
+  instFactorPoint := inferInstance
+  base := ()
+  polydisc := ∅
+  Fiber := Fin 1
+  instFiber := inferInstance
+  FiberNonempty := True
+  SolutionSet := Fin 2
+  instSolutionSet := inferInstance
+  smithExp := fun _ _ => 0
+
+/-- BLOCKED(K7e), the compiled statement-level refutation: the §1.3 display
+    of `fiber_equiv_solutions`, quantified as displayed over every carrier,
+    is FALSE — the countermodel's fiber has 1 element, its solution set 2. -/
+theorem fiber_equiv_solutions_display_refuted :
+    ¬ ∀ {p n N : ℕ} [Fact p.Prime] (F : MulFiberData p n N),
+        F.FiberNonempty → Nonempty (F.Fiber ≃ F.SolutionSet) := by
+  intro hall
+  obtain ⟨e⟩ := hall mulFiberDataCounter trivial
+  have e' : Fin 1 ≃ Fin 2 := e
+  have hcard : Fintype.card (Fin 1) = Fintype.card (Fin 2) :=
+    Fintype.card_congr e'
+  simp at hcard
+
+end K7e
+
+/-! ### K10a (BP_IV §2 K-table; O-10 §4.1): the adapted-cell carrier
+
+The (A1)–(A3) clauses of O-10 §4.1 as fields: the factor index type with its
+`Fintype` instance (A1: finitely many factor coordinates), the `MulFiberData`
+chart at the cell with its nonempty fiber (A2: the cell sits over a nonempty
+fiber of the level-N multiplication map), and the domain-product cardinality
+law `domainCount_eq` (A3: the domain count is the product of the per-factor
+counts).  `cellCount`, `factorCount`, `sM` are the count columns K10b/K10c/K10
+relate; the structure itself is pure data + the two displayed clauses —
+definition only, per the §2 K-table row (K10a, MECH). -/
+
+/-- K10 (Theorem 2, the adapted-cell (SIB) product law, O-10 §4.2): at an
+    `AdaptedCell` (structure carrying the (A1)–(A3) clauses of §4.1 as fields),
+    the level-N count of the assembled cell is the product of the per-factor
+    counts divided by the K5 fiber size — UNCONDITIONAL in factor coordinates.
+    The APPLICATION to engine strata is a separate statement consuming the
+    named rows K-LOC and (I-τ) (owner BP_III), displayed as binders. -/
+structure AdaptedCell (p n N : ℕ) [Fact p.Prime] where
+  Factor : Type
+  instFactor : Fintype Factor
+  toMulFiberData : MulFiberData p n N
+  cellCount : ℕ
+  factorCount : Factor → ℕ
+  sM : ℕ
+  domainCount_eq : Nat.card Factor = ∏ j, factorCount j
+  fiber_nonempty : toMulFiberData.FiberNonempty
+
+attribute [instance] AdaptedCell.instFactor
+
+/-! ### K10c (BP_IV §2 K-table; O-10 §4.2): domain-product cardinality
+
+"identify the domain with the product of factor cells".  BP_IV §1.3 displays
+no standalone Lean block for K10c; the fenced identity is the K10a clause
+`domainCount_eq : Nat.card Factor = ∏ j, factorCount j`, transcribed verbatim
+below as the theorem that K10 (`sib_product_law`) chains with K10b's
+constant-fiber count — the same table-row-transcription convention as the
+K2/K3a/K4/K7a/K7b units above.  The two identification lemmas supply the
+constructor side: at a GENUINE product domain — O-10 §4.2's
+μ_N^{−1}(Σ) = Π_j C_j, the product of the factor cells C_j ⊆ A_j(N) — the
+domain cardinality IS the product of the per-factor counts (`Nat.card_pi`),
+which is how a concrete `AdaptedCell` instance discharges its
+`domainCount_eq` field. -/
+
+/-- K10c (the fenced domain-product identity, = the K10a clause
+    `domainCount_eq` at an arbitrary adapted cell): the domain count is the
+    product of the per-factor counts. -/
+theorem adaptedCell_domainProduct_card {p n N : ℕ} [Fact p.Prime]
+    (A : AdaptedCell p n N) :
+    Nat.card A.Factor = ∏ j, A.factorCount j :=
+  A.domainCount_eq
+
+/-- K10c, constructor side (the identification itself): a genuine product
+    domain `∀ j, C j` — the product of the factor cells — has cardinality
+    `∏ j, Nat.card (C j)` (`Nat.card_pi`; no finiteness needed on the cells:
+    an infinite factor makes both sides `0`). -/
+theorem card_domainProduct {J : Type*} [Fintype J] (C : J → Type*) :
+    Nat.card (∀ j, C j) = ∏ j, Nat.card (C j) :=
+  Nat.card_pi
+
+/-- K10c, constructor side at O-10's literal shape: factor cells as finite
+    subsets `C j ⊆ A j` (Finsets of the ambient level-N factor spaces); the
+    product domain `Π_j C_j` counts `∏ j, (C j).card`. -/
+theorem card_domainProduct_finset {J : Type*} [Fintype J] {A : J → Type*}
+    (C : ∀ j, Finset (A j)) :
+    Nat.card (∀ j, {x // x ∈ C j}) = ∏ j, (C j).card := by
+  rw [Nat.card_pi]
+  exact Finset.prod_congr rfl fun j _ => by
+    rw [Nat.card_eq_fintype_card, Fintype.card_coe]
+
+/-! ### K9 named row (BP_IV §1.3; owner unit K9 — exported hypothesis structure)
+
+K9's constancy THEOREM (Smith exponents constant across the ρ-separated
+polydisc) is HARD, wave 4.  Per BP_IV §2 ("K9 export[s] named hypothesis
+structures until their dedicated constructor proofs land"), the named row
+`SmithStable` is transcribed VERBATIM from the §1.3 display — it is the
+field-displayed hypothesis K5 and K10 consume; K10's statement does not
+elaborate without it.  DEDUP(K9): when K9's constructor lands, keep a single
+copy — both must be character-identical to the §1.3 display. -/
+
+/-- K9 (Lemma 2 half 2, HARD, wave 4): the Smith exponents are CONSTANT across
+    the ρ-separated polydisc.  Until it lands: the named row `SmithStable F`
+    (a field-displayed hypothesis, consumed by K5), mirroring the paper's
+    Lemma-2 dependency honestly. -/
+structure SmithStable {p n N : ℕ} [Fact p.Prime] (F : MulFiberData p n N) : Prop where
+  exponents_const : ∀ h ∈ F.polydisc, F.smithExp h = F.smithExp F.base
+
+/-! ### K10 — BLOCKED(K10): the §1.3 display is REFUTABLE over the §1.3 `AdaptedCell`
+
+The blueprint's verbatim K10 statement is
+
+    theorem sib_product_law {p n N : ℕ} [Fact p.Prime] (A : AdaptedCell p n N)
+        (hS : SmithStable A.toMulFiberData) :
+        A.cellCount * p ^ A.sM = ∏ j, A.factorCount j
+
+Over the §1.3 `AdaptedCell` display (transcribed verbatim above, unit K10a)
+this is FALSE, not merely open: the display's only law fields are
+`domainCount_eq` (K10c's clause, O-10 §4.2 "μ_N^{−1}(Σ) = Π_j C_j") and
+`fiber_nonempty`; NOTHING constrains `cellCount` or `sM`, so `cellCount := 0`,
+`sM := 0`, `factorCount ≡ 1` satisfies every field and gives `0 = 1`.  The
+compiled countermodel is `K10Probe.sib_product_law_as_displayed_refuted`
+below.  The missing ingredient is exactly unit K10b's conclusion (O-10 §4.2
+"all four sets are unions of entire fibers, and preimage counts are φ times
+image counts", φ = p^{s(M)} the constant fiber size of Theorem 1(i)):
+
+    imageCount_eq : cellCount * p ^ sM = Nat.card Factor
+
+— the K10b constant-fiber image law relating the cell count to the domain
+count.  The §1.3 docstring itself promises "(A1)–(A3) clauses ... as fields",
+and this is the clause the display dropped.  With it (as an `AdaptedCell`
+field per K10a's charge, or as K10b's proved theorem at concrete cells), K10
+is the one-line combine `imageCount_eq.trans domainCount_eq` —
+`sib_product_law_of_imageCount` below compiles exactly that combine step, so
+the "K10 = K10b + K10c" assembly is on record and the REV is purely a K10a
+field addition (or a K10b binder on K10).  Statement changes are forbidden at
+this unit, so the verbatim theorem is NOT declared with a `sorry` (a sorried
+REFUTED ∀-statement is a live foot-gun, and the §2 wave rule is
+zero-`sorry`); it awaits the blueprint REV ruling.  Escalated per the §4
+failure protocol. -/
+
+/-- K10 combine step (the honest form of "K10 = K10b + K10c"): GIVEN the K10b
+    constant-fiber image law `cellCount * p^sM = Nat.card Factor` as a binder
+    `himg`, the (SIB) multiplicative product law follows by chaining with the
+    K10c domain-product clause (`adaptedCell_domainProduct_card` =
+    `domainCount_eq`).  The conclusion is verbatim K10's; the extra binder is
+    the row the §1.3 `AdaptedCell` display is missing (see the BLOCKED(K10)
+    note).  `hS` is kept to mirror the displayed binder list (unused here:
+    Smith stability enters through K5 when K10b DERIVES `himg` at concrete
+    cells). -/
+theorem sib_product_law_of_imageCount {p n N : ℕ} [Fact p.Prime]
+    (A : AdaptedCell p n N) (_hS : SmithStable A.toMulFiberData)
+    (himg : A.cellCount * p ^ A.sM = Nat.card A.Factor) :
+    A.cellCount * p ^ A.sM = ∏ j, A.factorCount j :=
+  himg.trans A.domainCount_eq
+
+namespace K10Probe
+
+/-! Probe artifacts ONLY (not blueprint units): the compiled countermodel
+justifying BLOCKED(K10).  Corpus precedent for compiled negation witnesses:
+`MovesU/SibJcRouteA.lean` (`sib_diag_break`), `HC1` `U1_negWitness`. -/
+
+/-- Probe carrier: every `MulFiberData` field filled with free/trivial data —
+    legal because the §1.3 display carries no laws beyond `τ_sep`. -/
+def freeMFD (p n N : ℕ) [Fact p.Prime] : MulFiberData p n N where
+  τ := 1
+  ρ := 0
+  τ_sep := by omega
+  FactorPoint := Unit
+  instFactorPoint := inferInstance
+  base := ()
+  polydisc := ∅
+  Fiber := Unit
+  instFiber := inferInstance
+  FiberNonempty := True
+  SolutionSet := Unit
+  instSolutionSet := inferInstance
+  smithExp := fun _ _ => 0
+
+/-- Probe cell: `cellCount := 0`, `sM := 0` satisfy EVERY field of the §1.3
+    `AdaptedCell` display (`domainCount_eq` reads `Nat.card Unit = ∏ _, 1`),
+    yet `0 * p^0 = 1` is false — the display omits the K10b image law. -/
+def freeCell (p n N : ℕ) [Fact p.Prime] : AdaptedCell p n N where
+  Factor := Unit
+  instFactor := inferInstance
+  toMulFiberData := freeMFD p n N
+  cellCount := 0
+  factorCount := fun _ => 1
+  sM := 0
+  domainCount_eq := by simp
+  fiber_nonempty := trivial
+
+/-- BLOCKED(K10) witness: the §1.3 K10 display, read as the ∀-closure of its
+    binder list, is FALSE over the §1.3 `AdaptedCell` — even with the
+    `SmithStable` row supplied.  Countermodel: `freeCell` at `p = 2`,
+    `n = N = 0`. -/
+theorem sib_product_law_as_displayed_refuted :
+    ¬ (∀ (p n N : ℕ) [Fact p.Prime] (A : AdaptedCell p n N),
+        SmithStable A.toMulFiberData →
+        A.cellCount * p ^ A.sM = ∏ j, A.factorCount j) := by
+  intro h
+  haveI : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  have h0 := h 2 0 0 (freeCell 2 0 0) ⟨fun x _ => rfl⟩
+  simp [freeCell] at h0
+
+end K10Probe
+
+/-! ### K10b (BP_IV §2 K-table; REV-2 finding 20 split; O-10 §4.2): the
+constant-fiber image theorem
+
+The counting engine of Theorem 2's proof ("all four sets are unions of entire
+fibers, and preimage counts are φ times image counts"): for the concrete cell
+map `μ` from the factor-product domain onto the cell, with every fiber over
+the cell of the SAME exact cardinality `φcard` (K5's `kcount_fiber_card`
+value `p^(s M)` at the engine site — K5 unlanded at this wave, so the exact
+fiber cardinality is a NAMED binder `hfib`, never an axiom), the cell count
+times the fiber size is the domain count — the multiplicative orientation K10
+consumes (REV-2 finding 13: no truncated division).  The "nonempty fibers"
+clause is DERIVED from the exact cardinality at `1 ≤ φcard`
+(`constFiber_fiber_nonempty` / `constFiber_surjective`): it forces the cell
+map onto the cell, so image = cell (`constFiber_image_eq`).  Charged corpus
+reuse (BP_IV §3 reuse row; REV-2 finding 20: "O5 counting is cited only for
+the image/counting step"): `MovesU.card_eq_of_injOn_checksum`
+(`MovesU/O5CountingB.lean`) is consumed at exactly that step — the
+image-exhausts-the-cell count (`constFiber_image_card_eq`), via the
+fiber-size weight `w b := #{a ∈ s | μ a = b}`, whose positivity on the cell
+is the nonempty-fibers clause and whose two checksums are the fiberwise
+partitions of the domain over the image and over the cell.  BP_IV §1.3
+displays no Lean block for K10b — the statements below transcribe the §2
+K-table row ("combine the concrete cell map, nonempty fibers, and K5's exact
+fiber cardinality"), the same convention as the K2/K3a/K4/K7a/K7b/K10c units
+above.  SEAM(K10): the keyed form `adaptedCell_constFiber_image_card`
+concludes verbatim the `himg` binder of `sib_product_law_of_imageCount`
+(`A.cellCount * p ^ A.sM = Nat.card A.Factor`) — the missing image law the
+BLOCKED(K10) note identifies — so K10 at a concrete cell map is
+`sib_product_law_of_imageCount A hS (adaptedCell_constFiber_image_card ...).2`. -/
+
+section K10b
+
+variable {α β : Type*} [DecidableEq β]
+
+/-- K10b, nonempty-fibers clause (Finset form): the exact fiber cardinality
+    `φcard ≥ 1` on `t` makes every point of `t` a hit — `μ` is onto `t`
+    from `s`. -/
+theorem constFiber_fiber_nonempty (s : Finset α) (t : Finset β) (μ : α → β)
+    {φcard : ℕ} (hφ : 1 ≤ φcard)
+    (hfib : ∀ b ∈ t, (s.filter fun a => μ a = b).card = φcard) :
+    ∀ b ∈ t, ∃ a ∈ s, μ a = b := by
+  intro b hb
+  have hcard : 0 < (s.filter fun a => μ a = b).card := by
+    rw [hfib b hb]; omega
+  obtain ⟨a, ha⟩ := Finset.card_pos.1 hcard
+  rw [Finset.mem_filter] at ha
+  exact ⟨a, ha.1, ha.2⟩
+
+/-- K10b, image identification: with `μ` mapping `s` into `t` and nonempty
+    fibers (from the exact cardinality at `1 ≤ φcard`), the image of the
+    cell map IS the cell: `s.image μ = t`. -/
+theorem constFiber_image_eq (s : Finset α) (t : Finset β) (μ : α → β)
+    {φcard : ℕ} (hφ : 1 ≤ φcard)
+    (hmaps : ∀ a ∈ s, μ a ∈ t)
+    (hfib : ∀ b ∈ t, (s.filter fun a => μ a = b).card = φcard) :
+    s.image μ = t := by
+  refine Finset.Subset.antisymm ?_ ?_
+  · intro b hb
+    obtain ⟨a, ha, rfl⟩ := Finset.mem_image.mp hb
+    exact hmaps a ha
+  · intro b hb
+    obtain ⟨a, ha, hab⟩ := constFiber_fiber_nonempty s t μ hφ hfib b hb
+    exact Finset.mem_image.mpr ⟨a, ha, hab⟩
+
+/-- K10b, the charged O5CountingB image/counting step (BP_IV §3 reuse row;
+    REV-2 finding 20): the image count equals the cell count, by
+    `MovesU.card_eq_of_injOn_checksum` at the identity transport
+    `s.image μ ↪ t` with the fiber-size weight `w b := #{a ∈ s | μ a = b}` —
+    `hpos` is the nonempty-fibers clause, and the two checksums are the
+    fiberwise partitions of `#s` over the image and over `t`. -/
+theorem constFiber_image_card_eq (s : Finset α) (t : Finset β) (μ : α → β)
+    {φcard : ℕ} (hφ : 1 ≤ φcard)
+    (hmaps : ∀ a ∈ s, μ a ∈ t)
+    (hfib : ∀ b ∈ t, (s.filter fun a => μ a = b).card = φcard) :
+    (s.image μ).card = t.card := by
+  refine MovesU.card_eq_of_injOn_checksum (s.image μ) t id
+    (fun b hb => ?_) (fun b _ b' _ h => h)
+    (fun b => (s.filter fun a => μ a = b).card) (fun b hb => ?_) ?_
+  · obtain ⟨a, ha, rfl⟩ := Finset.mem_image.mp hb
+    exact hmaps a ha
+  · rw [hfib b hb]; exact hφ
+  · have h1 : s.card = ∑ b ∈ s.image μ, (s.filter fun a => μ a = b).card :=
+      Finset.card_eq_sum_card_fiberwise fun a ha => Finset.mem_image_of_mem μ ha
+    have h2 : s.card = ∑ b ∈ t, (s.filter fun a => μ a = b).card :=
+      Finset.card_eq_sum_card_fiberwise hmaps
+    simpa [id_eq] using h1.symm.trans h2
+
+/-- K10b (THE constant-fiber image theorem, Finset core; O-10 §4.2 Theorem
+    2's counting engine): the concrete cell map `μ` from `s` into `t` with
+    exact constant fiber cardinality `φcard` over `t` has
+    `#t · φcard = #s` — "preimage counts are φ times image counts", in the
+    multiplicative orientation K10 consumes.  Fiberwise partition of the
+    domain over the cell; no positivity is needed for the count itself (at
+    `φcard = 0` both sides vanish — O-10 §4.2 Remark (2)'s empty
+    degeneracy). -/
+theorem constFiber_image_card (s : Finset α) (t : Finset β) (μ : α → β)
+    (φcard : ℕ) (hmaps : ∀ a ∈ s, μ a ∈ t)
+    (hfib : ∀ b ∈ t, (s.filter fun a => μ a = b).card = φcard) :
+    t.card * φcard = s.card := by
+  rw [Finset.card_eq_sum_card_fiberwise hmaps, Finset.sum_congr rfl hfib,
+    Finset.sum_const, smul_eq_mul]
+
+/-- K10b, nonempty-fibers clause at type level: exact fiber cardinality
+    `φcard ≥ 1` at every point makes the cell map surjective (no finiteness
+    needed on the domain). -/
+theorem constFiber_surjective {γ δ : Type*} (μ : γ → δ)
+    {φcard : ℕ} (hφ : 1 ≤ φcard)
+    (hfib : ∀ d : δ, Nat.card {c : γ // μ c = d} = φcard) :
+    Function.Surjective μ := by
+  intro d
+  have hne : Nat.card {c : γ // μ c = d} ≠ 0 := by
+    rw [hfib d]; omega
+  obtain ⟨⟨c, hc⟩⟩ := (Nat.card_ne_zero.mp hne).1
+  exact ⟨c, hc⟩
+
+/-- K10b at type level (the shape K10a's `AdaptedCell` `Nat.card` fields
+    consume): a map of finite types with every fiber of exact cardinality
+    `φcard` has `Nat.card δ * φcard = Nat.card γ`. -/
+theorem constFiber_nat_card {γ δ : Type*} [Fintype γ] [Fintype δ]
+    (μ : γ → δ) (φcard : ℕ)
+    (hfib : ∀ d : δ, Nat.card {c : γ // μ c = d} = φcard) :
+    Nat.card δ * φcard = Nat.card γ := by
+  classical
+  have key : (Finset.univ : Finset δ).card * φcard
+      = (Finset.univ : Finset γ).card :=
+    constFiber_image_card Finset.univ Finset.univ μ φcard
+      (fun a _ => Finset.mem_univ _)
+      (fun d _ => by
+        rw [← hfib d, Nat.card_eq_fintype_card, Fintype.card_subtype])
+  simpa [Nat.card_eq_fintype_card, Finset.card_univ] using key
+
+/-- K10b (the K-table row keyed at the K10a carrier): combine the concrete
+    cell map (`μ`, with `hcell` reading `A.cellCount` as the cell's count),
+    nonempty fibers (DERIVED: `1 ≤ p^(A.sM)` from primality, so the exact
+    cardinality forces surjectivity — the image of the cell map is the whole
+    cell), and K5's exact fiber cardinality (the named binder `hfib` at the
+    K5 value `p^(A.sM)`; K5 itself is a later-wave unit): the cell count
+    times the fiber size is the domain count,
+    `A.cellCount * p ^ A.sM = Nat.card A.Factor` — verbatim the `himg`
+    binder that `sib_product_law_of_imageCount` chains with K10c's
+    `adaptedCell_domainProduct_card` (see the BLOCKED(K10) note above). -/
+theorem adaptedCell_constFiber_image_card {p n N : ℕ} [Fact p.Prime]
+    (A : AdaptedCell p n N) {Cell : Type*} [Fintype Cell]
+    (μ : A.Factor → Cell)
+    (hcell : A.cellCount = Nat.card Cell)
+    (hfib : ∀ c : Cell, Nat.card {x : A.Factor // μ x = c} = p ^ A.sM) :
+    Function.Surjective μ ∧ A.cellCount * p ^ A.sM = Nat.card A.Factor := by
+  have hφ : 1 ≤ p ^ A.sM := Nat.one_le_pow _ _ (Fact.out : p.Prime).pos
+  exact ⟨constFiber_surjective μ hφ hfib,
+    by rw [hcell]; exact constFiber_nat_card μ _ hfib⟩
+
+end K10b
 
 end LeanUrat.Scaffold
