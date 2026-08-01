@@ -2011,3 +2011,12 @@ charge-(vi) documentary adjudication and the ROOT row re-scope SPEC
 (orchestrator-owned — goes to the r14 batch, not edited directly).
 (H8) is now a RATIFICATION-AWAY from discharge: queue its hostile pass
 in the follow-up cycle. Queue -> H7. Synthesis pass 3 running in parallel.
+
+## SYNTHESIS PASS 3 DELIVERED (docs/SYNTHESIS_PASS3_2026-08-05.md)
+F1 interior/terminal = H8's predicate-parametric first-entrance calculus —
+hoist carrier-generic pre-H6; F2 (GR-B) named-hypothesis seam across 5 fleets
+— pull H1 wave-0 carrier forward; F3 booking algebra H5-only (H4 gloss =
+recorded mislabel); F4 Tonelli dup (H8 private vs MassId); F5 RootHyps stale
+at 6 rows vs ROOT's 12 — ride r14 batch (F6, one bar re-run). Queue rec:
+H7 TierS -> 4 MECH shared units -> H6 (waves A+D first) ∥ mechanical batch
+((K1-CANON), H8 pass, D-12r, EN-U3, P(O-8b/M14), H5 mop-up) -> r14 -> H1.
