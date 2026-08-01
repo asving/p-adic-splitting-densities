@@ -741,7 +741,7 @@ private theorem interior_coeff {d : ℕ} (hd : 1 ≤ d) (l c : F)
       · have hs : (∑ i : Fin (d - 1), if n = (i : ℕ) + 1 then g i else 0) = 0 :=
           Finset.sum_eq_zero fun i _ => if_neg (by have := i.isLt; omega)
         rw [hs]
-        simp [h2, show ¬d = 0 by omega, show ¬(d - 1 < d - 1) by omega]
+        simp [h2, show ¬d = 0 by omega]
       · have hs : (∑ i : Fin (d - 1), if n = (i : ℕ) + 1 then g i else 0) = 0 :=
           Finset.sum_eq_zero fun i _ => if_neg (by have := i.isLt; omega)
         rw [hs]
