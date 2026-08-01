@@ -9,6 +9,7 @@ import LeanUrat.Scaffold.DictIII.GMNReader
 import LeanUrat.Scaffold.DictIII.Locality
 import LeanUrat.Scaffold.DictIII.O2aOrder1
 import LeanUrat.HC2.Defs
+import LeanUrat.HC2.HK57
 import LeanUrat.MovesT.V9_irrSat
 import LeanUrat.MovesT.V3_accKeyDeg
 import LeanUrat.MovesD.R7_runRealizer
@@ -19,8 +20,8 @@ import LeanUrat.MovesD.R7_runRealizer
 E-phase target file for units III-U1..U8 (module §1.8, Theorem CU-1 +
 Corollary CU-1-LVL).  Source of record: CU1 §2 Thm CU-1.
 
-Status at hand-off (units III-U5 and III-U7, 2026-08-01): BLOCKED — see the
-records below.  No declaration is landed; the verbatim blueprint statement is
+Status at hand-off (unit III-U5, 2026-08-01): BLOCKED — see the record
+below.  No declaration is landed; the verbatim blueprint statement is
 preserved in the commented block (transcribing it weakened, or with invented
 placeholder carriers for other units' owned definitions, would be a statement
 change).  [III-U5 re-attempted at HEAD later this date (prover III-U5): the
@@ -28,6 +29,24 @@ blocker census is now down to the SINGLE unknown identifier `CU1Pins`
 (III-H3, fenced) — exact compiler error reproduced against a freshly rebuilt
 olean; refreshed record at the unit block.  Statement-side, everything else
 elaborates; proof-side, III-U4 additionally remains unlanded.]
+
+Status at hand-off (unit III-U7, re-run 2026-08-01, prover III-U7): LANDED
+as a flagged rendering — `cu1_spanTotal` (per-site SPAN totality: EVERY
+interior GMN child at the site extends the chain, via the III-U3c harvest
+builder applied to the child's data plus the new dressing/tower-slot
+assignment `EHist.harvestExtend`, to an `EWF` + `InteriorChain` + `ConsF`
+chain — exactly `cu1`'s displayed per-instance rows at the extension), with
+the supporting datum `InteriorChildAt` and the three extension legs, all
+PROVED, no sorry, expected Lean-core footprint.  Ground 2 of the original
+BLOCKED record (III-U3c construction unlanded) was CURED at the III-U3c
+hand-off; ground 1 (elided §1.8 display) STANDS — the statements are this
+unit's rendering from CU1 rev-5 §4 Corollary CU-1-ADEQ, flagged for
+division-lead ratification (record at the unit section).  The ADEQ
+realization clause ("Theorem CU-1 realizes it") is NOT claimed: it is
+III-U5's conclusion vocabulary (`cu1`, BLOCKED), and the unit row's deps
+line (III-U3c only) scopes it out — this unit produces the chain on which
+`cu1` fires.  No [M]-row (GRB/FRESH/CU1Pins/OL6/OL1) is consumed anywhere
+in the unit, so the III-U8 vacuity verdict does not touch it.
 
 Status at hand-off (unit III-U1, 2026-08-01): PARTIAL — `machineProj` (the
 §1.8 signature + docstring, VERBATIM) LANDS with the CU1 §2 π field mapping:
@@ -131,6 +150,31 @@ record's emitted 𝔈-face, REALIZED-free) are LANDED and PROVED, Lean-core
 (footprint audit extended).  Grounds 1, 3, 4 (the (M6a)-row ruling, the
 §1.3 GRB/FRESH scope repair, the (M6c)(i) prose pin) STAND — the unit
 stays PARTIAL.]
+
+Status at hand-off (unit III-U4, 2026-08-01): LANDED — the clause-(ii)
+transport through the harvested step (CU1 rev-5 §3 step item 5), all PROVED,
+no sorry: the transport kernel `stateBinding_of_lastRecord` ("frame recursion
+= stage recursion" — both recursions are one-step-local, so the binding at
+k + 1 needs exactly the new record's produced-key and width laws, no
+clause-(ii) IH), the step faces `stateBinding_snoc` and
+`stateBinding_historySnoc` (the latter at III-U3c's landed creation-target
+carrier — the shape III-U5 consumes next to the `machineEHist_historySnoc_*`
+π-ties), the assembled leg `cu1_stepBinding` (consumes III-U3c's
+`cu1_stepHarvest` — "transport the state produced by U3c" — and DERIVES the
+∀-`sel` width leg from the matched μ_{k+1}; rides `hGRB`/`hFRESH`, so the
+III-U8 vacuity note applies to it verbatim), and the positive gate
+`u4Gate_stateBinding` — the FIRST compiled inhabitant of III-U3a's
+`StateBinding` (machine side ν₀gate + the PROVED `HK57.sideReads0_landing`
+landing-key witness; the new `HC2.HK57` import pins the unit row's §3.3
+quarry class).  THREE division-lead adjudication items at the unit section:
+(1) the unit row's "(OL-6 … fire)" parenthetical is STALE against rev 5
+(V27 finding 2b DELETED the OL-6 consumption — "OL-6 appears nowhere";
+`OL6` is not consumed, dep III-H7c = wave-ordering only); (2) III-H3
+(`CU1Pins`) is BLOCKED, so the (P-KEY)/(FR≡) pin OUTPUT is taken as the
+named binders `hkeyPin`/`hwidthPin` at the pins' exact consumption slots —
+III-U5 discharges them from `hpins` once III-H3 lands, nothing discharged
+by fiat; (3) the valuation/shear/residue-tower leg's carrier awaits the
+III-H3 repair (the III-U3a scoping note verbatim).
 
 Status at hand-off (unit III-A5, re-run 2026-08-01 after III-U1): BLOCKED —
 record at the end of the file, REFRESHED at this re-run.  The `MovesT`
@@ -1584,6 +1628,280 @@ theorem harvestNode_machineFace {f : Polynomial ℤ_[p]}
 
 end UnitIIIU3c
 
+/-! ## Unit III-U4 — state binding through the harvested induction step
+(BP_III §2 Wave 4 row 809; src CU1 rev-5 §3 step item 5)
+
+Unit row: "state binding through the harvested induction step (OL-6 +
+(P-KEY)/(FR≡) fire) | transport the state produced by U3c; frame recursion =
+stage recursion | III-U3a, III-U3c, III-H3, III-H7c | MED | CU1 §3 (ii) leg".
+
+STATEMENT-PROVENANCE RECORD (the III-U3b/III-U3c convention): BP_III §1.8
+displays NO Lean statement for III-U4 — the induction-step legs U3b/U3c/U4
+are proof-internal to `cu1`'s assembly ("U5: List.rec on nodes; U2 base,
+U3b/c+U4 step", row 810).  There is nothing to transcribe and hence no exact
+compiler error to report; the failure class is the missing-display one
+(III-U3b's), not a failing display.  The rendering below is this unit's,
+designed from the source of record — CU1 rev-5 §3, step item 5 (and base
+item 6 for the k = 1 shape), `lean/notes/openmath/CU1_phaseB_verifybrief_rev5.md`:
+
+> "5. *Clause (ii) at k + 1.* The state o_{𝐇′}'s key is ν̂_{k+1}'s produced
+> key ((R4), (M4)); by (P-KEY) and step 3(d)'s formal fields it equals
+> Lift_{k+1}(Θ(𝐇′)). Valuation/shear/tower: the §1.1 recursion over
+> M_{𝐇′}'s records ((M4)) — the [F.0] stage data over Θ(𝐇′) under (FR≡)'s
+> frame clause. Window width = μ_{k+1} (§1.4's definition at the last
+> read's multiplicity, = the matched μ_{k+1}). NO run-decomposition lemma
+> is consumed: OL-6 appears nowhere (V27 finding 2b — rev 1's 'OL-2a-6(b)
+> at level k + 2' is deleted, not relocated). ∎"
+
+Flagged for division-lead ratification, with THREE adjudication items:
+
+* **OL-6 (III-H7c) discrepancy — the unit row's parenthetical is STALE
+  against the source of record.**  The row reads "(OL-6 + (P-KEY)/(FR≡)
+  fire)", but rev 5's step item 5 (quoted above) explicitly DELETED the
+  OL-6 consumption (V27 finding 2b: "the state-level pins (FR≡)/(P-KEY)
+  are the content OL-6's stage-birth proof route supplies, declared
+  instead"; OL-6's consumer remains O-2a Theorem 2(D) = CU-2).  The
+  rendering follows the source of record: `OL6` is NOT consumed below,
+  and the dep III-H7c reads as wave-ordering only (the landed `OL6` row
+  is untouched).  Should the division lead rule the ROW authoritative
+  over the brief, an `hOL6` binder rides through `cu1_stepBinding`
+  unchanged — additive, no statement weakened.
+* **The pins CANNOT fire as the structure row: III-H3 (`CU1Pins`) is
+  BLOCKED** (Hyps.lean §III-H3: row `frEQ`'s `HC1.ReadFrame` arity/sort
+  defect, fenced above unit authority — the structure exists only inside
+  a commented block, so it is not an available declaration).  Rendering:
+  the pins' OUTPUT at exactly this unit's two consumption sites — the
+  produced-key identification `LandingKey m (Lift_{k+1}(Θ(𝐇′)))` ((P-KEY)
+  + step 3(d), under (FR≡)'s frame clause) and the machine width at the
+  matched record (§1.4 at the matched μ_{k+1}) — is taken as the NAMED
+  hypothesis binders `hkeyPin`/`hwidthPin`, at the slots `CU1Pins`'
+  repaired rows will fill.  When III-H3 lands, III-U5 discharges these
+  binders from its `hpins` argument; nothing is discharged by fiat here,
+  and no pin content is invented (the binders are the §1.8 `cu1`
+  conclusion's own `StateBinding` field shapes, landed at III-U3a).
+* **Unit-row scoping carried from III-U3a:** clause (ii)'s
+  valuation/shear/residue-tower leg has NO `StateBinding` field (the
+  III-U3a rendering note: it is machine-side definitional content whose
+  [F.0] identification is the (FR≡)-frame pin).  Its transport is
+  therefore the `hkeyPin` binder's charge, not a proof obligation below;
+  the Lean carrier for that leg awaits the III-H3 repair.
+
+Landed, in order (all PROVED, no sorry):
+  - `stateBinding_of_lastRecord` — THE TRANSPORT KERNEL ("frame recursion =
+    stage recursion"): both the machine §1.1 frame recursion and the [F.0]
+    stage recursion are ONE-STEP-LOCAL — the state after M′ reads only the
+    final record — so clause (ii) at k + 1 needs exactly the new record's
+    two laws (produced key at the top dressing slot; width at the matched
+    multiplicity), and NO clause-(ii) IH: the binding transports through
+    the step because the two recursions have the same one-step shape.
+  - `stateBinding_snoc` — the step face M_{𝐇′} = M_𝐇·ν̂_{k+1},
+    𝐇′ = 𝐇·ν_{k+1} (list-append rendering of the §3 step's creation
+    target), reduced to the kernel.
+  - `stateBinding_historySnoc` — the same face AT the landed creation-target
+    carrier `historySnoc` (III-U3c's machine-side block above): the shape
+    III-U5's step consumes next to the `machineEHist_historySnoc_*` π-tie
+    family (π-ties = clause (i)'s projection at k + 1; this = clause (ii)).
+  - `cu1_stepBinding` — the ASSEMBLED (ii) leg for III-U5's `List.rec`,
+    joint with III-U3b/U3c: at the top level of an interior Cons_f chain,
+    under `cu1`'s displayed rows, THE identified pair exists and its
+    harvest IS ν_{k+1} (`cu1_stepHarvest`, III-U3c — "transport the state
+    produced by U3c") AND the extended machine history binds the extended
+    chain.  The §1.4 width leg is DERIVED here: the matched record's
+    selected pair forces every `sel` member, so the machine width law
+    reduces to the single matched μ_{k+1}.  HONESTY: rides III-U3b's
+    `hGRB`/`hFRESH` binders, hence inherits the III-U8 vacuity at every
+    (p, F) until the §1.3 scope repair (the U3b note verbatim); the
+    row-free kernel above and the gate below are the unit's non-vacuous
+    face.
+  - `u4GateLift`/`u4GateMachine`/`u4GateHist`/`u4Gate_stateBinding` — the
+    positive gate (`ol6Gate`/III-A6c discipline): the kernel FIRED at a
+    compiled one-read world — machine side the HC2 gate node `ν₀gate`
+    with its PROVED landing-key witness `HK57.sideReads0_landing`
+    (LandingKey ν₀gate U31.fq, Lean-core; the §3.3 quarry class), 𝔈-side a
+    one-node chain over F4 re-using `ol6GateNode`, lift = the constant
+    U31.fq function.  This is the FIRST compiled inhabitant of
+    `StateBinding` (unit III-U3a's Prop, landed there without a
+    satisfiability certificate) — the binding's ∀-legs genuinely fire at
+    k = 0+1.  Satisfiability certificate ONLY (D-R2/D-R3 caveat): the
+    gate world is one read deep and NOT tied to any Cons_f data.
+
+NOT claimed here: the machine-side realization legs (III-U3c's BLOCKED
+half — (M6a) harvest firing, REALIZED, the `machineProj` tie), `cu1` itself
+(III-U5), any inhabitation of `GRB`/`FRESH` (III-U8's verdict stands), and
+the (FR≡)-frame valuation/shear/tower carrier (III-H3, adjudication item
+above). -/
+
+section UnitIIIU4
+
+/-- **Unit III-U4, the transport kernel** (CU1 rev-5 §3 step item 5; "frame
+recursion = stage recursion"): the state after `M′` reads ONLY the final
+record — both the machine §1.1 frame recursion and the [F.0] stage recursion
+are one-step-local — so the state binding at k + 1 follows from the new
+record's two laws alone: `hkeyPin`, the produced key at the top dressing
+slot (the (P-KEY)/(FR≡)-pin output, named binder per the section header —
+III-H3 is BLOCKED), and `hwidthPin`, the §1.4 width at the matched record.
+No clause-(ii) IH is consumed: the k-level binding rides through untouched,
+which IS the recursion identification. -/
+theorem stateBinding_of_lastRecord {M' : MovesC.History p F} {H' : EHist p F}
+    {hlift : LiftFn p F} {m : MovesC.Node p F} {ν : ENodeData} {k : ℕ}
+    (hlen : H'.nodes.length = k + 1)
+    (hν : H'.nodes[k]? = some ν)
+    (hlast : M'.nodes.getLast M'.nonempty = m)
+    (hkeyPin : MovesC.LandingKey m (hlift k (H'.psihat k)))
+    (hwidthPin : ∀ gμ ∈ ν.sel, m.μ = gμ.2) :
+    StateBinding M' H' hlift := by
+  have hne : H'.nodes ≠ [] := by
+    intro h
+    rw [h] at hlen
+    exact absurd hlen (by simp)
+  refine ⟨fun h => absurd h hne, ?_, fun h => absurd h hne, ?_⟩
+  · intro k' hk'
+    obtain rfl : k' = k := by omega
+    rw [hlast]
+    exact hkeyPin
+  · intro k' ν' hk' hν'
+    obtain rfl : k' = k := by omega
+    rw [hν] at hν'
+    obtain rfl : ν = ν' := Option.some.inj hν'
+    rw [hlast]
+    exact hwidthPin
+
+/-- **Unit III-U4, the step face** (CU1 rev-5 §3 step 3(c)'s creation target
+M_{𝐇′} := M_𝐇·ν̂_{k+1} and the chain extension 𝐇′ = 𝐇·ν_{k+1}, list-append
+rendering): binding transports through the snoc — the appended machine
+record is the final one and the appended 𝔈-node is the top one, so the
+kernel applies at slot k = `H.nodes.length` (the landed OL1/pROOT 0-based
+slot convention, III-U3a note).  The dressing tower slot `H'.psihat` is
+`H'`'s own field (the III-U3c note: ψ̂ rides the tower, not the node
+record). -/
+theorem stateBinding_snoc {M M' : MovesC.History p F} {H H' : EHist p F}
+    {hlift : LiftFn p F} {m : MovesC.Node p F} {ν : ENodeData}
+    (hM' : M'.nodes = M.nodes ++ [m])
+    (hH' : H'.nodes = H.nodes ++ [ν])
+    (hkeyPin : MovesC.LandingKey m
+      (hlift H.nodes.length (H'.psihat H.nodes.length)))
+    (hwidthPin : ∀ gμ ∈ ν.sel, m.μ = gμ.2) :
+    StateBinding M' H' hlift := by
+  refine stateBinding_of_lastRecord (k := H.nodes.length) ?_ ?_ ?_
+    hkeyPin hwidthPin
+  · rw [hH']; simp
+  · rw [hH']; simp
+  · simp [hM']
+
+/-- **Unit III-U4 at the landed creation target** (III-U3c's machine-side
+carrier `historySnoc` = M_𝐇·ν̂_{k+1}, landed at the U3c machine-face block
+above): the state after the CREATED machine history binds the extended
+chain — `stateBinding_snoc` instantiated at `historySnoc_nodes`.  This is
+the shape III-U5's step will consume next to `machineEHist_historySnoc_*`
+(the π-tie family): π-ties give clause (i)'s projection at k + 1, this
+gives clause (ii). -/
+theorem stateBinding_historySnoc {M : MovesC.History p F} {H H' : EHist p F}
+    {hlift : LiftFn p F} {m : MovesC.Node p F} {ν : ENodeData}
+    (hm : m.species ≠ MovesC.ReadSpecies.root)
+    (hH' : H'.nodes = H.nodes ++ [ν])
+    (hkeyPin : MovesC.LandingKey m
+      (hlift H.nodes.length (H'.psihat H.nodes.length)))
+    (hwidthPin : ∀ gμ ∈ ν.sel, m.μ = gμ.2) :
+    StateBinding (historySnoc M m hm) H' hlift :=
+  stateBinding_snoc (historySnoc_nodes M m hm) hH' hkeyPin hwidthPin
+
+/-- **Unit III-U4, the assembled (ii) leg** (what III-U5's `List.rec`
+consumes jointly with III-U3b/U3c — "transport the state produced by U3c"):
+at the top read level of an interior Cons_f chain, under `cu1`'s displayed
+rows, THE identified pair exists and its harvest IS the top node ν_{k+1}
+(`cu1_stepHarvest`, III-U3c), AND the extended machine history binds the
+extended chain — the produced-key law at the top dressing slot (`hkeyPin`,
+the (P-KEY)/(FR≡) pin output; section-header adjudication item) plus the
+machine width at THE matched record (`hwidthPin` at the single matched
+μ_{k+1}; the ∀-`sel` width leg is DERIVED from the match — §1.4's
+"definition at the last read's multiplicity, = the matched μ_{k+1}").
+HONESTY: rides `hGRB`/`hFRESH`, hence the III-U8 vacuity note
+(section header) applies; the kernel and gate are the non-vacuous face. -/
+theorem cu1_stepBinding {f : Polynomial ℤ_[p]} {H' : EHist p F}
+    {D : GMNData f (Theta H')} {R : GMNReader f (Theta H') D}
+    (hwf : EWF H') (hGRB : GRB p F) (hFRESH : FRESH p F)
+    (hint : InteriorChain H') (hcons : ConsF f H' D R)
+    {k : ℕ} (hlen : H'.nodes.length = k + 1)
+    {ν : ENodeData} (hν : H'.nodes[k]? = some ν)
+    {g μ : ℕ} (hsel : ν.sel = some (g, μ))
+    {M' : MovesC.History p F} {m : MovesC.Node p F} {hlift : LiftFn p F}
+    (hlast : M'.nodes.getLast M'.nonempty = m)
+    (hkeyPin : MovesC.LandingKey m (hlift k (H'.psihat k)))
+    (hwidthPin : m.μ = μ) :
+    (∃ (S : SideDatum) (hSe : 1 ≤ S.e) (hSh : 1 ≤ S.h)
+      (hScop : Nat.gcd S.e S.h = 1) (hSl : 1 ≤ S.ℓ) (hg : 1 ≤ g)
+      (hμ : 1 ≤ μ) (hμg : μ * g ≤ S.ℓ),
+      R.side k = some S ∧ CandidatePairAt f H' D k ν S ∧
+      harvestNode S g μ hSe hSh hScop hSl hg hμ hμg = ν) ∧
+    StateBinding M' H' hlift := by
+  have hνc : H'.continuingPart.nodes[k]? = some ν := by
+    rw [hint.continuingPart_nodes]; exact hν
+  refine ⟨cu1_stepHarvest hwf hGRB hFRESH hint hcons hνc hsel, ?_⟩
+  refine stateBinding_of_lastRecord hlen hν hlast hkeyPin ?_
+  intro gμ hgμ
+  rw [hsel, Option.mem_def, Option.some.injEq] at hgμ
+  subst hgμ
+  exact hwidthPin
+
+/-! ### Unit III-U4 positive gate (`ol6Gate`/III-A6c discipline): the kernel
+FIRED at a compiled one-read world — the first inhabitant of `StateBinding`.
+Machine side: the HC2 gate node `ν₀gate` (root species, μ = 1) with its
+PROVED landing-key witness `HK57.sideReads0_landing : LandingKey ν₀gate
+U31.fq` (the §3.3 quarry class this unit's row cites).  𝔈-side: a one-node
+chain over F4 re-using the F-free node record `ol6GateNode` (sel = (1, 1),
+matching ν₀gate.μ = 1), root datum (X, 1), constant dressing X − 1 (monic,
+irreducible, ≠ X over ↥(⊤ : Subfield F4)).  Lift: constantly U31.fq, so the
+top-slot produced key IS the witnessed landing key.  Satisfiability
+certificate ONLY (D-R2/D-R3): one read deep, no Cons_f data attached. -/
+
+/-- III-U4 gate lift: constantly `U31.fq` — the gate world's produced key at
+    every slot. -/
+noncomputable def u4GateLift : LiftFn 2 MovesJ.F4 :=
+  ⟨fun _ _ => MovesJ.U31.fq⟩
+
+/-- III-U4 gate, machine side: the one-read history `[ν₀gate]` (root read
+    first and only first — ν₀gate is root species). -/
+noncomputable def u4GateMachine : MovesC.History 2 MovesJ.F4 where
+  nodes := [MovesJ.HK18.ν₀gate]
+  nonempty := by simp
+  root_iff := by
+    intro j hj
+    obtain rfl : j = 0 := Nat.lt_one_iff.mp hj
+    exact ⟨fun _ => rfl, fun _ => rfl⟩
+
+/-- III-U4 gate, 𝔈-side: the one-node chain over F4 — node record
+    `ol6GateNode` (F-free data, re-used from the III-A9 gate world), root
+    datum (X, a₀ = 1), constant dressing X − 1. -/
+noncomputable def u4GateHist : EHist 2 MovesJ.F4 where
+  base := ⊤
+  psi0 := Polynomial.X
+  hpsi0 := ⟨Polynomial.monic_X, Polynomial.irreducible_X⟩
+  a0 := 1
+  ha0 := le_rfl
+  nodes := [ol6GateNode]
+  fld := fun _ => ⊤
+  psihat := fun _ => Polynomial.X - Polynomial.C 1
+  hpsihat := fun _ =>
+    ⟨Polynomial.monic_X_sub_C 1, Polynomial.irreducible_X_sub_C 1,
+     fun h => one_ne_zero (Polynomial.C_eq_zero.mp (sub_eq_self.mp h))⟩
+
+/-- Unit III-U4 gate, FIRED: the transport kernel produces a compiled
+    `StateBinding` instance — the ∀-legs of unit III-U3a's Prop genuinely
+    fire (key leg = the PROVED `HK57.sideReads0_landing` witness at the
+    constant-lift top slot; width leg = ν₀gate.μ = 1 = the matched selected
+    multiplicity), machine-checked.  First inhabitant of `StateBinding`. -/
+theorem u4Gate_stateBinding :
+    StateBinding u4GateMachine u4GateHist u4GateLift := by
+  refine stateBinding_of_lastRecord (k := 0) (ν := ol6GateNode)
+    rfl rfl rfl ?_ ?_
+  · exact MovesJ.HK57.sideReads0_landing
+  · rintro gμ hgμ
+    have h : some ((1 : ℕ), (1 : ℕ)) = some gμ := hgμ
+    obtain rfl : ((1 : ℕ), (1 : ℕ)) = gμ := Option.some.inj h
+    rfl
+
+end UnitIIIU4
+
 /-! ## Unit III-U5 — `cu1` (BP_III §1.8): BLOCKED — the verbatim statement
 does not elaborate; sole remaining unknown identifier `CU1Pins` (III-H3, fenced)
 
@@ -1627,8 +1945,14 @@ census of the earlier hand-off):
   carriers (`cu1_stepPair`, `cu1_stepHarvest`) ARE landed above.  And the
   III-U8 verdict below stands: `GRB`/`FRESH` are uninhabited as displayed,
   so even a landed `cu1` would be VACUOUS pending the §1.3 scope repair.
+  [UPDATE (prover III-U4, 2026-08-01): the U4 step leg is now LANDED above
+  (`stateBinding_of_lastRecord`/`stateBinding_snoc`/`stateBinding_historySnoc`/
+  `cu1_stepBinding`, all Lean-core) — the List.rec step's clause-(ii)
+  supply exists.  Its `hkeyPin`/`hwidthPin` binders are the (P-KEY)/(FR≡)
+  pin OUTPUT slots (III-H3 BLOCKED, unit-U4 section header): once `hpins`
+  types, this unit discharges them from it.]
 * Unblock order at this census: the III-H3 `frEQ` blueprint repair (types
-  the `hpins` binder) → III-U4 → III-U5 re-runs as the List.rec assembly
+  the `hpins` binder) → III-U5 re-runs as the List.rec assembly
   its row describes (+ the §1.3 GRB/FRESH scope repair for non-vacuity).
 
 ```
@@ -1797,51 +2121,404 @@ theorem readsOf_transfer_at_nstar_level {n : ℕ} {f f' : Polynomial ℤ_[p]}
     (fun k => Ideal.pow_le_pow_right (nstarMaj_readCeil_le hmaj H hN) (hcong k))
     hm' hd' h
 
-/-! ## Unit III-U7 — `cu1_spanTotal` (BP_III §1.8): BLOCKED — no verbatim
-statement exists, and the construction it quantifies over is unlanded
+/-! ## Unit III-U7 — `cu1_spanTotal` (interior adequacy, per-site SPAN
+totality — the ADEQ interior half; BP_III §2 Wave 4 row 812): LANDED as a
+flagged rendering (re-run 2026-08-01, prover III-U7; supersedes the BLOCKED
+record of the same date, whose census is preserved inside this record)
 
-STATEMENT-PROVENANCE RECORD (same discipline as the Window.lean §1.7 records):
+Unit row: "`cu1_spanTotal` (interior adequacy, per-site SPAN) | per-site
+totality from the same harvest construction | deps III-U3c | MED | CU1 §4".
+Source of record: CU1 rev-5 §4, Corollary CU-1-ADEQ
+(`lean/notes/openmath/CU1_phaseB_verifybrief_rev5.md` lines 521–559).
 
-* -- BLOCKED(III-U7): BP_III §1.8 displays this unit's theorem ONLY as the
-  ellipsis
-  ```
-  /-- Interior adequacy (per-site SPAN totality; the ADEQ interior half). -/
-  theorem cu1_spanTotal …
-  ```
-  (blueprint lines 585–586) — there is NO verbatim blueprint statement to
-  transcribe (REV2 finding 1 left §1.8's `cu1_lvl` and `cu1_spanTotal`
-  displays elided; the same finding class as Window.lean's §1.7 records).
-  Unit row (line 812): proof sketch = "per-site totality from the SAME
-  harvest construction", deps = III-U3c, src = CU1 §4.
-* Unlike III-T11a (Window.lean), NO displayed constraint pins this statement
-  byte-for-byte to landed corpus declarations: the object whose per-site
-  totality the unit asserts is unit III-U3c's harvest construction
-  ("harvest realizes ν̂_{i+1}, creation-first"), and III-U3c is UNLANDED
-  (grep over `LeanUrat/`: zero declarations; this file held no declaration
-  at hand-off — unit III-U5's record above lists the missing Wave-4 chain
-  III-U1/U2/U3a/H3 as well).  Elaborating a fresh statement from the CU1 §4
-  prose would invent this unit's quantified object AND duplicate III-U3c's
-  owned construction — a statement change plus a seam conflict, both fenced.
-* Mathematical content of record, for the eventual elaboration (source: CU1
-  rev-5 brief `lean/notes/openmath/CU1_phaseB_verifybrief_rev5.md` §4,
-  Corollary CU-1-ADEQ, per-step rescope of V27 finding 6a): for a well-formed
-  all-continuing Cons_f prefix 𝐇_{≤i} (a₀ ≥ 2, every node non-complete) and
-  EVERY interior GMN child (S, ψ) of ι(Θ(𝐇_{≤i})) — interior meaning
-  μ := ord_ψ(R_λ(f)) ≥ 2 — the constructed node ν(S, ψ) with the displayed
-  fields
-      (e, h) := lowest-terms pair of −λ;  ℓ := d(S);
-      (s, u) := initial point of S;  sel := (deg ψ, μ);
-      inc := 1 iff e·deg ψ ≥ 2;  dressing ψ̂ := ψ
-  extends 𝐇_{≤i} to a well-formed all-continuing non-complete Cons_f chain
-  that Theorem CU-1 realizes.  "Per-site SPAN totality" = the ∀-(S, ψ)
-  quantifier over interior children at the site (the ADEQ interior half; the
-  μ = 1 leaf half is O5triple's, routed OUTSIDE CU-1 by the §4 split — no
-  leaf clause belongs in this unit's statement).
-* Unblock order: III-U3c's construction lands first (it fixes the node-builder
-  vocabulary this statement binds); then this unit states totality over it and
-  fires `cu1` (III-U5, itself BLOCKED above) for the realization clause.
-  Statement elaboration requires division-lead ratification (nothing to be
-  verbatim to). -/
+STATEMENT-PROVENANCE RECORD (the III-U2/III-U3a/III-U3b/III-U3c convention):
+
+* GROUND 1 OF THE ORIGINAL BLOCKED RECORD STANDS: BP_III §1.8 (lines
+  585–586) displays this unit's theorem ONLY as the ellipsis
+  `theorem cu1_spanTotal …` — there is NO verbatim blueprint statement to
+  transcribe (REV2 finding 1; the verbatim transcription still fails with
+  `error: expected token` at the `…`).  Every declaration below is
+  therefore this unit's RENDERING from the §4 source, flagged for
+  division-lead ratification as statements (nothing to be verbatim to) —
+  the completion convention this file already used for III-U2's body,
+  III-U3a, III-U3b, and III-U3c's kernel, NOT a verbatim landing.
+* GROUND 2 OF THE ORIGINAL RECORD IS CURED (why the unit re-ran): III-U3c's
+  harvest construction is LANDED above (`harvestNode` + kernel).  The
+  original unblock order — "III-U3c's construction lands first (it fixes
+  the node-builder vocabulary this statement binds); then this unit states
+  totality over it" — is executed here literally: the harvested node below
+  IS `harvestNode` applied to the child's data (`InteriorChildAt.node` is a
+  wrapper application, no builder redeclared), and the extension assigns
+  the dressing slot ψ̂_k := ψ that the III-U3c carrier-split note routes to
+  the chain-extension legs (III-U4/III-U7).
+* SCOPE (what is and is NOT claimed):
+  - CLAIMED (the row's own words: "per-site totality from the same harvest
+    construction"): for a well-formed (`EWF`) all-continuing non-complete
+    (`InteriorChain`) Cons_f chain 𝐇 and EVERY interior GMN child at the
+    site — rendered reader-free at the §1.2 semantic-data layer as
+    `InteriorChildAt` (the `CandidatePairAt` convention): a principal side
+    `S ∈ D.principalSides H.nodes.length` at the site's own level slot,
+    a dressing ψ, and a residual multiplicity μ ≥ 2 (INTERIOR), with the
+    §4 well-formedness reads as per-instance law rows — the harvest
+    extension (nodes ++ [ν(S, ψ)], dressing slot ψ̂_k := ψ) is again
+    `EWF` + `InteriorChain` + Cons_f: exactly `cu1`'s displayed
+    per-instance rows at the extended chain.  The §4 checks are
+    DISCHARGED, not hypothesized: W1a/W1b at the new node (the ℓ = 1,
+    e = 1 case is VACUOUS under μ ≥ 2 — the rev-5 minor-note disposition,
+    landed as a real contradiction from the window bound), W2/W5 by
+    construction, W3 from the interior scoping, W4 at the updated dressing
+    slot (untouched slots ride), the tower rows (`fld` unchanged; the new
+    step-degree law is the child's `tower` row), and Cons_f ((c0)
+    untouched; (c1)/(c2) at i < k by slope-list stability, at the site by
+    construction — "the hypothesis IS the data").
+  - NOT CLAIMED: the ADEQ realization clause ("Theorem CU-1 realizes it …
+    the walk on f_N visits its state") — that is `cu1`/`cu1_lvl`
+    conclusion vocabulary (III-U5/III-U6, both BLOCKED at their records),
+    and the unit row's deps line (III-U3c ONLY, not III-U5) scopes it out
+    of this unit: `cu1_spanTotal` produces the chain on which `cu1` fires.
+    No leaf clause (μ = 1 is O5triple's, routed by the §4 split); no
+    terminal clause (CU-2t's seam); no claim that the extension's semantic
+    data (D', R') EXIST — the scaffold constructs no GMN objects (§1.2
+    header), so they ride as hypotheses with three displayed compatibility
+    rows (polygon/residual stability at levels ≤ k + the root order: the
+    OL-1/(C4) well-definedness face at the abstract interface).
+* Per-instance hypothesis rows, NOT [M]-rows: this unit consumes NO
+  GRB/FRESH/CU1Pins/OL6/OL1 row anywhere — the III-U8 vacuity verdict does
+  not touch it.  `InteriorChildAt`'s law fields render §4's consumed facts
+  ((L2) domains: ℕ by carrier; the (L3)/Def-2.21 window bound
+  μ·deg ψ ≤ d(S) = ℓ; the (L3) y-nondivisibility read ψ ≠ X; the
+  tower-degree supply at the carrier's own next slot — the REV2-finding-4
+  cardinal law's face; the scaffold constructs no field extensions).  Each
+  is semantic content about f that the abstract §1.2 interface cannot
+  derive — carried per-instance, exactly as `CandidatePairAt` carries
+  (c1)/(c2). -/
+
+section UnitIIIU7
+
+/-- **Unit III-U7, the chain-extension builder** (the dressing/tower-slot
+assignment that the III-U3c carrier-split note routes to the chain-extension
+legs): append one node and assign the dressing slot ψ̂_{|nodes|} := ψ.
+`base`/`psi0`/`a0`/`fld` ride unchanged — the tower-degree supply for the
+new node is the carrier's OWN next slot, hypothesized per-instance in
+`InteriorChildAt.tower`. -/
+def EHist.harvestExtend (H : EHist p F) (ν : ENodeData)
+    (ψ : Polynomial ↥(H.fld H.nodes.length))
+    (hψ : ψ.Monic ∧ Irreducible ψ ∧ ψ ≠ Polynomial.X) : EHist p F :=
+  { H with
+    nodes := H.nodes ++ [ν]
+    psihat := Function.update H.psihat H.nodes.length ψ
+    hpsihat := by
+      intro i
+      rcases eq_or_ne i H.nodes.length with rfl | hne
+      · rw [Function.update_self]
+        exact hψ
+      · rw [Function.update_of_ne hne]
+        exact H.hpsihat i }
+
+/-- Θ's slope list on an interior chain: all nodes continuing, so the
+continuing part is everything (`InteriorChain.continuingPart_nodes` at the
+`Theta` projection). -/
+theorem theta_slopes_of_interior {H : EHist p F} (hint : InteriorChain H) :
+    (Theta H).slopes = H.nodes.map fun ν => (ν.e, ν.h) := by
+  have h : (Theta H).slopes
+      = H.continuingPart.nodes.map fun ν => (ν.e, ν.h) := rfl
+  rw [h, hint.continuingPart_nodes]
+
+/-- **Unit III-U7, the interior-child datum at the site** (CU1 rev-5 §4,
+Corollary CU-1-ADEQ's hypothesis, reader-free at the §1.2 semantic-data
+layer — the `CandidatePairAt` convention): a GMN child (S, ψ) of ι(Θ(𝐇))
+at the site level k := `H.nodes.length` — S a window principal face from
+the data's own site-level slot, ψ the dressing with residual multiplicity
+μ — that is INTERIOR (μ ≥ 2), with the §4 well-formedness reads as
+per-instance law rows: the (c1) lowest-terms/positivity laws of the side,
+the (L3)/Def-2.21 window bound μ·deg ψ ≤ d(S) = ℓ, the W4 dressing laws
+(monic, irreducible, ≠ X — the (L3) y-nondivisibility read), and the
+tower-degree supply at the carrier's next slot. -/
+structure InteriorChildAt (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) (S : SideDatum)
+    (ψ : Polynomial ↥(H.fld H.nodes.length)) (μ : ℕ) : Prop where
+  side_mem : S ∈ D.principalSides H.nodes.length
+  resOrd_eq : D.residualOrder H.nodes.length = μ
+  interior : 2 ≤ μ
+  hSe : 1 ≤ S.e
+  hSh : 1 ≤ S.h
+  hScop : Nat.gcd S.e S.h = 1
+  hSl : 1 ≤ S.ℓ
+  window : μ * ψ.natDegree ≤ S.ℓ
+  monic : ψ.Monic
+  irr : Irreducible ψ
+  ne_X : ψ ≠ Polynomial.X
+  tower : Nat.card ↥(H.fld (H.nodes.length + 1)) =
+    Nat.card ↥(H.fld H.nodes.length) ^ ψ.natDegree
+
+variable {f : Polynomial ℤ_[p]} {H : EHist p F} {D : GMNData f (Theta H)}
+  {S : SideDatum} {ψ : Polynomial ↥(H.fld H.nodes.length)} {μ : ℕ}
+
+/-- The dressing has a genuine degree: g := deg ψ ≥ 1 (monic + irreducible —
+a degree-0 monic is 1, a unit). -/
+theorem InteriorChildAt.deg_pos (hc : InteriorChildAt f H D S ψ μ) :
+    1 ≤ ψ.natDegree := by
+  rcases Nat.eq_zero_or_pos ψ.natDegree with h0 | h1
+  · exfalso
+    refine hc.irr.not_isUnit ?_
+    rw [hc.monic.natDegree_eq_zero.mp h0]
+    exact isUnit_one
+  · exact h1
+
+/-- Interior ⟹ selected multiplicity is positive. -/
+theorem InteriorChildAt.mu_pos (hc : InteriorChildAt f H D S ψ μ) :
+    1 ≤ μ :=
+  le_trans one_le_two hc.interior
+
+/-- **Unit III-U7, the harvested node of the child** — LITERALLY the
+III-U3c builder applied to the child's data (the row's "per-site totality
+from the SAME harvest construction"): all seven law binders are the
+datum's own rows; nothing is redeclared. -/
+def InteriorChildAt.node (hc : InteriorChildAt f H D S ψ μ) : ENodeData :=
+  harvestNode S ψ.natDegree μ hc.hSe hc.hSh hc.hScop hc.hSl hc.deg_pos
+    hc.mu_pos hc.window
+
+theorem InteriorChildAt.node_sel (hc : InteriorChildAt f H D S ψ μ) :
+    hc.node.sel = some (ψ.natDegree, μ) :=
+  rfl
+
+/-- **Unit III-U7, the extension**: nodes ++ [ν(S, ψ)] with the dressing
+slot ψ̂_k := ψ (the §4 display's "dressing ψ̂ := ψ"). -/
+def InteriorChildAt.extend (hc : InteriorChildAt f H D S ψ μ) : EHist p F :=
+  H.harvestExtend hc.node ψ ⟨hc.monic, hc.irr, hc.ne_X⟩
+
+theorem InteriorChildAt.extend_nodes (hc : InteriorChildAt f H D S ψ μ) :
+    hc.extend.nodes = H.nodes ++ [hc.node] :=
+  rfl
+
+theorem InteriorChildAt.extend_psihat_site
+    (hc : InteriorChildAt f H D S ψ μ) :
+    hc.extend.psihat H.nodes.length = ψ :=
+  Function.update_self _ _ _
+
+theorem InteriorChildAt.extend_psihat_of_ne
+    (hc : InteriorChildAt f H D S ψ μ) {i : ℕ}
+    (hne : i ≠ H.nodes.length) :
+    hc.extend.psihat i = H.psihat i :=
+  Function.update_of_ne hne _ _
+
+/-- Node lookups in the extension: an indexed node is an old node (below
+the site) or THE harvested node (at the site) — the case split every W-row
+consumes. -/
+theorem InteriorChildAt.extend_cases (hc : InteriorChildAt f H D S ψ μ)
+    {i : ℕ} {ν' : ENodeData}
+    (h : hc.extend.nodes[i]? = some ν') :
+    (i < H.nodes.length ∧ H.nodes[i]? = some ν') ∨
+      (i = H.nodes.length ∧ ν' = hc.node) := by
+  have h' : (H.nodes ++ [hc.node])[i]? = some ν' := h
+  rcases Nat.lt_or_ge i H.nodes.length with hi | hi
+  · rw [List.getElem?_append_left hi] at h'
+    exact Or.inl ⟨hi, h'⟩
+  · obtain ⟨hlt, -⟩ := List.getElem?_eq_some_iff.mp h'
+    have hlt' : i < H.nodes.length + 1 := by simpa using hlt
+    have hieq : i = H.nodes.length := by omega
+    subst hieq
+    rw [List.getElem?_concat_length] at h'
+    injection h' with h''
+    exact Or.inr ⟨rfl, h''.symm⟩
+
+/-- **Unit III-U7, leg 1 — the extension is all-continuing non-complete**
+(the §4 conclusion's interior scoping: prior nodes by hypothesis;
+non-completeness of the LAST node IS the interiority hypothesis μ ≥ 2). -/
+theorem InteriorChildAt.extend_interior (hc : InteriorChildAt f H D S ψ μ)
+    (hint : InteriorChain H) : InteriorChain hc.extend := by
+  refine ⟨hint.a0_ge_two, ?_⟩
+  intro i ν' hν'
+  rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+  · exact hint.2 i ν' hold
+  · refine ⟨Option.some_ne_none _, ?_⟩
+    intro gμ hgμ
+    rw [Option.mem_def] at hgμ
+    have h : (some (ψ.natDegree, μ) : Option (ℕ × ℕ)) = some gμ := hgμ
+    injection h with h'
+    rw [← h']
+    exact hc.interior
+
+/-- Θ of the extension: the slope list grows by the side's recorded slope
+pair — the (c1) stability face the i < k Cons_f clauses ride. -/
+theorem InteriorChildAt.extend_theta_slopes
+    (hc : InteriorChildAt f H D S ψ μ) (hint : InteriorChain H) :
+    (Theta hc.extend).slopes =
+      (H.nodes.map fun ν => (ν.e, ν.h)) ++ [(S.e, S.h)] := by
+  rw [theta_slopes_of_interior (hc.extend_interior hint)]
+  have h : hc.extend.nodes = H.nodes ++ [hc.node] := rfl
+  rw [h, List.map_append]
+  rfl
+
+/-- Requested-slope stability below the site. -/
+theorem InteriorChildAt.extend_requestedSlope_lt
+    (hc : InteriorChildAt f H D S ψ μ) (hint : InteriorChain H)
+    {i : ℕ} (hi : i < H.nodes.length) :
+    requestedSlope (Theta hc.extend) i = requestedSlope (Theta H) i := by
+  show (Theta hc.extend).slopes[i]? = (Theta H).slopes[i]?
+  rw [hc.extend_theta_slopes hint, theta_slopes_of_interior hint,
+    List.getElem?_append_left (by rw [List.length_map]; exact hi)]
+
+/-- The requested slope AT the site is the harvested side's pair. -/
+theorem InteriorChildAt.extend_requestedSlope_site
+    (hc : InteriorChildAt f H D S ψ μ) (hint : InteriorChain H) :
+    requestedSlope (Theta hc.extend) H.nodes.length = some (S.e, S.h) := by
+  show (Theta hc.extend).slopes[H.nodes.length]? = some (S.e, S.h)
+  rw [hc.extend_theta_slopes hint]
+  have hlen : H.nodes.length = (H.nodes.map fun ν => (ν.e, ν.h)).length := by
+    rw [List.length_map]
+  rw [hlen, List.getElem?_concat_length]
+
+/-- **Unit III-U7, leg 2 — the extension is well-formed** (the §4 checks,
+clause by clause; see the section record for the check-by-check map). -/
+theorem InteriorChildAt.extend_wf (hc : InteriorChildAt f H D S ψ μ)
+    (hwf : EWF H) (hint : InteriorChain H) : EWF hc.extend := by
+  have hintE := hc.extend_interior hint
+  refine ⟨⟨?_, ?_, ?_, ?_, ?_⟩, ⟨?_⟩, ⟨?_, ?_, ?_, ?_⟩⟩
+  -- W1a: ℓ = 1, e ≥ 2 ⟹ inc — at the new node from e·g ≥ 2·1.
+  · intro i ν' hν' hsel hℓ he2
+    rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+    · exact hwf.w1a i ν' hold hsel hℓ he2
+    · have he2' : 2 ≤ S.e := he2
+      have hmul : 2 * 1 ≤ S.e * ψ.natDegree :=
+        Nat.mul_le_mul he2' hc.deg_pos
+      show decide (2 ≤ S.e * ψ.natDegree) = true
+      exact decide_eq_true (by omega)
+  -- W1b: ℓ = 1, e = 1 — VACUOUS at an interior child (μ ≥ 2 and g ≥ 1
+  -- force μ·g ≥ 2 > 1 = ℓ against the window bound; the rev-5
+  -- minor-note disposition of ADEQ's W1 e = 1 case).
+  · intro i ν' hν' hsel hℓ he1
+    rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+    · exact hwf.w1b i ν' hold hsel hℓ he1
+    · have hℓ' : S.ℓ = 1 := hℓ
+      have hmul : 2 * 1 ≤ μ * ψ.natDegree :=
+        Nat.mul_le_mul hc.interior hc.deg_pos
+      have hle : μ * ψ.natDegree ≤ 1 := hℓ' ▸ hc.window
+      exact absurd hle (by omega)
+  -- W2: species law — by construction at the new node.
+  · intro i ν' g μ'' hν' hsel
+    rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+    · exact hwf.w2 i ν' g μ'' hold hsel
+    · have h : (some (ψ.natDegree, μ) : Option (ℕ × ℕ)) = some (g, μ'') :=
+        hsel
+      simp only [Option.some.injEq, Prod.mk.injEq] at h
+      obtain ⟨h1, -⟩ := h
+      subst h1
+      exact ⟨of_decide_eq_true, decide_eq_true⟩
+  -- W3: interior nodes are 𝐇's (interior scoping covers ALL nodes) + a₀.
+  · exact ⟨fun i ν' _ hν' gμ hgμ => (hintE.2 i ν' hν').2 gμ hgμ,
+      fun _ => hint.a0_ge_two⟩
+  -- W5: every non-last node continuing — from the interior scoping.
+  · exact fun i ν' _ hν' => (hintE.2 i ν' hν').1
+  -- W4: dressing laws — old slots ride, the site slot is ψ's own rows.
+  · intro i ν' g μ'' hν' hsel
+    rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+    · rw [hc.extend_psihat_of_ne (Nat.ne_of_lt hi)]
+      exact hwf.w4dress i ν' g μ'' hold hsel
+    · rw [hc.extend_psihat_site]
+      have h : (some (ψ.natDegree, μ) : Option (ℕ × ℕ)) = some (g, μ'') :=
+        hsel
+      simp only [Option.some.injEq, Prod.mk.injEq] at h
+      obtain ⟨h1, -⟩ := h
+      subst h1
+      exact ⟨hc.monic, hc.irr, rfl, hc.ne_X⟩
+  -- Tower rows: `fld` unchanged; the new step degree is the child's row.
+  · exact hwf.towerBase
+  · exact hwf.towerStep
+  · exact hwf.towerBaseDegree
+  · intro i ν' g μ'' hν' hsel
+    rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+    · exact hwf.towerStepDegree i ν' g μ'' hold hsel
+    · have h : (some (ψ.natDegree, μ) : Option (ℕ × ℕ)) = some (g, μ'') :=
+        hsel
+      simp only [Option.some.injEq, Prod.mk.injEq] at h
+      obtain ⟨h1, -⟩ := h
+      subst h1
+      exact hc.tower
+
+/-- **Unit III-U7, leg 3 — the extension is Cons_f** over its supplied
+semantic data: (c0) untouched; (c1)/(c2) below the site by the displayed
+stability rows; at the site by construction ("the hypothesis IS the
+data"). -/
+theorem InteriorChildAt.extend_consF (hc : InteriorChildAt f H D S ψ μ)
+    {R : GMNReader f (Theta H) D}
+    (hint : InteriorChain H) (hcons : ConsF f H D R)
+    (D' : GMNData f (Theta hc.extend))
+    (R' : GMNReader f (Theta hc.extend) D')
+    (hroot' : D'.rootOrder = D.rootOrder)
+    (hsides' : ∀ i, i ≤ H.nodes.length →
+      D'.principalSides i = D.principalSides i)
+    (hord' : ∀ i, i ≤ H.nodes.length →
+      D'.residualOrder i = D.residualOrder i) :
+    ConsF f hc.extend D' R' := by
+  have hintE := hc.extend_interior hint
+  refine ⟨?_, ?_⟩
+  · -- (c0): the root read is level-free and rides the compatibility rows.
+    show R'.rootOrd = hc.extend.a0
+    rw [R'.rootOrd_spec, hroot', ← R.rootOrd_spec]
+    exact hcons.1
+  · intro i ν' hν'
+    rw [hintE.continuingPart_nodes] at hν'
+    rcases hc.extend_cases hν' with ⟨hi, hold⟩ | ⟨rfl, rfl⟩
+    · -- Below the site: the old (c1)/(c2), transported by stability.
+      have hold' : H.continuingPart.nodes[i]? = some ν' := by
+        rw [hint.continuingPart_nodes]
+        exact hold
+      obtain ⟨Si, hSi, hfields, hsel⟩ := hcons.2 i ν' hold'
+      obtain ⟨hmem, hslope⟩ := (R.side_spec i Si).mp hSi
+      refine ⟨Si, (R'.side_spec i Si).mpr ⟨?_, ?_⟩, hfields, ?_⟩
+      · rw [hsides' i (le_of_lt hi)]
+        exact hmem
+      · show requestedSlope (Theta hc.extend) i = some (Si.e, Si.h)
+        rw [hc.extend_requestedSlope_lt hint hi]
+        exact hslope
+      · intro g μ'' hgμ
+        rw [R'.resOrd_spec, hord' i (le_of_lt hi), ← R.resOrd_spec]
+        exact hsel g μ'' hgμ
+    · -- At the site: S is the read side, fields match by construction.
+      refine ⟨S, (R'.side_spec _ S).mpr ⟨?_, ?_⟩, rfl, ?_⟩
+      · rw [hsides' _ le_rfl]
+        exact hc.side_mem
+      · show requestedSlope (Theta hc.extend) H.nodes.length
+          = some (S.e, S.h)
+        exact hc.extend_requestedSlope_site hint
+      · intro g μ'' hgμ
+        have h : (some (ψ.natDegree, μ) : Option (ℕ × ℕ)) = some (g, μ'') :=
+          hgμ
+        simp only [Option.some.injEq, Prod.mk.injEq] at h
+        rw [R'.resOrd_spec, hord' _ le_rfl, hc.resOrd_eq]
+        exact h.2
+
+/-- **Unit III-U7 — `cu1_spanTotal` (interior adequacy, per-site SPAN
+totality; the ADEQ interior half).**  CU1 rev-5 §4, Corollary CU-1-ADEQ's
+chain-extension conclusion, quantified over EVERY interior child at the
+site (the ∀-(S, ψ) totality — S, ψ, μ and the datum ride as binders): the
+harvest extension of 𝐇 by ν(S, ψ) — the III-U3c builder's node, dressing
+slot ψ̂_k := ψ — is a well-formed (`EWF`) all-continuing non-complete
+(`InteriorChain`) Cons_f chain.  These are exactly `cu1`'s displayed
+per-instance hypotheses at the extension, so Theorem CU-1 (III-U5, its own
+unit) realizes the extended chain by ONE application once it lands; the
+realization clause is NOT claimed here (deps line: III-U3c only).  The
+extension's semantic data (D', R') ride as hypotheses with the three
+displayed stability rows — the scaffold constructs no GMN objects.  See
+the section record for the full scope fence and rendering flags. -/
+theorem cu1_spanTotal {R : GMNReader f (Theta H) D}
+    (hwf : EWF H) (hint : InteriorChain H) (hcons : ConsF f H D R)
+    (hchild : InteriorChildAt f H D S ψ μ)
+    (D' : GMNData f (Theta hchild.extend))
+    (R' : GMNReader f (Theta hchild.extend) D')
+    (hroot' : D'.rootOrder = D.rootOrder)
+    (hsides' : ∀ i, i ≤ H.nodes.length →
+      D'.principalSides i = D.principalSides i)
+    (hord' : ∀ i, i ≤ H.nodes.length →
+      D'.residualOrder i = D.residualOrder i) :
+    hchild.extend.nodes = H.nodes ++ [hchild.node] ∧
+      EWF hchild.extend ∧ InteriorChain hchild.extend ∧
+      ConsF f hchild.extend D' R' :=
+  ⟨rfl, hchild.extend_wf hwf hint, hchild.extend_interior hint,
+    hchild.extend_consF hint hcons D' R' hroot' hsides' hord'⟩
+
+end UnitIIIU7
 
 /-! ## Unit III-A5 — the `(accE, accF)` tie + saturation ⇔ ω = 1 at coherent
 `machineProj` (BP_III §2 row 768, MOVED TO WAVE 4 after III-U1): BLOCKED
@@ -2144,3 +2821,21 @@ end LeanUrat.Scaffold.DictIII
 #print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_getElem?_of_lt
 #print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_lastSlot
 #print axioms LeanUrat.Scaffold.DictIII.harvestNode_machineFace
+
+-- Footprint audit (unit III-U4): expect Lean core only — the kernel, both
+-- step faces, the assembled leg, and the gate (incl. the imported
+-- `HK57.sideReads0_landing` witness) are all proved with no sorry.
+#print axioms LeanUrat.Scaffold.DictIII.stateBinding_of_lastRecord
+#print axioms LeanUrat.Scaffold.DictIII.stateBinding_snoc
+#print axioms LeanUrat.Scaffold.DictIII.stateBinding_historySnoc
+#print axioms LeanUrat.Scaffold.DictIII.cu1_stepBinding
+#print axioms LeanUrat.Scaffold.DictIII.u4Gate_stateBinding
+
+-- Footprint audit (unit III-U7): expect Lean core only — the extension
+-- builder, the interior-child legs, and the assembled `cu1_spanTotal` are
+-- all proved with no sorry (no [M]-row consumed; per-instance rows only).
+#print axioms LeanUrat.Scaffold.DictIII.EHist.harvestExtend
+#print axioms LeanUrat.Scaffold.DictIII.InteriorChildAt.extend_interior
+#print axioms LeanUrat.Scaffold.DictIII.InteriorChildAt.extend_wf
+#print axioms LeanUrat.Scaffold.DictIII.InteriorChildAt.extend_consF
+#print axioms LeanUrat.Scaffold.DictIII.cu1_spanTotal
