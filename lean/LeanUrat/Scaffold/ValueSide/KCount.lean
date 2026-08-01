@@ -2,9 +2,14 @@
 BP_IV §1.3 — `KCount.lean` (ROOT Step 15, the Smith-profile fiber count + (SIB)).
 Units landed in this file so far: K0a (`zmodVal`), K0b (`minVal` + the three
 valuation laws: `zmodVal_add_ge_min`, `zmodVal_pow_mul_ge`, and the
-finite-difference factorization transport `minVal_polyMap_sub_ge`).
-Pending (later waves, per BP_IV §4): K1–K8a, the fiber chart K7*, and the
-(SIB) product law.
+finite-difference factorization transport `minVal_polyMap_sub_ge`), K6
+(`kcount_guard_range` + the `e_max`-sup packaging `kcount_guard_range_sup`),
+K3a (`card_singleCoordSubgroup` + the `min`-exponent form
+`card_singleCoordSubgroup_min` feeding K3b's `card_smithSubgroup`), K7a
+(`prod_add_sub_prod` + `prod_add_sub_prod_split`, the subset product
+expansion).
+Pending (later waves, per BP_IV §4): K1–K8a, K3b, the fiber chart K7b/K7c,
+and the (SIB) product law.
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
 * Math source of record: `lean/notes/openmath/O10_phaseB_attempt_rev2.md` §3
@@ -171,5 +176,176 @@ theorem minVal_polyMap_sub_ge {p M n : ℕ} [Fact p.Prime]
   refine le_minVal (minVal_le _) fun i => ?_
   rw [Pi.sub_apply]
   exact zmodVal_eval_sub_ge (S i) c c'
+
+/-! ### K6: the guard range (O-10 §3 Theorem 1(ii), the D-8 guard range) -/
+
+/-- K6 (O-10 §3 Theorem 1(ii), the D-8 guard range): once `M ≥ e_max`
+    (per-coordinate form: every Smith exponent `e i ≤ M`), the truncated
+    exponent sum `s(M) := Σ_i min(e_i, M)` equals `ρ` — the Lemma-2 quantity
+    `ρ = Σ_i e_i`, carried here as the named hypothesis `hρ`.  Pure Finset
+    arithmetic; with K5 (`kcount_fiber_card`) this is the `p^ρ` clause. -/
+theorem kcount_guard_range {n M ρ : ℕ} (e : Fin n → ℕ)
+    (hmax : ∀ i, e i ≤ M) (hρ : ∑ i, e i = ρ) :
+    ∑ i, min (e i) M = ρ := by
+  rw [← hρ]
+  exact Finset.sum_congr rfl fun i _ => min_eq_left (hmax i)
+
+/-- K6, literal `e_max` packaging: the guard hypothesis as
+    `e_max := Finset.univ.sup e ≤ M`. -/
+theorem kcount_guard_range_sup {n M ρ : ℕ} (e : Fin n → ℕ)
+    (hmax : Finset.univ.sup e ≤ M) (hρ : ∑ i, e i = ρ) :
+    ∑ i, min (e i) M = ρ :=
+  kcount_guard_range e
+    (fun i => le_trans (Finset.le_sup (Finset.mem_univ i)) hmax) hρ
+
+/-! ### K3a (BP_IV §2 K-table; O-10 §3 Step 4): single-coordinate subgroup card
+
+`#(p^a · ZMod(p^M)) = p^(M−a)`: the multiples of `p^a` in `ZMod (p^M)`, stated
+as the divisibility subtype whose per-coordinate form K3b's
+`card_smithSubgroup` consumes (`(p : ZMod (p^M))^(M − e i) ∣ c i`).
+Truncated ℕ-subtraction throughout: for `a ≥ M` the subgroup is `{0}` and
+both sides are `1`, so the count law is unconditional in `a`. -/
+
+/-- K3a, main case `a ≤ M`: the multiples of `p^a` in `ZMod (p^M)` number
+    `p^(M−a)`, via the explicit chart `Fin (p^(M−a)) → {x // p^a ∣ x}`,
+    `k ↦ p^a·k` (a bijection: injective by mod-`p^M` size bounds, surjective
+    by the `pow_dvd_iff_dvd_val` bridge). -/
+theorem card_singleCoordSubgroup_of_le {p M a : ℕ} [Fact p.Prime] (ha : a ≤ M) :
+    Nat.card {x : ZMod (p ^ M) // (p : ZMod (p ^ M)) ^ a ∣ x} = p ^ (M - a) := by
+  haveI : NeZero (p ^ M) := ⟨pow_ne_zero M (Fact.out : p.Prime).ne_zero⟩
+  have hp : 0 < p := (Fact.out : p.Prime).pos
+  have hsplit : p ^ a * p ^ (M - a) = p ^ M := by
+    rw [← pow_add, Nat.add_sub_cancel' ha]
+  have key : Function.Bijective
+      (fun k : Fin (p ^ (M - a)) =>
+        (⟨((p ^ a * (k : ℕ) : ℕ) : ZMod (p ^ M)), by
+            push_cast
+            exact dvd_mul_right _ _⟩ :
+          {x : ZMod (p ^ M) // (p : ZMod (p ^ M)) ^ a ∣ x})) := by
+    constructor
+    · intro k k' hkk'
+      have h1 : ((p ^ a * (k : ℕ) : ℕ) : ZMod (p ^ M))
+          = ((p ^ a * (k' : ℕ) : ℕ) : ZMod (p ^ M)) := Subtype.ext_iff.1 hkk'
+      have hval := congrArg ZMod.val h1
+      rw [ZMod.val_natCast, ZMod.val_natCast] at hval
+      have hklt : p ^ a * (k : ℕ) < p ^ M := by
+        rw [← hsplit]
+        exact mul_lt_mul_of_pos_left k.isLt (pow_pos hp a)
+      have hk'lt : p ^ a * (k' : ℕ) < p ^ M := by
+        rw [← hsplit]
+        exact mul_lt_mul_of_pos_left k'.isLt (pow_pos hp a)
+      rw [Nat.mod_eq_of_lt hklt, Nat.mod_eq_of_lt hk'lt] at hval
+      exact Fin.ext (Nat.eq_of_mul_eq_mul_left (pow_pos hp a) hval)
+    · rintro ⟨x, hx⟩
+      obtain ⟨m, hm⟩ := (pow_dvd_iff_dvd_val ha x).1 hx
+      have hmlt : m < p ^ (M - a) := by
+        have hlt : p ^ a * m < p ^ M := hm ▸ x.val_lt
+        rw [← hsplit] at hlt
+        exact lt_of_mul_lt_mul_left hlt (Nat.zero_le _)
+      refine ⟨⟨m, hmlt⟩, ?_⟩
+      apply Subtype.ext
+      change ((p ^ a * m : ℕ) : ZMod (p ^ M)) = x
+      rw [← hm, ZMod.natCast_rightInverse x]
+  rw [← Nat.card_congr (Equiv.ofBijective _ key), Nat.card_eq_fintype_card,
+    Fintype.card_fin]
+
+/-- K3a (BP_IV §2 K-table; O-10 §3 Step 4): single-coordinate subgroup count —
+    `#(p^a · ZMod(p^M)) = p^(M−a)` (truncated subtraction; unconditional
+    in `a`, since at `a ≥ M` both sides collapse to `1`). -/
+theorem card_singleCoordSubgroup {p M : ℕ} [Fact p.Prime] (a : ℕ) :
+    Nat.card {x : ZMod (p ^ M) // (p : ZMod (p ^ M)) ^ a ∣ x} = p ^ (M - a) := by
+  by_cases ha : a ≤ M
+  · exact card_singleCoordSubgroup_of_le ha
+  · have ha' : M < a := Nat.lt_of_not_le ha
+    haveI : NeZero (p ^ M) := ⟨pow_ne_zero M (Fact.out : p.Prime).ne_zero⟩
+    have h0 : (p : ZMod (p ^ M)) ^ a = 0 := by
+      have hM0 : (p : ZMod (p ^ M)) ^ M = 0 := by
+        have hcast : ((p ^ M : ℕ) : ZMod (p ^ M)) = 0 := ZMod.natCast_self _
+        push_cast at hcast
+        exact hcast
+      calc (p : ZMod (p ^ M)) ^ a
+          = (p : ZMod (p ^ M)) ^ M * (p : ZMod (p ^ M)) ^ (a - M) := by
+            rw [← pow_add, Nat.add_sub_cancel' ha'.le]
+        _ = 0 := by rw [hM0, zero_mul]
+    have hMa : M - a = 0 := Nat.sub_eq_zero_of_le ha'.le
+    simp only [h0, zero_dvd_iff, hMa, pow_zero]
+    exact Nat.card_eq_one_iff_unique.2
+      ⟨⟨fun x y => Subtype.ext (x.2.trans y.2.symm)⟩, ⟨⟨0, rfl⟩⟩⟩
+
+/-- K3a in the exact exponent form K3b consumes per coordinate:
+    `#{x // p^(M−e) ∣ x} = p^(min e M)` (the `M − (M − e) = min e M`
+    truncated-subtraction collapse, matching `card_smithSubgroup`'s RHS). -/
+theorem card_singleCoordSubgroup_min {p M : ℕ} [Fact p.Prime] (e : ℕ) :
+    Nat.card {x : ZMod (p ^ M) // (p : ZMod (p ^ M)) ^ (M - e) ∣ x}
+      = p ^ (min e M) := by
+  rw [card_singleCoordSubgroup (M - e)]
+  congr 1
+  omega
+
+/-! ### K7a: the subset product expansion (O-10 §3 Step 1)
+
+`Π_j (h_j + a_j) − Π_j h_j = Σ_{S ⊆ s, |S| ≥ 1} (Π_{j∈S} a_j) · (Π_{i∉S} h_i)`
+via Mathlib `Finset.prod_add`, then the `|S| = 1` vs `|S| ≥ 2` split: the
+singleton terms form the linear (Jacobian) part `Φ_h(a)` and the `|S| ≥ 2`
+tail is the quadratic remainder `Q(a)` that K7b feeds the `p^{2τ}` extraction.
+Stated over an arbitrary commutative ring so K7b/K7c can consume it at
+`ℤ_p`-polynomial coefficients.  (BP_IV §1.3 K7 doc + §2 K-table row K7a; the
+blueprint displays no Lean block for K7a — the statements below transcribe
+the table row's identity.) -/
+
+section K7a
+
+variable {R : Type*} [CommRing R] {ι : Type*} [DecidableEq ι]
+
+/-- K7a (full expansion): `Π (h + a) − Π h` is the sum over *nonempty* subsets
+    `S ⊆ s` of `(Π_{j∈S} a_j) · (Π_{i∉S} h_i)`. -/
+theorem prod_add_sub_prod (s : Finset ι) (h a : ι → R) :
+    ∏ j ∈ s, (h j + a j) - ∏ j ∈ s, h j
+      = ∑ S ∈ s.powerset.filter (fun S => S.Nonempty),
+          (∏ j ∈ S, a j) * ∏ i ∈ s \ S, h i := by
+  have hexp : ∏ j ∈ s, (h j + a j)
+      = ∑ S ∈ s.powerset, (∏ j ∈ S, a j) * ∏ i ∈ s \ S, h i := by
+    rw [Finset.prod_congr rfl fun j _ => add_comm (h j) (a j), Finset.prod_add]
+  have hempty : s.powerset.filter (fun S => ¬ S.Nonempty) = {∅} := by
+    ext t
+    simp only [Finset.mem_filter, Finset.mem_powerset,
+      Finset.not_nonempty_iff_eq_empty, Finset.mem_singleton]
+    constructor
+    · exact fun ht => ht.2
+    · rintro rfl
+      exact ⟨Finset.empty_subset s, rfl⟩
+  rw [hexp, ← Finset.sum_filter_add_sum_filter_not s.powerset (fun S => S.Nonempty),
+    hempty, Finset.sum_singleton, Finset.prod_empty, Finset.sdiff_empty, one_mul,
+    add_sub_cancel_right]
+
+/-- K7a (the `|S| = 1` vs `|S| ≥ 2` split): the singleton subsets contribute
+    the linear part `Σ_{j∈s} a_j · Π_{i∈s, i≠j} h_i`; the `|S| ≥ 2` tail is
+    the quadratic remainder `Q(a)` consumed by K7b. -/
+theorem prod_add_sub_prod_split (s : Finset ι) (h a : ι → R) :
+    ∏ j ∈ s, (h j + a j) - ∏ j ∈ s, h j
+      = (∑ j ∈ s, a j * ∏ i ∈ s.erase j, h i)
+        + ∑ S ∈ s.powerset.filter (fun S => 2 ≤ S.card),
+            (∏ j ∈ S, a j) * ∏ i ∈ s \ S, h i := by
+  rw [prod_add_sub_prod]
+  have hsplit : s.powerset.filter (fun S => S.Nonempty)
+      = s.powerset.filter (fun S => S.card = 1)
+        ∪ s.powerset.filter (fun S => 2 ≤ S.card) := by
+    rw [← Finset.filter_or]
+    refine Finset.filter_congr fun t _ => ?_
+    rw [← Finset.one_le_card]
+    omega
+  have hdisj : Disjoint (s.powerset.filter fun S => S.card = 1)
+      (s.powerset.filter fun S => 2 ≤ S.card) := by
+    rw [Finset.disjoint_left]
+    intro t ht ht'
+    rw [Finset.mem_filter] at ht ht'
+    omega
+  rw [hsplit, Finset.sum_union hdisj]
+  congr 1
+  rw [← Finset.powersetCard_eq_filter, Finset.powersetCard_one, Finset.sum_map]
+  refine Finset.sum_congr rfl fun j hj => ?_
+  simp [Finset.erase_eq]
+
+end K7a
 
 end LeanUrat.Scaffold

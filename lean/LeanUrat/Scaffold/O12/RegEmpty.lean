@@ -28,6 +28,36 @@ noncomputable def BnMember.toAbs {n : ℕ} (T : BnMember n) : AbsSolveTable wher
   Phi     := fun e => T.booking.Phi e
   entries := fun e => T.entries e
 
+/-! ## Unit II-G2: the ℛ-discipline at every member
+
+Dets: at e ≤ 1 the guarded kernel vanishes, so Φ = 1 — trivially a nonzero
+ℛ-unit; at e ≥ 2 the II-B3 forms `Phi_O1_eq`/`Phi_O2_eq`/`Phi_O2r_eq`/`Phi_O3_eq`
+(Bookings.lean) rewrite Φ to the landed determinants, and the landed L7(iii)
+units `detO1_unit`/`detO3_unit` (MovesU/O12PoleFree.lean) close the triple
+(`detO2 = detO1` definitionally). Entries: Theorem 2
+(`BnMember.entries_memRcyc`, unit II-R13). -/
+
+/-- The ℛ-discipline holds at every member: dets are ℛ-units (II-B10 + landed
+`detO1_unit`/`detO3_unit` + `Phi_one`), entries in ℛ (Theorem 2). -/
+theorem BnMember.discipline {n : ℕ} (T : BnMember n) : T.toAbs.RcycDiscipline := by
+  refine ⟨fun e => ?_, fun e g hg => T.entries_memRcyc e g hg⟩
+  change T.booking.Phi (e : ℕ) ≠ 0 ∧ MemRcyc (T.booking.Phi (e : ℕ)) ∧
+    MemRcyc (T.booking.Phi (e : ℕ))⁻¹
+  by_cases he : (e : ℕ) ≤ 1
+  · -- e ≤ 1: the guarded kernel is 0, Φ = 1
+    have h1 : T.booking.Phi (e : ℕ) = 1 := by
+      simp [Booking.Phi, Booking.kernel, he]
+    rw [h1, inv_one]
+    exact ⟨one_ne_zero, LeanUrat.MovesU.memRcyc_one, LeanUrat.MovesU.memRcyc_one⟩
+  · -- e ≥ 2: rewrite to the landed dets, fire the landed units
+    have he2 : 2 ≤ (e : ℕ) := by omega
+    have hE3 : 3 ≤ blockE (e : ℕ) := blockE_ge_three he2
+    cases hb : T.booking with
+    | O1 => rw [Phi_O1_eq he2]; exact LeanUrat.MovesU.detO1_unit (by omega)
+    | O2 => rw [Phi_O2_eq he2]; exact LeanUrat.MovesU.detO1_unit (by omega)
+    | O2r => rw [Phi_O2r_eq he2]; exact LeanUrat.MovesU.detO1_unit (by omega)
+    | O3 => rw [Phi_O3_eq he2]; exact LeanUrat.MovesU.detO3_unit (by omega)
+
 /-! ## Unit II-G4: Corollary D at 𝔅_n (the Step-17 (r1) margin numbers)
 
 Route (per the blueprint's II-G4 dependency row): rewrite each booking's Φ_e as

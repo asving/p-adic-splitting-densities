@@ -434,4 +434,14 @@ theorem BnMember.entries_memRcyc {n : ℕ} (T : BnMember n) :
   rintro f ⟨e', -, σ, rfl⟩
   exact beta_memRcyc T.hbase T.blocks e' σ
 
+/-- Every solved leg stays in ℛ_cyc at every substitution depth δ ≥ 1 (brief
+§2.3(vi): the depth-δ legs are x ↦ x^δ substitutions of the depth-1 solve).
+[BP_II unit II-R14] Proof: II-R5 (`beta_memRcyc`, fired from `T.hbase` +
+`T.blocks`) puts β_e(σ) in ℛ_cyc; `MemRcyc.powSubst` (ℛ_cyc is closed under
+x ↦ x^δ, since cyclotomic-supported denominators expand to cyclotomic-supported
+denominators) transports it to depth δ. -/
+theorem BnMember.beta_leg_memRcyc {n : ℕ} (T : BnMember n) (e : ℕ)
+    (σ : MovesU.SplittingType n) (δ : ℕ+) : MemRcyc (MovesS.powSubst δ (T.β e σ)) :=
+  (beta_memRcyc T.hbase T.blocks e σ).powSubst δ
+
 end LeanUrat.Scaffold
