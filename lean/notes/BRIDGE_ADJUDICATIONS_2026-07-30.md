@@ -1643,3 +1643,14 @@ totals, (G-a)-(G-d), M2 intact). 3 residual GAPS = audit/bookkeeping.
 Report: lean/notes/openmath/D11r4_pass2_2026-08-04.md. UNIT B FIRES:
 3-gap leaf patch then ROOT r11 (twelve rows, E-list per design V5,
 counter to ZERO) as one sequenced workflow.
+
+## UNIT B EXECUTED: ROOT REVISION 10 — SUSPENSION CURED (36ef1b0, 2026-08-04)
+Leaf rev 3 (badfcf4) folded the 3 pass-2 gaps ((K1-CANON) discharge =
+LEAF-EXTERNAL work, recorded). r11 E-edits E1-E9+E-M3 ALL DONE: Step 17 at
+r4 true scope w/ (ROW-Sigma) rescope; Step 18b at M2(RE) w/ (PACK-iv) =
+(H5)'s 4th row-law (closed 2-edge consumption set); (H8)+(H9) rows added
+((K1-CANON) housed in (NSF-INT); (NSF-KEY) KNOWN FALSE AT HEAD, Unit-C/
+sign-off gated); Step 12 delivery rescoped (E-M3); TWELVE rows <-> (H1)-
+(H9); counter ZERO; §16 carries the record + VC-next charge; PROJECT_STATE
+synced (cured at composition level; acceptance NOT re-earned). VC11
+launched = pass 1 of the fresh model-diverse bar.
