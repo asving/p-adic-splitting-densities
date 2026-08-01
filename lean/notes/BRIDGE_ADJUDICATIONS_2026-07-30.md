@@ -1769,3 +1769,12 @@ via Bash (semantic+math verification per the directive) -> fold -> READY.
 Lean prover fan-outs then run as division workflows SEQUENTIALLY (the 429
 throttle stands). Overlaps honored: H9 coordinates with Unit C (in
 flight); H5 builds on BP_IV + the r4 leaf; H6/H7 on BP_III/BP_V.
+
+## VC14: COMPOSITION-SOUND — COUNTER ONE OF TWO (2026-08-05)
+Codex end-to-end on REVISION 12: clean; the enumeration-audit claim
+TESTED and held; zero regressions. VC15 (fresh Fable, hostile, max) =
+the deciding pass. NOTE ON RECORD: Unit C's landing makes the (NSF-KEY)
+"KNOWN FALSE AT HEAD" status note conservative-stale (the repair landed
+AFTER REVISION 12 froze; the row remains sound as displayed hypothesis —
+overpriced, never underpriced); the H9 lead is writing the discharge
+adjudication; r14 executes AFTER the bar closes.

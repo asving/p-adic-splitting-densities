@@ -121,6 +121,16 @@ the `machineProj`/M_𝐇·ν̂ tie) are BLOCKED — record at the unit section.
 This cures the FIRST item of the III-U7 record's unblock order (the
 node-builder vocabulary); the `MovesD.R7_runRealizer` import pins the
 unit's §3.1 quarry (anchors at the unit section).
+[UPDATE (re-run, 2026-08-01, after the III-U1 `machineProj` landing):
+ground 2 of the blocked record ADVANCED at the carrier level — the
+machine-side creation target `historySnoc` (M_𝐇·ν̂, the corpus face the
+record anticipated) and its π-tie lemmas (`machineEHist_historySnoc_base/
+a0/psi0/nodes/getElem?_of_lt/lastSlot`) plus the composed machine face
+`harvestNode_machineFace` (harvest of THE identified pair = the machine
+record's emitted 𝔈-face, REALIZED-free) are LANDED and PROVED, Lean-core
+(footprint audit extended).  Grounds 1, 3, 4 (the (M6a)-row ruling, the
+§1.3 GRB/FRESH scope repair, the (M6c)(i) prose pin) STAND — the unit
+stays PARTIAL.]
 
 Status at hand-off (unit III-A5, re-run 2026-08-01 after III-U1): BLOCKED —
 record at the end of the file, REFRESHED at this re-run.  The `MovesT`
@@ -1197,6 +1207,17 @@ grounds each verified at this pin (2026-08-01):
    `machineProj` (III-U1, UNLANDED — the III-U5 census below) and the
    machine-side IH (REALIZED(f, M_𝐇), clause (ii) at k) — `cu1`'s own
    conclusion vocabulary, unlanded with it.
+   [UPDATE (prover III-U3c re-run, 2026-08-01): ADVANCED at the carrier
+   level after the III-U1 `machineProj` landing — the creation target
+   (`historySnoc`) and its π-tie (`machineEHist_historySnoc_*`: root datum
+   preserved, 𝔈-nodes = snoc of emitted records, prefix slots stable, the
+   created slot = `nodeToE ν̂`) plus the composed face
+   `harvestNode_machineFace` (harvest of THE identified pair = `nodeToE` of
+   the machine node one slot up) are LANDED and PROVED below the kernel
+   legs, Lean-core (they read `machineEHist`, NOT the W3-sorry'd
+   certificate).  STILL blocked in this ground: coherence preservation
+   across the snoc and the REALIZED IH — `cu1`'s conclusion vocabulary,
+   unlanded with it.]
 3. The ≥ 2-order supply of the step ("≥ 2 fires hGRB + hFRESH", row 807) is
    COMPILED-VACUOUS at this pin: the III-U8 gate verdict below proves
    `GRB p F`/`FRESH p F` uninhabited as displayed — stop-the-line for any
@@ -1434,6 +1455,132 @@ theorem harvestNode_gate :
       le_rfl le_rfl le_rfl = ol6GateNode := by
   refine ENodeData.ext' rfl rfl rfl rfl rfl rfl ?_
   decide
+
+/-! ### Machine-side creation target (BLOCKED-record ground 2, ADVANCED
+2026-08-01 after the III-U1 `machineProj` landing): the corpus face `M_𝐇·ν̂`
+and its π-tie at the Lean-core `machineEHist` level.  The record above
+anticipated exactly this carrier ("corpus face: `History.snoc` at a
+`MovesC.Node`"); `machineEHist` consumes NO coherence (its header note), so
+every tie below is sorryAx-FREE even while `machineProj`'s W3 certificate row
+carries the III-U1 honest sorry.  What still rides the fenced rulings:
+coherence preservation across the snoc (the machine-side IH / REALIZED
+vocabulary, unlanded with `cu1`), and the (M6a)/(M6c)(i) firing legs —
+grounds 1, 3, 4 of the record STAND. -/
+
+/-- **Unit III-U3c, the machine-side creation target** `M_𝐇·ν̂_{k+1}` (CU-1
+rev-5 §3 step item 3(c)'s creation, at the corpus carrier): the machine
+history extended by one non-root record.  Scaffold-local name per the
+`nodeToE` convention (the corpus declares no `History.snoc`); the `root_iff`
+law is re-certified across the append — the new slot is non-root by the
+`hm` binder, and slot 0 stays in the old prefix.  No coherence consumed. -/
+def historySnoc (M : MovesC.History p F) (m : MovesC.Node p F)
+    (hm : m.species ≠ MovesC.ReadSpecies.root) : MovesC.History p F where
+  nodes := M.nodes ++ [m]
+  nonempty := by simp
+  root_iff := by
+    intro j hj
+    have hjlt : j < M.nodes.length + 1 := by
+      simpa using hj
+    rcases Nat.lt_or_ge j M.nodes.length with hlt | hge
+    · rw [List.getElem_append_left hlt]
+      exact M.root_iff j hlt
+    · have hj' : j = M.nodes.length := by omega
+      subst hj'
+      simp only [List.getElem_concat_length]
+      constructor
+      · exact fun h => absurd h hm
+      · intro h0
+        exact absurd (List.eq_nil_of_length_eq_zero h0) M.nonempty
+
+@[simp] theorem historySnoc_nodes (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    (historySnoc M m hm).nodes = M.nodes ++ [m] := rfl
+
+/-- The creation target keeps the machine root read: head transports across
+the append (so the projected root datum below is UNCHANGED — clause (ii)'s
+root leg at the carrier level). -/
+theorem historySnoc_head (M : MovesC.History p F) (m : MovesC.Node p F)
+    (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    (historySnoc M m hm).nodes.head (historySnoc M m hm).nonempty
+      = M.nodes.head M.nonempty := by
+  show (M.nodes ++ [m]).head _ = _
+  rw [List.head_append_left M.nonempty]
+
+/-- π-tie, root datum (base field): π(M·ν̂) reads the SAME root frame. -/
+theorem machineEHist_historySnoc_base (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    (machineEHist (historySnoc M m hm)).base = (machineEHist M).base := by
+  rw [machineEHist_base, machineEHist_base, historySnoc_head]
+
+/-- π-tie, root datum (a₀ = root multiplicity): unchanged across creation. -/
+theorem machineEHist_historySnoc_a0 (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    (machineEHist (historySnoc M m hm)).a0 = (machineEHist M).a0 := by
+  rw [machineEHist_a0, machineEHist_a0, historySnoc_head]
+
+/-- π-tie, root datum (ψ̂₀): unchanged across creation.  `HEq` because
+`psi0`'s type depends on the base field — propositionally equal by the base
+tie, not definitionally (head-of-append does not reduce on an opaque node
+list). -/
+theorem machineEHist_historySnoc_psi0 (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    HEq (machineEHist (historySnoc M m hm)).psi0 (machineEHist M).psi0 := by
+  show HEq ((historySnoc M m hm).nodes.head (historySnoc M m hm).nonempty).ψ
+    ((M.nodes.head M.nonempty).ψ)
+  rw [historySnoc_head]
+
+/-- **π-tie, the creation itself** (the BLOCKED record's "tie π(M_{𝐇′}) =
+𝐇′" at the node-list face): the projected 𝔈-nodes of M·ν̂ are the projected
+𝔈-nodes of M with the emitted record `nodeToE ν̂` appended — the machine-side
+snoc IS an 𝔈-side snoc, slot for slot. -/
+theorem machineEHist_historySnoc_nodes (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    (machineEHist (historySnoc M m hm)).nodes
+      = (machineEHist M).nodes ++ [nodeToE m] := by
+  rw [machineEHist_nodes, machineEHist_nodes, historySnoc_nodes,
+    List.tail_append_of_ne_nil M.nonempty, List.map_append]
+  rfl
+
+/-- π-tie, prefix stability: every already-projected slot is untouched by
+the creation (what III-U4's state transport reads at levels ≤ k). -/
+theorem machineEHist_historySnoc_getElem?_of_lt (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root)
+    {i : ℕ} (hi : i < (machineEHist M).nodes.length) :
+    (machineEHist (historySnoc M m hm)).nodes[i]?
+      = (machineEHist M).nodes[i]? := by
+  rw [machineEHist_historySnoc_nodes, List.getElem?_append_left hi]
+
+/-- π-tie, the created slot: the ONE new 𝔈-slot of π(M·ν̂) carries exactly
+the emitted record of ν̂ — creation lands where the step needs it. -/
+theorem machineEHist_historySnoc_lastSlot (M : MovesC.History p F)
+    (m : MovesC.Node p F) (hm : m.species ≠ MovesC.ReadSpecies.root) :
+    (machineEHist (historySnoc M m hm)).nodes[(machineEHist M).nodes.length]?
+      = some (nodeToE m) := by
+  rw [machineEHist_historySnoc_nodes]
+  exact List.getElem?_concat_length
+
+/-- **Unit III-U3c, harvest = the machine record's emitted 𝔈-face** (item
+3(c)/(d)'s machine-side reading at the carrier level, REALIZED-free): at a
+projected history, the harvest of THE identified pair IS `nodeToE` of the
+machine node one slot up — `harvestNode_matches` composed with the
+projection's indexwise re-key `machineEHist_node_inv`.  The
+REALIZED/(M6a)/(M6c)(i) firing of this face stays BLOCKED per the record
+(grounds 1, 3, 4). -/
+theorem harvestNode_machineFace {f : Polynomial ℤ_[p]}
+    {M : MovesC.History p F} {D : GMNData f (Theta (machineEHist M))}
+    (hwf : EWF (machineEHist M)) {i : ℕ} {ν : ENodeData}
+    (hν : (machineEHist M).continuingPart.nodes[i]? = some ν)
+    {S : SideDatum} (hpair : CandidatePairAt f (machineEHist M) D i ν S)
+    {g μ : ℕ} (hsel : ν.sel = some (g, μ))
+    (hSe : 1 ≤ S.e) (hSh : 1 ≤ S.h) (hScop : Nat.gcd S.e S.h = 1)
+    (hSl : 1 ≤ S.ℓ) (hg : 1 ≤ g) (hμ : 1 ≤ μ) (hμg : μ * g ≤ S.ℓ) :
+    ∃ hi : i + 1 < M.nodes.length,
+      harvestNode S g μ hSe hSh hScop hSl hg hμ hμg
+        = nodeToE (M.nodes[i + 1]'hi) := by
+  obtain ⟨hi, hface⟩ := machineEHist_node_inv (getElem?_of_continuingPart hν)
+  refine ⟨hi, ?_⟩
+  rw [harvestNode_matches hwf hν hpair hsel hSe hSh hScop hSl hg hμ hμg]
+  exact hface.symm
 
 end UnitIIIU3c
 
@@ -1986,3 +2133,14 @@ end LeanUrat.Scaffold.DictIII
 #print axioms LeanUrat.Scaffold.DictIII.identified_side_laws
 #print axioms LeanUrat.Scaffold.DictIII.cu1_stepHarvest
 #print axioms LeanUrat.Scaffold.DictIII.harvestNode_gate
+-- Footprint audit (unit III-U3c, machine-side creation-target ties): expect
+-- Lean core only — the ties live at `machineEHist` (no coherence, no W3
+-- certificate), so NO sorryAx despite `machineProj`'s honest W3 sorry.
+#print axioms LeanUrat.Scaffold.DictIII.historySnoc
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_base
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_a0
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_psi0
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_nodes
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_getElem?_of_lt
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_historySnoc_lastSlot
+#print axioms LeanUrat.Scaffold.DictIII.harvestNode_machineFace
