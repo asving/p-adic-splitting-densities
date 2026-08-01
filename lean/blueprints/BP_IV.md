@@ -945,3 +945,137 @@ standing practice).
 | 22 | FIXED | D4 depends only on D3 and S5; the spurious D2 edge is removed. |
 | 23 | FIXED | Unsupported totals “58/48” are deleted; the blueprint uses explicit split chains instead of unreliable aggregate arithmetic. |
 | 24 | FIXED | T7 now has a complete signature with explicit `2 ≤ n`, `n ≤ 3`, and the concrete `canonicalOrderLEOne` classifier. |
+
+## REVISION 3 (mop-up adjudications, 2026-08-01)
+
+**Provenance.** The division run proved 69/88 units; SEVENTEEN were BLOCKED in
+three classes (missing-root cascades, refuted statements with compiled
+countermodels, ill-typed displays).  The first mop-up architect pass was
+rate-limit-killed mid-work (its landed half committed by the WIP sweep at
+ce9b384, in-file provenance blocks already citing "BP_IV REVISION 3"); this
+section is that promised blueprint-side record, covering BOTH passes.  Every
+repaired statement below is compile-verified in its landed module; the whole
+`Scaffold/ValueSide/` set builds green at this revision's commit with exactly
+ONE honest `sorry` (T7's per-cluster core, disposition below).  Adjudication
+charter: fix the CARRIER and keep the law when the transcription was wrong;
+re-scope minimally with the countermodel displayed as warrant when the law was
+false as scoped; opaque-parameter the cross-blueprint rows that BP_III/BP_V
+never chartered; never weaken silently.
+
+### R3.1 The seventeen blocked units — disposition table
+
+| unit | class | old (this blueprint's display) | new (landed) | warrant |
+|---|---|---|---|---|
+| C0d | missing root | `onLineSlots` signature only, no body | `onLineSlots D := Finset.image D.wt Finset.univ` (`CensusCore.lean`) — the O9 §2 TRI bullet's v = 0 fundamental layer of the on-line lattice `{e·v + wt(𝐣)}` | carrier holds no polygon datum, so the ledger-attained weights are the canonical finite slot set; the alternative (all lattice points ≤ max wt) is REFUTED against C1 (contains sub-weight class points with attainDim = 0 ≠ d); body flagged for Codex ratification |
+| H1 | cascade (C0d) | §1.0 `ADMFull` display | landed VERBATIM in `CensusCore.lean` immediately after the derived defs | pure cascade; no change |
+| C1 | REFUTED | statement `admFull_of_r_eq_zero` (kept) over the pre-revision C0 carrier | statement UNCHANGED, PROVED over the REVISION-3 carrier (R3.3) | compiled countermodel `C1Refutation.not_admFull_cmC1` (r = 0, e₀ = 2, h₀ = 1, f₀ = 1: attainDim 0 = e₀·f₀ = 2 ≠ 1 = d), git 33656d2; the CARRIER was wrong, the LAW right |
+| C2 | REFUTED both directions | statement `admFull_r1_iff` (kept) over the pre-revision carrier | statement UNCHANGED, PROVED via the pointwise core `attainDim_eq_d_iff_r1Bound_le` | compiled countermodels `C2Refutation.*` (both directions), git 33656d2; same carrier root cause as C1 |
+| T4→T5 | missing root | `discV` nowhere; T5 row unprovable | T4a `discV` (K0 `zmodVal` of `Polynomial.discr ∘ Box.toPoly`, cap-at-N convention) + T4 (`DrainageImports` verbatim + `undec_subset_tail`; NEW flagged supporting def `tailC n = (n−1)·n²`) + T5 `env_le_tail` landed standalone (the −N → −(N−1) exponent relaxation of T6's inline m = N bound) | T6 had been proved with the T5 bound INLINE (green independently of T5); the standalone displayed T5 row is now landed, closing the unit |
+| C4c→C6 | missing root | `censusW` missing | C4a `Stratum1`/`Box1` carrier + C4b `vertexChain_telescope(_units)` + C4c `censusW`/`canonicalStratum1`/`census_r0_law` + C6 `censusW_eval(_nonneg)` landed (`Census.lean`) | intent per M08 §2 Theorem 2; canonical carrier junction-pinned; NOTE: at r ≥ 1 the landed `censusW` reads the stage-0 shadow only — re-key chartered to the C5 wave-4 constructor |
+| C7 | cascade (C4c) | `censusW_eq_zero_of_unattained` | landed VERBATIM but VACUOUS: `Attained D := 0 < D.attainDim 0` is a THEOREM (`attained_always` — Gset 0 always contains the zero index), so `¬ Attained D` is empty | honesty invariant on display (`sorry`-free ≠ non-vacuous): the M08 padding clause lives at ATTAINED-VERTEX granularity the skeletal carrier does not key; the honest padding law re-lands with the C5 constructor's `censusW` re-key |
+| K5 | cascade (MulFiberData/SmithStable) | `kcount_fiber_card (F) (hS) (hne)` | carriers landed; K5 RE-SCOPED + PROVED with ONE new named binder `hsol : Nat.card F.SolutionSet = p^(Σ min …)` — the K1/K2∘K4∘K3 leg at the concrete (⋆⋆) set, supplied by the K7f builder | over the abstract carrier `SolutionSet`/`smithExp` are unrelated fields — instances with `\|SolutionSet\| ≠ p^Σmin` survive even the chart repair; `hS` kept to mirror the displayed binder list |
+| S2a | missing root | `TreeRecursion` never landed | landed in `SeriesTie.lean` with fields VERBATIM; S2a `slice_eq_partialNeumann` + S2b `seriesSum_eq_lfp` PROVED | ONE deviation, flagged: the §1.5 `: Prop` ascription is REJECTED by Lean 4.31 (a Prop structure cannot carry the data field `stateOf`; exact error in the S2b section); structure lands in `Type`, statement byte-identical |
+| C5/C5′ | elaboration failure | `CensusValueRows` binding five undeclared types + internal `∀ S : StratumR D` | landed (`Census.lean`): BP_IV-OWNED skeletal carriers `StratumR`/`JunctionStratum` (`hr : 1 ≤ D.r`, `count : ℕ → ℕ`); (GR-B)/(FRESH) as OPAQUE PARAMETERS `{GRBRow FreshRow : CensusData → Prop}`; strata as PARAMETERS `SW`/`SJ` | BP_III's landed `DictIII.GRB/FRESH` carry a DIFFERENT signature (prime+field, not CensusData) and BP_III.md never charters census-keyed forms — seam failure (R3.2); an internal ∀ over skeletal carriers is UNSATISFIABLE (arbitrary `count` falsifies any value law), killing every consumer — the parametric form asserts the law AT the engine's constructed strata (`canonicalStratum1` precedent, REV-2 finding 11) |
+| D4 + S5b | elaboration failure + under-constraint | §1.5/§1.6 displays binding `GRBRow/FreshRow/CensusValueRows/R1R4Row/TerminalSeamRows` (five unknown identifiers) and tying (A, b) to `C.chain` by NOTHING | LANDED (S5b in `SeriesTie.lean`, D4 in `DensityTie.lean`): opaque parameters per R3.2; `CensusValueRows` per its landed form; + ONE new named row `K2 : SolvePricing C K1` (the O11-K2 pricing content: solve datum pinned to `Rsh` byte-identically to `SolveSeam.r_is_solve`, margin regime, real solution reading off `evalℝ` at every σ-state, nonnegativity `sol_nonneg`).  D4 = S5b's binder list + `henv`; both PROVED (S5a/S4c2 assembly resp. D3+S5b with `ENNReal.toReal_ofReal` at `sol_nonneg`) | type-level warrant: the five-identifier probe transcript (kept verbatim in both files); proof-level warrant: with A = 0, b = 0, slice ≡ 0 (a legal `TreeRecursion`, forcing seriesSum ≡ 0) and all opaque rows `fun _ => True`, the displayed conclusion equates 0 with an arbitrary carrier's `Rval` — the display omitted exactly M04 Lemma 3.3's application scope (O-11 K2); no compiled countermodel owed since the display never elaborated |
+| K7e | REFUTED (escalated per §4) | `fiber_equiv_solutions` over the data-only `MulFiberData` | carrier gains the LAW field `chart : FiberNonempty → Fiber ≃ SolutionSet`; K7e = its projection, VERBATIM statement PROVED; O-10 Steps 1–2 content moves to NEW queued unit K7f (concrete instance builder over the landed K7a–K7d + K8b engine) | compiled countermodel `mulFiberDataCounter` + `fiber_equiv_solutions_display_refuted` (Fiber card 1 ≠ 2 = SolutionSet card, `FiberNonempty := True`), git 33656d2; the §1.3 doc comment PROMISES the chart the display dropped; statement fix made at the blueprint level, never prover-side |
+| K10 | REFUTED | `sib_product_law (A) (hS)` | RE-SCOPED + PROVED with ONE new named binder `himg : A.cellCount * p ^ A.sM = Nat.card A.Factor` (K10b's conclusion, discharged verbatim by `adaptedCell_constFiber_image_card`) | compiled countermodel STANDS on file as warrant: `K10Probe.sib_product_law_as_displayed_refuted` (`cellCount := 0`, `sM := 0`, `factorCount ≡ 1` satisfies every displayed field, 0 = 1 refutes); carrier itself unchanged |
+| M4 | ill-typed | `RatFunc.eval (q₀ : ℚ) (D.detFull e)` | `(D.detFull e).eval (RingHom.id ℚ) (q₀ : ℚ)` — Mathlib's `RatFunc.eval` takes the coefficient ring hom FIRST; this is the exact corpus spelling of `RegP.detFull_clause`; PROVED (the (r1)-projection of that clause) | application mismatch at the display; no content change |
+| M7 | ill-typed (four binder types) | `trueType_const_on_cylinder` binding `ThmERow`/`D15Row`/`CylEvent`/`IsContinuationEvent`, all undeclared | `CylEvent`/`IsContinuationEvent` AUTHORED (BP_IV-owned — they occur nowhere but this display): a level-N event is a `Finset (Box p n N)` (landed as `abbrev` — R3.4), a continuation event has all members undecided.  `ThmERow`/`D15Row` remain OWNER-BLOCKED: M7's PROOF consumes their CONTENT (the two-row transport), so the opaque-parameter pattern would leave M7 unprovable — not honest.  M7 stays blocked per the §4 failure protocol; it elaborates the moment BP_III lands the rows | BP_III.md charters neither row at any signature (R3.2); carriers flagged for Codex ratification |
+| K11 | no verbatim statement exists | §2 row description only ("`EngineSIBRow` named structure consuming actual K-LOC and (I-τ) rows") | AUTHORED (`KCount.lean` end): `EngineSIBRow (p n N) (KLoc ITau : Prop) (stratumCount : ℕ) : Prop` with fields `kloc`/`itau`/`cell` (an `AdaptedCell` carrying `SmithStable` + the K10b image law + `cellCount = stratumCount`) — K-LOC/(I-τ) as opaque Prop parameters (`K3DeltaRow` pattern); named [M] row, constructors owner-side | the §1.3 application note fixes the content ("displayed as binders"); BP_III owns the two rows and never chartered them |
+
+### R3.2 The cross-blueprint seam failure + the opaque-parameter ruling
+
+Grep of `blueprints/BP_III.md` and `BP_V.md` (2026-08-01): ZERO hits for
+`GRBRow`/`FreshRow`/`R1R4Row`/`TerminalSeamRows`/`ThmERow`/`D15Row`/K-LOC
+row names at any signature — §1.0's owner table pointed at modules the owner
+blueprints never chartered.  ESCALATED to the orchestrator as a seam failure.
+Since no owner declaration can be awaited, the ruling (H4 ledger,
+`ValueSide/Hyps.lean`) replaces "wait" with the sanctioned `K3DeltaRow`
+OPAQUE-PARAMETER pattern wherever the consumer's PROOF does not need the
+row's content: (R1)–(R4) as `{R1R4Row : ClassifierSpec n p → Prop}` applied
+at `X` (display token `R1R4Row n p X` → parameter applied at `X`, indices in
+the parameter's type); (H6) as `{TerminalSeamRows : FiberSeries n p X → Prop}`
+applied at `F`; (GR-B)/(FRESH) census-keyed forms as
+`{GRBRow FreshRow : CensusData → Prop}` (of `CensusValueRows` and of S5b/D4);
+K-LOC/(I-τ) as the Prop parameters of K11's `EngineSIBRow`.  When BP_III/BP_V
+land the real rows they INSTANTIATE the parameters — no re-key of any BP_IV
+statement.  The ONE consumer whose proof needs row CONTENT (M7) stays
+owner-blocked (table above).  `DictIII.Hyps` (GRB/FRESH, prime+field-indexed)
+is imported as the H4 partial; the census-keyed bridge is BP_III's to state.
+
+### R3.3 The C0 carrier fix (the J-staging adjudication behind C1/C2)
+
+The §1.2 display gave stage 0 a full `Fin (e 0) × Fin (f 0)` pair in `J` and
+an `e 0` factor in `period`.  The O9 ledger (rev5 §§1–2, math source of
+record) has stage 0 contributing the `f₀` monomials ONLY (φ₀ = x, weight 0;
+"m = f₀ = d at r = 0") and the period `e = e₁⋯e_r` (the O9 convention is
+e₀ = 1).  Against the display, C1 and C2 are FALSE (countermodels at e₀ = 2,
+R3.1); the TRANSCRIPTION was wrong, not the laws.  Fix (`CensusCore.lean`):
+the ledger stage multiplicity `ledgerE` (= 1 at stage 0, `e i` at i ≥ 1)
+replaces `e i` in the DERIVED defs `J`/`period`/`wt`-radix; the stage-0
+FIELDS `e 0`/`h 0` remain carrier data (consumed by C4c's canonical level-1
+polygon, untouched).  `wt` = the mixed-radix φ-monomial weight over the
+(P3) V-recursion (`Vrec`/`wphi`), transcribing O9 §4 (LED).  C1/C2 statements
+are byte-UNCHANGED and now PROVED; the retired countermodel datum satisfies
+C1 on the repaired carrier.
+
+### R3.4 Compile-gate repair from the 429-killed pass
+
+`CylEvent` had landed as `def` — `IsContinuationEvent`'s `∀ f ∈ cyl` binder
+then fails instance synthesis (`Membership ?m (CylEvent n p N)`), breaking
+`Hyps.lean` (and everything downstream) at HEAD.  Repaired to `abbrev`
+(reducible: the Finset `Membership` instance flows through); this was the
+sole red module of the committed WIP state.
+
+### R3.5 Retirements and re-charters
+
+* **S3b2 RETIRED**: the §1.5-displayed S3 statement `neumannSum_blockTriangular`
+  is landed and PROVED directly, and `neumannSum_blockTriangular_step` covers
+  the chained multi-block passage — the "induction on blocks" was one possible
+  proof route, not a residual obligation.
+* **K7f NEW queued unit (wave 4)**: the concrete `MulFiberData` instance
+  builder at the multiplication-map site — constructs `chart` (O-10 §3
+  Steps 1–2 via the landed K7a/K7b/K7c/K7d lemmas) and K5's `hsol` (via
+  K1/K2/K3/K4 + K8b's `SmithData`), and discharges K10's `himg` at concrete
+  cells via `adaptedCell_constFiber_image_card`.
+* **C5/C5′ constructor RE-CHARTERED (wave 4)**: `AnchoredMarchProof` had no
+  spec anywhere; the HARD unit now includes designing that carrier (the
+  anchored-march digit-read ladder, O9 rev-5 §5.1 — its counting kernels
+  `digitCost_of_surjective_read`/`digitCost_of_surjective_linear_read` are
+  landed and PROVED), proving `censusValueRows_of_anchoredMarch`, RE-KEYING
+  `censusW` beyond the stage-0 shadow, and carrying the O9 §4 padding clause
+  (C7's honest re-land).
+* **T7 stands PARTIAL**: verbatim `canonicalOrderLEOne_ceil` compiles; the
+  closure-reduction and Step-0 assembly layers are PROVED; the ONE honest
+  `sorry` is the per-cluster core `OrderLEOne.clusterWalk_audit` (Theorem N3's
+  walk-completion chain over Q̄_p root valuations — Facts EXT/DES/SF/HEN/EF/
+  GRD/HRG/D have no corpus or Mathlib carrier; a dedicated campaign, exactly
+  as §2 grades T7).  T8 is DISCHARGED (`discV_tail_count` constructs the
+  `tail` row through the corpus `MovesX.tailCountBound`).
+* **K9 constructor LANDED** (`smithStable_of_detDivisorRows`): `SmithStable`
+  from per-point determinantal-divisor rows + the mod-p^τ polydisc congruence
+  + the ρ-resultant bound, via `IsDetDivisor` uniqueness/transport; non-vacuity
+  gate `K9Gate.gate_smithStable` over a nonempty polydisc.  The named row
+  stays the single §1.3 carrier.
+
+### R3.6 The spine seam, re-pointed (supersedes §5's D4 bullet)
+
+`valueSide_massTie`'s binder list is now the REVISION-3 list: S5b's binders
+(with `SolvePricing` and the opaque row parameters) + `henv`.  BP_VI's
+clause-(R) statement must consume THIS list verbatim; any spine-side weakening
+remains a statement-fence event.  The M04 F1 fence is restated: the DEVICE
+`n2Chain` must never instantiate S5b/D4's carriers.
+
+### R3.7 Remaining open units after this revision
+
+| id | file | content | status |
+|---|---|---|---|
+| T7-core | `Transfer.lean` | `OrderLEOne.clusterWalk_audit` (the one `sorry`) | HARD, dedicated campaign (extended-valuation root theory) |
+| C5/C5′-ctor | `Census.lean` | `AnchoredMarchProof` design + `censusValueRows_of_anchoredMarch` + `censusW` re-key + padding clause | HARD, wave 4 (re-chartered, R3.5) |
+| K7f | `KCount.lean` | the concrete `MulFiberData`/`AdaptedCell` instance builder (chart + `hsol` + `himg`) | NEW queued, wave 4 |
+| M7 | `MassId.lean` | `trueType_const_on_cylinder` | OWNER-BLOCKED on BP_III's `ThmERow`/`D15Row` content rows |
+
+Everything else in the §2 unit table is landed and proved at this revision.
+
+— BP_IV mop-up architect (Fable), 2026-08-01, completing the 429-killed first
+pass; per the division-lead escalation and the §4 failure protocol.
