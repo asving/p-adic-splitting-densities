@@ -59,10 +59,10 @@ object in Lean so the law holds by a conformance theorem; residue displayed).
 
 | member | door | route | Lean deliverable (this blueprint) | retires the ROOT row? |
 |---|---|---|---|---|
-| clause 4 | **CONF** | route-b constructor (+ route-a n ≤ 3 data instances) | `packOfMember`/`refOfMember` + by-construction `PackCorrespondence` (unit C1); n = 2 instance gate (C4, E-phase-gated); n = 3 = BLOCKED/DATA (C5) | NO — retires only when executed AT THE CONSUMED INSTANCE (OL-O12-2 data pass at n = 3 / O-14d population at general n) |
+| clause 4 | **CONF** | route-b constructor; route-a = the n = 3 data pass (design §3.3's ONLY named route-a; n = 2 is falsifier/executed-instance EVIDENCE, not a route — REVISION 2 wording, Codex gap 10) | `packOfMember`/`refOfMember` + self-conformance `PackCorrespondence` (unit C1 — SCAFFOLDING, see the §2.1 caveat); n = 2 instance gate (C4, E-phase-gated); n = 3 = BLOCKED/DATA (C5) | NO — retires only when executed AT THE CONSUMED INSTANCE (OL-O12-2 data pass at n = 3 / O-14d population at general n) |
 | (PACK-i) | **PROVE** (block form) + seam note (chain form) | the member's solve β = u⁻¹·t commutes with `evalAt` at every q₀ ≥ 2 (pivot ≠ 0 by margins) | units P0/P1 (PROVED at the 𝔅_n block presentation) | block form YES at the 𝔅_n side; the K2 chain-vocabulary form (`RS4Chain.rsh_interp` at the real instance) rides the chain-instance seam (§2.2) |
-| (PACK-ii) | **PROVE at (RE)+MassFacts members** | the symbolic (ROW-Σ) skeleton (Σ_σ β_e = 1) + the nonneg induction ⟹ each value ∈ [0,1] | units R1/R3/B1/B2 | YES at (RE)+MassFacts members — the (RE) dependence is REAL (owed-pass C6's arbitrary-α counterexample), so this is the honest maximal scope |
-| (PACK-iii) | **PROVE** | `MemRcyc → OKat q₀` bridge + the PROVED Theorem 2 (`BnMember.entries_memRcyc`, landed II-R13) | units K1/K2 | YES at the 𝔅_n side (every member entry/leg, every q₀ ≥ 2) — the cheapest full discharge in the group |
+| (PACK-ii) | **PROVE at (RE)+MassFacts members** | the symbolic (ROW-Σ) skeleton (Σ_σ β_e = 1) + the nonneg induction ⟹ each value ∈ [0,1] | units R1/R3/B1/B2 | CONDITIONAL YES: proved at members carrying `REWitness`+`MassFacts` (a source-faithful conditionality — the (RE) dependence is REAL, owed-pass C6's arbitrary-α counterexample; C6 motivates the restriction, it does not certify minimality — REVISION 2 wording, Codex gap 6); the INTENDED member's witnesses are open (routes + the M1-shadow follow-on), so no ROOT retirement |
+| (PACK-iii) | **PROVE** | `MemRcyc → OKat q₀` bridge + the PROVED Theorem 2 (`BnMember.entries_memRcyc`, landed II-R13) | units K1/K2 | YES for the ENTRIES+LEGS collections (every `T.entries` member and every solved leg, every q₀ ≥ 2 — prime powers included); the identification of "every row's weight/shape series" with those collections + the chain-field seam stay displayed open (REVISION 2 wording, Codex gap 8) |
 | (PACK-iv) | **CONF** | typed (RE) carrier + route-b builder; route-a = n = 3 data pass | units D2 (carrier `REWitness`), C2 (`mkREMember`), C5 (route-a spec, BLOCKED/DATA) | NO at the consumed instance until route-a/route-b executes; the CARRIER + builder make the retirement executable |
 
 **The honesty invariant of this blueprint:** nothing here discharges (H5) at ROOT
@@ -93,20 +93,30 @@ names it in prose only). (B-INST) pins realized `RegData` tables to a `BnMember`
 `PackCorrespondence` pins an `AssembledPack` to a `UCarriers`-keyed reference.
 Same mathematical row (clause 4), two consumption vocabularies (Movement II
 zeros/poles vs Movement IV value side). RULING for H5 units: build on the LANDED
-BP_IV pair; unit C3's bundle carries a slot where II-G5's `InstancePin` plugs in
-when it lands (opaque-parameter pattern, the BP_IV REVISION-3 precedent). H5 does
-NOT declare `InstancePin` (owner: BP_II).
+BP_IV pair; C3's REVISION-2 `ref_reads_member` field is the T↔R ENTRY-LEVEL tie
+inside the bundle, and II-G5's `InstancePin`, when BP_II lands it, supplies the
+`RegData`-side pin — the equivalence-or-implication theorem between the two pins
+is CHARTERED as follow-on unit **F2** (owner: whoever lands second, per the
+opaque-parameter precedent), replacing the r1 "plug-slot comment" (Codex gap 12:
+a comment is not deduplication). H5 does NOT declare `InstancePin` (owner: BP_II).
 
 **Route-b (general n).** Define the pack READ OFF the member
 (`packOfMember T := the Σ-type table over T.entries`) and the reference reading
 the SAME member (`refOfMember`); `PackCorrespondence` then holds by `rfl`-class
-proof (unit C1). Honest residue, displayed: this proves "the constructed pack
-conforms to the member it was constructed from" — the LAW-TRANSFER machinery.
-What remains open is the identification of the REALIZED corpus tables (the
-classifier-built pack that Steps 17/18 actually consume) with `packOfMember` of
-the intended member: that is exactly OL-O12-2's data half / the O-14d population
-duty, and it STAYS the row's open content until executed (route-a at n = 3;
-O-14d construction at general n). No unit here claims it.
+proof (unit C1). TWO caveats, displayed [REVISION 2, Codex gap 9]: (i) this is
+a SELF-conformance — scaffolding for the route, NOT clause-4 law-transfer; the
+transfer claim needs the row-identity seam (C3's `ref_reads_member` at the
+entry level now; the σ-keyed row pin = F2/route territory); (ii) the Σ-type
+over `Finset Qq` COLLAPSES distinct table rows carrying equal rational-function
+entries — "entry-for-entry" at the source is a statement about TABLE POSITIONS;
+a multiset/position-indexed `Row` refinement is the E-phase option if the
+O-14d population needs position fidelity (flagged to C1's prover, decision
+recorded at landing). What remains open is the identification of the REALIZED
+corpus tables (the classifier-built pack that Steps 17/18 actually consume)
+with `packOfMember` of the intended member: that is exactly OL-O12-2's data
+half / the O-14d population duty, and it STAYS the row's open content until
+executed (route-a at n = 3; O-14d construction at general n). No unit here
+claims it.
 
 **Route-a (n ≤ 3 instances).** n = 2: the corpus has the DEVICE chain
 (`MovesS/N2Sigmas.lean`) and the real-pack numerics; the M04 F1 fence stands —
@@ -171,43 +181,65 @@ entry in ℛ_cyc) and `beta_memRcyc` (II-R5, every solved leg). Landed:
 (same proof skeleton as `MemRcyc.definedAt`: `MemRcyc.eq_div` presents f = P/s,
 `RatFunc.denom_div_dvd` divides the reduced denominator into s, `cycS_eval_pos`
 kills the zero). Units K1 (bridge) + K2 (both quantified corollaries at
-`BnMember`). This discharges (PACK-iii)'s content at the 𝔅_n rows in full: every
-row entry AND every solved leg lies in the evaluation-regular subring at every
-q₀ ≥ 2 — prime powers included (they satisfy 2 ≤ q₀). [D-6 in the ROOT display is
-the K3 consumption partner (evalAt's ring-hom laws), already landed as
-`MovesS.evalAt`; no new obligation.]
+`BnMember`). SCOPE, exact [REVISION 2, Codex gap 8 — the r1 "in full" claim
+narrowed]: this proves regularity for the two corpus collections — every
+`T.entries` member AND every solved leg `T.β e σ` — at every q₀ ≥ 2, prime
+powers included. The source sentence quantifies over "every row's weight/shape
+series"; the identification of ALL such series with (subring-closed
+combinations of) these two collections, and the transport into the chain field
+`RS4Chain.wsh_ok` at the real instance, are DISPLAYED remaining seams (§2.2's
+chain-instance seam; `OKat q₀` is a `Subring`, so sums/products of covered
+series stay covered — the residue is the roster identification, not closure).
+[D-6 in the ROOT display is the K3 consumption partner (evalAt's ring-hom
+laws), already landed as `MovesS.evalAt`; no new obligation.]
 
 ### 2.5 (PACK-iv) sem_alloc — CONF (carrier + builder now; data/population later)
 
-**Carrier (unit D2):** `REWitness T` types the (RE) conjunction exactly — the
-member's booking is re-entrant (`T.booking ≠ Booking.O2`); the per-block
-family-(iv) aggregate is the canonical assembly over per-exit-stratum data
-(`trow_canonical`: the landed `BlockPresentation.trow` EQUALS `tRow` built from
-`rowOf` — the corpus's own §2.3(iv) transcription, II-R8); hand-offs descend
-(L4 clause). "No allocation datum" is carried STRUCTURALLY: `REWitness` mentions
-no `AllocDatum`, and `trow_canonical` pins the rows to the α-free form — an
-α-adjusted row would refute it. The (O2′)/(O3) adjustments live in
-`displayedRow` (unit D1), pinned to the leaf's three displayed forms.
+**Carrier (unit D2):** `REWitness T` types (RE)'s OPERATIVE content at the
+corpus carrier [REVISION 2 wording; the r1 "exactly" claim withdrawn — §4.2
+(δ4)] — the member's booking is re-entrant (`T.booking ≠ Booking.O2`); the
+member's carried ROWS are the canonical assembly with only the displayed
+booking adjustments (`row`/`row_eq_displayed` at `displayedRow`'s three forms,
+tied to the entry roster by `row_mem_entries`; the block aggregate pinned by
+`trow_canonical` to `tRow` built from `rowOf` — the corpus's own §2.3(iv)
+transcription, II-R8); hand-offs descend (L4 clause). "No allocation datum"
+compiles to the row-form pair per the (δ4) adjudication (§4.2) — α-freeness
+of the rows is a consequence; the literal no-datum clause is an at-instance
+residue, displayed. The (O2′)/(O3) adjustments live in `displayedRow`
+(unit D1), pinned to the leaf's three displayed forms.
 **Faithfulness deltas, displayed (trust surface for the Codex pass):**
 (δ1) the corpus `BookingSystem` carries ONE booking for the whole member, so
 "EVERY block booked re-entrantly" compiles to the single-field disequality —
 faithful at the corpus's own granularity (BP_II transcribed 𝔅_n that way);
 (δ2) `BnCoordinates.handoffs/composition` are per-BLOCK aggregates while the
 §2.3(iv) display is per-EXIT-STRATUM (H(F), comp_F) — `ExitData` (unit D1) is
-the per-stratum refinement the row-form needs; the D1↔`BnCoordinates` seam is
-flagged for the next BP_II touch, NOT silently unified here; (δ3) the O2 branch
-of `displayedRow` is a guarded placeholder (= the unadjusted t), NEVER consumed
-under `booking_reentrant` — the same junk-value-plus-guard convention as
-`Booking.kernel` at e ≤ 1.
+the per-stratum refinement the row-form needs; the compatibility proposition
+(`ExitData` aggregates to the member's `BnCoordinates.handoffs/composition`)
+is CHARTERED as follow-on unit **F1** [REVISION 2, Codex gap 12 — a chartered
+proposition, not a bare flag], owner BP_II-side at its next touch; (δ3) the O2
+branch of `displayedRow` is a guarded placeholder (= the unadjusted t), NEVER
+consumed under `booking_reentrant` — the same junk-value-plus-guard convention
+as `Booking.kernel` at e ≤ 1; GUARDED-API DISCIPLINE [REVISION 2, Codex gap
+11]: `displayedRow` is public and its TYPE carries no guard, so every H5
+theorem about it is keyed by an explicit booking equality or
+`booking_reentrant` binder (R2's three theorems are; graders check any future
+consumer for the same key — an unguarded generic consumer reading the O2
+branch reads fabricated data).
 
-**Builder (unit C2, route-b's Lean face):** `mkREMember` — from re-entrant-booked
-coordinates with rows DEFINED canonically, produce the `BnMember` together with
-its `REWitness`, fields `rfl`-discharged. When the O-14d population constructs
-the intended member through this builder, (PACK-iv) at that member holds by
-construction — design §3.3 (route-b) verbatim. Route-a (n = 3) stays a data
-pass: unit C5's spec names the per-row duty (verify each sealed block's booking
-against the (O3) forms and each row against §2.3(iv) + the displayed scaling) —
-executable only when n = 3 tables land in Lean; BLOCKED/DATA.
+**Builder (unit C2, route-b's Lean face) [REVISION 2 per Codex critical 2]:**
+`mkREMember` — from re-entrant-booked coordinates with rows DEFINED
+canonically, produce the `BnMember` together with its `REWitness` — INCLUDING
+the REVISION-2 row fields: the builder SETS `row e σ := displayedRow …`, so
+`row_eq_displayed` is `rfl` and `row_mem_entries` is discharged by putting the
+constructed rows INTO the built member's `entries` roster (a builder duty, not
+an assumption). What "by construction" then honestly covers: the (RE)
+OPERATIVE content per (δ4) at the CONSTRUCTED member — design §3.3 (route-b)'s
+"the profile then holds BY CONSTRUCTION and is checkable at population time".
+The identification of the consumed member with the constructed one stays
+clause-4/route territory (§2.1). Route-a (n = 3) stays a data pass: unit C5's
+spec names the per-row duty (verify each sealed block's booking against the
+(O3) forms and each row against §2.3(iv) + the displayed scaling) — executable
+only when n = 3 tables land in Lean; BLOCKED/DATA.
 
 **(ROW-Σ) delivery tie:** the leaf's (ROW-Σ) is a PROVED theorem consuming (RE);
 units R1/R2 are its ALGEBRAIC SKELETON at the symbolic level (§3) — so once a
@@ -237,6 +269,16 @@ BP_IV C4c `census_r0_law` territory) and NOT proved here: H5 charters the algebr
 that CONSUMES them, and displays them as the M1 shadow. Deriving (EXM) at the
 intended member from the census layer is a named FOLLOW-ON (owner: D-11/O-14d
 with BP_IV's census units; out of this blueprint's wave plan).
+STRENGTH NOTE [REVISION 2, Codex gap 7]: symbolic (EXM) in ℚ(q) is a priori
+STRONGER than the leaf's consumed mass input (M1(a)/(d) supply the identity
+PER prime-power evaluation). The two are equivalent FOR REGULAR FAMILIES: the
+member's masses lie in ℛ_cyc (`mass_memRcyc`), and two rational functions
+regular on [2, ∞) that agree at the infinitely many prime powers are EQUAL —
+so per-q₀ (EXM) at all prime powers forces symbolic (EXM). This derivation is
+itself a chartered follow-on lemma (**F3**, EASY/MED: `RatFunc` equality from
+infinite agreement via `Polynomial.eq_of_infinite_eval_eq`-class Mathlib
+facts), NOT assumed by R1 — R1 simply takes symbolic (EXM) as the displayed
+hypothesis, and the F3 route is how the census layer will discharge it.
 
 **Theorem (R1, symbolic (ROW-Σ)(a)).** T : BnMember n, W : REWitness T,
 M : MassFacts T W. Then Σ_σ β_e(σ) = 1 in ℚ(q) for every e ≤ n.
@@ -286,14 +328,19 @@ instances of exactly these totals (ROOT row's numerics column).
 
 ### 4.0 Compile-probe record (the BP_VI/BP_IV lesson executed)
 
-Every §4 statement below was probed VERBATIM (sorry-bodied) against HEAD
-`b314edc` in one file importing `Scaffold.O12.Family`, `Scaffold.ValueSide.Hyps`,
-`MovesS.PowSubstOK`: **8 sorry warnings, ZERO errors** (probe file deleted after
-recording; two fixes folded during probing — `ValueSide.` qualification on
-`AssembledPack` outside the `open`, and `rowsOf : ℕ → Finset Qq` binder typing in
-C1). Statement shapes are therefore ELABORATION-SAFE at HEAD; provers may adjust
+TWO probe rounds, both against HEAD `b314edc`, one file each importing
+`Scaffold.O12.Family`, `Scaffold.ValueSide.Hyps`, `MovesS.PowSubstOK`:
+* **r1 probe**: the original statement set — 8 sorry warnings, ZERO errors
+  (two fixes folded during probing: `ValueSide.` qualification on
+  `AssembledPack` outside the `open`; `rowsOf : ℕ → Finset Qq` binder typing).
+* **r2 probe (post-Codex fold)**: every REVISION-2-changed statement —
+  `REWitness` (row-indexed), `MassFacts` (completed), B1 (`e ≤ n` + inner
+  pool quantifier), `H5PackTyped` (five-field form), P1 (now probed, clearing
+  the r1 PROBE-OWED tag), P0 both halves — 4 sorry warnings, ZERO errors.
+Statement shapes are therefore ELABORATION-SAFE at HEAD; provers may adjust
 implicit binders/instance arguments per the standing BP_II §1 rule, never
-mathematical content.
+mathematical content. Probe files deleted after recording (blueprint-only
+unit); the r2 statements above are the ones IN this document.
 
 ### 4.1 Files (all NEW, under `lean/LeanUrat/Scaffold/HDischarge/H5/`)
 
@@ -345,46 +392,67 @@ never redefined); the (O2′) leg's coefficient is PINNED = `kappa1 e` (the leaf
 shape. `E.idx : Type` + `Fintype` matches the finite exit roster; a Finset-based
 variant is REJECTED (comp needs a Π-type over per-F tuple length).
 
-**D2 (carriers `REWitness`/`MassFacts`).** Verbatim (probed as one structure;
-SPLIT at authoring time into the (RE)-exact witness and the M1-shadow — field
-types byte-identical to the probe, so elaboration-safe):
+**D2 (carriers `REWitness`/`MassFacts`) — REVISION 2 form (Codex criticals
+1/2/3/4 folded; RE-PROBED at HEAD, see §4.0).** Verbatim:
 
 ```lean
-/-- (RE) typed exactly: re-entrant booking; canonical α-free rows; L4 descent. -/
+/-- (RE) at the corpus carrier: re-entrant booking; ROW-INDEXED canonical
+    rows tied to the member's entry roster; L4 descent. See the no-α
+    adjudication (δ4) below — this witness carries (RE)'s OPERATIVE content
+    at the corpus granularity, with the compilation choices displayed. -/
 structure REWitness {n : ℕ} (T : BnMember n) where
   exits : ℕ → ExitData n
   handoff_lt : ∀ e, ∀ F : (exits e).idx, ∀ x ∈ (exits e).handoff F, x.1 < e
   booking_reentrant : T.booking ≠ Booking.O2
   trow_canonical : ∀ e (he : 2 ≤ e), (T.blocks e he).trow = tRow T.β (exits e)
+  row : ℕ → SplittingType n → Qq
+  row_eq_displayed : ∀ e, 2 ≤ e → e ≤ n → ∀ σ,
+    row e σ = displayedRow T.booking e T.β (exits e) σ
+  row_mem_entries : ∀ e σ, 2 ≤ e → e ≤ n → row e σ ∈ T.entries e
 
-/-- The M1 shadow at the member: (EXM) + (BASE) + (MNN). NOT (RE) clauses. -/
+/-- The M1 shadow at the member: (EXM) + (BASE) + regularity + (MNN).
+    NOT (RE) clauses. -/
 structure MassFacts {n : ℕ} (T : BnMember n) (W : REWitness T) : Prop where
   base_total : ∀ e ≤ 1, (∑ σ : SplittingType n, T.β e σ) = 1
+  base_nonneg : ∀ e ≤ 1, ∀ σ (q₀ : ℚ), 2 ≤ q₀ →
+    ∀ h : T.β e σ ∈ OKat q₀, 0 ≤ evalAt q₀ ⟨T.β e σ, h⟩
   mass_complete : ∀ e, 2 ≤ e → e ≤ n →
     (∑ F : (W.exits e).idx, (W.exits e).mass F) = 1 - kappa0 e - kappa1 e
+  mass_memRcyc : ∀ e, ∀ F : (W.exits e).idx, MemRcyc ((W.exits e).mass F)
   mass_nonneg : ∀ e, ∀ F : (W.exits e).idx, ∀ q₀ : ℚ, 2 ≤ q₀ →
     ∀ h : (W.exits e).mass F ∈ OKat q₀, 0 ≤ evalAt q₀ ⟨(W.exits e).mass F, h⟩
 ```
 
-`REWitness` carries the (RE) conjunction and NOTHING else ("no allocation
-datum" = structural: no `AllocDatum` field, rows pinned α-free by
-`trow_canonical`); `MassFacts : Prop` carries the leaf's M1-side inputs.
-E-PHASE COMPLETION NOTE (lead's own probe-review): `MassFacts` additionally
-needs (i) `base_nonneg` (see B1) and (ii) `mass_memRcyc : ∀ e F, MemRcyc
-((W.exits e).mass F)` — B1's decomposition of evalAt(t) into per-stratum terms
-needs each summand evaluation-regular, and t's own regularity (via `htrow`)
-does not distribute; at the intended member the field is discharge-cheap
-(masses are `massPatt`/`massPoly` = Gram entries: `gram_massPatt`/
-`gram_massPoly` + `Gram.memRcyc`, all landed). Fields are additions to the
-PROBED shapes (same genre as the probed `mass_nonneg`), flagged for the D2
-prover's re-probe.
-IMPORTANT no-α reading (δ4): the corpus `BnCoordinates` carries an
-`allocation` COORDINATE on every member (II-R12's raw data), so "(RE): carries
-NO allocation datum" CANNOT compile as field-absence on the coordinates; its
-faithful compilation is `trow_canonical` — the presented rows contain no
-α-adjustment term (an α-adjusted member would refute the equality with the
-canonical `tRow`). The (O2)-booking's α consumption is fenced by
-`booking_reentrant`. The
+REVISION 2 field notes: `row`/`row_eq_displayed`/`row_mem_entries` land the
+(RE) row-form clause ON THE MEMBER'S CARRIED ROWS (Codex critical 2: pinning
+only `BlockPresentation.trow` missed the family-(iv) displayed rows with their
+O2′/O3 adjustments "and nothing else"); the residual granularity gap is
+DISPLAYED — `BnMember.entries` is an un-indexed `Finset`, so `row_mem_entries`
+is the strongest member-side tie the corpus carrier admits, and the σ-indexed
+identification of REALIZED table rows with `row` stays route-a/route-b
+territory (never claimed here). `base_nonneg`/`mass_memRcyc` complete the B1
+input roster (criticals 3/4; `mass_memRcyc` is discharge-cheap at the intended
+member: masses are `massPatt`/`massPoly` = Gram entries — `gram_massPatt`/
+`gram_massPoly` + `Gram.memRcyc`, all landed).
+
+**(δ4) The no-α adjudication (REVISION 2, folding Codex critical 1 — the
+compilation choice DISPLAYED, never silent).** The corpus `BnCoordinates`
+carries an `allocation` COORDINATE on every member (II-R12's raw data), so
+"(RE): the member carries NO allocation datum at any block" CANNOT compile as
+field-absence. Its compilation here is the ROW-FORM pair
+`row_eq_displayed` + `trow_canonical`: the member's carried rows equal the
+canonical assembly with ONLY the displayed booking adjustments — any
+α-adjustment term (`t + α·q^{−E}`, the `gramOver_allocAdjust` shape) would
+refute the equality, so α-freeness of the ROWS is a consequence, while the
+inert coordinate remains as data. WARRANT for this reading: the leaf's own
+display "(RE) states everything the proof uses", and every (RE) consumption
+in the leaf (M2's proof step, (ROW-Σ)'s step (ii)) reads exactly the row
+forms + booking, never the coordinate's absence. HONESTY RESIDUE: the (RE)
+sentence is nonetheless STRONGER as worded (a member could carry a spurious
+α that feeds nothing); a consumer needing the literal no-datum clause must
+add it at the instance — displayed, not smuggled. `REWitness` therefore
+carries (RE)'s OPERATIVE content; the blueprint's r1 claim "types the (RE)
+conjunction exactly" is WITHDRAWN in favor of this display. The
 displayedRow tie (that the member's PRESENTED per-booking rows are
 `displayedRow`) is definitional at (O1) (`trow_canonical`) and enters R2 through
 `displayedRow` itself — the O2′/O3 presented-row conformance at a REALIZED table
@@ -415,38 +483,41 @@ DISCHARGED at the 𝔅_n side when K2a/K2b land (§2.4).
 
 | unit | statement | difficulty |
 |---|---|---|
-| **B1** | `theorem beta_eval_nonneg {n : ℕ} (T : BnMember n) (W : REWitness T) (M : MassFacts T W) : ∀ e σ, ∀ (q₀ : ℚ), 2 ≤ q₀ → ∀ h : T.β e σ ∈ OKat q₀, 0 ≤ evalAt q₀ ⟨T.β e σ, h⟩` — the pool quantifier sits INSIDE the induction (the leaf §2A.2's own display: "uniform in q₀ … so the induction hypothesis applies at the child pools q₀^{D_i}"; a fixed-q₀ outer binder would break the IH at the base-changed legs — provers must induct on e FIRST, keeping ∀ q₀ in the motive). PLUS a base-nonneg field decision at E-phase: e ≤ 1 nonneg is NOT derivable from `MassFacts` as displayed; add `base_nonneg` to `MassFacts` (preferred; block 1 = single verdict β = 1 at the intended member) | HARD (strong induction on e with q₀ generalized: `hsolve` → nonneg quotient of nonneg t (masses (MNN) × legs via IH THROUGH `powSubst_evalAt` at the child pool `q₀ ^ (D_i : ℕ)` — `2 ≤ q₀ → 2 ≤ q₀^D` by `le_self_pow`-class arithmetic, D ≥ 1) by positive pivot (P0)) |
+| **B1** | [REVISION 2, folding Codex critical 3 — range condition added, base/regularity inputs now `MassFacts` fields; RE-PROBED] `theorem beta_eval_nonneg {n : ℕ} (T : BnMember n) (W : REWitness T) (M : MassFacts T W) : ∀ e, e ≤ n → ∀ σ (q₀ : ℚ), 2 ≤ q₀ → ∀ h : T.β e σ ∈ OKat q₀, 0 ≤ evalAt q₀ ⟨T.β e σ, h⟩` — the pool quantifier sits INSIDE the induction (the leaf §2A.2's own display: "uniform in q₀ … so the induction hypothesis applies at the child pools q₀^{D_i}"; a fixed-q₀ outer binder would break the IH at the base-changed legs); `e ≤ n` is REQUIRED (`mass_complete` supplies nothing above n — the r1 unrestricted form was unprovable); the e ≤ 1 base fires `base_nonneg`, and per-stratum regularity fires `mass_memRcyc` + K1 | HARD (strong induction on e with q₀ generalized: `hsolve` → nonneg quotient of nonneg t (masses (MNN) × legs via IH THROUGH `powSubst_evalAt` at the child pool `q₀ ^ (D_i : ℕ)` — `2 ≤ q₀ → 2 ≤ q₀^D` by `le_self_pow`-class arithmetic, D ≥ 1) by positive pivot (P0 — Wave 1 per the REVISION-2 reorder)) |
 | **B2** | `theorem beta_eval_mem_Icc {n : ℕ} (T : BnMember n) (W : REWitness T) (M : MassFacts T W) {q₀ : ℚ} (hq : 2 ≤ q₀) {e : ℕ} (he : e ≤ n) (σ : SplittingType n) (h : T.β e σ ∈ OKat q₀) : evalAt q₀ ⟨T.β e σ, h⟩ ∈ Set.Icc (0 : ℚ) 1` | EASY (B1 + R3: one term of a nonneg sum totalling 1) |
 
 ### 4.6 Wave 4 — (PACK-i) block form (`PackI.lean`)
 
 | unit | statement | difficulty |
 |---|---|---|
-| **P0** | `theorem solveU_eval_pos {e : ℕ} (he : 2 ≤ e) (b : Booking) (hb : b ≠ Booking.O2) {q₀ : ℚ} (hq : 2 ≤ q₀) : ∀ h : b.solveU e ∈ OKat q₀, 0 < evalAt q₀ ⟨b.solveU e, h⟩` (+ the membership itself, `solveU_mem_OKat`) | MED (u = 1 − q·q^{−E}; eval = 1 − q₀^{1−E} ≥ 3/4 via `blockE_ge_three` arithmetic; the Corollary-D scalar margin) |
-| **P1** | `theorem beta_eval_solve {n : ℕ} (T : BnMember n) {e : ℕ} (he : 2 ≤ e) {q₀ : ℚ} (hq : 2 ≤ q₀) (σ : SplittingType n) : ∀ (hβ : T.β e σ ∈ OKat q₀) (ht : (T.blocks e he).trow σ ∈ OKat q₀) (hu : (T.blocks e he).u ∈ OKat q₀) (hui : (T.blocks e he).u⁻¹ ∈ OKat q₀) (hne : evalAt q₀ ⟨(T.blocks e he).u, hu⟩ ≠ 0), evalAt q₀ ⟨T.β e σ, hβ⟩ = (evalAt q₀ ⟨(T.blocks e he).u, hu⟩)⁻¹ * evalAt q₀ ⟨(T.blocks e he).trow σ, ht⟩` — solve-evaluation commutation; membership binders dischargeable via K1 + `hu`/`MemRcyc.mul` at call sites | MED (rewrite `hsolve`, `map_mul` of `evalAt`, K3) — [NOT probed verbatim; assembled from probed K3 + landed fields; E-phase re-probe REQUIRED, tag PROBE-OWED] |
+| **P0** | [REVISION 2: MOVED to Wave 1 (B1 consumes it — Codex gap 13) and split; both halves RE-PROBED] `theorem solveU_mem_OKat {e : ℕ} (he : 2 ≤ e) (b : Booking) {q₀ : ℚ} (hq : 2 ≤ q₀) : b.solveU e ∈ OKat q₀` and `theorem solveU_eval_pos {e : ℕ} (he : 2 ≤ e) (b : Booking) (hb : b ≠ Booking.O2) {q₀ : ℚ} (hq : 2 ≤ q₀) (h : b.solveU e ∈ OKat q₀) : 0 < evalAt q₀ ⟨b.solveU e, h⟩` | MED (u = 1 − q·q^{−E}; eval = 1 − q₀^{1−E} ≥ 3/4 via `blockE_ge_three` arithmetic; the Corollary-D scalar margin) |
+| **P1** | [REVISION 2: PROBED at the r2 round — the r1 PROBE-OWED tag CLEARED; redundant `hui` binder dropped at probe] `theorem beta_eval_solve {n : ℕ} (T : BnMember n) {e : ℕ} (he : 2 ≤ e) {q₀ : ℚ} (hq : 2 ≤ q₀) (σ : SplittingType n) (hβ : T.β e σ ∈ OKat q₀) (ht : (T.blocks e he).trow σ ∈ OKat q₀) (hu : (T.blocks e he).u ∈ OKat q₀) (hne : evalAt q₀ ⟨(T.blocks e he).u, hu⟩ ≠ 0) : evalAt q₀ ⟨T.β e σ, hβ⟩ = (evalAt q₀ ⟨(T.blocks e he).u, hu⟩)⁻¹ * evalAt q₀ ⟨(T.blocks e he).trow σ, ht⟩` — solve-evaluation commutation; membership binders dischargeable via K1 + `hu`/`MemRcyc.mul` at call sites | MED (rewrite `hsolve`, `map_mul` of `evalAt`, K3 — the u⁻¹ membership K3 needs is supplied inside the proof from `hu.2.2` + K1) |
 
 ### 4.7 Wave 5 — conformance (`Conform.lean`)
 
 | unit | statement | difficulty |
 |---|---|---|
 | **C1** | `packOfMember`/`refOfMember`/`packOfMember_corr`: probed skeleton `noncomputable def packOfMember {n : ℕ} (T : BnMember n) (rowsOf : ℕ → Finset Qq) : ValueSide.AssembledPack n` with `Row := (e : Finset.Icc 1 n) × {g : Qq // g ∈ rowsOf e.1}` (instR = `Sigma.instFintype` route), `entry r = r.2.1`, `blockOf r = r.1.1`; at call sites `rowsOf := T.entries`; `refOfMember` reads the SAME data into `PackReference n C P`; `packOfMember_corr : PackCorrespondence n C (packOfMember T T.entries) (refOfMember …)` by `rfl`-fields | MED (the Fintype instance is the only non-rfl content) |
-| **C2** | `mkREMember` — route-b builder: from `(C : BnCoordinates n)` re-entrant-booked + per-block `ExitData` + canonically-DEFINED rows + the solve data, produce `(T : BnMember n) × REWitness T` with `trow_canonical := rfl`-class | MED/HARD (assembling `BlockPresentation` needs the GramOver walk — reuse `gramOver_rowOf`/`GramOver.finsetSum`, landed II-R8/II-R3) |
-| **C3** | `H5PackTyped` bundle (probed): `structure H5PackTyped (n : ℕ) (C : UCarriers n) (P : AssembledPack n) (R : PackReference n C P) (T : BnMember n) : Prop where corr : PackCorrespondence n C P R; re_profile : Nonempty (REWitness T); wsh : …K2a-shape…; bdd : …B2-shape…` + consumption theorem `h5PackTyped_laws` unpacking to the four member conclusions; carries the II-G5 `InstancePin` plug-slot as an opaque-parameter comment until BP_II lands it | EASY |
+| **C2** | `mkREMember` — route-b builder [REVISION 2 duty list per Codex critical 2]: from `(C : BnCoordinates n)` re-entrant-booked + per-block `ExitData` + the solve data, produce `(T : BnMember n) × REWitness T` where the builder DEFINES `row e σ := displayedRow …` and puts the constructed rows into the built `entries` roster — so `trow_canonical`/`row_eq_displayed` are `rfl`-class and `row_mem_entries` is discharged by construction, never assumed | MED/HARD (assembling `BlockPresentation` needs the GramOver walk — reuse `gramOver_rowOf`/`GramOver.finsetSum`, landed II-R8/II-R3; plus the entries-roster duty) |
+| **C3** | [REVISION 2, folding Codex critical 5 — RE-PROBED] `H5PackTyped` bundle, now over `(T : BnMember n) (W : REWitness T) (M : MassFacts T W)` (the ACTUAL witnesses, not `Nonempty` — B2's consumption needs them), with FIVE fields: `corr : PackCorrespondence n C P R` · `ref_reads_member : ∀ r : P.Row, R.intendedEntry r ∈ T.entries (R.intendedBlock r)` (the T↔R tie the r1 form lacked — an ENTRY-LEVEL tie; the σ-keyed identification stays route territory, displayed) · `wsh` (K2a shape) · `bdd` (B2 shape, `e ≤ n`-scoped) · `solve_interp` (P1 shape — the PACK-i block form, absent in r1) + consumption theorem `h5PackTyped_laws`. DEDUP/OWNERSHIP (folding gap 12): `H5PackTyped` is chartered as THE FIELD-REFINEMENT TARGET for BP_VI's `h5_pack` (bare Prop at ROOT-REVISION-5 sync); at refinement time BP_VI lands the equivalence/migration theorem and owns the swap — H5 never edits `Hypotheses.lean`; the bundle duplicates NO law (every field is a NAMED earlier unit's conclusion shape) | EASY |
 | **C4** | n = 2 instance gate — E-PHASE-GATED spec: adjudicate carrier choice against the M04 F1 fence (device chain FENCED from value claims; the honest reference = the S-area real pack), then instantiate `packOfMember`-side `PackCorrespondence` at n = 2 by `decide`/`rfl` on the finite table | HARD/DATA, gated |
 | **C5** | n = 3 route-a spec (NO Lean unit lands now): the OL-O12-2 transcription-and-correspondence pass EXTENDED by the named per-row booking-profile duty (design §3.3 (route-a) verbatim) — executable when n = 3 tables land; numeric precursor RESUM-n3 65/65 on record | BLOCKED/DATA |
 
 ### 4.8 Wave order and parallelism
 
 ```
-W0: D1 → D2                       (one prover; Codex statement-audit gate)
-W1: K1 ∥ K3 ∥ K4;  K2a/K2b after K1        (three provers)
-W2: R1 → R2 ∥ R3                  (one prover for R1; R2/R3 parallel after)
-W3: B1 → B2                        (after W2; one prover)
-W4: P0 ∥ P1                        (after W1; one prover)
+W0: D1 → D2                        (one prover; Codex statement-audit gate)
+W1: K1 ∥ K3 ∥ K4 ∥ P0;  K2a/K2b after K1   (three-four provers)
+    [REVISION 2: P0 MOVED to W1 — Codex gap 13: B1 consumes P0's pivot
+     positivity, so P0 must precede W3, and it is kernel-independent]
+W2: R1 → R2 ∥ R3                   (one prover for R1; R2/R3 parallel after)
+W3: B1 → B2                        (after W2 AND P0; one prover)
+W4: P1                             (after W1; one prover)
 W5: C1 ∥ C3 after W0; C2 after W0; C4 gated; C5 blocked
 ```
-Total: 16 chartered declarations across 6 files; 13 provable at HEAD, 1
-E-phase-gated (C4), 1 blocked-data (C5), 1 probe-owed statement variant (P1).
+Total: 17 chartered declarations across 6 files (P0 split into
+`solveU_mem_OKat` + `solveU_eval_pos` at the r2 probe): 15 provable at HEAD,
+1 E-phase-gated (C4), 1 blocked-data (C5). [REVISION 2 sync of the r1 count.]
 
 ---
 
@@ -480,3 +551,49 @@ E-phase-gated (C4), 1 blocked-data (C5), 1 probe-owed statement variant (P1).
    refinement toward `H5PackTyped` is BP_VI's sync duty; H5 does not edit it.
    FLAGGED to the BP_VI owner with this blueprint.
 
+---
+
+## 7. Codex adversarial review + REVISION 2 (the fold record)
+
+**The pass (the directive's required verification):** one adversarial Codex
+review, fresh context, prompt = the quote-and-classify charge + this blueprint
+(r1 text) + the authoritative sources pasted (the §3.1 (PACK) row, Theorem M2
+(r4)'s (RE) display + consumed-instance note, leaf §2A.1–2A.3, design §3.5 +
+route display, and the landed corpus declarations `BlockPresentation`/`rowOf`/
+`kappa0/1`/`solveU`/`BnCoordinates`/`BnMember`). Verdict on r1: **REJECT — 5
+CRITICAL + 8 GAP**. Full findings archived VERBATIM at
+`lean/notes/openmath/H5_bp_review.md`. Key POSITIVE finding (7): "Conditional
+on symbolic EXM, BASE, `handoff_lt`, `trow_canonical`, `hsolve`, `hblockU`,
+and `hu.1`, the R1 induction is sound. The three R2 totals also agree with the
+leaf's Φ values" — the mathematical core CONFIRMED; every finding is at the
+statement/display level. REVISION 2 = this fold; every REVISION-2-changed Lean
+statement re-probed at HEAD (§4.0 r2 probe: 4 sorries, 0 errors).
+
+### Disposition table (finding → adjudication → repair location)
+
+| # | class | finding (compressed) | adjudication | repair |
+|---|---|---|---|---|
+| 1 | CRIT | `REWitness` does not encode "no allocation datum" (coordinate exists on every member; omission ≠ absence) | VALID — the r1 "types (RE) exactly" claim overclaimed; the operative-content compilation must be argued, not asserted | (δ4) adjudication display (§4.2): no-α compiles to the row-form pair, warrant = the leaf's "(RE) states everything the proof uses"; literal no-datum clause displayed as at-instance residue; "exactly" WITHDRAWN (§2.5 + §4.2 rewordings) |
+| 2 | CRIT | `trow_canonical` pins only the block presentation's aggregate, not the member's family-(iv) DISPLAYED rows with O2′/O3 adjustments "and nothing else" | VALID — the r1 witness missed the row-level clause | `REWitness` gains `row`/`row_eq_displayed`/`row_mem_entries` (re-probed); the Finset-granularity residue displayed; `mkREMember` duty list updated (§2.5, §4.7 C2) |
+| 3 | CRIT | B1 unprovable: no `e ≤ n` (mass_complete supplies nothing above n) + base nonneg missing | VALID (the range condition was a genuine statement bug; base_nonneg had been an E-phase hedge) | B1 restated with `e ≤ n`; `base_nonneg` now a `MassFacts` FIELD; re-probed (§4.4/§4.5) |
+| 4 | CRIT | B1 lacks mass regularity (no link from `ExitData.mass` to `MemRcyc`/`OKat`) | VALID (pre-folded by the lead minutes before the review landed — now completed) | `mass_memRcyc` now a `MassFacts` FIELD (re-probed); discharge-cheap note retained (§4.2) |
+| 5 | CRIT | `H5PackTyped` cannot express the package: no PACK-i field, no T↔R tie, `Nonempty (REWitness)` too weak for B2, no `MassFacts` | VALID | Bundle restated over `(T, W, M)` with five fields incl. `solve_interp` (PACK-i) and `ref_reads_member` (entry-level T↔R tie; σ-keyed tie displayed as route territory); re-probed (§4.7 C3) |
+| 6 | GAP | "honest maximal scope" unsupported; door-table "YES" readable as ROOT retirement | VALID | PACK-ii cell reworded: CONDITIONAL YES, C6 motivates the restriction but does not certify minimality; intended-member witnesses open (§1) |
+| 7 | GAP | symbolic (EXM) stronger than the leaf's per-evaluation mass input; derivation absent; child-pool bookkeeping "disappears" only for R1, not B1 | VALID (and finding 7 CONFIRMS the R1/R2 core) | STRENGTH NOTE + chartered follow-on F3 (infinite-agreement lemma) added to §3; B1's uniformity was already folded (pool quantifier inside the induction) |
+| 8 | GAP | PACK-iii "full discharge" lacks the weight/shape-series roster identification + chain-field transport | VALID | §2.4 + door table narrowed to the two proved collections; roster identification + chain seam displayed as open (subring-closure remark added) |
+| 9 | GAP | C1 tautological; Finset `Row` collapses equal entries — "entry-for-entry" is positional at source | VALID | §2.1 route-b caveats (i)/(ii): scaffolding-not-transfer + the multiset/position-indexed refinement flagged as E-phase option; door-table cell reworded |
+| 10 | GAP | "route-a n ≤ 3" misstates the design (route-a is n = 3 ONLY; n = 2 is evidence, not a route) | VALID | Door-table clause-4 route cell reworded; C4 remains an instance GATE, not route-a |
+| 11 | GAP | O2 junk branch: public `displayedRow` type carries no guard — interface risk | VALID (risk, not falsity) | (δ3) extended with the GUARDED-API DISCIPLINE line: every consumer keyed by booking equality / `booking_reentrant` |
+| 12 | GAP | dedup incomplete: `H5PackTyped` vs `PackCorrespondence`/`h5_pack` unadjudicated; ExitData↔BnCoordinates left as bare flag | VALID | C3 row: bundle = BP_VI's field-refinement TARGET, equivalence/migration theorem at refinement time, BP_VI owns the swap; (δ2): compatibility proposition chartered as F1; the InstancePin tie chartered as F2 (§2.1) |
+| 13 | GAP | wave order backward (B1 ← P0 with P0 in W4); §4.0 "every statement probed" contradicted P1's PROBE-OWED | VALID | P0 moved to Wave 1 (split into two probed halves); §4.0 rewritten as the two-round probe record; P1 probed at r2, tag cleared |
+
+**Follow-on units chartered by this fold (not in the wave plan; owners named):**
+F1 (ExitData↔BnCoordinates compatibility — BP_II-side), F2 (PackCorrespondence
+↔ InstancePin tie — second-lander), F3 ((EXM) from per-pool agreement — the
+census follow-on's entry lemma).
+
+**Post-fold status: READY** — wave plan executable as §4.8 (15 provable-at-HEAD
+units, C4 gated, C5 blocked-data); the residues of §6 unchanged in kind, now
+with the Codex-sharpened displays. A confirming second Codex pass on THIS
+(REVISION 2) text is the standard next gate before prover fan-out; it rides
+the fan-out dispatch, not this blueprint-only unit.
