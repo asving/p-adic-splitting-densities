@@ -2086,3 +2086,10 @@ trail is fully verified: REVISION 12 (accepted, 2x model-diverse) ->
 13 ((NSF-KEY) retired) -> 14 (D-12r -> literature, eleven rows) -> 15
 (display fixes) — every step confirmed by its own end-to-end pass.
 Report: lean/notes/openmath/VC18_report.md.
+
+## H6 FAN-OUT: 23/25 (2026-08-05)
+Terminal-seam group nearly complete across 6 waves (carriers, repaired
+row statements, canonical SV emission, compiled gates, TRM design,
+engine-conformance proofs, closers); 2 shortfall units -> follow-up
+cycle. Also unblocks the deferred BP_III wave-5 mop-up. EIGHT of nine
+fleets done. Queue -> H1 (the frontier; wave-0 pre-pulled at 1a977e5).
