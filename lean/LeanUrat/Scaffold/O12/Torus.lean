@@ -8,6 +8,12 @@ II-T1 (`torus_count` + helpers `torus_monic_smul_mem` / `torus_fiber_smul_mem` /
 z-free count at every fixed pattern ρ and degree d, independent of c
 (L6d Step 1; see its transcription note for the `#`/`open Cardinal in`
 elaboration context and the II-F9-dependency scoping);
+II-T3 (**PARTIAL — see its section note**): the blueprint display `theorem
+jc_count ...` is ELIDED and its "= ∏_j (Ppoly ρ_j).eval q" tie is refuted
+against the landed `patternOf` (`jc_count_ppoly_refuted`); the unit's entire
+§2 proof content — telescope over the interior-coefficient counts, hrow from
+(T1), anchor c = 1 — is compiled in full as `jc_count_core` (helpers
+`finite_of_natDegree_le` / `torus_cfiber_lead_ne_zero` / `torus_row_sum`);
 II-T5 (**BLOCKED — see its section note**): the intended consistency identity
 `zfree_total` is displayed ELIDED in BP_II §1.8 (`theorem zfree_total ...`)
 and its sole dependency II-F9 is BLOCKED-refuted (`FactF.lean`), with the
@@ -506,9 +512,11 @@ theorem finite_of_natDegree_le [Fintype F] {d : ℕ} {s : Set (Polynomial F)}
         ≤ ((R : Polynomial F).natDegree : WithBot ℕ) := Polynomial.degree_le_natDegree
       _ ≤ (d : WithBot ℕ) := by exact_mod_cast hs R R.2
       _ < ((d + 1 : ℕ) : WithBot ℕ) := by exact_mod_cast Nat.lt_succ_self d
-  exact Finite.of_injective
-    (fun R : s => (⟨R, hmem R⟩ : Polynomial.degreeLT F (d + 1)))
-    fun R S h => Subtype.ext (congrArg Subtype.val h)
+  refine Finite.of_injective
+    (fun R : s => (⟨R, hmem R⟩ : Polynomial.degreeLT F (d + 1))) ?_
+  intro R S h
+  exact Subtype.ext
+    (congrArg (fun x : Polynomial.degreeLT F (d + 1) => (x : Polynomial F)) h)
 
 /-- Helper [unit II-T3]: a member of the c-fiber has nonzero leading
 coefficient (it is nonzero, since its constant coefficient is the unit c). -/
@@ -577,7 +585,7 @@ theorem jc_count_core (F : Type*) [Field F] [Fintype F] {k : ℕ}
     ∏ j : Fin k,
       Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
         S.coeff 0 ≠ 0 ∧ patternOf S = ρ j} :=
-  chain_telescope
+  chain_telescope (F := F) (k := k)
     (fun j l c => Nat.card {R : Polynomial F | R.natDegree = d j ∧
       R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c ∧ patternOf R = ρ j})
     (fun j => Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
