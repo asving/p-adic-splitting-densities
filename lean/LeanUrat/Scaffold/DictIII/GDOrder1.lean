@@ -500,4 +500,123 @@ theorem w0_mul_asK0 {O : Type*} [CommRing O] [IsDomain O]
     exact (Polynomial.modByMonic_eq_self_iff hΦ).mpr
       (Polynomial.degree_lt_degree hdivdeg)
 
+/- Unit III-G8 (VAL-g step (2)). STATEMENT PROVENANCE: the BP_III §1.4 display
+carries NO verbatim Lean statement for this unit (unit-table row III-G8 only);
+per the unit brief the statement is transcribed from the source of record,
+GD23 rev 4 §3, Theorem VAL-g proof step (2)
+(`lean/notes/openmath/GD23_phaseB_verifybrief_rev4.md`):
+
+  "The graded module. Weight-γ classes: by slot uniqueness of the
+   development, a sum Σ_t π^{a_t} u_t Φ₀^t (u_t of content 0, e·a_t + t·h
+   = γ) has w₁ > γ iff every [u_t] = 0; so gr_γ is the free K₀-module on
+   the monomials π̄^a Φ̄₀^t with e·a + t·h = γ (a ∈ ℤ after clearing
+   denominators by π-units, t ≥ 0), and the displayed in(A) formula holds."
+
+Concrete slot-support rendering (FORMULATED statements, flagged for
+division-lead review; the blocked gaussW/w1 vocabulary of the III-G3a
+record above is NOT consumed):
+* integral π-cleared form: exponents `a : ℕ → ℕ` — the brief's own "a ∈ ℤ
+  after clearing denominators by π-units" (rev-4 clearing note), stated on
+  the cleared representatives; the K[x] statement descends by that note;
+* the K₀-class `[u] = 0` (K₀ = O[x]/(π, Φ₀), deg u < deg Φ₀ — III-G9's
+  carrier above) is rendered COEFFICIENTWISE: every coefficient of `u` in
+  `Ideal.span {π}` (a monic degree count kills any Φ₀-component: from
+  u = π·v + Φ₀·w with deg u < deg Φ₀, reduce mod π — Φ̄₀ monic of degree
+  d₀ forces w̄ = 0);
+* `w₁(A) > γ` for a weight-γ lattice sum is rendered SLOTWISE: every
+  development slot t sits strictly above the (e,h)-line, i.e. every
+  coefficient of slot t lies in `Ideal.span {π} ^ (a t + 1)` (slot weight
+  = e·(a t + w₀(u t)) + t·h > γ = e·a t + t·h ⇔ w₀(u t) ≥ 1) — the same
+  span-pow vocabulary as `devg_congr` above.
+Free K₀-module on the lattice monomials then reads: the digit tuple is
+recoverable from the element (spanning/coordinates: `valg2_slot_eq`, via
+the brief's own mechanism "slot uniqueness of the development" =
+`devCoeff_slots`, a direct corollary of the landed Fact-A bridge
+`devCoeff_eq_of_isDevelopment`), and the K₀-class tuple vanishes iff the
+element sits strictly above weight γ (independence:
+`valg2_gradedPiece_free`). -/
+
+/-- Unit III-G8, part (a) — DEV SLOT UNIQUENESS (the proof-sketch column's
+mechanism, "by slot uniqueness of the development"): the Φ-adic development
+of a slot sum `Σ_{s<n} c_s Φ^s` with `deg c_s < deg Φ` (and `c_s = 0` for
+`s ≥ n`) recovers each `c_j` exactly.  Direct corollary of the Fact-A
+uniqueness bridge `devCoeff_eq_of_isDevelopment`. -/
+theorem devCoeff_slots {O : Type*} [CommRing O] {Φ : Polynomial O}
+    (hΦ : Φ.Monic) (n : ℕ) (c : ℕ → Polynomial O)
+    (hdeg : ∀ s, (c s).degree < Φ.degree) (hvan : ∀ s, n ≤ s → c s = 0)
+    (j : ℕ) :
+    devCoeff Φ (∑ s ∈ Finset.range n, c s * Φ ^ s) j = c j :=
+  (devCoeff_eq_of_isDevelopment hΦ n _ c ⟨hdeg, hvan, rfl⟩ j).symm
+
+/-- Unit III-G8, part (b) — the SLOT READ of a weight-γ lattice sum (the
+concrete "displayed in(A) formula holds" of GD23 §3 VAL-g (2)): development
+slot t of `A = Σ_{s<n} π^{a_s}·u_s·Φ₀^s` is exactly its lattice digit
+`π^{a_t}·u_t`, so the K₀-digit tuple `([u_t])_t` is well-defined from `A`
+alone — the coordinate read of the free-module claim, slot-support form. -/
+theorem valg2_slot_eq {O : Type*} [CommRing O]
+    (π : O) (Φ₀ : Polynomial O) (hΦ : Φ₀.Monic)
+    (n : ℕ) (a : ℕ → ℕ) (u : ℕ → Polynomial O)
+    (hdeg : ∀ t, (u t).degree < Φ₀.degree) (hvan : ∀ t, n ≤ t → u t = 0)
+    (t : ℕ) :
+    devCoeff Φ₀ (∑ s ∈ Finset.range n, Polynomial.C (π ^ a s) * u s * Φ₀ ^ s) t
+      = Polynomial.C (π ^ a t) * u t :=
+  devCoeff_slots hΦ n (fun s => Polynomial.C (π ^ a s) * u s)
+    (fun s =>
+      lt_of_le_of_lt
+        (calc (Polynomial.C (π ^ a s) * u s).degree
+            ≤ (Polynomial.C (π ^ a s)).degree + (u s).degree :=
+              Polynomial.degree_mul_le _ _
+          _ ≤ 0 + (u s).degree := add_le_add_right Polynomial.degree_C_le _
+          _ = (u s).degree := zero_add _)
+        (hdeg s))
+    (fun s hs => by rw [hvan s hs, mul_zero]) t
+
+/-- Helper for III-G8: in a domain, `π^m·x` lies one π-step above its own
+lattice height iff `x` lies in `(π)` — the slotwise class-vanishing test. -/
+theorem pow_mul_mem_span_pow_succ_iff {O : Type*} [CommRing O] [IsDomain O]
+    {π : O} (hπ0 : π ≠ 0) (m : ℕ) (x : O) :
+    π ^ m * x ∈ Ideal.span {π} ^ (m + 1) ↔ x ∈ Ideal.span {π} := by
+  rw [Ideal.span_singleton_pow, Ideal.mem_span_singleton,
+    Ideal.mem_span_singleton, pow_succ]
+  exact mul_dvd_mul_iff_left (pow_ne_zero m hπ0)
+
+set_option linter.unusedVariables false in
+/-- BP_III Wave-1 row III-G8 (GD23 §3 VAL-g step (2)): the weight-γ graded
+piece is the FREE K₀-module on the lattice monomials `π̄^a Φ̄₀^t` with
+`e·a + t·h = γ` — concrete slot-support rendering (see the provenance block
+above for the rendering conventions; FORMULATED statement, flagged for
+review).  For a lattice sum `A = Σ_{t<n} π^{a_t}·u_t·Φ₀^t` on the weight-γ
+line (`e·a_t + t·h = γ`, `deg u_t < deg Φ₀`): `w₁(A) > γ` — slotwise, every
+development slot strictly above the line — IFF every K₀-digit class
+`[u_t] = 0` — coefficientwise, every `u_t ≡ 0 mod π`.  (`hd`/`he`/`hh`/
+`hlat` are the brief's weight-γ pins: they make the left side read
+"w₁(A) > γ"; the slotwise criterion holds line-by-line, so the proof does
+not consume them.) -/
+theorem valg2_gradedPiece_free {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O]
+    (π : O) (hπ : Ideal.span {π} = IsLocalRing.maximalIdeal O)
+    (Φ₀ : Polynomial O) (hΦ : Φ₀.Monic) (hd : 1 ≤ Φ₀.natDegree)
+    (e h γ : ℕ) (he : 1 ≤ e) (hh : 1 ≤ h)
+    (n : ℕ) (a : ℕ → ℕ) (u : ℕ → Polynomial O)
+    (hdeg : ∀ t, (u t).degree < Φ₀.degree) (hvan : ∀ t, n ≤ t → u t = 0)
+    (hlat : ∀ t, t < n → e * a t + t * h = γ) :
+    (∀ t, t < n → ∀ k,
+        (devCoeff Φ₀
+            (∑ s ∈ Finset.range n, Polynomial.C (π ^ a s) * u s * Φ₀ ^ s)
+            t).coeff k
+          ∈ Ideal.span {π} ^ (a t + 1))
+      ↔ ∀ t, t < n → ∀ k, (u t).coeff k ∈ Ideal.span {π} := by
+  have hπ0 : π ≠ 0 := fun h0 =>
+    IsDiscreteValuationRing.not_a_field O
+      (by rw [← hπ, h0, Ideal.span_singleton_eq_bot])
+  have hslot := valg2_slot_eq π Φ₀ hΦ n a u hdeg hvan
+  constructor
+  · intro H t ht k
+    have hk := H t ht k
+    rw [hslot t, Polynomial.coeff_C_mul] at hk
+    exact (pow_mul_mem_span_pow_succ_iff hπ0 (a t) _).mp hk
+  · intro H t ht k
+    rw [hslot t, Polynomial.coeff_C_mul]
+    exact (pow_mul_mem_span_pow_succ_iff hπ0 (a t) _).mpr (H t ht k)
+
 end LeanUrat.Scaffold.DictIII

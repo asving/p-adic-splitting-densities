@@ -445,4 +445,39 @@ noncomputable def valGrIdentity {K : Type*} [CommRing K] [IsDomain K]
   mul_zero a := ⟨MulZeroClass.mul_zero a, MulZeroClass.zero_mul a⟩
   dom _ _ h := mul_eq_zero.mp h
 
+/-! ## Unit III-G22 — `gd3_full_of_GRB` (Theorem GD3-FULL + OL-B, GD23 §7.3) -/
+
+/-- Unit III-G22 — Theorem GD3-FULL + OL-B (GD23 rev-4 §7.3), general order,
+from (GR-B): the STATEMENT FIRES THE (H1) ROW (BP_III unit-table pin; proof
+sketch "unfold `GRB`, apply clause").  The §1.5 line is ELIDED after its
+binder frame (`theorem gd3_full_of_GRB (h : GRB p F) : …`), so — same
+convention as III-G18/G19/G20 above — the conclusion is completed from the
+source of record.  Completion ledger:
+* the binder frame `(h : GRB p F)` is the display's, verbatim; `p`/`F` get
+  this module's explicit binders (Devid.lean declares no section variables);
+* the conclusion renders the source theorem's two clauses AS THE LANDED (H1)
+  ROW RENDERS THEM (`Hyps.lean`, unit III-H1 `GRB`, orders ≥ 2): clause
+  (full) "R^nrm = R^gr(in f) = c·R_λ(f)" ↦ the `residualNormalForm` body (a
+  reader exists whose every returned side reads the residual degree off its
+  ℓ); clause (OL-B) "a bijection of K_i per slot" ↦ the `slotBijection` body
+  (the slot self-map on `Fin (D.residualDegree i + 1)` is bijective);
+* the properness proviso is (GR-B)-side (a clause OF the hypothesis row, per
+  its §7.2 display), not a GD3-FULL conclusion — it is NOT restated here;
+* the dep-column `gd3_min` (III-G21) is NOT consumed: the source proof is
+  "re-readings of (2′) + the structure clause … the statement now carries
+  exactly what (GR-B) asserts" (§7.3, REV 2), and `gd3_min` is unlanded
+  (III-G21b BLOCKED above) — when III-G21a lands a graded-ord carrier, any
+  refit is that owner's dedupe question.
+At orders ≥ 2 the content sits entirely inside (GR-B): HYPOTHESIS-priced,
+exactly as the brief prices it. -/
+theorem gd3_full_of_GRB {p : ℕ} [Fact p.Prime]
+    {F : Type*} [Field F] [Finite F] (h : GRB p F) :
+    ∀ {f : Polynomial ℤ_[p]} {c : ChainData p F} {D : GMNData f c} (i : ℕ),
+      2 ≤ i →
+      (∃ R : GMNReader f c D, ∀ S, R.side i = some S →
+        D.residualDegree i = S.ℓ) ∧
+      Function.Bijective (fun j : Fin (D.residualDegree i + 1) => j) := by
+  intro f c D i hi
+  exact ⟨h.residualNormalForm i hi, h.slotBijection i hi⟩
+
 end LeanUrat.Scaffold.DictIII
