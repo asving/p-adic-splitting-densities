@@ -70,7 +70,12 @@
       card_eq_of_injOn_checksum
     UE_vtxUpper (HC2/UE_vtxUpper.lean:70–153, the §3 line pin; ns
     LeanUrat.MovesJ.UE): childW_ge_estar_mul_w · regrade_ge_estar_mul_w ·
-      vtx_m6bi_n4upper · vtx_htUpper_div  -/
+      vtx_m6bi_n4upper · vtx_htUpper_div
+    H9 census rows (HDISCHARGE_H9.md §6 Wave 1, all five units of
+    Scaffold/HDischarge/H9/NsfKeyProp.lean; ns
+    LeanUrat.Scaffold.HDischarge.H9): nsFree_of_maximal_irrHalts (H9-U2) ·
+      nsFree_iff_maximal_irrHalts (H9-U3) · nsLeaf_nsHalts_of_fiberAt
+      (H9-U4) · nsfKey_prop (H9-U1) · bridgeVt_maximal_irrHalts (H9-U5)  -/
 import LeanUrat.Scaffold.Hypotheses
 import LeanUrat.Scaffold.Spine
 import LeanUrat.Scaffold.CorpusBridge
@@ -92,6 +97,7 @@ import LeanUrat.MovesU.O12PoleFree
 import LeanUrat.MovesU.RegPFinite
 import LeanUrat.MovesU.O5CountingB
 import LeanUrat.HC2.UE_vtxUpper
+import LeanUrat.Scaffold.HDischarge.H9.NsfKeyProp
 
 -- ## VI-A1: scaffold-core census (every named VI-H*/VI-S*/VI-B* theorem)
 #print axioms LeanUrat.Scaffold.clauseR_of_clauseUB
@@ -194,3 +200,10 @@ import LeanUrat.HC2.UE_vtxUpper
 #print axioms LeanUrat.MovesJ.UE.regrade_ge_estar_mul_w
 #print axioms LeanUrat.MovesJ.UE.vtx_m6bi_n4upper
 #print axioms LeanUrat.MovesJ.UE.vtx_htUpper_div
+
+-- ## H9 Wave 1: HDISCHARGE_H9.md §6 census (Scaffold/HDischarge/H9/NsfKeyProp.lean)
+#print axioms LeanUrat.Scaffold.HDischarge.H9.nsFree_of_maximal_irrHalts
+#print axioms LeanUrat.Scaffold.HDischarge.H9.nsFree_iff_maximal_irrHalts
+#print axioms LeanUrat.Scaffold.HDischarge.H9.nsLeaf_nsHalts_of_fiberAt
+#print axioms LeanUrat.Scaffold.HDischarge.H9.nsfKey_prop
+#print axioms LeanUrat.Scaffold.HDischarge.H9.bridgeVt_maximal_irrHalts
