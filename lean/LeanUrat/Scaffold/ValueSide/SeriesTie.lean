@@ -16,15 +16,23 @@ deviation record on the carrier's `: Prop` ascription)
 `(1 − A_ℝ)⁻¹ · b_ℝ`, invertibility as the explicit M4-shaped `hdet` binder).
 · S5a (state/block reindexing)
 · S4c2 (SolveSeam agreement — the tie to `SolveSeam.r_is_solve`'s `Rsh`
-under RegP, the evalℝ/Rval read of the margin evaluation).
-Later waves add S3b2
-and S5b (`seriesTie_of_kernels`, targeting the corpus row
-`BridgeKernels.series_tie`; BLOCKED at probe time — see its section).
+under RegP, the evalℝ/Rval read of the margin evaluation)
+· S5b (`seriesTie_of_kernels` + its named pricing row `SolvePricing`,
+LANDED at REVISION 3 — targeting the corpus row `BridgeKernels.series_tie`;
+the original probe obstruction record and the mop-up adjudication are in the
+S5b section).  S3b2 is retired at REVISION 3: the §1.5-displayed S3 statement
+`neumannSum_blockTriangular` is landed and PROVED above (direct proof), and
+its chained form `neumannSum_blockTriangular_step` covers the multi-block
+passage — no residual obligation.
 Import graph (BP_IV §1.0/§4): this module NEVER imports `DensityTie.lean`;
-`DensityTie.lean` imports the completed `SeriesTie.lean`.
+`DensityTie.lean` imports the completed `SeriesTie.lean`.  REVISION 3 adds
+the `Census.lean` import (the census/ADM rows S5b binds), exactly the edge
+the Census.lean header already records ("imported by the repaired
+SeriesTie.lean/DensityTie.lean").
 -/
 import Mathlib
 import LeanUrat.MovesU.BridgeKernels
+import LeanUrat.Scaffold.ValueSide.Census
 
 /-!
 # The resummation core + the series tie [BP_IV division, unit SKEL]
@@ -801,7 +809,18 @@ theorem neumann_eq_matrixSolve_of_margin {m : ℕ}
   exact neumann_eq_solve_of_margin A b hfiniteA hfiniteb ρ hρ0 hρ1 hmargin x hx
 
 /-!
-## Unit S5b — `seriesTie_of_kernels`: BLOCKED (owner-row prerequisites absent)
+## Unit S5b — the original obstruction record (superseded at REVISION 3;
+## the landed adjudicated form is at the END of this file)
+
+**REVISION-3 disposition:** the two obstructions below were adjudicated by the
+mop-up architect (full record: `blueprints/BP_IV.md` REVISION 3 + the S5b
+section at the end of this file): (i) the five undeclared row types become
+OPAQUE PREDICATE PARAMETERS (`K3DeltaRow` pattern, per the H4 ledger in
+`ValueSide/Hyps.lean`) resp. the landed `CensusValueRows` form of
+`Census.lean`; (ii) the display's missing (A, b) ↔ chain link becomes the ONE
+new named row `SolvePricing` (the O11-K2 pricing content the S4c2/S5a units
+already expose).  The original record is kept verbatim below — it is the
+type-level half of the warrant.
 
 **BLOCKED(S5b)** (checked at compile, 2026-08-01; probe = the §1.5-VERBATIM
 statement with a `sorry` body over the full value-side import set
@@ -1108,5 +1127,133 @@ theorem neumann_eq_solveValue_of_margin {n p m : ℕ} {C : MovesU.UCarriers n}
     (neumann_eq_solve_of_margin A b hfiniteA hfiniteb ρ hρ0 hρ1 hmargin x hx
       (stateOf σ)).trans (hread σ)
   exact ⟨h1, h1.trans (evalℝ_eq_Rval_of_solvePin hpin hreg hp hsolve σ)⟩
+
+/-!
+## Unit S5b — `seriesTie_of_kernels` (LANDED at REVISION 3, mop-up adjudication)
+
+**REVISION-3 adjudication record (S5b; full blueprint record in
+`blueprints/BP_IV.md` REVISION 3; the original compile-probe obstruction
+record stands verbatim in the superseded S5b section above).**  Two repairs,
+both intent-preserving against the landed reality:
+
+1. **The five undeclared row types** (`GRBRow`/`FreshRow`/`CensusValueRows`/
+   `R1R4Row`/`TerminalSeamRows` — the §1.5 display could not ELABORATE, so
+   there is nothing compiled to refute; the probe error transcript above is
+   the type-level warrant).  Per the H4 ledger ruling (`ValueSide/Hyps.lean`):
+   (GR-B)/(FRESH) enter as the opaque parameters
+   `{GRBRow FreshRow : CensusData → Prop}` (BP_III instantiates, no re-key);
+   `CensusValueRows` is the landed C5 row of `Census.lean` (strata-parametric
+   form, binders `SW`/`SJ`); (R1)–(R4) enters as
+   `{R1R4Row : ClassifierSpec n p → Prop}` applied at `X` (display token
+   `R1R4Row n p X` → parameter at `X`, its indices riding in the parameter's
+   type); (H6) enters as `{TerminalSeamRows : FiberSeries n p X → Prop}`
+   applied at `F` ("keyed at F", ibid.).
+
+2. **The missing (A, b) ↔ chain link** (the proof-level warrant): in the
+   §1.5 display NOTHING ties the abstract kernel pair (A, b) — or `F` — to
+   `C.chain`'s solve values; the displayed conclusion mentions only `F` and
+   `C`, while (A, b) range over ALL pairs admitting a `TreeRecursion` for
+   `F`.  Under-constraint shape (the countermodel that would compile once
+   heavyweight seam instances exist; not built — the display never
+   elaborated, so no compiled witness is owed): take `A = 0`, `b = 0`, `F`
+   with all slice sums 0 (then `TreeRecursion` holds with `slice ≡ 0`,
+   forcing `F.seriesSum ≡ 0` through `series_eq_iSup`), every opaque row
+   instantiated `fun _ => True`, and any carrier `C` with some
+   `Rval (vmap C.T σ) p ≠ 0` — the conclusion fails.  The mathematics the
+   display omitted is EXACTLY O-11 K2's evaluation plumbing (M04 Lemma 3.3's
+   application scope): the kernel system's real solution reads off the
+   chain's solve values at the σ-states.  That content is landed as the ONE
+   new NAMED row `SolvePricing` below ([M]-hypothesis discipline: a named
+   structure, never an axiom, never silently strengthened), whose fields are
+   precisely the binders the landed S5a/S4c2 units expose — the census rows
+   (K3) and seam rows (K4) are what will DISCHARGE a `SolvePricing` instance
+   when BP_III's product-law instances land; here they ride as the honest
+   conditionality display, exactly as §1.5 charges ("S5's binder list IS the
+   honest conditionality display").
+
+Proof = the S5a state leg (`seriesSum_eq_ofReal_solve`: S2b + S4a/S4b) chained
+through the pricing row's read-off into the S4c2 pin tie
+(`evalℝ_eq_Rval_of_solvePin`).  The M04 F1 fence stands: the DEVICE `n2Chain`
+must never instantiate these carriers.
+-/
+
+open MovesU (ClassifierSpec FiberSeries SplittingType) in
+/-- S5b pricing row (**REVISION 3**, the K2/K3-leg [M] hypothesis): the O11-K2
+    evaluation-plumbing content tying the abstract kernel pair (A, b) to the
+    carrier chain's solve values — a solve datum pinned to the real
+    Cramer/adjugate `Rsh` (field `solve_pin`, byte-identical in type to the
+    corpus `SolveSeam.r_is_solve`), the row-sum margin regime of M3'/M4
+    (fields `finiteA/finiteb/ρ/margin`), and a real affine solution of the
+    kernel system that reads off the evaluated solve at every σ-state
+    (fields `sol/sol_solves/sol_reads`), nonnegatively (`sol_nonneg` — the
+    O-12 positivity layer's shape, `cycS_eval_pos` at q₀ = p ≥ 2; consumed by
+    D4's `toReal` passage).  Constructors are owner-side (BP_III product-law
+    instances + the census value rows); no proof of this row exists at this
+    campaign. -/
+structure SolvePricing {n p m : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    (C : MovesU.UCarriers n) (K1 : TreeRecursion X F A b) where
+  S : MovesU.SolveData n
+  solve_pin : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK) (σ : SplittingType n),
+    S.R σ = MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP
+      (MovesU.vmap C.T σ)
+  finiteA : ∀ i j, A i j ≠ ⊤
+  finiteb : ∀ i, b i ≠ ⊤
+  ρ : ℝ
+  ρ_nonneg : 0 ≤ ρ
+  ρ_lt_one : ρ < 1
+  margin : ∀ i, ∑ j, (A i j).toReal ≤ ρ
+  sol : Fin m → ℝ
+  sol_solves : sol = vectorToReal b + (matrixToReal A).mulVec sol
+  sol_reads : ∀ σ : SplittingType n, sol (K1.stateOf σ) = MovesU.evalℝ S σ p
+  sol_nonneg : ∀ σ : SplittingType n, 0 ≤ sol (K1.stateOf σ)
+
+-- The row binders of the honest-conditionality display are deliberately
+-- unused in the Lean assembly (their content is consumed at instance-
+-- construction time, not here); the lint is silenced for S5b only, the D3
+-- precedent (`DensityTie.lean`).
+set_option linter.unusedVariables false in
+open MovesU (ClassifierSpec FiberSeries SplittingType) in
+open ValueSide in
+/-- **S5b** (`seriesTie_of_kernels`, THE movement's Step-18 capstone; BP_IV
+    §1.5 at the REVISION-3 adjudicated scope — see the adjudication record
+    above): `series_tie` from the displayed row list, one binder per ROOT
+    consumption — K1 = `hrec`-shaped recursion (BP_III's SibJcRows feed it),
+    K2 = `hreg`/`hpin`/`K2 : SolvePricing` (+ `hpack`), K3 = the census
+    binders (`hGRB`, `hFresh`, `hadm`, `hcen`, `hR14`, `hK3δ`), K4 = the
+    terminal-seam row + the `TreeSeam` in scope.  Conclusion: the corpus row
+    `BridgeKernels.series_tie`, verbatim.  The BP_VI spine must consume this
+    binder list VERBATIM (§5 statement fence). -/
+theorem seriesTie_of_kernels {n p m : ℕ} [Fact p.Prime]
+    {C : MovesU.UCarriers n} {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {CD : CensusData} {RD : MovesU.RegData p} {P : AssembledPack n}
+    {R : PackReference n C P}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    {GRBRow FreshRow : CensusData → Prop}
+    {SW : StratumR CD} {SJ : JunctionStratum CD}
+    {R1R4Row : ClassifierSpec n p → Prop}
+    {TerminalSeamRows : FiberSeries n p X → Prop}
+    {RealizedPool DeltaStablePos : ℕ → Prop}
+    (seam : MovesU.TreeSeam n p X F)
+    (K1 : TreeRecursion X F A b)
+    (hreg : MovesU.RegP RD) (hpin : MovesU.RegPin C RD)
+    (K2 : SolvePricing C K1)
+    (hpack : PackCorrespondence n C P R)
+    (hGRB : GRBRow CD) (hFresh : FreshRow CD) (hadm : ADMFull CD)
+    (hcen : CensusValueRows CD GRBRow FreshRow SW SJ)
+    (hR14 : R1R4Row X)
+    (hK3δ : K3DeltaRow p RD RealizedPool DeltaStablePos)
+    (K4 : TerminalSeamRows F) :
+    ∀ σ : SplittingType n,
+      F.seriesSum σ
+        = ENNReal.ofReal (C.chain.Rval (MovesU.vmap C.T σ) (p : ℚ)) := by
+  intro σ
+  have hp : p.Prime := Fact.out
+  have h1 : F.seriesSum σ = ENNReal.ofReal (K2.sol (K1.stateOf σ)) :=
+    seriesSum_eq_ofReal_solve K1 K2.finiteA K2.finiteb K2.ρ K2.ρ_nonneg
+      K2.ρ_lt_one K2.margin K2.sol K2.sol_solves σ
+  rw [h1, K2.sol_reads σ,
+    evalℝ_eq_Rval_of_solvePin hpin hreg hp K2.solve_pin σ]
 
 end LeanUrat.Scaffold

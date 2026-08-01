@@ -9,12 +9,15 @@ verbatim; the corpus box partition `boxN` (U1) + D0a monotone convergence +
 the `henv` binder), D3 (`cylDensity_eq_seriesSum`), and
 D5 (`renewal_unique_of_margin`).
 
-BLOCKED(D4): `valueSide_massTie` (the movement CAPSTONE, §1.6 verbatim) does
-NOT land here yet — five of its binder row types have no declaration anywhere
-in the corpus (checked 2026-08-01 against freshly rebuilt oleans, including
-the just-landed S2b `TreeRecursion`, which DOES resolve).  Full obstruction
-record in the BLOCKED(D4) block at the end of this file; per the §4 failure
-protocol it escalates to the blueprint owner — no prover-side restatement.
+D4 (`valueSide_massTie`, THE MOVEMENT CAPSTONE) LANDED at REVISION 3
+(mop-up adjudication) at the S5b-adjudicated binder list + `henv`: the five
+undeclared row types enter as opaque predicate parameters resp. the landed
+`CensusValueRows`, and the O11-K2 pricing content enters as the named
+`SolvePricing` row (owner: `SeriesTie.lean` unit S5b — see its adjudication
+record and BP_IV REVISION 3; the original obstruction record is kept verbatim
+in the D4 section below).  Proof: pointwise rewrite by D3 and S5b, with the
+`toReal` passage lawful by the pricing row's `sol_nonneg` (O-12 positivity
+shape).  D2 is not used (BP_IV §2 D-table, REV-2 finding 22).
 Import graph (BP_IV §1.0/§4): this module imports the completed
 `SeriesTie.lean`; `SeriesTie.lean` never imports this module.  D0a's T0
 dependency (`card_boxProj_fiber`) arrives via `Transfer.lean`, a leaf module
@@ -314,8 +317,22 @@ theorem renewal_unique_of_margin {m : ℕ}
   exact abs_eq_zero.mp hi
 
 /-!
-**BLOCKED(D4)** (`valueSide_massTie`, THE MOVEMENT CAPSTONE — BP_IV §1.6 code
-block; §2 D-table row D4 "pointwise rewrite by D3 and S5; D2 is not used").
+## Unit D4 — `valueSide_massTie` (LANDED at REVISION 3, mop-up adjudication)
+
+**REVISION-3 disposition:** the obstruction record below (kept verbatim — the
+type-level half of the D4 warrant) was adjudicated EXACTLY as at S5b
+(`SeriesTie.lean`, whose section carries the full two-part warrant incl. the
+under-constraint shape): the five undeclared row types enter as opaque
+predicate parameters resp. the landed `CensusValueRows` of `Census.lean`, and
+the O11-K2 pricing content enters as the ONE named row
+`K2 : SolvePricing C K1`.  D4's binder list = S5b's + `henv` (BP_IV §2
+D-table: "pointwise rewrite by D3 and S5; D2 is not used"); the `toReal`
+passage from S5b's `ofReal` conclusion is lawful by the pricing row's
+`sol_nonneg` (the O-12 positivity shape priced by `cycS_eval_pos` at
+q₀ = p ≥ 2).  The BP_VI spine must consume THIS binder list verbatim
+(§5 statement fence, re-pointed by BP_IV REVISION 3).
+
+**The original BLOCKED(D4) record (2026-08-01, superseded):**
 The verbatim statement cannot elaborate: its binder list applies FIVE row
 types with no declaration anywhere in the corpus (probe run 2026-08-01, from
 `import … DensityTie + … Hyps`, `open LeanUrat.MovesU
@@ -342,11 +359,58 @@ unknown`.  Every OTHER binder (incl. `TreeRecursion X F A b`, `RegP RD`,
 `RegPin C RD`, `PackCorrespondence n C P R`, `ADMFull CD`,
 `K3DeltaRow p RD RealizedPool DeltaStablePos`) and the conclusion
 `∀ σ, cylDensity X σ = C.chain.Rval (vmap C.T σ) (p : ℚ)` elaborate cleanly.
-Dep S5b (`seriesTie_of_kernels`) is likewise not landed — its §1.5 statement
-binds the same five rows, consistent with the unit-H4 ledger's "Consumer
-blocked: S5"; the §4 wave plan is serial S5a → S5b → D4.  Statement fence
-(§5): the binder list must reach the BP_VI spine VERBATIM, so the unit waits
-for the owner modules rather than compiling against a weaker signature.
 -/
+
+-- The honest-conditionality row binders are deliberately unused in the Lean
+-- assembly (see the S5b note in `SeriesTie.lean`); lint silenced for D4
+-- only, the D3 precedent above.
+set_option linter.unusedVariables false in
+open ValueSide in
+/-- D4 (THE MOVEMENT CAPSTONE — α = R_τ at the full displayed hypothesis
+    set; BP_IV §1.6 at the REVISION-3 adjudicated scope, = S5b's binder list
+    + `henv`): the cylinder-limit density of every type σ equals the chain's
+    measured value R_τ(σ) at q₀ = p.  Proof: pointwise rewrite by D3
+    (`cylDensity_eq_seriesSum`) and S5b (`seriesTie_of_kernels`); D2 is not
+    used. -/
+theorem valueSide_massTie {n p m : ℕ} [Fact p.Prime] [NeZero p]
+    {C : UCarriers n} {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {CD : CensusData} {RD : RegData p} {P : AssembledPack n}
+    {R : PackReference n C P}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    {GRBRow FreshRow : CensusData → Prop}
+    {SW : StratumR CD} {SJ : JunctionStratum CD}
+    {R1R4Row : ClassifierSpec n p → Prop}
+    {TerminalSeamRows : FiberSeries n p X → Prop}
+    {RealizedPool DeltaStablePos : ℕ → Prop}
+    (seam : TreeSeam n p X F)
+    (K1 : TreeRecursion X F A b)
+    (hreg : RegP RD) (hpin : RegPin C RD)
+    (K2 : SolvePricing C K1)
+    (hpack : PackCorrespondence n C P R)
+    (hGRB : GRBRow CD) (hFresh : FreshRow CD) (hadm : ADMFull CD)
+    (hcen : CensusValueRows CD GRBRow FreshRow SW SJ)
+    (hR14 : R1R4Row X)
+    (hK3δ : K3DeltaRow p RD RealizedPool DeltaStablePos)
+    (K4 : TerminalSeamRows F)
+    (henv : Tendsto X.env atTop (nhds 0)) :
+    ∀ σ : SplittingType n,
+      cylDensity X σ = C.chain.Rval (vmap C.T σ) (p : ℚ) := by
+  intro σ
+  have hp : p.Prime := Fact.out
+  -- S5b: the series tie
+  have htie : F.seriesSum σ
+      = ENNReal.ofReal (C.chain.Rval (vmap C.T σ) (p : ℚ)) :=
+    seriesTie_of_kernels seam K1 hreg hpin K2 hpack hGRB hFresh hadm hcen
+      hR14 hK3δ K4 σ
+  -- the pricing row's nonnegativity read at the measured value
+  have hnn : 0 ≤ C.chain.Rval (vmap C.T σ) (p : ℚ) := by
+    rw [← evalℝ_eq_Rval_of_solvePin hpin hreg hp K2.solve_pin σ,
+      ← K2.sol_reads σ]
+    exact K2.sol_nonneg σ
+  have hfin : F.seriesSum σ ≠ ⊤ := by
+    rw [htie]; exact ENNReal.ofReal_ne_top
+  -- D3 + S5b + the lawful toReal passage
+  rw [cylDensity_eq_seriesSum seam henv σ hfin, htie,
+    ENNReal.toReal_ofReal hnn]
 
 end LeanUrat.Scaffold

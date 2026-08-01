@@ -399,6 +399,64 @@ theorem env_tendsto_zero_of_imports {n p : ℕ} [Fact p.Prime]
     tendsto_id hle hB
 
 /-!
+**PROVENANCE (unit T5; BP_IV §2 T-table row T5, source O4T §3.4 N3-ENV
+step 2; LANDED at REVISION 3, mop-up).**  The blueprint displays no §1.1 code
+block for T5 — only the T-table row "`env_le_tail`: env N ≤
+tailC·p^(−(N−1)/(2(n−1))) | T4's inclusion + card mono + the `tail` field".
+The T5→T6 chain had been collapsed by the T6 prover (T6's proof derives the
+m = N bound inline, its `hle`, so T6 is green independently of T5); the
+standalone displayed T5 row is landed here, closing the unit: the inline
+m = N chain re-run standalone, then the exponent relaxed −N → −(N−1)
+(base p > 1), which is exactly the displayed T5 form. -/
+
+/-- T5 (`env_le_tail`, N3-ENV step 2 as the standalone displayed bound): the
+undecided envelope decays exponentially,
+`env N ≤ tailC n · p^(−(N−1)/(2(n−1)))` — unit T4's tail inclusion
+`Undec(N) ⊆ {N ≤ discV}`, the I-TAIL row at depth m = N, and the −N → −(N−1)
+exponent relaxation. -/
+theorem env_le_tail {n p : ℕ} [Fact p.Prime] {X : ClassifierSpec n p}
+    (hI : DrainageImports n p X) (N : ℕ) :
+    X.env N ≤ tailC n * (p : ℝ) ^ (-((N : ℝ) - 1) / (2 * ((n : ℝ) - 1))) := by
+  have hp : p.Prime := Fact.out
+  have hp1 : (1 : ℝ) < (p : ℝ) := by exact_mod_cast hp.one_lt
+  have h2n : (2 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hI.n_lower
+  have hc : (0 : ℝ) < 2 * ((n : ℝ) - 1) := by linarith
+  -- the m = N bound (T4's injection + the I-TAIL row; T6's inline chain)
+  have hle : X.env N ≤ tailC n * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1))) := by
+    have hcard : (X.undec N : ℝ) ≤
+        (Nat.card {f : Box p n N // N ≤ discV p n N f} : ℝ) := by
+      have hinj : X.undec N ≤ Nat.card {f : Box p n N // N ≤ discV p n N f} := by
+        unfold ClassifierSpec.undec
+        exact Nat.card_le_card_of_injective
+          (fun f => (⟨f.1, undec_subset_tail hI N f.1 f.2⟩ :
+            {f : Box p n N // N ≤ discV p n N f}))
+          (fun a b hab => Subtype.ext (Subtype.mk_eq_mk.mp hab))
+      exact_mod_cast hinj
+    have hpow : (0 : ℝ) < (p : ℝ) ^ (n * N) := by positivity
+    unfold ClassifierSpec.env
+    rw [div_le_iff₀ hpow]
+    calc (X.undec N : ℝ)
+        ≤ (Nat.card {f : Box p n N // N ≤ discV p n N f} : ℝ) := hcard
+      _ ≤ tailC n * (p : ℝ) ^ (n * N)
+            * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1))) := hI.tail N N
+      _ = tailC n * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1)))
+            * (p : ℝ) ^ (n * N) := by ring
+  -- exponent relaxation −N ≤ −(N−1) at base p > 1
+  have htail0 : (0 : ℝ) ≤ tailC n := by
+    have hn1 : (0 : ℝ) ≤ (n : ℝ) - 1 := by linarith
+    exact mul_nonneg hn1 (by positivity)
+  have hexp : -(N : ℝ) / (2 * ((n : ℝ) - 1))
+      ≤ -((N : ℝ) - 1) / (2 * ((n : ℝ) - 1)) := by
+    have h1 : -(N : ℝ) ≤ -((N : ℝ) - 1) := by linarith
+    calc -(N : ℝ) / (2 * ((n : ℝ) - 1))
+        = -(N : ℝ) * (2 * ((n : ℝ) - 1))⁻¹ := div_eq_mul_inv _ _
+      _ ≤ -((N : ℝ) - 1) * (2 * ((n : ℝ) - 1))⁻¹ :=
+          mul_le_mul_of_nonneg_right h1 (inv_nonneg.mpr hc.le)
+      _ = -((N : ℝ) - 1) / (2 * ((n : ℝ) - 1)) := (div_eq_mul_inv _ _).symm
+  exact hle.trans (mul_le_mul_of_nonneg_left
+    (Real.rpow_le_rpow_of_exponent_le hp1.le hexp) htail0)
+
+/-!
 **PROVENANCE (unit T4b; BP_IV §1.1 T7-interface block — "`canonicalOrderLEOne`
 is the concrete classifier definition of unit T4b"; §4 wave-2 chain
 T4a → T4b → T4).**  Signature transcribed VERBATIM from §1.1 (the
