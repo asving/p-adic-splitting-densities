@@ -100,7 +100,41 @@ GRB/OL2min rows.
 
 Needs a blueprint-level repair: the architect supplies the typed general
 (M6c)(i) signature (or T11a lands first and the architect rules how its
-`e′ = 1` hypothesis is replaced by the `GRB p F` + `OL2min f c D` rows). -/
+`e′ = 1` hypothesis is replaced by the `GRB p F` + `OL2min f c D` rows).
+
+UPDATE — unit III-T11b pass of record (2026-08-01, prover III-T11b):
+
+* All three dependencies are now LANDED — III-H1 `GRB` + III-H7a `OL2min`
+  (`Hyps.lean`) and III-T11a `m6c_beyondWindow_e1` (this file, below) — so
+  the second blocking ground above (no landed anchor signature) is CURED.
+* The FIRST ground STANDS and is the sole blocker: `blueprints/BP_III.md` is
+  unchanged since this record (§1.7 line 524 still displays only
+  `theorem m6c_beyondWindow …`), and the verbatim transcription was re-probed
+  against this pin (Lean 4.31, 2026-08-01) with the same exact error:
+    `error: expected token`          -- at the `…` character, col 25.
+* Two constraints the architect's typed signature must rule, recorded for
+  the repair:
+  (a) VOCABULARY SEAM — the landed `OL2min` row is typed over
+      `(f : Polynomial ℤ_[p]) (c : ChainData p F) (D : GMNData f c)`, the
+      EHist/ChainData engine vocabulary, while the landed anchor
+      `m6c_beyondWindow_e1` is stated over `MovesC.History p F` (machine
+      vocabulary).  A bare "replace `he'1` by `GRB p F` + `OL2min f c D`"
+      leaves `c`/`D` unbound at the History site; the signature must also
+      rule the bridge (`Theta`/`machineProj`-style, or GMN data keyed to
+      the History).
+  (b) MATH CAUTION — the compiled e′-stretch gate
+      (`HC2/HK52_stretchGate.lean`, `hk52_v9_qform_reduction`, HK-12
+      record) marks the anchor's (b)-clause ℚ-form
+      `strFrame·line < σ'.w` TRUE on the `e′ = 1` sub-perimeter and
+      FALSE-SUSPECT at every `e′ ≥ 2` record with nonzero vertex value:
+      the child weight carries the stride factor `σ'.w = e′·σV.w`
+      (`hk52_qform_stretch`), so the general (BOX) line must be the
+      STRETCHED child-frame line.  A naive hypothesis-swap generalization
+      of the anchor would risk enshrining a false statement — statement
+      composition here is not only fenced (D-R4 reserves the replacement
+      ruling to the architect) but unsafe.
+
+BLOCKED stands, on ground (1) alone. -/
 
 /-! ## Unit III-T15 — Corollary VTX wrapper (BP_III §2 Wave 3 row T15; src O1thr §2.5 VTX)
 
@@ -432,25 +466,32 @@ COMPLETION LEDGER (source clause → corpus rendering):
   enters §1.7's vocabulary.
 * Window confinement F ⊆ [0, W_o] (W_o = the creating read's μ — source
   §2.5 preamble "(e, h, γ, ψ, μ = W) the creating read ν's data"): the final
-  clause, keyed to `H.nodes.getLast?`.  This is the source proof's ONE
-  citation of (M6c)(i)-at-o / WGEO(c) ("F is principal, and F ⊆ [0, W]"),
-  and it is exactly the `j > W` state-polygon flank that the III-T11a record
-  above declares NOT claimed at `e′ = 1` and D-R4 assigns to III-T11b —
-  BLOCKED (record above).  The clause is stated in full and carries an
-  honest `sorry` (BLOCKED(III-T12) note at the leg); the
-  `IsPolyValuation`/`KeyPkg` rows it will consume are bound in the signature
-  per the unit charter ("under KeyPkg rows"): `wS` abstracts the state
-  valuation w_o, `hwS` its frame tie (a NAMED row, the III-G18 convention),
-  `hval` = (V1) at the state (`Devid.lean`'s un-indexed `MacLaneV1Pkg` row
-  set), `hkp` = (V2)-front at the state key (III-H8's landed structure).
-  Row SUFFICIENCY for this leg is III-T13 (`wgeo`) territory and
-  unadjudicated; if `wgeo` lands with a different row set, this signature is
-  a re-adjudication item, not a silent edit.
+  clause, keyed to `H.nodes.getLast?`.  In the SOURCE this is the proof's
+  ONE citation of (M6c)(i)-at-o / WGEO(c) ("F is principal, and F ⊆
+  [0, W]"); it originally carried an honest sorry queued behind
+  III-T11b/III-T13.  DISCHARGED (2026-08-01, prover III-T12, statement
+  byte-unchanged): the CORPUS records the confinement as a per-step
+  COHERENCE tie — `HistoryCoherent`'s transition component carries
+  `ν_{i+1}.s0 + ν_{i+1}.wSide ≤ ν_i.μ` verbatim (`MovesC/Defs.lean:742`,
+  the round-3 "new vertex is contained" clause, consumed elsewhere as
+  `C3_lineDom`'s `hE`), and `ReadsOf` includes `HistoryCoherent` of the
+  snoc chain, so the leg is run-record extraction like the others (see the
+  provenance note at the leg).  CONSEQUENCE for the rows: the
+  `IsPolyValuation`/`KeyPkg` rows bound in the signature per the unit
+  charter ("under KeyPkg rows") — `wS` the state valuation w_o, `hwS` its
+  frame tie, `hval` = (V1) at the state, `hkp` = (V2)-front at the state
+  key — are NOT consumed by this route.  They stay in the signature
+  (statement fence; removing rows is a statement change), flagged for
+  division-lead ratification: either ratify the row-free provenance and
+  slim the rows at an adjudicated statement pass, or keep them as the
+  charter's declared supply.  The prior re-adjudication note (row
+  sufficiency = III-T13 territory) is MOOT for the proof but retained as
+  the record of why the rows are present.
 
-Everything EXCEPT the confinement leg is PROVED below from the run record
-alone (snoc index bookkeeping + the (N1) endpoint consumption + the `hEdvd`
-stride arithmetic); no axiom, no new carrier, no `Node`/`SideReads` field
-redeclared. -/
+ALL clauses are PROVED below from the run record alone (snoc index
+bookkeeping + the (N1) endpoint consumption + the `hEdvd` stride arithmetic
++ the `HistoryCoherent` confinement tie at the seam index); zero sorry, no
+axiom, no new carrier, no `Node`/`SideReads` field redeclared. -/
 
 section UnitIIIT12
 
@@ -537,19 +578,38 @@ theorem m6c_noPhantom {n : ℕ} {f : Polynomial ℤ_[p]}
     exact ⟨htop.1, htop.2.1⟩
   · -- window confinement F ⊆ [0, W_o]
     intro νW hW
-    -- BLOCKED(III-T12): this leg is the source proof's ONE citation of
-    -- (M6c)(i)-at-o / WGEO(c) ("F is principal, and F ⊆ [0, W]") — the
-    -- `j > W` beyond-window strictness at the child's own line, from which
-    -- confinement follows because the RIGHT endpoint is TOUCHED (clause
-    -- above): a touched slot beyond W would violate strictness.  That
-    -- strictness is exactly the state-polygon flank the III-T11a record
-    -- above declares NOT claimed at `e′ = 1` and D-R4 assigns to III-T11b —
-    -- BLOCKED (elided display; record above) — with III-T13 (`wgeo`) not
-    -- landed and its dep III-G21 (`gd3_min`) BLOCKED per `Devid.lean`.
-    -- The bound rows `wS`/`hval`/`hkp`/`hwS` are this leg's declared supply
-    -- per the unit charter ("under KeyPkg rows"); the leg completes when
-    -- III-T11b/III-T13 land.  Honest sorry — the statement is NOT weakened.
-    sorry
+    -- BLOCKED(III-T12) note — RESOLVED (2026-08-01, prover III-T12): the leg
+    -- is PROVED from the run record after all, statement byte-unchanged.  The
+    -- prior hand-off read this leg as the source proof's (M6c)(i)/WGEO(c)
+    -- citation and queued it behind III-T11b/III-T13; but the CORPUS records
+    -- window confinement as a per-step COHERENCE tie — `HistoryCoherent`'s
+    -- transition component carries the clause
+    -- `ν_{i+1}.s0 + ν_{i+1}.wSide ≤ ν_i.μ` verbatim (`MovesC/Defs.lean:742`,
+    -- the round-3 "new vertex is contained" addition; consumed the same way
+    -- as `C3_lineDom`'s `hE`).  `ReadsOf` includes `HistoryCoherent` of the
+    -- snoc chain (`HC2/Defs.lean:322`), so instantiating the transition at
+    -- the seam index (the state's last node ↦ the appended child) yields
+    -- exactly this clause.  The bound rows `wS`/`hval`/`hkp`/`hwS` are NOT
+    -- consumed by this route — they stay in the signature per the unit
+    -- charter ("under KeyPkg rows"); see the section-header ledger's
+    -- provenance update.
+    obtain ⟨l, hl⟩ := List.getLast?_eq_some_iff.mp hW
+    have hcoh : HistoryCoherent (H.snoc ν' hν') := hread.2.2.1
+    have hsnoc : (H.snoc ν' hν').nodes = (l ++ [νW]) ++ [ν'] := by
+      change H.nodes ++ [ν'] = _
+      rw [hl]
+    have hi1 : l.length + 1 < (H.snoc ν' hν').nodes.length := by
+      rw [hsnoc]; simp
+    have h1 : (H.snoc ν' hν').nodes[l.length + 1]'hi1 = ν' := by
+      rw [List.getElem_of_eq hsnoc]
+      exact List.getElem_concat_length (by simp) _
+    have h2 : (H.snoc ν' hν').nodes[l.length]'(by omega) = νW := by
+      rw [List.getElem_of_eq hsnoc]
+      rw [List.getElem_append_left (by simp)]
+      exact List.getElem_concat_length rfl _
+    have hconf := (hcoh.2.2.2 l.length hi1).2.2.2.2.1
+    rw [h1, h2] at hconf
+    exact hconf
 
 end UnitIIIT12
 
@@ -968,9 +1028,9 @@ end LeanUrat.Scaffold.DictIII
 -- Footprint audit (unit III-T11a gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.m6c_beyondWindow_e1
 
--- Footprint audit (unit III-T12): the support extraction expects Lean core
--- only; `m6c_noPhantom` carries the confinement leg's honest sorry — expect
--- `sorryAx` there until III-T11b/III-T13 land (BLOCKED note at the leg).
+-- Footprint audit (unit III-T12 gate): expect Lean core only for BOTH — the
+-- confinement leg's sorry was DISCHARGED 2026-08-01 from the run record
+-- (`HistoryCoherent` confinement tie; provenance note at the leg).
 #print axioms LeanUrat.Scaffold.DictIII.lastRead_of_readsOf_snoc
 #print axioms LeanUrat.Scaffold.DictIII.m6c_noPhantom
 

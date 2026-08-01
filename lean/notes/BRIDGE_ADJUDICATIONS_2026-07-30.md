@@ -1697,3 +1697,11 @@ full walk, twelve-row ledger, seams, (NSF-KEY) never consumed as true.
 COUNTER = ZERO. r13 = the 5 fixes + A GLOBAL ENUMERATION AUDIT (grep every
 hypothesis-list display in operative sections, sync ALL against §1) to
 kill the straggler class. Report: lean/notes/openmath/VC13_fable_report.md.
+
+## r13 LANDED: REVISION 12 + GLOBAL ENUMERATION AUDIT (08b34d7, 2026-08-04)
+All 5 VC13 findings fixed; audit: 36 operative hypothesis-enumeration
+displays checked, 10 fixed (incl. 2 audit-only stragglers: §0 headline at
+(H7)/PACK-iii; Step 18 K2 three-law display). §3.2 O-11 row now records
+the un-banked 2026-08-03 CRITICAL pass. On-record claim for VC14: every
+operative enumeration matches §1. VC14 (Codex) launched = bar pass-1
+attempt #2.
