@@ -1401,3 +1401,22 @@ the target. Full trail: lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md
 tail + lean/notes/openmath/VC*_report.md. The Lean division swarm
 (lean/blueprints/BP_I..VI.md REVISION 2 + division_workflow.js) runs in
 parallel; Scaffold/ modules landing wave-by-wave.
+
+---
+## STOP-THE-LINE CORRECTION 2026-08-03 (supersedes the acceptance addendum above)
+The owed D-11 pass-3 returned CRITICAL findings, and the hostile impact
+audit (ledger entry at 44ce0a7) shows two MANDATORY steps of ROOT REVISION
+9 consume the refuted layers AS PROVED: Step 17 <- Theorem M1 (falsified
+at its announced conditioning scope; family-(v) mass identification
+refuted; M1(b) needs an unproved prefix-free restriction) and Step 18b <-
+Theorem M2 (false at displayed universal scope; the repair premise —
+semantic verdict-row allocation — is billed in NO hypothesis row). The
+(H5)/(H6)/(H7) re-homing does NOT cover this content. THE PHASE-C
+ACCEPTANCE IS SUSPENDED pending r11: repair the D-11 leaf at true scope
+and/or price the missing premises as new displayed [M] members, then
+re-run the end-to-end bar (counter resets to ZERO). The VC9/VC10 passes
+remain valid AS composition-level audits (the composition displayed D-11
+honestly as pass-owed); what failed is the leaf under its owed pass —
+exactly what the owed-pass discipline exists to catch. O-11's critical is
+insulated (ROOT fixes n>=2); O-14a' core clean (gaps outside the consumed
+core). Repair design unit dispatched.
