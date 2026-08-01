@@ -949,6 +949,18 @@ the finite lower hull, so NO `SemanticRows` row is consumed and the component
 theorems are unconditional. The dependency II-M6 (`hull_eq_iff_cell`, Wave 4a)
 is likewise not consumed: uniqueness is proved directly (mutual chord bounds +
 reading the face structure off the unit drops).
+
+**As-built status (II-M9, this pass).** PROVED sorry-free: `CellMem` (the
+L6a cell, definition), `L6e_zero_notMem` + `cell_zero_ne_top` (the a_e = 0
+exclusion, both directions), `cell_subset_Ce` + `cell_not_Re` (the converse
+inclusion: every cell point lies in C_e\R_e with a_e ≠ 0), `L6e_disjoint`
+(uniqueness — every point lies in AT MOST one cell), and the assembly
+`L6e_partition` (conditional only on its own components). BLOCKED (one
+`sorry`): `L6e_covers`, the finite-hull existence leg — it needs the lower-
+convex-hull construction layer that the un-landed Wave-4a unit II-M6 also
+needs; the verified proof mechanism is recorded at the sorry site. Until
+`L6e_covers` lands, `L6e_partition`'s existence half is conditional on it;
+the uniqueness and exclusion halves are unconditional theorems.
 -/
 
 /-- **The L6a cell** (membership form, over column-valuation data): (α) at
@@ -1575,6 +1587,22 @@ theorem L6e_covers {w : ℕ → WithTop ℤ}
     (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c)
     (h0 : w 0 ≠ ⊤) :
     ∃ (κ : FaceKind e) (s : SlopeTuple κ), CellMem κ s w := by
+  -- BLOCKED(II-M9): the finite lower-convex-hull layer is not yet in the
+  -- corpus — it is exactly the construction the un-landed Wave-4a dependency
+  -- II-M6 (`hull_eq_iff_cell`, hull existence/reading) also needs. Verified
+  -- mechanism for the eventual proof (math checked against the brief's L6e(i)
+  -- proof, coefficient-side): peel faces right-to-left from the anchor
+  -- (e, 0); at anchor column B take the minimal candidate slope
+  -- σ = min_{c < B, w c ≠ ⊤} (w c − v_B)/(B − c) and extend the face to the
+  -- LEFTMOST minimizer c* (so the next anchor's minimal slope is STRICTLY
+  -- larger — the leftmost-tie-break gives `hdesc`); b ∣ L is automatic
+  -- (integer drop w c* − v_B over width B − c* at coprime slope a/b);
+  -- s_k ∈ (0,1) i.e. `hlast`/`hlt1` for the FIRST peel from hCe (all columns
+  -- ≥ 1) + hRe (some column below the slope-1 line); (α) at every column is
+  -- the min property, (β) at each vertex is attainment at c*. The recursion
+  -- self-similarizes by shifting w by v_B (⊤ stays ⊤). No SemanticRows row
+  -- is needed. Estimated as a dedicated unit of its own size (the blueprint
+  -- lists II-M9 as a coordination milestone for precisely this reason).
   sorry
 
 /-- **II-M9, L6e(i)** (assembly): off Z_e := (C_e\R_e) ∩ {a_e = 0} the cells

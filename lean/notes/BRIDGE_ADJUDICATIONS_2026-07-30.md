@@ -1664,3 +1664,9 @@ layer vs (H8)'s open-kernel pricing; the 6(iii)-(ix)+7 list omits (H9);
 honest; (K1-CANON) one-home; acyclicity; current-status displays
 supersede the historical acceptance). Report:
 lean/notes/openmath/VC11_report.md. r12 (ripple-sync) dispatched.
+
+## r12 LANDED: REVISION 11 (96d7762) — VC12 LAUNCHED (2026-08-04)
+All 5 VC11 dispositions landed (Steps 16/19 closers at (H1)-(H9) w/
+PACK-iv at its closed edge set; §3.4 item 12 re-adjudicated to (H8);
+6(iii)-(ix)+7 re-closed w/ (H9); 18b Consumes restored). §17 = REVISION 11
+record; counter ZERO of 2. VC12 = the fresh bar's pass-1 attempt.
