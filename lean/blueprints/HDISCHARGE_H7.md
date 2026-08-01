@@ -251,3 +251,346 @@ no published statement asserts (iii′) at our tree/event vocabulary.
   content); owner: the GD dictionary campaign. STATUS: route B = two provable-now
   abstract kernels + IT-4b OPEN + re-consuming IT-1/IT-2 at the deeper pin. LABEL:
   (c) claimed-new derivation, now with its missing kernel displayed.
+
+### 2.2 The construction-conformance target (which corpus carriers, what theorem)
+
+Carriers REUSED (all in `lean/LeanUrat/Scaffold/ValueSide/KCount.lean`, rebuilt-probed):
+`MulFiberData` (τ, ρ, τ_sep : ρ+1 ≤ τ, smithExp, chart), `SmithStable` (+ constructor
+`smithStable_of_detDivisorRows`, gate `K9Gate.gate_smithStable`), `AdaptedCell`
+(cellCount/factorCount/sM/domainCount_eq/fiber_nonempty), `sib_product_law`
+(himg-scoped), `kcount_fiber_card` (hsol-scoped), and the (H7) receipt
+`EngineSIBRow p n N (KLoc ITau : Prop) (stratumCount : ℕ)` — K11, authored with the
+pair as OPAQUE Prop parameters.
+
+**The receipt-plumbing lemma (H7-B1, probe-PROVED) [REV 2 — regraded per review
+finding 15; formerly overtitled "THE CONFORMANCE THEOREM"]:** instantiating K11's
+opaque parameters with the H7 Tier-S row shapes composes into
+`EngineSIBRow p n N KLoc (ITauShadow s) s.stratumCount` with no re-key. This is an
+INTERFACE-FIT check (constructor compatibility — the exact failure class that blocked
+BP waves), NOT a discharge step and NOT evidence for (H7): `EngineSIBRow` itself treats
+the pair as opaque, and B1 merely copies proofs into fields. The semantic content
+enters only when Tier M's `ITauSemantic`/`KLocSemantic` (§3.7) instantiate the
+parameters.
+
+**FINDING H7-F1 (consumed-carrier defect — reported, NOT repaired here; review
+CONFIRMED).** `AdaptedCell.domainCount_eq : Nat.card Factor = ∏ j, factorCount j` runs
+its product over `j : Factor` — the domain type ITSELF — so under the intended roster
+semantics (factorCount = per-branch stratum counts) the field is uninstantiable at any
+genuine site (F1 shape: `Nat.card Factor` must be 5⁸ = the domain count, while the
+per-branch product must be indexed by `Fin 2`; no single `Factor` serves both).
+K10's conclusion `… = ∏ j, A.factorCount j` therefore carries per-branch (SIB) content
+only under contrived `factorCount` choices. H7's rows route around it:
+`SiteDatum.branchCount : Fin m → ℕ` carries the roster-indexed counts and `ITauShadow`
+demands the domain law `Nat.card A.Factor = ∏ j, s.branchCount j` in roster indexing,
+leaving `factorCount` unconsumed; the delivered product-law SHAPE (H7-B2,
+probe-PROVED) is `stratumCount · p^{sM} = ∏_j branchCount j`. DESIGNER-QUEUE flag to
+BP_IV (adjudication, not executed): re-index `factorCount : J → ℕ` over a roster-type
+field, or document `Factor` as the domain and retire `factorCount` from the (SIB)
+display.
+
+### 2.3 Door summary for the pair (REV 2 grades)
+
+| member | door | provable-now slice | open remainder (named) |
+|---|---|---|---|
+| (K-LOC) | PROVE; KL-2 core = LITERATURE-RETARGET (GMN 2.26, §1.3 brief) | KL-1a order ≤ 1 divisibility face (H7-C2 its count shadow); KL-2 assembly given KL-1a/b/c; KL-4 given KL-0..3 | KL-0 (frame kernel); KL-1b/KL-1c sub-lemmas; KL-3 (all orders — precision analysis); order ≥ 2 legs; §1.4 list |
+| (I-τ) | CONSTRUCTION-CONFORMANCE (Tier-S receipt plumbing) + PROVE (write-up) | H7-B1/B2/B3 (probe-proved, interface-fit only); IT-3 arithmetic (order-0, thr ≥ 1); H7-C1a/C1b aggregation kernels | IT-2 ⊇ run-replay kernel; IT-1/IT-2 ⊆ per order = K-LOC's grading; IT-4b read-fiber constancy + alphabet stability (GD-2/GD-5 family); Tier-M semantic rows (§3.7) |
+
+Neither member is literature-axiom-eligible as a whole (M07 §3.4 stands); only KL-2's
+core is citable. Tier S alone discharges NOTHING (review findings 13–16, accepted).
+
+---
+
+## 3. LEAN UNIT SPECS (verbatim; probe round 2 green, 2026-08-05)
+
+Target directory: `lean/LeanUrat/Scaffold/HDischarge/H7/`; namespace
+`LeanUrat.Scaffold.HDischarge.H7`; import `LeanUrat.Scaffold.ValueSide.KCount`.
+**[probe-PROVED]** = compiled WITH the displayed proof; **[probe-typed]** = statement
+compiled, `sorry` body in the (deleted) probe only. Landing discipline: prover units
+land sorry-free or not at all. **TIER LABELS (REV 2): every W0–W2 unit is Tier S
+(interface shadow) — see §0; the docstrings below carry the warning verbatim.**
+
+### 3.1 `H7/Rows.lean` — the Tier-S row shapes (unit H7-A; MECH)
+
+```lean
+namespace LeanUrat.Scaffold.HDischarge.H7
+
+open LeanUrat.Scaffold
+
+/-- H7-A1 [Tier S]: the abstract realized-site datum. Engine-side instantiation
+(from `MovesT.SiteLedger` at the pinned canonical models) is Tier-M unit H7-W3a.
+`one_le_thr`: every realized site has consumed at least the level-0 reduction read
+(REV 2, review finding 9 — the IT-3 ceiling needs it). `branchCount` is
+ROSTER-indexed, deliberately NOT `AdaptedCell.factorCount` (FINDING H7-F1). -/
+structure SiteDatum (p n N : ℕ) [Fact p.Prime] where
+  m : ℕ
+  two_le_m : 2 ≤ m
+  thr : ℕ
+  one_le_thr : 1 ≤ thr
+  rho : ℕ
+  stratumCount : ℕ
+  branchCount : Fin m → ℕ
+
+/-- The D-8 guard at the site. -/
+def InGuard {p n N : ℕ} [Fact p.Prime] (s : SiteDatum p n N) : Prop :=
+  s.thr + 2 * s.rho ≤ N
+
+/-- H7-A2 [Tier S — renamed from `ITauPresents` at REV 2, review finding 13]: the
+COUNT-INTERFACE SHADOW of the (I-τ) row: some adapted-cell carrier with Smith
+stability realizes the site's integers (ρ, a pin within the pricing, the K10b image
+law, cell count = stratum count, roster-indexed domain law), with `sM` pinned to the
+carrier's own Smith data (the s(M) formula — the one internal tie expressible now).
+WARNING: satisfiable by synthetic carriers; NOT the semantic (I-τ), which is
+`ITauSemantic` (Tier M, §3.7). Never cite this row as evidence for (H7). -/
+def ITauShadow {p n N : ℕ} [Fact p.Prime] (s : SiteDatum p n N) : Prop :=
+  ∃ A : AdaptedCell p n N,
+    SmithStable A.toMulFiberData ∧
+    A.toMulFiberData.ρ = s.rho ∧
+    A.toMulFiberData.τ ≤ s.thr + s.rho ∧
+    A.sM = ∑ i, min (A.toMulFiberData.smithExp A.toMulFiberData.base i)
+      (N - A.toMulFiberData.τ) ∧
+    A.cellCount * p ^ A.sM = Nat.card A.Factor ∧
+    A.cellCount = s.stratumCount ∧
+    Nat.card A.Factor = ∏ j, s.branchCount j
+
+/-- H7-A3 [Tier S]: the K-LOC COUNT SHAPE over an abstract event carrier. WARNING
+(REV 2, review finding 14): vacuous at `Events := Empty` and freely engineerable at
+arbitrary count functions — contentful ONLY at the Tier-M instantiation (H7-W3a:
+`Events` := the ContFiber families, counts := their box cardinalities). It pins the
+receipt VOCABULARY for wave-0; it must never be cited as evidence of K-LOC. -/
+def KLocCounts {p n N : ℕ} [Fact p.Prime] (s : SiteDatum p n N)
+    (Events : Type) (joint : Events → ℕ) (single : Events → Fin s.m → ℕ) : Prop :=
+  ∀ E : Events, joint E * s.stratumCount ^ (s.m - 1) = ∏ j, single E j
+```
+
+### 3.2 `H7/Receipt.lean` — Tier-S plumbing (units H7-B; all [probe-PROVED], round 2)
+
+```lean
+/-- H7-B1 [Tier S; probe-PROVED]: receipt PLUMBING — the H7 row shapes compose into
+K11's `EngineSIBRow` with no re-key. Interface-fit only (REV 2, review finding 15):
+`EngineSIBRow` treats the pair as opaque Props; this lemma copies proofs into fields
+and establishes NOTHING semantic. -/
+theorem engineSIBRow_of_rows {p n N : ℕ} [Fact p.Prime] (s : SiteDatum p n N)
+    (KLoc : Prop) (hK : KLoc) (hI : ITauShadow s) :
+    EngineSIBRow p n N KLoc (ITauShadow s) s.stratumCount := by
+  obtain ⟨A, hS, -, -, -, himg, hcnt, -⟩ := id hI
+  exact ⟨hK, hI, ⟨A, hS, himg, hcnt⟩⟩
+
+/-- H7-B2 [Tier S; probe-PROVED]: the Step-15 delivery SHAPE — the stratum product
+law in roster indexing, extracted from the shadow row (H7-F1 workaround). -/
+theorem stratum_product_law {p n N : ℕ} [Fact p.Prime] (s : SiteDatum p n N)
+    (hI : ITauShadow s) :
+    ∃ sM : ℕ, s.stratumCount * p ^ sM = ∏ j, s.branchCount j := by
+  obtain ⟨A, -, -, -, -, himg, hcnt, hdom⟩ := hI
+  exact ⟨A.sM, by rw [← hcnt, himg, hdom]⟩
+
+/-- H7-B3 [Tier S; probe-PROVED]: IT-3 pricing arithmetic — in the D-8 guard range,
+any pin `τ ≤ thr + ρ` and read depth `K ≤ thr + ρ` clear the `e_max ≤ ρ` ceiling
+(the (A3) headroom of O-10 §4.3(a)). -/
+theorem guard_read_headroom {p n N : ℕ} [Fact p.Prime] (s : SiteDatum p n N)
+    (hg : InGuard s) {τ K emax : ℕ}
+    (hτ : τ ≤ s.thr + s.rho) (hK : K ≤ s.thr + s.rho) (he : emax ≤ s.rho) :
+    τ + emax ≤ N ∧ K + emax ≤ N := by
+  unfold InGuard at hg
+  omega
+```
+
+### 3.3 `H7/Aggregate.lean` — the IT-4 abstract kernels (H7-C1a/C1b; [probe-typed])
+
+```lean
+open Finset in
+/-- H7-C1a [MED; Tier S-abstract but genuinely mathematical]: words uniform on each
+part of a partition (per-part multiplicity may vary) are uniform on the union — the
+aggregation half of IT-4. Review-CONFIRMED valid as stated. Proof plan: U := Σ u_C;
+count each ω-fiber by `Finset.card_biUnion` over the ∃!-disjoint parts. -/
+theorem uniform_on_union {X W : Type*} [Fintype X] [DecidableEq X] [Fintype W]
+    [DecidableEq W] (P : Finset (Finset X)) (w : X → W)
+    (hcover : ∀ x : X, ∃! C, C ∈ P ∧ x ∈ C)
+    (hunif : ∀ C ∈ P, ∃ u : ℕ, ∀ ω : W, (C.filter (fun x => w x = ω)).card = u) :
+    ∃ U : ℕ, ∀ ω : W, (univ.filter (fun x : X => w x = ω)).card = U := by
+  sorry -- prover wave; statement probe-typed
+
+open Finset in
+/-- H7-C1b [MED-HARD]: exactly-uniform joint words on a product alphabet satisfy the
+(SIB) count identity for componentwise events — the positive twin of
+`MovesU.SibRouteA.sib_diag_break`. `hm : 1 ≤ m` REQUIRED (REV 2, review finding 12:
+the m = 0 instance is FALSE — empty product 1 vs #X). Proof plan: both sides equal
+U^m · (∏_j #E_j) · (∏_j #A_j)^{m−1}. -/
+theorem sib_of_uniform_words {X : Type*} [Fintype X] [DecidableEq X]
+    {m : ℕ} (hm : 1 ≤ m) {A : Fin m → Type*} [∀ j, Fintype (A j)]
+    [∀ j, DecidableEq (A j)]
+    (w : X → ∀ j, A j) {U : ℕ}
+    (hU : ∀ ω : ∀ j, A j, (univ.filter (fun x => w x = ω)).card = U)
+    (E : ∀ j, Finset (A j)) :
+    (univ.filter (fun x : X => ∀ j, w x j ∈ E j)).card
+        * (Fintype.card X) ^ (m - 1)
+      = ∏ j, (univ.filter (fun x : X => w x j ∈ E j)).card := by
+  sorry -- prover wave; statement probe-typed
+```
+
+### 3.4 `H7/ResTrans.lean` — the KL-1a order-1 count face (H7-C2; [probe-typed])
+
+```lean
+/-- H7-C2 [EASY-MED]: ω-blindness of coprime cofactors — multiplying by a ψ-coprime
+cofactor changes no ψ-power divisibility read (ψ irreducible over a field). SCOPE
+(REV 2, review finding 17): this is KL-1a's COUNT FACE at order 1 ONLY — it proves
+none of KL-1b/1c, KL-2 transport, KL-3 constancy, KL-4 pullback, or KL-0. Proof:
+ψ irreducible ⟹ prime; induct with `Prime.pow_dvd_of_dvd_mul_right`. -/
+theorem pow_dvd_mul_iff_of_coprime_cofactor {F : Type*} [Field F]
+    {ψ g : Polynomial F} (hψ : Irreducible ψ) (hg : ¬ ψ ∣ g)
+    (f : Polynomial F) (k : ℕ) :
+    ψ ^ k ∣ f * g ↔ ψ ^ k ∣ f := by
+  sorry -- prover wave; statement probe-typed
+```
+
+### 3.5 `H7/Order0Gate.lean` — the interface-fit gate (H7-D1; REV 2 rescoped)
+
+```lean
+instance : Fact (Nat.Prime 5) := ⟨by norm_num⟩
+
+/-- H7-D1a [MECH; probe-typed]: the F1-shaped order-0 site datum — p = 5, n = 4,
+N = 8; two continuing branches (the sealed CASE_SIB roster), residue-split ρ = 0;
+stratum 5⁸ (the 14-pin Σ*), branches 5⁴ each; thr = 3 ≥ 1.
+Integers from `verification/CASE_SIB_SEALED_PREDICTIONS.md`. -/
+noncomputable def f1Datum : SiteDatum 5 4 8 where
+  m := 2
+  two_le_m := by norm_num
+  thr := 3
+  one_le_thr := by norm_num
+  rho := 0
+  stratumCount := 5 ^ 8
+  branchCount := ![5 ^ 4, 5 ^ 4]
+
+/-- H7-D1b [MED; Tier S]: `ITauShadow f1Datum` is inhabited — the INTERFACE-FIT gate
+(REV 2, review finding 16: a synthetic-carrier inhabitant certifies ONLY that the row
+shape is satisfiable at real integers and that the F1 arithmetic composes — it is NOT
+a non-vacuity certificate for the semantic (I-τ); THAT gate is H7-W3a's
+`gate_order0_semantic`). Builder notes: `Factor := Fin 2 → Fin 625` (`Nat.card_pi`),
+`sM = 0` with zero Smith exponents, designated-element `factorCount` for the carrier's
+own `domainCount_eq` (H7-F1 workaround). -/
+theorem gate_f1_iTauShadow : ITauShadow f1Datum := by
+  sorry -- prover wave; statement probe-typed
+
+/-- H7-D1c [probe-PROVED]: the gate site is in the D-8 guard (3 + 0 ≤ 8). -/
+theorem gate_f1_guard : InGuard f1Datum := by
+  unfold InGuard f1Datum
+  norm_num
+```
+
+### 3.6 `H7/AxChk.lean` — census (H7-E1; MECH)
+
+`#print axioms` for every landed H7 declaration — expected Lean core only; zero
+`sorryAx` at wave close; regression = stop-the-line.
+
+### 3.7 Tier M — the SEMANTIC units (specified, NOT scheduled; the actual discharge)
+
+* **H7-W3a (`ITauSemantic`/`KLocSemantic` + engine instantiation)** [HARD; owner:
+  MovesT/BP_III side]: the engine-tied rows — `ITauSemantic`: the site's box-level
+  stratum (`Nat.card (siteCellEvent …)` at the pinned canonical models) IS presented
+  by an adapted cell whose `MulFiberData` is the ACTUAL level-N multiplication chart
+  on the K-FACT factor strata (C₀ × ∏C_j of §2.1), with `branchCount j` = #C_j-classes;
+  `KLocSemantic`: `KLocCounts` instantiated at `Events` := the site's ContFiber
+  families with box-cardinality counts. Includes `gate_order0_semantic`: the REAL
+  non-vacuity gate at a `decide`-small order-0 site (p = 2, n = 2, N = 2 box
+  enumeration). BLOCKED on: OL-2 (ledger inhabitation at the pinned instance) and the
+  item-27 statement-repair adjudication (PARKED; not executed by H7).
+* **H7-W3b (KL-0 + KL-2/KL-3 general residual transport)** [HARD; owner: the
+  (GR-B)/HC2 apparatus]: the frame kernel (KL-0) in the `StageTransHyp`/D.10
+  vocabulary; the per-level translation + unit-scalar laws; order ≥ 2 gated by the
+  `HK52_stretchGate` ν_{i+1}.e ruling.
+* **H7-W3c (IT-2 ⊇ run-replay kernel)** [HARD; owner: O-14a′ mechanism]: matching
+  factor reads ⟹ site membership (run-determinism + reachability).
+* **H7-W3d (IT-4b read-fiber constancy + alphabet stability)** [HARD; owner: the
+  GD-2/GD-5 read-semantics family]: route B's missing kernel (§2.1).
+
+---
+
+## 4. WAVE PLAN (prover fan-out; per-file `lake env lean` gates)
+
+| wave | units | files | deps | difficulty | parallel? |
+|---|---|---|---|---|---|
+| W0 | H7-A1/A2/A3 (+ `InGuard`) | `Rows.lean` | KCount olean (REBUILT — a stale olean hides `EngineSIBRow`) | MECH | single owner |
+| W1a | H7-B1/B2/B3 | `Receipt.lean` | W0 | EASY (proofs displayed) | ∥ W1b/c/d |
+| W1b | H7-C1a, H7-C1b | `Aggregate.lean` | Mathlib only | MED / MED-HARD | ∥ |
+| W1c | H7-C2 | `ResTrans.lean` | Mathlib only | EASY-MED | ∥ |
+| W1d | H7-D1a/b/c | `Order0Gate.lean` | W0 | MECH / MED / MECH | ∥ |
+| W2 | H7-E1 | `AxChk.lean` | W1a–d | MECH | after all |
+| W3+ | H7-W3a/b/c/d | Tier M (§3.7) | §3.7 blockers | HARD | not scheduled here |
+
+Wave-close criteria: zero `sorry` in landed files; AxChk Lean-core; W1d gate inhabited
+(or its failure filed as an interface finding). Tier-M units get their own blueprints
+before any prover spend.
+
+## 5. NUMERICS / FALSIFIER GATES (flags, never substitutes)
+
+* **Standing:** `verification/o10_kcount_harness.py` 68/0 (factor side);
+  `MovesU/SibJcRouteA.lean` (compiled NEGATIVE gate: unadapted correlation cells break
+  (SIB) by exactly p — what (A1) excludes).
+* **N-H7-1 (NEW; numerics-fleet charge):** `verification/openmath/h7_kloc_probe.py` —
+  pure-Python exact integers; Hensel factor extraction (M07 Lemma A's constructive
+  surjectivity) at (i) the F1 instance (p = 5, R₀ = (z−1)²(z−2)², the 5⁸ Σ*) and
+  (ii) a wild ρ > 0 pair ((x²+2)(x²+2x+2) at p = 2, from the O-10 battery). Sealed
+  tests: (a) K-JAC within-cell constancy; (b) THE K-LOC READ-CONFORMANCE TEST —
+  depth-1/2 branch continuation digits on dec(x) equal the matching digits of the
+  extracted factor after ONE cell-constant shift (§1.1 (i)/(ii) instances); a
+  violation REFUTES §1.1 as drafted (stop-the-line before prover spend);
+  (c) IT-4b probe [REV 2]: enumerate a refined sub-cell pair and test read-fiber
+  constancy + alphabet stability DIRECTLY (route B's open kernel gets a falsifier
+  before a proof); (d) route-B mini: verify the H7-C1a/b aggregation arithmetic on
+  the enumerated data. cypari2 cross-check optional, env-conditional.
+
+## 6. REUSE MAP + FENCES
+
+REUSED (by import, never edited): `Scaffold.ValueSide.KCount` — `MulFiberData`,
+`SmithStable` (+ constructor + gate), `AdaptedCell`, `sib_product_law`,
+`kcount_fiber_card`, `card_domainProduct_finset`, `EngineSIBRow` ·
+`MovesU/SibJcRouteA.lean` (fence-side evidence; `JointlyUniform` is the H7-C1
+vocabulary precedent) · GMN pins: `docs/GMN_citations.md` §§5–6 (K-FACT set; Thm 2.26;
+Lemma 2.17; Prop 2.7; Def 1.8) · O-10 leaf theorems (math source of record) ·
+HC2 `StageTransHyp`/D.10 + `HK25_recGate`/`HK52_stretchGate` (KL-0's carrier + its
+order-≥ 2 bounds, W3b) · `MovesT.SiteLedger`/`ContFiber` (W3a targets — read-only).
+
+NOT TOUCHED (fences): `MovesT.SibJcRows`/`CellData` + every parked item 22–29 (esp.
+item 27); `montes_uniform_n2` / `montes_unconditional` / all capstones; no new axioms;
+no statement weakened. FINDING H7-F1 reported to BP_IV's designer queue, not executed.
+
+## 7. CODEX REVIEW FOLD (disposition of all 17 findings; archive `lean/notes/openmath/H7_bp_review.md`)
+
+Verdict on draft 1: **REVISE** (15 criticals C, 2 justification gaps G). Every finding
+adjudicated; no rebuttal overrode a critical.
+
+| # | class | finding (compressed) | disposition at REV 2 |
+|---|---|---|---|
+| 1 | C | frame convention assumed away OL-3's recentering comparison | ACCEPT — KL-0 split out as named OPEN kernel; §1.1 restated |
+| 2 | C | f₀ had no factor cell/pin (`Set.univ` ≠ a coordinate) | ACCEPT — C₀ pinned cell added (IT-1); (m+1)-tuple presentation displayed |
+| 3 | C | (iii) circular: Corollary-1 extraction presupposes (I-τ) | ACCEPT — (iii′) restated pointwise on the polydisc coordinate; dependency chain now acyclic (§1.1) |
+| 4 | C | Lemma 2.17(3) misapplied (−∞ side only) | ACCEPT — cite RETRACTED; KL-1b named sub-lemma (Thm 1.15/3.1 side accounting), OPEN |
+| 5 | G | ω = 0 ⟹ one-point side/constant residual under-argued | ACCEPT — KL-1c named sub-lemma, definition-level, OPEN |
+| 6 | C | KL-2 target exceeded Thm 2.26 (full N_r vs N_r^−/fixed λ) | ACCEPT — (i)/(ii) re-shaped to per-slope N_r^− form; ℓ-shift convention clause |
+| 7 | G | KL-3 depth bound uncited; PROVABLE-NOW overstated | ACCEPT — KL-3 downgraded OPEN at all orders; bound labeled conjectured |
+| 8 | C | IT-2 ⊇ sketch applied K-LOC circularly | ACCEPT — K-LOC re-domained to the polydisc; ⊇ = run-replay kernel (W3c), open |
+| 9 | C | IT-3 ceiling false at thr = 0 | ACCEPT — `one_le_thr` field (semantically grounded); re-probed green |
+| 10 | C | Thm 2 + Cor 1(c) do NOT give word uniformity (route B) | ACCEPT — IT-4b (read-fiber constancy) named OPEN kernel; route B regraded |
+| 11 | C | common-alphabet claim unsupported | ACCEPT — folded into IT-4b (alphabet stability clause) |
+| 12 | C | `sib_of_uniform_words` false at m = 0 | ACCEPT — `hm : 1 ≤ m` added; re-probed green |
+| 13 | C | `ITauPresents` a numerical shell | ACCEPT — renamed `ITauShadow`, Tier-S label + warning docstring; `sM` tied to the carrier's Smith data; semantic row = `ITauSemantic` (W3a) |
+| 14 | C | `KLocCounts` vacuous/engineerable | ACCEPT — Tier-S warning docstring (vacuity displayed); contentful only at W3a instantiation |
+| 15 | C | H7-B1 not a substantive conformance theorem | ACCEPT — regraded "receipt-plumbing lemma", interface-fit only |
+| 16 | C | order-0 gate = junk inhabitance | ACCEPT — rescoped INTERFACE-FIT gate; real gate = `gate_order0_semantic` (W3a) |
+| 17 | C | H7-C2 cannot carry the order-≤1 KL-1 grade | ACCEPT — KL-1 split a/b/c; C2 scoped to KL-1a's count face; grades adjusted |
+
+Review-CONFIRMED positives (carried): H7-F1 correct; order-0 integers consistent
+(5⁸·5⁰ = 5⁴·5⁴, ρ = 0 ⟹ s(M) = 0); H7-C1a valid as stated; for m ≥ 2 exact joint
+uniformity DOES imply the componentwise (SIB) identity (finding 12's own concession).
+
+## 8. DISPOSITION LOG
+
+* 2026-08-05: draft 1 written; §3 statements compile-probed green (probe round 1);
+  KCount olean rebuilt (stale-olean finding). Codex adversarial review: REVISE,
+  15 C + 2 G. REV 2 executed same session: all 17 findings folded (§7); repaired
+  statements re-probed green (probe round 2: `one_le_thr`, `sM` tie, `hm`,
+  `ITauShadow` rename). Probe files deleted; nothing landed under `Scaffold/`.
+  STATUS: blueprint READY for prover fan-out at Tier S (W0–W2) + numerics gate
+  N-H7-1; Tier M (W3a–d) specified with owners and blockers — the semantic discharge
+  work. A second Codex pass on the REV-2 text is the recommended next verification
+  step before the Tier-S wave launches (this fold is same-lead work; the bar for
+  DISCHARGE claims stays two clean fresh passes).
