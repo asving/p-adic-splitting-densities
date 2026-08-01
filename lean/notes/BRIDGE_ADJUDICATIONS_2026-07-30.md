@@ -1506,3 +1506,8 @@ application mismatch); VI-A2 census downstream. Repair+mop-up dispatched
 compiler-refuted = no content lost), then land the 6. BP_III launched into
 the freed slot (wf_51095701-464). Fleets: BP_II, BP_III, BP_VI-mopup,
 r11-design-rev2.
+
+## R11 DESIGN REVISION 2 ON FILE (2026-08-04, in place; the 5 criticals + finding 9 folded)
+(PACK-iv) PROMOTED to primary (H5) member ((RE) discharge WITHDRAWN, reasons + retirement route on file); (b-SW) replaced by OPEN LEMMA (b-EX) + (LOOP-∞) null/disjointness display; (K1-NSF) consumer-side check EXECUTED (N2 met by displayed corpus definitions); N1's member-row Σ=1 delivery WITHDRAWN ((ROW-Σ) contingent, M2-free, non-circular; only priced law at Step 18 = PACK-ii); M2.0 obligations (O-1)–(O-5) enumerated with routes.
+Need tiers (supersedes "BLOCKED: NONE"): N3/N6/N2 MET; N5/N7 MET AT PRICE ((PACK-iv); rows stay ELEVEN, (H5) row-laws three→four); N1/N4 MET-PENDING-r4-PROOF ((b-EX); (O-1)–(O-5)) — composition NOT restored until they discharge under the r4 hostile pass.
+Order repaired per finding 9: Unit B iff r4 pass ACCEPTS; standing stays SUSPENDED (0/2 toward the new end-to-end bar) — leaf-clean never conflated with composition-accepted. Next: Codex plan-review of REVISION 2.

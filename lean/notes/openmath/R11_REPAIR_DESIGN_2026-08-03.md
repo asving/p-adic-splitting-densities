@@ -420,7 +420,7 @@ byte-stable.
 
 ---
 
-## 3. LAYER M2 (consumed at ROOT Step 18b): the (RE) true-scope repair, with a priced fallback
+## 3. LAYER M2 (consumed at ROOT Step 18b): the (RE) true-scope repair, PRICED at the consumed member by the NEW (H5) member (PACK-iv) [primary since REVISION 2]
 
 ### 3.1 The finding, restated precisely
 
@@ -501,7 +501,8 @@ mass entry at q₀), the semantic one-step identity is therefore").**
 
 with the three displayed booking legs ((O1)/(O2′)/(O3)) and the uniqueness-pivot
 close byte-stable. The r3 note that exhaustiveness consumes M1(b)/(d) is re-pointed
-to (b)/(b-PF)/(b-SW) per §2.4.
+to (b)/(b-PF)/(b-EX)/(LOOP-∞) per §2.4 [REVISION 2: (b-EX) is an r4 proof
+obligation — M2's exhaustiveness note inherits its conditionality until it lands].
 
 **At the CONSUMED instance: the definitional discharge is WITHDRAWN [REVISION 2,
 review finding 1] — (RE)+row-form at the consumed member is (PACK-iv), a NEW [M]
@@ -690,19 +691,75 @@ Step 19 consumes: "Step 18 delivers series = R_τ (O-11); Step 18b delivers
 α = series (D-11 M2); TOGETHER they deliver α = R_τ — neither alone does"; plus "the
 pole-free specialization at every prime power (Steps 4 + 5 + 17 …)".
 
-| # | need | met by | verdict |
+| # | need | met by | verdict [REVISION 2 tiers] |
 |---|---|---|---|
-| N1 | Step 18 K1/K2 ← "pack-side mass laws": per-row stratum masses at the 𝔅_n member, row Σ = 1, row disjointness (incl. the (O3) resummed rows) | repaired M1(a) families (i)–(iii) (conditional-on-C_e, formulas unchanged) + M1(d) + (b) with (b-PF)/(b-SW) covering exactly the consumed multi-step row grammar; member-row Σ = 1 through the canonical grammar + family-(vi) aggregates at (RE) members (Step 17 display rescoped, edit E1). The K2 glue laws at the CONCRETE pack stay (PACK-i/ii); K3's stays (PACK-iii) — unchanged | **MET** |
-| N2 | Step 18 K1 ← "true row labels" (M3 leg, via Steps 11/12) | repaired M3(a) at separable-lift scope + T-6 (ns-null) for every mass/counting consumption; label attachment to ACTUAL tables rides (H5) (C7's insulation, now honest in-leaf too). All-lifts separability at counted boxes is the counting side's decided-ns-free certificate content (O-1thr §1.4), not an M3 delivery | **MET** (contingency NS-ALL flagged, §6) |
+| N1 | Step 18 K1/K2 ← "pack-side mass laws": per-row stratum masses at the 𝔅_n member + row disjointness (incl. the (O3) resummed rows) [the REVISION-1 "row Σ = 1" member-row delivery is WITHDRAWN — see (†18)] | repaired M1(a) families (i)–(iii) (conditional-on-C_e, formulas unchanged) + M1(d) (one-step strata Σ = 1 — its honest scope) + (b) with (b-PF) argued + **(b-EX) an r4 PROOF OBLIGATION** (route displayed §2.4) + (LOOP-∞); the K2 glue laws at the CONCRETE pack stay (PACK-i/ii); K3's stays (PACK-iii) — unchanged | **MET-PENDING-r4-PROOF ((b-EX))** |
+| N2 | Step 18 K1 ← "true row labels" (M3 leg, via Steps 11/12) | repaired M3(a) at separable-lift scope + **Lemma (K1-NSF)** (the EXECUTED consumer-side check, §2.5: every labeled K1 box fibers a decided ns-free tree BY the displayed corpus definitions; exact combinatorics = channel (ch-1), label-blind, M3-free; semantic tie = channel (ch-2), mass-mediated with T-6 (ns-null)); label attachment to ACTUAL tables rides (H5) | **MET** (contingency NS-ALL flagged, narrowed — §6) |
 | N3 | Step 18b ← "the (r1) uniqueness pivot" | Corollary D margins/pivot — untouched by every finding | **MET** |
-| N4 | Step 17's termination delivery ("a.s. termination from the (r1) margins"; D-9k's escape input) | M1(c) per-visit margins at (O1)/(O3) + per-block a.s. exit, unconditional (pass-confirmed, byte-stable); multi-block a.s. termination = Lemma M2.0 at (S1-m)+(DET), repaired per §3.4 with billing unchanged; Step-17 display line rescoped to this split (edit E1) | **MET** |
-| N5 | Step 18b → Step 19: α = series at the consumed instance | repaired M2 (r4) at (RE) scope; (RE) discharged at the consumed instance by the on-file instance pin (O-12 §1 + M1′) displayed at Step 18b (edit E3); (S1) ← Step 14, (S2) ← Step 18, pivot ← Step 17 as before; concrete-pack attachment = (H5) as before | **MET — no new [M] on the primary route** |
+| N4 | Step 17's termination delivery ("a.s. termination from the (r1) margins"; D-9k's escape input) | M1(c) per-visit margins at (O1)/(O3) + per-block a.s. exit, unconditional (pass-confirmed, byte-stable); multi-block a.s. termination = Lemma M2.0 REPAIR-DESIGNED per §3.4 with obligations **(O-1)–(O-5)** enumerated and routed; billing (S1-m)+(DET) = the design-level claim the r4 must bear out; Step-17 display line rescoped to this split (edit E1) | **MET-PENDING-r4-PROOF ((O-1)–(O-5))** |
+| N5 | Step 18b → Step 19: α = series at the consumed instance | repaired M2 (r4) at its (RE) scope — a THEOREM about (RE) members; at the CONSUMED member, (RE)+row-form = **(PACK-iv)**, the NEW (H5) member (§3.5, PRIMARY; the REVISION-1 definitional discharge WITHDRAWN, §3.3); (S1) ← Step 14, (S2) ← Step 18, pivot ← Step 17 as before; concrete-pack attachment = (H5)'s correspondence clause as before | **MET AT PRICE ((PACK-iv), NEW [M] member)** |
 | N6 | Step 19 ← Step 17's pole-free leg | the (r1)/(r2) margins reread — untouched | **MET** |
-| N7 | Step 19's Σ_τ R_τ = 1 | rides α = R_τ at every p (N5) + Step 1 — conditionality unchanged | **MET** |
+| N7 | Step 19's Σ_τ R_τ = 1 | rides α = R_τ at every p (N5) + Step 1 — hence INHERITS N5's (PACK-iv) price; conditionality otherwise unchanged (Step 1 + interpolation, ROOT REVISION-3 finding B3) | **MET AT PRICE (inherited from N5)** |
 
-**BLOCKED: NONE.** No need of Steps 17/18/18b/19 fails under the repairs of §§2–3
-plus (H8) (§5.1). If the plan-review overturns §3.3's discharge, N5 is met instead
-by the (PACK-iv) fallback (§3.5) — still not blocked, priced.
+**(†18) The C4 trace [REVISION 2, review finding 4] — where row normalization
+actually lives, displayed.** The REVISION-1 N1 row claimed Step 17 delivers
+"member-row Σ = 1 through the canonical grammar + family-(vi) aggregates at (RE)
+members". WITHDRAWN: M1(d)'s theorem is Σ = 1 over the ONE-STEP STRATA; member
+verdict rows are family (iv) — excluded from M1(a) by (a″) — and their sums
+involve the β-leg aggregates Σ_σ β_{e′}(σ)(q^δ), about which M1 proves nothing.
+The trace of every mandatory consumer:
+* Step 18's K2 evaluation glue consumes definedness (O-12 (r2)) + (PACK-i)
+  (rsh_interp) + **(PACK-ii) (r_bdd — the [0,1] bound behind ENNReal.ofReal)**:
+  the ONLY normalization-class law consumed at Step 18, and it is ALREADY a
+  priced (H5) clause at the CONCRETE pack (ROOT REVISION 7, finding VC7-2) — not
+  an M1 delivery, not an O-12 theorem.
+* Step 18's K1/K4 and Step 19's squeeze consume NO member-row sum: K1 is
+  label-blind combinatorics + measured masses (§2.5 (ch-1)); Step 19's
+  Σ_τ R_τ = 1 is concluded from Step 1 + interpolation (ROOT REVISION-3 finding
+  B3) — not from any table-side total.
+* O-12 supplies NO row-normalization theorem: its claim is poles/zeros only;
+  value totals are expressly outside it (§1 scope declaration). There is no
+  algebraic theorem to cite because none exists on file — the REVISION-1 phrase
+  "through the canonical grammar" was pointing at unproved content.
+So member-row Σ = 1 is consumed NOWHERE on the mandatory path, and Step 17's E1
+display drops it (§7). CONTINGENT ROUTE, displayed in case a future pass finds a
+consumer: **(ROW-Σ)** — Σ_σ β_e(σ)(q₀) = 1 at every block of a member satisfying
+(PACK-iv), by induction on e: M1(a)(ii)/(iii) + M1(d) give the true exit masses
+summing to 1 − κ₀ − κ₁; (PACK-iv)'s canonical row form gives Σ_σ t_σ =
+Σ_F m(F)·∏_i Σ_{σ_i} β_{μ_i}(σ_i)(q^{D_i}) (the 0/1 comp-sum telescopes over the
+finite verdict set); O-12 Theorem 1(3)'s solve display (β_e = t/(1 − q^{1−E}))
+and the base β_1 = 1 close the induction. It consumes NOTHING from Steps 18/18b —
+M2-free, hence NON-CIRCULAR — but it is NOT on file; if it ever fires it is an
+r-pass proof obligation at Step 17's layer, and (PACK-iv)'s consumption set
+widens to include it (sub-attribution re-sync duty noted at E4).
+
+**The 18-vs-18b dependency chains (displayed; review finding 4's circularity
+check):**
+* **Step 18 (series = R_τ)** consumes: Step 17's M1 layers (as repaired) +
+  (H5){correspondence, PACK-i, PACK-ii, PACK-iii} at K2/K3 + (H6)/(H7) at
+  K1/K3-a + O-12 (r1)/(r2). It does NOT consume (PACK-iv), any member-row sum,
+  or anything of M2.
+* **Step 18b (α = series)** consumes: M2 (r4) at (RE) scope + **(PACK-iv)** (the
+  consumed member's booking+row-form profile) + (S1) ← Step 14 + (S2) ← Step 18
+  + the (r1) pivot ← Step 17 + (H5)'s correspondence clause.
+* Order 17 ≺ 18 ≺ 18b intact; (PACK-iv) enters at 18b ONLY; no 18b content flows
+  back into 18. NON-CIRCULAR.
+
+**BLOCKED (restated at REVISION 2 — supersedes REVISION 1's "BLOCKED: NONE",
+which the review correctly ruled unsupported).** No need is BLOCKED in the strict
+ledger sense: every need has a displayed route — a proof on file, a priced [M]
+member, or a named r4 proof obligation with a displayed proof route and a
+hostile-pass bar. But the flat "all MET" is WITHDRAWN. The honest tiers:
+* **MET on file:** N3, N6.
+* **MET by executed check:** N2 (Lemma (K1-NSF), §2.5).
+* **MET AT PRICE:** N5, N7 — one NEW [M] member, (PACK-iv) (§3.5); plus (H8) for
+  Step 18's K1 CUT-WD leg (§5.1), as at REVISION 1.
+* **MET-PENDING-r4-PROOF:** N1 ((b-EX)); N4 ((O-1)–(O-5)) — NOT met by anything
+  currently on file; the composition is NOT restored, and the acceptance standing
+  does not move, until these discharge under the D-11 r4 hostile pass.
+Failure mode, recorded in advance: if (b-EX)'s write-out fails at any family, or
+any (O-i) resists its displayed route, the corresponding need RE-OPENS and this
+design returns for re-adjudication before any ROOT edit.
 
 ---
 
@@ -764,18 +821,29 @@ census carries it; no (ROOT-C) content changes.
 
 ---
 
-## 6. Contingencies (labeled; neither is a blocker)
+## 6. Contingencies (labeled; none is a blocker) [roster revised at REVISION 2]
 
 1. **(BOX-VOL) L6a-shape dependence** — RESOLVED IN THIS DESIGN: L6a's verified
-   display was checked and quoted (§2.2); the r4 executor's only duty is the verbatim
-   cite. Fallback (narrowing) specified at §2.2, costs nothing on the mandatory path.
+   display was checked and quoted (§2.2); the r4 executor's duties are the verbatim
+   cite PLUS [REVISION 2, review advisory 6] verifying that k counts the DISTINCT
+   imposed equalities and that every referenced N(P) occurrence has the claimed
+   provenance. Fallback (narrowing) specified at §2.2, costs nothing on the
+   mandatory path.
 2. **(NS-ALL)** — fires only if a pass finds a mandatory consumer needing all-lifts
-   separability FROM M3(a) (§2.5); then it is priced as an explicit open lemma (home:
-   (H6)-adjacent, terminal/label seam — adjudicate at that time). §4 N2 argues no
-   current consumer does.
-3. **(PACK-iv) fallback** — fires only if the plan-review rejects §3.3's
-   definitional-display discharge of (RE); verbatim member + one-home argument at
-   §3.5.
+   separability FROM M3(a) at boxes not definitionally ns-free — a consumer OUTSIDE
+   both displayed channels of §2.5 (the REVISION-2 executed check found none on the
+   Step-17/18/18b/19 path); then it is priced as an explicit open lemma (home:
+   (H6)-adjacent, terminal/label seam — adjudicate at that time).
+3. **(PACK-iv) fallback — RETIRED AS A CONTINGENCY at REVISION 2:** (PACK-iv) is
+   now the PRIMARY route (§3.5, per review finding 1); its named RETIREMENT ROUTE
+   ((route-a)/(route-b)) is displayed at §3.3. Kept in this roster as a tombstone
+   so the promotion is visible.
+4. **(ROW-Σ) [NEW at REVISION 2]** — fires only if a pass finds a mandatory
+   consumer of member-row Σ = 1 (the REVISION-2 trace at §4 (†18) found none);
+   route displayed there: block induction from M1(a)(ii)/(iii) + M1(d) +
+   (PACK-iv)'s row form + O-12 Theorem 1(3), M2-free and non-circular. If it
+   fires: an r-pass proof obligation at Step 17's layer + the E4 sub-attribution
+   re-sync.
 
 ---
 
@@ -783,41 +851,72 @@ census carries it; no (ROOT-C) content changes.
 
 **Unit A — D-11 r4** (leaf repair; COPY rev 3, edits at finding sites only, every
 pass-confirmed passage byte-stable; open with a §0-pre dispositions table mapping
-pass-3 findings 1–9 → the §§2–3 repairs): L1 preamble (§2.1) · L2 (a′) first sublist
-+ (BOX)/(BOX-VOL) (§2.2) · L3 §5/§7 billing (§2.3) · L4 (b-PF)/(b-SW) + consumer
-re-points (§2.4) · L5 Theorem M2 (RE) restatement + proof-step replacement + the
-§2.3(iv) grammar quote into §0 (§3.3) · L6 Lemma M2.0 loop-extended addresses (§3.4)
-· L7 M3(a) separable scope (§2.5) · L8 M3(b) in-statement conditionality (§2.7) ·
-L9 §6 falsifier-criterion display (§2.6). Then the r4 hostile pass (fresh context,
-Codex; the D-11 registry bar unchanged).
+pass-3 findings 1–9 → the §§2–3 repairs) [L-list revised at REVISION 2]:
+L1 preamble (§2.1) + the downstream unqualified-"mass" sweep [advisory 7] ·
+L2 (a′) first sublist + (BOX)/(BOX-VOL) (§2.2) + the k/N(P) provenance
+verification duty [advisory 6] ·
+L3 §5/§7 billing (§2.3) ·
+L4 (b-PF) + the (b-EX) OPEN-LEMMA statement + its grammar-induction write-out per
+§2.4's displayed route (one paragraph per family; honesty clause if a case fails)
++ the (LOOP-∞) display + consumer re-points (§2.4) ·
+L5 Theorem M2 (RE) restatement + proof-step replacement + the §2.3(iv) grammar
+quote into §0 (§3.3) + the consumed-instance sentence REPLACED by the (PACK-iv)
+cross-reference: the leaf displays that (RE)-at-the-consumed-member is
+clause-4/(H5)-class content, priced at ROOT as (PACK-iv) — the leaf does NOT
+discharge it [REVISION 2] ·
+L6 Lemma M2.0 loop-extended addresses + the (O-1)–(O-5) write-outs (§3.4)
+[REVISION 2] ·
+L7 M3(a) separable scope (§2.5) ·
+L8 M3(b) in-statement conditionality (§2.7) ·
+L9 §6 falsifier-criterion display (§2.6).
+Then the r4 hostile pass (fresh context, Codex; the D-11 registry bar unchanged) —
+its charge EXPLICITLY includes adjudicating the (b-EX) write-out and the
+(O-1)–(O-5) write-outs as proofs, not as displays.
 
-**Unit B — ROOT r11** (display edits; §§1/7–15 discipline as at prior revisions):
+**Unit B — ROOT r11** (display edits; §§1/7–15 discipline as at prior revisions;
+CONDITIONAL — see Order) [E-list revised at REVISION 2]:
 E1 Step 17 statement line → the r4-scoped form: "every family-(i)/(ii)/(iii) solve
 entry … IS the Haar mass of its continuation event CONDITIONAL on the block state
 law C_e; family-(v) atoms at their per-occurrence (a′) readings (ambient boxes /
 per-cell singletons; the (O3) scalings NOT masses); families (iv)/(vi)/(vii)
-excluded in-statement ((a″)); Σ = 1 at the displayed one-step strata (M1(d)), member
-rows through the canonical grammar at re-entrant members; multi-step disjointness at
-prefix-free families ((b-PF)), covering every consumed row by the stopping-word
-grammar fact ((b-SW)); per-block a.s. exit unconditional, multi-block at Lemma
-M2.0's (S1-m)+(DET) (Step 18b's layer)" ·
+excluded in-statement ((a″)); Σ = 1 at the displayed ONE-STEP STRATA (M1(d)) —
+member-row sums NOT delivered here (no mandatory consumer; the (ROW-Σ) contingency
+is on file at the repair design §4 (†18)); multi-step disjointness at prefix-free
+families ((b-PF)), grammar exhaustiveness = (b-EX) per its r4 outcome (a proved
+lemma, or a displayed open lemma inherited by every consumer citing it); the
+infinite loop-0 word per (LOOP-∞); per-block a.s. exit unconditional, multi-block
+at Lemma M2.0's (S1-m)+(DET) (Step 18b's layer)" ·
 E2 Step 17 status line gains the pass-3 CRITICAL record + r4 pointer ·
-E3 Step 18b proof line → "the D-11 r4 M2 argument at its (RE) scope — (RE)
-discharged at the consumed instance by the instance pin (O-12 §1: general-n = (O1),
-sealed n = 3 = (O3); D-11 M1′: density carriers are the re-entrant bookings) — with
-(S1) ← Step 14, (S2) ← Step 18, (r1) pivot ← Step 17; the concrete pack's
-conformance = (H5)" ·
-E4 (H5) row + (ROOT-C)(H5): one sentence — "the correspondence's TARGET member is
-re-entrant-booked at every block ((O1)/(O3); the (O2) gate object is not a density
-carrier)" [If the fallback fires: instead add (PACK-iv) per §3.5] ·
-E5 the (H8) row + all conforming displays (§5.1) ·
+E3 Step 18b proof line → "the D-11 r4 M2 argument at its (RE) scope — the consumed
+member's (RE)+row-form profile priced as **(PACK-iv)** ((H5), NEW member; the
+former definitional-discharge display is WITHDRAWN per the repair design REVISION
+2) — with (S1) ← Step 14, (S2) ← Step 18, (r1) pivot ← Step 17; the concrete
+pack's conformance = (H5)'s correspondence clause" ·
+E4 (H5) row + (ROOT-C)(H5): ADD the NEW member (PACK-iv) verbatim per §3.5 —
+presented as an ADDITION to the row-law roster (three → four), never a
+clarification; consumption displayed at Step 18b ONLY; retirement route displayed
+on the row (§3.3 (route-a)/(route-b)); sub-attribution duty: if (ROW-Σ) ever
+fires, re-sync the consumption set ·
+E5 the (H8) row + all conforming displays (§5.1); the row count sync (ten →
+eleven) is (H8)'s alone — (PACK-iv) adds a member, not a row (§3.5 accounting) ·
 E6 §3.4 rows 6(iii)–(ix)+7 and 13: "(M1: entries ARE masses)" pointers re-scoped to
 the r4 form ·
 E7 §3.2 D-11 [V] row synced to r4 (pass 3 CRITICAL; r4 on file; fresh pass owed) ·
-E8 ACCEPTANCE STANDING: counter to ZERO everywhere it is displayed (header, §3.2,
-§6, footer, §15); the suspension lifts only on a NEW end-to-end adjudication (two
-consecutive clean model-diverse passes on identical text, fresh verifiers).
+E8 ACCEPTANCE STANDING [REVISED at REVISION 2, review finding 9]: every display
+(header, §3.2, §6, footer, §15) reads **SUSPENDED** — never "clean", never
+"accepted" — with the counter at 0 of 2 toward the NEW end-to-end bar (two
+consecutive clean model-diverse passes on identical text, fresh verifiers). A
+clean D-11 r4 leaf pass removes the LEAF defect and is recorded at E2/E7 as
+exactly that; composition acceptance moves ONLY at the new bar — the two events
+are never conflated in any display ·
+E9 [NEW at REVISION 2] Step 18's K1-a/K4 lines + Step 17's M3 leg gain the
+Lemma (K1-NSF) display + the two-channel consumption attribution (§2.5).
 
-**Order:** Codex plan-review of THIS file → Unit A → D-11 r4 hostile pass → Unit B →
-new VC passes. PROJECT_STATE.md + ledger sync at each unit close.
+**Order [REVISED at REVISION 2, review finding 9]:** Codex plan-review of THIS
+revision → Unit A → D-11 r4 hostile pass → **Unit B executes IF AND ONLY IF the
+r4 pass ACCEPTS the repaired statements AND their proofs (in particular the
+(b-EX) and (O-1)–(O-5) write-outs)** → the new end-to-end VC bar (suspension
+stands throughout; it lifts only when the bar passes). If the r4 pass rejects,
+NO ROOT edit occurs: the design returns here for re-adjudication first.
+PROJECT_STATE.md + ledger sync at each unit close.
 
