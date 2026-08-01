@@ -1913,3 +1913,27 @@ changes), (c) the honest-pricing invariant stands (never weaken a
 statement to make a goal provable; hypothesis content stays hypothesis
 until proved). Consequential statement changes still get SURFACED in
 reports after the fact.
+
+## H2-U10 EXECUTED: BLOCKED (compiled), statement fence HELD (2026-08-05)
+Sign-off gate opened per the entry above; execution ran the blueprint's own
+non-vacuity gate FIRST and it FAILED — no restatement landed. Finding
+(NEW, supersedes the blueprint's "III-U3b unlanded" gate note): III-U3b HAS
+landed (Scaffold/DictIII/CU1.lean) and fires ONLY `FRESH.childDetermined`
+(cu1_stepPair_ge2), so BOTH §2.3 routes (census re-point + classifier-face
+corollary; chain-keyed twins with III-U3b-fixed field list) preserve exactly
+that clause — and PROBE F-4 (`probe_restated_childDetermined_refuted`,
+DictIIIProbes.lean, Lean-core) refutes it AT THE U7 WITNESS: over the
+all-terminal duplicate history, Theta has no slopes, side_spec FORCES every
+reader to side ≡ none while ConsF holds vacuously, yet node 0 is recorded —
+∃!-read fails. The restated row would be UNINHABITED in the signed-off form
+(same transcription-overreach class as U8.fresh_uninhabited; the clause's
+{H}{D}{R} range over law-free carriers). Recorded dichotomy: guard by
+InteriorChain ⇒ clause provable from ConsF (trivial, placeholder again);
+unguarded ⇒ false (F-4). Terminal-index reads are (T-READ)/H6 seam content,
+not (FRESH). Ripple census (would-be restatement, for the record): 11 Lean
+sites (Hyps.lean row; 8 hFRESH binders in CU1.lean incl. U8 verdict legs;
+2 U7 probes) + 5 doc mentions. Gates: per-file green; AxChk 740 footprints,
+0 sorryAx, no regression; Codex diff gate VERDICT: CONFIRMED (archive:
+lean/notes/openmath/H2U10_diff_confirm.md). NEXT: blueprint-level scope
+repair beyond the §2.3 envelope (per-instance carrier position or
+realizability guards) — needs a fresh adjudication package; U10 stays open.

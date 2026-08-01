@@ -103,8 +103,97 @@ theorem probe_not_FRESH : ∃ (p : ℕ) (_ : Fact p.Prime),
     (by simp [duplicateEHist_nodes]) (by simp [duplicateEHist_nodes])
     (by omega) rfl
 
+/-! ## H2-U10 gate probe (PROBE F-4, sign-off execution attempt, 2026-08-05 ledger)
+
+The §2.3 sign-off opened the `DictIII.FRESH` restatement.  At the LANDED
+consumption shape (Scaffold/DictIII/CU1.lean fires ONLY `childDetermined`, at
+`cu1_stepPair_ge2` — III-U3b landed after the blueprint's gate note was
+written), BOTH signed-off routes preserve exactly one candidate faithful
+clause:
+
+* Option A (census-face re-point + classifier-face corollary): the census
+  face lives at `FreshClauses`/`FreshRowOn` (H2-U2/U8; different carriers, no
+  bridge to `EHist`), so the DictIII row's surviving content IS the
+  classifier-face clause = `childDetermined`.
+* Option B (chain-keyed twins, "III-U3b's consumption shape fixes the field
+  list"): the landed consumption is `childDetermined` alone.
+
+PROBE F-4 refutes THAT clause at the U7 witness, so the restated carrier
+FAILS its non-vacuity gate in the signed-off form — U10 is BLOCKED:
+
+* Over `duplicateEHist` (all nodes terminal), `continuingPart.nodes = []`,
+  so `Theta duplicateEHist` has NO slopes; `GMNReader.side_spec` then FORCES
+  `side i = none` at every level for EVERY reader (no side can carry a
+  requested slope), while `ConsF` holds vacuously.  Node 0 is nonetheless
+  recorded, so `∃! S, R.side 0 = some S` fails.
+* Same transcription-overreach class as the III-U8 verdict (CU1.lean): the
+  clause's implicit `{H} {D} {R}` range over law-free carriers.  The known
+  dichotomy, for the record: guarding by `InteriorChain` (all nodes
+  continuing) makes the clause PROVABLE from `ConsF`'s own read clause
+  (trivial — placeholder again); leaving it unguarded makes it FALSE (this
+  probe).  The terminal-index read is terminal-seam ((T-READ)/H6) content,
+  not (FRESH); the honest restatement needs a blueprint-level scope repair
+  beyond the §2.3 signed-off envelope — statement fence, NOT executed here. -/
+
+/-- Gate artifact (PROBE F-4): the all-empty semantic datum over the U7
+    witness chain, `rootOrder` matched to `duplicateEHist.a0 = 1` so the
+    `ConsF` root clause holds. `GMNData` is law-free data. -/
+noncomputable def emptyDataDup :
+    DictIII.GMNData (Polynomial.X : Polynomial ℤ_[2])
+      (DictIII.Theta duplicateEHist) where
+  principalSides := fun _ => []
+  residualOrder := fun _ => 0
+  residualDegree := fun _ => 0
+  rootOrder := 1
+
+/-- Gate artifact (PROBE F-4): the forced reader over the U7 witness — with
+    no principal sides (and no requested slopes), `side_spec` admits ONLY
+    `side ≡ none`; every law is satisfied. -/
+noncomputable def noneReaderDup :
+    DictIII.GMNReader (Polynomial.X : Polynomial ℤ_[2])
+      (DictIII.Theta duplicateEHist) emptyDataDup where
+  side := fun _ => none
+  side_spec := by intro i S; simp [emptyDataDup]
+  side_unique := by intro i S T hS _ _ _; simp [emptyDataDup] at hS
+  resOrd := fun _ => 0
+  resOrd_spec := fun _ => rfl
+  rootOrd := 1
+  rootOrd_spec := rfl
+  resDeg_eq_sideDeg := by intro i S h; simp at h
+
+/-- PROBE F-4 step: `ConsF` HOLDS at the U7 witness with the none-reader —
+    the continuing part is empty (both nodes terminal), and the root orders
+    match. -/
+theorem consF_noneReaderDup :
+    DictIII.ConsF (Polynomial.X : Polynomial ℤ_[2]) duplicateEHist
+      emptyDataDup noneReaderDup := by
+  refine ⟨rfl, ?_⟩
+  intro i ν h
+  have hnil : duplicateEHist.continuingPart.nodes = [] := rfl
+  rw [hnil] at h
+  simp at h
+
+/-- PROBE F-4 (the H2-U10 non-vacuity gate, FAILED): the `childDetermined`
+    clause — the single faithful clause BOTH signed-off restatement routes
+    preserve at the landed consumption shape — is REFUTED at the U7 witness
+    instance class.  The restated `DictIII.FRESH` would be uninhabited at the
+    gate prime in the signed-off form: U10 BLOCKED, statement fence held. -/
+theorem probe_restated_childDetermined_refuted :
+    ¬ (∀ {f : Polynomial ℤ_[2]} {H : DictIII.EHist 2 (ZMod 2)}
+        {D : DictIII.GMNData f (DictIII.Theta H)}
+        {R : DictIII.GMNReader f (DictIII.Theta H) D}
+        {i : ℕ} {ν : DictIII.ENodeData}, DictIII.ConsF f H D R →
+          H.nodes[i]? = some ν → ∃! S, R.side i = some S) := by
+  intro hcd
+  obtain ⟨S, hS, -⟩ := hcd (f := Polynomial.X) (H := duplicateEHist)
+    (D := emptyDataDup) (R := noneReaderDup) (i := 0) (ν := probeNode)
+    consF_noneReaderDup (by simp [duplicateEHist_nodes])
+  simp [noneReaderDup] at hS
+
 end LeanUrat.Scaffold.HDischarge.H2
 
 -- Footprint audit (unit H2-U7 gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.HDischarge.H2.dictFresh_junctionPin_trivial
 #print axioms LeanUrat.Scaffold.HDischarge.H2.probe_not_FRESH
+-- Footprint audit (H2-U10 gate probe F-4): expect Lean core only.
+#print axioms LeanUrat.Scaffold.HDischarge.H2.probe_restated_childDetermined_refuted
