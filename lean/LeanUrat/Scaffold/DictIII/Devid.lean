@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.Scaffold.DictIII.Hyps
+import LeanUrat.Scaffold.DictIII.GDOrder1
 import LeanUrat.Moves.Defs
 
 /-!
@@ -64,15 +65,16 @@ namespace LeanUrat.Scaffold.DictIII
 
 open Polynomial
 
-/-- Unit III-G1 (forward-provided dependency): the Φ-adic development
-    coefficients, `devCoeff Φ B k` = the k-th coefficient `C_k` in
-    `B = Σ_k C_k Φ^k` with `deg C_k < deg Φ`, via monic mod/div
-    (`Polynomial.modByMonic`/`divByMonic`) — BP_III unit-table row III-G1,
-    GD23 §3 DEV-g. -/
-noncomputable def devCoeff {K : Type*} [CommRing K] (Φ : Polynomial K) :
-    Polynomial K → ℕ → Polynomial K
-  | B, 0 => B %ₘ Φ
-  | B, k + 1 => devCoeff Φ (B /ₘ Φ) k
+-- DEDUP (BP_II Wave 3g checkpoint, 2026-08-01): the forward-provided
+-- `devCoeff` copy that lived here was removed per this file's own header
+-- ledger ("When III-G1 lands in its own module this def is the one to dedupe
+-- against") — unit III-G1's `devCoeff` landed in `GDOrder1.lean` with an
+-- IDENTICAL definition body (same `%ₘ`/`/ₘ` recursion, variable names only
+-- differing), and keeping both broke every module importing both closures
+-- (duplicate-constant import error at `devCoeff.match_1`, seen from
+-- `CU1.lean`).  `devCoeff` is now supplied by the
+-- `LeanUrat.Scaffold.DictIII.GDOrder1` import above; all uses below are
+-- unchanged.
 
 /-- The graded interface DEVID actually consumes: initial-form data for w with
     (g1) in(A)+… sum law at the min weight, (g2) in(AB) = in(A)·in(B), domain. An

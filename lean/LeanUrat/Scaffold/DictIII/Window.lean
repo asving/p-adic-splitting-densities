@@ -636,27 +636,35 @@ open Polynomial
 -- (Slot-vanishing of the zero polynomial: `devCoeff_zero_poly`, shared with
 -- the III-G23 wave, is consumed from `Devid.lean` — the dedup rule.)
 
-/-- III-T13 support: development slots beyond the degree vanish (monic key of
-positive degree) — the slot-support fact that lets WGEO(a) quantify over ALL
-slots under the displayed `C_k ≠ 0` guard. -/
-theorem devCoeff_eq_zero_of_natDegree_lt {K : Type*} [CommRing K]
-    [Nontrivial K] {Φ : Polynomial K} (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree) :
-    ∀ (k : ℕ) (B : Polynomial K), B.natDegree < k → devCoeff Φ B k = 0 := by
-  intro k
-  induction k with
-  | zero => intro B hB; omega
-  | succ k ih =>
-    intro B hB
-    simp only [devCoeff]
-    by_cases hq : B /ₘ Φ = 0
-    · rw [hq]; exact devCoeff_zero_poly Φ k
-    · refine ih _ ?_
-      have h1 : ¬ B.degree < Φ.degree := fun h =>
-        hq ((Polynomial.divByMonic_eq_zero_iff hΦ).mpr h)
-      have h2 : Φ.natDegree ≤ B.natDegree :=
-        Polynomial.natDegree_le_natDegree (not_lt.mp h1)
-      rw [Polynomial.natDegree_divByMonic B hΦ]
-      omega
+-- WAVE-QUARANTINE(BP_II Wave 3g checkpoint, dedup): the III-T13 support copy
+-- of `devCoeff_eq_zero_of_natDegree_lt` below duplicated the SAME name in the
+-- SAME namespace as GDOrder1.lean's (unit III-G1 wave) — a duplicate-constant
+-- import error once Devid.lean deduped its `devCoeff` against GDOrder1 (this
+-- file now transitively imports GDOrder1).  GDOrder1's form is strictly
+-- stronger (no `[Nontrivial K]` assumption; same explicit-argument order), so
+-- the use site below (`wgeo_kernel`) consumes it unchanged.  Full decl
+-- preserved:
+-- /-- III-T13 support: development slots beyond the degree vanish (monic key of
+-- positive degree) — the slot-support fact that lets WGEO(a) quantify over ALL
+-- slots under the displayed `C_k ≠ 0` guard. -/
+-- theorem devCoeff_eq_zero_of_natDegree_lt {K : Type*} [CommRing K]
+--     [Nontrivial K] {Φ : Polynomial K} (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree) :
+--     ∀ (k : ℕ) (B : Polynomial K), B.natDegree < k → devCoeff Φ B k = 0 := by
+--   intro k
+--   induction k with
+--   | zero => intro B hB; omega
+--   | succ k ih =>
+--     intro B hB
+--     simp only [devCoeff]
+--     by_cases hq : B /ₘ Φ = 0
+--     · rw [hq]; exact devCoeff_zero_poly Φ k
+--     · refine ih _ ?_
+--       have h1 : ¬ B.degree < Φ.degree := fun h =>
+--         hq ((Polynomial.divByMonic_eq_zero_iff hΦ).mpr h)
+--       have h2 : Φ.natDegree ≤ B.natDegree :=
+--         Polynomial.natDegree_le_natDegree (not_lt.mp h1)
+--       rw [Polynomial.natDegree_divByMonic B hΦ]
+--       omega
 
 /-- III-T13 support — the WGEO(a)/(b) kernel at a bare state `(W, Φ)`: the
     theorem `wgeo` below is exactly this kernel fired at the indexed state
