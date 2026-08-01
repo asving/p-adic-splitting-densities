@@ -1,10 +1,13 @@
 /-
-BP_II §1.7 — Fact F (`Scaffold/O12/FactF.lean`), unit II-F1.
+BP_II §1.7 — Fact F (`Scaffold/O12/FactF.lean`), units II-F1, II-F2.
 Units in this file: II-F1 (`Mpoly` · `fallingFac` · `multiplicityCount` ·
 `degreeCount` · `patternFactor` · `Npoly` · `Ppoly`) — the ℚ[q]-POLYNOMIAL half
-of Fact F (all that Theorem 2 consumes; MECH transcription).
+of Fact F (all that Theorem 2 consumes; MECH transcription);
+II-F2 (`gram_Npoly` · `gram_Ppoly`) — the (g1) grammar status of the count
+polynomials.
 -/
 import Mathlib
+import LeanUrat.Scaffold.O12.Core
 
 /-!
 # Fact F, polynomial half: the count polynomials [unit II-F1]
@@ -19,6 +22,8 @@ import Mathlib
 -/
 
 namespace LeanUrat.Scaffold
+
+open LeanUrat.MovesU (Gram)
 
 /-- M_D(q) = D⁻¹ Σ_{δ|D} μ(δ) q^{D/δ} ∈ ℚ[q] (Fact F, brief §2.3). -/
 noncomputable def Mpoly (D : ℕ+) : Polynomial ℚ :=
@@ -54,5 +59,17 @@ noncomputable def Ppoly (ρ : Multiset (ℕ+ × ℕ+)) : Polynomial ℚ :=
   ∏ D ∈ ρ.map Prod.fst |>.toFinset,
     patternFactor
       (fun E => if E = 1 then Polynomial.X - 1 else Mpoly E) ρ D
+
+/-! ## Unit II-F2 — (g1) status of the count polynomials (`Gram.poly`) -/
+
+/-- **(g1) for N_ρ** [unit II-F2]: the count polynomial `Npoly ρ`, viewed in the
+ambient field `Qq = RatFunc ℚ`, lies in the grammar 𝒢 (leaf (g1): polynomials). -/
+theorem gram_Npoly (ρ) : Gram (algebraMap (Polynomial ℚ) Qq (Npoly ρ)) :=
+  Gram.poly (Npoly ρ)
+
+/-- **(g1) for P_ρ** [unit II-F2]: the z-free count polynomial `Ppoly ρ`, viewed in
+the ambient field `Qq = RatFunc ℚ`, lies in the grammar 𝒢 (leaf (g1)). -/
+theorem gram_Ppoly (ρ) : Gram (algebraMap (Polynomial ℚ) Qq (Ppoly ρ)) :=
+  Gram.poly (Ppoly ρ)
 
 end LeanUrat.Scaffold

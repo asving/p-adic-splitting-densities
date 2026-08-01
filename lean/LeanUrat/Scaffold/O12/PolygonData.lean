@@ -71,4 +71,69 @@ theorem d_of_lt (κ : FaceKind e) {j : ℕ} (hj : j < κ.faces.length) :
 
 end FaceKind
 
+/-! ## Unit II-P2: `SlopeTuple`, `heights`, `vertexHeight_int`
+
+Blueprint §1.6 pseudo-notation realized: `slope j := (a j : ℚ) / (b j : ℚ)` is
+inlined at its two use sites (`hdesc`, `hlt1`); `last` is the index
+`κ.faces.length - 1` (well-defined under `h : κ.faces ≠ []`). -/
+
+/-- An admissible slope tuple: numerators a_j ≥ 1, gcd(a_j, b_j) = 1, s_1 > ⋯ > s_k,
+s_k ∈ (0,1) (i.e. a_k < b_k). -/
+structure SlopeTuple (κ : FaceKind e) where
+  a       : Fin κ.faces.length → ℕ+
+  hcop    : ∀ j, Nat.Coprime (a j) (κ.faces.get j).2
+  hdesc   : ∀ j j' : Fin κ.faces.length, j < j' →
+    ((a j' : ℕ) : ℚ) / (((κ.faces.get j').2 : ℕ) : ℚ) <
+      ((a j : ℕ) : ℚ) / (((κ.faces.get j).2 : ℕ) : ℚ)
+  hlt1    : ∀ h : κ.faces ≠ [],
+    ((a ⟨κ.faces.length - 1,
+        Nat.sub_lt (List.length_pos_of_ne_nil h) Nat.one_pos⟩ : ℕ) : ℚ) /
+      (((κ.faces.getLast h).2 : ℕ) : ℚ) < 1
+
+/-- Heights h_i := P(i) ∈ ℚ (right-anchored: h_e = 0); vertex heights are integers
+h_{x_j} = Σ_{j′≥j} a_{j′}·d_{j′} (each face drops a_j·d_j ∈ ℤ).
+
+Realization: h_i sums, over each face j, the slope a_j/b_j times the width of the
+part of face j lying to the right of the abscissa i (so `heights` is the
+piecewise-linear polygon read right-anchored from h_e = 0). -/
+noncomputable def heights (κ : FaceKind e) (s : SlopeTuple κ) (i : ℕ) : ℚ :=
+  ∑ j : Fin κ.faces.length,
+    ((s.a j : ℕ) : ℚ) / (((κ.faces.get j).2 : ℕ) : ℚ) *
+      ((max (κ.x ((j : ℕ) + 1)) i - max (κ.x (j : ℕ)) i : ℕ) : ℚ)
+
+/-- Vertex heights are integers: h_{x_j} = ((Σ_{j′ ≥ j} a_{j′}·d_{j′} : ℕ) : ℚ) —
+each face drops a_j·d_j ∈ ℤ. -/
+theorem vertexHeight_int (κ : FaceKind e) (s : SlopeTuple κ) (j : ℕ) :
+    heights κ s (κ.x j) =
+      ((∑ j' ∈ Finset.univ.filter (fun j' : Fin κ.faces.length => j ≤ (j' : ℕ)),
+          (s.a j' : ℕ) * κ.d (j' : ℕ) : ℕ) : ℚ) := by
+  have hmono : Monotone κ.x := by
+    apply monotone_nat_of_le_succ
+    intro m
+    by_cases hm : m < κ.faces.length
+    · rw [κ.x_succ_of_lt hm]; omega
+    · unfold FaceKind.x
+      rw [List.take_of_length_le (Nat.le_of_not_lt hm),
+        List.take_of_length_le (by omega)]
+  rw [heights, Nat.cast_sum, Finset.sum_filter]
+  refine Finset.sum_congr rfl fun j' _ => ?_
+  by_cases hj : j ≤ (j' : ℕ)
+  · rw [if_pos hj]
+    have h1 : κ.x j ≤ κ.x (j' : ℕ) := hmono hj
+    have h2 : κ.x j ≤ κ.x ((j' : ℕ) + 1) := hmono (by omega)
+    rw [max_eq_left h2, max_eq_left h1, κ.x_succ_of_lt j'.isLt,
+      Nat.add_sub_cancel_left, κ.d_of_lt j'.isLt]
+    have hdvd : ((κ.faces.get j').2 : ℕ) ∣ ((κ.faces.get j').1 : ℕ) :=
+      κ.hdvd _ (κ.faces.get_mem j')
+    have hb : (((κ.faces.get j').2 : ℕ) : ℚ) ≠ 0 := by
+      exact_mod_cast (κ.faces.get j').2.ne_zero
+    simp only [List.get_eq_getElem] at hdvd hb ⊢
+    rw [Nat.cast_mul, Nat.cast_div hdvd hb]
+    field_simp
+  · rw [if_neg hj]
+    have h1 : κ.x ((j' : ℕ) + 1) ≤ κ.x j := hmono (by omega)
+    have h2 : κ.x (j' : ℕ) ≤ κ.x j := hmono (by omega)
+    rw [max_eq_right h1, max_eq_right h2]
+    simp
+
 end LeanUrat.Scaffold

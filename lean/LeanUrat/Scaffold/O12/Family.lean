@@ -70,6 +70,38 @@ theorem GramOver.mono {S T : Set Qq} (hST : S ⊆ T) {f} : GramOver S f → Gram
   | neg _ ha => exact ha.neg
   | subst δ _ ha => exact ha.subst δ
 
+/-- Theorem 2's absorption step (unit II-R2): if every leaf of S lies in ℛ_cyc, then
+everything 𝒢-generated over S lies in ℛ_cyc. Leaf case from `hS`; the remaining cases
+are verbatim the landed `Gram.memRcyc` walk (O12PoleFree.lean: L7(i)–(iii) closure). -/
+theorem GramOver.memRcyc {S : Set Qq} (hS : ∀ g ∈ S, MemRcyc g) {f : Qq}
+    (h : GramOver S f) : MemRcyc f := by
+  induction h with
+  | leaf hf => exact hS _ hf
+  | poly P => exact MovesU.memRcyc_algebraMap P
+  | invS hs => exact MovesU.memRcyc_inv_cycS hs
+  | add _ _ ha hb => exact ha.add hb
+  | mul _ _ ha hb => exact ha.mul hb
+  | neg _ ha => exact ha.neg
+  | subst δ _ ha => exact ha.powSubst δ
+
+/-- Finite sums of 𝒢-generated elements are 𝒢-generated (unit II-R3; brief §2.3(iv):
+the 0/1 aggregated verdict sums). Empty sum is the polynomial 0. -/
+theorem GramOver.finsetSum {S} {ι : Type*} (t : Finset ι) (F : ι → Qq)
+    (h : ∀ i ∈ t, GramOver S (F i)) : GramOver S (∑ i ∈ t, F i) := by
+  refine Finset.sum_induction F (GramOver S) (fun a b ha hb => ha.add hb) ?_ h
+  simpa using GramOver.poly (S := S) 0
+
+/-- List products of 𝒢-generated elements are 𝒢-generated (unit II-R3). Empty
+product is the polynomial 1. -/
+theorem GramOver.listProd {S} (l : List Qq) (h : ∀ f ∈ l, GramOver S f) :
+    GramOver S l.prod := by
+  induction l with
+  | nil => simpa using GramOver.poly (S := S) 1
+  | cons a l ih =>
+    rw [List.prod_cons]
+    exact (h a List.mem_cons_self).mul
+      (ih fun f hf => h f (List.mem_cons_of_mem _ hf))
+
 /-- The β-legs available to block e: β_{e′}(σ′) for e′ < e (base changes are `subst`,
 so δ needs no indexing here — brief §2.3(vi)). -/
 def lowerLegs {n : ℕ} (β : ℕ → MovesU.SplittingType n → Qq) (e : ℕ) : Set Qq :=
