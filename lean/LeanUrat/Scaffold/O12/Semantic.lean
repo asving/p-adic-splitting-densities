@@ -662,13 +662,13 @@ theorem addVal_neg_one_pow {K Γ₀ : Type*} [Field K]
     w ((-1 : K) ^ i) = 0 := by
   rw [w.map_pow, w.map_neg, w.map_one, nsmul_zero]
 
+set_option linter.unusedVariables false in  -- `hintegral` is display-carried (§II-M3 note)
 /-- II-M3 in Mathlib's `AddValuation` language, discrete value group `WithTop ℤ`:
 for monic g = ∏(X − C rⱼ), (i) all roots have valuation > 0 ⟺ the top-down
 coefficients a₁..aₙ (= `g.coeff (n − i)`, i = 1..n) have valuation ≥ 1; (ii) all
 roots have valuation ≥ 1 ⟺ aᵢ has valuation ≥ i. Vieta ties a_i to ±eᵢ(roots);
 II-M1 floors the forward directions, II-M2 collapses the backward ones onto the
 minimal-valuation term, and the ℤ-snap converts strict to next-integer bounds. -/
-set_option linter.unusedVariables false in  -- `hintegral` is display-carried (§II-M3 note)
 theorem addValuation_L1_root_coeff {K : Type*} [Field K]
     (w : AddValuation K (WithTop ℤ))
     (g : Polynomial K) (roots : Fin g.natDegree → K)

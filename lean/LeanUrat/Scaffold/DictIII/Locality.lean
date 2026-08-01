@@ -16,6 +16,7 @@ import Mathlib
 import LeanUrat.Scaffold.DictIII.GDOrder1
 import LeanUrat.MovesC.Defs
 import LeanUrat.Moves.ResVal
+import LeanUrat.HC2.Defs
 
 namespace LeanUrat.Scaffold.DictIII
 
@@ -136,5 +137,90 @@ theorem rloc (σ : Moves.Stage p F) {β : ℤ} {B B' : Polynomial ℤ_[p]}
     exact hr.symm
 
 end RLoc
+
+/-! ## Unit III-T4 — Lemma POS at the corpus `Stage.w` (O-1thr §2.2)
+
+Src: O1thr §2.2 POS (`lean/notes/openmath/O1thr_phaseB_verifybrief.md`,
+verbatim-stable through rev4 per `O1thr_phaseB_attempt_rev3.md`).  The §1.6
+code block carries NO display line for III-T4 (T3/T5 were elided with `…`;
+T4 is absent outright), so the statement is completed from the unit table's
+own display — row III-T4: "Lemma POS at the corpus `Stage.w`
+(w ≥ 0, π-shift, ultrametric ⇒ w(B−B′) ≥ L·E)" — read against the source of
+record, the same completion-ledger convention as III-T5 above:
+
+* O1thr §2.2 asserts the three frame-valuation laws (i) w(B) ≥ 0,
+  (ii) w(p·B) = E + w(B) (E the stretch, = w(p)), (iii) the ultrametric —
+  and the consequence B ≡ B′ (mod p^L) ⟹ w(B − B′) ≥ L·E.  The row displays
+  the laws as the hypotheses of the implication; they are the three named
+  rows below, and the conclusion is the consequence.  Law (iii) is carried
+  VERBATIM as a row even though the consequence proof (exactly the source's:
+  B − B′ = p^L·C with C integral, so w(B − B′) = L·E + w(C) ≥ L·E) consumes
+  only (i)-(ii) — same discipline as `readCeil_pos`'s unconsumed coherence
+  hypothesis, hence the local linter silence.  At corpus consumption sites
+  (ii) is `σ.hwmul` at `Polynomial.C p` (with E := σ.w (C p)) and (iii) is
+  `σ.hwult` — Stage-record laws; (i) is genuinely a row (the corpus `Stage`
+  does not record nonnegativity-on-integral-polynomials; the anticipated
+  `StageCoreL` supply (BP §3.2) carries the tie/parent laws, not (i)).
+* Congruence is rendered coefficientwise in the `Ideal.span {(p : ℤ_[p])}^L`
+  form — the exact form of III-T3's `dev_congr_zp` above and of the §1.6
+  `read_locality` display that consumes this lemma through (†) (III-T6).
+* The guard `B ≠ B'` is the standing corpus side condition (the bare
+  ℤ-valued `Stage.w` is lawful only on nonzero arguments — III-T5's ledger),
+  and (i)-(ii) are likewise quantified over nonzero arguments. -/
+
+section StagePos
+
+variable {F : Type*} [Field F] [Finite F]
+
+set_option linter.unusedVariables false in
+/-- **Unit III-T4 (Lemma POS at the corpus `Stage.w`, O1thr §2.2).**
+w ≥ 0 (`hpos`), π-shift (`hshift`), ultrametric (`hult`) ⇒
+w(B − B′) ≥ L·E for `B ≡ B′ (mod p^L)` coefficientwise. -/
+theorem stage_pos (σ : Moves.Stage p F) (E : ℤ) (L : ℕ)
+    (hpos : ∀ C : Polynomial ℤ_[p], C ≠ 0 → 0 ≤ σ.w C)
+    (hshift : ∀ C : Polynomial ℤ_[p], C ≠ 0 →
+      σ.w (Polynomial.C (p : ℤ_[p]) * C) = E + σ.w C)
+    (hult : ∀ f g : Polynomial ℤ_[p], f ≠ 0 → g ≠ 0 → f + g ≠ 0 →
+      min (σ.w f) (σ.w g) ≤ σ.w (f + g))
+    {B B' : Polynomial ℤ_[p]} (hne : B ≠ B')
+    (hcong : ∀ k, (B - B').coeff k ∈ (Ideal.span {(p : ℤ_[p])}) ^ L) :
+    (L : ℤ) * E ≤ σ.w (B - B') := by
+  have hsub : B - B' ≠ 0 := sub_ne_zero.mpr hne
+  -- coefficientwise congruence ⇒ global division: B − B′ = p^L · D, D integral
+  have hdvd : (Polynomial.C ((p : ℤ_[p]) ^ L)) ∣ (B - B') := by
+    rw [Polynomial.C_dvd_iff_dvd_coeff]
+    intro k
+    have hk := hcong k
+    rwa [Ideal.span_singleton_pow, Ideal.mem_span_singleton] at hk
+  obtain ⟨D, hD⟩ := hdvd
+  have hDne : D ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hD
+    exact hsub hD
+  have hpne : (Polynomial.C (p : ℤ_[p])) ≠ 0 := by
+    simpa using PadicInt.prime_p.ne_zero
+  -- the π-shift iterated: w(p^M · D) = M·E + w(D)
+  have key : ∀ M : ℕ,
+      σ.w ((Polynomial.C (p : ℤ_[p])) ^ M * D) = (M : ℤ) * E + σ.w D := by
+    intro M
+    induction M with
+    | zero => simp
+    | succ M ih =>
+      have h1 : (Polynomial.C (p : ℤ_[p])) ^ M * D ≠ 0 :=
+        mul_ne_zero (pow_ne_zero _ hpne) hDne
+      have h2 : (Polynomial.C (p : ℤ_[p])) ^ (M + 1) * D
+          = Polynomial.C (p : ℤ_[p]) * ((Polynomial.C (p : ℤ_[p])) ^ M * D) := by
+        ring
+      rw [h2, hshift _ h1, ih]
+      push_cast
+      ring
+  have hCpow : (Polynomial.C ((p : ℤ_[p]) ^ L) : Polynomial ℤ_[p])
+      = (Polynomial.C (p : ℤ_[p])) ^ L := map_pow _ _ _
+  rw [hCpow] at hD
+  rw [hD, key L]
+  have := hpos D hDne
+  linarith
+
+end StagePos
 
 end LeanUrat.Scaffold.DictIII
