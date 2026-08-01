@@ -1613,3 +1613,23 @@ edge -> Unit B E1 rescope; (PACK-iv) consumption closed to {18b, E1}),
 events), (CH-COV) 7-site walk CLEAN ((NS-ALL) does not fire; I-2 = {K1,K4}).
 THE GATE: r4 hostile pass (Codex, fresh) launched on the full leaf. ACCEPT
 => Unit B (ROOT r11, twelve rows) + Unit C queued behind the sign-off gate.
+
+## DIVISION FIRST PASSES COMPLETE + 429 THROTTLE + r4 PASS 1 (2026-08-04)
+ALL FIVE launched divisions' first passes done: BP_I 69/72, BP_VI 18/18,
+BP_II 57/74 (waves 0-2 near-perfect incl. the Theorems-2-4+Corollary-D
+checkpoint; waves 3g-4d = 12 units KILLED BY 429 org rate limits, not
+math), BP_III 44/105 (wave 5 = 13 units + ckpt all 429-killed; real blocks
+in W0-W4), BP_IV 69/88 (mop-up architect 429-killed before planning).
+LESSON: 3-4 concurrent division fleets saturate the 3M output-tok/min org
+limit => FLEETS NOW SEQUENTIAL (one division resume at a time; workflow
+resume replays proved units from cache, re-runs only the killed ones).
+D-11 r4 HOSTILE PASS 1: CRITICAL — 3 crit + 3 gap, but the pass VALIDATES
+ROW-Sigma arithmetic, the termination argument (premises granted), and
+M2's (RE)/(PACK-iv) scoping. Criticals w/ displayed repair directions:
+(1) M1(a') ambient-measure overclaim (fix: per-occurrence measure-specific
+reading); (2) (b-EX) misses (O2') re-feed multi-step content (two routes
+displayed: restrict to resummed row terms, or general loop-word prefixes);
+(3)+gaps in the archived report. Report:
+lean/notes/openmath/D11r4_pass1_2026-08-04.md. Repair round dispatched;
+BP_II resume launched (sequential fleet #1); BP_III resume + BP_IV
+architect QUEUED behind it.
