@@ -1339,3 +1339,11 @@ session (acceptance precondition per A-7), owed leaf pass-3s (D-11 r3,
 O-11 r3, CUC P(O-2a r5)/P(O-1thr r4)/P(O5t r3)).
 THE FINAL REPORT to Asvin: FIRES NOW. Reports archived: VC9/VC10 at
 lean/notes/openmath/VC{9,10}_*_report.md.
+
+## r10 LANDED: REVISION 9 (a2ad88a, 2026-08-03)
+All three VC10 advisories closed at sanctioned loci; §1 + §§7-14 byte-
+untouched; ACCEPTANCE STANDING (counter TWO, recorded at header/§3.2/§6/
+footer/§15). O-14a' honestly graded PROVED-UNVERIFIED with new named row
+P(O-14a' r3) (owed: V11/V15 arc display OR one fresh hostile pass).
+OWED-PASS QUEUE now: O-14a' fresh pass, D-11 r3, O-11 r3, CUC P(O-2a r5)/
+P(O-1thr r4)/P(O5t r3) — dispatched as a delegated Codex campaign.
