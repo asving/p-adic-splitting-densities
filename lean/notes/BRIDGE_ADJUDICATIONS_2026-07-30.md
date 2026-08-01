@@ -1978,3 +1978,11 @@ f8c74b5 (those 2 files) + this commit (probes, blueprints, records).
 NEXT: U10 chain-keyed twins of (a′)/(b)/(c) remain OPEN behind the §1.3
 whole-row scope repair (parentSeparated); the (H2) content discharge remains
 H2-U9 ((TRANS-DEEP), gated on B2-FINAL acceptance).
+
+## H2-U10 ARC CLOSED (U10 refuted-as-signed-off -> U10b interior repair, c530898)
+First exercise of the standing authority, textbook: the signed-off form
+DID NOT LAND (compiled F-4 refutation); the consumer-checked interior
+guard DID, with a mandatory compiled interior witness (actual slope, ∃!
+realized) + guard-excludes-F-4 lemma + honest pricing (row = citation
+structure; (FRESH) content stays at (TRANS-DEEP)/U9). Full build + AxChk
+green; Codex diff CONFIRMED 7/7. H2 wave-3: U10 DONE; U9 waits on B2-FINAL.
