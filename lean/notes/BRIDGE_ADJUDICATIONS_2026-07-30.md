@@ -1520,3 +1520,13 @@ AnchorN2Drainage (tendsto), 4 value-gate anchors (1/4, 1/9, 1/3, sigma-sep),
 census rows live (zero non-Lean-core). BP_VI REVISION 3 record carries the
 old->new statement repairs w/ compiler evidence (sanctioned: all six old
 statements compiler-refuted). Corpus-bridge division DONE.
+
+## R11 DESIGN REVIEW ROUND 2: DESIGN-REVISE, 3 CRITICAL (2026-08-04)
+Converging (5->3; C1/C2/C5 progress acknowledged). Survivors, all evidence-
+debts: (1) (K1-NSF) (w3)/(w4) still ASSERT the K1/K4-keyed-to-decided-
+corpus bridge — need the displayed definition/implication; (2) "row Σ=1
+consumed nowhere" needs an EXHAUSTIVE line-cited K1/K2/K4 dependency trace,
+not design conclusions; (3) (O-5)'s union misses terminating exit strata
+(no child slot) — route does not close. +2 advisories (M2's leftover
+"equivalently"; E1 branch out of sync with Unit-B gate). Report:
+lean/notes/openmath/R11D2_review_2026-08-04.md. Round-3 revision dispatched.

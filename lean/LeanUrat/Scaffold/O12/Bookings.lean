@@ -25,6 +25,8 @@ the wave-0c statement layer.
 
 namespace LeanUrat.Scaffold
 
+open LeanUrat.MovesU (detO1 detO2 detO3)
+
 /-- The four kernel organizations (brief §2.4). `O2r` = (O2′). -/
 inductive Booking | O1 | O2 | O2r | O3
   deriving DecidableEq, Fintype
@@ -53,6 +55,151 @@ theorem Booking.kernel_one (b : Booking) : b.kernel 1 = 0 := by        -- K₁ =
 
 theorem Booking.Phi_one (b : Booking) : b.Phi 1 = 1 := by              -- Φ₁ = 1
   simp [Booking.Phi, Booking.kernel_one]
+
+/-! Unit II-B3: Theorem 1(2), displayed forms — the four Φ's are the landed dets.
+Mechanism: `1 − q^{1−E} = (q^{E−1} − 1)/q^{E−1}`, `1 − q^{−E} = (q^E − 1)/q^E`,
+`1 − (q−1)/(q^E−1) = (q^E − q)/(q^E − 1) = q(q^{E−1}−1)/(q^E−1)`. -/
+
+/-- Theorem 1(2), (O1): `Φ^{(O1)} = 1 − q^{1−E} = (q^{E−1} − 1)/q^{E−1}`. -/
+theorem Phi_O1_eq {e : ℕ} (he : 2 ≤ e) : Booking.O1.Phi e = detO1 (blockE e - 1) := by
+  have hE3 : 3 ≤ blockE e := blockE_ge_three he
+  have hpow1 : qX ^ (blockE e - 1) ≠ 0 := qX_pow_ne_zero _
+  -- split off one factor of q: `q^E = q · q^{E−1}`.
+  have hsplit : qX ^ blockE e = qX * qX ^ (blockE e - 1) := by
+    rw [← pow_succ']
+    congr 1
+    omega
+  have hker : Booking.O1.kernel e = qX * (qX ^ blockE e)⁻¹ := by
+    unfold Booking.kernel
+    rw [if_neg (show ¬ e ≤ 1 by omega)]
+  have hdet : detO1 (blockE e - 1)
+      = (qX ^ (blockE e - 1) - 1) * (qX ^ (blockE e - 1))⁻¹ := by
+    rw [detO1, div_eq_mul_inv]
+    simp only [map_sub, map_pow, map_one]
+    rfl
+  rw [Booking.Phi, hker, hdet, hsplit, mul_inv, ← mul_assoc,
+    mul_inv_cancel₀ qX_ne_zero, one_mul, sub_mul, mul_inv_cancel₀ hpow1, one_mul]
+
+/-- Theorem 1(2), (O2): `Φ^{(O2)} = 1 − q^{−E} = (q^E − 1)/q^E`. -/
+theorem Phi_O2_eq {e : ℕ} (he : 2 ≤ e) : Booking.O2.Phi e = detO2 (blockE e) := by
+  have hpow : qX ^ blockE e ≠ 0 := qX_pow_ne_zero _
+  have hker : Booking.O2.kernel e = (qX ^ blockE e)⁻¹ := by
+    unfold Booking.kernel
+    rw [if_neg (show ¬ e ≤ 1 by omega)]
+  have hdet : detO2 (blockE e) = (qX ^ blockE e - 1) * (qX ^ blockE e)⁻¹ := by
+    rw [detO2, detO1, div_eq_mul_inv]
+    simp only [map_sub, map_pow, map_one]
+    rfl
+  rw [Booking.Phi, hker, hdet, sub_mul, mul_inv_cancel₀ hpow, one_mul]
+
+/-- Theorem 1(2), (O2′): same kernel as (O2), same landed det. -/
+theorem Phi_O2r_eq {e : ℕ} (he : 2 ≤ e) : Booking.O2r.Phi e = detO2 (blockE e) := by
+  have hpow : qX ^ blockE e ≠ 0 := qX_pow_ne_zero _
+  have hker : Booking.O2r.kernel e = (qX ^ blockE e)⁻¹ := by
+    unfold Booking.kernel
+    rw [if_neg (show ¬ e ≤ 1 by omega)]
+  have hdet : detO2 (blockE e) = (qX ^ blockE e - 1) * (qX ^ blockE e)⁻¹ := by
+    rw [detO2, detO1, div_eq_mul_inv]
+    simp only [map_sub, map_pow, map_one]
+    rfl
+  rw [Booking.Phi, hker, hdet, sub_mul, mul_inv_cancel₀ hpow, one_mul]
+
+/-- Theorem 1(2), (O3): `Φ^{(O3)} = 1 − (q−1)/(q^E−1) = (q^E − q)/(q^E − 1)`. -/
+theorem Phi_O3_eq {e : ℕ} (he : 2 ≤ e) : Booking.O3.Phi e = detO3 (blockE e) := by
+  have hE3 : 3 ≤ blockE e := blockE_ge_three he
+  -- `q^E − 1 ≠ 0`: it is the image of the 𝒮-member `X^E − 1` (E ≥ 1).
+  have hsubne : qX ^ blockE e - 1 ≠ 0 := by
+    have himg : qX ^ blockE e - 1
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e - 1) := by
+      simp [qX, map_sub, map_pow]
+    rw [himg]
+    exact RatFunc.algebraMap_ne_zero
+      (MovesU.cycS_ne_zero (MovesU.Xpow_sub_one_mem_cycS (by omega)))
+  -- split off one factor of q: `q^E = q · q^{E−1}`.
+  have hsplit : qX ^ blockE e = qX * qX ^ (blockE e - 1) := by
+    rw [← pow_succ']
+    congr 1
+    omega
+  have hker : Booking.O3.kernel e = (qX - 1) * (qX ^ blockE e - 1)⁻¹ := by
+    unfold Booking.kernel
+    rw [if_neg (show ¬ e ≤ 1 by omega)]
+  have hdet : detO3 (blockE e)
+      = qX * (qX ^ (blockE e - 1) - 1) * (qX ^ blockE e - 1)⁻¹ := by
+    rw [detO3, div_eq_mul_inv]
+    simp only [map_mul, map_sub, map_pow, map_one]
+    rfl
+  -- the reduced numerator: `q·(q^{E−1} − 1) = q^E − q`.
+  have hnum : qX * (qX ^ (blockE e - 1) - 1) = qX ^ blockE e - qX := by
+    rw [hsplit]
+    ring
+  -- fold `1 − (q−1)·(q^E−1)⁻¹` into a single ratio over `q^E − 1`.
+  have key : (1 : Qq) - (qX - 1) * (qX ^ blockE e - 1)⁻¹
+      = (qX ^ blockE e - qX) * (qX ^ blockE e - 1)⁻¹ := by
+    have hc : (qX ^ blockE e - 1) * (qX ^ blockE e - 1)⁻¹ = 1 := mul_inv_cancel₀ hsubne
+    linear_combination -hc
+  rw [Booking.Phi, hker, key, hdet, hnum]
+
+/-! Unit II-B4: gcd(X^a − 1, X^b − 1) = X^gcd(a,b) − 1 in ℚ[X]. Euclidean
+induction on (a, b): the division step is exact — for a > 0,
+`(X^b − 1) % (X^a − 1) = X^(b % a) − 1` with quotient `Σ_{i < b/a} X^(a·i + b%a)`
+(telescoping), so the polynomial Euclidean algorithm tracks `Nat.gcd`'s recursion
+literally and the stated equality holds on the nose (the representative
+`EuclideanDomain.gcd` computes IS `X^gcd(a,b) − 1`; both sides are monic-or-zero,
+so no unit fudge survives). -/
+
+/-- Division step: for `a > 0`, the Euclidean remainder of `X^b − 1` by `X^a − 1`
+in ℚ[X] is exactly `X^(b % a) − 1`. -/
+private lemma X_pow_sub_one_mod (a b : ℕ) (ha : 0 < a) :
+    (Polynomial.X ^ b - 1 : Polynomial ℚ) % (Polynomial.X ^ a - 1)
+      = Polynomial.X ^ (b % a) - 1 := by
+  have hmonic : (Polynomial.X ^ a - 1 : Polynomial ℚ).Monic := by
+    simpa using Polynomial.monic_X_pow_sub_C (1 : ℚ) ha.ne'
+  rw [← Polynomial.modByMonic_eq_mod _ hmonic]
+  have hdega : (Polynomial.X ^ a - 1 : Polynomial ℚ).degree = a := by
+    simpa using Polynomial.degree_X_pow_sub_C ha (1 : ℚ)
+  have hdeg : (Polynomial.X ^ (b % a) - 1 : Polynomial ℚ).degree
+      < (Polynomial.X ^ a - 1 : Polynomial ℚ).degree := by
+    rw [hdega]
+    refine lt_of_le_of_lt (Polynomial.degree_sub_le _ _) ?_
+    rw [Polynomial.degree_X_pow, Polynomial.degree_one]
+    exact max_lt (by exact_mod_cast Nat.mod_lt b ha) (by exact_mod_cast ha)
+  -- telescoping: (X^a − 1) · Σ_{i<b/a} X^(a·i + b%a) = X^b − X^(b%a)
+  have key : (Polynomial.X ^ a - 1 : Polynomial ℚ)
+        * ∑ i ∈ Finset.range (b / a), Polynomial.X ^ (a * i + b % a)
+      = Polynomial.X ^ b - Polynomial.X ^ (b % a) := by
+    rw [Finset.mul_sum]
+    have htele := Finset.sum_range_sub
+      (fun i => (Polynomial.X : Polynomial ℚ) ^ (a * i + b % a)) (b / a)
+    calc ∑ i ∈ Finset.range (b / a),
+            (Polynomial.X ^ a - 1 : Polynomial ℚ) * Polynomial.X ^ (a * i + b % a)
+        = ∑ i ∈ Finset.range (b / a),
+            ((Polynomial.X : Polynomial ℚ) ^ (a * (i + 1) + b % a)
+              - Polynomial.X ^ (a * i + b % a)) := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          rw [sub_mul, one_mul, ← pow_add]
+          ring_nf
+      _ = Polynomial.X ^ (a * (b / a) + b % a) - Polynomial.X ^ (a * 0 + b % a) := htele
+      _ = Polynomial.X ^ b - Polynomial.X ^ (b % a) := by
+          rw [Nat.mul_zero, Nat.zero_add, Nat.div_add_mod b a]
+  have hsum : (Polynomial.X ^ (b % a) - 1 : Polynomial ℚ)
+      + (Polynomial.X ^ a - 1)
+        * ∑ i ∈ Finset.range (b / a), Polynomial.X ^ (a * i + b % a)
+      = Polynomial.X ^ b - 1 := by
+    rw [key]; ring
+  exact (Polynomial.div_modByMonic_unique _ _ hmonic ⟨hsum, hdeg⟩).2
+
+/-- gcd(X^a − 1, X^b − 1) = X^gcd(a,b) − 1 in ℚ[X] (Theorem 1(2)'s gcd input).
+[BP_II unit II-B4] -/
+theorem gcd_X_pow_sub_one (a b : ℕ) :
+    EuclideanDomain.gcd (Polynomial.X ^ a - 1) (Polynomial.X ^ b - 1)
+      = (Polynomial.X ^ Nat.gcd a b - 1 : Polynomial ℚ)  -- up to unit normalization
+    := by
+  induction a using Nat.strong_induction_on generalizing b with
+  | _ a ih =>
+    rcases Nat.eq_zero_or_pos a with rfl | ha
+    · simp
+    · rw [EuclideanDomain.gcd_val, X_pow_sub_one_mod a b ha,
+        ih (b % a) (Nat.mod_lt b ha) a, ← Nat.gcd_rec]
 
 /-- Theorem 1(2), (O3) reduced numerator: q^E − q = q(q^{E−1}−1), and after the
 gcd = q−1 division the numerator is q·(1 + q + ⋯ + q^{E−2}). [BP_II unit II-B5] -/

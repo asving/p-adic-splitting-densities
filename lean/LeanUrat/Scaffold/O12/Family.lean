@@ -29,6 +29,10 @@ block structure, consumed as structure only).
 grammar proof), and `AllocDatum` (definition half of II-R9). The `gramOver_*`
 theorems of those units land with II-R7/R9.
 
+**Unit II-R5** adds `beta_memRcyc`, Theorem 2's R-induction engine: strong induction
+on the block index e, base blocks from `hbase`, step blocks absorbed through
+`GramOver.memRcyc` over the lower legs and the ℛ-unit division `hu`.
+
 **Unit II-R6** adds `gram_massPatt` (family (ii) is 𝒢-generated: the (g1)·(g2)·(g2)
 product).
 
@@ -125,6 +129,29 @@ structure BlockPresentation (n : ℕ) (β : ℕ → MovesU.SplittingType n → Q
   hu      : u ≠ 0 ∧ MemRcyc u ∧ MemRcyc u⁻¹
   hsolve  : ∀ σ, β e σ = u⁻¹ * trow σ
 
+/-- **Theorem 2's R-induction engine**: base blocks in ℛ + every block presented over
+its lower legs ⟹ every solved entry lies in ℛ. Strong induction on e. [BP_II unit
+II-R5; brief §5 Thm2 proof, (vii)] At e ≤ 1 `hbase` fires; at 2 ≤ e the block's rows
+are 𝒢-generated over the lower legs — all in ℛ by the induction hypothesis, absorbed
+by `GramOver.memRcyc` — and β e σ = u⁻¹·t_σ lands in ℛ since u⁻¹ ∈ ℛ (`hu`). -/
+theorem beta_memRcyc {n : ℕ} {β : ℕ → MovesU.SplittingType n → Qq}
+    (hbase : ∀ e ≤ 1, ∀ σ, MemRcyc (β e σ))
+    (hstep : ∀ e, 2 ≤ e → BlockPresentation n β e) :
+    ∀ e σ, MemRcyc (β e σ) := by
+  intro e
+  induction e using Nat.strong_induction_on with
+  | _ e ih =>
+    intro σ
+    rcases Nat.lt_or_ge e 2 with he | he
+    · exact hbase e (Nat.lt_succ_iff.mp he) σ
+    · have B := hstep e he
+      have ht : MemRcyc (B.trow σ) := by
+        refine GramOver.memRcyc ?_ (B.htrow σ)
+        rintro g ⟨e', he', σ', rfl⟩
+        exact ih e' he' σ'
+      rw [B.hsolve σ]
+      exact B.hu.2.2.mul ht
+
 /-- Family (ii): divisor-pattern mass m(π) = q^{−(E−e)}·N_π(q)·q^{−e}.
 (Definition half of unit II-R6.) -/
 noncomputable def massPatt (e : ℕ) (Nπ : Polynomial ℚ) : Qq :=
@@ -150,6 +177,34 @@ noncomputable def massPoly (e : ℕ) (enum : Finset (ℕ × ℕ))
   (shape.map (fun z =>
     algebraMap (Polynomial ℚ) Qq z.1 *
       (qX ^ (z.2 : ℕ) - qX ^ ((z.2 : ℕ) - 1))⁻¹)).prod
+
+open scoped Classical in
+/-- Family (iv): the verdict row of a family F with hand-off list H(F) and composition
+datum comp — a 0/1-coefficient finite sum of products of m(F) with base-changed lower
+β-legs (brief §2.3(iv) display). μ < e per L4 (units II-B12/II-P8 supply the bound).
+[BP_II unit II-R8] -/
+noncomputable def rowOf {n : ℕ} (β : ℕ → MovesU.SplittingType n → Qq)
+    (m : Qq) (H : List (ℕ × ℕ+))
+    (comp : (∀ i : Fin H.length, MovesU.SplittingType n) → MovesU.SplittingType n)
+    (σ : MovesU.SplittingType n) : Qq :=
+  ∑ τ ∈ Finset.univ.filter (fun τ => comp τ = σ),
+    m * ∏ i, MovesS.powSubst (H.get i).2 (β (H.get i).1 (τ i))
+
+/-- The verdict row is 𝒢-generated over the lower legs (unit II-R8; brief §2.3(iv)):
+outer sum by `finsetSum` (II-R3), each summand `m · ∏ᵢ powSubst δᵢ (β μᵢ τᵢ)` by
+`.mul` of the leafless mass (`Gram.gramOver`) with a product of `subst`-wrapped
+`leaf`s — each leg `β μᵢ τᵢ` lands in `lowerLegs β e` since `hH` gives μᵢ < e. -/
+theorem gramOver_rowOf {n : ℕ} {β : ℕ → MovesU.SplittingType n → Qq} {e : ℕ}
+    {m : Qq} (hm : Gram m) (H : List (ℕ × ℕ+)) (hH : ∀ x ∈ H, x.1 < e)
+    (comp : (∀ i : Fin H.length, MovesU.SplittingType n) → MovesU.SplittingType n)
+    (σ : MovesU.SplittingType n) :
+    GramOver (lowerLegs β e) (rowOf β m H comp σ) := by
+  refine GramOver.finsetSum _ _ fun τ _ => (Gram.gramOver hm).mul ?_
+  refine Finset.prod_induction _ (GramOver (lowerLegs β e))
+    (fun a b ha hb => ha.mul hb)
+    (by simpa using GramOver.poly (S := lowerLegs β e) 1) fun i _ => ?_
+  exact GramOver.subst _
+    (GramOver.leaf ⟨(H.get i).1, hH _ (H.get_mem i), τ i, rfl⟩)
 
 /-- Family (iv), (O2) allocation adjustment datum: an allocation α : verdicts → ℚ[q]
 with the mass identity Σ_σ α(σ) = q−1 as the value-side datum (Theorem 2 needs only
