@@ -2093,3 +2093,12 @@ row statements, canonical SV emission, compiled gates, TRM design,
 engine-conformance proofs, closers); 2 shortfall units -> follow-up
 cycle. Also unblocks the deferred BP_III wave-5 mop-up. EIGHT of nine
 fleets done. Queue -> H1 (the frontier; wave-0 pre-pulled at 1a977e5).
+
+## ALL NINE DISCHARGE FLEETS COMPLETE (2026-08-05)
+H1 7/11 closes the sequence (its 3 blocks = designed gates on math leaves
+A-M2/B-M1 + falsifier N-2 — the frontier's residual is MATH, not Lean).
+Campaign tally: H9 1/1, H5 16/19, H2 9/14, H4 7/11, H3 12/18, H8 11/11,
+H7 6/6, H6 23/25, H1 7/11 = 92/116 units + 4 MECH shared units. CLOSURE
+MODE: (1) (K-CUT) hostile pass (row-retirement candidate #2); (2) the
+math-leaf campaign (H1 A-M2/GRB first — feeds 5 rows per synthesis F2);
+(3) mop-ups (H5/H2/H3/H6 + BP_III w5 + BP_II); (4) VC cadence.
