@@ -1867,3 +1867,12 @@ inexpressibility (ADM-U0 adjudication) + 88 CLASS-d countermodels at r=2
 expulsion). PROVER FAN-OUT QUEUE (sequential, post BP_IV mop-up):
 H9 -> H5 -> H2 -> H4 -> H3 -> H8 -> H7 -> H6 -> H1 (H1 last: largest +
 gated units + owed fresh re-review at wave-0 dispatch).
+
+## BP_IV MOP-UP ROUND 2 COMPLETE (1fbf3b3, 2026-08-05)
+C5-ctor PROVED (anchored march, Census->SeriesTie->DensityTie green);
+K7f PROVED (concrete mult-map site, one flagged datum boundary); T7-core
+PARTIAL (sorry-free cluster-entry reduction layer landed; the core =
+chartered dedicated campaign, 1 documented sorry); M7 BLOCKED on BP_III
+ThmERow/D15Row (real cross-division dep — joins the deferred BP_III
+mop-up). SCAFFOLD-WIDE: 5 true code sorries total; build green 8750 jobs.
+BP_IV division CLOSED. Fleet slot -> HDISCHARGE fan-out #1: H9.
