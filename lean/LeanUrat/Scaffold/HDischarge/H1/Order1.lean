@@ -667,10 +667,16 @@ theorem key1SiteBlock_base (ν : Node p F) (σ' : Stage p F) (M : GenuineStageMo
 
 
 /-! # H1-U5 (`kpBlock_base`) — the base-stage KPBlock construction (prover H1-U5,
-2026-08-01). Sections A–F below are the U5 build; all helpers are `private` and
-`u5_`-prefixed (unit-local), so the public surface added by this unit is
-`kpBlock_base` alone. See this file's header for the math route and the probe-first
-base binder record. -/
+2026-08-01). Sections A–F below are the U5 build; helpers are `u5_`-prefixed and
+were originally all `private` (public surface = `kpBlock_base` alone). H1-U8
+DE-PRIVATIZE NOTE (prover H1-U8, 2026-08-01; the SYN2-S1 de-privatize precedent,
+named-decl scope only): the eight stage/model-GENERIC helpers `u5_gr_domain`,
+`u5_ring_zero_eq`, `u5_of_zero_ring`, `u5_dvd_of_dvd_components`,
+`u5_mul_component_top`, `u5_key_dvd_components`, `u5_piece_repr`,
+`u5_initialForm_dvd_iff` lost their `private` (visibility ONLY — statements and
+proofs byte-identical) so `TowerStep.lean` (H1-U8) can consume them instead of
+re-deriving ~400 lines; every other helper stays `private`. See this file's header
+for the math route and the probe-first base binder record. -/
 
 open LeanUrat.MovesGr.SideVal
 
@@ -744,7 +750,7 @@ private lemma u5_of_add_of (γ : ℤ) (a b : S.grPiece γ) :
   (u5_ring_add_eq S Rg _ _).trans ((DirectSum.of (fun δ => S.grPiece δ) γ).map_add a b).symm
 
 /-- `of γ 0` is the RING zero. -/
-private lemma u5_of_zero_ring (γ : ℤ) :
+lemma u5_of_zero_ring (γ : ℤ) :
     DirectSum.of (fun δ => S.grPiece δ) γ (0 : S.grPiece γ)
       = (letI := Rg.ring; (0 : S.Gr)) := by
   letI := Rg.ring
@@ -753,7 +759,7 @@ private lemma u5_of_zero_ring (γ : ℤ) :
   exact add_right_cancel (h1.trans (zero_add _).symm)
 
 /-- the ring zero IS the DirectSum zero. -/
-private lemma u5_ring_zero_eq :
+lemma u5_ring_zero_eq :
     (letI := Rg.ring; (0 : S.Gr)) = 0 :=
   (u5_of_zero_ring S Rg 0).symm.trans ((DirectSum.of (fun δ => S.grPiece δ) 0).map_zero)
 
@@ -821,7 +827,7 @@ private lemma u5_mul_of_component (γ δ i : ℤ) (hi : i ≤ γ) (c : S.grPiece
 
 /-- top-component formula: for γ-bounded `x` and δ-bounded `y`,
 `(x * y) (γ+δ) = pmul γ δ (x γ) (y δ)`. -/
-private lemma u5_mul_component_top (γ δ : ℤ) (x y : S.Gr)
+lemma u5_mul_component_top (γ δ : ℤ) (x y : S.Gr)
     (hxb : ∀ i, γ < i → x i = 0) (hyb : ∀ j, δ < j → y j = 0) :
     (letI := Rg.ring; x * y) (γ + δ) = S.pmul γ δ (x γ) (y δ) := by
   letI := Rg.ring
@@ -865,7 +871,7 @@ private lemma u5_of_mul_apply_shift (i γ : ℤ) (c₀ : S.grPiece i) (x : S.Gr)
 
 /-- if `d` ring-divides every `of`-component of `x`, it divides `x` (the
 "homogeneous ideal, backward" face). -/
-private lemma u5_dvd_of_dvd_components (d x : S.Gr)
+lemma u5_dvd_of_dvd_components (d x : S.Gr)
     (h : ∀ γ : ℤ, (letI := Rg.ring; d ∣ DirectSum.of (fun δ => S.grPiece δ) γ (x γ))) :
     letI := Rg.ring; d ∣ x := by
   classical
@@ -897,7 +903,7 @@ private lemma u5_initialForm_pin (u : Polynomial ℤ_[p]) (γ : ℤ)
   rfl
 
 /-- piece surjectivity: every nonzero homogeneous class IS an initial form. -/
-private lemma u5_piece_repr {γ : ℤ} {c : S.grPiece γ} (hc : c ≠ 0) :
+lemma u5_piece_repr {γ : ℤ} {c : S.grPiece γ} (hc : c ≠ 0) :
     ∃ u : Polynomial ℤ_[p], u ≠ 0 ∧ S.w u = (γ : WithTop ℤ) ∧
       DirectSum.of (fun δ => S.grPiece δ) γ c = S.initialForm u := by
   obtain ⟨u, hu⟩ := Submodule.Quotient.mk_surjective (S.gtIn γ) c
@@ -921,7 +927,7 @@ section Model
 variable (σ : Stage p F) (M : GenuineStageModel σ)
 
 /-- `gr_w(A)` is a domain at any genuine stage model. -/
-private lemma u5_gr_domain : letI := M.Rg.ring; IsDomain M.S.Gr := by
+lemma u5_gr_domain : letI := M.Rg.ring; IsDomain M.S.Gr := by
   refine (L1_gr_domain_iff_val M.S M.Rg).mpr ?_
   intro f g hf hg
   rw [M.hSw _ (mul_ne_zero hf hg), M.hSw f hf, M.hSw g hg, σ.hwmul f g hf hg,
@@ -995,7 +1001,7 @@ variable (σ : Stage p F) (M : GenuineStageModel σ)
 
 /-- key multiples have key-divisible `of`-components (the "homogeneous ideal,
 forward" face at the key). -/
-private lemma u5_key_dvd_components (x : M.S.Gr)
+lemma u5_key_dvd_components (x : M.S.Gr)
     (hdvd : letI := M.Rg.ring; M.S.initialForm σ.Φ ∣ x) :
     ∀ κ : ℤ, letI := M.Rg.ring;
       M.S.initialForm σ.Φ ∣ DirectSum.of (fun δ => M.S.grPiece δ) κ (x κ) := by
@@ -1015,7 +1021,7 @@ private lemma u5_key_dvd_components (x : M.S.Gr)
 
 /-- **(DIV)** `in(Φ) ∣ in(f)` in `gr` iff the residual pair of `f` factors through
 the key pair `(T s, h)` realizably. -/
-private lemma u5_initialForm_dvd_iff (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
+lemma u5_initialForm_dvd_iff (f : Polynomial ℤ_[p]) (hf : f ≠ 0) :
     (letI := M.Rg.ring; M.S.initialForm σ.Φ ∣ M.S.initialForm f)
       ↔ ∃ g : Polynomial ℤ_[p], g ≠ 0 ∧
           σ.R f = LaurentPolynomial.T σ.s * σ.R g ∧ σ.w f = (σ.h : ℤ) + σ.w g := by
