@@ -2115,3 +2115,10 @@ TR-3-ORD proved convention-free); OP-A2 carry clause CLOSED at order 2;
 order-1 reproduction gate PASSED. (H1)(a) residue = TR-3'-GEN + D-ITER
 + N-1 gate debt + the 2-clean bar. Hostile pass 1 dispatched.
 Leaf: lean/notes/openmath/GRB_ORDER2_2026-08-05.md (d904bf9).
+
+## K-CUT DISPLAY REPAIR + 2 CONTENT UNITS SPECCED (2026-08-05)
+All 12 KCUT-pass findings repaired display-side (R2RootSync SC/SD/SF rewritten,
+KCutReduce docstrings downgraded, blueprint corrected + S8 record); wave-7 units
+H8-C2 (K-CUT-m-factor) / H8-C3 (K-CUT-K1-tie) specced, statements compile-probed
+green (proofs NOT attempted). Status: faithful at declaration level; discharge
+awaits C2+C3+clean re-pass. Owed ROOT sync = SPEC only (r-workflow owns ROOT).

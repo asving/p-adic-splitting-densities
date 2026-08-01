@@ -24,7 +24,8 @@ This file IS the unit's E-phase, per the compile-probe rule — exactly as H8-B3
 shipped its own.  Shape per the C-5 fix: GIVEN H8-B3's landed extraction AND
 the TYPED re-keys of the three seam fields (binder-listed data/hypotheses, NOT
 opaque Props), CONSTRUCT the `CutData` instance and conclude
-`seriesSum_cut_conv`'s regroup — the form Step 18's K1 consumes.
+`seriesSum_cut_conv`'s regroup — the ABSTRACT CONVOLUTION FORM of Step 18's
+K1 (the exact instantiated form is open unit H8-C3; KCUT pass finding 7).
 
 ## What is and is NOT claimed (the honesty display)
 
@@ -34,25 +35,40 @@ opaque Props), CONSTRUCT the `CutData` instance and conclude
   ((K-CUT-s): CTS-M(i)/(iii)/CL-13; (K-CUT-g): D-14 + CU-3 + REL.2, the
   charge-(vi) arc; (K-CUT-m): TREE-EXP + [2r]/CL-8 + O-1/O-3), never this
   unit's.  NOTHING here discharges a seam field.
-* (K-CUT-s) enters at its per-node-decidability FACE only (`supplyDec`) plus
-  the shape/entrance supply rows (`ShL`…`ent_mem`); the full
-  decidable-from-`CellData` characterization of `E` stays with its owners —
-  this field UNDER-types (K-CUT-s) deliberately and is NOT its discharge.
+* (K-CUT-s): `supplyDec` is HONESTLY DISPLAYED as CLASSICALLY VACUOUS
+  (`Classical.dec` satisfies it for EVERY predicate) and CONSUMED BY NO PROOF
+  in this file — a registration row, NOT a consuming face of (K-CUT-s)
+  [KCUT pass finding 1]; the shape/entrance supply rows (`ShL`…`ent_mem`) are
+  where the family data actually enters.  The full decidable-from-`CellData`
+  characterization of `E` stays wholly with its owners.
+* NON-CONSUMPTION HONESTY [KCUT pass finding 2]: `kcut_reduce` does NOT
+  consume H8-B3's `cutOf`/`cut_injective` — the consumer-side forward map is
+  RE-ASSUMED (`shIdx`/`cutBlk`) with conformance rows (`shIdx_eq`/
+  `cutBlk_car`), and consumer-level injectivity rides the ASSUMED
+  `graft_cut`.  (H8-B3's proved forward half constrains these rows through
+  the conformance equations but does not supply them.)
 * (K-CUT-g) = `graft`/`graft_cut`/`cut_graft`: the graft function + the two
   inverse laws (the `cut` Equiv's missing half — H8-B3 proved the forward map
   and its injectivity; surjectivity-with-inverse is exactly graft
   completeness, G-2's open channel).
-* (K-CUT-m) = `mass_eq` (+ the `W`/`weight` data rows): the measured-mass
-  equations against the cut factors.
-* The realization row `real` (the [3t] `Fb.Tree σ` ↦ MovesT `VTree` tie) and
-  the verdict keying `verdict_key` ride the same seam (TREE-N/[3t] territory);
-  the countability rows `ctblS`/`ctblD` are the transported clause (H8-B3's
-  header honesty note: NOT a type-level fact — `cutFamily_countable` is the
-  transport at the concrete carriers, realizability countability is seam
-  territory).
+* (K-CUT-m) = `mass_eq` (+ the `W`/`weight` data rows): the AGGREGATE product
+  identity ONLY — `W`/`weight` are otherwise arbitrary functions, and
+  compensating factors can satisfy the aggregate equation [KCUT pass finding
+  4].  The FACTORWISE measured law is OPEN unit H8-C2 (K-CUT-m-factor),
+  blueprint §4 Wave 7.
+* The realization row `real`, the verdict map `vOf`, and the keying
+  `verdict_key` are UNCONDITIONED assumptions — no realizability,
+  completeness, canonicity, faithfulness, or injectivity condition is imposed
+  [KCUT pass finding 5]; their faithful form rides the TREE-N/[3t] seam.
+  The countability rows `ctblS`/`ctblD` are DIRECT assumptions (the
+  transported clause; H8-B3's `cutFamily_countable` transports countability
+  of a SOURCE family, it does not supply these rows).
 * The conclusion is `seriesSum_cut_conv`'s regroup verbatim at the constructed
-  instance — the shallow convolution of block totals.  The onward tie to
-  `SolveSeam.series_tie`'s `Rval` (the solve-side value) is BP_V/M04-side
+  instance — the ABSTRACT CONVOLUTION FORM of Step 18's K1, NOT its exact
+  instantiated form [KCUT pass finding 7]: no (e_i, τ_i, δ_i) entrance lists,
+  no transported pool q^δ, no grammar block totals appear; that exact-form
+  tie is OPEN unit H8-C3 (K-CUT-K1-tie), blueprint §4 Wave 7.  The onward tie
+  to `SolveSeam.series_tie`'s `Rval` (the solve-side value) is BP_V/M04-side
   work, NOT landed here.  The one-line `RootHyps` `h8_kcut` extension is
   ORCHESTRATOR-owned (shared edit across the nine leads) — flagged, not
   landed.
@@ -83,9 +99,11 @@ concrete extraction over `VTree p F` at the SAME prime `p`. -/
 structure KCutReKeys {n p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
     {X : LeanUrat.MovesU.ClassifierSpec n p}
     (Fb : LeanUrat.MovesU.FiberSeries n p X) (E : History p F → Prop) where
-  /-- (K-CUT-s), per-node-decidability FACE only (NOT the full
-  decidable-from-`CellData` characterization — that stays with the owner rows
-  CTS-M(i)/(iii)/CL-13; this row deliberately under-types the field). -/
+  /-- (K-CUT-s) REGISTRATION ROW ONLY [KCUT pass finding 1]: CLASSICALLY
+  VACUOUS (`Classical.dec` satisfies it for every `E`) and CONSUMED BY NO
+  PROOF in this file — it does NOT constitute a consuming face of (K-CUT-s),
+  whose cell-data supply stays wholly with the owner rows
+  CTS-M(i)/(iii)/CL-13. -/
   supplyDec : ∀ H : History p F, Decidable (E H)
   /-- the [3t] ↦ MovesT realization: each abstract type-σ tree realizes as a
   concrete `VTree` (TREE-N/[3t] seam territory). -/
@@ -245,14 +263,20 @@ theorem toCutData_blockTotal (R : KCutReKeys Fb E)
 
 end KCutReKeys
 
-/-- **H8-C1 DISPLAY THEOREM** — the K1 regroup, the exact form Step 18's K1
-consumes: GIVEN the extraction-side re-keys `R` and the binder-listed
-(K-CUT-g)/(K-CUT-m) typed re-keys, the σ fiber series IS the shallow
-convolution of the measured block totals.  Proof: construct the `CutData`
-instance (`KCutReKeys.toCutData`) and fire H8-A3's `seriesSum_cut_conv`.
-RESIDUAL CONDITIONALITY = precisely the displayed binder rows (`R`'s fields +
-`graft`/`graft_cut`/`cut_graft`/`mass_eq`), each an UNPINNED named assumption
-owned per the module docstring's owner map; nothing is discharged here. -/
+/-- **H8-C1 DISPLAY THEOREM** — the K1 regroup in the ABSTRACT CONVOLUTION
+FORM of Step 18's K1 [downgraded at KCUT pass finding 7: the conclusion
+carries no (e_i, τ_i, δ_i) entrance lists, no transported pool q^δ, and no
+grammar block totals — the exact instantiated Step-18 form is OPEN unit
+H8-C3 (K-CUT-K1-tie)]: GIVEN the extraction-side re-keys `R` and the
+binder-listed (K-CUT-g)/(K-CUT-m) typed re-keys, the σ fiber series IS the
+shallow convolution of the ABSTRACT block totals (`W`/`weight` tied only by
+the aggregate `mass_eq`; factorwise law = open H8-C2).  Proof: construct the
+`CutData` instance (`KCutReKeys.toCutData`) and fire H8-A3's
+`seriesSum_cut_conv`.  RESIDUAL CONDITIONALITY = precisely the displayed
+binder rows (ALL of `R`'s fields — carriers, conformance, countability,
+realization/keying, `supplyDec` — plus `graft`/`graft_cut`/`cut_graft`/
+`mass_eq`), each an UNPINNED named assumption owned per the module
+docstring's owner map; nothing is discharged here. -/
 theorem kcut_reduce {n : ℕ} {X : LeanUrat.MovesU.ClassifierSpec n p}
     {Fb : LeanUrat.MovesU.FiberSeries n p X} {E : History p F → Prop}
     (R : KCutReKeys Fb E)

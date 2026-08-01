@@ -744,8 +744,10 @@ H8-B3's landed extraction (the cut function + injectivity) AND the TYPED
 re-keys of the three seam fields (the graft function with its inverse laws;
 the mass equations) — data/hypotheses in the binder list, not opaque Props —
 CONSTRUCT the `CutData` instance and conclude `seriesSum_cut_conv`'s regroup:
-the exact form Step 18's K1 consumes, with the residual conditionality as the
-displayed binder rows. Until those typed re-keys exist there is NO formal
+the ABSTRACT CONVOLUTION FORM of Step 18's K1 [downgraded at KCUT pass
+finding 7 — the exact instantiated form (entrance (e,τ,δ) lists, transported
+pool q^δ, grammar block totals) is wave-7 unit H8-C3], with the residual
+conditionality as the displayed binder rows. Until those typed re-keys exist there is NO formal
 bridge from the proved combinatorics to the M04 consumer — that absence is
 the honest state, displayed here, not papered over. Statement to be E-phased
 against H8-B3's carriers + BP_V's `SolveSeam`/`series_tie` wiring when BP_V
@@ -766,13 +768,145 @@ H8 unit.
 | H8-B2 | `CutSeam.lean` | VTreeCutSeam + holds + owner map | A3 | EASY-MED |
 | H8-B3 | `CutExtract.lean` | the extraction layer: Ŝ(Tr)/D_ε(Tr) carriers + cut map + injectivity + conformance + countability [NEW at C-1/C-2/C-5] | A1, A2; own E-phase design gate (a)/(b) | HARD |
 | H8-G1 | `ToyGate.lean` | 3-chain positive gate + (BDY) check | D0, A2 | MED |
-| H8-C1 | `KCutReduce.lean` | B3-extraction + typed seam re-keys → CutData → the K1 regroup | B1, B2, B3, BP_V | MED-HARD (E-phase later) |
+| H8-C1 | `KCutReduce.lean` | B3-extraction + typed seam re-keys → CutData → the K1 regroup (ABSTRACT convolution form) | B1, B2, B3, BP_V | MED-HARD (E-phase later) |
+| H8-C2 | (wave 7, OPEN) | (K-CUT-m-factor): the FACTORWISE mass law (statement probed; §Wave 7) | C1, B3; instantiation = owner rows | MED (derivation) / HARD (instantiation, semantic) |
+| H8-C3 | (wave 7, OPEN) | (K-CUT-K1-tie): the exact-form Step-18 K1 tie with the (e,τ,δ) pool structure (statement probed; §Wave 7) | C1, C2, BP_V carriers, [2r]/CL-8, M04 K3 | HARD |
 | H8-R1 | (documentary) | O-11 §8 charge (vi) adjudication | — | Codex run |
 | H8-R2 | (documentary) | ROOT (H8)-row re-scope spec | R1 + waves | orchestrator |
 
 Parallelism: A1/A2/A3 run concurrently after D0 (A2 may consume A1's theorems —
 if scheduled truly parallel, A2's prover re-proves locally or waits; preferred:
-D0 → {A1, A3} → {A2} → {B1, B2, G1} → B3 → C1). 8 Lean units + 2 documentary.
+D0 → {A1, A3} → {A2} → {B1, B2, G1} → B3 → C1). NINE Lean units (D0, A1, A2,
+A3, B1, B2, B3, G1, C1) + 2 documentary [count corrected at KCUT pass finding
+12; an earlier "8 Lean units" line here undercounted C1] + the two OPEN wave-7
+content units below (specced, not landed).
+
+### Wave 7 — the two MISSING-CONTENT units (specced 2026-08-05 at the KCUT
+pass; statements compile-probed green against the built corpus,
+`/tmp/openmath/H8_wave7_probe.lean`, `lake env lean` — sorry-warnings only,
+zero errors; proofs NOT attempted, per the pass disposition)
+
+These are the pass's isolated genuinely-missing mathematical content
+(findings 4 and 7 + the closing residue statement): everything `kcut_reduce`
+proves is the ABSTRACT convolution; these two units carry the semantics.
+Common prelude as §4 header, plus `import
+LeanUrat.Scaffold.HDischarge.H8.KCutReduce` and `import
+LeanUrat.MovesU.DefsLedger`.
+
+**H8-C2 (K-CUT-m-factor) [MED derivation / HARD instantiation — semantic,
+owner-row work; deps C1, B3] — the FACTORWISE mass law.** `mass_eq` ties
+`W`/`weight` only through the aggregate product (compensating factors
+satisfy it — finding 4); the factorwise law makes both factor through the
+CONCRETE H8-B3 carriers by slot-independent functions, with the tree mass
+factorizing along the concrete extraction:
+
+```lean
+/-- H8-C2 (K-CUT-m-factor): THE FACTORWISE MASS LAW. -/
+structure KCutMassFactor {n : ℕ} {X : LeanUrat.MovesU.ClassifierSpec n p}
+    {Fb : LeanUrat.MovesU.FiberSeries n p X} {E : History p F → Prop}
+    (R : KCutReKeys Fb E) where
+  shMass : ShallowData p F → ℝ≥0∞
+  blkMass : BlockDeriv p F → ℝ≥0∞
+  W_factor : ∀ Ŝ : R.ShL, R.W Ŝ = shMass (R.shape Ŝ)
+  weight_factor : ∀ (Ŝ : R.ShL) (i : Fin (R.k Ŝ)) (D : R.Deriv Ŝ i),
+    R.weight Ŝ i D = blkMass (R.dcar Ŝ i D)
+  mass_factor : ∀ (σ : LeanUrat.MovesU.SplittingType n) (T : Fb.Tree σ),
+    Fb.mass σ T
+      = shMass (shallowDataOf (R.real σ T) E)
+        * ∏ ε ∈ minEnts (R.real σ T) E, blkMass (blockDerivOf (R.real σ T) E ε)
+
+/-- H8-C2 consumption display: factorwise ⇒ the aggregate `mass_eq` row. -/
+theorem massFactor_mass_eq {n : ℕ} {X : LeanUrat.MovesU.ClassifierSpec n p}
+    {Fb : LeanUrat.MovesU.FiberSeries n p X} {E : History p F → Prop}
+    (R : KCutReKeys Fb E) (MF : KCutMassFactor R)
+    (σ : LeanUrat.MovesU.SplittingType n) (T : Fb.Tree σ) :
+    Fb.mass σ T
+      = R.W (R.shIdx σ T) * ∏ i, R.weight (R.shIdx σ T) i (R.cutBlk σ T i)
+```
+
+HONESTY: `KCutMassFactor` is STRICTLY STRONGER than `mass_eq` (it kills
+per-index compensation by routing every factor through the concrete cut
+data), but the identification of `shMass`/`blkMass` with the MEASURED
+semantics (shallow mass; grammar weight at the transported pool) remains
+owner-row content ((H7)/sibjc TREE-EXP rows + [2r]/CL-8 + O-1/O-3) — H8-C2's
+INSTANTIATION is that owners' work, and its block-side measured reading is
+H8-C3. The derivation theorem is MED (`cutBlk_car` + `shIdx_eq` + a
+multiplicative `sum_ent` analogue).
+
+**H8-C3 (K-CUT-K1-tie) [HARD; deps C1, C2, BP_V (`UCarriers`/`blockSolve`/
+`powSubst`/`OKat`/`evalAt`), [2r]/CL-8 REL.2 dictionary, M04 K3] — the
+exact-form consumption tie at Step 18's K1 with the (e_i, τ_i, δ_i) pool
+structure.** Finding 7's missing content, typed: per-slot entrance pool data
+read at grammar vocabulary, the e-leg pinned to the concrete interface node
+(`BlockDeriv.entE`), the verdict-vocabulary bridge, and THE GRAMMAR-TOTAL
+TIE — each slot's `blockTotal` IS the evaluated `powSubst δ`-transported
+real `blockSolve` at the prime pool:
+
+```lean
+/-- H8-C3 (K-CUT-K1-tie): the Step-18 K1 exact-form consumption tie. -/
+structure KCutK1Tie {n : ℕ} (C : LeanUrat.MovesU.UCarriers n)
+    {X : LeanUrat.MovesU.ClassifierSpec n p}
+    {Fb : LeanUrat.MovesU.FiberSeries n p X} {E : History p F → Prop}
+    (R : KCutReKeys Fb E)
+    (hdet : LeanUrat.MovesS.DetHyp C.T C.RB C.hK) where
+  eOf : ∀ Ŝ : R.ShL, Fin (R.k Ŝ) → {e : ℕ // e ∈ Finset.Icc 1 n}
+  τOf : ∀ (Ŝ : R.ShL) (i : Fin (R.k Ŝ)), C.T.State (eOf Ŝ i).1
+  δOf : ∀ Ŝ : R.ShL, Fin (R.k Ŝ) → ℕ+
+  e_key : ∀ (Ŝ : R.ShL) (i : Fin (R.k Ŝ)) (D : R.Deriv Ŝ i),
+    (R.dcar Ŝ i D).entE = (eOf Ŝ i).1
+  vBridge : Multiset C.T.VType → Multiset (ℕ × ℕ)
+  vBridge_vOf : ∀ σ : LeanUrat.MovesU.SplittingType n,
+    vBridge (LeanUrat.MovesU.vmap C.T σ) = R.vOf σ
+  vBridge_inj : Set.InjOn vBridge (C.chain.Sigmas : Set (Multiset C.T.VType))
+  bOK : ∀ (Ŝ : R.ShL) (i : Fin (R.k Ŝ)) (σ' : Multiset C.T.VType),
+    σ' ∈ C.chain.Sigmas →
+    LeanUrat.MovesS.powSubst (δOf Ŝ i)
+        (LeanUrat.MovesS.blockSolve C.T C.RB C.hdc C.hK hdet
+          (eOf Ŝ i).1 (eOf Ŝ i).2 (τOf Ŝ i) σ')
+      ∈ LeanUrat.MovesS.OKat (p : ℚ)
+  blockTotal_tie : ∀ (Ŝ : R.ShL) (i : Fin (R.k Ŝ)) (σ' : Multiset C.T.VType)
+      (hσ' : σ' ∈ C.chain.Sigmas),
+    R.blockTotal Ŝ i (vBridge σ')
+      = ENNReal.ofReal
+          ((LeanUrat.MovesS.evalAt (p : ℚ) ⟨_, bOK Ŝ i σ' hσ'⟩ : ℚ) : ℝ)
+  blockTotal_supp : ∀ (Ŝ : R.ShL) (i : Fin (R.k Ŝ)) (v : Multiset (ℕ × ℕ)),
+    (∀ σ' ∈ C.chain.Sigmas, vBridge σ' ≠ v) → R.blockTotal Ŝ i v = 0
+
+/-- H8-C3 consumption display: the K1 regroup at the REAL transported β totals. -/
+theorem kcut_k1_form {n : ℕ} (C : LeanUrat.MovesU.UCarriers n)
+    {X : LeanUrat.MovesU.ClassifierSpec n p}
+    {Fb : LeanUrat.MovesU.FiberSeries n p X} {E : History p F → Prop}
+    (R : KCutReKeys Fb E) (hdet : LeanUrat.MovesS.DetHyp C.T C.RB C.hK)
+    (TIE : KCutK1Tie C R hdet)
+    (graft : ∀ σ, R.CompatTuple σ → Fb.Tree σ)
+    (graft_cut : ∀ σ (T : Fb.Tree σ), graft σ (R.cutFun σ T) = T)
+    (cut_graft : ∀ σ (x : R.CompatTuple σ), R.cutFun σ (graft σ x) = x)
+    (mass_eq : ∀ σ (T : Fb.Tree σ), Fb.mass σ T
+      = R.W (R.shIdx σ T) * ∏ i, R.weight (R.shIdx σ T) i (R.cutBlk σ T i))
+    (σ : LeanUrat.MovesU.SplittingType n) :
+    Fb.seriesSum σ
+      = ∑' Ŝ : R.ShL, R.W Ŝ *
+          ∑' vt : {vt : Fin (R.k Ŝ) → Multiset (ℕ × ℕ) //
+              (R.shape Ŝ).σ0 + ∑ i, vt i = R.vOf σ},
+            ∏ i, ∑' σ' : {σ' : Multiset C.T.VType //
+                σ' ∈ C.chain.Sigmas ∧ TIE.vBridge σ' = vt.1 i},
+              ENNReal.ofReal
+                ((LeanUrat.MovesS.evalAt (p : ℚ)
+                  ⟨_, TIE.bOK Ŝ i σ'.1 σ'.2.1⟩ : ℚ) : ℝ)
+```
+
+HONESTY: (i) the τ/δ pool rows (`τOf`/`δOf`) are DATA whose node-level
+read-off pins against the interface node (the W7 boundary-data clause) are
+part of the unit's own instantiation obligation — only the e-leg has a
+landed concrete read-off (`entE = iface.e`), so `e_key` is the one pinnable
+conformance row today; (ii) `blockTotal_tie` is exactly the closing-residue
+item "the onward identification of `R.blockTotal` with the actual Step-18
+block totals", and instantiating it needs the REL.2 pool dictionary
+([2r]/CL-8, open) + continuation memorylessness (K-CUT-g's semantic core);
+(iii) the W-leg is deliberately ABSENT — full-data W(Ŝ) vs the resummed
+`WshP` is the §1.1 granularity seam, priced at CL-17(ii)/`W17ii`, never
+here; (iv) `kcut_k1_form` is derivable from `kcut_reduce` +
+tie/supp/inj (MED-HARD) — the CONTENT is the structure's instantiation.
 
 ---
 
@@ -829,6 +963,14 @@ persists at the reduced scope above. Either way the ROOT edit is a ledgered
 revision with its own VC pass — the standing acceptance-counter discipline
 applies (a text change resets the counter; this blueprint does not touch ROOT).
 
+**POST-PASS STATUS LINE (2026-08-05, binding on every (H8) display — see §8):
+(K-CUT) = Lean development faithful at declaration level (the KCUT pass's
+declaration audit); discharge awaits the two wave-7 content units (H8-C2
+(K-CUT-m-factor), H8-C3 (K-CUT-K1-tie)) + a clean re-pass.** The repaired
+composed row draft (the OWED ROOT status-sync line, recorded as a SPEC for
+the r-workflow — never executed from here) is
+`Scaffold/HDischarge/H8/R2RootSync.lean` §D.
+
 
 ---
 
@@ -868,3 +1010,48 @@ partition/regroup design and all probed statements SURVIVED review untouched
 (A-10/A-11 confirmations). Re-review: not re-run (the fixes are scope/display
 re-statements in the direction the reviewer demanded plus one added unit; the
 prover fan-out's own hostile pass is the next gate — standing discipline).
+
+---
+
+## 8. Unit-level hostile pass + display repair record (2026-08-05)
+
+**The pass** (the §7 fold note's "next gate" + R2RootSync §A honesty gate,
+now SPENT): fresh-context Codex over the §3.1 row, this blueprint, the
+charge-(vi) record, and the COMPLETE Lean development. Full report:
+`lean/notes/openmath/KCUT_pass_2026-08-05.md`. **VERDICT: CRITICAL** —
+7 critical + 5 gap, ALL display-layer; the declaration audit confirmed every
+landed Lean unit faithful at its predicate-parametric scope. NO discharge,
+NO retirement; the (H8) row PERSISTS.
+
+**Repair dispositions** (this session; edits in `R2RootSync.lean` §C/§D/§F,
+`KCutReduce.lean` docstrings, and this file — docstrings/display only, ZERO
+statement changes):
+
+| # | finding (compressed) | disposition |
+|---|---|---|
+| 1 | `supplyDec` classically vacuous + unused by `kcut_reduce` | DISPLAYED honestly (registration row, not a consuming face) — KCutReduce docstrings + §D draft |
+| 2 | `kcut_reduce` never consumes `cutOf`/`cut_injective`; forward map re-assumed | DISPLAYED (non-consumption honesty clause) |
+| 3+6 | binder census incomplete; "ENTIRE remaining content" false | FULL census displayed (carriers + conformance + countability + keying rows); over-claim retracted |
+| 4 | `mass_eq` aggregate-only; factorwise semantics unformalized | DISPLAYED + SPECCED as wave-7 unit H8-C2 (K-CUT-m-factor) |
+| 5 | `real`/`vOf`/`verdict_key` unconditioned | DISPLAYED (no realizability/faithfulness/canonicity/injectivity condition) |
+| 7 | "Step 18 K1's exact form" over-claim | DOWNGRADED everywhere to "abstract convolution form"; exact form SPECCED as wave-7 unit H8-C3 (K-CUT-K1-tie) |
+| 8 | graft inverse laws assumed (honest) | confirmed displayed; unchanged |
+| 9 | "exactly one" only at ownership-partition level | qualification displayed in §D draft |
+| 10 | R1's (vi-b-1) NO + ROUTING residue omitted from row | RESTORED in §D draft (ROUTING = CORRESPONDENCE CLAIM, undischarged) |
+| 11 | count-form theorems mislabeled (K-CUT-2) | RELABELED: (K-CUT-2) = ownership; `siteExp_cut`/`fiber_count_cut` = (K-CUT-3)'s count-form regroup |
+| 12 | "8 Lean units" vs nine | CORRECTED to NINE + 2 documentary (§4) |
+
+**The two missing-content units**: specced at §4 Wave 7 (statements
+compile-probed green, `/tmp/openmath/H8_wave7_probe.lean`; proofs NOT
+attempted, per the dispatch). They isolate the pass's genuinely-missing
+mathematics: H8-C2 the factorwise mass law, H8-C3 the exact-form Step-18 K1
+tie with the (e,τ,δ) pool structure and the grammar-total identification.
+
+**Owed ROOT status-sync (SPEC, r-workflow-owned)**: replace the
+`docs/ROOT_ASSEMBLY_2026-08-02.md` §3.1 (H8) Status text with the repaired
+§D draft in `Scaffold/HDischarge/H8/R2RootSync.lean` (a ledgered ROOT
+revision with its own VC pass; acceptance-counter discipline applies). No
+ROOT edit is made by this unit.
+
+**Standing status**: (K-CUT) = Lean development faithful at declaration
+level; discharge awaits H8-C2 + H8-C3 + a clean re-pass.
