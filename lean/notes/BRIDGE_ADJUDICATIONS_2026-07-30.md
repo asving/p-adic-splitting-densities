@@ -1455,3 +1455,19 @@ in ROOT with the corresponding hypothesis enlargement — either way a NEW
 composition adjudication (the acceptance's consecutive-clean counter cannot
 protect steps whose consumed proofs are refuted). The O-11 critical is
 absorbed by ROOT's n ≥ 2 fence and, alone, would have been verdict (A).
+
+## DIVISION INCIDENT + BP_I COMPLETE (2026-08-04)
+INCIDENT: Workflow args arrived as a JSON-encoded STRING => args.bp
+undefined in BOTH division runs => both plan agents fell back to the
+alphabetically-first blueprint => TWO fleets raced on BP_I's MeasureFloor
+files (the "undefined Wave N" commit messages were the symptom). One run
+completed cleanly (last checkpoint cb35085); the duplicate was STOPPED
+(wiizddtm0); Scaffold working tree verified clean at HEAD. FIX: defensive
+args parse + fail-fast if bp missing + a no-substitute guard in the plan
+prompt (division_workflow.js).
+BP_I (MeasureFloor) COMPLETE: 69/72 units proved across 6 waves
+(Space/Haar/Types/Decided/Semantic/Base/SumOne/NsNull all landed under
+Scaffold/MeasureFloor/). RESIDUALS (mop-up queue): I-H3c4 BLOCKED (sorry
++ reason on file), 1 Wave-1 unit + 1 SumOne unit returned empty (agent
+died) — statuses unknown, re-audit needed. RELAUNCHED on fixed script:
+BP_VI = wf_32c33b69-83c, BP_II = wf_753f290b-0d0.

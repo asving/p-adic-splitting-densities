@@ -9,7 +9,10 @@ export const meta = {
 }
 
 const REPO = '/data/users/asvin/math-and-lean/p-adic-splitting-densities'
-const BP = args.bp // e.g. "BP_I"
+// args may arrive as an object or as a JSON-encoded string — parse defensively.
+const parsedArgs = typeof args === 'string' ? JSON.parse(args || '{}') : (args || {})
+const BP = parsedArgs.bp // e.g. "BP_I"
+if (!BP) { log('FATAL: no bp argument reached the script'); return { error: 'no bp arg' } }
 
 const PLAN_SCHEMA = {
   type: 'object', required: ['waves'],
@@ -48,7 +51,7 @@ const VERDICT_SCHEMA = {
 
 phase('Plan')
 const plan = await agent(
-  `Read ${REPO}/lean/blueprints/${BP}.md (REVISION 2) in full. Extract its complete wave plan as structured output: every wave IN DEPENDENCY ORDER, every unit in each wave. For each unit: id (the blueprint's unit id, e.g. I-H7), file (the repo-relative target path the blueprint assigns, always under lean/LeanUrat/Scaffold/), task (<=600 chars: one-line goal, the blueprint section/anchor where its VERBATIM Lean statement lives, dependency unit ids, difficulty tag if the BP gives one). Do NOT paraphrase Lean statements into the task — provers read the blueprint themselves. Every unit in the blueprint must appear exactly once; do not invent or merge units. If the blueprint groups several tiny units into one file+wave cluster explicitly, you may emit one unit entry per cluster with all ids in the task.`,
+  `Read ${REPO}/lean/blueprints/${BP}.md (REVISION 2) in full. That EXACT file is your only planning source — if it does not exist, return an empty waves list; never substitute another blueprint. Extract its complete wave plan as structured output: every wave IN DEPENDENCY ORDER, every unit in each wave. For each unit: id (the blueprint's unit id, e.g. I-H7), file (the repo-relative target path the blueprint assigns, always under lean/LeanUrat/Scaffold/), task (<=600 chars: one-line goal, the blueprint section/anchor where its VERBATIM Lean statement lives, dependency unit ids, difficulty tag if the BP gives one). Do NOT paraphrase Lean statements into the task — provers read the blueprint themselves. Every unit in the blueprint must appear exactly once; do not invent or merge units. If the blueprint groups several tiny units into one file+wave cluster explicitly, you may emit one unit entry per cluster with all ids in the task.`,
   { label: `${BP}:plan`, schema: PLAN_SCHEMA },
 )
 if (!plan || !plan.waves?.length) { log(`${BP}: plan extraction FAILED`); return { bp: BP, error: 'no plan' } }
