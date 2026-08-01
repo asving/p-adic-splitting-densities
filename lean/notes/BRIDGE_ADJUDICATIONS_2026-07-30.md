@@ -1712,3 +1712,42 @@ conjunct on bridgeTree + TreeSeam.count_tie re-scoped to the hdet-guarded
 corpus + count_tie/canonical_stable/VPSound re-proved as re-typed + green
 build/AxChk + the Codex diff-confirmation gate. (NSF-KEY)'s retirement
 route now executable. Dispatched.
+
+## UNIT C EXECUTED: THE NsFree KEYING REPAIR LANDED (2026-08-01 machine clock; the 2026-08-05 sign-off's dispatch)
+The ONE sanctioned statement change, per M02 §2 + (NSF-KEY-RET) R-0..R-5:
+R-0 sign-off verified on record (this file, "sign-off granted on the NsFree
+repair!"). R-1 LANDED: `bridgeTree` (BridgeD3) gains the third conjunct
+`∧ MovesT.NsFree V` — verbatim the sanctioned carrier; ripple scope CLOSED
+and RECORDED pre-edit (notes/openmath/UNITC_ripple.md: 41 rg matches, 8
+.lean files; compile-affected destructuring = exactly TWO sites, both
+re-pointed T.2.2 → T.2.2.1: bridgeVt_realizedSelf (BridgeD4) and
+bridge_slice_finite (BridgeKernels:192); ONE new read-off projection
+`bridgeVt_nsFree := T.2.2.2` = the compiled V₀-dead record). R-2 HELD:
+count_tie/canonical_stable/VPSound statement TEXTS byte-identical
+(DefsLedger.lean/Defs.lean untouched); the re-scope to the hdet-guarded
+corpus is THROUGH the carrier at the wired instance. R-3 validations:
+(1) count_tie's discharge candidate `MovesT.treeN` (hdet-guarded) compiles
+sorry-free, Lean-core, and the guarded carrier's ∀T now matches its hdet
+scope; (2) `bridgeCanonical_stable` (BridgeD8) re-proved GREEN over the new
+`bridgeCanonical` — same proof, Lean-core; (3) VPSound REMAINS the open
+kernel (cl10_vpsound; no proof promised) — the M02 V₀ refutation is DEAD at
+the guarded carrier (¬NsFree V₀ ⇒ V₀ not carried, compiled as
+bridgeVt_nsFree) and its consuming wiring (BridgeKernels/BridgeMk/U10/U11)
+re-compiled. No compiled V₀-style negation witnesses existed at HEAD
+(canPolicy designer-sorried — M02's flagged step), so none to re-point.
+R-4 PASSED: full `lake build` green (8579 jobs, no NFS hang); AxChk census
+740 footprints, ZERO sorryAx, both density capstones Lean-core, non-core
+axioms exactly the known declared families (AX_cellRecursion pack,
+om_leaf_faithful, AX_integralClosure_dvr) — NO footprint regression.
+R-5 PASSED: fresh-context Codex CONFIRMED the applied diff is exactly the
+sanctioned repair, adjudicated against the recorded enumeration (7 checks;
+archived notes/openmath/UNITC_diff_confirm.md). Residue recorded (ripple
+notes): BridgeD16's inlined 2-clause subtype + TreePin.vt_surj's
+completeness face now owe the ns-free scope at the eventual instantiation —
+OUT of the closed ripple scope (binder-only at HEAD, never proved
+at-instance), queued for Phase-B adjudication. Code landed inside the
+orchestrator WIP sweep dfdb558 (UnitC hunks = the three .lean files +
+UNITC_ripple.md). (NSF-KEY) RETIREMENT: all six artifacts now on file —
+(NSF-KEY) holds by construction of (†7) over the guarded carrier; N2's
+BLOCKED-PENDING clause drops "(NSF-KEY) execution"; (NSF-INT) NOT touched
+(retires separately, round-4 finding 4).
