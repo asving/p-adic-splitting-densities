@@ -1626,4 +1626,87 @@ theorem L6e_partition {w : ℕ → WithTop ℤ}
   · intro h0 κ s
     exact L6e_zero_notMem he h0 κ s
 
+/-!
+## Unit II-M10 — `L6e_null` + `L6e_empty_two` (L6e(ii): Z_e is null; Z_2 = ∅)
+
+BP_II §1.9 displays this unit as `theorem L6e_null ...` / `theorem
+L6e_empty_two ...` — the signatures are elided in the blueprint; the
+mathematical content is pinned by the displayed docstring ("(ii) Z_e has
+measure ≤ q₀^{−t} for every t (HAAR-COORD), and Z_2 = ∅"), the §2 unit-table
+sketch ("measure ≤ q₀^{−t} ∀t from haarBall; e = 2: a_2 = 0 ∧ v(a_1) ≥ 1 ⟹
+g ∈ R_2"), and the math source of record
+(`lean/notes/openmath/O12_phaseB_verifybrief_rev4.md` §3, L6e proof (ii)),
+same sanctioned-adjustment convention as units II-M4/II-M5/II-M7/II-M8/II-M9
+above. FLAGGED for E-phase statement-fence sign-off.
+
+**Vocabulary.** Z_e := (C_e\R_e) ∩ {a_e = 0}. The a_e = 0 fiber enters
+valuationally: in the multiplicative Γ of the II-M0 rows, a_e = 0 ⟺
+`valuation a_e = 0` (the multiplicative zero — the additive ⊤/∞ of the
+II-M9 vocabulary's `w 0 = ⊤`). `L6e_null` is the brief's one-coordinate
+bound ("a_e is one Haar-uniform coordinate"): any coordinate set inside the
+zero fiber has `coordMeasure ≤ (q₀ ^ t)⁻¹` for EVERY `t` — the fiber lies
+in every displayed (HAAR-COORD) ball (`valuation a = 0 ≤ 0 ^ t`), whose
+measure the `haarBall` row pins. The passage from the ∀t-bound to "null" is
+a limit statement about the ambient measure theory; the movement consumes
+only the displayed ∀t-bound, so the unit states exactly that.
+`L6e_empty_two` is the e = 2 emptiness in the II-M9 column vocabulary
+(`w c` = v(a_{2−c})): a_2 = 0 (`w 0 = ⊤`) together with g ∈ C_2 already
+forces the R_2 inequalities — column 0 needs v(a_2) ≥ 2 (trivial at ⊤),
+column 1 needs v(a_1) ≥ 1 (the C_2 inequality itself) — so no point of
+C_2\R_2 has a_2 = 0, i.e. Z_2 = ∅.
+
+**Hypothesis note (same honest-conditionality convention as
+`cell_volume`'s `hfactor`).** `L6e_null` consumes the (HAAR-COORD)
+`haarBall` row of a `SemanticRows` instance plus the explicit named
+hypothesis `hmono` (monotonicity of `coordMeasure` under ⊆ — true of every
+measure; the rows table records only exact values, so the comparison input
+enters displayed, never by fiat). **Dep status:** II-M0 consumed (the rows
+structure); the unit-table dep II-M3 is NOT consumed — the ℤ-snap
+"v > 0 ⟹ v ≥ 1" is already encoded in the C_2 hypothesis of the II-M9
+column vocabulary (`1 ≤ w c`), the same conditionality-reduction deviation
+recorded in the II-M9 header.
+-/
+
+/-- **II-M10, L6e(ii) mass bound**: Z_e is null — a_e is one Haar-uniform
+coordinate. Any coordinate set `Z` inside the zero-valuation fiber
+(a_e = 0 ⟺ `valuation a = 0`, the multiplicative-zero form of the II-M9
+`w 0 = ⊤`) has `coordMeasure Z ≤ (q₀ ^ t)⁻¹` for EVERY `t`: the fiber lies
+in every (HAAR-COORD) ball, and the `haarBall` row pins the ball measure. -/
+theorem L6e_null
+    {Coeff Root Γ TypeCode : Type*} [Semiring Coeff]
+    [LinearOrderedCommGroupWithZero Γ]
+    {valuation : Coeff → Γ} {coeffVector : Polynomial Coeff → ℕ → Coeff}
+    {rootValues polygonSlopes : Polynomial Coeff → Multiset Γ}
+    {splitType : Polynomial Coeff → TypeCode}
+    {rescale recenter : Polynomial Coeff → Polynomial Coeff}
+    {coordMeasure : Set Coeff → ℝ≥0∞} {q₀ : ℝ≥0∞}
+    (rows : SemanticRows Coeff Root Γ TypeCode valuation coeffVector
+      rootValues polygonSlopes splitType rescale recenter coordMeasure q₀)
+    (hmono : ∀ A B : Set Coeff, A ⊆ B → coordMeasure A ≤ coordMeasure B)
+    {Z : Set Coeff} (hZ : Z ⊆ {a | valuation a = 0}) :
+    ∀ t : ℕ, coordMeasure Z ≤ (q₀ ^ t)⁻¹ := by
+  intro t
+  calc coordMeasure Z
+      ≤ coordMeasure {a | valuation a ≤ (valuation a) ^ t} := by
+        refine hmono _ _ fun a ha => ?_
+        have h0 : valuation a = 0 := hZ ha
+        show valuation a ≤ (valuation a) ^ t
+        rw [h0]
+        exact zero_le
+    _ = (q₀ ^ t)⁻¹ := rows.haarBall t
+
+/-- **II-M10, L6e(ii) emptiness at e = 2**: Z_2 = ∅ — in the II-M9 column
+vocabulary (`w c` = v(a_{2−c}); `w 0 = ⊤` ⟺ a_2 = 0), a_2 = 0 together
+with g ∈ C_2 already forces g ∈ R_2: column 0 needs v(a_2) ≥ 2 (trivial at
+⊤), column 1 needs v(a_1) ≥ 1 (the C_2 inequality itself). Hence no point
+of C_2\R_2 has a_2 = 0. -/
+theorem L6e_empty_two {w : ℕ → WithTop ℤ}
+    (hCe : ∀ c < 2, 1 ≤ w c) (h0 : w 0 = ⊤) :
+    ∀ c < 2, (((2 - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c := by
+  intro c hc
+  interval_cases c
+  · rw [h0]
+    exact le_top
+  · simpa using hCe 1 (by omega)
+
 end LeanUrat.Scaffold
