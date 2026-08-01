@@ -8,11 +8,12 @@ import LeanUrat.Scaffold.HDischarge.H5.Kernels
 import LeanUrat.Scaffold.O12.Substochastic
 
 /-!
-# Scaffold/HDischarge/H5/PackI — (PACK-i) block form [HDISCHARGE_H5 unit P0]
+# Scaffold/HDischarge/H5/PackI — (PACK-i) block form [HDISCHARGE_H5 units P0, P1]
 
-Statements VERBATIM from `lean/blueprints/HDISCHARGE_H5.md` §4.6, row P0
-(REVISION 2: moved to Wave 1 and split at the r2 probe — B1 consumes the
-pivot positivity; kernel-independent, deps W0 only).
+Statements VERBATIM from `lean/blueprints/HDISCHARGE_H5.md` §4.6, rows P0/P1
+(REVISION 2: P0 moved to Wave 1 and split at the r2 probe — B1 consumes the
+pivot positivity; kernel-independent, deps W0 only. P1 probed at r2, the r1
+PROBE-OWED tag cleared; redundant `hui` binder dropped).
 
 Unit P0 (both halves):
 * `solveU_mem_OKat` — the solve denominator `u` is evaluation-regular at every
@@ -22,12 +23,19 @@ Unit P0 (both halves):
   bookings `u = 1 − q·q^{−E}`, so eval = 1 − q₀^{1−E} ≥ 3/4 > 0 via
   `blockE_ge_three` arithmetic, fired through the landed
   `bn_substochastic_margin` at the (O1) kernel shape.
+
+Unit P1: `beta_eval_solve` — solve-evaluation commutation at the 𝔅_n rows (the
+(PACK-i) BLOCK form): the member's solve `β = u⁻¹·t` commutes with `evalAt`.
+Route: rewrite `hsolve`, `map_mul` of `evalAt`, K3 (`evalAt_inv`); the u⁻¹
+membership K3 needs is supplied inside the proof from `hu.2.2` + K1. SEAM NOTE
+(blueprint §2.2): the K2 chain-vocabulary form (`RS4Chain.rsh_interp` at the
+real instance) rides the chain-instance seam — NEVER claimed here.
 -/
 
 namespace LeanUrat.Scaffold.HDischarge.H5
 
-open LeanUrat.MovesU (MemRcyc memRcyc_one memRcyc_algebraMap memRcyc_inv_cycS
-  Xpow_mem_cycS)
+open LeanUrat.MovesU (MemRcyc SplittingType memRcyc_one memRcyc_algebraMap
+  memRcyc_inv_cycS Xpow_mem_cycS)
 open LeanUrat.MovesS (OKat evalAt)
 
 set_option linter.unusedVariables false in
@@ -92,5 +100,32 @@ theorem solveU_eval_pos {e : ℕ} (he : 2 ≤ e) (b : Booking)
       = (Booking.O1.kernel e).eval (RingHom.id ℚ) q₀ := rfl
   rw [hcast, map_sub, map_one, hkev]
   linarith
+
+/-- **Unit P1** (the (PACK-i) block form): solve-evaluation commutation at the
+𝔅_n rows — the member's solve `β_e(σ) = u⁻¹ · t_σ` commutes with the `evalAt`
+ring hom at every rational q₀ ≥ 2 with nonvanishing pivot. Route: rewrite
+`hsolve` through the subtype (`Subtype.ext`), `map_mul` of `evalAt`, then K3
+(`evalAt_inv`); the u⁻¹ membership K3 needs is supplied inside from `hu.2.2`
+(the block's `MemRcyc u⁻¹` datum) + K1 (`memRcyc_mem_OKat`). The chain-vocabulary
+form (`RS4Chain.rsh_interp`) is a NAMED SEAM (blueprint §2.2), not claimed here.
+[HDISCHARGE_H5 unit P1] -/
+theorem beta_eval_solve {n : ℕ} (T : BnMember n) {e : ℕ} (he : 2 ≤ e)
+    {q₀ : ℚ} (hq : 2 ≤ q₀) (σ : SplittingType n)
+    (hβ : T.β e σ ∈ OKat q₀) (ht : (T.blocks e he).trow σ ∈ OKat q₀)
+    (hu : (T.blocks e he).u ∈ OKat q₀)
+    (hne : evalAt q₀ ⟨(T.blocks e he).u, hu⟩ ≠ 0) :
+    evalAt q₀ ⟨T.β e σ, hβ⟩
+      = (evalAt q₀ ⟨(T.blocks e he).u, hu⟩)⁻¹
+        * evalAt q₀ ⟨(T.blocks e he).trow σ, ht⟩ := by
+  -- the u⁻¹ membership K3 needs, from the block's `hu.2.2` through K1
+  have hui : (T.blocks e he).u⁻¹ ∈ OKat q₀ :=
+    memRcyc_mem_OKat (T.blocks e he).hu.2.2 hq
+  -- transport the solve identity `β = u⁻¹ · t` to the subtype carrier
+  have hcast : (⟨T.β e σ, hβ⟩ : OKat q₀)
+      = ⟨(T.blocks e he).u⁻¹, hui⟩ * ⟨(T.blocks e he).trow σ, ht⟩ := by
+    apply Subtype.ext
+    simpa using (T.blocks e he).hsolve σ
+  -- `map_mul` of the `evalAt` ring hom, then K3 at the inverse leg
+  rw [hcast, map_mul, evalAt_inv hu hui hne]
 
 end LeanUrat.Scaffold.HDischarge.H5
