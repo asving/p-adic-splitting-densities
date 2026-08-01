@@ -1579,3 +1579,15 @@ lean/notes/openmath/R11D4_review_2026-08-04.md.
 Fresh self-contained design; all round-1..4 accepted decisions carried; round-4 criticals fixed: (ROW-Sigma) = r4 theorem-obligation over (PACK-iv) members with ONE authoritative display (sec 4.2; per-booking row totals = the Corollary-D margins: (O1) 1-k0-k1, (O2') 1-k0 via the affine fixed point, (O3) (1-k0-k1)/(1-k0); solved totals = 1 in all three); (NSF-KEY) one proposition + exact six-artifact retirement list; (NSF-INT)/(NSF-KEY) retire SEPARATELY; (O-GLOB) redone (per-address null union + finite-slot branching bound + root-to-leaf transport); Unit C terminal = executed-only; (CH-COV) closure audit replaces the (NS-ALL) universal non-consumption claim.
 Rows ten -> TWELVE unchanged; canonical BLOCKED-PENDING line: N1 ((b-EX)+(ROW-Sigma) proofs), N4 ((O-1)..(O-5)+(O-GLOB)), N2 ((NSF-KEY) execution + (CH-COV) audit) — stated once at sec 0.3, all displays sync to it.
 File: lean/notes/openmath/R11_REPAIR_DESIGN_V5_2026-08-04.md (completeness map of all 34 round-1..4 findings at its sec 8). Next: Codex plan-review round 5.
+
+## R11 DESIGN ROUND 5 + THE EXECUTION CALL (2026-08-04)
+R11D5: DESIGN-REVISE, 3 crit / 5 adv — all three criticals concern proofs
+Unit A must WRITE ((ROW-Sigma) edge set, (O-GLOB) finite-time Z_mu
+encounters, (H9) artifact precision); architecture stable since round 4.
+ORCHESTRATION CALL (diminishing returns on plan review; budget 55%): the
+design is EXECUTION-READY at architecture level; rounds' residual criticals
+become NAMED DUTIES in Unit A's charge, adjudicated by the r4 HOSTILE PASS
+(the real gate — nothing is accepted until it passes). Light patch (H9
+artifacts + BLOCKED-line display rule) folds into Unit A. Report:
+lean/notes/openmath/R11D5_review_2026-08-04.md. UNIT A DISPATCHED: the
+D-11 r4 leaf repair (L1-L10 + the four proof obligations).
