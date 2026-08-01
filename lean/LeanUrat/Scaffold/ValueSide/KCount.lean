@@ -9,8 +9,9 @@ K3a (`card_singleCoordSubgroup` + the `min`-exponent form
 over `Fin n`), K7a (`prod_add_sub_prod` + `prod_add_sub_prod_split`, the
 subset product expansion), K7b (`prod_pow_mul_of_two_le_card` +
 `quadRemainder_pow_extraction` + `prod_add_sub_prod_split_pow`, the p^{2τ}
-extraction Q(p^τ b) = p^{2τ} Q̃(b)).
-Pending (later waves, per BP_IV §4): K1–K8a, the fiber chart K7c,
+extraction Q(p^τ b) = p^{2τ} Q̃(b)), K2 (`bijective_of_injective_finVec`,
+the `Finite.injective_iff_bijective` cite unit).
+Pending (later waves, per BP_IV §4): K1, K4–K8a, the fiber chart K7c,
 and the (SIB) product law.
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
@@ -430,5 +431,28 @@ theorem prod_add_sub_prod_split_pow (s : Finset ι) (h b : ι → R) (π : R) (�
   exact Finset.sum_congr rfl fun j hj => by ring
 
 end K7b
+
+/-! ### K2: injective ⇒ bijective on the finite vector space (BP_IV §1.3 + §2 K-table)
+
+The blueprint displays no Lean block for K2 — the §1.3 entry is a doc comment
+(transcribed verbatim as the docstring below) and the §2 K-table row reads
+"injective ⇒ bijective (cite) | `Finite.injective_iff_bijective`".  Stated
+generically in the self-map `T` of the finite vector space `Fin n → ZMod (p^M)`
+so that K5 can instantiate it at K1's perturbed-identity map (the K1 unit has
+not yet landed; per the wave plan K1 stays a pure valuation argument and the
+finiteness upgrade lives here). -/
+
+section K2
+
+/-- K2: injective ⇒ bijective on the finite vector space (Mathlib
+    `Finite.injective_iff_bijective` — a one-line cite unit, kept separate so K1
+    stays a pure valuation argument). -/
+theorem bijective_of_injective_finVec {p M n : ℕ} [Fact p.Prime]
+    {T : (Fin n → ZMod (p ^ M)) → (Fin n → ZMod (p ^ M))}
+    (hT : Function.Injective T) : Function.Bijective T := by
+  haveI : NeZero (p ^ M) := ⟨pow_ne_zero M (Fact.out : p.Prime).ne_zero⟩
+  exact Finite.injective_iff_bijective.mp hT
+
+end K2
 
 end LeanUrat.Scaffold

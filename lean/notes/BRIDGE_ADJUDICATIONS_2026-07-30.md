@@ -1545,3 +1545,19 @@ definition-change authority WITH Codex diff confirmation); Σ=1 exhaustive
 trace table: member-row sum consumed NOWHERE (only M1(d) one-step strata
 at 18b); (O-5) corrected (terminal exits + null stratum). N8 added. Re-
 review (round 3) launched.
+
+## R11 DESIGN ROUND 3: DESIGN-REVISE — ORCHESTRATION CALL: PRICE, DON'T ARGUE (2026-08-04)
+Round-3 criticals DEEPENED: (q-4)->(q-1) implication gap (ns-marks vs
+irr/hen leaves unproven); (NSF-KEY) no-new-row pricing REJECTED (it is a
+distinct mandatory K1/N2 label-routing proposition, count_tie seam does
+not house it); the (†18) trace not closure-complete (K1 row missing Step
+17; Theorem-4 hypotheses untraced; ellipses vs "verbatim"); (O-5) local
+only, multi-block route still open; "BLOCKED empty" ruled operationally
+meaningless. Report: lean/notes/openmath/R11D3_review_2026-08-04.md.
+DECISION (per the 2-failed-corrections step-back rule): round 4 = HONEST-
+PRICING REWRITE — every contested claim becomes a displayed [M] member
+with a named retirement route; the universal Sigma=1 claim is DROPPED in
+favor of (ROW-Sigma) as a REQUIRED r4 obligation; the reviewer's tier
+language replaces the empty-BLOCKED claim. Conditionality grows; honesty
+is restored NOW; retirement routes discharge later. This is the same
+honest-enlargement pattern that closed the VC6->VC9 loop.
