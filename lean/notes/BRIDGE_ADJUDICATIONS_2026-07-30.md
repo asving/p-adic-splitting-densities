@@ -1889,3 +1889,10 @@ PROVED; W0 carriers passed their Codex statement-audit gate; blocks:
 queue. D1 ran during a classifier outage — commit trail verified: all H5
 commits touch only Scaffold/HDischarge/H5 paths, per-file gates green.
 Queue -> H2.
+
+## H2 FAN-OUT: 9/14 (2026-08-05)
+Waves 0-1 landed (carriers + laws + U4/U5/U6/U8 + 1 paper unit; 1 W1 unit
+unproved); Wave 2 = the §2.3 adjudication package PREPARED FOR ASVIN
+(sign-off request: the DictIII.FRESH placeholder restatement, with U7's
+compiled witness) — SIGN-OFF QUEUE; Wave 3 correctly GATED (U10 post-sign-
+off; U9 post-B2-FINAL). Queue -> H4.
