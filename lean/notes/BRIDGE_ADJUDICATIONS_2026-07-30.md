@@ -1471,3 +1471,15 @@ Scaffold/MeasureFloor/). RESIDUALS (mop-up queue): I-H3c4 BLOCKED (sorry
 + reason on file), 1 Wave-1 unit + 1 SumOne unit returned empty (agent
 died) — statuses unknown, re-audit needed. RELAUNCHED on fixed script:
 BP_VI = wf_32c33b69-83c, BP_II = wf_753f290b-0d0.
+
+## R11 REPAIR DESIGN ON FILE (2026-08-03, design only — no ROOT/leaf edit)
+`openmath/R11_REPAIR_DESIGN_2026-08-03.md`, to Codex plan-review BEFORE execution.
+Decisions: M1 = TRUE-SCOPE repairs (per-clause conditioning; relaxed-box event
+(BOX-VOL) for the L6a factor, verified against L6a's display; (b-PF)+(b-SW) —
+prefix-freeness IS a 𝔅_n row-grammar fact; billing synced to (a″)); M2 = TRUE-SCOPE
+repair via (RE) all-blocks-re-entrant (α is (O2)-only in the VERIFIED §2.3(iv)
+grammar; instance pin discharges (RE); fallback (H5)(PACK-iv) drafted verbatim);
+M2.0 loop-extended addresses (billing unchanged); O11-G2 = NEW [M] row (H8)=(K-CUT)
+(retire route: O-11 charge (vi)); NEED CHECK: all Step-17/18b needs MET, BLOCKED
+list EMPTY (2 labeled contingencies); execution = D-11 r4 → r4 pass → ROOT r11
+(counter to ZERO, new end-to-end bar).
