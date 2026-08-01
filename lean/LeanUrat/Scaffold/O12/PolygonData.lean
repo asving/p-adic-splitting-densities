@@ -56,7 +56,9 @@ namespace FaceKind
 /-- The defining recurrence `x_{j+1} = x_j + L_j` (0-indexed, in range). -/
 theorem x_succ_of_lt (κ : FaceKind e) {j : ℕ} (hj : j < κ.faces.length) :
     κ.x (j + 1) = κ.x j + (κ.faces[j].1 : ℕ) := by
-  simp [FaceKind.x, List.take_succ, List.getElem?_eq_getElem hj]
+  simp only [FaceKind.x, List.take_add_one, List.getElem?_eq_getElem hj,
+    Option.toList_some, List.map_append, List.sum_append, List.map_cons,
+    List.map_nil, List.sum_cons, List.sum_nil, add_zero]
 
 /-- The rightmost vertex abscissa is the full width `e`. -/
 theorem x_length (κ : FaceKind e) : κ.x κ.faces.length = e := by
