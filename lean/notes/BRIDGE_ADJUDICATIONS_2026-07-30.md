@@ -2059,3 +2059,12 @@ pagination = (OM-SAT) slice only, LIT-1 session still owed; item 5 numbers CONFI
 + Mathlib probe ABSENT — paper cite stands; Prop 15 added to item 4); 19-display
 enumeration audit (16 edited/3 conformant). Acceptance: earned r12, re-anchored r13
 by VC16; r15 is a text change — VC17 OWED. PROJECT_STATE sync owed at next touch.
+
+## r15 EXECUTED: D-12r IS LITERATURE — ELEVEN [M] ROWS (428f470, 2026-08-05)
+The first full [M]->[T] row move: §4 entry w/ page-confirmed pins
+(Neukirch II §4 (4.6) p.129; HL-b printed-clause-absent DISPOSED via the
+companion lemma; Serre LF I §6 Prop 15 pp.17-18; OM-SAT via GMN TAMS
+pp.374/398-400). (H3) = {(ADM), (E-N)}. Enumeration audit 19/16. Honest
+§4/§3.3 sync (LIT-1 session still owed; Mathlib coprime-Hensel ABSENT —
+paper cite stands, Lean materialization owes the axiom loop). VC17
+launched.
