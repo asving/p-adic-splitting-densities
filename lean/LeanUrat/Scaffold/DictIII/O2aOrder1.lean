@@ -816,7 +816,7 @@ def ol6GateReader :
         simp at h
       · rintro ⟨-, hslope⟩
         have hcontra : (none : Option (ℕ × ℕ)) = some (S.e, S.h) := hslope
-        exact Option.noConfusion hcontra
+        simp at hcontra
   side_unique := by
     intro i S T hS hT _ _
     have hS' : S = o2aGateSide := by simpa [ol6GateData] using hS
@@ -856,9 +856,8 @@ theorem ol6Gate_consF :
     refine ⟨o2aGateSide, rfl, rfl, ?_⟩
     intro g μ hgμ
     have h : some ((1 : ℕ), (1 : ℕ)) = some (g, μ) := hgμ
-    injection h with h'
-    injection h' with _h1 h2
-    subst h2
+    simp only [Option.some.injEq, Prod.mk.injEq] at h
+    obtain ⟨rfl, rfl⟩ := h
     rfl
   | succ n =>
     simp at hν
@@ -1616,6 +1615,329 @@ theorem sideRead_gmnDataOrder1 {f : Polynomial ℤ_[p]} {c : ChainData p F}
     simp [gmnDataOrder1, hi, matchedDatum, matchedSideAt,
       requestedSlope_eq_none hle]
 
+/-! ## Unit III-A2 — Lemma R proper: recovery + injectivity on 𝔈°_f (O-2a rev-5 §2)
+
+Unit III-A2 (BP_III §2 wave-2 table row, line 765): "Lemma R injectivity on
+𝔈°_f | side-of-slope uniqueness (GMNReader row) + W2 | III-A1 | MED |
+O2a §2 Lemma R".
+
+Statement provenance (division-lead review flag, per the III-A1 section note
+above and the III-C3 precedent in `Carriers.lean`): like every wave-2 unit,
+III-A2 has NO §1-displayed signature; the source statement is O-2a rev-5 §2:
+"**Lemma R (recovery; the exact injectivity statement).** Let f be monic with
+disc f ≠ 0. On 𝔈°_f := {𝐇 ∈ 𝔈 : Cons_f(𝐇), every node continuing}, 𝐇 is a
+function of (f, Θ(𝐇)) — i.e. Θ is injective on 𝔈°_f (at orders ≥ 2 granting
+OL-1 for the well-definedness of the objects read)."  Rendered as TWO
+theorems over the landed carriers:
+
+* `lemmaR_recovers` — "𝐇 is a function of (f, Θ(𝐇))": unit III-A1's
+  `recoverEHist` returns `some 𝐇` on 𝔈°_f.  This also discharges the III-A1
+  section note's forward assignment ("That the map returns `some` and
+  reproduces every field on Θ(𝔈°_f) under `ConsF` is unit III-A2's content").
+  Every displayed recipe line is consumed: the side exists by (c1) (`ConsF`
+  supplies the very side `recoverNode` reads), ℓ/s/u are that side's data,
+  g = deg ψ̂_i (W4's dressing degree law), μ = the residual order ((c2) +
+  `resOrd_spec`), a₀ = the root order ((c0) + `rootOrd_spec`), inc = 1 iff
+  e·g ≥ 2 (W2).
+* `lemmaR_theta_injective` — "i.e. Θ is injective on 𝔈°_f": the two-history
+  form, proved by the row's own sketch — side-of-slope uniqueness (the
+  `GMNReader.side_unique` row: the two certificates' sides at level i carry
+  the SAME requested slope on the SAME polygon, hence coincide — "a polygon
+  has at most one side of a given slope") + W2 for `inc`, with W4's degree
+  law tying `g` through the shared dressing.
+
+Carrier reading of "the same GMN read" (`GMNData.SameRead` below): the
+brief's GMN objects (N_i^−(f), R_{λ_i}(f)) are canonical in (f, chain); the
+scaffold carries them as a PARAMETER (BP_III §1.2 note: constructed at order
+≤ 1 by III-A6, supplied at orders ≥ 2 by OL-1 — the brief's parenthetical
+"at orders ≥ 2 granting OL-1").  Injectivity is relative to both consistency
+certificates reading THE data of f along the common chain Θ(𝐇₁) = Θ(𝐇₂);
+`SameRead` renders that fieldwise (avoiding any cast across the type equality
+`GMNData f (Theta H₁) = GMNData f (Theta H₂)`); its `residualDegree` clause
+completes "the same read" (only `principalSides`/`residualOrder`/`rootOrder`
+are consumed here).
+
+The brief's "monic, disc f ≠ 0" preamble is not consumed at the carrier
+level (it feeds the SEMANTIC construction of the read, units III-A6/OL-1),
+so it is not hypothesized — both statements are the stronger unconditional
+forms. -/
+
+/-- 𝔈° membership (O2a rev-5 §2 Lemma R): every node of `H` is continuing
+    (`sel ≠ none`).  Together with `ConsF` this carves 𝔈°_f out of 𝔈. -/
+def EHist.AllContinuing (H : EHist p F) : Prop :=
+  ∀ ν ∈ H.nodes, ν.sel ≠ none
+
+/-- On an all-continuing history, `continuingPart` keeps every node. -/
+theorem EHist.continuingPart_nodes_of_allContinuing {H : EHist p F}
+    (hc : H.AllContinuing) : H.continuingPart.nodes = H.nodes :=
+  List.takeWhile_eq_self_iff.mpr fun ν hν =>
+    Option.isSome_iff_ne_none.mpr (hc ν hν)
+
+/-- The two consistency certificates read the SAME GMN data of `f` (fieldwise;
+    section note above). -/
+def GMNData.SameRead {f : Polynomial ℤ_[p]} {c₁ c₂ : ChainData p F}
+    (D₁ : GMNData f c₁) (D₂ : GMNData f c₂) : Prop :=
+  D₁.principalSides = D₂.principalSides ∧
+  D₁.residualOrder = D₂.residualOrder ∧
+  D₁.residualDegree = D₂.residualDegree ∧
+  D₁.rootOrder = D₂.rootOrder
+
+/-- Helper: two `ENodeData` with equal data fields are equal (the Prop rows
+    ride by proof irrelevance). -/
+theorem ENodeData.ext_fields {ν₁ ν₂ : ENodeData}
+    (he : ν₁.e = ν₂.e) (hh : ν₁.h = ν₂.h) (hl : ν₁.ℓ = ν₂.ℓ)
+    (hs : ν₁.s = ν₂.s) (hu : ν₁.u = ν₂.u) (hsel : ν₁.sel = ν₂.sel)
+    (hinc : ν₁.inc = ν₂.inc) : ν₁ = ν₂ := by
+  cases ν₁; cases ν₂
+  dsimp only at he hh hl hs hu hsel hinc
+  subst he hh hl hs hu hsel hinc
+  rfl
+
+/-- Helper: two `EHist` with equal data fields are equal (the Prop rows ride
+    by proof irrelevance; `psi0`/`psihat` cross `base`/`fld` as `HEq`). -/
+theorem EHist.ext_fields {H₁ H₂ : EHist p F}
+    (hbase : H₁.base = H₂.base) (hpsi0 : HEq H₁.psi0 H₂.psi0)
+    (ha0 : H₁.a0 = H₂.a0) (hnodes : H₁.nodes = H₂.nodes)
+    (hfld : H₁.fld = H₂.fld) (hpsihat : HEq H₁.psihat H₂.psihat) :
+    H₁ = H₂ := by
+  cases H₁; cases H₂
+  dsimp only at hbase hpsi0 ha0 hnodes hfld hpsihat
+  subst hbase ha0 hnodes hfld
+  obtain rfl := eq_of_heq hpsi0
+  obtain rfl := eq_of_heq hpsihat
+  rfl
+
+/-- Helper: equal towers + `HEq`-equal dressings give equal dressing degrees
+    (stated over VARIABLE tower functions so `subst` applies; instantiated at
+    `EHist.fld`/`EHist.psihat`). -/
+theorem psihat_natDegree_congr {f₁ f₂ : ℕ → Subfield F} (hf : f₁ = f₂)
+    {g₁ : (i : ℕ) → Polynomial ↥(f₁ i)} {g₂ : (i : ℕ) → Polynomial ↥(f₂ i)}
+    (hg : HEq g₁ g₂) (i : ℕ) : (g₁ i).natDegree = (g₂ i).natDegree := by
+  subst hf
+  rw [eq_of_heq hg]
+
+/-- Helper: `mapM` over `Option` returns exactly the pointwise-forced list. -/
+private theorem mapM_eq_some_of_pointwise {α β : Type} (g : α → Option β) :
+    ∀ (l : List α) (l' : List β), l.length = l'.length →
+      (∀ (i : ℕ) (x : α) (y : β), l[i]? = some x → l'[i]? = some y →
+        g x = some y) →
+      l.mapM g = some l'
+  | [], [], _, _ => rfl
+  | [], _ :: _, hlen, _ => by simp at hlen
+  | _ :: _, [], hlen, _ => by simp at hlen
+  | a :: t, b :: t', hlen, hpt => by
+    have h0 : g a = some b := hpt 0 a b rfl rfl
+    have htail : t.mapM g = some t' :=
+      mapM_eq_some_of_pointwise g t t' (by simpa using hlen)
+        (fun i x y hx hy => hpt (i + 1) x y
+          (by simpa using hx) (by simpa using hy))
+    simp [List.mapM_cons, h0, htail]
+
+/-- **Unit III-A2, recovery half — Lemma R's "𝐇 is a function of (f, Θ(𝐇))"**
+(O-2a rev-5 §2 Lemma R, first clause; section note above).
+
+On 𝔈°_f (well-formed, all-continuing, `ConsF`-consistent), unit III-A1's
+recovery map reproduces the history: every field of every node — the
+displayed recipe line by line ((c0) for a₀, (c1) + the side data for
+(e,h,ℓ,s,u), W4's degree law for g, (c2) for μ, W2 for inc). -/
+theorem lemmaR_recovers (f : Polynomial ℤ_[p]) {H : EHist p F}
+    (hwf : EWF H) (hc : H.AllContinuing)
+    {D : GMNData f (Theta H)} {R : GMNReader f (Theta H) D}
+    (hcons : ConsF f H D R) :
+    recoverEHist f (Theta H) D R H.hpsihat = some H := by
+  have hcp := EHist.continuingPart_nodes_of_allContinuing hc
+  have hslopes_eq : (Theta H).slopes = H.nodes.map (fun ν => (ν.e, ν.h)) := by
+    have h0 : (Theta H).slopes
+        = H.continuingPart.nodes.map (fun ν => (ν.e, ν.h)) := rfl
+    rw [h0, hcp]
+  have hslen : (Theta H).slopes.length = H.nodes.length := by
+    rw [hslopes_eq, List.length_map]
+  -- Pointwise node recovery: the displayed per-level recipe line.
+  have hpoint : ∀ (i : ℕ) (hi : i < H.nodes.length),
+      recoverNode f (Theta H) D R i = some (H.nodes[i]'hi) := by
+    intro i hi
+    set ν := H.nodes[i]'hi with hν_def
+    have hν : H.nodes[i]? = some ν := List.getElem?_eq_getElem hi
+    obtain ⟨S, hS, hfields, hres⟩ := hcons.2 i ν (by rw [hcp]; exact hν)
+    simp only [Prod.mk.injEq] at hfields
+    obtain ⟨hSe, hSh, hSl, hSs, hSu⟩ := hfields
+    obtain ⟨⟨g, μ⟩, hsel⟩ :=
+      Option.ne_none_iff_exists.mp (hc ν (List.mem_of_getElem? hν))
+    -- g = deg ψ̂_i (W4's dressing degree law).
+    have hgdeg : ((Theta H).psihat i).natDegree = g :=
+      (hwf.w4dress i ν g μ hν hsel.symm).2.2.1
+    -- μ = the residual order ((c2) + `resOrd_spec` is packaged in `ConsF`).
+    have hμ : R.resOrd i = μ := hres g μ hsel.symm
+    -- The slope lookup: level i requests exactly (ν.e, ν.h).
+    have hsl : (Theta H).slopes[i]? = some (ν.e, ν.h) := by
+      rw [hslopes_eq, List.getElem?_map, hν]; rfl
+    obtain ⟨hg1, hμ1, hμg⟩ := ν.hsel (g, μ) (Option.mem_def.mpr hsel.symm)
+    have w2 := hwf.w2 i ν g μ hν hsel.symm
+    -- Run the recovery recipe.
+    simp only [recoverNode, hsl, hS, Option.bind_some]
+    rw [dif_pos ⟨ν.he, ν.hh, ν.hcop,
+      by rw [hSl]; exact ν.hl,
+      by rw [hgdeg]; exact hg1,
+      by rw [hμ]; exact hμ1,
+      by rw [hμ, hgdeg, hSl]; exact hμg⟩]
+    rw [Option.pure_def]
+    refine congrArg some (ENodeData.ext_fields rfl rfl hSl hSs hSu ?_ ?_)
+    · -- sel: some (deg ψ̂_i, resOrd i) = ν.sel
+      show some (((Theta H).psihat i).natDegree, R.resOrd i) = ν.sel
+      rw [hgdeg, hμ]
+      exact hsel
+    · -- inc: decide (2 ≤ e·g) = ν.inc (W2)
+      show decide (2 ≤ ν.e * ((Theta H).psihat i).natDegree) = ν.inc
+      have hP : (2 ≤ ν.e * ((Theta H).psihat i).natDegree)
+          ↔ (2 ≤ ν.e * g) := by rw [hgdeg]
+      cases hb : ν.inc with
+      | true => exact decide_eq_true (hP.mpr (w2.mp hb))
+      | false =>
+        exact decide_eq_false fun hp =>
+          absurd (w2.mpr (hP.mp hp)) (by simp [hb])
+  -- Assemble the node list, then the history.
+  have hmapM : (List.range (Theta H).slopes.length).mapM
+      (recoverNode f (Theta H) D R) = some H.nodes := by
+    apply mapM_eq_some_of_pointwise
+    · rw [List.length_range, hslen]
+    · intro i x y hx hy
+      obtain ⟨hi, rfl⟩ : i < (Theta H).slopes.length ∧ x = i := by
+        rcases Nat.lt_or_ge i (Theta H).slopes.length with h | h
+        · exact ⟨h, by simpa [List.getElem?_range h] using hx.symm⟩
+        · rw [List.getElem?_eq_none (by simpa using h)] at hx
+          exact absurd hx (by simp)
+      have hi' : x < H.nodes.length := hslen ▸ hi
+      have hy' : H.nodes[x]'hi' = y := by
+        have := List.getElem?_eq_getElem hi'
+        rw [this] at hy
+        exact Option.some.inj hy
+      rw [hpoint x hi', hy']
+  have hroot : 1 ≤ R.rootOrd := by rw [hcons.1]; exact H.ha0
+  simp only [recoverEHist]
+  rw [hmapM, Option.bind_some, dif_pos hroot]
+  exact congrArg some
+    (EHist.ext_fields rfl HEq.rfl hcons.1 rfl rfl HEq.rfl)
+
+/-- **Unit III-A2 — Lemma R, injectivity on 𝔈°_f** (O-2a rev-5 §2 Lemma R,
+"i.e." clause).
+
+On all-continuing well-formed histories consistent with `f` over the same GMN
+read, `Θ` is injective: `Θ(𝐇₁) = Θ(𝐇₂) → 𝐇₁ = 𝐇₂`.  Proof = the unit row's
+sketch: `base`/`psi0`/`fld`/`psihat` ride on `Θ` directly; `a0` is the shared
+root order ((c0)); each node's `(e, h)` is the slope datum; `(ℓ, s, u)` ride
+the side, unique BY THE `side_unique` ROW among sides of the requested slope
+("a polygon has at most one side of a given slope"); `μ` is the shared
+residual order ((c2)); `g = deg ψ̂_i` (W4's degree law along the shared
+dressing); `inc = 1 iff e·g ≥ 2` (W2). -/
+theorem lemmaR_theta_injective (f : Polynomial ℤ_[p]) {H₁ H₂ : EHist p F}
+    (hwf₁ : EWF H₁) (hwf₂ : EWF H₂)
+    (hc₁ : H₁.AllContinuing) (hc₂ : H₂.AllContinuing)
+    {D₁ : GMNData f (Theta H₁)} {R₁ : GMNReader f (Theta H₁) D₁}
+    {D₂ : GMNData f (Theta H₂)} {R₂ : GMNReader f (Theta H₂) D₂}
+    (hread : D₁.SameRead D₂)
+    (hcons₁ : ConsF f H₁ D₁ R₁) (hcons₂ : ConsF f H₂ D₂ R₂)
+    (hTheta : Theta H₁ = Theta H₂) : H₁ = H₂ := by
+  -- Θ components: base, psi0, fld, psihat ride directly.
+  have hbase : H₁.base = H₂.base := congrArg ChainData.base hTheta
+  have hfld : H₁.fld = H₂.fld := congrArg ChainData.fld hTheta
+  have hpsi0 : HEq H₁.psi0 H₂.psi0 := by
+    have h : HEq (Theta H₁).psi0 (Theta H₂).psi0 := by rw [hTheta]
+    exact h
+  have hpsihat : HEq H₁.psihat H₂.psihat := by
+    have h : HEq (Theta H₁).psihat (Theta H₂).psihat := by rw [hTheta]
+    exact h
+  have hslopes : (Theta H₁).slopes = (Theta H₂).slopes :=
+    congrArg ChainData.slopes hTheta
+  -- The 𝔈° restriction: continuing parts are the whole node lists.
+  have hcp₁ := EHist.continuingPart_nodes_of_allContinuing hc₁
+  have hcp₂ := EHist.continuingPart_nodes_of_allContinuing hc₂
+  have hmap : H₁.nodes.map (fun ν => (ν.e, ν.h))
+      = H₂.nodes.map (fun ν => (ν.e, ν.h)) := by
+    have e₁ : (Theta H₁).slopes
+        = H₁.continuingPart.nodes.map (fun ν => (ν.e, ν.h)) := rfl
+    have e₂ : (Theta H₂).slopes
+        = H₂.continuingPart.nodes.map (fun ν => (ν.e, ν.h)) := rfl
+    rw [← hcp₁, ← hcp₂, ← e₁, ← e₂]
+    exact hslopes
+  have hlen : H₁.nodes.length = H₂.nodes.length := by
+    have := congrArg List.length hmap
+    simpa using this
+  -- a₀ recovery: (c0) + `rootOrd_spec` through the shared root order.
+  have ha0 : H₁.a0 = H₂.a0 := by
+    have h₁ := hcons₁.1
+    have h₂ := hcons₂.1
+    rw [R₁.rootOrd_spec] at h₁
+    rw [R₂.rootOrd_spec] at h₂
+    rw [← h₁, ← h₂, hread.2.2.2]
+  -- Node-by-node recovery.
+  have hnodes : H₁.nodes = H₂.nodes := by
+    apply List.ext_getElem?
+    intro i
+    by_cases hi : i < H₁.nodes.length
+    · obtain ⟨ν₁, hν₁⟩ : ∃ ν, H₁.nodes[i]? = some ν :=
+        ⟨_, List.getElem?_eq_getElem hi⟩
+      obtain ⟨ν₂, hν₂⟩ : ∃ ν, H₂.nodes[i]? = some ν :=
+        ⟨_, List.getElem?_eq_getElem (by omega : i < H₂.nodes.length)⟩
+      rw [hν₁, hν₂]
+      -- (c1) at index i, for both histories.
+      obtain ⟨S₁, hS₁, hfields₁, hres₁⟩ :=
+        hcons₁.2 i ν₁ (by rw [hcp₁]; exact hν₁)
+      obtain ⟨S₂, hS₂, hfields₂, hres₂⟩ :=
+        hcons₂.2 i ν₂ (by rw [hcp₂]; exact hν₂)
+      obtain ⟨hmem₁, hslope₁⟩ := (R₁.side_spec i S₁).mp hS₁
+      obtain ⟨hmem₂, hslope₂⟩ := (R₂.side_spec i S₂).mp hS₂
+      -- Transport side 2 into reader 1's frame (same polygon, same chain).
+      have hmem₂' : S₂ ∈ D₁.principalSides i := by
+        rw [hread.1]; exact hmem₂
+      have hslope₂' : HasRequestedSlope (Theta H₁) i S₂ := by
+        unfold HasRequestedSlope requestedSlope at hslope₂ ⊢
+        rw [hslopes]; exact hslope₂
+      -- SIDE-OF-SLOPE UNIQUENESS: the `side_unique` row.
+      have hSS : S₁ = S₂ :=
+        R₁.side_unique i S₁ S₂ hmem₁ hmem₂' hslope₁ hslope₂'
+      simp only [Prod.mk.injEq] at hfields₁ hfields₂
+      obtain ⟨hSe₁, hSh₁, hSl₁, hSs₁, hSu₁⟩ := hfields₁
+      obtain ⟨hSe₂, hSh₂, hSl₂, hSs₂, hSu₂⟩ := hfields₂
+      -- Continuing selections: both `sel`s are `some`.
+      obtain ⟨⟨g₁, μ₁⟩, hsel₁⟩ :=
+        Option.ne_none_iff_exists.mp (hc₁ ν₁ (List.mem_of_getElem? hν₁))
+      obtain ⟨⟨g₂, μ₂⟩, hsel₂⟩ :=
+        Option.ne_none_iff_exists.mp (hc₂ ν₂ (List.mem_of_getElem? hν₂))
+      -- g = deg ψ̂_i (W4's degree law) along the shared dressing.
+      have hg : g₁ = g₂ := by
+        have d₁ : (H₁.psihat i).natDegree = g₁ :=
+          (hwf₁.w4dress i ν₁ g₁ μ₁ hν₁ hsel₁.symm).2.2.1
+        have d₂ : (H₂.psihat i).natDegree = g₂ :=
+          (hwf₂.w4dress i ν₂ g₂ μ₂ hν₂ hsel₂.symm).2.2.1
+        rw [← d₁, ← d₂]
+        exact psihat_natDegree_congr hfld hpsihat i
+      -- μ = the residual order ((c2)) through the shared read.
+      have hμ : μ₁ = μ₂ := by
+        have m₁ := hres₁ g₁ μ₁ hsel₁.symm
+        have m₂ := hres₂ g₂ μ₂ hsel₂.symm
+        rw [R₁.resOrd_spec] at m₁
+        rw [R₂.resOrd_spec] at m₂
+        rw [← m₁, ← m₂, hread.2.1]
+      -- Data fields, one by one.
+      have he : ν₁.e = ν₂.e := by rw [← hSe₁, ← hSe₂, hSS]
+      have hh : ν₁.h = ν₂.h := by rw [← hSh₁, ← hSh₂, hSS]
+      have hl : ν₁.ℓ = ν₂.ℓ := by rw [← hSl₁, ← hSl₂, hSS]
+      have hs : ν₁.s = ν₂.s := by rw [← hSs₁, ← hSs₂, hSS]
+      have hu : ν₁.u = ν₂.u := by rw [← hSu₁, ← hSu₂, hSS]
+      have hsel : ν₁.sel = ν₂.sel := by
+        rw [← hsel₁, ← hsel₂, hg, hμ]
+      -- inc = 1 iff e·g ≥ 2 (W2), with e and g already tied.
+      have hinc : ν₁.inc = ν₂.inc := by
+        have w₁ := hwf₁.w2 i ν₁ g₁ μ₁ hν₁ hsel₁.symm
+        have w₂ := hwf₂.w2 i ν₂ g₂ μ₂ hν₂ hsel₂.symm
+        rw [he, hg] at w₁
+        exact Bool.eq_iff_iff.mpr (w₁.trans w₂.symm)
+      exact congrArg some
+        (ENodeData.ext_fields he hh hl hs hu hsel hinc)
+    · rw [List.getElem?_eq_none (le_of_not_gt hi),
+        List.getElem?_eq_none (by omega : H₂.nodes.length ≤ i)]
+  exact EHist.ext_fields hbase hpsi0 ha0 hnodes hfld hpsihat
+
 end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-A1 gate): expect Lean core only.
@@ -1626,6 +1948,10 @@ end LeanUrat.Scaffold.DictIII
 #print axioms LeanUrat.Scaffold.DictIII.o2aGateReader
 #print axioms LeanUrat.Scaffold.DictIII.o2aGate_side_returned
 #print axioms LeanUrat.Scaffold.DictIII.o2aGate_law_fires
+
+-- Footprint audit (unit III-A2 gate): expect Lean core only.
+#print axioms LeanUrat.Scaffold.DictIII.lemmaR_recovers
+#print axioms LeanUrat.Scaffold.DictIII.lemmaR_theta_injective
 
 -- Footprint audit (unit III-A6b): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.gmnReaderOrder1
