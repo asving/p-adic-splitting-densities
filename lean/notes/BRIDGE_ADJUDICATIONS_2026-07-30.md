@@ -1633,3 +1633,13 @@ displayed: restrict to resummed row terms, or general loop-word prefixes);
 lean/notes/openmath/D11r4_pass1_2026-08-04.md. Repair round dispatched;
 BP_II resume launched (sequential fleet #1); BP_III resume + BP_IV
 architect QUEUED behind it.
+
+## D-11 r4 PASS 2: GAPS-ONLY — THE LEAF HOLDS (2026-08-04)
+All six pass-1 repairs VALID/HONESTLY-PRICED (per-occurrence measures;
+route-(a) booked/solved-value distinction principled; Z^(L) exact;
+(O-4) product right; (K1-CANON) not smuggled — (NSF-INT) stays (H9)-grade;
+closure rescope valid + E-M3 recorded). NO-CHURN CHECK PASSED ((ROW-Sigma)
+totals, (G-a)-(G-d), M2 intact). 3 residual GAPS = audit/bookkeeping.
+Report: lean/notes/openmath/D11r4_pass2_2026-08-04.md. UNIT B FIRES:
+3-gap leaf patch then ROOT r11 (twelve rows, E-list per design V5,
+counter to ZERO) as one sequenced workflow.

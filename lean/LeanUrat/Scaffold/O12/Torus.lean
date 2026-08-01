@@ -1,6 +1,6 @@
 /-
 BP_II §1.8 — the torus telescope (`Scaffold/O12/Torus.lean`), units II-T2,
-II-T1, II-T5.
+II-T1, II-T5, II-T3, II-T4.
 Units in this file: II-T2 (`chain_telescope`) — the abstract fibered telescope
 over shared-vertex chains, anchor V_{k+1} := 1 at index k (L6d Step 2);
 II-T1 (`torus_count` + helpers `torus_monic_smul_mem` / `torus_fiber_smul_mem` /
@@ -22,7 +22,15 @@ repair lands. UNLIKE II-F8/F9, NO refutation touches II-T5's content —
 compiled instance artifacts (`pattern_degree_one_iff`,
 `pattern_degree_two_iff`, `Ppoly_atom_one_one`, `Ppoly_atom_two_one`,
 `Ppoly_pair_one_one`, `zfree_total_one`, `zfree_total_two`) verify the
-identity at d = 1, 2 with the index sets classified complete.
+identity at d = 1, 2 with the index sets classified complete;
+II-T4 (**PARTIAL — see its section note**): the blueprint display `theorem
+jc_prob ...` is ELIDED and its Ppoly factors are refuted-blocked with
+II-F8/F9 (`jc_prob_ppoly_refuted`); the unit's entire §2 proof content —
+divisor = total count (`card_fiber_lead_const`/`total_row_sum`/
+`jc_total_count`), joint probability = product of per-face factors
+(`jc_prob_core`, docstring form `jc_prob_core'` via `sub_one_mul_pow_pred`),
+marginals by one-face-unsummed telescope (`jc_marginal_core`/
+`jc_prob_marginal`), independence (`jc_prob_indep`) — is compiled in full.
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.FactF
@@ -635,5 +643,474 @@ theorem jc_count_ppoly_refuted (F : Type*) [Field F] [Fintype F] :
   linarith [h, h1]
 
 end JcCount
+
+/-! ## Unit II-T4 — `jc_prob` + independence (L6d Step 3): PARTIAL
+(statement elided in the blueprint; the Ppoly display refuted-blocked with
+II-F8/F9; the unit's entire §2 proof content compiled in full)
+
+**PROVENANCE.**
+
+* Blueprint: `lean/blueprints/BP_II.md` §1.8 (unit II-T4; row table §2, EASY).
+* Math source of record: L6d Step 3 + the consistency ¶.
+* Deps: II-T3 (`jc_count_core`, this file), II-T2 (`chain_telescope`, this
+  file), II-T1 (`torusEquiv` via `torus_row_sum`, this file).
+
+TRANSCRIPTION NOTE (II-T4). BP_II.md §1.8 displays this unit's statement as
+`theorem jc_prob ...` — ELIDED like II-T3/II-T5 (no verbatim Lean text to
+transcribe); the verbatim docstring is "**(JC) probability** +
+product-of-marginals: divide by (q−1)^k·q^{Σ(d_j−1)}; each factor is
+P_{ρ_j}(q)·(q^{d_j} − q^{d_j−1})⁻¹ — ONE element of ℚ(q), uniform in the
+characteristic (Fact F), face events independent."
+
+BLOCKED half (the Ppoly display). As with II-T3, the "P_{ρ_j}(q)" factors
+consume Fact F(iii) (unit II-F9), BLOCKED — refuted against the landed II-F3
+`patternOf` (`card_pattern_zfree_eq_refuted`, FactF.lean); the same k = 1,
+d₁ = 2, ρ₁ = {(1,2)} counterexample refutes every faithful fixing of the
+probability display too, compiled below as `jc_prob_ppoly_refuted` (the joint
+probability is 0, the intended product of Ppoly factors is 1/q ≠ 0). The
+docstring's "ONE element of ℚ(q), uniform in the characteristic" gloss rides
+on that Fact F tie and stays blocked with it. Reassign the Ppoly display
+together with II-F8/F9 after the `patternOf` dedup repair.
+
+PROVED half. The §2 row's ENTIRE proof content — "divide by
+(q−1)^k·q^{Σ(d_j−1)}; (q−1)q^{d−1} = q^d − q^{d−1}; marginals by re-running
+II-T2 with one face unsummed" — is immune to the multiplicity defect and is
+compiled in full, with the monic z-free count in place of the blocked
+"(Ppoly ρ_j).eval q" (exactly the `jc_count_core` device):
+
+* THE DIVISOR IS THE TOTAL: `card_fiber_lead_const` (each (lead, const)-pinned
+  fiber of degree-d polynomials has q^{d−1} points — the interior
+  coefficients), `total_row_sum` (its c-INDEPENDENT torus row sums
+  (q−1)·q^{d−1}), `jc_total_count` (the pattern-free telescope: the total
+  anchored-configuration count IS (q−1)^k·q^{Σ(d_j−1)}, so "divide by" is
+  honest probability, not formal algebra);
+* `jc_prob_core`: joint count / ((q−1)^k·q^{Σ(d_j−1)}) = ∏_j (per-face
+  factor), each factor = (monic z-free count)_j / ((q−1)·q^{d_j−1});
+* the display identity `sub_one_mul_pow_pred`: (x−1)·x^{d−1} = x^d − x^{d−1}
+  (d ≥ 1), and the docstring-shaped `jc_prob_core'` with the denominators
+  q^{d_j} − q^{d_j−1};
+* MARGINALS by re-running II-T2 with one face unsummed: `jc_marginal_core`
+  (face i keeps its pattern constraint, every other face runs unconstrained;
+  the telescope evaluates to (monic count)_i · ∏_{j≠i} (q−1)·q^{d_j−1}) and
+  `jc_prob_marginal` (marginal count / total = the face-i factor);
+* INDEPENDENCE `jc_prob_indep`: joint probability = ∏_i (marginal probability
+  of face i) — the product-of-marginals statement, all over the SAME total.
+
+HONESTY NOTE (the `1 ≤ d j` hypotheses). The counting statements carry the
+face-degree hypothesis d_j ≥ 1: L6d faces have positive degree, and the
+blueprint's own divisor presupposes it — at d = 0 the (lead, const)-pinned
+fiber count is {c = l}-dependent (1 or 0, never q^{0−1}-shaped) and
+(q−1)·q^{0−1} truncates to q−1 ≠ 1, so the displayed formula is FALSE at
+d = 0. The hypothesis is faithfulness to the elided display's face-kind
+data, not a weakening. -/
+
+section JcProb
+
+variable {F : Type*} [Field F]
+
+/-- Helper [unit II-T4] (not a blueprint statement): the coefficient formula
+of the interior-coefficient parametrization c + Σ_i g_i·X^{i+1} + l·X^d
+(constant c, interior coefficients g, leading coefficient l; d ≥ 1). -/
+private theorem interior_coeff {d : ℕ} (hd : 1 ≤ d) (l c : F)
+    (g : Fin (d - 1) → F) (n : ℕ) :
+    (Polynomial.C c +
+        (∑ i : Fin (d - 1), Polynomial.C (g i) * Polynomial.X ^ ((i : ℕ) + 1)) +
+        Polynomial.C l * Polynomial.X ^ d).coeff n =
+      if n = 0 then c
+      else if hn : n - 1 < d - 1 then g ⟨n - 1, hn⟩
+      else if n = d then l
+      else 0 := by
+  simp only [Polynomial.coeff_add, Polynomial.finsetSum_coeff, Polynomial.coeff_C_mul,
+    Polynomial.coeff_X_pow, Polynomial.coeff_C, mul_ite, mul_one, mul_zero]
+  by_cases h0 : n = 0
+  · subst h0
+    have hs : (∑ i : Fin (d - 1), if (0 : ℕ) = (i : ℕ) + 1 then g i else 0) = 0 :=
+      Finset.sum_eq_zero fun i _ => if_neg (by omega)
+    rw [hs]
+    simp [show ¬(0 : ℕ) = d by omega]
+  · by_cases h1 : n - 1 < d - 1
+    · have hs : (∑ i : Fin (d - 1), if n = (i : ℕ) + 1 then g i else 0)
+          = g ⟨n - 1, h1⟩ := by
+        rw [Finset.sum_eq_single (⟨n - 1, h1⟩ : Fin (d - 1))
+          (fun i _ hne => if_neg fun hc => hne (Fin.ext (show (i : ℕ) = n - 1 by omega)))
+          (fun hmem => absurd (Finset.mem_univ _) hmem)]
+        exact if_pos (show n = (n - 1) + 1 by omega)
+      rw [hs]
+      simp [h0, dif_pos h1, show ¬n = d by omega]
+    · by_cases h2 : n = d
+      · have hs : (∑ i : Fin (d - 1), if n = (i : ℕ) + 1 then g i else 0) = 0 :=
+          Finset.sum_eq_zero fun i _ => if_neg (by have := i.isLt; omega)
+        rw [hs]
+        simp [h2, show ¬d = 0 by omega, show ¬(d - 1 < d - 1) by omega]
+      · have hs : (∑ i : Fin (d - 1), if n = (i : ℕ) + 1 then g i else 0) = 0 :=
+          Finset.sum_eq_zero fun i _ => if_neg (by have := i.isLt; omega)
+        rw [hs]
+        simp [h0, h1, h2]
+
+/-- Helper [unit II-T4] (not a blueprint statement): the parametrized
+polynomial lies in the (lead, const)-pinned degree-d fiber. -/
+private theorem interior_mem {d : ℕ} (hd : 1 ≤ d) (l c : Fˣ) (g : Fin (d - 1) → F) :
+    (Polynomial.C (c : F) +
+        (∑ i : Fin (d - 1), Polynomial.C (g i) * Polynomial.X ^ ((i : ℕ) + 1)) +
+        Polynomial.C (l : F) * Polynomial.X ^ d) ∈
+      {R : Polynomial F | R.natDegree = d ∧ R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c} := by
+  have hcf := interior_coeff hd (l : F) (c : F) g
+  have htop : (Polynomial.C (c : F) +
+      (∑ i : Fin (d - 1), Polynomial.C (g i) * Polynomial.X ^ ((i : ℕ) + 1)) +
+      Polynomial.C (l : F) * Polynomial.X ^ d).coeff d = (l : F) := by
+    rw [hcf, if_neg (by omega : ¬d = 0), dif_neg (by omega : ¬(d - 1 < d - 1)), if_pos rfl]
+  have hdeg : (Polynomial.C (c : F) +
+      (∑ i : Fin (d - 1), Polynomial.C (g i) * Polynomial.X ^ ((i : ℕ) + 1)) +
+      Polynomial.C (l : F) * Polynomial.X ^ d).natDegree = d := by
+    refine le_antisymm (Polynomial.natDegree_le_iff_coeff_eq_zero.mpr fun N hN => ?_)
+      (Polynomial.le_natDegree_of_ne_zero (by rw [htop]; exact l.ne_zero))
+    rw [hcf, if_neg (by omega : ¬N = 0), dif_neg (by omega : ¬(N - 1 < d - 1)),
+      if_neg (by omega : ¬N = d)]
+  refine ⟨hdeg, ?_, ?_⟩
+  · show (Polynomial.C (c : F) +
+        (∑ i : Fin (d - 1), Polynomial.C (g i) * Polynomial.X ^ ((i : ℕ) + 1)) +
+        Polynomial.C (l : F) * Polynomial.X ^ d).coeff _ = (l : F)
+    rw [hdeg, htop]
+  · rw [hcf, if_pos rfl]
+
+/-- Helper [unit II-T4]: **the interior-coefficient parametrization** — a
+degree-d polynomial with pinned unit leading coefficient l and pinned unit
+constant coefficient c is exactly its d − 1 interior coefficients. -/
+noncomputable def fiberInteriorEquiv (d : ℕ) (hd : 1 ≤ d) (l c : Fˣ) :
+    {R : Polynomial F | R.natDegree = d ∧ R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c} ≃
+      (Fin (d - 1) → F) where
+  toFun R i := R.1.coeff ((i : ℕ) + 1)
+  invFun g := ⟨_, interior_mem hd l c g⟩
+  left_inv := by
+    rintro ⟨R, hdeg, hlead, hc0⟩
+    apply Subtype.ext
+    apply Polynomial.ext
+    intro n
+    show (Polynomial.C (c : F) +
+        (∑ i : Fin (d - 1), Polynomial.C (R.coeff ((i : ℕ) + 1)) *
+          Polynomial.X ^ ((i : ℕ) + 1)) +
+        Polynomial.C (l : F) * Polynomial.X ^ d).coeff n = R.coeff n
+    rw [interior_coeff hd]
+    by_cases h0 : n = 0
+    · subst h0
+      rw [if_pos rfl, hc0]
+    · rw [if_neg h0]
+      by_cases h1 : n - 1 < d - 1
+      · rw [dif_pos h1]
+        show R.coeff (n - 1 + 1) = R.coeff n
+        congr 1
+        omega
+      · rw [dif_neg h1]
+        by_cases h2 : n = d
+        · rw [if_pos h2, ← hlead]
+          show R.coeff R.natDegree = R.coeff n
+          rw [hdeg, h2]
+        · rw [if_neg h2]
+          exact (Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hdeg]; omega)).symm
+  right_inv := by
+    intro g
+    funext i
+    show (Polynomial.C (c : F) +
+        (∑ i : Fin (d - 1), Polynomial.C (g i) * Polynomial.X ^ ((i : ℕ) + 1)) +
+        Polynomial.C (l : F) * Polynomial.X ^ d).coeff ((i : ℕ) + 1) = g i
+    rw [interior_coeff hd, if_neg (by omega : ¬(i : ℕ) + 1 = 0),
+      dif_pos (by have := i.isLt; omega : (i : ℕ) + 1 - 1 < d - 1)]
+    congr 1
+
+/-- Helper [unit II-T4]: **the fiber count** — each (lead, const)-pinned fiber
+of degree-d polynomials has exactly q^{d−1} points (its interior
+coefficients, `fiberInteriorEquiv`). These are the counts whose torus row
+sums make the blueprint's divisor (q−1)^k·q^{Σ(d_j−1)} the honest TOTAL
+configuration count below. -/
+theorem card_fiber_lead_const [Fintype F] {d : ℕ} (hd : 1 ≤ d) (l c : Fˣ) :
+    Nat.card {R : Polynomial F | R.natDegree = d ∧ R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c}
+      = Fintype.card F ^ (d - 1) := by
+  rw [Nat.card_congr (fiberInteriorEquiv d hd l c), Nat.card_fun,
+    Nat.card_eq_fintype_card (α := F), Nat.card_eq_fintype_card (α := Fin (d - 1)),
+    Fintype.card_fin]
+
+open Classical in
+/-- Helper [unit II-T4], **the pattern-free torus row sums**: for every anchor
+c ∈ Fˣ, the UNCONSTRAINED interior-coefficient counts sum over the lead
+coordinate to (q−1)·q^{d−1} — c-independent, the row value of the total-count
+telescope (the pattern-free companion of II-T1's `torus_row_sum`). -/
+theorem total_row_sum [Fintype F] {d : ℕ} (hd : 1 ≤ d) (c : Fˣ) :
+    ∑ l : Fˣ, Nat.card {R : Polynomial F | R.natDegree = d ∧
+        R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c}
+      = (Fintype.card F - 1) * Fintype.card F ^ (d - 1) := by
+  rw [Finset.sum_congr rfl fun l _ => card_fiber_lead_const hd l c, Finset.sum_const,
+    Finset.card_univ, Fintype.card_units, smul_eq_mul]
+
+open Classical in
+/-- **The divisor is the total count** [unit II-T4]: the anchored chain sum of
+the pattern-FREE interior-coefficient counts — the total number of joint
+residue configurations — equals the blueprint's divisor (q−1)^k·q^{Σ(d_j−1)}.
+This is what makes `jc_prob_core`'s division an honest probability. -/
+theorem jc_total_count (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (hd : ∀ j, 1 ≤ d j) :
+    (∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          Nat.card {R : Polynomial F | R.natDegree = d j ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩)}
+      else 0) =
+    (Fintype.card F - 1) ^ k * Fintype.card F ^ (∑ j : Fin k, (d j - 1)) := by
+  refine (chain_telescope (F := F) (k := k)
+    (fun j l c => Nat.card {R : Polynomial F | R.natDegree = d j ∧
+      R.leadingCoeff = ↑l ∧ R.coeff 0 = ↑c})
+    (fun j => (Fintype.card F - 1) * Fintype.card F ^ (d j - 1))
+    (fun j c => total_row_sum (hd j) c)).trans ?_
+  rw [Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Fintype.card_fin,
+    Finset.prod_pow_eq_pow_sum]
+
+open Classical in
+/-- **The marginal count** [unit II-T4] — the §2 sketch's "re-running II-T2
+with one face unsummed": in the anchored chain, face i keeps its pattern
+constraint ρ_i while every other face runs pattern-free; the telescope
+evaluates to (monic z-free count)_i · ∏_{j≠i} (q−1)·q^{d_j−1}. -/
+theorem jc_marginal_core (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (hd : ∀ j, 1 ≤ d j) (ρ : Fin k → Multiset (ℕ+ × ℕ+)) (i : Fin k) :
+    (∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          (if j = i then
+            Nat.card {R : Polynomial F | R.natDegree = d j ∧
+              R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+              R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+              patternOf R = ρ j}
+          else
+            Nat.card {R : Polynomial F | R.natDegree = d j ∧
+              R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+              R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩)})
+      else 0) =
+    Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d i ∧
+        S.coeff 0 ≠ 0 ∧ patternOf S = ρ i} *
+      ∏ j ∈ Finset.univ.erase i, ((Fintype.card F - 1) * Fintype.card F ^ (d j - 1)) := by
+  refine (chain_telescope (F := F) (k := k)
+    (fun j l c =>
+      if j = i then
+        Nat.card {R : Polynomial F | R.natDegree = d j ∧ R.leadingCoeff = ↑l ∧
+          R.coeff 0 = ↑c ∧ patternOf R = ρ j}
+      else
+        Nat.card {R : Polynomial F | R.natDegree = d j ∧ R.leadingCoeff = ↑l ∧
+          R.coeff 0 = ↑c})
+    (fun j =>
+      if j = i then
+        Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
+          S.coeff 0 ≠ 0 ∧ patternOf S = ρ j}
+      else (Fintype.card F - 1) * Fintype.card F ^ (d j - 1))
+    (fun j c => ?_)).trans ?_
+  · by_cases hji : j = i
+    · simp only [if_pos hji]
+      exact torus_row_sum (d j) (ρ j) c
+    · simp only [if_neg hji]
+      exact total_row_sum (hd j) c
+  · rw [← Finset.mul_prod_erase Finset.univ _ (Finset.mem_univ i)]
+    simp only [if_pos rfl]
+    exact congrArg _ (Finset.prod_congr rfl fun j hj =>
+      if_neg (Finset.ne_of_mem_erase hj))
+
+/-- **The blueprint's display identity** [unit II-T4]: (x−1)·x^{d−1} =
+x^d − x^{d−1} for d ≥ 1 — the per-face total in its docstring form. -/
+theorem sub_one_mul_pow_pred (x : ℚ) {d : ℕ} (hd : 1 ≤ d) :
+    (x - 1) * x ^ (d - 1) = x ^ d - x ^ (d - 1) := by
+  obtain ⟨m, rfl⟩ := Nat.exists_eq_add_of_le hd
+  rw [show 1 + m - 1 = m by omega, pow_add, pow_one]
+  ring
+
+/-- Helper [unit II-T4]: the ℚ-cast of the per-face total (q−1)·q^m. -/
+private theorem cast_face_total [Fintype F] (m : ℕ) :
+    (((Fintype.card F - 1) * Fintype.card F ^ m : ℕ) : ℚ)
+      = ((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ m := by
+  have h1 : 1 ≤ Fintype.card F := Fintype.card_pos
+  push_cast [Nat.cast_sub h1]
+  ring
+
+open Classical in
+/-- **(JC) probability, telescope content** [unit II-T4, PROVED half — see
+the section note: the blueprint display is elided and its Ppoly numerators
+are refuted-blocked with II-F8/F9]: the joint configuration count divided by
+the blueprint divisor (q−1)^k·q^{Σ(d_j−1)} — which IS the total count,
+`jc_total_count` — equals the product over faces of
+(monic z-free count)_j / ((q−1)·q^{d_j−1}): one ℚ-value per face. -/
+theorem jc_prob_core (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (ρ : Fin k → Multiset (ℕ+ × ℕ+)) :
+    ((∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          Nat.card {R : Polynomial F | R.natDegree = d j ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+            patternOf R = ρ j}
+      else 0 : ℕ) : ℚ) /
+      (((Fintype.card F : ℚ) - 1) ^ k *
+        (Fintype.card F : ℚ) ^ (∑ j : Fin k, (d j - 1))) =
+    ∏ j : Fin k,
+      (Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
+          S.coeff 0 ≠ 0 ∧ patternOf S = ρ j} : ℚ) /
+        (((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ (d j - 1)) := by
+  rw [jc_count_core F d ρ, Nat.cast_prod, Finset.prod_div_distrib]
+  congr 1
+  rw [Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Fintype.card_fin,
+    Finset.prod_pow_eq_pow_sum]
+
+open Classical in
+/-- The docstring-shaped factors [unit II-T4]: via the display identity
+`sub_one_mul_pow_pred`, each face factor of `jc_prob_core` is
+(monic z-free count)_j / (q^{d_j} − q^{d_j−1}) — the blueprint's
+"P_{ρ_j}(q)·(q^{d_j} − q^{d_j−1})⁻¹" with the (BLOCKED) Ppoly numerator
+replaced by the count it denotes under the intended repaired Fact F(iii). -/
+theorem jc_prob_core' (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (hd : ∀ j, 1 ≤ d j) (ρ : Fin k → Multiset (ℕ+ × ℕ+)) :
+    ((∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          Nat.card {R : Polynomial F | R.natDegree = d j ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+            patternOf R = ρ j}
+      else 0 : ℕ) : ℚ) /
+      (((Fintype.card F : ℚ) - 1) ^ k *
+        (Fintype.card F : ℚ) ^ (∑ j : Fin k, (d j - 1))) =
+    ∏ j : Fin k,
+      (Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d j ∧
+          S.coeff 0 ≠ 0 ∧ patternOf S = ρ j} : ℚ) /
+        ((Fintype.card F : ℚ) ^ (d j) - (Fintype.card F : ℚ) ^ (d j - 1)) := by
+  rw [jc_prob_core F d ρ]
+  exact Finset.prod_congr rfl fun j _ => by rw [sub_one_mul_pow_pred _ (hd j)]
+
+open Classical in
+/-- **The marginal probability** [unit II-T4]: face i's marginal count (its
+pattern constrained, every other face free) divided by the SAME total
+(q−1)^k·q^{Σ(d_j−1)} equals the face-i factor of `jc_prob_core` — the
+per-face events have exactly the product's factors as probabilities. -/
+theorem jc_prob_marginal (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (hd : ∀ j, 1 ≤ d j) (ρ : Fin k → Multiset (ℕ+ × ℕ+)) (i : Fin k) :
+    ((∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          (if j = i then
+            Nat.card {R : Polynomial F | R.natDegree = d j ∧
+              R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+              R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+              patternOf R = ρ j}
+          else
+            Nat.card {R : Polynomial F | R.natDegree = d j ∧
+              R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+              R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩)})
+      else 0 : ℕ) : ℚ) /
+      (((Fintype.card F : ℚ) - 1) ^ k *
+        (Fintype.card F : ℚ) ^ (∑ j : Fin k, (d j - 1))) =
+    (Nat.card {S : Polynomial F | S.Monic ∧ S.natDegree = d i ∧
+        S.coeff 0 ≠ 0 ∧ patternOf S = ρ i} : ℚ) /
+      (((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ (d i - 1)) := by
+  have hq : (1 : ℚ) < (Fintype.card F : ℚ) := by exact_mod_cast Fintype.one_lt_card
+  have hX : (∏ j ∈ Finset.univ.erase i,
+      (((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ (d j - 1))) ≠ 0 :=
+    Finset.prod_ne_zero_iff.mpr fun j _ =>
+      mul_ne_zero (by linarith) (pow_ne_zero _ (by linarith))
+  have hD : ((Fintype.card F : ℚ) - 1) ^ k *
+      (Fintype.card F : ℚ) ^ (∑ j : Fin k, (d j - 1)) =
+      (((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ (d i - 1)) *
+        ∏ j ∈ Finset.univ.erase i,
+          (((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ (d j - 1)) := by
+    rw [Finset.mul_prod_erase Finset.univ
+        (fun j => ((Fintype.card F : ℚ) - 1) * (Fintype.card F : ℚ) ^ (d j - 1))
+        (Finset.mem_univ i),
+      Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Fintype.card_fin,
+      Finset.prod_pow_eq_pow_sum]
+  rw [jc_marginal_core F d hd ρ i, Nat.cast_mul, Nat.cast_prod,
+    Finset.prod_congr rfl fun j _ => cast_face_total (F := F) (d j - 1), hD]
+  exact mul_div_mul_right _ _ hX
+
+open Classical in
+/-- **INDEPENDENCE — the product of marginals** [unit II-T4]: the joint
+probability equals the product over faces of the marginal probabilities,
+every count divided by the SAME total (q−1)^k·q^{Σ(d_j−1)}
+(= the total configuration count, `jc_total_count`). This is the L6d Step 3
+independence statement, with the per-face factor values supplied by
+`jc_prob_core`/`jc_prob_marginal`. -/
+theorem jc_prob_indep (F : Type*) [Field F] [Fintype F] {k : ℕ}
+    (d : Fin k → ℕ) (hd : ∀ j, 1 ≤ d j) (ρ : Fin k → Multiset (ℕ+ × ℕ+)) :
+    ((∑ V : Fin (k + 1) → Fˣ,
+      if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+        ∏ j : Fin k,
+          Nat.card {R : Polynomial F | R.natDegree = d j ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+            patternOf R = ρ j}
+      else 0 : ℕ) : ℚ) /
+      (((Fintype.card F : ℚ) - 1) ^ k *
+        (Fintype.card F : ℚ) ^ (∑ j : Fin k, (d j - 1))) =
+    ∏ i : Fin k,
+      ((∑ V : Fin (k + 1) → Fˣ,
+        if V ⟨k, Nat.lt_succ_self k⟩ = 1 then
+          ∏ j : Fin k,
+            (if j = i then
+              Nat.card {R : Polynomial F | R.natDegree = d j ∧
+                R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+                R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+                patternOf R = ρ j}
+            else
+              Nat.card {R : Polynomial F | R.natDegree = d j ∧
+                R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+                R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩)})
+        else 0 : ℕ) : ℚ) /
+        (((Fintype.card F : ℚ) - 1) ^ k *
+          (Fintype.card F : ℚ) ^ (∑ j : Fin k, (d j - 1))) := by
+  rw [jc_prob_core F d ρ]
+  exact Finset.prod_congr rfl fun i _ => (jc_prob_marginal F d hd ρ i).symm
+
+open Classical in
+/-- **BLOCKED(II-T4) refutation**: the intended (JC) probability display
+"joint count / ((q−1)^k·q^{Σ(d_j−1)}) = ∏_j (Ppoly ρ_j).eval q /
+(q^{d_j} − q^{d_j−1})" (BP_II §1.8, elided) is FALSE against the landed
+`patternOf`, at the same witness as II-T3's `jc_count_ppoly_refuted`:
+k = 1, d₁ = 2, ρ₁ = {(1,2)}, over EVERY finite field — the joint probability
+is 0 (`patternOf_ne_atom_one_two`) while the intended right side is
+(q−1)/(q²−q) = 1/q ≠ 0 (`Ppoly_atom_one_two`). -/
+theorem jc_prob_ppoly_refuted (F : Type*) [Field F] [Fintype F] :
+    ¬ ((((∑ V : Fin 2 → Fˣ,
+        if V ⟨1, Nat.lt_succ_self 1⟩ = 1 then
+          ∏ j : Fin 1,
+            Nat.card {R : Polynomial F | R.natDegree = 2 ∧
+              R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+              R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+              patternOf R = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))}
+        else 0 : ℕ) : ℚ) /
+        (((Fintype.card F : ℚ) - 1) ^ 1 * (Fintype.card F : ℚ) ^ 1)
+      = ∏ _j : Fin 1,
+          (Ppoly ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))).eval
+              (Fintype.card F : ℚ) /
+            ((Fintype.card F : ℚ) ^ 2 - (Fintype.card F : ℚ) ^ 1))) := by
+  intro h
+  haveI : IsEmpty ↥{S : Polynomial F | S.Monic ∧ S.natDegree = 2 ∧ S.coeff 0 ≠ 0 ∧
+      patternOf S = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))} :=
+    ⟨fun ⟨S, _, _, _, hpat⟩ => patternOf_ne_atom_one_two S hpat⟩
+  have hcore : (∑ V : Fin 2 → Fˣ,
+      if V ⟨1, Nat.lt_succ_self 1⟩ = 1 then
+        ∏ j : Fin 1,
+          Nat.card {R : Polynomial F | R.natDegree = 2 ∧
+            R.leadingCoeff = ↑(V ⟨j, Nat.lt.step j.isLt⟩) ∧
+            R.coeff 0 = ↑(V ⟨j + 1, Nat.succ_lt_succ j.isLt⟩) ∧
+            patternOf R = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))}
+      else 0)
+      = ∏ _j : Fin 1,
+          Nat.card ↥{S : Polynomial F | S.Monic ∧ S.natDegree = 2 ∧ S.coeff 0 ≠ 0 ∧
+            patternOf S = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))} :=
+    jc_count_core F (fun _ => 2)
+      (fun _ => ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)))
+  rw [hcore, Fin.prod_univ_one, Nat.card_of_isEmpty, Nat.cast_zero, zero_div,
+    Fin.prod_univ_one, Ppoly_atom_one_two] at h
+  have h1 : (1 : ℚ) < (Fintype.card F : ℚ) := by exact_mod_cast Fintype.one_lt_card
+  have hden : (Fintype.card F : ℚ) ^ 2 - (Fintype.card F : ℚ) ^ 1 ≠ 0 := by
+    have : (Fintype.card F : ℚ) ^ 1 < (Fintype.card F : ℚ) ^ 2 := by nlinarith
+    linarith
+  rcases div_eq_zero_iff.mp h.symm with hnum | hzero
+  · linarith
+  · exact hden hzero
+
+end JcProb
 
 end LeanUrat.Scaffold
