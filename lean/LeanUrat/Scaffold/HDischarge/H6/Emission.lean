@@ -581,4 +581,251 @@ structure TerminalSeamHypsE (p : ℕ) [Fact p.Prime]
     E.emitsHen f H EF → DecHenSeam f H D →
     EF = (1, H.psi0.natDegree)
 
+/-! ## Gate G1 — the non-vacuity countermodel (compiled)
+
+Gate spec transcribed VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 Gates
+(retagged at fold round 1, Codex finding 15): "a compiled `E_junk` with
+`¬ TerminalSeamHypsE p F E_junk`. EXPLICIT witness demands (the certificate
+antecedents make junk-D routes unavailable, so the countermodel must supply a
+CERTIFIED seam): k′ = 0 seam with `H.nodes = []`, `a0 := 1`, `psi0 := X`
+(monic irreducible, f₀ = 1); D := the canonical order-0 read (A6b's positive
+face — real corpus content); R := the canonical reader; ConsF holds
+(vacuous node clause + rootOrd = a0); E_junk emitsHen with EF := (2, 2) ≠
+(1, 1) — violates tVERDhen. The repaired rows are NOT tautologies (the exact
+failure mode of the superseded III-H5 display, D-1..D-4)."
+
+Witness inventory, as landed below (all demands met):
+* seam `henGateHist` (p = 2, F = ZMod 2): `nodes = []`, `a0 = 1`,
+  `psi0 = X` (monic irreducible over ↥⊤; f₀ = natDegree X = 1);
+* D = `henGateData` := `gmnDataOrder1` at f = X — A6b's positive face
+  certifies it (`readThroughIota_order1_gate`, real corpus content);
+* R = `henGateReader` := `gmnReaderOrder1` (the canonical reader), its
+  `OL5`/`OL3min` hypotheses PROVED at this seam (`principalData_X = []`
+  makes both vacuous; the k′ = 0 chain requests no slope);
+* `ConsF` holds: node clause vacuous (`continuingPart.nodes = []`),
+  `rootOrd = multiplicity X X = 1 = a0`;
+* `E_junk` emitsHen exactly the pair (2, 2) at nodeless seams — the seam is
+  a `DecHenSeam` (a₀ = 1 booking), so `tVERDhen` demands (1, f₀) = (1, 1)
+  ≠ (2, 2): the rows are refutable, hence not tautologies. -/
+
+/-- G1 — the certified k′ = 0 seam: `nodes = []`, `a₀ = 1`, `ψ̂₀ = X`
+(monic irreducible, f₀ = 1); tower dressing borrowed from the III-A9 gate
+world (`o2aGatePoly`: monic, irreducible, ≠ X — junk off-range, per the
+`EHist.psihat` charter). -/
+noncomputable def henGateHist : EHist 2 (ZMod 2) where
+  base := ⊤
+  psi0 := Polynomial.X
+  hpsi0 := ⟨Polynomial.monic_X, Polynomial.irreducible_X⟩
+  a0 := 1
+  ha0 := le_rfl
+  nodes := []
+  fld := fun _ => ⊤
+  psihat := fun _ => o2aGatePoly
+  hpsihat := fun _ =>
+    ⟨o2aGatePoly_monic, o2aGatePoly_irreducible, o2aGatePoly_ne_X⟩
+
+/-- The G1 seam's chain is empty: k′ = 0 — no requested levels at all. -/
+theorem henGate_slopes_length : (Theta henGateHist).slopes.length = 0 := rfl
+
+private theorem henGate_hlen : (Theta henGateHist).slopes.length ≤ 1 := by
+  rw [henGate_slopes_length]; exact Nat.zero_le 1
+
+/-- No level requests a slope on the empty chain. -/
+private theorem henGate_requestedSlope (i : ℕ) :
+    requestedSlope (Theta henGateHist) i = none :=
+  requestedSlope_eq_none (by rw [henGate_slopes_length]; exact Nat.zero_le i)
+
+/-! ### The corpus base read of f = X: NO principal side
+
+Valuation support of X over ℤ_[2]: the single dot (1, 0) (coeff 1 = 1 of
+valuation 0; coeff 0 = 0 — not in support). A one-dot hull has one vertex and
+no sides, so `principalData X = []`. Computation mirrors the A6b negative-gate
+template above (`negGate_*`), one dot instead of two. -/
+
+/-- The G1-gate support: the valuation support of X over ℤ_[2]. -/
+private def xGateSupport : Finset (ℕ × ℕ) := {(1, 0)}
+
+private lemma xGateSupport_nonempty : xGateSupport.Nonempty :=
+  ⟨(1, 0), by simp [xGateSupport]⟩
+
+open LeanUrat.OM in
+/-- The diagonal (horizontal) line through (1,0) is a valid supporting line. -/
+private lemma xGate_diag_valid :
+    (((1, 0), (1, 0)) : (ℕ × ℕ) × (ℕ × ℕ))
+      ∈ NewtonPolygon.validLines xGateSupport := by
+  classical
+  rw [NewtonPolygon.validLines, Finset.mem_filter]
+  refine ⟨Finset.mem_product.2 ⟨by simp [xGateSupport], by simp [xGateSupport]⟩, ?_⟩
+  intro Q hQ
+  rw [xGateSupport, Finset.mem_singleton] at hQ
+  subst hQ
+  norm_num [NewtonPolygon.pairLine, NewtonPolygon.pairSlope]
+
+open LeanUrat.OM in
+private lemma xGate_npHeight_one :
+    NewtonPolygon.npHeight xGateSupport xGateSupport_nonempty ((1 : ℕ) : ℚ)
+      = 0 := by
+  refine le_antisymm ?_ ?_
+  · have := NewtonPolygon.npHeight_le xGateSupport xGateSupport_nonempty
+      (i := 1) (v := 0) (by simp [xGateSupport])
+    simpa using this
+  · have hle := Finset.le_sup'
+      (fun PR : (ℕ × ℕ) × (ℕ × ℕ) => NewtonPolygon.pairLine PR.1 PR.2 ((1 : ℕ) : ℚ))
+      xGate_diag_valid
+    refine le_trans (le_of_eq ?_) hle
+    norm_num [NewtonPolygon.pairLine, NewtonPolygon.pairSlope]
+
+open LeanUrat.OM in
+/-- The one-dot hull: a single vertex, hence NO sides. -/
+private lemma xGate_npSides :
+    NewtonPolygon.npSides xGateSupport xGateSupport_nonempty = [] := by
+  have hdots : NewtonPolygon.hullDots xGateSupport xGateSupport_nonempty
+      = xGateSupport := by
+    classical
+    rw [NewtonPolygon.hullDots]
+    refine Finset.filter_true_of_mem fun P hP => ?_
+    rw [xGateSupport, Finset.mem_singleton] at hP
+    subst hP
+    change ((0 : ℕ) : ℚ) = _
+    rw [xGate_npHeight_one]; norm_num
+  have himg : xGateSupport.image Prod.fst = {1} := by decide
+  have hsort : ({(1 : ℕ)} : Finset ℕ).sort (· ≤ ·) = [1] :=
+    Finset.sort_singleton _ _
+  have hd1 : NewtonPolygon.hullDotAt xGateSupport xGateSupport_nonempty 1
+      = (1, 0) := by
+    unfold NewtonPolygon.hullDotAt NewtonPolygon.hullHeightAt
+    rw [xGate_npHeight_one]
+    norm_num
+  unfold NewtonPolygon.npSides NewtonPolygon.npVertices
+    NewtonPolygon.npVerticesFull NewtonPolygon.hullAbscissae
+  rw [hdots, himg, hsort, List.map_cons, List.map_nil, hd1]
+  rfl
+
+open LeanUrat.OM in
+/-- The compiled corpus base read of f = X over ℤ_[2]: NO principal side
+(the one-dot polygon (1, 0) has no sides at all). -/
+theorem principalData_X :
+    principalData (Polynomial.X : Polynomial ℤ_[2]) = [] := by
+  have hsupp : M2.valSupport 2 (Polynomial.X : Polynomial ℤ_[2])
+      = xGateSupport := by
+    have hchar := (M2.valSupport_facts 2 (Polynomial.X : Polynomial ℤ_[2])).1
+    ext ⟨i, v⟩
+    rw [hchar i v, xGateSupport, Finset.mem_singleton]
+    constructor
+    · rintro ⟨hne, rfl⟩
+      match i with
+      | 0 => exact absurd Polynomial.coeff_X_zero hne
+      | 1 =>
+          rw [Prod.mk.injEq]
+          exact ⟨rfl, by
+            rw [M2.coeffVal, Polynomial.coeff_X_one, PadicInt.valuation_one]⟩
+      | (n + 2) =>
+          exfalso
+          apply hne
+          simp [Polynomial.coeff_X]
+    · rintro h
+      rw [Prod.mk.injEq] at h
+      obtain ⟨rfl, rfl⟩ := h
+      exact ⟨by rw [Polynomial.coeff_X_one]; exact one_ne_zero,
+        by rw [M2.coeffVal, Polynomial.coeff_X_one, PadicInt.valuation_one]⟩
+  have hne : (M2.valSupport 2 (Polynomial.X : Polynomial ℤ_[2])).Nonempty := by
+    rw [hsupp]; exact xGateSupport_nonempty
+  have hsl : sideList (Polynomial.X : Polynomial ℤ_[2]) = [] := by
+    rw [sideList, dif_pos hne,
+      NewtonPolygon.npSides_congr _ xGateSupport hne xGateSupport_nonempty hsupp,
+      xGate_npSides]
+  rw [principalData, principalSideList, hsl]
+  rfl
+
+/-- G1 — the canonical order-0 read at the seam: A6b's positive face
+(`gmnDataOrder1`, real corpus content), certified by
+`readThroughIota_order1_gate`. -/
+noncomputable def henGateData :
+    GMNData (Polynomial.X : Polynomial ℤ_[2]) (Theta henGateHist) :=
+  gmnDataOrder1 (Polynomial.X : Polynomial ℤ_[2]) (Theta henGateHist)
+    gateIota gateIota henGate_hlen
+
+/-- Every side list of the G1 datum is empty: the deep levels by
+construction, level 0 because `principalData X = []`. -/
+private theorem henGateData_principalSides (i : ℕ) :
+    henGateData.principalSides i = [] := by
+  by_cases hi : i = 0
+  · subst hi
+    simp [henGateData, gmnDataOrder1, principalData_X]
+  · simp [henGateData, gmnDataOrder1, hi]
+
+/-- The G1 datum satisfies the `OL5` API row (uniqueness leg) — vacuously:
+the empty chain requests no slope. -/
+theorem henGateData_OL5 :
+    OL5 (Polynomial.X : Polynomial ℤ_[2]) (Theta henGateHist) henGateData := by
+  intro i S T _ _ hS _
+  simp [HasRequestedSlope, henGate_requestedSlope] at hS
+
+/-- The G1 datum satisfies the `OL3min` API row (residual-degree law) —
+vacuously: every side list is empty. -/
+theorem henGateData_OL3min :
+    OL3min (Polynomial.X : Polynomial ℤ_[2]) (Theta henGateHist) henGateData := by
+  intro i S hS
+  rw [henGateData_principalSides] at hS
+  exact absurd hS (List.not_mem_nil)
+
+/-- G1 — THE canonical reader at the seam (`gmnReaderOrder1`, unit III-A6b),
+its two API hypotheses discharged above. -/
+noncomputable def henGateReader :
+    GMNReader (Polynomial.X : Polynomial ℤ_[2]) (Theta henGateHist) henGateData :=
+  gmnReaderOrder1 henGateData_OL5 henGateData_OL3min
+
+/-- G1 — `ConsF` holds at the certified seam: the node clause is vacuous
+(no continuing nodes), and `rootOrd = multiplicity X X = 1 = a₀`. -/
+theorem henGate_consF :
+    ConsF (Polynomial.X : Polynomial ℤ_[2]) henGateHist henGateData
+      henGateReader := by
+  constructor
+  · show multiplicity (Polynomial.X : Polynomial ↥(⊤ : Subfield (ZMod 2)))
+        (((Polynomial.X : Polynomial ℤ_[2]).map PadicInt.toZMod).map gateIota)
+      = 1
+    rw [Polynomial.map_X, Polynomial.map_X]
+    exact multiplicity_self
+  · intro i ν hν
+    simp [EHist.continuingPart, henGateHist] at hν
+
+/-- G1 — the seam is a hen-decided seam: no nodes, and `a₀ = 1` (the Hensel
+booking branch — no −∞ side needed). -/
+theorem henGate_decHenSeam :
+    DecHenSeam (Polynomial.X : Polynomial ℤ_[2]) henGateHist henGateData :=
+  ⟨rfl, Or.inl rfl⟩
+
+/-- G1 — the junk emission: reaches exactly the nodeless seams (so
+`reaches_continuing` is vacuous), never emits on the full channel, and books
+the WRONG machine-record pair (2, 2) on the `emitsHen` channel at every
+nodeless seam. -/
+def E_junk : TerminalEmission 2 (ZMod 2) where
+  reaches := fun _ H => H.nodes = []
+  emits := fun _ _ _ _ => False
+  emitsHen := fun _ H EF => H.nodes = [] ∧ EF = (2, 2)
+  emits_terminal := fun _ _ _ _ h => h.elim
+  emits_reaches := fun _ _ _ _ h => h.elim
+  emitsHen_reaches := fun _ _ _ h => h.1
+  reaches_continuing := fun _ H h => by
+    rw [h]
+    exact fun ν hν => absurd hν (List.not_mem_nil)
+
+/-- **Gate G1 (VERBATIM face, `lean/blueprints/HDISCHARGE_H6.md` §4 Gates):**
+a compiled `E_junk` with `¬ TerminalSeamHypsE p F E_junk` — the repaired rows
+are NOT tautologies. All witness demands are met at CERTIFIED data (the
+junk-D routes are unavailable by construction): the k′ = 0 seam
+`henGateHist` (nodes = [], a₀ = 1, ψ̂₀ = X, f₀ = 1), D = the canonical
+order-0 read certified by A6b's positive face, R = the canonical reader,
+`ConsF` PROVED — and `E_junk` emitsHen EF = (2, 2) ≠ (1, 1) = (1, f₀),
+violating `tVERDhen`. -/
+theorem E_junk_not_terminalSeamHypsE :
+    ¬ TerminalSeamHypsE 2 (ZMod 2) E_junk := by
+  intro hyp
+  have h := hyp.tVERDhen (Polynomial.X : Polynomial ℤ_[2]) henGateHist (2, 2)
+    henGateData henGateReader
+    (readThroughIota_order1_gate _ _ gateIota gateIota henGate_hlen)
+    henGate_consF ⟨rfl, rfl⟩ henGate_decHenSeam
+  have h1 : (2 : ℕ) = 1 := congrArg Prod.fst h
+  exact absurd h1 (by decide)
+
 end LeanUrat.Scaffold.HDischarge.H6

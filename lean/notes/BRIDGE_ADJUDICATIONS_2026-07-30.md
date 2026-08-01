@@ -2068,3 +2068,8 @@ pp.374/398-400). (H3) = {(ADM), (E-N)}. Enumeration audit 19/16. Honest
 §4/§3.3 sync (LIT-1 session still owed; Mathlib coprime-Hensel ABSENT —
 paper cite stands, Lean materialization owes the axiom loop). VC17
 launched.
+
+## VC17: one blocker (Step 12 local re-point skipped) + Step-4 grade nit (2026-08-05)
+Eleven-row invariant, D-12r residue confinement, attributions, walk,
+acyclicity ALL PASS. r16 dispatched (two display fixes -> REVISION 15);
+VC18 = confirming pass after.
