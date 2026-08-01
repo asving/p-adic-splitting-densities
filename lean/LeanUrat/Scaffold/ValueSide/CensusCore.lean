@@ -37,4 +37,29 @@ structure CensusData where
   triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i
   h_coprime : ∀ i, Nat.Coprime (h i) (e i)
 
+/-!
+**PROVENANCE (unit C0b; BP_IV §1.2, wave IV-0b).**  Derived defs, verbatim from
+the blueprint: `d` = ∏ f_i (the census field degree, O-9's DELTA-3 index fix:
+d = f₀⋯f_r, NOT f₀⋯f_{r−1}), `period` = ∏ e_i, and the mixed-radix φ-monomial
+index set `J` (a Fintype — instance supplied immediately after the def).
+-/
+
+namespace CensusData
+
+def d (D : CensusData) : ℕ := ∏ i, D.f i
+
+def period (D : CensusData) : ℕ := ∏ i, D.e i
+
+def J (D : CensusData) : Type := (i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)
+
+/-- `J` is a Fintype (the blueprint carrier docstring: "the mixed-radix
+    φ-monomial index set J (a Fintype)"). -/
+instance instFintypeJ (D : CensusData) : Fintype D.J :=
+  inferInstanceAs (Fintype ((i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)))
+
+instance instDecidableEqJ (D : CensusData) : DecidableEq D.J :=
+  inferInstanceAs (DecidableEq ((i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)))
+
+end CensusData
+
 end LeanUrat.Scaffold

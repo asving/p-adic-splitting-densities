@@ -1,10 +1,12 @@
 /-
 BP_IV §1.0 — the independent named [M] hypothesis rows (`Hyps.lean`).
 Units landed in this file so far: H2a (`AssembledPack` + installed `Fintype`) ·
-H3 (`K3DeltaRow`).
+H2b (`PackReference`/`PackCorrespondence`) · H3 (`K3DeltaRow`).
 -/
 import Mathlib
 import LeanUrat.MovesU.Defs
+-- H2b: `UCarriers` lives in `LeanUrat/MovesU/DefsCarriers.lean` (used AS IS).
+import LeanUrat.MovesU.DefsCarriers
 -- SKEL (§1.0 import graph `CensusCore → Hyps → Census`): the CensusCore edge,
 -- carrying the re-export path for `ADMFull` (unit H1 lands it in CensusCore).
 import LeanUrat.Scaffold.ValueSide.CensusCore
@@ -39,6 +41,31 @@ structure AssembledPack (n : ℕ) where
   blockOf_le : ∀ r, blockOf r ≤ n
 
 attribute [instance] AssembledPack.instR
+
+/-! **PROVENANCE (unit H2b; BP_IV §1.0, unit table §2 row H2b).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §1.0 (statements transcribed VERBATIM).
+* Math source of record: ROOT §3.1 (PACK); D11 r3 §5 clause 4.
+* Dep H2a: consumes the `AssembledPack` carrier above.  `UCarriers` is imported
+  from `LeanUrat/MovesU/DefsCarriers.lean` (used AS IS, per BP_IV §0).
+* `PackCorrespondence` is a named [M] row (no proof of this row exists anywhere;
+  Steps 18/18b consume Step 17 AS this correspondence) — never an axiom, never
+  discharged by fiat.  `C` and `P` are scoped dependently (§4 note 9). -/
+
+open LeanUrat.MovesU in
+/-- The independently typed reference table read from `C`; unit H2 supplies the
+actual reader without mentioning an out-of-scope pack variable. -/
+structure PackReference (n : ℕ) (C : UCarriers n) (P : AssembledPack n) where
+  intendedEntry : P.Row → RatFunc ℚ
+  intendedBlock : P.Row → ℕ
+  intendedBlock_pos : ∀ r, 1 ≤ intendedBlock r
+  intendedBlock_le : ∀ r, intendedBlock r ≤ n
+
+open LeanUrat.MovesU in
+structure PackCorrespondence (n : ℕ) (C : UCarriers n) (P : AssembledPack n)
+    (R : PackReference n C P) : Prop where
+  entry_eq : ∀ r : P.Row, P.entry r = R.intendedEntry r
+  block_eq : ∀ r : P.Row, P.blockOf r = R.intendedBlock r
 
 /-! **PROVENANCE (unit H3; BP_IV §1.0, unit table §2 row H3).**
 

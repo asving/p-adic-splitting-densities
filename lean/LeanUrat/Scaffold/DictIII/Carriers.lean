@@ -308,7 +308,67 @@ theorem theta_truncation (H : EHist p F) (k : ℕ) :
   simp only [Theta, ChainData.take, EHist.take, EHist.continuingPart,
     List.take_takeWhile, ← List.map_take]
 
+/-! ## Unit III-C3 (lemma half) — prefixes of WF ending continuing are WF
+(O2a (C1) last ¶: "Prefixes of well-formed histories ending at a continuing
+node are well-formed."). The unit's def half `EHist.continuingPart` landed
+above (III-C7a's dep transcription; body design note there). The blueprint
+displays NO Lean statement for this lemma (only the def signature is displayed
+in §1.1; the unit-table row describes the lemma in words), so the rendering
+below is this unit's — flagged for division-lead review, not fenced. -/
+
+/-- Unit III-C3 lemma, general form: EVERY nodes-prefix of a well-formed
+    history is well-formed. The source row reads "prefixes of WF ending
+    continuing are WF" (O2a (C1) last ¶); the "ending at a continuing node"
+    hypothesis is not needed: every `EWF` row is guarded by a node lookup
+    `H.nodes[i]?` or an interior bound `i + 1 < H.nodes.length`, both of which
+    transport along any prefix, and the tower/base rows do not mention
+    `nodes` (the prefix keeps `a0`, `fld`, `psihat`). The blueprint's named
+    case — the prefix ending at the last continuing node — is
+    `EWF.continuingPart` below. -/
+theorem EWF.of_prefix {H : EHist p F} (hwf : EWF H) {P : List ENodeData}
+    (hpre : P <+: H.nodes) : EWF ({ H with nodes := P } : EHist p F) := by
+  have hget : ∀ {i : ℕ} {ν : ENodeData}, P[i]? = some ν → H.nodes[i]? = some ν := by
+    intro i ν hg
+    obtain ⟨hi, -⟩ := List.getElem?_eq_some_iff.mp hg
+    obtain ⟨t, ht⟩ := hpre
+    rw [← ht, List.getElem?_append_left hi]
+    exact hg
+  have hlen : P.length ≤ H.nodes.length := hpre.length_le
+  have hne : P ≠ [] → H.nodes ≠ [] := fun hP h0 => hP (List.prefix_nil.mp (h0 ▸ hpre))
+  refine { w1a := ?_, w1b := ?_, w2 := ?_, w3 := ⟨?_, ?_⟩, w5 := ?_,
+           w4dress := ?_, towerBase := hwf.towerBase, towerStep := hwf.towerStep,
+           towerBaseDegree := hwf.towerBaseDegree, towerStepDegree := ?_ }
+  · intro i ν hg hsel hl he2
+    exact hwf.w1a i ν (hget hg) hsel hl he2
+  · intro i ν hg hsel hl he1
+    exact hwf.w1b i ν (hget hg) hsel hl he1
+  · intro i ν g μ hg hsel
+    exact hwf.w2 i ν g μ (hget hg) hsel
+  · intro i ν hi hg gμ hmem
+    exact hwf.w3.1 i ν (lt_of_lt_of_le hi hlen) (hget hg) gμ hmem
+  · intro hP
+    exact hwf.w3.2 (hne hP)
+  · intro i ν hi hg
+    exact hwf.w5 i ν (lt_of_lt_of_le hi hlen) (hget hg)
+  · intro i ν g μ hg hsel
+    exact hwf.w4dress i ν g μ (hget hg) hsel
+  · intro i ν g μ hg hsel
+    exact hwf.towerStepDegree i ν g μ (hget hg) hsel
+
+/-- Unit III-C3 lemma at the blueprint's named prefix: the continuing part 𝐇°
+    (= "drop a terminal last node" on well-formed histories, per the def note
+    above) of a well-formed history is well-formed. `takeWhile` prefixes are
+    prefixes, so this is `EWF.of_prefix` at `List.takeWhile_prefix`; the
+    `dropLast`-vs-identity case split of the blueprint sketch is subsumed by
+    the prefix transport. -/
+theorem EWF.continuingPart {H : EHist p F} (hwf : EWF H) :
+    EWF H.continuingPart :=
+  hwf.of_prefix (List.takeWhile_prefix _)
+
 end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-C7b gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.theta_truncation
+
+-- Footprint audit (unit III-C3 gate): expect Lean core only.
+#print axioms LeanUrat.Scaffold.DictIII.EWF.continuingPart

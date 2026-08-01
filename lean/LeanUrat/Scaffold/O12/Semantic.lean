@@ -304,11 +304,11 @@ theorem intHeight_cols (κ : FaceKind e) (s : SlopeTuple κ)
       refine ⟨((s.a j : ℕ) * m + N : ℕ), ?_⟩
       push_cast
       field_simp
-      ring
   · -- consecutive faces share exactly the vertex column x_{j+1}
     have h1 : κ.x (j : ℕ) ≤ κ.x ((j : ℕ) + 1) := κ.x_mono (Nat.le_succ _)
     have h2 : κ.x ((j : ℕ) + 1) ≤ κ.x ((j : ℕ) + 2) := κ.x_mono (by omega)
-    rw [Finset.Icc_inter_Icc, sup_eq_right.mpr h1, inf_eq_left.mpr h2,
-      Finset.Icc_self]
+    ext i
+    simp only [Finset.mem_inter, Finset.mem_Icc, Finset.mem_singleton]
+    omega
 
 end LeanUrat.Scaffold
