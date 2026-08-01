@@ -588,7 +588,7 @@ theorem null_zeroLocus_succ (m : ℕ)
   have hfb_ne : fb ≠ 0 := by
     intro h0
     apply hb
-    show MvPolynomial.aeval castb g = 0
+    change MvPolynomial.aeval castb g = 0
     rw [MvPolynomial.aeval_eq_eval]
     exact hcontrol castb h0
   -- the slice IS the slice polynomial's zero set (`eval_eq_eval_mv_eval'`)
@@ -605,5 +605,60 @@ theorem null_zeroLocus_succ (m : ℕ)
       MvPolynomial.eval_eq_eval_mv_eval']
   -- OFF the locus: I-H2 on each slice
   exact hset ▸ null_zeroLocus_one_var p fb hfb_ne
+
+/-! ## Unit I-H7: `ns_null_proved_pos` — the positive-degree (NS-NULL) discharge
+
+Statement BP_I §1.8 VERBATIM. Proof per the BP §2 Wave-H row: identify the
+nonseparable locus with the zero locus of the generic discriminant — SEP(ii)
+(I-H5 `sep_iff_discr_ne_zero`) composed with the evaluation law (I-H4c
+`discr_mPoly_eq_eval`) — and kill it by Lemma NULL at the nonzero generic
+discriminant (I-H6 `discrPoly_ne_zero`).
+
+WIRING NOTE (I-H7 prover): at landing time I-H3c4's `null_zeroLocus` had not
+yet landed in this file (that unit runs in PARALLEL with this one per the
+division schedule), so Lemma NULL enters as an inline `have hnull` — the
+induction wrapper over the LANDED induction step I-H3c3
+(`null_zeroLocus_succ`), base case `m = 0` direct (a nonzero 0-variable
+polynomial is a nonzero constant, `MvPolynomial.C_surjective`; empty locus).
+Once I-H3c4 lands, `hnull` is a golf seam: replace `hnull n` by
+`null_zeroLocus p n` and delete the wrapper — no statement change. -/
+
+section NsNullPos
+
+variable (n : ℕ)
+
+/-- Positive-degree discriminant proof. -/
+theorem ns_null_proved_pos (hn : 1 ≤ n) :
+    μHaar p n {a | ¬ Sep p n a} = 0 := by
+  -- Lemma NULL (Df App A), inline: induction over I-H3c3's `null_zeroLocus_succ`
+  have hnull : ∀ (m : ℕ) (P : MvPolynomial (Fin m) ℚ_[p]), P ≠ 0 →
+      μHaar p m {a | MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) P = 0} = 0 := by
+    intro m
+    induction m with
+    | zero =>
+      -- base: a nonzero 0-variable polynomial is a nonzero constant; empty locus
+      intro P hP
+      obtain ⟨c, rfl⟩ := MvPolynomial.C_surjective (Fin 0) P
+      have hc : c ≠ 0 := fun h => hP (by rw [h, map_zero])
+      have hempty : {a : Coeff p 0 |
+          MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) (MvPolynomial.C c) = 0}
+          = ∅ := by
+        ext a
+        simp [hc]
+      rw [hempty]
+      exact measure_empty
+    | succ m ih => exact null_zeroLocus_succ p m ih
+  -- the nonseparable locus IS the discriminant zero locus (I-H5 + I-H4c)
+  have hset : {a : Coeff p n | ¬ Sep p n a}
+      = {a : Coeff p n |
+          MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) (discrPoly p n) = 0} := by
+    ext a
+    simp only [Set.mem_setOf_eq, sep_iff_discr_ne_zero p n hn a, not_ne_iff,
+      discr_mPoly_eq_eval p n a]
+  rw [hset]
+  -- Lemma NULL at the nonzero generic discriminant (I-H6)
+  exact hnull n (discrPoly p n) (discrPoly_ne_zero p n hn)
+
+end NsNullPos
 
 end LeanUrat.Scaffold
