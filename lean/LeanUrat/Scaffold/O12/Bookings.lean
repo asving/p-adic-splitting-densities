@@ -183,6 +183,37 @@ theorem solve_O1_O2r {e : ℕ} (he : 2 ≤ e) (s x : Qq)
   rw [kappa_add] at hbal
   linear_combination hbal
 
+/-- Theorem 1(3), O3 solve: multiplying through by 1 − κ₀ ≠ 0 gives the SAME
+equation. [BP_II unit II-B7] -/
+theorem solve_O3 {e : ℕ} (he : 2 ≤ e) (s x : Qq)
+    (hbal : (1 - kappa1 e * (1 - kappa0 e)⁻¹) * x = s * (1 - kappa0 e)⁻¹) :
+    x = s * (1 - qX * (qX ^ blockE e)⁻¹)⁻¹ := by
+  have hE : 1 ≤ blockE e := by have := blockE_ge_three he; omega
+  have hpow : qX ^ blockE e ≠ 0 := qX_pow_ne_zero _
+  -- `q^E − 1 ≠ 0`: it is the image of the 𝒮-member `X^E − 1` (E ≥ 1).
+  have hsubne : qX ^ blockE e - 1 ≠ 0 := by
+    have himg : qX ^ blockE e - 1
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e - 1) := by
+      simp [qX, map_sub, map_pow]
+    rw [himg]
+    exact RatFunc.algebraMap_ne_zero
+      (MovesU.cycS_ne_zero (MovesU.Xpow_sub_one_mem_cycS hE))
+  -- `1 − κ₀ = (q^E − 1)·q^{−E} ≠ 0`
+  have h1k : (1 : Qq) - kappa0 e ≠ 0 := by
+    rw [kappa0]
+    have hu : (qX ^ blockE e - 1) * (qX ^ blockE e)⁻¹
+        = (1 : Qq) - (qX ^ blockE e)⁻¹ := by
+      rw [sub_mul, mul_inv_cancel₀ hpow, one_mul]
+    rw [← hu]
+    exact mul_ne_zero hsubne (inv_ne_zero hpow)
+  -- multiply the balance through by 1 − κ₀: recover II-B6's equation
+  have h : (1 - kappa1 e * (1 - kappa0 e)⁻¹) * x * (1 - kappa0 e)
+      = s * (1 - kappa0 e)⁻¹ * (1 - kappa0 e) := by rw [hbal]
+  have hinv : (1 - kappa0 e)⁻¹ * (1 - kappa0 e) = 1 := inv_mul_cancel₀ h1k
+  have hbal' : x = (kappa0 e + kappa1 e) * x + s := by
+    linear_combination h + (kappa1 e * x + s) * hinv
+  exact solve_O1_O2r he s x hbal'
+
 /-- Theorem 1(3), O2 solve: no feedback, genuine division by 1 − κ₀. -/
 theorem solve_O2 {e : ℕ} (he : 2 ≤ e) (t x : Qq) (hbal : x = kappa0 e * x + t) :
     x = t * (1 - (qX ^ blockE e)⁻¹)⁻¹ := by
