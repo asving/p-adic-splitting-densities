@@ -36,6 +36,10 @@ import Mathlib
 -- M4 (BP_IV §3 reuse rows "RegP.detFull_ne_zero …" / "cycS_eval_pos …"):
 -- the O-12/(REG-p) corpus layer, used AS IS.
 import LeanUrat.MovesU.RegPFinite
+-- M6b engine (SYNTHESIS_PASS3 F4 dedup, 2026-08-01): the general dependent-type
+-- ℝ≥0∞ Tonelli Pi-product `Shared.tsum_pi_prod`, of which `tsum_pi_fin_prod`
+-- below is the constant-family (`Fin k → ℕ`) instance.
+import LeanUrat.Scaffold.Shared.ENNRealTonelli
 
 open Filter Topology
 open scoped NNReal ENNReal
@@ -554,27 +558,13 @@ theorem polygonCell_mass {E e q₀ : ℕ} {B : BlockStrata E e q₀}
 /-- M6b engine (Fubini for finitely many axes): over ℝ≥0∞ the `tsum` of a
 product of per-axis factors over the finite-axis lattice `Fin k → ℕ`
 factorizes as the product of the per-axis `tsum`s.  Unconditional in ℝ≥0∞;
-induction on the axes along `Fin.consEquiv`. -/
+the constant-family instance of the shared dependent-type Tonelli engine
+`Shared.tsum_pi_prod` (`Scaffold/Shared/ENNRealTonelli.lean`; SYNTHESIS_PASS3
+F4 dedup — the inline `Fin.consEquiv` induction formerly here is the same
+proof, now single-homed there in its general form). -/
 theorem tsum_pi_fin_prod {k : ℕ} (f : Fin k → ℕ → ℝ≥0∞) :
-    ∑' w : Fin k → ℕ, ∏ j, f j (w j) = ∏ j, ∑' n, f j n := by
-  induction k with
-  | zero =>
-      simp only [Finset.univ_eq_empty, Finset.prod_empty]
-      exact tsum_eq_single (fun i => i.elim0) fun b hb =>
-        absurd (Subsingleton.elim b _) hb
-  | succ k ih =>
-      calc ∑' w : Fin (k + 1) → ℕ, ∏ j, f j (w j)
-          = ∑' p : ℕ × (Fin k → ℕ), ∏ j, f j ((Fin.consEquiv fun _ => ℕ) p j) :=
-            ((Fin.consEquiv fun _ => ℕ).tsum_eq fun w => ∏ j, f j (w j)).symm
-        _ = ∑' p : ℕ × (Fin k → ℕ),
-              f 0 p.1 * ∏ j : Fin k, f j.succ (p.2 j) := by
-            simp [Fin.consEquiv, Fin.prod_univ_succ]
-        _ = (∑' n, f 0 n) * ∑' v : Fin k → ℕ, ∏ j : Fin k, f j.succ (v j) := by
-            rw [ENNReal.tsum_prod']
-            simp only [ENNReal.tsum_mul_left, ENNReal.tsum_mul_right]
-        _ = (∑' n, f 0 n) * ∏ j : Fin k, ∑' n, f j.succ n := by
-            rw [ih]
-        _ = ∏ j, ∑' n, f j n := (Fin.prod_univ_succ fun j => ∑' n, f j n).symm
+    ∑' w : Fin k → ℕ, ∏ j, f j (w j) = ∏ j, ∑' n, f j n :=
+  Shared.tsum_pi_prod k (fun _ => ℕ) f
 
 /-- M6b (affine-cone geometric sum, family (iii)'s cone leg): summing the
 per-cell weight q₀^{−N(P)} along L6b's affine cone N(P) = N_min + Σ_j c_j·w_j
