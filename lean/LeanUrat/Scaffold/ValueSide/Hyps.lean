@@ -21,23 +21,32 @@ carries the actual datum-indexed rows
   `LeanUrat.Scaffold.DictIII.GRB`   = (GR-B) orders ≥ 2 (consumed at C5/S5/D4),
   `LeanUrat.Scaffold.DictIII.FRESH` = (FRESH)           (consumed at C5'/S5/D4). -/
 import LeanUrat.Scaffold.DictIII.Hyps
--- BLOCKED(H4): the remaining §1.0-table owner rows have NO landed owner modules
--- in the corpus yet (checked 2026-08-01); per §4 ("Actual BP_III/BP_V row
--- modules must already compile before H4 is marked complete") their consumers
--- stay blocked rather than compiled against a weaker signature:
---  · (R1)–(R4) = (H4a) `R1R4Row` — owner BP_V (`Scaffold/RowStatements.lean`
---    with `RootRows.R14`): module absent.  Consumer blocked: S5 (K3-c leg).
---  · (H6) terminal-seam group `TerminalSeamRows` — owner BP_III (CU-2t;
---    `TerminalSeamHyps`, BP_III §1.3 III-H5 / §1.9 `DictIII/CU2t.lean`):
---    structure not yet in `DictIII/Hyps.lean`, `CU2t.lean` absent.
---    Consumer blocked: S5 (K4/D-a leg).
---  · K-LOC = M07 OL-3, (I-τ) — owner BP_III (dictionary): no such named rows
---    declared anywhere in the corpus (`OL3min` is the GD-3 minimal form, not
---    the K-LOC/(I-τ) pair K11 requires).  Consumer blocked: K11 (K10's
---    application clause).
---  · D-15 / O5triple Thm E rows (`ThmERow`/`D15Row`) — owner BP_III (Steps
---    6/12): row structures not landed (`MovesU/O5CountingB.lean` is the §3
---    corpus counting core, not an H4 owner row module).  Consumer blocked: M7.
+-- H4 ledger, REVISION-3 disposition (mop-up adjudication, 2026-08-01; full
+-- record: `blueprints/BP_IV.md` REVISION 3).  The remaining §1.0-table owner
+-- rows have NO landed owner modules — AND their owner blueprints never
+-- charter them at ANY signature (grep of BP_III.md/BP_V.md: zero hits for
+-- R1R4Row/TerminalSeamRows/ThmERow/D15Row/K-LOC/GRBRow/FreshRow — a
+-- cross-blueprint SEAM FAILURE escalated to the orchestrator).  Since no
+-- owner declaration can be awaited, the REVISION-3 ruling replaces "wait"
+-- with the sanctioned K3DeltaRow OPAQUE-PARAMETER pattern wherever the
+-- consumer's PROOF does not need the row's content (the row is a rider of
+-- the honest-conditionality display):
+--  · (R1)–(R4) = (H4a) `R1R4Row` (owner BP_V) — consumed at S5b/D4 as the
+--    opaque parameter `{R1R4Row : ClassifierSpec n p → Prop}` + binder.
+--  · (H6) `TerminalSeamRows` (owner BP_III, CU-2t) — likewise, keyed at F.
+--  · (GR-B)/(FRESH) census-keyed forms (owner BP_III) — opaque parameters
+--    `{GRBRow FreshRow : CensusData → Prop}` of `CensusValueRows` (see
+--    `Census.lean` REVISION-3 C5 block) and of S5b/D4.
+--  · K-LOC/(I-τ) (owner BP_III) — opaque Prop parameters of K11's
+--    `EngineSIBRow` (`KCount.lean`).
+--  When BP_III/BP_V land the real rows they INSTANTIATE these parameters —
+--  no re-key of any BP_IV statement.
+--  · D-15 / O5triple Thm E rows (`ThmERow`/`D15Row`) — the ONE consumer
+--    whose PROOF needs the rows' CONTENT (M7's two-row transport), so the
+--    opaque pattern does NOT apply; M7 stays owner-blocked (see
+--    `MassId.lean` header).  Its BP_IV-owned event carriers `CylEvent` /
+--    `IsContinuationEvent` are landed at the END of this file, so M7
+--    elaborates the moment BP_III lands the rows.
 
 /-!
 # Value-side named [M] rows [BP_IV division, unit H2a]
@@ -113,5 +122,30 @@ structure K3DeltaRow (p : ℕ) (D : RegData p)
     (RealizedPool DeltaStablePos : ℕ → Prop) : Prop where
   depthSet_iff_realized : ∀ δ, δ ∈ D.depthSet ↔ RealizedPool δ
   realized_stable : ∀ δ, RealizedPool δ → 1 < δ → DeltaStablePos δ
+
+/-! ## M7's event carriers (BP_IV §1.4; AUTHORED at REVISION 3)
+
+**PROVENANCE (REVISION 3, mop-up adjudication).**  `CylEvent` and
+`IsContinuationEvent` appear in BP_IV §1.4's M7 display with no owner module
+and no spec anywhere in the corpus or blueprints; since they occur only in
+BP_IV's display, BP_IV OWNS them, and the mop-up authors the minimal faithful
+forms: a level-N cylinder event is a Finset of level-N boxes (the corpus
+counting vocabulary — `Box p n N` used AS IS); a CONTINUATION event is one
+all of whose members are still undecided at its level (the scaffold's
+continuation reading of `canonical = none`).  DERIVED, flagged for
+division-lead/Codex ratification (trust boundary).  Consumer: unit M7
+(owner-blocked on BP_III's `ThmERow`/`D15Row` — see the H4 ledger above). -/
+
+open LeanUrat.MovesU in
+/-- M7 carrier (REVISION 3): a level-N cylinder event — a Finset of level-N
+    boxes. -/
+def CylEvent (n p N : ℕ) : Type := Finset (Box p n N)
+
+open LeanUrat.MovesU in
+/-- M7 carrier (REVISION 3): the event is a CONTINUATION event of the
+    classifier — every member box is undecided at level N. -/
+def IsContinuationEvent {n p N : ℕ} (X : ClassifierSpec n p)
+    (cyl : CylEvent n p N) : Prop :=
+  ∀ f ∈ cyl, X.canonical N f = none
 
 end LeanUrat.Scaffold.ValueSide

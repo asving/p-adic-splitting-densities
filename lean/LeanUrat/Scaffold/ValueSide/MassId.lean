@@ -13,18 +13,29 @@ M1′ gate object — OPTIONAL unit, unconditional value-level arithmetic), M6a
 geometric sum is unit M6b, serial after this one), M6b (`tsum_pi_fin_prod`
 Fubini engine + `coneSum_eq_prod_geometric`, unconditional).
 
-BLOCKED(M7): `trueType_const_on_cylinder` (§1.4 M3 glue) does NOT land here yet.
-Its verbatim statement binds `ThmERow`/`D15Row` (owner BP_III, §5 seam — "BP_IV
-defines no aliases") and `CylEvent`/`IsContinuationEvent` (no owner module and
-no displayed spec anywhere in the corpus or blueprints; checked 2026-08-01).
-None of the four exists, so the statement cannot elaborate: each fails with
-`error: Function expected at ThmERow|D15Row|CylEvent|IsContinuationEvent, but
-this term has type ?m.N ... The identifier ... is unknown`.  This matches the
-unit-H4 ledger (`ValueSide/Hyps.lean`: "D-15 / O5triple Thm E rows — row
-structures not landed.  Consumer blocked: M7").  Per the §4 failure protocol the
-obstruction escalates to the blueprint owner; no prover-side restatement.
+M4 (`r1_margin_of_regP`) LANDED at REVISION 3: the §1.4 display's
+`RatFunc.eval (q₀ : ℚ) (D.detFull e)` was ILL-TYPED (Mathlib's `RatFunc.eval`
+takes the coefficient ring hom FIRST: `eval (f : K →+* L) (a : L)`); the
+repaired statement inserts `(RingHom.id ℚ)` — the exact corpus spelling of
+`RegP.detFull_clause` (`MovesU/RegPFinite.lean`), of which the unit is now
+the (r1)-projection.  See the M4 section at the end of this file + BP_IV
+REVISION 3.
+
+BLOCKED(M7), REVISION-3 disposition: `trueType_const_on_cylinder` (§1.4 M3
+glue) STILL does not land here.  Its BP_IV-owned event carriers `CylEvent` /
+`IsContinuationEvent` are now landed (`ValueSide/Hyps.lean`, REVISION 3), but
+the two BP_III-owned rows `ThmERow`/`D15Row` remain undeclared corpus-wide
+(BP_III.md never charters them — cross-blueprint seam failure recorded in
+BP_IV REVISION 3), and M7's PROOF consumes their CONTENT (the two-row
+transport), so the opaque-parameter pattern that unblocked S5b/D4/K11 does
+NOT apply — an opaque-row M7 would be unprovable, not honest.  M7 stays
+owner-blocked; it elaborates the moment BP_III lands the rows.  Per the §4
+failure protocol; no prover-side restatement.
 -/
 import Mathlib
+-- M4 (BP_IV §3 reuse rows "RegP.detFull_ne_zero …" / "cycS_eval_pos …"):
+-- the O-12/(REG-p) corpus layer, used AS IS.
+import LeanUrat.MovesU.RegPFinite
 
 open Filter Topology
 open scoped NNReal ENNReal
@@ -620,5 +631,36 @@ theorem coneSum_eq_prod_geometric {k : ℕ} {q₀ : ℕ} (hq : 2 ≤ q₀)
     rw [ENNReal.coe_inv (h1r j), ENNReal.coe_sub, ENNReal.coe_one, hcoe j]
   rw [Finset.prod_congr rfl fun j _ => hfac j, ← ENNReal.ofNNReal_finsetProd,
     ENNReal.toNNReal_coe]
+
+/-!
+# (r1) margins over the VERIFIED O-12 lemma base [BP_IV division, unit M4;
+REPAIRED and PROVED at REVISION 3]
+
+**PROVENANCE (unit M4; BP_IV §1.4 + §2 M-table row M4; REVISION 3).**
+
+* Blueprint: §1.4's M4 display concluded
+  `RatFunc.eval (q₀ : ℚ) (D.detFull e) ≠ 0` — ILL-TYPED as written: Mathlib's
+  `RatFunc.eval` signature is `eval (f : K →+* L) (a : L) (p : RatFunc K)`,
+  so the ring hom argument is missing (the division run's "application
+  mismatch").  REVISION-3 repair: insert `(RingHom.id ℚ)` — exactly the
+  corpus spelling of `RegP.detFull_clause`'s second conjunct
+  (`MovesU/RegPFinite.lean`: `(D.detFull e).eval (RingHom.id ℚ) (q₀ : ℚ) ≠ 0`).
+* Math source of record: D11 §2 (c) (r1); the O-12 lemma base.  The corpus
+  already packages M17 Lemma 0's (r1) clause per pool value (`RegP` is the
+  ∀-form; `detFull_clause` its named read), so the repaired unit is the
+  (r1)-projection: RegP transports the margin to every pool member — the
+  §1.4 docstring's own phrase.  `cycS_eval_pos` (the §3 reuse row) lives
+  UNDER `RegP` at the real instance and is not re-consumed here.
+* Statement fence: repair confined to the ill-typed application; binder list
+  and conclusion shape otherwise verbatim (recorded in BP_IV REVISION 3).
+-/
+
+open LeanUrat.MovesU in
+/-- M4 ((r1) margins over the VERIFIED O-12 lemma base; REVISION-3 typing):
+    the block determinant does not vanish at any pool value q₀ = p^δ ≥ 2 —
+    packaged as: RegP transports the margin to every pool member. -/
+theorem r1_margin_of_regP {p : ℕ} {D : RegData p} (h : RegP D) (e : D.Block) :
+    ∀ q₀ ∈ D.Pool, (D.detFull e).eval (RingHom.id ℚ) (q₀ : ℚ) ≠ 0 :=
+  fun _ hq => (h.detFull_clause hq e).2
 
 end LeanUrat.Scaffold.ValueSide
