@@ -1778,3 +1778,65 @@ the deciding pass. NOTE ON RECORD: Unit C's landing makes the (NSF-KEY)
 AFTER REVISION 12 froze; the row remains sound as displayed hypothesis —
 overpriced, never underpriced); the H9 lead is writing the discharge
 adjudication; r14 executes AFTER the bar closes.
+
+## H9 LEAD ADJUDICATION: (NSF-KEY) IS RETIRED — DISCHARGED AT HEAD (2026-08-01 machine clock; the swarm dispatch)
+THE QUESTION (per the dispatch): is (NSF-KEY) — ROOT §3.1 (H9)'s as-built
+keying member, ONE proposition: "if `bridgeCanonical … N f = some σ` then f
+fibers a carried σ-tree satisfying `MovesT.NsFree` at threshold ≤ N" —
+DISCHARGED at HEAD by the compiled Unit C artifacts? VERDICT: **YES,
+RETIRED**, on two independent grounds.
+(a) RETIREMENT-SEMANTICS GROUND: (NSF-KEY-RET) is an exact six-artifact
+iff (design V5 §2.5, "when and only when ALL SIX artifacts exist on
+file"); all six verified on file this session: R-0 sign-off (this ledger,
+"sign-off granted on the NsFree repair!", Asvin verbatim); R-1 the
+verbatim conjunct diff at HEAD (`BridgeD3_treeCarrier.lean:94-96` re-read:
+`{V // V.typemult = σ.1 ∧ RealizedSelf n p V ∧ MovesT.NsFree V}`; closed
+ripple enumeration UNITC_ripple.md); R-2 statement texts byte-identical
+(count_tie/canonical_stable/VPSound — DefsLedger.lean/Defs.lean untouched
+in dfdb558; Codex check 6); R-3 the three validations (treeN discharge
+candidate sorry-free at the hdet scope; `bridgeCanonical_stable` green;
+V₀-dead record = `bridgeVt_nsFree` compiled, consuming wiring recompiled);
+R-4 build+AxChk (8579 jobs green; 740 footprints, 0 sorryAx, no
+regression); R-5 Codex diff gate CONFIRMED (UNITC_diff_confirm.md).
+(b) TRUTH-AT-HEAD GROUND (new this session): the proposition itself
+COMPILE-PROBED AS A THEOREM at HEAD — 6-line derivation from
+`bridgeCanonical_pin` (BridgeD7, proved, both directions) +
+`bridgeVt_nsFree` (the Unit C projection) + `bridgeCanonical_level0`;
+footprint {propext, Classical.choice, Quot.sound}. Statement verbatim +
+probe-verified proof body recorded as unit H9-U1 in
+lean/blueprints/HDISCHARGE_H9.md (blueprint-only unit: the .lean lands in
+the prover fan-out, Scaffold/HDischarge/H9/NsfKeyProp.lean). So "(NSF-KEY)
+holds by construction of (†7)" is UPGRADED to: machine-checkable at HEAD.
+BOUNDS (what this adjudication does NOT claim): (i) (H9) is NOT closed —
+(NSF-INT) stands PRICED until (K1-CANON) discharges (members retire
+SEPARATELY, round-4 finding 4); (ii) NO carrier non-vacuity claim —
+compiled existence of a carried tree is OPEN (blocked on the realization
+seam; canPolicy designer-sorried, M02's flagged step inherited verbatim);
+(NSF-KEY) is an implication and V₀'s expulsion is its content, not a
+positive witness; (iii) the TreePin.vt_surj/BridgeD16 completeness face
+owes the ns-free scope at the eventual instantiation (Phase-B queue,
+statement-fence gated, owner = the vt_surj supplier — UNITC_ripple.md);
+(iv) ROOT (REVISION 12) still displays KNOWN FALSE AT HEAD — adjudicated
+conservative-stale on record (overpriced, never underpriced); the owed
+r14 edit spec is written at HDISCHARGE_H9.md §1.4 and r14 stays QUEUED
+BEHIND THE BAR (VC15 deciding; an r14 landing now would reset the counter
+ONE → ZERO). NEXT for (H9): the (K1-CANON) discharge per HDISCHARGE_H9.md
+§3 (interface-lemma note + hostile pass; M04 pin display optional,
+sign-off-gated) — after it, (NSF-INT) retires on I-1+I-2+I-3 (all on
+file) and the (H9) row closes at the spec'd r15.
+
+## RE-ACCEPTANCE: THE BAR IS MET AT TWELVE ROWS (2026-08-05)
+VC15 (FABLE, fresh, hostile, max): COMPOSITION-SOUND — ZERO blockers,
+explicit null result on the blocker hunt (no unhoused consumption, no
+weak member, no silent upgrade, no known-false-consumed-as-true, no
+attribution mismatch at member granularity, acyclicity intact; the n=2
+anchor triple re-verified as the true quadratic densities). With VC14
+(Codex, same REVISION 12 text): TWO CONSECUTIVE CLEAN MODEL-DIVERSE
+PASSES. THE COMPOSITION IS RE-ACCEPTED at (ROOT-C)'s twelve-row scope —
+the suspension arc closes: refutation caught -> leaf repaired at true
+scope -> composition re-pointed -> bar re-earned. Four VC15 ADVISORIES
+queued as post-acceptance r14 hygiene (Step 18 Consumes gains Step 2;
+Step 4 VERIFIED-LEAN faithfulness pointer; RESUM-n3 G-3 caveat rides its
+billings; (PACK-iv) edge-set wording + the q/t display nit) TOGETHER WITH
+the H9 lead's (NSF-KEY) discharge adjudication (Unit C artifacts).
+Reports: lean/notes/openmath/VC{14,15}_*report.md.

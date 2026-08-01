@@ -1461,3 +1461,16 @@ artifacts in-file): II-F8/II-F9 refuted-as-stated (`O12/FactF.lean`),
 II-T3/II-T4 (JC) displays refuted + II-T5 blocked with classified
 artifacts (`O12/Torus.lean`), II-M6/II-G6/II-G7 BLOCKED (Wave 4a/4b
 records: hull layer + `regP_of_pin` seam).
+
+---
+## MILESTONE 2026-08-05: RE-ACCEPTANCE AT TWELVE ROWS
+docs/ROOT_ASSEMBLY_2026-08-02.md (REVISION 12) RE-ACCEPTED: VC14 (Codex)
++ VC15 (Fable) consecutive clean on identical text, zero blockers each.
+The suspension arc (D-11 M1/M2 refutation -> true-scope repair -> two-pass
+leaf arc -> r11/r12/r13 recomposition) is CLOSED. Conditionality: (0)/(SQ)
+unconditional; (R)/(UB) on the displayed (H1)-(H9) (twelve [M] rows; (H5)
+at four row-laws). FIRST DISCHARGE LANDED: (NSF-KEY) retired by Unit C
+(NsFree repair, Asvin-signed, Codex-confirmed, AxChk clean) — formal
+ledger adjudication + ROOT r14 with the H9 lead. THE DISCHARGE SWARM
+(nine per-hypothesis leads, Asvin directive 2026-08-05) is drafting
+blueprints. VC15's four advisories = r14 hygiene queue.
