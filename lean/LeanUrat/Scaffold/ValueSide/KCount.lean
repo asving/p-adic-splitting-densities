@@ -2,7 +2,9 @@
 BP_IV §1.3 — `KCount.lean` (ROOT Step 15, the Smith-profile fiber count + (SIB)).
 Units landed in this file so far: K0a (`zmodVal`), K0b (`minVal` + the three
 valuation laws: `zmodVal_add_ge_min`, `zmodVal_pow_mul_ge`, and the
-finite-difference factorization transport `minVal_polyMap_sub_ge`), K6
+finite-difference factorization transport `minVal_polyMap_sub_ge`), K1
+(`newton_absorption_injective` + helpers `zmodVal_neg`, `minVal_sub_comm`,
+`minVal_ge_of_contraction`, `eq_zero_of_minVal_ge`), K6
 (`kcount_guard_range` + the `e_max`-sup packaging `kcount_guard_range_sup`),
 K3a (`card_singleCoordSubgroup` + the `min`-exponent form
 `card_singleCoordSubgroup_min`), K3b (`card_smithSubgroup`, the product form
@@ -10,8 +12,11 @@ over `Fin n`), K7a (`prod_add_sub_prod` + `prod_add_sub_prod_split`, the
 subset product expansion), K7b (`prod_pow_mul_of_two_le_card` +
 `quadRemainder_pow_extraction` + `prod_add_sub_prod_split_pow`, the p^{2τ}
 extraction Q(p^τ b) = p^{2τ} Q̃(b)), K2 (`bijective_of_injective_finVec`,
-the `Finite.injective_iff_bijective` cite unit).
-Pending (later waves, per BP_IV §4): K1, K4–K8a, the fiber chart K7c,
+the `Finite.injective_iff_bijective` cite unit), K4 (`starstar_iff_smithMem`
++ the scalar legs `pow_mul_eq_zero_iff_pow_dvd` / `starstar_vacuous` /
+`starstar_iff_pow_dvd`: (⋆⋆)_i ⟺ T(c)_i ≡ 0 mod p^(M−e_i), vacuous at
+e_i > M).
+Pending (later waves, per BP_IV §4): K5, K7c–K8a,
 and the (SIB) product law.
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
@@ -20,6 +25,9 @@ and the (SIB) product law.
 * Convention: `v(0) = M` (the truncation of `v_p(0) = ∞`), matching the corpus
   precedent `PadicLift.zmodValuation` (`LeanUrat/OM/PadicLift.lean`).
 -/
+-- K8a (BP_IV §2 K-table): the PID Smith-normal-form API module, imported
+-- explicitly per the unit charge (also reachable through `import Mathlib`).
+import Mathlib.LinearAlgebra.FreeModule.PID
 import Mathlib
 
 namespace LeanUrat.Scaffold
@@ -179,6 +187,77 @@ theorem minVal_polyMap_sub_ge {p M n : ℕ} [Fact p.Prime]
   refine le_minVal (minVal_le _) fun i => ?_
   rw [Pi.sub_apply]
   exact zmodVal_eval_sub_ge (S i) c c'
+
+/-! ### K1: Newton absorption (O-10 §3 Step 3)
+
+The `w := minVal δ` contraction: if `T(c) = T(c')` for the perturbed identity
+`T(c) := c + p^a·S(c)`, then every coordinate of `δ := c − c'` satisfies
+`v(δ_i) ≥ min(M, 1 + w)` (K0b laws 1–2 + the Lipschitz hypothesis `hS`), whence
+`w ≥ min(M, 1 + w)`, forcing `w ≥ M` — and `minVal ≥ M` collapses `δ` to `0`
+since `p^M = 0` in `ZMod (p^M)`. -/
+
+/-- Negation preserves the truncated valuation (through the K0b divisibility
+    bridge — no `val`-level computation needed). -/
+theorem zmodVal_neg {p M : ℕ} [Fact p.Prime] (x : ZMod (p ^ M)) :
+    zmodVal (-x) = zmodVal x :=
+  le_antisymm
+    ((le_zmodVal_iff (zmodVal_le _) x).2 (dvd_neg.1 (pow_zmodVal_dvd (-x))))
+    ((le_zmodVal_iff (zmodVal_le _) (-x)).2 (dvd_neg.2 (pow_zmodVal_dvd x)))
+
+/-- `minVal` is symmetric in the difference: `minVal (c − c') = minVal (c' − c)`. -/
+theorem minVal_sub_comm {p M n : ℕ} [Fact p.Prime] (c c' : Fin n → ZMod (p ^ M)) :
+    minVal (c - c') = minVal (c' - c) := by
+  unfold minVal
+  refine Finset.fold_congr fun i _ => ?_
+  rw [Pi.sub_apply, Pi.sub_apply, ← neg_sub (c' i) (c i), zmodVal_neg]
+
+/-- The contraction step of K1: `w ≥ min(1 + w, M)` forces `w ≥ M`
+    (`w := minVal δ`). -/
+theorem minVal_ge_of_contraction {p M n : ℕ} [Fact p.Prime]
+    {δ : Fin n → ZMod (p ^ M)}
+    (h : ∀ i, min (1 + minVal δ) M ≤ zmodVal (δ i)) : M ≤ minVal δ := by
+  have h1 : min (1 + minVal δ) M ≤ minVal δ := le_minVal (min_le_right _ _) h
+  omega
+
+/-- The collapse step of K1: a vector with `minVal ≥ M` is `0`
+    (`p^M ∣ δ_i` and `p^M = 0` in `ZMod (p^M)`). -/
+theorem eq_zero_of_minVal_ge {p M n : ℕ} [Fact p.Prime]
+    {δ : Fin n → ZMod (p ^ M)} (h : M ≤ minVal δ) : δ = 0 := by
+  funext i
+  have hdvd : (p : ZMod (p ^ M)) ^ M ∣ δ i :=
+    (le_zmodVal_iff le_rfl (δ i)).1 (h.trans (minVal_le_zmodVal δ i))
+  have hM0 : (p : ZMod (p ^ M)) ^ M = 0 := by
+    have hcast : ((p ^ M : ℕ) : ZMod (p ^ M)) = 0 := ZMod.natCast_self _
+    push_cast at hcast
+    exact hcast
+  rw [hM0, zero_dvd_iff] at hdvd
+  simpa using hdvd
+
+/-- K1 (Newton absorption, O-10 §3 Step 3): a v-contractive perturbation of the
+    identity is injective.  `hS` is the finite-difference Lipschitz law (supplied
+    for polynomial maps by K0's third law). -/
+theorem newton_absorption_injective {p M n : ℕ} [Fact p.Prime]
+    {S : (Fin n → ZMod (p ^ M)) → (Fin n → ZMod (p ^ M))} {a : Fin n → ℕ}
+    (ha : ∀ i, 1 ≤ a i)
+    (hS : ∀ c c', minVal (S c - S c') ≥ minVal (c - c')) :
+    Function.Injective (fun c => c + fun i => (p : ZMod (p ^ M)) ^ a i * S c i) := by
+  intro c c' h
+  have hδ : ∀ i, (c - c') i = (p : ZMod (p ^ M)) ^ a i * (S c' - S c) i := by
+    intro i
+    have hi := congrFun h i
+    simp only [Pi.add_apply] at hi
+    simp only [Pi.sub_apply]
+    linear_combination hi
+  have hbound : ∀ i, min (1 + minVal (c - c')) M ≤ zmodVal ((c - c') i) := by
+    intro i
+    rw [hδ i]
+    refine le_trans ?_ (zmodVal_pow_mul_ge (a i) ((S c' - S c) i))
+    have h1 : minVal (c - c') ≤ zmodVal ((S c' - S c) i) :=
+      ((minVal_sub_comm c c').trans_le (hS c' c)).trans
+        (minVal_le_zmodVal (S c' - S c) i)
+    have h2 : 1 ≤ a i := ha i
+    omega
+  exact sub_eq_zero.1 (eq_zero_of_minVal_ge (minVal_ge_of_contraction hbound))
 
 /-! ### K6: the guard range (O-10 §3 Theorem 1(ii), the D-8 guard range) -/
 

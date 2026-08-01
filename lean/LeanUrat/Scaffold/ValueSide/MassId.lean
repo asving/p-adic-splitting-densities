@@ -1,8 +1,8 @@
 /-
 BP_IV §1.4 — Step 17, the D-11 M1 unconditional layer + M3 glue (`MassId.lean`).
 Units landed in this file so far: M0a (`BlockStrata` carrier), M0b
-(`BlockCountLaws` named row), M3' (`perVisit_margin` + `perBlock_exit`),
-M1c (`kernel_O3_resummed`).
+(`BlockCountLaws` named row), M1a (`kernel_O1_mass`, conditional on the M0b
+row), M3' (`perVisit_margin` + `perBlock_exit`), M1c (`kernel_O3_resummed`).
 -/
 import Mathlib
 
@@ -52,6 +52,32 @@ structure BlockCountLaws {E e q₀ : ℕ} (B : BlockStrata E e q₀) : Prop wher
   descent_law : B.descentCount * q₀ ^ E = B.cellCount
   center_law : B.centerCount = q₀
   o1_law : B.o1Count * q₀ ^ E = B.cellCount * q₀
+
+/-!
+# (O1) kernel value IS the continuation mass [BP_IV division, unit M1a]
+
+**PROVENANCE (unit M1a; BP_IV §1.4).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §1.4 (statement transcribed VERBATIM).
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2 (a) (O1).
+* CONDITIONAL on the named `BlockCountLaws` row (unit M0b), bound as
+  `(hB : BlockCountLaws B)` — never call this unconditional until O-12-derived
+  constructors for that row have landed. Field algebra from the row only.
+-/
+
+/-- M1a ((O1) kernel value IS the continuation mass): K_e(q₀) = q₀^{1−E} as the
+    exact count ratio of the displayed event. -/
+theorem kernel_O1_mass {E e q₀ : ℕ} (B : BlockStrata E e q₀)
+    (hB : BlockCountLaws B) :
+    (B.o1Count : ℚ) / B.cellCount = (q₀ : ℚ) ^ (1 - (E : ℤ)) := by
+  have hq2 : 2 ≤ q₀ := B.hq
+  have hq0 : (q₀ : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
+  have hcell : (B.cellCount : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hB.cell_pos.ne'
+  have hqE : ((q₀ : ℚ) ^ E) ≠ 0 := pow_ne_zero _ hq0
+  have hlaw : (B.o1Count : ℚ) * (q₀ : ℚ) ^ E = (B.cellCount : ℚ) * q₀ := by
+    exact_mod_cast hB.o1_law
+  rw [zpow_sub₀ hq0, zpow_one, zpow_natCast, div_eq_div_iff hcell hqE, hlaw]
+  ring
 
 /-!
 # The per-visit termination margin [BP_IV division, unit M3']

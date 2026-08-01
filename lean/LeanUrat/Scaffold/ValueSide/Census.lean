@@ -1,8 +1,8 @@
 /-
 BP_IV §1.2 — Step 14, the (ADM)-FULL and level-1 census layers (`Census.lean`).
 Units in this file: SKEL (module skeleton) · C3 (the `Decidable (ADMFull D)`
-instance).  Later waves add
-C1 (`admFull_of_r_eq_zero`), C2a/C2 (`r1Bound` + `admFull_r1_iff`),
+instance) · C2a (`r1Bound`).  Later waves add
+C1 (`admFull_of_r_eq_zero`), C2 (`admFull_r1_iff`),
 C4a/C4b/C4c (`Stratum1` / vertex-chain telescope / `censusW` + `census_r0_law`),
 C6, C7, and the wave-4 HARD units C5/C5′ (CEN-W r ≥ 1 / CEN-J).
 Import graph (BP_IV §1.0): `CensusCore → Hyps` and `{CensusCore, Hyps} →
@@ -51,5 +51,46 @@ namespace LeanUrat.Scaffold
 noncomputable instance : ∀ D : CensusData, Decidable (ADMFull D) := fun D =>
   decidable_of_iff (∀ β ∈ D.onLineSlots, D.attainDim β = D.d)
     ⟨fun h => ⟨h⟩, fun h => h.full_attained⟩
+
+/-!
+**PROVENANCE (unit C2a; BP_IV §1.2 C2 comment + §2 C-table row C2a).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` — the C-table row C2a
+  ("`r1Bound` def (the displayed r = 1 RHS h₁((h₁⁻¹β mod e₁)+(f₁−1)e₁))",
+  "needs h₁ invertible mod e₁") and the §1.2 C2 display, whose use site
+  `r1Bound D β ≤ β` (with the comment "`r1Bound` uses `D.h_coprime`; no
+  undefined auxiliary proposition occurs") fixes the verbatim application form
+  `r1Bound D β : ℕ` at namespace level (NOT `CensusData` dot-notation — the C2
+  display sits outside `namespace CensusData`).  The undefined `coprimeHyp`
+  binder of the table row is removed per REV-2 finding 16: invertibility is
+  supplied by the `CensusData.h_coprime` field.
+* Math source of record: O9 r4 display (`O9_phaseB_verifybrief_rev5.md`, the
+  r = 1 FULL-attainment criterion): β is FULLY attained iff
+  β ≥ h₁·((h₁⁻¹β mod e₁) + (f₁ − 1)·e₁).
+* Deps: C0 (the `CensusData` carrier, `CensusCore.lean`).
+* Body is DERIVED (the blueprint displays no body) and hereby flagged for
+  division-lead/Codex ratification per the trust boundary:
+  - stage index 1 is `(1 : Fin (D.r + 1))` — the genuine stage 1 whenever
+    D.r ≥ 1 (the only regime C2 consumes; at D.r = 0 the literal wraps to
+    stage 0, and the def is total but unconsumed);
+  - `(h₁⁻¹β mod e₁)` is realized as `ZMod.val` of
+    `(ZMod.unitOfCoprime (D.h 1) (D.h_coprime 1))⁻¹ * β` in `ZMod (D.e 1)`:
+    the canonical representative in `[0, e₁)` of h₁⁻¹·β mod e₁ (`ZMod.val` is
+    reduction mod e₁ since e₁ ≥ 1 by `D.he`), with the unit inverse supplied
+    EXACTLY by `D.h_coprime` — the C2-comment discharge of the removed
+    `coprimeHyp`;
+  - `(f₁ − 1)` is ℕ-truncated subtraction, exact since f₁ ≥ 1 by `D.hf`.
+-/
+
+/-- C2a: the r = 1 attainment bound — the displayed O9 r4 RHS
+    `h₁·((h₁⁻¹β mod e₁) + (f₁ − 1)·e₁)`, with h₁⁻¹ the inverse of h₁ mod e₁
+    furnished by `D.h_coprime` (via `ZMod.unitOfCoprime`).  Unit C2 states:
+    FULL attainment at β ⟺ `r1Bound D β ≤ β` (for D.r = 1, over
+    `D.onLineSlots`). -/
+def r1Bound (D : CensusData) (β : ℕ) : ℕ :=
+  D.h 1 *
+    ((((ZMod.unitOfCoprime (D.h 1) (D.h_coprime 1))⁻¹ : (ZMod (D.e 1))ˣ) *
+        (β : ZMod (D.e 1)) : ZMod (D.e 1)).val
+      + (D.f 1 - 1) * D.e 1)
 
 end LeanUrat.Scaffold

@@ -1,10 +1,37 @@
 # R11 REPAIR DESIGN (2026-08-03) — restoring the composition after the D-11 owed-pass refutations
 
-**Status of this document: DESIGN ONLY — now at REVISION 3 (2026-08-04, the evidence
-pass).** No edit to ROOT (`docs/ROOT_ASSEMBLY_2026-08-02.md`, REVISION 9, a2ad88a) and
-no edit to the D-11 leaf (`lean/notes/openmath/D11_massid_phaseB_attempt_rev3.md`,
-8a0786c) is made here. This design goes to a Codex plan-review BEFORE execution; §7
-lists the execution units.
+**Status of this document: DESIGN ONLY — now at REVISION 4 (2026-08-04, the
+honest-pricing rewrite).** No edit to ROOT (`docs/ROOT_ASSEMBLY_2026-08-02.md`,
+REVISION 9, a2ad88a) and no edit to the D-11 leaf
+(`lean/notes/openmath/D11_massid_phaseB_attempt_rev3.md`, 8a0786c) is made here. This
+design goes to a Codex plan-review BEFORE execution; §7 lists the execution units.
+
+## REVISION 4 record (2026-08-04) — the honest-pricing rewrite
+
+The round-3 plan-review returned **DESIGN-REVISE** (report:
+`R11D3_review_2026-08-04.md`, findings 1–6 CRITICAL + 7 ADVISORY). THE ORCHESTRATION
+DECISION for this round (ledger, 1f165b8, per the 2-failed-corrections step-back
+rule): **STOP defending contested claims with evidence arguments; PRICE every
+contested proposition as a displayed [M] member with a named retirement route.**
+Conditionality grows; honesty is restored NOW; retirement routes discharge later —
+the same honest-enlargement pattern that closed the VC6→VC9 loop. REVISION 4 edits
+the REVISION-3 body in place at exactly the sections each finding hits; every
+passage not named below is byte-stable. Dispositions (no silent drops):
+
+| # | round-3 finding (gist) | class | disposition → pricing | where |
+|---|---|---|---|---|
+| 1 | (K1-NSF′) does not PROVE pin → predicate → corpus: (i) no quote shows irr/hen-terminal completeness excludes ns-marks (the "Hensel payload carries no ns-marks" step is imported, unquoted); (ii) no quote equates M04's "complete finite realizable" scope with the guarded TREE-N corpus | CRITICAL | **ACCEPTED — the PROOF CLAIM IS WITHDRAWN.** The two gaps are PRICED as ONE displayed [M] member, **(NSF-INT)**, of the NEW row **(H9) = (NSF)**; the quotes (q-1)–(q-6) are relabeled CONTEXT (what the interface displays), never proof. Retirement route on the member: the r4 leaf proof of the implication chain OR the Lean interface materialization | §2.5, §4 N2 |
+| 2 | pricing (NSF-KEY) without an [M] home is unjustified — it is a distinct mandatory K1/N2 label-routing proposition; the K4/[3t] seam does not house it | CRITICAL | **ACCEPTED — (NSF-KEY) RE-HOMED as the second member of (H9)** (the round-3 "rides the K4/[3t] seam, no new row" assertion is WITHDRAWN); one-home argument displayed: (NSF-INT) and (NSF-KEY) are the two faces (interface-side / as-built-side) of the SAME ns-routing interface. Statement re-cut per this round's charge; retirement route = Unit C executed under its gates | §2.5, §4 N2, §7 Unit C |
+| 3 | (†18) is not an exhaustive dependency trace (K1 row missing Step 17/D-11 M1/M3; Theorem-4 hypotheses untraced; ellipses vs "verbatim" overstated); the universal non-consumption conclusion is unsupported | CRITICAL | **ACCEPTED — the UNIVERSAL NON-CONSUMPTION CONCLUSION IS DROPPED.** (†18) stays as SUPPORTING CONTEXT, relabeled "trace, non-exhaustive"; **(ROW-Σ) is PROMOTED from contingency to REQUIRED r4 proof obligation** (new L10): any consumer the table missed is then covered by a PROVED theorem, not a non-consumption claim | §4 (†18), §6, §7 L10 |
+| 4 | corrected (O-5) closes the LOCAL exit partition only; the GLOBAL multi-block a.s.-termination argument (descent, countable addresses, union of reached-conditioned null sets, shared hand-off aggregation without duplication) is never displayed | CRITICAL | **ACCEPTED — the GLOBAL obligation is stated as the explicit r4 proof obligation (O-GLOB)** (finite block tree + per-block (O-1)–(O-5) + union bound; the shared-hand-off no-duplication aggregation named IN the obligation) | §3.4, §4 N4, §7 L6 |
+| 5 | N2's "MET AT THE INTERFACE PIN" is not honest relative to the actual composition (the capstone fires through the HEAD wiring, which violates the pin) | CRITICAL | **ACCEPTED — the reviewer's tier language is ADOPTED as the official verdict.** N2 = **BLOCKED-PENDING ((NSF-KEY) execution — known false at HEAD until the gated definition change lands)**; "MET AT THE INTERFACE PIN" survives only as the description of what the conditional lemma WOULD give at a conforming instance, never as a need verdict | §4, header |
+| 6 | Unit C is not order-independent of Unit B (E9 status flips ROOT text; end-to-end counter restart unstated; no build/hostile gate on the C-cone) | CRITICAL | **ACCEPTED — the execution order is RESTRUCTURED as Units A/B/C/D with explicit gates:** Unit C must reach TERMINAL status BEFORE Unit B writes E9 (written once, at final status); Unit D (the end-to-end bar) starts only after A+B+C close, and ANY text change restarts its counter at 0; Unit C gains the green-build + three-theorems-re-proved + Codex diff-confirmation gates | §7 |
+| 7 | "BLOCKED strictly EMPTY" vocabulary obscures status | ADVISORY | **ACCEPTED — the empty-BLOCKED claim is REMOVED EVERYWHERE.** The operational line is now: **BLOCKED-PENDING: N1 ((b-EX) proof), N4 ((O-1)–(O-5) + (O-GLOB) global proof), N2 ((NSF-KEY) execution — known false at HEAD until the gated definition change lands)** | header, §4 |
+
+**[M] accounting after REVISION 4 (exact):** rows eleven → **TWELVE** ((H8) at
+REVISION 2/§5.1 + the NEW row **(H9) = (NSF)** with members (NSF-INT)/(NSF-KEY));
+(H5)'s displayed row-law roster stays at FOUR (PACK-i/ii/iii/iv). ROOT r11's row
+count sync is ten → twelve (edit E5).
 
 ## REVISION 3 record (2026-08-04) — the evidence pass
 

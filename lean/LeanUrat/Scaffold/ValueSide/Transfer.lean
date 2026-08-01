@@ -1,16 +1,21 @@
 /-
 BP_IV §1.1 — Step 13, the drainage-transfer layer (`Transfer.lean`).
-Units in this file: SKEL (module skeleton, this unit).  Later waves add
-T0 (`card_boxProj_fiber`), T1 (`env_antitone`, landed), T2 (FLOOR), T3 (TR-Q skeleton),
-T4a/T4 (`discV` + `DrainageImports`), T5, T6 (`env_tendsto_zero_of_imports`),
+Units in this file: SKEL (module skeleton), T0 (`card_boxProj_fiber`),
+T1 (`env_antitone`), T2 (FLOOR), T3 (TR-Q skeleton), T4a (`discV`, landed).
+Later waves add T4 (`DrainageImports`), T5, T6 (`env_tendsto_zero_of_imports`),
 and the wave-4 HARD constructors T7 (CEIL) and T8 (tail).
-Import graph (BP_IV §0/§1.0): no value-side module is imported here; the
-counting vocabulary (`ClassifierSpec.decided/undec/env/dmass`, `Box`,
-`boxProj`, `canonical_stable`) is reused BY IMPORT from the corpus
-(`LeanUrat/MovesU/Defs.lean`), never redefined.
+Import graph (BP_IV §0/§1.0 + §2 T-table deps): the counting vocabulary
+(`ClassifierSpec.decided/undec/env/dmass`, `Box`, `boxProj`,
+`canonical_stable`) is reused BY IMPORT from the corpus
+(`LeanUrat/MovesU/Defs.lean`), never redefined; the K0 valuation vocabulary
+(`zmodVal`, units K0a/K0b) is reused BY IMPORT from
+`LeanUrat/Scaffold/ValueSide/KCount.lean` — T4a's declared dep is K0
+(BP_IV §2 T-table), and `KCount.lean` imports only Mathlib, so the
+value-side import graph stays acyclic.
 -/
 import Mathlib
 import LeanUrat.MovesU.Defs
+import LeanUrat.Scaffold.ValueSide.KCount
 
 /-!
 # The abstract drainage-transfer layer [BP_IV division, unit SKEL]
@@ -202,5 +207,62 @@ theorem env_tendsto_zero_of_majorant {E B : ℕ → ℝ} {g : ℕ → ℕ}
     squeeze_zero (fun N => hE0 (g N)) hle hB
   have h0 : (⨅ i, E i) = 0 := tendsto_nhds_unique hEg hEg0
   rwa [h0] at hlim
+
+/-!
+**PROVENANCE (unit T4a; BP_IV §1.1 `DrainageImports` docstring + §2 T-table
+row T4a, sources O4T §3.1 and LIT-8c).**
+Signature exactly as consumed by the §1.1 displayed statements
+(`DrainageImports.ceil/.tail`, `canonicalOrderLEOne_ceil`): `discV p n N f : ℕ`
+with `f : Box p n N`, all of `p n N` explicit.  Mechanism (blueprint row T4a):
+the discriminant of the level-N polynomial `Box.toPoly f` — Mathlib's
+`Polynomial.discr`, the sign-adjusted Sylvester determinant, which for the
+monic `Box.toPoly f` is the standard discriminant `disc f` of O4T §2's
+conventions up to the unit sign (−1)^{n(n−1)/2} (LIT-8c: disc = ±Res(f, f′)
+for monic f); a unit factor is invisible to the valuation — then the
+TRUNCATED valuation `zmodVal` (unit K0a, `ValueSide/KCount.lean`) in
+`ZMod (p^N)`, with the truncation-top convention v(0) = N (the level-N
+reading of v_p(0) = ∞: a vanishing truncated discriminant reads
+"v_p(disc) ≥ N", exactly the T4/T5 tail-event convention `{discV ≥ N}`).
+-/
+
+/-- T4a: the truncated discriminant valuation of the level-N box polynomial —
+`v_p(disc(Box.toPoly f))` read in `ZMod (p^N)` via `zmodVal` (so capped at N,
+with `discV = N` when the truncated discriminant vanishes mod p^N).  The
+quantity of O4T §3.1's three imports: CEIL bounds the read length by
+`discV + 1` (field `DrainageImports.ceil`, HARD unit T7), I-TAIL counts
+`{m ≤ discV}` (field `DrainageImports.tail`, HARD unit T8). -/
+noncomputable def discV (p n N : ℕ) [Fact p.Prime] (f : Box p n N) : ℕ :=
+  zmodVal (p := p) (M := N) (Polynomial.discr (Box.toPoly f))
+
+/-! ### T4a spec lemmas (definitional pins, the K0a-style spec layer) -/
+
+/-- Definitional pin: `discV` is the K0 truncated valuation of the Mathlib
+discriminant of the box polynomial. -/
+theorem discV_def {p n N : ℕ} [Fact p.Prime] (f : Box p n N) :
+    discV p n N f = zmodVal (Polynomial.discr (Box.toPoly f)) := rfl
+
+/-- The truncation cap: `discV ≤ N` (so `¬(discV + 1 ≤ N)` forces
+`discV = N` — the inclusion shape unit T4 extracts from CEIL). -/
+theorem discV_le {p n N : ℕ} [Fact p.Prime] (f : Box p n N) :
+    discV p n N f ≤ N :=
+  zmodVal_le _
+
+/-- The K0b divisibility bridge, specialized: for `k ≤ N`, the truncated
+discriminant valuation is `≥ k` iff `p^k` divides the truncated discriminant
+in `ZMod (p^N)` (the reading T8's resultant-divisibility count consumes). -/
+theorem le_discV_iff {p n N k : ℕ} [Fact p.Prime] (hk : k ≤ N)
+    (f : Box p n N) :
+    k ≤ discV p n N f ↔
+      (p : ZMod (p ^ N)) ^ k ∣ Polynomial.discr (Box.toPoly f) :=
+  le_zmodVal_iff hk _
+
+/-- The truncation top is exact: `discV` reaches `N` precisely on the
+vanishing truncated discriminant (v(0) = N convention made explicit). -/
+theorem le_discV_iff_discr_eq_zero {p n N : ℕ} [Fact p.Prime]
+    (f : Box p n N) :
+    N ≤ discV p n N f ↔ Polynomial.discr (Box.toPoly f) = 0 := by
+  have hp0 : (p : ZMod (p ^ N)) ^ N = 0 := by
+    rw [← Nat.cast_pow, ZMod.natCast_self]
+  rw [le_discV_iff le_rfl f, hp0, zero_dvd_iff]
 
 end LeanUrat.Scaffold
