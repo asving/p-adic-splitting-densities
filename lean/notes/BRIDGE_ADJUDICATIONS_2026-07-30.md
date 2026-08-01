@@ -1530,3 +1530,8 @@ not design conclusions; (3) (O-5)'s union misses terminating exit strata
 (no child slot) — route does not close. +2 advisories (M2's leftover
 "equivalently"; E1 branch out of sync with Unit-B gate). Report:
 lean/notes/openmath/R11D2_review_2026-08-04.md. Round-3 revision dispatched.
+
+## R11 DESIGN REVISION 3 ON FILE (2026-08-04, in place; the evidence pass — 3 crit + 2 adv folded)
+C1: (K1-NSF) SPLIT on opened definitions — (K1-NSF′) PROVED at the interface pin (O-1thr §1.4/Thm 3(c) + ClassifierSpec docstring pin, quotes chained); the as-built Lean keying REFUTED AT HEAD (M02 §2 exact-square poison V₀; bridgeTree lacks NsFree; unguarded count_tie) → NAMED obligation (NSF-KEY) (M02 minimal repair + guard re-scope; sign-off owed; rides the open K4/[3t] seam, no new [M] row; §7 Unit C). N2 downgraded to MET-AT-PIN, (NSF-KEY) owed.
+C2: exhaustive line-cited Σ=1 trace TABLED at (†18) (K1/K2/K3/K4/walk/18b, ROOT+leaf clauses verbatim): only Σ=1 on path = M1(d) one-step strata; only row-sum = Corollary D SUB-stochastic kernel value; member-row Σ_σ=1 consumed NOWHERE — (ROW-Σ) stays contingent. C3: (O-5) partition CORRECTED (hand-off AND terminating exits + null infinite path; 3-part induction consumption displayed). Advisories: (RE) "equivalently" struck (conjunctive form); E1 = "a proved lemma", period. N8 (CUT-WD/(H8)) added to the need table (finding 6).
+Tiers: N3/N6 MET; N2 MET-AT-PIN + (NSF-KEY); N5/N7/N8 MET AT PRICE; N1/N4 MET-PENDING-r4-PROOF. Next: Codex plan-review round 3 of the design.

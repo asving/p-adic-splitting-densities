@@ -101,16 +101,17 @@ Lean-guard note. Both dispositioned at §5.
 | D11-G5 (M2.0 addresses) | TRUE-SCOPE REPAIR | loop-extended addresses; two-letter transport induction (loop letters ← L2/L3 PROVED, hand-off letters ← (S1-m)); r4 obligations **(O-1)–(O-5)** enumerated with routes; billing (S1-m)+(DET) = the design-level claim the r4 must bear out (§3.4) [REVISION 2] |
 | D11-C6 (M2 false at scope) | TRUE-SCOPE REPAIR + [M] PRICE [REVISION 2] | Theorem M2 restated AT the hypothesis (RE): all blocks booked re-entrant — then verdict rows are canonical BY THE VERIFIED 𝔅_n GRAMMAR (α exists only at (O2)). At the CONSUMED member, (RE)+row-form = **(PACK-iv)**, a NEW (H5) row-law member — the PRIMARY route; the REVISION-1 definitional discharge is WITHDRAWN (review finding 1); the (RE) analysis survives as (PACK-iv)'s RETIREMENT ROUTE (§3.3/§3.5) |
 | D11-C7 (M3(b) silent clause 4) | leaf statement hygiene | conditionality moved in-statement; ROOT already insulated at (H5) (§2.7) |
-| D11-G8 (M3(a) "EVERY polynomial") | TRUE-SCOPE REPAIR | conclusion at separable lifts (= Theorem E's scope) + ns-null mass-sufficiency note; consumer-side check EXECUTED at REVISION 2 — **Lemma (K1-NSF)** displayed with the two-channel attribution; contingency (NS-ALL) flagged, narrowed (§2.5) |
+| D11-G8 (M3(a) "EVERY polynomial") | TRUE-SCOPE REPAIR | conclusion at separable lifts (= Theorem E's scope) + ns-null mass-sufficiency note; consumer-side check re-run as an EVIDENCE PASS at REVISION 3 — **Lemma (K1-NSF′)** proved at the interface pin (quotes (q-1)–(q-6) chained), the as-built keying divergence displayed (M02 §2) and priced as the NAMED obligation **(NSF-KEY)**; contingency (NS-ALL) flagged, narrowed (§2.5) |
 | D11-G9 (falsifier criterion) | display repair | criterion rescoped to (a″)'s families (§2.6) |
 | O11-G2 (CUT-WD) | [M] PRICE | NEW row **(H8) = (K-CUT)**, with the O-11 charge-(vi) adjudication as named retirement route (§5.1) |
 | O11-C1 residue (n ≥ 2 guard) | leaf/Lean note | O-11 r4 restates the target row at n ≥ 2; BK.series_tie carries the guard at formalization (§5.2) |
 
-**BLOCKED list [restated at REVISION 2; the REVISION-1 "EMPTY" was unsupported]:**
-strictly EMPTY (every need has a displayed route), but stratified honestly — N1/N4
-are MET-PENDING-r4-PROOF and N5/N7 MET AT PRICE ((PACK-iv), NEW (H5) member, plus
-(H8)); §4 runs the check need-by-need with the tiers displayed. Labeled
-contingencies (not blockers) at §6.
+**BLOCKED list [restated at REVISION 3]:** strictly EMPTY (every need has a
+displayed route), but stratified honestly — N1/N4 are MET-PENDING-r4-PROOF;
+N5/N7/N8 MET AT PRICE ((PACK-iv), NEW (H5) member; (H8), NEW row); N2 MET AT THE
+INTERFACE PIN with the named as-built keying obligation **(NSF-KEY)** OWED (an
+obligation KNOWN to fire at HEAD, not a contingency — §2.5); §4 runs the check
+need-by-need with the tiers displayed. Labeled contingencies (not blockers) at §6.
 
 ---
 
@@ -365,40 +366,143 @@ separability of every lift is not displayed (ns-null justifies only a.e.).
 > decided-ns-free certificate apparatus (O-1thr §1.4's fiber clauses; D-15's
 > vocabulary), not by this clause.
 
-**The consumer-side check (REVISION 2, review finding 3 — EXECUTED for this
-revision; sources read in full for it: O-1thr `O1thr_phaseB_verifybrief_rev4.md`
-§1.4 (states/trees/fibers: the "decided ns-free" definition and the fiber clauses
-(F1)–(F6)) + §6 Theorem 3 (= D-15, incl. the displayed count definition D_σ(N));
-M04 `M04-series-tie_fable.md` §§2–5 (Theorems 1–2, Lemma 3.3, Theorem 4 = the
-K1–K4 reduction); ROOT Step 18's K1/K4 lines and the Step 11/12 → Step 17 label
-route).** The review's question: does every Step-18 K1 box receiving an M3 label
-carry a decided-ns-free certificate — EXACT classification, not a.e.? The answer
-is YES, by the displayed DEFINITIONS of the counted corpus, and REVISION 2
-displays it as a lemma with its warrant (r4/r11 carry it per §7 E9):
+**The consumer-side check (REVISION 3 — re-executed as an EVIDENCE PASS; round-2
+review finding 1: REVISION 2's (w3) claimed the partition identity routes ns-halts
+to the NONE fiber and (w4) claimed the K1/K4 keying "definitional on both sides" —
+neither supported by displayed text. Both are WITHDRAWN as warrants. Sources OPENED
+for this revision, operative clauses quoted verbatim below: O-1thr
+`O1thr_phaseB_verifybrief_rev4.md` §1.4 + §6 Theorem 3/Remark 4 + §8 (S-1); M04
+`M04-series-tie_fable.md` §§2–3, 5.5; M02 `M02-count-tie_fable.md` headline + §2;
+Lean HEAD: `MovesU/Defs.lean` (ClassifierSpec), `MovesU/DefsLedger.lean`
+(TreeSeam.count_tie), `MovesU/BridgeD3_treeCarrier.lean` (bridgeTree),
+`MovesU/BridgeD7_canonical.lean` ((†7) bridgeCanonical), `MovesT/Defs.lean`
+(VTree/fiberAt/Realizes/NsFree), `MovesT/E11_treeN.lean` (hdet).** The finding
+SPLITS the REVISION-2 lemma: the keying bridge holds DEFINITIONALLY at the
+interface pin (Lemma (K1-NSF′) below, the quotes chained), and the claim that the
+AS-BUILT keying satisfies the pin is REFUTED AT HEAD by the on-file M02 record —
+now the NAMED obligation **(NSF-KEY)**.
 
-> **Lemma (K1-NSF) [every labeled K1 box carries the decided-ns-free
-> certificate].** Every box that receives a verdict label anywhere in Step 18's
-> K1/K4 chain fibers a decided NS-FREE tree T — i.e. carries the full certificate
-> fiber(T, x) = (F1)–(F6) with T decided ns-free — and D-15's exact-classification
-> package (fiber = EXACT finite union of level-thr(T) cylinders; the exact count
-> tie #Φ_N(T) = mass(T)·p^{nN}; per-box uniqueness/disjointness) applies to it
-> with NO a.e. weakening. *Warrant (definitional unfolding of displayed text, no
-> new mathematics):* (w1) O-1thr §1.4 defines the ONE bundled predicate "decided
-> ns-free := every maximal chain is a (τ-irr) leaf and the Hensel payload covers
-> the simple part — no ns-marks"; an ns-halt (τ-ns) is a MARKED halt that is not
-> a (τ-irr) leaf, so there is no decided-but-ns-marked class in the displayed
-> vocabulary to leak through. (w2) O-1thr Theorem 3(c) defines the level-N
-> decided-σ count D_σ(N) := #{x level-N : fiber(T, x) for some DECIDED NS-FREE T
-> with typemult = σ} — the corpus is decided-ns-free-quantified in its displayed
-> definition. (w3) M04 Theorem 2(a)'s partition (Σ_σ decided_σ(N) + undec(N) =
-> p^{nN}, the verdict map f ↦ canonical N f) routes every box whose canonical run
-> is not decided — in particular every ns-halted box — into the NONE-fiber
-> undec(N): such boxes receive NO label. (w4) K1/K4's corpus ("complete finite
-> realizable canonical trees"; bridgeMass at decided trees, with (ns-null)
-> excluding infinite trees) is keyed to the SAME decided corpus that the
-> count_tie/finiteness_stack interface ties to D_σ(N) — the corpus KEYING is
-> definitional on both sides; the numerical tie itself is the count_tie row's
-> content, priced at its own home, not consumed by this lemma. ∎
+**The displayed definitions (the evidence base — verbatim quotes).**
+
+* **(q-1) [the bundled predicate — O-1thr §1.4]:** "**decided ns-free** := every
+  maximal chain is a (τ-irr) leaf and the Hensel payload covers the simple part —
+  no ns-marks"; and the ns-halt is a MARKED halt: "(τ-ns) — write **NsHalts(o, f)**
+  := o is a REALIZED non-saturated state whose window has no principal face on f —
+  the ns-halt, MARKED". (Classification trees carry "leaf verdicts, and ns-marks"
+  in the vocabulary; "decided ns-free" is the displayed decided predicate.)
+* **(q-2) [the counted corpus — O-1thr Theorem 3(c)]:** "D_σ(N) := #{x level-N :
+  fiber(T, x) for some decided ns-free T with type(T) = σ and thr(T) ≤ N}" — the
+  corpus is decided-ns-free-quantified IN ITS DISPLAYED DEFINITION, and the whole
+  package is scoped there: "Throughout: T decided ns-free, t := thr(T), fibers per
+  §1.4" (Theorem 3's opening line).
+* **(q-3) [the K1/K4 corpus quantifier — the TREE-N/TREE-EXP source scope, quoted
+  on file at M02]:** "The note's TREE-N (MOVES 7559–7574, quoted in the T
+  blueprint) is stated for trees 'complete finite realizable with all leaves
+  (τ-irr)/(τ-hen)' — the ns leaves are excluded; the machine-checked discharge
+  candidate `treeN` (E11_treeN.lean) carries `hdet : ∀ H ∈ Tr.chains, ¬ Tr.nsLeaf
+  H`" — verified at HEAD (lines 48/118; and `treeN`'s body passes `hdet` into
+  `treeExp`, line 68 — the K1-side discharge candidate carries the SAME guard).
+  M04's K1 quantifies over "each complete finite realizable canonical tree"
+  (= this source scope) and its K4 reads "`bridgeMass` T (the normalized level-L
+  fiber count, L = max(thr T,1)) equals μ(fiber T) — level-exact cylinder reading;
+  plus (ns-null) excluding infinite trees".
+* **(q-4) [the interface pin — the ClassifierSpec docstring, `MovesU/Defs.lean`]:**
+  "`canonical`: T_can^τ's verdict-type map … **`some σ` = complete finite
+  realizable tree, all leaves (τ-irr)/(τ-hen), certified at level N (thr ≤ N)**";
+  and the counts are DEFINED from it: "decided_σ(N) — DEFINED from the canonical
+  map (never a free field)" (`ClassifierSpec.decided … := Nat.card {f // X.canonical
+  N f = some σ}`; `undec N := Nat.card {f // X.canonical N f = none}`).
+* **(q-5) [what the partition identity actually is — M04 Theorem 2, proof step
+  (a)]:** "At each level N the verdict map f ↦ canonical N f partitions the
+  p^{nN}-element box into the σ-fibers and the none-fiber: Σ_σ decided_σ(N) +
+  undec(N) = p^{nN} (SplittingType n is a Fintype — unit U0b; pure counting)" —
+  TRUE FOR ANY Option-valued map; it routes NOTHING. The routing content lives in
+  (q-4), not in the identity. [REVISION 2's (w3) withdrawn exactly here.]
+* **(q-6) [the intended drainage — O-1thr Remark 4]:** "The ns-free hypothesis is
+  NOT removable: an exact-square family (n = 2: classes of (X − b)², v_p(b) = 1
+  held to level N) fibers an ns-marked tree whose counts scale by p, not p² — the
+  countermodel is PARI-verified in the source campaign. Undecided/ns loci drain
+  into the undecided envelope instead; their treatment is the drainage node, not
+  this package."
+
+> **Lemma (K1-NSF′) [the keying bridge AT THE INTERFACE PIN — replaces REVISION
+> 2's (K1-NSF)].** At any instantiation of the classifier interface satisfying
+> (q-4)'s pin — `canonical N f = some σ` ONLY IF the box fibers a complete finite
+> realizable tree with all leaves (τ-irr)/(τ-hen) at thr ≤ N — every box that
+> receives a verdict label anywhere in Step 18's K1/K4 chain lies in the
+> decided-ns-free counted corpus, and D-15's exact-classification package (fiber =
+> EXACT finite union of level-thr(T) cylinders; #Φ_N(T) = mass(T)·p^{nN}; per-box
+> uniqueness/disjointness) applies to it with NO a.e. weakening.
+> *Proof (the quoted definitions chained).* Labeled means canonical N f = some σ.
+> By (q-4), the box fibers a complete finite realizable tree T with all leaves
+> (τ-irr)/(τ-hen) and thr(T) ≤ N. A tree whose maximal chains are all (τ-irr)
+> leaves (the (τ-hen) part is the Hensel payload, covering the simple part at any
+> fibered box by fiber clause (F3)) carries no ns-marks — T is decided ns-free by
+> (q-1). Hence the box is a member of (q-2)'s D_σ(N) at σ = type(T), the corpus
+> D-15's package is stated and proved over. K1/K4's own summation corpus is
+> (q-3)'s — the same all-leaves-(τ-irr)/(τ-hen) trees. ∎
+> [Two honest riders, unchanged in kind from REVISION 2: (E-N) — whether the
+> clause thr(T) ≤ N in D_σ(N) is redundant is OPEN at O-1thr rev 4 (its own
+> displayed caveat); the lemma consumes the RESTRICTED count, which is the
+> displayed one. And the numerical decided_σ(N) = D_σ(N) tie is the
+> count_tie/finiteness_stack row's content, priced at its own home, not consumed
+> by this lemma.]
+
+**The as-built keying FAILS the pin at HEAD — (w4)'s "definitional on both sides"
+is REFUTED on file, and the price is (NSF-KEY).** The M02 attempt (on file
+2026-07-31, `M02-count-tie_fable.md`), re-verified against Lean HEAD for this
+revision:
+
+* **the carrier:** "The carrier `bridgeTree n p σ = {V // V.typemult = σ.1 ∧
+  RealizedSelf n p V}` (BridgeD3) carries **no ns-free clause**, so count_tie
+  quantifies over trees with ns-marked leaves." At HEAD: `MovesT.VTree` carries the
+  `nsLeaf` field; `VTree.fiberAt` clause (ii) displays the ns-leaf disjunct
+  (`NsHalts T (some H) x ∧ ¬ IrrHalts H ∧ Tr.nsLeaf H ∧ Tr.leafV H = some
+  (nsVerdictOf H)`); `Realizes` is bare fibering (`∃ x, Tr.fiberAt T χ x`);
+  `MovesT.NsFree` exists as a SEPARATE predicate (`∀ H ∈ Tr.chains, ¬ Tr.nsLeaf H`)
+  conjoined NOWHERE in `bridgeTree`; and `TreeSeam.count_tie`
+  (`DefsLedger.lean`) quantifies `∀ (T : F.Tree σ), F.thr σ T ≤ N → …` with NO
+  ns-free guard.
+* **the classifier:** (†7) `bridgeCanonical N f` returns `some h.choose` on
+  `∃ σ T, thr ≤ N ∧ fiberAt … f` over THAT carrier — so a finite ns-halted box
+  fibering an ns-marked carried tree is LABELED, not routed to `none`.
+* **the poison, exhibited (M02 §2):** the exact-square family's V₀ (chains =
+  prefix-closure of {[ν₀]}, nsLeaf marked, leafV = nsVerdictOf, typemult
+  {(1,1),(1,1)}, self-realized) "∈ bridgeTree n p σ₀ … and — this is the poison —
+  **the classifier decides exact squares, with verdict 'totally split'**";
+  c_{V₀}(N) = p^{N−2} against (SCALE)'s forced p²-per-level growth — count_tie as
+  typed REFUTED; and "The same ns family refutes, at the intended instance,
+  `canonical_stable` … (iii) It also makes `VPSound` unsatisfiable." [M02's one
+  flagged step — the intended `ReadsOf` semantics, no compiled countermodel while
+  `canPolicy` is designer-sorried — is inherited here verbatim.]
+* **the sanctioned repair, PROPOSED NOT EXECUTED (M02 "Minimal repair"):** conjoin
+  `MovesT.NsFree V` into `bridgeTree`; then "exact squares (and every
+  window-degenerate locus) fiber NO carried tree, so `bridgeCanonical` returns
+  `none` there — they drain into the undecided envelope env(N)" — exactly (q-6)'s
+  intended drainage — "flagged for sign-off per the axiom/statement policy". At
+  HEAD the conjunct is NOT in `BridgeD3_treeCarrier.lean`.
+
+> **(NSF-KEY) [NAMED OBLIGATION, new at REVISION 3 — as-built keying
+> conformance].** The wired classifier instance satisfies (q-4)'s pin: `canonical`
+> labels only decided-ns-free-fibering boxes. PRIMARY ROUTE (on file): execute
+> M02's minimal repair — the `NsFree` conjunct on `bridgeTree` (a definition
+> change on the bridge carrier, sanctioned-genre instance repair, **SIGN-OFF
+> OWED** per the statement fence) + the count_tie row re-scope to the guarded
+> corpus (matching `treeN`/`treeExp`'s `hdet` guard and (q-3)'s source scope) —
+> after which the pin holds BY CONSTRUCTION of (†7) (no ns-marked tree is
+> carried, so no fibering witness exists at window-degenerate loci). Secondary
+> route: prove no ns-marked carried tree fibers any labeled box at the pinned
+> models (OPEN; (E-N)-adjacent; not on file). LEDGER HOME — deliberately NOT a
+> new [M] row: the keying rides the ALREADY-OPEN K4/[3t] seam (count_tie is a
+> named open kernel of Step 18 — M04 §5.5 "K4 … shared with M02", OL-4 — and
+> Step 18's conditionality already prices that seam), and it is exactly the
+> O-1thr §8 (S-1) transcription-audit clause ("Any consumer whose classifier is
+> formalized differently owes a clause-by-clause audit … it is OWED …
+> Nothing in this brief proves anything about a Lean object"). What is NEW at
+> REVISION 3 is that N2's certificate lemma is DISPLAYED as attaching to the
+> interface pin — with (NSF-KEY) the named, tracked gap to the as-built
+> instance — rather than silently keyed past it. Until (NSF-KEY) is executed,
+> Lemma (K1-NSF′) covers the intended/pinned instantiation, NOT the HEAD wiring.
 
 **The two consumption channels (what M3 does and does not supply at K1 —
 displayed so the a.e./exact distinction cannot blur again):**
@@ -411,16 +515,19 @@ displayed so the a.e./exact distinction cannot blur again):**
 * **(ch-2) the SEMANTIC tie** (recorded labels = true types) — where M3(a)
   enters (via Steps 11/12 → Step 17): consumed MASS-MEDIATED. Each counted box's
   true-σ locus is the box minus its nonseparable locus (M3(a) at separable scope,
-  applicable by Lemma (K1-NSF)), of full box mass by T-6 (ns-null) — exactly what
-  the Step-19 squeeze and Step 18b's density reading consume. No mandatory
-  consumer reads a true type at an individual nonseparable lift.
+  applicable by Lemma (K1-NSF′) — at the interface pin, with (NSF-KEY) the named
+  as-built gap), of full box mass by T-6 (ns-null) — exactly what the Step-19
+  squeeze and Step 18b's density reading consume. No mandatory consumer reads a
+  true type at an individual nonseparable lift.
 
 **Contingency (NS-ALL), still flagged not priced — NARROWED by the executed
 check:** it fires only if a verification pass finds a consumer needing all-lifts
 separability FROM M3 at boxes not definitionally ns-free — i.e. a consumer
-OUTSIDE both displayed channels; the REVISION-2 check found none on the
-Step-17/18/18b/19 path. If one is found, (NS-ALL) is priced as an explicit open
-lemma per §6.
+OUTSIDE both displayed channels; the checks found none on the Step-17/18/18b/19
+path. If one is found, (NS-ALL) is priced as an explicit open lemma per §6.
+[(NS-ALL) is DISTINCT from (NSF-KEY): (NS-ALL) is a contingency about a
+hypothetical consumer and has NOT fired; (NSF-KEY) is an OBLIGATION about the
+as-built keying and is KNOWN to fire at HEAD (the M02 record above).]
 
 ### 2.6 G9 — the falsifier-criterion display
 
@@ -496,9 +603,13 @@ sound repair is a BOOKING-PROFILE hypothesis.
 ### 3.3 REPAIRED THEOREM M2 (verbatim)
 
 > **Theorem M2 (r4).** Let the member satisfy:
-> **(RE) [re-entrant booking profile].** EVERY block e ∈ {2, …, n} of the member is
-> booked (O1), (O2′), or (O3) — never (O2); equivalently (O-12 §2.3(iv)/§2.4) the
-> member carries NO allocation datum at any block, so by the displayed grammar its
+> **(RE) [re-entrant booking profile — a CONJUNCTION; REVISION 3, review advisory
+> 4: the REVISION-2 "equivalently" is STRUCK — the displays establish only
+> (O2) ⟹ carries-α (§3.3's withdrawal reasons below), so no clause here is derived
+> from another; (RE) states everything the proof uses, the same conjunctive genre
+> as (PACK-iv)].** EVERY block e ∈ {2, …, n} of the member is
+> booked (O1), (O2′), or (O3) — never (O2); AND the member carries NO allocation
+> datum at any block; AND its
 > family-(iv) verdict rows at every block are the canonical 0/1-coefficient assembly
 > row_σ(F) = m(F)·Σ_{comp_F(σ⃗)=σ} ∏_i β_{μ_i}(σ_i)(q^{D_i}), aggregated
 > t_σ = Σ_F row_σ(F), with the only booking adjustments the (O2′) re-feed leg κ₁·x
@@ -648,11 +759,33 @@ route; §4's N4 rests on exactly these]:**
   preserved letter-by-letter (the kernel-null-set step with (S1-m) replaced by the
   PROVED L2+L3 statement). This is the loop case of the two-letter transport and
   the exact reason the billing does not widen.
-* **(O-5) [where per-block a.s. exit is consumed — the explicit discard of
-  infinite words].** The address-tree accounting uses (O-2) at EVERY node so that
-  {a′ reached} = ⨆_w {a′ reached, w then exit through some (F, i)} ⊔ (null) loses
-  no mass; the r4 displays this consumption line explicitly at the induction step
-  (it is where M1(c)'s per-block bound, transported by ≪, is spent).
+* **(O-5) [where per-block a.s. exit is consumed — the CORRECTED exit-partition
+  display; REVISION 3, review finding 3: the REVISION-2 union wrote only
+  "exit through some (F, i)" and so omitted the TERMINATING exits (strata with NO
+  child slot); it could not be a decomposition of the whole reached event].**
+  At every node a′ (block μ := μ(a′)), up to the (O-2) null set, the within-block
+  trajectory executes a finite loop word w and then lands in exactly ONE exit
+  stratum F of block μ — F ranging over ALL displayed exit strata of the block:
+  the HAND-OFF strata (children born in blocks μ_i < μ; child slots (F, i)) AND
+  the TERMINATING exits (verdict/leaf rows with no child slot). The countable
+  disjoint decomposition consumed by the accounting is
+
+      {a′ reached} = ⨆_w ⨆_{F ∈ Exits(μ)} ({a′ reached} ∩ {w then F})
+                     ⊔ ({a′ reached} ∩ {the trajectory never exits}),
+
+  the last member NULL by (O-2). Disjointness: across (w, F) the words w·F are
+  stopping words in (O-1)'s generalized sense — (b-PF) at the first differing
+  position, (b)'s one-step clause across distinct F at equal w; countability as
+  in (O-1). The induction step consumes EXACTLY this corrected form, in three
+  displayed uses: (i) the child-reached identity (O-1) is the sub-union at the
+  HAND-OFF pairs — for each hand-off F, the event ⨆_w ({a′ reached} ∩ {w then F})
+  IS {child (F, i) of a′ reached} for EVERY slot i of F (the factor-children of
+  one exit are simultaneous, not alternatives — one event per F, shared by its
+  slots); (ii) the TERMINATING-exit members are consumed as the per-node
+  terminal/leaf masses — they spawn no child and no further induction step;
+  (iii) the null member is discarded — this is where M1(c)'s per-block bound,
+  transported by ≪, is spent. The r4 displays this consumption line, in exactly
+  this three-part form, at the induction step.
 
 **Billing: (S1-m) + (DET), claimed UNCHANGED — but demoted at REVISION 2 from an
 established fact to the design-level claim the r4 proof must bear out** ((O-4)'s
@@ -724,44 +857,52 @@ pole-free specialization at every prime power (Steps 4 + 5 + 17 …)".
 | # | need | met by | verdict [REVISION 2 tiers] |
 |---|---|---|---|
 | N1 | Step 18 K1/K2 ← "pack-side mass laws": per-row stratum masses at the 𝔅_n member + row disjointness (incl. the (O3) resummed rows) [the REVISION-1 "row Σ = 1" member-row delivery is WITHDRAWN — see (†18)] | repaired M1(a) families (i)–(iii) (conditional-on-C_e, formulas unchanged) + M1(d) (one-step strata Σ = 1 — its honest scope) + (b) with (b-PF) argued + **(b-EX) an r4 PROOF OBLIGATION** (route displayed §2.4) + (LOOP-∞); the K2 glue laws at the CONCRETE pack stay (PACK-i/ii); K3's stays (PACK-iii) — unchanged | **MET-PENDING-r4-PROOF ((b-EX))** |
-| N2 | Step 18 K1 ← "true row labels" (M3 leg, via Steps 11/12) | repaired M3(a) at separable-lift scope + **Lemma (K1-NSF)** (the EXECUTED consumer-side check, §2.5: every labeled K1 box fibers a decided ns-free tree BY the displayed corpus definitions; exact combinatorics = channel (ch-1), label-blind, M3-free; semantic tie = channel (ch-2), mass-mediated with T-6 (ns-null)); label attachment to ACTUAL tables rides (H5) | **MET** (contingency NS-ALL flagged, narrowed — §6) |
+| N2 | Step 18 K1 ← "true row labels" (M3 leg, via Steps 11/12) | repaired M3(a) at separable-lift scope + **Lemma (K1-NSF′)** (§2.5 REVISION 3: the keying bridge PROVED from the quoted definitions (q-1)–(q-4) AT THE INTERFACE PIN); the AS-BUILT Lean keying FAILS the pin at HEAD (M02 §2's exact-square poison, quoted §2.5) — the named obligation **(NSF-KEY)** (M02's sanctioned minimal repair + count_tie guard re-scope; sign-off owed; rides the already-open K4/[3t] seam, NO new [M] row); channels (ch-1)/(ch-2) unchanged; label attachment to ACTUAL tables rides (H5) | **MET AT THE INTERFACE PIN — (NSF-KEY) EXECUTION OWED** [the REVISION-2 "MET by executed check" is WITHDRAWN per review finding 6] |
 | N3 | Step 18b ← "the (r1) uniqueness pivot" | Corollary D margins/pivot — untouched by every finding | **MET** |
 | N4 | Step 17's termination delivery ("a.s. termination from the (r1) margins"; D-9k's escape input) | M1(c) per-visit margins at (O1)/(O3) + per-block a.s. exit, unconditional (pass-confirmed, byte-stable); multi-block a.s. termination = Lemma M2.0 REPAIR-DESIGNED per §3.4 with obligations **(O-1)–(O-5)** enumerated and routed; billing (S1-m)+(DET) = the design-level claim the r4 must bear out; Step-17 display line rescoped to this split (edit E1) | **MET-PENDING-r4-PROOF ((O-1)–(O-5))** |
 | N5 | Step 18b → Step 19: α = series at the consumed instance | repaired M2 (r4) at its (RE) scope — a THEOREM about (RE) members; at the CONSUMED member, (RE)+row-form = **(PACK-iv)**, the NEW (H5) member (§3.5, PRIMARY; the REVISION-1 definitional discharge WITHDRAWN, §3.3); (S1) ← Step 14, (S2) ← Step 18, pivot ← Step 17 as before; concrete-pack attachment = (H5)'s correspondence clause as before | **MET AT PRICE ((PACK-iv), NEW [M] member)** |
 | N6 | Step 19 ← Step 17's pole-free leg | the (r1)/(r2) margins reread — untouched | **MET** |
 | N7 | Step 19's Σ_τ R_τ = 1 | rides α = R_τ at every p (N5) + Step 1 — hence INHERITS N5's (PACK-iv) price; conditionality otherwise unchanged (Step 1 + interpolation, ROOT REVISION-3 finding B3) | **MET AT PRICE (inherited from N5)** |
+| N8 | Step 18 K1's Lemma-3.3 shallow-cut regrouping ← CUT-WD [ADDED to this table at REVISION 3, review finding 6: the owed O11-G2 item was dispositioned at §5.1 but sat OUTSIDE the need-by-need accounting] | **(H8) = (K-CUT)**, the NEW [M] row (§5.1, verbatim there: exactly-one shallow decomposition, exhaustive-exclusive read ownership, weight-preserving μ(fiber T) = W(Ŝ)·∏_i weight(D_i) — M04 Lemma 3.3's hypothesis); named retirement route = O-11 §8 charge (vi) | **MET AT PRICE ((H8), NEW [M] row)** |
 
-**(†18) The C4 trace [REVISION 2, review finding 4] — where row normalization
-actually lives, displayed.** The REVISION-1 N1 row claimed Step 17 delivers
-"member-row Σ = 1 through the canonical grammar + family-(vi) aggregates at (RE)
-members". WITHDRAWN: M1(d)'s theorem is Σ = 1 over the ONE-STEP STRATA; member
-verdict rows are family (iv) — excluded from M1(a) by (a″) — and their sums
-involve the β-leg aggregates Σ_σ β_{e′}(σ)(q^δ), about which M1 proves nothing.
-The trace of every mandatory consumer:
-* Step 18's K2 evaluation glue consumes definedness (O-12 (r2)) + (PACK-i)
-  (rsh_interp) + **(PACK-ii) (r_bdd — the [0,1] bound behind ENNReal.ofReal)**:
-  the ONLY normalization-class law consumed at Step 18, and it is ALREADY a
-  priced (H5) clause at the CONCRETE pack (ROOT REVISION 7, finding VC7-2) — not
-  an M1 delivery, not an O-12 theorem.
-* Step 18's K1/K4 and Step 19's squeeze consume NO member-row sum: K1 is
-  label-blind combinatorics + measured masses (§2.5 (ch-1)); Step 19's
-  Σ_τ R_τ = 1 is concluded from Step 1 + interpolation (ROOT REVISION-3 finding
-  B3) — not from any table-side total.
-* O-12 supplies NO row-normalization theorem: its claim is poles/zeros only;
-  value totals are expressly outside it (§1 scope declaration). There is no
-  algebraic theorem to cite because none exists on file — the REVISION-1 phrase
-  "through the canonical grammar" was pointing at unproved content.
-So member-row Σ = 1 is consumed NOWHERE on the mandatory path, and Step 17's E1
-display drops it (§7). CONTINGENT ROUTE, displayed in case a future pass finds a
-consumer: **(ROW-Σ)** — Σ_σ β_e(σ)(q₀) = 1 at every block of a member satisfying
-(PACK-iv), by induction on e: M1(a)(ii)/(iii) + M1(d) give the true exit masses
-summing to 1 − κ₀ − κ₁; (PACK-iv)'s canonical row form gives Σ_σ t_σ =
-Σ_F m(F)·∏_i Σ_{σ_i} β_{μ_i}(σ_i)(q^{D_i}) (the 0/1 comp-sum telescopes over the
-finite verdict set); O-12 Theorem 1(3)'s solve display (β_e = t/(1 − q^{1−E}))
-and the base β_1 = 1 close the induction. It consumes NOTHING from Steps 18/18b —
-M2-free, hence NON-CIRCULAR — but it is NOT on file; if it ever fires it is an
-r-pass proof obligation at Step 17's layer, and (PACK-iv)'s consumption set
-widens to include it (sub-attribution re-sync duty noted at E4).
+**(†18) The Σ = 1 trace [REWRITTEN at REVISION 3, review finding 2: the
+REVISION-2 version stated the design's CONCLUSIONS about the consumers; here is
+the EXHAUSTIVE line-cited dependency table instead].** Background (unchanged):
+the REVISION-1 N1 row claimed Step 17 delivers "member-row Σ = 1 through the
+canonical grammar + family-(vi) aggregates at (RE) members" — WITHDRAWN; M1(d)'s
+theorem is Σ = 1 over the ONE-STEP STRATA only, and member verdict rows are
+family (iv), excluded from M1(a) by (a″) (verbatim: "NOT claimed by (a)/(a′):
+family-(iv) verdict rows under ARBITRARY allocation data α_e … families
+(vi)/(vii) — the β-legs and solved entries carry no per-entry mass identity").
+The table: EVERY input each consumer consumes, with the source line quoted.
+
+| consumer | ROOT REVISION 9's displayed consumption/proof line (verbatim) | the invoked leaf statement — operative clause (verbatim) | row-total content found |
+|---|---|---|---|
+| **K1** (Step 18) | "K1 ← O-10 (guarded) + (I-τ)→GD [the (I-τ)/K-LOC interface = §3.1 (H7) …] + CU leaf labels [which carry the terminal-seam (H6) content and (FRESH) — the A-5 route leg]" | M04 §5.5 (K1): "each complete finite realizable canonical tree's fiber mass factors as the grammar weight of its derivation, with outcome weights the MEASURED one-step conditional masses (`M.rowVal`, J, ι/W) at the composed pools, and the type-σ corpus decomposes along shallow shapes as in Lemma 3.3 with W(Ŝ)(p) the measured shallow-shape mass"; Lemma 3.3's hypothesis: "a WEIGHT-PRESERVING BIJECTION … under which μ(fiber T) = W(Ŝ)·∏_i weight(D_i)", proof "Regroup along the bijection; … factor (Tonelli in [0,∞])"; the cut hypothesis = (H8) (§5.1) | **NONE.** A product/regrouping law: every sum is over derivations or shapes in [0,∞] (Tonelli); no sum over σ; no total set to 1 |
+| **K2** (Step 18) | "K2 ← O-12 at 𝔅_n + D-11 PACK SIDE (= Step 17's tranche, never M2) + the **(PACK)** correspondence-plus-row-laws … (PACK-i)/(PACK-ii) at THIS K2 evaluation glue (the Rsh → Rval conversion and the [0,1] bound behind ENNReal.ofReal)" | M04 §5.5 (K2): "at every consumed pool q₀ = p^δ …, the active one-step matrix A(q₀) satisfies A(q₀)^k·𝟙 → 0". Its displayed discharge, O-11 rev 3 §3.3: "**O-12 Theorem 1 + Corollary D** …: every block kernel substochastic with positive termination margin at every prime power q₀ ≥ 2 (margins ≥ 3/4, 7/8, 6/7 …), hence ρ(A) < 1 and det(I−A) ≠ 0; plus D-6 …"; "At the intended pack: that the pack's one-step matrices ARE 𝔅_n-organized volume matrices (so the 𝔅_n theorems apply) is D-11 (… §0 entry, item (ii))". O-12 Corollary D: "Φ^{(O1)}(q₀) = 1 − q₀^{1−E} ≥ 3/4, Φ^{(O2)} = Φ^{(O2′)} = 1 − q₀^{−E} ≥ 7/8, Φ^{(O3)} = 1 − (q₀−1)/(q₀^E−1) ≥ 6/7". O-12 Theorem 4's note: "At 𝔅_n the hypothesis holds … (Corollary D margins; **the row 'sum' is the scalar kernel value**)" | **the only row-sum object is the KERNEL row sum** — the scalar loop mass, bounded AWAY from 1 (SUB-stochasticity — the opposite of a Σ = 1 law); (PACK-ii) r_bdd is a PER-ENTRY [0,1] bound; no Σ_σ anywhere |
+| **K3** (Step 18; for completeness) | "K3 = [1v]-FULL value correctness ASSEMBLED from T-7s + O-9's census + O-8b (arbitrary-DVR), with **(PACK-iii) wsh_ok** the membership input to K3's evaluation ring-hom evalAt (with D-6)" | M04 §5.5 (K3): "the numeric grammar weights equal the evaluations at the pools of the symbolic ℚ(q) entries K_e, b^{term}, J, W_Ŝ …"; O-12 (r2): "every g ∈ E(e) is defined at q₀" | **NONE.** Value-correctness + definedness; no totals |
+| **K4** (Step 18) | "K4 ← Dfloor/D-15/CU mass semantics" | M04 §5.5 (K4): "`bridgeMass` T (the normalized level-L fiber count, L = max(thr T,1)) equals μ(fiber T) — level-exact cylinder reading; plus (ns-null) excluding infinite trees". D-15 = O-1thr Theorem 3(b)/(c): "#Φ_N(T) = mass(T)·p^{nN}"; "D_σ(N) = Σ_{T : type(T) = σ, thr(T) ≤ N} mass(T)·p^{nN}, a finite sum" | **NONE.** Per-tree count laws + a PER-σ count; nothing is summed over σ, nothing totals 1. [M04 Theorem 2 does sum over σ — but its identity is the bare box partition "Σ_σ decided_σ(N) + undec(N) = p^{nN} … pure counting" ((q-5), a tautology of any Option-valued map, and a BOX-side count, not a member-row sum), and Theorem 2 is consumed NEITHER by the Theorem-4 walk NOR by ROOT Step 18's displayed statement (which is the per-τ tie only)] |
+| **the Theorem-4 walk itself** (Step 18's proof line: "the M04 Theorem-4 walk (least fixed point, Bekić triangularization, Neumann under spectral escape; proved self-contained)") | "Consumes: Steps 1, 5, 6, 10–12, 14, 15, 16, 17 — all EARLIER. NOT consumed: D-11 M2 (Step 18b)" | M04 Theorem 4's proof, in full: "K4 turns the LHS into Σ_{T type σ} μ(fiber T). K1 + Lemma 3.3 turn it into the shallow convolution of the numeric B's. Lemma 3.1 + Bekić + Lemma 3.2 with K2, by induction on the block size e …, give B_{e,·}(σ′)(q₀) = (I − A(q₀))^{−1} c(σ′) …; K3 identifies this … with the evaluation at q₀ of `blockSolve` …; det(I − A) ≠ 0 comes from Lemma 3.2(ii) …. Assembling over shapes gives the evaluation at p of `Rsh`(vmap σ); by `rsh_interp` … that is Rval(vmap σ)(p) ∈ [0,1] (`r_bdd`), so `ENNReal.ofReal` is faithful." Lemma 3.2's hypothesis: "Suppose all smaller-block values entering block e's split outcomes at q₀ are finite" | **NONE.** The linear solve needs ρ(A) < 1 (K2) and FINITENESS from smaller blocks — never a row total; M04's own bookkeeping note: "the [0,∞] bookkeeping: no convergence hypothesis is consumed anywhere before K2 enters" |
+| **Step 18b** (M2 r4) | "Proof: the D-11 M2 argument … with its two seams now supplied by EARLIER steps: **(S1)** … ← Step 14 …; **(S2)** = the O-11 composition datum ← Step 18. (r1) is the uniqueness pivot (Step 17)." | The §3.3 repaired proof step's inputs, each displayed: (RE)/(PACK-iv) row form; M1(a) families (ii)/(iii) ("each m(F)(q₀) = P(F | C_e)"); (S1)+(S2); the block induction; O-12 Theorem 1(3): "the three re-entrant bookings O1, O2′, O3 have the SAME solve: their balance equations are all algebraically (1 − κ₀ − κ₁)x = s, and 1 − κ₀ − κ₁ = 1 − q^{1−E} ≠ 0 in ℚ(q)" (and O-12 Theorem 2 (vii): "β_e(σ) = u^{−1}·t_σ with u = 1 − q^{1−E} … **NOT a division of a row containing β_e**"); (r1) = Corollary D nonvanishing; the exhaustiveness note ← M1(b)/**(d)** + (b-PF)/(b-EX)/(LOOP-∞) (§2.4) | **exactly ONE Σ = 1, and it is NOT a member-row total:** D-11 M1(d), verbatim — "(d) [Σ = 1]. For every block state, the **one-step strata** masses sum to 1: (b)'s partition + countable additivity + L6e(ii) (Z_e null)" — a PROVED theorem at its honest scope, consumed at the renewal-equation exhaustiveness note. The balance equation is a row IDENTITY (s_member = s_true), the pivot a nonvanishing; no line sums t_σ or β-legs over σ |
+| **Step 19's squeeze** (context row) | "Step 18 delivers series = R_τ (O-11); Step 18b delivers α = series (D-11 M2); TOGETHER they deliver α = R_τ"; Σ_τ R_τ = 1 "CONCLUDED at Step 19" from Step 1 + interpolation (ROOT REVISION-3 finding B3) | — | **NONE table-side**: the total is a CONCLUSION from Step 1 + interpolation, not a consumed table-side normalization |
+
+**Conclusion of the trace:** member-row Σ_σ = 1 appears in NO consumed line
+above. The only Σ = 1 on the mandatory path is M1(d)'s ONE-STEP-STRATA theorem
+(delivered, proved, consumed at 18b's exhaustiveness note); the only other
+row-sum object is Corollary D's SUB-stochastic kernel value. O-12 supplies NO
+row-normalization theorem (its §1 scope declaration: poles/zeros only). Step 17's
+E1 display drops the member-row delivery (§7). CONTINGENT ROUTE, displayed in
+case a future pass finds a consumer: **(ROW-Σ)** — Σ_σ β_e(σ)(q₀) = 1 at every
+block of a member satisfying (PACK-iv), by induction on e: M1(a)(ii)/(iii) +
+M1(d) give the true exit masses summing to 1 − κ₀ − κ₁; (PACK-iv)'s canonical row
+form gives Σ_σ t_σ = Σ_F m(F)·∏_i Σ_{σ_i} β_{μ_i}(σ_i)(q^{D_i}) (the 0/1
+comp-sum telescopes over the finite verdict set); O-12 Theorem 1(3)'s solve
+display (β_e = t/(1 − q^{1−E})) and the base β_1 = 1 close the induction. It
+consumes NOTHING from Steps 18/18b — M2-free, hence NON-CIRCULAR — but it is NOT
+on file; if it ever fires it is an r-pass proof obligation at Step 17's layer,
+and (PACK-iv)'s consumption set widens to include it (sub-attribution re-sync
+duty noted at E4). Per the trace above it is NOT required — it stays a §6
+contingency.
 
 **The 18-vs-18b dependency chains (displayed; review finding 4's circularity
 check):**
@@ -775,21 +916,30 @@ check):**
 * Order 17 ≺ 18 ≺ 18b intact; (PACK-iv) enters at 18b ONLY; no 18b content flows
   back into 18. NON-CIRCULAR.
 
-**BLOCKED (restated at REVISION 2 — supersedes REVISION 1's "BLOCKED: NONE",
-which the review correctly ruled unsupported).** No need is BLOCKED in the strict
-ledger sense: every need has a displayed route — a proof on file, a priced [M]
-member, or a named r4 proof obligation with a displayed proof route and a
-hostile-pass bar. But the flat "all MET" is WITHDRAWN. The honest tiers:
+**BLOCKED (restated at REVISION 3 — review finding 6 folded: the REVISION-2
+tier assignments for N2 and N4 were unsupported, and CUT-WD/(H8) sat outside the
+table; both repaired above).** No need is BLOCKED in the strict ledger sense:
+every need has a displayed route — a proof on file, a priced [M] member, a named
+execution obligation with an on-file route, or a named r4 proof obligation with a
+displayed proof route and a hostile-pass bar. But the flat "all MET" stays
+WITHDRAWN. The honest tiers:
 * **MET on file:** N3, N6.
-* **MET by executed check:** N2 (Lemma (K1-NSF), §2.5).
-* **MET AT PRICE:** N5, N7 — one NEW [M] member, (PACK-iv) (§3.5); plus (H8) for
-  Step 18's K1 CUT-WD leg (§5.1), as at REVISION 1.
-* **MET-PENDING-r4-PROOF:** N1 ((b-EX)); N4 ((O-1)–(O-5)) — NOT met by anything
-  currently on file; the composition is NOT restored, and the acceptance standing
-  does not move, until these discharge under the D-11 r4 hostile pass.
+* **MET AT THE INTERFACE PIN, (NSF-KEY) EXECUTION OWED:** N2 — Lemma (K1-NSF′)
+  holds definitionally at the pinned instantiation (§2.5, quotes chained); the
+  AS-BUILT keying fails the pin at HEAD (M02's on-file record), so the named
+  obligation (NSF-KEY) — M02's sanctioned minimal repair + count_tie guard
+  re-scope, sign-off owed — must EXECUTE before N2's certificate covers the
+  wiring the capstone fires through.
+* **MET AT PRICE:** N5, N7 — one NEW [M] member, (PACK-iv) (§3.5); N8 — the NEW
+  row (H8) for Step 18's K1 CUT-WD leg (§5.1), now IN the table.
+* **MET-PENDING-r4-PROOF:** N1 ((b-EX)); N4 ((O-1)–(O-5), with (O-5) at its
+  REVISION-3 corrected exit-partition form) — NOT met by anything currently on
+  file; the composition is NOT restored, and the acceptance standing does not
+  move, until these discharge under the D-11 r4 hostile pass.
 Failure mode, recorded in advance: if (b-EX)'s write-out fails at any family, or
-any (O-i) resists its displayed route, the corresponding need RE-OPENS and this
-design returns for re-adjudication before any ROOT edit.
+any (O-i) resists its displayed route, or (NSF-KEY)'s sign-off is refused, the
+corresponding need RE-OPENS and this design returns for re-adjudication before
+any ROOT edit.
 
 ---
 
@@ -851,7 +1001,12 @@ census carries it; no (ROOT-C) content changes.
 
 ---
 
-## 6. Contingencies (labeled; none is a blocker) [roster revised at REVISION 2]
+## 6. Contingencies (labeled; none is a blocker) [roster revised at REVISION 3]
+
+**Standing note [REVISION 3]:** **(NSF-KEY) is NOT in this roster** — it is a
+NAMED OBLIGATION (§2.5), known to fire at HEAD (the M02 on-file record), with an
+on-file execution route; contingencies are things that MIGHT fire. It is tracked
+on the N2 row and at §7 Unit C.
 
 1. **(BOX-VOL) L6a-shape dependence** — RESOLVED IN THIS DESIGN: L6a's verified
    display was checked and quoted (§2.2); the r4 executor's duties are the verbatim
@@ -868,12 +1023,14 @@ census carries it; no (ROOT-C) content changes.
    now the PRIMARY route (§3.5, per review finding 1); its named RETIREMENT ROUTE
    ((route-a)/(route-b)) is displayed at §3.3. Kept in this roster as a tombstone
    so the promotion is visible.
-4. **(ROW-Σ) [NEW at REVISION 2]** — fires only if a pass finds a mandatory
-   consumer of member-row Σ = 1 (the REVISION-2 trace at §4 (†18) found none);
-   route displayed there: block induction from M1(a)(ii)/(iii) + M1(d) +
-   (PACK-iv)'s row form + O-12 Theorem 1(3), M2-free and non-circular. If it
-   fires: an r-pass proof obligation at Step 17's layer + the E4 sub-attribution
-   re-sync.
+4. **(ROW-Σ) [NEW at REVISION 2; trace upgraded at REVISION 3]** — fires only if
+   a pass finds a mandatory consumer of member-row Σ = 1 (the EXHAUSTIVE
+   line-cited trace at §4 (†18), REVISION 3, found none: the only Σ = 1 on the
+   path is M1(d)'s one-step-strata theorem, the only row-sum Corollary D's
+   sub-stochastic kernel value); route displayed there: block induction from
+   M1(a)(ii)/(iii) + M1(d) + (PACK-iv)'s row form + O-12 Theorem 1(3), M2-free
+   and non-circular. If it fires: an r-pass proof obligation at Step 17's layer
+   + the E4 sub-attribution re-sync.
 
 ---
 
@@ -889,14 +1046,17 @@ L3 §5/§7 billing (§2.3) ·
 L4 (b-PF) + the (b-EX) OPEN-LEMMA statement + its grammar-induction write-out per
 §2.4's displayed route (one paragraph per family; honesty clause if a case fails)
 + the (LOOP-∞) display + consumer re-points (§2.4) ·
-L5 Theorem M2 (RE) restatement + proof-step replacement + the §2.3(iv) grammar
+L5 Theorem M2 (RE) restatement AT ITS REVISION-3 CONJUNCTIVE FORM (the
+"equivalently" struck — §3.3) + proof-step replacement + the §2.3(iv) grammar
 quote into §0 (§3.3) + the consumed-instance sentence REPLACED by the (PACK-iv)
 cross-reference: the leaf displays that (RE)-at-the-consumed-member is
 clause-4/(H5)-class content, priced at ROOT as (PACK-iv) — the leaf does NOT
 discharge it [REVISION 2] ·
-L6 Lemma M2.0 loop-extended addresses + the (O-1)–(O-5) write-outs (§3.4)
-[REVISION 2] ·
-L7 M3(a) separable scope (§2.5) ·
+L6 Lemma M2.0 loop-extended addresses + the (O-1)–(O-5) write-outs, with (O-5)
+at its REVISION-3 corrected exit-partition form (terminating exits + the null
+path — §3.4) [REVISIONS 2/3] ·
+L7 M3(a) separable scope + the (K1-NSF′)/(NSF-KEY) display per §2.5 REVISION 3
+(the lemma at pin scope; the M02 divergence record; the obligation named) ·
 L8 M3(b) in-statement conditionality (§2.7) ·
 L9 §6 falsifier-criterion display (§2.6).
 Then the r4 hostile pass (fresh context, Codex; the D-11 registry bar unchanged) —
@@ -912,10 +1072,12 @@ per-cell singletons; the (O3) scalings NOT masses); families (iv)/(vi)/(vii)
 excluded in-statement ((a″)); Σ = 1 at the displayed ONE-STEP STRATA (M1(d)) —
 member-row sums NOT delivered here (no mandatory consumer; the (ROW-Σ) contingency
 is on file at the repair design §4 (†18)); multi-step disjointness at prefix-free
-families ((b-PF)), grammar exhaustiveness = (b-EX) per its r4 outcome (a proved
-lemma, or a displayed open lemma inherited by every consumer citing it); the
-infinite loop-0 word per (LOOP-∞); per-block a.s. exit unconditional, multi-block
-at Lemma M2.0's (S1-m)+(DET) (Step 18b's layer)" ·
+families ((b-PF)), grammar exhaustiveness = **(b-EX), a PROVED lemma** [REVISION
+3, review advisory 9: the former "or a displayed open lemma" branch is STRUCK —
+under the Order clause Unit B executes ONLY IF the r4 hostile pass has ACCEPTED
+the (b-EX) write-out as a proof, so an executed E1 can record nothing weaker];
+the infinite loop-0 word per (LOOP-∞); per-block a.s. exit unconditional,
+multi-block at Lemma M2.0's (S1-m)+(DET) (Step 18b's layer)" ·
 E2 Step 17 status line gains the pass-3 CRITICAL record + r4 pointer ·
 E3 Step 18b proof line → "the D-11 r4 M2 argument at its (RE) scope — the consumed
 member's (RE)+row-form profile priced as **(PACK-iv)** ((H5), NEW member; the
@@ -939,14 +1101,37 @@ consecutive clean model-diverse passes on identical text, fresh verifiers). A
 clean D-11 r4 leaf pass removes the LEAF defect and is recorded at E2/E7 as
 exactly that; composition acceptance moves ONLY at the new bar — the two events
 are never conflated in any display ·
-E9 [NEW at REVISION 2] Step 18's K1-a/K4 lines + Step 17's M3 leg gain the
-Lemma (K1-NSF) display + the two-channel consumption attribution (§2.5).
+E9 [NEW at REVISION 2; RESTATED at REVISION 3] Step 18's K1-a/K4 lines + Step
+17's M3 leg gain the **Lemma (K1-NSF′)** display AT ITS INTERFACE-PIN SCOPE (the
+(q-1)–(q-4) warrant chain), the two-channel consumption attribution (§2.5), AND
+the **(NSF-KEY)** obligation line — the as-built keying divergence (M02 §2, quoted
+at §2.5) with its status (executed / sign-off pending) recorded as of the edit;
+E9 must NEVER display (K1-NSF′) as covering the HEAD wiring while (NSF-KEY) is
+unexecuted.
 
-**Order [REVISED at REVISION 2, review finding 9]:** Codex plan-review of THIS
-revision → Unit A → D-11 r4 hostile pass → **Unit B executes IF AND ONLY IF the
-r4 pass ACCEPTS the repaired statements AND their proofs (in particular the
-(b-EX) and (O-1)–(O-5) write-outs)** → the new end-to-end VC bar (suspension
-stands throughout; it lifts only when the bar passes). If the r4 pass rejects,
+**Unit C — (NSF-KEY) execution [NEW at REVISION 3]** (Lean wiring + leaf-row
+conformance; INDEPENDENT of Units A/B — may run in parallel; E9 records its
+status either way): (C-1) obtain SIGN-OFF for M02's minimal repair (a definition
+change on the bridge carrier — statement-fence gated); (C-2) execute it: the
+`MovesT.NsFree` conjunct on `bridgeTree` (`MovesU/BridgeD3_treeCarrier.lean`) +
+the `TreeSeam.count_tie` re-scope to the guarded corpus (matching
+`treeN`/`treeExp`'s `hdet` guard) + the ripple (BridgeD6/D7/D8 pins,
+`canonical_stable`/`VPSound` consumers — M02's own effects list: "canonical_pin,
+vtree_eq_of_fiberAt, Lemmas A/B are untouched (they never used the ns clause)");
+(C-3) re-run the M04-side interface checks (Theorems 1–2 consume only
+`mem_slice_iff`/`count_tie`/`env_tendsto` — untouched in form); (C-4) record at
+E9. If sign-off is REFUSED, N2 re-opens and this design returns for
+re-adjudication (the §4 failure-mode clause).
+
+**Order [REVISED at REVISION 2, review finding 9; Unit C threaded at REVISION
+3]:** Codex plan-review of THIS revision → Unit A → D-11 r4 hostile pass →
+**Unit B executes IF AND ONLY IF the r4 pass ACCEPTS the repaired statements AND
+their proofs (in particular the (b-EX) and (O-1)–(O-5) write-outs)** → the new
+end-to-end VC bar (suspension stands throughout; it lifts only when the bar
+passes). Unit C is order-independent of A/B (its gate is the sign-off, not the
+r4 pass) but MUST be executed or explicitly re-adjudicated before the end-to-end
+bar can pass — an accepted composition may not fire through a wiring known to
+violate the keying its own certificate lemma assumes. If the r4 pass rejects,
 NO ROOT edit occurs: the design returns here for re-adjudication first.
 PROJECT_STATE.md + ledger sync at each unit close.
 
