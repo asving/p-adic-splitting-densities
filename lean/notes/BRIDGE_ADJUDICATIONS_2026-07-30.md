@@ -2102,3 +2102,16 @@ H7 6/6, H6 23/25, H1 7/11 = 92/116 units + 4 MECH shared units. CLOSURE
 MODE: (1) (K-CUT) hostile pass (row-retirement candidate #2); (2) the
 math-leaf campaign (H1 A-M2/GRB first — feeds 5 rows per synthesis F2);
 (3) mop-ups (H5/H2/H3/H6 + BP_III w5 + BP_II); (4) VC cadence.
+
+## CLOSURE WAVE 1 RESULTS (2026-08-05)
+(K-CUT) HOSTILE PASS: CRITICAL — NOT discharged (7 crit + 5 gap, ALL
+display-layer; the Lean units SURVIVED the declaration audit). Genuinely
+missing content isolated: factorwise mass law (K-CUT-m) vs the proved
+aggregate, and the Step-18-K1 exact-form tie (e/tau/delta pools). Repair
+unit dispatched. Report: lean/notes/openmath/KCUT_pass_2026-08-05.md.
+GRB LEAF (A-M2): MAJOR — TR-1/2/4/5/6/7 DISCHARGED against FGMN
+(RESCALE proved; naive one-scalar law REFUTED 500/500, honest; ord-level
+TR-3-ORD proved convention-free); OP-A2 carry clause CLOSED at order 2;
+order-1 reproduction gate PASSED. (H1)(a) residue = TR-3'-GEN + D-ITER
++ N-1 gate debt + the 2-clean bar. Hostile pass 1 dispatched.
+Leaf: lean/notes/openmath/GRB_ORDER2_2026-08-05.md (d904bf9).
