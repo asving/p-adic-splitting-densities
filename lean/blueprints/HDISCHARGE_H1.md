@@ -1,5 +1,12 @@
 # HDISCHARGE_H1 — discharge blueprint for (H1): the graded-dictionary open family at OM orders ≥ 2
 
+**REVISION 2 (2026-08-05):** the pass-1 Codex adversarial review (BLUEPRINT-UNSOUND,
+9 crit/6 gap — `lean/notes/openmath/H1_bp_review.md`) is FOLDED IN PLACE; every
+repair tagged `[REV 2, finding N]` at its site; disposition table at §7. Headline
+repairs: the §0 tower ladder de-circularized via the (GR-B-STR)/(GR-B-KEY) split;
+KEY1-SITE gains the run-data hypothesis; `kp_step`/`GrBKeyLaws` restated (re-probed);
+the sorry/DevBound discipline corrected. Fresh re-review owed at wave 0.
+
 H1 DISCHARGE LEAD deliverable (Asvin directive 2026-08-05, ledger
 `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` tail: the hypothesis-discharge swarm —
 one lead per (ROOT-C) hypothesis, blueprint → Codex adversarial review → parallelizable
@@ -172,8 +179,12 @@ proved; (S5) clauses (0)/(0′)/(0″) from Thm 4.8 + Lemma 4.1 + Defs 3.16/3.18
 TR-1..TR-5, INCLUDING the carry-algebra realization display (𝒟 = F[u]/(u^{e_b} − ζ)
 from the anchor system's degree-0 sub-steps — the [F.0] tie the engine consumes);
 (S6) laws (1)/(2′)/(3)/(4) from the pinned Thm 4.2/Cor 4.4/Cor 5.6(2)/Prop 5.14/
-Cor 5.15 + Lemma 5.13, with (2′)'s two-form pairing check re-verified against the
-GD23 §7.2 display and TR-6 cited at (3)/(4); (S7) the order-1 instance cross-check —
+Cor 5.15, with (2′)'s two-form pairing check re-verified against the GD23 §7.2
+display, TR-6 cited at (3)/(4), and TR-4 cited AT clause (3) [REV 2, finding 5];
+(S6a) [REV 2, findings 4/6] the eq (12)/(16) exponent-arithmetic section proving
+BOTH the clause-(1) TOTAL multiplicativity carry-wrap (TR-7; Lemma 5.13 =
+corroboration at proper g only) AND the 𝒟-realization clause (OP-A2); (S7) the
+order-1 instance cross-check —
 the composed statement must REPRODUCE GD23's proved order-1 display (in(f) =
 ϕ·R_λ(f)(ȳ) with ȳ = Φ̄₀^e π̄^{−h}, e_b = 1, 𝒟 = K₀) verbatim, the non-vacuity gate of
 the whole retarget; (S8) honesty ledger + attack list.
@@ -412,7 +423,9 @@ they are WRITTEN and pass-gated, never waved.
 ## 5. LEAN UNIT SPECS (all compile-probed 2026-08-05; target `lean/LeanUrat/Scaffold/HDischarge/H1/`; namespace `LeanUrat.Scaffold.HDischarge.H1`)
 
 Probe record: the §5.1 statements compiled verbatim against the built corpus (single
-scratch file, `lake env lean`, clean; only `kp_step`'s intended `sorry` warned).
+scratch file, `lake env lean`, clean; only `kp_step`'s intended `sorry` warned); the
+REV-2 forms (`GrBKeyLaws` with link fields + `faithful_at`; `DevBound`; the enlarged
+`kp_step`) RE-PROBED 2026-08-05, same result.
 Imports per file: `LeanUrat.MovesGr.Defs`, `LeanUrat.MovesC.Defs`, `LeanUrat.HC2.Defs`
 (+ `LeanUrat.Moves.Defs` transitively). Ground rules of BP_II §0 apply (no new axioms;
 hypothesis rows as named structures; provers may adjust implicit binders, never
@@ -471,10 +484,11 @@ def Key1SiteBlock (ν : Node p F) (σ' : Stage p F) (M : GenuineStageModel σ') 
 ```
 
 Difficulty: LOW (statements only; land with docstrings citing this blueprint's §1/§2/§4
-and the §3.1 row). Semantic-guardian flag: `GrBKeyLaws.faithful`'s guard choice is the
-E-PHASE-flagged σ.R-rendering of the frame residual (HC2 `SideReads` (iii) note) — the
-same convention U31's gate adjudicated; any strengthening to the total form goes
-through H1-U14's falsifier gate first.
+and the §3.1 row). Semantic-guardian flag: `GrBKeyLaws.faithful_at`'s guard choice is
+the E-PHASE-flagged σ.R-rendering of the frame residual (HC2 `SideReads` (iii) note) —
+the same convention U31's gate adjudicated; any strengthening to the total form goes
+through H1-U14's falsifier gate first. [REV 2: `faithful_at` + link fields re-probed
+2026-08-05 — compile-clean; the `DevBound` row of §5.3 lands in this file too.]
 
 ### 5.2 `Order1.lean` — the proved-slice instances (wave 1; the non-vacuity gates)
 
@@ -497,28 +511,42 @@ through H1-U14's falsifier gate first.
 
 ### 5.3 `TowerStep.lean`, `SiteBlock.lean`, `RunBinding.lean` (waves 2–3)
 
-* **H1-U8 (`kp_step`)** — HARD (the door-1 core; math source §2.2 KP-STEP). Probed
-  statement shape:
+* **H1-U8 (`kp_step`)** — HARD (the door-1 core; math source §2.2 KP-STEP). [REV 2,
+  finding 10: the rev-1 shape omitted the mathematical hypotheses and claimed the
+  block for ANY genuine model + matching lift parameters — more than the plan proves;
+  the "prover discretion to enlarge to `TransitionCoreL`" line is WITHDRAWN (a
+  hypothesis-block change is a statement change: E-phase sign-off only).] Statement,
+  RE-PROBED 2026-08-05 with the DevBound row:
   `theorem kp_step (ν : Node p F) (σ' : Stage p F) (M : GenuineStageModel σ')
-  (hΦ : IsNodeLift ν σ'.Φ) (he : σ'.e = ν.e) (hh : σ'.h = ν.h) :
-  Nonempty (KPBlock σ' M)` — staged as U8a (primeness transport: `Irreducible ν.ψ` →
-  `Prime ψhom` via Θ/`isLoc`; the (s3)/(s4) content), U8b (degree block from the
-  development bound; the (s5)/OP-B1 content — carries a displayed `DevBound` hypothesis
-  row until OP-B1's math lands; row shape:
-  `structure DevBound (ν : Node p F) (σ' : Stage p F) (M : GenuineStageModel σ') : Prop
-  where bound : letI := M.Rg.ring; ∀ B : Polynomial ℤ_[p], B ≠ 0 →
-  B.natDegree < σ'.Φ.natDegree → <ȳ-degree reading of M.S.initialForm B through M.Θ>
-  < ν.e * ν.g` — the ȳ-degree reading is fixed at E-phase through Θ's codomain
-  (`LTwo ↥σ'.K`); INTENT-ONLY sketch, NOT probed, E-PHASE-FLAGGED (the one displayed
-  non-verbatim row of this blueprint), U8c (assembly). U8's hypothesis block may need enlargement to
-  `TransitionCoreL`-linked pairs (probed arity:
-  `TransitionCoreL σV σ' Φhat e' h' zbar`) — prover discretion, content-preserving.
-* **H1-U9 (`grbKeyLaws_step`)** — HARD. (GR-B)(3)/(4) at the state from the math
+  (hΦ : IsNodeLift ν σ'.Φ) (he : σ'.e = ν.e) (hh : σ'.h = ν.h)
+  (hprev : σ'.wPrev = ν.σ.w) (D : DevBound ν σ' M) :
+  Nonempty (KPBlock σ' M)` — `M`'s `Θ`/`isLoc`/`discharge` fields ARE the Lean face
+  of (GR-B-STR) (the math leaf A-M2 is what makes `M` instantiable at depth ≥ 2: the
+  non-vacuity chain), and `DevBound` is the (s5)/OP-B1 degree-block input as its own
+  probed row (Defs addition):
+  `structure DevBound (ν : Node p F) (σ' : Stage p F) (M : GenuineStageModel σ') :
+  Prop where block : letI := M.Rg.ring; ∀ B : Polynomial ℤ_[p], B ≠ 0 →
+  B.natDegree < σ'.Φ.natDegree → ¬ (M.S.initialForm σ'.Φ ∣ M.S.initialForm B)` —
+  the KEY-INITIAL-FORM divisibility block stated directly (equivalent to the ψ̂hom
+  block modulo the `kpa_init` unit; the ȳ-degree DERIVATION of this row is OP-B1's
+  math, and the row RETIRES into a proved lemma when OP-B1 lands — until then it is
+  an explicit hypothesis of `kp_step`, displayed, never silently assumed). Staged as
+  U8a (primeness transport: `Irreducible ν.ψ` → `Prime ψhom` via Θ/`isLoc`, WITH the
+  (s4a) localization-avoidance lemma displayed [REV 2, finding 14]), U8b (degree
+  block from `DevBound` + `kpa_init`), U8c (assembly).
+* **H1-U9 (`grbKeyLaws_step`)** — HARD. (GR-B-KEY)(3)/(4) at the state from the math
   leaf (§1.3 S6): Lean face constructs `GrBKeyLaws ν σ' M KB` from the model's
-  `discharge` + `key_res` inputs; until GRB_order2 passes, lands as a sorry-statement
-  behind the row (never an axiom).
-* **H1-U10 (`key1SiteBlock_step`)** — LOW. `Key1SiteBlock` from U8+U9 (the KEY1-SITE
-  assembly, §4.2).
+  `discharge` + `key_res` inputs. [REV 2, finding 12 — the sorry discipline
+  CORRECTED:] until the GRB math leaf passes, U9 does NOT land in any form — a
+  `sorry`-backed theorem carries `sorryAx` and satisfies consumers as if proved,
+  which would violate hypothesis-never-axiom; consumers meanwhile take `GrBKeyLaws`
+  as an EXPLICIT BINDER (the corpus pattern), and the AxChk zero-`sorryAx` census is
+  the gate.
+* **H1-U10 (`key1SiteBlock_step`)** — LOW-MEDIUM. `Key1SiteBlock` from U8+U9 (the
+  KEY1-SITE assembly, §4.2), PLUS the consumption lemma [REV 2, findings 7/8]: from
+  `Key1SiteBlock ν σ' M` and a `SideReads`-realized run of f at ν (which supplies the
+  `HasAnchorK (ν.σ.R f) ν.a ν.Ranch` witness per SideReads(iii)), conclude the
+  WGEO-shaped (d1)–(d3) at (f, ν.μ) — the lemma WGEO's Lean consumers actually fire.
 * **H1-U11 (`key1_along_history`)** — MEDIUM, PROBE-FIRST. The history-fold: along a
   `HistoryCoherent` chain with per-level models, `Key1SiteBlock` holds at every index
   ≥ 2 given the wave-2 units at each step (induction over `H.nodes`; the model-chain
@@ -531,13 +559,19 @@ through H1-U14's falsifier gate first.
   probed at the concrete corpus — E-PHASE-FLAGGED.
 * **H1-U13 (`countedRunBinding_wired`)** — HARD, PROBE-FIRST. The wired conformance
   theorem at the classifier instance (the (c) discharge; route: construction
-  conformance — the engine's emitted records ARE stage reads; Lean pattern:
-  `keys_exist_of_run`'s extraction inverted, or direct induction on the wired run
-  builder). Falsifier N-2 must be green BEFORE this unit is attempted.
-* **H1-U14 (`faithful_total`)** — MEDIUM, GATED. The total (Cor 5.15) strengthening of
-  `GrBKeyLaws.faithful` (drop the recorded-side guard): stated only if N-1's total-form
-  check runs 0-violation at order-2 samples; otherwise the guarded form stands and this
-  unit is CLOSED-NEGATIVE with the harness citation.
+  conformance — the engine's emitted records ARE stage reads). [REV 2, finding 13:
+  the rev-1 "keys_exist_of_run's extraction inverted" route is DELETED — a theorem
+  extracting keys FROM `ReadsOf` cannot be inverted to construct `ReadsOf`; the ONLY
+  route is direct induction on the wired run builder, whose per-level emission law
+  (emitted record = stage read on the emitted prefix) is the probe-first duty: name
+  the builder, check the law is definitional or prove it by run induction.]
+  Falsifier N-2 must be green BEFORE this unit is attempted.
+* **H1-U14 (`faithful_total`)** — MEDIUM, GATED. The total (Cor 5.15) form: the ∀f
+  per-anchor-witness law (the RETIRED rev-1 `faithful` field: ∀ f a Rf, HasAnchorK
+  (ν.σ.R f) a Rf → ∀ μf, OrdPsiPoly ν.ψ Rf μf ↔ ψhom-order μf) as a THEOREM from the
+  row + the math leaf: stated only if N-1's total-form check runs 0-violation at
+  order-2 samples (including improper/e·g = 1 corners); otherwise the recorded-site
+  form stands alone and this unit is CLOSED-NEGATIVE with the harness citation.
 
 ### 5.4 Numerics/falsifier gates (run before their math units; `verification/openmath/`)
 
@@ -562,7 +596,7 @@ through H1-U14's falsifier gate first.
 |---|---|---|
 | W0 | A-M1 faithfulness-brief consolidation (§1.2 → the GRB leaf's §S0); N-1; N-2; Lean U1–U4 (Defs) | — |
 | W1 | Lean U5, U6, U7; A-M2 = GRB_order2 attempt+brief (§1.3) | U1–U4; A-M2 also N-1 green |
-| W2 | B-M1 = KPSTEP attempt+brief (§2.2); Lean U8a–c, U9; C-M1 (abstract OL-2a-6, §3.3(i)) | A-M2 (structure clause consumed); U8b also OP-B1 or its DevBound row |
+| W2 | B-M1 = KPSTEP attempt+brief (§2.2); Lean U8a–c, U9; C-M1 (abstract OL-2a-6, §3.3(i)) | A-M2 (structure clause consumed). [REV 2, finding 11:] U8b runs AGAINST the displayed `DevBound` hypothesis row as STAGING; this discharges NOTHING — member (b)'s retirement requires OP-B1 PROVED (the row derived), §6 |
 | W3 | D-M1 = KEY1SITE note (§4.2); B-M2 = the OL-1 family clause (§2.2 s7); Lean U10, U11, U12; U14 (gated) | B-M1; U14 gated on N-1's total-form verdict |
 | W4 | Lean U13 (wired conformance); hostile passes on A-M2/B-M1/D-M1/C-M1 (Codex, fresh context, 2-clean bar each, sequential per the fleet throttle) | W2/W3; U13 also N-2 green |
 
@@ -576,24 +610,65 @@ Unit count: 4 math leaves (A-M2, B-M1(+B-M2), C-M1, D-M1) + 14 Lean units (U1–
 * **(a)** retires its [M] face when GRB_order2's brief passes 2 consecutive fresh
   hostile passes (the GD23-cycle bar) — the row's residue then = its named [V] pass
   debts + the standing [T] pins (properness at FGMN Lemma 5.3; the S-1 transcription
-  audit). The TR-1..TR-6 discharges are IN the brief, so no transcription residue
-  survives outside [T].
-* **(b)** retires when KPSTEP + the family clause pass the same bar; its OL-1
-  consumption sites (O-2a Theorem 2, Steps 10–12) fire unchanged because §2.2(s7)
-  emits OL-1 verbatim.
+  audit). The TR-1..TR-7 discharges are IN the brief (TR-7 = the clause-(1)
+  carry-wrap derivation, REV 2 finding 4), so no transcription residue survives
+  outside [T]; if S5's 𝒟-clause proof fails, (a) retires MINUS a displayed open
+  sub-member (OP-A2's REV-2 rule), not in full.
+* **(b)** retires when KPSTEP + the family clause pass the same bar, WITH OP-B1
+  PROVED — the `DevBound` row derived, never assumed [REV 2, finding 11: a
+  DevBound-conditional U8b is staging, not discharge]; its OL-1 consumption sites
+  (O-2a Theorem 2, Steps 10–12) fire unchanged because §2.2(s7) emits OL-1 verbatim.
 * **(c)** retires when BOTH legs land: C-M1 (abstract, passed) + H1-U13 green with N-2,
   with the S-1 [T] bridge cited — never by the route alone.
-* **(d)** retires when (a)+(b) have retired AND KEY1SITE passes (assembly + coverage +
-  e·g = 1 corner + WGEO delivery shape) — Step 6's conditionality line then cites the
-  KEY1SITE leaf instead of (H1)(d).
+* **(d)** retires when (a)+(b) have retired AND KEY1SITE passes with its FOUR §4.2
+  obligations (coverage, site-to-tower reading, the eg = 1/OP-B1 corner, run-to-anchor
+  identification) + the WGEO delivery shape — Step 6's conditionality line then cites
+  the KEY1SITE leaf instead of (H1)(d).
 * **Row-level:** the (H1) §3.1 row is edited only at a ROOT revision with the ledger
   updated; the composed theorem's (ROOT-C) display drops (H1) only when all four flip.
   Lean units NEVER substitute for the math passes (the corpus face is evidence of
-  statement-shape and non-vacuity, not of the paper proofs); `sorry`-backed rows stay
-  hypothesis-grade by construction.
+  statement-shape and non-vacuity, not of the paper proofs). [REV 2, finding 12 — the
+  sorry discipline, corrected:] hypothesis rows are consumed ONLY as explicit
+  structure/def binders; NO sorried instance of a row is ever landed (a `sorry`-backed
+  theorem carries `sorryAx` and satisfies consumers as if proved — the opposite of
+  hypothesis-grade); prover-branch sorries never reach the corpus path, and the AxChk
+  zero-`sorryAx` census is the standing gate.
 * **Failure modes to watch (from this group's own history):** V26-2 (slot-fresh
   reading — refuted 1,818×; any march statement must carry the anchored march
   IN-STATEMENT); V28-1 (mixed two-form pairing — the ȳ^{j₀} discrepancy); V26-1
   ((KPirr) is NOT free with (KPa)); P2-1/V14-1 (unbound chain parameters at engine
   seams — (c)'s statements bind c = Θ(prefix) explicitly); VC8-1 (never identify key
   degree with read order).
+
+---
+
+## 7. Codex adversarial review + fold record (the directive's verification step)
+
+**Pass 1 (2026-08-05, fresh-context Codex, full blueprint pasted; report archived
+verbatim at `lean/notes/openmath/H1_bp_review.md`): BLUEPRINT-UNSOUND — 9 critical /
+6 gap.** All 15 findings folded IN PLACE the same day (this file = REV 2); each
+edit is tagged `[REV 2, finding N]` at its site. Dispositions:
+
+| # | class | finding (compressed) | disposition |
+|---|---|---|---|
+| 1 | CRIT | §0/§2.2 tower indices incompatible — (KP)_{j+1} in gr(w_{j+2}) needs the structure the ladder obtains only later | **ACCEPTED — the deepest catch.** §0 ladder REWRITTEN: (GR-B) split into (GR-B-STR) (chain-data clauses, inputs (KP)_{≤ i−1}) and (GR-B-KEY) (state-key clauses (3)/(4), input (KP_i)); KP-STEP re-indexed to prove (KP)_i IN gr(w_{i+1}); §2.2 statement + (s1)–(s6) re-indexed to match |
+| 2 | CRIT | §2.2(s6) offers a circular (KPb) route ("(GR-B)(3) at the NEXT state") | ACCEPTED; the alternative DELETED — s6 is the direct computation only, with its consumed inputs displayed |
+| 3 | GAP | "MacLane Thm 4.2" unpinned / possibly misattributed | REBUTTED WITH DISPLAY: MacLane 1936 Thm 4.2 IS the augmentation theorem — GD23 §2's pin (ML), scope cleared at LITUNIT §3, corroborated by FGMN Prop 1.9's printed cite "[10, Thms. 4.2, 5.1]"; the reviewer's four corners lacked the (ML) pin (my prompt omitted it). §0 now disambiguates the two Thm-4.2s in place |
+| 4 | CRIT | §1.2 clause (1) mispriced: Lemma 5.13 carries a properness hypothesis; the total clause is not discharged by the cited pins | ACCEPTED; clause-(1) row re-priced — Lemma 5.13 demoted to corroboration; NEW obligation **TR-7** (= OP-A4): the total multiplicativity carry-wrap derivation via eq (12)/(16) exponent arithmetic, written in S6a. Latent-gap flag recorded: GD23's own (GR-B)(1) citation line carries the same over-pricing — to be repaired at the GRB write-up, leaf verdicts untouched ((GR-B) was OPEN there) |
+| 5 | GAP | clause (3) is polynomial-vs-graded, not a literal Cor 5.6(2) match | ACCEPTED; TR-4's scope now names clause (3) explicitly (S6 edit) |
+| 6 | GAP | carry-algebra clause has no printed home; "prove or drop" underpriced | ACCEPTED; OP-A2's drop-escape RETRACTED — failure makes it a displayed open sub-member of (a); proved in S6a alongside TR-7 (same computation) |
+| 7 | CRIT | KEY1-SITE omits the run data needed for (d3) | ACCEPTED; §4.2's implication gains the REALIZED-READ DATA hypothesis (math: (R1)/(R2)+REALIZED; Lean: SideReads(iii)'s HasAnchorK + ν.hOrd), obligation (iv) added |
+| 8 | CRIT | `GrBKeyLaws.faithful` over-quantifies (≈ total Cor 5.15, no ν↔σ′ compatibility); consumption lemma missing | ACCEPTED; row restructured: link fields (link_e/h/prev/key) added; `faithful` → `faithful_at` (recorded-site form at (ν.a, ν.Ranch, ν.μ)); the total form demoted to gated H1-U14; the SideReads-keyed consumption lemma added to U10. Re-probed compile-clean |
+| 9 | CRIT | §4.2–4.3 "no new mathematics" underprices refinement-site content | ACCEPTED; retitled "no new VALUATION THEORY; four genuine assembly obligations" (coverage, site-to-tower reading, eg = 1/OP-B1 corner, run-to-anchor identification), each displayed |
+| 10 | CRIT | `kp_step` omits its mathematical hypotheses; "prover discretion" not content-preserving | ACCEPTED; statement enlarged (hprev + DevBound binders; M's Θ/isLoc/discharge displayed as (GR-B-STR)'s Lean face); the discretion line WITHDRAWN; re-probed |
+| 11 | CRIT | DevBound-conditional U8b masquerades as discharge | ACCEPTED; wave table + §6(b) now state: DevBound is staging only; member (b) retires only with OP-B1 PROVED |
+| 12 | CRIT | sorry-backed rows contradict hypothesis-never-axiom | ACCEPTED; U9 landing rule rewritten (no sorried row instances EVER land; explicit binders until the math passes; AxChk zero-sorryAx gate); §6 sentence corrected |
+| 13 | GAP | `keys_exist_of_run` cannot be "inverted" | ACCEPTED; route deleted; U13 = direct induction on the wired builder with named probe duties |
+| 14 | GAP | primeness-after-localization needs an avoidance invariant | ACCEPTED; (s4) split into (s4a) localization avoidance + (s4b) UFD argument; U8a carries it |
+| 15 | GAP | OL-1's monicity/degree/V-recursion not derivable from the block alone | ACCEPTED; §2.2(s7)/B-M2 expanded to a displayed induction statement with per-clause inputs |
+
+**Standing after the fold:** REV 2 carries all repairs in place; the two REBUT-class
+items (3, partially) are display-only. The blueprint's next gate is a FRESH Codex
+pass on the REV-2 text (the fold is my own edit — same-context self-review does not
+advance the bar); that pass rides the wave-0 dispatch. Codex budget at review time:
+2% of the 7-day window.
