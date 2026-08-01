@@ -25,6 +25,14 @@ in the built corpus (DefsLedger.lean:740 sits under `variable (n p : ℕ)
 well-typed reading (n, p forced by `X : ClassifierSpec n p`); no other token
 changes. Verbatim `ZpBridge X` fails with: "Application type mismatch: The
 argument X has type ClassifierSpec n p but is expected to have type ℕ".
+
+Display adjustment (VI-S3, same convention): in `TheoremUTuple` the §1.2 display
+`ZpBridge.zpDmass (inst p hp).bridge σ` fails with "failed to synthesize instance
+of type class Fact (Nat.Prime p)" (no `Fact p.Prime` in scope under the plain
+binder `hp : p.Prime`); it reads here as the LITERAL theoremU text
+`@ZpBridge.zpDmass n p ⟨hp⟩ _ (inst p hp).bridge σ` (U10_theoremU.lean:132, the
+very tuple this unit transcribes) — the unique well-typed reading; no other
+token changes.
 -/
 
 set_option linter.style.longLine false
@@ -61,5 +69,46 @@ def RootC (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
     ∀ (p : ℕ) (hp : p.Prime), RegP (inst p hp).D →
       @PrimeConclusion n p ⟨hp⟩ (inst p hp).X (inst p hp).bridge
         (fun σ => evalℝ ⟨R⟩ σ p)
+
+/-- **VI-S3 fidelity record.** The literal theoremU conclusion tuple
+    (U10_theoremU.lean:119–138), five clauses in the recorded order: bracket,
+    classifier density, true-type density, ℤ_p-read density, drainage — same
+    quantifier order (∃ R before ∀ p), same (REG-p) guard. -/
+def TheoremUTuple (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
+    (K7 : Cl7Kernel n KC) (S : SolveData n)
+    (inst : ∀ (p : ℕ) (hp : p.Prime), UInstance n C KC K7 S p hp) : Prop :=
+  ∃ R : SplittingType n → RatFunc ℚ,
+    R = S.R ∧ (∑ σ, R σ = 1) ∧
+    ∀ (p : ℕ) (hp : p.Prime), RegP (inst p hp).D →
+      (∀ (σ : SplittingType n) (N : ℕ),
+        (evalℝ ⟨R⟩ σ p - (inst p hp).X.env N) * (p : ℝ) ^ (n * N) ≤
+          ((inst p hp).X.decided σ N : ℝ) ∧
+        ((inst p hp).X.decided σ N : ℝ) ≤
+          evalℝ ⟨R⟩ σ p * (p : ℝ) ^ (n * N)) ∧
+      (∀ σ, Tendsto ((inst p hp).X.dmass σ) atTop
+        (𝓝 (evalℝ ⟨R⟩ σ p))) ∧
+      (∀ σ, Tendsto ((inst p hp).X.trueDmass σ) atTop
+        (𝓝 (evalℝ ⟨R⟩ σ p))) ∧
+      (∀ σ, Tendsto (@ZpBridge.zpDmass n p ⟨hp⟩ _ (inst p hp).bridge σ) atTop
+        (𝓝 (evalℝ ⟨R⟩ σ p))) ∧
+      Tendsto (inst p hp).X.env atTop (𝓝 0)
+
+/-- **VI-S3.** `RootC` is the theoremU tuple, clause-for-clause: the spine's
+    named `PrimeConclusion` fields are EXACTLY the five tuple components in
+    the recorded order. -/
+theorem RootC_iff_tuple (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
+    (K7 : Cl7Kernel n KC) (S : SolveData n)
+    (inst : ∀ (p : ℕ) (hp : p.Prime), UInstance n C KC K7 S p hp) :
+    RootC n C KC K7 S inst ↔ TheoremUTuple n C KC K7 S inst := by
+  constructor
+  · rintro ⟨R, hR, hsum, h⟩
+    refine ⟨R, hR, hsum, fun p hp hreg => ?_⟩
+    obtain ⟨hbr, hdm, htd, hzp, hdr⟩ := h p hp hreg
+    exact ⟨hbr, hdm, htd, hzp, hdr⟩
+  · rintro ⟨R, hR, hsum, h⟩
+    refine ⟨R, hR, hsum, fun p hp hreg => ?_⟩
+    haveI : Fact p.Prime := ⟨hp⟩
+    obtain ⟨hbr, hdm, htd, hzp, hdr⟩ := h p hp hreg
+    exact ⟨hbr, hdm, htd, hzp, hdr⟩
 
 end LeanUrat.Scaffold

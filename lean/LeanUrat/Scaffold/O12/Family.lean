@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.Core
+import LeanUrat.MovesU.U0b_splitTypeFintype
 
 /-!
 # Scaffold/O12/Family — GramOver, the 𝔅_n row families, Theorem 2 [BP_II units II-R1..R14]
@@ -15,6 +16,10 @@ mathematical truth: the verified leaf `lean/notes/openmath/O12_phaseB_verifybrie
 This file carries **unit II-R1**: the `GramOver` inductive (the grammar 𝒢 with leaves,
 mirroring the landed `Gram` of `MovesU/O12PoleFree.lean`) plus the two induction walks
 `GramOver.mono` and `Gram.gramOver`. Units II-R2..R14 extend this module.
+
+**Unit II-R4** adds `lowerLegs` (the β-legs available to block e) and the
+`BlockPresentation` structure (one block presented for the R-induction; this is the T-8
+block structure, consumed as structure only).
 -/
 
 namespace LeanUrat.Scaffold
@@ -56,5 +61,21 @@ theorem GramOver.mono {S T : Set Qq} (hST : S ⊆ T) {f} : GramOver S f → Gram
   | mul _ _ ha hb => exact ha.mul hb
   | neg _ ha => exact ha.neg
   | subst δ _ ha => exact ha.subst δ
+
+/-- The β-legs available to block e: β_{e′}(σ′) for e′ < e (base changes are `subst`,
+so δ needs no indexing here — brief §2.3(vi)). -/
+def lowerLegs {n : ℕ} (β : ℕ → MovesU.SplittingType n → Qq) (e : ℕ) : Set Qq :=
+  {g | ∃ e' < e, ∃ σ, g = β e' σ}
+
+/-- One block of a 𝔅_n member, presented for the R-induction (brief §2.3(iv)+(vii)):
+the aggregated verdict rows t_σ are 𝒢-generated over the lower solved entries, and the
+block solves by division by the booking's ℛ-unit denominator. This structure IS the
+T-8 block structure consumed "as structure only" (ROOT Step 5 consumes-list). -/
+structure BlockPresentation (n : ℕ) (β : ℕ → MovesU.SplittingType n → Qq) (e : ℕ) where
+  trow    : MovesU.SplittingType n → Qq
+  htrow   : ∀ σ, GramOver (lowerLegs β e) (trow σ)
+  u       : Qq
+  hu      : u ≠ 0 ∧ MemRcyc u ∧ MemRcyc u⁻¹
+  hsolve  : ∀ σ, β e σ = u⁻¹ * trow σ
 
 end LeanUrat.Scaffold
