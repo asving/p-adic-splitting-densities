@@ -907,4 +907,439 @@ theorem cell_volume (cellVol : L4.LatticePolygon → ℕ → ℚ)
   rw [toLatticePolygon_newtonVertexCount κ s,
     ← toLatticePolygon_newtonExponent κ s, zpow_natCast]
 
+/-!
+## Unit II-M9 — `L6e_partition` (L6e(i): off Z_e the cells partition C_e\R_e)
+
+BP_II §1.9 displays this unit as `theorem L6e_partition ...` — the signature is
+elided in the blueprint; the mathematical content is pinned by the displayed
+docstring ("(i) off Z_e the cells partition C_e\R_e (every a_e ≠ 0 point in
+exactly ONE cell, no a_e = 0 point in any — the finite-hull argument +
+(NP-SLOPES))") and the math source of record
+(`lean/notes/openmath/O12_phaseB_verifybrief_rev4.md` §3, L6e proof (i)), same
+sanctioned-adjustment convention as units II-M4/II-M5/II-M8/II-M7 above.
+FLAGGED for E-phase statement-fence sign-off.
+
+**Milestone split (BP_II §2 preamble).** II-M9 is a coordination milestone: the
+partition theorem is split into named coverage/disjointness component
+declarations (the same in-file convention as II-M2's helper split):
+`L6e_covers` (existence), `L6e_disjoint` (uniqueness), `L6e_zero_notMem`
+(the a_e = 0 exclusion), with `L6e_partition` the assembly; the companion
+lemmas `cell_subset_Ce` / `cell_not_Re` / `cell_zero_ne_top` certify the
+converse inclusion (every cell point lies in C_e\R_e with a_e ≠ 0), making the
+partition of C_e\R_e honest as a set identity.
+
+**Vocabulary.** A point of coefficient space enters as its column-valuation
+vector `w : ℕ → WithTop ℤ`: column `c ∈ {0,…,e−1}` carries
+`w c` = v(a_{e−c}) = v(g.coeff c) (top-down blueprint index a_i = coeff of
+x^{e−i}; the II-M3 instantiation is `w c := OrderDual.ofDual
+(v (g.coeff c)).toAdd`). The anchor column (e, 0) (monic, v(lead) = 0) is
+data-independent and enters through `heights κ s e = 0`, so `w` is only read
+on columns < e. In this vocabulary: g ∈ C_e ⟺ ∀ c < e, 1 ≤ w c;
+g ∈ R_e ⟺ ∀ c < e, (e − c) ≤ w c; a_e = 0 ⟺ w 0 = ⊤. `CellMem` is the L6a
+display verbatim: (α) `⌈h_c⌉ ≤ w c` at every column `c < e` (the display's own
+ceiling form: v is an integer or ∞), (β) equality at the k vertex columns
+`x_j`, `j < k` (there `⌈h⌉ = h ∈ ℤ`, `vertexHeight_int`, so the ceiling form
+is exact).
+
+**Honest deviation note (conditionality REDUCTION).** The unit-table sketch
+routes admissibility through the (NP-SLOPES) row (root valuations = slopes);
+the proofs below are purely coefficient-side over the `FaceKind`/`heights`
+data — the C_e\R_e hypotheses pin the last-face slope into (0,1) directly on
+the finite lower hull, so NO `SemanticRows` row is consumed and the component
+theorems are unconditional. The dependency II-M6 (`hull_eq_iff_cell`, Wave 4a)
+is likewise not consumed: uniqueness is proved directly (mutual chord bounds +
+reading the face structure off the unit drops).
+-/
+
+/-- **The L6a cell** (membership form, over column-valuation data): (α) at
+every column `c < e`, `⌈h_c⌉ ≤ w c`; (β) at the k vertex columns `x_j`,
+`j < k`, equality `w (x_j) = ⌈h_{x_j}⌉` (`= h_{x_j} ∈ ℤ` by
+`vertexHeight_int`). [Unit II-M9 vocabulary; the L6a display's set, brief §3.] -/
+def CellMem (κ : FaceKind e) (s : SlopeTuple κ) (w : ℕ → WithTop ℤ) : Prop :=
+  (∀ c < e, ((⌈heights κ s c⌉ : ℤ) : WithTop ℤ) ≤ w c) ∧
+  (∀ j < κ.faces.length,
+    w (κ.x j) = ((⌈heights κ s (κ.x j)⌉ : ℤ) : WithTop ℤ))
+
+/-- Vertex abscissas never exceed the width: `x j ≤ e`. [II-M9 helper.] -/
+theorem FaceKind.x_le_width (κ : FaceKind e) (j : ℕ) : κ.x j ≤ e := by
+  rcases le_or_gt j κ.faces.length with hj | hj
+  · have := κ.x_mono hj
+    rwa [κ.x_length] at this
+  · have : κ.x j = κ.x κ.faces.length := by
+      unfold FaceKind.x
+      rw [List.take_of_length_le (by omega), List.take_of_length_le le_rfl]
+    rw [this, κ.x_length]
+
+/-- The right anchor: `heights κ s e = 0`. [II-M9 helper.] -/
+theorem heights_width (κ : FaceKind e) (s : SlopeTuple κ) :
+    heights κ s e = 0 := by
+  unfold heights
+  refine Finset.sum_eq_zero fun j _ => ?_
+  rw [max_eq_right (κ.x_le_width _), max_eq_right (κ.x_le_width _)]
+  simp
+
+/-- Every cell point has a_e ≠ 0 (`w 0 ≠ ⊤`): column 0 = x_0 is a vertex
+column, where (β) pins `w 0` to an integer. [II-M9 component: the converse of
+the exclusion leg.] -/
+theorem cell_zero_ne_top {κ : FaceKind e} {s : SlopeTuple κ}
+    {w : ℕ → WithTop ℤ} (he : 0 < e) (h : CellMem κ s w) : w 0 ≠ ⊤ := by
+  have hne : κ.faces ≠ [] := by
+    intro hnil
+    have hs := κ.hsum
+    rw [hnil] at hs
+    simp at hs
+    omega
+  have hβ := h.2 0 (List.length_pos_of_ne_nil hne)
+  simp only [FaceKind.x_zero] at hβ
+  rw [hβ]
+  exact WithTop.coe_ne_top
+
+/-- **II-M9 exclusion component**: no `a_e = 0` point (`w 0 = ⊤`) lies in any
+cell — the column-0 vertex equality is impossible at v = ∞. -/
+theorem L6e_zero_notMem {w : ℕ → WithTop ℤ} (he : 0 < e) (h0 : w 0 = ⊤)
+    (κ : FaceKind e) (s : SlopeTuple κ) : ¬ CellMem κ s w :=
+  fun h => cell_zero_ne_top he h h0
+
+/-- Every cell point lies in C_e: `1 ≤ w c` at every column (from (α) and
+`one_le_ceil_height`). [II-M9 companion, converse inclusion half a.] -/
+theorem cell_subset_Ce {κ : FaceKind e} {s : SlopeTuple κ}
+    {w : ℕ → WithTop ℤ} (h : CellMem κ s w) : ∀ c < e, 1 ≤ w c := by
+  intro c hc
+  refine le_trans ?_ (h.1 c hc)
+  exact_mod_cast one_le_ceil_height κ s hc
+
+/-- No cell point lies in R_e: at the last vertex column `x_{k−1}` the pinned
+value `a_{k−1}·d_{k−1}` is strictly below the R_e threshold
+`e − x_{k−1} = L_{k−1} = b_{k−1}·d_{k−1}` (since `a_{k−1} < b_{k−1}`, `hlt1`).
+[II-M9 companion, converse inclusion half b.] -/
+theorem cell_not_Re {κ : FaceKind e} {s : SlopeTuple κ}
+    {w : ℕ → WithTop ℤ} (he : 0 < e) (h : CellMem κ s w) :
+    ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c := by
+  intro hall
+  have hne : κ.faces ≠ [] := by
+    intro hnil
+    have hs := κ.hsum
+    rw [hnil] at hs
+    simp at hs
+    omega
+  have hk : 0 < κ.faces.length := List.length_pos_of_ne_nil hne
+  set jl : Fin κ.faces.length := ⟨κ.faces.length - 1, by omega⟩ with hjl
+  have hjlval : (jl : ℕ) = κ.faces.length - 1 := rfl
+  -- the last vertex column and its face data
+  have hcstar : κ.x (κ.faces.length - 1) < e := κ.x_lt_width (by omega)
+  have hxsucc := κ.x_succ_of_lt (show κ.faces.length - 1 < κ.faces.length by omega)
+  have hxe : κ.x (κ.faces.length - 1 + 1) = e := by
+    rw [(by omega : κ.faces.length - 1 + 1 = κ.faces.length), κ.x_length]
+  -- e − x_{k−1} = L_{k−1}
+  have hLwidth : e - κ.x (κ.faces.length - 1) = (κ.faces[κ.faces.length - 1].1 : ℕ) := by
+    omega
+  -- the vertex height at x_{k−1} is the single term a_{k−1}·d_{k−1}
+  have hvh := vertexHeight_int κ s (κ.faces.length - 1)
+  have hfilter : Finset.univ.filter
+      (fun j' : Fin κ.faces.length => κ.faces.length - 1 ≤ (j' : ℕ)) = {jl} := by
+    ext j'
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_singleton]
+    constructor
+    · intro hle
+      exact Fin.ext (by omega)
+    · intro hj'
+      subst hj'
+      omega
+  rw [hfilter, Finset.sum_singleton] at hvh
+  -- b ∣ L, d = L/b, a < b, d ≥ 1
+  have hmem : κ.faces[κ.faces.length - 1] ∈ κ.faces := List.getElem_mem _
+  have hbdvd : (κ.faces[κ.faces.length - 1].2 : ℕ) ∣ (κ.faces[κ.faces.length - 1].1 : ℕ) :=
+    κ.hdvd _ hmem
+  have hd := κ.d_of_lt (show κ.faces.length - 1 < κ.faces.length by omega)
+  have hLbd : (κ.faces[κ.faces.length - 1].1 : ℕ) =
+      (κ.faces[κ.faces.length - 1].2 : ℕ) * κ.d (κ.faces.length - 1) := by
+    rw [hd, Nat.mul_div_cancel' hbdvd]
+  have hdpos : 0 < κ.d (κ.faces.length - 1) := by
+    rcases Nat.eq_zero_or_pos (κ.d (κ.faces.length - 1)) with h0 | h
+    · exfalso
+      rw [h0, Nat.mul_zero] at hLbd
+      have := κ.faces[κ.faces.length - 1].1.pos
+      omega
+    · exact h
+  have hab : (s.a jl : ℕ) < (κ.faces[κ.faces.length - 1].2 : ℕ) := by
+    have hlt1 := s.hlt1 hne
+    have hgl : κ.faces.getLast hne = κ.faces[κ.faces.length - 1] := by
+      rw [List.getLast_eq_getElem]
+    rw [hgl] at hlt1
+    have hbpos : (0 : ℚ) < ((κ.faces[κ.faces.length - 1].2 : ℕ) : ℚ) := by
+      exact_mod_cast κ.faces[κ.faces.length - 1].2.pos
+    rw [div_lt_one hbpos] at hlt1
+    exact_mod_cast hlt1
+  -- the pinned value is a·d < b·d = L = e − x_{k−1}
+  have hstrict : (s.a jl : ℕ) * κ.d ((jl : ℕ)) < e - κ.x (κ.faces.length - 1) := by
+    rw [hLwidth, hLbd]
+    exact (Nat.mul_lt_mul_right hdpos).mpr hab
+  -- fire the R_e hypothesis at the last vertex column
+  have hRe' := hall (κ.x (κ.faces.length - 1)) hcstar
+  have hβ := h.2 (κ.faces.length - 1) (by omega)
+  rw [hβ, hvh, Int.ceil_natCast] at hRe'
+  have : ((e - κ.x (κ.faces.length - 1) : ℕ) : ℤ) ≤
+      (((s.a jl : ℕ) * κ.d ((jl : ℕ)) : ℕ) : ℤ) := by
+    exact_mod_cast hRe'
+  omega
+
+/-- Within face `j` (columns `x_j ≤ i < x_{j+1}`), the unit drop of the
+polygon is the slope: `h_i − h_{i+1} = a_j/b_j`. [II-M9 helper; the
+`heights_right_dist` linearity read one unit step at a time.] -/
+theorem heights_drop (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) {i : ℕ} (hlo : κ.x (j : ℕ) ≤ i)
+    (hhi : i < κ.x ((j : ℕ) + 1)) :
+    heights κ s i - heights κ s (i + 1) =
+      ((s.a j : ℕ) : ℚ) / (((κ.faces.get j).2 : ℕ) : ℚ) := by
+  have hxj := κ.x_succ_of_lt j.isLt
+  have hget : κ.faces.get j = κ.faces[(j : ℕ)] := rfl
+  set t := κ.x ((j : ℕ) + 1) - i with ht
+  have ht1 : 1 ≤ t := by omega
+  have htL : t ≤ ((κ.faces.get j).1 : ℕ) := by rw [hget]; omega
+  have e1 := heights_right_dist κ s j htL
+  have e2 := heights_right_dist κ s j
+    (show t - 1 ≤ ((κ.faces.get j).1 : ℕ) by omega)
+  rw [(show κ.x ((j : ℕ) + 1) - t = i by omega)] at e1
+  rw [(show κ.x ((j : ℕ) + 1) - (t - 1) = i + 1 by omega)] at e2
+  rw [e1, e2, Nat.cast_sub ht1]
+  push_cast
+  ring
+
+/-- Every column `i < e` lies in a (unique) face: the largest `j` with
+`x_j ≤ i` works. [II-M9 helper.] -/
+theorem exists_face (κ : FaceKind e) {i : ℕ} (hi : i < e) :
+    ∃ j : Fin κ.faces.length, κ.x (j : ℕ) ≤ i ∧ i < κ.x ((j : ℕ) + 1) := by
+  have hP0 : κ.x 0 ≤ i := by simp
+  have hspec : κ.x (Nat.findGreatest (fun m => κ.x m ≤ i) κ.faces.length) ≤ i :=
+    Nat.findGreatest_spec (P := fun m => κ.x m ≤ i) (Nat.zero_le _) hP0
+  have hjnle : Nat.findGreatest (fun m => κ.x m ≤ i) κ.faces.length ≤
+      κ.faces.length := Nat.findGreatest_le _
+  have hjnlt : Nat.findGreatest (fun m => κ.x m ≤ i) κ.faces.length <
+      κ.faces.length := by
+    rcases Nat.eq_or_lt_of_le hjnle with heq | h
+    · exfalso
+      rw [heq, κ.x_length] at hspec
+      omega
+    · exact h
+  refine ⟨⟨Nat.findGreatest (fun m => κ.x m ≤ i) κ.faces.length, hjnlt⟩,
+    hspec, ?_⟩
+  by_contra hcon
+  push_neg at hcon
+  exact Nat.findGreatest_is_greatest (P := fun m => κ.x m ≤ i)
+    (Nat.lt_succ_self _) (by omega) hcon
+
+/-- The unit drops are antitone in the column (slopes decrease left to
+right): for `i ≤ i' < e`, `h_{i'} − h_{i'+1} ≤ h_i − h_{i+1}`. [II-M9
+helper: discrete convexity of the polygon.] -/
+theorem heights_drop_antitone (κ : FaceKind e) (s : SlopeTuple κ) {i i' : ℕ}
+    (hii' : i ≤ i') (hi' : i' < e) :
+    heights κ s i' - heights κ s (i' + 1) ≤
+      heights κ s i - heights κ s (i + 1) := by
+  obtain ⟨j, hj1, hj2⟩ := exists_face κ (lt_of_le_of_lt hii' hi')
+  obtain ⟨j', hj'1, hj'2⟩ := exists_face κ hi'
+  rw [heights_drop κ s j hj1 hj2, heights_drop κ s j' hj'1 hj'2]
+  rcases lt_trichotomy (j : ℕ) (j' : ℕ) with h | h | h
+  · exact le_of_lt (s.hdesc j j' (Fin.lt_def.mpr h))
+  · rw [Fin.ext h]
+  · exfalso
+    have hxx : κ.x ((j' : ℕ) + 1) ≤ κ.x (j : ℕ) := κ.x_mono (by omega)
+    omega
+
+/-- Telescoping the unit drops: `h_A − h_B = Σ_{i ∈ [A,B)} (h_i − h_{i+1})`.
+[II-M9 helper.] -/
+theorem heights_telescope (κ : FaceKind e) (s : SlopeTuple κ) {A B : ℕ}
+    (hAB : A ≤ B) :
+    heights κ s A - heights κ s B =
+      ∑ i ∈ Finset.Ico A B, (heights κ s i - heights κ s (i + 1)) := by
+  induction B, hAB using Nat.le_induction with
+  | base => simp
+  | succ B hAB ih =>
+    rw [Finset.sum_Ico_succ_top hAB, ← ih]
+    ring
+
+/-- The chord bound (discrete convexity): for `A ≤ c ≤ B ≤ e`,
+`(B−A)·h_c ≤ (B−c)·h_A + (c−A)·h_B` — the polygon lies on or below every
+chord between its own columns. [II-M9 helper.] -/
+theorem heights_chord (κ : FaceKind e) (s : SlopeTuple κ) {A c B : ℕ}
+    (hAc : A ≤ c) (hcB : c ≤ B) (hB : B ≤ e) :
+    ((B - A : ℕ) : ℚ) * heights κ s c ≤
+      ((B - c : ℕ) : ℚ) * heights κ s A +
+        ((c - A : ℕ) : ℚ) * heights κ s B := by
+  rcases Nat.eq_or_lt_of_le hcB with rfl | hcB'
+  · rw [Nat.sub_self]
+    simp
+  rcases Nat.eq_or_lt_of_le hAc with rfl | hAc'
+  · rw [Nat.sub_self]
+    simp
+  have hc_lt_e : c < e := by omega
+  set δc := heights κ s c - heights κ s (c + 1) with hδ
+  -- the left stretch: every drop is ≥ δc
+  have hS1 : ((c - A : ℕ) : ℚ) * δc ≤ heights κ s A - heights κ s c := by
+    rw [heights_telescope κ s (le_of_lt hAc')]
+    calc ((c - A : ℕ) : ℚ) * δc = ∑ _i ∈ Finset.Ico A c, δc := by
+          rw [Finset.sum_const, Nat.card_Ico, nsmul_eq_mul]
+      _ ≤ ∑ i ∈ Finset.Ico A c, (heights κ s i - heights κ s (i + 1)) := by
+          refine Finset.sum_le_sum fun i hi => ?_
+          rw [Finset.mem_Ico] at hi
+          exact heights_drop_antitone κ s (by omega) hc_lt_e
+  -- the right stretch: every drop is ≤ δc
+  have hS2 : heights κ s c - heights κ s B ≤ ((B - c : ℕ) : ℚ) * δc := by
+    rw [heights_telescope κ s (le_of_lt hcB')]
+    calc ∑ i ∈ Finset.Ico c B, (heights κ s i - heights κ s (i + 1))
+        ≤ ∑ _i ∈ Finset.Ico c B, δc := by
+          refine Finset.sum_le_sum fun i hi => ?_
+          rw [Finset.mem_Ico] at hi
+          exact heights_drop_antitone κ s (by omega) (by omega)
+      _ = ((B - c : ℕ) : ℚ) * δc := by
+          rw [Finset.sum_const, Nat.card_Ico, nsmul_eq_mul]
+  have h1 : ((B - c : ℕ) : ℚ) * (((c - A : ℕ) : ℚ) * δc) ≤
+      ((B - c : ℕ) : ℚ) * (heights κ s A - heights κ s c) :=
+    mul_le_mul_of_nonneg_left hS1 (Nat.cast_nonneg _)
+  have h2 : ((c - A : ℕ) : ℚ) * (heights κ s c - heights κ s B) ≤
+      ((c - A : ℕ) : ℚ) * (((B - c : ℕ) : ℚ) * δc) :=
+    mul_le_mul_of_nonneg_left hS2 (Nat.cast_nonneg _)
+  have hsplit : ((B - A : ℕ) : ℚ) = ((B - c : ℕ) : ℚ) + ((c - A : ℕ) : ℚ) := by
+    have : (B - A : ℕ) = (B - c : ℕ) + (c - A : ℕ) := by omega
+    exact_mod_cast this
+  rw [hsplit]
+  nlinarith [h1, h2]
+
+/-- At a κ'-vertex column, the κ-polygon lies on or below the κ'-polygon:
+(β') pins `w` there to the integer κ'-height, and (α) bounds the κ-ceiling by
+it. [II-M9 helper.] -/
+theorem cell_le_at_vertex {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
+    {s : SlopeTuple κ} {s' : SlopeTuple κ'}
+    (h : CellMem κ s w) (h' : CellMem κ' s' w) {j : ℕ}
+    (hj : j < κ'.faces.length) :
+    heights κ s (κ'.x j) ≤ heights κ' s' (κ'.x j) := by
+  have hv : κ'.x j < e := κ'.x_lt_width hj
+  have hα := h.1 (κ'.x j) hv
+  have hβ := h'.2 j hj
+  rw [hβ] at hα
+  have hint : ⌈heights κ s (κ'.x j)⌉ ≤ ⌈heights κ' s' (κ'.x j)⌉ := by
+    exact_mod_cast hα
+  obtain ⟨N, hN⟩ : ∃ N : ℕ, heights κ' s' (κ'.x j) = (N : ℚ) :=
+    ⟨_, vertexHeight_int κ' s' j⟩
+  calc heights κ s (κ'.x j) ≤ (⌈heights κ s (κ'.x j)⌉ : ℚ) := Int.le_ceil _
+    _ ≤ (⌈heights κ' s' (κ'.x j)⌉ : ℚ) := by exact_mod_cast hint
+    _ = heights κ' s' (κ'.x j) := by rw [hN]; simp
+
+/-- The κ-polygon lies on or below the κ'-polygon at EVERY column ≤ e when
+both cells contain a common point: the κ'-face endpoints are pinned
+(`cell_le_at_vertex`, or the shared anchor at `e`), the κ-polygon is below
+its own chord (`heights_chord`), and the κ'-polygon IS that chord on its own
+face (`heights_right_dist` linearity). [II-M9 helper.] -/
+theorem cell_heights_le {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
+    {s : SlopeTuple κ} {s' : SlopeTuple κ'}
+    (h : CellMem κ s w) (h' : CellMem κ' s' w) :
+    ∀ c ≤ e, heights κ s c ≤ heights κ' s' c := by
+  intro c hce
+  rcases Nat.eq_or_lt_of_le hce with rfl | hclt
+  · rw [heights_width, heights_width]
+  obtain ⟨j', hj'1, hj'2⟩ := exists_face κ' hclt
+  have hA : heights κ s (κ'.x (j' : ℕ)) ≤ heights κ' s' (κ'.x (j' : ℕ)) :=
+    cell_le_at_vertex h h' j'.isLt
+  have hB : heights κ s (κ'.x ((j' : ℕ) + 1)) ≤
+      heights κ' s' (κ'.x ((j' : ℕ) + 1)) := by
+    rcases Nat.lt_or_ge ((j' : ℕ) + 1) κ'.faces.length with hlt | hge
+    · exact cell_le_at_vertex h h' hlt
+    · have hxe : κ'.x ((j' : ℕ) + 1) = e := by
+        have h1 : κ'.x ((j' : ℕ) + 1) ≤ e := κ'.x_le_width _
+        have h2 := κ'.x_mono hge
+        rw [κ'.x_length] at h2
+        omega
+      rw [hxe, heights_width, heights_width]
+  have hBe : κ'.x ((j' : ℕ) + 1) ≤ e := κ'.x_le_width _
+  have hchord := heights_chord κ s hj'1 (le_of_lt hj'2) hBe
+  have hlin : ∀ x : ℕ, κ'.x (j' : ℕ) ≤ x → x ≤ κ'.x ((j' : ℕ) + 1) →
+      heights κ' s' x =
+        ((s'.a j' : ℕ) : ℚ) / (((κ'.faces.get j').2 : ℕ) : ℚ) *
+            ((κ'.x ((j' : ℕ) + 1) - x : ℕ) : ℚ) +
+          heights κ' s' (κ'.x ((j' : ℕ) + 1)) := by
+    intro x hx1 hx2
+    have hgt : κ'.faces.get j' = κ'.faces[(j' : ℕ)] := rfl
+    have hxsucc := κ'.x_succ_of_lt j'.isLt
+    have ht : κ'.x ((j' : ℕ) + 1) - x ≤ ((κ'.faces.get j').1 : ℕ) := by
+      rw [hgt]; omega
+    have hrd := heights_right_dist κ' s' j' ht
+    rw [(show κ'.x ((j' : ℕ) + 1) - (κ'.x ((j' : ℕ) + 1) - x) = x by
+      omega)] at hrd
+    exact hrd
+  set A := κ'.x (j' : ℕ) with hAdef
+  set B := κ'.x ((j' : ℕ) + 1) with hBdef
+  have hBA : (0 : ℚ) < ((B - A : ℕ) : ℚ) := by
+    have : 0 < B - A := by omega
+    exact_mod_cast this
+  have hsplit : ((B - A : ℕ) : ℚ) =
+      ((B - c : ℕ) : ℚ) + ((c - A : ℕ) : ℚ) := by
+    have : (B - A : ℕ) = (B - c : ℕ) + (c - A : ℕ) := by omega
+    exact_mod_cast this
+  have hAeq := hlin A le_rfl (by omega)
+  have hceq := hlin c hj'1 (le_of_lt hj'2)
+  have hmid : ((B - c : ℕ) : ℚ) * heights κ' s' A +
+      ((c - A : ℕ) : ℚ) * heights κ' s' B =
+      ((B - A : ℕ) : ℚ) * heights κ' s' c := by
+    rw [hAeq, hceq, hsplit]
+    ring
+  have hfinal : ((B - A : ℕ) : ℚ) * heights κ s c ≤
+      ((B - A : ℕ) : ℚ) * heights κ' s' c := by
+    calc ((B - A : ℕ) : ℚ) * heights κ s c
+        ≤ ((B - c : ℕ) : ℚ) * heights κ s A +
+            ((c - A : ℕ) : ℚ) * heights κ s B := hchord
+      _ ≤ ((B - c : ℕ) : ℚ) * heights κ' s' A +
+            ((c - A : ℕ) : ℚ) * heights κ' s' B :=
+          add_le_add (mul_le_mul_of_nonneg_left hA (Nat.cast_nonneg _))
+            (mul_le_mul_of_nonneg_left hB (Nat.cast_nonneg _))
+      _ = ((B - A : ℕ) : ℚ) * heights κ' s' c := hmid
+  exact le_of_mul_le_mul_left hfinal hBA
+
+/-- Two cells through a common point have EQUAL polygons on all columns ≤ e
+(mutual `cell_heights_le`). [II-M9 helper.] -/
+theorem cell_heights_eq {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
+    {s : SlopeTuple κ} {s' : SlopeTuple κ'}
+    (h : CellMem κ s w) (h' : CellMem κ' s' w) :
+    ∀ c ≤ e, heights κ s c = heights κ' s' c := fun c hc =>
+  le_antisymm (cell_heights_le h h' c hc) (cell_heights_le h' h c hc)
+
+/-- **II-M9 disjointness component**: distinct cells are disjoint — a common
+point forces the same face kind and slope tuple. Proof: mutual chord bounds
+give `heights κ s = heights κ' s'` on all columns ≤ e, and the face structure
+is read off the unit drops. -/
+theorem L6e_disjoint {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
+    {s : SlopeTuple κ} {s' : SlopeTuple κ'}
+    (h : CellMem κ s w) (h' : CellMem κ' s' w) :
+    (⟨κ, s⟩ : Σ κ : FaceKind e, SlopeTuple κ) = ⟨κ', s'⟩ := by
+  sorry
+
+/-- **II-M9 coverage component**: every C_e\R_e point with `a_e ≠ 0`
+(`w 0 ≠ ⊤`) lies in some cell — the finite-hull argument: the lower convex
+hull of the finite diagram points is the polygon of an admissible (κ, s). -/
+theorem L6e_covers {w : ℕ → WithTop ℤ}
+    (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c)
+    (h0 : w 0 ≠ ⊤) :
+    ∃ (κ : FaceKind e) (s : SlopeTuple κ), CellMem κ s w := by
+  sorry
+
+/-- **II-M9, L6e(i)** (assembly): off Z_e := (C_e\R_e) ∩ {a_e = 0} the cells
+partition C_e\R_e — every a_e ≠ 0 point lies in exactly ONE cell
+(`L6e_covers` + `L6e_disjoint`), and no a_e = 0 point lies in any
+(`L6e_zero_notMem`; `0 < e` is forced by the C_e\R_e hypotheses). -/
+theorem L6e_partition {w : ℕ → WithTop ℤ}
+    (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) :
+    (w 0 ≠ ⊤ →
+      ∃! P : Σ κ : FaceKind e, SlopeTuple κ, CellMem P.1 P.2 w) ∧
+    (w 0 = ⊤ →
+      ∀ (κ : FaceKind e) (s : SlopeTuple κ), ¬ CellMem κ s w) := by
+  have he : 0 < e := by
+    by_contra he
+    exact hRe fun c hc => absurd hc (by omega)
+  constructor
+  · intro h0
+    obtain ⟨κ, s, hmem⟩ := L6e_covers hCe hRe h0
+    exact ⟨⟨κ, s⟩, hmem, fun ⟨κ', s'⟩ h' => (L6e_disjoint h' hmem)⟩
+  · intro h0 κ s
+    exact L6e_zero_notMem he h0 κ s
+
 end LeanUrat.Scaffold

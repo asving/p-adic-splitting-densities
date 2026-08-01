@@ -1,0 +1,13 @@
+1. **BLOCKER — Step 19 was not updated to the Revision-10 hypothesis scope.** Its evaluation and `(UB)` summaries still stop at `(H7)`, and the final `∎` says `(ROOT-C)` is conditional on `(H1)–(H7)` with `(H5)` containing only `PACK-i/ii/iii`. It omits `(H8)`, `(H9)`, and `PACK-iv`. Thus the displayed closer does not prove the current `(ROOT-C)` quantifier-for-quantifier; it silently upgrades the result beyond Step 18’s new premises.
+
+2. **BLOCKER — Step 16’s claimed exact `(UB)` scope is stale.** It lists only `(H1)–(H7)` and the pre-r11 PACK content while claiming this is “exactly as §1 now displays.” The transported K1/K4 chain now requires `(H8)/(H9)`, and the evaluation chain includes `PACK-iv`. Since Step 16 is declared to deliver clause `(UB)`, its displayed scope contradicts §1.
+
+3. **BLOCKER — §3.4 still treats the shallow-cut content as supplied rather than hypothesis-grade.** Table A item 12 describes “routing + unique shallow cut + \(W_{\hat S}\) regrouping” and routes it to the verified Step-2 layer, while `(H8)=(K-CUT)` says this exactly-one, ownership, weight-preserving shallow decomposition is an open T-6 kernel required by M04 Lemma 3.3. These operative displays cannot both be true. The table’s concluding claim that no new hypothesis surfaced is likewise stale after `(H8)/(H9)`.
+
+4. **BLOCKER — Table A’s 6(iii)–(ix)+7 residue list is not closed after r11.** The row expressly routes M3 at separable-lift scope “with the `(H9)` routing price,” yet its purported closed residue list omits `(H9)`. This regresses the previously confirmed T-U correspondence audit.
+
+5. **ADVISORY — Step 18b’s final `Consumes:` line again omits `(ADM)`.** Its proof paragraph correctly says seam `(S1)` consumes `(GR-B)/(FRESH)/(ADM)`, but the summary lists only `(GR-B)/(FRESH)`. The fuller local display prevents a hidden premise, but the consumer account is inconsistent.
+
+The targeted repairs otherwise check out: Step 17 matches the repaired M1’s per-clause measures and distinguishes solved `(ROW-Σ)` totals from booking margins; Step 18b is scoped at `(RE)=(PACK-iv)`; `PACK-iv` is a member rather than a thirteenth row and has the stated closed two-edge set; §3.1 has twelve rows mapping to `(H1)–(H9)`; `(NSF-KEY)` is prominently marked known false at HEAD with gated retirement; `(K1-CANON)` has one home inside `(NSF-INT)`; `(0)/(SQ)` remain unconditional; the core order \(17<18<18b\), `(H7)`, and the twelve-row bijection do not otherwise regress. Current-status displays adequately supersede the historical acceptance.
+
+**VERDICT: COMPOSITION-GAPS**

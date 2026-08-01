@@ -1654,3 +1654,13 @@ sign-off gated); Step 12 delivery rescoped (E-M3); TWELVE rows <-> (H1)-
 (H9); counter ZERO; §16 carries the record + VC-next charge; PROJECT_STATE
 synced (cured at composition level; acceptance NOT re-earned). VC11
 launched = pass 1 of the fresh model-diverse bar.
+
+## VC11: COMPOSITION-GAPS — pure ripple-sync (2026-08-04)
+4 blockers + 1 advisory, ALL r11 scope-ripple: Steps 16/19 closers still
+at (H1)-(H7)/PACK-iii; §3.4 item 12 routes shallow-cut to the verified
+layer vs (H8)'s open-kernel pricing; the 6(iii)-(ix)+7 list omits (H9);
+18b Consumes line omits (ADM). The r11 repairs THEMSELVES CONFIRMED
+(Step 17 = repaired M1; 18b at (RE)=(PACK-iv); twelve rows; (NSF-KEY)
+honest; (K1-CANON) one-home; acyclicity; current-status displays
+supersede the historical acceptance). Report:
+lean/notes/openmath/VC11_report.md. r12 (ripple-sync) dispatched.
