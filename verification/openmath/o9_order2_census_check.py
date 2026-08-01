@@ -38,8 +38,45 @@ Modes: full enumeration (all a_i = 0 mod p), and a restricted mode (per-
 coefficient minimum valuations) reaching the g = 2 design Delta = (0,4)->
 (4,0), slope -1, marked type (2,2): order-2 residuals over F_{p^2}.
 
-Run: python3 o9_order2_census_check.py           (default configs, ~2-4 min)
+H2-N2 (the floors + JOINT-box gate, (a') -- blueprint HDISCHARGE_H2 sec. 7;
+rides the same enumeration).  For each discrete parent shape (pkey, side,
+g, mu) the rho-fibers are the sets of boxes sharing one concrete parent
+realization rho = (all sides' residual factorizations, marked side, marked
+psi); the (FRESH)(a') product-box claim says each fiber, in the window
+coordinates C_k of the Phi_1-development, is EXACTLY per-slot valuation
+floors w_1(C_k) >= g_k (shape-only) plus the clause-(c) junction pin at
+k_s = mu.  Measured per fiber (all reads at the fiber's own floor heights;
+the raw res_1 digit is used -- at a FIXED slot and FIXED height it differs
+from the coherent anchored-march digit by multiplication by a fixed unit
+y^m, a bijection of F_{p^g} fixing 0, so every check below is invariant;
+no cross-slot digit values are ever compared, keeping clear of the
+machine-refuted slot-fresh normalization):
+  N2i   (floors, gates (F) shape-only): per-slot minimal attained w_1(C_k)
+        agrees across ALL rho's of the same discrete parent shape.
+  N2ii  (marginal leak detector, gates (F)/(L)): at every NON-junction
+        on-line slot of the fiber's floor chain, the per-digit counts at
+        the floor height are uniform -- every observed value (including
+        the 0 = strictly-above class, whose absence would mean a pinned
+        slot) is attained equally often.
+  N2iiiP (JOINT box, gates (F)/(L) -- the review pass-1 finding-19 test):
+        the FULL on-line digit-vector count equals the product of the
+        per-slot marginals, exactly: count(z) * |fiber|^(L-1) ==
+        prod_k marginal_k(z_k) -- cross-slot correlations that pass every
+        marginal fail here.  Junction slot included (its read is pinned).
+  N2iiiM (across-rho): the multiset of on-line digit-vector counts is the
+        same for every rho of the shape (digit VALUES are rho-specific;
+        the count spectrum is not).
+Informational tallies (never gate): junction-pin anomalies (non-constant
+or vanishing k_s-read: clause (c) / H2-N1 territory), chain anomalies
+(floor-chain right end != mu), interior off-line-slot marginal
+non-uniformity, and beyond-junction line-slot pins ('cofac': slots k > mu
+carry the parent's psi-cofactor digits, rho-pinned by design -- parent
+data, not window reads).  Evidence-grade, never proof (finitely many rho
+probed); PASS = 0 violations.
+
+Run: python3 o9_order2_census_check.py           (default configs)
      python3 o9_order2_census_check.py fast      (drops the p=5 full runs)
+     python3 o9_order2_census_check.py n2only    (skip K1-K4, run only N2)
 Exit nonzero on any violation.
 """
 import math
@@ -345,6 +382,196 @@ def check_config(p, n, M, mins, stats, tables):
     return viol, ex, k4, k1n
 
 
+# ============ H2-N2: the floors + JOINT-box gate ((a')) ==================
+CAP = ('CAP', None)           # lift-unstable slot class (w_1 >= e*M, or C_k=0)
+
+
+def n2_slot_data(a, p, M, e, h, psi):
+    """Per-slot window data of box a at the marked psi: list over the dev
+    slots k = 0..l of CAP or (beta, digit) with beta = w_1(C_k) <= e*M - 1
+    and digit = the raw res_1 read of C_k at height beta (nonzero tuple).
+    Height-beta digits with beta <= e*M - 1 are lift-stable (depth < M)."""
+    g = len(psi) - 1
+    f = list(a) + [1]
+    Phi1 = [0] * (e * g + 1)
+    for k in range(g + 1):
+        Phi1[e * k] = psi[k] * p ** ((g - k) * h)
+    C = development(f, Phi1)
+    bcap = e * M - 1
+    out = []
+    for k in range(len(C)):
+        if not any(C[k]):
+            out.append(CAP)
+            continue
+        beta = V_sloped(C[k], p, e, h)
+        if beta > bcap:
+            out.append(CAP)
+        else:
+            r, _, _ = res1(C[k], p, e, h, g)
+            out.append((beta, r))
+    return out
+
+
+def n2_add(fib, sd):
+    """Fold one box's slot data into a fiber accumulator: maintain per-slot
+    floors + the Counter of floor-height read vectors.  When a floor drops,
+    every stored vector's read at that slot was strictly above the new
+    floor, so it remaps to 0 -- no raw data needs keeping."""
+    floors = fib['floors']
+    lowered = [k for k, s in enumerate(sd)
+               if s is not CAP and (floors[k] is None or s[0] < floors[k])]
+    for k in lowered:
+        floors[k] = sd[k][0]
+    if lowered and fib['joint']:
+        newj = Counter()
+        for key, c in fib['joint'].items():
+            key = list(key)
+            for k in lowered:
+                key[k] = 0
+            newj[tuple(key)] += c
+        fib['joint'] = newj
+    vec = []
+    for k, s in enumerate(sd):
+        if s is CAP or floors[k] is None or s[0] > floors[k]:
+            vec.append(0)
+        else:
+            assert s[0] == floors[k], (s, floors[k])
+            vec.append(s[1])
+    fib['joint'][tuple(vec)] += 1
+    fib['size'] += 1
+
+
+def run_n2_config(p, n, M, mins=None):
+    """Enumerate the same boxes as run_config and build the rho-fibers:
+    {(pkey, rkey): accumulator}, rkey = (all sides' factorizations, s_idx,
+    psi).  Restricted mode keeps only strata fully inside the superset."""
+    mins = mins or [1] * n
+    ranges = [range(p ** (M - m)) for m in mins]
+    fibers = {}
+    for tup in product(*ranges):
+        a = tuple(t * p ** m for t, m in zip(tup, mins))
+        pd = parent_data(a, p, n, M)
+        if pd is None:
+            continue
+        delta, sides = pd
+        if mins != [1] * n:
+            _, minv = delta_ceils(delta, n)
+            if any(mv < m for mv, m in zip(minv, mins)):
+                continue
+        ptypes = tuple(tuple(sorted((len(q2) - 1, m) for q2, m in fac.items()))
+                       for (_, _, _, fac) in sides)
+        pkey = (delta, ptypes)
+        sidefacs = tuple(tuple(sorted(fac.items())) for (_, _, _, fac) in sides)
+        for s_idx, (e, h, pat, fac) in enumerate(sides):
+            for psi, mu in fac.items():
+                if mu < 2:
+                    continue
+                sd = n2_slot_data(a, p, M, e, h, psi)
+                fib = fibers.setdefault((pkey, (sidefacs, s_idx, psi)), dict(
+                    floors=[None] * len(sd), joint=Counter(), size=0,
+                    shape=(pkey, s_idx, len(psi) - 1, mu), ehg=(e, h)))
+                assert len(fib['floors']) == len(sd), (a, psi)
+                n2_add(fib, sd)
+    return fibers
+
+
+def n2_online_slots(floors, e, h, g, mu):
+    """The fiber floor chain: principal lower hull of the aligned stable
+    floor points (k, floors_k + k*e*g*h).  Returns (onLine sorted list,
+    chain_ok) with chain_ok = principal part nonempty and ending at mu."""
+    ghat0 = e * g * h
+    pts = sorted((k, f + k * ghat0) for k, f in enumerate(floors)
+                 if f is not None)
+    pfaces = principal(hull_faces(pts))
+    if not pfaces or pfaces[-1][1][0] != mu:
+        return [], False
+    online = []
+    for k, u in pts:
+        for (x1, y1), (x2, y2) in pfaces:
+            if x1 <= k <= x2 and (u - y1) * (x2 - x1) == (k - x1) * (y2 - y1):
+                online.append(k)
+                break
+    return online, True
+
+
+def check_n2_config(fibers):
+    """The H2-N2 gates over one config's fibers.  Returns (viol, info, ex,
+    stats)."""
+    viol = dict(N2i=0, N2ii=0, N2iiiP=0, N2iiiM=0)
+    info = dict(junc=0, chain=0, offuni=0, cofac=0, single=0, multi=0)
+    ex = {}
+    groups = {}
+    for (pkey, rkey), fib in fibers.items():
+        groups.setdefault(fib['shape'], []).append((rkey, fib))
+    for shape, members in groups.items():
+        pkey, s_idx, g, mu = shape
+        e, h = members[0][1]['ehg']
+        info['multi' if len(members) > 1 else 'single'] += 1
+        # N2i: floors rho-independent (shape-only)
+        fvecs = {tuple(f if f is not None else 'CAP' for f in fib['floors'])
+                 for _, fib in members}
+        if len(fvecs) != 1:
+            viol['N2i'] += 1
+            ex.setdefault('N2i', (shape, sorted(fvecs)))
+        # per-fiber read checks
+        specs = {}                      # rkey -> count-multiset (for N2iiiM)
+        for rkey, fib in members:
+            online, ok = n2_online_slots(fib['floors'], e, h, g, mu)
+            if not ok:
+                info['chain'] += 1
+                continue
+            joint = fib['joint']
+            T = fib['size']
+            L = len(online)
+            marg = {k: Counter() for k in range(len(fib['floors']))}
+            for key, c in joint.items():
+                for k in range(len(key)):
+                    marg[k][key[k]] += c
+            # junction pin (informational): constant nonzero read at mu
+            mj = marg[mu]
+            if len(mj) != 1 or 0 in mj:
+                info['junc'] += 1
+            # N2ii: uniform marginals at non-junction on-line slots
+            # (0 = strictly-above must be observed: its absence = a pin)
+            for k in online:
+                if k == mu:
+                    continue
+                if len(set(marg[k].values())) != 1 or 0 not in marg[k]:
+                    viol['N2ii'] += 1
+                    ex.setdefault('N2ii', (shape, rkey, k, dict(marg[k])))
+            # off-line stable slots (informational; skip a monic top slot).
+            # Slots k > mu at line heights carry the parent's psi-COFACTOR
+            # digits -- rho-pinned by design (parent data, not window
+            # reads); they are tallied apart as 'cofac', never gated.
+            top = len(fib['floors']) - 1
+            for k in range(len(fib['floors'])):
+                if (k in online or k == mu or k == top
+                        or fib['floors'][k] is None):
+                    continue
+                if len(set(marg[k].values())) != 1 or 0 not in marg[k]:
+                    info['cofac' if k > mu else 'offuni'] += 1
+            # N2iiiP: joint == product of marginals on the on-line vector
+            jproj = Counter()
+            for key, c in joint.items():
+                jproj[tuple(key[k] for k in online)] += c
+            for z, c in jproj.items():
+                lhs = c * T ** (L - 1)
+                rhs = 1
+                for i, k in enumerate(online):
+                    rhs *= marg[k][z[i]]
+                if lhs != rhs:
+                    viol['N2iiiP'] += 1
+                    ex.setdefault('N2iiiP', (shape, rkey, z, c, lhs, rhs))
+            specs[rkey] = tuple(sorted(jproj.values()))
+        # N2iiiM: on-line count multiset rho-independent
+        if len(specs) > 1 and len(set(specs.values())) != 1:
+            viol['N2iiiM'] += 1
+            ex.setdefault('N2iiiM', (shape, sorted(set(specs.values()))))
+    stats = dict(shapes=len(groups), fibers=len(fibers),
+                 inst=sum(f['size'] for f in fibers.values()))
+    return viol, info, ex, stats
+
+
 def k4_fit(svals, gs):
     """One exponent vector (a,b,d) with s(p) = p^a (p^g-1)^b (p-1)^d for all
     primes?  svals: {p: Fraction}; gs: g (child residue-field degree)."""
@@ -361,6 +588,7 @@ def k4_fit(svals, gs):
 def main():
     fast = 'fast' in sys.argv[1:]
     slow = 'slow' in sys.argv[1:]
+    n2only = 'n2only' in sys.argv[1:]
     # (p, n, M, mins): mins=None is full enumeration (all v(a_i) >= 1).
     # Design notes: the determinacy criterion forces M >= 1 + (max extended
     # face-line height at k=0)/e, so order-2 census strata need M ~ 2x the
@@ -384,21 +612,40 @@ def main():
     k4_pool = {}                          # (n, M, pkey, ckey) -> {p: s}
     for cfg in cfgs:
         p, n, M, mins = cfg
-        stats, tables = run_config(p, n, M, list(mins) if mins else None)
-        viol, ex, k4, k1n = check_config(p, n, M, mins, stats, tables)
         mode = 'restr' + str(mins) if mins else 'full'
-        print(f"p={p} n={n} M={M} {mode}: boxes={stats['boxes']} "
-              f"open={stats['open_poly']} K1-strata={k1n} "
-              f"order2-inst={stats['inst']} undet={stats['undet']} "
-              f"cells={len(k4)} T2skip={stats['t2skip']}")
-        print(f"   violations K1:{viol['K1']} K2:{viol['K2']} "
-              f"K3:{viol['K3']} T2:{stats['t2bad']}")
-        for k in ('K1', 'K2', 'K3'):
-            if viol[k]:
-                print(f"   first {k}:", ex[k])
-        allviol += sum(viol.values()) + stats['t2bad']
-        for (pkey, ckey), s in k4.items():
-            k4_pool.setdefault((n, M, pkey, ckey), {})[p] = s
+        if not n2only:
+            stats, tables = run_config(p, n, M, list(mins) if mins else None)
+            viol, ex, k4, k1n = check_config(p, n, M, mins, stats, tables)
+            print(f"p={p} n={n} M={M} {mode}: boxes={stats['boxes']} "
+                  f"open={stats['open_poly']} K1-strata={k1n} "
+                  f"order2-inst={stats['inst']} undet={stats['undet']} "
+                  f"cells={len(k4)} T2skip={stats['t2skip']}")
+            print(f"   violations K1:{viol['K1']} K2:{viol['K2']} "
+                  f"K3:{viol['K3']} T2:{stats['t2bad']}")
+            for k in ('K1', 'K2', 'K3'):
+                if viol[k]:
+                    print(f"   first {k}:", ex[k])
+            allviol += sum(viol.values()) + stats['t2bad']
+            for (pkey, ckey), s in k4.items():
+                k4_pool.setdefault((n, M, pkey, ckey), {})[p] = s
+        # H2-N2: the floors + JOINT-box gate on the same enumeration
+        fibers = run_n2_config(p, n, M, list(mins) if mins else None)
+        nviol, ninfo, nex, nstats = check_n2_config(fibers)
+        print(f"   N2 p={p} n={n} M={M} {mode}: shapes={nstats['shapes']} "
+              f"(multi-rho={ninfo['multi']} single={ninfo['single']}) "
+              f"fibers={nstats['fibers']} inst={nstats['inst']} "
+              f"chain_anom={ninfo['chain']} junc_anom={ninfo['junc']} "
+              f"offline_nonuni={ninfo['offuni']} cofac_pins={ninfo['cofac']}")
+        print(f"   N2 violations i:{nviol['N2i']} ii:{nviol['N2ii']} "
+              f"iiiP:{nviol['N2iiiP']} iiiM:{nviol['N2iiiM']}")
+        for k in ('N2i', 'N2ii', 'N2iiiP', 'N2iiiM'):
+            if nviol[k]:
+                print(f"   first {k}:", nex[k])
+        allviol += sum(nviol.values())
+    if n2only:
+        print("OVERALL:", "GATE SURVIVES (0 violations)" if allviol == 0
+              else f"GATE FIRES ({allviol} violations)")
+        return 1 if allviol else 0
     # K4: cross-p exponent-vector fit
     k4bad = k4singles = k4n = 0
     exponents = Counter()
