@@ -55,10 +55,16 @@ distinct roots (pⁱ = pʲ ⇒ i = j via `Nat.cast_injective` in char 0 +
 (`separable_prod_X_sub_C_iff`); I-H5 turns that into discr ≠ 0, and the
 I-H4c evaluation law reads it as a nonvanishing value of `discrPoly`
 (Df §3.1 SEP(iii)).
+Unit I-H8: degree-unrestricted `ns_null_proved` + `nsNullRowProved`,
+verbatim per BP_I §1.8 (Df App A + BASE-0): cases on n — n = 0 by I-G1a
+`sep_zero` (empty nonseparable locus), successor by I-H7
+(`ns_null_proved_pos`). Constructs the stable I-E2b `NsNullRow` interface;
+never deletes or rewrites it (REVISION 2 finding 5).
 -/
 import Mathlib
 import LeanUrat.Scaffold.MeasureFloor.Haar
 import LeanUrat.Scaffold.MeasureFloor.Semantic
+import LeanUrat.Scaffold.MeasureFloor.Base
 import LeanUrat.MovesX.Defs
 
 namespace LeanUrat.Scaffold
@@ -606,6 +612,37 @@ theorem null_zeroLocus_succ (m : ℕ)
   -- OFF the locus: I-H2 on each slice
   exact hset ▸ null_zeroLocus_one_var p fb hfb_ne
 
+/-! ## Unit I-H3c4: `null_zeroLocus` (Lemma NULL)
+
+Statement BP_I §1.8 VERBATIM. The induction wrapper over I-H3c3
+(`null_zeroLocus_succ`, consumed in exactly the `ih`-shape its provenance
+note designed for this unit), with `m = 0` discharged directly: a
+zero-variable polynomial is a constant (`MvPolynomial.C_surjective`),
+nonzero by `hP`, so its zero locus is EMPTY. Landing this unit also
+executes I-H7's wiring note (the golf seam): `ns_null_proved_pos` below now
+consumes `null_zeroLocus` instead of its former inline `hnull` copy. -/
+
+/-- Lemma NULL (brief Appendix A): nonzero m-variable polynomial zero locus is
+null, by induction on m via `Measure.pi` slicing (measure_prod_null +
+measurePreserving_piFinSuccAbove). -/
+theorem null_zeroLocus (m : ℕ) (P : MvPolynomial (Fin m) ℚ_[p]) (hP : P ≠ 0) :
+    μHaar p m {a | MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) P = 0} = 0 := by
+  induction m with
+  | zero =>
+    -- base: a nonzero 0-variable polynomial is a nonzero constant; empty locus
+    obtain ⟨c, rfl⟩ := MvPolynomial.C_surjective (Fin 0) P
+    have hc : c ≠ 0 := fun h => hP (by rw [h, map_zero])
+    have hempty : {a : Coeff p 0 |
+        MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) (MvPolynomial.C c) = 0}
+        = ∅ := by
+      ext a
+      simp [hc]
+    rw [hempty]
+    exact measure_empty
+  | succ m ih =>
+    -- successor: I-H3c3 with the m-variable instance as the induction hypothesis
+    exact null_zeroLocus_succ p m ih P hP
+
 /-! ## Unit I-H7: `ns_null_proved_pos` — the positive-degree (NS-NULL) discharge
 
 Statement BP_I §1.8 VERBATIM. Proof per the BP §2 Wave-H row: identify the
@@ -621,7 +658,9 @@ induction wrapper over the LANDED induction step I-H3c3
 (`null_zeroLocus_succ`), base case `m = 0` direct (a nonzero 0-variable
 polynomial is a nonzero constant, `MvPolynomial.C_surjective`; empty locus).
 Once I-H3c4 lands, `hnull` is a golf seam: replace `hnull n` by
-`null_zeroLocus p n` and delete the wrapper — no statement change. -/
+`null_zeroLocus p n` and delete the wrapper — no statement change.
+EXECUTED by the I-H3c4 prover at `null_zeroLocus` landing: the proof below
+now consumes `null_zeroLocus` directly (no statement change). -/
 
 section NsNullPos
 
@@ -630,24 +669,6 @@ variable (n : ℕ)
 /-- Positive-degree discriminant proof. -/
 theorem ns_null_proved_pos (hn : 1 ≤ n) :
     μHaar p n {a | ¬ Sep p n a} = 0 := by
-  -- Lemma NULL (Df App A), inline: induction over I-H3c3's `null_zeroLocus_succ`
-  have hnull : ∀ (m : ℕ) (P : MvPolynomial (Fin m) ℚ_[p]), P ≠ 0 →
-      μHaar p m {a | MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) P = 0} = 0 := by
-    intro m
-    induction m with
-    | zero =>
-      -- base: a nonzero 0-variable polynomial is a nonzero constant; empty locus
-      intro P hP
-      obtain ⟨c, rfl⟩ := MvPolynomial.C_surjective (Fin 0) P
-      have hc : c ≠ 0 := fun h => hP (by rw [h, map_zero])
-      have hempty : {a : Coeff p 0 |
-          MvPolynomial.aeval (fun i => ((a i : ℤ_[p]) : ℚ_[p])) (MvPolynomial.C c) = 0}
-          = ∅ := by
-        ext a
-        simp [hc]
-      rw [hempty]
-      exact measure_empty
-    | succ m ih => exact null_zeroLocus_succ p m ih
   -- the nonseparable locus IS the discriminant zero locus (I-H5 + I-H4c)
   have hset : {a : Coeff p n | ¬ Sep p n a}
       = {a : Coeff p n |
@@ -656,9 +677,44 @@ theorem ns_null_proved_pos (hn : 1 ≤ n) :
     simp only [Set.mem_setOf_eq, sep_iff_discr_ne_zero p n hn a, not_ne_iff,
       discr_mPoly_eq_eval p n a]
   rw [hset]
-  -- Lemma NULL at the nonzero generic discriminant (I-H6)
-  exact hnull n (discrPoly p n) (discrPoly_ne_zero p n hn)
+  -- Lemma NULL (I-H3c4) at the nonzero generic discriminant (I-H6)
+  exact null_zeroLocus p n (discrPoly p n) (discrPoly_ne_zero p n hn)
 
 end NsNullPos
+
+/-! ## Unit I-H8: the degree-unrestricted (NS-NULL) discharge + the proved row
+
+Statements BP_I §1.8 VERBATIM. Cases on `n`: at `n = 0` every point is
+separable (I-G1a `sep_zero`, from `Base.lean` — BASE-0), so the nonseparable
+locus is EMPTY; at successor degree fire I-H7 (`ns_null_proved_pos`).
+`nsNullRowProved` then CONSTRUCTS the stable I-E2b consumer interface
+`NsNullRow` (Semantic.lean) — consumed, never deleted or rewritten
+(REVISION 2 finding 5): downstream drainage/SUM-ONE keep their `NsNullRow`
+signatures and may now be fed this proved row. -/
+
+section NsNullAll
+
+variable (n : ℕ)
+
+/-- **(NS-NULL) PROVED for every degree.** At n = 0 use `sep_zero`; at
+positive degree use `ns_null_proved_pos`. -/
+theorem ns_null_proved : μHaar p n {a | ¬ Sep p n a} = 0 := by
+  cases n with
+  | zero =>
+    -- BASE-0: every degree-0 point is separable (I-G1a), the locus is empty
+    have hempty : {a : Coeff p 0 | ¬ Sep p 0 a} = ∅ := by
+      ext a
+      simp [sep_zero p a]
+    rw [hempty]
+    exact measure_empty
+  | succ m =>
+    -- positive degree: the I-H7 discriminant discharge
+    exact ns_null_proved_pos p (m + 1) m.succ_pos
+
+/-- The PROVED (NS-NULL) row: the stable `NsNullRow` interface (I-E2b),
+constructed for every degree. -/
+def nsNullRowProved : NsNullRow p n := ⟨ns_null_proved p n⟩
+
+end NsNullAll
 
 end LeanUrat.Scaffold
