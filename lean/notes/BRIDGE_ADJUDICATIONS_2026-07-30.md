@@ -2035,3 +2035,8 @@ stand; acceptance EARNED on REVISION 12; VC16 owed to re-anchor. PROJECT_STATE s
 green (second perfect fleet after H8). TierM deferred per synthesis
 priority. H6 HOLDS until the MECH batch lands Shared/FirstEntrance.lean
 (H6 instantiates it instead of re-deriving). VC16 + MECH running.
+
+## SYNTHESIS PASS-3 MECH BATCH LANDED (2026-08-05, gated 4/4)
+FirstEntrance hoisted to Shared/ (H6 now instantiates, not re-derives); H1
+wave-0 carrier pre-pulled; H8 Tonelli tsum dedup (CutFirst/CutPartition private
+copies retired); RootHyps synced to ROOT's twelve rows. All files lake-green.
