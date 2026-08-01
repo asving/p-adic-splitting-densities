@@ -1483,3 +1483,15 @@ M2.0 loop-extended addresses (billing unchanged); O11-G2 = NEW [M] row (H8)=(K-C
 (retire route: O-11 charge (vi)); NEED CHECK: all Step-17/18b needs MET, BLOCKED
 list EMPTY (2 labeled contingencies); execution = D-11 r4 → r4 pass → ROOT r11
 (counter to ZERO, new end-to-end bar).
+
+## R11 DESIGN REVIEW: DESIGN-REVISE (5 CRITICAL, 2026-08-04)
+Codex rulings: (1) (RE) NOT definitionally discharged => (PACK-iv) fires
+as a real (H5) row-law (primary, not fallback); (2) (b-SW) prefix-free-by-
+grammar is ASSERTED not proved — needs a grammar-exhaustiveness lemma +
+the infinite loop-0 word handled separately; (3) M3(a) Haar-null narrowing
+unproven against K1's exact-classification/finite-level needs (NS-ALL
+contingency LIVE, N2 open); (4) N1 beta-leg normalization source unnamed
+=> circularity risk (M2 before 18b) — must cite the O-12 algebraic theorem
+or PACK-i/ii explicitly; (5) M2.0 obligation list incomplete (countable-
+union identity, infinite pre-handoff path, +). "BLOCKED: NONE" unsupported.
+Report: lean/notes/openmath/R11D_review_2026-08-04.md. Revision dispatched.
