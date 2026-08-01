@@ -1685,3 +1685,15 @@ Resume recovered the 429-killed tail incl. BOTH checkpoints (Theorems 2-4
 the mop-up queue: II-G5, II-F7/F8/F9, II-T5, II-M6/G6/G7 (+ 3 silent
 empty-result units in 3c/3h/3i). BP_III resume launched (sequential
 fleet #2); BP_IV architect queued.
+
+## VC13 (FABLE): 2 BLOCKERS, same stale-display genre — COUNTER RESET (2026-08-04)
+Blockers: (1) §1's (H5) member display omits (PACK-iv) AT THE THEOREM
+STATEMENT (Step-19 closer != §1 at member granularity); (2) Step 18's
+delta-stable note quotes a stale clause-(R) attribution "— §1" (omits
+(H6)-(H9); "five-hypothesis" count is REVISION-4-era). +3 advisories
+(Step 17 Consumes asymmetry; (H8) provenance label vs §3.2 O-11 row;
+(AGR) residue "nothing else"). EVERYTHING ELSE SURVIVED the hostile hunt:
+full walk, twelve-row ledger, seams, (NSF-KEY) never consumed as true.
+COUNTER = ZERO. r13 = the 5 fixes + A GLOBAL ENUMERATION AUDIT (grep every
+hypothesis-list display in operative sections, sync ALL against §1) to
+kill the straggler class. Report: lean/notes/openmath/VC13_fable_report.md.

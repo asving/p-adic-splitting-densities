@@ -277,6 +277,19 @@ weakened or partially landed.  Status at hand-off (2026-08-01):
   III-T14a's reverse direction (which consumes `m6b` + the `M6cHyps`/`GRB`
   row and is recorded separately by that unit).
 
+* RE-VERIFIED by unit III-T14b's own execution pass (2026-08-01, fresh
+  transcription of the verbatim display against this pin): both errors
+  reproduce character-for-character — the `CanRealizes` arity mismatch at
+  the ↔'s RHS and the unknown-identifier `M6ABHyps` at the `hab` binder;
+  the ReadsOf LHS elaborates cleanly.  Updated dependency census at this
+  pass: III-H1 `GRB` LANDED (`Hyps.lean`, consumed via `M6cHyps` below);
+  III-T12 `m6c_noPhantom` NOW LANDED in this file (all legs proved except
+  the window-confinement leg's honest sorry, record at that unit); III-T11b
+  still BLOCKED (elided display, record above); III-T14m's `M6ABHyps` still
+  BLOCKED (row defect, record above); III-T14a BLOCKED (record below).
+  None of this cures ground (a): the defect is in this unit's OWN displayed
+  conclusion, so the verdict stands independent of dependency landings.
+
 ```
 theorem realEquiv_of_m6 {n : ℕ} {f : Polynomial ℤ_[p]}
     {H : MovesC.History p F}
@@ -313,17 +326,30 @@ hand-off (2026-08-01):
   elaborates cleanly — the compiled anchors below display both corpus
   signatures; the defect is confined to the `CanRealizes` side.)
 
-* Content-dependency census for the ⟸ proof (independent second ground):
-  III-H1 `GRB` LANDED (`Hyps.lean`), consumed here only through the landed
-  `M6cHyps` row above; III-T11b BLOCKED (record above — elided display);
-  III-T12 (`m6c_noPhantom`) NOT landed anywhere under `Scaffold/` at hand-off,
-  its §1.7 display being likewise the ellipsis `theorem m6c_noPhantom …`.  The
-  source proof on record (O1thr §2.5 Lemma REAL≡ (⟸), rev-4 requantified) is
-  a prefix-by-prefix walk induction along `H.nodes` whose per-step
-  non-halting cite is exactly (M6c)(ii) = III-T12 (with (M6c)(i) = III-T11
-  beyond-window support and the `m6b` row supplying non-emptiness), so even
-  after the arity ruling repairs the statement, the ⟸ body has no landed
-  III-T11b/III-T12 statements to consume.
+* RE-VERIFIED by unit III-T14a's own execution pass (2026-08-01, fresh
+  scratch transcription of the verbatim `M6ABHyps` rows + `realEquiv_of_m6`
+  display against this pin, per the trust boundary — comments are not ground
+  truth): the identical `Application type mismatch … MovesC.Node ?m.18 ?m.20
+  … MovesD.CanRealizes p` fires AT THE THEOREM'S OWN CONCLUSION (the ⟸
+  hypothesis side) even with the M6ABHyps rows present in scope, confirming
+  the defect is own-statement, not dependency-shaped.
+
+* Content-dependency census for the ⟸ proof (independent second ground;
+  REFRESHED at the 2026-08-01 re-measurement pass, which found the earlier
+  census stale on the III-T12 line): III-H1 `GRB` LANDED (`Hyps.lean`),
+  consumed here only through the landed `M6cHyps` row above; III-T11b still
+  BLOCKED (record above — elided display); III-T12 (`m6c_noPhantom`) now
+  LANDED BELOW IN THIS FILE (section `UnitIIIT12` — statement completed under
+  its delegated-statement charter, everything proved EXCEPT the window-
+  confinement leg, which carries an honest sorry pending III-T11b/III-T13).
+  The source proof on record (O1thr §2.5 Lemma REAL≡ (⟸), rev-4
+  requantified) is a prefix-by-prefix walk induction along `H.nodes` whose
+  per-step non-halting cite is exactly (M6c)(ii) = III-T12 (with (M6c)(i) =
+  III-T11 beyond-window support and the `m6b` row supplying non-emptiness).
+  So the ⟸ body's per-step supplier is now partially in place, but the walk
+  still has no landed III-T11b statement to consume and III-T12's
+  confinement leg is itself conditional — and none of this reaches the
+  PRIMARY ground: the ⟸ direction's OWN hypothesis side does not elaborate.
 
 Needs the SAME architect ruling as III-T14m/III-T14b: a typed history-level
 realizability predicate of arity (p F n f H) assembled from the one-node
