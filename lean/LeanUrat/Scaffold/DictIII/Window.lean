@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.Scaffold.DictIII.Hyps
+import LeanUrat.Scaffold.DictIII.Devid
 import LeanUrat.MovesD.R7_polFillReduction
 import LeanUrat.HC2.UE_vtxUpper
 
@@ -349,6 +350,183 @@ mismatch is visible right here. -/
 #check @LeanUrat.MovesJ.ReadsOf
 #check @LeanUrat.MovesD.CanRealizes
 
+/-! ## Unit III-T12 — `m6c_noPhantom` ((M6c)(ii) no-phantom; BP_III §2 Wave 3
+row T12, pre-split T12a stmt / T12b proof; src O1thr rev 4 §2.5 (M6c)(ii))
+
+STATEMENT-PROVENANCE RECORD (the III-T11a convention — read before consuming):
+
+* BP_III §1.7 (line 529) displays this unit's theorem only as the ellipsis
+  `theorem m6c_noPhantom …` — there is NO verbatim blueprint statement to
+  transcribe (REV2 finding 1 left §1.7's three theorem displays elided; the
+  same finding as the III-T11a/T11b records above).  UNLIKE III-T11b,
+  statement composition is IN this unit's charter: the BP pre-splits III-T12
+  into "T12a stmt (EASY) / T12b proof" (unit row 792) — a DELEGATED statement
+  unit in the III-G21a sense (see `Devid.lean`'s III-G21b record, which
+  contrasts exactly these two situations).  So the statement below is
+  COMPLETED from the source of record per the DictIII convention
+  (`Devid.lean` unit III-G18), source sentence O-1thr rev 4 §2.5 (M6c)(ii)
+  (`lean/notes/openmath/O1thr_phaseB_verifybrief_rev4.md` lines 552–559 and
+  the Proof-of-(M6c) display, lines 781–809).  Flagged for division-lead
+  ratification as a statement, per the fence.
+
+COMPLETION LEDGER (source clause → corpus rendering):
+
+* Site: BP §1.6's convention — "the site is a corpus `History` prefix + next
+  node".  The state o = `H : History p F`; the child ν′ = a non-root `Node`;
+  the chain o·ν′ = `H.snoc ν' hν'`.  Corpus histories are NONEMPTY, so this
+  site is the NON-ROOT-STATE leg of the source quantifier (o's creating read
+  = `H.nodes.getLast`); the source's root-state instances (child = the root
+  read itself, not expressible as a `snoc`) belong to Lemma ROOT-M's unit
+  III-T16 and are NOT claimed here.
+* READ(f, o·ν′) = `ReadsOf p F n f (H.snoc ν' hν')` — the rev-4 WEAKENED
+  child hypothesis, verbatim: NO halting hypothesis, NO `Realizable`, NO
+  LAWFUL/AUX enter (the rev-4 requantification; ¬NsHalts is a CONCLUSION).
+* (N1) (`pat(0) ≠ 0`, `pat(wSide/e) ≠ 0`) is INTRINSIC to the corpus child —
+  `Node.hpat0`/`Node.hpatTop`; no separate hypothesis is displayed.
+* "arises from a (window principal face, ψ′) pair, records equal to that
+  pair's harvest": the face is exhibited on f's development in the STATE key
+  `ν'.σ.Φ` (`HistoryCoherent` inside `ReadsOf` ties `ν'.σ` to o's frame).
+  `SideReads ν' B Nd Φnext` carries the record-vs-f harvest ties verbatim —
+  (i) the side line supports ALL slots with equality ONLY at recorded strides
+  ((R1)), (ii) the stride digits ARE pat′ ((R2)), (iii) the anchored residual
+  + `ord_ψ` read ((R3)), (iv) landing on the produced key ((R4)), (vi) the
+  vertex pair ((R5)).  The two displayed ENDPOINT clauses are the
+  (N1)-driven reconstruction step ("by (R2) + (N1) BOTH endpoints are
+  touched"): the support segment is a genuine FACE — occupied at both ends
+  at the exact side value γ′ — not merely a supporting line.
+* ψ′ leg ("ψ′ is a monic irreducible with ord_{ψ′}(R_F) = μ′ ≥ 1"):
+  `Irreducible ν'.ψ ∧ OrdPsiPoly ν'.ψ ν'.Ranch ν'.μ ∧ 1 ≤ ν'.μ` (monicity is
+  the record's `Node.hψmonic`).
+* ¬NsHalts(o, f) as a CONCLUSION: the corpus (τ-ns) face is "the window
+  admits no side" (`MovesT/Defs.lean` (τ-ns) docstring: J(f) = ∅); its
+  negation IS the displayed existential — o's window admits the principal
+  side (F, ψ′) (principality −h′/e′ < 0 from `Node.he`/`Node.hh`).  The
+  `MovesT.TreeModel`-keyed corollary is the T14/CU-1 consumers' one-liner
+  once a concrete `T.child` ties children to `ReadsOf`; no `TreeModel`
+  enters §1.7's vocabulary.
+* Window confinement F ⊆ [0, W_o] (W_o = the creating read's μ — source
+  §2.5 preamble "(e, h, γ, ψ, μ = W) the creating read ν's data"): the final
+  clause, keyed to `H.nodes.getLast?`.  This is the source proof's ONE
+  citation of (M6c)(i)-at-o / WGEO(c) ("F is principal, and F ⊆ [0, W]"),
+  and it is exactly the `j > W` state-polygon flank that the III-T11a record
+  above declares NOT claimed at `e′ = 1` and D-R4 assigns to III-T11b —
+  BLOCKED (record above).  The clause is stated in full and carries an
+  honest `sorry` (BLOCKED(III-T12) note at the leg); the
+  `IsPolyValuation`/`KeyPkg` rows it will consume are bound in the signature
+  per the unit charter ("under KeyPkg rows"): `wS` abstracts the state
+  valuation w_o, `hwS` its frame tie (a NAMED row, the III-G18 convention),
+  `hval` = (V1) at the state (`Devid.lean`'s un-indexed `MacLaneV1Pkg` row
+  set), `hkp` = (V2)-front at the state key (III-H8's landed structure).
+  Row SUFFICIENCY for this leg is III-T13 (`wgeo`) territory and
+  unadjudicated; if `wgeo` lands with a different row set, this signature is
+  a re-adjudication item, not a silent edit.
+
+Everything EXCEPT the confinement leg is PROVED below from the run record
+alone (snoc index bookkeeping + the (N1) endpoint consumption + the `hEdvd`
+stride arithmetic); no axiom, no new carrier, no `Node`/`SideReads` field
+redeclared. -/
+
+section UnitIIIT12
+
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD LeanUrat.MovesJ
+
+variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+/-- III-T12 support (run-record extraction): `ReadsOf` at a snoc-extended
+chain yields the LAST read's development/side witnesses at the appended node —
+the index bookkeeping `(H.snoc ν' hν').nodes[H.nodes.length] = ν'` done
+once. -/
+theorem lastRead_of_readsOf_snoc {n : ℕ} {f : Polynomial ℤ_[p]}
+    {H : History p F} (ν' : Node p F)
+    (hν' : ν'.species ≠ ReadSpecies.root)
+    (hread : ReadsOf p F n f (H.snoc ν' hν')) :
+    ∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ) (Φnext : Polynomial ℤ_[p]),
+      IsDevelopment ν'.σ.Φ f B Nd ∧ SideReads ν' B Nd Φnext := by
+  obtain ⟨_, _, _, hrun⟩ := hread
+  have hi : H.nodes.length < (H.snoc ν' hν').nodes.length := by
+    change H.nodes.length < (H.nodes ++ [ν']).length
+    simp
+  obtain ⟨B, Nd, Φnext, hdev, _, hside⟩ := hrun H.nodes.length hi
+  have hlast : (H.snoc ν' hν').nodes[H.nodes.length]'hi = ν' := by
+    change (H.nodes ++ [ν'])[H.nodes.length]'hi = ν'
+    simp
+  rw [hlast] at hdev hside
+  exact ⟨B, Nd, Φnext, hdev, hside⟩
+
+/-- **Unit III-T12 (`m6c_noPhantom` — O-1thr rev 4 §2.5 (M6c)(ii), BP_III
+§1.7): no phantom, at the corpus non-root site.**  Every child `ν'` at the
+state `H` whose extended chain satisfies READ(f, H·ν′) — the rev-4 WEAKENED
+child hypothesis; (N1) is the child's own `hpat0`/`hpatTop`; NO halting
+hypothesis enters — arises from a (window principal face, ψ′) harvest pair:
+f's development in the STATE key `ν'.σ.Φ` admits the recorded side as a
+genuine face (support + stride-exact equality via `SideReads`, BOTH endpoints
+occupied at the exact side value γ′), with records equal to that pair's
+harvest (`SideReads` (i)–(vi)) and `ψ′ = ν'.ψ` a monic irreducible with
+`ord_{ψ′}(R_F) = μ′ ≥ 1`.  IN PARTICULAR o's window admits a principal side —
+the corpus (τ-ns) face of ¬NsHalts(o, f) is exactly this CONCLUSION.  The
+final clause is the window confinement F ⊆ [0, W_o] (W_o = the creating
+read's `μ`), the (M6c)(i)/WGEO(c) leg carried on the
+`IsPolyValuation`/`KeyPkg` rows — see the section header's ledger and the
+BLOCKED note at the leg. -/
+theorem m6c_noPhantom {n : ℕ} {f : Polynomial ℤ_[p]}
+    {H : History p F} (ν' : Node p F)
+    (hν' : ν'.species ≠ ReadSpecies.root)
+    (wS : Polynomial ℤ_[p] → WithTop ℤ)
+    (hval : IsPolyValuation wS)
+    (hkp : KeyPkg wS ν'.σ.Φ)
+    (hwS : ∀ B : Polynomial ℤ_[p], B ≠ 0 → wS B = ((ν'.σ.w B : ℤ) : WithTop ℤ))
+    (hread : ReadsOf p F n f (H.snoc ν' hν')) :
+    ∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ) (Φnext : Polynomial ℤ_[p]),
+      -- the harvest pair's face, on f's development in the STATE key:
+      IsDevelopment ν'.σ.Φ f B Nd ∧
+      -- records = the pair's harvest (support/strides/digits/residual/
+      -- landing/vertex — SideReads (i)–(vi) verbatim):
+      SideReads ν' B Nd Φnext ∧
+      -- (N1)-reconstruction, LEFT endpoint occupied at exact height γ′:
+      (B ν'.s0 ≠ 0 ∧
+        (ν'.e : ℤ) * ν'.σ.w (B ν'.s0) + (ν'.s0 : ℤ) * (ν'.h : ℤ) = ν'.gam) ∧
+      -- (N1)-reconstruction, RIGHT endpoint occupied at exact height γ′:
+      (B (ν'.s0 + ν'.wSide) ≠ 0 ∧
+        (ν'.e : ℤ) * ν'.σ.w (B (ν'.s0 + ν'.wSide))
+          + ((ν'.s0 + ν'.wSide : ℕ) : ℤ) * (ν'.h : ℤ) = ν'.gam) ∧
+      -- the ψ′ harvest coordinate: irreducible, ord_{ψ′}(R_F) = μ′ ≥ 1
+      -- (monicity is the record's `hψmonic`):
+      (Irreducible ν'.ψ ∧ OrdPsiPoly ν'.ψ ν'.Ranch ν'.μ ∧ 1 ≤ ν'.μ) ∧
+      -- window confinement F ⊆ [0, W_o], W_o = the creating read's μ:
+      (∀ νW : Node p F, H.nodes.getLast? = some νW →
+        ν'.s0 + ν'.wSide ≤ νW.μ) := by
+  obtain ⟨B, Nd, Φnext, hdev, hside⟩ := lastRead_of_readsOf_snoc ν' hν' hread
+  refine ⟨B, Nd, Φnext, hdev, hside, ?_, ?_, ⟨ν'.hψirr, ν'.hOrd, ν'.hμ⟩, ?_⟩
+  · -- LEFT endpoint: SideReads (ii) DIGITS at k = 0, fired by (N1)'s `hpat0`
+    have h0 := hside.2.1 0 (Nat.zero_le _) ν'.hpat0
+    have he0 : ν'.s0 + ν'.e * 0 = ν'.s0 := by simp
+    rw [he0] at h0
+    exact ⟨h0.1, h0.2.1⟩
+  · -- RIGHT endpoint: SideReads (ii) DIGITS at k = wSide/e, fired by (N1)'s
+    -- `hpatTop`; `e ∣ wSide` (`hEdvd`) closes the stride arithmetic
+    have htop := hside.2.1 (ν'.wSide / ν'.e) (le_refl _) ν'.hpatTop
+    have heTop : ν'.s0 + ν'.e * (ν'.wSide / ν'.e) = ν'.s0 + ν'.wSide := by
+      rw [Nat.mul_div_cancel' ν'.hEdvd]
+    rw [heTop] at htop
+    exact ⟨htop.1, htop.2.1⟩
+  · -- window confinement F ⊆ [0, W_o]
+    intro νW hW
+    -- BLOCKED(III-T12): this leg is the source proof's ONE citation of
+    -- (M6c)(i)-at-o / WGEO(c) ("F is principal, and F ⊆ [0, W]") — the
+    -- `j > W` beyond-window strictness at the child's own line, from which
+    -- confinement follows because the RIGHT endpoint is TOUCHED (clause
+    -- above): a touched slot beyond W would violate strictness.  That
+    -- strictness is exactly the state-polygon flank the III-T11a record
+    -- above declares NOT claimed at `e′ = 1` and D-R4 assigns to III-T11b —
+    -- BLOCKED (elided display; record above) — with III-T13 (`wgeo`) not
+    -- landed and its dep III-G21 (`gd3_min`) BLOCKED per `Devid.lean`.
+    -- The bound rows `wS`/`hval`/`hkp`/`hwS` are this leg's declared supply
+    -- per the unit charter ("under KeyPkg rows"); the leg completes when
+    -- III-T11b/III-T13 land.  Honest sorry — the statement is NOT weakened.
+    sorry
+
+end UnitIIIT12
+
 end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-T15 gate): expect Lean core only.
@@ -356,3 +534,9 @@ end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-T11a gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.m6c_beyondWindow_e1
+
+-- Footprint audit (unit III-T12): the support extraction expects Lean core
+-- only; `m6c_noPhantom` carries the confinement leg's honest sorry — expect
+-- `sorryAx` there until III-T11b/III-T13 land (BLOCKED note at the leg).
+#print axioms LeanUrat.Scaffold.DictIII.lastRead_of_readsOf_snoc
+#print axioms LeanUrat.Scaffold.DictIII.m6c_noPhantom

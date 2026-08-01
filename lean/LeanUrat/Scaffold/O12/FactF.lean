@@ -359,4 +359,84 @@ theorem card_irred_degree_sum (D : ℕ+) :
 
 end FactFi
 
+/-! ## Unit II-F6 — Fact F(i): (Mpoly D).eval q = I_D
+
+Statements VERBATIM from BP_II.md §1.7 (`MonicIrreducibleDegree` subtype,
+`finite_monicIrreducibleDegree`, `card_monicIrreducible_eq`; REV2 finding 10).
+Proof per the §2 row sketch: Möbius inversion — Mathlib's
+`ArithmeticFunction.sum_eq_iff_sum_smul_moebius_eq` (the blueprint's
+`Nat.ArithmeticFunction.…` name, in its current namespace) — applied to the
+II-F5 degree count `card_irred_degree_sum`, cast ℕ→ℚ, tied to `Mpoly.eval`. -/
+
+section FactFiCount
+
+/-- **Unit II-F6 carrier** (BP_II §1.7 verbatim): the monic irreducible
+polynomials of degree exactly `D` over `F`. -/
+def MonicIrreducibleDegree (F : Type*) [Field F] (D : ℕ+) :=
+  {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = D}
+
+set_option linter.unusedFintypeInType false in
+/-- **Unit II-F6 finiteness** (BP_II §1.7 verbatim; REV2 finding 10): over a
+finite field there are only finitely many monic irreducibles of degree `D` —
+injection into the coefficient tuple below degree `D + 1`. (The `[Fintype F]`
+hypothesis is the blueprint's verbatim statement — statement-fenced, so the
+unused-Fintype linter is silenced rather than the signature weakened.) -/
+theorem finite_monicIrreducibleDegree
+    (F : Type*) [Field F] [Fintype F] (D : ℕ+) :
+    Finite (MonicIrreducibleDegree F D) := by
+  refine Finite.of_injective
+    (fun f : MonicIrreducibleDegree F D =>
+      (fun i : Fin ((D : ℕ) + 1) => f.1.coeff (i : ℕ))) ?_
+  rintro ⟨f, hf⟩ ⟨g, hg⟩ h
+  refine Subtype.ext (Polynomial.ext fun n => ?_)
+  by_cases hn : n < (D : ℕ) + 1
+  · exact congrFun h ⟨n, hn⟩
+  · have hDn : (D : ℕ) < n := by omega
+    rw [Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hf.2.2]; exact hDn),
+        Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hg.2.2]; exact hDn)]
+
+/-- **Unit II-F6, Fact F(i)** (BP_II §1.7 verbatim): D·I_D = Σ_{δ|D} μ(δ)·q^{D/δ},
+i.e. `(Mpoly D).eval q = I_D`, where `I_D = Nat.card (MonicIrreducibleDegree F D)`
+and `q = Fintype.card F`. Möbius inversion of the II-F5 degree count. -/
+theorem card_monicIrreducible_eq
+    (F : Type*) [Field F] [Fintype F] (D : ℕ+) :
+    (Mpoly D).eval (Fintype.card F : ℚ) =
+      (Nat.card (MonicIrreducibleDegree F D) : ℚ) := by
+  classical
+  -- Steps 1–2: Möbius inversion of the II-F5 divisor-sum identity (cast ℕ → ℚ
+  -- inline, so the instantiated `f`, `g` pin the binder types), at n = D.
+  have hmob := (ArithmeticFunction.sum_eq_iff_sum_smul_moebius_eq
+      (f := fun d : ℕ => (d : ℚ) *
+        (Nat.card {f : Polynomial F // f.Monic ∧ Irreducible f ∧ f.natDegree = d} : ℚ))
+      (g := fun n : ℕ => (Fintype.card F : ℚ) ^ n)).mp
+      (fun n hn => by
+        have h5' := congrArg (fun k : ℕ => (k : ℚ))
+          (card_irred_degree_sum F (⟨n, hn⟩ : ℕ+))
+        push_cast at h5'
+        exact h5'.symm)
+      (D : ℕ) D.pos
+  simp only [zsmul_eq_mul] at hmob
+  rw [Nat.sum_divisorsAntidiagonal
+      (fun a b => ((ArithmeticFunction.moebius a : ℤ) : ℚ) *
+        (Fintype.card F : ℚ) ^ b)] at hmob
+  -- hmob : Σ_{d|D} μ(d)·q^{D/d} = D · I_D  (in ℚ)
+  -- Step 3: evaluate Mpoly and cancel the 1/D.
+  have hD0 : ((D : ℕ) : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr D.pos.ne'
+  have hcard : (Nat.card (MonicIrreducibleDegree F D) : ℚ)
+      = (Nat.card {f : Polynomial F //
+          f.Monic ∧ Irreducible f ∧ f.natDegree = (D : ℕ)} : ℚ) := rfl
+  have heval : (Mpoly D).eval (Fintype.card F : ℚ)
+      = (((D : ℕ) : ℚ))⁻¹ * ∑ d ∈ (D : ℕ).divisors,
+          ((ArithmeticFunction.moebius d : ℤ) : ℚ) *
+            (Fintype.card F : ℚ) ^ ((D : ℕ) / d) := by
+    rw [Mpoly, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_finsetSum,
+      one_div]
+    congr 1
+    refine Finset.sum_congr rfl fun d _ => ?_
+    rw [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow,
+      Polynomial.eval_X]
+  rw [hcard, heval, hmob, inv_mul_cancel_left₀ hD0]
+
+end FactFiCount
+
 end LeanUrat.Scaffold

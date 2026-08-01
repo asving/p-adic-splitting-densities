@@ -7,7 +7,11 @@ NEW flagged supporting definition, see the unit-T4 provenance note),
 T4b (`canonicalOrderLEOne`, the concrete order-≤1 classifier, landed —
 see the unit-T4b provenance note for its walk-transcription layer).
 Later waves add T5 (T6 landed early with the T5 bound inline),
-and the wave-4 HARD constructors T7 (CEIL) and T8 (tail).
+and the wave-4 HARD constructor T7 (CEIL).
+T8 (tail) LANDED (`discV_tail_count`, the `DrainageImports.tail` constructor):
+it adds the corpus import `LeanUrat.MovesX.XF7` (M05 Lemma C's Lean count form
+`tailCountBound`, PROVED corpus, itself importing only MovesX modules — the
+value-side import graph stays acyclic).
 Import graph (BP_IV §0/§1.0 + §2 T-table deps): the counting vocabulary
 (`ClassifierSpec.decided/undec/env/dmass`, `Box`, `boxProj`,
 `canonical_stable`) is reused BY IMPORT from the corpus
@@ -26,6 +30,7 @@ import LeanUrat.MovesU.Defs
 import LeanUrat.MovesU.BridgeD9a_trueTypeDef
 import LeanUrat.MovesU.BridgeZp
 import LeanUrat.OM.NewtonPolygon
+import LeanUrat.MovesX.XF7
 import LeanUrat.Scaffold.ValueSide.KCount
 
 /-!

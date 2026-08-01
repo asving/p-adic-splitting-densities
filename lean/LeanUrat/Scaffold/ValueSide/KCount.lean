@@ -33,7 +33,12 @@ cardinality — the K10a clause `domainCount_eq` exposed as the theorem K10
 chains with K10b; + the constructor-side identification lemmas
 `card_domainProduct` / `card_domainProduct_finset`, `Nat.card_pi` at the
 genuine product of factor cells), K9 (`SmithStable`, the exported named
-hypothesis row per §2 — structure only, constructor proof HARD wave 4), K10
+hypothesis row per §2, PLUS the wave-4 constructor
+`smithStable_of_detDivisorRows` — O-10 §2 Lemma 2's ρ-separation transport:
+minor congruence `dvd_det_sub_det`, determinantal-divisor predicate
+`IsDetDivisor` with uniqueness + mod-p^τ transport `IsDetDivisor.of_congr`,
+telescoping `smithPartial`; non-vacuity gate `K9Gate.gate_smithStable` over a
+nonempty polydisc), K10
 partial (`sib_product_law_of_imageCount`, the K10b+K10c combine step with the
 missing K10b image law displayed as the binder `himg`; the verbatim
 `sib_product_law` display itself is BLOCKED — see below), K10b (the
@@ -1120,7 +1125,10 @@ structures until their dedicated constructor proofs land"), the named row
 `SmithStable` is transcribed VERBATIM from the §1.3 display — it is the
 field-displayed hypothesis K5 and K10 consume; K10's statement does not
 elaborate without it.  DEDUP(K9): when K9's constructor lands, keep a single
-copy — both must be character-identical to the §1.3 display. -/
+copy — both must be character-identical to the §1.3 display.  [Wave 4: the
+constructor `smithStable_of_detDivisorRows` has LANDED — see the K9 section
+at the end of this file; this named row stays the single carrier of the §1.3
+display.] -/
 
 /-- K9 (Lemma 2 half 2, HARD, wave 4): the Smith exponents are CONSTANT across
     the ρ-separated polydisc.  Until it lands: the named row `SmithStable F`
@@ -1574,5 +1582,236 @@ noncomputable def smithDataOfInjective {p n : ℕ} [Fact p.Prime]
   (smithData_exists Φ hΦ).some
 
 end K8b
+
+/-! ### K9 (BP_IV §2 K-table, wave 4; O-10 §2 Lemma 2 half 2): the `SmithStable`
+constructor — in-polydisc constancy of the Smith profile
+
+O-10 §2 Lemma 2's proof, transcribed: on the ρ-separated polydisc (h ≡ f mod
+p^τ coefficientwise, τ ≥ ρ + 1) every entry of Φ_h is ≡ the corresponding
+entry of Φ_f mod p^τ, hence every k×k minor satisfies minor(h) ≡ minor(f)
+mod p^τ (`dvd_det_sub_det`: the determinant transport of K7d's
+`dvd_prod_sub_prod` along the Leibniz expansion).  The k-th determinantal
+divisor d_k = v_p(gcd of all k×k minors) is encoded by the divisibility
+predicate `IsDetDivisor π A k d` (π^d divides every k×k minor, some k×k minor
+escapes π^(d+1)); it is FUNCTIONAL in d (`IsDetDivisor.unique`) and, strictly
+below the separation level, TRANSPORTS along entrywise congruence
+(`IsDetDivisor.of_congr`, d < τ) — the paper's "a minor attaining d_k has
+valuation < τ, so its valuation is preserved exactly", in both directions.
+Minors are indexed by ALL pairs of maps `r c : Fin k → Fin n`, not embeddings
+only: a repeating row/column choice has determinant 0, so it neither breaks
+the ∀ leg (everything divides 0) nor can serve as the ∃ witness — the
+predicate is extensionally the embedding-indexed one, without
+`Function.Embedding` plumbing.
+
+The constructor `smithStable_of_detDivisorRows` consumes PER-POINT rows only —
+no hypothesis relates two distinct polydisc points except `hcong`, the
+polydisc congruence itself (the DEFINITION of the ρ-separated polydisc, in
+the K7c `monicLiftEquiv` shape: coefficientwise p^τ-congruent factor tuples
+have entrywise p^τ-congruent Sylvester block matrices):
+* `hbase`/`hpoly`: at each single point, the partial sums e₁ + ⋯ + e_k of its
+  OWN `smithExp` are determinantal divisors of its OWN matrix Φ — the
+  standard determinantal-divisor identity for the Smith normal form (O-10 §1,
+  classical background; deriving this row from K8b's `SmithData` via
+  Cauchy–Binet is a separate follow-up unit, not part of Lemma 2's
+  mechanism);
+* `hρ`: Σᵢ eᵢ(base) ≤ ρ — the resultant bound (O-10 §2 Lemma 1:
+  v_p(det Φ_f) = Σ_{i<j} v_p(Res(h_i, h_j)) = ρ, the "resultant lower
+  bounds" leg), which with the carrier clause `τ_sep : ρ + 1 ≤ τ` puts every
+  d_k(base) strictly below the congruence level τ.
+The CONSTANCY conclusion — the cross-point equality of `smithExp` — is
+PROVED, not assumed: d_k(h) = d_k(base) for every k ≤ n by transport +
+uniqueness, and the exponents are the consecutive differences
+(`smithPartial_succ` telescoping).  Non-vacuity gate:
+`K9Gate.gate_smithStable` fires the constructor at a concrete carrier with a
+NONEMPTY polydisc. -/
+
+section K9constructor
+
+variable {R : Type*} [CommRing R]
+
+/-- K9 minor-congruence engine (O-10 §2 Lemma 2, step 1): entrywise congruent
+    matrices have congruent determinants — `d ∣ A i j − B i j` everywhere ⇒
+    `d ∣ det A − det B` (Leibniz expansion; K7d's `dvd_prod_sub_prod` per
+    permutation term). -/
+theorem dvd_det_sub_det {k : ℕ} {d : R} {A B : Matrix (Fin k) (Fin k) R}
+    (hcong : ∀ i j, d ∣ A i j - B i j) : d ∣ A.det - B.det := by
+  rw [Matrix.det_apply', Matrix.det_apply', ← Finset.sum_sub_distrib]
+  refine Finset.dvd_sum fun σ _ => ?_
+  rw [← mul_sub]
+  exact (dvd_prod_sub_prod Finset.univ _ _ fun i _ => hcong (σ i) i).mul_left _
+
+/-- K9 determinantal-divisor predicate: `π^d` divides EVERY k×k minor of `A`
+    and SOME k×k minor escapes `π^(d+1)` — the divisibility encoding of
+    d_k(A) = v_p(gcd of the k×k minors).  Minors are indexed by all
+    row/column choice maps (see the section header: extensionally equivalent
+    to embedding-indexed minors, since repeating choices give det 0). -/
+def IsDetDivisor {n : ℕ} (π : R) (A : Matrix (Fin n) (Fin n) R)
+    (k d : ℕ) : Prop :=
+  (∀ r c : Fin k → Fin n, π ^ d ∣ (A.submatrix r c).det) ∧
+    ∃ r c : Fin k → Fin n, ¬ π ^ (d + 1) ∣ (A.submatrix r c).det
+
+/-- The determinantal-divisor predicate is antisymmetric in `d`: if `d' < d`
+    then `d'`'s escaping minor would be caught by `d`'s ∀ leg. -/
+theorem IsDetDivisor.le {n : ℕ} {π : R} {A : Matrix (Fin n) (Fin n) R}
+    {k d d' : ℕ} (h : IsDetDivisor π A k d) (h' : IsDetDivisor π A k d') :
+    d ≤ d' := by
+  by_contra hlt
+  obtain ⟨r, c, hrc⟩ := h'.2
+  exact hrc ((pow_dvd_pow π (by omega)).trans (h.1 r c))
+
+/-- The determinantal-divisor predicate is functional in `d`. -/
+theorem IsDetDivisor.unique {n : ℕ} {π : R} {A : Matrix (Fin n) (Fin n) R}
+    {k d d' : ℕ} (h : IsDetDivisor π A k d) (h' : IsDetDivisor π A k d') :
+    d = d' :=
+  le_antisymm (h.le h') (h'.le h)
+
+/-- K9 ρ-separation transport (O-10 §2 Lemma 2, the mechanism): strictly below
+    the congruence level (`d < τ`), the determinantal-divisor predicate
+    transports along entrywise congruence mod `π^τ` — divisibility of minors
+    crosses over (`d ≤ τ`), and the escaping minor still escapes
+    (`d + 1 ≤ τ`), in both directions. -/
+theorem IsDetDivisor.of_congr {n : ℕ} {π : R} {A B : Matrix (Fin n) (Fin n) R}
+    {τ k d : ℕ} (hcong : ∀ i j, π ^ τ ∣ A i j - B i j)
+    (hB : IsDetDivisor π B k d) (hdτ : d < τ) : IsDetDivisor π A k d := by
+  have hmin : ∀ r c : Fin k → Fin n,
+      π ^ τ ∣ (A.submatrix r c).det - (B.submatrix r c).det := fun r c =>
+    dvd_det_sub_det fun i j => hcong (r i) (c j)
+  constructor
+  · intro r c
+    have hsplit : (A.submatrix r c).det
+        = ((A.submatrix r c).det - (B.submatrix r c).det)
+          + (B.submatrix r c).det := by ring
+    rw [hsplit]
+    exact dvd_add ((pow_dvd_pow π hdτ.le).trans (hmin r c)) (hB.1 r c)
+  · obtain ⟨r, c, hrc⟩ := hB.2
+    refine ⟨r, c, fun hdvd => hrc ?_⟩
+    have hsplit : (B.submatrix r c).det
+        = (A.submatrix r c).det
+          - ((A.submatrix r c).det - (B.submatrix r c).det) := by ring
+    rw [hsplit]
+    exact dvd_sub hdvd ((pow_dvd_pow π (Nat.succ_le_of_lt hdτ)).trans (hmin r c))
+
+/-- K9 partial-sum ladder: e₁ + ⋯ + e_k of a `Fin n`-indexed exponent vector
+    (the candidate k-th determinantal divisor). -/
+def smithPartial {n : ℕ} (e : Fin n → ℕ) (k : ℕ) : ℕ :=
+  ∑ i ∈ Finset.univ.filter (fun i : Fin n => (i : ℕ) < k), e i
+
+theorem smithPartial_succ {n : ℕ} (e : Fin n → ℕ) (i : Fin n) :
+    smithPartial e ((i : ℕ) + 1) = smithPartial e (i : ℕ) + e i := by
+  have hins : Finset.univ.filter (fun j : Fin n => (j : ℕ) < (i : ℕ) + 1)
+      = insert i (Finset.univ.filter (fun j : Fin n => (j : ℕ) < (i : ℕ))) := by
+    ext j
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_insert,
+      ← Fin.val_inj]
+    omega
+  have hnot : i ∉ Finset.univ.filter (fun j : Fin n => (j : ℕ) < (i : ℕ)) := by
+    simp
+  unfold smithPartial
+  rw [hins, Finset.sum_insert hnot, add_comm]
+
+theorem smithPartial_le {n : ℕ} (e : Fin n → ℕ) (k : ℕ) :
+    smithPartial e k ≤ ∑ i, e i :=
+  Finset.sum_le_sum_of_subset (Finset.filter_subset _ _)
+
+/-- K9 (THE CONSTRUCTOR, O-10 §2 Lemma 2 half 2): `SmithStable` from per-point
+    determinantal-divisor rows + the polydisc congruence + the resultant
+    bound.  Row-by-row provenance in the section header; no hypothesis
+    relates two distinct polydisc points except the congruence `hcong`
+    itself.  Proof: for each `k ≤ n`, `d_k(base) ≤ Σᵢ eᵢ(base) ≤ ρ < τ`
+    (`hρ` + the carrier's `τ_sep`), so `IsDetDivisor.of_congr` transports the
+    base row to `Φ h`, where `IsDetDivisor.unique` pins `d_k(h) = d_k(base)`;
+    the exponents are the consecutive differences. -/
+theorem smithStable_of_detDivisorRows {p n N : ℕ} [Fact p.Prime]
+    (F : MulFiberData p n N)
+    (Φ : F.FactorPoint → Matrix (Fin n) (Fin n) ℤ_[p])
+    (hcong : ∀ h ∈ F.polydisc, ∀ i j,
+      (p : ℤ_[p]) ^ F.τ ∣ Φ h i j - Φ F.base i j)
+    (hbase : ∀ k ≤ n, IsDetDivisor (p : ℤ_[p]) (Φ F.base) k
+      (smithPartial (F.smithExp F.base) k))
+    (hpoly : ∀ h ∈ F.polydisc, ∀ k ≤ n, IsDetDivisor (p : ℤ_[p]) (Φ h) k
+      (smithPartial (F.smithExp h) k))
+    (hρ : ∑ i, F.smithExp F.base i ≤ F.ρ) :
+    SmithStable F := by
+  refine ⟨fun h hmem => ?_⟩
+  have key : ∀ k, k ≤ n →
+      smithPartial (F.smithExp h) k = smithPartial (F.smithExp F.base) k := by
+    intro k hk
+    have hlt : smithPartial (F.smithExp F.base) k < F.τ :=
+      lt_of_le_of_lt (le_trans (smithPartial_le _ _) hρ)
+        (Nat.lt_of_succ_le F.τ_sep)
+    exact (hpoly h hmem k hk).unique
+      ((hbase k hk).of_congr (hcong h hmem) hlt)
+  funext i
+  have h1 := key (i : ℕ) (le_of_lt i.isLt)
+  have h2 := key ((i : ℕ) + 1) (Nat.succ_le_of_lt i.isLt)
+  rw [smithPartial_succ, smithPartial_succ, h1] at h2
+  omega
+
+end K9constructor
+
+/-! ### K9 gate: non-vacuity of the constructor's hypothesis package
+
+The constructor fires at a concrete carrier with a NONEMPTY polydisc — every
+hypothesis row discharged by computation (Φ ≡ the 1×1 identity across the
+polydisc, profile ≡ 0, ρ = 0 < τ = 1), so the hypothesis package is
+satisfiable and the constructor is not vacuously conditional. -/
+
+namespace K9Gate
+
+/-- K9 gate carrier: p = 2, n = 1, N = 1, factor space `Bool` with base
+    `false` and NONEMPTY polydisc `{true}` — the constancy conclusion
+    quantifies over a genuinely distinct point. -/
+def gateMFD : MulFiberData 2 1 1 where
+  τ := 1
+  ρ := 0
+  τ_sep := by omega
+  FactorPoint := Bool
+  instFactorPoint := inferInstance
+  base := false
+  polydisc := {true}
+  Fiber := Fin 1
+  instFiber := inferInstance
+  FiberNonempty := True
+  SolutionSet := Fin 1
+  instSolutionSet := inferInstance
+  smithExp := fun _ _ => 0
+
+/-- Every k×k minor of the 1×1 identity over `ℤ_[p]` (k ≤ 1) is 1: the k = 0
+    minor is the empty determinant, the k = 1 minor is the (0,0) entry — so
+    0 is the k-th determinantal divisor. -/
+theorem isDetDivisor_one_of_le {p : ℕ} [Fact p.Prime] {k : ℕ} (hk : k ≤ 1) :
+    IsDetDivisor (p : ℤ_[p]) (1 : Matrix (Fin 1) (Fin 1) ℤ_[p]) k 0 := by
+  have hdet : ∀ r c : Fin k → Fin 1,
+      ((1 : Matrix (Fin 1) (Fin 1) ℤ_[p]).submatrix r c).det = 1 := by
+    rcases Nat.le_one_iff_eq_zero_or_eq_one.mp hk with rfl | rfl
+    · intro r c
+      exact Matrix.det_fin_zero
+    · intro r c
+      rw [Matrix.det_fin_one, Matrix.submatrix_apply,
+        Subsingleton.elim (r 0) (c 0), Matrix.one_apply_eq]
+  refine ⟨fun r c => ?_, fun _ => 0, fun _ => 0, ?_⟩
+  · rw [hdet r c, pow_zero]
+  · rw [hdet, zero_add, pow_one]
+    exact PadicInt.prime_p.not_dvd_one
+
+/-- K9 gate: the constructor FIRES — a compiled `SmithStable` instance over a
+    nonempty polydisc. -/
+theorem gate_smithStable : SmithStable gateMFD := by
+  refine smithStable_of_detDivisorRows gateMFD (fun _ => 1) ?_ ?_ ?_ ?_
+  · intro h _ i j
+    simp
+  · intro k hk
+    have h0 : smithPartial (gateMFD.smithExp gateMFD.base) k = 0 := by
+      simp [smithPartial, gateMFD]
+    rw [h0]
+    exact isDetDivisor_one_of_le hk
+  · intro h _ k hk
+    have h0 : smithPartial (gateMFD.smithExp h) k = 0 := by
+      simp [smithPartial, gateMFD]
+    rw [h0]
+    exact isDetDivisor_one_of_le hk
+  · simp [gateMFD]
+
+end K9Gate
 
 end LeanUrat.Scaffold

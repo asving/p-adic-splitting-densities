@@ -850,4 +850,230 @@ theorem sideReads_r2_transfer (ν : Node p F) (B B' : ℕ → Polynomial ℤ_[p]
 
 end R2Transfer
 
+/-! ## Unit III-T9 — Theorem 1 transfer, (R5) vertex clause (O-1thr §4 (R5))
+
+Src: O1thr §4, the (R5) bullet of the Theorem 1 proof
+(`lean/notes/openmath/O1thr_phaseB_verifybrief_rev4.md` lines 913–924).
+Corpus rendering: per BP §3.2 "the clause list Theorem 1 transfers IS
+`SideReads`'s" — the (R5) vertex read-off is `MovesJ.SideReads` clause (vi)
+(`HC2/Defs.lean`), copied VERBATIM below as `SideClauseR5`, with the
+definitional projection `sideReads_r5` as the tie (III-T7's convention).
+
+The §1.6 code block carries NO display line for III-T9 (only III-T10's
+assembled `read_locality`); the unit-table display — "(†′) rederived at
+Φ_{i+1}; DEV/POS verbatim at the child key; R-LOC at vtx" — is completed
+from the source of record, the same completion-ledger convention as
+III-T4/T5/T7/T8:
+
+* Source (R5) transfer: "Let (C_j), (C′_j) be the Φ_{i+1}-adic developments
+  of f, f′; by DEV (applied with Φ = Φ_{i+1}), C_j ≡ C′_j (mod p^L), so by
+  POS  w_i(C_j − C′_j) ≥ L·E_i > I_i ≥ vhtx_i  (†′) — the Φ_{i+1}-analogue
+  of (†), rederived rather than reused ...  Since w_i(C_{μ_i}) = vhtx_i ≤
+  I_i < L·E_i, ultrametricity and (†′) give w_i(C′_{μ_i}) = vhtx_i exactly,
+  and R-LOC (w_i(C_μ − C′_μ) > vhtx_i) transfers the height-vhtx_i
+  residual; the recorded vertex value vtx_i is read identically."
+* DEV/POS VERBATIM AT THE CHILD KEY = `childDev_pos`: III-T3's
+  `dev_congr_zp` instantiated at `Φnext`, composed with III-T4's
+  `stage_pos` (its three law rows riding along verbatim) — (†′)'s lower
+  half.  (†) itself (III-T6 `dagger`, the Φ_i-development display) is NOT
+  invoked — the source's own "rederived rather than borrowed" (rev-4
+  changelog line 21).
+* The heights stay measured in `ν.σ.w` (= w_i, the CURRENT frame): `Φnext`
+  enters only as the development key, never through w_{i+1} — (R5)'s own
+  prescription ("The valuation and grading are those of w_i ... Φ_{i+1}
+  enters only as the development key, never through w_{i+1}").  The HK-52
+  e′-stretch seam (`ν_{i+1}.e`; BP §3.3 fence) is therefore never crossed:
+  no `σ_{i+1}.w` occurs in any statement below, so no `e′ = 1` hypothesis
+  is needed — the fence demands displayed `e′ = 1` wherever the seam IS
+  crossed.
+* (†′)'s upper leg — the vertex slot is nonzero and its height sits
+  strictly below the perturbation floor L·E_i (w_i(C_μ) = vhtx ≤ I_i <
+  L·E_i: law (N4) + Lemma CEIL) — enters as the NAMED HYPOTHESIS ROWS
+  `hvne`/`hvlt`, exactly III-T7's `hdag` discipline: III-T10/T11 discharge
+  them from the σV-vertex law (`HK11a.sigmaV_vertexLaw`, whose first two
+  conclusions are literally `B μ ≠ 0` and the vertex-height pin — BP §3.1:
+  "the (R5) vertex-clause vocabulary IS this law's", with its carried trio
+  hσL/hsteep/species displayed THERE) + `readCeil_strict_middle`;
+  `childDev_dag` below assembles the rows' discharge shape.  Nothing is
+  discharged by fiat here.
+* R-LOC at vtx = III-T5's `rloc` at `β := ν.σ.w (C_μ)` — the corpus digit
+  is read at the coefficient's OWN weight (`σ.R` normalizes at `w(B)`;
+  the rev-2 restatement ledger, III-T5 header), so the recorded-height
+  binder `vhtx` of the source display is realized as `w(C_μ)` itself. -/
+
+section R5Transfer
+
+open LeanUrat.MovesC LeanUrat.MovesJ
+
+variable {F : Type*} [Field F] [Finite F]
+
+/-- **The (R5) vertex read-off clause** — `MovesJ.SideReads` clause (vi),
+VERBATIM (`HC2/Defs.lean`): at the read's window vertex — slot `μ` of the
+development in the DESIGNATED NEXT key — the actual frame-`i` residual digit
+IS the recorded transported vertex value.  Named so III-T10 can consume the
+per-clause transfer; `sideReads_r5` is the definitional tie. -/
+def SideClauseR5 (ν : Node p F) (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ)
+    (Φnext : Polynomial ℤ_[p]) : Prop :=
+  ∀ (Bh : ℕ → Polynomial ℤ_[p]) (Nh : ℕ),
+    Moves.IsDevelopment Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) Bh Nh →
+    ν.σ.digPrime ν.zbar (Bh ν.μ) = ν.vtx
+
+/-- The definitional projection: `SideClauseR5` IS `SideReads`'s clause (vi). -/
+theorem sideReads_r5 (ν : Node p F) (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ)
+    (Φnext : Polynomial ℤ_[p]) (h : SideReads ν B Nd Φnext) :
+    SideClauseR5 ν B Nd Φnext :=
+  h.2.2.2.2.2
+
+/-- **(†′) lower half — Lemma DEV + Lemma POS verbatim at the child key** (the
+source's "rederived rather than reused" step): if `g ≡ g′ (mod p^L)`
+coefficientwise, every differing slot of their `Φnext`-adic developments has
+weight ≥ L·E in the CURRENT frame — III-T3 (`dev_congr_zp`) instantiated at
+the monic child key, composed with III-T4 (`stage_pos`), nothing else. -/
+theorem childDev_pos (σ : Moves.Stage p F) {Φnext : Polynomial ℤ_[p]}
+    (hm : Φnext.Monic) (hd : 1 ≤ Φnext.natDegree) (E : ℤ) (L : ℕ)
+    (hpos : ∀ C : Polynomial ℤ_[p], C ≠ 0 → 0 ≤ σ.w C)
+    (hshift : ∀ C : Polynomial ℤ_[p], C ≠ 0 →
+      σ.w (Polynomial.C (p : ℤ_[p]) * C) = E + σ.w C)
+    (hult : ∀ f g : Polynomial ℤ_[p], f ≠ 0 → g ≠ 0 → f + g ≠ 0 →
+      min (σ.w f) (σ.w g) ≤ σ.w (f + g))
+    {g g' : Polynomial ℤ_[p]}
+    (hcong : ∀ k, (g - g').coeff k ∈ (Ideal.span {(p : ℤ_[p])}) ^ L)
+    (j : ℕ) (hne : devCoeff Φnext g j ≠ devCoeff Φnext g' j) :
+    (L : ℤ) * E ≤ σ.w (devCoeff Φnext g j - devCoeff Φnext g' j) :=
+  stage_pos σ E L hpos hshift hult hne (dev_congr_zp Φnext hm hd L hcong j)
+
+/-- **(†′) assembled at a slot** (the source display "w_i(C_μ) = vhtx ≤ I_i <
+L·E_i, ultrametricity and (†′)"): DEV/POS at the child key plus the
+slot-height ceiling `hvhtx` (where law (N4)/Lemma CEIL — the σV-vertex-law
+supply, III-T10/T11's leg — lands) yield III-T9's `hvlt` row shape. -/
+theorem childDev_dag (σ : Moves.Stage p F) {Φnext : Polynomial ℤ_[p]}
+    (hm : Φnext.Monic) (hd : 1 ≤ Φnext.natDegree) (E : ℤ) (L : ℕ)
+    (hpos : ∀ C : Polynomial ℤ_[p], C ≠ 0 → 0 ≤ σ.w C)
+    (hshift : ∀ C : Polynomial ℤ_[p], C ≠ 0 →
+      σ.w (Polynomial.C (p : ℤ_[p]) * C) = E + σ.w C)
+    (hult : ∀ f g : Polynomial ℤ_[p], f ≠ 0 → g ≠ 0 → f + g ≠ 0 →
+      min (σ.w f) (σ.w g) ≤ σ.w (f + g))
+    {g g' : Polynomial ℤ_[p]}
+    (hcong : ∀ k, (g - g').coeff k ∈ (Ideal.span {(p : ℤ_[p])}) ^ L)
+    (j : ℕ) (hvhtx : σ.w (devCoeff Φnext g j) < (L : ℤ) * E) :
+    devCoeff Φnext g j ≠ devCoeff Φnext g' j →
+      σ.w (devCoeff Φnext g j) < σ.w (devCoeff Φnext g j - devCoeff Φnext g' j) :=
+  fun hne =>
+    lt_of_lt_of_le hvhtx (childDev_pos σ hm hd E L hpos hshift hult hcong j hne)
+
+/-- **Unit III-T9 (transfer direction): Theorem 1 transfer, (R5) vertex
+clause** (O1thr §4 (R5); BP Wave 3 row III-T9).  Under the named rows `hvne`
+(the vertex slot of `B`'s child-key development is nonzero — the σV-vertex
+law's first leg) and `hvlt` (the (†′) height gap at the vertex: wherever the
+two canonical vertex slots differ, the perturbation weight strictly exceeds
+the vertex's own height — `childDev_dag`'s conclusion), the (R5) clause
+transfers from `B` to `B′`.  Mechanism: Fact-A uniqueness folds any
+development onto the canonical `devCoeff` slots (III-G1 bridge), then R-LOC
+(`rloc`, III-T5) at `β := ν.σ.w (C_μ)` transfers the vertex digit. -/
+theorem sideClauseR5_transfer (ν : Node p F) (B B' : ℕ → Polynomial ℤ_[p])
+    (Nd Nd' : ℕ) (Φnext : Polynomial ℤ_[p])
+    (hm : Φnext.Monic) (hd : 1 ≤ Φnext.natDegree)
+    (hvne : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ ≠ 0)
+    (hvlt : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+        ≠ devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ →
+      ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ)
+        < ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+            - devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ))
+    (h5 : SideClauseR5 ν B Nd Φnext) : SideClauseR5 ν B' Nd' Φnext := by
+  intro Bh' Nh' hdev'
+  -- Fact-A uniqueness: the given development's vertex slot is the canonical one
+  have hslot : Bh' ν.μ
+      = devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ :=
+    devCoeff_eq_of_isDevelopment hm Nh' _ Bh' hdev' ν.μ
+  -- the clause for B at the canonical child-key development
+  have h1 : ν.σ.digPrime ν.zbar
+      (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ) = ν.vtx :=
+    h5 (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j))
+      ((∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j).natDegree + 1)
+      (isDevelopment_devCoeff hm hd _)
+  by_cases hEq : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+      = devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ
+  · rw [hslot, ← hEq]
+    exact h1
+  · -- R-LOC at the vertex: residuals at the vertex's own height agree
+    have hlt := hvlt hEq
+    have hC'ne : devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ
+        ≠ 0 := by
+      intro h0
+      rw [h0, sub_zero] at hlt
+      exact lt_irrefl _ hlt
+    have hR := rloc ν.σ hvne hC'ne rfl (fun _ => hlt)
+    have hdig : ν.σ.digPrime ν.zbar
+          (devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ)
+        = ν.σ.digPrime ν.zbar
+          (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ) := by
+      unfold Moves.Stage.digPrime
+      rw [hR]
+    rw [hslot, hdig]
+    exact h1
+
+/-- **Unit III-T9: the "threshold ⟺" form.**  The mirrored rows are DERIVED:
+under `hvne`/`hvlt`, ultrametricity pins `w(C′_μ) = w(C_μ)` (`w_eq_of_sub_gt`)
+and `w` is even under negation (`ResVal.w_neg`), so the (R5) clause transfers
+BOTH ways — the per-clause face of Theorem 1's "the converse is symmetric"
+(O1thr §4). -/
+theorem sideClauseR5_transfer_iff (ν : Node p F) (B B' : ℕ → Polynomial ℤ_[p])
+    (Nd Nd' : ℕ) (Φnext : Polynomial ℤ_[p])
+    (hm : Φnext.Monic) (hd : 1 ≤ Φnext.natDegree)
+    (hvne : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ ≠ 0)
+    (hvlt : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+        ≠ devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ →
+      ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ)
+        < ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+            - devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ)) :
+    SideClauseR5 ν B Nd Φnext ↔ SideClauseR5 ν B' Nd' Φnext := by
+  constructor
+  · exact sideClauseR5_transfer ν B B' Nd Nd' Φnext hm hd hvne hvlt
+  · by_cases hEq : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+        = devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ
+    · -- degenerate: equal vertex slots — the mirrored rows are B's own
+      refine sideClauseR5_transfer ν B' B Nd' Nd Φnext hm hd ?_ ?_
+      · rw [← hEq]; exact hvne
+      · intro hne'
+        exact absurd hEq.symm hne'
+    · -- differing vertex slots: derive the mirrored rows
+      have hlt := hvlt hEq
+      have hd0 : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+          - devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ ≠ 0 :=
+        sub_ne_zero.mpr hEq
+      have hflip : devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ
+          - devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+          = -(devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+              - devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ) := by
+        ring
+      have hwflip :
+          ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ
+            - devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ)
+          = ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+            - devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ) := by
+        rw [hflip, Moves.ResVal.w_neg ν.σ _ hd0]
+      obtain ⟨hC'ne, hwEq⟩ := w_eq_of_sub_gt ν.σ hvne
+        (by rw [hflip]; exact neg_ne_zero.mpr hd0) (by rw [hwflip]; exact hlt)
+      refine sideClauseR5_transfer ν B' B Nd' Nd Φnext hm hd hC'ne ?_
+      intro _
+      rw [hwEq, hwflip]
+      exact hlt
+
+/-- Consumption wrapper for III-T10: the (R5) clause of a full `SideReads`
+bundle on `B` transfers to `B′` under the (†′) vertex rows. -/
+theorem sideReads_r5_transfer (ν : Node p F) (B B' : ℕ → Polynomial ℤ_[p])
+    (Nd Nd' : ℕ) (Φnext : Polynomial ℤ_[p])
+    (hm : Φnext.Monic) (hd : 1 ≤ Φnext.natDegree)
+    (hvne : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ ≠ 0)
+    (hvlt : devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+        ≠ devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ →
+      ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ)
+        < ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j) ν.μ
+            - devCoeff Φnext (∑ j ∈ Finset.range Nd', B' j * ν.σ.Φ ^ j) ν.μ))
+    (h : SideReads ν B Nd Φnext) : SideClauseR5 ν B' Nd' Φnext :=
+  sideClauseR5_transfer ν B B' Nd Nd' Φnext hm hd hvne hvlt
+    (sideReads_r5 ν B Nd Φnext h)
+
+end R5Transfer
+
 end LeanUrat.Scaffold.DictIII
