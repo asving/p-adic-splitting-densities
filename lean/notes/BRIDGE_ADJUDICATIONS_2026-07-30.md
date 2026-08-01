@@ -2002,3 +2002,12 @@ discipline. FIX: division_workflow.js now auto-BLOCKS doc-edit units
 (docs/ / ROOT_ASSEMBLY / PROJECT_STATE targets) and routes them to the
 dedicated revision workflows; D12R-U4 joins the r14 queue (with VC15's 4
 advisories + the (NSF-KEY) discharge + H4's ROOT-sync draft). Queue -> H8.
+
+## H8 FAN-OUT: 11/11 — THE CLEANEST FLEET (2026-08-05)
+(K-CUT) fully developed in Lean: CutDefs, first-entrance calculus,
+abstract Lemma 3.3, ownership partition, count-form regroup, residual
+seam, TOY GATE PASSING, extraction layer, M04-consumer bridge; PLUS the
+charge-(vi) documentary adjudication and the ROOT row re-scope SPEC
+(orchestrator-owned — goes to the r14 batch, not edited directly).
+(H8) is now a RATIFICATION-AWAY from discharge: queue its hostile pass
+in the follow-up cycle. Queue -> H7. Synthesis pass 3 running in parallel.
