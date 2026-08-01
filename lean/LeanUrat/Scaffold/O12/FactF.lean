@@ -12,7 +12,11 @@ II-F4 (`X_pow_card_prod_irreducibles` + fenced sub-lemmas II-F4a/b/c) — Fact
 F(i) factorization: X^{q^D} − X = ∏ monic irreducibles of degree ∣ D,
 squarefree (see its transcription note: the blueprint display is elided);
 II-F5 (`card_irred_degree_sum`) — Fact F(i) degree count q^D = Σ_{δ|D} δ·I_δ
-(see its transcription note: the blueprint display is elided).
+(see its transcription note: the blueprint display is elided);
+II-F8 (**BLOCKED — see its section note**): the intended Fact F(ii)
+`card_pattern_eq` is REFUTED against the landed II-F3 `patternOf`
+(compiled refutation artifacts `patternOf_ne_atom_one_two`,
+`patternOf_X_sq`, `Npoly_atom_one_two`, `card_pattern_eq_refuted`).
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.Core
@@ -438,5 +442,127 @@ theorem card_monicIrreducible_eq
   rw [hcard, heval, hmob, inv_mul_cancel_left₀ hD0]
 
 end FactFiCount
+
+/-! ## Unit II-F8 — Fact F(ii) `card_pattern_eq`: BLOCKED (intended statement
+refuted against the landed `patternOf`)
+
+TRANSCRIPTION NOTE (II-F8). BP_II.md §1.7 displays this unit's statement as
+`theorem card_pattern_eq ...` — ELIDED like II-F4/II-F5 (no verbatim Lean text
+to transcribe); the verbatim docstring is "**Fact F(ii)**: (Npoly ρ).eval q =
+#{monic h : patternOf h = ρ, deg = total}". Two further assignment defects are
+on record: the §2 preamble marks II-F8 as a coordination MILESTONE whose lead
+split (named helper declarations + statement-fence review) was not performed,
+and the dependency II-F7 `distinct_choice_count` has not landed anywhere in
+the corpus (`MovesU/O5CountingB.lean`, the candidate flagged in §3, contains
+checksum-bijection counting lemmas, not the (M)_r/∏c_m! count).
+
+BLOCKED(II-F8): every faithful fixing of the elided statement is FALSE
+against the landed (statement-fenced) II-F3 `patternOf`. The math source of
+record (Fact F, `lean/notes/openmath/O12_phaseB_verifybrief_rev4.md` §2.3 and
+§3) defines the pattern with ONE atom (D, m) per DISTINCT monic irreducible
+factor — c_{D,m} counts distinct factors ("for each degree D, a choice of r_D
+DISTINCT monic irreducibles ... divide by ∏_m c_{D,m}!"). The landed
+`patternOf` (faithful to the blueprint's own displayed body, which maps over
+`normalizedFactors h` WITH multiplicity) instead emits m copies of the atom
+(D, m) for a factor of multiplicity m — its own bridge `patternOf_map_val`
+certifies this. Concretely, `patternOf (X^2) = {(1,2), (1,2)}`, not the
+intended `{(1,2)}` (compiled below as `patternOf_X_sq`). Hence:
+
+* NO polynomial has the singleton pattern {(1,2)} (`patternOf_ne_atom_one_two`
+  below): an atom with multiplicity component 2 can only arise doubled. Yet
+  `(Npoly {(1,2)}).eval q = q` (`Npoly_atom_one_two` below). So the intended
+  equality fails at ρ₀ = {(1,2)}, total degree 2, over EVERY finite field —
+  compiled as `card_pattern_eq_refuted`.
+* No "realizable ρ" restriction rescues the statement: for the realized
+  doubled pattern ρ₁ = patternOf (X²) = {(1,2),(1,2)} the polynomial side is
+  (Npoly ρ₁).eval q = q(q−1)/2 (degreeCount = 2, so a falling factorial of
+  length 2, ∏ c! = 2!) while the true count of monic h with that landed
+  pattern is q (exactly the h = f², f monic linear) — mismatch for every
+  q ≥ 2. (Arithmetic recorded here; ρ₀ above is the compiled refutation.)
+
+REPAIR PROPOSAL (requires statement-fence sign-off on II-F3 + blueprint
+amendment — outside this unit's authority): dedup the factor multiset before
+reading off atoms,
+  `patternOf h := (UniqueFactorizationMonoid.normalizedFactors h).dedup
+     .attach.map (fun f => (⟨f.1.natDegree, _⟩, ⟨factorization h f.1, _⟩))`
+with the positivity witnesses transported along `Multiset.mem_dedup`. Under
+that repair the definition matches the source-of-record semantics and Fact
+F(ii)/(iii) and (T1) become the intended claims; `patternOf_smul_unit` and
+`patternOf_map_val` (II-F3) survive with one-line adjustments. II-F8 (and
+II-F9, II-T1, II-T5 downstream) should be reassigned only after the repair
+lands and the milestone is split per the §2 preamble. -/
+
+section FactFiiBlocked
+
+attribute [local instance] Classical.decEq
+
+/-- BLOCKED(II-F8) artifact 1: under the landed `patternOf`, NO polynomial has
+the singleton pattern {(1,2)} — a singleton pattern forces a single normalized
+factor, whose multiplicity is then 1, not 2. (Intended semantics would realize
+{(1,2)} by any h = f² with f monic irreducible of degree 1.) -/
+theorem patternOf_ne_atom_one_two {F : Type*} [Field F] (h : Polynomial F) :
+    patternOf h ≠ ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)) := by
+  intro heq
+  have hmap := patternOf_map_val h
+  rw [heq, Multiset.map_singleton] at hmap
+  obtain ⟨g, hnf, hval⟩ := Multiset.map_eq_singleton.mp hmap.symm
+  have hcount : factorization h g = 1 := by
+    rw [factorization_eq_count, hnf, Multiset.count_singleton_self]
+  have h2 : factorization h g = 2 := by
+    have := congrArg Prod.snd hval
+    simpa using this
+  omega
+
+/-- BLOCKED(II-F8) artifact 2: the root cause, realized — the landed
+`patternOf` gives X² the DOUBLED atom multiset {(1,2),(1,2)}, where the
+source-of-record pattern is {(1,2)} (one atom per distinct factor). -/
+theorem patternOf_X_sq (F : Type*) [Field F] :
+    patternOf ((Polynomial.X : Polynomial F) ^ 2)
+      = ({((1 : ℕ+), (2 : ℕ+)), ((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)) := by
+  have hnf : UniqueFactorizationMonoid.normalizedFactors
+      ((Polynomial.X : Polynomial F) ^ 2) = {Polynomial.X, Polynomial.X} := by
+    rw [UniqueFactorizationMonoid.normalizedFactors_pow,
+      UniqueFactorizationMonoid.normalizedFactors_irreducible Polynomial.irreducible_X,
+      Polynomial.monic_X.normalize_eq_self]
+    rfl
+  have hfac : factorization ((Polynomial.X : Polynomial F) ^ 2) Polynomial.X = 2 := by
+    rw [factorization_eq_count, hnf]
+    simp
+  have hinj : Function.Injective
+      (fun x : ℕ+ × ℕ+ => ((x.1 : ℕ), (x.2 : ℕ))) := by
+    rintro ⟨a, b⟩ ⟨c, d⟩ hx
+    simp only [Prod.mk.injEq] at hx ⊢
+    exact ⟨PNat.coe_injective hx.1, PNat.coe_injective hx.2⟩
+  apply Multiset.map_injective hinj
+  rw [patternOf_map_val, hnf]
+  simp [hfac]
+
+/-- BLOCKED(II-F8) artifact 3: the polynomial side at ρ₀ = {(1,2)}:
+`Npoly ρ₀ = Mpoly 1 = X` (one degree-1 supply, falling factorial of length 1,
+trivial multiplicity factorial), so its evaluation is the identity. -/
+theorem Npoly_atom_one_two (x : ℚ) :
+    (Npoly ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))).eval x = x := by
+  simp [Npoly, patternFactor, fallingFac, Mpoly, degreeCount, multiplicityCount,
+    Multiset.filter_singleton, Nat.divisors_one]
+
+/-- **BLOCKED(II-F8) refutation**: the intended Fact F(ii) equality
+"(Npoly ρ).eval q = #{monic h : patternOf h = ρ, deg = total}" (BP_II §1.7,
+elided display) is FALSE against the landed `patternOf`, at ρ₀ = {(1,2)}
+(total degree 1·2 = 2), over EVERY finite field: the left side is
+q = Fintype.card F ≥ 2 and the right side counts the empty set. -/
+theorem card_pattern_eq_refuted (F : Type*) [Field F] [Fintype F] :
+    ¬ ((Npoly ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))).eval
+          (Fintype.card F : ℚ)
+        = (Nat.card {h : Polynomial F // h.Monic ∧
+            patternOf h = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)) ∧
+            h.natDegree = 2} : ℚ)) := by
+  haveI : IsEmpty {h : Polynomial F // h.Monic ∧
+      patternOf h = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)) ∧
+      h.natDegree = 2} :=
+    ⟨fun ⟨h, _, hpat, _⟩ => patternOf_ne_atom_one_two h hpat⟩
+  rw [Npoly_atom_one_two, Nat.card_of_isEmpty]
+  exact_mod_cast Fintype.card_ne_zero
+
+end FactFiiBlocked
 
 end LeanUrat.Scaffold

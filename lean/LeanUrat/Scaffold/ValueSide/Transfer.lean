@@ -6,8 +6,12 @@ T4 (`tailC` + `DrainageImports` + `undec_subset_tail`, landed — `tailC` is a
 NEW flagged supporting definition, see the unit-T4 provenance note),
 T4b (`canonicalOrderLEOne`, the concrete order-≤1 classifier, landed —
 see the unit-T4b provenance note for its walk-transcription layer).
-Later waves add T5 (T6 landed early with the T5 bound inline),
-and the wave-4 HARD constructor T7 (CEIL).
+Later waves add T5 (T6 landed early with the T5 bound inline).
+T7 (CEIL) is PARTIAL: the verbatim statement `canonicalOrderLEOne_ceil`
+compiles, its closure-reduction and Step-0 assembly layers are PROVED, and
+the remaining content is exactly ONE honest `sorry` at the per-cluster core
+`OrderLEOne.clusterWalk_audit` (BLOCKED(T7) — the Theorem-N3 chain over
+`Q̄_p` root valuations; see the unit-T7 provenance note).
 T8 (tail) LANDED (`discV_tail_count`, the `DrainageImports.tail` constructor):
 it adds the corpus import `LeanUrat.MovesX.XF7` (M05 Lemma C's Lean count form
 `tailCountBound`, PROVED corpus, itself importing only MovesX modules — the
@@ -710,22 +714,29 @@ Lemma D underwrites the §4 seam, NOT this clause.  So the raw walk completes
 within horizon `N ≥ discV + 1` and its verdict passes the degree audit
 (step 0 partitions n; each cluster partitions its m by (I1) + SIDE + REC).
 
-**Unit status: PARTIAL.**  Proved sorry-free here: the closure-reduction
-layer — the first-decision closure decides whenever the raw walk decides
-(`stabVerdict_ne_none_of_raw` via `boxProj_self`/`decideAt_self`) — and the
-verbatim T7 statement from the single core lemma below.  The OPEN core,
-`rawType_ne_none_of_discV_succ_le`, is the Theorem-N3 termination + audit
-chain over the true root valuations `b_j = v(α_j − c)` in `Q̄_p`: (I1) needs
-Fact EXT (unique valuation extension, Galois invariance), CERT(ii) needs
-Fact DES (Galois descent), SIDE needs Facts SF/HEN/EF/HRG, RES needs Fact GRD,
-and the certify-level arithmetic needs Fact D — extended-valuation root
-theory for `Q̄_p` that neither the corpus nor this Mathlib pin carries; a
-coefficients-only reproof would be a NEW mathematical development outside the
-source of record.  It stays an honest `sorry` with the blocking reason inline
-(BP_IV row T7: "a dedicated formalization campaign").  No other declaration
-consumes the sorried lemma except the verbatim T7 statement itself;
-`DrainageImports.ceil` stays a named row — NO discharge of the row is claimed
-until the core lands.
+**Unit status: PARTIAL.**  Proved sorry-free here, reducing the verbatim T7
+statement to ONE open per-cluster core:
+* the closure-reduction layer — the first-decision closure decides whenever
+  the raw walk decides (`stabVerdict_ne_none_of_raw` via
+  `boxProj_self`/`decideAt_self`);
+* the Step-0 assembly layer — `rawType_ne_none_of_clusterWalk` via the
+  engine audit `processResidual_audit` (the repeated-deg-≥2 refusal is
+  VACUOUS at degree ≤ 3; simple factors contribute `(1, deg ψ)`; the
+  normalized-factorization degree partition `Σ_ψ count·deg = n` closes the
+  audit) with supports `mapM_option_spec`, `forall₂_multiset_audit`,
+  `toPoly_monic`, `toPoly_natDegree`, `fbar_monic`, `fbar_natDegree`.
+The OPEN core, `clusterWalk_audit`, is the Theorem-N3 per-cluster
+termination + audit chain over the true root valuations `b_j = v(α_j − c)`
+in `Q̄_p`: (I1) needs Fact EXT (unique valuation extension, Galois
+invariance), CERT(ii) needs Fact DES (Galois descent), SIDE needs Facts
+SF/HEN/EF/HRG, RES needs Fact GRD, and the certify-level arithmetic needs
+Fact D — extended-valuation root theory for `Q̄_p` that neither the corpus
+nor this Mathlib pin carries; a coefficients-only reproof would be a NEW
+mathematical development outside the source of record.  It stays an honest
+`sorry` with the blocking reason inline (BP_IV row T7: "a dedicated
+formalization campaign").  No declaration consumes the sorried lemma except
+the T7 chain itself; `DrainageImports.ceil` stays a named row — NO discharge
+of the row is claimed until the core lands.
 -/
 
 section T7
@@ -760,23 +771,247 @@ theorem stabVerdict_ne_none_of_raw {N : ℕ} (f : Box p n N)
   rw [dif_pos hex]
   exact Nat.find_spec hex
 
-/-- T7 HARD CORE (OPEN): under the ceiling hypothesis `discV + 1 ≤ N` the raw
-§3.2 walk completes with a degree-audited verdict — Theorem N3's termination
-and audit clause ((I1) "> 0" criterion, Lemmas CERT/SIDE/REC, the case
-(a)/(b) certify-level arithmetic against Fact D).  Everything downstream of
-this lemma is proved. -/
+/-- `Option`-monad `mapM` with a per-element specification: if every list
+element has a `some` image satisfying `P`, the whole `mapM` returns `some`
+of a `Forall₂ P`-related list (supporting lemma of unit T7's step-0
+assembly). -/
+theorem mapM_option_spec {α β : Type*} {F : α → Option β} {P : α → β → Prop}
+    {l : List α} (h : ∀ a ∈ l, ∃ b, F a = some b ∧ P a b) :
+    ∃ L, l.mapM F = some L ∧ List.Forall₂ P l L := by
+  induction l with
+  | nil => exact ⟨[], by simp, List.Forall₂.nil⟩
+  | cons a as ih =>
+      obtain ⟨b, hFa, hPa⟩ := h a (by simp)
+      obtain ⟨L, hL, hforall⟩ := ih (fun x hx => h x (by simp [hx]))
+      exact ⟨b :: L, by rw [List.mapM_cons, hFa, hL]; rfl,
+        List.Forall₂.cons hPa hforall⟩
+
+/-- Aggregating a `Forall₂` audit over a list of factor multisets: entries
+stay ≥ 1 and the weights `e·f` add up blockwise (supporting lemma of unit
+T7's step-0 assembly). -/
+theorem forall₂_multiset_audit {α : Type*} {g : α → ℕ}
+    {l : List α} {L : List (Multiset (ℕ × ℕ))}
+    (h : List.Forall₂ (fun a S => (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = g a) l L) :
+    (∀ x ∈ L.sum, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      ((L.sum).map fun x => x.1 * x.2).sum = (l.map g).sum := by
+  induction h with
+  | nil => simp
+  | cons ha hl ih =>
+      constructor
+      · intro x hx
+        rw [List.sum_cons] at hx
+        rcases Multiset.mem_add.mp hx with h1 | h2
+        · exact ha.1 x h1
+        · exact ih.1 x h2
+      · rw [List.sum_cons, List.map_cons, List.sum_cons, Multiset.map_add,
+          Multiset.sum_add, ha.2, ih.2]
+
+omit [Fact p.Prime] in
+/-- The box polynomial is monic (the §3.2 Step-0 input's leading audit). -/
+theorem toPoly_monic {N : ℕ} (f : Box p n N) : (Box.toPoly f).Monic := by
+  unfold Box.toPoly
+  apply Polynomial.monic_X_pow_add
+  apply lt_of_le_of_lt (Polynomial.degree_sum_le _ _)
+  exact (Finset.sup_lt_iff (WithBot.bot_lt_coe n)).mpr
+    (fun i _ => lt_of_le_of_lt (Polynomial.degree_C_mul_X_pow_le _ _)
+      (by exact WithBot.coe_lt_coe.mpr i.2))
+
+/-- The box polynomial has exact degree n (N ≥ 1 keeps `ZMod (p^N)`
+nontrivial). -/
+theorem toPoly_natDegree {N : ℕ} (hN : 0 < N) (f : Box p n N) :
+    (Box.toPoly f).natDegree = n := by
+  have hp : p.Prime := Fact.out
+  haveI : Fact (1 < p ^ N) := ⟨Nat.one_lt_pow hN.ne' hp.one_lt⟩
+  unfold Box.toPoly
+  apply Polynomial.natDegree_eq_of_degree_eq_some
+  rw [Polynomial.degree_add_eq_left_of_degree_lt, Polynomial.degree_X_pow]
+  rw [Polynomial.degree_X_pow]
+  apply lt_of_le_of_lt (Polynomial.degree_sum_le _ _)
+  exact (Finset.sup_lt_iff (WithBot.bot_lt_coe n)).mpr
+    (fun i _ => lt_of_le_of_lt (Polynomial.degree_C_mul_X_pow_le _ _)
+      (by exact WithBot.coe_lt_coe.mpr i.2))
+
+/-- The Step-0 residue polynomial `f̄` is monic. -/
+theorem fbar_monic {N : ℕ} (hN : 0 < N) (f : Box p n N) : (fbar hN f).Monic :=
+  (toPoly_monic f).map _
+
+/-- The Step-0 residue polynomial `f̄` is monic of degree n — the degree
+that Step 0's certified factors and clusters partition. -/
+theorem fbar_natDegree {N : ℕ} (hN : 0 < N) (f : Box p n N) :
+    (fbar hN f).natDegree = n := by
+  unfold fbar
+  rw [(toPoly_monic f).natDegree_map, toPoly_natDegree hN f]
+
+/-- Step-0 engine audit (sorry-free): for monic `R` of degree ≤ 3, if every
+repeated LINEAR factor's recursion completes with a multiset partitioning
+its multiplicity, then `processResidual R rec` completes with a multiset of
+entries ≥ 1 partitioning `deg R`.  Mechanism: the repeated-deg-≥2 refusal
+branch is VACUOUS at degree ≤ 3 (O4T §3.2 "at n ≤ 3 repeated factors are
+linear": count·deg ≥ 4 > 3 against the normalized-factorization degree
+partition `Σ_ψ count(ψ)·deg(ψ) = deg R`), and the simple-factor branch
+contributes `(1, deg ψ)` exactly. -/
+theorem processResidual_audit {R : Polynomial (ZMod p)} (hmonic : R.Monic)
+    (hdeg3 : R.natDegree ≤ 3)
+    {rec : ZMod p → ℕ → Option (Multiset (ℕ × ℕ))}
+    (hrec : ∀ ψ ∈ UniqueFactorizationMonoid.normalizedFactors R,
+      2 ≤ (UniqueFactorizationMonoid.normalizedFactors R).count ψ →
+      ψ.natDegree = 1 →
+      ∃ S, rec (- ψ.coeff 0)
+          ((UniqueFactorizationMonoid.normalizedFactors R).count ψ) = some S ∧
+        (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+        (S.map fun x => x.1 * x.2).sum
+          = (UniqueFactorizationMonoid.normalizedFactors R).count ψ) :
+    ∃ S, processResidual R rec = some S ∧
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = R.natDegree := by
+  have hR0 : R ≠ 0 := hmonic.ne_zero
+  have h0 : (0 : Polynomial (ZMod p)) ∉ UniqueFactorizationMonoid.normalizedFactors R :=
+    UniqueFactorizationMonoid.zero_notMem_normalizedFactors R
+  -- the degree partition Σ_ψ count(ψ)·deg(ψ) = deg R
+  have hmapsum : ((UniqueFactorizationMonoid.normalizedFactors R).map
+      Polynomial.natDegree).sum = R.natDegree := by
+    conv_rhs => rw [← (Polynomial.normalize_eq_self_iff_monic hR0).mpr hmonic,
+      ← UniqueFactorizationMonoid.prod_normalizedFactors_eq hR0]
+    exact (Polynomial.natDegree_multiset_prod _ h0).symm
+  have hkey : ∑ ψ ∈ (UniqueFactorizationMonoid.normalizedFactors R).toFinset,
+      (UniqueFactorizationMonoid.normalizedFactors R).count ψ * ψ.natDegree
+      = R.natDegree := by
+    rw [Finset.sum_multiset_map_count] at hmapsum
+    simpa [smul_eq_mul, nsmul_eq_mul] using hmapsum
+  -- per-factor branch spec for the mapM
+  have hspec : ∀ ψ ∈ (UniqueFactorizationMonoid.normalizedFactors R).toFinset.toList,
+      ∃ S, (if (UniqueFactorizationMonoid.normalizedFactors R).count ψ = 1 then
+          some ({(1, ψ.natDegree)} : Multiset (ℕ × ℕ))
+        else if ψ.natDegree = 1 then
+          rec (- ψ.coeff 0)
+            ((UniqueFactorizationMonoid.normalizedFactors R).count ψ)
+        else none) = some S ∧
+        ((∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+          (S.map fun x => x.1 * x.2).sum
+            = (UniqueFactorizationMonoid.normalizedFactors R).count ψ * ψ.natDegree) := by
+    intro ψ hψl
+    have hψ : ψ ∈ UniqueFactorizationMonoid.normalizedFactors R := by
+      rw [← Multiset.mem_toFinset]
+      exact Finset.mem_toList.mp hψl
+    have hirr : Irreducible ψ :=
+      UniqueFactorizationMonoid.irreducible_of_normalized_factor ψ hψ
+    have hdpos : 0 < ψ.natDegree := hirr.natDegree_pos
+    have hcpos : 0 < (UniqueFactorizationMonoid.normalizedFactors R).count ψ :=
+      Multiset.count_pos.mpr hψ
+    by_cases hc : (UniqueFactorizationMonoid.normalizedFactors R).count ψ = 1
+    · refine ⟨{(1, ψ.natDegree)}, by rw [if_pos hc], ?_, by simp [hc]⟩
+      intro x hx
+      rw [Multiset.mem_singleton] at hx
+      subst hx
+      exact ⟨le_rfl, hdpos⟩
+    · have hc2 : 2 ≤ (UniqueFactorizationMonoid.normalizedFactors R).count ψ := by
+        omega
+      have hd1 : ψ.natDegree = 1 := by
+        by_contra hne
+        have hd2 : 2 ≤ ψ.natDegree := by omega
+        have hle : (UniqueFactorizationMonoid.normalizedFactors R).count ψ
+            * ψ.natDegree ≤ R.natDegree := by
+          rw [← hkey]
+          exact Finset.single_le_sum
+            (f := fun φ => (UniqueFactorizationMonoid.normalizedFactors R).count φ
+              * φ.natDegree)
+            (fun i _ => Nat.zero_le _) (Multiset.mem_toFinset.mpr hψ)
+        have h4 : 4 ≤ (UniqueFactorizationMonoid.normalizedFactors R).count ψ
+            * ψ.natDegree := Nat.mul_le_mul hc2 hd2
+        omega
+      obtain ⟨S, hS, hS1, hS2⟩ := hrec ψ hψ hc2 hd1
+      refine ⟨S, ?_, hS1, by rw [hS2, hd1, mul_one]⟩
+      rw [if_neg hc, if_pos hd1]
+      exact hS
+  obtain ⟨L, hmapM, hforall⟩ := mapM_option_spec
+    (P := fun (ψ : Polynomial (ZMod p)) (S : Multiset (ℕ × ℕ)) =>
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum
+        = (UniqueFactorizationMonoid.normalizedFactors R).count ψ * ψ.natDegree)
+    hspec
+  have haudit := forall₂_multiset_audit hforall
+  refine ⟨L.sum, ?_, haudit.1, ?_⟩
+  · unfold processResidual
+    rw [hmapM]
+    rfl
+  · rw [haudit.2, Finset.sum_map_toList, hkey]
+
+/-- T7 HARD CORE (OPEN): each cluster step the walk opens at a repeated
+residue root completes within fuel N under the ceiling hypothesis
+`discV + 1 ≤ N`, certifying a multiset that partitions its multiplicity —
+Theorem N3's termination + audit chain ((I1) "> 0" criterion, Lemmas
+CERT/SIDE/REC, the case (a)/(b) certify-level arithmetic against Fact D).
+Everything downstream of this lemma is proved. -/
+theorem clusterWalk_audit {N : ℕ} (hn0 : 2 ≤ n) (hn1 : n ≤ 3) (hN : 0 < N)
+    (f : Box p n N) (hdisc : discV p n N f + 1 ≤ N)
+    (ψ : Polynomial (ZMod p))
+    (hψ : ψ ∈ UniqueFactorizationMonoid.normalizedFactors (fbar hN f))
+    (hm : 2 ≤ (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ)
+    (hdeg : ψ.natDegree = 1) :
+    ∃ S, clusterWalk f N (((- ψ.coeff 0).val : ZMod (p ^ N)))
+        ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ) 0
+        = some S ∧
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum
+        = (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ := by
+  -- BLOCKED(T7): the Theorem-N3 (CEIL) analytic core.  The paper proof
+  -- (O4T rev 4 §§3.3–3.4) runs through the true root valuations
+  -- b_j = v(α_j − c) in Q̄_p and consumes Facts NP/SF/HEN +
+  -- EXT/EF/D/GRD/UCT/HRG/SEP/DES: (I1) needs Fact EXT (unique valuation
+  -- extension + Galois invariance), CERT(ii) needs Fact DES (Galois
+  -- descent), SIDE needs Facts SF/HEN/EF/HRG, RES needs Fact GRD, and the
+  -- certify-level bound k ≤ v_p(disc f)+1 needs Fact D
+  -- (disc = ∏(α_i−α_j)²).  None of this extended-valuation root theory
+  -- for Q̄_p exists in the corpus or in this Mathlib pin, and a
+  -- coefficients-only reproof is a NEW mathematical development not
+  -- sanctioned by the source of record.  Dedicated campaign required
+  -- (BP_IV row T7: "a dedicated formalization campaign").
+  sorry
+
+/-- Step-0 assembly (sorry-free): granted the per-cluster walk-completion
+hypothesis, the raw verdict exists and passes the degree audit — Step 0
+partitions n into simple certified factors `(1, deg ψ)` and cluster blocks
+of total weight `count ψ` (`processResidual_audit` at `R = f̄`, degree n by
+`fbar_natDegree`). -/
+theorem rawType_ne_none_of_clusterWalk {N : ℕ} (hn1 : n ≤ 3) (hN : 0 < N)
+    (f : Box p n N)
+    (hclu : ∀ ψ ∈ UniqueFactorizationMonoid.normalizedFactors (fbar hN f),
+      2 ≤ (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ →
+      ψ.natDegree = 1 →
+      ∃ S, clusterWalk f N (((- ψ.coeff 0).val : ZMod (p ^ N)))
+          ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ) 0
+          = some S ∧
+        (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+        (S.map fun x => x.1 * x.2).sum
+          = (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ) :
+    rawType f ≠ none := by
+  obtain ⟨S, hS, hS1, hS2⟩ := processResidual_audit
+    (rec := fun z m => clusterWalk f N ((z.val : ZMod (p ^ N))) m 0)
+    (fbar_monic hN f) (by rw [fbar_natDegree hN f]; exact hn1)
+    (fun ψ hψ h2 h1 => hclu ψ hψ h2 h1)
+  have hrle : rawLEOne f = some S := by
+    unfold rawLEOne
+    rw [dif_pos hN]
+    exact hS
+  have hok : (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = n :=
+    ⟨hS1, by rw [hS2, fbar_natDegree hN f]⟩
+  unfold rawType
+  rw [hrle, Option.bind_some, dif_pos hok]
+  exact Option.some_ne_none _
+
+/-- T7 core interface, assembled: under the ceiling hypothesis
+`discV + 1 ≤ N` the raw §3.2 walk completes with a degree-audited verdict.
+Sorry-free EXCEPT through `clusterWalk_audit` (the unit's one open core —
+see its `BLOCKED(T7)` note). -/
 theorem rawType_ne_none_of_discV_succ_le {N : ℕ}
     (hn0 : 2 ≤ n) (hn1 : n ≤ 3) (f : Box p n N)
     (hdisc : discV p n N f + 1 ≤ N) :
     rawType f ≠ none := by
-  -- BLOCKED(T7): the Theorem-N3 (CEIL) analytic core.  The paper proof
-  -- (O4T rev 4 §§3.3–3.4) runs through the true root valuations
-  -- b_j = v(α_j − c) in Q̄_p and consumes Facts NP/SF/HEN +
-  -- EXT/EF/D/GRD/UCT/HRG/SEP/DES; none of this extended-valuation root
-  -- theory for Q̄_p exists in the corpus or in this Mathlib pin, and a
-  -- coefficients-only reproof is a NEW mathematical development not
-  -- sanctioned by the source of record.  Dedicated campaign required.
-  sorry
+  have hN : 0 < N := by omega
+  exact rawType_ne_none_of_clusterWalk hn1 hN f
+    (fun ψ hψ hm hdeg => clusterWalk_audit hn0 hn1 hN f hdisc ψ hψ hm hdeg)
 
 end T7
 
@@ -814,9 +1049,11 @@ theorem canonicalOrderLEOne_teichmuller (n p : ℕ) [Fact p.Prime] :
 /-- T7 (statement VERBATIM from BP_IV §1.1; unit status PARTIAL — see the
 unit-T7 provenance note): the CEIL clause for the canonical order-≤1
 classifier at the N3 degree scope.  Assembled from the PROVED closure
-reduction `OrderLEOne.stabVerdict_ne_none_of_raw` and the OPEN core
-`OrderLEOne.rawType_ne_none_of_discV_succ_le` (the one `sorry` of this unit —
-Theorem N3's walk-completion chain; see the `BLOCKED(T7)` note there). -/
+reduction `OrderLEOne.stabVerdict_ne_none_of_raw`, the PROVED Step-0
+assembly `OrderLEOne.rawType_ne_none_of_clusterWalk`, and the OPEN
+per-cluster core `OrderLEOne.clusterWalk_audit` (the one `sorry` of this
+unit — Theorem N3's walk-completion chain; see the `BLOCKED(T7)` note
+there). -/
 theorem canonicalOrderLEOne_ceil {n p : ℕ} [Fact p.Prime]
     (hn0 : 2 ≤ n) (hn1 : n ≤ 3) :
     ∀ N (f : Box p n N), discV p n N f + 1 ≤ N →
@@ -825,5 +1062,322 @@ theorem canonicalOrderLEOne_ceil {n p : ℕ} [Fact p.Prime]
   rw [canonicalOrderLEOne_canonical]
   exact OrderLEOne.stabVerdict_ne_none_of_raw f
     (OrderLEOne.rawType_ne_none_of_discV_succ_le hn0 hn1 f hdisc)
+
+/-!
+**PROVENANCE (unit T8; BP_IV §1.1 `DrainageImports` display — the `tail`
+field — + §2 T-table row T8, sources M05 Lemma C and O4T §3.1 (THREE imports
+note)).**  Conclusion transcribed VERBATIM from the §1.1 `tail` row;
+`discV_tail_count` is the row's constructor (the T8 discharge), exactly as
+`canonicalOrderLEOne_ceil` is CEIL's (unit T7).
+
+Mechanism (blueprint row T8: "resultant divisibility ⇒ coefficient
+constraints; wild shift n·v_p(n) additive"):
+
+* the level-N tail event `{m ≤ discV}` is level-m cylinder data —
+  discriminant naturality for monic polynomials (`discr_map_monic`; the
+  corpus engine of `MovesX/XF1.lean` is `private`, so it is re-proved here
+  through the resultant, byte-faithfully) converts `p^m ∣ disc` at level N
+  into `disc = 0` at level m (`le_discV_iff_proj_discr_eq_zero`);
+* the exact T0 fiber count (`card_boxProj_fiber`, sigma-packaged over an
+  arbitrary level-m predicate in `card_boxProj_preimage`) then gives
+  `count = tailCount p n m · p^{n(N−m)}` (`card_tail_event`; the level-m
+  discriminant-zero count IS the corpus carrier `MovesX.tailCount`,
+  definitionally — `card_discrZero_eq_tailCount`);
+* M05 Lemma C's Lean count form `MovesX.tailCountBound` (corpus, PROVED)
+  bounds `tailCount p n m ≤ (n−1)·p^{nm−tailExp}` with
+  `tailExp = ⌈(m − n·v_p(n))/(n−1)⌉`;
+* the wild shift `n·v_p(n)` is ADDITIVE in the exponent and absorbed by the
+  `n²` factor of `tailC`: `p^{m/(2(n−1)) − tailExp} ≤ p^{n·v_p(n)/(n−1)}
+  ≤ n^{n/(n−1)} ≤ n²` for every prime p at n ≥ 2 (`tail_wild_shift_bound`,
+  via `p^{v_p(n)} ∣ n` and `n/(n−1) ≤ 2`) — exactly the margin the unit-T4
+  provenance note sized `tailC n = (n−1)·n²` for.  (The displayed rate
+  `m/(2(n−1))` is HALF the available `(m − n·v_p(n))/(n−1)`; the slack is
+  spent making the constant p-uniform.)
+-/
+
+section T8
+
+open Polynomial
+
+variable {p n : ℕ} [Fact p.Prime]
+
+omit [Fact p.Prime] in
+/-- Monic-case discriminant/resultant tie (the `MovesX/XF1.lean` private
+helper, re-proved verbatim): for monic `f` of positive degree,
+`discr = ± Res(f, f′)`. -/
+theorem discr_monic_eq_resultant {R : Type*} [CommRing R] (f : R[X])
+    (hf : f.Monic) (hpos : 0 < f.natDegree) :
+    f.discr =
+      (-1) ^ (f.natDegree * (f.natDegree - 1) / 2) *
+        resultant f f.derivative f.natDegree (f.natDegree - 1) := by
+  have hdeg : 0 < f.degree := natDegree_pos_iff_degree_pos.mp hpos
+  have h := resultant_deriv hdeg
+  rw [hf.leadingCoeff, mul_one] at h
+  have hsq : ((-1 : R) ^ (f.natDegree * (f.natDegree - 1) / 2)) *
+      ((-1 : R) ^ (f.natDegree * (f.natDegree - 1) / 2)) = 1 := by
+    rw [← pow_add, ← two_mul, pow_mul]; simp
+  rw [h, ← mul_assoc, hsq, one_mul]
+
+omit [Fact p.Prime] in
+/-- Discriminant naturality for monic polynomials (the `MovesX/XF1.lean`
+private helper, re-proved verbatim): `discr` commutes with any ring hom —
+the "resultant divisibility ⇒ coefficient constraints" engine of the T8 row,
+in the form this file consumes. -/
+theorem discr_map_monic {R S : Type*} [CommRing R] [CommRing S] (φ : R →+* S)
+    (f : R[X]) (hf : f.Monic) :
+    (f.map φ).discr = φ f.discr := by
+  rcases Nat.eq_zero_or_pos f.natDegree with hz | hpos
+  · have hf1 : f = 1 := eq_one_of_monic_natDegree_zero hf hz
+    subst hf1
+    have h1R : discr (1 : R[X]) = 1 := by rw [← C_1]; exact discr_C 1
+    have h1S : discr (1 : S[X]) = 1 := by rw [← C_1]; exact discr_C 1
+    rw [Polynomial.map_one, h1R, h1S, map_one]
+  · by_cases hS : Nontrivial S
+    · have hmap : (f.map φ).Monic := hf.map φ
+      have hdeg : (f.map φ).natDegree = f.natDegree := hf.natDegree_map φ
+      have hpos' : 0 < (f.map φ).natDegree := by rw [hdeg]; exact hpos
+      rw [discr_monic_eq_resultant f hf hpos,
+          discr_monic_eq_resultant (f.map φ) hmap hpos']
+      have hder : (f.map φ).derivative = f.derivative.map φ := derivative_map f φ
+      rw [hder, hdeg, resultant_map_map, map_mul, map_pow, map_neg, map_one]
+    · rw [not_nontrivial_iff_subsingleton] at hS
+      exact Subsingleton.elim _ _
+
+omit [Fact p.Prime] in
+/-- The box polynomial is monic: its lower part has degree < n. -/
+theorem toPoly_monic {N : ℕ} (f : Box p n N) : (Box.toPoly f).Monic := by
+  have hlt : (∑ i : Fin n, C (f i) * X ^ (i : ℕ)).degree < (n : WithBot ℕ) := by
+    refine lt_of_le_of_lt (degree_sum_le _ _) ?_
+    refine (Finset.sup_lt_iff (WithBot.bot_lt_coe n)).mpr ?_
+    intro i _
+    calc (C (f i) * X ^ (i : ℕ)).degree
+        ≤ ((i : ℕ) : WithBot ℕ) := degree_C_mul_X_pow_le _ _
+      _ < (n : WithBot ℕ) := by exact_mod_cast i.2
+  exact monic_X_pow_add hlt
+
+omit [Fact p.Prime] in
+/-- `Box.toPoly` naturality: the box polynomial of the level reduction is the
+coefficient-wise `ZMod.castHom` base change of the box polynomial. -/
+theorem toPoly_boxProj {N m : ℕ} (h : m ≤ N) (f : Box p n N) :
+    Box.toPoly (boxProj p n h f)
+      = (Box.toPoly f).map (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ m))) := by
+  simp only [Box.toPoly, boxProj, Polynomial.map_add, Polynomial.map_pow,
+    Polynomial.map_X, Polynomial.map_sum, Polynomial.map_mul, Polynomial.map_C,
+    ZMod.castHom_apply]
+
+/-- Cylinder transfer of the tail event: for `m ≤ N`, "`m ≤ discV` at level N"
+reads exactly "the level-m reduction has vanishing truncated discriminant"
+(the K0b divisibility bridge + discriminant naturality). -/
+theorem le_discV_iff_proj_discr_eq_zero {N m : ℕ} (h : m ≤ N) (f : Box p n N) :
+    m ≤ discV p n N f ↔
+      Polynomial.discr (Box.toPoly (boxProj p n h f)) = 0 := by
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero N (Fact.out : p.Prime).ne_zero⟩
+  rw [le_discV_iff h f, toPoly_boxProj h f,
+    discr_map_monic (ZMod.castHom (pow_dvd_pow p h) (ZMod (p ^ m)))
+      (Box.toPoly f) (toPoly_monic f),
+    pow_dvd_iff_dvd_val h, ZMod.castHom_apply, ← ZMod.natCast_val,
+    ZMod.natCast_eq_zero_iff]
+
+/-- The exact fiber count over the level reduction, packaged for an arbitrary
+level-m predicate (T0's `card_boxProj_fiber`, sigma-assembled — the T1
+counting pattern, predicate form). -/
+theorem card_boxProj_preimage {N m : ℕ} (h : m ≤ N) (P : Box p n m → Prop) :
+    Nat.card {f : Box p n N // P (boxProj p n h f)}
+      = Nat.card {g : Box p n m // P g} * p ^ (n * (N - m)) := by
+  classical
+  have E : {f : Box p n N // P (boxProj p n h f)} ≃
+      Σ g : {g : Box p n m // P g}, {f : Box p n N // boxProj p n h f = g.1} :=
+    { toFun := fun f => ⟨⟨boxProj p n h f.1, f.2⟩, ⟨f.1, rfl⟩⟩
+      invFun := fun x => ⟨x.2.1, by rw [x.2.2]; exact x.1.2⟩
+      left_inv := fun f => rfl
+      right_inv := fun x => by
+        obtain ⟨⟨g, hg⟩, ⟨f, hf⟩⟩ := x
+        dsimp only at hf
+        subst hf
+        rfl }
+  rw [Nat.card_congr E, Nat.card_sigma]
+  simp only [card_boxProj_fiber h]
+  rw [Finset.sum_const, Finset.card_univ, smul_eq_mul, Nat.card_eq_fintype_card]
+
+omit [Fact p.Prime] in
+/-- The level-m discriminant-zero box count IS the corpus (3b) carrier
+`MovesX.tailCount` (definitional identification: `Box p n m` is
+`Fin n → ZMod (p^m)` and `Box.toPoly` is `MovesX.polyOfCoeffs`, term for
+term). -/
+theorem card_discrZero_eq_tailCount (m : ℕ) :
+    Nat.card {g : Box p n m // Polynomial.discr (Box.toPoly g) = 0}
+      = MovesX.tailCount p n m := rfl
+
+/-- T8 counting layer: the level-N tail event is the level-m
+discriminant-zero count times the exact T0 fiber size. -/
+theorem card_tail_event {N m : ℕ} (hmN : m ≤ N) :
+    Nat.card {f : Box p n N // m ≤ discV p n N f}
+      = MovesX.tailCount p n m * p ^ (n * (N - m)) := by
+  have hiff : ∀ f : Box p n N, m ≤ discV p n N f ↔
+      Polynomial.discr (Box.toPoly (boxProj p n hmN f)) = 0 :=
+    fun f => le_discV_iff_proj_discr_eq_zero hmN f
+  calc Nat.card {f : Box p n N // m ≤ discV p n N f}
+      = Nat.card {f : Box p n N //
+          Polynomial.discr (Box.toPoly (boxProj p n hmN f)) = 0} :=
+        Nat.card_congr (Equiv.subtypeEquivRight hiff)
+    _ = Nat.card {g : Box p n m // Polynomial.discr (Box.toPoly g) = 0}
+          * p ^ (n * (N - m)) :=
+        card_boxProj_preimage hmN (fun g => Polynomial.discr (Box.toPoly g) = 0)
+    _ = MovesX.tailCount p n m * p ^ (n * (N - m)) := by
+        rw [card_discrZero_eq_tailCount]
+
+/-- T8 wild-shift absorption (M05 Lemma C's exponent arithmetic): the gap
+between the ceiling exponent `tailExp = ⌈(m − n·v_p(n))/(n−1)⌉` and the
+displayed rate `m/(2(n−1))` is at most `n·v_p(n)/(n−1)`, and
+`p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} ≤ n²` uniformly in the prime p (via
+`p^{v_p(n)} ∣ n` and `n/(n−1) ≤ 2` at `n ≥ 2`) — the margin `tailC` was
+sized for (unit-T4 provenance note). -/
+theorem tail_wild_shift_bound (hn0 : 2 ≤ n) (m : ℕ) :
+    (p : ℝ) ^ ((m : ℝ) / (2 * ((n : ℝ) - 1)) - (MovesX.tailExp p n m : ℝ))
+      ≤ (n : ℝ) ^ 2 := by
+  have hp : p.Prime := Fact.out
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast hp.pos
+  have hp1 : (1 : ℝ) ≤ (p : ℝ) := by exact_mod_cast hp.one_lt.le
+  have hn2R : (2 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hn0
+  have hden : (0 : ℝ) < (n : ℝ) - 1 := by linarith
+  have hm0 : (0 : ℝ) ≤ (m : ℝ) := Nat.cast_nonneg m
+  -- the ceiling lower bound, cast to ℝ
+  have htlbQ : ((m : ℤ) - n * padicValNat p n : ℚ) / (n - 1 : ℚ)
+      ≤ (MovesX.tailExp p n m : ℚ) := by
+    unfold MovesX.tailExp
+    exact Int.le_ceil _
+  have htlb : ((m : ℝ) - (n : ℝ) * (padicValNat p n : ℝ)) / ((n : ℝ) - 1)
+      ≤ (MovesX.tailExp p n m : ℝ) := by
+    have h2 : ((((m : ℤ) - n * padicValNat p n : ℚ) / (n - 1 : ℚ) : ℚ) : ℝ)
+        ≤ (((MovesX.tailExp p n m : ℚ)) : ℝ) := by exact_mod_cast htlbQ
+    calc ((m : ℝ) - (n : ℝ) * (padicValNat p n : ℝ)) / ((n : ℝ) - 1)
+        = ((((m : ℤ) - n * padicValNat p n : ℚ) / (n - 1 : ℚ) : ℚ) : ℝ) := by
+          push_cast
+          ring
+      _ ≤ (((MovesX.tailExp p n m : ℚ)) : ℝ) := h2
+      _ = (MovesX.tailExp p n m : ℝ) := by push_cast; ring
+  -- exponent comparison: m/(2(n−1)) − tailExp ≤ n·v/(n−1)
+  have hmm : (m : ℝ) / (2 * ((n : ℝ) - 1)) ≤ (m : ℝ) / ((n : ℝ) - 1) := by
+    rw [div_le_div_iff₀ (by linarith) hden]
+    nlinarith [mul_nonneg hm0 hden.le]
+  have hexp : (m : ℝ) / (2 * ((n : ℝ) - 1)) - (MovesX.tailExp p n m : ℝ)
+      ≤ (n : ℝ) * (padicValNat p n : ℝ) / ((n : ℝ) - 1) := by
+    have hsum : ((m : ℝ) - (n : ℝ) * (padicValNat p n : ℝ)) / ((n : ℝ) - 1)
+        + (n : ℝ) * (padicValNat p n : ℝ) / ((n : ℝ) - 1)
+        = (m : ℝ) / ((n : ℝ) - 1) := by ring
+    linarith
+  -- p^gap ≤ p^{n·v/(n−1)} = (p^v)^{n/(n−1)} ≤ n^{n/(n−1)} ≤ n²
+  have h2 : (p : ℝ) ^ ((n : ℝ) * (padicValNat p n : ℝ) / ((n : ℝ) - 1))
+      = ((p : ℝ) ^ padicValNat p n) ^ ((n : ℝ) / ((n : ℝ) - 1)) := by
+    rw [← Real.rpow_natCast (p : ℝ) (padicValNat p n), ← Real.rpow_mul hp0.le]
+    congr 1
+    ring
+  have hpv : ((p : ℝ) ^ padicValNat p n) ≤ (n : ℝ) := by
+    exact_mod_cast Nat.le_of_dvd (by omega) pow_padicValNat_dvd
+  have h4 : (n : ℝ) ^ ((n : ℝ) / ((n : ℝ) - 1)) ≤ (n : ℝ) ^ (2 : ℝ) := by
+    refine Real.rpow_le_rpow_of_exponent_le (by linarith) ?_
+    rw [div_le_iff₀ hden]
+    linarith
+  calc (p : ℝ) ^ ((m : ℝ) / (2 * ((n : ℝ) - 1)) - (MovesX.tailExp p n m : ℝ))
+      ≤ (p : ℝ) ^ ((n : ℝ) * (padicValNat p n : ℝ) / ((n : ℝ) - 1)) :=
+        Real.rpow_le_rpow_of_exponent_le hp1 hexp
+    _ = ((p : ℝ) ^ padicValNat p n) ^ ((n : ℝ) / ((n : ℝ) - 1)) := h2
+    _ ≤ (n : ℝ) ^ ((n : ℝ) / ((n : ℝ) - 1)) :=
+        Real.rpow_le_rpow (by positivity) hpv (by positivity)
+    _ ≤ (n : ℝ) ^ (2 : ℝ) := h4
+    _ = (n : ℝ) ^ 2 := by
+        rw [show (2 : ℝ) = ((2 : ℕ) : ℝ) by norm_num, Real.rpow_natCast]
+
+/-- **T8 (the `tail` clause, I-TAIL counting form) — the
+`DrainageImports.tail` constructor.**  Conclusion VERBATIM from BP_IV §1.1's
+`tail` row.  M05 Lemma C's discriminant tail count at level m (the corpus
+`MovesX.tailCountBound`), transported up the exact T0 fibers
+(`card_tail_event`), with the additive wild shift `n·v_p(n)` absorbed into
+`tailC`'s `n²` factor (`tail_wild_shift_bound`). -/
+theorem discV_tail_count (hn0 : 2 ≤ n) :
+    ∀ N m : ℕ, (Nat.card {f : Box p n N // m ≤ discV p n N f} : ℝ)
+      ≤ tailC n * (p : ℝ) ^ (n * N) * (p : ℝ) ^ (-(m : ℝ) / (2 * (n - 1))) := by
+  intro N m
+  have hp : p.Prime := Fact.out
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast hp.pos
+  have hn2R : (2 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hn0
+  have htailC0 : (0 : ℝ) ≤ tailC n := by
+    unfold tailC
+    exact mul_nonneg (by linarith) (sq_nonneg _)
+  by_cases hmN : m ≤ N
+  · -- the counted case m ≤ N
+    have hcount := card_tail_event (p := p) (n := n) hmN
+    -- M05 Lemma C's corpus bound, cast to ℝ
+    have hboundR : (MovesX.tailCount p n m : ℝ) * (p : ℝ) ^ MovesX.tailExp p n m
+        ≤ ((n : ℝ) - 1) * (p : ℝ) ^ ((n * m : ℕ) : ℤ) := by
+      have h2 : (((MovesX.tailCount p n m : ℚ)
+              * (p : ℚ) ^ MovesX.tailExp p n m : ℚ) : ℝ)
+          ≤ (((n - 1 : ℚ) * (p : ℚ) ^ ((n * m : ℕ) : ℤ) : ℚ) : ℝ) := by
+        exact_mod_cast MovesX.tailCountBound p n m hn0
+      calc (MovesX.tailCount p n m : ℝ) * (p : ℝ) ^ MovesX.tailExp p n m
+          = (((MovesX.tailCount p n m : ℚ)
+              * (p : ℚ) ^ MovesX.tailExp p n m : ℚ) : ℝ) := by
+            push_cast
+            ring
+        _ ≤ (((n - 1 : ℚ) * (p : ℚ) ^ ((n * m : ℕ) : ℤ) : ℚ) : ℝ) := h2
+        _ = ((n : ℝ) - 1) * (p : ℝ) ^ ((n * m : ℕ) : ℤ) := by
+            push_cast
+            ring
+    set t : ℤ := MovesX.tailExp p n m with ht
+    have htc_le : (MovesX.tailCount p n m : ℝ)
+        ≤ ((n : ℝ) - 1) * (p : ℝ) ^ ((n * m : ℕ) : ℤ) / (p : ℝ) ^ t := by
+      rw [le_div_iff₀ (zpow_pos hp0 t)]
+      exact hboundR
+    have hns : ((n * m : ℕ) : ℤ) + ((n * (N - m) : ℕ) : ℤ)
+        = ((n * N : ℕ) : ℤ) := by
+      have hNat : n * m + n * (N - m) = n * N := by
+        rw [← Nat.mul_add, Nat.add_sub_cancel' hmN]
+      exact_mod_cast hNat
+    have hstep : (Nat.card {f : Box p n N // m ≤ discV p n N f} : ℝ)
+        ≤ ((n : ℝ) - 1) * (p : ℝ) ^ (((n * N : ℕ) : ℤ) - t) := by
+      have hcountR : (Nat.card {f : Box p n N // m ≤ discV p n N f} : ℝ)
+          = (MovesX.tailCount p n m : ℝ) * (p : ℝ) ^ (n * (N - m)) := by
+        rw [hcount]
+        push_cast
+        ring
+      rw [hcountR]
+      refine (mul_le_mul_of_nonneg_right htc_le (by positivity)).trans
+        (le_of_eq ?_)
+      rw [← zpow_natCast (p : ℝ) (n * (N - m)), zpow_sub₀ (ne_of_gt hp0),
+        ← hns, zpow_add₀ (ne_of_gt hp0)]
+      ring
+    have hrpow_eq : (p : ℝ) ^ (((n * N : ℕ) : ℤ) - t)
+        = (p : ℝ) ^ (n * N) * (p : ℝ) ^ (-(m : ℝ) / (2 * ((n : ℝ) - 1)))
+          * (p : ℝ) ^ ((m : ℝ) / (2 * ((n : ℝ) - 1)) - (t : ℝ)) := by
+      rw [← Real.rpow_natCast (p : ℝ) (n * N),
+        ← Real.rpow_intCast (p : ℝ) (((n * N : ℕ) : ℤ) - t),
+        ← Real.rpow_add hp0, ← Real.rpow_add hp0]
+      congr 1
+      push_cast
+      ring
+    calc (Nat.card {f : Box p n N // m ≤ discV p n N f} : ℝ)
+        ≤ ((n : ℝ) - 1) * (p : ℝ) ^ (((n * N : ℕ) : ℤ) - t) := hstep
+      _ = ((n : ℝ) - 1) * ((p : ℝ) ^ (n * N)
+            * (p : ℝ) ^ (-(m : ℝ) / (2 * ((n : ℝ) - 1)))
+            * (p : ℝ) ^ ((m : ℝ) / (2 * ((n : ℝ) - 1)) - (t : ℝ))) := by
+          rw [hrpow_eq]
+      _ ≤ ((n : ℝ) - 1) * ((p : ℝ) ^ (n * N)
+            * (p : ℝ) ^ (-(m : ℝ) / (2 * ((n : ℝ) - 1))) * (n : ℝ) ^ 2) := by
+          refine mul_le_mul_of_nonneg_left
+            (mul_le_mul_of_nonneg_left ?_ (by positivity)) (by linarith)
+          rw [ht]
+          exact tail_wild_shift_bound hn0 m
+      _ = tailC n * (p : ℝ) ^ (n * N)
+            * (p : ℝ) ^ (-(m : ℝ) / (2 * ((n : ℝ) - 1))) := by
+          unfold tailC
+          ring
+  · -- N < m: the tail event is empty (discV ≤ N)
+    haveI : IsEmpty {f : Box p n N // m ≤ discV p n N f} :=
+      ⟨fun f => absurd (f.2.trans (discV_le f.1)) (by omega)⟩
+    rw [Nat.card_of_isEmpty, Nat.cast_zero]
+    exact mul_nonneg (mul_nonneg htailC0 (by positivity))
+      (Real.rpow_nonneg hp0.le _)
+
+end T8
 
 end LeanUrat.Scaffold

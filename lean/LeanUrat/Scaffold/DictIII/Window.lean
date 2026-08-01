@@ -527,6 +527,405 @@ theorem m6c_noPhantom {n : ℕ} {f : Polynomial ℤ_[p]}
 
 end UnitIIIT12
 
+/-! ## Unit III-T13 — `wgeo` over the named rows (BP_III §2 Wave 3 row T13;
+src O1thr §2.5 WGEO; GD23 §4 Cor)
+
+Blueprint display (BP_III §1.7, ELIDED after its opening binders — the same
+REV2-finding-1 residue as the III-T11/T12 records above):
+
+    /-- Lemma WGEO over the named key-compliance rows (V1) = MacLaneV1Pkg,
+        (V2a) = KeyPkg.KPa, (V2b) = devid, (V2c) = gd3_min — the GD23 re-founding. -/
+    theorem wgeo (hv1 : MacLaneV1Pkg …) (hkp : KeyPkg …) …
+
+Statement completion is IN this unit's charter (the unit row pins the
+consumption structure: "the four consumptions (V1)/(V2a)/(V2b)/(V2c) =
+H8/G17/G21 exactly as GD23's re-founding displays"), so — same sanctioned
+convention as Devid.lean's III-G18/G19/G20/G21a — the statement is completed
+from the sources of record: O-1thr rev 4 §2.5 Lemma WGEO
+(`lean/notes/openmath/O1thr_phaseB_verifybrief_rev4.md`, lines 678–745) and
+GD23 rev 4 §4 Corollaries ("**WGEO re-founded.** O-1thr's Lemma WGEO consumes
+(V1), (V2a) = (KPa), (V2b) = DEVID, (V2c) = GD3-MIN"), preserving every
+displayed token (`wgeo`, `hv1 : MacLaneV1Pkg …`, `hkp : KeyPkg …`, the
+docstring).  Flagged for division-lead ratification as a statement, per the
+fence.
+
+COMPLETION LEDGER (row-by-row provenance):
+
+* Index dictionary: the state is level `i + 1` with state valuation `w (i+1)`
+  and produced key `keys i` — EXACTLY `tie_w_eq_v`'s convention (Devid.lean
+  III-G20: `hkeyW : w (i+1) (keys i) = γ i`, `hdevW : w (i+1) B =
+  minDev (w (i+1)) (keys i) B`).  `γ` is the state value `w (i+1) f`;
+  `u_k := w(C_k) + k·w(Φ)` the sheared heights of the development slots
+  `C_k = devCoeff (keys i) f k`.
+* `hv1` — **(V1)** = III-H8's `MacLaneV1Pkg`, verbatim, consumed through its
+  level-(i+1) row set (= Devid.lean's `IsPolyValuation`, per that file's
+  recorded dedupe note).
+* `hkp` — **(V2a)** = III-H8's `KeyPkg` at the state pairing
+  `(w (i+1), keys i)` (GD23 §4's DEVID convention: the key block travels with
+  the state valuation whose development it controls).  Its `monic` and
+  `positiveDegree` rows fire below; the weight-level `initialPrime`/
+  `lowerDegreeBlock` rows are carried in the package while the graded work is
+  done by the graded renderings next.
+* `G`, `hkpa` — (V2a)'s graded rendering `KPaBlock` on the landed III-G15a
+  carrier (`Devid.lean`'s recorded DEVID convention: "`KPaBlock` [is] §1.5's
+  graded rendering of III-H8's `KeyPkg`"); `hkpa` is consumed by the
+  `gd3_min` firing (its "under KeyPkg" binder).
+* `hV2a` — (V2a)'s CONSUMED divisibility block, the O-1thr rev-4 bridge
+  sentence (its G2 fix): "ψ̂_hom ∤ in(B) for every nonzero B of
+  deg < deg Φ_{i+1} — the exact form (V2a) that WGEO(b) consumes", rendered
+  through IMAGE divisibility exactly as III-G21a's `GrOrdAt` ledger renders
+  ψ̂-orders (the `ValGr` interface carries no divisibility operation).
+* `hloc`, `hsep` — **(V1)'s graded-piece laws**: the two working directions
+  of III-G18's `hfaith` row ("equal-weight initial forms coincide iff the
+  difference sits strictly higher" — GD23 §1.3 (g1)/(g3) via §5 BRIDGE),
+  0-corner-guarded: `hloc` = higher-weight terms are invisible to the initial
+  form; `hsep` = equal initial forms force strictly higher difference weight,
+  at non-⊤ weight.  NAMED rows, never axioms.  They are NOT derivable from
+  the landed `ValGr` rows and are LOAD-BEARING: the D-R3 identity probe
+  (`valGrIdentity`) satisfies every `ValGr` row yet fails `hloc`, and under
+  the identity carrier conclusion (b) below is FALSE — sketch countermodel,
+  the SAME interface seam as III-G16's compiled refutation: for the
+  (e,h) = (2,1) monomial valuation on ℤ₂[x] at Φ = X, f = X + 2, the dev
+  slots have u₀ = w(2) = 2, u₁ = w(1) + w(X) = 1, so first attainment sits at
+  slot 1, while the identity-carrier graded order of `in f` is the exact
+  X-divisibility order 0.  So the graded-piece laws are exactly what the GD23
+  re-founding prices into (V1), and they enter as displayed rows pending the
+  queued III-G15a/G16 interface adjudication.
+  RECORD (flag for review; G18 untouched): III-G18's `hfaith` row is stated
+  unguarded and is unsatisfiable at `A = B = 0` (`inF 0 = inF 0` holds by
+  `rfl` while `w 0 < w (0 - 0)` is `⊤ < ⊤`); the guarded split used here
+  avoids that corner.
+* `hdev` — **(V2b) = `devid`**: the assembled DEVID conclusion as a NAMED
+  row, in `hdevW`'s exact shape (III-G20).  III-G17 is UNLANDED — its ≤ half
+  III-G16 is REFUTED over the landed interface (Devid.lean's compiled
+  countermodel) — so the identity is consumed as a hypothesis row, which is
+  precisely how the GD23 re-founding DISPLAYS the consumption
+  ("(V2b) = DEVID"); when the adjudicated `devid` lands, this row is its
+  exact conclusion and consumers discharge it by one application.
+* `ψ`, `Rlam`, `A`, `hres` — **(V2c) = `gd3_min`**: the level's anchored
+  residual read (`AnchoredRead`, III-G21a's landed row package) and the
+  residual ψ-order `μ = ord_ψ(R_λ f)`, FIRED through the PROVED III-G21a
+  theorem `gd3_min` inside the proof.  `A.cancel`/`A.key_ne` also supply the
+  graded cancellation of the source proof's rev-4 G3′ repair ("only
+  non-divisibility and domain cancellation, no primeness, no unit status").
+* `htop` — the state value of `f` is finite: the source's standing "f ≠ 0
+  read at a genuine valuation", not derivable from the H8 rows over the total
+  `WithTop ℤ` carrier (same convention as III-G19's `hzero` row).
+
+SCOPE (the unit's honest perimeter): the conclusion is the WGEO **(a)/(b)**
+display — the graded core at which all four consumptions fire:
+
+* (a) `u_k ≥ γ` at every slot with `C_k ≠ 0`;
+* (b) `u_μ = γ` (in particular `C_μ ≠ 0`) and `u_k > γ` for every `k < μ` —
+  FIRST attainment at exactly `μ`, the rev-4 flag ("u_k = γ at slots k > μ is
+  neither excluded nor needed; (c)/(d) consume only first attainment").
+
+Clauses (c)/(d) of the source display (window-hull faces strictly descend;
+principal part of the full polygon = window hull; beyond-window points
+strictly above every window face's extended line) are convexity
+re-expressions of (a)/(b) in the Newton-polygon/hull vocabulary owned by unit
+III-A6's carrier (unlanded) — NOT claimed here; recorded as delegated.  The
+III-T12 confinement leg above consumes exactly the (b)+(a) core once its
+site's rows are instantiated — that wiring is III-T12's re-adjudication item,
+not silently performed here. -/
+
+section UnitIIIT13
+
+open Polynomial
+
+-- (Slot-vanishing of the zero polynomial: `devCoeff_zero_poly`, shared with
+-- the III-G23 wave, is consumed from `Devid.lean` — the dedup rule.)
+
+/-- III-T13 support: development slots beyond the degree vanish (monic key of
+positive degree) — the slot-support fact that lets WGEO(a) quantify over ALL
+slots under the displayed `C_k ≠ 0` guard. -/
+theorem devCoeff_eq_zero_of_natDegree_lt {K : Type*} [CommRing K]
+    [Nontrivial K] {Φ : Polynomial K} (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree) :
+    ∀ (k : ℕ) (B : Polynomial K), B.natDegree < k → devCoeff Φ B k = 0 := by
+  intro k
+  induction k with
+  | zero => intro B hB; omega
+  | succ k ih =>
+    intro B hB
+    simp only [devCoeff]
+    by_cases hq : B /ₘ Φ = 0
+    · rw [hq]; exact devCoeff_zero_poly Φ k
+    · refine ih _ ?_
+      have h1 : ¬ B.degree < Φ.degree := fun h =>
+        hq ((Polynomial.divByMonic_eq_zero_iff hΦ).mpr h)
+      have h2 : Φ.natDegree ≤ B.natDegree :=
+        Polynomial.natDegree_le_natDegree (not_lt.mp h1)
+      rw [Polynomial.natDegree_divByMonic B hΦ]
+      omega
+
+/-- III-T13 support — the WGEO(a)/(b) kernel at a bare state `(W, Φ)`: the
+    theorem `wgeo` below is exactly this kernel fired at the indexed state
+    `(w (i+1), keys i)` with the (V1)/(V2a) packages unbundled into the rows
+    consumed here (`IsPolyValuation` = `MacLaneV1Pkg`'s level row set;
+    `monic`/`positiveDegree` = `KeyPkg`'s fired rows).  Kept separate so the
+    slot bookkeeping runs over honest free variables; the row provenance is
+    the section header's ledger. -/
+theorem wgeo_core {K : Type*} [CommRing K] [Nontrivial K]
+    (W : Polynomial K → WithTop ℤ) (hval : IsPolyValuation W)
+    (Φ : Polynomial K) (hmon : Φ.Monic) (hdeg : 1 ≤ Φ.natDegree)
+    (G : ValGr W) (hkpa : KPaBlock W G Φ)
+    (hV2a : ∀ B : Polynomial K, B ≠ 0 → B.natDegree < Φ.natDegree →
+      ¬ ∃ C : Polynomial K, G.inF B = G.inF (Φ * C))
+    (hloc : ∀ X Y : Polynomial K, W X < W Y → G.inF (X + Y) = G.inF X)
+    (hsep : ∀ X Y : Polynomial K, W X ≠ ⊤ →
+      G.inF X = G.inF Y → W X < W (X - Y))
+    (hdev : ∀ B : Polynomial K, B ≠ 0 → W B = minDev W Φ B)
+    {𝒦 : Type*} [Field 𝒦] (ψ : Polynomial 𝒦)
+    (Rlam : Polynomial K → Polynomial 𝒦)
+    (A : AnchoredRead G Φ ψ Rlam)
+    (f : Polynomial K) (hf : f ≠ 0) (htop : W f ≠ ⊤)
+    (μ : ℕ) (hres : Moves.OrdPsiPoly ψ (Rlam f) μ) :
+    (∀ k, devCoeff Φ f k ≠ 0 → W f ≤ W (devCoeff Φ f k) + k • W Φ) ∧
+    W (devCoeff Φ f μ) + μ • W Φ = W f ∧
+    (∀ k, k < μ → W f < W (devCoeff Φ f k) + k • W Φ) ∧
+    devCoeff Φ f μ ≠ 0 := by
+  classical
+  have hrne : (Finset.range (f.natDegree + 1)).Nonempty :=
+    ⟨0, Finset.mem_range.mpr (Nat.succ_pos _)⟩
+  -- (V2b) fires: γ is the slot inf'
+  have hγ : W f = Finset.inf' (Finset.range (f.natDegree + 1)) hrne
+      (fun k => W (devCoeff Φ f k) + k • W Φ) := by
+    rw [hdev f hf]; rfl
+  -- (a) on the recorded slot range
+  have ha : ∀ k ∈ Finset.range (f.natDegree + 1),
+      W f ≤ W (devCoeff Φ f k) + k • W Φ := by
+    intro k hk
+    rw [hγ]
+    exact Finset.inf'_le _ hk
+  -- (a) at every slot, under the displayed `C_k ≠ 0` guard
+  have hA : ∀ k, devCoeff Φ f k ≠ 0 →
+      W f ≤ W (devCoeff Φ f k) + k • W Φ := by
+    intro k hk
+    by_cases hkr : k ∈ Finset.range (f.natDegree + 1)
+    · exact ha k hkr
+    · refine absurd (devCoeff_eq_zero_of_natDegree_lt hmon hdeg k f ?_) hk
+      have hkr' : ¬ k < f.natDegree + 1 := fun h => hkr (Finset.mem_range.mpr h)
+      omega
+  -- the attainment set S₀ and its FIRST slot m
+  set S := (Finset.range (f.natDegree + 1)).filter
+    (fun k => W (devCoeff Φ f k) + k • W Φ = W f) with hSdef
+  have hSne : S.Nonempty := by
+    obtain ⟨k, hk, hke⟩ := Finset.exists_mem_eq_inf' hrne
+      (fun k => W (devCoeff Φ f k) + k • W Φ)
+    refine ⟨k, Finset.mem_filter.mpr ⟨hk, ?_⟩⟩
+    have hke' := hke.symm
+    rw [← hγ] at hke'
+    exact hke'
+  set m := S.min' hSne with hmdef
+  have hmS : m ∈ S := Finset.min'_mem S hSne
+  have hmrange : m ∈ Finset.range (f.natDegree + 1) :=
+    (Finset.mem_filter.mp hmS).1
+  have hum : W (devCoeff Φ f m) + m • W Φ = W f := (Finset.mem_filter.mp hmS).2
+  have hmle : ∀ k ∈ S, m ≤ k := fun k hk => Finset.min'_le S k hk
+  -- the vertex slot is inhabited, with finite value pieces
+  have hCm0 : devCoeff Φ f m ≠ 0 := by
+    intro h0
+    apply htop
+    rw [← hum, h0, hval.zero, top_add]
+  have hmWΦ : m • W Φ ≠ ⊤ := by
+    intro h
+    apply htop
+    rw [← hum, h, add_top]
+  -- the min-weight part T and the strictly heavy tail R
+  set T := ∑ k ∈ S, devCoeff Φ f k * Φ ^ k with hTdef
+  set R := ∑ k ∈ (Finset.range (f.natDegree + 1)).filter
+      (fun k => ¬ (W (devCoeff Φ f k) + k • W Φ = W f)),
+      devCoeff Φ f k * Φ ^ k with hRdef
+  have hTR : T + R = f := by
+    rw [hTdef, hRdef, hSdef, Finset.sum_filter_add_sum_filter_not]
+    exact devCoeff_sum Φ hmon hdeg f
+  have hterm : ∀ k, W (devCoeff Φ f k * Φ ^ k)
+      = W (devCoeff Φ f k) + k • W Φ := by
+    intro k
+    rw [hval.mul, hval.w_pow]
+  obtain ⟨g, hg⟩ := WithTop.ne_top_iff_exists.mp htop
+  have hRgt : W f < W R := by
+    have hstep : ∀ k ∈ (Finset.range (f.natDegree + 1)).filter
+        (fun k => ¬ (W (devCoeff Φ f k) + k • W Φ = W f)),
+        ((g + 1 : ℤ) : WithTop ℤ) ≤ W (devCoeff Φ f k * Φ ^ k) := by
+      intro k hk
+      obtain ⟨hkr, hkne⟩ := Finset.mem_filter.mp hk
+      have h3 : W f < W (devCoeff Φ f k) + k • W Φ :=
+        lt_of_le_of_ne (ha k hkr) (fun h => hkne h.symm)
+      rw [hterm k]
+      rcases eq_or_ne (W (devCoeff Φ f k) + k • W Φ) ⊤ with htk | htk
+      · rw [htk]; exact le_top
+      · obtain ⟨v, hv⟩ := WithTop.ne_top_iff_exists.mp htk
+        rw [← hv]
+        rw [← hg, ← hv] at h3
+        have hgv : g < v := by exact_mod_cast h3
+        exact_mod_cast Int.add_one_le_iff.mpr hgv
+    calc W f = ((g : ℤ) : WithTop ℤ) := hg.symm
+      _ < ((g + 1 : ℤ) : WithTop ℤ) := by exact_mod_cast lt_add_one g
+      _ ≤ W R := by rw [hRdef]; exact hval.le_w_sum _ _ _ hstep
+  -- the min-weight part carries the state value
+  have hTγ : W T = W f := by
+    refine le_antisymm ?_ ?_
+    · by_contra hlt
+      push_neg at hlt
+      have h1 := hval.add T R
+      rw [hTR] at h1
+      exact absurd ((lt_min hlt hRgt).trans_le h1) (lt_irrefl _)
+    · have h1 := hval.add f (-R)
+      have e1 : f + -R = T := by rw [← hTR]; ring
+      rw [e1, hval.w_neg] at h1
+      exact le_trans (le_min le_rfl (le_of_lt hRgt)) h1
+  -- (V1)'s locality row fires: in f = in T
+  have hfT : G.inF f = G.inF T := by
+    rw [← hTR]
+    exact hloc T R (by rw [hTγ]; exact hRgt)
+  -- factor the key power out of the min-weight part
+  set B₀ := ∑ k ∈ S, devCoeff Φ f k * Φ ^ (k - m) with hB₀def
+  have hTB₀ : T = Φ ^ m * B₀ := by
+    rw [hTdef, hB₀def, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun k hk => ?_
+    have hmk : m ≤ k := hmle k hk
+    have h5 : Φ ^ k = Φ ^ m * Φ ^ (k - m) := by
+      rw [← pow_add]
+      congr 1
+      omega
+    rw [h5]; ring
+  have hfB₀ : G.inF f = G.inF (Φ ^ m * B₀) := by rw [hfT, hTB₀]
+  have hWB₀ : W B₀ ≠ ⊤ := by
+    intro h
+    apply htop
+    have h1 : W (Φ ^ m * B₀) = W f := by rw [← hTB₀]; exact hTγ
+    rw [hval.mul, h, add_top] at h1
+    exact h1.symm
+  -- the graded order of in f at the key IS the first attainment slot m
+  have hgrm : GrOrdAt G Φ f m := by
+    refine ⟨⟨B₀, hfB₀⟩, ?_⟩
+    rintro ⟨B, hB⟩
+    -- cancel the key power ((V2c)'s cancellation rows; the rev-4 G3′ shape)
+    have h1 : G.inF (Φ ^ m * B₀) = G.inF (Φ ^ m * (Φ * B)) := by
+      rw [← hfB₀, hB]
+      exact congrArg G.inF (by ring)
+    rw [G.g2, G.g2] at h1
+    have h2 : G.inF B₀ = G.inF (Φ * B) :=
+      A.cancel _ _ _ (G.inF_pow_ne A.key_ne m) h1
+    -- peel the vertex slot off B₀
+    set E := ∑ k ∈ S.erase m, devCoeff Φ f k * Φ ^ (k - m - 1) with hEdef
+    have hΦEsum : Φ * E = ∑ k ∈ S.erase m, devCoeff Φ f k * Φ ^ (k - m) := by
+      rw [hEdef, Finset.mul_sum]
+      refine Finset.sum_congr rfl fun k hk => ?_
+      have hmk : m ≤ k := hmle k (Finset.mem_of_mem_erase hk)
+      have hkm : k ≠ m := Finset.ne_of_mem_erase hk
+      have h5 : Φ ^ (k - m) = Φ * Φ ^ (k - m - 1) := by
+        conv_lhs => rw [show k - m = (k - m - 1) + 1 by omega]
+        rw [pow_succ]
+        ring
+      rw [h5]; ring
+    have hB₀E : B₀ = devCoeff Φ f m + Φ * E := by
+      have h6 := Finset.add_sum_erase S
+        (fun k => devCoeff Φ f k * Φ ^ (k - m)) hmS
+      rw [hB₀def, ← h6, Nat.sub_self, pow_zero, mul_one, hΦEsum]
+    -- every erased attaining slot sits exactly at the vertex weight
+    have hΦE : W (devCoeff Φ f m) ≤ W (Φ * E) := by
+      rw [hΦEsum]
+      refine hval.le_w_sum _ _ _ fun k hk => ?_
+      have hkS := Finset.mem_of_mem_erase hk
+      have hmk : m ≤ k := hmle k hkS
+      have huk : W (devCoeff Φ f k) + k • W Φ = W f :=
+        (Finset.mem_filter.mp hkS).2
+      have h7 : (W (devCoeff Φ f k) + (k - m) • W Φ) + m • W Φ
+          = W (devCoeff Φ f m) + m • W Φ := by
+        rw [add_assoc, ← add_nsmul, show k - m + m = k from by omega, huk]
+        exact hum.symm
+      have h8 : W (devCoeff Φ f k) + (k - m) • W Φ = W (devCoeff Φ f m) :=
+        WithTop.add_right_cancel hmWΦ h7
+      rw [hval.mul, hval.w_pow, h8]
+    -- (V1)'s separation row fires at the cancelled equation
+    have hsep' : W B₀ < W (B₀ - Φ * B) := hsep B₀ (Φ * B) hWB₀ h2
+    have hδB₀ : W (devCoeff Φ f m) ≤ W B₀ := by
+      rw [hB₀E]
+      exact le_trans (le_min le_rfl hΦE) (hval.add _ _)
+    have e2 : devCoeff Φ f m = Φ * (B - E) + (B₀ - Φ * B) := by
+      rw [hB₀E]; ring
+    have hkey : W (Φ * (B - E)) < W (B₀ - Φ * B) := by
+      by_contra hcon
+      push_neg at hcon
+      have h10 : W (B₀ - Φ * B) ≤ W (devCoeff Φ f m) := by
+        rw [e2]
+        exact le_trans (le_min hcon le_rfl) (hval.add _ _)
+      exact absurd (lt_of_le_of_lt (h10.trans hδB₀) hsep') (lt_irrefl _)
+    have hin : G.inF (devCoeff Φ f m) = G.inF (Φ * (B - E)) := by
+      rw [e2]
+      exact hloc _ _ hkey
+    -- (V2a)'s divisibility block fires at the vertex slot: contradiction
+    exact hV2a (devCoeff Φ f m) hCm0
+      (devCoeff_natDegree_lt hmon hdeg f m) ⟨B - E, hin⟩
+  -- (V2c) fires: gd3_min pins the graded order at μ; the two orders tie
+  have hgrμ : GrOrdAt G Φ f μ := gd3_min G Φ hkpa ψ Rlam A f hf μ hres
+  have hmμ : m = μ := GrOrdAt.unique hgrm hgrμ
+  refine ⟨hA, ?_, ?_, ?_⟩
+  · rw [← hmμ]
+    exact hum
+  · intro k hk
+    rw [← hmμ] at hk
+    have hkr : k ∈ Finset.range (f.natDegree + 1) := by
+      have hm' := Finset.mem_range.mp hmrange
+      exact Finset.mem_range.mpr (by omega)
+    refine lt_of_le_of_ne (ha k hkr) fun h => ?_
+    have hkS : k ∈ S := Finset.mem_filter.mpr ⟨hkr, h.symm⟩
+    have := hmle k hkS
+    omega
+  · rw [← hmμ]
+    exact hCm0
+
+/-- Lemma WGEO over the named key-compliance rows (V1) = MacLaneV1Pkg,
+    (V2a) = KeyPkg.KPa, (V2b) = devid, (V2c) = gd3_min — the GD23 re-founding.
+
+    O-1thr rev 4 §2.5 Lemma WGEO, clauses (a)/(b), at the state
+    `(w (i+1), keys i)` (the `tie_w_eq_v` index dictionary): with
+    `C_k := devCoeff (keys i) f k`, `u_k := w(C_k) + k·w(keys i)` and
+    `γ := w (i+1) f`, (a) every inhabited slot sits on or above the side
+    value, and (b) the sheared minimum is FIRST attained exactly at
+    `μ = ord_ψ(R_λ f)`: `u_μ = γ` (in particular `C_μ ≠ 0`) and `u_k > γ` at
+    every `k < μ`.  See the section header for the full completion ledger
+    (row provenance, why `hloc`/`hsep` are displayed rows, and the (c)/(d)
+    scope record); proof = the `wgeo_core` kernel fired at the state, with
+    (V1) consumed as its level-(i+1) row set and (V2a)'s `monic`/
+    `positiveDegree` rows fired directly. -/
+theorem wgeo {p : ℕ} [Fact p.Prime]
+    (w : ℕ → Polynomial ℤ_[p] → WithTop ℤ) (keys : ℕ → Polynomial ℤ_[p])
+    (i : ℕ)
+    (hv1 : MacLaneV1Pkg w keys)
+    (hkp : KeyPkg (w (i + 1)) (keys i))
+    (G : ValGr (w (i + 1)))
+    (hkpa : KPaBlock (w (i + 1)) G (keys i))
+    (hV2a : ∀ B : Polynomial ℤ_[p], B ≠ 0 → B.natDegree < (keys i).natDegree →
+      ¬ ∃ C : Polynomial ℤ_[p], G.inF B = G.inF (keys i * C))
+    (hloc : ∀ X Y : Polynomial ℤ_[p],
+      w (i + 1) X < w (i + 1) Y → G.inF (X + Y) = G.inF X)
+    (hsep : ∀ X Y : Polynomial ℤ_[p], w (i + 1) X ≠ ⊤ →
+      G.inF X = G.inF Y → w (i + 1) X < w (i + 1) (X - Y))
+    (hdev : ∀ B : Polynomial ℤ_[p], B ≠ 0 →
+      w (i + 1) B = minDev (w (i + 1)) (keys i) B)
+    {𝒦 : Type*} [Field 𝒦] (ψ : Polynomial 𝒦)
+    (Rlam : Polynomial ℤ_[p] → Polynomial 𝒦)
+    (A : AnchoredRead G (keys i) ψ Rlam)
+    (f : Polynomial ℤ_[p]) (hf : f ≠ 0) (htop : w (i + 1) f ≠ ⊤)
+    (μ : ℕ) (hres : Moves.OrdPsiPoly ψ (Rlam f) μ) :
+    (∀ k, devCoeff (keys i) f k ≠ 0 →
+      w (i + 1) f ≤
+        w (i + 1) (devCoeff (keys i) f k) + k • w (i + 1) (keys i)) ∧
+    w (i + 1) (devCoeff (keys i) f μ) + μ • w (i + 1) (keys i) = w (i + 1) f ∧
+    (∀ k, k < μ →
+      w (i + 1) f <
+        w (i + 1) (devCoeff (keys i) f k) + k • w (i + 1) (keys i)) ∧
+    devCoeff (keys i) f μ ≠ 0 :=
+  wgeo_core (w (i + 1))
+    ⟨hv1.zero (i + 1), hv1.one (i + 1), hv1.mul (i + 1), hv1.add (i + 1)⟩
+    (keys i) hkp.monic hkp.positiveDegree G hkpa hV2a hloc hsep hdev
+    ψ Rlam A f hf htop μ hres
+
+end UnitIIIT13
+
 end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-T15 gate): expect Lean core only.
@@ -540,3 +939,6 @@ end LeanUrat.Scaffold.DictIII
 -- `sorryAx` there until III-T11b/III-T13 land (BLOCKED note at the leg).
 #print axioms LeanUrat.Scaffold.DictIII.lastRead_of_readsOf_snoc
 #print axioms LeanUrat.Scaffold.DictIII.m6c_noPhantom
+
+-- Footprint audit (unit III-T13 gate): expect Lean core only.
+#print axioms LeanUrat.Scaffold.DictIII.wgeo
