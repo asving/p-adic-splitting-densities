@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.Core
+import LeanUrat.MovesU.Defs
 
 /-!
 # Scaffold/O12/Bookings — the four bookings, Theorem 1, (SL≥2) [BP_II units II-B1..B12]
@@ -16,6 +17,10 @@ This file carries **unit II-B1**: the transcribed definitions `Booking`,
 `Booking.kernel` (with the e ≤ 1 guard = 0), `Booking.Phi`, `Booking.solveU`.
 Units II-B2..B12 (the kernel/Φ lemmas, the four `Phi_*_eq` landed-det forms, the
 Theorem 1 solves, and the (SL≥2) statements) extend this module.
+
+The `BookingSystem` structure (the §1.2 display consumed by II-B11/B12 and by the
+𝔅_n coordinates of unit II-R12) is transcribed verbatim below as a prerequisite of
+the wave-0c statement layer.
 -/
 
 namespace LeanUrat.Scaffold
@@ -42,5 +47,17 @@ noncomputable def Booking.solveU (b : Booking) (e : ℕ) : Qq :=
   match b with
   | .O2 => 1 - (qX ^ blockE e)⁻¹
   | _   => 1 - qX * (qX ^ blockE e)⁻¹
+
+/-- A concrete transition presentation for one booking. `step e σ e' σ'` is an
+actual system transition; kernel support is equivalent to existence of a same-block
+transition, rather than being the definition of “self-loop”. -/
+structure BookingSystem (n : ℕ) where
+  booking : Booking
+  step : ℕ → MovesU.SplittingType n → ℕ → MovesU.SplittingType n → Prop
+  kernel_support :
+    ∀ e, booking.kernel e ≠ 0 ↔
+      ∃ σ σ', step e σ e σ'
+  handoff_descent :
+    ∀ {e σ e' σ'}, step e σ e' σ' → e' ≠ e → e' < e
 
 end LeanUrat.Scaffold
