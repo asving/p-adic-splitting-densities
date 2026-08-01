@@ -56,6 +56,16 @@ witness queued as H2-U7), and `childDetermined`'s ∃! is Option-uniqueness, nea
 implied by `ConsF` itself. A SIGN-OFF-GATED restatement to the faithful census
 form (§6 H2-U2's `FreshClauses`) is requested; until granted, the row stands and
 is consumed as-is, and (H2)'s honest carrier is the O-9 §5.4 prose.
+**H2-U10b UPDATE (2026-08-01, executed under Asvin's standing statement-change
+authority):** after the U10 BLOCKED record (F-4 refuted the signed-off
+restatement at the U7 witness), the consumer check found the ONLY firing site
+(`cu1_stepPair_ge2`, CU1.lean) interior-only, and `childDetermined` was
+restated to the `InteriorChain`-guarded unique-side form with a compiled
+interior non-vacuity witness (`interior_childDetermined_gate`,
+H2/DictIIIProbes.lean); honest pricing in the row's docstring (Hyps.lean):
+under the guard the clause is ConsF-derivable — it prices citation structure;
+the (FRESH) content stays at (TRANS-DEEP)/(VTX-DEEP), gated U9.
+`parentSeparated`/`junctionPin` stand as transcribed (F-1/F-2 findings live).
 
 **Unit count:** 7 dispatchable Lean units (U1/U2/U4/U5/U6/U7/U8, waves 0–2) +
 2 paper units (P1/P2) + 2 GATED units (U9 deep-order, U10 classifier-face) +
@@ -766,6 +776,14 @@ local-mass-formula literature for a fibered finite-level freshness/counting
 statement; MATCH/NO-MATCH verdicts with quoted statements. Output feeds §3.6.
 
 ### H2-U10 — GATED (classifier-face twins; DO NOT DISPATCH before sign-off)
+
+**STATUS (2026-08-01): U10 ran and BLOCKED (F-4; ledger ## H2-U10 EXECUTED);
+the follow-up H2-U10b adjudication EXECUTED the interior-scope repair** —
+`childDetermined` guarded by `InteriorChain` (unique-side form, non-vacuity
+witness compiled at an interior instance; terminal face routed to
+(T-READ)/(H6) in the row docstring). The full chain-keyed twins of
+(a′)/(b)/(c) described below remain OPEN (they need the §1.3 whole-row scope
+repair: `parentSeparated` is still refuted at duplicate histories).
 
 The faithful CHAIN-KEYED twins of (a′)/(b)/(c) for the Step-10/K1 face (the
 CU-leaf-label content the review's faces-list flagged as uncovered): fields

@@ -1937,3 +1937,44 @@ sites (Hyps.lean row; 8 hFRESH binders in CU1.lean incl. U8 verdict legs;
 lean/notes/openmath/H2U10_diff_confirm.md). NEXT: blueprint-level scope
 repair beyond the §2.3 envelope (per-instance carrier position or
 realizability guards) — needs a fresh adjudication package; U10 stays open.
+
+## H2-U10b EXECUTED: interior-scope repair LANDED (2026-08-01)
+Adjudicator-executor run on the U10 BLOCKED record, under Asvin's standing
+statement-change authority (no fake axioms / no vacuity-contradiction /
+honest pricing).  (1) CONSUMER CHECK (decisive): the ONLY firing site of
+`FRESH.childDetermined` is `cu1_stepPair_ge2` (CU1.lean), which binds
+`(hint : InteriorChain H)`, rewrites `rw [hint.continuingPart_nodes] at hν`,
+then fires `have hex := hFRESH.childDetermined hint hcons hν` — INTERIOR-ONLY;
+no consumer needs terminal scope.  Verdict: dichotomy branch (a).
+(2) EXECUTED: `childDetermined` RESTATED (Hyps.lean) to the guarded
+unique-side form — `InteriorChain H → ConsF f H D R → H.nodes[i]? = some ν →
+∃! S, R.side i = some S ∧ S ∈ D.principalSides i ∧ HasRequestedSlope (Theta H)
+i S` (slopes EXIST under the guard, so side_spec no longer forces none — the
+F-4 escape); `def InteriorChain` MOVED VERBATIM CU1.lean → Hyps.lean;
+`parentSeparated`/`junctionPin` byte-identical (whole-row inhabitation stays
+open: F-2/U8 duplicate-history refutation stands).  MANDATORY non-vacuity
+witness COMPILED (DictIIIProbes.lean, Lean-core): `interiorEHist` (one-node
+interior chain, a₀ = 2, sel = some (1,2)) with actual slope [(1,1)]
+(`interiorTheta_slopes`), `interiorData`/`interiorReader` law-complete,
+`consF_interior`, `interiorEHist_interior`, THE GATE
+`interior_childDetermined_gate` (∃! realized at the ACTUAL side
+`interiorSide`), `interior_childDetermined_instance` (fires the restated
+field shape), and `duplicateEHist_not_interior` (the guard excludes the F-4
+world).  HONEST PRICING (in the row docstring): under the guard the clause is
+ConsF-derivable (side_spec existence + Option injectivity) — the row prices
+citation structure; genuine (FRESH) content stays at (TRANS-DEEP)/(VTX-DEEP),
+gated H2-U9.  Terminal face routed to (T-READ)/(H6) via docstring pointer.
+Ripple: the U10 census 11 Lean sites re-checked — Hyps row restated, the 1
+firing site adapted, 7 pass-through hFRESH binders + U8 verdict legs + F-2
+probe compile UNCHANGED, F-4 probe stands as the guard's justification
+record; doc mentions updated (HDISCHARGE_H2.md ×2: as-built note + U10
+section status; BP_III.md §1.3 as-executed annotation).  GATES: per-file
+green; full `lake build` green (8579 jobs); AxChk census 740 footprints,
+0 sorryAx, non-core axioms exactly the known declared families — NO
+regression; Codex diff gate VERDICT: CONFIRMED (7/7 checks, quotes on file) (archive:
+lean/notes/openmath/H2U10b_diff_confirm.md).  Commit note: the Hyps/CU1 legs
+were swept mid-flight into f8c74b5 ("WIP sweep"); the full U10b diff is
+f8c74b5 (those 2 files) + this commit (probes, blueprints, records).
+NEXT: U10 chain-keyed twins of (a′)/(b)/(c) remain OPEN behind the §1.3
+whole-row scope repair (parentSeparated); the (H2) content discharge remains
+H2-U9 ((TRANS-DEEP), gated on B2-FINAL acceptance).

@@ -242,6 +242,18 @@ structure GRB (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop w
       D.principalSides i ≠ []
 
 /-- (H2) = (FRESH), with every object locally quantified. -/
+-- AS-EXECUTED NOTE (H2-U10b, 2026-08-01, Asvin's standing statement-change
+-- authority): the `childDetermined` field displayed below was RESTATED in the
+-- landed row (Scaffold/DictIII/Hyps.lean) — the displayed form is FALSE at
+-- terminal indices (compiled: `probe_restated_childDetermined_refuted`,
+-- HDischarge/H2/DictIIIProbes.lean).  As landed it is guarded by
+-- `InteriorChain H` (def moved to Hyps.lean) and concludes
+-- `∃! S, R.side i = some S ∧ S ∈ D.principalSides i ∧
+--    HasRequestedSlope (Theta H) i S`
+-- (the unique-side law where slopes exist; non-vacuity witness
+-- `interior_childDetermined_gate` ibid.; honest pricing in the row docstring).
+-- `parentSeparated`/`junctionPin` are landed as displayed (III-U8 verdict on
+-- `parentSeparated` stands).  Terminal reads are (T-READ)/(H6) content.
 structure FRESH (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop where
   childDetermined : ∀ {f : Polynomial ℤ_[p]} {H : EHist p F}
     {D : GMNData f (Theta H)} {R : GMNReader f (Theta H) D}

@@ -133,7 +133,15 @@ FAILS its non-vacuity gate in the signed-off form — U10 is BLOCKED:
   (trivial — placeholder again); leaving it unguarded makes it FALSE (this
   probe).  The terminal-index read is terminal-seam ((T-READ)/H6) content,
   not (FRESH); the honest restatement needs a blueprint-level scope repair
-  beyond the §2.3 signed-off envelope — statement fence, NOT executed here. -/
+  beyond the §2.3 signed-off envelope — statement fence, NOT executed here.
+
+EXECUTED at H2-U10b (2026-08-01, adjudicated under Asvin's standing
+statement-change authority): the consumer check found the ONLY firing site
+(`cu1_stepPair_ge2`) interior-only, so `DictIII.FRESH.childDetermined` was
+restated to the `InteriorChain`-guarded unique-side form (Hyps.lean — see the
+row's docstring for the honest pricing).  This probe STANDS as the compiled
+record of why the guard is REQUIRED (the unguarded form is false).  The
+mandatory non-vacuity witness is the `interior*` block below. -/
 
 /-- Gate artifact (PROBE F-4): the all-empty semantic datum over the U7
     witness chain, `rootOrder` matched to `duplicateEHist.a0 = 1` so the
@@ -190,6 +198,189 @@ theorem probe_restated_childDetermined_refuted :
     consF_noneReaderDup (by simp [duplicateEHist_nodes])
   simp [noneReaderDup] at hS
 
+/-! ## H2-U10b — the MANDATORY interior non-vacuity witness
+
+The restated (guarded) `DictIII.FRESH.childDetermined` row is anchored here at
+a compiled INTERIOR instance: a one-node interior chain (a₀ = 2; the node
+continuing with `sel = some (1, 2)`, μ = 2 ≥ 2) whose `Theta` chain carries an
+ACTUAL slope `(1, 1)`, together with semantic data holding one principal side
+at that slope, a reader reading it, and a `ConsF` proof — so the guarded
+clause's ∃! is realized by an actual side (`interior_childDetermined_gate`),
+NOT by the vacuous none-world of PROBE F-4.  The F-4 witness cannot anchor
+the guarded row: `duplicateEHist_not_interior` shows the guard excludes it.
+Witness artifacts only — degenerate toy carriers, never to be quarried as
+project data (the U8 witness-style note applies verbatim). -/
+
+/-- H2-U10b witness node: CONTINUING (`sel = some (1, 2)`, μ = 2 ≥ 2),
+    e = h = 1, ℓ = 2 (so `hsel`'s `μ·g ≤ ℓ` holds: 2·1 ≤ 2). -/
+def interiorNode : DictIII.ENodeData where
+  e := 1
+  h := 1
+  ℓ := 2
+  s := 0
+  u := 0
+  sel := some (1, 2)
+  inc := false
+  he := le_rfl
+  hh := le_rfl
+  hcop := by decide
+  hl := one_le_two
+  hsel := by
+    intro gμ hgμ
+    simp only [Option.mem_def, Option.some.injEq] at hgμ
+    subst hgμ
+    exact ⟨le_rfl, one_le_two, le_rfl⟩
+
+/-- H2-U10b witness history: ONE interior node over `F = ZMod 2`, a₀ = 2 —
+    every `EHist` carrier law holds, and every `InteriorChain` clause holds. -/
+noncomputable def interiorEHist : DictIII.EHist 2 (ZMod 2) where
+  base := ⊤
+  psi0 := Polynomial.X
+  hpsi0 := ⟨Polynomial.monic_X, Polynomial.irreducible_X⟩
+  a0 := 2
+  ha0 := one_le_two
+  nodes := [interiorNode]
+  fld := fun _ => ⊤
+  psihat := fun _ => Polynomial.X + 1
+  hpsihat := fun _ => probePsihat_laws
+
+/-- The witness node list, read back (definitional). -/
+theorem interiorEHist_nodes : interiorEHist.nodes = [interiorNode] := rfl
+
+/-- The witness chain has an ACTUAL slope: `Theta`'s slope list is `[(1, 1)]`
+    (the node is continuing, so `continuingPart` keeps it) — the exact point
+    where the F-4 world (`slopes = []`) is escaped. -/
+theorem interiorTheta_slopes :
+    (DictIII.Theta interiorEHist).slopes = [(1, 1)] := rfl
+
+/-- H2-U10b guard check: the witness IS an interior chain. -/
+theorem interiorEHist_interior : DictIII.InteriorChain interiorEHist := by
+  refine ⟨le_rfl, ?_⟩
+  intro i ν hν
+  rcases i with _ | i
+  · rw [interiorEHist_nodes] at hν
+    simp only [List.getElem?_cons_zero, Option.some.injEq] at hν
+    subst hν
+    refine ⟨by simp [interiorNode], ?_⟩
+    intro gμ hgμ
+    simp only [interiorNode, Option.mem_def, Option.some.injEq] at hgμ
+    subst hgμ
+    exact le_rfl
+  · rw [interiorEHist_nodes] at hν
+    simp at hν
+
+/-- H2-U10b guard check, negative face: the U7/F-4 all-terminal witness is NOT
+    interior — the guard excludes exactly the refuting world. -/
+theorem duplicateEHist_not_interior :
+    ¬ DictIII.InteriorChain duplicateEHist := fun h =>
+  (h.2 0 probeNode (by simp [duplicateEHist_nodes])).1 rfl
+
+/-- H2-U10b witness side: the (c1)-shape datum matching `interiorNode`
+    fieldwise (`SideDatum` is law-free data). -/
+def interiorSide : DictIII.SideDatum where
+  e := 1
+  h := 1
+  ℓ := 2
+  s := 0
+  u := 0
+  isNegInfty := false
+
+/-- H2-U10b witness data: ONE principal side at every level (only level 0 is
+    ever requested), residual order 2 (= the node's μ), residual degree 2
+    (= the side's ℓ), root order 2 (= a₀). -/
+noncomputable def interiorData :
+    DictIII.GMNData (Polynomial.X : Polynomial ℤ_[2])
+      (DictIII.Theta interiorEHist) where
+  principalSides := fun _ => [interiorSide]
+  residualOrder := fun _ => 2
+  residualDegree := fun _ => 2
+  rootOrder := 2
+
+/-- H2-U10b witness reader: reads `interiorSide` at level 0 (where the slope
+    is requested), `none` above; every reader law is proved. -/
+noncomputable def interiorReader :
+    DictIII.GMNReader (Polynomial.X : Polynomial ℤ_[2])
+      (DictIII.Theta interiorEHist) interiorData where
+  side := fun i => if i = 0 then some interiorSide else none
+  side_spec := by
+    intro i S
+    unfold DictIII.HasRequestedSlope DictIII.requestedSlope
+    rcases i with _ | i
+    · rw [interiorTheta_slopes]
+      constructor
+      · intro hS
+        have hS' : interiorSide = S := by simpa using hS
+        subst hS'
+        exact ⟨List.mem_singleton.mpr rfl, rfl⟩
+      · rintro ⟨hmem, -⟩
+        have hS' : S = interiorSide := by simpa [interiorData] using hmem
+        subst hS'
+        rfl
+    · rw [interiorTheta_slopes]
+      simp [interiorData]
+  side_unique := by
+    intro i S T hS hT _ _
+    have h1 : S = interiorSide := by simpa [interiorData] using hS
+    have h2 : T = interiorSide := by simpa [interiorData] using hT
+    rw [h1, h2]
+  resOrd := fun _ => 2
+  resOrd_spec := fun _ => rfl
+  rootOrd := 2
+  rootOrd_spec := rfl
+  resDeg_eq_sideDeg := by
+    intro i S h
+    rcases i with _ | i
+    · have h' : interiorSide = S := by simpa using h
+      subst h'
+      rfl
+    · simp at h
+
+/-- H2-U10b witness step: `ConsF` HOLDS at the interior witness — the root
+    orders match (2 = 2) and the single continuing node is read as
+    `interiorSide` with matching fields and residual order. -/
+theorem consF_interior :
+    DictIII.ConsF (Polynomial.X : Polynomial ℤ_[2]) interiorEHist
+      interiorData interiorReader := by
+  refine ⟨rfl, ?_⟩
+  intro i ν hν
+  have hnodes : interiorEHist.continuingPart.nodes = [interiorNode] := rfl
+  rw [hnodes] at hν
+  rcases i with _ | i
+  · simp only [List.getElem?_cons_zero, Option.some.injEq] at hν
+    subst hν
+    refine ⟨interiorSide, rfl, rfl, ?_⟩
+    intro g μ hgμ
+    simp only [interiorNode, Option.some.injEq, Prod.mk.injEq] at hgμ
+    exact hgμ.2
+  · simp at hν
+
+/-- **H2-U10b THE GATE (the mandatory non-vacuity witness, PASSED)**: the
+    restated guarded `childDetermined` row is realized NON-VACUOUSLY at the
+    interior witness — at level 0 the ∃! holds with the ACTUAL side
+    `interiorSide` (compare PROBE F-4, where `side ≡ none` was forced).
+    Together with `interiorEHist_interior` and `consF_interior` this
+    instantiates every hypothesis of the guarded row at an interior instance
+    with an actual slope. -/
+theorem interior_childDetermined_gate :
+    ∃! S, interiorReader.side 0 = some S ∧
+      S ∈ interiorData.principalSides 0 ∧
+      DictIII.HasRequestedSlope (DictIII.Theta interiorEHist) 0 S := by
+  refine ⟨interiorSide, ⟨rfl, List.mem_singleton.mpr rfl, rfl⟩, ?_⟩
+  rintro T ⟨hT, -, -⟩
+  exact (Option.some.inj hT).symm
+
+/-- H2-U10b consistency display: the guarded row's full instance at the
+    witness, fired through the RESTATED field shape (what `cu1_stepPair_ge2`
+    consumes, specialized) — kept as a compiled unit test of the new field
+    against its consumer. -/
+theorem interior_childDetermined_instance
+    (hF : DictIII.FRESH 2 (ZMod 2)) :
+    ∃! S, interiorReader.side 0 = some S ∧
+      S ∈ interiorData.principalSides 0 ∧
+      DictIII.HasRequestedSlope (DictIII.Theta interiorEHist) 0 S :=
+  hF.childDetermined (ν := interiorNode) interiorEHist_interior consF_interior
+    (by simp [interiorEHist_nodes])
+
 end LeanUrat.Scaffold.HDischarge.H2
 
 -- Footprint audit (unit H2-U7 gate): expect Lean core only.
@@ -197,3 +388,9 @@ end LeanUrat.Scaffold.HDischarge.H2
 #print axioms LeanUrat.Scaffold.HDischarge.H2.probe_not_FRESH
 -- Footprint audit (H2-U10 gate probe F-4): expect Lean core only.
 #print axioms LeanUrat.Scaffold.HDischarge.H2.probe_restated_childDetermined_refuted
+-- Footprint audit (H2-U10b interior non-vacuity gate): expect Lean core only.
+#print axioms LeanUrat.Scaffold.HDischarge.H2.interiorEHist_interior
+#print axioms LeanUrat.Scaffold.HDischarge.H2.duplicateEHist_not_interior
+#print axioms LeanUrat.Scaffold.HDischarge.H2.consF_interior
+#print axioms LeanUrat.Scaffold.HDischarge.H2.interior_childDetermined_gate
+#print axioms LeanUrat.Scaffold.HDischarge.H2.interior_childDetermined_instance
