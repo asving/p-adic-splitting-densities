@@ -115,6 +115,91 @@ noncomputable def terminalDatumD (f : Polynomial ℤ_[p]) (H : EHist p F)
       if S.isNegInfty then none else some (S.e, S.h)
     verdict := if DecIrrSeam H then (eAccE H, eAccF H) else (1, H.psi0.natDegree) }
 
+/-- H6-A5 (VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit A5):
+Definition RC, repaired (cures D-5's downstream; CUC §9.2a at the corrected
+keying). Deps: A4 (`terminalDatumD`).
+
+The three clauses: (1) the emitted node is terminal (`sel = none`); (2) the READ
+clause in the NONEMPTY + ∀-SIDES form (fold round 1, Codex finding 3) — the side
+list at index `H.nodes.length` (= paper level k′+1, the A3 convention) is
+nonempty AND every listed side carries the node's (e, h, ℓ, s, u) datum; consumed
+under `ReadThroughIota`, so the sides are the real read's, and on DEC seams the
+III-S4 forcing makes the list a singleton (the A4b coherence obligation
+`terminalDatumD_slope_spec`, displayed there, assumed nowhere here); (3) the
+verdict pair is the A4-forced one.
+
+NON-CIRCULARITY (CUC §9.2a's display transcribed): `D` is polygon data of `f`
+over Θ(𝐇°) — every clause reads `D`'s side lists and the `H`-computed verdict;
+NO clause mentions the true factor.
+
+§9.2a DATUM-GRANULARITY CAVEAT: the consistency keyed here is at the (c1)-shape
+granularity (e, h, ℓ, s, u) of the side lists plus the verdict pair; field
+inventory closure beyond that (residual orders/degrees, root order) is
+GD-4-owner territory, consumed by nothing here. -/
+def RCConsistentD (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) (ν : ENodeData) (EF : ℕ × ℕ) : Prop :=
+  ν.sel = none ∧
+  (D.principalSides H.nodes.length ≠ [] ∧
+    ∀ S ∈ D.principalSides H.nodes.length,
+      (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)) ∧
+  EF = (terminalDatumD f H D).verdict
+
+/-! ## Unit A4b — `terminalDatumD_slope_spec`: DISPLAYED OBLIGATION (not landed)
+
+Blueprint spec (`lean/blueprints/HDISCHARGE_H6.md` §4 A4b, added at fold
+round 1 — Codex finding 4), transcribed verbatim: "the two read notions
+cohere: `terminalDatumD_slope_spec` — under `ReadThroughIota f H D` + the
+III-S4 forcing, the side list at level k′+1 is a singleton, so the
+`head?`-read slope IS the unique side's datum and `RCConsistentD`'s ∀-form
+clause pins the SAME side. Lands as a lemma once III-S4 lands; until then the
+coherence is a DISPLAYED obligation, not assumed anywhere."
+
+STATUS AT HEAD (2026-08-01): NOT LANDED — the external dep III-S4
+(`cu2t_readForcing`, BP_III's unit, NOT re-owned here) is BLOCKED — FALSE AS
+DISPLAYED (`DictIII/CU2t.lean` §III-S4; compiled countermodel
+`S4Refute.cu2t_readForcing_false`, Lean-core), and its repaired form is
+unlanded. Per the blueprint ruling the coherence is therefore DISPLAYED here
+and assumed NOWHERE — no declaration, no axiom, no sorry rides this unit.
+
+THE DISPLAYED OBLIGATION (elaboration + provability probed at this pin,
+Lean 4.31, 2026-08-01 — probe scratch since deleted; `hforce` is the
+interface slot for the repaired III-S4's forcing output, in the singleton
+form the CUC §9.3 (i) semantic read supplies: "total horizontal length 1,
+hence consists of EXACTLY ONE side"):
+
+  theorem terminalDatumD_slope_spec (f : Polynomial ℤ_[p]) (H : EHist p F)
+      (D : GMNData f (Theta H)) (S : SideDatum)
+      (hread : ReadThroughIota f H D)
+      (hforce : D.principalSides H.nodes.length = [S]) :
+      (terminalDatumD f H D).slope
+          = (if S.isNegInfty then none else some (S.e, S.h)) ∧
+      ∀ ν : ENodeData,
+        (∀ T ∈ D.principalSides H.nodes.length,
+          (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (T.e, T.h, T.ℓ, T.s, T.u)) →
+        (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)
+
+Reading: clause 1 — the A4 `head?`-read slope IS the unique side's datum (the
+slope-−∞ side mapped to `none`, A4's convention). Clause 2 — the ∀-SIDES
+antecedent is VERBATIM `RCConsistentD`'s read clause (unit A5, above), so any
+RC-consistent node's datum is pinned to the SAME side S. `hread` is the
+standing antecedent (the sides are the real read's; the repaired III-S4
+consumes it); level convention: index `H.nodes.length` = paper level k′+1
+(the A3 display).
+
+Probe record (this pin): with `hforce` in the singleton form the display
+elaborates AND is provable (`simp [terminalDatumD, hforce]` closes clause 1;
+clause 2 instantiates its ∀ at `S ∈ [S]`) — the WHOLE content of A4b is thus
+exactly the forcing supply, which is why it cannot land before III-S4 does.
+If BP_III's repaired III-S4 instead lands its forcing in the §1.9
+`∃!`-(ℓ = 1) shape, the singleton must be derived THERE from the polygon
+(total length 1 — the CU2t §III-S4 repair bullet: `R.side_unique` is vacuous
+at the terminal index), and `hforce`'s shape re-keys at landing time.
+
+CONSUMPTION FENCE: nothing in this file or its consumers may assume the
+coherence before the lemma lands — `terminalDatumD`'s `head?`-read and the
+A5/A7 ∀-SIDES read clauses travel as INDEPENDENT notions until then (the
+Codex finding 4 disposition). -/
+
 /-- H6-A6 (VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit A6): the
 terminal-emission interface — the quantifier domain the CUC §9.4 rows need and
 the BP_III display lacked (the root cause of defects D-1..D-4).
@@ -439,5 +524,61 @@ theorem readThroughIota_lawless_fails :
       : List SideDatum) = [] from rfl,
     List.filter_nil, principalData_X_add_two] at h0
   exact List.cons_ne_nil _ _ h0.symm
+
+/-! ## Unit A7 — THE repaired (H6) trio + tVERDhen (statement-only)
+
+Statement transcribed VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit
+A7.  Supersedes BP_III's III-H5 display; cures defects D-1..D-4.  These rows
+are [M]: NAMED structure rows, statement-only here — never axioms, never
+discharged by fiat; discharge = waves B/C at the canonical engine + the
+ROOT-level adjudication.  The RC tie (emits + DecSeam + tREAD + tVERD ⇒
+`RCConsistentD`) is unit D1a's lemma, NOT a row here. -/
+
+/-- H6-A7 (VERBATIM, `lean/blueprints/HDISCHARGE_H6.md` §4 unit A7): the
+repaired (H6) terminal-seam hypothesis trio + `tVERDhen`.
+
+FIELD ↔ CUC ROW MAP (§9.4):
+* `tDECdec` ↔ (T-DEC-dec): a reached decided seam EMITS — τ-irr seams on the
+  full `emits` channel, hen/−∞ seams (INCLUDING a₀ = 1, the fold-round-1
+  Codex-finding-1 repair) on the verdict-pair-only `emitsHen` channel.
+* `tDECcor` ↔ (T-DEC-cor): emission only AT decided seams (or the displayed
+  `DeepCorner` escape on the `emits` channel); `emitsHen` fires only at
+  `DecHenSeam`.
+* `tREAD` ↔ (T-READ): the emitted record's (e, h, ℓ, s, u) agree with EVERY
+  listed principal side at the terminal index — the NONEMPTY + ∀-SIDES form
+  (immune to junk-extra-side satisfaction; with the forcing lemma III-S4 the
+  list is a singleton, so this is exactly "the fields are THE unique side's
+  datum" without presupposing the forcing).
+* `tVERD` ↔ (T-VERD): the emitted verdict pair is the forced terminal datum's.
+* `tVERDhen` ↔ (T-VERD, hen channel): the machine-record channel pins (1, f₀).
+
+Every row carries the CUC standing antecedents `ReadThroughIota f H D` +
+`ConsF f H D R` ("GMN objects through ι" + "Cons_f(𝐇°)" transcribed — kills
+the lawless-D refutations, fold-round-1 Codex findings 2/3). -/
+structure TerminalSeamHypsE (p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] (E : TerminalEmission p F) : Prop where
+  tDECdec : ∀ f H (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+    ReadThroughIota f H D → ConsF f H D R →
+    E.reaches f H →
+    (DecIrrSeam H → ∃ ν EF, E.emits f H ν EF) ∧
+    (DecHenSeam f H D → ∃ EF, E.emitsHen f H EF)
+  tDECcor : ∀ f H (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+    ReadThroughIota f H D → ConsF f H D R →
+    (∀ ν EF, E.emits f H ν EF → DecSeam f H D ∨ DeepCorner f H D) ∧
+    (∀ EF, E.emitsHen f H EF → DecHenSeam f H D)
+  tREAD : ∀ f H ν EF (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+    ReadThroughIota f H D → ConsF f H D R →
+    E.emits f H ν EF → DecSeam f H D →
+    D.principalSides H.nodes.length ≠ [] ∧
+    ∀ S ∈ D.principalSides H.nodes.length,
+      (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)
+  tVERD : ∀ f H ν EF (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+    ReadThroughIota f H D → ConsF f H D R →
+    E.emits f H ν EF → DecSeam f H D →
+    EF = (terminalDatumD f H D).verdict
+  tVERDhen : ∀ f H EF (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+    ReadThroughIota f H D → ConsF f H D R →
+    E.emitsHen f H EF → DecHenSeam f H D →
+    EF = (1, H.psi0.natDegree)
 
 end LeanUrat.Scaffold.HDischarge.H6
