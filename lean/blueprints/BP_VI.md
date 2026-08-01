@@ -272,12 +272,14 @@ theorem rootC_fired (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
     `RelCarrierPack`); rs0Lump ← `Slot_rs0Lump n C` (SlotsG4); trackRule ←
     `Slot_trackRule n KC K7` (SlotsG5); dnLattice ← `Slot_dnLattice n KC K7`
     (SlotsG6); m1m5Echo ← `Slot_m1m5Echo n C` (SlotsG7); x1aDict ←
-    `Slot_x1aDict n KC` (SlotsG8); m4bConst ← `Slot_m4bConst …` (SlotsG9);
+    `Slot_x1aDict n KC` (SlotsG8); m4bConst ← `Slot_m4bConst n SS` over the
+    measured carrier `SS : CtsMeasured n 𝓕 Sv` (SlotsG9);
     jcInvHist ← `Slot_jcInvHist n` (SlotsG10). -/
 structure SlotAssignment (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
     (K7 : Cl7Kernel n KC) (RP : RelCarrierPack)
     (𝓕 : LeanUrat.MovesV.CtsFamily n)
-    (SS : LeanUrat.MovesV.StepSys n 𝓕) : Prop where
+    (Sv : LeanUrat.MovesV.StepSys n)
+    (SS : LeanUrat.MovesV.CtsMeasured n 𝓕 Sv) : Prop where
   rel1 : RelRow_rel1 RP
   rel2a : RelRow_rel2a RP
   rel2b : RelRow_rel2b RP
@@ -289,7 +291,7 @@ structure SlotAssignment (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
   dn : Slot_dnLattice n KC K7
   m15 : Slot_m1m5Echo n C
   x1a : Slot_x1aDict n KC
-  m4b : Slot_m4bConst n 𝓕 SS
+  m4b : Slot_m4bConst n SS
   jc : Slot_jcInvHist n
 
 /-- VI-B4: RootC fired with all thirteen theoremU propositions instantiated by
@@ -299,16 +301,20 @@ theorem rootC_fired_at_slots (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
     (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC)
     (KT : UpstreamTyped n KC) (BP : BridgePre n C)
     (RP : RelCarrierPack) (𝓕 : LeanUrat.MovesV.CtsFamily n)
-    (SS : LeanUrat.MovesV.StepSys n 𝓕)
-    (SA : SlotAssignment n C KC K7 RP 𝓕 SS)
+    (Sv : LeanUrat.MovesV.StepSys n)
+    (SS : LeanUrat.MovesV.CtsMeasured n 𝓕 Sv)
+    (SA : SlotAssignment n C KC K7 RP 𝓕 Sv SS)
     (BD : ∀ (p : ℕ) (hp : p.Prime), BridgeInputs n C KC K7 p hp) :
     RootC n C KC K7 (bridgeSolve C BP.hdet)
       (fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp))
 ```
 
-The public binder decision is fixed: `SlotAssignment` takes `𝓕` before `SS`,
-with `SS : MovesV.StepSys n 𝓕`; `m4b` is the full
-`Slot_m4bConst n 𝓕 SS` face. `Slot_trackRule n KC K7` and
+The public binder decision is fixed (REVISION 3): `SlotAssignment` takes `𝓕`
+before the step system `Sv` and the measured carrier `SS`, with
+`Sv : MovesV.StepSys n` and `SS : MovesV.CtsMeasured n 𝓕 Sv` (the corpus
+`StepSys` takes only `n`, MovesV/Defs.lean:81, and `Slot_m4bConst`'s explicit
+argument after `n` is the measured carrier, SlotsG9_m4bConst.lean:74); `m4b`
+is the full `Slot_m4bConst n SS` face. `Slot_trackRule n KC K7` and
 `Slot_dnLattice n KC K7` retain the explicit `(n, KC, K7)` order shown above.
 No binder or existential-face choice remains for E-phase.
 

@@ -92,43 +92,15 @@ theorem rootC_fired (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
     hm15 hx1a hm4b hjc
     (fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp))
 
-/- BLOCKED(VI-B3): the §1.3 VERBATIM `structure SlotAssignment` does NOT
-elaborate against the built corpus; statement changes are forbidden, so the
-unit is parked here verbatim (commented) with the exact errors of record.
-
-Two binder-interface mismatches (all 24 other tokens typecheck):
-
-(1) `(SS : LeanUrat.MovesV.StepSys n 𝓕)` — corpus `MovesV.StepSys` takes ONLY
-    `(n : ℕ)` (MovesV/Defs.lean:81; unique declaration, no family-indexed
-    variant anywhere). Exact error:
-      Function expected at
-        MovesV.StepSys n
-      but this term has type
-        Type 1
-      Note: Expected a function because this term is being applied to the
-      argument 𝓕
-
-(2) `m4b : Slot_m4bConst n 𝓕 SS` — corpus face is
-    `Slot_m4bConst (n : ℕ) {Cv : MovesV.CtsFamily n} {Sv : MovesV.StepSys n}
-       (V : MovesV.CtsMeasured n Cv Sv) : Prop` (SlotsG9_m4bConst.lean:74):
-    the only explicit argument after `n` is the MEASURED carrier `V`. Exact
-    error:
-      Application type mismatch: The argument
-        𝓕
-      has type
-        MovesV.CtsFamily n
-      but is expected to have type
-        MovesV.CtsMeasured n ?m.6 ?m.7
-      in the application
-        Slot_m4bConst n 𝓕
-
-No display-adjustment (Spine.lean VI-S1 convention) is available: the unique
-well-typed reading of the m4b face needs THREE binders
-`(𝓕 : CtsFamily n) (Sv : StepSys n) (SS : CtsMeasured n 𝓕 Sv)` with
-`m4b : Slot_m4bConst n SS` — a binder-interface change to the §1.3 FIXED
-`(𝓕, SS)` decision (Revision-2 finding 1), i.e. exactly the E-phase interface
-decision declared closed. Needs blueprint adjudication before VI-B3/VI-B4 can
-land.
+/- REVISION-3 STATEMENT REPAIR OF RECORD (VI-B3/VI-B4, compile-gated): the
+§1.3 Revision-2 display `(SS : LeanUrat.MovesV.StepSys n 𝓕)` with
+`m4b : Slot_m4bConst n 𝓕 SS` was COMPILER-REFUTED (corpus `MovesV.StepSys`
+takes only `(n : ℕ)`, MovesV/Defs.lean:81; `Slot_m4bConst`'s explicit argument
+after `n` is the MEASURED carrier `V : MovesV.CtsMeasured n Cv Sv`,
+SlotsG9_m4bConst.lean:74). The unique well-typed intent-preserving reading —
+three binders `(𝓕 : CtsFamily n) (Sv : StepSys n) (SS : CtsMeasured n 𝓕 Sv)`
+with `m4b : Slot_m4bConst n SS`, keeping `𝓕` before `SS` per the Revision-2
+finding-1 decision — is what lands below (BP_VI.md REVISION 3). -/
 
 /-- VI-B3: the D-SC SLOT ASSIGNMENT — the typed faces of theoremU's 13 bare-Prop
     slot parameters, NAMED (statement-layer map only; wires NO wave-D carrier —
@@ -137,12 +109,14 @@ land.
     `RelCarrierPack`); rs0Lump ← `Slot_rs0Lump n C` (SlotsG4); trackRule ←
     `Slot_trackRule n KC K7` (SlotsG5); dnLattice ← `Slot_dnLattice n KC K7`
     (SlotsG6); m1m5Echo ← `Slot_m1m5Echo n C` (SlotsG7); x1aDict ←
-    `Slot_x1aDict n KC` (SlotsG8); m4bConst ← `Slot_m4bConst …` (SlotsG9);
-    jcInvHist ← `Slot_jcInvHist n` (SlotsG10). -/
+    `Slot_x1aDict n KC` (SlotsG8); m4bConst ← `Slot_m4bConst n SS` over the
+    measured carrier `SS : CtsMeasured n 𝓕 Sv` (SlotsG9); jcInvHist ←
+    `Slot_jcInvHist n` (SlotsG10). -/
 structure SlotAssignment (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
     (K7 : Cl7Kernel n KC) (RP : RelCarrierPack)
     (𝓕 : LeanUrat.MovesV.CtsFamily n)
-    (SS : LeanUrat.MovesV.StepSys n 𝓕) : Prop where
+    (Sv : LeanUrat.MovesV.StepSys n)
+    (SS : LeanUrat.MovesV.CtsMeasured n 𝓕 Sv) : Prop where
   rel1 : RelRow_rel1 RP
   rel2a : RelRow_rel2a RP
   rel2b : RelRow_rel2b RP
@@ -154,8 +128,28 @@ structure SlotAssignment (n : ℕ) (C : UCarriers n) (KC : KernelCarriers n C)
   dn : Slot_dnLattice n KC K7
   m15 : Slot_m1m5Echo n C
   x1a : Slot_x1aDict n KC
-  m4b : Slot_m4bConst n 𝓕 SS
+  m4b : Slot_m4bConst n SS
   jc : Slot_jcInvHist n
--/
+
+/-- VI-B4: RootC fired with all thirteen theoremU propositions instantiated by
+    the sited slot faces. Typed ledger, bridge preconditions, and per-prime
+    bridge inputs remain explicit. -/
+theorem rootC_fired_at_slots (n : ℕ) (hn : 2 ≤ n) (C : UCarriers n)
+    (KC : KernelCarriers n C) (K7 : Cl7Kernel n KC)
+    (KT : UpstreamTyped n KC) (BP : BridgePre n C)
+    (RP : RelCarrierPack) (𝓕 : LeanUrat.MovesV.CtsFamily n)
+    (Sv : LeanUrat.MovesV.StepSys n)
+    (SS : LeanUrat.MovesV.CtsMeasured n 𝓕 Sv)
+    (SA : SlotAssignment n C KC K7 RP 𝓕 Sv SS)
+    (BD : ∀ (p : ℕ) (hp : p.Prime), BridgeInputs n C KC K7 p hp) :
+    RootC n C KC K7 (bridgeSolve C BP.hdet)
+      (fun p hp => mkUInstance n hn C KC K7 BP p hp (BD p hp)) :=
+  rootC_fired n hn C KC K7 KT BP
+    (RelRow_rel1 RP) (RelRow_rel2a RP) (RelRow_rel2b RP) (RelRow_rel2d RP)
+    (RelRow_rel2e RP) (RelRow_rel3 RP) (Slot_rs0Lump n C)
+    (Slot_trackRule n KC K7) (Slot_dnLattice n KC K7) (Slot_m1m5Echo n C)
+    (Slot_x1aDict n KC) (Slot_m4bConst n SS) (Slot_jcInvHist n)
+    SA.rel1 SA.rel2a SA.rel2b SA.rel2d SA.rel2e SA.rel3 SA.rs0 SA.trk SA.dn
+    SA.m15 SA.x1a SA.m4b SA.jc BD
 
 end LeanUrat.Scaffold

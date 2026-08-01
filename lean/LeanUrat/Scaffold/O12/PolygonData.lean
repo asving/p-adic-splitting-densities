@@ -312,4 +312,122 @@ theorem aMin_shift (b : ℕ+) (r : ℤ) (s : ℚ) :
       nlinarith
   omega
 
+/-! ## Unit II-P8: `faceDeg_bound` + `handoff_mu_lt` + `patt_mult_lt`
+
+L4 arithmetic (the (SL≥2)(a) hand-off bound), blueprint §1.6. Sketch: the
+rightmost face has b_k ≥ 2, so d_k = L_k/b_k < L_k ≤ e; any other face sits
+left of the rightmost one, so L_j ≤ e − L_k ≤ e − 1 and d_j ≤ L_j < e. The
+helpers `FaceKind.x_mono` / `FaceKind.d_eq_zero_of_le` record the
+monotonicity and out-of-range facts used. -/
+
+namespace FaceKind
+
+/-- Vertex abscissas are monotone (they saturate at `e` past the last face). -/
+theorem x_mono (κ : FaceKind e) : Monotone κ.x := by
+  apply monotone_nat_of_le_succ
+  intro m
+  by_cases hm : m < κ.faces.length
+  · rw [κ.x_succ_of_lt hm]; omega
+  · unfold FaceKind.x
+    rw [List.take_of_length_le (Nat.le_of_not_lt hm),
+      List.take_of_length_le (by omega)]
+
+/-- Out of range, `d j = 0`. -/
+theorem d_eq_zero_of_le (κ : FaceKind e) {j : ℕ} (hj : κ.faces.length ≤ j) :
+    κ.d j = 0 := by
+  unfold FaceKind.d
+  rw [List.getElem?_eq_none hj]
+
+end FaceKind
+
+/-- L4(ii) arithmetic (the (SL≥2)(a) hand-off bound), degree half: every
+residual degree is `< e` — the rightmost face since `b_k ≥ 2` gives
+`d_k = L_k/b_k < L_k ≤ e`, every other face since the rightmost face's width
+forces `L_j ≤ e − L_k ≤ e − 1`. -/
+theorem faceDeg_bound (κ : FaceKind e) (he : 2 ≤ e) :
+    ∀ j, κ.d j < e := by
+  intro j
+  rcases Nat.lt_or_ge j κ.faces.length with hj | hj
+  · rw [κ.d_of_lt hj]
+    have hLpos : 0 < (κ.faces[j].1 : ℕ) := (κ.faces[j].1).pos
+    have hx : κ.x (j + 1) = κ.x j + (κ.faces[j].1 : ℕ) := κ.x_succ_of_lt hj
+    have hxe : κ.x (j + 1) ≤ e := by
+      have h := κ.x_mono (show j + 1 ≤ κ.faces.length from hj)
+      rwa [κ.x_length] at h
+    rcases Nat.lt_or_ge (j + 1) κ.faces.length with hj1 | hj1
+    · -- a face to the right exists: `L_j ≤ e − L_{j+1} ≤ e − 1`, and `d_j ≤ L_j`
+      have hx1 : κ.x (j + 2) = κ.x (j + 1) + (κ.faces[j + 1].1 : ℕ) :=
+        κ.x_succ_of_lt hj1
+      have hxe1 : κ.x (j + 2) ≤ e := by
+        have h := κ.x_mono (show j + 2 ≤ κ.faces.length from hj1)
+        rwa [κ.x_length] at h
+      have hL1pos : 0 < (κ.faces[j + 1].1 : ℕ) := (κ.faces[j + 1].1).pos
+      exact lt_of_le_of_lt (Nat.div_le_self _ _) (by omega)
+    · -- the rightmost face: `b_j ≥ 2`, so `d_j < L_j ≤ e`
+      obtain rfl : j = κ.faces.length - 1 := by omega
+      have hne : κ.faces ≠ [] := by
+        intro h0
+        rw [h0] at hj
+        simp at hj
+      have hb : 2 ≤ ((κ.faces[κ.faces.length - 1]'(by omega)).2 : ℕ) := by
+        have h := κ.hlast hne
+        rwa [List.getLast_eq_getElem] at h
+      exact lt_of_lt_of_le (Nat.div_lt_self hLpos hb) (by omega)
+  · rw [κ.d_eq_zero_of_le hj]; omega
+
+set_option linter.unusedVariables false in
+/-- L4(ii) arithmetic (the (SL≥2)(a) hand-off bound): any residual factor of
+multiplicity μ ≥ 2 and degree D with μ·D ≤ d_j has μ < e.
+(`hμ` is part of the verbatim blueprint statement; the proof gets
+`μ ≤ μ·D ≤ d_j < e` from `hD` alone, hence the linter opt-out.) -/
+theorem handoff_mu_lt (κ : FaceKind e) (he : 2 ≤ e) {μ D j : ℕ}
+    (hμ : 2 ≤ μ) (hle : μ * D ≤ κ.d j) (hD : 1 ≤ D) : μ < e :=
+  lt_of_le_of_lt (le_trans (Nat.le_mul_of_pos_right μ hD) hle)
+    (faceDeg_bound κ he j)
+
+/-- L4(i) arithmetic (the divisor-pattern half): a multiset of atoms (D, m) with
+Σ D·m = e, not equal to {(1,e)}, has every atom's m < e. -/
+theorem patt_mult_lt {e : ℕ} (he : 1 ≤ e) (π : Multiset (ℕ+ × ℕ+))
+    (hdeg : (π.map fun x => (x.1 : ℕ) * x.2).sum = e)
+    (hne : π ≠ {(1, ⟨e, he⟩)}) : ∀ x ∈ π, (x.2 : ℕ) < e := by
+  rintro ⟨D, m⟩ hx
+  show (m : ℕ) < e
+  by_contra hcon
+  have hcon' : e ≤ (m : ℕ) := Nat.le_of_not_lt hcon
+  obtain ⟨π', rfl⟩ := Multiset.exists_cons_of_mem hx
+  rw [Multiset.map_cons, Multiset.sum_cons] at hdeg
+  replace hdeg : (D : ℕ) * (m : ℕ) +
+      (π'.map fun x => (x.1 : ℕ) * (x.2 : ℕ)).sum = e := hdeg
+  -- the atom (D, m) already exhausts the budget: D·m = e, and the rest sums to 0
+  have hm_le : (m : ℕ) ≤ (D : ℕ) * (m : ℕ) := Nat.le_mul_of_pos_left _ D.pos
+  have hDm_le : (D : ℕ) * (m : ℕ) ≤ e := le_of_le_of_eq (Nat.le_add_right _ _) hdeg
+  have hAe : (D : ℕ) * (m : ℕ) = e := le_antisymm hDm_le (hcon'.trans hm_le)
+  rw [hAe] at hdeg
+  have hSum0 : (π'.map fun x => (x.1 : ℕ) * (x.2 : ℕ)).sum = 0 := by omega
+  -- so the remaining pattern is empty (every atom contributes ≥ 1)
+  have hπ' : π' = 0 := by
+    by_contra hne0
+    obtain ⟨y, hy⟩ := Multiset.exists_mem_of_ne_zero hne0
+    obtain ⟨π'', rfl⟩ := Multiset.exists_cons_of_mem hy
+    rw [Multiset.map_cons, Multiset.sum_cons] at hSum0
+    replace hSum0 : (y.1 : ℕ) * (y.2 : ℕ) +
+        (π''.map fun x => (x.1 : ℕ) * (x.2 : ℕ)).sum = 0 := hSum0
+    have hypos : 0 < (y.1 : ℕ) * (y.2 : ℕ) := Nat.mul_pos y.1.pos y.2.pos
+    omega
+  -- and D·m = e with m ≥ e forces m = e, D = 1: the excluded pattern {(1, e)}
+  have hme : (m : ℕ) = e := le_antisymm (le_of_le_of_eq hm_le hAe) hcon'
+  have hD1 : (D : ℕ) = 1 := by
+    have h : (D : ℕ) * e = 1 * e := by
+      rw [one_mul]
+      conv_lhs => rw [← hme]
+      exact hAe
+    exact Nat.eq_of_mul_eq_mul_right (by omega) h
+  have hDp : D = 1 := by
+    apply PNat.coe_inj.mp
+    simpa using hD1
+  have hmp : m = ⟨e, he⟩ := by
+    apply PNat.coe_inj.mp
+    exact hme
+  exact hne (by rw [hπ', hDp, hmp, Multiset.cons_zero])
+
 end LeanUrat.Scaffold
