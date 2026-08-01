@@ -45,9 +45,9 @@ theorem).
 
 | member | door(s) | one-line route |
 |---|---|---|
-| (ADM) | 3 + 1 (two-track) | carrier + decidable check ALREADY LANDED (BP_IV; reuse); the open math = (ADM-REAL), FULL attainment at every REALIZED consumed datum — track A proves it over the realized shape families, track B (contingency, statement-change-gated) generalizes CEN-W to arbitrary attainment profiles via the PROVED §5.1 image law, retiring (ADM) wholesale |
-| D-12r | 2 (+ 3 optional Lean upgrade) | the residual is ALREADY REDUCED on file (MOVES §T.5 rev 5, dual-accepted: D4R.0-K(c) remainder = exactly {VP-SOUND's cites}); discharge = the two faithfulness briefs (HEN-LIFT ← Neukirch II §4 Prop 4.6 = LIT-3; OM-SAT ← GMN Cor 3.8 + Def 3.9, the §4 item-1 rider) + the owed confirmations + the ROOT-row retirement adjudication; Mathlib probe RAN: coprime-FACTOR Hensel absent (root-lifting only) → optional formalization unit |
-| (E-N) | 1 (two-route) | primary route (b): consumption-walk rescope — walk CU-4's F4-C leg + the Step-16 (UB-X)(a) transport and show only the thr-SCOPED count + monotone N→∞ capture are consumed (the unrestricted finite-N reading consumed nowhere) → (E-N) retires to a displayed non-consumed caveat; secondary route (a): prove the redundancy itself (decode-arithmetic argument, open kernel, ±1-boundary risk displayed); two-sided numerics falsifier ADJUDICATES |
+| (ADM) | 3 + 1 (two-track) | carrier + decidable check ALREADY LANDED (BP_IV; reuse); the open math = (ADM-REAL), FULL attainment at every REALIZED consumed datum (outer quantifiers displayed at §1.3(c)) — track A proves it over the realized shape families (hostile pass = the gate; the numerics scan only routes), track B (contingency, statement-change-gated, TWO stages U6a design/U6b execution) generalizes CEN-W to arbitrary attainment profiles off the PROVED §5.1 image law — (ADM) retires at U6b completion only |
+| D-12r | 2 (+ 3 optional Lean upgrade) | the residual is ALREADY REDUCED on file (MOVES §T.5 rev 5, dual-accepted, quoted verbatim at §2.1: D4R.0-K(c) remainder = exactly {VP-SOUND's cites} = (HEN-LIFT) + (OM-SAT), named at the §T.2 status block); discharge = the faithfulness briefs (HEN-LIFT as the THREE-part package (HL-a/b/c), Neukirch II §4 = LIT-3 + Serre LF alternates; OM-SAT ← GMN Cor 3.8 + Def 3.9, the §4 item-1 rider) + the owed confirmations + the ROOT-row retirement adjudication (VC-gated); Mathlib probe RAN: coprime-FACTOR Hensel absent (root-lifting only) → optional formalization units U2a/b/c |
+| (E-N) | 1 (two-route) | primary route (b): consumption-walk rescope — walk CU-4's F4-C leg + the Step-16 (UB-X)(a) transport, per-site displays quoted (duty W-3: the semantic-vs-detected decidedness guard), testing the hypothesis that only the thr-SCOPED count + monotone N→∞ capture are consumed → on a CLEAN walk (E-N) retires to a displayed non-consumed caveat; secondary route (a): prove the redundancy itself (decode-arithmetic kernel, OPEN at every n — the scratch is heuristic orientation only); two-sided numerics falsifier ROUTES (a hit kills route (a) and forces (b)'s absorption check) |
 
 ---
 
@@ -748,9 +748,10 @@ PERMANENTLY fences route (a).
 | ADM-U3 | (ADM) | Lean thm | `AdmCarrier.lean` `classCount_eq_d_of_r_le_one` | 1 | ADM-U0, ADM-U1 | medium | — |
 | ADM-U4 | (ADM) | Lean gates | `HDischarge/H3/AdmGates.lean` (K6/K7/K7⁺) | 1 | ADM-U0 (K6 leg), ADM-U1 | easy-med | compiled ¬ADMFull |
 | EN-U4 | (E-N) | Lean def | `HDischarge/H3/EnCarrier.lean` | 1 | — | easy | — |
-| D12R-U2 | D-12r | Lean thm (optional) | `HDischarge/H3/HenLift.lean` `henLift_padic` (+ uniqueness) | 1 | — | HARD-med | Lean-core AxChk |
-| ADM-U7 | (ADM) | phase-B attempt (open math) | track A (ADM-REAL) note | 2 | G-ADM-2 = all-full | HARD | hostile pass owed |
-| ADM-U6 | (ADM) | design note [sign-off gated] | track B CEN-W′ design | 2 | G-ADM-2 = hit | HARD | — |
+| D12R-U2a/b/c | D-12r | Lean thms (optional) | `HDischarge/H3/HenLift.lean`: U2a `henLift_padic` (existence; probed) · U2b uniqueness · U2c read-off (irreducibility + unramified/(E,F); E-phase probe owed) | 1 | — | HARD-med | Lean-core AxChk; (HEN-LIFT) VERIFIED-LEAN only at U2a+b+c ALL landed |
+| ADM-U7 | (ADM) | phase-B attempt (open math) | track A (ADM-REAL) note, outer quantifiers per §1.3(c) | 2 | G-ADM-2 no-hit (supports only — the hostile pass is the gate) | HARD | hostile pass owed |
+| ADM-U6a | (ADM) | design note [sign-off gated] | track B CEN-W′ design (statement + K7 instance + ripple map) | 2 | G-ADM-2 = hit (or track-A stall election) | HARD | — |
+| ADM-U6b | (ADM) | execution program [sign-off gated] | CEN-W′ end-to-end: O-9 rev 6 + hostile passes + K3-b re-derivation + pack ripple; (ADM) retires HERE only | 3 | ADM-U6a | HARD | fresh hostile passes |
 | EN-U3 | (E-N) | phase-B attempt (open math) | route (a) redundancy note | 2 | G-EN-1 = no-hit | HARD | hostile pass owed |
 | D12R-U4 | D-12r | ROOT-row adjudication [VC discipline] | D-12r row rewrite | 2 | D12R-U1+U3 confirms | easy | VC pass |
 | EN-U5 | (E-N) | ROOT-row adjudication [VC discipline] | (E-N) row rewrite per EN-U1 outcome | 2 | EN-U1 (+EN-U2) | easy | VC pass |
@@ -773,6 +774,37 @@ touches `bridgeTree`, not `VTree.fiberAt`).
 
 ## 5. Codex adversarial review
 
-Review of THIS blueprint per the swarm directive: run, findings folded, and
-the disposition table appended as §6 below (archive:
-`lean/notes/openmath/H3_bp_review.md`).
+Pass 1 RAN (Codex, fresh context, repo-blind; prompt = charge + full
+pre-fold blueprint; archive: `lean/notes/openmath/H3_bp_review.md`).
+VERDICT: **BLUEPRINT-CRITICAL — 4 critical + 12 gap.** All 16 findings
+folded or rebutted below; the §§1–4 text above is the POST-FOLD text.
+
+## 6. Disposition table (Codex pass-1 findings → fixes/rebuttals)
+
+| # | sev | finding (compressed) | disposition |
+|---|---|---|---|
+| 1 | CRIT | run-date claims (2026-08-05) postdate the machine clock (2026-08-01) | FIXED — all run claims restated at machine clock 2026-08-01 with the ledger's Unit-C clock-vs-window convention displayed once (§0) |
+| 2 | CRIT | "{VP-SOUND's cites}" quoted only as an opaque label; the two-member reduction not displayed | FIXED — §2.1 now displays the three verbatim artifacts (MOVES §T.5(2) remainder sentence; §T.2 VP-SOUND status block naming (HEN-LIFT)/(OM-SAT); SP.3 conditionality display) |
+| 3 | CRIT | "internal conditionality" treated as discharging TB-CAP(irr)'s §C C.2 condition | FIXED — §2.1 end + §2.3: the retirement display must state "PROVED at [3t] FROM the accepted §C rev-14 Theorem C — a citation into the corpus, not an open hypothesis"; the word "internal" carries no discharging force and the VC verifier adjudicates the rewritten row |
+| 4 | CRIT | `henLift_padic` formalizes factor-lifting only — not irreducibility/unramified/(E,F) | FIXED — unit split D12R-U2a/b/c (§2.2 + §4 table); "VERIFIED-LEAN" claim now conditioned on ALL THREE landed |
+| 5 | GAP | sibling dependencies ((SIB), X.3, [2r], (z-3), O-2 dictionary, P(O5t r3)) not separated from D-12r's residual | FIXED — §2.1 dependency-decomposition table routing each to its displayed ledger home |
+| 6 | GAP | the Hensel "one cite" is really several statements, none confirmed | FIXED — brief restated as the (HL-a)/(HL-b)/(HL-c) package, each with its own confirm; D12R-U4 blocked until all three |
+| 7 | GAP | G-ADM-2 cannot certify a universal; "adjudicating gate" overstates | FIXED — G-ADM-2 restated as falsifier-ROUTER; no-hit only supports; ADM-U7's hostile pass is the gate (§1.3(c), §4) |
+| 8 | GAP | ADM-REAL's quantifier domain undefined | FIXED — outer quantifiers displayed (∀ n, p incl. wild, f, N, realized datum; O_δ via (UB-X)(a) explicitly excluded to its own row); Lean-typed form explicitly waits on the `consumedData` carrier |
+| 9 | GAP | track B sufficiency: slot law ≠ CEN-W′; only a design note scheduled | FIXED — track B split into ADM-U6a (design) + ADM-U6b (end-to-end execution; retirement point), missing ingredients enumerated (§1.3(c)) |
+| 10 | GAP | F-ADM-2 tested relaxed axioms, not the actual repaired carrier | FIXED — finding rescoped to the exact axiom set tested; re-run duty under any different ADM-U0 outcome added to ADM-U5 |
+| 11 | GAP | ADM-U2 empty-class/sup-default vacuity risks | FIXED — non-vacuity duties (v1)/(v2) with named auxiliary lemmas (`classFilter_nonempty_of_mem_onLineSlots`, `d_pos`) landed into ADM-U1/U2 specs |
+| 12 | GAP | route (b)'s "thr-scoped BY CONSTRUCTION" asserted, not walked; CU-4 row still prices (E-N) | FIXED — §3.2 reworded to the HYPOTHESIS the walk must test, per-site confirmation duty with displays quoted; the CU-4 row's pricing acknowledged as evidence of pricing |
+| 13 | GAP | absorption may conflate semantic decidedness with detected-at-N | FIXED — walk duty W-3 added: quote the envelope/drainage definitions; route (b) FAILS at any site where the envelope is semantically defined |
+| 14 | GAP | `ENRedundancyAt` lacks a Decided premise + degenerate-parameter vacuity | ADJUDICATED MIXED, FIXED — decidedness is DERIVABLE (fiberAt clause 2 + NsFree kills the ns disjunct); auxiliary lemma `fiberAt_nsFree_decided` made a mandatory pre-consumer unit, with the E-phase fallback (add the premise) recorded; degeneracy fence + global-∀-closure display added |
+| 15 | GAP | route (a)'s n = 2 "result" unsupported | FIXED — entire scratch demoted to HEURISTIC ORIENTATION; n = 2 explicitly OPEN; missing steps (nonvanishing split, separation→ceiling conversion, ±1) named |
+| 16 | GAP | per-object statements promoted to global claims | FIXED — outer quantifiers displayed at ADM-REAL (finding 8), the ENRedundancyAt global-closure note (finding 14), and the (OM-SAT) brief already routes branch→tree coverage through SP-COMP/the dictionary rows; standing rule restated: consumers quantify explicitly, never cite fixed-parameter Props as global claims |
+
+**Post-fold status:** the four CRITICALs are repaired in text; the blueprint
+remains a PLAN — its own claims are now scoped to what the cited artifacts
+display, and every discharge endpoint (D12R-U4, EN-U5, ADM-U7/U6b) sits
+behind an external gate (literature confirms, VC pass, hostile pass, or
+sign-off) rather than behind this document's assertions. A confirming
+Codex pass on the post-fold text is OWED before the prover fan-out
+dispatches (swarm-lead discretion whether to spend it now or fold it into
+the fan-out's own review).
