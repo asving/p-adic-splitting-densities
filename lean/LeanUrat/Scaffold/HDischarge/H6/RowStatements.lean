@@ -54,6 +54,7 @@ separately per the §4 file plan.
 -/
 import Mathlib
 import LeanUrat.Scaffold.HDischarge.H6.RowsK4
+import LeanUrat.Scaffold.Hypotheses
 
 namespace LeanUrat.Scaffold.HDischarge.H6
 
@@ -132,5 +133,58 @@ theorem rows_of_core {n : ℕ}
    fun p _ F' _ _ => by
     obtain ⟨E, hTied, hCov, hRows⟩ := hcore p F'
     exact ⟨E, hTied, hCov, hRows.tVERD, hRows.tVERDhen⟩⟩
+
+/-!
+## Unit D4 (MECH): the `RootHyps` intended-instantiation display
+
+`LeanUrat/Scaffold/Hypotheses.lean`'s header demands that the docstrings/
+divisions NAME the typed carriers behind the bare `Prop` rows, with binding
+deferred to FIELD REFINEMENT (a revision of `Hypotheses.lean` by its owner,
+the spine lead — NOT this file, which therefore edits nothing there). This
+display is that naming for the (H6) group: the intended instantiation of the
+three terminal-seam rows is
+
+* `h6_tdec  := TDecRow n`  — (H6)(a1) = (T-DEC),
+* `h6_tread := TReadRow n` — (H6)(a2) = (T-READ),
+* `h6_tverd := TVerdRow n` — (H6)(a3) = (T-VERD),
+
+machine-checked below by an `example` that builds a `RootHyps n` carrying
+exactly these fields (over the `trivialRootHyps` base — the OTHER 24 rows are
+not this division's to pin, so they stay at the honesty-gate default).
+
+`h6_vii` is DELIBERATELY ABSENT from the display: its typed carrier
+(`FenceVII`) is BLOCKED-ON-CARRIER (units D2/D3, `H6/Fence.lean`) until the
+value-side pack/H-LIST builder lands, so at HEAD it rides only as the bare
+named field `RootHyps.h6_vii`.
+
+HONESTY (the `Hypotheses.lean` standing rule, restated): this display is
+INTENT, not discharge. Until field refinement lands in `Hypotheses.lean`, a
+division consuming `H.h6_tdec` holds an UNPINNED named assumption; and even
+once pinned, `TDecRow n` etc. remain OPEN [M] rows — `rows_of_core` (D3)
+reduces all three to the p-uniform `TerminalSeamCore n p`, which is unproved.
+The second example displays exactly that intended discharge route.
+-/
+
+example (n : ℕ) : RootHyps n :=
+  { trivialRootHyps n with
+    h6_tdec  := TDecRow n
+    h6_tread := TReadRow n
+    h6_tverd := TVerdRow n }
+
+example {n : ℕ}
+    (hcore : ∀ (p : ℕ) [Fact p.Prime], TerminalSeamCore n p) :
+    ({ trivialRootHyps n with
+        h6_tdec  := TDecRow n
+        h6_tread := TReadRow n
+        h6_tverd := TVerdRow n } : RootHyps n).h6_tdec ∧
+    ({ trivialRootHyps n with
+        h6_tdec  := TDecRow n
+        h6_tread := TReadRow n
+        h6_tverd := TVerdRow n } : RootHyps n).h6_tread ∧
+    ({ trivialRootHyps n with
+        h6_tdec  := TDecRow n
+        h6_tread := TReadRow n
+        h6_tverd := TVerdRow n } : RootHyps n).h6_tverd :=
+  rows_of_core hcore
 
 end LeanUrat.Scaffold.HDischarge.H6

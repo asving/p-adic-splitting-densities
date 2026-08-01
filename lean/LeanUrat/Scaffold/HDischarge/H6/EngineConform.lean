@@ -24,6 +24,7 @@ import LeanUrat.Scaffold.DictIII.CU1
 import LeanUrat.Scaffold.DictIII.O2aOrder1
 import LeanUrat.Scaffold.HDischarge.H6.Emission
 import LeanUrat.HC2.U31_gateReadsOf
+import LeanUrat.MovesU.BridgeD4_vtLaws
 
 namespace LeanUrat.Scaffold.HDischarge.H6
 
@@ -828,5 +829,254 @@ theorem engineEmissionSV_tDECdec (n p : ℕ) [Fact p.Prime]
       M hcoh hread hlaw hpart,
     engineEmissionSV_tDECdec_hen n p F f H D R hiota hcons
       ⟨M, hcoh, hread, hpart⟩⟩
+
+/-! ## Unit B3b — (T-DEC-cor) at the engine: the leaf catalogue, the `NsFree`
+fence, and `tDECcor` for `engineEmissionSV` with `DeepCorner` never reached
+
+Blueprint charge (`lean/blueprints/HDISCHARGE_H6.md` §4 unit B3b, prose —
+transcribed): "(T-DEC-cor) at the engine: the leaf catalogue (leaf ⇒ IrrHalts ∨
+hen-booked ∨ ns-booked) + `NsFree` fencing (Unit C's landed `bridgeTree`
+conjunct) ⇒ `tDECcor` for `engineEmissionSV` with `DeepCorner` never reached.
+FOLD ROUND 1 (Codex findings 9/13 accepted): NO sorry — if the catalogue lemma
+is absent from the corpus, it lands as the NAMED HYPOTHESIS ROW `LeafCatalogue
+(p F) : Prop` (displayed clause list; PART OF THIS GROUP'S RESIDUE, priced at
+the disposition table) and B3b's theorem is stated CONDITIONAL on it; the row
+routes to the GD-4 owner brief. The corner-unreachability claim is
+ENGINE-strength only (§3.2(b) stands). Deps: B1, B3a; quarry
+`E9_fiberDisjoint`, `IrrHaltsAsChild`, `MovesT.NsFree`, `bridgeTree`."
+
+STATEMENT DESIGN, ON RECORD (the blueprint displays no Lean block for B3b
+itself; every consumed shape is displayed elsewhere and bound VERBATIM —
+`DecSeam`/`DeepCorner`/`DecHenSeam` at A2/A3, the `tDECcor` row at A7, the
+`engineEmissionSV` body at B1, the `LeafCatalogue (p F) : Prop` keying at the
+B3b block, `NsFree`/`fiberAt`/`IsMaximalIn` at MovesT/Defs as built,
+`bridgeVt_nsFree` = Unit C's landed conjunct at MovesU/BridgeD4_vtLaws):
+
+* **Corpus census result (the blueprint's UNVERIFIED point (a), now checked):
+  a clean machine-terminal "leaf ⇒ IrrHalts ∨ hen ∨ ns" lemma is ABSENT from
+  the corpus.** What IS on record: `VTree.fiberAt`'s clause (2) — at a
+  REALIZED tree, every maximal chain is booked τ-irr or τ-ns (exactly the
+  case split `MovesT/E9_fiberDisjoint.lean` runs at its leaves); the τ-hen
+  species books at the henV PAYLOAD (root events), never as a chain
+  (`VTree.hne_nodes`) — the §9.2a inventory note. Per the fold-round-1
+  ruling, `LeafCatalogue` therefore lands below as the NAMED HYPOTHESIS ROW,
+  displayed clause list = the trichotomy with per-species seam faces, leaf
+  pin = maximality in a realized (`fiberAt`-witnessed) tree — the ONE leaf
+  notion on record at HEAD (the machine-side terminal home is C0's TRM,
+  "purely owed"). At THIS pin the row is corpus-dischargeable
+  (`leafCatalogue_of_fiberAt` below) — landed so the conditional theorem
+  composes to an unconditional corollary; the row itself stays the displayed
+  residue carrier. **Routed to the GD-4 owner brief (CUC §9.4 scope note):
+  (i) whether the realized-chain pin is the right "leaf" inventory once C0's
+  terminal read materializes, and (ii) the hen-species coverage at payload
+  (non-chain) sites — the §9.2a inventory closure rides the same note.**
+* **The bare A7 `tDECcor` row at SV is NOT claimed** (B1's honesty display
+  extends to it): SV's `emitsHen` fires at EVERY reached k′ = 0 seam — the
+  interface carries no terminal pin (C0 territory), so a reached-but-
+  CONTINUING base state (a₀ ≥ 2, no −∞ side) would satisfy `emitsHen` while
+  `DecHenSeam` fails. Per the B3a precedent, the packaged theorem carries
+  the reach antecedent STRENGTHENED to a LEAF reach: the realizing history
+  is additionally `HistLawful` (the Q1 fence, displayed — B3a's section
+  header verbatim) and a MAXIMAL CHAIN of an `NsFree` realized tree (the
+  leaf pin + the fence). The wired corollary `engineEmissionSV_tDECcor_bridge`
+  consumes the fence conjunct from Unit C's landed `bridgeVt_nsFree`.
+* **`DeepCorner` never reached, engine-strength**: two faces, both proved
+  OUTRIGHT (no catalogue, no fence) — the emits leg concludes `DecSeam` with
+  no corner disjunct (`engineEmissionSV_emits_decSeam`), and the corner is
+  REFUTED at every emission site (`engineEmissionSV_deepCorner_never`: B1's
+  `emits` carries `DecIrrSeam`, whose saturated last selection `some (g, 1)`
+  contradicts the corner's `some (g, μ)`, `2 ≤ μ`). NO paper-machine claim
+  rides here — whether the PAPER engine ever corner-books is explicitly
+  GD-8 (blueprint §3.2(b), CUC §9.4).
+* FOOTPRINT: everything binds `machineEHist` (certificate-free) — B0's
+  footprint rule; all B3b rows Lean-core (verify at gate via `#print axioms`).
+-/
+
+/-- **H6-B3b, THE NAMED HYPOTHESIS ROW `LeafCatalogue (p F) : Prop`**
+(blueprint §4 unit B3b, fold round 1 / Codex findings 9 + 13: the leaf
+catalogue is PART OF THIS GROUP'S RESIDUE — a named row, never a sorry).
+Displayed clause list — the leaf-species trichotomy "leaf ⇒ IrrHalts ∨
+hen-booked ∨ ns-booked" at the one leaf pin on record at HEAD (maximality in
+a realized tree; the machine-side terminal home is C0's TRM, owed):
+
+for every realized (`fiberAt`-witnessed) tree `Tr` and every maximal chain
+`M ∈ Tr.chains` that is a coherent classifier run on `f`,
+* **(irr)** `MovesT.IrrHalts M` — the saturation booking; or
+* **(hen)** M sits at the BASE (`M.nodes.tail = []`, the root-only history —
+  k′ = 0 after the root-datum split) and every ι-certified read `D` of its
+  dressed seam exhibits the booking datum: `a₀ = 1` (the Hensel branch) or a
+  listed slope-−∞ side at level 0 (the j₀ = 1 exact-key branch) — the
+  `DecHenSeam` face, D-relative exactly where the seam is; or
+* **(ns)** `Tr.nsLeaf M` — the τ-ns mark, the leg the `NsFree` fence kills.
+
+RESIDUE ROUTING (GD-4 owner brief, CUC §9.4 / §9.2a): the pin's adequacy once
+C0's terminal read lands, and the hen-species coverage at payload (non-chain)
+sites. Discharged at THIS pin by `leafCatalogue_of_fiberAt` below. -/
+def LeafCatalogue (p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] : Prop :=
+  ∀ (n N m : ℕ) (pol : MovesD.CanonPolicy p F)
+    (T : MovesD.TreeModel p F n N m pol) (χ : Fin n → Fin m)
+    (x : MovesD.Box p m) (Tr : MovesT.VTree p F)
+    (f : Polynomial ℤ_[p]) (M : MovesC.History p F),
+    Tr.fiberAt T χ x →
+    M ∈ Tr.chains → MovesT.IsMaximalIn Tr.chains M →
+    MovesC.HistoryCoherent M →
+    LeanUrat.MovesJ.ReadsOf p F n f M →
+    MovesT.IrrHalts M ∨
+    (M.nodes.tail = [] ∧
+      ∀ D : GMNData f (Theta ((machineEHist M).continuingPart)),
+        ReadThroughIota f ((machineEHist M).continuingPart) D →
+        ((machineEHist M).continuingPart.a0 = 1 ∨
+          ∃ S ∈ D.principalSides 0, S.isNegInfty = true)) ∨
+    Tr.nsLeaf M
+
+/-- **H6-B3b — the row's corpus discharge at the realized-chain pin**: at a
+`fiberAt` witness, clause (2) of `VTree.fiberAt` books every maximal chain
+τ-irr or τ-ns (the exact case split of `MovesT/E9_fiberDisjoint.lean`'s leaf
+leg) — the trichotomy holds with the hen clause never the witness (hen
+bookings are henV PAYLOAD events, not chains — the §9.2a note in the section
+header). The coherence/`ReadsOf` antecedents scope the row to engine-real
+leaves; this discharge does not consume them. -/
+theorem leafCatalogue_of_fiberAt (p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] : LeafCatalogue p F := by
+  intro n N m pol T χ x Tr f M hfib hmem hmax _ _
+  rcases hfib.2.1 M hmem hmax with h1 | h2
+  · exact Or.inl h1.1
+  · exact Or.inr (Or.inr h2.2.2.1)
+
+/-- **H6-B3b — the emits leg, STRONG form (`DeepCorner` never entered)**: at
+`engineEmissionSV` every verdict-carrying emission site is a DEC seam
+outright — B1's `emits` body carries `DecIrrSeam H` as its second conjunct,
+so `DecSeam` holds by the irr leg with NO corner disjunct consumed. -/
+theorem engineEmissionSV_emits_decSeam (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F]
+    (f : Polynomial ℤ_[p]) (H : EHist p F) (D : GMNData f (Theta H))
+    (ν : ENodeData) (EF : ℕ × ℕ)
+    (h : (engineEmissionSV n p F).emits f H ν EF) :
+    DecSeam f H D :=
+  Or.inl h.2.1
+
+/-- **H6-B3b — `DeepCorner` NEVER REACHED at the engine emission**
+(ENGINE-strength only — no paper-machine claim, blueprint §3.2(b)): the deep
+exact-key corner is REFUTED at every `engineEmissionSV` emission site — the
+emitted seam's decided last selection is saturated (`sel = some (g, 1)`,
+B1's `DecIrrSeam` conjunct) while the corner demands an exact key
+`sel = some (g, μ)` with `2 ≤ μ` at the SAME last node. -/
+theorem engineEmissionSV_deepCorner_never (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F]
+    (f : Polynomial ℤ_[p]) (H : EHist p F) (D : GMNData f (Theta H))
+    (ν : ENodeData) (EF : ℕ × ℕ)
+    (h : (engineEmissionSV n p F).emits f H ν EF) :
+    ¬ DeepCorner f H D := by
+  rintro ⟨-, hsel, -⟩
+  obtain ⟨-, hdec, -, -⟩ := h
+  obtain ⟨-, hlast⟩ := hdec
+  cases hL : H.nodes.getLast? with
+  | none => rw [hL] at hlast; exact hlast
+  | some ν₀ =>
+    rw [hL] at hlast hsel
+    simp only [Option.elim_some] at hlast hsel
+    obtain ⟨g, hg⟩ := hlast
+    obtain ⟨g', μ', hg', hμ⟩ := hsel
+    rw [hg, Option.some.injEq, Prod.mk.injEq] at hg'
+    omega
+
+/-- **H6-B3b, PACKAGED: (T-DEC-cor) at the engine** — the A7 `tDECcor` row
+shape at `E := engineEmissionSV n p F`, both legs, CONDITIONAL on the named
+row `LeafCatalogue p F` (the fold-round-1 / Codex finding 9 form) and with
+the row's implicit reach antecedent STRENGTHENED to a LEAF reach (the B3a
+precedent; the bare-row form is NOT claimed — see the section header): the
+realizing history is additionally `HistLawful` (the Q1 fence, explicit) and a
+maximal chain of an `NsFree` realized tree (the leaf pin + the ns fence).
+
+Route: the emits leg is the strong-form lemma (`DecSeam`, corner never
+entered). The hen leg runs the blueprint's chain verbatim — the catalogue's
+trichotomy at the leaf witness, with (irr) ⇒ `a₀ = 1` via
+`MovesT.irr_iff_mu_one` at the root read (the 1-node corner B3a splits off:
+here it IS the hen channel, `machineEHist_a0` transports `root.μ` to the
+seam's `a₀`), (hen) ⇒ the `DecHenSeam` face directly, and (ns) killed by the
+`NsFree` fence conjunct. -/
+theorem engineEmissionSV_tDECcor (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F]
+    (hcat : LeafCatalogue p F) :
+    ∀ (f : Polynomial ℤ_[p]) (H : EHist p F) (D : GMNData f (Theta H))
+      (R : GMNReader f (Theta H) D),
+      ReadThroughIota f H D → ConsF f H D R →
+      (∃ (N m : ℕ) (pol : MovesD.CanonPolicy p F)
+        (T : MovesD.TreeModel p F n N m pol) (χ : Fin n → Fin m)
+        (x : MovesD.Box p m) (Tr : MovesT.VTree p F)
+        (M : MovesC.History p F),
+        Tr.fiberAt T χ x ∧
+        M ∈ Tr.chains ∧ MovesT.IsMaximalIn Tr.chains M ∧
+        MovesT.NsFree Tr ∧
+        MovesC.HistoryCoherent M ∧
+        LeanUrat.MovesJ.ReadsOf p F n f M ∧
+        MovesT.HistLawful p n M ∧
+        (machineEHist M).continuingPart = H) →
+      (∀ ν EF, (engineEmissionSV n p F).emits f H ν EF →
+        DecSeam f H D ∨ DeepCorner f H D) ∧
+      (∀ EF, (engineEmissionSV n p F).emitsHen f H EF → DecHenSeam f H D) := by
+  intro f H D R hiota hcons hleaf
+  obtain ⟨N, m, pol, T, χ, x, Tr, M, hfib, hmem, hmax, hnsf, hcoh, hread,
+    hlaw, hpart⟩ := hleaf
+  subst hpart
+  refine ⟨fun ν EF h => Or.inl (engineEmissionSV_emits_decSeam n p F f _ D ν EF h),
+    fun EF hE => ?_⟩
+  obtain ⟨hnil, -, -⟩ := hE
+  refine ⟨hnil, ?_⟩
+  rcases hcat n N m pol T χ x Tr f M hfib hmem hmax hcoh hread with
+    hirr | ⟨-, hhen⟩ | hns
+  · -- (irr) at the base: the root read saturates, a₀ = 1 — the Hensel branch.
+    left
+    have htail : M.nodes.tail = [] := by
+      have h1 := hnil
+      rw [machineEHist_continuingPart_nodes] at h1
+      exact List.map_eq_nil_iff.mp h1
+    obtain ⟨a, t, hM⟩ := List.exists_cons_of_ne_nil M.nonempty
+    have ht : t = [] := by rw [hM] at htail; exact htail
+    subst ht
+    have hlast : M.nodes.getLast? = some a := by rw [hM]; rfl
+    have hmu : a.μ = 1 := (MovesT.irr_iff_mu_one M n hlaw a hlast).mp hirr
+    rw [machineEHist_continuingPart, machineEHist_a0]
+    simp only [hM, List.head_cons]
+    exact hmu
+  · -- (hen) the booking datum is the `DecHenSeam` face, read off at our D.
+    exact hhen D hiota
+  · -- (ns) fenced: the tree carries no ns mark.
+    exact absurd hns (hnsf M hmem)
+
+/-- **H6-B3b — the wired corollary at Unit C's landed fence**: the packaged
+(T-DEC-cor) row with the `NsFree` conjunct DISCHARGED by `bridgeVt_nsFree`
+(the (NSF-KEY) repair conjunct on the `bridgeTree` carrier — "Unit C's landed
+`bridgeTree` conjunct", blueprint §4 B3b verbatim): a leaf reach on a CARRIED
+σ-tree needs no separate fence hypothesis. F = ZMod p is the carrier's own
+residue world (`bridgeVt : bridgeTree n p σ → MovesT.VTree p (ZMod p)`). -/
+theorem engineEmissionSV_tDECcor_bridge (n p : ℕ) [Fact p.Prime]
+    (hcat : LeafCatalogue p (ZMod p)) :
+    ∀ (f : Polynomial ℤ_[p]) (H : EHist p (ZMod p))
+      (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+      ReadThroughIota f H D → ConsF f H D R →
+      (∃ (N m : ℕ) (pol : MovesD.CanonPolicy p (ZMod p))
+        (T : MovesD.TreeModel p (ZMod p) n N m pol) (χ : Fin n → Fin m)
+        (x : MovesD.Box p m) (σ : LeanUrat.MovesU.SplittingType n)
+        (Tb : LeanUrat.MovesU.bridgeTree n p σ)
+        (M : MovesC.History p (ZMod p)),
+        (LeanUrat.MovesU.bridgeVt n p σ Tb).fiberAt T χ x ∧
+        M ∈ (LeanUrat.MovesU.bridgeVt n p σ Tb).chains ∧
+        MovesT.IsMaximalIn (LeanUrat.MovesU.bridgeVt n p σ Tb).chains M ∧
+        MovesC.HistoryCoherent M ∧
+        LeanUrat.MovesJ.ReadsOf p (ZMod p) n f M ∧
+        MovesT.HistLawful p n M ∧
+        (machineEHist M).continuingPart = H) →
+      (∀ ν EF, (engineEmissionSV n p (ZMod p)).emits f H ν EF →
+        DecSeam f H D ∨ DeepCorner f H D) ∧
+      (∀ EF, (engineEmissionSV n p (ZMod p)).emitsHen f H EF →
+        DecHenSeam f H D) := by
+  intro f H D R hiota hcons hleaf
+  obtain ⟨N, m, pol, T, χ, x, σ, Tb, M, hfib, hmem, hmax, hcoh, hread,
+    hlaw, hpart⟩ := hleaf
+  exact engineEmissionSV_tDECcor n p (ZMod p) hcat f H D R hiota hcons
+    ⟨N, m, pol, T, χ, x, LeanUrat.MovesU.bridgeVt n p σ Tb, M, hfib, hmem,
+      hmax, LeanUrat.MovesU.bridgeVt_nsFree n p σ Tb, hcoh, hread, hlaw, hpart⟩
 
 end LeanUrat.Scaffold.HDischarge.H6
