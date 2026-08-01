@@ -7,13 +7,23 @@ import Mathlib
 import LeanUrat.Scaffold.DictIII.Carriers
 
 /-!
-# Scaffold/DictIII/GMNReader — the ι-interface (BP_III §1.2, partial landing)
+# Scaffold/DictIII/GMNReader — the ι-interface + Cons_f (BP_III §1.2)
 
 Transcribed VERBATIM from `lean/blueprints/BP_III.md` §1.2 (source: O-2a rev-5
 (C4)).  This file lands `SideDatum`, `GMNData`, the requested-slope lookup, and
-the reader-law structure `GMNReader` — the III-C8 dependencies of unit III-H1
-(`DictIII/Hyps.lean`).  `ConsF` (which additionally needs `EHist`/`Theta` from
-the full Carriers landing) is left to its owning unit.
+the reader-law structure `GMNReader` (unit III-C8, the dependencies of unit
+III-H1 in `DictIII/Hyps.lean`), plus `ConsF` (unit III-C9) — the §1.2 display
+is the COMPLETE `ConsF` declaration; no second signature or implicit reader
+semantics is permitted.
+
+Display adjustments (same two sanctioned conventions as the Carriers.lean
+headers; propositions unchanged, no other token differs from the display):
+(1) the §1.2 display writes the ℕ field lines bare (`e h ℓ : ℕ`), which Lean
+4.31 parses as untyped binders — parenthesized as `(e h ℓ : ℕ)`, declaring the
+SAME fields; (2) the display's `c.slopes.get? i` (in `requestedSlope`) and
+`H.continuingPart.nodes.get? i` (in `ConsF`) use `List.get?`, REMOVED from
+the pinned environment — the surviving spelling of the SAME function is
+`c.slopes[i]?` / `H.continuingPart.nodes[i]?` (`getElem?`).
 -/
 
 namespace LeanUrat.Scaffold.DictIII
@@ -22,8 +32,8 @@ variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
 
 /-- One polygon side's (c1)-shape datum: (e,h,ℓ,s,u) + the −∞ marker. -/
 structure SideDatum where
-  e h ℓ : ℕ
-  s u : ℕ
+  (e h ℓ : ℕ)                -- binder parens: the III-C2a Lean-4.31 field-group repair
+  (s u : ℕ)
   isNegInfty : Bool          -- the slope-−∞ side (length-1, j₀ = 1 corner)
 
 /-- Semantic polygon/residual data. At order ≤ 1 III-A6 constructs this from the
@@ -35,7 +45,7 @@ structure GMNData (f : Polynomial ℤ_[p]) (c : ChainData p F) where
   rootOrder : ℕ
 
 def requestedSlope (c : ChainData p F) (i : ℕ) : Option (ℕ × ℕ) :=
-  c.slopes.get? i
+  c.slopes[i]?   -- `List.get?` removed in this toolchain; `[i]?` is the same function (Carriers header note)
 
 def HasRequestedSlope (c : ChainData p F) (i : ℕ) (S : SideDatum) : Prop :=
   requestedSlope c i = some (S.e, S.h)
@@ -55,5 +65,14 @@ structure GMNReader (f : Polynomial ℤ_[p]) (c : ChainData p F)
   rootOrd_spec : rootOrd = D.rootOrder
   resDeg_eq_sideDeg : ∀ i S,
     side i = some S → D.residualDegree i = S.ℓ
+
+/-- (C4) Cons_f, over semantic data and its reader. -/
+def ConsF (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D) : Prop :=
+  R.rootOrd = H.a0 ∧
+  ∀ i ν, H.continuingPart.nodes[i]? = some ν →   -- `.get?` → `[i]?`: header note (2)
+    ∃ S, R.side i = some S ∧
+      (S.e, S.h, S.ℓ, S.s, S.u) = (ν.e, ν.h, ν.ℓ, ν.s, ν.u) ∧
+      ∀ g μ, ν.sel = some (g, μ) → R.resOrd i = μ
 
 end LeanUrat.Scaffold.DictIII

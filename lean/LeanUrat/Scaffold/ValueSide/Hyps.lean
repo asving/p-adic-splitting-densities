@@ -5,6 +5,9 @@ H3 (`K3DeltaRow`).
 -/
 import Mathlib
 import LeanUrat.MovesU.Defs
+-- SKEL (§1.0 import graph `CensusCore → Hyps → Census`): the CensusCore edge,
+-- carrying the re-export path for `ADMFull` (unit H1 lands it in CensusCore).
+import LeanUrat.Scaffold.ValueSide.CensusCore
 
 /-!
 # Value-side named [M] rows [BP_IV division, unit H2a]
