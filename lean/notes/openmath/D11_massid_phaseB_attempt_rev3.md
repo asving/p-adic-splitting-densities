@@ -1,5 +1,13 @@
 # D-11 (MASS-ID) — Phase-B attempt REV 3: the mass-identification theorem (Fable "D11", 2026-07-31)
 
+> **[SUPERSEDED 2026-08-04.** This revision FAILED the owed hostile pass
+> (`D11_owedpass_2026-08-03.md`, VERDICT CRITICAL — 6 CRITICAL + 3 GAP; the
+> ROOT Phase-C acceptance was SUSPENDED on it). The current revision is
+> **`D11_rev4_2026-08-04.md`** — the Unit-A repair executed per the accepted
+> consolidated design `R11_REPAIR_DESIGN_V5_2026-08-04.md` (edit list L1–L11;
+> pass-confirmed passages of this file carried byte-stable there). Nothing in
+> this file is current; read the r4.**]**
+
 Repair of the pass-2 hostile verification (`V31_d11r2.jsonl`, verdict UNSOUND —
 2 CRITICAL, 4 GAP, 2 MINOR; rev-2's F2 core, F3, F5, F6 repairs CONFIRMED OK)
 of the rev-2 attempt (`D11_massid_phaseB_attempt_rev2.md`; pass-1 record =
