@@ -1,7 +1,7 @@
 /-
 BP_IV §1.1 — Step 13, the drainage-transfer layer (`Transfer.lean`).
 Units in this file: SKEL (module skeleton, this unit).  Later waves add
-T0 (`card_boxProj_fiber`), T1 (`env_antitone`), T2 (FLOOR), T3 (TR-Q skeleton),
+T0 (`card_boxProj_fiber`), T1 (`env_antitone`, landed), T2 (FLOOR), T3 (TR-Q skeleton),
 T4a/T4 (`discV` + `DrainageImports`), T5, T6 (`env_tendsto_zero_of_imports`),
 and the wave-4 HARD constructors T7 (CEIL) and T8 (tail).
 Import graph (BP_IV §0/§1.0): no value-side module is imported here; the
@@ -83,6 +83,75 @@ theorem card_boxProj_fiber {p n : ℕ} [Fact p.Prime] {N N' : ℕ} (h : N ≤ N'
   simp only [card_castHom_fiber h]
   rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin, ← pow_mul,
     Nat.mul_comm]
+
+/-!
+**PROVENANCE (unit T1; BP_IV §1.1 row T1, source O4T §2 TR-0 prelim).**
+Statement transcribed VERBATIM from `lean/blueprints/BP_IV.md` §1.1.
+Mechanism (blueprint row T1): `canonical_stable` contraposed — an undecided
+level-N' class projects to an undecided level-N class — so Undec(N') injects
+into the disjoint union of the `boxProj` fibers over Undec(N); each fiber has
+exactly p^{n(N'−N)} elements (T0), giving undec(N') ≤ undec(N)·p^{n(N'−N)},
+i.e. env(N') ≤ env(N) after dividing by p^{nN'}.
+-/
+
+/-- T1 (stability ⇒ monotone envelope): env is antitone. -/
+theorem ClassifierSpec.env_antitone {n p : ℕ} [Fact p.Prime]
+    (X : ClassifierSpec n p) : Antitone X.env := by
+  intro N N' h
+  classical
+  have hp : p.Prime := Fact.out
+  haveI : NeZero p := ⟨hp.ne_zero⟩
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero _ hp.ne_zero⟩
+  haveI : NeZero (p ^ N') := ⟨pow_ne_zero _ hp.ne_zero⟩
+  -- `canonical_stable`, contraposed: undecided at N' ⇒ undecided projection at N.
+  have hnone : ∀ g : Box p n N', X.canonical N' g = none →
+      X.canonical N (boxProj p n h g) = none := by
+    intro g hg
+    cases hc : X.canonical N (boxProj p n h g) with
+    | none => rfl
+    | some σ =>
+        have hs := X.canonical_stable h g σ hc
+        rw [hg] at hs
+        simp at hs
+  -- T0 counting: the undecided-at-N lift block has size undec(N)·p^{n(N'−N)}.
+  have hcount : Nat.card {g : Box p n N' // X.canonical N (boxProj p n h g) = none}
+      = X.undec N * p ^ (n * (N' - N)) := by
+    have E : {g : Box p n N' // X.canonical N (boxProj p n h g) = none} ≃
+        Σ f : {f : Box p n N // X.canonical N f = none},
+          {g : Box p n N' // boxProj p n h g = f.1} :=
+      { toFun := fun g => ⟨⟨boxProj p n h g.1, g.2⟩, ⟨g.1, rfl⟩⟩
+        invFun := fun x => ⟨x.2.1, by rw [x.2.2]; exact x.1.2⟩
+        left_inv := fun g => rfl
+        right_inv := fun x => by
+          obtain ⟨⟨f, hf⟩, ⟨g, hg⟩⟩ := x
+          dsimp only at hg
+          subst hg
+          rfl }
+    rw [Nat.card_congr E, Nat.card_sigma]
+    simp only [card_boxProj_fiber h]
+    rw [Finset.sum_const, Finset.card_univ, smul_eq_mul]
+    unfold ClassifierSpec.undec
+    rw [Nat.card_eq_fintype_card]
+  -- inject Undec(N') into the lift block, then compare counts.
+  have hle : X.undec N' ≤ X.undec N * p ^ (n * (N' - N)) := by
+    rw [← hcount]
+    unfold ClassifierSpec.undec
+    exact Nat.card_le_card_of_injective
+      (fun g => (⟨g.1, hnone g.1 g.2⟩ :
+        {g : Box p n N' // X.canonical N (boxProj p n h g) = none}))
+      (fun a b hab => Subtype.ext (Subtype.mk_eq_mk.mp hab))
+  -- divide by p^{nN'} and cancel the fiber factor.
+  have hexp : n * N' = n * N + n * (N' - N) := by
+    rw [← Nat.mul_add, Nat.add_sub_cancel' h]
+  unfold ClassifierSpec.env
+  calc (X.undec N' : ℝ) / (p : ℝ) ^ (n * N')
+      ≤ ((X.undec N * p ^ (n * (N' - N)) : ℕ) : ℝ) / (p : ℝ) ^ (n * N') :=
+        div_le_div_of_nonneg_right (by exact_mod_cast hle) (by positivity)
+    _ = (X.undec N : ℝ) / (p : ℝ) ^ (n * N) := by
+        push_cast
+        rw [hexp, pow_add]
+        exact mul_div_mul_right _ _
+          (pow_ne_zero _ (Nat.cast_ne_zero.mpr hp.ne_zero))
 
 /-!
 **PROVENANCE (unit T2; BP_IV §1.1 row T2, source O4T §2 FLOOR).**

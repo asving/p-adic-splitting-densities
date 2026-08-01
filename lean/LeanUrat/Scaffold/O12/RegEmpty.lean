@@ -58,6 +58,19 @@ theorem BnMember.discipline {n : ℕ} (T : BnMember n) : T.toAbs.RcycDiscipline 
     | O2r => rw [Phi_O2r_eq he2]; exact LeanUrat.MovesU.detO1_unit (by omega)
     | O3 => rw [Phi_O3_eq he2]; exact LeanUrat.MovesU.detO3_unit (by omega)
 
+/-! ## Unit II-G3: THEOREM 3 — (REG-p) emptiness at 𝔅_n
+
+Mechanism: the landed `AbsSolveTable.regAt_primePow` (MovesU/O12PoleFree.lean),
+fired through the II-G2 discipline `BnMember.discipline`. -/
+
+/-- **THEOREM 3 ((REG-p) EMPTINESS at 𝔅_n)**: every member, every prime p, every
+depth δ ≥ 1 — fires the landed `AbsSolveTable.regAt_primePow`. The failing set is
+EMPTY; composite depths p^{δm} are again prime powers ≥ 2, so no descent-depth
+evaluation fails either. -/
+theorem BnMember.regEmpty {n : ℕ} (T : BnMember n) {p δ : ℕ}
+    (hp : 2 ≤ p) (hδ : 1 ≤ δ) : T.toAbs.RegAt ((p ^ δ : ℕ) : ℚ) :=
+  T.toAbs.regAt_primePow T.discipline hp hδ
+
 /-! ## Unit II-G4: Corollary D at 𝔅_n (the Step-17 (r1) margin numbers)
 
 Route (per the blueprint's II-G4 dependency row): rewrite each booking's Φ_e as

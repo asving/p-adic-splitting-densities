@@ -1,8 +1,9 @@
 /-
 BP_IV §1.2 — the order-r census carrier root (`CensusCore.lean`).
 Units in this file: C0a (`CensusData`) · C0b (`d/period/J`) · C0c
-(`wt/Gset/attainDim/s`) · C0d (`onLineSlots`, this wave) · later: `ADMFull`
-(declared immediately after the derived definitions, per BP_IV §1.0).
+(`wt/Gset/attainDim/s`) · C0d (`onLineSlots`) · H1 (`ADMFull`, statement
+verbatim — landed by unit C3 as prerequisite; declared immediately after the
+derived definitions, per BP_IV §1.0).
 This module imports no value-side module (import graph: CensusCore → Hyps →
 Census, never a cycle).
 -/
@@ -146,5 +147,22 @@ noncomputable def onLineSlots (D : CensusData) : Finset ℕ :=
   Finset.image D.wt Finset.univ
 
 end CensusData
+
+/-!
+**PROVENANCE (unit H1; BP_IV §1.0).**  Statement transcribed VERBATIM from the
+blueprint ("In `CensusCore.lean`, immediately after `CensusData` and its
+derived definitions").  Landed by unit C3 as its compile-time prerequisite
+(H1 had not landed when C3 ran, 2026-08-01); H1's owner should verify verbatim
+transcription rather than re-declare.  Math source of record: ROOT §3.1 (ADM).
+-/
+
+/-- **(ADM)-FULL** (ROOT §3.1 (ADM), the single operative O-9 r4 form; unit of
+record 35faac7): every on-line lattice slot's β_k is FULLY attained by the
+ledger — `attainDim β_k = d`, equivalently
+`#{j : wt j ≡ β_k (mod e), wt j ≤ β_k} = d`.  p-free, per-datum decidable
+(unit C3).  Automatic at r = 0 ONLY (unit C1); NOT automatic at r ≥ 1 (two
+countermodels on file, O-9 pass-2/pass-3 records). -/
+structure ADMFull (D : CensusData) : Prop where
+  full_attained : ∀ β ∈ D.onLineSlots, D.attainDim β = D.d
 
 end LeanUrat.Scaffold

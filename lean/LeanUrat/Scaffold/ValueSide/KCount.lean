@@ -5,10 +5,12 @@ valuation laws: `zmodVal_add_ge_min`, `zmodVal_pow_mul_ge`, and the
 finite-difference factorization transport `minVal_polyMap_sub_ge`), K6
 (`kcount_guard_range` + the `e_max`-sup packaging `kcount_guard_range_sup`),
 K3a (`card_singleCoordSubgroup` + the `min`-exponent form
-`card_singleCoordSubgroup_min` feeding K3b's `card_smithSubgroup`), K7a
-(`prod_add_sub_prod` + `prod_add_sub_prod_split`, the subset product
-expansion).
-Pending (later waves, per BP_IV §4): K1–K8a, K3b, the fiber chart K7b/K7c,
+`card_singleCoordSubgroup_min`), K3b (`card_smithSubgroup`, the product form
+over `Fin n`), K7a (`prod_add_sub_prod` + `prod_add_sub_prod_split`, the
+subset product expansion), K7b (`prod_pow_mul_of_two_le_card` +
+`quadRemainder_pow_extraction` + `prod_add_sub_prod_split_pow`, the p^{2τ}
+extraction Q(p^τ b) = p^{2τ} Q̃(b)).
+Pending (later waves, per BP_IV §4): K1–K8a, the fiber chart K7c,
 and the (SIB) product law.
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
@@ -282,6 +284,20 @@ theorem card_singleCoordSubgroup_min {p M : ℕ} [Fact p.Prime] (e : ℕ) :
   congr 1
   omega
 
+/-- K3 = K3b (BP_IV §1.3; O-10 §3 Step 4): the target subgroup count —
+    `#{c | ∀ i, p^(M − e_i) ∣ c_i} = p^(Σ_i min(e_i, M)) = p^(s M)`.
+    Product of K3a over `Fin n`: coordinatewise chart
+    `Equiv.subtypePiEquivPi`, then `Nat.card_pi` and
+    `card_singleCoordSubgroup_min` per factor. -/
+theorem card_smithSubgroup {p M n : ℕ} [Fact p.Prime] (e : Fin n → ℕ) :
+    Nat.card {c : Fin n → ZMod (p ^ M) //
+      ∀ i, (p : ZMod (p ^ M)) ^ (M - e i) ∣ c i} = p ^ (∑ i, min (e i) M) := by
+  rw [Nat.card_congr (Equiv.subtypePiEquivPi
+      (p := fun i (x : ZMod (p ^ M)) => (p : ZMod (p ^ M)) ^ (M - e i) ∣ x)),
+    Nat.card_pi]
+  simp only [card_singleCoordSubgroup_min]
+  exact Finset.prod_pow_eq_pow_sum _ _ _
+
 /-! ### K7a: the subset product expansion (O-10 §3 Step 1)
 
 `Π_j (h_j + a_j) − Π_j h_j = Σ_{S ⊆ s, |S| ≥ 1} (Π_{j∈S} a_j) · (Π_{i∉S} h_i)`
@@ -347,5 +363,72 @@ theorem prod_add_sub_prod_split (s : Finset ι) (h a : ι → R) :
   simp [Finset.erase_eq]
 
 end K7a
+
+/-! ### K7b: the `p^{2τ}` extraction (O-10 §3 Step 1)
+
+Substituting `a_j = p^τ b_j` into K7a's quadratic remainder
+`Q(a) = Σ_{S, |S| ≥ 2} (Π_{j∈S} a_j) · (Π_{i∉S} h_i)` factors `p^{τ|S|}` out
+of each subset term; since `|S| ≥ 2` this yields `Q(p^τ b) = p^{2τ} Q̃(b)`
+with `Q̃(b) := Σ_{|S|≥2} p^{τ(|S|−2)} (Π_{j∈S} b_j) · (Π_{i∉S} h_i)` — every
+coefficient a *nonnegative* power `p^{τ(|S|−2)}`, which is the "Q̃ has
+ℤ_p-coefficients" clause at `R = ℤ_p`.  Stated over an arbitrary commutative
+ring with an arbitrary scaling element `π` (specialized to `π = (p : ℤ_p)` by
+K7c), matching K7a's generality.  (BP_IV §2 K-table row K7b + §1.3 K7 doc;
+the blueprint displays no Lean block for K7b — the statements below
+transcribe the table row's identity `Q(p^τ b) = p^{2τ} Q̃(b)`.) -/
+
+section K7b
+
+variable {R : Type*} [CommRing R] {ι : Type*} [DecidableEq ι]
+
+omit [DecidableEq ι] in
+/-- K7b, per-subset factor law: on a subset `S` with `|S| ≥ 2`, substituting
+    `π^τ · b_j` for the increments factors the subset product as
+    `π^{τ|S|} Π b_j = π^{2τ} · π^{τ(|S|−2)} Π b_j`. -/
+theorem prod_pow_mul_of_two_le_card (S : Finset ι) (b : ι → R) (π : R) (τ : ℕ)
+    (hS : 2 ≤ S.card) :
+    ∏ j ∈ S, π ^ τ * b j
+      = π ^ (2 * τ) * (π ^ (τ * (S.card - 2)) * ∏ j ∈ S, b j) := by
+  have hexp : τ * S.card = 2 * τ + τ * (S.card - 2) :=
+    calc τ * S.card = τ * (2 + (S.card - 2)) := by rw [Nat.add_sub_cancel' hS]
+      _ = 2 * τ + τ * (S.card - 2) := by ring
+  rw [Finset.prod_mul_distrib, Finset.prod_const, ← pow_mul, hexp, pow_add,
+    mul_assoc]
+
+/-- K7b (BP_IV §2 K-table; O-10 §3 Step 1): the `p^{2τ}` extraction —
+    substituting `a_j = π^τ b_j` into the quadratic remainder (the `|S| ≥ 2`
+    tail of K7a's `prod_add_sub_prod_split`) gives `Q(π^τ b) = π^{2τ} Q̃(b)`,
+    where `Q̃(b) = Σ_{|S|≥2} π^{τ(|S|−2)} (Π_{j∈S} b_j) · (Π_{i∉S} h_i)` has
+    coefficients in the base ring (nonnegative `π`-powers: the
+    "Q̃ ℤ_p-coefficients" clause). -/
+theorem quadRemainder_pow_extraction (s : Finset ι) (h b : ι → R) (π : R) (τ : ℕ) :
+    ∑ S ∈ s.powerset.filter (fun S => 2 ≤ S.card),
+        (∏ j ∈ S, π ^ τ * b j) * ∏ i ∈ s \ S, h i
+      = π ^ (2 * τ) *
+          ∑ S ∈ s.powerset.filter (fun S => 2 ≤ S.card),
+            π ^ (τ * (S.card - 2)) * (∏ j ∈ S, b j) * ∏ i ∈ s \ S, h i := by
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun S hS => ?_
+  rw [Finset.mem_filter] at hS
+  rw [prod_pow_mul_of_two_le_card S b π τ hS.2]
+  ring
+
+/-- K7b → K7c packaging: K7a's split at `a = π^τ b` with the `π^{2τ}`
+    extraction applied — `Π(h + π^τ b) − Π h = π^τ Φ_h(b) + π^{2τ} Q̃(b)`,
+    the displayed form of O-10 §3 Step 1 that the fiber condition (⋆)
+    divides by `π^τ`. -/
+theorem prod_add_sub_prod_split_pow (s : Finset ι) (h b : ι → R) (π : R) (τ : ℕ) :
+    ∏ j ∈ s, (h j + π ^ τ * b j) - ∏ j ∈ s, h j
+      = π ^ τ * (∑ j ∈ s, b j * ∏ i ∈ s.erase j, h i)
+        + π ^ (2 * τ) *
+            ∑ S ∈ s.powerset.filter (fun S => 2 ≤ S.card),
+              π ^ (τ * (S.card - 2)) * (∏ j ∈ S, b j) * ∏ i ∈ s \ S, h i := by
+  rw [prod_add_sub_prod_split s h (fun j => π ^ τ * b j),
+    quadRemainder_pow_extraction s h b π τ]
+  congr 1
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl fun j hj => by ring
+
+end K7b
 
 end LeanUrat.Scaffold

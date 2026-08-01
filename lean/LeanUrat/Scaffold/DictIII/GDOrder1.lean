@@ -27,7 +27,17 @@ for the repaired def).  Unit III-G3b (`gaussW_dev_indep`, GAUSS-g(i)) is
 BLOCKED downstream of III-G3a AND false-as-displayed at `Φ = 1` (missing
 `hd` binder); its two gaussW-free inequality engines are landed proved
 (`devCoeff_coeff_mem`, `devCoeff_sum_reconstruct`) — see the
-BLOCKED(III-G3b) record.  Source of record: GD23 §3 GAUSS-g(i)/(ii).
+BLOCKED(III-G3b) record.  Unit III-G6 (`w1` + POS-g(i)–(iii)) is BLOCKED
+downstream of III-G3a — unknown identifier `gaussW` — AND independently by the
+displayed gaussW signature itself: `w1` applies `gaussW` over
+`FractionRing O`, which is a field and hence never a DVR (compiled witness
+`not_isDiscreteValuationRing_fractionRing`); see the BLOCKED(III-G6) record
+for the verbatim `w1`/`w1_posg` displays, exact errors, and validated
+provability notes (POS-g(i) TRUE-and-proved under the stub body but FALSE
+under the intended gaussW without GD23's "on O[x]" integrality; (ii) FALSE
+under the stub; (iii) TRUE under both).  Its gaussW-free engines are landed
+proved: `devCoeff_add`, `devCoeff_smul` (+ helpers `add_divByMonic`,
+`smul_divByMonic`).  Source of record: GD23 §3 GAUSS-g(i)/(ii)/POS-g.
 -/
 
 namespace LeanUrat.Scaffold.DictIII
@@ -429,6 +439,165 @@ needs an architect restatement (e.g. `¬ (Φ.map (residue) ∣ B.map (residue))`
 -shaped on initial forms, per GD23 §3) before III-G5 and its consumer
 III-G12 can land. -/
 
+/-! ## Unit III-G6 (`w1` + POS-g(i)–(iii)) — BLOCKED record + its gaussW-free engines
+
+BLOCKED(III-G6): the §1.4 displays
+
+  def w1 {O} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      (Φ₀ : Polynomial O) (e h : ℕ) (B : Polynomial (FractionRing O)) :
+      WithTop ℤ :=
+    Finset.inf' (Finset.range (B.natDegree + 1)) (by simp) fun t =>
+      (e : ℤ) • gaussW (devCoeff (Polynomial.map (algebraMap O (FractionRing O)) Φ₀) B t) +
+        ((t : ℤ) * (h : ℤ))
+
+  theorem w1_posg {O} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      (Φ₀ : Polynomial O) (e h : ℕ) (B : Polynomial (FractionRing O)) :
+      0 ≤ w1 Φ₀ e h B ∨ w1 Φ₀ e h B = ⊤
+
+cannot compile as written; statement changes are forbidden, so NEITHER
+declaration is transcribed.  Blocks, in dependency order (all probed
+2026-08-01 by transcribing the verbatim displays into a scratch importing this
+file at HEAD):
+
+1. MISSING DEP (fatal): dep III-G3a (`gaussW`) is BLOCKED — see its record
+   above — so `gaussW` names no declaration.  Exact error at the `w1`
+   display's `gaussW` token: "Unknown identifier `gaussW`".  `w1_posg`
+   consumes `w1` and so cannot even be stated.
+
+2. SIGNATURE MISMATCH (fatal INDEPENDENTLY of the III-G3a repair): `w1`
+   applies `gaussW` to `devCoeff … B t : Polynomial (FractionRing O)`, but the
+   §1.4 `gaussW` display carries a DVR-only carrier `(B : Polynomial O)` with
+   `[IsDiscreteValuationRing O]`.  `FractionRing O` is a FIELD, hence never a
+   DVR — compiled witness `not_isDiscreteValuationRing_fractionRing` below.
+   Probe: landing a minimally-repaired gaussW AT THE DISPLAYED SIGNATURE and
+   then transcribing `w1` verbatim fails with exact error "failed to
+   synthesize instance of type class IsDiscreteValuationRing (FractionRing O)"
+   at the `gaussW` application.  So the architect's III-G3a repair must ALSO
+   generalize the `gaussW` carrier (e.g. to any `CommRing` — the display body
+   consumes no DVR structure — or to `FractionRing O` with the valuation
+   extended from `O`), or `w1` stays untranscribable.
+
+3. NOT blocks (probed, recorded so the repair lands with eyes open): all the
+   display's WithTop-ℤ arithmetic EXISTS in Mathlib 4.31 — `(e : ℤ) • ⬝` via
+   `SubNegMonoid.toZSMul` (through `WithTop.LinearOrderedAddCommGroup.…`),
+   `(t : ℤ) * (h : ℤ)` via `WithTop.instMulZeroClass.toMul`, and both `inf'`
+   side goals close by `simp`.  Once `gaussW` lands carrier-generalized, the
+   verbatim `w1` elaborates as displayed (validated: the full display was
+   compiled against a carrier-generalized respelling of the stub body).
+
+Provability notes for the architect (each validated by compilation against
+the carrier-generalized stub-body gaussW, 2026-08-01):
+* POS-g(i) = `w1_posg`: under ANY respelling of the CURRENT stub body
+  (constant 0 over the support, zero ↦ ⊤) the display is TRUE and proved in
+  ~15 lines — in fact the LEFT disjunct holds unconditionally: every slot
+  value is `(e:ℤ) • g + t·h` with `g ∈ {0, ⊤}`, so `≥ 0` slotwise
+  (`natCast_zsmul` + `nsmul_nonneg`; `Finset.le_inf'`).  Under the INTENDED
+  gaussW (min of coefficient valuations over the FRACTION field) the display
+  is FALSE as stated: at `B = C (algebraMap _ _ π)⁻¹`, `e = 1` every slot-0
+  value is `1 • (−1) + 0 = −1`, so `w1 = −1 < 0` and `≠ ⊤`.  GD23 §3 states
+  POS-g(i) "on O[x]" — the display dropped the integrality hypothesis; the
+  architect repair must restore it (e.g. an
+  `∀ k, ∃ a : O, algebraMap O (FractionRing O) a = B.coeff k` binder or an
+  `O`-lattice carrier for `B`).
+* POS-g(ii) (`w1(π•B) = E₁ + w1(B)`, `E₁ = e`): NO Lean display exists in
+  §1.4 for it.  It is FALSE under the stub body (which gives
+  `w1 (π•B) = w1 B` — `gaussW` constant on nonzero polynomials — while
+  `E₁ = e ≥ 1` on any slot where `w1 B ≠ ⊤`); under the INTENDED gaussW it is
+  TRUE for ALL `B` over the fraction field (no integrality needed):
+  coefficient valuations shift by `v(π) = 1`, so each slot shifts by `e`.
+  Its gaussW-free bookkeeping half is landed proved below: `devCoeff_smul`
+  (development slots are `•`-equivariant, so
+  `devCoeff Φ (π • B) t = π • devCoeff Φ B t` slotwise).  The clause itself
+  stays an OPEN obligation of this unit, blocked on III-G3a's semantic fill.
+* POS-g(iii) (`min (w1 A) (w1 B) ≤ w1 (A + B)`): NO Lean display exists in
+  §1.4 for it.  TRUE under both the stub body and the intended gaussW (both
+  are `{0,⊤}`-valued resp. genuine valuations, so slotwise ultrametric).  Its
+  gaussW-free bookkeeping half is landed proved below: `devCoeff_add`
+  (development slots are additive); the remaining half is the one-line
+  slotwise `gaussW` ultrametric + the range bookkeeping already landed as
+  `devCoeff_eq_zero_of_natDegree_lt` above.  Blocked on III-G3a only.
+-/
+
+/-- Helper for unit III-G6 (POS-g bookkeeping): `divByMonic` is additive.
+Mathlib 4.31 has `Polynomial.add_modByMonic` but no quotient-side
+counterpart; proved via `Polynomial.div_modByMonic_unique`.  No hypotheses:
+the non-monic branch degenerates (`⬝ /ₘ Φ = 0`) and the trivial-ring branch
+is `Subsingleton.elim`. -/
+theorem add_divByMonic {O : Type*} [CommRing O] (Φ A B : Polynomial O) :
+    (A + B) /ₘ Φ = A /ₘ Φ + B /ₘ Φ := by
+  by_cases hΦ : Φ.Monic
+  · rcases subsingleton_or_nontrivial O with hO | hO
+    · exact Subsingleton.elim _ _
+    · refine (Polynomial.div_modByMonic_unique (A /ₘ Φ + B /ₘ Φ)
+        (A %ₘ Φ + B %ₘ Φ) hΦ ⟨?_, ?_⟩).1
+      · linear_combination Polynomial.modByMonic_add_div A Φ +
+          Polynomial.modByMonic_add_div B Φ
+      · exact lt_of_le_of_lt (Polynomial.degree_add_le _ _)
+          (max_lt (Polynomial.degree_modByMonic_lt A hΦ)
+            (Polynomial.degree_modByMonic_lt B hΦ))
+  · rw [Polynomial.divByMonic_eq_of_not_monic _ hΦ,
+      Polynomial.divByMonic_eq_of_not_monic _ hΦ,
+      Polynomial.divByMonic_eq_of_not_monic _ hΦ, add_zero]
+
+/-- Helper for unit III-G6 (POS-g bookkeeping): `divByMonic` is
+`•`-equivariant (the quotient-side counterpart of Mathlib's
+`Polynomial.smul_modByMonic`). -/
+theorem smul_divByMonic {O : Type*} [CommRing O] (Φ : Polynomial O) (c : O)
+    (B : Polynomial O) : (c • B) /ₘ Φ = c • (B /ₘ Φ) := by
+  by_cases hΦ : Φ.Monic
+  · rcases subsingleton_or_nontrivial O with hO | hO
+    · exact Subsingleton.elim _ _
+    · refine (Polynomial.div_modByMonic_unique (c • (B /ₘ Φ))
+        (c • (B %ₘ Φ)) hΦ ⟨?_, ?_⟩).1
+      · rw [mul_smul_comm, ← smul_add, Polynomial.modByMonic_add_div]
+      · exact lt_of_le_of_lt (Polynomial.degree_smul_le _ _)
+          (Polynomial.degree_modByMonic_lt B hΦ)
+  · rw [Polynomial.divByMonic_eq_of_not_monic _ hΦ,
+      Polynomial.divByMonic_eq_of_not_monic _ hΦ, smul_zero]
+
+/-- Unit III-G6, POS-g(iii) engine (gaussW-free bookkeeping half, GD23 §3
+Lemma POS-g "ultrametric bookkeeping"): the Φ-adic development slots are
+additive.  Once III-G3a's `gaussW` lands, the displayed `w1` inherits the
+ultrametric inequality slotwise from this and the (one-line) `gaussW`
+ultrametric; see the BLOCKED(III-G6) record. -/
+theorem devCoeff_add {O : Type*} [CommRing O] (Φ : Polynomial O) (j : ℕ)
+    (A B : Polynomial O) :
+    devCoeff Φ (A + B) j = devCoeff Φ A j + devCoeff Φ B j := by
+  induction j generalizing A B with
+  | zero => simpa [devCoeff] using Polynomial.add_modByMonic A B
+  | succ j ih =>
+    simp only [devCoeff]
+    rw [add_divByMonic]
+    exact ih _ _
+
+/-- Unit III-G6, POS-g(ii) engine (gaussW-free bookkeeping half, GD23 §3
+Lemma POS-g `w_i(πB) = E_i + w_i(B)`): the Φ-adic development slots are
+`•`-equivariant — at `c := algebraMap O (FractionRing O) π` this is
+"multiplying by π shifts every slot by π", from which the intended `gaussW`
+(coefficient-valuation min) shifts every `w1` slot by `e·v(π) = E₁`; see the
+BLOCKED(III-G6) record. -/
+theorem devCoeff_smul {O : Type*} [CommRing O] (Φ : Polynomial O) (c : O)
+    (j : ℕ) (B : Polynomial O) :
+    devCoeff Φ (c • B) j = c • devCoeff Φ B j := by
+  induction j generalizing B with
+  | zero => simpa [devCoeff] using Polynomial.smul_modByMonic c B
+  | succ j ih =>
+    simp only [devCoeff]
+    rw [smul_divByMonic]
+    exact ih _
+
+/-- Unit III-G6, compiled obstruction (block 2 of the BLOCKED(III-G6)
+record): the fraction field of a DVR is never itself a DVR (it is a field),
+so a `gaussW` carrying the DISPLAYED §1.4 signature — DVR carrier only — can
+never be applied at the `w1` display's use site
+`Polynomial (FractionRing O)`.  The III-G3a repair must generalize the
+`gaussW` carrier. -/
+theorem not_isDiscreteValuationRing_fractionRing {O : Type*} [CommRing O]
+    [IsDomain O] [IsDiscreteValuationRing O] :
+    ¬ IsDiscreteValuationRing (FractionRing O) :=
+  fun hdvr => @IsDiscreteValuationRing.not_isField (FractionRing O) _ _ hdvr
+    (Field.toIsField _)
+
 /- Unit III-G9 (VAL-g step (3)). STATEMENT PROVENANCE: the BP_III §1.4 display
 carries NO verbatim Lean statement for this unit (it displays G2–G7 and G10
 only); per the unit brief the statement is drawn from the source of record,
@@ -559,17 +728,12 @@ theorem valg2_slot_eq {O : Type*} [CommRing O]
     (hdeg : ∀ t, (u t).degree < Φ₀.degree) (hvan : ∀ t, n ≤ t → u t = 0)
     (t : ℕ) :
     devCoeff Φ₀ (∑ s ∈ Finset.range n, Polynomial.C (π ^ a s) * u s * Φ₀ ^ s) t
-      = Polynomial.C (π ^ a t) * u t :=
-  devCoeff_slots hΦ n (fun s => Polynomial.C (π ^ a s) * u s)
-    (fun s =>
-      lt_of_le_of_lt
-        (calc (Polynomial.C (π ^ a s) * u s).degree
-            ≤ (Polynomial.C (π ^ a s)).degree + (u s).degree :=
-              Polynomial.degree_mul_le _ _
-          _ ≤ 0 + (u s).degree := add_le_add_right Polynomial.degree_C_le _
-          _ = (u s).degree := zero_add _)
-        (hdeg s))
-    (fun s hs => by rw [hvan s hs, mul_zero]) t
+      = Polynomial.C (π ^ a t) * u t := by
+  refine devCoeff_slots hΦ n (fun s => Polynomial.C (π ^ a s) * u s)
+    (fun s => ?_) (fun s hs => by rw [hvan s hs, mul_zero]) t
+  refine lt_of_le_of_lt ?_ (hdeg s)
+  rw [← Polynomial.smul_eq_C_mul]
+  exact Polynomial.degree_smul_le _ _
 
 /-- Helper for III-G8: in a domain, `π^m·x` lies one π-step above its own
 lattice height iff `x` lies in `(π)` — the slotwise class-vanishing test. -/

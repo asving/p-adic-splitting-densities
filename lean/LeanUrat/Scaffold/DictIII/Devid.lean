@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.Scaffold.DictIII.Hyps
+import LeanUrat.Moves.Defs
 
 /-!
 # Scaffold/DictIII/Devid — DEVID's graded interface (BP_III §1.5)
@@ -46,6 +47,17 @@ is one line each (`add : Gr → Gr → Gr` / `mul : Gr → Gr → Gr`); the
 propositions are unchanged.  Additionally `devCoeff`/`minDev` carry the
 `noncomputable` modifier (forced by `Polynomial.modByMonic`; definition bodies
 untouched).  No other token differs from the display.
+
+Unit III-G16 (`devid_le`, appended below): the ≤ half of `devid` — statement
+transcribed with the hypothesis list of §1.5's `devid` display (the blueprint
+elides the halves' own displays: `theorem devid_le …`), conclusion its ≤ half.
+STATUS: **REFUTED as stated** — see `G16Refutation.devid_le_refuted`, a
+compiled countermodel; the statement stands as an honest sorry pending
+statement adjudication.  The countermodel instantiates the D-R3 probe
+`valGrIdentity` at K = 𝔽₂, w = the (X+1)-adic order, Φ = X — sharpening the
+probe's record: the identity instance CAN impersonate the graded world for
+III-G16's exact hypothesis set (`KPaBlock` holds at a non-key Φ), because 𝔽₂
+has no unit but 1.  Consumes the III-G14 wave's `IsPolyValuation`.
 -/
 
 namespace LeanUrat.Scaffold.DictIII
@@ -479,5 +491,474 @@ theorem gd3_full_of_GRB {p : ℕ} [Fact p.Prime]
       Function.Bijective (fun j : Fin (D.residualDegree i + 1) => j) := by
   intro f c D i hi
   exact ⟨h.residualNormalForm i hi, h.slotBijection i hi⟩
+
+/-! ## Unit III-G16 — `devid_le` (GD23 §4 proof "≤"): REFUTED AS STATED
+
+The blueprint elides the display (`theorem devid_le …  -- the ≤ half (the ψ̂ |
+in(C_m) contradiction)`); the statement below renders the ≤ half of the
+VERBATIM `devid` display (§1.5 lines 465–469) with `devid`'s exact binder
+frame — the only completion consistent with the landed `devid_ge`
+(`minDev ≤ w B` being the "≥"/ultrametric half).
+
+It is FALSE over the landed III-G15a interface.  `G16Refutation` below
+compiles the countermodel: K = 𝔽₂ (= `ZMod 2`), w = the (X+1)-adic order (a
+genuine polynomial valuation, `ipvCM`), G = the D-R3 identity probe
+`valGrIdentity wCM`, Φ = X, B = X + 1.  Every hypothesis holds — in
+particular `KPaBlock` (`kpaCM`): `primeInitial` because the only
+factorizations of the irreducible monic X in 𝔽₂[x] are 1·X and X·1 (𝔽₂ has
+no unit but 1), `lowerDegree` by degree alone.  Yet w(X+1) = 1 while
+minDev w X (X+1) = 0 (the k = 0 slot: (X+1) %ₘ X = 1 and w(1) = 0).
+
+Root cause: `ValGr.g1` is stated WITHOUT a no-cancellation guard (e.g.
+`w (A + B) = w A`) and without a graded-piece-indexed initial form, so the
+rows never force `inF` to identify polynomials agreeing to higher w-order —
+`inF := id` satisfies g1 unconditionally.  GD23 §4's "≤" proof consumes
+exactly the cancellation law (Σ_{k∈S} in(C_k)·in(Φ)^k = 0 in gr_{u₀} when
+w(B) exceeds the min) that g1 cannot express; note the INTENDED gr(w)
+instance conversely FAILS g1 as displayed in the cancellation case (LHS a
+nonzero higher-grade initial form, RHS the grade-v sum = the zero of gr_v),
+so III-G15b will hit the same seam from the other side.  In the true gr(wCM)
+the key test fails here — in(X) = in(1) since w(X − 1) = 1 > 0 = w(X), so
+genuine `lowerDegree` is violated at B = 1 — but the abstract rows cannot
+see it.  The fix requires a STATEMENT change on III-G15a's landed `ValGr`
+(cancellation-guarded g1 + a zero-detection law, or a graded-sum law) —
+outside this unit's authority (statement fence); adjudication queued.  The
+≤ half stands below as an honest sorry so the unit's target is on record. -/
+
+/-- Unit III-G16 (`devid_le`, GD23 §4 proof "≤"): the ≤ half of Theorem
+DEVID — under (V1) + (KPa)'s block, the development min bounds `w B` from
+above.  **REFUTED AS STATED**: `G16Refutation.devid_le_refuted` compiles a
+countermodel to this exact statement (see the section header).  DO NOT
+consume (III-G17 assembly: do not wire until the interface adjudication
+lands); the `sorry` is the honest record of the unit's target. -/
+theorem devid_le {K : Type*} [CommRing K]
+    (w : Polynomial K → WithTop ℤ) (hval : IsPolyValuation w)
+    (G : ValGr w) (Φ : Polynomial K) (hkpa : KPaBlock w G Φ)
+    (B : Polynomial K) :
+    w B ≤ minDev w Φ B := by
+  -- BLOCKED(III-G16): statement FALSE over the landed III-G15a interface —
+  -- compiled countermodel `G16Refutation.devid_le_refuted` below (identity
+  -- ValGr over 𝔽₂ satisfies KPaBlock at the non-key Φ = X for the (X+1)-adic
+  -- valuation; w(X+1) = 1 > 0 = minDev).  ValGr.g1 lacks the cancellation
+  -- law GD23 §4 "≤" consumes; fix = statement adjudication on III-G15a.
+  sorry
+
+namespace G16Refutation
+
+open scoped Classical in
+/-- III-G16 refutation carrier — the (X+1)-adic order on 𝔽₂[x] (order of
+vanishing at the point 1): a GENUINE polynomial valuation (`ipvCM`), of Gauss
+type, for which X is NOT a key polynomial (in gr(wCM), in(X) = in(1)). -/
+noncomputable def wCM (B : Polynomial (ZMod 2)) : WithTop ℤ :=
+  if B = 0 then ⊤ else ((Polynomial.rootMultiplicity 1 B : ℤ) : WithTop ℤ)
+
+theorem wCM_zero : wCM 0 = ⊤ := if_pos rfl
+
+theorem wCM_of_ne {B : Polynomial (ZMod 2)} (hB : B ≠ 0) :
+    wCM B = ((Polynomial.rootMultiplicity 1 B : ℤ) : WithTop ℤ) := if_neg hB
+
+theorem wCM_one : wCM 1 = 0 := by
+  rw [wCM_of_ne one_ne_zero,
+    Polynomial.rootMultiplicity_eq_zero (by simp [Polynomial.IsRoot])]
+  rfl
+
+theorem wCM_X : wCM X = 0 := by
+  rw [wCM_of_ne Polynomial.X_ne_zero,
+    Polynomial.rootMultiplicity_eq_zero (by simp [Polynomial.IsRoot])]
+  rfl
+
+/-- Multiplicativity of the (X+1)-adic order (root multiplicities add). -/
+theorem wCM_mul (A B : Polynomial (ZMod 2)) : wCM (A * B) = wCM A + wCM B := by
+  by_cases hA : A = 0
+  · rw [hA, zero_mul, wCM_zero, top_add]
+  by_cases hB : B = 0
+  · rw [hB, mul_zero, wCM_zero, add_top]
+  have hAB : A * B ≠ 0 := mul_ne_zero hA hB
+  rw [wCM_of_ne hAB, Polynomial.rootMultiplicity_mul hAB,
+    wCM_of_ne hA, wCM_of_ne hB]
+  push_cast
+  rfl
+
+/-- Ultrametric row for the (X+1)-adic order (shared `(X-1)^n` divisor). -/
+theorem wCM_add (A B : Polynomial (ZMod 2)) :
+    min (wCM A) (wCM B) ≤ wCM (A + B) := by
+  by_cases hA : A = 0
+  · rw [hA, zero_add, wCM_zero]
+    exact min_le_right _ _
+  by_cases hB : B = 0
+  · rw [hB, add_zero, wCM_zero]
+    exact min_le_left _ _
+  by_cases hAB : A + B = 0
+  · rw [hAB, wCM_zero]
+    exact le_top
+  have hle : min (Polynomial.rootMultiplicity 1 A) (Polynomial.rootMultiplicity 1 B)
+      ≤ Polynomial.rootMultiplicity 1 (A + B) :=
+    (Polynomial.le_rootMultiplicity_iff hAB).mpr
+      (dvd_add
+        ((pow_dvd_pow _ (min_le_left _ _)).trans (Polynomial.pow_rootMultiplicity_dvd A 1))
+        ((pow_dvd_pow _ (min_le_right _ _)).trans (Polynomial.pow_rootMultiplicity_dvd B 1)))
+  rw [wCM_of_ne hA, wCM_of_ne hB, wCM_of_ne hAB]
+  exact_mod_cast hle
+
+/-- The refutation valuation is a genuine `IsPolyValuation`. -/
+theorem ipvCM : IsPolyValuation wCM :=
+  ⟨wCM_zero, wCM_one, wCM_mul, wCM_add⟩
+
+/-- 𝔽₂ paucity of units: the only unit of `ZMod 2` is 1. -/
+theorem eq_one_of_isUnit_K2 {r : ZMod 2} (h : IsUnit r) : r = 1 := by
+  have h2 : ∀ s : ZMod 2, s ≠ 0 → s = 1 := by decide
+  exact h2 r h.ne_zero
+
+/-- III-G16 refutation: `KPaBlock` HOLDS for the D-R3 identity probe at the
+NON-key Φ = X over 𝔽₂ — the abstract rows cannot see that the genuine graded
+key test fails (in gr(wCM), in(X) = in(1), so real `lowerDegree` dies at
+B = 1). -/
+theorem kpaCM : KPaBlock wCM (valGrIdentity wCM) X where
+  monic := Polynomial.monic_X
+  positiveDegree := by simp
+  primeInitial := by
+    intro A B h
+    have h' : A * B = X := h
+    rcases (Polynomial.irreducible_X (R := ZMod 2)).isUnit_or_isUnit h'.symm with hu | hu
+    · right
+      rcases Polynomial.isUnit_iff.mp hu with ⟨r, hr, hCA⟩
+      have hA1 : A = 1 := by rw [← hCA, eq_one_of_isUnit_K2 hr, Polynomial.C_1]
+      show B = X
+      rw [← h', hA1, one_mul]
+    · left
+      rcases Polynomial.isUnit_iff.mp hu with ⟨r, hr, hCB⟩
+      have hB1 : B = 1 := by rw [← hCB, eq_one_of_isUnit_K2 hr, Polynomial.C_1]
+      show A = X
+      rw [← h', hB1, mul_one]
+  lowerDegree := by
+    intro B hdeg hB0 hBX
+    have hBX' : B = X := hBX
+    rw [hBX', Polynomial.natDegree_X] at hdeg
+    exact absurd hdeg (by omega)
+
+/-- Slot-0 development coefficient of X + 1 in Φ = X: the remainder is 1. -/
+theorem modX : (X + 1 : Polynomial (ZMod 2)) %ₘ X = 1 :=
+  (Polynomial.div_modByMonic_unique 1 1 Polynomial.monic_X
+    ⟨by ring, by rw [Polynomial.degree_one, Polynomial.degree_X]; decide⟩).2
+
+/-- w(X + 1) = 1: over 𝔽₂, X + 1 = X − C 1, of root multiplicity 1 at 1. -/
+theorem wCM_X_add_one : wCM (X + 1) = 1 := by
+  have hne : (X + 1 : Polynomial (ZMod 2)) ≠ 0 := by
+    intro h
+    have h1 := congrArg (fun q : Polynomial (ZMod 2) => q.coeff 1) h
+    simp [Polynomial.coeff_one] at h1
+  have hneg : (-1 : ZMod 2) = 1 := by decide
+  have h2 : (X - Polynomial.C 1 : Polynomial (ZMod 2)) = X + 1 := by
+    rw [sub_eq_add_neg, ← Polynomial.C_neg, hneg, Polynomial.C_1]
+  rw [wCM_of_ne hne, ← h2, Polynomial.rootMultiplicity_X_sub_C_self]
+  rfl
+
+/-- THE COMPILED III-G16 COUNTERMODEL: all of `devid_le`'s hypotheses hold,
+its conclusion fails.  K = 𝔽₂, w = (X+1)-adic order, G = identity probe,
+Φ = X, B = X + 1: then w B = 1 but minDev w Φ B ≤ 0 (slot k = 0). -/
+theorem devid_le_refuted :
+    ∃ w : Polynomial (ZMod 2) → WithTop ℤ, IsPolyValuation w ∧
+      ∃ G : ValGr.{0, 0} w, ∃ Φ : Polynomial (ZMod 2), KPaBlock w G Φ ∧
+        ∃ B : Polynomial (ZMod 2), ¬ w B ≤ minDev w Φ B := by
+  refine ⟨wCM, ipvCM, valGrIdentity wCM, X, kpaCM, X + 1, fun hle => ?_⟩
+  have hterm : wCM (devCoeff X (X + 1 : Polynomial (ZMod 2)) 0)
+      + (0 : ℕ) • wCM X = 0 := by
+    have hdev : devCoeff (X : Polynomial (ZMod 2)) (X + 1) 0 = (X + 1) %ₘ X := rfl
+    rw [hdev, modX, wCM_one, zero_nsmul, add_zero]
+  have hmin : minDev wCM X (X + 1 : Polynomial (ZMod 2)) ≤ 0 := by
+    have h0 : (0 : ℕ) ∈ Finset.range ((X + 1 : Polynomial (ZMod 2)).natDegree + 1) :=
+      Finset.mem_range.mpr (Nat.succ_pos _)
+    have hinf := Finset.inf'_le
+      (fun k => wCM (devCoeff X (X + 1 : Polynomial (ZMod 2)) k) + (k : ℕ) • wCM X) h0
+    exact le_trans hinf (le_of_eq hterm)
+  have h1 : wCM (X + 1) ≤ 0 := le_trans hle hmin
+  rw [wCM_X_add_one] at h1
+  have h2 : (1 : ℤ) ≤ 0 := by exact_mod_cast h1
+  omega
+
+/-- The universally-quantified III-G16 statement is FALSE (negation witness,
+`Type`-instantiated). -/
+theorem devid_le_universal_false :
+    ¬ ∀ (K : Type) [CommRing K]
+        (w : Polynomial K → WithTop ℤ), IsPolyValuation w →
+        ∀ (G : ValGr.{0, 0} w) (Φ : Polynomial K), KPaBlock w G Φ →
+        ∀ B : Polynomial K, w B ≤ minDev w Φ B := by
+  intro h
+  obtain ⟨w, hval, G, Φ, hkpa, B, hnot⟩ := devid_le_refuted
+  exact hnot (h (ZMod 2) w hval G Φ hkpa B)
+
+end G16Refutation
+
+/-! ## Unit III-G21a — `gd3_min`: statement + order-≤1 instance (GD23 §7.3 GD3-MIN)
+
+The §1.5 line is ELIDED (`theorem gd3_min …` with only the record comment
+"GD3-MIN: ord_{ψ̂_hom}(in f) = ord_ψ(R_λ f), per level — under KeyPkg (order
+≤ 1 instance outright)"); same convention as III-G18/G19/G20/G22 above: the
+statement is completed from the source of record, GD23 brief §7.2–§7.3.
+Completion ledger:
+
+* LEFT side `ord_{ψ̂_hom}(in f)`: the III-G15a `ValGr` interface carries no
+  divisibility operation, so the ψ̂-order is rendered through IMAGE
+  divisibility (`GrOrdAt` below): ψ̂^μ = in(Φ^μ) divides in(f) with an
+  initial-form cofactor, ψ̂^{μ+1} does not — the exact two-clause shape of
+  the corpus residual-side order `Moves.OrdPsiPoly`.  At order ≤ 1 the
+  ambient carrier is the fraction-field polynomial ring (§1.4), where every
+  homogeneous element of gr(w₁) is an initial form (HOM-FACT, GD23 §7.3
+  Route B display), so image divisibility IS graded divisibility there.
+* RIGHT side `ord_{ψ_i}(R_λ f)`: the corpus `Moves.OrdPsiPoly` (verbatim
+  reuse by import — the dedup rule), fired at the level's residual read
+  `Rlam` into the level residue field `𝒦`.
+* "per level, anchored read": the level enters as the NAMED row package
+  `AnchoredRead` — GD23 §7.2's order-1 display
+  `in(f) = ϕ · hom_{e,h}(R_λ f)` (KEY-g(iii)/RES-1) abstracted to its
+  consumed rows: the read itself (`read`, with anchor ϕ_f), the dictionary
+  laws (`lift_mul`, `lift_key` = "residual = initial-form ψ-order"'s KEY-g(i)
+  tie in(Φ) = ψ̂ = hom(ψ)), the (g3)-type graded rows (`key_ne`, `cancel` —
+  gr(w₁) is a domain, GD23 §1.3 (g3)), and RES-1's divisibility reflection
+  (`reflect`, the §7.3 clause-(4) content at order ≤ 1).  All are
+  [M]-hypothesis rows, NEVER axioms.
+* "under KeyPkg": carried as the `KPaBlock` hypothesis (§1.5's graded
+  rendering of III-H8's `KeyPkg`, per this file's DEVID convention).  The
+  order-≤1 transfer below does not consume it; the general-order unit
+  III-G21b does ("apply DEVID and the named graded/KPa rows").
+
+Status honesty: `gd3_min` is PROVED OUTRIGHT below from the rows (the unit
+row's proof column "residual = initial-form ψ-order; anchored read"), and the
+row set is certified satisfiable by the compiled gate `gd3_min_gate` at the
+`valGrIdentity` carrier over 𝔽₂ (trivial dressing: anchor ≡ 1, R_λ = id,
+lift = id — the D-R3 probe's world, so the same D-R3 caveat applies: this
+certifies non-vacuity of the row set, NOT the concrete order-≤1 grading).
+The CONCRETE order-≤1 instantiation data (w₁'s graded carrier, hom_{e,h},
+the ϕ-anchor, RES-1's slot basis) is owned by units III-G12b/G13a/G15b —
+G15b is BLOCKED above (the §1.4 `gaussW`/`w1` display defect), so the
+concrete instance inherits that block; unblock order per the G15b record. -/
+
+/-- `ord_{ψ̂}(in f) = μ` on the graded carrier, via image divisibility:
+    `in(Φ^μ)` divides `in(f)` with an initial-form cofactor and `in(Φ^{μ+1})`
+    does not — shape-matched to the corpus `Moves.OrdPsiPoly`
+    (`ψ^μ ∣ R ∧ ¬ ψ^{μ+1} ∣ R`). -/
+def GrOrdAt {K : Type*} [CommRing K] {w : Polynomial K → WithTop ℤ}
+    (G : ValGr w) (Φ f : Polynomial K) (μ : ℕ) : Prop :=
+  (∃ B, G.inF f = G.inF (Φ ^ μ * B)) ∧ ¬ ∃ B, G.inF f = G.inF (Φ ^ (μ + 1) * B)
+
+/-- The per-level ANCHORED READ (GD23 §7.2 (2′) at order ≤ 1 = KEY-g(iii) +
+    RES-1, units III-G12b/G13a): named hypothesis rows tying the level's
+    residual read `Rlam` to the graded world through a coefficient lift and
+    an anchor.  See the unit header ledger for the row-by-row provenance. -/
+structure AnchoredRead {K : Type*} [CommRing K] {w : Polynomial K → WithTop ℤ}
+    (G : ValGr w) (Φ : Polynomial K)
+    {𝒦 : Type*} [Field 𝒦] (ψ : Polynomial 𝒦)
+    (Rlam : Polynomial K → Polynomial 𝒦) where
+  lift : Polynomial 𝒦 → Polynomial K
+  anchor : Polynomial K → Polynomial K
+  read : ∀ f, f ≠ 0 → G.inF f = G.inF (anchor f * lift (Rlam f))
+  lift_mul : ∀ R S, G.inF (lift (R * S)) = G.inF (lift R * lift S)
+  lift_key : G.inF (lift ψ) = G.inF Φ
+  key_ne : G.inF Φ ≠ G.zero
+  cancel : ∀ a b c, a ≠ G.zero → G.mul a b = G.mul a c → b = c
+  reflect : ∀ f R, (∃ B, G.inF (anchor f * lift R) = G.inF (Φ * B)) → ψ ∣ R
+
+/-- III-G21a support — initial forms of key powers are nonzero (`inF 1 ≠ 0`
+    forced by `key_ne` through (g2) + `mul_zero`; then (g2) + `dom`). -/
+theorem ValGr.inF_pow_ne {K : Type*} [CommRing K]
+    {w : Polynomial K → WithTop ℤ} (G : ValGr w) {Φ : Polynomial K}
+    (hΦ : G.inF Φ ≠ G.zero) (μ : ℕ) : G.inF (Φ ^ μ) ≠ G.zero := by
+  induction μ with
+  | zero =>
+    rw [pow_zero]
+    intro h1
+    refine hΦ ?_
+    have h2 : G.inF Φ = G.mul (G.inF Φ) (G.inF 1) := by
+      conv_lhs => rw [← mul_one Φ]
+      exact G.g2 Φ 1
+    rw [h2, h1]
+    exact (G.mul_zero _).1
+  | succ μ ih =>
+    rw [pow_succ, G.g2]
+    intro h
+    rcases G.dom _ _ h with h' | h'
+    · exact ih h'
+    · exact hΦ h'
+
+/-- III-G21a support — the anchored read marches ψ-powers to key powers:
+    `in(g · lift(ψ^μ · S)) = in(Φ^μ · (g · lift S))`, one `lift_key` firing
+    per step ((g2) + `lift_mul` + `lift_key` only). -/
+theorem AnchoredRead.read_step {K : Type*} [CommRing K]
+    {w : Polynomial K → WithTop ℤ} {G : ValGr w} {Φ : Polynomial K}
+    {𝒦 : Type*} [Field 𝒦] {ψ : Polynomial 𝒦}
+    {Rlam : Polynomial K → Polynomial 𝒦}
+    (A : AnchoredRead G Φ ψ Rlam) (g : Polynomial K) (S : Polynomial 𝒦) :
+    G.inF (g * A.lift (ψ * S)) = G.inF (Φ * (g * A.lift S)) := by
+  rw [G.g2 g (A.lift (ψ * S)), A.lift_mul ψ S,
+    G.g2 (A.lift ψ) (A.lift S), A.lift_key, ← G.g2 Φ (A.lift S),
+    ← G.g2 g (Φ * A.lift S)]
+  exact congrArg G.inF (by ring)
+
+/-- III-G21a support — `read_step` iterated: the full ψ-power march. -/
+theorem AnchoredRead.read_pow {K : Type*} [CommRing K]
+    {w : Polynomial K → WithTop ℤ} {G : ValGr w} {Φ : Polynomial K}
+    {𝒦 : Type*} [Field 𝒦] {ψ : Polynomial 𝒦}
+    {Rlam : Polynomial K → Polynomial 𝒦}
+    (A : AnchoredRead G Φ ψ Rlam) (g : Polynomial K) (S : Polynomial 𝒦)
+    (μ : ℕ) :
+    G.inF (g * A.lift (ψ ^ μ * S)) = G.inF (Φ ^ μ * (g * A.lift S)) := by
+  induction μ generalizing S with
+  | zero => rw [pow_zero, one_mul, pow_zero, one_mul]
+  | succ μ ih =>
+    calc G.inF (g * A.lift (ψ ^ (μ + 1) * S))
+        = G.inF (g * A.lift (ψ ^ μ * (ψ * S))) :=
+          congrArg (fun t => G.inF (g * A.lift t)) (by ring)
+      _ = G.inF (Φ ^ μ * (g * A.lift (ψ * S))) := ih (ψ * S)
+      _ = G.inF ((Φ ^ μ * g) * A.lift (ψ * S)) := congrArg G.inF (by ring)
+      _ = G.inF (Φ * ((Φ ^ μ * g) * A.lift S)) := A.read_step _ S
+      _ = G.inF (Φ ^ (μ + 1) * (g * A.lift S)) := congrArg G.inF (by ring)
+
+/-- Unit III-G21a — the GD3-MIN transfer core, PROVED: under the anchored
+    read, `ord_ψ(R_λ f) = μ` forces `ord_{ψ̂}(in f) = μ`.  Upper clause =
+    the march (`read_pow`); lower clause = cancel the key power (`cancel`,
+    `inF_pow_ne`) and reflect the leftover division into the residue
+    polynomial ring (`reflect`), contradicting `¬ ψ^{μ+1} ∣ R_λ f`. -/
+theorem gd3_min_transfer {K : Type*} [CommRing K]
+    {w : Polynomial K → WithTop ℤ} {G : ValGr w} {Φ : Polynomial K}
+    {𝒦 : Type*} [Field 𝒦] {ψ : Polynomial 𝒦}
+    {Rlam : Polynomial K → Polynomial 𝒦}
+    (A : AnchoredRead G Φ ψ Rlam)
+    {f : Polynomial K} (hf : f ≠ 0) {μ : ℕ}
+    (hres : Moves.OrdPsiPoly ψ (Rlam f) μ) :
+    GrOrdAt G Φ f μ := by
+  obtain ⟨⟨S, hS⟩, hnot⟩ := hres
+  have hpsiS : ¬ ψ ∣ S := by
+    rintro ⟨T, hT⟩
+    exact hnot ⟨T, by rw [hS, hT]; ring⟩
+  have hread : G.inF f = G.inF (Φ ^ μ * (A.anchor f * A.lift S)) := by
+    rw [A.read f hf, hS]
+    exact A.read_pow (A.anchor f) S μ
+  refine ⟨⟨A.anchor f * A.lift S, hread⟩, ?_⟩
+  rintro ⟨B, hB⟩
+  have hEq : G.mul (G.inF (Φ ^ μ)) (G.inF (A.anchor f * A.lift S))
+      = G.mul (G.inF (Φ ^ μ)) (G.inF (Φ * B)) := by
+    rw [← G.g2, ← G.g2, ← hread, hB]
+    exact congrArg G.inF (by ring)
+  have hcanc := A.cancel _ _ _ (G.inF_pow_ne A.key_ne μ) hEq
+  exact hpsiS (A.reflect f S ⟨B, hcanc⟩)
+
+/-- The graded order is single-valued, so `gd3_min` reads as the record
+    comment's EQUATION `ord_{ψ̂_hom}(in f) = ord_ψ(R_λ f)`. -/
+theorem GrOrdAt.unique {K : Type*} [CommRing K]
+    {w : Polynomial K → WithTop ℤ} {G : ValGr w} {Φ f : Polynomial K}
+    {μ μ' : ℕ} (h : GrOrdAt G Φ f μ) (h' : GrOrdAt G Φ f μ') : μ = μ' := by
+  by_contra hne
+  rcases Nat.lt_or_ge μ μ' with hlt | hge
+  · obtain ⟨B, hB⟩ := h'.1
+    refine h.2 ⟨Φ ^ (μ' - (μ + 1)) * B, ?_⟩
+    rw [hB]
+    refine congrArg G.inF ?_
+    rw [← mul_assoc, ← pow_add]
+    have he : μ + 1 + (μ' - (μ + 1)) = μ' := by omega
+    rw [he]
+  · have hlt : μ' < μ := by omega
+    obtain ⟨B, hB⟩ := h.1
+    refine h'.2 ⟨Φ ^ (μ - (μ' + 1)) * B, ?_⟩
+    rw [hB]
+    refine congrArg G.inF ?_
+    rw [← mul_assoc, ← pow_add]
+    have he : μ' + 1 + (μ - (μ' + 1)) = μ := by omega
+    rw [he]
+
+/-- Unit III-G21a — `theorem gd3_min` (the §1.5 elided line, completed per
+    the unit header ledger): per level — graded data `(G, Φ)` with its key
+    block ("under KeyPkg": `KPaBlock`, consumed by the general-order proof
+    III-G21b, not by the order-≤1 transfer) and the level's anchored
+    residual read — `ord_{ψ̂_hom}(in f) = ord_ψ(R_λ f)`:
+    the ψ̂-adic graded order of the initial form of `f` is the ψ-adic order
+    of the residual `R_λ f`.  Equation form via `GrOrdAt.unique`. -/
+theorem gd3_min {K : Type*} [CommRing K]
+    {w : Polynomial K → WithTop ℤ} (G : ValGr w) (Φ : Polynomial K)
+    (_hkpa : KPaBlock w G Φ)
+    {𝒦 : Type*} [Field 𝒦] (ψ : Polynomial 𝒦)
+    (Rlam : Polynomial K → Polynomial 𝒦)
+    (A : AnchoredRead G Φ ψ Rlam)
+    (f : Polynomial K) (hf : f ≠ 0) (μ : ℕ)
+    (hres : Moves.OrdPsiPoly ψ (Rlam f) μ) :
+    GrOrdAt G Φ f μ :=
+  gd3_min_transfer A hf hres
+
+/-! ### The compiled gate: the row set is satisfiable and `gd3_min` fires
+(trivial-dressing carrier — see the unit header's status-honesty note). -/
+
+/-- `KPaBlock` at the `valGrIdentity` carrier over `𝔽₂`, key `X`: monic ✓,
+    degree 1 ✓, `X` irreducible with unit group `{1}` gives `primeInitial`,
+    and no constant equals `X` gives `lowerDegree`. -/
+theorem idKPaX :
+    KPaBlock (fun _ => (0 : WithTop ℤ))
+      (valGrIdentity (K := ZMod 2) fun _ => (0 : WithTop ℤ))
+      (Polynomial.X : Polynomial (ZMod 2)) := by
+  constructor
+  · exact Polynomial.monic_X
+  · simp
+  · intro A B h
+    have h' : A * B = Polynomial.X := h
+    have hone : ∀ s : ZMod 2, s ≠ 0 → s = 1 := by decide
+    rcases (Polynomial.irreducible_X (R := ZMod 2)).isUnit_or_isUnit h'.symm
+      with hu | hu
+    · right
+      obtain ⟨r, hr, hCr⟩ := Polynomial.isUnit_iff.mp hu
+      have hA : A = 1 := by rw [← hCr, hone r hr.ne_zero, Polynomial.C_1]
+      show B = Polynomial.X
+      rwa [hA, one_mul] at h'
+    · left
+      obtain ⟨r, hr, hCr⟩ := Polynomial.isUnit_iff.mp hu
+      have hB : B = 1 := by rw [← hCr, hone r hr.ne_zero, Polynomial.C_1]
+      show A = Polynomial.X
+      rwa [hB, mul_one] at h'
+  · intro B hdeg _ hBX
+    have hB : B = Polynomial.X := hBX
+    rw [hB, Polynomial.natDegree_X] at hdeg
+    exact absurd hdeg (by omega)
+
+/-- The trivial-dressing anchored read at the `valGrIdentity` carrier over
+    `𝔽₂` (anchor ≡ 1, `lift` = `R_λ` = `id`, ψ = ψ̂ = `X`): every row holds
+    outright.  Satisfiability certificate ONLY (D-R3 caveat). -/
+noncomputable def idReadX :
+    AnchoredRead (valGrIdentity (K := ZMod 2) fun _ => (0 : WithTop ℤ))
+      (Polynomial.X : Polynomial (ZMod 2)) (Polynomial.X : Polynomial (ZMod 2))
+      id where
+  lift := id
+  anchor _ := 1
+  read f _ := (one_mul f).symm
+  lift_mul _ _ := rfl
+  lift_key := rfl
+  key_ne := Polynomial.X_ne_zero
+  cancel a b c ha h := by
+    refine mul_left_cancel₀ (M₀ := Polynomial (ZMod 2)) (a := a) ?_ ?_
+    · exact ha
+    · exact h
+  reflect f R h := by
+    obtain ⟨B, hB⟩ := h
+    have hB' : (1 : Polynomial (ZMod 2)) * R = Polynomial.X * B := hB
+    rw [one_mul] at hB'
+    exact ⟨B, hB'⟩
+
+/-- Unit III-G21a gate, FIRED: at the trivial-dressing level the theorem
+    computes `ord_{ψ̂}(in(X²(X+1))) = 2` from `ord_X(R_λ) = 2`.  Non-vacuity
+    of the `gd3_min` row set, machine-checked. -/
+theorem gd3_min_gate :
+    GrOrdAt (valGrIdentity (K := ZMod 2) fun _ => (0 : WithTop ℤ))
+      (Polynomial.X : Polynomial (ZMod 2))
+      (Polynomial.X ^ 2 * (Polynomial.X + 1)) 2 := by
+  have hne : (Polynomial.X ^ 2 * (Polynomial.X + 1) : Polynomial (ZMod 2)) ≠ 0 := by
+    have h1 : (Polynomial.X + 1 : Polynomial (ZMod 2)).Monic := by
+      simpa using Polynomial.monic_X_add_C (1 : ZMod 2)
+    exact ((Polynomial.monic_X.pow 2).mul h1).ne_zero
+  refine gd3_min _ _ idKPaX _ _ idReadX _ hne 2 ⟨⟨Polynomial.X + 1, rfl⟩, ?_⟩
+  rintro ⟨T, hT⟩
+  have hT' : (Polynomial.X ^ 2 * (Polynomial.X + 1) : Polynomial (ZMod 2))
+      = Polynomial.X ^ (2 + 1) * T := hT
+  have hT'' : (Polynomial.X ^ 2 * (Polynomial.X + 1) : Polynomial (ZMod 2))
+      = Polynomial.X ^ 2 * (Polynomial.X * T) := by rw [hT']; ring
+  have hXT : (Polynomial.X + 1 : Polynomial (ZMod 2)) = Polynomial.X * T :=
+    mul_left_cancel₀ (pow_ne_zero 2 Polynomial.X_ne_zero) hT''
+  have hev := congrArg (Polynomial.eval 0) hXT
+  simp at hev
 
 end LeanUrat.Scaffold.DictIII
