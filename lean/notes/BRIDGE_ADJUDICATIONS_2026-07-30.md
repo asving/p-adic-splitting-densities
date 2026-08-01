@@ -2020,3 +2020,12 @@ recorded mislabel); F4 Tonelli dup (H8 private vs MassId); F5 RootHyps stale
 at 6 rows vs ROOT's 12 — ride r14 batch (F6, one bar re-run). Queue rec:
 H7 TierS -> 4 MECH shared units -> H6 (waves A+D first) ∥ mechanical batch
 ((K1-CANON), H8 pass, D-12r, EN-U3, P(O-8b/M14), H5 mop-up) -> r14 -> H1.
+
+## ROOT r14/REVISION 13 LANDED: the post-acceptance batch (2026-08-01 machine clock)
+ROOT §19: VC15's 4 advisories folded (Step-18 Consumes += Step 2; Step-4 grade
+dropped to honest form + NEW §3.2 M17 faithfulness row; G-3 caveat on all RESUM-n3
+billings; (PACK-iv) edge-set/proof-line reconciled + q/t declared) + (NSF-KEY)
+displayed RETIRED ((H9) open member = (NSF-INT)/(K1-CANON)) + D-12r rewritten at
+confirmed pins (VC-gated) + (H8) re-scoped REDUCED-not-discharged (vi-a FAIL, hostile
+pass owed) + (E-N) 89176a4 rewrite ADOPTED + H4 ROOT-sync STILL-OWED. Twelve rows
+stand; acceptance EARNED on REVISION 12; VC16 owed to re-anchor. PROJECT_STATE synced.

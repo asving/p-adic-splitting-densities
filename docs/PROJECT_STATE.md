@@ -1474,3 +1474,29 @@ at four row-laws). FIRST DISCHARGE LANDED: (NSF-KEY) retired by Unit C
 ledger adjudication + ROOT r14 with the H9 lead. THE DISCHARGE SWARM
 (nine per-hypothesis leads, Asvin directive 2026-08-05) is drafting
 blueprints. VC15's four advisories = r14 hygiene queue.
+
+---
+## MILESTONE 2026-08-01 (r14): ROOT REVISION 13 — the post-acceptance batch LANDED
+ROOT REVISION 13 (unit ROOT r14, ROOT §19) executed the queued batch:
+(1) VC15's four advisories repaired (Step 18 Consumes gains Step 2;
+Step 4's grade dropped to the honest "machine-checked, VERIFIED-LEAN
+PENDING" form with a NEW §3.2 M17/RegPFinite faithfulness-audit row —
+no audit was on file; the RESUM-n3 billings carry the G-3 end-to-end
+caveat; the (PACK-iv) edge-set-vs-proof-line wording reconciled + the
+q/t convention declared). (2) (NSF-KEY) DISPLAYED AS RETIRED throughout
+the operative text (Unit C executed, commits 322ec54/dfdb558; six
+(NSF-KEY-RET) artifacts; compiled witness H9-U1 =
+Scaffold/HDischarge/H9/NsfKeyProp.lean): the (H9) row's open member is
+(NSF-INT) with its (K1-CANON) premise (owed; then (NSF-INT) retires on
+I-1+I-2+I-3 and the row closes at r15). (3) The D-12r row rewritten at
+its confirmed literature pins (HL-a/HL-b/HL-c + GMN TAMS pagination, on
+file); reclassification [M] -> §4 is VC-GATED (VC16 adjudicates).
+(4) The (H8)=(K-CUT) row re-scoped to the landed 11-unit H8 development
+(REDUCED, NOT discharged; H8-R1 charge (vi-a) FAIL = no retirement;
+the fan-out's unit-level hostile pass owed). (5) The mid-campaign (E-N)
+rewrite (89176a4) formally adopted, process gap recorded. H4's ROOT-sync
+briefs adjudicated STILL-OWED (firing conditions unmet per H4M7 §1).
+§3.1 stays TWELVE rows ↔ (H1)-(H9). HONEST STANDING: the acceptance was
+EARNED on the REVISION-12 text and stands; REVISION 13 is a text change —
+a confirming end-to-end pass (VC16, charge at ROOT §19) is OWED to
+re-anchor the accepted text on the REVISION-13 wording.
