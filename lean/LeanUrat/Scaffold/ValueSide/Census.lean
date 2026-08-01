@@ -15,8 +15,11 @@ C2 (`admFull_r1_iff` — statement landed verbatim, REFUTED over the landed C0
 definitions in BOTH directions: honest `sorry` + compiled countermodels
 `C2Refutation.forward_refuted`/`reverse_refuted` + the e₀ = 1 salvage
 `admFull_r1_iff_of_e0_eq_one`; see the C2 provenance block) lands at the END
-of this file.  Later waves add C6 and the wave-4 HARD units
-C5/C5′ (CEN-W r ≥ 1 / CEN-J).
+of this file.  C5/C5′ (CEN-W r ≥ 1 / CEN-J): statements BLOCKED at compile —
+owner rows/carriers/hypothesis types absent (see the two BLOCKED blocks at
+the end of this file); the C5 digit-cost proof kernels
+(`digitCost_of_surjective_read` / `digitCost_of_surjective_linear_read`) ARE
+landed and proved.  Later waves add C6.
 Import graph (BP_IV §1.0): `CensusCore → Hyps` and `{CensusCore, Hyps} →
 Census`, never a cycle — this module imports both and is imported by no
 value-side module.
@@ -1117,5 +1120,121 @@ theorem admFull_r1_iff_of_e0_eq_one {D : CensusData} (hr : D.r = 1)
   ⟨fun hFull β hβ => (attainDim_eq_d_iff_r1Bound_le hr he0 β).mp
       (hFull.full_attained β hβ),
    fun hB => ⟨fun β hβ => (attainDim_eq_d_iff_r1Bound_le hr he0 β).mpr (hB β hβ)⟩⟩
+
+/-!
+## Unit C5 — `censusValueRows_of_anchoredMarch` (CEN-W r ≥ 1): BLOCKED
+(statement-level; owner rows, stratum carriers, AND the hypothesis type absent)
+
+**BLOCKED(C5)** (checked at compile, 2026-08-01; probe = the BP_IV
+§1.2-VERBATIM `CensusValueRows` structure PLUS this unit's constructor
+theorem `censusValueRows_of_anchoredMarch (D : CensusData)
+(hproof : AnchoredMarchProof D) : CensusValueRows D` with `sorry` body, over
+the import set `Census + ValueSide.CensusCore + ValueSide.Hyps +
+DictIII.Hyps`).  FIVE of the statement's types are declared NOWHERE in the
+corpus; each fails as a hard "unknown identifier" elaboration error (NOT a
+`sorry`-able goal), verbatim shape: "error: Function expected at\n  GRBRow\n
+but this term has type\n  ?m.1 … The identifier `GRBRow` is unknown":
+ · `GRBRow D` (probe 15:19) / `FreshRow D` (18:30) — owner BP_III (§1.0
+   owner table; dep H4).  The LANDED `DictIII.GRB p F` / `DictIII.FRESH p F`
+   rows carry a DIFFERENT signature (prime + finite field, NOT
+   `CensusData`-indexed); per BP_IV §1.0 ("blocked rather than compiled
+   against a weaker signature") + §5 ("BP_IV defines no aliases") no
+   prover-side bridge is declared.
+ · `StratumR D` (16:11) / `JunctionStratum D` (19:11) — the r ≥ 1 stratum
+   carriers appear ONLY inside the §1.2 display itself; no unit-table row
+   owns them and no blueprint defines them.
+ · `AnchoredMarchProof D` (23:14) — the constructor's OWN hypothesis type:
+   its single corpus-wide occurrence is the §1.2 display line; the wave-4
+   unit cannot even bind its hypothesis.  Signature fix must come from the
+   blueprint owner (BP_IV §4 failure protocol) — escalated to the division
+   lead with this compiled obstruction.
+Same blockage as the S5b (`SeriesTie.lean`), D4 (`DensityTie.lean`), and C5′
+(block below) probes.  Deps at check time: C0/C4c/H1 landed; H4 landed only
+under the BP_III `(p, F)` key.  Verifier charge honored: neither the REFUTED
+r2-class nor the r3-value (ADM) form appears anywhere in this unit's text.
+Nothing weakened, no alias, no `sorry`.
+
+**What IS landed (C5 PROOF KERNEL — statement-fence-safe NEW lemmas, not the
+unit):** the counting engine of the §2 C5 proof-sketch clause "(GR-B) digit
+read = surjective F_q-linear map on graded piece ⇒ each digit costs q^d"
+(O9 rev-5 §5.1: the read is fiber-uniform onto its image; onto F_{q^d} ⟺
+FULL attainment).  Counting form: a surjective additive read has all fibers
+of one size, card(fiber) · card(target) = card(source) — so at target
+F_{q^d} each digit costs exactly q^d.  The wave-4 constructor applies this
+once per march step, once the carriers exist.  The E′ strict-left-tail
+(floor(line)+1) leg cannot even be STATED faithfully without the `StratumR`
+carrier — queued with the unit.
+-/
+
+/-- C5 proof kernel (a): the digit-cost law, additive form.  A surjective
+additive read `φ` off a finite source has all fibers of equal size
+`card(source)/card(target)`: `card(fiber) · card(target) = card(source)`.
+Fiber ≃ ker by translation through any anchor preimage; source ≃ quotient ×
+ker by Lagrange; quotient ≃ target by first isomorphism. -/
+theorem digitCost_of_surjective_read {V W : Type*} [AddCommGroup V] [AddCommGroup W]
+    [Finite V] (φ : V →+ W) (hφ : Function.Surjective φ) (w : W) :
+    Nat.card {v : V // φ v = w} * Nat.card W = Nat.card V := by
+  obtain ⟨v₀, hv₀⟩ := hφ w
+  have efib : {v : V // φ v = w} ≃ φ.ker :=
+    { toFun := fun v => ⟨v.1 - v₀, by
+        simp [AddMonoidHom.mem_ker, map_sub, v.2, hv₀]⟩
+      invFun := fun k => ⟨k.1 + v₀, by
+        have hk : φ k.1 = 0 := AddMonoidHom.mem_ker.mp k.2
+        simp [map_add, hk, hv₀]⟩
+      left_inv := fun v => by ext; simp
+      right_inv := fun k => by ext; simp }
+  have equot : Nat.card (V ⧸ φ.ker) = Nat.card W :=
+    Nat.card_congr (QuotientAddGroup.quotientKerEquivOfSurjective φ hφ).toEquiv
+  calc Nat.card {v : V // φ v = w} * Nat.card W
+      = Nat.card (V ⧸ φ.ker) * Nat.card φ.ker := by
+        rw [Nat.card_congr efib, equot, Nat.mul_comm]
+    _ = Nat.card V :=
+        (AddSubgroup.card_eq_card_quotient_mul_card_addSubgroup φ.ker).symm
+
+/-- C5 proof kernel (b): the digit-cost law in the sketch's own register — a
+surjective `F`-LINEAR digit read on a (finite) graded piece costs exactly
+`card(target)` per digit (`= q^d` at target `F_{q^d}`).  Thin wrapper of
+kernel (a) at `φ.toAddMonoidHom`. -/
+theorem digitCost_of_surjective_linear_read {F V W : Type*} [Field F]
+    [AddCommGroup V] [Module F V] [AddCommGroup W] [Module F W] [Finite V]
+    (φ : V →ₗ[F] W) (hφ : Function.Surjective φ) (w : W) :
+    Nat.card {v : V // φ v = w} * Nat.card W = Nat.card V :=
+  digitCost_of_surjective_read φ.toAddMonoidHom hφ w
+
+/-!
+## Unit C5′ — `CensusValueRows.cenJ` (CEN-J): BLOCKED (owner rows absent)
+
+**BLOCKED(C5′)** (checked at compile, 2026-08-01; probe = the §1.2-VERBATIM
+`CensusValueRows` structure — the C5 `cenW` shell + this unit's `cenJ` field
+— over the import set `Census + ValueSide.CensusCore + ValueSide.Hyps +
+DictIII.Hyps`).  The C5′ statement is a STRUCTURE FIELD, so it cannot exist
+without the C5-owned shell; the probe elaborated the full §1.2 display and
+FOUR of its row/carrier types are declared NOWHERE in the corpus, each an
+"unknown identifier" hard error (not a `sorry`-able goal), e.g. verbatim:
+"error: Function expected at\n  GRBRow\nbut this term has type\n  ?m.1 …
+The identifier `GRBRow` is unknown" — likewise `FreshRow` (probe line for
+`cenJ`), `StratumR`, `JunctionStratum`.  Per BP_IV §1.0 ("if an owner has
+not landed, that consuming unit is blocked rather than compiled against a
+weaker signature") no local alias or placeholder is declared:
+ · `GRBRow D` / `FreshRow D` — owner BP_III (§1.0 owner table; FRESH = dep
+   H4).  The LANDED `DictIII.GRB p F` / `DictIII.FRESH p F` rows carry a
+   DIFFERENT signature (prime + finite field, not `CensusData`); the cenJ
+   binder `hFresh : FreshRow D` needs the CensusData-indexed form, which
+   does not exist anywhere.
+ · `StratumR D` / `JunctionStratum D` — the r ≥ 1 stratum carriers: they
+   appear ONLY inside the §1.2 display itself (BP_IV defines them nowhere
+   and no unit table row owns them); `JunctionStratum` is the quantifier
+   type of `cenJ` itself.
+Everything ELSE in the §1.2 display elaborates (probe-verified):
+`CensusData`, `ADMFull D`, `censusW D : Polynomial ℕ` with `.eval q`, and
+the `{p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N` prime-power binder
+block.  Deps ledger at check time: C5 (the shell + `cenW`) NOT landed —
+identical blockage; H4 (FRESH) landed BP_III-side under the wrong key.
+The S5/D4 consumers already record the same blockage (`SeriesTie.lean`,
+unit S5b block).  §3's E-phase note (re-key `CensusValueRows` over the
+SlotsG15 `SiteData` carriers) is a STATEMENT change — escalates to the
+division lead per the statement fence; nothing is declared here this
+campaign, and no `sorry` is added.
+-/
 
 end LeanUrat.Scaffold

@@ -691,6 +691,90 @@ theorem stabVerdict_stable {N N' : ℕ} (h : N ≤ N') (f : Box p n N')
 
 end Stab
 
+/-!
+**PROVENANCE (unit T7, PARTIAL; BP_IV §1.1 T7-interface block + §2 T-table
+row T7, sources O4T §§3.2–3.4 and the rev-4 dispositions).**
+The unit's target statement `canonicalOrderLEOne_ceil` is transcribed VERBATIM
+from `lean/blueprints/BP_IV.md` §1.1 (below, after the T4b pins).  Mechanism
+(blueprint row T7 = Theorem N3 (CEIL)): every cluster step certifies at a
+level `k ≤ v_p(disc f) + 1` — case (a) `b₁ = b₂` at `k = y(0) + 1`, case (b)
+`b₁ > b₂` by the left-edge shortcut at `k = y(1) + ⌊b₂⌋ + 1`, both bounded
+through Fact D (`v = 2·Σ_{i<j} δ_ij`) with the (I1) "> 0" criterion per rev 4
+(the rev-3 `≥ 1` form is FALSE — the `x² − p` refutation); Krasner via M05
+Lemma D underwrites the §4 seam, NOT this clause.  So the raw walk completes
+within horizon `N ≥ discV + 1` and its verdict passes the degree audit
+(step 0 partitions n; each cluster partitions its m by (I1) + SIDE + REC).
+
+**Unit status: PARTIAL.**  Proved sorry-free here: the closure-reduction
+layer — the first-decision closure decides whenever the raw walk decides
+(`stabVerdict_ne_none_of_raw` via `boxProj_self`/`decideAt_self`) — and the
+verbatim T7 statement from the single core lemma below.  The OPEN core,
+`rawType_ne_none_of_discV_succ_le`, is the Theorem-N3 termination + audit
+chain over the true root valuations `b_j = v(α_j − c)` in `Q̄_p`: (I1) needs
+Fact EXT (unique valuation extension, Galois invariance), CERT(ii) needs
+Fact DES (Galois descent), SIDE needs Facts SF/HEN/EF/HRG, RES needs Fact GRD,
+and the certify-level arithmetic needs Fact D — extended-valuation root
+theory for `Q̄_p` that neither the corpus nor this Mathlib pin carries; a
+coefficients-only reproof would be a NEW mathematical development outside the
+source of record.  It stays an honest `sorry` with the blocking reason inline
+(BP_IV row T7: "a dedicated formalization campaign").  No other declaration
+consumes the sorried lemma except the verbatim T7 statement itself;
+`DrainageImports.ceil` stays a named row — NO discharge of the row is claimed
+until the core lands.
+-/
+
+section T7
+
+variable {p n : ℕ} [Fact p.Prime]
+
+omit [Fact p.Prime] in
+/-- The reflexive level reduction is the identity (`ZMod.cast_id` pointwise;
+proof-irrelevant in the divisibility witness). -/
+theorem boxProj_self {N : ℕ} (f : Box p n N) :
+    boxProj p n (le_refl N) f = f := by
+  funext i
+  show ZMod.castHom _ (ZMod (p ^ N)) (f i) = f i
+  rw [ZMod.castHom_apply, ZMod.cast_id]
+
+/-- `decideAt` at its own horizon reads the raw walk verdict itself. -/
+theorem decideAt_self {N : ℕ} (f : Box p n N) :
+    decideAt N f N = rawType f := by
+  unfold decideAt
+  rw [dif_pos (le_refl N), boxProj_self]
+
+/-- Closure reduction (the sorry-free half of T7): if the raw §3.2 walk
+verdict exists at level N, the first-decision closure also decides at N —
+the horizon N is itself a deciding level, so the `Nat.find` level exists and
+decides by `Nat.find_spec`.  This moves the CEIL obligation from
+`stabVerdict` (= `canonical`, by the T4b pin) to the raw walk. -/
+theorem stabVerdict_ne_none_of_raw {N : ℕ} (f : Box p n N)
+    (h : rawType f ≠ none) : stabVerdict N f ≠ none := by
+  have hd : decideAt N f N ≠ none := by rw [decideAt_self]; exact h
+  have hex : ∃ N₀, decideAt N f N₀ ≠ none := ⟨N, hd⟩
+  unfold stabVerdict
+  rw [dif_pos hex]
+  exact Nat.find_spec hex
+
+/-- T7 HARD CORE (OPEN): under the ceiling hypothesis `discV + 1 ≤ N` the raw
+§3.2 walk completes with a degree-audited verdict — Theorem N3's termination
+and audit clause ((I1) "> 0" criterion, Lemmas CERT/SIDE/REC, the case
+(a)/(b) certify-level arithmetic against Fact D).  Everything downstream of
+this lemma is proved. -/
+theorem rawType_ne_none_of_discV_succ_le {N : ℕ}
+    (hn0 : 2 ≤ n) (hn1 : n ≤ 3) (f : Box p n N)
+    (hdisc : discV p n N f + 1 ≤ N) :
+    rawType f ≠ none := by
+  -- BLOCKED(T7): the Theorem-N3 (CEIL) analytic core.  The paper proof
+  -- (O4T rev 4 §§3.3–3.4) runs through the true root valuations
+  -- b_j = v(α_j − c) in Q̄_p and consumes Facts NP/SF/HEN +
+  -- EXT/EF/D/GRD/UCT/HRG/SEP/DES; none of this extended-valuation root
+  -- theory for Q̄_p exists in the corpus or in this Mathlib pin, and a
+  -- coefficients-only reproof is a NEW mathematical development not
+  -- sanctioned by the source of record.  Dedicated campaign required.
+  sorry
+
+end T7
+
 end OrderLEOne
 
 /-- T7's complete CEIL interface. `canonicalOrderLEOne` is the concrete
@@ -721,5 +805,20 @@ theorem canonicalOrderLEOne_trueType (n p : ℕ) [Fact p.Prime] :
 `CapstoneLedger.o3_teichmuller`-shaped supply). -/
 theorem canonicalOrderLEOne_teichmuller (n p : ℕ) [Fact p.Prime] :
     (canonicalOrderLEOne n p).baseSection = BaseSection.teichmuller := rfl
+
+/-- T7 (statement VERBATIM from BP_IV §1.1; unit status PARTIAL — see the
+unit-T7 provenance note): the CEIL clause for the canonical order-≤1
+classifier at the N3 degree scope.  Assembled from the PROVED closure
+reduction `OrderLEOne.stabVerdict_ne_none_of_raw` and the OPEN core
+`OrderLEOne.rawType_ne_none_of_discV_succ_le` (the one `sorry` of this unit —
+Theorem N3's walk-completion chain; see the `BLOCKED(T7)` note there). -/
+theorem canonicalOrderLEOne_ceil {n p : ℕ} [Fact p.Prime]
+    (hn0 : 2 ≤ n) (hn1 : n ≤ 3) :
+    ∀ N (f : Box p n N), discV p n N f + 1 ≤ N →
+      (canonicalOrderLEOne n p).canonical N f ≠ none := by
+  intro N f hdisc
+  rw [canonicalOrderLEOne_canonical]
+  exact OrderLEOne.stabVerdict_ne_none_of_raw f
+    (OrderLEOne.rawType_ne_none_of_discV_succ_le hn0 hn1 f hdisc)
 
 end LeanUrat.Scaffold

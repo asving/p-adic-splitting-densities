@@ -7,7 +7,6 @@ import Mathlib
 import LeanUrat.Scaffold.DictIII.Hyps
 import LeanUrat.MovesD.R7_polFillReduction
 import LeanUrat.HC2.UE_vtxUpper
-import LeanUrat.HC2.UE_vtxUpper
 
 /-!
 # Scaffold/DictIII/Window — (M6c) + WGEO + REAL≡ (BP_III §1.7)
@@ -146,6 +145,99 @@ theorem vtx_htUpper_div {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
 
 end UnitIIIT15
 
+/-! ## Unit III-T11a — (M6c)(i) degree-one statement, EXPLICITLY assuming `e′ = 1`
+(BP_III §2 Wave 3 row T11a; sketch §1.7 `m6c_beyondWindow`; src O1thr §2.5 (M6c)(i))
+
+STATEMENT-PROVENANCE RECORD (the honest part — read before consuming):
+
+* BP_III §1.7 (line 524) displays this unit's theorem only as the ellipsis
+  `theorem m6c_beyondWindow …` — there is NO verbatim blueprint statement to
+  transcribe (same finding as the III-T11b record above; REV2 finding 1 left
+  §1.7's three theorem displays elided).
+* Unlike III-T11b, however, the blueprint pins THIS unit's statement to the
+  corpus byte-for-byte, by three displayed constraints: the unit row (BP_III
+  line 790: proof = corpus `UE.vtx_m6bi_n4upper` + `readBox_e1`, "no broader
+  re-keying claim"), the §3.1 corpus-reuse map (line 859: "the e′ = 1
+  perimeter + carried trio (hσL/hsteep/species) transfer as the units'
+  DISPLAYED HYPOTHESES"), and the D-R4 fence (line 972: "III-T11a states only
+  the `e′ = 1` corpus perimeter").  So the unit is landed in the III-T15
+  re-export style: binders and conclusions transcribed character-for-character
+  from the two named corpus theorems (`HC2/UE_vtxUpper.lean:108-125`,
+  `HC2/HK11a_vertexTransport.lean:613-625`), source signatures typechecked by
+  the `#check`s below, proof = the two exact applications.  NOT verbatim from
+  the blueprint (nothing to be verbatim to); flagged for division-lead
+  ratification as a statement, per the fence.
+* Name: `m6c_beyondWindow_e1` — the bare sketch name `m6c_beyondWindow` is
+  left to unit III-T11b's general GRB/OL2min theorem (D-R4: the degree-one
+  result must not squat the general claim's name).
+* SCOPE (what is and is NOT claimed): at a coherent `ReadsOf` record with a
+  non-recentering read `i` (carried trio: tower provenance `hσL`, STRICT read
+  steepness, species) and the EXPLICIT `e′ = 1` hypothesis on the child node,
+  for f's development `B` in the recorded child key: (a) vertex support
+  `B μ ≠ 0` ((M6b)(i)); (b) at every nonzero slot STRICTLY below the window
+  vertex `μ`, the point lies STRICTLY above the recorded side line in the
+  child frame's ℚ-scale (the (BOX) strictness — (R1)'s off-stride demand at
+  the recorded window, `readBox_e1` byte-shape; the `e′`-stretch seam HK-52
+  enters ONLY here, through `he'1`); (c)+(d) the (N4)-upper band at the
+  vertex, slack and cleared forms (`vtx_m6bi_n4upper`, e′-unconditional).
+  The `j > W` state-polygon flank of O1thr §2.5's (M6c)(i) prose is NOT among
+  the row's named corpus suppliers and is NOT claimed here — per D-R4 it
+  belongs to the general unit III-T11b (GRB/OL2min rows).  This also cures
+  the III-T11b record's second blocking ground ("no landed anchor
+  signature"): the `e′ = 1` anchor is now this declaration. -/
+
+section UnitIIIT11a
+
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD LeanUrat.HC1
+  LeanUrat.MovesJ
+
+variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+-- SOURCE signature displays + typecheck (III-T15's REV2-finding-26 gate, applied here).
+#check @LeanUrat.MovesJ.UE.vtx_m6bi_n4upper
+#check @LeanUrat.MovesJ.HK11a.readBox_e1
+
+/-- **Unit III-T11a — the (M6c)(i) degree-one/`e′ = 1` corpus perimeter** (O1thr
+§2.5 (M6c)(i); the beyond-window-support package at the recorded read).  See the
+STATEMENT-PROVENANCE RECORD in the section header: statement = the two named
+corpus theorems' conclusions at their shared binders (character-for-character);
+proof = exactly their applications; no broader re-keying claim (D-R4).
+
+Conclusions, in order: (a) `B μ ≠ 0` — (M6b)(i) vertex support; (b) the strict
+(BOX) band — every nonzero slot strictly below the window vertex lies STRICTLY
+above the recorded side line (child-frame ℚ-scale; the ONLY clause consuming
+`he'1`); (c) the (N4)-upper with displayed shear slack; (d) its cleared form. -/
+theorem m6c_beyondWindow_e1 {n : ℕ} {f : Polynomial ℤ_[p]} {H : History p F}
+    (h : ReadsOf p F n f H) (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (hsp : (H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering)
+    (hσL : StageCoreL (H.nodes[i]'(by omega)).σ)
+    (hsteep : ((H.nodes[i]'(by omega)).e : ℤ) * ((H.nodes[i]'(by omega)).σ.h : ℤ)
+        < ((H.nodes[i]'(by omega)).h : ℤ))
+    (he'1 : (H.nodes[i+1]'hi1).e = 1)
+    (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ)
+    (hdev : IsDevelopment (H.nodes[i+1]'hi1).σ.Φ f B Nd) :
+    B ((H.nodes[i]'(by omega)).μ) ≠ 0 ∧
+    (∀ j : ℕ, j < (H.nodes[i]'(by omega)).μ → B j ≠ 0 →
+      (H.strFrame (i+1) : ℚ) *
+          (H.nodes[i]'(by omega)).line.at (j * (H.nodes[i]'(by omega)).childWidth)
+        < (((H.nodes[i+1]'hi1).σ.w (B j) : ℚ))) ∧
+    ((H.nodes[i]'(by omega)).e : ℤ)
+        * (H.nodes[i]'(by omega)).σ.w (B ((H.nodes[i]'(by omega)).μ))
+      ≤ (H.nodes[i]'(by omega)).gam
+        - ((H.nodes[i]'(by omega)).μ : ℤ)
+          * (((H.nodes[i]'(by omega)).e : ℤ) * ((H.nodes[i]'(by omega)).h : ℤ)
+            * ((H.nodes[i]'(by omega)).g : ℤ)) ∧
+    ((H.nodes[i]'(by omega)).e : ℤ)
+        * (H.nodes[i]'(by omega)).σ.w (B ((H.nodes[i]'(by omega)).μ))
+      ≤ (H.nodes[i]'(by omega)).gam := by
+  obtain ⟨hBμne, hslack, hclear⟩ :=
+    UE.vtx_m6bi_n4upper h i hi1 hsp hσL hsteep B Nd hdev
+  refine ⟨hBμne, ?_, hslack, hclear⟩
+  intro j hjμ hjne
+  exact HK11a.readBox_e1 h i hi1 hsp hσL hsteep he'1 B Nd hdev j hjμ hjne
+
+end UnitIIIT11a
+
 /-! ## Unit III-T14b — `realEquiv_of_m6` forward direction + biconditional
 assembly: BLOCKED on the SAME statement defect, in the unit's OWN conclusion
 
@@ -261,3 +353,6 @@ end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-T15 gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.vtx_htUpper_div
+
+-- Footprint audit (unit III-T11a gate): expect Lean core only.
+#print axioms LeanUrat.Scaffold.DictIII.m6c_beyondWindow_e1
