@@ -1089,7 +1089,7 @@ theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
     rw [hcard2, hcard3]
     have hmono : Monotone (fun t => (A + e 1 * t) * h 1) := by
       intro x y hxy
-      show (A + e 1 * x) * h 1 ≤ (A + e 1 * y) * h 1
+      change (A + e 1 * x) * h 1 ≤ (A + e 1 * y) * h 1
       gcongr
     have hf0 : 0 < f 0 := by have := hf 0; omega
     calc f 0 * (Finset.univ.filter (fun b : Fin (f 1) =>

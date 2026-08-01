@@ -479,9 +479,10 @@ strictly exceeds S.card • μ — split off the strict factor, floor the rest b
 helper.] -/
 theorem nsmul_lt_addVal_finset_prod {K Γ₀ : Type*} [Field K]
     [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
-    {ι : Type*} [DecidableEq ι] (f : ι → K) {μ : Γ₀} (hμ : μ ≠ ⊤)
+    {ι : Type*} (f : ι → K) {μ : Γ₀} (hμ : μ ≠ ⊤)
     {S : Finset ι} (hS : ∀ j ∈ S, μ ≤ w (f j)) {j₀ : ι} (hj₀ : j₀ ∈ S)
     (hstrict : μ < w (f j₀)) : S.card • μ < w (∏ j ∈ S, f j) := by
+  classical
   rw [← Finset.mul_prod_erase S f hj₀, w.map_mul, ← Finset.card_erase_add_one hj₀,
     succ_nsmul']
   calc μ + (S.erase j₀).card • μ
@@ -503,9 +504,10 @@ still strictly above w(f i₀), so `AddValuation.map_add_eq_of_lt_left` applies.
 [II-M2 helper.] -/
 theorem addVal_finset_sum_eq_of_lt {K Γ₀ : Type*} [Field K]
     [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
-    {ι : Type*} [DecidableEq ι] (f : ι → K) {F : Finset ι} {i₀ : ι} (hi₀ : i₀ ∈ F)
+    {ι : Type*} (f : ι → K) {F : Finset ι} {i₀ : ι} (hi₀ : i₀ ∈ F)
     (hlt : ∀ i ∈ F, i ≠ i₀ → w (f i₀) < w (f i)) :
     w (∑ i ∈ F, f i) = w (f i₀) := by
+  classical
   rw [← Finset.add_sum_erase F f hi₀]
   rcases (F.erase i₀).eq_empty_or_nonempty with he | hne
   · rw [he, Finset.sum_empty, add_zero]
