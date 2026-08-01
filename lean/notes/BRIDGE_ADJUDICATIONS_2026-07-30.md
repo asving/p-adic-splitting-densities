@@ -1876,3 +1876,8 @@ chartered dedicated campaign, 1 documented sorry); M7 BLOCKED on BP_III
 ThmERow/D15Row (real cross-division dep — joins the deferred BP_III
 mop-up). SCAFFOLD-WIDE: 5 true code sorries total; build green 8750 jobs.
 BP_IV division CLOSED. Fleet slot -> HDISCHARGE fan-out #1: H9.
+
+## H9 FAN-OUT COMPLETE 1/1 (2026-08-05)
+Scaffold/HDischarge/H9/NsfKeyProp.lean landed green — (NSF-KEY) retired
+END-TO-END (Unit C repair + ledger adjudication + compiled Lean carrier).
+The first (H)-member fully discharged. Queue -> H5.
