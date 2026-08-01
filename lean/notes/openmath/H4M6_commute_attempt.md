@@ -295,14 +295,16 @@ of pairs of positive integers with Σ ef = n} is a finite set defined by n
 alone — the SAME set for every K_δ and for ℚ_p. Nothing to prove: the
 parameterization consumes only n.
 (T-b) *No type is base-forbidden (onto-ness at every K_δ):* every
-τ ∈ Types(n) is realized over every K_δ. Per pair (e, f): the unramified
-extension of K_δ of degree f exists and is unique (it is K_{δf} — finite
-fields have extensions of every degree; the Witt/Teichmüller equivalence
-pinned at H4-M1's row, Serre, Corps Locaux II §4–6); a totally ramified
-extension of degree e exists (Eisenstein: x^e − p over K_δ, since
-v(p) = 1; Serre, Corps Locaux — section number flagged for lookup, standard
-Eisenstein theory); their compositum L over K_δ has invariants (e, f), and
-the product Πᵢ L_{(eᵢ,fᵢ)} is a degree-n étale algebra of type τ. Status:
+τ ∈ Types(n) is realized over every K_δ. Per pair (e, f), build the TOWER:
+first the unramified extension K' = K_{δf} of K_δ of degree f (exists and
+is unique — finite fields have extensions of every degree; the
+Witt/Teichmüller equivalence pinned at H4-M1's row, Serre, Corps Locaux
+II §4–6), then the Eisenstein extension L = K'(x)/(x^e − p) of K' (x^e − p
+is Eisenstein over K' since K'/ℚ_p is unramified, v(p) = 1 there; Serre,
+Corps Locaux — section number flagged for lookup, standard Eisenstein
+theory). The tower gives e(L/K_δ) = e·1 = e and f(L/K_δ) = 1·f = f
+(multiplicativity of e and f in towers), and the product Πᵢ L_{(eᵢ,fᵢ)}
+is a degree-n étale algebra of type τ. Status:
 (a) known — standard local-field structure theory; no corpus leaf is
 consumed. Role in §5: the τ-index of the aggregation is the SAME finite
 index set on both sides, with no empty-type degeneracy to bookkeep.
@@ -505,7 +507,7 @@ H4-M5 already displays as row content, not consumption).
    (gate = hostile pass ×1); no numerics were run, none are cited beyond
    the sealed suites quoted inside consumed artifacts.
 
-## §8. GATE RECORD — hostile pass ×1 (charged count), passes run: 2
+## §8. GATE RECORD — hostile pass ×1 (charged count)
 
 **Pass 1** (Codex, fresh context, quote-and-classify charge, note text
 only): VERDICT **REJECT — 1 CRITICAL, 5 GAPS**. Every finding ACCEPTED and
@@ -538,10 +540,19 @@ FOLDED IN PLACE in this revision; dispositions:
    (its nonzero clause displayed) + new Seed 6 `regAt_pivot_ne_zero`
    extracting exactly that clause, compiled.
 
-**Pass 2** (on the post-fold text): PENDING at this revision; its real
-verdict and per-finding dispositions are appended here after it runs. A
-revision in which this line still reads PENDING has not completed its
-gate sequence.
+**Pass 2** (Codex, fresh context, same quote-and-classify charge, on the
+POST-FOLD text; the verifier was not shown pass 1): VERDICT **ACCEPT — 0
+critical, 0 gaps** ("No findings."). One prover-initiated repair also
+rode this revision, outside the pass ledger: §3.2 (T-b)'s realization was
+restated as the unramified-then-Eisenstein TOWER (with e/f
+multiplicativity displayed) in place of the earlier compositum phrasing.
+
+GATE ADJUDICATION: charged count ×1; two passes ran (pass 1 REJECT
+1C/5G, all folded; pass 2 clean ACCEPT). The compile gate (`lake env
+lean`, from `lean/`) is green at this revision with zero sorry and
+Lean-core-only footprints on all six seeds (printed by the file's own
+`#print axioms` footer). Pass transcripts: /tmp/h4m6_codex_pass1.log,
+/tmp/h4m6_codex_pass2.log on the build host (summarized above in full).
 -/
 
 import Mathlib
