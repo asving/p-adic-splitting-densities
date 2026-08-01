@@ -25,7 +25,9 @@ cited line-by-line. Parked items 22–29 and fenced statements untouched. This
 is a BLUEPRINT-ONLY unit: **no Scaffold .lean file lands in this unit** —
 every Lean statement below was COMPILE-PROBED against the built corpus
 (probe files `/tmp/h3_probe1.lean`, `/tmp/h3_probe2.lean`, `lake env lean`,
-2026-08-05: all statements elaborate; `sorry`-only warnings) but lands only
+run at machine clock 2026-08-01 — the ledger's Unit-C convention: the machine
+clock trails the directive window — all statements elaborate; `sorry`-only
+warnings) but lands only
 via the prover fan-out waves of §4. New modules go under
 `lean/LeanUrat/Scaffold/HDischarge/H3/`, namespace `LeanUrat.Scaffold.HD3`
 (Lean unit files) — EXCEPT units explicitly marked as edits to an existing
@@ -90,7 +92,8 @@ pass 4 SOUND (1 gap) → pass 5 CLEAN (2026-07-31) — the leaf's own reduction
 ### 1.3 Door assignment: CONSTRUCTION-CONFORMANCE (landed part) + PROVE (open part)
 
 **(a) Landed and reusable (door 3, REUSE — do not duplicate).** BP_IV already
-built, all compile-probed GREEN 2026-08-05 (`lake env lean` against head):
+built, all compile-probed GREEN at machine clock 2026-08-01 (`lake env lean`
+against head):
 
 * `LeanUrat.Scaffold.CensusData` + derived `wt/Gset/attainDim/s/onLineSlots`
   (`Scaffold/ValueSide/CensusCore.lean`);
@@ -103,7 +106,7 @@ built, all compile-probed GREEN 2026-08-05 (`lake env lean` against head):
 * `censusW` + `census_r0_law` + the C4c gate (`C4cGate.gateData`).
 
 **(b) Two carrier-layer FINDINGS from this lead's probes (adjudication
-inputs for the fan-out — both machine-evidenced, 2026-08-05):**
+inputs for the fan-out — both machine-evidenced, machine clock 2026-08-01):**
 
 * **(F-ADM-1) The `triangular` axiom degenerates ramified deep stages.**
   `CensusData.triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i` TOGETHER WITH
@@ -131,52 +134,77 @@ inputs for the fan-out — both machine-evidenced, 2026-08-05):**
   every general-order (CLASS-d)-consuming Lean unit takes (CLASS-d) as a
   NAMED HYPOTHESIS field (supplied at consumption sites by (GR-B), the (H1)
   group — cross-lead seam with H1); the unconditional instances are r ≤ 1.
-  CAVEAT for the fan-out: the r = 2 failure grid was generated under
-  coprime-only axioms, i.e. AFTER the expected ADM-U0 repair; whether the
-  probe types are all OM-REALIZED is not claimed — the finding's force is
-  "the carrier axioms alone do not suffice", exactly matching O-9's own
-  attribution, not a new refutation of O-9.
+  SCOPE OF THE FINDING, stated exactly (Codex pass-1 finding 10, ACCEPTED):
+  the countermodels refute derivability from {e,f ≥ 1, gcd(h_i,e_i) = 1}
+  PLUS the coded `Vrec`/`wphi` weight recursion — i.e. from the EXPECTED
+  post-ADM-U0 axiom set. If ADM-U0's adjudication lands a DIFFERENT axiom
+  set (e.g. a corrected triangularity/normalization constraint from the
+  pinned (P3) sheet), the scan must be RE-RUN under it before any "not a
+  carrier theorem" conclusion is reused (duty added to ADM-U5); and whether
+  the failing probe types are OM-REALIZED is not claimed — the finding's
+  force is "these axioms alone do not suffice", matching O-9's own
+  attribution ("at general order it follows from (GR-B)"), not a new
+  refutation of O-9.
 
 **(c) The open mathematics (door 1) — (ADM-REAL), the general argument over
 shape families.** The hypothesis is consumed at REALIZED census data (the
-strata Step 14 actually counts). Two exclusive tracks; gate G-ADM-2
-adjudicates.
+strata Step 14 actually counts). Two tracks; gate G-ADM-2 ROUTES between
+them (Codex pass-1 finding 7, ACCEPTED: a finite scan can REFUTE track A
+and fire track B, but a no-hit only SUPPORTS track A — the proof burden
+stays with ADM-U7's hostile-passed argument; "adjudicates" was an
+overstatement and is retired).
 
-* **Track A (primary): prove (ADM-REAL).** Open lemma, stated exactly:
-  *at the intended instance, every census datum D consumed by Step 14 —
-  i.e. every (type, face, N) datum read off a realized OM stratum of the
-  engine within its (DET) window (β_k ≤ eN − 1, heights on the read side's
-  line) — satisfies the deep-stratum inequality: every on-line slot height
-  β_k ≥ max{wt(𝐣) : wt(𝐣) ≡ β_k (mod e)}.* Proof sketch, section by
-  section: (i) realized on-line slots sit ON the read side's line, whose
-  heights are anchored at the entrance floor of the frame — the (ZC-a)
-  staircase puts every FRESH read height strictly above the accumulated
-  floor F(b) of its block; (ii) the ledger's max class weight at order r is
-  bounded by the V̂-layer datum (V̂ = e_r f_r w(φ_r); LED-top), which is
-  itself a FLOOR-layer quantity of the same frame; (iii) the open kernel is
-  the comparison (i) ≥ (ii) slot-by-slot: floor clearance ⟹ class-weight
-  clearance. HONEST STATUS: (iii) is NOT proved anywhere on file; K7's
-  countermodel datum (β₁-relative = 1 < max class weight 2 at N = 7,
-  (DET)-legal) shows the inequality can FAIL for (DET)-legal ABSTRACT data —
-  so track A succeeds only if realization forces MORE than (DET), namely the
-  floor anchoring of (i). Whether K7's datum is REALIZED by an actual
-  stratum of the engine at some (f, p) is precisely gate G-ADM-2's question.
-* **Track B (contingency, fires if G-ADM-2 finds a realized partial slot):**
-  generalize the census law instead of pricing the hypothesis: CEN-W′ with
-  per-slot factor (q^{dim G_β}−1)·q^{(exponent bookkeeping with s(β))} at
-  value-attained slots, digit forced 0 at value-unattained interior slots,
-  padding 0 at value-unattained vertices — each slot law ALREADY PROVED at
-  O-9 rev 4/5 §5.1 (read injective on G_β, image V_β of dim s(β+1)−s(β),
-  fiber-uniform onto V_β ALWAYS; onto F_{r+1} ⟺ FULL). K7's truth value
-  q^{14}(q²−1)(q−1) is the worked instance. This retires (ADM) wholesale
-  BUT is a STATEMENT CHANGE to the census layer (CEN-W/CEN-J restated,
-  O-9 rev 6 + fresh hostile pass + Step 14/18 K3-b re-derivation + pack-row
-  ripple) — sign-off-gated, priced at §4's unit ADM-U6, NOT dispatched
-  until G-ADM-2 reports.
+* **Track A (primary): prove (ADM-REAL).** Open lemma, with the outer
+  quantifiers DISPLAYED (Codex pass-1 finding 8, ACCEPTED): *for every
+  degree n ≥ 2, every prime p (wild included), every monic separable
+  ns-free f of degree n over ℤ_p, every level N, and every census datum D
+  read off a realized OM stratum of the engine's run on f within its (DET)
+  window (β_k ≤ eN − 1, heights on the read side's line): every on-line
+  slot height satisfies β_k ≥ max{wt(𝐣) : wt(𝐣) ≡ β_k (mod e)}.* The
+  base-changed (O_δ, δ > 1) instances are NOT quantified here — they enter
+  through (UB-X)(a)'s transport (the (H4b) row) applied to THIS statement,
+  the same division of labor as every (H3) member. The Lean-typed form
+  additionally waits on the consumed-data carrier (`consumedData`: the
+  Step-14 fan-out's map from realized strata to `CensusData`) — until that
+  carrier exists the math statement above IS the statement of record, and
+  no Lean unit for it is scheduled (no unit downstream of ADM-U7 exists in
+  §4). Proof sketch, section by section: (i) realized on-line slots sit ON
+  the read side's line, whose heights are anchored at the entrance floor of
+  the frame — the (ZC-a) staircase puts every FRESH read height strictly
+  above the accumulated floor F(b) of its block; (ii) the ledger's max
+  class weight at order r is bounded by the V̂-layer datum
+  (V̂ = e_r f_r w(φ_r); LED-top), itself a FLOOR-layer quantity of the same
+  frame; (iii) THE OPEN KERNEL: the comparison (i) ≥ (ii) slot-by-slot —
+  floor clearance ⟹ class-weight clearance. HONEST STATUS: (iii) is NOT
+  proved anywhere on file; K7's countermodel datum (β₁-relative = 1 < max
+  class weight 2 at N = 7, (DET)-legal) shows the inequality can FAIL for
+  (DET)-legal ABSTRACT data — so track A succeeds only if realization
+  forces MORE than (DET), namely the floor anchoring of (i). Whether K7's
+  datum is realized by an actual engine stratum at some (f, p) is the
+  question G-ADM-2 probes (finitely).
+* **Track B (contingency; fires on a G-ADM-2 hit, or may be elected if
+  track A stalls):** generalize the census law instead of pricing the
+  hypothesis: CEN-W′ with per-slot factor (q^{dim G_β}−1)·q^{(exponent
+  bookkeeping with s(β))} at value-attained slots, digit forced 0 at
+  value-unattained interior slots, padding 0 at value-unattained vertices.
+  The PER-SLOT ingredient is proved (O-9 rev 4/5 §5.1: read injective on
+  G_β, image V_β of dim s(β+1)−s(β), fiber-uniform onto V_β ALWAYS; onto
+  F_{r+1} ⟺ FULL; K7's truth value q^{14}(q²−1)(q−1) the worked instance).
+  Codex pass-1 finding 9, ACCEPTED: the slot law alone does NOT constitute
+  CEN-W′ — still needed are the slot-to-slot iteration/independence
+  argument (the same conditional-exactness mechanism CEN-W's own proof
+  runs, with onto-F_{r+1} replaced by onto-V_β at each digit), the exact
+  exponent bookkeeping, the CEN-J analogue, and re-derivation of every
+  census consumer. Track B is therefore TWO units: **ADM-U6a** (design
+  note: the CEN-W′ statement + worked K7 instance + ripple map) and
+  **ADM-U6b** (the execution program: O-9 rev 6 with CEN-W′ proved end to
+  end + fresh hostile passes + Step 14/18 K3-b re-derivation + pack-row
+  ripple) — (ADM) retires on U6b's completion ONLY, never on the design
+  note. Sign-off-gated (statement change to a verified leaf).
 
 **Numerics gates for (ADM).**
 
-* **G-ADM-1 (pre-run 2026-08-05, this lead):** the carrier-lattice CLASS-d
+* **G-ADM-1 (pre-run at machine clock 2026-08-01, this lead):** the carrier-lattice CLASS-d
   scan — r = 1 grid PASS / r = 2 coprime-only grid FAIL (88) —
   `/tmp/h3_classd.py`, to be re-homed at `verification/h3_classd_scan.py`
   (unit ADM-U5).
@@ -225,6 +253,14 @@ marked [EDIT-GATED]. Target files under `lean/LeanUrat/Scaffold/HDischarge/H3/`.
   under hclass the class has exactly d members, so = d ⟺ all ≤ β.
   Difficulty: medium-easy (Finset counting). NOTE (F-ADM-2): do NOT attempt
   the hypothesis-free form; r = 2 carrier countermodels on file.
+  NON-VACUITY duties (Codex pass-1 finding 11, ACCEPTED): (v1) for
+  β ∈ D.onLineSlots the filtered class is NONEMPTY — witness: β = D.wt 𝐣
+  for some 𝐣 (the def of `onLineSlots`), and 𝐣 lies in its own class — so
+  `Finset.sup` is a genuine max, never the empty-sup default; prove this
+  first as `lemma classFilter_nonempty_of_mem_onLineSlots`; (v2) D.d ≥ 1 is
+  a carrier fact (∏ of the `hf` bounds) — prove `lemma d_pos` and use it
+  where `hclass` forces class nonemptiness at arbitrary c. Both lemmas land
+  in ADM-U1 so U2's proof consumes them.
 * **ADM-U3 [wave 1; `AdmCarrier.lean`].** (CLASS-d) unconditional at r ≤ 1:
   `theorem classCount_eq_d_of_r_le_one (D : CensusData) (hr : D.r ≤ 1) (c : ℕ) :
   classCount D c = D.d` — transcribes O-9 §2 (CLASS-d) r ≤ 1 proof
@@ -289,10 +325,33 @@ stratification + covering, conditional on the dual-verified Theorem B);
 perimeter (§C rev 14 dual-accepted — the conditionality is INTERNAL to the
 verified corpus), (ns) literal duty REFUTED and AMENDED by the displayed
 (ns-lump) [proved] + (ns-null) [proved, verified clean twice] pair.
-MOVES §T.5(2)–(3) + the T-ASSEMBLY rev-5 pass record then display, verbatim:
-"the (c) remainder list reduced to **{VP-SOUND's cites}**". So the ENTIRE
-open content of D-12r = the two declared citation statements of VP-SOUND
-(MOVES §T.2 rev 2, "declared precisely"):
+**The reduction, DISPLAYED (the three verbatim artifacts — folded in at the
+Codex pass-1 findings 2/3; quotes from `MOVES_2026-07-24.md` at the cited
+lines, re-checkable by grep):**
+
+* MOVES §T.5(2) (lines ~7627–7635): "TB-CAP — (irr)/(hen) PROVED (§T.2,
+  conditional on the standing perimeter); (ns) REFUTED as uniformly worded,
+  replaced by the displayed (ns-lump) [proved] + (ns-null) [PROVED at rev 2
+  …] pair … **VP-SOUND is a CITATION obligation with the two DECLARED
+  statements (HEN-LIFT)/(OM-SAT) (§T.2, rev 2)** — the PARI-oracle layers as
+  standing refuters. **D4R.0-K(c) is therefore NOT completely discharged:
+  what remains is exactly {VP-SOUND's cites}.**"
+* MOVES §T.2 "VP-SOUND status" (lines ~7251–7274): "the consumed statements
+  now DECLARED PRECISELY … Two named statements: (HEN-LIFT) … (OM-SAT) …
+  **VP-SOUND is therefore a CITATION obligation with two declared
+  statements, not a gap in the mechanism**". The T-ASSEMBLY rev-5 pass
+  record (line ~9123): "the (c) remainder list reduced to {VP-SOUND's
+  cites}"; acceptance record (line ~9133): "Conditionality (the note's
+  displayed perimeter): open (SIB); conditional (JC-multi); VP-SOUND's two
+  declared citations; X.3/CL-4; [2r]".
+* MOVES SP.3 SP-COMP conditionality display (lines ~6299–6303): "SP-COMP's
+  remaining conditionality is exactly the D4R.0-K(c) residual — the verdict
+  pin (alphabet V + halting rule τ + the uniform detection cap), owned by
+  [3t] via VP — entering at step (4)'s leaf verdicts."
+
+So "{VP-SOUND's cites}" is not an opaque label: the §T.2 status block names
+the set's two members explicitly, and the ENTIRE open content of D-12r = the
+two declared citation statements of VP-SOUND:
 
 * **(HEN-LIFT)** — f ∈ ℤ_p[x] monic, f̄ = ψ·h̄ with ψ irreducible and
   gcd(ψ, h̄) = 1 ⟹ unique monic lift factorization f = g·h, ḡ = ψ, g
@@ -309,48 +368,81 @@ open content of D-12r = the two declared citation statements of VP-SOUND
 Standing refuters riding both cites: the PARI-oracle layers (MENU-n3 (iv),
 RESUM-n3) — a misassigned verdict is a decided-type mismatch there.
 
+**Dependency decomposition (Codex pass-1 finding 5 — why the OTHER
+conditions riding the [3t] acceptance record are NOT D-12r residual; each
+routed to its own displayed ledger home):**
+
+| condition on the [3t] record | ledger home (NOT D-12r) | display |
+|---|---|---|
+| (SIB)/(SIB-STEP), (JC-multi) | Step 15 + the (H7) §3.1 row (engine-stratum application) | ROOT §3.4 item 10: "(SIB)/(SIB-STEP)/(JC-multi) → Step 15 … engine-stratum application = (H7)" |
+| X.3/CL-4 (density-form exhaustion) | the drainage/exhaustion chain (Steps 13/19); [3t] §T.0 displays TREE-EXP/TREE-N as X.3-FREE | MOVES §T.0 (lines ~7040–7048) |
+| [2r] REL.2 (base-changed sibling factors) | (H4b)/(UB-X)(a) — the O_δ re-base audit | ROOT (UB-X) row |
+| (τ-ns) leg's "(z-3) exact identification" | Theorem B case content = D4R.0-K(b), DISCHARGED (dual-verified); the residual (OM-SAT) application "to the key's own chain" is already inside the (OM-SAT) cite | MOVES §T.2 (OM-SAT) bullet, quoted above |
+| the O-2 dictionary identification (engine branches ↔ GMN types) | the (H1) group rows (GD-1/(KP) beyond order 1) + the O-2 dictionary node — priced there, inherited here, never re-priced | ROOT §4 item 1 rider: "consumed only through the dictionary node O-2" |
+| P(O5t r3) (Step 12's owed hostile pass, which CONSUMES the read-offs) | §3.2 pass-debt row | ROOT Step 12 status line |
+
+The ROOT D-12r row prices exactly the (c)-remainder (its own header:
+"the D4R.0-K(c) verdict-pin residual"); the table shows every other
+condition has its own priced home, so retiring the two cites empties THIS
+row without absorbing any sibling row's debt.
+
 **Why this is not a fiat discharge:** the reduction "(c) remainder =
-{VP-SOUND's cites}" is a DISPLAYED, dual-accepted artifact (T-ASSEMBLY rev 5,
-passes 5+6 CLEAN + Fable pass; the SP-COMP conditionality display cites it);
-this blueprint only ROUTES the two cites through the standing literature
-process and then synchronizes the ROOT row — the adjudication-of-executed-
-reduction case the swarm rules allow, with the artifacts named above.
+{VP-SOUND's cites}" is a DISPLAYED, dual-accepted artifact quoted verbatim
+above (T-ASSEMBLY rev 5, passes 5+6 CLEAN + Fable pass; the SP-COMP
+conditionality display cites it); this blueprint only ROUTES the two cites
+through the standing literature process and then synchronizes the ROOT row —
+the adjudication-of-executed-reduction case the swarm rules allow. What the
+blueprint does NOT claim: that TB-CAP(irr) is unconditional. Its proof
+consumes §C Theorem C (C.2) — an ACCEPTED theorem (§C rev 14 dual-accepted,
+2026-07-27) — so that leg's status is "proved from accepted-corpus inputs",
+the same grade as every other [3t] theorem; the phrase "internal to the
+verified corpus" below means exactly this and nothing more (a conditionality
+on an accepted theorem's stated perimeter is a CITATION into the corpus, not
+an open hypothesis; the D-12r ROW never carried §C's perimeter as its
+content — its header names the verdict-pin residual only).
 
 ### 2.2 Door assignment: LITERATURE-RETARGET (both cites), Lean upgrade optional
 
-**(HEN-LIFT) faithfulness brief (unit D12R-U1).**
-* Candidate published statement: **Neukirch, Algebraic Number Theory
-  (Grundlehren 322), Ch. II §4 Prop 4.6** — Hensel's lemma for a complete
-  (or henselian) valued field: a primitive polynomial whose reduction
-  factors into coprime factors lifts the factorization, degrees preserved on
-  the designated factor. ROOT §4 item 5 already carries it as
-  "LITERATURE-CANDIDATE: numbers to confirm, Mathlib probe owed"; the §3.4
-  T-U table (ROOT line ~1563) pins the alternates: **Serre, Corps Locaux I §6**
-  numbers to confirm at declaration.
-* What must match in our language: (i) coefficient ring ℤ_p (complete
-  DVR) — Neukirch states it for complete valued fields; the ℤ_p[x] monic
-  form with monic lifts needs the standard monic normalization corollary
-  (leading-unit adjustment) — display this normalization step in the brief,
-  it is the one place a mismatch can hide; (ii) UNIQUENESS of the lift pair
-  (consumed by VP determinism) — Neukirch's proof gives it via the coprime
-  Bézout iteration, but the printed STATEMENT may assert existence only:
-  the brief must quote the printed uniqueness clause or supply the
-  three-line uniqueness argument (two coprime factorizations with equal
-  reductions ⟹ equal by induction on precision) as a DISPLAYED companion
-  lemma, not a silent strengthening; (iii) the (E, F) = (1, deg ψ)
-  read-off: irreducibility of g from ḡ = ψ irreducible + unramifiedness of
-  the generated extension — Neukirch II §4 Prop 4.8/§6 region or Serre LF
-  I §6; cite separately, this is a SECOND statement riding the same brief.
-* Translation risks: none of the wild/tame divide (coprimality hypothesis is
-  characteristic-free); the residue field here is F_p exactly (K = ℚ_p pin,
-  matching the GMN rider's scope discipline); the O_δ (δ > 1) re-base reads
-  ride (UB-X)(a), NOT this brief (same rule as the GMN rider).
-* Owed confirmations: the exact numbered statement against a physical/PDF
-  copy (both Neukirch and the Serre alternate), recorded in
-  `docs/GMN_citations.md`-style form; then the ROOT §4 item-5 row drops
-  "LITERATURE-CANDIDATE" for "pinned".
+**(HEN-LIFT) faithfulness brief (unit D12R-U1).** (HEN-LIFT) as declared at
+MOVES §T.2 is a STATEMENT PACKAGE of three parts, and the brief must pin
+each — calling it "one cite" (this blueprint's own pre-fold wording,
+corrected at Codex pass-1 finding 6) concealed the count:
 
-**Mathlib probe — RAN by this lead (2026-08-05), result NEGATIVE.**
+* **(HL-a) coprime-factor lifting, existence.** Candidate: **Neukirch,
+  Algebraic Number Theory (Grundlehren 322), Ch. II §4 Prop 4.6** — a monic
+  (primitive) polynomial over a complete valued field whose reduction
+  factors into coprime factors lifts the factorization, degrees preserved.
+  ROOT §4 item 5 already carries it as "LITERATURE-CANDIDATE: numbers to
+  confirm, Mathlib probe owed"; alternate: **Serre, Corps Locaux I §6**
+  (ROOT §3.4 T-U table row). Matching point that can hide a mismatch: the
+  ℤ_p[x] MONIC form with MONIC lifts needs the standard leading-unit
+  normalization corollary — display the normalization step in the brief.
+* **(HL-b) uniqueness of the lift pair** (consumed by VP determinism).
+  Neukirch's proof mechanism (coprime Bézout iteration) yields it, but the
+  printed STATEMENT may assert existence only: the brief must quote the
+  printed uniqueness clause if present, and OTHERWISE display the
+  uniqueness argument (two monic coprime-reduction factorizations agreeing
+  mod p agree mod p^k by induction) as a COMPANION LEMMA carried by the
+  brief itself — a displayed derivation, never a silent strengthening of
+  the cite.
+* **(HL-c) the read-off: g irreducible + unramified + (E, F) = (1, deg ψ).**
+  From ḡ = ψ irreducible: g irreducible over ℚ_p (monic, irreducible
+  reduction); ℚ_p[x]/(g) unramified of residue degree deg ψ. Candidate:
+  Neukirch II §4 Prop 4.8 / II §6 region, or Serre LF I §6 — a SEPARATE
+  numbered statement with its own confirm; it does NOT follow from (HL-a)
+  alone and the brief must not present it as if it did.
+* Translation risks: none of the wild/tame divide (coprimality, not
+  tameness, is the hypothesis — characteristic-free); residue field F_p
+  exactly (K = ℚ_p pin, matching the GMN rider's scope discipline); the
+  O_δ (δ > 1) re-base reads ride (UB-X)(a), NOT this brief.
+* Owed confirmations: the exact numbered statements for (HL-a) AND (HL-c)
+  against physical/PDF copies (Neukirch + the Serre alternates), plus the
+  (HL-b) disposition (printed clause vs displayed companion), recorded in
+  `docs/GMN_citations.md`-style form; only then does the ROOT §4 item-5 row
+  drop "LITERATURE-CANDIDATE". Until ALL THREE are pinned, (HEN-LIFT)
+  counts as UNCONFIRMED and the D-12r retirement (D12R-U4) may not fire.
+
+**Mathlib probe — RAN by this lead (machine clock 2026-08-01), result NEGATIVE.**
 `Mathlib.RingTheory.Henselian` (`HenselianLocalRing`, TFAE at line 119) and
 `Mathlib.NumberTheory.Padics.Hensel` (`hensels_lemma`) provide ROOT-lifting
 only; grep over the pinned mathlib checkout finds NO coprime-FACTOR
@@ -374,11 +466,28 @@ theorem henLift_padic (p : ℕ) [hp : Fact p.Prime] (f : Polynomial ℤ_[p]) (hf
 File `HDischarge/H3/HenLift.lean`. Route: successive approximation mod p^k
 (Bézout coefficients from `IsCoprime`, completeness via `PadicInt` limits);
 or instantiate a general `IsAdicComplete` argument. Difficulty: HARD-medium
-(a real formalization, standard math). Add the uniqueness companion
-`henLift_padic_unique` (same hypotheses + two lift pairs agree). A landed
-D12R-U2 upgrades (HEN-LIFT) from literature pin to VERIFIED-LEAN and shrinks
-D-12r's residual to (OM-SAT) alone. NOT load-bearing for the door — the
-faithful pin suffices at the repo's literature-only-conditionality bar.
+(a real formalization, standard math).
+
+**Scope correction (Codex pass-1 finding 4, ACCEPTED): `henLift_padic` as
+displayed formalizes (HL-a) ONLY.** The full unit is THREE parts, mirroring
+the brief: **D12R-U2a** = `henLift_padic` (existence, the probed signature
+above); **D12R-U2b** = `henLift_padic_unique` (same hypotheses, two monic
+lift pairs with equal reductions are equal — statement to be compile-probed
+at E-phase); **D12R-U2c** = the read-off,
+
+```lean
+-- E-phase target shape (NOT yet compile-probed; probe before landing):
+-- g monic, g.map PadicInt.toZMod = ψ, ψ irreducible ⟹ Irreducible g
+-- (+ the unramified/(E,F) clause in whatever Mathlib vocabulary the prover
+--    adjudicates: residue-degree-only numerical form acceptable at first
+--    landing, full IsUnramified form as the stretch goal)
+```
+
+A landed D12R-U2a alone upgrades NOTHING but (HL-a); the claim "(HEN-LIFT)
+VERIFIED-LEAN" requires U2a + U2b + U2c ALL landed — until then the
+literature pin remains the operative discharge and D-12r's residual display
+must keep all unpinned parts. NOT load-bearing for the door — the faithful
+pin suffices at the repo's literature-only-conditionality bar.
 
 **(OM-SAT) faithfulness brief (unit D12R-U3).**
 * Candidate published statement: **[GMN] Guàrdia–Montes–Nart, "Newton
@@ -421,14 +530,23 @@ carrier layer; they consume no verdict-soundness cite, so they stand
 independent of (HEN-LIFT)/(OM-SAT).
 
 **Retirement adjudication (D12R-U4, doc unit, ROOT edit — VC-pass
-discipline):** once D12R-U1 + D12R-U3's owed confirmations are on file
-(and optionally D12R-U2), rewrite the ROOT D-12r §3.1 row from [M] to the
-§4 literature class: "D-12r = VP-SOUND's two cites, pinned (Neukirch II 4.6 /
-Serre LF I §6; GMN Cor 3.8 + Def 3.9 TAMS-confirmed); TB-CAP(irr)'s
-perimeter internal to the dual-accepted corpus (MOVES §T.5 display)". Every
-consuming step's conditionality line then reads the §4 rows. This is a
-composition-document change: it rides the next VC pass (currently VC14 in
-flight — COORDINATE, do not race it).
+discipline):** once D12R-U1's (HL-a)/(HL-b)/(HL-c) dispositions + D12R-U3's
+pagination confirm are ALL on file (D12R-U2 optional), rewrite the ROOT
+D-12r §3.1 row from [M] to the §4 literature class, with the THREE displayed
+supports quoted in the row: (i) the §T.5(2) remainder display ("what remains
+is exactly {VP-SOUND's cites}") + the §T.2 status block naming the two
+members; (ii) the per-part literature pins ((HL-a)/(HL-c) numbered
+statements + the (HL-b) disposition; GMN Cor 3.8 + Def 3.9 TAMS-confirmed);
+(iii) the dependency-decomposition table of §2.1 above (each sibling
+condition at its own priced home). The row's TB-CAP(irr) sentence must read:
+"TB-CAP(irr) is PROVED at [3t] from the accepted §C rev-14 Theorem C —
+citation into the dual-accepted corpus, not an open hypothesis" — the
+precise form of the pre-fold word "internal", which by itself discharges
+nothing (Codex pass-1 finding 3, ACCEPTED). Every consuming step's
+conditionality line then reads the §4 rows. This is a composition-document
+change: it rides the next VC pass (currently VC14 in flight — COORDINATE,
+do not race it), and the VC verifier — not this blueprint — adjudicates
+whether the rewritten row is faithful.
 
 **D-12r discharge criterion.** The [M] row retires when the two cites are
 pinned-confirmed (+ the row rewrite passes a VC round). Lean upgrade
@@ -475,18 +593,32 @@ halts; degree checksums).
 * ROOT (E-N) row, closing sentence: "Beyond that CU-4 touch and its
   clause-(UB) transport, NO other mandatory-path site consumes it."
 
-**The architectural observation the walk must confirm (route (b)'s
-substance):** every FINITE-N counting object on the mandatory path is
-thr-scoped BY CONSTRUCTION — the assembly's decided_σ(N) is DEFINED by the
-tree-shape sum over thr(T̂) ≤ N (plan §4t input (vii)); TB-CAP detection
-fires within verdict windows joined into N\*(𝐇) (CU-2t/CU-4's own level
-bookkeeping); the squeeze consumes finite-N counts only through the
-two-sided envelope, and a decided box whose (unique — Thm 3(c)) tree has
-thr > N is not DETECTED at cap N, i.e. sits in the undecided-at-N envelope
-that drainage prices to 0 as N → ∞. If the walk verifies this at every
-consuming display, the unrestricted reading is consumed NOWHERE and (E-N)
-retires by RESCOPE (a display change: the caveat remains true and OPEN but
-prices nothing on the mandatory path).
+**The architectural HYPOTHESIS the walk must test (route (b)'s substance —
+reworded at Codex pass-1 finding 12: what follows is the EXPECTED outcome,
+asserted nowhere until the walk displays it site by site):** every FINITE-N
+counting object on the mandatory path appears to be thr-scoped by its
+displayed definition — the assembly's decided_σ(N) is DEFINED by the
+tree-shape sum over thr(T̂) ≤ N (plan §4t input (vii), quoted in the walk);
+TB-CAP detection fires within verdict windows joined into N\*(𝐇)
+(CU-2t/CU-4's level bookkeeping); the squeeze consumes finite-N counts only
+through the two-sided envelope. The walk must CONFIRM each of these at its
+consuming display with the display quoted — the CU-4 row's own wording
+("perimeter: TB-CAP (D-12r) + (E-N) displayed OPEN") records that the
+CURRENT leg treats (E-N) as a condition, which is evidence of pricing, not
+of scoped-only consumption; route (b) succeeds exactly if the walk shows
+the pricing is dischargeable at every site. CIRCULARITY GUARD (Codex
+pass-1 finding 13, ACCEPTED as walk duty W-3): the absorption step — "a
+decided box whose unique tree has thr > N sits in the undecided-at-N
+envelope drainage prices to 0" — silently uses TWO distinct predicates:
+SEMANTIC decidedness (the box fibers a decided ns-free tree) vs OPERATIONAL
+decided-at-cap-N (detected by level-N cylinder data). W-3 must quote the
+envelope/drainage DEFINITIONS and verify that the envelope is defined as
+the complement of the DETECTED-at-N class (in which case absorption is
+definitional) rather than semantically (in which case there is a REAL gap
+to price and route (b) fails at that site). If the walk verifies all
+sites, the unrestricted reading is consumed NOWHERE and (E-N) retires by
+RESCOPE (a display change: the caveat remains true and OPEN but prices
+nothing on the mandatory path).
 
 ### 3.3 Door assignment: PROVE, two routes + adjudicating falsifier
 

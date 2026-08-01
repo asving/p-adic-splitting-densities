@@ -29,7 +29,7 @@ realized parent tower. One §3.1 row, THREE displayed clauses ((a′), (b), (c) 
 | member | door | verdict |
 |---|---|---|
 | (a′) transported floors | **1 = PROVE** | provable-shape sketch on file (§3.1): A1/TRI mixed-radix reorganization + (P1)–(P4) + (P4)-concentration of parent digit reads at the junction; the DEEP-STATE leak clause (r ≥ 1 interior digit non-leak) is the SAME GD-2 order-≥ 2 layer as (H1)(a) — open kernel named (VTX-DEEP)/(LEAK) |
-| (b) fresh reads | **1 = PROVE (reduction, no new open content)** | (b) retires into (a′) + LED §5.1 fiber-uniformity + (ADM)-FULL + (GR-B) line clause; reduction theorem spec'd as Lean unit H2-U5 |
+| (b) fresh reads | **1 = PROVE (reduction)** | the CONSUMED counting face retires into (a′) + LED §5.1 fiber-uniformity + (ADM)-FULL + (GR-B) line clause (reduction theorem = Lean unit H2-U5); the structural affine-unit-slope wording is (VTX-DEEP)-family transport, priced once at §3.3/§5 (see §3.2's exact residue display) |
 | (c) junction pin | **1 = PROVE (two-step)** | (c-GR) graded-level identification PROVABLE from (GR-B)(3)+(4) + (P4) (O-9's own mechanism note); (c-TR) the graded→finite-level transport = **(VTX-DEEP)**, THE open kernel — no printed home (door-2 verdict §3.6), rides the GD order-≥ 2 campaign |
 | consequence-of-(c) (telescope, ε = 0) | proved given (c) | paper: O-9 Lemma C + Lemma D; **Lean: ALREADY LANDED** — `vertexChain_telescope`/`vertexChain_telescope_units` (ValueSide/Census.lean C4b, pinned-end form). REUSE row, no unit |
 | r = 0 instance (the proved order-1 instance) | **3 = CONSTRUCTION-CONFORMANCE** | M08 §2.2 separation + KEY1 shape; Lean twin queued as H2-U6 over the landed `canonicalStratum1`/`census_r0_law` |
@@ -257,9 +257,17 @@ clause (the §5.1 layer), clause (b) follows:
    engine H2-U4 — pure finite counting).
 3. The junction slot is excluded (L′ accounting) — its read is (c)'s.
 
-**Residue:** NONE beyond (a′) + (ADM) + (GR-B)-line. (b) is not an independent
-open input once (a′) is on file; O-9 §6.4 step 3 already consumes it exactly
-this way. Lean spec: H2-U4 (engine) + H2-U5 (reduction at the carriers).
+**Residue, stated exactly.** The COUNTING face of (b) — per-digit charge q^{−d},
+uniform and jointly independent, which is ALL that CEN-J §6.4 step 3 consumes —
+has residue NONE beyond (a′) + (ADM) + (GR-B)-line: it is not an independent
+open input once (a′) is on file. The STRUCTURAL wording of (b) ("affine in one
+fresh digit with UNIT SLOPE") is stronger than its counting shadow: the
+unit-slope/one-digit identification of the finite-level read with the marched
+graded read is the same transport family as (c-TR) — priced to (VTX-DEEP), not
+re-counted here (one kernel, three consumption points: (a′)-(LEAK), (b)-structure,
+(c)). Counting needs only BIJECTIVITY in one fresh digit, which the affine
+unit-slope form supplies but does not require. Lean spec: H2-U4 (engine) +
+H2-U5 (reduction at the carriers — the counting face).
 
 ### 3.3 (FRESH)(c) — the junction pin. DOOR 1: PROVE (two-step; THE open kernel)
 
@@ -414,23 +422,32 @@ LED(i) scope m·N ≥ s(·)); digit alphabets ride ℕ with counts vanishing off
 
 Imports: `Mathlib`, `LeanUrat.Scaffold.ValueSide.Census`.
 
+[REVISED at review pass 1 — findings 9/10/12/13/14: `hn2`/`hmono`/`honLine_box`/
+`hks_top` carrier laws added; `slotDigits` field added. Re-probed green.]
+
 ```lean
 /-- H2-U1a `WindowDatum`: the order-(r+1) window counting skeleton over census
     datum `D` (O-9 rev-5 §2 stratum datum reduced to the (FRESH)-quantified
-    data: box slots, per-slot thresholds, on-line slots, junction slot). -/
+    data: box slots, per-slot thresholds, on-line slots, junction slot).
+    `onLine` = the on-line lattice slots OF THE BOX K_D (the monic top, though
+    on the line, is excluded with K_D — O-9 §2). -/
 structure WindowDatum (D : CensusData) where
   ℓ : ℕ
   hℓ : 1 ≤ ℓ
-  /-- the polynomial degree n (ℓ = ⌊n/m⌋, m = period·d). -/
+  /-- the polynomial degree n; hn/hn2 pin ℓ = ⌊n/m⌋, m = period·d. -/
   n : ℕ
   hn : ℓ * (D.period * D.d) ≤ n
+  hn2 : n < (ℓ + 1) * (D.period * D.d)
   beta : Fin (ℓ + 1) → ℕ
   onLine : Finset (Fin (ℓ + 1))
   ks : Fin (ℓ + 1)
   monicTop : Bool
+  hmono : monicTop = true ↔ (D.period * D.d) ∣ n
   boxSlots : Finset (Fin (ℓ + 1))
   hbox : boxSlots = if monicTop then Finset.univ.erase (Fin.last ℓ) else Finset.univ
+  honLine_box : onLine ⊆ boxSlots
   hks_line : monicTop = false → ks ∈ onLine
+  hks_top : monicTop = true → ks = Fin.last ℓ
 
 /-- H2-U1b `ParentShape`: the discrete parent shape — level `N0` and the
     transported floors `g` (shape-only by TYPE: `g` sees no realization ρ). -/
@@ -440,14 +457,21 @@ structure ParentShape (D : CensusData) (W : WindowDatum D) where
   g : Fin (W.ℓ + 1) → ℕ
 
 /-- H2-U1c `JointStratum`: the level-N joint (parent, window) stratum presented
-    fiberwise — skeletal counting carrier (`Stratum1`/`StratumR` discipline). -/
+    fiberwise — skeletal counting carrier (`Stratum1`/`StratumR` discipline).
+    NON-VACUITY is NOT a carrier law: it is delivered by the de-vacuifier unit
+    H2-U6 (the canonical r = 0 instance, rhoCount = 1) and owed by the engine
+    seam at instantiation — the corpus's Stratum1/StratumR pattern. -/
 structure JointStratum (D : CensusData) (W : WindowDatum D) (P : ParentShape D W) where
   N : ℕ
   hN : P.N0 ≤ N
   /-- number of parent realizations ρ at alphabet size q (level N0). -/
   rhoCount : ℕ → ℕ
-  /-- per-realization per-slot HEIGHT-condition count at alphabet size q. -/
+  /-- per-realization per-slot HEIGHT-condition count at alphabet size q
+      (absolute count; O-9's RELATIVE (E″) charge is this against the
+      parent's q^{mN − s(g_k)} baseline). -/
   slotCount : ℕ → Fin (W.ℓ + 1) → ℕ → ℕ
+  /-- per-realization per-on-line-slot per-digit-value count at size q. -/
+  slotDigits : ℕ → ↥W.onLine → ℕ → ℕ → ℕ
   /-- per-realization fiber count (heights only), at alphabet size q. -/
   fiber : ℕ → ℕ → ℕ
   /-- per-realization count of boxes with prescribed on-line digit vector z. -/
@@ -457,40 +481,86 @@ structure JointStratum (D : CensusData) (W : WindowDatum D) (P : ParentShape D W
 Design notes (ratification points): (i) `ParentShape.g` shape-only-ness is
 enforced BY TYPE (no ρ argument) — the (a′) law then prices only the floors'
 CORRECTNESS, exactly O-9's split; (ii) `boxSlots` carries the monic-top erasure
-(K_D = {0..ℓ−1} at m | n) verbatim; (iii) carriers are SKELETAL by the corpus's
-own precedent (`Stratum1` C4a provenance) — the engine's constructed strata
-instantiate them at the BP_IV wave-4 seam.
+(K_D = {0..ℓ−1} at m | n) verbatim, and `hks_top` pins the monic-top junction
+to the erased top slot (its read = the monicity constant 1 is an ENGINE-SEAM
+fact, displayed in U2's docstrings — review finding 14); (iii) carriers are
+SKELETAL by the corpus's own precedent (`Stratum1` C4a provenance) — the
+engine's constructed strata instantiate them at the BP_IV wave-4 seam, where
+the residual conformance duties live: `W.beta`/`W.onLine` versus the ledger's
+polygon data (the polygon-ledger tie CANNOT ride these skeletal carriers —
+same call as BP_IV's C0d; review finding 13), realization positivity, and the
+q = p^δ prime-power semantics (the clause-(UB) face — §3.5).
 
 ### H2-U2 — `H2/FreshLaws.lean` (wave 0, EASY, dep U1; statements only)
 
-```lean
-/-- (FRESH)(a′) PRODUCT-BOX face: on each ρ-fiber the parent's transported
-    conditions are per-slot separate — the fiber count factorizes. -/
-def FloorsProdLaw (W : WindowDatum D) (P : ParentShape D W)
-    (J : JointStratum D W P) : Prop :=
-  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
-    J.fiber ρ q = ∏ k ∈ W.boxSlots, J.slotCount ρ k q
+[REVISED at review pass 1 — findings 6/7/9/10/12: the digit-level product box
+is now the primary (a′) encoding (`DigitsProdLaw`); the fiber↔fiberDigits seam
+law (`FiberSumLaw`) added; all digit quantifications alphabet-bounded; the
+charge law extended to ALL box slots; `FloorsProdLaw` (cardinality-only) is
+DEMOTED to a derived lemma of U5, no longer a package field. Re-probed green.]
 
-/-- (FRESH)(a′) LED-CHARGE face at off-line slots: the per-slot height charge
-    is the relative LED factor (ℕ-subtraction = the max(0,·) truncation). -/
+```lean
+variable {D : CensusData}
+
+/-- (FRESH)(a′) LED-CHARGE face at every box slot: the per-slot height count
+    at the JOINT condition max(β_k, g_k) (ℕ-subtraction = max(0,·); exact in
+    the LED(i) regime m·N ≥ s(·), the law's declared scope). -/
 def FloorsChargeLaw (W : WindowDatum D) (P : ParentShape D W)
     (J : JointStratum D W P) : Prop :=
   ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
-    ∀ k ∈ W.boxSlots, k ∉ W.onLine →
+    ∀ k ∈ W.boxSlots,
       J.slotCount ρ k q
         = q ^ ((D.period * D.d) * J.N - D.s (max (W.beta k) (P.g k)))
 
-/-- (FRESH)(b): fresh reads — per prescribed digit vector agreeing at the
-    junction, fiber counts coincide (joint uniformity off the junction). -/
+/-- (FRESH)(a′) PRODUCT-BOX face, digit level (THE (a′) core: "a product
+    box"): on each ρ-fiber the prescribed-digit count factorizes per-slot —
+    on-line slots contribute their digit counts, off-line box slots their
+    height counts. Alphabet-bounded. -/
+def DigitsProdLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+    ∀ z : (↥W.onLine → ℕ), (∀ k, z k < q ^ D.d) →
+      J.fiberDigits ρ z q
+        = (∏ k ∈ W.onLine.attach, J.slotDigits ρ k (z k) q)
+          * ∏ k ∈ W.boxSlots \ W.onLine, J.slotCount ρ k q
+
+/-- The fiber ↔ fiberDigits SEAM (review finding 10): summing the digit-vector
+    counts over the full F_{q^d}-alphabet box recovers the height-only fiber
+    count (z_k = 0 encodes "strictly above" — O-9 §5.1's read convention). -/
+def FiberSumLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+    ∑ z : (↥W.onLine → Fin (q ^ D.d)),
+        J.fiberDigits ρ (fun k => (z k).1) q
+      = J.fiber ρ q
+
+/-- (FRESH)(b), COUNTING FACE: per prescribed in-alphabet digit vector
+    agreeing at the junction, fiber counts coincide. NOT the full structural
+    clause (affine-in-one-fresh-digit, unit slope) — see the §3.2 residue
+    display; the structural content is priced at (VTX-DEEP). -/
 def FreshReadsLaw (W : WindowDatum D) (P : ParentShape D W)
     (J : JointStratum D W P) : Prop :=
   ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
     ∀ z z' : (↥W.onLine → ℕ),
+      (∀ k, z k < q ^ D.d) → (∀ k, z' k < q ^ D.d) →
       (∀ hk : W.ks ∈ W.onLine, z ⟨W.ks, hk⟩ = z' ⟨W.ks, hk⟩) →
       J.fiberDigits ρ z q = J.fiberDigits ρ z' q
 
-/-- (FRESH)(c): the junction pin — the read at the chain's right end is a
-    ρ-determined NONZERO constant (free-end box only; monic top pins to 1). -/
+/-- LED §5.1's per-slot uniformity shadow (engine-seam supplied; (ADM)-FULL +
+    (GR-B) line clause are its suppliers there): non-junction on-line slots'
+    per-digit counts are digit-independent on the alphabet. -/
+def SlotUniformLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+    ∀ k : ↥W.onLine, (k : Fin (W.ℓ + 1)) ≠ W.ks →
+      ∀ z z' : ℕ, z < q ^ D.d → z' < q ^ D.d →
+        J.slotDigits ρ k z q = J.slotDigits ρ k z' q
+
+/-- (FRESH)(c), COUNTING FACE: the junction read is a ρ-determined NONZERO
+    constant — off-c vectors count 0 (free-end box; at monic top the junction
+    is the erased top slot (`hks_top`), whose read is the monicity constant —
+    an engine-seam fact, so the law is honestly vacuous there). The c-fiber is
+    NOT asserted nonempty: empty ρ-fibers are legitimate (O-9's padding). -/
 def JunctionPinLaw (W : WindowDatum D) (P : ParentShape D W)
     (J : JointStratum D W P) : Prop :=
   W.monicTop = false →
@@ -499,62 +569,75 @@ def JunctionPinLaw (W : WindowDatum D) (P : ParentShape D W)
         ∀ (hk : W.ks ∈ W.onLine) (z : (↥W.onLine → ℕ)),
           z ⟨W.ks, hk⟩ ≠ c → J.fiberDigits ρ z q = 0
 
-/-- (H2) = (FRESH) packaged at one (W, P, J). -/
+/-- The CENSUS-FACE COUNTING SHADOW of (H2) = (FRESH), packaged at one
+    (W, P, J) — exactly the faces CEN-J (O-9 §6.4) consumes. NOT the full
+    row: the structural affine/carry content of (b) and the classifier face
+    (Step 10/K1) are priced at (VTX-DEEP) and the §2.3 adjudication. -/
 structure FreshClauses (W : WindowDatum D) (P : ParentShape D W)
     (J : JointStratum D W P) : Prop where
-  floorsProd : FloorsProdLaw W P J
   floorsCharge : FloorsChargeLaw W P J
+  digitsProd : DigitsProdLaw W P J
+  fiberSum : FiberSumLaw W P J
   freshReads : FreshReadsLaw W P J
   junctionPin : JunctionPinLaw W P J
 ```
 
-Docstring duty: each law pins O-9 §5.4's clause + §6.4's consumption step.
-Honesty display in the module header: these are the CENSUS-face counting
-shadows of (a′)/(b)/(c) — faithful to what CEN-J §6.4 consumes; the
-chain/classifier-face twins ride the §2.3 adjudication.
+Docstring duty: each law pins O-9 §5.4's clause + §6.4's consumption step, and
+the CEN-J SCOPE GUARD (g_k ≤ β_k at every on-line slot — O-9 rev-3 pass-2 GAP-4
+scope; review finding 7) is a HYPOTHESIS of the consuming theorems (U5/U6 take
+`hscope : ∀ k ∈ W.onLine, P.g k ≤ W.beta k` where the O-9 display requires it),
+never silently assumed.
 
 ### H2-U4 — `H2/ProdBoxUniform.lean` (wave 1, MED, corpus-free)
+
+[REVISED at review pass 1, finding 9: the uniformity hypothesis and the
+conclusion's digit vectors are BOUNDED by an alphabet parameter `B` — the
+unbounded form was unsatisfiable on nonempty slots (out-of-alphabet fibers are
+empty). Re-probed green.]
 
 ```lean
 /-- (b-RED) engine: per-slot uniform independent counts multiply — the joint
     count over a product box with per-slot fiber-uniform reads is digit-vector
-    independent.  Abstract Finset/counting form. -/
+    independent on the alphabet.  Abstract Finset/counting form. -/
 theorem prodBox_jointUniform {ι : Type*} [Fintype ι] [DecidableEq ι]
     {Ω : ι → Type*} [∀ k, Fintype (Ω k)] [∀ k, DecidableEq (Ω k)]
-    (A : ∀ k, Finset (Ω k)) (read : ∀ k, Ω k → ℕ)
-    (huni : ∀ k (z z' : ℕ),
+    (A : ∀ k, Finset (Ω k)) (read : ∀ k, Ω k → ℕ) (B : ℕ)
+    (huni : ∀ k, ∀ z < B, ∀ z' < B,
       ((A k).filter fun ω => read k ω = z).card
         = ((A k).filter fun ω => read k ω = z').card)
-    (z z' : ι → ℕ) :
+    (z z' : ι → ℕ) (hz : ∀ k, z k < B) (hz' : ∀ k, z' k < B) :
     ((Finset.univ.pi A).filter fun ω => ∀ k h, read k (ω k h) = z k).card
       = ((Finset.univ.pi A).filter fun ω => ∀ k h, read k (ω k h) = z' k).card
 ```
 
 Proof route: `Finset.card_pi`-style product decomposition (the filtered pi-set
 is the pi of filtered slots), then `Finset.prod_congr` with `huni`. Falsifier:
-`#eval` gate at ι = Fin 2, Ω = Fin 3 with a non-uniform `read` (hypothesis
-violated ⇒ conclusion may fail) and a uniform one (equal counts).
+`#eval` gate at ι = Fin 2, Ω = Fin 3, B = 2 with a non-uniform `read`
+(hypothesis violated ⇒ conclusion may fail) and a uniform one (equal counts).
 
 ### H2-U5 — `H2/FreshReduction.lean` (wave 1, MED, deps U1/U2/U4)
 
-The (b)-retirement theorem at the carriers. New named hypothesis rows (each a
-`def ... : Prop`, docstrings pinning O-9 §5.1 and §6.4 step 3):
-`DigitsProdLaw W P J` — `fiberDigits` factorizes per-slot (the digit-level
-product-box face of (a′), supplied at the engine seam);
-`SlotUniformLaw W P J` — each non-junction on-line slot's per-digit count is
-digit-independent (LED §5.1 fiber-uniformity + (ADM)-FULL onto-ness at the
-engine instance). Deliverable:
+[REVISED at review pass 1, finding 6: `DigitsProdLaw` is now a FIELD of the
+`FreshClauses` package (the (a′) digit-level core, displayed in U2 above), not
+a side hypothesis invented here — the review correctly ruled that the
+cardinality-only `FloorsProdLaw` does not imply it. `SlotUniformLaw` is the
+displayed U2 row.] Deliverables (both probed green as statements):
 
 ```lean
-theorem freshReads_of_floors (W : WindowDatum D) (P : ParentShape D W)
+theorem freshReads_of_digitsProd (W : WindowDatum D) (P : ParentShape D W)
     (J : JointStratum D W P) (hprod : DigitsProdLaw W P J)
     (huni : SlotUniformLaw W P J) : FreshReadsLaw W P J
 ```
 
-(exact row bodies: prover-authored, ratified against §6.4 step 3 — the two rows
-must jointly say no more than "(a′) product box at digit level + §5.1 uniform
-slots"; anything stronger is a statement defect). This EXHIBITS (b)'s
-no-new-content reduction inside Lean: (b) holds wherever (a′)+(LED)+(ADM) do.
+plus the DERIVED cardinality law (the demoted `FloorsProdLaw`, now a lemma):
+`J.fiber ρ q = ∏ k ∈ W.boxSlots, J.slotCount ρ k q` from `DigitsProdLaw` +
+`FiberSumLaw` + `SlotUniformLaw` + a per-slot digit-sum lemma (`Σ_{z<q^d}
+slotDigits ρ k z q = slotCount ρ k q` — add as a named row `SlotSumLaw` if the
+prover needs it; RATIFICATION POINT: `SlotSumLaw` must be checked against O-9
+§5.1's read convention before joining the package). This EXHIBITS the exact
+shape of (b)'s counting-face retirement inside Lean: FreshReadsLaw holds
+wherever the (a′)-package fields + LED-uniformity do — the honest statement of
+"(b)'s CONSUMED face adds no residue beyond (a′) + LED + (ADM)" (§3.2).
 
 ### H2-U6 — `H2/R0Instance.lean` (wave 1, MED-HARD, deps U1/U2 + landed C4)
 

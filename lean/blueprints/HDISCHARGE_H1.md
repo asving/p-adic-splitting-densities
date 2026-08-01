@@ -51,21 +51,40 @@ properness-proviso leg belongs to the §3.3 (KP)/(KPirr) [T] row (FGMN Lemma 5.3
 blueprint CONSUMES it as a displayed pinned input and never re-prices it. (v)
 Falsifier-first: each numerics gate runs BEFORE the math unit it guards is written up.
 
-**The architecture in one display (the tower induction).** All four members hang on one
-well-founded ladder, indexed by state order j+1 (base j = 0 proved = GD23):
+**The architecture in one display (the tower induction) [REV 2 — Codex finding 1: the
+rev-1 ladder was index-circular; repaired by the STR/KEY split below].** GD23's (KP_j)
+indexing: the block of key Φ_{j+1} lives in gr(w_{j+1}) — the state the read ν_j
+creates and its key inhabits (KEY-g is the j = 0 instance, in gr(w₁)). For the
+discharge, (GR-B) at state order j+1 SPLITS into two halves with different inputs
+(the packaging GD23 displays as one is consumed here in two steps):
+**(GR-B-STR)_{j+1}** = clauses (0)/(0′)/(0″)+(1)+(2′) — the structure of gr(w_{j+1})
+in the CHAIN's data (Δ = K_j[ȳ], anchors, operators): FGMN states these for the
+inductive valuation w_{j+1} with chain (Φ₀, …, Φ_j), consuming the chain keys' blocks
+(KP)_{≤ j−1} ONLY — never the state key Φ_{j+1}. **(GR-B-KEY)_{j+1}** = clauses
+(3)+(4) — about ψ̂ = the state key's initial form — consuming additionally (KP_j)
+(Φ_{j+1} ∈ KP(w_{j+1}), which is what FGMN §5's operators/faithfulness quantify over).
+The well-founded ladder, base j = 0 proved (VAL-g gives (V1)₁ + gr(w₁)'s explicit
+structure; KEY-g gives (KP₀)):
 
-    (V1)_{≤ j+1} + (KP)_{≤ j}                        [induction state]
-      ⟹ (GR-B)_{j+1}                                 [member (a): FGMN retarget]
-      ⟹ (KP)_{j+1} at the standard lift              [member (b): KP-STEP, door 1]
-      ⟹ (V1)_{j+2}                                   [GD23 §5: BRIDGE + MacLane Thm 4.2,
-                                                       ON FILE — reuse, not re-proved]
-    (d) = the (KP)_{i+1} block + GD3-MIN read off at every realized order-≥ 2 site
+    (V1)_{≤ j+1} + (KP)_{≤ j−1}                      [induction state]
+      ⟹ (GR-B-STR)_{j+1}                             [member (a), FGMN retarget]
+      ⟹ (KP)_j at the standard lift Φ_{j+1}          [member (b): KP-STEP, door 1 —
+                                                       proved IN gr(w_{j+1})]
+      ⟹ (GR-B-KEY)_{j+1}                             [member (a), FGMN §5 pins]
+      ⟹ (V1)_{j+2}                                   [from (KP)_j: GD23 §5 BRIDGE +
+        MacLane 1936 Thm 4.2 — the AUGMENTATION theorem, GD23 §2's pin (ML), printed
+        scope cleared at LITUNIT §3, corroborated by FGMN Prop 1.9's cite "[10,
+        Thms. 4.2, 5.1]"; DISTINCT from FGMN Thm 4.2 (the two-form residual identity)
+        — ON FILE, reuse, not re-proved]
+    (d) = the (KP)_i block + GD3-MIN read off at every realized order-≥ 2 site,
+          PLUS the site's run data (§4.2 (iv) — the F7 repair)
     (c) = engine-side run/read binding — parallel strand, no dependence on (a)/(b)
 
-No circularity: (GR-B)_{j+1} is a statement about gr(w_{j+1}), which exists once
-(V1)_{j+1} holds; (KP)_{j+1} feeds only (V1)_{j+2}. The base of everything is the
-proved order-≤ 1 layer (GD23 Theorems GAUSS-g/VAL-g/KEY-g/RES-1, any d₀, any complete
-DVR O).
+No circularity [Codex Q1 re-answered]: (GR-B-STR)_{j+1} needs (KP) strictly below the
+state key; KP-STEP runs in gr(w_{j+1}) — the ring (V1)_{j+1} already supplies — and
+never in gr(w_{j+2}); (GR-B-KEY)_{j+1} consumes (KP)_j pointing backward; (V1)_{j+2}
+closes the rung. The base of everything is the proved order-≤ 1 layer (GD23 Theorems
+GAUSS-g/VAL-g/KEY-g/RES-1, any d₀, any complete DVR O).
 
 ---
 
@@ -87,6 +106,11 @@ CORRECTLY paired — the V28-1 conflation and the V26-2 slot-fresh reading are t
 displayed refuted variants), with R^{gr}(in f) ∼ R_λ(f); **(3)** R^{gr}(ψ̂) ∼ ψ_i;
 **(4)** faithfulness ord_{ψ_i}(R^{gr}(α)) = ord_{ψ̂}(α) — properness proviso EXCLUDED
 (consumed from the §3.3 [T] pin where clause (4) fires at e·g = 1 refinement keys).
+**Discharge split [REV 2, finding 1]:** clauses (0)/(0′)/(0″)+(1)+(2′) form
+(GR-B-STR) (chain-data only, inputs (V1)_{≤ i+1} + (KP)_{≤ i−1}); clauses (3)+(4)
+form (GR-B-KEY) (about the state key, additional input (KP_i)) — the §0 ladder's two
+(a)-steps. GD23's single-package display is unchanged; the SPLIT is a property of the
+derivation order, recorded in the write-up's S5/S6 sectioning.
 
 **1.2 Faithfulness brief (the door-2 charge: exact candidate printed statement ↔ what
 must match in OUR language ↔ translation risk).** Source paper: J. Fernández,
@@ -100,9 +124,9 @@ LITUNIT §5). Per-clause table:
 | (0) structure | **Thm 4.8** "R_{r,0} : ∆ → F_r[y] is an isomorphism … ∆ = F_r[y_r]" + **Cor 4.9** (F_{i+1} = F_i[z_i], deg ψ_i = f_i) | Δ = K_i[ȳ] with ȳ ↔ y_r; K_i ↔ F_r at depth r = i+1 (index dictionary GD23 §1.2: w_i ↔ v/µ at depth i+1, e_r = e_i, h_r = h_i) |
 | (0′) anchors | **Lemma 4.1**'s ϕ_r(α)/ϕ_r(g) pair (ϕ_r(α) = x_r^{s(α)}p_r^{u(α)}, eq. (12), 0 ≤ s(α) < e_r) | ϕ_α ↔ ϕ_r(α), ϕ(f) ↔ ϕ_r(g); the two-form consistency ϕ(f) = ϕ_α·ȳ^{j₀} ↔ printed eq. (16) at j = j₀; the carry algebra 𝒟 = F[u]/(u^{e_b} − ζ) realized by the degree-0 sub-steps of the monomial system (the MOVES pass-7 object) |
 | (0″) operators | **Def 3.16** (R_{r,α}, slot j at abscissa s(α) + je_r) + **Def 3.18** (R_r = R_{r,α}/y^{j₀}) | R^{gr}_α ↔ R_{r,α}, R^{gr} ↔ R_r; slot-κ read abscissae s₀(f) + κe_i; z-order j₀ = Cor 4.4(3) |
-| (1) | **Thm 4.2** (H_µ, ϕ_r multiplicative; via Lemma 4.1/Cor 2.7) + **Lemma 5.13** (R(gh) = R(g)R(h), g µ-proper) | multiplicativity up to K_i^× — the unit twist θ_{α,β} is OURS to carry, the printed identity is exact in its own normalization |
+| (1) | **Thm 4.2** (H_µ, ϕ_r multiplicative; via Lemma 4.1/Cor 2.7); **Lemma 5.13** (R(gh) = R(g)R(h), g µ-proper) as CORROBORATION ONLY [REV 2, finding 4: Lemma 5.13's properness hypothesis cannot supply the TOTAL clause; the rev-1 row over-priced it — a defect ALSO latent in GD23's own (GR-B)(1) citation line, flagged to the write-up] | multiplicativity up to K_i^×, TOTAL on homogeneous elements — DERIVED in S6 as obligation **TR-7**: from Thm 4.2's identity, H(gh) = H(g)H(h) and the anchor arithmetic (eq. (12)/(16): s(g)+s(h) = s(gh)+e·δ, δ ∈ {0,1}) give R^{gr}(gh) ∼ R^{gr}(g)R^{gr}(h) with the δ-wrap absorbed through the p-exponent — the CARRY-WRAP computation (the same eq (12)/(16) arithmetic as OP-A2's 𝒟-clause), written out, never cited |
 | (2′) | **Thm 4.2** verbatim: "H_µ(g) = ϕ_r(α)R_{r,α}(g)(y_r) = ϕ_r(g)R_r(g)(y_r)" + **Cor 4.4(2)(3)** slot granularity | the anchored-march identity, BOTH pairings; exact-match check against the printed two-form EXECUTED and displayed at GD23 §7.2 rev 3 (V28-1) — the retarget pass re-verifies it, never re-derives it |
-| (3) | **Cor 5.6(2)** verbatim: "R_i(φ_{i+1}) = ψ_i, the minimal polynomial of z_i over F_i" | (KPb) transported; reads the extended chain — properness-proviso territory shared with (4) |
+| (3) | **Cor 5.6(2)** verbatim: "R_i(φ_{i+1}) = ψ_i, the minimal polynomial of z_i over F_i" | (KPb) transported; reads the extended chain — properness-proviso territory shared with (4). [REV 2, finding 5:] the printed operator takes the POLYNOMIAL φ_{i+1}, ours the graded ψ̂ — this row consumes TR-4's factor-through-initial-form lemma AT THIS CLAUSE explicitly (TR-4's scope now names it), not as unlabeled notation |
 | (4) | **Prop 5.14 / Cor 5.15** verbatim: "ord_ψ(R_r(g)) = ord_{µ,φ}(g) for any non-zero g" (φ proper) | ord_{µ,φ}(g) = graded ψ̂-divisibility order (GD23 Lemma BRIDGE); the PROPER hypothesis is the excluded [T] leg (FGMN Lemma 5.3 + the two-step completion display at GD23 §7.2 (4)) |
 | corroboration | MacLane 1936 Thm 10.2/Lemma 10.1/Lemmas 11.1–11.2/Thm 12.1/Cor 12.2 (commensurable case, automatic here) | independent pin of the structure clause; GMN Thm 2.26 (Theorem of the product) corroborates (1)+(2′) at GMN's own normalization |
 
@@ -155,13 +179,17 @@ the composed statement must REPRODUCE GD23's proved order-1 display (in(f) =
 the whole retarget; (S8) honesty ledger + attack list.
 **Honest open points, named now:** (OP-A1) TR-2's rescaling lemma is unwritten (easy
 but load-bearing); (OP-A2) the 𝒟-realization clause has no printed home — it is OUR
-gloss of Thm 4.8/Cor 4.9's sub-step structure and must be PROVED from them in S5, else
-dropped from the package statement (it is consumed by [F.2]'s reading, so dropping it
-re-opens an engine-seam obligation — flag to the verifier); (OP-A3) FGMN state their
+gloss of Thm 4.8/Cor 4.9's sub-step structure and MUST be PROVED from them in S5 [REV
+2, finding 6: the rev-1 "else dropped" escape is RETRACTED — the clause is consumed by
+[F.2]'s reading, so if S5's proof fails it becomes a DISPLAYED OPEN SUB-MEMBER of (a)
+with its own §3.1-row consequence, never silently dropped]; (OP-A3) FGMN state their
 operators for a MacLane chain of µ — our tower reaches w_{i+1} through the policy's
 chain; that the policy's chain IS a MacLane chain of w_{i+1} is (KP)-territory
 (member (b)), consumed as the induction state, and the write-up must display this
-dependence rather than silently assuming it.
+dependence rather than silently assuming it; (OP-A4 = TR-7) [REV 2, finding 4] the
+clause-(1) TOTAL multiplicativity carry-wrap derivation (§1.2's (1)-row): the printed
+supply covers it only up to the δ-wrap, and the wrap absorption is the same eq
+(12)/(16) computation as OP-A2 — one section (S6a) proves both or both stand open.
 
 **1.4 Verification protocol.** Falsifier N-1 (§5.4) runs BEFORE S5/S6 are written.
 Then the standard cycle: fresh hostile pass (Codex, literature access, LITUNIT
@@ -189,52 +217,72 @@ j = 0 for the standard lift at any d₀ over any O (Theorem KEY-g). The properne
 stays [T] (§0 rule (iv)).
 
 **2.2 Door 1 — Theorem KP-STEP (the S-1 "same method": KEY-g's weighted-Gauss/
-homogenization argument transported one level up).** Statement: fix the induction
-state ((V1)_{≤ j+1}, (KP)_{≤ j}, (GR-B)_{j+1}); let the order-(j+1) read (GD23 §1.2
-indexing: performed at the frame (Φ_{j+1}, w_{j+1}, K_{j+1})) carry (e, h) := 
-(e_{j+1}, h_{j+1}) coprime ≥ 1 and ψ := ψ_{j+1} ∈ K_{j+1}[z] monic irreducible of
-degree g ≥ 1 with ψ(0) ≠ 0 [TR-5 line displayed at the unit]; let Φ_{j+2} :=
-Σ_κ ψ̂_κ·M_κ be the standard key lift (ψ̂_κ the coefficient lifts, M_κ the marched
-monomial normalizers from (GR-B)(0′)). Then (KPa)+(KPirr)+(KPb) hold at j+1.
-Proof plan, section-by-section (each a numbered section of the unit note
-`KPSTEP_attempt.md`):
-* (s1) *The marched homogenization.* hom^m_{e,h} : K[z] → gr(w_{j+2})-candidates,
-  c(z) = Σ c_κ z^κ ↦ Σ [ĉ_κ]·ϕ·ȳ^κ-shaped sums — multiplicative and injective. Inputs:
-  (GR-B)_{j+1}(0)/(0′) (Δ = K[ȳ] polynomial ring: injectivity; anchor invertibility +
-  march linearity in κ: multiplicativity — exponents add slot-wise as at order 1).
+homogenization argument transported one level up) [REV 2 — findings 1/2/14 folded:
+indices corrected to the §0 split ladder; the circular s6 alternative deleted; the
+localization-avoidance step displayed].** Statement: fix the induction state
+((V1)_{≤ i+1}, (KP)_{≤ i−1}) and (GR-B-STR)_{i+1}; let the read ν_i creating the
+state (GD23 §1.2: performed at the frame (Φ_i, w_i, K_i)) carry (e, h) := (e_i, h_i)
+coprime ≥ 1 and ψ := ψ_i ∈ K_i[z] monic irreducible of degree g ≥ 1 with ψ(0) ≠ 0
+[TR-5 line displayed at the unit]; let Φ_{i+1} := Σ_κ ψ̂_κ·M_κ be the standard key
+lift (ψ̂_κ the coefficient lifts, M_κ the marched monomial normalizers from
+(GR-B-STR)(0′)). Then (KPa)+(KPirr)+(KPb) hold at (KP_i) — the block of Φ_{i+1} IN
+gr(w_{i+1}), the ring (V1)_{i+1} already supplies. Proof plan, section-by-section
+(each a numbered section of the unit note `KPSTEP_attempt.md`):
+* (s1) *The marched homogenization.* hom^m_{e,h} : K_i[z] → gr(w_{i+1}),
+  c(z) = Σ c_κ z^κ ↦ Σ [ĉ_κ]·ϕ·ȳ^κ-shaped sums — multiplicative and injective.
+  Inputs: (GR-B-STR)_{i+1}(0)/(0′) (Δ = K_i[ȳ] polynomial ring: injectivity; anchor
+  invertibility + march linearity in κ: multiplicativity — exponents add slot-wise as
+  at order 1).
 * (s2) *Weight/degree bookkeeping of the standard lift.* Every nonzero monomial of
-  Φ_{j+2} at one w_{j+2}-weight; in(Φ_{j+2}) = hom^m(ψ) up to the anchor unit — the
-  (KPa) initial-form identity. Input: DEVID at the state (GD23 §4, on file, consumes
-  (V1)+(KPa) one level down) for the development weights.
-* (s3) *Factor collection.* Every homogeneous δ ∈ gr(w_{j+1})-localized factors as
-  (invertible anchor monomial)·hom^m(c) with c(0) ≠ 0. Input: (GR-B)(0′) + Thm 4.2's
-  rank-one statement (P_α/P_α⁺ = ϕ_r(α)Δ free of rank one) — the order-1 proof's
-  "collect the least Φ̄₀-exponent" step, with (π̄, Φ̄₀)-monomials replaced by the anchor
-  system.
-* (s4) *Primeness.* ψ irreducible in K[z] ⟹ hom^m(ψ) prime: the order-1 UFD argument
-  runs verbatim in Δ-localized = K[ȳ][anchors^{±1}] (weighted UFD via (0)/(0′));
-  suppose hom^m(ψ) = δδ′, collect anchors, use injectivity + irreducibility. This is
-  (KPirr) at j+1 — the clause V26-1 taught us is a genuinely additional input, so it
-  gets its own section, not a remark.
-* (s5) *Degree block.* deg_x B < deg Φ_{j+2} ⟹ ψ̂_hom ∤ in(B). The order-1 proof used
-  the slot bound "top Φ₀-slot < eg". At order j+1 the corresponding step is the
-  ȳ-degree comparison: **(OP-B1, the honest open point of door 1)** deg_x B <
-  deg Φ_{j+2} bounds the ȳ-degree of in(B) below eg — the graded shadow of MacLane's
-  minimal-degree clause. Candidate printed supply: FGMN §5's key-polynomial minimality
-  characterizations (Prop 5.7's equivalent forms) — pin TO BE VERIFIED against the
-  extraction (do NOT cite a numbered clause until re-read; the LITUNIT discipline).
-  If no printed form matches, (s5) is proved directly from the development structure
-  (DEVID + slot bookkeeping at the state), the same shape as order 1 — expected
-  mechanical but MUST be written.
-* (s6) *(KPb).* R_{j+1}(Φ_{j+2}) ∼ ψ_{j+1}: read (s2)'s initial form through
-  (GR-B)(2′)/(3)'s operators. Input: (GR-B)(3) at the NEXT state or the direct
-  computation from (2′) — the unit picks whichever composes without consuming the
-  properness leg at a degree-increasing site (automatic there, TR-6).
-* (s7) *The family clause.* The per-level blocks assemble into OL-1's joint statement:
-  clause (b)'s "type over F_rep" is well-defined level-by-level exactly because the
-  induction is cumulative (P2-4's display); clause (c)'s V-recursion is (s2)'s weight
-  arithmetic. Output shape = OL-1 verbatim, so O-2a's Theorem 2 consumption fires
-  unchanged.
+  Φ_{i+1} at one w_{i+1}-weight; in(Φ_{i+1}) = hom^m(ψ) up to the anchor unit — the
+  (KPa) initial-form identity. Input for the development weights: DEVID at the PARENT
+  level (w_i with key Φ_i — GD23 §4, on file, consuming (V1)_i + (KPa)_{i−1}, both in
+  the induction state).
+* (s3) *Factor collection.* Every homogeneous δ in the localized gr(w_{i+1}) factors
+  as (invertible anchor monomial)·hom^m(c) with c(0) ≠ 0. Input: (GR-B-STR)(0′) +
+  Thm 4.2's rank-one statement (P_α/P_α⁺ = ϕ_r(α)Δ free of rank one) — the order-1
+  proof's "collect the least Φ̄₀-exponent" step, with (π̄, Φ̄₀)-monomials replaced by
+  the anchor system.
+* (s4) *Primeness.* ψ irreducible in K_i[z] ⟹ hom^m(ψ) prime in gr(w_{i+1}). TWO
+  displayed steps [REV 2, finding 14]: (s4a) *localization avoidance* — hom^m(ψ) is
+  divisible by NO inverted element beyond units: ψ(0) ≠ 0 and deg ψ ≥ 1 against the
+  anchor-monomial group (the KEY-g "Φ̄₀ ∤ ψ_hom, π̄-unit-free top term" argument
+  transported), so primeness in the localization pulls back along the domain
+  injection gr ↪ gr_loc; (s4b) the order-1 UFD argument verbatim in Δ-localized =
+  K_i[ȳ][anchors^{±1}]: suppose hom^m(ψ) = δδ′, collect anchors (s3), use injectivity
+  (s1) + irreducibility of ψ. This is (KPirr) at the state — the clause V26-1 taught
+  us is a genuinely additional input, so it gets its own section, not a remark.
+* (s5) *Degree block.* deg_x B < deg Φ_{i+1} ⟹ ψ̂_hom ∤ in(B) in gr(w_{i+1}). The
+  order-1 proof used the slot bound "top Φ₀-slot < eg". At the state the
+  corresponding step is the ȳ-degree comparison: **(OP-B1, the honest open point of
+  door 1)** deg_x B < deg Φ_{i+1} bounds the ȳ-degree of in(B) below e·g — the graded
+  shadow of MacLane's minimal-degree clause. Candidate printed supply: FGMN §5's
+  key-polynomial minimality characterizations (Prop 5.7's equivalent forms) — pin TO
+  BE VERIFIED against the extraction (do NOT cite a numbered clause until re-read;
+  the LITUNIT discipline). If no printed form matches, (s5) is proved directly from
+  the development structure (DEVID at the parent + slot bookkeeping), the same shape
+  as order 1 — expected mechanical but MUST be written.
+* (s6) *(KPb).* R_i(Φ_{i+1}) ∼ ψ_i: the DIRECT computation ONLY [REV 2, finding 2:
+  the rev-1 "(GR-B)(3) at the NEXT state" alternative is DELETED as circular —
+  (GR-B-KEY) sits downstream of (KP) in the §0 ladder]: read (s2)'s initial form
+  in(Φ_{i+1}) = (unit)·hom^m(ψ) through (GR-B-STR)(0″)/(2′)'s operators — the slot-κ
+  reads of hom^m(ψ) are ψ's coefficients by (s1)'s construction, so the operator
+  returns ψ up to the declared twist, exactly as (KPb) "is KEY-g's construction" at
+  order 1. Consumes (2′) at the key itself (an (R1)/(R2)-conforming element by (s2))
+  and NO properness (TR-6 untouched: properness enters only (GR-B-KEY)).
+* (s7) *The family clause.* The per-level blocks assemble into OL-1's joint
+  statement. [REV 2, finding 15 — expanded from the rev-1 one-liner:] B-M2's
+  statement, displayed: by strong induction on i, (a) monicity + deg Φ_{i+1} =
+  e_i g_i deg Φ_i are the lift CONSTRUCTION's top term (s2's bookkeeping: the κ = g
+  monomial is M_g·Φ_i^{e·g}-shaped with unit normalizer, lower κ strictly smaller
+  degree); (b) "Lift_i(c) is a Def-2.12 representative of its type" from
+  (KPb)+(KPirr) at (KP_i) through GMN Def 2.12's normalization (the ∼-insensitive
+  reading, TR-B3); (c) the value recursion V_{i+1} = e_i f_i(e_i V_i + h_i) is (s2)'s
+  weight arithmetic at the top monomial (γ̂_i = w_{i+1}(Φ_{i+1}) = e_i·g_i·γ_{i+1} in
+  GD23's constants; the K_i-degree f_i enters through deg ψ = g_i and the residue
+  tower Cor 4.9). Clause (b)'s "type over F_rep" is well-defined level-by-level
+  exactly because the induction is cumulative (P2-4's display). Output shape = OL-1
+  verbatim, so O-2a's Theorem 2 consumption fires unchanged.
 
 **2.3 Door 2 — literature retarget (backup + corroboration), faithfulness brief.**
 Candidate printed statement: **GMN Thm 2.11 + Def 2.12** (existence of a Def-2.12
@@ -312,35 +360,52 @@ This is O-1thr's (V1)/(V2) key-compliance block beyond its proved order-≤ 1 sl
 the block Lemma WGEO consumes at those sites (O-1thr rev 4 §2.5, the G2-repaired
 form: (V2a) restated as exactly (d1)+(d2) with the bridge sentence, (V2c) = (d3)).
 
-**4.2 The assembly theorem (KEY1-SITE) — no new mathematics beyond (a)+(b).**
+**4.2 The assembly theorem (KEY1-SITE) — no new VALUATION THEORY beyond (a)+(b);
+four genuine assembly obligations [REV 2 — findings 7/9: the rev-1 "no new
+mathematics" headline is RETRACTED and the missing run-data hypothesis added].**
 (d1)+(d2) at a site = member (b)'s (KPa)+(KPirr) at the site's creating read (KP-STEP's
 conclusion instantiated); (d3) = GD3-MIN at the site, whose route B is proved FROM
-(GR-B) at GD23 §7.3 (on file, general order). So:
+(GR-B) at GD23 §7.3 (on file, general order), APPLIED AT the site's f. So:
 
-    KEY1-SITE: (GR-B)_{i+1} + KP-STEP at the site  ⟹  (d1)–(d3) there.
+    KEY1-SITE: (GR-B-STR/KEY)_{i+1} + KP-STEP at the site's creating read
+      + the site's REALIZED-READ DATA on f   [the finding-7 hypothesis: f develops on
+        ν's side with the recorded anchored residual — O-1thr's (R1)/(R2) + REALIZED
+        vocabulary; corpus face: SideReads(iii)'s HasAnchorK tie + the node's hOrd]
+      ⟹  (d1)–(d3) at the site, with (d3)'s μ the site's RECORDED μ.
 
-The unit note `KEY1SITE_attempt.md` proves this as a two-page assembly with three
-displayed checks: (i) *coverage arithmetic* — sites keyed by READ ORDER; the proved
-slice is exactly order ≤ 1 (GD23 + O-1thr (V1)/(V2) there); the theorem covers the
-complement; NO key-degree/order identification is consumed anywhere (the VC8-1
-lesson, restated as a check the verifier must tick); (ii) *the e·g = 1 corner* —
-KP-STEP's proof pattern covers refinement reads (at order 1, KEY-g allows eg = 1:
-ψ = z − c, Φ₁ = Φ₀ + ĉπ^h; the marched analogue is Φ_{i+2} = Φ_{i+1} + ĉ·M₀), and the
-properness proviso enters ONLY (d3) via (GR-B)(4), consumed as the §3.3 [T] pin —
-displayed, one home; (iii) *the WGEO delivery shape* — the block is emitted in
-O-1thr rev 4's exact consumed form ((V2a): unit·ψ̂_hom + the degree block with the
-"deg B < eg ⟹ x̄-degree < eg" bridge sentence; (V2c): first-attainment ord tie), so
-WGEO and Theorems 1–3's all-site scope fire with NO restatement. Dependence display:
-(d) retires when (a) and (b) land and KEY1-SITE passes — it is the SITE-INSTANTIATION
-face of the group, priced separately by ROOT only because Step 6 consumes it in this
-shape.
+The unit note `KEY1SITE_attempt.md` proves this as an assembly with FOUR displayed
+obligations (each a real proposition, not formatting): (i) *coverage arithmetic* —
+sites keyed by READ ORDER; the proved slice is exactly order ≤ 1 (GD23 + O-1thr
+(V1)/(V2) there); the theorem covers the complement; NO key-degree/order
+identification is consumed anywhere (the VC8-1 lesson, restated as a check the
+verifier must tick); (ii) *the site-to-tower reading* — every realized machine site
+at read order ≥ 2 presents as a tower instance ((Φ_i, w_i, K_i) frame + read ν_i) in
+O-1thr's realized-state vocabulary: a THEOREM connecting machine sites to tower
+instances (O-1thr §1/§2.5's REALIZED definitions are the supply; the note WRITES the
+connection, never assumes it); (iii) *the e·g = 1 corner* — KP-STEP's proof pattern
+covers refinement reads (at order 1, KEY-g allows eg = 1: ψ = z − c, Φ₁ = Φ₀ + ĉπ^h;
+the marched analogue is Φ_{i+1} = Φ_i + ĉ·M₀), BUT the (s5) degree block at eg = 1 is
+exactly OP-B1's hardest corner (deg Φ_{i+1} = deg Φ_i) and the properness proviso
+enters (d3) via (GR-B-KEY)(4), consumed as the §3.3 [T] pin — both displayed, one
+home each; (iv) *the run-to-anchor identification* — (d3)'s RHS ord_ψ(R_i(f)) = μ is
+about the SITE's f and recorded μ: the note consumes the realized-read data
+hypothesis displayed above (math side: (R1)/(R2) + the anchored-march reading; Lean
+face: `HasAnchorK (ν.σ.R f) ν.a ν.Ranch` + `ν.hOrd`), supplied at wired sites by
+member (c)'s binding and at math sites by O-1thr's REALIZED definition. Also
+displayed: *the WGEO delivery shape* — the block is emitted in O-1thr rev 4's exact
+consumed form ((V2a): unit·ψ̂_hom + the degree block with the "deg B < eg ⟹
+x̄-degree < eg" bridge sentence; (V2c): first-attainment ord tie), so WGEO and
+Theorems 1–3's all-site scope fire with NO restatement. Dependence display: (d)
+retires when (a) and (b) land AND KEY1-SITE (with its four obligations) passes — it
+is the SITE-INSTANTIATION face of the group, priced separately by ROOT because Step 6
+consumes it in this shape.
 
-**4.3 What (d) adds beyond (a)+(b), exactly.** Two things only: the site
-quantification (every REALIZED site of Step 6's machine — a machine-side notion, so
-the note must consume O-1thr's realized-state vocabulary, not invent one) and the
-delivery-shape conformance (4.2(iii)). Both are assembly, not new mathematics — but
-both are exactly where VC7-1/VC8-1 found the consumed-without-a-home defects, so they
-are WRITTEN, not waved.
+**4.3 What (d) adds beyond (a)+(b), exactly [REV 2, finding 9].** The four §4.2
+obligations — coverage, site-to-tower reading, the eg = 1/OP-B1 corner, and the
+run-to-anchor identification — plus the delivery-shape conformance. These are
+assembly-LAYER propositions (no new valuation theory), but they are genuine
+mathematics: exactly where VC7-1/VC8-1 found the consumed-without-a-home defects, so
+they are WRITTEN and pass-gated, never waved.
 
 ---
 
@@ -378,21 +443,25 @@ structure KPBlock (σ' : Stage p F) (M : GenuineStageModel σ') where
   kpa_block : letI := M.Rg.ring; ∀ B : Polynomial ℤ_[p], B ≠ 0 →
     B.natDegree < σ'.Φ.natDegree → ¬ ψhom ∣ M.S.initialForm B
 
-/-- H1-U3 — (GR-B) clauses (3)+(4) keyed to the creating read ν (MovesC.Node: ν.σ the
-parent stage, ν.ψ the residual factor over ↥ν.σ.K) and the state model. `key_res` =
-(KPb)/clause (3) in the corpus's Laurent normalization (unit = C c · T^k); `faithful` =
-(d3)'s consumed face, GUARDED by the anchored-frame-residual tie (`HasAnchorK` at the
-per-f witness (a, Rf)) — the U31-adjudicated rendering of "f is read on ν's side";
-the TOTAL (Cor 5.15) form is the H1-U14 extension, gated by numerics N-1. -/
+/-- H1-U3 — (GR-B-KEY) clauses (3)+(4) keyed to the creating read ν (MovesC.Node: ν.σ
+the parent stage, ν.ψ the residual factor over ↥ν.σ.K) and the state model, WITH the
+ν↔σ' link laws as fields [REV 2, finding 8: the rev-1 row carried no compatibility
+between ν, σ', M, KB and asserted the ∀f (total Cor-5.15) law — over-quantified for a
+hypothesis row; the row now carries the LINK plus the RECORDED-SITE law only (what
+WGEO consumption needs, supplied by SideReads(iii)'s HasAnchorK witness + ν.hOrd);
+the TOTAL form is the SEPARATE gated extension H1-U14, never a row field]. -/
 structure GrBKeyLaws (ν : Node p F) (σ' : Stage p F) (M : GenuineStageModel σ')
     (KB : KPBlock σ' M) : Prop where
+  link_e : σ'.e = ν.e
+  link_h : σ'.h = ν.h
+  link_prev : σ'.wPrev = ν.σ.w
+  link_key : IsNodeLift ν σ'.Φ
   key_res : ∃ (c : (↥ν.σ.K)ˣ) (k : ℤ),
     ν.σ.R σ'.Φ = LaurentPolynomial.C (c : ↥ν.σ.K) * LaurentPolynomial.T k *
       Polynomial.toLaurent ν.ψ
-  faithful : letI := M.Rg.ring; ∀ (f : Polynomial ℤ_[p]) (a : ℤ) (Rf : Polynomial ↥ν.σ.K),
-    f ≠ 0 → HasAnchorK (ν.σ.R f) a Rf →
-    ∀ μf : ℕ, OrdPsiPoly ν.ψ Rf μf ↔
-      (KB.ψhom ^ μf ∣ M.S.initialForm f ∧ ¬ KB.ψhom ^ (μf + 1) ∣ M.S.initialForm f)
+  faithful_at : letI := M.Rg.ring; ∀ f : Polynomial ℤ_[p], f ≠ 0 →
+    HasAnchorK (ν.σ.R f) ν.a ν.Ranch →
+    (KB.ψhom ^ ν.μ ∣ M.S.initialForm f ∧ ¬ KB.ψhom ^ (ν.μ + 1) ∣ M.S.initialForm f)
 
 /-- H1-U4 — the (H1)(d) site block: what Step 6's Lean consumers fire per order-≥ 2
 site. Site-realization is the CONSUMER's predicate (Step-6 wiring supplies it);

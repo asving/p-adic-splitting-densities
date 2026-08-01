@@ -9,6 +9,15 @@ import LeanUrat.MovesT.Defs
 -- ^ pins the probe context for the BLOCKED(III-S2) record below:
 --   `MovesT.accE`/`MovesT.accF` resolve under this import, so the recorded
 --   type-mismatch errors are reproducible verbatim at this pin.
+import LeanUrat.Scaffold.DictIII.Hyps
+-- ^ III-S5c: supplies the landed III-H9 literature row `Lit3Hensel`
+--   (cycle-free: Hyps.lean does not import this file).
+import LeanUrat.Scaffold.DictIII.O2aOrder1
+-- ^ III-S7: supplies the III-A2 quarry (`lemmaR_theta_injective`) and the
+--   III-A3 terminal-blindness kit (`snocTerm`, `nuT1`, `A3Gate.H0`/`D0`/`R0`/
+--   `hc0`/`hwf0`, `consF_snocTerm_exists`, `ewf_snocTerm_congr`) consumed by
+--   the S7Gate countermodel at the end of this file (cycle-free:
+--   O2aOrder1.lean imports only Hyps + OM.ResidualPolynomial + Mathlib).
 
 /-!
 # Scaffold/DictIII/CU2t — the terminal seam (BP_III §1.9)
@@ -24,10 +33,22 @@ end of this file), and unit III-S6 PARTIAL (the `ThetaTauData` carrier landed
 verbatim modulo the keyword-escape note at its docstring; the `ThetaTau` def,
 its well-definedness, and `thetaTau_truncation` are BLOCKED downstream of
 III-S2 — record at the end of this file, with validated provability notes for
-the eventual re-land), and unit III-S5c PARTIAL (the τ-hen engine
+the eventual re-land), unit III-S5c PARTIAL (the τ-hen engine
 `cu2t_tauHen_lift` landed — `Lit3Hensel` with every binder instantiated at the
 corpus carrier, per the row's sketch; the verdict-shaped half is BLOCKED
-downstream of III-S2/III-S3 — record mid-file).
+downstream of III-S2/III-S3 — record mid-file), unit III-S4 (BLOCKED —
+FALSE AS DISPLAYED: the `cu2t_readForcing` conclusion constrains the laws-free
+data field `D.principalSides` at an index no hypothesis reaches; COMPILED
+countermodel in namespace `S4Refute` mid-file, record there), and unit
+III-S7 (BLOCKED — `ThetaTau` unlanded — AND FALSE AS DISPLAYED for EVERY
+cure of the accE/accF seam: the record forgets the terminal node's
+`ℓ`/`s`/`u`/`inc` fields, the compiled III-A3 terminal-blindness seam;
+COMPILED countermodel in namespace `S7Gate` at the end of this file,
+record there).  Also: unit
+III-S1c (`j0_le_one`, LANDED below under the FLAGGED reduction-map note) and
+unit III-S1b (BLOCKED — FALSE AS DISPLAYED even after the forced spelling
+adjustments: the discriminant hypothesis row is orientation-swapped; COMPILED
+countermodel `sq_not_dvd_reduction_display_false`, record after `DecHen`).
 
 Display adjustment (III-S1a; the same sanctioned convention as the
 Carriers.lean header): the §1.9 display writes the node lookup as
@@ -72,6 +93,97 @@ def DecHen (f : Polynomial ℤ_[p]) (H : EHist p F) : Prop :=
   H.nodes.length = 1 ∧
     (H.a0 = 1 ∨
       ∃ D : GMNData f (Theta H), D.rootOrder = 1)
+
+/- BLOCKED(III-S1b): `sq_not_dvd_reduction_of_disc_unit` (BP_III §1.9, display
+at blueprint lines 600–605; src CUC §9.2 (D3)) is NOT landed — statement
+changes are fenced.  Three stacked grounds, machine-checked at this pin
+(Lean 4.31, probed 2026-08-01; verbatim probe compiled and since deleted):
+
+(1) The verbatim display does not elaborate.  Exact errors:
+      error: overloaded, errors
+        Invalid field `discriminant`: The environment does not contain
+        `Polynomial.discriminant`, so it is not possible to project the field
+        `discriminant` from an expression f of type `Polynomial ℤ_[p]`
+        invalid {...} notation, expected type is not of the form (C ...)
+          Set ?m.8
+    (at `f.discriminant`; the pin's polynomial discriminant is
+    `Polynomial.discr`, RingTheory/Polynomial/Resultant/Basic.lean:930 — also
+    the standing corpus spelling: `OM/Discriminant.lean`,
+    `Scaffold/MeasureFloor/NsNull.lean`), and
+      error(lean.unknownIdentifier): Unknown constant `ZMod.intCastRingHom`
+    (at the conclusion's reduction map — exactly the header's III-S1c note;
+    the unique well-typed reading is `Polynomial.map PadicInt.toZMod f`, and
+    the `discriminant` → `discr` respelling would likewise want the header's
+    FLAGGED-for-ratification class, a constant substitution: `Polynomial.
+    discriminant` never existed in Mathlib, so this is not a removed-alias
+    respelling).
+
+(2) NOT curable by those adjustments — the load-bearing ground: the displayed
+    hypothesis row is ORIENTATION-SWAPPED, and the adjusted statement is
+    FALSE.  `Ideal.mem_span_singleton : x ∈ span {y} ↔ y ∣ x`, so the
+    display's `(p : ℤ_[p]) ∉ Ideal.span {f.discriminant}` reads
+    ¬(disc f ∣ p), i.e. v_p(disc f) ≥ 2 ∨ disc f = 0 — the OPPOSITE of the
+    intended "p does not divide the discriminant" (the §2 table row's words;
+    the name's `disc_unit`; CUC §9.2's "contradicting disc f ≠ 0"), which is
+    disc f ∉ Ideal.span {(p : ℤ_[p])}.  The refutation is compiled below
+    (`sq_not_dvd_reduction_display_false`): at p = 2, f = X² is monic with
+    `discr = 0`, so the displayed row holds (0 ∤ 2) while φ = X has
+    φ² ∣ f̄ — every hypothesis satisfied, conclusion false.
+
+(3) Dep note: III-S1a (`DecIrr`/`DecHen`, above) is landed, so the block is
+    NOT dependency-shaped — it is intrinsic to the display.
+
+Proposed repair for the architect ruling (NOT applied; statement fence):
+      hdisc : f.discr ∉ Ideal.span {(p : ℤ_[p])}
+with the conclusion map `PadicInt.toZMod` per the header note.  Provability
+note for the re-land: the corpus already holds the repaired unit's kernel —
+`discr_map_monic` (`OM/Discriminant.lean`: `(f.map φ).discr = φ f.discr` for
+monic `f`) turns the repaired premise into `(f̄).discr ≠ 0` over `ZMod p`
+(kernel of `PadicInt.toZMod` = `(p)` via `PadicInt.ker_toZMod`), and a square
+irreducible factor forces a repeated root killing `discr` — the (D3) argument
+verbatim.
+
+The blocked display, for the record (BP_III §1.9):
+
+  theorem sq_not_dvd_reduction_of_disc_unit
+      (f : Polynomial ℤ_[p]) (hf : f.Monic)
+      (hdisc : (p : ℤ_[p]) ∉ Ideal.span {f.discriminant})
+      (φ : Polynomial (ZMod p)) (hφ : Irreducible φ) :
+      ¬φ ^ 2 ∣ Polynomial.map (ZMod.intCastRingHom p) f
+
+Downstream: III-S1c (landed above) is UNAFFECTED — its `¬φ² ∣ f̄` premise is
+explicit (REV2 finding 16), so it does not consume this unit's statement; the
+supply seam moves to the eventual repaired S1b. -/
+
+section IIIS1bBlockRecord
+
+/-- BLOCKED(III-S1b) ground (2)'s machine check — NOT unit III-S1b (nothing is
+landed under the unit's name; this is the block record's compiled negation
+witness, in the corpus `U1_negWitness`/`retiredKeysExist_false` style).  The
+§1.9 display after the two forced spelling adjustments (`discr`,
+`PadicInt.toZMod`), specialized at `p = 2`, is refuted: witness `f = X²`
+(monic; `discr = 0`, so the displayed hypothesis row holds because `0 ∤ 2`)
+and `φ = X`. -/
+theorem sq_not_dvd_reduction_display_false :
+    ¬ (∀ f : Polynomial ℤ_[2], f.Monic →
+        ((2 : ℤ_[2]) ∉ Ideal.span {f.discr}) →
+        ∀ φ : Polynomial (ZMod 2), Irreducible φ →
+          ¬φ ^ 2 ∣ Polynomial.map PadicInt.toZMod f) := by
+  intro h
+  have hdisc0 : (Polynomial.X ^ 2 : Polynomial ℤ_[2]).discr = 0 := by
+    rw [Polynomial.discr_of_degree_eq_two (by simp)]
+    simp
+  have hnot : (2 : ℤ_[2]) ∉
+      Ideal.span {(Polynomial.X ^ 2 : Polynomial ℤ_[2]).discr} := by
+    rw [hdisc0]
+    intro hmem
+    rw [Ideal.mem_span_singleton, zero_dvd_iff] at hmem
+    exact (by norm_num : (2 : ℤ_[2]) ≠ 0) hmem
+  exact h (Polynomial.X ^ 2) (Polynomial.monic_X_pow 2) hnot Polynomial.X
+    Polynomial.irreducible_X
+    (by rw [Polynomial.map_pow, Polynomial.map_X])
+
+end IIIS1bBlockRecord
 
 /-- Unit III-S1c (BP_III §1.9, CUC §9.2): if `φ²` does not divide the mod-p
     reduction of `f`, then any `φ`-power dividing that reduction has exponent
@@ -266,6 +378,171 @@ the slope clause, (RC-verd) the verdict clause):
     EF = (terminalDatum f H).verdict
 -/
 
+/-! ## Unit III-S4 — `cu2t_readForcing`: BLOCKED — FALSE AS DISPLAYED
+(compiled countermodel below, namespace `S4Refute`)
+
+BLOCKED(III-S4): the §1.9 display (verbatim; deps III-S1, III-A6; src CUC
+§9.3 (i))
+
+  theorem cu2t_readForcing (f : Polynomial ℤ_[p]) (H : EHist p F)
+      (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D)
+      (hdec : DecIrr H ∨ DecHen f H)
+      (hcons : ConsF f H D R)
+      (hsq : ∀ φ : Polynomial (ZMod p), Irreducible φ →
+        ¬φ ^ 2 ∣ Polynomial.map (ZMod.intCastRingHom p) f) :
+      ∃! S, S ∈ D.principalSides H.nodes.length ∧ S.ℓ = 1
+
+is NOT landed — not even with a sorry: a sorried FALSE statement would arm
+its downstream consumers (III-S5b/S5c/S5d cite this unit).  Grounds,
+machine-checked at this pin (Lean 4.31, 2026-08-01; probe scratch since
+deleted):
+
+(1) SPELLING (shared with III-S1b/S1c — the header's III-S1c note): verbatim,
+    the `hsq` row fails with "Unknown constant `ZMod.intCastRingHom`"; under
+    the surviving renaming `Int.castRingHom (ZMod p)` it fails with
+    "Application type mismatch: The argument f has type Polynomial ℤ_[p] but
+    is expected to have type Polynomial ℤ".
+
+(2) FALSE under the sanctioned repair: with the header convention
+    `Polynomial.map PadicInt.toZMod f` in `hsq` the statement elaborates
+    CLEANLY (probed — no other row carries a defect), but its ∀-closure is
+    REFUTED by `S4Refute.cu2t_readForcing_false` below (Lean-core footprint;
+    any proof of the display would specialize to the closure at `p := 2`,
+    `F := ZMod 2 : Type 0`).  Root cause — the conclusion constrains data no
+    hypothesis reaches:
+    * `GMNData` (§1.2) is a laws-free data record, so `D.principalSides` is
+      an ARBITRARY function `ℕ → List SideDatum`;
+    * `ConsF` (§1.2) constrains `R.side i` only at indices
+      `i < H.continuingPart.nodes.length ≤ H.nodes.length` — never AT the
+      conclusion's index `H.nodes.length`;
+    * at `i = H.nodes.length` the request is off-range —
+      `requestedSlope (Theta H) i = none` (the slopes list has the continuing
+      part's length) — so `side_spec` forces `R.side i = none` there and
+      `side_unique` is vacuous (both its `HasRequestedSlope` rows are false);
+    * `hdec` and `hsq` do not mention `D.principalSides`.
+    The countermodel (decls below): `p = 2`, `F = ZMod 2`, `f = X` (reduction
+    `X` is squarefree, so `hsq` holds), `H0` = ONE terminal node
+    (`sel = none`) with `a₀ = 1` — `DecHen` holds via `a₀ = 1`, the
+    continuing part is EMPTY, so `ConsF` reduces to its root clause — `D0`
+    with `principalSides ≡ []` and `rootOrder = 1`, `R0` the constant-`none`
+    reader (all five reader rows hold).  Every hypothesis is satisfied; the
+    conclusion demands a member of `[]`.
+
+(3) The BRIEF's content is not false — the display dropped its semantic tie.
+    CUC §9.3 (i) states read forcing for the SEMANTIC polygon N⁻_{k′+1}(f)
+    obtained THROUGH ι ("GMN objects through ι: unconditional at k′ = 0,
+    given OL-1 at k′ ≥ 1"): "N_{k′+1}^−(f) has total horizontal length 1,
+    hence consists of EXACTLY ONE side".  The §1.9 rendering instead
+    quantifies over an arbitrary `GMNData` binder, severing the polygon data
+    from `f`.  Architect fix, either: (a) key the conclusion to the III-A6a
+    CONSTRUCTED data (`gmnDataOrder1`, O2aOrder1.lean) at k′ = 0, with the
+    k′ ≥ 1 case behind the OL-1 named row, per the brief's own bracket; or
+    (b) add a named semantic hypothesis row tying `D.principalSides
+    H.nodes.length` to the terminal-level polygon of `f` (the OL-1 shape).
+    Under either, the intended engine is on file: III-S1c `j0_le_one` (above)
+    + saturation give total length 1; note for the repair that uniqueness of
+    the ℓ = 1 side must then come from the POLYGON (total length 1), not from
+    `R.side_unique`, which needs `HasRequestedSlope` on both sides and is
+    vacuous at the terminal index (bullet 3 above).
+
+Deps at verdict time: III-S1a/S1c landed above (III-S1b unlanded); III-A6a/b/c
+landed (`O2aOrder1.lean`).  NEITHER cures (2): the refutation quantifies over
+the display's own binders, so no landing of other units can make the display
+provable.  Nothing was weakened; no display token was altered; the
+countermodel declarations below are this unit's sanctioned NEW declarations
+(refutation-witness exception, named: `S4Refute.nu0`, `S4Refute.H0`,
+`S4Refute.D0`, `S4Refute.R0`, `S4Refute.hdec0`, `S4Refute.hcons0`,
+`S4Refute.hsq0`, `S4Refute.cu2t_readForcing_false`). -/
+
+namespace S4Refute
+
+open Polynomial
+
+/-- III-S4 countermodel: the single TERMINAL node (`sel = none`; row T5),
+    all numeric fields minimal. -/
+def nu0 : ENodeData :=
+  { e := 1, h := 1, ℓ := 1, s := 0, u := 0, sel := none, inc := false
+    he := le_refl 1, hh := le_refl 1, hcop := by norm_num, hl := le_refl 1
+    hsel := by intro gμ hgμ; simp at hgμ }
+
+/-- III-S4 countermodel: a length-1 history whose single node is terminal,
+    over `F = ZMod 2`, with `a₀ = 1` (so `DecHen` holds outright). -/
+noncomputable def H0 : EHist 2 (ZMod 2) :=
+  { base := ⊤
+    psi0 := X - C 1
+    hpsi0 := ⟨monic_X_sub_C 1, irreducible_X_sub_C 1⟩
+    a0 := 1
+    ha0 := le_refl 1
+    nodes := [nu0]
+    fld := fun _ => ⊤
+    psihat := fun _ => X - C 1
+    hpsihat := fun _ => ⟨monic_X_sub_C 1, irreducible_X_sub_C 1, by
+      intro hXC
+      have h0 := congrArg (fun q => q.coeff 0) hXC
+      simp at h0⟩ }
+
+/-- III-S4 countermodel: laws-free semantic data with EMPTY principal-side
+    lists everywhere and `rootOrder = 1` — nothing in `GMNData` forbids it. -/
+noncomputable def D0 : GMNData (X : Polynomial ℤ_[2]) (Theta H0) :=
+  { principalSides := fun _ => []
+    residualOrder := fun _ => 0
+    residualDegree := fun _ => 0
+    rootOrder := 1 }
+
+/-- III-S4 countermodel: the constant-`none` reader — with empty side lists,
+    `side_spec` FORCES every lookup to `none`, and all five rows hold. -/
+noncomputable def R0 : GMNReader (X : Polynomial ℤ_[2]) (Theta H0) D0 :=
+  { side := fun _ => none
+    side_spec := by intro i S; simp [D0]
+    side_unique := by intro i S T hS _ _ _; simp [D0] at hS
+    resOrd := fun _ => 0
+    resOrd_spec := fun _ => rfl
+    rootOrd := 1
+    rootOrd_spec := rfl
+    resDeg_eq_sideDeg := by intro i S h; simp at h }
+
+/-- III-S4 countermodel, `hdec` row: `DecHen` via `H0.nodes.length = 1` and
+    `H0.a0 = 1`. -/
+theorem hdec0 : DecIrr H0 ∨ DecHen (X : Polynomial ℤ_[2]) H0 :=
+  Or.inr ⟨rfl, Or.inl rfl⟩
+
+/-- III-S4 countermodel, `hcons` row: the single node is terminal, so the
+    continuing part is EMPTY and `ConsF` reduces to `R0.rootOrd = H0.a0`. -/
+theorem hcons0 : ConsF (X : Polynomial ℤ_[2]) H0 D0 R0 := by
+  refine ⟨rfl, ?_⟩
+  intro i ν h
+  simp [EHist.continuingPart, H0, nu0] at h
+
+/-- III-S4 countermodel, `hsq` row (at the header's sanctioned
+    `PadicInt.toZMod` reading): the reduction of `X` is `X`, which is
+    separable, hence squarefree — no `φ²` divides it. -/
+theorem hsq0 : ∀ φ : Polynomial (ZMod 2), Irreducible φ →
+    ¬φ ^ 2 ∣ Polynomial.map (PadicInt.toZMod (p := 2)) (X : Polynomial ℤ_[2]) := by
+  intro φ hφ hdvd
+  rw [Polynomial.map_X] at hdvd
+  have hsf : Squarefree (X : Polynomial (ZMod 2)) :=
+    Polynomial.separable_X.squarefree
+  exact hφ.not_isUnit (hsf φ (by rwa [← sq]))
+
+/-- **THE III-S4 REFUTATION**: the ∀-closure of the §1.9 `cu2t_readForcing`
+    display — under the header's sanctioned `PadicInt.toZMod` rendering of
+    its `hsq` reduction map, the reading at which every row elaborates — is
+    FALSE.  Every hypothesis row holds at the countermodel while
+    `D0.principalSides` is empty at every index. -/
+theorem cu2t_readForcing_false :
+    ¬ (∀ (p : ℕ) [Fact p.Prime] (F : Type) [Field F] [Finite F]
+        (f : Polynomial ℤ_[p]) (H : EHist p F)
+        (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+        (DecIrr H ∨ DecHen f H) → ConsF f H D R →
+        (∀ φ : Polynomial (ZMod p), Irreducible φ →
+          ¬φ ^ 2 ∣ Polynomial.map PadicInt.toZMod f) →
+        ∃! S, S ∈ D.principalSides H.nodes.length ∧ S.ℓ = 1) := by
+  intro hthm
+  obtain ⟨S, ⟨hS, -⟩, -⟩ := hthm 2 (ZMod 2) X H0 D0 R0 hdec0 hcons0 hsq0
+  simp [D0] at hS
+
+end S4Refute
+
 /- BLOCKED(III-S5b): the τ-irr verdict from `GMNCor120_38` ("instantiate the
 displayed local literature row"; deps III-S4, III-H9, III-A7; src CUC §9.3
 (ii)) can NOT land — statement fence.  Machine-checked 2026-08-01 by a probe
@@ -304,6 +581,92 @@ Unblock path: architect ruling on the carrier seam → land III-H9's
 `GMNCor120_38` → land III-S2/III-S4 → transcribe the τ-irr branch here and
 prove by firing `GMNCor120_38.irrationalBranch`.  Nothing was weakened; no
 display token was altered. -/
+
+/-! ## Unit III-S5c — the τ-hen verdict engine (`Lit3Hensel` instantiated at
+the corpus carrier; src CUC §9.3 (ii))
+
+BP_III §2 row III-S5c: "τ-hen verdict from `Lit3Hensel` plus D3 — instantiate
+ring, ideal, polynomial, factorization and coprimality binders."  The row has
+no standalone §1.9 display; its verdict-shaped statement is the `DecHen`
+branch of `cu2t_verdict` (BLOCKED(III-S5d) record above).  LANDED here is
+exactly the row's sketch, and exactly what the III-S5a probe's negative
+finding prescribes (consume the NAMED literature row, not a Mathlib
+declaration): the III-H9 `Lit3Hensel.lift` (Hyps.lean) with EVERY binder
+instantiated at the corpus carrier —
+* ring `R := ℤ_[p]` (with its `CommRing`/`IsDomain` instances),
+* ideal `I := Ideal.span {(p : ℤ_[p])}`, its maximality binder discharged by
+  `span_p_isMaximal` below (`PadicInt.maximalIdeal_eq_span_p` + the
+  local-ring maximal ideal's maximality),
+* polynomial `f` with its monicity binder,
+* factorization `g₀ * h₀` (monic × monic) with the reduction-equality binder
+  mod `I`,
+* coprimality binder `IsCoprime g₀ h₀`,
+yielding the lifted monic factorization `f = g * h` — the τ-hen branch's
+factor supply for the III-S5d assembler.  D3's role (per the row's "plus
+D3"): the landed III-S1c `j0_le_one` (above) caps the reduction multiplicity
+of `φ` at 1, which is what makes the coprime pair `(g₀, h₀)` available in the
+DecHen branch; that supply leg travels through III-S4 (`cu2t_readForcing`,
+not yet in the corpus) and belongs to the S5d assembly, not to this engine.
+
+Universe note (probed 2026-08-01, this pin): `Lit3Hensel`'s field binds
+`∀ {R : Type*}`, which auto-bounds a STRUCTURE-level universe parameter, so
+the row is `Lit3Hensel.{u} p`; instantiating at `ℤ_[p] : Type 0` forces
+`u := 0`, and a universe-polymorphic `hhen` binder does NOT elaborate here —
+exact error at the final application:
+  Type mismatch ... has type Exists.{u_2 + 1} ... but is expected to have
+  type Exists.{1} ...
+Hence the binder below pins `hhen : Lit3Hensel.{0} p` (the display's
+`hhen : Lit3Hensel p` in `cu2t_verdict` elaborates at any universe; the S5d
+assembler will force `u := 0` at consumption — noted for its re-land). -/
+
+/-- The ideal binder's side condition at the corpus carrier: `(p)` is a
+    maximal ideal of ℤ_[p] (`PadicInt.maximalIdeal_eq_span_p` rewrites the
+    goal to the local-ring maximal ideal's maximality). -/
+theorem span_p_isMaximal : (Ideal.span {(p : ℤ_[p])}).IsMaximal := by
+  rw [← PadicInt.maximalIdeal_eq_span_p]
+  exact IsLocalRing.maximalIdeal.isMaximal ℤ_[p]
+
+/-- III-S5c (τ-hen verdict engine): the landed III-H9 row `Lit3Hensel.lift`
+    with every binder instantiated at the corpus carrier — ring `ℤ_[p]`,
+    ideal `(p)` (maximality: `span_p_isMaximal`), polynomial `f`,
+    factorization `g₀ * h₀` mod `(p)`, coprimality `IsCoprime g₀ h₀` —
+    supplying the τ-hen branch's lifted monic factorization `f = g * h` to
+    the III-S5d assembler. -/
+theorem cu2t_tauHen_lift (hhen : Lit3Hensel.{0} p)
+    (f g₀ h₀ : Polynomial ℤ_[p])
+    (hf : f.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
+    (hcop : IsCoprime g₀ h₀)
+    (hred : Polynomial.map (Ideal.Quotient.mk (Ideal.span {(p : ℤ_[p])})) f =
+      Polynomial.map (Ideal.Quotient.mk (Ideal.span {(p : ℤ_[p])})) (g₀ * h₀)) :
+    ∃ g h : Polynomial ℤ_[p], g.Monic ∧ h.Monic ∧ f = g * h :=
+  hhen.lift f g₀ h₀ (Ideal.span {(p : ℤ_[p])} : Ideal ℤ_[p]) hf hg₀ hh₀
+    span_p_isMaximal hcop hred
+
+/- BLOCKED(III-S5c, verdict-shaped half): the `DecHen`-branch specialization
+of the §1.9 `cu2t_verdict` display (`hdec : DecHen f H` in place of the
+disjunction, conclusion `EF = (terminalDatum f H).verdict`) canNOT be stated
+today — statements are fences, so it is NOT landed in any weakened form:
+
+(1) `terminalDatum` (III-S2) and `RCConsistent` (III-S3) are not in the
+    corpus ("Unknown identifier" at the conclusion and the `hrc` row), and
+    III-S2's own display is unlandable as written — accE/accF carrier seam +
+    `Decidable (DecIrr H)`; see the BLOCKED(III-S2) record above for the
+    exact probed error text and the pending III-H9 architect ruling.  NOTE
+    the asymmetry with III-S5b: the τ-hen verdict VALUE itself,
+    `(1, H.psi0.natDegree)`, is SEAM-FREE (probed: it elaborates at this
+    pin), so unlike the τ-irr branch this block is pure S2/S3 inheritance —
+    no independent obstruction in the hen branch's own value.
+
+(2) Dep III-S4 (`cu2t_readForcing`) is not landed either — and is now BLOCKED
+    as FALSE AS DISPLAYED (compiled countermodel in namespace `S4Refute`,
+    record mid-file; landed by the III-S4 prover after this unit's first
+    probe): the D3 supply leg through it awaits the S4 statement repair, a
+    separate architect item.
+
+Unblock path: architect ruling on the carrier seam → land III-S2/III-S3 (and
+the repaired III-S4 for the D3 supply leg) → the S5d assembler's hen branch
+closes by `hrc.2.2`, with `cu2t_tauHen_lift` above discharging the branch's
+literature obligation.  Nothing was weakened; no display token was altered. -/
 
 /-! ## Unit III-S6 — `ThetaTauData` (landed) + `ThetaTau`/well-definedness/
 `thetaTau_truncation` (BLOCKED downstream of III-S2; record below).
@@ -375,4 +738,272 @@ The blocked displays, for the record (BP_III §1.9):
 Downstream inheritor: III-S7 (`thetaTau_injective` binds `ThetaTau` in its
 `hEq` row at both displayed granularities). -/
 
+/- BLOCKED(III-S8): `engineTerminal_rc_of_seamHyps` (the (H6) consumption
+statement; src CUC §9.4/§9.5; deps III-S3, III-H5) can NOT land.  Statement
+changes are fenced; nothing is weakened; the unit is NOT landed.  Three
+grounds, machine-checked 2026-08-01 at this pin (scratch compile
+`ScratchS8.lean`, since deleted; probes quoted in full below):
+
+(1) The blueprint display is ELIDED: BP_III §1.9 (line 676) shows only
+      theorem engineTerminal_rc_of_seamHyps (hseam : TerminalSeamHyps p F) …
+    — there is NO verbatim statement to transcribe (the same finding class as
+    Window.lean's III-T11a/T11b records; REV2 left §1.9's consumption display
+    elided).  Unlike III-T11a, the blueprint does NOT pin the elided part to
+    named corpus theorems, so constructing the statement is fenced pending the
+    division lead's ratification.
+
+(2) NOT curable by dependency landing alone — the one DISPLAYED binder
+    consumes `TerminalSeamHyps p F` (unit III-H5, §1.3 display, absent from
+    the corpus), and that display cannot elaborate: row `tVERD`'s conclusion
+    `EF = terminalDatum f H` equates `EF : ℕ × ℕ` with a `TerminalDatum`.
+    Probe A re-elaborated the §1.3 display verbatim (primed names; III-S2/S3
+    supplied as a signature-faithful stub `terminalDatum'` + the verbatim
+    `RCConsistent'` body, exactly the BLOCKED(III-S3) validated transcription
+    above).  Rows `tDECdec`/`tDECcor`/`tREAD` are CLEAN against the landed
+    III-S1a + GMNReader corpus; the SOLE error:
+      error: Type mismatch
+        terminalDatum' f H
+      has type
+        TerminalDatum'
+      but is expected to have type
+        ℕ × ℕ
+    III-H5 additionally inherits III-S2's accE/accF carrier seam through
+    `terminalDatum` (see the BLOCKED(III-S2) record above — same pending
+    III-H9 architect ruling).
+
+(3) Probe B, for the eventual repair (NOT a licensed reading): with `tVERD`'s
+    conclusion respelled `EF = (terminalDatum' f H).verdict` — the unique
+    type-correct reading — the whole structure elaborates verbatim otherwise.
+    CAUTION for the architect: under that reading `tVERD` is literally the
+    third conjunct of `RCConsistent` (satisfied by `fun h => h.2.2`), i.e. a
+    consequence of RC rather than CUC §9.4's (T-VERD) SUPPLY row ("the
+    emitted verdict pair IS the record function of the emitted prefix") — the
+    repair likely wants the row re-keyed to the emitted record, not to RC.
+
+The blocked §1.3 dependency display, for the record (BP_III lines 272–287):
+
+  structure TerminalSeamHyps (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop where
+    tDECdec : ∀ {f : Polynomial ℤ_[p]} {H : EHist p F},
+      DecIrr H ∨ DecHen f H → H.nodes ≠ []
+    tDECcor : ∀ {f : Polynomial ℤ_[p]} {H : EHist p F},
+      DecHen f H → H.a0 = 1 ∨
+        ∃ D : GMNData f (Theta H), D.rootOrder = 1
+    tREAD : ∀ {f : Polynomial ℤ_[p]} {H : EHist p F}
+      {D : GMNData f (Theta H)} {R : GMNReader f (Theta H) D},
+      ConsF f H D R → ∀ i S, R.side i = some S →
+        S ∈ D.principalSides i
+    tVERD : ∀ {f : Polynomial ℤ_[p]} {H : EHist p F}
+      {ν : ENodeData} {EF : ℕ × ℕ},
+      RCConsistent f H ν EF → EF = terminalDatum f H
+
+Intended content pinned for the re-land (CUC §9.4's displayed tie, so the
+elided statement is not re-derived from scratch): at a decided site
+(`hdec : DecIrr H ∨ DecHen f H`) whose prefix is Cons_f, the ENGINE's emitted
+terminal record — the last node `ν` (`H.nodes.getLast? = some ν`, nonempty
+via row (T-DEC-dec)), `ν.sel = none`, with the emitted verdict pair `EF` —
+satisfies `RCConsistent f H ν EF`: (RC-read) supplied by (T-READ), (RC-verd)
+by (T-VERD); corner bookings are fenced OUT by (T-DEC-cor) (CU-2t-deep's
+territory, not this tie).  Unblock path: III-H9-seam architect ruling →
+III-S2/III-S3 land → III-H5 lands with the `tVERD` repair → division lead
+supplies the full III-S8 statement → transcribe and route each row. -/
+
+/-! ## Unit III-S7 — `thetaTau_injective`: BLOCKED as displayed, and (the
+gate verdict) FALSE AS DISPLAYED for EVERY cure of the accE/accF seam —
+compiled countermodel in namespace `S7Gate` below.
+
+Charge (BP_III §2 row 830): "`thetaTau_injective` (both displayed
+granularities) | Lemma R on prefixes + verdict-pair record function | deps
+III-S6, III-A2 | MED | CUC §9.3 (iii)".  Charge reading, for the auditor:
+§1.9 displays ONE `thetaTau_injective` (BP_III line 662); "both displayed
+granularities" = the two hypothesis granularities REV2 finding 20 put into
+that single display — the fixed-`f` DEC evidence (`h₁`/`h₂ : DecIrr ∨
+DecHen`) AND the reader/data dependence (`D₁ D₂ R₁ R₂` + `hc₁ hc₂ : ConsF`).
+There is no second displayed statement to transcribe.  Probed 2026-08-01
+(BP_III.md at HEAD; Lean 4.31, this pin; verbatim transcription into this
+namespace, scratch compile since deleted).
+
+* -- BLOCKED(III-S7), ground 1 (dependency): the statement binds
+  `ThetaTau f Hᵢ hᵢ` in its `hEq` row, and `ThetaTau` is NOT in the corpus —
+  unit III-S6's remaining halves are BLOCKED downstream of III-S2's
+  accE/accF carrier seam (records directly above; same pending III-H9
+  architect ruling).  Exact error at the verbatim statement, at both `hEq`
+  occurrences:
+    Function expected at
+      ThetaTau
+    but this term has type
+      ?m.1
+    ... The identifier `ThetaTau` is unknown ...
+  Every OTHER token of the display elaborates against the landed corpus
+  (`DecIrr`/`DecHen` above; `GMNData`/`GMNReader`/`ConsF`/`Theta` via the
+  imports); the III-A2 proof quarry (`lemmaR_theta_injective`,
+  O2aOrder1.lean) is landed and green.
+
+* -- THE GATE VERDICT (independent of ground 1, and the reason the unit must
+  NOT be landed even after the seam ruling): the displayed theorem is FALSE,
+  and not merely at one seam cure — `S7Gate.s7Stmt_false` below refutes the
+  displayed statement with the verdict-pair supply `acc` UNIVERSALLY
+  QUANTIFIED, i.e. for EVERY function the architect could rule
+  `(MovesT.accE H.nodes, MovesT.accF H.nodes)` to mean (the DecIrr branch of
+  the countermodel's record is never taken, so no property of `acc` is
+  consumed).  The mechanism is EXACTLY the compiled III-A3 terminal-blindness
+  seam (O2aOrder1.lean): `ThetaTau` records the terminal node only through
+  its slope pair `(e, h)` and the verdict pair, so the terminal fields
+  `ℓ`/`s`/`u`/`inc` are invisible — two DEC-decided, `ConsF`-certified
+  histories differing ONLY in the terminal node's `s` field (`nuT1` vs
+  `S7Gate.nuS2`) share every `ThetaTau` component while being distinct.
+  The display lacks the 𝔈°-style restriction that makes III-A2 true (there:
+  ALL nodes continuing, so no terminal fields exist to forget; here: DEC
+  forces a terminal read the record does not carry).  NOTE for the re-land:
+  the collision even lies inside the well-formed class
+  (`S7Gate.collision_inside_ewf` packages `EWF` for BOTH witnesses), so
+  adding `EWF`/`SameRead` hypothesis rows canNOT cure the row — the repair
+  must either extend the record function (carry the full terminal node, per
+  the forced-terminal-datum reading of CUC §9.2's T(f, 𝐇°)) or weaken the
+  conclusion to prefix-plus-record equality.  Statement changes are fenced:
+  adjudication is the architect's, not this unit's.
+
+The blocked display, for the record (BP_III §1.9):
+
+  theorem thetaTau_injective (f : Polynomial ℤ_[p])
+      {H₁ H₂ : EHist p F}
+      {h₁ : DecIrr H₁ ∨ DecHen f H₁}
+      {h₂ : DecIrr H₂ ∨ DecHen f H₂}
+      (D₁ : GMNData f (Theta H₁)) (D₂ : GMNData f (Theta H₂))
+      (R₁ : GMNReader f (Theta H₁) D₁)
+      (R₂ : GMNReader f (Theta H₂) D₂)
+      (hc₁ : ConsF f H₁ D₁ R₁) (hc₂ : ConsF f H₂ D₂ R₂)
+      (hEq : ThetaTau f H₁ h₁ = ThetaTau f H₂ h₂) :
+      H₁ = H₂
+-/
+
+namespace S7Gate
+
+/-- Third terminal witness (extending the III-A3 pair): ν″ =
+    (e,h,ℓ,s,u,sel,inc) = (1,1,1,1,0,⊥,0) — differs from `nuT1` ONLY in the
+    field `s`, which `ThetaTau` does not record (unlike `nuT2`'s `h`, which
+    the `terminalSlope` component would separate). -/
+def nuS2 : ENodeData :=
+  { e := 1, h := 1, ℓ := 1, s := 1, u := 0, sel := none, inc := false
+    he := by decide
+    hh := by decide
+    hcop := by decide
+    hl := by decide
+    hsel := by simp }
+
+/-- The witnesses are DISTINCT (they differ in the `s` field: 0 ≠ 1). -/
+theorem nuT1_ne_nuS2 : nuT1 ≠ nuS2 := by
+  intro h
+  exact absurd (congrArg ENodeData.s h) (by decide)
+
+/-- The two extended histories are DISTINCT (the appended nodes differ). -/
+theorem snocTerm_s_pair_ne (H : EHist p F) :
+    snocTerm H nuT1 ≠ snocTerm H nuS2 := by
+  intro h
+  have hn : H.nodes ++ [nuT1] = H.nodes ++ [nuS2] := congrArg EHist.nodes h
+  have h1 : ([nuT1] : List ENodeData) = [nuS2] := List.append_cancel_left hn
+  injection h1 with h2 _
+  exact nuT1_ne_nuS2 h2
+
+open Classical in
+/-- III-S2 stub, faithful to the display up to the OPAQUE verdict-pair supply
+    `acc` (the display's `(MovesT.accE H.nodes, MovesT.accF H.nodes)`, a
+    function of `H`, pending the III-H9 seam ruling); the `slope` field and
+    the `else` branch are the display's tokens.  The classical `if` is
+    elaboration ambience (see the BLOCKED(III-S2) record above). -/
+noncomputable def terminalDatumStub (acc : EHist p F → ℕ × ℕ)
+    (H : EHist p F) : TerminalDatum :=
+  { slope := H.nodes.getLast?.bind fun ν => some (ν.e, ν.h)
+    verdict := if DecIrr H then acc H else (1, H.psi0.natDegree) }
+
+/-- III-S6 stub over the LANDED `ThetaTauData` carrier: the display's body
+    verbatim, with `terminalDatumStub acc` for the unlandable `terminalDatum`
+    (the `f` binder of the display's `terminalDatum` is otherwise unused). -/
+noncomputable def thetaTauStub (acc : EHist p F → ℕ × ℕ)
+    (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (_hdec : DecIrr H ∨ DecHen f H) : ThetaTauData p F :=
+  { «prefix» := Theta H.continuingPart
+    terminalSlope := (terminalDatumStub acc H).slope
+    verdict := (terminalDatumStub acc H).verdict }
+
+/-- The displayed III-S7 statement over the stubs, at one (q, K), keyed by an
+    ARBITRARY verdict-pair supply (implicit display binders made ∀ — the same
+    Prop). -/
+def S7Stmt (q : ℕ) [Fact q.Prime] (K : Type*) [Field K] [Finite K]
+    (acc : EHist q K → ℕ × ℕ) : Prop :=
+  ∀ (f : Polynomial ℤ_[q]) (H₁ H₂ : EHist q K)
+    (h₁ : DecIrr H₁ ∨ DecHen f H₁) (h₂ : DecIrr H₂ ∨ DecHen f H₂)
+    (D₁ : GMNData f (Theta H₁)) (D₂ : GMNData f (Theta H₂))
+    (R₁ : GMNReader f (Theta H₁) D₁) (R₂ : GMNReader f (Theta H₂) D₂),
+    ConsF f H₁ D₁ R₁ → ConsF f H₂ D₂ R₂ →
+    thetaTauStub acc f H₁ h₁ = thetaTauStub acc f H₂ h₂ →
+    H₁ = H₂
+
+/-- A one-node history never satisfies `DecIrr` (its ∃-index starts at 1). -/
+theorem not_decIrr_snoc0 (ν : ENodeData) :
+    ¬ DecIrr (snocTerm A3Gate.H0 ν) := by
+  rintro ⟨k, μ, g, hk, hget, -⟩
+  have hlen : (snocTerm A3Gate.H0 ν).nodes.length = 1 := rfl
+  rw [List.getElem?_eq_none (le_of_eq_of_le hlen hk)] at hget
+  exact Option.some_ne_none μ hget.symm
+
+/-- Both extensions are DEC-decided: length 1, and `DecHen`'s root-order
+    disjunct is witnessed by a fresh (laws-free) datum with `rootOrder = 1`. -/
+theorem decHen_snoc0 (ν : ENodeData) :
+    DecHen A3Gate.f0 (snocTerm A3Gate.H0 ν) :=
+  ⟨rfl, Or.inr ⟨{ principalSides := fun _ => []
+                  residualOrder := fun _ => 0
+                  residualDegree := fun _ => 0
+                  rootOrder := 1 }, rfl⟩⟩
+
+/-- THE Θ_τ-COLLISION: all three record components agree at the witness pair —
+    the prefix by terminal-append invariance, the slope because `nuT1`/`nuS2`
+    share `(e, h) = (1, 1)`, the verdict because neither history is `DecIrr`
+    (so BOTH take the `else` branch: no `acc` property consumed). -/
+theorem thetaTauStub_pair_eq (acc : EHist 2 (ZMod 2) → ℕ × ℕ)
+    (h₁ : DecIrr (snocTerm A3Gate.H0 nuT1) ∨
+      DecHen A3Gate.f0 (snocTerm A3Gate.H0 nuT1))
+    (h₂ : DecIrr (snocTerm A3Gate.H0 nuS2) ∨
+      DecHen A3Gate.f0 (snocTerm A3Gate.H0 nuS2)) :
+    thetaTauStub acc A3Gate.f0 (snocTerm A3Gate.H0 nuT1) h₁
+      = thetaTauStub acc A3Gate.f0 (snocTerm A3Gate.H0 nuS2) h₂ := by
+  simp only [thetaTauStub, terminalDatumStub]
+  rw [continuingPart_snocTerm A3Gate.H0 (rfl : nuT1.sel = none),
+    continuingPart_snocTerm A3Gate.H0 (rfl : nuS2.sel = none),
+    snocTerm_getLast, snocTerm_getLast,
+    if_neg (not_decIrr_snoc0 nuT1), if_neg (not_decIrr_snoc0 nuS2)]
+  rfl
+
+/-- **THE GATE VERDICT (unit III-S7)**: the displayed `thetaTau_injective` is
+    FALSE at p = 2, F = ZMod 2, for EVERY verdict-pair supply `acc` — i.e.
+    under EVERY possible architect cure of the accE/accF carrier seam. -/
+theorem s7Stmt_false (acc : EHist 2 (ZMod 2) → ℕ × ℕ) :
+    ¬ S7Stmt 2 (ZMod 2) acc := by
+  intro hS7
+  obtain ⟨D₂, R₂, hc₂⟩ :=
+    consF_snocTerm_exists A3Gate.f0 A3Gate.H0
+      (rfl : nuT1.sel = none) (rfl : nuS2.sel = none) A3Gate.hc0
+  exact snocTerm_s_pair_ne A3Gate.H0
+    (hS7 A3Gate.f0 (snocTerm A3Gate.H0 nuT1) (snocTerm A3Gate.H0 nuS2)
+      (Or.inr (decHen_snoc0 nuT1)) (Or.inr (decHen_snoc0 nuS2))
+      A3Gate.D0 D₂ A3Gate.R0 R₂ A3Gate.hc0 hc₂
+      (thetaTauStub_pair_eq acc _ _))
+
+/-- The collision lives INSIDE the well-formed class: both witnesses are
+    `EWF` (so adding `EWF`/`SameRead` hypothesis rows cannot cure the row —
+    the record function itself must change). -/
+theorem collision_inside_ewf :
+    EWF (snocTerm A3Gate.H0 nuT1) ∧ EWF (snocTerm A3Gate.H0 nuS2) :=
+  ⟨A3Gate.hwf0, ewf_snocTerm_congr A3Gate.H0 rfl rfl A3Gate.hwf0⟩
+
+end S7Gate
+
 end LeanUrat.Scaffold.DictIII
+
+-- Footprint audit (unit III-S4 refutation gate): expect Lean core only.
+#print axioms LeanUrat.Scaffold.DictIII.S4Refute.cu2t_readForcing_false
+
+-- Footprint audit (unit III-S7 refutation gate): expect Lean core only
+-- (Classical.choice enters through the stub's classical `if` + the
+-- noncomputable A3Gate carriers; no `sorryAx`, no declared axioms).
+#print axioms LeanUrat.Scaffold.DictIII.S7Gate.s7Stmt_false
+#print axioms LeanUrat.Scaffold.DictIII.S7Gate.collision_inside_ewf

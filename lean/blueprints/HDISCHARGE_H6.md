@@ -285,3 +285,339 @@ runs, not Lean-computable at HEAD). The escalation fence is displayed in the
 docstring verbatim. Consumption keying: Step 18's K3-a — the row rides into
 `RootRows.FenceVII n` (unit D3) and `RootHyps.h6_vii`'s intended instantiation
 (unit D4).
+
+---
+
+## §4 LEAN UNIT SPECS (all statements probe-verified 2026-08-05; see header)
+
+**Target directory:** `lean/LeanUrat/Scaffold/HDischarge/H6/` — new modules in
+`namespace LeanUrat.Scaffold.HDischarge.H6`, imports by module as probed:
+`Mathlib`, `LeanUrat.Scaffold.DictIII.{CU2t, Hyps, CU1}`, `LeanUrat.MovesU.DefsLedger`,
+`LeanUrat.MovesT.V9_irrSat`, `LeanUrat.Scaffold.ValueSide.Hyps`, `LeanUrat.HC2.Defs`.
+File plan: `Emission.lean` (A1–A7), `EngineConform.lean` (B0–B3), `TerminalRead.lean`
+(C0–C2), `RowsK4.lean` (D1), `Fence.lean` (D2), `RowStatements.lean` (D3–D4),
+`Reconcile.lean` (R1). Standing variable block per file:
+`variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]` +
+`open LeanUrat.Scaffold.DictIII` + `open LeanUrat.MovesU`.
+
+### Wave A — carriers + the repaired rows (statement-only; no proofs beyond MECH)
+
+**A1 (MECH).** E-side accumulators (cures defect D-6; the architect-ruling
+proposal the III-H9 BLOCKED block requested):
+```lean
+def eAccE (H : EHist p F) : ℕ := (H.nodes.map fun ν => ν.e).prod
+
+def eAccF (H : EHist p F) : ℕ :=
+  H.psi0.natDegree * (H.nodes.map fun ν => (ν.sel.elim 1 Prod.fst)).prod
+```
+Deps: —. Gate: at `H.nodes = []` both reduce to `(1, f₀)` by `simp` (the CUC
+§9.2 k′ = 0 boundary (accE₀, accF₀) = (1, f₀) — an `example` lands with the unit).
+
+**A2 (EASY).** Seam decidedness, repaired (cures D-7/D-8 alongside the landed
+predicates — NEW names, fenced pair untouched):
+```lean
+def DecIrrSeam (H : EHist p F) : Prop :=
+  H.nodes ≠ [] ∧
+    (H.nodes.getLast?.elim False fun ν => ∃ g, ν.sel = some (g, 1))
+
+def DecHenSeam (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) : Prop :=
+  H.nodes = [] ∧
+    (H.a0 = 1 ∨ ∃ S ∈ D.principalSides 0, S.isNegInfty = true)
+
+def DecSeam (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) : Prop :=
+  DecIrrSeam H ∨ DecHenSeam f H D
+```
+Reading: H is 𝐇° (the seam continuing part; all nodes selection-carrying —
+enforced at consumption via `TerminalEmission.reaches_continuing`, A6). Deps: —.
+
+**A3 (EASY).** The deep exact-key corner (CUC §9.4 (T-DEC-cor) shape):
+```lean
+def DeepCorner (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) : Prop :=
+  H.nodes ≠ [] ∧
+    (H.nodes.getLast?.elim False fun ν => ∃ g μ, ν.sel = some (g, μ) ∧ 2 ≤ μ) ∧
+    ∃ S ∈ D.principalSides H.nodes.length, S.isNegInfty = true
+```
+Deps: —. (Level convention, displayed: `D.principalSides i` at 0-indexed i =
+the paper's level-(i+1) read; `H.nodes.length = k′` ⇒ index k′ = level k′+1 —
+the same convention as BP_III §1.9's `cu2t_readForcing`.)
+
+**A4 (EASY).** The forced terminal datum, repaired (cures D-5/D-6):
+```lean
+structure TerminalDatumD where
+  slope : Option (ℕ × ℕ)
+  verdict : ℕ × ℕ
+
+open scoped Classical in
+noncomputable def terminalDatumD (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) : TerminalDatumD :=
+  { slope := (D.principalSides H.nodes.length).head?.bind fun S =>
+      if S.isNegInfty then none else some (S.e, S.h)
+    verdict := if DecIrrSeam H then (eAccE H, eAccF H) else (1, H.psi0.natDegree) }
+```
+Deps: A1, A2. (`head?` is junk-tolerant; on DEC seams the side is forced unique —
+the wave-5 forcing lemma III-S4 remains BP_III's unit and is NOT re-owned here.)
+
+**A5 (EASY).** Definition RC, repaired (cures D-5's downstream; CUC §9.2a at
+the corrected keying):
+```lean
+def RCConsistentD (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) (ν : ENodeData) (EF : ℕ × ℕ) : Prop :=
+  ν.sel = none ∧
+  (∃ S ∈ D.principalSides H.nodes.length,
+    (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)) ∧
+  EF = (terminalDatumD f H D).verdict
+```
+Deps: A4. Non-circularity displayed in the docstring (D is polygon data of f
+over Θ(𝐇°); no clause mentions the true factor — CUC §9.2a's display
+transcribed). The §9.2a datum-granularity caveat rides the docstring (field
+inventory closure is GD-4-owner territory, consumed by nothing here).
+
+**A6 (EASY).** The terminal-emission interface (the quantifier domain the CUC
+§9.4 rows need and the BP_III display lacked — the root cause of D-1..D-4):
+```lean
+structure TerminalEmission (p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] where
+  reaches : Polynomial ℤ_[p] → EHist p F → Prop
+  emits : Polynomial ℤ_[p] → EHist p F → ENodeData → (ℕ × ℕ) → Prop
+  emits_terminal : ∀ f H ν EF, emits f H ν EF → ν.sel = none
+  emits_reaches : ∀ f H ν EF, emits f H ν EF → reaches f H
+  reaches_continuing : ∀ f H, reaches f H → ∀ ν ∈ H.nodes, ν.sel ≠ none
+```
+Deps: —.
+
+**A7 (EASY, statement-only).** THE REPAIRED (H6) TRIO (supersedes III-H5's
+display; cures D-1..D-4):
+```lean
+structure TerminalSeamHypsE (p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] (E : TerminalEmission p F) : Prop where
+  tDECdec : ∀ f H (D : GMNData f (Theta H)),
+    E.reaches f H → (DecIrrSeam H ∨ (DecHenSeam f H D ∧ 2 ≤ H.a0)) →
+    ∃ ν EF, E.emits f H ν EF
+  tDECcor : ∀ f H ν EF (D : GMNData f (Theta H)),
+    E.emits f H ν EF → DecSeam f H D ∨ DeepCorner f H D
+  tREAD : ∀ f H ν EF (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+    E.emits f H ν EF → DecSeam f H D → ConsF f H D R →
+    ∃ S ∈ D.principalSides H.nodes.length,
+      (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)
+  tVERD : ∀ f H ν EF (D : GMNData f (Theta H)),
+    E.emits f H ν EF → DecSeam f H D →
+    EF = (terminalDatumD f H D).verdict
+```
+Deps: A2, A3, A4, A6. Field ↔ CUC row map in the docstring (tDECdec = emission
+discipline with the a₀ ≥ 2 hen guard per R4 M-γ, §3.1; tDECcor = the corner
+fence/exhaustiveness; tREAD = (RC-read) supply; tVERD = (RC-verd) supply; the RC
+tie: emits + DecSeam + tREAD + tVERD ⇒ `RCConsistentD` — unit D1's lemma). These
+rows are [M]: statement-only here; discharge = waves B/C at the canonical engine
++ the ROOT-level adjudication.
+
+### Wave B — construction-conformance at the as-built engine
+
+**B0 (EASY, statement-only).** Engine-tie canonicity (what "the engine's
+emission" means; deliberately does NOT tie shape fields — (T-READ)'s machine
+home is owed, §3.3(a)):
+```lean
+structure EngineTied (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] (E : TerminalEmission p F) : Prop where
+  reaches_engine : ∀ f H, E.reaches f H →
+    ∃ M : MovesC.History p F, MovesC.HistoryCoherent M ∧
+      LeanUrat.MovesJ.ReadsOf p F n f M ∧
+      (machineEHist M).continuingPart = H
+  emits_irr_verdict : ∀ f H ν EF, E.emits f H ν EF → DecIrrSeam H →
+    ∃ M : MovesC.History p F, MovesC.HistoryCoherent M ∧
+      LeanUrat.MovesJ.ReadsOf p F n f M ∧
+      (machineEHist M).continuingPart = H ∧
+      MovesT.IrrHalts M ∧
+      EF = (MovesT.accE M, MovesT.accF M)
+```
+Deps: A2, A6; corpus `machineEHist` (CU1, landed; used INSTEAD of `machineProj`
+— FOOTPRINT RULE: `machineProj` bundles the `EWF` certificate whose W3 row is
+CU1's one recorded honest sorry, so any statement binding it inherits `sorryAx`;
+`machineEHist` is the certificate-free value (`machineProj_val`), keeping every
+H6 row Lean-core-eligible; coherence rides as an explicit conjunct),
+`MovesJ.ReadsOf` (HC2/Defs), `MovesT.IrrHalts/accE/accF`.
+
+**B1 (MED).** The canonical site/verdict emission `engineEmissionSV n p F :
+TerminalEmission p F`: `reaches` := B0's `reaches_engine` right-hand side;
+`emits` := B0's `emits_irr_verdict` right-hand side on the irr leg + the hen
+booking on the base leg, ν existentially free in shape fields AT HEAD
+(docstring: the shape supply is unit C0's TRM; until C0 lands, `tREAD` at this
+emission is intentionally NOT provable — the honest state). Prove the three
+interface laws + `EngineTied n p F (engineEmissionSV n p F)`. Deps: B0.
+
+**B2 (MED).** (T-VERD) dress commutation at the engine:
+`eAccE (machineProj M hM).val.continuingPart = MovesT.accE M` (resp. eAccF/accF
+with the f₀ root-datum split — §3.4's flagged reconciliation; statement finalized
+against `machineEHist`'s fieldwise lemmas at E-phase). If the as-built nodeToE
+refutes the f₀ factorization, report the compiled obstruction verbatim — do NOT
+adjust `eAccF` silently. Then `tVERD` for `engineEmissionSV` on the irr leg.
+Deps: A1, B1; quarry `machineEHist` fieldwise lemmas (CU1), T-V8 `acc_pos`.
+
+**B3a (MED).** (T-DEC-dec) at the engine: via `MovesT.irr_iff_mu_one` (PROVED) +
+the nodeToE sel-transport — a lawful coherent M IrrHalts iff its dressed
+continuing part is `DecIrrSeam`; conclude `tDECdec`'s irr leg for
+`engineEmissionSV`. Hen leg (a₀ ≥ 2 booking from the root-datum split) may split
+off as B3a′. Deps: B1; quarry `irr_iff_mu_one`, `HistLawful`.
+
+**B3b (HARD).** (T-DEC-cor) at the engine: the leaf catalogue (leaf ⇒ IrrHalts ∨
+hen-booked ∨ ns-booked) + `NsFree` fencing (Unit C's landed `bridgeTree`
+conjunct) ⇒ `tDECcor` for `engineEmissionSV` with `DeepCorner` never reached.
+Honest sorry permitted at the catalogue lemma if absent from the corpus (§3.2
+open point (a)); the sorry's row routes to the GD-4 owner brief. Deps: B1, B3a;
+quarry `E9_fiberDisjoint`, `IrrHaltsAsChild`, `MovesT.NsFree`, `bridgeTree`.
+
+### Wave C — the (T-READ) mathematics
+
+**C0 (HARD, design-first).** TRM — the terminal-read materialization: a NEW def
+at the machine leaf producing the level-(k′+1) read record (the machine-side
+home CUC §9.4 says is "purely owed"). Design constraints: (i) extends the
+`ReadsOf` per-read clause pattern (`IsDevelopment` + `SideReads` at index
+`H.nodes.length`, no successor key demanded); (ii) touches NO fenced
+MovesC/MovesT statement — a NEW `terminalReadRecord` def + its `SideReads`-style
+spec; (iii) its E-side dress fills `engineEmissionSV`'s ν slot (upgrading B1's
+existential freedom to the definite emission `engineEmission`; `EngineTied`
+re-proof rides along). Deliverables: def + spec + upgraded emission. The final
+signature is the unit prover's E-phase probe duty (this blueprint fixes design
+constraints, not the signature — flagged, not fenced).
+
+**C1 (HARD).** (T-READ) k′ = 0 conformance at order ≤ 1 (§3.3(a), the PROVE
+door): `tREAD` for `engineEmission` restricted to `DecHenSeam` seams, against
+the order-≤ 1 `GMNData` constructor. Both branches (a₀ = 1 unique finite side;
+j₀ = 1 slope-−∞ side). Deps: C0; quarry `DictIII/O2aOrder1.lean`
+(`laws_pin_fields`, `ol6Gate`), `OM/` polygon modules (`rg "NP|polygon"
+LeanUrat/OM` before E-phase), `DictIII/GDOrder1.lean`.
+
+**C2 (MED).** (T-READ) k′ ≥ 1: the terminal-binding clause at the engine
+(definitional once C0 lands — §3.3(b)) + the OL-2-min instance routing (§3.3(c)):
+`tREAD`'s k′ ≥ 1 face proved from `OL2min` at the requested level AS A NAMED
+HYPOTHESIS + the binding; order ≤ 1 instance discharged from GDOrder1, order ≥ 2
+displayed as the (H1) consumption (NO proof attempted — one displayed router
+lemma). Deps: C0; `DictIII/Hyps.OL2min`.
+
+### Wave D — packaging: the K4 row, the fence device, RootRows
+
+**D1 (EASY).** THE K4-FACING ROW + the RC tie lemma (unblocks BP_IV S5b/D4).
+**Form-fixing self-catch (pre-Codex, recorded as defect D-9 against this
+blueprint's own first draft):** the ∀-form `∀ E, EngineTied → TerminalSeamHypsE`
+is REFUTABLE — `EngineTied` deliberately leaves emitted SHAPE fields untied
+(§3.3(a): the machine home is owed), so an adversarial engine-tied emission
+pairing a genuinely machine-realized decided seam (non-vacuity anchor: U31
+`gate_readsOf_inert2` supplies realized `ReadsOf` histories) with junk-shape ν
+violates tREAD while satisfying every `EngineTied` field. The faithful closed
+form is EXISTENTIAL-WITH-COVERING — "a conformant emission presentation of the
+engine exists, covering every machine-realized seam":
+```lean
+def EngineCovers (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] (E : TerminalEmission p F) : Prop :=
+  ∀ (f : Polynomial ℤ_[p]) (H : EHist p F),
+    (∃ M : MovesC.History p F, MovesC.HistoryCoherent M ∧
+      LeanUrat.MovesJ.ReadsOf p F n f M ∧
+      (machineEHist M).continuingPart = H) →
+    E.reaches f H
+
+structure TerminalSeamRows (n p : ℕ) [Fact p.Prime] (X : ClassifierSpec n p)
+    (FF : FiberSeries n p X) : Prop where
+  seam : ∀ (F' : Type) [Field F'] [Finite F'],
+    ∃ E : TerminalEmission p F',
+      EngineTied n p F' E ∧ EngineCovers n p F' E ∧ TerminalSeamHypsE p F' E
+```
+(EngineCovers signature to be probed by the unit prover at E-phase — it reuses
+B0's `reaches_engine` right-hand side verbatim, so no new elaboration risk; the
+∃/covering combination excludes both failure modes: the all-False emission fails
+covering wherever a realized seam exists, and adversarial junk emissions are not
+demanded to conform — only the WITNESS is.) Discharge shape: C0's TRM +
+waves B/C construct the witness. Plus
+`rc_of_rows : TerminalSeamHypsE … → E.emits f H ν EF → DecSeam f H D →
+ConsF f H D R → RCConsistentD f H D ν EF` (the §9.4 tie — the repaired III-S8).
+Probed: the S5b-shaped binder context `(seam : TreeSeam n p X FF)
+(K4 : TerminalSeamRows n p X FF)` elaborates GREEN (structure shape unchanged
+by the field's internal form). Keying honesty (docstring, verbatim): the (X, FF)
+keys are the CONSUMPTION-SITE keys; `ClassifierSpec` is abstract (no run
+structure), so the label tie "X's leaf labels are the engine's announced
+verdicts" is the BP_VI spine's instantiation seam, NOT statable here — the keys
+are phantom at HEAD. **DESIGN QUESTION (displayed for the Codex pass + the
+orchestrator):** phantom keys vs. a label-tie field once Movement I exposes the
+classifier's run structure; adding a field later is a consumer-visible change —
+flag at the BP_IV seam before landing it. Deps: A7, B0.
+
+**D2 (MECH).** Item (vii)'s typing device (§3.5; the RootHyps precedent):
+```lean
+structure FenceVII (n : ℕ) (P : LeanUrat.Scaffold.ValueSide.AssembledPack n) where
+  xhdDEx : Prop
+  m4bTAud : Prop
+  urCount : Prop
+  xhdUX : Prop
+  hListGen : Prop
+  ePos : Prop
+  inFence : xhdDEx ∧ m4bTAud ∧ urCount ∧ xhdUX ∧ hListGen ∧ ePos
+```
+Docstring carries VERBATIM: the six-fence roster with H.x pointers ((1)
+XHD-d-EX(∂) H.2.3 · (2) M4b-T-AUD H.5.1 · (3) U-R-COUNT H.4.2/H.5.3 · (4)
+XHD-u-X H.4.3 · (5) H-LIST-GEN beyond (TRI) · (6) E-POS ⟨w_E, v⟩ ≥ 1); the
+sealed-flag note (V-n3 178/178, H-n3 151/151, off-census q = 16/25 — evidence,
+not proofs); the escalation fence; the typed-upgrade path (re-type each slot at
+the H-LIST carrier when D-11/BP_IV lands it); the RootHyps-header honesty note
+(True-instantiable device — consumed fields are UNPINNED named assumptions until
+typed). Deps: — (parallel with wave A).
+
+**D3 (EASY).** RootRows H6 bodies (BP_V §5.4 coordination — delivered as
+`HDischarge.H6.RowStatements` content for BP_V's `Scaffold/RowStatements.lean`
+to re-export when it lands; NO local alias of any BP_V name): `TDecRow n` :=
+A7's tDECdec + tDECcor faces ∀-quantified over (p, F′, engine-tied E); `TReadRow
+n` := the tREAD face; `TVerdRow n` := the tVERD face; `FenceVIIRow n` := the D2
+device's conformance face ∀-quantified over packs. E-phase probes each body
+before landing. Deps: A7, B0, D2.
+
+**D4 (MECH).** `RootHyps` intended-instantiation display: a doc block +
+`example` showing `h6_tdec := TDecRow n` (etc.) — the typed carriers the
+Hypotheses.lean header demands, displayed; NO edit to `Hypotheses.lean` (its
+owner is the spine lead). Deps: D3.
+
+**R1 (EASY).** Reconciliation record: `DecIrrSeam`/`DecHenSeam` vs the landed
+`DecIrr`/`DecHen` — one lemma per direction where provable, one compiled
+divergence witness per failure (D-7's trivial `GMNData` witness as an `example`;
+D-8's position drift). Routed to the BP_III owner for the eventual
+single-predicate adjudication. Deps: A2.
+
+### Gates (falsifiers/numerics)
+
+* **G1 (non-vacuity, MECH-MED, lands with A7):** a compiled countermodel
+  emission `E_junk` with `¬ TerminalSeamHypsE p F E_junk` (junk shape fields at
+  a decided seam violate tREAD/tVERD) — the repaired rows are NOT tautologies
+  (the exact failure mode of the superseded III-H5 display, D-1..D-4).
+* **G2 (positive gate, MED, lands with B1):** a toy seam + emission satisfying
+  the trio WITH a witnessed reach and a witnessed emission
+  (HK23_twoNodeGatePos style) — the rows are satisfiable NON-VACUOUSLY. The
+  all-False emission satisfies `TerminalSeamHypsE` trivially (every field
+  vacuous), so a gate without a positive reach/emit witness certifies nothing;
+  this gate must exhibit both.
+* **G3 (item (vii) flags, lands with D2):** docstring cross-reference to the
+  sealed V-n3/H-n3 artifacts (no Lean gate feasible — §3.5).
+* **Footprint:** per-file `lake env lean` during waves +
+  `lake build LeanUrat.AxChk_baseline` at division checkpoints; footprint
+  regression = stop-the-line (repo standing rule).
+
+### Wave shape (dependencies; minimal, parallelizable)
+
+```
+A1 ∥ A2 ∥ A3 ∥ A6 ∥ D2          (5-way parallel start)
+A4 (A1,A2) → A5 (A4)
+A7 (A2,A3,A4,A6) [+G1] ; R1 (A2)
+B0 (A2,A6) → B1 (B0) [+G2] → B2 (A1,B1) ∥ B3a (B1) → B3b (B1,B3a)
+C0 (B1) → C1 (C0) ∥ C2 (C0)
+D1 (A7,B0) → BP_IV S5b/D4 UNBLOCK NOTICE to the value-side owner
+D3 (A7,B0,D2) → D4 (D3)
+```
+Critical path to unblocking BP_IV: A-wave → A7 → D1 (all EASY — one prover-day).
+The open-mathematics core: C0 → C1 (HARD; (T-READ)'s k′ = 0 leg). Item (vii)'s
+general-n content acquires NO proof unit here (correct: it is [M]; §3.5).
+
+**Unit count: 18** (A1–A7, B0/B1/B2/B3a/B3b, C0–C2, D1–D4, R1) **+ 3 gates.**
+
+---
+
+## §5 CODEX ADVERSARIAL REVIEW (directive requirement)
+
+Disposition table appended below after the review runs.
