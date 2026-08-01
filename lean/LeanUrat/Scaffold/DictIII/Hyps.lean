@@ -46,20 +46,55 @@ structure GRB (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop w
     {D : GMNData f c} (i : ℕ), 2 ≤ i →
       D.principalSides i ≠ []
 
+/-- Interior scoping: all nodes continuing, non-complete (μ_i ≥ 2), a₀ ≥ 2.
+    (Unit III-U2 def half; signature VERBATIM BP_III §1.8.  MOVED here from
+    `DictIII/CU1.lean` at H2-U10b, 2026-08-01 — the restated (H2) row below
+    consumes it as its guard; the fieldwise-access lemmas stay in CU1.lean.) -/
+def InteriorChain {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+    (H : EHist p F) : Prop :=
+  2 ≤ H.a0 ∧
+    ∀ (i : ℕ) ν, H.nodes[i]? = some ν →
+      ν.sel ≠ none ∧ ∀ gμ ∈ ν.sel, 2 ≤ gμ.2
+
 /-- (H2) = (FRESH), with every object locally quantified.
 
-Unit III-H2, transcribed VERBATIM from BP_III §1.3 (sources: ROOT §3.1 (H2);
+Unit III-H2, transcribed from BP_III §1.3 (sources: ROOT §3.1 (H2);
 CU1 §5 — the O-9/CU-1 vertex-law clause + clause (c)).  Display adjustment
 (same sanctioned convention as the Carriers.lean header note): the §1.3 display
 writes node lookups `H.nodes.get? i`, but `List.get?` was REMOVED from the
 pinned Lean-4.31/Mathlib environment — the surviving spelling of the SAME
-function is `H.nodes[i]?` (`getElem?`); the propositions are unchanged and no
-other token differs from the display.  HYPOTHESIS row, not axiom. -/
+function is `H.nodes[i]?` (`getElem?`).  HYPOTHESIS row, not axiom.
+
+**`childDetermined` RESTATED at H2-U10b (2026-08-01; Asvin's standing
+statement-change authority).**  The §1.3 verbatim form (`ConsF →
+H.nodes[i]? = some ν → ∃! S, R.side i = some S`) is REFUTED at terminal
+indices: over an all-terminal history `Theta H` has no slopes, `side_spec`
+forces `side ≡ none` while `ConsF` holds vacuously — compiled as PROBE F-4,
+`probe_restated_childDetermined_refuted` (HDischarge/H2/DictIIIProbes.lean).
+The landed consumption (`cu1_stepPair_ge2`, CU1.lean — the ONLY firing site)
+is interior-only, so the honest scope is the guard `InteriorChain H`: every
+node continuing, so a slope EXISTS at every recorded index and the clause
+asserts the unique-side law NON-VACUOUSLY — THE read at each level is THE
+unique principal side carrying the requested slope.  Compiled non-vacuity
+witness: `interior_childDetermined_gate` (DictIIIProbes.lean), a one-node
+interior chain with an actual slope realizing the ∃! at an actual side.
+HONEST PRICING (the ledger dichotomy, on record): under the guard the clause
+is derivable from `ConsF` + the reader laws (`side_spec` existence + `Option`
+injectivity), so this row prices CITATION STRUCTURE, not content — the
+genuine (FRESH) freshness content is priced at (TRANS-DEEP)/(VTX-DEEP),
+gated H2-U9 (HDISCHARGE_H2.md §5).  TERMINAL-index reads are NOT this row's
+content: they are terminal-seam material, routed to (T-READ)/(H6) — see
+`TerminalSeamHyps` (BP_III §1.3) and the H6 discharge group.
+`parentSeparated` stands as transcribed and remains REFUTED at duplicate
+histories (PROBE F-2 / `U8.fresh_uninhabited`, CU1.lean): the whole-row
+inhabitation is the §1.3 scope repair, still open — NOT executed here. -/
 structure FRESH (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop where
   childDetermined : ∀ {f : Polynomial ℤ_[p]} {H : EHist p F}
     {D : GMNData f (Theta H)} {R : GMNReader f (Theta H) D}
-    {i : ℕ} {ν : ENodeData}, ConsF f H D R →
-      H.nodes[i]? = some ν → ∃! S, R.side i = some S
+    {i : ℕ} {ν : ENodeData}, InteriorChain H → ConsF f H D R →
+      H.nodes[i]? = some ν →
+      ∃! S, R.side i = some S ∧ S ∈ D.principalSides i ∧
+        HasRequestedSlope (Theta H) i S
   parentSeparated : ∀ {H : EHist p F} {i j : ℕ},
     i < H.nodes.length → j < H.nodes.length → i ≠ j →
     H.nodes[i]? ≠ H.nodes[j]?

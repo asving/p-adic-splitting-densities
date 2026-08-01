@@ -769,13 +769,12 @@ theorem machineProj_nodes_length (M : MovesC.History p F)
 
 end UnitIIIU1
 
-/-! ## Unit III-U2, def half — the interior scoping (BP_III §1.8, signature verbatim) -/
+/-! ## Unit III-U2, def half — the interior scoping (BP_III §1.8, signature verbatim)
 
-/-- Interior scoping: all nodes continuing, non-complete (μ_i ≥ 2), a₀ ≥ 2. -/
-def InteriorChain (H : EHist p F) : Prop :=
-  2 ≤ H.a0 ∧
-    ∀ (i : ℕ) ν, H.nodes[i]? = some ν →
-      ν.sel ≠ none ∧ ∀ gμ ∈ ν.sel, 2 ≤ gμ.2
+H2-U10b (2026-08-01): `def InteriorChain` MOVED VERBATIM to `DictIII/Hyps.lean`
+(imported above) — the restated (H2) row `FRESH.childDetermined` now consumes
+it as its guard, and Hyps.lean is upstream of this file.  The fieldwise-access
+lemmas below stay here; nothing else about the unit changed. -/
 
 /-- Fieldwise access, a₀-clause: an interior chain has a₀ ≥ 2 (CU1 rev-5 §2's
     standing hypothesis; at nonempty chains this is also W3's second leg). -/
@@ -982,8 +981,9 @@ realizes — flagged, not fenced.  Design notes:
 * **The ≥ 2 leg genuinely FIRES the named rows** where the brief's step
   cites them: `hFRESH.childDetermined` supplies THE-ness of the read (the
   uniqueness leg routes through the (H2) row's ∃!, keyed to `H.nodes` by the
-  interior scoping's continuing clause — `InteriorChain`, unit III-U2
-  above), and `hGRB.residualNormalForm` supplies the GD-3 residual-degree
+  interior scoping's continuing clause — `InteriorChain`, unit III-U2; since
+  H2-U10b the def lives in Hyps.lean as the row's OWN guard), and
+  `hGRB.residualNormalForm` supplies the GD-3 residual-degree
   law (its granted reader tied to `R` by the III-A6b reader-uniqueness
   lemma `GMNReader.laws_pin_fields`, O2aOrder1.lean).  The rows stay NAMED
   [M]-hypotheses — consumed as arguments, never discharged.  HONESTY (the
@@ -1088,8 +1088,9 @@ theorem cu1_stepPair_ge2 {f : Polynomial ℤ_[p]} {H : EHist p F}
   obtain ⟨hmem, hslope⟩ := (R.side_spec i S).mp hS
   -- Interior scoping: the continuing part is all of H.
   rw [hint.continuingPart_nodes] at hν
-  -- (H2) FIRES: THE read at the child level (FRESH.childDetermined).
-  have hex : ∃! T, R.side i = some T := hFRESH.childDetermined hcons hν
+  -- (H2) FIRES: THE read at the child level (FRESH.childDetermined,
+  -- H2-U10b guarded form — the interior scoping is the row's own guard).
+  have hex := hFRESH.childDetermined hint hcons hν
   -- (H1) FIRES: the GD-3 residual-degree law at orders ≥ 2
   -- (GRB.residualNormalForm's granted reader, tied to R by laws_pin_fields).
   obtain ⟨R', hR'⟩ :=
@@ -1100,7 +1101,8 @@ theorem cu1_stepPair_ge2 {f : Polynomial ℤ_[p]} {H : EHist p F}
     ⟨hmem, hslope, hfields, hresdeg,
      fun g μ hgμ => (R.resOrd_spec i).symm.trans (hsel g μ hgμ)⟩
   refine ⟨S, hS, hpair, fun T hT => ?_⟩
-  exact hex.unique ((R.side_spec i T).mpr ⟨hT.1, hT.2.1⟩) hS
+  exact hex.unique ⟨(R.side_spec i T).mpr ⟨hT.1, hT.2.1⟩, hT.1, hT.2.1⟩
+    ⟨hS, hmem, hslope⟩
 
 /-- **Unit III-U3b, assembled step identification** (the shape III-U3c's
     harvest and III-U5's `List.rec` consume): at EVERY read level of an
