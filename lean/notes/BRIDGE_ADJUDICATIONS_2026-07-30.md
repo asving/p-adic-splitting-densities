@@ -2131,3 +2131,12 @@ kcut_k1_form_of_massFactor) gate green sorry-free, Lean-core axioms; K-CUT re-pa
 C1 TR-1 rescale corrected: lambda^GMN = -h_i/e_i = -E_i*lambda_r^FGMN (rev 0 claimed ratio 1; new gate G3 20k green, rev-0 reading refuted 6784/17801 at E_i>1).
 C2 OP-A2 re-scoped: D-clause proved iff E_i = 1 — order 2 NOT closed (e_0>1 open; D-ITER fires at E_i>1, FROM order 2). C3 "ord-consumers served" STRUCK -> new open lemma TR-3-ORD-X (project-facing ord bridge, <= TR-3'-GEN).
 (H1)(a) residue GREW: TR-3'-GEN + TR-3-ORD-X + D-ITER(order >= 2) + N-1 + 2-clean bar (0 earned) — supersedes the 2026-08-05 GRB entry's residue line. Leaf rev 2 appended in place.
+
+## GRB LEAF REV 2 (393a455) + K-CUT RE-PASS RUNNING (2026-08-05)
+GRB: TR-1 CORRECTED (lambda^GMN = -E_i·lambda^FGMN; new preregistered
+gate G3: corrected dictionary 0/20000, rev-0 reading refuted 6784/17801
+at E_i>1); D-REAL re-scoped (D-clause proved iff E_i=1; D-ITER fires
+from order 2); TR-3 leakage closed via the weaker TR-3-ORD-X lemma;
+residue GROWN honestly (TR-3'-GEN + TR-3-ORD-X + D-ITER + N-1 + bar).
+GRB pass 2 launched. K-CUT re-pass: the manager exited early; job
+running detached (KCUT_pass2.jsonl); orchestrator watcher set.
