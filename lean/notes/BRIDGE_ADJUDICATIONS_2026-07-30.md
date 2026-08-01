@@ -2122,3 +2122,7 @@ KCutReduce docstrings downgraded, blueprint corrected + S8 record); wave-7 units
 H8-C2 (K-CUT-m-factor) / H8-C3 (K-CUT-K1-tie) specced, statements compile-probed
 green (proofs NOT attempted). Status: faithful at declaration level; discharge
 awaits C2+C3+clean re-pass. Owed ROOT sync = SPEC only (r-workflow owns ROOT).
+
+## K-CUT WAVE 7 LANDED: C2/C3 CONTENT UNITS PROVED (2026-08-01)
+H8-C2 KCutMassFactor (massFactor_mass_eq) + H8-C3 KCutK1Tie (kcut_k1_form +
+kcut_k1_form_of_massFactor) gate green sorry-free, Lean-core axioms; K-CUT re-pass next.
