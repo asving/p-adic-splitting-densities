@@ -2,7 +2,26 @@
 BP_IV §1.4 — Step 17, the D-11 M1 unconditional layer + M3 glue (`MassId.lean`).
 Units landed in this file so far: M0a (`BlockStrata` carrier), M0b
 (`BlockCountLaws` named row), M1a (`kernel_O1_mass`, conditional on the M0b
-row), M3' (`perVisit_margin` + `perBlock_exit`), M1c (`kernel_O3_resummed`).
+row), M1b (`kernel_O2_mass`, conditional on the M0b row), M3'
+(`perVisit_margin` + `perBlock_exit`), M1c (`kernel_O3_resummed`), M2
+(`RowPartition` named row + `row_sum_one`), M5 (`PattStrata` carrier +
+`PattCountLaws` named row + `divisorPattern_mass`, conditional on M0b + the
+F(ii) row), M8 (`alpha2` datum + `alpha2StrataMass` + `alpha2Row_gate`, the
+M1′ gate object — OPTIONAL unit, unconditional value-level arithmetic), M6a
+(`PolyCellStrata` carrier + `PolyCellCountLaws` named row +
+`polygonCell_mass`, conditional on M0b + the L6a row; the affine-cone
+geometric sum is unit M6b, serial after this one).
+
+BLOCKED(M7): `trueType_const_on_cylinder` (§1.4 M3 glue) does NOT land here yet.
+Its verbatim statement binds `ThmERow`/`D15Row` (owner BP_III, §5 seam — "BP_IV
+defines no aliases") and `CylEvent`/`IsContinuationEvent` (no owner module and
+no displayed spec anywhere in the corpus or blueprints; checked 2026-08-01).
+None of the four exists, so the statement cannot elaborate: each fails with
+`error: Function expected at ThmERow|D15Row|CylEvent|IsContinuationEvent, but
+this term has type ?m.N ... The identifier ... is unknown`.  This matches the
+unit-H4 ledger (`ValueSide/Hyps.lean`: "D-15 / O5triple Thm E rows — row
+structures not landed.  Consumer blocked: M7").  Per the §4 failure protocol the
+obstruction escalates to the blueprint owner; no prover-side restatement.
 -/
 import Mathlib
 
@@ -80,6 +99,37 @@ theorem kernel_O1_mass {E e q₀ : ℕ} (B : BlockStrata E e q₀)
   ring
 
 /-!
+# (O2)/(O2′) kernel value at c = 0 [BP_IV division, unit M1b]
+
+**PROVENANCE (unit M1b; BP_IV §1.4 + §2 M-table).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §1.4 gives M1b as its docstring comment
+  only (transcribed VERBATIM below); the M-table row fixes the content —
+  statement "(O2) value q₀^{−E}", proof "same, c = 0", deps M0. The signature
+  therefore follows unit M1a's displayed pattern with the c = 0 count: the
+  (O2)/(O2′) loop-0 event ratio is `descentCount / cellCount`, whose value
+  q₀^{−E} is exactly the `descent_law` field (D11 rev3 §2 (a) (O2):
+  K_e(q₀) = q₀^{−E} = κ₀ = P(loop-0 | C_e), same cites as (O1), c = 0).
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2 (a) (O2).
+* CONDITIONAL on the named `BlockCountLaws` row (unit M0b), bound as
+  `(hB : BlockCountLaws B)` — never call this unconditional until O-12-derived
+  constructors for that row have landed. Field algebra from the row only.
+-/
+
+/-- M1b ((O2)/(O2′), c = 0): K_e(q₀) = q₀^{−E}.  MECH from the same laws. -/
+theorem kernel_O2_mass {E e q₀ : ℕ} (B : BlockStrata E e q₀)
+    (hB : BlockCountLaws B) :
+    (B.descentCount : ℚ) / B.cellCount = (q₀ : ℚ) ^ (-(E : ℤ)) := by
+  have hq2 : 2 ≤ q₀ := B.hq
+  have hq0 : (q₀ : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
+  have hcell : (B.cellCount : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hB.cell_pos.ne'
+  have hqE : ((q₀ : ℚ) ^ E) ≠ 0 := pow_ne_zero _ hq0
+  have hlaw : (B.descentCount : ℚ) * (q₀ : ℚ) ^ E = (B.cellCount : ℚ) := by
+    exact_mod_cast hB.descent_law
+  rw [zpow_neg, zpow_natCast, inv_eq_one_div, div_eq_div_iff hcell hqE, hlaw,
+    one_mul]
+
+/-!
 # The per-visit termination margin [BP_IV division, unit M3']
 
 **PROVENANCE (unit M3'; BP_IV §1.4).**
@@ -153,5 +203,305 @@ theorem kernel_O3_resummed {E q₀ : ℕ} (hq : 2 ≤ q₀) (hE : 1 ≤ E) :
     mul_comm ((q₀ : ℝ≥0) - 1) (((q₀ : ℝ≥0) ^ E)⁻¹),
     mul_mul_mul_comm, mul_inv_cancel₀ hq0, one_mul,
     mul_comm (((q₀ : ℝ≥0) ^ E - 1))⁻¹ ((q₀ : ℝ≥0) - 1)]
+
+/-!
+# Row-sum-one over the M1(b) partition row [BP_IV division, unit M2]
+
+**PROVENANCE (unit M2; BP_IV §1.4).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §1.4 (`row_sum_one` statement transcribed
+  VERBATIM). The blueprint does NOT display `RowPartition` itself — it specifies
+  it as "a hypothesis structure whose fields are M1(b)'s disjointness/exhaustion
+  clauses (the D-11 (b) content)"; the structure below is this unit's
+  transcription of that spec and is FLAGGED FOR REVIEW as a new definition.
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2 (b) (strata
+  pairwise disjoint, exhausting C_e up to the displayed null set Z_e) and (d)
+  (Σ = 1 from (b)'s partition + Z_e null).
+* Layer convention: counting only, per the file header — the cell space of the
+  one-step read of C_e is `Fin B.cellCount`, strata are their cell sets, and
+  mass is count/cellCount (the corpus `TreeSeam.count_tie` convention). "Null at
+  the read level" = the padding set contributes zero cells.
+* [M]-hypothesis discipline: `RowPartition` is a NAMED row bound as
+  `(P : RowPartition B)` — no axiom, no claim that any concrete pack's rows form
+  such a partition (that is D-11's clause-4/data-pass content, OPEN; scope
+  sentence of D-11 §2 (b), pass-2 P6).
+-/
+
+/-- M2's hypothesis row: a displayed one-step strata family for the block read,
+    carrying M1(b)'s disjointness/exhaustion clauses (D-11 §2 (b)) at the
+    counting layer. `strata` are the strata's cell sets in the level-read cell
+    space `Fin B.cellCount`; `padding` is the displayed null/padding set (D-11's
+    Z_e at the read level); the clauses say the strata are pairwise disjoint and
+    exhaust the cell space up to `padding`, which is null (zero cells) at this
+    layer; `cell_pos` is the nondegeneracy of the read (M0b's `cell_pos`,
+    carried on the row so that the mass convention divides by a nonzero count). -/
+structure RowPartition {E e q₀ : ℕ} (B : BlockStrata E e q₀) where
+  /-- the displayed one-step strata, as their cell sets in the level-read cell
+      space of C_e. -/
+  strata : Finset (Finset (Fin B.cellCount))
+  /-- the displayed null/padding set (D-11's Z_e read at this level). -/
+  padding : Finset (Fin B.cellCount)
+  /-- M1(b), disjointness clause: the displayed strata are pairwise disjoint. -/
+  strata_disjoint : ∀ s ∈ strata, ∀ t ∈ strata, s ≠ t → Disjoint s t
+  /-- M1(b), exhaustion clause: the strata exhaust C_e up to the padding set. -/
+  strata_exhaust : strata.biUnion id ∪ padding = Finset.univ
+  /-- the padding set is null at the read level (zero cells). -/
+  padding_null : padding.card = 0
+  /-- nondegeneracy of the read: the block cell count is positive. -/
+  cell_pos : 0 < B.cellCount
+
+/-- The row's mass column at the counting layer: count/cellCount (the corpus
+    `TreeSeam.count_tie` convention — no measure theory at this layer). -/
+def RowPartition.mass {E e q₀ : ℕ} {B : BlockStrata E e q₀}
+    (_P : RowPartition B) (s : Finset (Fin B.cellCount)) : ℚ :=
+  (s.card : ℚ) / B.cellCount
+
+/-- M2 (row-sum-one — "Σ = 1 across each row now a THEOREM"): the one-step strata
+    partition C_e up to the displayed null/padding set, so the row's mass column
+    sums to 1.  Stated over a `RowPartition` hypothesis structure whose fields
+    are M1(b)'s disjointness/exhaustion clauses (the D-11 (b) content). -/
+theorem row_sum_one {E e q₀ : ℕ} {B : BlockStrata E e q₀} (P : RowPartition B) :
+    ∑ s ∈ P.strata, P.mass s = 1 := by
+  have hpad : P.padding = ∅ := Finset.card_eq_zero.mp P.padding_null
+  have hunion : P.strata.biUnion id = Finset.univ := by
+    have h := P.strata_exhaust
+    rwa [hpad, Finset.union_empty] at h
+  have hcard : ∑ s ∈ P.strata, s.card = B.cellCount := by
+    calc ∑ s ∈ P.strata, s.card
+        = (P.strata.biUnion id).card :=
+          (Finset.card_biUnion P.strata_disjoint).symm
+      _ = B.cellCount := by rw [hunion, Finset.card_univ, Fintype.card_fin]
+  have hcell : (B.cellCount : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr P.cell_pos.ne'
+  calc ∑ s ∈ P.strata, P.mass s
+      = (∑ s ∈ P.strata, (s.card : ℚ)) / B.cellCount := by
+        simp [RowPartition.mass, Finset.sum_div]
+    _ = 1 := by rw [← Nat.cast_sum, hcard, div_self hcell]
+
+/-!
+# The divisor-pattern mass row, family (ii) [BP_IV division, unit M5]
+
+**PROVENANCE (unit M5; BP_IV §2 M-table).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §2 M-table row M5 — statement
+  "divisor-pattern mass row (family (ii)): m(π)(q₀) = q₀^{−(E−e)}·N_π(q₀)·q₀^{−e}",
+  proof sketch "field algebra over M0 + a `pattCount` field (Fact F(ii) as a
+  law)", deps M0.  §1.4 displays no Lean signature for M5 (as for unit M1b),
+  so the signature follows unit M1a's displayed count-ratio pattern with the
+  M-table's factored value, transcribed with ℤ-exponents: q₀^{−(E−e)} as
+  `(q₀ : ℚ) ^ (-((E : ℤ) - e))`, q₀^{−e} as `(q₀ : ℚ) ^ (-(e : ℤ))`.
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2 (a), the
+  divisor-pattern bullet: m(π)(q₀) = q₀^{−(E−e)}·N_π(q₀)·q₀^{−e} =
+  P(patt-π | C_e) [L2 + L3's uniform reduction + Fact F(ii): N_π(q₀) counts
+  the monic h̄ of pattern π].
+* [M]-hypothesis discipline: `PattStrata` carries counts only (`pattCount` =
+  the Fact-F(ii) value N_π(q₀); `pattEventCount` = the patt-π continuation
+  event count inside the cell).  The counting content — Fact F(ii) as a law,
+  composed with L2 + L3's uniform reduction, in the count-ratio convention of
+  this file — is the NAMED `Prop` row `PattCountLaws`, never data smuggled
+  into the carrier and never an axiom.
+* CONDITIONAL on the named rows M0b (`BlockCountLaws`, for `cell_pos`) and
+  `PattCountLaws` — never call this unconditional until O-12-derived
+  constructors for those rows have landed. Field algebra from the rows only.
+-/
+
+/-- M5 carrier: the divisor-pattern counts over a block carrier — objects and
+counts only.  `pattCount` is the Fact-F(ii) count field N_π(q₀) (the number of
+monic h̄ of pattern π); `pattEventCount` counts the displayed patt-π
+continuation event inside the cell. -/
+structure PattStrata {E e q₀ : ℕ} (B : BlockStrata E e q₀) where
+  pattCount : ℕ
+  pattEventCount : ℕ
+
+/-- The Fact-F(ii) counting content as an explicit named row (M0b discipline):
+the patt-π event count factorizes through the (E−e)-descent times the
+`pattCount` monic residuals at q₀^{−e} each, in this file's count-ratio
+convention.  Constructors must be derived from the imported O-12 base before
+any M5 specialization is called unconditional. -/
+structure PattCountLaws {E e q₀ : ℕ} {B : BlockStrata E e q₀}
+    (P : PattStrata B) : Prop where
+  patt_law : P.pattEventCount * q₀ ^ E = B.cellCount * P.pattCount
+
+/-- M5 (divisor-pattern mass row, family (ii)):
+m(π)(q₀) = q₀^{−(E−e)}·N_π(q₀)·q₀^{−e} as the exact count ratio of the
+displayed patt-π continuation event. -/
+theorem divisorPattern_mass {E e q₀ : ℕ} {B : BlockStrata E e q₀}
+    (P : PattStrata B) (hB : BlockCountLaws B) (hP : PattCountLaws P) :
+    (P.pattEventCount : ℚ) / B.cellCount
+      = (q₀ : ℚ) ^ (-((E : ℤ) - e)) * P.pattCount * (q₀ : ℚ) ^ (-(e : ℤ)) := by
+  have hq2 : 2 ≤ q₀ := B.hq
+  have hq0 : (q₀ : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
+  have hcell : (B.cellCount : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hB.cell_pos.ne'
+  have hqE : ((q₀ : ℚ) ^ E) ≠ 0 := pow_ne_zero _ hq0
+  have hlaw : (P.pattEventCount : ℚ) * (q₀ : ℚ) ^ E
+      = (B.cellCount : ℚ) * P.pattCount := by
+    exact_mod_cast hP.patt_law
+  have hcomb : (q₀ : ℚ) ^ (-((E : ℤ) - e)) * (P.pattCount : ℚ)
+        * (q₀ : ℚ) ^ (-(e : ℤ))
+      = (P.pattCount : ℚ) * ((q₀ : ℚ) ^ (E : ℤ))⁻¹ := by
+    rw [mul_comm ((q₀ : ℚ) ^ (-((E : ℤ) - e))) (P.pattCount : ℚ), mul_assoc,
+      ← zpow_add₀ hq0,
+      show -((E : ℤ) - e) + -(e : ℤ) = -(E : ℤ) by ring, zpow_neg]
+  rw [hcomb, zpow_natCast, ← div_eq_mul_inv, div_eq_div_iff hcell hqE, hlaw]
+  ring
+
+/-!
+# The M1′ gate object — the recorded concrete α₂ row at n = 2
+[BP_IV division, unit M8 — OPTIONAL]
+
+**PROVENANCE (unit M8; BP_IV §2 M-table).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §2 M-table row M8 — statement "M1′
+  gate object (the recorded concrete α₂ row at n = 2) — OPTIONAL", proof
+  sketch "one concrete Finset computation", deps M0, MECH.  §1.4 displays no
+  Lean signature for M8 (as for units M1b and M5), so the signatures below
+  transcribe the SOURCE displays directly (D11 rev3 §2 Proposition M1′ +
+  O-12 rev4's α-identity display "1/q − q^{−3} = (q^{−1} − q^{−2}) +
+  (q−1)·q^{−3}, i.e. α₂ = (0, q−1)").
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2, Proposition
+  M1′: under the (O2) booking with the concrete allocation datum
+  α₂ = (0, q−1) (the machine-checked degree-2 table), at e = 2 the
+  α-adjusted verdict row 1/q − q^{−3} evaluates to q₀^{−1} − q₀^{−3} =
+  P(descend and not (loop-0) | C_2) — the disjoint union of the two pattern
+  strata (π = {(1,1),(1,1)} and {(2,1)}, TOTAL mass q₀^{−1} − q₀^{−2} by
+  Fact F; the individual pattern masses are NOT recorded there and are NOT
+  stated here) with the recentering stratum (κ₁ = q₀^{−2} − q₀^{−3}, the
+  E = 3 block value (q₀ − 1)·q₀^{−E} of unit M1c's κ₁).
+* Dep M0 reading: the gate rides the block vocabulary at the recorded
+  degree-2 member (E, e) = (3, 2) — the (O2) kernel exponent is E = 3
+  (κ₀ = q₀^{−3}); the `BlockStrata 3 2 q₀` binder keys the gate to that
+  carrier (only its `hq` field is consumed; no count law is used or needed —
+  the recorded row is value-level).
+* SCOPE FENCE (D11 M1′ verbatim): this is "a gate object, not a density
+  carrier" — the booked event is NOT verdict-constant (the recentering
+  stratum re-enters the full state law and realizes every verdict), so the
+  solved values differ from the true conditional densities.  Nothing below
+  states or implies verdict-constancy or any density semantics; the unit is
+  the recorded value-level arithmetic only.  For arbitrary allocation data
+  the adjusted rows need not be masses at all — ONLY the recorded concrete
+  choice α₂ = (0, q−1) is formalized.
+-/
+
+/-- M8 datum: the recorded concrete allocation α₂ = (0, q−1) (the
+machine-checked degree-2 table's member), as the two verdict-slot values at
+q.  Recorded choice only — no other allocation is formalized. -/
+def alpha2 (q : ℚ) : Fin 2 → ℚ := ![0, q - 1]
+
+/-- The allocation constraint on the recorded datum: Σ_σ α₂(σ) = q − 1
+(O-12's total-added-mass display: the α-adjustments across the verdict row
+add up to κ₁'s numerator q − 1). -/
+theorem alpha2_sum (q : ℚ) : ∑ σ : Fin 2, alpha2 q σ = q - 1 := by
+  simp [alpha2, Fin.sum_univ_two]
+
+/-- M8 strata masses: the two RECORDED mass values of Proposition M1′'s
+displayed disjoint union — slot 0 the two pattern strata's TOTAL mass
+q₀^{−1} − q₀^{−2} (Fact F), slot 1 the recentering stratum
+κ₁ = q₀^{−2} − q₀^{−3}. -/
+def alpha2StrataMass (q₀ : ℕ) : Fin 2 → ℚ :=
+  ![(q₀ : ℚ)⁻¹ - ((q₀ : ℚ) ^ 2)⁻¹, ((q₀ : ℚ) ^ 2)⁻¹ - ((q₀ : ℚ) ^ 3)⁻¹]
+
+/-- M8 α-identity leg: the recentering stratum mass is exactly the
+α₂-allocated mass at the (O2) kernel exponent E = 3 —
+κ₁ = (q₀ − 1)·q₀^{−3} (O-12 rev4's display, second summand). -/
+theorem alpha2_recentering {q₀ : ℕ} (B : BlockStrata 3 2 q₀) :
+    alpha2StrataMass q₀ 1 = alpha2 (q₀ : ℚ) 1 * ((q₀ : ℚ) ^ 3)⁻¹ := by
+  have hq0 : (q₀ : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by have := B.hq; omega)
+  simp only [alpha2StrataMass, alpha2]
+  norm_num
+  field_simp
+
+/-- M8 (the M1′ gate object, the one concrete Finset computation): the
+recorded strata masses sum to the α₂-adjusted verdict-row value
+1/q − q^{−3} evaluated at q₀ — Proposition M1′'s displayed identity
+q₀^{−1} − q₀^{−3} = (q₀^{−1} − q₀^{−2}) + (q₀^{−2} − q₀^{−3}). -/
+theorem alpha2Row_gate {q₀ : ℕ} (_B : BlockStrata 3 2 q₀) :
+    ∑ i : Fin 2, alpha2StrataMass q₀ i = (q₀ : ℚ)⁻¹ - ((q₀ : ℚ) ^ 3)⁻¹ := by
+  simp only [alpha2StrataMass, Fin.sum_univ_two]
+  norm_num
+
+/-!
+# The polygon-family per-cell mass leg, family (iii)
+[BP_IV division, unit M6a — first half of the M6 split]
+
+**PROVENANCE (unit M6a; BP_IV §2 M-table + §4 wave 2 split M6a → M6b).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §2 M-table row M6 — statement
+  "polygon-family cell mass (family (iii)): per-cell (1−q₀^{−1})^k·q₀^{−N(P)}
+  + affine-cone geometric sum", deps M1c, src "D11 §2 (a) polygon bullet
+  (L6a/L6b/L6e)".  §4 wave 2 splits M6 into the serial pair M6a → M6b:
+  M6a = THIS unit, the per-cell (1−q₀^{−1})^k·q₀^{−N(P)} leg [L6a];
+  M6b = the affine-cone geometric sum (L6b's exponents c_j ≥ 1, per-axis
+  `tsum_geometric` + Fubini, the L6′ closed-form algebra) — NOT here.
+* §1.4 displays no Lean signature for M6 (as for units M1b, M5, M8), so the
+  signature follows unit M1a's displayed count-ratio pattern with the
+  M-table's per-cell value, transcribed with the ℤ-exponent q₀^{−N(P)} as
+  `(q₀ : ℚ) ^ (-(P.polyVol : ℤ))` and (1−q₀^{−1})^k as
+  `(1 - (q₀ : ℚ)⁻¹) ^ P.unitDigits`.
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2 (a), the
+  polygon bullet: "Per cell: P(cell) = (1−q₀^{−1})^k·q₀^{−N(P)} [L6a,
+  exact]".  The shape-conditional factor [L6d (JC)], the cone disjointness
+  [L6e(i)], and the D-11 conditional normalization q₀^{+e} all ride the M6b
+  assembly, not this leg.
+* [M]-hypothesis discipline: `PolyCellStrata` carries counts and indices only
+  (`unitDigits` = L6a's unit-digit count k; `polyVol` = the polygon volume
+  exponent N(P), left as a free index so that M6b can instantiate it along
+  the affine cone N_min + Σ c_j·w_j; `polyCellCount` = the displayed polygon
+  cell's count in the block read).  The counting content — L6a's exact cell
+  enumeration (O-12 §8 rev 2/4), in the count-ratio convention of this file —
+  is the NAMED `Prop` row `PolyCellCountLaws`, never data smuggled into the
+  carrier and never an axiom.
+* CONDITIONAL on the named rows M0b (`BlockCountLaws`, for `cell_pos`) and
+  `PolyCellCountLaws` — never call this unconditional until O-12-derived
+  constructors for those rows have landed. Field algebra from the rows only.
+-/
+
+/-- M6a carrier: the polygon-cell counts over a block carrier — objects and
+counts only.  `unitDigits` is L6a's unit-digit count k (the exponent of the
+(1−q₀^{−1}) factor); `polyVol` is the polygon volume exponent N(P) (a free
+index here; unit M6b instantiates it along L6b's affine cone
+N_min + Σ c_j·w_j); `polyCellCount` counts the displayed polygon cell in the
+block read. -/
+structure PolyCellStrata {E e q₀ : ℕ} (B : BlockStrata E e q₀) where
+  unitDigits : ℕ
+  polyVol : ℕ
+  polyCellCount : ℕ
+
+/-- The L6a counting content as an explicit named row (M0b discipline): the
+displayed polygon cell counts (q₀−1)^k parts in q₀^{N(P)+k} of the block
+read, in this file's count-ratio convention.  Constructors must be derived
+from the imported O-12 base (§8 rev 2/4 exact enumerations) before any M6
+specialization is called unconditional. -/
+structure PolyCellCountLaws {E e q₀ : ℕ} {B : BlockStrata E e q₀}
+    (P : PolyCellStrata B) : Prop where
+  polyCell_law : P.polyCellCount * q₀ ^ (P.polyVol + P.unitDigits)
+    = B.cellCount * (q₀ - 1) ^ P.unitDigits
+
+/-- M6a (polygon-family cell mass, family (iii), per-cell leg):
+P(cell) = (1−q₀^{−1})^k·q₀^{−N(P)} as the exact count ratio of the displayed
+polygon cell [L6a, exact].  The affine-cone resummation over the depth cone
+is unit M6b. -/
+theorem polygonCell_mass {E e q₀ : ℕ} {B : BlockStrata E e q₀}
+    (P : PolyCellStrata B) (hB : BlockCountLaws B) (hP : PolyCellCountLaws P) :
+    (P.polyCellCount : ℚ) / B.cellCount
+      = (1 - (q₀ : ℚ)⁻¹) ^ P.unitDigits * (q₀ : ℚ) ^ (-(P.polyVol : ℤ)) := by
+  have hq2 : 2 ≤ q₀ := B.hq
+  have hq0 : (q₀ : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
+  have hcell : (B.cellCount : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hB.cell_pos.ne'
+  have hcast : ((q₀ - 1 : ℕ) : ℚ) = (q₀ : ℚ) - 1 :=
+    Nat.cast_pred (by omega)
+  have hlaw : (P.polyCellCount : ℚ) * (q₀ : ℚ) ^ (P.polyVol + P.unitDigits)
+      = (B.cellCount : ℚ) * ((q₀ : ℚ) - 1) ^ P.unitDigits := by
+    calc (P.polyCellCount : ℚ) * (q₀ : ℚ) ^ (P.polyVol + P.unitDigits)
+        = ((P.polyCellCount * q₀ ^ (P.polyVol + P.unitDigits) : ℕ) : ℚ) := by
+          push_cast; ring
+      _ = ((B.cellCount * (q₀ - 1) ^ P.unitDigits : ℕ) : ℚ) := by
+          rw [hP.polyCell_law]
+      _ = (B.cellCount : ℚ) * ((q₀ : ℚ) - 1) ^ P.unitDigits := by
+          push_cast [hcast]; ring
+  have hone : (1 : ℚ) - (q₀ : ℚ)⁻¹ = ((q₀ : ℚ) - 1) / q₀ := by
+    rw [sub_div, div_self hq0, one_div]
+  rw [hone, div_pow, zpow_neg, zpow_natCast, ← div_eq_mul_inv, div_div,
+    ← pow_add, div_eq_div_iff hcell (pow_ne_zero _ hq0),
+    add_comm P.unitDigits P.polyVol, hlaw]
+  ring
 
 end LeanUrat.Scaffold.ValueSide

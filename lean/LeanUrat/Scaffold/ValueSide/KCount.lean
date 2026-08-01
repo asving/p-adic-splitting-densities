@@ -15,8 +15,9 @@ extraction Q(p^τ b) = p^{2τ} Q̃(b)), K2 (`bijective_of_injective_finVec`,
 the `Finite.injective_iff_bijective` cite unit), K4 (`starstar_iff_smithMem`
 + the scalar legs `pow_mul_eq_zero_iff_pow_dvd` / `starstar_vacuous` /
 `starstar_iff_pow_dvd`: (⋆⋆)_i ⟺ T(c)_i ≡ 0 mod p^(M−e_i), vacuous at
-e_i > M).
-Pending (later waves, per BP_IV §4): K5, K7c–K8a,
+e_i > M), K8a (the PID Smith-normal-form availability gate: compiling
+`#check` + signature pin of `Submodule.smithNormalForm` at repository HEAD).
+Pending (later waves, per BP_IV §4): K5, K7c, K8b,
 and the (SIB) product law.
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
@@ -533,5 +534,182 @@ theorem bijective_of_injective_finVec {p M n : ℕ} [Fact p.Prime]
   exact Finite.injective_iff_bijective.mp hT
 
 end K2
+
+/-! ### K8a: PID Smith-normal-form availability gate (BP_IV §2 K-table; REV-2 finding 19)
+
+Blueprint §1.3 K8 comment (the unit K8a serves, transcribed verbatim):
+
+    K8 (Lemma 2 half 1): Smith normal form of Φ over ℤ_p exists — transcription
+    of Mathlib `Submodule.smithNormalForm` at the matrix of Φ.
+
+The blueprint displays no Lean block for K8a; the §2 K-table row charges this
+unit to "import `Mathlib.LinearAlgebra.FreeModule.PID`; use `#check` to record
+the exact declaration available at repository HEAD before fixing the adapter
+proof", and the §3 Mathlib row requires the "exact declaration name and
+arguments" to be captured by a compiling `#check`.  RECORD, at repository HEAD
+(Mathlib pinned by this repo's lakefile, module
+`Mathlib.LinearAlgebra.FreeModule.PID`, imported explicitly above):
+
+    noncomputable def Submodule.smithNormalForm [Finite ι] (b : Basis ι R M)
+        (N : Submodule R M) : Σ n : ℕ, Basis.SmithNormalForm N ι n
+
+with ambient variables `{ι : Type*} {R : Type*} [CommRing R] {M : Type*}
+[AddCommGroup M] [Module R M] [IsDomain R] [IsPrincipalIdealRing R]`, where
+`Basis` is `Module.Basis` and the return structure is (same module, HEAD name
+`Module.Basis.SmithNormalForm`):
+
+    structure Module.Basis.SmithNormalForm (N : Submodule R M) (ι : Type*)
+        (n : ℕ) where
+      bM  : Basis ι R M
+      bN  : Basis (Fin n) R N
+      f   : Fin n ↪ ι
+      a   : Fin n → R
+      snf : ∀ i, (bN i : M) = a i • bM (f i)
+
+K8b consumes this gate: it instantiates the checked declaration at the matrix
+of Φ over ℤ_p and exposes the concrete U/D/V data, inverse laws, diagonal
+equality, and `Fin n` exponent indexing required by `MulFiberData`; generic
+existence alone does not discharge K8.  Neighbouring HEAD declarations K8b may
+also draw on (availability confirmed by this import, not pinned here):
+`Submodule.exists_smith_normal_form_of_le`, `Submodule.smithNormalFormOfLE`,
+`Submodule.smithNormalFormCoeffs`. -/
+
+section K8a
+
+-- The charged availability gate: the exact declaration name at HEAD.
+#check @Submodule.smithNormalForm
+
+-- The charged "exact arguments" capture, as a compiling elaboration pin:
+-- this `example` fails to compile if the declaration's signature (argument
+-- order, instance assumptions, or return type) drifts at a Mathlib bump.
+-- (`noncomputable`: the pinned declaration is itself noncomputable.)
+noncomputable example {ι : Type*} {R : Type*} [CommRing R] {M : Type*} [AddCommGroup M]
+    [Module R M] [IsDomain R] [IsPrincipalIdealRing R] [Finite ι]
+    (b : Module.Basis ι R M) (N : Submodule R M) :
+    Σ n : ℕ, Module.Basis.SmithNormalForm N ι n :=
+  Submodule.smithNormalForm b N
+
+-- Field-level pin of the returned Smith data (the pieces K8b must adapt):
+-- bases `bM`/`bN`, the index embedding `f`, the diagonal entries `a`, and
+-- the SNF relation `snf`.
+example {ι : Type*} {R : Type*} [CommRing R] {M : Type*} [AddCommGroup M]
+    [Module R M] [IsDomain R] [IsPrincipalIdealRing R] [Finite ι]
+    (b : Module.Basis ι R M) (N : Submodule R M) :
+    ∀ i, ((Submodule.smithNormalForm b N).2.bN i : M)
+      = (Submodule.smithNormalForm b N).2.a i
+          • (Submodule.smithNormalForm b N).2.bM
+              ((Submodule.smithNormalForm b N).2.f i) :=
+  (Submodule.smithNormalForm b N).2.snf
+
+end K8a
+
+/-! ### K4 (BP_IV §2 K-table; O-10 §3 Step 4): the per-coordinate equivalence
+
+`(⋆⋆)_i ⟺ T(c)_i ≡ 0 mod p^(M−e_i)`; vacuous at `e_i > M`.  Here `(⋆⋆)_i` is
+the Smith-diagonalized congruence `p^(e_i)·c_i + p^τ·S_i(c) ≡ 0 mod p^M`
+(O-10 §3 Step 2) and `T(c)_i := c_i + p^(τ−e_i)·S_i(c)` is the Step-3
+absorption map — K1's perturbed identity at `a i := τ − e i` (`1 ≤ a i` from
+(SEP): `τ ≥ ρ + 1 > e_i`).  Proof: factor `p^(e_i)` out of `(⋆⋆)_i`
+(`starstar_factor`), then unit-cancel it through the `ZMod (p^M)`
+divisibility shuffle `p^e·y = 0 ↔ p^(M−e) ∣ y`
+(`pow_mul_eq_zero_iff_pow_dvd`); at `e_i > M` both sides hold identically
+(`p^(e_i) = p^τ = 0` and `M − e_i = 0` in truncated subtraction,
+`starstar_vacuous`) — matching `min(e_i, M) = M`.  The RHS is verbatim the
+K3b membership predicate (`card_smithSubgroup`), so K5 reads the solution
+set of `(⋆⋆)` as `T⁻¹(G)`.  (BP_IV §1.3 displays no Lean block for K4 —
+the statements below transcribe the §2 K-table row's equivalence, the same
+convention as the K2/K3a/K7a/K7b units above.) -/
+
+section K4
+
+variable {p M : ℕ} [Fact p.Prime]
+
+omit [Fact p.Prime] in
+/-- `p^t = 0` in `ZMod (p^M)` once `t ≥ M` (the truncation collapse both
+    K4 legs use). -/
+theorem pPow_eq_zero_of_le (t : ℕ) (ht : M ≤ t) :
+    (p : ZMod (p ^ M)) ^ t = 0 := by
+  have hM0 : (p : ZMod (p ^ M)) ^ M = 0 := by
+    have hcast : ((p ^ M : ℕ) : ZMod (p ^ M)) = 0 := ZMod.natCast_self _
+    push_cast at hcast
+    exact hcast
+  exact pow_eq_zero_of_le ht hM0
+
+/-- K4 cancellation core (the "unit-cancel `p^(e_i)`" step): in `ZMod (p^M)`,
+    for `e ≤ M`, `p^e·y = 0 ↔ p^(M−e) ∣ y`.  Forward: lift to `ℕ`
+    (`p^M ∣ p^e·y.val`), cancel `p^e`, come back through the K0b bridge
+    `pow_dvd_iff_dvd_val`; backward: `p^e·p^(M−e) = p^M = 0`. -/
+theorem pow_mul_eq_zero_iff_pow_dvd {e : ℕ} (he : e ≤ M) (y : ZMod (p ^ M)) :
+    (p : ZMod (p ^ M)) ^ e * y = 0 ↔ (p : ZMod (p ^ M)) ^ (M - e) ∣ y := by
+  haveI : NeZero (p ^ M) := ⟨pow_ne_zero M (Fact.out : p.Prime).ne_zero⟩
+  constructor
+  · intro h0
+    rw [pow_dvd_iff_dvd_val (Nat.sub_le M e)]
+    have hcast : (p : ZMod (p ^ M)) ^ e * y
+        = ((p ^ e * y.val : ℕ) : ZMod (p ^ M)) := by
+      push_cast
+      rw [ZMod.natCast_rightInverse y]
+    rw [hcast, ZMod.natCast_eq_zero_iff] at h0
+    have h0' : p ^ e * p ^ (M - e) ∣ p ^ e * y.val := by
+      rw [← pow_add, Nat.add_sub_cancel' he]
+      exact h0
+    exact (mul_dvd_mul_iff_left
+      (pow_ne_zero e (Fact.out : p.Prime).ne_zero)).1 h0'
+  · rintro ⟨z, rfl⟩
+    rw [← mul_assoc, ← pow_add, Nat.add_sub_cancel' he,
+      pPow_eq_zero_of_le M le_rfl, zero_mul]
+
+omit [Fact p.Prime] in
+/-- Factor `p^e` out of `(⋆⋆)`'s LHS: for `e ≤ τ`,
+    `p^e·x + p^τ·y = p^e·(x + p^(τ−e)·y)` — the RHS parenthesis is `T` at
+    this coordinate. -/
+theorem starstar_factor {e τ : ℕ} (heτ : e ≤ τ) (x y : ZMod (p ^ M)) :
+    (p : ZMod (p ^ M)) ^ e * x + (p : ZMod (p ^ M)) ^ τ * y
+      = (p : ZMod (p ^ M)) ^ e * (x + (p : ZMod (p ^ M)) ^ (τ - e) * y) := by
+  rw [mul_add, ← mul_assoc, ← pow_add, Nat.add_sub_cancel' heτ]
+
+omit [Fact p.Prime] in
+/-- K4, vacuous leg (`e_i > M`, stated at its natural scope `M ≤ e ≤ τ`):
+    the congruence `(⋆⋆)_i` holds identically — `p^e·x + p^τ·y = 0` since
+    both powers collapse in `ZMod (p^M)`. -/
+theorem starstar_vacuous {e τ : ℕ} (hMe : M ≤ e) (heτ : e ≤ τ)
+    (x y : ZMod (p ^ M)) :
+    (p : ZMod (p ^ M)) ^ e * x + (p : ZMod (p ^ M)) ^ τ * y = 0 := by
+  rw [pPow_eq_zero_of_le e hMe, pPow_eq_zero_of_le τ (hMe.trans heτ),
+    zero_mul, zero_mul, add_zero]
+
+/-- K4, main leg (`e ≤ M`), scalar form: `(⋆⋆)_i ⟺ p^(M−e) ∣ T_i` with
+    `T_i = x + p^(τ−e)·y` (`x = c_i`, `y = S_i(c)`).  Unit-cancel `p^e` via
+    `starstar_factor` + `pow_mul_eq_zero_iff_pow_dvd`. -/
+theorem starstar_iff_pow_dvd {e τ : ℕ} (heM : e ≤ M) (heτ : e ≤ τ)
+    (x y : ZMod (p ^ M)) :
+    (p : ZMod (p ^ M)) ^ e * x + (p : ZMod (p ^ M)) ^ τ * y = 0
+      ↔ (p : ZMod (p ^ M)) ^ (M - e)
+          ∣ x + (p : ZMod (p ^ M)) ^ (τ - e) * y := by
+  rw [starstar_factor heτ, pow_mul_eq_zero_iff_pow_dvd heM]
+
+/-- K4 (THE per-coordinate equivalence, BP_IV §2 K-table row): under (SEP)'s
+    standing `e_i < τ`, for every coordinate `i`,
+    `(⋆⋆)_i ⟺ T(c)_i ≡ 0 mod p^(M−e_i)` — with the `e_i > M` leg vacuous on
+    both sides (LHS by `starstar_vacuous`, RHS by the truncated-subtraction
+    collapse `M − e_i = 0`), matching `min(e_i, M) = M`.  The divisibility RHS
+    is verbatim K3b's subgroup-membership predicate at the absorbed vector
+    `T(c) = c + p^(τ−e)·S(c)` (K1's perturbed identity with `a i = τ − e i`),
+    so the `(⋆⋆)` solution set is exactly `T⁻¹` of K3b's subgroup. -/
+theorem starstar_iff_smithMem {n : ℕ} {τ : ℕ}
+    (S : (Fin n → ZMod (p ^ M)) → (Fin n → ZMod (p ^ M)))
+    (e : Fin n → ℕ) (c : Fin n → ZMod (p ^ M)) (i : Fin n)
+    (heτ : e i < τ) :
+    (p : ZMod (p ^ M)) ^ e i * c i + (p : ZMod (p ^ M)) ^ τ * S c i = 0
+      ↔ (p : ZMod (p ^ M)) ^ (M - e i)
+          ∣ c i + (p : ZMod (p ^ M)) ^ (τ - e i) * S c i := by
+  by_cases heM : e i ≤ M
+  · exact starstar_iff_pow_dvd heM heτ.le (c i) (S c i)
+  · have hMe : M ≤ e i := (Nat.lt_of_not_le heM).le
+    refine iff_of_true (starstar_vacuous hMe heτ.le _ _) ?_
+    rw [Nat.sub_eq_zero_of_le hMe, pow_zero]
+    exact one_dvd _
+
+end K4
 
 end LeanUrat.Scaffold

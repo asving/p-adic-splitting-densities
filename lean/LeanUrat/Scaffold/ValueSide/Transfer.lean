@@ -1,8 +1,10 @@
 /-
 BP_IV §1.1 — Step 13, the drainage-transfer layer (`Transfer.lean`).
 Units in this file: SKEL (module skeleton), T0 (`card_boxProj_fiber`),
-T1 (`env_antitone`), T2 (FLOOR), T3 (TR-Q skeleton), T4a (`discV`, landed).
-Later waves add T4 (`DrainageImports`), T5, T6 (`env_tendsto_zero_of_imports`),
+T1 (`env_antitone`), T2 (FLOOR), T3 (TR-Q skeleton), T4a (`discV`, landed),
+T4 (`tailC` + `DrainageImports` + `undec_subset_tail`, landed — `tailC` is a
+NEW flagged supporting definition, see the unit-T4 provenance note).
+Later waves add T5, T6 (`env_tendsto_zero_of_imports`),
 and the wave-4 HARD constructors T7 (CEIL) and T8 (tail).
 Import graph (BP_IV §0/§1.0 + §2 T-table deps): the counting vocabulary
 (`ClassifierSpec.decided/undec/env/dmass`, `Box`, `boxProj`,
@@ -264,5 +266,118 @@ theorem le_discV_iff_discr_eq_zero {p n N : ℕ} [Fact p.Prime]
   have hp0 : (p : ZMod (p ^ N)) ^ N = 0 := by
     rw [← Nat.cast_pow, ZMod.natCast_self]
   rw [le_discV_iff le_rfl f, hp0, zero_dvd_iff]
+
+/-!
+**PROVENANCE (unit T4; BP_IV §1.1 `DrainageImports` display + §2 T-table row T4,
+source O4T §3.4 N3-ENV step 1).**
+Structure + docstring transcribed VERBATIM from `lean/blueprints/BP_IV.md` §1.1.
+The fields `ceil`/`tail` are [M]-hypothesis ROWS (named structure rows, never
+axioms): their discharge for the concrete classifier is the queued wave-4 HARD
+units T7/T8.  Mechanism of `undec_subset_tail` (blueprint row T4): set inclusion
+from the ceiling inequality — CEIL contraposed against the truncation cap
+`discV_le`.
+
+**FLAGGED FOR REVIEW — `tailC` is a NEW supporting definition of this unit.**
+The §1.1 display consumes `tailC n` but the blueprint assigns it to no unit;
+without it the verbatim `tail` row cannot compile, so unit T4 supplies it here
+(definition-change authority applies; T5 and T8 are its only planned consumers).
+Value justification (M05 Lemma C, Lean count form `MovesX.XF7.tailCountBound`,
+whose constant is (n−1); wild shift `p^{n·v_p(n)/(n−1)} ≤ n^{n/(n−1)} ≤ n²` for
+n ≥ 2, using `p^{v_p(n)} ≤ n` and `n/(n−1) ≤ 2`): row `tail`'s discharge target
+needs `tailC n ≥ (n−1)·p^{n·v_p(n)/(n−1)}` uniformly in the prime p, and
+`(n−1)·n²` dominates this for every p at n ≥ 2.
+-/
+
+/-- The I-TAIL constant of the `DrainageImports.tail` row — supporting
+definition of unit T4 (see the provenance note: NEW, flagged; sized so that
+`(n−1)·n² ≥ (n−1)·p^{n·v_p(n)/(n−1)}` for every prime p at n ≥ 2, the margin
+T8's discharge needs). -/
+noncomputable def tailC (n : ℕ) : ℝ := (n - 1 : ℝ) * (n : ℝ) ^ 2
+
+/-- The two EXTERNAL analytic imports of Step 13, as one displayed row structure
+    (I-TAIL = the discriminant tail bound, M05 Lemma C's counting form; CEIL = the
+    Theorem-N3 read ceiling L(f) ≤ v_p(disc f) + 1 at 2 ≤ n ≤ 3).  `discV` is the
+    level-N truncated discriminant valuation (a definition of this file, unit T4a).
+    CEIL is the movement's queued HARD unit T7; until it lands the structure is a
+    named row, exactly O4T's honest conditionality shape. -/
+structure DrainageImports (n p : ℕ) [Fact p.Prime] (X : ClassifierSpec n p) : Prop where
+  n_lower : 2 ≤ n
+  n_upper : n ≤ 3
+  ceil : ∀ N (f : Box p n N), discV p n N f + 1 ≤ N → X.canonical N f ≠ none
+  tail : ∀ N m : ℕ, (Nat.card {f : Box p n N // m ≤ discV p n N f} : ℝ)
+      ≤ tailC n * (p : ℝ) ^ (n * N) * (p : ℝ) ^ (-(m : ℝ) / (2 * (n - 1)))
+
+/-- T4 (N3-ENV step 1): CEIL contraposed — every undecided level-N class lies in
+the deep-discriminant tail `{discV ≥ N}` (the inclusion `Undec(N) ⊆ {discV ≥ N}`
+in pointwise form, exactly what T5's subtype-injection card count consumes). -/
+theorem undec_subset_tail {n p : ℕ} [Fact p.Prime] {X : ClassifierSpec n p}
+    (hI : DrainageImports n p X) (N : ℕ) (f : Box p n N)
+    (hf : X.canonical N f = none) : N ≤ discV p n N f := by
+  by_contra hlt
+  exact hI.ceil N f (by omega) hf
+
+/-!
+**PROVENANCE (unit T6; BP_IV §1.1 display + §2 T-table row T6, source O4T §3.4
+N3-ENV).**
+Statement transcribed VERBATIM from `lean/blueprints/BP_IV.md` §1.1.
+Mechanism (blueprint row T6): T5's exponential-decay bound → 0, fed to T3
+(`env_tendsto_zero_of_majorant`) with the identity reparametrization.  The
+N3-ENV step-2 bound (T5's shape, at tail depth m := N) is derived inline from
+unit T4's `undec_subset_tail` injection + the `DrainageImports.tail` row, so
+this unit stays green independently of T5's final displayed form.  Exactly the
+shape of the corpus row `BridgeKernels.env_tendsto` (the delivery seam of
+Step 13); the n = 2 OM-model gate `OM.SeriesAssembly.hExhaust_n2` is NOT a
+discharge of this row (different model — the D19 agreement seam; fence
+recorded in BP_IV §1.1).
+-/
+
+/-- T6 (N3-ENV assembled): the scoped imports force drainage. -/
+theorem env_tendsto_zero_of_imports {n p : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} (hI : DrainageImports n p X) :
+    Tendsto X.env atTop (nhds 0) := by
+  have hp : p.Prime := Fact.out
+  have hp1 : (1 : ℝ) < (p : ℝ) := by exact_mod_cast hp.one_lt
+  have hc : (0 : ℝ) < 2 * ((n : ℝ) - 1) := by
+    have h2n : (2 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hI.n_lower
+    linarith
+  -- N3-ENV step 2 (T5's bound, inline at m := N): Undec(N) ↪ {N ≤ discV} (T4),
+  -- then the I-TAIL row, then divide by the box normalizer p^{nN}.
+  have hle : ∀ N, X.env N ≤
+      tailC n * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1))) := by
+    intro N
+    have hcard : (X.undec N : ℝ) ≤
+        (Nat.card {f : Box p n N // N ≤ discV p n N f} : ℝ) := by
+      have hinj : X.undec N ≤ Nat.card {f : Box p n N // N ≤ discV p n N f} := by
+        unfold ClassifierSpec.undec
+        exact Nat.card_le_card_of_injective
+          (fun f => (⟨f.1, undec_subset_tail hI N f.1 f.2⟩ :
+            {f : Box p n N // N ≤ discV p n N f}))
+          (fun a b hab => Subtype.ext (Subtype.mk_eq_mk.mp hab))
+      exact_mod_cast hinj
+    have hpow : (0 : ℝ) < (p : ℝ) ^ (n * N) := by positivity
+    unfold ClassifierSpec.env
+    rw [div_le_iff₀ hpow]
+    calc (X.undec N : ℝ)
+        ≤ (Nat.card {f : Box p n N // N ≤ discV p n N f} : ℝ) := hcard
+      _ ≤ tailC n * (p : ℝ) ^ (n * N)
+            * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1))) := hI.tail N N
+      _ = tailC n * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1)))
+            * (p : ℝ) ^ (n * N) := by ring
+  -- the majorant vanishes: base p > 1 at an exponent falling to −∞.
+  have hB : Tendsto
+      (fun N : ℕ => tailC n * (p : ℝ) ^ (-(N : ℝ) / (2 * ((n : ℝ) - 1))))
+      atTop (nhds 0) := by
+    have h2 : Tendsto (fun N : ℕ => -(N : ℝ) / (2 * ((n : ℝ) - 1)))
+        atTop atBot := by
+      have := tendsto_neg_atTop_atBot.comp
+        (tendsto_natCast_atTop_atTop.atTop_div_const hc)
+      simpa [Function.comp_def, neg_div] using this
+    have h3 := (tendsto_rpow_atBot_of_base_gt_one _ hp1).comp h2
+    simpa using h3.const_mul (tailC n)
+  -- T3 with the identity reparametrization forces drainage.
+  have h0 : ∀ N, 0 ≤ X.env N := fun N => by
+    unfold ClassifierSpec.env; positivity
+  exact env_tendsto_zero_of_majorant (ClassifierSpec.env_antitone X) h0
+    tendsto_id hle hB
 
 end LeanUrat.Scaffold

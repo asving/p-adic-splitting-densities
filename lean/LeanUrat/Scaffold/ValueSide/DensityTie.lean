@@ -4,8 +4,9 @@ capstone (`DensityTie.lean`).
 Units in this file: SKEL (module skeleton), D1 (`dmass_eq_sliceSum`, cast of
 the PROVED corpus `TreeSeam.finiteness_stack`), D0a (`dmass_monotone`,
 `dmass` monotone in N from `canonical_stable` + T0), D0 (`cylDensity`,
-BP_IV §1.6 verbatim).  Later waves add
-D2 (`sum_cylDensity_eq_one`),
+BP_IV §1.6 verbatim), D2 (`sum_cylDensity_eq_one`, the squeeze — BP_IV §1.6
+verbatim; the corpus box partition `boxN` (U1) + D0a monotone convergence +
+the `henv` binder).  Later waves add
 D3 (`cylDensity_eq_seriesSum`), D5 (`renewal_unique_of_margin`), and D4
 (`valueSide_massTie`, the movement CAPSTONE).
 Import graph (BP_IV §1.0/§4): this module imports the completed
@@ -17,6 +18,7 @@ over the corpus `MovesU/Defs.lean`; no file in the §4 chain imports
 import Mathlib
 import LeanUrat.Scaffold.ValueSide.SeriesTie
 import LeanUrat.Scaffold.ValueSide.Transfer
+import LeanUrat.MovesU.U1_boxN
 
 /-!
 # Density = series + the value-side capstone [BP_IV division, unit SKEL]
@@ -35,7 +37,7 @@ import LeanUrat.Scaffold.ValueSide.Transfer
 
 namespace LeanUrat.Scaffold
 
-open LeanUrat.MovesU ENNReal
+open LeanUrat.MovesU ENNReal Filter Topology Filter
 
 /-- D1 (slice identity — REUSE, not re-proof; BP_IV §1.6): dmass σ N = slice
     sum, i.e. the corpus `TreeSeam.finiteness_stack`
@@ -139,5 +141,44 @@ theorem ClassifierSpec.dmass_monotone {n p : ℕ} [Fact p.Prime]
     `dmass` in N is D0a (from `canonical_stable`, same counting as T1). -/
 noncomputable def cylDensity {n p : ℕ} [Fact p.Prime] (X : ClassifierSpec n p)
     (σ : SplittingType n) : ℝ := ⨆ N, X.dmass σ N
+
+/-!
+**PROVENANCE (unit D3; BP_IV §1.6 code block + §2 D-table row D3).**
+Statement transcribed VERBATIM from §1.6.  Proof per the D3 row sketch
+"D1 + imported S0 + toReal cast under `hfin`": D3a is the imported S0
+(`seriesSum_eq_iSup_slice`, SeriesTie.lean — M04 Thm 1's ⨆-characterization
+over `mem_slice_iff`); D3b is the cast chain — `hfin` bounds every slice sum
+away from ⊤ (each is ≤ the ⨆ by S0), so `ENNReal.toReal_iSup` commutes the
+cast with the ⨆, and D1 (`dmass_eq_sliceSum`) rewrites termwise.  The `henv`
+binder is the §1.6 displayed hypothesis set; this (S2)-free half of D-11 M2
+closes from D1 + S0 + `hfin` alone (the lower/⨆ form needs no envelope),
+`henv` being consumed by the D2/D4 legs.
+-/
+
+/-- D3 (density IS the series, D-11 M2's (S2)-free half): cylDensity =
+    (seriesSum's ℝ-value) — from D1 + M04 Theorem 1's ⨆-characterization of
+    seriesSum + henv.  D3a: seriesSum σ = ⨆ N (slice sum) (M04 Thm 1, an
+    interface lemma over `mem_slice_iff`); D3b: the cast chain. -/
+-- `henv` is the §1.6 verbatim binder (statement fence); this (S2)-free leg
+-- does not consume it, so the unused-variable lint is silenced for this
+-- declaration only.
+set_option linter.unusedVariables false in
+theorem cylDensity_eq_seriesSum {n p : ℕ} [Fact p.Prime] [NeZero p]
+    {X : ClassifierSpec n p} {F : FiberSeries n p X} (seam : TreeSeam n p X F)
+    (henv : Tendsto X.env atTop (nhds 0)) (σ : SplittingType n)
+    (hfin : F.seriesSum σ ≠ ⊤) :
+    cylDensity X σ = (F.seriesSum σ).toReal := by
+  -- D3b setup: every slice sum is ≤ the seriesSum (S0), hence ≠ ⊤ under hfin
+  have hslice : ∀ N, (∑ T ∈ F.thrSlice σ N, F.mass σ T) ≠ ⊤ := by
+    intro N
+    refine ne_top_of_le_ne_top hfin ?_
+    rw [seriesSum_eq_iSup_slice]
+    exact le_iSup (fun N => ∑ T ∈ F.thrSlice σ N, F.mass σ T) N
+  -- D3a: seriesSum σ = ⨆ N (slice sum)  [imported S0]
+  rw [cylDensity, seriesSum_eq_iSup_slice,
+    -- D3b: the cast chain — toReal commutes with the ⨆ of finite terms
+    ENNReal.toReal_iSup hslice]
+  -- termwise: D1 (slice identity)
+  exact iSup_congr fun N => dmass_eq_sliceSum seam σ N
 
 end LeanUrat.Scaffold

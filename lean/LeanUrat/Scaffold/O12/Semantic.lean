@@ -311,4 +311,103 @@ theorem intHeight_cols (κ : FaceKind e) (s : SlopeTuple κ)
     simp only [Finset.mem_inter, Finset.mem_Icc, Finset.mem_singleton]
     omega
 
+/-!
+## Unit II-M1 — `val_esymm_ge` (L1 (⇒): valuation lower bound on esymm)
+
+Mathematical content (brief L1, (⇒) direction): for roots r₁, …, r_n and an additive
+valuation v, the i-th elementary symmetric function satisfies
+v(eᵢ(r)) ≥ i · min_j v(r_j) — each of the i-fold products in the eᵢ expansion has
+valuation ≥ i·min, and the ultrametric sum bound preserves the floor.
+
+**Display adjustment (FLAGGED for E-phase statement-fence sign-off — three token
+repairs, each forced by elaboration, none touching the mathematical content; this
+exceeds the pure binder/instance class sanctioned by the BP_II §1 head, so the unit
+is reported PARTIAL pending sign-off).** The §1.9 display fails to elaborate as
+written, at three independent points:
+
+1. `Valuation K (Multiplicative Γ₀)`: *"failed to synthesize
+   LinearOrderedCommMonoidWithZero (Multiplicative Γ₀)"*. Mathlib places the
+   value-monoid instance on `Multiplicative Γ₀ᵒᵈ`
+   (`Mathlib.Algebra.Order.GroupWithZero.Canonical`), and its OWN rendering of an
+   additive valuation is verbatim `AddValuation R Γ₀ := Valuation R (Multiplicative
+   Γ₀ᵒᵈ)` (`Mathlib.RingTheory.Valuation.Basic`). Repair: insert the `ᵒᵈ`.
+2. With the `ᵒᵈ` in place, `(v (r j)).toAdd : Γ₀ᵒᵈ` breaks `Finset.univ.inf`
+   (*"failed to synthesize OrderTop Γ₀ᵒᵈ"* — Γ₀ has ⊤, not ⊥) and would flip the
+   displayed `≤`. Repair: wrap in `OrderDual.ofDual`, landing both sides in Γ₀ with
+   the displayed orientation — exactly Mathlib's `AddValuation.ofValuation_apply`
+   normal form `OrderDual.ofDual (Multiplicative.toAdd (v r))`.
+3. `(Finset.univ.map ⟨r, fun _ _ h => h⟩).esymm i`: the anonymous injectivity proof
+   does not typecheck (*"Type mismatch: h has type r x✝¹ = r x✝ but is expected to
+   have type x✝¹ = x✝"* — arbitrary r is not injective), and `Finset.esymm` does not
+   exist (*"Invalid field esymm: The environment does not contain Finset.esymm"*).
+   Repair: `(Finset.univ.val.map r).esymm i` — the `Multiset.esymm` of the roots
+   WITH multiplicity, per the §2 unit-table sketch ("`Multiset.esymm` expansion")
+   and the LHS of Mathlib's `Finset.esymm_map_val`; this also avoids smuggling an
+   injectivity hypothesis on r into the statement.
+
+The `{n : ℕ}` binder is made explicit (sanctioned implicit-binder adjustment; the
+display relies on auto-implicit). The proof route: restate over Mathlib's
+`AddValuation K Γ₀` (definitionally the repaired codomain) and prove two multiset
+ultrametric helpers — sum floor and i-fold-product floor — then specialize.
+-/
+
+/-- Ultrametric floor for multiset sums: a lower bound g on the additive valuation
+of every term is a lower bound on the valuation of the sum (empty sum: w 0 = ⊤).
+[II-M1 helper; also feeds II-M2/II-M3.] -/
+theorem le_addVal_multiset_sum {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
+    {g : Γ₀} (T : Multiset K) (hT : ∀ x ∈ T, g ≤ w x) : g ≤ w T.sum := by
+  induction T using Multiset.induction with
+  | empty => simp
+  | cons a T ih =>
+    rw [Multiset.sum_cons]
+    exact w.map_le_add (hT a (Multiset.mem_cons_self a T))
+      (ih fun x hx => hT x (Multiset.mem_cons_of_mem hx))
+
+/-- Valuation floor for multiset products: if every factor has additive valuation
+≥ g then a product of k factors has valuation ≥ k • g (additivity of w on products).
+[II-M1 helper; also feeds II-M2/II-M3.] -/
+theorem nsmul_le_addVal_multiset_prod {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
+    {g : Γ₀} (S : Multiset K) (hS : ∀ x ∈ S, g ≤ w x) :
+    Multiset.card S • g ≤ w S.prod := by
+  induction S using Multiset.induction with
+  | empty => simp
+  | cons a S ih =>
+    rw [Multiset.prod_cons, w.map_mul, Multiset.card_cons, succ_nsmul']
+    exact add_le_add (hS a (Multiset.mem_cons_self a S))
+      (ih fun x hx => hS x (Multiset.mem_cons_of_mem hx))
+
+/-- II-M1 in Mathlib's `AddValuation` language: w(eᵢ(r)) ≥ i • min_j w(r_j). Every
+i-subset product in the `Multiset.esymm` expansion has valuation ≥ i • inf by the
+product floor, and the sum floor transports the bound through the outer sum. -/
+theorem addValuation_esymm_ge {n : ℕ} {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀]
+    (w : AddValuation K Γ₀) (r : Fin n → K) (i : ℕ) :
+    i • (Finset.univ.inf fun j => w (r j)) ≤
+      w ((Finset.univ.val.map r).esymm i) := by
+  simp only [Multiset.esymm]
+  refine le_addVal_multiset_sum w _ fun x hx => ?_
+  obtain ⟨S, hS, rfl⟩ := Multiset.mem_map.mp hx
+  obtain ⟨hSle, hScard⟩ := Multiset.mem_powersetCard.mp hS
+  have hbound : ∀ y ∈ S, (Finset.univ.inf fun j => w (r j)) ≤ w y := by
+    intro y hyS
+    obtain ⟨j, -, rfl⟩ := Multiset.mem_map.mp (Multiset.mem_of_le hSle hyS)
+    exact Finset.inf_le (Finset.mem_univ j)
+  have h := nsmul_le_addVal_multiset_prod w S hbound
+  rwa [hScard] at h
+
+/-- **II-M1, L1 (⇒)**: valuation lower bound on the elementary symmetric functions,
+i • inf_j v(r_j) ≤ v(eᵢ(r)) in the additive value group Γ₀ — the blueprint §1.9
+display under the three documented token repairs (`ᵒᵈ` codomain,
+`OrderDual.ofDual` reads, `Multiset.esymm` via `Finset.univ.val.map`). The
+`AddValuation.ofValuation` specialization of `addValuation_esymm_ge` is
+definitional. -/
+theorem val_esymm_ge {n : ℕ}
+    {K Γ₀ : Type*} [Field K] [LinearOrderedAddCommGroupWithTop Γ₀]
+    (v : Valuation K (Multiplicative Γ₀ᵒᵈ)) (r : Fin n → K) (i : ℕ) :
+    i • (Finset.univ.inf fun j => OrderDual.ofDual (v (r j)).toAdd) ≤
+      OrderDual.ofDual (v ((Finset.univ.val.map r).esymm i)).toAdd :=
+  addValuation_esymm_ge (AddValuation.ofValuation v) r i
+
 end LeanUrat.Scaffold

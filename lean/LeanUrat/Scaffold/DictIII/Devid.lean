@@ -961,4 +961,465 @@ theorem gd3_min_gate :
   have hev := congrArg (Polynomial.eval 0) hXT
   simp at hev
 
+/-! ## Unit III-G23 — POS-g(iv): sub-multiplicativity at order i+1 (GD23 §3)
+
+BP_III §1 displays NO Lean statement for III-G23 (unit-table row 758 only;
+"Module not §1-displayed").  Following this module's III-G18/G19/G22
+convention, the statement layer below is completed from the source of
+record: `lean/notes/openmath/GD23_phaseB_verifybrief_rev4.md`, §1.2 ("Order
+i+1": the `w_{i+1}` development definition) and §3 (Lemma POS-g REV 2,
+clause (iv) + the division-control display).  The unit's dependency row
+names III-G17 (`devid`); `devid` is UNLANDED and its hard half `devid_le`
+(III-G16) is REFUTED AS STATED at the abstract `ValGr` interface (see the
+module-header III-G16 record), so the division control enters as the NAMED
+hypothesis row `hdev` of `wSucc_submul` — see that docstring's ledger. -/
+
+/-- III-G23 support — the zero polynomial develops to `0` in every slot
+(`0 %ₘ Φ = 0`, `0 /ₘ Φ = 0`, inducting along the development). -/
+theorem devCoeff_zero_poly {K : Type*} [CommRing K] (Φ : Polynomial K) :
+    ∀ j, devCoeff Φ (0 : Polynomial K) j = 0
+  | 0 => by simp only [devCoeff, Polynomial.zero_modByMonic]
+  | j + 1 => by
+    simp only [devCoeff, Polynomial.zero_divByMonic]
+    exact devCoeff_zero_poly Φ j
+
+/-- III-G23 support — `n • ⊤ = ⊤` in `WithTop ℤ` for `1 ≤ n` (no Mathlib
+form at `WithTop`; `Filter.nsmul_top` is the filter lattice). -/
+theorem nsmul_top_of_one_le {n : ℕ} (hn : 1 ≤ n) : n • (⊤ : WithTop ℤ) = ⊤ := by
+  obtain ⟨m, rfl⟩ : ∃ m, n = m + 1 := ⟨n - 1, by omega⟩
+  rw [succ_nsmul]
+  exact add_top _
+
+/-- III-G23 support — the order-(i+1) development weight (GD23 rev-4 §1.2,
+"Order i+1"): from the order-i weight `w` (the brief's `w_i`), its key `Φ`
+(`Φ_i`), the ramification datum `e` (`e_i`) and the augmented key value `γ`
+(`γ_{i+1}`, integral normalization, carried in `ℤ`), the next weight reads
+the `Φ`-adic development from below:
+`wSucc w Φ e γ B = min_j (e·w(C_j) + j·γ)` — same `Finset.inf'` rendering
+and slot range as `minDev` above. -/
+noncomputable def wSucc {K : Type*} [CommRing K] (w : Polynomial K → WithTop ℤ)
+    (Φ : Polynomial K) (e : ℕ) (γ : ℤ) (B : Polynomial K) : WithTop ℤ :=
+  Finset.inf' (Finset.range (B.natDegree + 1)) (by simp) fun j =>
+    e • w (devCoeff Φ B j) + j • (γ : WithTop ℤ)
+
+/-- III-G23 support — `wSucc` sends the zero polynomial to `⊤` (its only
+slot is `e • w 0 = ⊤` for positive `e`). -/
+theorem wSucc_zero {K : Type*} [CommRing K] {w : Polynomial K → WithTop ℤ}
+    (hval : IsPolyValuation w) (Φ : Polynomial K) {e : ℕ} (he : 1 ≤ e) (γ : ℤ) :
+    wSucc w Φ e γ 0 = ⊤ := by
+  unfold wSucc
+  refine le_antisymm le_top (Finset.le_inf' _ _ fun j _ => ?_)
+  have hj : e • w (devCoeff Φ (0 : Polynomial K) j) + j • ((γ : ℤ) : WithTop ℤ)
+      = ⊤ := by
+    rw [devCoeff_zero_poly, hval.zero, nsmul_top_of_one_le he, top_add]
+  exact hj.ge
+
+/-- III-G23 support — uniqueness of the Φ-adic development (the display's
+"the development is unique" step): any expansion `B = Σ_{k<N} Q_k·Φ^k` with
+`deg Q_k < deg Φ` reads off slotwise as `devCoeff Φ B r = Q r` for `r < N`.
+Via `Polynomial.div_modByMonic_unique`, inducting along the development. -/
+theorem devCoeff_eq_of_eq_sum {K : Type*} [CommRing K] {Φ : Polynomial K}
+    (hΦ : Φ.Monic) :
+    ∀ (N : ℕ) (Q : ℕ → Polynomial K) (B : Polynomial K),
+      (∀ k, (Q k).degree < Φ.degree) →
+      B = ∑ k ∈ Finset.range N, Q k * Φ ^ k →
+      ∀ r, r < N → devCoeff Φ B r = Q r := by
+  intro N
+  induction N with
+  | zero => intro Q B _ _ r hr; exact absurd hr (Nat.not_lt_zero r)
+  | succ N ih =>
+    intro Q B hdeg hB r hr
+    have hterm : ∑ k ∈ Finset.range N, Φ * (Q (k + 1) * Φ ^ k)
+        = ∑ k ∈ Finset.range N, Q (k + 1) * Φ ^ (k + 1) :=
+      Finset.sum_congr rfl fun k _ => by ring
+    have hsum' : Q 0 + Φ * ∑ k ∈ Finset.range N, Q (k + 1) * Φ ^ k = B := by
+      conv_rhs => rw [hB]
+      simp only [Finset.sum_range_succ' (fun k => Q k * Φ ^ k) N, pow_zero,
+        mul_one]
+      rw [Finset.mul_sum, hterm, add_comm (Q 0)]
+    obtain ⟨hdiv, hmod⟩ := Polynomial.div_modByMonic_unique
+      (∑ k ∈ Finset.range N, Q (k + 1) * Φ ^ k) (Q 0) hΦ ⟨hsum', hdeg 0⟩
+    cases r with
+    | zero => simpa only [devCoeff] using hmod
+    | succ r =>
+      simp only [devCoeff]
+      rw [hdiv]
+      exact ih (fun k => Q (k + 1)) _ (fun k => hdeg (k + 1)) rfl r
+        (Nat.lt_of_succ_lt_succ hr)
+
+/-- III-G23 support — the division-control split of a product of development
+coefficients (the display's `P_{ts} = c_{ts} + d_{ts}·Φ_i`): the low slot
+`c_{ts}`. -/
+noncomputable def devMulC {K : Type*} [CommRing K] (Φ A B : Polynomial K)
+    (t s : ℕ) : Polynomial K :=
+  (devCoeff Φ A t * devCoeff Φ B s) %ₘ Φ
+
+/-- III-G23 support — the carry slot `d_{ts}` of the division-control split. -/
+noncomputable def devMulD {K : Type*} [CommRing K] (Φ A B : Polynomial K)
+    (t s : ℕ) : Polynomial K :=
+  (devCoeff Φ A t * devCoeff Φ B s) /ₘ Φ
+
+/-- III-G23 support — the carry slot has degree `< deg Φ` (the display's
+"deg c, deg d < deg Φ_i — the full Φ_i-development of such P"): a product of
+two development coefficients has `natDegree ≤ 2·deg Φ − 2`, so its monic
+quotient drops below `deg Φ`. -/
+theorem devMulD_degree_lt {K : Type*} [CommRing K] {Φ : Polynomial K}
+    (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree) (A B : Polynomial K) (t s : ℕ) :
+    (devMulD Φ A B t s).degree < Φ.degree := by
+  unfold devMulD
+  have h2 := Polynomial.natDegree_divByMonic (devCoeff Φ A t * devCoeff Φ B s) hΦ
+  have h3 := Polynomial.natDegree_mul_le (p := devCoeff Φ A t)
+    (q := devCoeff Φ B s)
+  have h4 := devCoeff_natDegree_lt hΦ hd A t
+  have h5 := devCoeff_natDegree_lt hΦ hd B s
+  exact Polynomial.degree_lt_degree (by omega)
+
+/-- III-G23 support — the assembled slot-`r` coefficient of `A·B`'s
+Φ-development (the display's "the slot-r coefficient of AB's
+Φ_i-development is `Σ_{t+s=r} c_{ts} + Σ_{t+s=r−1} d_{ts}`"). -/
+noncomputable def devMulSlot {K : Type*} [CommRing K] (Φ A B : Polynomial K)
+    (r : ℕ) : Polynomial K :=
+  (∑ t ∈ Finset.range (A.natDegree + 1), ∑ s ∈ Finset.range (B.natDegree + 1),
+    if t + s = r then devMulC Φ A B t s else 0)
+  + ∑ t ∈ Finset.range (A.natDegree + 1), ∑ s ∈ Finset.range (B.natDegree + 1),
+      if t + s + 1 = r then devMulD Φ A B t s else 0
+
+/-- III-G23 support — every assembled slot has degree `< deg Φ` ("degrees
+`< deg Φ_i`, and the development is unique"). -/
+theorem devMulSlot_degree_lt {K : Type*} [CommRing K] [Nontrivial K]
+    {Φ : Polynomial K} (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree)
+    (A B : Polynomial K) (r : ℕ) : (devMulSlot Φ A B r).degree < Φ.degree := by
+  have hbot : (⊥ : WithBot ℕ) < Φ.degree := by
+    rw [Polynomial.degree_eq_natDegree hΦ.ne_zero]
+    exact WithBot.bot_lt_coe _
+  have hpiece : ∀ F : ℕ → ℕ → Polynomial K,
+      (∀ t s, (F t s).degree < Φ.degree) →
+      (∑ t ∈ Finset.range (A.natDegree + 1),
+        ∑ s ∈ Finset.range (B.natDegree + 1), F t s).degree < Φ.degree := by
+    intro F hF
+    refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _)
+      ((Finset.sup_lt_iff hbot).mpr fun t _ => ?_)
+    exact lt_of_le_of_lt (Polynomial.degree_sum_le _ _)
+      ((Finset.sup_lt_iff hbot).mpr fun s _ => hF t s)
+  refine lt_of_le_of_lt (Polynomial.degree_add_le _ _) (max_lt ?_ ?_)
+  · refine hpiece _ fun t s => ?_
+    split_ifs
+    · exact Polynomial.degree_modByMonic_lt _ hΦ
+    · rw [Polynomial.degree_zero]; exact hbot
+  · refine hpiece _ fun t s => ?_
+    split_ifs
+    · exact devMulD_degree_lt hΦ hd A B t s
+    · rw [Polynomial.degree_zero]; exact hbot
+
+/-- III-G23 support — the product's development identity (the display's
+"AB = Σ_{t,s} a_t b_s Φ_i^{t+s}, and each P_{ts} divides as
+c_{ts} + d_{ts}Φ_i", re-assembled by slot):
+`A·B = Σ_{r < NA+NB+2} slot_r·Φ^r` with the assembled `devMulSlot` slots. -/
+theorem mul_eq_sum_devMulSlot {K : Type*} [CommRing K] {Φ : Polynomial K}
+    (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree) (A B : Polynomial K) :
+    A * B = ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+      devMulSlot Φ A B r * Φ ^ r := by
+  have hterm : ∀ t ∈ Finset.range (A.natDegree + 1),
+      ∀ s ∈ Finset.range (B.natDegree + 1),
+      devCoeff Φ A t * Φ ^ t * (devCoeff Φ B s * Φ ^ s)
+        = (∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+            (if t + s = r then devMulC Φ A B t s else 0) * Φ ^ r)
+          + ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+              (if t + s + 1 = r then devMulD Φ A B t s else 0) * Φ ^ r := by
+    intro t ht s hs
+    have ht' := Finset.mem_range.mp ht
+    have hs' := Finset.mem_range.mp hs
+    have h1 : (∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+        (if t + s = r then devMulC Φ A B t s else 0) * Φ ^ r)
+        = devMulC Φ A B t s * Φ ^ (t + s) := by
+      simp only [ite_mul, zero_mul]
+      rw [Finset.sum_ite_eq, if_pos (Finset.mem_range.mpr (by omega))]
+    have h2 : (∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+        (if t + s + 1 = r then devMulD Φ A B t s else 0) * Φ ^ r)
+        = devMulD Φ A B t s * Φ ^ (t + s + 1) := by
+      simp only [ite_mul, zero_mul]
+      rw [Finset.sum_ite_eq, if_pos (Finset.mem_range.mpr (by omega))]
+    rw [h1, h2]
+    have hcd : devMulC Φ A B t s + Φ * devMulD Φ A B t s
+        = devCoeff Φ A t * devCoeff Φ B s := by
+      unfold devMulC devMulD
+      exact Polynomial.modByMonic_add_div _ Φ
+    calc devCoeff Φ A t * Φ ^ t * (devCoeff Φ B s * Φ ^ s)
+        = devCoeff Φ A t * devCoeff Φ B s * Φ ^ (t + s) := by
+          rw [pow_add]; ring
+      _ = (devMulC Φ A B t s + Φ * devMulD Φ A B t s) * Φ ^ (t + s) := by
+          rw [hcd]
+      _ = devMulC Φ A B t s * Φ ^ (t + s)
+          + devMulD Φ A B t s * Φ ^ (t + s + 1) := by
+          rw [pow_succ]; ring
+  have hswap : ∀ F : ℕ → ℕ → ℕ → Polynomial K,
+      ∑ t ∈ Finset.range (A.natDegree + 1),
+        ∑ s ∈ Finset.range (B.natDegree + 1),
+          ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2), F t s r
+      = ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+          ∑ t ∈ Finset.range (A.natDegree + 1),
+            ∑ s ∈ Finset.range (B.natDegree + 1), F t s r := by
+    intro F
+    calc ∑ t ∈ Finset.range (A.natDegree + 1),
+          ∑ s ∈ Finset.range (B.natDegree + 1),
+            ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2), F t s r
+        = ∑ t ∈ Finset.range (A.natDegree + 1),
+            ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+              ∑ s ∈ Finset.range (B.natDegree + 1), F t s r :=
+          Finset.sum_congr rfl fun t _ => Finset.sum_comm
+      _ = ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+            ∑ t ∈ Finset.range (A.natDegree + 1),
+              ∑ s ∈ Finset.range (B.natDegree + 1), F t s r := Finset.sum_comm
+  calc A * B
+      = (∑ t ∈ Finset.range (A.natDegree + 1), devCoeff Φ A t * Φ ^ t)
+        * ∑ s ∈ Finset.range (B.natDegree + 1), devCoeff Φ B s * Φ ^ s := by
+        rw [devCoeff_sum Φ hΦ hd A, devCoeff_sum Φ hΦ hd B]
+    _ = ∑ t ∈ Finset.range (A.natDegree + 1),
+          ∑ s ∈ Finset.range (B.natDegree + 1),
+            devCoeff Φ A t * Φ ^ t * (devCoeff Φ B s * Φ ^ s) :=
+        Finset.sum_mul_sum _ _ _ _
+    _ = ∑ t ∈ Finset.range (A.natDegree + 1),
+          ∑ s ∈ Finset.range (B.natDegree + 1),
+            ((∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+              (if t + s = r then devMulC Φ A B t s else 0) * Φ ^ r)
+              + ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+                  (if t + s + 1 = r then devMulD Φ A B t s else 0) * Φ ^ r) := by
+        refine Finset.sum_congr rfl fun t ht => Finset.sum_congr rfl fun s hs => ?_
+        exact hterm t ht s hs
+    _ = (∑ t ∈ Finset.range (A.natDegree + 1),
+          ∑ s ∈ Finset.range (B.natDegree + 1),
+            ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+              (if t + s = r then devMulC Φ A B t s else 0) * Φ ^ r)
+        + ∑ t ∈ Finset.range (A.natDegree + 1),
+            ∑ s ∈ Finset.range (B.natDegree + 1),
+              ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+                (if t + s + 1 = r then devMulD Φ A B t s else 0) * Φ ^ r := by
+        simp only [Finset.sum_add_distrib]
+    _ = (∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+          ∑ t ∈ Finset.range (A.natDegree + 1),
+            ∑ s ∈ Finset.range (B.natDegree + 1),
+              (if t + s = r then devMulC Φ A B t s else 0) * Φ ^ r)
+        + ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+            ∑ t ∈ Finset.range (A.natDegree + 1),
+              ∑ s ∈ Finset.range (B.natDegree + 1),
+                (if t + s + 1 = r then devMulD Φ A B t s else 0) * Φ ^ r := by
+        rw [hswap, hswap]
+    _ = ∑ r ∈ Finset.range (A.natDegree + B.natDegree + 2),
+          devMulSlot Φ A B r * Φ ^ r := by
+        rw [← Finset.sum_add_distrib]
+        refine Finset.sum_congr rfl fun r _ => ?_
+        unfold devMulSlot
+        simp only [add_mul, Finset.sum_mul]
+
+/-- Unit III-G23 — Lemma POS-g clause (iv) at order i+1 (GD23 rev-4 §3,
+POS-g REV 2 + the division-control display; BP_III unit-table row 758:
+"POS-g(iv) submultiplicativity at order i+1 GIVEN (V1)_i + KPa (division
+control display)"; proof sketch "DEVID at (w_i, Φ_i) gives (α)/(β); slot
+bookkeeping").  BP_III §1 displays no Lean statement for this unit, so —
+the III-G18/G19/G22 convention — the statement is completed from the source
+of record (GD23 rev-4 §1.2 "Order i+1" + §3 "Sub-multiplicativity of
+w_{i+1}, given the above").  Completion ledger:
+* `(V1)_i` = `hval : IsPolyValuation w` (the III-H8 frame): the order-i
+  weight is a valuation at the state below;
+* `hΦ`/`hd` are the two carrier rows of `(KP_{i−1})`'s (KPa)-block that the
+  slot bookkeeping consumes directly (`monic`, `positiveDegree`) — the same
+  extraction convention as `devid_ge` (III-G14);
+* `hdev` — THE DIVISION-CONTROL SUPPLY: the "≤" half of Theorem DEVID at
+  `(w_i, Φ_i)`, scoped exactly to the display's "any nonzero P of degree
+  ≤ 2·deg Φ_i − 2".  The source derives it from "exactly the hypotheses of
+  Theorem DEVID (§4) at (w_i, Φ_i)"; it CANNOT be consumed as a theorem
+  here because `devid_le` (unit III-G16) is REFUTED AS STATED at the
+  abstract `ValGr` interface (module-header III-G16 record) and the
+  assembled `devid` (III-G17) is unlanded pending that statement
+  adjudication.  It is therefore a NAMED hypothesis row (not an axiom, not
+  discharged by fiat); once an adjudicated DEVID lands, discharge it as
+  `fun P _ _ => (devid …).le`, collapsing this unit's conditionality to
+  exactly "(V1)_i + KPa".  (α) `w(c_{ts}) ≥ w(P_{ts})` and (β)
+  `w(d_{ts}) + w(Φ) ≥ w(P_{ts})` are read off `hdev` at slots 0 and 1;
+* `e`/`γ`/`h` are §1.2's tower data at the read: `e = e_i ≥ 1` (`he`),
+  `h = h_i ≥ 1` (`hh`), and `hγ` renders `γ_{i+1} := e_i·w_i(Φ_i) + h_i`
+  (in particular pinning `w Φ ≠ ⊤`); the coprimality of `(e_i, h_i)` is
+  not consumed and NOT assumed;
+* conclusion: the display's `w_{i+1}(AB) ≥ w_{i+1}(A) + w_{i+1}(B)` in `≤`
+  form at the `wSucc` rendering — the same shape as §1.4's order-1
+  `w1_submul_heavyCarry` row (III-G7).  The display's "carry terms strictly
+  heavier by h_i" enters as `h ≥ 0` slack only; the STRICT carry refinement
+  is the order-1 unit III-G7's shape and is not claimed here. -/
+theorem wSucc_submul {K : Type*} [CommRing K]
+    (w : Polynomial K → WithTop ℤ) (hval : IsPolyValuation w)
+    (Φ : Polynomial K) (hΦ : Φ.Monic) (hd : 1 ≤ Φ.natDegree)
+    (e : ℕ) (he : 1 ≤ e) (γ h : ℤ) (hh : 1 ≤ h)
+    (hγ : (γ : WithTop ℤ) = e • w Φ + (h : WithTop ℤ))
+    (hdev : ∀ P : Polynomial K, P ≠ 0 → P.natDegree ≤ 2 * Φ.natDegree - 2 →
+      w P ≤ minDev w Φ P)
+    (A B : Polynomial K) :
+    wSucc w Φ e γ A + wSucc w Φ e γ B ≤ wSucc w Φ e γ (A * B) := by
+  by_cases hA : A = 0
+  · rw [hA, zero_mul, wSucc_zero hval Φ he γ]; exact le_top
+  by_cases hB : B = 0
+  · rw [hB, mul_zero, wSucc_zero hval Φ he γ]; exact le_top
+  haveI : Nontrivial K := by
+    rcases subsingleton_or_nontrivial K with hK | hK
+    · exact absurd (Subsingleton.elim A 0) hA
+    · exact hK
+  -- the degree bound feeding the division-control supply
+  have hPdeg : ∀ t s : ℕ,
+      (devCoeff Φ A t * devCoeff Φ B s).natDegree ≤ 2 * Φ.natDegree - 2 := by
+    intro t s
+    have h3 := Polynomial.natDegree_mul_le (p := devCoeff Φ A t)
+      (q := devCoeff Φ B s)
+    have h4 := devCoeff_natDegree_lt hΦ hd A t
+    have h5 := devCoeff_natDegree_lt hΦ hd B s
+    omega
+  -- (α): the low slot is no lighter than the product
+  have halpha : ∀ t s : ℕ,
+      w (devCoeff Φ A t * devCoeff Φ B s) ≤ w (devMulC Φ A B t s) := by
+    intro t s
+    by_cases hP : devCoeff Φ A t * devCoeff Φ B s = 0
+    · have hc0 : devMulC Φ A B t s = 0 := by
+        unfold devMulC
+        rw [hP, Polynomial.zero_modByMonic]
+      exact le_of_eq (by rw [hP, hc0])
+    · calc w (devCoeff Φ A t * devCoeff Φ B s)
+          ≤ minDev w Φ (devCoeff Φ A t * devCoeff Φ B s) :=
+            hdev _ hP (hPdeg t s)
+        _ ≤ w (devCoeff Φ (devCoeff Φ A t * devCoeff Φ B s) 0) + (0 : ℕ) • w Φ :=
+            Finset.inf'_le _ (Finset.mem_range.mpr (Nat.succ_pos _))
+        _ = w (devMulC Φ A B t s) := by
+            unfold devMulC
+            simp only [devCoeff, zero_nsmul, add_zero]
+  -- (β): the carry slot plus the key weight is no lighter than the product
+  have hbeta : ∀ t s : ℕ,
+      w (devCoeff Φ A t * devCoeff Φ B s) ≤ w (devMulD Φ A B t s) + w Φ := by
+    intro t s
+    by_cases hD : devMulD Φ A B t s = 0
+    · rw [hD, hval.zero, top_add]; exact le_top
+    · have hP : devCoeff Φ A t * devCoeff Φ B s ≠ 0 := by
+        intro h0
+        refine hD ?_
+        unfold devMulD
+        rw [h0, Polynomial.zero_divByMonic]
+      have h1n : 1 ≤ (devCoeff Φ A t * devCoeff Φ B s).natDegree := by
+        by_contra hlt
+        refine hD ?_
+        unfold devMulD
+        exact (Polynomial.divByMonic_eq_zero_iff hΦ).mpr
+          (Polynomial.degree_lt_degree (by omega))
+      have hdc1 : devCoeff Φ (devCoeff Φ A t * devCoeff Φ B s) 1
+          = devMulD Φ A B t s := by
+        simp only [devCoeff]
+        exact (Polynomial.modByMonic_eq_self_iff hΦ).mpr
+          (devMulD_degree_lt hΦ hd A B t s)
+      calc w (devCoeff Φ A t * devCoeff Φ B s)
+          ≤ minDev w Φ (devCoeff Φ A t * devCoeff Φ B s) :=
+            hdev _ hP (hPdeg t s)
+        _ ≤ w (devCoeff Φ (devCoeff Φ A t * devCoeff Φ B s) 1) + (1 : ℕ) • w Φ :=
+            Finset.inf'_le _ (Finset.mem_range.mpr (by omega))
+        _ = w (devMulD Φ A B t s) + w Φ := by rw [hdc1, one_nsmul]
+  -- wSucc's slots bound it from above, definitionally
+  have hwA : ∀ t ∈ Finset.range (A.natDegree + 1),
+      wSucc w Φ e γ A ≤ e • w (devCoeff Φ A t) + t • (γ : WithTop ℤ) :=
+    fun t ht => Finset.inf'_le _ ht
+  have hwB : ∀ s ∈ Finset.range (B.natDegree + 1),
+      wSucc w Φ e γ B ≤ e • w (devCoeff Φ B s) + s • (γ : WithTop ℤ) :=
+    fun s hs => Finset.inf'_le _ hs
+  -- the core product bound: each (t,s) contribution dominates the target
+  have hcore : ∀ t ∈ Finset.range (A.natDegree + 1),
+      ∀ s ∈ Finset.range (B.natDegree + 1),
+      wSucc w Φ e γ A + wSucc w Φ e γ B
+        ≤ e • w (devCoeff Φ A t * devCoeff Φ B s) + (t + s) • (γ : WithTop ℤ) := by
+    intro t ht s hs
+    refine (add_le_add (hwA t ht) (hwB s hs)).trans (le_of_eq ?_)
+    simp only [hval.mul, nsmul_add, add_nsmul]
+    abel
+  -- the double-sum reduction under e•w(–) + c₀ (attained inf + ultrametric)
+  have hsum : ∀ (T : Finset ℕ) (f : ℕ → Polynomial K) (c₀ : WithTop ℤ),
+      (∀ i ∈ T, wSucc w Φ e γ A + wSucc w Φ e γ B ≤ e • w (f i) + c₀) →
+      wSucc w Φ e γ A + wSucc w Φ e γ B ≤ e • w (∑ i ∈ T, f i) + c₀ := by
+    intro T f c₀ hleaf
+    rcases T.eq_empty_or_nonempty with rfl | hne
+    · rw [Finset.sum_empty, hval.zero, nsmul_top_of_one_le he, top_add]
+      exact le_top
+    · obtain ⟨i₀, hi₀, heq⟩ := Finset.exists_mem_eq_inf' hne fun i => w (f i)
+      have hmin : w (f i₀) ≤ w (∑ i ∈ T, f i) := by
+        rw [← heq]
+        exact hval.le_w_sum T f _ fun j hj => Finset.inf'_le _ hj
+      exact (hleaf i₀ hi₀).trans
+        (add_le_add (nsmul_le_nsmul_right hmin e) le_rfl)
+  -- c-part column bound
+  have hSc : ∀ r : ℕ,
+      wSucc w Φ e γ A + wSucc w Φ e γ B
+        ≤ e • w (∑ t ∈ Finset.range (A.natDegree + 1),
+            ∑ s ∈ Finset.range (B.natDegree + 1),
+              if t + s = r then devMulC Φ A B t s else 0)
+          + r • (γ : WithTop ℤ) := by
+    intro r
+    refine hsum _ _ _ fun t ht => hsum _ _ _ fun s hs => ?_
+    split_ifs with hts
+    · subst hts
+      exact (hcore t ht s hs).trans
+        (add_le_add (nsmul_le_nsmul_right (halpha t s) e) le_rfl)
+    · rw [hval.zero, nsmul_top_of_one_le he, top_add]
+      exact le_top
+  -- d-part column bound (the carry, heavier by h ≥ 1 ≥ 0)
+  have hSd : ∀ r : ℕ,
+      wSucc w Φ e γ A + wSucc w Φ e γ B
+        ≤ e • w (∑ t ∈ Finset.range (A.natDegree + 1),
+            ∑ s ∈ Finset.range (B.natDegree + 1),
+              if t + s + 1 = r then devMulD Φ A B t s else 0)
+          + r • (γ : WithTop ℤ) := by
+    intro r
+    refine hsum _ _ _ fun t ht => hsum _ _ _ fun s hs => ?_
+    split_ifs with hts
+    · subst hts
+      refine (hcore t ht s hs).trans ?_
+      calc e • w (devCoeff Φ A t * devCoeff Φ B s) + (t + s) • (γ : WithTop ℤ)
+          ≤ e • (w (devMulD Φ A B t s) + w Φ) + (t + s) • (γ : WithTop ℤ) :=
+            add_le_add (nsmul_le_nsmul_right (hbeta t s) e) le_rfl
+        _ ≤ e • (w (devMulD Φ A B t s) + w Φ) + (t + s) • (γ : WithTop ℤ)
+            + (h : WithTop ℤ) :=
+            le_add_of_nonneg_right (by exact_mod_cast (show (0 : ℤ) ≤ h by omega))
+        _ = e • w (devMulD Φ A B t s) + (t + s + 1) • (γ : WithTop ℤ) := by
+            simp only [succ_nsmul, hγ, nsmul_add]
+            abel
+    · rw [hval.zero, nsmul_top_of_one_le he, top_add]
+      exact le_top
+  -- assemble along the slots of A·B (ultrametric across the c/d split)
+  have hslot : ∀ r : ℕ, r < A.natDegree + B.natDegree + 2 →
+      wSucc w Φ e γ A + wSucc w Φ e γ B
+        ≤ e • w (devMulSlot Φ A B r) + r • (γ : WithTop ℤ) := by
+    intro r _
+    unfold devMulSlot
+    have hadd := hval.add
+      (∑ t ∈ Finset.range (A.natDegree + 1),
+        ∑ s ∈ Finset.range (B.natDegree + 1),
+          if t + s = r then devMulC Φ A B t s else 0)
+      (∑ t ∈ Finset.range (A.natDegree + 1),
+        ∑ s ∈ Finset.range (B.natDegree + 1),
+          if t + s + 1 = r then devMulD Φ A B t s else 0)
+    rcases le_total
+      (w (∑ t ∈ Finset.range (A.natDegree + 1),
+        ∑ s ∈ Finset.range (B.natDegree + 1),
+          if t + s = r then devMulC Φ A B t s else 0))
+      (w (∑ t ∈ Finset.range (A.natDegree + 1),
+        ∑ s ∈ Finset.range (B.natDegree + 1),
+          if t + s + 1 = r then devMulD Φ A B t s else 0)) with hcs | hcs
+    · rw [min_eq_left hcs] at hadd
+      exact (hSc r).trans (add_le_add (nsmul_le_nsmul_right hadd e) le_rfl)
+    · rw [min_eq_right hcs] at hadd
+      exact (hSd r).trans (add_le_add (nsmul_le_nsmul_right hadd e) le_rfl)
+  -- finish: the inf' over A·B's slots, each identified by dev uniqueness
+  unfold wSucc
+  refine Finset.le_inf' _ _ fun r hr => ?_
+  have hrN : r < A.natDegree + B.natDegree + 2 := by
+    have h3 := Polynomial.natDegree_mul_le (p := A) (q := B)
+    have h6 := Finset.mem_range.mp hr
+    omega
+  have hdc : devCoeff Φ (A * B) r = devMulSlot Φ A B r :=
+    devCoeff_eq_of_eq_sum hΦ (A.natDegree + B.natDegree + 2) (devMulSlot Φ A B)
+      (A * B) (fun k => devMulSlot_degree_lt hΦ hd A B k)
+      (mul_eq_sum_devMulSlot hΦ hd A B) r hrN
+  rw [hdc]
+  exact hslot r hrN
+
 end LeanUrat.Scaffold.DictIII

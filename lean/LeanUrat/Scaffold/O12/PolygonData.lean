@@ -430,4 +430,170 @@ theorem patt_mult_lt {e : ℕ} (he : 1 ≤ e) (π : Multiset (ℕ+ × ℕ+))
     exact hme
   exact hne (by rw [hπ', hDp, hmp, Multiset.cons_zero])
 
+/-! ## Unit II-P4: `BumpAdmissible`, `bump`, `cPrime`, `elemMove_Npg`, `one_le_cPrime`
+
+L6b(i), the conditional elementary move (REV2 finding 8: `bump` requires
+`BumpAdmissible`, so the last-face and ordering counterexamples are excluded).
+Transcription notes: (a) the blueprint's `by omega` for the index bound
+`κ.faces.length - 1 < κ.faces.length` cannot see `h : κ.faces ≠ []`, so the
+(proof-irrelevant) Fin proof component is `Nat.sub_lt (List.length_pos_of_ne_nil h)
+Nat.one_pos`, exactly as in the landed `SlopeTuple.hlt1`; (b) ℕ+-to-ℚ casts are
+routed explicitly through ℕ, matching the landed `SlopeTuple`/`heights` cast forms.
+
+Sketch (L6b(i) proof): the bump adds exactly `1` to slope `j` and changes nothing
+else, so column `i` gains the width of the part of face `j` lying right of `i` —
+`L_j` left of the face, `x_{j+1} − i` inside it, `0` right of it (`heights_bump`).
+Each gain is a natural number, so ceilings translate (`Int.ceil_add_natCast`), and
+summing the columns gives `x_j·L_j` (left region) plus the Gauss sum
+`L_j(L_j+1)/2` (inside the face) — that is, `cPrime` (`sum_max_sub_max`). -/
+
+/-- Admissibility of the elementary numerator change. It is deliberately false when
+the change would break slope order or the terminal bound `s_k < 1`. -/
+def SlopeTuple.BumpAdmissible {κ : FaceKind e} (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) : Prop :=
+  let a' := fun i => if i = j then (s.a i : ℕ) + (κ.faces.get i).2 else s.a i
+  (∀ i i', i < i' →
+    (a' i' : ℚ) / (((κ.faces.get i').2 : ℕ) : ℚ) <
+      (a' i : ℚ) / (((κ.faces.get i).2 : ℕ) : ℚ)) ∧
+  (∀ h : κ.faces ≠ [],
+    (a' ⟨κ.faces.length - 1,
+        Nat.sub_lt (List.length_pos_of_ne_nil h) Nat.one_pos⟩ : ℚ) /
+      (((κ.faces.getLast h).2 : ℕ) : ℚ) < 1)
+
+/-- The elementary numerator change at face `j`: `a_j ↦ a_j + b_j` (slope `+ 1`),
+every other face unchanged. Coprimality is preserved (`gcd(a+b,b) = gcd(a,b)`);
+the order and terminal fields are exactly the two `BumpAdmissible` clauses. -/
+noncomputable def SlopeTuple.bump {κ : FaceKind e} (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : s.BumpAdmissible j) : SlopeTuple κ where
+  a := fun i => if i = j then s.a i + (κ.faces.get i).2 else s.a i
+  hcop := by
+    intro i
+    split_ifs with hij
+    · rw [PNat.add_coe]
+      exact Nat.coprime_add_self_left.mpr (s.hcop i)
+    · exact s.hcop i
+  hdesc := by
+    intro i i' hlt
+    have h1 := hj.1 i i' hlt
+    simpa only [apply_ite (fun t : ℕ+ => (t : ℕ)), PNat.add_coe] using h1
+  hlt1 := by
+    intro h
+    have h2 := hj.2 h
+    simpa only [apply_ite (fun t : ℕ+ => (t : ℕ)), PNat.add_coe] using h2
+
+@[simp] theorem SlopeTuple.bump_a {κ : FaceKind e} (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : s.BumpAdmissible j) (i : Fin κ.faces.length) :
+    (s.bump j hj).a i = if i = j then s.a i + (κ.faces.get i).2 else s.a i := rfl
+
+/-- L6b(i), conditional elementary move. -/
+def cPrime (κ : FaceKind e) (j : Fin κ.faces.length) : ℕ :=
+  κ.x j * (κ.faces.get j).1 +
+    (κ.faces.get j).1 * ((κ.faces.get j).1 + 1) / 2
+
+/-- Column-sum arithmetic for the elementary move: summing the width of the
+face part right of column `i` (face spanning `[A, A+L] ⊆ [0, E]`) over the `E`
+columns: `A` columns see the full width `L`, the columns inside the face see the
+Gauss run `L, L−1, …, 1`, the columns right of the face see `0`. -/
+theorem sum_max_sub_max (A L E : ℕ) (h : A + L ≤ E) :
+    ∑ i ∈ Finset.range E, (max (A + L) i - max A i) =
+      A * L + L * (L + 1) / 2 := by
+  rw [Finset.range_eq_Ico,
+    ← Finset.sum_Ico_consecutive _ (Nat.zero_le (A + L)) h,
+    ← Finset.sum_Ico_consecutive _ (Nat.zero_le A) (Nat.le_add_right A L)]
+  have h1 : ∑ i ∈ Finset.Ico 0 A, (max (A + L) i - max A i) = A * L := by
+    have hterm : ∀ i ∈ Finset.Ico 0 A, max (A + L) i - max A i = L := by
+      intro i hi
+      have := (Finset.mem_Ico.mp hi).2
+      omega
+    rw [Finset.sum_congr rfl hterm, Finset.sum_const, Nat.card_Ico, Nat.sub_zero,
+      smul_eq_mul]
+  have h2 : ∑ i ∈ Finset.Ico A (A + L), (max (A + L) i - max A i) =
+      L * (L + 1) / 2 := by
+    rw [Finset.sum_Ico_eq_sum_range]
+    have hAL : A + L - A = L := by omega
+    rw [hAL]
+    have hterm : ∀ t ∈ Finset.range L,
+        max (A + L) (A + t) - max A (A + t) = L - t := by
+      intro t ht
+      have := Finset.mem_range.mp ht
+      omega
+    rw [Finset.sum_congr rfl hterm, ← Finset.sum_range_reflect (fun t => L - t) L]
+    have hterm2 : ∀ t ∈ Finset.range L, L - (L - 1 - t) = t + 1 := by
+      intro t ht
+      have := Finset.mem_range.mp ht
+      omega
+    rw [Finset.sum_congr rfl hterm2]
+    have hshift : ∑ t ∈ Finset.range L, (t + 1) = ∑ t ∈ Finset.range (L + 1), t := by
+      rw [Finset.sum_range_succ', Nat.add_zero]
+    rw [hshift, Finset.sum_range_id, Nat.add_sub_cancel, Nat.mul_comm]
+  have h3 : ∑ i ∈ Finset.Ico (A + L) E, (max (A + L) i - max A i) = 0 := by
+    apply Finset.sum_eq_zero
+    intro i hi
+    have := (Finset.mem_Ico.mp hi).1
+    omega
+  rw [h1, h2, h3, Nat.add_zero]
+
+/-- The column identity of the elementary move: the bumped polygon's height at
+column `i` is the old height plus the (integer) width of the part of face `j`
+lying right of `i`. -/
+theorem heights_bump (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : s.BumpAdmissible j) (i : ℕ) :
+    heights κ (s.bump j hj) i =
+      heights κ s i +
+        ((max (κ.x ((j : ℕ) + 1)) i - max (κ.x (j : ℕ)) i : ℕ) : ℚ) := by
+  unfold heights
+  have hterm : ∀ jj : Fin κ.faces.length,
+      (((s.bump j hj).a jj : ℕ) : ℚ) / (((κ.faces.get jj).2 : ℕ) : ℚ) *
+          ((max (κ.x ((jj : ℕ) + 1)) i - max (κ.x (jj : ℕ)) i : ℕ) : ℚ) =
+        ((s.a jj : ℕ) : ℚ) / (((κ.faces.get jj).2 : ℕ) : ℚ) *
+            ((max (κ.x ((jj : ℕ) + 1)) i - max (κ.x (jj : ℕ)) i : ℕ) : ℚ) +
+          (if jj = j
+            then ((max (κ.x ((jj : ℕ) + 1)) i - max (κ.x (jj : ℕ)) i : ℕ) : ℚ)
+            else 0) := by
+    intro jj
+    by_cases hij : jj = j
+    · rw [if_pos hij, SlopeTuple.bump_a, if_pos hij, PNat.add_coe]
+      have hb : (((κ.faces.get jj).2 : ℕ) : ℚ) ≠ 0 := by
+        exact_mod_cast (κ.faces.get jj).2.ne_zero
+      push_cast
+      field_simp
+    · rw [if_neg hij, SlopeTuple.bump_a, if_neg hij, add_zero]
+  rw [Finset.sum_congr rfl fun jj _ => hterm jj, Finset.sum_add_distrib,
+    Finset.sum_ite_eq' Finset.univ j, if_pos (Finset.mem_univ j)]
+
+/-- L6b(i): the conditional elementary move raises `N(P)` by exactly
+`c′_j = x_j·L_j + L_j(L_j+1)/2`. -/
+theorem elemMove_Npg (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : s.BumpAdmissible j) :
+    Npg κ (s.bump j hj) = Npg κ s + cPrime κ j := by
+  have hx1 : κ.x ((j : ℕ) + 1) = κ.x (j : ℕ) + ((κ.faces.get j).1 : ℕ) := by
+    simpa [List.get_eq_getElem] using κ.x_succ_of_lt j.isLt
+  have hxe : κ.x (j : ℕ) + ((κ.faces.get j).1 : ℕ) ≤ e := by
+    have h := κ.x_mono (show (j : ℕ) + 1 ≤ κ.faces.length from j.isLt)
+    rw [κ.x_length] at h
+    rw [← hx1]
+    exact h
+  have hcell : ∀ i ∈ Finset.range e,
+      ⌈heights κ (s.bump j hj) i⌉ =
+        ⌈heights κ s i⌉ +
+          ((max (κ.x ((j : ℕ) + 1)) i - max (κ.x (j : ℕ)) i : ℕ) : ℤ) := by
+    intro i _
+    rw [heights_bump κ s j hj i, Int.ceil_add_natCast]
+  unfold Npg
+  rw [Finset.sum_congr rfl hcell, Finset.sum_add_distrib, ← Nat.cast_sum,
+    hx1, sum_max_sub_max (κ.x (j : ℕ)) ((κ.faces.get j).1 : ℕ) e hxe]
+  rfl
+
+/-- L6b(i): every elementary move gain is at least 1 (`L_j ≥ 1`, so already the
+Gauss-sum half is `≥ 1·2/2 = 1`). -/
+theorem one_le_cPrime (κ : FaceKind e) (j : Fin κ.faces.length) :
+    1 ≤ cPrime κ j := by
+  have hL : 1 ≤ ((κ.faces.get j).1 : ℕ) := (κ.faces.get j).1.pos
+  have h2 : 1 * 2 ≤ ((κ.faces.get j).1 : ℕ) * (((κ.faces.get j).1 : ℕ) + 1) :=
+    Nat.mul_le_mul hL (by omega)
+  have h1 : 1 ≤ ((κ.faces.get j).1 : ℕ) * (((κ.faces.get j).1 : ℕ) + 1) / 2 :=
+    (Nat.le_div_iff_mul_le (by norm_num)).mpr h2
+  calc 1 ≤ ((κ.faces.get j).1 : ℕ) * (((κ.faces.get j).1 : ℕ) + 1) / 2 := h1
+    _ ≤ cPrime κ j := Nat.le_add_left _ _
+
 end LeanUrat.Scaffold
