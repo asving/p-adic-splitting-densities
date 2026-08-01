@@ -2040,3 +2040,12 @@ priority. H6 HOLDS until the MECH batch lands Shared/FirstEntrance.lean
 FirstEntrance hoisted to Shared/ (H6 now instantiates, not re-derives); H1
 wave-0 carrier pre-pulled; H8 Tonelli tsum dedup (CutFirst/CutPartition private
 copies retired); RootHyps synced to ROOT's twelve rows. All files lake-green.
+
+## VC16: COMPOSITION-SOUND — D-12r RECLASSIFICATION WARRANTED (2026-08-05)
+REVISION 13 re-anchored (confirming pass clean). Headline adjudications:
+D-12r's [M]->[T] move WARRANTED ("no additional D-12r-specific open
+mathematics remains that must stay [M]") w/ a §4 roster-sync advisory
+(GMN pagination confirm, Neukirch pin probe, Serre LF I §6 Prop 15
+enumeration); (NSF-KEY) six-artifact retirement PASSES; Step-4 grade
+drop honest. r15 dispatched: execute the move -> ELEVEN [M] rows.
+Report: lean/notes/openmath/VC16_report.md.

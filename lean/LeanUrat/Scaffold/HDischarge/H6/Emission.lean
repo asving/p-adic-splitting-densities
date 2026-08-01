@@ -85,6 +85,35 @@ def DeepCorner (f : Polynomial ℤ_[p]) (H : EHist p F)
     (H.nodes.getLast?.elim False fun ν => ∃ g μ, ν.sel = some (g, μ) ∧ 2 ≤ μ) ∧
     ∃ S ∈ D.principalSides H.nodes.length, S.isNegInfty = true
 
+/-! ## Unit A4 — the forced terminal datum, repaired (cures D-5/D-6)
+
+Statements transcribed VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 A4
+(probe-verified 2026-08-05). Deps: A1 (`eAccE`/`eAccF`), A2 (`DecIrrSeam`).
+
+`head?` is junk-tolerant: on a junk `D` (e.g. `principalSides ≡ []`) the slope
+is `none` and nothing downstream fires. On DEC seams the side is forced UNIQUE —
+that forcing lemma (III-S4) remains BP_III's unit and is NOT re-owned here; the
+coherence of this `head?`-read with `RCConsistentD`'s ∀-form clause is unit
+A4b's DISPLAYED obligation (`terminalDatumD_slope_spec`, lands once III-S4
+lands) — assumed nowhere in this file. -/
+
+/-- H6-A4 — the forced terminal datum: the `head?`-read slope pair (with the
+slope-−∞ side mapped to `none`) + the emission verdict pair. -/
+structure TerminalDatumD where
+  slope : Option (ℕ × ℕ)
+  verdict : ℕ × ℕ
+
+open scoped Classical in
+/-- H6-A4 — the forced terminal datum, repaired (cures D-5/D-6): `slope` is the
+junk-tolerant `head?` read of the polygon sides at index `H.nodes.length`
+(= paper level k′+1, the A3 convention); `verdict` books `(eAccE, eAccF)` on a
+τ-irr DEC seam and the base pair `(1, f₀)` otherwise. -/
+noncomputable def terminalDatumD (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) : TerminalDatumD :=
+  { slope := (D.principalSides H.nodes.length).head?.bind fun S =>
+      if S.isNegInfty then none else some (S.e, S.h)
+    verdict := if DecIrrSeam H then (eAccE H, eAccF H) else (1, H.psi0.natDegree) }
+
 /-- H6-A6 (VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit A6): the
 terminal-emission interface — the quantifier domain the CUC §9.4 rows need and
 the BP_III display lacked (the root cause of defects D-1..D-4).

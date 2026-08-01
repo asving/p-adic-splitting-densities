@@ -1,0 +1,17 @@
+1. **ADVISORY — Step 4’s grade is directionally correct but not vocabulary-exact.** The downgrade is warranted, and the new faithfulness-audit debt is properly housed in §3.2. However, “PROVED (dual provenance) + machine-checked Lean-core; VERIFIED-LEAN PENDING” is not one of §0’s declared grades. Until the audit lands, the exact grade should be understood as **PROVED-UNVERIFIED**, not a new “PROVED” class. This does not affect the composition because Step 5 independently supplies the required all-prime specialization result.
+
+2. **ADVISORY — D-12r’s eventual §4 roster synchronization is still required.** The reclassification itself is warranted on the displayed evidence: the dual-accepted reduction confines D-12r’s residue to (HEN-LIFT)/(OM-SAT); the Hensel uniqueness gap is explicitly handled by the companion lemma; TB-CAP(irr) is supplied by the accepted [3t] corpus; and all sibling dependencies are decomposed into their existing homes rather than silently absorbed. No additional D-12r-specific open mathematics remains that must stay [M].  
+   Nevertheless, when the row is actually moved, §4 must be synchronized: item 1 still says the GMN pagination confirmation is owed, item 5 still calls the Neukirch pin a candidate with its probe owed, and Serre LF I §6 Prop. 15 is not presently enumerated as a consumed locus. Because Revision 13 deliberately leaves D-12r in §3.1 pending this pass, this is not a current composition blocker.
+
+3. **NSF-KEY retirement passes.** The six-artifact retirement chain is sufficient as displayed: authorization, carrier diff and ripple closure, statement preservation, per-statement validation, build/axiom census, and independent diff confirmation. H9-U1 is correctly treated as corroboration rather than the retirement source. Known-false wording is confined to explicitly historical or provenance displays. The mandatory path now uses the repaired guarded carrier, while **(NSF-INT)**—including **(K1-CANON)**—remains openly priced. H9 is therefore not prematurely discharged.
+
+4. **K-CUT re-scope passes.** The document distinguishes the proved Lean reduction from the unresolved bridge binders, records charge (vi-a) as FAIL, leaves the serving map unrepointed, and names the unrun hostile fan-out pass. It is honestly **REDUCED, NOT discharged**, with no premature retirement or changed consumption site.
+
+5. **The other Revision-13 edits pass their stated warrants.** Step 18’s new direct Step-2 edges match its K3/K3-a proof text; the G-3 caveat appears at all three claimed billing sites; the PACK-iv edge-set/proof-line distinction is coherent and conservatively priced; the q/t convention removes the apparent two-variable ambiguity; and EN-U5 is evidence-backed, preserves the scoped CU-4/(UB) routing, and candidly records its process failure.
+
+6. **The structural invariants pass.** The ledger still has twelve rows:
+H1, FRESH, R1–R4, ADM, UB-X, PACK, H6, H7, H8, H9, D-12r, and E-N. These map coherently to (H1)–(H9). Clauses (0)/(SQ) remain unconditional; clauses (R)/(UB) retain the displayed row-level attribution. The added edge 2 ≺ 18 is earlier-pointing, and 17 ≺ 18 ≺ 18b remains acyclic.
+
+7. **No Revision-12 regression found.** Revision 13 changes grades, status displays, provenance, and reduction scope without strengthening a consumed theorem, deleting a live hypothesis, changing a leaf pointer, or altering the proof walk. Acceptance remains correctly cited to Revision 12 pending this confirming pass.
+
+VERDICT: COMPOSITION-SOUND
