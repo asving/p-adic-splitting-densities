@@ -138,8 +138,11 @@ division-lead/Codex ratification (trust boundary).  Consumer: unit M7
 
 open LeanUrat.MovesU in
 /-- M7 carrier (REVISION 3): a level-N cylinder event — a Finset of level-N
-    boxes. -/
-def CylEvent (n p N : ℕ) : Type := Finset (Box p n N)
+    boxes.  (`abbrev`, not `def`: the event carrier must be REDUCIBLE so the
+    Finset `Membership`/card instances flow through — the `∀ f ∈ cyl` binder
+    of `IsContinuationEvent` and of M7 itself does not elaborate otherwise;
+    compile-gate repair of the 429-killed first mop-up pass.) -/
+abbrev CylEvent (n p N : ℕ) : Type := Finset (Box p n N)
 
 open LeanUrat.MovesU in
 /-- M7 carrier (REVISION 3): the event is a CONTINUATION event of the

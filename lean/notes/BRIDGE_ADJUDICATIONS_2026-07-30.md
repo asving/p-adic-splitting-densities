@@ -1851,3 +1851,19 @@ wave 5 partially landed). The 55 remaining blocks concentrate in Wave 1
 H1/H6 discharge leads' statement territory => BP_III mop-up DEFERRED to
 their blueprints (combined mop-up + HDischarge fan-out). Sequential fleet
 slot -> BP_IV architect mop-up relaunch (429-killed pre-plan last time).
+
+## ALL NINE DISCHARGE LEADS DELIVERED (2026-08-05)
+HDISCHARGE_H1..H9.md on disk (39-56KB each), Codex-reviewed and folded by
+each lead. Highlights: H1 = the frontier blueprint (GR-B literature-
+retarget onto FGMN J.Alg 427 w/ translation obligations TR-1..TR-7; KEY1
+door-1 by KP-STEP homogenization; Codex pass caught 9 crit incl. an
+index-circular ladder -> STR/KEY split); H2 = (FRESH) reduced to
+(GR-B)+(TRANS-DEEP) (honest kernel-narrowing trade; landed DictIII.FRESH
+exposed as placeholder-grade); H3 = (ADM) carrier probe found K6-datum
+inexpressibility (ADM-U0 adjudication) + 88 CLASS-d countermodels at r=2
+(hypothesis-form units); H4 = (UB-X)(b) NOT WELL-POSED as worded
+(statement-precision gate; Route A retires (K3-delta) only); H9 =
+(NSF-KEY) adjudicated w/ Unit C artifacts (implication content = V0
+expulsion). PROVER FAN-OUT QUEUE (sequential, post BP_IV mop-up):
+H9 -> H5 -> H2 -> H4 -> H3 -> H8 -> H7 -> H6 -> H1 (H1 last: largest +
+gated units + owed fresh re-review at wave-0 dispatch).
