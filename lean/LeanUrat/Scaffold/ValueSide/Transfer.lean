@@ -1017,6 +1017,12 @@ analytic N3 chain.  Layers landed here:
   — the leading digit at the exact truncated valuation is nonzero, digits
   below the valuation vanish (what the residual degree/constant-term pins of
   the side reads will consume).
+* **Cluster entry structure (the (I1) seed).**  `shifted_map_eq` (reduction
+  commutes with recentering), `one_le_cVal_iff` (the K0 bridge at depth 1),
+  and `cVal_cluster_entry`: at the lift of a repeated residue root of
+  multiplicity `m`, the recentered dots have `y_i ≥ 1` for `i < m` and
+  `y_m = 0` — the dot `(m, 0)` anchors the cluster hull (top-level entry
+  invariant; its transport into recursed sub-clusters is the open part).
 * **Engine audit, `≠ 0` form.**  `processResidual_audit'` re-proves the Step-0
   engine audit from `R ≠ 0` alone (side residuals are NOT monic — their
   leading digit is an arbitrary unit; the degree partition now runs through
@@ -1225,6 +1231,131 @@ theorem digitAt_eq_zero_of_lt_zmodVal {M : ℕ} {x : ZMod (p ^ M)} {j : ℕ}
     exact Nat.mul_div_cancel_left _ (pow_pos hp.pos j)
   rw [hq, Nat.mul_mod_right]
   simp
+
+/-- Reduction commutes with the cluster recentering: the mod-p reduction of
+`F(x + c)` at the lifted center `c = z.val` is `f̄(x + z)` (campaign layer —
+the bridge between the walk's level-N reads and residue-field root data). -/
+theorem shifted_map_eq {N : ℕ} (hN : 0 < N) (f : Box p n N) (z : ZMod p) :
+    ((Box.toPoly f).comp (X + C ((z.val : ZMod (p ^ N))))).map
+        (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p))
+      = (fbar hN f).comp (X + C z) := by
+  have hp : p.Prime := Fact.out
+  haveI : NeZero p := ⟨hp.ne_zero⟩
+  rw [Polynomial.map_comp]
+  unfold fbar
+  congr 1
+  rw [Polynomial.map_add, Polynomial.map_X, Polynomial.map_C]
+  congr 1
+  rw [map_natCast, ZMod.natCast_rightInverse z]
+
+/-- The K0 bridge at depth 1: `y_i ≥ 1` exactly when the recentered
+coefficient dies mod p. -/
+theorem one_le_cVal_iff {N : ℕ} (hN : 0 < N) (f : Box p n N)
+    (c : ZMod (p ^ N)) (i : ℕ) :
+    1 ≤ cVal f c i ↔
+      ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p) (shiftedCoeff f c i) = 0 := by
+  have hp : p.Prime := Fact.out
+  haveI : NeZero p := ⟨hp.ne_zero⟩
+  haveI : NeZero (p ^ N) := ⟨pow_ne_zero _ hp.ne_zero⟩
+  unfold cVal
+  rw [le_zmodVal_iff hN, pow_dvd_iff_dvd_val hN, pow_one,
+    ZMod.castHom_apply, ← ZMod.natCast_val, ZMod.natCast_eq_zero_iff]
+
+/-- Cluster ENTRY structure (the (I1) seed, campaign layer): recentering at
+(the lift of) a repeated residue root of multiplicity `m` gives `y_i ≥ 1`
+for every `i < m` and `y_m = 0` — the dot `(m, 0)` anchors the cluster hull,
+with every entry dot to its left strictly above height 0. -/
+theorem cVal_cluster_entry {N : ℕ} (hN : 0 < N) (f : Box p n N)
+    {ψ : Polynomial (ZMod p)}
+    (hψ : ψ ∈ UniqueFactorizationMonoid.normalizedFactors (fbar hN f))
+    (hdeg : ψ.natDegree = 1) :
+    (∀ i < (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ,
+      1 ≤ cVal f (((- ψ.coeff 0).val : ZMod (p ^ N))) i) ∧
+    cVal f (((- ψ.coeff 0).val : ZMod (p ^ N)))
+      ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ) = 0 := by
+  set z : ZMod p := - ψ.coeff 0 with hzdef
+  have hR0 : fbar hN f ≠ 0 := (fbar_monic hN f).ne_zero
+  have hirr : Irreducible ψ :=
+    UniqueFactorizationMonoid.irreducible_of_normalized_factor ψ hψ
+  have hψ0 : ψ ≠ 0 := hirr.ne_zero
+  have hnorm : normalize ψ = ψ :=
+    UniqueFactorizationMonoid.normalize_normalized_factor ψ hψ
+  have hmonic : ψ.Monic := (Polynomial.normalize_eq_self_iff_monic hψ0).mp hnorm
+  -- the walk's repeated linear factor is X − z
+  have hXC : ψ = X - C z := by
+    have h := hmonic.eq_X_add_C hdeg
+    rw [h, hzdef, map_neg, sub_neg_eq_add]
+  -- the two-sided multiplicity reading of `count`
+  have hcount : emultiplicity ψ (fbar hN f)
+      = ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ : ℕ∞) := by
+    rw [UniqueFactorizationMonoid.emultiplicity_eq_count_normalizedFactors hirr hR0,
+      hnorm]
+  have hdvd : ψ ^ (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ
+      ∣ fbar hN f :=
+    pow_dvd_iff_le_emultiplicity.mpr (le_of_eq hcount.symm)
+  have hndvd : ¬ ψ ^ ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ + 1)
+      ∣ fbar hN f := by
+    intro hcon
+    have hle := pow_dvd_iff_le_emultiplicity.mp hcon
+    rw [hcount] at hle
+    have : (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ + 1
+        ≤ (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ := by
+      exact_mod_cast hle
+    omega
+  -- transport through the recentering substitutions x ↦ x ± z
+  have hfwd : (X - C z).comp (X + C z) = (X : Polynomial (ZMod p)) := by
+    rw [Polynomial.sub_comp, Polynomial.X_comp, Polynomial.C_comp]
+    ring
+  have hXdvd : X ^ (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ
+      ∣ (fbar hN f).comp (X + C z) := by
+    obtain ⟨t, ht⟩ := hdvd
+    refine ⟨t.comp (X + C z), ?_⟩
+    conv_lhs => rw [ht]
+    rw [Polynomial.mul_comp, Polynomial.pow_comp, hXC, hfwd]
+  have hXndvd : ¬ X ^ ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ + 1)
+      ∣ (fbar hN f).comp (X + C z) := by
+    intro hcon
+    obtain ⟨t, ht⟩ := hcon
+    apply hndvd
+    refine ⟨t.comp (X - C z), ?_⟩
+    have hmid : (X + C z).comp (X - C z) = (X : Polynomial (ZMod p)) := by
+      rw [Polynomial.add_comp, Polynomial.X_comp, Polynomial.C_comp]
+      ring
+    have hback : ((fbar hN f).comp (X + C z)).comp (X - C z) = fbar hN f := by
+      rw [Polynomial.comp_assoc, hmid, Polynomial.comp_X]
+    calc fbar hN f
+        = ((fbar hN f).comp (X + C z)).comp (X - C z) := hback.symm
+      _ = (X ^ ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ + 1)
+            * t).comp (X - C z) := by rw [ht]
+      _ = ψ ^ ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ + 1)
+            * t.comp (X - C z) := by
+          rw [Polynomial.mul_comp, Polynomial.pow_comp, Polynomial.X_comp, hXC]
+  -- the recentered reduction's coefficients are the reductions of g's
+  have hcoeff : ∀ i, ((fbar hN f).comp (X + C z)).coeff i
+      = ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p)
+          (shiftedCoeff f ((z.val : ZMod (p ^ N))) i) := by
+    intro i
+    rw [← shifted_map_eq hN f z, Polynomial.coeff_map]
+    rfl
+  refine ⟨?_, ?_⟩
+  · intro i hi
+    rw [one_le_cVal_iff hN, ← hcoeff i]
+    exact Polynomial.X_pow_dvd_iff.mp hXdvd i hi
+  · by_contra hne
+    have h1 : 1 ≤ cVal f ((z.val : ZMod (p ^ N)))
+        ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ) := by
+      omega
+    apply hXndvd
+    rw [Polynomial.X_pow_dvd_iff]
+    intro d hd
+    rcases Nat.lt_or_ge d
+        ((UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ) with hdm | hdm
+    · exact Polynomial.X_pow_dvd_iff.mp hXdvd d hdm
+    · have hdm' : d = (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ := by
+        omega
+      subst hdm'
+      rw [hcoeff]
+      exact (one_le_cVal_iff hN f _ _).mp h1
 
 /-- The Step-0 engine audit, `≠ 0` form (campaign layer): the side-read
 residuals are nonzero but NOT monic (their leading digit is an arbitrary

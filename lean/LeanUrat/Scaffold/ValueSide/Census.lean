@@ -22,7 +22,12 @@ the BP_III-owned (GR-B)/(FRESH) rows as OPAQUE PREDICATE PARAMETERS
 (K3DeltaRow precedent); the C5 digit-cost proof kernels
 (`digitCost_of_surjective_read` / `digitCost_of_surjective_linear_read`) are
 landed and proved; the wave-4 constructor (the anchored march) is re-chartered
-per REVISION 3.
+per REVISION 3 · **C5-ctor (wave 4, LANDED — end of file): the
+`AnchoredMarch`/`AnchoredMarchProof` carriers (the anchored-march digit-read
+ladder, O9 rev-5 §5.1/§6.3), `censusValueRows_of_anchoredMarch`, the
+`censusW` re-key to the census field degree d = ∏ᵢ f_i, and the honest
+vertex-granular padding layer superseding C7's vacuous verbatim law (with
+the compiled carrier-degeneracy record).**
 Import graph (BP_IV §1.0): `CensusCore → Hyps` and `{CensusCore, Hyps} →
 Census`, never a cycle — this module imports both and is imported by the
 repaired `SeriesTie.lean`/`DensityTie.lean` (REVISION 3).
@@ -451,7 +456,10 @@ theorem vertexChain_telescope_units {F R : Type*} [Field F] [Fintype F]
   or escalate a `censusW` re-key.  (b) CEN-W's r ≥ 1 value (E′/s(β_k)
   thresholds) is NOT expressible from `CensusData` alone; at r ≥ 1 `censusW`
   reads the same stage-0 shadow and MUST be re-keyed by C5's wave-4
-  constructor (recorded to prevent silent consumption).  (c) `hr` and the
+  constructor (recorded to prevent silent consumption) — **EXECUTED at unit
+  C5-ctor: `censusW` now reads the census field degree d = ∏ᵢ f_i (see its
+  re-key docstring); the E′/s(β_k) bookkeeping lives in the march carrier's
+  `Balanced` clause (end of this file)**.  (c) `hr` and the
   prime-power binders are not consumed by the proof: over the landed carrier
   the identity is polynomial in q, needing only q ≥ 1 (supplied by `hq`); the
   DVR content of M08 Thm 2 (Lemma A's residue counts over O/π^N) lives above
@@ -514,11 +522,43 @@ lemma canonicalSlotChoice_card {q : ℕ} (hq : 0 < q) (e₀ i : ℕ) :
     · rw [if_neg hdvd, if_neg (fun h => hdvd h.1), pow_zero,
         Finset.card_singleton]
 
+/-- C5-ctor re-key support: at r = 0 the census field degree collapses to the
+    stage-0 residue degree, d = ∏_{i : Fin 1} f i = f₀ — the bridge that keeps
+    `census_r0_law` (statement verbatim) proved across the REVISION-3 R3.5
+    `censusW` re-key. -/
+theorem CensusData.d_eq_f0_of_r_eq_zero {D : CensusData} (hr : D.r = 0) :
+    D.d = D.f 0 := by
+  have hidx : ∀ i : Fin (D.r + 1), i = 0 := by
+    intro i
+    have h2 := i.2
+    apply Fin.ext
+    simp only [Fin.val_zero]
+    omega
+  have h1 : D.d = ∏ _i : Fin (D.r + 1), D.f 0 :=
+    Finset.prod_congr rfl fun i _ => by rw [hidx i]
+  rw [h1, Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+  -- `D.f 0`'s index type depends on `D.r`, so generalize it before using `hr`
+  generalize D.f 0 = c
+  rw [hr, zero_add, pow_one]
+
 /-- C6+C7: the census value CEN-W as data: a ℕ-coefficient polynomial in q per
     stratum (p-freeness is BY TYPE), with the padding law census = 0 at
-    unattained vertices. -/
+    unattained vertices.
+
+    **RE-KEYED at unit C5-ctor (BP_IV REVISION 3 R3.5, executing the C4c
+    provenance seam note): the exponent reads the CENSUS FIELD DEGREE
+    d = ∏ᵢ f_i (O-9's DELTA-3 index fix), not the stage-0 shadow f₀.**
+    Design (DERIVED, flagged for division-lead/Codex ratification): the
+    canonical junction-pinned window census — the fully attained graded piece
+    carries d F_q-digit lines (LED(iii) at FULL attainment: dim_{F_q} G = d),
+    the anchored march pins ONE read (the junction pin, O9 rev5 (FRESH)(c) /
+    the monic-top ε = 0 branch of CEN-W), the d − 1 free reads cost q each
+    (proof kernel (b) below at target F_q) — census q^{d−1}.  At r = 0,
+    d = f₀ (`CensusData.d_eq_f0_of_r_eq_zero`) and this IS the previous
+    stage-0 form q^{f₀−1} = M08 Theorem 2's digit census: `census_r0_law`
+    and both `C4cGate` gates are UNCHANGED and still proved. -/
 noncomputable def censusW (D : CensusData) : Polynomial ℕ                -- unit C4c
-  := Polynomial.X ^ (D.f 0 - 1)
+  := Polynomial.X ^ (D.d - 1)
 
 /-- C4 (M08 Theorem 2, the r = 0 / level-1 census law): census = q^E · ∏ M_{λ_S}(q)
     with c_i = Δ(i) + 1 at lattice slots — stated for the level-1 stratum carrier
@@ -595,7 +635,7 @@ theorem census_r0_law {D : CensusData} (hr : D.r = 0)
       Finset.filter_ne', Finset.card_erase_of_mem (Finset.mem_range.mpr hf0),
       Finset.card_range]
   rw [hsum]
-  simp [censusW]
+  simp [censusW, CensusData.d_eq_f0_of_r_eq_zero hr]
 
 namespace C4cGate
 
@@ -649,13 +689,24 @@ at REVISION 3).**
   exists — recorded in BP_IV REVISION 3 as part of the re-chartered C5
   constructor design.  DO NOT cite `censusW_eq_zero_of_unattained` as
   content; cite `attained_always` when the void hypothesis must be shown.
+  **SUPERSESSION (unit C5-ctor): the honest padding layer is now landed at
+  the end of this file** — vertex-granular, count-valued (the O9 §2 (ADM)
+  bullet's "census = 0, the §8 padding value" attaches to the STRATUM COUNT,
+  never to the polynomial, which C7's verbatim shape mis-keyed): see
+  `AnchoredMarchProof.paddingW`/`paddingJ`,
+  `stratumR_count_eq_zero_of_unattained_vertex`, and the carrier-degeneracy
+  record beside them.
 -/
 
 /-- C6 (p-freeness by type, the one `simp` lemma): the census value at every
-    alphabet size is the pure power `q^(f₀−1)` — a ℕ-polynomial evaluation,
-    p-free BY TYPE. -/
+    alphabet size is the pure power `q^(d−1)`, `d = ∏ᵢ f_i` the census field
+    degree — a ℕ-polynomial evaluation, p-free BY TYPE.  (REVISION-3 R3.5
+    re-key, executed at unit C5-ctor: previously `q^(f₀−1)`, the stage-0
+    shadow; at r = 0 the two agree via `CensusData.d_eq_f0_of_r_eq_zero`.
+    This statement was DERIVED, never blueprint-displayed — the C6 unit row
+    fixes only "censusW : Polynomial ℕ + eval nonneg".) -/
 @[simp] theorem censusW_eval (D : CensusData) (q : ℕ) :
-    (censusW D).eval q = q ^ (D.f 0 - 1) := by
+    (censusW D).eval q = q ^ (D.d - 1) := by
   simp [censusW]
 
 /-- C6 (the nonneg clause — trivial over ℕ, displayed for the C-table row). -/
@@ -1020,6 +1071,7 @@ REVISION 3.  The mop-up adjudication:
   ladder, O9 rev-5 §5.1) + proving the constructor, and ALSO re-keys
   `censusW` beyond the stage-0 shadow (C4c provenance note (c)) and carries
   the O9 §4 padding clause (C7's re-key, this file's C7 block).
+  **EXECUTED — unit C5-ctor, end of this file (all four charges).**
 
 **What IS landed and proved (C5 PROOF KERNEL — statement-fence-safe):** the
 counting engine of the §2 C5 proof-sketch clause "(GR-B) digit read =
@@ -1091,9 +1143,9 @@ structure JunctionStratum (D : CensusData) where
     PARAMETERS (`K3DeltaRow` precedent) until the owner lands census-keyed
     forms; `SW`/`SJ` are the engine's constructed strata (see the provenance
     block: an internal ∀ over the skeletal carriers would be unsatisfiable).
-    NOTE (C4c seam, recorded): at r ≥ 1 the landed `censusW` reads the
-    stage-0 shadow only — the wave-4 constructor's charge includes the
-    `censusW` re-key, so this row's RHS re-keys with it, shape unchanged. -/
+    NOTE (C4c seam, recorded): at r ≥ 1 the pre-R3.5 `censusW` read the
+    stage-0 shadow only — the re-key is EXECUTED at unit C5-ctor (below):
+    this row's RHS now reads `q^(d−1)`, d = ∏ᵢ f_i, shape unchanged. -/
 structure CensusValueRows (D : CensusData)
     (GRBRow FreshRow : CensusData → Prop)
     (SW : StratumR D) (SJ : JunctionStratum D) : Prop where
@@ -1103,5 +1155,451 @@ structure CensusValueRows (D : CensusData)
   cenJ : 1 ≤ D.r → GRBRow D → FreshRow D → ADMFull D →
     ∀ {p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N →
       SJ.count q = (censusW D).eval q
+
+/-!
+## Unit C5-ctor — the anchored-march constructor (wave 4)
+
+**PROVENANCE (units C5/C5′-ctor; BP_IV §1.2 + REVISION 3 §§R3.5/R3.7).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` REVISION 3 §R3.5 ("C5/C5′ constructor
+  RE-CHARTERED (wave 4)").  The four charges, all landed below: (i) DESIGN
+  the `AnchoredMarchProof` carrier (no spec existed anywhere); (ii) prove
+  `censusValueRows_of_anchoredMarch` (§1.2 display, re-keyed to the landed
+  opaque-parameter `CensusValueRows` per the §R3.1 C5/C5′ adjudication row);
+  (iii) RE-KEY `censusW` beyond the stage-0 shadow (executed above, see the
+  `censusW` docstring); (iv) land the honest O9 padding clause (C7's re-land,
+  the padding layer below).
+* Math source of record: `O9_phaseB_verifybrief_rev5.md` — §5.1 (the digit
+  read: F_q-linear, fiber-uniform onto its image, onto F_{q^d} ⟺ FULL
+  attainment; "only then does the per-digit count take the value the census
+  consumes"), §6.3 (CEN-W: per-abscissa factorization; on-line slots charge
+  q^{mN−s(β_k)−d} per prescribed digit; E′ bookkeeping), §6.4 step 3 (the
+  anchored/ρ-pinned reads, charged to the parent), §6.1 (TYPE-MARCH: the
+  ANCHORED march — never slot-fresh — is the mechanism making the census
+  polynomial), §2 (the (ADM) bullet's padding clause).
+* Design (DERIVED — the blueprint displays no carrier body; hereby FLAGGED
+  for division-lead/Codex ratification per the trust boundary):
+  - `AnchoredMarch d q` is the ladder at ONE alphabet size: per step the
+    §5.1 read as a surjective additive map `Win k →+ Tgt k` with the
+    anchor-transported prescribed digit, plus the q-power card pins
+    (`Win k` the level window of the graded piece, q^{winExp k}; `Tgt k`
+    the digit target F_{q^d}) and the aggregated non-read padding `padExp`.
+    The per-step engine is EXACTLY the proved kernel
+    `digitCost_of_surjective_read`: `AnchoredMarch.cost_mul_pow` chains it
+    down the ladder (each prescribed digit costs q^{winExp k − d}, in
+    division-free form), and `cost_eq_of_balanced` closes the value against
+    the `Balanced` E′-bookkeeping clause.
+  - `AnchoredMarchProof` is the per-datum proof object at the engine's
+    constructed strata `SW`/`SJ`: a march per prime-power alphabet under
+    the row's own hypotheses ((GR-B) resp. (GR-B)+(FRESH) as the OPAQUE
+    parameters, + (ADM)-FULL), the §6.3 factorization law (`countW`/`countJ`:
+    the stratum digit census IS the march cost), the E′ balance, and the
+    vertex-granular padding clause.  Fields quantify over the working
+    alphabet, so the carrier lives in `Type` (`TreeRecursion` precedent —
+    a Prop structure cannot carry the march data).
+  - the constructor `censusValueRows_of_anchoredMarch` then produces the
+    landed row: count = cost (factorization field) = q^{d−1} (kernel chain +
+    balance) = `(censusW D).eval q` (the re-keyed C6 law).  The kernels do
+    the counting work; the carrier fields are the honest [M]-row display of
+    what the O9 engine instance must eventually supply.
+-/
+
+/-- C5-ctor (the march ladder at one alphabet size): the anchored-march
+    digit-read ladder of O9 rev-5 §5.1/§6.3 reduced to its counting
+    skeleton.  `steps` is L′ — the on-line lattice reads NOT charged to the
+    anchor (§6.4 step 3: the chain's right-end read is the anchored/junction
+    pin, ρ-determined, charged to the parent).  Step `k` carries the §5.1
+    digit read `read k` (the graded-piece read r_{β_k} at working level:
+    source the window piece `Win k` of card q^{winExp k} = q^{mN−s(β_k)},
+    target `Tgt k` = the digit field F_{q^d}) and the anchor-transported
+    prescribed digit `digit k` (§6.1 TYPE-MARCH: the march normalizers are
+    anchored — "one fixed step, affine in the slot index" — never
+    slot-fresh); `read_surj` is onto-ness, which at the engine instance is
+    §5.1's ⟺: FULL attainment ((ADM) + the (GR-B) line clause).  `padExp`
+    aggregates the q-power charges of every non-read slot (§6.3's
+    strictly-above/left-tail/right-tail factors).  DERIVED design, flagged
+    for ratification (provenance block above). -/
+structure AnchoredMarch (d q : ℕ) where
+  steps : ℕ
+  padExp : ℕ
+  Win : Fin steps → Type
+  Tgt : Fin steps → Type
+  [winGroup : ∀ k, AddCommGroup (Win k)]
+  [tgtGroup : ∀ k, AddCommGroup (Tgt k)]
+  [winFinite : ∀ k, Finite (Win k)]
+  read : ∀ k, Win k →+ Tgt k
+  digit : ∀ k, Tgt k
+  read_surj : ∀ k, Function.Surjective (read k)
+  winExp : Fin steps → ℕ
+  card_win : ∀ k, Nat.card (Win k) = q ^ winExp k
+  card_tgt : ∀ k, Nat.card (Tgt k) = q ^ d
+
+attribute [instance] AnchoredMarch.winGroup AnchoredMarch.tgtGroup
+  AnchoredMarch.winFinite
+
+namespace AnchoredMarch
+
+variable {d q : ℕ}
+
+/-- The march cost: the q-power padding times the product of the per-step
+    read-fiber counts at the anchored digits — §6.3's per-abscissa
+    factorization with the digits prescribed. -/
+noncomputable def cost (M : AnchoredMarch d q) : ℕ :=
+  q ^ M.padExp * ∏ k, Nat.card {v : M.Win k // M.read k v = M.digit k}
+
+/-- The E′ bookkeeping clause (§6.3), in ℕ-subtraction-free additive form:
+    the ladder's exponents balance against the census exponent d − 1,
+    `padExp + Σ_k winExp k = (d − 1) + d·L′`.  (Equivalently
+    `padExp + Σ (winExp k − d) = d − 1` — E′(D,N) = Σ(mN − s(β_k)) − d·L′
+    folded with the census value's exponent.) -/
+def Balanced (M : AnchoredMarch d q) : Prop :=
+  M.padExp + ∑ k, M.winExp k = (d - 1) + d * M.steps
+
+/-- THE MARCH ENGINE (C5 proof kernel (a) chained down the ladder): each
+    step's prescribed-digit fiber costs exactly q^{winExp k − d} — stated
+    division-free: cost · q^{d·L′} = q^{padExp + Σ winExp}.  Per step,
+    `digitCost_of_surjective_read` gives fiber · card(Tgt) = card(Win); the
+    card pins evaluate both sides as q-powers. -/
+theorem cost_mul_pow (M : AnchoredMarch d q) :
+    M.cost * q ^ (d * M.steps) = q ^ (M.padExp + ∑ k, M.winExp k) := by
+  have hstep : ∀ k : Fin M.steps,
+      Nat.card {v : M.Win k // M.read k v = M.digit k} * Nat.card (M.Tgt k)
+        = Nat.card (M.Win k) := fun k =>
+    digitCost_of_surjective_read (M.read k) (M.read_surj k) (M.digit k)
+  have hfib : ∀ k : Fin M.steps,
+      Nat.card {v : M.Win k // M.read k v = M.digit k} * Nat.card (M.Tgt k)
+        = q ^ M.winExp k := fun k => (hstep k).trans (M.card_win k)
+  have htgt : (∏ k : Fin M.steps, Nat.card (M.Tgt k)) = q ^ (d * M.steps) := by
+    calc (∏ k : Fin M.steps, Nat.card (M.Tgt k))
+        = ∏ _k : Fin M.steps, q ^ d :=
+          Finset.prod_congr rfl fun k _ => M.card_tgt k
+      _ = (q ^ d) ^ M.steps := by
+          rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin]
+      _ = q ^ (d * M.steps) := (pow_mul q d M.steps).symm
+  calc M.cost * q ^ (d * M.steps)
+      = q ^ M.padExp
+        * ((∏ k, Nat.card {v : M.Win k // M.read k v = M.digit k})
+            * ∏ k, Nat.card (M.Tgt k)) := by
+        simp only [cost]
+        rw [htgt, mul_assoc]
+    _ = q ^ M.padExp
+        * ∏ k, (Nat.card {v : M.Win k // M.read k v = M.digit k}
+            * Nat.card (M.Tgt k)) := by
+        rw [Finset.prod_mul_distrib]
+    _ = q ^ M.padExp * ∏ k, q ^ M.winExp k :=
+        congrArg (q ^ M.padExp * ·)
+          (Finset.prod_congr rfl fun k _ => hfib k)
+    _ = q ^ (M.padExp + ∑ k, M.winExp k) := by
+        rw [Finset.prod_pow_eq_pow_sum, ← pow_add]
+
+/-- The census value of a balanced anchored march: cost = q^{d−1} — the
+    per-stratum value law the constructor consumes (q > 0 cancels the
+    division-free engine identity). -/
+theorem cost_eq_of_balanced (M : AnchoredMarch d q) (hq : 0 < q)
+    (hb : M.Balanced) : M.cost = q ^ (d - 1) := by
+  have hb' : M.padExp + ∑ k, M.winExp k = (d - 1) + d * M.steps := hb
+  have h1 := M.cost_mul_pow
+  rw [hb', pow_add] at h1
+  exact Nat.eq_of_mul_eq_mul_right (pow_pos hq _) h1
+
+end AnchoredMarch
+
+/-- C5-ctor carrier (the REVISION-3 R3.5 design): the anchored-march PROOF
+    object for one census datum at the engine's constructed strata `SW`/`SJ`,
+    with the BP_III-owned (GR-B)/(FRESH) rows as OPAQUE PREDICATE PARAMETERS
+    (exactly `CensusValueRows`'s own seam).  Fields:
+    * `marchW`/`marchJ` — at every prime-power alphabet q = p^N, under the
+      row's hypotheses, the anchored-march ladder of the window resp.
+      junction stratum (CEN-J's march differs by the ρ-pinned right end —
+      §6.4 step 3 — which is why the two ladders are separate fields);
+    * `countW`/`countJ` — the §6.3 per-abscissa factorization: the stratum's
+      digit census IS the march cost;
+    * `balanceW`/`balanceJ` — the E′ exponent bookkeeping;
+    * `vertexSlots` + `paddingW`/`paddingJ` — the honest O9 §2 (ADM)-bullet
+      padding clause at VERTEX granularity: a value-UNATTAINED vertex
+      threshold (`attainDim β = 0`, i.e. G_β = 0) empties the stratum and
+      the census takes the §8 padding value 0 — attached to the COUNT, the
+      correct shape C7's verbatim law mis-keyed (see the padding layer's
+      provenance below for the satisfiability record).
+    DERIVED design, flagged for division-lead/Codex ratification. -/
+structure AnchoredMarchProof (D : CensusData)
+    (GRBRow FreshRow : CensusData → Prop)
+    (SW : StratumR D) (SJ : JunctionStratum D) where
+  vertexSlots : Finset ℕ
+  marchW : ∀ {p N : ℕ}, Fact p.Prime → GRBRow D → ADMFull D →
+    ∀ q : ℕ, q = p ^ N → AnchoredMarch D.d q
+  countW : ∀ {p N : ℕ} (hp : Fact p.Prime) (hg : GRBRow D) (ha : ADMFull D)
+    (q : ℕ) (hq : q = p ^ N), SW.count q = (marchW hp hg ha q hq).cost
+  balanceW : ∀ {p N : ℕ} (hp : Fact p.Prime) (hg : GRBRow D) (ha : ADMFull D)
+    (q : ℕ) (hq : q = p ^ N), (marchW hp hg ha q hq).Balanced
+  marchJ : ∀ {p N : ℕ}, Fact p.Prime → GRBRow D → FreshRow D → ADMFull D →
+    ∀ q : ℕ, q = p ^ N → AnchoredMarch D.d q
+  countJ : ∀ {p N : ℕ} (hp : Fact p.Prime) (hg : GRBRow D) (hf : FreshRow D)
+    (ha : ADMFull D) (q : ℕ) (hq : q = p ^ N),
+    SJ.count q = (marchJ hp hg hf ha q hq).cost
+  balanceJ : ∀ {p N : ℕ} (hp : Fact p.Prime) (hg : GRBRow D) (hf : FreshRow D)
+    (ha : ADMFull D) (q : ℕ) (hq : q = p ^ N),
+    (marchJ hp hg hf ha q hq).Balanced
+  paddingW : ∀ β ∈ vertexSlots, D.attainDim β = 0 → ∀ q : ℕ, SW.count q = 0
+  paddingJ : ∀ β ∈ vertexSlots, D.attainDim β = 0 → ∀ q : ℕ, SJ.count q = 0
+
+/-- C5/C5′-ctor (BP_IV §1.2 display, re-keyed to the landed opaque-parameter
+    `CensusValueRows` per REVISION 3 §R3.1): the anchored march produces the
+    census value rows.  Per clause: count = cost (the factorization field)
+    = q^{d−1} (the kernel chain + the E′ balance) = `(censusW D).eval q`
+    (the re-keyed C6 law). -/
+theorem censusValueRows_of_anchoredMarch (D : CensusData)
+    {GRBRow FreshRow : CensusData → Prop}
+    {SW : StratumR D} {SJ : JunctionStratum D}
+    (hproof : AnchoredMarchProof D GRBRow FreshRow SW SJ) :
+    CensusValueRows D GRBRow FreshRow SW SJ := by
+  refine ⟨?_, ?_⟩
+  · intro _hr hg ha p N hp q hq
+    have hq0 : 0 < q := by
+      rw [hq]
+      exact pow_pos hp.out.pos N
+    rw [hproof.countW hp hg ha q hq,
+      (hproof.marchW hp hg ha q hq).cost_eq_of_balanced hq0
+        (hproof.balanceW hp hg ha q hq),
+      censusW_eval]
+  · intro _hr hg hf ha p N hp q hq
+    have hq0 : 0 < q := by
+      rw [hq]
+      exact pow_pos hp.out.pos N
+    rw [hproof.countJ hp hg hf ha q hq,
+      (hproof.marchJ hp hg hf ha q hq).cost_eq_of_balanced hq0
+        (hproof.balanceJ hp hg hf ha q hq),
+      censusW_eval]
+
+/-!
+## The honest padding layer (C7's re-land) + the carrier-degeneracy record
+
+**PROVENANCE (unit C5-ctor charge (iv); O9 rev5 §2, the (ADM) bullet).**
+The operative padding clause — "a value-UNATTAINED VERTEX β_k empties the
+stratum (a nonzero vertex digit needs w(a_k) = β_k): census = 0, the §8
+padding value" — lands here at VERTEX granularity, attached to the STRATUM
+COUNT (`SW.count q = 0`), superseding C7's verbatim law (whose shape
+`censusW D = 0` is impossible for the monomial — `censusW_ne_zero` — and
+whose `Attained` key is always true — `attained_always`).  The clause is a
+FIELD of `AnchoredMarchProof` (the [M]-row discipline: the emptiness
+mechanism is TRI + the vertex digit-read, supplied by the eventual engine
+instance; the skeletal `StratumR` cannot derive it) with the two operative
+projection theorems below.
+
+**SATISFIABILITY RECORD (compiled; ESCALATION per BP_IV §4 failure
+protocol).**  At HEAD the padding hypothesis `D.attainDim β = 0` is
+UNSATISFIABLE — not for C7's reason, but by a carrier degeneracy traceable
+to the blueprint's §1.2 `CensusData` display: the fields
+`triangular : ∀ i, i.1 ≠ 0 → e i ∣ h i` and
+`h_coprime : ∀ i, Nat.Coprime (h i) (e i)` JOINTLY force `e i = 1` at every
+stage i ≥ 1 (`CensusData.e_eq_one_of_ne_zero` below), hence
+`period = 1` (`period_eq_one`), hence EVERY β is value-attained by the
+zero ledger index (`attainDim_pos`).  Consequences, on record:
+* the O9 warning-display-1 datum (e₁ = 3, h₁ = 2 — the padding clause's
+  own countermodel site) is UNREPRESENTABLE on the landed carrier
+  (3 ∤ 2 violates `triangular`), and O9's `triangular`-free r = 1 ledger
+  (§2: gcd(h₁, e₁) = 1 with e₁ > 1 allowed) contradicts the field;
+* this is a statement-level transcription defect of the blueprint display
+  against the math source of record — ESCALATED to the blueprint owner
+  (never a prover-side restatement, per the statement fence); the C1/C2
+  precedent applies (carrier wrong, law right: the `ledgerE` fix of
+  REVISION 3 §R3.3);
+* the padding law below is keyed EXACTLY to the post-repair carrier (on a
+  repaired `triangular` row, warning display 1 gives `attainDim 1 = 0` at
+  period 3 and the clause is live) — NO re-key will be needed;
+* per the honesty invariant (`sorry`-free ≠ non-vacuous) this vacuity is
+  ON DISPLAY here, machine-checked by the three witnesses, exactly as the
+  C7 adjudication displayed its own.
+-/
+
+/-- The census field degree is positive (each f_i ≥ 1). -/
+theorem CensusData.d_pos (D : CensusData) : 0 < D.d :=
+  Finset.prod_pos fun i _ => by have := D.hf i; omega
+
+/-- Padding/value complementarity: an on-line value-unattained slot refutes
+    (ADM)-FULL — the value rows (under `ADMFull`) and the padding clause
+    (at an unattained vertex) can never both fire on one datum. -/
+theorem not_admFull_of_unattained_onLineSlot {D : CensusData} {β : ℕ}
+    (hβ : β ∈ D.onLineSlots) (h0 : D.attainDim β = 0) : ¬ ADMFull D := by
+  intro h
+  have h1 := h.full_attained β hβ
+  have h2 := D.d_pos
+  omega
+
+/-- THE OPERATIVE PADDING LAW (window stratum): at a value-unattained vertex
+    threshold the census takes the §8 padding value 0 — O9 rev5 §2's (ADM)
+    bullet at the correct granularity and shape (count-valued), superseding
+    the vacuous verbatim C7 law.  Satisfiability at HEAD: see the
+    carrier-degeneracy record above. -/
+theorem stratumR_count_eq_zero_of_unattained_vertex
+    {D : CensusData} {GRBRow FreshRow : CensusData → Prop}
+    {SW : StratumR D} {SJ : JunctionStratum D}
+    (hproof : AnchoredMarchProof D GRBRow FreshRow SW SJ)
+    {β : ℕ} (hβ : β ∈ hproof.vertexSlots) (h0 : D.attainDim β = 0)
+    (q : ℕ) : SW.count q = 0 :=
+  hproof.paddingW β hβ h0 q
+
+/-- THE OPERATIVE PADDING LAW (junction stratum): the CEN-J twin. -/
+theorem junctionStratum_count_eq_zero_of_unattained_vertex
+    {D : CensusData} {GRBRow FreshRow : CensusData → Prop}
+    {SW : StratumR D} {SJ : JunctionStratum D}
+    (hproof : AnchoredMarchProof D GRBRow FreshRow SW SJ)
+    {β : ℕ} (hβ : β ∈ hproof.vertexSlots) (h0 : D.attainDim β = 0)
+    (q : ℕ) : SJ.count q = 0 :=
+  hproof.paddingJ β hβ h0 q
+
+/-- CARRIER-DEGENERACY WITNESS (i): `triangular` + `h_coprime` force
+    e_i = 1 at every stage i ≥ 1 (e_i divides both h_i and e_i, hence their
+    gcd = 1).  The O9 r = 1 data with e₁ > 1 (e.g. warning display 1's
+    e₁ = 3, h₁ = 2) are therefore UNREPRESENTABLE — the escalation record
+    above. -/
+theorem CensusData.e_eq_one_of_ne_zero (D : CensusData) {i : Fin (D.r + 1)}
+    (hi : i.1 ≠ 0) : D.e i = 1 := by
+  have hdvd : D.e i ∣ Nat.gcd (D.h i) (D.e i) :=
+    Nat.dvd_gcd (D.triangular i hi) dvd_rfl
+  rw [(D.h_coprime i).gcd_eq_one] at hdvd
+  exact Nat.dvd_one.mp hdvd
+
+/-- CARRIER-DEGENERACY WITNESS (ii): the ledger period collapses to 1 at
+    EVERY datum on the landed carrier. -/
+theorem CensusData.period_eq_one (D : CensusData) : D.period = 1 := by
+  unfold CensusData.period
+  refine Finset.prod_eq_one fun i _ => ?_
+  unfold CensusData.ledgerE
+  split_ifs with h0
+  · rfl
+  · exact D.e_eq_one_of_ne_zero h0
+
+/-- CARRIER-DEGENERACY WITNESS (iii): with period 1 every β is
+    value-attained by the zero ledger index — the compiled proof that the
+    padding hypothesis is empty at HEAD (the generalization of
+    `attained_always` from β = 0 to all β that ONLY holds on the degenerate
+    carrier; on the post-repair carrier it fails at O9 warning display 1). -/
+theorem CensusData.attainDim_pos (D : CensusData) (β : ℕ) :
+    0 < D.attainDim β := by
+  unfold CensusData.attainDim
+  refine Finset.card_pos.mpr
+    ⟨fun i => (⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩), ?_⟩
+  have hwt0 : D.wt (fun i => (⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩)) = 0 := by
+    unfold CensusData.wt
+    exact Finset.sum_eq_zero fun i _ => by simp
+  unfold CensusData.Gset
+  rw [Finset.mem_filter]
+  exact ⟨Finset.mem_univ _, by rw [hwt0, D.period_eq_one]; omega,
+    by rw [hwt0]; exact Nat.zero_le β⟩
+
+namespace C5CtorGate
+
+/-- The C5-ctor machine-gate datum: r = 1, e ≡ 1, h ≡ 1, f = (2, 1)
+    (d = 2, all slot weights 0 — the deep-stratum regime, so (ADM)-FULL is
+    genuinely PROVABLE below, not assumed).  NOT a blueprint unit — a
+    positive-control gate (C4cGate/K9Gate precedent) confirming every
+    `AnchoredMarchProof` field is satisfiable and the constructor fires
+    end-to-end on the re-keyed `censusW`. -/
+def gateData : CensusData where
+  r := 1
+  e := fun _ => 1
+  h := fun _ => 1
+  f := fun i => if i.1 = 0 then 2 else 1
+  he := fun _ => le_refl 1
+  hf := by intro i; split_ifs <;> omega
+  triangular := fun _ _ => dvd_rfl
+  h_coprime := fun _ => Nat.coprime_one_left 1
+
+theorem gate_d : gateData.d = 2 := by decide
+
+/-- Every gate slot weight is 0 (stage 0 carries weight 0; stage 1's digits
+    are forced to 0 by `ledgerE = 1` and `f 1 = 1`). -/
+theorem gate_wt (j : gateData.J) : gateData.wt j = 0 := by
+  unfold CensusData.wt
+  refine Finset.sum_eq_zero fun i _ => ?_
+  by_cases h0 : i.1 = 0
+  · have hw : gateData.wphi i = 0 := by
+      unfold CensusData.wphi
+      simp [h0]
+    rw [hw, mul_zero]
+  · have he1 : gateData.e i = 1 := rfl
+    have hL : gateData.ledgerE i = 1 := by
+      unfold CensusData.ledgerE
+      rw [if_neg h0, he1]
+    have h1 : (j i).1.1 = 0 := by
+      have hb := (j i).1.2
+      omega
+    have h2 : (j i).2.1 = 0 := by
+      have hF : gateData.f i = 1 := by
+        show (if i.1 = 0 then 2 else 1) = 1
+        simp [h0]
+      have hb := (j i).2.2
+      omega
+    rw [h1, h2, mul_zero, add_zero, zero_mul]
+
+/-- (ADM)-FULL holds at the gate datum (every weight 0 ⇒ the single on-line
+    slot 0 has `Gset 0 = univ` of card 2 = d). -/
+theorem gate_admFull : ADMFull gateData := by
+  constructor
+  intro β hβ
+  have hβ0 : β = 0 := by
+    obtain ⟨j, -, hj⟩ := Finset.mem_image.mp hβ
+    rw [← hj, gate_wt]
+  subst hβ0
+  have hgset : gateData.Gset 0 = Finset.univ := by
+    unfold CensusData.Gset
+    rw [Finset.filter_true_of_mem]
+    intro j _
+    exact ⟨by rw [gate_wt], (gate_wt j).le⟩
+  have hcardJ : Fintype.card gateData.J = gateData.d := by decide
+  unfold CensusData.attainDim
+  rw [hgset, Finset.card_univ, hcardJ]
+
+/-- The gate window stratum: digit census q^{d−1} = q. -/
+def gateSW : StratumR gateData := ⟨le_refl 1, fun q => q⟩
+
+/-- The gate junction stratum (same census — the empty-ladder shape). -/
+def gateSJ : JunctionStratum gateData := ⟨le_refl 1, fun q => q⟩
+
+/-- The gate march: the EMPTY ladder (L′ = 0), all census value in the
+    padding exponent d − 1 = 1. -/
+def gateMarch (q : ℕ) : AnchoredMarch gateData.d q where
+  steps := 0
+  padExp := 1
+  Win := fun k => k.elim0
+  Tgt := fun k => k.elim0
+  winGroup := fun k => k.elim0
+  tgtGroup := fun k => k.elim0
+  winFinite := fun k => k.elim0
+  read := fun k => k.elim0
+  digit := fun k => k.elim0
+  read_surj := fun k => k.elim0
+  winExp := fun k => k.elim0
+  card_win := fun k => k.elim0
+  card_tgt := fun k => k.elim0
+
+/-- The gate proof object: every `AnchoredMarchProof` field is satisfiable
+    (opaque rows instantiated at `fun _ => True`, the O9-instance slot). -/
+noncomputable def gateProof :
+    AnchoredMarchProof gateData (fun _ => True) (fun _ => True)
+      gateSW gateSJ where
+  vertexSlots := ∅
+  marchW := fun _ _ _ q _ => gateMarch q
+  countW := fun _ _ _ q _ => by
+    simp [gateSW, gateMarch, AnchoredMarch.cost]
+  balanceW := fun _ _ _ q _ => by
+    simp [AnchoredMarch.Balanced, gateMarch, gate_d]
+  marchJ := fun _ _ _ _ q _ => gateMarch q
+  countJ := fun _ _ _ _ q _ => by
+    simp [gateSJ, gateMarch, AnchoredMarch.cost]
+  balanceJ := fun _ _ _ _ q _ => by
+    simp [AnchoredMarch.Balanced, gateMarch, gate_d]
+  paddingW := fun β hβ => absurd hβ (Finset.notMem_empty β)
+  paddingJ := fun β hβ => absurd hβ (Finset.notMem_empty β)
+
+/-- THE GATE: the constructor fires end-to-end — the CEN-W row instance at
+    q = 5 = 5¹, against the re-keyed `censusW` (eval = 5^{d−1} = 5). -/
+example : gateSW.count 5 = (censusW gateData).eval 5 :=
+  (censusValueRows_of_anchoredMarch gateData gateProof).cenW
+    (le_refl 1) trivial gate_admFull (p := 5) (N := 1)
+    ⟨by norm_num⟩ 5 (by norm_num)
+
+end C5CtorGate
 
 end LeanUrat.Scaffold

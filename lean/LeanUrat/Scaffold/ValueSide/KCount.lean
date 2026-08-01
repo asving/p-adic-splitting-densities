@@ -70,6 +70,18 @@ the `K10Probe` countermodel of the binder-free display STANDS as warrant);
 K11 LANDED (`EngineSIBRow` authored with the BP_III-owned K-LOC/(I-τ) rows
 as opaque Prop parameters, `K3DeltaRow` pattern — see the K11 section at the
 end of this file).
+K7f LANDED (wave 4, R3.5 re-charter): the concrete `MulSite` builder at the
+multiplication-map site — `starstarSol`/`card_starstarSol` (K5's `hsol`
+proved by the K1/K2 ∘ K4 ∘ K3 chain at the concrete (⋆⋆) set),
+`fiberIncrementEquiv` (the m-fold `monicLiftEquiv`) + the (⋆) display and
+its mod-p^M well-definedness (consuming K7b's `prod_add_sub_prod_split_pow`
+and K7d's `fiberCond_congr_scaled`), `MulSite.toMulFiberData` (chart =
+Step 1 proved ∘ the displayed Step-2 Sylvester/Smith DATUM `diag` — no
+landed Sylvester engine at this wave; honest-datum boundary recorded in the
+section header), `MulSite.kcount` (K5 FIRED at every concrete site),
+`sib_product_law_of_cellMap` (K10's `himg` discharged at concrete cells via
+`adaptedCell_constFiber_image_card`), and the non-vacuity gate `K7fGate`
+(the chain fired end-to-end at a compiled site; fiber count 1 = 2^0).
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
 * Math source of record: `lean/notes/openmath/O10_phaseB_attempt_rev2.md` §3
@@ -1816,5 +1828,427 @@ structure EngineSIBRow (p n N : ℕ) [Fact p.Prime]
   cell : ∃ A : AdaptedCell p n N, SmithStable A.toMulFiberData ∧
     A.cellCount * p ^ A.sM = Nat.card A.Factor ∧
     A.cellCount = stratumCount
+
+
+/-! ### K7f (BP_IV REVISION 3 §R3.5, NEW queued unit, wave 4): the concrete
+`MulFiberData`/`AdaptedCell` instance builder at the multiplication-map site
+
+The R3.5 charter (prose-chartered — no displayed Lean block exists; statements
+below are BP_IV-owned new declarations, never touching landed ones): construct
+(1) the carrier's `chart` at the concrete multiplication-map site — O-10 §3
+Steps 1–2 via the landed K7a–K7d engine (`monicLiftEquiv`,
+`fiberCond_congr_scaled`, `prod_add_sub_prod_split_pow`); (2) K5's `hsol` at
+the concrete (⋆⋆) solution set — the K1/K2 ∘ K4 ∘ K3 chain
+(`newton_absorption_injective` + `bijective_of_injective_finVec` ∘
+`starstar_iff_smithMem` ∘ `card_smithSubgroup`), the exponent family in K8b's
+`SmithData.exp` shape; (3) K10's `himg` at concrete cells via
+`adaptedCell_constFiber_image_card`.
+
+DELIVERED, with the honest datum boundary displayed: the site carrier
+`MulSite` holds the concrete polynomial data (pinning tuple, member tuple,
+degrees, (SEP), level) plus ONE Step-2 DATA field `diag` — the reading of the
+Step-1 increment solutions as the (⋆⋆) set (the Smith change of variables
+`c = V·b` + the coefficient chart).  Its concrete construction from K8b's
+`SmithData` at the Sylvester block matrix needs a Sylvester/`ZMod`-reduction
+engine that does NOT exist at this wave (no landed carrier identifies
+`Φ_h(b)`'s polynomial form with a matrix action mod `p^M`); per the file's
+standing discipline for missing engines (`hsol`/`himg`/`hfib` precedents) it
+enters as displayed data, not a smuggled law — the gate below CONSTRUCTS one
+concretely, so the field is non-vacuously instantiable.  Step 1 itself is
+PROVED here: `fiberIncrementEquiv` (the m-fold `monicLiftEquiv`),
+`MulSite.fiberCond_star_iff` (the (⋆) display, consuming K7b's
+`prod_add_sub_prod_split_pow`), `MulSite.fiberCond_scaled_congr` (the mod-p^M
+well-definedness, consuming K7d's `fiberCond_congr_scaled`).  K5 fires
+end-to-end at every concrete site: `MulSite.kcount` (chart + `hsol` + `hne`
+all supplied by the builder; `SmithStable` from K9's constructor).  The
+K9Gate-pattern gate `K7fGate` fires the whole chain at a compiled site
+(p = 2, one linear factor, N = 2, τ = 1): fiber count 1 = 2^0 computed by
+the K5 chain, and the (SIB) discharge path fired at a concrete cell. -/
+
+section K7f
+
+/-! #### K7f-1: the concrete (⋆⋆) solution set and its count (K5's `hsol` engine) -/
+
+/-- K7f: the concrete (⋆⋆) solution set (O-10 §3 Step 2's display): coefficient
+    vectors `c` over `ZMod (p^M)` with `p^{e_i}·c_i + p^τ·S_i(c) ≡ 0` at every
+    coordinate, for the Smith exponents `e` and the diagonalized quadratic
+    remainder `S = U⁻¹ ∘ Q̃ ∘ V⁻¹` (a polynomial map, carried as an
+    `MvPolynomial` family — exactly what K0's Lipschitz law consumes). -/
+def starstarSol (p M τ : ℕ) [Fact p.Prime] (n : ℕ) (e : Fin n → ℕ)
+    (S : Fin n → MvPolynomial (Fin n) (ZMod (p ^ M))) : Type :=
+  {c : Fin n → ZMod (p ^ M) //
+    ∀ i, (p : ZMod (p ^ M)) ^ e i * c i
+      + (p : ZMod (p ^ M)) ^ τ * MvPolynomial.eval c (S i) = 0}
+
+noncomputable instance instFintypeStarstarSol
+    {p M τ n : ℕ} [Fact p.Prime] (e : Fin n → ℕ)
+    (S : Fin n → MvPolynomial (Fin n) (ZMod (p ^ M))) :
+    Fintype (starstarSol p M τ n e S) := by
+  haveI : NeZero (p ^ M) := ⟨pow_ne_zero M (Fact.out : p.Prime).ne_zero⟩
+  unfold starstarSol
+  exact Fintype.ofFinite _
+
+/-- K7f (K5's `hsol`, proved at the concrete (⋆⋆) set — the K1/K2 ∘ K4 ∘ K3
+    chain): under (SEP)'s consequence `e_i < τ`, the (⋆⋆) solution set has
+    exactly `p^(Σ_i min(e_i, M))` elements.  K4 (`starstar_iff_smithMem`)
+    reads (⋆⋆) as `T⁻¹` of K3b's subgroup; K1 (`newton_absorption_injective`,
+    fed by K0's Lipschitz law `minVal_polyMap_sub_ge`) + K2
+    (`bijective_of_injective_finVec`) make `T` a bijection; K3b
+    (`card_smithSubgroup`) counts the subgroup. -/
+theorem card_starstarSol {p M τ n : ℕ} [Fact p.Prime] (e : Fin n → ℕ)
+    (S : Fin n → MvPolynomial (Fin n) (ZMod (p ^ M)))
+    (heτ : ∀ i, e i < τ) :
+    Nat.card (starstarSol p M τ n e S) = p ^ (∑ i, min (e i) M) := by
+  have hbij : Function.Bijective
+      (fun c : Fin n → ZMod (p ^ M) =>
+        c + fun i => (p : ZMod (p ^ M)) ^ (τ - e i) * MvPolynomial.eval c (S i)) :=
+    bijective_of_injective_finVec
+      (newton_absorption_injective
+        (S := fun c i => MvPolynomial.eval c (S i))
+        (a := fun i => τ - e i)
+        (fun i => by have := heτ i; omega)
+        (fun c c' => minVal_polyMap_sub_ge S c c'))
+  have hchain : starstarSol p M τ n e S ≃
+      {x : Fin n → ZMod (p ^ M) // ∀ i, (p : ZMod (p ^ M)) ^ (M - e i) ∣ x i} :=
+    (Equiv.subtypeEquivRight fun c => forall_congr' fun i =>
+        starstar_iff_smithMem (fun c i => MvPolynomial.eval c (S i)) e c i
+          (heτ i)).trans
+      ((Equiv.ofBijective _ hbij).subtypeEquiv fun c => Iff.rfl)
+  rw [Nat.card_congr hchain, card_smithSubgroup]
+
+/-! #### K7f-2: the Step-1 assembly at the multiplication-map site -/
+
+/-- K7f Step-1 assembly (O-10 §3 Step 1 opening, the m-fold `monicLiftEquiv`):
+    the fiber of the level-N multiplication map over `∏ h_j` inside the
+    stratum product is in bijection with increment tuples (degree `< d_j`,
+    `π^τ`-divisible coefficients) satisfying the fiber condition
+    `∏(h_j + a_j) = ∏ h_j` — per factor this is exactly K7c's
+    `monicLiftEquiv` (its legs `monic_sub_monic_degree_lt` /
+    `dvd_coeff_sub_trans`), with the fiber condition transported. -/
+noncomputable def fiberIncrementEquiv {R : Type*} [CommRing R] (π : R) (τ : ℕ)
+    {m : ℕ} (d : Fin m → ℕ) (f h : Fin m → Polynomial R)
+    (hmon : ∀ j, (h j).Monic) (hdeg : ∀ j, (h j).degree = (d j : WithBot ℕ))
+    (hcong : ∀ j k, π ^ τ ∣ (h j - f j).coeff k) :
+    {g : Fin m → Polynomial R //
+        (∀ j, (g j).Monic ∧ (g j).degree = (d j : WithBot ℕ) ∧
+          ∀ k, π ^ τ ∣ (g j - f j).coeff k) ∧
+        ∏ j, g j = ∏ j, h j}
+      ≃ {a : Fin m → Polynomial R //
+        (∀ j, (a j).degree < (d j : WithBot ℕ) ∧ ∀ k, π ^ τ ∣ (a j).coeff k) ∧
+        ∏ j, (h j + a j) = ∏ j, h j} where
+  toFun g := ⟨fun j => g.1 j - h j,
+    fun j => ⟨monic_sub_monic_degree_lt (hmon j) (g.2.1 j).1 (hdeg j)
+        (g.2.1 j).2.1,
+      dvd_coeff_sub_trans (hcong j) (g.2.1 j).2.2⟩,
+    by
+      calc ∏ j, (h j + (g.1 j - h j)) = ∏ j, g.1 j :=
+            Finset.prod_congr rfl fun j _ => by ring
+        _ = ∏ j, h j := g.2.2⟩
+  invFun a := ⟨fun j => h j + a.1 j,
+    fun j => ⟨(hmon j).add_of_left ((a.2.1 j).1.trans_eq (hdeg j).symm),
+      by rw [Polynomial.degree_add_eq_left_of_degree_lt
+          ((a.2.1 j).1.trans_eq (hdeg j).symm), hdeg j],
+      fun k => by
+        have hsplit : h j + a.1 j - f j = (h j - f j) + a.1 j := by ring
+        rw [hsplit, Polynomial.coeff_add]
+        exact dvd_add (hcong j k) ((a.2.1 j).2 k)⟩,
+    a.2.2⟩
+  left_inv g := Subtype.ext (funext fun j => by ring)
+  right_inv a := Subtype.ext (funext fun j => by ring)
+
+/-- K7f per-factor pin: componentwise, `fiberIncrementEquiv` IS K7c's
+    `monicLiftEquiv` (definitional). -/
+theorem fiberIncrementEquiv_apply_eq_monicLiftEquiv {R : Type*} [CommRing R]
+    (π : R) (τ : ℕ) {m : ℕ} (d : Fin m → ℕ) (f h : Fin m → Polynomial R)
+    (hmon : ∀ j, (h j).Monic) (hdeg : ∀ j, (h j).degree = (d j : WithBot ℕ))
+    (hcong : ∀ j k, π ^ τ ∣ (h j - f j).coeff k)
+    (g : {g : Fin m → Polynomial R //
+        (∀ j, (g j).Monic ∧ (g j).degree = (d j : WithBot ℕ) ∧
+          ∀ k, π ^ τ ∣ (g j - f j).coeff k) ∧
+        ∏ j, g j = ∏ j, h j}) (j : Fin m) :
+    ((fiberIncrementEquiv π τ d f h hmon hdeg hcong) g).1 j
+      = ((monicLiftEquiv π τ (f j) (h j) (hmon j) (hdeg j) (hcong j))
+          ⟨g.1 j, g.2.1 j⟩).1 := rfl
+
+/-! #### K7f-3: the site carrier -/
+
+/-- K7f: the concrete multiplication-map SITE datum (O-10 §3, the data of one
+    nonempty fiber of `μ_N` with its Smith reading).  Polynomial side: the
+    pinning tuple `f`, the fiber's chosen member `h` (O-10 Step 0's monic
+    lifts), living at level `N ≥ τ` (`τ_le`) with (SEP) (`τ_sep`).  Carrier
+    side: the `FactorPoint`/`polydisc`/`smithExp` pass-throughs consumed by
+    K9's constructor.  Step-2 side: the diagonalized quadratic remainder `S`
+    and THE Sylvester/Smith datum `diag` — the reading of the Step-1
+    increment solutions (displayed by `fiberIncrementEquiv` +
+    `MulSite.fiberCond_star_iff`) as the (⋆⋆) solution set, i.e. O-10 §3
+    Steps 1(coefficient chart)+2(U/D/V change of variables) packaged; its
+    concrete construction from K8b's `SmithData` at the Sylvester block
+    matrix is the engine-side follow-up (no landed Sylvester engine at this
+    wave — the datum is data, not a smuggled law: the gate below constructs
+    one).  `exp_lt` is Lemma 2's `e_i ≤ ρ < τ` consequence, displayed. -/
+structure MulSite (p : ℕ) [Fact p.Prime] (n N : ℕ) where
+  τ : ℕ
+  ρ : ℕ
+  τ_sep : ρ + 1 ≤ τ
+  τ_le : τ ≤ N
+  m : ℕ
+  d : Fin m → ℕ
+  f : Fin m → Polynomial (ZMod (p ^ N))
+  h : Fin m → Polynomial (ZMod (p ^ N))
+  h_monic : ∀ j, (h j).Monic
+  h_deg : ∀ j, (h j).degree = (d j : WithBot ℕ)
+  h_cong : ∀ j k, (p : ZMod (p ^ N)) ^ τ ∣ (h j - f j).coeff k
+  FactorPoint : Type
+  instFactorPoint : Fintype FactorPoint
+  base : FactorPoint
+  polydisc : Finset FactorPoint
+  smithExp : FactorPoint → Fin n → ℕ
+  exp_lt : ∀ i, smithExp base i < τ
+  S : Fin n → MvPolynomial (Fin n) (ZMod (p ^ (N - τ)))
+  diag : {a : Fin m → Polynomial (ZMod (p ^ N)) //
+      (∀ j, (a j).degree < (d j : WithBot ℕ) ∧
+        ∀ k, (p : ZMod (p ^ N)) ^ τ ∣ (a j).coeff k) ∧
+      ∏ j, (h j + a j) = ∏ j, h j}
+    ≃ starstarSol p (N - τ) τ n (smithExp base) S
+
+attribute [instance] MulSite.instFactorPoint
+
+namespace MulSite
+
+variable {p n N : ℕ} [Fact p.Prime]
+
+/-- K7f: the concrete fiber of the level-N multiplication map over `∏ h_j`,
+    inside the stratum product `Π_j A_j(N)` (O-10 §1). -/
+def Fiber (W : MulSite p n N) : Type :=
+  {g : Fin W.m → Polynomial (ZMod (p ^ N)) //
+    (∀ j, (g j).Monic ∧ (g j).degree = (W.d j : WithBot ℕ) ∧
+      ∀ k, (p : ZMod (p ^ N)) ^ W.τ ∣ (g j - W.f j).coeff k) ∧
+    ∏ j, g j = ∏ j, W.h j}
+
+/-- K7f (THE chart, O-10 §3 Steps 1–2 assembled): the concrete fiber is in
+    bijection with the (⋆⋆) solution set — Step 1 by `fiberIncrementEquiv`
+    (the m-fold `monicLiftEquiv`), Step 2 by the site's Sylvester/Smith
+    datum `diag`. -/
+noncomputable def chartEquiv (W : MulSite p n N) :
+    W.Fiber ≃ starstarSol p (N - W.τ) W.τ n (W.smithExp W.base) W.S :=
+  (fiberIncrementEquiv (p : ZMod (p ^ N)) W.τ W.d W.f W.h
+      W.h_monic W.h_deg W.h_cong).trans W.diag
+
+/-! #### K7f-4: the Step-1 close in (⋆)-form (the two charged K7b/K7d
+consumptions), displayed at the site -/
+
+/-- `p^N = 0` in `Polynomial (ZMod (p^N))` — the polynomial-level truncation
+    collapse (K4's `pPow_eq_zero_of_le` shape, coefficient ring pushed
+    through `C`; no primality needed). -/
+theorem pPow_poly_eq_zero {q L : ℕ} :
+    (q : Polynomial (ZMod (q ^ L))) ^ L = 0 := by
+  rw [← Nat.cast_pow, ← Polynomial.C_eq_natCast, ZMod.natCast_self,
+    Polynomial.C_0]
+
+/-- K7f Step-1 close, the (⋆) display (consumes K7b's
+    `prod_add_sub_prod_split_pow`): at a scaled increment tuple `a = p^τ·b`,
+    the fiber condition reads `p^τ·(Φ_h(b) + p^τ·Q̃(b)) = 0` — O-10 §3
+    Step 1's displayed congruence, whose division by `p^τ` is (⋆). -/
+theorem fiberCond_star_iff (W : MulSite p n N)
+    (b : Fin W.m → Polynomial (ZMod (p ^ N))) :
+    (∏ j, (W.h j + (p : Polynomial (ZMod (p ^ N))) ^ W.τ * b j) = ∏ j, W.h j)
+      ↔ (p : Polynomial (ZMod (p ^ N))) ^ W.τ *
+          ((∑ j, b j * ∏ i ∈ Finset.univ.erase j, W.h i)
+            + (p : Polynomial (ZMod (p ^ N))) ^ W.τ *
+              ∑ T ∈ Finset.univ.powerset.filter (fun T => 2 ≤ T.card),
+                (p : Polynomial (ZMod (p ^ N))) ^ (W.τ * (T.card - 2)) *
+                  (∏ j ∈ T, b j) * ∏ i ∈ Finset.univ \ T, W.h i) = 0 := by
+  have hkey : ∏ j, (W.h j + (p : Polynomial (ZMod (p ^ N))) ^ W.τ * b j)
+        - ∏ j, W.h j
+      = (p : Polynomial (ZMod (p ^ N))) ^ W.τ *
+          ((∑ j, b j * ∏ i ∈ Finset.univ.erase j, W.h i)
+            + (p : Polynomial (ZMod (p ^ N))) ^ W.τ *
+              ∑ T ∈ Finset.univ.powerset.filter (fun T => 2 ≤ T.card),
+                (p : Polynomial (ZMod (p ^ N))) ^ (W.τ * (T.card - 2)) *
+                  (∏ j ∈ T, b j) * ∏ i ∈ Finset.univ \ T, W.h i) := by
+    rw [prod_add_sub_prod_split_pow Finset.univ W.h b
+      (p : Polynomial (ZMod (p ^ N))) W.τ]
+    ring
+  rw [← sub_eq_zero (a := ∏ j, (W.h j
+    + (p : Polynomial (ZMod (p ^ N))) ^ W.τ * b j)), hkey]
+
+/-- K7f Step-1 close, well-definedness (consumes K7d's
+    `fiberCond_congr_scaled`): the fiber condition at a scaled increment
+    depends only on `b` mod `p^M`, `M = N − τ` — the O-10 Step-1 clause that
+    makes the (⋆) solution set a set of `(ℤ/p^M)`-coefficient vectors. -/
+theorem fiberCond_scaled_congr (W : MulSite p n N)
+    (b b' : Fin W.m → Polynomial (ZMod (p ^ N)))
+    (hbb' : ∀ j, (p : Polynomial (ZMod (p ^ N))) ^ (N - W.τ) ∣ b j - b' j) :
+    ((∏ j, (W.h j + (p : Polynomial (ZMod (p ^ N))) ^ W.τ * b j) = ∏ j, W.h j)
+      ↔ ∏ j, (W.h j + (p : Polynomial (ZMod (p ^ N))) ^ W.τ * b' j)
+          = ∏ j, W.h j) := by
+  have hmain := fiberCond_congr_scaled Finset.univ W.h b b'
+    (p : Polynomial (ZMod (p ^ N))) W.τ (N - W.τ) (fun j _ => hbb' j)
+  rw [Nat.add_sub_cancel' W.τ_le, pPow_poly_eq_zero] at hmain
+  simpa [zero_dvd_iff, sub_eq_zero] using hmain
+
+/-! #### K7f-5: THE BUILDER -/
+
+/-- K7f (THE BUILDER): the concrete `MulFiberData` instance at the
+    multiplication-map site — `Fiber` is the concrete fiber, `SolutionSet`
+    the concrete (⋆⋆) set, `chart` the assembled Steps-1–2 bijection
+    (`chartEquiv`), `smithExp` the site's Smith profile.  `FiberNonempty` is
+    the honest concrete reading `Nonempty W.Fiber` (always discharged:
+    `fiberNonempty` below — the member `h` itself). -/
+noncomputable def toMulFiberData (W : MulSite p n N) : MulFiberData p n N where
+  τ := W.τ
+  ρ := W.ρ
+  τ_sep := W.τ_sep
+  FactorPoint := W.FactorPoint
+  instFactorPoint := W.instFactorPoint
+  base := W.base
+  polydisc := W.polydisc
+  Fiber := W.Fiber
+  instFiber := Fintype.ofEquiv _ W.chartEquiv.symm
+  FiberNonempty := Nonempty W.Fiber
+  SolutionSet := starstarSol p (N - W.τ) W.τ n (W.smithExp W.base) W.S
+  instSolutionSet := inferInstance
+  smithExp := W.smithExp
+  chart := fun _ => W.chartEquiv
+
+/-- The concrete fiber is nonempty: the chosen member `h` inhabits it. -/
+theorem fiberNonempty (W : MulSite p n N) : W.toMulFiberData.FiberNonempty :=
+  ⟨⟨W.h, fun j => ⟨W.h_monic j, W.h_deg j, W.h_cong j⟩, rfl⟩⟩
+
+/-- K7f, K5's `hsol` discharged at the builder: the concrete solution-set
+    count, by `card_starstarSol` (the K1/K2/K3/K4 chain) at the site's
+    `exp_lt` row. -/
+theorem hsol (W : MulSite p n N) :
+    Nat.card W.toMulFiberData.SolutionSet
+      = p ^ (∑ i, min (W.toMulFiberData.smithExp W.toMulFiberData.base i)
+          (N - W.toMulFiberData.τ)) := by
+  change Nat.card (starstarSol p (N - W.τ) W.τ n (W.smithExp W.base) W.S) = _
+  exact card_starstarSol _ _ W.exp_lt
+
+/-- K7f capstone consumption (K5 FIRED at the concrete site): every concrete
+    multiplication-map fiber has size exactly `p^(s(M))`, `M = N − τ` —
+    `kcount_fiber_card` with `chart`, `hsol`, and `hne` all supplied by the
+    builder; `SmithStable` from K9's constructor
+    (`smithStable_of_detDivisorRows`) at the site's polydisc. -/
+theorem kcount (W : MulSite p n N) (hS : SmithStable W.toMulFiberData) :
+    Nat.card W.toMulFiberData.Fiber
+      = p ^ (∑ i, min (W.smithExp W.base i) (N - W.τ)) :=
+  kcount_fiber_card W.toMulFiberData hS W.fiberNonempty W.hsol
+
+end MulSite
+
+/-! #### K7f-6: K10's `himg` discharged at concrete cells -/
+
+/-- K7f (K10's `himg` at concrete cells): at an adapted cell EQUIPPED with a
+    concrete cell map of constant fiber size `p^(A.sM)` (K5's value at the
+    engine site), the (SIB) product law holds with NO `himg` binder — the
+    binder is discharged verbatim by `adaptedCell_constFiber_image_card`
+    (K10b), exactly the SEAM(K10) route displayed in that section. -/
+theorem sib_product_law_of_cellMap {p n N : ℕ} [Fact p.Prime]
+    (A : AdaptedCell p n N) (hS : SmithStable A.toMulFiberData)
+    {Cell : Type*} [Finite Cell] (μ : A.Factor → Cell)
+    (hcell : A.cellCount = Nat.card Cell)
+    (hfib : ∀ c : Cell, Nat.card {x : A.Factor // μ x = c} = p ^ A.sM) :
+    A.cellCount * p ^ A.sM = ∏ j, A.factorCount j :=
+  sib_product_law A hS (adaptedCell_constFiber_image_card A μ hcell hfib).2
+
+/-! #### K7f gate: non-vacuity of the builder (the K9Gate pattern)
+
+The builder FIRES at a concrete multiplication-map site — one linear factor
+`h = f = X` over `ZMod (2^2)`, `τ = 1 ≤ N = 2`, `ρ = 0`, trivial Smith
+profile — every field discharged by construction, the `diag` datum built
+explicitly (both sides are the one-point solution spaces), and the K5 chain
+`MulSite.kcount` computes the fiber count `1 = 2^0` end-to-end.  The (SIB)
+discharge path `sib_product_law_of_cellMap` is fired at a one-factor cell
+over the same site. -/
+
+namespace K7fGate
+
+/-- The gate's Sylvester/Smith datum, built explicitly: at the one-point site
+    both the increment solutions and the (⋆⋆) solutions are the respective
+    zero vectors. -/
+noncomputable def gateDiag :
+    {a : Fin 1 → Polynomial (ZMod (2 ^ 2)) //
+        (∀ j, (a j).degree < ((1 : ℕ) : WithBot ℕ) ∧
+          ∀ k, (2 : ZMod (2 ^ 2)) ^ (1 : ℕ) ∣ (a j).coeff k) ∧
+        ∏ j, ((Polynomial.X : Polynomial (ZMod (2 ^ 2))) + a j)
+          = ∏ _j : Fin 1, (Polynomial.X : Polynomial (ZMod (2 ^ 2)))}
+      ≃ starstarSol 2 (2 - 1) 1 1 (fun _ => 0) (fun _ => 0) where
+  toFun _ := ⟨fun _ => 0, fun i => by simp⟩
+  invFun _ := ⟨fun _ => 0,
+    fun j => ⟨by simp, fun k => by simp⟩,
+    by simp⟩
+  left_inv x := Subtype.ext (by
+    have hprod := x.2.2
+    simp only [Fin.prod_univ_one] at hprod
+    have h0 : x.1 0 = 0 := add_eq_left.mp hprod
+    funext j
+    rw [Subsingleton.elim j 0, h0])
+  right_inv y := Subtype.ext (by
+    funext i
+    have hy := y.2 i
+    simp only [pow_zero, one_mul, map_zero, mul_zero, add_zero] at hy
+    rw [Subsingleton.elim i 0] at hy ⊢
+    rw [hy])
+
+/-- The gate site: `p = 2`, `n = 1`, `N = 2`, one linear factor `X`,
+    pinning depth `τ = 1`, `ρ = 0`, trivial Smith profile. -/
+noncomputable def gateSite : MulSite 2 1 2 where
+  τ := 1
+  ρ := 0
+  τ_sep := by omega
+  τ_le := by omega
+  m := 1
+  d := fun _ => 1
+  f := fun _ => Polynomial.X
+  h := fun _ => Polynomial.X
+  h_monic := fun _ => Polynomial.monic_X
+  h_deg := fun _ => by
+    haveI : Fact (1 < 2 ^ 2) := ⟨by norm_num⟩
+    exact_mod_cast Polynomial.degree_X
+  h_cong := fun _ k => by simp
+  FactorPoint := Unit
+  instFactorPoint := inferInstance
+  base := ()
+  polydisc := {()}
+  smithExp := fun _ _ => 0
+  exp_lt := fun _ => by omega
+  S := fun _ => 0
+  diag := gateDiag
+
+/-- K7f gate, Smith stability: trivial at the one-point factor space. -/
+theorem gate_smithStable : SmithStable gateSite.toMulFiberData :=
+  ⟨fun _ _ => rfl⟩
+
+/-- K7f gate: the builder fires and K5 counts the concrete fiber —
+    `#Fiber = 2^0 = 1` at the gate site (`s(M) = min(0, 1) = 0`). -/
+theorem gate_kcount : Nat.card gateSite.toMulFiberData.Fiber = 1 := by
+  have h := MulSite.kcount gateSite gate_smithStable
+  simpa [gateSite] using h
+
+/-- The gate's adapted cell over the gate site: one factor, one cell point. -/
+noncomputable def gateCell : AdaptedCell 2 1 2 where
+  Factor := Unit
+  instFactor := inferInstance
+  toMulFiberData := gateSite.toMulFiberData
+  cellCount := 1
+  factorCount := fun _ => 1
+  sM := 0
+  domainCount_eq := by simp
+  fiber_nonempty := gateSite.fiberNonempty
+
+/-- K7f gate, the (SIB) discharge path fired at a concrete cell: the product
+    law holds with `himg` discharged through
+    `adaptedCell_constFiber_image_card` — no undischarged binder remains. -/
+theorem gate_sib_product :
+    gateCell.cellCount * 2 ^ gateCell.sM = ∏ j, gateCell.factorCount j :=
+  sib_product_law_of_cellMap gateCell gate_smithStable
+    (Cell := Unit) (fun _ => ())
+    (by simp [gateCell])
+    (fun c => by simp [gateCell])
+
+end K7fGate
+
+end K7f
 
 end LeanUrat.Scaffold
