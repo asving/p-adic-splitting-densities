@@ -1,8 +1,8 @@
 /-
 BP_IV §1.2 — the order-r census carrier root (`CensusCore.lean`).
 Units in this file: C0a (`CensusData`) · C0b (`d/period/J`) · C0c
-(`wt/Gset/attainDim/s`, this wave) · later waves add C0d (`onLineSlots`) and
-`ADMFull` (declared immediately after the derived definitions, per BP_IV §1.0).
+(`wt/Gset/attainDim/s`) · C0d (`onLineSlots`, this wave) · later: `ADMFull`
+(declared immediately after the derived definitions, per BP_IV §1.0).
 This module imports no value-side module (import graph: CensusCore → Hyps →
 Census, never a cycle).
 -/
@@ -59,6 +59,91 @@ instance instFintypeJ (D : CensusData) : Fintype D.J :=
 
 instance instDecidableEqJ (D : CensusData) : DecidableEq D.J :=
   inferInstanceAs (DecidableEq ((i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)))
+
+/-!
+**PROVENANCE (unit C0c; BP_IV §1.2, wave IV-0c).**  The derived slot-weight
+layer: `wt` (signature verbatim from the blueprint; body = the mixed-radix
+φ-monomial weight of the O9 ledger, per the C0 unit-table row "wt = the
+mixed-radix φ-monomial weight (O9 ledger LED)"), then `Gset`, `attainDim`, `s`
+(all three verbatim from the blueprint, `-- unit C0c` annotations).
+
+The `wt` body transcribes `O9_phaseB_verifybrief_rev5.md` §4 (the slot ledger,
+Lemma LED's weight data) into the census-datum coordinates:
+
+* ledger weights: `wt(𝐣) = Σ_i j_i · w(φ_i)`, where stage 0 contributes weight
+  0 — §2's r = 0/r = 1 automaticity discussion: the `f₀` choices of `j₀` ride
+  "at weight contribution 0" (φ₀ = x);
+* stage weights by the pinned (P3) V-recursion (GMN Prop 2.7(4) + Thm 2.11):
+  `w(φ_i) = e_i·V_i + h_i` with `V₁ = 0` and `V_{i+1} = e_i·f_i·(e_i·V_i + h_i)`
+  — §2's worked data: `w(φ₁) = e₁V₁ + h₁, V₁ = 0`; `V̂ = e₁f₁·w(φ₁)`;
+* the per-stage mixed-radix split of the blueprint's `Fin (e i) × Fin (f i)`
+  pair: `j_i = a_i + e_i·b_i` (`a_i` the mod-`e_i` class digit, `b_i` the
+  `t < f_i` digit) — §2's class decomposition `j₁ = j₁* + t·e₁, 0 ≤ t < f₁`.
+-/
+
+/-- The (P3) V-recursion ladder (GMN Prop 2.7(4) + Thm 2.11), ℕ-indexed for
+    structural recursion: `V₀ := 0` (stage-0 slot, never consumed — stage 0
+    carries weight 0), `V₁ := 0`, and `V_{i+2} = e_{i+1}·f_{i+1}·(e_{i+1}·
+    V_{i+1} + h_{i+1})` for in-range stages (out-of-range indices return 0;
+    `wt` only reads stages `i ≤ r`). -/
+def Vrec (D : CensusData) : ℕ → ℕ
+  | 0 => 0
+  | 1 => 0
+  | (i + 2) =>
+    if hi : i + 1 < D.r + 1 then
+      let k : Fin (D.r + 1) := ⟨i + 1, hi⟩
+      D.e k * D.f k * (D.e k * Vrec D (i + 1) + D.h k)
+    else 0
+
+/-- The stage weight `w(φ_i)`: 0 at stage 0 (φ₀ = x — O9 §2: the `j₀` digit
+    rides at weight contribution 0), and `e_i·V_i + h_i` at stages `i ≥ 1`
+    (O9 §4, the slot ledger, via the (P3) V-recursion `Vrec`). -/
+def wphi (D : CensusData) (i : Fin (D.r + 1)) : ℕ :=
+  if i.1 = 0 then 0 else D.e i * D.Vrec i.1 + D.h i
+
+/-- unit C0c — the mixed-radix φ-monomial slot weight (O9 ledger LED):
+    `wt 𝐣 = Σ_i j_i · w(φ_i)` with the per-stage digit `j_i = a_i + e_i·b_i`
+    read off the `Fin (e i) × Fin (f i)` pair and `w(φ_i) = wphi i`. -/
+noncomputable def wt (D : CensusData) : D.J → ℕ :=
+  fun j => ∑ i, ((j i).1.1 + D.e i * (j i).2.1) * D.wphi i
+
+noncomputable def Gset (D : CensusData) (β : ℕ) : Finset D.J :=
+  Finset.univ.filter
+    (fun j => D.wt j % D.period = β % D.period ∧ D.wt j ≤ β)         -- unit C0c
+
+noncomputable def attainDim (D : CensusData) (β : ℕ) : ℕ := (D.Gset β).card
+
+noncomputable def s (D : CensusData) (β : ℕ) : ℕ :=
+  (Finset.univ.filter fun j : D.J => D.wt j ≤ β).card                -- unit C0c
+
+/-!
+**PROVENANCE (unit C0d; BP_IV §1.2, wave IV-0b).**  Signature verbatim from the
+blueprint (`-- unit C0d`); the body is DERIVED (the blueprint displays no body)
+and is hereby flagged for division-lead/Codex ratification per the trust
+boundary (definitions are where errors hide):
+
+* O9 §2 (the TRI bullet): the w-values attained on `{deg < m} \ {0}` are
+  exactly `{e·v + wt(𝐣) : v ≥ 0, 𝐣 a ledger index}` — the ON-LINE lattice
+  values.  The census carrier holds no polygon datum (no face endpoints, no
+  `U₀/ℓ/K_D`), so the carrier's canonical finite slot set is the `v = 0`
+  fundamental layer: the ledger's own attained weights, `wt(J)` as a Finset.
+* Fit with the unit table: C1's sketch "at r = 0 … count the f₀ on-line j
+  directly" reads off exactly this image (at r = 0 the slots collapse to the
+  weights of the single-digit ledger); C3 gets `Finset.decidableBAll` over
+  this Finset; H1's `ADMFull` quantifies `∀ β ∈ D.onLineSlots`.
+* NOT chosen (recorded to prevent re-attempts): all on-line lattice points
+  `≤ max wt` in attained classes — refuted against C1 (at r = 0 it contains
+  class points below the class weight, where `attainDim = 0 ≠ d`, breaking
+  the blueprint's r = 0 automaticity row).
+-/
+
+/-- unit C0d — the on-line lattice slots of the census datum: the Finset of
+    ledger-attained slot weights `{wt 𝐣 : 𝐣 ∈ J}` (O9 §2 TRI bullet's `v = 0`
+    fundamental layer of the on-line lattice `{e·v + wt(𝐣)}`).  Consumed by
+    `ADMFull` (unit H1: every on-line slot FULLY attained) and the C1–C3
+    layer. -/
+noncomputable def onLineSlots (D : CensusData) : Finset ℕ :=
+  Finset.image D.wt Finset.univ
 
 end CensusData
 

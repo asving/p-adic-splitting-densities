@@ -36,6 +36,9 @@ on the block index e, base blocks from `hbase`, step blocks absorbed through
 **Unit II-R6** adds `gram_massPatt` (family (ii) is 𝒢-generated: the (g1)·(g2)·(g2)
 product).
 
+**Unit II-R7** adds `gram_massPoly` (family (iii) is 𝒢-generated: a finite sum of
+(g3)·(g4) terms times the (JC) shape factor, each a Gram composite).
+
 **Unit II-R11** adds `weightSet` (family (v): the entrance/shape weight list of brief
 §2.3(v)) and `gram_weightSet` (all weights 𝒢-generated: (g2) atoms plus the (g4)-shaped
 (O3) exit scalings with A = 1).
@@ -177,6 +180,58 @@ noncomputable def massPoly (e : ℕ) (enum : Finset (ℕ × ℕ))
   (shape.map (fun z =>
     algebraMap (Polynomial ℚ) Qq z.1 *
       (qX ^ (z.2 : ℕ) - qX ^ ((z.2 : ℕ) - 1))⁻¹)).prod
+
+/-- The polygon-family mass is 𝒢-generated (unit II-R7, brief §2.3(iii)): a finite
+sum of (g3)-volume atoms `q^{−h}` (each a `Gram.invS` atom via `Xpow_mem_cycS`),
+times the (g4)-closures `(1 − q^{−c})⁻¹ = (q^c − 1)⁻¹·q^c` (c ≥ 1 from `ℕ+`, so
+`X^c − 1 ∈ 𝒮`), times the (JC) shape factor `P_ρ(q)·(q^d − q^{d−1})⁻¹` with
+`q^d − q^{d−1} = q^{d−1}(q − 1) ∈ 𝒮` (d ≥ 1 from `ℕ+`) — each a Gram composite. -/
+theorem gram_massPoly (e : ℕ) (enum : Finset (ℕ × ℕ))
+    (cs : List ℕ+) (shape : List (Polynomial ℚ × ℕ+)) :
+    Gram (massPoly e enum cs shape) := by
+  rw [massPoly]
+  refine Gram.mul (Gram.mul ?_ ?_) ?_
+  · -- (g3) volumes: ∑_h q^{−h}, termwise `invS`
+    refine Finset.sum_induction _ Gram (fun a b ha hb => ha.add hb)
+      (by simpa using Gram.poly 0) fun z _ => ?_
+    rw [qX_pow_eq_algebraMap]
+    exact Gram.invS (MovesU.Xpow_mem_cycS z.2)
+  · -- (g4) closures: ∏_j (1 − q^{−c_j})⁻¹ = ∏_j (q^{c_j} − 1)⁻¹·q^{c_j}
+    refine List.prod_induction Gram (fun a b ha hb => ha.mul hb)
+      (by simpa using Gram.poly 1) fun x hx => ?_
+    obtain ⟨c, hc, rfl⟩ := List.mem_map.mp hx
+    have hcpos : 1 ≤ c := by
+      obtain ⟨a, -, rfl⟩ : ∃ a : ℕ+, a ∈ cs ∧ c = (a : ℕ) := by simpa using hc
+      exact a.pos
+    show Gram (1 - (qX ^ (c : ℕ))⁻¹)⁻¹
+    have h1 : (1 : Qq) - (qX ^ (c : ℕ))⁻¹
+        = (qX ^ (c : ℕ) - 1) * (qX ^ (c : ℕ))⁻¹ := by
+      rw [sub_mul, mul_inv_cancel₀ (qX_pow_ne_zero _), one_mul]
+    have h2 : qX ^ (c : ℕ) - 1
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ (c : ℕ) - 1) := by
+      rw [map_sub, map_one, qX_pow_eq_algebraMap]
+    rw [h1, mul_inv, inv_inv, h2, qX_pow_eq_algebraMap]
+    exact (Gram.invS (MovesU.Xpow_sub_one_mem_cycS hcpos)).mul (Gram.poly _)
+  · -- (JC) shape factor: ∏_j P_{ρ_j}(q)·(q^{d_j} − q^{d_j−1})⁻¹
+    refine List.prod_induction Gram (fun a b ha hb => ha.mul hb)
+      (by simpa using Gram.poly 1) fun x hx => ?_
+    obtain ⟨z, -, rfl⟩ := List.mem_map.mp hx
+    show Gram (algebraMap (Polynomial ℚ) Qq z.1 *
+      (qX ^ (z.2 : ℕ) - qX ^ ((z.2 : ℕ) - 1))⁻¹)
+    obtain ⟨d', hd⟩ : ∃ d', (z.2 : ℕ) = d' + 1 :=
+      ⟨(z.2 : ℕ) - 1, (Nat.succ_pred_eq_of_pos z.2.pos).symm⟩
+    have hmem : (Polynomial.X ^ (d' + 1) - Polynomial.X ^ d' : Polynomial ℚ) ∈ cycS := by
+      have hX1 : (Polynomial.X - 1 : Polynomial ℚ) ∈ cycS := by
+        simpa using MovesU.Xpow_sub_one_mem_cycS le_rfl
+      have hfac : (Polynomial.X ^ (d' + 1) - Polynomial.X ^ d' : Polynomial ℚ)
+          = Polynomial.X ^ d' * (Polynomial.X - 1) := by ring
+      rw [hfac]
+      exact mul_mem (MovesU.Xpow_mem_cycS d') hX1
+    have heq : qX ^ (d' + 1) - qX ^ (d' + 1 - 1)
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ (d' + 1) - Polynomial.X ^ d') := by
+      rw [map_sub, Nat.add_sub_cancel, qX_pow_eq_algebraMap, qX_pow_eq_algebraMap]
+    rw [hd, heq]
+    exact (Gram.poly z.1).mul (Gram.invS hmem)
 
 open scoped Classical in
 /-- Family (iv): the verdict row of a family F with hand-off list H(F) and composition
@@ -363,5 +418,20 @@ structure BnMember (n : ℕ) where
 
 abbrev BnMember.booking {n : ℕ} (T : BnMember n) : Booking :=
   T.coords.system.booking
+
+/-- **THEOREM 2 (master denominator theorem)**: for concrete §2.3 coordinates
+`C` satisfying the intrinsic membership predicate `C.Valid`, apply
+`bnMember_of_coordinates C hC`; every generated entry and solved leg lies in ℛ.
+The following closure form is the induction lemma consumed by that theorem.
+[BP_II unit II-R13; brief §5 Thm2] Proof: II-R5 (`beta_memRcyc`, fired from
+`T.hbase` + `T.blocks`) puts every solved leg β_{e′}(σ) in ℛ_cyc; `T.hentries`
+presents each entry as 𝒢-generated over those legs, and `GramOver.memRcyc`
+(II-R2) absorbs the generation walk. -/
+theorem BnMember.entries_memRcyc {n : ℕ} (T : BnMember n) :
+    ∀ e, ∀ g ∈ T.entries e, MemRcyc g := by
+  intro e g hg
+  refine GramOver.memRcyc ?_ (T.hentries e g hg)
+  rintro f ⟨e', -, σ, rfl⟩
+  exact beta_memRcyc T.hbase T.blocks e' σ
 
 end LeanUrat.Scaffold

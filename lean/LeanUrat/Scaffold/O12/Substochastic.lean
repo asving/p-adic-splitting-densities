@@ -3,6 +3,7 @@ Copyright (c) 2026. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 import Mathlib
+import LeanUrat.Scaffold.O12.Bookings
 
 /-!
 # Scaffold/O12/Substochastic — Theorem 4 backup [BP_II units II-S1..S3]
@@ -11,8 +12,9 @@ Movement II substochastic backup (blueprint `lean/blueprints/BP_II.md` §1.5).
 
 This file carries **unit II-S1**: `det_one_sub_ne_zero` — a nonnegative matrix `M`
 with row sums ≤ 1 − ε (ε > 0) has `det (1 − M) ≠ 0`, by strict diagonal dominance
-(Gershgorin, Mathlib `det_ne_zero_of_sum_row_lt_diag`). Units II-S2..S3
-(`det_one_sub_pos`, `bn_substochastic_margin`) extend this module.
+(Gershgorin, Mathlib `det_ne_zero_of_sum_row_lt_diag`) — **unit II-S2**
+(`det_one_sub_pos`), and **unit II-S3** (`bn_substochastic_margin`: the scalar
+kernel value at any prime power is ≤ 1 − ε per booking, ε = 3/4, 7/8, 7/8, 6/7).
 -/
 
 namespace LeanUrat.Scaffold
@@ -76,5 +78,101 @@ theorem det_one_sub_pos {k : ℕ} {M : Matrix (Fin k) (Fin k) ℝ} {ε : ℝ}
     intermediate_value_Icc' (by norm_num : (0 : ℝ) ≤ 1) hcont.continuousOn
       ⟨h10, by rw [hf0]; norm_num⟩
   exact hne t ht hft
+
+/-! ## Unit II-S3: the 𝔅_n margins (blueprint §1.5, Theorem 4 closing)
+
+Kernel value = 1 − Φ value, so the bound is Corollary D's margins (the II-G4
+mechanism) fired directly through the landed `marginO1/O2/O3` shapes via
+`eval_ratio` on the explicit kernel ratios. -/
+
+open LeanUrat.MovesU (eval_ratio marginO1 marginO2 marginO3)
+
+/-- Instantiation at 𝔅_n: the scalar kernel value at any prime power is ≤ 1 − ε with
+ε = 3/4, 7/8, 6/7 per booking (Corollary D margins) — the hypothesis holds if a finer
+state set ever replaces the scalar kernel. -/
+theorem bn_substochastic_margin (b : Booking) {e : ℕ} (he : 2 ≤ e) {x : ℚ} (hx : 2 ≤ x) :
+    (b.kernel e).eval (RingHom.id ℚ) x
+      ≤ 1 - (match b with | .O1 => (3:ℚ)/4 | .O2 => 7/8 | .O2r => 7/8 | .O3 => 6/7) := by
+  have hE3 : 3 ≤ blockE e := blockE_ge_three he
+  have hne : ¬ e ≤ 1 := by omega
+  have hx0 : (0 : ℚ) < x := by linarith
+  have hxne : x ≠ 0 := ne_of_gt hx0
+  have hxE : (0 : ℚ) < x ^ blockE e := by positivity
+  have hxEne : Polynomial.eval x (Polynomial.X ^ blockE e : Polynomial ℚ) ≠ 0 := by
+    simpa using ne_of_gt hxE
+  cases b with
+  | O1 =>
+    show (Booking.O1.kernel e).eval (RingHom.id ℚ) x ≤ 1 - (3:ℚ)/4
+    have hker : Booking.O1.kernel e
+        = algebraMap (Polynomial ℚ) Qq Polynomial.X
+          / algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e) := by
+      unfold Booking.kernel
+      rw [if_neg hne]
+      simp only [qX, map_pow, div_eq_mul_inv]
+    have heval : (Booking.O1.kernel e).eval (RingHom.id ℚ) x = x / x ^ blockE e := by
+      rw [hker, eval_ratio hxEne]
+      simp
+    -- `x / x^E = (x^{E−1})⁻¹`, then the (O1) margin at `m = E − 1 ≥ 2`.
+    have hsplit : x ^ blockE e = x * x ^ (blockE e - 1) := by
+      rw [← pow_succ']
+      congr 1
+      omega
+    have hfrac : x / x ^ blockE e = (x ^ (blockE e - 1))⁻¹ := by
+      rw [hsplit, ← div_div, div_self hxne, one_div]
+    have hm := marginO1 hx (two_le_blockE_sub_one he)
+    rw [heval, hfrac]
+    linarith
+  | O2 =>
+    show (Booking.O2.kernel e).eval (RingHom.id ℚ) x ≤ 1 - (7:ℚ)/8
+    have hker : Booking.O2.kernel e
+        = algebraMap (Polynomial ℚ) Qq 1
+          / algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e) := by
+      unfold Booking.kernel
+      rw [if_neg hne]
+      simp only [qX, map_one, map_pow, one_div]
+    have heval : (Booking.O2.kernel e).eval (RingHom.id ℚ) x = 1 / x ^ blockE e := by
+      rw [hker, eval_ratio hxEne]
+      simp
+    have hm := marginO2 hx hE3
+    rw [heval, one_div]
+    linarith
+  | O2r =>
+    show (Booking.O2r.kernel e).eval (RingHom.id ℚ) x ≤ 1 - (7:ℚ)/8
+    have hker : Booking.O2r.kernel e
+        = algebraMap (Polynomial ℚ) Qq 1
+          / algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e) := by
+      unfold Booking.kernel
+      rw [if_neg hne]
+      simp only [qX, map_one, map_pow, one_div]
+    have heval : (Booking.O2r.kernel e).eval (RingHom.id ℚ) x = 1 / x ^ blockE e := by
+      rw [hker, eval_ratio hxEne]
+      simp
+    have hm := marginO2 hx hE3
+    rw [heval, one_div]
+    linarith
+  | O3 =>
+    show (Booking.O3.kernel e).eval (RingHom.id ℚ) x ≤ 1 - (6:ℚ)/7
+    have hden : (0 : ℚ) < x ^ blockE e - 1 := by
+      have h8 : (8 : ℚ) ≤ x ^ blockE e := by
+        calc (8 : ℚ) = 2 ^ 3 := by norm_num
+        _ ≤ 2 ^ blockE e := pow_le_pow_right₀ (by norm_num) hE3
+        _ ≤ x ^ blockE e := by gcongr
+      linarith
+    have hdenne :
+        Polynomial.eval x (Polynomial.X ^ blockE e - 1 : Polynomial ℚ) ≠ 0 := by
+      simpa using ne_of_gt hden
+    have hker : Booking.O3.kernel e
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X - 1)
+          / algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e - 1) := by
+      unfold Booking.kernel
+      rw [if_neg hne]
+      simp only [qX, map_sub, map_one, map_pow, div_eq_mul_inv]
+    have heval : (Booking.O3.kernel e).eval (RingHom.id ℚ) x
+        = (x - 1) / (x ^ blockE e - 1) := by
+      rw [hker, eval_ratio hdenne]
+      simp
+    have hm := marginO3 hx hE3
+    rw [heval]
+    linarith
 
 end LeanUrat.Scaffold

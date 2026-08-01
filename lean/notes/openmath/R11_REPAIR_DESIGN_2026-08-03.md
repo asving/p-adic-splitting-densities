@@ -1,9 +1,36 @@
 # R11 REPAIR DESIGN (2026-08-03) — restoring the composition after the D-11 owed-pass refutations
 
-**Status of this document: DESIGN ONLY — now at REVISION 2 (2026-08-04).** No edit to
-ROOT (`docs/ROOT_ASSEMBLY_2026-08-02.md`, REVISION 9, a2ad88a) and no edit to the D-11
-leaf (`lean/notes/openmath/D11_massid_phaseB_attempt_rev3.md`, 8a0786c) is made here.
-This design goes to a Codex plan-review BEFORE execution; §7 lists the execution units.
+**Status of this document: DESIGN ONLY — now at REVISION 3 (2026-08-04, the evidence
+pass).** No edit to ROOT (`docs/ROOT_ASSEMBLY_2026-08-02.md`, REVISION 9, a2ad88a) and
+no edit to the D-11 leaf (`lean/notes/openmath/D11_massid_phaseB_attempt_rev3.md`,
+8a0786c) is made here. This design goes to a Codex plan-review BEFORE execution; §7
+lists the execution units.
+
+## REVISION 3 record (2026-08-04) — the evidence pass
+
+The round-2 plan-review returned **DESIGN-REVISE** (report:
+`R11D2_review_2026-08-04.md`, findings 1–9; the dispatch counted 3 CRITICALS =
+findings 1/2/3 + 2 ADVISORIES = findings 4/9, finding 6 being the need-verdict
+consequence of 1/3 folded at §4). The reviewer's core ruling, accepted in full: at
+exactly the points needing PROOF, REVISION 2 supplied CONCLUSIONS. REVISION 3
+replaces each with DISPLAYED EVIDENCE — the actual corpus and leaf definitions were
+OPENED for this pass (O-1thr rev 4 §§1.4/6/8; M04 §§2/3/5; M02 headline+§2; O-11 rev 3
+§3.3; O-12 rev 4 §§1/4/5/6; D-11 rev 3 (a″)/(d); ROOT Steps 17/18/18b; Lean HEAD:
+`MovesU/Defs.lean`, `MovesU/DefsLedger.lean`, `MovesU/BridgeD3_treeCarrier.lean`,
+`MovesU/BridgeD7_canonical.lean`, `MovesT/Defs.lean`, `MovesT/E11_treeN.lean`) and are
+quoted verbatim at the repair sites. Dispositions (no silent drops):
+
+| # | review finding (gist) | class | disposition | where |
+|---|---|---|---|---|
+| 1 | (K1-NSF) still not warranted: (w3)'s partition identity routes nothing; (w4)'s "keyed to the SAME decided corpus" is asserted, no displayed definition/implication | CRITICAL | **ACCEPTED — evidence found and it SPLITS the lemma.** (w3)/(w4) WITHDRAWN as warrants. The bridge is PROVED at the interface pin from quoted definitions — **Lemma (K1-NSF′)**, quotes (q-1)–(q-6) chained. The as-built Lean keying is REFUTED AT HEAD by the on-file M02 record (carrier `bridgeTree` lacks the ns-free clause; the exact-square poison V₀ — "the classifier decides exact squares, with verdict 'totally split'"): priced as the NAMED obligation **(NSF-KEY)** with M02's sanctioned minimal repair the primary route (sign-off owed). N2 verdict DOWNGRADED accordingly | §2.5, §4 N2, §6, §7 E9 + Unit C |
+| 2 | "member-row Σ = 1 consumed nowhere" was the design's conclusion, not an exhaustive line-cited trace | CRITICAL | **ACCEPTED — the EXHAUSTIVE trace now displayed as a table at (†18)**: rows K1, K2, K3, K4, the M04 Theorem-4 walk, Step 18b — each with ROOT's verbatim consumption line, the invoked M04/O-12/O-11/D-11 statement clauses verbatim, and a normalization-content column. Result: the only Σ = 1 on the path is M1(d)'s ONE-STEP-STRATA theorem (consumed at 18b's exhaustiveness note); the only other row-sum object is Corollary D's SUB-stochastic kernel value ("the row 'sum' is the scalar kernel value"). Member-row Σ_σ = 1 appears in NO consumed line; (ROW-Σ) STAYS a labeled contingency, not a required obligation | §4 (†18) |
+| 3 | (O-5)'s displayed union omits terminating exits (no child slot); the route does not close the accounting | CRITICAL | **ACCEPTED — (O-5) RESTATED**: the per-node partition is over ALL exit strata of the block — hand-off strata (child slots (F, i)) AND terminating exits (no child slot) — plus the null infinite-loop path; the induction-step consumption is re-displayed against exactly the corrected identity | §3.4 (O-5) |
+| 4 | the repaired M2 statement retains a contradictory "equivalently" | ADVISORY | **ACCEPTED — struck**; (RE) restated as the CONJUNCTION (re-entrant booking ∧ no allocation datum ∧ canonical row form with only the displayed adjustments), the same conjunctive genre as (PACK-iv) — no clause derived from another | §3.3 |
+| 5 | (b-EX) honestly open with a real case skeleton; families (vi)/(vii) claims pending r4 validation | ADVISORY (positive) | no change needed — the pending validation is already the r4 charge (L4) | §2.4 |
+| 6 | need verdicts misassigned (N2 not "MET by executed check"; N4's route incomplete); CUT-WD/(H8) outside the N-table | CRITICAL (per the report; folded into 1/3 by the dispatch count) | **ACCEPTED** — N2/N4 re-verdicted per findings 1/3; **N8 (CUT-WD/(H8)) ADDED to the need table**; the stratified list restated | §4 |
+| 7 | [M] arithmetic internally consistent | ADVISORY (positive) | no change — and (NSF-KEY) deliberately adds NO new [M] row (it rides the already-open K4/[3t] seam; home argument at §2.5) | §2.5, §3.5 |
+| 8 | the mandatory dependency graph is acyclic | ADVISORY (positive) | no change | §4 |
+| 9 | E1 still displays an open-lemma branch the Unit-B gate forbids | ADVISORY | **ACCEPTED — E1 says "a proved lemma", period**, with the Order-clause reason displayed | §7 E1 |
 
 ## REVISION 2 record (2026-08-04) — the plan-review criticals folded
 
@@ -26,15 +53,18 @@ the table below is byte-stable. Dispositions (no silent drops):
 | 8 | (H8) correctly treated (possible overpricing, not concealment) | ADVISORY | no change | §5.1 |
 | 9 | execution/acceptance order unsound: Unit B not conditioned on r4 ACCEPTANCE; E8's counter-to-zero conflates "no recorded leaf critical" with "composition accepted" | CRITICAL | **ACCEPTED**: Unit B now CONDITIONAL on the r4 hostile pass ACCEPTING; E8 restated — every standing display stays **SUSPENDED** until the NEW end-to-end bar passes; the counter shows 0-of-2 toward that bar and never reads "clean" | §7 E8 + Order |
 
-**The revised bottom line (supersedes REVISION 1's "BLOCKED: NONE" — which the
-review correctly ruled unsupported).** No need is blocked in the strict ledger sense
-(every need has a displayed route: a proof on file, a priced [M] member, or a named r4
-proof obligation with a displayed proof route and a hostile-pass bar), but the flat
-"all MET" is WITHDRAWN. Honest tiers, argued need-by-need at §4: N3/N6 MET on file;
-N2 MET by the executed check; N5/N7 MET AT PRICE (one NEW [M] member, (PACK-iv));
-N1/N4 **MET-PENDING-r4-PROOF** ((b-EX); (O-1)–(O-5)) — the composition is NOT restored,
-and the acceptance standing does not move, until those discharge under the D-11 r4
-hostile pass.
+**The revised bottom line [restated at REVISION 3].** No need is blocked in the
+strict ledger sense (every need has a displayed route: a proof on file, a priced [M]
+member, a named execution obligation with an on-file route, or a named r4 proof
+obligation with a displayed proof route and a hostile-pass bar), but the flat
+"all MET" stays WITHDRAWN. Honest tiers, argued need-by-need at §4: N3/N6 MET on
+file; N2 **MET AT THE INTERFACE PIN** (Lemma (K1-NSF′), the quoted definitions
+chained) **with the as-built keying obligation (NSF-KEY) OWED** (the as-built Lean
+keying FAILS the pin at HEAD — M02's on-file poison; REVISION 2's "MET by executed
+check" is WITHDRAWN); N5/N7 MET AT PRICE ((PACK-iv)); N8 MET AT PRICE ((H8), now IN
+the need table); N1/N4 **MET-PENDING-r4-PROOF** ((b-EX); (O-1)–(O-5), the (O-5)
+display corrected) — the composition is NOT restored, and the acceptance standing
+does not move, until those discharge under the D-11 r4 hostile pass.
 
 **What happened (self-contained).** The ROOT composition assembles the uniformity
 theorem (splitting-type densities of Haar-random monic degree-n p-adic polynomials are
