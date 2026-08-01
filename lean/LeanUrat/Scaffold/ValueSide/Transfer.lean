@@ -995,6 +995,482 @@ theorem processResidual_audit {R : Polynomial (ZMod p)} (hmonic : R.Monic)
     rfl
   · rw [haudit.2, Finset.sum_map_toList, hkey]
 
+/-!
+### T7-core campaign, session 1 (BP_IV R3.7 row T7-core; 2026-08-01)
+
+The Theorem-N3 per-cluster core `clusterWalk_audit` stays OPEN (the honest
+`sorry` below), but its perimeter is now strictly smaller: everything in this
+subsection is PROVED, and reduces the remaining content to exactly the
+analytic N3 chain.  Layers landed here:
+
+* **Certification calculus.**  The rev-4 record note "(C1) is redundant" is
+  now a THEOREM (`certifies_C1_auto`, via `npHeight_lt_of_x0_le`: every valid
+  supporting line of the resolved hull is `< k` on `[x₀, n]`, because its
+  values at the two anchor dots `(x₀, y_{x₀})` and `(n, 0)` are `< k` and an
+  affine function on an interval is bounded by its endpoint values).  Hence
+  certification reduces to the (C2) gate alone: `certifies_of_x0_eq_zero`,
+  and EXISTENCE of a certify level holds outright on the x₀ = 0 route
+  (`exists_certifies_of_cVal_lt`: `y₀ < N` and `λ_prev < N` suffice).  The
+  x₀ = 1 route (`y₀ = N`, the left-edge shortcut) is the Fact-D certify-level
+  arithmetic `y₁ + max(s_r, λ_prev) < k ≤ v_p(disc f) + 1` — OPEN, in the core.
+* **DIG reads.**  `digitAt_ne_zero_of_zmodVal_eq` / `digitAt_eq_zero_of_lt_zmodVal`
+  — the leading digit at the exact truncated valuation is nonzero, digits
+  below the valuation vanish (what the residual degree/constant-term pins of
+  the side reads will consume).
+* **Engine audit, `≠ 0` form.**  `processResidual_audit'` re-proves the Step-0
+  engine audit from `R ≠ 0` alone (side residuals are NOT monic — their
+  leading digit is an arbitrary unit; the degree partition now runs through
+  the associated normalized product, unit factors carrying degree 0).
+* **Side audit.**  `sideResidual` names the on-line digit residual (a
+  spec-layer object; `processSide_def` pins it to the walk by `rfl`) and
+  `processSide_audit` discharges the side read: every non-refusing side
+  (`e = ℓ`, or `e = 1 ≤ 3` with `d = ℓ ≥ 2`) processes to a multiset
+  partitioning its length, GIVEN the residual degree pin and the sub-cluster
+  recursion hypothesis.
+* **Step audit.**  `clusterWalk_succ` (the walk's successor equation, a `rfl`
+  pin) + `clusterWalk_succ_audit`: one full cluster step completes and
+  partitions `m`, GIVEN (i) a certify level exists, (ii) each processed side
+  partitions its length, (iii) the side inventory
+  `[x₀ = 1] + Σ_{s : slope > λ} ℓ(s) = m` at the found level.  All
+  Option/monad/multiset plumbing is discharged.
+
+What remains INSIDE the core `sorry` after this layer: (i) certification
+existence on the x₀ = 1 route, (ii) the residual degree pin + the recursion
+invariant transport into sub-clusters, (iii) the (I1) hull inventory at the
+least certify level — the genuinely analytic Theorem-N3 chain over the true
+root valuations `b_j = v(α_j − c)` (Facts EXT/DES/SF/HEN/EF/GRD/HRG/D).
+-/
+
+/-- The top coefficient read of the cluster step: `cVal` at index `n` is `0`
+(`g = F(x + c)` stays monic of degree `n`; at `N = 0` the truncation cap
+forces the same value). -/
+theorem cVal_top {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N)) :
+    cVal f c n = 0 := by
+  rcases Nat.eq_zero_or_pos N with h0 | hN
+  · have h := zmodVal_le (shiftedCoeff f c n)
+    unfold cVal
+    omega
+  · have hp : p.Prime := Fact.out
+    haveI : Fact (1 < p ^ N) := ⟨Nat.one_lt_pow hN.ne' hp.one_lt⟩
+    have hc : shiftedCoeff f c n = 1 := by
+      unfold shiftedCoeff
+      have hm : ((Box.toPoly f).comp (X + C c)).Monic :=
+        (toPoly_monic f).comp_X_add_C c
+      have hd : ((Box.toPoly f).comp (X + C c)).natDegree = n := by
+        rw [← taylor_apply, natDegree_taylor, toPoly_natDegree hN f]
+      have hcoe := hm.coeff_natDegree
+      rw [hd] at hcoe
+      exact hcoe
+    unfold cVal
+    rw [hc, zmodVal_of_ne_zero one_ne_zero, ZMod.val_one,
+      padicValNat_one_right]
+    simp
+
+/-- `n` is always a resolved index (the monic top dot). -/
+theorem mem_resolvedIdx_top {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N))
+    (k : ℕ) : n ∈ resolvedIdx f c k := by
+  simp [resolvedIdx]
+
+/-- The least resolved index is genuinely resolved: `y_{x₀} < k` unless
+`x₀ = n`. -/
+theorem cVal_x0_lt {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N)) (k : ℕ) :
+    cVal f c (x0 f c k) < k ∨ x0 f c k = n := by
+  have h := Finset.min'_mem (resolvedIdx f c k) (resolvedIdx_nonempty f c k)
+  unfold resolvedIdx at h
+  rw [Finset.mem_filter] at h
+  exact h.2
+
+/-- Between the least resolved index and `n`, the resolved lower hull stays
+strictly below the scan level: every valid supporting line of `resolvedSet`
+is `< k` on `[x₀, n]` (its values at the anchor dots `(x₀, y_{x₀})` and
+`(n, 0)` are `< k`, and an affine function on an interval is bounded by its
+endpoint values). -/
+theorem npHeight_lt_of_x0_le {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N))
+    {k i : ℕ} (hk : 0 < k) (hx0 : x0 f c k ≤ i) (hin : i ≤ n) :
+    OM.NewtonPolygon.npHeight (resolvedSet f c k) (resolvedSet_nonempty f c k)
+      (i : ℚ) < (k : ℚ) := by
+  have hx0mem : x0 f c k ∈ resolvedIdx f c k :=
+    Finset.min'_mem _ (resolvedIdx_nonempty f c k)
+  have hdotx : (x0 f c k, cVal f c (x0 f c k)) ∈ resolvedSet f c k :=
+    Finset.mem_image_of_mem _ hx0mem
+  have hdotn : (n, cVal f c n) ∈ resolvedSet f c k :=
+    Finset.mem_image_of_mem _ (mem_resolvedIdx_top f c k)
+  have hyn : cVal f c n = 0 := cVal_top f c
+  have hk0 : (0 : ℚ) < (k : ℚ) := by exact_mod_cast hk
+  have hcast1 : (x0 f c k : ℚ) ≤ (i : ℚ) := by exact_mod_cast hx0
+  have hcast2 : (i : ℚ) ≤ (n : ℚ) := by exact_mod_cast hin
+  unfold OM.NewtonPolygon.npHeight
+  rw [Finset.sup'_lt_iff]
+  intro PR hPR
+  have h1 := OM.NewtonPolygon.pairLine_le_of_valid _ hPR hdotx
+  have h2 := OM.NewtonPolygon.pairLine_le_of_valid _ hPR hdotn
+  rw [hyn] at h2
+  norm_num at h2
+  -- affine difference law: L t − L u = s·(t − u)
+  have hlin : ∀ t u : ℚ,
+      OM.NewtonPolygon.pairLine PR.1 PR.2 t
+        - OM.NewtonPolygon.pairLine PR.1 PR.2 u
+        = OM.NewtonPolygon.pairSlope PR.1 PR.2 * (t - u) := by
+    intro t u
+    simp only [OM.NewtonPolygon.pairLine]
+    ring
+  rcases cVal_x0_lt f c k with hylt | hxn
+  · have hyltQ : (cVal f c (x0 f c k) : ℚ) < (k : ℚ) := by exact_mod_cast hylt
+    by_cases hs0 : 0 ≤ OM.NewtonPolygon.pairSlope PR.1 PR.2
+    · -- nonneg slope: L i ≤ L n ≤ 0 < k
+      have hd := hlin (n : ℚ) (i : ℚ)
+      have hnn : 0 ≤ OM.NewtonPolygon.pairSlope PR.1 PR.2 * ((n : ℚ) - (i : ℚ)) :=
+        mul_nonneg hs0 (sub_nonneg.mpr hcast2)
+      linarith
+    · -- neg slope: L i ≤ L x₀ ≤ y_{x₀} < k
+      have hs0' : OM.NewtonPolygon.pairSlope PR.1 PR.2 ≤ 0 :=
+        (not_le.mp hs0).le
+      have hd := hlin (i : ℚ) ((x0 f c k : ℕ) : ℚ)
+      have hnp : OM.NewtonPolygon.pairSlope PR.1 PR.2
+          * ((i : ℚ) - (x0 f c k : ℚ)) ≤ 0 :=
+        mul_nonpos_of_nonpos_of_nonneg hs0' (sub_nonneg.mpr hcast1)
+      linarith
+  · -- x₀ = n forces i = n
+    have hi : i = n := le_antisymm hin (hxn ▸ hx0)
+    subst hi
+    linarith
+
+/-- (C1) is REDUNDANT — the rev-4 record note, now a theorem: at any positive
+scan level the strictly-above-hull clause of `Certifies` holds for every
+index in `(x₀, n)`. -/
+theorem certifies_C1_auto {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N))
+    {k : ℕ} (hk : 0 < k) :
+    ∀ i < n, ¬ (cVal f c i < k ∨ i = n) → x0 f c k < i →
+      OM.NewtonPolygon.npHeight (resolvedSet f c k)
+        (resolvedSet_nonempty f c k) (i : ℚ) < (k : ℚ) :=
+  fun _ hi _ hx0 => npHeight_lt_of_x0_le f c hk hx0.le hi.le
+
+/-- Certification via the `x₀ = 0` gate: any scan level `k ∈ (λ_prev, N]`
+at which the constant term is resolved certifies ((C1) is automatic, (C2)
+is its left disjunct). -/
+theorem certifies_of_x0_eq_zero {N : ℕ} {f : Box p n N} {c : ZMod (p ^ N)}
+    {lam k : ℕ} (hlam : lam < k) (hkN : k ≤ N) (hx0 : x0 f c k = 0) :
+    Certifies f c lam k :=
+  ⟨hlam, hkN,
+    certifies_C1_auto f c (lt_of_le_of_lt (Nat.zero_le lam) hlam),
+    Or.inl hx0⟩
+
+/-- The constant term resolved at level `k` forces `x₀ = 0`. -/
+theorem x0_eq_zero_of_cVal_lt {N : ℕ} {f : Box p n N} {c : ZMod (p ^ N)}
+    {k : ℕ} (h : cVal f c 0 < k) : x0 f c k = 0 := by
+  have h0 : 0 ∈ resolvedIdx f c k := by
+    rw [resolvedIdx, Finset.mem_filter]
+    exact ⟨Finset.mem_range.mpr (Nat.succ_pos n), Or.inl h⟩
+  exact Nat.le_zero.mp (Finset.min'_le _ _ h0)
+
+/-- EXISTENCE of a certify level, x₀ = 0 route: if the recentered constant
+term resolves before the horizon (`y₀ < N`) and the entry slope datum is
+below the horizon (`λ_prev < N`), some level certifies.  (The x₀ = 1 route —
+`y₀ = N`, the left-edge shortcut — is the Fact-D certify-level arithmetic,
+part of the OPEN core below.) -/
+theorem exists_certifies_of_cVal_lt {N : ℕ} {f : Box p n N} {c : ZMod (p ^ N)}
+    {lam : ℕ} (h0 : cVal f c 0 < N) (hlam : lam < N) :
+    ∃ k, Certifies f c lam k :=
+  ⟨max (cVal f c 0) lam + 1,
+    certifies_of_x0_eq_zero (by omega) (by omega)
+      (x0_eq_zero_of_cVal_lt (by omega))⟩
+
+/-- DIG nonvanishing read: the base-p digit of `x` at its EXACT truncated
+valuation is nonzero (`zmodVal x = j < M` says `p^j ‖ x.val`). -/
+theorem digitAt_ne_zero_of_zmodVal_eq {M : ℕ} {x : ZMod (p ^ M)} {j : ℕ}
+    (hj : zmodVal x = j) (hjM : j < M) : digitAt x j ≠ 0 := by
+  have hp : p.Prime := Fact.out
+  have hx : x ≠ 0 := by
+    intro h
+    rw [h, zmodVal_zero] at hj
+    omega
+  have hj' := hj
+  rw [zmodVal_of_ne_zero hx] at hj'
+  have hval : padicValNat p x.val = j := by omega
+  have hvne : x.val ≠ 0 := fun h => hx ((ZMod.val_eq_zero x).mp h)
+  have hdvd : p ^ j ∣ x.val := by
+    rw [← hval]
+    exact pow_padicValNat_dvd
+  have hndvd : ¬ p ^ (j + 1) ∣ x.val := by
+    rw [← hval]
+    exact pow_succ_padicValNat_not_dvd hvne
+  unfold digitAt
+  intro hdig
+  rw [ZMod.natCast_eq_zero_iff] at hdig
+  have hlt : x.val / p ^ j % p < p := Nat.mod_lt _ hp.pos
+  have hmod : x.val / p ^ j % p = 0 := Nat.eq_zero_of_dvd_of_lt hdig hlt
+  have hpd : p ∣ x.val / p ^ j := Nat.dvd_of_mod_eq_zero hmod
+  obtain ⟨t, ht⟩ := hpd
+  apply hndvd
+  refine ⟨t, ?_⟩
+  calc x.val = p ^ j * (x.val / p ^ j) := (Nat.mul_div_cancel' hdvd).symm
+    _ = p ^ j * (p * t) := by rw [ht]
+    _ = p ^ (j + 1) * t := by ring
+
+/-- DIG vanishing read: digits strictly below the truncated valuation
+vanish. -/
+theorem digitAt_eq_zero_of_lt_zmodVal {M : ℕ} {x : ZMod (p ^ M)} {j : ℕ}
+    (hj : j < zmodVal x) : digitAt x j = 0 := by
+  have hp : p.Prime := Fact.out
+  have hkM : j + 1 ≤ M := le_trans (Nat.succ_le_of_lt hj) (zmodVal_le x)
+  have hdvd : (p : ZMod (p ^ M)) ^ (j + 1) ∣ x :=
+    (le_zmodVal_iff hkM x).mp (Nat.succ_le_of_lt hj)
+  have hdvd' : p ^ (j + 1) ∣ x.val := (pow_dvd_iff_dvd_val hkM x).mp hdvd
+  obtain ⟨t, ht⟩ := hdvd'
+  unfold digitAt
+  rw [ht]
+  have hq : p ^ (j + 1) * t / p ^ j = p * t := by
+    have hnum : p ^ (j + 1) * t = p ^ j * (p * t) := by ring
+    rw [hnum]
+    exact Nat.mul_div_cancel_left _ (pow_pos hp.pos j)
+  rw [hq, Nat.mul_mod_right]
+  simp
+
+/-- The Step-0 engine audit, `≠ 0` form (campaign layer): the side-read
+residuals are nonzero but NOT monic (their leading digit is an arbitrary
+unit), so the audit is re-proved from `R ≠ 0` alone — the degree partition
+`Σ_ψ count·deg = deg R` runs through the associated normalized product
+(the unit factor carries degree 0). -/
+theorem processResidual_audit' {R : Polynomial (ZMod p)} (hR0 : R ≠ 0)
+    (hdeg3 : R.natDegree ≤ 3)
+    {rec : ZMod p → ℕ → Option (Multiset (ℕ × ℕ))}
+    (hrec : ∀ ψ ∈ UniqueFactorizationMonoid.normalizedFactors R,
+      2 ≤ (UniqueFactorizationMonoid.normalizedFactors R).count ψ →
+      ψ.natDegree = 1 →
+      ∃ S, rec (- ψ.coeff 0)
+          ((UniqueFactorizationMonoid.normalizedFactors R).count ψ) = some S ∧
+        (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+        (S.map fun x => x.1 * x.2).sum
+          = (UniqueFactorizationMonoid.normalizedFactors R).count ψ) :
+    ∃ S, processResidual R rec = some S ∧
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = R.natDegree := by
+  have h0 : (0 : Polynomial (ZMod p)) ∉ UniqueFactorizationMonoid.normalizedFactors R :=
+    UniqueFactorizationMonoid.zero_notMem_normalizedFactors R
+  -- the degree partition Σ_ψ count(ψ)·deg(ψ) = deg R, via the associated product
+  have hmapsum : ((UniqueFactorizationMonoid.normalizedFactors R).map
+      Polynomial.natDegree).sum = R.natDegree := by
+    obtain ⟨u, hu⟩ := UniqueFactorizationMonoid.prod_normalizedFactors hR0
+    have hprod0 : (UniqueFactorizationMonoid.normalizedFactors R).prod ≠ 0 :=
+      Multiset.prod_ne_zero h0
+    have hu0 : (u : Polynomial (ZMod p)) ≠ 0 := u.ne_zero
+    have hdegprod : (UniqueFactorizationMonoid.normalizedFactors R).prod.natDegree
+        = R.natDegree := by
+      conv_rhs => rw [← hu]
+      rw [Polynomial.natDegree_mul hprod0 hu0,
+        Polynomial.natDegree_eq_zero_of_isUnit u.isUnit, add_zero]
+    rw [← hdegprod]
+    exact (Polynomial.natDegree_multiset_prod _ h0).symm
+  have hkey : ∑ ψ ∈ (UniqueFactorizationMonoid.normalizedFactors R).toFinset,
+      (UniqueFactorizationMonoid.normalizedFactors R).count ψ * ψ.natDegree
+      = R.natDegree := by
+    rw [Finset.sum_multiset_map_count] at hmapsum
+    simpa [smul_eq_mul, nsmul_eq_mul] using hmapsum
+  have hspec : ∀ ψ ∈ (UniqueFactorizationMonoid.normalizedFactors R).toFinset.toList,
+      ∃ S, (if (UniqueFactorizationMonoid.normalizedFactors R).count ψ = 1 then
+          some ({(1, ψ.natDegree)} : Multiset (ℕ × ℕ))
+        else if ψ.natDegree = 1 then
+          rec (- ψ.coeff 0)
+            ((UniqueFactorizationMonoid.normalizedFactors R).count ψ)
+        else none) = some S ∧
+        ((∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+          (S.map fun x => x.1 * x.2).sum
+            = (UniqueFactorizationMonoid.normalizedFactors R).count ψ * ψ.natDegree) := by
+    intro ψ hψl
+    have hψ : ψ ∈ UniqueFactorizationMonoid.normalizedFactors R := by
+      rw [← Multiset.mem_toFinset]
+      exact Finset.mem_toList.mp hψl
+    have hirr : Irreducible ψ :=
+      UniqueFactorizationMonoid.irreducible_of_normalized_factor ψ hψ
+    have hdpos : 0 < ψ.natDegree := hirr.natDegree_pos
+    by_cases hc : (UniqueFactorizationMonoid.normalizedFactors R).count ψ = 1
+    · refine ⟨{(1, ψ.natDegree)}, by rw [if_pos hc], ?_, by simp [hc]⟩
+      intro x hx
+      rw [Multiset.mem_singleton] at hx
+      subst hx
+      exact ⟨le_rfl, hdpos⟩
+    · have hcpos : 0 < (UniqueFactorizationMonoid.normalizedFactors R).count ψ :=
+        Multiset.count_pos.mpr hψ
+      have hc2 : 2 ≤ (UniqueFactorizationMonoid.normalizedFactors R).count ψ := by
+        omega
+      have hd1 : ψ.natDegree = 1 := by
+        by_contra hne
+        have hd2 : 2 ≤ ψ.natDegree := by omega
+        have hle : (UniqueFactorizationMonoid.normalizedFactors R).count ψ
+            * ψ.natDegree ≤ R.natDegree := by
+          rw [← hkey]
+          exact Finset.single_le_sum
+            (f := fun φ => (UniqueFactorizationMonoid.normalizedFactors R).count φ
+              * φ.natDegree)
+            (fun i _ => Nat.zero_le _) (Multiset.mem_toFinset.mpr hψ)
+        have h4 : 4 ≤ (UniqueFactorizationMonoid.normalizedFactors R).count ψ
+            * ψ.natDegree := Nat.mul_le_mul hc2 hd2
+        omega
+      obtain ⟨S, hS, hS1, hS2⟩ := hrec ψ hψ hc2 hd1
+      refine ⟨S, ?_, hS1, by rw [hS2, hd1, mul_one]⟩
+      rw [if_neg hc, if_pos hd1]
+      exact hS
+  obtain ⟨L, hmapM, hforall⟩ := mapM_option_spec
+    (P := fun (ψ : Polynomial (ZMod p)) (S : Multiset (ℕ × ℕ)) =>
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum
+        = (UniqueFactorizationMonoid.normalizedFactors R).count ψ * ψ.natDegree)
+    hspec
+  have haudit := forall₂_multiset_audit hforall
+  refine ⟨L.sum, ?_, haudit.1, ?_⟩
+  · unfold processResidual
+    rw [hmapM]
+    rfl
+  · rw [haudit.2, Finset.sum_map_toList, hkey]
+
+/-- The on-line digit residual of a side, as a NAMED spec-layer object
+(campaign layer; `processSide_def` pins it to the walk's inline expression
+by `rfl` — no walk clause is changed). -/
+noncomputable def sideResidual {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N))
+    (s : OM.NewtonPolygon.Side) : Polynomial (ZMod p) :=
+  ∑ j ∈ Finset.range (s.length + 1),
+    C (if (cVal f c (s.i₀ + j) : ℤ) = (s.v₀ : ℤ) - (j : ℤ) * (- s.slope).num
+       then digitAt (shiftedCoeff f c (s.i₀ + j))
+         ((s.v₀ : ℤ) - (j : ℤ) * (- s.slope).num).toNat
+       else 0) * X ^ j
+
+/-- Definitional pin: `processSide` in terms of the named residual. -/
+theorem processSide_def {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N))
+    (s : OM.NewtonPolygon.Side)
+    (rec : ZMod p → ℕ → ℕ → Option (Multiset (ℕ × ℕ))) :
+    processSide f c s rec =
+      if (- s.slope).den = s.length then
+        some ({((- s.slope).den, 1)} : Multiset (ℕ × ℕ))
+      else if (- s.slope).den = 1 ∧ 2 ≤ s.length then
+        processResidual (sideResidual f c s)
+          (fun z m => rec z m (- s.slope).num.toNat)
+      else none := rfl
+
+/-- Side audit (campaign layer): every NON-REFUSING side read completes with
+a multiset partitioning the side's horizontal length — the `d = 1` branch
+certifies `(e, 1)` of weight `e = ℓ`, and the `e = 1, d = ℓ ≥ 2` branch runs
+the engine audit on the digit residual, GIVEN its degree pin (`deg R = ℓ`,
+the on-hull endpoint digits being nonzero — an N3-side input) and the
+sub-cluster recursion hypothesis. -/
+theorem processSide_audit {N : ℕ} (f : Box p n N) (c : ZMod (p ^ N))
+    (s : OM.NewtonPolygon.Side)
+    (rec : ZMod p → ℕ → ℕ → Option (Multiset (ℕ × ℕ)))
+    (hok : (- s.slope).den = s.length ∨ ((- s.slope).den = 1 ∧ 2 ≤ s.length))
+    (hlen3 : s.length ≤ 3)
+    (hdeg : (- s.slope).den ≠ s.length →
+      (sideResidual f c s).natDegree = s.length)
+    (hrec : (- s.slope).den ≠ s.length →
+      ∀ ψ ∈ UniqueFactorizationMonoid.normalizedFactors (sideResidual f c s),
+        2 ≤ (UniqueFactorizationMonoid.normalizedFactors
+          (sideResidual f c s)).count ψ →
+        ψ.natDegree = 1 →
+        ∃ S, rec (- ψ.coeff 0)
+            ((UniqueFactorizationMonoid.normalizedFactors
+              (sideResidual f c s)).count ψ)
+            (- s.slope).num.toNat = some S ∧
+          (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+          (S.map fun x => x.1 * x.2).sum
+            = (UniqueFactorizationMonoid.normalizedFactors
+              (sideResidual f c s)).count ψ) :
+    ∃ S, processSide f c s rec = some S ∧
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = s.length := by
+  rw [processSide_def]
+  by_cases hden : (- s.slope).den = s.length
+  · rw [if_pos hden]
+    refine ⟨_, rfl, ?_, ?_⟩
+    · intro x hx
+      rw [Multiset.mem_singleton] at hx
+      subst hx
+      exact ⟨(- s.slope).den_pos, le_rfl⟩
+    · simp [hden]
+  · have hres : (- s.slope).den = 1 ∧ 2 ≤ s.length := hok.resolve_left hden
+    rw [if_neg hden, if_pos hres]
+    have hd : (sideResidual f c s).natDegree = s.length := hdeg hden
+    have hR0 : sideResidual f c s ≠ 0 := by
+      intro h
+      rw [h, Polynomial.natDegree_zero] at hd
+      omega
+    obtain ⟨S, hS, h1, h2⟩ := processResidual_audit'
+      (rec := fun z m => rec z m (- s.slope).num.toNat) hR0
+      (by rw [hd]; exact hlen3) (hrec hden)
+    exact ⟨S, hS, h1, by rw [h2, hd]⟩
+
+/-- The walk's successor equation (a definitional pin, so the step audit can
+be stated without re-unfolding the recursion). -/
+theorem clusterWalk_succ {N : ℕ} (f : Box p n N) (fuel : ℕ)
+    (c : ZMod (p ^ N)) (m lam : ℕ) :
+    clusterWalk f (fuel + 1) c m lam =
+      if h : ∃ k, Certifies f c lam k then
+        (((OM.NewtonPolygon.npSides (resolvedSet f c (Nat.find h))
+              (resolvedSet_nonempty f c (Nat.find h))).filter
+            (fun s => decide ((lam : ℚ) < - s.slope))).mapM
+          (fun s => processSide f c s
+            (fun z m' hh =>
+              clusterWalk f fuel
+                (c + (z.val : ZMod (p ^ N)) * (p : ZMod (p ^ N)) ^ hh)
+                m' hh))).map
+        (fun l =>
+          (if x0 f c (Nat.find h) = 1 then ({(1, 1)} : Multiset (ℕ × ℕ)) else 0)
+            + l.sum)
+      else none := rfl
+
+/-- Step audit (campaign layer): one full cluster step completes with a
+multiset partitioning `m`, GIVEN (i) a certify level exists, (ii) each
+processed side partitions its length, and (iii) the side inventory
+`[x₀ = 1] + Σ_{slope > λ_prev} ℓ = m` at the found level.  All Option/monad
+plumbing of the step is discharged here; (i)–(iii) at the LEAST certify
+level are exactly the open N3 chain. -/
+theorem clusterWalk_succ_audit {N : ℕ} (f : Box p n N) (fuel : ℕ)
+    (c : ZMod (p ^ N)) (m lam : ℕ)
+    (hcert : ∃ k, Certifies f c lam k)
+    (hsides : ∀ s ∈ (OM.NewtonPolygon.npSides (resolvedSet f c (Nat.find hcert))
+        (resolvedSet_nonempty f c (Nat.find hcert))).filter
+        (fun s => decide ((lam : ℚ) < - s.slope)),
+      ∃ S, processSide f c s
+          (fun z m' hh =>
+            clusterWalk f fuel
+              (c + (z.val : ZMod (p ^ N)) * (p : ZMod (p ^ N)) ^ hh)
+              m' hh) = some S ∧
+        (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+        (S.map fun x => x.1 * x.2).sum = s.length)
+    (htotal : (if x0 f c (Nat.find hcert) = 1 then 1 else 0)
+        + (((OM.NewtonPolygon.npSides (resolvedSet f c (Nat.find hcert))
+            (resolvedSet_nonempty f c (Nat.find hcert))).filter
+            (fun s => decide ((lam : ℚ) < - s.slope))).map
+            OM.NewtonPolygon.Side.length).sum = m) :
+    ∃ S, clusterWalk f (fuel + 1) c m lam = some S ∧
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = m := by
+  obtain ⟨L, hmapM, hforall⟩ := mapM_option_spec
+    (P := fun (s : OM.NewtonPolygon.Side) (S : Multiset (ℕ × ℕ)) =>
+      (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+      (S.map fun x => x.1 * x.2).sum = s.length)
+    hsides
+  have haudit := forall₂_multiset_audit (g := OM.NewtonPolygon.Side.length)
+    hforall
+  refine ⟨(if x0 f c (Nat.find hcert) = 1 then ({(1, 1)} : Multiset (ℕ × ℕ))
+      else 0) + L.sum, ?_, ?_, ?_⟩
+  · rw [clusterWalk_succ, dif_pos hcert, hmapM]
+    rfl
+  · intro x hx
+    rcases Multiset.mem_add.mp hx with h1 | h2
+    · by_cases h : x0 f c (Nat.find hcert) = 1
+      · rw [if_pos h, Multiset.mem_singleton] at h1
+        subst h1
+        exact ⟨le_rfl, le_rfl⟩
+      · rw [if_neg h] at h1
+        simp at h1
+    · exact haudit.1 x h2
+  · rw [Multiset.map_add, Multiset.sum_add, haudit.2]
+    by_cases h : x0 f c (Nat.find hcert) = 1
+    · rw [if_pos h]
+      rw [if_pos h] at htotal
+      simpa using htotal
+    · rw [if_neg h]
+      rw [if_neg h] at htotal
+      simpa using htotal
+
 /-- T7 HARD CORE (OPEN): each cluster step the walk opens at a repeated
 residue root completes within fuel N under the ceiling hypothesis
 `discV + 1 ≤ N`, certifying a multiset that partitions its multiplicity —
@@ -1013,7 +1489,7 @@ theorem clusterWalk_audit {N : ℕ} (hn0 : 2 ≤ n) (hn1 : n ≤ 3) (hN : 0 < N)
       (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
       (S.map fun x => x.1 * x.2).sum
         = (UniqueFactorizationMonoid.normalizedFactors (fbar hN f)).count ψ := by
-  -- BLOCKED(T7): the Theorem-N3 (CEIL) analytic core.  The paper proof
+  -- BLOCKED(T7-core): the Theorem-N3 (CEIL) analytic core.  The paper proof
   -- (O4T rev 4 §§3.3–3.4) runs through the true root valuations
   -- b_j = v(α_j − c) in Q̄_p and consumes Facts NP/SF/HEN +
   -- EXT/EF/D/GRD/UCT/HRG/SEP/DES: (I1) needs Fact EXT (unique valuation
@@ -1025,6 +1501,22 @@ theorem clusterWalk_audit {N : ℕ} (hn0 : 2 ≤ n) (hn1 : n ≤ 3) (hN : 0 < N)
   -- coefficients-only reproof is a NEW mathematical development not
   -- sanctioned by the source of record.  Dedicated campaign required
   -- (BP_IV row T7: "a dedicated formalization campaign").
+  --
+  -- CAMPAIGN SESSION 1 (2026-08-01, see the campaign subsection above):
+  -- the sorry's perimeter is now strictly the N3 chain.  PROVED and
+  -- available at this point: (C1)-redundancy + x₀ = 0 certification
+  -- existence (`exists_certifies_of_cVal_lt`), the DIG digit reads, the
+  -- ≠ 0 engine audit (`processResidual_audit'`), the side audit
+  -- (`processSide_audit` over the named `sideResidual`), and the step
+  -- audit (`clusterWalk_succ_audit` — via `clusterWalk_succ`, both the
+  -- Option/monad plumbing and the multiset bookkeeping of one full step).
+  -- STILL OPEN inside this sorry, per side-inventory at the LEAST certify
+  -- level of every visited cluster: (i) certification existence on the
+  -- x₀ = 1 route (Fact-D arithmetic y₁ + max(s_r, λ) < k ≤ v_p(disc)+1),
+  -- (ii) each processed side's `hok`/`hdeg`/`hrec` inputs (hull-endpoint
+  -- digit exactness + sub-cluster invariant transport), (iii) the (I1)
+  -- inventory [x₀ = 1] + Σ_{slope>λ} ℓ = m, (iv) the fuel induction
+  -- tying (i)–(iii) through recursion depth ≤ N.
   sorry
 
 /-- Step-0 assembly (sorry-free): granted the per-cluster walk-completion
