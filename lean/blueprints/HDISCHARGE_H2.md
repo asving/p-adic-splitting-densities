@@ -1,0 +1,674 @@
+# HDISCHARGE_H2 — the (FRESH) discharge blueprint ((ROOT-C) hypothesis (H2))
+
+**Lead:** H2 discharge lead (Fable), hypothesis-discharge swarm (Asvin directive
+2026-08-05, ledger `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` §"ASVIN DIRECTIVE
+(2026-08-05): THE HYPOTHESIS-DISCHARGE SWARM"; orchestration commit 5a624c3).
+**Authority for the statement:** `docs/ROOT_ASSEMBLY_2026-08-02.md` §3.1, the
+**(FRESH)** row (= (ROOT-C)(H2)); the leaf source of record
+`lean/notes/openmath/O9_phaseB_verifybrief_rev5.md` §5.4 (the displayed (FRESH)
+clauses), §6.4 (their exact consumption inside CEN-J), §2 (the stratum datum),
+adjudicated VERIFIED as leaf #8 at the honest scope "CEN-W/CEN-J conditional on
+(GR-B) + (FRESH) + (ADM)-FULL".
+**Rules honored:** hypothesis content stays hypothesis until PROVED; no fiat
+discharge; parked items 22–29 untouched; fenced statements untouched (every
+statement-repair candidate below is SIGN-OFF-GATED, not executed); this unit is
+BLUEPRINT-ONLY — no `Scaffold/HDischarge/H2/*.lean` files land here; prover
+fan-outs run separately against §6's specs.
+
+---
+
+## 0. Executive summary
+
+**(H2) = (FRESH)** is O-9's named open: the *joint-with-parent level-determinacy
+separation clause* — freshness of the order-(r+1) residual data relative to a
+realized parent tower. One §3.1 row, THREE displayed clauses ((a′), (b), (c) —
+§1 below), priced at the GD-2/CL-13 vertex-law layer (= CU-1's step content).
+
+**Door verdicts (member-by-member, §3):**
+
+| member | door | verdict |
+|---|---|---|
+| (a′) transported floors | **1 = PROVE** | provable-shape sketch on file (§3.1): A1/TRI mixed-radix reorganization + (P1)–(P4) + (P4)-concentration of parent digit reads at the junction; the DEEP-STATE leak clause (r ≥ 1 interior digit non-leak) is the SAME GD-2 order-≥ 2 layer as (H1)(a) — open kernel named (VTX-DEEP)/(LEAK) |
+| (b) fresh reads | **1 = PROVE (reduction, no new open content)** | (b) retires into (a′) + LED §5.1 fiber-uniformity + (ADM)-FULL + (GR-B) line clause; reduction theorem spec'd as Lean unit H2-U5 |
+| (c) junction pin | **1 = PROVE (two-step)** | (c-GR) graded-level identification PROVABLE from (GR-B)(3)+(4) + (P4) (O-9's own mechanism note); (c-TR) the graded→finite-level transport = **(VTX-DEEP)**, THE open kernel — no printed home (door-2 verdict §3.6), rides the GD order-≥ 2 campaign |
+| consequence-of-(c) (telescope, ε = 0) | proved given (c) | paper: O-9 Lemma C + Lemma D; **Lean: ALREADY LANDED** — `vertexChain_telescope`/`vertexChain_telescope_units` (ValueSide/Census.lean C4b, pinned-end form). REUSE row, no unit |
+| r = 0 instance (the proved order-1 instance) | **3 = CONSTRUCTION-CONFORMANCE** | M08 §2.2 separation + KEY1 shape; Lean twin queued as H2-U6 over the landed `canonicalStratum1`/`census_r0_law` |
+| clause-(UB)/Route-W face (q ↦ q^δ) | scope note | the O-9 statement is already over ANY complete DVR with residue F_q; the δ-face is instantiation, NOT a separate member (§3.5) |
+| consumption faces (Step 10/K1 CU-leaf-labels; Step 14 CEN-J/K3; Step 16) | **3 = CONSTRUCTION-CONFORMANCE** | census-keyed carriers + clause rows spec'd (H2-U1/U2/U8) — these UNBLOCK BP_IV's C5′/S5 `FreshRow` binder |
+
+**The reduction spine (§4):** every mandatory-path consumer of (H2) also consumes
+(H1)(a) = (GR-B) (verified against ROOT: Step 10 carries (H1); Step 14's CEN-J is
+displayed "(GR-B) + (FRESH) + (ADM)"; Steps 16/18 inherit through those). Hence
+the target theorem **(GR-B) + (VTX-DEEP) ⇒ (FRESH)** discharges (H2) with ZERO
+conditionality growth anywhere, and (H2)'s genuinely new mathematics collapses to
+the single kernel (VTX-DEEP) — the finite-level vertex/junction transport at deep
+states, which is GD-2 order-≥ 2 territory shared with the (H1) campaign (the
+MOVES carry-algebra tower induction, B2-FINAL — in flight, NOT accepted; §5).
+
+**As-built Lean adjudication finding (§2.3, probe-confirmed 2026-08-05):** the
+landed `DictIII.FRESH` hypothesis row (Scaffold/DictIII/Hyps.lean, unit III-H2)
+does NOT carry (FRESH)'s content — its `junctionPin` field is TRIVIALLY TRUE
+(one-line proof on file, §2.3), its `parentSeparated` field is SUSPECTED
+UNSATISFIABLE at intended instances (duplicate-node histories; compiled negation
+witness queued as H2-U7), and `childDetermined`'s ∃! is Option-uniqueness, near
+implied by `ConsF` itself. A SIGN-OFF-GATED restatement to the faithful census
+form (§6 H2-U2's `FreshClauses`) is requested; until granted, the row stands and
+is consumed as-is, and (H2)'s honest carrier is the O-9 §5.4 prose.
+
+**Unit count:** 7 dispatchable Lean units (waves 0–2) + 1 GATED deep-order unit +
+2 numerics gates. All Lean statements below are COMPILE-PROBED against the built
+corpus (2026-08-05 probe, `lake env lean`, imports
+`Scaffold.ValueSide.Census + Scaffold.DictIII.Hyps`; only intentional `sorry`
+bodies outstanding).
+
+---
+
+## 1. The authoritative statement (what must be discharged)
+
+Verbatim from O-9 rev-5 §5.4 (the ONE operative display; the ROOT §3.1 row points
+here). Setting (O-9 §§1–2): O a complete DVR with finite residue field F_q
+(q = p^δ); t a type of order r with residue tower F_q = F₀ ⊆ … ⊆ F_{r+1},
+d = [F_{r+1} : F_q] = f₀⋯f_r, e = e₁⋯e_r, m = e·d; φ = φ_{r+1} a representative;
+f monic of degree n with φ-development f = Σ_{k≤ℓ} a_k φ^k, ℓ = ⌊n/m⌋; w = v_{r+1}
+(GMN Def 2.5); per-slot thresholds β_k per the REPAIRED (STRICT)/(READ)/(TAIL)
+table (O-9 §2); D a level-N stratum datum over t; the window's on-line digit reads
+r_β per §5.1; k_s = the chain's right end = first-min-attainment slot ω_{r+1}
+((P4): k_s = ord_{ψ_r}(R_r(f))).
+
+> **(FRESH).** For every realization ρ of the parent tower (level-N₀ conditions,
+> N₀ ≤ N), conditioned on ρ:
+>
+> * **(a′) [transported floors]** the parent's conditions, rewritten in the
+>   window coordinates (a_k) via A1, amount to per-slot valuation floors
+>   w(a_k) ≥ g_k together with the clause-(c) pin, where (g_k) is a function of
+>   the DISCRETE parent shape only (the WGEO/VTX transported pins). [Rev-0 (a)'s
+>   "below-line height conditions hold automatically" is the special case
+>   g_k ≥ β_k — the slot charges nothing, the max(0,·) in (E″).]
+> * **(b) [fresh reads]** each on-line window read of §5.1 is, on the ρ-fiber,
+>   an affine function of one fresh digit with unit slope, jointly independent
+>   across the on-line slots — so the joint census factors as
+>   (#ρ-fiber)·(the window factors).
+> * **(c) [the junction pin — rev-0's "JUNCTION-PIN", PROVED label WITHDRAWN at
+>   01c21e6]** the digit read at the window chain's right end (k_s = ω_{r+1};
+>   (P4)) is a ρ-determined nonzero CONSTANT (the transported anchor/VTX read),
+>   not a free unit.
+
+**Status as displayed there:** order-1 instance (r = 0) PROVED — it is M08 §2.2's
+separation together with the KEY1 standard-lift shape; the Lean order-≤ 1 twin is
+the CL-13/LVL-DET layer (`HC1/CL13_lvlDet.lean` et seq.). General order = the
+GD-2 vertex-law layer at deep states — exactly CU-1's step content.
+**Consequence of (c), proved GIVEN the clause:** the vertex chain telescopes to
+exactly ∏_S M_{λ_S}(q^d) with NO stray (q^d − 1) factor (O-9 Lemma D pinned-end +
+Lemma C — only the pin's nonvanishing and fixedness enter, never its value).
+**The named missing step for (c)** (O-9 §5.4 mechanism note, "NOT A PROOF"): on
+the ρ-fiber the parent's residual data fixes the ψ_r-cofactor class of R_r(f) at
+the marked root, and (GR-B)(3)+(4) identify the window's k_s-read with that
+cofactor value up to march normalizers — at the GRADED level. Transporting this
+identification to the FINITE-LEVEL digit read at working level N is precisely the
+GD-2/VTX vertex law; that transport is the open step.
+
+**Consumption map (ROOT §3.1 row, Enters-list, REVISION-synced):**
+
+1. **Step 10** (CU-1's step) — the GD-2/CL-13 vertex-law layer where (FRESH) is
+   priced (BP_III unit III-U3b's induction step "≥ 2 fires hGRB + hFRESH");
+   Step 10's deliveries (the CU leaf labels) inherit it, so **clause (R)**
+   consumes it through **Step 18's K1** ("CU leaf labels" — the A-5 route leg,
+   the SAME K1 route the (H6) row displays). NOT (SQ) (VC4-4: the semantic (SQ)
+   is unconditional).
+2. **Step 14** (O-9's CEN-J — THE census) — hence **Step 18's K3** (census half).
+3. **Step 16 / clause (UB)** — through the same census over any complete DVR at
+   q ↦ q^δ.
+
+**Falsifier state:** numerically unviolated at 8,220,994 boxes / 1,128,288
+order-2 instances (O-9 harness K2 = parent-realization independence, 0
+violations) — support, NOT proof; the measured ε = 0 on 18 cross-p cells is
+consistent with (c) but NON-discriminating (O-9 §10). The CU-1 §7.2 gate finding
+(1,818 naive vertex-law refutations under slot-fresh normalization at p = 3)
+is the STATEMENT-SHAPING fence: every (FRESH) transcription must read residues
+in the COHERENT anchored-march normalization — a slot-fresh reading of (b)/(c)
+is machine-refuted.
+
+---
+
+## 2. The two faces and the as-built Lean state
+
+### 2.1 The census face (primary; where the quantitative clauses live)
+
+CEN-J (O-9 §2) consumes the clauses in exactly this shape (§6.4 steps 2–4):
+(a′) ⇒ per-slot relative LED charge q^{−max(0, s(β_k) − s(g_k))} (product box);
+(b) ⇒ per prescribed digit q^{−d} at each of L′ = L − [k_s ∈ K_D] on-line slots,
+jointly independent; (c) ⇒ the k_s-read charged to the parent, and the telescope
+closes with NO (q^d − 1). Lean home: `Scaffold/ValueSide/` — `CensusData` (+
+`d/period/J/wt/Gset/attainDim/s/onLineSlots`), `ADMFull`, `Stratum1`,
+`canonicalStratum1`, `census_r0_law`, the C4b telescope engine, and
+`CensusValueRows` whose `FreshRow : CensusData → Prop` binder is an OPAQUE
+PARAMETER **whose owner is THIS discharge lane** (the SeriesTie.lean §S5b BLOCKED
+record names the missing census-keyed forms explicitly).
+
+### 2.2 The classifier face (consumption at Step 10 / K1)
+
+CU-1's induction step at orders ≥ 2 consumes the same layer as level-determinacy
+separation (candidate-pair identification). Lean home: `Scaffold/DictIII/` —
+`EHist`/`GMNData`/`GMNReader`/`ConsF` carriers and the landed hypothesis row
+`DictIII.FRESH` (III-H2). The order-≤ 1 twin is CL-13/LVL-DET (`HC1/`), proved.
+
+### 2.3 As-built adjudication findings (probe of 2026-08-05, on file)
+
+* **(F-1) `DictIII.FRESH.junctionPin` is trivially true.** Verbatim field:
+  `∀ {H i}, i + 1 < H.nodes.length → (H.nodes[i]?).isSome`. One-line proof
+  compiles against the corpus (`simp` + `omega` on `List` index arithmetic;
+  probe file, 2026-08-05). The field prices NOTHING of (c).
+* **(F-2) `DictIII.FRESH.parentSeparated` is suspected UNSATISFIABLE at intended
+  instances.** Field: `i ≠ j → H.nodes[i]? ≠ H.nodes[j]?` for i, j < length.
+  `EHist.nodes : List ENodeData` admits duplicate records, and REPEATED
+  (e, h, ℓ, s, u, sel, inc) node data at two tower levels is mathematically
+  realizable (nothing in OM theory forbids equal per-level records at different
+  levels — the levels differ by POSITION, not by record). One duplicate-node
+  `EHist` witness makes `FRESH p F` FALSE — the M02/V₀ vacuity genre, in the
+  unsatisfiable-hypothesis direction: every `hFRESH`-consuming theorem would be
+  vacuously firing. Compiled negation witness queued (H2-U7).
+* **(F-3) `childDetermined`'s ∃!** is Option-valued uniqueness (a function into
+  `Option` takes at most one `some` value), so the field reduces to existence,
+  which `ConsF`'s own clause supplies at continuing nodes — near-redundant.
+* **Consequence.** The landed row is a placeholder-grade shadow, NOT (FRESH). It
+  is currently consumed by NO landed theorem (III-U3b not yet landed), so no
+  soundness damage exists at HEAD; but the (H2) discharge CANNOT target it.
+  **Requested adjudication (SIGN-OFF-GATED, statement fence):** restate III-H2's
+  `DictIII.FRESH` to the faithful form — either re-point it at the census-face
+  `FreshClauses` package (§6, H2-U2) with a classifier-face corollary, or
+  replace its three fields by faithful chain-keyed twins of (a′)/(b)/(c). Until
+  sign-off, NOTHING is edited; BP_III's III-U3b (unlanded) should bind the new
+  form when it comes.
+
+---
+
+## 3. Member-by-member door assignment
+
+### 3.1 (FRESH)(a′) — transported floors. DOOR 1: PROVE
+
+**Claim shape.** Fix the stratum datum D over t at level N and a parent
+realization ρ (level-N₀ conditions). Then in the window coordinates (a_k) the
+ρ-fiber's membership conditions are EXACTLY a product box: per-slot floors
+w(a_k) ≥ g_k with (g_k) a function of the discrete parent shape only, PLUS the
+clause-(c) pin at k_s — no other digit-level condition on any window slot.
+
+**Argument sketch (section-by-section; sources pinned).**
+
+1. **(coordinates)** A1/TRI/LED (O-9 §4, PROVED): the level-N box has the
+   mixed-radix φ-monomial basis; the w-filtration is triangular with ledger
+   counts s(β). The parent's conditions are conditions on f mod π^{N₀}
+   ((DET) over the parent's own reads — CEN-J's standing hypothesis), i.e.
+   conditions in the order-≤ r ledger coordinates.
+2. **(height transport)** Each parent HEIGHT condition (polygon face membership
+   at order i ≤ r: u-inequalities against transported lines) rewrites through
+   (P1)–(P3) (GMN Prop 2.7(1)(3)(4) + Lemma 2.2(2) + Thm 2.11 — pinned MATCH at
+   LITUNIT) as w-floors on the order-(r+1) development coefficients: TRI
+   triangularity reorganizes an order-i development monomial bound into
+   per-φ_{r+1}-slot minima, and the minimum over the contributing monomials of
+   one slot is the floor g_k. Shape-only dependence: the lines/thresholds of
+   the parent datum are functions of its discrete shape (faces, types, N₀),
+   never of the realized digits — this is the same WGEO/VTX transported-pin
+   bookkeeping proved at order ≤ 1 in the corpus (HC2 `V10_transportWindow`,
+   the D.8-(TRANSPORT) upward forced window; `UE_vtxUpper` perimeter).
+3. **(digit transport — the freshness core)** The parent's DIGIT conditions
+   (its own on-line reads at orders ≤ r, realized by ρ) touch the order-(r+1)
+   window only through the ψ_r-cofactor of R_r(f) at the marked root: by (P4)
+   (GMN Lemma 2.17 + §2.1 ω + Def 1.8, first-attainment form), the order-r
+   residual data concentrates at the window's right end k_s = ω_{r+1}(f).
+   INTERIOR on-line slots of the order-(r+1) window receive NO parent digit
+   condition — their reads are strictly-deeper data the parent never consumed.
+   This "no interior leak" clause is immediate at the GRADED level from
+   (GR-B)(2′)-march + (P4); its finite-level form at working level N is the
+   SAME transport kernel as (c)'s — named **(LEAK)** here, subsumed by
+   **(VTX-DEEP)** (§5): one kernel, two consumption points.
+4. **(assembly)** Steps 2–3 give: fiber conditions = per-slot floors (heights)
+   + the single k_s pin (digits) = the displayed product box; E″'s
+   well-definedness (existence + shape-only floors) follows. This is exactly
+   what CEN-J §6.4 step 2 consumes.
+
+**Honest open points (named, not papered):** (i) the finite-level transport in
+steps 2–3 is PROVED at order ≤ 1 only (r = 0 outright = M08 §2.2; the HC2
+transport kernels cover the order-≤ 1 read frames); at deep states (r ≥ 1) it is
+(VTX-DEEP)/(LEAK) — open, GD-2 order-≥ 2 territory. (ii) The mixed-radix
+reorganization of step 2 at r ≥ 1 is unwritten as a composed document (A1/TRI
+are proved per-level; the r-fold composition needs writing — expected mechanical,
+same grade as the (H1)(a) "composed march unwritten" note). NO other gap.
+
+**Door 2 check (literature):** the ingredients are pinned printed statements
+((P1)–(P4), LITUNIT MATCH verdicts), but NO printed source states the JOINT
+product-box clause — GMN/FGMN work per-polynomial at the graded level and never
+condition on a realized parent stratum. Verdict: door 1 with pinned ingredients;
+no retarget available (§3.6).
+
+### 3.2 (FRESH)(b) — fresh reads. DOOR 1: PROVE (reduction; NO new open content)
+
+**Reduction (b-RED).** Given (a′) at (D, ρ), (ADM)-FULL at D, and (GR-B)'s line
+clause (the §5.1 layer), clause (b) follows:
+
+1. Per slot: at an on-line slot k with g_k ≤ β_k, the fiber condition at k is
+   the SLACK floor w(a_k) ≥ g_k; the read r_{β_k} lives on {w ≥ β_k} ⊆ the
+   fiber's slot factor, and §5.1 (PROVED in O-9: F_q-linear, injective on G_β,
+   fiber-uniform onto its image V_β; onto F_{r+1} ⟺ FULL attainment = (ADM))
+   gives the per-digit count q^{mN − s(β_k) − d}, z-independent — ONE fresh
+   digit, unit slope after the anchored-march normalization ((GR-B)(2′); the
+   slot-fresh alternative is the 1,818× machine-refuted reading — §1 fence).
+2. Jointly: (a′)'s PRODUCT BOX makes the slots independent coordinates; a
+   product of per-slot fiber-uniform reads is jointly uniform (the abstract
+   engine H2-U4 — pure finite counting).
+3. The junction slot is excluded (L′ accounting) — its read is (c)'s.
+
+**Residue:** NONE beyond (a′) + (ADM) + (GR-B)-line. (b) is not an independent
+open input once (a′) is on file; O-9 §6.4 step 3 already consumes it exactly
+this way. Lean spec: H2-U4 (engine) + H2-U5 (reduction at the carriers).
+
+### 3.3 (FRESH)(c) — the junction pin. DOOR 1: PROVE (two-step; THE open kernel)
+
+**Step (c-GR) — graded-level identification [PROVABLE NOW on paper].** By (P4),
+k_s = ω_{r+1}(f) = ord_{ψ_r}(R_r(f)). On the ρ-fiber the parent's realized
+residual data fixes the class of R_r(f)'s ψ_r-cofactor at the marked root;
+(GR-B)(3) (R^{gr}(ψ̂) ∼ ψ_r) + (GR-B)(4) (faithfulness ord_{ψ_r}(R^{gr}α) =
+ord_{ψ̂}α) identify the window's k_s graded read with that cofactor value up to
+the march normalizers — a ρ-determined NONZERO constant of F_{r+1}. This is
+O-9's own mechanism note, promoted from "note" to a claim with a written proof
+obligation: it consumes (GR-B) clause-wise and nothing else. UNIT: write this
+argument (paper unit H2-P1, §6 wave 1; it becomes a lemma of the O-9/GD arc,
+verified through the standard hostile-pass channel).
+
+**Step (c-TR) — finite-level transport [(VTX-DEEP), OPEN].** The graded
+identification must descend to the working-level-N digit read: the k_s-read of
+the FINITE development (a_k mod π^N) equals the graded read's Teichmüller-digit
+shadow, uniformly on the ρ-fiber. At order ≤ 1 this is proved in the corpus
+(the HC2 vertex-transport kernels: `HK11a_vertexTransport` (σV-vertex law at
+e′ = 1), `V9_K1nonrec`/`K1_readVertexPin_nonrec`, `V10_transportWindow`); at
+deep states it is EXACTLY the GD-2/CL-13 vertex law the ROOT row prices — the
+open kernel. Interface spec in §5.
+
+**Why (c) is genuinely a clause of (FRESH), not of (GR-B)** (pass-1 CRITICAL 2,
+preserved): (GR-B) is a per-polynomial graded-dictionary package; (c) asserts a
+JOINT property of the fibered family at finite level. Rev-0's "PROVED from
+(GR-B)(2′)+(3)" had no derivation; the label stays withdrawn until (c-GR) +
+(c-TR) are both on file.
+
+### 3.4 Consequence-of-(c) — the pinned-end telescope. PROVED GIVEN (c); REUSE
+
+Paper: O-9 Lemma C + Lemma D (pinned end) — value-irrelevant, only nonvanishing
++ fixedness enter. Lean: **ALREADY LANDED** as the C4b engine
+(`vertexChain_telescope`, `vertexChain_telescope_units` — stated over any finite
+group with the end pinned via `Fin.snoc z 1`, values in any commutative
+semiring). NO new unit; the (c) ⇒ ε = 0 wiring at order-r carriers waits on
+BP_IV's boxes-level `StratumR` upgrade (out of H2 scope; recorded seam).
+
+### 3.5 The clause-(UB)/Route-W face — scope note, not a member
+
+O-9 §1/§3 states everything over an arbitrary complete DVR O with finite residue
+field F_q, q = p^δ (Route W via GD23 DEVID replaces the GMN-scope (P2)). So the
+Step-16/clause-(UB) consumption at q ↦ q^δ is INSTANTIATION of the same
+statement, provided the discharge proofs are written at that generality — a
+DISCIPLINE requirement on every unit below (statements quantify over q as a
+prime power, never over p alone), not a fourth clause.
+
+### 3.6 Door 2 (LITERATURE-RETARGET) — the honest overall verdict: NOT AVAILABLE
+
+Candidates examined against the LITUNIT-pinned corpus ([GMN] Trans. AMS 364
+(2012); [FGMN] J. Algebra 427 (2015); [ML] MacLane 1936):
+
+* **GMN Prop 2.10** (pinned (P5)): realizability of any prescribed residual
+  value at admissible weights, deg < m. Per-slot EXISTENCE at the graded level;
+  no joint-with-parent clause, no counting uniformity, no finite-level N. O-9
+  itself demoted it to corroboration-only at fully attained β.
+* **GMN Thm 2.26** (theorem of the product, (P6)): multiplicativity of residual
+  polynomials — corroboration for the march, not freshness.
+* **GMN Lemma 2.17/§2.1 ω** ((P4)): supplies (c-GR)'s first-attainment input —
+  an INGREDIENT pin, already consumed as such.
+* **FGMN Thm 4.2 / Cor 4.4 / 5.6 / Prop 5.14** ((P7)): (GR-B)'s per-clause
+  printed homes — graded-level residual ideals; nothing fibered, nothing at
+  working level N.
+* **Residue-field-tower freshness in the abstract** (unramified towers,
+  Teichmüller digit independence): standard, but the needed statement is about
+  the OM development coordinates of the SPECIFIC window over a realized parent
+  stratum — no printed statement in this shape is known to this repo's
+  literature units.
+
+**Verdict:** every INGREDIENT of doors 3.1–3.3 has a printed pin; the composed
+clauses (a′)/(b)/(c) have NO printed home — a faithful literature retarget of
+the row does not exist. If a future LITUNIT session locates a fibered/counting
+form (e.g. in Okutsu-invariant or mass-formula literature), it enters as a
+replacement for (c-TR)/(LEAK) with a full faithfulness brief; until then door 1
+stands. [This matches the wave-10 ledger's grading of the ≥ 2 layer for (GR-B):
+"FGMN-pinned, transcription" for ingredients, open for the composed statement.]
+
+---
+
+## 4. The reduction spine and conditionality-neutrality
+
+**Target theorem (the discharge shape).**
+
+    (FRESH-RED)  (GR-B) [(H1)(a), clause-wise] + (VTX-DEEP) [§5]
+                   ⟹  (FRESH)(a′) ∧ (b) ∧ (c)   [at every D, N, ρ; any O, any q]
+
+via §3.1 (steps 1–4, with (LEAK) ⊆ (VTX-DEEP)), §3.2 (b-RED), §3.3 ((c-GR) +
+(c-TR) = (VTX-DEEP)).
+
+**Conditionality-neutrality (verified against ROOT §§2–3):** every consumer of
+(H2) already consumes (H1)(a) — Step 10's conditionality line names the (H1)
+group; Step 14's census is displayed "(GR-B) + (FRESH) + (ADM)"; Step 16 and
+Step 18's K1/K3 inherit through Steps 10/14. Therefore replacing the (FRESH)
+row by (FRESH-RED)'s hypotheses grows NO consumer's hypothesis set: (H2)
+retires into (H1)(a) + (VTX-DEEP), and (VTX-DEEP) itself is GD-2-at-≥ 2 content
+of the same campaign. **Net effect of a completed H2 discharge:** the §3.1
+ledger loses one row and gains at most one named kernel INSIDE the (H1) row's
+campaign perimeter — the honest mathematical distance shrinks to the GD order-≥ 2
+campaign alone, as the ROOT §5 outlook already predicts ("the last genuine
+mathematics… the GD order-≥ 2 campaign for (GR-B)/(FRESH)").
+
+**What this blueprint does NOT claim:** no clause is hereby discharged. (a′) at
+r ≥ 1, (c-TR), and the composed write-ups are OPEN until written and passed
+through the standard hostile-pass channel (paper units H2-P1/P2, §6).
+
+---
+
+## 5. The (VTX-DEEP) interface (the open kernel, spec'd for the GD-≥ 2 campaign)
+
+**Consumer-side specification** (what H2 needs delivered; the supplier is the
+GD order-≥ 2 / MOVES carry-algebra campaign — B2-FINAL, pass 8 NOT accepted,
+"definitive bottom-up write-up = next dedicated unit" per its ledger record):
+
+> **(VTX-DEEP).** Let t be a type of order r ≥ 1 over O, φ = φ_{r+1} a
+> representative, N a working level within (DET) scope, k_s the window chain's
+> right end of a ledger-admissible stratum datum D. For every parent
+> realization ρ: the level-N digit read of a_{k_s} at height β_{k_s} equals the
+> (GR-B)-graded k_s-read's residue-digit under the anchored-march normalizers
+> — in particular it is CONSTANT on the ρ-fiber, and its value is the (c-GR)
+> cofactor constant (nonzero). Moreover (the (LEAK) half) at every interior
+> on-line slot k ≠ k_s, the parent's realized conditions impose NO constraint
+> on the height-β_k digit of a_k beyond the floor w(a_k) ≥ g_k.
+
+**Interface notes.** (i) This is the finite-level shadow of (GR-B)(2′)/(3)/(4)
++ (P4) — the carry-algebra language (D = F[u]/(u^e − z̄), the aligned DIG with
+the carry pair, the (z+c)^a anchor-monomial transport) is exactly the supplier's
+formulation; the Case-J sealed-gate record (anchor-monomial transport confirmed
+at a > 0, 12 strata exact) is its strongest current evidence. (ii) NO Lean
+transcription of (VTX-DEEP) is authored in this blueprint: the supplier's
+write-up is unaccepted, and transcribing an unaccepted spec would freeze a
+possibly-wrong statement. The Lean row lands as unit H2-U9 AFTER B2-FINAL
+acceptance, verbatim from the accepted document, through the dual
+(Fable + Codex) statement gate. (iii) Falsifier duty transfers: the supplier's
+sealed gates + H2-N1/N2 (§7) are the standing numeric fence.
+
+---
+
+## 6. LEAN UNIT SPECS
+
+Target directory: `lean/LeanUrat/Scaffold/HDischarge/H2/` · namespace
+`LeanUrat.Scaffold.HDischarge.H2` · imports per unit as displayed. Every
+statement below was COMPILE-PROBED verbatim on 2026-08-05 against the built
+corpus (probe file `/tmp/openmath/H2_probe2.lean`; `lake env lean` green with
+only intentional `sorry` bodies). E-phase transcribes VERBATIM; deviations are
+statement changes and need the lead's sign-off. NO axioms anywhere; hypothesis
+rows are Props/structures. Encoding conventions FLAGGED for the prover+verifier:
+ℕ-subtraction in exponents implements the max(0,·) truncation (exact within
+LED(i) scope m·N ≥ s(·)); digit alphabets ride ℕ with counts vanishing off-range;
+`s`-monotonicity (`Finset.card_le_card`) gives max(s β, s g) = s (max β g).
+
+### H2-U1 — `H2/Carriers.lean` (wave 0, EASY, no deps beyond corpus)
+
+Imports: `Mathlib`, `LeanUrat.Scaffold.ValueSide.Census`.
+
+```lean
+/-- H2-U1a `WindowDatum`: the order-(r+1) window counting skeleton over census
+    datum `D` (O-9 rev-5 §2 stratum datum reduced to the (FRESH)-quantified
+    data: box slots, per-slot thresholds, on-line slots, junction slot). -/
+structure WindowDatum (D : CensusData) where
+  ℓ : ℕ
+  hℓ : 1 ≤ ℓ
+  /-- the polynomial degree n (ℓ = ⌊n/m⌋, m = period·d). -/
+  n : ℕ
+  hn : ℓ * (D.period * D.d) ≤ n
+  beta : Fin (ℓ + 1) → ℕ
+  onLine : Finset (Fin (ℓ + 1))
+  ks : Fin (ℓ + 1)
+  monicTop : Bool
+  boxSlots : Finset (Fin (ℓ + 1))
+  hbox : boxSlots = if monicTop then Finset.univ.erase (Fin.last ℓ) else Finset.univ
+  hks_line : monicTop = false → ks ∈ onLine
+
+/-- H2-U1b `ParentShape`: the discrete parent shape — level `N0` and the
+    transported floors `g` (shape-only by TYPE: `g` sees no realization ρ). -/
+structure ParentShape (D : CensusData) (W : WindowDatum D) where
+  N0 : ℕ
+  hN0 : 1 ≤ N0
+  g : Fin (W.ℓ + 1) → ℕ
+
+/-- H2-U1c `JointStratum`: the level-N joint (parent, window) stratum presented
+    fiberwise — skeletal counting carrier (`Stratum1`/`StratumR` discipline). -/
+structure JointStratum (D : CensusData) (W : WindowDatum D) (P : ParentShape D W) where
+  N : ℕ
+  hN : P.N0 ≤ N
+  /-- number of parent realizations ρ at alphabet size q (level N0). -/
+  rhoCount : ℕ → ℕ
+  /-- per-realization per-slot HEIGHT-condition count at alphabet size q. -/
+  slotCount : ℕ → Fin (W.ℓ + 1) → ℕ → ℕ
+  /-- per-realization fiber count (heights only), at alphabet size q. -/
+  fiber : ℕ → ℕ → ℕ
+  /-- per-realization count of boxes with prescribed on-line digit vector z. -/
+  fiberDigits : ℕ → (↥W.onLine → ℕ) → ℕ → ℕ
+```
+
+Design notes (ratification points): (i) `ParentShape.g` shape-only-ness is
+enforced BY TYPE (no ρ argument) — the (a′) law then prices only the floors'
+CORRECTNESS, exactly O-9's split; (ii) `boxSlots` carries the monic-top erasure
+(K_D = {0..ℓ−1} at m | n) verbatim; (iii) carriers are SKELETAL by the corpus's
+own precedent (`Stratum1` C4a provenance) — the engine's constructed strata
+instantiate them at the BP_IV wave-4 seam.
+
+### H2-U2 — `H2/FreshLaws.lean` (wave 0, EASY, dep U1; statements only)
+
+```lean
+/-- (FRESH)(a′) PRODUCT-BOX face: on each ρ-fiber the parent's transported
+    conditions are per-slot separate — the fiber count factorizes. -/
+def FloorsProdLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+    J.fiber ρ q = ∏ k ∈ W.boxSlots, J.slotCount ρ k q
+
+/-- (FRESH)(a′) LED-CHARGE face at off-line slots: the per-slot height charge
+    is the relative LED factor (ℕ-subtraction = the max(0,·) truncation). -/
+def FloorsChargeLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+    ∀ k ∈ W.boxSlots, k ∉ W.onLine →
+      J.slotCount ρ k q
+        = q ^ ((D.period * D.d) * J.N - D.s (max (W.beta k) (P.g k)))
+
+/-- (FRESH)(b): fresh reads — per prescribed digit vector agreeing at the
+    junction, fiber counts coincide (joint uniformity off the junction). -/
+def FreshReadsLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+    ∀ z z' : (↥W.onLine → ℕ),
+      (∀ hk : W.ks ∈ W.onLine, z ⟨W.ks, hk⟩ = z' ⟨W.ks, hk⟩) →
+      J.fiberDigits ρ z q = J.fiberDigits ρ z' q
+
+/-- (FRESH)(c): the junction pin — the read at the chain's right end is a
+    ρ-determined NONZERO constant (free-end box only; monic top pins to 1). -/
+def JunctionPinLaw (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop :=
+  W.monicTop = false →
+    ∀ (q : ℕ) (ρ : ℕ), ρ < J.rhoCount q →
+      ∃ c : ℕ, c ≠ 0 ∧ c < q ^ D.d ∧
+        ∀ (hk : W.ks ∈ W.onLine) (z : (↥W.onLine → ℕ)),
+          z ⟨W.ks, hk⟩ ≠ c → J.fiberDigits ρ z q = 0
+
+/-- (H2) = (FRESH) packaged at one (W, P, J). -/
+structure FreshClauses (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) : Prop where
+  floorsProd : FloorsProdLaw W P J
+  floorsCharge : FloorsChargeLaw W P J
+  freshReads : FreshReadsLaw W P J
+  junctionPin : JunctionPinLaw W P J
+```
+
+Docstring duty: each law pins O-9 §5.4's clause + §6.4's consumption step.
+Honesty display in the module header: these are the CENSUS-face counting
+shadows of (a′)/(b)/(c) — faithful to what CEN-J §6.4 consumes; the
+chain/classifier-face twins ride the §2.3 adjudication.
+
+### H2-U4 — `H2/ProdBoxUniform.lean` (wave 1, MED, corpus-free)
+
+```lean
+/-- (b-RED) engine: per-slot uniform independent counts multiply — the joint
+    count over a product box with per-slot fiber-uniform reads is digit-vector
+    independent.  Abstract Finset/counting form. -/
+theorem prodBox_jointUniform {ι : Type*} [Fintype ι] [DecidableEq ι]
+    {Ω : ι → Type*} [∀ k, Fintype (Ω k)] [∀ k, DecidableEq (Ω k)]
+    (A : ∀ k, Finset (Ω k)) (read : ∀ k, Ω k → ℕ)
+    (huni : ∀ k (z z' : ℕ),
+      ((A k).filter fun ω => read k ω = z).card
+        = ((A k).filter fun ω => read k ω = z').card)
+    (z z' : ι → ℕ) :
+    ((Finset.univ.pi A).filter fun ω => ∀ k h, read k (ω k h) = z k).card
+      = ((Finset.univ.pi A).filter fun ω => ∀ k h, read k (ω k h) = z' k).card
+```
+
+Proof route: `Finset.card_pi`-style product decomposition (the filtered pi-set
+is the pi of filtered slots), then `Finset.prod_congr` with `huni`. Falsifier:
+`#eval` gate at ι = Fin 2, Ω = Fin 3 with a non-uniform `read` (hypothesis
+violated ⇒ conclusion may fail) and a uniform one (equal counts).
+
+### H2-U5 — `H2/FreshReduction.lean` (wave 1, MED, deps U1/U2/U4)
+
+The (b)-retirement theorem at the carriers. New named hypothesis rows (each a
+`def ... : Prop`, docstrings pinning O-9 §5.1 and §6.4 step 3):
+`DigitsProdLaw W P J` — `fiberDigits` factorizes per-slot (the digit-level
+product-box face of (a′), supplied at the engine seam);
+`SlotUniformLaw W P J` — each non-junction on-line slot's per-digit count is
+digit-independent (LED §5.1 fiber-uniformity + (ADM)-FULL onto-ness at the
+engine instance). Deliverable:
+
+```lean
+theorem freshReads_of_floors (W : WindowDatum D) (P : ParentShape D W)
+    (J : JointStratum D W P) (hprod : DigitsProdLaw W P J)
+    (huni : SlotUniformLaw W P J) : FreshReadsLaw W P J
+```
+
+(exact row bodies: prover-authored, ratified against §6.4 step 3 — the two rows
+must jointly say no more than "(a′) product box at digit level + §5.1 uniform
+slots"; anything stronger is a statement defect). This EXHIBITS (b)'s
+no-new-content reduction inside Lean: (b) holds wherever (a′)+(LED)+(ADM) do.
+
+### H2-U6 — `H2/R0Instance.lean` (wave 1, MED-HARD, deps U1/U2 + landed C4)
+
+The r = 0 instance (the PROVED order-1 face of (FRESH)) as construction +
+conformance over the landed `canonicalStratum1`/`census_r0_law`:
+
+```lean
+/-- The canonical r = 0 joint stratum built on `canonicalStratum1` (M08 §2.1
+    block datum: parent = the x^e block condition, N₀ = 1, floors g ≡ 1). -/
+noncomputable def canonicalJointR0 (D : CensusData) (hr : D.r = 0)
+    (W : WindowDatum D) (P : ParentShape D W) : JointStratum D W P
+
+theorem freshClauses_r0 (D : CensusData) (hr : D.r = 0)
+    (W : WindowDatum D) (P : ParentShape D W)
+    (hmono : W.monicTop = true) (hg : ∀ k, P.g k = 1) (hN0 : P.N0 = 1) :
+    FreshClauses W P (canonicalJointR0 D hr W P)
+```
+
+Prover freedom: `canonicalJointR0`'s internals (build `slotCount`/`fiber`/
+`fiberDigits` from `Stratum1` data); additive helper lemmas in H2/ files only —
+NO edits to `Census.lean` (fence). At monic top `JunctionPinLaw` is vacuous
+(`monicTop = false → …`), exactly M08's pinned-to-1 accounting; the content is
+floors + fresh reads = M08 §2.2's separation, formalized. If the construction
+stalls on `canonicalStratum1` internals, return the compiled obstruction
+(BLOCKED-honesty protocol), do not weaken.
+
+### H2-U7 — `H2/DictIIIProbes.lean` (wave 1, MED, dep DictIII.Hyps; adjudication input)
+
+```lean
+/-- PROBE F-1 (PROVED at blueprint probe): DictIII.FRESH.junctionPin is trivial. -/
+theorem dictFresh_junctionPin_trivial {p : ℕ} [Fact p.Prime] {F : Type*}
+    [Field F] [Finite F] (H : DictIII.EHist p F) (i : ℕ)
+    (h : i + 1 < H.nodes.length) : (H.nodes[i]?).isSome := by
+  simp [List.getElem?_eq_some_iff]; omega
+
+/-- PROBE F-2: compiled negation witness — duplicate-node history refutes
+    DictIII.FRESH.parentSeparated at an intended-instance class. -/
+theorem probe_not_FRESH : ∃ (p : ℕ) (_ : Fact p.Prime),
+    ¬ (DictIII.FRESH p (ZMod 2))
+```
+
+(the witness: an `EHist` with `nodes = [ν, ν]`; `base := ⊤`, `psi0 := X`,
+`psihat i := X + 1` satisfy the carrier laws — construction is the unit's work;
+if some carrier law obstructs duplicates, the OBSTRUCTION is the finding and
+the unit returns it compiled). Output feeds the §2.3 sign-off-gated
+adjudication; NO restatement is executed inside this unit.
+
+### H2-U8 — `H2/CenJWiring.lean` (wave 1, EASY, deps U1/U2)
+
+```lean
+/-- The D-keyed packaging consumed by BP_IV C5′'s opaque `FreshRow` parameter:
+    (FRESH) asserted over a designated engine-strata family. -/
+def FreshRowOn (D : CensusData)
+    (Strata : ∀ (W : WindowDatum D) (P : ParentShape D W),
+      Set (JointStratum D W P)) : Prop :=
+  ∀ (W : WindowDatum D) (P : ParentShape D W),
+    ∀ J ∈ Strata W P, FreshClauses W P J
+```
+
++ module-note: `CensusValueRows D GRBRow FreshRow SW SJ` instantiates
+`FreshRow := fun D => FreshRowOn D (engineStrata D)` when BP_IV wave-4 lands
+`engineStrata`; until then this def is the DECLARED owner form the S5b BLOCKED
+record asked for (GRBRow's census-keyed twin is H1-lane property — H2 does NOT
+author it; coordination row).
+
+### H2-P1 / H2-P2 — PAPER units (wave 1–2, the prose proofs; hostile-pass channel)
+
+* **H2-P1 ((c-GR)):** write the graded-level junction identification as a lemma
+  with proof, consuming (GR-B)(3)+(4)+(P4) clause-wise (§3.3). Home: a new
+  note `lean/notes/openmath/H2_cGR_attempt.md` + verify brief; the standard
+  fresh-context hostile pass gates acceptance. HARD (mathematical writing).
+* **H2-P2 ((a′) composed transport, r ≥ 1):** the §3.1 steps 1–2 write-up (A1/
+  TRI composition + (P1)–(P3) height transport, floors displayed), with the
+  (LEAK) clause explicitly assumed and priced to (VTX-DEEP). HARD.
+  These two, once passed, shrink (H2) to exactly (VTX-DEEP).
+
+### H2-U9 — GATED (wave 3; DO NOT DISPATCH)
+
+The (VTX-DEEP) Lean hypothesis row + `fresh_c_of_vtxDeep`/`fresh_leak_of_vtxDeep`
+consumption theorems. GATE: B2-FINAL (the GD-≥ 2 carry-algebra write-up)
+ACCEPTED, then transcribe the accepted statement verbatim through the dual
+statement gate. Transcribing now would freeze an unaccepted spec (§5(ii)).
+
+### Wave order
+
+| wave | units | parallel? | gate |
+|---|---|---|---|
+| 0 | U1 → U2 | sequential (U2 needs U1), minutes-scale | compile green |
+| 1 | U4, U5, U6, U7, U8, P1, P2 | ALL parallel (U5 waits U4 only for its proof, statement independent) | per-unit: compile + falsifier; P1/P2: hostile pass |
+| 2 | fold: §2.3 adjudication package to Asvin (sign-off request with U7's compiled witness); update ROOT (FRESH) row notes | lead-only | sign-off |
+| 3 | U9 + the (FRESH-RED) assembly theorem | after B2-FINAL acceptance | dual statement gate |
+
+---
+
+## 7. Numerics / falsifier gates (spec; runs ride the numerics fleet)
+
+* **H2-N1 (the (c)-DISCRIMINATING gate).** Extend
+  `verification/openmath/o9_order2_census_check.py`: at r = 1 cells with d ≥ 2
+  (the K7 class) and FREE-END windows, compare per-realization fibered counts
+  against q^{E″}·∏M with the L′ = L − [k_s ∈ K_D] subtraction. A junction-pin
+  failure inflates exactly one (q^d − 1)/q^d-shaped factor — THE discriminating
+  shape per O-9 §10 (the ε-column alone is non-discriminating). PASS = exact
+  match on every probed cell; any mismatch = a (FRESH)(c) countermodel (STOP
+  THE LINE for the row).
+* **H2-N2 (the floors-shape gate, (a′)).** Same harness: for each discrete
+  parent shape, enumerate ≥ 2 distinct realizations ρ, measure the per-slot
+  minimal attained w(a_k) on each fiber, assert the measured floors AND the
+  per-slot condition sets are ρ-independent (shape-only), and that no interior
+  on-line digit is constrained (leak detector: per-digit counts uniform at
+  every non-junction on-line slot). PASS = 0 violations.
+
+---
+
+## 8. Codex adversarial review — disposition
+
+(appended after the review pass; charge: semantic + mathematical verification
+of THIS blueprint — quote-and-classify, fix nothing.)
