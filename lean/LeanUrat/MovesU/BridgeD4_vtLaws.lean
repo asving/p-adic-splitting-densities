@@ -65,6 +65,17 @@ theorem bridgeVt_thr (n p : ℕ) [Fact p.Prime] (σ : SplittingType n)
     (`vt_real` = `TransferRow.realizes_transfer` from lvl T). -/
 theorem bridgeVt_realizedSelf (n p : ℕ) [Fact p.Prime] (σ : SplittingType n)
     (T : bridgeTree n p σ) : RealizedSelf n p (bridgeVt n p σ T) :=
-  T.2.2
+  T.2.2.1
+
+/-- The carrier's ns-free clause, read off (the NSF-KEY repair conjunct —
+    M02 §2 / (NSF-KEY-RET) R-1, sign-off 2026-08-05): NO carried tree has an
+    ns-marked leaf.  In particular M02 §2's exact-square poison V₀ (ns-marked
+    at its maximal chain) is NOT carried — the compiled record that the V₀
+    refutations of `count_tie`/`canonical_stable`/`VPSound` are DEAD at the
+    guarded carrier (R-3(3)); `MovesT.treeN`'s `hdet` clause is THIS fact at
+    the wired instance. -/
+theorem bridgeVt_nsFree (n p : ℕ) [Fact p.Prime] (σ : SplittingType n)
+    (T : bridgeTree n p σ) : MovesT.NsFree (bridgeVt n p σ T) :=
+  T.2.2.2
 
 end LeanUrat.MovesU

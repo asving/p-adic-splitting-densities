@@ -189,7 +189,7 @@ theorem bridge_slice_finite (n p : ℕ) [Fact p.Prime] (σ : SplittingType n)
     (realizedSelf_slice_finite (fun N' => bridgeTm p n N')
       (fun N' hN' => bridgeChart n N' hN') N) ?_
   rintro V ⟨T, hT, rfl⟩
-  exact ⟨hT, T.2.2⟩
+  exact ⟨hT, T.2.2.1⟩
 
 /-- IB-F2 (below the line): `BridgeKernels` — THE LEDGER ROWS over the
     constructed objects (bound as parameters per header resolution 1): the

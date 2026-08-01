@@ -17,14 +17,28 @@ E-phase skeleton per `lean/notes/BRIDGE_BP1_INSTANCE_2026-07-30.md` §3.4 (†5)
 `FiberSeries` (Architecture B, adjudicated Q1) + DecidableEq (Classical) +
 the `lvl` accessor.
 
-THE CARRIER (†5):
+THE CARRIER (†5, as REPAIRED at the NSF-KEY execution — see below):
     Tree σ := {V : MovesT.VTree p (ZMod p) //
-                 V.typemult = σ.1 ∧ RealizedSelf V}
+                 V.typemult = σ.1 ∧ RealizedSelf V ∧ MovesT.NsFree V}
     RealizedSelf V := Realizes (Tm (lvl V)) (chart (lvl V) _) V
     lvl V := max (V.thr n) 1
 — σ-typed, complete finite canonical BY CONSTRUCTION (`VTree`'s own
 `chains`/`hfin`/`hclosed`/`hleaf` fields), REALIZABLE at its own threshold
-level.
+level, and NS-FREE (no ns-marked leaf).
+
+NSF-KEY REPAIR (M02 §2's sanctioned minimal repair; sign-off of record
+2026-08-05, BRIDGE_ADJUDICATIONS_2026-07-30.md:1709; retirement semantics
+R11_REPAIR_DESIGN_V5_2026-08-04.md (NSF-KEY-RET); ripple enumeration
+notes/openmath/UNITC_ripple.md): the original 2-clause carrier admitted
+ns-marked self-realized trees — M02 §2's exact-square poison V₀, through
+which `bridgeCanonical` decided window-degenerate loci ("totally split" on
+exact squares) and `count_tie`/`canonical_stable`/`VPSound` were refutable
+AS TYPED at the intended instance. The `MovesT.NsFree` conjunct
+(MovesT/Defs.lean, the note's TREE-N hypothesis = `MovesT.treeN`'s `hdet`)
+makes ns loci fiber NO carried tree, so they DRAIN to `none`/env(N) — the
+M9/Phase-B drainage design — and the seam's `∀ T` rows range over exactly
+the hdet-guarded corpus. `canonical_pin`, `vtree_eq_of_fiberAt`, and the
+M02 Lemmas A/B are untouched (they never used the ns clause).
 
 RISK R2 FAILURE-MODE DISPLAY (mandatory per §5 R2 — why realizability MUST be
 in the carrier): over the naive carrier {V // V.typemult = σ.1} (all σ-typed
@@ -86,13 +100,17 @@ def RealizedSelf (n p : ℕ) [Fact p.Prime] (V : MovesT.VTree p (ZMod p)) : Prop
   MovesT.Realizes (bridgeTm p n (bridgeLvl n V))
     (bridgeChart n (bridgeLvl n V) (bridgeLvl_pos n V)) V
 
-/-- (†5) THE TREE CARRIER: the σ-typed, self-realized `MovesT.VTree`s — the
-    constructed `FiberSeries.Tree σ` (Architecture B: the classifier IS the
-    tree-fibering verdict, so this carrier is the ONE tree vocabulary).
-    Complete finite canonical BY CONSTRUCTION (`VTree`'s own fields);
-    realizable at its own threshold level (`RealizedSelf`). -/
+/-- (†5) THE TREE CARRIER: the σ-typed, self-realized, NS-FREE
+    `MovesT.VTree`s — the constructed `FiberSeries.Tree σ` (Architecture B:
+    the classifier IS the tree-fibering verdict, so this carrier is the ONE
+    tree vocabulary).  Complete finite canonical BY CONSTRUCTION (`VTree`'s
+    own fields); realizable at its own threshold level (`RealizedSelf`); no
+    ns-marked leaf (`MovesT.NsFree` — the NSF-KEY repair conjunct, M02 §2:
+    without it the exact-square poison V₀ is carried and the classifier
+    decides window-degenerate loci; with it they drain to the envelope). -/
 def bridgeTree (n p : ℕ) [Fact p.Prime] (σ : SplittingType n) : Type :=
-  {V : MovesT.VTree p (ZMod p) // V.typemult = σ.1 ∧ RealizedSelf n p V}
+  {V : MovesT.VTree p (ZMod p) //
+    V.typemult = σ.1 ∧ RealizedSelf n p V ∧ MovesT.NsFree V}
 
 /-- DecidableEq for the carrier (Classical — `FiberSeries.instTreeDeq`'s
     supply; gap 7 of the interface: needed to build the slice Finsets). -/
