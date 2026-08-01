@@ -1437,3 +1437,27 @@ identical REVISION-10 text (VC-next charge at ROOT §16). Owed beyond the
 bar: the D-11 confirming pass, O-11 pass 3, Unit C (statement-fence
 sign-off required), the (K1-CANON) discharge, the (H8) retirement
 adjudication (O-11 §8 charge (vi)).
+
+---
+## LEAN DIVISION CHECKPOINT (BP_II Wave 4d): MOVEMENT II WAVE PLAN COMPLETE
+The BP_II wave plan (`lean/blueprints/BP_II.md` §4, subwaves 0a–4d) has fully
+executed. Final unit II-M11 `massPoly_enum_display` (the L6′ tie) PROVED in
+`lean/LeanUrat/Scaffold/O12/Semantic.lean` (diff swept into 2dced47 by a
+concurrent fleet commit; verified green at that content). Checkpoint
+verification: full `lake build` green (8579 jobs);
+`lake env lean LeanUrat/AxChk_baseline.lean` clean — capstone
+`OM.RealInstanceV2.montes_unconditional` at Lean-core footprint, declared
+axioms unchanged. Scaffold/ code-`sorry` census: **6**, all documented
+honest-BLOCKED records at their proof sites —
+`O12/Semantic.lean` (`L6e_covers`, II-M9's coverage leg, blocked on the
+finite lower-convex-hull layer shared with un-landed II-M6);
+`MeasureFloor/SumOne.lean` (I-F2 as-keyed, statement fenced);
+`DictIII/Window.lean` (III-T12 leg, awaits III-T11b/III-T13);
+`DictIII/Devid.lean` (III-G16 FALSE over landed III-G15a — compiled
+countermodel, statement adjudication owed); `DictIII/CU1.lean` (W3 row,
+fenced); `ValueSide/Transfer.lean` (BP_IV T7 dedicated-campaign row).
+Movement II honest residuals carried with 0 sorries (compiled BLOCKED
+artifacts in-file): II-F8/II-F9 refuted-as-stated (`O12/FactF.lean`),
+II-T3/II-T4 (JC) displays refuted + II-T5 blocked with classified
+artifacts (`O12/Torus.lean`), II-M6/II-G6/II-G7 BLOCKED (Wave 4a/4b
+records: hull layer + `regP_of_pin` seam).
