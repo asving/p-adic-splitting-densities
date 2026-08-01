@@ -1705,3 +1705,10 @@ displays checked, 10 fixed (incl. 2 audit-only stragglers: §0 headline at
 the un-banked 2026-08-03 CRITICAL pass. On-record claim for VC14: every
 operative enumeration matches §1. VC14 (Codex) launched = bar pass-1
 attempt #2.
+
+## ASVIN SIGN-OFF (2026-08-05, verbatim): "sign-off granted on the NsFree repair!"
+Unit C UNGATED: M02's sanctioned minimal repair — the MovesT.NsFree
+conjunct on bridgeTree + TreeSeam.count_tie re-scoped to the hdet-guarded
+corpus + count_tie/canonical_stable/VPSound re-proved as re-typed + green
+build/AxChk + the Codex diff-confirmation gate. (NSF-KEY)'s retirement
+route now executable. Dispatched.
