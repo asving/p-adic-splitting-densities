@@ -1751,3 +1751,21 @@ UNITC_ripple.md). (NSF-KEY) RETIREMENT: all six artifacts now on file —
 (NSF-KEY) holds by construction of (†7) over the guarded carrier; N2's
 BLOCKED-PENDING clause drops "(NSF-KEY) execution"; (NSF-INT) NOT touched
 (retires separately, round-4 finding 4).
+
+## ASVIN DIRECTIVE (2026-08-05, verbatim): THE HYPOTHESIS-DISCHARGE SWARM
+"Then lets set a fable agent in charge of each hypothesis, and let ech
+agent call opuus and codex agents as needed (codex for semantic and
+mathematiacl verification) and work in parallel. each high level fable
+should write a blueprint or take an existing one and make it as fine as
+possible, and then split up the blueprint into parallelizable lean agents.
+I think some of this is already being done"
+ARCHITECTURE: nine Fable DISCHARGE LEADS (one per (H1)-(H9)), parallel,
+each: reads its §1/§3.1 row + retirement routes + existing BP_I-VI
+material -> writes/refines a fine-grained discharge blueprint
+(HDISCHARGE_<k>.md: member-by-member door assignment prove/literature-
+retarget/construction, argument sketches or faithfulness briefs, verbatim
+Lean unit specs under Scaffold/HDischarge/) -> Codex adversarial review
+via Bash (semantic+math verification per the directive) -> fold -> READY.
+Lean prover fan-outs then run as division workflows SEQUENTIALLY (the 429
+throttle stands). Overlaps honored: H9 coordinates with Unit C (in
+flight); H5 builds on BP_IV + the r4 leaf; H6/H7 on BP_III/BP_V.

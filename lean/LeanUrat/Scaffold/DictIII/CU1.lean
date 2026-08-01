@@ -23,7 +23,11 @@ Status at hand-off (units III-U5 and III-U7, 2026-08-01): BLOCKED — see the
 records below.  No declaration is landed; the verbatim blueprint statement is
 preserved in the commented block (transcribing it weakened, or with invented
 placeholder carriers for other units' owned definitions, would be a statement
-change).
+change).  [III-U5 re-attempted at HEAD later this date (prover III-U5): the
+blocker census is now down to the SINGLE unknown identifier `CU1Pins`
+(III-H3, fenced) — exact compiler error reproduced against a freshly rebuilt
+olean; refreshed record at the unit block.  Statement-side, everything else
+elaborates; proof-side, III-U4 additionally remains unlanded.]
 
 Status at hand-off (unit III-U1, 2026-08-01): PARTIAL — `machineProj` (the
 §1.8 signature + docstring, VERBATIM) LANDS with the CU1 §2 π field mapping:
@@ -118,21 +122,34 @@ This cures the FIRST item of the III-U7 record's unblock order (the
 node-builder vocabulary); the `MovesD.R7_runRealizer` import pins the
 unit's §3.1 quarry (anchors at the unit section).
 
-Status at hand-off (unit III-A5, 2026-08-01): BLOCKED — record at the end of
-the file.  The `MovesT` imports pin that unit's quarry
-(`V9_irrSat`/`V3_accKeyDeg`, landed and green — this file's compile gate
-certifies they resolve at HEAD); the unit's re-keyed statement has no
-blueprint display, and its statement site (coherent `machineProj`, unit
-III-U1) is unlanded.
+Status at hand-off (unit III-A5, re-run 2026-08-01 after III-U1): BLOCKED —
+record at the end of the file, REFRESHED at this re-run.  The `MovesT`
+imports pin that unit's quarry (`V9_irrSat`/`V3_accKeyDeg`, landed and green
+— this file's compile gate certifies they resolve at HEAD).  Ground 2 of the
+original record (statement site unlanded) is CURED: III-U1's `machineProj` +
+fieldwise lemmas are landed above.  Ground 1 STANDS ALONE and is decisive:
+BP_III.md at HEAD (1011 lines, unchanged) displays no III-A5 signature, and
+the landed projection shows the re-key is NOT canonical (root-datum split:
+machine node 0 ↦ (ψ̂₀, a₀), projected list = tail — the (accE, accF) product
+and the saturation leg each split into a length-1 corner keyed at `a0` and a
+length ≥ 2 leg keyed at the last projected node's `sel`), so statement
+election is architect work, not transcription.
 
-Status at hand-off (unit III-U6, 2026-08-01): BLOCKED — record below (between
-the III-U5 and III-U7 blocks; the same elision class as III-U7, plus a
-statement defect inherited from the III-T14 seam).  One support lemma IS
-landed and PROVED (`nstarMaj_readCeil_le`, the (N\*-MAJ) consumption leg over
-the landed III-H4 row), Lean-core footprint — the `Locality` import pins its
-`readCeil` cite; the III-T14 census stands as prose (the `Window` import was
-DROPPED at the III-U3c hand-off: the cross-module `devCoeff` clash, compiled
-obstruction record at the III-U3c section).
+Status at hand-off (unit III-U6, 2026-08-01, RE-RUN same day): BLOCKED —
+record below (between the III-U5 and III-U7 blocks; the same elision class
+as III-U7, plus a statement defect inherited from the III-T14 seam).  The
+re-run re-measured both grounds (verbatim `…` transcription error unchanged;
+`cu1`/`realEquiv_of_m6` still unknown identifiers) and refreshed the census:
+III-T10 `read_locality` LANDED since the first pass.  TWO support lemmas are
+now landed and PROVED: `nstarMaj_readCeil_le` (the (N\*-MAJ) consumption leg
+over the landed III-H4 row, Lean-core footprint) and
+`readsOf_transfer_at_nstar_level` (the row's ONE `read_locality` top-site
+application, sorry-free in body; footprint inherits `sorryAx` from the
+honest BLOCKED(III-T10) row-supply sorry inside `read_locality`, tracked at
+Locality.lean) — the `Locality` import pins both cites; the III-T14 census
+stands as prose (the `Window` import was DROPPED at the III-U3c hand-off:
+the cross-module `devCoeff` clash, compiled obstruction record at the
+III-U3c section).
 
 Status at hand-off (unit III-U8, 2026-08-01): BLOCKED, with the obstruction
 COMPILED — record at the end of the file.  Ground 1: dep III-U5 (`cu1`) is
@@ -1420,45 +1437,52 @@ theorem harvestNode_gate :
 
 end UnitIIIU3c
 
-/-! ## Unit III-U5 — `cu1` (BP_III §1.8): BLOCKED on missing dependencies
+/-! ## Unit III-U5 — `cu1` (BP_III §1.8): BLOCKED — the verbatim statement
+does not elaborate; sole remaining unknown identifier `CU1Pins` (III-H3, fenced)
 
 The verbatim blueprint statement is preserved in the commented block below; it
-is NOT weakened or partially landed.  Status at hand-off (2026-08-01):
+is NOT weakened or partially landed.  Status at this unit's own attempt
+(prover III-U5, 2026-08-01, fresh census superseding the four-identifier
+census of the earlier hand-off):
 
-[UPDATE (prover III-U1, 2026-08-01): `machineProj` now LANDS in this file
-(§III-U1 section above; its `EWF` certificate carries ONE honest sorry at
-the W3 row — record at the unit section), and III-U2/III-U3a have landed
-`InteriorChain`/`StateBinding` above, so the III-U5 blocker census shrinks
-to `CU1Pins` (III-H3) alone — plus the III-U8 hypothesis-stack verdict
-below for any non-vacuous run.]
-
-* -- BLOCKED(III-U5): four identifiers in the verbatim statement do not exist
-  in the corpus, so the statement cannot compile as written.  Transcribed
-  VERBATIM (only this file's standing `variable {p} [Fact p.Prime] {F} [Field F]
-  [Finite F]` line supplying the ambient binders, as in every DictIII module),
-  `lake env lean` reports, per identifier:
-    - `InteriorChain` (line `(hint : InteriorChain H)`):
-        "The identifier `InteriorChain` is unknown" — unit III-U2, not landed
-        anywhere in `LeanUrat/` (grep over the corpus: zero declarations);
-    - `CU1Pins` (line `(hpins : CU1Pins p F)`):
-        "The identifier `CU1Pins` is unknown" — unit III-H3 is itself BLOCKED
-        (Hyps.lean §III-H3: statement defect in row `frEQ`, `HC1.ReadFrame`
-        arity/sort mismatch, fenced above unit authority); the structure exists
-        only inside Hyps.lean's commented block, so it is not an available
-        declaration;
-    - `machineProj` (conclusion clause `(machineProj M hM).1 = H`):
-        "The identifier `machineProj` is unknown" — unit III-U1, not landed;
-    - `StateBinding` (conclusion clause `StateBinding M H hlift`):
-        "The identifier `StateBinding` is unknown" — unit III-U3a, not landed.
-  (All other vocabulary resolves: `EHist`/`EWF`/`Theta` from Carriers, `GMNData`/
-  `GMNReader`/`ConsF` from GMNReader, `GRB`/`FRESH`/`LiftFn`/`OL1`/`OL6` from
-  Hyps, `MovesC.History`/`MovesC.HistoryCoherent`/`MovesJ.ReadsOf` from the
-  corpus.)
-* Beyond statement elaboration, the assembly proof this unit owns ("List.rec on
-  nodes; U2 base, U3b/c + U4 step") consumes the base and step lemmas of units
-  III-U2, III-U3b, III-U3c, III-U4 — none landed.  Wave-4 order of record:
-  III-U1, III-U2, III-U3a..c, III-U4 (and the III-H3 `frEQ` blueprint repair)
-  must land before III-U5 can be attempted.
+* -- BLOCKED(III-U5): transcribed VERBATIM into a scratch module importing
+  this file (only the standing `variable {p} [Fact p.Prime] {F} [Field F]
+  [Finite F]` line supplying the ambient binders, body `sorry`), rebuilt
+  olean at HEAD (`lake build LeanUrat.Scaffold.DictIII.CU1`, green, this
+  date), `lake env lean` reports exactly ONE error, at the binder
+  `(hpins : CU1Pins p F)`:
+      error: Function expected at
+        CU1Pins
+      but this term has type
+        ?m.1
+      Note: Expected a function because this term is being applied to the
+      argument p
+      Hint: The identifier `CU1Pins` is unknown ...
+  `CU1Pins` is unit III-H3's owned declaration, itself BLOCKED (Hyps.lean
+  §III-H3: statement defect in row `frEQ` — `HC1.ReadFrame p F` arity/sort
+  mismatch, fenced above unit authority); the structure exists only inside
+  Hyps.lean's commented block, so it is not an available declaration.
+  Landing it here (or dropping/retyping the binder) would be another unit's
+  owned declaration invented, resp. a statement change — both forbidden.
+* CURED since the earlier census (verified by the same probe — NO other
+  error is reported): `InteriorChain` (III-U2), `machineProj` (III-U1,
+  its `EWF` certificate carrying the ONE honest W3 sorry, record at the
+  unit section), `StateBinding` (III-U3a) — all landed in this file; all
+  other vocabulary resolves (`EHist`/`EWF`/`Theta` from Carriers,
+  `GMNData`/`GMNReader`/`ConsF` from GMNReader, `GRB`/`FRESH`/`LiftFn`/
+  `OL1`/`OL6` from Hyps, `MovesC.History`/`MovesC.HistoryCoherent`/
+  `MovesJ.ReadsOf` from the corpus).
+* Beyond statement elaboration, the assembly proof this unit owns ("List.rec
+  on nodes; U2 base, U3b/c + U4 step") also awaits unit III-U4 (state
+  binding through the harvested step — grep over `LeanUrat/`: no III-U4
+  declarations; its deps III-H3/III-H7c partly fenced), while the U2 base
+  (`cu1_base_rootTrack`/`cu1_base_reductionFactor`) and the U3b/c step
+  carriers (`cu1_stepPair`, `cu1_stepHarvest`) ARE landed above.  And the
+  III-U8 verdict below stands: `GRB`/`FRESH` are uninhabited as displayed,
+  so even a landed `cu1` would be VACUOUS pending the §1.3 scope repair.
+* Unblock order at this census: the III-H3 `frEQ` blueprint repair (types
+  the `hpins` binder) → III-U4 → III-U5 re-runs as the List.rec assembly
+  its row describes (+ the §1.3 GRB/FRESH scope repair for non-vacuity).
 
 ```
 /-- THEOREM CU-1 (N-free realization + state binding), over the displayed rows:
@@ -1511,13 +1535,19 @@ the Window.lean §1.7 records):
   - III-U5 `cu1`: `Unknown identifier `cu1`` — BLOCKED, record above (its
     four-identifier census, of which the III-U2 landing above cures exactly
     one, `InteriorChain`).
-  - III-T10 `read_locality`: `Unknown identifier `read_locality`` —
-    `Locality.lean` holds the per-clause transfers (III-T7/T8/T9:
-    `sideReads_r1_transfer`/`sideReads_r2_transfer`/`sideReads_r5_transfer`)
-    but the assembled Theorem 1 (D-14) is unlanded.  Its §1.6 display IS
-    verbatim (blueprint lines 505–512), so this leg is dep-curable; the §4
-    wave plan names it: "Checkpoint after T10: `read_locality` is CU-1-LVL's
-    gate" (line 926).
+  - III-T10 `read_locality`: NOW LANDED (re-measured at the 2026-08-01
+    re-run pass, which found the earlier census line stale on exactly this
+    entry): `Locality.lean` holds the per-clause transfers (III-T7/T8/T9)
+    AND the assembled Theorem 1 (D-14) at its verbatim §1.6 signature
+    (`Locality.lean` §III-T10; `#check @read_locality` anchor below
+    compiles).  CONDITIONALITY carried at the dep, not here: its proof
+    discharges the assembled transfer through `read_locality_rows`
+    (sorry-free) but supplies the `SiteLawRows` bundle by the honest
+    BLOCKED(III-T10) sorry recorded at that proof site — so any consumer's
+    axiom footprint includes `sorryAx` until the row supply is cured
+    (architect escalation recorded there).  The §4 wave plan's "Checkpoint
+    after T10: `read_locality` is CU-1-LVL's gate" (line 926) is thus
+    passed at statement level; the consumption leg is compiled below.
   - III-T14 `realEquiv_of_m6`: `Unknown identifier `realEquiv_of_m6`` —
     units III-T14a/T14b are BLOCKED on the §1.7 display's own-conclusion
     defect at `MovesD.CanRealizes p F n f H` (Window.lean records; exact
@@ -1550,16 +1580,32 @@ the Window.lean §1.7 records):
   reduction leg is landed below, PROVED from the III-H4 row alone.
 
 * Unblock order: the T14m/T14a/T14b arity ruling (it types this unit's
-  conclusion) → III-T10 and the III-U5 chain land → architect displays the
-  completed `cu1_lvl` statement → this unit re-runs as the three-cite
-  assembly its row describes. -/
+  conclusion) → the III-U5 chain lands (III-T10 landed 2026-08-01, row
+  supply pending at its own record) → architect displays the completed
+  `cu1_lvl` statement → this unit re-runs as the three-cite assembly its
+  row describes.
 
-/-! Compiled anchors for the III-U6 record: the landed III-H4 row and the
-read ceiling it majorizes; the display's one non-elided binder group
-elaborates verbatim once its elided binders are supplied. -/
+* RE-VERIFIED by the 2026-08-01 re-run pass (fresh scratch probes at this
+  pin, per the trust boundary — comments are not ground truth): (a) the
+  verbatim transcription of the §1.8 display still fails with the identical
+  `error: expected token` at the first `…` (measured at the display's
+  column 16, the character after `theorem cu1_lvl `); (b) `cu1` and
+  `realEquiv_of_m6` are still `Unknown identifier`s at HEAD (both occur
+  only inside commented BLOCKED records — this file's III-U5 block and
+  Window.lean's III-T14a/T14b blocks respectively); (c) `NstarMaj`,
+  `readCeil`, and now `read_locality` resolve (anchors below).  Verdict
+  unchanged: BLOCKED on the elided display + the T14 own-conclusion arity
+  defect; what IS newly compilable is the row's first cite, landed as the
+  support theorem `readsOf_transfer_at_nstar_level` below. -/
+
+/-! Compiled anchors for the III-U6 record: the landed III-H4 row, the read
+ceiling it majorizes, and (since the 2026-08-01 re-run) the landed III-T10
+transfer; the display's one non-elided binder group elaborates verbatim once
+its elided binders are supplied. -/
 
 #check @NstarMaj
 #check @readCeil
+#check @read_locality
 
 example (Nstar : EHist p F → ℕ) (dress : EHist p F → MovesC.History p F)
     (_hmaj : NstarMaj Nstar readCeil dress) : True := trivial
@@ -1577,6 +1623,32 @@ theorem nstarMaj_readCeil_le {Nstar : EHist p F → ℕ}
     (H : EHist p F) {N : ℕ} (hN : Nstar H ≤ N) :
     readCeil (dress H) ≤ N :=
   le_trans (hmaj H) hN
+
+/-- **III-U6 support (the ONE `read_locality` application at the top site —
+the row's first cite, compiled).**  CU1 rev-5 §2's transfer leg: at the
+machine M_𝐇 = `dress H` and any working level `N ≥ N*(𝐇)`, a read of `f`
+transfers to any `f' ≡ f (mod p^N)` (monic, degree n) — the level-N
+congruence feeds the `readCeil`-level congruence that `read_locality`
+(III-T10, landed) consumes, via `nstarMaj_readCeil_le` (the (N\*-MAJ) leg
+above) and ideal-power antitonicity.  This is NOT `cu1_lvl` (that statement
+is still elided in BP_III §1.8 and its conclusion is gated on the T14 arity
+ruling — record above); it is the corollary's read_locality cite in
+isolation, stated over landed vocabulary only.  Footprint honesty: consumes
+`read_locality`, whose proof carries the honest BLOCKED(III-T10) row-supply
+sorry — so this theorem's axiom audit shows `sorryAx` until III-T10's
+`SiteLawRows` supply is cured (tracked at that record, not here). -/
+theorem readsOf_transfer_at_nstar_level {n : ℕ} {f f' : Polynomial ℤ_[p]}
+    {Nstar : EHist p F → ℕ} {dress : EHist p F → MovesC.History p F}
+    (hmaj : NstarMaj Nstar readCeil dress)
+    (H : EHist p F) (hcoh : MovesC.HistoryCoherent (dress H))
+    {N : ℕ} (hN : Nstar H ≤ N)
+    (hcong : ∀ k, (f - f').coeff k ∈ (Ideal.span {(p : ℤ_[p])}) ^ N)
+    (hm' : f'.Monic) (hd' : f'.natDegree = n)
+    (h : MovesJ.ReadsOf p F n f (dress H)) :
+    MovesJ.ReadsOf p F n f' (dress H) :=
+  read_locality hcoh
+    (fun k => Ideal.pow_le_pow_right (nstarMaj_readCeil_le hmaj H hN) (hcong k))
+    hm' hd' h
 
 /-! ## Unit III-U7 — `cu1_spanTotal` (BP_III §1.8): BLOCKED — no verbatim
 statement exists, and the construction it quantifies over is unlanded
@@ -1627,12 +1699,20 @@ STATEMENT-PROVENANCE RECORD (same discipline as the Window.lean §1.7 records):
 /-! ## Unit III-A5 — the `(accE, accF)` tie + saturation ⇔ ω = 1 at coherent
 `machineProj` (BP_III §2 row 768, MOVED TO WAVE 4 after III-U1): BLOCKED
 
+RE-RUN 2026-08-01, scheduled slot (after III-U1, per REV2 finding 12): the
+record below is REFRESHED at HEAD.  Original ground 2 (statement site
+unlanded) is CURED — III-U1's `machineProj` and its fieldwise lemmas are
+landed above — but ground 1 (no blueprint display of the re-keyed
+signature) STANDS ALONE and remains decisive; BP_III.md is byte-identical
+to the original probe (1011 lines, commit 0494ce1).  See the CURED note
+replacing ground 2 and the refreshed cure paragraph at the end.
+
 Charge (BP_III §2, line 768): "`(accE, accF)` tie + saturation ⇔ ω = 1 at
 coherent `machineProj` | corpus telescope `V9_irrSat` + `V3_accKeyDeg`;
 quarry only, not a verbatim alias | deps III-U1, corpus MovesT | EASY |
 O2a §5 (B); ROOT Step 7".  Probed 2026-08-01 (BP_III.md at HEAD, 1011
-lines; Lean 4.31, this pin).  No declaration is landed, on two independent
-grounds, per the BLOCKED(III-A4/A7/A8) precedent (`O2aOrder1.lean`) and the
+lines; Lean 4.31, this pin).  No declaration is landed, on the grounds
+below, per the BLOCKED(III-A4/A7/A8) precedent (`O2aOrder1.lean`) and the
 III-U5/III-U7 records above:
 
 1. NO Lean statement exists in the blueprint for this unit, so there is
@@ -1650,18 +1730,30 @@ III-U5/III-U7 records above:
    RE-KEY of the quarry at `machineProj`, and no display of the re-keyed
    signature exists (the III-U7 record's failure class, not III-T11a's).
 
-2. The sole Lean dependency, III-U1's
-   `machineProj (M : MovesC.History p F) (hM : MovesC.HistoryCoherent M) :
-   {H : EHist p F // EWF H}` (§1.8 display), is UNLANDED at HEAD: grep over
-   `LeanUrat/` finds zero declarations (the name occurs only in BLOCKED
-   records — the III-U5 block above, which lists `machineProj` among its
-   four missing identifiers and which the III-U2 landing note above leaves
-   open, and `O2aOrder1.lean`'s BLOCKED(III-A8) ground 3).  The unit
-   charge's scheduling premise ("runs immediately after III-U1") is false
-   at probe time, and the statement site "at coherent `machineProj`" has
-   no carrier: without III-U1 there is no map from the quarry's carrier to
-   the Θ-side chain carrier, and dressing one up here would be a NEW
-   definition owned by another unit (the III-U5 record's fence, verbatim).
+2. CURED at the 2026-08-01 re-run (original ground, kept for the ledger:
+   "the sole Lean dependency, III-U1's `machineProj`, is UNLANDED at
+   HEAD").  III-U1 has since landed `machineProj` (§1.8 signature
+   verbatim, PARTIAL: the one honest W3 sorry in the `machineEWF`
+   certificate — any III-A5 statement THROUGH `machineProj` would inherit
+   that sorryAx via the def, per the footprint-audit note at the end of
+   the file) together with the fieldwise vocabulary a re-key would consume
+   (`machineProj_val`, `_base`, `_psi0`, `_a0`, `_nodes`,
+   `_nodes_getElem?`, `_nodes_length`).  The cure SHARPENS ground 1 rather
+   than weakening it: the landed projection's root-datum split (machine
+   node 0 ↦ the root datum (ψ̂₀, a₀); projected node list = `M.nodes.tail
+   .map nodeToE`, so `machineProj_nodes_length` = machine length − 1)
+   makes the re-keyed statement NON-canonical — the quarry's
+   `accE M * accF M` runs over ALL machine nodes (node 0's (e, g)
+   included) while the projected list drops node 0, and the saturation leg
+   `MovesT.irr_iff_mu_one` (keyed at the LAST machine node's μ) lands at
+   `(machineProj M hM).1.a0` when `M.nodes.length = 1` (empty projected
+   list) but at the last projected node's `sel` (via `nodeToE_sel`) when
+   `2 ≤ M.nodes.length`.  At least two inequivalent renderings exist
+   (two-case split vs. a nonempty-tail hypothesis; root factor carried on
+   the `a0`/`psi0.natDegree` side vs. restated over the machine carrier),
+   so electing one is the architect's statement work, not transcription —
+   the III-U7 record's failure class, exactly as ruled at the original
+   probe.
 
 Quarry status (pinned by this file's `MovesT` imports, so the compile gate
 certifies it resolves at HEAD): the corpus telescope IS landed and green,
@@ -1685,11 +1777,16 @@ where `MovesC.History ?p ?F` is expected; no coercion exists).
 REVISION-2 finding 12 moved this unit after III-U1 for exactly this
 reason.
 
-Cure (in order): land III-U1 (`machineProj`, §1.8 display) → architect
-displays the III-A5 re-keyed signature in a §1 block for this module (the
-tie + saturation ⇔ ω = 1 stated through `(machineProj M hM).1`, consuming
-the quarry rows above) → III-A5 re-runs as a re-key, NOT a re-proof
-(BP §3.2 row 871). -/
+Cure (refreshed at the 2026-08-01 re-run; step 1 of the original order is
+DONE): the ONE remaining step is the architect displaying the III-A5
+re-keyed signature in a §1 block for this module — the tie + saturation
+⇔ ω = 1 stated through `(machineProj M hM).1`, consuming the quarry rows
+above, with the root-datum election of ground 2's CURED note (length-1
+corner at `a0` vs. last projected node's `sel`; where node 0's (e, g)
+factor rides) DECIDED in the display.  Then III-A5 re-runs as a re-key,
+NOT a re-proof (BP §3.2 row 871); its footprint will inherit III-U1's W3
+sorryAx through `machineProj` until the W3 adjudication (footprint-audit
+note at the end of the file). -/
 
 /-! ## Unit III-U8 — the CU-1 positive gate (BP_III §2 row 813): BLOCKED as
 specified, and THE OBSTRUCTION IS COMPILED — the gate REFUSES: `cu1`'s
@@ -1870,6 +1967,10 @@ end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-U6 support gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.nstarMaj_readCeil_le
+-- Footprint audit (unit III-U6 support, read_locality leg): expect sorryAx —
+-- inherited from the honest BLOCKED(III-T10) row-supply sorry inside
+-- `read_locality`'s proof (Locality.lean), NOT from this declaration's body.
+#print axioms LeanUrat.Scaffold.DictIII.readsOf_transfer_at_nstar_level
 
 -- Footprint audit (unit III-U3b): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.cu1_stepPair_le1
