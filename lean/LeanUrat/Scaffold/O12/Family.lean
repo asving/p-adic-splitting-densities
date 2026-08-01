@@ -26,8 +26,15 @@ block structure, consumed as structure only).
 `BnCoordinates.Valid`, `BnMember`, `BnMember.booking`, together with the
 §1.3-displayed definitions they consume — `massPatt` (definition half of II-R6),
 `massPoly` (definition half of II-R7; the blueprint splits II-R7 into definition and
-grammar proof), and `AllocDatum` (definition half of II-R9). The `gram_*`/`gramOver_*`
-theorems of those units are NOT part of this unit and land with II-R6/R7/R9.
+grammar proof), and `AllocDatum` (definition half of II-R9). The `gramOver_*`
+theorems of those units land with II-R7/R9.
+
+**Unit II-R6** adds `gram_massPatt` (family (ii) is 𝒢-generated: the (g1)·(g2)·(g2)
+product).
+
+**Unit II-R11** adds `weightSet` (family (v): the entrance/shape weight list of brief
+§2.3(v)) and `gram_weightSet` (all weights 𝒢-generated: (g2) atoms plus the (g4)-shaped
+(O3) exit scalings with A = 1).
 -/
 
 namespace LeanUrat.Scaffold
@@ -119,9 +126,17 @@ structure BlockPresentation (n : ℕ) (β : ℕ → MovesU.SplittingType n → Q
   hsolve  : ∀ σ, β e σ = u⁻¹ * trow σ
 
 /-- Family (ii): divisor-pattern mass m(π) = q^{−(E−e)}·N_π(q)·q^{−e}.
-(Definition half of unit II-R6; `gram_massPatt` lands with II-R6.) -/
+(Definition half of unit II-R6.) -/
 noncomputable def massPatt (e : ℕ) (Nπ : Polynomial ℚ) : Qq :=
   (qX ^ (blockE e - e))⁻¹ * algebraMap (Polynomial ℚ) Qq Nπ * (qX ^ e)⁻¹
+
+/-- The divisor-pattern mass is 𝒢-generated (unit II-R6, brief §2.3(ii)): the
+(g1)·(g2)·(g2) product — `q^{−(E−e)}` and `q^{−e}` are `Gram.invS` atoms via
+`Xpow_mem_cycS`, and `N_π` is a `Gram.poly` atom. -/
+theorem gram_massPatt (e : ℕ) (Nπ : Polynomial ℚ) : Gram (massPatt e Nπ) := by
+  rw [massPatt, qX_pow_eq_algebraMap (blockE e - e), qX_pow_eq_algebraMap e]
+  exact ((Gram.invS (LeanUrat.MovesU.Xpow_mem_cycS _)).mul (Gram.poly Nπ)).mul
+    (Gram.invS (LeanUrat.MovesU.Xpow_mem_cycS _))
 
 /-- Family (iii): polygon-family mass m(κ, ρ⃗) — a finite sum over L6b(ii)'s
 enumeration of (g3)-volumes times (g4)-closures (exponents c_j ≥ 1, from
@@ -143,6 +158,91 @@ II-R9.) -/
 def AllocDatum (n : ℕ) : Type :=
   {α : MovesU.SplittingType n → Polynomial ℚ //
     ∑ σ, α σ = Polynomial.X - 1}   -- Σ_σ α_e(σ) = q − 1 (brief §2.3(iv))
+
+/-- Family (iv), (O2) allocation adjustment (unit II-R9; brief §2.3(iv) O2 row, rev-4
+repair V13-1): for EVERY α ∈ ℚ[q] the adjusted row t + α·q^{−E} stays 𝒢-generated —
+quantified over all polynomials α, so robust to allocation-datum display changes (§5).
+Witness: `.add` of `h` with `.mul (poly α) (invS (q^E ∈ 𝒮))`. -/
+theorem gramOver_allocAdjust {n : ℕ} {β : ℕ → MovesU.SplittingType n → Qq} {e : ℕ}
+    {S : Set Qq} {t : Qq} (h : GramOver S t) (α : Polynomial ℚ) :
+    GramOver S (t + algebraMap (Polynomial ℚ) Qq α * (qX ^ blockE e)⁻¹) := by
+  refine h.add ((GramOver.poly α).mul ?_)
+  rw [qX, ← map_pow]
+  exact GramOver.invS (MovesU.Xpow_mem_cycS (blockE e))
+
+/-- Family (iv)/(v), (O3) exit scaling q^E/(q^E − 1) = Σ_{L≥0} κ₀^L (closed form).
+[BP_II unit II-R10] The scaling factor is `.mul`-absorbed: `q^E` is a `poly` atom and
+`(q^E − 1)⁻¹` is an `invS` atom via `Xpow_sub_one_mem_cycS` (the (g4) shape) once
+`blockE e ≥ 1`; the degenerate `blockE e = 0` corner collapses the whole term to the
+`poly` atom 0. -/
+theorem gramOver_o3scale {e : ℕ} {S : Set Qq} {t : Qq} (h : GramOver S t) :
+    GramOver S ((qX ^ blockE e) * (qX ^ blockE e - 1)⁻¹ * t) := by
+  rcases Nat.eq_zero_or_pos (blockE e) with hE | hE
+  · -- degenerate corner: q^0 − 1 = 0, so the scalar is 1 * 0⁻¹ = 0
+    have hz : (qX ^ blockE e) * (qX ^ blockE e - 1)⁻¹ * t
+        = algebraMap (Polynomial ℚ) Qq 0 := by
+      rw [hE]; simp
+    rw [hz]
+    exact GramOver.poly 0
+  · -- (g4) shape: q^E is `poly`, (q^E − 1)⁻¹ is `invS` (X^E − 1 ∈ 𝒮 since E ≥ 1)
+    have h1 : qX ^ blockE e - 1
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ blockE e - 1) := by
+      rw [map_sub, map_one, qX_pow_eq_algebraMap]
+    rw [h1, qX_pow_eq_algebraMap]
+    exact ((GramOver.poly _).mul
+      (GramOver.invS (LeanUrat.MovesU.Xpow_sub_one_mem_cycS hE))).mul h
+
+open scoped Classical in
+/-- Family (v): the entrance/shape weight list (brief §2.3(v)), all Gram.
+Concretely (brief §2.3(v) display): `{q^{−b} : 0 ≤ b ≤ E_n}` ∪
+`{(q^d − q^{d−1})⁻¹ : 1 ≤ d ≤ n}` ∪ `{(q−1)/(q^{n+1}−1)}` ∪
+`{q^{E_m}/(q^{E_m}−1) : 2 ≤ m ≤ n}` (the last are the (O3) exit-row scalings
+Σ_{L≥0} κ₀^L, (g4) with A = 1). [BP_II unit II-R11] -/
+noncomputable def weightSet (n : ℕ) : Finset Qq :=
+  ((Finset.range (blockE n + 1)).image fun b => (qX ^ b)⁻¹) ∪
+    ((Finset.Icc 1 n).image fun d => (qX ^ d - qX ^ (d - 1))⁻¹) ∪
+    {(qX - 1) * (qX ^ (n + 1) - 1)⁻¹} ∪
+    ((Finset.Icc 2 n).image fun m => qX ^ blockE m * (qX ^ blockE m - 1)⁻¹)
+
+/-- Every entrance/shape weight is 𝒢-generated: the first two families are (g2)
+`Gram.invS` atoms (`q^b ∈ 𝒮`; `q^d − q^{d−1} = q^{d−1}(q−1) ∈ 𝒮`), the last two are
+`Gram.poly · Gram.invS` products with `q^c − 1 ∈ 𝒮`. [BP_II unit II-R11] -/
+theorem gram_weightSet {n g} (hg : g ∈ weightSet n) : Gram g := by
+  have hsub : ∀ c : ℕ,
+      qX ^ c - 1 = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ c - 1) := by
+    intro c
+    rw [map_sub, map_one, qX_pow_eq_algebraMap]
+  simp only [weightSet, Finset.mem_union, Finset.mem_image, Finset.mem_singleton,
+    Finset.mem_range, Finset.mem_Icc] at hg
+  rcases hg with ((⟨b, _, rfl⟩ | ⟨d, ⟨hd1, _⟩, rfl⟩) | rfl) | ⟨m, ⟨hm2, _⟩, rfl⟩
+  · -- (g2): q^{−b}
+    rw [qX_pow_eq_algebraMap]
+    exact Gram.invS (MovesU.Xpow_mem_cycS b)
+  · -- (g2): (q^d − q^{d−1})⁻¹, via q^d − q^{d−1} = q^{d−1}·(q − 1) ∈ 𝒮
+    obtain ⟨d', rfl⟩ : ∃ d', d = d' + 1 := ⟨d - 1, (Nat.succ_pred_eq_of_pos hd1).symm⟩
+    have hmem : (Polynomial.X ^ (d' + 1) - Polynomial.X ^ d' : Polynomial ℚ) ∈ cycS := by
+      have hX1 : (Polynomial.X - 1 : Polynomial ℚ) ∈ cycS := by
+        simpa using MovesU.Xpow_sub_one_mem_cycS le_rfl
+      have hfac : (Polynomial.X ^ (d' + 1) - Polynomial.X ^ d' : Polynomial ℚ)
+          = Polynomial.X ^ d' * (Polynomial.X - 1) := by ring
+      rw [hfac]
+      exact mul_mem (MovesU.Xpow_mem_cycS d') hX1
+    have heq : qX ^ (d' + 1) - qX ^ (d' + 1 - 1)
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ (d' + 1) - Polynomial.X ^ d') := by
+      rw [map_sub, Nat.add_sub_cancel, qX_pow_eq_algebraMap, qX_pow_eq_algebraMap]
+    rw [heq]
+    exact Gram.invS hmem
+  · -- (g2)·(g2): (q−1)·(q^{n+1}−1)⁻¹
+    have h1 : qX - 1 = algebraMap (Polynomial ℚ) Qq (Polynomial.X - 1) := by
+      rw [map_sub, map_one, qX]
+    rw [h1, hsub (n + 1)]
+    exact Gram.mul (Gram.poly _)
+      (Gram.invS (MovesU.Xpow_sub_one_mem_cycS (Nat.succ_le_succ (Nat.zero_le n))))
+  · -- (g4) with A = 1: q^{E_m}·(q^{E_m}−1)⁻¹
+    have hE : 1 ≤ blockE m := le_trans (by norm_num) (blockE_ge_three hm2)
+    rw [hsub (blockE m), qX_pow_eq_algebraMap]
+    exact Gram.mul (Gram.poly _)
+      (Gram.invS (MovesU.Xpow_sub_one_mem_cycS hE))
 
 /-- Raw §2.3 member coordinates: divisor masses, polygon masses, composition maps,
 allocation data, weights, transitions, and the recursively specified rows.

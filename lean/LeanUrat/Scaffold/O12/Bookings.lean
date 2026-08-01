@@ -148,6 +148,41 @@ theorem no_interblock_cycle {n : ℕ} (S : BookingSystem n) :
     | tail _ hr ih => exact lt_trans hr ih
   exact lt_irrefl e (hlt e e h')
 
+/-- Theorem 1(3), O1/O2′ solve: the balance equation has the displayed unique
+solution. [BP_II unit II-B6] -/
+theorem solve_O1_O2r {e : ℕ} (he : 2 ≤ e) (s x : Qq)
+    (hbal : x = (kappa0 e + kappa1 e) * x + s) :
+    x = s * (1 - qX * (qX ^ blockE e)⁻¹)⁻¹ := by
+  have hE3 : 3 ≤ blockE e := blockE_ge_three he
+  have hE1 : 1 ≤ blockE e - 1 := by omega
+  have hqX : qX ≠ 0 := qX_ne_zero
+  have hpow1 : qX ^ (blockE e - 1) ≠ 0 := qX_pow_ne_zero _
+  -- `q^{E−1} − 1 ≠ 0`: it is the image of the 𝒮-member `X^{E−1} − 1` (E − 1 ≥ 1).
+  have hsubne : qX ^ (blockE e - 1) - 1 ≠ 0 := by
+    have himg : qX ^ (blockE e - 1) - 1
+        = algebraMap (Polynomial ℚ) Qq (Polynomial.X ^ (blockE e - 1) - 1) := by
+      simp [qX, map_sub, map_pow]
+    rw [himg]
+    exact RatFunc.algebraMap_ne_zero
+      (MovesU.cycS_ne_zero (MovesU.Xpow_sub_one_mem_cycS hE1))
+  -- split off one factor of q: `q^E = q · q^{E−1}`.
+  have hsplit : qX ^ blockE e = qX * qX ^ (blockE e - 1) := by
+    rw [← pow_succ']
+    congr 1
+    omega
+  -- hence the solve denominator `1 − q·q^{−E} = (q^{E−1} − 1)·(q^{E−1})⁻¹` is nonzero
+  have hu : (1 : Qq) - qX * (qX ^ blockE e)⁻¹
+      = (qX ^ (blockE e - 1) - 1) * (qX ^ (blockE e - 1))⁻¹ := by
+    rw [hsplit, mul_inv, ← mul_assoc, mul_inv_cancel₀ hqX, one_mul, sub_mul,
+      mul_inv_cancel₀ hpow1, one_mul]
+  have hune : (1 : Qq) - qX * (qX ^ blockE e)⁻¹ ≠ 0 := by
+    rw [hu]
+    exact mul_ne_zero hsubne (inv_ne_zero hpow1)
+  -- the balance gives x(1 − κ₀ − κ₁) = s; divide.
+  rw [eq_mul_inv_iff_mul_eq₀ hune]
+  rw [kappa_add] at hbal
+  linear_combination hbal
+
 /-- Theorem 1(3), O2 solve: no feedback, genuine division by 1 − κ₀. -/
 theorem solve_O2 {e : ℕ} (he : 2 ≤ e) (t x : Qq) (hbal : x = kappa0 e * x + t) :
     x = t * (1 - (qX ^ blockE e)⁻¹)⁻¹ := by

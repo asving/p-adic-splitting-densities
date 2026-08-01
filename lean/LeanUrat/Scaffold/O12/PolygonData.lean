@@ -136,4 +136,180 @@ theorem vertexHeight_int (κ : FaceKind e) (s : SlopeTuple κ) (j : ℕ) :
     rw [max_eq_right h1, max_eq_right h2]
     simp
 
+/-! ## Unit II-P7: `singleFace_finite`
+
+Realization: with a single face, `hlt1` bounds the unique numerator strictly by
+the last denominator `b`, giving an injection `SlopeTuple κ ↪ Fin b`. -/
+
+/-- L6b(ii), k = 1: a single-face kind has NO unbounded parameter (finitely many
+admissible tuples: a_k ∈ {1,…,b_k−1}). -/
+theorem singleFace_finite (κ : FaceKind e) (h : κ.faces.length = 1) :
+    Finite (SlopeTuple κ) := by
+  have hne : κ.faces ≠ [] := List.ne_nil_of_length_pos (by omega)
+  have hzero : (0 : ℕ) < κ.faces.length := by omega
+  have hbound : ∀ s : SlopeTuple κ,
+      (s.a ⟨0, hzero⟩ : ℕ) < ((κ.faces.getLast hne).2 : ℕ) := by
+    intro s
+    have hlt := s.hlt1 hne
+    have hidx : (⟨κ.faces.length - 1,
+        Nat.sub_lt (List.length_pos_of_ne_nil hne) Nat.one_pos⟩ :
+          Fin κ.faces.length) = ⟨0, hzero⟩ := by
+      ext; omega
+    rw [hidx] at hlt
+    have hbpos : (0 : ℚ) < (((κ.faces.getLast hne).2 : ℕ) : ℚ) := by
+      exact_mod_cast (κ.faces.getLast hne).2.pos
+    exact_mod_cast (div_lt_one hbpos).mp hlt
+  refine Finite.of_injective
+    (fun s : SlopeTuple κ =>
+      (⟨(s.a ⟨0, hzero⟩ : ℕ), hbound s⟩ : Fin ((κ.faces.getLast hne).2 : ℕ))) ?_
+  intro s s' hss
+  have hval : (s.a ⟨0, hzero⟩ : ℕ) = (s'.a ⟨0, hzero⟩ : ℕ) :=
+    congrArg Fin.val hss
+  have ha : s.a = s'.a := by
+    funext j
+    have hj : j = ⟨0, hzero⟩ := by
+      have := j.isLt; ext; omega
+    rw [hj]
+    exact PNat.coe_injective hval
+  cases s; cases s'
+  simp_all
+
+/-! ## Unit II-P3: `Npg`, `one_le_ceil_height`
+
+The blueprint's `(hpos : ...)` placeholder is discharged internally: slopes are
+positive by construction (`a j : ℕ+`), so `h_i > 0` for every `i < e` (the unit
+sketch's "slopes > 0, h_e = 0 ⟹ h_i > 0 for i < e") needs no extra hypothesis,
+matching the `Npg` docstring's unconditional "every ⌈h_i⌉ ≥ 1". -/
+
+/-- N(P) = Σ_{i<e} ⌈h_i⌉, with every ⌈h_i⌉ ≥ 1 (slopes > 0, h_e = 0). -/
+noncomputable def Npg (κ : FaceKind e) (s : SlopeTuple κ) : ℤ :=
+  ∑ i ∈ Finset.range e, ⌈heights κ s i⌉
+
+/-- Every column of `Npg` contributes at least 1: for `i < e` the height `h_i`
+is positive (all slopes > 0, right-anchored at `h_e = 0` — the last face's
+term alone is already positive), so `1 ≤ ⌈h_i⌉` by `Int.one_le_ceil_iff`. -/
+theorem one_le_ceil_height (κ : FaceKind e) (s : SlopeTuple κ) {i : ℕ}
+    (hi : i < e) : 1 ≤ ⌈heights κ s i⌉ := by
+  rw [Int.one_le_ceil_iff]
+  have hne : κ.faces ≠ [] := by
+    intro h
+    have hs := κ.hsum
+    rw [h] at hs
+    simp at hs
+    omega
+  have hk : 0 < κ.faces.length := List.length_pos_of_ne_nil hne
+  set jl : Fin κ.faces.length := ⟨κ.faces.length - 1, by omega⟩ with hjl
+  unfold heights
+  refine Finset.sum_pos' (fun j _ => ?_) ⟨jl, Finset.mem_univ _, ?_⟩
+  · exact mul_nonneg (div_nonneg (Nat.cast_nonneg _) (Nat.cast_nonneg _))
+      (Nat.cast_nonneg _)
+  · apply mul_pos
+    · exact div_pos (by exact_mod_cast (s.a jl).pos)
+        (by exact_mod_cast (κ.faces.get jl).2.pos)
+    · have hx1 : κ.x ((jl : ℕ) + 1) = e := by
+        have hlen : (jl : ℕ) + 1 = κ.faces.length := by
+          simp only [hjl]; omega
+        rw [hlen, κ.x_length]
+      have hx0 : κ.x (jl : ℕ) < e := by
+        have hrec := κ.x_succ_of_lt jl.isLt
+        have hL : 1 ≤ (κ.faces[(jl : ℕ)].1 : ℕ) := κ.faces[(jl : ℕ)].1.pos
+        omega
+      have hlt : 0 < max (κ.x ((jl : ℕ) + 1)) i - max (κ.x (jl : ℕ)) i := by
+        rw [hx1]; omega
+      exact_mod_cast hlt
+
+/-! ## Unit II-P5: `aMin` and the nested-minimum period shift `aMin_shift`
+
+Blueprint §1.6 gives the unit as `theorem aMin_shift ...` under the docstring
+"L6b(ii), the nested-minimum period shift: a_j^min(s+1) = a_j^min(s) + b_j";
+the body is realized per the math source of record
+(`lean/notes/openmath/O12_phaseB_verifybrief_rev4.md` §3, L6b(ii) proof):
+`a_j^min(s)` is the LEAST element `a` of the residue class `r_j + b_jℤ ⊆ ℤ`
+with slope `a/b_j > s`. Here `aMin b r s` realizes it for an abstract
+modulus `b : ℕ+`, class representative `r : ℤ`, threshold `s : ℚ` — at face
+`j` of a `SlopeTuple` instantiate `b := (κ.faces.get j).2`, `r := s.a j`.
+The three defining clauses are certified (`aMin_emod`, `aMin_slope_gt`,
+`aMin_min`), and `aMin_shift` is proved from them exactly by the blueprint
+sketch: the bijection `a ↦ a − b` of the residue class, minimality both ways.
+-/
+
+/-- `a^min(s)`: the least element `a` of the residue class `r + bℤ` (inside
+`ℤ`) with slope `a/b > s` (brief §3, L6b(ii)). Explicit form: the least
+integer exceeding `s·b` is `M := ⌊s·b⌋ + 1`, and the least class member
+`≥ M` is `M + ((r − M) mod b)`. The defining clauses — class membership,
+threshold, minimality — are certified by `aMin_emod`, `aMin_slope_gt`,
+`aMin_min` below. -/
+def aMin (b : ℕ+) (r : ℤ) (s : ℚ) : ℤ :=
+  (⌊s * ((b : ℕ) : ℚ)⌋ + 1) + (r - (⌊s * ((b : ℕ) : ℚ)⌋ + 1)) % ((b : ℕ) : ℤ)
+
+/-- `aMin` lies in the residue class `r + bℤ`. -/
+theorem aMin_emod (b : ℕ+) (r : ℤ) (s : ℚ) :
+    aMin b r s % ((b : ℕ) : ℤ) = r % ((b : ℕ) : ℤ) := by
+  unfold aMin
+  rw [Int.add_emod, Int.emod_emod_of_dvd _ dvd_rfl, ← Int.add_emod,
+    add_sub_cancel]
+
+/-- `aMin` clears the threshold: `s < aMin/b`. -/
+theorem aMin_slope_gt (b : ℕ+) (r : ℤ) (s : ℚ) :
+    s < ((aMin b r s : ℤ) : ℚ) / ((b : ℕ) : ℚ) := by
+  have hbQ : (0 : ℚ) < ((b : ℕ) : ℚ) := by exact_mod_cast b.pos
+  have hbZ : ((b : ℕ) : ℤ) ≠ 0 := by exact_mod_cast b.ne_zero
+  rw [lt_div_iff₀ hbQ]
+  have hM : ⌊s * ((b : ℕ) : ℚ)⌋ + 1 ≤ aMin b r s := by
+    have := Int.emod_nonneg (r - (⌊s * ((b : ℕ) : ℚ)⌋ + 1)) hbZ
+    unfold aMin; omega
+  calc s * ((b : ℕ) : ℚ) < ((⌊s * ((b : ℕ) : ℚ)⌋ + 1 : ℤ) : ℚ) := by
+        push_cast; exact Int.lt_floor_add_one _
+    _ ≤ ((aMin b r s : ℤ) : ℚ) := by exact_mod_cast hM
+
+/-- Minimality: `aMin` is ≤ every element of the residue class clearing the
+threshold. -/
+theorem aMin_min (b : ℕ+) (r : ℤ) (s : ℚ) {a : ℤ}
+    (hmod : a % ((b : ℕ) : ℤ) = r % ((b : ℕ) : ℤ))
+    (hgt : s < (a : ℚ) / ((b : ℕ) : ℚ)) :
+    aMin b r s ≤ a := by
+  have hbQ : (0 : ℚ) < ((b : ℕ) : ℚ) := by exact_mod_cast b.pos
+  have hbZ : (0 : ℤ) < ((b : ℕ) : ℤ) := by exact_mod_cast b.pos
+  -- `a` clears the integer threshold `M := ⌊s·b⌋ + 1`.
+  have hMa : ⌊s * ((b : ℕ) : ℚ)⌋ + 1 ≤ a := by
+    have : ⌊s * ((b : ℕ) : ℚ)⌋ < a := Int.floor_lt.mpr ((lt_div_iff₀ hbQ).mp hgt)
+    omega
+  -- `aMin` sits within one period above `M`.
+  have hlt : aMin b r s < ⌊s * ((b : ℕ) : ℚ)⌋ + 1 + ((b : ℕ) : ℤ) := by
+    have := Int.emod_lt_of_pos (r - (⌊s * ((b : ℕ) : ℚ)⌋ + 1)) hbZ
+    unfold aMin; omega
+  -- Two class members within one period of each other coincide or differ by ≥ b.
+  by_contra hcon
+  push Not at hcon
+  have hdvd : ((b : ℕ) : ℤ) ∣ aMin b r s - a := by
+    refine Int.dvd_of_emod_eq_zero ?_
+    rw [← Int.emod_eq_emod_iff_emod_sub_eq_zero, aMin_emod, hmod]
+  have := Int.le_of_dvd (by omega) hdvd
+  omega
+
+/-- L6b(ii), the nested-minimum period shift: a_j^min(s+1) = a_j^min(s) + b_j. -/
+theorem aMin_shift (b : ℕ+) (r : ℤ) (s : ℚ) :
+    aMin b r (s + 1) = aMin b r s + ((b : ℕ) : ℤ) := by
+  have hbQ : (0 : ℚ) < ((b : ℕ) : ℚ) := by exact_mod_cast b.pos
+  have hbZ : ((b : ℕ) : ℤ) ≠ 0 := by exact_mod_cast b.ne_zero
+  -- (≤): `aMin b r s + b` is in the class and clears `s + 1` — minimality at `s + 1`.
+  have h1 : aMin b r (s + 1) ≤ aMin b r s + ((b : ℕ) : ℤ) := by
+    refine aMin_min b r (s + 1) ?_ ?_
+    · rw [Int.add_emod, Int.emod_self, add_zero, Int.emod_emod_of_dvd _ dvd_rfl,
+        aMin_emod]
+    · have := aMin_slope_gt b r s
+      rw [lt_div_iff₀ hbQ] at this ⊢
+      push_cast
+      nlinarith
+  -- (≥): `aMin b r (s+1) − b` is in the class and clears `s` — minimality at `s`.
+  have h2 : aMin b r s ≤ aMin b r (s + 1) - ((b : ℕ) : ℤ) := by
+    refine aMin_min b r s ?_ ?_
+    · rw [Int.sub_emod, Int.emod_self, sub_zero, Int.emod_emod_of_dvd _ dvd_rfl,
+        aMin_emod]
+    · have := aMin_slope_gt b r (s + 1)
+      rw [lt_div_iff₀ hbQ] at this ⊢
+      push_cast
+      nlinarith
+  omega
+
 end LeanUrat.Scaffold
