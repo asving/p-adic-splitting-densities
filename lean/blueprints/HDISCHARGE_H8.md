@@ -61,14 +61,19 @@ analysis), but the MOVES §S.2 (CUT-WD) derivation IS on file — so the realist
 outcome is a RE-SCOPE, not a fiat retirement (§6).
 
 **The honesty invariant, applied**: nothing below discharges (H8) by declaration.
-The blueprint (i) PROVES in Lean the pure-combinatorics legs (unique first
-entrance, exhaustive-exclusive ownership, the sum/product regrouping — exactly
-G-2's three falsifier channels), (ii) reduces the remainder to a THREE-FIELD
+The blueprint (i) SPECS compile-probed Lean units whose §3 proof designs, when
+landed green, prove the pure-combinatorics legs (unique first entrance,
+exhaustive-exclusive ownership, the sum/product regrouping — exactly G-2's
+three falsifier channels; nothing is proved by this document itself — the probe
+certifies well-typedness only), (ii) reduces the remainder to a THREE-FIELD
 residual hypothesis surface ((K-CUT-s)/(K-CUT-g)/(K-CUT-m), §1.3) each already
-owned by an existing displayed row or fence, and (iii) specs the documentary
-adjudication that decides whether the serving map can be re-pointed. (H8) stays
-a §3.1 row until the ROOT ledger itself is revised on the strength of landed
-artifacts — that revision is the orchestrator's, not this blueprint's.
+owned by an existing displayed row or fence, PLUS one named residual
+CONSTRUCTION layer (H8-B3, §4 — the concrete extraction of (Ŝ,(D_i)) from T:
+open WORK, distinct from open hypotheses; folded in at review finding C-1/C-2),
+and (iii) specs the documentary adjudication that decides whether the serving
+map can be re-pointed. (H8) stays a §3.1 row until the ROOT ledger itself is
+revised on the strength of landed artifacts — that revision is the
+orchestrator's, not this blueprint's.
 
 ---
 
@@ -83,12 +88,19 @@ ENTRANCE PREDICATE "this chain's last step is a block-entrance read" (MOVES
 subtree hanging at the i-th first entrance.
 
 * **(K-CUT-1) CUT WELL-DEFINEDNESS — "exactly one shallow decomposition".**
-  GIVEN E: every chain of T either has no entrance among its proper prefixes
-  (SHALLOW read) or has a UNIQUE FIRST entrance ε above it; ε is itself minimal
-  (nested entrances are owned by the outermost block); the assignment
-  T ↦ (Ŝ(T), (D_ε)_ε) is a choice-free FUNCTION of (T, E) — two different
-  shallow decompositions of one tree cannot exist. [= MOVES §S.2 (CUT-1) +
-  (CUT-3)'s choice-freeness; kills G-2 falsifier #3.]
+  Two levels, priced separately [split at review finding C-1]:
+  (1a) OWNERSHIP-PARTITION uniqueness — GIVEN E: every chain of T either has no
+  entrance among its proper prefixes (SHALLOW read) or has a UNIQUE FIRST
+  entrance ε above it; ε is itself minimal (nested entrances are owned by the
+  outermost block); the induced site partition is a choice-free FUNCTION of
+  (T, E). PROVABLE outright (waves 0–2). (1b) DECOMPOSITION-DATA uniqueness —
+  that the extracted OBJECTS (the shallow layer Ŝ(T) and the block derivations
+  D_ε(T)) are themselves functions of T with the cut map injective: this needs
+  the extraction maps to EXIST as Lean constructions, which is unit H8-B3's
+  CONSTRUCTION layer (§4); given H8-B3, injectivity is provable from (1a) +
+  node data. "Two different shallow decompositions of one tree" (G-2 falsifier
+  #3) is excluded at level (1a) now and at level (1b) once H8-B3 lands.
+  [= MOVES §S.2 (CUT-1) + (CUT-3)'s choice-freeness.]
 
 * **(K-CUT-2) EXHAUSTIVE-EXCLUSIVE READ OWNERSHIP (with the (BDY) boundary
   rule).** The read sites of T partition EXACTLY as
@@ -122,9 +134,12 @@ subtree hanging at the i-th first entrance.
   it. It stays hypothesis-grade here ((K-CUT-g) field, §1.3).
 
 **Why (‡) needs BOTH directions (displayed, so no verifier re-derives it):** the
-cut direction (K-CUT-1/2/3) alone gives Σ_T μ(fiber T) ≤ Σ_Ŝ W(Ŝ)·Σ_compat ∏ B
-(each tree hits one tuple, weights multiply); missing tuples would make the
-inequality strict. Lemma 3.3's conclusion is an EQUALITY; (K-CUT-g) closes it.
+cut direction (K-CUT-1/2/3) alone gives only Σ_T μ(fiber T) ≤
+Σ_Ŝ W(Ŝ)·Σ_compat ∏ B (each tree hits one tuple, weights multiply); unrealized
+compatible tuples CAN make the inequality strict (not must — a missing tuple of
+zero weight, or an ∞ = ∞ instance, leaves equality; the point is that equality
+is then unwarranted, not that it always fails) [refined at review finding G-6].
+Lemma 3.3's conclusion is an EQUALITY; (K-CUT-g) is what warrants it.
 
 ### 1.1 Granularity adjudication (a G-2-class trap, settled by display)
 
@@ -132,8 +147,10 @@ Two readings of "shape Ŝ" circulate in the sources and are NOT interchangeable:
 
 * **(full-data)** Ŝ = T's shallow LAYER with values and heights retained; W(Ŝ)
   = the measured mass of THAT layer. At this granularity the per-T identity (†)
-  and the bijection (‡) are literally true-formable, and the family is
-  countable, not finite.
+  and the bijection (‡) are literally true-FORMABLE (the statements can be
+  formed and are the intended-true ones; nothing is thereby proved — the mass
+  factorization still rides (K-CUT-m)'s semantics and the bijection rides
+  (K-CUT-g); review finding A-9), and the family is countable, not finite.
 * **(height-forgotten)** Ŝ = the finite-up-to-heights SHALLOW TREE SHAPE of
   RS.1-SH (MOVES §S.2 12026–12046; the Lean `MovesS.Shape T` with k/eOf/τOf/
   δOf/σ0), W_Ŝ ∈ ℚ(q) the RESUMMED shallow mass. At this granularity (‡) is
@@ -192,10 +209,16 @@ name the granularity in every statement.]
   double translation. The W7 clauses that are DATA conformance (shapeOf/σ₀/
   F.Sh-membership) surface in §4's `CutData`/seam fields, not as axioms.
 
-### 1.3 The residual hypothesis surface (what stays open, by owner)
+### 1.3 The residual surface (what stays open, by owner)
 
-After §4's provable units land, (H8)'s open content is EXACTLY three fields
-(the Lean surface `VTreeCutSeam`, unit H8-B2):
+After §4's prove-designated units land green, (H8)'s open content is
+[re-scoped at review findings C-1/C-2]: (a) the three HYPOTHESIS fields below
+(the Lean surface `VTreeCutSeam`, unit H8-B2), PLUS (b) the residual
+CONSTRUCTION layer — building the concrete full-data shallow family and
+per-block derivation carriers, the cut map T ↦ (Ŝ(T),(D_ε(T))), its
+injectivity, interface/verdict conformance, and the family's countability —
+open WORK with a proof design (unit H8-B3), not an open hypothesis, but NOT
+"already displayed elsewhere" either; it is (H8)'s own residual engineering.
 
 | field | content | owner of record (existing display) |
 |---|---|---|
@@ -203,10 +226,11 @@ After §4's provable units land, (H8)'s open content is EXACTLY three fields
 | (K-CUT-g) `graft_complete` | every verdict-compatible (Ŝ_full, (D_i)) tuple is the cut of exactly one complete realizable tree (continuation memorylessness at entrances, incl. the δ > 1 base-changed legs) | the T-6 serving arc: D-14 (read locality, PROVED) + CU-3 (coherent nonempty locus) + [2r] REL.2 (CL-8, open) — the arc G-2 found UNDEMONSTRATED; adjudication unit H8-R1 |
 | (K-CUT-m) `mass_tie` | the cut factors are the MEASURED weights: shallow factor = W(Ŝ_full)(p), block-ε factor = the grammar weight of D_ε at pool p^{δ_ε} | TREE-EXP ((SIB)/(JC-multi) = (H7)/sibjc rows) + REL.2's pool dictionary ([2r], CL-8) + (K4) mass semantics (M02/count_tie — O-1/O-3) |
 
-Discharging THESE fields is other rows' work (each cell names its row); (H8)'s
-own contribution — everything G-2 actually named — is proved. That is the
-honest shape of this discharge: **(H8) reduces to already-displayed rows plus
-Lean-proved combinatorics; no new open content is created.**
+Discharging the THREE FIELDS is other rows' work (each cell names its row);
+the CONSTRUCTION layer (H8-B3) is (H8)'s own remaining work. The honest shape
+of this discharge: **(H8) reduces to already-displayed rows + one named
+in-blueprint construction unit + Lean units that, once landed, machine-check
+everything G-2 named; no new open MATHEMATICAL content is created.**
 
 ---
 
@@ -221,13 +245,17 @@ linearly ordered by `IsPrefixOf` (list-prefix totality on common extensions —
 entrance proper prefixes of H there is at most one that is below all others
 (antisymmetry) and, if any entrance proper prefix exists, a length-minimal one
 IS below all others (minimality + totality) — existence and uniqueness of the
-first entrance. Choice-freeness: `minEnts`/`blockReads`/`shallowReads` are
-`Finset.filter`s of decidable-from-E predicates — FUNCTIONS of (T, E), so the
-decomposition is unique by construction, and "two different shallow
-decompositions of one tree" (G-2 falsifier #3) is structurally dead. No open
-points: consumes only list combinatorics + `hclosed`. Honest note: this member
-is stated GIVEN E as an abstract predicate; which E (the corpus entrance
-predicate) is (K-CUT-s)'s business, quantified over in every §4 statement.
+first entrance. Choice-freeness AT LEVEL (1a): `minEnts`/`blockReads`/
+`shallowReads` are `Finset.filter`s — FUNCTIONS of (T, E), so the OWNERSHIP
+PARTITION is unique by construction. [Re-scoped at review finding C-1:
+partition uniqueness does NOT by itself establish uniqueness of the extracted
+decomposition DATA — two different (Ŝ,(D_i)) encodings inducing the same
+partition are excluded only once the extraction maps exist and the cut map's
+injectivity is proved: level (1b) = unit H8-B3.] G-2 falsifier #3 is fully
+dead only at (1a)+(1b). No open points at (1a): consumes only list
+combinatorics + `hclosed`. Honest note: this member is stated GIVEN E as an
+abstract predicate; which E (the corpus entrance predicate) is (K-CUT-s)'s
+business, quantified over in every §4 statement.
 
 ### 2.2 (K-CUT-2) exhaustive-exclusive ownership — door: **PROVE** (Lean, outright)
 
@@ -273,9 +301,15 @@ Two layers, strictly separated:
 ### 2.4 (K-CUT-g) graft completeness — door: **CONSTRUCTION-CONFORMANCE + the §2.5 adjudication**; stays hypothesis-grade in Lean
 
 No abstract proof exists to spec: the content is semantic (realizability of
-grafts). Lean-side it is the `cut` Equiv's surjectivity inside `CutData` (unit
-H8-A3) — supplied at instantiation time by the `VTreeCutSeam.graft_complete`
-field (unit H8-B2), NEVER by an axiom. Its serving arc (D-14 + CU-3 + REL.2)
+grafts). Lean-side its home is the `cut` Equiv inside `CutData` (unit H8-A3) —
+which is DATA: at instantiation the Equiv must be CONSTRUCTED (H8-B3's
+extraction gives the forward map and injectivity; the graft map and the
+inverse laws are the (K-CUT-g) content). [Corrected at review finding C-4: a
+proof of the bare Prop field `VTreeCutSeam.graft_complete` cannot itself
+supply an Equiv; the field is the LEDGER NAME of the obligation, and its typed
+re-key — once H8-B3's carriers exist — is exactly the graft function + the
+two inverse laws at the concrete carrier.] Never an axiom either way. Its
+serving arc (D-14 + CU-3 + REL.2)
 is exactly what O-11 §8 charge (vi) adjudicates (§2.5). Falsifier intuition
 for verifiers: if grafting could fail, some compatible (Ŝ, (D_i)) would be
 unrealized and Σ_Ŝ W·Σ∏B would strictly exceed Σ_T μ(fiber T) — the numeric
@@ -573,9 +607,13 @@ theorem seriesSum_cut_conv {n p : ℕ} {X : LeanUrat.MovesU.ClassifierSpec n p}
             ∏ i, CD.blockTotal Ŝ i (vt.1 i)
 ```
 
-NOTE (probed): `∑' g : {…}` over the sigma-subtype needs no extra instances in
-ENNReal (`ENNReal.summable`); countability instances ride `ctblS`/`ctblD` — the
-prover should `haveI := CD.ctblS` etc. locally as needed.
+NOTE (probed; refined at review finding G-7): tsum in ℝ≥0∞ is defined over
+ARBITRARY index types — neither `seriesSum_cut` nor `seriesSum_cut_conv` needs
+countability of `V` or of the verdict-tuple index (the ENNReal fiberwise
+Tonelli lemmas are unconditional); the `ctblS`/`ctblD` fields are carried for
+the CONSUMER's sake (M04's "countable shape family" display and downstream
+measure bookkeeping), not for these proofs. Provers may `haveI := CD.ctblS`
+etc. only where a chosen route asks for it.
 
 ### Wave 2 (after wave 1)
 
@@ -648,6 +686,45 @@ plus the module docstring carrying the §1.3 owner table and the explicit
 anti-vacuity note (the fields are consumed as named assumptions by BP_V-side
 units; a `trivialSeam` True-instantiation may exist ONLY next to the honesty
 gate comment, mirroring `Hypotheses.lean`'s `trivialRootHyps` pattern).
+BINDING DISPLAY RULE [review finding C-3, folded]: these are bare `Prop`
+fields with NO Lean-level semantics — deliberately, per the corpus-wide
+theoremU/BP_VI precedent ("a row whose owner vocabulary is ABSENT from the
+built corpus stays a bare Prop — a NAMED, VISIBLE field, never an axiom");
+every conditionality claim consuming them MUST list them as UNPINNED named
+assumptions until their typed carriers land. The typed re-key targets, named
+now: `supply_cell` → a per-node decidable-from-`CellData` characterization of
+E; `graft_complete` → the graft function + two inverse laws at H8-B3's
+concrete carriers (= the `cut` Equiv's missing half); `mass_tie` → the
+W/weight equations against the measured masses. Typing them TODAY would mean
+inventing carriers ahead of H8-B3 — the exact ill-typed-statement failure the
+compile-probe rule exists to prevent; the bare-Prop stage is the honest one.
+
+**H8-B3 `CutExtract.lean` [HARD; needs A1/A2; E-phase design gate] — the
+EXTRACTION layer [NEW at review findings C-1/C-2/C-5].** Construct, as
+FUNCTIONS of (Tr, E): the full-data shallow-layer object Ŝ(Tr) and the
+per-block derivation objects D_ε(Tr), the cut map, and its injectivity. Two
+candidate carrier designs — the E-phase prover opens with a compiled design
+gate choosing between them (report upward, do not silently pick):
+* **(a) subtree-as-subset (primary):** D_ε(Tr) := the ambient-coordinate
+  chain set `{H ∈ Tr.chains // ε.IsPrefixOf H}` with its inherited leaf/ns
+  data, Ŝ(Tr) := the shallow chain set with halt data; the cut map is then
+  subtype packaging, injectivity from `read_cut_exhaustive` + set
+  extensionality. Cheap, no History surgery; the cost: block derivations are
+  NOT literally re-rooted `VTree`s, so the tie to the grammar reading (the
+  B-totals over abstract derivations) moves wholly into (K-CUT-m)/(K-CUT-g)'s
+  typed re-keys.
+* **(b) re-rooted VTree:** quotient each `H` in the ε-cone by dropping ε's
+  prefix (History surgery: new `nodes := H.nodes.drop (ε.nodes.length)` needs
+  `root_iff` re-establishment — nontrivial, may be FALSE as-is since the
+  first dropped node need not be species-root; if so, design (b) is BLOCKED
+  and the record must say why). Matches REL.2's transport reading directly.
+CONFORMANCE clauses either way: entrance lists (e_i, τ_i, δ_i) and σ₀ read
+off ε's node data / the shallow halt leaves (the W7_cutWD boundary-data
+clause, §W4-SYNC S-5, executed at last); countability of the concrete family
+(from `hfin` + the countable History carrier). NO verbatim statement pinned
+here (the carriers do not exist yet — pinning would violate the compile-probe
+rule); the unit ships its own E-phase with a fresh probe, gated on the (a)/(b)
+decision record.
 
 **H8-G1 `ToyGate.lean` [MED; needs D0, A2] — the positive gate.** Spec §3.6/§5.
 No verbatim statement pinned (gate units are constructions); MUST end with a
@@ -659,16 +736,23 @@ data is not duplication.
 
 ### Wave 3 (after wave 2; optional consumers, LOW priority)
 
-**H8-C1 `KCutReduce.lean` [MED]** — the display theorem tying the waves
-together for BP_V/BP_VI consumption: GIVEN a `VTreeCutSeam` whose fields hold
-and the wave-1/2 theorems, a `CutData` instance exists for the intended
-carrier, hence `seriesSum_cut_conv`'s conclusion — the exact regroup Step 18's
-K1 consumes, with the residual conditionality displayed as the three fields.
-Statement to be E-phased against BP_V's `SolveSeam`/`series_tie` wiring when
-BP_V unfreezes (it holds until BP_II/III land — division-order note); do NOT
-guess its final binder list now. ALSO: the one-line `RootHyps` extension
-(`h8_kcut : Prop` field) is a SHARED edit owned by the orchestrator across all
-nine leads — flagged here, not landed by any H8 unit.
+**H8-C1 `KCutReduce.lean` [MED-HARD]** — the display theorem tying the waves
+together for BP_V/BP_VI consumption. [Re-scoped at review finding C-5: bare
+seam Props CANNOT yield the `CutData` Equiv — the bridge runs through H8-B3's
+constructions, not through `VTreeCutSeam.holds`.] Corrected shape: GIVEN
+H8-B3's landed extraction (the cut function + injectivity) AND the TYPED
+re-keys of the three seam fields (the graft function with its inverse laws;
+the mass equations) — data/hypotheses in the binder list, not opaque Props —
+CONSTRUCT the `CutData` instance and conclude `seriesSum_cut_conv`'s regroup:
+the exact form Step 18's K1 consumes, with the residual conditionality as the
+displayed binder rows. Until those typed re-keys exist there is NO formal
+bridge from the proved combinatorics to the M04 consumer — that absence is
+the honest state, displayed here, not papered over. Statement to be E-phased
+against H8-B3's carriers + BP_V's `SolveSeam`/`series_tie` wiring when BP_V
+unfreezes (division-order note); do NOT guess its binder list now. ALSO: the
+one-line `RootHyps` extension (`h8_kcut : Prop` field) is a SHARED edit owned
+by the orchestrator across all nine leads — flagged here, not landed by any
+H8 unit.
 
 ### Unit/wave summary
 
@@ -680,14 +764,15 @@ nine leads — flagged here, not landed by any H8 unit.
 | H8-A3 | `Lemma33.lean` | CutData + blockTotal + seriesSum_cut(+_conv) | D0 (nominal) | MED / HARD(_conv) |
 | H8-B1 | `SiteExpCut.lean` | siteExp_cut + fiber_count_cut | A2, E8 | MED |
 | H8-B2 | `CutSeam.lean` | VTreeCutSeam + holds + owner map | A3 | EASY-MED |
+| H8-B3 | `CutExtract.lean` | the extraction layer: Ŝ(Tr)/D_ε(Tr) carriers + cut map + injectivity + conformance + countability [NEW at C-1/C-2/C-5] | A1, A2; own E-phase design gate (a)/(b) | HARD |
 | H8-G1 | `ToyGate.lean` | 3-chain positive gate + (BDY) check | D0, A2 | MED |
-| H8-C1 | `KCutReduce.lean` | seam→CutData reduction display | B1, B2, BP_V | MED (E-phase later) |
+| H8-C1 | `KCutReduce.lean` | B3-extraction + typed seam re-keys → CutData → the K1 regroup | B1, B2, B3, BP_V | MED-HARD (E-phase later) |
 | H8-R1 | (documentary) | O-11 §8 charge (vi) adjudication | — | Codex run |
 | H8-R2 | (documentary) | ROOT (H8)-row re-scope spec | R1 + waves | orchestrator |
 
 Parallelism: A1/A2/A3 run concurrently after D0 (A2 may consume A1's theorems —
 if scheduled truly parallel, A2's prover re-proves locally or waits; preferred:
-D0 → {A1, A3} → {A2} → {B1, B2, G1} → C1). 7 Lean units + 2 documentary.
+D0 → {A1, A3} → {A2} → {B1, B2, G1} → B3 → C1). 8 Lean units + 2 documentary.
 
 ---
 
@@ -715,19 +800,27 @@ D0 → {A1, A3} → {A2} → {B1, B2, G1} → C1). 7 Lean units + 2 documentary.
 ## 6. What lands where (the discharge display; ROOT sync spec for H8-R2)
 
 After waves 0–2 land green and H8-R1 records its adjudication, the honest
-(H8) row state, for the orchestrator's ROOT revision (NOT executed here):
+(H8) row state, for the orchestrator's ROOT revision (NOT executed here; the
+"PROVED" clauses below are CONDITIONAL ON THE LANDINGS — this blueprint proves
+nothing by itself, review finding G-8):
 
 > (H8) = (K-CUT), REDUCED (blueprint `lean/blueprints/HDISCHARGE_H8.md`):
-> members (K-CUT-1)/(K-CUT-2) and the (†)-regroup of (K-CUT-3) are PROVED
-> Lean-core (`Scaffold/HDischarge/H8/` — first-entrance uniqueness,
+> members (K-CUT-1) at level (1a), (K-CUT-2), and the (†)-regroup of
+> (K-CUT-3) are PROVED Lean-core once waves 0–2 land
+> (`Scaffold/HDischarge/H8/` — first-entrance uniqueness,
 > exhaustive-exclusive read ownership with the (BDY) boundary law, the
 > count-form and series-form regroupings incl. M04 Lemma 3.3 as
-> `seriesSum_cut_conv`), killing exactly the G-2 falsifier channels; the row's
-> remaining content is the THREE-field seam `VTreeCutSeam`:
+> `seriesSum_cut_conv`), killing the G-2 falsifier channels at the ownership-
+> partition level; the row's remaining content is (a) the extraction layer
+> H8-B3 (the concrete (Ŝ,(D_ε)) constructions + cut-map injectivity =
+> (K-CUT-1) level (1b) — in-blueprint open WORK) and (b) the THREE-field seam
+> `VTreeCutSeam`:
 > (K-CUT-s) entrance-predicate cell-data supply [owner: CTS-M(i)/(iii)/CL-13,
 > (H1)-adjacent census rows], (K-CUT-g) graft completeness [owner: the
 > D-14 + CU-3 + REL.2 arc; charge-(vi) record at H8-R1], (K-CUT-m) measured
 > mass tie [owners: (H7)/sibjc TREE-EXP rows + [2r]/CL-8 + O-1/O-3 count-tie].
+> No formal bridge to the M04 consumer exists until H8-B3 + the typed seam
+> re-keys land (H8-C1); that absence is displayed, not elided.
 > Consumption sites unchanged (Step 18 K1, clause (R); clause (UB) at q ↦ q^δ).
 
 Retirement condition (unchanged from the row): full retirement into [V] debts
@@ -736,3 +829,42 @@ persists at the reduced scope above. Either way the ROOT edit is a ledgered
 revision with its own VC pass — the standing acceptance-counter discipline
 applies (a text change resets the counter; this blueprint does not touch ROOT).
 
+
+---
+
+## 7. Codex adversarial verification record + fold (2026-08-05)
+
+**Run**: fresh-context Codex, full blueprint pasted (sandbox cannot read the
+repo); charge = faithfulness / mathematics / Lean-vs-prose / residual pricing /
+process, quote-and-classify, falsifier-first, fix nothing. Budget at launch:
+7-day window 2% used. Prompt `/tmp/openmath/H8_bp_prompt.txt`; raw stream
+`/tmp/openmath/H8_bp_review.jsonl`; report archived at
+`lean/notes/openmath/H8_bp_review.md`. **VERDICT: REVISE** (5 CRITICAL,
+3 GAP, 4 ADVISORY). All findings folded below; the revised text above is the
+unit of record (fold edits marked in-place with their finding numbers).
+
+| # | class | finding (compressed) | disposition |
+|---|---|---|---|
+| C-1 | CRITICAL | partition uniqueness ≠ uniqueness of shallow-layer/derivation DATA; "two encodings can induce the same filtered partition" | **FIXED**: (K-CUT-1) split into levels (1a) ownership partition (waves 0–2) / (1b) decomposition-data uniqueness (needs the extraction maps + injectivity); §1 member, §2.1 re-scoped; NEW unit H8-B3 |
+| C-2 | CRITICAL | "EXACTLY three fields" omits the un-built forward-cut construction (family, derivations, conformance, countability) | **FIXED**: §1.3/§6 re-scoped — residual = 3 hypothesis fields + the H8-B3 CONSTRUCTION layer, displayed as (H8)'s own remaining work |
+| C-3 | CRITICAL | bare Prop seam fields carry no Lean semantics, True-instantiable | **FIXED (display) + PARTIAL REBUTTAL**: this is the corpus's deliberate theoremU/BP_VI convention (named visible fields, UNPINNED-until-typed, honesty gate); §4 H8-B2 now carries the binding display rule + the three named typed re-key targets. Typing them now would require inventing carriers ahead of H8-B3 — the exact ill-typed-statement failure the probe rule prevents |
+| C-4 | CRITICAL | a proof of opaque `graft_complete` cannot supply the `cut` Equiv; `cut` also carries the forward map + injectivity | **FIXED**: §2.4 corrected — the Equiv is DATA constructed at H8-B3 (forward + injectivity) with (K-CUT-g)'s typed re-key = graft function + inverse laws; the Prop field is the ledger NAME only |
+| C-5 | CRITICAL | the H8-C1 reduction "a CutData instance exists" is not derivable from the displayed seam; no formal bridge to M04 | **FIXED**: H8-C1 re-scoped to run through H8-B3's constructions + typed re-keys (binder-listed data/hypotheses, not opaque Props); the bridge's current absence displayed in §6 |
+| G-6 | GAP | "missing tuples would make the inequality strict" is false in general (zero-weight tuples; ∞ = ∞) | **FIXED**: §1 both-directions paragraph reworded — equality becomes UNWARRANTED, not always false |
+| G-7 | GAP | countability note imprecise: `ctblD` gives neither `Countable V` nor tuple-index countability; ENNReal Tonelli needs neither | **FIXED**: §4 NOTE rewritten — tsum in ℝ≥0∞ is index-unconditional; `ctblS`/`ctblD` carried for the consumer's display, not these proofs |
+| G-8 | GAP | present-tense "PROVES in Lean" vs probe-only status | **FIXED**: §0 honesty paragraph + §6 preamble reworded (probe = well-typedness; proofs exist only when units land) |
+| A-9 | ADVISORY | granularity adjudication sound PROVIDED heights absent from residual tuple data; "true-formable" ≠ proved | **FIXED**: §1.1 clarifier added (boundary data excludes heights per CUT-3's retention clause; formability disclaimer) |
+| A-10 | ADVISORY | first-entrance calculus, partition, outermost-block rule, (BDY) shift CONFIRMED correct, no off-by-one | recorded (confirmation) |
+| A-11 | ADVISORY | `fiber_count_cut` follows from `treeExp` + partition by finite exponent algebra CONFIRMED | recorded (confirmation) |
+| A-12 | ADVISORY | §2.5 pre-registered disposition CONSISTENT with G-2's quoted conclusion | recorded (confirmation) |
+
+**Fold summary**: the five criticals share one root cause — the blueprint's
+uniqueness/reduction claims outran what waves 0–2 CONSTRUCT (no extraction of
+(Ŝ,(D_i)) was specced, and bare Props cannot hand over an Equiv) — cured by
+the level-(1a)/(1b) split, the new HARD unit H8-B3 (`CutExtract.lean`, with a
+compiled (a)/(b) carrier design gate), the re-scoped H8-C1 bridge, and the
+§1.3/§6 residual re-display. No mathematical content of the row changed; the
+partition/regroup design and all probed statements SURVIVED review untouched
+(A-10/A-11 confirmations). Re-review: not re-run (the fixes are scope/display
+re-statements in the direction the reviewer demanded plus one added unit; the
+prover fan-out's own hostile pass is the next gate — standing discipline).
