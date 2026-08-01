@@ -1591,3 +1591,14 @@ become NAMED DUTIES in Unit A's charge, adjudicated by the r4 HOSTILE PASS
 artifacts + BLOCKED-line display rule) folds into Unit A. Report:
 lean/notes/openmath/R11D5_review_2026-08-04.md. UNIT A DISPATCHED: the
 D-11 r4 leaf repair (L1-L10 + the four proof obligations).
+
+## BP_IV DIVISION: 69/88 + TRIAGE (2026-08-04)
+Value-side division first pass 69/88 (96 agents). 17 blocks in 3 classes:
+missing-root cascades (C0d, C4c/censusW, T4/discV, TreeRecursion, the
+5-row-type block, MulFiberData/SmithStab, CensusValueRows) => architect
+lands roots; REFUTED statements w/ compiled countermodels (C1, C2 both
+directions, K7e escalated, K10 cellCount:=0) => intent-preserving carrier-
+vs-law adjudication with countermodels as warrants; ill-typed (M4, M7,
+K11 statement absent) => compile-gated authoring. Two-phase mop-up
+dispatched (wf_7bc082de-e1f: architect -> prover fan-out -> checkpoint).
+BP_V holds until BP_II/BP_III land (interface consumer).

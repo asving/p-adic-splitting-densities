@@ -16,7 +16,10 @@ II-F5 (`card_irred_degree_sum`) — Fact F(i) degree count q^D = Σ_{δ|D} δ·I
 II-F8 (**BLOCKED — see its section note**): the intended Fact F(ii)
 `card_pattern_eq` is REFUTED against the landed II-F3 `patternOf`
 (compiled refutation artifacts `patternOf_ne_atom_one_two`,
-`patternOf_X_sq`, `Npoly_atom_one_two`, `card_pattern_eq_refuted`).
+`patternOf_X_sq`, `Npoly_atom_one_two`, `card_pattern_eq_refuted`);
+II-F9 (**BLOCKED — see its section note**): the intended Fact F(iii)
+`card_pattern_zfree_eq` inherits the II-F8 refutation verbatim (compiled
+refutation artifacts `Ppoly_atom_one_two`, `card_pattern_zfree_eq_refuted`).
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.Core
@@ -564,5 +567,61 @@ theorem card_pattern_eq_refuted (F : Type*) [Field F] [Fintype F] :
   exact_mod_cast Fintype.card_ne_zero
 
 end FactFiiBlocked
+
+/-! ## Unit II-F9 — Fact F(iii) `card_pattern_zfree_eq`: BLOCKED (dependency
+II-F8 refuted; the intended F(iii) equality fails against the same defect)
+
+TRANSCRIPTION NOTE (II-F9). BP_II.md §1.7 displays this unit's statement as
+`theorem card_pattern_zfree_eq ...` — ELIDED like II-F8 (no verbatim Lean text
+to transcribe); the verbatim docstring is "**Fact F(iii)**: (Ppoly ρ).eval q =
+the z-free count (h(0) ≠ 0); the only monic irreducible with zero constant
+term is z."
+
+BLOCKED(II-F9): the sole dependency II-F8 is BLOCKED (its section note above),
+and the same landed-`patternOf` defect refutes every faithful fixing of
+F(iii): the z-free count carries the clause "patternOf h = ρ" unchanged, and
+NO polynomial has the singleton pattern ρ₀ = {(1,2)}
+(`patternOf_ne_atom_one_two`) — under the source-of-record semantics ρ₀ is
+realized z-freely, e.g. by h = (X − 1)², h(0) = 1 ≠ 0. Yet the polynomial
+side is (Ppoly ρ₀).eval q = q − 1 (`Ppoly_atom_one_two` below: the D = 1
+supply is q − 1, the blueprint's "remove z" replacement M₁ = q ↦ q − 1), and
+q − 1 ≥ 1 over every finite field. So the intended equality fails at ρ₀,
+total degree 1·2 = 2, over EVERY finite field — compiled as
+`card_pattern_zfree_eq_refuted`. Reassign together with II-F8 after the
+repair proposal in the II-F8 note lands (dedup `patternOf`), per that note. -/
+
+section FactFiiiBlocked
+
+attribute [local instance] Classical.decEq
+
+/-- BLOCKED(II-F9) artifact 1: the polynomial side at ρ₀ = {(1,2)}:
+`Ppoly ρ₀ = X − 1` (one degree-1 supply with z removed, falling factorial of
+length 1, trivial multiplicity factorial), so its evaluation is x ↦ x − 1. -/
+theorem Ppoly_atom_one_two (x : ℚ) :
+    (Ppoly ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))).eval x = x - 1 := by
+  simp [Ppoly, patternFactor, fallingFac, degreeCount, multiplicityCount,
+    Multiset.filter_singleton]
+
+/-- **BLOCKED(II-F9) refutation**: the intended Fact F(iii) equality
+"(Ppoly ρ).eval q = the z-free count (h(0) ≠ 0)" (BP_II §1.7, elided display)
+is FALSE against the landed `patternOf`, at ρ₀ = {(1,2)} (total degree
+1·2 = 2), over EVERY finite field: the left side is q − 1 ≥ 1 and the right
+side counts the empty set (`patternOf_ne_atom_one_two`). -/
+theorem card_pattern_zfree_eq_refuted (F : Type*) [Field F] [Fintype F] :
+    ¬ ((Ppoly ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+))).eval
+          (Fintype.card F : ℚ)
+        = (Nat.card {h : Polynomial F // h.Monic ∧ h.coeff 0 ≠ 0 ∧
+            patternOf h = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)) ∧
+            h.natDegree = 2} : ℚ)) := by
+  haveI : IsEmpty {h : Polynomial F // h.Monic ∧ h.coeff 0 ≠ 0 ∧
+      patternOf h = ({((1 : ℕ+), (2 : ℕ+))} : Multiset (ℕ+ × ℕ+)) ∧
+      h.natDegree = 2} :=
+    ⟨fun ⟨h, _, _, hpat, _⟩ => patternOf_ne_atom_one_two h hpat⟩
+  rw [Ppoly_atom_one_two, Nat.card_of_isEmpty, Nat.cast_zero]
+  have h1 : (1 : ℚ) < (Fintype.card F : ℚ) := by
+    exact_mod_cast Fintype.one_lt_card
+  exact sub_ne_zero.mpr (ne_of_gt h1)
+
+end FactFiiiBlocked
 
 end LeanUrat.Scaffold
