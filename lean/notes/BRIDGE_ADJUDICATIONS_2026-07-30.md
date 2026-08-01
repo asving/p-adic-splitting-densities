@@ -2029,3 +2029,9 @@ displayed RETIRED ((H9) open member = (NSF-INT)/(K1-CANON)) + D-12r rewritten at
 confirmed pins (VC-gated) + (H8) re-scoped REDUCED-not-discharged (vi-a FAIL, hostile
 pass owed) + (E-N) 89176a4 rewrite ADOPTED + H4 ROOT-sync STILL-OWED. Twelve rows
 stand; acceptance EARNED on REVISION 12; VC16 owed to re-anchor. PROJECT_STATE synced.
+
+## H7 FAN-OUT: 6/6 CLEAN (2026-08-05)
+(I-tau)/K-LOC Tier-S: row shapes + 4 parallel units + axiom census all
+green (second perfect fleet after H8). TierM deferred per synthesis
+priority. H6 HOLDS until the MECH batch lands Shared/FirstEntrance.lean
+(H6 instantiates it instead of re-deriving). VC16 + MECH running.
