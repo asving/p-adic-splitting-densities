@@ -596,4 +596,186 @@ theorem one_le_cPrime (κ : FaceKind e) (j : Fin κ.faces.length) :
   calc 1 ≤ ((κ.faces.get j).1 : ℕ) * (((κ.faces.get j).1 : ℕ) + 1) / 2 := h1
     _ ≤ cPrime κ j := Nat.le_add_left _ _
 
+/-! ## Unit II-P6: `gapStep`, `heights_gapStep`, `gapStep_Npg`
+
+L6b(ii), the enumeration-affinity milestone. Blueprint §1.6 gives the unit as
+`theorem gapStep_Npg ...` under its docstring; the body is realized per the
+math source of record (`lean/notes/openmath/O12_phaseB_verifybrief_rev4.md`
+§3, L6b(ii) proof), exactly as unit II-P5 did for `aMin_shift`:
+
+* A unit step of the gap variable `w_j` (blueprint `w_1, …, w_{k−1}`;
+  0-indexed: `j` with `(j : ℕ) + 1 < k`, so the terminal face is never
+  stepped) evaluates, through the nested minima, to the SIMULTANEOUS
+  one-period advance `a_{j′} ↦ a_{j′} + b_{j′}` on every face `j′ ≤ j`,
+  faces right of `j` unchanged: on face `j` it is the elementary move
+  (`w_j` counts periods above the minimum), and on each `j′ < j` the
+  threshold slope `s_{j′+1}` grew by exactly 1, so the nested minimum
+  shifts one full period (II-P5's `aMin_shift`) — certified here by
+  `gapStep_aMin_shift`. This composite is `SlopeTuple.gapStep`; it is
+  unconditionally admissible (each stepped slope grows by exactly 1, so
+  the descending order survives, and the terminal bound is untouched).
+* The ΔN law `gapStep_Npg`: `ΔN = c_j := Σ_{j′≤j} c′_{j′}`. Rather than a
+  `Fin`-indexed right-to-left recursion through intermediate tuples, the
+  composite is computed in one pass by the column identity
+  `heights_gapStep` — column `i` gains `Σ_{j′≤j}` (width of face `j′`
+  right of `i`), a natural number, so ceilings translate and II-P4's
+  column-sum engine `sum_max_sub_max` evaluates each face's total to
+  `c′_{j′}` (`cPrime`). Same arithmetic content as the blueprint sketch's
+  composition of II-P4 across II-P5's shifted minima, without the
+  intermediate-admissibility bookkeeping.
+* `c_j ≥ 1` is `one_le_gapStep_gain` (the `j′ = j` term alone, by
+  `one_le_cPrime`).
+* "The vertex count k is w-independent" is type-level in this scaffold:
+  `gapStep` returns a `SlopeTuple κ` over the SAME `κ`, and the vertex
+  data — the abscissas `κ.x` and the count `κ.faces.length` — are
+  functions of `κ` alone, never of the slope tuple (II-P4's note "the
+  vertex columns are the x_j, fixed by the L's"). -/
+
+/-- The unit gap-variable step at face `j` (`j` not terminal): every numerator
+at `j′ ≤ j` advances one period (`a_{j′} ↦ a_{j′} + b_{j′}`, slope `+ 1`),
+faces right of `j` unchanged. Coprimality is preserved
+(`gcd(a+b,b) = gcd(a,b)`); the descending order survives because stepped
+slopes all grow by exactly 1 and unstepped faces lie strictly right; the
+terminal bound is untouched (`(j : ℕ) + 1 < k`). -/
+noncomputable def SlopeTuple.gapStep {κ : FaceKind e} (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : (j : ℕ) + 1 < κ.faces.length) :
+    SlopeTuple κ where
+  a := fun i => if (i : ℕ) ≤ (j : ℕ) then s.a i + (κ.faces.get i).2 else s.a i
+  hcop := by
+    intro i
+    split_ifs with hij
+    · rw [PNat.add_coe]
+      exact Nat.coprime_add_self_left.mpr (s.hcop i)
+    · exact s.hcop i
+  hdesc := by
+    intro i i' hlt
+    have h := s.hdesc i i' hlt
+    have hvlt : (i : ℕ) < (i' : ℕ) := hlt
+    have hbi : (0 : ℚ) < (((κ.faces.get i).2 : ℕ) : ℚ) := by
+      exact_mod_cast (κ.faces.get i).2.pos
+    have hbi' : (0 : ℚ) < (((κ.faces.get i').2 : ℕ) : ℚ) := by
+      exact_mod_cast (κ.faces.get i').2.pos
+    by_cases h2 : (i' : ℕ) ≤ (j : ℕ)
+    · -- both faces stepped: each slope grew by exactly 1
+      have h1 : (i : ℕ) ≤ (j : ℕ) := by omega
+      rw [if_pos h1, if_pos h2, PNat.add_coe, PNat.add_coe]
+      push_cast
+      rw [add_div, add_div, div_self (ne_of_gt hbi), div_self (ne_of_gt hbi')]
+      linarith
+    · rw [if_neg h2]
+      by_cases h1 : (i : ℕ) ≤ (j : ℕ)
+      · -- left face stepped, right face not: s_{i'} < s_i < s_i + 1
+        rw [if_pos h1, PNat.add_coe]
+        push_cast
+        rw [add_div, div_self (ne_of_gt hbi)]
+        linarith
+      · rw [if_neg h1]
+        exact h
+  hlt1 := by
+    intro h
+    have hcond : ¬ (κ.faces.length - 1 ≤ (j : ℕ)) := by omega
+    rw [if_neg hcond]
+    exact s.hlt1 h
+
+@[simp] theorem SlopeTuple.gapStep_a {κ : FaceKind e} (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : (j : ℕ) + 1 < κ.faces.length)
+    (i : Fin κ.faces.length) :
+    (s.gapStep j hj).a i =
+      if (i : ℕ) ≤ (j : ℕ) then s.a i + (κ.faces.get i).2 else s.a i := rfl
+
+/-- The "through shifted minima" clause of L6b(ii) (II-P5 transported along
+`gapStep`): if face `i ≤ j` sat at the least member of its residue class
+above threshold `t` (`aMin`), then after the unit gap step it sits at the
+least class member above `t + 1` — its new numerator IS the shifted nested
+minimum, so the step performs the elementary move on face `i` as well. -/
+theorem gapStep_aMin_shift (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : (j : ℕ) + 1 < κ.faces.length)
+    (i : Fin κ.faces.length) (hij : (i : ℕ) ≤ (j : ℕ)) (r : ℤ) (t : ℚ)
+    (hmin : ((s.a i : ℕ) : ℤ) = aMin (κ.faces.get i).2 r t) :
+    (((s.gapStep j hj).a i : ℕ) : ℤ) = aMin (κ.faces.get i).2 r (t + 1) := by
+  rw [aMin_shift, ← hmin, SlopeTuple.gapStep_a, if_pos hij, PNat.add_coe]
+  push_cast
+  ring
+
+/-- The column identity of the unit gap step: column `i` gains the sum, over
+the stepped faces `j′ ≤ j`, of the (integer) width of the part of face `j′`
+lying right of `i` — each stepped face contributes its II-P4 column gain. -/
+theorem heights_gapStep (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : (j : ℕ) + 1 < κ.faces.length) (i : ℕ) :
+    heights κ (s.gapStep j hj) i =
+      heights κ s i +
+        ((∑ j' ∈ Finset.univ.filter
+            (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+          (max (κ.x ((j' : ℕ) + 1)) i - max (κ.x (j' : ℕ)) i) : ℕ) : ℚ) := by
+  unfold heights
+  have hterm : ∀ jj : Fin κ.faces.length,
+      (((s.gapStep j hj).a jj : ℕ) : ℚ) / (((κ.faces.get jj).2 : ℕ) : ℚ) *
+          ((max (κ.x ((jj : ℕ) + 1)) i - max (κ.x (jj : ℕ)) i : ℕ) : ℚ) =
+        ((s.a jj : ℕ) : ℚ) / (((κ.faces.get jj).2 : ℕ) : ℚ) *
+            ((max (κ.x ((jj : ℕ) + 1)) i - max (κ.x (jj : ℕ)) i : ℕ) : ℚ) +
+          (if (jj : ℕ) ≤ (j : ℕ)
+            then ((max (κ.x ((jj : ℕ) + 1)) i - max (κ.x (jj : ℕ)) i : ℕ) : ℚ)
+            else 0) := by
+    intro jj
+    by_cases hij : (jj : ℕ) ≤ (j : ℕ)
+    · rw [if_pos hij, SlopeTuple.gapStep_a, if_pos hij, PNat.add_coe]
+      have hb : (((κ.faces.get jj).2 : ℕ) : ℚ) ≠ 0 := by
+        exact_mod_cast (κ.faces.get jj).2.ne_zero
+      push_cast
+      field_simp
+    · rw [if_neg hij, SlopeTuple.gapStep_a, if_neg hij, add_zero]
+  rw [Nat.cast_sum, Finset.sum_filter, ← Finset.sum_add_distrib]
+  exact Finset.sum_congr rfl fun jj _ => hterm jj
+
+/-- L6b(ii), enumeration affinity: a unit step of the gap variable w_j performs the
+elementary move on face j AND (through shifted minima) on every j′ < j:
+ΔN = c_j := Σ_{j′≤j} c′_{j′} ≥ 1; the vertex count k is w-independent.
+(The `≥ 1` clause is `one_le_gapStep_gain` below; k-independence is carried by
+the type — `gapStep` fixes `κ`, and the vertex data `κ.x`/`κ.faces.length`
+are functions of `κ` alone.) -/
+theorem gapStep_Npg (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : (j : ℕ) + 1 < κ.faces.length) :
+    Npg κ (s.gapStep j hj) = Npg κ s +
+      ((∑ j' ∈ Finset.univ.filter
+          (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+        cPrime κ j' : ℕ) : ℤ) := by
+  have hcell : ∀ i ∈ Finset.range e,
+      ⌈heights κ (s.gapStep j hj) i⌉ =
+        ⌈heights κ s i⌉ +
+          ((∑ j' ∈ Finset.univ.filter
+              (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+            (max (κ.x ((j' : ℕ) + 1)) i - max (κ.x (j' : ℕ)) i) : ℕ) : ℤ) := by
+    intro i _
+    rw [heights_gapStep κ s j hj i, Int.ceil_add_natCast]
+  have hswap : ∑ i ∈ Finset.range e,
+      (∑ j' ∈ Finset.univ.filter
+          (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+        (max (κ.x ((j' : ℕ) + 1)) i - max (κ.x (j' : ℕ)) i)) =
+      ∑ j' ∈ Finset.univ.filter
+          (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+        cPrime κ j' := by
+    rw [Finset.sum_comm]
+    refine Finset.sum_congr rfl fun j' _ => ?_
+    have hx1 : κ.x ((j' : ℕ) + 1) = κ.x (j' : ℕ) + ((κ.faces.get j').1 : ℕ) := by
+      simpa [List.get_eq_getElem] using κ.x_succ_of_lt j'.isLt
+    have hxe : κ.x (j' : ℕ) + ((κ.faces.get j').1 : ℕ) ≤ e := by
+      have h := κ.x_mono (show (j' : ℕ) + 1 ≤ κ.faces.length from j'.isLt)
+      rw [κ.x_length] at h
+      rw [← hx1]
+      exact h
+    rw [hx1, sum_max_sub_max (κ.x (j' : ℕ)) ((κ.faces.get j').1 : ℕ) e hxe]
+    rfl
+  unfold Npg
+  rw [Finset.sum_congr rfl hcell, Finset.sum_add_distrib, ← Nat.cast_sum, hswap]
+
+/-- L6b(ii): every unit gap step gains at least 1 — already the `j′ = j` term
+of `c_j` is `c′_j ≥ 1` (`one_le_cPrime`). -/
+theorem one_le_gapStep_gain (κ : FaceKind e) (j : Fin κ.faces.length) :
+    1 ≤ ∑ j' ∈ Finset.univ.filter
+        (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+      cPrime κ j' :=
+  le_trans (one_le_cPrime κ j)
+    (Finset.single_le_sum (f := fun j' => cPrime κ j')
+      (fun _ _ => Nat.zero_le _) (by simp))
+
 end LeanUrat.Scaffold

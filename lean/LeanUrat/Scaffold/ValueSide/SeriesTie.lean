@@ -343,7 +343,7 @@ theorem pow_mulVec_le_of_margin {m : ℕ}
   | zero =>
     intro i
     simpa [Matrix.one_mulVec] using
-      Finset.single_le_sum (f := b) (fun j _ => zero_le _) (Finset.mem_univ i)
+      Finset.single_le_sum (f := b) (fun j _ => zero_le) (Finset.mem_univ i)
   | succ k ih =>
     intro i
     have hstep : (A ^ (k + 1)).mulVec b i

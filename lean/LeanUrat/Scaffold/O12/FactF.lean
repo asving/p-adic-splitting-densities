@@ -7,7 +7,10 @@ II-F2 (`gram_Npoly` · `gram_Ppoly`) — the (g1) grammar status of the count
 polynomials;
 II-F3 (`patternOf` · `patternOf_smul_unit`) — the factorization pattern of a
 polynomial over a field (REV2 finding 9: `Multiset (ℕ+ × ℕ+)` with positivity
-witnesses) and its unit-scalar invariance.
+witnesses) and its unit-scalar invariance;
+II-F4 (`X_pow_card_prod_irreducibles` + fenced sub-lemmas II-F4a/b/c) — Fact
+F(i) factorization: X^{q^D} − X = ∏ monic irreducibles of degree ∣ D,
+squarefree (see its transcription note: the blueprint display is elided).
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.Core
@@ -167,5 +170,120 @@ theorem patternOf_smul_unit {F} [Field F] (u : Fˣ) (h : Polynomial F) :
   rw [patternOf_map_val, patternOf_map_val, hnf, hfac]
 
 end PatternOf
+
+/-! ## Unit II-F4 — Fact F(i): X^{q^D} − X = ∏ monic irreducibles of degree ∣ D
+
+TRANSCRIPTION NOTE (II-F4). BP_II.md §1.7 displays this unit's statement as
+`theorem X_pow_card_prod_irreducibles ...` — the Lean statement is ELIDED in
+the blueprint (there is no verbatim text to transcribe). Per the §2 row
+instruction ("split into ≤3 sub-lemmas in-file"), the prose spec "X^{q^D} − X
+= ∏ (monic irreducibles of degree ∣ D), squarefree" is formalized as the
+conjunction of (a) squarefreeness, (b) the `normalizedFactors` membership
+characterization (monic ∧ irreducible ∧ degree ∣ D), and (c) the product
+identity over the (nodup, by (a)) factor Finset — each factor exactly once.
+FIXED STATEMENT, FLAGGED FOR REVIEW per the trust boundary. Sub-lemmas
+II-F4a/b/c below are the fenced split; II-F5 consumes them directly. -/
+
+section FactFi
+
+open Polynomial UniqueFactorizationMonoid
+
+attribute [local instance] Classical.decEq
+
+variable (F : Type*) [Field F] [Fintype F]
+
+/-- Sub-lemma [II-F4a]: `X^{q^D} − X` is squarefree over the finite field `F`
+(derivative = −1 route, packaged in Mathlib as separability of the Galois
+polynomial `galois_poly_separable`). -/
+theorem X_pow_card_pow_sub_X_squarefree (D : ℕ+) :
+    Squarefree ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X) := by
+  obtain ⟨p, hCharP⟩ := CharP.exists F
+  haveI := hCharP
+  obtain ⟨n, hprime, hcard⟩ := FiniteField.card F p
+  have hpq : p ∣ Fintype.card F ^ (D : ℕ) := by
+    refine dvd_pow ?_ D.pos.ne'
+    rw [hcard]
+    exact dvd_pow_self p n.pos.ne'
+  exact (galois_poly_separable p _ hpq).squarefree
+
+/-- Sub-lemma [II-F4b]: the converse divisibility — an irreducible of degree
+dividing `D` divides `X^{q^D} − X`. Route (blueprint hint
+`FieldTheory/Finite/Extension` roots): the adjoin-root field of `f` has
+`q^(deg f)` elements, so its root is fixed by `x ↦ x^{q^D}`; conclude via
+`AdjoinRoot.mk_eq_zero`. -/
+theorem dvd_X_pow_card_pow_sub_X_of_natDegree_dvd {f : Polynomial F}
+    (hirr : Irreducible f) {D : ℕ} (hdeg : f.natDegree ∣ D) :
+    f ∣ (Polynomial.X : Polynomial F) ^ Fintype.card F ^ D - Polynomial.X := by
+  haveI := Fact.mk hirr
+  have hne : f ≠ 0 := hirr.ne_zero
+  haveI : Module.Finite F (AdjoinRoot f) :=
+    Module.Finite.of_basis (AdjoinRoot.powerBasis hne).basis
+  haveI : Finite (AdjoinRoot f) := Module.finite_of_finite F
+  haveI : Fintype (AdjoinRoot f) := Fintype.ofFinite _
+  obtain ⟨m, hm⟩ := hdeg
+  have hcardL : Fintype.card (AdjoinRoot f) = Fintype.card F ^ f.natDegree := by
+    rw [Module.card_eq_pow_finrank (K := F) (V := AdjoinRoot f),
+      (AdjoinRoot.powerBasis hne).finrank, AdjoinRoot.powerBasis_dim]
+  have hroot : AdjoinRoot.root f ^ Fintype.card F ^ D = AdjoinRoot.root f := by
+    rw [hm, pow_mul, ← hcardL]
+    exact FiniteField.pow_card_pow m (AdjoinRoot.root f)
+  rw [← AdjoinRoot.mk_eq_zero, map_sub, map_pow, AdjoinRoot.mk_X, hroot, sub_self]
+
+/-- Sub-lemma [II-F4c]: the normalized (monic) irreducible factors of
+`X^{q^D} − X` are EXACTLY the monic irreducibles of degree dividing `D`
+(dvd direction: Mathlib's `Irreducible.natDegree_dvd_of_dvd_X_pow_card_pow_sub_X`;
+converse: [II-F4b]). -/
+theorem mem_normalizedFactors_X_pow_card_pow_sub_X (D : ℕ+) (f : Polynomial F) :
+    f ∈ UniqueFactorizationMonoid.normalizedFactors
+        ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X) ↔
+      f.Monic ∧ Irreducible f ∧ f.natDegree ∣ (D : ℕ) := by
+  have hne : ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X) ≠ 0 :=
+    FiniteField.X_pow_card_pow_sub_X_ne_zero F D.pos.ne' Fintype.one_lt_card
+  rw [mem_normalizedFactors_iff' hne]
+  constructor
+  · rintro ⟨hirr, hnorm, hdvd⟩
+    refine ⟨(normalize_eq_self_iff_monic hirr.ne_zero).mp hnorm, hirr, ?_⟩
+    exact hirr.natDegree_dvd_of_dvd_X_pow_card_pow_sub_X
+      (by rwa [Nat.card_eq_fintype_card])
+  · rintro ⟨hmonic, hirr, hdeg⟩
+    exact ⟨hirr, hmonic.normalize_eq_self,
+      dvd_X_pow_card_pow_sub_X_of_natDegree_dvd F hirr hdeg⟩
+
+/-- **Unit II-F4, Fact F(i) factorization** (BP_II §1.7; statement fixed from
+the blueprint's ELIDED display — see the transcription note above): over a
+finite field `F` with `q = Fintype.card F`, the polynomial `X^{q^D} − X` is
+squarefree, its normalized factors are exactly the monic irreducibles of
+degree dividing `D`, and it is the product of those factors, each exactly
+once. -/
+theorem X_pow_card_prod_irreducibles (D : ℕ+) :
+    Squarefree ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X) ∧
+      (∀ f : Polynomial F,
+        f ∈ UniqueFactorizationMonoid.normalizedFactors
+            ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X) ↔
+          f.Monic ∧ Irreducible f ∧ f.natDegree ∣ (D : ℕ)) ∧
+      (Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X =
+        ∏ f ∈ (UniqueFactorizationMonoid.normalizedFactors
+            ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ)
+              - Polynomial.X)).toFinset, f := by
+  have hsf := X_pow_card_pow_sub_X_squarefree F D
+  have hne : ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X) ≠ 0 :=
+    FiniteField.X_pow_card_pow_sub_X_ne_zero F D.pos.ne' Fintype.one_lt_card
+  refine ⟨hsf, mem_normalizedFactors_X_pow_card_pow_sub_X F D, ?_⟩
+  have hmonic : ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ)
+      - Polynomial.X).Monic := by
+    apply (monic_X_pow _).sub_of_left
+    rw [degree_X_pow, degree_X]
+    exact_mod_cast Nat.one_lt_pow D.pos.ne' Fintype.one_lt_card
+  have hnodup : (UniqueFactorizationMonoid.normalizedFactors
+      ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X)).Nodup :=
+    (squarefree_iff_nodup_normalizedFactors hne).mp hsf
+  have hprod := prod_normalizedFactors_eq hne
+  rw [hmonic.normalize_eq_self] at hprod
+  have hval := Finset.prod_val (UniqueFactorizationMonoid.normalizedFactors
+      ((Polynomial.X : Polynomial F) ^ Fintype.card F ^ (D : ℕ) - Polynomial.X)).toFinset
+  rw [Multiset.toFinset_val, Multiset.dedup_eq_self.mpr hnodup] at hval
+  exact hprod.symm.trans hval
+
+end FactFi
 
 end LeanUrat.Scaffold

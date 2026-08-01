@@ -410,4 +410,176 @@ theorem val_esymm_ge {n : ℕ}
       OrderDual.ofDual (v ((Finset.univ.val.map r).esymm i)).toAdd :=
   addValuation_esymm_ge (AddValuation.ofValuation v) r i
 
+/-!
+## Unit II-M2 — `val_esymm_min_eq` (L1 (⇐): unique strict-minimum term)
+
+Mathematical content (brief L1, (⇐) direction): if μ is a common lower bound of the
+root valuations, exactly k roots attain μ, and the attaining set is the UNIQUE
+k-subset all of whose members attain μ, then v(e_k(r)) = k • μ: the term of the
+`Multiset.esymm` expansion indexed by the attaining set has valuation exactly k • μ,
+every other k-subset product is strictly larger, and the ultrametric collapses the
+sum onto its unique strict minimum (the blueprint's `Valuation.map_add_eq_of_lt`
+chain = one application of `AddValuation.map_add_eq_of_lt_left` against the minimal
+term of the remaining sum).
+
+**Display adjustment**: the SAME three token repairs as II-M1 above (`ᵒᵈ` codomain,
+`OrderDual.ofDual` reads, `Multiset.esymm` via `Finset.univ.val.map`) — the §1.9
+display fails to elaborate at the identical three points — plus the explicit
+`{n : ℕ}` binder; flagged for the same E-phase statement-fence sign-off as II-M1.
+
+HARD-milestone split (BP_II §2 preamble; the §1 helper displays were not
+materialized by the division lead, so the split is realized as the named in-file
+helper declarations below, same convention as II-M1's helpers):
+`nsmul_ne_top_of_ne_top` (Γ₀ arithmetic), `addVal_multiset_prod_eq_nsmul` /
+`addVal_finset_prod_eq_nsmul` (the attaining term evaluates exactly),
+`nsmul_lt_addVal_finset_prod` (every other k-subset term strictly exceeds),
+`addVal_finset_sum_eq_of_lt` (the ultrametric strict-minimum collapse), assembled
+in `addValuation_esymm_min_eq` and specialized to the displayed statement. The
+μ = ⊤ corner (all roots have valuation ⊤, the k-subset family degenerates to the
+single attaining set) is handled separately since strict domination is vacuous
+there.
+-/
+
+/-- A finite ℕ-multiple of a non-⊤ element of a `LinearOrderedAddCommGroupWithTop`
+stays non-⊤. [II-M2 helper.] -/
+theorem nsmul_ne_top_of_ne_top {Γ₀ : Type*} [LinearOrderedAddCommGroupWithTop Γ₀]
+    {μ : Γ₀} (hμ : μ ≠ ⊤) (m : ℕ) : m • μ ≠ ⊤ := by
+  induction m with
+  | zero => rw [zero_nsmul]; exact LinearOrderedAddCommGroupWithTop.zero_ne_top
+  | succ m ih =>
+    rw [succ_nsmul]; exact LinearOrderedAddCommGroupWithTop.add_ne_top.mpr ⟨ih, hμ⟩
+
+/-- Exact valuation of a product all of whose factors have valuation exactly μ:
+w(∏ T) = (card T) • μ (additivity of w on products). [II-M2 helper.] -/
+theorem addVal_multiset_prod_eq_nsmul {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
+    {μ : Γ₀} (T : Multiset K) (hT : ∀ x ∈ T, w x = μ) :
+    w T.prod = Multiset.card T • μ := by
+  induction T using Multiset.induction with
+  | empty => rw [Multiset.prod_zero, Multiset.card_zero, zero_nsmul]; exact w.map_one
+  | cons a T ih =>
+    rw [Multiset.prod_cons, w.map_mul, Multiset.card_cons, succ_nsmul',
+      hT a (Multiset.mem_cons_self a T), ih fun x hx => hT x (Multiset.mem_cons_of_mem hx)]
+
+/-- `addVal_multiset_prod_eq_nsmul` in `Finset.prod` form: if every factor over `S`
+has valuation exactly μ then w(∏_{j ∈ S} f j) = S.card • μ. [II-M2 helper.] -/
+theorem addVal_finset_prod_eq_nsmul {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
+    {ι : Type*} (f : ι → K) {μ : Γ₀} (S : Finset ι)
+    (hS : ∀ j ∈ S, w (f j) = μ) : w (∏ j ∈ S, f j) = S.card • μ := by
+  have h := addVal_multiset_prod_eq_nsmul w (S.val.map f) fun x hx => by
+    obtain ⟨i, hi, rfl⟩ := Multiset.mem_map.mp hx
+    exact hS i (Finset.mem_def.mpr hi)
+  rwa [Multiset.card_map] at h
+
+/-- Strict valuation floor for a product: if every factor over `S` has valuation
+≥ μ and SOME factor strictly exceeds μ (with μ ≠ ⊤), then the product valuation
+strictly exceeds S.card • μ — split off the strict factor, floor the rest by
+`nsmul_le_addVal_multiset_prod`, and add strictly on the non-⊤ side. [II-M2
+helper.] -/
+theorem nsmul_lt_addVal_finset_prod {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
+    {ι : Type*} [DecidableEq ι] (f : ι → K) {μ : Γ₀} (hμ : μ ≠ ⊤)
+    {S : Finset ι} (hS : ∀ j ∈ S, μ ≤ w (f j)) {j₀ : ι} (hj₀ : j₀ ∈ S)
+    (hstrict : μ < w (f j₀)) : S.card • μ < w (∏ j ∈ S, f j) := by
+  rw [← Finset.mul_prod_erase S f hj₀, w.map_mul, ← Finset.card_erase_add_one hj₀,
+    succ_nsmul']
+  calc μ + (S.erase j₀).card • μ
+      < w (f j₀) + (S.erase j₀).card • μ :=
+        (add_lt_add_iff_left_of_ne_top (nsmul_ne_top_of_ne_top hμ _)).mpr hstrict
+    _ ≤ w (f j₀) + w (∏ j ∈ S.erase j₀, f j) := by
+        refine add_le_add le_rfl ?_
+        have h := nsmul_le_addVal_multiset_prod w ((S.erase j₀).val.map f)
+          fun x hx => by
+            obtain ⟨i, hi, rfl⟩ := Multiset.mem_map.mp hx
+            exact hS i (Finset.mem_of_mem_erase (Finset.mem_def.mpr hi))
+        rwa [Multiset.card_map] at h
+
+/-- The ultrametric strict-minimum collapse (the blueprint's
+`Valuation.map_add_eq_of_lt` chain): if the term at i₀ has strictly smaller
+valuation than every other term of a finite sum, the sum has the valuation of
+that term — the rest of the sum is floored by its own minimal term, which is
+still strictly above w(f i₀), so `AddValuation.map_add_eq_of_lt_left` applies.
+[II-M2 helper.] -/
+theorem addVal_finset_sum_eq_of_lt {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀)
+    {ι : Type*} [DecidableEq ι] (f : ι → K) {F : Finset ι} {i₀ : ι} (hi₀ : i₀ ∈ F)
+    (hlt : ∀ i ∈ F, i ≠ i₀ → w (f i₀) < w (f i)) :
+    w (∑ i ∈ F, f i) = w (f i₀) := by
+  rw [← Finset.add_sum_erase F f hi₀]
+  rcases (F.erase i₀).eq_empty_or_nonempty with he | hne
+  · rw [he, Finset.sum_empty, add_zero]
+  · obtain ⟨i₁, hi₁, hmin₁⟩ := (F.erase i₀).exists_min_image (fun i => w (f i)) hne
+    refine w.map_add_eq_of_lt_left ?_
+    refine lt_of_lt_of_le
+      (hlt i₁ (Finset.mem_of_mem_erase hi₁) (Finset.ne_of_mem_erase hi₁)) ?_
+    exact le_addVal_multiset_sum w ((F.erase i₀).val.map f) fun x hx => by
+      obtain ⟨i, hi, rfl⟩ := Multiset.mem_map.mp hx
+      exact hmin₁ i (Finset.mem_def.mpr hi)
+
+/-- II-M2 in Mathlib's `AddValuation` language: if μ bounds all root valuations
+from below, k counts the roots attaining μ, and the attaining set is the unique
+k-subset with all values μ, then w(e_k(r)) = k • μ. The attaining-set term of the
+`Multiset.esymm` expansion evaluates to exactly k • μ, every other k-subset term
+strictly exceeds it (it contains a strict factor), and the ultrametric collapse
+lands the sum on the minimum. μ = ⊤ degenerates to a one-term sum. -/
+theorem addValuation_esymm_min_eq {n : ℕ} {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀]
+    (w : AddValuation K Γ₀) (r : Fin n → K) (μ : Γ₀) (k : ℕ)
+    (hk : k = (Finset.univ.filter fun j => w (r j) = μ).card)
+    (hmin : ∀ j, μ ≤ w (r j))
+    (hunique : ∀ I : Finset (Fin n), I.card = k →
+      (∀ j ∈ I, w (r j) = μ) →
+      I = Finset.univ.filter fun j => w (r j) = μ) :
+    w ((Finset.univ.val.map r).esymm k) = k • μ := by
+  classical
+  rw [Finset.esymm_map_val]
+  by_cases hμ : μ = ⊤
+  · -- corner μ = ⊤: every root valuation is ⊤, the attaining set is univ, k = n,
+    -- and the k-subset family is the single set univ — a one-term sum.
+    subst hμ
+    have hall : ∀ j, w (r j) = ⊤ := fun j => le_antisymm le_top (hmin j)
+    have hkn : k = (Finset.univ : Finset (Fin n)).card := by
+      rw [hk, Finset.filter_true_of_mem fun j _ => hall j]
+    rw [hkn, Finset.powersetCard_self, Finset.sum_singleton]
+    exact addVal_finset_prod_eq_nsmul w r Finset.univ fun j _ => hall j
+  · -- main case: the attaining set is the unique strict-minimum term.
+    have hS₀card : (Finset.univ.filter fun j => w (r j) = μ).card = k := hk.symm
+    have hS₀mem : (Finset.univ.filter fun j => w (r j) = μ)
+        ∈ (Finset.univ : Finset (Fin n)).powersetCard k :=
+      Finset.mem_powersetCard_univ.mpr hS₀card
+    have hPS₀ : w ((Finset.univ.filter fun j => w (r j) = μ).prod r) = k • μ := by
+      rw [addVal_finset_prod_eq_nsmul w r _ fun j hj => (Finset.mem_filter.mp hj).2,
+        hS₀card]
+    have hstrict : ∀ T ∈ (Finset.univ : Finset (Fin n)).powersetCard k,
+        T ≠ (Finset.univ.filter fun j => w (r j) = μ) →
+        w ((Finset.univ.filter fun j => w (r j) = μ).prod r) < w (T.prod r) := by
+      intro T hT hTne
+      have hTcard : T.card = k := Finset.mem_powersetCard_univ.mp hT
+      have hex : ¬ ∀ j ∈ T, w (r j) = μ := fun hall => hTne (hunique T hTcard hall)
+      push Not at hex
+      obtain ⟨j₀, hj₀T, hj₀⟩ := hex
+      rw [hPS₀, ← hTcard]
+      exact nsmul_lt_addVal_finset_prod w r hμ (fun j _ => hmin j) hj₀T
+        ((hmin j₀).lt_of_ne (Ne.symm hj₀))
+    exact (addVal_finset_sum_eq_of_lt w _ hS₀mem hstrict).trans hPS₀
+
+/-- **II-M2, L1 (⇐)**: the unique strict-minimum term gives v(e_k(r)) = k • μ in
+the additive value group Γ₀ — the blueprint §1.9 display under the same three
+documented token repairs as II-M1 (`ᵒᵈ` codomain, `OrderDual.ofDual` reads,
+`Multiset.esymm` via `Finset.univ.val.map`). The `AddValuation.ofValuation`
+specialization of `addValuation_esymm_min_eq` is definitional. -/
+theorem val_esymm_min_eq {n : ℕ}
+    {K Γ₀ : Type*} [Field K] [LinearOrderedAddCommGroupWithTop Γ₀]
+    (v : Valuation K (Multiplicative Γ₀ᵒᵈ)) (r : Fin n → K) (μ : Γ₀)
+    (k : ℕ)
+    (hk : k = (Finset.univ.filter fun j =>
+      OrderDual.ofDual (v (r j)).toAdd = μ).card)
+    (hmin : ∀ j, μ ≤ OrderDual.ofDual (v (r j)).toAdd)
+    (hunique : ∀ I : Finset (Fin n), I.card = k →
+      (∀ j ∈ I, OrderDual.ofDual (v (r j)).toAdd = μ) →
+      I = Finset.univ.filter fun j => OrderDual.ofDual (v (r j)).toAdd = μ) :
+    OrderDual.ofDual (v ((Finset.univ.val.map r).esymm k)).toAdd = k • μ :=
+  addValuation_esymm_min_eq (AddValuation.ofValuation v) r μ k hk hmin hunique
+
 end LeanUrat.Scaffold

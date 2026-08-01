@@ -1566,3 +1566,11 @@ honest-enlargement pattern that closed the VC6->VC9 loop.
 NEW [M] row (H9)=(NSF), two members: (NSF-INT) prices the pin->predicate->corpus gaps (proof claim WITHDRAWN; q-1..q-6 = context; retire by r4 leaf proof or Lean materialization) + (NSF-KEY) re-homed (as-built keying conformance, KNOWN FALSE at HEAD; retire at Unit C: sign-off + NsFree conjunct + count_tie/canonical_stable/VPSound re-proved + build/AxChk + Codex diff gate). Rows: eleven -> TWELVE.
 Sigma=1 universal non-consumption DROPPED ((+18) relabeled trace/non-exhaustive); (ROW-Sigma) PROMOTED to REQUIRED r4 proof (L10). (O-GLOB) global multi-block a.s.-termination stated as explicit r4 obligation (finite tree + per-block (O-1)..(O-5) + union bound, no-duplication aggregation in-scope). Units A/B/C/D with gates; C terminal BEFORE B; D counter restarts on any text change.
 Official verdict = reviewer tiers; BLOCKED-PENDING: N1 ((b-EX) proof), N4 ((O-1)..(O-5)+(O-GLOB) global proof), N2 ((NSF-KEY) execution — known false at HEAD until the gated definition change lands). Next: Codex plan-review round 4.
+
+## R11 DESIGN ROUND 4: DESIGN-REVISE (tail defects) => CONSOLIDATION (2026-08-04)
+Pricing strategy accepted in substance; flagged: imprecise retirement
+semantics on (H9)'s members, (ROW-Sigma) inconsistently integrated across
+revision layers, (O-GLOB) aggregation argument defective. Four patch
+layers deep => per the B2-FINAL precedent, round 5 = CONSOLIDATED bottom-up
+rewrite (fresh self-contained file), not a fifth patch. Report:
+lean/notes/openmath/R11D4_review_2026-08-04.md.

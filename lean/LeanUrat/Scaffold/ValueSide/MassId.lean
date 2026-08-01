@@ -10,7 +10,8 @@ F(ii) row), M8 (`alpha2` datum + `alpha2StrataMass` + `alpha2Row_gate`, the
 M1′ gate object — OPTIONAL unit, unconditional value-level arithmetic), M6a
 (`PolyCellStrata` carrier + `PolyCellCountLaws` named row +
 `polygonCell_mass`, conditional on M0b + the L6a row; the affine-cone
-geometric sum is unit M6b, serial after this one).
+geometric sum is unit M6b, serial after this one), M6b (`tsum_pi_fin_prod`
+Fubini engine + `coneSum_eq_prod_geometric`, unconditional).
 
 BLOCKED(M7): `trueType_const_on_cylinder` (§1.4 M3 glue) does NOT land here yet.
 Its verbatim statement binds `ThmERow`/`D15Row` (owner BP_III, §5 seam — "BP_IV
@@ -26,7 +27,7 @@ obstruction escalates to the blueprint owner; no prover-side restatement.
 import Mathlib
 
 open Filter Topology
-open scoped NNReal
+open scoped NNReal ENNReal
 
 /-!
 # The one-step block carrier [BP_IV division, unit M0a]
@@ -503,5 +504,121 @@ theorem polygonCell_mass {E e q₀ : ℕ} {B : BlockStrata E e q₀}
     ← pow_add, div_eq_div_iff hcell (pow_ne_zero _ hq0),
     add_comm P.unitDigits P.polyVol, hlaw]
   ring
+
+/-!
+# The affine-cone geometric sum, family (iii)
+[BP_IV division, unit M6b — second half of the M6 split]
+
+**PROVENANCE (unit M6b; BP_IV §2 M-table + §4 wave 2 split M6a → M6b).**
+
+* Blueprint: `lean/blueprints/BP_IV.md` §2 M-table row M6 — proof sketch
+  "cone sum = product of geometric series (c_j ≥ 1); `tsum_geometric` per
+  axis + Fubini for finitely many axes", deps M1c, src "D11 §2 (a) polygon
+  bullet (L6a/L6b/L6e)".  §4 wave 2 splits M6 into the serial pair
+  M6a → M6b: M6a = the per-cell (1−q₀^{−1})^k·q₀^{−N(P)} leg (above);
+  M6b = THIS unit, the affine-cone resummation.
+* §1.4 displays no Lean signature for M6 (as for units M1b, M5, M8), so the
+  statement transcribes the D-11 display directly: the summand is the
+  convergent geometric term q₀^{−N_min−Σ_j c_j·w_j} of the polygon bullet
+  ("countable additivity along L6b's affine cone (exponents c_j ≥ 1 give
+  convergent geometric sums Σ_w q₀^{−N_min−Σc_jw_j})"), i.e. M6a's free
+  volume index `polyVol` instantiated along the cone as N_min + Σ c_j·w_j;
+  the value is the product of the per-axis geometric series.  Carried over
+  ℝ≥0 (the M1c pattern), where the equality genuinely encodes convergence
+  (a non-summable ℝ≥0 `tsum` is 0, never the displayed positive product).
+* Math source of record: `D11_massid_phaseB_attempt_rev3.md` §2 (a), the
+  polygon bullet [L6b affine cone].  The per-cell L6a factor is unit M6a
+  (above); the shape-conditional L6d factor, the L6e(i) disjointness read,
+  and the q₀^{+e} normalization ride the downstream family-(iii) assembly,
+  not this unit.
+* Unconditional (no [M]-rows): pure geometric-series analysis from 2 ≤ q₀
+  and c_j ≥ 1.  Engine: `tsum_pi_fin_prod`, the ℝ≥0∞ Fubini for finitely
+  many axes (checked absent from Mathlib: loogle `∑' _ : (_ → _), ∏ _, _`
+  and local search 2026-08-01 find no pi-type `tsum` factorization) —
+  `ENNReal.tsum_prod'`/`ENNReal.tsum_mul_left/right` along `Fin.consEquiv`,
+  per the §3 reuse row "Mathlib: `tsum_geometric_of_lt_one` (ℝ≥0),
+  `ENNReal.tsum_*` | geometric resummation | M1c, M6, S1a, S4a".
+-/
+
+/-- M6b engine (Fubini for finitely many axes): over ℝ≥0∞ the `tsum` of a
+product of per-axis factors over the finite-axis lattice `Fin k → ℕ`
+factorizes as the product of the per-axis `tsum`s.  Unconditional in ℝ≥0∞;
+induction on the axes along `Fin.consEquiv`. -/
+theorem tsum_pi_fin_prod {k : ℕ} (f : Fin k → ℕ → ℝ≥0∞) :
+    ∑' w : Fin k → ℕ, ∏ j, f j (w j) = ∏ j, ∑' n, f j n := by
+  induction k with
+  | zero =>
+      simp only [Finset.univ_eq_empty, Finset.prod_empty]
+      exact tsum_eq_single (fun i => i.elim0) fun b hb =>
+        absurd (Subsingleton.elim b _) hb
+  | succ k ih =>
+      calc ∑' w : Fin (k + 1) → ℕ, ∏ j, f j (w j)
+          = ∑' p : ℕ × (Fin k → ℕ), ∏ j, f j ((Fin.consEquiv fun _ => ℕ) p j) :=
+            ((Fin.consEquiv fun _ => ℕ).tsum_eq fun w => ∏ j, f j (w j)).symm
+        _ = ∑' p : ℕ × (Fin k → ℕ),
+              f 0 p.1 * ∏ j : Fin k, f j.succ (p.2 j) := by
+            simp [Fin.consEquiv, Fin.prod_univ_succ]
+        _ = (∑' n, f 0 n) * ∑' v : Fin k → ℕ, ∏ j : Fin k, f j.succ (v j) := by
+            rw [ENNReal.tsum_prod']
+            simp only [ENNReal.tsum_mul_left, ENNReal.tsum_mul_right]
+        _ = (∑' n, f 0 n) * ∏ j : Fin k, ∑' n, f j.succ n := by
+            rw [ih]
+        _ = ∏ j, ∑' n, f j n := (Fin.prod_univ_succ fun j => ∑' n, f j n).symm
+
+/-- M6b (affine-cone geometric sum, family (iii)'s cone leg): summing the
+per-cell weight q₀^{−N(P)} along L6b's affine cone N(P) = N_min + Σ_j c_j·w_j
+(finitely many axes, exponents c_j ≥ 1) gives
+Σ_w q₀^{−N_min−Σ_j c_j·w_j} = q₀^{−N_min}·∏_j (1 − q₀^{−c_j})^{−1} —
+`tsum_geometric` per axis + Fubini (`tsum_pi_fin_prod`), convergent over ℝ≥0
+since q₀ ≥ 2 and c_j ≥ 1. -/
+theorem coneSum_eq_prod_geometric {k : ℕ} {q₀ : ℕ} (hq : 2 ≤ q₀)
+    (Nmin : ℕ) (c : Fin k → ℕ) (hc : ∀ j, 1 ≤ c j) :
+    ∑' w : Fin k → ℕ, ((q₀ : ℝ≥0) ^ (Nmin + ∑ j, c j * w j))⁻¹
+      = ((q₀ : ℝ≥0) ^ Nmin)⁻¹ * ∏ j, (1 - ((q₀ : ℝ≥0) ^ c j)⁻¹)⁻¹ := by
+  have hq1 : (1 : ℝ≥0) < (q₀ : ℝ≥0) := by
+    have h : (1 : ℕ) < q₀ := by omega
+    exact_mod_cast h
+  have hpow : ∀ j : Fin k, (1 : ℝ≥0) < (q₀ : ℝ≥0) ^ c j := fun j =>
+    one_lt_pow₀ hq1 (by have := hc j; omega)
+  have hne : ∀ j : Fin k, ((q₀ : ℝ≥0) ^ c j) ≠ 0 := fun j =>
+    (zero_lt_one.trans (hpow j)).ne'
+  have hr1 : ∀ j : Fin k, ((q₀ : ℝ≥0) ^ c j)⁻¹ < 1 := fun j => by
+    rw [inv_lt_one_iff₀]; right; exact hpow j
+  have h1r : ∀ j : Fin k, (1 : ℝ≥0) - ((q₀ : ℝ≥0) ^ c j)⁻¹ ≠ 0 := fun j =>
+    (tsub_pos_iff_lt.mpr (hr1 j)).ne'
+  have hcoe : ∀ j : Fin k, ((((q₀ : ℝ≥0) ^ c j)⁻¹ : ℝ≥0) : ℝ≥0∞)
+      = ((q₀ : ℝ≥0∞) ^ c j)⁻¹ := fun j => by
+    rw [ENNReal.coe_inv (hne j), ENNReal.coe_pow, ENNReal.coe_natCast]
+  -- split the cone exponent into the apex factor and the per-axis factors
+  have hsplit : ∀ w : Fin k → ℕ,
+      ((q₀ : ℝ≥0) ^ (Nmin + ∑ j, c j * w j))⁻¹
+        = ((q₀ : ℝ≥0) ^ Nmin)⁻¹ * ∏ j, (((q₀ : ℝ≥0) ^ c j)⁻¹) ^ w j := by
+    intro w
+    rw [pow_add, mul_inv, ← Finset.prod_pow_eq_pow_sum, ← Finset.prod_inv_distrib]
+    exact congrArg _ (Finset.prod_congr rfl fun j _ => by
+      rw [pow_mul, inv_pow])
+  rw [tsum_congr hsplit, NNReal.tsum_mul_left]
+  congr 1
+  -- the core cone sum, lifted to ℝ≥0∞ where Fubini is unconditional
+  rw [NNReal.tsum_eq_toNNReal_tsum]
+  have hlift : (∑' w : Fin k → ℕ,
+        ((∏ j, (((q₀ : ℝ≥0) ^ c j)⁻¹) ^ w j : ℝ≥0) : ℝ≥0∞))
+      = ∏ j, ((1 : ℝ≥0∞) - ((q₀ : ℝ≥0∞) ^ c j)⁻¹)⁻¹ := by
+    calc ∑' w : Fin k → ℕ, ((∏ j, (((q₀ : ℝ≥0) ^ c j)⁻¹) ^ w j : ℝ≥0) : ℝ≥0∞)
+        = ∑' w : Fin k → ℕ, ∏ j, (((q₀ : ℝ≥0∞) ^ c j)⁻¹) ^ w j := by
+          refine tsum_congr fun w => ?_
+          rw [ENNReal.ofNNReal_finsetProd]
+          exact Finset.prod_congr rfl fun j _ => by rw [ENNReal.coe_pow, hcoe j]
+      _ = ∏ j, ∑' n, (((q₀ : ℝ≥0∞) ^ c j)⁻¹) ^ n :=
+          tsum_pi_fin_prod fun j n => (((q₀ : ℝ≥0∞) ^ c j)⁻¹) ^ n
+      _ = ∏ j, ((1 : ℝ≥0∞) - ((q₀ : ℝ≥0∞) ^ c j)⁻¹)⁻¹ :=
+          Finset.prod_congr rfl fun j _ => ENNReal.tsum_geometric _
+  rw [hlift]
+  -- read the finite ℝ≥0∞ product back in ℝ≥0 (each ratio < 1 by c_j ≥ 1)
+  have hfac : ∀ j : Fin k, ((1 : ℝ≥0∞) - ((q₀ : ℝ≥0∞) ^ c j)⁻¹)⁻¹
+      = (((1 - ((q₀ : ℝ≥0) ^ c j)⁻¹)⁻¹ : ℝ≥0) : ℝ≥0∞) := fun j => by
+    rw [ENNReal.coe_inv (h1r j), ENNReal.coe_sub, ENNReal.coe_one, hcoe j]
+  rw [Finset.prod_congr rfl fun j _ => hfac j, ← ENNReal.ofNNReal_finsetProd,
+    ENNReal.toNNReal_coe]
 
 end LeanUrat.Scaffold.ValueSide

@@ -3,8 +3,10 @@ BP_IV §1.1 — Step 13, the drainage-transfer layer (`Transfer.lean`).
 Units in this file: SKEL (module skeleton), T0 (`card_boxProj_fiber`),
 T1 (`env_antitone`), T2 (FLOOR), T3 (TR-Q skeleton), T4a (`discV`, landed),
 T4 (`tailC` + `DrainageImports` + `undec_subset_tail`, landed — `tailC` is a
-NEW flagged supporting definition, see the unit-T4 provenance note).
-Later waves add T5, T6 (`env_tendsto_zero_of_imports`),
+NEW flagged supporting definition, see the unit-T4 provenance note),
+T4b (`canonicalOrderLEOne`, the concrete order-≤1 classifier, landed —
+see the unit-T4b provenance note for its walk-transcription layer).
+Later waves add T5 (T6 landed early with the T5 bound inline),
 and the wave-4 HARD constructors T7 (CEIL) and T8 (tail).
 Import graph (BP_IV §0/§1.0 + §2 T-table deps): the counting vocabulary
 (`ClassifierSpec.decided/undec/env/dmass`, `Box`, `boxProj`,
@@ -13,10 +15,17 @@ Import graph (BP_IV §0/§1.0 + §2 T-table deps): the counting vocabulary
 (`zmodVal`, units K0a/K0b) is reused BY IMPORT from
 `LeanUrat/Scaffold/ValueSide/KCount.lean` — T4a's declared dep is K0
 (BP_IV §2 T-table), and `KCount.lean` imports only Mathlib, so the
-value-side import graph stays acyclic.
+value-side import graph stays acyclic.  Unit T4b adds corpus reuse (§3):
+the lower-hull engine (`LeanUrat/OM/NewtonPolygon.lean`, `npHeight`/`npSides`)
+and the ℤ_p true-type reading (`MovesU/BridgeD9a_trueTypeDef.lean`'s
+`bridgeTrueType` at `MovesU/BridgeZp.lean`'s `bridgeZfType`) — corpus
+modules, not value-side ones, so the value-side graph stays acyclic.
 -/
 import Mathlib
 import LeanUrat.MovesU.Defs
+import LeanUrat.MovesU.BridgeD9a_trueTypeDef
+import LeanUrat.MovesU.BridgeZp
+import LeanUrat.OM.NewtonPolygon
 import LeanUrat.Scaffold.ValueSide.KCount
 
 /-!
@@ -379,5 +388,338 @@ theorem env_tendsto_zero_of_imports {n p : ℕ} [Fact p.Prime]
     unfold ClassifierSpec.env; positivity
   exact env_tendsto_zero_of_majorant (ClassifierSpec.env_antitone X) h0
     tendsto_id hle hB
+
+/-!
+**PROVENANCE (unit T4b; BP_IV §1.1 T7-interface block — "`canonicalOrderLEOne`
+is the concrete classifier definition of unit T4b"; §4 wave-2 chain
+T4a → T4b → T4).**  Signature transcribed VERBATIM from §1.1 (the
+`noncomputable def` before `canonicalOrderLEOne_ceil`); the blueprint fixes no
+body, so the body below is this unit's construction, flagged for review per
+the trust-boundary rule (definitions are where errors hide).
+
+The body is the O4T §3.2 PINNED WALK (`O4T_phaseB_verifybrief_rev4.md` §3.2,
+"this definition IS the object of N3"), transcribed clause by clause in the
+sub-namespace `OrderLEOne`:
+
+* digit/valuation reads: `digitAt` (base-p digit of a `ZMod (p^M)` value) and
+  `cVal` (the K0a truncated valuation `zmodVal` of the recentered coefficient
+  `g_i`, `g = F(x + c)`) — §3.2's `y_i`, with `y_i ≥ k` read as "unresolved at
+  scan level k" (truncation top v(0) = N = the T4a convention);
+* the resolved hull: `resolvedIdx/resolvedSet/x0` (§3.2's resolved indices,
+  `H_res` support, and least resolved index x₀), hull heights/sides by CORPUS
+  REUSE from `OM/NewtonPolygon.lean` (`npHeight`, `npSides`; brief slope
+  s = −`Side.slope`, since the corpus slope convention is (v₁−v₀)/Δx ≤ 0 on
+  descending sides);
+* `Certifies` (§3.2 (C1)+(C2), byte-faithful: (C1) is transcribed although the
+  rev-4 record note proves it REDUNDANT — pinned policy kept byte-stable);
+* `processResidual` (§3.2's residual factor read: simple irreducible factor of
+  degree d′ ↦ (1, d′); repeated ROOT of multiplicity m′ ≥ 2 ↦ recursion) and
+  `processSide` (side of slope h/e in lowest terms: d = 1 ↦ (e, 1); e = 1,
+  d ≥ 2 ↦ the on-line digit residual `R(z) = Σ r_j z^j`);
+* `clusterWalk` (the cluster step `(c, m, λ_prev)`; recursion shift
+  `c + z₀·p^h`, λ' := h; FUEL-guarded — λ_prev strictly increases and a
+  certify level needs λ_prev < k ≤ N, so fuel N suffices; fuel exhaustion
+  emits ⊥, never a wrong verdict);
+* `fbar/rawLEOne/rawType` (§3.2 Step 0: factor f̄ mod p; simple irreducible
+  factors ↦ (1, d), repeated residue roots open clusters at λ_prev = 0), with
+  the verdict packaged into `SplittingType n` behind the degree audit
+  Σ eᵢfᵢ = n (a guarded dite: T7-side soundness will show the guard never
+  fails on emitted verdicts);
+* OUT-OF-SCOPE TOTALIZATIONS (each emits ⊥, the walk's honest refusal, never
+  a verdict): repeated residual factors of degree ≥ 2 (impossible at n ≤ 3 —
+  §3.2 "at n ≤ 3 repeated factors are linear"), sides with e ≥ 2 and d ≥ 2
+  (need e·d ≥ 4 > n), and N = 0 (the single-class box, the
+  `bridgeCanonical_level0` convention).
+
+**Stabilization closure (`decideAt/stabVerdict`) — recorded design decision.**
+`ClassifierSpec.canonical_stable` is a STRUCTURE FIELD, so the definition must
+carry its stability proof.  The §3.2 walk's verdict at level N reads only
+digits below its certify level, so it agrees with the verdict read at the
+least deciding level of the projections — decision stability (TREE-N) says
+raw = stabilized.  We DEFINE `canonical N f` as the raw walk verdict at the
+LEAST level N₀ ≤ N at which the projected class decides
+(`Nat.find`-first-decision closure): stability then holds BY CONSTRUCTION
+(`stabVerdict_stable`, via `boxProj` composition), and the closure is
+mathematically inert — proving "stabilized = raw at every level" is exactly
+the TREE-N decision-stability lemma, a T7-side obligation, NOT assumed here.
+
+**`trueType` and `baseSection` (fields the O4T walk does not fix).**
+`trueType := bridgeTrueType n p bridgeZfType` — the corpus's genuine ℤ_p
+factorization-type reading (IB-D9a at IB-E11's concrete `bridgeZfType`; "the
+σ every monic ℤ_p lift reads, if one exists").  `VPSound` for this instance
+is a GENUINE OPEN CLAIM (= N3 soundness), exactly as the interface demands —
+NOT baked in (`trueType := canonical` would have made it `rfl`-true; refused).
+`baseSection := .teichmuller` — the O3 ledger pin; the order-≤1 walk only
+reads leading digits at exact valuations (graded-piece data, section-
+INDEPENDENT), so the pin costs nothing and keeps the ledger seam open.
+-/
+
+namespace OrderLEOne
+
+-- Classical decidability for the walk's dites/`Nat.find` (the corpus
+-- `bridgeCanonical`/`bridgeTrueType` precedent); style linter off for it.
+set_option linter.style.openClassical false
+open scoped Classical
+
+open Polynomial
+
+section Walk
+
+variable {p n N : ℕ} [Fact p.Prime]
+
+/-- §3.2 digit read: the base-p digit of (the standard representative of)
+`x : ZMod (p^M)` at level `j` — a function of the digits of `x` below level
+`j + 1`, so a class read. -/
+noncomputable def digitAt {M : ℕ} (x : ZMod (p ^ M)) (j : ℕ) : ZMod p :=
+  (((x.val / p ^ j) % p : ℕ) : ZMod p)
+
+/-- The recentered level-N coefficient `g_i` of the cluster step:
+`g := F(x + c)`, `F = Box.toPoly f` (§3.2 "put g := f(x + c)"). -/
+noncomputable def shiftedCoeff (f : Box p n N) (c : ZMod (p ^ N)) (i : ℕ) :
+    ZMod (p ^ N) :=
+  ((Box.toPoly f).comp (X + C c)).coeff i
+
+/-- §3.2's `y_i`: the truncated valuation of the recentered coefficient
+(K0a `zmodVal`; `y_i < k` = "resolved at scan level k", exact below the
+truncation; `y_i ≥ k` = "unresolved", knowledge `v ≥ k`). -/
+noncomputable def cVal (f : Box p n N) (c : ZMod (p ^ N)) (i : ℕ) : ℕ :=
+  zmodVal (shiftedCoeff f c i)
+
+/-- The resolved index set at scan level `k` (§3.2: `i` resolved iff
+`y_i < k`; `i = n` always resolved — `g` is monic). -/
+noncomputable def resolvedIdx (f : Box p n N) (c : ZMod (p ^ N)) (k : ℕ) :
+    Finset ℕ :=
+  (Finset.range (n + 1)).filter (fun i => cVal f c i < k ∨ i = n)
+
+theorem resolvedIdx_nonempty (f : Box p n N) (c : ZMod (p ^ N)) (k : ℕ) :
+    (resolvedIdx f c k).Nonempty :=
+  ⟨n, by simp [resolvedIdx]⟩
+
+/-- The resolved support dots `(i, y_i)` — the point set whose lower hull is
+§3.2's `H_res`. -/
+noncomputable def resolvedSet (f : Box p n N) (c : ZMod (p ^ N)) (k : ℕ) :
+    Finset (ℕ × ℕ) :=
+  (resolvedIdx f c k).image (fun i => (i, cVal f c i))
+
+theorem resolvedSet_nonempty (f : Box p n N) (c : ZMod (p ^ N)) (k : ℕ) :
+    (resolvedSet f c k).Nonempty :=
+  (resolvedIdx_nonempty f c k).image _
+
+/-- §3.2's `x₀`: the least resolved index. -/
+noncomputable def x0 (f : Box p n N) (c : ZMod (p ^ N)) (k : ℕ) : ℕ :=
+  (resolvedIdx f c k).min' (resolvedIdx_nonempty f c k)
+
+/-- §3.2 certification at scan level `k` of the cluster step `(c, ·, λ_prev)`:
+(C1) every unresolved `i > x₀` sits strictly above the resolved hull
+(transcribed byte-faithfully although rev-4 records it as redundant), and
+(C2) `x₀ = 0`, or `x₀ = 1` with `k > y₁ + s_r` and `k > y₁ + λ_prev`
+(`s_r` = the brief slope of the FIRST side of `H_res` = −slope of the head of
+the corpus side list).  `lam < k ≤ N` bounds the scan window (verdict-at-N
+semantics: all consumption ≤ N). -/
+def Certifies (f : Box p n N) (c : ZMod (p ^ N)) (lam k : ℕ) : Prop :=
+  lam < k ∧ k ≤ N ∧
+    (∀ i < n, ¬ (cVal f c i < k ∨ i = n) → x0 f c k < i →
+      OM.NewtonPolygon.npHeight (resolvedSet f c k)
+        (resolvedSet_nonempty f c k) (i : ℚ) < (k : ℚ)) ∧
+    (x0 f c k = 0 ∨
+      (x0 f c k = 1 ∧
+        ∃ s₀, (OM.NewtonPolygon.npSides (resolvedSet f c k)
+            (resolvedSet_nonempty f c k)).head? = some s₀ ∧
+          (cVal f c 1 : ℚ) + (- s₀.slope) < (k : ℚ) ∧
+          cVal f c 1 + lam < k))
+
+/-- §3.2 residual processing, shared by Step 0 (on `f̄`) and the side reads
+(on `R`): each SIMPLE irreducible factor of degree `d′` certifies `(1, d′)`;
+each repeated ROOT `z₀` of multiplicity `m′ ≥ 2` recurses through `rec z₀ m′`;
+a repeated factor of degree ≥ 2 (impossible at n ≤ 3) refuses with `none`. -/
+noncomputable def processResidual (R : Polynomial (ZMod p))
+    (rec : ZMod p → ℕ → Option (Multiset (ℕ × ℕ))) :
+    Option (Multiset (ℕ × ℕ)) :=
+  ((UniqueFactorizationMonoid.normalizedFactors R).toFinset.toList.mapM
+    (fun ψ =>
+      if (UniqueFactorizationMonoid.normalizedFactors R).count ψ = 1 then
+        some ({(1, ψ.natDegree)} : Multiset (ℕ × ℕ))
+      else if ψ.natDegree = 1 then
+        rec (- ψ.coeff 0)
+          ((UniqueFactorizationMonoid.normalizedFactors R).count ψ)
+      else none)).map List.sum
+
+/-- §3.2 side processing (brief slope `s = −Side.slope = h/e` in lowest terms,
+length `ℓ = e·d`): `d = 1` (i.e. `ℓ = e`) certifies `(e, 1)`; `e = 1`, `d ≥ 2`
+reads the on-line digit residual `R(z) = Σ_j r_j z^j` (`r_j` = the digit of
+`g_{i₁+j}` at level `y₁ − j·h` when on the side line, else 0) and processes
+it, recursing at slope datum `h` through `rec z m′ h`; the remaining case
+(`e ≥ 2` with `d ≥ 2`, needing `e·d ≥ 4 > n`) refuses with `none`. -/
+noncomputable def processSide (f : Box p n N) (c : ZMod (p ^ N))
+    (s : OM.NewtonPolygon.Side)
+    (rec : ZMod p → ℕ → ℕ → Option (Multiset (ℕ × ℕ))) :
+    Option (Multiset (ℕ × ℕ)) :=
+  if (- s.slope).den = s.length then
+    some ({((- s.slope).den, 1)} : Multiset (ℕ × ℕ))
+  else if (- s.slope).den = 1 ∧ 2 ≤ s.length then
+    processResidual
+      (∑ j ∈ Finset.range (s.length + 1),
+        C (if (cVal f c (s.i₀ + j) : ℤ) = (s.v₀ : ℤ) - (j : ℤ) * (- s.slope).num
+           then digitAt (shiftedCoeff f c (s.i₀ + j))
+             ((s.v₀ : ℤ) - (j : ℤ) * (- s.slope).num).toNat
+           else 0) * X ^ j)
+      (fun z m => rec z m (- s.slope).num.toNat)
+  else none
+
+/-- §3.2 cluster step `(c, m, λ_prev)` (the multiplicity `_m` is the (I1)
+invariant datum — carried, never read).  Scan for the FIRST certify level
+`k ∈ (λ_prev, N]` (`Nat.find`); on certification process the sides of `H_res`
+of brief slope `> λ_prev`, prepending the left-edge-shortcut factor `(1,1)`
+when `x₀ = 1` (§3.2 (C2)); a repeated residual root `z₀` on a slope-`h` side
+recurses at `(c + z₀·p^h, m′, λ_prev := h)`.  Fuel-guarded recursion: λ_prev
+strictly increases and certification needs `λ_prev < k ≤ N`, so fuel `N`
+suffices; fuel exhaustion refuses with `none`. -/
+noncomputable def clusterWalk (f : Box p n N) :
+    ℕ → ZMod (p ^ N) → ℕ → ℕ → Option (Multiset (ℕ × ℕ))
+  | 0, _, _, _ => none
+  | fuel + 1, c, _m, lam =>
+      if h : ∃ k, Certifies f c lam k then
+        (((OM.NewtonPolygon.npSides (resolvedSet f c (Nat.find h))
+              (resolvedSet_nonempty f c (Nat.find h))).filter
+            (fun s => decide ((lam : ℚ) < - s.slope))).mapM
+          (fun s => processSide f c s
+            (fun z m' hh =>
+              clusterWalk f fuel
+                (c + (z.val : ZMod (p ^ N)) * (p : ZMod (p ^ N)) ^ hh)
+                m' hh))).map
+        (fun l =>
+          (if x0 f c (Nat.find h) = 1 then ({(1, 1)} : Multiset (ℕ × ℕ)) else 0)
+            + l.sum)
+      else none
+
+/-- §3.2 Step 0's input: the residue polynomial `f̄ ∈ F_p[x]` of the box class
+(level-1 read; monic of degree n). -/
+noncomputable def fbar (hN : 0 < N) (f : Box p n N) : Polynomial (ZMod p) :=
+  (Box.toPoly f).map (ZMod.castHom (dvd_pow_self p hN.ne') (ZMod p))
+
+/-- The raw §3.2 walk verdict at truncation level N (Step 0 + clusters):
+`some` of the certified factor multiset if the walk completes with all
+consumption ≤ N, else `none` (including at the unguarded level N = 0). -/
+noncomputable def rawLEOne (f : Box p n N) : Option (Multiset (ℕ × ℕ)) :=
+  if hN : 0 < N then
+    processResidual (fbar hN f)
+      (fun z m => clusterWalk f N ((z.val : ZMod (p ^ N))) m 0)
+  else none
+
+/-- The raw walk verdict packaged as a `SplittingType n`, behind the degree
+audit `Σ eᵢfᵢ = n` with entries ≥ 1 (a guarded dite; T7-side soundness shows
+the guard never fails on emitted verdicts — here it is the honest fence). -/
+noncomputable def rawType (f : Box p n N) : Option (SplittingType n) :=
+  (rawLEOne f).bind (fun S =>
+    if h : (∀ x ∈ S, 1 ≤ x.1 ∧ 1 ≤ x.2) ∧
+        (S.map fun x => x.1 * x.2).sum = n then
+      some ⟨S, h⟩
+    else none)
+
+end Walk
+
+section Stab
+
+variable {p n : ℕ} [Fact p.Prime]
+
+omit [Fact p.Prime] in
+/-- Level reductions compose (the `ZMod.castHom_comp` law, box form). -/
+theorem boxProj_boxProj {N₀ N N' : ℕ} (h₀ : N₀ ≤ N) (h : N ≤ N')
+    (f : Box p n N') :
+    boxProj p n h₀ (boxProj p n h f) = boxProj p n (h₀.trans h) f := by
+  funext i
+  exact RingHom.congr_fun
+    (ZMod.castHom_comp (pow_dvd_pow p h₀) (pow_dvd_pow p h)) (f i)
+
+/-- The raw verdict of the level-N₀ projection, seen from horizon N
+(`none` beyond the horizon). -/
+noncomputable def decideAt (N : ℕ) (f : Box p n N) (N₀ : ℕ) :
+    Option (SplittingType n) :=
+  if h : N₀ ≤ N then rawType (boxProj p n h f) else none
+
+/-- Horizon extension: below the smaller horizon the two readings agree
+(projections compose). -/
+theorem decideAt_agree {N N' : ℕ} (hNN' : N ≤ N') (f : Box p n N') {N₀ : ℕ}
+    (hN₀ : N₀ ≤ N) :
+    decideAt N (boxProj p n hNN' f) N₀ = decideAt N' f N₀ := by
+  unfold decideAt
+  rw [dif_pos hN₀, dif_pos (hN₀.trans hNN'), boxProj_boxProj]
+
+/-- The first-decision closure of the raw walk verdict: the verdict at the
+LEAST deciding level of the projections (see the unit-T4b provenance note —
+by TREE-N decision stability this closure is mathematically inert; it makes
+`canonical_stable` hold by construction). -/
+noncomputable def stabVerdict (N : ℕ) (f : Box p n N) :
+    Option (SplittingType n) :=
+  if h : ∃ N₀, decideAt N f N₀ ≠ none then decideAt N f (Nat.find h)
+  else none
+
+/-- Stability of the first-decision closure: a verdict at level N persists,
+verbatim, to every level N' ≥ N — the `ClassifierSpec.canonical_stable` field
+of unit T4b. -/
+theorem stabVerdict_stable {N N' : ℕ} (h : N ≤ N') (f : Box p n N')
+    (σ : SplittingType n)
+    (hs : stabVerdict N (boxProj p n h f) = some σ) :
+    stabVerdict N' f = some σ := by
+  unfold stabVerdict at hs
+  by_cases hex : ∃ N₀, decideAt N (boxProj p n h f) N₀ ≠ none
+  · rw [dif_pos hex] at hs
+    -- the least deciding level sits below the smaller horizon
+    have hkle : Nat.find hex ≤ N := by
+      by_contra hgt
+      apply Nat.find_spec hex
+      unfold decideAt
+      exact dif_neg hgt
+    have htrans : decideAt N' f (Nat.find hex) = some σ := by
+      rw [← decideAt_agree h f hkle]; exact hs
+    have hex' : ∃ N₀, decideAt N' f N₀ ≠ none :=
+      ⟨Nat.find hex, by rw [htrans]; exact Option.some_ne_none σ⟩
+    have hfind : Nat.find hex' = Nat.find hex := by
+      refine le_antisymm
+        (Nat.find_le (by rw [htrans]; exact Option.some_ne_none σ)) ?_
+      refine (Nat.le_find_iff hex' (Nat.find hex)).mpr (fun j hj => ?_)
+      have hjN : j ≤ N := (Nat.le_of_lt hj).trans hkle
+      simp only [ne_eq, not_not]
+      rw [← decideAt_agree h f hjN]
+      have hmin := Nat.find_min hex hj
+      simpa [ne_eq, not_not] using hmin
+    unfold stabVerdict
+    rw [dif_pos hex', hfind]
+    exact htrans
+  · rw [dif_neg hex] at hs
+    simp at hs
+
+end Stab
+
+end OrderLEOne
+
+/-- T7's complete CEIL interface. `canonicalOrderLEOne` is the concrete
+classifier definition of unit T4b; the theorem has exactly the N3 degree scope. -/
+noncomputable def canonicalOrderLEOne (n p : ℕ) [Fact p.Prime] :
+    ClassifierSpec n p where
+  canonical := fun N f => OrderLEOne.stabVerdict N f
+  trueType := bridgeTrueType n p bridgeZfType
+  canonical_stable := fun {_ _} h f σ hσ =>
+    OrderLEOne.stabVerdict_stable h f σ hσ
+  baseSection := .teichmuller
+
+/-! ### T4b definitional pins (the K0a-style spec layer) -/
+
+/-- The canonical map is the first-decision closure of the §3.2 walk verdict
+(definitional display, for T7's consumption). -/
+theorem canonicalOrderLEOne_canonical (n p : ℕ) [Fact p.Prime] (N : ℕ)
+    (f : Box p n N) :
+    (canonicalOrderLEOne n p).canonical N f = OrderLEOne.stabVerdict N f := rfl
+
+/-- The true-type field is the corpus ℤ_p reading — `bridgeTrueType` at the
+concrete `bridgeZfType` (definitional display; `VPSound` for this instance
+stays a genuine open claim = N3 soundness). -/
+theorem canonicalOrderLEOne_trueType (n p : ℕ) [Fact p.Prime] :
+    (canonicalOrderLEOne n p).trueType = bridgeTrueType n p bridgeZfType := rfl
+
+/-- The O3 base-section pin (definitional display — the
+`CapstoneLedger.o3_teichmuller`-shaped supply). -/
+theorem canonicalOrderLEOne_teichmuller (n p : ℕ) [Fact p.Prime] :
+    (canonicalOrderLEOne n p).baseSection = BaseSection.teichmuller := rfl
 
 end LeanUrat.Scaffold
