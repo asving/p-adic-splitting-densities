@@ -2126,3 +2126,8 @@ awaits C2+C3+clean re-pass. Owed ROOT sync = SPEC only (r-workflow owns ROOT).
 ## K-CUT WAVE 7 LANDED: C2/C3 CONTENT UNITS PROVED (2026-08-01)
 H8-C2 KCutMassFactor (massFactor_mass_eq) + H8-C3 KCutK1Tie (kcut_k1_form +
 kcut_k1_form_of_massFactor) gate green sorry-free, Lean-core axioms; K-CUT re-pass next.
+
+## GRB LEAF REV 2: PASS-1 CRITICALS FOLDED (2026-08-01)
+C1 TR-1 rescale corrected: lambda^GMN = -h_i/e_i = -E_i*lambda_r^FGMN (rev 0 claimed ratio 1; new gate G3 20k green, rev-0 reading refuted 6784/17801 at E_i>1).
+C2 OP-A2 re-scoped: D-clause proved iff E_i = 1 — order 2 NOT closed (e_0>1 open; D-ITER fires at E_i>1, FROM order 2). C3 "ord-consumers served" STRUCK -> new open lemma TR-3-ORD-X (project-facing ord bridge, <= TR-3'-GEN).
+(H1)(a) residue GREW: TR-3'-GEN + TR-3-ORD-X + D-ITER(order >= 2) + N-1 + 2-clean bar (0 earned) — supersedes the 2026-08-05 GRB entry's residue line. Leaf rev 2 appended in place.
