@@ -1561,3 +1561,8 @@ favor of (ROW-Sigma) as a REQUIRED r4 obligation; the reviewer's tier
 language replaces the empty-BLOCKED claim. Conditionality grows; honesty
 is restored NOW; retirement routes discharge later. This is the same
 honest-enlargement pattern that closed the VC6->VC9 loop.
+
+## R11 DESIGN REVISION 4 ON FILE (2026-08-04, in place; the honest-pricing rewrite — all 6 crit + 1 adv priced, not argued)
+NEW [M] row (H9)=(NSF), two members: (NSF-INT) prices the pin->predicate->corpus gaps (proof claim WITHDRAWN; q-1..q-6 = context; retire by r4 leaf proof or Lean materialization) + (NSF-KEY) re-homed (as-built keying conformance, KNOWN FALSE at HEAD; retire at Unit C: sign-off + NsFree conjunct + count_tie/canonical_stable/VPSound re-proved + build/AxChk + Codex diff gate). Rows: eleven -> TWELVE.
+Sigma=1 universal non-consumption DROPPED ((+18) relabeled trace/non-exhaustive); (ROW-Sigma) PROMOTED to REQUIRED r4 proof (L10). (O-GLOB) global multi-block a.s.-termination stated as explicit r4 obligation (finite tree + per-block (O-1)..(O-5) + union bound, no-duplication aggregation in-scope). Units A/B/C/D with gates; C terminal BEFORE B; D counter restarts on any text change.
+Official verdict = reviewer tiers; BLOCKED-PENDING: N1 ((b-EX) proof), N4 ((O-1)..(O-5)+(O-GLOB) global proof), N2 ((NSF-KEY) execution — known false at HEAD until the gated definition change lands). Next: Codex plan-review round 4.
